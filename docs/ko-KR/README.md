@@ -2,8 +2,8 @@
 
 <img align="right" src="../../screenshots/cactbot-logo-320x320.png">
 
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/quisquous/cactbot/test.yml?branch=main)](https://github.com/OverlayPlugin/cactbot/actions?query=workflow%3ATest+branch%3Amain)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/quisquous/cactbot?color=brightgreen&sort=semver)](https://github.com/OverlayPlugin/cactbot/releases/latest)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/OverlayPlugin/cactbot/test.yml?branch=main)](https://github.com/OverlayPlugin/cactbot/actions?query=workflow%3ATest+branch%3Amain)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/OverlayPlugin/cactbot?color=brightgreen&sort=semver)](https://github.com/OverlayPlugin/cactbot/releases/latest)
 
 🌎 [[English](../../README.md)] [[简体中文](../zh-CN/README.md)] [**한국어**]
 

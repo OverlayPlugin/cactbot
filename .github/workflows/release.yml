@@ -10,7 +10,7 @@ on:
 jobs:
   validate_tag:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'quisquous/cactbot' }}
+    if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
     outputs:
       version: ${{ steps.determine_version.outputs.version }}
     steps:
@@ -54,7 +54,7 @@ jobs:
   create_release:
     runs-on: windows-latest
     needs: [validate_tag, validate_versions]
-    if: ${{ github.repository == 'quisquous/cactbot' }}
+    if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
     env:
       GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
     steps:
@@ -114,7 +114,7 @@ jobs:
   create_npm_package:
     needs: [create_release]
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'quisquous/cactbot' }}
+    if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3

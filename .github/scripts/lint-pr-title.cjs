@@ -1,7 +1,7 @@
 /**
  * This Script can be tested locally with
  *
- * export GH_TOKEN=**** GITHUB_REPOSITORY=quisquous/cactbot PR_NUMBER=$NUM
+ * export GH_TOKEN=**** GITHUB_REPOSITORY=OverlayPlugin/cactbot PR_NUMBER=$NUM
  * node ./.github/scripts/lint-pr-title.cjs
  */
 'use strict';
