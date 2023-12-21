@@ -163,18 +163,13 @@ feel free to leave an issue/pull request in the repository.
 
 ### Code Review Culture
 
-Ideally, all changes should get code review.
-Currently, since there's a shortage of people reviewing code.
-@quisquous just commits smaller changes directly,
-but this is not an ideal situation,
-especially since they make a lot of mistakes (sorry).
-Please feel free to leave comments about any of these commits
-or ask for more things to become pull requests.
-
+All changes to the main branch require approval from a committer to the project.
 Any contributor to cactbot should feel welcome to chime in on any pull request,
 if you have ideas about how to make the code better
-(even if it's not part of the code you feel like you are an expert in).
+(even if it's not part of the code you feel like you are an expert in
+and even if you do not have commit access yourself).
 Pull requests are a collaborative effort!
+
 There's a lack of good code reviewers at the moment,
 so feel encouraged to chip in as you have time and opinions.
 
