@@ -108,7 +108,7 @@ jobs:
           tag: v${{ needs.validate_tag.outputs.version }}
           artifacts: cactbot-${{ needs.validate_tag.outputs.version }}.zip
           artifactContentType: application/zip
-          draft: true
+          draft: false
           generateReleaseNotes: true
 
   create_npm_package:
