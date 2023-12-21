@@ -269,7 +269,7 @@ If your TTS isn't working, then ACT is likely not set up properly.
 If you are not using some custom plugin like yukkuri etc,
 the default ACT TTS settings are in ACT -> Options -> Sound Settings -> Text to Speech.
 
-If you want to test TTS with cactbot, you can use the [test overlay](#test-module).
+If you want to test TTS with cactbot, you can use the [test overlay](../README.md#test-overlay).
 If you add this overlay and then in game type `/echo tts:thing to say` it will use TTS to play it.
 
 If this does not work, verify that you see the echo line in game.

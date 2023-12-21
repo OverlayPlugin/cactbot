@@ -226,7 +226,7 @@ OverlayPlugin will also print out lines like:
 Even if all the signatures are found,
 the offsets might be incorrect.
 
-If you add the [cactbot test overlay](https://github.com/OverlayPlugin/cactbot#test-module)
+If you add the [cactbot test overlay](../README.md#test-overlay)
 as an Overlay, it will give you a bunch of information from memory.
 
 The most important values are: zone, name, and job id.

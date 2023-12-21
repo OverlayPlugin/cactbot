@@ -5,7 +5,7 @@ primarily for cactbot.
 
 ![import screenshot](images/timelineguide_timeline.png)
 
-cactbot uses the [raidboss module](https://github.com/OverlayPlugin/cactbot#raidboss-module)
+cactbot uses the [raidboss module](../README.md#raidboss-overlay)
 for triggers and timelines.
 These are combined together so that you can make triggers that are based on actions
 or triggers that are based on timelines themselves.

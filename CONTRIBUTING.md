@@ -104,19 +104,19 @@ and we definitely don't expect anyone to know everything right away.
 Cactbot uses [Webpack](https://webpack.js.org/) to bundle assets.
 Over time, it has become necessary to bundle various things,
 such as helper JavaScript files, assets, triggers, and timelines
-into the modules themselves
+into the overlays themselves
 instead of loading files directly off the user's computer.
-These assets are bundled by cactbot module (raidboss, oopsyraidsy, etc.)
+These assets are bundled by cactbot overlay (raidboss, oopsyraidsy, etc.)
 and can be found within the `dist/` folder
 after running either `npm start` or `npm run build`
-as `<module>.bundle.js`.
+as `<overlay>.bundle.js`.
 
 `npm start` will open a local server at <http://localhost:8080>,
-allowing you to access cactbot modules at <http://localhost:8080/ui/raidboss/raidboss.html>
-(or similar) for the various modules.
+allowing you to access cactbot overlays at <http://localhost:8080/ui/raidboss/raidboss.html>
+(or similar) for the various overlays.
 The advantage of this approach is that any changes made locally
 will immediately update the overlay,
-prompting a refresh within the module itself.
+prompting a refresh within the overlay itself.
 This is the recommended approach of validating local code changes.
 
 Alternatively, `npm run build` will locally create a production distribution
@@ -135,11 +135,11 @@ Please consider using `npm start` instead.
 Cactbot has the ability to reference remote GitHub URLs
 in place of referencing the HTML file on your computer.
 In order to use the main cactbot repository as your cactbot's source URL,
-simply enter the cactbot module's full HTML filepath
+simply enter the cactbot overlay's full HTML filepath
 instead of the HTML file included in the cactbot download.
 
 For example, <https://overlayplugin.github.io/cactbot/ui/raidboss/raidboss.html>
-will use the latest changes for the `raidboss` module pushed to GitHub.
+will use the latest changes for the `raidboss` overlay pushed to GitHub.
 
 When making changes, it may be helpful to reference your personal fork
 via the same methods listed above.
@@ -150,7 +150,7 @@ and configure the source to point to either your `master` or `gh-pages` branch.
 From there, any change you'd like to test
 can be added to the branch you've selected
 and tested in real time by pointing cactbot to use
-`<username>.github.io/cactbot/ui/<module>/<module>.html`
+`<username>.github.io/cactbot/ui/<overlay>/<overlay>.html`
 as its source.
 
 #### VSCode extension for cactbot

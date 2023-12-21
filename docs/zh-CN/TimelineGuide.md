@@ -4,7 +4,7 @@
 
 ![导入屏幕截图](../images/timelineguide_timeline.png)
 
-cactbot在[raidboss模块](https://github.com/OverlayPlugin/cactbot#raidboss-module)中定义触发器和时间轴。这两者是紧密结合的，因此您既可以基于技能编写触发器，也可以基于时间轴编写触发器。
+cactbot在[raidboss模块](../README.md#raidboss-overlay)中定义触发器和时间轴。这两者是紧密结合的，因此您既可以基于技能编写触发器，也可以基于时间轴编写触发器。
 
 ## 目录
 
