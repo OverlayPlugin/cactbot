@@ -247,7 +247,7 @@ here's a set of features that will almost always be needed:
 
 * fixing bugs
 * [issues marked "help wanted"](https://github.com/OverlayPlugin/cactbot/issues?utf8=%E2%9C%93&q=label%3A%22help+wanted%22)
-* [adding missing timelines](https://github.com/OverlayPlugin/cactbot/issues/414)
+* [adding missing timelines](https://github.com/quisquous/cactbot/issues/414)
 * missing translations
 * [trigger future work](docs/RaidbossGuide.md#future-work)
 * [timeline future work](docs/TimelineGuide.md#future-work)
