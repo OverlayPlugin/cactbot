@@ -6,7 +6,7 @@ module.exports = {
       category: 'Stylistic Issues',
       recommended: true,
       url:
-        'https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md#trigger-elements',
+        'https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md#trigger-properties',
     },
     fixable: 'code',
     schema: [],
