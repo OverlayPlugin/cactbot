@@ -172,7 +172,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Go to rotated safe zone',
           de: 'Geh zum rotierten sicheren Feld',
-          fr: 'Allez dans une zone sûre', // FIXME
+          fr: 'Allez dans une zone sûre après rotation',
           ja: '安置へ移動', // FIXME
           ko: '회전한 뒤의 안전 지대로 가기',
         },
@@ -466,6 +466,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'South (away from orb)',
           de: 'Süden (weg vom Orb)',
+          fr: 'Sud (loin de l\'orbe)',
           ko: '남쪽 (구슬에서 멀리)',
         },
       },
@@ -479,6 +480,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'North (away from orb)',
           de: 'Norden (weg vom Orb)',
+          fr: 'Nord (loin de l\'orbe)',
           ko: '북쪽 (구슬에서 멀리)',
         },
       },
@@ -492,6 +494,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback to south safe spot',
           de: 'Rückstoß zum südlichen sicheren Zone',
+          fr: 'Poussée vers la zone sûre au Sud',
           ko: '남쪽 안전지대로 넉백되기',
         },
       },
@@ -505,6 +508,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback to north safe spot',
           de: 'Rückstoß zum nördliche sicheren Zone',
+          fr: 'Poussée vers la zone sûre au Nord',
           ko: '북쪽 안전지대로 넉백되기',
         },
       },
@@ -592,7 +596,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Go to rotated safe zone',
           de: 'Geh in den sicheren Bereich',
-          fr: 'Allez dans une zone sûre', // FIXME
+          fr: 'Allez dans une zone sûre après rotation',
           ja: '安置へ移動', // FIXME
           ko: '회전한 뒤의 안전 지대로 가기',
         },
@@ -700,14 +704,14 @@ const triggerSet: TriggerSet<Data> = {
         red: {
           en: 'Blue is safe',
           de: 'Blau ist sicher',
-          fr: 'Bleu est sûr',
+          fr: 'Le bleu est sûr',
           ja: '青安置',
           ko: '파랑이 안전',
         },
         blue: {
           en: 'Red is safe',
           de: 'Rot ist sicher',
-          fr: 'Rouge est sûr',
+          fr: 'Le rouge est sûr',
           ja: '赤安置',
           ko: '빨강이 안전',
         },
