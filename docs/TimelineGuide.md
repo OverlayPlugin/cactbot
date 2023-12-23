@@ -1213,7 +1213,6 @@ There's plenty of feature work and fixes for timelines if you are interested in 
 
 ### Smaller Fixes/Changes
 
-* update [Cactbot Highlight](https://marketplace.visualstudio.com/items?itemName=MaikoTan.cactbot-highlight) to include new `Ability { params }` style syncs
 * make it so you can pass multiple mob names to `-it`
 * `test_timeline.ts` could know which file to use without `-t` (it could use `ZoneChange` lines to look up the correct timeline)
 * `make_timeline.ts` has issues with empty names: <https://github.com/quisquous/cactbot/issues/5943>
