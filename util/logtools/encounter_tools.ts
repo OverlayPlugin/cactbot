@@ -295,8 +295,7 @@ export class EncounterFinder {
       }
     }
 
-    // If we've already started a fight due to ability usage (see TODO above re: faerie healing),
-    // we should 'restart' the fight if we get an InCombat line.
+    // If we've started a fight due to ability use, we should restart the fight on an InCombat line.
     if (this.currentFight.startTime && this.currentFight.inferredStartFromAbility) {
       const combatLine = this.regex.inCombat.exec(line);
       if (combatLine?.groups) {
