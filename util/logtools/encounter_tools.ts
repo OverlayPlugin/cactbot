@@ -34,6 +34,7 @@ export class EncounterFinder {
   currentFight: FightEncInfo = {};
   currentSeal?: string;
   zoneInfo?: typeof ZoneInfo[number];
+
   haveWon = false;
   haveSeenSeals = false;
 
