@@ -4,7 +4,6 @@ import readline from 'readline';
 import { Namespace } from 'argparse';
 
 import NetRegexes from '../../resources/netregexes';
-import PetData from '../../resources/pet_names';
 import SFuncs from '../../resources/stringhandlers';
 import { NetMatches } from '../../types/net_matches';
 
@@ -63,54 +62,7 @@ class ExtendedArgsRequired extends Namespace implements TimelineArgs {
 
 type ExtendedArgs = Partial<ExtendedArgsRequired>;
 
-// Some NPCs can be picked up by our entry processor.
-// We list them out explicitly here so we can ignore them at will.
-const ignoredCombatants = PetData['en'].concat([
-  '',
-  'Alisaie',
-  'Alisaie\'s Avatar',
-  'Alphinaud',
-  'Alphinaud\'s Avatar',
-  'Arenvald',
-  'Carbuncle',
-  'Carvallain',
-  'Crystal Exarch',
-  'Doman Liberator',
-  'Doman Shaman',
-  'Earthly Star',
-  'Emerald Carbuncle',
-  'Emerald Garuda',
-  'Estinien',
-  'Estinien\'s Avatar',
-  'G\'raha Tia',
-  'G\'raha Tia\'s Avatar',
-  'Gosetsu',
-  'Hien',
-  'Liturgic Bell',
-  'Lyse',
-  'Mikoto',
-  'Minfilia',
-  'Mol Youth',
-  'Moonstone Carbuncle',
-  'Obsidian Carbuncle',
-  'Raubahn',
-  'Resistance Fighter',
-  'Resistance Pikedancer',
-  'Ruby Carbuncle',
-  'Ruby Ifrit',
-  'Ryne',
-  'Thancred',
-  'Thancred\'s Avatar',
-  'Topaz Carbuncle',
-  'Topaz Titan',
-  'Urianger',
-  'Urianger\'s Avatar',
-  'Varshahn',
-  'Y\'shtola',
-  'Y\'shtola\'s Avatar',
-  'Yugiri',
-  'Zero',
-]);
+const ignoredCombatants = new EncounterCollector().ignoredCombatants;
 
 const timelineParse = new LogUtilArgParse();
 

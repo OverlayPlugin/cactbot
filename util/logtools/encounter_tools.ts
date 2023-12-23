@@ -2,6 +2,7 @@ import ContentType from '../../resources/content_type';
 import DTFuncs from '../../resources/datetime';
 import NetRegexes, { commonNetRegex } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
+import PetData from '../../resources/pet_names';
 import StringFuncs from '../../resources/stringhandlers';
 import ZoneInfo from '../../resources/zone_info';
 import { NetAnyMatches, NetMatches } from '../../types/net_matches';
@@ -53,6 +54,55 @@ export class EncounterFinder {
 
   sealRegexes: Array<CactbotBaseRegExp<'GameLog'>> = [];
   unsealRegexes: Array<CactbotBaseRegExp<'GameLog'>> = [];
+
+  // Some NPCs can be picked up by our entry processor.
+  // We list them out explicitly here so we can ignore them at will.
+  ignoredCombatants = PetData['en'].concat([
+    '',
+    'Alisaie',
+    'Alisaie\'s Avatar',
+    'Alphinaud',
+    'Alphinaud\'s Avatar',
+    'Arenvald',
+    'Carbuncle',
+    'Carvallain',
+    'Crystal Exarch',
+    'Doman Liberator',
+    'Doman Shaman',
+    'Earthly Star',
+    'Emerald Carbuncle',
+    'Emerald Garuda',
+    'Estinien',
+    'Estinien\'s Avatar',
+    'G\'raha Tia',
+    'G\'raha Tia\'s Avatar',
+    'Gosetsu',
+    'Hien',
+    'Liturgic Bell',
+    'Lyse',
+    'Mikoto',
+    'Minfilia',
+    'Mol Youth',
+    'Moonstone Carbuncle',
+    'Obsidian Carbuncle',
+    'Raubahn',
+    'Resistance Fighter',
+    'Resistance Pikedancer',
+    'Ruby Carbuncle',
+    'Ruby Ifrit',
+    'Ryne',
+    'Thancred',
+    'Thancred\'s Avatar',
+    'Topaz Carbuncle',
+    'Topaz Titan',
+    'Urianger',
+    'Urianger\'s Avatar',
+    'Varshahn',
+    'Y\'shtola',
+    'Y\'shtola\'s Avatar',
+    'Yugiri',
+    'Zero',
+  ]);
 
   initializeZone(): void {
     this.currentZone = {};
@@ -231,12 +281,15 @@ export class EncounterFinder {
         this.onStartFight(line, combatLine.groups, this.currentZone.zoneName);
         return;
       }
-      let a = this.regex.playerAttackingMob.exec(line);
-      if (!a)
-        // TODO: This regex catches faerie healing and could potentially give false positives!
-        a = this.regex.mobAttackingPlayer.exec(line);
-      if (a?.groups) {
-        this.onStartFight(line, a.groups, this.currentZone.zoneName);
+      const pAttack = this.regex.playerAttackingMob.exec(line);
+      if (pAttack?.groups && !this.ignoredCombatants.includes(pAttack.groups?.target)) {
+        this.onStartFight(line, pAttack.groups, this.currentZone.zoneName);
+        this.currentFight.inferredStartFromAbility = true;
+        return;
+      }
+      const mAttack = this.regex.mobAttackingPlayer.exec(line);
+      if (mAttack?.groups && !this.ignoredCombatants.includes(mAttack.groups?.source)) {
+        this.onStartFight(line, mAttack.groups, this.currentZone.zoneName);
         this.currentFight.inferredStartFromAbility = true;
         return;
       }
