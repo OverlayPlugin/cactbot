@@ -597,9 +597,9 @@ $ node --loader=ts-node/esm util/logtools/make_timeline.ts -f docs/logs/TheAbyss
 ┌───────┬──────────────┬────────────────┬──────────┬──────────────────────────────────┬──────────────────────────────────┬──────────┐
 │ Index │  Start Date  │   Start Time   │ Duration │            Zone Name             │          Encounter Name          │ End Type │
 ├───────┼──────────────┼────────────────┼──────────┼──────────────────────────────────┼──────────────────────────────────┼──────────┤
-│   1   │  2023-10-06  │  20:20:08.265  │   10m    │  The Abyssal Fracture (Extreme)  │  The Abyssal Fracture (Extreme)  │   Win    │
-│   2   │  2023-10-06  │  21:09:43.014  │   12m    │  The Abyssal Fracture (Extreme)  │  The Abyssal Fracture (Extreme)  │   Win    │
-│   3   │  2023-10-06  │  21:55:12.239  │    9m    │  The Abyssal Fracture (Extreme)  │  The Abyssal Fracture (Extreme)  │   Win    │
+│   1   │  2023-10-06  │  20:21:20.456  │    9m    │  The Abyssal Fracture (Extreme)  │  The Abyssal Fracture (Extreme)  │   Win    │
+│   2   │  2023-10-06  │  21:11:44.502  │   10m    │  The Abyssal Fracture (Extreme)  │  The Abyssal Fracture (Extreme)  │   Win    │
+│   3   │  2023-10-06  │  21:55:24.409  │    9m    │  The Abyssal Fracture (Extreme)  │  The Abyssal Fracture (Extreme)  │   Win    │
 └───────┴──────────────┴────────────────┴──────────┴──────────────────────────────────┴──────────────────────────────────┴──────────┘
 ```
 
@@ -622,31 +622,17 @@ hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-72.8 "--sync--" Ability { id: "8C49", source: "Zeromus" }
-75.8 "--sync--" Ability { id: "8C49", source: "Zeromus" }
-83.9 "Abyssal Nox" Ability { id: "8B3F", source: "Zeromus" }
-92.9 "--sync--" Ability { id: "8B41", source: "Zeromus" }
-92.9 "--sync--" #Ability { id: "8B40", source: "Zeromus" }
-92.9 "--sync--" #Ability { id: "8B40", source: "Zeromus" }
-92.9 "--sync--" Ability { id: "8D2B", source: "Zeromus" }
-97.9 "--sync--" Ability { id: "8B41", source: "Zeromus" }
-97.9 "--sync--" Ability { id: "8B40", source: "Zeromus" }
-99.9 "Abyssal Echoes" Ability { id: "8B42", source: "Zeromus" }
+3.6 "--sync--" Ability { id: "8C49", source: "Zeromus" }
+11.7 "Abyssal Nox" Ability { id: "8B3F", source: "Zeromus" }
+20.7 "--sync--" Ability { id: "8B41", source: "Zeromus" }
+20.7 "--sync--" #Ability { id: "8B40", source: "Zeromus" }
+20.7 "--sync--" #Ability { id: "8B40", source: "Zeromus" }
+20.7 "--sync--" Ability { id: "8D2B", source: "Zeromus" }
+25.7 "--sync--" Ability { id: "8B41", source: "Zeromus" }
+25.7 "--sync--" Ability { id: "8B40", source: "Zeromus" }
+27.7 "Abyssal Echoes" Ability { id: "8B42", source: "Zeromus" }
 # etc etc etc
 ```
-
-TODO: for some reason, `make_timeline.ts` is confused here and thinks the first
-real ability (Abyssal Nox 8B3F) occurs at time=83.9.
-It's clear from the log that it should be t=11.1.
-See: <https://github.com/quisquous/cactbot/issues/6048>
-
-```text
-260|2023-10-06T20:21:19.9510000-07:00|1|0|
-20|2023-10-06T20:21:27.1110000-07:00|40022550|Zeromus|8B3F|Abyssal Nox|40022550|Zeromus|4.700|100.00|80.10|0.00|0.00|
-22|2023-10-06T20:21:32.1010000-07:00|40022550|Zeromus|8B3F|Abyssal Nox|10FF0007|Kehabiqo Febiqo|4A|10000|E|6E90000|1B|8B3F8000|0|0|0|0|0|0|0|0|0|0|126650|128564|10000|10000|||99.95|97.53|0.00|3.14|39444801|40478540|10000|10000|||100.00|80.10|0.00|0.00|0001A48D|0|8|
-```
-
-You can fix this by running with `-p 8B3F:11.1` which will set the first use of `8B3F` to be time `11.`1.
 
 From here, it's a question of massaging this timeline into something that's usable.
 
@@ -1216,8 +1202,6 @@ There's plenty of feature work and fixes for timelines if you are interested in 
 * make it so you can pass multiple mob names to `-it`
 * `test_timeline.ts` could know which file to use without `-t` (it could use `ZoneChange` lines to look up the correct timeline)
 * `make_timeline.ts` has issues with empty names: <https://github.com/quisquous/cactbot/issues/5943>
-* `test_timeline.ts` sometimes misses seal lines that are in the log: <https://github.com/quisquous/cactbot/issues/5716>
-* investigate this drift issue: <https://github.com/quisquous/cactbot/issues/5635>
 * make it possible to pass a set of ids that should be named `--sync--`: <https://github.com/quisquous/cactbot/issues/5510>
 * fix the log splitter so that when importing into ACT separate fights stay separate (maybe need to keep one new zone line? or just insert a fake `/echo end`?)
 * fix the offset issue with make/test timeline on zeromus log file: <https://github.com/quisquous/cactbot/issues/6048>
