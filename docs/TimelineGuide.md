@@ -1204,7 +1204,6 @@ There's plenty of feature work and fixes for timelines if you are interested in 
 * `make_timeline.ts` has issues with empty names: <https://github.com/quisquous/cactbot/issues/5943>
 * make it possible to pass a set of ids that should be named `--sync--`: <https://github.com/quisquous/cactbot/issues/5510>
 * fix the log splitter so that when importing into ACT separate fights stay separate (maybe need to keep one new zone line? or just insert a fake `/echo end`?)
-* fix the offset issue with make/test timeline on zeromus log file: <https://github.com/quisquous/cactbot/issues/6048>
 
 ### Larger Features
 
