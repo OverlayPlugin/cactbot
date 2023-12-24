@@ -709,7 +709,7 @@ to turn on filtering.  From your cactbot directory, run the following command:
 Alternatively, you can use the web-based [log splitter](https://overlayplugin.github.io/cactbot/util/logtools/splitter.html) tool
 and check the option to filter the log for analysis.
 
-This filtering should limit the exported log lines to just boss abilities and casts, added combatants, tethers, 
+This filtering should limit the exported log lines to just boss abilities and casts, added combatants, tethers,
 map effects, head markers, and debuffs applied to and removed from players. It's not perfect, but it's a place to start.
 
 You can then walk through a log with video, and look at which abilities hit players and do damage
