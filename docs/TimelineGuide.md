@@ -695,28 +695,26 @@ The reason to build the ability table is:
 Personally, starting from the ability table and then working out from there
 is the best way to attack most new content.
 
-#### One Hacky Workflow Suggestion
+#### Using the log splitter to find useful/interesting ability lines
 
-This is a bit of a hacky workflow, but one way to build the ability table is to filter log lines
-down to the useful log lines.
+Cactbot's log-splitter utility includes an option to export a particular fight from a log
+and filter the included log lines so that only certain 'useful' lines are exported.
+This is primarily for analysis purposes while building timelines and triggers,
+and it can be useful in building the ability table.
 
-If you load the log into ACT, [view the logs](LogGuide.md#viewing-logs-after-a-fight), and then search by the following regex,
-you will get most of the "interesting" lines for a fight.
+Here, we can run the log splitter utility from the command line and pass the `-af` argument
+to turn on filtering.  From your cactbot directory, run the following command:
+`node --loader=ts-node/esm util/logtools/split_log.ts -f docs/logs/TheAbyssalFractureExtreme.log -lf 1 -af`
 
-![encounter logs screenshot](images/timelineguide_encounterlogs.png)
+Alternatively, you can use the web-based [log splitter](https://overlayplugin.github.io/cactbot/util/logtools/splitter.html) tool
+and check the option to filter the log for analysis.
 
-This includes boss abilities and casts, added combatants, tethers, map effects, head markers, and debuffs on players.
-It's not perfect, but it's a place to start.
+This filtering should limit the exported log lines to just boss abilities and casts, added combatants, tethers, 
+map effects, head markers, and debuffs applied to and removed from players. It's not perfect, but it's a place to start.
 
 You can then walk through a log with video, and look at which abilities hit players and do damage
 and which are castbars on the boss (not all `StartsUsing` are castbars) and then fill out the ability table
 and understand what everything is.
-
-```text
-( 1A:[^:]*:([^:]|: )*:[^:]*:[E4][^:]*:[^:]*:1| 1A:(B9A|808):| 03:| 23:| 101:| 1B:| 1[456]:4.......:(?!\w*-Egi|Liturgic Bell|Thancred|Moonstone Carbuncle|Zero(?!mus)|Alphinaud|Alisaie|Topaz Titan|Emerald Carbuncle|Eos|Rook Autoturret|Seraph|Bishop Autoturret|Ruby Carbuncle|Esteem|Demi-\w*|Earthly Star|Automaton Queen|Bunshin|Selene|Hien|Lyse|Pipin Of The Steel Heart|Yugiri Mistwalker|2B|Topaz Carbuncle|Y'shtola|Hythlodaeus|Emet-Selch|Venat|Krile|Estinien|Urianger|G'raha Tia|Carbuncle|Varshahn|Emerald Garuda|Ruby Ifrit|Bunshin|Earthly Star)[^:]*:(?!IGNOREIDSHERE)[^:]*:(?!Attack|attack))
-```
-
-TODO: This could be a lot better. We could add an option in the log splitter to output "interesting" lines.
 
 ### Using make_timeline.ts with fflogs
 
@@ -1214,7 +1212,6 @@ There's plenty of feature work and fixes for timelines if you are interested in 
 * `testsync` instead of comments (we use `#Ability { params }` to avoid sync issues, but it'd be nice to add a `testsync` command that verifies that the sync was hit in the window but does not resync for testing purposes)
 * handle multiple syncs at the same time: <https://github.com/quisquous/cactbot/issues/5479>
 * clean up old timelines to use `label` and `forcejump`
-* add some checkbox to the splitter code to only print out "interesting" lines (see: [hacky workflow](#one-hacky-workflow-suggestion))
 
 ### Ability Table
 

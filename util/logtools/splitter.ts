@@ -1,5 +1,8 @@
 import logDefinitions, { LogDefinition, LogDefinitionMap } from '../../resources/netlog_defs';
+import NetRegexes from '../../resources/netregexes';
+import { CactbotBaseRegExp } from '../../types/net_trigger';
 
+import { ignoredCombatants } from './encounter_tools';
 import { Notifier } from './notifier';
 
 export default class Splitter {
@@ -19,13 +22,43 @@ export default class Splitter {
   private rsvTypeToFieldMap: { [type: string]: readonly number[] } = {};
   private rsvSubstitutionMap: { [key: string]: string } = {};
 
+  private filterRegex: {
+    addNPCCombatant: CactbotBaseRegExp<'AddedCombatant'>;
+    startsUsingNPC: CactbotBaseRegExp<'StartsUsing'>;
+    abilityNPC: CactbotBaseRegExp<'Ability'>;
+    gainsEffectPlayerFromNPCOrEnv: CactbotBaseRegExp<'GainsEffect'>;
+    gainsEffectSpecificIds: CactbotBaseRegExp<'GainsEffect'>;
+    losesEffectPlayerFromNPCOrEnv: CactbotBaseRegExp<'GainsEffect'>;
+    losesEffectSpecificIds: CactbotBaseRegExp<'GainsEffect'>;
+  };
+
+  private ignoredAbilities: string[];
+
   // startLine and stopLine are both inclusive.
   constructor(
     private startLine: string,
     private stopLine: string,
     private notifier: Notifier,
     private includeGlobals: boolean,
+    private doAnalysisFilter: boolean,
   ) {
+    this.filterRegex = {
+      addNPCCombatant: NetRegexes.addedCombatant({ id: '4.{7}' }),
+      startsUsingNPC: NetRegexes.startsUsing({ sourceId: '4.{7}' }),
+      abilityNPC: NetRegexes.ability({ sourceId: '4.{7}' }),
+      gainsEffectPlayerFromNPCOrEnv: NetRegexes.gainsEffect({
+        sourceId: '[E4].{7}',
+        targetId: '1.{7}',
+      }),
+      gainsEffectSpecificIds: NetRegexes.gainsEffect({ effectId: ['B9A', '808'] }),
+      losesEffectPlayerFromNPCOrEnv: NetRegexes.gainsEffect({
+        sourceId: '[E4].{7}',
+        targetId: '1.{7}',
+      }),
+      losesEffectSpecificIds: NetRegexes.gainsEffect({ effectId: ['B9A', '808'] }),
+    };
+    this.ignoredAbilities = ['Attack', 'attack', ''];
+
     const defs: LogDefinitionMap = logDefinitions;
     for (const def of Object.values(defs)) {
       // Remap logDefinitions from log type (instead of name) to definition.
@@ -56,6 +89,92 @@ export default class Splitter {
     return splitLine.join('|');
   }
 
+  analysisFilter(line: string, typeField: string | undefined): string | undefined {
+    // Only the following types of lines will be returned by this func and included in the log:
+    // * NPC AddedCombatant (03)
+    // * NPC StartsUsing (20)
+    // * NPC Ability(21)/NetworkAOEAbility(22)
+    // * GainsEffect (26)/LosesEffect (30) applied to players by NPC or environment
+    // * GainsEffect (26)/LosesEffect (30) with a known effectId of interest
+    // * Headmarker (27)
+    // * Tether (35)
+    //  * MapEffect (257)
+
+    if (typeField === undefined)
+      return;
+
+    let match;
+    if (typeField === logDefinitions.AddedCombatant.type) {
+      match = this.filterRegex.addNPCCombatant.exec(line);
+      if (match?.groups) {
+        if (!ignoredCombatants.includes(match.groups.name))
+          return line;
+      }
+      return;
+    }
+
+    if (typeField === logDefinitions.StartsUsing.type) {
+      match = this.filterRegex.startsUsingNPC.exec(line);
+      if (match?.groups) {
+        if (!ignoredCombatants.includes(match.groups.source))
+          return line;
+      }
+      return;
+    }
+
+    if (typeField === logDefinitions.Ability.type) {
+      match = this.filterRegex.abilityNPC.exec(line);
+      if (match?.groups) {
+        if (
+          !ignoredCombatants.includes(match.groups.source) &&
+          !this.ignoredAbilities.includes(match.groups.ability)
+        )
+          return line;
+      }
+      return;
+    }
+
+    // TODO?: We could filter out known but uninteresting effectIds, like vulns and damage downs.
+    // But that might become bloated and difficult to maintain,
+    // particularly as ids & importance can change between fights.
+    if (typeField === logDefinitions.GainsEffect.type) {
+      match = this.filterRegex.gainsEffectPlayerFromNPCOrEnv.exec(line);
+      if (match?.groups) {
+        if (!ignoredCombatants.includes(match.groups?.source))
+          return line;
+      }
+
+      match = this.filterRegex.gainsEffectSpecificIds.exec(line);
+      if (match?.groups)
+        return line;
+      return;
+    }
+
+    if (typeField === logDefinitions.LosesEffect.type) {
+      match = this.filterRegex.losesEffectPlayerFromNPCOrEnv.exec(line);
+      if (match?.groups) {
+        if (!ignoredCombatants.includes(match.groups?.source))
+          return line;
+      }
+
+      match = this.filterRegex.losesEffectSpecificIds.exec(line);
+      if (match?.groups)
+        return line;
+      return;
+    }
+
+    if (typeField === logDefinitions.HeadMarker.type)
+      return line;
+
+    if (typeField === logDefinitions.Tether.type)
+      return line;
+
+    if (typeField === logDefinitions.MapEffect.type)
+      return line;
+
+    return;
+  }
+
   process(line: string): string | string[] | undefined {
     if (this.haveStopped)
       return;
@@ -73,7 +192,7 @@ export default class Splitter {
 
     // Normal operation; emit lines between start and stop.
     if (this.haveFoundFirstNonIncludeLine)
-      return line;
+      return this.doAnalysisFilter ? this.analysisFilter(line, typeField) : line;
 
     if (typeField === undefined)
       return;
@@ -90,24 +209,24 @@ export default class Splitter {
       this.lastInclude[typeField] = line;
 
     // Combatant & rsv special cases:
-    if (typeField === '01') {
+    if (type.name === 'ChangeZone') {
       // When changing zones, reset all combatants.
       // They will get re-added again.
       this.addedCombatants = {};
       // rsv lines arrive before zone change, so mark rsv lines as completed
       this.rsvLinesReceived = true;
-    } else if (typeField === '03') {
-      const idIdx = 2;
+    } else if (type.name === 'AddedCombatant') {
+      const idIdx = type.fields?.id ?? 2;
       const combatantId = splitLine[idIdx]?.toUpperCase();
       if (combatantId !== undefined)
         this.addedCombatants[combatantId] = line;
-    } else if (typeField === '04') {
-      const idIdx = 2;
+    } else if (type.name === 'RemovedCombatant') {
+      const idIdx = type.fields?.id ?? 2;
       const combatantId = splitLine[idIdx]?.toUpperCase();
       if (combatantId !== undefined)
         delete this.addedCombatants[combatantId];
-    } else if (typeField === '262') {
-      // if we receive a 262 line after the 01 line, this means a new zone change is occurring
+    } else if (type.name === 'RSVData') {
+      // if we receive RSV data after a zone change, this means a new zone change is about to occur
       // so reset rsvLines/rsvSubstitutionMap and recollect
       if (this.rsvLinesReceived) {
         this.rsvLinesReceived = false;
@@ -118,8 +237,8 @@ export default class Splitter {
       // At some point, we could separate rsv keys into namespace-specific objects for substitution
       // But there's virtually no risk of collision right now,
       // and we also haven't yet determined how to map a 262 line to a particular namespace.
-      const idIdx = 4;
-      const valueIdx = 5;
+      const idIdx = type.fields?.key ?? 4;
+      const valueIdx = type.fields?.value ?? 5;
       const rsvId = splitLine[idIdx];
       const rsvValue = splitLine[valueIdx];
       if (rsvId !== undefined && rsvValue !== undefined) {
@@ -132,24 +251,36 @@ export default class Splitter {
       return;
 
     // We have found the start line, but haven't necessarily started printing yet.
-    // Emit all the include lines as soon as we find a non-include line.
+    // If analysisFilter is set, we'll emit the AddedCombatant lines and the start line,
+    // and then the loop will continue to run as normal -- include lines will not be printed.
+    // If analysisFilter is *not* set, emit all include lines as soon as we find a non-include line.
     // By waiting until we find the first non-include line, we avoid weird corner cases
     // around the startLine being an include line (ordering issues, redundant lines).
     this.haveStarted = true;
-    if (type.globalInclude || type.lastInclude)
+    if (!this.doAnalysisFilter && (type.globalInclude || type.lastInclude))
       return;
 
     // At this point we've found a real line that's not an include line
+    // or analysisFilter is set, so we're just going to start looping with this start line
     this.haveFoundFirstNonIncludeLine = true;
 
-    let lines = this.globalLines;
+    // don't include globalLines if analysisFilter is on
+    let lines: string[] = !this.doAnalysisFilter ? this.globalLines : [];
 
-    for (const line of Object.values(this.lastInclude))
-      lines.push(line);
-    for (const line of Object.values(this.addedCombatants))
-      lines.push(line);
-    for (const line of Object.values(this.rsvLines))
-      lines.push(line);
+    // if analysis filter is on, only include (filtered) addedCombatant line
+    if (this.doAnalysisFilter) {
+      for (const line of Object.values(this.addedCombatants)) {
+        if (this.analysisFilter(line, logDefinitions.AddedCombatant.type) !== undefined)
+          lines.push(line);
+      }
+    } else {
+      for (const line of Object.values(this.lastInclude))
+        lines.push(line);
+      for (const line of Object.values(this.addedCombatants))
+        lines.push(line);
+      for (const line of Object.values(this.rsvLines))
+        lines.push(line);
+    }
     lines.push(line);
 
     lines = lines.sort((a, b) => {

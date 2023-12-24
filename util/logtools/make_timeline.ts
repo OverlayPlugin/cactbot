@@ -9,7 +9,7 @@ import { NetMatches } from '../../types/net_matches';
 
 import { LogUtilArgParse, TimelineArgs } from './arg_parser';
 import { printCollectedFights, printCollectedZones } from './encounter_printer';
-import { EncounterCollector, FightEncInfo, TLFuncs } from './encounter_tools';
+import { EncounterCollector, FightEncInfo, ignoredCombatants, TLFuncs } from './encounter_tools';
 import FFLogs from './fflogs';
 
 // TODO: Repeated abilities that need to be auto-commented may not get the comment marker
@@ -61,8 +61,6 @@ class ExtendedArgsRequired extends Namespace implements TimelineArgs {
 }
 
 type ExtendedArgs = Partial<ExtendedArgsRequired>;
-
-const ignoredCombatants = new EncounterCollector().ignoredCombatants;
 
 const timelineParse = new LogUtilArgParse();
 

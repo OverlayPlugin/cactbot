@@ -20,10 +20,26 @@ class SplitLogArgs extends Namespace implements TimelineArgs {
   'report_id': string | null;
   'report_fight': number | null;
   'key': string | null;
+  'no_anonymize': boolean | null;
+  'analysis_filter': boolean | null;
 }
 
-// TODO: add options for not splitting / not anonymizing.
 const timelineParse = new LogUtilArgParse();
+
+// Log anonymization happens by default in this script
+timelineParse.parser.addArgument(['-na', '--no-anonymize'], {
+  nargs: '0',
+  constant: false,
+  defaultValue: true,
+  help: 'Log entries will not be automatically anonymized',
+});
+
+timelineParse.parser.addArgument(['-af', '--analysis-filter'], {
+  nargs: '0',
+  constant: false,
+  defaultValue: true,
+  help: 'Filter log to include only \'interesting\' lines (for analysis)',
+});
 
 const args = new SplitLogArgs({});
 timelineParse.parser.parseArgs(undefined, args);
@@ -91,17 +107,23 @@ const writeFile = (
       process.exit(-1);
     });
 
-    const splitter = new Splitter(startLine, endLine, notifier, true);
+    const includeGlobals = true;
+    const analysisFilter = args.analysis_filter ?? false;
+    const splitter = new Splitter(startLine, endLine, notifier, includeGlobals, analysisFilter);
 
     const lines: string[] = [];
+    const noAnonymize = args.no_anonymize ?? false;
     lineReader.on('line', (line) => {
       splitter.processWithCallback(line, (line) => {
-        const anonLine = anonymizer.process(line, notifier);
-        if (typeof anonLine === 'undefined')
-          return;
-
-        lines.push(anonLine);
-        writer.write(anonLine);
+        let writeLine = line;
+        if (!noAnonymize) {
+          const anonLine = anonymizer.process(line, notifier);
+          if (typeof anonLine === 'undefined')
+            return;
+          writeLine = anonLine;
+        }
+        lines.push(writeLine);
+        writer.write(writeLine);
         writer.write('\n');
       });
 
@@ -113,9 +135,11 @@ const writeFile = (
       writer.end();
       console.log(`Wrote: ${outputFile}`);
 
-      anonymizer.validateIds(notifier);
-      for (const line of lines)
-        anonymizer.validateLine(line, notifier);
+      if (!noAnonymize) {
+        anonymizer.validateIds(notifier);
+        for (const line of lines)
+          anonymizer.validateLine(line, notifier);
+      }
 
       writer.close(() => resolve());
     });

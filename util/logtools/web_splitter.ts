@@ -26,6 +26,9 @@ const pageText = {
     de: 'Log Anonymisieren',
     cn: '对日志进行匿名化处理',
   },
+  analysisFilterInput: {
+    en: 'Filter Log for Analysis',
+  },
   exportInput: {
     en: 'Export',
     de: 'Export',
@@ -181,6 +184,7 @@ class PageState {
     public table: HTMLElement,
     public exportButton: HTMLButtonElement,
     public anonInput: HTMLInputElement,
+    public analysisFilterInput: HTMLInputElement,
     public errorDiv: HTMLElement,
   ) {}
 }
@@ -225,13 +229,20 @@ const doExport = (state: PageState): void => {
   const anonymizer = new Anonymizer();
 
   const anonymizeLogs = state.anonInput.checked;
+  const analysisFilter = state.analysisFilterInput.checked;
 
   for (const idx of selected) {
     const fight = idxToFight[idx];
     if (fight === undefined || fight.startLine === undefined || fight.endLine === undefined)
       continue;
 
-    const splitter = new Splitter(fight.startLine, fight.endLine, notifier, firstTime);
+    const splitter = new Splitter(
+      fight.startLine,
+      fight.endLine,
+      notifier,
+      firstTime,
+      analysisFilter,
+    );
     firstTime = false;
 
     // TODO: we could be smarter here and not loop every time through all lines
@@ -284,6 +295,7 @@ const onLoaded = () => {
   const exportOptions = getElement('export-options');
   const exportButton = getElement('export') as HTMLButtonElement;
   const anonCheckbox = getElement('anon') as HTMLInputElement;
+  const analysisFilterCheckbox = getElement('analysisFilter') as HTMLInputElement;
   const errorDiv = getElement('errors');
 
   const fileDropText: LocaleText = pageText.fileDropText;
@@ -298,6 +310,7 @@ const onLoaded = () => {
     table,
     exportButton,
     anonCheckbox,
+    analysisFilterCheckbox,
     errorDiv,
   );
   fileDrop.addEventListener('drop', (e) => {
@@ -306,6 +319,7 @@ const onLoaded = () => {
   });
 
   setLabelText('anon-label', 'anonInput', lang);
+  setLabelText('analysisFilter-label', 'analysisFilterInput', lang);
   setLabelText('export', 'exportInput', lang);
 
   exportButton.addEventListener('click', () => {

@@ -30,6 +30,54 @@ type FightEncInfo = ZoneEncInfo & {
   inferredStartFromAbility?: boolean;
 };
 
+// Some NPCs can be picked up by our entry processor.
+// We list them out explicitly here so we can ignore them at will.
+export const ignoredCombatants = PetData['en'].concat([
+  '',
+  'Alisaie',
+  'Alisaie\'s Avatar',
+  'Alphinaud',
+  'Alphinaud\'s Avatar',
+  'Arenvald',
+  'Carbuncle',
+  'Carvallain',
+  'Crystal Exarch',
+  'Doman Liberator',
+  'Doman Shaman',
+  'Earthly Star',
+  'Emerald Carbuncle',
+  'Emerald Garuda',
+  'Estinien',
+  'Estinien\'s Avatar',
+  'G\'raha Tia',
+  'G\'raha Tia\'s Avatar',
+  'Gosetsu',
+  'Hien',
+  'Liturgic Bell',
+  'Lyse',
+  'Mikoto',
+  'Minfilia',
+  'Mol Youth',
+  'Moonstone Carbuncle',
+  'Obsidian Carbuncle',
+  'Raubahn',
+  'Resistance Fighter',
+  'Resistance Pikedancer',
+  'Ruby Carbuncle',
+  'Ruby Ifrit',
+  'Ryne',
+  'Thancred',
+  'Thancred\'s Avatar',
+  'Topaz Carbuncle',
+  'Topaz Titan',
+  'Urianger',
+  'Urianger\'s Avatar',
+  'Varshahn',
+  'Y\'shtola',
+  'Y\'shtola\'s Avatar',
+  'Yugiri',
+  'Zero',
+]);
 export class EncounterFinder {
   currentZone: ZoneEncInfo = {};
   currentFight: FightEncInfo = {};
@@ -54,55 +102,6 @@ export class EncounterFinder {
 
   sealRegexes: Array<CactbotBaseRegExp<'GameLog'>> = [];
   unsealRegexes: Array<CactbotBaseRegExp<'GameLog'>> = [];
-
-  // Some NPCs can be picked up by our entry processor.
-  // We list them out explicitly here so we can ignore them at will.
-  ignoredCombatants = PetData['en'].concat([
-    '',
-    'Alisaie',
-    'Alisaie\'s Avatar',
-    'Alphinaud',
-    'Alphinaud\'s Avatar',
-    'Arenvald',
-    'Carbuncle',
-    'Carvallain',
-    'Crystal Exarch',
-    'Doman Liberator',
-    'Doman Shaman',
-    'Earthly Star',
-    'Emerald Carbuncle',
-    'Emerald Garuda',
-    'Estinien',
-    'Estinien\'s Avatar',
-    'G\'raha Tia',
-    'G\'raha Tia\'s Avatar',
-    'Gosetsu',
-    'Hien',
-    'Liturgic Bell',
-    'Lyse',
-    'Mikoto',
-    'Minfilia',
-    'Mol Youth',
-    'Moonstone Carbuncle',
-    'Obsidian Carbuncle',
-    'Raubahn',
-    'Resistance Fighter',
-    'Resistance Pikedancer',
-    'Ruby Carbuncle',
-    'Ruby Ifrit',
-    'Ryne',
-    'Thancred',
-    'Thancred\'s Avatar',
-    'Topaz Carbuncle',
-    'Topaz Titan',
-    'Urianger',
-    'Urianger\'s Avatar',
-    'Varshahn',
-    'Y\'shtola',
-    'Y\'shtola\'s Avatar',
-    'Yugiri',
-    'Zero',
-  ]);
 
   initializeZone(): void {
     this.currentZone = {};
@@ -282,13 +281,13 @@ export class EncounterFinder {
         return;
       }
       const pAttack = this.regex.playerAttackingMob.exec(line);
-      if (pAttack?.groups && !this.ignoredCombatants.includes(pAttack.groups?.target)) {
+      if (pAttack?.groups && !ignoredCombatants.includes(pAttack.groups?.target)) {
         this.onStartFight(line, pAttack.groups, this.currentZone.zoneName);
         this.currentFight.inferredStartFromAbility = true;
         return;
       }
       const mAttack = this.regex.mobAttackingPlayer.exec(line);
-      if (mAttack?.groups && !this.ignoredCombatants.includes(mAttack.groups?.source)) {
+      if (mAttack?.groups && !ignoredCombatants.includes(mAttack.groups?.source)) {
         this.onStartFight(line, mAttack.groups, this.currentZone.zoneName);
         this.currentFight.inferredStartFromAbility = true;
         return;
