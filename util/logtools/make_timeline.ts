@@ -441,7 +441,7 @@ const assembleTimelineStrings = (
         //
         // For most purposes, we ignore ability lines where the combatant name is empty.
         // But when building a timeline, we want to include named abilities
-        // used by no - name combatants, given the increased likelihood they may be relevant.
+        // used by no-name combatants, given the increased likelihood they may be relevant.
         // Unnamed (e.g. 'unknown_*') abilities have been converted to '--sync--' at this point.
         const combatant = entry.combatant ?? '';
         if (!ignoredCombatants.includes(combatant))
