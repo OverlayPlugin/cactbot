@@ -112,6 +112,7 @@ const defaultRaidbossConfigOptions = {
   InfoSoundVolume: 1,
   LongSoundVolume: 1,
   PullSoundVolume: 1,
+  BrowserTTS: true,
   RumbleEnabled: false,
   InfoRumbleDuration: 400,
   InfoRumbleWeak: 0.5,
