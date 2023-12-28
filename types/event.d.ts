@@ -463,6 +463,11 @@ type CactbotSayHandler = (msg: {
   text: string;
 }) => void;
 
+type CactbotSayAltHandler = (msg: {
+  call: 'cactbotSayAlt';
+  text: string;
+}) => void;
+
 type CactbotSaveDataHandler = (msg: {
   call: 'cactbotSaveData';
   overlay: string;
@@ -488,6 +493,7 @@ export type OverlayHandlerAll = {
   'cactbotRequestPlayerUpdate': CactbotRequestPlayerUpdateHandler;
   'cactbotRequestState': CactbotRequestStateHandler;
   'cactbotSay': CactbotSayHandler;
+  'cactbotSayAlt': CactbotSayAltHandler;
   'cactbotSaveData': CactbotSaveDataHandler;
   'cactbotLoadData': CactbotLoadDataHandler;
   'cactbotChooseDirectory': CactbotChooseDirectoryHandler;

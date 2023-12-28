@@ -2385,14 +2385,14 @@ const templateOptions: OptionsTemplate = {
       default: 1,
     },
     {
-      id: 'BrowserTTS',
+      id: 'AlternativeTTS',
       name: {
-        en: 'Use Browser for Text to Speech',
-        de: 'Verwenden Sie den Browser für Text zu Sprache', // Machine translation
-        fr: 'Utiliser le navigateur pour la synthèse vocale', // Machine Translation
-        ja: 'ブラウザでTTS',
-        cn: '忽略ACT的设置，使用Cactbot自带的Google TTS功能（需联网）',
-        ko: '웹브라우저를 이용해서 TTS 작동시키기',
+        en: 'Use alternative Text to Speech',
+        de: 'Verwenden Sie alternativen Text-to-Speech', // Machine translation
+        fr: 'Utiliser une synthèse vocale alternative', // Machine Translation
+        ja: '代替の Text to Speech を使用する', // Machine translation
+        cn: '使用替代文本语音转换', // Machine translation
+        ko: '대체 텍스트 음성 변환 사용', // Machine translation
       },
       type: 'checkbox',
       default: true,

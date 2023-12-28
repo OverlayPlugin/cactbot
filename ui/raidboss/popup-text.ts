@@ -1,21 +1,18 @@
-import { Lang } from '../../resources/languages';
-import { buildNetRegexForTrigger, commonNetRegex } from '../../resources/netregexes';
-import { UnreachableCode } from '../../resources/not_reached';
-import { addOverlayListener, callOverlayHandler } from '../../resources/overlay_plugin_api';
+import {Lang} from '../../resources/languages';
+import {buildNetRegexForTrigger, commonNetRegex} from '../../resources/netregexes';
+import {UnreachableCode} from '../../resources/not_reached';
+import {addOverlayListener, callOverlayHandler} from '../../resources/overlay_plugin_api';
 import PartyTracker from '../../resources/party';
-import {
-  addPlayerChangedOverrideListener,
-  PlayerChangedDetail,
-} from '../../resources/player_override';
+import {addPlayerChangedOverrideListener, PlayerChangedDetail,} from '../../resources/player_override';
 import Regexes from '../../resources/regexes';
-import { translateRegex, translateRegexBuildParam } from '../../resources/translations';
-import UserConfig, { ConfigValue } from '../../resources/user_config';
+import {translateRegex, translateRegexBuildParam} from '../../resources/translations';
+import UserConfig, {ConfigValue} from '../../resources/user_config';
 import Util from '../../resources/util';
 import ZoneId from '../../resources/zone_id';
-import { RaidbossData } from '../../types/data';
-import { EventResponses, LogEvent } from '../../types/event';
-import { Job, Role } from '../../types/job';
-import { Matches } from '../../types/net_matches';
+import {RaidbossData} from '../../types/data';
+import {EventResponses, LogEvent} from '../../types/event';
+import {Job, Role} from '../../types/job';
+import {Matches} from '../../types/net_matches';
 import {
   DataInitializeFunc,
   GeneralNetRegexTrigger,
@@ -38,9 +35,9 @@ import {
 
 import AutoplayHelper from './autoplay_helper';
 import BrowserTTSEngine from './browser_tts_engine';
-import { PerTriggerAutoConfig, PerTriggerOption, RaidbossOptions } from './raidboss_options';
-import { TimelineLoader } from './timeline';
-import { TimelineReplacement } from './timeline_parser';
+import {PerTriggerAutoConfig, PerTriggerOption, RaidbossOptions} from './raidboss_options';
+import {TimelineLoader} from './timeline';
+import {TimelineReplacement} from './timeline_parser';
 
 const isRaidbossLooseTimelineTrigger = (
   trigger: ProcessedTrigger,
@@ -601,10 +598,17 @@ export class PopupText {
     this.displayLang = this.options.AlertsLanguage ?? this.options.DisplayLanguage ??
       this.options.ParserLanguage ?? 'en';
 
-    if (this.options.IsRemoteRaidboss || this.options.BrowserTTS) {
+    if (this.options.IsRemoteRaidboss) {
       this.ttsEngine = new BrowserTTSEngine(this.displayLang);
       this.ttsSay = (text) => {
         this.ttsEngine?.play(this.options.TransformTts(text));
+      };
+    } else if (this.options.AlternativeTTS) {
+      this.ttsSay = (text) => {
+        void callOverlayHandler({
+          call: 'cactbotSayAlt',
+          text: this.options.TransformTts(text),
+        });
       };
     } else {
       this.ttsSay = (text) => {
