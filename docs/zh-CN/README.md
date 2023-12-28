@@ -150,11 +150,11 @@ Cactbot 提供以下悬浮窗：
 ### 安装依赖：手动方式
 
 1. 请从 <https://github.com/EQAditu/AdvancedCombatTracker/releases/> 下载最新的 Zip 文件。
-1. 解压 `Advanced Combat Tracker.exe` 到 `Cactbot/plugin/ThirdParty/ACT/` 下
+1. 解压 `Advanced Combat Tracker.exe` 到 `cactbot/plugin/ThirdParty/ACT/` 下
 1. 请从 <https://github.com/ravahn/FFXIV_ACT_Plugin/> 下载最新的 SDK Zip 文件（确保文件名称中包含 SDK 字样）
-1. 解压 `SDK文件夹` 和 `FFXIV_ACT_Plugin.dll` 到 `Cactbot/plugin/ThirdParty/FFXIV_ACT/` 下
+1. 解压 `SDK文件夹` 和 `FFXIV_ACT_Plugin.dll` 到 `cactbot/plugin/ThirdParty/FFXIV_ACT/` 下
 1. 请从 <https://github.com/OverlayPlugin/OverlayPlugin/releases/> 下载最新的 Zip 文件。
-1. 解压 `libs文件夹` 和 `OverlayPlugin.dll` 到 `Cactbot/plugin/ThirdParty/OverlayPlugin/` 下
+1. 解压 `libs文件夹` 和 `OverlayPlugin.dll` 到 `cactbot/plugin/ThirdParty/OverlayPlugin/` 下
 1. 下转 **构建步骤**
 
 该文件夹应如下所示（请注意，将来文件结构可能会随着更新而更改）：
