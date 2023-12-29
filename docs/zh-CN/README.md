@@ -257,7 +257,7 @@ Cactbot 的所有 UI 模块都包含在 [ui/](ui/) 文件夹中。如果你按�
 
 如果模拟器无法正常工作，请检查控制台中是否显示了错误日志。
 
-![Raidboss模拟器截图](/screenshots/raidboss_emulator.png)
+![Raidboss模拟器截图](../../screenshots/raidboss_emulator.png)
 
 ### [Oopsyraidsy](../../ui/oopsyraidsy) 悬浮窗
 
