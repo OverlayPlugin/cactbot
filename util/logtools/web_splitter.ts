@@ -28,6 +28,7 @@ const pageText = {
   },
   analysisFilterInput: {
     en: 'Filter Log for Analysis',
+    de: 'Filter Log für Analysen',
   },
   exportInput: {
     en: 'Export',

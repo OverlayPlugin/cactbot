@@ -850,7 +850,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Eulogia': 'Eulogie',
         'Llymlaen(?!\')': 'Llymlaen',
@@ -952,7 +951,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Eulogia': 'エウロギア',
         'Llymlaen(?!\')': 'リムレーン',

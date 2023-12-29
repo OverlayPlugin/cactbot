@@ -925,7 +925,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Ball of Levin': 'orbe de foudre',
         'Comet': 'Comète',
@@ -977,7 +976,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Ball of Levin': '雷球',
         'Comet': 'コメット',
