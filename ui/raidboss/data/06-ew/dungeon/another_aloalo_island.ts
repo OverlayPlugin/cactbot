@@ -1712,6 +1712,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {
         'Aloalo Golem': 'golem sylvestre d\'Aloalo',
         'Aloalo Islekeeper': 'gardien d\'Aloalo',
