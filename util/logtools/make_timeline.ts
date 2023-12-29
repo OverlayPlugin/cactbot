@@ -321,15 +321,26 @@ const extractTLEntriesFromLog = (
 const ignoreTimelineAbilityEntry = (entry: TimelineEntry, args: ExtendedArgs): boolean => {
   const abilityName = entry.abilityName;
   const abilityId = entry.abilityId;
-  const combatant = entry.combatant;
+  const combatant = entry.combatant ?? '';
 
   // Ignore auto-attacks named "attack"
   if (abilityName?.toLowerCase() === 'attack')
     return true;
 
   // Ignore abilities from NPC allies.
-  if (combatant !== undefined && ignoredCombatants.includes(combatant))
+  // If a no-name combatant, we will ignore only if its also an unnamed ability, as
+  // a named ability has more potential for being relevant to timeline/trigger creation.
+  // Unnamed (e.g. 'unknown_*') abilities have been converted to '--sync--' at this point.
+  if (ignoredCombatants.includes(combatant) && combatant !== '')
     return true;
+  if (combatant === '') {
+    if (
+      abilityName === undefined ||
+      abilityName === '' ||
+      abilityName?.toLowerCase().includes('--sync--')
+    )
+      return true;
+  }
 
   // Ignore abilities by name.
   if (abilityName !== undefined && args.ignore_ability?.includes(abilityName))
@@ -340,11 +351,11 @@ const ignoreTimelineAbilityEntry = (entry: TimelineEntry, args: ExtendedArgs): b
     return true;
 
   // Ignore combatants by name
-  if (combatant !== undefined && args.ignore_combatant?.includes(combatant))
+  if (args.ignore_combatant?.includes(combatant))
     return true;
 
   // If only-combatants was specified, ignore all combatants not in the list.
-  if (combatant !== undefined && args.only_combatant && !args.only_combatant?.includes(combatant))
+  if (args.only_combatant && !args.only_combatant?.includes(combatant))
     return true;
   return false;
 };
@@ -427,8 +438,15 @@ const assembleTimelineStrings = (
       const name = entry.abilityName;
       if (id !== undefined && name !== undefined && encounterAbilityList[id] === undefined) {
         // We want all enemy abilities *except* from the specific NPCs in the curated ignore list.
-        const combatant = entry.combatant;
-        if (combatant !== undefined && !ignoredCombatants.includes(combatant))
+        //
+        // For most purposes, we ignore ability lines where the combatant name is empty.
+        // But when building a timeline, we want to include named abilities
+        // used by no-name combatants, given the increased likelihood they may be relevant.
+        // Unnamed (e.g. 'unknown_*') abilities have been converted to '--sync--' at this point.
+        const combatant = entry.combatant ?? '';
+        if (!ignoredCombatants.includes(combatant))
+          encounterAbilityList[id] = name;
+        else if (combatant === '' && name !== '' && !name.toLowerCase().includes('--sync--'))
           encounterAbilityList[id] = name;
       }
 
