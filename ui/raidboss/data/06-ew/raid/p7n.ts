@@ -253,7 +253,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Agdistis': 'アグディスティス',
         'Immature Io': 'イマチュア・イーオー',

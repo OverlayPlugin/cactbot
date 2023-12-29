@@ -403,7 +403,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Gorgon': 'gorgone',
         '(?<!Illusory )Hephaistos': 'Héphaïstos',
@@ -436,7 +435,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Gorgon': 'ゴルゴン',
         '(?<!Illusory )Hephaistos': 'ヘファイストス',

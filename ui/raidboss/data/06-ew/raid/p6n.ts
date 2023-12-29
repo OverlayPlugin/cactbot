@@ -193,7 +193,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Hegemone': 'Hégémone',
         'Parasitos': 'créature parasite',
@@ -214,7 +213,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Hegemone': 'ヘーゲモネー',
         'Parasitos': '寄生生物',

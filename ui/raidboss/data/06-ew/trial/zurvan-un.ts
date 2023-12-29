@@ -434,7 +434,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Execrated Wile': 'テンパード・ワイル',
         'Zurvan': 'ズルワーン',

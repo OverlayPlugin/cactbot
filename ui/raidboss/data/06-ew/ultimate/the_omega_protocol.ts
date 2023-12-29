@@ -2700,7 +2700,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Alpha Omega': 'Alpha-Oméga',
         'Cosmo Meteor': 'Cosmométéore',

@@ -167,6 +167,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${dir} (max melee)',
+          de: '${dir} (max Nahkämpfer-Entfernung)',
         },
         north: Outputs.north,
         south: Outputs.south,
@@ -227,6 +228,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${dir} (max melee)',
+          de: '${dir} (max Nahkämpfer-Entfernung)',
         },
         dirNNE: Outputs.dirNNE,
         dirENE: Outputs.dirENE,
@@ -482,9 +484,11 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         outCardinal: {
           en: 'Out + Cardinal',
+          de: 'Raus + Kardinal',
         },
         outIntercard: {
           en: 'Out + Intercard',
+          de: 'Raus + Interkardinal',
         },
       },
     },
@@ -774,6 +778,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${safe} => ${mech}',
+          de: '${safe} => ${mech}',
         },
         cardinals: {
           en: 'Cardinal',
@@ -809,9 +814,11 @@ const triggerSet: TriggerSet<Data> = {
         },
         supportStack: {
           en: '(supports stack)',
+          de: '(Supporter sammeln)',
         },
         dpsStack: {
           en: '(dps stack)',
+          de: '(DPS sammeln)',
         },
       },
     },
@@ -873,7 +880,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Circle of Purgatory': 'cercle arcanique du Purgatoire',
         '(?<!Greater )Flamesent': 'flamme démoniaque',

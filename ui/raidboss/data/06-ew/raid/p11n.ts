@@ -274,7 +274,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Illusory Themis': 'spectre de Thémis',
         '(?<! )Themis': 'Thémis',
@@ -302,7 +301,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Illusory Themis': 'テミスの幻影',
         '(?<! )Themis': 'テミス',

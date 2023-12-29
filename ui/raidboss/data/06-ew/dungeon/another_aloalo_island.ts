@@ -1805,7 +1805,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Aloalo Golem': 'アロアロ・ウッドゴーレム',
         'Aloalo Islekeeper': 'アロアロ・キーパー',
