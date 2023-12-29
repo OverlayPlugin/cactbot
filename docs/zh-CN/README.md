@@ -92,7 +92,7 @@ Cactbot 提供以下悬浮窗：
 
 选择 `Cactbot`，然后单击 `Download and Enable` 按钮。
 
-![Cactbot 选择屏幕截图](../../screenshots/get_plugins_Cactbot.png)
+![Cactbot 选择屏幕截图](../../screenshots/get_plugins_cactbot.png)
 
 这会将 Cactbot 下载到 `%APPDATA%\Advanced Combat Tracker\Plugins\Cactbot-version\Cactbot` 文件夹中，并在插件列表中启用 `CactbotOverlay.dll`。
 
