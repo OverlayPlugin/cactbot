@@ -25,7 +25,7 @@ export type GetTableFunc = {
   ): Promise<Table<K, T>>;
 };
 
-// Turn names from tables into JavaScript-safe ascii string keys.
+// Turn names from tables/xivapi into JavaScript-safe ascii string keys.
 export const cleanName = (str: string): string => {
   if (!str || str === '')
     return str;
@@ -49,6 +49,12 @@ export const cleanName = (str: string): string => {
 
   // Of course capitalization isn't consistent, that'd be ridiculous.
   str = str.toLowerCase().replace(/(^[a-z])|([\s_]+[^a-z]*[a-z])/g, (match) => match.toUpperCase());
+
+  // Now fix capitalization for the Containment Bay fights...
+  str = str.replace(/(\s[A-Z][0-9][a-z][0-9])/g, (match) => match.toUpperCase());
+
+  // ... and for V&C (Variant & Criterion)
+  str = str.replace(/^V&c\s/g, 'V&C');
 
   // collapse remaining whitespace
   str = str.replace(/\s+/g, '');
