@@ -11,12 +11,14 @@ const uznairOutputStrings = {
   spawn: {
     en: '${name} spawned!',
     de: '${name} erscheint!',
+    fr: '${name} apparaît !',
     cn: '已生成 ${name}!',
     ko: '${name} 등장!',
   },
   adds: {
     en: 'Adds soon',
     de: 'Bald Adds',
+    fr: 'Adds bientôt',
     cn: '小怪即将出现',
     ko: '곧 쫄 나옴',
   },
@@ -69,6 +71,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Altar Assembly spawned, kill in order!',
           de: 'Altar-Mandragora erscheinen, in Reihenfolge besiegen!',
+          fr: 'Les mandragores d\'Altar apparaissent, tuez les dans l\'ordre',
           cn: '已生成 神殿蔓德拉战队, 依次击杀!',
           ko: '만드라즈 등장, 순서대로 잡기!',
         },
@@ -125,6 +128,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait three puddles',
           de: '3 Flächen ködern',
+          fr: 'Déposez 3 flaques',
           cn: '诱导三个圈圈',
           ko: '장판 3개 유도',
         },

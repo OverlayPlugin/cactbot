@@ -22,6 +22,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneLabel: {
     en: 'The Masked Carnivale',
     de: 'Die Große Maskerade',
+    fr: 'Le carnaval masqué',
     cn: '假面狂欢',
     ko: '가면 무투회',
   },
@@ -184,6 +185,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Arena Roselets spawning!',
           de: 'Arena-Röslinge erscheinen!',
+          fr: 'Roses d\'arène vient d\'apparaitre !',
           cn: '正在生成 斗场小红花!',
           ko: '넝쿨장미 소환됨!',
         },
@@ -312,6 +314,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Diamondback',
           de: 'Diamantrücken',
+          fr: 'Dos de diamant',
           cn: '超硬化',
           ko: '초경화',
         },
@@ -326,6 +329,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Charge + knockback',
           de: 'Ansturm + Rückstoß',
+          fr: 'Charge + Poussée',
           cn: '冲锋 + 击退',
           ko: '돌진 + 넉백',
         },
@@ -341,6 +345,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away from front + in',
           de: 'Weg von Vorne + Rein',
+          fr: 'Loin de l\'avant + intérieur',
           cn: '避开正面 + 去下方',
           ko: '보스 전방 피하기 + 안으로',
         },
@@ -368,6 +373,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Charge + knockback',
           de: 'Ansturm + Rückstoß',
+          fr: 'Ruée + Poussée',
           cn: '冲锋 + 击退',
           ko: '돌진 + 넉백',
         },
@@ -392,6 +398,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Fireball',
           de: 'Feuerball',
+          fr: 'Boule de feu',
           cn: '火球',
           ko: '화염구',
         },
@@ -410,6 +417,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Magic reflect',
           de: 'Magische Reflektion',
+          fr: 'Réflexion magique',
           cn: '反弹魔法伤害',
           ko: '마법공격 반사됨',
         },
@@ -433,6 +441,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Blind yourself or Look Away',
           de: 'Erblinden oder schau weg',
+          fr: 'Aveuglez-vous ou regardez ailleurs',
           cn: '致盲自己或看向其他方向',
           ko: '나한테 실명걸기 또는 뒤돌기',
         },
@@ -450,6 +459,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Diamondback',
           de: 'Diamantrücken',
+          fr: 'Dos de diamant',
           cn: '超硬化',
           ko: '초경화',
         },
@@ -543,6 +553,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get to Safe Spot',
           de: 'Geh zur sicheren Stelle',
+          fr: 'Allez dans la zone sûre',
           cn: '去安全区',
           ko: '안전지대 찾기',
         },
@@ -585,6 +596,7 @@ const triggerSet: TriggerSet<Data> = {
         pullToBoss: {
           en: 'Pull ${name} to boss',
           de: 'Ziehe ${name} zum Boss',
+          fr: 'Attirez ${name} vers le boss',
           cn: '将 ${name} 拉到BOSS处',
           ko: '보스쪽으로 ${name} 끌고오기',
         },
@@ -603,6 +615,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Diamondback',
           de: 'Diamantrücken',
+          fr: 'Dos de diamant',
           cn: '超硬化',
           ko: '초경화',
         },
@@ -630,6 +643,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse debuff or mitigate',
           de: 'Debuff entfernen oder mitigieren',
+          fr: 'Guérissez les débuffs ou mitigez',
           cn: '驱散DEBUFF或减伤',
           ko: '디버프 해제 또는 생존기',
         },
@@ -651,6 +665,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback into Safe Spot',
           de: 'Rückstoß zur sicheren Stelle',
+          fr: 'Poussée vers la zone sûre',
           cn: '击退到安全区',
           ko: '안전지대로 넉백되기',
         },
@@ -674,6 +689,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Physical reflect',
           de: 'Physische Reflektion',
+          fr: 'Réflexion physique',
           cn: '反弹物理伤害',
           ko: '물리공격 반사됨',
         },
@@ -702,6 +718,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Magic reflect',
           de: 'Magische Reflektion',
+          fr: 'Réflexion magique',
           cn: '反弹魔法伤害',
           ko: '마법공격 반사됨',
         },
@@ -726,6 +743,7 @@ const triggerSet: TriggerSet<Data> = {
         dispel: {
           en: 'Dispel ${name}',
           de: 'Entferne ${name}',
+          fr: 'Dissipez ${name}',
           cn: '清除 ${name}',
           ko: '${name} 버프 해제',
         },
@@ -748,6 +766,7 @@ const triggerSet: TriggerSet<Data> = {
         dispel: {
           en: 'Dispel ${name}',
           de: 'Entferne ${name}',
+          fr: 'Dissipez ${name}',
           cn: '清除 ${name}',
           ko: '${name} 버프 해제',
         },
@@ -772,6 +791,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse debuff',
           de: 'Debuff entfernen',
+          fr: 'Guérissez le débuff',
           cn: '驱散DEBUFF',
           ko: '디버프 해제',
         },
@@ -839,6 +859,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid puddles',
           de: 'Vermeide Flächen',
+          fr: 'Évitez les flaques',
           cn: '躲避圈圈',
           ko: '장판 피하기',
         },
@@ -869,6 +890,7 @@ const triggerSet: TriggerSet<Data> = {
         forward: {
           en: 'March Forward into Safe Spot',
           de: 'marschiere Vorwärts in die sichere Stelle',
+          fr: 'Marche avant forcée en zone sûre',
           ja: '強制移動: 前',
           cn: '向前强制移动到安全区',
           ko: '강제 이동 앞',
@@ -876,6 +898,7 @@ const triggerSet: TriggerSet<Data> = {
         backward: {
           en: 'March Backward into Safe Spot',
           de: 'marschiere Rückwärts in die sichere Stelle',
+          fr: 'Marche arrière forcée en zone sûre',
           ja: '強制移動: 後ろ',
           cn: '向后强制移动到安全区',
           ko: '강제 이동 뒤',
@@ -883,6 +906,7 @@ const triggerSet: TriggerSet<Data> = {
         left: {
           en: 'March Left into Safe Spot',
           de: 'marschiere Links in die sichere Stelle',
+          fr: 'Marche à gauche forcée en zone sûre',
           ja: '強制移動: 左',
           cn: '向左强制移动到安全区',
           ko: '강제 이동 왼쪽',
@@ -890,6 +914,7 @@ const triggerSet: TriggerSet<Data> = {
         right: {
           en: 'March Right into Safe Spot',
           de: 'marschiere Rechts in die sichere Stelle',
+          fr: 'Marche à droite forcée en zone sûre',
           ja: '強制移動: 右',
           cn: '向右强制移动到安全区',
           ko: '강제 이동 오른쪽',
@@ -913,6 +938,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait two Eruptions',
           de: 'Köder 2 Eruptionen',
+          fr: 'Attirez 2 éruptions',
           cn: '诱导2个地火',
           ko: '장판 2개 유도',
         },
@@ -952,6 +978,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get to Safe Spot',
           de: 'Geh zur sicheren Stelle',
+          fr: 'Allez en zone sûre',
           cn: '去安全区',
           ko: '안전지대 찾기',
         },
@@ -967,6 +994,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get to edge',
           de: 'Geh zu einem Rand',
+          fr: 'Allez sur le bord',
           cn: '去场边',
           ko: '외곽으로',
         },
@@ -982,7 +1010,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Run Away From Boss',
           de: 'Renn weg vom Boss',
-          fr: 'Courez loin du boss',
+          fr: 'Éloignez-vous du boss',
           ja: 'ボスから離れる',
           cn: '远离Boss',
           ko: '보스와 거리 벌리기',
@@ -1015,6 +1043,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse debuff',
           de: 'Debuff entfernen',
+          fr: 'Guérissez le débuff',
           cn: '驱散DEBUFF',
           ko: '디버프 해제',
         },
@@ -1059,6 +1088,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait two aoes',
           de: 'Köder 2 AoEs',
+          fr: 'Attirez 2 AoEs',
           cn: '诱导2个AOE',
           ko: '장판 2개 유도',
         },
@@ -1073,6 +1103,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Adds soon',
           de: 'Bald Adds',
+          fr: 'Adds bientôt',
           cn: '小怪即将出现',
           ko: '곧 쫄 나옴',
         },
@@ -1094,6 +1125,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Diamondback',
           de: 'Diamantrücken',
+          fr: 'Dos de diamant',
           cn: '超硬化',
           ko: '초경화',
         },
@@ -1110,6 +1142,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away from water tornadoes',
           de: 'Weg von den Wassertornados',
+          fr: 'Éloignez-vous des tornades d\'eau',
           cn: '远离水龙卷',
           ko: '물기둥에서 멀리 떨어지기',
         },
@@ -1126,6 +1159,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Magic reflect',
           de: 'Magische Reflektion',
+          fr: 'Réflexion magique',
           cn: '反弹魔法伤害',
           ko: '마법공격 반사됨',
         },
@@ -1142,6 +1176,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse debuff',
           de: 'Debuff entfernen',
+          fr: 'Guérissez le débuff',
           cn: '驱散DEBUFF',
           ko: '디버프 해제',
         },
@@ -1156,6 +1191,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait three aoes',
           de: 'Köder 3 AoEs',
+          fr: 'Attirez 3 AoEs',
           cn: '诱导3个AOE',
           ko: '장판 3개 유도',
         },
@@ -1171,6 +1207,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback into Safe Spot',
           de: 'Rückstoß zur sicheren Stelle',
+          fr: 'Poussée vers la zone sûre',
           cn: '击退到安全区',
           ko: '안전지대로 넉백되기',
         },
@@ -1187,6 +1224,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get in + Knockback',
           de: 'Geh rein + Rückstoß',
+          fr: 'Intérieur + Poussée',
           cn: '去脚下 + 击退',
           ko: '안으로 + 넉백',
         },
@@ -1202,6 +1240,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get to Safe Spot (between two ice)',
           de: 'Geh zur sicheren Stelle (zwischen 2 Eis)',
+          fr: 'Allez en zone sûre (entre deux glaces)',
           cn: '去安全区 (两个冰之间)',
           ko: '안전지대 찾기 (얼음 없는쪽)',
         },
@@ -1239,6 +1278,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait two aoes',
           de: 'Köder 2 AoEs',
+          fr: 'Attirez 2 AoEs',
           cn: '诱导2个AOE',
           ko: '장판 2개 유도',
         },
@@ -1278,6 +1318,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Add soon',
           de: 'Bald Add',
+          fr: 'Add bientôt',
           cn: '小怪即将出现',
           ko: '분신 등장',
         },
@@ -1293,6 +1334,7 @@ const triggerSet: TriggerSet<Data> = {
         dispel: {
           en: 'Dispel ${name}',
           de: 'Entferne ${name}',
+          fr: 'Dissipez ${name}',
           cn: '清除 ${name}',
           ko: '${name} 버프 해제',
         },
@@ -1310,6 +1352,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away from boss => Stop Everything',
           de: 'Weg vom Boss => Stoppe alles',
+          fr: 'Éloignez-vous du boss => Arrêtez tout',
           cn: '远离BOSS => 停停停',
           ko: '보스와 멀리 떨어지기 => 행동 멈추기',
         },
@@ -1329,6 +1372,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Diamondback',
           de: 'Diamantrücken',
+          fr: 'Dos de diamant',
           cn: '超硬化',
           ko: '초경화',
         },
@@ -1347,6 +1391,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse both debuffs',
           de: 'Entferne beide Debuffs',
+          fr: 'Guérissez les deux débuffs',
           cn: '驱散两个DEBUFF',
           ko: '디버프 둘다 해제',
         },
@@ -1376,6 +1421,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse debuff',
           de: 'Debuff entfernen',
+          fr: 'Guérissez le débuff',
           cn: '驱散DEBUFF',
           ko: '디버프 해제',
         },

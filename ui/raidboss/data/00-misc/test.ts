@@ -434,13 +434,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'fr',
-      missingTranslations: true,
       replaceSync: {
         'cactbot lang': 'cactbot langue',
         'cactbot test response': 'cactbot test de réponse',
         'cactbot test watch': 'cactbot test d\'observation',
         'cactbot test config': 'test de configuration de cactbot',
         'cactbot test combatant cast': 'test d\'incantation d\'un combatant',
+        'cactbot test outputStrings': 'cactbot test outputStrings',
+        'testNetRegexTimeline': 'testNetRegexTimeline',
         'You bid farewell to the striking dummy':
           'Vous faites vos adieux au mannequin d\'entraînement',
         'You bow courteously to the striking dummy':
