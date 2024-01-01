@@ -1,71 +1,115 @@
 import path from 'path';
 
-import fetch from 'node-fetch';
-
-import { CoinachWriter } from './coinach';
 import { getCnTable, getKoTable } from './csv_util';
+import { OutputFileAttributes, XivApi } from './xivapi';
 
-const _OUTPUT_FILE = 'pet_names.ts';
-
-const keys = ['Name'];
-const localeKeys = [...keys, 'Name_de', 'Name_fr', 'Name_ja'];
-
-type XivapiResult = {
-  Results: {
-    [key: number]: Record<'Name' | 'Name_de' | 'Name_fr' | 'Name_ja', string>;
-  };
-};
-
-const fetchXivapi = async () => {
-  const url = `https://xivapi.com/Pet?columns=${localeKeys.join(',')}`;
-  const response = await fetch(url);
-  const json = (await response.json()) as XivapiResult;
-  return json.Results;
-};
-
-const normalize = (
-  content: XivapiResult['Results'],
-): Record<'en' | 'de' | 'fr' | 'ja', string[]> => {
-  const result: Record<'en' | 'de' | 'fr' | 'ja', string[]> = {
-    // cactbot-ignore-missing-translations
-    en: [],
-    de: [],
-    fr: [],
-    ja: [],
-  };
-  for (const [, data] of Object.entries(content)) {
-    // skip empty names and duplicates
-    if (data.Name === '' || result.en.includes(data.Name))
-      continue;
-
-    result.en.push(data.Name);
-    result.de.push(data.Name_de);
-    result.fr.push(data.Name_fr);
-    result.ja.push(data.Name_ja);
-  }
-  return result;
-};
-
-export default async (): Promise<void> => {
-  const tables = {
-    ...normalize(await fetchXivapi()),
-    cn: Object.keys(await getCnTable('Pet', keys)).filter((k) => k !== ''),
-    ko: Object.keys(await getKoTable('Pet', keys)).filter((k) => k !== ''),
-  };
-
-  const writer = new CoinachWriter(null, true);
-  const header = `import { Lang } from './languages';
+const _PET_NAMES: OutputFileAttributes = {
+  outputFile: 'resources/pet_names.ts',
+  type: 'PetData',
+  header: `import { Lang } from './languages';
 
 type PetData = {
   [name in Lang]: readonly string[];
 };
-`;
-  await writer.writeTypeScript(
-    path.join('resources', _OUTPUT_FILE),
-    'gen_pet_names.ts',
-    header,
-    'PetData',
-    false,
-    tables,
+`,
+  asConst: false,
+};
+
+const _ENDPOINT = 'Pet';
+
+const _COLUMNS = [
+  'ID',
+  'Name_de',
+  'Name_en',
+  'Name_fr',
+  'Name_ja',
+];
+
+const _LOCALE_TABLE = 'Pet';
+
+const _LOCALE_COLUMNS = ['Name'];
+
+type ResultPet = {
+  Name_de: string | null;
+  Name_en: string | null;
+  Name_fr: string | null;
+  Name_ja: string | null;
+};
+
+type XivApiPet = {
+  [key: number]: ResultPet;
+};
+
+type OutputPetNames = {
+  cn: string[];
+  de: string[];
+  en: string[];
+  fr: string[];
+  ja: string[];
+  ko: string[];
+};
+
+const fetchLocaleCsvTables = async () => {
+  const cnPet = await getCnTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
+  const koPet = await getKoTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
+  return {
+    cn: cnPet,
+    ko: koPet,
+  };
+};
+
+const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
+  // This isn't really a locale object, and ordering is alpha in the current file, so:
+  // eslint-disable-next-line rulesdir/cactbot-locale-order
+  const formattedData: OutputPetNames = {
+    cn: [],
+    de: [],
+    en: [],
+    fr: [],
+    ja: [],
+    ko: [],
+  };
+
+  for (const pet of Object.values(apiData)) {
+    // If no en name (or if duplicate), skip processing
+    if (pet.Name_en === null || pet.Name_en === '' || formattedData.en.includes(pet.Name_en))
+      continue;
+    formattedData.en.push(pet.Name_en);
+
+    // If there's an en name, the locale names will also be there.
+    // But Typescript doesn't know that.
+    if (pet.Name_de !== null)
+      formattedData.de.push(pet.Name_de);
+    if (pet.Name_fr !== null)
+      formattedData.fr.push(pet.Name_fr);
+    if (pet.Name_ja !== null)
+      formattedData.ja.push(pet.Name_ja);
+  }
+
+  const localeCsvTables = await fetchLocaleCsvTables();
+  for (const name of Object.keys(localeCsvTables.cn).filter((k) => k !== '')) {
+    formattedData.cn.push(name);
+  }
+  for (const name of Object.keys(localeCsvTables.ko).filter((k) => k !== '')) {
+    formattedData.ko.push(name);
+  }
+
+  return formattedData;
+};
+
+export default async (): Promise<void> => {
+  const api = new XivApi(null, true);
+
+  const apiData = await api.queryApi(
+    _ENDPOINT,
+    _COLUMNS,
+  ) as XivApiPet;
+
+  const outputData = await assembleData(apiData);
+
+  await api.writeFile(
+    path.basename(import.meta.url),
+    _PET_NAMES,
+    outputData,
   );
 };

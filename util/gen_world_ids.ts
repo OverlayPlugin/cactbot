@@ -1,89 +1,11 @@
 import path from 'path';
 
-import fetch from 'node-fetch';
+import { OutputFileAttributes, XivApi } from './xivapi';
 
-import { CoinachWriter } from './coinach';
-
-const _OUTPUT_FILE = 'world_id.ts';
-
-const worldFieldMap = {
-  'ID': 'id',
-  'InternalName': 'internalName',
-  'Name': 'name',
-  'Region': 'region',
-  'UserType': 'userType',
-  'DataCenter': 'dataCenter',
-  'IsPublic': 'isPublic',
-} as const;
-
-const dataCenterFieldMap = {
-  'ID': 'id',
-  'Name': 'name',
-} as const;
-
-type ResultDataCenter = {
-  ID: number;
-  Name: string;
-};
-
-type ResultWorld = {
-  ID: number;
-  InternalName: string;
-  Name: string;
-  Region: number;
-  UserType: number;
-  DataCenter: null | ResultDataCenter;
-};
-
-type XivapiResult = {
-  Results: {
-    [key: number]: ResultWorld;
-  };
-};
-
-type DataCenter = {
-  [key in keyof ResultDataCenter as (typeof dataCenterFieldMap)[key]]: ResultDataCenter[key];
-};
-
-type World = {
-  [key in keyof ResultWorld as (typeof worldFieldMap)[key]]: key extends 'DataCenter'
-    ? (DataCenter | undefined)
-    : ResultWorld[key];
-};
-
-const fetchXivapi = async () => {
-  const url = `https://xivapi.com/World?columns=${Object.keys(worldFieldMap).join(',')}`;
-  const response = await fetch(url);
-  const json = (await response.json()) as XivapiResult;
-  return json.Results;
-};
-
-const remapResults = (
-  content: XivapiResult['Results'],
-): Record<number, World> => {
-  const result: Record<number, World> = {};
-  for (const [, data] of Object.entries(content)) {
-    const dc = data.DataCenter === null ? undefined : {
-      id: data.DataCenter.ID,
-      name: data.DataCenter.Name,
-    };
-    result[data.ID] = {
-      id: data.ID,
-      internalName: data.InternalName,
-      name: data.Name,
-      region: data.Region,
-      userType: data.UserType,
-      dataCenter: dc,
-    };
-  }
-  return result;
-};
-
-export default async (): Promise<void> => {
-  const table = remapResults(await fetchXivapi());
-
-  const writer = new CoinachWriter(null, true);
-  const header = `export type DataCenter = {
+const _WORLD_ID: OutputFileAttributes = {
+  outputFile: 'resources/world_id.ts',
+  type: 'Worlds',
+  header: `export type DataCenter = {
     id: number;
     name: string;
   };
@@ -109,13 +31,131 @@ export const worldNameToWorld = (name: string): World | undefined => {
     }
   });
 };
-`;
-  await writer.writeTypeScript(
-    path.join('resources', _OUTPUT_FILE),
-    'world_id.ts',
-    header,
-    'Worlds',
-    true,
-    table,
+`,
+  asConst: true,
+};
+
+const _ENDPOINT = 'World';
+
+const _COLUMNS = [
+  'ID',
+  'InternalName',
+  'Name',
+  'Region',
+  'UserType',
+  'DataCenter.ID',
+  'DataCenter.Name',
+  'IsPublic',
+];
+
+type ResultDataCenter = {
+  ID: string | number | null;
+  Name: string | null;
+};
+
+type ResultWorld = {
+  ID: number;
+  InternalName: string | null;
+  Name: string | null;
+  Region: number | null;
+  UserType: number | null;
+  DataCenter: ResultDataCenter;
+  IsPublic: string | number | null;
+};
+
+type XivApiWorld = {
+  [key: number]: ResultWorld;
+};
+
+type OutputDataCenter = {
+  id: number;
+  name: string;
+};
+
+type OutputWorld = {
+  id: number;
+  internalName: string;
+  name: string;
+  region: number;
+  userType: number;
+  dataCenter?: OutputDataCenter;
+  isPublic?: boolean;
+};
+
+type OutputWorldIds = {
+  [id: string]: OutputWorld;
+};
+
+const scrubDataCenter = (dc: ResultDataCenter): OutputDataCenter | undefined => {
+  if (dc.ID === null || dc.ID === '')
+    return;
+  if (dc.Name === null || dc.Name === '')
+    return;
+  const idNum = typeof dc.ID === 'string' ? parseInt(dc.ID) : dc.ID;
+  return {
+    id: idNum,
+    name: dc.Name,
+  };
+};
+
+const scrubIsPublic = (pub: string | number | null): boolean | undefined => {
+  if (pub === null || pub === '')
+    return;
+  const pubNum = typeof pub === 'string' ? parseInt(pub) : pub;
+  if (pubNum === 0)
+    return false;
+  if (pubNum === 1)
+    return true;
+  return;
+};
+
+const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
+  const formattedData: OutputWorldIds = {};
+
+  for (const data of Object.values(apiData)) {
+    const dc = scrubDataCenter(data.DataCenter);
+    const isPublic = scrubIsPublic(data.IsPublic);
+
+    // under discussion
+    // if (!isPublic)
+    //  continue;
+
+    if (
+      data.InternalName === null ||
+      data.Name === null ||
+      data.Name === '' || // filter out empty strings or we get a ton of trash
+      data.Region === null ||
+      data.UserType === null
+    )
+      continue;
+
+    formattedData[data.ID.toString()] = {
+      id: data.ID,
+      internalName: data.InternalName,
+      name: data.Name,
+      region: data.Region,
+      userType: data.UserType,
+      dataCenter: dc,
+      isPublic: isPublic, // under discussion - remove if commented-out filter is used instead
+    };
+  }
+  return formattedData;
+};
+
+export default async (): Promise<void> => {
+  const api = new XivApi(null, true);
+
+  const apiData = await api.queryApi(
+    _ENDPOINT,
+    _COLUMNS,
+  ) as XivApiWorld;
+
+  const outputData = assembleData(apiData);
+
+  await api.writeFile(
+    path.basename(import.meta.url),
+    _WORLD_ID,
+    outputData,
+    true, // require keys to be returned as strings (because that's the existing format)
   );
 };
