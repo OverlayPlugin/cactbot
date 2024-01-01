@@ -38,6 +38,7 @@ const triggerSet: TriggerSet<Data> = {
         interruptOrOut: {
           en: 'Out or interrupt ${name}',
           de: 'Raus oder unterbreche ${name}',
+          fr: 'Extérieur ou interrompez ${name}',
           ja: '沈黙: ${name}',
           cn: '出去或打断 ${name}',
           ko: '밖으로 또는 ${name} 시전 끊기',
@@ -216,6 +217,7 @@ const triggerSet: TriggerSet<Data> = {
         ice: {
           en: 'Get hit by Ice',
           de: 'Lass dich von Eis treffen',
+          fr: 'Faites-vous toucher par la glace',
           ja: '氷へ',
           cn: '被冰打',
           ko: '얼음 맞기',
@@ -223,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
         fire: {
           en: 'Get hit by Fire',
           de: 'Lass dich von Feuer treffen',
+          fr: 'Faites-vous toucher par le feu',
           ja: '炎へ',
           cn: '被火打',
           ko: '불 맞기',
@@ -246,6 +249,7 @@ const triggerSet: TriggerSet<Data> = {
         ice: {
           en: 'Get hit by Ice',
           de: 'Lass dich von Eis treffen',
+          fr: 'Faites-vous toucher par la glace',
           ja: '氷へ',
           cn: '被冰打',
           ko: '얼음 맞기',
@@ -253,6 +257,7 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Avoid line AoEs',
           de: 'Vermeide Linien-AoEs',
+          fr: 'Évitez les AoEs en ligne',
           ja: '剣AOE回避',
           cn: '躲避直线AOE',
           ko: '칼 피하기',
@@ -276,6 +281,7 @@ const triggerSet: TriggerSet<Data> = {
         fire: {
           en: 'Get hit by Fire',
           de: 'Lass dich von Feuer treffen',
+          fr: 'Faites-vous toucher par le feu',
           ja: '炎へ',
           cn: '被火打',
           ko: '불 맞기',
@@ -283,6 +289,7 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Avoid line AoEs',
           de: 'Vermeide Linien-AoEs',
+          fr: 'Évitez les AoEs en ligne',
           ja: '剣AOE回避',
           cn: '躲避直线AOE',
           ko: '칼 피하기',

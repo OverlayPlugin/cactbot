@@ -42,6 +42,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stop attacking ${target}',
           de: 'Stoppe Angriffe auf ${target}',
+          fr: 'Arrêtez d\'attaquer ${target}',
           ja: '攻撃禁止: ${target}',
           cn: '停止攻击 ${target}',
           ko: '${target} 공격 중지',
@@ -59,6 +60,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Break line-of-sight to ${name}',
           de: 'Unterbreche Sichtlinie zu ${name}',
+          fr: 'Masquez le champ de vision vers ${name}',
           ja: '${name}の視線から隠れる',
           cn: '利用掩体卡 ${name} 的视线',
           ko: '${name}의 시야 밖으로 숨기',

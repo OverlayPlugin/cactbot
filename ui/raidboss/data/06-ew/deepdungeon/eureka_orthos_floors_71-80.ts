@@ -65,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
           // Telegraphed Killing Paw swipe (81A9) followed by untelegraphed Savage Swipe (7F8E).
           en: 'Get Behind (Stay Behind)',
           de: 'Geh nach hinten (und bleib hinten)',
+          fr: 'Allez derrière (Restez derrière)',
           ja: '背面へ (そのまま背面)',
           cn: '去背后 (待在背后)',
           ko: '뒤로 이동 (뒤에 머물기)',
@@ -113,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
         stunOrBreakLOS: {
           en: 'Stun or Break line-of-sight to ${name}',
           de: 'Unterbrechen oder unterbreche die Sichtlinie zu ${name}',
+          fr: 'Étourdissez ou masquez le champ de vision vers ${name}',
           ja: 'スタンまたは視線から隠れる: ${name}',
           cn: '眩晕或利用掩体卡 ${name} 的视线',
           ko: '기절 또는 ${name}의 시야 밖으로 숨기',
@@ -137,6 +139,7 @@ const triggerSet: TriggerSet<Data> = {
         breakLOS: {
           en: 'Break line-of-sight to ${name}',
           de: 'Unterbreche Sichtlinie zu ${name}',
+          fr: 'Masquez le champ de vision vers ${name}',
           ja: '${name}の視線から隠れる',
           cn: '利用掩体卡 ${name} 的视线',
           ko: '${name}의 시야 밖으로 숨기',
@@ -240,6 +243,7 @@ const triggerSet: TriggerSet<Data> = {
         push: {
           en: 'Get pushed into safe spot',
           de: 'Rückstoß in den sicheren Bereich',
+          fr: 'Faites vous pousser dans une zone sûre',
           ja: '安置へノックバック',
           cn: '被击退到安全区',
           ko: '안전지대로 밀려나기',
@@ -247,6 +251,7 @@ const triggerSet: TriggerSet<Data> = {
         pull: {
           en: 'Get pulled into safe spot',
           de: 'Werde in den sicheren Bereich gezogen',
+          fr: 'Faites vous attirer dans une zone sûre',
           ja: '安置へ引っ張られる',
           cn: '被吸引到安全区',
           ko: '안전지대로 당겨지기',

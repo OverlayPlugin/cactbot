@@ -24,6 +24,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneLabel: {
     en: 'Eureka Orthos (All Floors)',
     de: 'Eureka Orthos (Alle Ebenen)',
+    fr: 'Eureka Orthos (Tout les étages)',
     ja: 'オルト・エウレカ (全層)',
     cn: '正统优雷卡 (全楼层)',
     ko: '에우레카 오르토스 (전체 층)',
@@ -45,6 +46,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Mimic spawned!',
           de: 'Mimik ist erschienen!',
+          fr: 'Un mimic apparait !',
           ja: 'ミミック！',
           cn: '已生成 拟态怪!',
           ko: '미믹 등장!',
@@ -105,6 +107,7 @@ const triggerSet: TriggerSet<Data> = {
         duplicate: {
           en: '${protomander} duplicate',
           de: 'Doppelter ${protomander}',
+          fr: '${protomander} dupliqué(e)',
           ja: 'もっています: ${protomander}',
           cn: '${protomander} 重复',
           ko: '${protomander} 중복',
@@ -113,7 +116,7 @@ const triggerSet: TriggerSet<Data> = {
         lethargy: {
           en: 'Lethargy',
           de: 'Trägheit',
-          fr: 'ralentissement',
+          fr: 'Ralentissement',
           ja: 'スロウガ',
           cn: '缓速',
           ko: '슬로우가',
@@ -129,7 +132,7 @@ const triggerSet: TriggerSet<Data> = {
         dread: {
           en: 'Dread',
           de: 'Macht',
-          fr: 'cuirassé Dreadnaught',
+          fr: 'Cuirassé Dreadnaught',
           ja: 'ドレッドノート化',
           cn: '恐慌装甲化',
           ko: '드레드노트 변신',
@@ -137,7 +140,7 @@ const triggerSet: TriggerSet<Data> = {
         safety: {
           en: 'Safety',
           de: 'Siegelbruchs',
-          fr: 'désamorçage',
+          fr: 'Désamorçage',
           ja: '呪印解除',
           cn: '咒印解除',
           ko: '함정 해제',
@@ -145,7 +148,7 @@ const triggerSet: TriggerSet<Data> = {
         sight: {
           en: 'Sight',
           de: 'Sicht',
-          fr: 'localisation',
+          fr: 'Localisation',
           ja: 'サイトロ',
           cn: '全景',
           ko: '사이트로',
@@ -153,7 +156,7 @@ const triggerSet: TriggerSet<Data> = {
         strength: {
           en: 'Strength',
           de: 'Stärkung',
-          fr: 'puissance',
+          fr: 'Puissance',
           ja: '自己強化',
           cn: '强化自身',
           ko: '자기 강화',
@@ -161,7 +164,7 @@ const triggerSet: TriggerSet<Data> = {
         steel: {
           en: 'Steel',
           de: 'Abwehr',
-          fr: 'protection',
+          fr: 'Protection',
           ja: '防御強化',
           cn: '强化防御',
           ko: '방어 강화',
@@ -169,7 +172,7 @@ const triggerSet: TriggerSet<Data> = {
         affluence: {
           en: 'Affluence',
           de: 'Schätze',
-          fr: 'décèlement',
+          fr: 'Décèlement',
           ja: '宝箱増加',
           cn: '宝箱增加',
           ko: '보물상자 증가',
@@ -177,7 +180,7 @@ const triggerSet: TriggerSet<Data> = {
         flight: {
           en: 'Flight',
           de: 'Feindtods',
-          fr: 'sécurisation',
+          fr: 'Sécurisation',
           ja: '敵排除',
           cn: '减少敌人',
           ko: '적 감소',
@@ -185,7 +188,7 @@ const triggerSet: TriggerSet<Data> = {
         alteration: {
           en: 'Alteration',
           de: 'Feindwandlung',
-          fr: 'affaiblissement',
+          fr: 'Affaiblissement',
           ja: '敵変化',
           cn: '改变敌人',
           ko: '적 대체',
@@ -193,7 +196,7 @@ const triggerSet: TriggerSet<Data> = {
         purity: {
           en: 'Purity',
           de: 'Entzauberung',
-          fr: 'anti-maléfice',
+          fr: 'Anti-maléfice',
           ja: '解呪',
           cn: '解咒',
           ko: '저주 해제',
@@ -201,7 +204,7 @@ const triggerSet: TriggerSet<Data> = {
         fortune: {
           en: 'Fortune',
           de: 'Glücks',
-          fr: 'chance',
+          fr: 'Chance',
           ja: '運気上昇',
           cn: '运气上升',
           ko: '운 상승',
@@ -209,7 +212,7 @@ const triggerSet: TriggerSet<Data> = {
         witching: {
           en: 'Witching',
           de: 'Wandlung',
-          fr: 'mutation',
+          fr: 'Mutation',
           ja: '形態変化',
           cn: '形态变化',
           ko: '적 변형',
@@ -217,7 +220,7 @@ const triggerSet: TriggerSet<Data> = {
         serenity: {
           en: 'Serenity',
           de: 'Enthexung',
-          fr: 'dissipation',
+          fr: 'Dissipation',
           ja: '魔法効果解除',
           cn: '魔法效果解除',
           ko: '마법 효과 해제',
@@ -225,7 +228,7 @@ const triggerSet: TriggerSet<Data> = {
         intuition: {
           en: 'Intuition',
           de: 'Finders',
-          fr: 'intuition',
+          fr: 'Intuition',
           ja: '財宝感知',
           cn: '感知宝藏',
           ko: '보물 탐지',
@@ -233,7 +236,7 @@ const triggerSet: TriggerSet<Data> = {
         raising: {
           en: 'Raising',
           de: 'Lebens',
-          fr: 'résurrection',
+          fr: 'Résurrection',
           ja: 'リレイズ',
           cn: '重生',
           ko: '리레이즈',
@@ -260,6 +263,7 @@ const triggerSet: TriggerSet<Data> = {
         duplicate: {
           en: '${demiclone} duplicate',
           de: 'Doppelter ${demiclone}',
+          fr: '${demiclone} dupliqué(e)',
           ja: '${demiclone} 被り',
           cn: '${demiclone} 重复',
           ko: '${demiclone} 중복',
@@ -284,7 +288,7 @@ const triggerSet: TriggerSet<Data> = {
         onion: {
           en: 'Onion Knight',
           de: 'Zwiebelritter',
-          fr: 'chevalier Oignon',
+          fr: 'Chevalier Oignon',
           ja: 'オニオンナイト',
           cn: '洋葱剑士',
           ko: '양파 기사',
@@ -304,6 +308,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Pylon of Passage activated',
           de: 'Translokator aktiviert',
+          fr: 'Pylone de téléportation activé',
           ja: '転移が出来ます',
           cn: '传送装置已启动',
           ko: '전송장치 활성화',
@@ -348,9 +353,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'fr',
       'replaceSync': {
-        'Lamia Queen': 'reine lamia',
-        'Meracydian Clone': 'clone de Méracydien',
-        'Mimic': 'mimic',
+        'Lamia Queen': 'Reine lamia',
+        'Meracydian Clone': 'Clone de Méracydien',
+        'Mimic': 'Mimic',
       },
     },
     {
