@@ -333,11 +333,13 @@ const triggerSet: TriggerSet<Data> = {
         stackMarkerOn: {
           en: '6x Stack on ${player}',
           de: '6x Sammeln auf ${player}',
+          fr: 'Package x6 sur ${player}',
           ko: '6x 쉐어: ${player}',
         },
         stackMarkerOnYou: {
           en: '6x Stack on You',
           de: '6x Sammeln auf Dir',
+          fr: 'Package x6 sur Vous',
           ko: '6x 쉐어 대상자',
         },
       },
@@ -419,6 +421,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${front} / ${back}',
           de: '${front} / ${back}',
+          fr: '${front} / ${back}',
           ko: '${front} / ${back}',
         },
         dirNE: Outputs.dirNE,
@@ -436,6 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${front} / ${back}',
           de: '${front} / ${back}',
+          fr: '${front} / ${back}',
           ko: '${front} / ${back}',
         },
         dirNW: Outputs.dirNW,

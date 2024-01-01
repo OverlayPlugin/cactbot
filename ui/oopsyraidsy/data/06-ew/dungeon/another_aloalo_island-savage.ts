@@ -172,6 +172,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
       // running into a tornado in the initial trash section
       en: 'Tornado',
       de: 'Tornado',
+      fr: 'Tornade',
     }),
     pushedIntoWall('AAIS Angry Seas', '8AE1'),
     pushedIntoWall('AAIS Pop', '896B'),

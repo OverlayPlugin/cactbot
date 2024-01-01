@@ -256,6 +256,7 @@ const triggerSet: TriggerSet<Data> = {
         axeNext: {
           en: '(out => middle soon)',
           de: '(raus => gleich Mitte)',
+          fr: '(extérieur => milieu bientôt)',
           cn: '(外 => 即将去中间)',
           ko: '(밖 => 이후 중앙)',
         },
