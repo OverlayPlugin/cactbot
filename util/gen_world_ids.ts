@@ -5,7 +5,9 @@ import { OutputFileAttributes, XivApi } from './xivapi';
 const _WORLD_ID: OutputFileAttributes = {
   outputFile: 'resources/world_id.ts',
   type: 'Worlds',
-  header: `export type DataCenter = {
+  header: `// NOTE: This data is filtered to public worlds only (i.e. isPublic: true)
+  
+  export type DataCenter = {
     id: number;
     name: string;
   };
@@ -116,9 +118,11 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
     const dc = scrubDataCenter(data.DataCenter);
     const isPublic = scrubIsPublic(data.IsPublic);
 
-    // under discussion
-    // if (!isPublic)
-    //  continue;
+    // there are many hundreds of dev/test/whatever entries in
+    // the World table that substantially clutter the data
+    // for our use cases, we only care about public worlds
+    if (!isPublic)
+      continue;
 
     if (
       data.InternalName === null ||
@@ -136,7 +140,7 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
       region: data.Region,
       userType: data.UserType,
       dataCenter: dc,
-      isPublic: isPublic, // under discussion - remove if commented-out filter is used instead
+      // isPublic: isPublic, // value is always implicitly 'true' given the filter above
     };
   }
   return formattedData;
