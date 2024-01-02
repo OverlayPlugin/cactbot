@@ -10,6 +10,7 @@ const excitatronOutputStrings = {
   spawn: {
     en: '${name} spawned!',
     de: '${name} erscheint!',
+    fr: '${name} apparait !',
     ja: '${name} 現れる！',
     cn: '已生成 ${name}!',
     ko: '${name} 등장!',
@@ -61,6 +62,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Exciting Mandragoras spawned, kill in order!',
           de: 'Mandragoras erscheinen, in Reihenfolge besiegen!',
+          fr: 'Les mandragores apparaissent, tuez-les dans l\'ordre',
           ja: 'マンドラゴラ！順番に倒して！',
           cn: '已生成 惊奇蔓德拉战队, 依次击杀!',
           ko: '만드라즈 등장, 순서대로 잡기',

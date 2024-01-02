@@ -228,6 +228,7 @@ const triggerSet: TriggerSet<Data> = {
         joiner: {
           en: ' => ',
           de: ' => ',
+          fr: ' => ',
           ja: ' => ',
           cn: ' => ',
           ko: ' => ',
