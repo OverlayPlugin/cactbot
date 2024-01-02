@@ -53,6 +53,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stack to Bait Puddles',
           de: 'Sammeln um Flächen zu ködern',
+          fr: 'Packez-vous pour déposer les flaques',
           ja: 'AOE誘導のために頭割り',
           cn: '集合诱导黄圈',
           ko: '장판 유도를 위해 모이기',

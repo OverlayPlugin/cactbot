@@ -30,6 +30,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Heal to full',
           de: 'Voll heilen',
+          fr: 'Soignez complètement',
           ja: 'HPを全回復する',
           cn: '奶满全队',
           ko: '체력 풀피로',
@@ -46,6 +47,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away from glowing circles',
           de: 'Weg von den leuchtenden Kreisen',
+          fr: 'Loin des cercles brillants',
           ja: '光っている円から離れる',
           cn: '远离黑洞',
           ko: '빛나는 원에서 멀리 떨어지기',
@@ -63,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
         lineStackOn: {
           en: '5x line stack on ${player}',
           de: '5x in einer Linie Sammeln auf ${player}',
+          fr: 'Package en ligne x5 sur ${player}',
           ja: '${player}に5回の直線頭割り',
           cn: '${player} 直线分摊 (5次)',
           ko: '${player} 직선 쉐어 5번',
@@ -80,6 +83,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir1} / ${dir2}',
           de: '${dir1} / ${dir2}',
+          fr: '${dir1} / ${dir2}',
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
@@ -99,6 +103,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir1} / ${dir2}',
           de: '${dir1} / ${dir2}',
+          fr: '${dir1} / ${dir2}',
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
@@ -147,6 +152,7 @@ const triggerSet: TriggerSet<Data> = {
         tower: {
           en: 'Stand in Tower',
           de: 'Steh im Turm',
+          fr: 'Restez dans une tour',
           ja: '塔を踏む',
           cn: '踩塔',
           ko: '기둥 밟기',
@@ -209,6 +215,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Spread + Stay Out',
           de: 'Verteilen + Draußen stehen',
+          fr: 'Écartez-vous + Extérieur',
           ja: '散開 + 範囲から離れる',
           cn: '分散 + 远离',
           ko: '산개 + 범위에서 벗어나기',

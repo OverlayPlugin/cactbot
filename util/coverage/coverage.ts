@@ -300,6 +300,7 @@ const translationGridHeaders = {
   missingFiles: {
     en: 'Missing',
     de: 'Fehlend',
+    fr: 'Manquant',
     ja: '欠落',
     cn: '缺失',
     ko: '누락됨',
