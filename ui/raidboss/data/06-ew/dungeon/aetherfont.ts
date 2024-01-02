@@ -200,17 +200,20 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Arkas': 'Arkas',
         'Cyancap Cavern': 'Caverne de Cap-cyan',
         'Lyngbakr': 'Lyngbakr',
-        'Mammoth Tentacle': 'bras d\'octomammouth',
-        'Octomammoth': 'octomammouth',
+        'Mammoth Tentacle': 'Bras d\'octomammouth',
+        'Octomammoth': 'Octomammouth',
         'The Deep Below': 'Bassin éthéré',
         'The Landfast Floe': 'Cirque glacé',
       },
       'replaceText': {
+        '\\(big\\)': '(Gros)',
+        '\\(small\\)': '(Petit)',
+        '\\(explosion\\)': '(Explosion)',
+        '\\(tether\\)': '(Lien)',
         'Battle Cry': 'Cri de guerre',
         'Body Slam': 'Charge physique',
         'Breathstroke': 'Souffle et fauche',
