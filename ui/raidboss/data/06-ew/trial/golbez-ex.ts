@@ -390,7 +390,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '(in + spread, for later)',
           de: '(rein + verteilen, für später)',
-          fr: '(intérieur + écartement, pour après',
+          fr: '(intérieur + écartement, pour après)',
           ja: '(中 + 後で散会)',
           cn: '(月环 + 稍后分散)',
           ko: '(안 + 산개, 나중에)',
