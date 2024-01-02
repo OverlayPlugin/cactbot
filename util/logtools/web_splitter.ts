@@ -14,25 +14,30 @@ const pageText = {
   titleText: {
     en: 'Log Splitter and Anonymizer',
     de: 'Log Aufteiler und Anonymisierer',
+    fr: 'Log Splitter et Anonymiseur',
     cn: '日志分割与匿名器',
   },
   fileDropText: {
     en: 'Drop Network log file here',
     de: 'Network log Datei hier ablegen',
+    fr: 'Déposer votre fichier log ici',
     cn: '将网络日志文件拖放到此处',
   },
   anonInput: {
     en: 'Anonymize Log',
     de: 'Log Anonymisieren',
+    fr: 'Anonymiser le log',
     cn: '对日志进行匿名化处理',
   },
   analysisFilterInput: {
     en: 'Filter Log for Analysis',
     de: 'Filter Log für Analysen',
+    fr: 'Filtrer le log pour analyse',
   },
   exportInput: {
     en: 'Export',
     de: 'Export',
+    fr: 'Exporter',
     cn: '导出',
   },
 } as const;
@@ -72,36 +77,43 @@ const buildTable = (state: PageState): void => {
     include: {
       en: 'Include',
       de: 'Einschließen',
+      fr: 'Inclure',
       cn: '包括',
     },
     startDate: {
       en: 'Date',
       de: 'Datum',
+      fr: 'Date',
       cn: '日期',
     },
     startTime: {
       en: 'Time',
       de: 'Zeit',
+      fr: 'Heure',
       cn: '时间',
     },
     duration: {
       en: 'Duration',
       de: 'Dauer',
+      fr: 'Durée',
       cn: '持续时间',
     },
     zone: {
       en: 'Zone',
       de: 'Zone',
+      fr: 'Zone',
       cn: '区域',
     },
     encounter: {
       en: 'Encounter',
       de: 'Begegnung',
+      fr: 'Adversaire',
       cn: '战斗',
     },
     end: {
       en: 'End',
       de: 'Ende',
+      fr: 'Fin',
       cn: '结束方式',
     },
   } as const;

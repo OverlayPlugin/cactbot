@@ -783,6 +783,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${safe} => ${mech}',
           de: '${safe} => ${mech}',
+          fr: '${safe} => ${mech}',
         },
         cardinals: {
           en: 'Cardinal',
@@ -819,10 +820,12 @@ const triggerSet: TriggerSet<Data> = {
         supportStack: {
           en: '(supports stack)',
           de: '(Supporter sammeln)',
+          fr: '(package support)',
         },
         dpsStack: {
           en: '(dps stack)',
           de: '(DPS sammeln)',
+          fr: '(Package DPS)',
         },
       },
     },

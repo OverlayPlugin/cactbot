@@ -814,7 +814,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Agdistis': 'Agdistis',
         'Immature Io': 'Io immature',
@@ -822,6 +821,11 @@ const triggerSet: TriggerSet<Data> = {
         'Immature Stymphalide': 'Stymphalide immature',
       },
       'replaceText': {
+        '--chasing aoe--': '--AoE en ligne--',
+        '--eggs--': '--Œufs--',
+        'arrow': 'Flèche',
+        'close': 'Proche',
+        'far': 'Loin',
         'Blades of Attis': 'Lames d\'Attis',
         'Bough of Attis': 'Grandes branches d\'Attis',
         'Bronze Bellows': 'Frappe rafale',

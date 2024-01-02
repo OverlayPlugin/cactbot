@@ -460,6 +460,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Classical Concepts: Pairs Order (Left->Right)',
         de: 'Elementarschöpfung: Ordnen nach Paaren (Links->Rechts)',
+        fr: 'Concepts élémentaires : Ordre des paires (Gauche->Droite)',
         cn: '经典概念 索尼顺序（左->右）',
         ko: 'Classical Concepts: 도형 순서 (왼 -> 오)',
       },
@@ -4310,6 +4311,7 @@ const triggerSet: TriggerSet<Data> = {
             // This is meant to be "person without wind who gets an extra stack".
             en: 'Fire Marker',
             de: 'Feuer Markierung',
+            fr: 'Marqueur de feu',
             ja: '自分に初炎!', // FIXME
             cn: '火标记点名',
             ko: '불 대상자',

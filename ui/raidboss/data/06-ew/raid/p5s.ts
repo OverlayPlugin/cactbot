@@ -417,12 +417,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Lively Bait': 'amuse-gueule',
         'Proto-Carbuncle': 'Proto-Carbuncle',
       },
       'replaceText': {
+        '--towers--': '--Tours--',
         'Acidic Slaver': 'Salive acide',
         'Claw to Tail': 'Griffes et queue',
         'Devour': 'Dévoration',

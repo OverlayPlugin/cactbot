@@ -106,6 +106,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Go Front and Under',
           de: 'Geh nach Vorne und Unter den Boss',
+          fr: 'Allez devant et sous le boss',
           ja: '前 => 中へ',
           cn: '去正面靠近',
           ko: '보스 앞 그리고 안으로',
