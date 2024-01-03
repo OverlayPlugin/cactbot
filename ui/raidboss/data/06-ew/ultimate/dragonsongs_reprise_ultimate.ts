@@ -2356,7 +2356,7 @@ const triggerSet: TriggerSet<Data> = {
           tanksApart: {
             en: 'Apart (Hrae buster)',
             de: 'Auseinander (Hrae-buster)',
-            fr: 'Séparation Hrae buster)',
+            fr: 'Séparation (Hrae buster)',
             ja: '離れる (フレスから攻撃)',
             cn: '分散 (圣龙死刑)',
             ko: '떨어지기 (흐레스벨그 탱버)',
