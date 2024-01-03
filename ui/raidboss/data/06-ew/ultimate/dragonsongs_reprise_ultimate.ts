@@ -240,7 +240,7 @@ const triggerSet: TriggerSet<Data> = {
         vowSoon: {
           en: 'Vow soon (Spread)',
           de: 'Schwur bald (verteilen)',
-          fr: 'Vœu bientôt (Écartez-vous)}',
+          fr: 'Vœu bientôt (Écartez-vous)',
           ja: 'まもなく滅殺 (散会)',
           cn: '即将上毒 (分散)',
           ko: '곧 멸살의 맹세 (산개)',
