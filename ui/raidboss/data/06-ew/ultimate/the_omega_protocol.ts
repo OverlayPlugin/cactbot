@@ -1759,7 +1759,7 @@ const triggerSet: TriggerSet<Data> = {
           noDebuff: {
             en: '(no debuff)',
             de: '(kein Debuff)',
-            fr: '(sans debuff',
+            fr: '(sans debuff)',
             ja: '(デバフなし)',
             cn: '(无 Debuff)',
             ko: '(디버프 없음)',
