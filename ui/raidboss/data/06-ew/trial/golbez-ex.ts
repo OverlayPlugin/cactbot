@@ -41,6 +41,7 @@ const galeSphereOutputStrings = {
   dirAndMechanic: {
     en: '${dir} + ${mechanic}',
     de: '${dir} + ${mechanic}',
+    fr: '${dir} + ${mechanic}',
     ja: '${dir} + ${mechanic}',
     cn: '${dir} + ${mechanic}',
     ko: '${dir} + ${mechanic}',
