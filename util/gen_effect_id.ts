@@ -111,11 +111,10 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
       continue;
 
     // See comment above specifically about known mappings.
-    // This is logged at a debug level; however, if a future patch makes job changes
-    // and it results in a new status id, it will only be logged at a debug level.
-    // We have to trust someone will notice the jobs module is no longer tracking,
+    // Conflicts here are only logged at a 'debug' level because of the noise generated.
+    // If a future patch makes job changes resulting in a new status ID,
+    // we have to trust someone will notice the jobs module is no longer tracking,
     // and then update the known mapping manually.
-    // Logging at info level just generates too much noise.
     if (rawName in knownMapping) {
       if (id !== knownMapping[rawName]) {
         log.debug(`Conflict with known/static mapping: ${name} (ID: ${id})`);
