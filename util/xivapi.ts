@@ -171,8 +171,7 @@ const data${file.type !== '' ? `: ${file.type}` : ' '} = ${str}${file.asConst ? 
 
 export default data;`;
 
-    this.log.info('Running lint on output data.');
-    this.log.debug(`Calling eslint...`);
+    this.log.info('Running eslint on output data...');
     const linter = new eslint.ESLint({ fix: true });
     const results = await linter.lintText(fileOutput, { filePath: fullPath });
 
