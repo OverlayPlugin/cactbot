@@ -3,6 +3,7 @@ import path from 'path';
 import { LocaleObject } from '../types/trigger';
 
 import { getCnTable, getKoTable } from './csv_util';
+import { ConsoleLogger, LogLevelKey } from './generate_data_files';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _HUNT: OutputFileAttributes = {
@@ -42,6 +43,11 @@ const _COLUMNS = [
   'BNpcName.Name_fr',
   'BNpcName.Name_ja',
 ];
+
+type LocaleOutputColumns = [key: string, ...indices: string[]];
+const _LOCALE_TABLE = 'BNpcName';
+const _LOCALE_INPUT_COLS = ['#', 'Singular'];
+const _LOCALE_OUTPUT_COLS: LocaleOutputColumns = ['BNpcNameId', 'LocaleName'];
 
 // SS- (minions) and SS+ (boss) mobs are rank 1 & 3 respectively
 // so we can only differentiate them with known BNpcBaseIds
@@ -88,13 +94,16 @@ type OutputHuntMap = {
   };
 };
 
+const _SCRIPT_NAME = path.basename(import.meta.url);
+let log: ConsoleLogger;
+
 const deLocaleSubstitutions = (replaceString: string): string | string[] => {
   const substitutionMap: { [param: string]: string[] } = {
     '[t]': ['der', 'die', 'das'],
     '[a]': ['e', 'er', 'es'],
     '[A]': ['e', 'er', 'es'],
   };
-
+  log.debug(`Doing 'de' locale substitutions on: ${replaceString}`);
   replaceString = replaceString.replace('[p]', '');
   let results: string[] = [replaceString];
 
@@ -115,8 +124,13 @@ const deLocaleSubstitutions = (replaceString: string): string | string[] => {
 };
 
 const fetchLocaleCsvTables = async () => {
-  const cnBNpcNames = await getCnTable('BNpcName', ['#', 'Singular'], ['BNpcNameId', 'LocaleName']);
-  const koBNpcNames = await getKoTable('BNpcName', ['#', 'Singular'], ['BNpcNameId', 'LocaleName']);
+  log.debug(
+    `Table: ${_LOCALE_TABLE} | Query columns: [${_LOCALE_INPUT_COLS.toString()}] | Output: [${_LOCALE_OUTPUT_COLS.toString()}]`,
+  );
+  log.debug(`Fetching 'cn' table...`);
+  const cnBNpcNames = await getCnTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
+  log.debug(`Fetching 'ko' table...`);
+  const koBNpcNames = await getKoTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
   return {
     cn: cnBNpcNames,
     ko: koBNpcNames,
@@ -124,7 +138,9 @@ const fetchLocaleCsvTables = async () => {
 };
 
 const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHuntMap> => {
+  log.debug('Processing & assembling data...');
   const formattedData: OutputHuntMap = {};
+  log.info('Fetching locale CSV tables...');
   const localeCsvTables = await fetchLocaleCsvTables();
 
   for (const record of apiData) {
@@ -186,27 +202,36 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
     if (typeof koLocaleName === 'string' && koLocaleName !== '')
       localeNames['ko'] = koLocaleName;
 
+    log.debug(`Collected hunt data for ${record.BNpcName.Name_en} (ID: ${nameId})`);
     formattedData[name] = {
       id: nameId,
       name: localeNames,
       rank: rank,
     };
   }
-
+  log.debug('Data assembly/formatting complete.');
   return formattedData;
 };
 
-const api = new XivApi(null, true);
+export default async (logLevel: LogLevelKey): Promise<void> => {
+  log = new ConsoleLogger();
+  log.setLogLevel(logLevel);
+  log.info(`Starting processing for ${_SCRIPT_NAME}`);
 
-const apiData = await api.queryApi(
-  _ENDPOINT,
-  _COLUMNS,
-) as XivApiNotoriousMonster;
+  const api = new XivApi(null, log);
 
-const outputData = await assembleData(apiData);
+  const apiData = await api.queryApi(
+    _ENDPOINT,
+    _COLUMNS,
+  ) as XivApiNotoriousMonster;
 
-await api.writeFile(
-  path.basename(import.meta.url),
-  _HUNT,
-  outputData,
-);
+  const outputData = await assembleData(apiData);
+
+  await api.writeFile(
+    _SCRIPT_NAME,
+    _HUNT,
+    outputData,
+  );
+
+  log.successDone(`Completed processing for ${_SCRIPT_NAME}`);
+};

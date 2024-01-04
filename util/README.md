@@ -1,17 +1,10 @@
-# How to run python utils
+# Utils
 
-Download and install [python](https://www.python.org/).
+This directory contains a set of utiliy scripts
+and libraries to assist in cactbot development.
 
-Download [SaintCoinach.Cmd-master-\*-\*.zip](https://github.com/ufx/SaintCoinach/releases) and extract on C Drive root or D Drive root.
+Many are already referenced or documented
+in the various project [docs](https://github.com/OverlayPlugin/cactbot/tree/main/docs).
 
-Saint coinach is only accepted in 2 directories by default, 'C:\\SaintCoinach\\' and 'D:\\SaintCoinach\\'  
-These MUST include the one of those must include the SaintCoinach.Cmd.exe (with all other needed files for it to run).  
-If you use a different path, you can add it to the coinach.py _DEFAULT_COINACH_PATHS variable
-
-## Troubleshooting with SaintCoinach
-
-### SaintCoinach FFXIV client version mismatch
-
-When you run SaintCoinach manually, does it shows you need to update? This means that definitions are not updated to the latest patch. For minor patches, SaintCoinach does not need to update definitions, so you need to do is just change the version data to latest version.
-
-In the SainCoinach dir open the \Definitions\game.ver file and change the version number to latest version which showed when you launch SaintCoinach manually.
+You can run the most common scripts by running `npm run util`
+from inside your cactbot root directory.

@@ -3,6 +3,7 @@ import path from 'path';
 import { LocaleText } from '../types/trigger';
 
 import { cleanName, getCnTable, getKoTable } from './csv_util';
+import { ConsoleLogger, LogLevelKey } from './generate_data_files';
 import { OutputFileAttributes, XivApi } from './xivapi';
 import Overrides from './zone_overrides';
 
@@ -90,6 +91,14 @@ const _CT_COLUMNS = [
   'Name',
 ];
 
+type LocaleOutputColumns = [key: string, ...indices: string[]];
+const _LOCALE_PN_TABLE = 'PlaceName';
+const _LOCALE_PN_INPUT_COLS = ['#', 'Name'];
+const _LOCALE_PN_OUTPUT_COLS: LocaleOutputColumns = ['placeId', 'placeName'];
+const _LOCALE_CFC_TABLE = 'ContentFinderCondition';
+const _LOCALE_CFC_INPUT_COLS = ['#', 'TerritoryType', 'Name'];
+const _LOCALE_CFC_OUTPUT_COLS: LocaleOutputColumns = ['cfcId', 'ttId', 'cfcName'];
+
 type TTToCFCIDMap = {
   [id: number]: 'None' | number;
 };
@@ -154,10 +163,6 @@ type ResultContentType = {
   Name: string | null;
 };
 
-// XivApiTerritoryType & XivAPIContentFinderCondition are indexed objects
-// based on the 'ID' field of their respective XIVAPI data sets.
-// The api library returns these as arrays; this script uses index functions
-// to restructure the input so it's easier to work with.
 type XivApiTerritoryType = {
   [key: number]: ResultTerritoryType;
 };
@@ -194,21 +199,8 @@ type OutputContainer = {
   contentType: ContentTypeOutput;
 };
 
-const printError = (
-  msg: string,
-  zoneName?: string,
-  ttIdToData?: XivApiTerritoryType,
-  ttId?: number,
-): void => {
-  if (
-    zoneName === undefined ||
-    ttIdToData === undefined ||
-    ttId === undefined
-  )
-    console.error(msg);
-  else
-    console.error(`${msg} ${zoneName}: ${JSON.stringify(ttIdToData[ttId])}`);
-};
+const _SCRIPT_NAME = path.basename(import.meta.url);
+let log: ConsoleLogger;
 
 const indexTtData = (data: ResultTerritoryType[]): XivApiTerritoryType => {
   const ttData: XivApiTerritoryType = {};
@@ -227,18 +219,36 @@ const indexCfcData = (data: ResultContentFinderCondition[]): XivApiContentFinder
 };
 
 const fetchLocaleCsvTables = async () => {
-  const cnPlaceName = await getCnTable('PlaceName', ['#', 'Name'], ['placeId', 'placeName']);
-  const koPlaceName = await getKoTable('PlaceName', ['#', 'Name'], ['placeId', 'placeName']);
-  const cnCfc = await getCnTable('ContentFinderCondition', ['#', 'TerritoryType', 'Name'], [
-    'cfcId',
-    'ttId',
-    'cfcName',
-  ]);
-  const koCfc = await getKoTable('ContentFinderCondition', ['#', 'TerritoryType', 'Name'], [
-    'cfcId',
-    'ttId',
-    'cfcName',
-  ]);
+  log.debug(
+    `Table: ${_LOCALE_PN_TABLE} | Query columns: [${_LOCALE_PN_INPUT_COLS.toString()}] | Output: [${_LOCALE_PN_OUTPUT_COLS.toString()}]`,
+  );
+  log.debug(`Fetching 'cn' ${_LOCALE_PN_TABLE} table...`);
+  const cnPlaceName = await getCnTable(
+    _LOCALE_PN_TABLE,
+    _LOCALE_PN_INPUT_COLS,
+    _LOCALE_PN_OUTPUT_COLS,
+  );
+  log.debug(`Fetching 'ko' ${_LOCALE_PN_TABLE} table...`);
+  const koPlaceName = await getKoTable(
+    _LOCALE_PN_TABLE,
+    _LOCALE_PN_INPUT_COLS,
+    _LOCALE_PN_OUTPUT_COLS,
+  );
+  log.debug(
+    `Table: ${_LOCALE_CFC_TABLE} | Query columns: [${_LOCALE_CFC_INPUT_COLS.toString()}] | Output: [${_LOCALE_CFC_OUTPUT_COLS.toString()}]`,
+  );
+  log.debug(`Fetching 'cn' ${_LOCALE_CFC_TABLE} table...`);
+  const cnCfc = await getCnTable(
+    _LOCALE_CFC_TABLE,
+    _LOCALE_CFC_INPUT_COLS,
+    _LOCALE_CFC_OUTPUT_COLS,
+  );
+  log.debug(`Fetching 'ko' ${_LOCALE_CFC_TABLE} table...`);
+  const koCfc = await getKoTable(
+    _LOCALE_CFC_TABLE,
+    _LOCALE_CFC_INPUT_COLS,
+    _LOCALE_CFC_OUTPUT_COLS,
+  );
   return {
     cnPlaceName: cnPlaceName,
     koPlaceName: koPlaceName,
@@ -254,6 +264,7 @@ const generateZoneIdMap = (
   zoneMap: ZoneIDOutput;
   idMap: TTToCFCIDMap;
 } => {
+  log.debug('Generating zone_id data...');
   // To determine zone name for each Territory:
   //  1. If we have an override (synthetic name), use that
   //  2. If the TT entry has TT.CFC.Name, use that
@@ -327,6 +338,7 @@ const generateZoneIdMap = (
   for (const [ttKey, cfcId] of Object.entries(Overrides.forceTtToCfcMap)) {
     const ttId = parseInt(ttKey); // Object.entries... :eyes:
     cfcDerivedTtToCfcMap[ttId] = cfcId;
+    log.debug(`Force-mapping territory ID ${ttId} to ${cleanName(cfcIdToName[cfcId] ?? '')}`);
   }
 
   // Now build the main object for export.
@@ -345,6 +357,7 @@ const generateZoneIdMap = (
     return Overrides.knownCollisions[name]?.includes(id) ?? false;
   };
 
+  log.debug('Beginning main processing loop...');
   for (const [, territory] of Object.entries(ttData)) {
     const ttId = territory.ID;
     const ttPlaceName = territory.PlaceName.Name_en;
@@ -371,12 +384,20 @@ const generateZoneIdMap = (
       // Step 1 - synthetic zone
       // Grab a cfcId for this name if possible just in case, since not all
       // synthetic ids have synthetic zone_info, so we may need it later.
+      log.debug(`Using synthetic zone override info for ${syntheticName} (ID: ${ttId})`);
       cfcIdForName = ttCfcId === null ? undefined : ttCfcId;
       zoneName = syntheticName;
     } else if (ttCfcId !== null && ttCfcId !== 0 && ttCfcName !== null) {
       // Step 2 - we have a CFC.Name present in TT
       cfcIdForName = ttCfcId;
       zoneName = cleanName(ttCfcName);
+      if (zoneName === undefined || zoneName === '') {
+        log.debug(
+          `Found linked CFC record for territory ID ${ttId}, but no CFC name.  Skipping...`,
+        );
+        continue;
+      } else
+        log.debug(`Using linked CFC name for ${zoneName} (ID: ${ttId})`);
     } else if (
       cfcDerivedCfcId !== undefined &&
       cfcDerivedCfcId !== null
@@ -386,34 +407,49 @@ const generateZoneIdMap = (
       const cfcDerivedCfcName = cfcIdToName[cfcDerivedCfcId];
       if (cfcDerivedCfcName === undefined) {
         // this should never happen based on the way the lookup tables are built
-        printError('bad CFC lookup', 'unknown', ttData, ttId);
+        log.alert(
+          `Could not process territory ID ${ttId}} - found reverse CFC lookup ID (${cfcIdForName}), but no name. This should be investigated.`,
+        );
         continue;
       }
       zoneName = cleanName(cfcDerivedCfcName);
+      log.debug(`Using reverse-lookup CFC name for ${zoneName} (ID: ${ttId})`);
     } else if (isTownZone || isOverworldZone) {
       // Step 4 - we can't determine name from any CFC data, so use PlaceName
       // World zones like Middle La Noscea are not in CFC.
       // If we don't have a PlaceName, bail out.
-      if (ttPlaceName === null)
+      if (ttPlaceName === null) {
+        log.info(
+          `No name data could be matched for town/overworld zone with ID ${ttId}. Skipping...`,
+        );
         continue;
-      else {
+      } else {
         cfcIdForName = 'None';
         zoneName = cleanName(ttPlaceName);
         // Names found in CFC take precedence over PlaceName, so if a CFC
         // name exists for this zone and we've gotten here, bail out.
         // There are some duplicate names that will trigger this
         // (e.g. The Copied Factory version you can walk around in)
-        if (Object.values(cfcIdToName).includes(zoneName))
+        if (Object.values(cfcIdToName).includes(zoneName)) {
+          log.info(
+            `Found town/overworld zone ${zoneName} (ID: ${ttId}), but name matches existing CFC/territory pair. Skipping...`,
+          );
           continue;
+        }
+        log.debug(`Using town/overworld place name for ${zoneName} (ID: ${ttId})`);
       }
-    } else
-      continue; // TODO: Maybe some verbose logging for these skips?  Ton of output though.
+    } else {
+      log.debug(`Could not determine name for territory ID ${ttId}.  Skipping...`);
+      continue;
+    }
 
     if (
       zoneName === undefined ||
       zoneName === ''
-    )
+    ) {
+      log.alert(`Reached end of loop with no zone name for ID ${ttId}. This is unexpected.`);
       continue;
+    }
 
     // Now handle potential collisions
     // (e.g. the zone name is already in use by another id)
@@ -421,12 +457,17 @@ const generateZoneIdMap = (
 
     if (collisionNames.includes(zoneName)) {
       // We've already seen a collision for this name before, so bail out.
-      if (!isKnownCollision(zoneName, ttId))
-        printError('collision', zoneName, ttData, ttId);
+      if (!isKnownCollision(zoneName, ttId)) {
+        log.info(`Found additinoal collision for ${zoneName} (ID: ${ttId})`);
+      } else {
+        log.debug(`Found expected/known collision for ${zoneName} (ID: $[ttId})`);
+      }
       continue;
     } else if (knownId !== undefined && knownId !== ttId) {
       // We have a known id for this zone name, so bail out.
-      printError('skipping', zoneName, ttData, ttId);
+      log.info(
+        `Territory ID ${ttId} resolves to ${zoneName}, but known ID exists for this zone in overrides (ID: ${knownId}). Skipping...`,
+      );
       continue;
     } else if (Object.keys(nameMap).includes(zoneName)) {
       // First-time collision for this name. This usually happens when a patch
@@ -434,8 +475,12 @@ const generateZoneIdMap = (
       // but the old territory is not removed. Remove the collided entry from nameMap.
       collisionNames.push(zoneName);
       if (!isKnownCollision(zoneName, ttId)) {
-        printError('collision', zoneName, ttData, nameMap[zoneName] ?? -1);
-        printError('collision', zoneName, ttData, ttId);
+        log.alert(
+          `New or unexpected collision in resolving ${zoneName}: (IDs: ${ttId}, ${nameMap[zoneName] ?? ''
+          }). Please investigate.`,
+        );
+      } else {
+        log.debug(`Found expected/known collision for ${zoneName} (ID: $[ttId})`);
       }
       delete nameMap[zoneName];
       continue;
@@ -446,15 +491,16 @@ const generateZoneIdMap = (
       finalTtIdToCfcId[ttId] = cfcIdForName;
 
     nameMap[zoneName] = ttId;
+    log.debug(`Added ${zoneName} (ID: ${ttId}) to zone_id map.`);
   }
 
   // Now that our export is built, do a little basic error checking.
   // All known ids should be in our export data.
   for (const [knownName] of Object.entries(Overrides.knownIds)) {
-    if (nameMap[knownName] === undefined) {
-      printError(`Missing known item: ${knownName}`);
-      process.exit(1);
-    }
+    if (nameMap[knownName] === undefined)
+      log.alert(
+        `Known zone (Name: ${knownName}) not found in zone_id map. This requires resolution before merge.`,
+      );
   }
 
   // Make sure we have the correct id for all synthethic entries
@@ -463,12 +509,14 @@ const generateZoneIdMap = (
     if (
       nameMap[syntheticName] !== undefined &&
       nameMap[syntheticName] !== syntheticId
-    ) {
-      printError(`Conflicting synthetic item: ${syntheticName}`);
-      process.exit(1);
-    }
+    )
+      log.alert(
+        `Synthetic zone ${syntheticName} present, but with wrong ID ${nameMap[syntheticName] ?? ''
+        } (shuold be ID ${syntheticId}).  This requires resolution before merge.`,
+      );
   }
 
+  log.debug('Finished assembling zone_id data.');
   return {
     zoneMap: nameMap,
     idMap: finalTtIdToCfcId,
@@ -480,6 +528,7 @@ const generateZoneInfoMap = async (
   cfcData: XivApiContentFinderCondition,
   ttToCfcIdMap: TTToCFCIDMap,
 ): Promise<ZoneInfoOutput> => {
+  log.debug('Generating zone_info data...');
   const capitalize = (str: string | null): string | undefined => {
     if (str === null)
       return;
@@ -493,6 +542,7 @@ const generateZoneInfoMap = async (
   for (const [key, zoneInfo] of Object.entries(Overrides.syntheticZoneInfo)) {
     const ttId = parseInt(key);
     zoneInfoMap[ttId] = zoneInfo;
+    log.debug(`Adding synthetic zone info for ${zoneInfo.name.en} (ID: ${ttId})`);
   }
 
   // Process the mapping object we created during zone_id stuff.
@@ -502,8 +552,10 @@ const generateZoneInfoMap = async (
     const ttId = parseInt(key);
     const ttZoneData = ttData[ttId];
     if (ttZoneData === undefined) {
-      printError(`Error: missing territory data for ID ${ttId}`);
-      process.exit(2);
+      log.alert(
+        `Unexpectedly could not find zone info for territory ID ${ttId}. This must be resovled before merge.`,
+      );
+      continue;
     }
 
     const zoneExVersion = typeof ttZoneData.ExVersion.ID === 'string'
@@ -526,8 +578,10 @@ const generateZoneInfoMap = async (
         offsetY = 0;
         sizeFactor = 100;
       } else {
-        printError(`Error: missing map data for ID ${ttId}`);
-        process.exit(2);
+        log.alert(
+          `No map data found for territory ID ${ttId}.  This must be resolved before merge.`,
+        );
+        continue;
       }
     }
 
@@ -551,8 +605,8 @@ const generateZoneInfoMap = async (
         placeId === null ||
         enName === undefined
       ) {
-        printError(`Error: missing placename data for ID ${ttId}`);
-        process.exit(2);
+        log.alert(`No PlaceName data available for ${ttId}.  This must be resovled before merge.`);
+        continue;
       }
 
       const ttNames = {
@@ -573,21 +627,30 @@ const generateZoneInfoMap = async (
       const localePlaceNames: LocaleCsvNames = {};
       if (cnPlaceName !== '')
         localePlaceNames['cn'] = cnPlaceName;
+      else
+        log.debug(`No 'cn' name data available for ${enName}`);
+
       if (koPlaceName !== '')
         localePlaceNames['ko'] = koPlaceName;
+      else
+        log.debug(`No 'ko' name data available for ${enName}`);
 
       zoneName = Object.assign({}, ttNames, localePlaceNames);
     } else {
       // we have CFC data, so get the zone names (& content type) from there
       const cfcZoneData = cfcData[cfcId];
       if (cfcZoneData === undefined) {
-        printError(`Error: missing cfc data for cfcID ${cfcId}`);
-        process.exit(2);
+        log.alert(
+          `No CFC data available for territory ID ${ttId} (paired with CFC ID: ${cfcId}).  This must be resolved before merge.`,
+        );
+        continue;
       }
       const enName = capitalize(cfcZoneData.Name_en);
       if (enName === undefined) {
-        printError(`Error: missing cfc name data for cfcId ${cfcId}`);
-        process.exit(2);
+        log.alert(
+          `No CFC name available for territory ID ${ttId} (paired with CFC ID: ${cfcId}).  This must be resolved before merge.`,
+        );
+        continue;
       }
 
       const cfcNames = {
@@ -604,8 +667,12 @@ const generateZoneInfoMap = async (
       const localeCfcNames: LocaleCsvNames = {};
       if (cnCfcName !== '')
         localeCfcNames['cn'] = cnCfcName;
+      else
+        log.debug(`No 'cn' name data available for ${enName}`);
       if (koCfcName !== '')
         localeCfcNames['ko'] = koCfcName;
+      else
+        log.debug(`No 'ko' name data available for ${enName}`);
 
       zoneName = Object.assign({}, cfcNames, localeCfcNames);
 
@@ -631,27 +698,32 @@ const generateZoneInfoMap = async (
     };
 
     zoneInfoMap[ttId] = zoneInfo;
+    log.debug(`Added ${zoneName.en} (ID: ${ttId}) to zone_info map.`);
   }
 
+  log.debug('Finished assembling zone_info data.');
   return zoneInfoMap;
 };
 
 const generateContentTypeMap = (
   ctData: XivApiContentType,
 ): ContentTypeOutput => {
+  log.debug('Generating content_type data...');
   const contentTypeMap: ContentTypeOutput = {};
 
   for (const ct of ctData) {
     if (ct.ID === null || ct.Name === null || ct.Name === '')
       continue;
     contentTypeMap[cleanName(ct.Name)] = ct.ID;
+    log.debug(`Collected content_type data for ID: ${ct.ID} (${ct.Name}).`);
   }
 
   // Add sythetic content types
   for (const [name, id] of Object.entries(Overrides.syntheticContentType)) {
     contentTypeMap[name] = id;
+    log.debug(`Inserted synthetic content_type data for ID: ${id} (${name}).`);
   }
-
+  log.debug('Finished assembling content_type data.');
   return contentTypeMap;
 };
 
@@ -671,42 +743,51 @@ const assembleData = async (
     contentType: generateContentTypeMap(ctData),
   };
 
+  log.debug('Data assembly/formatting complete.');
   return formattedData;
 };
 
-const api = new XivApi(null, true);
+export default async (logLevel: LogLevelKey): Promise<void> => {
+  log = new ConsoleLogger();
+  log.setLogLevel(logLevel);
+  log.info(`Starting processing for ${_SCRIPT_NAME}`);
 
-const ttRawData = await api.queryApi(
-  _TT_ENDPOINT,
-  _TT_COLUMNS,
+  const api = new XivApi(null, log);
+
+  const ttRawData = await api.queryApi(
+    _TT_ENDPOINT,
+    _TT_COLUMNS,
 ) as ResultTerritoryType[];
 
-const cfcRawData = await api.queryApi(
-  _CFC_ENDPOINT,
-  _CFC_COLUMNS,
+  const cfcRawData = await api.queryApi(
+    _CFC_ENDPOINT,
+    _CFC_COLUMNS,
 ) as ResultContentFinderCondition[];
 
-const ctRawData = await api.queryApi(
-  _CT_ENDPOINT,
-  _CT_COLUMNS,
-) as XivApiContentType;
+  const ctRawData = await api.queryApi(
+    _CT_ENDPOINT,
+    _CT_COLUMNS,
+  ) as XivApiContentType;
 
-const outputData = await assembleData(ttRawData, cfcRawData, ctRawData);
+  const outputData = await assembleData(ttRawData, cfcRawData, ctRawData);
 
-await api.writeFile(
-  path.basename(import.meta.url),
-  _ZONE_ID,
-  outputData.zoneId,
-);
+  await api.writeFile(
+    path.basename(import.meta.url),
+    _ZONE_ID,
+    outputData.zoneId,
+  );
 
-await api.writeFile(
-  path.basename(import.meta.url),
-  _ZONE_INFO,
-  outputData.zoneInfo,
-);
+  await api.writeFile(
+    path.basename(import.meta.url),
+    _ZONE_INFO,
+    outputData.zoneInfo,
+  );
 
-await api.writeFile(
-  path.basename(import.meta.url),
-  _CONTENT_TYPE,
-  outputData.contentType,
-);
+  await api.writeFile(
+    _SCRIPT_NAME,
+    _CONTENT_TYPE,
+    outputData.contentType,
+  );
+
+  log.successDone(`Completed processing for ${_SCRIPT_NAME}`);
+};

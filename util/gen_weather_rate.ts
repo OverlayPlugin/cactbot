@@ -1,5 +1,6 @@
 import path from 'path';
 
+import { ConsoleLogger, LogLevelKey } from './generate_data_files';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _WEATHER_RATE: OutputFileAttributes = {
@@ -81,7 +82,11 @@ type OutputWeatherRate = {
   };
 };
 
+const _SCRIPT_NAME = path.basename(import.meta.url);
+let log: ConsoleLogger;
+
 const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
+  log.debug('Processing & assembling data...');
   const formattedData: OutputWeatherRate = {};
 
   for (const record of apiData) {
@@ -109,36 +114,45 @@ const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
       rates.push(sumRate);
       weathers.push(weatherName);
     }
-
+    log.debug(`Collected weather rate data for ID: ${id}`);
     formattedData[id] = {
       rates: rates,
       weathers: weathers,
     };
   }
-
+  log.debug('Data assembly/formatting complete.');
   return formattedData;
 };
 
-const api = new XivApi(null, true);
+export default async (logLevel: LogLevelKey): Promise<void> => {
+  log = new ConsoleLogger();
+  log.setLogLevel(logLevel);
+  log.info(`Starting processing for ${_SCRIPT_NAME}`);
 
-const apiData = await api.queryApi(
-  _ENDPOINT,
-  _COLUMNS,
-) as XivApiWeatherRate;
+  const api = new XivApi(null, log);
 
-const outputData = assembleData(apiData);
+  const apiData = await api.queryApi(
+    _ENDPOINT,
+    _COLUMNS,
+  ) as XivApiWeatherRate;
 
-// The WeatherRate endpoint does not return data associated with ID:0
-// We could fetch it separately from WeatherRate/0, but the data struc is slightly
-// different, and a second API call seems unnecessary since this row is very unlikely
-// to change.  So just add the data manually.
-outputData[0] = {
-  rates: [100],
-  weathers: ['Fair Skies'],
+  const outputData = assembleData(apiData);
+
+  // The WeatherRate endpoint does not return data associated with ID:0
+  // We could fetch it separately from WeatherRate/0, but the data struc is slightly
+  // different, and a second API call seems unnecessary since this row is very unlikely
+  // to change.  So just add the data manually.
+  log.debug('Manually inserting WeatherRate data for ID: 0.');
+  outputData[0] = {
+    rates: [100],
+    weathers: ['Fair Skies'],
+  };
+
+  await api.writeFile(
+    _SCRIPT_NAME,
+    _WEATHER_RATE,
+    outputData,
+  );
+
+  log.successDone(`Completed processing for ${_SCRIPT_NAME}`);
 };
-
-await api.writeFile(
-  path.basename(import.meta.url),
-  _WEATHER_RATE,
-  outputData,
-);

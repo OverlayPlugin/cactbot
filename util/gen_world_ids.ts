@@ -1,5 +1,6 @@
 import path from 'path';
 
+import { ConsoleLogger, LogLevelKey } from './generate_data_files';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _WORLD_ID: OutputFileAttributes = {
@@ -86,6 +87,9 @@ type OutputWorldIds = {
   [id: string]: OutputWorld;
 };
 
+const _SCRIPT_NAME = path.basename(import.meta.url);
+let log: ConsoleLogger;
+
 const scrubDataCenter = (dc: ResultDataCenter): OutputDataCenter | undefined => {
   if (dc.ID === null || dc.ID === '')
     return;
@@ -110,6 +114,7 @@ const scrubIsPublic = (pub: string | number | null): boolean | undefined => {
 };
 
 const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
+  log.debug('Processing & assembling data...');
   const formattedData: OutputWorldIds = {};
 
   for (const data of apiData) {
@@ -119,8 +124,10 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
     // there are many hundreds of dev/test/whatever entries in
     // the World table that substantially clutter the data
     // for our use cases, we only care about public worlds
-    if (!isPublic)
+    if (!isPublic) {
+      log.debug(`Found non-public world (ID: ${data.ID} | Name: ${data.Name ?? ''}). Ignoring.`);
       continue;
+    }
 
     if (
       data.InternalName === null ||
@@ -128,9 +135,13 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
       data.Name === '' || // filter out empty strings or we get a ton of trash
       data.Region === null ||
       data.UserType === null
-    )
+    ) {
+      log.debug(`Data missing for ID: ${data.ID} (Name: ${data.Name ?? ''}). Ignoring.`);
       continue;
-
+    }
+    log.debug(
+      `Collected world data for ${dc?.name ?? 'no_data_center'}:${data.Name} (ID: ${data.ID})`,
+    );
     formattedData[data.ID.toString()] = {
       id: data.ID,
       internalName: data.InternalName,
@@ -141,11 +152,16 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
       // isPublic: isPublic, // value is always implicitly 'true' given the filter above
     };
   }
+  log.debug('Data assembly/formatting complete.');
   return formattedData;
 };
 
-export default async (): Promise<void> => {
-  const api = new XivApi(null, true);
+export default async (logLevel: LogLevelKey): Promise<void> => {
+  log = new ConsoleLogger();
+  log.setLogLevel(logLevel);
+  log.info(`Starting processing for ${_SCRIPT_NAME}`);
+
+  const api = new XivApi(null, log);
 
   const apiData = await api.queryApi(
     _ENDPOINT,
@@ -155,9 +171,11 @@ export default async (): Promise<void> => {
   const outputData = assembleData(apiData);
 
   await api.writeFile(
-    path.basename(import.meta.url),
+    _SCRIPT_NAME,
     _WORLD_ID,
     outputData,
     true, // require keys to be returned as strings (because that's the existing format)
   );
+
+  log.successDone(`Completed processing for ${_SCRIPT_NAME}`);
 };
