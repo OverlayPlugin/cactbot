@@ -91,10 +91,9 @@ export class XivApi {
         url += `&page=${currentPage}`;
 
       this.log.debug(`Obtaining page ${currentPage} from API: ${url}`);
-      let response;
       let jsonResult;
       try {
-        response = await fetch(url);
+        const response = await fetch(url);
         if (!response.ok)
           throw new Error(`Network error occurred fetching API results.`);
         jsonResult = (await response.json()) as XivApiResult;
