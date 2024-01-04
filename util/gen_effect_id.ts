@@ -101,14 +101,14 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
 
   log.debug('Processing & assembling data...');
   for (const effect of apiData) {
-      const id = effect.ID;
-      const rawName = effect.Name;
-      if (rawName === null || id === null)
-        continue;
-      const name = cleanName(rawName);
-      // Skip empty strings.
-      if (!name)
-        continue;
+    const id = effect.ID;
+    const rawName = effect.Name;
+    if (rawName === null || id === null)
+      continue;
+    const name = cleanName(rawName);
+    // Skip empty strings.
+    if (!name)
+      continue;
 
     // See comment above specifically about known mappings.
     // This is logged at a debug level; however, if a future patch makes job changes

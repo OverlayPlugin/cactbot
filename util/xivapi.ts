@@ -70,7 +70,6 @@ export class XivApi {
     this.log.debug(`Using cactbot path: ${this.cactbotPath}`);
   }
 
-
   async queryApi(endpoint: string, columns: string[]): Promise<XivApiResultData> {
     if (endpoint === '')
       this.log.fatalError('Cannot query API: no endpoint specified.');

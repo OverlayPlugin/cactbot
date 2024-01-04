@@ -476,7 +476,8 @@ const generateZoneIdMap = (
       collisionNames.push(zoneName);
       if (!isKnownCollision(zoneName, ttId)) {
         log.alert(
-          `New or unexpected collision in resolving ${zoneName}: (IDs: ${ttId}, ${nameMap[zoneName] ?? ''
+          `New or unexpected collision in resolving ${zoneName}: (IDs: ${ttId}, ${
+            nameMap[zoneName] ?? ''
           }). Please investigate.`,
         );
       } else {
@@ -511,7 +512,8 @@ const generateZoneIdMap = (
       nameMap[syntheticName] !== syntheticId
     )
       log.alert(
-        `Synthetic zone ${syntheticName} present, but with wrong ID ${nameMap[syntheticName] ?? ''
+        `Synthetic zone ${syntheticName} present, but with wrong ID ${
+          nameMap[syntheticName] ?? ''
         } (shuold be ID ${syntheticId}).  This requires resolution before merge.`,
       );
   }
@@ -757,12 +759,12 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const ttRawData = await api.queryApi(
     _TT_ENDPOINT,
     _TT_COLUMNS,
-) as ResultTerritoryType[];
+  ) as ResultTerritoryType[];
 
   const cfcRawData = await api.queryApi(
     _CFC_ENDPOINT,
     _CFC_COLUMNS,
-) as ResultContentFinderCondition[];
+  ) as ResultContentFinderCondition[];
 
   const ctRawData = await api.queryApi(
     _CT_ENDPOINT,
