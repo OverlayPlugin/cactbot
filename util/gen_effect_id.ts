@@ -24,9 +24,7 @@ type ResultStatus = {
   Name: string | null;
 };
 
-type XivApiStatus = {
-  [key: number]: ResultStatus;
-};
+type XivApiStatus = ResultStatus[];
 
 type MappingTable = {
   [name: string]: number;
@@ -95,28 +93,14 @@ const customMapping: Readonly<MappingTable> = {
 const printError = (
   header: string,
   what: string,
-  apiData?: XivApiStatus,
-  id?: number,
-) => console.error(`${header} ${what}: ${JSON.stringify(apiData && id ? apiData[id] : '')}`);
+) => console.error(`${header} ${what}`);
 
-const reindexStatusData = (data: XivApiStatus): XivApiStatus => {
-  const apiData: XivApiStatus = {};
-  for (const row of Object.values(data)) {
-    apiData[row.ID] = row;
-  }
-  return apiData;
-};
-
-const assembleData = (apiRawData: XivApiStatus): OutputEffectId => {
-  // re-index api data based on data keys, not xivapi/json indices
-  // we don't need new types, since the data will still be id-indexed
-  const apiData = reindexStatusData(apiRawData);
-
+const assembleData = (apiData: XivApiStatus): OutputEffectId => {
   const formattedData: OutputEffectId = {};
   const foundNames = new Set();
   const map = new Map<string, number>();
 
-  for (const effect of Object.values(apiData)) {
+  for (const effect of apiData) {
     const id = effect.ID;
     const rawName = effect.Name;
     if (rawName === null || id === null)
@@ -131,19 +115,19 @@ const assembleData = (apiRawData: XivApiStatus): OutputEffectId => {
     // existing/known conflicts so we can just see what's changing each patch.
     if (rawName in knownMapping) {
       if (id !== knownMapping[rawName]) {
-        printError('skipping', rawName, apiData, id);
+        printError('skipping', rawName);
         continue;
       }
     }
 
     if (map.has(name)) {
-      printError('collision', name, apiData, id);
-      printError('collision', name, apiData, map.get(name));
+      printError('collision', name);
+      printError('collision', name);
       map.delete(name);
       continue;
     }
     if (foundNames.has(name)) {
-      printError('collision', name, apiData, id);
+      printError('collision', name);
       continue;
     }
 

@@ -36,9 +36,7 @@ type ResultPet = {
   Name_ja: string | null;
 };
 
-type XivApiPet = {
-  [key: number]: ResultPet;
-};
+type XivApiPet = ResultPet[];
 
 type OutputPetNames = {
   cn: string[];
@@ -70,14 +68,12 @@ const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
     ko: [],
   };
 
-  for (const pet of Object.values(apiData)) {
+  for (const pet of apiData) {
     // If no en name (or if duplicate), skip processing
     if (pet.Name_en === null || pet.Name_en === '' || formattedData.en.includes(pet.Name_en))
       continue;
     formattedData.en.push(pet.Name_en);
 
-    // If there's an en name, the locale names will also be there.
-    // But Typescript doesn't know that.
     if (pet.Name_de !== null)
       formattedData.de.push(pet.Name_de);
     if (pet.Name_fr !== null)

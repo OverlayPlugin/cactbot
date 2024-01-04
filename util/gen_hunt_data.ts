@@ -61,10 +61,10 @@ type Rank = 'S' | 'SS+' | 'SS-' | 'A' | 'B';
 
 type ResultMonsterBNpcName = {
   ID: string | number;
-  Name_de: string;
-  Name_en: string;
-  Name_fr: string;
-  Name_ja: string;
+  Name_de: string | null;
+  Name_en: string | null;
+  Name_fr: string | null;
+  Name_ja: string | null;
 };
 
 type ResultMonsterBNpcBase = {
@@ -73,14 +73,12 @@ type ResultMonsterBNpcBase = {
 
 type ResultMonster = {
   ID: string | number;
-  Rank: string | number;
+  Rank: string | number | null;
   BNpcBase: ResultMonsterBNpcBase;
   BNpcName: ResultMonsterBNpcName;
 };
 
-type XivApiNotoriousMonster = {
-  [key: number]: ResultMonster;
-};
+type XivApiNotoriousMonster = ResultMonster[];
 
 type OutputHuntMap = {
   [name: string]: {
@@ -129,7 +127,7 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
   const formattedData: OutputHuntMap = {};
   const localeCsvTables = await fetchLocaleCsvTables();
 
-  for (const [, record] of Object.entries(apiData)) {
+  for (const record of apiData) {
     const baseId = typeof record.BNpcBase.ID === 'number'
       ? record.BNpcBase.ID.toString()
       : record.BNpcBase.ID;
@@ -158,6 +156,14 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
       rank = 'A';
     else
       rank = 'B';
+
+    if (
+      record.BNpcName.Name_de === null ||
+      record.BNpcName.Name_en === null ||
+      record.BNpcName.Name_fr === null ||
+      record.BNpcName.Name_ja === null
+    )
+      continue;
 
     const localeNames: LocaleTextOrArray = {
       'de': deLocaleSubstitutions(record.BNpcName.Name_de),

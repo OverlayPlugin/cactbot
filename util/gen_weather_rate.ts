@@ -69,12 +69,10 @@ type ResultWeatherRate =
     [K in WeatherField]: ResultWeatherName;
   }
   & {
-    [K in RateField]: number;
+    [K in RateField]: string | number | null;
   };
 
-type XivApiWeatherRate = {
-  [key: number]: ResultWeatherRate;
-};
+type XivApiWeatherRate = ResultWeatherRate[];
 
 type OutputWeatherRate = {
   [id: number]: {
@@ -86,7 +84,7 @@ type OutputWeatherRate = {
 const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
   const formattedData: OutputWeatherRate = {};
 
-  for (const [, record] of Object.entries(apiData)) {
+  for (const record of apiData) {
     const id = typeof record.ID !== 'number' ? parseInt(record.ID) : record.ID;
     const rates: number[] = [];
     const weathers: string[] = [];
@@ -96,7 +94,12 @@ const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
       const rateField = `Rate${v}` as RateField;
       const weatherField = `Weather${v}` as WeatherField;
 
-      sumRate += record[rateField];
+      let rate = record[rateField];
+      if (rate !== null) {
+        rate = typeof rate === 'number' ? rate : parseInt(rate);
+        sumRate += rate;
+      }
+
       const weatherName = record[weatherField].Name;
 
       // stop processing for this ID on the first empty/null weather string

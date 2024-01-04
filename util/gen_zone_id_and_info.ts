@@ -154,6 +154,10 @@ type ResultContentType = {
   Name: string | null;
 };
 
+// XivApiTerritoryType & XivAPIContentFinderCondition are indexed objects
+// based on the 'ID' field of their respective XIVAPI data sets.
+// The api library returns these as arrays; this script uses index functions
+// to restructure the input so it's easier to work with.
 type XivApiTerritoryType = {
   [key: number]: ResultTerritoryType;
 };
@@ -162,9 +166,7 @@ type XivApiContentFinderCondition = {
   [key: number]: ResultContentFinderCondition;
 };
 
-type XivApiContentType = {
-  [key: number]: ResultContentType;
-};
+type XivApiContentType = ResultContentType[];
 
 type ZoneIDOutput = {
   [zone: string]: number | null;
@@ -208,28 +210,20 @@ const printError = (
     console.error(`${msg} ${zoneName}: ${JSON.stringify(ttIdToData[ttId])}`);
 };
 
-const reindexTtData = (data: XivApiTerritoryType): XivApiTerritoryType => {
+const indexTtData = (data: ResultTerritoryType[]): XivApiTerritoryType => {
   const ttData: XivApiTerritoryType = {};
-  for (const [, row] of Object.entries(data)) {
+  for (const row of data) {
     ttData[row.ID] = row;
   }
   return ttData;
 };
 
-const reindexCfcData = (data: XivApiContentFinderCondition): XivApiContentFinderCondition => {
+const indexCfcData = (data: ResultContentFinderCondition[]): XivApiContentFinderCondition => {
   const cfcData: XivApiContentFinderCondition = {};
-  for (const [, row] of Object.entries(data)) {
+  for (const row of data) {
     cfcData[row.ID] = row;
   }
   return cfcData;
-};
-
-const reindexCtData = (data: XivApiContentType): XivApiContentType => {
-  const ctData: XivApiContentType = {};
-  for (const [, row] of Object.entries(data)) {
-    ctData[row.ID] = row;
-  }
-  return ctData;
 };
 
 const fetchLocaleCsvTables = async () => {
@@ -647,7 +641,7 @@ const generateContentTypeMap = (
 ): ContentTypeOutput => {
   const contentTypeMap: ContentTypeOutput = {};
 
-  for (const [, ct] of Object.entries(ctData)) {
+  for (const ct of ctData) {
     if (ct.ID === null || ct.Name === null || ct.Name === '')
       continue;
     contentTypeMap[cleanName(ct.Name)] = ct.ID;
@@ -662,16 +656,12 @@ const generateContentTypeMap = (
 };
 
 const assembleData = async (
-  ttRawData: XivApiTerritoryType,
-  cfcRawData: XivApiContentFinderCondition,
-  ctRawData: XivApiContentType,
+  ttRawData: ResultTerritoryType[],
+  cfcRawData: ResultContentFinderCondition[],
+  ctData: XivApiContentType,
 ): Promise<OutputContainer> => {
-  // re-index api data based on data keys, not xivapi/json indices
-  // we don't need new types, since the data will still be id-indexed
-  // separate functions, though, to maintain typing.
-  const ttData = reindexTtData(ttRawData);
-  const cfcData = reindexCfcData(cfcRawData);
-  const ctData = reindexCtData(ctRawData);
+  const ttData = indexTtData(ttRawData);
+  const cfcData = indexCfcData(cfcRawData);
 
   const zoneIdData = generateZoneIdMap(ttData, cfcData);
 
@@ -689,12 +679,12 @@ const api = new XivApi(null, true);
 const ttRawData = await api.queryApi(
   _TT_ENDPOINT,
   _TT_COLUMNS,
-) as XivApiTerritoryType;
+) as ResultTerritoryType[];
 
 const cfcRawData = await api.queryApi(
   _CFC_ENDPOINT,
   _CFC_COLUMNS,
-) as XivApiContentFinderCondition;
+) as ResultContentFinderCondition[];
 
 const ctRawData = await api.queryApi(
   _CT_ENDPOINT,

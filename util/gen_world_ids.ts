@@ -65,9 +65,7 @@ type ResultWorld = {
   IsPublic: string | number | null;
 };
 
-type XivApiWorld = {
-  [key: number]: ResultWorld;
-};
+type XivApiWorld = ResultWorld[];
 
 type OutputDataCenter = {
   id: number;
@@ -114,7 +112,7 @@ const scrubIsPublic = (pub: string | number | null): boolean | undefined => {
 const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
   const formattedData: OutputWorldIds = {};
 
-  for (const data of Object.values(apiData)) {
+  for (const data of apiData) {
     const dc = scrubDataCenter(data.DataCenter);
     const isPublic = scrubIsPublic(data.IsPublic);
 

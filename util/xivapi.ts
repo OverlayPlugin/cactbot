@@ -17,10 +17,15 @@ const _XIVAPI_RESULTS_LIMIT = 3000;
 
 // We're using some generic typing because the data format
 // will depend on the endpoint used by each script.
+
+type XivApiRecord = {
+  [column: string]: unknown;
+};
+
+type XivApiOutput = XivApiRecord[];
+
 type XivApiResultData = {
-  [key: number]: {
-    [column: string]: unknown;
-  };
+  [key: number]: XivApiRecord;
 };
 
 type XivApiResult = {
@@ -73,9 +78,7 @@ export class XivApi {
 
     let currentPage = 0;
     let maxPage = 1;
-    let onePageJsonResults: XivApiResultData = {};
-    let useMultiPage = false;
-    const multiPageJson: { [page: number]: XivApiResult } = {};
+    const output: XivApiOutput = [];
     while (currentPage < maxPage) {
       currentPage++;
       let url = `${_XIVAPI_URL}${endpoint}?limit=${_XIVAPI_RESULTS_LIMIT}&columns=${
@@ -86,45 +89,20 @@ export class XivApi {
         url += `&page=${currentPage}`;
       // TODO: add better error handling?
       const response = await fetch(url);
-      const newPageJson = (await response.json()) as XivApiResult;
+      const jsonResult = (await response.json()) as XivApiResult;
 
-      // first time through
-      if (currentPage === 1) {
-        maxPage = typeof newPageJson.Pagination.PageTotal === 'string'
-          ? parseInt(newPageJson.Pagination.PageTotal)
-          : newPageJson.Pagination.PageTotal;
-        if (maxPage === 1) {
-          onePageJsonResults = newPageJson.Results; // export as-is; we're done.
-          break;
-        }
-      }
+      if (currentPage === 1)
+        maxPage = typeof jsonResult.Pagination.PageTotal === 'string'
+          ? parseInt(jsonResult.Pagination.PageTotal)
+          : jsonResult.Pagination.PageTotal;
 
-      // multiple pages of data so this gets a little kludgy.
-      // Response.json() will take the Results json, and for each record within, it will
-      // add that record object to (output).Results{} with an incrementing key.
-      // But if we have page 2+, we can't just dump into the same Results object because
-      // it will reuse the same range of incrementing keys, which will squash the existing data.
-      // So we need to keep each output.Results{} separate and merge at the end, manually
-      // numbering each (output).Results.(row) so there's no overlap.
-      useMultiPage = true;
-      multiPageJson[currentPage] = newPageJson;
+      output.push(...Object.values(jsonResult.Results));
     }
 
     if (this.verbose)
       console.log(`Xivapi query successful for endpoint: ${endpoint}`);
 
-    if (useMultiPage) {
-      const mergeResults: XivApiResultData = {};
-      let newKey = 1;
-      for (const fullPageData of Object.values(multiPageJson)) {
-        for (const record of Object.values(fullPageData.Results)) {
-          mergeResults[newKey] = record;
-          newKey++;
-        }
-      }
-      return mergeResults;
-    }
-    return onePageJsonResults;
+    return output;
   }
 
   sortObjByKeys(obj: unknown): unknown {
