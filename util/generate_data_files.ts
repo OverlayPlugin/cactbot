@@ -28,7 +28,7 @@ const logLevels = [
   ['alert', 'ALERTS: issues that probably require action (RECOMMENDED)'],
   ['info', 'INFO: more routine/known issues that may not require action'],
   ['debug', 'DEBUG: detailed output for troubleshooting'],
-  ['silent', 'RESULTS ONLY: success/errors only (not recommended)'],
+  ['silent', 'SILENT: success & fatal errors only (not recommended)'],
 ] as const;
 
 type FileKey = typeof fileKeys[number];
