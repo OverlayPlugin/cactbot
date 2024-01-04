@@ -118,6 +118,7 @@ const paradeigmaLeanOutputStrings = {
   dirWithLean: {
     en: '${dir} bird (lean ${lean})',
     de: '${dir} Vogel (nach ${lean} neigen)',
+    fr: 'Oiseau ${dir} (côté ${lean})',
     ja: '${dir}の鳥 (すこし${lean})',
     cn: '${dir}鸟 (偏${lean})',
     ko: '${dir}쪽 새, (약간 ${lean}쪽으로)',

@@ -60,6 +60,7 @@ const tripleKasumiFirstOutputStrings = {
   backRedFirst: {
     en: 'Back + Out',
     de: 'Hinten + Raus',
+    fr: 'Arrière + Extérieur',
     ja: '後ろ + 外',
     cn: '后 + 远离',
     ko: '뒤 + 밖',
@@ -67,6 +68,7 @@ const tripleKasumiFirstOutputStrings = {
   leftRedFirst: {
     en: 'Left + Out',
     de: 'Links + Raus',
+    fr: 'Gauche + Extérieur',
     ja: '左 + 外',
     cn: '左 + 远离',
     ko: '왼쪽 + 밖',
@@ -74,6 +76,7 @@ const tripleKasumiFirstOutputStrings = {
   frontRedFirst: {
     en: 'Front + Out',
     de: 'Vorne + Raus',
+    fr: 'Devant + Extérieur',
     ja: '前 + 外',
     cn: '前 + 远离',
     ko: '앞 + 밖',
@@ -81,6 +84,7 @@ const tripleKasumiFirstOutputStrings = {
   rightRedFirst: {
     en: 'Right + Out',
     de: 'Rechts + Raus',
+    fr: 'Droite + Extérieur',
     ja: '右 + 外',
     cn: '右 + 远离',
     ko: '오른쪽 + 밖',
@@ -88,6 +92,7 @@ const tripleKasumiFirstOutputStrings = {
   backBlueFirst: {
     en: 'Back + In',
     de: 'Hinten + Rein',
+    fr: 'Arrière + Intérieur',
     ja: '後ろ + 中',
     cn: '后 + 靠近',
     ko: '뒤 + 안',
@@ -95,6 +100,7 @@ const tripleKasumiFirstOutputStrings = {
   leftBlueFirst: {
     en: 'Left + In',
     de: 'Links + Rein',
+    fr: 'Gauche + Intérieur',
     ja: '左 + 中',
     cn: '左 + 靠近',
     ko: '왼쪽 + 안',
@@ -102,6 +108,7 @@ const tripleKasumiFirstOutputStrings = {
   frontBlueFirst: {
     en: 'Front + In',
     de: 'Vorne + Rein',
+    fr: 'Devant + Intérieur',
     ja: '前 + 中',
     cn: '前 + 靠近',
     ko: '앞 + 안',
@@ -109,6 +116,7 @@ const tripleKasumiFirstOutputStrings = {
   rightBlueFirst: {
     en: 'Right + In',
     de: 'Rechts + Rein',
+    fr: 'Droite + Intérieur',
     ja: '右 + 中',
     cn: '右 + 靠近',
     ko: '오른쪽 + 안',
@@ -121,6 +129,7 @@ const tripleKasumiFollowupOutputStrings = {
   backRed: {
     en: 'Stay + Out',
     de: 'bleib Stehen + Raus',
+    fr: 'Restez + Extérieur',
     ja: 'そのまま + 外',
     cn: '停 + 远离',
     ko: '그대로 + 밖',
@@ -128,6 +137,7 @@ const tripleKasumiFollowupOutputStrings = {
   leftRed: {
     en: 'Left + Out',
     de: 'Links + Raus',
+    fr: 'Gauche + Extérieur',
     ja: '左 + 外',
     cn: '左左左 + 远离',
     ko: '왼쪽 + 밖',
@@ -135,6 +145,7 @@ const tripleKasumiFollowupOutputStrings = {
   frontRed: {
     en: 'Through + Out',
     de: 'Durch + Raus',
+    fr: 'À travers + Extérieur',
     ja: 'またいで + 外',
     cn: '穿 + 远离',
     ko: '가로지르기 + 밖',
@@ -142,6 +153,7 @@ const tripleKasumiFollowupOutputStrings = {
   rightRed: {
     en: 'Right + Out',
     de: 'Rechts + Raus',
+    fr: 'Droite + Extérieur',
     ja: '右 + 外',
     cn: '右右右 + 远离',
     ko: '오른쪽 + 밖',
@@ -149,6 +161,7 @@ const tripleKasumiFollowupOutputStrings = {
   backBlue: {
     en: 'Stay + In',
     de: 'bleib Stehen + Rein',
+    fr: 'Restez + Intérieur',
     ja: 'そのまま + 中',
     cn: '停 + 靠近',
     ko: '그대로 + 안',
@@ -156,6 +169,7 @@ const tripleKasumiFollowupOutputStrings = {
   leftBlue: {
     en: 'Left + In',
     de: 'Links + Rein',
+    fr: 'Gauche + Intérieur',
     ja: '左 + 中',
     cn: '左左左 + 靠近',
     ko: '왼쪽 + 밖',
@@ -163,6 +177,7 @@ const tripleKasumiFollowupOutputStrings = {
   frontBlue: {
     en: 'Through + In',
     de: 'Durch + Rein',
+    fr: 'À travers + Intérieur',
     ja: 'またいで + 中',
     cn: '穿 + 靠近',
     ko: '가로지르기 + 안',
@@ -170,6 +185,7 @@ const tripleKasumiFollowupOutputStrings = {
   rightBlue: {
     en: 'Right + In',
     de: 'Rechts + Rein',
+    fr: 'Droite + Intérieur',
     ja: '右 + 中',
     cn: '右右右 + 靠近',
     ko: '오른쪽 + 안',
@@ -183,6 +199,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
   melee: {
     en: 'Melees Stack',
     de: 'Nahkämpfer sammeln',
+    fr: 'Package mêlées',
     ja: '近接ペア',
     cn: '近战分摊',
     ko: '근딜 쉐어',
@@ -190,6 +207,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
   role: {
     en: 'Role Stacks',
     de: 'Rollengruppe sammeln',
+    fr: 'Package par role',
     ja: 'ロールペア',
     cn: '职能分摊',
     ko: '역할별 쉐어',
@@ -197,6 +215,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
   partner: {
     en: 'Partner Stacks',
     de: 'Partner sammeln',
+    fr: 'Package partenaire',
     ja: 'ペア',
     cn: '和搭档分摊',
     ko: '파트너 쉐어',
@@ -204,6 +223,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
   unknown: {
     en: 'Stacks',
     de: 'Sammeln',
+    fr: 'Package',
     ja: '頭割り',
     cn: '分摊',
     ko: '쉐어',
@@ -355,6 +375,7 @@ const stackSpreadResponse = (
     spreadThenMeleeStack: {
       en: 'Spread => Melees Stack',
       de: 'Verteilen => Nahkämpfer sammeln',
+      fr: 'Écartez-vous => Package mêlées',
       ja: '散会 => 近接ペア',
       cn: '分散 => 近战分摊',
       ko: '산개 => 근딜 쉐어',
@@ -362,6 +383,7 @@ const stackSpreadResponse = (
     spreadThenRoleStack: {
       en: 'Spread => Role Stacks',
       de: 'Verteilen => Rollengruppe sammeln',
+      fr: 'Écartez-vous => Package par rôle',
       ja: '散会 => ロールペア',
       cn: '分散 => 职能分摊',
       ko: '산개 => 역할별 쉐어',
@@ -369,6 +391,7 @@ const stackSpreadResponse = (
     spreadThenPartnerStack: {
       en: 'Spread => Partner Stacks',
       de: 'Verteilen => Partner sammeln',
+      fr: 'Écartez-vous => Package partenaire',
       ja: '散会 => ペア',
       cn: '分散 => 和搭档分摊',
       ko: '산개 => 파트너 쉐어',
@@ -376,6 +399,7 @@ const stackSpreadResponse = (
     meleeStackThenSpread: {
       en: 'Melees Stack => Spread',
       de: 'Nahkämpfer sammeln => Verteilen',
+      fr: 'Package mêlées => Écartez-vous',
       ja: '近接ペア => 散会',
       cn: '近战分摊 => 分散',
       ko: '근딜 쉐어 => 산개',
@@ -383,6 +407,7 @@ const stackSpreadResponse = (
     roleStackThenSpread: {
       en: 'Role Stacks => Spread',
       de: 'Rollengruppe sammeln => Verteilen',
+      fr: 'Package par rôle => Écartez-vous',
       ja: 'ロールペア => 散会',
       cn: '职能分摊 => 分散',
       ko: '역할별 쉐어 => 산개',
@@ -390,6 +415,7 @@ const stackSpreadResponse = (
     partnerStackThenSpread: {
       en: 'Partner Stacks => Spread',
       de: 'Partner sammeln => Verteilen',
+      fr: 'Package partenaire => Écartez-vous',
       ja: 'ペア => 散会',
       cn: '和搭档分摊 => 分散',
       ko: '파트너 쉐어 => 산개',
@@ -399,6 +425,7 @@ const stackSpreadResponse = (
     stacks: {
       en: 'Stacks: ${player1}, ${player2}',
       de: 'Sammeln: ${player1}, ${player2}',
+      fr: 'Package : ${player1}, ${player2}',
       ja: '頭割り: ${player1}, ${player2}',
       cn: '分摊点: ${player1}, ${player2}',
       ko: '쉐어: ${player1}, ${player2}',
@@ -453,6 +480,7 @@ const towerResponse = (
     tetherThenBlueTower: {
       en: 'Tether ${num1} => Blue Tower ${num2}',
       de: 'Verbindung ${num1} => Blauer Turm ${num2}',
+      fr: 'Lien ${num1} => Tour bleue ${num2}',
       ja: '線${num1} => 青塔${num2}',
       cn: '连线 ${num1} => 蓝塔 ${num2}',
       ko: '선 ${num1} => 파랑 기둥 ${num2}',
@@ -460,6 +488,7 @@ const towerResponse = (
     tetherThenOrangeTower: {
       en: 'Tether ${num1} => Orange Tower ${num2}',
       de: 'Verbindung ${num1} => Orangener Turm ${num2}',
+      fr: 'Lien ${num1} => Tour orange ${num2}',
       ja: '線${num1} => 赤塔${num2}',
       cn: '连线 ${num1} => 橙塔 ${num2}',
       ko: '선 ${num1} => 주황 기둥 ${num2}',
@@ -467,6 +496,7 @@ const towerResponse = (
     tether: {
       en: 'Tether ${num}',
       de: 'Verbindung ${num}',
+      fr: 'Lien ${num}',
       ja: '線${num}',
       cn: '连线 ${num}',
       ko: '선 ${num}',
@@ -474,6 +504,7 @@ const towerResponse = (
     blueTower: {
       en: 'Blue Tower ${num}',
       de: 'Blauer Turm ${num}',
+      fr: 'Tour bleue ${num}',
       ja: '青塔${num}',
       cn: '蓝塔 ${num}',
       ko: '파랑 기둥 ${num}',
@@ -481,6 +512,7 @@ const towerResponse = (
     orangeTower: {
       en: 'Orange Tower ${num}',
       de: 'Orangener Turm ${num}',
+      fr: 'Tour orange ${num}',
       ja: '赤塔${num}',
       cn: '橙塔 ${num}',
       ko: '주황 기둥 ${num}',
@@ -550,6 +582,13 @@ const triggerSet: TriggerSet<Data> = {
            Partner-Stack bedeuten Supporter+Dps und Supporter+Dps (jede Kombination ist möglich).
            Wenn du zwei Fernkampf-DPS oder zwei Nahkampf-DPS hast, wird es nie "Nahkämpfer" nennen, unabhängig von dieser Konfigurationsoption.
            Es gibt keine Unterstützung für Gruppenkombinationen, die nicht aus zwei Supportern und zwei DPS bestehen.`,
+        fr:
+          `Pour n'importe quel package à deux, ceci spécifie l'ordre de priorité pour choisir la personne avec qui se packer.
+          Si vous voulez votre mêlée et tank ensemble, choisissez l'option contenant mêlée.
+          Package mêlée signifie mêlée+tank et healer+distant. Package par rôle signifie tank+healer et dps+dps.
+          Package partenaire signifie support+dps (n'importe quelle combinaison fonctionne).
+          Si votre groupe est composée de deux distants ou deux mêlées, "mêlées" ne sera jamais annoncé quelque soit l'option choisie.
+          Les groupes ne contenant pas deux supports et deux dps ne peuvent pas être annoncés.`,
         ja: `2人ペアで一緒にペアを作り優先順位を決めます。近接とタンクを組む場合は近接オプションを選んでください。
           近接ペアは近接+タンクとヒーラ+遠隔を意味します。ロールはタンク+ヒーラ、近接+遠隔を意味します。
           遠隔まだは近接が2人の場合は、ここの設定を無視して近接呼び出しはありません。
@@ -569,6 +608,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Stack Selection Order',
         de: 'Sammel-Reihenfolge',
+        fr: 'Ordre de sélection des packages',
         ja: 'ペア優先順位',
         cn: '选择分摊次序',
         ko: '쉐어 우선순위',
@@ -582,6 +622,10 @@ const triggerSet: TriggerSet<Data> = {
         de: {
           'Nahkämpfer > Rollen > Partner': 'meleeRolesPartners',
           'Rollen > Partner': 'rolesPartners',
+        },
+        fr: {
+          'Mêlées > Rôles > Partenaires': 'meleeRolesPartners',
+          'Rôles > Partenaires': 'rolesPartners',
         },
         ja: {
           '近接 > ロール > ペア': 'meleeRolesPartners',
@@ -646,6 +690,7 @@ const triggerSet: TriggerSet<Data> = {
           chargeOnYou: {
             en: 'Charge on YOU',
             de: 'Ansturm auf DIR',
+            fr: 'Ruée sur VOUS',
             ja: '自分に突進',
             cn: '冲锋点名',
             ko: '돌진 대상자',
@@ -653,6 +698,7 @@ const triggerSet: TriggerSet<Data> = {
           chargeOn: {
             en: 'Charge on ${player}',
             de: 'Ansturm auf ${player}',
+            fr: 'Ruée sur ${player}',
             ja: '突進: ${player}',
             cn: '冲锋点 ${player}',
             ko: '돌진 ${player}',
@@ -852,6 +898,7 @@ const triggerSet: TriggerSet<Data> = {
           spreadThenMeleeStack: {
             en: '${inOut} + Spread => ${outIn} + Melees Stack',
             de: '${inOut} + Verteilen => ${outIn} + Nahkämpfer sammeln',
+            fr: '${inOut} + Écartement => ${outIn} + Package mêlées',
             ja: '${inOut} + 散会 => ${outIn} + 近接ペア',
             cn: '${inOut} + 分散 => ${outIn} + 近战分摊',
             ko: '${inOut} + 산개 => ${outIn} + 근딜 쉐어',
@@ -859,6 +906,7 @@ const triggerSet: TriggerSet<Data> = {
           spreadThenRoleStack: {
             en: '${inOut} + Spread => ${outIn} + Role Stacks',
             de: '${inOut} + Verteilen => ${outIn} + Rollengruppe sammeln',
+            fr: '${inOut} + Écartement => ${outIn} + Package par rôle',
             ja: '${inOut} + 散会 => ${outIn} + ロールペア',
             cn: '${inOut} + 分散 => ${outIn} + 职能分摊',
             ko: '${inOut} + 산개 => ${outIn} + 역할별 쉐어',
@@ -866,6 +914,7 @@ const triggerSet: TriggerSet<Data> = {
           spreadThenPartnerStack: {
             en: '${inOut} + Spread => ${outIn} + Partner Stacks',
             de: '${inOut} + Verteilen => ${outIn} + Partner sammeln',
+            fr: '${inOut} + Écartement => ${outIn} + Package partenaire',
             ja: '${inOut} + 散会 => ${outIn} + ペア',
             cn: '${inOut} + 分散 => ${outIn} + 和搭档分摊',
             ko: '${inOut} + 산개 => ${outIn} + 파트너 쉐어',
@@ -873,6 +922,7 @@ const triggerSet: TriggerSet<Data> = {
           meleeStackThenSpread: {
             en: '${inOut} + Melees Stack => ${outIn} + Spread',
             de: '${inOut} + Nahkämpfer sammeln => ${outIn} + Verteilen',
+            fr: '${inOut} + Package mêlées => ${outIn} + Écartement',
             ja: '${inOut} + 近接ペア => ${outIn} + 散会',
             cn: '${inOut} + 近战分摊 => ${outIn} + 分散',
             ko: '${inOut} + 근딜 쉐어 => ${outIn} + 산개',
@@ -880,6 +930,7 @@ const triggerSet: TriggerSet<Data> = {
           roleStackThenSpread: {
             en: '${inOut} + Role Stacks => ${outIn} + Spread',
             de: '${inOut} + Rollengruppe sammeln => ${outIn} + Verteilen',
+            fr: '${inOut} + Package par rôle => ${outIn} + Écartement',
             ja: '${inOut} + ロールペア => ${outIn} + 散会',
             cn: '${inOut} + 职能分摊 => ${outIn} + 分散',
             ko: '${inOut} + 역할별 쉐어 => ${outIn} + 산개',
@@ -887,6 +938,7 @@ const triggerSet: TriggerSet<Data> = {
           partnerStackThenSpread: {
             en: '${inOut} + Partner Stacks => ${outIn} + Spread',
             de: '${inOut} + Partner sammeln => ${outIn} + Verteilen',
+            fr: '${inOut} + Package partenaire  => ${outIn} + Écartement',
             ja: '${inOut} + ペア => ${outIn} + 散会',
             cn: '${inOut} + 和搭档分摊 => ${outIn} + 分散',
             ko: '${inOut} + 파트너 쉐어 => ${outIn} + 산개',
@@ -894,6 +946,7 @@ const triggerSet: TriggerSet<Data> = {
           spreadThenStack: {
             en: '${inOut} + Spread => ${outIn} + Stack',
             de: '${inOut} + Verteilen => ${outIn} + Sammeln',
+            fr: '${inOut} + Écartement => ${outIn} + Package',
             ja: '${inOut} + 散会 => ${outIn} + ペア',
             cn: '${inOut} + 分散 => ${outIn} + 分摊',
             ko: '${inOut} + 산개 => ${outIn} + 쉐어',
@@ -901,6 +954,7 @@ const triggerSet: TriggerSet<Data> = {
           stackThenSpread: {
             en: '${inOut} + Stack => ${outIn} + Spread',
             de: '${inOut} + Sammeln => ${outIn} + Verteilen',
+            fr: '${inOut} + Package => ${outIn} + Écartement',
             ja: '${inOut} + ペア => ${outIn} + 散会',
             cn: '${inOut} + 分摊 => ${outIn} + 分散',
             ko: '${inOut} + 쉐어 => ${outIn} + 산개',
@@ -908,6 +962,7 @@ const triggerSet: TriggerSet<Data> = {
           stacks: {
             en: 'Stacks: ${player1}, ${player2}',
             de: 'Sammeln: ${player1}, ${player2}',
+            fr: 'Package : ${player1}, ${player2}',
             ja: '頭割り: ${player1}, ${player2}',
             cn: '分摊点: ${player1}, ${player2}',
             ko: '쉐어: ${player1}, ${player2}',
@@ -985,6 +1040,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${inOut} + ${mechanic}',
           de: '${inOut} + ${mechanic}',
+          fr: '${inOut} + ${mechanic}',
           ja: '${inOut} + ${mechanic}',
           cn: '${inOut} + ${mechanic}',
           ko: '${inOut} + ${mechanic}',
@@ -1084,6 +1140,7 @@ const triggerSet: TriggerSet<Data> = {
         north: {
           en: 'North Diamond + ${mechanic}',
           de: 'nördlicher Diamant + ${mechanic}',
+          fr: 'Diamant Nord + ${mechanic}',
           ja: '北 + ${mechanic}',
           cn: '上 (北) 菱形 + ${mechanic}',
           ko: '북쪽 + ${mechanic}',
@@ -1091,6 +1148,7 @@ const triggerSet: TriggerSet<Data> = {
         east: {
           en: 'East Diamond + ${mechanic}',
           de: 'östlicher Diamant + ${mechanic}',
+          fr: 'Diamant Est + ${mechanic}',
           ja: '東 + ${mechanic}',
           cn: '右 (东) 菱形 + ${mechanic}',
           ko: '동쪽 + ${mechanic}',
@@ -1098,6 +1156,7 @@ const triggerSet: TriggerSet<Data> = {
         south: {
           en: 'South Diamond + ${mechanic}',
           de: 'südlicher Diamant + ${mechanic}',
+          fr: 'Diamant Sud + ${mechanic}',
           ja: '南 + ${mechanic}',
           cn: '下 (南) 菱形 + ${mechanic}',
           ko: '남쪽 + ${mechanic}',
@@ -1105,6 +1164,7 @@ const triggerSet: TriggerSet<Data> = {
         west: {
           en: 'West Diamond + ${mechanic}',
           de: 'westlicher Diamant + ${mechanic}',
+          fr: 'Diamant Ouest + ${mechanic}',
           ja: '西 + ${mechanic}',
           cn: '左 (西) 菱形 + ${mechanic}',
           ko: '서쪽 + ${mechanic}',
@@ -1112,6 +1172,7 @@ const triggerSet: TriggerSet<Data> = {
         northeast: {
           en: 'Northeast Square + ${mechanic}',
           de: 'nordöstliches Viereck + ${mechanic}',
+          fr: 'Carré Nord-Est + ${mechanic}',
           ja: '北東 + ${mechanic}',
           cn: '右上 (东北) 正方形 + ${mechanic}',
           ko: '북동쪽 + ${mechanic}',
@@ -1119,6 +1180,7 @@ const triggerSet: TriggerSet<Data> = {
         southeast: {
           en: 'Southeast Square + ${mechanic}',
           de: 'südöstliches Viereck + ${mechanic}',
+          fr: 'Carré Sud-Est + ${mechanic}',
           ja: '南東 + ${mechanic}',
           cn: '右下 (东南) 正方形 + ${mechanic}',
           ko: '남동쪽 + ${mechanic}',
@@ -1126,6 +1188,7 @@ const triggerSet: TriggerSet<Data> = {
         southwest: {
           en: 'Southwest Square + ${mechanic}',
           de: 'südwestliches Viereck + ${mechanic}',
+          fr: 'Carré Sud-Ouest + ${mechanic}',
           ja: '南西 + ${mechanic}',
           cn: '左下 (西南) 正方形 + ${mechanic}',
           ko: '남서쪽 + ${mechanic}',
@@ -1133,6 +1196,7 @@ const triggerSet: TriggerSet<Data> = {
         northwest: {
           en: 'Northwest Square + ${mechanic}',
           de: 'nordwestliches Viereck + ${mechanic}',
+          fr: 'Carré Nord-Ouest + ${mechanic}',
           ja: '北西 + ${mechanic}',
           cn: '左上 (西北) 正方形 + ${mechanic}',
           ko: '북서쪽 + ${mechanic}',
@@ -1161,6 +1225,7 @@ const triggerSet: TriggerSet<Data> = {
         tower: {
           en: 'Tower',
           de: 'Türme',
+          fr: 'Tour',
           ja: '塔',
           cn: '塔',
           ko: '기둥',
@@ -1201,6 +1266,7 @@ const triggerSet: TriggerSet<Data> = {
         tower: {
           en: 'Get Tower (w/${player})',
           de: 'Nimm Turm mit (w/${player})',
+          fr: 'Prenez une tour (avec ${player})',
           ja: '塔踏み (${player})',
           cn: '踩塔 (与${player})',
           ko: '기둥 들어가기 (+${player})',
@@ -1208,6 +1274,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread (w/${player})',
           de: 'Verteilen (w/${player})',
+          fr: 'Écartez-vous (avec ${player})',
           ja: '散会 (${player})',
           cn: '分散 (与${player})',
           ko: '산개 들어가기 (+${player})',
@@ -1226,6 +1293,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Sides (Stay Sides)',
           de: 'Seiten (Seitlich bleiben)',
+          fr: 'Côtés (Restez sur les côtes',
           ja: '横へ (そのまま横)',
           cn: '两侧 (待在两侧)',
           ko: '양 옆 (양 옆에 있기)',
@@ -1242,6 +1310,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Right + Behind',
           de: 'Rechts + Hinten',
+          fr: 'Droite + Derrière',
           ja: '右 + 後ろ',
           cn: '右右右 + 去背后',
           ko: '오른쪽 + 뒤',
@@ -1258,6 +1327,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Left + Behind',
           de: 'Links + Hinten',
+          fr: 'Gauche + Derrière',
           ja: '左 + 後ろ',
           cn: '左左左 + 去背后',
           ko: '왼쪽 + 뒤',
@@ -1297,6 +1367,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge 4x Shuriken',
           de: 'Weiche 4x Shuriken aus',
+          fr: 'Évitez le shuriken x4',
           ja: '4x 手裏剣',
           cn: '躲避 4 次手里剑',
           ko: '수리검 4개 피하기',
@@ -1319,6 +1390,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid Expanding Lines',
           de: 'Weiche den größer werdenden Linien aus',
+          fr: 'Évitez les lignes en expansion',
           ja: 'AOE回避',
           cn: '远离扩大连线',
           ko: '커지는 장판들 피하기',
@@ -1334,6 +1406,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Under Rock + Lines',
           de: 'Unter dem Stein + Linien',
+          fr: 'Sous le rocher + lignes',
           ja: '石の下へ + 直線AOE',
           cn: '站在石头和线下',
           ko: '바위 밑으로 + 직선장판',
@@ -1373,6 +1446,7 @@ const triggerSet: TriggerSet<Data> = {
           stacks: {
             en: 'Stacks: ${player1}, ${player2}',
             de: 'Sammeln: ${player1}, ${player2}',
+            fr: 'Package : ${player1}, ${player2}',
             ja: '頭割り: ${player1}, ${player2}',
             cn: '分摊点: ${player1}, ${player2}',
             ko: '쉐어: ${player1}, ${player2}',
@@ -1445,7 +1519,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Protean',
           de: 'Um den Boss verteilen',
-          fr: 'Changement',
+          fr: 'Position autour du boss',
           ja: 'ボス基準て散開',
           cn: '四方分散',
           ko: '산개',
@@ -1469,6 +1543,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Shrink Lone Orb',
           de: 'Einzel-Orb verkleinern',
+          fr: 'Réduire l\'orbe isolé',
           ja: '玉の処理',
           cn: '缩小单独的球',
           ko: '혼자 있는 구슬 작아지게 만들기',
@@ -1494,6 +1569,7 @@ const triggerSet: TriggerSet<Data> = {
         beBehindTank: {
           en: 'Stay Behind Tank',
           de: 'Hinter dem Tank stehen',
+          fr: 'Restez derrière le tank',
           ja: 'タンクの後ろ',
           cn: '站坦克后面',
           ko: '탱커 뒤에 서기',
@@ -1501,6 +1577,7 @@ const triggerSet: TriggerSet<Data> = {
         blockLaser: {
           en: 'Block Laser on ${player}',
           de: 'Blockiere Laser auf ${player}',
+          fr: 'Bloquer le laser sur ${player}',
           ja: '${player}の前でカバー',
           cn: '挡枪 ${player}',
           ko: '${player} 대상 레이저 앞에서 맞기',
@@ -1508,6 +1585,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidLaser: {
           en: 'Avoid Laser',
           de: 'Laser vermeiden',
+          fr: 'Évitez le laser',
           ja: 'レイザー回避',
           cn: '躲避激光',
           ko: '레이저 피하기',
@@ -1635,6 +1713,9 @@ const triggerSet: TriggerSet<Data> = {
         de:
           `Voll gemischt bedeutet, dass jeder beide Farben hat (zwei von der einen, eine von der anderen).
              Halb gemischt bedeutet, dass zwei Personen beide Farben haben und zwei Personen nur eine Farbe haben`,
+        fr:
+          `Complètement mixé signifie que tout le monde à les deux couleurs (deux de l'une et un de l'autre).
+           Mixé à moitié signifie que deux personnes ont les deux couleurs et deux ont la même couleur.`,
         cn: `全异色 指的是所有人的 3 个 buff 中有 2 个同色 buff (2 个是一种颜色, 剩下 1 个是另一种)。
              半异色 指的是 2 个人有 2 个同色buff, 其余 2 人拥有 3 个同色buff。`,
         ko: `완전 혼합은 모든 사람이 두 가지 색을 가지고 있음을 의미합니다 (한 가지 색 두 개, 다른 색 하나).
@@ -1652,6 +1733,7 @@ const triggerSet: TriggerSet<Data> = {
           alertText: {
             en: '${color1} -> ${color2} -> ${color3} (${mixedType})',
             de: '${color1} -> ${color2} -> ${color3} (${mixedType})',
+            fr: '${color1} -> ${color2} -> ${color3} (${mixedType})',
             ja: '${color1} -> ${color2} -> ${color3} (${mixedType})',
             cn: '${color1} -> ${color2} -> ${color3} (${mixedType})',
             ko: '${color1} -> ${color2} -> ${color3} (${mixedType})',
@@ -1659,6 +1741,7 @@ const triggerSet: TriggerSet<Data> = {
           infoText: {
             en: '(first ${color} w/${player})',
             de: '(zuerst ${color} mit ${player})',
+            fr: '(premier ${color} avec ${player})',
             ja: '1番 ${color} +${player}',
             cn: '(第一个 ${color} 和 ${player})',
             ko: '1번 ${color} +${player}',
@@ -1666,6 +1749,7 @@ const triggerSet: TriggerSet<Data> = {
           orange: {
             en: 'Orange',
             de: 'Orange',
+            fr: 'Orange',
             ja: '赤',
             cn: '橙色',
             ko: '주황',
@@ -1673,6 +1757,7 @@ const triggerSet: TriggerSet<Data> = {
           blue: {
             en: 'Blue',
             de: 'Blau',
+            fr: 'Bleu',
             ja: '青',
             cn: '蓝色',
             ko: '파랑',
@@ -1680,6 +1765,7 @@ const triggerSet: TriggerSet<Data> = {
           mixedTypeFull: {
             en: 'full mixed',
             de: 'Voll gemischt',
+            fr: 'Complètement mixé',
             ja: '全混合',
             cn: '全异色',
             ko: '완전 혼합',
@@ -1687,6 +1773,7 @@ const triggerSet: TriggerSet<Data> = {
           mixedTypeHalf: {
             en: 'half mixed',
             de: 'Halb gemischt',
+            fr: 'Mixé à moitié',
             ja: '半分混合',
             cn: '半异色',
             ko: '반혼합',
@@ -1762,6 +1849,7 @@ const triggerSet: TriggerSet<Data> = {
         blueTower1: {
           en: 'Inside Blue Tower 1',
           de: 'Innerhalb blauer Turm 1',
+          fr: 'À l\'intérieur de la tour bleue 1',
           ja: '内側の青塔1',
           cn: '内侧 蓝塔 1',
           ko: '안쪽 파랑 기둥1',
@@ -1769,6 +1857,7 @@ const triggerSet: TriggerSet<Data> = {
         orangeTower1: {
           en: 'Inside Orange Tower 1',
           de: 'Innerhalb orangener Turm 1',
+          fr: 'À l\'intérieur de la tour orange 1',
           ja: '内側の赤塔1',
           cn: '内侧 橙塔 1',
           ko: '안쪽 주황 기둥1',
@@ -1797,6 +1886,7 @@ const triggerSet: TriggerSet<Data> = {
         blueTower1: {
           en: 'Inside Blue Tower 1',
           de: 'Mittig blauer Turm 1',
+          fr: 'À l\'intérieur de la tour bleue 1',
           ja: '内側の青塔1',
           cn: '内侧 蓝塔 1',
           ko: '안쪽 파랑 기둥 1',
@@ -1804,6 +1894,7 @@ const triggerSet: TriggerSet<Data> = {
         orangeTower1: {
           en: 'Inside Orange Tower 1',
           de: 'Mittig orangener Turm 1',
+          fr: 'À l\'intérieur de la tour orange 1',
           ja: '内側の赤塔1',
           cn: '内侧 橙塔 1',
           ko: '안쪽 주황 기둥 1',
@@ -1811,6 +1902,7 @@ const triggerSet: TriggerSet<Data> = {
         blueTower2: {
           en: 'Corner Blue Tower 2',
           de: 'Ecke blauer Turm 2',
+          fr: 'Tour bleu 2 dans le coin',
           ja: '隅の青塔2',
           cn: '角落 蓝塔 2',
           ko: '구석 파랑 기둥 2',
@@ -1818,6 +1910,7 @@ const triggerSet: TriggerSet<Data> = {
         orangeTower2: {
           en: 'Corner Orange Tower 2',
           de: 'Ecke orangener Turm 2',
+          fr: 'Tour orange 2 dans le coin',
           ja: '隅の赤塔2',
           cn: '角落 橙塔 2',
           ko: '구석 주황 기둥 2',
@@ -1825,6 +1918,7 @@ const triggerSet: TriggerSet<Data> = {
         blueTower3: {
           en: 'Placed Blue Tower 3',
           de: 'Platzierter blauer Turm 3',
+          fr: 'Tour bleue placée 3',
           ja: '設置した青塔3',
           cn: '放置 蓝塔 3',
           ko: '설치한 파랑 기둥 3',
@@ -1832,6 +1926,7 @@ const triggerSet: TriggerSet<Data> = {
         orangeTower3: {
           en: 'Placed Orange Tower 3',
           de: 'Platzierter orangener Turm 3',
+          fr: 'Tour orange placée 3',
           ja: '設置した赤塔3',
           cn: '放置 橙塔 3',
           ko: '설치한 주황 기둥 3',
@@ -1893,6 +1988,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '(${text})',
           de: '(${text})',
+          fr: '(${text})',
           ja: '(${text})',
           cn: '(${text})',
           ko: '(${text})',
@@ -1920,6 +2016,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${text1} => ${text2} => ${text3}',
           de: '${text1} => ${text2} => ${text3}',
+          fr: '${text1} => ${text2} => ${text3}',
           ja: '${text1} => ${text2} => ${text3}',
           cn: '${text1} => ${text2} => ${text3}',
           ko: '${text1} => ${text2} => ${text3}',
@@ -1959,6 +2056,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Sides + Out => Stay Out',
           de: 'Seiten + Raus => Bleib drausen',
+          fr: 'Côtés + Extérieur => Restez à l\'extérieur',
           ja: '横へ + 外 => そのまま外',
           cn: '两侧 + 远离 => 待在外面',
           ko: '양 옆 + 밖 => 밖에 있기',
@@ -1974,6 +2072,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Under => Sides + Out',
           de: 'Unter ihn => Seiten + Geh Raus',
+          fr: 'Dessous => Côtés + Extérieur',
           ja: 'ボスの下へ => 横へ + 外',
           cn: '去脚下 => 两侧 + 出去',
           ko: '안 => 양 옆 + 밖',
@@ -1990,6 +2089,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Sides + Out',
           de: 'Seiten + Raus',
+          fr: 'Côtés + Extérieur',
           ja: '横へ + 外',
           cn: '两侧 + 出去',
           ko: '양 옆 + 밖',
@@ -2137,6 +2237,7 @@ const triggerSet: TriggerSet<Data> = {
           backOnYou: {
             en: 'Back Tether on YOU',
             de: 'Zurück-Verbindung auf DIR',
+            fr: 'Lien arrière sur VOUS',
             ja: '自分の後ろに線',
             cn: '后方连线点名!',
             ko: '선-뒤쪽 대상자',
@@ -2144,6 +2245,7 @@ const triggerSet: TriggerSet<Data> = {
           leftOnYou: {
             en: 'Left Tether on YOU',
             de: 'Links-Verbindung auf DIR',
+            fr: 'Lien à gauche sur VOUS',
             ja: '自分の左に線',
             cn: '左侧连线点名!',
             ko: '선-왼쪽 대상자',
@@ -2151,6 +2253,7 @@ const triggerSet: TriggerSet<Data> = {
           frontOnYou: {
             en: 'Front Tether on YOU',
             de: 'Vorne-Verbindung auf DIR',
+            fr: 'Lien avant sur VOUS',
             ja: '自分の前に線',
             cn: '前方连线点名!',
             ko: '선-앞쪽 대상자',
@@ -2158,6 +2261,7 @@ const triggerSet: TriggerSet<Data> = {
           rightOnYou: {
             en: 'Right Tether on YOU',
             de: 'Rechts-Verbindung auf DIR',
+            fr: 'Lien à droite sur VOUS',
             ja: '自分の右に線',
             cn: '右侧连线点名!',
             ko: '선-오른쪽 대상자',
@@ -2165,6 +2269,7 @@ const triggerSet: TriggerSet<Data> = {
           backOnPlayer: {
             en: 'Back Tether on ${player}',
             de: 'Zurück-Verbindung auf ${player}',
+            fr: 'Lien arrière sur ${player}',
             ja: '後ろの線: ${player}',
             cn: '后方连线点 ${player}',
             ko: '선-뒤쪽 ${player}',
@@ -2172,6 +2277,7 @@ const triggerSet: TriggerSet<Data> = {
           leftOnPlayer: {
             en: 'Left Tether on ${player}',
             de: 'Links-Verbindung auf ${player}',
+            fr: 'Lien à gauche sur ${player}',
             ja: '左の線: ${player}',
             cn: '左侧连线点 ${player}',
             ko: '선-왼쪽 ${player}',
@@ -2179,6 +2285,7 @@ const triggerSet: TriggerSet<Data> = {
           frontOnPlayer: {
             en: 'Front Tether on ${player}',
             de: 'Vorne-Verbindung auf ${player}',
+            fr: 'Lien avant sur ${player}',
             ja: '前の線: ${player}',
             cn: '前方连线点 ${player}',
             ko: '선-앞쪽 ${player}',
@@ -2186,6 +2293,7 @@ const triggerSet: TriggerSet<Data> = {
           rightOnPlayer: {
             en: 'Right Tether on ${player}',
             de: 'Rechts-Verbindung auf ${player}',
+            fr: 'Lien à droite sur ${player}',
             ja: '右の線: ${player}',
             cn: '右侧连线点 ${player}',
             ko: '선-오른쪽 ${player}',
@@ -2228,6 +2336,7 @@ const triggerSet: TriggerSet<Data> = {
           backOnYou: {
             en: 'Back Tether (${partners})',
             de: 'Zurück-Verbindung (${partners}))',
+            fr: 'Lien arrière (${partners})',
             ja: '後ろの線 (${partners})',
             cn: '后方连线 (和 ${partners})',
             ko: '선-뒤쪽 (${partners})',
@@ -2236,6 +2345,7 @@ const triggerSet: TriggerSet<Data> = {
           leftOnYou: {
             en: 'Left Tether (${partners})',
             de: 'Links-Verbindung (${partners})',
+            fr: 'Lien à gauche (${partners})',
             ja: '左の線 (${partners})',
             cn: '左侧连线 (和 ${partners})',
             ko: '선-왼쪽 (${partners})',
@@ -2243,6 +2353,7 @@ const triggerSet: TriggerSet<Data> = {
           frontOnYou: {
             en: 'Front Tether (${partners})',
             de: 'Vorne-Verbindung (${partners})',
+            fr: 'Lien avant (${partners})',
             ja: '前の線 (${partners})',
             cn: '前方连线 (和 ${partners})',
             ko: '선-앞쪽 (${partners})',
@@ -2250,6 +2361,7 @@ const triggerSet: TriggerSet<Data> = {
           rightOnYou: {
             en: 'Right Tether (${partners})',
             de: 'Rechts-Verbindung (${partners})',
+            fr: 'Lien à droite (${partners})',
             ja: '右の線 (${partners})',
             cn: '右侧连线 (和 ${partners})',
             ko: '선-오른쪽 (${partners})',
@@ -2257,6 +2369,7 @@ const triggerSet: TriggerSet<Data> = {
           unmarked: {
             en: 'Unmarked (${partners})',
             de: 'Unmarkiert (${partners})',
+            fr: 'Non-marqué (${partners})',
             ja: '線なし (${partners})',
             cn: '无点名 (和 ${partners})',
             ko: '무징 (${partners})',
@@ -2264,6 +2377,7 @@ const triggerSet: TriggerSet<Data> = {
           melee: {
             en: 'melees together',
             de: 'Nahkämpfer zusammen',
+            fr: 'Mêlées ensemble',
             ja: '近接ペア',
             cn: '近战同组',
             ko: '근딜끼리',
@@ -2271,6 +2385,7 @@ const triggerSet: TriggerSet<Data> = {
           role: {
             en: 'roles together',
             de: 'Rollen zusammen',
+            fr: 'Rôles ensemble',
             ja: 'ロールペア',
             cn: '职能分组',
             ko: '역할군끼리',
@@ -2278,6 +2393,7 @@ const triggerSet: TriggerSet<Data> = {
           partner: {
             en: 'partners together',
             de: 'Partner zusammen',
+            fr: 'Partenaires ensemble',
             ja: 'ペア',
             cn: '搭档分组',
             ko: '파트너끼리',
@@ -2352,6 +2468,7 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
+          fr: 'Nord/Sud',
           ja: '北・南',
           cn: '上 (北)/下 (南)',
           ko: '북쪽/남쪽',
@@ -2359,6 +2476,7 @@ const triggerSet: TriggerSet<Data> = {
         eastWest: {
           en: 'East/West',
           de: 'Osten/Westen',
+          fr: 'Est/Ouest',
           ja: '東・西',
           cn: '左 (西)/右 (东)',
           ko: '동쪽/서쪽',
@@ -2381,6 +2499,7 @@ const triggerSet: TriggerSet<Data> = {
         baitNear: {
           en: 'Bait Near (Tether Far)',
           de: 'Nah ködern (Verbindung Fern)',
+          fr: 'Attirez proche (Lien éloigné)',
           ja: 'ニア (線ファー)',
           cn: '靠近引导 (连线远离)',
           ko: '유도 가까이 (선 멀리)',
@@ -2388,6 +2507,7 @@ const triggerSet: TriggerSet<Data> = {
         baitFar: {
           en: 'Bait Far (Tether Near)',
           de: 'Fern ködern (Verbindung Nah)',
+          fr: 'Attirez loin (Lien proche)',
           ja: 'ファー (線ニア)',
           cn: '远离引导 (连线靠近)',
           ko: '멀리 유도 (선 가까이)',
@@ -2395,6 +2515,7 @@ const triggerSet: TriggerSet<Data> = {
         tetherNear: {
           en: 'Tether Near (Bait Far)',
           de: 'Verbindung Nahe (Fern ködern)',
+          fr: 'Lien proche (Attirez loin)',
           ja: '線ニア (誘導ファー)',
           cn: '靠近拉线 (引导远离)',
           ko: '선 가까이 (유도 가까이)',
@@ -2402,6 +2523,7 @@ const triggerSet: TriggerSet<Data> = {
         tetherFar: {
           en: 'Tether Far (Bait Near)',
           de: 'Verbindung Fern (Nahe ködern)',
+          fr: 'Lien éloigné (Attirez proche)',
           ja: '線ファー (誘導ニア)',
           cn: '远离拉线 (引导靠近)',
           ko: '선 멀리 (유도 멀리)',
@@ -2457,6 +2579,7 @@ const triggerSet: TriggerSet<Data> = {
         back: {
           en: '(then stay)',
           de: '(bleib stehen)',
+          fr: '(puis restez)',
           ja: '(後はそのまま)',
           cn: '(稍后 停)',
           ko: '(이후 그대로)',
@@ -2464,6 +2587,7 @@ const triggerSet: TriggerSet<Data> = {
         left: {
           en: '(then left)',
           de: '(dann links)',
+          fr: '(puis à gauche)',
           ja: '(後は左)',
           cn: '(稍后 去左侧)',
           ko: '(이후 왼쪽)',
@@ -2471,6 +2595,7 @@ const triggerSet: TriggerSet<Data> = {
         front: {
           en: '(then through)',
           de: '(dann durchgehen)',
+          fr: '(puis devant)',
           ja: '(後はまたいで移動)',
           cn: '(稍后 穿)',
           ko: '(이후 가로지르기)',
@@ -2478,6 +2603,7 @@ const triggerSet: TriggerSet<Data> = {
         right: {
           en: '(then right)',
           de: '(dann rechts)',
+          fr: '(puis à droite)',
           ja: '(後は右)',
           cn: '(稍后 去右侧)',
           ko: '(이후 오른쪽)',
@@ -2557,6 +2683,7 @@ const triggerSet: TriggerSet<Data> = {
         back: {
           en: 'Stay',
           de: 'Bleib stehen',
+          fr: 'Restez',
           ja: 'そのまま',
           cn: '停',
           ko: '그대로',
@@ -2565,6 +2692,7 @@ const triggerSet: TriggerSet<Data> = {
         front: {
           en: 'Through',
           de: 'Lauf durch',
+          fr: 'À travers',
           ja: 'またいで',
           cn: '穿',
           ko: '가로지르기',
@@ -2679,6 +2807,7 @@ const triggerSet: TriggerSet<Data> = {
         left: {
           en: 'Left Tether (${partners})',
           de: 'Linke Verbindung (${partners})',
+          fr: 'Lien à gauche (${partners})',
           ja: '左線 (${partners})',
           cn: '左侧连线 (${partners})',
           ko: '왼쪽 선 (${partners})',
@@ -2686,6 +2815,7 @@ const triggerSet: TriggerSet<Data> = {
         right: {
           en: 'Right Tether (${partners})',
           de: 'Rechte Verbindung (${partners})',
+          fr: 'Lien à droite (${partners})',
           ja: '右線 (${partners})',
           cn: '右侧连线 (${partners})',
           ko: '오른쪽 선 (${partners})',
@@ -2693,6 +2823,7 @@ const triggerSet: TriggerSet<Data> = {
         role: {
           en: 'roles together',
           de: 'Rollen zusammen',
+          fr: 'Rôles ensemble',
           ja: 'ロールペア',
           cn: '职能集合',
           ko: '역할군끼리',
@@ -2700,6 +2831,7 @@ const triggerSet: TriggerSet<Data> = {
         partner: {
           en: 'partners together',
           de: 'Partner zusammen',
+          fr: 'Partenaires ensemble',
           ja: 'ペア',
           cn: '和搭档集合',
           ko: '파트너끼리',
@@ -2816,7 +2948,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Ashigaru Kyuhei': 'ashigaru kyûhei',
         'Ball of Levin': 'orbe de foudre',
@@ -2837,6 +2968,8 @@ const triggerSet: TriggerSet<Data> = {
         'The Trial Of Wisdom': 'Épreuve de la Connaissance',
       },
       'replaceText': {
+        '\\(circles\\)': '(Cercles)',
+        '\\(lines\\)': '(Lignes)',
         'Azure Auspice': 'Auspice azuré',
         'Boundless Azure': 'Lueur azurée',
         'Boundless Scarlet': 'Lueur écarlate',

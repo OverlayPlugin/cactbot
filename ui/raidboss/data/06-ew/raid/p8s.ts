@@ -1256,6 +1256,7 @@ const triggerSet: TriggerSet<Data> = {
         crush: {
           en: 'Crush',
           de: 'Zerquetschen',
+          fr: 'Écrasement',
           ja: 'クラッシュ',
           cn: '碎击',
           ko: '파괴',
@@ -2820,7 +2821,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<!Illusory )Hephaistos': 'Héphaïstos',
         'Gorgon': 'Gorgone',
@@ -2828,6 +2828,8 @@ const triggerSet: TriggerSet<Data> = {
         'Suneater': 'Serpent en flammes',
       },
       'replaceText': {
+        'line': 'Ligne',
+        '--auto--': '--Auto--',
         'Abyssal Fires': 'Tempête enflammée',
         'Aionagonia': 'Aion agonia',
         'Aioniopyr': 'Aion pur',

@@ -1158,7 +1158,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Hegemone': 'Hégémone',
         'Parasitos': 'créature parasite',
@@ -1180,6 +1179,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pathogenic Cells': 'Souffle de cellules parasites',
         'Polyominoid Sigma': 'Polyomino éthéré Σ',
         'Polyominous Dark IV': 'Polyomino Giga Ténèbres',
+        '(?<!Dual )Predation': 'Attaque parasitaire',
         'Ptera Ixou': 'Ptera Ixou',
         'Reek Havoc': 'Exhalaison',
         'Synergy': 'Synergie',

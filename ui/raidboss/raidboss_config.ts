@@ -199,6 +199,7 @@ const kDetailKeys = {
       // people who know what they're doing.
       en: 'DEBUG delay adjust (sec)',
       de: 'DEBUG Verzögerungseinstellung (sec)',
+      fr: 'Délai d\'ajustement DEBUG (s)',
       ja: 'DEBUGの待機調整 (秒)',
       cn: 'DEBUG 延时调整 (秒)',
       ko: '"디버그" 딜레이 조절 (초)',
@@ -1859,6 +1860,7 @@ const defaultTriggerSetAlertOutput = {
   name: {
     en: 'Default trigger set alert output',
     de: 'Standard trigger-Set Alert Ausgabe',
+    fr: 'Sortie par défaut des déclencheurs',
     ja: '基本トリガーセットの通知方法',
     cn: '默认触发器集合提示输出模式',
     ko: '기본 트리거 세트 알람 출력 방식',
@@ -2169,6 +2171,10 @@ const templateOptions: OptionsTemplate = {
              Spitznamen/Vornamen verwendet. Dies kann verwendet werden, um stattdessen Spieler-Jobs darzustellen.
              Wenn Sie nicht in einer Gruppe sind oder Spieler nicht in einer Gruppe sind (oder es Fehler gibt),
              wird standardmäßig der Spitzname des Spielers verwendet, wenn es keine anderen Informationen gibt.`,
+        fr: `Méthode par défaut pour afficher les joueurs lors des annonces. Par défaut,
+             on utilise surnom/prénom. Vous pouvez afficher les jobs à la place.
+             Si vous n'êtes pas dans une équipe ou si des joueurs sont déconnectés (ou s'il y a des bugs),
+             on bascule l'affichage sur le surnom s'il n'y a pas d'autres informations.`,
         ja: `トリガーでプレイヤーの名前を表示する方法です。基本であだ名・ファストネームをつかいます。
              あなたがパティに入ってない場合とパティ以外のプレイヤーはあだ名とファストネームが表示されます。`,
         cn: `在触发器输出中指定玩家的默认方式。默认选项为输出昵称/名字。
@@ -2184,6 +2190,7 @@ const templateOptions: OptionsTemplate = {
       name: {
         en: 'Default Player Label',
         de: 'Standard Spieler Label',
+        fr: 'Affichage par défaut des joueurs',
         ja: '基本プレイヤーラベル',
         cn: '默认玩家代称',
         ko: '플레이어를 언급하는 기본 방법',
@@ -2203,6 +2210,13 @@ const templateOptions: OptionsTemplate = {
           'Job (WAR)': 'job',
           'Job ausgeschrieben (Warrior)': 'jobFull',
           'Kompletter Name (Tini Poutini)': 'name',
+        },
+        fr: {
+          'Surnom (Tini)': 'nick',
+          'Rôle (Tank)': 'role',
+          'Job (WAR)': 'job',
+          'Job complet (Warrior)': 'jobFull',
+          'Nom complet (Tini Poutini)': 'name',
         },
         ja: {
           'あだ名 (Tini)': 'nick',

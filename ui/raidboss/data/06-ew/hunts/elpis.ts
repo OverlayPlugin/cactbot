@@ -131,6 +131,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Follow Jump => Under',
           de: 'Sprung folgen => Unter den Boss',
+          fr: 'Suivre le saut => Sous le boss',
           ja: 'ジャンプ近づく => 下へ',
           cn: '跟随跳跃 => 脚下',
           ko: '점프 따라가기 => 보스 아래로',
@@ -148,6 +149,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away From Jump',
           de: 'Weg vom Sprung',
+          fr: 'Loin du saut',
           ja: 'ジャンプから離れる',
           cn: '远离跳跃',
           ko: '점프뛴 곳에서 멀리 떨어지기',

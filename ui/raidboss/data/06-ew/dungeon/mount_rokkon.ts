@@ -419,6 +419,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir1} => ${dir2}',
           de: '${dir1} => ${dir2}',
+          fr: '${dir1} => ${dir2}',
           cn: '${dir1} => ${dir2}',
           ko: '${dir1} => ${dir2}',
         },
@@ -452,6 +453,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir1} => ${dir2}',
           de: '${dir1} => ${dir2}',
+          fr: '${dir1} => ${dir2}',
           cn: '${dir1} => ${dir2}',
           ko: '${dir1} => ${dir2}',
         },
@@ -892,7 +894,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Ancient Katana': 'katana ancien',
         'Ashigaru Kyuhei': 'ashigaru kyûhei',
@@ -980,8 +981,10 @@ const triggerSet: TriggerSet<Data> = {
         'Rush': 'Ruée',
         'Scarlet Auspice': 'Auspice écarlate',
         'Seal of Riotous Bloom': 'Sceau de floraison vivace',
-        'Seal of the Fleeting': 'Sceau de floraison',
+        'Seal of the Blossom': 'Sceau de floraison',
+        'Seal of the Fleeting': 'Sceau des quatre saisons',
         'Seasons of the Fleeting': 'Quatre saisons',
+        'Season of Element': 'Saison de l\'élément',
         'Self-destruct': 'Auto-destruction',
         'Shadowflight': 'Vol ombrageux',
         '(?<! )Shock': 'Décharge électrostatique',
