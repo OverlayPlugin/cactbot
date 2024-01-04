@@ -146,14 +146,14 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
     if (name && !foundNames.has(name))
       log.alert(`Known name missing from data: ${rawName}.  Please investigate.`);
   }
-  log.debug(`Known name mapping check complete.`);
+  log.debug('Known name mapping check complete.');
 
   // Add custom effect name for necessary duplicates.
   for (const [name, id] of Object.entries(customMapping)) {
     map.set(name, id);
     log.debug(`Added custom mapping: ${name} (ID: ${id})`);
   }
-  log.debug(`Custom name mappings added.`);
+  log.debug('Custom name mappings added.');
 
   // Store ids as hex.
   map.forEach((id, name) => formattedData[name] = id.toString(16).toUpperCase());

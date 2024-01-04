@@ -127,9 +127,9 @@ const fetchLocaleCsvTables = async () => {
   log.debug(
     `Table: ${_LOCALE_TABLE} | Query columns: [${_LOCALE_INPUT_COLS.toString()}] | Output: [${_LOCALE_OUTPUT_COLS.toString()}]`,
   );
-  log.debug(`Fetching 'cn' table...`);
+  log.debug('Fetching \'cn\' table...');
   const cnBNpcNames = await getCnTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
-  log.debug(`Fetching 'ko' table...`);
+  log.debug('Fetching \'ko\' table...');
   const koBNpcNames = await getKoTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
   return {
     cn: cnBNpcNames,
