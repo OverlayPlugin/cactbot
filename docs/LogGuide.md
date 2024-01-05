@@ -200,7 +200,7 @@ This guide was last updated for:
 
 ## Data Flow
 
-![Alt text](https://g.gravizo.com/source/data_flow?https%3A%2F%2Fraw.githubusercontent.com%OverlayPlugin%2Fcactbot%2Fmain%2Fdocs%2FLogGuide.md)
+![Alt text](https://g.gravizo.com/source/data_flow?https%3A%2F%2Fraw.githubusercontent.com%2FOverlayPlugin%2Fcactbot%2Fmain%2Fdocs%2FLogGuide.md)
 
 <details>
 <summary></summary>
