@@ -555,6 +555,18 @@ const lineDocs: LineDocs = {
       ],
     },
   },
+  ContentFinderSettings: {
+    examples: {
+      'en-US': [
+        // Case 1, Content Finder settings not supported in zone
+        '265|2024-01-04T21:11:46.6810000-05:00|86|Middle La Noscea|False|0|0|0|0|0|00eaa235236e5121',
+        // Case 2, Content Finder settings supported, Explorer mode set
+        '265|2024-01-04T21:12:02.4720000-05:00|40C|Sastasha|True|0|0|0|1|0|2ff0a9f6e1a54176',
+        // Case 3, Unrestricted Party, Level Sync, Minimum IL, and Silence Echo set
+        '265|2024-01-04T21:12:35.0540000-05:00|415|the Bowl of Embers|True|1|1|1|0|1|55fdf5241f168a5e',
+      ],
+    },
+  },
 } as const;
 
 type LogGuideOptions = {

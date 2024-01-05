@@ -33,6 +33,7 @@ const pageText = {
     en: 'Filter Log for Analysis',
     de: 'Filter Log für Analysen',
     fr: 'Filtrer le log pour analyse',
+    cn: '过滤日志进行分析',
   },
   exportInput: {
     en: 'Export',
