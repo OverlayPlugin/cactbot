@@ -2779,7 +2779,10 @@ Parsed Log Line Examples:
 This log line tracks the current Content Finder settings.
 `inContentFinderContent` is whether the current zone supports Content Finder settings.
 
-`unrestrictedParty`, `minimalItemLevel`, `silenceEcho`, `explorerMode`, and `levelSync` are `0` for disabled or `1` for enabled.
+Values for `unrestrictedParty`, `minimalItemLevel`, `silenceEcho`,
+`explorerMode`, and `levelSync` are pulled directly from the game.
+As of FFXIV patch 6.5.1, a value of `0` indicates that the setting is disabled,
+and a value of `1` indicates that it is enabled.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=ContentFinderSettings&lang=en-US) -->
 
