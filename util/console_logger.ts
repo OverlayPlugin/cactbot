@@ -69,4 +69,3 @@ export class ConsoleLogger {
     process.exit(1);
   }
 }
-
