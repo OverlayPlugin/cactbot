@@ -1,13 +1,13 @@
 import path from 'path';
 
-import { ConsoleLogger, LogLevelKey } from './generate_data_files';
+import { ConsoleLogger, LogLevelKey } from './console_logger';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _WORLD_ID: OutputFileAttributes = {
   outputFile: 'resources/world_id.ts',
   type: 'Worlds',
   header: `// NOTE: This data is filtered to public worlds only (i.e. isPublic: true)
-  
+
   export type DataCenter = {
     id: number;
     name: string;
@@ -88,7 +88,8 @@ type OutputWorldIds = {
 };
 
 const _SCRIPT_NAME = path.basename(import.meta.url);
-let log: ConsoleLogger;
+const log = new ConsoleLogger();
+log.setLogLevel('alert');
 
 const scrubDataCenter = (dc: ResultDataCenter): OutputDataCenter | undefined => {
   if (dc.ID === null || dc.ID === '')
@@ -157,7 +158,6 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
 };
 
 export default async (logLevel: LogLevelKey): Promise<void> => {
-  log = new ConsoleLogger();
   log.setLogLevel(logLevel);
   log.info(`Starting processing for ${_SCRIPT_NAME}`);
 

@@ -2,8 +2,8 @@ import path from 'path';
 
 import { LocaleText } from '../types/trigger';
 
+import { ConsoleLogger, LogLevelKey } from './console_logger';
 import { cleanName, getCnTable, getKoTable } from './csv_util';
-import { ConsoleLogger, LogLevelKey } from './generate_data_files';
 import { OutputFileAttributes, XivApi } from './xivapi';
 import Overrides from './zone_overrides';
 
@@ -200,7 +200,8 @@ type OutputContainer = {
 };
 
 const _SCRIPT_NAME = path.basename(import.meta.url);
-let log: ConsoleLogger;
+const log = new ConsoleLogger();
+log.setLogLevel('alert');
 
 const indexTtData = (data: ResultTerritoryType[]): XivApiTerritoryType => {
   const ttData: XivApiTerritoryType = {};
@@ -750,7 +751,6 @@ const assembleData = async (
 };
 
 export default async (logLevel: LogLevelKey): Promise<void> => {
-  log = new ConsoleLogger();
   log.setLogLevel(logLevel);
   log.info(`Starting processing for ${_SCRIPT_NAME}`);
 

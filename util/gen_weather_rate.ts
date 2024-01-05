@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { ConsoleLogger, LogLevelKey } from './generate_data_files';
+import { ConsoleLogger, LogLevelKey } from './console_logger';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _WEATHER_RATE: OutputFileAttributes = {
@@ -83,7 +83,8 @@ type OutputWeatherRate = {
 };
 
 const _SCRIPT_NAME = path.basename(import.meta.url);
-let log: ConsoleLogger;
+const log = new ConsoleLogger();
+log.setLogLevel('alert');
 
 const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
   log.debug('Processing & assembling data...');
@@ -125,7 +126,6 @@ const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
 };
 
 export default async (logLevel: LogLevelKey): Promise<void> => {
-  log = new ConsoleLogger();
   log.setLogLevel(logLevel);
   log.info(`Starting processing for ${_SCRIPT_NAME}`);
 

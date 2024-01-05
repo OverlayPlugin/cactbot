@@ -2,8 +2,8 @@ import path from 'path';
 
 import { LocaleObject } from '../types/trigger';
 
+import { ConsoleLogger, LogLevelKey } from './console_logger';
 import { getCnTable, getKoTable } from './csv_util';
-import { ConsoleLogger, LogLevelKey } from './generate_data_files';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _HUNT: OutputFileAttributes = {
@@ -95,7 +95,8 @@ type OutputHuntMap = {
 };
 
 const _SCRIPT_NAME = path.basename(import.meta.url);
-let log: ConsoleLogger;
+const log = new ConsoleLogger();
+log.setLogLevel('alert');
 
 const deLocaleSubstitutions = (replaceString: string): string | string[] => {
   const substitutionMap: { [param: string]: string[] } = {
@@ -214,7 +215,6 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
 };
 
 export default async (logLevel: LogLevelKey): Promise<void> => {
-  log = new ConsoleLogger();
   log.setLogLevel(logLevel);
   log.info(`Starting processing for ${_SCRIPT_NAME}`);
 

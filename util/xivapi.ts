@@ -9,7 +9,7 @@ import { exec } from '@actions/exec';
 import eslint from 'eslint';
 import fetch from 'node-fetch';
 
-import { ConsoleLogger } from './generate_data_files';
+import { ConsoleLogger } from './console_logger';
 
 const _XIVAPI_URL = 'https://xivapi.com/';
 

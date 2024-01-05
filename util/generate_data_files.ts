@@ -3,6 +3,7 @@ import inquirer from 'inquirer';
 
 import { UnreachableCode } from '../resources/not_reached';
 
+import { ConsoleLogger, LogLevelKey, LogLevelLabel, logLevels } from './console_logger';
 import { default as generateEffectIds } from './gen_effect_id';
 import { default as generateHunt } from './gen_hunt_data';
 import { default as generatePetNames } from './gen_pet_names';
@@ -23,13 +24,6 @@ const fileKeys = [
 
 const allKey = 'all';
 const allLabel = '* Generate All Data Files';
-
-const logLevels = [
-  ['alert', 'ALERTS: issues that probably require action (RECOMMENDED)'],
-  ['info', 'INFO: more routine/known issues that may not require action'],
-  ['debug', 'DEBUG: detailed output for troubleshooting'],
-  ['silent', 'SILENT: success & fatal errors only (not recommended)'],
-] as const;
 
 type FileKey = typeof fileKeys[number];
 
@@ -61,9 +55,6 @@ const fileChoices: { name: FileLabelAll; value: FileKeyAll }[] = [
 const fileKeyToFuncAll: { [filename in FileKeyAll]: (logLevel: LogLevelKey) => Promise<void> } =
   ({ [allKey]: generateAll, ...fileKeyToFunc });
 
-export type LogLevelKey = typeof logLevels[number][0];
-type LogLevelLabel = typeof logLevels[number][1];
-
 const logLevelChoices: { name: LogLevelLabel; value: LogLevelKey }[] = logLevels.map((ll) => ({
   name: ll[1],
   value: ll[0],
@@ -83,7 +74,6 @@ type GenerateDataFilesInquirerType = {
   [name in keyof GenerateDataFilesNamespaceInterface]: GenerateDataFilesNamespaceInterface[name];
 };
 
-const logLevelDefault: LogLevelKey = 'alert';
 const fileDefault: FileKeyAll = 'all';
 
 // TODO: argparse isn't handling CLI options past the initial 'action'
@@ -112,7 +102,7 @@ const generateDataFilesFunc = async (args: Namespace): Promise<void> => {
   return inquirer.prompt<GenerateDataFilesInquirerType>(questions)
     .then((answers) => {
       const myChoice: FileKeyAll = answers.file ?? args.file ?? fileDefault;
-      const myLogLevel: LogLevelKey = answers.loglevel ?? args.loglevel ?? logLevelDefault;
+      const myLogLevel = answers.loglevel ?? args.loglevel ?? ConsoleLogger.logLevelDefault;
       return fileKeyToFuncAll[myChoice](myLogLevel);
     }).catch(console.error);
 };
@@ -144,61 +134,3 @@ export const registerGenerateDataFiles = (
     help: 'The level of console output you want to see',
   });
 };
-
-export class ConsoleLogger {
-  // assign numerical values to log levels so we can do a quick compare
-  // in deciding whether a user wants to see that type of log output
-  logLevelMap: { [K in LogLevelKey]: 0 | 1 | 2 | 3 } = {
-    silent: 0,
-    alert: 1,
-    info: 2,
-    debug: 3,
-  };
-  myLogLevel: typeof this.logLevelMap[LogLevelKey];
-
-  setLogLevel(logLevel?: LogLevelKey): void {
-    // class is initialized in scripts outside of all constructs,
-    // so it doesn't need to be passed to every function
-    // this happens before the default function is called
-    // with the user's log level choice.
-    if (logLevel === undefined)
-      return;
-    if (!Object.keys(this.logLevelMap).includes(logLevel))
-      this.fatalError('Invalid log level is set.');
-    this.myLogLevel = this.logLevelMap[logLevel];
-    this.debug(`Log level set: ${logLevel}`);
-  }
-
-  constructor(userLogLevelKey?: LogLevelKey) {
-    this.myLogLevel = this.logLevelMap[logLevelDefault]; // needs to be initialized first
-    this.setLogLevel(userLogLevelKey);
-  }
-
-  alert(msg: string): void {
-    if (this.myLogLevel >= this.logLevelMap.alert)
-      console.log(`Alert: ${msg}`);
-  }
-
-  info(msg: string): void {
-    if (this.myLogLevel >= this.logLevelMap.info)
-      console.log(`Info: ${msg}`);
-  }
-
-  debug(msg: string): void {
-    if (this.myLogLevel >= this.logLevelMap.debug)
-      console.log(`Debug: ${msg}`);
-  }
-
-  successDone(msg: string): void {
-    console.log(`Success: ${msg}`);
-  }
-
-  nonFatalError(msg: string): void {
-    console.log(`ERROR: ${msg}`);
-  }
-
-  fatalError(msg: string): void {
-    console.log(`ERROR: ${msg} Exiting...`);
-    process.exit(1);
-  }
-}

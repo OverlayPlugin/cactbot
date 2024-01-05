@@ -1,7 +1,7 @@
 import path from 'path';
 
+import { ConsoleLogger, LogLevelKey } from './console_logger';
 import { getCnTable, getKoTable } from './csv_util';
-import { ConsoleLogger, LogLevelKey } from './generate_data_files';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _PET_NAMES: OutputFileAttributes = {
@@ -49,7 +49,8 @@ type OutputPetNames = {
 };
 
 const _SCRIPT_NAME = path.basename(import.meta.url);
-let log: ConsoleLogger;
+const log = new ConsoleLogger();
+log.setLogLevel('alert');
 
 const fetchLocaleCsvTables = async () => {
   log.debug(`Table: ${_LOCALE_TABLE} | Query columns: [${_LOCALE_COLUMNS.toString()}]`);
@@ -106,7 +107,6 @@ const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
 };
 
 export default async (logLevel: LogLevelKey): Promise<void> => {
-  log = new ConsoleLogger();
   log.setLogLevel(logLevel);
   log.info(`Starting processing for ${_SCRIPT_NAME}`);
 
