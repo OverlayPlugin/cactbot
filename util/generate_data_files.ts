@@ -76,8 +76,6 @@ type GenerateDataFilesInquirerType = {
 
 const fileDefault: FileKeyAll = 'all';
 
-// TODO: argparse isn't handling CLI options past the initial 'action'
-// need to look into this more
 const generateDataFilesFunc = async (args: Namespace): Promise<void> => {
   if (!(args instanceof GenerateDataFilesNamespace))
     throw new UnreachableCode();
@@ -88,7 +86,7 @@ const generateDataFilesFunc = async (args: Namespace): Promise<void> => {
       message: 'Which data file do you want to generate?',
       choices: fileChoices,
       default: args.file,
-      when: () => typeof args.file !== 'string',
+      when: () => args.file === null || args.file === undefined,
     },
     {
       type: 'list',
@@ -96,14 +94,20 @@ const generateDataFilesFunc = async (args: Namespace): Promise<void> => {
       message: 'What level of console logging do you want?',
       choices: logLevelChoices,
       default: args.loglevel,
-      when: () => typeof args.loglevel !== 'string',
+      when: () => args.loglevel === null || args.loglevel === undefined,
     },
   ] as const;
   return inquirer.prompt<GenerateDataFilesInquirerType>(questions)
     .then((answers) => {
-      const myChoice: FileKeyAll = answers.file ?? args.file ?? fileDefault;
-      const myLogLevel = answers.loglevel ?? args.loglevel ?? ConsoleLogger.logLevelDefault;
-      return fileKeyToFuncAll[myChoice](myLogLevel);
+      // args.file and args.loglevel return as objects, rather than string primitives. /shrug
+      // when myLogLevel is passed to the gen_data function, it cannot recognize the log level,
+      // so force it here to a string and then re-apply the type with an assertion.
+      // parsearg already limits user-input values to the respective type literal.
+      const myFile: FileKeyAll = answers.file ?? args.file ?? fileDefault;
+      const myLogLevel: LogLevelKey = answers.loglevel ??
+        args.loglevel ??
+        ConsoleLogger.logLevelDefault;
+      return fileKeyToFuncAll[myFile](myLogLevel.toString() as LogLevelKey);
     }).catch(console.error);
 };
 
@@ -120,14 +124,14 @@ export const registerGenerateDataFiles = (
     description: actionChoices.generate.name,
   });
 
-  generateParser.addArgument('--file', {
+  generateParser.addArgument(['-f', '--file'], {
     nargs: 1,
     type: 'string',
     choices: Object.keys(fileKeyToFuncAll),
-    help: 'The name of the file to be generated (incl. \'all\')',
+    help: 'The data file to be generated (or \'all\')',
   });
 
-  generateParser.addArgument('--loglevel', {
+  generateParser.addArgument(['-ll', '--loglevel'], {
     nargs: 1,
     type: 'string',
     choices: logLevels.map((ll) => ll[0]),

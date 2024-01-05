@@ -13,7 +13,7 @@ check the `#important` channel in the [XIVAPI Discord server](https://discord.gg
 
 Cactbot uses a number of resources files that are sourced from game data.
 Once XIVAPI is updated, you can refresh those files data
-by running `npm run util generate` from your cacbot root repo directory.
+by running `npm run generate` from your cacbot root repo directory.
 From the interactive menu, you can choose to run one at a time,
 or you can run all of them by selecting `* Generate All Data Files`.
 The scripts that will be run (and the resources files they genereate) are:
