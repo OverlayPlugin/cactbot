@@ -31,7 +31,7 @@ export class ConsoleLogger {
     if (logLevel === undefined)
       return;
     if (!Object.keys(this.logLevelMap).includes(logLevel))
-      this.fatalError(`Invalid log level (${logLevel}) (type: ${typeof logLevel}) is set.`);
+      this.fatalError(`Invalid log level (${logLevel}) is set.`);
     this.myLogLevel = this.logLevelMap[logLevel];
     this.debug(`Log level set: ${logLevel}`);
   }
