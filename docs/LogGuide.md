@@ -8,9 +8,9 @@ for folks who want to write ACT triggers for ff14.
 
 This guide was last updated for:
 
-- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.4
-- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.8.9
-- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.20
+- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.5
+- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.9.7
+- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.24
 
 ## TOC
 
@@ -192,6 +192,10 @@ This guide was last updated for:
     - [Structure](#structure-36)
     - [Regexes](#regexes-36)
     - [Examples](#examples-36)
+  - [Line 265 (0x109): ContentFinderSettings](#line-265-0x109-contentfindersettings)
+    - [Structure](#structure-37)
+    - [Regexes](#regexes-37)
+    - [Examples](#examples-37)
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Data Flow
@@ -2767,3 +2771,50 @@ Parsed Log Line Examples:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=AbilityExtra&lang=en-US) -->
+
+<a name="line265"></a>
+
+### Line 265 (0x109): ContentFinderSettings
+
+This log line tracks the current Content Finder settings.
+`inContentFinderContent` is whether the current zone supports Content Finder settings.
+
+`unrestrictedParty`, `minimalItemLevel`, `silenceEcho`, `explorerMode`, and `levelSync` are `0` for disabled or `1` for enabled.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=ContentFinderSettings&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+265|[timestamp]|[zoneID]|[zoneName]|[inContentFinderContent]|[unrestrictedParty]|[minimalItemLevel]|[silenceEcho]|[explorerMode]|[levelSync]
+
+Parsed Log Line Structure:
+[timestamp] 265 109:[zoneID]:[zoneName]:[inContentFinderContent]:[unrestrictedParty]:[minimalItemLevel]:[silenceEcho]:[explorerMode]:[levelSync]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>265)\|(?<timestamp>[^|]*)\|(?<zoneID>[^|]*)\|(?<zoneName>[^|]*)\|(?<inContentFinderContent>[^|]*)\|(?<unrestrictedParty>[^|]*)\|(?<minimalItemLevel>[^|]*)\|(?<silenceEcho>[^|]*)\|(?<explorerMode>[^|]*)\|(?<levelSync>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 265 (?<type>109):(?<zoneID>[^:]*):(?<zoneName>[^:]*):(?<inContentFinderContent>[^:]*):(?<unrestrictedParty>[^:]*):(?<minimalItemLevel>[^:]*):(?<silenceEcho>[^:]*):(?<explorerMode>[^:]*):(?<levelSync>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+265|2024-01-04T21:11:46.6810000-05:00|86|Middle La Noscea|False|0|0|0|0|0|00eaa235236e5121
+265|2024-01-04T21:12:02.4720000-05:00|40C|Sastasha|True|0|0|0|1|0|2ff0a9f6e1a54176
+265|2024-01-04T21:12:35.0540000-05:00|415|the Bowl of Embers|True|1|1|1|0|1|55fdf5241f168a5e
+
+Parsed Log Line Examples:
+[21:11:46.681] 265 109:86:Middle La Noscea:False:0:0:0:0:0
+[21:12:02.472] 265 109:40C:Sastasha:True:0:0:0:1:0
+[21:12:35.054] 265 109:415:the Bowl of Embers:True:1:1:1:0:1
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=ContentFinderSettings&lang=en-US) -->

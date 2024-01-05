@@ -1181,6 +1181,26 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: 9,
   },
+  ContentFinderSettings: {
+    type: '265',
+    name: 'ContentFinderSettings',
+    source: 'OverlayPlugin',
+    messageType: '265',
+    fields: {
+      type: 0,
+      timestamp: 1,
+      zoneID: 2,
+      zoneName: 3,
+      inContentFinderContent: 4,
+      unrestrictedParty: 5,
+      minimalItemLevel: 6,
+      silenceEcho: 7,
+      explorerMode: 8,
+      levelSync: 9,
+    },
+    canAnonymize: true,
+    firstOptionalField: undefined,
+  },
 } as const;
 
 export const logDefinitionsVersions = {
