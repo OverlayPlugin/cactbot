@@ -7,12 +7,12 @@ import inquirer from 'inquirer';
 
 import { UnreachableCode } from '../resources/not_reached';
 
-import { ConsoleLogger, LogLevelKey } from './console_logger';
+import { ConsoleLogger, LogLevelKey, logLevels } from './console_logger';
 import { XivApi } from './xivapi';
 
 import { ActionChoiceType } from '.';
 
-const _LOGLEVEL: LogLevelKey = 'info';
+const _LOGLEVEL_DEFAULT: LogLevelKey = 'info';
 
 // XIVAPI does not require a ?columns=xx param in the URL string,
 // but without one, on a primary endpoint (e.g. Status), it will
@@ -30,12 +30,14 @@ type QueryXivApiNamespaceInterface = {
   'endpoint': string | null;
   'columns': string | null;
   'filters': string | null;
+  'loglevel': LogLevelKey | null;
 };
 
 class QueryXivApiNamespace extends Namespace implements QueryXivApiNamespaceInterface {
   'endpoint': string | null;
   'columns': string | null;
   'filters': string | null;
+  'loglevel': LogLevelKey | null;
 }
 
 type QueryXivApiInquirerType = {
@@ -115,7 +117,7 @@ const stringToNum = (val: string | number): number | undefined => {
 };
 
 const log = new ConsoleLogger();
-log.setLogLevel(_LOGLEVEL);
+log.setLogLevel(_LOGLEVEL_DEFAULT);
 
 // called by inquirer
 const queryApiFunc = async (args: Namespace): Promise<void> => {
@@ -148,7 +150,11 @@ const queryApiFunc = async (args: Namespace): Promise<void> => {
       const myEndpoint = answers.endpoint ?? args.endpoint?.toString() ?? '';
       const myColumns = answers.columns ?? args.columns?.toString() ?? _COLUMNS_DEFAULT;
       const myFilters = answers.filters ?? args.filters?.toString() ?? '';
-      return queryApi(myEndpoint, myColumns, myFilters);
+      // args.loglevel returns as an object, rather than a string primitive.
+      // so force it here to a string and then re-apply the type with an assertion.
+      // parsearg already limits user-input values to the respective type literal.
+      const myLogLevel: LogLevelKey = args.loglevel ?? _LOGLEVEL_DEFAULT;
+      return queryApi(myEndpoint, myColumns, myFilters, myLogLevel.toString() as LogLevelKey);
     }).catch(console.error);
 };
 
@@ -199,16 +205,26 @@ export const registerQueryXivApi = (
     type: 'string',
     help: 'Filter(s) to apply on returned data',
   });
+
+  queryParser.addArgument(['-ll', '--loglevel'], {
+    nargs: 1,
+    type: 'string',
+    choices: logLevels.map((ll) => ll[0]),
+    help: `The level of console output you want to see (default: ${_LOGLEVEL_DEFAULT})`,
+  });
 };
 
 const queryApi = async (
   endpoint: string,
   columns: string,
   filters: string,
+  loglevel: LogLevelKey,
 ): Promise<void> => {
   const outputToConsole = (result: XivApiQueryResult): void => {
     log.printNoHeader(JSON.stringify(result, null, 2).replace(/"/g, '\''));
   };
+
+  log.setLogLevel(loglevel);
 
   const _ENDPOINT = endpoint.trim();
   if (endpoint.length < 1) {
@@ -228,7 +244,7 @@ const queryApi = async (
     _ENDPOINT,
     _COLUMNS,
   ) as XivApiQueryResult;
-  
+
   if (filters === '') {
     log.debug('No filters were specified.');
     if (apiData.length === 0)
