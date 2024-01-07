@@ -177,7 +177,7 @@ export const registerQueryXivApi = (
 
     COLUMNS:  Specify a comma-separated list of columns. Whitespace is ignored. Use * for all (default).
 
-    FILTERS:  If the --filter option is used, it should be in the format [column] [operator] [value].
+    FILTER:   If the --filter option is used, it should be in the format [column] [operator] [value].
               Multiple filters must be separated by commas.  * in a [value] acts as a wildcard.
               Any [column] used for filtering must be included in the columns returned from the API.
               Valid [operators] are: =, !=, >, <, ~ (in), !~ (not in).
