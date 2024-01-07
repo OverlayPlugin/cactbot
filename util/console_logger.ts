@@ -68,4 +68,8 @@ export class ConsoleLogger {
     console.log(`ERROR: ${msg} Exiting...`);
     process.exit(1);
   }
+
+  printNoHeader(msg: string): void {
+    console.log(`${msg}`);
+  }
 }

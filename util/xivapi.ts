@@ -81,6 +81,7 @@ export class XivApi {
     let currentPage = 0;
     let maxPage = 1;
     const output: XivApiOutput = [];
+    const specificNodeRequested = endpoint.includes('/');
     while (currentPage < maxPage) {
       currentPage++;
       let url = `${_XIVAPI_URL}${endpoint}?limit=${_XIVAPI_RESULTS_LIMIT}&columns=${
@@ -94,10 +95,11 @@ export class XivApi {
       let jsonResult;
       try {
         const response = await fetch(url);
-        if (!response.ok)
-          throw new Error(`Network error occurred fetching API results.`);
         jsonResult = (await response.json()) as XivApiResult;
-        const pageNum = jsonResult.Pagination.Page;
+        if (!response.ok)
+          throw new Error(`Error occurred fetching API results.`);
+        // If hitting a specific endpoint node (e.g. Status/968), no Pagination object is returned.
+        const pageNum = specificNodeRequested ? 1 : jsonResult.Pagination.Page;
         if (pageNum === null || pageNum === undefined)
           throw new Error(`Invalid data returned from API query.`);
       } catch (e) {
@@ -114,13 +116,18 @@ export class XivApi {
       }
 
       if (currentPage === 1) {
-        maxPage = typeof jsonResult.Pagination.PageTotal === 'string'
-          ? parseInt(jsonResult.Pagination.PageTotal)
-          : jsonResult.Pagination.PageTotal;
+        // If hitting a specific endpoint node (e.g. Status/968), only one page is returned.
+        maxPage = specificNodeRequested ? 1 : (
+          typeof jsonResult.Pagination.PageTotal === 'string'
+            ? parseInt(jsonResult.Pagination.PageTotal)
+            : jsonResult.Pagination.PageTotal
+        );
         this.log.debug(`API endpoint ${endpoint} has ${maxPage} page(s).`);
       }
-
-      output.push(...Object.values(jsonResult.Results));
+      if (specificNodeRequested)
+        output.push(jsonResult);
+      else
+        output.push(...Object.values(jsonResult.Results));
     }
 
     this.log.info(`API query successful for endpoint: ${endpoint}`);
