@@ -32,6 +32,11 @@ in the console as the scripts are run.
 It is recommended that you choose at least the 'Alert' level to ensure you are notified
 of any problems that require manual intervetion before merging the file changes.
 
+If you run into collisions or other data issues that require resolution before merge,
+you can use the XIVAPI CLI helper utility to request and filter XIVAPI data --
+and see it as JSON console output -- by running `npm run query`.
+Use `npm run query -- -h` for info on how to use the utility.
+
 #### effect_id data
 
 As new status effects are added to the game, those names may conflict with existing names.
