@@ -267,13 +267,21 @@ const parseFilters = (filters: string): FilterSet => {
     excludes: [],
   };
 
-  // filters are comma-separated, but don't count commas inside (); that's an array.
-  const regexFilterSeparator = /(?<!\([\w\s]+),(?![\w\s]+\))/;
+  // Filters are comma-separated strings in the format of [colum] [operator] [value].
+  // E.g.  ID > 30, ID < 40, Name ~ (Ruby Carbuncle, Obsidian Carbuncle)
+  // Whitespace is generally ignored unless inside an array-like element (example above).
+
+  // use commas to seperate different filters, ignoring commas inside () or []
+  // match:  ID>30,ID<40 -- don't match:  ID~(30,40)
+  const regexFilterSeparator = /(?<![\(\[][\w\s*]+),(?![\w\s*]+[\]\)])/;
   const rawFilters = filters.split(regexFilterSeparator).filter((f) => f !== '');
 
   const regexColumn = /^\s*(\w+)\s*/;
   const regexOp = new RegExp(`(${allOps.join('|')})`);
-  const regexValueArr = /\s*[([][\w\s*]+,[\w\s*]+[,\w\s*]*[)\]]\s*/;
+  // for regexValueArr, match all alphanumeric values/whitespace/literal-* inside () or []
+  // requires 2 comma-separated elements, optionally accepts more
+  // match: (30,40) or [Topaz, Obs*, *uby] -- don't match: [10,] or (Emerald)
+  const regexValueArr = /\s*[\(\[][\w\s*]+,[\w\s*]+[,\w\s*]*[\)\]]\s*/;
   const regexValueStr = /[\w\s*]+/;
   const regexValueEither = new RegExp(`(${regexValueStr.source}$|${regexValueArr.source}$)`);
   const regexFilterParts = new RegExp(
@@ -309,7 +317,7 @@ const parseFilters = (filters: string): FilterSet => {
           );
           return;
         }
-        valArr = val.replace(/[()]/g, '').trim().split(',').map((e) => e.trim().toString());
+        valArr = val.replace(/[\(\)\[\]]/g, '').trim().split(',').map((e) => e.trim().toString());
         if (valArr.length < 2 || valArr[0] === '') {
           log.fatalError(`Could not extract array from array-like string filter (${rf}).`);
           return;
