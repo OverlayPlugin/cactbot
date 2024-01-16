@@ -43,6 +43,7 @@ type OverrideContainer = {
 // errors if not found.
 const _KNOWN_IDS: NameKeyToTerritoryId = {
   'TheDiadem': 929,
+  'TheGildedAraya': 1136, // TT 509 is a duplicate conflict, possibly due to separate entry for FanFest trial
 };
 
 // name to territory id mappings for locations that no longer exist

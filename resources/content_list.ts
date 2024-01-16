@@ -217,6 +217,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.MountOrdeals,
   ZoneId.TheVoidcastDais,
   ZoneId.TheAbyssalFracture,
+  ZoneId.TheGildedAraya,
 
   // High-end Trials (Endwalker)
   ZoneId.TheMinstrelsBalladZodiarksFall,
