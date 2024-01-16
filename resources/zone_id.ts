@@ -420,6 +420,7 @@ const data = {
   'TheFractalContinuum': 430,
   'TheFractalContinuumHard': 743,
   'TheFringes': 612,
+  'TheGameIsAfoot': 1177,
   'TheGhimlytDark': 1174,
   'TheGhimlytDark64': 793,
   'TheGiftOfMercy': 1019,
