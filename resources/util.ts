@@ -348,6 +348,10 @@ const outputFrom8DirNum = (dirNum: number): DirectionOutput8 => {
   return output8Dir[dirNum] ?? 'unknown';
 };
 
+const outputFromCardinalNum = (dirNum: number): DirectionOutputCardinal => {
+  return outputCardinalDir[dirNum] ?? 'unknown';
+};
+
 export const Directions = {
   output8Dir: output8Dir,
   output16Dir: output16Dir,
@@ -416,6 +420,15 @@ export const Directions = {
   xyTo8DirOutput: (x: number, y: number, centerX: number, centerY: number): DirectionOutput8 => {
     const dirNum = xyTo8DirNum(x, y, centerX, centerY);
     return outputFrom8DirNum(dirNum);
+  },
+  xyToCardinalDirOutput: (
+    x: number,
+    y: number,
+    centerX: number,
+    centerY: number,
+  ): DirectionOutputCardinal => {
+    const dirNum = xyTo4DirNum(x, y, centerX, centerY);
+    return outputFromCardinalNum(dirNum);
   },
 };
 
