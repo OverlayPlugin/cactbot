@@ -181,7 +181,11 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         if (data.khadgaLC2Combatant === undefined)
           return;
-        const lc2SideDir = Directions.combatantStatePosTo8DirOutput(data.khadgaLC2Combatant, centerX, centerY);
+        const lc2SideDir = Directions.combatantStatePosTo8DirOutput(
+          data.khadgaLC2Combatant,
+          centerX,
+          centerY,
+        );
         if (lc2SideDir === 'dirW')
           data.khadgaLC2Loc = 'west';
         else if (lc2SideDir === 'dirE')
