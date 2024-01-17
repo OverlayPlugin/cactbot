@@ -27,8 +27,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Asura Khadga 6': '8C8E', // half-room cleave
     'Asura Face of Wrath': '8CA6', // red/blue mechanic (red unsafe)
     'Asura Face of Delight': '8CA7', // red/blue mechanic (blue unsafe)
-    'Asura Myriad Aspects 1': '8CB4', // wheel 2->1 dodge (first hit)
-    'Asura Myriad Aspects 2': '8CB5', // wheel 2->1 dodge (second hit)
+    'Asura Myriad Aspects 1': '8CB4', // fan dodge (first hit)
+    'Asura Myriad Aspects 2': '8CB5', // fan dodge (second hit)
     'Asura Scattering': '8C99', // rotating line cleaves
   },
   shareFail: {

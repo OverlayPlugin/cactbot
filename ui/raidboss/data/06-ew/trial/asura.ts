@@ -1,12 +1,15 @@
 import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
+import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
-  seenFirstKhadga: boolean;
+  khadgaLC2Combatant?: PluginCombatantState;
+  khadgaLC2Loc?: 'east' | 'west';
 }
 
 type Iconography = 'out' | 'in' | 'sides';
@@ -40,11 +43,6 @@ const triggerSet: TriggerSet<Data> = {
   id: 'TheGildedAraya',
   zoneId: ZoneId.TheGildedAraya,
   timelineFile: 'asura.txt',
-  initData: () => {
-    return {
-      seenFirstKhadga: false,
-    };
-  },
   triggers: [
     {
       id: 'Asura Lower Realm',
@@ -56,7 +54,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Asura Cutting Jewel',
       type: 'StartsUsing',
       netRegex: { id: '8CA0', source: 'Asura', capture: true },
-      response: Responses.tankBuster(),
+      response: Responses.tankCleave(),
     },
     {
       id: 'Asura Ephemerality',
@@ -133,10 +131,12 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsCardinalDir,
       },
     },
+    // 8C90 - Red E, Blue W
+    // 8C92 - Red N, Blue S
     {
       id: 'Asura Face of Wrath',
       type: 'StartsUsing',
-      netRegex: { id: '8C90', source: 'Asura', capture: false },
+      netRegex: { id: ['8C90', '8C92'], source: 'Asura', capture: false },
       alertText: (_data, _matches, output) => output.wrath!(),
       outputStrings: {
         'wrath': {
@@ -144,6 +144,8 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // 8C93 - Red N, Blue S
+    // 8C95 - Blue N, Red S
     {
       id: 'Asura Face of Delight',
       type: 'StartsUsing',
@@ -155,32 +157,67 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-    // Khadga has two fixed patterns of attacks that are used in the same order in every instance.
+    // Khadga has two fixed patterns of attacks.
     // The first cast always cleaves N>W>E>N>W>E; the second cast always cleaves N>E>W>N>E>W.
-    // Cleaves happen fast, and character positions  snapshot very early, so rather than call
+    // There are later casts as the encounter begins to loop (3rd happens around 9:08), but
+    // we have insufficient info to know which patterns future casts will use (fixed or random).
+    // We can determine which pattern it is, though, by looking at the xPos of the combatant
+    // who receives the 2nd limit cut headmarker (either east or west).
+    // Cleaves happen fast, and character positions snapshot very early, so rather than call
     // movements based on delays that depend on precise reaction time, provide a single popup
     // with the entire movement sequence that remains for the duration of the mechanic.
+    {
+      id: 'Asura Six-bladed Khadga LC2 Collect',
+      type: 'HeadMarker',
+      netRegex: { id: '01C7', capture: true },
+      // no delay needed - combatatnt is repositioned ~3s before headmarker comes out
+      promise: async (data, matches) => {
+        const combatantData = await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.targetId, 16)],
+        });
+        data.khadgaLC2Combatant = combatantData.combatants[0];
+      },
+      run: (data) => {
+        if (data.khadgaLC2Combatant === undefined)
+          return;
+        const lc2SideDir = Directions.combatantStatePosTo8DirOutput(data.khadgaLC2Combatant, centerX, centerY);
+        if (lc2SideDir === 'dirW')
+          data.khadgaLC2Loc = 'west';
+        else if (lc2SideDir === 'dirE')
+          data.khadgaLC2Loc = 'east';
+        else
+          console.log('Could not determine Khadga sequence.');
+        return;
+      },
+    },
     {
       id: 'Asura Six-bladed Khadga',
       type: 'StartsUsing',
       netRegex: { id: '8C88', source: 'Asura', capture: false },
-      durationSeconds: 24,
+      delaySeconds: 4.5, // allow for LC2 headmarker data to be collected (~3.5s + safety margin)
+      durationSeconds: 19.5,
       alertText: (data, _matches, output) => {
-        if (!data.seenFirstKhadga)
+        if (data.khadgaLC2Loc === 'west')
           return output.text!({
             dir1: output.dirSE!(),
             dir2: output.dirSW!(),
             dir3: output.dirE!(),
             dir4: output.dirW!(),
           });
-        return output.text!({
-          dir1: output.dirSW!(),
-          dir2: output.dirSE!(),
-          dir3: output.dirW!(),
-          dir4: output.dirE!(),
-        });
+        else if (data.khadgaLC2Loc === 'east')
+          return output.text!({
+            dir1: output.dirSW!(),
+            dir2: output.dirSE!(),
+            dir3: output.dirW!(),
+            dir4: output.dirE!(),
+          });
+        return;
       },
-      run: (data) => data.seenFirstKhadga = true,
+      run: (data) => {
+        delete data.khadgaLC2Combatant;
+        delete data.khadgaLC2Loc;
+      },
       outputStrings: {
         text: {
           en: '${dir1} (x2) => ${dir2} (x2) => ${dir3} => ${dir4}',
