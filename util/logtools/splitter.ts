@@ -122,7 +122,10 @@ export default class Splitter {
       return;
     }
 
-    if (typeField === logDefinitions.Ability.type) {
+    if (
+      typeField === logDefinitions.Ability.type ||
+      typeField === logDefinitions.NetworkAOEAbility.type
+    ) {
       match = this.filterRegex.abilityNPC.exec(line);
       if (match?.groups) {
         if (
