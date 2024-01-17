@@ -1,4 +1,4 @@
-import outputs from '../../../../../resources/outputs';
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
@@ -185,10 +185,10 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir1} (x2) => ${dir2} (x2) => ${dir3} => ${dir4}',
         },
-        dirSE: outputs.dirSE,
-        dirSW: outputs.dirSW,
-        dirE: outputs.dirE,
-        dirW: outputs.dirW,
+        dirSE: Outputs.dirSE,
+        dirSW: Outputs.dirSW,
+        dirE: Outputs.dirE,
+        dirW: Outputs.dirW,
       },
     },
   ],
