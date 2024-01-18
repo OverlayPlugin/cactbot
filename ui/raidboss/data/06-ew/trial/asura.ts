@@ -10,14 +10,17 @@ import { TriggerSet } from '../../../../../types/trigger';
 export interface Data extends RaidbossData {
   khadgaLC2Combatant?: PluginCombatantState;
   khadgaLC2Loc?: 'east' | 'west';
+  iconicExecutionCount: number;
+  asuraImageId?: string;
+  storedIconMech?: Iconography;
 }
 
 type Iconography = 'out' | 'in' | 'sides';
 
-const imageIconographyIds: { [id: string]: Iconography } = {
-  '8C82': 'out', // Pedestal Purge
-  '8C84': 'in', // Wheel of Deincarnation
-  '8C86': 'sides', // Bladewise
+const bossIconographyIds: { [id: string]: Iconography } = {
+  '8C81': 'out', // Pedestal Purge
+  '8C83': 'in', // Wheel of Deincarnation
+  '8C85': 'sides', // Bladewise
 };
 
 const outSafeSpots: Record<DirectionOutputCardinal, DirectionOutputCardinal> = {
@@ -43,6 +46,11 @@ const triggerSet: TriggerSet<Data> = {
   id: 'TheGildedAraya',
   zoneId: ZoneId.TheGildedAraya,
   timelineFile: 'asura.txt',
+  initData: () => {
+    return {
+      iconicExecutionCount: 0,
+    };
+  },
   triggers: [
     {
       id: 'Asura Lower Realm',
@@ -72,31 +80,148 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Asura Pedestal Purge',
       type: 'StartsUsing',
       netRegex: { id: '8C81', source: 'Asura', capture: false },
-      response: Responses.getOut(),
+      alertText: (data, _matches, output) => {
+        data.storedIconMech = 'out';
+        if (data.iconicExecutionCount < 3)
+          return output.noJump!();
+        return output.withJump!();
+      },
+      outputStrings: {
+        noJump: {
+          en: 'Out => Away from Image',
+        },
+        withJump: {
+          en: 'Out => Away from Image After Jump',
+        },
+      },
     },
     {
       id: 'Asura Wheel of Deincarnation',
       type: 'StartsUsing',
       netRegex: { id: '8C83', source: 'Asura', capture: false },
-      response: Responses.getIn(),
+      alertText: (data, _matches, output) => {
+        data.storedIconMech = 'in';
+        if (data.iconicExecutionCount < 3)
+          return output.noJump!();
+        return output.withJump!();
+      },
+      outputStrings: {
+        noJump: {
+          en: 'In => Under Image',
+        },
+        withJump: {
+          en: 'In => Under Image After Jump',
+        },
+      },
     },
-    // TODO: Possibly fire the Iconic Execution alert sooner using the tether
-    // or 8CB2 (Iconic Execution image jump to new cardinal). But it's not much of a gain,
-    // especially for the jumps.
     {
-      id: 'Asura Iconic Execution',
+      id: 'Asura Bladewise',
       type: 'StartsUsing',
-      netRegex: { id: Object.keys(imageIconographyIds), source: 'Asura Image', capture: true },
-      alertText: (_data, matches, output) => {
-        const x = parseFloat(matches.x);
-        const y = parseFloat(matches.y);
-        const imageLoc = Directions.xyToCardinalDirOutput(x, y, centerX, centerY);
-        const iconType = imageIconographyIds[matches.id];
-
+      netRegex: { id: '8C85', source: 'Asura', capture: false },
+      alertText: (data, _matches, output) => {
+        data.storedIconMech = 'sides';
+        if (data.iconicExecutionCount < 3)
+          return output.noJump!();
+        return output.withJump!();
+      },
+      outputStrings: {
+        noJump: {
+          en: 'Avoid Cleave => Sides of Image',
+        },
+        withJump: {
+          en: 'Avoid Cleave => Sides of Image After Jump',
+        },
+      },
+    },
+    // After the first three casts of 8CB1, all future casts will be preceded by 8CB2,
+    // which results in the Asura Image jumping to a random(?) cardinal. For these,
+    // we use a different callout to remind of the follow-up mechanic given the fast reaction time.
+    {
+      id: 'Asura Iconic Execution Tracker',
+      type: 'Ability',
+      netRegex: { id: '8CB1', source: 'Asura', capture: false },
+      run: (data) => data.iconicExecutionCount++,
+    },
+    {
+      id: 'Asura Image Combatant ID Collect',
+      type: 'Ability',
+      // Divine Awakening
+      netRegex: { id: '8C80', source: 'Asura Image', capture: true },
+      run: (data, matches) => data.asuraImageId = matches.sourceId,
+    },
+    {
+      id: 'Asura Iconic Execution No Jump',
+      type: 'Ability',
+      netRegex: { id: Object.keys(bossIconographyIds), source: 'Asura', capture: false },
+      condition: (data) => data.iconicExecutionCount < 3,
+      delaySeconds: 2, // short delay to let boss action finish and align better with image action
+      alertText: (data, _matches, output) => {
+        const iconType = data.storedIconMech;
         if (iconType === undefined)
           return;
 
         const spotOutput = output[iconType]!();
+
+        // For the No-Jump mechanics, the Image is always north.
+        let dirsOutput: string;
+        if (iconType === 'in')
+          dirsOutput = output['dirN']!();
+        else if (iconType === 'out')
+          dirsOutput = output[outSafeSpots['dirN']]!();
+        else { // sides
+          const [dir1, dir2] = sidesSafeSpots['dirN'];
+          const dir1Output = output[dir1 ?? 'unknown']!();
+          const dir2Output = output[dir2 ?? 'unknown']!();
+          dirsOutput = output.doubledirs!({ dir1: dir1Output, dir2: dir2Output });
+        }
+
+        return output.text!({ dirs: dirsOutput, spot: spotOutput });
+      },
+      run: (data) => delete data.storedIconMech,
+      outputStrings: {
+        text: {
+          en: 'Go ${dirs} ${spot}',
+        },
+        doubledirs: {
+          en: '${dir1} / ${dir2}',
+        },
+        in: {
+          en: '(under image)',
+        },
+        out: {
+          en: '(away from image)',
+        },
+        sides: {
+          en: '(sides of image)',
+        },
+        ...Directions.outputStringsCardinalDir,
+      },
+    },
+    {
+      id: 'Asura Iconic Execution With Jump',
+      type: 'CombatantMemory',
+      // Filter to only enemy actors for performance
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      condition: (data, matches) =>
+        data.iconicExecutionCount >= 3 &&
+        data.asuraImageId === matches.id &&
+        data.storedIconMech !== undefined,
+      alertText: (data, matches, output) => {
+        if (matches.pairPosX === undefined || matches.pairPosY === undefined)
+          return;
+
+        const imageLoc = Directions.xyToCardinalDirOutput(
+          parseFloat(matches.pairPosX),
+          parseFloat(matches.pairPosY),
+          centerX,
+          centerY,
+        );
+        const iconType = data.storedIconMech;
+        if (iconType === undefined)
+          return;
+
+        const spotOutput = output[iconType]!();
+
         let dirsOutput: string;
 
         if (iconType === 'in')
@@ -112,6 +237,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return output.text!({ dirs: dirsOutput, spot: spotOutput });
       },
+      run: (data) => delete data.storedIconMech,
       outputStrings: {
         text: {
           en: 'Go ${dirs} ${spot}',
