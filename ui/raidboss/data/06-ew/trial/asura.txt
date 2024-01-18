@@ -8,6 +8,10 @@ hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
 
+# Note that a number of "extra-wide" sync windows are present.
+# This is a future-proofing measure in case any timeline skips
+# are discovered in later exapnsions due to increased DPS.
+
 # Intro block
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 11.3 "Lower Realm" Ability { id: "8CA1", source: "Asura" } window 10,5
@@ -79,7 +83,7 @@ hideall "--sync--"
 
 313.7 "--sync--" Ability { id: "8CAA", source: "Asura Image" }
 319.7 "--center--" Ability { id: "8C7E", source: "Asura" }
-322.2 "Six-bladed Khadga (preview)" StartsUsing { id: "8C88", source: "Asura" } duration 12.7
+322.2 "Six-bladed Khadga (preview)" StartsUsing { id: "8C88", source: "Asura" } window 100,10 duration 12.7
 324.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
 326.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
 328.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
@@ -98,7 +102,7 @@ hideall "--sync--"
 # The order is probably completely fixed,
 # but the face choice is random on round 3+.
 353.0 "--center--" Ability { id: "8C7E", source: "Asura" }
-359.1 "Many Faces" Ability { id: "8C8F", source: "Asura" }
+359.1 "Many Faces" Ability { id: "8C8F", source: "Asura" } window 100,10
 361.1 "--sync--" Ability { id: "8CB7", source: "Asura" }
 369.1 "--sync--" Ability { id: ["8C90", "8C95"], source: "Asura" } # Face Of Wrath/Face Of Delight
 369.2 "The Face Of Wrath/The Face Of Delight" Ability { id: ["8CA6", "8CA7"], source: "Asura" }
@@ -118,7 +122,7 @@ hideall "--sync--"
 
 # And the block loops here
 459.7 "--sync--" Ability { id: "8C7E", source: "Asura" }
-461.9 "Divine Awakening" Ability { id: "8C7F", source: "Asura" } window 50,50 forcejump 238.4
+461.9 "Divine Awakening" Ability { id: "8C7F", source: "Asura" } window 100,100 forcejump 238.4
 
 # ALL ENCOUNTER ABILITIES
 # 366 attack
