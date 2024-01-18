@@ -9,19 +9,20 @@ export type LogLevelKey = typeof logLevels[number][0];
 export type LogLevelLabel = typeof logLevels[number][1];
 
 const logLevelDefault: LogLevelKey = 'alert';
+type LogLevelMap = { [K in LogLevelKey]: 0 | 1 | 2 | 3 };
 
 export class ConsoleLogger {
   public static readonly logLevelDefault: LogLevelKey = 'alert';
 
   // assign numerical values to log levels so we can do a quick compare
   // in deciding whether a user wants to see that type of log output
-  logLevelMap: { [K in LogLevelKey]: 0 | 1 | 2 | 3 } = {
+  logLevelMap: LogLevelMap = {
     silent: 0,
     alert: 1,
     info: 2,
     debug: 3,
   };
-  myLogLevel: typeof this.logLevelMap[LogLevelKey];
+  myLogLevel: LogLevelMap[LogLevelKey];
 
   setLogLevel(logLevel?: LogLevelKey): void {
     // class is initialized in scripts outside of all constructs,
