@@ -31,9 +31,11 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Asura Myriad Aspects 2': '8CB5', // fan dodge (second hit)
     'Asura Scattering': '8C99', // rotating line cleaves
   },
+  shareWarn: {
+    'Asura Ordered Chaos': '8CA3', // spread AOEs during Chakra
+  },
   shareFail: {
     'Asura Cutting Jewel': '8CA0', // tankbuster
-    'Asura Ordered Chaos': '8CA3', // spread AOEs during Chakra
   },
 };
 
