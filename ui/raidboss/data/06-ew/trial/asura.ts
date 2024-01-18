@@ -76,6 +76,8 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // After the first three Iconography mechanics, all future casts will be preceded by
+    // the Asura Image jumping to a random(?) cardinal.
     {
       id: 'Asura Pedestal Purge',
       type: 'StartsUsing',
@@ -133,9 +135,6 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-    // After the first three casts of 8CB1, all future casts will be preceded by 8CB2,
-    // which results in the Asura Image jumping to a random(?) cardinal. For these,
-    // we use a different callout to remind of the follow-up mechanic given the fast reaction time.
     {
       id: 'Asura Iconic Execution Tracker',
       type: 'Ability',
