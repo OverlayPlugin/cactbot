@@ -73,6 +73,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         'avoidClones': {
           en: 'Avoid clones',
+          de: 'Vermeide Klone',
         },
       },
     },
@@ -91,9 +92,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         noJump: {
           en: 'Out => Away from Image',
+          de: 'Raus => Weg von der Inkarnation',
         },
         withJump: {
           en: 'Out => Away from Image After Jump',
+          de: 'Raus => Weg von der Inkarnation nach dem Sprung',
         },
       },
     },
@@ -110,9 +113,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         noJump: {
           en: 'In => Under Image',
+          de: 'Rein => Unter die Inkarnation',
         },
         withJump: {
           en: 'In => Under Image After Jump',
+          de: 'Rein => Unter die Inkarnation nach dem Sprung',
         },
       },
     },
@@ -129,9 +134,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         noJump: {
           en: 'Avoid Cleave => Sides of Image',
+          de: 'Cleave ausweichen => Seitlich der Inkarnation',
         },
         withJump: {
           en: 'Avoid Cleave => Sides of Image After Jump',
+          de: 'Cleave ausweichen => Seitlich der Inkarnation nach dem Sprung',
         },
       },
     },
@@ -180,18 +187,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go ${dirs} ${spot}',
+          de: 'Geh ${dirs} ${spot}',
         },
         doubledirs: {
           en: '${dir1} / ${dir2}',
+          de: '${dir1} / ${dir2}',
         },
         in: {
           en: '(under image)',
+          de: '(Unter die Inkarnation)',
         },
         out: {
           en: '(away from image)',
+          de: '(Weg von der Inkarnation)',
         },
         sides: {
           en: '(sides of image)',
+          de: '(Setlich der Inkarnation)',
         },
         ...Directions.outputStringsCardinalDir,
       },
@@ -240,18 +252,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go ${dirs} ${spot}',
+          de: 'Geh ${dirs} ${spot}',
         },
         doubledirs: {
           en: '${dir1} / ${dir2}',
+          de: '${dir1} / ${dir2}',
         },
         in: {
           en: '(under image)',
+          de: '(Unter die Inkarnation)',
         },
         out: {
           en: '(away from image)',
+          de: '(Weg von der Inkarnation)',
         },
         sides: {
           en: '(sides of image)',
+          de: '(Setlich der Inkarnation)',
         },
         ...Directions.outputStringsCardinalDir,
       },
@@ -266,6 +283,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         'wrath': {
           en: 'Stand in blue half',
+          de: 'Steh in der blauen Hälfte',
         },
       },
     },
@@ -279,6 +297,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         'delight': {
           en: 'Stand in red half',
+          de: 'Steh in der roten Hälfte',
         },
       },
     },
@@ -350,6 +369,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${dir1} (x2) => ${dir2} (x2) => ${dir3} => ${dir4}',
+          de: '${dir1} (x2) => ${dir2} (x2) => ${dir3} => ${dir4}',
         },
         dirSE: Outputs.dirSE,
         dirSW: Outputs.dirSW,
@@ -363,6 +383,108 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Pedestal Purge/Wheel Of Deincarnation/Bladewise': 'Purge/Wheel/Bladewise',
+      },
+    },
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Asura': 'Asura',
+        'Asura Image': 'Asuras Inkarnation',
+        'Phantom Asura': 'Asura-Abbild',
+      },
+      'replaceText': {
+        '\\(execute\\)': '(Ausführen)',
+        '\\(preview\\)': '(Vorschau)',
+        '\\(release\\)': '(Freilassen)',
+        '\\(store\\)': '(Speichern)',
+        'Asuri Chakra': 'Rad der Lehre',
+        'Bladescatter': 'Klingenlicht',
+        'Bladewise': 'Klingenspitze',
+        'Cutting Jewel': 'Schneidendes Juwel',
+        'Divine Awakening': 'Göttliches Erwachen',
+        'Divinity': 'Göttlichkeit',
+        'Ephemerality': 'Vergänglichkeit',
+        'Iconic Execution': 'Göttliche Klingen',
+        'Iconography: Bladewise': 'Ikonografie: Klingenspitze',
+        'Iconography: Pedestal Purge': 'Ikonografie: Sockelschnitt',
+        'Iconography: Wheel Of Deincarnation': 'Ikonografie: Rad der Deinkarnation',
+        'Khadga': 'Khadga',
+        'Laceration': 'Zerreißen',
+        'Lower Realm': 'Irdene Ebene',
+        'Many Faces': 'Vielgesichtig',
+        'Myriad Aspects': 'Blendender Schein',
+        'Ordered Chaos': 'Licht der Ordnung',
+        'Pedestal Purge': 'Sockelschnitt',
+        'Six-bladed Khadga': 'Sechsklingen-Khadga',
+        'The Face Of Delight': 'Antlitz des Vergnügens',
+        'The Face Of Wrath': 'Antlitz des Zorns',
+        'Wheel Of Deincarnation': 'Rad der Deinkarnation',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Asura': 'Asura',
+        'Asura Image': 'incarnation d\'Asura',
+        'Phantom Asura': 'illusion d\'Asura',
+      },
+      'replaceText': {
+        'Asuri Chakra': 'Cercle rituel',
+        'Bladescatter': 'Illumination chaotique',
+        'Bladewise': 'Entaille rayonnante',
+        'Cutting Jewel': 'Illumination guerrière',
+        'Divine Awakening': 'Éveil d\'incarnation',
+        'Divinity': 'Incarnation',
+        'Ephemerality': 'Transmigration',
+        'Iconic Execution': 'Danselame incarnée',
+        'Iconography: Bladewise': 'Danselame rayonnante',
+        'Iconography: Pedestal Purge': 'Danselame tournoyante',
+        'Iconography: Wheel Of Deincarnation': 'Danselame circulaire',
+        'Khadga': 'Éventaille',
+        'Laceration': 'Lacération',
+        'Lower Realm': 'Prestige de la Reine',
+        'Many Faces': 'Samsâra',
+        'Myriad Aspects': 'Illumination fulgurante',
+        'Ordered Chaos': 'Nirvâna',
+        'Pedestal Purge': 'Entaille tournoyante',
+        'Six-bladed Khadga': 'Sextuor de lames',
+        'The Face Of Delight': 'Jubilation incarnée',
+        'The Face Of Wrath': 'Fureur incarnée',
+        'Wheel Of Deincarnation': 'Entaille circulaire',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Asura': 'アスラ',
+        'Asura Image': 'アスラの化身',
+        'Phantom Asura': 'アスラの幻影',
+      },
+      'replaceText': {
+        'Asuri Chakra': '転法輪',
+        'Bladescatter': '乱れ光波',
+        'Bladewise': '剣光波',
+        'Cutting Jewel': '光玉',
+        'Divine Awakening': '化身開眼',
+        'Divinity': '化身',
+        'Ephemerality': '神出鬼没',
+        'Iconic Execution': '化身剣技',
+        'Iconography: Bladewise': '剣技転写・剣光波',
+        'Iconography: Pedestal Purge': '剣技転写・旋回斬り',
+        'Iconography: Wheel Of Deincarnation': '剣技転写・輪転斬り',
+        'Khadga': '断撃',
+        'Laceration': '斬撃',
+        'Lower Realm': '王妃の威光',
+        'Many Faces': '神気変容',
+        'Myriad Aspects': '光芒一閃',
+        'Ordered Chaos': '天光',
+        'Pedestal Purge': '旋回斬り',
+        'Six-bladed Khadga': '三面六臂：断',
+        'The Face Of Delight': '愉悦の神気',
+        'The Face Of Wrath': '憤怒の神気',
+        'Wheel Of Deincarnation': '輪転斬り',
       },
     },
   ],
