@@ -358,6 +358,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'en',
+      'replaceText': {
+        'Pedestal Purge/Wheel Of Deincarnation/Bladewise': 'Purge/Wheel/Bladewise',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
