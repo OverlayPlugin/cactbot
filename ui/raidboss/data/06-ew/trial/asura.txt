@@ -11,6 +11,7 @@ hideall "--sync--"
 # Note that a number of "extra-wide" sync windows are present.
 # This is a future-proofing measure in case any timeline skips
 # are discovered in later exapnsions due to increased DPS.
+# The first couple of wide syncs also help in the event someone starts ACT after the encounter begins.
 
 # Intro block
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -27,7 +28,7 @@ hideall "--sync--"
 
 # The first Divine Awakening trio appears to be a fixed order.
 87.6 "--sync--" Ability { id: "8C7F", source: "Asura" } #Divine Awakening
-97.2 "Iconography: Pedestal Purge" Ability { id: "8C81", source: "Asura" } window 100,10
+97.2 "Iconography: Pedestal Purge" Ability { id: "8C81", source: "Asura" }
 104.3 "Pedestal Purge" Ability { id: "8C82", source: "Asura Image" }
 104.3 "Iconic Execution (release)" Ability { id: "8CB1", source: "Asura" }
 114.4 "Iconography: Wheel Of Deincarnation" Ability { id: "8C83", source: "Asura" }
@@ -40,7 +41,7 @@ hideall "--sync--"
 
 # As with Divine Awakening, the first Khadga set is a fixed order.
 149.1 "--center--" Ability { id: "8C7E", source: "Asura" }
-151.5 "Six-bladed Khadga (preview)" StartsUsing { id: "8C88", source: "Asura" } duration 12.7 window 150,10
+151.5 "Six-bladed Khadga (preview)" StartsUsing { id: "8C88", source: "Asura" } duration 12.7
 164.2 "Six-bladed Khadga (execute)" Ability { id: "8C88", source: "Asura" }
 165.2 "Khadga 1" Ability { id: "8C89", source: "Asura" }
 167.2 "Khadga 2" Ability { id: "8C8D", source: "Asura" }
@@ -65,8 +66,8 @@ hideall "--sync--"
 # and then potentially random thereafter,
 # but we just account for the possibilities within a single loop body.
 236.0 "--center--" Ability { id: "8C7E", source: "Asura" }
-238.4 "--sync--" Ability { id: "8C7F", source: "Asura" } #Divine Awakening
-248.1 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 1" Ability { id: ["8C81", "8CB3", "8C85"], source: "Asura" } window 100,10
+238.4 "--sync--" Ability { id: "8C7F", source: "Asura" } window 100,10 #Divine Awakening
+248.1 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 1" Ability { id: ["8C81", "8CB3", "8C85"], source: "Asura" }
 254.3 "Iconic Execution (store)" Ability { id: "8CB2", source: "Asura" }
 261.4 "Pedestal Purge/Wheel Of Deincarnation/Bladewise" Ability { id: ["8C82", "8C84", "8C86"], source: "Asura Image" }
 261.4 "Iconic Execution (release)" Ability { id: "8CB1", source: "Asura" }
@@ -83,7 +84,7 @@ hideall "--sync--"
 
 313.7 "--sync--" Ability { id: "8CAA", source: "Asura Image" }
 319.7 "--center--" Ability { id: "8C7E", source: "Asura" }
-322.2 "Six-bladed Khadga (preview)" StartsUsing { id: "8C88", source: "Asura" } window 100,10 duration 12.7
+322.2 "Six-bladed Khadga (preview)" StartsUsing { id: "8C88", source: "Asura" } duration 12.7
 324.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
 326.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
 328.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
@@ -102,7 +103,7 @@ hideall "--sync--"
 # The order is probably completely fixed,
 # but the face choice is random on round 3+.
 353.0 "--center--" Ability { id: "8C7E", source: "Asura" }
-359.1 "Many Faces" Ability { id: "8C8F", source: "Asura" } window 100,10
+359.1 "Many Faces" Ability { id: "8C8F", source: "Asura" }
 361.1 "--sync--" Ability { id: "8CB7", source: "Asura" }
 369.1 "--sync--" Ability { id: ["8C90", "8C95"], source: "Asura" } # Face Of Wrath/Face Of Delight
 369.2 "The Face Of Wrath/The Face Of Delight" Ability { id: ["8CA6", "8CA7"], source: "Asura" }
@@ -121,8 +122,12 @@ hideall "--sync--"
 452.5 "Cutting Jewel" Ability { id: "8CA0", source: "Asura" }
 
 # And the block loops here
+# As noted in the comment up top, we place a wide sync window here for safety.
+# It's unlikely there will be any DPS-based pushes this late,
+# since the boss will be dead by this point in that case,
+# but let's be principled about it.
 459.7 "--sync--" Ability { id: "8C7E", source: "Asura" }
-461.9 "Divine Awakening" Ability { id: "8C7F", source: "Asura" } window 100,100 forcejump 238.4
+461.9 "Divine Awakening" Ability { id: "8C7F", source: "Asura" } window 100,10 forcejump 238.4
 
 # ALL ENCOUNTER ABILITIES
 # 366 attack
