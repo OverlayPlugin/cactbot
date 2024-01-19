@@ -481,6 +481,10 @@ const generateZoneIdMap = (
             nameMap[zoneName] ?? ''
           }). Please investigate.`,
         );
+        // remove any ttid->cfcid mapping previously stored, as it's now an unknown collision
+        const firstTtId = nameMap[zoneName];
+        if (typeof firstTtId === 'number')
+          delete finalTtIdToCfcId[firstTtId];
       } else {
         log.debug(`Found expected/known collision for ${zoneName} (ID: $[ttId})`);
       }
