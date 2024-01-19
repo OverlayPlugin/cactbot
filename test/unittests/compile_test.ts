@@ -15,24 +15,26 @@ describe('compile test', () => {
   it('npm package should compile successfully', async function() {
     // eslint-disable-next-line @typescript-eslint/no-invalid-this
     this.timeout(30000); // allow a 30s timeout
-    let execError;
+    let execError = false;
+    let output = '';
     try {
       process.chdir(projectRoot);
       fs.rmSync('dist', { recursive: true, force: true });
-      let stdout = '';
-      let stderr = '';
       await exec('npx ttsc --declaration', [], {
         listeners: {
-          stdout: (data) => stdout += data.toString(), // suppress
-          stderr: (data) => stderr += data.toString(),
+          stdout: (data) => output += data.toString(),
+          stderr: (data) => {
+            execError = true;
+            output += data.toString();
+          },
         },
       });
-      if (stderr.length > 0)
-        throw stderr;
+      if (execError)
+        throw output;
     } catch (err) {
       console.error(err);
-      execError = err;
+      execError = true;
     }
-    assert.ifError(execError);
+    assert(execError === false, output);
   });
 });
