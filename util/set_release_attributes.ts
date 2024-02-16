@@ -46,12 +46,15 @@ const writeReleaseAttributes = () => {
   const summary = (args.summary === null || args.summary === undefined) ? '' : args.summary.trim();
   const draft = (args.draft === null || args.draft === undefined) ? false : true;
 
+  console.log(`Release summary: ${summary}`);
+  console.log(`Release as draft: ${draft}`);
   for (const file of assemblyInfoFiles) {
     const contents = fs.readFileSync(normalizePath(file), 'utf8');
     let newData = contents.replace(releaseHeadingRegex, summary);
     newData = newData.replace(releaseAsDraftRegex, draft.toString());
     fs.writeFileSync(file, newData, 'utf8');
   }
+  console.log('Assembly files updated with release attributes.');
 };
 
 void writeReleaseAttributes();
