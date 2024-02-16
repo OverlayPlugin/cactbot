@@ -47,7 +47,8 @@ const writeReleaseAttributes = () => {
   const draft = (args.draft === null || args.draft === undefined) ? false : true;
 
   console.log(`Release summary: ${summary}`);
-  console.log(`Release as draft: ${draft}`);
+  console.log(`Release as draft: ${draft.toString()}`);
+
   for (const file of assemblyInfoFiles) {
     const contents = fs.readFileSync(normalizePath(file), 'utf8');
     let newData = contents.replace(releaseHeadingRegex, summary);
@@ -56,5 +57,6 @@ const writeReleaseAttributes = () => {
   }
   console.log('Assembly files updated with release attributes.');
 };
+
 
 void writeReleaseAttributes();
