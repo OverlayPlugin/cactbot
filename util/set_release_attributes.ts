@@ -58,5 +58,4 @@ const writeReleaseAttributes = () => {
   console.log('Assembly files updated with release attributes.');
 };
 
-
 void writeReleaseAttributes();
