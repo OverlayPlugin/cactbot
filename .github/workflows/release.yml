@@ -101,14 +101,35 @@ jobs:
       - name: Create Tag
         shell: bash
         run: git tag "v${{ needs.validate_tag.outputs.version }}" && git push --tags
+      - name: Get Release Attributes
+        id: release_attributes
+        shell: pwsh
+        run: |
+          $release_name = "${{ needs.validate_tag.outputs.version }}";
+          $release_draft = "false";
+          $text = [System.IO.File]::ReadAllText("plugin/CactbotEventSource/Properties/AssemblyInfo.cs");
+          $summary_regex = [regex]::New('\[assembly: AssemblyMetadata\("AssemblyReleaseSummary", "(.+)"\)');
+          $draft_regex = [regex]::New('\[assembly: AssemblyMetadata\("AssemblyReleaseAsDraft", "true"\)');
+          $sm = $summary_regex.Match($text);
+          if ($sm.Success) {
+              $release_name += ": " + $sm.Groups[1];
+          }
+          $dm = $draft_regex.Match($text);
+          if ($dm.Success) {
+              $release_draft = "true";
+          }
+          echo "Release Name: $release_name";
+          echo "Release as Draft: $release_draft";
+          echo "::set-output name=release_name::$release_name"
+          echo "::set-output name=release_draft::$release_draft"
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          name: ${{ needs.validate_tag.outputs.version }}
+          name: ${{ steps.release_attributes.outputs.release_name }}
           tag: v${{ needs.validate_tag.outputs.version }}
           artifacts: cactbot-${{ needs.validate_tag.outputs.version }}.zip
           artifactContentType: application/zip
-          draft: false
+          draft: ${{ steps.release_attributes.outputs.release_draft }}
           generateReleaseNotes: true
 
   create_npm_package:
