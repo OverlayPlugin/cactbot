@@ -369,6 +369,7 @@ export class Timeline {
       window.clearTimeout(keepAlive.timeout);
       this.ui?.OnRemoveTimer(keepAlive.event, false);
     }
+    this.keepAliveEvents = [];
   }
 
   private _ClearExceptRunningDurationTimers(fightNow: number): void {
