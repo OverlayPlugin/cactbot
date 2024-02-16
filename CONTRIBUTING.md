@@ -269,13 +269,12 @@ See: [Oopsy Guide](docs/OopsyraidsyGuide.md#overview)
 ## How to Release
 
 1. Run `npm run prep-release` to set various release attributes before pushing a new release.
-
 The script accepts two optional arguments: `npm run prep-release -- -s "summary goes here" -d`.
 `-s` will append the release summary (a short description, ideally <100 chars)
 to the name of the release in the release notes.
-`-d` will force the release to be in draft mode 
+`-d` will force the release to be in draft mode
 (allowing manual editing of the release notes before publishing).
-If these arguments are not provided, the summary will be set to empty, 
+If these arguments are not provided, the summary will be set to empty,
 and the release will be published immediately once the release artifacts are created.
 
 2. Run `npm version patch` or `npm version minor` to add a local commit containing a version bump
