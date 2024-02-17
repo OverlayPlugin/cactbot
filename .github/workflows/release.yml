@@ -10,7 +10,7 @@ on:
 jobs:
   validate_tag:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
+    if: ${{ github.repository == 'wexxlee/cactbot' }}
     outputs:
       version: ${{ steps.get_version.outputs.version }}
       do_release: ${{ steps.check_tag.outputs.do_release }}
@@ -50,7 +50,7 @@ jobs:
   create_release:
     runs-on: windows-latest
     needs: [validate_tag, validate_versions]
-    if: ${{ github.repository == 'OverlayPlugin/cactbot' }} && ${{ needs.validate_tag.outputs.do_release }}
+    if: ${{ github.repository == 'wexxlee/cactbot' }} && ${{ needs.validate_tag.outputs.do_release }}
     env:
       GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
     steps:
