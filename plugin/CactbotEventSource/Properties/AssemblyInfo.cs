@@ -23,8 +23,3 @@ using System.Runtime.InteropServices;
 // CactbotOverlay and CactbotEventSource version should match.
 [assembly: AssemblyVersion("0.31.2.0")]
 [assembly: AssemblyFileVersion("0.31.2.0")]
-
-// The below attributes are used by the GitHub release workflow to determine the release name
-// and whether release notes should be in draft state (to allow manual editing before publishing).
-[assembly: AssemblyMetadata("AssemblyReleaseSummary", "intl 6.55, ko 6.45, asura")]
-[assembly: AssemblyMetadata("AssemblyReleaseAsDraft", "false")]
