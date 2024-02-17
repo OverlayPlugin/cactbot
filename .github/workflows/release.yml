@@ -28,11 +28,16 @@ jobs:
         id: check_tag
         shell: bash
         run: |
-          if [ $(git tag -l "v${{ steps.get_version.outputs.version }}") ]; then
-              echo "No version bump - ${{ steps.get_version.outputs.version }}"
+          if [ ${{ steps.get_version.outputs.version }}]; then
+            if [ $(git tag -l "v${{ steps.get_version.outputs.version }}") ]; then
+                echo "No version bump - ${{ steps.get_version.outputs.version }}"
+            else
+                echo "Version bump detected - ${{ steps.get_version.outputs.version }}"
+                echo "::set-output name=do_release::true"
+            fi
           else
-              echo "Version bump detected - ${{ steps.get_version.outputs.version }}"
-              echo "::set-output name=do_release::true"
+            echo "Error: Unable to determine version from package.json"
+            exit 1
           fi
 
   validate_versions:
