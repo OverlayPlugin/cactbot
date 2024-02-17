@@ -5,38 +5,34 @@ on:
     branches:
       - main
     paths:
-      - 'plugin/CactbotEventSource/Properties/AssemblyInfo.cs'
+      - 'package.json'
 
 jobs:
   validate_tag:
     runs-on: ubuntu-latest
     if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
     outputs:
-      version: ${{ steps.determine_version.outputs.version }}
+      version: ${{ steps.get_version.outputs.version }}
+      do_release: ${{ steps.check_tag.outputs.do_release }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Determine Version
-        id: determine_version
-        shell: pwsh
-        run: |
-          $text = [System.IO.File]::ReadAllText("plugin/CactbotEventSource/Properties/AssemblyInfo.cs");
-          $regex = [regex]::New('\[assembly: AssemblyVersion\("([0-9]+\.[0-9]+\.[0-9]+)\.[0-9]+"\)');
-          $m = $regex.Match($text);
-          if (-not $m) {
-              echo "Error: Version number not found in the AssemblyInfo.cs!"
-              exit 1
-          }
-          $version = $m.Groups[1]
-          echo "::set-output name=version::$version"
+
+      - name: Get Project Version
+        id: get_version
+        uses: 'euberdeveloper/ga-project-version@main'
+
       - name: Check Tag Exists
+        id: check_tag
         shell: bash
         run: |
-          if [ $(git tag -l "v${{ steps.determine_version.outputs.version }}") ]; then
-              echo "Error: Existing git tag found. Exiting..."
-              exit 1
+          if [ $(git tag -l "v${{ steps.get_version.outputs.version }}") ]; then
+              echo "No version bump - ${{ steps.get_version.outputs.version }}"
+          else
+              echo "Version bump detected - ${{ steps.get_version.outputs.version }}"
+              echo "::set-output name=do_release::true"
           fi
 
   validate_versions:
@@ -54,7 +50,7 @@ jobs:
   create_release:
     runs-on: windows-latest
     needs: [validate_tag, validate_versions]
-    if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
+    if: ${{ github.repository == 'OverlayPlugin/cactbot' }} && ${{ needs.validate_tag.outputs.do_release }}
     env:
       GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
     steps:
@@ -62,6 +58,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Set up msbuild
         uses: microsoft/setup-msbuild@v1.0.2
 
@@ -75,11 +72,13 @@ jobs:
           key: ${{ runner.os }}-cactbot-${{ hashFiles('./util/fetch_deps.ts', './util/DEPS.json5') }}
           restore-keys: |
             ${{ runner.os }}-cactbot-
+
       - name: Fetch Dependencies
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           npm run fetch-deps
         shell: bash
+
       - name: Build Cactbot Plugin
         shell: cmd
         run: |
@@ -88,48 +87,55 @@ jobs:
       - name: Build JavaScript UI Module Bundles
         run: |
           npm run build
+
       - name: Setup Staging Directory
         run: |
           ./util/publish.sh
         shell: bash
+
       - name: Create Release Artifact
         run: |
           mkdir cactbot
           mv publish/cactbot-release/cactbot/ cactbot
           compress-archive cactbot cactbot-${{ needs.validate_tag.outputs.version }}.zip
         shell: pwsh
+
       - name: Create Tag
         shell: bash
         run: git tag "v${{ needs.validate_tag.outputs.version }}" && git push --tags
-      - name: Get Release Attributes
-        id: release_attributes
+
+      - name: Fetch Release Attributes
+        id: fetch_attributes
+        uses: zoexx/github-action-json-file-properties@release
+        with:
+          file_path: "package.json"
+
+      - name: Set Release Attributes
+        id: set_attributes
         shell: pwsh
         run: |
           $release_name = "${{ needs.validate_tag.outputs.version }}";
           $release_draft = "false";
-          $text = [System.IO.File]::ReadAllText("plugin/CactbotEventSource/Properties/AssemblyInfo.cs");
-          $summary_regex = [regex]::New('\[assembly: AssemblyMetadata\("AssemblyReleaseSummary", "(.+)"\)');
-          $draft_regex = [regex]::New('\[assembly: AssemblyMetadata\("AssemblyReleaseAsDraft", "true"\)');
-          $sm = $summary_regex.Match($text);
-          if ($sm.Success) {
-              $release_name += ": " + $sm.Groups[1];
+          $release_summary = "${{steps.fetch_attributes.outputs.releaseSummary}}";
+          if ($release_summary) {
+              $release_name += ": " + $release_summary;
           }
-          $dm = $draft_regex.Match($text);
-          if ($dm.Success) {
+          if ("${{steps.fetch_attributes.outputs.releaseInDraft}}" -eq "true") {
               $release_draft = "true";
           }
           echo "Release Name: $release_name";
           echo "Release as Draft: $release_draft";
           echo "::set-output name=release_name::$release_name"
           echo "::set-output name=release_draft::$release_draft"
+
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          name: ${{ steps.release_attributes.outputs.release_name }}
+          name: ${{ steps.set_attributes.outputs.release_name }}
           tag: v${{ needs.validate_tag.outputs.version }}
           artifacts: cactbot-${{ needs.validate_tag.outputs.version }}.zip
           artifactContentType: application/zip
-          draft: ${{ steps.release_attributes.outputs.release_draft }}
+          draft: ${{ steps.set_attributes.outputs.release_draft }}
           generateReleaseNotes: true
 
   create_npm_package:
