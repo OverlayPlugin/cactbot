@@ -31,11 +31,13 @@ jobs:
           if [ "${{ steps.get_version.outputs.version }}" == "" ]; then
             echo "Error: Unable to determine version from package.json"
             exit 1
-          elif [ $(git tag -l "v${{ steps.get_version.outputs.version }}") ]; then
-              echo "No version bump - ${{ steps.get_version.outputs.version }}.  Skipping remaining jobs..."
+          elif [ "$(git tag -l 'v${{ steps.get_version.outputs.version }}')" ]; then
+              echo "No version bump - ${{ steps.get_version.outputs.version }}."
+              echo "do_release=false" >> $GITHUB_OUTPUT
+              echo "Skipping remaining jobs."
           else
               echo "Version bump detected - ${{ steps.get_version.outputs.version }}"
-              echo "::set-output name=do_release::true"
+              echo "do_release=true" >> $GITHUB_OUTPUT
           fi
 
   validate_versions:
@@ -45,7 +47,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - uses: ./.github/actions/setup-js-env
+
       - name: Validate AssemblyInfo Versions
         run: |
           npm run validate-versions
@@ -53,7 +57,9 @@ jobs:
   create_release:
     runs-on: windows-latest
     needs: [validate_tag, validate_versions]
-    if: ${{ github.repository == 'OverlayPlugin/cactbot' && needs.validate_tag.outputs.do_release == 'true' }}
+    if: |
+      github.repository == 'OverlayPlugin/cactbot' &&
+      needs.validate_tag.outputs.do_release == 'true'
     env:
       GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
     steps:
@@ -72,7 +78,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./plugin/ThirdParty
-          key: ${{ runner.os }}-cactbot-${{ hashFiles('./util/fetch_deps.ts', './util/DEPS.json5') }}
+          key: |
+            ${{ runner.os }}-cactbot-${{ hashFiles('./util/fetch_deps.ts',
+            './util/DEPS.json5') }}
           restore-keys: |
             ${{ runner.os }}-cactbot-
 
@@ -115,6 +123,7 @@ jobs:
 
       - name: Set Release Attributes
         id: set_attributes
+        # Using pwsh, so output must be sent to $env:GITHUB_OUTPUT instead of $GITHUB_OUTPUT
         shell: pwsh
         run: |
           $release_name = "${{ needs.validate_tag.outputs.version }}";
@@ -128,8 +137,8 @@ jobs:
           }
           echo "Release Name: $release_name";
           echo "Release as Draft: $release_draft";
-          echo "::set-output name=release_name::$release_name"
-          echo "::set-output name=release_draft::$release_draft"
+          echo "release_name=$release_name" >> $env:GITHUB_OUTPUT
+          echo "release_draft=$release_draft" >> $env:GITHUB_OUTPUT
 
       - name: Create Release
         uses: ncipollo/release-action@v1
@@ -148,6 +157,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
       - uses: ./.github/actions/setup-js-env
 
       - run: node .github/scripts/npm-package.cjs

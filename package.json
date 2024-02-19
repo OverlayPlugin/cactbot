@@ -32,6 +32,7 @@
     "stylelint": "stylelint \"resources/**/*.css\" \"ui/**/*.css\" \"user/**/*.css\" \"test/**/*.css\" \"util/**/*.css\"",
     "stylelintfix": "stylelint --fix \"resources/**/*.css\" \"ui/**/*.css\" \"user/**/*.css\" \"test/**/*.css\" \"util/**/*.css\"",
     "markdownlint": "markdownlint . --ignore node_modules --ignore publish --ignore plugin/ThirdParty",
+    "workflowlint": "yamllint -c .yamllint.yml . && node .github/scripts/lint-workflow.cjs",
     "test": "mocha",
     "sync-files": "node --loader=ts-node/esm util/sync_files.ts && git diff --exit-code",
     "lint-staged": "lint-staged",

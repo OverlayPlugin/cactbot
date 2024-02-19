@@ -29,9 +29,9 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: black **/*.py --line-length 100 --check --diff
+      - name: Run black
         run: |
-          black **/*.py --line-length 100 --check --diff
+          black --line-length 100 --check --diff -- **/*.py
 
   pylint:
     runs-on: ubuntu-latest
@@ -51,6 +51,6 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: pylint **/*.py --errors-only
+      - name: Run pylint
         run: |
-          pylint **/*.py --errors-only
+          pylint --errors-only -- **/*.py

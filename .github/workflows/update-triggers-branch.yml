@@ -1,7 +1,8 @@
 name: Update triggers
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   check-triggers:
@@ -15,12 +16,13 @@ jobs:
         run: |
           GITHUB_URL="https://github.com/${{ github.repository }}"
           if git ls-remote --exit-code --heads $GITHUB_URL triggers; then
-            echo "::set-output name=found::true"
+            echo "found=true" >> $GITHUB_OUTPUT
             echo "triggers branch found. Updating..."
           else
-            echo "::set-output name=found::false"
+            echo "found=false" >> $GITHUB_OUTPUT
             echo "triggers branch not found. Skipping..."
           fi
+
   update-triggers:
     runs-on: ubuntu-latest
     needs: check-triggers
@@ -33,6 +35,7 @@ jobs:
       - name: Build
         run: |
           npm run process-triggers
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

@@ -1,0 +1,28 @@
+extends: default
+
+locale: en_US.UTF-8
+
+ignore: node_modules/
+
+rules:
+  braces:
+    max-spaces-inside: 1 # don't complain about Github Actions syntax
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: enable
+  document-end: disable
+  document-start: disable
+  empty-lines:
+    max: 1
+    max-end: 1
+  indentation:
+    spaces: 2
+  key-ordering: disable
+  line-length:
+    max: 100
+    allow-non-breakable-inline-mappings: true
+  new-line-at-end-of-file: enable
+  new-lines:
+    type: dos
+  trailing-spaces: enable
+  truthy: disable
