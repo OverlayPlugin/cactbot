@@ -92,7 +92,7 @@ const parseFile = (file) => {
         loopState = 'on';
       } else {
         logError(lineNum, 1, 'Did not find on: block in expected place, and cannot continue.');
-        fatalError = false;
+        fatalError = true;
       }
       return;
     }
@@ -111,12 +111,8 @@ const parseFile = (file) => {
         logError(lineNum, 1, 'Must have empty line following on: block.');
         loopState = 'jobs'; // don't return; we want to process the jobs: header below
       } else {
-        logError(
-          lineNum,
-          1,
-          'Could not find jobs: heading immediately after on: block.  Cannot continue.',
-        );
-        fatalError = false;
+        logError(lineNum, 1, 'Expected jobs: header after on: block.  Cannot continue.');
+        fatalError = true;
         return;
       }
     }
