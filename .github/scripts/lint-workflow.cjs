@@ -99,11 +99,11 @@ const parseFile = (file) => {
         logError(lineNum, 1, `Must have empty line following workflow name.`);
       loopState = 'on';
       if (!line.match(/^on:/)) // if this is the on: block, continue processing; otherwise return
-        return; 
+        return;
     }
     if (loopState === 'on') {
       if (!line.match(/^on:$/))
-          logError(lineNum, 1, 'on: heading is missing or malformed.');
+        logError(lineNum, 1, 'on: heading is missing or malformed.');
       loopState = 'on-block';
       return;
     }
