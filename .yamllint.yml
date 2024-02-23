@@ -2,8 +2,6 @@ extends: default
 
 locale: en_US.UTF-8
 
-ignore: node_modules/
-
 rules:
   braces:
     max-spaces-inside: 1 # don't complain about Github Actions syntax
