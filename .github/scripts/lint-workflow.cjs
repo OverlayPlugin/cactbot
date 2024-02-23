@@ -5,6 +5,7 @@ const path = require('path');
 // This linter script checks the format of a given GitHub workflow file
 // to ensure it conforms to the format below (esp. newlines and spacing).
 // --- WORKFLOW FILE FORMAT: ---
+// # [optional - comment line(s)]]
 // name: <workflow name>
 //
 // on:
@@ -55,6 +56,11 @@ const processFileErrors = () => {
 };
 
 const parseFile = (file) => {
+  // loopState is used to track the next expected line in the workflow file.
+  // Unless something is super-wonky with the workflow file, it should progress as follows:
+  // 'start' -> 'pre-on' (empty line) -> 'on' -> 'on-block' -> 'jobs' ->
+  // > 'job-name' -> 'job-detail' ->
+  // >>>  'step-name' -> 'step-detail' -> 'end-of-step' -> (back to job-name or step-name)
   let lineNum = 0;
   let loopState = 'start';
   let fatalError = false;
@@ -76,24 +82,29 @@ const parseFile = (file) => {
     if (line.trim().match(/^#/))
       return;
 
-    // Check first three lines, which should be in a fixed format for every workflow file
+    // Check first three lines (after opening comment lines), which should be in a fixed format
+    // for every workflow file.
     if (loopState === 'start') {
-      if (lineNum === 1) {
-        if (!line.match(/^name: [\w\s-]+$/))
-          logError(lineNum, 1, 'Workflow name is missing or malformed.');
-      } else if (lineNum === 2) {
-        if (line !== '')
-          logError(lineNum, 1, `Must have empty line following workflow name.`);
-        if (line.match(/^on:$/))
-          loopState = 'on';
-      } else if (lineNum === 3) {
-        if (!line.match(/^on:$/))
-          logError(lineNum, 1, 'on: heading is missing or malformed.');
-        loopState = 'on';
-      } else {
-        logError(lineNum, 1, 'Did not find on: block in expected place, and cannot continue.');
-        fatalError = true;
+      if (line === '') {
+        logError(lineNum, 1, 'Remove empty line between opening comments and name: header.');
+        return;
       }
+      if (!line.match(/^name: [\w\s-]+$/))
+        logError(lineNum, 1, 'Workflow name is missing or malformed.');
+      loopState = 'pre-on';
+      return;
+    }
+    if (loopState === 'pre-on') {
+      if (line !== '')
+        logError(lineNum, 1, `Must have empty line following workflow name.`);
+      loopState = 'on';
+      if (!line.match(/^on:/)) // if this is the on: block, continue processing; otherwise return
+        return; 
+    }
+    if (loopState === 'on') {
+      if (!line.match(/^on:$/))
+          logError(lineNum, 1, 'on: heading is missing or malformed.');
+      loopState = 'on-block';
       return;
     }
 
@@ -101,7 +112,7 @@ const parseFile = (file) => {
     // apply the same logic that we do to checking spacing and flow in the jobs: block.
     // We're going to let yamllint and actionlint handle this block, and just look for
     // a blank line before the beginning of the jobs: block.
-    if (loopState === 'on') {
+    if (loopState === 'on-block') {
       if (line.match(/^ {2}/)) // ignore any indented lines
         return;
       else if (line === '') {
@@ -117,9 +128,9 @@ const parseFile = (file) => {
       }
     }
 
-    // We're first going to handle end-of-step, which was triggered by a newline
-    // after a step in a job block. Depending on what this line is, we'll set the
-    // loop state and proceed with normal processing below, or throw an error.
+    // Out of order, but needed here:
+    // We need to handle end-of-step, which was triggered by a newline after a step in a job block.
+    // Depending on the line, we'll set loopState and proceed with processing below, or error out.
     if (loopState === 'end-of-step') {
       if (line.match(/^ {2}[\w]/))
         loopState = 'job-name';
@@ -145,8 +156,8 @@ const parseFile = (file) => {
       return;
     }
 
-    // Fallback for job-name to keep flow control, even if we got here unexpectedly.
-    // But don't return, just process as job-name below.
+    // Early fallback for job-name to keep flow control, even if we got here unexpectedly.
+    // But don't return, just keep processing as job-name below.
     if (line.match(/^ {2}[\w]/) && loopState !== 'job-name') {
       if (loopState === 'step-detail')
         logError(lineNum, 3, 'Must have empty line between job definitions.');
@@ -171,8 +182,8 @@ const parseFile = (file) => {
       return;
     }
 
-    // Fallback for steps to keep flow control, even if we got here unexpectedly.
-    // But don't return, just process as job-detail below.
+    // Early fallback for steps to keep flow control, even if we got here unexpectedly.
+    // But don't return, just keep processing as job-detail below.
     if (line.match(/^ {4}steps:/) && loopState !== 'job-detail') {
       logError(lineNum, 5, 'Unexpected steps: header found; not within a job: block.');
       loopState = 'job-detail';
