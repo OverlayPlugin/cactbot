@@ -34,16 +34,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.BOT_TOKEN }}
 
-      - name: Download actionlint
-        id: get_actionlint
-        run: |
-          bash <(curl \
-          https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-        shell: bash
-
       - name: Run actionlint
-        run: |
-          ${{ steps.get_actionlint.outputs.executable }} \
-          -ignore 'SC2086:' \
-          -color
-        shell: bash
+        uses: docker://rhysd/actionlint:latest
+        env:
+          SHELLCHECK_OPTS: --exclude=SC2086
+        with:
+          args: -color
