@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Common Issues & Workarounds
+    url: https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md
+    about: Get help with common issues and workarounds.
+  - name: OverlayPlugin
+    url: https://github.com/OverlayPlugin/OverlayPlugin/issues/
+    about: Report bugs & issues with OverlayPlugin.
+  - name: ACT Discord
+    url: https://discord.gg/ahFKcmx
+    about: Ask questions & get help with ACT, OverlayPlugin, cactbot, and other overlays.

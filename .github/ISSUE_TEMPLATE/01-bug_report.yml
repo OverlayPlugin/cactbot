@@ -1,0 +1,102 @@
+name: Bug Report 🐛
+description: Something isn't working as expected? Report it here.
+labels: [bug, needs-review]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        > [!CAUTION]
+
+        > Things that seem like bugs are often caused by misconfigured settings in your
+        ACT client. Before you open a new bug report, please review [Common Issues and
+        Workarounds](https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md)
+        to ensure your settings are correct.
+
+        >
+        
+        > We also strongly encourage you to ask for help in the
+        [ACT Discord server](https://discord.gg/ahFKcmx) ***first*** before you open
+        a bug report. You will often receive a faster response and fix for your issue.
+
+
+
+        To report a bug, please add a short title above and complete the form below.
+        Be sure to include all requested information. This will help cactbot's maintainers
+        diagnose and fix your issue as quickly as possible.
+
+
+
+        # Bug Report
+  - type: input
+    id: bug-description
+    attributes:
+      label: Description
+      description: A clear and concise description of the bug.
+      placeholder: Describe the bug
+    validations:
+      required: true
+  - type: textarea
+    id: bug-details
+    attributes:
+      label: Additional Details / Steps to Reproduce
+      description: Include any additional details and steps we can follow to reproduce the bug.
+      placeholder: Add details here
+    validations:
+      required: true
+  - type: dropdown
+    id: bug-module
+    attributes:
+      label: Cactbot Module
+      description: Which part of cactbot is affected by this bug?
+      options:
+        - Raidboss (alerts & timelines)
+        - Oopsyraidsy
+        - Jobs
+        - Eureka
+        - Radar
+        - Raid Emulator
+        - Installation / Configuration
+        - Dev Tools / Internals
+        - Other
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: bug-support-info
+    attributes:
+      label: Configuration Info
+      description: Copy/paste your plugin configuration info here.
+      placeholder: "With ACT and FFXIV running, in ACT: go to Plugins -> OverlayPlugin.dll
+        -> General and hit 'Copy Tech Support Info to Clipboard'. Feel free to remove/replace
+        your Windows username for privacy if it appears in the file paths."
+    validations:
+      required: true
+  - type: textarea
+    id: bug-attachments
+    attributes:
+      label: Log & Screenshots
+      description: "Attach an ACT log file and/or screenshots showing the bug.
+        To create an anonymized log:<br>
+        1. Open the [Log
+        Splitter](https://overlayplugin.github.io/cactbot/util/logtools/splitter.html)
+        and drag/drop your log where indicated.<br>
+        2. Check 'Anonymize Log', check one or more fights where the bug occurred,
+        and hit 'Export'.<br>
+        3. Attach the exported log here."
+      placeholder: Click here, then drag & drop your log and/or screenshots.
+  - type: checkboxes
+    id: bug-confirmations
+    attributes:
+      label: Confirmation
+      description: "Please confirm the following before submitting your bug report:"
+      options:
+        - label: "I reviewed
+            <a href='/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md'>
+            Common Issues and Workarounds</a> and verified that my settings are correct."
+          required: true
+        - label: I used the search function to confirm this issue doesn't already exist.
+          required: true
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for your report!

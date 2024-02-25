@@ -1,0 +1,32 @@
+name: Feature Request 🚀
+description: Suggest a new idea.
+labels: [enhancement, needs-review]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        > [!TIP]
+
+        > Please review the [Contribution
+        Guidelines](/OverlayPlugin/cactbot/blob/main/CONTRIBUTING.md) and the [Code of
+        Conduct](/OverlayPlugin/cactbot/blob/main/CODE_OF_CONDUCT.md) before submitting a new
+        feature request.
+
+      
+
+        # Feature Request
+
+        Please include as much information as possible below, such as example behavior
+        and motivation behind the feature request.
+
+
+        Please note that not every feature request will be added to cactbot, but hearing
+        about what you want out of cactbot is important. Please don't be afraid to tell us!
+
+  - type: textarea
+    id: feature-request
+    attributes:
+      label: Feature(s) Requested
+      description: Briefly explain the feature(s) you are requesting.
+    validations:
+      required: true

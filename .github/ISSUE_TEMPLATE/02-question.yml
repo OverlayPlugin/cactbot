@@ -1,0 +1,38 @@
+name: Question ❓
+description: General question about cactbot.
+labels: [question, needs-review]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        > [!CAUTION]
+
+        > GitHub issues are _*NOT*_ the recommended method of asking general questions
+        about cactbot.
+
+        >
+        
+        > General questions are allowed but highly discouraged due to adding noise to the
+        project's issue page. Many common questions are addressed on the [Common Issues and
+        Workarounds](https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md)
+        page.
+
+        >
+
+        > We also strongly encourage you to ask your question in the [ACT Discord
+        server](https://discord.gg/ahFKcmx) instead, as you will often receive a faster
+        response.
+
+
+
+        If you want to submit a question, please complete the form below.
+
+
+
+        # Ask a Question
+  - type: textarea
+    id: question
+    attributes:
+      label: What's your question?
+    validations:
+      required: true
