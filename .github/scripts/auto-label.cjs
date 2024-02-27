@@ -127,7 +127,23 @@ const getLabels = async (github, owner, repo, pullNumber) => {
     }
   })));
 
-  return [...changedModule, ...changedLang.map((v) => langToLabel(v))];
+  // since this script clobbers all PR labels, we need to capture
+  // existing PR labels that are unrelated to scope and preserve them.
+  /**
+   * @typedef {{ name: string }} Label
+   * @type {Label[]}
+   */
+  const prLabels = pullRequest.labels;
+  const scopeLabelsAll = nonNullUnique(lodash.flatten(Object.values(regexLabelMap)));
+  const prNonScopeLabels = prLabels
+    .map((label) => label.name)
+    .filter((label) => !scopeLabelsAll.includes(label));
+
+  return [
+    ...prNonScopeLabels,
+    ...changedModule,
+    ...changedLang.map((v) => langToLabel(v)),
+  ];
 };
 
 /**

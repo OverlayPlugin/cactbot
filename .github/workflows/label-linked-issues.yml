@@ -1,0 +1,31 @@
+# Adds the 'fix-me' label to an issue once it is linked to a PR
+# (which will also prevent the issue from being auto-closed as stale)
+name: Check Linked Issues
+
+on:
+  pull_request_target:
+    types: [edited, synchronize, opened, reopened]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check for linked issues
+        id: find-linked-issues
+        uses: mondeja/pr-linked-issues-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Label linked issues
+        if: join(steps.find-linked-issues.outputs.issues) != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Found linked issues: ${{ steps.find-linked-issues.outputs.issues }}"
+          issues=${{ steps.find-linked-issues.outputs.issues }}
+          for issue in ${issues//,/ }; do
+            echo "Adding 'fix-me' label to issue $issue"
+            gh issue edit $issue --add-label "fix-me"
+          done
