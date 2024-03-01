@@ -588,6 +588,51 @@ export default class Regexes {
   }
 
   /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-265-0x109-contentfindersettings
+   */
+  static contentFinderSettings(
+    params?: NetParams['ContentFinderSettings'],
+  ): CactbotBaseRegExp<'ContentFinderSettings'> {
+    return buildRegex('ContentFinderSettings', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-266-0x10a-npcyell
+   */
+  static npcYell(
+    params?: NetParams['NpcYell'],
+  ): CactbotBaseRegExp<'NpcYell'> {
+    return buildRegex('NpcYell', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-267-0x10b-battletalk2
+   */
+  static battleTalk2(
+    params?: NetParams['BattleTalk2'],
+  ): CactbotBaseRegExp<'BattleTalk2'> {
+    return buildRegex('BattleTalk2', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-268-0x10c-countdown
+   */
+  static countdown(
+    params?: NetParams['Countdown'],
+  ): CactbotBaseRegExp<'Countdown'> {
+    return buildRegex('Countdown', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-269-0x10d-countdowncancel
+   */
+  static countdownCancel(
+    params?: NetParams['CountdownCancel'],
+  ): CactbotBaseRegExp<'CountdownCancel'> {
+    return buildRegex('CountdownCancel', params);
+  }
+
+  /**
    * Helper function for building named capture group
    */
   static maybeCapture(

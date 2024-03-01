@@ -3,6 +3,8 @@ import { assert } from 'chai';
 import Regexes from '../../resources/regexes';
 import regexCaptureTest, { RegexUtilParams } from '../helper/regex_util';
 
+// TODO: add tests for the other (missing) regexes
+
 describe('regex tests', () => {
   it('startsUsing', () => {
     const lines = [
@@ -463,5 +465,59 @@ describe('regex tests', () => {
     assert.equal(matches?.pairType, '7');
     assert.equal(matches?.pairWeaponId, '220');
     assert.equal(matches?.pairWorldID, '63589');
+  });
+  it('npcYell', () => {
+    const lines = [
+      '[15:15:40.585] 266 10A:4001F001:02D2:07AF',
+      '[15:15:54.557] 266 10A:4001F002:02D4:07BE',
+      '[16:02:15.030] 266 10A:E0000000:6B10:2B29',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.npcYell(params), lines);
+
+    const matches = lines[0].match(Regexes.npcYell())?.groups;
+    assert.equal(matches?.npcId, '4001F001');
+    assert.equal(matches?.npcNameId, '02D2');
+    assert.equal(matches?.npcYellId, '07AF');
+  });
+  it('battleTalk2', () => {
+    const lines = [
+      '[16:22:41.421] 267 10B:00000000:80034E2B:02CE:840C:5000:0:2:0:0',
+      '[16:22:17.923] 267 10B:00000000:80034E2B:02D2:8411:7000:0:2:0:0',
+      '[16:23:00.668] 267 10B:4001FFC4:80034E2B:02D5:840F:3000:0:2:0:0',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.battleTalk2(params), lines);
+
+    const matches = lines[0].match(Regexes.battleTalk2())?.groups;
+    assert.equal(matches?.npcId, '00000000');
+    assert.equal(matches?.instance, '80034E2B');
+    assert.equal(matches?.npcNameId, '02CE');
+    assert.equal(matches?.instanceContentTextId, '840C');
+    assert.equal(matches?.displayMs, '5000');
+  });
+  it('countdown', () => {
+    const lines = [
+      '[15:19:48.625] 268 10C:10FF0001:0036:13:00:Tini Poutini',
+      '[15:34:16.428] 268 10C:10FF0002:0036:20:00:Potato Chippy',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.countdown(params), lines);
+
+    const matches = lines[0].match(Regexes.countdown())?.groups;
+    assert.equal(matches?.id, '10FF0001');
+    assert.equal(matches?.worldId, '0036');
+    assert.equal(matches?.countdownTime, '13');
+    assert.equal(matches?.result, '00');
+    assert.equal(matches?.name, 'Tini Poutini');
+  });
+  it('countdownCancel', () => {
+    const lines = [
+      '[15:19:55.349] 269 10D:10FF0001:0036:Tini Poutini',
+      '[15:34:22.894] 269 10D:10FF0002:0036:Potato Chippy',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.countdownCancel(params), lines);
+
+    const matches = lines[0].match(Regexes.countdownCancel())?.groups;
+    assert.equal(matches?.id, '10FF0001');
+    assert.equal(matches?.worldId, '0036');
+    assert.equal(matches?.name, 'Tini Poutini');
   });
 });

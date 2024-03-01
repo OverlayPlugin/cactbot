@@ -366,6 +366,29 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Test Countdown',
+      type: 'Countdown',
+      netRegex: { result: '00' },
+      infoText: (_data, matches, output) =>
+        output.countdown!({ player: matches.name, seconds: matches.countdownTime }),
+      outputStrings: {
+        countdown: {
+          en: '${player} started ${seconds}s countdown',
+        },
+      },
+    },
+    {
+      id: 'Test Countdown Cancel',
+      type: 'CountdownCancel',
+      netRegex: {},
+      infoText: (_data, matches, output) => output.countdownCancel!({ player: matches.name }),
+      outputStrings: {
+        countdownCancel: {
+          en: '${player} cancelled countdown',
+        },
+      },
+    },
+    {
       id: 'Test OutputStrings',
       type: 'GameLog',
       netRegex: {

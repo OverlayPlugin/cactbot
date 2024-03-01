@@ -3,6 +3,8 @@ import { assert } from 'chai';
 import NetRegexes from '../../resources/netregexes';
 import regexCaptureTest, { RegexUtilParams } from '../helper/regex_util';
 
+// TODO: add tests for the other (missing) netregexes
+
 describe('netregex tests', () => {
   it('startsUsing', () => {
     const lines = [
@@ -449,5 +451,63 @@ describe('netregex tests', () => {
     assert.equal(matches?.pairRadius, '7.5000');
     assert.equal(matches?.pairType, '2');
     assert.equal(matches?.pairWorldID, '65535');
+  });
+  it('npcYell', () => {
+    const lines = [
+      '266|2024-02-29T15:15:40.5850000-08:00|4001F001|02D2|07AF|8f731e1760bdcfc9',
+      '266|2024-02-29T15:15:54.5570000-08:00|4001F002|02D4|07BE|ae0674ec1e496642',
+      '266|2024-02-25T16:02:15.0300000-05:00|E0000000|6B10|2B29|65aa9c0faa3d0e16',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => NetRegexes.npcYell(params), lines);
+
+    const matches = lines[0].match(NetRegexes.npcYell())?.groups;
+    assert.equal(matches?.type, '266');
+    assert.equal(matches?.npcId, '4001F001');
+    assert.equal(matches?.npcNameId, '02D2');
+    assert.equal(matches?.npcYellId, '07AF');
+  });
+  it('battleTalk2', () => {
+    const lines = [
+      '267|2024-02-29T16:22:41.4210000-08:00|00000000|80034E2B|02CE|840C|5000|0|2|0|0|6f6ccb784c36e978',
+      '267|2024-02-29T16:22:17.9230000-08:00|00000000|80034E2B|02D2|8411|7000|0|2|0|0|be1dee98cdcd67a4',
+      '267|2024-02-29T16:23:00.6680000-08:00|4001FFC4|80034E2B|02D5|840F|3000|0|2|0|0|cffef89907b5345b',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => NetRegexes.battleTalk2(params), lines);
+
+    const matches = lines[0].match(NetRegexes.battleTalk2())?.groups;
+    assert.equal(matches?.type, '267');
+    assert.equal(matches?.npcId, '00000000');
+    assert.equal(matches?.instance, '80034E2B');
+    assert.equal(matches?.npcNameId, '02CE');
+    assert.equal(matches?.instanceContentTextId, '840C');
+    assert.equal(matches?.displayMs, '5000');
+  });
+  it('countdown', () => {
+    const lines = [
+      '268|2024-02-29T15:19:48.6250000-08:00|10FF0001|0036|13|00|Tini Poutini|0ab734bdbcb55902',
+      '268|2024-02-29T15:34:16.4280000-08:00|10FF0002|0036|20|00|Potato Chippy|0ab734bdbcb55902',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => NetRegexes.countdown(params), lines);
+
+    const matches = lines[0].match(NetRegexes.countdown())?.groups;
+    assert.equal(matches?.type, '268');
+    assert.equal(matches?.id, '10FF0001');
+    assert.equal(matches?.worldId, '0036');
+    assert.equal(matches?.countdownTime, '13');
+    assert.equal(matches?.result, '00');
+    assert.equal(matches?.name, 'Tini Poutini');
+  });
+  it('countdownCancel', () => {
+    const lines = [
+      '269|2024-02-29T15:19:55.3490000-08:00|10FF0001|0036|Tini Poutini|e17efb9d120adea0',
+      '269|2024-02-29T15:34:22.8940000-08:00|10FF0002|0036|Potato Chippy|e17efb9d120adea0',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => NetRegexes.countdownCancel(params), lines);
+
+    const matches = lines[0].match(NetRegexes.countdownCancel())?.groups;
+    assert.equal(matches?.type, '269');
+    assert.equal(matches?.id, '10FF0001');
+    assert.equal(matches?.worldId, '0036');
+    assert.equal(matches?.name, 'Tini Poutini');
   });
 });

@@ -8,9 +8,9 @@ for folks who want to write ACT triggers for ff14.
 
 This guide was last updated for:
 
-- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.5
-- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.9.7
-- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.24
+- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.57
+- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.9.9
+- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.27
 
 ## TOC
 
@@ -196,6 +196,22 @@ This guide was last updated for:
     - [Structure](#structure-37)
     - [Regexes](#regexes-37)
     - [Examples](#examples-37)
+  - [Line 266 (0x10A): NpcYell](#line-266-0x10a-npcyell)
+    - [Structure](#structure-38)
+    - [Regexes](#regexes-38)
+    - [Examples](#examples-38)
+  - [Line 267 (0x10B): BattleTalk2](#line-267-0x10b-battletalk2)
+    - [Structure](#structure-39)
+    - [Regexes](#regexes-39)
+    - [Examples](#examples-39)
+  - [Line 268 (0x10C): Countdown](#line-268-0x10c-countdown)
+    - [Structure](#structure-40)
+    - [Regexes](#regexes-40)
+    - [Examples](#examples-40)
+  - [Line 269 (0x10D): CountdownCancel](#line-269-0x10d-countdowncancel)
+    - [Structure](#structure-41)
+    - [Regexes](#regexes-41)
+    - [Examples](#examples-41)
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Data Flow
@@ -2790,20 +2806,20 @@ and a value of `1` indicates that it is enabled.
 
 ```log
 Network Log Line Structure:
-265|[timestamp]|[zoneID]|[zoneName]|[inContentFinderContent]|[unrestrictedParty]|[minimalItemLevel]|[silenceEcho]|[explorerMode]|[levelSync]
+265|[timestamp]|[zoneId]|[zoneName]|[inContentFinderContent]|[unrestrictedParty]|[minimalItemLevel]|[silenceEcho]|[explorerMode]|[levelSync]
 
 Parsed Log Line Structure:
-[timestamp] 265 109:[zoneID]:[zoneName]:[inContentFinderContent]:[unrestrictedParty]:[minimalItemLevel]:[silenceEcho]:[explorerMode]:[levelSync]
+[timestamp] 265 109:[zoneId]:[zoneName]:[inContentFinderContent]:[unrestrictedParty]:[minimalItemLevel]:[silenceEcho]:[explorerMode]:[levelSync]
 ```
 
 #### Regexes
 
 ```log
 Network Log Line Regex:
-^(?<type>265)\|(?<timestamp>[^|]*)\|(?<zoneID>[^|]*)\|(?<zoneName>[^|]*)\|(?<inContentFinderContent>[^|]*)\|(?<unrestrictedParty>[^|]*)\|(?<minimalItemLevel>[^|]*)\|(?<silenceEcho>[^|]*)\|(?<explorerMode>[^|]*)\|(?<levelSync>[^|]*)\|
+^(?<type>265)\|(?<timestamp>[^|]*)\|(?<zoneId>[^|]*)\|(?<zoneName>[^|]*)\|(?<inContentFinderContent>[^|]*)\|(?<unrestrictedParty>[^|]*)\|(?<minimalItemLevel>[^|]*)\|(?<silenceEcho>[^|]*)\|(?<explorerMode>[^|]*)\|(?<levelSync>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) 265 (?<type>109):(?<zoneID>[^:]*):(?<zoneName>[^:]*):(?<inContentFinderContent>[^:]*):(?<unrestrictedParty>[^:]*):(?<minimalItemLevel>[^:]*):(?<silenceEcho>[^:]*):(?<explorerMode>[^:]*):(?<levelSync>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) 265 (?<type>109):(?<zoneId>[^:]*):(?<zoneName>[^:]*):(?<inContentFinderContent>[^:]*):(?<unrestrictedParty>[^:]*):(?<minimalItemLevel>[^:]*):(?<silenceEcho>[^:]*):(?<explorerMode>[^:]*):(?<levelSync>[^:]*)(?:$|:)
 ```
 
 #### Examples
@@ -2821,3 +2837,189 @@ Parsed Log Line Examples:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=ContentFinderSettings&lang=en-US) -->
+
+<a name="line266"></a>
+
+### Line 266 (0x10A): NpcYell
+
+This log line is emitted whenever a NpcYell packet is received from the server,
+indicating that an NPC has yelled something (e.g. UWU Nael quotes).
+
+`npcNameId` and `npcYellId` (both hex values) correspond to IDs
+in the [BNpcName](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcName.csv)
+and [NpcYell](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/NpcYell.csv) tables, respectively.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=NpcYell&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+266|[timestamp]|[npcId]|[npcNameId]|[npcYellId]
+
+Parsed Log Line Structure:
+[timestamp] 266 10A:[npcId]:[npcNameId]:[npcYellId]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>266)\|(?<timestamp>[^|]*)\|(?<npcId>[^|]*)\|(?<npcNameId>[^|]*)\|(?<npcYellId>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 266 (?<type>10A):(?<npcId>[^:]*):(?<npcNameId>[^:]*):(?<npcYellId>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+266|2024-02-29T15:15:40.5850000-08:00|4001F001|02D2|07AF|8f731e1760bdcfc9
+266|2024-02-29T15:15:54.5570000-08:00|4001F002|02D4|07BE|ae0674ec1e496642
+266|2024-02-25T16:02:15.0300000-05:00|E0000000|6B10|2B29|65aa9c0faa3d0e16
+
+Parsed Log Line Examples:
+[15:15:40.585] 266 10A:4001F001:02D2:07AF
+[15:15:54.557] 266 10A:4001F002:02D4:07BE
+[16:02:15.030] 266 10A:E0000000:6B10:2B29
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=NpcYell&lang=en-US) -->
+
+<a name="line267"></a>
+
+### Line 267 (0x10B): BattleTalk2
+
+This log line is emitted whenever a BattleTalk2 packet is received from the server,
+resulting in popup dialog being displayed during instanced content.
+
+`npcNameId` and `instanceContentTextId` (both hex values) correspond to IDs
+in the [BNpcName](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcName.csv)
+and [InstanceContentTextData](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/InstanceContentTextData.csv)
+tables, respectively.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=BattleTalk2&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+267|[timestamp]|[npcId]|[instance]|[npcNameId]|[instanceContentTextId]|[displayMs]
+
+Parsed Log Line Structure:
+[timestamp] 267 10B:[npcId]:[instance]:[npcNameId]:[instanceContentTextId]:[displayMs]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>267)\|(?<timestamp>[^|]*)\|(?<npcId>[^|]*)\|(?<instance>[^|]*)\|(?<npcNameId>[^|]*)\|(?<instanceContentTextId>[^|]*)\|(?<displayMs>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 267 (?<type>10B):(?<npcId>[^:]*):(?<instance>[^:]*):(?<npcNameId>[^:]*):(?<instanceContentTextId>[^:]*):(?<displayMs>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+267|2024-02-29T16:22:41.4210000-08:00|00000000|80034E2B|02CE|840C|5000|0|2|0|0|6f6ccb784c36e978
+267|2024-02-29T16:22:17.9230000-08:00|00000000|80034E2B|02D2|8411|7000|0|2|0|0|be1dee98cdcd67a4
+267|2024-02-29T16:23:00.6680000-08:00|4001FFC4|80034E2B|02D5|840F|3000|0|2|0|0|cffef89907b5345b
+
+Parsed Log Line Examples:
+[16:22:41.421] 267 10B:00000000:80034E2B:02CE:840C:5000:0:2:0:0
+[16:22:17.923] 267 10B:00000000:80034E2B:02D2:8411:7000:0:2:0:0
+[16:23:00.668] 267 10B:4001FFC4:80034E2B:02D5:840F:3000:0:2:0:0
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=BattleTalk2&lang=en-US) -->
+
+<a name="line268"></a>
+
+### Line 268 (0x10C): Countdown
+
+This log line is emitted whenever a countdown is started.
+
+`result` is `00` if successful, and non-zero if the attempt to start a countdown failed
+(e.g., if a countdown is already in progress, or if combat has started).
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=Countdown&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+268|[timestamp]|[id]|[worldId]|[countdownTime]|[result]|[name]
+
+Parsed Log Line Structure:
+[timestamp] 268 10C:[id]:[worldId]:[countdownTime]:[result]:[name]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>268)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<worldId>[^|]*)\|(?<countdownTime>[^|]*)\|(?<result>[^|]*)\|(?<name>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 268 (?<type>10C):(?<id>[^:]*):(?<worldId>[^:]*):(?<countdownTime>[^:]*):(?<result>[^:]*):(?<name>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+268|2024-02-29T15:19:48.6250000-08:00|10FF0001|0036|13|00|Tini Poutini|0ab734bdbcb55902
+268|2024-02-29T15:34:16.4280000-08:00|10FF0002|0036|20|00|Potato Chippy|0ab734bdbcb55902
+
+Parsed Log Line Examples:
+[15:19:48.625] 268 10C:10FF0001:0036:13:00:Tini Poutini
+[15:34:16.428] 268 10C:10FF0002:0036:20:00:Potato Chippy
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=Countdown&lang=en-US) -->
+
+<a name="line269"></a>
+
+### Line 269 (0x10D): CountdownCancel
+
+This log line is emitted whenever a currently-running countdown is cancelled.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=CountdownCancel&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+269|[timestamp]|[id]|[worldId]|[name]
+
+Parsed Log Line Structure:
+[timestamp] 269 10D:[id]:[worldId]:[name]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>269)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<worldId>[^|]*)\|(?<name>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 269 (?<type>10D):(?<id>[^:]*):(?<worldId>[^:]*):(?<name>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+269|2024-02-29T15:19:55.3490000-08:00|10FF0001|0036|Tini Poutini|e17efb9d120adea0
+269|2024-02-29T15:34:22.8940000-08:00|10FF0002|0036|Potato Chippy|e17efb9d120adea0
+
+Parsed Log Line Examples:
+[15:19:55.349] 269 10D:10FF0001:0036:Tini Poutini
+[15:34:22.894] 269 10D:10FF0002:0036:Potato Chippy
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=CountdownCancel&lang=en-US) -->
