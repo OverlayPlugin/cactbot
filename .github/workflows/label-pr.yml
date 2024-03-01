@@ -1,0 +1,107 @@
+# This workflow auto-labels PRs based on various criteria:
+# - If a PR is opened or a new commit is pushed, the workflow runs auto-label.cjs to
+#   add scope-related labels and to add 'needs-review' (unless the PR already has an
+#   approving review from a maintainer).
+# - If a review (approving or otherwise) is added to the PR by a maintainer, the workflow
+#   removes the 'needs-review' label.
+# - If 'auto merge' is enabled or disabled on the PR, the workflow adds/removes the
+#   'auto-merge' label.
+name: PR Auto Label
+
+on:
+  pull_request_target:
+    types: [edited, synchronize, opened, reopened, auto_merge_enabled, auto_merge_disabled]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  job_picker:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.label_job.outputs.run }}
+    steps:
+      - name: Determine label job
+        id: label_job
+        shell: bash
+        run: |
+          if [ "${{ contains(github.event.action,'auto_merge_') }}" == "true" ]; then
+              echo "run=auto_merge" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event.action }}" == "submitted" ]; then
+              echo "run=pr_review" >> $GITHUB_OUTPUT
+          else
+              echo "run=push_commit" >> $GITHUB_OUTPUT
+          fi
+
+  auto_merge:
+    runs-on: ubuntu-latest
+    needs: job_picker
+    if: needs.job_picker.outputs.run == 'auto_merge'
+    steps:
+      - name: Add auto-merge label
+        uses: buildsville/add-remove-label@v2.0.1
+        if: github.event.action == 'auto_merge_enabled'
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          labels: auto-merge
+          type: add
+
+      - name: Remove auto-merge label
+        uses: buildsville/add-remove-label@v2.0.1
+        if: github.event.action == 'auto_merge_disabled'
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          labels: auto-merge
+          type: remove
+
+  pr_review:
+    runs-on: ubuntu-latest
+    needs: job_picker
+    if: needs.job_picker.outputs.run == 'pr_review'
+    steps:
+      - name: Remove needs-review label
+        if: >
+          github.event.review.author_association == 'COLLABORATOR' ||
+          github.event.review.author_association == 'OWNER'
+        uses: buildsville/add-remove-label@v2.0.1
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          labels: needs-review
+          type: remove
+
+  push_commit:
+    runs-on: ubuntu-latest
+    needs: job_picker
+    if: needs.job_picker.outputs.run == 'push_commit'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # force to ci checkout main repo to avoid
+          # unexpected PR code to be executed with out github token
+          ref: main
+
+      - name: Check for linked issues
+        id: find-linked-issues
+        uses: mondeja/pr-linked-issues-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Label linked issues
+        if: join(steps.find-linked-issues.outputs.issues) != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Found linked issues: ${{ steps.find-linked-issues.outputs.issues }}"
+          issues=${{ steps.find-linked-issues.outputs.issues }}
+          for issue in ${issues//,/ }; do
+            echo "Adding 'fix-me' label to issue $issue"
+            gh issue edit $issue --add-label "fix-me"
+          done
+
+      - uses: ./.github/actions/setup-js-env
+
+      - name: Run Label Script
+        run: |
+          node .github/scripts/auto-label.cjs
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PR_NUMBER: ${{ github.event.number }}
