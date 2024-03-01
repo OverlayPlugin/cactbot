@@ -1,7 +1,8 @@
 # This workflow auto-labels PRs based on various criteria:
-# - If a PR is opened or a new commit is pushed, the workflow runs auto-label.cjs to
-#   add scope-related labels and to add 'needs-review' (unless the PR already has an
-#   approving review from a maintainer).
+# - If a PR is opened or a new commit is pushed:
+#   - The workflow runs auto-label.cjs to add scope-related labels and to add 'needs-review'
+#     (unless the PR already has an approving review from a maintainer).
+#   - The workflow will check for linked issues and add the 'fix-me' label to them.
 # - If a review (approving or otherwise) is added to the PR by a maintainer, the workflow
 #   removes the 'needs-review' label.
 # - If 'auto merge' is enabled or disabled on the PR, the workflow adds/removes the
