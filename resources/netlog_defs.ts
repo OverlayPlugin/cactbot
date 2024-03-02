@@ -1275,6 +1275,44 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
   },
+  ActorMove: {
+    type: '270',
+    name: 'ActorMove',
+    source: 'OverlayPlugin',
+    messageType: '270',
+    fields: {
+      type: 0,
+      timestamp: 1,
+      id: 2,
+      heading: 3, // OP calls this 'rotation', but cactbot consistently uses 'heading'
+      // unknown1: 4,
+      // unknown2: 5,
+      x: 6,
+      y: 7,
+      z: 8,
+    },
+    canAnonymize: false,
+    firstOptionalField: undefined,
+  },
+  ActorSetPos: {
+    type: '271',
+    name: 'ActorSetPos',
+    source: 'OverlayPlugin',
+    messageType: '271',
+    fields: {
+      type: 0,
+      timestamp: 1,
+      id: 2,
+      heading: 3, // OP call this 'rotation', but cactbot consistently uses 'heading'
+      // unknown1: 4,
+      // unknown2: 5,
+      x: 6,
+      y: 7,
+      z: 8,
+    },
+    canAnonymize: false,
+    firstOptionalField: undefined,
+  },
 } as const;
 
 export const logDefinitionsVersions = {

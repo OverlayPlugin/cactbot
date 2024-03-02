@@ -672,6 +672,24 @@ export default class NetRegexes {
   ): CactbotBaseRegExp<'CountdownCancel'> {
     return buildRegex('CountdownCancel', params);
   }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-270-0x10e-actormove
+   */
+  static actorMove(
+    params?: NetParams['ActorMove'],
+  ): CactbotBaseRegExp<'ActorMove'> {
+    return buildRegex('ActorMove', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-271-0x10f-actorsetpos
+   */
+  static actorSetPos(
+    params?: NetParams['ActorSetPos'],
+  ): CactbotBaseRegExp<'ActorSetPos'> {
+    return buildRegex('ActorSetPos', params);
+  }
 }
 
 export const commonNetRegex = {

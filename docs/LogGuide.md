@@ -212,6 +212,14 @@ This guide was last updated for:
     - [Structure](#structure-41)
     - [Regexes](#regexes-41)
     - [Examples](#examples-41)
+  - [Line 270 (0x10E): ActorMove](#line-270-0x10e-actormove)
+    - [Structure](#structure-42)
+    - [Regexes](#regexes-42)
+    - [Examples](#examples-42)
+  - [Line 271 (0x10F): ActorSetPos](#line-271-0x10f-actorsetpos)
+    - [Structure](#structure-43)
+    - [Regexes](#regexes-43)
+    - [Examples](#examples-43)
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Data Flow
@@ -3023,3 +3031,95 @@ Parsed Log Line Examples:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=CountdownCancel&lang=en-US) -->
+
+<a name="line270"></a>
+
+### Line 270 (0x10E): ActorMove
+
+An `ActorMove` packet is sent to instruct the game client to move an actor to a new position
+(for example, in UWU, when Titan turns prior to jumping to indicate the direction of his jump).
+The FFXIV client interpolates the actor's movement between the current position and the new position.
+Currently, these log lines are emitted only for non-player actors (id >= 0x40000000).
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorMove&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+270|[timestamp]|[id]|[heading]|[?]|[?]|[x]|[y]|[z]
+
+Parsed Log Line Structure:
+[timestamp] 270 10E:[id]:[heading]:[?]:[?]:[x]:[y]:[z]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>270)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<heading>[^|]*)\|(?:[^|]*\|){2}(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 270 (?<type>10E):(?<id>[^:]*):(?<heading>[^:]*)(?::[^:]*){2}:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+270|2024-03-02T13:14:37.0430000-08:00|4000F1D3|-2.2034|0002|0014|102.0539|118.1982|0.2136|4601ae28c0b481d8
+270|2024-03-02T13:18:30.2960000-08:00|4000F44E|2.8366|0002|0014|98.2391|101.9623|0.2136|2eed500a1505cb03
+270|2024-03-02T13:18:30.6070000-08:00|4000F44E|-2.5710|0002|0014|98.2391|101.9318|0.2136|51bc63077eb489f3
+
+Parsed Log Line Examples:
+[13:14:37.043] 270 10E:4000F1D3:-2.2034:0002:0014:102.0539:118.1982:0.2136
+[13:18:30.296] 270 10E:4000F44E:2.8366:0002:0014:98.2391:101.9623:0.2136
+[13:18:30.607] 270 10E:4000F44E:-2.5710:0002:0014:98.2391:101.9318:0.2136
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=ActorMove&lang=en-US) -->
+
+<a name="line271"></a>
+
+### Line 271 (0x10F): ActorSetPos
+
+An `ActorSetPos` packet is sent to instruct the game client to set the position of an actor
+with no interpolated movement (for example, in UWU, to set the location of the Ifrit clones).
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorSetPos&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+271|[timestamp]|[id]|[heading]|[?]|[?]|[x]|[y]|[z]
+
+Parsed Log Line Structure:
+[timestamp] 271 10F:[id]:[heading]:[?]:[?]:[x]:[y]:[z]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>271)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<heading>[^|]*)\|(?:[^|]*\|){2}(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 271 (?<type>10F):(?<id>[^:]*):(?<heading>[^:]*)(?::[^:]*){2}:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+271|2024-03-02T13:20:50.9620000-08:00|4000F3B7|-2.3563|00|00|116.2635|116.2635|0.0000|e3fa606a5d0b5d57
+271|2024-03-02T13:20:50.9620000-08:00|4000F3B5|-1.5709|00|00|107.0000|100.0000|0.0000|5630c8f4e2ffac77
+271|2024-03-02T13:20:50.9620000-08:00|4000F3BB|0.2617|00|00|97.4118|90.3407|0.0000|01d53a3800c6238f
+
+Parsed Log Line Examples:
+[13:20:50.962] 271 10F:4000F3B7:-2.3563:00:00:116.2635:116.2635:0.0000
+[13:20:50.962] 271 10F:4000F3B5:-1.5709:00:00:107.0000:100.0000:0.0000
+[13:20:50.962] 271 10F:4000F3BB:0.2617:00:00:97.4118:90.3407:0.0000
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=ActorSetPos&lang=en-US) -->

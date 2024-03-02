@@ -520,4 +520,34 @@ describe('regex tests', () => {
     assert.equal(matches?.worldId, '0036');
     assert.equal(matches?.name, 'Tini Poutini');
   });
+  it('actorMove', () => {
+    const lines = [
+      '[13:14:37.043] 270 10E:4000F1D3:-2.2034:0002:0014:102.0539:118.1982:0.2136',
+      '[13:18:30.296] 270 10E:4000F44E:2.8366:0002:0014:98.2391:101.9623:0.2136',
+      '[13:18:30.607] 270 10E:4000F44E:-2.5710:0002:0014:98.2391:101.9318:0.2136',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.actorMove(params), lines);
+
+    const matches = lines[0].match(Regexes.actorMove())?.groups;
+    assert.equal(matches?.id, '4000F1D3');
+    assert.equal(matches?.heading, '-2.2034');
+    assert.equal(matches?.x, '102.0539');
+    assert.equal(matches?.y, '118.1982');
+    assert.equal(matches?.z, '0.2136');
+  });
+  it('actorSetPos', () => {
+    const lines = [
+      '[13:20:50.962] 271 10F:4000F3B7:-2.3563:00:00:116.2635:116.2635:0.0000',
+      '[13:20:50.962] 271 10F:4000F3B5:-1.5709:00:00:107.0000:100.0000:0.0000',
+      '[13:20:50.962] 271 10F:4000F3BB:0.2617:00:00:97.4118:90.3407:0.0000',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.actorSetPos(params), lines);
+
+    const matches = lines[0].match(Regexes.actorSetPos())?.groups;
+    assert.equal(matches?.id, '4000F3B7');
+    assert.equal(matches?.heading, '-2.3563');
+    assert.equal(matches?.x, '116.2635');
+    assert.equal(matches?.y, '116.2635');
+    assert.equal(matches?.z, '0.0000');
+  });
 });
