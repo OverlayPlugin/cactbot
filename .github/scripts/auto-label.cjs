@@ -139,9 +139,9 @@ const getLabels = async (github, owner, repo, pullNumber) => {
     .filter((label) => !scopeLabelsAll.includes(label));
 
   // Determine if there is an approving review from a reviewer with write access;
-  // if not, add the 'needs-review' label.
+  // if not (and it's not a draft PR), add the 'needs-review' label.
   const isApproved = await isPRApproved(github, prIdentifier);
-  if (!isApproved)
+  if (!isApproved && !pullRequest.draft)
     prNonScopeLabels.push('needs-review');
 
   return [
