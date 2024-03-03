@@ -550,4 +550,34 @@ describe('regex tests', () => {
     assert.equal(matches?.y, '116.2635');
     assert.equal(matches?.z, '0.0000');
   });
+  it('spawnNpcExtra', () => {
+    const lines = [
+      '[15:45:44.226] 272 110:4000226B:E0000000:0000:01',
+      '[15:45:44.226] 272 110:4000226D:E0000000:0000:01',
+      '[01:44:39.557] 272 110:400838F4:E0000000:0000:00',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.spawnNpcExtra(params), lines);
+
+    const matches = lines[0].match(Regexes.spawnNpcExtra())?.groups;
+    assert.equal(matches?.id, '4000226B');
+    assert.equal(matches?.parentId, 'E0000000');
+    assert.equal(matches?.tetherId, '0000');
+    assert.equal(matches?.animationState, '01');
+  });
+  it('actorControlExtra', () => {
+    const lines = [
+      '[10:57:43.477] 273 111:4000A145:003E:1:0:0:0',
+      '[10:58:00.346] 273 111:4000A144:003E:1:1:0:0',
+      '[01:54:27.198] 273 111:40016E0C:003E:1:1:0:0',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.actorControlExtra(params), lines);
+
+    const matches = lines[0].match(Regexes.actorControlExtra())?.groups;
+    assert.equal(matches?.id, '4000A145');
+    assert.equal(matches?.category, '003E');
+    assert.equal(matches?.param1, '1');
+    assert.equal(matches?.param2, '0');
+    assert.equal(matches?.param3, '0');
+    assert.equal(matches?.param4, '0');
+  });
 });

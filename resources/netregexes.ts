@@ -690,6 +690,24 @@ export default class NetRegexes {
   ): CactbotBaseRegExp<'ActorSetPos'> {
     return buildRegex('ActorSetPos', params);
   }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-272-0x110-spawnnpcextra
+   */
+  static spawnNpcExtra(
+    params?: NetParams['SpawnNpcExtra'],
+  ): CactbotBaseRegExp<'SpawnNpcExtra'> {
+    return buildRegex('SpawnNpcExtra', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-273-0x111-actorcontrolextra
+   */
+  static actorControlExtra(
+    params?: NetParams['ActorControlExtra'],
+  ): CactbotBaseRegExp<'ActorControlExtra'> {
+    return buildRegex('ActorControlExtra', params);
+  }
 }
 
 export const commonNetRegex = {

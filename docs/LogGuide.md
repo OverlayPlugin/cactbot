@@ -220,6 +220,14 @@ This guide was last updated for:
     - [Structure](#structure-43)
     - [Regexes](#regexes-43)
     - [Examples](#examples-43)
+  - [Line 272 (0x110): SpawnNpcExtra](#line-272-0x110-spawnnpcextra)
+    - [Structure](#structure-44)
+    - [Regexes](#regexes-44)
+    - [Examples](#examples-44)
+  - [Line 273 (0x111): ActorControlExtra](#line-273-0x111-actorcontrolextra)
+    - [Structure](#structure-45)
+    - [Regexes](#regexes-45)
+    - [Examples](#examples-45)
 <!-- AUTO-GENERATED-CONTENT:END -->
 
 ## Data Flow
@@ -3123,3 +3131,121 @@ Parsed Log Line Examples:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=ActorSetPos&lang=en-US) -->
+
+<a name="line272"></a>
+
+### Line 272 (0x110): SpawnNpcExtra
+
+This line contains certain data from `NpcSpawn` packets not otherwise made available
+through other log lines.
+
+The `tetherId` field is the same as the `id` field used in
+[NetworkTether lines](#line-35-0x23-networktether) and corresponds to an id in the
+[Channeling table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Channeling.csv).
+
+The `animationState` field reflects the initial animation state of the actor
+at time it is spawned, and corresponds to the
+[BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcState.csv).
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=SpawnNpcExtra&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+272|[timestamp]|[id]|[parentId]|[tetherId]|[animationState]
+
+Parsed Log Line Structure:
+[timestamp] 272 110:[id]:[parentId]:[tetherId]:[animationState]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>272)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<parentId>[^|]*)\|(?<tetherId>[^|]*)\|(?<animationState>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 272 (?<type>110):(?<id>[^:]*):(?<parentId>[^:]*):(?<tetherId>[^:]*):(?<animationState>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+272|2024-03-02T15:45:44.2260000-05:00|4000226B|E0000000|0000|01|89d2d9b95839548f
+272|2024-03-02T15:45:44.2260000-05:00|4000226D|E0000000|0000|01|b5e6a59cc0b2c1f3
+272|2024-03-03T01:44:39.5570000-08:00|400838F4|E0000000|0000|00|32d8c0e768aeb0e7
+
+Parsed Log Line Examples:
+[15:45:44.226] 272 110:4000226B:E0000000:0000:01
+[15:45:44.226] 272 110:4000226D:E0000000:0000:01
+[01:44:39.557] 272 110:400838F4:E0000000:0000:00
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=SpawnNpcExtra&lang=en-US) -->
+
+<a name="line273"></a>
+
+### Line 273 (0x111): ActorControlExtra
+
+This line contains certain data from `ActorControl` packets not otherwise made available
+through other log lines.
+
+`ActorControlExtra` lines include a numerical `category` field,
+which corresponds to the type of actor control being sent from the server.
+
+`param1` through `param4` are attributes whose meaning vary
+depending on the actor control category.
+
+The list of categories for which log lines are emitted is necessarily restrictive,
+given the volume of data, although more may be added in the future:
+
+| Category Name     | `category`  |
+| ----------------- | ----------- |
+| SetAnimationState | 0x003E (62) |
+
+- `SetAnimationState` - used to set the animation state of an actor.
+  - `param1`, like the `animationState` field in
+    [SpawnNpcExtra](#line-272-0x110-spawnnpcextra), corresponds to the
+    [BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcState.csv).
+  - `param2` appears to change how an animation of that actor is rendered in-game.
+    More information is needed.
+
+<!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorControlExtra&lang=en-US) -->
+
+#### Structure
+
+```log
+Network Log Line Structure:
+273|[timestamp]|[id]|[category]|[param1]|[param2]|[param3]|[param4]
+
+Parsed Log Line Structure:
+[timestamp] 273 111:[id]:[category]:[param1]:[param2]:[param3]:[param4]
+```
+
+#### Regexes
+
+```log
+Network Log Line Regex:
+^(?<type>273)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<category>[^|]*)\|(?<param1>[^|]*)\|(?<param2>[^|]*)\|(?<param3>[^|]*)\|(?<param4>[^|]*)\|
+
+Parsed Log Line Regex:
+(?<timestamp>^.{14}) 273 (?<type>111):(?<id>[^:]*):(?<category>[^:]*):(?<param1>[^:]*):(?<param2>[^:]*):(?<param3>[^:]*):(?<param4>[^:]*)(?:$|:)
+```
+
+#### Examples
+
+```log
+Network Log Line Examples:
+273|2023-12-05T10:57:43.4770000-08:00|4000A145|003E|1|0|0|0|06e7eff4a949812c
+273|2023-12-05T10:58:00.3460000-08:00|4000A144|003E|1|1|0|0|a4af9f90928636a3
+273|2024-03-03T01:54:27.1980000-08:00|40016E0C|003E|1|1|0|0|f37647efed063aa1
+
+Parsed Log Line Examples:
+[10:57:43.477] 273 111:4000A145:003E:1:0:0:0
+[10:58:00.346] 273 111:4000A144:003E:1:1:0:0
+[01:54:27.198] 273 111:40016E0C:003E:1:1:0:0
+```
+
+<!-- AUTO-GENERATED-CONTENT:END (logLines:type=ActorControlExtra&lang=en-US) -->

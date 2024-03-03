@@ -542,4 +542,36 @@ describe('netregex tests', () => {
     assert.equal(matches?.y, '116.2635');
     assert.equal(matches?.z, '0.0000');
   });
+  it('spawnNpcExtra', () => {
+    const lines = [
+      '272|2024-03-02T15:45:44.2260000-05:00|4000226B|E0000000|0000|01|89d2d9b95839548f',
+      '272|2024-03-02T15:45:44.2260000-05:00|4000226D|E0000000|0000|01|b5e6a59cc0b2c1f3',
+      '272|2024-03-03T01:44:39.5570000-08:00|400838F4|E0000000|0000|00|32d8c0e768aeb0e7',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => NetRegexes.spawnNpcExtra(params), lines);
+
+    const matches = lines[0].match(NetRegexes.spawnNpcExtra())?.groups;
+    assert.equal(matches?.type, '272');
+    assert.equal(matches?.id, '4000226B');
+    assert.equal(matches?.parentId, 'E0000000');
+    assert.equal(matches?.tetherId, '0000');
+    assert.equal(matches?.animationState, '01');
+  });
+  it('actorControlExtra', () => {
+    const lines = [
+      '273|2023-12-05T10:57:43.4770000-08:00|4000A145|003E|1|0|0|0|06e7eff4a949812c',
+      '273|2023-12-05T10:58:00.3460000-08:00|4000A144|003E|1|1|0|0|a4af9f90928636a3',
+      '273|2024-03-03T01:54:27.1980000-08:00|40016E0C|003E|1|1|0|0|f37647efed063aa1',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => NetRegexes.actorControlExtra(params), lines);
+
+    const matches = lines[0].match(NetRegexes.actorControlExtra())?.groups;
+    assert.equal(matches?.type, '273');
+    assert.equal(matches?.id, '4000A145');
+    assert.equal(matches?.category, '003E');
+    assert.equal(matches?.param1, '1');
+    assert.equal(matches?.param2, '0');
+    assert.equal(matches?.param3, '0');
+    assert.equal(matches?.param4, '0');
+  });
 });

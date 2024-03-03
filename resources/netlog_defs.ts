@@ -1313,6 +1313,40 @@ const latestLogDefinitions = {
     canAnonymize: false,
     firstOptionalField: undefined,
   },
+  SpawnNpcExtra: {
+    type: '272',
+    name: 'SpawnNpcExtra',
+    source: 'OverlayPlugin',
+    messageType: '272',
+    fields: {
+      type: 0,
+      timestamp: 1,
+      id: 2,
+      parentId: 3,
+      tetherId: 4,
+      animationState: 5,
+    },
+    canAnonymize: false,
+    firstOptionalField: undefined,
+  },
+  ActorControlExtra: {
+    type: '273',
+    name: 'ActorControlExtra',
+    source: 'OverlayPlugin',
+    messageType: '273',
+    fields: {
+      type: 0,
+      timestamp: 1,
+      id: 2,
+      category: 3,
+      param1: 4,
+      param2: 5,
+      param3: 6,
+      param4: 7,
+    },
+    canAnonymize: false,
+    firstOptionalField: undefined,
+  },
 } as const;
 
 export const logDefinitionsVersions = {
