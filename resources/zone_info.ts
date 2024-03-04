@@ -9327,6 +9327,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 4,
     'name': {
+      'cn': '异界深渊月面地下溪谷',
       'de': 'Monduntergrund',
       'en': 'The Lunar Subterrane',
       'fr': 'Le Souterrain lunaire',
@@ -9355,6 +9356,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 4,
     'name': {
+      'cn': '泽罗姆斯歼灭战',
       'de': 'Prophetie - Zeromus',
       'en': 'The Abyssal Fracture',
       'fr': 'La Fracture abyssale',
@@ -9369,6 +9371,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 4,
     'name': {
+      'cn': '泽罗姆斯歼殛战',
       'de': 'Eschatos - Zeromus',
       'en': 'The Abyssal Fracture (Extreme)',
       'fr': 'La Fracture abyssale (extrême)',
@@ -9415,6 +9418,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 4,
     'name': {
+      'cn': '圆桌骑士幻巧战',
       'de': 'Traumprüfung - Singularitäts-Reaktor',
       'en': 'The Singularity Reactor (Unreal)',
       'fr': 'Le Réacteur de singularité (irréel)',
@@ -9457,6 +9461,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 4,
     'name': {
+      'cn': '荣华神域塔利亚',
       'de': 'Thaleia',
       'en': 'Thaleia',
       'fr': 'Domaine divin - Thalie',
