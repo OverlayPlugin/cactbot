@@ -2859,7 +2859,7 @@ Parsed Log Line Examples:
 ### Line 266 (0x10A): NpcYell
 
 This log line is emitted whenever a NpcYell packet is received from the server,
-indicating that an NPC has yelled something (e.g. UWU Nael quotes).
+indicating that an NPC has yelled something (e.g. UCOB Nael quotes).
 
 `npcNameId` and `npcYellId` (both hex values) correspond to IDs
 in the [BNpcName](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcName.csv)
@@ -2962,6 +2962,9 @@ This log line is emitted whenever a countdown is started.
 `result` is `00` if successful, and non-zero if the attempt to start a countdown failed
 (e.g., if a countdown is already in progress, or if combat has started).
 
+Note: Because there is no network packet sent when a countdown completes successfully,
+no log line is (or reaosnably can be) emitted for the 'Engage!' message.
+
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=Countdown&lang=en-US) -->
 
 #### Structure
@@ -3045,8 +3048,11 @@ Parsed Log Line Examples:
 ### Line 270 (0x10E): ActorMove
 
 An `ActorMove` packet is sent to instruct the game client to move an actor to a new position
-(for example, in UWU, when Titan turns prior to jumping to indicate the direction of his jump).
+whenever they have been moved.
+This can be used, for example, to detect rapid movement which would overwisae be lost
+(e.g., in UWU, when Titan turns prior to jumping to indicate the direction of his jump).
 The FFXIV client interpolates the actor's movement between the current position and the new position.
+
 Currently, these log lines are emitted only for non-player actors (id >= 0x40000000).
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorMove&lang=en-US) -->
@@ -3093,6 +3099,17 @@ Parsed Log Line Examples:
 
 An `ActorSetPos` packet is sent to instruct the game client to set the position of an actor
 with no interpolated movement (for example, in UWU, to set the location of the Ifrit clones).
+
+These log lines are sometimes accompanied by other data (other log lines or network packets)
+indicating that an animation should be played if the actor is visible.
+For example, the following log lines (or network packets) might be sent
+in sequence to have an enemy appear to jump to a new location:
+
+1. A [NetworkAbility line](#line-21-0x15-networkability) line with an associated animation
+   to make it appear as though the actor is jumping.
+2. An `ActorSetPos` line to change the actor's location.
+3. Another `NetworkAbility` line (oir other packet) with an associated animation to make it
+   appear as though the actor has landed.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorSetPos&lang=en-US) -->
 
@@ -3146,6 +3163,10 @@ The `tetherId` field is the same as the `id` field used in
 The `animationState` field reflects the initial animation state of the actor
 at time it is spawned, and corresponds to the
 [BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcState.csv).
+
+Note: If the actor spawns with a `tetherId` or `animationState` value, there will not be
+a corresponding [NetworkTether](#line-35-0x23-networktether)
+or [ActorControlExtra](#line-273-0x111-actorcontrolextra) line to indidicate this information.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=SpawnNpcExtra&lang=en-US) -->
 

@@ -378,6 +378,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Test Countdown Failed',
+      type: 'Countdown',
+      netRegex: { result: '(?!00).{2}' },
+      infoText: (_data, matches, output) =>
+        output.countdownFail!({ player: matches.name, code: matches.result }),
+      outputStrings: {
+        countdownFail: {
+          en: '${player} failed to start countdown (result code: ${code})',
+        },
+      },
+    },
+    {
       id: 'Test Countdown Cancel',
       type: 'CountdownCancel',
       netRegex: {},
