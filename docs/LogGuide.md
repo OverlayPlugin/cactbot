@@ -3108,7 +3108,7 @@ in sequence to have an enemy appear to jump to a new location:
 1. A [NetworkAbility line](#line-21-0x15-networkability) line with an associated animation
    to make it appear as though the actor is jumping.
 2. An `ActorSetPos` line to change the actor's location.
-3. Another `NetworkAbility` line (oir other packet) with an associated animation to make it
+3. Another `NetworkAbility` line (or other packet) with an associated animation to make it
    appear as though the actor has landed.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorSetPos&lang=en-US) -->
