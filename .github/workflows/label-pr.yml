@@ -64,6 +64,8 @@ jobs:
           type: remove
 
   pr_review:
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
     needs: job_picker
     if: needs.job_picker.outputs.run == 'pr_review'
