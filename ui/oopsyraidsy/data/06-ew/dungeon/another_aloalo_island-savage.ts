@@ -173,6 +173,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
       en: 'Tornado',
       de: 'Tornado',
       fr: 'Tornade',
+      cn: '龙卷风',
     }),
     pushedIntoWall('AAIS Angry Seas', '8AE1'),
     pushedIntoWall('AAIS Pop', '896B'),
