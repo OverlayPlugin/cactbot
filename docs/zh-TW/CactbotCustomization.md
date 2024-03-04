@@ -181,7 +181,7 @@ Options.Triggers.push({
         return true;
       },
       infoText: (data, matches, output) => {
-        return output.text!({ player: data.party.member(matches.source) });
+        return output.text({ player: data.party.member(matches.source) });
       },
       outputStrings: {
         text: {
