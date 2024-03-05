@@ -3105,7 +3105,7 @@ indicating that an animation should be played if the actor is visible.
 For example, the following log lines (or network packets) might be sent
 in sequence to have an enemy appear to jump to a new location:
 
-1. A [NetworkAbility line](#line-21-0x15-networkability) line with an associated animation
+1. A [NetworkAbility](#line-21-0x15-networkability) line with an associated animation
    to make it appear as though the actor is jumping.
 2. An `ActorSetPos` line to change the actor's location.
 3. Another `NetworkAbility` line (or other packet) with an associated animation to make it
