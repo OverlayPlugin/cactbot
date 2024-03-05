@@ -3157,7 +3157,7 @@ This line contains certain data from `NpcSpawn` packets not otherwise made avail
 through other log lines.
 
 The `tetherId` field is the same as the `id` field used in
-[NetworkTether lines](#line-35-0x23-networktether) and corresponds to an id in the
+[NetworkTether](#line-35-0x23-networktether) lines and corresponds to an id in the
 [Channeling table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Channeling.csv).
 
 The `animationState` field reflects the initial animation state of the actor
