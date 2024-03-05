@@ -3049,7 +3049,7 @@ Parsed Log Line Examples:
 
 An `ActorMove` packet is sent to instruct the game client to move an actor to a new position
 whenever they have been moved.
-This can be used, for example, to detect rapid movement which would overwisae be lost
+This can be used, for example, to detect rapid movement which would otherwise be lost
 (e.g., in UWU, when Titan turns prior to jumping to indicate the direction of his jump).
 The FFXIV client interpolates the actor's movement between the current position and the new position.
 
