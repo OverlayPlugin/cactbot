@@ -3161,7 +3161,7 @@ The `tetherId` field is the same as the `id` field used in
 [Channeling table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Channeling.csv).
 
 The `animationState` field reflects the initial animation state of the actor
-at time it is spawned, and corresponds to the
+at the time it is spawned, and corresponds to the
 [BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcState.csv).
 
 Note: If the actor spawns with a `tetherId` or `animationState` value, there will not be
