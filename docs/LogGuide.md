@@ -2963,7 +2963,7 @@ This log line is emitted whenever a countdown is started.
 (e.g., if a countdown is already in progress, or if combat has started).
 
 Note: Because there is no network packet sent when a countdown completes successfully,
-no log line is (or reaosnably can be) emitted for the 'Engage!' message.
+no log line is (or reasonably can be) emitted for the 'Engage!' message.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=Countdown&lang=en-US) -->
 
