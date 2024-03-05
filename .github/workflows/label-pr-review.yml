@@ -1,0 +1,25 @@
+# This is a dummy workflow that runs when a pull request review is submitted.
+# It serves no purpose other than to fire a `workflow_run` event that can be
+# picked up and handled by the `label-pr.yml` workflow.
+#
+# This workaround is necessary because the `pull_request_review` event, when fired
+# from a PR out of a forked repo, targets the PR head branch and does not have access to repo
+# secrets.  This doesn't affect most PR workflows because they use the `pull_request_target`
+# event, which specifically targets the base branch (and GITHUB_TOKEN gets read/write permissions).
+# But there is no equivalent for `pull_request_review` events, because... GitHub. So instead,
+# we have to use a `workflow_run` event, which does target the base branch and does have access
+# to repo secrets.
+#
+# Hopefully, someday, this hack won't be necessary because GitHub will implement a
+# `pull_request_review_target` event that targets the base branch instead of the PR head branch.
+name: PR Review
+
+on:
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  pr_review:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Dummy job complete."
