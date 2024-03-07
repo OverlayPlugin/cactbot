@@ -458,6 +458,7 @@ const triggerSet: TriggerSet<Data> = {
     // --- Nael ---
     {
       // https://xivapi.com/NpcYell/6497?pretty=true
+      // en: From on high I descend, the hallowed moon to call!
       id: 'UCU Nael Quote 1',
       type: 'NpcYell',
       netRegex: { npcYellId: '1961', capture: false },
@@ -476,6 +477,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6496?pretty=true
+      // en: From on high I descend, the iron path to walk!
       id: 'UCU Nael Quote 2',
       type: 'NpcYell',
       netRegex: { npcYellId: '1960', capture: false },
@@ -494,6 +496,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6495?pretty=true
+      // en: Take fire, O hallowed moon!
       id: 'UCU Nael Quote 3',
       type: 'NpcYell',
       netRegex: { npcYellId: '195F', capture: false },
@@ -512,6 +515,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6494?pretty=true
+      // en: Blazing path, lead me to iron rule!
       id: 'UCU Nael Quote 4',
       type: 'NpcYell',
       netRegex: { npcYellId: '195E', capture: false },
@@ -529,6 +533,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6493?pretty=true
+      // en: O hallowed moon, take fire and scorch my foes!
       id: 'UCU Nael Quote 5',
       type: 'NpcYell',
       netRegex: { npcYellId: '195D', capture: false },
@@ -546,6 +551,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6492?pretty=true
+      // en: O hallowed moon, shine you the iron path!
       id: 'UCU Nael Quote 6',
       type: 'NpcYell',
       netRegex: { npcYellId: '195C', capture: false },
@@ -563,6 +569,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6501?pretty=true
+      // en: Fleeting light! 'Neath the red moon, scorch you the earth!
       id: 'UCU Nael Quote 7',
       type: 'NpcYell',
       netRegex: { npcYellId: '1965', capture: false },
@@ -583,6 +590,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6500?pretty=true
+      // en: Fleeting light! Amid a rain of stars, exalt you the red moon!
       id: 'UCU Nael Quote 8',
       type: 'NpcYell',
       netRegex: { npcYellId: '1964', capture: false },
@@ -603,6 +611,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6502?pretty=true
+      // en: From on high I descend, the moon and stars to bring!
       id: 'UCU Nael Quote 9',
       type: 'NpcYell',
       netRegex: { npcYellId: '1966', capture: false },
@@ -621,6 +630,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6503?pretty=true
+      // en: From hallowed moon I descend, a rain of stars to bring!
       id: 'UCU Nael Quote 10',
       type: 'NpcYell',
       netRegex: { npcYellId: '1967', capture: false },
@@ -639,6 +649,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6507?pretty=true
+      // en: From hallowed moon I bare iron, in my descent to wield!
       id: 'UCU Nael Quote 11',
       type: 'NpcYell',
       netRegex: { npcYellId: '196B', capture: false },
@@ -657,6 +668,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6506?pretty=true
+      // en: From hallowed moon I descend, upon burning earth to tread!
       id: 'UCU Nael Quote 12',
       type: 'NpcYell',
       netRegex: { npcYellId: '196A', capture: false },
@@ -675,6 +687,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6504?pretty=true
+      // en: Unbending iron, take fire and descend!
       id: 'UCU Nael Quote 13',
       type: 'NpcYell',
       netRegex: { npcYellId: '1968', capture: false },
@@ -693,6 +706,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // https://xivapi.com/NpcYell/6505?pretty=true
+      // en: Unbending iron, descend with fiery edge!
       id: 'UCU Nael Quote 14',
       type: 'NpcYell',
       netRegex: { npcYellId: '1969', capture: false },
