@@ -234,20 +234,21 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Asura Iconic Execution With Jump',
-      type: 'CombatantMemory',
-      // Filter to only enemy actors for performance
-      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      type: 'ActorSetPos',
+      // The Asura Image doesn't have associated ActorSetPos lines except for this mechanic.
+      // Can't meaningfully filter regex as nearly all 271 lines are NPCs; but it's <100 in total.
+      netRegex: {},
       condition: (data, matches) =>
         data.iconicExecutionCount >= 3 &&
         data.asuraImageId === matches.id &&
         data.storedIconMech !== undefined,
       alertText: (data, matches, output) => {
-        if (matches.pairPosX === undefined || matches.pairPosY === undefined)
+        if (matches.x === undefined || matches.y === undefined)
           return;
 
         const imageLoc = Directions.xyToCardinalDirOutput(
-          parseFloat(matches.pairPosX),
-          parseFloat(matches.pairPosY),
+          parseFloat(matches.x),
+          parseFloat(matches.y),
           centerX,
           centerY,
         );
