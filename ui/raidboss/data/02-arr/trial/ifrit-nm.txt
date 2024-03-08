@@ -24,7 +24,8 @@ hideall "--sync--"
 126.1 "Incinerate"
 
 # 70%
-# en: "Succumb to the Inferno!"
+# https://xivapi.com/InstanceContentTextData/2601
+# en: Succumb to the Inferno!
 200.0 "--sync--" BattleTalk2 { npcNameId: "04A1", instanceContentTextId: "0A29" } window 200,0
 201.0 "Incinerate" Ability { id: "1C5", source: "Ifrit" }
 209.0 "Eruption" Ability { id: "1C7", source: "Ifrit" } window 210,5
@@ -40,7 +41,8 @@ hideall "--sync--"
 278.6 "Eruption"
 
 # 50%
-# en: "Surrender thyself to the fires of judgment!"
+# https://xivapi.com/InstanceContentTextData/2602
+# en: Surrender thyself to the fires of judgment!
 300.0 "--sync--" BattleTalk2 { npcNameId: "04A1", instanceContentTextId: "0A2A" } window 300,0
 305.0 "Nail Add"
 306.7 "Incinerate" Ability { id: "1C5", source: "Ifrit" }
