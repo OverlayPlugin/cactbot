@@ -26,7 +26,7 @@ UserConfig.getUserConfigLocation('jobs', defaultOptions, () => {
     'de': 650,
     'fr': 650,
     'ja': 650,
-    'cn': 640,
+    'cn': 650,
     'ko': 640,
   };
   const ffxivVersion = ffxivlanguageToVersion[options.ParserLanguage];
