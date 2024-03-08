@@ -35,8 +35,9 @@ export default class CombatantTracker {
   }
 
   initialize(logLines: LineEvent[]): void {
-    this.firstTimestamp = logLines[0]?.timestamp ?? 0;
-    this.lastTimestamp = logLines.slice(-1)[0]?.timestamp ?? 0;
+    const timestamps = logLines.map((line) => line.timestamp).sort();
+    this.firstTimestamp = timestamps[0] ?? 0;
+    this.lastTimestamp = timestamps.slice(-1)[0] ?? 0;
 
     const eventTracker: { [key: string]: number } = {};
 
