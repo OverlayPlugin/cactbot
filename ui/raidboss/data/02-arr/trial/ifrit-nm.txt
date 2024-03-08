@@ -24,7 +24,8 @@ hideall "--sync--"
 126.1 "Incinerate"
 
 # 70%
-200.0 "--sync--" GameLog { code: "0044", name: "Ifrit", line: "Succumb to the inferno.*?" } window 200,0
+# en: "Succumb to the Inferno!"
+200.0 "--sync--" BattleTalk2 { npcNameId: "04A1", instanceContentTextId: "0A29" } window 200,0
 201.0 "Incinerate" Ability { id: "1C5", source: "Ifrit" }
 209.0 "Eruption" Ability { id: "1C7", source: "Ifrit" } window 210,5
 213.5 "Vulcan Burst" Ability { id: "1C6", source: "Ifrit" }
@@ -39,7 +40,8 @@ hideall "--sync--"
 278.6 "Eruption"
 
 # 50%
-300.0 "--sync--" GameLog { code: "0044", name: "Ifrit", line: "Surrender thyself to the fires of judgment.*?" } window 300,0
+# en: "Surrender thyself to the fires of judgment!"
+300.0 "--sync--" BattleTalk2 { npcNameId: "04A1", instanceContentTextId: "0A2A" } window 300,0
 305.0 "Nail Add"
 306.7 "Incinerate" Ability { id: "1C5", source: "Ifrit" }
 314.4 "Vulcan Burst" Ability { id: "1C6", source: "Ifrit" }
