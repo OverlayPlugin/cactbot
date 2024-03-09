@@ -243,9 +243,6 @@ const triggerSet: TriggerSet<Data> = {
         data.asuraImageId === matches.id &&
         data.storedIconMech !== undefined,
       alertText: (data, matches, output) => {
-        if (matches.x === undefined || matches.y === undefined)
-          return;
-
         const imageLoc = Directions.xyToCardinalDirOutput(
           parseFloat(matches.x),
           parseFloat(matches.y),
