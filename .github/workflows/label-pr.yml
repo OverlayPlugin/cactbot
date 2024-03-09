@@ -19,6 +19,8 @@ on:
       - auto_merge_enabled
       - auto_merge_disabled
       - ready_for_review
+  # Use the 'workflow_run' event as a workaround/hook to catch runs of the 'PR Review' workflow.
+  # See `label-pr-review.yml` comments for more info about why these gymnastics are necessary.
   workflow_run:
     workflows:
       - PR Review
@@ -73,8 +75,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          # force to ci checkout main repo to avoid
-          # unexpected PR code to be executed with out github token
+          # Force checkout the main repo (base branch) so that repo secrets
+          # are not available to unexpected/malicious PR code.
           ref: main
 
       - uses: ./.github/actions/setup-js-env
@@ -104,8 +106,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          # force to ci checkout main repo to avoid
-          # unexpected PR code to be executed with out github token
+          # Force checkout the main repo (base branch) so that repo secrets
+          # are not available to unexpected/malicious PR code.
           ref: main
 
       - name: Check for linked issues

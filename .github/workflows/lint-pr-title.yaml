@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          # force to ci checkout main repo to avoid
-          # unexpected PR code to be executed with out github token
+          # Force checkout the main repo (base branch) so that repo secrets
+          # are not available to unexpected/malicious PR code.
           ref: main
 
       - uses: ./.github/actions/setup-js-env
