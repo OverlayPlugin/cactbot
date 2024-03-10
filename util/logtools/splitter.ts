@@ -32,6 +32,9 @@ export default class Splitter {
     losesEffectSpecificIds: CactbotBaseRegExp<'GainsEffect'>;
   };
 
+  // All logline types to be included without a specifici filterRegex
+  private catchAlls: string[] = [];
+
   private ignoredAbilities: string[];
 
   // startLine and stopLine are both inclusive.
@@ -57,6 +60,18 @@ export default class Splitter {
       }),
       losesEffectSpecificIds: NetRegexes.gainsEffect({ effectId: ['B9A', '808'] }),
     };
+
+    this.catchAlls = [
+      logDefinitions.HeadMarker.type,
+      logDefinitions.Tether.type,
+      logDefinitions.MapEffect.type,
+      logDefinitions.NpcYell.type,
+      logDefinitions.BattleTalk2.type,
+      logDefinitions.ActorSetPos.type,
+      logDefinitions.SpawnNpcExtra.type,
+      logDefinitions.ActorControlExtra.type,
+    ];
+
     this.ignoredAbilities = ['Attack', 'attack', ''];
 
     const defs: LogDefinitionMap = logDefinitions;
@@ -98,7 +113,12 @@ export default class Splitter {
     // * GainsEffect (26)/LosesEffect (30) with a known effectId of interest
     // * Headmarker (27)
     // * Tether (35)
-    //  * MapEffect (257)
+    // * MapEffect (257)
+    // * NpcYell (266)
+    // * BattleTalk2 (267)
+    // * ActorSetPos (271)
+    // * SpawnNpcExtra (272)
+    // * ActorControExtra (273) (although should be revisited if/when categories expand)
 
     if (typeField === undefined)
       return;
@@ -166,13 +186,7 @@ export default class Splitter {
       return;
     }
 
-    if (typeField === logDefinitions.HeadMarker.type)
-      return line;
-
-    if (typeField === logDefinitions.Tether.type)
-      return line;
-
-    if (typeField === logDefinitions.MapEffect.type)
+    if (this.catchAlls.includes(typeField))
       return line;
 
     return;
