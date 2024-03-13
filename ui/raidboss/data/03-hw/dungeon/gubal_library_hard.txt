@@ -50,8 +50,9 @@ hideall "--sync--"
 
 # Liquid Flame
 # -ii 1946 1953 194B
-# We use game log lines for the phases because the ACT log lines are unreliable
-# Whichever intermission comes second ends up with phantom "Gains Effect" lines
+# Whichever form (Hand/Tornado) comes second creates multiple phantom 0x1A "GainsEffect" lines
+# This will cause the timeline to desync if the syncs happen at the phase start,
+# so instead, put the syncs with jumps after each phase.
 
 # Astrology and Astromancy Camera will be sealed off
 1000.0 "--sync--"  SystemLogMessage { id: "7DC", param1: "658" } window 1000,0
@@ -61,10 +62,12 @@ hideall "--sync--"
 1030.5 "Slosh" Ability { id: "1947", source: "Liquid Flame" } window 10,10
 1034.6 "Searing Wind" Ability { id: "1944", source: "Liquid Flame" }
 1042.7 "Bibliocide" Ability { id: "1945", source: "Liquid Flame" }
+1054.3 "--sync--" GainsEffect { effectId: '2FF' } window 54,20 jump 1100.0 # Chiromorph
+1054.3 "--sync--" GainsEffect { effectId: '300' } window 54,20 jump 1200.0 # Anemomorph
 1054.3 "Hand/Tornado?"
 
-# Hand Form
-1100.0 "--sync--" GameLog { line: "The liquid flame gains the effect of Chiromorph.*?" } window 100,250
+# Hand Form (Chiromorph)
+1100.0 "--sync--" # No actual sync; this is a jump destination
 1108.4 "Seal Of Night And Day" Ability { id: "1949", source: "Liquid Flame" } window 10,10
 1112.5 "Searing Wind" Ability { id: "1948", source: "Liquid Flame" }
 1116.4 "Searing Wind" Ability { id: "1948", source: "Liquid Flame" }
@@ -72,18 +75,20 @@ hideall "--sync--"
 1130.6 "Searing Wind" Ability { id: "1948", source: "Liquid Flame" }
 1134.7 "Searing Wind" Ability { id: "1948", source: "Liquid Flame" }
 1138.9 "Searing Wind" Ability { id: "1948", source: "Liquid Flame" }
+1149.1 "--sync--" GainsEffect { effectId: '300' } window 49,20 jump 1200 # jump to ignore phantom line
 1149.1 "Form Shift"
 
-# Tornado Form
-1200.0 "--sync--" GameLog { line: "The liquid flame gains the effect of Anemomorph.*?" } window 200,0
+# Tornado Form (Anemomorph)
+1200.0 "--sync--" # No actual sync; this is a jump destination
 1204.5 "Bibliocide" Ability { id: "1945", source: "Liquid Flame" } window 10,10
 1215.4 "Magnetism/Repel?" Ability { id: "194[CD]", source: "Liquid Flame" }
 1226.9 "Bibliocide" Ability { id: "1945", source: "Liquid Flame" }
 1237.8 "Magnetism/Repel" Ability { id: "194[CD]", source: "Liquid Flame" }
+1246.1 "--sync--" GainsEffect { effectId: '2FF' } window 46,20 jump 1100 # jump to ignore phantom line
 1246.1 "Form Shift"
 
-# Human Form
-1300.0 "--sync--" GameLog { line: "The liquid flame gains the effect of Anthropomorph.*?" } window 300,10
+# Human Form (Anthropomorph)
+1300.0 "--sync--" GainsEffect { effectId: '2FE' } window 200,10 # no phantom line problem here
 1307.5 "Searing Wind" Ability { id: "1944", source: "Liquid Flame" } window 10,20
 1314.7 "Bibliocide" Ability { id: "1945", source: "Liquid Flame" }
 1326.0 "Sea Of Flames x3"

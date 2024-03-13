@@ -1,6 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
 import { Responses } from '../../../../../resources/responses';
-import Util from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -452,15 +451,14 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      // Ordinarily we wouldn't use a game log line for this.
+      // Ordinarily we wouldn't use a log message for this.
       // However, the RP text seems to be the only indicator.
+      // (Not a MapEffect packet either.)
+      // https://xivapi.com/LogMessage/2747
+      // en: Shadows gather on the floor.
       id: 'Dun Scaith Shadow Links',
-      type: 'GameLog',
-      netRegex: {
-        line: 'Shadows gather on the floor.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: 'ABB', capture: false },
       suppressSeconds: 5,
       response: Responses.stopMoving(),
     },
@@ -654,7 +652,6 @@ const triggerSet: TriggerSet<Data> = {
         'Scathach': 'Scathach',
         'Shadow Limb': 'Schattenhand',
         'Shadowcourt Jester': 'Schattenhof-Narr',
-        'Shadows gather on the floor': 'Schatten sammeln sich auf dem Boden',
         'The Queen\'s Graces': 'Anmut der Königin',
         'The Queen\'s Pride': 'Stolz der Königin',
         'The Rostrum': 'Podium',
@@ -755,7 +752,6 @@ const triggerSet: TriggerSet<Data> = {
         'Scathach': 'Scáthach',
         'Shadow Limb': 'Mains d\'ombre',
         'Shadowcourt Jester': 'bouffon de la Cour des ombres',
-        'Shadows gather on the floor': 'Le pouvoir des ombres se concentre sur le sol',
         'The Queen\'s Graces': 'Grâces de la Reine',
         'The Queen\'s Pride': 'Fierté de la Reine',
         'The Rostrum': 'Scène',
@@ -855,7 +851,6 @@ const triggerSet: TriggerSet<Data> = {
         'Scathach': 'スカアハ',
         'Shadow Limb': '影の手',
         'Shadowcourt Jester': 'クィーンズ・ジェスター',
-        'Shadows gather on the floor': '床に影の力が集束していく',
         'The Queen\'s Graces': '女王の間',
         'The Queen\'s Pride': '女王の観閲広場',
         'The Rostrum': '道化の舞台',
@@ -956,7 +951,6 @@ const triggerSet: TriggerSet<Data> = {
         'Scathach': '斯卡哈',
         'Shadow Limb': '影之手',
         'Shadowcourt Jester': '女王小丑',
-        'Shadows gather on the floor': '影之力正在向地面聚集',
         'The Queen\'s Graces': '女王之间',
         'The Queen\'s Pride': '女王的阅兵广场',
         'The Rostrum': '小丑舞台',
@@ -1057,7 +1051,6 @@ const triggerSet: TriggerSet<Data> = {
         'Scathach': '스카하크',
         'Shadow Limb': '그림자 손',
         'Shadowcourt Jester': '여왕의 어릿광대',
-        'Shadows gather on the floor': '바닥에 그림자의 힘이 모여듭니다',
         'The Queen\'s Graces': '여왕의 방',
         'The Queen\'s Pride': '여왕의 사열 광장',
         'The Rostrum': '광대의 무대',

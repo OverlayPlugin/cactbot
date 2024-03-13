@@ -343,11 +343,12 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // There is a GameLog message (en: The plasma shield is shattered!), but no corresponding
+    // SystemLogMessage. The 0x19 (NetworkDeath) line shows up >2 seconds later (too late).
     {
       id: 'A11S Plasma Shield Shattered',
-      type: 'GameLog',
-      netRegex: { line: 'The plasma shield is shattered.*?', capture: false },
-
+      type: 'NetworkEffectResult',
+      netRegex: { name: 'Plasma Shield', currentHp: '0', capture: false },
       response: Responses.spread(),
     },
     {
