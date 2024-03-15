@@ -317,9 +317,20 @@ export default class Splitter {
     return lines;
   }
 
+  processWithAnalysisOnly(line: string): string {
+    const splitLine = line.split('|');
+    const typeField = splitLine[0];
+    const filteredLine = this.doAnalysisFilter ? this.analysisFilter(line, typeField) : line;
+    return filteredLine ?? line;
+  }
+
   // Call callback with any emitted line.
-  public processWithCallback(line: string, callback: (str: string) => void): void {
-    const result = this.process(line);
+  public processWithCallback(
+    line: string,
+    analysisOnly: boolean,
+    callback: (str: string) => void,
+  ): void {
+    const result = analysisOnly ? this.processWithAnalysisOnly(line) : this.process(line);
     if (typeof result === 'undefined') {
       return;
     } else if (typeof result === 'string') {

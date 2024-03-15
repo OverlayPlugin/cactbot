@@ -1213,7 +1213,7 @@ const latestLogDefinitions = {
       npcNameId: 3,
       npcYellId: 4,
     },
-    canAnonymize: false,
+    canAnonymize: true,
     firstOptionalField: undefined,
   },
   BattleTalk2: {
@@ -1234,7 +1234,7 @@ const latestLogDefinitions = {
       // unknown3: 9,
       // unknown4: 10,
     },
-    canAnonymize: false,
+    canAnonymize: true,
     firstOptionalField: undefined,
   },
   Countdown: {
@@ -1291,7 +1291,10 @@ const latestLogDefinitions = {
       y: 7,
       z: 8,
     },
-    canAnonymize: false,
+    playerIds: {
+      2: null,
+    },
+    canAnonymize: true,
     firstOptionalField: undefined,
   },
   ActorSetPos: {
@@ -1303,14 +1306,17 @@ const latestLogDefinitions = {
       type: 0,
       timestamp: 1,
       id: 2,
-      heading: 3, // OP call this 'rotation', but cactbot consistently uses 'heading'
+      heading: 3, // OP calls this 'rotation', but cactbot consistently uses 'heading'
       // unknown1: 4,
       // unknown2: 5,
       x: 6,
       y: 7,
       z: 8,
     },
-    canAnonymize: false,
+    playerIds: {
+      2: null,
+    },
+    canAnonymize: true,
     firstOptionalField: undefined,
   },
   SpawnNpcExtra: {
@@ -1326,7 +1332,10 @@ const latestLogDefinitions = {
       tetherId: 4,
       animationState: 5,
     },
-    canAnonymize: false,
+    playerIds: {
+      3: null, // `id` is an npc, but parentId could be a tethered player?
+    },
+    canAnonymize: true,
     firstOptionalField: undefined,
   },
   ActorControlExtra: {
@@ -1344,7 +1353,10 @@ const latestLogDefinitions = {
       param3: 6,
       param4: 7,
     },
-    canAnonymize: false,
+    playerIds: {
+      2: null,
+    },
+    canAnonymize: true,
     firstOptionalField: undefined,
   },
 } as const;

@@ -114,7 +114,7 @@ const writeFile = (
     const lines: string[] = [];
     const noAnonymize = args.no_anonymize ?? false;
     lineReader.on('line', (line) => {
-      splitter.processWithCallback(line, (line) => {
+      splitter.processWithCallback(line, false, (line) => {
         let writeLine = line;
         if (!noAnonymize) {
           const anonLine = anonymizer.process(line, notifier);

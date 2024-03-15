@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+#export-buttons {
+  white-space: nowrap;
+  vertical-align: top;
+}
+
 #fight-table {
   display: grid;
   grid-template-columns: repeat(var(--table-cols), max-content);
@@ -30,6 +35,11 @@
 .input-label {
   display: block;
   margin: 5px 10px 10px 5px;
+}
+
+.button-label {
+    display: inline-block;
+    margin: 5px 10px 10px 5px;
 }
 
 button {
