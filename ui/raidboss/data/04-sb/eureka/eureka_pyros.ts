@@ -22,6 +22,9 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '36DB', source: 'Skoll', capture: false },
       response: Responses.awayFromFront(),
     },
+    // https://xivapi.com/LogMessage/916
+    // en: 7 minutes have elapsed since your last activity. [...]
+    // But no 0x29 log line; so have to use GameLog for now.
     {
       id: 'Eureka Pyros Falling Asleep',
       type: 'GameLog',

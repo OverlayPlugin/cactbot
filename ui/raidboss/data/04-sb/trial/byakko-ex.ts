@@ -1,6 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
 import { Responses } from '../../../../../resources/responses';
-import Util from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -190,14 +189,12 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // https://xivapi.com/InstanceContentTextData/18606
+    // en: Twofold is my wrath, twice-cursed my foes!
     {
       id: 'ByaEx Tiger Add',
-      type: 'GameLog',
-      netRegex: {
-        line: '[^:]*:Twofold is my wrath, twice-cursed my foes!.*?',
-        code: Util.gameLogCodes.dialog,
-        capture: false,
-      },
+      type: 'BattleTalk2',
+      netRegex: { instanceContentTextId: '48AE', capture: false },
       condition: (data) => data.role === 'tank' || data.job === 'BLU',
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {

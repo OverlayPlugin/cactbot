@@ -51,7 +51,9 @@ hideall "--sync--"
 
 
 ### Phase 2: Passage of Arms
-500.0 "--sync--" GameLog { code: "0044", name: "Omega-M", line: "\<blip\> Limits of single combatant.*?" } window 500,0
+# https://xivapi.com/InstanceContentTextData/20620
+# en: <blip> Limits of single combatant capability reached. Progress to party combat analysis.
+500.0 "--sync--" BattleTalk2 { instanceContentTextId: "508C" } window 500,0
 514.0 "Ground Zero" Ability { id: "3313", source: "Omega-M" } # drift 0.045001
 514.0 "Electric Slide" Ability { id: "3314", source: "Omega" }
 522.0 "Efficient Bladework" Ability { id: "32F3", source: "Omega-M" } # drift -0.045
@@ -181,8 +183,11 @@ hideall "--sync--"
 
 
 ### Phase 4: Laser Show Forever
-1800.0 "Enrage" GameLog { code: "0044", line: "\<blip\> Warning\. Calculations indicate.*?" } window 1800,0
-
+# https://xivapi.com/InstanceContentTextData/20623
+# https://xivapi.com/InstanceContentTextData/20624
+# en: <blip> Warning. Calculations indicate increased probability of defeat.\n\n<bleep> Error. Further data analysis required.
+# May be either id depending on which is alive.
+1800.0 "Enrage" BattleTalk2 { instanceContentTextId: "50(8F|90)" } window 1800,0
 1806.0 "Laser Shower Enrage" Ability { id: "3311", source: "Omega-M" } window 20,20
 1806.0 "Laser Shower Enrage" Ability { id: "3312", source: "Omega" } window 20,20
 1812.0 "Laser Shower Enrage"

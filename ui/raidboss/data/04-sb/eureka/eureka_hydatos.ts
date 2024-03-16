@@ -77,12 +77,18 @@ const triggerSet: TriggerSet<Data> = {
     },
   ],
   triggers: [
+    // https://xivapi.com/LogMessage/916
+    // en: 7 minutes have elapsed since your last activity. [...]
+    // But no 0x29 log line; so have to use GameLog for now.
     {
       id: 'BA Falling Asleep',
       type: 'GameLog',
       netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
       response: Responses.wakeUp(),
     },
+    // https://xivapi.com/LogMessage/9069
+    // en: The memories of heroes past live on again!
+    // But no 0x29 log line; so have to use GameLog for now.
     {
       id: 'BA Saved By Rememberance',
       type: 'GameLog',
@@ -249,6 +255,8 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) => data.side === 'east' && data.me === matches.target,
       response: Responses.doritoStack(),
     },
+    // https://xivapi.com/PublicContentTextData/2122
+    // But we do not currently have a log line for this data.
     {
       id: 'BA Owain Fire Element',
       type: 'GameLog',
@@ -279,6 +287,8 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // https://xivapi.com/PublicContentTextData/2123
+    // But we do not currently have a log line for this data.
     {
       id: 'BA Owain Ice Element',
       type: 'GameLog',
@@ -515,6 +525,7 @@ const triggerSet: TriggerSet<Data> = {
       // In other words, they need to be the fully translated in game log.
       // There are no "gainsEffect" lines for the clones, only for Absolute Virtue directly.
       // Ideally parser logic could be added for this case, but this is where we are.
+      // TODO: Possibly animation data from ActorControlExtra that controls the light/dark wrists?
       id: 'BA AV Eidos Relative Virtue Astral',
       type: 'GameLog',
       netRegex: { line: 'Relative Virtue gains the effect of Astral Essence.*?', capture: false },

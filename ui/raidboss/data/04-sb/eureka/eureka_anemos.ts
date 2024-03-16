@@ -179,6 +179,9 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { name: 'Pazuzu', capture: false },
       run: (data) => data.wraithCount = 0,
     },
+    // https://xivapi.com/LogMessage/916
+    // en: 7 minutes have elapsed since your last activity. [...]
+    // But no 0x29 log line; so have to use GameLog for now.
     {
       id: 'Eureka Falling Asleep',
       type: 'GameLog',

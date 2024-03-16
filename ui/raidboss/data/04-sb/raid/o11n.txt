@@ -53,7 +53,11 @@ hideall "--sync--"
 611.6 "Force Quit" Ability { id: "327A", source: "Level Checker" }
 
 ## Delta Attack
-1000.0 "--sync--" GameLog { code: "0044", name: "Omega", line: "Program failure detected.*?" } window 1500,100
+# https://xivapi.com/InstanceContentTextData/20109
+# en: Program failure detected. <blip> Engaging Delta Attack protocol.
+# Note: This BattleTalk2 log line arrives in sequence with another, both with a 4000ms display time.
+# As a result, this line shows up 400ms before the message is displayed (and the GameLog line is emitted).
+996.0 "--sync--" BattleTalk2 { instanceContentTextId: "4E8D" } window 996,100
 1007.0 "--sync--" StartsUsing { id: "327B", source: "Omega" } window 1500,100
 1037.0 "Delta Attack" Ability { id: "327B", source: "Omega" } window 1500,100
 1048.4 "--targetable--"

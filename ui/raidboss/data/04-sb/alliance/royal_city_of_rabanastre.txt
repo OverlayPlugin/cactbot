@@ -196,8 +196,9 @@ hideall "--start--"
 2201.3 "Archaeodemon Adds" AddedCombatant { name: "Archaeodemon" }  window 300,300
 2208.3 "--lock out--" # ??? from video
 
-# TODO: could trigger instead off of Rofocale losing Sprint which happens ~here
-2400.0 "--sync--" GameLog { code: "0044", line: "The heavens tremble in my wake.*?" } window 500,0
+# https://xivapi.com/InstanceContentTextData/18031
+# en: The heavens tremble in my wake!
+2400.0 "--sync--" BattleTalk2 { instanceContentTextId: "466F" } window 500,0
 2417.6 "--sync--" StartsUsing { id: "268A", source: "Rofocale" } window 500,10
 2421.1 "Heavenly Subjugation"
 2433.5 "Embrace" Ability { id: "2685", source: "Rofocale" }

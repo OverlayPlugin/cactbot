@@ -10,6 +10,9 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheForbiddenLandEurekaPagos,
   resetWhenOutOfCombat: false,
   triggers: [
+    // https://xivapi.com/LogMessage/916
+    // en: 7 minutes have elapsed since your last activity. [...]
+    // But no 0x29 log line; so have to use GameLog for now.
     {
       id: 'Eureka Pagos Falling Asleep',
       type: 'GameLog',
