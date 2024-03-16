@@ -66,41 +66,54 @@ const checkAndRelabelPRs = async (github, owner, repo, prs) => {
      */
     const prIdentifier = { 'owner': owner, 'repo': repo, 'pull_number': prNumber };
     const { data: pr } = await github.rest.pulls.get(prIdentifier);
-    console.log(`Evaluating PR #${prNumber} (state: ${pr.state})...`);
+    console.log(`Evaluating PR #${prNumber} (state: ${pr.state}) (created: ${pr.created_at})...`);
 
-    // use the PR create-date as the starting point, in case all commits
-    // are from before the PR was opened.
-    console.log(`PR #${prNumber} created on: ${pr.created_at}`);
-    let latestCommitTimestamp = new Date(pr.created_at).valueOf();
-
+    const createdTimestamp = new Date(pr.created_at).valueOf();
+    let latestCommitTimestamp = 0;
+    let latestCommitSha = '';
     const { data: prCommits } = await github.rest.pulls.listCommits(prIdentifier);
     if (prCommits)
       prCommits.forEach((commit) => {
         console.log(`Found commit ${commit.sha} (date: ${commit.commit.author.date})`);
         const commitTimestamp = new Date(commit.commit.author.date).valueOf();
-        latestCommitTimestamp = Math.max(latestCommitTimestamp, commitTimestamp);
-      });
-    console.log(`Using ${new Date(latestCommitTimestamp).toISOString()} as last commit date.`);
-
-    console.log(`Checking for valid contributor reviews...`);
-    let latestReviewTimestamp = 0;
-    const { data: prReviews } = await github.rest.pulls.listReviews(prIdentifier);
-    if (prReviews)
-      prReviews.forEach((review) => {
-        const reviewTimestamp = new Date(review.submitted_at).valueOf();
-        if (validReviewerRoles.includes(review.author_association)) {
-          console.log(`Found valid review ${review.id} (date: ${review.submitted_at})`);
-          latestReviewTimestamp = Math.max(latestReviewTimestamp, reviewTimestamp);
+        if (commitTimestamp > latestCommitTimestamp) {
+          latestCommitTimestamp = commitTimestamp;
+          latestCommitSha = commit.sha;
         }
       });
 
-    if (latestReviewTimestamp > 0) {
-      console.log(`Using ${new Date(latestReviewTimestamp).toISOString()} as last review date.`);
-      if (latestReviewTimestamp > latestCommitTimestamp) {
-        console.log(`PR #${prNumber} has a post-commit review; removing 'needs-review' label.`);
-        execSync(`gh pr edit ${prNumber} --remove-label "needs-review"`);
+    // if all commits happened before the PR was opened, use the PR created date
+    latestCommitTimestamp = Math.max(latestCommitTimestamp, createdTimestamp);
+    console.log(
+      `Latest commit/create date: ${
+        new Date(latestCommitTimestamp).toISOString()
+      } (sha: ${latestCommitSha}).`,
+    );
+    console.log(`Checking for valid contributor reviews...`);
+
+    // Don't consider review timestamps, because a new comment/reply to an old review results
+    // in a new "review" event and entry on the 'reviews' endpoint. Instead, check whether
+    // there is a valid review corresponding to the latest commit.
+    const { data: prReviews } = await github.rest.pulls.listReviews(prIdentifier);
+    if (prReviews) {
+      let foundReviewofLatestCommitSha = false;
+      prReviews.forEach((review) => {
+        if (validReviewerRoles.includes(review.author_association)) {
+          console.log(
+            `Found valid review ${review.id} (date: ${review.submitted_at}) (sha: ${review.commit_id})`,
+          );
+          if (review.commit_id === latestCommitSha) {
+            foundReviewofLatestCommitSha = true;
+            console.log(`Review corresponds to most recent commit.`);
+          }
+        }
+      });
+
+      if (foundReviewofLatestCommitSha) {
+        console.log(`PR #${prNumber} has a valid post-commit review; removing '${label}' label.`);
+        execSync(`gh pr edit ${prNumber} --remove-label "${label}"`);
       } else {
-        console.log(`PR #${prNumber} has no review after the latest commit; skipping.`);
+        console.log(`PR #${prNumber} has no valid review of the latest commit; skipping.`);
       }
     } else {
       console.log(`PR #${prNumber} has no reviews; skipping.`);
