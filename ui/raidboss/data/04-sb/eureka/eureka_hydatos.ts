@@ -79,7 +79,7 @@ const triggerSet: TriggerSet<Data> = {
   triggers: [
     // https://xivapi.com/LogMessage/916
     // en: 7 minutes have elapsed since your last activity. [...]
-    // But no 0x29 log line; so have to use GameLog for now.
+    // There is no network packet for these log lines; so have to use GameLog.
     {
       id: 'BA Falling Asleep',
       type: 'GameLog',

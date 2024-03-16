@@ -187,7 +187,7 @@ hideall "--sync--"
 # https://xivapi.com/InstanceContentTextData/20624
 # en: <blip> Warning. Calculations indicate increased probability of defeat.\n\n<bleep> Error. Further data analysis required.
 # May be either id depending on which is alive.
-1800.0 "Enrage" BattleTalk2 { instanceContentTextId: "50(8F|90)" } window 1800,0
+1800.0 "Enrage" BattleTalk2 { instanceContentTextId: "(508F|5090)" } window 1800,0
 1806.0 "Laser Shower Enrage" Ability { id: "3311", source: "Omega-M" } window 20,20
 1806.0 "Laser Shower Enrage" Ability { id: "3312", source: "Omega" } window 20,20
 1812.0 "Laser Shower Enrage"
