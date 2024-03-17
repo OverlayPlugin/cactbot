@@ -714,7 +714,6 @@ const triggerSet: TriggerSet<Data> = {
         'Lahabrea\'s Shade': 'Lahabreas Schatten',
         'Lahabrea\'s and Igeyorhm\'s Shades': 'Lahabrea und Igeyorhm',
         'Nabriales\'s Shade': 'Nabriales\' Schatten',
-        'Our plea transcends': 'Reißt nieder die Grenze',
         'Shadow of the Ancients': 'Schatten der Alten',
       },
       'replaceText': {
@@ -779,7 +778,6 @@ const triggerSet: TriggerSet<Data> = {
         'Lahabrea\'s Shade': 'Spectre de Lahabrea',
         'Lahabrea\'s and Igeyorhm\'s Shades': 'Duo d\'Asciens',
         'Nabriales\'s Shade': 'Spectre de Nabriales',
-        'Our plea transcends': 'Nos convictions sont si fortes',
         'Shadow of the Ancients': 'Spectre d\'Ascien',
       },
       'replaceText': {
@@ -843,7 +841,6 @@ const triggerSet: TriggerSet<Data> = {
         'Lahabrea\'s Shade': 'ラハブレアの影',
         'Lahabrea\'s and Igeyorhm\'s Shades': 'ラハブレアとイゲオルム',
         'Nabriales\'s Shade': 'ナプリアレスの影',
-        'Our plea transcends': 'その強き願いは、魂の境界さえ超えた……！',
         'Shadow of the Ancients': '古代人の影',
         'Aetherial Gaol': 'エーテリアル・ジェイル',
       },
@@ -909,7 +906,6 @@ const triggerSet: TriggerSet<Data> = {
         'Lahabrea\'s Shade': '拉哈布雷亚之影',
         'Lahabrea\'s and Igeyorhm\'s Shades': '拉哈布雷亚与以格约姆之影',
         'Nabriales\'s Shade': '那布里亚勒斯之影',
-        'Our plea transcends': '你们强大的意志已超越肉体与灵魂的境界！',
         'Shadow of the Ancients': '古代人之影',
       },
       'replaceText': {
@@ -974,7 +970,6 @@ const triggerSet: TriggerSet<Data> = {
         'Lahabrea\'s Shade': '라하브레아의 그림자',
         'Lahabrea\'s and Igeyorhm\'s Shades': '라하브레아와 이게요름',
         'Nabriales\'s Shade': '나브리알레스의 그림자',
-        'Our plea transcends': '그 강한 바람은 혼',
         'Shadow of the Ancients': '고대인의 그림자',
       },
       'replaceText': {
