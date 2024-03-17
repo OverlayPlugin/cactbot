@@ -168,6 +168,9 @@ const triggerSet: TriggerSet<Data> = {
     },
   ],
   triggers: [
+    // https://xivapi.com/LogMessage/916
+    // en: 7 minutes have elapsed since your last activity. [...]
+    // There is no network packet for these log lines; so have to use GameLog.
     {
       id: 'Bozja South Falling Asleep',
       type: 'GameLog',
@@ -655,6 +658,8 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // https://xivapi.com/LogMessage/9644
+    // No 0x29 log line for this, so we have to use GameLog.
     {
       id: 'Bozja South Castrum Lyon Passage',
       type: 'GameLog',

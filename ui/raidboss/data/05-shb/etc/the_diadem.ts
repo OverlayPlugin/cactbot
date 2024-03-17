@@ -10,12 +10,17 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheDiadem,
   resetWhenOutOfCombat: false,
   triggers: [
+    // https://xivapi.com/LogMessage/916
+    // en: 7 minutes have elapsed since your last activity. [...]
+    // There is no network packet for these log lines; so have to use GameLog.
     {
       id: 'Diadem Falling Asleep',
       type: 'GameLog',
       netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
       response: Responses.wakeUp(),
     },
+    // There is presumably a network packet to, at a minimum, spawn the legendary node.
+    // But currently no associated log line other than GameLog (code: 003B).
     {
       id: 'Diadem Found Gather Point',
       type: 'GameLog',
@@ -36,6 +41,7 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // This one specifically uses player chat, so no replacement log line.
     {
       id: 'Diadem Flag Alert',
       type: 'GameLog',

@@ -1,6 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
 import { Responses } from '../../../../../resources/responses';
-import Util from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -121,14 +120,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '4805', source: 'Hobbes', capture: false },
       response: Responses.aoe(),
     },
+    // https://xivapi.com/LogMessage/9533
+    // en: The wall-mounted right arm begins to move...
     {
       id: 'Copied Hobbes Right Arm',
-      type: 'GameLog',
-      netRegex: {
-        line: 'The wall-mounted right arm begins to move.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '253D', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.alliance ??= 'A',
       outputStrings: {
@@ -142,15 +139,12 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // https://xivapi.com/LogMessage/9531
+    // en: The wall-mounted flamethrowers activate.
     {
       id: 'Copied Hobbes Flamethrowers',
-      type: 'GameLog',
-
-      netRegex: {
-        line: 'The wall-mounted flamethrowers activate\..*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '253B', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       run: (data) => data.alliance ??= 'B',
       outputStrings: {
@@ -164,26 +158,20 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // https://xivapi.com/LogMessage/9532
+    // en: The wall-mounted left arm begins to move...
     {
       id: 'Copied Hobbes Left Arm 1',
-      type: 'GameLog',
-      netRegex: {
-        line: 'The wall-mounted left arm begins to move.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '253C', capture: false },
       durationSeconds: 6,
       response: Responses.getOut('info'),
       run: (data) => data.alliance ??= 'C',
     },
     {
       id: 'Copied Hobbes Left Arm 2',
-      type: 'GameLog',
-      netRegex: {
-        line: 'The wall-mounted left arm begins to move.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '253C', capture: false },
       delaySeconds: 8,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -199,12 +187,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Copied Hobbes Left Arm 3',
-      type: 'GameLog',
-      netRegex: {
-        line: 'The wall-mounted left arm begins to move.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '253C', capture: false },
       delaySeconds: 10,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -231,14 +215,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '4807', source: 'Hobbes', capture: false },
       response: Responses.stackMarker(),
     },
+    // https://xivapi.com/LogMessage/9528
+    // en: You hear frenzied movement from machines beneath...
     {
       id: 'Copied Hobbes Electric Floor',
-      type: 'GameLog',
-      netRegex: {
-        line: 'You hear frenzied movement from machines beneath.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '2538', capture: false },
       durationSeconds: 10,
       suppressSeconds: 15,
       infoText: (_data, _matches, output) => output.text!(),
@@ -253,14 +235,12 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // https://xivapi.com/LogMessage/9529
+    // en: The conveyer belts whirr to life!
     {
       id: 'Copied Hobbes Conveyer Belts',
-      type: 'GameLog',
-      netRegex: {
-        line: 'The conveyer belts whirr to life!.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '2539', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -273,14 +253,12 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // https://xivapi.com/LogMessage/9530
+    // en: Flammable oil is leaking from the floor...
     {
       id: 'Copied Hobbes Oil 1',
-      type: 'GameLog',
-      netRegex: {
-        line: 'Flammable oil is leaking from the floor.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '253A', capture: false },
       durationSeconds: 3,
       suppressSeconds: 15,
       alertText: (_data, _matches, output) => output.text!(),
@@ -297,12 +275,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Copied Hobbes Oil 2',
-      type: 'GameLog',
-      netRegex: {
-        line: 'Flammable oil is leaking from the floor.*?',
-        code: Util.gameLogCodes.message,
-        capture: false,
-      },
+      type: 'SystemLogMessage',
+      netRegex: { id: '253A', capture: false },
       delaySeconds: 6,
       durationSeconds: 3,
       suppressSeconds: 15,

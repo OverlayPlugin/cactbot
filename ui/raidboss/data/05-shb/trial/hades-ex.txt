@@ -70,7 +70,9 @@ hideall "--sync--"
 
 
 ### Phase 3
-493.0 "--sync--" GameLog { code: "0044", name: "Hades", line: "Our plea transcends.*?" } window 500,0
+# https://xivapi.com/InstanceContentTextData/23311
+# en: Our plea transcends the very boundaries of the soul!
+493.0 "--sync--" BattleTalk2 { instanceContentTextId: "5B0F" } window 500,0
 # 00:0044:Hades:At last, you are one!
 499.9 "--targetable--"
 500.0 "--sync--" StartsUsing { id: "47C8", source: "Ascian Prime's Shade" } window 500,0
