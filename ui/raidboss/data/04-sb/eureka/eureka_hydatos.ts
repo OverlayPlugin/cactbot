@@ -530,7 +530,10 @@ const triggerSet: TriggerSet<Data> = {
       // 332E||Relative Virtue gains the effect of Umbral Essence.|
       id: 'BA AV Eidos Relative Virtue Astral',
       type: 'GameLog',
-      netRegex: { line: 'Relative Virtue gains the effect of .{0,2}Astral Essence.*?', capture: false },
+      netRegex: {
+        line: 'Relative Virtue gains the effect of .{0,2}Astral Essence.*?',
+        capture: false,
+      },
       condition: (data) => data.sealed,
       run: (data) => {
         // RV clones get buffs in the reverse order that they do their attacks in.
@@ -542,7 +545,10 @@ const triggerSet: TriggerSet<Data> = {
       // See note above for `BA AV Eidos Relative Virtue Astral`.
       id: 'BA AV Eidos Relative Virtue Umbral',
       type: 'GameLog',
-      netRegex: { line: 'Relative Virtue gains the effect of .{0,2}Umbral Essence.*?', capture: false },
+      netRegex: {
+        line: 'Relative Virtue gains the effect of .{0,2}Umbral Essence.*?',
+        capture: false,
+      },
       condition: (data) => data.sealed,
       run: (data) => {
         // RV clones get buffs in the reverse order that they do their attacks in.
