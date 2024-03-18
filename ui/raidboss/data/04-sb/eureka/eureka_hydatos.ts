@@ -522,13 +522,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // Note: These use 00:3...: lines, without any proper "gains effect" lines.
-      // In other words, they need to be the fully translated in game log.
+      // In other words, they need to be fully translated in the game log.
       // There are no "gainsEffect" lines for the clones, only for Absolute Virtue directly.
       // Ideally parser logic could be added for this case, but this is where we are.
-      // TODO: Possibly animation data from ActorControlExtra that controls the light/dark wrists?
+      // Note: Use .{0,2} in the regex, as it appears from recent logs that special characters
+      // may be included in these lines, e.g.:
+      // 332E||Relative Virtue gains the effect of Umbral Essence.|
       id: 'BA AV Eidos Relative Virtue Astral',
       type: 'GameLog',
-      netRegex: { line: 'Relative Virtue gains the effect of Astral Essence.*?', capture: false },
+      netRegex: { line: 'Relative Virtue gains the effect of .{0,2}Astral Essence.*?', capture: false },
       condition: (data) => data.sealed,
       run: (data) => {
         // RV clones get buffs in the reverse order that they do their attacks in.
@@ -540,7 +542,7 @@ const triggerSet: TriggerSet<Data> = {
       // See note above for `BA AV Eidos Relative Virtue Astral`.
       id: 'BA AV Eidos Relative Virtue Umbral',
       type: 'GameLog',
-      netRegex: { line: 'Relative Virtue gains the effect of Umbral Essence.*?', capture: false },
+      netRegex: { line: 'Relative Virtue gains the effect of .{0,2}Umbral Essence.*?', capture: false },
       condition: (data) => data.sealed,
       run: (data) => {
         // RV clones get buffs in the reverse order that they do their attacks in.
