@@ -525,13 +525,13 @@ const triggerSet: TriggerSet<Data> = {
       // In other words, they need to be fully translated in the game log.
       // There are no "gainsEffect" lines for the clones, only for Absolute Virtue directly.
       // Ideally parser logic could be added for this case, but this is where we are.
-      // Note: Use .{0,2} in the regex, as it appears from recent logs that special characters
+      // Note: Use .*? in the regex, as it appears from recent logs that special characters
       // may be included in these lines, e.g.:
       // 332E||Relative Virtue gains the effect of Umbral Essence.|
       id: 'BA AV Eidos Relative Virtue Astral',
       type: 'GameLog',
       netRegex: {
-        line: 'Relative Virtue gains the effect of .{0,2}Astral Essence.*?',
+        line: 'Relative Virtue gains the effect of .*?Astral Essence.*?',
         capture: false,
       },
       condition: (data) => data.sealed,
@@ -546,7 +546,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'BA AV Eidos Relative Virtue Umbral',
       type: 'GameLog',
       netRegex: {
-        line: 'Relative Virtue gains the effect of .{0,2}Umbral Essence.*?',
+        line: 'Relative Virtue gains the effect of .*?Umbral Essence.*?',
         capture: false,
       },
       condition: (data) => data.sealed,
@@ -893,9 +893,9 @@ const triggerSet: TriggerSet<Data> = {
         'The Shin-Zantetsuken Containment Unit': 'Shin-Zantetsuken-Quarantäneblock',
         'The Lance of Virtue Containment Unit': 'Lanze der Tugend-Quarantäneblock',
         'The Proto Ozma Containment Unit': 'Proto-Yadis-Quarantäneblock',
-        'Relative Virtue gains the effect of Astral Essence':
+        'Relative Virtue gains the effect of .*?Astral Essence.*?':
           'Die Relative Tugend erhält den Effekt von.*?Arm der Lichts',
-        'Relative Virtue gains the effect of Umbral Essence':
+        'Relative Virtue gains the effect of .*?Umbral Essence.*?':
           'Die Relative Tugend erhält den Effekt von.*?Arm der Dunkelheit',
       },
       'replaceText': {
@@ -982,9 +982,9 @@ const triggerSet: TriggerSet<Data> = {
         'Proto Ozma(?! containment)': 'Proto-Ozma',
         'Raiden': 'Raiden',
         'Relative Virtue(?! gains)': 'Vertu relative',
-        'Relative Virtue gains the effect of Astral Essence':
+        'Relative Virtue gains the effect of .*?Astral Essence.*?':
           'Vertu relative bénéficie de l\'effet.*?Bras de Lumière',
-        'Relative Virtue gains the effect of Umbral Essence':
+        'Relative Virtue gains the effect of .*?Umbral Essence.*?':
           'Vertu relative bénéficie de l\'effet.*?Bras de Ténèbres',
         'Shadow': 'Ombre de Proto-Ozma',
         'Streak Lightning': 'Éclair chargeant',
@@ -1183,8 +1183,8 @@ const triggerSet: TriggerSet<Data> = {
         'The Lance of Virtue Containment Unit': '美德之枪封印区',
         'The Shin-Zantetsuken Containment Unit': '真·斩铁剑封印区',
         'The Proto Ozma Containment Unit': '奥兹玛原型封印区',
-        'Relative Virtue gains the effect of Astral Essence': '相对的美德附加了“光之腕”效果',
-        'Relative Virtue gains the effect of Umbral Essence': '相对的美德附加了“暗之腕”效果',
+        'Relative Virtue gains the effect of .*?Astral Essence.*?': '相对的美德附加了“光之腕”效果',
+        'Relative Virtue gains the effect of .*?Umbral Essence.*?': '相对的美德附加了“暗之腕”效果',
       },
       'replaceText': {
         'Acallam Na Senorach': '真妖枪旋',
