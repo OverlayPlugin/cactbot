@@ -374,6 +374,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         countdown: {
           en: '${player} started ${seconds}s countdown',
+          fr: '${player} a démarré un compte à rebours de ${seconds}s',
         },
       },
     },
@@ -386,6 +387,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         countdownFail: {
           en: '${player} failed to start countdown (result code: ${code})',
+          fr: '${player} a échoué à démarrer un compte à rebours (result code: ${code})',
         },
       },
     },
@@ -397,6 +399,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         countdownCancel: {
           en: '${player} cancelled countdown',
+          fr: '${player} a annulé le compte à rebours',
         },
       },
     },
