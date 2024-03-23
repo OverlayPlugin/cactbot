@@ -88,9 +88,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/LogMessage/9069
     // en: The memories of heroes past live on again!
-    // But no 0x29 log line; so have to use GameLog for now.
+    // TODO: Update to ActorControlSelf (category=0x20F, param1=236D) when available
+    // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
-      id: 'BA Saved By Rememberance',
+      id: 'BA Saved By Remembrance',
       type: 'GameLog',
       netRegex: { line: 'The memories of heroes past live on again.*?', capture: false },
       sound: 'Long',
@@ -256,7 +257,9 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.doritoStack(),
     },
     // https://xivapi.com/PublicContentTextData/2122
-    // But we do not currently have a log line for this data.
+    // en: Munderg, turn flesh to ash!
+    // TODO: Update to ActorControl (category=0x834, param1=84A) when available
+    // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Owain Fire Element',
       type: 'GameLog',
@@ -288,7 +291,9 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     // https://xivapi.com/PublicContentTextData/2123
-    // But we do not currently have a log line for this data.
+    // en: Munderg, turn blood to ice!
+    // TODO: Update to ActorControl (category=0x834, param1=84B) when available
+    // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Owain Ice Element',
       type: 'GameLog',
@@ -528,6 +533,10 @@ const triggerSet: TriggerSet<Data> = {
       // Note: Use .*? in the regex, as it appears from recent logs that special characters
       // may be included in these lines, e.g.:
       // 332E||Relative Virtue gains the effect of Umbral Essence.|
+      //
+      // TODO: There are ActorControl packets (GainEffect, category=0x014) for these effects,
+      // but the FFXIV parsing plugin does not emit 0x1A lines. This is being looked at.
+      // See OverlayPlugin/cactbot#99 for further info.
       id: 'BA AV Eidos Relative Virtue Astral',
       type: 'GameLog',
       netRegex: {
