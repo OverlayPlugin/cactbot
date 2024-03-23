@@ -295,12 +295,7 @@ const doExportSelected = (state: PageState): void => {
     }
   }
 
-  const blob = new Blob([output.join('\n')], { type: 'text/plain' });
-  const a = document.createElement('a');
-  a.setAttribute('download', filename);
-  a.href = window.URL.createObjectURL(blob);
-  a.click();
-  window.URL.revokeObjectURL(a.href);
+  downloadFile(output, filename);
 };
 
 const doExportAll = (state: PageState): void => {
@@ -330,7 +325,10 @@ const doExportAll = (state: PageState): void => {
       anonymizer.validateLine(line, notifier);
   }
 
-  const filename = 'processed.log';
+  downloadFile(output, 'processed.log');
+};
+
+const downloadFile = (output: string[], filename: string): void => {
   const blob = new Blob([output.join('\n')], { type: 'text/plain' });
   const a = document.createElement('a');
   a.setAttribute('download', filename);
