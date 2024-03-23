@@ -660,6 +660,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/LogMessage/9644
     // No 0x29 log line for this, so we have to use GameLog.
+    // TODO: Check whether this could be ActorControlSelfExtra (category: 0x020F) when available.
     {
       id: 'Bozja South Castrum Lyon Passage',
       type: 'GameLog',
