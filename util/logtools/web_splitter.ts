@@ -374,17 +374,17 @@ const onLoaded = () => {
   });
 
   anonCheckbox.addEventListener('click', () => {
-    const optionChecked = anonCheckbox.checked || analysisFilterCheckbox.checked;
+    const globalsChecked = anonCheckbox.checked || analysisFilterCheckbox.checked;
     const anyClicked = Object.values(pageState.selectedFights).length > 0 &&
       Object.values(pageState.selectedFights).reduce((prev, cur) => prev || cur);
-    pageState.exportAllButton.disabled = !optionChecked || anyClicked;
+    pageState.exportAllButton.disabled = !globalsChecked || anyClicked;
   });
 
   analysisFilterCheckbox.addEventListener('click', () => {
-    const optionChecked = anonCheckbox.checked || analysisFilterCheckbox.checked;
+    const globalsChecked = anonCheckbox.checked || analysisFilterCheckbox.checked;
     const anyClicked = Object.values(pageState.selectedFights).length > 0 &&
       Object.values(pageState.selectedFights).reduce((prev, cur) => prev || cur);
-    pageState.exportAllButton.disabled = !optionChecked || anyClicked;
+    pageState.exportAllButton.disabled = !globalsChecked || anyClicked;
   });
 
   setLabelText('anon-label', 'anonInput', lang);
