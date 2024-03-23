@@ -174,8 +174,9 @@ const buildTable = (state: PageState): void => {
         includeCheck.addEventListener('click', () => {
           state.selectedFights[idx] = includeCheck.checked;
           const anyClicked = Object.values(state.selectedFights).reduce((prev, cur) => prev || cur);
+          const globalsChecked = state.anonInput.checked || state.analysisFilterInput.checked;
           state.exportSelectedButton.disabled = !anyClicked;
-          state.exportAllButton.disabled = anyClicked;
+          state.exportAllButton.disabled = anyClicked || !globalsChecked;
         });
         state.table.appendChild(includeCheck);
         continue;
@@ -374,12 +375,16 @@ const onLoaded = () => {
 
   anonCheckbox.addEventListener('click', () => {
     const optionChecked = anonCheckbox.checked || analysisFilterCheckbox.checked;
-    pageState.exportAllButton.disabled = !optionChecked;
+    const anyClicked = Object.values(pageState.selectedFights).length > 0 &&
+      Object.values(pageState.selectedFights).reduce((prev, cur) => prev || cur);
+    pageState.exportAllButton.disabled = !optionChecked || anyClicked;
   });
 
   analysisFilterCheckbox.addEventListener('click', () => {
     const optionChecked = anonCheckbox.checked || analysisFilterCheckbox.checked;
-    pageState.exportAllButton.disabled = !optionChecked;
+    const anyClicked = Object.values(pageState.selectedFights).length > 0 &&
+      Object.values(pageState.selectedFights).reduce((prev, cur) => prev || cur);
+    pageState.exportAllButton.disabled = !optionChecked || anyClicked;
   });
 
   setLabelText('anon-label', 'anonInput', lang);
