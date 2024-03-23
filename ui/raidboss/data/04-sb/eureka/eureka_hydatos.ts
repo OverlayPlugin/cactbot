@@ -88,7 +88,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/LogMessage/9069
     // en: The memories of heroes past live on again!
-    // TODO: Update to ActorControlSelf (category=0x20F, param1=236D) when available
+    // TODO: Update to ActorControlSelf (category=0x020F, param1=0x236D) when available
     // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Saved By Remembrance',
@@ -258,7 +258,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/PublicContentTextData/2122
     // en: Munderg, turn flesh to ash!
-    // TODO: Update to ActorControl (category=0x834, param1=84A) when available
+    // TODO: Update to ActorControl (category=0x0834, param1=0x84A) when available
     // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Owain Fire Element',
@@ -292,7 +292,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/PublicContentTextData/2123
     // en: Munderg, turn blood to ice!
-    // TODO: Update to ActorControl (category=0x834, param1=84B) when available
+    // TODO: Update to ActorControl (category=0x0834, param1=0x84B) when available
     // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Owain Ice Element',
@@ -534,7 +534,7 @@ const triggerSet: TriggerSet<Data> = {
       // may be included in these lines, e.g.:
       // 332E||Relative Virtue gains the effect of Umbral Essence.|
       //
-      // TODO: There are ActorControl packets (GainEffect, category=0x014) for these effects,
+      // TODO: There are ActorControl packets (GainEffect, category=0x0014) for these effects,
       // but the FFXIV parsing plugin does not emit 0x1A lines. This is being looked at.
       // See OverlayPlugin/cactbot#99 for further info.
       id: 'BA AV Eidos Relative Virtue Astral',
