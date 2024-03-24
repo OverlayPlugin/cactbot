@@ -7,9 +7,9 @@ hideall "--sync--"
 # Use zone-unseal and 0x21 Reset lines
 # Trigger set contains 'resetWhenOutOfCombat: false'
 
-0.0 "--Reset--" ActorControl { command: "80000014", data0: "00" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "80000014", data0: "00" } window 100000,100000 jump 0
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000,100000 jump 0
 
 # TODO: fill in CEs
 # The idea with each of them is that you have at most two minutes of standing
@@ -365,4 +365,3 @@ hideall "--sync--"
 61126.0 "Frigid/Fervid Pulse"
 61128.4 "Swooping Frenzy"
 61131.2 "Frigid/Fervid Pulse"
-

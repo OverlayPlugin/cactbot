@@ -236,6 +236,13 @@ or if hp pushes are discovered when the content is no longer current.
 The syntax for **window** is `window [number],[number]` (e.g `window 10,30`).
 There is no space after the comma.
 
+**window** also supports a single parameter in the format `window [number]`,
+in which case the window will be split evenly on both sides of the sync time.
+For example, specifying `window 5000` is equivalent to `window 2500,2500`.
+While this can be used in personal/user timelines, it should be avoided in
+timeline files that are distributed with cactbot,
+which should instead use the explicit `window [number],[number]` format.
+
 ### Commands
 
 To hide all instances of an ability, you can use the `hideall` command.
