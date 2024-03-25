@@ -16,7 +16,7 @@ hideall "Relaxant"
 1032.1 "Kaltstrahl x3" Ability { id: "16CC", source: "Faust" } duration 4.2 window 5,0.5
 #1034.2 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
 #1036.3 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
-1043.4 "Kaltstrahl x3" Ability { id: "16CC", source: "Faust"} duration 4.2 window 5,0.5
+1043.4 "Kaltstrahl x3" Ability { id: "16CC", source: "Faust" } duration 4.2 window 5,0.5
 #1045.5 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
 #1047.6 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
 

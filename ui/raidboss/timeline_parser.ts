@@ -195,7 +195,9 @@ export class TimelineParser {
   private labelToSync: { [name: string]: Sync[] } = {};
   // Run linting checks while parsing timeline file
   private runLint = false;
+  // Track the last sync time during linting to ensure proper order
   private lastSyncTime = 0;
+  // Override to stop checking sync order during linting
   private ignoreSyncOrder = false;
 
   constructor(
@@ -860,7 +862,6 @@ export class TimelineParser {
       return;
 
     // From this point, we should expect [time] [name] [type] [NetRegex]
-    // parse() throws errors if that's not the case
     // So just check keyword ordering (everything after), and 'window' format.
     const keywords = lineParts.slice(4);
     if (keywords.length === 0)

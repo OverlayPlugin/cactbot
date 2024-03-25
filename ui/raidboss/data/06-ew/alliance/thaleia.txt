@@ -692,7 +692,7 @@ hideall "--sync--"
 5537.9 "Destructive Bolt" Ability { id: "8CEC", source: "Eulogia" }
 
 5600.0 label "Hydrostasis"
-# 5597.8 "--middle--" Ability { id: "8A02", source: "Eulogia" } # unreachable - info only
+#5597.8 "--middle--" Ability { id: "8A02", source: "Eulogia" } # unreachable - info only
 5600.0 "--sync--" Ability { id: "8A37", source: "Eulogia" }
 5604.0 "Hydrostasis" Ability { id: "8A37", source: "Eulogia" }
 5612.0 "Time and Tide" Ability { id: "8A32", source: "Eulogia" }
