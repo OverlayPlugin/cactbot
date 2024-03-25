@@ -763,7 +763,7 @@ to turn on filtering.  From your cactbot directory, run the following command:
 Alternatively, you can use the web-based [log splitter](https://overlayplugin.github.io/cactbot/util/logtools/splitter.html) tool
 and check the option to filter the log for analysis.
 
-This filtering will limit the exported log lines to things that are potentially useful in writing triggers,
+This filtering will limit the exported log lines to things that are potentially useful for writing triggers,
 like boss abilities, added combatants, tethers, map effects, head markers,
 and debuffs applied to and removed from players. It's not perfect, but it's a place to start.
 
@@ -1057,7 +1057,7 @@ Here's what the timeline looks like.
 ```
 
 Note: this old timeline does not use `forcejump` or `label` but should!
-Note 2: This is an example of when adn how `#cactbot-timeline-lint...`
+Note 2: This is an example of when and how `#cactbot-timeline-lint...`
 should be used to disable sync order linting.
 Otherwise, this timeline file would fail validation when added to the repo due to the
 out-of-order sync times.
