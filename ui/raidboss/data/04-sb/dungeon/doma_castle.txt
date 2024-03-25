@@ -56,8 +56,8 @@ hideall "--sync--"
 1029.6 "Bits Activate"
 1039.6 "Circle Of Death" Ability { id: "20A2", source: "Magitek Hexadrone" }
 1045.7 "Hexadrone Bits" AddedCombatant { name: "Hexadrone Bit" }
-1051.2 "Bits Activate"
 1049.8 "Circle Of Death" Ability { id: "20A2", source: "Magitek Hexadrone" }
+1051.2 "Bits Activate"
 1064.5 "Magitek Missiles" Ability { id: "20A5", source: "Magitek Hexadrone" }
 1068.9 "Hexadrone Bits" AddedCombatant { name: "Hexadrone Bit" }
 1074.4 "Bits Activate"
@@ -68,8 +68,8 @@ hideall "--sync--"
 1095.5 "Bits Activate"
 1098.6 "Magitek Missiles" Ability { id: "20A5", source: "Magitek Hexadrone" }
 1111.2 "Hexadrone Bits" AddedCombatant { name: "Hexadrone Bit" }
-1116.7 "Bits Activate"
 1112.9 "Magitek Missiles" Ability { id: "20A5", source: "Magitek Hexadrone" }
+1116.7 "Bits Activate"
 1125.6 "Circle Of Death" Ability { id: "20A2", source: "Magitek Hexadrone" }
 1132.0 "Hexadrone Bits" AddedCombatant { name: "Hexadrone Bit" }
 1137.5 "Bits Activate"
@@ -84,8 +84,8 @@ hideall "--sync--"
 1186.2 "Bits Activate"
 1189.3 "Magitek Missiles"
 1201.9 "Hexadrone Bits"
-1207.4 "Bits Activate"
 1203.6 "Magitek Missiles"
+1207.4 "Bits Activate"
 
 ### Hypertuned Grynewaht
 # -ii 20A9 20AB 20AC 20AE 20A7 2447
@@ -95,48 +95,48 @@ hideall "--sync--"
 2009.4 "Chainsaw" duration 5.5 Ability { id: "20A8", source: "Hypertuned Grynewaht" }
 2022.7 "--center--"
 2022.7 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" } window 10,10 # boss walks center before using
-2023.1 "Gunsaw" duration 5.0  Ability { id: "20AA", source: "Hypertuned Grynewaht" }
+2023.1 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
 2045.4 "Thermobaric Charge" Ability { id: "20AF", source: "Hypertuned Grynewaht" }
 2053.8 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2062.0 "Gunsaw" duration 5.0  Ability { id: "20AA", source: "Hypertuned Grynewaht" }
+2062.0 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
 2075.3 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2075.3 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2076.7 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2084.9 "Gunsaw" duration 5.0  Ability { id: "20AA", source: "Hypertuned Grynewaht" }
+2084.9 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
 2098.2 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2098.2 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2102.6 "Magitek Bits" AddedCombatant { name: "Retuned Magitek Bit" }
 2108.1 "Bits Activate"
-2117.9 "Chainsaw" duration 5.5 Ability { id: "20A8", source: "Hypertuned Grynewaht" }
+2117.9 "Chainsaw" Ability { id: "20A8", source: "Hypertuned Grynewaht" } duration 5.5
 2120.9 "Thermobaric Charge" Ability { id: "20AF", source: "Hypertuned Grynewaht" }
 2127.9 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2134.2 "Gunsaw" duration 5.0 Ability { id: "20AA", source: "Hypertuned Grynewaht" }
+2134.2 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
 2147.5 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2149.5 "Clean Cut" Ability { id: "20B1", source: "Magitek Chakram" }
 2152.6 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2160.8 "Gunsaw" duration 5.0 Ability { id: "20AA", source: "Hypertuned Grynewaht" }
+2160.8 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
 2174.1 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2174.1 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2179.7 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
 2179.7 "Magitek Bits" AddedCombatant { name: "Retuned Magitek Bit" }
 2185.2 "Bits Activate"
-2194.8 "Chainsaw" duration 5.5 Ability { id: "20A8", source: "Hypertuned Grynewaht" }
+2194.8 "Chainsaw" Ability { id: "20A8", source: "Hypertuned Grynewaht" } duration 5.5
 2199.9 "Thermobaric Charge" Ability { id: "20AF", source: "Hypertuned Grynewaht" }
 2201.2 "Clean Cut" Ability { id: "20B1", source: "Magitek Chakram" }
 
 2208.5 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2216.7 "Gunsaw" duration 5.0 Ability { id: "20AA", source: "Hypertuned Grynewaht" }
+2216.7 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
 2230.0 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2230.0 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2232.5 "Magitek Bits" AddedCombatant { name: "Retuned Magitek Bit" }
 2238.0 "Bits Activate"
-2245.7 "Chainsaw" duration 5.5 Ability { id: "20A8", source: "Hypertuned Grynewaht" }
+2245.7 "Chainsaw" Ability { id: "20A8", source: "Hypertuned Grynewaht" } duration 5.5
 2253.4 "Thermobaric Charge" Ability { id: "20AF", source: "Hypertuned Grynewaht" }
-2259.8 "Chainsaw" duration 5.5 Ability { id: "20A8", source: "Hypertuned Grynewaht" }
+2259.8 "Chainsaw" Ability { id: "20A8", source: "Hypertuned Grynewaht" } duration 5.5
 
 2274.0 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
 # Loop begins here, but the jump is attached to the Delay-Action Charge to preserve the duration timer for Gunsaw
-2282.2 "Gunsaw" duration 5.0 Ability { id: "20AA", source: "Hypertuned Grynewaht" }
+2282.2 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
 2295.5 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" } jump 2230.0
 2295.5 "Clean Cut"
 2298.0 "Magitek Bits"

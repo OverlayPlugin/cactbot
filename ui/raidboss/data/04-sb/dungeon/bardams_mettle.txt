@@ -88,7 +88,7 @@ hideall "Reconstruct"
 2060.9 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
 2069.3 "Wind Unbound" Ability { id: "1F0A", source: "Yol" }
 2071.4 "--untargetable--"
-2071.4 "--adds spawn--" AddedCombatant { name: "Corpsecleaner Eagle" }  window 71.4,5
+2071.4 "--adds spawn--" AddedCombatant { name: "Corpsecleaner Eagle" } window 71.4,5
 2078.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
 2088.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
 2098.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
@@ -162,10 +162,10 @@ hideall "Reconstruct"
 2478.7 "Eye Of The Fierce" Ability { id: "1F0D", source: "Yol" }
 2483.9 "Feathercut" Ability { id: "1F09", source: "Yol" }
 2485.7 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
-2490.0 "--untargetable--" NameToggle { name: "Yol", toggle: "00" } jump 2253.8 window 130,5
+2490.0 "--untargetable--" NameToggle { name: "Yol", toggle: "00" } window 130,5 jump 2253.8
 
 2496.5 "Flutterfall"
 2503.7 "Wingbeat"
 2513.1 "Flutterfall"
 2520.5 "Wingbeat"
-2284.9 "Pinion"
+2520.9 "Pinion"

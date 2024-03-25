@@ -5,7 +5,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 
@@ -169,9 +169,12 @@ hideall "--sync--"
 667.3 "Ceruleum Vent" Ability { id: "6EEF", source: "The Ultima Weapon" }
 670.7 "Viscous Aetheroplasm?" #Ability { id: "6EEE", source: "The Ultima Weapon" }
 
+#cactbot-timeline-lint-disable-sync-order
 # From here, the late Cyclone/EruptionHoming Lasers blocks are added.
 669.9 "--sync--" StartsUsing { id: "6F00", source: "The Ultima Weapon" } window 15,15 jump 697.3 # Radiant Plume
 671.0 "--sync--" StartsUsing { id: "6F03", source: "The Ultima Weapon" } window 15,15 jump 797.3 # Eruption
+#cactbot-timeline-lint-enable-sync-order
+
 672.6 "Radiant Plume?"
 673.7 "Eruption x5?"
 675.4 "Crimson Cyclone?"

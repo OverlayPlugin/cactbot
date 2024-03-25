@@ -5,7 +5,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 ### Phase 1
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -53,6 +53,7 @@ hideall "--sync--"
 274.3 "--sync--" StartsUsing { id: "4CD9", source: "Varis Yae Galvus" } window 100,100 jump 700
 274.3 "--sync--" StartsUsing { id: "4CD7", source: "Varis Yae Galvus" } window 100,100 jump 900
 
+#cactbot-timeline-lint-disable-sync-order
 # loaded lookahead window
 279.3 "Loaded Gunshield?" #Ability { id: "4CD8", source: "Varis Yae Galvus" }
 288.2 "--sync--" #Ability { id: "4CB5", source: "Varis Yae Galvus" }
@@ -85,7 +86,7 @@ hideall "--sync--"
 318.4 "--sync--" #Ability { id: "4CD4", source: "Varis Yae Galvus" }
 318.8 "--sync--" #Ability { id: "4CD5", source: "Varis Yae Galvus" }
 321.5 "--sync--" #Ability { id: "4CD6", source: "Varis Yae Galvus" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 ## Phase 3: Loaded Gunshield, Spread
 500.0 "--sync--" StartsUsing { id: "4CD8", source: "Varis Yae Galvus" }
@@ -102,6 +103,7 @@ hideall "--sync--"
 554.3 "--sync--" StartsUsing { id: "4CD9", source: "Varis Yae Galvus" } window 10,10 jump 700
 554.3 "--sync--" StartsUsing { id: "4CD7", source: "Varis Yae Galvus" } window 10,10 jump 900
 
+#cactbot-timeline-lint-disable-sync-order
 # reinforced lookahead window
 559.3 "Reinforced Gunshield?" #Ability { id: "4CD9", source: "Varis Yae Galvus" }
 568.4 "Altius?" #Ability { id: "4CCA", source: "Varis Yae Galvus" }
@@ -123,7 +125,7 @@ hideall "--sync--"
 598.4 "--sync--" #Ability { id: "4CD4", source: "Varis Yae Galvus" }
 598.8 "--sync--" #Ability { id: "4CD5", source: "Varis Yae Galvus" }
 601.5 "--sync--" #Ability { id: "4CD6", source: "Varis Yae Galvus" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 
 ## Phase 3: Reinforced Gunshield, Block
@@ -139,6 +141,7 @@ hideall "--sync--"
 752.8 "--sync--" StartsUsing { id: "4CD8", source: "Varis Yae Galvus" } window 10,10 jump 500
 752.8 "--sync--" StartsUsing { id: "4CD7", source: "Varis Yae Galvus" } window 10,10 jump 900
 
+#cactbot-timeline-lint-disable-sync-order
 # loaded lookahead window
 757.8 "Loaded Gunshield?" #Ability { id: "4CD8", source: "Varis Yae Galvus" }
 766.7 "--sync--" #Ability { id: "4CB5", source: "Varis Yae Galvus" }
@@ -162,7 +165,7 @@ hideall "--sync--"
 796.9 "--sync--" #Ability { id: "4CD4", source: "Varis Yae Galvus" }
 797.3 "--sync--" #Ability { id: "4CD5", source: "Varis Yae Galvus" }
 800.0 "--sync--" #Ability { id: "4CD6", source: "Varis Yae Galvus" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 
 ## Phase 3: Electrified Gunshield, Knockback
@@ -182,6 +185,7 @@ hideall "--sync--"
 958.7 "--sync--" StartsUsing { id: "4CD8", source: "Varis Yae Galvus" } window 10,10 jump 500
 958.7 "--sync--" StartsUsing { id: "4CD9", source: "Varis Yae Galvus" } window 10,10 jump 700
 
+#cactbot-timeline-lint-disable-sync-order
 # loaded lookahead window
 963.7 "Loaded Gunshield?" #Ability { id: "4CD8", source: "Varis Yae Galvus" }
 972.6 "--sync--" #Ability { id: "4CB5", source: "Varis Yae Galvus" }
@@ -201,7 +205,7 @@ hideall "--sync--"
 985.0 "Magitek Shielding" #Ability { id: "4CDB", source: "Varis Yae Galvus" }
 989.8 "Ventus Est" #Ability { id: "4CC7", source: "Ventus Est" }
 1000.2 "Citius" #Ability { id: "4CF0", source: "Varis Yae Galvus" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 ### Phase 4: Stack Spread Shield
 1200.0 "--untargetable--"

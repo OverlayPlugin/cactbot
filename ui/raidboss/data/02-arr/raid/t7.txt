@@ -55,15 +55,15 @@ hideall "--sync--"
 ### Phase 2 (80%): shriek, 3 adds 30 seconds apart
 # Note: This used to be synced from a HP% log line that is no longer present.
 306.6 "Tail Slap" Ability { id: "7A8", source: "Melusine" } window 10,10
-345.6 "Cursed Voice" Ability { id: "7AC", source: "Melusine" } window 155,10
 314.6 "Circle Of Flames x2" #Ability { id: "7AA", source: "Melusine" }
-319.0 "Cursed Shriek" Ability { id: "7AF", source: "Melusine" } window 319,30 duration 11
+319.0 "Cursed Shriek" Ability { id: "7AF", source: "Melusine" } duration 11 window 319,30
 322.6 "Tail Slap" Ability { id: "7A8", source: "Melusine" }
 328.2 "Circle Blade" Ability { id: "7AB", source: "Melusine" }
 330.0 "Deathdancer Add (NE)"
 330.7 "Circle Of Flames x2" #Ability { id: "7AA", source: "Melusine" }
 336.6 "Cursed Voice" Ability { id: "7AC", source: "Melusine" }
 338.8 "Tail Slap" Ability { id: "7A8", source: "Melusine" }
+345.6 "Cursed Voice" Ability { id: "7AC", source: "Melusine" } window 155,10
 346.7 "Circle Of Flames x2" #Ability { id: "7AA", source: "Melusine" }
 
 354.6 "Tail Slap" Ability { id: "7A8", source: "Melusine" }

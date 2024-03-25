@@ -106,7 +106,7 @@ hideall "--sync--"
 1486.6 "Flip/Spin" Ability { id: "31AE", source: "Midgardsormr" }
 1490.6 "In/Out" Ability { id: "31B(2|4)", source: "Midgardsormr" }
 1490.6 "Earth Shaker" Ability { id: "31B6", source: "Midgardsormr" }
-1502.3 "Time Immemorial" Ability { id: "32EF", source: "Midgardsormr" } jump 502.3
+1502.3 "Time Immemorial" Ability { id: "32EF", source: "Midgardsormr" } jump 3502.3
 1512.6 "Exaflare" # Cosmetic
 1513.7 "Dry Ice"
 1515.7 "Exaflare"
@@ -121,7 +121,7 @@ hideall "--sync--"
 2486.6 "Flip/Spin" Ability { id: "31AE", source: "Midgardsormr" }
 2490.6 "Corners/Cardinals" Ability { id: "31B(3|5)", source: "Midgardsormr" }
 2492.1 "Thunderstorm" Ability { id: "31B8", source: "Midgardsormr" }
-2502.3 "Time Immemorial" Ability { id: "32EF", source: "Midgardsormr" } jump 502.3
+2502.3 "Time Immemorial" Ability { id: "32EF", source: "Midgardsormr" } jump 3502.3
 2512.6 "Exaflare" # Cosmetic
 2513.7 "Dry Ice"
 2515.7 "Exaflare"
@@ -133,76 +133,76 @@ hideall "--sync--"
 ## Branches A1/B1 converge back ##
 ##################################
 
-502.3 "Time Immemorial" Ability { id: "32EF", source: "Midgardsormr" }
-512.6 "Exaflare"
-513.7 "Dry Ice" Ability { id: "3631", source: "Midgardsormr" }
-515.7 "Exaflare"
-518.6 "Exaflare"
-520.8 "Akh Morn" Ability { id: "31AB", source: "Midgardsormr" }
-521.7 "Exaflare"
-524.7 "Exaflare"
+3502.3 "Time Immemorial" Ability { id: "32EF", source: "Midgardsormr" }
+3512.6 "Exaflare"
+3513.7 "Dry Ice" Ability { id: "3631", source: "Midgardsormr" }
+3515.7 "Exaflare"
+3518.6 "Exaflare"
+3520.8 "Akh Morn" Ability { id: "31AB", source: "Midgardsormr" }
+3521.7 "Exaflare"
+3524.7 "Exaflare"
 
 ##################
 ## Branch point ##
 ##################
 
-536.8 "Flip/Spin" Ability { id: "31AC", source: "Midgardsormr" } jump 1536.8 # C means spin->shaker
-536.8 "--sync--" Ability { id: "31AD", source: "Midgardsormr" } jump 2536.8 # D means flip->thunder
-545.9 "Northern Cross" # Cosmetic
-550.1 "Spin/Flip"
-553.6 "Position"
-553.6 "Shaker/Thunder"
+3536.8 "Flip/Spin" Ability { id: "31AC", source: "Midgardsormr" } jump 4536.8 # C means spin->shaker
+3536.8 "--sync--" Ability { id: "31AD", source: "Midgardsormr" } jump 5536.8 # D means flip->thunder
+3545.9 "Northern Cross" # Cosmetic
+3550.1 "Spin/Flip"
+3553.6 "Position"
+3553.6 "Shaker/Thunder"
 
 ## Branch A2: Spin->Earthshaker
-1536.8 "Spin" Ability { id: "31AC", source: "Midgardsormr" }
-1545.9 "Northern Cross" Ability { id: "3625", source: "Midgardsormr" }
-1550.1 "Spin/Flip" Ability { id: "31AE", source: "Midgardsormr" }
-1553.6 "In/Out" Ability { id: "31B(2|4)", source: "Midgardsormr" }
-1553.6 "Earth Shaker" Ability { id: "31B6", source: "Midgardsormr" }
-1562.3 "Horrid Roar" Ability { id: "31B9", source: "Midgardsormr" } jump 562.3
-1573.4 "Akh Rhai" # Cosmetic
-1579.6 "Tail End"
-1587.9 "Flip/Spin"
+4536.8 "Spin" Ability { id: "31AC", source: "Midgardsormr" }
+4545.9 "Northern Cross" Ability { id: "3625", source: "Midgardsormr" }
+4550.1 "Spin/Flip" Ability { id: "31AE", source: "Midgardsormr" }
+4553.6 "In/Out" Ability { id: "31B(2|4)", source: "Midgardsormr" }
+4553.6 "Earth Shaker" Ability { id: "31B6", source: "Midgardsormr" }
+4562.3 "Horrid Roar" Ability { id: "31B9", source: "Midgardsormr" } jump 6562.3
+4573.4 "Akh Rhai" # Cosmetic
+4579.6 "Tail End"
+4587.9 "Flip/Spin"
 
 ## Branch B2: Flip->Thunderstorm
-2536.8 "Flip" Ability { id: "31AD", source: "Midgardsormr" }
-2545.9 "Northern Cross" Ability { id: "3625", source: "Midgardsormr" }
-2550.1 "Spin/Flip" Ability { id: "31AE", source: "Midgardsormr" }
-2553.6 "Corners/Cardinals" Ability { id: "31B(3|5)", source: "Midgardsormr" }
-2555.1 "Thunderstorm" Ability { id: "31B8", source: "Midgardsormr" }
-2562.3 "Horrid Roar" Ability { id: "31B9", source: "Midgardsormr" } jump 562.3
-2573.4 "Akh Rhai" # Cosmetic
-2579.6 "Tail End"
-2587.9 "Flip/Spin"
+5536.8 "Flip" Ability { id: "31AD", source: "Midgardsormr" }
+5545.9 "Northern Cross" Ability { id: "3625", source: "Midgardsormr" }
+5550.1 "Spin/Flip" Ability { id: "31AE", source: "Midgardsormr" }
+5553.6 "Corners/Cardinals" Ability { id: "31B(3|5)", source: "Midgardsormr" }
+5555.1 "Thunderstorm" Ability { id: "31B8", source: "Midgardsormr" }
+5562.3 "Horrid Roar" Ability { id: "31B9", source: "Midgardsormr" } jump 6562.3
+5573.4 "Akh Rhai" # Cosmetic
+5579.6 "Tail End"
+5587.9 "Flip/Spin"
 
 ##################################
 ## Branches A2/B2 converge back ##
 ##################################
 
-562.3 "Horrid Roar" Ability { id: "31B9", source: "Midgardsormr" }
-573.4 "Akh Rhai" Ability { id: "3622", source: "Midgardsormr" }
-579.6 "Tail End" Ability { id: "31AA", source: "Midgardsormr" } # drift 0.026
+6562.3 "Horrid Roar" Ability { id: "31B9", source: "Midgardsormr" }
+6573.4 "Akh Rhai" Ability { id: "3622", source: "Midgardsormr" }
+6579.6 "Tail End" Ability { id: "31AA", source: "Midgardsormr" } # drift 0.026
 
 ##################
 ## Branch point ##
 ##################
 
 # Return to A1/B1
-587.9 "Flip/Spin" Ability { id: "31AC", source: "Midgardsormr" } jump 1474.4 # C means spin->shaker
-587.9 "--sync--" Ability { id: "31AD", source: "Midgardsormr" } jump 2474.4 # D means flip->thunder
-598.0 "Tail End" # Cosmetic
-600.1 "Flip/Spin"
-604.1 "Signal?"
-605.6 "Position?"
-615.8 "Time Immemorial"
+6587.9 "Flip/Spin" Ability { id: "31AC", source: "Midgardsormr" } jump 1474.4 # C means spin->shaker
+6587.9 "--sync--" Ability { id: "31AD", source: "Midgardsormr" } jump 2474.4 # D means flip->thunder
+6598.0 "Tail End" # Cosmetic
+6600.1 "Flip/Spin"
+6604.1 "Signal?"
+6605.6 "Position?"
+6615.8 "Time Immemorial"
 
 # Enrage
-700.0 "--sync--" StartsUsing { id: "3247", source: "Midgardsormr" } window 700,3000
-704.9 "Enrage Hit 1"
-707.2 "Enrage Hit 2"
-708.5 "Enrage Hit 3"
-709.8 "Enrage Hit 4"
-711.1 "Enrage Hit 5"
-712.2 "Enrage Hit 6"
-713.3 "Enrage Hit 7"
-714.4 "Enrage Hit 8"
+6700.0 "--sync--" StartsUsing { id: "3247", source: "Midgardsormr" } window 6700,3000
+6704.9 "Enrage Hit 1"
+6707.2 "Enrage Hit 2"
+6708.5 "Enrage Hit 3"
+6709.8 "Enrage Hit 4"
+6711.1 "Enrage Hit 5"
+6712.2 "Enrage Hit 6"
+6713.3 "Enrage Hit 7"
+6714.4 "Enrage Hit 8"

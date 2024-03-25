@@ -4,7 +4,7 @@ hideall "--Reset--"
 hideall "--sync--"
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 ### Geryon the Steer (left door, 1st boss)
 # -p 74CF:1010.6 74D2:2019.7
@@ -15,6 +15,7 @@ hideall "--sync--"
 1005.6 "--sync--" StartsUsing { id: "74CF", source: "Geryon the Steer" }
 1010.6 "Colossal Strike" Ability { id: "74CF", source: "Geryon the Steer" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> yes pump
 1019.7 "--sync--" StartsUsing { id: "74C7", source: "Geryon the Steer" } window 20,20 jump 1219.7
 1024.7 "Exploding Catapult?" #Ability { id: "74C7", source: "Geryon the Steer" }
@@ -22,7 +23,7 @@ hideall "--sync--"
 # -> no pump
 1014.7 "--sync--" StartsUsing { id: "74D2", source: "Geryon the Steer" } window 20,20 jump 2014.7
 1019.7 "Subterranean Shudder" #Ability { id: "74D2", source: "Geryon the Steer" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Geryon the Steer (left door, 1st boss, yes pump)
 1219.7 "--sync--" StartsUsing { id: "74C7", source: "Geryon the Steer" }
@@ -155,6 +156,7 @@ hideall "--sync--"
 3060.0 "Subterranean Shudder" Ability { id: "74D2", source: "Geryon the Steer" }
 3067.1 "Exploding Catapult" #Ability { id: "74C7", source: "Geryon the Steer" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> left handle
 3062.1 "--sync--" MapEffect { flags: "00020001", location: "09" } window 70,70 jump 3262.1
 3076.2 "Intake?" #Ability { id: "74D9", source: "Geryon the Steer" }
@@ -166,6 +168,7 @@ hideall "--sync--"
 # TODO: fix the test_timeline utilities (python doesn't handle this, typescript is broken)
 3076.2 "--sync--" Ability { id: "74D9", source: "Geryon the Steer" } window 70,70 jump 3276.2
 3078.2 "--sync--" Ability { id: "74DA", source: "Geryon the Steer" } window 70,70 jump 4078.2
+#cactbot-timeline-lint-enable-sync-order
 
 # Geryon the Steer (middle door, 1st boss, left handle)
 3260.0 "Subterranean Shudder" Ability { id: "74D2", source: "Geryon the Steer" }
@@ -286,8 +289,6 @@ hideall "--sync--"
 5010.0 "Colossal Strike" Ability { id: "74CF", source: "Geryon the Steer" }
 
 5020.1 "Subterranean Shudder" Ability { id: "74D2", source: "Geryon the Steer" }
-5030.2 "Suddenly Sewage 1" #Ability { id: "74D8", source: "Geryon the Steer" }
-5032.2 "Suddenly Sewage 2" #Ability { id: "74D8", source: "Geryon the Steer" }
 
 # We could probably jump from MapEffect lines here to each branch
 # But for simplicity, just use the "jump to middle" before Gigantomill
@@ -295,7 +296,6 @@ hideall "--sync--"
 5023.2 "--sync--" Ability { id: "74C6", source: "Geryon the Steer" } window 30,30 jump 6023.2
 
 # Geryon the Steer (right door, 1st boss, ceruleum leak)
-5020.1 "Subterranean Shudder" Ability { id: "74D2", source: "Geryon the Steer" }
 5030.2 "Suddenly Sewage 1" #Ability { id: "74D8", source: "Geryon the Steer" }
 5032.2 "Suddenly Sewage 2" #Ability { id: "74D8", source: "Geryon the Steer" }
 5040.2 "Exploding Catapult" Ability { id: "74C7", source: "Geryon the Steer" }
@@ -619,6 +619,7 @@ hideall "--sync--"
 9010.6 "--sync--" StartsUsing { id: "74AE", source: "Shadowcaster Zeless Gah" } window 20,20
 9015.6 "Show of Strength" Ability { id: "74AE", source: "Shadowcaster Zeless Gah" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Path 05
 9019.7 "--sync--" StartsUsing { id: "74A2", source: "Shadowcaster Zeless Gah" } window 20,20 jump 10019.7
 9023.7 "Infern Gale?" #Ability { id: "74A2", source: "Shadowcaster Zeless Gah" }
@@ -630,6 +631,7 @@ hideall "--sync--"
 # -> Path 07
 9019.7 "--sync--" StartsUsing { id: "74A7", source: "Shadowcaster Zeless Gah" } window 20,20 jump 12019.7
 9023.7 "Infern Well?" #Ability { id: "74A7", source: "Shadowcaster Zeless Gah" }
+#cactbot-timeline-lint-enable-sync-order
 
 ### Path 05
 # Note: this could be combined with Path 07 with knockback/draw-in replacements

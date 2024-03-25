@@ -22,7 +22,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -64,7 +64,7 @@ hideall "--sync--"
 193.0 "Dark Perimeter" Ability { id: "81BE", source: "Themis" }
 201.0 "Upheld Ruling (stack -> chariot)" Ability { id: "81B9", source: "Themis" }
 206.7 "Lightburst" Ability { id: "81BD", source: "Themis" }
-216.3 "Styx x5" Ability { id: "81DB", source: "Themis" } window 216.3,10 duration 5
+216.3 "Styx x5" Ability { id: "81DB", source: "Themis" } duration 5 window 216.3,10
 
 # Combine it all to this point
 228.0 "--center--" Ability { id: "8235", source: "Themis" } window 30,30
@@ -138,7 +138,7 @@ hideall "--sync--"
 589.2 "Styx x5" Ability { id: "81DB", source: "Themis" } duration 5
 
 
-599.6 "--center--" Ability { id: "8235", source: "Themis" } jump 391.4 window 30,30
+599.6 "--center--" Ability { id: "8235", source: "Themis" } window 30,30 jump 391.4
 604.6 "Dineis (cast)"
 608.6 "Dineis (puddle 1)"
 610.6 "Dineis (puddle 2)"

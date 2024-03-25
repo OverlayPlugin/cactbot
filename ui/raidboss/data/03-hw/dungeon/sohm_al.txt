@@ -143,6 +143,7 @@ hideall "--Reset--"
 # Tioman keeps using Dark Star every 23.5 seconds,
 # increasing Damage Up stacks, maximum is 16.
 
+#cactbot-timeline-lint-disable-sync-order
 # Jump back to normal loop
 2300.0 "--sync--" Ability { id: "366", source: "Tioman" } window 100,0
 2305.6 "Abyssic Buster" Ability { id: "EE3", source: "Tioman" } window 101,5 jump 2006.0
@@ -151,3 +152,4 @@ hideall "--Reset--"
 2320.0 "Abyssic Buster" # Ability { id: "EE3", source: "Tioman" }
 2329.6 "Comet" # Ability { id: "EE6", source: "Tioman" }
 2343.2 "Meteor Impact" # Ability { id: "1387", source: "Tioman" }
+#cactbot-timeline-lint-enable-sync-order

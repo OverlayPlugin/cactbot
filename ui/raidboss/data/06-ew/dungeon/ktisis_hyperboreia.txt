@@ -4,7 +4,7 @@ hideall "--Reset--"
 hideall "--sync--"
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 #~~~~~~~#
 # LYSSA #
@@ -103,8 +103,8 @@ hideall "--sync--"
 
 1158.8 "Inhale" Ability { id: "6484", source: "Ladon Lord" } jump 1074.4
 1161.8 "Pyric Sphere"
-1166.9 "Pyric Sphere"
 1166.3 "--rotate--"
+1166.9 "Pyric Sphere"
 1173.3 "Pyric Breath #1"
 1175.4 "Pyric Breath #2"
 1183.5 "Intimidation"

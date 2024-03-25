@@ -6,7 +6,7 @@ hideall "--sync--"
 # Use zone-unseal Reset line
 # Trigger set contains 'resetWhenOutOfCombat: false'
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000,100000 jump 0
 
 #~~~~~~~~~~#
 # ACHAMOTH #
@@ -93,8 +93,8 @@ hideall "--sync--"
 2254.2 "Ancient Stone" Ability { id: "15D2", source: "Winged Lion" }
 2259.3 "Scratch" Ability { id: "15D5", source: "Winged Lion" }
 
-2266.7 "--adds--"
 2264.4 "--sync--" StartsUsing { id: "15C9", source: "Winged Lion" } window 80,5
+2266.7 "--adds--"
 2267.4 "--sync--" Ability { id: "15C9", source: "Winged Lion" }
 2269.4 "--untargetable--"
 2287.5 "Ancient Holy" Ability { id: "15CA", source: "Winged Lion" } window 50,50 jump 2166.4

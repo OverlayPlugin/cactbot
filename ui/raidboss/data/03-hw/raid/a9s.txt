@@ -123,8 +123,8 @@ hideall "--sync--"
 2365.0 "Lava (NE/SW)" duration 42
 2376.4 "Scrap Bomb" Ability { id: "1A3E", source: "Refurbisher 0" }
 2384.6 "Scrap" Ability { id: "1A39", source: "Refurbisher 0" }
-2403.3 "Explosion (NW/SE)" Ability { id: "1A35", source: "Bomb" }
 2398.5 "--rocks fall--" #AddedCombatant { name: "Scrap" } 
+2403.3 "Explosion (NW/SE)" Ability { id: "1A35", source: "Bomb" }
 2403.7 "Scrap Burst" Ability { id: "1A3A", source: "Refurbisher 0" }
 
 # Phase 7

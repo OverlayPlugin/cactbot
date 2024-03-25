@@ -4,7 +4,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 9.4 "--sync--" StartsUsing { id: "8464", source: "Golbez" } window 15,15
@@ -231,7 +231,7 @@ hideall "--sync--"
 1430.4 "Abyssal Quasar" Ability { id: "84AB", source: "Golbez" }
 1431.3 "Lingering Spark (cast)" Ability { id: "8468", source: "Golbez" }
 1435.4 "Lingering Spark (explode)" Ability { id: "846A", source: "Golbez" }
-1240.4 "Eventide Fall/Eventide Triad" Ability { id: "848[05]", source: "Golbez" }
+1440.4 "Eventide Fall/Eventide Triad" Ability { id: "848[05]", source: "Golbez" }
 
 1451.4 "Phases of the Shadow (front)" Ability { id: "86E7", source: "Golbez" }
 1453.2 "--sync--" Ability { id: "86E9", source: "Golbez" }

@@ -125,8 +125,8 @@ hideall "--start--"
 1395.3 "Hammerfall x3" Ability { id: "25CC", source: "Hashmal, Bringer of Order" }
 
 1398.3 "Summon" Ability { id: "25D4", source: "Hashmal, Bringer of Order" }
-1399.1 "--Golem Adds--"
 1398.6 "Jagged Edge 1" #Ability { id: "25CD", source: "Hashmal, Bringer of Order" }
+1399.1 "--Golem Adds--"
 1400.7 "Jagged Edge 2" #Ability { id: "25CD", source: "Hashmal, Bringer of Order" }
 1402.8 "Jagged Edge 3" #Ability { id: "25CD", source: "Hashmal, Bringer of Order" }
 1411.3 "Demolish" Ability { id: "25D6", source: "Pennantstone Golem" }
@@ -193,7 +193,7 @@ hideall "--start--"
 2189.4 "Crush Helm" Ability { id: "2680", source: "Rofocale" } duration 3.4
 
 2199.3 "--invulnerable--" # ??? from video, no debuff in logs, can push to this by hp%
-2201.3 "Archaeodemon Adds" AddedCombatant { name: "Archaeodemon" }  window 300,300
+2201.3 "Archaeodemon Adds" AddedCombatant { name: "Archaeodemon" } window 300,300
 2208.3 "--lock out--" # ??? from video
 
 # https://xivapi.com/InstanceContentTextData/18031

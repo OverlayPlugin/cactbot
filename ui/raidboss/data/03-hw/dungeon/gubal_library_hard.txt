@@ -55,7 +55,7 @@ hideall "--sync--"
 # so instead, put the syncs with jumps after each phase.
 
 # Astrology and Astromancy Camera will be sealed off
-1000.0 "--sync--"  SystemLogMessage { id: "7DC", param1: "658" } window 1000,0
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "658" } window 1000,0
 1007.3 "Searing Wind" Ability { id: "1944", source: "Liquid Flame" } window 7.3,5
 1014.3 "Bibliocide" Ability { id: "1945", source: "Liquid Flame" }
 1025.7 "Sea Of Flames x3"

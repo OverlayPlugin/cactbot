@@ -18,7 +18,7 @@ hideall "--sync--"
 # (cont.) --+                                         +-> Sunforge v2 -+
 #           +-> Gorgon v2 -> Vent v2 -> Quadruped v2 -+                +-> Gorgon v2 -> etc
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 7.0 "--sync--" StartsUsing { id: "7905", source: "Hephaistos" } window 10,10
@@ -35,6 +35,7 @@ hideall "--sync--"
 56.1 "Flameviper" Ability { id: "7908", source: "Hephaistos" }
 # jump to Quadruped v1 or Gorgon v1
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Quadruped v1 branch
 63.3 "--sync--" Ability { id: "7108", source: "Hephaistos" }
 68.5 "Reforged Reflection" Ability { id: "794B", source: "Hephaistos" } window 50,50 jump 168.5
@@ -49,7 +50,7 @@ hideall "--sync--"
 80.8 "Into the Shadows?" #Ability { id: "78FB", source: "Hephaistos" }
 88.8 "--sync--" #Ability { id: "78FC", source: "Gorgon" }
 89.9 "Petrifaction?" #Ability { id: "6723" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Quadruped v1 (Quadruped branch)
 163.3 "--sync--" Ability { id: "7108", source: "Hephaistos" }
@@ -152,6 +153,7 @@ hideall "--sync--"
 699.4 "Flameviper" Ability { id: "7908", source: "Hephaistos" }
 # jump to Quadruped v2 or Gorgon v2
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Quadruped v2 branch
 706.5 "--sync--" Ability { id: "7108", source: "Hephaistos" }
 711.7 "Reforged Reflection" Ability { id: "794B", source: "Hephaistos" } window 50,50 jump 811.7
@@ -166,7 +168,7 @@ hideall "--sync--"
 732.0 "--sync--" #Ability { id: "78FC", source: "Gorgon" }
 732.0 "Gorgospit?" #Ability { id: "6FD7", source: "Illusory Hephaistos" }
 732.0 "Volcanic Torches?" #Ability { id: "71DE", source: "Hephaistos" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 
 # Quadruped v2 (Quadruped2 branch)
@@ -282,6 +284,7 @@ hideall "--sync--"
 1353.6 "Scorching Fang/Sun\'s Pinion" Ability { id: ["78EE", "78EF"], source: "Hephaistos" }
 # jump to Quadruped v2 or Gorgon v2
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Quadruped v2 branch
 1360.8 "--sync--" Ability { id: "7108", source: "Hephaistos" }
 1366.0 "Reforged Reflection" Ability { id: "794B", source: "Hephaistos" } window 50,50 jump 811.7
@@ -296,3 +299,4 @@ hideall "--sync--"
 1386.3 "--sync--" #Ability { id: "78FC", source: "Gorgon" }
 1386.3 "Gorgospit?" #Ability { id: "6FD7", source: "Illusory Hephaistos" }
 1386.3 "Volcanic Torches?" #Ability { id: "71DE", source: "Hephaistos" }
+#cactbot-timeline-lint-enable-sync-order

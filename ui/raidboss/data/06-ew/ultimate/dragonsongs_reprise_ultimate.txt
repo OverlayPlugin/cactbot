@@ -9,7 +9,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 ### Phase 1: Adelphel, Grinnaux and Charibert
 
@@ -251,9 +251,9 @@ hideall "--sync--"
 3050.1 "Cauterize" Ability { id: "6B8D", source: "Darkscale" }
 3050.2 "Altar Flare 3" #Ability { id: "63E5", source: "Ser Charibert" }
 3050.3 "Empty Dimension" Ability { id: "62DA", source: "Ser Grinnaux" }
+3051.4 "--targetable--"
 3051.7 "Altar Flare 4" #Ability { id: "63E5", source: "Ser Charibert" }
 
-3051.4 "--targetable--"
 3057.4 "Ancient Quaga" Ability { id: "63C6", source: "King Thordan" }
 3067.8 "Heavenly Heel" Ability { id: "63C7", source: "King Thordan" }
 3071.0 "Ascalon's Might 1" #Ability { id: "63C5", source: "King Thordan" }

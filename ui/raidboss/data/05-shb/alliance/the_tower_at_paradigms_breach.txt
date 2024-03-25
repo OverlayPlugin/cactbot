@@ -424,7 +424,7 @@ hideall "--sync--"
 6115.8 "Screaming Score" Ability { id: "5BDD", source: "False Idol" }
 
 6128.0 "Darker Note" Ability { id: "5BDB", source: "False Idol" }
-6137.2  "--sync--" Ability { id: "5BD8", source: "False Idol" } # Lighter Note castbar
+6137.2 "--sync--" Ability { id: "5BD8", source: "False Idol" } # Lighter Note castbar
 6146.2 "Lighter Note" Ability { id: "5BD9", source: "False Idol" } duration 6.2
 6159.4 "Made Magic" Ability { id: "5BD[67]", source: "False Idol" }
 6167.6 "Rhythm Rings" Ability { id: "5BD4", source: "False Idol" }
@@ -444,7 +444,7 @@ hideall "--sync--"
 
 # loop ??? (plz confirm)
 6239.6 "Darker Note" Ability { id: "5BDB", source: "False Idol" }
-6248.8  "--sync--" Ability { id: "5BD8", source: "False Idol" } # Lighter Note castbar
+6248.8 "--sync--" Ability { id: "5BD8", source: "False Idol" } # Lighter Note castbar
 6257.8 "Lighter Note" Ability { id: "5BD9", source: "False Idol" } duration 6.2
 
 

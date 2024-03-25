@@ -66,7 +66,7 @@ hideall "--Reset--"
 800.0 "Melt" Ability { id: "994", source: "Shiva" } window 800,0
 # If you push *really* fast and skip a weapon phase, you'll miss the melt jump.
 # So, fix that up with a combatant sync here.
-806.2 "--adds targetable--" AddedCombatant { name: "Ice Soldier" }  window 807,2.5
+806.2 "--adds targetable--" AddedCombatant { name: "Ice Soldier" } window 807,2.5
 809.9 "Dreams Of Ice" Ability { id: "99D", source: "Shiva" }
 
 # Note: Yes, really.  These times are different.
@@ -87,8 +87,8 @@ hideall "--Reset--"
 1079.1 "Dreams Of Ice" Ability { id: "99D", source: "Shiva" }
 1088.3 "Icicle Impact (circle)" duration 4 #Ability { id: "99E", source: "Shiva" }
 
-1095.3 "Frost Staff?" Ability { id: "995", source: "Shiva" } jump 1400 window 50,90
-1095.3 "Frost Blade?" Ability { id: "993", source: "Shiva" } jump 1600 window 50,90
+1095.3 "Frost Staff?" Ability { id: "995", source: "Shiva" } window 50,90 jump 1400
+1095.3 "Frost Blade?" Ability { id: "993", source: "Shiva" } window 50,90 jump 1600
 
 
 # Phase 4b: Adds (Blade)
@@ -106,8 +106,8 @@ hideall "--Reset--"
 1284.2 "Dreams Of Ice" Ability { id: "99D", source: "Shiva" }
 1293.4 "Icicle Impact (circle)" duration 4 #Ability { id: "99E", source: "Shiva" }
 
-1300.6 "Frost Staff?" Ability { id: "995", source: "Shiva" } jump 1400 window 50,90
-1300.6 "Frost Blade?" Ability { id: "993", source: "Shiva" } jump 1600 window 50,90
+1300.6 "Frost Staff?" Ability { id: "995", source: "Shiva" } window 50,90 jump 1400
+1300.6 "Frost Blade?" Ability { id: "993", source: "Shiva" } window 50,90 jump 1600
 
 
 # Phase 5a: Staff
@@ -120,8 +120,8 @@ hideall "--Reset--"
 1440.5 "Dreams Of Ice" Ability { id: "99D", source: "Shiva" }
 1450.7 "Icicle Impact" Ability { id: "99E", source: "Shiva" }
 
-1454.7 "Frost Staff?" Ability { id: "995", source: "Shiva" } jump 1800 window 50,90
-1454.7 "Frost Blade?" Ability { id: "993", source: "Shiva" } jump 2000 window 50,90
+1454.7 "Frost Staff?" Ability { id: "995", source: "Shiva" } window 50,90 jump 1800
+1454.7 "Frost Blade?" Ability { id: "993", source: "Shiva" } window 50,90 jump 2000
 
 
 # Phase 5b: Blade
@@ -136,8 +136,8 @@ hideall "--Reset--"
 1643.1 "Dreams Of Ice" Ability { id: "99D", source: "Shiva" }
 1653.3 "Icicle Impact" #Ability { id: "99E", source: "Shiva" }
 
-1657.6 "Frost Staff?" Ability { id: "995", source: "Shiva" } jump 1800 window 90,90
-1657.6 "Frost Blade?" Ability { id: "993", source: "Shiva" } jump 2000 window 90,90
+1657.6 "Frost Staff?" Ability { id: "995", source: "Shiva" } window 90,90 jump 1800
+1657.6 "Frost Blade?" Ability { id: "993", source: "Shiva" } window 90,90 jump 2000
 
 
 # Phase 6a: Staff
@@ -150,8 +150,8 @@ hideall "--Reset--"
 1837.5 "Dreams Of Ice" Ability { id: "99D", source: "Shiva" }
 1847.8 "Icicle Impact" Ability { id: "99E", source: "Shiva" }
 
-1851.8 "Frost Staff?" Ability { id: "995", source: "Shiva" } jump 1800 window 90,90
-1851.8 "Frost Blade?" Ability { id: "993", source: "Shiva" } jump 2000 window 90,90
+1851.8 "Frost Staff?" Ability { id: "995", source: "Shiva" } window 90,90 jump 1800
+1851.8 "Frost Blade?" Ability { id: "993", source: "Shiva" } window 90,90 jump 2000
 
 
 # Phase 6b: Blade
@@ -164,5 +164,5 @@ hideall "--Reset--"
 2038.5 "Dreams Of Ice" Ability { id: "99D", source: "Shiva" }
 2048.7 "Icicle Impact" #Ability { id: "99E", source: "Shiva" }
 
-2053.5 "Frost Staff?" Ability { id: "995", source: "Shiva" } jump 1800 window 90,90
-2053.5 "Frost Blade?" Ability { id: "993", source: "Shiva" } jump 2000 window 90,90
+2053.5 "Frost Staff?" Ability { id: "995", source: "Shiva" } window 90,90 jump 1800
+2053.5 "Frost Blade?" Ability { id: "993", source: "Shiva" } window 90,90 jump 2000

@@ -74,7 +74,7 @@ hideall "Soul And Body"
 441.3 "--sync--" Ability { id: "3EA2", source: "Innocence" }
 445.4 "Rightful Reprobation" Ability { id: "3EDC", source: "Innocence" }
 452.3 "Reprobation" Ability { id: "3ECC", source: "Innocence" }
-452.9 "God Ray x3" Ability { id: "3EE6", source: "Innocence" } window 5,1 duration 10
+452.9 "God Ray x3" Ability { id: "3EE6", source: "Innocence" } duration 10 window 5,1
 469.9 "Shadowreaver" Ability { id: "3EEA", source: "Innocence" }
 480.9 "Righteous Bolt" Ability { id: "3ECD", source: "Innocence" }
 
@@ -117,7 +117,7 @@ hideall "Soul And Body"
 675.2 "--sync--" Ability { id: "3EA2", source: "Innocence" }
 679.4 "Rightful Reprobation" Ability { id: "3EDC", source: "Innocence" }
 686.3 "Reprobation" Ability { id: "3ECC", source: "Innocence" }
-686.9 "God Ray x3" Ability { id: "3EE6", source: "Innocence" } window 5,1 duration 10
+686.9 "God Ray x3" Ability { id: "3EE6", source: "Innocence" } duration 10 window 5,1
 703.9 "Shadowreaver" Ability { id: "3EEA", source: "Innocence" }
 714.9 "Righteous Bolt" Ability { id: "3ECD", source: "Innocence" }
 
@@ -126,9 +126,9 @@ hideall "Soul And Body"
 734.9 "Holy Trinity" #Ability { id: "3EDB", source: "Innocence" }
 739.4 "Holy Trinity" #Ability { id: "3EDB", source: "Innocence" }
 740.4 "--sync--" Ability { id: "3EA2", source: "Innocence" }
+741.7 "--sync--" StartsUsing { id: "3EEF", source: "Innocence" } window 10,10
 743.9 "Holy Trinity" #Ability { id: "3EDB", source: "Innocence" }
 
-741.7 "--sync--" StartsUsing { id: "3EEF", source: "Innocence" } window 10,10
 744.7 "Starbirth Final" Ability { id: "3EEF", source: "Innocence" }
 764.7 "Beatific Vision" Ability { id: "3EF1", source: "Innocence" }
 765.6 "Explosion Enrage" Ability { id: "3EF0", source: "Innocence" }

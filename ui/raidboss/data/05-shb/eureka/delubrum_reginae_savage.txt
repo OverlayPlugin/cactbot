@@ -9,13 +9,13 @@ hideall "--sync--"
 # boss, as the Stygimoloch Warrior and Dahu areas can be seen from one
 # another, and so a generic "is no longer sealed" from one would stop
 # any timeline running for those in the other.
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 
 ### Slimes (The Barracks, left side)
-1000.0 "--sync--" AddedCombatant { name: "Viscous Clot" }  window 1000,0
-1000.0 "--Reset--" AddedCombatant { name: "Trinity Seeker" }  window 0,1000 jump 0
-1000.0 "Viscous Clot x3" AddedCombatant { name: "Viscous Clot" }  window 1000,0
+1000.0 "--sync--" AddedCombatant { name: "Viscous Clot" } window 1000,0
+1000.0 "--Reset--" AddedCombatant { name: "Trinity Seeker" } window 0,1000 jump 0
+1000.0 "Viscous Clot x3" AddedCombatant { name: "Viscous Clot" } window 1000,0
 1005.3 "Sanguine Clot x4" AddedCombatant { name: "Sanguine Clot" }
 1012.1 "Viscous Clot x3" AddedCombatant { name: "Viscous Clot" }
 1024.1 "Viscous Clot x3" AddedCombatant { name: "Viscous Clot" }
@@ -50,7 +50,7 @@ hideall "--sync--"
 1227.2 "Bozjan Soldier x2" AddedCombatant { name: "Bozjan Soldier" }
 1233.1 "Sanguine Clot x4" AddedCombatant { name: "Sanguine Clot" }
 1277.3 "Bozjan Soldier x2" AddedCombatant { name: "Bozjan Soldier" }
-1297.3 "Grim Reaper Enrage" AddedCombatant { name: "Grim Reaper" }  window 300,10
+1297.3 "Grim Reaper Enrage" AddedCombatant { name: "Grim Reaper" } window 300,10
 1302.3 "Death Scythe" #Ability { id: "5747", source: "Grim Reaper" }
 1305.3 "Death Scythe" #Ability { id: "5747", source: "Grim Reaper" }
 1308.3 "Death Scythe" #Ability { id: "5747", source: "Grim Reaper" }
@@ -77,7 +77,7 @@ hideall "--sync--"
 
 ### Golems (The Granary, right side)
 2000.0 "--sync--" NameToggle { name: "Bicolor Golem", toggle: "01" } window 2000,0
-2000.0 "--Reset--" AddedCombatant { name: "Trinity Seeker" }  window 0,1000 jump 0
+2000.0 "--Reset--" AddedCombatant { name: "Trinity Seeker" } window 0,1000 jump 0
 2025.2 "Core Combustion" Ability { id: "5745", source: "Bicolor Golem" } window 2030,10
 2026.1 "--bleed--" # from blue golem
 2029.9 "Ruins Golem x2" AddedCombatant { name: "Ruins Golem" }
@@ -569,8 +569,8 @@ hideall "--sync--"
 10209.4 "Optimal Offensive" Ability { id: "581[9A]", source: "Queen's Knight" }
 10211.0 "Unlucky Lot" #Ability { id: "581D", source: "Aetherial Sphere" }
 10211.2 "Above Board" Ability { id: "5826", source: "Queen's Warrior" }
-10212.2 "--stunned--" # 3 or 7 second stun
 10211.2 "--sync--" Ability { id: "5B72", source: "Queen's Warrior" }
+10212.2 "--stunned--" # 3 or 7 second stun
 10214.2 "Lots Cast" #Ability { id: "5B6D", source: "Aetherial Burst" }
 #10215.5 "--targetable--" # knight, everybody stunned, so not listed
 10217.2 "Lots Cast" #Ability { id: "5B6C", source: "Aetherial Bolt" }
@@ -817,8 +817,8 @@ hideall "--sync--"
 12568.9 "Weave Miasma" Ability { id: "57B2", source: "Bozjan Phantom" } window 100,100 jump 12165.3
 12575.1 "Summon" #Ability { id: "57BA", source: "Bozjan Phantom" }
 12591.2 "Undying Hatred" #Ability { id: "57C2", source: "Stuffy Wraith" }
-12395.1 "Manipulate Miasma?" #Ability { id: "57B3", source: "Bozjan Phantom" }
-12395.1 "Invert Miasma?" #Ability { id: "59EE", source: "Bozjan Phantom" }
+12595.1 "Manipulate Miasma?" #Ability { id: "57B3", source: "Bozjan Phantom" }
+12595.1 "Invert Miasma?" #Ability { id: "59EE", source: "Bozjan Phantom" }
 
 
 ### Trinity Avowed
@@ -871,6 +871,7 @@ hideall "--sync--"
 14050.9 "--sync--" Ability { id: "5984", source: "Trinity Avowed" }
 14056.0 "Allegiant Arsenal" # -> random jump to initial weapon phase
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v1 (initial)?
 14053.0 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 10,10 jump 14100
 14061.2 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
@@ -880,7 +881,7 @@ hideall "--sync--"
 # -> Staff v1 (initial)?
 14053.0 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 10,10 jump 15300
 14061.2 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Sword v1 (initial)
 14100.0 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" }
@@ -895,13 +896,14 @@ hideall "--sync--"
 14160.3 "--sync--" Ability { id: "5982", source: "Trinity Avowed" }
 14167.4 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Bow v1 (seen sword)?
 14175.3 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" } window 70,10 jump 14900
 14183.5 "Flashvane?" #Ability { id: "594B", source: "Trinity Avowed" }
 # -> Staff v1 (seen sword)?
 14175.3 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 70,10 jump 15500
 14183.5 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Sword v1 (seen bow)
 14300.0 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" }
@@ -928,6 +930,7 @@ hideall "--sync--"
 14433.0 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 14444.5 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 14441.5 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 40,10 jump 15900
 14449.7 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
@@ -937,7 +940,7 @@ hideall "--sync--"
 # -> Staff v2?
 14441.5 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 40,10 jump 16300
 14449.7 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Sword v1 (seen staff)
 14500.0 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" }
@@ -967,6 +970,7 @@ hideall "--sync--"
 14653.8 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 14664.2 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 14661.2 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 40,10 jump 15900
 14669.4 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
@@ -976,7 +980,7 @@ hideall "--sync--"
 # -> Staff v2?
 14661.2 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 40,10 jump 16300
 14669.4 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Bow v1 (initial)
 14700.0 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" }
@@ -994,13 +998,14 @@ hideall "--sync--"
 14778.5 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 14788.9 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v1 (seen bow)?
 14785.9 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 70,10 jump 14300
 14794.1 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
 # -> Staff v1 (seen bow)?
 14785.9 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 70,10 jump 15700
 14794.1 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Bow v1 (seen sword)
 14900.0 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" }
@@ -1029,6 +1034,7 @@ hideall "--sync--"
 15043.6 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 15055.1 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 15052.1 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 40,10 jump 15900
 15060.3 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
@@ -1038,7 +1044,7 @@ hideall "--sync--"
 # -> Staff v2?
 15052.1 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 40,10 jump 16300
 15060.3 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Bow v1 (seen staff)
 15100.0 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" }
@@ -1067,6 +1073,7 @@ hideall "--sync--"
 15246.2 "--sync--" Ability { id: "5982", source: "Trinity Avowed" }
 15253.3 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 15261.2 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 40,10 jump 15900
 15269.4 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
@@ -1076,7 +1083,7 @@ hideall "--sync--"
 # -> Staff v2?
 15261.2 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 40,10 jump 16300
 15269.4 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Staff v1 (initial)
 15300.0 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" }
@@ -1091,13 +1098,14 @@ hideall "--sync--"
 15357.7 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 15369.2 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v1 (seen staff)
 15366.2 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 70,10 jump 14500
 15374.4 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
 # -> Bow v1 (seen staff)
 15366.2 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" } window 70,10 jump 15100
 15374.4 "Flashvane?" #Ability { id: "594B", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Staff v1 (seen sword)
 15500.0 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" }
@@ -1126,6 +1134,7 @@ hideall "--sync--"
 15644.7 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 15655.1 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 15652.1 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 40,10 jump 15900
 15660.3 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
@@ -1135,7 +1144,7 @@ hideall "--sync--"
 # -> Staff v2?
 15652.1 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 40,10 jump 16300
 15660.3 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Staff v1 (seen bow)
 15700.0 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" }
@@ -1162,6 +1171,7 @@ hideall "--sync--"
 15833.6 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 15844.5 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 15841.5 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 40,10 jump 15900
 15849.7 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
@@ -1171,7 +1181,7 @@ hideall "--sync--"
 # -> Staff v2?
 15841.5 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 40,10 jump 16300
 15849.7 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Sword v2
 15900.0 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" }
@@ -1188,13 +1198,14 @@ hideall "--sync--"
 15973.3 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 15984.6 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Bow v2?
 15981.6 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" } window 70,10 jump 16100
 15989.8 "Flashvane?" #Ability { id: "594B", source: "Trinity Avowed" }
 # -> Staff v2?
 15981.6 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 70,10 jump 16300
 15989.8 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Bow v2
 16100.0 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" }
@@ -1215,13 +1226,14 @@ hideall "--sync--"
 16192.3 "Wrath Of Bozja" Ability { id: "594E", source: "Trinity Avowed" }
 16203.0 "Allegiant Arsenal" Ability { id: "5987", source: "Trinity Avowed" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 16200.0 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 70,10 jump 15900
 16208.2 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
 # -> Staff v2?
 16200.0 "--sync--" StartsUsing { id: "5987", source: "Trinity Avowed" } window 70,10 jump 16300
 16208.2 "Fury Of Bozja?" #Ability { id: "594C", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 
 # Staff v2
@@ -1239,13 +1251,14 @@ hideall "--sync--"
 16357.6 "Glory Of Bozja" Ability { id: "594F", source: "Trinity Avowed" }
 16369.4 "Allegiant Arsenal"
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Sword v2?
 16366.4 "--sync--" StartsUsing { id: "5985", source: "Trinity Avowed" } window 70,10 jump 15900
 16374.6 "Infernal Slash?" #Ability { id: "594A", source: "Trinity Avowed" }
 # -> Bow v2?
 16366.4 "--sync--" StartsUsing { id: "5986", source: "Trinity Avowed" } window 70,10 jump 16100
 16374.6 "Flashvane?" #Ability { id: "594B", source: "Trinity Avowed" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Enrage
 # This happens ~10 seconds after when the allegiant arsenal would have cast.
@@ -1428,7 +1441,6 @@ hideall "--sync--"
 20194.7 "--sync--" Ability { id: "5BCB", source: "The Queen" }
 20198.1 "--sync--" Ability { id: "55A8", source: "The Queen" }
 20203.1 "Unlucky Lot x5" duration 8 #Ability { id: "55B6", source: "Ball Lightning" }
-20198.1 "--sync--" Ability { id: "55A8", source: "The Queen" }
 20210.0 "Maelstrom's Bolt" Ability { id: "59EF", source: "The Queen" }
 
 20224.2 "Relentless Play 1" Ability { id: "59FC", source: "The Queen" } window 20,20

@@ -127,7 +127,7 @@ hideall "--sync--"
 672.2 "Pain Add (W)"
 692.8 "--sync--" Ability { id: "BBF", source: "Bahamut Prime" }
 698.9 "Megaflare Dive" Ability { id: "BC0", source: "Bahamut Prime" }
-702.1 "--sync--" Ability { id: "BB  E", source: "Bahamut Prime" }
+702.1 "--sync--" Ability { id: "BBE", source: "Bahamut Prime" }
 702.9 "MF Spread"
 705.1 "MF Pepperoni"
 707.2 "MF Share"
@@ -138,7 +138,7 @@ hideall "--sync--"
 735.6 "--sync--" Ability { id: "BBE", source: "Bahamut Prime" }
 737.8 "--sync--" Ability { id: "BBF", source: "Bahamut Prime" }
 
-745.1 "Akh Morn x2" Ability { id: "BC2", source: "Bahamut Prime" } window 40,40 duration 2.1
+745.1 "Akh Morn x2" Ability { id: "BC2", source: "Bahamut Prime" } duration 2.1 window 40,40
 759.5 "Megaflare" Ability { id: "BAF", source: "Bahamut Prime" }
 764.6 "MF Pepperoni"
 766.6 "Tempest Wing" Ability { id: "BC4", source: "Bahamut Prime" }
@@ -152,7 +152,7 @@ hideall "--sync--"
 794.9 "--sync--" Ability { id: "C89", source: "Bahamut Prime" }
 795.9 "Flare Breath" Ability { id: "BAD", source: "Bahamut Prime" }
 
-807.1 "Akh Morn x3" Ability { id: "BC2", source: "Bahamut Prime" } window 40,40 duration 3.1
+807.1 "Akh Morn x3" Ability { id: "BC2", source: "Bahamut Prime" } duration 3.1 window 40,40
 822.3 "Megaflare" Ability { id: "BAF", source: "Bahamut Prime" }
 827.4 "MF Pepperoni"
 829.4 "Tempest Wing" Ability { id: "BC4", source: "Bahamut Prime" }
@@ -168,7 +168,7 @@ hideall "--sync--"
 
 871.4 "Gigaflare" Ability { id: "BB9", source: "Bahamut Prime" } window 100,100
 
-880.8 "Akh Morn x4" Ability { id: "BC2", source: "Bahamut Prime" } window 40,40 duration 4.1
+880.8 "Akh Morn x4" Ability { id: "BC2", source: "Bahamut Prime" } duration 4.1 window 40,40
 897.2 "Megaflare" Ability { id: "BAF", source: "Bahamut Prime" }
 902.3 "MF Pepperoni"
 904.3 "Tempest Wing" Ability { id: "BC4", source: "Bahamut Prime" }
@@ -182,7 +182,7 @@ hideall "--sync--"
 932.6 "--sync--" Ability { id: "C89", source: "Bahamut Prime" }
 933.6 "Flare Breath" Ability { id: "BAD", source: "Bahamut Prime" }
 
-944.8 "Akh Morn x5" Ability { id: "BC2", source: "Bahamut Prime" } window 40,40 duration 5.1
+944.8 "Akh Morn x5" Ability { id: "BC2", source: "Bahamut Prime" } duration 5.1 window 40,40
 962.2 "Megaflare" Ability { id: "BAF", source: "Bahamut Prime" }
 967.3 "MF Pepperoni"
 969.3 "Tempest Wing" Ability { id: "BC4", source: "Bahamut Prime" }
@@ -198,7 +198,7 @@ hideall "--sync--"
 
 1011.3 "Gigaflare" Ability { id: "BB9", source: "Bahamut Prime" } window 100,100
 
-1020.7 "Akh Morn x6" Ability { id: "BC2", source: "Bahamut Prime" } window 40,40 duration 6.1
+1020.7 "Akh Morn x6" Ability { id: "BC2", source: "Bahamut Prime" } duration 6.1 window 40,40
 1039.1 "Megaflare" Ability { id: "BAF", source: "Bahamut Prime" }
 1044.2 "MF Pepperoni"
 1046.2 "Tempest Wing" Ability { id: "BC4", source: "Bahamut Prime" }
@@ -212,7 +212,7 @@ hideall "--sync--"
 1074.5 "--sync--" Ability { id: "C89", source: "Bahamut Prime" }
 1075.5 "Flare Breath" Ability { id: "BAD", source: "Bahamut Prime" }
 
-1086.7 "Akh Morn x7" Ability { id: "BC2", source: "Bahamut Prime" } window 40,40 duration 7.1
+1086.7 "Akh Morn x7" Ability { id: "BC2", source: "Bahamut Prime" } duration 7.1 window 40,40
 1106.1 "Megaflare" Ability { id: "BAF", source: "Bahamut Prime" }
 1111.2 "MF Pepperoni"
 1113.2 "Tempest Wing" Ability { id: "BC4", source: "Bahamut Prime" }

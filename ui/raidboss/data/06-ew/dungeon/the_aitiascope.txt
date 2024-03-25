@@ -6,7 +6,7 @@ hideall "--Reset--"
 hideall "--sync--"
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 #~~~~~~~~~~~~~~~~~~~~~~#
 # LIVIA THE UNDETERRED #
@@ -135,18 +135,19 @@ hideall "--sync--"
 # TODO: unclear if once post jump it keeps the pattern of Strophe vs Thundaga first, or if random.
 # 4/4 pulls that saw this all had the same, but that's not quite enough confidence.
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Strophe first, then Thundaga?
-3119.2 "--sync--" StartsUsing { id: "645D", source: "Amon the Undying" } jump 4119.2 window 50,50
+3119.2 "--sync--" StartsUsing { id: "645D", source: "Amon the Undying" } window 50,50 jump 4119.2
 3122.2 "Strophe?" #Ability { id: "645D", source: "Amon the Undying" }
 3128.3 "Antistrophe?" #Ability { id: "645E", source: "Amon the Undying" }
 3137.1 "Epode?" #Ability { id: "645F", source: "Amon the Undying" }
 
 # -> Thundaga first, then Strophe?
-3119.2 "--sync--" StartsUsing { id: "645A", source: "Amon the Undying" } jump 5119.2 window 50,50
+3119.2 "--sync--" StartsUsing { id: "645A", source: "Amon the Undying" } window 50,50 jump 5119.2
 3124.2 "Thundaga Forte (proximity)?" #Ability { id: "645A", source: "Amon the Undying" }
 3130.0 "Thundaga Forte 1?" #Ability { id: "645B", source: "Amon the Undying" }
 3136.0 "Thundaga Forte 2?" #Ability { id: "645C", source: "Amon the Undying" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 ### Strophe -> Thundaga -> shared Eruption section -> (Strophe or Thundaga)
 4119.2 "--sync--" StartsUsing { id: "645D", source: "Amon the Undying" }
@@ -169,18 +170,19 @@ hideall "--sync--"
 4247.0 "Dark Forte" Ability { id: "6464", source: "Amon the Undying" }
 4255.1 "Entr'acte" Ability { id: "6465", source: "Amon the Undying" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Strophe first, then Thundaga?
-4267.3 "--sync--" StartsUsing { id: "645D", source: "Amon the Undying" } jump 4119.2 window 50,50
+4267.3 "--sync--" StartsUsing { id: "645D", source: "Amon the Undying" } window 50,50 jump 4119.2
 4270.3 "Strophe?" #Ability { id: "645D", source: "Amon the Undying" }
 4276.4 "Antistrophe?" #Ability { id: "645E", source: "Amon the Undying" }
 4285.2 "Epode?" #Ability { id: "645F", source: "Amon the Undying" }
 
 # -> Thundaga first, then Strophe?
-4267.3 "--sync--" StartsUsing { id: "645A", source: "Amon the Undying" } jump 5119.2 window 50,50
+4267.3 "--sync--" StartsUsing { id: "645A", source: "Amon the Undying" } window 50,50 jump 5119.2
 4272.3 "Thundaga Forte (proximity)?" #Ability { id: "645A", source: "Amon the Undying" }
 4278.1 "Thundaga Forte 1?" #Ability { id: "645B", source: "Amon the Undying" }
 4284.1 "Thundaga Forte 2?" #Ability { id: "645C", source: "Amon the Undying" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 ### Thundaga -> Strophe -> shared Eruption section -> (Strophe or Thundaga)
 5119.2 "--sync--" StartsUsing { id: "645A", source: "Amon the Undying" }
@@ -203,14 +205,16 @@ hideall "--sync--"
 5247.0 "Dark Forte" Ability { id: "6464", source: "Amon the Undying" }
 5255.1 "Entr'acte" Ability { id: "6465", source: "Amon the Undying" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Strophe first, then Thundaga?
-5267.3 "--sync--" StartsUsing { id: "645D", source: "Amon the Undying" } jump 4119.2 window 50,50
+5267.3 "--sync--" StartsUsing { id: "645D", source: "Amon the Undying" } window 50,50 jump 4119.2
 5270.3 "Strophe?" #Ability { id: "645D", source: "Amon the Undying" }
 5276.4 "Antistrophe?" #Ability { id: "645E", source: "Amon the Undying" }
 5285.2 "Epode?" #Ability { id: "645F", source: "Amon the Undying" }
 
 # -> Thundaga first, then Strophe?
-5267.3 "--sync--" StartsUsing { id: "645A", source: "Amon the Undying" } jump 5119.2 window 50,50
+5267.3 "--sync--" StartsUsing { id: "645A", source: "Amon the Undying" } window 50,50 jump 5119.2
 5272.3 "Thundaga Forte (proximity)?" #Ability { id: "645A", source: "Amon the Undying" }
 5278.1 "Thundaga Forte 1?" #Ability { id: "645B", source: "Amon the Undying" }
 5284.1 "Thundaga Forte 2?" #Ability { id: "645C", source: "Amon the Undying" }
+#cactbot-timeline-lint-enable-sync-order

@@ -17,7 +17,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 # First flail set
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -96,21 +96,22 @@ hideall "--sync--"
 # Cells 2 -> branch
 407.6 "Shining Cells" Ability { id: "6616", source: "Erichthonios" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> Shackles of Time first?
-417.8 "Shackles of Time?" Ability { id: "661C", source: "Erichthonios" } jump 617.8 window 20,20
+417.8 "Shackles of Time?" Ability { id: "661C", source: "Erichthonios" } window 20,20 jump 617.8
 425.1 "Pitiless Flail of Grace/Pitiless Flail of Purgation?" #Ability { id: "660[EF]", source: "Erichthonios" }
 428.4 "True Flare/True Holy?" #Ability { id: "661[01]", source: "Erichthonios" }
 432.8 "Inevitable Flame/Inevitable Light?" #Ability { id: "6EC[12]", source: "Erichthonios" }
 441.9 "Warder's Wrath?" #Ability { id: "662A", source: "Erichthonios" }
 
 # -> Aetherial Shackles first?
-417.8 "Aetherial Shackles?" Ability { id: "6625", source: "Erichthonios" } jump 1010.8 window 20,20
+417.8 "Aetherial Shackles?" Ability { id: "6625", source: "Erichthonios" } window 20,20 jump 1010.8
 428.9 "Aetherchain?" #Ability { id: "6619", source: "Erichthonios" }
 429.8 "Powerful Fire/Powerful Light?" #Ability { id: "661[AB]", source: "Erichthonios" }
 436.7 "Chain Pain?" #Ability { id: "6627", source: "Erichthonios" }
 438.0 "Powerful Fire/Powerful Light?" #Ability { id: "661[AB]", source: "Erichthonios" }
 447.3 "Warder's Wrath?" #Ability { id: "662A", source: "Erichthonios" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Cells 2, Shackles of Time first
 617.8 "Shackles of Time" Ability { id: "661C", source: "Erichthonios" }

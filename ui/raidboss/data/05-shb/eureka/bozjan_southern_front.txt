@@ -7,9 +7,9 @@ hideall "--sync--"
 # Use zone-unseal and 0x21 Reset lines
 # Trigger set contains 'resetWhenOutOfCombat: false'
 
-0.0 "--Reset--" ActorControl { command: "80000014", data0: "00" } window 100000,100000 jump 0
+0.0 "--Reset--" ActorControl { command: "80000014", data0: "00" } window 0,100000 jump 0
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000,100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 # TODO: fill in CEs
 # The idea with each of them is that you have at most two minutes of standing
@@ -145,10 +145,12 @@ hideall "--sync--"
 # Eaglesight will be sealed off
 # 30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "DD8" } window 100000,0
 
+#cactbot-timeline-lint-disable-sync-order
 # Fake intro, where you don't know if you're on the top or the bottom.
 # Don't sync because sometimes these bosses are +/- 3 seconds @_@
 20022.2 "Chain Cannon" duration 6.5 #Ability { id: "51F9", source: "4Th Legion Helldiver" }
 20036.9 "Mrv Missile" #Ability { id: "51FD", source: "4Th Legion Helldiver" }
+#cactbot-timeline-lint-enable-sync-order
 
 30022.2 "Chain Cannon" duration 6.5 #Ability { id: "51F9", source: "4Th Legion Helldiver" }
 30036.9 "Mrv Missile" Ability { id: "51FD", source: "4Th Legion Helldiver" } window 50,50

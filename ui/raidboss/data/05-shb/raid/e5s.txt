@@ -83,8 +83,8 @@ hideall "--sync--"
 450.4 "Judgment Volts" Ability { id: "4BB5", source: "Ramuh" }
 460.5 "Stormcloud Summons" Ability { id: "4BB8", source: "Ramuh" }
 465.6 "Chaos Strike" Ability { id: "4BBB", source: "Ramuh" }
-470.7 "Lightning Bolt" duration 24.5 # Ability { id: "4BB9", source: "Stormcloud" }
 470.0 "--sync--" Ability { id: "4BCB", source: "Ramuh" }
+470.7 "Lightning Bolt" duration 24.5 # Ability { id: "4BB9", source: "Stormcloud" }
 477.0 "Levinforce" Ability { id: "4BCC", source: "Ramuh" }
 487.4 "Judgment Volts" Ability { id: "4BB5", source: "Ramuh" }
 502.6 "Chain Lightning" Ability { id: "4BC4", source: "Ramuh" }

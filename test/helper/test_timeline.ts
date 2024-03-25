@@ -159,7 +159,15 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           // Dynamic imports don't have a type, so add type assertion.
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           triggerSet = (await import(importPath)).default as LooseTriggerSet;
-          timeline = new TimelineParser(timelineText, [], triggerSet.timelineTriggers ?? []);
+          timeline = new TimelineParser(
+            timelineText,
+            [],
+            triggerSet.timelineTriggers ?? [],
+            undefined, // styles
+            undefined, // options
+            undefined, // zoneId
+            true, // runLint
+          );
         });
         // This test loads an individual raidboss timeline and makes sure
         // that timeline.js can parse it without errors.

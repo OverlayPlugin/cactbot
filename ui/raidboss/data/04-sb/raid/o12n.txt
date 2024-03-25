@@ -73,8 +73,8 @@ hideall "--sync--"
 725.1 "Firewall" Ability { id: "3392", source: "Omega-M" } window 100,10
 
 737.1 "Synthetic Blades/Shield" # branching
-737.1 "--sync--" Ability { id: "32FD", source: "Omega-M" } jump 937.1 window 20,20 # shield
-737.1 "--sync--" Ability { id: "3301", source: "Omega" } jump 1137.1 window 20,20 # blades
+737.1 "--sync--" Ability { id: "32FD", source: "Omega-M" } window 20,20 jump 937.1 # shield
+737.1 "--sync--" Ability { id: "3301", source: "Omega" } window 20,20 jump 1137.1 # blades
 739.1 "Laser Shower"
 
 # Two paths here.  The 1st Shield/Blades has a Solar Ray that the others don't.

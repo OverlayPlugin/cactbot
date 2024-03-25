@@ -106,9 +106,24 @@ If that line occurs outside the valid window, it is ignored.
 ## Timeline File Syntax
 
 Each line in a timeline file is considered its own timeline entry.
-There is no ordering at all.
+Ordering is irrelevant insofar as processing/usage of the file.
 The fact that timeline files are ordered is as a convenience to the reader.
 (Two lines with the same time do keep their relative ordering.)
+
+That said, cactbot's linting tools require that timelines be be ordered by time
+to help with readability and accuracy.
+
+If you have a specific reason why certain timeline entries should be out of order --
+for example, if you have a fight that branches and want to include several fake entries,
+but want to keep each branch separate (despite the overlap in time) --
+you can add the following comments to temporarily disable & renable the linter
+from enforcing sync order:
+
+```text
+#cactbot-timeline-lint-disable-sync-order
+[out of order timeline entries]
+#cactbot-timeline-lint-enable-sync-order
+```
 
 ### Comments
 
@@ -150,11 +165,14 @@ hideall "Reset"
 ```
 
 `[number]` can be an integer, e.g. `34`, or a float, e.g. `84.381`.
+For timeline entries, if the sync time (the first entry on the line) is a float,
+it cannot have more than one digit after the decimal (e.g. `203.6` is valid, but `203.61` is not).
+This is because the extra precision is unnecessary.
 
 `[numberOrLabel]` can be a `[number]` (e.g. `42` or `12.8`)
 or a label name with double quotes (e.g. `"loop"` or `"branch2"`).
 
-`"[string]"` is a character string, e.g. `"Liftoff"` or `"Double Attack"`
+`"[string]"` is a double-quoted character string, e.g. `"Liftoff"` or `"Double Attack"`
 
 `[LogType]` is a key from [netlog_defs.ts](../resources/netlog_defs.ts),
 e.g. `Ability` or `StartsUsing` or `AddedCombatant`.
@@ -176,10 +194,22 @@ Additionally, if you are using [sync_files.ts](RaidbossGuide.md#sync-files) for 
 you should spell out ability ids in full, e.g. `id: "(8B43|8B46)"` instead of `id: "8B4[36]"`,
 so that the script can find and replace them properly.
 
-The ability time and ability name always need to come first,
-but `duration`, `forcejump`, `jump`, `[LogType]`, and `window`
-do not have to be in any order with respect to each other.
-Stylistically, usually the`[LogType]` sync is put first.
+With the exception of `hideall` (a command that must be on its own line with no sync time),
+the ability time must come first, followed either by an ability name or a `label` keyword.
+
+If it is a normal timeline entry, the ability name must be followed by `[LogType]` and `{params}`
+before any other optional keywords.
+
+With user files, the remaining keywords (`duration`, `window`, `forcejump`, and `jump`) can be in any order.
+However, for timeline files that are distributed with cactbot, the keywords must appear in that order,
+to ensure consistency.
+
+Please also note that `jump` and `forcejump` are mutually exclusive
+and cannot be used together on the same line.
+
+### Keywords/Commands
+
+#### duration
 
 **duration** is a time in seconds to display the accompanying action.
 Usually, timeline entries disappear immediately,
@@ -189,6 +219,32 @@ It does not need a sync to do this.
 
 The syntax for **duration** is `duration [number]`,
 as `duration 5.5`.
+
+#### window
+
+**window** is the time frame in which to consider the sync.
+By default, if **window** is not specified, cactbot considers it the
+same as specifying `window 2.5,2.5`.
+In other words,
+2.5 seconds before the ability time and 2.5 seconds after.
+As an example, for the line `3118.9 "Lancing Bolt" Ability { id: "3876", source: "Raiden" }`,
+if the log line for this ability is encountered anywhere between `3116.4` and `3121.4`
+then it will resync the timeline playback to `3118.9`.
+Often timelines will use very large windows for unique abilities,
+to make sure that timelines sync to the right place even if started mid-fight
+or if hp pushes are discovered when the content is no longer current.
+
+The syntax for **window** is `window [number],[number]` (e.g `window 10,30`).
+There is no space after the comma.
+
+**window** also supports a single parameter in the format `window [number]`,
+in which case the window will be split evenly on both sides of the sync time.
+For example, specifying `window 5000` is equivalent to `window 2500,2500`.
+
+While this can be used in personal/user timelines, any timelines uploaded
+to the cactbot repository must use the explicit `window [number],[number]` format.
+
+#### forcejump
 
 **forcejump** tells the timeline playback to jump to a particular time
 if the sync is encountered *or* if the line containing the **forcejump**
@@ -211,6 +267,8 @@ until the next sync or jump occurs.
 The syntax for **forcejump** is `forcejump [number]` (e.g. `forcejump 204.2`)
 or `forcejump [label]` (e.g. `forcejump "quaqua-middle-poison-loop"`).
 
+#### jump
+
 **jump** tells the timeline playback to jump to a particular time
 if and only if the sync is encountered.
 This is usually used for phase pushes and loops that involve multiple blocks.
@@ -221,34 +279,23 @@ If you jump to time 0, the timeline will stop playback.
 The syntax for **jump** is `jump [number]` (e.g. `jump 204.2`)
 or `jump [label]` (e.g. `jump "Hieroglyphika"`).
 
-**window** is the time frame in which to consider the sync.
-By default, if **window** is not specified, cactbot considers it the
-same as specifying `window 2.5,2.5`.
-In other words,
-2.5 seconds before the ability time and 2.5 seconds after.
-As an example, for the line `3118.9 "Lancing Bolt" Ability { id: "3876", source: "Raiden" }`,
-if the log line for this ability is encountered anywhere between `3116.4` and `3121.4`
-then it will resync the timeline playback to `3118.9`.
-Often timelines will use very large windows for unique abilities,
-to make sure that timelines sync to the right place even if started mid-fight
-or if hp pushes are discovered when the content is no longer current.
+#### label
 
-The syntax for **window** is `window [number],[number]` (e.g `window 10,30`).
-There is no space after the comma.
+**label** is simply a way to assign a name to a particular time in the timeline.
+With a label, you can then use `jump` or `forcejump` to jump to that particular label,
+instead of having to specify a specific jump time.
 
-**window** also supports a single parameter in the format `window [number]`,
-in which case the window will be split evenly on both sides of the sync time.
-For example, specifying `window 5000` is equivalent to `window 2500,2500`.
-While this can be used in personal/user timelines, it should be avoided in
-timeline files that are distributed with cactbot,
-which should instead use the explicit `window [number],[number]` format.
+`label` should appear immediately after a sync time, with only a name as a parameter and nothing else.
+For example: `204.2 label "thordan-branch"`
 
-### Commands
+#### hideall
 
 To hide all instances of an ability, you can use the `hideall` command.
 Most timelines start with the line `hideall "--sync--"`
 to hide syncs that are just used to keep the timeline on track but should not be shown to the player.
 Timeline triggers can still match hidden entries.
+
+#### other commands
 
 There are a number of other commands for generating alerts based on timeline entries.
 These are still supported but are not documented.
@@ -389,7 +436,7 @@ For example:
 
 ```text
 # Landfast Floe will be sealed off
-100.0 "--sync--" SystemLogMessage { id: "7DC", param1: "10CD" } window 100000,0
+100.0 "--sync--" SystemLogMessage { id: "7DC", param1: "10CD" } window 100,0
 ```
 
 (`make_timeline` generates this by default if the encounter begins with a zone seal.)
@@ -431,14 +478,14 @@ On fights where the entire zone resets (e.g. all of omegascape, a4s, a8s, a12s, 
 you can use the ActorControl line that is sent on a wipe:
 
 ```bash
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 ```
 
 On fights with zones that seal and unseal, (e.g. a1s, t1-8)
 you can use the zone unsealing message itself to reset:
 
 ```bash
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 ```
 
 This `SystemLogMessage` is the equivalent to the `GameLog` line for something like
@@ -716,8 +763,9 @@ to turn on filtering.  From your cactbot directory, run the following command:
 Alternatively, you can use the web-based [log splitter](https://overlayplugin.github.io/cactbot/util/logtools/splitter.html) tool
 and check the option to filter the log for analysis.
 
-This filtering should limit the exported log lines to just boss abilities and casts, added combatants, tethers,
-map effects, head markers, and debuffs applied to and removed from players. It's not perfect, but it's a place to start.
+This filtering will limit the exported log lines to things that are potentially useful in writing triggers,
+like boss abilities, added combatants, tethers, map effects, head markers,
+and debuffs applied to and removed from players. It's not perfect, but it's a place to start.
 
 You can then walk through a log with video, and look at which abilities hit players and do damage
 and which are castbars on the boss (not all `StartsUsing` are castbars) and then fill out the ability table
@@ -989,6 +1037,7 @@ it will automatically show 10 seconds until `Tetraktys 1` at `1280.9`.
 Here's what the timeline looks like.
 
 ```text
+#cactbot-timeline-lint-disable-sync-order
 # => Snake first branch
 58.7 "--sync--" #Ability { id: "7108", source: "Hephaistos" }
 63.9 "--sync--" Ability { id: "794C", source: "Hephaistos" } window 100,100 jump 163.9
@@ -1004,9 +1053,14 @@ Here's what the timeline looks like.
 79.3 "Uplift 2?" #Ability { id: "7935", source: "Hephaistos" }
 81.5 "Uplift 3?" #Ability { id: "7935", source: "Hephaistos" }
 83.6 "Uplift 4?" #Ability { id: "7935", source: "Hephaistos" }
+#cactbot-timeline-lint-enable-sync-order
 ```
 
 Note: this old timeline does not use `forcejump` or `label` but should!
+Note 2: This is an example of when adn how `#cactbot-timeline-lint...`
+should be used to disable sync order linting.
+Otherwise, this timeline file would fail validation when added to the repo due to the
+out-of-order sync times.
 
 `794C` and `794B` are the first abilities that differ between the two branches
 and so are used as the jumping point with a large `window` (just in case)

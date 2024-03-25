@@ -54,7 +54,7 @@ hideall "--sync--"
 # -ic "Tsumuji-Kaze"
 
 # The Furnace will be sealed off
-1000.0  "Start" SystemLogMessage { id: "7DC", param1: "956" } window 1000,1
+1000.0 "Start" SystemLogMessage { id: "7DC", param1: "956" } window 1000,1
 1011.5 "Whipping Whittret" Ability { id: "27C6", source: "Kamaitachi" } window 11.5,5
 1024.1 "Circling Winds" Ability { id: "27C8", source: "Kamaitachi" }
 1037.8 "The Patient Blade" Ability { id: "27C7", source: "Kamaitachi" }

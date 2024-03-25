@@ -4,7 +4,7 @@ hideall "--Reset--"
 hideall "--sync--"
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 #~~~~~~~~~#
 # Thaliak #
@@ -621,6 +621,7 @@ hideall "--sync--"
 # as only some of them have Destructive Bolt stacks attached to them (although
 # it doesn't execute if it is the final mechanic prior to jumping back to Quintessence).
 # This is probably Good Enough (TM).
+#cactbot-timeline-lint-disable-sync-order
 4400.0 "--sync--" StartsUsing { id: "8A3B", source: "Eulogia" } window 0,10000 jump "Solar Fans"
 4400.0 "--sync--" StartsUsing { id: "8A4B", source: "Eulogia" } window 0,10000 jump "Matron's Breath"
 4400.0 "--sync--" StartsUsing { id: ["8A5B", "8A5C"], source: "Eulogia" } window 0,10000 jump "As Above, So Below"
@@ -630,6 +631,7 @@ hideall "--sync--"
 4400.0 "--sync--" StartsUsing { id: "8A37", source: "Eulogia" } window 0,10000 jump "Hydrostasis"
 4400.0 "--sync--" StartsUsing { id: "8A52", source: "Eulogia" } window 0,10000 jump "Byregot's Strike"
 4400.0 "--sync--" Ability { id: "8A08", source: "Eulogia" } window 0,10000 jump "Quintessence"
+#cactbot-timeline-lint-enable-sync-order
 
 5000.0 label "Solar Fans"
 5000.0 "--sync--" StartsUsing { id: "8A3B", source: "Eulogia" }
@@ -656,7 +658,7 @@ hideall "--sync--"
 5237.6 "Destructive Bolt" Ability { id: "8CEC", source: "Eulogia" }
 
 5300.0 label "Torrential Tridents"
-5297.8 "--middle--" Ability { id: "8A02", source: "Eulogia" }
+#5297.8 "--middle--" Ability { id: "8A02", source: "Eulogia" } # unreachable - info only
 5300.0 "--sync--" StartsUsing { id: "8A4E", source: "Eulogia" }
 5302.0 "Torrential Tridents" Ability { id: "8A4E", source: "Eulogia" }
 5302.9 "Landing 1" #Ability { id: "8A4F", source: "Trident" }
@@ -682,7 +684,7 @@ hideall "--sync--"
 5429.2 "First Blush 4" Ability { id: "8A36", source: "Eulogia" }
 
 5500.0 label "Hieroglyphika"
-5497.7 "--middle--" Ability { id: "8A02", source: "Eulogia" }
+#5497.7 "--middle--" Ability { id: "8A02", source: "Eulogia" }  # unreachable - info only
 5500.0 "--sync--" StartsUsing { id: "8A43", source: "Eulogia" }
 5505.0 "Hieroglyphika" Ability { id: "8A43", source: "Eulogia" }
 5522.1 "--sync--" Ability { id: "8A44", source: "Eulogia" }
@@ -690,7 +692,7 @@ hideall "--sync--"
 5537.9 "Destructive Bolt" Ability { id: "8CEC", source: "Eulogia" }
 
 5600.0 label "Hydrostasis"
-5597.8 "--middle--" Ability { id: "8A02", source: "Eulogia" }
+# 5597.8 "--middle--" Ability { id: "8A02", source: "Eulogia" } # unreachable - info only
 5600.0 "--sync--" Ability { id: "8A37", source: "Eulogia" }
 5604.0 "Hydrostasis" Ability { id: "8A37", source: "Eulogia" }
 5612.0 "Time and Tide" Ability { id: "8A32", source: "Eulogia" }

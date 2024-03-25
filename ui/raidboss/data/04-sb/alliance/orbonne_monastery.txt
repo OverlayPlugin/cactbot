@@ -22,8 +22,8 @@ hideall "--sync--"
 1078.9 "Energy Burst" Ability { id: "373B", source: "Mustadio" }
 1085.6 "Arm Shot" Ability { id: "3739", source: "Mustadio" }
 1099.3 "Analysis" Ability { id: "3735", source: "Mustadio" }
-1100.8 "Ballistic Impact" Ability { id: "3745", source: "Mustadio" }
 1099.5 "--untargetable--"
+1100.8 "Ballistic Impact" Ability { id: "3745", source: "Mustadio" }
 
 ### DRAMATIC CUTSCENE~!
 1105.0 "--sync--" Ability { id: "3746", source: "Mustadio" } window 100,100
@@ -81,7 +81,7 @@ hideall "--sync--"
 1462.1 "Energy Burst" Ability { id: "373B", source: "Mustadio" }
 
 # fake loop
-1465.0 "Searchlight" Ability { id: "373D", source: "Mustadio" } jump 1281 window 100,100
+1465.0 "Searchlight" Ability { id: "373D", source: "Mustadio" } window 100,100 jump 1281
 1471.9 "Analysis"
 1475.2 "--sync--"
 1479.3 "--sync--"
@@ -273,7 +273,7 @@ hideall "--sync--"
 5208.3 "Flare IV" Ability { id: "389D", source: "Ultima, the High Seraph" }
 
 ### Phase 2: 50% Push Remix "Death awaits defiance!"
-5400.0 "--sync--" AddedCombatant { name: "Mustadio" }  window 400,0
+5400.0 "--sync--" AddedCombatant { name: "Mustadio" } window 400,0
 5413.0 "Earth Hammer" Ability { id: "38D8", source: "Demi-Hashmal" } window 400,5
 5415.9 "Time Eruption" Ability { id: "38D0", source: "Demi-Belias" }
 5418.9 "Time Eruption" Ability { id: "38D1", source: "Demi-Belias" }

@@ -86,7 +86,7 @@ hideall "--sync--"
 455.2 "Enrage" Ability { id: "4B2D", source: "The Ruby Weapon" }
 
 ### Cutscene
-800.0 "--cutscene--" Ability { id: "4E1C", source: "The Ruby Weapon" } window 800,0 duration 65.5
+800.0 "--cutscene--" Ability { id: "4E1C", source: "The Ruby Weapon" } duration 65.5 window 800,0
 865.5 "--targetable--"
 
 ### Phase 2

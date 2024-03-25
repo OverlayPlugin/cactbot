@@ -117,21 +117,5 @@ hideall "--Reset--"
 623.5 "Tremblor" #Ability { id: "2373", source: "Catastrophe" }
 632.0 "Earthquake" Ability { id: "2374", source: "Catastrophe" }
 
-562.0 "Antilight (ground)" Ability { id: "2361", source: "Catastrophe" }
-568.0 "Tremblor" #Ability { id: "2373", source: "Catastrophe" }
-568.5 "100 Gs" Ability { id: "2355", source: "Catastrophe" }
-570.5 "Tremblor" #Ability { id: "2373", source: "Catastrophe" }
-579.0 "Earthquake" Ability { id: "2374", source: "Catastrophe" }
-587.0 "Gravitational Wave" Ability { id: "2372", source: "Catastrophe" }
-600.0 "Gravitational Collapse" Ability { id: "235D", source: "Catastrophe" }
-600.0 "-100 Gs" Ability { id: "235E", source: "Catastrophe" }
-610.0 "Death's Gaze" Ability { id: "236F", source: "Catastrophe" }
-
-615.0 "Antilight (ground)" Ability { id: "2361", source: "Catastrophe" }
-621.0 "Tremblor" #Ability { id: "2373", source: "Catastrophe" }
-621.5 "100 Gs" Ability { id: "2355", source: "Catastrophe" }
-623.5 "Tremblor" #Ability { id: "2373", source: "Catastrophe" }
-632.0 "Earthquake" Ability { id: "2374", source: "Catastrophe" }
-
 633.3 "--sync--" StartsUsing { id: "25A2", source: "Catastrophe" }
 643.3 "Gravitational Wave Enrage" Ability { id: "25A2", source: "Catastrophe" }

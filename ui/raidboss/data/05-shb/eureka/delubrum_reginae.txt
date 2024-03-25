@@ -49,21 +49,22 @@ hideall "--sync--"
 1159.7 "Verdant Tempest" Ability { id: "5AB6", source: "Trinity Seeker" }
 1168.9 "Verdant Path" # -> baleful / merciful jump
 
+#cactbot-timeline-lint-disable-sync-order
 # (Baleful jump?)
-1168.9 "--sync--" Ability { id: "5A98", source: "Trinity Seeker" } jump 1300 window 80,80
+1168.9 "--sync--" Ability { id: "5A98", source: "Trinity Seeker" } window 80,80 jump 1300
 1176.5 "Baleful Swathe?" #Ability { id: "5AB3", source: "Trinity Seeker" }
 1186.7 "Phantom Edge?" #Ability { id: "5AA0", source: "Trinity Seeker" }
 1188.9 "--sync--" #Ability { id: "5A9A", source: "Trinity Seeker" }
 1198.0 "Baleful Blade?" #Ability { id: "5AA[12]", source: "Trinity Seeker" }
 
 # (Merciful jump?)
-1168.9 "--sync--" Ability { id: "5A97", source: "Trinity Seeker" } jump 1500 window 80,80
+1168.9 "--sync--" Ability { id: "5A97", source: "Trinity Seeker" } window 80,80 jump 1500
 1176.5 "Act Of Mercy?" #Ability { id: "5AB2", source: "Trinity Seeker" }
 1183.7 "First Mercy?" #Ability { id: "5B5D", source: "Trinity Seeker" }
 1186.9 "Second Mercy?" #Ability { id: "5B5E", source: "Trinity Seeker" }
 1190.1 "Third Mercy?" #Ability { id: "5B5F", source: "Trinity Seeker" }
 1193.3 "Fourth Mercy?" #Ability { id: "5B60", source: "Trinity Seeker" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Baleful Air v2 (randomized, with chains)
 1300.0 "Verdant Path" Ability { id: "5A98", source: "Trinity Seeker" }
@@ -77,20 +78,21 @@ hideall "--sync--"
 1361.7 "Verdant Tempest" Ability { id: "5AB6", source: "Trinity Seeker" }
 1370.9 "Verdant Path" # -> iron / merciful jump
 
+#cactbot-timeline-lint-disable-sync-order
 # (Iron jump?)
-1370.9 "--sync--" Ability { id: "5A99", source: "Trinity Seeker" } jump 1700 window 80,80
+1370.9 "--sync--" Ability { id: "5A99", source: "Trinity Seeker" } window 80,80 jump 1700
 1380.5 "Iron Impact?" #Ability { id: "5ADB", source: "Trinity Seeker" }
 1390.5 "Dead Iron?" #Ability { id: "5AAF", source: "Trinity Seeker" }
 1397.7 "Dead Iron?" #Ability { id: "5B44", source: "Trinity Seeker" }
 
 # (Merciful jump?)
-1370.9 "--sync--" Ability { id: "5A97", source: "Trinity Seeker" } jump 1500 window 80,80
+1370.9 "--sync--" Ability { id: "5A97", source: "Trinity Seeker" } window 80,80 jump 1500
 1378.5 "Act Of Mercy?" #Ability { id: "5AB2", source: "Trinity Seeker" }
 1385.7 "First Mercy?" #Ability { id: "5B5D", source: "Trinity Seeker" }
 1388.9 "Second Mercy?" #Ability { id: "5B5E", source: "Trinity Seeker" }
 1392.1 "Third Mercy?" #Ability { id: "5B5F", source: "Trinity Seeker" }
 1395.3 "Fourth Mercy?" #Ability { id: "5B60", source: "Trinity Seeker" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Merciful Air v2 (with seasons of mercy))
 1500.0 "Verdant Path" Ability { id: "5A97", source: "Trinity Seeker" }
@@ -114,19 +116,20 @@ hideall "--sync--"
 1569.1 "Merciful Arc" Ability { id: "5AB7", source: "Trinity Seeker" }
 1576.2 "Verdant Path" # -> baleful / iron jump
 
+#cactbot-timeline-lint-disable-sync-order
 # (Baleful jump?)
-1576.2 "--sync--" Ability { id: "5A98", source: "Trinity Seeker" } jump 1300 window 80,80
+1576.2 "--sync--" Ability { id: "5A98", source: "Trinity Seeker" } window 80,80 jump 1300
 1583.8 "Baleful Swathe?" #Ability { id: "5AB3", source: "Trinity Seeker" }
 1594.0 "Phantom Edge?" #Ability { id: "5AA0", source: "Trinity Seeker" }
 1596.2 "--sync--" #Ability { id: "5A9A", source: "Trinity Seeker" }
 1605.3 "Baleful Blade?" #Ability { id: "5AA[12]", source: "Trinity Seeker" }
 
 # (Iron jump?)
-1576.2 "--sync--" Ability { id: "5A99", source: "Trinity Seeker" } jump 1700 window 80,80
+1576.2 "--sync--" Ability { id: "5A99", source: "Trinity Seeker" } window 80,80 jump 1700
 1585.8 "Iron Impact?" #Ability { id: "5ADB", source: "Trinity Seeker" }
 1595.8 "Dead Iron?" #Ability { id: "5AAF", source: "Trinity Seeker" }
 1603.0 "Dead Iron?" #Ability { id: "5B44", source: "Trinity Seeker" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Iron Air v2 (with iron impact / dead iron)
 1700.0 "Verdant Path" Ability { id: "5A99", source: "Trinity Seeker" }
@@ -140,21 +143,22 @@ hideall "--sync--"
 1758.1 "Verdant Tempest" Ability { id: "5AB6", source: "Trinity Seeker" }
 1767.3 "Verdant Path" # -> baleful / merciful jump
 
+#cactbot-timeline-lint-disable-sync-order
 # (Baleful jump?)
-1767.3 "--sync--" Ability { id: "5A98", source: "Trinity Seeker" } jump 1300 window 80,80
+1767.3 "--sync--" Ability { id: "5A98", source: "Trinity Seeker" } window 80,80 jump 1300
 1774.9 "Baleful Swathe?" #Ability { id: "5AB3", source: "Trinity Seeker" }
 1785.1 "Phantom Edge?" #Ability { id: "5AA0", source: "Trinity Seeker" }
 1787.3 "--sync--" #Ability { id: "5A9A", source: "Trinity Seeker" }
 1796.4 "Baleful Blade?" #Ability { id: "5AA[12]", source: "Trinity Seeker" }
 
 # (Merciful jump?)
-1767.3 "--sync--" Ability { id: "5A97", source: "Trinity Seeker" } jump 1500 window 80,80
+1767.3 "--sync--" Ability { id: "5A97", source: "Trinity Seeker" } window 80,80 jump 1500
 1774.9 "Act Of Mercy?" #Ability { id: "5AB2", source: "Trinity Seeker" }
 1782.1 "First Mercy?" #Ability { id: "5B5D", source: "Trinity Seeker" }
 1785.3 "Second Mercy?" #Ability { id: "5B5E", source: "Trinity Seeker" }
 1788.5 "Third Mercy?" #Ability { id: "5B5F", source: "Trinity Seeker" }
 1791.7 "Fourth Mercy?" #Ability { id: "5B60", source: "Trinity Seeker" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 ### Dahu
 # -p 5755:2023
@@ -226,6 +230,8 @@ hideall "--sync--"
 # We can't have huge syncs on these because many of these are used
 # multiple times.  So, 22 lines get huge syncs and ability lines
 # get more local windows here and in each block.
+
+#cactbot-timeline-lint-disable-sync-order
 3036.8 "--sync--" StartsUsing { id: "5805", source: "Queen's Soldier" } window 50,50 jump 3108.1
 3039.8 "Double Gambit?" #Ability { id: "5805", source: "Queen's Soldier" }
 
@@ -237,6 +243,7 @@ hideall "--sync--"
 
 3036.8 "--sync--" StartsUsing { id: "57F[01]", source: "Queen's Knight" } window 50,50 jump 3708.1
 3039.8 "Shield Omen/Sword Omen?" #Ability { id: "57F[01]", source: "Queen's Knight" }
+#cactbot-timeline-lint-enable-sync-order
 
 # Queen's Soldier
 # (local jumps to other blocks)

@@ -32,7 +32,7 @@ hideall "--sync--"
 
 
 ### Cutscene
-800.0 "--cutscene--" Ability { id: "5B02", source: "The Emerald Weapon" } window 800,0 duration 58.5
+800.0 "--cutscene--" Ability { id: "5B02", source: "The Emerald Weapon" } duration 58.5 window 800,0
 858.5 "--targetable--"
 
 

@@ -34,7 +34,7 @@ hideall "Scorched Pinion"
 268.3 "Redfire" Ability { id: "B93", source: "Phoenix" }
 
 280.6 "Bluefire" Ability { id: "B91", source: "Phoenix" } duration 4.1
-293.6 "Flames Of Unforgiveness" Ability { id: "B8B", source: "Phoenix" } jump 223.6 window 20,20
+293.6 "Flames Of Unforgiveness" Ability { id: "B8B", source: "Phoenix" } window 20,20 jump 223.6
 301.0 "Redfire"
 307.1 "Revelation"
 

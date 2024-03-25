@@ -5,7 +5,7 @@ hideall "--sync--"
 hideall "Fan Flames"
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 #~~~~~~~~~#
 # BYREGOT #
@@ -32,8 +32,8 @@ hideall "Fan Flames"
 1062.9 "The Builder's Forge" Ability { id: "716A", source: "Byregot" }
 1069.4 "--sync--" Ability { id: "7174", source: "Byregot" }
 1083.3 "Peal of the Hammer" Ability { id: "716F", source: "Byregot" }
-1110.1 "--hammer--"
 1108.3 "--sync--" Ability { id: "7171", source: "Byregot" }
+1110.1 "--hammer--"
 1110.4 "Peal of the Hammer" Ability { id: "716F", source: "Byregot" }
 1127.2 "--hammer--"
 1127.6 "Levinforge" Ability { id: "7172", source: "Byregot" }
@@ -252,11 +252,11 @@ hideall "Fan Flames"
 4804.0 "Spinning Slash" Ability { id: "72C1", source: "Lioness of Aglaia" }
 4815.5 "Roaring Blaze" Ability { id: "72BF", source: "Lioness of Aglaia" }
 
-4526.9 "Spinning Slash" #Ability { id: "72C1", source: "Lioness of Aglaia" }
-4538.4 "Roaring Blaze" #Ability { id: "72BF", source: "Lioness of Aglaia" }
+4826.9 "Spinning Slash" #Ability { id: "72C1", source: "Lioness of Aglaia" }
+4838.4 "Roaring Blaze" #Ability { id: "72BF", source: "Lioness of Aglaia" }
 
-4549.8 "Spinning Slash" #Ability { id: "72C1", source: "Lioness of Aglaia" }
-4561.3 "Roaring Blaze" #Ability { id: "72BF", source: "Lioness of Aglaia" }
+4849.8 "Spinning Slash" #Ability { id: "72C1", source: "Lioness of Aglaia" }
+4861.3 "Roaring Blaze" #Ability { id: "72BF", source: "Lioness of Aglaia" }
 
 
 #~~~~~~~~#
@@ -408,10 +408,8 @@ hideall "Fan Flames"
 
 6095.8 "Far Above, Deep Below" Ability { id: "73A[AB]", source: "Nald'thal" }
 6096.7 "Far-flung Fire?" Ability { id: "73AD", source: "Nald" }
+6102.0 "--sync--" StartsUsing { id: "70E[89]", source: "Nald'thal" } window 10,10 # Possible ~1s delay here
 6102.1 "Deepest Pit?" Ability { id: "73C7", source: "Thal" } duration 4
-
-# Possible ~1s delay here
-6102.0 "--sync--" StartsUsing { id: "70E[89]", source: "Nald'thal" } window 10,10
 6107.0 "As Above, So Below" Ability { id: "70E[89]", source: "Nald'thal" }
 6121.2 "Once Above, Ever Below" Ability { id: ["73BF", "73C0", "741C", "741D"], source: "Nald'thal" }
 
@@ -480,6 +478,7 @@ hideall "Fan Flames"
 # * Wayward Soul -> Fired Up -> Wayward Soul -> Fired Up -> ?
 #   https://www.fflogs.com/reports/cxqYG1L3mFMrpZdQ#fight=last
 
+#cactbot-timeline-lint-disable-sync-order
 # -> initial Wayward Soul block
 7156.0 "--sync--" Ability { id: "710D", source: "Nald'thal" } window 100,100 jump 7998.3
 7161.1 "Wayward Soul?" #Ability { id: "710E", source: "Nald'thal" }
@@ -489,7 +488,7 @@ hideall "Fan Flames"
 7163.5 "Fired Up I?" #Ability { id: "7112", source: "Nald'thal" }
 7169.6 "Fired Up II?" #Ability { id: "7389", source: "Nald'thal" }
 7175.7 "Fired Up III?" #Ability { id: "7419", source: "Nald'thal" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Initial Wayward Soul block, fall into Main loop block
 # This has slightly different timings here (+5/-5 on some abilities) than the loop.

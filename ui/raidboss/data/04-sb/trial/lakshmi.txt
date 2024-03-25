@@ -78,8 +78,8 @@ hideall "Alluring Arm"
 1360.9 "--chanchala end--"
 1378.9 "Alluring Arm" Ability { id: "2488", source: "Lakshmi" }
 1392.1 "Stotram" Ability { id: "2483", source: "Lakshmi" } window 30,30
-1393.9 "--vril spawn--"
 1393.2 "Blissful Spear" Ability { id: "2494", source: "Lakshmi" }
+1393.9 "--vril spawn--"
 1402.3 "The Pull Of Light" Ability { id: "2492", source: "Lakshmi" }
 1407.4 "--vril despawn--"
 1421.5 "Alluring Arm" Ability { id: "2488", source: "Lakshmi" }

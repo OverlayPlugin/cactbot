@@ -26,7 +26,7 @@ hideall "--sync--"
 68.7 "Magitek Missile" Ability { id: "1CB4", source: "Magitek Predator" }
 70.8 "Magitek Missile" Ability { id: "1CB4", source: "Magitek Predator" }
 
-73.2 "--sync--"   StartsUsing { id: "1CB3", source: "Magitek Predator" } window 10,10
+73.2 "--sync--" StartsUsing { id: "1CB3", source: "Magitek Predator" } window 10,10
 75.9 "Magitek Ray" Ability { id: "1CB3", source: "Magitek Predator" } jump 44.4
 89.0 "Magitek Claw"
 98.4 "Magitek Missile"
@@ -109,7 +109,7 @@ hideall "--sync--"
 2118.2 "Sanguine Blade" Ability { id: "1CC5", source: "The Griffin" }
 2125.3 "Beak Of The Griffin" Ability { id: "1CC3", source: "The Griffin" }
 
-2133.4 "Claw Of The Griffin" Ability { id: "1CC2", source: "The Griffin" } jump 2036.0 window 30,30
+2133.4 "Claw Of The Griffin" Ability { id: "1CC2", source: "The Griffin" } window 30,30 jump 2036.0
 2139.6 "Gull Dive"
 2146.5 "Lionshead"
 2153.7 "Dull Blade"

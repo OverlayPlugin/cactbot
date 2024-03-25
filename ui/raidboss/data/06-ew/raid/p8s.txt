@@ -4,7 +4,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 ### P8S Part 1
 # -p 7944:12.1
@@ -34,6 +34,7 @@ hideall "--sync--"
 58.7 "--sync--" #Ability { id: "7108", source: "Hephaistos" }
 63.9 "Reforged Reflection"
 
+#cactbot-timeline-lint-disable-sync-order
 # => Snake first branch
 58.7 "--sync--" #Ability { id: "7108", source: "Hephaistos" }
 63.9 "--sync--" Ability { id: "794C", source: "Hephaistos" } window 100,100 jump 163.9
@@ -49,7 +50,7 @@ hideall "--sync--"
 79.3 "Uplift 2?" #Ability { id: "7935", source: "Hephaistos" }
 81.5 "Uplift 3?" #Ability { id: "7935", source: "Hephaistos" }
 83.6 "Uplift 4?" #Ability { id: "7935", source: "Hephaistos" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Snake 1 (Snake first)
 158.7 "--sync--" Ability { id: "7108", source: "Hephaistos" }
@@ -314,8 +315,8 @@ hideall "--sync--"
 5091.7 "--auto--" #Ability { id: "72C2", source: "Hephaistos" }
 5094.8 "--auto--" #Ability { id: "72C2", source: "Hephaistos" }
 5101.9 "Tyrant's Unholy Darkness" Ability { id: "79DD", source: "Hephaistos" }
-5114.1 "--sync--" Ability { id: "79AC", source: "Hephaistos" }
 5106.9 "--auto--" #Ability { id: "72C2", source: "Hephaistos" }
+5114.1 "--sync--" Ability { id: "79AC", source: "Hephaistos" }
 5118.6 "High Concept 1" Ability { id: "710A", source: "Hephaistos" } window 20,20
 5118.6 "--untargetable--"
 5126.3 "Arcane Control" Ability { id: "79B6", source: "Hephaistos" }

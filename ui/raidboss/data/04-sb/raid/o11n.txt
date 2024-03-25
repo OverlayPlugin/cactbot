@@ -7,101 +7,101 @@ hideall "--sync--"
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 12.8 "Atomic Ray" Ability { id: "3286", source: "Omega" } window 20,80
 24.9 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
-27.0 "Ballistic Missile?" Ability { id: "327E", source: "Omega" } window 30,40 jump 227.0
+27.0 "Ballistic Missile?" Ability { id: "327E", source: "Omega" } window 30,40 jump 2227.0
 37.1 "Flamethrower?"
-38.1 "Starboard/Larboard Cannon?" Ability { id: "328[13]", source: "Omega" } window 40,40 jump 138.1
+38.1 "Starboard/Larboard Cannon?" Ability { id: "328[13]", source: "Omega" } window 40,40 jump 1138.1
 43.8 "Starboard/Larboard Cannon?"
 
 ## Starboard/Larboard first path
-138.1 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
-143.8 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
-146.5 "Ballistic Missile" Ability { id: "327E", source: "Omega" }
-156.7 "Flamethrower" Ability { id: "327D", source: "Omega" }
-156.7 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
-167.8 "Mustard Bomb" Ability { id: "3287", source: "Omega" } # drift 0.044
-178.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 50,10 jump 478.7
-203.5 "Peripheral Synthesis"
-217.6 "Flamethrower"
-227.8 "Atomic Ray"
+1138.1 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
+1143.8 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
+1146.5 "Ballistic Missile" Ability { id: "327E", source: "Omega" }
+1156.7 "Flamethrower" Ability { id: "327D", source: "Omega" }
+1156.7 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
+1167.8 "Mustard Bomb" Ability { id: "3287", source: "Omega" } # drift 0.044
+1178.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 50,10 jump 2478.7
+1203.5 "Peripheral Synthesis"
+1217.6 "Flamethrower"
+1227.8 "Atomic Ray"
 
 ## Ballistic Missile first path
-227.0 "Ballistic Missile" Ability { id: "327E", source: "Omega" }
-237.1 "Flamethrower" Ability { id: "327D", source: "Omega" }
-237.1 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
-248.2 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
-261.4 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
-267.0 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
-278.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 50,10 jump 478.7
-303.5 "Peripheral Synthesis"
-317.6 "Flamethrower"
-327.8 "Atomic Ray"
+2227.0 "Ballistic Missile" Ability { id: "327E", source: "Omega" }
+2237.1 "Flamethrower" Ability { id: "327D", source: "Omega" }
+2237.1 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
+2248.2 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
+2261.4 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
+2267.0 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
+2278.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 50,10 jump 2478.7
+2303.5 "Peripheral Synthesis"
+2317.6 "Flamethrower"
+2327.8 "Atomic Ray"
 
 ## Paths converge
-478.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
-503.5 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
-517.6 "Flamethrower" Ability { id: "327D", source: "Omega" }
-527.8 "Atomic Ray" Ability { id: "3286", source: "Omega" }
+2478.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
+2503.5 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
+2517.6 "Flamethrower" Ability { id: "327D", source: "Omega" }
+2527.8 "Atomic Ray" Ability { id: "3286", source: "Omega" }
 
 ## Midphase
-534.5 "Program Loop" Ability { id: "3273", source: "Omega" } window 150,150
-534.5 "--untargetable--"
-549.6 "Executable 1" Ability { id: "35A8", source: "Level Checker" }
-570.6 "Executable 2" Ability { id: "35A8", source: "Level Checker" }
-574.6 "Reset" Ability { id: "35AA", source: "Level Checker" }
-578.6 "Reformat" Ability { id: "35A9", source: "Level Checker" }
-587.6 "--sync--" StartsUsing { id: "327A", source: "Level Checker" }
-611.6 "Force Quit" Ability { id: "327A", source: "Level Checker" }
+2534.5 "Program Loop" Ability { id: "3273", source: "Omega" } window 150,150
+2534.5 "--untargetable--"
+2549.6 "Executable 1" Ability { id: "35A8", source: "Level Checker" }
+2570.6 "Executable 2" Ability { id: "35A8", source: "Level Checker" }
+2574.6 "Reset" Ability { id: "35AA", source: "Level Checker" }
+2578.6 "Reformat" Ability { id: "35A9", source: "Level Checker" }
+2587.6 "--sync--" StartsUsing { id: "327A", source: "Level Checker" }
+2611.6 "Force Quit" Ability { id: "327A", source: "Level Checker" }
 
 ## Delta Attack
 # https://xivapi.com/InstanceContentTextData/20109
 # en: Program failure detected. <blip> Engaging Delta Attack protocol.
 # Note: This BattleTalk2 log line arrives in sequence with another, both with a 4000ms display time.
 # As a result, this line shows up 4000ms before the message is displayed (and the GameLog line is emitted).
-996.0 "--sync--" BattleTalk2 { instanceContentTextId: "4E8D" } window 996,100
-1007.0 "--sync--" StartsUsing { id: "327B", source: "Omega" } window 1500,100
-1037.0 "Delta Attack" Ability { id: "327B", source: "Omega" } window 1500,100
-1048.4 "--targetable--"
+2996.0 "--sync--" BattleTalk2 { instanceContentTextId: "4E8D" } window 2996,100
+3007.0 "--sync--" StartsUsing { id: "327B", source: "Omega" } window 3007,100
+3037.0 "Delta Attack" Ability { id: "327B", source: "Omega" } window 3037,100
+3048.4 "--targetable--"
 
 ## Loop
-1060.3 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 10,10
-1070.5 "Flamethrower" Ability { id: "327D", source: "Omega" }
-1072.9 "Rush" Ability { id: "359C", source: "Rocket Punch" }
-1078.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
-1081.8 "Ballistic Missile" Ability { id: "327E", source: "Omega" }
-1091.3 "Rush" Ability { id: "359C", source: "Rocket Punch" } # drift -0.041999
-1091.9 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
-1101.0 "Electric Slide" Ability { id: "3285", source: "Omega" }
-1115.3 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
-1117.6 "Blaster" Ability { id: "3280", source: "Omega" }
-1127.7 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
-1133.4 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
-1140.1 "Atomic Ray" Ability { id: "3286", source: "Omega" }
-1150.3 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } # drift 0.046
-1163.0 "Rush" Ability { id: "359C", source: "Rocket Punch" }
-1175.1 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
-1185.3 "Flamethrower" Ability { id: "327D", source: "Omega" }
-1187.6 "Rush" Ability { id: "359C", source: "Rocket Punch" }
-1196.4 "Atomic Ray" Ability { id: "3286", source: "Omega" }
-1204.5 "Ballistic Missile" Ability { id: "327E", source: "Omega" } # drift 0.042
-1214.6 "Flamethrower" Ability { id: "327D", source: "Omega" }
-1214.6 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
-1221.7 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
-1227.3 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
-1237.1 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
-1249.8 "Rush" Ability { id: "359C", source: "Rocket Punch" }
-1255.6 "Electric Slide" Ability { id: "3285", source: "Omega" } # drift -0.049
-1262.7 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
-1268.4 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
-1275.0 "Atomic Ray" Ability { id: "3286", source: "Omega" } # drift 0.042999
-1290.3 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
-1303.5 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
-1305.6 "Blaster" Ability { id: "3280", source: "Omega" } # drift 0.046001
-1314.8 "Atomic Ray" Ability { id: "3286", source: "Omega" }
-1320.9 "Atomic Ray" Ability { id: "3286", source: "Omega" }
+3060.3 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 10,10
+3070.5 "Flamethrower" Ability { id: "327D", source: "Omega" }
+3072.9 "Rush" Ability { id: "359C", source: "Rocket Punch" }
+3078.7 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
+3081.8 "Ballistic Missile" Ability { id: "327E", source: "Omega" }
+3091.3 "Rush" Ability { id: "359C", source: "Rocket Punch" } # drift -0.041999
+3091.9 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
+3101.0 "Electric Slide" Ability { id: "3285", source: "Omega" }
+3115.3 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
+3117.6 "Blaster" Ability { id: "3280", source: "Omega" }
+3127.7 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
+3133.4 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
+3140.1 "Atomic Ray" Ability { id: "3286", source: "Omega" }
+3150.3 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } # drift 0.046
+3163.0 "Rush" Ability { id: "359C", source: "Rocket Punch" }
+3175.1 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
+3185.3 "Flamethrower" Ability { id: "327D", source: "Omega" }
+3187.6 "Rush" Ability { id: "359C", source: "Rocket Punch" }
+3196.4 "Atomic Ray" Ability { id: "3286", source: "Omega" }
+3204.5 "Ballistic Missile" Ability { id: "327E", source: "Omega" } # drift 0.042
+3214.6 "Flamethrower" Ability { id: "327D", source: "Omega" }
+3214.6 "Ballistic Impact" Ability { id: "327F", source: "Omega" }
+3221.7 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
+3227.3 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
+3237.1 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" }
+3249.8 "Rush" Ability { id: "359C", source: "Rocket Punch" }
+3255.6 "Electric Slide" Ability { id: "3285", source: "Omega" } # drift -0.049
+3262.7 "Starboard/Larboard Cannon" Ability { id: "328[13]", source: "Omega" }
+3268.4 "Starboard/Larboard Cannon" Ability { id: "328[24]", source: "Omega" }
+3275.0 "Atomic Ray" Ability { id: "3286", source: "Omega" } # drift 0.042999
+3290.3 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
+3303.5 "Mustard Bomb" Ability { id: "3287", source: "Omega" }
+3305.6 "Blaster" Ability { id: "3280", source: "Omega" } # drift 0.046001
+3314.8 "Atomic Ray" Ability { id: "3286", source: "Omega" }
+3320.9 "Atomic Ray" Ability { id: "3286", source: "Omega" }
 
 # Loop lookahead
-1334.2 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 50,50 jump 1060.3
-1344.4 "Flamethrower"
-1346.8 "Rush"
-1352.6 "Peripheral Synthesis"
-1355.7 "Ballistic Missile"
+3334.2 "Peripheral Synthesis" Ability { id: "3270", source: "Omega" } window 50,50 jump 3060.3
+3344.4 "Flamethrower"
+3346.8 "Rush"
+3352.6 "Peripheral Synthesis"
+3355.7 "Ballistic Missile"

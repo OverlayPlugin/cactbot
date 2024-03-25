@@ -8,7 +8,7 @@ hideall "--sync--"
 
 # Note: 66BF "middle" happens 6.2s after experimental fireplume
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 8.7 "--sync--" StartsUsing { id: "6706", source: "Phoinix" } window 10,10
@@ -30,9 +30,9 @@ hideall "--sync--"
 140.4 "Left Cinderwing/Right Cinderwing" Ability { id: ["6702", "6703"], source: "Phoinix" }
 149.5 "Heat of Condemnation" Ability { id: "6700", source: "Phoinix" }
 157.6 "Experimental Fireplume" Ability { id: ["66BE", "66C0"], source: "Phoinix" }
+162.2 "--untargetable--"
 163.7 "--giant fireplume?--" #Ability { id: "66BF", source: "Phoinix" }
 
-162.2 "--untargetable--"
 172.0 "Trail of Condemnation" Ability { id: ["66FB", "66FC"], source: "Phoinix" }
 173.6 "Flare of Condemnation/Sparks of Condemnation" Ability { id: ["66FE", "66FF"], source: "Phoinix" }
 

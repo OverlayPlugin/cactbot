@@ -25,6 +25,7 @@ hideall "--sync--"
 1052.7 "Seal of the Blossom" Ability { id: "837[5678]", source: "Yozakura the Fleeting" }
 1059.7 "--sync--" Ability { id: "8612", source: "Yozakura the Fleeting" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> rain path
 1060.9 "--sync--" StartsUsing { id: "837E", source: "Yozakura the Fleeting" } window 50,50 jump 1360.9
 1065.9 "Bunshin?" #Ability { id: "837E", source: "Yozakura the Fleeting" }
@@ -32,7 +33,7 @@ hideall "--sync--"
 # -> wind path
 1060.8 "--sync--" StartsUsing { id: "838F", source: "Yozakura the Fleeting" } window 50,50 jump 1660.8
 1070.1 "Windblossom Whirl?" #Ability { id: "8390", source: "Yozakura the Fleeting" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # Rain path
 1359.7 "--sync--" Ability { id: "8612", source: "Yozakura the Fleeting" }
@@ -191,6 +192,7 @@ hideall "--sync--"
 2160.2 "Double Kasumi-giri 1" Ability { id: "858[BCDE]", source: "Moko the Restless" }
 2163.8 "Double Kasumi-giri 2" Ability { id: ["858F", "859[012]"], source: "Moko the Restless" }
 
+#cactbot-timeline-lint-disable-sync-order
 # => path 01
 2169.0 "--sync--" StartsUsing { id: "85A8", source: "Moko the Restless" } window 50,50 jump 2269.0
 2172.0 "Untempered Sword?" #Ability { id: "85A8", source: "Moko the Restless" }
@@ -206,7 +208,7 @@ hideall "--sync--"
 # => path 04
 2169.0 "--sync--" StartsUsing { id: "85A5", source: "Moko the Restless" } window 50,50 jump 3169.0
 2172.0 "Spiritspark?" #Ability { id: "85A5", source: "Moko the Restless" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # path 01
 2231.4 "--middle--" Ability { id: "85AF", source: "Moko the Restless" }
@@ -424,6 +426,7 @@ hideall "--sync--"
 4000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "10DD" } window 10000,0
 4011.6 "Glory Neverlasting" Ability { id: "83A9", source: "Yozakura the Fleeting" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> door
 4016.7 "--sync--" StartsUsing { id: "8394", source: "Yozakura the Fleeting" } window 20,20 jump 4116.7
 4019.7 "Tatami Trap?" #Ability { id: "8394", source: "Yozakura the Fleeting" }
@@ -431,7 +434,7 @@ hideall "--sync--"
 # -> rope
 4015.7 "--sync--" StartsUsing { id: "8369", source: "Yozakura the Fleeting" } window 20,20 jump 4315.7
 4020.7 "Art of the Windblossom?" #Ability { id: "8369", source: "Yozakura the Fleeting" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # door
 4116.7 "--sync--" StartsUsing { id: "8394", source: "Yozakura the Fleeting" }
@@ -563,6 +566,7 @@ hideall "--sync--"
 # This is inconsistent among timelines, so don't sync.
 5111.1 "--middle--" #Ability { id: "84D3", source: "Gorai the Uncaged" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> path 05
 5114.3 "--sync--" StartsUsing { id: "84ED", source: "Gorai the Uncaged" } window 30,30 jump 5214.3
 5116.8 "Pure Shock?" #Ability { id: "84ED", source: "Gorai the Uncaged" }
@@ -572,9 +576,9 @@ hideall "--sync--"
 5115.1 "Thundercall?" Ability { id: "84F2", source: "Gorai the Uncaged" }
 
 # -> path 07
-5112.1 "--sync--"  StartsUsing { id: "84F8", source: "Gorai the Uncaged" } window 30,30 jump 5412.1
+5112.1 "--sync--" StartsUsing { id: "84F8", source: "Gorai the Uncaged" } window 30,30 jump 5412.1
 5117.1 "Fighting Spirits?" #Ability { id: "84F8", source: "Gorai the Uncaged" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # path 05
 5211.1 "--middle--" Ability { id: "84D3", source: "Gorai the Uncaged" }
@@ -612,7 +616,7 @@ hideall "--sync--"
 
 # path 07
 5409.9 "--sync--" Ability { id: "84D3", source: "Gorai the Uncaged" }
-5412.1 "--sync--"  StartsUsing { id: "84F8", source: "Gorai the Uncaged" }
+5412.1 "--sync--" StartsUsing { id: "84F8", source: "Gorai the Uncaged" }
 5417.1 "Fighting Spirits" Ability { id: "84F8", source: "Gorai the Uncaged" }
 5426.1 "Worldly Pursuit 1" Ability { id: "84FB", source: "Gorai the Uncaged" }
 5429.9 "Worldly Pursuit 2" Ability { id: "84FC", source: "Gorai the Uncaged" }
@@ -723,6 +727,7 @@ hideall "--sync--"
 6000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "10DE" } window 10000,0
 6012.0 "Glory Neverlasting" Ability { id: "83A9", source: "Yozakura the Fleeting" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> no dogu
 6016.1 "--sync--" StartsUsing { id: "8368", source: "Yozakura the Fleeting" } window 30,30 jump 6116.1
 6019.1 "Art of the Fireblossom?" #Ability { id: "8368", source: "Yozakura the Fleeting" }
@@ -730,7 +735,7 @@ hideall "--sync--"
 # -> dogu
 6016.1 "--sync--" StartsUsing { id: "8369", source: "Yozakura the Fleeting" } window 30,30 jump 6316.1
 6021.1 "Art of the Windblossom?" Ability { id: "8369", source: "Yozakura the Fleeting" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # no dogu path
 6116.1 "--sync--" StartsUsing { id: "8368", source: "Yozakura the Fleeting" }
@@ -860,6 +865,7 @@ hideall "--sync--"
 7068.5 "Smokeater 3?" #Ability { id: "83D9", source: "Shishio" }
 7093.0 "Haunting Cry" Ability { id: "83E8", source: "Shishio" }
 
+#cactbot-timeline-lint-disable-sync-order
 # -> path 08
 7104.0 "--sync--" StartsUsing { id: "83EE", source: "Feral Thrall" }
 7110.0 "Rush?" Ability { id: "83EE", source: "Feral Thrall" } window 30,30 jump 7210.0
@@ -876,7 +882,7 @@ hideall "--sync--"
 # -> path 11
 7099.0 "--sync--" StartsUsing { id: "872B", source: "Haunting Thrall" } window 30,30 jump 7599.0
 7103.0 "Reisho?" #Ability { id: "872B", source: "Haunting Thrall" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 # path 08
 7193.0 "Haunting Cry" Ability { id: "83E8", source: "Shishio" }

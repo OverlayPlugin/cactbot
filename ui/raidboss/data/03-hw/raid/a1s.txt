@@ -28,7 +28,7 @@ hideall "--sync--"
 1076.0 "Kaltstrahl" Ability { id: "E3C", source: "Faust" }
 1079.0 "Pressure Increase 4" Ability { id: "E3D", source: "Faust" }
 1086.0 "Kaltstrahl" Ability { id: "E3C", source: "Faust" }
-1069.7 "Sturm Doll Add"
+1089.7 "Sturm Doll Add"
 1096.0 "Kaltstrahl" Ability { id: "E3C", source: "Faust" }
 1099.0 "Pressure Increase 5" Ability { id: "E3D", source: "Faust" }
 1106.0 "Kaltstrahl" Ability { id: "E3C", source: "Faust" }

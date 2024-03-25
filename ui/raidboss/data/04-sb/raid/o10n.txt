@@ -39,7 +39,7 @@ hideall "--sync--"
 183.5 "Frost Breath" Ability { id: "33EE", source: "Ancient Dragon" } window 30,30
 195.5 "Frost Breath ready"
 
-500.0 "Protostar x4" Ability { id: "31C3", source: "Midgardsormr" } window 500,500 duration 12
+500.0 "Protostar x4" Ability { id: "31C3", source: "Midgardsormr" } duration 12 window 500,500
 523.4 "--targetable--"
 536.6 "Tail End" Ability { id: "31C5", source: "Midgardsormr" }
 544.6 "Exaflare"

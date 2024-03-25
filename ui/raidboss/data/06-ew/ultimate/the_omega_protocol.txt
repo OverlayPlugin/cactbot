@@ -6,7 +6,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 ### P1: Beetle
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -216,11 +216,11 @@ hideall "--sync--"
 824.7 "--untargetable--"
 
 839.0 "Subject Simulation F" Ability { id: "7F2F", source: "Omega-M" }
-840.4 "Program Loop" Ability { id: "7B98", source: "Omega" }
 840.0 "--sync--" Ability { id: "7B14", source: "Omega-M" }
+840.4 "Program Loop" Ability { id: "7B98", source: "Omega" }
 841.1 "--sync--" Ability { id: "7B16", source: "Omega-M" }
-844.0 "Wave Cannon" Ability { id: "7B73", source: "Omega" }
 843.8 "Hyper Pulse" Ability { id: "7B72", source: "Right Arm Unit" }
+844.0 "Wave Cannon" Ability { id: "7B73", source: "Omega" }
 845.1 "--sync--" Ability { id: "7F30", source: "Omega-M" }
 848.7 "--sync--" Ability { id: "7B15", source: "Omega" }
 849.3 "--sync--" Ability { id: "7B20", source: "Omega-M" }

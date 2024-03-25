@@ -4,7 +4,7 @@ hideall "--Reset--"
 hideall "--sync--"
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 #~~~~~~~~~~~~~~~~~#
 # EVIL DREAMER(s) #
@@ -22,7 +22,7 @@ hideall "--sync--"
 1200.0 "--sync--" StartsUsing { id: "73B8", source: "Evil Dreamer" } window 200,0
 1208.0 "Dark Vision" Ability { id: "73B8", source: "Evil Dreamer" }
 
-1200.0 "--sync--" StartsUsing { id: "73B8", source: "Evil Dreamer" } window 200,0
+1400.0 "--sync--" StartsUsing { id: "73B8", source: "Evil Dreamer" } window 200,0
 1408.0 "Dark Vision" Ability { id: "73B8", source: "Evil Dreamer" }
 1408.0 "Void Gravity" Ability { id: "73BA", source: "Evil Dreamer" }
 

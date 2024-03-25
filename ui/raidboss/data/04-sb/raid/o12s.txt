@@ -6,6 +6,8 @@
 hideall "--Reset--"
 hideall "--sync--"
 
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
 # Use autos/BattleTalk2 instead of InCombat lines to start timelines for door & final boss
 # as timeline resets out of combat.
 
@@ -96,7 +98,7 @@ hideall "--sync--"
 1348.2 "Efficient Bladework" Ability { id: "332A", source: "Omega-M" }
 1356.4 "Laser Shower" Ability { id: "3352", source: "Omega-M" }
 1363.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
-1378.0 "Suppression" Ability { id: "3346", source: "Omega" } jump 378.0
+1378.0 "Suppression" Ability { id: "3346", source: "Omega" } jump 2578.0
 1385.1 "Optical Laser" # Cosmetic
 1385.4 "Optimized Meteor"
 1385.6 "Optimized Sagittarius Arrow"
@@ -136,7 +138,7 @@ hideall "--sync--"
 2349.6 "Efficient Bladework" Ability { id: "3329", source: "Omega-M" }
 2350.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
 2357.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
-2375.7 "Suppression" Ability { id: "3346", source: "Omega" } jump 378.0
+2375.7 "Suppression" Ability { id: "3346", source: "Omega" } jump 2578.0
 2382.7 "Optical Laser" # Cosmetic
 2382.7 "Optimized Meteor"
 2382.8 "Optimized Sagittarius Arrow"
@@ -144,26 +146,24 @@ hideall "--sync--"
 2401.3 "Laser Shower"
 
 # Paths converge to enrage sequence
-378.0 "Suppression" Ability { id: "3346", source: "Omega" }
-385.1 "Optical Laser" Ability { id: "3347", source: "Optical Unit" }
-385.4 "Optimized Meteor" Ability { id: "334F", source: "Omega-F" }
-385.6 "Optimized Sagittarius Arrow" Ability { id: "334D", source: "Omega-M" }
-396.4 "Cosmo Memory" Ability { id: "3343", source: "Omega" }
-404.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
-412.4 "Optimized Blade Dance" Ability { id: "334C", source: "Omega" }
-430.4 "Advanced Suppression" Ability { id: "3349", source: "Omega" }
-437.4 "Advanced Optical Laser" Ability { id: "334A", source: "Optical Unit" }
-437.4 "Optimized Meteor" Ability { id: "334F", source: "Omega-F" }
-437.4 "Optimized Sagittarius Arrow" Ability { id: "334D", source: "Omega-M" }
-447.9 "Cosmo Memory" Ability { id: "3343", source: "Omega" }
-455.9 "Laser Shower" Ability { id: "3353", source: "Omega" }
-463.9 "Optimized Blade Dance" Ability { id: "334C", source: "Omega" }
-479.4 "Cosmo Memory" Ability { id: "33EC", source: "Omega" }
+2578.0 "Suppression" Ability { id: "3346", source: "Omega" }
+2585.1 "Optical Laser" Ability { id: "3347", source: "Optical Unit" }
+2585.4 "Optimized Meteor" Ability { id: "334F", source: "Omega-F" }
+2585.6 "Optimized Sagittarius Arrow" Ability { id: "334D", source: "Omega-M" }
+2596.4 "Cosmo Memory" Ability { id: "3343", source: "Omega" }
+2604.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
+2612.4 "Optimized Blade Dance" Ability { id: "334C", source: "Omega" }
+2630.4 "Advanced Suppression" Ability { id: "3349", source: "Omega" }
+2637.4 "Advanced Optical Laser" Ability { id: "334A", source: "Optical Unit" }
+2637.4 "Optimized Meteor" Ability { id: "334F", source: "Omega-F" }
+2637.4 "Optimized Sagittarius Arrow" Ability { id: "334D", source: "Omega-M" }
+2647.9 "Cosmo Memory" Ability { id: "3343", source: "Omega" }
+2655.9 "Laser Shower" Ability { id: "3353", source: "Omega" }
+2663.9 "Optimized Blade Dance" Ability { id: "334C", source: "Omega" }
+2679.4 "Cosmo Memory" Ability { id: "33EC", source: "Omega" }
 
 # Final Omega - Alphascape V4.0 (Savage) - O12S+
 # -r ch1gtabdwN7QYDR6 -p 336C:3016 -ii 3380 3369 3366 335F 3377 336B 33B5
-
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 100000 jump 0
 
 3000.0 "Start"
 3002.5 "--sync--" Ability { id: "3380", source: "Omega" } window 3003,0

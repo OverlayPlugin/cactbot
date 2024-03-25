@@ -100,8 +100,8 @@ hideall "Earthen Wheels"
 1201.4 "Earthen Anguish" Ability { id: "4137", source: "Titan" }
 1208.3 "Earthen Fist" Ability { id: ["4130", "4131", "4132", "412F"], source: "Titan Maximum" }
 1225.7 "Tectonic Uplift" Ability { id: "4122", source: "Titan Maximum" }
-1249.0 "Pulse of the Land" Ability { id: "4106", source: "Titan" }
 1226.6 "Force of the Land" Ability { id: "4107", source: "Titan" }
+1249.0 "Pulse of the Land" Ability { id: "4106", source: "Titan" }
 1263.2 "Weight of the World" Ability { id: "442B", source: "Titan Maximum" }
 1275.1 "Force of the Land" Ability { id: "4107", source: "Titan" }
 1283.4 "Earthen Fury" Ability { id: "4124", source: "Titan Maximum" }

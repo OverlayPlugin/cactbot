@@ -108,7 +108,7 @@ hideall "--sync--"
 500.0 "--untargetable--"
 503.3 "Golem Meteors" HeadMarker { id: "0007" } duration 11 window 505,0
 514.3 "--sync--" Ability { id: "7EB", source: "Dalamud Fragment" }
-582.3 "Meteor 1/6" duration 7 HeadMarker { id: "000[9A]" } window 83,0
+582.3 "Meteor 1/6" HeadMarker { id: "000[9A]" } duration 7 window 83,0
 584.3 "Meteor 2/6" duration 7
 586.3 "Meteor 3/6" duration 7
 588.3 "Meteor 4/6" duration 7

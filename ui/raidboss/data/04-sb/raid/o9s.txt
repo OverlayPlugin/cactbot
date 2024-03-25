@@ -11,6 +11,7 @@ hideall "--sync--"
 10.7 "--sync--" StartsUsing { id: "317(2|3)", source: "Chaos" } window 12,12 jump 2010.1 # Long/lat means water path
 10.7 "--sync--" StartsUsing { id: "3171", source: "Chaos" } window 12,12 jump 1010.7 # Edict means fire path
 
+#cactbot-timeline-lint-disable-sync-order
 # Fake water path
 15.7 "Long/Lat Implosion?"
 29.7 "Tsunami?"
@@ -20,6 +21,7 @@ hideall "--sync--"
 # Fake fire path
 16.7 "Damning Edict?"
 29.9 "Blaze?"
+#cactbot-timeline-lint-enable-sync-order
 
 #############
 # Fire path #
@@ -103,8 +105,8 @@ hideall "--sync--"
 2048.8 "Damning Edict" Ability { id: "3171", source: "Chaos" }
 2066.8 "Chaotic Dispersion" Ability { id: "3170", source: "Chaos" }
 2078.8 "Tsunami" Ability { id: "3207", source: "Chaos" }
-2096.3 "(T/H) Stray Spray" Ability { id: "318D", source: "Chaos" }
 2089.6 "Knock" Ability { id: "317F", source: "Chaos" }
+2096.3 "(T/H) Stray Spray" Ability { id: "318D", source: "Chaos" }
 2096.3 "(DPS) Stray Spray" Ability { id: "318D", source: "Chaos" }
 2096.5 "Big Bang" Ability { id: "3181", source: "Chaos" }
 2107.8 "Fiendish Orbs" Ability { id: "317D", source: "Chaos" }

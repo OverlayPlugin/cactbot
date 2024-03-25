@@ -62,7 +62,7 @@ hideall "Brute Force"
 
 ### Phase 2: Robots
 300.0 "--sync--" NameToggle { name: "Onslaughter", toggle: "00" } window 300,0
-303.0 "--sync--" AddedCombatant { name: "Blaster" }  window 303,30
+303.0 "--sync--" AddedCombatant { name: "Blaster" } window 303,30
 304.0 "Blaster (north)"
 304.0 "Brawler (middle)"
 306.2 "--targetable--"
@@ -204,7 +204,7 @@ hideall "Brute Force"
 1211.5 "--sync--" Ability { id: "1636", source: "Brute Justice" }
 1212.6 "100-Megatonze Shock" Ability { id: "1635", source: "Onslaughter" }
 # First Intermission can be skipped, but this is the first different ability.
-1217.5 "Hidden Minefield" Ability { id: "165E", source: "Hidden Mine" } window 1220,5 duration 9
+1217.5 "Hidden Minefield" Ability { id: "165E", source: "Hidden Mine" } duration 9 window 1220,5
 1217.6 "Double Drill Crush" Ability { id: "1640", source: "Brawler" }
 1218.6 "Drill Drive" Ability { id: "1641", source: "Brawler" }
 1222.1 "Mega Beam" Ability { id: "162E", source: "Onslaughter" }

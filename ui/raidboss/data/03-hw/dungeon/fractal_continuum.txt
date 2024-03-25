@@ -18,14 +18,14 @@ hideall "--sync--"
 56.5 "Double Sever 2" Ability { id: "F7[BC]", source: "Phantom Ray" }
 58.3 "Atmospheric Displacement" Ability { id: "F7E", source: "Phantom Ray" }
 
-72.4 "Rapid Sever" Ability { id: "F7A", source: "Phantom Ray" }  window 15,15 jump 41.5
+72.4 "Rapid Sever" Ability { id: "F7A", source: "Phantom Ray" } window 15,15 jump 41.5
 78.6 "Atmospheric Displacement"
 83.3 "Double Sever 1"
 87.4 "Double Sever 2"
 89.2 "Atmospheric Displacement"
 # Phase 2 at < 75% HP
 
-100.0 "Damage Up" Ability { id: "F7F", source: "Phantom Ray" }  window 100,30 #Overclock
+100.0 "Damage Up" Ability { id: "F7F", source: "Phantom Ray" } window 100,30 #Overclock
 104.8 "Double Sever 1" Ability { id: "F7[BC]", source: "Phantom Ray" }
 107.6 "Atmospheric Compression" Ability { id: "F80", source: "Phantom Ray" }
 109.0 "Double Sever 2" Ability { id: "F7[BC]", source: "Phantom Ray" }
@@ -58,7 +58,7 @@ hideall "--sync--"
 1043.5 "11-Tonze Swipe" Ability { id: "F81", source: "Minotaur" }
 
 # Rotation desyncs here due to timing on cage use
-1048.0  "--sync--" HeadMarker { id: "0036", target: "Minotaur" } window 45,15 jump 1151.0
+1048.0 "--sync--" HeadMarker { id: "0036", target: "Minotaur" } window 45,15 jump 1151.0
 1064.2 "Feast?"
 1064.3 "1111-Tonze Swing?" Ability { id: "F87", source: "Minotaur" } window 1,10 jump 1167.3
 

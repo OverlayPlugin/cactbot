@@ -16,7 +16,7 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0 "--Reset--" GameLog { code: "001D", line: "You bid farewell to the striking dummy.*?" } window 10000 jump 0
+0 "--Reset--" GameLog { code: "001D", line: "You bid farewell to the striking dummy.*?" } window 0,10000 jump 0
 
 # two examples with different quoting which should both be supported
 0 "--sync--" GameLog { line: 'testNetRegexTimeline' } window 100000,100000

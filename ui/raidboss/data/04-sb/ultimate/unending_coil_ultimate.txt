@@ -21,7 +21,7 @@ hideall "--sync--"
 # TODO: presumably 44.2 is a loop back to 24.5.
 
 ### Twintania P2: 75% -> 45%
-47.5 "Liquid Hell x5" duration 4.5 Ability { id: "26AD", source: "Twintania" } window 50,0
+47.5 "Liquid Hell x5" Ability { id: "26AD", source: "Twintania" } duration 4.5 window 50,0
 53.0 "--sync--" StartsUsing { id: "26AE", source: "Twintania" } window 53,10
 56.0 "Generate" Ability { id: "26AE", source: "Twintania" }
 59.1 "Liquid Hell x5" duration 4.5 #Ability { id: "26AD", source: "Twintania" }
@@ -87,19 +87,19 @@ hideall "--sync--"
 278.9 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
 281.9 "Fireball (3)" Ability { id: "26C5", source: "Firehorn" }
 
+284.7 "Bahamut's Claw x5" Ability { id: "26B5", source: "Nael deus Darnus" } duration 2.8
 290.4 "Dive + Dynamo/Chariot" duration 8
-284.7 "Bahamut's Claw x5" duration 2.8 Ability { id: "26B5", source: "Nael deus Darnus" }
 #295.3 "Raven Dive" Ability { id: "26BE", source: "Nael deus Darnus" }
 #298.3 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
 302.9 "Fireball (4)" Ability { id: "26C5", source: "Firehorn" }
 303.9 "Doom x3" Ability { id: "26C9", source: "Tail of Darkness" }
 305.9 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
-306.0 "Wings Of Salvation x3" duration 8 Ability { id: "26CA", source: "Fang of Light" }
+306.0 "Wings Of Salvation x3" Ability { id: "26CA", source: "Fang of Light" } duration 8
 323.3 "Ravensbeak" Ability { id: "26B6", source: "Nael deus Darnus" }
-333.5 "Hypernova x4" duration 6 #Ability { id: "26BF", source: "Nael deus Darnus" }
 
 328.5 "Marker 1"
 332.5 "Marker 2"
+333.5 "Hypernova x4" duration 6 #Ability { id: "26BF", source: "Nael deus Darnus" }
 336.5 "Marker 3"
 339.5 "Cauterize" #Ability { id: "26CD", source: "Thunderwing" }
 #339.5 "Cauterize" #Ability { id: "26CE", source: "Tail of Darkness" }

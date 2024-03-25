@@ -168,7 +168,7 @@ hideall "--sync--"
 2386.1 "Order To Bombard" Ability { id: "3710", source: "Annia Quo Soranus" }
 2388.5 "--sync--" Ability { id: "370F", source: "Annia Quo Soranus" }
 
-2390.5 "The Order" Ability { id: "3714", source: "Julia Quo Soranus" } jump 2329.5 window 30,30
+2390.5 "The Order" Ability { id: "3714", source: "Julia Quo Soranus" } window 30,30 jump 2329.5
 2390.7 "Crossbones"
 2392.6 "Angry Salamander"
 2393.4 "Bombardment"

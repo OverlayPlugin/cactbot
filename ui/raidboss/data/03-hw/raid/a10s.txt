@@ -177,8 +177,8 @@ hideall "--sync--"
 814.9 "Discharge" Ability { id: "1AA7", source: "Lamebrix Strikebocks" }
 815.9 "Weight Trap" Ability { id: "1AB0", source: "Lamebrix Strikebocks" }
 816.8 "Frostbite" Ability { id: "1A8E", source: "Lamebrix Strikebocks" }
-820.8 "Impact" Ability { id: "1A8B", source: "Weight Of The World" }
 817.2 "--jump--" Ability { id: "1AA2", source: "Lamebrix Strikebocks" }
+820.8 "Impact" Ability { id: "1A8B", source: "Weight Of The World" }
 824.9 "Discharge" Ability { id: "1AA7", source: "Lamebrix Strikebocks" }
 827.1 "Gobbie Adds x3 (NE)"
 828.4 "Gobsway Rumblerocks" Ability { id: "1AA0", source: "Lamebrix Strikebocks" }

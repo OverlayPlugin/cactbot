@@ -31,7 +31,7 @@ hideall "--sync--"
 192.8 "Surging Tsunami" Ability { id: "4011", source: "Leviathan" }
 203.5 "Tidal Roar" Ability { id: "3FC4", source: "Leviathan" } window 20,20
 
-216.7 "Maelstrom" Ability { id: "3FD8", source: "Leviathan" } window 216.7,2.5 duration 30
+216.7 "Maelstrom" Ability { id: "3FD8", source: "Leviathan" } duration 30 window 216.7,2.5
 218.7 "--untargetable--"
 222.0 "--sync--" Ability { id: "3F7E", source: "Leviathan" }
 226.9 "Spinning Dive 1" Ability { id: "3FDB", source: "Leviathan" }

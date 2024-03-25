@@ -11,17 +11,16 @@ hideall "Relaxant"
 # The Clevering will be sealed off
 1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "6AF" } window 1000,0
 1009.8 "Kaltstrahl x1" Ability { id: "16CC", source: "Faust" } window 10,5
-1018.9 "Kaltstrahl x2" duration 2.1 Ability { id: "16CC", source: "Faust" } window 5,0.5
+1018.9 "Kaltstrahl x2" Ability { id: "16CC", source: "Faust" } duration 2.1 window 5,0.5
 #1021.0 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
-1032.1 "Kaltstrahl x3" duration 4.2 Ability { id: "16CC", source: "Faust" } window 5,0.5
+1032.1 "Kaltstrahl x3" Ability { id: "16CC", source: "Faust" } duration 4.2 window 5,0.5
 #1034.2 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
 #1036.3 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
-1043.4 "Kaltstrahl x3" duration 4.2 Ability { id: "16CC", source: "Faust" } window 5,0.5
+1043.4 "Kaltstrahl x3" Ability { id: "16CC", source: "Faust"} duration 4.2 window 5,0.5
 #1045.5 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
 #1047.6 "Kaltstrahl" Ability { id: "16CC", source: "Faust" }
 
 1051.6 "--sync--" StartsUsing { id: "16D2", source: "Hummelfaust" } window 52,10
-1056.6 "Panzer Vor" Ability { id: "16D2", source: "Hummelfaust" }
 
 # Note: if previous Fausts haven't been destroyed,
 # There's a 3.7 second delay for Reducible Complexity + Pressure Increase.
@@ -30,19 +29,20 @@ hideall "Relaxant"
 1053.4 "--sync--" Ability { id: "16CF", source: "Faust" } window 10,10 # Reducible Complexity
 1056.0 "--sync--" Ability { id: "16CD", source: "Hummelfaust" } window 10,10 # Pressure Increase.
 
-1065.2 "Kaltstrahl x2" duration 2.1 Ability { id: "16CE", source: "Hummelfaust" } window 5,0.5
+1056.6 "Panzer Vor" Ability { id: "16D2", source: "Hummelfaust" }
+1065.2 "Kaltstrahl x2" Ability { id: "16CE", source: "Hummelfaust" } duration 2.1 window 5,0.5
 #1067.3 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
-1085.4 "Kaltstrahl x3" duration 4.2 Ability { id: "16CE", source: "Hummelfaust" } window 5,0.5
+1085.4 "Kaltstrahl x3" Ability { id: "16CE", source: "Hummelfaust" } duration 4.2 window 5,0.5
 #1087.5 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
 #1089.6 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
 1101.7 "Panzerschreck" Ability { id: "16D0", source: "Hummelfaust" } window 15,15
-1110.9 "Kaltstrahl x4" duration 6.3 Ability { id: "16CE", source: "Hummelfaust" } window 5,0.5
+1110.9 "Kaltstrahl x4" Ability { id: "16CE", source: "Hummelfaust" } duration 6.3 window 5,0.5
 #1113.0 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
 #1115.1 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
 #1117.2 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
 1128.3 "Panzerschreck" Ability { id: "16D0", source: "Hummelfaust" }
 1134.4 "Panzerschreck" Ability { id: "16D0", source: "Hummelfaust" }
-1138.5 "Kaltstrahl x4" duration 6.3 Ability { id: "16CE", source: "Hummelfaust" } window 5,0.5
+1138.5 "Kaltstrahl x4" Ability { id: "16CE", source: "Hummelfaust" } duration 6.3 window 5,0.5
 #1140.6 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
 #1142.7 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }
 #1144.8 "Kaltstrahl" Ability { id: "16CE", source: "Hummelfaust" }

@@ -22,8 +22,8 @@
 43.4 "Hydrothermal Missile" Ability { id: "F5B", source: "The Manipulator" }
 48.5 "Discoid" Ability { id: "F61", source: "The Manipulator" }
 53.6 "Seed Of The Sky" Ability { id: "13D0", source: "The Manipulator" }
-58.6 "Seed Of The Sky" Ability { id: "13D0", source: "The Manipulator" }
 55.6 "--stun--" duration 5
+58.6 "Seed Of The Sky" Ability { id: "13D0", source: "The Manipulator" }
 61.4 "Perpetual Ray x2" #Ability { id: "F5F", source: "The Manipulator" }
 71.5 "Hydrothermal Missile" Ability { id: "F5B", source: "The Manipulator" }
 
@@ -39,8 +39,8 @@
 126.0 "Hydrothermal Missile" #Ability { id: "F5B", source: "The Manipulator" }
 131.1 "Discoid" #Ability { id: "F61", source: "The Manipulator" }
 136.2 "Seed Of The Sky" #Ability { id: "13D0", source: "The Manipulator" }
-141.2 "Seed Of The Sky" #Ability { id: "13D0", source: "The Manipulator" }
 138.2 "--stun--" duration 5
+141.2 "Seed Of The Sky" #Ability { id: "13D0", source: "The Manipulator" }
 144.0 "Perpetual Ray x2" #Ability { id: "F5F", source: "The Manipulator" }
 154.1 "Hydrothermal Missile" #Ability { id: "F5B", source: "The Manipulator" }
 
@@ -87,7 +87,7 @@
 
 
 ### Leg 3
-1000.0 "--sync--"  NameToggle { name: "The Manipulator", toggle: "01" } window 490,0
+1000.0 "--sync--" NameToggle { name: "The Manipulator", toggle: "01" } window 490,0
 1012.1 "--untargetable--"
 1016.2 "--sync--" StartsUsing { id: "13E7", source: "The Manipulator" } window 490,5
 1022.2 "Mortal Revolution" Ability { id: "13E7", source: "The Manipulator" }
@@ -142,7 +142,7 @@
 
 
 ### Leg 4
-1500.0 "--sync--"  NameToggle { name: "The Manipulator", toggle: "01" } window 490,0
+1500.0 "--sync--" NameToggle { name: "The Manipulator", toggle: "01" } window 490,0
 1512.1 "--untargetable--"
 1516.2 "--sync--" StartsUsing { id: "13E7", source: "The Manipulator" } window 490,5
 1522.2 "Mortal Revolution" Ability { id: "13E7", source: "The Manipulator" }
@@ -177,7 +177,7 @@
 
 
 ### Final Phase
-2000.0 "--sync--"  NameToggle { name: "The Manipulator", toggle: "01" } window 490,0
+2000.0 "--sync--" NameToggle { name: "The Manipulator", toggle: "01" } window 490,0
 2012.1 "--untargetable--"
 2016.2 "--sync--" StartsUsing { id: "13E7", source: "The Manipulator" } window 490,5
 2022.2 "Mortal Revolution" Ability { id: "13E7", source: "The Manipulator" }

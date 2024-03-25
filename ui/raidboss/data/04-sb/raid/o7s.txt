@@ -8,7 +8,7 @@ hideall "--sync--"
 31 "Atomic Ray" Ability { id: "278D", source: "Guardian" }
 40 "Prey" Ability { id: "278A", source: "Guardian" }
 49 "Load?" Ability { id: "275C", source: "Guardian" }
-50 "--sync--" GainsEffect { effectId: "5D3", effect: "Dadaluma Simulation", target: "Guardian" } jump 1050
+50 "--sync--" GainsEffect { effectId: "5D3", effect: "Dadaluma Simulation", target: "Guardian" } jump 10050 # Version B
 52 "Shockwave?"
 
 # This is Version A of the encounter, with Bibliotaph first
@@ -92,8 +92,8 @@ hideall "--sync--"
 
 # Divergence point
 509 "Load/Skip?" Ability { id: ["275C", "2773"], source: "Guardian" }
-510 "--sync--" GainsEffect { effectId: "5D4", effect: "Bibliotaph Simulation", target: "Guardian" } jump 2510       # Bibliotaph buff, jump to A1
-510 "--sync--" GainsEffect { effectId: "5D3", effect: "Dadaluma Simulation", target: "Guardian" } jump 3510         # Dadaluma buff, jump to A2
+510 "--sync--" GainsEffect { effectId: "5D4", effect: "Bibliotaph Simulation", target: "Guardian" } jump 2510  # Bibliotaph buff, jump to A1
+510 "--sync--" GainsEffect { effectId: "5D3", effect: "Dadaluma Simulation", target: "Guardian" } jump 3510  # Dadaluma buff, jump to A2
 512 "Shockwave?"
 519 "Demon Simulation?"
 
@@ -123,7 +123,7 @@ hideall "--sync--"
 2629 "Prey" Ability { id: "278A", source: "Guardian" }
 2635 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
 2643 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-2648 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 648          # Load/Skip starts casting, return to A
+2648 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 4648  # Load/Skip starts casting, return to A
 
 # Should be unreachable, only here for visual continuity before/after jump
 2653 "Load Air Force"
@@ -156,7 +156,7 @@ hideall "--sync--"
 3624 "Prey" Ability { id: "278A", source: "Guardian" }
 3633 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
 3642 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-3648 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 648 # Load/Skip starts casting, return to A
+3648 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 4648 # Load/Skip starts casting, return to A
 
 # Should be unreachable, only here for visual continuity before/after jump
 3653 "Load Air Force"
@@ -171,19 +171,19 @@ hideall "--sync--"
 ##########################################################
 
 # Air Force
-653 "Load Air Force" Ability { id: ["275C", "2773"], source: "Guardian" }
-656 "Diffractive Laser" Ability { id: "2780", source: "Guardian" }
-659 "Radar" duration 2
-666 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-678 "Run Air Force" Ability { id: "276F", source: "Guardian" }
-684 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
-685 "Plane Laser" duration 2
-691 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
-693 "Plane Laser" duration 2
-699 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+4653 "Load Air Force" Ability { id: ["275C", "2773"], source: "Guardian" }
+4656 "Diffractive Laser" Ability { id: "2780", source: "Guardian" }
+4659 "Radar" duration 2
+4666 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+4678 "Run Air Force" Ability { id: "276F", source: "Guardian" }
+4684 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
+4685 "Plane Laser" duration 2
+4691 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
+4693 "Plane Laser" duration 2
+4699 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
 
-700 "--sync--" StartsUsing { id: "2791", source: "Guardian" } window 100,100
-715 "Enrage" Ability { id: "2791", source: "Guardian" } jump 0
+4700 "--sync--" StartsUsing { id: "2791", source: "Guardian" } window 100,100
+4715 "Enrage" Ability { id: "2791", source: "Guardian" } jump 0
 
 ######################################
 ########## END of Version A ##########
@@ -191,189 +191,189 @@ hideall "--sync--"
 ######################################
 
 # Only for reference
-1000 "Start"
-1011 "Magitek Ray"
-1021 "Arm And Hammer"
-1031 "Atomic Ray"
-1040 "Prey"
-1049 "Load"
+10000 "Start"
+10011 "Magitek Ray"
+10021 "Arm And Hammer"
+10031 "Atomic Ray"
+10040 "Prey"
+10049 "Load"
 
 # This is Version B of the encounter, with Dadaluma first
 
-1052 "Shockwave" Ability { id: "2783", source: "Guardian" }
-1059 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
-1074 "Chakra Burst" Ability { id: "2787", source: "Guardian" }
-1077 "Run Dada (NW)" Ability { id: "276F", source: "Guardian" }
-1090 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
-1095 "(H) Aura Cannon"
-1105 "(DPS) Aura Cannon"
-1106 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
-1118 "Prey" Ability { id: "278A", source: "Guardian" }
-1126 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+10052 "Shockwave" Ability { id: "2783", source: "Guardian" }
+10059 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
+10074 "Chakra Burst" Ability { id: "2787", source: "Guardian" }
+10077 "Run Dada (NW)" Ability { id: "276F", source: "Guardian" }
+10090 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+10095 "(H) Aura Cannon"
+10105 "(DPS) Aura Cannon"
+10106 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
+10118 "Prey" Ability { id: "278A", source: "Guardian" }
+10126 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
 
 # Bibliotaph
-1135 "Load Biblio / Skip Air Force" Ability { id: "2773", source: "Guardian" }
-1145 "Demon Simulation" Ability { id: "2B36", source: "Guardian" }
-1153 "Retrieve Air Force" Ability { id: "2774", source: "Guardian" }
-1156 "Diffractive Laser" Ability { id: "2780", source: "Guardian" }
-1164 "Copy Air Force" Ability { id: "2775", source: "Guardian" }
-1171 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
+10135 "Load Biblio / Skip Air Force" Ability { id: "2773", source: "Guardian" }
+10145 "Demon Simulation" Ability { id: "2B36", source: "Guardian" }
+10153 "Retrieve Air Force" Ability { id: "2774", source: "Guardian" }
+10156 "Diffractive Laser" Ability { id: "2780", source: "Guardian" }
+10164 "Copy Air Force" Ability { id: "2775", source: "Guardian" }
+10171 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
 
 # Air Force
-1181 "Run Air Force" Ability { id: "276F", source: "Guardian" }
-1195 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
-1196 "Plane Laser" duration 2
-1204 "Plane Laser" duration 2
-1206 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
-1214 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+10181 "Run Air Force" Ability { id: "276F", source: "Guardian" }
+10195 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
+10196 "Plane Laser" duration 2
+10204 "Plane Laser" duration 2
+10206 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
+10214 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
 
 # Ultros
-1222 "Load Ultros" Ability { id: "275C", source: "Guardian" }
-1223 "Ink" Ability { id: "277D", source: "Guardian" }
-1239 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-1248 "Tentacle Simulation" Ability { id: "275E", source: "Guardian" }
-1252 "Tentacle"
-1258 "Wallop"
-1260 "Run Ultros (SE)" Ability { id: "276F", source: "Guardian" }
-1267 "Interrupt Stoneskin" duration 4
-1269 "--targetable--" Ability { id: "2937", source: "Guardian" }
-1276 "Chain Cannon" duration 2
-1282 "Main Cannon" Ability { id: "2790", source: "Guardian" }
-1285 "--untargetable--" Ability { id: "2938", source: "Guardian" }
-1297 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+10222 "Load Ultros" Ability { id: "275C", source: "Guardian" }
+10223 "Ink" Ability { id: "277D", source: "Guardian" }
+10239 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+10248 "Tentacle Simulation" Ability { id: "275E", source: "Guardian" }
+10252 "Tentacle"
+10258 "Wallop"
+10260 "Run Ultros (SE)" Ability { id: "276F", source: "Guardian" }
+10267 "Interrupt Stoneskin" duration 4
+10269 "--targetable--" Ability { id: "2937", source: "Guardian" }
+10276 "Chain Cannon" duration 2
+10282 "Main Cannon" Ability { id: "2790", source: "Guardian" }
+10285 "--untargetable--" Ability { id: "2938", source: "Guardian" }
+10297 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
 
 # Virus
-1305 "Virus" Ability { id: "2773", source: "Guardian" }
-1308 "Aether Rot"
-1318 "Magnetism/Repel" Ability { id: "2779", source: "Fire Control System" } # optional?
-1331 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-1343 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-1355 "Prey" Ability { id: "278A", source: "Guardian" }
-1365 "Viral Weapon" Ability { id: "277C", source: "Guardian" }
-1366 "Temporary Misdirection" duration 15
-1371 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
-1375 "--untargetable--" Ability { id: "2937", source: "Guardian" }
-1382 "Chain Cannon" duration 2
-1388 "Main Cannon" Ability { id: "2790", source: "Guardian" }
-1389 "Radar" duration 2
-1391 "--targetable--" Ability { id: "2938", source: "Guardian" }
-1400 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
-1408 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+10305 "Virus" Ability { id: "2773", source: "Guardian" }
+10308 "Aether Rot"
+10318 "Magnetism/Repel" Ability { id: "2779", source: "Fire Control System" } # optional?
+10331 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+10343 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+10355 "Prey" Ability { id: "278A", source: "Guardian" }
+10365 "Viral Weapon" Ability { id: "277C", source: "Guardian" }
+10366 "Temporary Misdirection" duration 15
+10371 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+10375 "--untargetable--" Ability { id: "2937", source: "Guardian" }
+10382 "Chain Cannon" duration 2
+10388 "Main Cannon" Ability { id: "2790", source: "Guardian" }
+10389 "Radar" duration 2
+10391 "--targetable--" Ability { id: "2938", source: "Guardian" }
+10400 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
+10408 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
 
 # Air Force
-1416 "Paste Air Force" Ability { id: "2776", source: "Guardian" } window 10,10
-1419 "Diffractive Laser" Ability { id: "2780", source: "Guardian" }
-1422 "Radar" duration 2
-1431 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-1441 "Run Air Force" Ability { id: "276F", source: "Guardian" }
-1447 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
-1454 "Plane Laser" duration 2
-1462 "Plane Laser" duration 2
-1462 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
-1470 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+10416 "Paste Air Force" Ability { id: "2776", source: "Guardian" } window 10,10
+10419 "Diffractive Laser" Ability { id: "2780", source: "Guardian" }
+10422 "Radar" duration 2
+10431 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+10441 "Run Air Force" Ability { id: "276F", source: "Guardian" }
+10447 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
+10454 "Plane Laser" duration 2
+10462 "Plane Laser" duration 2
+10462 "Arm And Hammer" Ability { id: "2789", source: "Guardian" }
+10470 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
 
 # Divergence point
-1481 "Load/Skip?" Ability { id: ["275C", "2773"], source: "Guardian" }
-1482 "--sync--" GainsEffect { effectId: "5D4", effect: "Bibliotaph Simulation", target: "Guardian" } jump 4482       # Bibliotaph buff, jump to B1
-1482 "--sync--" GainsEffect { effectId: "5D3", effect: "Dadaluma Simulation", target: "Guardian" } jump 5482         # Dadaluma buff, jump to B2
-1484 "Shockwave?"
-1491 "Demon Simulation?"
+10481 "Load/Skip?" Ability { id: ["275C", "2773"], source: "Guardian" }
+10482 "--sync--" GainsEffect { effectId: "5D4", effect: "Bibliotaph Simulation", target: "Guardian" } jump 14482  # Bibliotaph buff, jump to B1
+10482 "--sync--" GainsEffect { effectId: "5D3", effect: "Dadaluma Simulation", target: "Guardian" } jump 15482  # Dadaluma buff, jump to B2
+10484 "Shockwave?"
+10491 "Demon Simulation?"
 
 ##########################################################
 ##### Divergent path, Version B1: Biblio -> Dadaluma #####
 ##########################################################
 
 # Bibliotaph
-4481 "Load Biblio" Ability { id: ["275C", "2773"], source: "Guardian" }
-4490 "Radar" duration 2
-4491 "Demon Simulation" Ability { id: "2B36", source: "Guardian" }
-4504 "Run Biblio" Ability { id: "276F", source: "Guardian" }
-4511 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-4518 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-4525 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-4533 "Prey" Ability { id: "278A", source: "Guardian" }
-4542 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
-4551 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+14481 "Load Biblio" Ability { id: ["275C", "2773"], source: "Guardian" }
+14490 "Radar" duration 2
+14491 "Demon Simulation" Ability { id: "2B36", source: "Guardian" }
+14504 "Run Biblio" Ability { id: "276F", source: "Guardian" }
+14511 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+14518 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+14525 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+14533 "Prey" Ability { id: "278A", source: "Guardian" }
+14542 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+14551 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
 
 # Dadaluma
-4562 "Load Dada" Ability { id: ["275C", "2774"], source: "Guardian" }
-4565 "Shockwave" Ability { id: "2783", source: "Guardian" }
-4569 "Radar" duration 2
-4575 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
-4584 "Atomic Ray" Ability { id: "278D", source: "Guardian" }
-4589 "Chakra Burst" Ability { id: "2787", source: "Guardian" }
-4601 "Prey" Ability { id: "278A", source: "Guardian" }
-4607 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
-4615 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-4620 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 1620         # Load/Skip casting, return to B
+14562 "Load Dada" Ability { id: ["275C", "2774"], source: "Guardian" }
+14565 "Shockwave" Ability { id: "2783", source: "Guardian" }
+14569 "Radar" duration 2
+14575 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
+14584 "Atomic Ray" Ability { id: "278D", source: "Guardian" }
+14589 "Chakra Burst" Ability { id: "2787", source: "Guardian" }
+14601 "Prey" Ability { id: "278A", source: "Guardian" }
+14607 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+14615 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+14620 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 16020  # Load/Skip casting, return to B
 
 # Should be unreachable, only here for visual continuity before/after jump
-4625 "Load Ultros"
-4626 "Ink"
-4633 "Tentacle Simulation"
-4637 "Tentacle"
-4639 "Bomb Deployment"
-4643 "Wallop"
-4648 "Atomic Ray"
+14625 "Load Ultros"
+14626 "Ink"
+14633 "Tentacle Simulation"
+14637 "Tentacle"
+14639 "Bomb Deployment"
+14643 "Wallop"
+14648 "Atomic Ray"
 
 #### Divergent path, Version B2: Dadaluma -> Bibliotaph
 
 # Dadaluma
-5481 "Load Dada" Ability { id: ["275C", "2773"], source: "Guardian" }
-5484 "Shockwave" Ability { id: "2783", source: "Guardian" }
-5488 "Radar" duration 2
-5494 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
-5503 "Atomic Ray" Ability { id: "278D", source: "Guardian" }
-5508 "Chakra Burst" Ability { id: "2787", source: "Guardian" }
-5520 "Prey" Ability { id: "278A", source: "Guardian" }
-5526 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
-5534 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+15481 "Load Dada" Ability { id: ["275C", "2773"], source: "Guardian" }
+15484 "Shockwave" Ability { id: "2783", source: "Guardian" }
+15488 "Radar" duration 2
+15494 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
+15503 "Atomic Ray" Ability { id: "278D", source: "Guardian" }
+15508 "Chakra Burst" Ability { id: "2787", source: "Guardian" }
+15520 "Prey" Ability { id: "278A", source: "Guardian" }
+15526 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+15534 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
 
 # Bibliotaph
-5544 "Load Biblio" Ability { id: ["275C", "2774"], source: "Guardian" }
-5553 "Radar" duration 2
-5554 "Demon Simulation" Ability { id: "2B36", source: "Guardian" }
-5567 "Run Biblio" Ability { id: "276F", source: "Guardian" }
-5574 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-5581 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-5588 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-5596 "Prey" Ability { id: "278A", source: "Guardian" }
-5605 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
-5614 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-5620 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 1620         # Load/Skip casting, return to B
+15544 "Load Biblio" Ability { id: ["275C", "2774"], source: "Guardian" }
+15553 "Radar" duration 2
+15554 "Demon Simulation" Ability { id: "2B36", source: "Guardian" }
+15567 "Run Biblio" Ability { id: "276F", source: "Guardian" }
+15574 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+15581 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+15588 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+15596 "Prey" Ability { id: "278A", source: "Guardian" }
+15605 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+15614 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+15620 "--sync--" StartsUsing { id: ["275C", "2773"], source: "Guardian" } jump 16020  # Load/Skip casting, return to B
 
 # Should be unreachable, only here for visual continuity before/after jump
-5625 "Load Ultros"
-5626 "Ink"
-5633 "Tentacle Simulation"
-5637 "Tentacle"
-5639 "Bomb Deployment"
-5643 "Wallop"
-5648 "Atomic Ray"
+15625 "Load Ultros"
+15626 "Ink"
+15633 "Tentacle Simulation"
+15637 "Tentacle"
+15639 "Bomb Deployment"
+15643 "Wallop"
+15648 "Atomic Ray"
 
 ##########################################################
 ##### Divergent paths reconverge, continue Version B #####
 ##########################################################
 
 # Ultros
-1625 "Load Ultros" Ability { id: ["275C", "2773"], source: "Guardian" }
-1626 "Ink" Ability { id: "277D", source: "Guardian" }
-1633 "Tentacle Simulation" Ability { id: "275E", source: "Guardian" }
-1637 "Tentacle"
-1639 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
-1643 "Wallop"
-1648 "Atomic Ray" Ability { id: "278D", source: "Guardian" }
-1653 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
-1662 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
-1672 "Run Ultros (NE)" Ability { id: "276F", source: "Guardian" }
-1678 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
-1681 "Interrupt Stoneskin" duration 4
-1681 "--untargetable--" Ability { id: "2937", source: "Guardian" }
-1688 "Chain Cannon" duration 2
-1694 "Main Cannon" Ability { id: "2790", source: "Guardian" }
-1697 "--targetable--" Ability { id: "2938", source: "Guardian" }
-1706 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+16025 "Load Ultros" Ability { id: ["275C", "2773"], source: "Guardian" }
+16026 "Ink" Ability { id: "277D", source: "Guardian" }
+16033 "Tentacle Simulation" Ability { id: "275E", source: "Guardian" }
+16037 "Tentacle"
+16039 "Bomb Deployment" Ability { id: "2762", source: "Guardian" }
+16043 "Wallop"
+16048 "Atomic Ray" Ability { id: "278D", source: "Guardian" }
+16053 "Magitek Ray" Ability { id: "2788", source: "Guardian" }
+16062 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
+16072 "Run Ultros (NE)" Ability { id: "276F", source: "Guardian" }
+16078 "Missile Simulation" Ability { id: "2764", source: "Guardian" }
+16081 "Interrupt Stoneskin" duration 4
+16081 "--untargetable--" Ability { id: "2937", source: "Guardian" }
+16088 "Chain Cannon" duration 2
+16094 "Main Cannon" Ability { id: "2790", source: "Guardian" }
+16097 "--targetable--" Ability { id: "2938", source: "Guardian" }
+17006 "Diffractive Plasma" Ability { id: "278B", source: "Guardian" }
 
 # Enrage
-1711 "--sync--" StartsUsing { id: "2791", source: "Guardian" } window 100,100
-1726 "Enrage" Ability { id: "2791", source: "Guardian" } jump 0
+17011 "--sync--" StartsUsing { id: "2791", source: "Guardian" } window 100,100
+17026 "Enrage" Ability { id: "2791", source: "Guardian" } jump 0

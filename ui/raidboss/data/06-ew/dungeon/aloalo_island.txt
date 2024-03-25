@@ -5,7 +5,7 @@ hideall "--Reset--"
 hideall "--sync--"
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
 
 #~~~~~~~~~~~~~~~~~~~~#
 # Quaqua (left path) #
@@ -29,11 +29,9 @@ hideall "--sync--"
 1046.2 "Ringing Quoits" Ability { id: "8B8B", source: "Aetheric Charge" }
 
 1051.5 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
-1057.6 "Arcane Armaments"
-
 1052.6 "--sync--" StartsUsing { id: "8B8C", source: "Quaqua" } window 40,40 jump "quaqua-left-sunny"
 1052.6 "--sync--" StartsUsing { id: "8B90", source: "Quaqua" } window 40,40 jump "quaqua-left-rainy"
-
+1057.6 "Arcane Armaments"
 
 1252.6 label "quaqua-left-sunny"
 1252.6 "--sync--" StartsUsing { id: "8B8C", source: "Quaqua" }
@@ -180,9 +178,9 @@ hideall "--sync--"
 2127.5 "Far Tide/Near Tide" Ability { id: ["8AA0", "8A9E"], source: "Ketuduke" }
 
 2134.2 "--middle--" Ability { id: "8A77", source: "Ketuduke" }
-2146.4 "--sync--" StartsUsing { id: "8A79", source: "Ketuduke" } jump "ketuduke-01"
 2137.0 "--sync--" StartsUsing { id: "8D11", source: "Ketuduke" } jump "ketuduke-02"
 2137.0 "--sync--" StartsUsing { id: "8A92", source: "Ketuduke" } jump "ketuduke-0304"
+2146.4 "--sync--" StartsUsing { id: "8A79", source: "Ketuduke" } jump "ketuduke-01"
 
 # path 01
 2234.2 "--middle--" Ability { id: "8A77", source: "Ketuduke" }
@@ -332,9 +330,10 @@ hideall "--sync--"
 3052.3 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
 3058.4 "Arcane Armaments"
 
+#cactbot-timeline-lint-disable-sync-order
 3053.4 "--sync--" StartsUsing { id: "8B8C", source: "Quaqua" } window 40,40 jump "quaqua-middle-water"
 3053.4 "--sync--" StartsUsing { id: "8B90", source: "Quaqua" } window 40,40 jump "quaqua-middle-poison"
-
+#cactbot-timeline-lint-enable-sync-order
 
 3153.4 label "quaqua-middle-water"
 3153.4 "--sync--" StartsUsing { id: "8B8C", source: "Quaqua" }
@@ -450,18 +449,19 @@ hideall "--sync--"
 4088.9 "Analysis" Ability { id: "887B", source: "Lala" }
 4102.7 "Targeted Light" Ability { id: "8CDC", source: "Lala" }
 
+#cactbot-timeline-lint-disable-sync-order
 4111.0 "--sync--" StartsUsing { id: "8882", source: "Lala" } window 40,40 jump "lala-05"
 4114.0 "Faunal Figure?" #Ability { id: "8882", source: "Lala" }
 
 4111.0 "--sync--" StartsUsing { id: "8880", source: "Lala" } window 40,40 jump "lala-06"
 4114.0 "Floral Figure?" #Ability { id: "8880", source: "Lala" }
 
-4111.0 "--sync--"  StartsUsing { id: "8884", source: "Lala" } window 40,40 jump "lala-07"
+4111.0 "--sync--" StartsUsing { id: "8884", source: "Lala" } window 40,40 jump "lala-07"
 4114.0 "Constructive Figure?" #Ability { id: "8884", source: "Lala" }
 
 4111.0 "--sync--" StartsUsing { id: "8D2C", source: "Lala" } window 40,40 jump "lala-08"
 4114.0 "Volcanic Coordinates (cast)?" #Ability { id: "8D2C", source: "Lala" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 4211.0 label "lala-05"
 4211.0 "--sync--" StartsUsing { id: "8882", source: "Lala" }
@@ -514,7 +514,7 @@ hideall "--sync--"
 
 
 4611.0 label "lala-07"
-4611.0 "--sync--"  StartsUsing { id: "8884", source: "Lala" }
+4611.0 "--sync--" StartsUsing { id: "8884", source: "Lala" }
 4614.0 "Constructive Figure" Ability { id: "8884", source: "Lala" }
 4629.1 "Aero II" Ability { id: "8885", source: "Aloalo Golem" }
 4634.9 "Strategic Strike" Ability { id: "887E", source: "Lala" }
@@ -620,9 +620,10 @@ hideall "--sync--"
 5053.1 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
 5059.3 "Arcane Armaments"
 
+#cactbot-timeline-lint-disable-sync-order
 5054.3 "--sync--" StartsUsing { id: "8B8C", source: "Quaqua" } window 40,40 jump "quaqua-right-fixed"
 5054.3 "--sync--" StartsUsing { id: "8B90", source: "Quaqua" } window 40,40 jump "quaqua-right-untouched"
-
+#cactbot-timeline-lint-enable-sync-order
 
 5154.3 label "quaqua-right-fixed"
 5154.3 "--sync--" StartsUsing { id: "8B8C", source: "Quaqua" }
@@ -637,9 +638,9 @@ hideall "--sync--"
 5194.4 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
 5200.8 "Arcane Pursuit" Ability { id: "8BA4", source: "Quaqua" }
 5214.1 "--cleanse--" Ability { id: "8BAD" }
+5214.9 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
 5216.8 "--cleanse--" Ability { id: "8BAD" }
 
-5214.9 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
 5221.1 "Arcane Pursuit" Ability { id: "8BA4", source: "Quaqua" }
 5237.1 "--cleanse--" Ability { id: "8BA6" }
 5244.1 "--cleanse--" Ability { id: "8BA6" }
@@ -654,10 +655,10 @@ hideall "--sync--"
 5274.9 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
 5281.1 "Arcane Pursuit" Ability { id: "8BA4", source: "Quaqua" }
 5297.1 "--cleanse--" Ability { id: "8BA6" }
-5304.1 "--cleanse--" Ability { id: "8BA6" }
-
 5297.2 "--middle--" Ability { id: "8B8F", source: "Quaqua" }
 5303.3 "Arcane Armaments" Ability { id: "8B8C", source: "Quaqua" }
+5304.1 "--cleanse--" Ability { id: "8BA6" }
+
 5313.6 "Hammer Landing 1" Ability { id: "8B8D", source: "Quaqua" }
 5315.7 "Hammer Landing 2" #Ability { id: "8B8E", source: "Quaqua" }
 5317.7 "Hammer Landing 3" #Ability { id: "8B8E", source: "Quaqua" }
@@ -753,6 +754,7 @@ hideall "--sync--"
 6107.3 "Fire Spread" Ability { id: "8934", source: "Statice" } duration 10
 6116.9 "Aero IV" Ability { id: "8929", source: "Statice" }
 
+#cactbot-timeline-lint-disable-sync-order
 6124.1 "--sync--" StartsUsing { id: "8945", source: "Statice" } window 40,40 jump "statice-09"
 6128.1 "Whoopee Cushion?" #Ability { id: "8945", source: "Statice" }
 
@@ -761,7 +763,7 @@ hideall "--sync--"
 
 6124.1 "--sync--" StartsUsing { id: "8936", source: "Statice" } window 40,40 jump "statice-11"
 6128.1 "Jack-in-the-box?" #Ability { id: "8936", source: "Statice" }
-
+#cactbot-timeline-lint-enable-sync-order
 
 6224.1 label "statice-09"
 6224.1 "--sync--" StartsUsing { id: "8945", source: "Statice" }

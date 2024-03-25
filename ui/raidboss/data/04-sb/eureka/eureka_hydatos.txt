@@ -9,8 +9,8 @@ hideall "--sync--"
 # Trigger set contains 'resetWhenOutOfCombat: false'
 
 # .*is no longer sealed
-0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 100000 jump 0
-0.0 "--Reset--" RemovedCombatant { name: "Proto Ozma" } window 100000 jump 0
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+0.0 "--Reset--" RemovedCombatant { name: "Proto Ozma" } window 0,100000 jump 0
 
 
 #####################
@@ -95,8 +95,8 @@ hideall "--sync--"
 2261.4 "Elemental Shift" Ability { id: "3937", source: "Owain" }
 2267.5 "Ivory Palm Adds" # Ability { id: "3941", source: "Ivory Palm" }
 2272.5 "Elemental Magicks" Ability { id: "393[AB]", source: "Owain" }
-2290.5 "(Explosion Enrage)"
 2283.5 "Thricecull" Ability { id: "3945", source: "Owain" }
+2290.5 "(Explosion Enrage)"
 2291.6 "Spiritcull" Ability { id: "393E", source: "Owain" }
 2296.6 "Legendary Imbas" Ability { id: "3940", source: "Owain" }
 2296.6 "Piercing Light" Ability { id: "393F", source: "Owain" }
@@ -293,7 +293,7 @@ hideall "--sync--"
 
 ### Pyramid Phase
 5300.0 "Pyramid Form" Ability { id: "37A4", source: "Proto Ozma" } window 800,800
-5303.0  "--sync--" Ability { id: ["37A6", "37B4", "37A0"], source: "Ozmashade" }
+5303.0 "--sync--" Ability { id: ["37A6", "37B4", "37A0"], source: "Ozmashade" }
 5304.5 "Shade Ability" # Ability { id: ["37A7", "37B5", "37A1"], source: "Shadow" }
 
 5307.0 "--sync--" Ability { id: "37A6", source: "Proto Ozma" }
@@ -415,5 +415,5 @@ hideall "--sync--"
 
 
 ### Star Form Enrage
-6200.0 "--sync--"  StartsUsing { id: "396D", source: "Proto Ozma" } window 300,0
+6200.0 "--sync--" StartsUsing { id: "396D", source: "Proto Ozma" } window 300,0
 6210.0 "Shooting Star Enrage" Ability { id: "396D", source: "Proto Ozma" }

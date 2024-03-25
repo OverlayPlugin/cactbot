@@ -61,7 +61,7 @@ hideall "--sync--"
 
 ### Cutscene
 # FIXME: this duration differs from the extreme version??? is that true??
-500.0 "--cutscene--" Ability { id: "4E1C", source: "The Ruby Weapon" } window 500,0 duration 61.5
+500.0 "--cutscene--" Ability { id: "4E1C", source: "The Ruby Weapon" } duration 61.5 window 500,0
 561.5 "--targetable--"
 
 ### Phase 2

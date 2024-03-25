@@ -164,10 +164,10 @@ hideall "--sync--"
 658.7 "Tank Purge?" #Ability { id: "5EA", source: "The Ultima Weapon" }
 662.0 "Homing Lasers" Ability { id: "5E1", source: "The Ultima Weapon" } window 12,5
 667.3 "Ceruleum Vent" Ability { id: "5E0", source: "The Ultima Weapon" }
-670.7 "Viscous Aetheroplasm?" #Ability { id: "5DF", source: "The Ultima Weapon" }
 
 # From here, the late Cyclone/EruptionHoming Lasers blocks are added.
 669.9 "--sync--" StartsUsing { id: "5F1", source: "The Ultima Weapon" } window 15,15 jump 697.3 # Radiant Plume
+670.7 "Viscous Aetheroplasm?" #Ability { id: "5DF", source: "The Ultima Weapon" }
 671.0 "--sync--" StartsUsing { id: "5F4", source: "The Ultima Weapon" } window 15,15 jump 797.3 # Eruption
 672.6 "Radiant Plume?"
 673.7 "Eruption x5?"
@@ -205,7 +205,7 @@ hideall "--sync--"
 819.2 "Ceruleum Vent" Ability { id: "5E0", source: "The Ultima Weapon" }
 822.5 "Viscous Aetheroplasm" Ability { id: "5DF", source: "The Ultima Weapon" }
 
-825.1 "--sync--" StartsUsing { id: "5F1", source: "The Ultima Weapon" } window 15,15 jump 697.3 # Radiant  Plume
+825.1 "--sync--" StartsUsing { id: "5F1", source: "The Ultima Weapon" } window 15,15 jump 697.3 # Radiant Plume
 827.8 "Radiant Plume?"
 829.8 "Homing Lasers?" Ability { id: "5E1", source: "The Ultima Weapon" } window 10,10 jump 900
 830.6 "Crimson Cyclone?"

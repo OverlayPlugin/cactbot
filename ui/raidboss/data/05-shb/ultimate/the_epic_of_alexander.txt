@@ -105,8 +105,8 @@ hideall "--sync--"
 505.1 "Alpha Sword" #Ability { id: "486B", source: "Cruise Chaser" }
 505.2 "Flarethrower 1" #Ability { id: "486C", source: "Brute Justice" }
 506.1 "Alpha Sword" #Ability { id: "486B", source: "Cruise Chaser" }
-507.4 "Flarethrower 2" #Ability { id: "486C", source: "Brute Justice" }
 507.2 "Alpha Sword" #Ability { id: "486B", source: "Cruise Chaser" }
+507.4 "Flarethrower 2" #Ability { id: "486C", source: "Brute Justice" }
 511.4 "--targetable--"
 521.5 "Chastening Heat" Ability { id: "4A80", source: "Alexander Prime" }
 524.6 "Divine Spear 1" #Ability { id: "4A82", source: "Alexander Prime" }
@@ -165,8 +165,8 @@ hideall "--sync--"
 ### Transition 3: DPS Checks
 699.4 "Summon Alexander" Ability { id: "4A55", source: "Alexander Prime" }
 705.6 "--alex untargetable--"
-706.8 "--adds targetable--"
 705.7 "J Storm + Waves x16" Ability { id: "4876", source: "Brute Justice" } duration 50
+706.8 "--adds targetable--"
 731.7 "Eternal Darkness Enrage" Ability { id: "4875", source: "Cruise Chaser" }
 771.9 "Divine Judgment Enrage" Ability { id: "4879", source: "Alexander Prime" } window 67,5
 787.3 "Divine Judgment" Ability { id: "487A", source: "Alexander" }
