@@ -4,11 +4,12 @@ import path from 'path';
 import { assert } from 'chai';
 
 import { keysThatRequireTranslation } from '../../resources/netregexes';
+import { UnreachableCode } from '../../resources/not_reached';
 import Regexes from '../../resources/regexes';
 import { translateWithReplacements } from '../../resources/translations';
-import { LooseTriggerSet } from '../../types/trigger';
+import { LooseTimelineTrigger, LooseTriggerSet } from '../../types/trigger';
 import { CommonReplacement, commonReplacement } from '../../ui/raidboss/common_replacement';
-import { TimelineParser, TimelineReplacement } from '../../ui/raidboss/timeline_parser';
+import { TimelineParser, TimelineReplacement, Error, regexes } from '../../ui/raidboss/timeline_parser';
 
 const parseTimelineFileFromTriggerFile = (filepath: string) => {
   const fileContents = fs.readFileSync(filepath, 'utf8');
@@ -18,6 +19,233 @@ const parseTimelineFileFromTriggerFile = (filepath: string) => {
     throw new Error(`Error: Trigger file ${filepath} has no timelineFile attribute defined`);
   return timelineFile;
 };
+
+// syncKeywords must appear on a sync line in the order specified
+const syncKewordsOrder = [
+  'duration',
+  'window',
+  'jump',
+  'forcejump',
+];
+
+// Make all props required
+type LintError = Error & {
+  lineNumber: number;
+  line: string;
+};
+
+class TimelineParserLint extends TimelineParser {
+  // Track the last sync time during linting to ensure proper order
+  private lastSyncTime = 0;
+  // Override to stop checking sync order during linting
+  private ignoreSyncOrder = false;
+  // Capture lint errors separatly from TimelineParser's errors so we can do a separate unit test
+  public lintErrors: LintError[] = [];
+
+  constructor(
+    text: string,
+    triggers: LooseTimelineTrigger[],
+  ) {
+    super(text, [], triggers); // calls TimelineParser's parse() method
+    this.lintTimelineFile(text);
+  }
+
+  private lintTimelineFile(text: string): void {
+    const lines = text.split('\n');
+    let lineNumber = 0;
+    for (const line of lines) {
+      ++lineNumber;
+
+      if (line.includes('#cactbot-timeline-lint-disable-sync-order'))
+        this.ignoreSyncOrder = true;
+      else if (line.includes('#cactbot-timeline-lint-enable-sync-order'))
+        this.ignoreSyncOrder = false;
+
+      if (!line || regexes.comment.test(line))
+        continue;
+
+      this.lintLine(line, lineNumber);
+    }
+  }
+
+  private lintLine(
+    line: string,
+    lineNumber: number,
+  ): void {
+    const origLine = line;
+    // First, reduce all double-quoted strings to just "".  We don't check/lint string contents,
+    // and this avoids various problems like inadvertently matching double-spaces inside a string,
+    // or the use of a {} regex occurence modifier causing errors in identifying line groups.
+    line = line.replace(/"[^"]*?"/g, '""');
+
+    line = line.replace(/\r/g, ''); // remove \r before checking for extraneous whitespace
+    if (line.trim() !== line) {
+      this.lintErrors.push({
+        lineNumber: lineNumber,
+        line: origLine,
+        error: 'Line has leading or trailing whitespace',
+      });
+    }
+    line = line.trim();
+
+    // Remove in-line comments from further lint checks
+    line = line.replace(/#.*$/, '').trim();
+    if (line.length === 0)
+      return;
+
+    // There should be no remaining allowable double-spacing within the line
+    if (line.match(/ {2}.+/)) {
+      this.lintErrors.push({
+        lineNumber: lineNumber,
+        line: origLine,
+        error: 'Line has double spaces not enclosed by quotes',
+      });
+      // don't return; continue processing the line
+    }
+
+    // Capture each part of the line (separated by spaces).
+    // Anything encapsulated by double-quotes or braces will be treated as a single element.
+    const lineParts = line.match(/"[^"]*"|\{[^}]*\}|[^ ]+/g);
+    if (lineParts === null || lineParts[0] === undefined) {
+      this.lintErrors.push({
+        lineNumber: lineNumber,
+        line: origLine,
+        error: 'Bad format - cannot parse line into parts for further linting',
+      });
+      return;
+    }
+
+    const first = lineParts[0];
+    if (first === 'hideall') {
+      // parse() throws errors if a hideall line has an invalid format
+      return;
+    }
+
+    // At this point, if `first` is not a time, it's not a valid timeline entry
+    const time = parseFloat(first);
+    if (isNaN(time)) {
+      this.lintErrors.push({
+        lineNumber: lineNumber,
+        line: origLine,
+        error: 'Line does not begin with a config keyword, comment, or sync time.',
+      });
+      return;
+    }
+
+    // Ensure that the time is either an integer or has a single digit after the decimal
+    if (!Number.isInteger(time) && !/^\d+\.\d$/.test(time.toString())) {
+      this.lintErrors.push({
+        lineNumber: lineNumber,
+        line: origLine,
+        error: 'Sync time must be an integer or float with a single-digit fractional',
+      });
+      // don't return; continue processing the line
+    }
+
+    // Enforce chronological order of sync lines
+    if (!this.ignoreSyncOrder) {
+      if (time < this.lastSyncTime)
+        this.lintErrors.push({
+          lineNumber: lineNumber,
+          line: origLine,
+          error:
+            `Sync time of "${time.toString()}" predates prior entry of "${this.lastSyncTime.toString()}"`,
+        });
+      this.lastSyncTime = time;
+      // don't return; continue processing the line
+    }
+
+    const second = lineParts[1];
+    if (second === undefined) {
+      this.lintErrors.push({
+        lineNumber: lineNumber,
+        line: origLine,
+        error: 'Sync time specified with no other parameters',
+      });
+      return;
+    }
+    // parse() throws errors if the label line is invalidly formatted.
+    if (second === 'label')
+      return;
+
+    // This is a normal timeline entry
+
+    // Some entries may only have a time and name with nothing else.
+    // They may also have a duration keyword (and only that keyword).
+    // parse() throws errors if a no-sync line has invalid args
+    if (lineParts.length === 2)
+      return;
+    else if (lineParts[2] === 'duration' && lineParts.length === 4)
+      return;
+
+    // From this point, we should expect [time] [name] [type] [NetRegex]
+    // So just check keyword ordering (everything after), and 'window' format.
+    const keywords = lineParts.slice(4);
+    if (keywords.length === 0)
+      return;
+
+    const keywordList = keywords.filter((_, i) => i % 2 === 0);
+    for (let i = 0; i < keywordList.length - 1; i++) {
+      const thisKeyword = keywordList[i];
+      if (thisKeyword === undefined)
+        throw new UnreachableCode();
+
+      if (!syncKewordsOrder.includes(thisKeyword)) {
+        this.lintErrors.push({
+          lineNumber: lineNumber,
+          line: origLine,
+          error: `Keyword "${thisKeyword}" is not valid`,
+        });
+        return;
+      }
+
+      // check that `window` is in a [number],[number] format
+      if (thisKeyword === 'window') {
+        const windowKwIdx = keywords.indexOf('window');
+        const windowArgs = keywords[windowKwIdx + 1];
+        if (windowArgs === undefined) {
+          this.lintErrors.push({
+            lineNumber: lineNumber,
+            line: origLine,
+            error: `Missing parameter for 'window' keyword`,
+          });
+          return;
+        }
+        if (!/^\d+(\.\d)?,\d+(\.\d)?$/.test(windowArgs)) {
+          this.lintErrors.push({
+            lineNumber: lineNumber,
+            line: origLine,
+            error: `Invalid 'window' parameter "${windowArgs}": must be in [#],[#] format.`,
+          });
+          // don't return; continue processing the line
+        }
+      }
+
+      const nextKeyword = keywordList[i + 1];
+      if (nextKeyword === undefined)
+        break;
+
+      if (!syncKewordsOrder.includes(nextKeyword)) {
+        this.lintErrors.push({
+          lineNumber: lineNumber,
+          line: origLine,
+          error: `Cannot validate keyword order - invalid next keyword "${nextKeyword}"`,
+        });
+        return;
+      }
+
+      if (syncKewordsOrder.indexOf(thisKeyword) > syncKewordsOrder.indexOf(nextKeyword)) {
+        this.lintErrors.push({
+          lineNumber: lineNumber,
+          line: origLine,
+          error: `Keyword "${thisKeyword}" cannot precede "${nextKeyword}"`,
+        });
+        return;
+      }
+    }
+    return;
+  }
+}
 
 type TestFile = {
   timelineFile: string;
@@ -147,7 +375,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
         const triggersFile = testFile.triggersFile;
         let timelineText;
         let triggerSet: LooseTriggerSet;
-        let timeline: TimelineParser;
+        let timeline: TimelineParserLint;
 
         before(async () => {
           // Normalize path
@@ -159,15 +387,10 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           // Dynamic imports don't have a type, so add type assertion.
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           triggerSet = (await import(importPath)).default as LooseTriggerSet;
-          timeline = new TimelineParser(
-            timelineText,
-            [],
-            triggerSet.timelineTriggers ?? [],
-            undefined, // styles
-            undefined, // options
-            undefined, // zoneId
-            true, // runLint
-          );
+            timeline = new TimelineParserLint(
+              timelineText,
+              triggerSet.timelineTriggers ?? [],
+            );
         });
         // This test loads an individual raidboss timeline and makes sure
         // that timeline.js can parse it without errors.
@@ -346,6 +569,13 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
               }
             }
           }
+        });
+        it('should not have lint', () => {
+          let errorStr = '';
+          for (const err of timeline.lintErrors) {
+            errorStr += `\n${err.lineNumber}:${err.error}:${err.line}`;
+          }
+          assert.isEmpty(errorStr, `${errorStr}\n`);
         });
       });
     }

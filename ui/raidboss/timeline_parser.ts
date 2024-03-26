@@ -15,14 +15,6 @@ import { LooseTimelineTrigger, TriggerAutoConfig } from '../../types/trigger';
 
 import defaultOptions, { RaidbossOptions, TimelineConfig } from './raidboss_options';
 
-// syncKeywords must appear on a sync line in the order specified
-const syncKewordsOrder = [
-  'duration',
-  'window',
-  'jump',
-  'forcejump',
-];
-
 const isLogDefinitionTypes = (type: string): type is LogDefinitionTypes => {
   return type in logDefinitions;
 };
@@ -141,7 +133,7 @@ export type ParsedText = ParsedPopupText | ParsedTriggerText;
 
 export type Text = ParsedText & { time: number };
 
-const regexes = {
+export const regexes = {
   comment: /^\s*#/,
   commentLine: /#.*$/,
   durationCommand: /(?:[^#]*?\s)?(?<text>duration\s+(?<seconds>[0-9]+(?:\.[0-9]+)?))(\s.*)?$/,
@@ -193,12 +185,6 @@ export class TimelineParser {
   private labelToTime: { [name: string]: number } = {};
   // Map of encountered syncs to the label they are jumping to.
   private labelToSync: { [name: string]: Sync[] } = {};
-  // Run linting checks while parsing timeline file
-  private runLint = false;
-  // Track the last sync time during linting to ensure proper order
-  private lastSyncTime = 0;
-  // Override to stop checking sync order during linting
-  private ignoreSyncOrder = false;
 
   constructor(
     text: string,
@@ -207,12 +193,10 @@ export class TimelineParser {
     styles?: TimelineStyle[],
     options?: RaidbossOptions,
     zoneId?: number,
-    runLint?: boolean,
   ) {
     this.options = options ?? defaultOptions;
     this.perTriggerAutoConfig = this.options.PerTriggerAutoConfig;
     this.replacements = replacements;
-    this.runLint = runLint ?? false;
 
     this.timelineConfig = typeof zoneId === 'number'
       ? this.options.PerZoneTimelineConfig[zoneId] ?? {}
@@ -257,19 +241,10 @@ export class TimelineParser {
       ++lineNumber;
       line = line.trim();
 
-      // before ignoring comments, check if it's a lint override instruction
-      if (line.includes('#cactbot-timeline-lint-disable-sync-order'))
-        this.ignoreSyncOrder = true;
-      else if (line.includes('#cactbot-timeline-lint-enable-sync-order'))
-        this.ignoreSyncOrder = false;
-
       // Drop comments and empty lines.
       if (!line || regexes.comment.test(line))
         continue;
       const originalLine = line;
-
-      if (this.runLint)
-        this.checkForLint(line, lineNumber);
 
       let match = regexes.ignore.exec(line);
       if (match && match['groups']) {
@@ -761,166 +736,5 @@ export class TimelineParser {
     });
 
     return translatedLines;
-  }
-
-  private checkForLint(
-    line: string,
-    lineNumber: number,
-  ): void {
-    // First, reduce all double-quoted strings to just "".  We don't check/lint string contents,
-    // and this avoids various problems like inadvertently matching double-spaces inside a string,
-    // or the use of a {} regex occurence modifier causing errors in identifying line groups.
-    line = line.replace(/"[^"]*?"/g, '""');
-
-    if (line.trim() !== line) {
-      this.errors.push({
-        lineNumber: lineNumber,
-        error: 'Line has leading or trailing whitespace',
-      });
-    }
-
-    // Remove in-line comments from further lint checks
-    // full comment lines are already ignored before parse() calls this func
-    line = line.replace(/#.*$/, '').trim();
-    if (line.length === 0)
-      return;
-
-    // There should be no remaining allowable double-spacing within the line
-    if (line.match(/ {2}.+/)) {
-      this.errors.push({
-        lineNumber: lineNumber,
-        error: 'Line has double spaces',
-      });
-    }
-
-    // Capture each part of the line (separated by spaces).
-    // Anything encapsulated by double-quotes or braces will be treated as a single element.
-    const lineParts = line.match(/"[^"]*"|\{[^}]*\}|[^ ]+/g);
-    if (lineParts === null || lineParts[0] === undefined) {
-      this.errors.push({
-        lineNumber: lineNumber,
-        error: 'Not a valid timeline entry.  Cannot continue linting.',
-      });
-      return;
-    }
-
-    const first = lineParts[0];
-    if (first === 'hideall') {
-      // parse() throws errors if a hideall line has an invalid format
-      return;
-    }
-
-    // At this point, if `first` is not a time, it's not a valid timeline entry
-    const time = parseFloat(first);
-    if (isNaN(time)) {
-      this.errors.push({
-        lineNumber: lineNumber,
-        error: 'Not a valid config entry, comment, or timeline entry',
-      });
-      return;
-    }
-
-    // Ensure that the time is either an integer or has a single digit after the decimal
-    if (!Number.isInteger(time) && !/^\d+\.\d$/.test(time.toString())) {
-      this.errors.push({
-        lineNumber: lineNumber,
-        error: 'Sync time must be an integer or have one decimal place',
-      });
-    }
-
-    // Enforce chronological order of sync lines
-    if (!this.ignoreSyncOrder) {
-      if (time < this.lastSyncTime)
-        this.errors.push({
-          lineNumber: lineNumber,
-          error:
-            `Misordered entry: sync time of ${time.toString()} (prior entry: ${this.lastSyncTime.toString()})`,
-        });
-      this.lastSyncTime = time;
-    }
-
-    const second = lineParts[1];
-    if (second === undefined) {
-      this.errors.push({
-        lineNumber: lineNumber,
-        error: 'Sync time specified with no other parameters',
-      });
-      return;
-    }
-    // parse() throws errors if the label line is invalidly formatted.
-    if (second === 'label')
-      return;
-
-    // This is a normal timeline entry
-
-    // Some entries may only have a time and name with nothing else.
-    // They may also have a duration keyword (and only that keyword).
-    // parse() throws errors if a no-sync line has invalid args
-    if (lineParts.length === 2)
-      return;
-    else if (lineParts[2] === 'duration' && lineParts.length === 4)
-      return;
-
-    // From this point, we should expect [time] [name] [type] [NetRegex]
-    // So just check keyword ordering (everything after), and 'window' format.
-    const keywords = lineParts.slice(4);
-    if (keywords.length === 0)
-      return;
-
-    const keywordList = keywords.filter((_, i) => i % 2 === 0);
-    for (let i = 0; i < keywordList.length - 1; i++) {
-      const thisKeyword = keywordList[i];
-      if (thisKeyword === undefined)
-        throw new UnreachableCode();
-
-      if (!syncKewordsOrder.includes(thisKeyword)) {
-        this.errors.push({
-          lineNumber: lineNumber,
-          error: `Found invalid keyword: ${thisKeyword}`,
-        });
-        return;
-      }
-
-      // check that `window` is in a [number],[number] format
-      if (thisKeyword === 'window') {
-        const windowKwIdx = keywords.indexOf('window');
-        const windowArgs = keywords[windowKwIdx + 1];
-        if (windowArgs === undefined) {
-          this.errors.push({
-            lineNumber: lineNumber,
-            error: `Invalid parameter for 'window' keyword`,
-          });
-          return;
-        }
-        if (!/^\d+(\.\d)?,\d+(\.\d)?$/.test(windowArgs)) {
-          this.errors.push({
-            lineNumber: lineNumber,
-            error: `Invalid 'window' (${windowArgs}): must be in [number],[number] format.`,
-          });
-          return;
-        }
-      }
-
-      const nextKeyword = keywordList[i + 1];
-      if (nextKeyword === undefined)
-        break;
-
-      if (!syncKewordsOrder.includes(nextKeyword)) {
-        this.errors.push({
-          lineNumber: lineNumber,
-          error: `Cannot check keyword order - found invalid next keyword: ${nextKeyword}`,
-        });
-        return;
-      }
-
-      if (syncKewordsOrder.indexOf(thisKeyword) > syncKewordsOrder.indexOf(nextKeyword)) {
-        this.errors.push({
-          lineNumber: lineNumber,
-          error: `Improper keyword order: ${nextKeyword} must precede ${thisKeyword}`,
-        });
-        return;
-      }
-    }
-    return;
   }
 }
