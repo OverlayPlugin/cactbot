@@ -223,4 +223,4 @@ hideall "--sync--"
 2600.0 "Artificial Boost" Ability { id: "3730", source: "Annia Quo Soranus" } window 600,5
 # 2603.2 "--sync--" StartsUsing { id: "3731", source: "Julia Quo Soranus" }
 2603.2 "Imperial Authority" StartsUsing { id: "3732", source: "Annia Quo Soranus" } duration 39.7
-2642.9 "Imperial Authority Enrage" Ability { id: "3732", source: "Annia Quo Soranus" } 
+2642.9 "Imperial Authority Enrage" Ability { id: "3732", source: "Annia Quo Soranus" }

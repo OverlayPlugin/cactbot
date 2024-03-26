@@ -63,7 +63,7 @@ hideall "--sync--"
 
 357.4 "Shining Blade 1" Ability { id: "1022", source: "Ser Adelphel" } window 2,2
 359.8 "Shining Blade 2" Ability { id: "1022", source: "Ser Adelphel" } window 2,2
-362.0 "Shining Blade 3" Ability { id: "1022", source: "Ser Adelphel" } window 2,2 
+362.0 "Shining Blade 3" Ability { id: "1022", source: "Ser Adelphel" } window 2,2
 364.4 "Shining Blade 4" Ability { id: "1022", source: "Ser Adelphel" } window 2,2
 366.4 "--Untargetable--"
 369.0 "--Targetable--"
@@ -128,7 +128,7 @@ hideall "--sync--"
 1166.8 "Hyperdimensional Slash" Ability { id: "1026", source: "Ser Grinnaux" }
 1170.8 "Heavy Swing" Ability { id: "1025", source: "Ser Grinnaux" }
 1177.4 "Dimensional Collapse" Ability { id: "1028", source: "Ser Grinnaux" } window 15,15
-1182.5 "Faith Unmoving" Ability { id: "1027", source: "Ser Grinnaux" } 
+1182.5 "Faith Unmoving" Ability { id: "1027", source: "Ser Grinnaux" }
 
 1192.7 "Dimensional Rip" Ability { id: "102C", source: "Ser Grinnaux" } window 15,15
 1195.9 "Heavy Swing" Ability { id: "1025", source: "Ser Grinnaux" }

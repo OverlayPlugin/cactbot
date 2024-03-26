@@ -205,7 +205,7 @@ hideall "--sync--"
 # Timing might be a little different?
 2060.0 "Aether Bend" Ability { id: "1D99", source: "Proto Ultima" } window 30,15 jump 2007.8
 2070.6 "Aetherochemical Laser 1"
-2074.6 "Aetherochemical Laser 2" 
+2074.6 "Aetherochemical Laser 2"
 2078.6 "Aetherochemical Laser 3"
 2079.8 "Diffractive Laser"
 2085.8 "Light Pillar x8"

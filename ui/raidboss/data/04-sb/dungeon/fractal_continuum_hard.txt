@@ -79,7 +79,7 @@ hideall "--sync--"
 
 # Sephirot's block
 
-1100.0 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } 
+1100.0 "--sync--" BattleTalk2 { instanceContentTextId: "484D" }
 1107.5 "Primordial Aether" Ability { id: "2796", source: "The Ultima Warrior" } window 10,10
 1119.1 "Citadel Buster" Ability { id: "2792", source: "The Ultima Warrior" }
 1120.1 "Ratzon" Ability { id: "2797", source: "The Ultima Warrior" }
@@ -101,7 +101,7 @@ hideall "--sync--"
 
 # Sophia's Block
 
-1200.0 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } 
+1200.0 "--sync--" BattleTalk2 { instanceContentTextId: "484E" }
 1207.5 "Primordial Aether" Ability { id: "2796", source: "The Ultima Warrior" } window 10,10
 1218.1 "Ceruleum Vent" Ability { id: "2794", source: "The Ultima Warrior" }
 1225.3 "Citadel Buster" Ability { id: "2792", source: "The Ultima Warrior" }
@@ -124,7 +124,7 @@ hideall "--sync--"
 
 # Zurvan's Block
 
-1300.0 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } 
+1300.0 "--sync--" BattleTalk2 { instanceContentTextId: "484F" }
 1308.5 "Primordial Aether" Ability { id: "2796", source: "The Ultima Warrior" } window 10,10
 1311.1 "Infinite Fire/Infinite Ice" Ability { id: "279[DE]", source: "The Ultima Warrior" }
 1319.1 "Ceruleum Vent" Ability { id: "2794", source: "The Ultima Warrior" }

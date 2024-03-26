@@ -154,7 +154,7 @@ hideall "--sync--"
 ### BLACKFIRE
 572.0 "Blackfire Trio" Ability { id: "26E3", source: "Bahamut Prime" } window 70,10
 574.0 "--untargetable--"
-576.0 "Liquid Hell x5" duration 4.5 #Ability { id: "26AD", source: "Twintania" } 
+576.0 "Liquid Hell x5" duration 4.5 #Ability { id: "26AD", source: "Twintania" }
 579.0 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
 580.0 "Megaflare Dive" Ability { id: "26E1", source: "Bahamut Prime" }
 586.1 "Hypernova x4" duration 4.5 #Ability { id: "26BF", source: "Nael deus Darnus" }

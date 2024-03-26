@@ -22,7 +22,7 @@ hideall "--sync--"
 36.6 "Air Raid" Ability { id: "19CA", source: "Nuzal Hueloc" }
 48.1 "Air Raid" Ability { id: "19CA", source: "Nuzal Hueloc" }
 59.6 "Air Raid" Ability { id: "19CA", source: "Nuzal Hueloc" } jump 36.6
-71.1 "Air Raid" 
+71.1 "Air Raid"
 82.6 "Air Raid"
 94.1 "Air Raid"
 
