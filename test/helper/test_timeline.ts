@@ -9,7 +9,12 @@ import Regexes from '../../resources/regexes';
 import { translateWithReplacements } from '../../resources/translations';
 import { LooseTimelineTrigger, LooseTriggerSet } from '../../types/trigger';
 import { CommonReplacement, commonReplacement } from '../../ui/raidboss/common_replacement';
-import { TimelineParser, TimelineReplacement, Error, regexes } from '../../ui/raidboss/timeline_parser';
+import {
+  Error,
+  regexes,
+  TimelineParser,
+  TimelineReplacement,
+} from '../../ui/raidboss/timeline_parser';
 
 const parseTimelineFileFromTriggerFile = (filepath: string) => {
   const fileContents = fs.readFileSync(filepath, 'utf8');
@@ -387,10 +392,10 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           // Dynamic imports don't have a type, so add type assertion.
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           triggerSet = (await import(importPath)).default as LooseTriggerSet;
-            timeline = new TimelineParserLint(
-              timelineText,
-              triggerSet.timelineTriggers ?? [],
-            );
+          timeline = new TimelineParserLint(
+            timelineText,
+            triggerSet.timelineTriggers ?? [],
+          );
         });
         // This test loads an individual raidboss timeline and makes sure
         // that timeline.js can parse it without errors.
