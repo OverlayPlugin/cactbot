@@ -658,7 +658,6 @@ hideall "--sync--"
 5237.6 "Destructive Bolt" Ability { id: "8CEC", source: "Eulogia" }
 
 5300.0 label "Torrential Tridents"
-#5297.8 "--middle--" Ability { id: "8A02", source: "Eulogia" } # unreachable - info only
 5300.0 "--sync--" StartsUsing { id: "8A4E", source: "Eulogia" }
 5302.0 "Torrential Tridents" Ability { id: "8A4E", source: "Eulogia" }
 5302.9 "Landing 1" #Ability { id: "8A4F", source: "Trident" }
@@ -684,7 +683,6 @@ hideall "--sync--"
 5429.2 "First Blush 4" Ability { id: "8A36", source: "Eulogia" }
 
 5500.0 label "Hieroglyphika"
-#5497.7 "--middle--" Ability { id: "8A02", source: "Eulogia" }  # unreachable - info only
 5500.0 "--sync--" StartsUsing { id: "8A43", source: "Eulogia" }
 5505.0 "Hieroglyphika" Ability { id: "8A43", source: "Eulogia" }
 5522.1 "--sync--" Ability { id: "8A44", source: "Eulogia" }
@@ -692,7 +690,6 @@ hideall "--sync--"
 5537.9 "Destructive Bolt" Ability { id: "8CEC", source: "Eulogia" }
 
 5600.0 label "Hydrostasis"
-#5597.8 "--middle--" Ability { id: "8A02", source: "Eulogia" } # unreachable - info only
 5600.0 "--sync--" Ability { id: "8A37", source: "Eulogia" }
 5604.0 "Hydrostasis" Ability { id: "8A37", source: "Eulogia" }
 5612.0 "Time and Tide" Ability { id: "8A32", source: "Eulogia" }
