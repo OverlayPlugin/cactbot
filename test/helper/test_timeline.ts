@@ -44,7 +44,7 @@ class TimelineParserLint extends TimelineParser {
   private lastSyncTime = 0;
   // Override to stop checking sync order during linting
   private ignoreSyncOrder = false;
-  // Capture lint errors separatly from TimelineParser's errors so we can do a separate unit test
+  // Capture lint errors separately from TimelineParser's errors so we can do a separate unit test
   public lintErrors: LintError[] = [];
 
   constructor(
@@ -142,7 +142,7 @@ class TimelineParserLint extends TimelineParser {
       this.lintErrors.push({
         lineNumber: lineNumber,
         line: origLine,
-        error: 'Sync time must be an integer or float with a single-digit fractional',
+        error: 'Sync time must be an integer or a float with a single decimal place',
       });
       // don't return; continue processing the line
     }
@@ -156,7 +156,8 @@ class TimelineParserLint extends TimelineParser {
           error:
             `Sync time of "${time.toString()}" predates prior entry of "${this.lastSyncTime.toString()}"`,
         });
-      this.lastSyncTime = time;
+      else
+        this.lastSyncTime = time;
       // don't return; continue processing the line
     }
 
@@ -575,7 +576,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
             }
           }
         });
-        it('should not have lint', () => {
+        it('should not have lint errors', () => {
           let errorStr = '';
           for (const err of timeline.lintErrors) {
             errorStr += `\n${err.lineNumber}:${err.error}:${err.line}`;

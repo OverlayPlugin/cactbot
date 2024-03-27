@@ -145,6 +145,7 @@ hideall "--Reset--"
 
 #cactbot-timeline-lint-disable-sync-order
 # Jump back to normal loop
+# TODO: update to use forcejump
 2300.0 "--sync--" Ability { id: "366", source: "Tioman" } window 100,0
 2305.6 "Abyssic Buster" Ability { id: "EE3", source: "Tioman" } window 101,5 jump 2006.0
 2312.8 "Chaos Blast" # Ability { id: "EE5", source: "Tioman" }

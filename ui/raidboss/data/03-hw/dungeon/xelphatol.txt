@@ -1,4 +1,5 @@
 ### XELPHATOL
+# TODO: update to use forcejump
 
 hideall "--Reset--"
 hideall "--sync--"

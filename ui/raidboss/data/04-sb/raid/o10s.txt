@@ -1,5 +1,6 @@
 # Omega - Alphascape V2.0 (Savage) - O10S
 # -ii 31FA 3249 3630 3623 35BB 35BC 31D6 31B7 31C4 362C 321E 320D
+# TODO: update to use forcejump
 
 hideall "--Reset--"
 hideall "--sync--"

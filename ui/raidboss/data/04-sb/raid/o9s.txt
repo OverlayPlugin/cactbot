@@ -106,6 +106,7 @@ hideall "--sync--"
 2066.8 "Chaotic Dispersion" Ability { id: "3170", source: "Chaos" }
 2078.8 "Tsunami" Ability { id: "3207", source: "Chaos" }
 2089.6 "Knock" Ability { id: "317F", source: "Chaos" }
+# TODO: Stray Spray may be incorrect - see comments on OverlayPlugin/cactbot#106
 2096.3 "(T/H) Stray Spray" Ability { id: "318D", source: "Chaos" }
 2096.3 "(DPS) Stray Spray" Ability { id: "318D", source: "Chaos" }
 2096.5 "Big Bang" Ability { id: "3181", source: "Chaos" }
