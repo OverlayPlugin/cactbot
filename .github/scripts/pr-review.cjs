@@ -35,18 +35,22 @@ const getPRsByLabel = async (github, owner, repo) => {
    */
   const matchingPRs = [];
   const iterator = github.paginate.iterator(
-    github.rest.search.issuesAndPullRequests,
+    github.rest.issues.listForRepo,
     {
-      q: `type:pr+repo:${owner}/${repo}+label:${label}`,
+      owner: owner,
+      repo: repo,
+      state: 'all',
+      labels: `${label}`,
       per_page: 100, // eslint-disable-line camelcase
     },
   );
   for await (const page of iterator) {
-    const prs = page.data;
-    if (prs.length === 0)
+    const issues = page.data;
+    if (issues.length === 0)
       break;
-    for (const pr of prs) {
-      matchingPRs.push(pr.number);
+    for (const issue of issues) {
+      if (issue.pull_request)
+        matchingPRs.push(issue.number);
     }
   }
   return matchingPRs;
