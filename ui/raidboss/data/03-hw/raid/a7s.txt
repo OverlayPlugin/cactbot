@@ -235,7 +235,7 @@ hideall "--sync--"
 1326 "Bombs x2" Ability { id: "15EE", source: "Quickthinx Allthoughts" } window 40,10 jump 1526
 1333 "Jails" #Green Tether, Purple Prey
 1335 "Small Doll"
-1336 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 27.5,27.5
+1336 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 30,30
 1344 "Big Doll"
 1348 "Resync" GainsEffect { effect: "Pyretic" } window 10,10 jump 1548
 1348 "Resync" GainsEffect { effect: "Pyretic" } window 10,10 jump 1548
@@ -243,7 +243,7 @@ hideall "--sync--"
 1381 "Sizzlespark"
 1392 "Sizzlebeam"
 1396 "Jails" #Red Tether, White Prey
-1398 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 27.5,27.5
+1398 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 30,30
 1398 "Small Dolls x2"
 1426 "Sizzlespark"
 1433 "Sizzlebeam"
@@ -255,7 +255,7 @@ hideall "--sync--"
 ################# Version 2 - Phase 6
 1526 "Sizzlebeam"
 1530 "Jails" #White Prey & Red Tether
-1532 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 27.5,27.5
+1532 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 30,30
 1533 "Small Dolls x2"
 1560 "Sizzlespark"
 1568 "Sizzlebeam"
@@ -264,7 +264,7 @@ hideall "--sync--"
 1590 "Sizzlespark"
 1595 "Bombs x2"
 1601 "Jails - Get Prey" #Purple Prey & Green Tether
-1603 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 27.5,27.5
+1603 "Zoomdoom" Ability { id: "15BE", source: "Quickthinx Allthoughts" } window 30,30
 1603 "Small Doll"
 1612 "Big Doll"
 1630 "Uplander Doom"
