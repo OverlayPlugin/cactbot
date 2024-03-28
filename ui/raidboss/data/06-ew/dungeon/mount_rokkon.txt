@@ -194,7 +194,7 @@ hideall "--sync--"
 
 #cactbot-timeline-lint-disable-sync-order
 # => path 01
-2169.0 "--sync--" StartsUsing { id: "85A8", source: "Moko the Restless" } window 50,50 jump 2269.0
+2169.0 "--sync--" StartsUsing { id: "85A8", source: "Moko the Restless" } window 50,50 jump 2269
 2172.0 "Untempered Sword?" #Ability { id: "85A8", source: "Moko the Restless" }
 
 # => path 02
@@ -202,11 +202,11 @@ hideall "--sync--"
 2173.5 "Moonless Night?" #Ability { id: "85AB", source: "Moko the Restless" }
 
 # => path 03
-2169.0 "--sync--" StartsUsing { id: "85A1", source: "Moko the Restless" } window 50,50 jump 2869.0
+2169.0 "--sync--" StartsUsing { id: "85A1", source: "Moko the Restless" } window 50,50 jump 2869
 2172.0 "Tengu-yobi?" #Ability { id: "85A1", source: "Moko the Restless" }
 
 # => path 04
-2169.0 "--sync--" StartsUsing { id: "85A5", source: "Moko the Restless" } window 50,50 jump 3169.0
+2169.0 "--sync--" StartsUsing { id: "85A5", source: "Moko the Restless" } window 50,50 jump 3169
 2172.0 "Spiritspark?" #Ability { id: "85A5", source: "Moko the Restless" }
 #cactbot-timeline-lint-enable-sync-order
 
@@ -868,19 +868,19 @@ hideall "--sync--"
 #cactbot-timeline-lint-disable-sync-order
 # -> path 08
 7104.0 "--sync--" StartsUsing { id: "83EE", source: "Feral Thrall" }
-7110.0 "Rush?" Ability { id: "83EE", source: "Feral Thrall" } window 30,30 jump 7210.0
+7110.0 "Rush?" Ability { id: "83EE", source: "Feral Thrall" } window 30,30 jump 7210
 
 # -> path 09
 7093.9 "--sync--" StartsUsing { id: "83E9", source: "Shishio" } window 30,30 jump 7293.9
 7098.9 "Focused Tremor?" #Ability { id: "83E9", source: "Shishio" }
 
 # -> path 10
-7097.0 "--sync--" StartsUsing { id: "83F0", source: "Devilish Thrall" } window 30,30 jump 7397.0
+7097.0 "--sync--" StartsUsing { id: "83F0", source: "Devilish Thrall" } window 30,30 jump 7397
 7105.0 "Left Swipe?" #Ability { id: "83F1", source: "Devilish Thrall" }
 7105.0 "Right Swipe?" #Ability { id: "83F0", source: "Devilish Thrall" }
 
 # -> path 11
-7099.0 "--sync--" StartsUsing { id: "872B", source: "Haunting Thrall" } window 30,30 jump 7599.0
+7099.0 "--sync--" StartsUsing { id: "872B", source: "Haunting Thrall" } window 30,30 jump 7599
 7103.0 "Reisho?" #Ability { id: "872B", source: "Haunting Thrall" }
 #cactbot-timeline-lint-enable-sync-order
 

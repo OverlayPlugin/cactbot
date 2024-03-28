@@ -37,7 +37,7 @@ hideall "--sync--"
 141.0 "Coward's Cunning" Ability { id: "4FD7", source: "Chicken Knife" }
 145.6 "Spectral Gust" Ability { id: "53CF", source: "Spectral Thief" }
 
-148.8 "Papercutter" Ability { id: "4FD[12]", source: "Spectral Thief" } jump 69.0
+148.8 "Papercutter" Ability { id: "4FD[12]", source: "Spectral Thief" } jump 69
 163.0 "Spectral Dream"
 168.2 "Chicken Knife"
 175.3 "Shadowdash"

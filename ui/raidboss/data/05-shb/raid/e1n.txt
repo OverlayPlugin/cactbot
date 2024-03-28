@@ -79,7 +79,7 @@ hideall "Vice And Virtue"
 476.9 "Eden's Flare" Ability { id: "3D97", source: "Eden Prime" }
 488.4 "Eden's Gravity" Ability { id: "3D94", source: "Eden Prime" }
 
-502.0 "Vice And Virtue" Ability { id: "44E4", source: "Eden Prime" } window 100,100 jump 360.0
+502.0 "Vice And Virtue" Ability { id: "44E4", source: "Eden Prime" } window 100,100 jump 360
 502.7 "Vice Of Vanity"
 512.5 "Spear Of Paradise"
 514.0 "Heavensunder"

@@ -426,7 +426,7 @@ hideall "--sync--"
 25824.2 "--lasers--" Ability { id: "5CBC", source: "The Diablo Armament" }
 25828.2 "--line stack--" Ability { id: "5CBE", source: "The Diablo Armament" }
 
-25842.2 "Void Systems Overload" Ability { id: "6314", source: "The Diablo Armament" } window 100,100 jump 25805.0
+25842.2 "Void Systems Overload" Ability { id: "6314", source: "The Diablo Armament" } window 100,100 jump 25805
 25852.3 "Pillar Of Shamash" Ability { id: "5CB9", source: "The Diablo Armament" }
 25853.8 "Pillar Of Shamash" Ability { id: "5CBA", source: "The Diablo Armament" }
 25855.3 "Pillar Of Shamash" Ability { id: "5CBB", source: "The Diablo Armament" }

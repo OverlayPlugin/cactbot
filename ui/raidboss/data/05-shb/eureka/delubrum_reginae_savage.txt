@@ -397,7 +397,7 @@ hideall "--sync--"
 # Probably a loop, but you shouldn't see this charge, let alone the previous one.
 6367.8 "Hot Charge 1" Ability { id: "5773", source: "Dahu" }
 6372.6 "Hot Charge 2?" Ability { id: "5773", source: "Dahu" }
-6374.4 "--sync--" StartsUsing { id: "5774", source: "Dahu" } window 100,100 jump 6228.0
+6374.4 "--sync--" StartsUsing { id: "5774", source: "Dahu" } window 100,100 jump 6228
 6379.4 "Firebreathe" Ability { id: "5774", source: "Dahu" }
 6398.6 "Reverberating Roar" #Ability { id: "576D", source: "Dahu" }
 6407.7 "Reverberating Roar" #Ability { id: "576D", source: "Dahu" }

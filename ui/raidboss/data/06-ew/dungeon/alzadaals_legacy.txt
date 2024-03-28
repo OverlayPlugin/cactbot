@@ -15,7 +15,7 @@ hideall "--sync--"
 # Undersea Entrance will be sealed off
 0.0 "--sync--" SystemLogMessage { id: "7DC", param1: "103E" } window 0,1
 11.0 "Big Wave" Ability { id: "6F60", source: "Ambujam" } window 11,5
-20.8 "Tentacle Dig" Ability { id: "6F55", source: "Ambujam" } window 20.8
+20.8 "Tentacle Dig" Ability { id: "6F55", source: "Ambujam" } window 20.8,0
 33.0 "--sync--" Ability { id: "6F5B", source: "Scarlet Tentacle" }
 33.4 "Toxin Shower" Ability { id: "6F5C", source: "Ambujam" }
 39.2 "--sync--" Ability { id: "6F56", source: "Ambujam" } window 39.2,10

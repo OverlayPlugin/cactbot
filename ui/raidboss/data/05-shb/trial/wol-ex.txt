@@ -108,7 +108,7 @@ hideall "Limit Break"
 # DRK/BRD
 519.6 "--sync--" StartsUsing { id: "4F3[456]", source: "Warrior Of Light" } window 5,5 jump 2519.6
 522.6 "Limit -> DRK/BRD" #Ability { id: "4F3[456]", source: "Warrior Of Light" }
-534.0 "--sync--" StartsUsing { id: "4F43", source: "Warrior Of Light" } window 40,40 jump 2534.0
+534.0 "--sync--" StartsUsing { id: "4F43", source: "Warrior Of Light" } window 40,40 jump 2534
 
 # NIN
 519.6 "--sync--" StartsUsing { id: "4EF[56]", source: "Warrior Of Light" } window 40,40 jump 3519.6

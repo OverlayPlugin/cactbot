@@ -62,7 +62,7 @@ hideall "--sync--"
 382.0 "Volt Strike" Ability { id: "4CF2", source: "Ramuh" }
 388.5 "Gallop" Ability { id: "4B96", source: "Will Of Ixion" }
 389.1 "Volt Strike" Ability { id: "4CF2", source: "Ramuh" }
-399.5 "Crippling Blow" Ability { id: "4BA3", source: "Ramuh" } window 30,30 jump 272.0
+399.5 "Crippling Blow" Ability { id: "4BA3", source: "Ramuh" } window 30,30 jump 272
 
 412.7 "Stratospear Summons"
 417.6 "Impact"

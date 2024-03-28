@@ -25,7 +25,7 @@ hideall "--sync--"
 118.1 "Conflag Strike" Ability { id: "585D", source: "Eden's Promise" }
 128.7 "Ferostorm" Ability { id: "585E", source: "Eden's Promise" }
 140.1 "Maleficium" Ability { id: "5872", source: "Eden's Promise" }
-145.9 "--sync--" Ability { id: "585A", source: "Eden's Promise" } window 145.9
+145.9 "--sync--" Ability { id: "585A", source: "Eden's Promise" } window 145.9,0
 148.4 "--untargetable--"
 
 # Intermission. Can be pushed, unknown threshold, maybe 70% HP?
@@ -57,8 +57,8 @@ hideall "--sync--"
 
 
 568.6 "Stock" Ability { id: "5860", source: "Eden's Promise" } window 15,30
-578.3 "Junction Shiva?" Ability { id: "5862", source: "Eden's Promise" } jump 700.0
-578.3 "Junction Titan?" Ability { id: "5863", source: "Eden's Promise" } jump 800.0
+578.3 "Junction Shiva?" Ability { id: "5862", source: "Eden's Promise" } jump 700
+578.3 "Junction Titan?" Ability { id: "5863", source: "Eden's Promise" } jump 800
 589.0 "Diamond Dust?"
 589.0 "Earthen Fury?"
 594.0 "Impact 1?"
@@ -93,8 +93,8 @@ hideall "--sync--"
 738.2 "--sync--" Ability { id: "5879", source: "Eden's Promise" }
 747.6 "Release" Ability { id: "5861", source: "Eden's Promise" }
 
-756.6 "--sync--" Ability { id: "5879", source: "Eden's Promise" } jump 900.0
-761.5 "Stock?" Ability { id: "5860", source: "Eden's Promise" } jump 1000.0
+756.6 "--sync--" Ability { id: "5879", source: "Eden's Promise" } jump 900
+761.5 "Stock?" Ability { id: "5860", source: "Eden's Promise" } jump 1000
 766.2 "Cast?"
 770.2 "Formless Judgment?"
 776.9 "Cast?"
@@ -116,8 +116,8 @@ hideall "--sync--"
 836.9 "--sync--" Ability { id: "5879", source: "Eden's Promise" }
 846.3 "Release" Ability { id: "5861", source: "Eden's Promise" }
 
-855.3 "--sync--" Ability { id: "5879", source: "Eden's Promise" } jump 900.0
-860.2 "Stock?" Ability { id: "5860", source: "Eden's Promise" } jump 1000.0
+855.3 "--sync--" Ability { id: "5879", source: "Eden's Promise" } jump 900
+860.2 "Stock?" Ability { id: "5860", source: "Eden's Promise" } jump 1000
 864.9 "Cast?"
 868.9 "Formless Judgment?"
 875.6 "Cast?"
@@ -131,8 +131,8 @@ hideall "--sync--"
 928.0 "Maleficium" Ability { id: "5872", source: "Eden's Promise" } window 15,15
 
 940.9 "Stock" Ability { id: "5860", source: "Eden's Promise" }
-950.5 "Junction Shiva?" Ability { id: "5862", source: "Eden's Promise" } window 15,15 jump 700.0
-950.5 "Junction Titan?" Ability { id: "5863", source: "Eden's Promise" } window 15,15 jump 800.0
+950.5 "Junction Shiva?" Ability { id: "5862", source: "Eden's Promise" } window 15,15 jump 700
+950.5 "Junction Titan?" Ability { id: "5863", source: "Eden's Promise" } window 15,15 jump 800
 961.2 "Diamond Dust?"
 961.2 "Earthen Fury?"
 966.2 "Impact 1?"
@@ -148,8 +148,8 @@ hideall "--sync--"
 1020.9 "Release" Ability { id: "5861", source: "Eden's Promise" }
 
 1034.8 "Stock" Ability { id: "5860", source: "Eden's Promise" }
-1044.4 "Junction Shiva?" Ability { id: "5862", source: "Eden's Promise" } jump 700.0
-1044.4 "Junction Titan?" Ability { id: "5863", source: "Eden's Promise" } jump 800.0
+1044.4 "Junction Shiva?" Ability { id: "5862", source: "Eden's Promise" } jump 700
+1044.4 "Junction Titan?" Ability { id: "5863", source: "Eden's Promise" } jump 800
 1055.1 "Diamond Dust?"
 1055.1 "Earthen Fury?"
 1060.1 "Impact 1?"

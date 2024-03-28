@@ -60,7 +60,7 @@ hideall "--sync--"
 331.0 "--sync--" Ability { id: "61DD", source: "Barnabas" }
 332.4 "Electromagnetic Release" Ability { id: "62F1", source: "Barnabas" }
 
-342.7 "Thundercall" Ability { id: "62ED", source: "Barnabas" } window 42.7,5 jump 400.0
+342.7 "Thundercall" Ability { id: "62ED", source: "Barnabas" } window 42.7,5 jump 400
 349.2 "Rolling Scrapline"
 349.5 "Shock"
 359.8 "Shocking Force"
@@ -129,7 +129,7 @@ hideall "--sync--"
 1312.0 "Magitek Explosive" Ability { id: "62F8", source: "Lugae" }
 1323.0 "Explosion" Ability { id: "62F9", source: "Magitek Explosive" }
 
-1335.3 "Magitek Chakram" Ability { id: "62F3", source: "Lugae" } jump 1200.0
+1335.3 "Magitek Chakram" Ability { id: "62F3", source: "Lugae" } jump 1200
 1343.8 "Magitek Chakram"
 1346.3 "Mighty Blow"
 1354.9 "Mighty Blow"

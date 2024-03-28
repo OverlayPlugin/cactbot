@@ -358,7 +358,7 @@ hideall "--sync--"
 
 # Loop!
 61100.7 "Ready x4" duration 6.1 #Ability { id: "5191", source: "Lyon The Beast King" }
-61110.7 "Obey" Ability { id: "517D", source: "Dawon" } window 90,90 jump 61012.0
+61110.7 "Obey" Ability { id: "517D", source: "Dawon" } window 90,90 jump 61012
 61112.8 "Swooping Frenzy"
 61115.6 "Frigid/Fervid Pulse"
 61118.0 "Swooping Frenzy"

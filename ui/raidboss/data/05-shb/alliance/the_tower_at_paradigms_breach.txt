@@ -344,7 +344,7 @@ hideall "--sync--"
 4780.7 "Cruelty" Ability { id: "6013", source: "Red Girl" }
 
 # loop
-4788.8 "Generate: Barrier" Ability { id: "6005", source: "Red Girl" } window 100,100 jump 4581.0
+4788.8 "Generate: Barrier" Ability { id: "6005", source: "Red Girl" } window 100,100 jump 4581
 4798.9 "Point: Black" #Ability { id: "6020", source: "Black Lance" }
 4798.9 "Point: White" #Ability { id: "601F", source: "White Lance" }
 4805.0 "Generate: Barrier" #Ability { id: "6005", source: "Red Girl" }

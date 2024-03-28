@@ -123,7 +123,7 @@ hideall "--sync--"
 2315.1 "Pound Sand" Ability { id: "868B", source: "Damcyan Antlion" }
 2324.2 "Sandblast" Ability { id: "87FD", source: "Damcyan Antlion" }
 
-2330.3 "--north--" Ability { id: "8808", source: "Damcyan Antlion" } window 50,50 forcejump 2270.0
+2330.3 "--north--" Ability { id: "8808", source: "Damcyan Antlion" } window 50,50 forcejump 2270
 
 
 # ALL ENCOUNTER ABILITIES

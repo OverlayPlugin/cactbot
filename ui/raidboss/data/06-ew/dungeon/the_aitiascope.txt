@@ -47,7 +47,7 @@ hideall "--sync--"
 1218.8 "Aglaea Shot 1" Ability { id: "6445", source: "Livia the Undeterred" }
 1229.0 "Aglaea Shot 2" Ability { id: "6447", source: "Aethershot" }
 
-1240.0 "Odi et Amo" Ability { id: "644B", source: "Livia the Undeterred" } window 50,50 jump 1079.0
+1240.0 "Odi et Amo" Ability { id: "644B", source: "Livia the Undeterred" } window 50,50 jump 1079
 1244.9 "Ignis Amoris" #Ability { id: "644C", source: "Livia the Undeterred" }
 1250.1 "Ignis Odi" #Ability { id: "644D", source: "Livia the Undeterred" }
 1255.4 "Disparagement" #Ability { id: "644A", source: "Livia the Undeterred" }

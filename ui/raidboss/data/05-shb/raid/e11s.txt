@@ -171,8 +171,8 @@ hideall "--sync--"
 725.7 "Burnished Glory" Ability { id: "56A4", source: "Fatebreaker" }
 
 728.2 "--center--" Ability { id: "5908", source: "Fatebreaker" } window 30,30
-737.2 "Cycle Of Faith" Ability { id: "568A", source: "Fatebreaker" } jump 900.0
-737.2 "--sync--" Ability { id: "569A", source: "Fatebreaker" } jump 800.0
+737.2 "Cycle Of Faith" Ability { id: "568A", source: "Fatebreaker" } jump 900
+737.2 "--sync--" Ability { id: "569A", source: "Fatebreaker" } jump 800
 737.3 "Elemental Break"
 739.8 "Sinsight/Sinsmite/Sinsmoke"
 741.7 "Burnt Strike"
@@ -193,8 +193,8 @@ hideall "--sync--"
 825.7 "Burnished Glory" Ability { id: "56A4", source: "Fatebreaker" }
 
 828.2 "--center--" Ability { id: "5908", source: "Fatebreaker" } window 30,30
-837.2 "Cycle Of Faith" Ability { id: "5692", source: "Fatebreaker" } jump 700.0
-837.2 "--sync--" Ability { id: "568A", source: "Fatebreaker" } jump 900.0
+837.2 "Cycle Of Faith" Ability { id: "5692", source: "Fatebreaker" } jump 700
+837.2 "--sync--" Ability { id: "568A", source: "Fatebreaker" } jump 900
 837.3 "Elemental Break"
 839.8 "Sinsight/Sinsmite/Sinsmoke"
 841.7 "Burnt Strike"

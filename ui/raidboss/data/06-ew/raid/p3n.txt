@@ -31,7 +31,7 @@ hideall "--sync--"
 118.0 "Trail of Condemnation" Ability { id: "66AD", source: "Phoinix" } window 118.0,10
 126.8 "--adds targetable--"
 127.0 "Blazing Rain" Ability { id: "66A2", source: "Phoinix" }
-135.1 "Blazing Rain" Ability { id: "66A2", source: "Phoinix" } jump 127.0
+135.1 "Blazing Rain" Ability { id: "66A2", source: "Phoinix" } jump 127
 143.2 "Blazing Rain"
 151.3 "Blazing Rain"
 159.4 "Blazing Rain"

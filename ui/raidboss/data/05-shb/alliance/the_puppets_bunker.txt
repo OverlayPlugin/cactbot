@@ -121,7 +121,7 @@ hideall "--sync--"
 
 1103.7 "Maneuver: Long-Barreled Laser" Ability { id: "5212", source: "Light Artillery Unit" }
 1119.6 "Maneuver: Volt Array" Ability { id: "5211", source: "Light Artillery Unit" }
-1129.9 "Authorization: No Restrictions" Ability { id: "520E", source: "Light Artillery Unit" } window 50,50 jump 1036.0
+1129.9 "Authorization: No Restrictions" Ability { id: "520E", source: "Light Artillery Unit" } window 50,50 jump 1036
 1135.6 "Surface Missile Impact" #Ability { id: "520F", source: "Light Artillery Unit" }
 1137.6 "Homing Missile Impact" #Ability { id: "5210", source: "Light Artillery Unit" }
 1153.7 "Initiate Self-Destruct" #Ability { id: "5215", source: "Light Artillery Unit" }

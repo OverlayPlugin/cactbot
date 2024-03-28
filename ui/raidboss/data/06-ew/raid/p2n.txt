@@ -59,7 +59,7 @@ hideall "--sync--"
 371.8 "Murky Depths" Ability { id: "680F", source: "Hippokampos" }
 383.1 "Doubled Impact" Ability { id: "680E", source: "Hippokampos" }
 
-392.3 "--middle--" Ability { id: "6835", source: "Hippokampos" } window 50,50 jump 201.0
+392.3 "--middle--" Ability { id: "6835", source: "Hippokampos" } window 50,50 jump 201
 399.7 "Sewage Deluge" #Ability { id: "67F6", source: "Hippokampos" }
 418.2 "Tainted Flood" #Ability { id: "6809", source: "Hippokampos" }
 426.1 "Spoken Cataract" #Ability { id: ["67F7", "67F8", "67F9", "67FD"], source: "Hippokampos" }

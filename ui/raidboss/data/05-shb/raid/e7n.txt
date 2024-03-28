@@ -89,7 +89,7 @@ hideall "--sync--"
 667.6 "False Twilight" Ability { id: "4C59", source: "The Idol Of Darkness" }
 667.7 "Light's Course" # Ability { id: "4C40", source: "Unforgiven Idolatry" }
 671.6 "Stygian Sword" Ability { id: "4C55", source: "The Idol Of Darkness" } window 30,30
-676.6 "Silver Sledge" Ability { id: "4C54", source: "The Idol Of Darkness" } jump 541.0
+676.6 "Silver Sledge" Ability { id: "4C54", source: "The Idol Of Darkness" } jump 541
 
 685.6 "Unjoined Aspect"
 690.8 "Betwixt Worlds"

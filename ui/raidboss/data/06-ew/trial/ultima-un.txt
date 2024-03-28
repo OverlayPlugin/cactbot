@@ -285,7 +285,7 @@ hideall "--sync--"
 
 # Enrage appears to be at 10:30.
 # Ultima Weapon teleports to the center and casts Ultima.
-9989.3 "--sync--" StartsUsing { id: "6EFB", source: "The Ultima Weapon" } window 10000
+9989.3 "--sync--" StartsUsing { id: "6EFB", source: "The Ultima Weapon" } window 10000,0
 10000.0 "Ultima Enrage" Ability { id: "6EFB", source: "The Ultima Weapon" }
 
 

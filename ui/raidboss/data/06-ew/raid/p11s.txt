@@ -72,7 +72,7 @@ hideall "--sync--"
 
 395.4 "--middle--" Ability { id: "867F", source: "Themis" }
 402.5 "Dark Current (cast)" Ability { id: "8204", source: "Themis" }
-410.6 "Dark Current x8" duration 7 Ability { id: "8209", source: "Themis" }
+410.6 "Dark Current x8" Ability { id: "8209", source: "Themis" } duration 7
 412.5 "Blinding Light" Ability { id: "8229", source: "Themis" }
 
 426.6 "Jury Overruling" Ability { id: ["81E6", "81E7"], source: "Themis" }
