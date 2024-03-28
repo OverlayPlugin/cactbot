@@ -185,14 +185,15 @@ class TimelineParserLint extends TimelineParser {
       return;
 
     // From this point, we should expect [time] [name] [type] [NetRegex]
-    // So just check keyword ordering (everything after), and 'window' format.
+    // So just check keyword ordering & values (everything after).
     const keywords = lineParts.slice(4);
     if (keywords.length === 0)
       return;
 
-    const keywordList = keywords.filter((_, i) => i % 2 === 0);
-    for (let i = 0; i < keywordList.length - 1; i++) {
-      const thisKeyword = keywordList[i];
+    // Assume that every keyword comes in a [keyword] [param] format
+    // If we ever implement a keyword with no (or multiple) parameters, update this logic
+    for (let i = 0; i < keywords.length; i += 2) {
+      const thisKeyword = keywords[i];
       if (thisKeyword === undefined)
         throw new UnreachableCode();
 
@@ -205,29 +206,42 @@ class TimelineParserLint extends TimelineParser {
         return;
       }
 
-      // check that `window` is in a [number],[number] format
-      if (thisKeyword === 'window') {
-        const windowKwIdx = keywords.indexOf('window');
-        const windowArgs = keywords[windowKwIdx + 1];
-        if (windowArgs === undefined) {
-          this.lintErrors.push({
-            lineNumber: lineNumber,
-            line: origLine,
-            error: `Missing parameter for 'window' keyword`,
-          });
-          return;
-        }
-        if (!/^\d+(\.\d)?,\d+(\.\d)?$/.test(windowArgs)) {
-          this.lintErrors.push({
-            lineNumber: lineNumber,
-            line: origLine,
-            error: `Invalid 'window' parameter "${windowArgs}": must be in [#],[#] format.`,
-          });
-          // don't return; continue processing the line
-        }
+      const keywordParam = keywords[i + 1];
+      if (keywordParam === undefined) {
+        this.lintErrors.push({
+          lineNumber: lineNumber,
+          line: origLine,
+          error: `Missing parameter for "${thisKeyword}" keyword`,
+        });
+        return;
       }
 
-      const nextKeyword = keywordList[i + 1];
+      if (
+        !isNaN(parseFloat(keywordParam)) &&
+        keywordParam.endsWith('.0')
+      ) {
+        this.lintErrors.push({
+          lineNumber: lineNumber,
+          line: origLine,
+          error: `Unnecessary float "${keywordParam}" - use an integer instead.`,
+        });
+        // don't return; continue processing the line
+      }
+
+      // check that `window` is in a [number],[number] format
+      if (
+        thisKeyword === 'window' &&
+        !/^\d+(\.\d)?,\d+(\.\d)?$/.test(keywordParam)
+      ) {
+        this.lintErrors.push({
+          lineNumber: lineNumber,
+          line: origLine,
+          error: `Invalid 'window' parameter "${keywordParam}": must be in [#],[#] format.`,
+        });
+        // don't return; continue processing the line
+      }
+
+      const nextKeyword = keywords[i + 2];
       if (nextKeyword === undefined)
         break;
 
