@@ -52,7 +52,7 @@ export default class Splitter {
     this.removeNPCCombatantRegex = NetRegexes.removingCombatant({ id: '4.{7}' });
     this.npcAbilityRegex = NetRegexes.ability({ sourceId: '4.{7}' });
 
-     this.ignoredAbilities = _ignoredAbilities;
+    this.ignoredAbilities = _ignoredAbilities;
 
     this.processLogDefs();
   }
@@ -129,9 +129,7 @@ export default class Splitter {
     if (typeField === logDefinitions.RemovedCombatant.type) {
       const match = this.removeNPCCombatantRegex.exec(line);
       if (match?.groups && this.ignoredCombatantIds.includes(match.groups.id))
-        this.ignoredCombatantIds = this.ignoredCombatantIds.filter((id) =>
-          id !== match.groups?.id
-        );
+        this.ignoredCombatantIds = this.ignoredCombatantIds.filter((id) => id !== match.groups?.id);
     }
 
     if (this.includeAllTypes.includes(typeField))
@@ -167,19 +165,6 @@ export default class Splitter {
     const filters = this.filtersRegex[typeField];
     if (filters === undefined)
       return false;
-
-    /* BEGIN TEMP CODE */
-    // Due to the fact that ignoredCombatants includes empty-name combatants (ref #18/#19),
-    // the current analysis filter is (erroneously) excluding certain lines with empty-name
-    // combatants.  Tthis is a temp fix to continue to exclude those lines for comparison sake.
-    // Next commit fixes this.
-    const tempRegex = NetRegexes.gainsEffect({ sourceId: '[E4].{7}', source: '' });
-    const tempRegex2 = NetRegexes.gainsEffect({ effectId: ['B9A', '808'] });
-    const tempMatch = tempRegex.exec(line);
-    const tempMatch2 = tempRegex2.exec(line);
-    if (tempMatch?.groups && tempMatch2?.groups === undefined)
-      return false;
-    /* END TEMP CODE */
 
     for (const filter of filters) {
       const match = filter.exec(line);
@@ -321,9 +306,13 @@ export default class Splitter {
     const splitLine = line.split('|');
     const typeField = splitLine[0];
 
-    // BUG: fixed in the next commit
+    // if this line type has possible RSV keys, decode it first
+    const typesToDecode = Object.keys(this.rsvTypeToFieldMap);
+    if (typeField !== undefined && typesToDecode.includes(typeField))
+      line = this.decodeRsv(line);
+
     return this.doAnalysisFilter
-      ? (this.analysisFilter(line, typeField) ? line : line)
+      ? (this.analysisFilter(line, typeField) ? line : undefined)
       : line;
   }
 

@@ -58,7 +58,7 @@ export type LogDefinition = {
     // Netregex-style filter criteria; log lines satisfying at least one filter will be included.
     // If `includeforAnalysis`='filter', this prop must be present; otherwise, it must be omitted.
     analysisFilter?: NetParams[K] | readonly NetParams[K][];
-    // Indexes with combatantIds that will be checked for ignored NPCs in the log analysis filter.
+    // Indexes with combatantIds that will be checked for ignored NPCs during analysis filtering.
     // Only valid if `includeForAnalysis` is 'filter' or 'all'.
     filterCombatantIdFields?: number | readonly number[];
   };
@@ -166,7 +166,7 @@ const latestLogDefinitions = {
     lastInclude: true,
     canAnonymize: true,
     firstOptionalField: undefined,
-    includeForAnalysis: 'none',
+    includeForAnalysis: 'all',
   },
   ChangedPlayer: {
     type: '02',
@@ -381,7 +381,7 @@ const latestLogDefinitions = {
     firstOptionalField: undefined,
     includeForAnalysis: 'filter',
     analysisFilter: { sourceId: '4.{7}' }, // NPC casts only
-    filterCombatantIdFields: 2,
+    filterCombatantIdFields: [2, 6],
   },
   Ability: {
     type: '21',
@@ -433,7 +433,7 @@ const latestLogDefinitions = {
     firstOptionalField: undefined,
     includeForAnalysis: 'filter',
     analysisFilter: { sourceId: '4.{7}' }, // NPC abilities only
-    filterCombatantIdFields: 2,
+    filterCombatantIdFields: [2, 6],
   },
   NetworkAOEAbility: {
     type: '22',
@@ -485,7 +485,7 @@ const latestLogDefinitions = {
     firstOptionalField: undefined,
     includeForAnalysis: 'filter',
     analysisFilter: { sourceId: '4.{7}' }, // NPC abilities only
-    filterCombatantIdFields: 2,
+    filterCombatantIdFields: [2, 6],
   },
   NetworkCancelAbility: {
     type: '23',
@@ -613,7 +613,7 @@ const latestLogDefinitions = {
         effectId: ['B9A', '808'], // known effectIds of interest
       },
     ],
-    filterCombatantIdFields: 5,
+    filterCombatantIdFields: [5, 7],
   },
   HeadMarker: {
     type: '27',
@@ -702,7 +702,18 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
-    includeForAnalysis: 'none', // BUG: Fixed in next commit
+    includeForAnalysis: 'filter',
+    analysisFilter: [
+      // effect from environment/NPC applied to player
+      {
+        sourceId: '[E4].{7}',
+        targetId: '1.{7}',
+      },
+      {
+        effectId: ['B9A', '808'], // known effectIds of interest
+      },
+    ],
+    filterCombatantIdFields: [5, 7],
   },
   NetworkGauge: {
     type: '31',
@@ -804,6 +815,7 @@ const latestLogDefinitions = {
     firstUnknownField: 9,
     firstOptionalField: undefined,
     includeForAnalysis: 'all',
+    filterCombatantIdFields: [2, 4],
   },
   LimitBreak: {
     type: '36',
@@ -931,7 +943,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     lastInclude: true,
-    includeForAnalysis: 'none',
+    includeForAnalysis: 'all',
   },
   SystemLogMessage: {
     type: '41',
@@ -949,7 +961,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
-    includeForAnalysis: 'none',
+    includeForAnalysis: 'all',
   },
   StatusList3: {
     type: '42',
@@ -1168,7 +1180,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
-    includeForAnalysis: 'none',
+    includeForAnalysis: 'all',
   },
   CombatantMemory: {
     type: '261',
@@ -1198,7 +1210,27 @@ const latestLogDefinitions = {
       primaryKey: 'key',
       possibleKeys: combatantMemoryKeys,
     },
-    includeForAnalysis: 'none',
+    includeForAnalysis: 'filter',
+    // TODO: This is an initial attempt to capture field changes that are relevant to analysis,
+    // but this will likely need to be refined over time
+    analysisFilter: [
+      {
+        id: '4.{7}',
+        type: 'Change',
+        pair: [{ key: 'ModelStatus', value: '.*' }],
+      },
+      {
+        id: '4.{7}',
+        type: 'Change',
+        pair: [{ key: 'WeaponId', value: '.*' }],
+      },
+      {
+        id: '4.{7}',
+        type: 'Change',
+        pair: [{ key: 'TransformationId', value: '.*' }],
+      },
+    ],
+    filterCombatantIdFields: 3,
   },
   RSVData: {
     type: '262',
@@ -1300,6 +1332,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     includeForAnalysis: 'all',
+    filterCombatantIdFields: 2,
   },
   BattleTalk2: {
     type: '267',
@@ -1322,6 +1355,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     includeForAnalysis: 'all',
+    filterCombatantIdFields: 2,
   },
   Countdown: {
     type: '268',
@@ -1408,6 +1442,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     includeForAnalysis: 'all',
+    filterCombatantIdFields: 2,
   },
   SpawnNpcExtra: {
     type: '272',
@@ -1428,6 +1463,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     includeForAnalysis: 'all',
+    filterCombatantIdFields: 2,
   },
   ActorControlExtra: {
     type: '273',
@@ -1450,6 +1486,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     includeForAnalysis: 'all',
+    filterCombatantIdFields: 2,
   },
   ActorControlSelfExtra: {
     type: '274',
@@ -1488,24 +1525,22 @@ console.assert(assertLogDefinitions);
 // no filter is present. Also verify that combatantId filters are set only for 'filter' or 'all'.
 type LogDefinitionWithFilters = {
   [K in LogDefinitionTypes]: typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'filter'
-  ? {
-    includeForAnalysis: 'filter';
-    analysisFilter: NetParams[K] | readonly NetParams[K][];
-    filterCombatantIdFields?: number | readonly number[];
-  }
-  : typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'all'
-  ? {
-    includeForAnalysis: 'all';
-    filterCombatantIdFields?: number | readonly number[];
-    analysisFilter?: undefined;
-  }
-  : typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'none' | 'never'
-  ? {
-    includeForAnalysis: 'none' | 'never';
-    analysisFilter?: undefined;
-    filterCombatantIdFields?: undefined;
-  }
-  : never;
+    ? {
+      includeForAnalysis: 'filter';
+      analysisFilter: NetParams[K] | readonly NetParams[K][];
+      filterCombatantIdFields?: number | readonly number[];
+    }
+    : typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'all' ? {
+        includeForAnalysis: 'all';
+        filterCombatantIdFields?: number | readonly number[];
+        analysisFilter?: undefined;
+      }
+    : typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'none' | 'never' ? {
+        includeForAnalysis: 'none' | 'never';
+        analysisFilter?: undefined;
+        filterCombatantIdFields?: undefined;
+      }
+    : never;
 };
 const assertLogDefinitionsWithFilters: LogDefinitionWithFilters = latestLogDefinitions;
 console.assert(assertLogDefinitionsWithFilters);
