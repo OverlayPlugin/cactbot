@@ -1,53 +1,68 @@
 import { PluginCombatantState } from '../types/event';
 import { NetFieldsReverse } from '../types/net_fields';
+import { NetParams } from '../types/net_props';
 
+type AnalysisFilter = 'all' | 'filter' | 'none' | 'never';
 export type LogDefinition = {
-  // The log id, as a decimal string, minimum two characters.
-  type: string;
-  // The informal name of this log (must match the key that the LogDefinition is a value for).
-  name: string;
-  // The plugin that generates this log.
-  source: 'FFXIV_ACT_Plugin' | 'OverlayPlugin';
-  // Parsed ACT log line type.  OverlayPlugin lines use the `type` as a string.
-  messageType: string;
-  // If true, always include this line when splitting logs (e.g. FFXIV plugin version).
-  globalInclude?: boolean;
-  // If true, always include the last instance of this line when splitting logs (e.g. ChangeZone).
-  lastInclude?: boolean;
-  // True if the line can be anonymized (i.e. removing player ids and names).
-  canAnonymize?: boolean;
-  // If true, this log has not been seen before and needs more information.
-  isUnknown?: boolean;
-  // Fields at this index and beyond are cleared, when anonymizing.
-  firstUnknownField?: number;
-  // A map of all of the fields, unique field name to field index.
-  fields?: { [fieldName: string]: number };
-  // A list of field ids that *may* contain RSV keys (for decoding)
-  possibleRsvFields?: readonly number[];
-  subFields?: {
-    [fieldName: string]: {
-      [fieldValue: string]: {
-        name: string;
-        canAnonymize: boolean;
+  [K in keyof typeof latestLogDefinitions]: {
+    // The log id, as a decimal string, minimum two characters.
+    type: string;
+    // The informal name of this log (must match the key that the LogDefinition is a value for).
+    name: K;
+    // The plugin that generates this log.
+    source: 'FFXIV_ACT_Plugin' | 'OverlayPlugin';
+    // Parsed ACT log line type.  OverlayPlugin lines use the `type` as a string.
+    messageType: string;
+    // If true, always include this line when splitting logs (e.g. FFXIV plugin version).
+    globalInclude?: boolean;
+    // If true, always include the last instance of this line when splitting logs (e.g. ChangeZone).
+    lastInclude?: boolean;
+    // True if the line can be anonymized (i.e. removing player ids and names).
+    canAnonymize?: boolean;
+    // If true, this log has not been seen before and needs more information.
+    isUnknown?: boolean;
+    // Fields at this index and beyond are cleared, when anonymizing.
+    firstUnknownField?: number;
+    // A map of all of the fields, unique field name to field index.
+    fields?: { [fieldName: string]: number };
+    // A list of field ids that *may* contain RSV keys (for decoding)
+    possibleRsvFields?: readonly number[];
+    subFields?: {
+      [fieldName: string]: {
+        [fieldValue: string]: {
+          name: string;
+          canAnonymize: boolean;
+        };
       };
     };
+    // Map of indexes from a player id to the index of that player name.
+    playerIds?: { [fieldIdx: number]: number | null };
+    // A list of fields that are ok to be blank (or have invalid ids).
+    blankFields?: readonly number[];
+    // This field and any field after will be treated as optional when creating capturing regexes.
+    firstOptionalField: number | undefined;
+    // These fields are treated as repeatable fields
+    repeatingFields?: {
+      startingIndex: number;
+      label: string;
+      names: readonly string[];
+      sortKeys?: boolean;
+      primaryKey: string;
+      possibleKeys: readonly string[];
+    };
+    // Whether to include these log lines in a filtered log via the log splitter's analysis option.
+    // 'never' is an override value; unlike 'none', the automated workflow script will not propose
+    // changing 'never' to 'all' if it finds active triggers using this log type.
+    // See (forthcoming) script comments for more details.
+    includeForAnalysis: AnalysisFilter;
+    // Netregex-style filter criteria; log lines satisfying at least one filter will be included.
+    // If `includeforAnalysis`='filter', this prop must be present; otherwise, it must be omitted.
+    analysisFilter?: NetParams[K] | readonly NetParams[K][];
+    // Indexes with combatantIds that will be checked for ignored NPCs in the log analysis filter.
+    // Only valid if `includeForAnalysis` is 'filter' or 'all'.
+    filterCombatantIdFields?: number | readonly number[];
   };
-  // Map of indexes from a player id to the index of that player name.
-  playerIds?: { [fieldIdx: number]: number | null };
-  // A list of fields that are ok to be blank (or have invalid ids).
-  blankFields?: readonly number[];
-  // This field and any field after will be treated as optional when creating capturing regexes.
-  firstOptionalField: number | undefined;
-  // These fields are treated as repeatable fields
-  repeatingFields?: {
-    startingIndex: number;
-    label: string;
-    names: readonly string[];
-    sortKeys?: boolean;
-    primaryKey: string;
-    possibleKeys: readonly string[];
-  };
-};
+}[keyof typeof latestLogDefinitions];
 export type LogDefinitionMap = { [name: string]: LogDefinition };
 type LogDefinitionVersionMap = { [version: string]: LogDefinitionMap };
 
@@ -135,6 +150,7 @@ const latestLogDefinitions = {
       },
     },
     firstOptionalField: undefined,
+    includeForAnalysis: 'never',
   },
   ChangeZone: {
     type: '01',
@@ -150,6 +166,7 @@ const latestLogDefinitions = {
     lastInclude: true,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   ChangedPlayer: {
     type: '02',
@@ -168,6 +185,7 @@ const latestLogDefinitions = {
     lastInclude: true,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   AddedCombatant: {
     type: '03',
@@ -203,6 +221,9 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'filter',
+    analysisFilter: { id: '4.{7}' }, // NPC combatants only
+    filterCombatantIdFields: 2,
   },
   RemovedCombatant: {
     type: '04',
@@ -232,6 +253,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   PartyList: {
     type: '11',
@@ -296,6 +318,7 @@ const latestLogDefinitions = {
     firstOptionalField: 3,
     canAnonymize: true,
     lastInclude: true,
+    includeForAnalysis: 'none',
   },
   PlayerStats: {
     type: '12',
@@ -326,6 +349,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     lastInclude: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   StartsUsing: {
     type: '20',
@@ -355,6 +379,9 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'filter',
+    analysisFilter: { sourceId: '4.{7}' }, // NPC casts only
+    filterCombatantIdFields: 2,
   },
   Ability: {
     type: '21',
@@ -404,6 +431,9 @@ const latestLogDefinitions = {
     blankFields: [6],
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'filter',
+    analysisFilter: { sourceId: '4.{7}' }, // NPC abilities only
+    filterCombatantIdFields: 2,
   },
   NetworkAOEAbility: {
     type: '22',
@@ -453,6 +483,9 @@ const latestLogDefinitions = {
     blankFields: [6],
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'filter',
+    analysisFilter: { sourceId: '4.{7}' }, // NPC abilities only
+    filterCombatantIdFields: 2,
   },
   NetworkCancelAbility: {
     type: '23',
@@ -474,6 +507,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   NetworkDoT: {
     type: '24',
@@ -519,6 +553,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   WasDefeated: {
     type: '25',
@@ -539,6 +574,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   GainsEffect: {
     type: '26',
@@ -566,6 +602,18 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'filter',
+    analysisFilter: [
+      // effect from environment/NPC applied to player
+      {
+        sourceId: '[E4].{7}',
+        targetId: '1.{7}',
+      },
+      {
+        effectId: ['B9A', '808'], // known effectIds of interest
+      },
+    ],
+    filterCombatantIdFields: 5,
   },
   HeadMarker: {
     type: '27',
@@ -584,6 +632,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   NetworkRaidMarker: {
     type: '28',
@@ -606,6 +655,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   NetworkTargetMarker: {
     type: '29',
@@ -627,6 +677,7 @@ const latestLogDefinitions = {
       6: 7,
     },
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   LosesEffect: {
     type: '30',
@@ -651,6 +702,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none', // BUG: Fixed in next commit
   },
   NetworkGauge: {
     type: '31',
@@ -674,6 +726,7 @@ const latestLogDefinitions = {
     firstUnknownField: 3,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   NetworkWorld: {
     type: '32',
@@ -686,6 +739,7 @@ const latestLogDefinitions = {
     },
     isUnknown: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   ActorControl: {
     type: '33',
@@ -704,6 +758,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   NameToggle: {
     type: '34',
@@ -725,6 +780,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   Tether: {
     type: '35',
@@ -747,6 +803,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstUnknownField: 9,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   LimitBreak: {
     type: '36',
@@ -761,6 +818,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   NetworkEffectResult: {
     type: '37',
@@ -790,6 +848,7 @@ const latestLogDefinitions = {
     firstUnknownField: 22,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   StatusEffect: {
     type: '38',
@@ -826,6 +885,7 @@ const latestLogDefinitions = {
     firstUnknownField: 18,
     canAnonymize: true,
     firstOptionalField: 18,
+    includeForAnalysis: 'none',
   },
   NetworkUpdateHP: {
     type: '39',
@@ -853,6 +913,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   Map: {
     type: '40',
@@ -870,6 +931,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     lastInclude: true,
+    includeForAnalysis: 'none',
   },
   SystemLogMessage: {
     type: '41',
@@ -887,6 +949,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   StatusList3: {
     type: '42',
@@ -906,6 +969,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: 4,
     firstUnknownField: 4,
+    includeForAnalysis: 'none',
   },
   ParserInfo: {
     type: '249',
@@ -919,6 +983,7 @@ const latestLogDefinitions = {
     globalInclude: true,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   ProcessInfo: {
     type: '250',
@@ -932,6 +997,7 @@ const latestLogDefinitions = {
     globalInclude: true,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   Debug: {
     type: '251',
@@ -945,6 +1011,7 @@ const latestLogDefinitions = {
     globalInclude: true,
     canAnonymize: false,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   PacketDump: {
     type: '252',
@@ -957,6 +1024,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: false,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   Version: {
     type: '253',
@@ -970,6 +1038,7 @@ const latestLogDefinitions = {
     globalInclude: true,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   Error: {
     type: '254',
@@ -982,6 +1051,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: false,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   None: {
     type: '[0-9]+',
@@ -994,6 +1064,7 @@ const latestLogDefinitions = {
     },
     isUnknown: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'never',
   },
   // OverlayPlugin log lines
   LineRegistration: {
@@ -1011,6 +1082,7 @@ const latestLogDefinitions = {
     globalInclude: true,
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   MapEffect: {
     type: '257',
@@ -1031,6 +1103,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   FateDirector: {
     type: '258',
@@ -1053,6 +1126,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   CEDirector: {
     type: '259',
@@ -1077,6 +1151,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   InCombat: {
     type: '260',
@@ -1093,6 +1168,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   CombatantMemory: {
     type: '261',
@@ -1122,6 +1198,7 @@ const latestLogDefinitions = {
       primaryKey: 'key',
       possibleKeys: combatantMemoryKeys,
     },
+    includeForAnalysis: 'none',
   },
   RSVData: {
     type: '262',
@@ -1138,6 +1215,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none', // RSV substitutions are performed automatically by the filter
   },
   StartsUsingExtra: {
     type: '263',
@@ -1159,6 +1237,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: 7,
+    includeForAnalysis: 'none',
   },
   AbilityExtra: {
     type: '264',
@@ -1183,6 +1262,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: 9,
+    includeForAnalysis: 'none',
   },
   ContentFinderSettings: {
     type: '265',
@@ -1203,6 +1283,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'none',
   },
   NpcYell: {
     type: '266',
@@ -1218,6 +1299,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   BattleTalk2: {
     type: '267',
@@ -1239,6 +1321,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   Countdown: {
     type: '268',
@@ -1259,6 +1342,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'never',
   },
   CountdownCancel: {
     type: '269',
@@ -1277,6 +1361,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'never',
   },
   ActorMove: {
     type: '270',
@@ -1299,6 +1384,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'never', // no real way to filter noise, even if (infrequently) used for triggers
   },
   ActorSetPos: {
     type: '271',
@@ -1321,6 +1407,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   SpawnNpcExtra: {
     type: '272',
@@ -1340,6 +1427,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   ActorControlExtra: {
     type: '273',
@@ -1361,6 +1449,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    includeForAnalysis: 'all',
   },
   ActorControlSelfExtra: {
     type: '274',
@@ -1394,6 +1483,32 @@ export const logDefinitionsVersions = {
 // Verify that this has the right type, but export `as const`.
 const assertLogDefinitions: LogDefinitionVersionMap = logDefinitionsVersions;
 console.assert(assertLogDefinitions);
+
+// Verify that log lines set to 'filter' have a valid filter set; otherwise, verify that
+// no filter is present. Also verify that combatantId filters are set only for 'filter' or 'all'.
+type LogDefinitionWithFilters = {
+  [K in LogDefinitionTypes]: typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'filter'
+  ? {
+    includeForAnalysis: 'filter';
+    analysisFilter: NetParams[K] | readonly NetParams[K][];
+    filterCombatantIdFields?: number | readonly number[];
+  }
+  : typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'all'
+  ? {
+    includeForAnalysis: 'all';
+    filterCombatantIdFields?: number | readonly number[];
+    analysisFilter?: undefined;
+  }
+  : typeof latestLogDefinitions[K]['includeForAnalysis'] extends 'none' | 'never'
+  ? {
+    includeForAnalysis: 'none' | 'never';
+    analysisFilter?: undefined;
+    filterCombatantIdFields?: undefined;
+  }
+  : never;
+};
+const assertLogDefinitionsWithFilters: LogDefinitionWithFilters = latestLogDefinitions;
+console.assert(assertLogDefinitionsWithFilters);
 
 export type LogDefinitions = typeof logDefinitionsVersions['latest'];
 export type LogDefinitionTypes = keyof LogDefinitions;

@@ -1,9 +1,13 @@
-import logDefinitions, { LogDefinition, LogDefinitionMap } from '../../resources/netlog_defs';
-import NetRegexes from '../../resources/netregexes';
+import logDefinitions, { LogDefinition, LogDefinitionTypes } from '../../resources/netlog_defs';
+import NetRegexes, { buildRegex } from '../../resources/netregexes';
+import { NetParams } from '../../types/net_props';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
 
 import { ignoredCombatants } from './encounter_tools';
 import { Notifier } from './notifier';
+
+// ignore auto-attacks and abilities that have no name
+const _ignoredAbilities = ['Attack', 'attack', ''];
 
 export default class Splitter {
   private logTypes: { [type: string]: LogDefinition } = {};
@@ -22,20 +26,19 @@ export default class Splitter {
   private rsvTypeToFieldMap: { [type: string]: readonly number[] } = {};
   private rsvSubstitutionMap: { [key: string]: string } = {};
 
-  private filterRegex: {
-    addNPCCombatant: CactbotBaseRegExp<'AddedCombatant'>;
-    startsUsingNPC: CactbotBaseRegExp<'StartsUsing'>;
-    abilityNPC: CactbotBaseRegExp<'Ability'>;
-    gainsEffectPlayerFromNPCOrEnv: CactbotBaseRegExp<'GainsEffect'>;
-    gainsEffectSpecificIds: CactbotBaseRegExp<'GainsEffect'>;
-    losesEffectPlayerFromNPCOrEnv: CactbotBaseRegExp<'GainsEffect'>;
-    losesEffectSpecificIds: CactbotBaseRegExp<'GainsEffect'>;
-  };
+  // log types to include/filter for analysis; defined in netlog_defs
+  private includeAllTypes: string[] = [];
+  private includeFilterTypes: string[] = [];
+  private filtersRegex: { [lineType: string]: CactbotBaseRegExp<LogDefinitionTypes>[] } = {};
 
-  // All logline types to be included without a specifici filterRegex
-  private catchAlls: string[] = [];
+  // hardcoded list of abilities to ignore for analysis filtering
+  private ignoredAbilities: string[] = [];
+  private npcAbilityRegex: CactbotBaseRegExp<'Ability'>;
 
-  private ignoredAbilities: string[];
+  // used to identify (& remove) ignored combatants based on `ignoredCombatants`
+  private addNPCCombatantRegex: CactbotBaseRegExp<'AddedCombatant'>;
+  private removeNPCCombatantRegex: CactbotBaseRegExp<'RemovedCombatant'>;
+  private ignoredCombatantIds: string[] = [];
 
   // startLine and stopLine are both inclusive.
   constructor(
@@ -45,44 +48,47 @@ export default class Splitter {
     private includeGlobals: boolean,
     private doAnalysisFilter: boolean,
   ) {
-    this.filterRegex = {
-      addNPCCombatant: NetRegexes.addedCombatant({ id: '4.{7}' }),
-      startsUsingNPC: NetRegexes.startsUsing({ sourceId: '4.{7}' }),
-      abilityNPC: NetRegexes.ability({ sourceId: '4.{7}' }),
-      gainsEffectPlayerFromNPCOrEnv: NetRegexes.gainsEffect({
-        sourceId: '[E4].{7}',
-        targetId: '1.{7}',
-      }),
-      gainsEffectSpecificIds: NetRegexes.gainsEffect({ effectId: ['B9A', '808'] }),
-      losesEffectPlayerFromNPCOrEnv: NetRegexes.gainsEffect({
-        sourceId: '[E4].{7}',
-        targetId: '1.{7}',
-      }),
-      losesEffectSpecificIds: NetRegexes.gainsEffect({ effectId: ['B9A', '808'] }),
-    };
+    this.addNPCCombatantRegex = NetRegexes.addedCombatant({ id: '4.{7}' });
+    this.removeNPCCombatantRegex = NetRegexes.removingCombatant({ id: '4.{7}' });
+    this.npcAbilityRegex = NetRegexes.ability({ sourceId: '4.{7}' });
 
-    this.catchAlls = [
-      logDefinitions.HeadMarker.type,
-      logDefinitions.Tether.type,
-      logDefinitions.MapEffect.type,
-      logDefinitions.NpcYell.type,
-      logDefinitions.BattleTalk2.type,
-      logDefinitions.ActorSetPos.type,
-      logDefinitions.SpawnNpcExtra.type,
-      logDefinitions.ActorControlExtra.type,
-      logDefinitions.ActorControlSelfExtra.type,
-    ];
+     this.ignoredAbilities = _ignoredAbilities;
 
-    this.ignoredAbilities = ['Attack', 'attack', ''];
+    this.processLogDefs();
+  }
 
-    const defs: LogDefinitionMap = logDefinitions;
-    for (const def of Object.values(defs)) {
-      // Remap logDefinitions from log type (instead of name) to definition.
+  parseFilter(
+    type: LogDefinitionTypes,
+    def: LogDefinition,
+    filter: NetParams[typeof type],
+  ): void {
+    const filterRegex = buildRegex(type, filter);
+    (this.filtersRegex[def.type] ??= []).push(filterRegex);
+    if (!this.includeFilterTypes.includes(def.type))
+      this.includeFilterTypes.push(def.type);
+  }
+
+  processLogDefs(): void {
+    for (
+      const [name, def] of Object.entries(logDefinitions) as [LogDefinitionTypes, LogDefinition][]
+    ) {
+      // Remap logDefinitions from log type (#) to definition.
       this.logTypes[def.type] = def;
+
       // Populate rsvTypeToFieldMap
       const possibleRsvFields = def.possibleRsvFields;
       if (possibleRsvFields !== undefined)
         this.rsvTypeToFieldMap[def.type] = possibleRsvFields;
+
+      // Populate line filtering types & filters
+      if (def.includeForAnalysis === 'filter' && def.analysisFilter !== undefined) {
+        const filters = Array.isArray(def.analysisFilter)
+          ? def.analysisFilter
+          : [def.analysisFilter];
+        // netlog_defs enforces correct typing of def.analysisFilter if it is defined.
+        filters.forEach((f: NetParams[typeof name]) => this.parseFilter(name, def, f));
+      } else if (def.includeForAnalysis === 'all')
+        this.includeAllTypes.push(def.type);
     }
   }
 
@@ -105,93 +111,83 @@ export default class Splitter {
     return splitLine.join('|');
   }
 
-  analysisFilter(line: string, typeField: string | undefined): string | undefined {
-    // Only the following types of lines will be returned by this func and included in the log:
-    // * NPC AddedCombatant (03)
-    // * NPC StartsUsing (20)
-    // * NPC Ability(21)/NetworkAOEAbility(22)
-    // * GainsEffect (26)/LosesEffect (30) applied to players by NPC or environment
-    // * GainsEffect (26)/LosesEffect (30) with a known effectId of interest
-    // * Headmarker (27)
-    // * Tether (35)
-    // * MapEffect (257)
-    // * NpcYell (266)
-    // * BattleTalk2 (267)
-    // * ActorSetPos (271)
-    // * SpawnNpcExtra (272)
-    // * ActorControlExtra (273) (although should be revisited if/when categories expand)
-    // * ActorControlSelfExtra (274) (although should be revisited if/when categories expand)
-
+  // Returns true if line should be included (e.g. passes the filters)
+  // Default is false, since the analysis filter is restrictive by design
+  analysisFilter(line: string, typeField: string | undefined): boolean {
     if (typeField === undefined)
-      return;
+      return false;
 
-    let match;
+    // If this is an 03 line, check if it's an NPC to ignore, and if so, store the id
+    // so we can filter on either name or id (as some lines may only have ids)
     if (typeField === logDefinitions.AddedCombatant.type) {
-      match = this.filterRegex.addNPCCombatant.exec(line);
-      if (match?.groups) {
-        if (!ignoredCombatants.includes(match.groups.name))
-          return line;
-      }
-      return;
+      const match = this.addNPCCombatantRegex.exec(line);
+      if (match?.groups && ignoredCombatants.includes(match.groups.name))
+        this.ignoredCombatantIds.push(match.groups.id);
     }
 
-    if (typeField === logDefinitions.StartsUsing.type) {
-      match = this.filterRegex.startsUsingNPC.exec(line);
-      if (match?.groups) {
-        if (!ignoredCombatants.includes(match.groups.source))
-          return line;
-      }
-      return;
+    // Remove once we encounter a 04 line for that id, so we don't continue to filter erroneously
+    if (typeField === logDefinitions.RemovedCombatant.type) {
+      const match = this.removeNPCCombatantRegex.exec(line);
+      if (match?.groups && this.ignoredCombatantIds.includes(match.groups.id))
+        this.ignoredCombatantIds = this.ignoredCombatantIds.filter((id) =>
+          id !== match.groups?.id
+        );
     }
 
+    if (this.includeAllTypes.includes(typeField))
+      return true;
+
+    // if it's not a type we're filtering on, we can skip further processing
+    if (!this.includeFilterTypes.includes(typeField))
+      return false;
+
+    // if there is ignoredCombatant filtering for this line type, handle it first
+    let npcIdFields = this.logTypes[typeField]?.filterCombatantIdFields;
+    if (npcIdFields !== undefined) {
+      npcIdFields = Array.isArray(npcIdFields) ? npcIdFields : [npcIdFields];
+      const splitLine = line.split('|');
+      for (const idx of npcIdFields) {
+        const npcId = splitLine[idx];
+        if (npcId !== undefined && this.ignoredCombatantIds.includes(npcId))
+          return false;
+      }
+    }
+
+    // if this is an ability line, check if it's an ability on the ignoredAbilities list
     if (
       typeField === logDefinitions.Ability.type ||
       typeField === logDefinitions.NetworkAOEAbility.type
     ) {
-      match = this.filterRegex.abilityNPC.exec(line);
-      if (match?.groups) {
-        if (
-          !ignoredCombatants.includes(match.groups.source) &&
-          !this.ignoredAbilities.includes(match.groups.ability)
-        )
-          return line;
-      }
-      return;
+      const match = this.npcAbilityRegex.exec(line);
+      if (match?.groups && this.ignoredAbilities.includes(match.groups.ability))
+        return false;
     }
 
-    // TODO?: We could filter out known but uninteresting effectIds, like vulns and damage downs.
-    // But that might become bloated and difficult to maintain,
-    // particularly as ids & importance can change between fights.
-    if (typeField === logDefinitions.GainsEffect.type) {
-      match = this.filterRegex.gainsEffectPlayerFromNPCOrEnv.exec(line);
-      if (match?.groups) {
-        if (!ignoredCombatants.includes(match.groups?.source))
-          return line;
-      }
+    // Handle the actual filtering
+    const filters = this.filtersRegex[typeField];
+    if (filters === undefined)
+      return false;
 
-      match = this.filterRegex.gainsEffectSpecificIds.exec(line);
+    /* BEGIN TEMP CODE */
+    // Due to the fact that ignoredCombatants includes empty-name combatants (ref #18/#19),
+    // the current analysis filter is (erroneously) excluding certain lines with empty-name
+    // combatants.  Tthis is a temp fix to continue to exclude those lines for comparison sake.
+    // Next commit fixes this.
+    const tempRegex = NetRegexes.gainsEffect({ sourceId: '[E4].{7}', source: '' });
+    const tempRegex2 = NetRegexes.gainsEffect({ effectId: ['B9A', '808'] });
+    const tempMatch = tempRegex.exec(line);
+    const tempMatch2 = tempRegex2.exec(line);
+    if (tempMatch?.groups && tempMatch2?.groups === undefined)
+      return false;
+    /* END TEMP CODE */
+
+    for (const filter of filters) {
+      const match = filter.exec(line);
       if (match?.groups)
-        return line;
-      return;
+        return true;
     }
 
-    if (typeField === logDefinitions.LosesEffect.type) {
-      match = this.filterRegex.losesEffectPlayerFromNPCOrEnv.exec(line);
-      if (match?.groups) {
-        if (!ignoredCombatants.includes(match.groups?.source))
-          return line;
-      }
-
-      match = this.filterRegex.losesEffectSpecificIds.exec(line);
-      if (match?.groups)
-        return line;
-      return;
-    }
-
-    if (this.catchAlls.includes(typeField))
-      return line;
-
-    return;
+    return false;
   }
 
   process(line: string): string | string[] | undefined {
@@ -211,7 +207,9 @@ export default class Splitter {
 
     // Normal operation; emit lines between start and stop.
     if (this.haveFoundFirstNonIncludeLine)
-      return this.doAnalysisFilter ? this.analysisFilter(line, typeField) : line;
+      return this.doAnalysisFilter
+        ? (this.analysisFilter(line, typeField) ? line : undefined)
+        : line;
 
     if (typeField === undefined)
       return;
@@ -289,7 +287,7 @@ export default class Splitter {
     // if analysis filter is on, only include (filtered) addedCombatant line
     if (this.doAnalysisFilter) {
       for (const line of Object.values(this.addedCombatants)) {
-        if (this.analysisFilter(line, logDefinitions.AddedCombatant.type) !== undefined)
+        if (this.analysisFilter(line, logDefinitions.AddedCombatant.type))
           lines.push(line);
       }
     } else {
@@ -319,20 +317,23 @@ export default class Splitter {
     return lines;
   }
 
-  processWithAnalysisOnly(line: string): string {
+  processAll(line: string): string | undefined {
     const splitLine = line.split('|');
     const typeField = splitLine[0];
-    const filteredLine = this.doAnalysisFilter ? this.analysisFilter(line, typeField) : line;
-    return filteredLine ?? line;
+
+    // BUG: fixed in the next commit
+    return this.doAnalysisFilter
+      ? (this.analysisFilter(line, typeField) ? line : line)
+      : line;
   }
 
   // Call callback with any emitted line.
   public processWithCallback(
     line: string,
-    analysisOnly: boolean,
+    noSplitting: boolean,
     callback: (str: string) => void,
   ): void {
-    const result = analysisOnly ? this.processWithAnalysisOnly(line) : this.process(line);
+    const result = noSplitting ? this.processAll(line) : this.process(line);
     if (typeof result === 'undefined') {
       return;
     } else if (typeof result === 'string') {
