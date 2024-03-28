@@ -41,7 +41,7 @@ hideall "--sync--"
 95.3 "Metal Cutter" Ability { id: "1C70", source: "Zurvan" }
 102.4 "Wave Cannon (avoid)" Ability { id: "1C73", source: "Zurvan" }
 
-108.5 "Metal Cutter" Ability { id: "1C70", source: "Zurvan" } jump 80.0
+108.5 "Metal Cutter" Ability { id: "1C70", source: "Zurvan" } jump 80
 113.6 "Metal Cutter"
 118.7 "Metal Cutter"
 123.8 "Metal Cutter"

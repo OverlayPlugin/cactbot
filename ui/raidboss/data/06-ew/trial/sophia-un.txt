@@ -35,7 +35,7 @@ hideall "--sync--"
 # Intermission.
 # Divine Spark can be pushed and thus is not synced.
 # Gnostic Rant and Infusion are purely HP-based pushes.
-110.6 "Cloudy Heavens" Ability { id: "7DB8", source: "Sophia" } window 110.6
+110.6 "Cloudy Heavens" Ability { id: "7DB8", source: "Sophia" } window 110.6,0
 111.6 "--untargetable--"
 111.6 "--adds spawn--"
 120.9 "Horizontal Kenoma/Vertical Kenoma" Ability { id: ["7DB5", "7DB6"], source: "The First Demiurge" }
