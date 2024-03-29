@@ -50,7 +50,7 @@
 # Halicarnassus is targetable again.
 
 # Post-intermission.
-300.0 "Panel Swap" Ability { id: "2304", source: "Halicarnassus" } window 75,75
+300.0 "Panel Swap" Ability { id: "2304", source: "Halicarnassus" } window 150,10
 305.1 "The Playing Field" Ability { id: "2300", source: "Halicarnassus" }
 313.3 "Ribbit (avoid)" Ability { id: "2466", source: "Halicarnassus" }
 320.5 "The Game (symbols)" Ability { id: "246D", source: "Halicarnassus" }
