@@ -12,7 +12,7 @@ hideall "--sync--"
 # This buster at slightly different times depending on the window.
 15.0 "Chaotic Dispersion" Ability { id: "314F", source: "Chaos" } window 15,10
 25.7 "Long/Lat Implosion?" Ability { id: "315[12]", source: "Chaos" } window 30,10 jump 1025.7
-28.0 "Damning Edict?" Ability { id: "3150", source: "Chaos" } window 30,10 jump 2028.0
+28.0 "Damning Edict?" Ability { id: "3150", source: "Chaos" } window 30,10 jump 2028
 
 
 ## Fire -> Air start

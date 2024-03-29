@@ -42,7 +42,7 @@ hideall "--sync--"
 1059.4 "Order to Charge" Ability { id: "2057", source: "Aulus mal Asina" }
 
 # Phase 1 loop
-1060.3 "--sync--" Ability { id: "2053", source: "Prototype Bit" } jump 1020.0
+1060.3 "--sync--" Ability { id: "2053", source: "Prototype Bit" } jump 1020
 1065.6 "Order to Fire" #Ability { id: "2058", source: "Aulus mal Asina" }
 1069.2 "Aetherochemical Grenado" #Ability { id: "205A", source: "Prototype Bit" }
 1073.7 "Integrated Aetheromodulator" #Ability { id: "205B", source: "Prototype Bit" }
@@ -79,7 +79,7 @@ hideall "--sync--"
 1664.6 "Order to Charge" Ability { id: "2057", source: "Aulus mal Asina" }
 
 # Phase 2 loop
-1665.5 "--sync--" Ability { id: "2053", source: "Prototype Bit" } jump 1622.0
+1665.5 "--sync--" Ability { id: "2053", source: "Prototype Bit" } jump 1622
 1670.8 "Order to Fire" #Ability { id: "2058", source: "Aulus mal Asina" }
 1673.8 "Integrated Aetheromodulator" #Ability { id: "205B", source: "Prototype Bit" }
 1674.4 "Aetherochemical Grenado" #Ability { id: "205A", source: "Prototype Bit" }
@@ -130,8 +130,8 @@ hideall "--sync--"
 
 # Paths diverge into Storm/Swell blocks
 # Blocks loop at random to 20% HP
-2379.3 "Art of the Swell?" Ability { id: "2065", source: "Zenos Yae Galvus" } window 5,5 jump 2600.0
-2379.3 "Art of the Storm?" Ability { id: "2066", source: "Zenos Yae Galvus" } window 5,5 jump 2500.0
+2379.3 "Art of the Swell?" Ability { id: "2065", source: "Zenos Yae Galvus" } window 5,5 jump 2600
+2379.3 "Art of the Storm?" Ability { id: "2066", source: "Zenos Yae Galvus" } window 5,5 jump 2500
 2381.8 "Vein Splitter"
 2385.3 "Lightless Spark?"
 2388.0 "Art of the Sword"
@@ -148,8 +148,8 @@ hideall "--sync--"
 2551.4 "Concentrativity" Ability { id: "206D", source: "Zenos Yae Galvus" }
 2556.4 "--sync--" Ability { id: "239F", source: "Zenos Yae Galvus" } window 20,20
 
-2564.0 "Art of the Swell?" Ability { id: "2065", source: "Zenos Yae Galvus" } window 5,5 jump 2600.0
-2564.0 "Art of the Storm?" Ability { id: "2066", source: "Zenos Yae Galvus" } window 5,5 jump 2500.0
+2564.0 "Art of the Swell?" Ability { id: "2065", source: "Zenos Yae Galvus" } window 5,5 jump 2600
+2564.0 "Art of the Storm?" Ability { id: "2066", source: "Zenos Yae Galvus" } window 5,5 jump 2500
 2566.5 "Vein Splitter"
 2570.0 "Lightless Spark?"
 2572.7 "Art of the Sword"
@@ -167,8 +167,8 @@ hideall "--sync--"
 2651.8 "Concentrativity" Ability { id: "206D", source: "Zenos Yae Galvus" }
 2656.8 "--sync--" Ability { id: "239F", source: "Zenos Yae Galvus" } window 20,20
 
-2664.4 "Art of the Storm?" Ability { id: "2066", source: "Zenos Yae Galvus" } window 5,5 jump 2500.0
-2664.4 "Art of the Swell?" Ability { id: "2065", source: "Zenos Yae Galvus" } window 5,5 jump 2600.0
+2664.4 "Art of the Storm?" Ability { id: "2066", source: "Zenos Yae Galvus" } window 5,5 jump 2500
+2664.4 "Art of the Swell?" Ability { id: "2065", source: "Zenos Yae Galvus" } window 5,5 jump 2600
 2666.9 "Vein Splitter"
 2670.4 "Lightless Spark?"
 2673.1 "Art of the Sword"

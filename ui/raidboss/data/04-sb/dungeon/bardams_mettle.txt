@@ -93,7 +93,7 @@ hideall "Reconstruct"
 2088.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
 2098.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
 2108.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" }
-2118.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" } jump 2078.0
+2118.0 "Pinion" Ability { id: "1F11", source: "Yol Feather" } jump 2078
 2128.0 "Pinion"
 2138.0 "Pinion"
 2148.0 "Pinion"

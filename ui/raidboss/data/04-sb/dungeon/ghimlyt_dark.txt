@@ -32,7 +32,7 @@ hideall "--sync--"
 162.1 "Ceruleum Vent" Ability { id: "3773", source: "Mark III-B Magitek Colossus" }
 169.3 "Ceruleum Vent" Ability { id: "3773", source: "Mark III-B Magitek Colossus" }
 
-176.5 "Magitek Slash x5" Ability { id: "3774", source: "Mark III-B Magitek Colossus" } jump 68.0
+176.5 "Magitek Slash x5" Ability { id: "3774", source: "Mark III-B Magitek Colossus" } jump 68
 188.7 "Magitek Slash x5"
 205.9 "Magitek Ray"
 211.1 "Exhaust"
@@ -78,8 +78,8 @@ hideall "--sync--"
 
 # Provisional Imperial Landing will be sealed off
 2000.0 "Start" SystemLogMessage { id: "7DC", param1: "ABD" } window 2000,5
-2000.4 "--sync--" Ability { id: "370F", source: "Annia Quo Soranus" } jump 2097.0
-2000.4 "--sync--" Ability { id: "370E", source: "Julia Quo Soranus" } jump 2297.0
+2000.4 "--sync--" Ability { id: "370F", source: "Annia Quo Soranus" } jump 2097
+2000.4 "--sync--" Ability { id: "370E", source: "Julia Quo Soranus" } jump 2297
 2003.4 "Artificial Plasma?"
 2010.6 "Heirsbane?"
 2011.6 "Angry Salamander?"
@@ -205,8 +205,8 @@ hideall "--sync--"
 2512.8 "Crosshatch 8" # Ability { id: "3722", source: "Julia Quo Soranus" }
 2515.9 "--sync--" Ability { id: "3726", source: "Julia Quo Soranus" }
 2516.0 "--sync--" Ability { id: "3725", source: "Annia Quo Soranus" }
-2519.0 "--sync--" Ability { id: "370F", source: "Annia Quo Soranus" } window 10,10 jump 2097.0
-2519.0 "--sync--" Ability { id: "370E", source: "Julia Quo Soranus" } window 10,10 jump 2297.0
+2519.0 "--sync--" Ability { id: "370F", source: "Annia Quo Soranus" } window 10,10 jump 2097
+2519.0 "--sync--" Ability { id: "370E", source: "Julia Quo Soranus" } window 10,10 jump 2297
 2522.4 "Artificial Plasma?"
 2529.6 "Heirsbane?"
 2530.6 "Angry Salamander?"
@@ -218,7 +218,7 @@ hideall "--sync--"
 # Enrage after two intermissions.
 
 # 2597.3 "--sync--" StartsUsing { id: "372F", source: "Julia Quo Soranus" } window 597.3
-2597.3 "Artificial Boost" StartsUsing { id: "3730", source: "Annia Quo Soranus" } window 597.3
+2597.3 "Artificial Boost" StartsUsing { id: "3730", source: "Annia Quo Soranus" } window 597.3,0
 # 2600.0 "--sync--" Ability { id: "372F", source: "Julia Quo Soranus" } window 600,5
 2600.0 "Artificial Boost" Ability { id: "3730", source: "Annia Quo Soranus" } window 600,5
 # 2603.2 "--sync--" StartsUsing { id: "3731", source: "Julia Quo Soranus" }

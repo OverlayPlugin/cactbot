@@ -48,7 +48,7 @@ class TimelineParserLint extends TimelineParser {
   public lintErrors: LintError[] = [];
   // TEMPORARY: To control scpe of linting & file changes; will remove in future PR
   public _CURR_FILE = '';
-  private _EXPAC_FILTER = ['05-shb', '06-ew'];
+  private _EXPAC_FILTER = ['05-shb', '06-ew', '04-sb'];
 
   constructor(
     text: string,

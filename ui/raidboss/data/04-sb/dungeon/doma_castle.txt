@@ -92,17 +92,17 @@ hideall "--sync--"
 # boss will walk center on 20B0 and stay center for 20AA Gunsaw, causes timeline drift
 # Hall of the Scarlet Swallow will be sealed off
 2000 "Start" SystemLogMessage { id: "7DC", param1: "7C3" } window 2000,0
-2009.4 "Chainsaw" duration 5.5 Ability { id: "20A8", source: "Hypertuned Grynewaht" }
+2009.4 "Chainsaw" Ability { id: "20A8", source: "Hypertuned Grynewaht" } duration 5.5
 2022.7 "--center--"
 2022.7 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" } window 10,10 # boss walks center before using
-2023.1 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
+2023.1 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5
 2045.4 "Thermobaric Charge" Ability { id: "20AF", source: "Hypertuned Grynewaht" }
 2053.8 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2062.0 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
+2062.0 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5
 2075.3 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2075.3 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2076.7 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2084.9 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
+2084.9 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5
 2098.2 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2098.2 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2102.6 "Magitek Bits" AddedCombatant { name: "Retuned Magitek Bit" }
@@ -110,11 +110,11 @@ hideall "--sync--"
 2117.9 "Chainsaw" Ability { id: "20A8", source: "Hypertuned Grynewaht" } duration 5.5
 2120.9 "Thermobaric Charge" Ability { id: "20AF", source: "Hypertuned Grynewaht" }
 2127.9 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2134.2 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
+2134.2 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5
 2147.5 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2149.5 "Clean Cut" Ability { id: "20B1", source: "Magitek Chakram" }
 2152.6 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2160.8 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
+2160.8 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5
 2174.1 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2174.1 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2179.7 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
@@ -125,7 +125,7 @@ hideall "--sync--"
 2201.2 "Clean Cut" Ability { id: "20B1", source: "Magitek Chakram" }
 
 2208.5 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
-2216.7 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
+2216.7 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5
 2230.0 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" }
 2230.0 "Clean Cut" #Ability { id: "20B1", source: "Magitek Chakram" }
 2232.5 "Magitek Bits" AddedCombatant { name: "Retuned Magitek Bit" }
@@ -136,8 +136,8 @@ hideall "--sync--"
 
 2274.0 "--center--" Ability { id: "20B0", source: "Hypertuned Grynewaht" } window 10,10
 # Loop begins here, but the jump is attached to the Delay-Action Charge to preserve the duration timer for Gunsaw
-2282.2 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5.0
-2295.5 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" } jump 2230.0
+2282.2 "Gunsaw" Ability { id: "20AA", source: "Hypertuned Grynewaht" } duration 5
+2295.5 "Delay-Action Charge" Ability { id: "20AD", source: "Hypertuned Grynewaht" } jump 2230
 2295.5 "Clean Cut"
 2298.0 "Magitek Bits"
 2303.5 "Bits Activate"

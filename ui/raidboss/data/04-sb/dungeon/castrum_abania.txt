@@ -78,7 +78,7 @@ hideall "--sync--"
 
 # Project Aegis will be sealed off
 1000.0 "Start" SystemLogMessage { id: "7DC", param1: "791" } window 10000,0
-1008.3 "--sync--" StartsUsing { id: "82A9", source: "Subject Number XXIV" } window 10,10 jump 1095.0 # fire phase first
+1008.3 "--sync--" StartsUsing { id: "82A9", source: "Subject Number XXIV" } window 10,10 jump 1095 # fire phase first
 1008.3 "--sync--" StartsUsing { id: "82A8", source: "Subject Number XXIV" } window 10,10 jump 1144.7 # ice phase first
 1008.3 "--sync--" StartsUsing { id: "82AA", source: "Subject Number XXIV" } window 10,10 jump 1193.6 # thunder phase first
 1013.2 "Elemental Overload (Random)"
@@ -113,7 +113,7 @@ hideall "--sync--"
 1236.1 "System Error" Ability { id: "82B3", source: "Subject Number XXIV" }
 
 # loop
-1251.2 "Elemental Overload (Fire)" Ability { id: "82AC", source: "Subject Number XXIV" } jump 1100.0
+1251.2 "Elemental Overload (Fire)" Ability { id: "82AC", source: "Subject Number XXIV" } jump 1100
 1262.5 "Triflame" #Ability { id: "82B7", source: "Subject Number XXIV" }
 1269.2 "Fire II" #Ability { id: "82B6", source: "Subject Number XXIV" }
 1280.2 "Triflame" #Ability { id: "82B7", source: "Subject Number XXIV" }

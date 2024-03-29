@@ -99,7 +99,7 @@ hideall "--sync--"
 
 # The Golden Walls of Ruin will be sealed off
 2000.0 "Start" SystemLogMessage { id: "7DC", param1: "93E" } window 2000,5
-2012.6 "Rusting Claw" Ability { id: "2661", source: "Hrodric Poisontongue" } window 2012.6
+2012.6 "Rusting Claw" Ability { id: "2661", source: "Hrodric Poisontongue" } window 2012.6,0
 2026.2 "Tail Drive" Ability { id: "2663", source: "Hrodric Poisontongue" }
 2035.9 "The Spin" Ability { id: "2664", source: "Hrodric Poisontongue" } window 35.9,5
 2041.6 "--sync--" Ability { id: "2666", source: "Hrodric Poisontongue" }
@@ -132,7 +132,7 @@ hideall "--sync--"
 2187.5 "Words Of Woe" Ability { id: "2662", source: "Hrodric Poisontongue" }
 2195.2 "--sync--" Ability { id: "2666", source: "Hrodric Poisontongue" }
 
-2200.3 "Ring Of Chaos/Cross Of Chaos" Ability { id: ["2667", "2668"], source: "Hrodric Poisontongue" } jump 2093.0
+2200.3 "Ring Of Chaos/Cross Of Chaos" Ability { id: ["2667", "2668"], source: "Hrodric Poisontongue" } jump 2093
 2202.8 "--sync--"
 2207.9 "Ring Of Chaos"
 2210.3 "Tail Drive"

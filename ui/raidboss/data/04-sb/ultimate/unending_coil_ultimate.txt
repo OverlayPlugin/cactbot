@@ -74,7 +74,7 @@ hideall "--sync--"
 #238.3 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
 239.1 "Doom x2" Ability { id: "26C9", source: "Tail of Darkness" }
 241.1 "Fireball (1)" Ability { id: "26C5", source: "Firehorn" }
-242.1 "Wings Of Salvation x2" duration 4 Ability { id: "26CA", source: "Fang of Light" }
+242.1 "Wings Of Salvation x2" Ability { id: "26CA", source: "Fang of Light" } duration 4
 249.3 "Bahamut's Claw x5" duration 2.8 #Ability { id: "26B5", source: "Nael deus Darnus" }
 256.0 "Fireball (2)" Ability { id: "26C5", source: "Firehorn" }
 
@@ -83,7 +83,7 @@ hideall "--sync--"
 #262.8 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
 #265.8 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
 268.0 "Doom x3" Ability { id: "26C9", source: "Tail of Darkness" }
-270.0 "Wings Of Salvation x3" duration 8 Ability { id: "26CA", source: "Fang of Light" }
+270.0 "Wings Of Salvation x3" Ability { id: "26CA", source: "Fang of Light" } duration 8
 278.9 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
 281.9 "Fireball (3)" Ability { id: "26C5", source: "Firehorn" }
 

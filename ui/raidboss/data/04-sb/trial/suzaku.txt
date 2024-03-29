@@ -19,7 +19,7 @@ hideall "--sync--"
 100.0 "Eternal Flame" Ability { id: "3222", source: "Suzaku" }
 102.0 "--untargetable--"
 
-117.3 "--sync--" Ability { id: "3226", source: "Suzaku" } window 117.3
+117.3 "--sync--" Ability { id: "3226", source: "Suzaku" } window 117.3,0
 132.4 "--sync--" Ability { id: "3485", source: "Suzaku" }
 133.9 "Scarlet Hymn 1" Ability { id: "3228", source: "Rapturous Echo" }
 144.0 "Scarlet Hymn 2" Ability { id: "3228", source: "Rapturous Echo" }
@@ -29,7 +29,7 @@ hideall "--sync--"
 165.6 "Scarlet Hymn 5" Ability { id: "3228", source: "Rapturous Echo" }
 167.6 "Scarlet Hymn 6" Ability { id: "3228", source: "Rapturous Echo" }
 169.6 "Scarlet Hymn 7" Ability { id: "3228", source: "Rapturous Echo" }
-182.8 "Scarlet Fever" Ability { id: "322C", source: "Suzaku" } window 182.8
+182.8 "Scarlet Fever" Ability { id: "322C", source: "Suzaku" } window 182.8,0
 187.4 "--targetable--"
 
 197.6 "Southron Star" Ability { id: "3234", source: "Suzaku" }
@@ -38,7 +38,7 @@ hideall "--sync--"
 222.9 "Phantom Flurry" Ability { id: "3231", source: "Suzaku" }
 229.0 "Phantom Half" Ability { id: "3233", source: "Suzaku" }
 239.7 "Well Of Flame" Ability { id: "3236", source: "Suzaku" }
-246.9 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" } window 246.9
+246.9 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" } window 246.9,0
 270.8 "Hotspot 1" Ability { id: "3238", source: "Suzaku" }
 286.0 "Hotspot 2" Ability { id: "3238", source: "Suzaku" }
 291.6 "Well Of Flame" Ability { id: "3236", source: "Suzaku" }
@@ -49,7 +49,7 @@ hideall "--sync--"
 329.5 "--sync--" Ability { id: "323A", source: "Suzaku" }
 335.6 "Southron Star" Ability { id: "3234", source: "Suzaku" }
 
-346.2 "Incandescent Interlude" Ability { id: "323C", source: "Suzaku" } window 346.2
+346.2 "Incandescent Interlude" Ability { id: "323C", source: "Suzaku" } window 346.2,0
 355.6 "Rekindle" Ability { id: "3235", source: "Suzaku" }
 358.6 "Immolate" Ability { id: "323E", source: "Suzaku" }
 366.6 "Phantom Flurry" Ability { id: "3231", source: "Suzaku" }

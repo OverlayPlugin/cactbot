@@ -65,9 +65,9 @@ hideall "--sync--"
 1029.8 "Ceruleum Vent" Ability { id: "2794", source: "The Ultima Warrior" }
 1042.0 "Aetheroplasm" Ability { id: "2793", source: "The Ultima Warrior" } # skipped if boss is at or below 95% HP
 
-1053.4 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 53.4,10 jump 1100.0
-1053.4 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 53.4,10 jump 1200.0
-1053.4 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 53.4,10 jump 1300.0
+1053.4 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 53.4,10 jump 1100
+1053.4 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 53.4,10 jump 1200
+1053.4 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 53.4,10 jump 1300
 1060.9 "Primordial Aether"
 1062.0 "Ceruleum Vent?"
 1063.5 "Infinite Fire/Infinite Ice?"
@@ -87,9 +87,9 @@ hideall "--sync--"
 1139.2 "Mass Aetheroplasm" Ability { id: "2795", source: "The Ultima Warrior" }
 1149.7 "Aetheroplasm" Ability { id: "2793", source: "The Ultima Warrior" }
 
-1154.8 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 50,10 jump 1100.0
-1154.8 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 50,10 jump 1200.0
-1154.8 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 50,10 jump 1300.0
+1154.8 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 50,10 jump 1100
+1154.8 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 50,10 jump 1200
+1154.8 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 50,10 jump 1300
 1162.3 "Primordial Aether"
 1163.4 "Ceruleum Vent?"
 1164.9 "Infinite Fire/Infinite Ice?"
@@ -110,9 +110,9 @@ hideall "--sync--"
 1232.3 "Dischordant Cleansing" Ability { id: "279A", source: "The Ultima Warrior" }
 1242.3 "Aetheroplasm" Ability { id: "2793", source: "The Ultima Warrior" }
 
-1248.5 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 50,10 jump 1100.0
-1248.5 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 50,10 jump 1200.0
-1248.5 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 50,10 jump 1300.0
+1248.5 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 50,10 jump 1100
+1248.5 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 50,10 jump 1200
+1248.5 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 50,10 jump 1300
 1256.0 "Primordial Aether"
 1257.1 "Ceruleum Vent?"
 1258.6 "Infinite Fire/Infinite Ice?"
@@ -133,9 +133,9 @@ hideall "--sync--"
 1343.0 "Citadel Buster" Ability { id: "2792", source: "The Ultima Warrior" }
 1354.0 "Aetheroplasm" Ability { id: "2793", source: "The Ultima Warrior" }
 
-1365.5 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 50,10 jump 1100.0
-1365.5 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 50,10 jump 1200.0
-1365.5 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 50,10 jump 1300.0
+1365.5 "--sync--" BattleTalk2 { instanceContentTextId: "484D" } window 50,10 jump 1100
+1365.5 "--sync--" BattleTalk2 { instanceContentTextId: "484E" } window 50,10 jump 1200
+1365.5 "--sync--" BattleTalk2 { instanceContentTextId: "484F" } window 50,10 jump 1300
 1373.0 "Primordial Aether"
 1374.1 "Ceruleum Vent?"
 1375.6 "Infinite Fire/Infinite Ice?"
@@ -173,7 +173,7 @@ hideall "--sync--"
 2168.7 "Light Pillar" Ability { id: "27B7", source: "The Ultima Beast" }
 2176.7 "Allagan Gravity" Ability { id: "27B5", source: "The Ultima Beast" }
 
-2196.2 "--sync--" Ability { id: "27B6", source: "The Ultima Beast" } window 30,30 jump 2128.0
+2196.2 "--sync--" Ability { id: "27B6", source: "The Ultima Beast" } window 30,30 jump 2128
 2205.1 "Flare Star"
 2211.7 "Allagan Flare"
 2226.3 "Aether Bend/Death Spin"

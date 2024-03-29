@@ -38,7 +38,7 @@ hideall "--sync--"
 122.7 "Discharger" Ability { id: "3327", source: "Omega" }
 122.7 "Efficient Bladework" Ability { id: "3329", source: "Omega-M" }
 125.7 "--targetable--"
-132.0 "Firewall" Ability { id: "3339", source: "Omega" } window 132.0
+132.0 "Firewall" Ability { id: "3339", source: "Omega" } window 132,0
 141.2 "Resonance" Ability { id: "333B", source: "Omega" }
 155.6 "Fundamental Synergy" Ability { id: "333D", source: "Omega" }
 
@@ -98,7 +98,7 @@ hideall "--sync--"
 1348.2 "Efficient Bladework" Ability { id: "332A", source: "Omega-M" }
 1356.4 "Laser Shower" Ability { id: "3352", source: "Omega-M" }
 1363.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
-1378.0 "Suppression" Ability { id: "3346", source: "Omega" } jump 2578.0
+1378.0 "Suppression" Ability { id: "3346", source: "Omega" } jump 2578
 1385.1 "Optical Laser" # Cosmetic
 1385.4 "Optimized Meteor"
 1385.6 "Optimized Sagittarius Arrow"
@@ -138,7 +138,7 @@ hideall "--sync--"
 2349.6 "Efficient Bladework" Ability { id: "3329", source: "Omega-M" }
 2350.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
 2357.4 "Laser Shower" Ability { id: "3353", source: "Omega" }
-2375.7 "Suppression" Ability { id: "3346", source: "Omega" } jump 2578.0
+2375.7 "Suppression" Ability { id: "3346", source: "Omega" } jump 2578
 2382.7 "Optical Laser" # Cosmetic
 2382.7 "Optimized Meteor"
 2382.8 "Optimized Sagittarius Arrow"
