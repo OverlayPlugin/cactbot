@@ -62,8 +62,8 @@ hideall "--sync--"
 1030.5 "Slosh" Ability { id: "1947", source: "Liquid Flame" } window 10,10
 1034.6 "Searing Wind" Ability { id: "1944", source: "Liquid Flame" }
 1042.7 "Bibliocide" Ability { id: "1945", source: "Liquid Flame" }
-1054.3 "--sync--" GainsEffect { effectId: '2FF' } window 54,20 jump 1100.0 # Chiromorph
-1054.3 "--sync--" GainsEffect { effectId: '300' } window 54,20 jump 1200.0 # Anemomorph
+1054.3 "--sync--" GainsEffect { effectId: '2FF' } window 54,20 jump 1100 # Chiromorph
+1054.3 "--sync--" GainsEffect { effectId: '300' } window 54,20 jump 1200 # Anemomorph
 1054.3 "Hand/Tornado?"
 
 # Hand Form (Chiromorph)

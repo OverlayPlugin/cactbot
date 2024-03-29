@@ -109,7 +109,7 @@ hideall "--sync--"
 2118.2 "Sanguine Blade" Ability { id: "1CC5", source: "The Griffin" }
 2125.3 "Beak Of The Griffin" Ability { id: "1CC3", source: "The Griffin" }
 
-2133.4 "Claw Of The Griffin" Ability { id: "1CC2", source: "The Griffin" } window 30,30 jump 2036.0
+2133.4 "Claw Of The Griffin" Ability { id: "1CC2", source: "The Griffin" } window 30,30 jump 2036
 2139.6 "Gull Dive"
 2146.5 "Lionshead"
 2153.7 "Dull Blade"

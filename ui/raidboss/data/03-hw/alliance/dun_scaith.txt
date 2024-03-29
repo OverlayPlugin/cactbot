@@ -169,7 +169,7 @@ hideall "--sync--"
 1405.2 "Flameflow" Ability { id: "1CA7", source: "Ferdiad Hollow" }
 1411.4 "Jester's Reap" Ability { id: "1E41", source: "Ferdiad Hollow" }
 
-1420.4 "Sleight" Ability { id: "1C99", source: "Ferdiad Hollow" } window 15,15 jump 1319.0
+1420.4 "Sleight" Ability { id: "1C99", source: "Ferdiad Hollow" } window 15,15 jump 1319
 1428.9 "Wormhole"
 1429.4 "Juggling Sphere"
 1434.4 "Explosion"
@@ -278,7 +278,7 @@ hideall "--sync--"
 3199.4 "--shadows gather--"
 3203.6 "Soar" Ability { id: "1D1B", source: "Scathach" }
 3207.8 "--sync--" Ability { id: "1D1C", source: "Scathach" }
-3208.7 "Shadesmite" Ability { id: "1D1D", source: "Scathach" } window 30,30 jump 3061.0
+3208.7 "Shadesmite" Ability { id: "1D1D", source: "Scathach" } window 30,30 jump 3061
 
 # We don't know 100% that this is the correct rotation,
 # but based on the available logs and video, it seems likely.

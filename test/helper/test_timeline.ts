@@ -46,17 +46,12 @@ class TimelineParserLint extends TimelineParser {
   private ignoreSyncOrder = false;
   // Capture lint errors separately from TimelineParser's errors so we can do a separate unit test
   public lintErrors: LintError[] = [];
-  // TEMPORARY: To control scpe of linting & file changes; will remove in future PR
-  public _CURR_FILE = '';
-  private _EXPAC_FILTER = ['05-shb', '06-ew', '04-sb'];
 
   constructor(
     text: string,
     triggers: LooseTimelineTrigger[],
-    filename: string, // TEMPORARY: Remove when all files are linted
   ) {
     super(text, [], triggers); // calls TimelineParser's parse() method
-    this._CURR_FILE = filename; // TEMPORARY: Remove when all files are linted
     this.lintTimelineFile(text);
   }
 
@@ -201,10 +196,6 @@ class TimelineParserLint extends TimelineParser {
       const thisKeyword = keywords[i];
       if (thisKeyword === undefined)
         throw new UnreachableCode();
-
-      // TEMPORARY: Remove when all files are linted
-      if (!this._EXPAC_FILTER.some((e) => this._CURR_FILE.includes(e)))
-        return;
 
       if (!syncKewordsOrder.includes(thisKeyword)) {
         this.lintErrors.push({
@@ -419,7 +410,6 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           timeline = new TimelineParserLint(
             timelineText,
             triggerSet.timelineTriggers ?? [],
-            timelineFile, // TEMPORARY: Remove when all files are linted
           );
         });
         // This test loads an individual raidboss timeline and makes sure

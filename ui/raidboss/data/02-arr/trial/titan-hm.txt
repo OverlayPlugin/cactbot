@@ -76,7 +76,7 @@ hideall "--sync--"
 514.8 "Rock Buster" Ability { id: "550", source: "Titan" }
 517.8 "Tumult x3" duration 2.4 #Ability { id: "551", source: "Titan" }
 528.1 "Landslide" Ability { id: "554", source: "Titan" }
-536.2 "Weight Of The Land" Ability { id: "552", source: "Titan" } window 30,30 jump 420.0
+536.2 "Weight Of The Land" Ability { id: "552", source: "Titan" } window 30,30 jump 420
 
 541.3 "Bury (clock)" duration 4 #Ability { id: "41B", source: "Bomb Boulder" }
 546.1 "Rock Buster" #Ability { id: "550", source: "Titan" }

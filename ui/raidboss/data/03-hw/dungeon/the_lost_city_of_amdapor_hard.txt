@@ -147,7 +147,7 @@ hideall "--sync--"
 3344.3 "Cure III" Ability { id: "15DA", source: "Kuribu" }
 3355.5 "Glory" Ability { id: "15E4", source: "Kuribu" }
 
-3365.6 "Regen" Ability { id: "15DD", source: "Kuribu" } window 30,30 jump 3313.0
+3365.6 "Regen" Ability { id: "15DD", source: "Kuribu" } window 30,30 jump 3313
 3378.7 "Cure IV" #Ability { id: "15E0", source: "Kuribu" }
 3386.8 "Glory" #Ability { id: "15E4", source: "Kuribu" }
 3396.9 "Cure III" #Ability { id: "15DA", source: "Kuribu" }
@@ -172,7 +172,7 @@ hideall "--sync--"
 3595.8 "Cure III" Ability { id: "15DA", source: "Kuribu" }
 3608.0 "Glory" Ability { id: "15E4", source: "Kuribu" }
 
-3617.2 "Reverse" Ability { id: "15D8", source: "Kuribu" } window 30,30 jump 3506.0
+3617.2 "Reverse" Ability { id: "15D8", source: "Kuribu" } window 30,30 jump 3506
 3622.2 "Decoy" #Ability { id: "15E1", source: "Kuribu" }
 3622.7 "--targetable--"
 3627.3 "Glory" #Ability { id: "15E4", source: "Kuribu" }
