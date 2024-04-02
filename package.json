@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.31.3",
-  "releaseSummary": "bug squash, i18n, ci",
+  "version": "0.31.4",
+  "releaseSummary": "cn/ko 6.5",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
