@@ -8,9 +8,9 @@ for folks who want to write ACT triggers for ff14.
 
 This guide was last updated for:
 
-- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.57
-- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.6.9.9
-- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.27
+- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.58
+- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.7.0.1
+- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.28
 
 ## TOC
 
