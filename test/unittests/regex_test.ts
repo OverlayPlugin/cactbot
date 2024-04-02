@@ -580,4 +580,22 @@ describe('regex tests', () => {
     assert.equal(matches?.param3, '0');
     assert.equal(matches?.param4, '0');
   });
+  it('actorControlSelfExtra', () => {
+    const lines = [
+      '[19:28:37.500] 274 112:10001234:020F:04D0:0:93E0:0:0:0',
+      '[19:35:41.995] 274 112:10001234:020F:236D:0:669:0:0:0',
+      '[20:45:41.368] 274 112:10001234:0210:129D:10001234:F:0:0:0',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => Regexes.actorControlSelfExtra(params), lines);
+
+    const matches = lines[0].match(Regexes.actorControlSelfExtra())?.groups;
+    assert.equal(matches?.id, '10001234');
+    assert.equal(matches?.category, '020F');
+    assert.equal(matches?.param1, '04D0');
+    assert.equal(matches?.param2, '0');
+    assert.equal(matches?.param3, '93E0');
+    assert.equal(matches?.param4, '0');
+    assert.equal(matches?.param5, '0');
+    assert.equal(matches?.param6, '0');
+  });
 });

@@ -70,6 +70,7 @@ export default class Splitter {
       logDefinitions.ActorSetPos.type,
       logDefinitions.SpawnNpcExtra.type,
       logDefinitions.ActorControlExtra.type,
+      logDefinitions.ActorControlSelfExtra.type,
     ];
 
     this.ignoredAbilities = ['Attack', 'attack', ''];
@@ -118,7 +119,8 @@ export default class Splitter {
     // * BattleTalk2 (267)
     // * ActorSetPos (271)
     // * SpawnNpcExtra (272)
-    // * ActorControExtra (273) (although should be revisited if/when categories expand)
+    // * ActorControlExtra (273) (although should be revisited if/when categories expand)
+    // * ActorControlSelfExtra (274) (although should be revisited if/when categories expand)
 
     if (typeField === undefined)
       return;

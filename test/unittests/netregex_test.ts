@@ -574,4 +574,23 @@ describe('netregex tests', () => {
     assert.equal(matches?.param3, '0');
     assert.equal(matches?.param4, '0');
   });
+  it('actorControlSelfExtra', () => {
+    const lines = [
+      '274|2024-01-10T19:28:37.5000000-05:00|10001234|020F|04D0|0|93E0|0|0|0|d274429622d0c27e',
+      '274|2024-02-15T19:35:41.9950000-05:00|10001234|020F|236D|0|669|0|0|0|d274429622d0c27e',
+      '274|2024-03-21T20:45:41.3680000-04:00|10001234|0210|129D|10001234|F|0|0|0|d274429622d0c27e',
+    ] as const;
+    regexCaptureTest((params?: RegexUtilParams) => NetRegexes.actorControlSelfExtra(params), lines);
+
+    const matches = lines[0].match(NetRegexes.actorControlSelfExtra())?.groups;
+    assert.equal(matches?.type, '274');
+    assert.equal(matches?.id, '10001234');
+    assert.equal(matches?.category, '020F');
+    assert.equal(matches?.param1, '04D0');
+    assert.equal(matches?.param2, '0');
+    assert.equal(matches?.param3, '93E0');
+    assert.equal(matches?.param4, '0');
+    assert.equal(matches?.param5, '0');
+    assert.equal(matches?.param6, '0');
+  });
 });
