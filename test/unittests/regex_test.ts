@@ -568,7 +568,7 @@ describe('regex tests', () => {
     const lines = [
       '[10:57:43.477] 273 111:4000A145:003E:1:0:0:0',
       '[10:58:00.346] 273 111:4000A144:003E:1:1:0:0',
-      '[01:54:27.198] 273 111:40016E0C:003E:1:1:0:0',
+      '[20:33:22.713] 273 111:400058CA:2100:0:848:FA0:0',
     ] as const;
     regexCaptureTest((params?: RegexUtilParams) => Regexes.actorControlExtra(params), lines);
 
