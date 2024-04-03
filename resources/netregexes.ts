@@ -41,6 +41,14 @@ export const gameLogCodes = {
   message: '0839',
 } as const;
 
+// See docs/LogGuide.md for more info about these categories
+export const actorControlType = {
+  setAnimState: '003E',
+  publicContentText: '0834',
+  logMsg: '020F',
+  logMsgParams: '0210',
+} as const;
+
 const defaultParams = <
   T extends LogDefinitionTypes,
   V extends LogDefinitionVersions,

@@ -7,7 +7,7 @@ import { Job, Role } from '../types/job';
 import { NetMatches } from '../types/net_matches';
 import { OutputStrings } from '../types/trigger';
 
-import { gameLogCodes } from './netregexes';
+import { actorControlType, gameLogCodes } from './netregexes';
 import Outputs from './outputs';
 import { callOverlayHandler } from './overlay_plugin_api';
 
@@ -472,6 +472,7 @@ const Util = {
     clearCombatantsOverride = clearFunc;
   },
   gameLogCodes: gameLogCodes,
+  actorControlType: actorControlType,
   shortName: (
     name: string | undefined,
     playerNicks: { [name: string]: string },

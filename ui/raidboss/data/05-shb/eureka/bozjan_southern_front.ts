@@ -2,6 +2,7 @@ import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import Regexes from '../../../../../resources/regexes';
 import { Responses } from '../../../../../resources/responses';
+import Util from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { NetMatches } from '../../../../../types/net_matches';
@@ -663,7 +664,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Bozja South Castrum Lyon Passage',
       type: 'ActorControlSelfExtra',
-      netRegex: { category: '020F', param1: '25AC', capture: false, },
+      netRegex: { category: Util.actorControlType.logMsg, param1: '25AC', capture: false, },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
