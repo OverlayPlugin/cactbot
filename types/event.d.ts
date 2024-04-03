@@ -192,7 +192,7 @@ export interface EventMap {
 
   'ChangePrimaryPlayer': (ev: {
     type: 'ChangePrimaryPlayer';
-    charID: string;
+    charID: number;
     charName: string;
   }) => void;
 

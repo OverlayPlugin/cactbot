@@ -3226,9 +3226,10 @@ depending on the actor control category.
 The list of categories for which log lines are emitted is necessarily restrictive,
 given the volume of data, although more may be added in the future:
 
-| Category Name     | `category`  |
-| ----------------- | ----------- |
-| SetAnimationState | 0x003E (62) |
+| Category Name                   | `category`    |
+| ------------------------------- | ------------- |
+| SetAnimationState               | 0x003E (62)   |
+| DisplayPublicContentTextMessage | 0x0834 (2100) |
 
 - `SetAnimationState` - used to set the animation state of an actor.
   - `param1`, like the `animationState` field in
@@ -3236,6 +3237,11 @@ given the volume of data, although more may be added in the future:
     [BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcState.csv).
   - `param2` appears to change how an animation of that actor is rendered in-game.
     More information is needed.
+- `DisplayPublicContentTextMessage` - Displays a message in the chat log
+  - `param1` seems to always be `0x0`
+  - `param2` corresponds to an entry in the
+    [PublicContentTextData table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/PublicContentTextData.csv)
+  - `param3` and `param4` are optional fields referenced in some messages
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorControlExtra&lang=en-US) -->
 
@@ -3265,12 +3271,12 @@ Parsed Log Line Regex:
 Network Log Line Examples:
 273|2023-12-05T10:57:43.4770000-08:00|4000A145|003E|1|0|0|0|06e7eff4a949812c
 273|2023-12-05T10:58:00.3460000-08:00|4000A144|003E|1|1|0|0|a4af9f90928636a3
-273|2024-03-03T01:54:27.1980000-08:00|40016E0C|003E|1|1|0|0|f37647efed063aa1
+273|2024-03-18T20:33:22.7130000-04:00|400058CA|2100|0|848|FA0|0|c862c35712ed4122
 
 Parsed Log Line Examples:
 [10:57:43.477] 273 111:4000A145:003E:1:0:0:0
 [10:58:00.346] 273 111:4000A144:003E:1:1:0:0
-[01:54:27.198] 273 111:40016E0C:003E:1:1:0:0
+[20:33:22.713] 273 111:400058CA:2100:0:848:FA0:0
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=ActorControlExtra&lang=en-US) -->
