@@ -415,9 +415,7 @@ hideall "--sync--"
 
 # https://xivapi.com/PublicContentTextData/2477
 # en: Why...won't...you...
-# TODO: Update to ActorControlExtra (category: 0x0834, param1: 0x9AD) when available.
-# See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
-8000.0 "--Reset--" GameLog { code: "0044", name: "Stygimoloch Warrior", line: "Why\.\.\.won't\.\.\.you\.\.\..*?" } window 0,2000 jump 0
+8000.0 "--Reset--" ActorControlExtra { category: "0834", param2: "9AD" } window 0,2000 jump 0
 # TODO: is there a reset dialog line for losing?
 # Alternatively, we could always insert " 19:${data.me} was defeated by" from script.
 

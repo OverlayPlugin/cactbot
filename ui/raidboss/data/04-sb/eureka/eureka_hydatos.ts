@@ -1,5 +1,4 @@
 import { Responses } from '../../../../../resources/responses';
-import Util from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -88,12 +87,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/LogMessage/9069
     // en: The memories of heroes past live on again!
-    // TODO: Update to ActorControlSelf (category=0x020F, param1=0x236D) when available
-    // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Saved By Remembrance',
-      type: 'GameLog',
-      netRegex: { line: 'The memories of heroes past live on again.*?', capture: false },
+      type: 'ActorControlSelfExtra',
+      netRegex: { category: '020F', param1: '236D', capture: false },
       sound: 'Long',
     },
     {
@@ -258,16 +255,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/PublicContentTextData/2122
     // en: Munderg, turn flesh to ash!
-    // TODO: Update to ActorControl (category=0x0834, param1=0x84A) when available
-    // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Owain Fire Element',
-      type: 'GameLog',
-      netRegex: {
-        line: '[^:]*:Munderg, turn flesh to ash.*?',
-        code: Util.gameLogCodes.dialog,
-        capture: false,
-      },
+      type: 'ActorControlExtra',
+      netRegex: { category: '0834', param2: '84A', capture: false },
       condition: (data) => data.side === 'east',
       alertText: (_data, _matches, output) => output.getToIce!(),
       infoText: (_data, _matches, output) => output.switchMagia!(),
@@ -292,16 +283,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     // https://xivapi.com/PublicContentTextData/2123
     // en: Munderg, turn blood to ice!
-    // TODO: Update to ActorControl (category=0x0834, param1=0x84B) when available
-    // See OverlayPlugin/cactbot#99 and OverlayPlugin/OverlayPlugin#329 for further info
     {
       id: 'BA Owain Ice Element',
-      type: 'GameLog',
-      netRegex: {
-        line: '[^:]*:Munderg, turn blood to ice.*?',
-        code: Util.gameLogCodes.dialog,
-        capture: false,
-      },
+      type: 'ActorControlExtra',
+      netRegex: { category: '0834', param2: '84B', capture: false },
       condition: (data) => data.side === 'east',
       alertText: (_data, _matches, output) => output.getToFire!(),
       infoText: (_data, _matches, output) => output.switchMagia!(),
