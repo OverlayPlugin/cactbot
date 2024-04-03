@@ -259,7 +259,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'BA Owain Fire Element',
       type: 'ActorControlExtra',
-      netRegex: { category: Util.actorControlType.publicContentText, param2: '84A', capture: false },
+      netRegex: {
+        category: Util.actorControlType.publicContentText,
+        param2: '84A',
+        capture: false,
+      },
       condition: (data) => data.side === 'east',
       alertText: (_data, _matches, output) => output.getToIce!(),
       infoText: (_data, _matches, output) => output.switchMagia!(),
@@ -287,7 +291,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'BA Owain Ice Element',
       type: 'ActorControlExtra',
-      netRegex: { category: Util.actorControlType.publicContentText, param2: '84B', capture: false },
+      netRegex: {
+        category: Util.actorControlType.publicContentText,
+        param2: '84B',
+        capture: false,
+      },
       condition: (data) => data.side === 'east',
       alertText: (_data, _matches, output) => output.getToFire!(),
       infoText: (_data, _matches, output) => output.switchMagia!(),

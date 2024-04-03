@@ -664,7 +664,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Bozja South Castrum Lyon Passage',
       type: 'ActorControlSelfExtra',
-      netRegex: { category: Util.actorControlType.logMsg, param1: '25AC', capture: false, },
+      netRegex: { category: Util.actorControlType.logMsg, param1: '25AC', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
