@@ -1,14 +1,21 @@
-import logDefinitions, { LogDefinition } from '../../resources/netlog_defs';
+import { isEqual } from 'lodash';
+
+import logDefinitions, {
+  LogDefFieldName,
+  LogDefinition,
+  LogDefinitionTypeCode,
+  LogDefinitionTypes,
+} from '../../resources/netlog_defs';
 import { UnreachableCode } from '../../resources/not_reached';
 
 import FakeNameGenerator from './fake_name_generator';
 import { Notifier } from './notifier';
+import { ReindexedLogDefs } from './splitter';
 
 // TODO: is the first byte of ids always flags, such that "..000000" is always empty?
 const emptyIds = ['E0000000', '80000000'];
-
 export default class Anonymizer {
-  private logTypes: { [type: string]: LogDefinition } = {};
+  private logTypes: ReindexedLogDefs;
 
   private nameGenerator = new FakeNameGenerator();
 
@@ -23,9 +30,7 @@ export default class Anonymizer {
   private lastPlayerIdx = 0x10FF0000;
 
   constructor() {
-    // Remap logDefinitions from log type (instead of name) to definition.
-    for (const def of Object.values(logDefinitions))
-      this.logTypes[def.type] = def;
+    this.logTypes = this.processLogDefs();
 
     for (const id of emptyIds) {
       // Empty ids have already been anonymized (to themselves).
@@ -35,12 +40,44 @@ export default class Anonymizer {
     }
   }
 
+  isLogDefinitionField<K extends LogDefinitionTypes>(
+    field: string,
+    name: K,
+  ): field is LogDefFieldName<K> {
+    return Object.keys(logDefinitions[name].fields).includes(field);
+  }
+
+  isLogDefinitionType(type: string | undefined): type is LogDefinitionTypeCode {
+    return Object.values(logDefinitions).some((d) => d.type === type);
+  }
+
+  isLogDefinition<K extends LogDefinitionTypes>(def: { name: K }): def is LogDefinition<K> {
+    return isEqual(def, logDefinitions[def.name]);
+  }
+
+  isReindexedLogDefs(remap: Partial<ReindexedLogDefs>): remap is ReindexedLogDefs {
+    return Object.values(logDefinitions).every((d) => isEqual(remap[d.type], d));
+  }
+
+  processLogDefs(): ReindexedLogDefs {
+    const remap: { [type: string]: LogDefinition<LogDefinitionTypes> } = {};
+    for (const def of Object.values(logDefinitions)) {
+      if (!this.isLogDefinition(def))
+        throw new UnreachableCode();
+      remap[def.type] = def;
+    }
+    if (!this.isReindexedLogDefs(remap))
+      throw new UnreachableCode();
+    return remap;
+  }
+
   public process(line: string, notifier: Notifier): string | undefined {
     const splitLine = line.split('|');
 
     // Improperly closed files can leave a blank line.
-    const typeField = splitLine[0];
-    if (typeField === undefined || splitLine.length <= 1)
+    const type = splitLine[0];
+
+    if (!this.isLogDefinitionType(type) || splitLine.length <= 1)
       return line;
 
     // Always replace the hash.
@@ -49,8 +86,8 @@ export default class Anonymizer {
     else
       notifier.warn(`missing hash ${splitLine.length}`, splitLine);
 
-    const type = this.logTypes[typeField];
-    if (type === undefined || type.isUnknown) {
+    const typeDef = this.logTypes[type];
+    if (typeDef.isUnknown) {
       notifier.warn('unknown type', splitLine);
       return;
     }
@@ -58,29 +95,20 @@ export default class Anonymizer {
     // Check subfields first before canAnonymize.
     // Subfields override the main type, if present.
     let canAnonymizeSubField = false;
-    if (type.subFields) {
-      for (const subFieldName in type.subFields) {
-        // Find field idx.
-        let fieldIdx = -1;
-        for (const fieldName in type.fields) {
-          if (fieldName === subFieldName) {
-            const idx = type.fields[fieldName];
-            if (idx === undefined)
-              throw new UnreachableCode();
-            fieldIdx = idx;
-            break;
-          }
-        }
-        if (fieldIdx === -1) {
+    if (typeDef.subFields) {
+      for (const subFieldName in typeDef.subFields) {
+        if (!this.isLogDefinitionField(subFieldName, typeDef.name)) {
           notifier.warn(`internal error: invalid subfield: ${subFieldName}`, splitLine);
           return;
         }
+
+        const fieldIdx = typeDef.fields[subFieldName];
         const value = splitLine[fieldIdx];
         if (value === undefined) {
           notifier.warn(`internal error: missing subfield: ${subFieldName}`, splitLine);
           return;
         }
-        const subValues = type.subFields[subFieldName];
+        const subValues = typeDef.subFields[subFieldName];
 
         // Unhandled values inherit the field's value.
         const subType = subValues?.[value];
@@ -93,11 +121,11 @@ export default class Anonymizer {
     }
 
     // Drop any lines that can't be handled.
-    if (!canAnonymizeSubField && !type.canAnonymize)
+    if (!canAnonymizeSubField && !typeDef.canAnonymize)
       return;
 
     // If nothing to anonymize, we're done.
-    const playerIds = type.playerIds;
+    const playerIds = typeDef.playerIds;
     if (playerIds === undefined)
       return splitLine.join('|');
 
@@ -105,7 +133,8 @@ export default class Anonymizer {
     for (const [idIdxStr, nameIdx] of Object.entries(playerIds)) {
       const idIdx = parseInt(idIdxStr);
 
-      const isOptional = type.firstOptionalField !== undefined && idIdx >= type.firstOptionalField;
+      const isOptional = typeDef.firstOptionalField !== undefined &&
+        idIdx >= typeDef.firstOptionalField;
 
       // Check for ids that are out of range, possibly optional.
       // The last field is always the hash, so don't include that either.
@@ -171,8 +200,8 @@ export default class Anonymizer {
     }
 
     // For unknown fields, just clear them, as they may have ids.
-    if (typeof type.firstUnknownField !== 'undefined') {
-      for (let idx = type.firstUnknownField; idx < splitLine.length - 1; ++idx)
+    if (typeof typeDef.firstUnknownField !== 'undefined') {
+      for (let idx = typeDef.firstUnknownField; idx < splitLine.length - 1; ++idx)
         splitLine[idx] = '';
     }
 

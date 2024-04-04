@@ -1,5 +1,13 @@
-import logDefinitions, { LogDefinition, LogDefinitionTypes } from '../../resources/netlog_defs';
+import { isEqual } from 'lodash';
+
+import logDefinitions, {
+  LogDefinition,
+  LogDefinitions,
+  LogDefinitionTypeCode,
+  LogDefinitionTypes,
+} from '../../resources/netlog_defs';
 import NetRegexes, { buildRegex } from '../../resources/netregexes';
+import { UnreachableCode } from '../../resources/not_reached';
 import { NetParams } from '../../types/net_props';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
 
@@ -9,8 +17,11 @@ import { Notifier } from './notifier';
 // ignore auto-attacks and abilities that have no name
 const _ignoredAbilities = ['Attack', 'attack', ''];
 
+export type ReindexedLogDefs = {
+  [K in keyof LogDefinitions as LogDefinitions[K]['type']]: LogDefinition<K>;
+};
 export default class Splitter {
-  private logTypes: { [type: string]: LogDefinition } = {};
+  private logTypes: ReindexedLogDefs;
   private haveStarted = false;
   private haveStopped = false;
   private haveFoundFirstNonIncludeLine = false;
@@ -23,13 +34,12 @@ export default class Splitter {
   private rsvLines: { [key: string]: string } = {};
   // log type => field #s that may contain rsv data
   private rsvLinesReceived = false;
-  private rsvTypeToFieldMap: { [type: string]: readonly number[] } = {};
   private rsvSubstitutionMap: { [key: string]: string } = {};
 
   // log types to include/filter for analysis; defined in netlog_defs
-  private includeAllTypes: string[] = [];
-  private includeFilterTypes: string[] = [];
-  private filtersRegex: { [lineType: string]: CactbotBaseRegExp<LogDefinitionTypes>[] } = {};
+  private includeAllTypes: LogDefinitionTypeCode[] = [];
+  private includeFilterTypes: LogDefinitionTypeCode[] = [];
+  private filtersRegex: { [type: string]: CactbotBaseRegExp<LogDefinitionTypes>[] } = {};
 
   // hardcoded list of abilities to ignore for analysis filtering
   private ignoredAbilities: string[] = [];
@@ -54,50 +64,59 @@ export default class Splitter {
 
     this.ignoredAbilities = _ignoredAbilities;
 
-    this.processLogDefs();
+    this.logTypes = this.processAnalysisOptions();
   }
 
   parseFilter(
-    type: LogDefinitionTypes,
-    def: LogDefinition,
-    filter: NetParams[typeof type],
+    name: LogDefinitionTypes,
+    def: LogDefinition<typeof name>,
+    filter: NetParams[typeof name],
   ): void {
-    const filterRegex = buildRegex(type, filter);
+    const filterRegex = buildRegex(name, filter);
     (this.filtersRegex[def.type] ??= []).push(filterRegex);
     if (!this.includeFilterTypes.includes(def.type))
       this.includeFilterTypes.push(def.type);
   }
 
-  processLogDefs(): void {
-    for (
-      const [name, def] of Object.entries(logDefinitions) as [LogDefinitionTypes, LogDefinition][]
-    ) {
-      // Remap logDefinitions from log type (#) to definition.
-      this.logTypes[def.type] = def;
-
-      // Populate rsvTypeToFieldMap
-      const possibleRsvFields = def.possibleRsvFields;
-      if (possibleRsvFields !== undefined)
-        this.rsvTypeToFieldMap[def.type] = possibleRsvFields;
-
-      // Populate line filtering types & filters
-      if (def.includeForAnalysis === 'filter' && def.analysisFilter !== undefined) {
-        const filters = Array.isArray(def.analysisFilter)
-          ? def.analysisFilter
-          : [def.analysisFilter];
-        // netlog_defs enforces correct typing of def.analysisFilter if it is defined.
-        filters.forEach((f: NetParams[typeof name]) => this.parseFilter(name, def, f));
-      } else if (def.includeForAnalysis === 'all')
-        this.includeAllTypes.push(def.type);
-    }
+  isLogDefinitionType(type: string | undefined): type is LogDefinitionTypeCode {
+    return Object.values(logDefinitions).some((d) => d.type === type);
   }
 
-  decodeRsv(line: string): string {
+  isLogDefinition<K extends LogDefinitionTypes>(def: { name: K }): def is LogDefinition<K> {
+    return isEqual(def, logDefinitions[def.name]);
+  }
+
+  isReindexedLogDefs(remap: Partial<ReindexedLogDefs>): remap is ReindexedLogDefs {
+    return Object.values(logDefinitions).every((d) => isEqual(remap[d.type], d));
+  }
+
+  processAnalysisOptions(): ReindexedLogDefs {
+    const remap: { [type: string]: LogDefinition<LogDefinitionTypes> } = {};
+    for (const def of Object.values(logDefinitions)) {
+      if (!this.isLogDefinition(def))
+        throw new UnreachableCode();
+
+      // Reindex logDefinitions based on def.type, rather than def.name
+      remap[def.type] = def;
+
+      // Populate line filtering types & filters
+      if (def.analysisOptions?.include === 'filter') {
+        let filters = def.analysisOptions.filters;
+        filters = Array.isArray(filters) ? filters : [filters];
+        filters.forEach((f) => this.parseFilter(def.name, def, f));
+      } else if (def.analysisOptions?.include === 'all')
+        this.includeAllTypes.push(def.type);
+    }
+
+    if (!this.isReindexedLogDefs(remap))
+      throw new UnreachableCode();
+    return remap;
+  }
+
+  decodeRsv(line: string, type: LogDefinitionTypeCode): string {
     const splitLine = line.split('|');
-    const typeField = splitLine[0];
-    if (typeField === undefined)
-      return line;
-    const fieldsToSubstitute = this.rsvTypeToFieldMap[typeField];
+
+    const fieldsToSubstitute = this.logTypes[type].possibleRsvFields;
     if (fieldsToSubstitute === undefined)
       return line;
 
@@ -113,34 +132,31 @@ export default class Splitter {
 
   // Returns true if line should be included (e.g. passes the filters)
   // Default is false, since the analysis filter is restrictive by design
-  analysisFilter(line: string, typeField: string | undefined): boolean {
-    if (typeField === undefined)
-      return false;
-
+  analysisFilter(line: string, type: LogDefinitionTypeCode): boolean {
     // If this is an 03 line, check if it's an NPC to ignore, and if so, store the id
     // so we can filter on either name or id (as some lines may only have ids)
-    if (typeField === logDefinitions.AddedCombatant.type) {
+    if (type === logDefinitions.AddedCombatant.type) {
       const match = this.addNPCCombatantRegex.exec(line);
       if (match?.groups && ignoredCombatants.includes(match.groups.name))
         this.ignoredCombatantIds.push(match.groups.id);
     }
 
     // Remove once we encounter a 04 line for that id, so we don't continue to filter erroneously
-    if (typeField === logDefinitions.RemovedCombatant.type) {
+    if (type === logDefinitions.RemovedCombatant.type) {
       const match = this.removeNPCCombatantRegex.exec(line);
       if (match?.groups && this.ignoredCombatantIds.includes(match.groups.id))
         this.ignoredCombatantIds = this.ignoredCombatantIds.filter((id) => id !== match.groups?.id);
     }
 
-    if (this.includeAllTypes.includes(typeField))
+    if (this.includeAllTypes.includes(type))
       return true;
 
     // if it's not a type we're filtering on, we can skip further processing
-    if (!this.includeFilterTypes.includes(typeField))
+    if (!this.includeFilterTypes.includes(type))
       return false;
 
     // if there is ignoredCombatant filtering for this line type, handle it first
-    let npcIdFields = this.logTypes[typeField]?.filterCombatantIdFields;
+    let npcIdFields = this.logTypes[type].analysisOptions?.combatantIdFields;
     if (npcIdFields !== undefined) {
       npcIdFields = Array.isArray(npcIdFields) ? npcIdFields : [npcIdFields];
       const splitLine = line.split('|');
@@ -153,8 +169,8 @@ export default class Splitter {
 
     // if this is an ability line, check if it's an ability on the ignoredAbilities list
     if (
-      typeField === logDefinitions.Ability.type ||
-      typeField === logDefinitions.NetworkAOEAbility.type
+      type === logDefinitions.Ability.type ||
+      type === logDefinitions.NetworkAOEAbility.type
     ) {
       const match = this.npcAbilityRegex.exec(line);
       if (match?.groups && this.ignoredAbilities.includes(match.groups.ability))
@@ -162,7 +178,7 @@ export default class Splitter {
     }
 
     // Handle the actual filtering
-    const filters = this.filtersRegex[typeField];
+    const filters = this.filtersRegex[type];
     if (filters === undefined)
       return false;
 
@@ -183,51 +199,47 @@ export default class Splitter {
       this.haveStopped = true;
 
     const splitLine = line.split('|');
-    const typeField = splitLine[0];
+    const type = splitLine[0];
+
+    if (!this.isLogDefinitionType(type)) {
+      this.notifier.error(`Unknown type: ${type ?? ''}: ${line}`);
+      return;
+    }
 
     // if this line type has possible RSV keys, decode it first
-    const typesToDecode = Object.keys(this.rsvTypeToFieldMap);
-    if (typeField !== undefined && typesToDecode.includes(typeField))
-      line = this.decodeRsv(line);
+    if (this.logTypes[type].possibleRsvFields !== undefined)
+      line = this.decodeRsv(line, type);
 
     // Normal operation; emit lines between start and stop.
     if (this.haveFoundFirstNonIncludeLine)
       return this.doAnalysisFilter
-        ? (this.analysisFilter(line, typeField) ? line : undefined)
+        ? (this.analysisFilter(line, type) ? line : undefined)
         : line;
 
-    if (typeField === undefined)
-      return;
-    const type = this.logTypes[typeField];
-    if (type === undefined) {
-      this.notifier.error(`Unknown type: ${typeField}: ${line}`);
-      return;
-    }
+    const typeDef = this.logTypes[type];
 
     // Hang onto every globalInclude line, and the last instance of each lastInclude line.
-    if (type.globalInclude && this.includeGlobals)
+    if (typeDef.globalInclude && this.includeGlobals)
       this.globalLines.push(line);
-    else if (type.lastInclude)
-      this.lastInclude[typeField] = line;
+    else if (typeDef.lastInclude)
+      this.lastInclude[type] = line;
 
     // Combatant & rsv special cases:
-    if (type.name === 'ChangeZone') {
+    if (typeDef.type === logDefinitions.ChangeZone.type) {
       // When changing zones, reset all combatants.
       // They will get re-added again.
       this.addedCombatants = {};
       // rsv lines arrive before zone change, so mark rsv lines as completed
       this.rsvLinesReceived = true;
-    } else if (type.name === 'AddedCombatant') {
-      const idIdx = type.fields?.id ?? 2;
-      const combatantId = splitLine[idIdx]?.toUpperCase();
+    } else if (typeDef.type === logDefinitions.AddedCombatant.type) {
+      const combatantId = splitLine[typeDef.fields.id]?.toUpperCase();
       if (combatantId !== undefined)
         this.addedCombatants[combatantId] = line;
-    } else if (type.name === 'RemovedCombatant') {
-      const idIdx = type.fields?.id ?? 2;
-      const combatantId = splitLine[idIdx]?.toUpperCase();
+    } else if (typeDef.type === logDefinitions.RemovedCombatant.type) {
+      const combatantId = splitLine[typeDef.fields.id]?.toUpperCase();
       if (combatantId !== undefined)
         delete this.addedCombatants[combatantId];
-    } else if (type.name === 'RSVData') {
+    } else if (typeDef.type === logDefinitions.RSVData.type) {
       // if we receive RSV data after a zone change, this means a new zone change is about to occur
       // so reset rsvLines/rsvSubstitutionMap and recollect
       if (this.rsvLinesReceived) {
@@ -239,10 +251,8 @@ export default class Splitter {
       // At some point, we could separate rsv keys into namespace-specific objects for substitution
       // But there's virtually no risk of collision right now,
       // and we also haven't yet determined how to map a 262 line to a particular namespace.
-      const idIdx = type.fields?.key ?? 4;
-      const valueIdx = type.fields?.value ?? 5;
-      const rsvId = splitLine[idIdx];
-      const rsvValue = splitLine[valueIdx];
+      const rsvId = splitLine[typeDef.fields.key];
+      const rsvValue = splitLine[typeDef.fields.value];
       if (rsvId !== undefined && rsvValue !== undefined) {
         this.rsvLines[rsvId] = line;
         this.rsvSubstitutionMap[rsvId] = rsvValue;
@@ -259,7 +269,7 @@ export default class Splitter {
     // By waiting until we find the first non-include line, we avoid weird corner cases
     // around the startLine being an include line (ordering issues, redundant lines).
     this.haveStarted = true;
-    if (!this.doAnalysisFilter && (type.globalInclude || type.lastInclude))
+    if (!this.doAnalysisFilter && (typeDef.globalInclude || typeDef.lastInclude))
       return;
 
     // At this point we've found a real line that's not an include line
@@ -304,15 +314,19 @@ export default class Splitter {
 
   processAll(line: string): string | undefined {
     const splitLine = line.split('|');
-    const typeField = splitLine[0];
+    const type = splitLine[0];
+
+    if (!this.isLogDefinitionType(type)) {
+      this.notifier.error(`Unknown type: ${type ?? ''}: ${line}`);
+      return;
+    }
 
     // if this line type has possible RSV keys, decode it first
-    const typesToDecode = Object.keys(this.rsvTypeToFieldMap);
-    if (typeField !== undefined && typesToDecode.includes(typeField))
-      line = this.decodeRsv(line);
+    if (this.logTypes[type].possibleRsvFields !== undefined)
+      line = this.decodeRsv(line, type);
 
     return this.doAnalysisFilter
-      ? (this.analysisFilter(line, typeField) ? line : undefined)
+      ? (this.analysisFilter(line, type) ? line : undefined)
       : line;
   }
 
