@@ -23,15 +23,15 @@ export type LogDefinition<K extends LogDefinitionTypes> = {
   firstUnknownField?: number;
   // A map of all of the fields, unique field name to field index.
   fields: LogDefinitions[K]['fields'];
-  // A list of field ids that *may* contain RSV keys (for decoding)
-  possibleRsvFields?: readonly LogDefFieldIdx<K>[];
-  // Fields and values that, if present, will override `canAnonymize`. See `LogDefSubFields` below.
+  // Field indices that *may* contain RSV placeholders (for decoding)
+  possibleRsvFields?: LogDefFieldIdx<K> | readonly LogDefFieldIdx<K>[];
+  // Field names and values that can override `canAnonymize`. See `LogDefSubFields` type below.
   subFields?: LogDefSubFields<K>;
-  // Map of indexes from a player id to the index of that player name.
+  // Map of field indices to anonymize, in the format: playerId: (optional) playerName.
   playerIds?: PlayerIdMap<K>;
-  // A list of fields that are ok to be blank (or have invalid ids).
+  // A list of field indices that are ok to be blank (or have invalid ids).
   blankFields?: readonly LogDefFieldIdx<K>[];
-  // This field and any field after will be treated as optional when creating capturing regexes.
+  // This field index (and all after) will be treated as optional when creating capturing regexes.
   firstOptionalField: number | undefined;
   // These fields are treated as repeatable fields
   repeatingFields?: {
@@ -48,18 +48,19 @@ export type LogDefinition<K extends LogDefinitionTypes> = {
 
 export type LogDefFieldIdx<
   K extends LogDefinitionTypes,
-> = LogDefinitions[K]['fields'][keyof LogDefinitions[K]['fields']];
+> = Extract<LogDefinitions[K]['fields'][keyof LogDefinitions[K]['fields']], number>;
 
 type PlayerIdMap<K extends LogDefinitionTypes> = {
   [P in LogDefFieldIdx<K> as number]?: LogDefFieldIdx<K> | null;
 };
 
-// Specifies a fieldName key with one or more possible values and a `canAnonyize` override
-// if that field and value are present on the log line.  See 'GameLog' for an example.
 export type LogDefFieldName<K extends LogDefinitionTypes> = Extract<
   keyof LogDefinitions[K]['fields'],
   string
 >;
+
+// Specifies a fieldName key with one or more possible values and a `canAnonyize` override
+// if that field and value are present on the log line. See 'GameLog' for an example.
 type LogDefSubFields<K extends LogDefinitionTypes> = {
   [P in LogDefFieldName<K>]?: {
     [fieldValue: string]: {
@@ -70,12 +71,12 @@ type LogDefSubFields<K extends LogDefinitionTypes> = {
 };
 
 // Options for including these lines in a filtered log via the log splitter's analysis option.
-// `include:` specifies the level of inclusion.
+// `include:` specifies the level of inclusion:
 //   - 'all' will include all lines with no filtering.
 //   - 'filter' will include only those lines that match at least one of the specified `filters`.
 //   - 'none' and 'never' are similar, but 'never' is an override; unlike 'none', the automated
 //      workflow will not replace it with 'all' upon finding active triggers using this line type.
-// `filters:` contains NetRegex-style filter criteria. Lines satisfying at least one filter will be
+// `filters:` contains Netregex-style filter criteria. Lines satisfying at least one filter will be
 //   included. If `include:` = 'filter', `filters` must be present; otherwise, it must be omitted.
 // `combatantIdFields:` are field indices containing combatantIds. If specified, these fields
 //   will be checked for ignored combatants (e.g. pets) during log filtering.
@@ -178,7 +179,8 @@ const latestLogDefinitions = {
     },
     firstOptionalField: undefined,
     analysisOptions: {
-      include: 'never',
+      include: 'filter',
+      filters: { code: ['0044', '0839'] },
     },
   },
   ChangeZone: {
@@ -400,7 +402,7 @@ const latestLogDefinitions = {
       z: 11,
       heading: 12,
     },
-    possibleRsvFields: [5],
+    possibleRsvFields: 5,
     blankFields: [6],
     playerIds: {
       2: 3,
@@ -454,7 +456,7 @@ const latestLogDefinitions = {
       targetIndex: 45,
       targetCount: 46,
     },
-    possibleRsvFields: [5],
+    possibleRsvFields: 5,
     playerIds: {
       2: 3,
       6: 7,
@@ -508,7 +510,7 @@ const latestLogDefinitions = {
       targetIndex: 45,
       targetCount: 46,
     },
-    possibleRsvFields: [5],
+    possibleRsvFields: 5,
     playerIds: {
       2: 3,
       6: 7,
@@ -536,7 +538,7 @@ const latestLogDefinitions = {
       name: 5,
       reason: 6,
     },
-    possibleRsvFields: [5],
+    possibleRsvFields: 5,
     playerIds: {
       2: 3,
     },
@@ -627,7 +629,7 @@ const latestLogDefinitions = {
       targetMaxHp: 10,
       sourceMaxHp: 11,
     },
-    possibleRsvFields: [3],
+    possibleRsvFields: 3,
     playerIds: {
       5: 6,
       7: 8,
@@ -667,6 +669,7 @@ const latestLogDefinitions = {
     firstOptionalField: undefined,
     analysisOptions: {
       include: 'all',
+      combatantIdFields: 2,
     },
   },
   NetworkRaidMarker: {
@@ -728,7 +731,7 @@ const latestLogDefinitions = {
       target: 8,
       count: 9,
     },
-    possibleRsvFields: [3],
+    possibleRsvFields: 3,
     playerIds: {
       5: 6,
       7: 8,
@@ -1243,11 +1246,11 @@ const latestLogDefinitions = {
       // TODO: This is an initial attempt to capture field changes that are relevant to analysis,
       // but this will likely need to be refined over time
       filters: [
-        /* {
+        { // TODO: ModelStatus can be a little spammy. Should try to refine this further.
           id: '4.{7}',
           change: 'Change',
           pair: [{ key: 'ModelStatus', value: '.*' }],
-        }, */
+        },
         {
           id: '4.{7}',
           change: 'Change',

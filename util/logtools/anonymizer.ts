@@ -1,6 +1,7 @@
 import { isEqual } from 'lodash';
 
 import logDefinitions, {
+  LogDefFieldIdx,
   LogDefFieldName,
   LogDefinition,
   LogDefinitionTypeCode,
@@ -38,6 +39,15 @@ export default class Anonymizer {
       // Empty ids have no name.
       this.playerMap[id] = '';
     }
+  }
+
+  isLogDefinitionFieldIdx<K extends LogDefinitionTypes>(
+    fieldId: number | null | undefined,
+    name: K,
+  ): fieldId is LogDefFieldIdx<K> {
+    return (fieldId === null || fieldId === undefined)
+      ? false
+      : (Object.values(logDefinitions[name].fields) as number[]).includes(fieldId);
   }
 
   isLogDefinitionField<K extends LogDefinitionTypes>(
@@ -78,7 +88,7 @@ export default class Anonymizer {
     const type = splitLine[0];
 
     if (!this.isLogDefinitionType(type) || splitLine.length <= 1)
-      return line;
+      return;
 
     // Always replace the hash.
     if (splitLine[splitLine.length - 1]?.trimEnd().length === 16)
@@ -132,6 +142,10 @@ export default class Anonymizer {
     // Anonymize fields.
     for (const [idIdxStr, nameIdx] of Object.entries(playerIds)) {
       const idIdx = parseInt(idIdxStr);
+      if (!this.isLogDefinitionFieldIdx(idIdx, typeDef.name)) {
+        notifier.warn(`internal error: invalid field index: ${idIdx}`, splitLine);
+        return;
+      }
 
       const isOptional = typeDef.firstOptionalField !== undefined &&
         idIdx >= typeDef.firstOptionalField;
@@ -149,8 +163,10 @@ export default class Anonymizer {
 
       // TODO: keep track of uppercase/lowercase??
       const field = splitLine[idIdx];
-      if (field === undefined)
-        throw new UnreachableCode();
+      if (field === undefined) {
+        notifier.warn(`line is missing data at index ${idIdx}`, splitLine);
+        return;
+      }
       const playerId = field.toUpperCase();
 
       // Cutscenes get added combatant messages with ids such as 'FF000006' and no name.
@@ -178,21 +194,15 @@ export default class Anonymizer {
         continue;
 
       // Replace the id at this index with a fake player id.
-      if (this.anonMap[playerId] === undefined)
-        this.anonMap[playerId] = this.addNewPlayer();
-      const fakePlayerId = this.anonMap[playerId];
-      if (fakePlayerId === undefined) {
-        notifier.warn('internal error: missing player id', splitLine);
-        continue;
-      }
+      const fakePlayerId = this.anonMap[playerId] ??= this.addNewPlayer();
 
       splitLine[idIdx] = fakePlayerId;
 
       // Replace the corresponding name, if there's a name mapping.
-      if (typeof nameIdx === 'number') {
+      if (this.isLogDefinitionFieldIdx(nameIdx, typeDef.name)) {
         const fakePlayerName = this.playerMap[fakePlayerId];
         if (fakePlayerName === undefined) {
-          notifier.warn(`internal error: missing player name ${fakePlayerId}`, splitLine);
+          notifier.warn(`internal error: missing fake player name for ${fakePlayerId}`, splitLine);
           continue;
         }
         splitLine[nameIdx] = fakePlayerName;
@@ -200,7 +210,7 @@ export default class Anonymizer {
     }
 
     // For unknown fields, just clear them, as they may have ids.
-    if (typeof typeDef.firstUnknownField !== 'undefined') {
+    if (typeDef.firstUnknownField !== undefined) {
       for (let idx = typeDef.firstUnknownField; idx < splitLine.length - 1; ++idx)
         splitLine[idx] = '';
     }

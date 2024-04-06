@@ -114,11 +114,14 @@ export default class Splitter {
   }
 
   decodeRsv(line: string, type: LogDefinitionTypeCode): string {
-    const splitLine = line.split('|');
-
-    const fieldsToSubstitute = this.logTypes[type].possibleRsvFields;
+    let fieldsToSubstitute = this.logTypes[type].possibleRsvFields;
     if (fieldsToSubstitute === undefined)
       return line;
+    fieldsToSubstitute = Array.isArray(fieldsToSubstitute)
+      ? fieldsToSubstitute
+      : [fieldsToSubstitute];
+
+    const splitLine = line.split('|');
 
     for (const idx of fieldsToSubstitute) {
       const origValue = splitLine[idx];
@@ -132,7 +135,16 @@ export default class Splitter {
 
   // Returns true if line should be included (e.g. passes the filters)
   // Default is false, since the analysis filter is restrictive by design
-  analysisFilter(line: string, type: LogDefinitionTypeCode): boolean {
+  // `type` is optional, so that it can be called with global/lastInclude lines where
+  // we aren't pre-parsing the type of each line.
+  analysisFilter(line: string, type?: LogDefinitionTypeCode): boolean {
+    if (type === undefined) {
+      const lineType = line.split('|')[0];
+      if (!this.isLogDefinitionType(lineType))
+        return false;
+      type = lineType;
+    }
+
     // If this is an 03 line, check if it's an NPC to ignore, and if so, store the id
     // so we can filter on either name or id (as some lines may only have ids)
     if (type === logDefinitions.AddedCombatant.type) {
@@ -207,8 +219,7 @@ export default class Splitter {
     }
 
     // if this line type has possible RSV keys, decode it first
-    if (this.logTypes[type].possibleRsvFields !== undefined)
-      line = this.decodeRsv(line, type);
+    line = this.decodeRsv(line, type);
 
     // Normal operation; emit lines between start and stop.
     if (this.haveFoundFirstNonIncludeLine)
@@ -263,37 +274,27 @@ export default class Splitter {
       return;
 
     // We have found the start line, but haven't necessarily started printing yet.
-    // If analysisFilter is set, we'll emit the AddedCombatant lines and the start line,
-    // and then the loop will continue to run as normal -- include lines will not be printed.
-    // If analysisFilter is *not* set, emit all include lines as soon as we find a non-include line.
+    // Emit all include lines as soon as we find a non-include line.
     // By waiting until we find the first non-include line, we avoid weird corner cases
     // around the startLine being an include line (ordering issues, redundant lines).
     this.haveStarted = true;
-    if (!this.doAnalysisFilter && (typeDef.globalInclude || typeDef.lastInclude))
+    if (typeDef.globalInclude || typeDef.lastInclude)
       return;
 
     // At this point we've found a real line that's not an include line
-    // or analysisFilter is set, so we're just going to start looping with this start line
     this.haveFoundFirstNonIncludeLine = true;
 
-    // don't include globalLines if analysisFilter is on
-    let lines: string[] = !this.doAnalysisFilter ? this.globalLines : [];
+    // Assemble all accumulated pre-start lines.
+    let lines: string[] = [
+      ...this.globalLines,
+      ...Object.values(this.lastInclude),
+      ...Object.values(this.addedCombatants),
+      ...Object.values(this.rsvLines),
+      line,
+    ];
 
-    // if analysis filter is on, only include (filtered) addedCombatant line
-    if (this.doAnalysisFilter) {
-      for (const line of Object.values(this.addedCombatants)) {
-        if (this.analysisFilter(line, logDefinitions.AddedCombatant.type))
-          lines.push(line);
-      }
-    } else {
-      for (const line of Object.values(this.lastInclude))
-        lines.push(line);
-      for (const line of Object.values(this.addedCombatants))
-        lines.push(line);
-      for (const line of Object.values(this.rsvLines))
-        lines.push(line);
-    }
-    lines.push(line);
+    if (this.doAnalysisFilter)
+      lines = lines.filter((line) => this.analysisFilter(line));
 
     lines = lines.sort((a, b) => {
       // Sort by earliest time first, then by the lowest-numbered type.
@@ -322,8 +323,7 @@ export default class Splitter {
     }
 
     // if this line type has possible RSV keys, decode it first
-    if (this.logTypes[type].possibleRsvFields !== undefined)
-      line = this.decodeRsv(line, type);
+    line = this.decodeRsv(line, type);
 
     return this.doAnalysisFilter
       ? (this.analysisFilter(line, type) ? line : undefined)
