@@ -1561,6 +1561,10 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    analysisOptions: {
+      include: 'all',
+      combatantIdFields: 2,
+    },
   },
 } as const;
 
