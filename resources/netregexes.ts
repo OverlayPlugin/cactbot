@@ -127,7 +127,7 @@ type RepeatingFieldsMapType<
 > = T extends RepeatingFieldsTypes ? RepeatingFieldsMapTypeCheck<T, F>
   : never;
 
-export type ParseHelperType<T extends LogDefinitionTypes> =
+type ParseHelperType<T extends LogDefinitionTypes> =
   & {
     [field in keyof NetFields[T]]?: string | readonly string[] | RepeatingFieldsMapType<T, field>;
   }
