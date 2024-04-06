@@ -1568,9 +1568,6 @@ const latestLogDefinitions = {
   },
 } as const;
 
-// TODO: There doesn't seem to be a strong need to have this const or the related type, as
-// we only maintain one set of log definitiions at a time.  Along with the TODO below, this
-// could probably be cleaned up in a future PR.
 export const logDefinitionsVersions = {
   'latest': latestLogDefinitions,
 } as const;
