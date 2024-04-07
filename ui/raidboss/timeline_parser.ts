@@ -1,7 +1,7 @@
 import JSON5 from 'json5';
 
 import { Lang } from '../../resources/languages';
-import logDefinitions, { LogDefinitionTypes } from '../../resources/netlog_defs';
+import logDefinitions, { LogDefinitionName } from '../../resources/netlog_defs';
 import { buildNetRegexForTrigger } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
 import Regexes from '../../resources/regexes';
@@ -15,7 +15,7 @@ import { LooseTimelineTrigger, TriggerAutoConfig } from '../../types/trigger';
 
 import defaultOptions, { RaidbossOptions, TimelineConfig } from './raidboss_options';
 
-const isLogDefinitionTypes = (type: string): type is LogDefinitionTypes => {
+const isLogDefinitionName = (type: string): type is LogDefinitionName => {
   return type in logDefinitions;
 };
 
@@ -44,7 +44,7 @@ const isTimelineNetParams = (value: unknown): value is TimelineNetParams => {
   return true;
 };
 
-const isValidNetParams = <T extends LogDefinitionTypes>(
+const isValidNetParams = <T extends LogDefinitionName>(
   type: T,
   params: Record<string, unknown>,
 ): params is NetParams[T] => {
@@ -489,7 +489,7 @@ export class TimelineParser {
     line = line.replace(syncCommand.netRegexType, '').trim();
 
     const netRegexType = syncCommand.netRegexType;
-    if (!isLogDefinitionTypes(netRegexType)) {
+    if (!isLogDefinitionName(netRegexType)) {
       this.errors.push({
         lineNumber: lineNumber,
         line: originalLine,

@@ -2,9 +2,9 @@ import { isEqual } from 'lodash';
 
 import logDefinitions, {
   LogDefinition,
+  LogDefinitionName,
   LogDefinitions,
-  LogDefinitionTypeCode,
-  LogDefinitionTypes,
+  LogDefinitionType,
 } from '../../resources/netlog_defs';
 import NetRegexes, { buildRegex } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
@@ -37,9 +37,9 @@ export default class Splitter {
   private rsvSubstitutionMap: { [key: string]: string } = {};
 
   // log types to include/filter for analysis; defined in netlog_defs
-  private includeAllTypes: LogDefinitionTypeCode[] = [];
-  private includeFilterTypes: LogDefinitionTypeCode[] = [];
-  private filtersRegex: { [type: string]: CactbotBaseRegExp<LogDefinitionTypes>[] } = {};
+  private includeAllTypes: LogDefinitionType[] = [];
+  private includeFilterTypes: LogDefinitionType[] = [];
+  private filtersRegex: { [type: string]: CactbotBaseRegExp<LogDefinitionName>[] } = {};
 
   // hardcoded list of abilities to ignore for analysis filtering
   private ignoredAbilities: string[] = [];
@@ -68,7 +68,7 @@ export default class Splitter {
   }
 
   parseFilter(
-    name: LogDefinitionTypes,
+    name: LogDefinitionName,
     def: LogDefinition<typeof name>,
     filter: NetParams[typeof name],
   ): void {
@@ -78,11 +78,11 @@ export default class Splitter {
       this.includeFilterTypes.push(def.type);
   }
 
-  isLogDefinitionType(type: string | undefined): type is LogDefinitionTypeCode {
+  isLogDefinitionType(type: string | undefined): type is LogDefinitionType {
     return Object.values(logDefinitions).some((d) => d.type === type);
   }
 
-  isLogDefinition<K extends LogDefinitionTypes>(def: { name: K }): def is LogDefinition<K> {
+  isLogDefinition<K extends LogDefinitionName>(def: { name: K }): def is LogDefinition<K> {
     return isEqual(def, logDefinitions[def.name]);
   }
 
@@ -91,7 +91,7 @@ export default class Splitter {
   }
 
   processAnalysisOptions(): ReindexedLogDefs {
-    const remap: { [type: string]: LogDefinition<LogDefinitionTypes> } = {};
+    const remap: { [type: string]: LogDefinition<LogDefinitionName> } = {};
     for (const def of Object.values(logDefinitions)) {
       if (!this.isLogDefinition(def))
         throw new UnreachableCode();
@@ -113,7 +113,7 @@ export default class Splitter {
     return remap;
   }
 
-  decodeRsv(line: string, type: LogDefinitionTypeCode): string {
+  decodeRsv(line: string, type: LogDefinitionType): string {
     let fieldsToSubstitute = this.logTypes[type].possibleRsvFields;
     if (fieldsToSubstitute === undefined)
       return line;
@@ -137,7 +137,7 @@ export default class Splitter {
   // Default is false, since the analysis filter is restrictive by design
   // `type` is optional, so that it can be called with global/lastInclude lines where
   // we aren't pre-parsing the type of each line.
-  analysisFilter(line: string, type?: LogDefinitionTypeCode): boolean {
+  analysisFilter(line: string, type?: LogDefinitionType): boolean {
     if (type === undefined) {
       const lineType = line.split('|')[0];
       if (!this.isLogDefinitionType(lineType))

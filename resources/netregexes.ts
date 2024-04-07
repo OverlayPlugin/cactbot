@@ -3,8 +3,8 @@ import { NetParams } from '../types/net_props';
 import { CactbotBaseRegExp } from '../types/net_trigger';
 
 import {
+  LogDefinitionName,
   logDefinitionsVersions,
-  LogDefinitionTypes,
   LogDefinitionVersions,
   ParseHelperFields,
   RepeatingFieldsDefinitions,
@@ -50,7 +50,7 @@ export const actorControlType = {
 } as const;
 
 const defaultParams = <
-  T extends LogDefinitionTypes,
+  T extends LogDefinitionName,
   V extends LogDefinitionVersions,
 >(type: T, version: V, include?: string[]): Partial<ParseHelperFields<T>> => {
   const logType = logDefinitionsVersions[version][type];
@@ -105,7 +105,7 @@ const defaultParams = <
 };
 
 type RepeatingFieldsMap<
-  TBase extends LogDefinitionTypes,
+  TBase extends LogDefinitionName,
   TKey extends RepeatingFieldsTypes = TBase extends RepeatingFieldsTypes ? TBase : never,
 > = {
   [name in RepeatingFieldsDefinitions[TKey]['repeatingFields']['names'][number]]:
@@ -114,7 +114,7 @@ type RepeatingFieldsMap<
 }[];
 
 type RepeatingFieldsMapTypeCheck<
-  TBase extends LogDefinitionTypes,
+  TBase extends LogDefinitionName,
   F extends keyof NetFields[TBase],
   TKey extends RepeatingFieldsTypes = TBase extends RepeatingFieldsTypes ? TBase : never,
 > = F extends RepeatingFieldsDefinitions[TKey]['repeatingFields']['label']
@@ -122,19 +122,19 @@ type RepeatingFieldsMapTypeCheck<
   never;
 
 type RepeatingFieldsMapType<
-  T extends LogDefinitionTypes,
+  T extends LogDefinitionName,
   F extends keyof NetFields[T],
 > = T extends RepeatingFieldsTypes ? RepeatingFieldsMapTypeCheck<T, F>
   : never;
 
-type ParseHelperType<T extends LogDefinitionTypes> =
+type ParseHelperType<T extends LogDefinitionName> =
   & {
     [field in keyof NetFields[T]]?: string | readonly string[] | RepeatingFieldsMapType<T, field>;
   }
   & { capture?: boolean };
 
 const isRepeatingField = <
-  T extends LogDefinitionTypes,
+  T extends LogDefinitionName,
 >(
   repeating: boolean | undefined,
   value: string | readonly string[] | RepeatingFieldsMap<T> | undefined,
@@ -153,7 +153,7 @@ const isRepeatingField = <
   return true;
 };
 
-const parseHelper = <T extends LogDefinitionTypes>(
+const parseHelper = <T extends LogDefinitionName>(
   params: ParseHelperType<T> | undefined,
   funcName: string,
   fields: Partial<ParseHelperFields<T>>,

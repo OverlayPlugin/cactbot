@@ -4,8 +4,8 @@ import logDefinitions, {
   LogDefFieldIdx,
   LogDefFieldName,
   LogDefinition,
-  LogDefinitionTypeCode,
-  LogDefinitionTypes,
+  LogDefinitionName,
+  LogDefinitionType,
 } from '../../resources/netlog_defs';
 import { UnreachableCode } from '../../resources/not_reached';
 
@@ -41,7 +41,7 @@ export default class Anonymizer {
     }
   }
 
-  isLogDefinitionFieldIdx<K extends LogDefinitionTypes>(
+  isLogDefinitionFieldIdx<K extends LogDefinitionName>(
     fieldId: number | null | undefined,
     name: K,
   ): fieldId is LogDefFieldIdx<K> {
@@ -50,18 +50,18 @@ export default class Anonymizer {
       : (Object.values(logDefinitions[name].fields) as number[]).includes(fieldId);
   }
 
-  isLogDefinitionField<K extends LogDefinitionTypes>(
+  isLogDefinitionField<K extends LogDefinitionName>(
     field: string,
     name: K,
   ): field is LogDefFieldName<K> {
     return Object.keys(logDefinitions[name].fields).includes(field);
   }
 
-  isLogDefinitionType(type: string | undefined): type is LogDefinitionTypeCode {
+  isLogDefinitionType(type: string | undefined): type is LogDefinitionType {
     return Object.values(logDefinitions).some((d) => d.type === type);
   }
 
-  isLogDefinition<K extends LogDefinitionTypes>(def: { name: K }): def is LogDefinition<K> {
+  isLogDefinition<K extends LogDefinitionName>(def: { name: K }): def is LogDefinition<K> {
     return isEqual(def, logDefinitions[def.name]);
   }
 
@@ -70,7 +70,7 @@ export default class Anonymizer {
   }
 
   processLogDefs(): ReindexedLogDefs {
-    const remap: { [type: string]: LogDefinition<LogDefinitionTypes> } = {};
+    const remap: { [type: string]: LogDefinition<LogDefinitionName> } = {};
     for (const def of Object.values(logDefinitions)) {
       if (!this.isLogDefinition(def))
         throw new UnreachableCode();

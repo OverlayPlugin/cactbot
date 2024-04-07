@@ -2,7 +2,7 @@ import path from 'path';
 
 import markdownMagic from 'markdown-magic';
 
-import logDefinitions, { LogDefinitionTypes } from '../resources/netlog_defs';
+import logDefinitions, { LogDefinitionName } from '../resources/netlog_defs';
 import NetRegexes, { buildRegex as buildNetRegex } from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
 import Regexes, { buildRegex } from '../resources/regexes';
@@ -46,7 +46,7 @@ type ExcludedLineDocs =
   | 'Version'
   | 'Error';
 
-type LineDocTypes = Exclude<LogDefinitionTypes, ExcludedLineDocs>;
+type LineDocTypes = Exclude<LogDefinitionName, ExcludedLineDocs>;
 
 type LineDocRegex = {
   network: string;

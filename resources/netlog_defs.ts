@@ -2,7 +2,7 @@ import { PluginCombatantState } from '../types/event';
 import { NetFieldsReverse } from '../types/net_fields';
 import { NetParams } from '../types/net_props';
 
-export type LogDefinition<K extends LogDefinitionTypes> = {
+export type LogDefinition<K extends LogDefinitionName> = {
   // The log line id, as a decimal string, minimum two characters.
   type: LogDefinitions[K]['type'];
   // The informal name of this log line (must match the key that the LogDefinition is a value for).
@@ -47,21 +47,21 @@ export type LogDefinition<K extends LogDefinitionTypes> = {
 };
 
 export type LogDefFieldIdx<
-  K extends LogDefinitionTypes,
+  K extends LogDefinitionName,
 > = Extract<LogDefinitions[K]['fields'][keyof LogDefinitions[K]['fields']], number>;
 
-type PlayerIdMap<K extends LogDefinitionTypes> = {
+type PlayerIdMap<K extends LogDefinitionName> = {
   [P in LogDefFieldIdx<K> as number]?: LogDefFieldIdx<K> | null;
 };
 
-export type LogDefFieldName<K extends LogDefinitionTypes> = Extract<
+export type LogDefFieldName<K extends LogDefinitionName> = Extract<
   keyof LogDefinitions[K]['fields'],
   string
 >;
 
 // Specifies a fieldName key with one or more possible values and a `canAnonyize` override
 // if that field and value are present on the log line. See 'GameLog' for an example.
-type LogDefSubFields<K extends LogDefinitionTypes> = {
+type LogDefSubFields<K extends LogDefinitionName> = {
   [P in LogDefFieldName<K>]?: {
     [fieldValue: string]: {
       name: string;
@@ -80,7 +80,7 @@ type LogDefSubFields<K extends LogDefinitionTypes> = {
 //   included. If `include:` = 'filter', `filters` must be present; otherwise, it must be omitted.
 // `combatantIdFields:` are field indices containing combatantIds. If specified, these fields
 //   will be checked for ignored combatants (e.g. pets) during log filtering.
-export type AnalysisOptions<K extends LogDefinitionTypes> = {
+export type AnalysisOptions<K extends LogDefinitionName> = {
   include: 'none' | 'never';
   filters?: undefined;
   combatantIdFields?: undefined;
@@ -1577,19 +1577,16 @@ const assertLogDefinitions: LogDefinitionMap = latestLogDefinitions;
 console.assert(assertLogDefinitions);
 
 export type LogDefinitions = typeof latestLogDefinitions;
-// TODO: `LogDefinitionTypes` should be renamed to `LogDefinitionName` to match current naming
-// conventions (e.g. `type` = numeric id, `name` = string name), and `LogDefinitionTypeCode` should
-// then be renamed to `LogDefinitionType`. This is probably a future PR, given the various imports.
-export type LogDefinitionTypes = keyof LogDefinitions;
-export type LogDefinitionTypeCode = LogDefinitions[LogDefinitionTypes]['type'];
-export type LogDefinitionMap = { [K in LogDefinitionTypes]: LogDefinition<K> };
+export type LogDefinitionName = keyof LogDefinitions;
+export type LogDefinitionType = LogDefinitions[LogDefinitionName]['type'];
+export type LogDefinitionMap = { [K in LogDefinitionName]: LogDefinition<K> };
 export type LogDefinitionVersions = keyof typeof logDefinitionsVersions;
 
 type RepeatingFieldsNarrowingType = { readonly repeatingFields: unknown };
 
 export type RepeatingFieldsTypes = keyof {
   [
-    type in LogDefinitionTypes as LogDefinitions[type] extends RepeatingFieldsNarrowingType ? type
+    type in LogDefinitionName as LogDefinitions[type] extends RepeatingFieldsNarrowingType ? type
       : never
   ]: null;
 };
@@ -1601,7 +1598,7 @@ export type RepeatingFieldsDefinitions = {
 };
 
 export type ParseHelperField<
-  Type extends LogDefinitionTypes,
+  Type extends LogDefinitionName,
   Fields extends NetFieldsReverse[Type],
   Field extends keyof Fields,
 > = {
@@ -1615,7 +1612,7 @@ export type ParseHelperField<
   possibleKeys?: string[];
 };
 
-export type ParseHelperFields<T extends LogDefinitionTypes> = {
+export type ParseHelperFields<T extends LogDefinitionName> = {
   [field in keyof NetFieldsReverse[T]]: ParseHelperField<T, NetFieldsReverse[T], field>;
 };
 

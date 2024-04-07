@@ -1,5 +1,5 @@
 import {
-  LogDefinitionTypes,
+  LogDefinitionName,
   RepeatingFieldsDefinitions,
   RepeatingFieldsTypes,
 } from '../resources/netlog_defs';
@@ -24,7 +24,7 @@ type RepeatingFieldsExtract<
 };
 
 type RepeatingFieldsParams<
-  type extends LogDefinitionTypes,
+  type extends LogDefinitionName,
   repeatingType extends RepeatingFieldsTypes = type extends RepeatingFieldsTypes ? type : never,
 > = repeatingType extends RepeatingFieldsTypes ? RepeatingFieldsExtract<repeatingType>
   : never;
@@ -35,7 +35,7 @@ type Params<T extends string> = Partial<
 >;
 
 type RepeatingFieldsParamsExtract<
-  type extends LogDefinitionTypes,
+  type extends LogDefinitionName,
 > = type extends RepeatingFieldsTypes ? RepeatingFieldsParams<type> & Params<NetProps[type]> :
   never;
 
