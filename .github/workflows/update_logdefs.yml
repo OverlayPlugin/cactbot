@@ -1,0 +1,44 @@
+# Runs on any merge commit that changes `netlog_defs` or raidboss triggers/timelines
+# Ensures `netlog_defs` analysis filters include all currently-in-use log lines (unless suppressed)
+name: Update Log Defs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'resources/netlog_defs.ts'
+      - 'ui/raidboss/data/**'
+
+jobs:
+  update-logdefs:
+    name: Update Analysis Filters
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: ./.github/actions/setup-js-env
+
+      - name: Run update script
+        id: script
+        run: |
+          npm run update-logdefs
+
+      - name: Render PR Template
+        id: template
+        uses: chuhlomin/render-template@v1.9
+        with:
+          template: .github/logdef_update_pr_template.md
+          vars: |
+            changelist: "${{ steps.script.outputs.changelist }}"
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'update netlog_defs filters'
+          title: 'resources: Update netlog_defs filters (auto-generated)'
+          body: ${{ steps.template.outputs.result }}
+          branch: 'update-logdefs'

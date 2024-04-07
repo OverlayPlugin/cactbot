@@ -44,11 +44,13 @@
     "query": "npm run util -- query",
     "process-triggers": "node --loader=ts-node/esm util/process_triggers_folder.ts",
     "generate-log-guide": "node --loader=ts-node/esm util/gen_log_guide.ts",
+    "update-logdefs": "node --loader=ts-node/esm util/update_logdefs.ts",
     "validate-versions": "node --loader=ts-node/esm util/validate_versions.ts",
     "release": "node --loader=ts-node/esm util/do_release.ts",
     "version": "node --loader=ts-node/esm util/bump_version.ts"
   },
   "devDependencies": {
+    "@actions/core": "^1.10.1",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.0.0",
     "@actions/http-client": "^1.0.11",
