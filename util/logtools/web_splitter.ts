@@ -37,9 +37,11 @@ const pageText = {
   },
   exportSelectedInput: {
     en: 'Export Selected',
+    cn: '导出已选择日志',
   },
   exportAllInput: {
     en: 'Export Entire Log',
+    cn: '导出全部日志',
   },
 } as const;
 

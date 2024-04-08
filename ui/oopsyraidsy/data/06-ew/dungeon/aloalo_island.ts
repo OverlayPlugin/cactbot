@@ -185,6 +185,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             en: 'Targeted Light',
             de: 'Gezieltes Licht',
             fr: 'Lumière ciblée',
+            cn: '高精度光弹',
           },
         };
       },
@@ -194,6 +195,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
       en: 'Fair Flight',
       de: 'Feenflug',
       fr: 'Vol équitable',
+      cn: '仙女击飞',
     }),
   ],
 };
