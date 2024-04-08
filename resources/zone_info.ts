@@ -9012,6 +9012,7 @@ const data: ZoneInfoType = {
     'contentType': 6,
     'exVersion': 0,
     'name': {
+      'cn': '赤土红沙',
       'de': 'Die Roten Sande',
       'en': 'The Red Sands',
       'fr': 'Les Sables sanglants',
@@ -9026,6 +9027,7 @@ const data: ZoneInfoType = {
     'contentType': 6,
     'exVersion': 0,
     'name': {
+      'cn': '水晶冲突（赤土红沙：自定赛）',
       'de': 'Crystalline Conflict: Die Roten Sande (Schaukampf)',
       'en': 'Crystalline Conflict (Custom Match - The Red Sands)',
       'fr': 'Crystalline Conflict (partie personnalisée - Les Sables sanglants)',
@@ -9343,6 +9345,7 @@ const data: ZoneInfoType = {
     'contentType': 19,
     'exVersion': 0,
     'name': {
+      'cn': '金碟巨豆中心',
       'de': 'Stolperville',
       'en': 'Blunderville',
       'fr': 'Blunderville',
@@ -9437,6 +9440,7 @@ const data: ZoneInfoType = {
     'contentType': 30,
     'exVersion': 4,
     'name': {
+      'cn': '多变迷宫 阿罗阿罗岛',
       'de': 'Aloalo',
       'en': 'Aloalo Island',
       'fr': 'L\'île d\'Aloalo - Donjon à embranchements',
@@ -9481,6 +9485,7 @@ const data: ZoneInfoType = {
     'contentType': 30,
     'exVersion': 4,
     'name': {
+      'cn': '异闻迷宫 异闻阿罗阿罗岛',
       'de': 'Kurioses Aloalo',
       'en': 'Another Aloalo Island',
       'fr': 'L\'île d\'Aloalo annexe - Donjon alternatif',
@@ -9495,6 +9500,7 @@ const data: ZoneInfoType = {
     'contentType': 30,
     'exVersion': 4,
     'name': {
+      'cn': '异闻迷宫 零式异闻阿罗阿罗岛',
       'de': 'Kurioses Aloalo (episch)',
       'en': 'Another Aloalo Island (Savage)',
       'fr': 'L\'île d\'Aloalo annexe - Donjon alternatif (sadique)',
