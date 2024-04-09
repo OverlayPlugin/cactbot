@@ -176,6 +176,10 @@ class LogDefUpdater {
   }
 
   parseTriggerFile(file: string): void {
+    // We could dynamically import each trigger file and get the type from triggerSet,
+    // but we would lose the line number, which we need to pass the URL to the PR body,
+    // so just use regex to parse the file instead.
+
     const contents = fs.readFileSync(file).toString();
     const lines = contents.split(/\r*\n/);
     const fileRegex = {
@@ -188,9 +192,9 @@ class LogDefUpdater {
     };
 
     let lineNum = 0;
-    let foundTriggers = false;
-    let insideTriggerSet = false;
-    let insideTriggersArr = false;
+    let foundTriggerSet = false;
+    let foundTriggerArr = false;
+    let foundTrigger = false;
     let insideTriggerObj = false;
     let foundType = false;
 
@@ -198,13 +202,13 @@ class LogDefUpdater {
       ++lineNum;
 
       if (line.match(fileRegex.inTrSet))
-        insideTriggerSet = true;
-      else if (insideTriggerSet && line.match(fileRegex.inTrArr)) {
-        foundTriggers = true;
-        insideTriggersArr = true;
-      } else if (insideTriggersArr && line.match(fileRegex.inTrObj))
+        foundTriggerSet = true;
+      else if (foundTriggerSet && line.match(fileRegex.inTrArr)) {
+        foundTriggerArr = true;
+      } else if (foundTriggerArr && line.match(fileRegex.inTrObj)) {
         insideTriggerObj = true;
-      else if (insideTriggerObj && !foundType) {
+        foundTrigger = true;
+      } else if (insideTriggerObj && !foundType) {
         const match = fileRegex.trType.exec(line);
         const type = match?.groups?.type;
         if (type !== undefined) {
@@ -224,15 +228,18 @@ class LogDefUpdater {
       } else if (foundType && line.match(fileRegex.outTrObj)) {
         insideTriggerObj = false;
         foundType = false;
-      } else if (insideTriggersArr && line.match(fileRegex.outTrArr))
+      } else if (foundTriggerArr && line.match(fileRegex.outTrArr))
         break;
     }
 
-    if (!foundTriggers)
+    if (!foundTriggerSet || !foundTriggerArr || !foundTrigger)
       console.error(`ERROR: Could not find triggers in ${file}`);
   }
 
   parseTimelineFile(file: string): void {
+    // TimelineParser doesn't have a convenient method for extracting an entry's type,
+    // so just process the file with regex.
+
     const contents = fs.readFileSync(file).toString();
     const lines = contents.split(/\r*\n/);
     const fileRegex = {
