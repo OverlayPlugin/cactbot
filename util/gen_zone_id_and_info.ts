@@ -617,6 +617,7 @@ const generateZoneInfoMap = async (
       }
 
       const ttNames = {
+        // cactbot-ignore-missing-translations
         en: enName,
         de: capitalize(ttZoneData.PlaceName.Name_de),
         fr: capitalize(ttZoneData.PlaceName.Name_fr),
@@ -661,6 +662,7 @@ const generateZoneInfoMap = async (
       }
 
       const cfcNames = {
+        // cactbot-ignore-missing-translations
         en: enName,
         de: capitalize(cfcZoneData.Name_de),
         fr: capitalize(cfcZoneData.Name_fr),
