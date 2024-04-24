@@ -5,13 +5,13 @@ import { fileURLToPath } from 'url';
 import * as core from '@actions/core';
 
 import logDefinitions, { LogDefinitionName } from '../resources/netlog_defs';
+import { LooseOopsyTriggerSet } from '../types/oopsy';
 import { LooseTriggerSet } from '../types/trigger';
 import { TimelineParser } from '../ui/raidboss/timeline_parser';
 
 import { walkDirSync } from './file_utils';
 
-
-// This script parses all raidboss triggers and timelines, finds log line types used in them,
+// This script parses all raidboss/oopsy triggers and timelines, finds log line types used in them,
 // and compares against `netlog_defs.ts` to find any types that are not presently being included
 // in the log splitter's analysis filter (based on the `analysisOptions.include` property).
 // If the property is absent, this script will create it and set it to 'all'.
@@ -24,20 +24,18 @@ import { walkDirSync } from './file_utils';
 // This script can be run via CLI as `npm run update-logdefs`.  If run via GitHub Actions (after a
 // triggering merge commit), the workflow will automatically create a PR to merge any changes.
 
-// TODO: This could be expanded to check for oopsy triggers as well, but those are complex to parse
-// and there is low likelihood of a type being used in oopsy while not being used in any trigger or
-// timeline; and an even lower likelihood of that type being useful for future log analysis.
-
 const isGithubRunner = process.env.GITHUB_ACTIONS === 'true';
 const sha = process.env.GITHUB_SHA ?? 'main';
 const repo = process.env.GITHUB_REPOSITORY ?? 'OverlayPlugin/cactbot';
 const baseUrl = `https://github.com/${repo}/blob`;
 const raidbossRelDir = 'ui/raidboss/data';
+const oopsyRelDir = 'ui/oopsyraidsy/data';
 const netLogDefsFile = 'resources/netlog_defs.ts';
 
 type FileList = {
   timelines: string[];
   triggers: string[];
+  oopsy: string[];
 };
 
 type FileMatch = {
@@ -152,6 +150,7 @@ class LogDefUpdater {
     const fileList: FileList = {
       timelines: [],
       triggers: [],
+      oopsy: [],
     };
 
     walkDirSync(path.posix.join(this.projectRoot, raidbossRelDir), (filepath) => {
@@ -164,6 +163,16 @@ class LogDefUpdater {
       }
       if (/\/raidboss\/data\/.*\.[jt]s/.test(filepath)) {
         fileList.triggers.push(filepath);
+        return;
+      }
+    });
+
+    walkDirSync(path.posix.join(this.projectRoot, oopsyRelDir), (filepath) => {
+      if (/\/oopsy_manifest.txt/.test(filepath)) {
+        return;
+      }
+      if (/\/oopsyraidsy\/data\/.*\.[jt]s/.test(filepath)) {
+        fileList.oopsy.push(filepath);
         return;
       }
     });
@@ -200,9 +209,9 @@ class LogDefUpdater {
         continue;
       }
 
+      const escapedId = id.replace(/'/g, '\\\'');
       for (const line of lines) {
         ++lineNum;
-        const escapedId = id.replace(/'/g, '\\\'');
         if (line.includes(`id: '${escapedId}',`)) {
           // if we match an id line with one already set, we never found a regex line;
           // in that case exit the loop & report the error
@@ -223,6 +232,83 @@ class LogDefUpdater {
         console.error(`ERROR: Could not find netRegex for trigger '${id}' in ${file}`);
         continue;
       }
+
+      if (!this.isLogDefinitionName(type)) {
+        console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${idLine})`);
+        continue;
+      } else if (
+        this.logDefsNoInclude.includes(type) ||
+        this.logDefsNeverInclude.includes(type)
+      )
+        (this.matches[type] ??= []).push({
+          filename: file.replace(`${this.projectRoot}/`, ''),
+          excerptStartLine: idLine,
+          excerptStopLine: regexLine,
+        });
+    }
+  }
+
+  async parseOopsyFile(file: string): Promise<void> {
+    // Oopsy files do not need to have triggers, and their triggers do not need to have types.
+    // So this method is a lot more permissive than parseTriggerFile().
+
+    // Normalize path
+    const importPath = `../${path.relative(process.cwd(), file).replace('.ts', '.js')}`;
+
+    // Dynamic imports don't have a type, so add type assertion.
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    const triggerSet = (await import(importPath)).default as LooseOopsyTriggerSet;
+    const contents = fs.readFileSync(file).toString();
+    const lines = contents.split(/\r*\n/);
+
+    for (const trigger of triggerSet.triggers ?? []) {
+      const id = trigger.id;
+      const type: string | undefined = trigger.type; // override literal type from LooseTrigger
+      let lineNum = 0;
+      let idLine = 0;
+      let regexLine: number | undefined = 0;
+
+      if (id === undefined || type === undefined)
+        continue;
+
+      const escapedId = id.replace(/'/g, '\\\'');
+      for (const line of lines) {
+        ++lineNum;
+        if (line.includes(`id: '${escapedId}',`)) {
+          // if we match an id line with one already set, we never found a regex line;
+          // in that case exit the loop & move on
+          if (idLine === 0)
+            idLine = lineNum;
+          else
+            break;
+        } else if (idLine > 0 && line.includes('netRegex: {') !== null) {
+          regexLine = lineNum;
+          break;
+        }
+      }
+
+      if (idLine === 0) {
+        // Might not have been able to find an id: line because the trigger may be
+        // generated dynamically - see aloalo_island.  In that case, just string-search
+        // for the naked id by itself (it has to be there somewhere).
+        lineNum = 0;
+        for (const line of lines) {
+          ++lineNum;
+          if (line.includes(`'${escapedId}'`)) {
+            idLine = lineNum;
+            break;
+          }
+        }
+        if (idLine === 0) {
+          console.error(`ERROR: Could not find trigger '${id}' in ${file}`);
+          continue;
+        } else
+          // not going to include any other lines in the excerpt
+          regexLine = undefined;
+      }
+
+      // if we found the id but not the regex, just capture the two lines after the id line
+      regexLine === 0 ? idLine + 2 : regexLine;
 
       if (!this.isLogDefinitionName(type)) {
         console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${idLine})`);
@@ -330,6 +416,11 @@ class LogDefUpdater {
     console.log('Processing trigger files...');
     for (const f of this.fileList.triggers) {
       await this.parseTriggerFile(f);
+    }
+
+    console.log('Processing oopsy files...');
+    for (const f of this.fileList.oopsy) {
+      await this.parseOopsyFile(f);
     }
 
     console.log('Processing timeline files...');
