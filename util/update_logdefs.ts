@@ -4,11 +4,12 @@ import { fileURLToPath } from 'url';
 
 import * as core from '@actions/core';
 
-
 import logDefinitions, { LogDefinitionName } from '../resources/netlog_defs';
 import { LooseTriggerSet } from '../types/trigger';
+import { TimelineParser } from '../ui/raidboss/timeline_parser';
 
 import { walkDirSync } from './file_utils';
+
 
 // This script parses all raidboss triggers and timelines, finds log line types used in them,
 // and compares against `netlog_defs.ts` to find any types that are not presently being included
@@ -34,14 +35,6 @@ const baseUrl = `https://github.com/${repo}/blob`;
 const raidbossRelDir = 'ui/raidboss/data';
 const netLogDefsFile = 'resources/netlog_defs.ts';
 
-// TODO: Perhaps these keywords should be imported? (Also used in mocha tests.)
-const timelineKeywords = [
-  'duration',
-  'window',
-  'jump',
-  'forcejump',
-];
-
 type FileList = {
   timelines: string[];
   triggers: string[];
@@ -54,6 +47,18 @@ type FileMatch = {
 };
 
 type FileMatches = Partial<Record<LogDefinitionName, FileMatch[]>>;
+
+class TimelineTypeExtractor extends TimelineParser {
+  constructor(contents: string) {
+    super(contents, [], []);
+  }
+
+  public override parseType(type: LogDefinitionName, lineNumber: number) {
+    if (this.entries === undefined)
+      this.entries = {};
+    (this.entries[type] ??= []).push(lineNumber);
+  }
+}
 
 class LogDefUpdater {
   private scriptFile = '';
@@ -235,58 +240,28 @@ class LogDefUpdater {
   }
 
   parseTimelineFile(file: string): void {
-    // TimelineParser doesn't have a convenient method for extracting an entry's type,
-    // so just process the file with regex.
-
     const contents = fs.readFileSync(file).toString();
-    const lines = contents.split(/\r*\n/);
-    const fileRegex = {
-      ignoreLine: /^(#|hideall).*$/,
-      entrySeparator: /"[^"]*"|\{[^}]*\}|[^ ]+/g,
-    };
-    // TODO: Should this live somewhere else as an export?
-    const noSyncKeywords = ['label'];
+    const entries = new TimelineTypeExtractor(contents).entries;
 
-    let lineNum = 0;
-    for (const line of lines) {
-      ++lineNum;
-      if (
-        line.match(fileRegex.ignoreLine) ||
-        line.length === 0
-      ) {
-        continue;
-      }
+    if (entries === undefined) {
+      console.error(`ERROR: Could not find timeline sync entries in ${file}`);
+      return;
+    }
 
-      // Capture each part of the line (separated by spaces).
-      // Anything encapsulated by double-quotes or braces will be treated as a single element.
-      const bareLine = line.replace(/"[^"]*?"/g, '""').replace(/#.*$/, '').trim();
-      const lineParts = bareLine.match(fileRegex.entrySeparator);
-      if (lineParts === null) {
-        continue;
-      }
-
-      const [time, name, type] = lineParts;
-      if (time === undefined || isNaN(parseFloat(time)))
-        console.error(`ERROR: Could not parse timeline in ${file} at line ${lineNum}`);
-      else if (
-        // We only care about sync entries with a netregex param
-        // So if this is a no-sync entry or a sync with keywords only, skip it
-        name === undefined ||
-        noSyncKeywords.includes(name) ||
-        type === undefined ||
-        timelineKeywords.includes(type)
-      )
-        continue;
-      else if (!this.isLogDefinitionName(type))
-        console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${lineNum})`);
+    for (const [type, lineNums] of Object.entries(entries)) {
+      if (!this.isLogDefinitionName(type))
+        console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${lineNums[0] ?? '?'})`);
       else if (
         this.logDefsNoInclude.includes(type) ||
         this.logDefsNeverInclude.includes(type)
-      )
-        (this.matches[type] ??= []).push({
-          filename: file.replace(`${this.projectRoot}/`, ''),
-          excerptStartLine: lineNum,
-        });
+      ) {
+        for (const lineNum of lineNums) {
+          (this.matches[type] ??= []).push({
+            filename: file.replace(`${this.projectRoot}/`, ''),
+            excerptStartLine: lineNum,
+          });
+        }
+      }
     }
   }
 

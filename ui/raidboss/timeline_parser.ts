@@ -185,6 +185,8 @@ export class TimelineParser {
   private labelToTime: { [name: string]: number } = {};
   // Map of encountered syncs to the label they are jumping to.
   private labelToSync: { [name: string]: Sync[] } = {};
+  // Used in subclass (update_logdefs), but defined here due to being utilized during construction
+  public entries: Partial<Record<LogDefinitionName, number[]>> | undefined;
 
   constructor(
     text: string,
@@ -498,6 +500,8 @@ export class TimelineParser {
       return line;
     }
 
+    this.parseType(netRegexType, lineNumber);
+
     line = line.replace(syncCommand.netRegex, '').trim();
 
     let params: unknown;
@@ -651,6 +655,12 @@ export class TimelineParser {
       e.duration = parseFloat(durationCommand.seconds);
     }
     return line;
+  }
+
+  // This no-op is intended to be overridden by subclasses, like the one in update_logdefs.ts.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public parseType(type: LogDefinitionName, lineNumber: number): void {
+    /* no-op */
   }
 
   private GetReplacedText(text: string): string {
