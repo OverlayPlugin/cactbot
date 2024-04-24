@@ -303,8 +303,7 @@ class LogDefUpdater {
           console.error(`ERROR: Could not find trigger '${id}' in ${file}`);
           continue;
         } else
-          // not going to include any other lines in the excerpt
-          regexLine = undefined;
+          regexLine = undefined; // don't try to add lines to the excerpt
       }
 
       // if we found the id but not the regex, just capture the two lines after the id line
@@ -336,7 +335,9 @@ class LogDefUpdater {
 
     for (const [type, lineNums] of Object.entries(entries)) {
       if (!this.isLogDefinitionName(type))
-        console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${lineNums[0] ?? '?'})`);
+        console.error(
+          `ERROR: Missing log def for ${type} in ${file} (line: ${lineNums[0] ?? '?'})`,
+        );
       else if (
         this.logDefsNoInclude.includes(type) ||
         this.logDefsNeverInclude.includes(type)
