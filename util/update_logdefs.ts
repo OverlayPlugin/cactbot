@@ -307,7 +307,7 @@ class LogDefUpdater {
       }
 
       // if we found the id but not the regex, just capture the two lines after the id line
-      regexLine === 0 ? idLine + 2 : regexLine;
+      regexLine = regexLine === 0 ? idLine + 2 : regexLine;
 
       if (!this.isLogDefinitionName(type)) {
         console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${idLine})`);
