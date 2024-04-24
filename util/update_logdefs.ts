@@ -219,7 +219,7 @@ class LogDefUpdater {
             idLine = lineNum;
           else
             break;
-        } else if (idLine > 0 && line.includes('netRegex: {') !== null) {
+        } else if (idLine > 0 && line.includes('netRegex: {')) {
           regexLine = lineNum;
           break;
         }
@@ -281,7 +281,7 @@ class LogDefUpdater {
             idLine = lineNum;
           else
             break;
-        } else if (idLine > 0 && line.includes('netRegex: {') !== null) {
+        } else if (idLine > 0 && line.includes('netRegex: {')) {
           regexLine = lineNum;
           break;
         }
