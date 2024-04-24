@@ -4,7 +4,9 @@ import { fileURLToPath } from 'url';
 
 import * as core from '@actions/core';
 
+
 import logDefinitions, { LogDefinitionName } from '../resources/netlog_defs';
+import { LooseTriggerSet } from '../types/trigger';
 
 import { walkDirSync } from './file_utils';
 
@@ -47,7 +49,8 @@ type FileList = {
 
 type FileMatch = {
   filename: string;
-  line: number;
+  excerptStartLine: number;
+  excerptStopLine?: number;
 };
 
 type FileMatches = Partial<Record<LogDefinitionName, FileMatch[]>>;
@@ -62,9 +65,7 @@ class LogDefUpdater {
   // We don't update these, but collect usage so we can console.log() a notice about it
   private logDefsNeverInclude: LogDefinitionName[] = [];
   // Matches of non-included log line types found in triggers & timelines
-  // Keep them separate so we can slightly tweak the PR body output for each
-  private triggerMatches: FileMatches = {};
-  private timelineMatches: FileMatches = {};
+  private matches: FileMatches = {};
   // List of log line names that are being added to the analysis filter
   private logDefsToUpdate: LogDefinitionName[] = [];
 
@@ -87,27 +88,21 @@ class LogDefUpdater {
     return type !== undefined && type in logDefinitions;
   }
 
-  buildRefUrl(file: string, line: number, sha: string, addExtraLine: boolean): string {
-    return addExtraLine
-      // for triggers, return an extra line in the URL to also display the trigger's netregex
-      ? `${baseUrl}/${sha}/${file}#L${line}-L${line + 1}`
-      // for timelines, the netregex is on the same line, so no need to include the extra line
-      : `${baseUrl}/${sha}/${file}#L${line}`;
+  buildRefUrl(file: string, sha: string, startLine: number, stopLine?: number): string {
+    return stopLine
+      ? `${baseUrl}/${sha}/${file}#L${startLine}-L${stopLine}`
+      : `${baseUrl}/${sha}/${file}#L${startLine}`;
   }
 
   buildPullRequestBodyContent(): string {
     let output = '';
     for (const type of this.logDefsNoInclude) {
-      const triggerMatches = this.triggerMatches[type] ?? [];
-      const timelineMatches = this.timelineMatches[type] ?? [];
-      if (triggerMatches.length === 0 && timelineMatches.length === 0)
+      const matches = this.matches[type] ?? [];
+      if (matches.length === 0)
         continue;
       output += `\n## \`${type}\`\n`;
-      triggerMatches.forEach((m) => {
-        output += `${this.buildRefUrl(m.filename, m.line, sha, true)}\n`;
-      });
-      timelineMatches.forEach((m) => {
-        output += `${this.buildRefUrl(m.filename, m.line, sha, false)}\n`;
+      matches.forEach((m) => {
+        output += `${this.buildRefUrl(m.filename, sha, m.excerptStartLine, m.excerptStopLine)}\n`;
       });
     }
     return output;
@@ -116,18 +111,15 @@ class LogDefUpdater {
   processAndLogResults(): void {
     // log results to the console for both CLI & GH workflow execution
     for (const type of this.logDefsNoInclude) {
-      const matches = [
-        ...this.triggerMatches[type] ?? [],
-        ...this.timelineMatches[type] ?? [],
-      ];
-      if (matches.length === 0)
+      const matches = this.matches[type];
+      if (matches === undefined || matches.length === 0)
         continue;
 
       console.log(`** ${type} **`);
       console.log(`Found non-included log line type in active use:`);
 
       matches.forEach((m) => {
-        console.log(`  - ${m.filename}:${m.line}`);
+        console.log(`  - ${m.filename}:${m.excerptStartLine}`);
       });
 
       console.log(`LOG DEFS UPDATED: ${type} is being added to the analysis filter.\n`);
@@ -138,8 +130,7 @@ class LogDefUpdater {
     // In theory, these are set to 'never' because we really don't care about them for analysis,
     // but a periodic reminder to re-evaluate never hurts.
     for (const type of this.logDefsNeverInclude) {
-      const numMatches = (this.triggerMatches[type]?.length ?? 0) +
-        (this.timelineMatches[type]?.length ?? 0);
+      const numMatches = (this.matches[type]?.length ?? 0);
       if (numMatches > 0) {
         console.log(`** ${type} **`);
         console.log(
@@ -175,65 +166,72 @@ class LogDefUpdater {
     return fileList;
   }
 
-  parseTriggerFile(file: string): void {
-    // We could dynamically import each trigger file and get the type from triggerSet,
-    // but we would lose the line number, which we need to pass the URL to the PR body,
-    // so just use regex to parse the file instead.
+  async parseTriggerFile(file: string): Promise<void> {
+    // Normalize path
+    const importPath = `../${path.relative(process.cwd(), file).replace('.ts', '.js')}`;
+
+    // Dynamic imports don't have a type, so add type assertion.
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    const triggerSet = (await import(importPath)).default as LooseTriggerSet;
+    const triggerSetArr = triggerSet.triggers?.entries();
+    if (triggerSetArr === undefined)
+      console.error(`ERROR: Could not find triggers in ${file}`);
 
     const contents = fs.readFileSync(file).toString();
     const lines = contents.split(/\r*\n/);
-    const fileRegex = {
-      inTrSet: /^const triggerSet: TriggerSet<Data> = {/,
-      inTrArr: /^ {2}triggers: \[/,
-      inTrObj: /^ {4}\{/,
-      trType: /^ {6}type: '(?<type>[^']+)',$/,
-      outTrObj: /^ {4}\},/,
-      outTrArr: /^ {2}\],/,
-    };
 
-    let lineNum = 0;
-    let foundTriggerSet = false;
-    let foundTriggerArr = false;
-    let foundTrigger = false;
-    let insideTriggerObj = false;
-    let foundType = false;
+    for (const [index, trigger] of triggerSet.triggers?.entries() ?? []) {
+      const id = trigger.id;
+      const type: string | undefined = trigger.type; // override literal type from LooseTrigger
+      let lineNum = 0;
+      let idLine = 0;
+      let regexLine = 0;
 
-    for (const line of lines) {
-      ++lineNum;
+      if (id === undefined) {
+        console.error(`ERROR: Missing trigger id property in ${file} (trigger index: ${index})`);
+        continue;
+      } else if (type === undefined) {
+        console.error(`ERROR: Missing trigger type property for trigger '${id}' in ${file}`);
+        continue;
+      }
 
-      if (line.match(fileRegex.inTrSet))
-        foundTriggerSet = true;
-      else if (foundTriggerSet && line.match(fileRegex.inTrArr)) {
-        foundTriggerArr = true;
-      } else if (foundTriggerArr && line.match(fileRegex.inTrObj)) {
-        insideTriggerObj = true;
-        foundTrigger = true;
-      } else if (insideTriggerObj && !foundType) {
-        const match = fileRegex.trType.exec(line);
-        const type = match?.groups?.type;
-        if (type !== undefined) {
-          foundType = true;
-          if (!this.isLogDefinitionName(type)) {
-            console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${lineNum})`);
-            continue;
-          } else if (
-            this.logDefsNoInclude.includes(type) ||
-            this.logDefsNeverInclude.includes(type)
-          )
-            (this.triggerMatches[type] ??= []).push({
-              filename: file.replace(`${this.projectRoot}/`, ''),
-              line: lineNum,
-            });
+      for (const line of lines) {
+        ++lineNum;
+        const escapedId = id.replace(/'/g, '\\\'');
+        if (line.includes(`id: '${escapedId}',`)) {
+          // if we match an id line with one already set, we never found a regex line;
+          // in that case exit the loop & report the error
+          if (idLine === 0)
+            idLine = lineNum;
+          else
+            break;
+        } else if (idLine > 0 && line.includes('netRegex: {') !== null) {
+          regexLine = lineNum;
+          break;
         }
-      } else if (foundType && line.match(fileRegex.outTrObj)) {
-        insideTriggerObj = false;
-        foundType = false;
-      } else if (foundTriggerArr && line.match(fileRegex.outTrArr))
-        break;
-    }
+      }
 
-    if (!foundTriggerSet || !foundTriggerArr || !foundTrigger)
-      console.error(`ERROR: Could not find triggers in ${file}`);
+      if (idLine === 0) {
+        console.error(`ERROR: Could not find trigger '${id}' in ${file}`);
+        continue;
+      } else if (regexLine === 0) {
+        console.error(`ERROR: Could not find netRegex for trigger '${id}' in ${file}`);
+        continue;
+      }
+
+      if (!this.isLogDefinitionName(type)) {
+        console.error(`ERROR: Missing log def for ${type} in ${file} (line: ${idLine})`);
+        continue;
+      } else if (
+        this.logDefsNoInclude.includes(type) ||
+        this.logDefsNeverInclude.includes(type)
+      )
+        (this.matches[type] ??= []).push({
+          filename: file.replace(`${this.projectRoot}/`, ''),
+          excerptStartLine: idLine,
+          excerptStopLine: regexLine,
+        });
+    }
   }
 
   parseTimelineFile(file: string): void {
@@ -285,9 +283,9 @@ class LogDefUpdater {
         this.logDefsNoInclude.includes(type) ||
         this.logDefsNeverInclude.includes(type)
       )
-        (this.timelineMatches[type] ??= []).push({
+        (this.matches[type] ??= []).push({
           filename: file.replace(`${this.projectRoot}/`, ''),
-          line: lineNum,
+          excerptStartLine: lineNum,
         });
     }
   }
@@ -353,9 +351,11 @@ class LogDefUpdater {
     fs.writeFileSync(path.posix.join(this.projectRoot, netLogDefsFile), output.join('\r\n'));
   }
 
-  doUpdate(): void {
+  async doUpdate(): Promise<void> {
     console.log('Processing trigger files...');
-    this.fileList.triggers.forEach((f) => this.parseTriggerFile(f));
+    for (const f of this.fileList.triggers) {
+      await this.parseTriggerFile(f);
+    }
 
     console.log('Processing timeline files...');
     this.fileList.timelines.forEach((f) => this.parseTimelineFile(f));
@@ -371,4 +371,4 @@ class LogDefUpdater {
 }
 
 const updater = new LogDefUpdater();
-updater.doUpdate();
+await updater.doUpdate();
