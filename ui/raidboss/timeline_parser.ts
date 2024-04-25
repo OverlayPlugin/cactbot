@@ -185,8 +185,6 @@ export class TimelineParser {
   private labelToTime: { [name: string]: number } = {};
   // Map of encountered syncs to the label they are jumping to.
   private labelToSync: { [name: string]: Sync[] } = {};
-  // Used in subclass (update_logdefs), but defined here due to being utilized during construction
-  public entries: Partial<Record<LogDefinitionName, number[]>> | undefined;
 
   constructor(
     text: string,
@@ -195,6 +193,7 @@ export class TimelineParser {
     styles?: TimelineStyle[],
     options?: RaidbossOptions,
     zoneId?: number,
+    waitForParse?: boolean,
   ) {
     this.options = options ?? defaultOptions;
     this.perTriggerAutoConfig = this.options.PerTriggerAutoConfig;
@@ -219,10 +218,11 @@ export class TimelineParser {
       });
     }
 
-    this.parse(text, triggers, styles ?? [], uniqueId);
+    if (!waitForParse)
+      this.parse(text, triggers, styles ?? [], uniqueId);
   }
 
-  private parse(
+  protected parse(
     text: string,
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
