@@ -46,18 +46,14 @@ type FileMatch = {
 type FileMatches = Partial<Record<LogDefinitionName, FileMatch[]>>;
 
 class TimelineTypeExtractor extends TimelineParser {
-  private contents = '';
   public entries: Partial<Record<LogDefinitionName, number[]>> = {};
 
   constructor(contents: string) {
     // construct parent with waitForParse = true, because `entries` is initialized
     // after parent construction, but is populated by parse() method in parent
     super(contents, [], [], undefined, undefined, undefined, true);
-    this.contents = contents;
-  }
-
-  public callParse() {
-    this.parse(this.contents, [], [], 0);
+    // we've initialized entries now, so call parse()
+    this.parse(contents, [], [], 0);
   }
 
   public override parseType(type: LogDefinitionName, lineNumber: number) {
@@ -333,9 +329,7 @@ class LogDefUpdater {
 
   parseTimelineFile(file: string): void {
     const contents = fs.readFileSync(file).toString();
-    const extractor = new TimelineTypeExtractor(contents);
-    extractor.callParse();
-    const entries = extractor.entries;
+    const entries = new TimelineTypeExtractor(contents).entries;
 
     if (entries === undefined) {
       console.error(`ERROR: Could not find timeline sync entries in ${file}`);

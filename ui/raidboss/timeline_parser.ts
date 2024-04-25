@@ -218,6 +218,8 @@ export class TimelineParser {
       });
     }
 
+    // TODO: This is a workaround for now, but whenever this class is refactored,
+    // responsibility for callilng parse() should be moved up to the instantiating code.
     if (!waitForParse)
       this.parse(text, triggers, styles ?? [], uniqueId);
   }
