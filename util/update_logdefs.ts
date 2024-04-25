@@ -17,8 +17,7 @@ import { walkDirSync } from './file_utils';
 // If the property is absent, this script will create it and set it to 'all'.
 
 // If the type should be ignored by this script (despite being used), `include` can instead be set
-// to 'never' -- which is identical to 'none' but suppresses this script's functionality.
-// Alternatively, the type can be set to 'filter' if only certain lines of that type should be
+// to 'never'. Alternatively, set the type to 'filter' if only certain lines of that type should be
 // included in the analysis filter. See `netlog_defs.ts` for more information.
 
 // This script can be run via CLI as `npm run update-logdefs`.  If run via GitHub Actions (after a
