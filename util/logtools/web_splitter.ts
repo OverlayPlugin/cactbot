@@ -31,6 +31,7 @@ const pageText = {
   },
   analysisFilterInput: {
     en: 'Apply Analysis Filter (Dev Only)',
+    fr: 'Appliquer le filtre d\'analyse (Dev seulement)',
   },
   exportSelectedInput: {
     en: 'Export Selected',
