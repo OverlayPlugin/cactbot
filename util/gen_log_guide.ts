@@ -2,22 +2,23 @@ import path from 'path';
 
 import markdownMagic from 'markdown-magic';
 
+import lineDocs from '../resources/example_log_lines';
 import logDefinitions, { LogDefinitionName } from '../resources/netlog_defs';
-import NetRegexes, { buildRegex as buildNetRegex } from '../resources/netregexes';
+import { buildRegex as buildNetRegex } from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
-import Regexes, { buildRegex } from '../resources/regexes';
+import { buildRegex } from '../resources/regexes';
 import LogRepository from '../ui/raidboss/emulator/data/network_log_converter/LogRepository';
 import ParseLine from '../ui/raidboss/emulator/data/network_log_converter/ParseLine';
 
 const curPath = path.resolve();
 
 // For compatibility with the path of the LogGuide.md file
-const languages = ['en-US', 'de-DE', 'fr-FR', 'ja-JP', 'ko-KR', 'zh-CN', 'zh-TW'] as const;
+const locales = ['en-US', 'de-DE', 'fr-FR', 'ja-JP', 'ko-KR', 'zh-CN', 'zh-TW'] as const;
 
-type Lang = typeof languages[number];
+type Locale = typeof locales[number];
 
-const isLang = (lang?: string): lang is Lang => {
-  return languages.includes(lang as Lang);
+const isLocale = (locale?: string): locale is Locale => {
+  return locales.includes(locale as Locale);
 };
 
 type LocaleObject<T> =
@@ -25,11 +26,11 @@ type LocaleObject<T> =
     'en-US': T;
   }
   & {
-    [lang in Exclude<Lang, 'en-US'>]?: T;
+    [locale in Exclude<Locale, 'en-US'>]?: T;
   };
 
-const translate = <T>(lang: Lang, obj: LocaleObject<T>): T => {
-  return obj[lang] ?? obj['en-US'];
+const translate = <T>(locale: Locale, obj: LocaleObject<T>): T => {
+  return obj[locale] ?? obj['en-US'];
 };
 
 type LocaleText = LocaleObject<string>;
@@ -149,10 +150,10 @@ const mappedLogLines: LocaleObject<LineDocTypes[]> = {
 const config: markdownMagic.Configuration = {
   transforms: {
     logLines(_content, options: LogGuideOptions): string {
-      const language = options.lang;
+      const locale = options.lang;
       const lineType = options.type;
-      if (!isLang(language)) {
-        console.error(`Received invalid lang specification: ${language ?? 'undefined'}`);
+      if (!isLocale(locale)) {
+        console.error(`Received invalid locale specification: ${locale ?? 'undefined'}`);
         process.exit(-1);
       }
       if (!isLineType(lineType)) {
@@ -160,10 +161,10 @@ const config: markdownMagic.Configuration = {
         process.exit(-2);
       }
 
-      const lineDoc = lineDocs[lineType];
+      const lineDoc: LineDocs[LineDocTypes] = lineDocs[lineType];
 
-      mappedLogLines[language] ??= [];
-      mappedLogLines[language]?.push(lineType);
+      mappedLogLines[locale] ??= [];
+      mappedLogLines[locale]?.push(lineType);
 
       const logRepo = new LogRepository();
       // Add the default combatants to the repo for name lookup when names are blank
@@ -205,7 +206,7 @@ const config: markdownMagic.Configuration = {
       if (lineType === 'AddedCombatant')
         structureLog = structureLog.replace(/Job: NONE/, 'Job: [job]');
 
-      const examples = translate(language, lineDoc.examples);
+      const examples = translate(locale, lineDoc.examples);
 
       const examplesNetwork = examples.join('\n') ?? '';
       const examplesLogLine = examples.map((e) => {
@@ -221,39 +222,39 @@ const config: markdownMagic.Configuration = {
       };
 
       ret += `
-#### ${translate(language, titles.structure)}
+#### ${translate(locale, titles.structure)}
 
 \`\`\`log
-${translate(language, titles.networkLogLineStructure)}
+${translate(locale, titles.networkLogLineStructure)}
 ${structureNetwork}
 
-${translate(language, titles.actLogLineStructure)}
+${translate(locale, titles.actLogLineStructure)}
 ${structureLog}
 \`\`\`
 `;
 
       ret += `
-#### ${translate(language, titles.regexes)}
+#### ${translate(locale, titles.regexes)}
 
 \`\`\`log
-${translate(language, titles.networkLogLineRegexes)}
+${translate(locale, titles.networkLogLineRegexes)}
 ${regexes.network}
 `;
 
       ret += `
-${translate(language, titles.actLogLineRegexes)}
+${translate(locale, titles.actLogLineRegexes)}
 ${regexes.logLine}
 `;
       ret += '```\n';
 
       ret += `
-#### ${translate(language, titles.examples)}
+#### ${translate(locale, titles.examples)}
 
 \`\`\`log
-${translate(language, titles.networkLogLineExamples)}
+${translate(locale, titles.networkLogLineExamples)}
 ${examplesNetwork}
 
-${translate(language, titles.actLogLineExamples)}
+${translate(locale, titles.actLogLineExamples)}
 ${examplesLogLine}
 \`\`\`
 `;
@@ -278,15 +279,15 @@ markdownMagic(
     for (const file of output) {
       const filePath = file.originalPath;
       // Figure out what language this file is by checking the path, default to 'en'
-      const lang = languages.filter((lang) =>
-        RegExp(`[^\\w]${lang}[^\\w]`).exec(filePath.toLowerCase())
+      const locale = locales.filter((l) =>
+        RegExp(`[^\\w]${l}[^\\w]`).exec(filePath.toLowerCase())
       )[0] ?? 'en-US';
-      const convertedLines = mappedLogLines[lang];
+      const convertedLines = mappedLogLines[locale];
       for (const type in logDefinitions) {
         if (!isLineType(type))
           continue;
         if (!convertedLines?.includes(type)) {
-          console.error(`Language ${lang} is missing LogGuide doc entry for type ${type}`);
+          console.error(`Locale ${locale} is missing LogGuide doc entry for type ${type}`);
           exitCode = 1;
         }
       }

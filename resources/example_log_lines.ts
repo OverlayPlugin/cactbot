@@ -1,4 +1,6 @@
 // Contains example log lines used for LogGuide.md and unit testing.
+import NetRegexes from './netregexes';
+import Regexes from './regexes';
 
 const exampleLogLines = {
   GameLog: {
