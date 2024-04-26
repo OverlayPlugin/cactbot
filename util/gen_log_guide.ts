@@ -2,9 +2,9 @@ import path from 'path';
 
 import markdownMagic from 'markdown-magic';
 
-import lineDocs from '../resources/example_log_lines';
+import lineDocs, { ExampleLineName } from '../resources/example_log_lines';
 import { Lang, NonEnLang } from '../resources/languages';
-import logDefinitions, { LogDefinitionName } from '../resources/netlog_defs';
+import logDefinitions from '../resources/netlog_defs';
 import { buildRegex as buildNetRegex } from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
 import { buildRegex } from '../resources/regexes';
@@ -58,39 +58,10 @@ const localeToLangMap: Record<Locale, Lang> = {
   'ko-KR': 'ko',
   'zh-CN': 'cn',
   'zh-TW': 'cn',
-} as const;
+};
 
 const localeToLang = (locale: Locale): Lang => {
   return localeToLangMap[locale];
-};
-
-// Exclude these types since they're not relevant or covered elsewhere
-type ExcludedLineDocs =
-  | 'None'
-  | 'NetworkAOEAbility'
-  | 'NetworkWorld'
-  | 'ParserInfo'
-  | 'ProcessInfo'
-  | 'Debug'
-  | 'PacketDump'
-  | 'Version'
-  | 'Error';
-
-type LineDocTypes = Exclude<LogDefinitionName, ExcludedLineDocs>;
-
-type LineDocRegex = {
-  network: string;
-  logLine: string;
-};
-
-type LineDocType = {
-  // We can generate `network` type automatically for everything but regex
-  regexes?: Partial<LineDocRegex>;
-  examples: LangStrings;
-};
-
-type LineDocs = {
-  [type in LineDocTypes]: LineDocType;
 };
 
 type Titles = Record<
@@ -168,11 +139,11 @@ type LogGuideOptions = {
   type?: string;
 };
 
-const isLineType = (type?: string): type is LineDocTypes => {
+const isLineType = (type?: string): type is ExampleLineName => {
   return type !== undefined && type in lineDocs;
 };
 
-const mappedLogLines: LocaleObject<LineDocTypes[]> = {
+const mappedLogLines: LocaleObject<ExampleLineName[]> = {
   'en-US': [],
 };
 
@@ -193,7 +164,7 @@ const config: markdownMagic.Configuration = {
       }
       const examplesLang = localeToLang(locale);
 
-      const lineDoc: LineDocs[LineDocTypes] = lineDocs[lineType];
+      const lineDoc = lineDocs[lineType];
 
       mappedLogLines[locale] ??= [];
       mappedLogLines[locale]?.push(lineType);
@@ -248,7 +219,7 @@ const config: markdownMagic.Configuration = {
         return line?.convertedLine;
       }).join('\n') ?? '';
 
-      const regexes: LineDocRegex = {
+      const regexes = {
         network: lineDoc.regexes?.network ?? buildNetRegex(lineType, { capture: true }).source,
         logLine: lineDoc.regexes?.logLine ?? buildRegex(lineType, { capture: true }).source,
       };

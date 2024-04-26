@@ -1,8 +1,48 @@
 // Contains example log lines used for LogGuide.md and unit testing.
+import { Lang } from './languages';
+import { LogDefinitionName } from './netlog_defs';
 import NetRegexes from './netregexes';
 import Regexes from './regexes';
 
-const exampleLogLines = {
+// Exclude these types since examples are not included in LogGuide.md, and we
+// don't specifically unit test them.
+type ExcludedLineName =
+  | 'None'
+  | 'NetworkAOEAbility'
+  | 'NetworkWorld'
+  | 'ParserInfo'
+  | 'ProcessInfo'
+  | 'Debug'
+  | 'PacketDump'
+  | 'Version'
+  | 'Error';
+
+export type ExampleLineName = Exclude<LogDefinitionName, ExcludedLineName>;
+
+type ExampleRegex = {
+  network: string;
+  logLine: string;
+};
+
+type LangStrings =
+  & {
+    en: readonly string[];
+  }
+  & {
+    [lang in Exclude<Lang, 'en'>]?: readonly string[];
+  };
+
+type ExampleLineEntry = {
+  // regexes is optional: LogGuide.md will build default regexes if not provided.
+  regexes?: Partial<ExampleRegex>;
+  examples: LangStrings;
+}
+
+type ExampleLines = {
+  [type in ExampleLineName]: ExampleLineEntry;
+}
+
+const exampleLogLines: ExampleLines = {
   GameLog: {
     regexes: {
       network: NetRegexes.gameLog({ capture: true }).source,
@@ -515,6 +555,6 @@ const exampleLogLines = {
       ],
     },
   },
-} as const;
+};
 
 export default exampleLogLines;
