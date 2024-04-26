@@ -291,7 +291,9 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
-      include: 'all',
+      include: 'filter',
+      filters: { id: '4.{7}' }, // NPC combatants only
+      combatantIdFields: 2,
     },
   },
   PartyList: {
@@ -551,7 +553,9 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
-      include: 'all',
+      include: 'filter',
+      filters: { sourceId: '4.{7}' }, // NPC combatants only
+      combatantIdFields: 2,
     },
   },
   NetworkDoT: {
@@ -599,7 +603,13 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
-      include: 'all',
+      include: 'filter',
+      filters: { // DoT on player with valid effectId
+        id: '1.{7}',
+        which: 'DoT',
+        effectId: '[1-9A-F]+', // non-zero non-empty value
+      },
+      combatantIdFields: [2, 17],
     },
   },
   WasDefeated: {
@@ -622,7 +632,9 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
-      include: 'all',
+      include: 'filter',
+      filters: { targetId: '4.{7}' }, // NPC combatants only
+      combatantIdFields: 2, // don't apply to sourceId; an ignored combatant is a valid source
     },
   },
   GainsEffect: {
@@ -916,7 +928,7 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
-      include: 'all',
+      include: 'never',
     },
   },
   StatusEffect: {
@@ -1330,7 +1342,9 @@ const latestLogDefinitions = {
     canAnonymize: true,
     firstOptionalField: 7,
     analysisOptions: {
-      include: 'all',
+      include: 'filter',
+      filters: { sourceId: '4.{7}' }, // NPC casts only
+      combatantIdFields: 2,
     },
   },
   AbilityExtra: {
