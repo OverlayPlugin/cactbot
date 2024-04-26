@@ -290,6 +290,9 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    analysisOptions: {
+      include: 'all',
+    },
   },
   PartyList: {
     type: '11',
@@ -547,6 +550,9 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    analysisOptions: {
+      include: 'all',
+    },
   },
   NetworkDoT: {
     type: '24',
@@ -592,6 +598,9 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    analysisOptions: {
+      include: 'all',
+    },
   },
   WasDefeated: {
     type: '25',
@@ -612,6 +621,9 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    analysisOptions: {
+      include: 'all',
+    },
   },
   GainsEffect: {
     type: '26',
@@ -903,6 +915,9 @@ const latestLogDefinitions = {
     firstUnknownField: 22,
     canAnonymize: true,
     firstOptionalField: undefined,
+    analysisOptions: {
+      include: 'all',
+    },
   },
   StatusEffect: {
     type: '38',
@@ -1314,6 +1329,9 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: 7,
+    analysisOptions: {
+      include: 'all',
+    },
   },
   AbilityExtra: {
     type: '264',
