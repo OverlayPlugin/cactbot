@@ -1,6 +1,6 @@
 > [!CAUTION]
 > ***NOTE TO REVIEWERS:***
-> Due to GitHub limitations, you ***must*** close & re-open this PR before merging to ensure pre-merge workflows (e.g. linters) are correctly triggered.**
+> **Due to GitHub limitations, you ***must*** close & re-open this PR before merging to ensure pre-merge workflows (e.g. linters) are correctly triggered.**
 
 This PR was auto-generated based on a recent repo commit to either `resources/netlog_defs.ts` or to a file in `ui/raidboss/data`.
 
