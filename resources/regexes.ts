@@ -561,6 +561,27 @@ export default class Regexes {
   }
 
   /**
+ * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-258-0x102-fatedirector
+ */
+  static fateDirector(params?: NetParams['FateDirector']): CactbotBaseRegExp<'FateDirector'> {
+    return buildRegex('FateDirector', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-259-0x103-cedirector
+   */
+  static ceDirector(params?: NetParams['CEDirector']): CactbotBaseRegExp<'CEDirector'> {
+    return buildRegex('CEDirector', params);
+  }
+
+  /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-260-0x104-incombat
+   */
+  static inCombat(params?: NetParams['InCombat']): CactbotBaseRegExp<'InCombat'> {
+    return buildRegex('InCombat', params);
+  }
+
+  /**
    * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-261-0x105-combatantmemory
    */
   static combatantMemory(
