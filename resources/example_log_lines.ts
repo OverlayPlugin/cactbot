@@ -36,11 +36,11 @@ type ExampleLineEntry = {
   // regexes is optional: LogGuide.md will build default regexes if not provided.
   regexes?: Partial<ExampleRegex>;
   examples: LangStrings;
-}
+};
 
 type ExampleLines = {
   [type in ExampleLineName]: ExampleLineEntry;
-}
+};
 
 const exampleLogLines: ExampleLines = {
   GameLog: {

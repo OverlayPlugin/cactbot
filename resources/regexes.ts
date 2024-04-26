@@ -561,8 +561,8 @@ export default class Regexes {
   }
 
   /**
- * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-258-0x102-fatedirector
- */
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-258-0x102-fatedirector
+   */
   static fateDirector(params?: NetParams['FateDirector']): CactbotBaseRegExp<'FateDirector'> {
     return buildRegex('FateDirector', params);
   }
