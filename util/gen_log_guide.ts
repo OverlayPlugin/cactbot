@@ -3,6 +3,7 @@ import path from 'path';
 import markdownMagic from 'markdown-magic';
 
 import lineDocs from '../resources/example_log_lines';
+import { Lang, NonEnLang } from '../resources/languages';
 import logDefinitions, { LogDefinitionName } from '../resources/netlog_defs';
 import { buildRegex as buildNetRegex } from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
@@ -13,6 +14,8 @@ import ParseLine from '../ui/raidboss/emulator/data/network_log_converter/ParseL
 const curPath = path.resolve();
 
 // For compatibility with the path of the LogGuide.md file
+// TODO: Some of this could be moved to ../resources/languages, but that file
+// uses 'locale' inconsistently, so it would require more comprehensive changes.
 const locales = ['en-US', 'de-DE', 'fr-FR', 'ja-JP', 'ko-KR', 'zh-CN', 'zh-TW'] as const;
 
 type Locale = typeof locales[number];
@@ -29,11 +32,37 @@ type LocaleObject<T> =
     [locale in Exclude<Locale, 'en-US'>]?: T;
   };
 
-const translate = <T>(locale: Locale, obj: LocaleObject<T>): T => {
+const translateToLocale = <T>(locale: Locale, obj: LocaleObject<T>): T => {
   return obj[locale] ?? obj['en-US'];
 };
 
 type LocaleText = LocaleObject<string>;
+
+type LangStrings =
+  & {
+    en: readonly string[];
+  }
+  & {
+    [lang in NonEnLang]?: readonly string[];
+  };
+
+const translateToLang = (lang: Lang, obj: LangStrings) => {
+  return obj[lang] ?? obj['en'];
+};
+
+const localeToLangMap: Record<Locale, Lang> = {
+  'en-US': 'en',
+  'de-DE': 'de',
+  'fr-FR': 'fr',
+  'ja-JP': 'ja',
+  'ko-KR': 'ko',
+  'zh-CN': 'cn',
+  'zh-TW': 'cn',
+} as const;
+
+const localeToLang = (locale: Locale): Lang => {
+  return localeToLangMap[locale];
+};
 
 // Exclude these types since they're not relevant or covered elsewhere
 type ExcludedLineDocs =
@@ -57,7 +86,7 @@ type LineDocRegex = {
 type LineDocType = {
   // We can generate `network` type automatically for everything but regex
   regexes?: Partial<LineDocRegex>;
-  examples: LocaleObject<readonly string[]>;
+  examples: LangStrings;
 };
 
 type LineDocs = {
@@ -150,6 +179,8 @@ const mappedLogLines: LocaleObject<LineDocTypes[]> = {
 const config: markdownMagic.Configuration = {
   transforms: {
     logLines(_content, options: LogGuideOptions): string {
+      // TODO: Each localized 'LogGuide.md' file passes the locale string as a 'lang' param,
+      // At some point, this should be changed to 'locale' for internal consistency.
       const locale = options.lang;
       const lineType = options.type;
       if (!isLocale(locale)) {
@@ -160,6 +191,7 @@ const config: markdownMagic.Configuration = {
         console.error(`Received invalid type specification: ${lineType ?? 'undefined'}`);
         process.exit(-2);
       }
+      const examplesLang = localeToLang(locale);
 
       const lineDoc: LineDocs[LineDocTypes] = lineDocs[lineType];
 
@@ -206,7 +238,7 @@ const config: markdownMagic.Configuration = {
       if (lineType === 'AddedCombatant')
         structureLog = structureLog.replace(/Job: NONE/, 'Job: [job]');
 
-      const examples = translate(locale, lineDoc.examples);
+      const examples = translateToLang(examplesLang, lineDoc.examples);
 
       const examplesNetwork = examples.join('\n') ?? '';
       const examplesLogLine = examples.map((e) => {
@@ -222,39 +254,39 @@ const config: markdownMagic.Configuration = {
       };
 
       ret += `
-#### ${translate(locale, titles.structure)}
+#### ${translateToLocale(locale, titles.structure)}
 
 \`\`\`log
-${translate(locale, titles.networkLogLineStructure)}
+${translateToLocale(locale, titles.networkLogLineStructure)}
 ${structureNetwork}
 
-${translate(locale, titles.actLogLineStructure)}
+${translateToLocale(locale, titles.actLogLineStructure)}
 ${structureLog}
 \`\`\`
 `;
 
       ret += `
-#### ${translate(locale, titles.regexes)}
+#### ${translateToLocale(locale, titles.regexes)}
 
 \`\`\`log
-${translate(locale, titles.networkLogLineRegexes)}
+${translateToLocale(locale, titles.networkLogLineRegexes)}
 ${regexes.network}
 `;
 
       ret += `
-${translate(locale, titles.actLogLineRegexes)}
+${translateToLocale(locale, titles.actLogLineRegexes)}
 ${regexes.logLine}
 `;
       ret += '```\n';
 
       ret += `
-#### ${translate(locale, titles.examples)}
+#### ${translateToLocale(locale, titles.examples)}
 
 \`\`\`log
-${translate(locale, titles.networkLogLineExamples)}
+${translateToLocale(locale, titles.networkLogLineExamples)}
 ${examplesNetwork}
 
-${translate(locale, titles.actLogLineExamples)}
+${translateToLocale(locale, titles.actLogLineExamples)}
 ${examplesLogLine}
 \`\`\`
 `;
