@@ -1,6 +1,13 @@
 // Contains example log lines used for LogGuide.md and unit testing.
+// Use `npm run generate-log-guide` after updating this file.
+
+import { RegexUtilParams } from '../test/helper/regex_util';
+import { NetFields } from '../types/net_fields';
+import { RepeatingFieldsExtract } from '../types/net_props';
+import { CactbotBaseRegExp } from '../types/net_trigger';
+
 import { Lang } from './languages';
-import { LogDefinitionName } from './netlog_defs';
+import logDefinitions, { LogDefinitionName } from './netlog_defs';
 import NetRegexes from './netregexes';
 import Regexes from './regexes';
 
@@ -32,14 +39,36 @@ type LangStrings =
     [lang in Exclude<Lang, 'en'>]?: readonly string[];
   };
 
-type ExampleLineEntry = {
+type LogDefProps<T extends ExampleLineName> = keyof typeof logDefinitions[T];
+export type ExampleLineNameWithRepeating = Extract<
+  { [K in ExampleLineName]: 'repeatingFields' extends LogDefProps<K> ? K : never }[ExampleLineName],
+  string
+>;
+
+type NetFieldsStrings<T extends ExampleLineName> = {
+  [field in keyof NetFields[T]]?: string;
+};
+export type TestFields<T extends ExampleLineName> = T extends ExampleLineNameWithRepeating
+  ? NetFieldsStrings<T> & RepeatingFieldsExtract<T>
+  : NetFieldsStrings<T>;
+
+export type UnitTest<T extends ExampleLineName> = {
+  // the index of the example in 'en' to use for unit testing
+  indexToTest: number;
+  // override the regex to use for this test (as a func to support capture test)
+  regexOverride?: (params?: RegexUtilParams) => CactbotBaseRegExp<T>;
+  expectedValues: TestFields<T>;
+};
+
+export type ExampleLineDef<T extends ExampleLineName> = {
   // regexes is optional: LogGuide.md will build default regexes if not provided.
   regexes?: Partial<ExampleRegex>;
   examples: LangStrings;
+  unitTests?: UnitTest<T> | readonly UnitTest<T>[];
 };
 
 type ExampleLines = {
-  [type in ExampleLineName]: ExampleLineEntry;
+  [T in ExampleLineName]: ExampleLineDef<T>;
 };
 
 const exampleLogLines: ExampleLines = {
