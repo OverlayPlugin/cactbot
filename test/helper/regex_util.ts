@@ -95,6 +95,7 @@ export class RegexTestUtil {
   private lines: string[];
   private testData: ExampleLineDef<typeof this.type>;
   private baseFunc: (params?: RegexUtilParams) => RegExp;
+  private logLineMode: boolean;
 
   constructor(
     type: ExampleLineName,
@@ -106,6 +107,7 @@ export class RegexTestUtil {
     this.testData = testData;
     this.lines = [...testData.examples.en];
     this.baseFunc = baseFunc;
+    this.logLineMode = logLineMode;
     if (logLineMode)
       this.convertToLogLines();
   }
@@ -213,7 +215,9 @@ export class RegexTestUtil {
     // If an override is specified for a particular unit test, do a capture test
     // for that override first
     let unitTestRegex = this.baseFunc();
-    const override = unitTest.regexOverride;
+    const override = this.logLineMode
+      ? unitTest.regexOverride?.logLine
+      : unitTest.regexOverride?.network;
     if (override !== undefined && !this.hasRepeatingFields()) {
       this.captureTest(override, [testLine]);
       unitTestRegex = override();

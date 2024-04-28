@@ -26,10 +26,11 @@ type ExcludedLineName =
 
 export type ExampleLineName = Exclude<LogDefinitionName, ExcludedLineName>;
 
-type ExampleRegex = {
-  network: string;
-  logLine: string;
+type ExampleRegex<T> = {
+  network: T;
+  logLine: T;
 };
+type RegexFunc<T extends ExampleLineName> = (params?: RegexUtilParams) => CactbotBaseRegExp<T>;
 
 type LangStrings =
   & {
@@ -56,13 +57,13 @@ export type UnitTest<T extends ExampleLineName> = {
   // the index of the example in 'en' to use for unit testing
   indexToTest: number;
   // override the regex to use for this test (as a func to support capture test)
-  regexOverride?: (params?: RegexUtilParams) => CactbotBaseRegExp<T>;
+  regexOverride?: Partial<ExampleRegex<RegexFunc<T>>>;
   expectedValues: TestFields<T>;
 };
 
 export type ExampleLineDef<T extends ExampleLineName> = {
   // regexes is optional: LogGuide.md will build default regexes if not provided.
-  regexes?: Partial<ExampleRegex>;
+  regexes?: Partial<ExampleRegex<string>>;
   examples: LangStrings;
   unitTests?: UnitTest<T> | readonly UnitTest<T>[];
 };
@@ -100,7 +101,10 @@ const exampleLogLines: ExampleLines = {
       },
       { // test NetRegexes.message()
         indexToTest: 0,
-        regexOverride: (params?) => NetRegexes.message(params),
+        regexOverride: {
+          network: (params?) => NetRegexes.message(params),
+          logLine: (params?) => Regexes.message(params),
+        },
         expectedValues: {
           type: '00',
           code: '0839',
@@ -109,7 +113,10 @@ const exampleLogLines: ExampleLines = {
       },
       { // test NetRegexes.dialog()
         indexToTest: 5,
-        regexOverride: (params?) => NetRegexes.dialog(params),
+        regexOverride: {
+          network: (params?) => NetRegexes.dialog(params),
+          logLine: (params?) => Regexes.dialog(params),
+        },
         expectedValues: {
           type: '00',
           code: '0044',
@@ -119,7 +126,10 @@ const exampleLogLines: ExampleLines = {
       },
       { // test NetRegexes.echo()
         indexToTest: 6,
-        regexOverride: (params?) => NetRegexes.echo(params),
+        regexOverride: {
+          network: (params?) => NetRegexes.echo(params),
+          logLine: (params?) => Regexes.echo(params),
+        },
         expectedValues: {
           type: '00',
           code: '0038',
@@ -128,7 +138,10 @@ const exampleLogLines: ExampleLines = {
       },
       {
         indexToTest: 7,
-        regexOverride: (params?) => NetRegexes.gameNameLog(params),
+        regexOverride: {
+          network: (params?) => NetRegexes.gameNameLog(params),
+          logLine: (params?) => Regexes.gameNameLog(params),
+        },
         expectedValues: {
           type: '00',
           code: '001D',
@@ -358,7 +371,10 @@ const exampleLogLines: ExampleLines = {
     },
     unitTests: {
       indexToTest: 0,
-      regexOverride: (params?) => NetRegexes.ability(params),
+      regexOverride: {
+        network: (params?) => NetRegexes.ability(params),
+        logLine: (params?) => Regexes.ability(params),
+      },
       expectedValues: {
         type: '21',
         sourceId: '40024FD1',
