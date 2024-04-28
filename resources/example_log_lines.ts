@@ -7,7 +7,7 @@ import { RepeatingFieldsExtract } from '../types/net_props';
 import { CactbotBaseRegExp } from '../types/net_trigger';
 
 import { Lang } from './languages';
-import logDefinitions, { LogDefinitionName } from './netlog_defs';
+import { LogDefinitionName, RepeatingFieldsTypes } from './netlog_defs';
 import NetRegexes from './netregexes';
 import Regexes from './regexes';
 
@@ -40,11 +40,7 @@ type LangStrings =
     [lang in Exclude<Lang, 'en'>]?: readonly string[];
   };
 
-type LogDefProps<T extends ExampleLineName> = keyof typeof logDefinitions[T];
-export type ExampleLineNameWithRepeating = Extract<
-  { [K in ExampleLineName]: 'repeatingFields' extends LogDefProps<K> ? K : never }[ExampleLineName],
-  string
->;
+export type ExampleLineNameWithRepeating = Extract<ExampleLineName, RepeatingFieldsTypes>;
 
 type NetFieldsStrings<T extends ExampleLineName> = {
   [field in keyof NetFields[T]]?: string;
