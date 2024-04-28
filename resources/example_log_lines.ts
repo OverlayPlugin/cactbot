@@ -85,8 +85,58 @@ const exampleLogLines: ExampleLines = {
         '00|2021-04-26T14:12:30.0000000-04:00|302B||The gravity node uses Forked Lightning.|45d50c5f5322adf787db2bd00d85493d',
         '00|2021-04-26T14:12:30.0000000-04:00|322A||The attack misses.|f9f57724eb396a6a94232e9159175e8c',
         '00|2021-07-05T18:01:21.0000000-04:00|0044|Tsukuyomi|Oh...it\'s going to be a long night.|1a81d186fd4d19255f2e01a1694c7607',
+        '00|2020-02-26T18:59:23.0000000-08:00|0038||cactbot wipe|77364412c17033eb8c87dafe7ce3c665',
+        '00|2020-03-10T18:29:02.0000000-07:00|001D|Tini Poutini|Tini Poutini straightens her spectacles for you.|05ca458b4d400d1f878d3c420f962b99',
       ],
     },
+    unitTests: [
+      { // test base GameLog netregex
+        indexToTest: 4,
+        expectedValues: {
+          type: '00',
+          code: '322A',
+          line: 'The attack misses.',
+        },
+      },
+      { // test NetRegexes.message()
+        indexToTest: 0,
+        regexOverride: (params?) => NetRegexes.message(params),
+        expectedValues: {
+          type: '00',
+          code: '0839',
+          line: 'You change to warrior.',
+        },
+      },
+      { // test NetRegexes.dialog()
+        indexToTest: 5,
+        regexOverride: (params?) => NetRegexes.dialog(params),
+        expectedValues: {
+          type: '00',
+          code: '0044',
+          name: 'Tsukuyomi',
+          line: 'Oh...it\'s going to be a long night.',
+        },
+      },
+      { // test NetRegexes.echo()
+        indexToTest: 6,
+        regexOverride: (params?) => NetRegexes.echo(params),
+        expectedValues: {
+          type: '00',
+          code: '0038',
+          line: 'cactbot wipe',
+        },
+      },
+      {
+        indexToTest: 7,
+        regexOverride: (params?) => NetRegexes.gameNameLog(params),
+        expectedValues: {
+          type: '00',
+          code: '001D',
+          name: 'Tini Poutini',
+          line: 'Tini Poutini straightens her spectacles for you.',
+        },
+      },
+    ],
   },
   ChangeZone: {
     regexes: {
@@ -99,6 +149,14 @@ const exampleLogLines: ExampleLines = {
         '01|2021-04-26T14:22:04.5490000-04:00|31F|Alphascape (V2.0)|8299b97fa36500118fc3a174ed208fe4',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '01',
+        id: '326',
+        name: 'Kugane Ohashi',
+      },
+    },
   },
   ChangedPlayer: {
     examples: {
@@ -106,6 +164,14 @@ const exampleLogLines: ExampleLines = {
         '02|2021-04-26T14:11:31.0200000-04:00|10FF0001|Tini Poutini|5b0a5800460045f29db38676e0c3f79a',
         '02|2021-04-26T14:13:17.9930000-04:00|10FF0002|Potato Chippy|34b657d75218545f5a49970cce218ce6',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '02',
+        id: '10FF0001',
+        name: 'Tini Poutini',
+      },
     },
   },
   AddedCombatant: {
@@ -123,6 +189,41 @@ const exampleLogLines: ExampleLines = {
         '03|2021-06-16T21:35:11.4020000-07:00|4000B36a|Catastrophe|00|46|0000|00||5631|6358|57250|57250|0|10000|0|0|0|0|0|-4.792213E-05|b3b3b4f926bcadd8b6ef008232d58922',
       ],
     },
+    unitTests: [
+      {
+        indexToTest: 0,
+        expectedValues: {
+          type: '03',
+          id: '10FF0001',
+          name: 'Tini Poutini',
+          job: '24',
+          level: '46',
+          ownerId: '0000',
+          worldId: '28',
+          world: 'Jenova',
+          npcNameId: '0',
+          npcBaseId: '0',
+          currentHp: '30460',
+          hp: '30460',
+          currentMp: '10000',
+          mp: '10000',
+          x: '-0.76',
+          y: '15.896',
+          z: '0',
+          heading: '-3.141593',
+        },
+      },
+      { // test non-zero values for npcNameId/npcBaseId
+        indexToTest: 1,
+        expectedValues: {
+          type: '03',
+          id: '4000B364',
+          name: 'Catastrophe',
+          npcNameId: '5631',
+          npcBaseId: '6358',
+        },
+      },
+    ],
   },
   RemovedCombatant: {
     regexes: {
@@ -135,6 +236,28 @@ const exampleLogLines: ExampleLines = {
         '04|2021-06-16T21:37:36.0740000-07:00|4000B39C|Petrosphere|00|46|0000|00||6712|7308|0|57250|0|10000|0|0|-16.00671|-0.01531982|0|1.53875|980552ad636f06249f1b5c7a6e675aad',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '04',
+        id: '10FF0001',
+        name: 'Tini Poutini',
+        job: '05',
+        level: '1E',
+        owner: '0000',
+        world: 'Jenova',
+        npcNameId: '0',
+        npcBaseId: '0',
+        currentHp: '816',
+        hp: '816',
+        currentMp: '10000',
+        mp: '10000',
+        x: '-66.24337',
+        y: '-292.0904',
+        z: '20.06466',
+        heading: '1.789943',
+      },
+    },
   },
   PartyList: {
     examples: {
@@ -142,6 +265,13 @@ const exampleLogLines: ExampleLines = {
         '11|2021-06-16T20:46:38.5450000-07:00|8|10FF0002|10FF0003|10FF0004|10FF0001|10FF0005|10FF0006|10FF0007|10FF0008|',
         '11|2021-06-16T21:47:56.7170000-07:00|4|10FF0002|10FF0001|10FF0003|10FF0004|',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '11',
+        partyCount: '8',
+      },
     },
   },
   PlayerStats: {
@@ -155,6 +285,29 @@ const exampleLogLines: ExampleLines = {
         '12|2021-04-26T14:31:25.5080000-04:00|24|189|360|5610|356|5549|1431|189|1340|3651|5549|5549|1661|380|1547|0|380|4000174AE14AB6|53b98d383806c5a29dfe33720f514288',
         '12|2021-08-06T10:29:35.3400000-04:00|38|308|4272|4443|288|271|340|4272|1210|2655|288|271|2002|1192|380|0|380|4000174AE14AB6|4ce3eac3dbd0eb1d6e0044425d9e091d',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '12',
+        job: '21',
+        strength: '5456',
+        dexterity: '326',
+        vitality: '6259',
+        intelligence: '135',
+        mind: '186',
+        piety: '340',
+        attackPower: '5456',
+        directHit: '380',
+        criticalHit: '3863',
+        attackMagicPotency: '135',
+        healMagicPotency: '186',
+        determination: '2628',
+        skillSpeed: '1530',
+        spellSpeed: '380',
+        tenacity: '1260',
+        localContentId: '4000174AE14AB6',
+      },
     },
   },
   StartsUsing: {
@@ -171,6 +324,23 @@ const exampleLogLines: ExampleLines = {
         '20|2021-07-27T12:48:36.1310000-04:00|40024FCE|The Manipulator|13D0|Seed Of The Sky|E0000000||2.70|8.055649|-17.03842|10.58736|-4.792213E-05|5377da9551e7ca470709dc08e996bb75',
       ],
     },
+    unitTests: {
+      indexToTest: 1,
+      expectedValues: {
+        type: '20',
+        sourceId: '10FF0001',
+        source: 'Tini Poutini',
+        id: 'DF0',
+        ability: 'Stone III',
+        targetId: '40024FC4',
+        target: 'The Manipulator',
+        castTime: '2.35',
+        x: '-0.06491255',
+        y: '-9.72675',
+        z: '10.54466',
+        heading: '-3.141591',
+      },
+    },
   },
   Ability: {
     regexes: {
@@ -179,14 +349,49 @@ const exampleLogLines: ExampleLines = {
     },
     examples: {
       en: [
-        '21|2021-07-27T12:48:22.4630000-04:00|40024FD1|Steam Bit|F67|Aetherochemical Laser|10FF0001|Tini Poutini|750003|4620000|1B|F678000|0|0|0|0|0|0|0|0|0|0|0|0|36022|36022|5200|10000|0|1000|1.846313|-12.31409|10.60608|-2.264526|16000|16000|8840|10000|0|1000|-9.079163|-14.02307|18.7095|1.416605|0000DE1F|0|5d60825d70bb46d7fcc8fc0339849e8e',
-        '21|2021-07-27T12:46:22.9530000-04:00|10FF0002|Potato Chippy|07|Attack|40024FC5|Right Foreleg|710003|3910000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|378341|380640|8840|10000|0|1000|-6.37015|-7.477235|10.54466|0.02791069|26396|26396|10000|10000|0|1000|-5.443688|-1.163282|10.54466|-2.9113|0000DB6E|0|58206bdd1d0bd8d70f27f3fb2523912b',
-        '21|2021-07-27T12:46:21.5820000-04:00|10FF0001|Tini Poutini|03|Sprint|10FF0001|Tini Poutini|1E00000E|320000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|0000DB68|0|29301d52854712315e0951abff146adc',
-        '21|2021-07-27T12:47:28.4670000-04:00|40025026|Steam Bit|F6F|Laser Absorption|40024FC4|The Manipulator|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|685814|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|16000|16000|8840|10000|0|1000|0|22.5|10.64999|-3.141593|0000DCEC|0|0f3be60aec05333aae73a042edb7edb4',
-        '21|2021-07-27T12:48:39.1260000-04:00|40024FCE|The Manipulator|13D0|Seed Of The Sky|E0000000||0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|||||||||||16000|16000|8840|10000|0|1000|8.055649|-17.03842|10.58736|-4.792213E-05|0000DE92|0|ca5594611cf4ca4e276f64f2cfba5ffa',
+        '21|2021-07-27T12:48:22.4630000-04:00|40024FD1|Steam Bit|F67|Aetherochemical Laser|10FF0001|Tini Poutini|750003|4620000|1B|F678000|0|0|0|0|0|0|0|0|0|0|0|0|36022|36022|5200|10000|0|1000|1.846313|-12.31409|10.60608|-2.264526|16000|16000|8840|10000|0|1000|-9.079163|-14.02307|18.7095|1.416605|0000DE1F|0|1|5d60825d70bb46d7fcc8fc0339849e8e',
+        '21|2021-07-27T12:46:22.9530000-04:00|10FF0002|Potato Chippy|07|Attack|40024FC5|Right Foreleg|710003|3910000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|378341|380640|8840|10000|0|1000|-6.37015|-7.477235|10.54466|0.02791069|26396|26396|10000|10000|0|1000|-5.443688|-1.163282|10.54466|-2.9113|0000DB6E|0|1|58206bdd1d0bd8d70f27f3fb2523912b',
+        '21|2021-07-27T12:46:21.5820000-04:00|10FF0001|Tini Poutini|03|Sprint|10FF0001|Tini Poutini|1E00000E|320000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|0000DB68|0|1|29301d52854712315e0951abff146adc',
+        '21|2021-07-27T12:47:28.4670000-04:00|40025026|Steam Bit|F6F|Laser Absorption|40024FC4|The Manipulator|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|685814|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|16000|16000|8840|10000|0|1000|0|22.5|10.64999|-3.141593|0000DCEC|0|1|0f3be60aec05333aae73a042edb7edb4',
+        '21|2021-07-27T12:48:39.1260000-04:00|40024FCE|The Manipulator|13D0|Seed Of The Sky|E0000000||0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|||||||||||16000|16000|8840|10000|0|1000|8.055649|-17.03842|10.58736|-4.792213E-05|0000DE92|0|1|ca5594611cf4ca4e276f64f2cfba5ffa',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      regexOverride: (params?) => NetRegexes.ability(params),
+      expectedValues: {
+        type: '21',
+        sourceId: '40024FD1',
+        source: 'Steam Bit',
+        id: 'F67',
+        ability: 'Aetherochemical Laser',
+        targetId: '10FF0001',
+        target: 'Tini Poutini',
+        flags: '750003',
+        damage: '4620000',
+        targetCurrentHp: '36022',
+        targetMaxHp: '36022',
+        targetCurrentMp: '5200',
+        targetMaxMp: '10000',
+        targetX: '1.846313',
+        targetY: '-12.31409',
+        targetZ: '10.60608',
+        targetHeading: '-2.264526',
+        currentHp: '16000',
+        maxHp: '16000',
+        currentMp: '8840',
+        maxMp: '10000',
+        x: '-9.079163',
+        y: '-14.02307',
+        z: '18.7095',
+        heading: '1.416605',
+        sequence: '0000DE1F',
+        targetIndex: '0',
+        targetCount: '1',
+      },
+    },
   },
+
   NetworkCancelAbility: {
     examples: {
       en: [
@@ -194,6 +399,17 @@ const exampleLogLines: ExampleLines = {
         '23|2021-07-27T13:04:39.0930000-04:00|40000132|Garm|D10|The Dragon\'s Voice|Interrupted|bd936fde66bab0e8cf2874ebd75df77c',
         '23|2021-07-27T13:04:39.1370000-04:00|4000012F||D52|Unknown_D52|Cancelled|8a15bad31745426d65cc13b8e0d50005',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '23',
+        sourceId: '10FF0002',
+        source: 'Potato Chippy',
+        id: '408D',
+        name: 'Veraero II',
+        reason: 'Cancelled',
+      },
     },
   },
   NetworkDoT: {
@@ -203,10 +419,39 @@ const exampleLogLines: ExampleLines = {
     },
     examples: {
       en: [
-        '24|2021-07-27T12:47:05.5100000-04:00|10FF0002|Potato Chippy|HoT|0|3A1|21194|21194|8964|10000|0|1000|-1.815857|-5.630676|10.55192|2.929996|63d7d7e99108018a1890f367f89eae43',
-        '24|2021-07-27T12:47:05.5990000-04:00|10FF0001|Tini Poutini|HoT|0|3BC|26396|26396|10000|10000|0|1000|-0.1373901|-8.438293|10.54466|3.122609|21b814e6f165bc1cde4a6dc23046ecb0',
-        '24|2021-07-27T12:47:06.9340000-04:00|40024FC4|The Manipulator|DoT|0|B7F|709685|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|ce3fd23ca493a37ab7663b8212044e78',
+        '24|2022-07-07T21:59:30.6210000-07:00|10FF0001|Tini Poutini|DoT|3C0|9920|32134|63300|10000|10000|||90.44|87.60|0.00|-3.07|4000F123|Shikigami of the Pyre|5|7328307|7439000|10000|10000|||99.78|104.81|0.00|2.95|549a72f2e53a9dea',
+        '24|2023-07-05T20:05:54.6070000-07:00|10FF0006|French Fry|HoT|0|2824|91002|91002|10000|10000|||97.46|101.98|0.00|3.13|10FF0007|Mimite Mite|0|81541|81541|9600|10000|||100.04|110.55|0.00|-3.08|1ea68a0cb73843c7bb51808eeb8e80f8',
+        '24|2023-07-05T20:05:55.9400000-07:00|4001AAAF|Pandæmonium|DoT|0|1D1B|43502881|43656896|10000|10000|||100.00|65.00|0.00|0.00|10FF0003|Papas Fritas|FFFFFFFF|77094|77094|9200|10000|||100.16|99.85|0.00|-2.84|5b77b8e553b0ee5797caa1ab87b5a910',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        id: '10FF0001',
+        name: 'Tini Poutini',
+        which: 'DoT',
+        effectId: '3C0',
+        damage: '9920',
+        currentHp: '32134',
+        maxHp: '63300',
+        currentMp: '10000',
+        maxMp: '10000',
+        x: '90.44',
+        y: '87.60',
+        z: '0.00',
+        heading: '-3.07',
+        sourceId: '4000F123',
+        source: 'Shikigami of the Pyre',
+        damageType: '5',
+        sourceCurrentHp: '7328307',
+        sourceMaxHp: '7439000',
+        sourceCurrentMp: '10000',
+        sourceMaxMp: '10000',
+        sourceX: '99.78',
+        sourceY: '104.81',
+        sourceZ: '0.00',
+        sourceHeading: '2.95',
+      },
     },
   },
   WasDefeated: {
@@ -222,6 +467,16 @@ const exampleLogLines: ExampleLines = {
         '25|2021-07-27T13:13:10.6310000-04:00|400001D1|Queen Scylla|10FF0001|Tini Poutini|8798f2cb87c42fde4601258ae94ffb7f',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '25',
+        targetId: '10FF0002',
+        target: 'Potato Chippy',
+        sourceId: '4000016E',
+        source: 'Angra Mainyu',
+      },
+    },
   },
   GainsEffect: {
     regexes: {
@@ -233,8 +488,38 @@ const exampleLogLines: ExampleLines = {
         '26|2021-04-26T14:36:09.4340000-04:00|35|Physical Damage Up|15.00|400009D5|Dark General|400009D5|Dark General|00|48865|48865|cbcfac4df1554b8f59f343f017ebd793',
         '26|2021-04-26T14:23:38.7560000-04:00|13B|Whispering Dawn|21.00|4000B283|Selene|10FF0002|Potato Chippy|4000016E|00|51893|49487|c7400f0eed1fe9d29834369affc22d3b',
         '26|2021-07-02T21:57:07.9110000-04:00|D2|Doom|9.97|40003D9F||10FF0001|Tini Poutini|00|26396|26396|86ff6bf4cfdd68491274fce1db5677e8',
+        '26|2020-04-24T10:00:03.1370000-08:00|8D1|Lightsteeped|39.95|E0000000||10FF0001|Tini Poutini|01|103650|||ba7a8b1ffce9f0f57974de250e9da307',
       ],
     },
+    unitTests: [
+      {
+        indexToTest: 0,
+        expectedValues: {
+          type: '26',
+          effectId: '35',
+          effect: 'Physical Damage Up',
+          duration: '15.00',
+          sourceId: '400009D5',
+          source: 'Dark General',
+          targetId: '400009D5',
+          target: 'Dark General',
+          count: '00',
+          targetMaxHp: '48865',
+          sourceMaxHp: '48865',
+        },
+      },
+      { // test non-zero count
+        indexToTest: 3,
+        expectedValues: {
+          type: '26',
+          effectId: '8D1',
+          effect: 'Lightsteeped',
+          duration: '39.95',
+          sourceId: 'E0000000',
+          count: '01',
+        },
+      },
+    ],
   },
   HeadMarker: {
     regexes: {
@@ -247,6 +532,15 @@ const exampleLogLines: ExampleLines = {
         '27|2021-05-11T13:48:45.3370000-04:00|40000950|Copied Knave|0000|0000|0117|0000|0000|0000|fa2e93fccf397a41aac73a3a38aa7410',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '27',
+        targetId: '10FF0001',
+        target: 'Tini Poutini',
+        id: '0057',
+      },
+    },
   },
   NetworkRaidMarker: {
     examples: {
@@ -255,6 +549,19 @@ const exampleLogLines: ExampleLines = {
         '28|2021-04-26T19:27:23.5340000-04:00|Add|4|10FF0001|Tini Poutini|76.073|110.588|0|bcf81fb146fe88230333bbfd649eb240',
       ],
     },
+    unitTests: {
+      indexToTest: 1,
+      expectedValues: {
+        type: '28',
+        operation: 'Add',
+        waymark: '4',
+        id: '10FF0001',
+        name: 'Tini Poutini',
+        x: '76.073',
+        y: '110.588',
+        z: '0',
+      },
+    },
   },
   NetworkTargetMarker: {
     examples: {
@@ -262,6 +569,18 @@ const exampleLogLines: ExampleLines = {
         '29|2021-06-10T20:15:15.1000000-04:00|Delete|0|10FF0001|Tini Poutini|4000641D||50460af5ff3f8ec9ad03e6953d3d1ba9',
         '29|2021-05-25T22:54:32.5660000-04:00|Add|6|10FF0001|Tini Poutini|10FF0002|Potato Chippy|70a8c8a728d09af83e0a486e8271cc57',
       ],
+    },
+    unitTests: {
+      indexToTest: 1,
+      expectedValues: {
+        type: '29',
+        operation: 'Add',
+        waymark: '6',
+        id: '10FF0001',
+        name: 'Tini Poutini',
+        targetId: '10FF0002',
+        targetName: 'Potato Chippy',
+      },
     },
   },
   LosesEffect: {
@@ -276,6 +595,30 @@ const exampleLogLines: ExampleLines = {
         '30|2021-04-26T14:23:38.8440000-04:00|BD|Bio II|0.00|10FF0001|Tini Poutini|4000B262|Midgardsormr|00|10851737|51654|e34ec8d3a8db783fe34f152178775804',
       ],
     },
+    unitTests: [
+      {
+        indexToTest: 0,
+        expectedValues: {
+          type: '30',
+          effectId: '13A',
+          effect: 'Inferno',
+          sourceId: '400009FF',
+          source: 'Ifrit-Egi',
+          targetId: '400009FD',
+          target: 'Scylla',
+          count: '00',
+        },
+      },
+      { // test non-zero count
+        indexToTest: 1,
+        expectedValues: {
+          type: '30',
+          effectId: '77B',
+          effect: 'Summon Order',
+          count: '01',
+        },
+      },
+    ],
   },
   NetworkGauge: {
     examples: {
@@ -283,6 +626,17 @@ const exampleLogLines: ExampleLines = {
         '31|2019-11-27T23:22:40.6960000-05:00|10FF0001|FA753019|FD37|E9A55201|7F47|f17ea56b26ff020d1c0580207f6f4673',
         '31|2021-04-28T00:26:19.1320000-04:00|10FF0002|BF000018|10035|40006600|00|f31bf7667388ce9b11bd5dd2626c7b99',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '31',
+        id: '10FF0001',
+        data0: 'FA753019',
+        data1: 'FD37',
+        data2: 'E9A55201',
+        data3: '7F47',
+      },
     },
   },
   ActorControl: {
@@ -297,6 +651,30 @@ const exampleLogLines: ExampleLines = {
         '33|2021-04-26T14:18:39.0120000-04:00|80034E5B|40000007|00|01|00|00|7a2b827bbc7a58ecc0c5edbdf14a2c14',
       ],
     },
+    unitTests: [
+      {
+        indexToTest: 0,
+        expectedValues: {
+          type: '33',
+          instance: '80034E6C',
+          command: '4000000F',
+          data0: 'B5D',
+          data1: '00',
+          data2: '00',
+          data3: '00',
+        },
+      },
+      {
+        indexToTest: 1,
+        expectedValues: {
+          type: '33',
+          instance: '80034E5B',
+          command: '8000000C',
+          data0: '16',
+          data1: 'FFFFFFFF',
+        },
+      },
+    ],
   },
   NameToggle: {
     regexes: {
@@ -308,6 +686,17 @@ const exampleLogLines: ExampleLines = {
         '34|2021-04-26T14:19:48.0400000-04:00|4001C51C|Dragon\'s Head|4001C51C|Dragon\'s Head|00|a7248aab1da528bf94faf2f4b1728fc3',
         '34|2021-04-26T14:22:19.1960000-04:00|4000B283|Selene|4000B283|Selene|01|734eef0f5b1b10810af8f7257d738c67',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '34',
+        id: '4001C51C',
+        name: 'Dragon\'s Head',
+        targetId: '4001C51C',
+        targetName: 'Dragon\'s Head',
+        toggle: '00',
+      },
     },
   },
   Tether: {
@@ -322,6 +711,17 @@ const exampleLogLines: ExampleLines = {
         '35|2021-06-13T17:41:34.2230000-04:00|10FF0001|Tini Poutini|10FF0002|Potato Chippy|0000|0000|006E|1068E3EF|000F|0000|c022382c6803d1d6c1f84681b7d8db20',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '35',
+        sourceId: '40003202',
+        source: 'Articulated Bit',
+        targetId: '10FF0001',
+        target: 'Tini Poutini',
+        id: '0001',
+      },
+    },
   },
   LimitBreak: {
     examples: {
@@ -332,6 +732,14 @@ const exampleLogLines: ExampleLines = {
         '36|2021-04-26T14:22:03.8370000-04:00|0000|1|c85f02ac4780e208357383afb6cbc232',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '36',
+        valueHex: '6A90',
+        bars: '3',
+      },
+    },
   },
   NetworkEffectResult: {
     examples: {
@@ -340,6 +748,24 @@ const exampleLogLines: ExampleLines = {
         '37|2023-10-31T22:11:04.8350000-07:00|10FF0002|Potato Chippy|00005AE1|0|88095|0|10000|0||8.61|15.22|0.00|2.69|1E00|0|0|01|0400002C|0|0|E0000000|ef1e0399980c0f47',
         '37|2023-10-31T22:10:49.5860000-07:00|4000C5B2|Ketuduke|00005AD6|7452804||||||-0.02|-0.02|0.00|1.98|27ee18f38f377d5d',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '37',
+        id: '10FF0001',
+        name: 'Tini Poutini',
+        sequenceId: '0000003A',
+        currentHp: '117941',
+        maxHp: '117941',
+        currentMp: '10000',
+        maxMp: '10000',
+        currentShield: '0',
+        x: '-660.17',
+        y: '-842.23',
+        z: '29.75',
+        heading: '-1.61',
+      },
     },
   },
   StatusEffect: {
@@ -354,6 +780,28 @@ const exampleLogLines: ExampleLines = {
         '38|2021-04-26T14:13:44.5020000-04:00|10FF0002|Potato Chippy|46504621|52418|52418|10000|10000|32|0|99.93127|113.8475|-1.862645E-09|3.141593|200F|20|0|0A016D|41F00000|E0000000|1E016C|41F00000|E0000000|0345|41E8D4FC|10FF0001|0347|80000000|10FF0002|d57fd29c6c4856c091557968667da39d',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '38',
+        targetId: '10FF0001',
+        target: 'Tini Poutini',
+        jobLevelData: '46504615',
+        hp: '75407',
+        maxHp: '75407',
+        mp: '10000',
+        maxMp: '10000',
+        currentShield: '24',
+        x: '-645.238',
+        y: '-802.7854',
+        z: '8',
+        heading: '1.091302',
+        data0: '1500',
+        data1: '3C',
+        data2: '0',
+        // subsquent fields are optional per netlog_defs
+      },
+    },
   },
   NetworkUpdateHP: {
     examples: {
@@ -362,6 +810,22 @@ const exampleLogLines: ExampleLines = {
         '39|2021-04-26T14:13:21.6370000-04:00|10592642|Senor Esteban|54792|54792|10000|10000|0|0|100.268|114.22|-1.837917E-09|3.141593|883da0db11a9c950eefdbcbc50e86eca',
         '39|2021-04-26T14:13:21.6370000-04:00|106F5D49|O\'ndanya Voupin|79075|79075|10000|10000|0|0|99.93127|114.2443|-1.862645E-09|-3.141593|8ed73ee57c4ab7159628584e2f4d5243',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '39',
+        id: '10FF0001',
+        name: 'Tini Poutini',
+        currentHp: '178669',
+        maxHp: '191948',
+        currentMp: '10000',
+        maxMp: '10000',
+        x: '-648.3234',
+        y: '-804.5252',
+        z: '8.570148',
+        heading: '1.010669',
+      },
     },
   },
   Map: {
@@ -376,6 +840,16 @@ const exampleLogLines: ExampleLines = {
         '40|2021-07-30T19:49:19.8180000-07:00|192|La Noscea|Mist|Mist Subdivision|f3506f063945500b5e7df2172e2ca4d3',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '40',
+        id: '578',
+        regionName: 'Norvrandt',
+        placeName: 'The Copied Factory',
+        placeNameSub: 'Upper Stratum',
+      },
+    },
   },
   SystemLogMessage: {
     regexes: {
@@ -389,6 +863,17 @@ const exampleLogLines: ExampleLines = {
         '41|2021-11-21T10:55:06.7070000-08:00|8004001E|B3A|00|00|E0000000|1f600f85ec8d36d2b04d233e19f93d39',
       ],
     },
+    unitTests: {
+      indexToTest: 1,
+      expectedValues: {
+        type: '41',
+        instance: '8004001E',
+        id: '7DD',
+        param0: 'FF5FDA02',
+        param1: 'E1B',
+        param2: '00',
+      },
+    },
   },
   StatusList3: {
     examples: {
@@ -398,6 +883,14 @@ const exampleLogLines: ExampleLines = {
         '42|2022-06-06T10:09:06.2140000-07:00|10FF0002|Potato Chippy|0|0|0|f988f962f9c768e3',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '42',
+        id: '10FF0001',
+        name: 'Tini Poutini',
+      },
+    },
   },
   LineRegistration: {
     examples: {
@@ -406,6 +899,16 @@ const exampleLogLines: ExampleLines = {
         '256|2022-10-02T10:15:31.5645159-07:00|258|OverlayPlugin|FateDirector|1|102a238b2495bfd0',
         '256|2022-10-02T10:15:31.5655143-07:00|259|OverlayPlugin|CEDirector|1|35546b48906c41b2',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '256',
+        id: '257',
+        source: 'OverlayPlugin',
+        name: 'MapEffect',
+        version: '1',
+      },
     },
   },
   MapEffect: {
@@ -420,6 +923,17 @@ const exampleLogLines: ExampleLines = {
         '257|2022-09-29T20:07:48.7330170-07:00|800375A5|00020001|05|00|0000|28c0449a8d0efa7d',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '257',
+        instance: '800375A9',
+        flags: '00020001',
+        location: '09',
+        data0: 'F3',
+        data1: '0000',
+      },
+    },
   },
   FateDirector: {
     examples: {
@@ -428,6 +942,15 @@ const exampleLogLines: ExampleLines = {
         '258|2022-08-13T19:46:54.6179420-04:00|Update|203A|00000287|00000000|00000000|00000000|00000000|00000000|6E756F63|bd60bac0189b571e',
         '258|2022-09-24T12:51:47.5867309-07:00|Remove|0000|000000E2|00000000|00000000|00000000|00000000|00000000|00007FF9|043b821dbfe608c5',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '258',
+        category: 'Add',
+        fateId: '000000DE',
+        progress: '00000000',
+      },
     },
   },
   CEDirector: {
@@ -438,6 +961,18 @@ const exampleLogLines: ExampleLines = {
         '259|2022-09-19T18:09:46.7556709-07:00|63291786|04AA|0000|07|01|03|00|02|7F|00|00|5bf224d56535513a',
       ],
     },
+    unitTests: {
+      indexToTest: 2,
+      expectedValues: {
+        type: '259',
+        popTime: '63291786',
+        timeRemaining: '04AA',
+        ceKey: '07',
+        numPlayers: '01',
+        status: '03',
+        progress: '02',
+      },
+    },
   },
   InCombat: {
     examples: {
@@ -447,14 +982,52 @@ const exampleLogLines: ExampleLines = {
         '260|2023-01-03T17:54:50.0680000-08:00|1|1|1|0|3ba06c97a4cbbf42',
       ],
     },
+    unitTests: {
+      indexToTest: 1,
+      expectedValues: {
+        type: '260',
+        inACTCombat: '1',
+        inGameCombat: '0',
+        isACTChanged: '0',
+        isGameChanged: '1',
+      },
+    },
   },
   CombatantMemory: {
     examples: {
       en: [
-        '261|2023-04-20T19:04:39.3810000-07:00|Add|400139C5|Type|2|TargetID|10FFFFFF|Name|Omega|MaxHP|8557964|PosX|100|PosY|90|PosZ|-5.456968E-12|Heading|-4.792213E-05|Radius|12.006|BNpcID|3D5C|CurrentMP|10000|MaxMP|10000|Level|90|BNpcNameID|1E0F|WorldID|65535|CurrentWorldID|65535|NPCTargetID|1084E23D|CastDurationMax|-3.689349E+19|e173dbd66eb7c1fe',
-        '261|2023-04-20T19:04:41.9200000-07:00|Change|400139C5|PosX|100.1179|PosY|95.16841|PosZ|-5.456968E-12|Heading|0.08906358|eac28822c9abcde9',
-        '261|2023-04-20T19:06:46.2900000-07:00|Remove|400139C5|09a3165588ea6b13',
+        '261|2023-05-26T21:37:40.5600000-04:00|Add|40008953|BNpcID|3F5A|BNpcNameID|304E|CastTargetID|E0000000|CurrentMP|10000|CurrentWorldID|65535|Heading|-3.1416|Level|90|MaxHP|69200|MaxMP|10000|ModelStatus|18432|Name|Golbez\'s Shadow|NPCTargetID|E0000000|PosX|100.0000|PosY|100.0000|PosZ|0.0300|Radius|7.5000|Type|2|WorldID|65535|9d9028a8e087e4c3',
+        '261|2023-05-26T21:39:41.2920000-04:00|Change|10001234|CurrentMP|2400|Heading|-2.3613|2f5ff0a91385050a',
+        '261|2023-05-26T21:39:42.7380000-04:00|Remove|40008AA0|f4b30f181245b5da',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '261',
+        change: 'Add',
+        id: '40008953',
+        pair: [
+          { key: 'BNpcID', value: '3F5A' },
+          { key: 'BNpcNameID', value: '304E' },
+          { key: 'CastTargetID', value: 'E0000000' },
+          { key: 'CurrentMP', value: '10000' },
+          { key: 'CurrentWorldID', value: '65535' },
+          { key: 'Heading', value: '-3.1416' },
+          { key: 'Level', value: '90' },
+          { key: 'MaxHP', value: '69200' },
+          { key: 'MaxMP', value: '10000' },
+          { key: 'ModelStatus', value: '18432' },
+          { key: 'Name', value: 'Golbez\'s Shadow' },
+          { key: 'NPCTargetID', value: 'E0000000' },
+          { key: 'PosX', value: '100.0000' },
+          { key: 'PosY', value: '100.0000' },
+          { key: 'PosZ', value: '0.0300' },
+          { key: 'Radius', value: '7.5000' },
+          { key: 'Type', value: '2' },
+          { key: 'WorldID', value: '65535' },
+        ],
+      },
     },
   },
   RSVData: {
@@ -462,8 +1035,17 @@ const exampleLogLines: ExampleLines = {
       en: [
         '262|2023-04-21T23:24:05.8320000-04:00|en|0000001C|_rsv_32789_-1_1_0_1_SE2DC5B04_EE2DC5B04|Run: ****mi* (Omega Version)|34159b6f2093e889',
         '262|2023-04-21T23:24:05.9210000-04:00|en|00000031|_rsv_3448_-1_1_1_0_S74CFC3B0_E74CFC3B0|Burning with dynamis inspired by Omega\'s passion.|ce9d03bb211d894f',
-        '262|2023-04-21T23:24:06.0630000-04:00|en|00000051|_rsv_35827_-1_1_0_0_S13095D61_E13095D61|Further testing is required.�����,\\r���)������ ��, assist me with this evaluation.|38151741aad7fe51',
+        '262|2023-04-21T23:24:06.0630000-04:00|en|00000051|_rsv_35827_-1_1_0_0_S13095D61_E13095D61|Further testing is required.�����, ���)������ ��, assist me with this evaluation.|38151741aad7fe51',
       ],
+    },
+    unitTests: {
+      indexToTest: 1,
+      expectedValues: {
+        type: '262',
+        locale: 'en',
+        key: '_rsv_3448_-1_1_1_0_S74CFC3B0_E74CFC3B0',
+        value: 'Burning with dynamis inspired by Omega\'s passion.',
+      },
     },
   },
   // These examples are pairs of 263/264 lines showing the three cases
@@ -479,6 +1061,17 @@ const exampleLogLines: ExampleLines = {
         '263|2023-11-02T21:39:12.6940000-04:00|40000D6E|8C45|-14.344|748.558|130.009|-3.142|9c7e421d4e93de7c',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '263',
+        sourceId: '10001234',
+        id: '0005',
+        x: '-98.697',
+        y: '-102.359',
+        z: '10.010',
+      },
+    },
   },
   AbilityExtra: {
     examples: {
@@ -492,6 +1085,19 @@ const exampleLogLines: ExampleLines = {
         '264|2023-11-02T21:39:15.6790000-04:00|40000D6E|8C45|000052DD|1|-14.344|748.558|130.009|2.483|f6b3ffa6c97f0540',
       ],
     },
+    unitTests: {
+      indexToTest: 2,
+      expectedValues: {
+        type: '264',
+        sourceId: '40000D6E',
+        id: '8C45',
+        globalEffectCounter: '000052DD',
+        dataFlag: '1',
+        x: '-14.344',
+        y: '748.558',
+        z: '130.009',
+      },
+    },
   },
   ContentFinderSettings: {
     examples: {
@@ -504,6 +1110,20 @@ const exampleLogLines: ExampleLines = {
         '265|2024-01-04T21:12:35.0540000-05:00|415|the Bowl of Embers|True|1|1|1|0|1|55fdf5241f168a5e',
       ],
     },
+    unitTests: {
+      indexToTest: 2,
+      expectedValues: {
+        type: '265',
+        zoneId: '415',
+        zoneName: 'the Bowl of Embers',
+        inContentFinderContent: 'True',
+        unrestrictedParty: '1',
+        minimalItemLevel: '1',
+        silenceEcho: '1',
+        explorerMode: '0',
+        levelSync: '1',
+      },
+    },
   },
   NpcYell: {
     examples: {
@@ -512,6 +1132,15 @@ const exampleLogLines: ExampleLines = {
         '266|2024-02-29T15:15:54.5570000-08:00|4001F002|02D4|07BE|ae0674ec1e496642',
         '266|2024-02-25T16:02:15.0300000-05:00|E0000000|6B10|2B29|65aa9c0faa3d0e16',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '266',
+        npcId: '4001F001',
+        npcNameId: '02D2',
+        npcYellId: '07AF',
+      },
     },
   },
   BattleTalk2: {
@@ -522,6 +1151,17 @@ const exampleLogLines: ExampleLines = {
         '267|2024-02-29T16:23:00.6680000-08:00|4001FFC4|80034E2B|02D5|840F|3000|0|2|0|0|cffef89907b5345b',
       ],
     },
+    unitTests: {
+      indexToTest: 2,
+      expectedValues: {
+        type: '267',
+        npcId: '4001FFC4',
+        instance: '80034E2B',
+        npcNameId: '02D5',
+        instanceContentTextId: '840F',
+        displayMs: '3000',
+      },
+    },
   },
   Countdown: {
     examples: {
@@ -530,6 +1170,17 @@ const exampleLogLines: ExampleLines = {
         '268|2024-02-29T15:34:16.4280000-08:00|10FF0002|0036|20|00|Potato Chippy|0ab734bdbcb55902',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '268',
+        id: '10FF0001',
+        worldId: '0036',
+        countdownTime: '13',
+        result: '00',
+        name: 'Tini Poutini',
+      },
+    },
   },
   CountdownCancel: {
     examples: {
@@ -537,6 +1188,15 @@ const exampleLogLines: ExampleLines = {
         '269|2024-02-29T15:19:55.3490000-08:00|10FF0001|0036|Tini Poutini|e17efb9d120adea0',
         '269|2024-02-29T15:34:22.8940000-08:00|10FF0002|0036|Potato Chippy|e17efb9d120adea0',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '269',
+        id: '10FF0001',
+        worldId: '0036',
+        name: 'Tini Poutini',
+      },
     },
   },
   ActorMove: {
@@ -547,6 +1207,17 @@ const exampleLogLines: ExampleLines = {
         '270|2024-03-02T13:18:30.6070000-08:00|4000F44E|-2.5710|0002|0014|98.2391|101.9318|0.2136|51bc63077eb489f3',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '270',
+        id: '4000F1D3',
+        heading: '-2.2034',
+        x: '102.0539',
+        y: '118.1982',
+        z: '0.2136',
+      },
+    },
   },
   ActorSetPos: {
     examples: {
@@ -555,6 +1226,17 @@ const exampleLogLines: ExampleLines = {
         '271|2024-03-02T13:20:50.9620000-08:00|4000F3B5|-1.5709|00|00|107.0000|100.0000|0.0000|5630c8f4e2ffac77',
         '271|2024-03-02T13:20:50.9620000-08:00|4000F3BB|0.2617|00|00|97.4118|90.3407|0.0000|01d53a3800c6238f',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '271',
+        id: '4000F3B7',
+        heading: '-2.3563',
+        x: '116.2635',
+        y: '116.2635',
+        z: '0.0000',
+      },
     },
   },
   SpawnNpcExtra: {
@@ -565,6 +1247,16 @@ const exampleLogLines: ExampleLines = {
         '272|2024-03-03T01:44:39.5570000-08:00|400838F4|E0000000|0000|00|32d8c0e768aeb0e7',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '272',
+        id: '4000226B',
+        parentId: 'E0000000',
+        tetherId: '0000',
+        animationState: '01',
+      },
+    },
   },
   ActorControlExtra: {
     examples: {
@@ -574,6 +1266,18 @@ const exampleLogLines: ExampleLines = {
         '273|2024-03-18T20:33:22.7130000-04:00|400058CA|0834|0|848|FA0|0|c862c35712ed4122',
       ],
     },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '273',
+        id: '4000A145',
+        category: '003E',
+        param1: '1',
+        param2: '0',
+        param3: '0',
+        param4: '0',
+      },
+    },
   },
   ActorControlSelfExtra: {
     examples: {
@@ -582,6 +1286,20 @@ const exampleLogLines: ExampleLines = {
         '274|2024-02-15T19:35:41.9950000-05:00|10001234|020F|236D|0|669|0|0|0|d274429622d0c27e',
         '274|2024-03-21T20:45:41.3680000-04:00|10001234|0210|129D|10001234|F|0|0|0|d274429622d0c27e',
       ],
+    },
+    unitTests: {
+      indexToTest: 0,
+      expectedValues: {
+        type: '274',
+        id: '10001234',
+        category: '020F',
+        param1: '04D0',
+        param2: '0',
+        param3: '93E0',
+        param4: '0',
+        param5: '0',
+        param6: '0',
+      },
     },
   },
 };
