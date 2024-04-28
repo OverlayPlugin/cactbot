@@ -1,9 +1,10 @@
 import { assert } from 'chai';
 
-import Regexes from '../../resources/regexes';
-import regexCaptureTest, { RegexUtilParams } from '../helper/regex_util';
+import examples, { ExampleLineName } from '../../resources/example_log_lines';
+import Regexes, { buildRegex } from '../../resources/regexes';
+import regexCaptureTest, { RegexTestUtil, RegexUtilParams } from '../helper/regex_util';
 
-// TODO: add tests for the other (missing) regexes
+const logDefsToTest = Object.keys(examples) as ExampleLineName[];
 
 describe('regex tests', () => {
   it('startsUsing', () => {
@@ -597,5 +598,13 @@ describe('regex tests', () => {
     assert.equal(matches?.param4, '0');
     assert.equal(matches?.param5, '0');
     assert.equal(matches?.param6, '0');
+  });
+
+  logDefsToTest.forEach((type) => {
+    it(type, () => {
+      const baseFunc = (params?: RegexUtilParams) => buildRegex(type, params);
+      const Helper = new RegexTestUtil(type, examples[type], baseFunc, true);
+      Helper.run();
+    });
   });
 });

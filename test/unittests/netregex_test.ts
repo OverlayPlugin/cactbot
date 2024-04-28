@@ -60,11 +60,7 @@ describe('netregex tests', () => {
   logDefsToTest.forEach((type) => {
     it(type, () => {
       const baseFunc = (params?: RegexUtilParams) => buildRegex(type, params);
-
-      // Pass `lines` separately because, in regex tests, we need to transform
-      // them from network lines to ACT lines first.
-      const lines = examples[type].examples.en;
-      const Helper = new RegexTestUtil(type, lines, examples[type], baseFunc);
+      const Helper = new RegexTestUtil(type, examples[type], baseFunc, false);
       Helper.run();
     });
   });

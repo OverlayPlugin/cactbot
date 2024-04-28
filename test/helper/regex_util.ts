@@ -9,6 +9,8 @@ import {
 } from '../../resources/example_log_lines';
 import logDefinitions from '../../resources/netlog_defs';
 import { UnreachableCode } from '../../resources/not_reached';
+import LogRepository from '../../ui/raidboss/emulator/data/network_log_converter/LogRepository';
+import ParseLine from '../../ui/raidboss/emulator/data/network_log_converter/ParseLine';
 
 // Quite bogus.
 const bogusLine = 'using act is cheating';
@@ -90,20 +92,22 @@ type MatchFields = { [key: string]: string };
 // Helper class used for both regex and netregex tests.
 export class RegexTestUtil {
   private type: ExampleLineName;
-  private lines: readonly string[];
+  private lines: string[];
   private testData: ExampleLineDef<typeof this.type>;
   private baseFunc: (params?: RegexUtilParams) => RegExp;
 
   constructor(
     type: ExampleLineName,
-    lines: readonly string[],
     testData: ExampleLineDef<typeof type>,
     baseFunc: (params?: RegexUtilParams) => RegExp,
+    logLineMode: boolean,
   ) {
     this.type = type;
-    this.lines = lines;
     this.testData = testData;
+    this.lines = [...testData.examples.en];
     this.baseFunc = baseFunc;
+    if (logLineMode)
+      this.convertToLogLines();
   }
 
   // Because TypeScript can't narrow `this` across methods, this helper also
@@ -111,6 +115,37 @@ export class RegexTestUtil {
   private hasRepeatingFields(type?: ExampleLineName): type is ExampleLineNameWithRepeating {
     return 'repeatingFields' in logDefinitions[type ?? this.type];
   }
+
+  private convertToLogLines(): void {
+    // Convert unitTest `type` field to hex
+    let oldUnitTests = this.testData.unitTests;
+    if (oldUnitTests === undefined)
+      return;
+    oldUnitTests = Array.isArray(oldUnitTests) ? oldUnitTests : [oldUnitTests];
+
+    this.testData.unitTests = oldUnitTests.map((test) => {
+      const type = parseInt(test.expectedValues.type ?? '');
+      if (!isNaN(type)) {
+        const newExpValues = {
+          ...test.expectedValues,
+          type: type.toString(16).padStart(2, '0').toUpperCase(),
+        };
+        return { ...test, expectedValues: newExpValues };
+      }
+      return test;
+    });
+
+    // Reformat example lines to match log line format
+    const repo = new LogRepository();
+    const newLines = this.lines.map((ll) => {
+      const line = ParseLine.parse(repo, ll);
+      if (!line)
+        throw new UnreachableCode();
+      return line.convertedLine;
+    });
+    this.lines = newLines;
+  }
+
 
   // TODO: Temporary - replace with full func when reworking regex tests.
   private captureTest(func: (params?: RegexUtilParams) => RegExp, lines?: readonly string[]): void {
