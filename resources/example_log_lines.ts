@@ -91,7 +91,7 @@ const exampleLogLines: ExampleLines = {
       ],
     },
     unitTests: [
-      { // test base GameLog netregex
+      { // test base GameLog regex
         indexToTest: 4,
         expectedValues: {
           type: '00',
@@ -99,7 +99,7 @@ const exampleLogLines: ExampleLines = {
           line: 'The attack misses.',
         },
       },
-      { // test NetRegexes.message()
+      { // test message()
         indexToTest: 0,
         regexOverride: {
           network: (params?) => NetRegexes.message(params),
@@ -111,7 +111,7 @@ const exampleLogLines: ExampleLines = {
           line: 'You change to warrior.',
         },
       },
-      { // test NetRegexes.dialog()
+      { // test dialog()
         indexToTest: 5,
         regexOverride: {
           network: (params?) => NetRegexes.dialog(params),
@@ -124,7 +124,7 @@ const exampleLogLines: ExampleLines = {
           line: 'Oh...it\'s going to be a long night.',
         },
       },
-      { // test NetRegexes.echo()
+      { // test echo()
         indexToTest: 6,
         regexOverride: {
           network: (params?) => NetRegexes.echo(params),
@@ -136,7 +136,7 @@ const exampleLogLines: ExampleLines = {
           line: 'cactbot wipe',
         },
       },
-      {
+      { // test gameNameLog()
         indexToTest: 7,
         regexOverride: {
           network: (params?) => NetRegexes.gameNameLog(params),
