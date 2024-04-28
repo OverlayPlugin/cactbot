@@ -1,5 +1,13 @@
 import { assert } from 'chai';
 
+import {
+  ExampleLineDef,
+  ExampleLineName,
+  ExampleLineNameWithRepeating,
+  TestFields,
+  UnitTest,
+} from '../../resources/example_log_lines';
+import logDefinitions from '../../resources/netlog_defs';
 import { UnreachableCode } from '../../resources/not_reached';
 
 // Quite bogus.
@@ -8,7 +16,11 @@ const bogusLine = 'using act is cheating';
 export type RegexUtilParams = { [key: string]: string | boolean };
 
 // An automated way to test standard regex functions that take a dictionary of fields.
-export default (func: (params?: RegexUtilParams) => RegExp, lines: readonly string[]): void => {
+// TODO: Move this `RegexTestUtil` when reworking the regex tests.
+const regexCaptureTest = (
+  func: (params?: RegexUtilParams) => RegExp,
+  lines: readonly string[],
+): void => {
   // regex should not match the bogus line.
   assert.isNull(func({}).exec(bogusLine));
 
@@ -71,3 +83,141 @@ export default (func: (params?: RegexUtilParams) => RegExp, lines: readonly stri
     assert.propertyVal(explicitNoCaptureMatch, 'groups', undefined);
   }
 };
+export default regexCaptureTest;
+
+type MatchFields = { [key: string]: string };
+
+// Helper class used for both regex and netregex tests.
+export class RegexTestUtil {
+  private type: ExampleLineName;
+  private lines: readonly string[];
+  private testData: ExampleLineDef<typeof this.type>;
+  private baseFunc: (params?: RegexUtilParams) => RegExp;
+
+  constructor(
+    type: ExampleLineName,
+    lines: readonly string[],
+    testData: ExampleLineDef<typeof type>,
+    baseFunc: (params?: RegexUtilParams) => RegExp,
+  ) {
+    this.type = type;
+    this.lines = lines;
+    this.testData = testData;
+    this.baseFunc = baseFunc;
+  }
+
+  // Because TypeScript can't narrow `this` across methods, this helper also
+  // functions as a typeguard for the calling method if needed.
+  private hasRepeatingFields(type?: ExampleLineName): type is ExampleLineNameWithRepeating {
+    return 'repeatingFields' in logDefinitions[type ?? this.type];
+  }
+
+  // TODO: Temporary - replace with full func when reworking regex tests.
+  private captureTest(func: (params?: RegexUtilParams) => RegExp, lines?: readonly string[]): void {
+    // TODO: `regexCaptureTest` doesn't handle the repeating keys well,
+    // so don't run it for those log lines
+    if (!this.hasRepeatingFields())
+      regexCaptureTest(func, lines ?? this.lines);
+  }
+
+  private extractFields(fields: TestFields<typeof this.type>): MatchFields {
+    const extractedFields: MatchFields = {};
+
+    // This approach works fine for extracting repeating keys from CombatantMemory
+    // or other future logdef types where there is a key/value pair.
+    // But if there are ever repeating fields that have more than a key/value pair,
+    // this will need to be reworked.
+    if (this.hasRepeatingFields(this.type)) {
+      const fieldDefs = logDefinitions[this.type].repeatingFields;
+      const label = fieldDefs.label;
+
+      // if repeating fields are not defined in the unit test, that's weird but ok
+      if (label in fields) {
+        const keyName = logDefinitions[this.type].repeatingFields.primaryKey;
+        const repFieldNames = logDefinitions[this.type].repeatingFields.names;
+
+        type ValueName = Exclude<typeof repFieldNames[number], typeof keyName>;
+        const remainingFields = repFieldNames.filter((f) => f !== keyName);
+        if (remainingFields.length !== 1)
+          assert.fail('actual', 'expected', `Invalid key/value names: too many repeating fields.`);
+        const valueName = remainingFields[0] as ValueName;
+
+        const pairs = fields[label] ?? [];
+        pairs.forEach((pair) => {
+          const fieldName = pair[keyName];
+          const fieldValue = pair[valueName];
+          if (Array.isArray(fieldName) || Array.isArray(fieldValue))
+            assert.fail('actual', 'expected', `Invalid array for key/value pairs in unit tests.`);
+          const matchField = `${label}${fieldName}`;
+          extractedFields[matchField] = fieldValue;
+        });
+        delete fields[label]; // so we don't re-process it next
+      }
+    }
+
+    for (const field in fields) {
+      const value = fields[field as keyof typeof fields];
+      if (value === undefined)
+        assert.fail('actual', 'expected', `Invalid value for field '${field}'`);
+      extractedFields[field] = value;
+    }
+
+    return extractedFields;
+  }
+
+  private doUnitTest(
+    unitTest: UnitTest<typeof this.type>,
+  ): void {
+    // this.allFields = {};
+
+    const idx = unitTest.indexToTest;
+    const testLine = this.lines[idx];
+    if (testLine === undefined)
+      assert.fail('actual', 'expected', `Invalid index '${idx}' for unit testing`);
+
+    // If an override is specified for a particular unit test, do a capture test
+    // for that override first
+    let unitTestRegex = this.baseFunc();
+    const override = unitTest.regexOverride;
+    if (override !== undefined && !this.hasRepeatingFields()) {
+      this.captureTest(override, [testLine]);
+      unitTestRegex = override();
+    }
+
+    const matches = testLine.match(unitTestRegex)?.groups;
+    if (matches === undefined)
+      assert.fail('actual', 'expected', `Could not capture fields for '${this.type}'`);
+
+    const fields = this.extractFields(unitTest.expectedValues);
+
+    let errStr = '';
+    for (const field in fields) {
+      const test = fields[field as keyof typeof fields];
+      const match = matches[field];
+
+      if (test === undefined)
+        throw new UnreachableCode();
+      else if (match === undefined)
+        errStr += `\nMatch error: No field '${field}' was captured`;
+      else if (test !== match)
+        errStr += `\nMatch error: '${field}' expected '${test}' but got '${match}'`;
+    }
+    if (errStr !== '') {
+      assert.isEmpty(errStr, `${errStr}\n`);
+    }
+  }
+
+  public run(): void {
+    this.captureTest(this.baseFunc, this.lines);
+
+    let unitTests = this.testData.unitTests;
+    if (unitTests === undefined)
+      assert.fail('actual', 'expected', 'No unit tests defined in example_log_lines');
+
+    unitTests = Array.isArray(unitTests) ? unitTests : [unitTests];
+
+    unitTests.forEach((unitTest) => {
+      this.doUnitTest(unitTest);
+    });
+  }
+}
