@@ -607,7 +607,7 @@ const latestLogDefinitions = {
       filters: { // DoT on player with valid effectId
         id: '1.{7}',
         which: 'DoT',
-        effectId: '[1-9A-F]+', // non-zero non-empty value
+        effectId: '0*?[1-9A-F][0-9A-F]*', // non-zero, non-empty, possibly-padded value
       },
       combatantIdFields: [2, 17],
     },
