@@ -2,7 +2,6 @@ import path from 'path';
 
 import markdownMagic from 'markdown-magic';
 
-import lineDocs, { ExampleLineName } from '../resources/example_log_lines';
 import { Lang, NonEnLang } from '../resources/languages';
 import logDefinitions from '../resources/netlog_defs';
 import { buildRegex as buildNetRegex } from '../resources/netregexes';
@@ -10,6 +9,8 @@ import { UnreachableCode } from '../resources/not_reached';
 import { buildRegex } from '../resources/regexes';
 import LogRepository from '../ui/raidboss/emulator/data/network_log_converter/LogRepository';
 import ParseLine from '../ui/raidboss/emulator/data/network_log_converter/ParseLine';
+
+import lineDocs, { ExampleLineName } from './example_log_lines';
 
 const curPath = path.resolve();
 

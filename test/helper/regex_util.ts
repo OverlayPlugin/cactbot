@@ -1,16 +1,16 @@
 import { assert } from 'chai';
 
-import {
-  ExampleLineDef,
-  ExampleLineName,
-  ExampleLineNameWithRepeating,
-  TestFields,
-  UnitTest,
-} from '../../resources/example_log_lines';
 import logDefinitions from '../../resources/netlog_defs';
 import { UnreachableCode } from '../../resources/not_reached';
 import LogRepository from '../../ui/raidboss/emulator/data/network_log_converter/LogRepository';
 import ParseLine from '../../ui/raidboss/emulator/data/network_log_converter/ParseLine';
+import { ExampleLineDef, ExampleLineName } from '../../util/example_log_lines';
+
+import lineTests, {
+  ExampleLineNameWithRepeating,
+  TestFields,
+  UnitTest,
+} from './example_log_lines_test_data';
 
 export type RegexUtilParams = { [key: string]: string | boolean };
 
@@ -20,23 +20,23 @@ type MatchFields = { [key: string]: string };
 export class RegexTestUtil {
   private type: ExampleLineName;
   private lines: string[];
-  private testData: ExampleLineDef<typeof this.type>;
+  private unitTests: UnitTest<typeof this.type>[];
   private baseFunc: (params?: RegexUtilParams) => RegExp;
   private logLineMode: boolean;
 
   constructor(
     type: ExampleLineName,
-    testData: ExampleLineDef<typeof type>,
+    exampleData: ExampleLineDef,
     baseFunc: (params?: RegexUtilParams) => RegExp,
     logLineMode: boolean,
   ) {
     this.type = type;
-    this.testData = testData;
-    this.lines = [...testData.examples.en];
+    this.lines = [...exampleData.examples.en];
     this.baseFunc = baseFunc;
     this.logLineMode = logLineMode;
+    this.unitTests = this.getUnitTests(type);
     if (logLineMode)
-      this.convertToLogLines();
+      this.convertLinesToLogLineFormat();
   }
 
   // Because TypeScript can't narrow `this` across methods, this helper also
@@ -45,14 +45,20 @@ export class RegexTestUtil {
     return 'repeatingFields' in logDefinitions[type ?? this.type];
   }
 
-  private convertToLogLines(): void {
-    // Convert unitTest `type` field to hex
-    let oldUnitTests = this.testData.unitTests;
-    if (oldUnitTests === undefined)
-      return;
-    oldUnitTests = Array.isArray(oldUnitTests) ? oldUnitTests : [oldUnitTests];
+  // Import unit test data
+  private getUnitTests(type: ExampleLineName): UnitTest<typeof type>[] {
+    const importUnitTests = lineTests[type];
 
-    this.testData.unitTests = oldUnitTests.map((test) => {
+    // Should never happen, since TypeScript should generate a compile-time error.
+    if (importUnitTests === undefined)
+      assert.fail('actual', 'expected', `No unit tests specified for '${type}'`);
+
+    let unitTests = Array.isArray(importUnitTests) ? importUnitTests : [importUnitTests];
+    if (!this.logLineMode)
+      return unitTests;
+
+    // If running in logLineMode, convert the `type` field to hex
+    unitTests = unitTests.map((test) => {
       const type = parseInt(test.expectedValues.type ?? '');
       if (!isNaN(type)) {
         const newExpValues = {
@@ -63,8 +69,11 @@ export class RegexTestUtil {
       }
       return test;
     });
+    return unitTests;
+  }
 
-    // Reformat example lines to match log line format
+  // Reformat example lines to match log line format
+  private convertLinesToLogLineFormat(): void {
     const repo = new LogRepository();
     const newLines = this.lines.map((ll) => {
       const line = ParseLine.parse(repo, ll);
@@ -148,6 +157,8 @@ export class RegexTestUtil {
     }
   }
 
+  // For log def types that have repeating fields, we need a little special handling
+  // to convert the repeating field keys to the regex capture-group names.
   private extractFields(fields: TestFields<typeof this.type>): MatchFields {
     const extractedFields: MatchFields = {};
 
@@ -159,23 +170,23 @@ export class RegexTestUtil {
       const fieldDefs = logDefinitions[this.type].repeatingFields;
       const label = fieldDefs.label;
 
-      // if repeating fields are not defined in the unit test, that's weird but ok
+      // if repeating fields are not used in a particular unit test, that's weird but ok
       if (label in fields) {
-        const keyName = logDefinitions[this.type].repeatingFields.primaryKey;
+        const keyFieldName = logDefinitions[this.type].repeatingFields.primaryKey;
         const repFieldNames = logDefinitions[this.type].repeatingFields.names;
 
-        type ValueName = Exclude<typeof repFieldNames[number], typeof keyName>;
-        const remainingFields = repFieldNames.filter((f) => f !== keyName);
+        type ValueName = Exclude<typeof repFieldNames[number], typeof keyFieldName>;
+        const remainingFields = repFieldNames.filter((f) => f !== keyFieldName);
         if (remainingFields.length !== 1)
           assert.fail('actual', 'expected', `Invalid key/value names: too many repeating fields.`);
-        const valueName = remainingFields[0] as ValueName;
+        const valueFieldName = remainingFields[0] as ValueName;
 
         const pairs = fields[label] ?? [];
         pairs.forEach((pair) => {
-          const fieldName = pair[keyName];
-          const fieldValue = pair[valueName];
+          const fieldName = pair[keyFieldName];
+          const fieldValue = pair[valueFieldName];
           if (Array.isArray(fieldName) || Array.isArray(fieldValue))
-            assert.fail('actual', 'expected', `Invalid array for key/value pairs in unit tests.`);
+            assert.fail('actual', 'expected', `Cannot use array for key/value pairs in unit tests.`);
           const matchField = `${label}${fieldName}`;
           extractedFields[matchField] = fieldValue;
         });
@@ -220,15 +231,15 @@ export class RegexTestUtil {
 
     let errStr = '';
     for (const field in fields) {
-      const test = fields[field as keyof typeof fields];
-      const match = matches[field];
+      const testValue = fields[field as keyof typeof fields];
+      const matchValue = matches[field];
 
-      if (test === undefined)
+      if (testValue === undefined)
         throw new UnreachableCode();
-      else if (match === undefined)
+      else if (matchValue === undefined)
         errStr += `\nMatch error: No field '${field}' was captured`;
-      else if (test !== match)
-        errStr += `\nMatch error: '${field}' expected '${test}' but got '${match}'`;
+      else if (testValue !== matchValue)
+        errStr += `\nMatch error: '${field}' expected '${testValue}' but got '${matchValue}'`;
     }
     if (errStr !== '') {
       assert.isEmpty(errStr, `${errStr}\n`);
@@ -238,13 +249,7 @@ export class RegexTestUtil {
   public run(): void {
     this.captureTest(this.baseFunc, this.lines);
 
-    let unitTests = this.testData.unitTests;
-    if (unitTests === undefined)
-      assert.fail('actual', 'expected', 'No unit tests defined in example_log_lines');
-
-    unitTests = Array.isArray(unitTests) ? unitTests : [unitTests];
-
-    unitTests.forEach((unitTest) => {
+    this.unitTests.forEach((unitTest) => {
       this.doUnitTest(unitTest);
     });
   }

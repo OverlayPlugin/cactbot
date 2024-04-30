@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
-import examples, { ExampleLineName } from '../../resources/example_log_lines';
 import Regexes, { buildRegex } from '../../resources/regexes';
+import examples, { ExampleLineName } from '../../util/example_log_lines';
 import { RegexTestUtil, RegexUtilParams } from '../helper/regex_util';
 
 const logDefsToTest = Object.keys(examples) as ExampleLineName[];
