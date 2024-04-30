@@ -186,7 +186,11 @@ export class RegexTestUtil {
           const fieldName = pair[keyFieldName];
           const fieldValue = pair[valueFieldName];
           if (Array.isArray(fieldName) || Array.isArray(fieldValue))
-            assert.fail('actual', 'expected', `Cannot use array for key/value pairs in unit tests.`);
+            assert.fail(
+              'actual',
+              'expected',
+              `Cannot use array for key/value pairs in unit tests.`,
+            );
           const matchField = `${label}${fieldName}`;
           extractedFields[matchField] = fieldValue;
         });
