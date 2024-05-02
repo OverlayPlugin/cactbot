@@ -449,23 +449,12 @@ so this link will give you more information about it:
 
 This works for both players and enemies, abilities and spells.
 
-#### Obfuscated Abilities
-
-Abilities of the name pattern `_rsv_[\d]+_-1_1_C0_0Action` are obfuscated.
-The client receives the necessary data from the server upon zoning in.
-[Line 262](#line262) contains this data.
-
 ### Status Effect ID
 
 Similarly, status effects have a 2-byte ID.
 You can also look these up on xivapi.
 Status effects with the 'isPermanent' flag cause the game to hide the duration,
 even though the status effect might appear to have a limited duration in the log lines.
-
-#### Obfuscated Status Effects
-
-Similarly, status effects with the name pattern of `rsv_[\d]+_-1_1_C1_0Status` are obfuscated.
-See the note above for obfuscated abilities.
 
 ### Instance Content ID
 
