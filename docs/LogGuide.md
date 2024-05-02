@@ -1524,7 +1524,7 @@ ID | Name | Sample Locations | Consistent meaning?
 
 #### Offset Headmarkers
 
-Newer content uses 'sequential headmarkers' - every headmarker ID is offset by a per-instance value.
+Newer content uses 'offset headmarkers' - every headmarker ID is offset by a per-instance value.
 You will need to wait until you see the first headmarker in the instance,
 and then use this as an offset by which to adjust all the other IDs you see.
 There are a few strategies for dealing with this in triggers and trigger platforms:
@@ -2090,10 +2090,6 @@ Parsed Log Line Examples:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
-
-Note that newer content uses 'sequential headmarkers' - every headmark is offset by a per-instance value. You will need
-to wait until you see the first headmarker in the instance, and then use this as an offset by which to adjust all the
-other IDs you see. See below for more information.
 
 ### Tracking Ability Resolution
 
