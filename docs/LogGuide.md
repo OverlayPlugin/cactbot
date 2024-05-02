@@ -255,8 +255,10 @@ data_flow
     network -> util [label="process"]
     util [label="cactbot util scripts"]
     plugins [label="triggers, ACT plugins"]
+    opclients [label="overlays and other clients"]
     ACT -> plugins [label="parsed log lines"]
     ACT -> plugins [label="network log lines"]
+    plugins -> opclients [label="OverlayPlugin WebSocket"]
   }
 data_flow
 </details>
@@ -424,6 +426,15 @@ You can often differentiate these by HP values (see [AddCombatant](#line03) log 
 Often these invisible mobs are used as the damaging actors,
 which is why in UWU Titan Phase, both Garuda and Titan use Rock Throw to put people in jails.
 
+Entity IDs are generally not stable across instances.
+They cannot be used to uniquely identify a player or NPC across instances.
+They should be treated as being scoped within a single pull.
+For NPCs, there are two additional bits of data that can be used to uniquely identify them.
+They are available in [Line 03](#line03) and [Line 261](#line261).
+The first is BNpcId, which determines the model and other properties of the NPC.
+the second is BNpcNameId, which determines the name of the NPC.
+Unlike the literal name of the entity, BNpcNameId does not require translation.
+
 ### Ability ID
 
 Although ff14 differentiates between abilities and spells,
@@ -437,6 +448,24 @@ so this link will give you more information about it:
 <https://xivapi.com/action/3577?columns=ID,Name,Description,ClassJobCategory.Name>
 
 This works for both players and enemies, abilities and spells.
+
+#### Obfuscated Abilities
+
+Abilities of the name pattern `_rsv_[\d]+_-1_1_C0_0Action` are obfuscated.
+The client receives the necessary data from the server upon zoning in.
+[Line 262](#line262) contains this data.
+
+### Status Effect ID
+
+Similarly, status effects have a 2-byte ID.
+You can also look these up on xivapi.
+Status effects with the 'isPermanent' flag cause the game to hide the duration,
+even though the status effect might appear to have a limited duration in the log lines.
+
+#### Obfuscated Status Effects
+
+Similarly, status effects with the name pattern of `rsv_[\d]+_-1_1_C1_0Status` are obfuscated.
+See the note above for obfuscated abilities.
 
 ### Instance Content ID
 
@@ -516,6 +545,7 @@ There are a number of reasons to avoid basing triggers on game log lines:
 - inconsistent text (gains effect vs suffers effect, begins casting vs readies, you vs player name)
 - often vague (the attack misses)
 - can change spelling at the whim of SquareEnix
+- some Dalamud plugins may interfere with chat lines
 
 Instead, the recommendation is to base your triggers on log lines that are not type `0x00`.
 Prefer using [NetworkBuff](#line26) line instead of "suffers the effect" game log lines.
@@ -572,6 +602,9 @@ Parsed Log Line Examples:
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+Note that the "name" of the zone is the instance name when available,
+or the raw zone name if not.
 
 <a name="line02"></a>
 
@@ -727,6 +760,8 @@ Parsed Log Line Examples:
 
 This line represents the players currently in the party, and is sent whenever the party makeup changes.
 
+This data is not necessarily sorted in the same order as the in-game party UI.
+
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=PartyList&lang=en-US) -->
 
 #### Structure
@@ -768,6 +803,9 @@ Parsed Log Line Examples:
 ### Line 12 (0x0C): PlayerStats
 
 This message is sent whenever your player's stats change and upon entering a new zone/instance.
+
+This is only emitted for the local player.
+It is not possible to automatically pull other players' stats.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=PlayerStats&lang=en-US) -->
 
@@ -864,6 +902,19 @@ These lines are usually (but not always) associated with game log lines that eit
 `00:282B:Shinryu readies Earthen Fury.`
 or `00:302b:The proto-chimera begins casting The Ram's Voice.`
 
+### Cast Times
+
+There are some caveats that affect the accuracy of cast times in the log.
+
+For player casts, the log line provides precision to a thousandth of a second.
+However, the game itself rounds these to hundredths.
+
+Some boss casts with special animations have a longer effective cast time than what the log says.
+P8S's High Concept cast is one such example.
+The actual cast bar is much longer than the log would indicate.
+This is because the ability actually finishes casting partway through the cast bar,
+and the actual damage comes from a different ability.
+
 <a name="line21"></a>
 
 ### Line 21 (0x15): NetworkAbility
@@ -880,6 +931,15 @@ and your network log line regex as `2[12]`
 to include both possibilities.
 
 Ground AOEs that don't hit anybody are considered [NetworkAOEAbility](#line22) lines.
+
+There are two fields on 21/22 lines that provide information about the number of targets affected.
+The `targetCount` field indicates the number of targets.
+The `targetIndex` field indicates which target this particular line refers to.
+For example, for a 21-line, you would see a `targetIndex` of 0, and a `targetCount` of 1.
+For an AoE ability that hits three targets, all three lines would have a `targetCount` of 3,
+but the `targetIndex` would be 0, 1, and 2 for the three lines respectively.
+Thus, if you want to find all of the 21/22-lines related to a single action usage,
+you would do so by collecting 21/22-lines until you see one for which `targetCount - 1 == targetIndex`.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=Ability&lang=en-US) -->
 
@@ -923,81 +983,126 @@ Parsed Log Line Examples:
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-Index | Example | Explanation
---- | --- | ---
-0 | 15 | type id (in hex)
-1 | 10532971 | caster object id
-2 | Tini Poutini | caster name
-3 | 07 | ability id
-4 | Attack | ability name
-5 | 40001299 | target object id
-6 | Striking Dummy | target name
-7 | 710003 | [flags](#ability-flags)
-8 | 9420000 | [damage](#ability-damage)
-9-22 | 0 | ??? (see: [special case shifts](#special-case-shifts))
-23 | 2778 | target current hp
-24 | 2778 | target max hp
-25 | 0 | target current mp
-26 | 0 | target max mp
-27 | 1000 | target current tp
-28 | 1000 | target max tp
-29 | -653.9767 | target x position
-30 | -807.7275 | target y position
-31 | 31.99997 | target z position
-32 | 66480 | caster current hp
-33 | 74095 | caster max hp
-34 | 4560 | caster current mp
-35 | 4560 | caster max mp
-36 | 1000 | caster current tp
-37 | 1000 | caster max tp
-38 | -653.0394 | caster x position
-39 | -807.9677 | caster y position
-40 | 31.99997 | caster z position
+| Index | Example        | Explanation                                                     |
+|-------|----------------|-----------------------------------------------------------------|
+| 0     | 15             | type id (in hex)                                                |
+| 1     | 10532971       | caster object id                                                |
+| 2     | Tini Poutini   | caster name                                                     |
+| 3     | 07             | ability id                                                      |
+| 4     | Attack         | ability name                                                    |
+| 5     | 40001299       | target object id                                                |
+| 6     | Striking Dummy | target name                                                     |
+| 7-22  | 0              | pairs of action effects (see: [action effects](#action-effects) |
+| 23    | 2778           | target current hp                                               |
+| 24    | 2778           | target max hp                                                   |
+| 25    | 0              | target current mp                                               |
+| 26    | 0              | target max mp                                                   |
+| 27    | 1000           | target current tp                                               |
+| 28    | 1000           | target max tp                                                   |
+| 29    | -653.9767      | target x position                                               |
+| 30    | -807.7275      | target y position                                               |
+| 31    | 31.99997       | target z position                                               |
+| 32    | 66480          | caster current hp                                               |
+| 33    | 74095          | caster max hp                                                   |
+| 34    | 4560           | caster current mp                                               |
+| 35    | 4560           | caster max mp                                                   |
+| 36    | 1000           | caster current tp                                               |
+| 37    | 1000           | caster max tp                                                   |
+| 38    | -653.0394      | caster x position                                               |
+| 39    | -807.9677      | caster y position                                               |
+| 40    | 31.99997       | caster z position                                               |
 
 Network ability lines are a combination of raw network data
 (e.g. the `710003` flags and the `9420000` damage)
 and frequently sampled data from memory
 (e.g. the `66480` current hp value and `-653.0394` x position).
 
-This means that there's a number of caveats going on to handling all the data in these lines.  The raw network data is subject to change over time from ff14 servers.  Also, the data from memory may be slightly stale and out of date
+This means that there's a number of caveats going on to handling all the data in these lines.
+The raw network data is subject to change over time from ff14 servers.
+Also, the data from memory may be slightly stale and out of date.
 
-#### Ability Flags
+### Action Effects
 
-Damage bitmasks:
+Each ability may have one or more effects.
+These are indicated by the flagsX and damageX fields, between `targetName` and `targetCurHp`.
+There are eight pairs, each with a 'flags' field and a 'damage' field.
+The damage field is not necessarily always damage.
+For example, for a buff application, it indicates which buff ID is about to be applied.
 
-- 0x01 = dodge
+Damage seems to always be the first field if it is present.
+However, for anything else, it is bad practice to rely on an effect being in a specific position.
+Rather, these should only be treated as an array of pairs, and you should iterate through them to find what you're looking for.
+As an example of why you should not hardcode indices, consider the following.
+
+Here we have a use of Aeolian edge:
+
+`21|2022-09-13T17:25:12.4790000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|37120000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|0|0|rest of line omitted`
+
+Damage (0x03) is in the first position, 0x3d in the second and third, and 0x1b in the fourth.
+
+Now, a use of Aeolian edge under Bloodbath:
+
+`21|2022-09-13T17:25:18.8060000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|38FD0000|104|AA68000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|rest of line omitted`
+
+Notice that the bloodbath self-heal (0x04) is in the second position,
+thus shifting the two 0x3d effects and the 0x1b effect over to the third, fourth, and fifth positions.
+This is one of the many reasons why hardcoding indices is a bad idea.
+
+On top of that, ordering can of course change at SE's whim. As such, relying on specific ordering of ability effects
+is simply a bad idea.
+
+### Effect Types
+
+The 'flags' field for each pair of values can be further broken down.
+
+The rightmost byte indicates the type of effect:
+
+Damage flags:
+
+- 0x01 = dodge/miss
 - 0x03 = damage done
+- 0x04 = heal
 - 0x05 = blocked damage
 - 0x06 = parried damage
 - 0x33 = instant death
-- 0x2000 = crit damage
-- 0x4000 = direct hit damage
-- 0x6000 = crit direct hit damage
 
-Heal bitmasks:
+Non-damage flags:
+
+- 0x02 = fully resisted
+- 0x07 = 'invulnerable' message
+- 0x08 = 'X has no effect' message
+- 0x0a = mp loss ('damage' indicates amount)
+- 0x0b = mp gain ('damage' indicates amount)
+- 0x0e = status applied to target (see "status effects" below)
+- 0x0f = status applied to caster (see "status effects" below)
+- 0x10 = status removed
+- 0x14 = 'no effect' message related to a particular status effect ('damage >> 16' indicates status effect ID)
+- 0x18 = aggro increase
+
+The next byte to the left indicates the 'severity' for damage effects:
+
+- 0x20 = crit damage
+- 0x40 = direct hit damage
+- 0x60 = crit direct hit damage
+
+The byte to the left of that one indicates the 'severity' for heal effects, and works the same way as damage severity
+(though heals can never direct hit). Thus, the combinations would be:
 
 - 0x000004 = heal
 - 0x200004 = crit heal
 
-Other bitmasks appear on particular abilities, and can indicate whether bane
-missed or hit recipients.  However, these all appear ability-specific.
+Other bitmasks appear on particular abilities, and can indicate whether bane missed or hit recipients. However, these
+all appear ability-specific.
 
-Some of these flags also indicate whether the ability is part of a combo or not
-and whether the positional was hit.
-However, these values do not seem to be consistent between jobs.
+There are many others that are not considered to be important for anything outside of niche purposes, like 0x28 for
+mounting.
 
-For example, the flags for successful rear trick attack are `1971.003`.
-The `.` here represents 2, 4, or 6 as the trick may crit, dh, both, or neither.
-The flags for a missed trick attack positional are `714.003`.
-
-If you care about specific ability flags, you likely have to do this research yourself.
-Please send pull requests to this document so it can be shared!
-
-#### Ability Damage
+### Ability Damage
 
 Damage bitmasks:
-    0x10000 = hallowed or bolide, no damage (this can be blocked too)
-    0x4000 = "a lot" of damage
+
+- 0x0100 = hallowed, no damage
+- 0x4000 = "a lot" of damage
 
 The damage value in an ability usage is not the literal damage, because that would be too easy.
 
@@ -1009,29 +1114,53 @@ The first two bytes (4 chars) are the damage.
 
 Unless, if there is an 0x00004000 mask, then this implies "a lot" of damage.
 In this case, consider the bytes as ABCD, where C is 0x40.
-The total damage is calculated as D A (B-D) as three bytes together interpreted
-as an integer.
+The total damage is calculated as D A B as three bytes together interpreted as an integer.
 
-For example, `424E400F` becomes `0F 42 (4E - OF = 3F)` => `0F 42 3F` => 999999
+For example, `423F400F` becomes `0F 42 3F` => 999999
 
-#### Special Case Shifts
+Once you have the damage, the other pieces of interest are the bitmasks above, as well as the severity.
 
-It is not clear what this represents, but sometimes the flags is replaced by
-one (or more) pairs of values.
+However, there is one more interesting bit here.
+The leftmost byte is the percentage of the damage, rounded down,
+that came from positional and/or combo bonuses. You can use
+[this sheet](https://docs.google.com/spreadsheets/d/1Huvsu-Ic8Fx1eKZ7yWlYmD1vg2N0fnILSKLHmmR21PI/edit#gid=0)
+as a reference for creating a positional hit/miss trigger.
+It is not necessary to guess and check these, rather, all the needed information can be found on the lodestone.
 
-The most likely case is that if flags is `3F`,
-then the flags and damage are in index 9 and 10 instead of 7 and 8, respectively.
-In other words, when you see flags being a particular value,
-you need to shift everything over two to find the real flags.
-See the example below.
-It is also to be noted that this value has slowly increased over time and was
-`3C` back in 2017.
+Note that the battle log text is slightly misleading here - it is **not** `(bonus / base)` as you might expect,
+but `(bonus / total)`.
+That is, an ability that deals 200 damage if the positional/combo is missed but 300 if it hits would display a bonus of 33% (since one-third of the damage came from the bonus),
+not 50% as you might expect.
+It is the same value you would see in the in-game battle log (e.g. `Hegemone takes 9129(+61%) damage`).
+This is why you will never see a bonus of above 100%, even if the bonus doubles, triples or even quadruples the damage.
 
-The other shift is that plenary indulgence lists the number of stacks in the flags as `113`, `213`, or `313` respectively.
-These are always followed by `4C3`.
-Therefore, these should also be shifted over two to find the real flags.
+For parries/blocks, instead of the bonus,
+this value indicates the reduction (treat it as an 8-bit signed integer), e.g. 0xEC => -20%.
 
-#### Ability Examples
+#### Reflected Damage
+
+Reflected damage looks like normal damage.
+The only way to determine that a damage effect is reflected is that it is preceded by a 1D effect.
+
+### Status Effects
+
+The leftmost two bytes of the "damage" portion are the status effect ID.
+
+The rightmost byte of the flag is the "value", usually treated as a stack count,
+but may be employed for other purposes by specific status effects.
+
+The rest depends on the exact status effect.
+
+For DoTs and the like, the middle two bytes of the "flags" indicate the damage lowbyte and crit lowbyte
+(one fixed decimal point, i.e. 200 = 20% crit, but overflows at 25.6%).
+
+For damage dealt/taken modifiers,
+the second byte from the right in the flags is a damage taken modifier (e.g. a 10% mit will come as -10, i.e. 246 or 0xF6).
+Statuses with two effects, such as Addle/Feint with their magical and physical reduction,
+will use one field for each.
+You can examine these to find damage down and vulnerability percentages.
+
+### Ability Examples
 
 1) 18216 damage from Grand Cross Alpha (basic damage)
 `16:40001333:Neo Exdeath:242B:Grand Cross Alpha:1048638C:Tater Tot:750003:47280000:1C:80242B:0:0:0:0:0:0:0:0:0:0:0:0:36906:41241:5160:5160:880:1000:0.009226365:-7.81128:-1.192093E-07:16043015:17702272:12000:12000:1000:1000:-0.01531982:-19.02808:0:`
@@ -1108,8 +1237,8 @@ Parsed Log Line Examples:
 ### Line 24 (0x18): NetworkDoT
 
 HoT (heal over time) and DoT (damage over time) amounts.
-These are the aggregated quantities of damage for every hot or dot on that target
-from a given source.
+For most DoTs and HoTs,
+this line conveys an aggregated tick for every DoT/HoT source on that target from all sources.
 
 The reason why there is such a discrepancy between ACT and fflogs about dots
 is that ff14 does not return the exact tick amounts for every active dot.
@@ -1117,7 +1246,9 @@ Instead, if a boss has 20 dots applied to it,
 then it returns the total tick amount for all of these dots.
 Parsers are left to estimate what the individual dot amounts are.
 
-The `damageType` field is a number id that corresponds to the `AttackType` table.
+However, for ground effect DoTs/HoTs, these have their own packets.
+This is the only case where the `effectId` is populated.
+For these, the `damageType` field is a number id that corresponds to the `AttackType` table.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=NetworkDoT&lang=en-US) -->
 
@@ -1264,6 +1395,32 @@ You cannot count on the time remaining to be precise.
 In rare cases, the time will already have counted down a tiny bit.
 This matters for cases such as ucob Nael phase doom debuffs.
 
+In some cases, the 'stacks' value may indicate other information about the buff.
+For example, Mudra will show different "stack" values for different combinations of Mudra.
+The only way to ensure that you are getting a "real" stack value is by cross-referencing with game data.
+For example, if you see a stack value of '64',
+but the status effect in question has a maximum stack count of zero,
+then you know it is not a true stack count.
+
+The "Unknown_808" status effect (0x808) uses the 'stacks' field to apply/remove a VFX,
+where the count is the VFX ID.
+
+### Refreshes, Overwrites, and Deaths
+
+If a buff is refreshed early, you will get another 26-line.
+You will not get a 30-line indicating that the existing buff has been removed.
+When stacks of a buff are added or removed, you may or may not receive a removal for the old stack value.
+
+Most debuffs allow one player to place the debuff on each target.
+For some, such as Trick Attack, only one can be on the enemy at a time.
+If a buff is overwritten, a 30-line will be generated for the status effect that got overwritten.
+
+Thus, it is sufficient to track buffs using a combination of caster, target, and status effect ID.
+A refresh or stack change will have the same caster, target, and status effect,
+while an overwrite will generate a 30-line anyway.
+
+When a unit dies, you will get 30-lines for buffs that were removed by it dying.
+
 <a name="line27"></a>
 
 ### Line 27 (0x1B): NetworkTargetIcon (Head Marker)
@@ -1375,6 +1532,21 @@ ID | Name | Sample Locations | Consistent meaning?
 00BB | Blue Square (big spread) | e4s |N/A
 00BD | Purple Spread Circle (giant) | TItania N/EX | Yes
 00BF | Granite Gaol | e4s | N/A
+
+#### Offset Headmarkers
+
+Newer content uses 'sequential headmarkers' - every headmarker ID is offset by a per-instance value.
+You will need to wait until you see the first headmarker in the instance,
+and then use this as an offset by which to adjust all the other IDs you see.
+There are a few strategies for dealing with this in triggers and trigger platforms:
+
+- Figure out the real ID for the first headmarker you'd see in the instance,
+  and use this to calculate the real ID for all other markers in the instance.
+- Capture the ID of the first headmarker,
+  and subtract this from all subsequent headmarkers,
+  resulting in everything using relative values.
+- Most mechanics apply their markers in a consistent order,
+  so the order of the headmarkers can be used in lieu of the IDs.
 
 <a name="line28"></a>
 
@@ -1812,6 +1984,11 @@ There are also a number of examples where tethers are generated in some other wa
 - Suzaku Extreme birbs: who knows
 - player to player tethers (dragonsight, cover, fairy tether)
 
+There is currently no log line that indicates that a tether is no longer present.
+Some mechanics may periodically "re-apply" the tether, resulting in multiple redundant lines.
+If a tether changes (for example, a tether which players must stretch out),
+it generates a new log line.
+
 <a name="line36"></a>
 
 ### Line 36 (0x24): LimitBreak
@@ -1925,6 +2102,44 @@ Parsed Log Line Examples:
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
+Note that newer content uses 'sequential headmarkers' - every headmark is offset by a per-instance value. You will need
+to wait until you see the first headmarker in the instance, and then use this as an offset by which to adjust all the
+other IDs you see. See below for more information.
+
+### Tracking Ability Resolution
+
+Unfortunately, this is not trivial to know whether an ability has resolved, ghosted, or is still in-flight.
+For one, while the server does tell the client when an action has resolved,
+it does not tell the game when an action will not resolve (ghosting).
+However, the caster dying or target becoming untargetable is usually a decent indicator that something will not resolve.
+
+Note that AoE abilities may have the same sequence ID for all targets hit.
+Thus, you need to key off of both the sequence ID, *and* the target.
+
+Not every action will generate a corresponding 37-line.
+
+### HP Values
+
+Sometimes, only the current HP is present, rather than current and max.
+In this case, it should be assumed that the max HP is unchanged.
+
+Lines 37, 38, and 39 are special in that the "current" HP value actually represents an update to HP.
+Other lines merely read the value for memory.
+That means that these three lines never have stale HP values.
+
+### Shield %
+
+37- and 38-lines have a field for shield percentage. This is the current shield percentage of the target, rounded to
+an integer. For example, if you have 3,000 HP worth of shields on a 20,000 hp entity, that would be a 15% shield.
+
+More accurate shield values can sometimes be derived by looking at the sub-fields in 38-lines or 21/22-line action
+effects. The effects will contain the least significant byte of the real shield value.
+
+### MP Values
+
+The 'current MP' can actually be GP or CP rather than MP, if you are on a DoL or DoH class. However, the 'maximum' is
+actually hardcoded to 10000 in the FFXIV plugin.
+
 <a name="line38"></a>
 
 ### Line 38 (0x26): NetworkStatusEffects
@@ -1972,21 +2187,30 @@ Parsed Log Line Examples:
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-It seems likely that this line was added in order to extend functionality
-for the [NetworkBuff](#line26),
-[NetworkBuffRemove](#line30),
-and [NetworkActionSync](#line37)
-log lines without breaking previous content or plugins.
+This line conveys all current status effects on an entity.
+This can be useful if a plugin or overlay was started after zoning in.
+
+#### Data Fields
+
+This is a variable-length line.
+It can expand up to 30 status effects.
+Beginning with the field called `data3`, each status effect takes three fields.
+
+The first data field for each Trio is some unknown data plus the effect ID in the latter 2 bytes.
+i.e. `field && 0xffff` will get you the effect ID.
+
+The second is the remaining duration as a 32-bit float.
+It comes in as a hex integer, so you will need to do the conversion to float manually.
+For indefinite status effects, this may read out as a fixed value.
+For example, FC buffs will always report a remaining duration of 30 seconds.
+
+The third is the source entity.
 
 <a name="line39"></a>
 
 ### Line 39 (0x27): NetworkUpdateHP
 
-It's not completely clear what triggers this log line,
-but it contains basic information comparable to [NetworkActionSync](#line37) and [NetworkStatusEffects](#line38).
-It applies to allies and fairies/pets.
-
-This log line tends to fire roughly every 3 seconds in some cases.
+This line represents HP/MP ticks.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=NetworkUpdateHP&lang=en-US) -->
 
