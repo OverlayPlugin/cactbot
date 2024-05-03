@@ -544,7 +544,7 @@ Prefer using the [NetworkStartsCasting](#line20) "starts using" line instead of 
 At the moment, there are some cases where you must use game log lines.
 However, unless you intend to support non-OverlayPlugin users in your plugin or trigger,
 use cases for these are dwindling,
-as newer OP log lines such as [SystemLogMessage](#line41), [NpcYell](#line266),
+as newer log lines such as FFXIV_ACT_Plugin's [SystemLogMessage](#line41) and OverlayPlugin's [NpcYell](#line266),
 [BattleTalk2](#line267), and [Countdown](#line268) have gradually replaced the need for game log lines.
 
 If there are any remaining cases where a 00-line appears,
