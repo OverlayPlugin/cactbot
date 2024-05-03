@@ -2127,9 +2127,12 @@ Not every action will generate a corresponding 37-line.
 Sometimes, only the current HP is present, rather than current and max.
 In this case, it should be assumed that the max HP is unchanged.
 
-Lines 37, 38, and 39 are special in that the "current" HP value actually represents an update to HP.
-Other lines merely read the value for memory.
-That means that these three lines never have stale HP values.
+Lines [37](#line-37-0x25-networkactionsync),
+[38](#line-38-0x26-networkstatuseffects),
+and [39](#line-39-0x27-networkupdatehp) are special in that the "current" HP value actually represents an update to HP.
+Other lines merely read the value from memory.
+That means that these three lines never have stale HP values,
+unlike other lines where the ACT plugin may have read values from memory before the game client has actually processed the packet.
 
 ### Shield %
 
@@ -2193,6 +2196,9 @@ Parsed Log Line Examples:
 
 This line conveys all current status effects on an entity.
 This can be useful if a plugin or overlay was started after zoning in.
+Like [Line 37](#line-37-0x25-networkactionsync) and [Line 39](#line-39-0x27-networkupdatehp),
+the HP value in the line represents an HP change,
+rather than a potentially-stale value from memory.
 
 #### Data Fields
 
@@ -2236,8 +2242,10 @@ minus the checksum that the ACT plugin places at the end of every line.
 
 ### Line 39 (0x27): NetworkUpdateHP
 
-This line represents HP/MP ticks.
+This line represents passive HP/MP regen ticks.
 It conveys the new values for HP/MP.
+Like [Line 37](#line-37-0x25-networkactionsync) and [Line 38](#line-38-0x26-networkstatuseffects),
+the HP value is an update, rather than a value in memory.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=NetworkUpdateHP&lang=en-US) -->
 
