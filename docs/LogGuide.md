@@ -1423,7 +1423,7 @@ Thus, it is sufficient to track buffs using a combination of caster, target, and
 A refresh or stack change will have the same caster, target, and status effect,
 while an overwrite will generate a 30-line anyway.
 
-When a unit dies, you will get 30-lines for buffs that were removed by it dying.
+When an actor dies, you will get 30-lines for buffs that were removed by it dying.
 
 <a name="line27"></a>
 
