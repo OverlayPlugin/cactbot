@@ -2208,7 +2208,9 @@ and `(field & 0xffff0000) >> 16` will get you the stack/value.
 The second is the remaining duration as a 32-bit float.
 The value may be negative, in which case it should be flipped to positive.
 It is possible that this may signify something unknown.
-It comes in as a hex integer, so you will need to do the conversion to float manually.
+The line formats this as if it were a uint32,
+so you will need to parse it as a uint32 and then reinterpret (not convert) it as a single-precision float.
+
 For indefinite status effects, this may read out as a fixed value.
 For example, FC buffs will always report a remaining duration of 30 seconds.
 
