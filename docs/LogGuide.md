@@ -1034,20 +1034,26 @@ As an example of why you should not hardcode indices, consider the following.
 
 Here we have a use of Aeolian edge:
 
-`21|2022-09-13T17:25:12.4790000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|37120000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|0|0|rest of line omitted`
+```log
+21|2022-09-13T17:25:12.4790000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|37120000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|0|0|rest of line omitted
+                                                                                             | first           | second   | third    | fourth    |
+```
 
 Damage (0x03) is in the first position, 0x3d in the second and third, and 0x1b in the fourth.
 
 Now, a use of Aeolian edge under Bloodbath:
 
-`21|2022-09-13T17:25:18.8060000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|38FD0000|104|AA68000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|rest of line omitted`
+```log
+21|2022-09-13T17:25:18.8060000-07:00|10827569|Name Removed|8CF|Aeolian Edge|4000A062|Hegemone|44714003|38FD0000|104|AA68000|A3D|9F8000|53D|9F8000|11B|8CF8000|0|0|0|0|0|0|rest of line omitted
+                                                                                             | first           | second    | third    | fourth   | fifth     |
+```
 
 Notice that the bloodbath self-heal (0x04) is in the second position,
 thus shifting the two 0x3d effects and the 0x1b effect over to the third, fourth, and fifth positions.
 This is one of the many reasons why hardcoding indices is a bad idea.
 
-On top of that, ordering can of course change at SE's whim. As such, relying on specific ordering of ability effects
-is simply a bad idea.
+On top of that, ordering can of course change at SE's whim.
+As such, relying on specific ordering of ability effects is simply a bad idea.
 
 ### Effect Types
 
