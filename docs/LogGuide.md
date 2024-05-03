@@ -426,9 +426,10 @@ You can often differentiate these by HP values (see [AddCombatant](#line03) log 
 Often these invisible mobs are used as the damaging actors,
 which is why in UWU Titan Phase, both Garuda and Titan use Rock Throw to put people in jails.
 
-Entity IDs are generally not stable across instances.
-They cannot be used to uniquely identify a player or NPC across instances.
-They should be treated as being scoped within a single pull.
+Entity IDs are not stable identifiers.
+Player entity IDs may change if the player DC travels.
+NPC entity IDs may change from one pull to the next.
+The safest option is to treat entity IDs as being scoped to a single pull.
 For NPCs, there are two additional bits of data that can be used to uniquely identify them.
 They are available in [Line 03](#line03) and [Line 261](#line261).
 The first is BNpcId, which determines the model and other properties of the NPC.
