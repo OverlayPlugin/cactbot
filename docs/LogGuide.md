@@ -1552,6 +1552,10 @@ There are a few strategies for dealing with this in triggers and trigger platfor
 - Most mechanics apply their markers in a consistent order,
   so the order of the headmarkers can be used in lieu of the IDs.
 
+Like [RSV](#line262),
+SE generally only applies the headmarker obfuscation to new high-end content,
+and then removes it later.
+
 <a name="line28"></a>
 
 ### Line 28 (0x1C): NetworkRaidMarker (Floor Marker)
@@ -2865,6 +2869,7 @@ in current savage and ultimate content in the game data itself.
 This is to prevent data mining.
 However, as these ability names need to be displayed by the game itself
 these ability names are sent as network data upon zoning in.
+After the next major patch, the game files will usually contain the real values.
 
 These lines display the currently obfuscated abilities
 for the current zone for the current game locale.
