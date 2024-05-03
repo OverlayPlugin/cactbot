@@ -2185,17 +2185,36 @@ The first data field for each Trio is some unknown data plus the effect ID in th
 i.e. `field && 0xffff` will get you the effect ID.
 
 The second is the remaining duration as a 32-bit float.
+The value may be negative, in which case it should be flipped to positive.
+It is possible that this may signify something unknown.
 It comes in as a hex integer, so you will need to do the conversion to float manually.
 For indefinite status effects, this may read out as a fixed value.
 For example, FC buffs will always report a remaining duration of 30 seconds.
 
 The third is the source entity.
 
+For example, given the triplet:
+
+```log
+|030499|C1700000|10015678|
+```
+
+In the first element, we can see that the entity in question has three stacks of status effect 0x499 (Inner Release).
+
+In the second, we take C1700000 and parse as a 32-bit floating point, giving us -15.
+This means the remaining duration is 15 seconds.
+
+The last field indicates that the stats effect originated from entity ID 10015678.
+
+This can be repeated until running out of fields,
+minus the checksum that the ACT plugin places at the end of every line.
+
 <a name="line39"></a>
 
 ### Line 39 (0x27): NetworkUpdateHP
 
 This line represents HP/MP ticks.
+It conveys the new values for HP/MP.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=NetworkUpdateHP&lang=en-US) -->
 
