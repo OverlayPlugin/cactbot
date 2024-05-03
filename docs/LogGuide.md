@@ -2200,8 +2200,10 @@ This is a variable-length line.
 It can expand up to 30 status effects.
 Beginning with the field called `data3`, each status effect takes three fields.
 
-The first data field for each Trio is some unknown data plus the effect ID in the latter 2 bytes.
-i.e. `field & 0xffff` will get you the effect ID.
+The first data field for each trio is the stack count/value in the first two bytes,
+and the effect ID in the latter 2 bytes.
+i.e. `field & 0xffff` will get you the effect ID,
+and `(field & 0xffff0000) >> 16` will get you the stack/value.
 
 The second is the remaining duration as a 32-bit float.
 The value may be negative, in which case it should be flipped to positive.
