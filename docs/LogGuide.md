@@ -2247,6 +2247,9 @@ It conveys the new values for HP/MP.
 Like [Line 37](#line-37-0x25-networkactionsync) and [Line 38](#line-38-0x26-networkstatuseffects),
 the HP value is an update, rather than a value in memory.
 
+NPCs (other than player pets) generally do not receive these packets,
+as they do not have passive HP regen.
+
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=NetworkUpdateHP&lang=en-US) -->
 
 #### Structure
