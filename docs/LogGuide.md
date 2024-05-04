@@ -27,6 +27,7 @@ This guide was last updated for:
   - [Object/Actor/Entity/Mob/Combatant](#objectactorentitymobcombatant)
   - [Object ID](#object-id)
   - [Ability ID](#ability-id)
+  - [Status Effect ID](#status-effect-id)
   - [Instance Content ID](#instance-content-id)
 - [FFXIV Plugin Log Lines](#ffxiv-plugin-log-lines)
   - [Line 00 (0x00): LogLine](#line-00-0x00-logline)
@@ -62,13 +63,16 @@ This guide was last updated for:
     - [Structure](#structure-7)
     - [Regexes](#regexes-7)
     - [Examples](#examples-7)
+    - [Cast Times](#cast-times)
   - [Line 21 (0x15): NetworkAbility](#line-21-0x15-networkability)
     - [Structure](#structure-8)
     - [Regexes](#regexes-8)
     - [Examples](#examples-8)
-    - [Ability Flags](#ability-flags)
+    - [Action Effects](#action-effects)
+    - [Effect Types](#effect-types)
     - [Ability Damage](#ability-damage)
-    - [Special Case Shifts](#special-case-shifts)
+    - [Reflected Damage](#reflected-damage)
+    - [Status Effects](#status-effects)
     - [Ability Examples](#ability-examples)
   - [Line 22 (0x16): NetworkAOEAbility](#line-22-0x16-networkaoeability)
   - [Line 23 (0x17): NetworkCancelAbility](#line-23-0x17-networkcancelability)
@@ -87,11 +91,13 @@ This guide was last updated for:
     - [Structure](#structure-12)
     - [Regexes](#regexes-12)
     - [Examples](#examples-12)
+    - [Refreshes, Overwrites, and Deaths](#refreshes-overwrites-and-deaths)
   - [Line 27 (0x1B): NetworkTargetIcon (Head Marker)](#line-27-0x1b-networktargeticon-head-marker)
     - [Structure](#structure-13)
     - [Regexes](#regexes-13)
     - [Examples](#examples-13)
     - [Head Marker IDs](#head-marker-ids)
+    - [Offset Headmarkers](#offset-headmarkers)
   - [Line 28 (0x1C): NetworkRaidMarker (Floor Marker)](#line-28-0x1c-networkraidmarker-floor-marker)
     - [Structure](#structure-14)
     - [Regexes](#regexes-14)
@@ -131,10 +137,15 @@ This guide was last updated for:
     - [Structure](#structure-22)
     - [Regexes](#regexes-22)
     - [Examples](#examples-22)
+    - [Tracking Ability Resolution](#tracking-ability-resolution)
+    - [HP Values](#hp-values)
+    - [Shield %](#shield-)
+    - [MP Values](#mp-values)
   - [Line 38 (0x26): NetworkStatusEffects](#line-38-0x26-networkstatuseffects)
     - [Structure](#structure-23)
     - [Regexes](#regexes-23)
     - [Examples](#examples-23)
+    - [Data Fields](#data-fields)
   - [Line 39 (0x27): NetworkUpdateHP](#line-39-0x27-networkupdatehp)
     - [Structure](#structure-24)
     - [Regexes](#regexes-24)
@@ -900,7 +911,7 @@ These lines are usually (but not always) associated with game log lines that eit
 `00:282B:Shinryu readies Earthen Fury.`
 or `00:302b:The proto-chimera begins casting The Ram's Voice.`
 
-### Cast Times
+#### Cast Times
 
 There are some caveats that affect the accuracy of cast times in the log.
 
@@ -1019,7 +1030,7 @@ This means that there's a number of caveats going on to handling all the data in
 The raw network data is subject to change over time from ff14 servers.
 Also, the data from memory may be slightly stale and out of date.
 
-### Action Effects
+#### Action Effects
 
 Each ability may have one or more effects.
 These are indicated by the flagsX and damageX fields, between `targetName` and `targetCurHp`.
@@ -1055,7 +1066,7 @@ This is one of the many reasons why hardcoding indices is a bad idea.
 On top of that, ordering can of course change at SE's whim.
 As such, relying on specific ordering of ability effects is simply a bad idea.
 
-### Effect Types
+#### Effect Types
 
 The 'flags' field for each pair of values can be further broken down.
 
@@ -1101,7 +1112,7 @@ all appear ability-specific.
 There are many others that are not considered to be important for anything outside of niche purposes, like 0x28 for
 mounting.
 
-### Ability Damage
+#### Ability Damage
 
 Damage bitmasks:
 
@@ -1146,7 +1157,7 @@ this value indicates the reduction (treat it as an 8-bit signed integer), e.g. 0
 Reflected damage looks like normal damage.
 The only way to determine that a damage effect is reflected is that it is preceded by a 1D effect.
 
-### Status Effects
+#### Status Effects
 
 The leftmost two bytes of the "damage" portion are the status effect ID.
 
@@ -1164,7 +1175,7 @@ Statuses with two effects, such as Addle/Feint with their magical and physical r
 will use one field for each.
 You can examine these to find damage down and vulnerability percentages.
 
-### Ability Examples
+#### Ability Examples
 
 1) 18216 damage from Grand Cross Alpha (basic damage)
 `16:40001333:Neo Exdeath:242B:Grand Cross Alpha:1048638C:Tater Tot:750003:47280000:1C:80242B:0:0:0:0:0:0:0:0:0:0:0:0:36906:41241:5160:5160:880:1000:0.009226365:-7.81128:-1.192093E-07:16043015:17702272:12000:12000:1000:1000:-0.01531982:-19.02808:0:`
@@ -1409,7 +1420,7 @@ then you know it is not a true stack count.
 The "Unknown_808" status effect (0x808) uses the 'stacks' field to apply/remove a VFX,
 where the count is the VFX ID.
 
-### Refreshes, Overwrites, and Deaths
+#### Refreshes, Overwrites, and Deaths
 
 If a buff is refreshed early, you will get another 26-line.
 You will not get a 30-line indicating that the existing buff has been removed.
@@ -2110,9 +2121,9 @@ Parsed Log Line Examples:
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-### Tracking Ability Resolution
+#### Tracking Ability Resolution
 
-Unfortunately, this is not trivial to know whether an ability has resolved, ghosted, or is still in-flight.
+Unfortunately, it is not trivial to know whether an ability has resolved, ghosted, or is still in-flight.
 For one, while the server does tell the client when an action has resolved,
 it does not tell the game when an action will not resolve (ghosting).
 However, the caster dying or target becoming untargetable is usually a decent indicator that something will not resolve.
@@ -2122,7 +2133,7 @@ Thus, you need to key off of both the sequence ID, *and* the target.
 
 Not every action will generate a corresponding 37-line.
 
-### HP Values
+#### HP Values
 
 Sometimes, only the current HP is present, rather than current and max.
 In this case, it should be assumed that the max HP is unchanged.
@@ -2134,7 +2145,7 @@ Other lines merely read the value from memory.
 That means that these three lines never have stale HP values,
 unlike other lines where the ACT plugin may have read values from memory before the game client has actually processed the packet.
 
-### Shield %
+#### Shield %
 
 37- and 38-lines have a field for shield percentage. This is the current shield percentage of the target, rounded to
 an integer. For example, if you have 3,000 HP worth of shields on a 20,000 hp entity, that would be a 15% shield.
@@ -2142,7 +2153,7 @@ an integer. For example, if you have 3,000 HP worth of shields on a 20,000 hp en
 More accurate shield values can sometimes be derived by looking at the sub-fields in 38-lines or 21/22-line action
 effects. The effects will contain the least significant byte of the real shield value.
 
-### MP Values
+#### MP Values
 
 The 'current MP' can actually be GP or CP rather than MP, if you are on a DoL or DoH class. However, the 'maximum' is
 actually hardcoded to 10000 in the FFXIV plugin.
