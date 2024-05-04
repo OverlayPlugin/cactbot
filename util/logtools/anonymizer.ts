@@ -134,13 +134,19 @@ export default class Anonymizer {
     if (!canAnonymizeSubField && !typeDef.canAnonymize)
       return;
 
+    const playerIds = typeDef.playerIds ?? {};
+    const possibleIds = typeDef.possiblePlayerIds ?? [];
+    possibleIds.forEach((id) => {
+      if (!(id in playerIds))
+        playerIds[id] = null;
+    });
+
     // If nothing to anonymize, we're done.
-    const playerIds = typeDef.playerIds;
-    if (playerIds === undefined)
+    if (Object.keys(playerIds).length === 0)
       return splitLine.join('|');
 
     // Anonymize fields.
-    for (const [idIdxStr, nameIdx] of Object.entries(playerIds)) {
+    for (const [idIdxStr, nameIdx] of Object.entries(playerIds ?? {})) {
       const idIdx = parseInt(idIdxStr);
       if (!this.isLogDefinitionFieldIdx(idIdx, typeDef.name)) {
         notifier.warn(`internal error: invalid field index: ${idIdx}`, splitLine);
@@ -149,6 +155,8 @@ export default class Anonymizer {
 
       const isOptional = typeDef.firstOptionalField !== undefined &&
         idIdx >= typeDef.firstOptionalField;
+
+      const isPossible = possibleIds.includes(idIdx);
 
       // Check for ids that are out of range, possibly optional.
       // The last field is always the hash, so don't include that either.
@@ -172,8 +180,8 @@ export default class Anonymizer {
       // Cutscenes get added combatant messages with ids such as 'FF000006' and no name.
       const isCutsceneId = playerId.startsWith('FF');
 
-      // Handle weirdly shaped ids.
-      if (playerId.length !== 8 || isCutsceneId) {
+      // Handle weirdly shaped ids (if not a 'possible' id field).
+      if (!isPossible && (playerId.length !== 8 || isCutsceneId)) {
         // Also, sometimes ids are '0000' or '0'.  Treat these the same as implicitly optional.
         const isZero = parseInt(playerId) === 0;
         if (isOptional || isZero || isCutsceneId) {
@@ -192,6 +200,17 @@ export default class Anonymizer {
       // Ignore monsters.
       if (playerId.startsWith('4'))
         continue;
+
+      // If it's a 'possible' field but not a playerId-like value, no need to anonymize.
+      // If a playerId-like value:
+      //   - If it's a known playerId, do nothing here (it will be silently anonymized later)
+      //   - If it's a new id, it could be a false positive, so give an awareness info msg.
+      if (isPossible) {
+        if (playerId.match(/^1.{7}$/) === null)
+          continue;
+        else if (!(playerId in this.anonMap))
+          notifier.info(`found & anonymized possible playerid ${playerId}`, splitLine);
+      }
 
       // Replace the id at this index with a fake player id.
       const fakePlayerId = this.anonMap[playerId] ??= this.addNewPlayer();

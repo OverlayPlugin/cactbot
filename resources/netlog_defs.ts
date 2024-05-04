@@ -29,7 +29,8 @@ export type LogDefinition<K extends LogDefinitionName> = {
   subFields?: LogDefSubFields<K>;
   // Map of field indices to anonymize, in the format: playerId: (optional) playerName.
   playerIds?: PlayerIdMap<K>;
-  // A list of field indices that may (or may not) contain player ids & will be anonymized.
+  // A list of field indices that may contains player ids and, if so, will be anonymized.
+  // If an index is listed here and in `playerIds`, it will be treated as a possible id field.
   possiblePlayerIds?: readonly LogDefFieldIdx<K>[];
   // A list of field indices that are ok to be blank (or have invalid ids).
   blankFields?: readonly LogDefFieldIdx<K>[];
