@@ -146,7 +146,7 @@ export default class Anonymizer {
       return splitLine.join('|');
 
     // Anonymize fields.
-    for (const [idIdxStr, nameIdx] of Object.entries(playerIds ?? {})) {
+    for (const [idIdxStr, nameIdx] of Object.entries(playerIds)) {
       const idIdx = parseInt(idIdxStr);
       if (!this.isLogDefinitionFieldIdx(idIdx, typeDef.name)) {
         notifier.warn(`internal error: invalid field index: ${idIdx}`, splitLine);
