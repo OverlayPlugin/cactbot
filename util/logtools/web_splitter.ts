@@ -35,7 +35,7 @@ const pageText = {
   },
   exportSelectedInput: {
     en: 'Export Selected',
-    fr: 'Experter la sélection',
+    fr: 'Exporter la sélection',
     cn: '导出已选择日志',
   },
   exportAllInput: {
