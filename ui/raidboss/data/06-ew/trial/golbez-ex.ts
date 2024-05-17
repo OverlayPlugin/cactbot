@@ -374,7 +374,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '(out + healer groups, for later)',
           de: '(raus + Heiler Gruppen, für später)',
-          fr: '(extérieur + gourpes sur les heals, pour après)',
+          fr: '(extérieur + groupes sur les heals, pour après)',
           ja: '(外 + 後でヒーラと4:4頭割り)',
           cn: '(钢铁 + 稍后治疗分组分摊)',
           ko: '(밖으로 + 힐러 그룹 쉐어, 나중에)',
@@ -391,7 +391,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '(in + spread, for later)',
           de: '(rein + verteilen, für später)',
-          fr: '(intérieur + écartement, pour après)',
+          fr: '(intérieur + dispersion, pour après)',
           ja: '(中 + 後で散会)',
           cn: '(月环 + 稍后分散)',
           ko: '(안 + 산개, 나중에)',
