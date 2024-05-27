@@ -437,7 +437,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Samen Adds => Donut AoEs',
           fr: 'Adds graine => AoEs Donut',
           ja: '種 => ドーナツAOE',
-          cn: '种子 => 距离衰减AoE',
+          cn: '种子 => 月环',
           ko: '씨앗 등장 => 도넛 장판',
         },
       },
