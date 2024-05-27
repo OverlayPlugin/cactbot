@@ -8982,6 +8982,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 4,
     'name': {
+      'cn': '阿修罗歼灭战',
       'de': 'Prophetie - Asura',
       'en': 'The Gilded Araya',
       'fr': 'Le temple doré d\'Araya',
@@ -9459,6 +9460,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 4,
     'name': {
+      'cn': '那双眼中映出的是',
       'de': 'Die Jagd ist eröffnet',
       'en': 'The Game Is Afoot',
       'fr': 'Par-delà l\'horizon',
