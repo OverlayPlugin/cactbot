@@ -29,7 +29,7 @@
     "editor.defaultFormatter": "dprint.dprint"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dprint.dprint"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "explorer.fileNesting.enabled": true,
