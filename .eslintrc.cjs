@@ -90,7 +90,7 @@ const rules = {
       'caseSensitive': true,
       'ignore': [
         '.*manifest\\.txt$',
-      ]
+      ],
     },
   ],
   'import/no-useless-path-segments': 'error',

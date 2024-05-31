@@ -8,7 +8,7 @@ const recurseDir = (dir: string): string[] => {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((file) => {
     const relPath = path.join(dir, file.name);
     if (file.isDirectory())
-return recurseDir(relPath);
+      return recurseDir(relPath);
     return relPath;
   });
 };
@@ -52,6 +52,6 @@ export default function manifestLoader(
 
         return `${importStr}\n${outputStr}`;
       })(),
-    }),
+    })
   );
 }
