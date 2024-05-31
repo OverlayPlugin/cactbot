@@ -26,7 +26,6 @@ export default defineConfig({
         test: 'ui/test/test.html',
       },
     },
-    minify: false,
   },
   plugins: [
     ...manifestLoader([
