@@ -1,6 +1,7 @@
 import isCI from 'is-ci';
 import type { UserConfig } from 'vite';
 import { checker } from 'vite-plugin-checker';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 import manifestLoader from './manifest-loader';
 
@@ -30,6 +31,23 @@ const config: UserConfig = {
     },
   },
   plugins: [
+    viteStaticCopy({
+      structured: true,
+      targets: [
+        {
+          src: 'resources/{ffxiv,sounds,images}/**/*',
+          dest: '',
+        },
+        {
+          src: 'ui/*/skins/**/*',
+          dest: '',
+        },
+        {
+          src: 'util/coverage/missing_translations*.html',
+          dest: '',
+        },
+      ],
+    }),
     ...manifestLoader([
       { dir: 'ui/raidboss/data', filename: 'raidboss_manifest.txt' },
       { dir: 'ui/oopsyraidsy/data', filename: 'oopsy_manifest.txt' },
