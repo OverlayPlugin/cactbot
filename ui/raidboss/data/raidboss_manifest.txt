@@ -1,2 +1,0 @@
-This is a dummy file to allow importing the dynamically generated manifest
-from webpack/loaders/manifest-loader.ts
