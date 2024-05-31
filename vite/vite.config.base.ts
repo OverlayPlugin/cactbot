@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
+import type { UserConfig } from 'vite';
 
 import manifestLoader from './manifest-loader';
 
-export default defineConfig({
+const config: UserConfig = {
   build: {
     rollupOptions: {
       input: {
@@ -33,4 +33,7 @@ export default defineConfig({
       { dir: 'ui/oopsyraidsy/data', filename: 'oopsy_manifest.txt' },
     ]),
   ],
-});
+};
+
+export default config;
+

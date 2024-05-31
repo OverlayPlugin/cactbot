@@ -18,9 +18,9 @@
     "package.json"
   ],
   "scripts": {
-    "build": "vite build --config vite/vite.config.ts",
-    "build-gh-pages": " webpack --config webpack/webpack.ghpages.ts",
-    "start": "webpack serve --config webpack/webpack.dev.ts",
+    "build": "vite build",
+    "build-gh-pages": "npm run build -- --sourcemap inline",
+    "start": "vite",
     "fetch-deps": "node --loader=ts-node/esm ./util/fetch_deps.ts",
     "tsc-no-emit": "tsc --noEmit",
     "lint": "run-s lint:**",

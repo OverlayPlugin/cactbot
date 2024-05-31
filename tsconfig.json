@@ -53,7 +53,8 @@
     "./util",
     "./test",
     "./webpack",
-    "./vite"
+    "./vite",
+    "./vite.config.ts"
   ],
   "exclude": [
     "./eslint",
