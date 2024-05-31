@@ -1,3 +1,5 @@
+import { resolve } from 'path';
+
 import isCI from 'is-ci';
 import type { UserConfig } from 'vite';
 import { checker } from 'vite-plugin-checker';
@@ -9,24 +11,62 @@ const config: UserConfig = {
   build: {
     rollupOptions: {
       input: {
-        config: 'ui/config/config.html',
-        coverage: 'util/coverage/coverage.html',
-        rdmty: 'ui/dps/rdmty/dps.html',
-        xephero: 'ui/dps/xephero/xephero-cactbot.html',
-        eureka: 'ui/eureka/eureka.html',
-        jobs: 'ui/jobs/jobs.html',
-        oopsyraidsyLive: 'ui/oopsyraidsy/oopsyraidsy.html',
-        oopsyraidsySummary: 'ui/oopsyraidsy/oopsy_summary.html',
-        oopsyraidsyViewer: 'ui/oopsyraidsy/oopsy_viewer.html',
-        pullcounter: 'ui/pullcounter/pullcounter.html',
-        radar: 'ui/radar/radar.html',
-        raidboss: 'ui/raidboss/raidboss.html',
-        raidbossAlertsOnly: 'ui/raidboss/raidboss_alerts_only.html',
-        raidbossTimelineOnly: 'ui/raidboss/raidboss_timeline_only.html',
-        raidbossSilent: 'ui/raidboss/raidboss_silent.html',
-        raidemulator: 'ui/raidboss/raidemulator.html',
-        splitter: 'util/logtools/splitter.html',
-        test: 'ui/test/test.html',
+        config: resolve(__dirname, '..', 'ui/config/config.html'),
+        coverage: resolve(__dirname, '..', 'util/coverage/coverage.html'),
+        rdmty: resolve(__dirname, '..', 'ui/dps/rdmty/dps.html'),
+        xephero: resolve(__dirname, '..', 'ui/dps/xephero/xephero-cactbot.html'),
+        eureka: resolve(__dirname, '..', 'ui/eureka/eureka.html'),
+        jobs: resolve(__dirname, '..', 'ui/jobs/jobs.html'),
+        oopsyraidsyLive: resolve(__dirname, '..', 'ui/oopsyraidsy/oopsyraidsy.html'),
+        oopsyraidsySummary: resolve(__dirname, '..', 'ui/oopsyraidsy/oopsy_summary.html'),
+        oopsyraidsyViewer: resolve(__dirname, '..', 'ui/oopsyraidsy/oopsy_viewer.html'),
+        pullcounter: resolve(__dirname, '..', 'ui/pullcounter/pullcounter.html'),
+        radar: resolve(__dirname, '..', 'ui/radar/radar.html'),
+        raidboss: resolve(__dirname, '..', 'ui/raidboss/raidboss.html'),
+        raidbossAlertsOnly: resolve(__dirname, '..', 'ui/raidboss/raidboss_alerts_only.html'),
+        raidbossTimelineOnly: resolve(__dirname, '..', 'ui/raidboss/raidboss_timeline_only.html'),
+        raidbossSilent: resolve(__dirname, '..', 'ui/raidboss/raidboss_silent.html'),
+        raidemulator: resolve(__dirname, '..', 'ui/raidboss/raidemulator.html'),
+        splitter: resolve(__dirname, '..', 'util/logtools/splitter.html'),
+        test: resolve(__dirname, '..', 'ui/test/test.html'),
+      },
+      output: {
+        chunkFileNames: '[name].bundle.js',
+        manualChunks: (id) => {
+          if (/ui\/raidboss\/data\/.*(?:ts|js|txt\?raw)$/.test(id)) {
+            return 'ui/common/raidboss_data';
+          }
+          if (/ui\/oopsyraidsy\/data\/.*(?:ts|js)$/.test(id)) {
+            return 'ui/common/oopsyraidsy_data';
+          }
+          if (/ui\/raidboss\/(?:raidemulator.ts$|emulator\/.*(?:ts|js)$)/.test(id)) {
+            return 'ui/raidboss/raidemulator';
+          }
+          if (!/\.(?:ts|js)$/.test(id)) {
+            return;
+          }
+
+          const modules = {
+            'ui/config/': 'ui/config/config',
+            'util/coverage/': 'util/coverage/coverage',
+            'ui/dps/rdmty/': 'ui/dps/rdmty/dps',
+            'ui/dps/xephero/': 'ui/dps/xephero/xephero',
+            'ui/eureka/': 'ui/eureka/eureka',
+            'ui/jobs/': 'ui/jobs/jobs',
+            'ui/oopsyraidsy/': 'ui/oopsyraidsy/oopsyraidsy',
+            'ui/pullcounter/': 'ui/pullcounter/pullcounter',
+            'ui/radar/': 'ui/radar/radar',
+            'ui/raidboss/': 'ui/raidboss/raidboss',
+            'util/logtools/': 'util/logtools/web_splitter',
+            'ui/test/': 'ui/test/test',
+          };
+
+          for (const [match, module] of Object.entries(modules)) {
+            if (id.includes(match)) {
+              return module;
+            }
+          }
+        },
       },
     },
   },
