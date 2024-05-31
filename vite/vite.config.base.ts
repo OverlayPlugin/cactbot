@@ -1,4 +1,6 @@
+import isCI from 'is-ci';
 import type { UserConfig } from 'vite';
+import { checker } from 'vite-plugin-checker';
 
 import manifestLoader from './manifest-loader';
 
@@ -32,6 +34,7 @@ const config: UserConfig = {
       { dir: 'ui/raidboss/data', filename: 'raidboss_manifest.txt' },
       { dir: 'ui/oopsyraidsy/data', filename: 'oopsy_manifest.txt' },
     ]),
+    ...(isCI ? [] : [checker({ typescript: true })]),
   ],
 };
 
