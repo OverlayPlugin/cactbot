@@ -293,8 +293,9 @@ export default class Anonymizer {
       const idFieldValue = (splitLine[idFieldValueIdx] ?? '').toUpperCase();
 
       // If not a playerId value, ignore.
-      // TODO: Could add warnings here for malformed values, but there are many cases
-      // where it's fine if it's not a playerId, so ignoring seems safer/less noisy.
+      // TODO: Could add warnings here for malformed values, but due to the nature of
+      // `CombatantMemory` data from OverlayPlugin, any `GameObject` could be returned
+      // in a line with malformed data if it's not a full combatant.
       if (idFieldValue.length !== 8 || !idFieldValue.startsWith('1'))
         continue;
 
@@ -317,12 +318,7 @@ export default class Anonymizer {
         notifier.warn(`expected player name after '${nameFieldKey}'`, splitLine);
         continue;
       }
-      const fakePlayerName = this.playerMap[fakePlayerId];
-      if (fakePlayerName === undefined) {
-        splitLine[nameFieldValueIdx] = '';
-        continue;
-      }
-      splitLine[nameFieldValueIdx] = fakePlayerName;
+      splitLine[nameFieldValueIdx] = this.playerMap[fakePlayerId] ?? '';
     }
 
     return splitLine;
