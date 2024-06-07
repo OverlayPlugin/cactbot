@@ -6,7 +6,7 @@ import Regexes from '../../resources/regexes';
 import { NetFields } from '../../types/net_fields';
 import { RepeatingFieldsExtract } from '../../types/net_props';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
-import { ExampleLineName, ExampleRegex } from '../../util/example_log_lines';
+import exampleLogLines, { ExampleLineName, ExampleRegex } from '../../util/example_log_lines';
 
 import { RegexUtilParams } from './regex_util';
 
@@ -21,7 +21,7 @@ export type TestFields<T extends ExampleLineName> = T extends ExampleLineNameWit
 
 export type UnitTest<T extends ExampleLineName> = {
   // the index of the example in 'en' (in /util/example_log_lines.ts) to test
-  indexToTest: number;
+  lineToTest: string;
   // override the regex to use for this test (as a func to support capture test)
   regexOverride?: Partial<ExampleRegex<RegexFunc<T>>>;
   expectedValues: TestFields<T>;
@@ -34,7 +34,7 @@ type LineTests = {
 const lineTests: LineTests = {
   GameLog: [
     { // test base GameLog regex
-      indexToTest: 4,
+      lineToTest: exampleLogLines['GameLog'].examples.en[4],
       expectedValues: {
         type: '00',
         code: '322A',
@@ -42,7 +42,7 @@ const lineTests: LineTests = {
       },
     },
     { // test message()
-      indexToTest: 0,
+      lineToTest: exampleLogLines['GameLog'].examples.en[0],
       regexOverride: {
         network: (params?) => NetRegexes.message(params),
         logLine: (params?) => Regexes.message(params),
@@ -54,7 +54,7 @@ const lineTests: LineTests = {
       },
     },
     { // test dialog()
-      indexToTest: 5,
+      lineToTest: exampleLogLines['GameLog'].examples.en[5],
       regexOverride: {
         network: (params?) => NetRegexes.dialog(params),
         logLine: (params?) => Regexes.dialog(params),
@@ -67,7 +67,7 @@ const lineTests: LineTests = {
       },
     },
     { // test echo()
-      indexToTest: 6,
+      lineToTest: exampleLogLines['GameLog'].examples.en[6],
       regexOverride: {
         network: (params?) => NetRegexes.echo(params),
         logLine: (params?) => Regexes.echo(params),
@@ -79,7 +79,7 @@ const lineTests: LineTests = {
       },
     },
     { // test gameNameLog()
-      indexToTest: 7,
+      lineToTest: exampleLogLines['GameLog'].examples.en[7],
       regexOverride: {
         network: (params?) => NetRegexes.gameNameLog(params),
         logLine: (params?) => Regexes.gameNameLog(params),
@@ -93,7 +93,7 @@ const lineTests: LineTests = {
     },
   ],
   ChangeZone: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['ChangeZone'].examples.en[0],
     expectedValues: {
       type: '01',
       id: '326',
@@ -101,7 +101,7 @@ const lineTests: LineTests = {
     },
   },
   ChangedPlayer: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['ChangedPlayer'].examples.en[0],
     expectedValues: {
       type: '02',
       id: '10FF0001',
@@ -110,7 +110,7 @@ const lineTests: LineTests = {
   },
   AddedCombatant: [
     {
-      indexToTest: 0,
+      lineToTest: exampleLogLines['AddedCombatant'].examples.en[0],
       expectedValues: {
         type: '03',
         id: '10FF0001',
@@ -133,7 +133,7 @@ const lineTests: LineTests = {
       },
     },
     { // test non-zero values for npcNameId/npcBaseId
-      indexToTest: 1,
+      lineToTest: exampleLogLines['AddedCombatant'].examples.en[1],
       expectedValues: {
         type: '03',
         id: '4000B364',
@@ -144,7 +144,7 @@ const lineTests: LineTests = {
     },
   ],
   RemovedCombatant: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['RemovedCombatant'].examples.en[0],
     expectedValues: {
       type: '04',
       id: '10FF0001',
@@ -166,14 +166,14 @@ const lineTests: LineTests = {
     },
   },
   PartyList: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['PartyList'].examples.en[0],
     expectedValues: {
       type: '11',
       partyCount: '8',
     },
   },
   PlayerStats: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['PlayerStats'].examples.en[0],
     expectedValues: {
       type: '12',
       job: '21',
@@ -196,7 +196,7 @@ const lineTests: LineTests = {
     },
   },
   StartsUsing: {
-    indexToTest: 1,
+    lineToTest: exampleLogLines['StartsUsing'].examples.en[1],
     expectedValues: {
       type: '20',
       sourceId: '10FF0001',
@@ -213,7 +213,7 @@ const lineTests: LineTests = {
     },
   },
   Ability: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['Ability'].examples.en[0],
     regexOverride: {
       network: (params?) => NetRegexes.ability(params),
       logLine: (params?) => Regexes.ability(params),
@@ -250,7 +250,7 @@ const lineTests: LineTests = {
     },
   },
   NetworkCancelAbility: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['NetworkCancelAbility'].examples.en[0],
     expectedValues: {
       type: '23',
       sourceId: '10FF0002',
@@ -261,7 +261,7 @@ const lineTests: LineTests = {
     },
   },
   NetworkDoT: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['NetworkDoT'].examples.en[0],
     expectedValues: {
       id: '10FF0001',
       name: 'Tini Poutini',
@@ -290,7 +290,7 @@ const lineTests: LineTests = {
     },
   },
   WasDefeated: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['WasDefeated'].examples.en[0],
     expectedValues: {
       type: '25',
       targetId: '10FF0002',
@@ -301,7 +301,7 @@ const lineTests: LineTests = {
   },
   GainsEffect: [
     {
-      indexToTest: 0,
+      lineToTest: exampleLogLines['GainsEffect'].examples.en[0],
       expectedValues: {
         type: '26',
         effectId: '35',
@@ -317,7 +317,7 @@ const lineTests: LineTests = {
       },
     },
     { // test non-zero count
-      indexToTest: 3,
+      lineToTest: exampleLogLines['GainsEffect'].examples.en[3],
       expectedValues: {
         type: '26',
         effectId: '8D1',
@@ -329,7 +329,7 @@ const lineTests: LineTests = {
     },
   ],
   HeadMarker: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['HeadMarker'].examples.en[0],
     expectedValues: {
       type: '27',
       targetId: '10FF0001',
@@ -338,7 +338,7 @@ const lineTests: LineTests = {
     },
   },
   NetworkRaidMarker: {
-    indexToTest: 1,
+    lineToTest: exampleLogLines['NetworkRaidMarker'].examples.en[1],
     expectedValues: {
       type: '28',
       operation: 'Add',
@@ -351,7 +351,7 @@ const lineTests: LineTests = {
     },
   },
   NetworkTargetMarker: {
-    indexToTest: 1,
+    lineToTest: exampleLogLines['NetworkTargetMarker'].examples.en[1],
     expectedValues: {
       type: '29',
       operation: 'Add',
@@ -364,7 +364,7 @@ const lineTests: LineTests = {
   },
   LosesEffect: [
     {
-      indexToTest: 0,
+      lineToTest: exampleLogLines['LosesEffect'].examples.en[0],
       expectedValues: {
         type: '30',
         effectId: '13A',
@@ -377,7 +377,7 @@ const lineTests: LineTests = {
       },
     },
     { // test non-zero count
-      indexToTest: 1,
+      lineToTest: exampleLogLines['LosesEffect'].examples.en[1],
       expectedValues: {
         type: '30',
         effectId: '77B',
@@ -387,7 +387,7 @@ const lineTests: LineTests = {
     },
   ],
   NetworkGauge: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['NetworkGauge'].examples.en[0],
     expectedValues: {
       type: '31',
       id: '10FF0001',
@@ -399,7 +399,7 @@ const lineTests: LineTests = {
   },
   ActorControl: [
     {
-      indexToTest: 0,
+      lineToTest: exampleLogLines['ActorControl'].examples.en[0],
       expectedValues: {
         type: '33',
         instance: '80034E6C',
@@ -411,7 +411,7 @@ const lineTests: LineTests = {
       },
     },
     {
-      indexToTest: 1,
+      lineToTest: exampleLogLines['ActorControl'].examples.en[1],
       expectedValues: {
         type: '33',
         instance: '80034E5B',
@@ -422,7 +422,7 @@ const lineTests: LineTests = {
     },
   ],
   NameToggle: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['NameToggle'].examples.en[0],
     expectedValues: {
       type: '34',
       id: '4001C51C',
@@ -433,7 +433,7 @@ const lineTests: LineTests = {
     },
   },
   Tether: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['Tether'].examples.en[0],
     expectedValues: {
       type: '35',
       sourceId: '40003202',
@@ -444,7 +444,7 @@ const lineTests: LineTests = {
     },
   },
   LimitBreak: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['LimitBreak'].examples.en[0],
     expectedValues: {
       type: '36',
       valueHex: '6A90',
@@ -452,7 +452,7 @@ const lineTests: LineTests = {
     },
   },
   NetworkEffectResult: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['NetworkEffectResult'].examples.en[0],
     expectedValues: {
       type: '37',
       id: '10FF0001',
@@ -470,7 +470,7 @@ const lineTests: LineTests = {
     },
   },
   StatusEffect: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['StatusEffect'].examples.en[0],
     expectedValues: {
       type: '38',
       targetId: '10FF0001',
@@ -492,7 +492,7 @@ const lineTests: LineTests = {
     },
   },
   NetworkUpdateHP: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['NetworkUpdateHP'].examples.en[0],
     expectedValues: {
       type: '39',
       id: '10FF0001',
@@ -508,7 +508,7 @@ const lineTests: LineTests = {
     },
   },
   Map: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['Map'].examples.en[0],
     expectedValues: {
       type: '40',
       id: '578',
@@ -518,7 +518,7 @@ const lineTests: LineTests = {
     },
   },
   SystemLogMessage: {
-    indexToTest: 1,
+    lineToTest: exampleLogLines['SystemLogMessage'].examples.en[1],
     expectedValues: {
       type: '41',
       instance: '8004001E',
@@ -529,7 +529,7 @@ const lineTests: LineTests = {
     },
   },
   StatusList3: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['StatusList3'].examples.en[0],
     expectedValues: {
       type: '42',
       id: '10FF0001',
@@ -537,7 +537,7 @@ const lineTests: LineTests = {
     },
   },
   LineRegistration: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['LineRegistration'].examples.en[0],
     expectedValues: {
       type: '256',
       id: '257',
@@ -547,7 +547,7 @@ const lineTests: LineTests = {
     },
   },
   MapEffect: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['MapEffect'].examples.en[0],
     expectedValues: {
       type: '257',
       instance: '800375A9',
@@ -558,7 +558,7 @@ const lineTests: LineTests = {
     },
   },
   FateDirector: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['FateDirector'].examples.en[0],
     expectedValues: {
       type: '258',
       category: 'Add',
@@ -567,7 +567,7 @@ const lineTests: LineTests = {
     },
   },
   CEDirector: {
-    indexToTest: 2,
+    lineToTest: exampleLogLines['CEDirector'].examples.en[2],
     expectedValues: {
       type: '259',
       popTime: '63291786',
@@ -579,7 +579,7 @@ const lineTests: LineTests = {
     },
   },
   InCombat: {
-    indexToTest: 1,
+    lineToTest: exampleLogLines['InCombat'].examples.en[1],
     expectedValues: {
       type: '260',
       inACTCombat: '1',
@@ -589,7 +589,7 @@ const lineTests: LineTests = {
     },
   },
   CombatantMemory: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['CombatantMemory'].examples.en[0],
     expectedValues: {
       type: '261',
       change: 'Add',
@@ -617,7 +617,7 @@ const lineTests: LineTests = {
     },
   },
   RSVData: {
-    indexToTest: 1,
+    lineToTest: exampleLogLines['RSVData'].examples.en[1],
     expectedValues: {
       type: '262',
       locale: 'en',
@@ -626,7 +626,7 @@ const lineTests: LineTests = {
     },
   },
   StartsUsingExtra: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['StartsUsingExtra'].examples.en[0],
     expectedValues: {
       type: '263',
       sourceId: '10001234',
@@ -637,7 +637,7 @@ const lineTests: LineTests = {
     },
   },
   AbilityExtra: {
-    indexToTest: 2,
+    lineToTest: exampleLogLines['AbilityExtra'].examples.en[2],
     expectedValues: {
       type: '264',
       sourceId: '40000D6E',
@@ -650,7 +650,7 @@ const lineTests: LineTests = {
     },
   },
   ContentFinderSettings: {
-    indexToTest: 2,
+    lineToTest: exampleLogLines['ContentFinderSettings'].examples.en[2],
     expectedValues: {
       type: '265',
       zoneId: '415',
@@ -664,7 +664,7 @@ const lineTests: LineTests = {
     },
   },
   NpcYell: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['NpcYell'].examples.en[0],
     expectedValues: {
       type: '266',
       npcId: '4001F001',
@@ -673,7 +673,7 @@ const lineTests: LineTests = {
     },
   },
   BattleTalk2: {
-    indexToTest: 2,
+    lineToTest: exampleLogLines['BattleTalk2'].examples.en[2],
     expectedValues: {
       type: '267',
       npcId: '4001FFC4',
@@ -684,7 +684,7 @@ const lineTests: LineTests = {
     },
   },
   Countdown: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['Countdown'].examples.en[0],
     expectedValues: {
       type: '268',
       id: '10FF0001',
@@ -695,7 +695,7 @@ const lineTests: LineTests = {
     },
   },
   CountdownCancel: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['CountdownCancel'].examples.en[0],
     expectedValues: {
       type: '269',
       id: '10FF0001',
@@ -704,7 +704,7 @@ const lineTests: LineTests = {
     },
   },
   ActorMove: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['ActorMove'].examples.en[0],
     expectedValues: {
       type: '270',
       id: '4000F1D3',
@@ -715,7 +715,7 @@ const lineTests: LineTests = {
     },
   },
   ActorSetPos: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['ActorSetPos'].examples.en[0],
     expectedValues: {
       type: '271',
       id: '4000F3B7',
@@ -726,7 +726,7 @@ const lineTests: LineTests = {
     },
   },
   SpawnNpcExtra: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['SpawnNpcExtra'].examples.en[0],
     expectedValues: {
       type: '272',
       id: '4000226B',
@@ -736,7 +736,7 @@ const lineTests: LineTests = {
     },
   },
   ActorControlExtra: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['ActorControlExtra'].examples.en[0],
     expectedValues: {
       type: '273',
       id: '4000A145',
@@ -748,7 +748,7 @@ const lineTests: LineTests = {
     },
   },
   ActorControlSelfExtra: {
-    indexToTest: 0,
+    lineToTest: exampleLogLines['ActorControlSelfExtra'].examples.en[0],
     expectedValues: {
       type: '274',
       id: '10001234',

@@ -10,7 +10,7 @@ import { buildRegex } from '../resources/regexes';
 import LogRepository from '../ui/raidboss/emulator/data/network_log_converter/LogRepository';
 import ParseLine from '../ui/raidboss/emulator/data/network_log_converter/ParseLine';
 
-import lineDocs, { ExampleLineName } from './example_log_lines';
+import lineDocs, { ExampleLineDef, ExampleLineName } from './example_log_lines';
 
 const curPath = path.resolve();
 
@@ -165,7 +165,7 @@ const config: markdownMagic.Configuration = {
       }
       const examplesLang = localeToLang(locale);
 
-      const lineDoc = lineDocs[lineType];
+      const lineDoc: ExampleLineDef = lineDocs[lineType];
 
       mappedLogLines[locale] ??= [];
       mappedLogLines[locale]?.push(lineType);

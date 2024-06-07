@@ -45,7 +45,7 @@ type ExampleLines = {
   [T in ExampleLineName]: ExampleLineDef;
 };
 
-const exampleLogLines: ExampleLines = {
+const exampleLogLines = {
   GameLog: {
     regexes: {
       network: NetRegexes.gameLog({ capture: true }).source,
@@ -561,6 +561,10 @@ const exampleLogLines: ExampleLines = {
       ],
     },
   },
-};
+} as const;
+
+// Verify typing (e.g. required line types are present), but export `as const`.
+const assertExampleLogLines: ExampleLines = exampleLogLines;
+console.assert(assertExampleLogLines);
 
 export default exampleLogLines;

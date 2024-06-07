@@ -23,6 +23,7 @@ export class RegexTestUtil {
   private unitTests: UnitTest<typeof this.type>[];
   private baseFunc: (params?: RegexUtilParams) => RegExp;
   private logLineMode: boolean;
+  private repo?: LogRepository;
 
   constructor(
     type: ExampleLineName,
@@ -35,8 +36,11 @@ export class RegexTestUtil {
     this.baseFunc = baseFunc;
     this.logLineMode = logLineMode;
     this.unitTests = this.getUnitTests(type);
-    if (logLineMode)
+
+    if (logLineMode) {
+      this.repo = new LogRepository();
       this.convertLinesToLogLineFormat();
+    }
   }
 
   // Because TypeScript can't narrow `this` across methods, this helper also
@@ -73,15 +77,24 @@ export class RegexTestUtil {
   }
 
   // Reformat example lines to match log line format
-  private convertLinesToLogLineFormat(): void {
-    const repo = new LogRepository();
-    const newLines = this.lines.map((ll) => {
-      const line = ParseLine.parse(repo, ll);
+  // If the (optional) string param is passed, it will return a string with the reformatted line
+  // Otherwise, it will convert all log lines in this.lines
+  private convertLinesToLogLineFormat(testline?: string): string | undefined {
+    if (this.repo === undefined)
+      return;
+
+    // If the optional string param is passed, convert and return only that line
+    if (testline !== undefined)
+      return ParseLine.parse(this.repo, testline)?.convertedLine;
+
+    // Otherwise, convert all lines in `this.lines`.
+    this.lines = this.lines.map((ll) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const line = ParseLine.parse(this.repo!, ll);
       if (!line)
         throw new UnreachableCode();
       return line.convertedLine;
     });
-    this.lines = newLines;
   }
 
   // An automated way to test standard regex functions that take a dictionary of fields.
@@ -211,10 +224,12 @@ export class RegexTestUtil {
   private doUnitTest(
     unitTest: UnitTest<typeof this.type>,
   ): void {
-    const idx = unitTest.indexToTest;
-    const testLine = this.lines[idx];
+    const testLine = this.logLineMode
+      ? this.convertLinesToLogLineFormat(unitTest.lineToTest)
+      : unitTest.lineToTest;
+
     if (testLine === undefined)
-      assert.fail('actual', 'expected', `Invalid index '${idx}' for unit testing`);
+      assert.fail('actual', 'expected', `Invalid example line, or cannot be converted.`);
 
     // If an override is specified for a particular unit test, do a capture test
     // for that override first
