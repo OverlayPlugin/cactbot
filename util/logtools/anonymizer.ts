@@ -13,6 +13,11 @@ import FakeNameGenerator from './fake_name_generator';
 import { Notifier } from './notifier';
 import { ReindexedLogDefs } from './splitter';
 
+// TODO: Anonymizer currently finds/replaces player ids (potentially paired with a player name).
+// There are a few edge cases (Countdown/CountdownCancel) where a player name may apepar
+// with no corresponding id (e.g. a blank id). We don't currently handle that scenario given the
+// non-likelihood of occurence, but this could be handled in the future.
+
 // TODO: is the first byte of ids always flags, such that "..000000" is always empty?
 const emptyIds = ['E0000000', '80000000'];
 export default class Anonymizer {
