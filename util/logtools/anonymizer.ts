@@ -20,6 +20,7 @@ import { ReindexedLogDefs } from './splitter';
 
 // TODO: is the first byte of ids always flags, such that "..000000" is always empty?
 const emptyIds = ['E0000000', '80000000'];
+
 export default class Anonymizer {
   private logTypes: ReindexedLogDefs;
 
@@ -87,7 +88,7 @@ export default class Anonymizer {
   }
 
   public process(line: string, notifier: Notifier): string | undefined {
-    const splitLine = line.split('|');
+    let splitLine = line.split('|');
 
     // Improperly closed files can leave a blank line.
     const type = splitLine[0];
@@ -109,6 +110,8 @@ export default class Anonymizer {
 
     // Check subfields first before canAnonymize.
     // Subfields override the main type, if present.
+    // TODO: Maybe add support for anonymizing based on subfields that are repeating fields?
+    // But no current use case for this.
     let canAnonymizeSubField = false;
     if (typeDef.subFields) {
       for (const subFieldName in typeDef.subFields) {
@@ -146,8 +149,11 @@ export default class Anonymizer {
         playerIds[id] = null;
     });
 
+    const rfToAnonymize = typeDef.repeatingFields?.keysToAnonymize;
+    const hasRFToAnonymize = rfToAnonymize !== undefined;
+
     // If nothing to anonymize, we're done.
-    if (Object.keys(playerIds).length === 0)
+    if (Object.keys(playerIds).length === 0 && !hasRFToAnonymize)
       return splitLine.join('|');
 
     // Anonymize fields.
@@ -233,6 +239,22 @@ export default class Anonymizer {
       }
     }
 
+    // Anonymize repeating fields.
+    if (hasRFToAnonymize) {
+      const startIdx = typeDef.repeatingFields?.startingIndex;
+      if (startIdx === undefined) {
+        notifier.warn('internal error: missing starting index for repeating fields', splitLine);
+        return;
+      }
+
+      splitLine = this.anonymizeRepeatingFields(
+        rfToAnonymize,
+        splitLine,
+        startIdx,
+        notifier,
+      );
+    }
+
     // For unknown fields, just clear them, as they may have ids.
     if (typeDef.firstUnknownField !== undefined) {
       for (let idx = typeDef.firstUnknownField; idx < splitLine.length - 1; ++idx)
@@ -240,6 +262,70 @@ export default class Anonymizer {
     }
 
     return splitLine.join('|');
+  }
+
+  // This method assumes that repeating fields use the current `CombatantMemory` structure
+  // of key/value pairs, e.g. Key1|Value1|...|KeyN|ValueN|.
+  // If other structures are used, this method will need to be updated.
+  private anonymizeRepeatingFields(
+    rfToAnonymize: { [key: string | number]: string | number | null },
+    splitLine: string[],
+    startIdx: number,
+    notifier: Notifier,
+  ): string[] {
+    for (const [idFieldKey, nameFieldKey] of Object.entries(rfToAnonymize)) {
+      let idFieldKeyIdx: number;
+      let idIsRepeatingField = true; // default assumption
+
+      if (typeof idFieldKey === 'number' || !isNaN(parseInt(idFieldKey))) {
+        idIsRepeatingField = false;
+        idFieldKeyIdx = parseInt(idFieldKey);
+      } else
+        idFieldKeyIdx = splitLine.findIndex((field, idx) =>
+          idx >= startIdx && field === idFieldKey
+        );
+
+      // ID field is not present; not an error condition for repeating fields.
+      if (idFieldKeyIdx === -1)
+        continue;
+
+      const idFieldValueIdx = idIsRepeatingField ? idFieldKeyIdx + 1 : idFieldKeyIdx;
+      const idFieldValue = (splitLine[idFieldValueIdx] ?? '').toUpperCase();
+
+      // If not a playerId value, ignore.
+      // TODO: Could add warnings here for malformed values, but there are many cases
+      // where it's fine if it's not a playerId, so ignoring seems safer/less noisy.
+      if (idFieldValue.length !== 8 || !idFieldValue.startsWith('1'))
+        continue;
+
+      const fakePlayerId = this.anonMap[idFieldValue] ??= this.addNewPlayer();
+      splitLine[idFieldValueIdx] = fakePlayerId;
+
+      // If no name field is paired with this id field, we're done.
+      if (nameFieldKey === null)
+        continue;
+
+      const nameFieldKeyIdx = splitLine.findIndex((field, idx) =>
+        idx >= startIdx && field === nameFieldKey
+      );
+      if (nameFieldKeyIdx === -1)
+        continue;
+
+      const nameFieldValueIdx = nameFieldKeyIdx + 1;
+      const playerName = splitLine[nameFieldValueIdx];
+      if (playerName === undefined || playerName === '') {
+        notifier.warn(`expected player name after '${nameFieldKey}'`, splitLine);
+        continue;
+      }
+      const fakePlayerName = this.playerMap[fakePlayerId];
+      if (fakePlayerName === undefined) {
+        splitLine[nameFieldValueIdx] = '';
+        continue;
+      }
+      splitLine[nameFieldValueIdx] = fakePlayerName;
+    }
+
+    return splitLine;
   }
 
   private addNewPlayer(): string {

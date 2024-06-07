@@ -44,6 +44,11 @@ export type LogDefinition<K extends LogDefinitionName> = {
     sortKeys?: boolean;
     primaryKey: string;
     possibleKeys: readonly string[];
+    // Repeating fields that will be anonymized if present. Same structure as `playerIds`,
+    // but uses repeating field keys (names) in place of field indices. However, the 'id' field
+    // of an id/name pair can be a fixed field index. See `CombatantMemory` example.
+    keysToAnonymize?: K extends RepeatingFieldsTypes ? { [idField: string | number]: string | null }
+      : never;
   };
   // See `AnalysisOptions` type. Omitting this property means no log lines will be included;
   // however, if raidboss triggers are found using this line type, an automated workflow will
@@ -1267,12 +1272,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: 5,
-    // TODO: fix this data structure and anonymizer to be able to handle repeatingFields.
-    // At the very least, Name and PCTargetID need to be anonymized as well.
-    firstUnknownField: 4,
-    playerIds: {
-      3: null,
-    },
+    // doesn't use `playerIds`, as the `id` field must be handled with the 'Name' repeating field
     repeatingFields: {
       startingIndex: 4,
       label: 'pair',
@@ -1280,6 +1280,15 @@ const latestLogDefinitions = {
       sortKeys: true,
       primaryKey: 'key',
       possibleKeys: combatantMemoryKeys,
+      keysToAnonymize: {
+        // eslint-disable-next-line quote-props
+        3: 'Name', // 'ID' repeating field not used? need to use non-repeating `id` (3) field
+        'OwnerID': null,
+        'TargetID': null,
+        'PCTargetID': null,
+        'NPCTargetID': null,
+        'CastTargetID': null,
+      },
     },
     analysisOptions: {
       include: 'filter',
