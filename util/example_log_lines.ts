@@ -2,6 +2,8 @@
 // Use `npm run generate-log-guide` after updating this file.
 // Also make sure to add unit tests in /test/helper/example_log_lines_test_data.ts.
 
+// cactbot-ignore-all-missing-translations
+
 import { Lang } from '../resources/languages';
 import { LogDefinitionName } from '../resources/netlog_defs';
 import NetRegexes from '../resources/netregexes';

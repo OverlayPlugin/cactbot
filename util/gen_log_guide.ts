@@ -41,6 +41,7 @@ type LocaleText = LocaleObject<string>;
 
 type LangStrings =
   & {
+    // cactbot-ignore-missing-translations
     en: readonly string[];
   }
   & {
