@@ -1,3 +1,4 @@
+import { Lang } from '../../../../resources/languages';
 import { UnreachableCode } from '../../../../resources/not_reached';
 import { EventResponses, LogEvent } from '../../../../types/event';
 import { RaidbossFileData } from '../../../../types/trigger';
@@ -261,5 +262,9 @@ export default class RaidEmulatorPopupText extends StubbedPopupText {
       element: $e,
       expires: endTimestamp,
     });
+  }
+
+  setParserLanguage(lang: Lang): void {
+    this.parserLang = lang;
   }
 }
