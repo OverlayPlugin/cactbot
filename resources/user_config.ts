@@ -463,7 +463,12 @@ class UserConfig {
             fetch(link).then((response) => {
               if (!response.ok) {
                 console.log(`*** ERROR: Failed to fetch remote subscription link: ${link}`);
-                reject(new Error('Fetch failed'));
+                if (String(savedRemoteFiles[link])) {
+                  remoteFiles[link] = savedRemoteFiles[link] as string;
+                  resolve(savedRemoteFiles[link]);
+                } else {
+                  reject(new Error('Fetch failed'));
+                }
               }
               return response.text();
             }).then((text) => {
