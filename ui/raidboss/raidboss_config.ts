@@ -1607,7 +1607,8 @@ const userFileHandler: UserFileCallback = (
 
     // `filename` here is just cosmetic for better debug printing to make it more clear
     // where a trigger or an override is coming from.
-    set.filename = `${basePath}${name}`;
+    const isRemote = name.startsWith('http://') || name.startsWith('https://');
+    set.filename = isRemote ? name : `${basePath}${name}`;
     set.isUserTriggerSet = true;
 
     flattenTimeline(set, name, files);
@@ -2527,6 +2528,19 @@ const templateOptions: OptionsTemplate = {
       },
       type: 'float',
       default: 0.75,
+    },
+    {
+      id: 'RaidbossRemoteSubscriptionLink',
+      name: {
+        en: 'Raidboss remote subscription link',
+        de: 'Raidboss Remote Abonnement Link',
+        fr: 'Lien de souscription Raidboss à distance',
+        ja: 'Raidboss リモートサブスクリプションリンク',
+        cn: 'Raidboss 远程订阅链接',
+        ko: 'Raidboss 원격 구독 링크',
+      },
+      type: 'multiline',
+      default: '',
     },
   ],
 };

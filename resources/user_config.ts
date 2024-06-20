@@ -60,7 +60,7 @@ export type ConfigEntry = {
   id: string;
   comment?: Partial<LocaleText>;
   name: LocaleText;
-  type: 'checkbox' | 'select' | 'float' | 'integer' | 'string' | 'directory' | 'html';
+  type: 'checkbox' | 'select' | 'float' | 'integer' | 'string' | 'directory' | 'html' | 'multiline';
   html?: LocaleText;
   // This must be a valid option even if there is a setterFunc, as `_getOptionLeafHelper`
   // for the config ui reads from the SavedConfig directly rather than post-setterFunc.
@@ -92,6 +92,28 @@ export type OptionsTemplate = {
     savedConfig: SavedConfigEntry,
   ) => void;
   options: ConfigEntry[];
+};
+
+type UserFiles = { [filename: string]: string };
+
+const kStorageKey = 'cactbot-remote-user-files';
+const saveRemoteFiles = (files: UserFiles) => {
+  try {
+    window.localStorage.setItem(kStorageKey, JSON.stringify(files));
+  } catch (e) {
+    console.log('*** Error saving remote files: ', e);
+  }
+};
+const loadRemoteFiles = (): UserFiles => {
+  const str = window.localStorage.getItem(kStorageKey);
+  if (str === null || !(str.startsWith('{') && str.endsWith('}')))
+    return {};
+  try {
+    return JSON.parse(str) as UserFiles;
+  } catch (_e) {
+    console.log('*** Error loading remote files: ', _e);
+    return {};
+  }
 };
 
 class UserConfig {
@@ -362,16 +384,24 @@ class UserConfig {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const variableTracker: { [fieldName: string]: unknown } = {};
 
-      if (localFiles) {
+      const loadFiles = (type: 'local' | 'remote', files: UserFiles) => {
         // localFiles may be null if there is no valid user directory.
-        const sortedFiles = this.sortUserFiles(Object.keys(localFiles));
-        const jsFiles = this.filterUserFiles(sortedFiles, overlayName, '.js');
-        const cssFiles = loadCss ? this.filterUserFiles(sortedFiles, overlayName, '.css') : [];
+        const sortedFiles = this.sortUserFiles(Object.keys(files));
+        const jsFiles = type === 'local'
+          ? this.filterUserFiles(sortedFiles, overlayName, '.js')
+          : sortedFiles.filter((f) => f.endsWith('.js'));
+        const cssFiles = loadCss
+          ? type === 'local'
+            ? this.filterUserFiles(sortedFiles, overlayName, '.css')
+            : sortedFiles.filter((f) => f.endsWith('.css'))
+          : [];
 
         for (const jsFile of jsFiles) {
           try {
-            printUserFile(`local user file: ${basePath}${jsFile}`);
-            this.evalUserFile(localFiles[jsFile] ?? '', options);
+            printUserFile(
+              `${type} user file: ${type === 'local' ? basePath + jsFile : jsFile}`,
+            );
+            this.evalUserFile(files[jsFile] ?? '', options);
 
             for (const field of warnOnVariableResetMap[overlayName] ?? []) {
               const value = variableTracker[field];
@@ -385,7 +415,7 @@ class UserConfig {
               variableTracker[field] = options[field];
             }
 
-            this.userFileCallbacks[overlayName]?.(jsFile, localFiles, options, basePath);
+            this.userFileCallbacks[overlayName]?.(jsFile, files, options, basePath);
           } catch (e) {
             // Be very visible for users.
             console.log('*** ERROR IN USER FILE ***');
@@ -400,15 +430,66 @@ class UserConfig {
           this.handleSkin(options.Skin);
 
         for (const cssFile of cssFiles) {
-          printUserFile(`local user file: ${basePath}${cssFile}`);
+          printUserFile(
+            `${type} user file: ${type === 'local' ? basePath + cssFile : cssFile}`,
+          );
           const userCssText = document.createElement('style');
-          const contents = localFiles[cssFile];
+          const contents = files[cssFile];
           if (contents !== undefined)
             userCssText.innerText = contents;
           const head = document.getElementsByTagName('head')[0];
           if (head)
             head.appendChild(userCssText);
         }
+      };
+
+      if (localFiles) {
+        loadFiles('local', localFiles);
+      }
+
+      const remoteSubscriptionLink = this.savedConfig[overlayName]
+        ?.[
+          `${
+            overlayName.charAt(0).toUpperCase() + overlayName.slice(1)
+          }RemoteSubscriptionLink` as keyof SavedConfigEntry
+        ] as string | undefined;
+
+      if (typeof remoteSubscriptionLink === 'string' && remoteSubscriptionLink.length > 0) {
+        const savedRemoteFiles = loadRemoteFiles();
+        const remoteFiles: { [link: string]: string } = {};
+        const promises = remoteSubscriptionLink.split('\n').map((l) => {
+          const link = l.trim();
+          return new Promise((resolve, reject) => {
+            fetch(link).then((response) => {
+              if (!response.ok) {
+                console.log(`*** ERROR: Failed to fetch remote subscription link: ${link}`);
+                reject(new Error('Fetch failed'));
+              }
+              return response.text();
+            }).then((text) => {
+              if (!text) {
+                console.log(`*** ERROR: Empty response from remote subscription link: ${link}`);
+                reject(new Error('Empty response'));
+              }
+              remoteFiles[link] = text;
+              resolve(text);
+            }).catch((error) => {
+              reject(error);
+            });
+
+            setTimeout(() => {
+              if (String(savedRemoteFiles[link])) {
+                remoteFiles[link] = savedRemoteFiles[link] as string;
+                resolve(savedRemoteFiles[link]);
+              } else {
+                reject(new Error('Timeout'));
+              }
+            }, 5000);
+          });
+        });
+        await Promise.all(promises);
+        saveRemoteFiles(remoteFiles);
+        loadFiles('remote', remoteFiles);
       }
 
       // Post this callback so that the js and css can be executed first.

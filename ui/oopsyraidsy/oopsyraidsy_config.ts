@@ -434,6 +434,19 @@ const templateOptions: OptionsTemplate = {
       type: 'float',
       default: 2,
     },
+    {
+      id: 'OopsyraidsyRemoteSubscriptionLink',
+      name: {
+        en: 'Oopsyraidsy remote subscription link',
+        de: 'Oopsyraidsy Remote Abonnement Link',
+        fr: 'Lien de souscription Oopsyraidsy à distance',
+        ja: 'Oopsyraidsy リモートサブスクリプションリンク',
+        cn: 'Oopsyraidsy 远程订阅链接',
+        ko: 'Oopsyraidsy 원격 구독 링크',
+      },
+      type: 'multiline',
+      default: '',
+    },
   ],
 };
 
@@ -458,7 +471,8 @@ const userFileHandler: UserFileCallback = (
 
     // `filename` here is just cosmetic for better debug printing to make it more clear
     // where a trigger or an override is coming from.
-    set.filename = `${basePath}${name}`;
+    const isRemote = name.startsWith('http://') || name.startsWith('https://');
+    set.filename = isRemote ? name : `${basePath}${name}`;
     set.isUserTriggerSet = true;
   }
 };

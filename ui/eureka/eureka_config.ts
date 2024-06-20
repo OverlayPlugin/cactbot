@@ -194,5 +194,18 @@ UserConfig.registerOptions('eureka', {
         options['RefreshRateMs'] = seconds * 1000;
       },
     },
+    {
+      id: 'EurekaRemoteSubscriptionLink',
+      name: {
+        en: 'Eureka remote subscription link',
+        de: 'Eureka Remote Abonnement Link',
+        fr: 'Lien de souscription Eureka à distance',
+        ja: 'Eureka リモートサブスクリプションリンク',
+        cn: 'Eureka 远程订阅链接',
+        ko: 'Eureka 원격 구독 링크',
+      },
+      type: 'multiline',
+      default: '',
+    },
   ],
 });

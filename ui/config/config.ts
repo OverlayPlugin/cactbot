@@ -542,6 +542,9 @@ export class CactbotConfigurator {
       case 'directory':
         this.buildDirectory(derivedOptions, groupDiv, opt, group, path);
         break;
+      case 'multiline':
+        this.buildMultiline(derivedOptions, groupDiv, opt, group, path);
+        break;
       default:
         console.error(`unknown type: ${JSON.stringify(opt)}`);
         break;
@@ -843,6 +846,45 @@ export class CactbotConfigurator {
     const setFunc = () => this.setOption(group, optIdPath, input.value);
     input.onchange = setFunc;
     input.oninput = setFunc;
+
+    parent.appendChild(this.buildLeftDiv(opt));
+    parent.appendChild(div);
+  }
+
+  buildMultiline(
+    options: BaseOptions,
+    parent: HTMLElement,
+    opt: ConfigEntry,
+    group: string,
+    path?: string[],
+  ): void {
+    const div = document.createElement('div');
+    div.classList.add('option-input-container');
+
+    const textarea = document.createElement('textarea');
+    textarea.classList.add('input-string-field');
+    div.appendChild(textarea);
+
+    const optIdPath = [...path ?? [], opt.id];
+    const optDefault = getOptDefault(opt, options);
+    textarea.placeholder = optDefault.toString();
+    textarea.value = this.getStringOption(
+      group,
+      optIdPath,
+      optDefault.toString(),
+    ).toString();
+    const calcSize = () => {
+      textarea.rows = textarea.value.split('\n').length;
+      const maxWidth = Math.max(...textarea.value.split('\n').map((line) => line.length));
+      textarea.style.width = `${Math.max(maxWidth + 10, 50)}ch`;
+    };
+    calcSize();
+    const setFunc = () => this.setOption(group, optIdPath, textarea.value);
+    textarea.onchange = setFunc;
+    textarea.oninput = () => {
+      calcSize();
+      setFunc();
+    };
 
     parent.appendChild(this.buildLeftDiv(opt));
     parent.appendChild(div);

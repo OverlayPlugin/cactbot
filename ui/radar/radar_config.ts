@@ -119,5 +119,18 @@ UserConfig.registerOptions('radar', {
       type: 'checkbox',
       default: true,
     },
+    {
+      id: 'RadarRemoteSubscriptionLink',
+      name: {
+        en: 'Radar remote subscription link',
+        de: 'Radar Remote Abonnement Link',
+        fr: 'Lien de souscription Radar à distance',
+        ja: 'Radar リモートサブスクリプションリンク',
+        cn: 'Radar 远程订阅链接',
+        ko: 'Radar 원격 구독 링크',
+      },
+      type: 'multiline',
+      default: '',
+    },
   ],
 });

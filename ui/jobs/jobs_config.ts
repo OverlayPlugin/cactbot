@@ -296,5 +296,18 @@ UserConfig.registerOptions('jobs', {
       },
       default: 'threshold',
     },
+    {
+      id: 'JobsRemoteSubscriptionLink',
+      name: {
+        en: 'Jobs remote subscription link',
+        de: 'Jobs Remote Abonnement Link',
+        fr: 'Lien de souscription Jobs à distance',
+        ja: 'Jobs リモートサブスクリプションリンク',
+        cn: 'Jobs 远程订阅链接',
+        ko: 'Jobs 원격 구독 링크',
+      },
+      type: 'multiline',
+      default: '',
+    },
   ],
 });
