@@ -176,16 +176,16 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
     const nameEn = record.fields.BNpcName?.fields.Singular ?? '';
     const nameDe = record.fields.BNpcName?.fields['Singular@de'] ?? '';
     const nameFr = record.fields.BNpcName?.fields['Singular@fr'] ?? '';
-    const nameJp = record.fields.BNpcName?.fields['Singular@ja'] ?? '';
+    const nameJa = record.fields.BNpcName?.fields['Singular@ja'] ?? '';
 
-    if (nameEn === '' || nameDe === '' || nameFr === '' || nameJp === '')
+    if (nameEn === '' || nameDe === '' || nameFr === '' || nameJa === '')
       continue;
 
     const localeNames: LocaleTextOrArray = {
       'de': deLocaleSubstitutions(nameDe),
       'en': nameEn,
       'fr': nameFr,
-      'ja': nameJp,
+      'ja': nameJa,
     };
 
     const cnLocaleEntry = localeCsvTables.cn[nameId];

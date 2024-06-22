@@ -57,9 +57,9 @@ const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
 
   for (const record of apiData) {
     const id = record.row_id;
-
     const rateArr = record.fields.Rate;
     const weatherArr = record.fields.Weather;
+
     if (rateArr === undefined || weatherArr === undefined)
       continue;
 
@@ -69,16 +69,11 @@ const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
     let sumRate = 0;
 
     for (let v = 0; v < entries; v++) {
-      const rate = rateArr[v];
-      const weather = weatherArr[v]?.fields?.Name;
+      const rate = rateArr[v] ?? 0;
+      const weather = weatherArr[v]?.fields?.Name ?? '';
 
-      // stop processing for this ID on the first empty/null weather string
-      if (
-        rate === undefined ||
-        rate === 0 ||
-        weather === undefined ||
-        weather === ''
-      )
+      // stop processing for this ID if no more actual values
+      if (rate === 0 || weather === '')
         break;
 
       sumRate += rate;

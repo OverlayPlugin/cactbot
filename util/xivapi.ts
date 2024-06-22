@@ -117,6 +117,7 @@ export class XivApi {
         if (!('rows' in jsonResult)) {
           this.log.fatalError(`Malformed API query result: 'rows' property not present.`);
         } else if (jsonResult.rows.length === 0) {
+          // when all rows have been fetched, the API returns a response with an empty `rows` prop
           fetchAgain = false;
         } else {
           const lastRow = jsonResult.rows[jsonResult.rows.length - 1];
@@ -126,7 +127,7 @@ export class XivApi {
           } else
             this.log.fatalError('Malformed API query result: last row is undefined.');
         }
-      } else {
+      } else { // only a single row is requested
         fetchAgain = false;
         if (!('row_id' in jsonResult))
           this.log.fatalError(`Malformed API query result: Row expected but not returned.`);

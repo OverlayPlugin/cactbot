@@ -289,9 +289,9 @@ const generateZoneIdMap = (
 
   for (const [id, cfcEntry] of Object.entries(cfcData)) {
     const cfcId = parseInt(id);
-    const cfcName = cfcEntry.fields.Name;
+    const cfcName = cfcEntry.fields.Name ?? '';
 
-    if (cfcName !== undefined && cfcName !== '')
+    if (cfcName !== '')
       cfcIdToName[cfcId] = cfcName;
 
     const cfcTtId = cfcEntry.fields.TerritoryType?.row_id;
@@ -311,11 +311,8 @@ const generateZoneIdMap = (
       // we might have a collision. check this CFC name against the one we
       // previously stored. if it matches, OK; if it doesn't, it's a collison
       const earlierCfcId = cfcDerivedTtToCfcMap[cfcTtId];
-      if (typeof earlierCfcId === 'number') {
-        const earlierCfcName = cfcData[earlierCfcId]?.fields.Name;
-        if (cfcName !== undefined && earlierCfcName === cfcName)
-          continue;
-      }
+      if (earlierCfcId !== undefined && cfcData[earlierCfcId]?.fields.Name === cfcName)
+        continue;
       delete cfcDerivedTtToCfcMap[cfcTtId];
       cfcTtIdCollisions.push(cfcTtId);
     }
@@ -347,7 +344,7 @@ const generateZoneIdMap = (
   log.debug('Beginning main processing loop...');
   for (const [id, territory] of Object.entries(ttData)) {
     const ttId = parseInt(id);
-    const ttPlaceName = territory.fields.PlaceName?.fields.Name;
+    const ttPlaceName = territory.fields.PlaceName?.fields.Name ?? '';
     const ttCfcId = territory.fields.ContentFinderCondition?.row_id;
     const ttCfcName = territory.fields.ContentFinderCondition?.fields.Name;
     const ttUse = territory.fields.TerritoryIntendedUse;
@@ -400,14 +397,14 @@ const generateZoneIdMap = (
       // Step 4 - we can't determine name from any CFC data, so use PlaceName
       // World zones like Middle La Noscea are not in CFC.
       // If we don't have a PlaceName, bail out.
-      if (ttPlaceName === null || ttPlaceName === '') {
+      if (ttPlaceName === '') {
         log.info(
           `No name data could be matched for town/overworld zone with ID ${ttId}. Skipping...`,
         );
         continue;
       } else {
         cfcIdForName = 'None';
-        zoneName = cleanName(ttPlaceName ?? '');
+        zoneName = cleanName(ttPlaceName);
         // Names found in CFC take precedence over PlaceName, so if a CFC
         // name exists for this zone and we've gotten here, bail out.
         // There are some duplicate names that will trigger this
@@ -554,11 +551,6 @@ const generateZoneInfoMap = async (
       );
       continue;
     }
-    const weatherRate = ttZoneData.fields.WeatherRate;
-    if (weatherRate === undefined) {
-      log.alert(`No weather rate data found for territory ID ${ttId}. Resolve before merge.`);
-      continue;
-    }
 
     const zoneExVersion = ttZoneData.fields.ExVersion?.row_id;
     if (zoneExVersion === undefined) {
@@ -570,15 +562,21 @@ const generateZoneInfoMap = async (
     const offsetY = ttZoneData.fields.Map?.fields.OffsetY;
     const sizeFactor = ttZoneData.fields.Map?.fields.SizeFactor;
     if (offsetX === undefined || offsetY === undefined || sizeFactor === undefined) {
-      log.alert(`Invalid map data found for territory ID ${ttId}. Resolve before merge.`);
+      log.alert(`No map data found for territory ID ${ttId}. Resolve before merge.`);
       continue;
     }
 
-    const cfcId = ttToCfcIdMap[ttId];
+    const weatherRate = ttZoneData.fields.WeatherRate;
+    if (weatherRate === undefined) {
+      log.alert(`No weather rate data found for territory ID ${ttId}. Resolve before merge.`);
+      continue;
+    }
+
+    const cfcId = ttToCfcIdMap[ttId] ?? 0;
     let zoneName: LocaleText;
     let contentType: number | undefined;
 
-    if (cfcId === undefined || cfcId === 'None' || cfcId === 0) {
+    if (cfcId === 'None' || cfcId === 0) {
       // town/overworld zone with no CFC data; use PlaceName
       const placeId = ttZoneData.fields.PlaceName?.row_id;
       const enName = capitalize(ttZoneData.fields.PlaceName?.fields.Name);
