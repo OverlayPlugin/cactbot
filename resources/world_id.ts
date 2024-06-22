@@ -185,13 +185,6 @@ const data: Worlds = {
     'region': 1,
     'userType': 3,
   },
-  '38': {
-    'id': 38,
-    'internalName': 'Shemhazai',
-    'name': 'Shemhazai',
-    'region': 1,
-    'userType': 3,
-  },
   '39': {
     'dataCenter': {
       'id': 6,
@@ -929,9 +922,42 @@ const data: Worlds = {
     'region': 1,
     'userType': 3,
   },
-  '3000': {
+  '412': {
     'dataCenter': {
       'id': 12,
+      'name': 'Shadow',
+    },
+    'id': 412,
+    'internalName': 'Titania',
+    'name': 'Titania',
+    'region': 1,
+    'userType': 5,
+  },
+  '413': {
+    'dataCenter': {
+      'id': 12,
+      'name': 'Shadow',
+    },
+    'id': 413,
+    'internalName': 'Innocence',
+    'name': 'Innocence',
+    'region': 1,
+    'userType': 5,
+  },
+  '414': {
+    'dataCenter': {
+      'id': 12,
+      'name': 'Shadow',
+    },
+    'id': 414,
+    'internalName': 'Pixie',
+    'name': 'Pixie',
+    'region': 1,
+    'userType': 5,
+  },
+  '3000': {
+    'dataCenter': {
+      'id': 13,
       'name': 'NA Cloud DC (Beta)',
     },
     'id': 3000,
@@ -942,7 +968,7 @@ const data: Worlds = {
   },
   '3001': {
     'dataCenter': {
-      'id': 12,
+      'id': 13,
       'name': 'NA Cloud DC (Beta)',
     },
     'id': 3001,

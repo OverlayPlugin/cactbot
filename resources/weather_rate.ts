@@ -2004,8 +2004,12 @@ const data: WeatherRateType = {
     ],
   },
   155: {
-    'rates': [],
-    'weathers': [],
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Lyrical Catharsis',
+    ],
   },
   156: {
     'rates': [],

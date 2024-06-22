@@ -277,6 +277,7 @@ const data = {
   'MatoyasRelict': 933,
   'MatsubaMayhem': 710,
   'MemoriaMiseraExtreme': 913,
+  'MemoryOfEmbers': 1166,
   'MessengerOfTheWinds': 834,
   'MiddleLaNoscea': 134,
   'Mist': 136,
