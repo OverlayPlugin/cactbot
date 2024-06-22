@@ -79,13 +79,13 @@ const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
   };
 
   for (const pet of apiData) {
-    const nameEn = pet.fields.Name;
+    const nameEn = pet.fields.Name ?? '';
     const nameDe = pet.fields['Name@de'];
     const nameFr = pet.fields['Name@fr'];
     const nameJa = pet.fields['Name@ja'];
 
     // If no en name (or if duplicate), skip processing
-    if (nameEn === undefined || nameEn === '' || formattedData.en.includes(nameEn))
+    if (nameEn === '' || formattedData.en.includes(nameEn))
       continue;
     formattedData.en.push(nameEn);
 

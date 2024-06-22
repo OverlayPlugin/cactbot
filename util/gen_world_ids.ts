@@ -94,12 +94,13 @@ const log = new ConsoleLogger();
 log.setLogLevel('alert');
 
 const scrubDataCenter = (dc: ResultDataCenter): OutputDataCenter | undefined => {
-  if (dc.fields.Name === undefined || dc.fields.Name === '')
+  const dcName = dc.fields.Name ?? '';
+  if (dcName === '')
     return;
   const idNum = dc.row_id;
   return {
     id: idNum,
-    name: dc.fields.Name,
+    name: dcName,
   };
 };
 
@@ -108,43 +109,39 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
   const formattedData: OutputWorldIds = {};
 
   for (const data of apiData) {
-    const dcIn = data.fields.DataCenter;
-    if (dcIn === undefined)
+    const dcResult = data.fields.DataCenter;
+    if (dcResult === undefined)
       continue;
-    const dcOut = scrubDataCenter(dcIn);
+    const dc = scrubDataCenter(dcResult);
 
+    const intName = data.fields.InternalName;
+    const name = data.fields.Name ?? ''; // filter out empty strings or we get a ton of trash
+    const region = data.fields.Region;
+    const userType = data.fields.UserType;
     const isPublic = data.fields.IsPublic;
 
     // there are many hundreds of dev/test/whatever entries in
     // the World table that substantially clutter the data
     // for our use cases, we only care about public worlds
     if (!isPublic) {
-      log.debug(
-        `Found non-public world (ID: ${data.row_id} | Name: ${data.fields.Name ?? ''}). Ignoring.`,
-      );
+      log.debug(`Found non-public world (ID: ${data.row_id} | Name: ${name}). Ignoring.`);
       continue;
     }
 
-    const internName = data.fields.InternalName;
-    const name = data.fields.Name ?? ''; // filter out empty strings or we get a ton of trash
-    const region = data.fields.Region;
-    const userType = data.fields.UserType;
-
-    if (internName === undefined || name === '' || region === undefined || userType === undefined) {
+    if (intName === undefined || name === '' || region === undefined || userType === undefined) {
       log.debug(`Data missing for ID: ${data.row_id} (Name: ${name}). Ignoring.`);
       continue;
     }
-    log.debug(
-      `Collected world data for ${dcOut?.name ?? 'no_data_center'}:${name} (ID: ${data.row_id})`,
-    );
+    log.debug(`Collected world data for ${dc?.name ?? 'no_dc'}:${name} (ID: ${data.row_id})`);
+
     formattedData[data.row_id.toString()] = {
       id: data.row_id,
-      internalName: internName,
+      internalName: intName,
       name: name,
       region: region,
       userType: userType,
-      dataCenter: dcOut,
-      // isPublic: isPublic, // value is always implicitly 'true' given the filter above
+      dataCenter: dc,
+      // isPublic: isPublic, - value is always 'true' given the filter above
     };
   }
   log.debug('Data assembly/formatting complete.');
