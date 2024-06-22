@@ -545,7 +545,7 @@ const generateZoneInfoMap = async (
     const ttZoneData = ttData[ttId];
     if (ttZoneData === undefined) {
       log.alert(
-        `Unexpectedly could not find zone info for territory ID ${ttId}. Resovle before merge.`,
+        `Unexpectedly could not find zone info for territory ID ${ttId}. Resolve before merge.`,
       );
       continue;
     }
