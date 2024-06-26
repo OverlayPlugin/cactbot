@@ -396,6 +396,12 @@ const jobLocalizedAbbr: Record<Job, LocaleText> = {
     cn: '贤者',
     ko: '현자',
   },
+  VPR: {
+    en: 'VPR',
+  },
+  PCT: {
+    en: 'PCT',
+  },
 };
 
 const jobLocalizedFull: Record<Job, LocaleText> = {
@@ -726,6 +732,12 @@ const jobLocalizedFull: Record<Job, LocaleText> = {
     ja: '賢者',
     cn: '贤者',
     ko: '현자',
+  },
+  VPR: {
+    en: 'Viper',
+  },
+  PCT: {
+    en: 'Pictomancer',
   },
 };
 

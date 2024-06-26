@@ -23,6 +23,7 @@ import { GNBComponent } from './gnb';
 import { MCHComponent } from './mch';
 import { MNKComponent } from './mnk';
 import { NINComponent } from './nin';
+import { PCTComponent } from './pct';
 import { PLDComponent } from './pld';
 import { RDMComponent } from './rdm';
 import { RPRComponent } from './rpr';
@@ -30,6 +31,7 @@ import { SAMComponent } from './sam';
 import { SCHComponent } from './sch';
 import { SGEComponent } from './sge';
 import { SMNComponent } from './smn';
+import { VPRComponent } from './vpr';
 import { WARComponent } from './war';
 import { WHMComponent } from './whm';
 
@@ -56,6 +58,7 @@ const ComponentMap: Record<Job, typeof BaseComponent> = {
   NIN: NINComponent,
   SAM: SAMComponent,
   RPR: RPRComponent,
+  VPR: VPRComponent,
   // ranged dps
   ARC: BRDComponent,
   BRD: BRDComponent,
@@ -67,6 +70,7 @@ const ComponentMap: Record<Job, typeof BaseComponent> = {
   THM: BLMComponent,
   BLM: BLMComponent,
   RDM: RDMComponent,
+  PCT: PCTComponent,
   BLU: BLUComponent,
   // crafter & gatherer
   CRP: BaseComponent,
