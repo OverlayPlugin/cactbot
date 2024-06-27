@@ -68,7 +68,7 @@ const knownMapping: Readonly<MappingTable> = {
   'The Spear': 1885,
   'The Ewer': 1886,
   'The Spire': 1887,
-  'Sword Oath': 1902,
+  'Atonement Ready': 1902, // updated in Patch 7.0
   'Tactician': 1951,
   // This is for others, 1821 is for self.
   'Standard Finish': 2105,

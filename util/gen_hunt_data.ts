@@ -52,13 +52,16 @@ const _LOCALE_OUTPUT_COLS: LocaleOutputColumns = ['BNpcNameId', 'LocaleName'];
 // SS- (minions) and SS+ (boss) mobs are rank 1 & 3 respectively
 // so we can only differentiate them with known BNpcBaseIds
 // This requires manual additions for future expansions.
+// TODO: These could be automatically detected from `NotoriousMonsterTerritory`?
 const minionsBNpcBaseIds = [
   '10755', // Forgiven Gossip (ShB) - BNpcNameId: 8916
   '13938', // Ker Shroud (EW) - BNpcNameId: 10616
+  '17777', // Crystal Incarnation (DT) - BNpcNameId: 13407
 ];
 const ssRankBNpcBaseIds = [
   '10422', // Forgiven Rebellion (EW) - BNpcNameId: 8915
   '13775', // Ker (EW) - BNpcNameId: 10615
+  '17732', // Arch Aethereater (DT) - BNpcNameId: 13406
 ];
 
 type LocaleTextOrArray = LocaleObject<string | string[]>;

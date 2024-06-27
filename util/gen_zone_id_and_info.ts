@@ -67,7 +67,7 @@ const _TT_COLUMNS = [
   'Map.SizeFactor',
   'Map.OffsetX',
   'Map.OffsetY',
-  'TerritoryIntendedUse',
+  'TerritoryIntendedUse.ID',
   'ExVersion.ID',
 ];
 
@@ -139,7 +139,9 @@ type ResultTerritoryType = {
     Name_fr: string | null;
     Name_ja: string | null;
   };
-  TerritoryIntendedUse: string | number | null;
+  TerritoryIntendedUse: {
+    ID: string | number | null;
+  };
   WeatherRate: string | number;
 };
 
@@ -366,10 +368,10 @@ const generateZoneIdMap = (
       ? parseInt(territory.ContentFinderCondition.ID)
       : territory.ContentFinderCondition.ID;
     const ttCfcName = territory.ContentFinderCondition.Name_en;
-    const ttUse = typeof territory.TerritoryIntendedUse === 'string'
-      ? parseInt(territory.TerritoryIntendedUse)
-      : territory.TerritoryIntendedUse;
-    const isTownZone = ttUse === 0;
+    const ttUse = typeof territory.TerritoryIntendedUse.ID === 'string'
+      ? parseInt(territory.TerritoryIntendedUse.ID)
+      : territory.TerritoryIntendedUse.ID;
+    const isTownZone = ttUse === 0 || ttUse === null;
     const isOverworldZone = ttUse === 1;
     const cfcDerivedCfcId = cfcDerivedTtToCfcMap[ttId];
     const syntheticName = syntheticIdsToNames[ttId];
@@ -558,6 +560,11 @@ const generateZoneInfoMap = async (
   for (const [key] of Object.entries(ttToCfcIdMap)) {
     const ttId = parseInt(key);
     const ttZoneData = ttData[ttId];
+
+    // If already populated by synthetic data, skip it.
+    if (ttId in zoneInfoMap)
+      continue;
+
     if (ttZoneData === undefined) {
       log.alert(
         `Unexpectedly could not find zone info for territory ID ${ttId}. This must be resovled before merge.`,
