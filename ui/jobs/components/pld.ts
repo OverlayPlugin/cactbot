@@ -1,11 +1,12 @@
-import EffectId from '../../../resources/effect_id';
+//  Certain imports disabled for now due to Sword Oath changes; see below.
+// import EffectId from '../../../resources/effect_id';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
 import { ComboTracker } from '../combo_tracker';
 import { kAbility } from '../constants';
-import { PartialFieldMatches } from '../event_emitter';
+// import { PartialFieldMatches } from '../event_emitter';
 import { computeBackgroundColorFrom, showDuration } from '../utils';
 
 import { BaseComponent, ComponentInterface } from './base';
@@ -146,6 +147,9 @@ export class PLDComponent extends BaseComponent {
   // As atonement counts down, the player gets successive "gains effects"
   // for the same effect, but with different counts.  When the last stack
   // falls off, then there's a "lose effect" line.
+  // This is disabled for now due to Sword Oath changing to Atonement Ready in Patch 7.0
+  // Will need to be validated/fixed when 7.0 jobs module changes are made
+  /*
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     if (id === EffectId.SwordOath)
       this.setAtonement(this.atonementBox, parseInt(matches.count ?? '0'));
@@ -163,7 +167,7 @@ export class PLDComponent extends BaseComponent {
       this.stacksContainer.classList.add('hide');
     }
   }
-
+  */
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
     this.goreBox.valuescale = gcdSkill;
     this.goreBox.threshold = gcdSkill * 3 + 0.3;
