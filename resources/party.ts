@@ -398,9 +398,15 @@ const jobLocalizedAbbr: Record<Job, LocaleText> = {
   },
   VPR: {
     en: 'VPR',
+    de: 'VPR',
+    fr: 'VPR',
+    ja: 'ヴァイパー',
   },
   PCT: {
     en: 'PCT',
+    de: 'PKT',
+    fr: 'PIC',
+    ja: 'ピクトマンサー',
   },
 };
 
@@ -735,9 +741,15 @@ const jobLocalizedFull: Record<Job, LocaleText> = {
   },
   VPR: {
     en: 'Viper',
+    de: 'Viper',
+    fr: 'Rôdeur vipère',
+    ja: 'ヴァイパー',
   },
   PCT: {
     en: 'Pictomancer',
+    de: 'Piktomant',
+    fr: 'Pictomancien',
+    ja: 'ピクトマンサー',
   },
 };
 
