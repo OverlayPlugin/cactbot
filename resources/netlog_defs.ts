@@ -1363,6 +1363,7 @@ const latestLogDefinitions = {
       y: 7,
       z: 8,
       heading: 9,
+      animationLock: 10,
     },
     blankFields: [6],
     playerIds: {

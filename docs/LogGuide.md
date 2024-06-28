@@ -27,6 +27,7 @@ This guide was last updated for:
   - [Object/Actor/Entity/Mob/Combatant](#objectactorentitymobcombatant)
   - [Object ID](#object-id)
   - [Ability ID](#ability-id)
+  - [Status Effect ID](#status-effect-id)
   - [Instance Content ID](#instance-content-id)
 - [FFXIV Plugin Log Lines](#ffxiv-plugin-log-lines)
   - [Line 00 (0x00): LogLine](#line-00-0x00-logline)
@@ -62,14 +63,17 @@ This guide was last updated for:
     - [Structure](#structure-7)
     - [Regexes](#regexes-7)
     - [Examples](#examples-7)
+  - [Cast Times](#cast-times)
   - [Line 21 (0x15): NetworkAbility](#line-21-0x15-networkability)
     - [Structure](#structure-8)
     - [Regexes](#regexes-8)
     - [Examples](#examples-8)
-    - [Ability Flags](#ability-flags)
-    - [Ability Damage](#ability-damage)
-    - [Special Case Shifts](#special-case-shifts)
-    - [Ability Examples](#ability-examples)
+  - [Action Effects](#action-effects)
+  - [Effect Types](#effect-types)
+  - [Ability Damage](#ability-damage)
+    - [Reflected Damage](#reflected-damage)
+  - [Status Effects](#status-effects)
+  - [Ability Examples](#ability-examples)
   - [Line 22 (0x16): NetworkAOEAbility](#line-22-0x16-networkaoeability)
   - [Line 23 (0x17): NetworkCancelAbility](#line-23-0x17-networkcancelability)
     - [Structure](#structure-9)
@@ -87,11 +91,13 @@ This guide was last updated for:
     - [Structure](#structure-12)
     - [Regexes](#regexes-12)
     - [Examples](#examples-12)
+  - [Refreshes, Overwrites, and Deaths](#refreshes-overwrites-and-deaths)
   - [Line 27 (0x1B): NetworkTargetIcon (Head Marker)](#line-27-0x1b-networktargeticon-head-marker)
     - [Structure](#structure-13)
     - [Regexes](#regexes-13)
     - [Examples](#examples-13)
     - [Head Marker IDs](#head-marker-ids)
+    - [Offset Headmarkers](#offset-headmarkers)
   - [Line 28 (0x1C): NetworkRaidMarker (Floor Marker)](#line-28-0x1c-networkraidmarker-floor-marker)
     - [Structure](#structure-14)
     - [Regexes](#regexes-14)
@@ -131,10 +137,15 @@ This guide was last updated for:
     - [Structure](#structure-22)
     - [Regexes](#regexes-22)
     - [Examples](#examples-22)
+  - [Tracking Ability Resolution](#tracking-ability-resolution)
+  - [HP Values](#hp-values)
+  - [Shield %](#shield-)
+  - [MP Values](#mp-values)
   - [Line 38 (0x26): NetworkStatusEffects](#line-38-0x26-networkstatuseffects)
     - [Structure](#structure-23)
     - [Regexes](#regexes-23)
     - [Examples](#examples-23)
+    - [Data Fields](#data-fields)
   - [Line 39 (0x27): NetworkUpdateHP](#line-39-0x27-networkupdatehp)
     - [Structure](#structure-24)
     - [Regexes](#regexes-24)
@@ -3011,6 +3022,14 @@ This line contains extra data for Ability/NetworkAOEAbility network data.
 This line is always output for a given Ability hit, regardless of if that Ability hit had
 a corresponding StartsUsing line.
 
+The first three fields represent the source ID, action ID, and the global effect counter.
+`globalEffectCounter` is equivalent to `sequence` field in
+[NetworkAbility](#line-21-0x15-networkability) and
+[NetworkAOEAbility](#line-22-0x16-networkaoeability).
+By using these three values, you can match it up to the equivalent 21- or 22-line.
+
+The next five fields represent the action's targeted location (or lack thereof).
+
 If the ability has no target, or is single-target, the `dataFlag` value will be `0`,
 and the `x`/`y`/`z`/`heading` fields will be blank.
 
@@ -3025,13 +3044,13 @@ towards.
 If there is some sort of error related to parsing this data from the network packet,
 `dataFlag` will be `256`, and the `x`/`y`/`z`/`heading` fields will be blank.
 
-`globalEffectCounter` is equivalent to `sequence` field in
-[NetworkAbility](#line-21-0x15-networkability) and
-[NetworkAOEAbility](#line-22-0x16-networkaoeability).
-
 Note that unlike [StartsUsingExtra](#line-263-0x107-startsusingextra), you do not need
 to worry about whether or not there is an actor target, as this represents the final
 snapshotted location of the Ability.
+
+Finally, the last field represents the animation lock of the skill in seconds. This is not always meaningful -
+for example, actions with a cast time may report an animation lock of 0.1 seconds. Auto-attacks may also report
+a non-zero cast time, despite the fact that they do not prevent your character from performing actions.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=AbilityExtra&lang=en-US) -->
 
@@ -3039,10 +3058,10 @@ snapshotted location of the Ability.
 
 ```log
 Network Log Line Structure:
-264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]
+264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]|[animationLock]
 
 Parsed Log Line Structure:
-[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]
+[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]:[animationLock]
 ```
 
 #### Regexes
