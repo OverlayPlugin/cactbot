@@ -63,7 +63,7 @@ This guide was last updated for:
     - [Structure](#structure-7)
     - [Regexes](#regexes-7)
     - [Examples](#examples-7)
-  - [Cast Times](#cast-times)
+    - [Cast Times](#cast-times)
   - [Line 21 (0x15): NetworkAbility](#line-21-0x15-networkability)
     - [Structure](#structure-8)
     - [Regexes](#regexes-8)
