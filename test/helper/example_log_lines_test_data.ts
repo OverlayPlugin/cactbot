@@ -647,6 +647,7 @@ const lineTests: LineTests = {
       x: '-14.344',
       y: '748.558',
       z: '130.009',
+      animationLock: '0.1',
     },
   },
   ContentFinderSettings: {
