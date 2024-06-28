@@ -1389,7 +1389,7 @@ const latestLogDefinitions = {
       2: null,
     },
     canAnonymize: true,
-    firstOptionalField: 9,
+    firstOptionalField: undefined,
   },
   ContentFinderSettings: {
     type: '265',
