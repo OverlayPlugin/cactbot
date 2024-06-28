@@ -32,26 +32,57 @@ const isStringOrStringArray = (value: unknown): value is string | string[] => {
   return typeof value === 'string';
 };
 
-export type TimelineNetParams = { [key: string]: string | string[] };
-const isTimelineNetParams = (value: unknown): value is TimelineNetParams => {
-  if (typeof value !== 'object' || Array.isArray(value))
-    return false;
-  const obj = value as { [key: string]: unknown };
-  for (const innerValue of Object.values(obj)) {
-    if (!isStringOrStringArray(innerValue))
-      return false;
-  }
-  return true;
-};
-
 const isValidNetParams = <T extends LogDefinitionName>(
   type: T,
   params: Record<string, unknown>,
 ): params is NetParams[T] => {
   for (const key in params) {
     // Make sure all keys are present on our definition type
-    if (!(key in logDefinitions[type].fields))
+    if (!(key in logDefinitions[type].fields)) {
+      // If we're dealing with a repeating field, check its values
+      const logDefType = logDefinitions[type];
+      if ('repeatingFields' in logDefType && logDefType.repeatingFields.label === key) {
+        const param = params[key];
+        if (!Array.isArray(param))
+          return false;
+        // Expand the type of `possibleKeys` to `string[]` so that we can check for inclusion
+        const stringKeys = Array.from<string>(logDefType.repeatingFields.possibleKeys);
+        // Expand the type of `names` to `string[]` so that we can check for inclusion
+        const stringNames = Array.from<string>(logDefType.repeatingFields.names);
+        for (const repeatingEntry of param) {
+          // Only objects allowed in the array
+          if (!isObject(repeatingEntry))
+            return false;
+          // Object must specify the primary key
+          if (!(logDefType.repeatingFields.primaryKey in repeatingEntry))
+            return false;
+          // Primary key must have a value that conforms to the possible keys entries
+          // Check that all keys exist and that they're either string or string array
+          const primaryKey = repeatingEntry[logDefType.repeatingFields.primaryKey];
+          if (!isStringOrStringArray(primaryKey))
+            return false;
+          if (typeof primaryKey === 'string') {
+            if (!stringKeys.includes(primaryKey))
+              return false;
+          } else {
+            for (const primaryKeyEntry of primaryKey) {
+              if (!stringKeys.includes(primaryKeyEntry))
+                return false;
+            }
+          }
+          // All other keys must be allowed in `names`
+          for (const repeatingEntryKey in repeatingEntry) {
+            if (!stringNames.includes(repeatingEntryKey))
+              return false;
+          }
+        }
+
+        // Skip the remaining checks for this key, we've validated that it conforms
+        continue;
+      }
+
       return false;
+    }
     // Make sure our value is either a string/int or an array of strings/ints
     if (!isStringOrStringArray(params[key]))
       return false;
@@ -101,7 +132,7 @@ export type Error = {
 
 export type Sync = {
   id: number;
-  origInput: string | TimelineNetParams;
+  origInput: string | NetParams[keyof NetParams];
   regexType: 'parsed' | 'net';
   regex: RegExp;
   start: number;
@@ -540,7 +571,7 @@ export class TimelineParser {
     });
 
     // The original params should be TimelineNetParams, thus so should the output.
-    if (!isTimelineNetParams(translatedParams))
+    if (!isValidNetParams(netRegexType, translatedParams))
       throw new UnreachableCode();
 
     return this.buildRegexSync(
@@ -586,7 +617,7 @@ export class TimelineParser {
   private buildRegexSync(
     uniqueid: number,
     regexType: 'parsed' | 'net',
-    origInput: string | TimelineNetParams,
+    origInput: string | NetParams[keyof NetParams],
     parsedRegex: RegExp,
     args: string | undefined,
     seconds: number,

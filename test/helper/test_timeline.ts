@@ -110,7 +110,7 @@ class TimelineParserLint extends TimelineParser {
 
     // Capture each part of the line (separated by spaces).
     // Anything encapsulated by double-quotes or braces will be treated as a single element.
-    const lineParts = line.match(/"[^"]*"|\{[^}]*\}|[^ ]+/g);
+    const lineParts = line.match(/"[^"]*"|\{.*\}|[^ ]+/g);
     if (lineParts === null || lineParts[0] === undefined) {
       this.lintErrors.push({
         lineNumber: lineNumber,
@@ -335,9 +335,27 @@ const getTestCases = (
     for (const [key, value] of Object.entries(sync.origInput)) {
       if (!keysThatRequireTranslation.includes(key))
         continue;
+      if (typeof value === 'boolean')
+        continue;
       if (typeof value === 'object') {
-        for (const innerValue of value)
-          syncStrings.add(innerValue);
+        for (const innerValue of value) {
+          if (typeof innerValue === 'boolean')
+            continue;
+          if (typeof innerValue === 'object') {
+            for (const [innerInnerValueKey, innerInnerValueValue] of Object.entries(innerValue)) {
+              if (!keysThatRequireTranslation.includes(innerInnerValueKey))
+                continue;
+              if (Array.isArray(innerInnerValueValue)) {
+                for (const innerInnerValueValueEntry of innerInnerValueValue)
+                  syncStrings.add(innerInnerValueValueEntry);
+              } else {
+                syncStrings.add(innerInnerValueValue);
+              }
+            }
+          } else {
+            syncStrings.add(innerValue);
+          }
+        }
       } else {
         syncStrings.add(value);
       }

@@ -1194,6 +1194,7 @@ const triggerSet: TriggerSet<Data> = {
         'Thaliak(?!\')': '살리아크',
       },
       'replaceText': {
+        '\\(cast\\)': '(시전)',
         'Altitude': '해발고도',
         'Arrow Trail': '화살 둘레길',
         'As Above, So Below': '생사택일의 화염',

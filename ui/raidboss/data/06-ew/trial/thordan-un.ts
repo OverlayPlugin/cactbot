@@ -463,7 +463,7 @@ const triggerSet: TriggerSet<Data> = {
         meteorYou: {
           en: '4x meteor puddles on YOU',
           de: '4x Meteorflächen auf DIR',
-          fr: '4x Météor sur VOUS',
+          fr: '4x Météore sur VOUS',
           ja: '自分に4xメテオ',
           cn: '4连陨石点名',
           ko: '4연속 운석 장판 대상자',

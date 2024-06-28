@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.31.4",
-  "releaseSummary": "cn/ko 6.5",
+  "version": "0.31.5",
+  "releaseSummary": "docs updates, cn/ko 6.51",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",

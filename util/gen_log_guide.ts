@@ -2,7 +2,6 @@ import path from 'path';
 
 import markdownMagic from 'markdown-magic';
 
-import lineDocs, { ExampleLineName } from '../resources/example_log_lines';
 import { Lang, NonEnLang } from '../resources/languages';
 import logDefinitions from '../resources/netlog_defs';
 import { buildRegex as buildNetRegex } from '../resources/netregexes';
@@ -10,6 +9,8 @@ import { UnreachableCode } from '../resources/not_reached';
 import { buildRegex } from '../resources/regexes';
 import LogRepository from '../ui/raidboss/emulator/data/network_log_converter/LogRepository';
 import ParseLine from '../ui/raidboss/emulator/data/network_log_converter/ParseLine';
+
+import lineDocs, { ExampleLineDef, ExampleLineName } from './example_log_lines';
 
 const curPath = path.resolve();
 
@@ -40,6 +41,7 @@ type LocaleText = LocaleObject<string>;
 
 type LangStrings =
   & {
+    // cactbot-ignore-missing-translations
     en: readonly string[];
   }
   & {
@@ -93,8 +95,8 @@ const titles: Titles = {
   actLogLineStructure: {
     'en-US': 'Parsed Log Line Structure:',
     'ja-JP': 'ACTログライン構造：', // FIXME
-    'zh-CN': 'ACT日志行结构：', // FIXME
-    'zh-TW': 'ACT日誌行結構：', // FIXME
+    'zh-CN': '解析日志行结构：',
+    'zh-TW': '解析日誌行結構：',
   },
   regexes: {
     'en-US': 'Regexes',
@@ -111,8 +113,8 @@ const titles: Titles = {
   actLogLineRegexes: {
     'en-US': 'Parsed Log Line Regex:',
     'ja-JP': 'ACTログライン正規表現：', // FIXME
-    'zh-CN': 'ACT日志行正则表达式：', // FIXME
-    'zh-TW': 'ACT日誌行正規表示式：', // FIXME
+    'zh-CN': '解析日志行正则表达式：',
+    'zh-TW': '解析日誌行正規表示式：',
   },
   examples: {
     'en-US': 'Examples',
@@ -129,8 +131,8 @@ const titles: Titles = {
   actLogLineExamples: {
     'en-US': 'Parsed Log Line Examples:',
     'ja-JP': 'ACTログライン例：', // FIXME
-    'zh-CN': 'ACT日志行示例：', // FIXME
-    'zh-TW': 'ACT日誌行示例：', // FIXME
+    'zh-CN': '解析日志行示例：',
+    'zh-TW': '解析日誌行示例：',
   },
 };
 
@@ -164,7 +166,7 @@ const config: markdownMagic.Configuration = {
       }
       const examplesLang = localeToLang(locale);
 
-      const lineDoc = lineDocs[lineType];
+      const lineDoc: ExampleLineDef = lineDocs[lineType];
 
       mappedLogLines[locale] ??= [];
       mappedLogLines[locale]?.push(lineType);

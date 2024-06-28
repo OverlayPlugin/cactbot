@@ -3,6 +3,7 @@ import path from 'path';
 
 import { Lang } from '../resources/languages';
 import NetRegexes from '../resources/netregexes';
+import { UnreachableCode } from '../resources/not_reached';
 import Regexes from '../resources/regexes';
 import { AnonNetRegexParams, translateRegexBuildParamAnon } from '../resources/translations';
 import { LooseTriggerSet } from '../types/trigger';
@@ -13,6 +14,22 @@ import {
 import { TimelineParser, TimelineReplacement } from '../ui/raidboss/timeline_parser';
 
 import { ErrorFuncType } from './find_missing_translations';
+
+const isKeyOf = <T>(key: unknown, obj: T): key is keyof T => {
+  if (typeof obj !== 'object')
+    return false;
+  if (Array.isArray(obj))
+    return false;
+  if (typeof key !== 'string')
+    return false;
+  return (key in obj);
+};
+
+const asKeyOf = <T>(key: unknown, obj: T): keyof T | undefined => {
+  if (!isKeyOf(key, obj))
+    return undefined;
+  return key;
+};
 
 // Set a global flag to mark regexes for NetRegexes.doesNetRegexNeedTranslation.
 // See details in that function for more information.
@@ -204,8 +221,12 @@ const findMissingTimeline = (
         const missingFields = result.missingFields;
         if (!result.wasTranslated && missingFields !== undefined) {
           const outputObj: { [key: string]: AnonNetRegexParams['string'] } = {};
-          for (const field of missingFields)
-            outputObj[field] = origInput[field];
+          for (const field of missingFields) {
+            const fieldAsKey = asKeyOf(field, origInput);
+            if (fieldAsKey === undefined)
+              throw new UnreachableCode();
+            outputObj[fieldAsKey] = origInput[fieldAsKey];
+          }
           errorStr = JSON.stringify(outputObj);
         }
       }
