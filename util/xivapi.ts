@@ -1,6 +1,8 @@
 // Helper library for fetching game data from xivapi and
 // writing to various resources files.
-// See https://xivapi.com
+// See https://beta.xivapi.com
+
+// This is now updated to use the xivapi beta API due to the upcoming retirement of the old API.
 
 import fs from 'fs';
 import path from 'path';
@@ -11,30 +13,23 @@ import fetch from 'node-fetch';
 
 import { ConsoleLogger } from './console_logger';
 
-const _XIVAPI_URL = 'https://xivapi.com/';
+const _XIVAPI_URL = 'https://beta.xivapi.com/api/1';
 
 // Max results returned per query
-// see https://xivapi.com/docs/Game-Data
-const _XIVAPI_RESULTS_LIMIT = 3000;
+// (Not officially documented for the new beta API, but testing confirms this limit.)
+const _XIVAPI_RESULTS_LIMIT = 500;
 
 // We're using some generic typing because the data format
 // will depend on the endpoint used by each script.
-type XivApiRecord = {
-  [column: string]: unknown;
+type XivApiRow = {
+  schema?: string; // returned if a specific row is requested
+  row_id: number;
+  fields: { [field: string]: unknown };
 };
 
-type XivApiOutput = XivApiRecord[];
-
-type XivApiResultData = {
-  [key: number]: XivApiRecord;
-};
-
-type XivApiResult = {
-  Pagination: {
-    Page: string | number;
-    PageTotal: string | number;
-  };
-  Results: XivApiResultData;
+type XivApiSheet = {
+  schema: string;
+  rows: XivApiRow[];
 };
 
 export type OutputFileAttributes = {
@@ -70,38 +65,41 @@ export class XivApi {
     this.log.debug(`Using cactbot path: ${this.cactbotPath}`);
   }
 
-  async queryApi(endpoint: string, columns: string[]): Promise<XivApiResultData> {
-    if (endpoint === '')
-      this.log.fatalError('Cannot query API: no endpoint specified.');
-    if (columns.length === 0)
-      this.log.fatalError(`Cannot query API endpoint ${endpoint}: No columns specified.`);
+  async queryApi(sheet: string, fields: string[]): Promise<XivApiRow[]> {
+    if (sheet === '')
+      this.log.fatalError('Cannot query API: no sheet specified.');
+    if (fields.length === 0)
+      this.log.fatalError(`Cannot query API sheet ${sheet}: No fields specified.`);
 
-    this.log.debug(`Quering API enpoint: ${endpoint}`);
-    this.log.debug(`Columns: ${columns.toString()}`);
+    this.log.debug(`Quering API enpoint: ${sheet}`);
+    this.log.debug(`Fields: ${fields.toString()}`);
+
+    // Because the beta API does not include pagination, loop through the result set,
+    // using the 'after' parameter, until we get an empty result set.
+    let fetchAgain = true;
+    let maxRow = 0;
     let currentPage = 0;
-    let maxPage = 1;
-    const output: XivApiOutput = [];
-    const specificNodeRequested = endpoint.includes('/');
-    while (currentPage < maxPage) {
+    const specificRowRequested = sheet.includes('/');
+    const output: XivApiRow[] = [];
+
+    while (fetchAgain) {
       currentPage++;
-      let url = `${_XIVAPI_URL}${endpoint}?limit=${_XIVAPI_RESULTS_LIMIT}&columns=${
-        columns.join(',')
+
+      let url = `${_XIVAPI_URL}/sheet/${sheet}?limit=${_XIVAPI_RESULTS_LIMIT}&fields=${
+        fields.join(',')
       }`;
+      if (maxRow > 0)
+        url += `&after=${maxRow}`;
 
-      if (currentPage !== 1)
-        url += `&page=${currentPage}`;
+      this.log.debug(`Obtaining page ${currentPage} from API: ${sheet}`);
 
-      this.log.debug(`Obtaining page ${currentPage} from API: ${url}`);
       let jsonResult;
+
       try {
         const response = await fetch(url);
-        jsonResult = (await response.json()) as XivApiResult;
+        jsonResult = (await response.json()) as XivApiSheet | XivApiRow;
         if (!response.ok)
           throw new Error(`Error occurred fetching API results.`);
-        // If hitting a specific endpoint node (e.g. Status/968), no Pagination object is returned.
-        const pageNum = specificNodeRequested ? 1 : jsonResult.Pagination.Page;
-        if (pageNum === null || pageNum === undefined)
-          throw new Error(`Invalid data returned from API query.`);
       } catch (e) {
         this.log.info(JSON.stringify(jsonResult ?? '', null, 2));
         if (e instanceof Error)
@@ -115,23 +113,30 @@ export class XivApi {
         process.exit(1); // this is handled by ConsoleLogger, but TypeScript doesn't know that
       }
 
-      if (currentPage === 1) {
-        // If hitting a specific endpoint node (e.g. Status/968), only one page is returned.
-        maxPage = specificNodeRequested ? 1 : (
-          typeof jsonResult.Pagination.PageTotal === 'string'
-            ? parseInt(jsonResult.Pagination.PageTotal)
-            : jsonResult.Pagination.PageTotal
-        );
-        this.log.debug(`API endpoint ${endpoint} has ${maxPage} page(s).`);
+      if (!specificRowRequested) {
+        if (!('rows' in jsonResult)) {
+          this.log.fatalError(`Malformed API query result: 'rows' property not present.`);
+        } else if (jsonResult.rows.length === 0) {
+          // when all rows have been fetched, the API returns a response with an empty `rows` prop
+          fetchAgain = false;
+        } else {
+          const lastRow = jsonResult.rows[jsonResult.rows.length - 1];
+          if (lastRow !== undefined) {
+            maxRow = lastRow.row_id;
+            output.push(...jsonResult.rows);
+          } else
+            this.log.fatalError('Malformed API query result: last row is undefined.');
+        }
+      } else { // only a single row is requested
+        fetchAgain = false;
+        if (!('row_id' in jsonResult))
+          this.log.fatalError(`Malformed API query result: Row expected but not returned.`);
+        else
+          output.push(jsonResult);
       }
-      if (specificNodeRequested)
-        output.push(jsonResult);
-      else
-        output.push(...Object.values(jsonResult.Results));
     }
 
-    this.log.info(`API query successful for endpoint: ${endpoint}`);
-
+    this.log.info(`API query successful - fetched ${output.length} rows from ${sheet}`);
     return output;
   }
 

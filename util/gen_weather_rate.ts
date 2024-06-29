@@ -16,62 +16,27 @@ const _WEATHER_RATE: OutputFileAttributes = {
   asConst: false,
 };
 
-const _ENDPOINT = 'WeatherRate';
+const _SHEET = 'WeatherRate';
 
-const _COLUMNS = [
-  'ID',
-  'Weather0.Name',
-  'Rate0',
-  'Weather1.Name',
-  'Rate1',
-  'Weather2.Name',
-  'Rate2',
-  'Weather3.Name',
-  'Rate3',
-  'Weather4.Name',
-  'Rate4',
-  'Weather5.Name',
-  'Rate5',
-  'Weather6.Name',
-  'Rate6',
-  'Weather7.Name',
-  'Rate7',
+const _FIELDS = [
+  'Rate',
+  'Weather',
 ];
 
-type ResultWeatherName = {
-  Name: string | null;
+type ResultWeatherType = {
+  row_id: number;
+  fields: {
+    Name?: string;
+  };
 };
 
-type RateField =
-  | 'Rate0'
-  | 'Rate1'
-  | 'Rate2'
-  | 'Rate3'
-  | 'Rate4'
-  | 'Rate5'
-  | 'Rate6'
-  | 'Rate7';
-
-type WeatherField =
-  | 'Weather0'
-  | 'Weather1'
-  | 'Weather2'
-  | 'Weather3'
-  | 'Weather4'
-  | 'Weather5'
-  | 'Weather6'
-  | 'Weather7';
-
-type ResultWeatherRate =
-  & {
-    ID: string | number;
-  }
-  & {
-    [K in WeatherField]: ResultWeatherName;
-  }
-  & {
-    [K in RateField]: string | number | null;
+type ResultWeatherRate = {
+  row_id: number;
+  fields: {
+    Rate?: number[];
+    Weather?: ResultWeatherType[];
   };
+};
 
 type XivApiWeatherRate = ResultWeatherRate[];
 
@@ -91,29 +56,29 @@ const assembleData = (apiData: XivApiWeatherRate): OutputWeatherRate => {
   const formattedData: OutputWeatherRate = {};
 
   for (const record of apiData) {
-    const id = typeof record.ID !== 'number' ? parseInt(record.ID) : record.ID;
+    const id = record.row_id;
+    const rateArr = record.fields.Rate;
+    const weatherArr = record.fields.Weather;
+
+    if (rateArr === undefined || weatherArr === undefined)
+      continue;
+
+    const entries = rateArr.length;
     const rates: number[] = [];
     const weathers: string[] = [];
     let sumRate = 0;
 
-    for (let v = 0; v <= 7; v++) {
-      const rateField = `Rate${v}` as RateField;
-      const weatherField = `Weather${v}` as WeatherField;
+    for (let v = 0; v < entries; v++) {
+      const rate = rateArr[v] ?? 0;
+      const weather = weatherArr[v]?.fields?.Name ?? '';
 
-      let rate = record[rateField];
-      if (rate !== null) {
-        rate = typeof rate === 'number' ? rate : parseInt(rate);
-        sumRate += rate;
-      }
-
-      const weatherName = record[weatherField].Name;
-
-      // stop processing for this ID on the first empty/null weather string
-      if (weatherName === null || weatherName === '')
+      // stop processing for this ID if no more actual values
+      if (rate === 0 || weather === '')
         break;
 
+      sumRate += rate;
       rates.push(sumRate);
-      weathers.push(weatherName);
+      weathers.push(weather);
     }
     log.debug(`Collected weather rate data for ID: ${id}`);
     formattedData[id] = {
@@ -132,8 +97,8 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const api = new XivApi(null, log);
 
   const apiData = await api.queryApi(
-    _ENDPOINT,
-    _COLUMNS,
+    _SHEET,
+    _FIELDS,
   ) as XivApiWeatherRate;
 
   const outputData = assembleData(apiData);

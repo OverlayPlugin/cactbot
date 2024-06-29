@@ -16,25 +16,26 @@ type PetData = {
   asConst: false,
 };
 
-const _ENDPOINT = 'Pet';
+const _SHEET = 'Pet';
 
-const _COLUMNS = [
-  'ID',
-  'Name_de',
-  'Name_en',
-  'Name_fr',
-  'Name_ja',
+const _FIELDS = [
+  'Name',
+  'Name@de',
+  'Name@fr',
+  'Name@ja',
 ];
 
 const _LOCALE_TABLE = 'Pet';
 const _LOCALE_COLUMNS = ['Name'];
 
 type ResultPet = {
-  ID: number;
-  Name_de: string | null;
-  Name_en: string | null;
-  Name_fr: string | null;
-  Name_ja: string | null;
+  row_id: number;
+  fields: {
+    Name?: string;
+    'Name@de'?: string;
+    'Name@fr'?: string;
+    'Name@ja'?: string;
+  };
 };
 
 type XivApiPet = ResultPet[];
@@ -78,18 +79,23 @@ const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
   };
 
   for (const pet of apiData) {
-    // If no en name (or if duplicate), skip processing
-    if (pet.Name_en === null || pet.Name_en === '' || formattedData.en.includes(pet.Name_en))
-      continue;
-    formattedData.en.push(pet.Name_en);
+    const nameEn = pet.fields.Name ?? '';
+    const nameDe = pet.fields['Name@de'];
+    const nameFr = pet.fields['Name@fr'];
+    const nameJa = pet.fields['Name@ja'];
 
-    if (pet.Name_de !== null)
-      formattedData.de.push(pet.Name_de);
-    if (pet.Name_fr !== null)
-      formattedData.fr.push(pet.Name_fr);
-    if (pet.Name_ja !== null)
-      formattedData.ja.push(pet.Name_ja);
-    log.debug(`Collected base pet data for ${pet.Name_en} (ID: ${pet.ID})`);
+    // If no en name (or if duplicate), skip processing
+    if (nameEn === '' || formattedData.en.includes(nameEn))
+      continue;
+    formattedData.en.push(nameEn);
+
+    if (nameDe !== undefined)
+      formattedData.de.push(nameDe);
+    if (nameFr !== undefined)
+      formattedData.fr.push(nameFr);
+    if (nameJa !== undefined)
+      formattedData.ja.push(nameJa);
+    log.debug(`Collected base pet data for ${nameEn} (ID: ${pet.row_id})`);
   }
 
   log.info('Fetching locale CSV tables...');
@@ -113,8 +119,8 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const api = new XivApi(null, log);
 
   const apiData = await api.queryApi(
-    _ENDPOINT,
-    _COLUMNS,
+    _SHEET,
+    _FIELDS,
   ) as XivApiPet;
 
   const outputData = await assembleData(apiData);
