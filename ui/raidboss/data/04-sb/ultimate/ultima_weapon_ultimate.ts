@@ -10,10 +10,6 @@ import { PluginCombatantState } from '../../../../../types/event';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// Note: without extra network data that is not exposed, it seems impossible to know where Titan
-// looks briefly before jumping for Geocrush. A getCombatants trigger on NameToggle 00 was
-// extremely inaccurate and so that is likely too late to know.
-
 const centerX = 100;
 const centerY = 100;
 
@@ -70,6 +66,7 @@ export interface Data extends RaidbossData {
   titanBury: NetMatches['AddedCombatant'][];
   ifritRadiantPlumeLocations: DirectionOutputCardinal[];
   possibleIfritIDs: string[];
+  lastTitanMove?: NetMatches['ActorMove'];
 }
 
 type GaolKey = Extract<keyof Data['triggerSetConfig'], string>;
@@ -560,7 +557,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '2B55', source: 'Garuda', capture: false },
       // Run this after the initial Garuda trigger and just piggyback off its call to `getCombatants`
       // We're just looking to pluck the four possible IDs from the array pre-emptively to avoid doing
-      // that filter on every `CombatantMemory` line
+      // that filter on every `SetActorPos` line
       delaySeconds: 25,
       run: (data) => {
         data.possibleIfritIDs = data.combatantData
@@ -570,14 +567,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'UWU Ifrit Initial Dash Collector',
-      type: 'CombatantMemory',
+      type: 'ActorSetPos',
       // Filter to only enemy actors for performance
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
       condition: (data, matches) => {
         if (!data.possibleIfritIDs.includes(matches.id))
           return false;
-        const posXVal = parseFloat(matches.pairPosX ?? '0');
-        const posYVal = parseFloat(matches.pairPosY ?? '0');
+        const posXVal = parseFloat(matches.x ?? '0');
+        const posYVal = parseFloat(matches.y ?? '0');
 
         if (posXVal === 0 || posYVal === 0)
           return false;
@@ -593,8 +590,8 @@ const triggerSet: TriggerSet<Data> = {
       },
       suppressSeconds: 9999,
       infoText: (data, matches, output) => {
-        const posXVal = parseFloat(matches.pairPosX ?? '0');
-        const posYVal = parseFloat(matches.pairPosY ?? '0');
+        const posXVal = parseFloat(matches.x ?? '0');
+        const posYVal = parseFloat(matches.y ?? '0');
 
         let ifritDir: DirectionOutputCardinal = 'unknown';
 
@@ -1132,6 +1129,64 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     // --------- Titan ----------
+    {
+      id: 'UWU Titan Last Move Collector',
+      type: 'ActorMove',
+      netRegex: { id: '4[0-9a-fA-F]{7}', capture: true },
+      condition: (data, matches) => {
+        if (data.phase !== 'titan')
+          return false;
+        if (data.bossId.titan !== matches.id)
+          return false;
+        return true;
+      },
+      run: (data, matches) => {
+        data.lastTitanMove = matches;
+      },
+    },
+    {
+      id: 'UWU Titan Jump Direction',
+      type: 'NameToggle',
+      netRegex: { id: '4[0-9a-fA-F]{7}', toggle: '00', capture: true },
+      condition: (data, matches) => {
+        if (data.phase !== 'titan')
+          return false;
+        if (data.bossId.titan !== matches.id)
+          return false;
+        if (data.lastTitanMove === undefined)
+          return false;
+        return true;
+      },
+      infoText: (data, _, outputs) => {
+        const lastMove = data.lastTitanMove;
+        if (lastMove === undefined) {
+          return outputs.unknown!();
+        }
+
+        // The last move Titan does before name toggle is always to look at the cardinal he's jumping to
+        // TODO: Just a heading/rotation to cardinal is not sufficient here, because it relies on Titan being
+        // relatively centered. Instead, maybe do some slope checking or something?
+
+        // Snap heading to closest card and add 2 for opposite direction
+        // N = 0, E = 1, S = 2, W = 3
+        const cardinal = (Directions.hdgTo4DirNum(parseFloat(lastMove.heading)) + 2) % 4;
+
+        const dirs: { [dir: number]: string } = {
+          0: outputs.dirN!(),
+          1: outputs.dirE!(),
+          2: outputs.dirS!(),
+          3: outputs.dirW!(),
+        };
+        return dirs[cardinal];
+      },
+      outputStrings: {
+        unknown: Outputs.unknown,
+        dirN: Outputs.dirN,
+        dirE: Outputs.dirE,
+        dirS: Outputs.dirS,
+        dirW: Outputs.dirW,
+      },
+    },
     {
       id: 'UWU Titan Bury Direction',
       type: 'AddedCombatant',
