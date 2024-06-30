@@ -269,7 +269,7 @@ There are two cactbot errors to look out for in the log.
 The signature should match exactly one location in the executable.
 If it finds zero or two in different places, then it will not work.
 You will need to find a new signature.
-See the [Memory Signatures](memory_signatures.md) documentation for more info.
+See the [Memory Signatures](MemorySignatures.md) documentation for more info.
 
 OverlayPlugin will also print out lines like:
 
