@@ -123,6 +123,8 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.Vanguard,
   ZoneId.Origenics,
   ZoneId.Alexandria,
+  ZoneId.TenderValley,
+  ZoneId.TheStrayboroughDeadwalk,
 
   // Trials (A Realm Reborn)
   ZoneId.TheBowlOfEmbers,
@@ -246,7 +248,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.Everkeep,
   ZoneId.TheInterphos,
 
-  // High-end Trials (Endwalker)
+  // High-end Trials (Dawntrail)
   ZoneId.WorqorLarDorExtreme,
   ZoneId.EverkeepExtreme,
 
