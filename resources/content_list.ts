@@ -116,6 +116,14 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheAetherfont,
   ZoneId.TheLunarSubterrane,
 
+  // Dungeons (Dawntrail)
+  ZoneId.Ihuykatumu,
+  ZoneId.WorqorZormor,
+  ZoneId.TheSkydeepCenote,
+  ZoneId.Vanguard,
+  ZoneId.Origenics,
+  ZoneId.Alexandria,
+
   // Trials (A Realm Reborn)
   ZoneId.TheBowlOfEmbers,
   ZoneId.TheNavel,
@@ -232,6 +240,15 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.ContainmentBayP1T6Unreal,
   ZoneId.ContainmentBayZ1T9Unreal,
   ZoneId.TheSingularityReactorUnreal,
+
+  // Trials (Dawntrail)
+  ZoneId.WorqorLarDor,
+  ZoneId.Everkeep,
+  ZoneId.TheInterphos,
+
+  // High-end Trials (Endwalker)
+  ZoneId.WorqorLarDorExtreme,
+  ZoneId.EverkeepExtreme,
 
   // Alliance Raids (A Realm Reborn)
   ZoneId.TheLabyrinthOfTheAncients,
