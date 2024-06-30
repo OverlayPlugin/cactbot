@@ -8,7 +8,7 @@ using RainbowMage.OverlayPlugin;
 
 namespace Cactbot {
   public class FFXIVProcessIntl : FFXIVProcess {
-    // Last updated for FFXIV 6.5
+    // Last updated for FFXIV 7.0
 
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct EntityMemory {
@@ -100,16 +100,16 @@ namespace Cactbot {
     // In combat boolean.
     // This address is written to by "mov [rax+rcx],bl" and has three readers.
     // This reader is "cmp byte ptr [ffxiv_dx11.exe+????????],00 { (0),0 }"
-    private static String kInCombatSignature = "803D????????000F95C04883C428";
-    private static int kInCombatSignatureOffset = -12;
+    private static String kInCombatSignature = "803D??????????74??488B03488BCBFF50";
+    private static int kInCombatSignatureOffset = -15;
     private static bool kInCombatSignatureRIP = true;
     // Because this line is a cmp byte line, the signature is not at the end of the line.
     private static int kInCombatRipOffset = 1;
 
     // A piece of code that reads the job data.
     // The pointer of interest is the first ???????? in the signature.
-    private static String kJobDataSignature = "488B0D????????4885C90F84????????488B05????????3C03";
-    private static int kJobDataSignatureOffset = -22;
+    private static String kJobDataSignature = "488B3D????????33ED";
+    private static int kJobDataSignatureOffset = -6;
     // The signature finds a pointer in the executable code which uses RIP addressing.
     private static bool kJobDataSignatureRIP = true;
 
