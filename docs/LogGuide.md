@@ -3028,14 +3028,6 @@ This line contains extra data for Ability/NetworkAOEAbility network data.
 This line is always output for a given Ability hit, regardless of if that Ability hit had
 a corresponding StartsUsing line.
 
-The first three fields represent the source ID, action ID, and the global effect counter.
-`globalEffectCounter` is equivalent to `sequence` field in
-[NetworkAbility](#line-21-0x15-networkability) and
-[NetworkAOEAbility](#line-22-0x16-networkaoeability).
-By using these three values, you can match it up to the equivalent 21- or 22-line.
-
-The next five fields represent the action's targeted location (or lack thereof).
-
 If the ability has no target, or is single-target, the `dataFlag` value will be `0`,
 and the `x`/`y`/`z`/`heading` fields will be blank.
 
@@ -3050,13 +3042,13 @@ towards.
 If there is some sort of error related to parsing this data from the network packet,
 `dataFlag` will be `256`, and the `x`/`y`/`z`/`heading` fields will be blank.
 
+`globalEffectCounter` is equivalent to `sequence` field in
+[NetworkAbility](#line-21-0x15-networkability) and
+[NetworkAOEAbility](#line-22-0x16-networkaoeability).
+
 Note that unlike [StartsUsingExtra](#line-263-0x107-startsusingextra), you do not need
 to worry about whether or not there is an actor target, as this represents the final
 snapshotted location of the Ability.
-
-Finally, the last field represents the animation lock of the skill in seconds. This is not always meaningful -
-for example, actions with a cast time may report an animation lock of 0.1 seconds. Auto-attacks may also report
-a non-zero cast time, despite the fact that they do not prevent your character from performing actions.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=AbilityExtra&lang=en-US) -->
 
@@ -3064,34 +3056,34 @@ a non-zero cast time, despite the fact that they do not prevent your character f
 
 ```log
 Network Log Line Structure:
-264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]|[animationLock]
+264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]
 
 Parsed Log Line Structure:
-[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]:[animationLock]
+[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]
 ```
 
 #### Regexes
 
 ```log
 Network Log Line Regex:
-^(?<type>264)\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<id>[^|]*)\|(?<globalEffectCounter>[^|]*)\|(?<dataFlag>[^|]*)\|(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|(?<animationLock>[^|]*)\|
+^(?<type>264)\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<id>[^|]*)\|(?<globalEffectCounter>[^|]*)\|(?<dataFlag>[^|]*)\|(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) 264 (?<type>108):(?<sourceId>[^:]*):(?<id>[^:]*):(?<globalEffectCounter>[^:]*):(?<dataFlag>[^:]*):(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*):(?<animationLock>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) 264 (?<type>108):(?<sourceId>[^:]*):(?<id>[^:]*):(?<globalEffectCounter>[^:]*):(?<dataFlag>[^:]*):(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*)(?:$|:)
 ```
 
 #### Examples
 
 ```log
 Network Log Line Examples:
-264|2023-11-02T20:53:56.6450000-04:00|10001234|0005|000003EF|0|||||0.6|9f7371fa0e3a42c8
-264|2023-11-02T21:39:20.0910000-04:00|10001234|0085|0000533E|1|0.000|0.000|0.000|2.920|1.1|2e9ae29c1b65f930
-264|2023-11-02T21:39:15.6790000-04:00|40000D6E|8C45|000052DD|1|-14.344|748.558|130.009|2.483|0.1|f6b3ffa6c97f0540
+264|2023-11-02T20:53:56.6450000-04:00|10001234|0005|000003EF|0|||||9f7371fa0e3a42c8
+264|2023-11-02T21:39:20.0910000-04:00|10001234|0085|0000533E|1|0.000|0.000|0.000|2.920|2e9ae29c1b65f930
+264|2023-11-02T21:39:15.6790000-04:00|40000D6E|8C45|000052DD|1|-14.344|748.558|130.009|2.483|f6b3ffa6c97f0540
 
 Parsed Log Line Examples:
-[20:53:56.645] 264 108:10001234:0005:000003EF:0:::::0.6
-[21:39:20.091] 264 108:10001234:0085:0000533E:1:0.000:0.000:0.000:2.920:1.1
-[21:39:15.679] 264 108:40000D6E:8C45:000052DD:1:-14.344:748.558:130.009:2.483:0.1
+[20:53:56.645] 264 108:10001234:0005:000003EF:0::::
+[21:39:20.091] 264 108:10001234:0085:0000533E:1:0.000:0.000:0.000:2.920
+[21:39:15.679] 264 108:40000D6E:8C45:000052DD:1:-14.344:748.558:130.009:2.483
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=AbilityExtra&lang=en-US) -->
