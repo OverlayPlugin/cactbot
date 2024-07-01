@@ -429,3 +429,9 @@ input[type="checkbox"] {
   width: 15px;
   height: 15px;
 }
+
+textarea {
+  padding: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+}

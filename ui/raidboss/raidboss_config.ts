@@ -1607,7 +1607,8 @@ const userFileHandler: UserFileCallback = (
 
     // `filename` here is just cosmetic for better debug printing to make it more clear
     // where a trigger or an override is coming from.
-    set.filename = `${basePath}${name}`;
+    const isRemote = name.startsWith('http://') || name.startsWith('https://');
+    set.filename = isRemote ? name : `${basePath}${name}`;
     set.isUserTriggerSet = true;
 
     flattenTimeline(set, name, files);
@@ -2527,6 +2528,25 @@ const templateOptions: OptionsTemplate = {
       },
       type: 'float',
       default: 0.75,
+    },
+    {
+      id: 'RaidbossRemoteSubscriptionLink',
+      name: {
+        en: 'Raidboss remote subscription link',
+        de: 'Raidboss Remote Abonnement Link',
+        fr: 'Lien de souscription Raidboss à distance',
+        ja: 'Raidboss リモートサブスクリプションリンク',
+        cn: 'Raidboss 远程订阅链接',
+        ko: 'Raidboss 원격 구독 링크',
+      },
+      type: 'multiline',
+      default: '',
+      comment: {
+        en:
+          '<strong style="color:red;">WARNING!</strong>Importing remote JavaScript files can expose your device to risks. These files might steal your information or damage your device. Make sure to import files only from trusted developers.',
+        cn:
+          '<strong style="color:red;">警告！</strong>导入远程 JavaScript 文件可能会让你的设备暴露在风险中。这些文件可能会窃取你的信息或造成设备损坏。请确保只从信任的开发者处导入文件。',
+      },
     },
   ],
 };

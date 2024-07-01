@@ -194,5 +194,24 @@ UserConfig.registerOptions('eureka', {
         options['RefreshRateMs'] = seconds * 1000;
       },
     },
+    {
+      id: 'EurekaRemoteSubscriptionLink',
+      name: {
+        en: 'Eureka remote subscription link',
+        de: 'Eureka Remote Abonnement Link',
+        fr: 'Lien de souscription Eureka à distance',
+        ja: 'Eureka リモートサブスクリプションリンク',
+        cn: 'Eureka 远程订阅链接',
+        ko: 'Eureka 원격 구독 링크',
+      },
+      type: 'multiline',
+      default: '',
+      comment: {
+        en:
+          '<strong style="color:red;">WARNING!</strong>Importing remote JavaScript files can expose your device to risks. These files might steal your information or damage your device. Make sure to import files only from trusted developers.',
+        cn:
+          '<strong style="color:red;">警告！</strong>导入远程 JavaScript 文件可能会让你的设备暴露在风险中。这些文件可能会窃取你的信息或造成设备损坏。请确保只从信任的开发者处导入文件。',
+      },
+    },
   ],
 });
