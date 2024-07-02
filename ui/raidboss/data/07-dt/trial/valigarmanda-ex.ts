@@ -1,0 +1,494 @@
+import Conditions from '../../../../../resources/conditions';
+import Outputs from '../../../../../resources/outputs';
+import { Responses } from '../../../../../resources/responses';
+import ZoneId from '../../../../../resources/zone_id';
+import { RaidbossData } from '../../../../../types/data';
+import { LocaleText, TriggerSet } from '../../../../../types/trigger';
+
+export interface Data extends RaidbossData {
+  firstStormDebuff?: StormDebuff;
+  arcaneLaneSafe: ArcaneLane[];
+}
+
+// Vali uses uncasted abilities to move between left, middle, and right.
+// If Vali moves left, right wedge is safe, and so on:
+// 900D (middle -> left), 900E (middle -> right)
+// 900F (left -> middle), 9010 (left -> right)
+// 9011 (right -> middle), 9012 (right -> left)
+type WedgeSafeSpot = 'leftWedgeSafe' | 'middleWedgeSafe' | 'rightWedgeSafe';
+const mtFireIdToSafeMap: { [id: string]: WedgeSafeSpot } = {
+  '900D': 'rightWedgeSafe',
+  '900E': 'leftWedgeSafe',
+  '900F': 'middleWedgeSafe',
+  '9010': 'leftWedgeSafe',
+  '9011': 'middleWedgeSafe',
+  '9012': 'rightWedgeSafe',
+};
+const mtFireIds = Object.keys(mtFireIdToSafeMap);
+
+const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
+  leftWedgeSafe: {
+    en: '<= Left Wedge Safe',
+  },
+  middleWedgeSafe: {
+    en: 'Middle Wedge Safe',
+  },
+  rightWedgeSafe: {
+    en: 'Right Wedge Safe =>',
+  },
+};
+
+type StormDebuff = 'ice' | 'lightning';
+const stormDebuffMap: { [id: string]: StormDebuff } = {
+  'EEC': 'ice',
+  'EF0': 'lightning',
+};
+const stormDebuffIds = Object.keys(stormDebuffMap);
+
+const arcaneLanesConst = [
+  'northFront',
+  'northBack',
+  'middleFront',
+  'middleBack',
+  'southFront',
+  'southBack',
+] as const;
+type ArcaneLane = typeof arcaneLanesConst[number];
+
+const triggerSet: TriggerSet<Data> = {
+  id: 'WorquorLarDorExtreme',
+  zoneId: ZoneId.WorqorLarDorExtreme,
+  timelineFile: 'valigarmanda-ex.txt',
+  initData: () => {
+    return {
+      arcaneLaneSafe: [...arcaneLanesConst],
+    };
+  },
+  triggers: [
+    {
+      // The first Spikecicle MapEffect line comes shortly before Spikecicle starts casting.
+      // The locations are [04, 06, 08, 0A, 0C] (starting center curving east, moving outward),
+      // or [05, 07, 09, 0B, 0D] (starting center curving west, moving outward).]
+      // Vali always starts with '04' or '05', then follows with the entire opposite sequence,
+      // before resuming the original sequence, e.g., 05 -> 04 thru 0C -> 07 thru 0D.
+      id: 'Valigarmanda Ex Spikesicle',
+      type: 'MapEffect',
+      netRegex: { flags: '00020004', location: ['04', '05'] },
+      suppressSeconds: 5,
+      alertText: (_data, matches, output) => {
+        return matches.location === '04' ? output.westSafe!() : output.eastSafe!();
+      },
+      outputStrings: {
+        westSafe: Outputs.getLeftAndWest,
+        eastSafe: Outputs.getRightAndEast,
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Skyrun Fire',
+      type: 'StartsUsing',
+      netRegex: { id: '95D4', source: 'Valigarmanda', capture: false },
+      // This is a long !(~10s) cast bar, although logs show a 5.7s cast time,
+      // followed by a 4.2 cast of '8FD4' (Skyruin) which is the actual damage.
+      // Use the original cast + delay so people can change the alert time.
+      delaySeconds: 5,
+      response: Responses.bleedAoe(),
+    },
+    {
+      id: 'Valigarmanda Ex Triscourge',
+      type: 'StartsUsing',
+      netRegex: { id: '8FE7', source: 'Valigarmanda', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      // 0E: east volcano, 0F: west volcano
+      id: 'Valigarmanda Ex Volcano',
+      type: 'MapEffect',
+      netRegex: { flags: '00200010', location: ['0E', '0F'] },
+      alertText: (_data, matches, output) => {
+        return matches.location === '0E' ? output.westSafe!() : output.eastSafe!();
+      },
+      outputStrings: {
+        westSafe: Outputs.getLeftAndWest,
+        eastSafe: Outputs.getRightAndEast,
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Big AOE + Partners',
+      type: 'StartsUsing',
+      // slightly longer cast times (6.2s), no cast bar, and partner stacks follow
+      // 8FC7: Susurrant Breath (conal)
+      // 8FCB: Slithering Strike (out)
+      // 8FCF: Strangling Coil (donut)
+      netRegex: { id: ['8FC7', '8FCB', '8FCF'], source: 'Valigarmanda' },
+      durationSeconds: 7,
+      alertText: (_data, matches, output) => {
+        if (matches.id === '8FC7') {
+          return output.combo!({ type: output.cone!() });
+        } else if (matches.id === '8FCB') {
+          return output.combo!({ type: output.out!() });
+        }
+        return output.combo!({ type: output.donut!() });
+      },
+      outputStrings: {
+        cone: {
+          en: 'Big Cone',
+        },
+        donut: {
+          en: 'Donut (In)',
+        },
+        out: Outputs.outOfMelee,
+        combo: {
+          en: '${type} => Stack w/Partner',
+        },
+      },
+    },
+    {
+      // When this effect expires, players gain 'DC3' (Freezing Up) for 2s
+      // Use a longer duration to keep the reminder up until the debuff falls off.
+      id: 'Valigarmanda Ex Calamity\'s Chill',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'EEE' },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4,
+      durationSeconds: 6,
+      response: Responses.moveAround(),
+    },
+    {
+      id: 'Valigarmanda Ex Calamity\'s Bolt',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'EEF' },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
+      durationSeconds: 6,
+      response: Responses.spread(),
+    },
+    {
+      id: 'Valigarmanda Ex Calamity\'s Inferno',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'EEA' },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.healerGroups!(),
+      outputStrings: {
+        healerGroups: Outputs.healerGroups,
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Mountain Fire Tank',
+      type: 'Ability',
+      netRegex: { id: '900C', source: 'Valigarmanda', capture: false },
+      condition: (data) => data.role === 'tank',
+      // There's ~5.5s between the end of the cast and damage applied from first tower soak.
+      // The tower soak/damage happens six times; use a long duraation to keep this reminder up.
+      durationSeconds: 30.5,
+      // use infoText to distinguish from wedge direction calls at the same time
+      infoText: (_data, _matches, output) => output.soakSwap!(),
+      outputStrings: {
+        soakSwap: {
+          en: 'Tank Tower (soak/swap)',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Mountain Fire First Wedge',
+      type: 'Ability',
+      netRegex: { id: '900C', source: 'Valigarmanda', capture: false },
+      // slight delay so as not to overlap with the tank tower call
+      delaySeconds: 1,
+      alertText: (_data, _matches, output) => output.firstFire!(),
+      outputStrings: {
+        firstFire: mtFireOutputStrings.middleWedgeSafe,
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Mountain Fire Subsequent Wedge',
+      type: 'Ability',
+      netRegex: { id: mtFireIds, source: 'Valigarmanda' },
+      delaySeconds: 1,
+      alertText: (_data, matches, output) => {
+        const safe = mtFireIdToSafeMap[matches.id];
+        if (safe === undefined)
+          return;
+        return output[safe]!();
+      },
+      outputStrings: mtFireOutputStrings,
+    },
+    {
+      id: 'Valigarmanda Ex Disaster Zone',
+      type: 'StartsUsing',
+      netRegex: { id: '8FD9', source: 'Valigarmanda', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'Valigarmanda Ex Ruin Foretold',
+      type: 'StartsUsing',
+      netRegex: { id: '9692', source: 'Valigarmanda', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Valigarmanda Ex Adds + Wild Charge Stacks',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'B7B', capture: false },
+      // This effect is continuously re-applied, but we can suppress for the rest of the fight
+      suppressSeconds: 99999,
+      alertText: (data, _matches, output) => {
+        const roleOutput = data.role === 'tank' ? output.tank!() : output.nonTank!();
+        return output.combo!({ role: roleOutput });
+      },
+      outputStrings: {
+        combo: {
+          en: 'Kill Adds + Healer Groups ${role}',
+        },
+        tank: {
+          en: '(in front)',
+        },
+        nonTank: {
+          en: '(behind tank)',
+        },
+      },
+    },
+    // 3-hit AOE. First damage applied ~3.1s after cast finishes, then ~8.5s & ~8.0 thereafter.
+    // Time these alerts so that warnings go out ~5s before each hit.
+    {
+      id: 'Valigarmanda Ex Tulidisaster 1',
+      type: 'StartsUsing',
+      netRegex: { id: '9008', capture: false },
+      delaySeconds: 5,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Valigarmanda Ex Tulidisaster 2',
+      type: 'StartsUsing',
+      netRegex: { id: '9008', capture: false },
+      delaySeconds: 13.5,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Valigarmanda Ex Tulidisaster 3',
+      type: 'StartsUsing',
+      netRegex: { id: '9008', capture: false },
+      delaySeconds: 21.5,
+      response: Responses.aoe(),
+    },
+
+    //
+    // ------------- STORM PHASE -------------
+    //
+    {
+      id: 'Valigarmanda Ex Skyrun (Storm)',
+      type: 'StartsUsing',
+      netRegex: { id: '95C3', source: 'Valigarmanda', capture: false },
+      response: Responses.bleedAoe(),
+    },
+    {
+      id: 'Valigarmanda Ex Storm Debuffs',
+      type: 'GainsEffect',
+      netRegex: { effectId: stormDebuffIds },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        const debuff = stormDebuffMap[matches.effectId];
+        const duration = parseFloat(matches.duration);
+        // each player receives both debuffs - one is 59s, the other 99s
+        if (debuff === undefined || duration > 60)
+          return;
+        data.firstStormDebuff = debuff;
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Calamity\'s Flames',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'EE9' },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.healerGroups!(),
+      outputStrings: {
+        healerGroups: Outputs.healerGroups,
+      },
+    },
+    // TODO: Unclear if '901D' is always first, or if it just corresponds to west feather
+    // For now, we can capture both 901D and 9020 (east or 4th?) and check castTime to confirm
+    {
+      id: 'Valigarmanda Ex Hail of Feathers',
+      type: 'StartsUsing',
+      netRegex: { id: ['901D', '9020'], source: 'Valigarmanda' },
+      alertText: (_data, matches, output) => {
+        if (parseFloat(matches.castTime) > 6) // first feather has castTime of 5.7
+          return;
+        const posX = parseFloat(matches.x);
+        if (posX < 100)
+          return output.startEast!();
+        return output.startWest!();
+      },
+      outputStrings: {
+        startEast: Outputs.getRightAndEast,
+        startWest: Outputs.getLeftAndWest,
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Feather of Ruin',
+      type: 'Ability',
+      netRegex: { id: '8FDE', source: 'Feather of Ruin', capture: false },
+      // only need to capture one, and give a delay for people to rotate
+      delaySeconds: 5,
+      suppressSeconds: 99999,
+      infoText: (_data, _matches, output) => output.killFeather!(),
+      outputStrings: {
+        killFeather: {
+          en: 'Kill Feather + Stand in safe tile',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Post-Feather Spread',
+      type: 'Ability',
+      // as soon as the feathers explode, people can spread
+      netRegex: { id: '8FDF', source: 'Valigarmanda', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.firstStormDebuff === undefined)
+          return;
+        return output[data.firstStormDebuff]!();
+      },
+      outputStrings: {
+        ice: {
+          en: 'Spread - elevated tile)',
+        },
+        lightning: {
+          en: 'Spread - ground tile',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Storm Big AOEs + Bait',
+      type: 'StartsUsing',
+      // slightly longer cast times (6.2s), no cast bar, and baited AOE puddles follow
+      // 8FC5: Susurrant Breath (conal)
+      // 8FC9: Slithering Strike (out)
+      // 8FCD: Strangling Coil (donut)
+      netRegex: { id: ['8FC5', '8FC9', '8FCD'], source: 'Valigarmanda' },
+      durationSeconds: 7,
+      alertText: (_data, matches, output) => {
+        if (matches.id === '8FC5') {
+          return output.combo!({ type: output.cone!() });
+        } else if (matches.id === '8FC9') {
+          return output.combo!({ type: output.out!() });
+        }
+        return output.combo!({ type: output.donut!() });
+      },
+      outputStrings: {
+        cone: {
+          en: 'Big Cone',
+        },
+        donut: {
+          en: 'Donut (In)',
+        },
+        out: Outputs.outOfMelee,
+        combo: {
+          en: '${type} => Bait Puddles',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Crackling Cataclysm',
+      type: 'StartsUsing',
+      netRegex: { id: '8FC1', source: 'Valigarmanda', capture: false },
+      suppressSeconds: 2,
+      response: Responses.moveAway('alert'),
+    },
+    {
+      id: 'Valigarmanda Ex Arcane Sphere Collect',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Arcane Sphere' },
+      run: (data, matches) => {
+        const posY = parseFloat(matches.y);
+        // 5 spheres will spawn in 6 possible y positions: 87.5, 92.5, 97.5, 102.5, 107.5, 112.5
+        // eliminate these rows, leaving a single safe lane
+        // call the big tiles north/middle/sough and the lanes front/back to distinguish
+        if (posY < 88)
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'northFront');
+        else if (posY < 93)
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'northBack');
+        else if (posY < 98)
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'middleFront');
+        else if (posY < 103)
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'middleBack');
+        else if (posY < 108)
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'southFront');
+        else
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'southBack');
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Arcane Sphere Safe',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Arcane Sphere', capture: false },
+      delaySeconds: 1,
+      suppressSeconds: 2,
+      alertText: (data, _matches, output) => {
+        const safeStr = data.arcaneLaneSafe[0];
+        if (data.arcaneLaneSafe.length !== 1 || safeStr === undefined)
+          return output.avoid!();
+        return output.combo!({ dir: output[safeStr]!() });
+      },
+      outputStrings: {
+        avoid: {
+          en: 'Dodge spheres - elevated tile',
+        },
+        combo: {
+          en: '${dir} - elevated tile',
+        },
+        northFront: {
+          en: 'North Row, Front Lane',
+        },
+        northBack: {
+          en: 'North Row, Back Lane',
+        },
+        middleFront: {
+          en: 'Middle Row, Front Lane',
+        },
+        middleBack: {
+          en: 'Middle Row, Back Lane',
+        },
+        southFront: {
+          en: 'South Row, Front Lane',
+        },
+        southBack: {
+          en: 'South Row, Back Lane',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Post-Arcane Sphere Spread',
+      type: 'Ability',
+      // as soon as the arcane spheres go off, people can spread
+      netRegex: { id: '985A', source: 'Arcane Sphere', capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        // This is the opposite of firstStormDebuff (it's the second one)
+        if (data.firstStormDebuff === undefined)
+          return;
+        if (data.firstStormDebuff === 'ice')
+          return output.lightning!();
+        return output.ice!();
+      },
+      outputStrings: {
+        ice: {
+          en: 'Spread - elevated tile',
+        },
+        lightning: {
+          en: 'Spread - ground tile',
+        },
+      },
+    },
+    //
+    // ------------- ICE PHASE -------------
+    //
+
+    //
+    // ------------- FINAL PHASE -------------
+    //
+  ],
+};
+
+export default triggerSet;
