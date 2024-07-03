@@ -5,9 +5,13 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { LocaleText, TriggerSet } from '../../../../../types/trigger';
 
+type Phase = 'start' | 'storm' | 'ice';
 export interface Data extends RaidbossData {
   firstStormDebuff?: StormDebuff;
   arcaneLaneSafe: ArcaneLane[];
+  phase: Phase;
+  avalancheSafe?: 'frontRight' | 'backLeft';
+  iceSphereAttackCounter: number;
 }
 
 // Vali uses uncasted abilities to move between left, middle, and right.
@@ -62,9 +66,22 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => {
     return {
       arcaneLaneSafe: [...arcaneLanesConst],
+      phase: 'start',
+      iceSphereAttackCounter: 0,
     };
   },
   triggers: [
+    {
+      id: 'Valigarmanda Ex Phase Change',
+      type: 'StartsUsing',
+      netRegex: { id: ['95C3', '8FD1'], source: 'Valigarmanda' },
+      run: (data, matches) => {
+        if (matches.id === '95C3')
+          data.phase = 'storm';
+        else if (matches.id === '8FD1')
+          data.phase = 'ice';
+      },
+    },
     {
       // The first Spikecicle MapEffect line comes shortly before Spikecicle starts casting.
       // The locations are [04, 06, 08, 0A, 0C] (starting center curving east, moving outward),
@@ -84,13 +101,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Valigarmanda Ex Skyrun Fire',
+      id: 'Valigarmanda Ex Skyruin Fire',
       type: 'StartsUsing',
-      netRegex: { id: '95D4', source: 'Valigarmanda', capture: false },
-      // This is a long !(~10s) cast bar, although logs show a 5.7s cast time,
+      netRegex: { id: '95C4', source: 'Valigarmanda', capture: false },
+      // This is a long !(~11s) cast bar, although logs show a 5.7s cast time,
       // followed by a 4.2 cast of '8FD4' (Skyruin) which is the actual damage.
       // Use the original cast + delay so people can change the alert time.
-      delaySeconds: 5,
+      delaySeconds: 6,
       response: Responses.bleedAoe(),
     },
     {
@@ -131,7 +148,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         cone: {
-          en: 'Big Cone',
+          en: 'Front Corner',
         },
         donut: {
           en: 'Donut (In)',
@@ -151,7 +168,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4,
       durationSeconds: 6,
-      response: Responses.moveAround(),
+      response: Responses.moveAround('alert'),
     },
     {
       id: 'Valigarmanda Ex Calamity\'s Bolt',
@@ -205,7 +222,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Valigarmanda Ex Mountain Fire Subsequent Wedge',
       type: 'Ability',
       netRegex: { id: mtFireIds, source: 'Valigarmanda' },
-      delaySeconds: 1,
       alertText: (_data, matches, output) => {
         const safe = mtFireIdToSafeMap[matches.id];
         if (safe === undefined)
@@ -217,7 +233,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Valigarmanda Ex Disaster Zone',
       type: 'StartsUsing',
-      netRegex: { id: '8FD9', source: 'Valigarmanda', capture: false },
+      netRegex: { id: ['8FD5', '8FD7', '8FD9'], source: 'Valigarmanda', capture: false },
       response: Responses.bigAoe(),
     },
     {
@@ -276,9 +292,13 @@ const triggerSet: TriggerSet<Data> = {
     // ------------- STORM PHASE -------------
     //
     {
-      id: 'Valigarmanda Ex Skyrun (Storm)',
+      id: 'Valigarmanda Ex Skyruin Storm',
       type: 'StartsUsing',
       netRegex: { id: '95C3', source: 'Valigarmanda', capture: false },
+      // This is a long !(~11s) cast bar, although logs show a 5.7s cast time,
+      // followed by a 4.2 cast of '8FD3' (Skyruin) which is the actual damage.
+      // Use the original cast + delay so people can change the alert time.
+      delaySeconds: 6,
       response: Responses.bleedAoe(),
     },
     {
@@ -307,15 +327,14 @@ const triggerSet: TriggerSet<Data> = {
         healerGroups: Outputs.healerGroups,
       },
     },
-    // TODO: Unclear if '901D' is always first, or if it just corresponds to west feather
-    // For now, we can capture both 901D and 9020 (east or 4th?) and check castTime to confirm
+    // 901D is the 'Hail of Feathers' cast from the first feather to drop
+    // Use 'StartsUsingExtra' as 'StartsUsing' positions can be stale.
     {
+      //
       id: 'Valigarmanda Ex Hail of Feathers',
-      type: 'StartsUsing',
-      netRegex: { id: ['901D', '9020'], source: 'Valigarmanda' },
+      type: 'StartsUsingExtra',
+      netRegex: { id: '901D' },
       alertText: (_data, matches, output) => {
-        if (parseFloat(matches.castTime) > 6) // first feather has castTime of 5.7
-          return;
         const posX = parseFloat(matches.x);
         if (posX < 100)
           return output.startEast!();
@@ -336,7 +355,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.killFeather!(),
       outputStrings: {
         killFeather: {
-          en: 'Kill Feather + Stand in safe tile',
+          en: 'Kill Feather => Be in safe tile',
         },
       },
     },
@@ -344,7 +363,9 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Valigarmanda Ex Post-Feather Spread',
       type: 'Ability',
       // as soon as the feathers explode, people can spread
+      // use a longer duration to better align to the mechanic
       netRegex: { id: '8FDF', source: 'Valigarmanda', capture: false },
+      durationSeconds: 10,
       alertText: (data, _matches, output) => {
         if (data.firstStormDebuff === undefined)
           return;
@@ -352,7 +373,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ice: {
-          en: 'Spread - elevated tile)',
+          en: 'Spread - elevated tile',
         },
         lightning: {
           en: 'Spread - ground tile',
@@ -378,7 +399,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         cone: {
-          en: 'Big Cone',
+          en: 'Front Corner',
         },
         donut: {
           en: 'Donut (In)',
@@ -394,12 +415,13 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '8FC1', source: 'Valigarmanda', capture: false },
       suppressSeconds: 2,
-      response: Responses.moveAway('alert'),
+      response: Responses.moveAway('alarm'),
     },
     {
-      id: 'Valigarmanda Ex Arcane Sphere Collect',
+      id: 'Valigarmanda Ex Storm Arcane Sphere Collect',
       type: 'AddedCombatant',
       netRegex: { name: 'Arcane Sphere' },
+      durationSeconds: 6,
       run: (data, matches) => {
         const posY = parseFloat(matches.y);
         // 5 spheres will spawn in 6 possible y positions: 87.5, 92.5, 97.5, 102.5, 107.5, 112.5
@@ -420,9 +442,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Valigarmanda Ex Arcane Sphere Safe',
+      id: 'Valigarmanda Ex Storm Arcane Sphere Safe',
       type: 'AddedCombatant',
       netRegex: { name: 'Arcane Sphere', capture: false },
+      condition: (data) => data.phase === 'storm',
       delaySeconds: 1,
       suppressSeconds: 2,
       alertText: (data, _matches, output) => {
@@ -433,28 +456,28 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         avoid: {
-          en: 'Dodge spheres - elevated tile',
+          en: 'Dodge spheres - be elevated',
         },
         combo: {
-          en: '${dir} - elevated tile',
+          en: '${dir} - be elevated',
         },
         northFront: {
-          en: 'North Row, Front Lane',
+          en: 'North Row, Front Half',
         },
         northBack: {
-          en: 'North Row, Back Lane',
+          en: 'North Row, Back Half',
         },
         middleFront: {
-          en: 'Middle Row, Front Lane',
+          en: 'Middle Row, Front Half',
         },
         middleBack: {
-          en: 'Middle Row, Back Lane',
+          en: 'Middle Row, Back Half',
         },
         southFront: {
-          en: 'South Row, Front Lane',
+          en: 'South Row, Front Half',
         },
         southBack: {
-          en: 'South Row, Back Lane',
+          en: 'South Row, Back Half',
         },
       },
     },
@@ -463,6 +486,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       // as soon as the arcane spheres go off, people can spread
       netRegex: { id: '985A', source: 'Arcane Sphere', capture: false },
+      durationSeconds: 9,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
         // This is the opposite of firstStormDebuff (it's the second one)
@@ -481,13 +505,282 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'Valigarmanda Ex Ruinfall Tower',
+      type: 'StartsUsing',
+      netRegex: { id: '8FFD', source: 'Valigarmanda', capture: false },
+      infoText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.soakTower!();
+        return output.avoidTower!();
+      },
+      outputStrings: {
+        soakTower: {
+          en: 'Soak Tower',
+        },
+        avoidTower: {
+          en: 'Avoid Tower',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Ruinfall Knockback',
+      type: 'StartsUsing',
+      netRegex: { id: '8FFF', source: 'Valigarmanda', capture: false },
+      delaySeconds: 3,
+      response: Responses.knockback(),
+    },
+
     //
     // ------------- ICE PHASE -------------
     //
+    {
+      id: 'Valigarmanda Ex Skyruin Ice',
+      type: 'StartsUsing',
+      netRegex: { id: '8FD1', source: 'Valigarmanda', capture: false },
+      // This is a long !(~11s) cast bar, although logs show a 5.7s cast time,
+      // followed by a 4.2 cast of '8FD2' (Skyruin) which is the actual damage.
+      // Use the original cast + delay so people can change the alert time.
+      delaySeconds: 6,
+      response: Responses.bleedAoe(),
+    },
+    {
+      // George R.R. Martin, don't read this.
+      id: 'Valigarmanda Ex Scourge of Ice + Fire',
+      type: 'GainsEffect',
+      // EEB - Calamity's Embers (Fire), EED - Calamity's Bite (ice)
+      // We only need one, since alerts are entirely role-based.
+      netRegex: { effectId: 'EEB', capture: false },
+      delaySeconds: 5,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.away!();
+        return output.healerGroups!();
+      },
+      outputStrings: {
+        away: Outputs.awayFromGroup,
+        healerGroups: Outputs.healerGroups,
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Avalanche Collect',
+      type: 'MapEffect',
+      // 00020001 - cleaves SW half (front/right safe)
+      // 00200010 - cleaves NE half (back/left safe)
+      netRegex: { flags: ['00020001', '00200010'], location: '03' },
+      run: (data, matches) => {
+        if (matches.flags === '00020001')
+          data.avalancheSafe = 'frontRight';
+        else
+          data.avalancheSafe = 'backLeft';
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Big AOE + Avalanche',
+      type: 'StartsUsing',
+      // slightly longer cast times (6.2s), no cast bar, paired with an avalanche
+      // 8FC6: Susurrant Breath (conal)
+      // 8FCA: Slithering Strike (out)
+      // 8FCE: Strangling Coil (donut)
+      netRegex: { id: ['8FC6', '8FCA', '8FCE'], source: 'Valigarmanda' },
+      durationSeconds: 7,
+      alertText: (data, matches, output) => {
+        // these casts also happen in the final (no-avalanche) aoe mechanic
+        // so if avalancheSafe isn't set, skip this trigger since the other one will fire
+        if (data.avalancheSafe === undefined)
+          return;
 
+        // we can use backLeft/frontRight output as/is for donut and out
+        // for cone, we'll need to tweak it
+        let safe: 'backLeft' | 'frontRight' | 'coneNWSafe' | 'coneNESafe';
+        if (matches.id === '8FC6')
+          safe = data.avalancheSafe === 'backLeft' ? 'coneNWSafe' : 'coneNESafe';
+        else
+          safe = data.avalancheSafe;
+
+        const safeOutput = output[safe]!();
+
+        let typeOutput;
+        if (matches.id === '8FC6')
+          typeOutput = output.cone!();
+        else if (matches.id === '8FCA')
+          typeOutput = output.out!();
+        else
+          typeOutput = output.donut!();
+
+        return output.combo!({ type: typeOutput, safe: safeOutput });
+      },
+      run: (data) => delete data.avalancheSafe,
+      outputStrings: {
+        cone: {
+          en: 'Front Corner',
+        },
+        donut: {
+          en: 'Donut (In)',
+        },
+        out: Outputs.outOfMelee,
+        backLeft: {
+          en: 'Be Back/Left',
+        },
+        frontRight: {
+          en: 'Be Front/Right',
+        },
+        coneNWSafe: {
+          en: 'NW Safe',
+        },
+        coneNESafe: {
+          en: 'NE Safe',
+        },
+        unknown: {
+          en: 'Dodge Avalanche',
+        },
+        combo: {
+          en: '${type} - ${safe}',
+        },
+      },
+    },
+    {
+      // Safe corner is opposite the north-most sphere
+      id: 'Valigarmanda Ex Ice Arcane Sphere Safe',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Arcane Sphere' },
+      condition: (data) => data.phase === 'ice',
+      alertText: (data, matches, output) => {
+        const posY = parseFloat(matches.y);
+        if (posY > 90)
+          return;
+
+        // this part of the trigger only gets reached once per set of spheres,
+        // so now we can increment the counter
+        data.iceSphereAttackCounter++;
+
+        const posX = parseFloat(matches.x);
+        if (posX > 100)
+          return output.nwSafe!();
+        return output.neSafe!();
+      },
+      outputStrings: {
+        nwSafe: Outputs.northwest,
+        neSafe: Outputs.northeast,
+      },
+    },
+    {
+      id: 'Valigarmanda Spikecicle + Avalanche',
+      type: 'Ability',
+      // Use the cast of Spikesicle during ice phase
+      // Allow 5 seconds for the avalanche to be collected
+      netRegex: { id: '8FF2', source: 'Valigarmanda', capture: false },
+      condition: (data) => data.phase === 'ice',
+      delaySeconds: 5,
+      alertText: (data, _matches, output) => {
+        if (data.avalancheSafe === undefined)
+          return output.unknown!();
+        else if (data.avalancheSafe === 'backLeft')
+          return output.dodgeLeft!();
+        return output.dodgeRight!();
+      },
+      run: (data) => delete data.avalancheSafe,
+      outputStrings: {
+        dodgeLeft: {
+          en: '<= Go Left (Dodge Avalanche)',
+        },
+        dodgeRight: {
+          en: 'Go Right (Dodge Avalanche) =>',
+        },
+        unknown: {
+          en: 'Dodge Avalanche',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Ice Big AOE',
+      type: 'StartsUsing',
+      // No paired mechanics for this one
+      // slightly longer cast times(6.2s), no cast bar
+      // 8FC8: Susurrant Breath (conal)
+      // 8FCC: Slithering Strike (out)
+      // 8FD0: Strangling Coil (donut)
+      netRegex: { id: ['8FC8', '8FCC', '8FD0'], source: 'Valigarmanda' },
+      // since these casts also accompany the same cast ids used for avalanche, use a condition
+      condition: (data) => data.phase === 'ice' && data.avalancheSafe === undefined,
+      durationSeconds: 7,
+      alertText: (_data, matches, output) => {
+        if (matches.id === '8FC8')
+          return output.cone!();
+        else if (matches.id === '8FCC')
+          return output.out!();
+        return output.donut!();
+      },
+      outputStrings: {
+        cone: {
+          en: 'Front Corner',
+        },
+        donut: {
+          en: 'Donut (In)',
+        },
+        out: Outputs.outOfMelee,
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Ice Arcane Sphere + Avalanche',
+      type: 'Ability',
+      netRegex: { id: '8FC2', source: 'Arcane Sphere', capture: false },
+      condition: (data) => data.phase === 'ice' && data.iceSphereAttackCounter === 2,
+      suppressSeconds: 2,
+      alertText: (data, _matches, output) => {
+        if (data.avalancheSafe === undefined)
+          return output.unknown!();
+        else if (data.avalancheSafe === 'backLeft')
+          return output.dodgeLeft!();
+        return output.dodgeRight!();
+      },
+      run: (data) => delete data.avalancheSafe,
+      outputStrings: {
+        dodgeLeft: {
+          en: '<= Go Left (Dodge Avalanche)',
+        },
+        dodgeRight: {
+          en: 'Go Right (Dodge Avalanche) =>',
+        },
+        unknown: {
+          en: 'Dodge Avalanche',
+        },
+      },
+    },
+    {
+      id: 'Valigarmanda Ex Freezing Dust',
+      type: 'StartsUsing',
+      netRegex: { id: '8FF0', source: 'Valigarmanda', capture: false },
+      response: Responses.moveAround('alert'),
+    },
+    {
+      id: 'Valigarmanda Ex Freezing Dust Knockback',
+      type: 'StartsUsing',
+      netRegex: { id: '8FF1', source: 'Valigarmanda', capture: false },
+      response: Responses.knockback(),
+    },
+    {
+      id: 'Valigarmanda Ex Freezing Dust Spread',
+      type: 'StartsUsing',
+      netRegex: { id: '8FF3', source: 'Valigarmanda', capture: false },
+      response: Responses.spread(),
+    },
+    {
+      id: 'Valigarmanda Ex Freezing Dust Stack',
+      type: 'StartsUsing',
+      netRegex: { id: '8FF4', source: 'Valigarmanda', capture: false },
+      response: Responses.stackMarker(),
+    },
     //
     // ------------- FINAL PHASE -------------
     //
+    {
+      id: 'Valigarmanda Ex Wrath Unfurled',
+      type: 'StartsUsing',
+      netRegex: { id: '9945', source: 'Valigarmanda', capture: false },
+      response: Responses.aoe(),
+    },
   ],
 };
 
