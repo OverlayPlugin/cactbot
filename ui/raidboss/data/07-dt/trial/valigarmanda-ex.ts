@@ -747,6 +747,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     // All other mechanics are repeats of earlier mechanics and handled by those triggers.
   ],
+  timelineReplace: [
+    {
+      'locale': 'en',
+      'replaceText': {
+        'Strangling Coil/Slithering Strike/Susurrant Breath': 'Middle/Away/Front Corners',
+      },
+    },
+  ],
 };
 
 export default triggerSet;

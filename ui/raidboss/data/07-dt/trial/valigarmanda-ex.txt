@@ -20,8 +20,7 @@ hideall "--sync--"
 46.1 "Skyruin (fire phase)" Ability { id: "8FD4", source: "Valigarmanda" }
 54.8 "Triscourge" Ability { id: "8FE7", source: "Valigarmanda" }
 62.9 "Volcanic Drop" Ability { id: "8FE5", source: "Valigarmanda" } duration 4.5
-# Strangling Coil, Slithering Strike, or Susurrant Breath
-76.3 "Middle/Away/Front Corners" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+76.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
 # Partners
 77.1 "Charring Cataclysm" Ability { id: "8FC4", source: "Valigarmanda" }
 92.3 "Mountain Fire (cast)" Ability { id: "900C", source: "Valigarmanda" }
@@ -42,7 +41,7 @@ hideall "--sync--"
 134.8 "Scourge of Fire 2" Ability { id: "8FEF", source: "Valigarmanda" }
 137.8 "Scourge of Fire 3" Ability { id: "8FEF", source: "Valigarmanda" }
 155.6 "Volcanic Drop" Ability { id: "8FE5", source: "Valigarmanda" }
-167.1 "Middle/Away/Front Corners" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+167.1 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
 # Partners
 167.9 "Charring Cataclysm" Ability { id: "8FC4", source: "Valigarmanda" }
 # Spread
@@ -110,14 +109,14 @@ hideall "--sync--"
 2070.1 "Blighted Bolt" Ability { id: "8FE1", source: "Valigarmanda" }
 # Spread/ice
 2079.9 "Scourge of Thunder" Ability { id: "8FE9", source: "Valigarmanda" }
-2094.8 "Middle/Away/Front Corners" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+2094.8 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
 # Lightning puddles
 2097.9 "Crackling Cataclysm" Ability { id: "8FC1", source: "Valigarmanda" }
 2108.6 "--sync--" Ability { id: "8FE2", source: "Valigarmanda" }
 2109.5 "Thunderous Breath" Ability { id: "8FE3", source: "Valigarmanda" }
 # Spread/ice
 2119.9 "Scourge of Thunder" Ability { id: "8FE9", source: "Valigarmanda" }
-2135.2 "Middle/Away/Front Corners" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+2135.2 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
 # Lightning puddles
 2138.3 "Crackling Cataclysm" Ability { id: "8FC1", source: "Valigarmanda" }
 2144.9 "Disaster Zone" Ability { id: "8FD8", source: "Valigarmanda" }
@@ -138,14 +137,14 @@ hideall "--sync--"
 3031.8 "Scourge of Ice/Fire" Ability { id: "8FEC", source: "Valigarmanda" }
 3031.8 "--sync--" Ability { id: "8FEE", source: "Valigarmanda" }
 3048.1 "Northern Cross" Ability { id: "8FDB|8FDC", source: "Valigarmanda" }
-3049.6 "Middle/Away/Front Corners" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+3049.6 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
 3055.6 "Chilling Cataclysm" Ability { id: "8FC3", source: "Valigarmanda" }
 3063.9 "Scourge of Thunder" Ability { id: "8FEA", source: "Valigarmanda" }
 3067.5 "--sync--" Ability { id: "8FF1", source: "Valigarmanda" }
 3079.5 "Spikesicle" Ability { id: "8FF2", source: "Valigarmanda" } duration 11.8
 # Too spammy to display each of these, and too close together to sync properly.
 3087.5 "Sphere Shatter x10" duration 10.8 #Ability { id: "995D", source: "Ice Boulder" }
-3115.6 "Middle/Away/Front Corners" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+3115.6 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
 3121.6 "Chilling Cataclysm" Ability { id: "8FC3", source: "Valigarmanda" }
 3126.4 "Northern Cross" Ability { id: "8FDB|8FDC", source: "Valigarmanda" }
 3130.4 "Freezing Dust" Ability { id: "8FF0", source: "Valigarmanda" }
