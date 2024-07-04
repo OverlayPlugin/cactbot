@@ -33,21 +33,26 @@ const mtFireIds = Object.keys(mtFireIdToSafeMap);
 const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
   leftWedgeSafe: {
     en: '<= Left Wedge Safe',
+    cn: '<= 左侧安全',
   },
   middleWedgeSafe: {
     en: 'Middle Wedge Safe',
+    cn: '中间安全',
   },
   rightWedgeSafe: {
     en: 'Right Wedge Safe =>',
+    cn: '右侧安全 =>',
   },
 };
 
 const bigAoeOutputStrings: OutputStrings = {
   cone: {
     en: 'Front Corner',
+    cn: '前面角落',
   },
   donut: {
     en: 'Donut (In)',
+    cn: '中间月环',
   },
   out: Outputs.outOfMelee,
 };
@@ -153,6 +158,7 @@ const triggerSet: TriggerSet<Data> = {
         ...bigAoeOutputStrings,
         combo: {
           en: '${type} => Stack w/Partner',
+          cn: '${type} => 和搭档分摊',
         },
       },
     },
@@ -201,6 +207,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         soakSwap: {
           en: 'Tank Tower (soak/swap)',
+          cn: '双T轮换踩塔',
         },
       },
     },
@@ -252,12 +259,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Kill Adds + Healer Groups ${role}',
+          cn: '击杀小怪 + 治疗分摊组 ${role}',
         },
         tank: {
           en: '(be in front)',
+          cn: '(站在最前面)',
         },
         nonTank: {
           en: '(behind tank)',
+          cn: '(站坦克后面)',
         },
       },
     },
@@ -354,6 +364,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         killFeather: {
           en: 'Kill Feather => Stand in safe tile',
+          cn: '击杀羽毛 => 站安全格内',
         },
       },
     },
@@ -372,9 +383,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ice: {
           en: 'Spread - elevated tile',
+          cn: '分散 - 高台格',
         },
         lightning: {
           en: 'Spread - ground tile',
+          cn: '分散 - 地面格',
         },
       },
     },
@@ -399,6 +412,7 @@ const triggerSet: TriggerSet<Data> = {
         ...bigAoeOutputStrings,
         combo: {
           en: '${type} => Bait Puddles',
+          cn: '${type} => 引导火圈',
         },
       },
     },
@@ -452,24 +466,31 @@ const triggerSet: TriggerSet<Data> = {
         },
         combo: {
           en: '${dir} - elevated tile',
+          cn: '${dir} - 高台格',
         },
         northFront: {
           en: 'North Row, Front Half',
+          cn: '上(北)行 前半',
         },
         northBack: {
           en: 'North Row, Back Half',
+          cn: '上(北)行 后半',
         },
         middleFront: {
           en: 'Middle Row, Front Half',
+          cn: '中间行 前半',
         },
         middleBack: {
           en: 'Middle Row, Back Half',
+          cn: '中间行 后半',
         },
         southFront: {
           en: 'South Row, Front Half',
+          cn: '下(南)行 前半',
         },
         southBack: {
           en: 'South Row, Back Half',
+          cn: '下(南)行 后半',
         },
       },
     },
@@ -491,9 +512,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ice: {
           en: 'Spread - elevated tile',
+          cn: '分散 - 高台格',
         },
         lightning: {
           en: 'Spread - ground tile',
+          cn: '分散 - 地面格',
         },
       },
     },
@@ -509,9 +532,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         soakTower: {
           en: 'Soak Tower',
+          cn: '踩塔',
         },
         avoidTower: {
           en: 'Avoid Tower',
+          cn: '远离塔',
         },
       },
     },
@@ -609,21 +634,27 @@ const triggerSet: TriggerSet<Data> = {
         ...bigAoeOutputStrings,
         backLeft: {
           en: 'Be Back/Left',
+          cn: '左/后 安全',
         },
         frontRight: {
           en: 'Be Front/Right',
+          cn: '右/前 安全',
         },
         coneNWSafe: {
           en: 'NW Safe',
+          cn: '左上(西北) 安全',
         },
         coneNESafe: {
           en: 'NE Safe',
+          cn: '右上(东北) 安全',
         },
         unknown: {
           en: 'Dodge Avalanche',
+          cn: '躲避雪崩',
         },
         combo: {
           en: '${type} - ${safe}',
+          cn: '${type} - ${safe}',
         },
       },
     },
@@ -672,12 +703,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
+          cn: '<= 去左边 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
+          cn: '去右边 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
+          cn: '躲避雪崩',
         },
       },
     },
@@ -719,12 +753,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
+          cn: '<= 去左边 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
+          cn: '去右边 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
+          cn: '躲避雪崩',
         },
       },
     },
