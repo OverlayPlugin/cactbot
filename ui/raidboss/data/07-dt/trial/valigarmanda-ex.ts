@@ -33,21 +33,26 @@ const mtFireIds = Object.keys(mtFireIdToSafeMap);
 const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
   leftWedgeSafe: {
     en: '<= Left Wedge Safe',
+    de: '<= Linker Spalt sicher',
   },
   middleWedgeSafe: {
     en: 'Middle Wedge Safe',
+    de: 'Mittel Spalt sicher',
   },
   rightWedgeSafe: {
     en: 'Right Wedge Safe =>',
+    de: 'Rechter Spalt sicher =>',
   },
 };
 
 const bigAoeOutputStrings: OutputStrings = {
   cone: {
     en: 'Front Corner',
+    de: 'Vordere Ecken',
   },
   donut: {
     en: 'Donut (In)',
+    de: 'Donut (Rein)',
   },
   out: Outputs.outOfMelee,
 };
@@ -153,6 +158,7 @@ const triggerSet: TriggerSet<Data> = {
         ...bigAoeOutputStrings,
         combo: {
           en: '${type} => Stack w/Partner',
+          de: '${type} => Sammeln mit Partner',
         },
       },
     },
@@ -201,6 +207,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         soakSwap: {
           en: 'Tank Tower (soak/swap)',
+          de: 'Tank Türme (nehmen/wechseln)',
         },
       },
     },
@@ -252,12 +259,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Kill Adds + Healer Groups ${role}',
+          de: 'Adds besiegen + Heiler Gruppen ${role}',
         },
         tank: {
           en: '(be in front)',
+          de: '(rein vorne)',
         },
         nonTank: {
           en: '(behind tank)',
+          de: '(hinter den Tank)',
         },
       },
     },
@@ -354,6 +364,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         killFeather: {
           en: 'Kill Feather => Stand in safe tile',
+          de: 'Feder besiegen => Auf sicherer Flächen sein',
         },
       },
     },
@@ -372,9 +383,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ice: {
           en: 'Spread - elevated tile',
+          de: 'Verteilen - auf schwebender Flächen',
         },
         lightning: {
           en: 'Spread - ground tile',
+          de: 'Verteilen - Flächen auf dem Boden',
         },
       },
     },
@@ -399,6 +412,7 @@ const triggerSet: TriggerSet<Data> = {
         ...bigAoeOutputStrings,
         combo: {
           en: '${type} => Bait Puddles',
+          de: '${type} => Flächen ködern',
         },
       },
     },
@@ -449,27 +463,35 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Dodge spheres - elevated tile',
+          de: 'Spheren ausweichen - schwebende Fläche',
         },
         combo: {
           en: '${dir} - elevated tile',
+          de: '${dir} - schwebende Fläche',
         },
         northFront: {
           en: 'North Row, Front Half',
+          de: 'Nördliche Reihe, Vordere Hälfte',
         },
         northBack: {
           en: 'North Row, Back Half',
+          de: 'Nördliche Reihe, Hintere Hälfte',
         },
         middleFront: {
           en: 'Middle Row, Front Half',
+          de: 'Mittlere Reihe, Vordere Hälfte',
         },
         middleBack: {
           en: 'Middle Row, Back Half',
+          de: 'Mittlere Reihe, Hintere Hälfte',
         },
         southFront: {
           en: 'South Row, Front Half',
+          de: 'Südliche Reihe, Vordere Hälfte',
         },
         southBack: {
           en: 'South Row, Back Half',
+          de: 'Südliche Reihe, Hintere Hälfte',
         },
       },
     },
@@ -491,9 +513,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ice: {
           en: 'Spread - elevated tile',
+          de: 'Verteilen - auf schwebender Flächen',
         },
         lightning: {
           en: 'Spread - ground tile',
+          de: 'Verteilen - Flächen auf dem Boden',
         },
       },
     },
@@ -509,9 +533,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         soakTower: {
           en: 'Soak Tower',
+          de: 'Turm nehmen',
         },
         avoidTower: {
           en: 'Avoid Tower',
+          de: 'Turm vermeiden',
         },
       },
     },
@@ -609,21 +635,27 @@ const triggerSet: TriggerSet<Data> = {
         ...bigAoeOutputStrings,
         backLeft: {
           en: 'Be Back/Left',
+          de: 'Sei Hinten/Links',
         },
         frontRight: {
           en: 'Be Front/Right',
+          de: 'Sei Vorne/Rechts',
         },
         coneNWSafe: {
           en: 'NW Safe',
+          de: 'NW Sicher',
         },
         coneNESafe: {
           en: 'NE Safe',
+          de: 'NO Sicher',
         },
         unknown: {
           en: 'Dodge Avalanche',
+          de: 'Lawine ausweichen',
         },
         combo: {
           en: '${type} - ${safe}',
+          de: '${type} - ${safe}',
         },
       },
     },
@@ -672,12 +704,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
+          de: '<= Geh Links (Lawine ausweichen)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
+          de: 'Geh Rechts (Lawine ausweichen) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
+          de: 'Lawine ausweichen',
         },
       },
     },
@@ -719,12 +754,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
+          de: '<= Geh Links (Lawine ausweichen)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
+          de: 'Geh Rechts (Lawine ausweichen) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
+          de: 'Lawine ausweichen',
         },
       },
     },
@@ -752,6 +790,147 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Strangling Coil/Slithering Strike/Susurrant Breath': 'Middle/Away/Front Corners',
+      },
+    },
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': 'arkan(?:e|er|es|en) Sphäre',
+        'Feather of Ruin': 'Feder der Geißel',
+        'Flame-kissed Beacon': 'flammend(?:e|er|es|en) Omen',
+        'Ice Boulder': 'Eisbrocken',
+        'Thunderous Beacon': 'blitzend(?:e|er|es|en) Omen',
+        'Valigarmanda': 'Valigarmanda',
+      },
+      'replaceText': {
+        'Blighted Bolt': 'Unheilvoller Blitzschlag',
+        'Calamitous Cry': 'Unheilvoller Schrei',
+        'Charring Cataclysm': 'Infernales Desaster',
+        'Chilling Cataclysm': 'Gefrorenes Desaster',
+        'Crackling Cataclysm': 'Donnerndes Desaster',
+        'Disaster Zone': 'Katastrophengebiet',
+        'Fire': 'Feuer',
+        'Freezing Dust': 'Froststaub',
+        'Hail of Feathers': 'Federhagel',
+        'Ice Boulder': 'Eisbrocken',
+        'Ice Talon': 'Eiskralle',
+        'Mountain Fire': 'Bergfeuer',
+        'Northern Cross': 'Kreuz des Nordens',
+        'Ruin Foretold': 'Katastrophenwarnung',
+        'Ruinfall': 'Ruinsturz',
+        'Scourge of Fire': 'Geißel des Feuers',
+        'Scourge of Ice': 'Geißel des Eises',
+        'Scourge of Thunder': 'Geißel des Donners',
+        'Skyruin': 'Geißel der Himmel',
+        'Slithering Strike': 'Schlängelnder Hieb',
+        'Sphere Shatter': 'Sphärensplitterung',
+        'Spikesicle': 'Eislanze',
+        'Strangling Coil': 'Würgewickel',
+        'Susurrant Breath': 'Zischender Atem',
+        'Thunderous Breath': 'Gewitteratem',
+        'Triscourge': 'Dreifache Geißel',
+        'Tulidisaster': 'Turalisaster',
+        'Valigarmanda': 'Valigarmanda',
+        'Volcanic Drop': 'Feuerbergbombe',
+        'Wrath Unfurled': 'Entfalteter Zorn',
+        '\\(cast\\)': '(wirken)',
+        '\\(damage\\)': '(Schaden)',
+        '\\(enrage\\)': '(Finalangriff)',
+        '\\(fire phase\\)': '(Feuer Phase)',
+        '\\(ice phase\\)': '(Eis Phase)',
+        '\\(ice or storm phase?\\)': '(Eis oder Blitz Phase)',
+        '\\(knockback\\)': '(Rückstoß)',
+        '\\(storm phase\\)': '(Blitz Phase)',
+        '\\(tower\\)': '(Turm)',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': 'sphère arcanique',
+        'Feather of Ruin': 'plume de Valigarmanda',
+        'Flame-kissed Beacon': 'pylône de feu',
+        'Ice Boulder': 'amas de glace',
+        'Thunderous Beacon': 'pylône de foudre',
+        'Valigarmanda': 'Valigarmanda',
+      },
+      'replaceText': {
+        'Blighted Bolt': 'Éclairs de foudre catastrophiques',
+        'Calamitous Cry': 'Cri calamiteux',
+        'Charring Cataclysm': 'Désastre brûlant',
+        'Chilling Cataclysm': 'Désastre glaçant',
+        'Crackling Cataclysm': 'Désastre foudroyant',
+        'Disaster Zone': 'Zone de désastre',
+        'Fire': 'Feu',
+        'Freezing Dust': 'Poussière glaçante',
+        'Hail of Feathers': 'Déluge de plumes',
+        'Ice Boulder': 'amas de glace',
+        'Ice Talon': 'Serres de glace',
+        'Mountain Fire': 'Feu de montagne',
+        'Northern Cross': 'Croix du nord',
+        'Ruin Foretold': 'Signe de désastre',
+        'Ruinfall': 'Plongeon calamiteux',
+        'Scourge of Fire': 'Fléau brûlant',
+        'Scourge of Ice': 'Fléau glaçant',
+        'Scourge of Thunder': 'Fléau foudroyant',
+        'Skyruin': 'Désastre vivant',
+        'Slithering Strike': 'Frappe sinueuse',
+        'Sphere Shatter': 'Rupture glacée',
+        'Spikesicle': 'Stalactopointe',
+        'Strangling Coil': 'Enroulement sinueux',
+        'Susurrant Breath': 'Souffle sinueux',
+        'Thunderous Breath': 'Souffle du dragon',
+        'Triscourge': 'Tri-fléau',
+        'Tulidisaster': 'Désastre du Tural',
+        'Valigarmanda': 'Valigarmanda',
+        'Volcanic Drop': 'Obus volcanique',
+        'Wrath Unfurled': 'Rage déployée',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': '立体魔法陣',
+        'Feather of Ruin': 'ヴァリガルマンダの羽根',
+        'Flame-kissed Beacon': '火の徴',
+        'Ice Boulder': '氷塊',
+        'Thunderous Beacon': '雷の徴',
+        'Valigarmanda': 'ヴァリガルマンダ',
+      },
+      'replaceText': {
+        'Blighted Bolt': '災厄の落雷',
+        'Calamitous Cry': 'カラミティクライ',
+        'Charring Cataclysm': 'ファイアディザスター',
+        'Chilling Cataclysm': 'コールドディザスター',
+        'Crackling Cataclysm': 'ライトニングディザスター',
+        'Disaster Zone': 'ディザスターゾーン',
+        'Fire': 'ファイア',
+        'Freezing Dust': 'フリジングダスト',
+        'Hail of Feathers': 'フェザーヘイル',
+        'Ice Boulder': '氷塊',
+        'Ice Talon': 'アイスタロン',
+        'Mountain Fire': 'マウンテンファイア',
+        'Northern Cross': 'ノーザンクロス',
+        'Ruin Foretold': 'ディザスターサイン',
+        'Ruinfall': 'カラミティダイヴ',
+        'Scourge of Fire': 'スカージ・オフ・ファイア',
+        'Scourge of Ice': 'スカージ・オブ・アイス',
+        'Scourge of Thunder': 'スカージ・オブ・サンダー',
+        'Skyruin': 'リビングディザスター',
+        'Slithering Strike': 'スリザーストライク',
+        'Sphere Shatter': '破裂',
+        'Spikesicle': 'アイシクルスパイク',
+        'Strangling Coil': 'スリザーコイル',
+        'Susurrant Breath': 'スリザーブレス',
+        'Thunderous Breath': 'サンダーブレス',
+        'Triscourge': 'トライスカージ',
+        'Tulidisaster': 'トラルディザスター',
+        'Valigarmanda': 'ヴァリガルマンダ',
+        'Volcanic Drop': '火山弾',
+        'Wrath Unfurled': 'ラース・アンファールド',
       },
     },
   ],
