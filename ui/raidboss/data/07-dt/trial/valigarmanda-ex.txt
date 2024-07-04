@@ -50,9 +50,9 @@ hideall "--sync--"
 # End fire mini-phase
 
 195.0 "Ruin Foretold" Ability { id: "9692", source: "Valigarmanda" }
-197.3 "--untargetable--"
 
 # Add phase
+197.3 "--untargetable--"
 198.3 "--targetable--"
 # Calamitous Echo (9006) is the line stack/wild charge marker
 # Calamitous Cry (9002|9003) is the cast

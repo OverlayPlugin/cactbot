@@ -13,7 +13,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'ValigarmandaEx Spikecicle 3': '8FF7', // curved cleave
     'ValigarmandaEx Spikecicle 4': '8FF8', // curved cleave
     'ValigarmandaEx Spikecicle 5': '8FF9', // curved cleave
-    'ValigarmandaEx Sphere Shatter': '995D', // ice boulder aoe
+    'ValigarmandaEx Ice Boulder Sphere Shatter': '995D', // ice boulder aoe
     'ValigarmandaEx Susurrant Breath': '8FC8', // conal
     'ValigarmandaEx Slithering Strike': '8FCC', // point-blank AOE
     'ValigarmandaEx Strangling Coil': '8FD0', // donut
@@ -25,7 +25,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     // storm phase
     'ValigarmandaEx Blighted Bolt': '8FE1', // exploding feather
     'ValigarmandaEx Crackling Cataclysm': '8FC1', // baited AOE puddles
-    'ValigarmandaEx Arcane Lightning': '985A', // line cleaves from spheres
+    'ValigarmandaEx Arcane Sphere Arcane Lightning': '985A', // line cleaves from spheres
     // ice phase
     'ValigarmandaEx Northern Cross 1': '8FDB', // avalanche, cleaves NE half
     'ValigarmandaEx Northern Cross 2': '8FDC', // avalanche, cleaves SW half

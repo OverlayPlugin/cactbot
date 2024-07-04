@@ -194,7 +194,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '900C', source: 'Valigarmanda', capture: false },
       condition: (data) => data.role === 'tank',
       // There's ~5.5s between the end of the cast and damage applied from first tower soak.
-      // The tower soak/damage happens six times; use a long duraation to keep this reminder up.
+      // The tower soak/damage happens six times; use a long duration to keep this reminder up.
       durationSeconds: 30.5,
       // use infoText to distinguish from wedge direction alert calls at the same time
       infoText: (_data, _matches, output) => output.soakSwap!(),
@@ -420,17 +420,17 @@ const triggerSet: TriggerSet<Data> = {
         const posY = parseFloat(matches.y);
         // 5 spheres will spawn in 6 possible y positions: 87.5, 92.5, 97.5, 102.5, 107.5, 112.5
         if (posY < 88)
-          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'northFront');
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((lane) => lane !== 'northFront');
         else if (posY < 93)
-          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'northBack');
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((lane) => lane !== 'northBack');
         else if (posY < 98)
-          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'middleFront');
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((lane) => lane !== 'middleFront');
         else if (posY < 103)
-          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'middleBack');
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((lane) => lane !== 'middleBack');
         else if (posY < 108)
-          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'southFront');
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((lane) => lane !== 'southFront');
         else
-          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((l) => l !== 'southBack');
+          data.arcaneLaneSafe = data.arcaneLaneSafe.filter((lane) => lane !== 'southBack');
       },
     },
     {
