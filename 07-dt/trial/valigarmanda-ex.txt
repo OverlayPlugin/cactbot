@@ -1,0 +1,170 @@
+# -r MjxcGWaA73mF8B1J -rf=104
+# -ii 8FF3 8FF5 8FF6 8FF7 8FF8 8FF9 8FE4 8FE6 8FCB 8FFA 9013 9014 9015 901A 900D 900E 900F 9012 9016 8FC7 8FD9 87A2 9002 9003 9006 6854 9566 9567 95B3 8FF4 8FDE 8FDD 8FDF 8FD7 8FD5
+# -p 9008:1006.7 95C3:2005.7 8FD1:3005.7 9007:4003.7
+# -it "Valigarmanda" "Flame-kissed Beacon"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+6.0 "--sync--" Ability { id: "8FF1", source: "Valigarmanda" }
+18.0 "Spikesicle" Ability { id: "8FF2|8FF4", source: "Valigarmanda" } duration 11.8
+# Too spammy to display each of these, and too close together to sync properly.
+26.0 "Sphere Shatter x10" #Ability { id: "995D", source: "Ice Boulder" } duration 10.8
+
+# Fire mini-phase
+# Skyruin has two separate casts, one for boss animation and one for actual damage.
+# The animation cast time ends while the on-screen cast bar is still running,
+# so sync to but don't display the first ability
+40.7 "--sync--" Ability { id: "95C4", source: "Valigarmanda" }
+46.1 "Skyruin (fire phase)" Ability { id: "8FD4", source: "Valigarmanda" }
+54.8 "Triscourge" Ability { id: "8FE7", source: "Valigarmanda" }
+62.9 "Volcanic Drop" Ability { id: "8FE5", source: "Valigarmanda" } duration 4.5
+76.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+# Partners
+77.1 "Charring Cataclysm" Ability { id: "8FC4", source: "Valigarmanda" }
+92.3 "Mountain Fire (cast)" Ability { id: "900C", source: "Valigarmanda" }
+# 9013/9014/9015 are boss positions for cleave
+# 9019 is the buster
+# 901A is the cleave
+# 900D-9012 seem to correspond to boss movement animation?
+# Only worry about the buster here, the rest make the mechanic too spammy
+# The sync time is tweaked to match the snapshot of the last cleave rather than the last buster, for safety
+97.8 "Mountain Fire 1" Ability { id: "9019", source: "Valigarmanda" }
+102.8 "Mountain Fire 2" Ability { id: "9019", source: "Valigarmanda" }
+107.8 "Mountain Fire 3" Ability { id: "9019", source: "Valigarmanda" }
+112.8 "Mountain Fire 4" Ability { id: "9019", source: "Valigarmanda" }
+117.8 "Mountain Fire 5" Ability { id: "9019", source: "Valigarmanda" }
+122.8 "Mountain Fire 6" Ability { id: "9019", source: "Valigarmanda" }
+# Light party stacks + puddles
+131.8 "Scourge of Fire 1" Ability { id: "8FEF", source: "Valigarmanda" }
+134.8 "Scourge of Fire 2" Ability { id: "8FEF", source: "Valigarmanda" }
+137.8 "Scourge of Fire 3" Ability { id: "8FEF", source: "Valigarmanda" }
+155.6 "Volcanic Drop" Ability { id: "8FE5", source: "Valigarmanda" }
+167.1 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+# Partners
+167.9 "Charring Cataclysm" Ability { id: "8FC4", source: "Valigarmanda" }
+# Spread
+177.9 "Scourge of Thunder" Ability { id: "8FEA", source: "Valigarmanda" }
+186.8 "Disaster Zone" Ability { id: "8FDA", source: "Valigarmanda" }
+# End fire mini-phase
+
+195.0 "Ruin Foretold" Ability { id: "9692", source: "Valigarmanda" }
+
+# Add phase
+197.3 "--untargetable--"
+198.3 "--targetable--"
+# Calamitous Echo (9006) is the line stack/wild charge marker
+# Calamitous Cry (9002|9003) is the cast
+# Calamitous Cry (9005) is the damage snapshot
+# Not sure what 87A2/6854 are, they're unnamed. Maybe the cone cleaves on the ground?
+204.2 label "adds-loop"
+204.2 "Calamitous Cry" Ability { id: "9005", source: "Valigarmanda" }
+210.2 "Calamitous Cry" Ability { id: "9005", source: "Valigarmanda" }
+216.2 "Calamitous Cry" Ability { id: "9005", source: "Valigarmanda" }
+222.2 "Calamitous Cry" Ability { id: "9005", source: "Valigarmanda" }
+228.2 "Calamitous Cry" Ability { id: "9005", source: "Valigarmanda" }
+234.2 "Calamitous Cry" Ability { id: "9005", source: "Valigarmanda" } forcejump "adds-loop"
+# End add phase
+
+# Mini-phase-transition out of adds
+# This ability is used when adds are dead, so we can sync to it to exit the loop sooner
+996.3 "--sync--" Ability { id: "9565", source: "Flame-kissed Beacon" }
+1000.0 "--sync--" StartsUsing { id: "9008", source: "Valigarmanda" } window 1000,0
+1006.7 "Tulidisaster (cast)" Ability { id: "9008", source: "Valigarmanda" }
+1009.8 "Tulidisaster (damage) 1" Ability { id: "900A", source: "Valigarmanda" }
+1018.4 "Tulidisaster (damage) 2" Ability { id: "900B", source: "Valigarmanda" }
+1026.4 "Tulidisaster (damage) 3" Ability { id: "9009", source: "Valigarmanda" }
+
+# Skyruin here indicates either "storm" or "blizzard" phase
+# 95C3 = Storm
+# 8FD1 = Blizzard
+# Since we can't pre-determine the jump via forcejump, provide some entries for users to look at
+1034.5 "Skyruin (ice or storm phase?)"
+1043.2 "Triscourge"
+
+# Storm phase
+# Skyruin has two separate casts, one for boss animation and one for actual damage.
+# The animation cast time ends while the on-screen cast bar is still running,
+# so sync to but don't display the first ability
+2000.0 "--sync--" StartsUsing { id: "95C3", source: "Valigarmanda" } window 2000,2000
+2005.7 "--sync--" Ability { id: "95C3", source: "Valigarmanda" }
+2011.1 "Skyruin (storm phase)" Ability { id: "8FD3", source: "Valigarmanda" }
+2019.8 "Triscourge" Ability { id: "8FE7", source: "Valigarmanda" }
+# Light parties
+2031.8 "Scourge of Fire" Ability { id: "8FED", source: "Valigarmanda" }
+# Feathers.
+# 8FDE = the feather spawning
+# 8FDD = castbar, not important
+# The other 6 are the actual feather proximity hits
+2045.0 "Hail of Feathers 1" Ability { id: "901D", source: "Valigarmanda" }
+2048.0 "Hail of Feathers 2" Ability { id: "901E", source: "Valigarmanda" }
+2051.0 "Hail of Feathers 3" Ability { id: "901F", source: "Valigarmanda" }
+2054.0 "Hail of Feathers 4" Ability { id: "9020", source: "Valigarmanda" }
+2057.0 "Hail of Feathers 5" Ability { id: "9021", source: "Valigarmanda" }
+2060.0 "Hail of Feathers 6" Ability { id: "9022", source: "Valigarmanda" }
+# Feathers explode.
+# 8FDF = boss castbar, again not important
+# 8FE1 = actual feather explosion
+2070.1 "Blighted Bolt" Ability { id: "8FE1", source: "Valigarmanda" }
+# Spread/ice
+2079.9 "Scourge of Thunder" Ability { id: "8FE9", source: "Valigarmanda" }
+2094.8 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+# Lightning puddles
+2097.9 "Crackling Cataclysm" Ability { id: "8FC1", source: "Valigarmanda" }
+2108.6 "--sync--" Ability { id: "8FE2", source: "Valigarmanda" }
+2109.5 "Thunderous Breath" Ability { id: "8FE3", source: "Valigarmanda" }
+# Spread/ice
+2119.9 "Scourge of Thunder" Ability { id: "8FE9", source: "Valigarmanda" }
+2135.2 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+# Lightning puddles
+2138.3 "Crackling Cataclysm" Ability { id: "8FC1", source: "Valigarmanda" }
+2144.9 "Disaster Zone" Ability { id: "8FD8", source: "Valigarmanda" }
+2155.1 "--sync--" Ability { id: "8FFC", source: "Valigarmanda" } # boss animation, don't need to display
+2156.8 "Ruinfall (tower)" Ability { id: "8FFD", source: "Valigarmanda" }
+2159.2 "Ruinfall (knockback)" Ability { id: "8FFF", source: "Valigarmanda" }
+2160.8 "--sync--" Ability { id: "98DA", source: "Valigarmanda" } # either animation or south AoEs
+# End storm phase
+
+# Ice phase
+# Skyruin has two separate casts, one for boss animation and one for actual damage.
+# The animation cast time ends while the on-screen cast bar is still running,
+# so sync to but don't display the first ability
+3000.0 "--sync--" StartsUsing { id: "8FD1", source: "Valigarmanda" } window 3000,0
+3005.7 "--sync--" Ability { id: "8FD1", source: "Valigarmanda" }
+3011.1 "Skyruin (ice phase)" Ability { id: "8FD2", source: "Valigarmanda" }
+3019.8 "Triscourge" Ability { id: "8FE7", source: "Valigarmanda" }
+3031.8 "Scourge of Ice/Fire" Ability { id: "8FEC", source: "Valigarmanda" }
+3031.8 "--sync--" Ability { id: "8FEE", source: "Valigarmanda" }
+3048.1 "Northern Cross" Ability { id: "8FDB|8FDC", source: "Valigarmanda" }
+3049.6 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+3055.6 "Chilling Cataclysm" Ability { id: "8FC3", source: "Valigarmanda" }
+3063.9 "Scourge of Thunder" Ability { id: "8FEA", source: "Valigarmanda" }
+3067.5 "--sync--" Ability { id: "8FF1", source: "Valigarmanda" }
+3079.5 "Spikesicle" Ability { id: "8FF2", source: "Valigarmanda" } duration 11.8
+# Too spammy to display each of these, and too close together to sync properly.
+3087.5 "Sphere Shatter x10" duration 10.8 #Ability { id: "995D", source: "Ice Boulder" }
+3115.6 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8FC8|8FCC|8FD0", source: "Valigarmanda" }
+3121.6 "Chilling Cataclysm" Ability { id: "8FC3", source: "Valigarmanda" }
+3126.4 "Northern Cross" Ability { id: "8FDB|8FDC", source: "Valigarmanda" }
+3130.4 "Freezing Dust" Ability { id: "8FF0", source: "Valigarmanda" }
+3140.7 "Scourge of Thunder" Ability { id: "8FEA", source: "Valigarmanda" }
+3148.4 "Disaster Zone" Ability { id: "8FD6", source: "Valigarmanda" }
+3157.7 "Ice Talon" Ability { id: "8FFB", source: "Valigarmanda" }
+# End Blizzard phase
+
+# Final phase/enrage
+4000.0 "--sync--" StartsUsing { id: "9007", source: "Valigarmanda" } window 4000,0
+4003.7 "Wrath Unfurled" Ability { id: "9007", source: "Valigarmanda" }
+4007.0 "Wrath Unfurled" Ability { id: "9945", source: "Valigarmanda" }
+4018.9 "Mountain Fire (cast)" Ability { id: "900C", source: "Valigarmanda" }
+4024.6 "Mountain Fire 1" Ability { id: "9019", source: "Valigarmanda" }
+4029.6 "Mountain Fire 2" Ability { id: "9019", source: "Valigarmanda" }
+4034.6 "Mountain Fire 3" Ability { id: "9019", source: "Valigarmanda" }
+4039.6 "Mountain Fire 4" Ability { id: "9019", source: "Valigarmanda" }
+4044.6 "Mountain Fire 5" Ability { id: "9019", source: "Valigarmanda" }
+4049.6 "Mountain Fire 6" Ability { id: "9019", source: "Valigarmanda" }
+4063.3 "Tulidisaster" Ability { id: "924C", source: "Valigarmanda" }
+4066.4 "Tulidisaster" Ability { id: "924E", source: "Valigarmanda" }
+4075.0 "Tulidisaster" Ability { id: "924F", source: "Valigarmanda" }
+4083.0 "Tulidisaster (enrage)" Ability { id: "924D", source: "Valigarmanda" }
