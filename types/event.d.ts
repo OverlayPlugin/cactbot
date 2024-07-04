@@ -135,6 +135,16 @@ export interface JobDetail {
     blackMana: number;
     manaStacks: number;
   };
+  'PCT': {
+    palleteGauge: number;
+    paint: 0 | 1 | 2 | 3 | 4 | 5;
+    creatureMotif: 'Pom' | 'Wing' | 'Claw' | 'Maw' | 'None';
+    weaponMotif: boolean;
+    landscapeMotif: boolean;
+    depictions: ('Pom' | 'Wing' | 'Claw')[];
+    mooglePortrait: boolean;
+    madeenPortrait: boolean;
+  };
 }
 
 export type EnmityTargetCombatant = {

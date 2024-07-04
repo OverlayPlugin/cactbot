@@ -114,6 +114,19 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
     } else if (detail.job === 'RPR' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.soul} | ${detail.jobDetail.shroud} | ${detail.jobDetail.enshroudMilliseconds} | ${detail.jobDetail.lemureShroud} | ${detail.jobDetail.voidShroud}`;
+    } else if (detail.job === 'PCT' && detail.jobDetail) {
+      jobInfo.innerText =
+        `${detail.jobDetail.palleteGauge} | ${detail.jobDetail.palleteGauge} | (${detail.jobDetail.creatureMotif}|${
+          detail.jobDetail.weaponMotif ? 'Weapon' : 'None'
+        }|${detail.jobDetail.landscapeMotif ? 'Landscape' : 'None'}) | (${
+          detail.jobDetail.depictions.join('|') || 'None'
+        }) | ${
+          detail.jobDetail.mooglePortrait
+            ? 'Moogle'
+            : detail.jobDetail.madeenPortrait
+            ? 'Madeen'
+            : 'None'
+        }`;
     } else {
       jobInfo.innerText = '';
     }
