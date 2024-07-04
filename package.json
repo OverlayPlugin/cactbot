@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.32.0",
-  "releaseSummary": "initial 7.0 (DT) support",
-  "releaseInDraft": "false",
+  "version": "0.32.1",
+  "releaseSummary": "ex1 timeline + triggers",
+  "releaseInDraft": "true",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",
