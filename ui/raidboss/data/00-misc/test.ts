@@ -375,6 +375,7 @@ const triggerSet: TriggerSet<Data> = {
         countdown: {
           en: '${player} started ${seconds}s countdown',
           fr: '${player} a démarré un compte à rebours de ${seconds}s',
+          ja: '${player} が ${seconds} 秒のカウントダウンを開始しました',
           cn: '${player} 开始倒计时 ${seconds}秒',
           ko: '${player} ${seconds}초 초읽기를 시작했습니다',
         },
@@ -390,6 +391,7 @@ const triggerSet: TriggerSet<Data> = {
         countdownFail: {
           en: '${player} failed to start countdown (result code: ${code})',
           fr: '${player} a échoué à démarrer un compte à rebours (result code: ${code})',
+          ja: '${player} がカウントダウンを開始できませんでした (コード: ${code})',
           cn: '${player} 开始倒计时失败 (结果代码: ${code})',
           ko: '${player} 초읽기를 시작하지 못했습니다 (반환 코드: ${code})',
         },
@@ -404,6 +406,7 @@ const triggerSet: TriggerSet<Data> = {
         countdownCancel: {
           en: '${player} cancelled countdown',
           fr: '${player} a annulé le compte à rebours',
+          ja: '${player} がカウントダウンをキャンセルしました',
           cn: '${player} 取消倒计时',
           ko: '${player} 초읽기를 취소했습니다',
         },
@@ -527,6 +530,7 @@ const triggerSet: TriggerSet<Data> = {
         'You bid farewell to the striking dummy': '.*は木人に別れの挨拶をした',
         'You bow courteously to the striking dummy': '.*は木人にお辞儀した',
         'test sync': 'test sync',
+        'testNetRegexTimeline': 'testNetRegexTimeline',
         'You burst out laughing at the striking dummy': '.*は木人のことを大笑いした',
         'cactbot lang': 'cactbot言語',
         'cactbot test response': 'cactbotレスポンステスト',
