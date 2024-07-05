@@ -858,7 +858,7 @@ namespace Cactbot {
       [Flags]
       private enum CreatureFlags : byte {
           Pom = 1,
-          Wings = 1 << 1,
+          Wing = 1 << 1,
           Claw = 1 << 2,
           // Maw = 1 << 3, // Once you paint the Maw motif, it becomes a Madeen portrait.
           MooglePortrait = 1 << 4,
@@ -870,6 +870,7 @@ namespace Cactbot {
       [FieldOffset(0x02)]
       public byte paint;
 
+      [NonSerialized]
       [FieldOffset(0x03)]
       private CanvasFlags canvasFlags;
 
@@ -889,17 +890,18 @@ namespace Cactbot {
       public bool weaponMotif => canvasFlags.HasFlag(CanvasFlags.Weapon);
       public bool landscapeMotif => canvasFlags.HasFlag(CanvasFlags.Landscape);
 
+      [NonSerialized]
       [FieldOffset(0x04)]
       private CreatureFlags creatureFlags;
 
       public string[] depictions {
         get {
           var motifs = new List<string>();
-          if (creatureFlags.HasFlag(CanvasFlags.Pom))
+          if (creatureFlags.HasFlag(CreatureFlags.Pom))
             motifs.Add("Pom");
-          if (creatureFlags.HasFlag(CanvasFlags.Wing))
+          if (creatureFlags.HasFlag(CreatureFlags.Wing))
             motifs.Add("Wing");
-          if (creatureFlags.HasFlag(CanvasFlags.Claw))
+          if (creatureFlags.HasFlag(CreatureFlags.Claw))
             motifs.Add("Claw");
           return motifs.ToArray();
         }
