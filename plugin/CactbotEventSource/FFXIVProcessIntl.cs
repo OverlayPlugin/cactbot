@@ -861,7 +861,7 @@ namespace Cactbot {
           Wings = 1 << 1,
           Claw = 1 << 2,
           // Maw = 1 << 3, // Once you paint the Maw motif, it becomes a Madeen portrait.
-          MooglePortait = 1 << 4,
+          MooglePortrait = 1 << 4,
           MadeenPortrait = 1 << 5,
       }
 
@@ -905,7 +905,7 @@ namespace Cactbot {
         }
       }
 
-      public bool mooglePortrait => creatureFlags.HasFlag(CreatureFlags.MooglePortait);
+      public bool mooglePortrait => creatureFlags.HasFlag(CreatureFlags.MooglePortrait);
       public bool madeenPortrait => creatureFlags.HasFlag(CreatureFlags.MadeenPortrait);
     }
   }
