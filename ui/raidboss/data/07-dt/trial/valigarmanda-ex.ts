@@ -169,6 +169,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${type} => Stack w/Partner',
           de: '${type} => Sammeln mit Partner',
+          ja: '${type} => ペアで頭割り',
           cn: '${type} => 和搭档分摊',
         },
       },
@@ -219,6 +220,7 @@ const triggerSet: TriggerSet<Data> = {
         soakSwap: {
           en: 'Tank Tower (soak/swap)',
           de: 'Tank Türme (nehmen/wechseln)',
+          ja: 'タンク塔 (踏む/スイッチ)',
           cn: '双T轮换踩塔',
         },
       },
@@ -272,16 +274,19 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: 'Kill Adds + Healer Groups ${role}',
           de: 'Adds besiegen + Heiler Gruppen ${role}',
+          ja: '雑魚を倒して + ヒラグループ ${role}',
           cn: '击杀小怪 + 治疗分摊组 ${role}',
         },
         tank: {
           en: '(be in front)',
           de: '(rein vorne)',
+          ja: '(前へ)',
           cn: '(站在最前面)',
         },
         nonTank: {
           en: '(behind tank)',
           de: '(hinter den Tank)',
+          ja: '(タンクの後ろへ)',
           cn: '(站坦克后面)',
         },
       },
@@ -380,6 +385,7 @@ const triggerSet: TriggerSet<Data> = {
         killFeather: {
           en: 'Kill Feather => Stand in safe tile',
           de: 'Feder besiegen => Auf sicherer Flächen sein',
+          ja: '羽を壊す => 安全な床へ',
           cn: '击杀羽毛 => 站安全格内',
         },
       },
@@ -400,11 +406,13 @@ const triggerSet: TriggerSet<Data> = {
         ice: {
           en: 'Spread - elevated tile',
           de: 'Verteilen - auf schwebender Flächen',
+          ja: '散開 - 高台',
           cn: '分散 - 高台格',
         },
         lightning: {
           en: 'Spread - ground tile',
           de: 'Verteilen - Flächen auf dem Boden',
+          ja: '散開 - 地面',
           cn: '分散 - 地面格',
         },
       },
@@ -431,6 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${type} => Bait Puddles',
           de: '${type} => Flächen ködern',
+          ja: '${type} => 捨てて',
           cn: '${type} => 引导火圈',
         },
       },
@@ -483,40 +492,48 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Dodge spheres - elevated tile',
           de: 'Spheren ausweichen - schwebende Fläche',
+          ja: '玉を避ける - 高台',
         },
         combo: {
           en: '${dir} - elevated tile',
           de: '${dir} - schwebende Fläche',
+          ja: '${dir} - 高台',
           cn: '${dir} - 高台格',
         },
         northFront: {
           en: 'North Row, Front Half',
           de: 'Nördliche Reihe, Vordere Hälfte',
+          ja: '北側の前方へ',
           cn: '上(北)行 前半',
         },
         northBack: {
           en: 'North Row, Back Half',
           de: 'Nördliche Reihe, Hintere Hälfte',
+          ja: '北側の後方へ',
           cn: '上(北)行 后半',
         },
         middleFront: {
           en: 'Middle Row, Front Half',
           de: 'Mittlere Reihe, Vordere Hälfte',
+          ja: '中央の前方へ',
           cn: '中间行 前半',
         },
         middleBack: {
           en: 'Middle Row, Back Half',
           de: 'Mittlere Reihe, Hintere Hälfte',
+          ja: '中央の後方へ',
           cn: '中间行 后半',
         },
         southFront: {
           en: 'South Row, Front Half',
           de: 'Südliche Reihe, Vordere Hälfte',
+          ja: '南側の前方へ',
           cn: '下(南)行 前半',
         },
         southBack: {
           en: 'South Row, Back Half',
           de: 'Südliche Reihe, Hintere Hälfte',
+          ja: '南側の後方へ',
           cn: '下(南)行 后半',
         },
       },
@@ -540,11 +557,13 @@ const triggerSet: TriggerSet<Data> = {
         ice: {
           en: 'Spread - elevated tile',
           de: 'Verteilen - auf schwebender Flächen',
+          ja: '散開 - 高台',
           cn: '分散 - 高台格',
         },
         lightning: {
           en: 'Spread - ground tile',
           de: 'Verteilen - Flächen auf dem Boden',
+          ja: '散開 - 地面',
           cn: '分散 - 地面格',
         },
       },
@@ -562,11 +581,13 @@ const triggerSet: TriggerSet<Data> = {
         soakTower: {
           en: 'Soak Tower',
           de: 'Turm nehmen',
+          ja: '塔を踏む',
           cn: '踩塔',
         },
         avoidTower: {
           en: 'Avoid Tower',
           de: 'Turm vermeiden',
+          ja: '塔を避ける',
           cn: '远离塔',
         },
       },
@@ -666,31 +687,37 @@ const triggerSet: TriggerSet<Data> = {
         backLeft: {
           en: 'Be Back/Left',
           de: 'Sei Hinten/Links',
+          ja: '後ろ/左へ',
           cn: '左/后 安全',
         },
         frontRight: {
           en: 'Be Front/Right',
           de: 'Sei Vorne/Rechts',
+          ja: '前/右へ',
           cn: '右/前 安全',
         },
         coneNWSafe: {
           en: 'NW Safe',
           de: 'NW Sicher',
+          ja: '左上(北西) 安地',
           cn: '左上(西北) 安全',
         },
         coneNESafe: {
           en: 'NE Safe',
           de: 'NO Sicher',
+          ja: '右上(北東) 安地',
           cn: '右上(东北) 安全',
         },
         unknown: {
           en: 'Dodge Avalanche',
           de: 'Lawine ausweichen',
+          ja: '雪崩を避けて',
           cn: '躲避雪崩',
         },
         combo: {
           en: '${type} - ${safe}',
           de: '${type} - ${safe}',
+          ja: '${type} - ${safe}',
           cn: '${type} - ${safe}',
         },
       },
@@ -741,16 +768,19 @@ const triggerSet: TriggerSet<Data> = {
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
           de: '<= Geh Links (Lawine ausweichen)',
+          ja: '<= 左へ (雪崩を避けて)',
           cn: '<= 去左边 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
           de: 'Geh Rechts (Lawine ausweichen) =>',
+          ja: '右へ => (雪崩を避けて)',
           cn: '去右边 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
           de: 'Lawine ausweichen',
+          ja: '雪崩を避けて',
           cn: '躲避雪崩',
         },
       },
@@ -794,16 +824,19 @@ const triggerSet: TriggerSet<Data> = {
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
           de: '<= Geh Links (Lawine ausweichen)',
+          ja: '<= 左へ (雪崩を避けて)',
           cn: '<= 去左边 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
           de: 'Geh Rechts (Lawine ausweichen) =>',
+          ja: '右へ => (雪崩を避けて)',
           cn: '去右边 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
           de: 'Lawine ausweichen',
+          ja: '雪崩を避けて',
           cn: '躲避雪崩',
         },
       },
