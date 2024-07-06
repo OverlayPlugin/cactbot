@@ -34,16 +34,19 @@ const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
   leftWedgeSafe: {
     en: '<= Left Wedge Safe',
     de: '<= Linker Spalt sicher',
+    ja: '<= 左が安地',
     cn: '<= 左侧安全',
   },
   middleWedgeSafe: {
     en: 'Middle Wedge Safe',
     de: 'Mittel Spalt sicher',
+    ja: '中央が安地',
     cn: '中间安全',
   },
   rightWedgeSafe: {
     en: 'Right Wedge Safe =>',
     de: 'Rechter Spalt sicher =>',
+    ja: '右が安地 =>',
     cn: '右侧安全 =>',
   },
 };
@@ -52,11 +55,13 @@ const bigAoeOutputStrings: OutputStrings = {
   cone: {
     en: 'Front Corner',
     de: 'Vordere Ecken',
+    ja: '前方の角へ',
     cn: '前面角落',
   },
   donut: {
     en: 'Donut (In)',
     de: 'Donut (Rein)',
+    ja: 'ドーナツの中へ',
     cn: '中间月环',
   },
   out: Outputs.outOfMelee,
