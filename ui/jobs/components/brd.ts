@@ -201,7 +201,7 @@ export class BRDComponent extends BaseComponent {
           this.hawkeyeselapsed = this.straightShotProc.elapsed;
         this.straightShotProc.duration = 10;
         break;
-        }
+      }
       // Bard is complicated
       // Paeon -> Minuet/Ballad -> muse -> muse ends
       // Paeon -> runs out -> ethos -> within 30s -> Minuet/Ballad -> muse -> muse ends
