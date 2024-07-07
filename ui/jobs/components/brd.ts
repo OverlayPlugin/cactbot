@@ -194,13 +194,14 @@ export class BRDComponent extends BaseComponent {
         this.straightShotProc.duration = 30 + 1; // time won't go down before animation complete;
         this.hawkeyeselapsed = 0;
         break;
-      case EffectId.Barrage:
+      case EffectId.Barrage: {
         if (this.ffxivVersion < 700)
           break;
         if (this.hawkeyeselapsed !== 31)
           this.hawkeyeselapsed = this.straightShotProc.elapsed;
         this.straightShotProc.duration = 10;
         break;
+        }
       // Bard is complicated
       // Paeon -> Minuet/Ballad -> muse -> muse ends
       // Paeon -> runs out -> ethos -> within 30s -> Minuet/Ballad -> muse -> muse ends
