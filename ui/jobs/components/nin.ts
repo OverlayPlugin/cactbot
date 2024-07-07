@@ -88,7 +88,8 @@ export class NINComponent extends BaseComponent {
       case kAbility.Hide:
         this.ninjutsu.duration = 0;
         break;
-      case kAbility.TrickAttack: {
+      case kAbility.TrickAttack:
+      case kAbility.KunaisBane: {
         this.trickAttack.duration = 15;
         this.trickAttack.threshold = 1000;
         this.trickAttack.fg = computeBackgroundColorFrom(
