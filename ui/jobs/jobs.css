@@ -1321,6 +1321,18 @@ div.justbuffs div#procs-container {
   animation: pct-whitepaint-pulse 1s infinite;
 }
 
+.pct-color-livingmuse {
+  background-color: rgb(139 184 52);
+}
+
+.pct-color-steelmuse {
+  background-color: rgb(83 51 51);
+}
+
+.pct-color-scenicmuse {
+  background-color: rgb(140 78 174);
+}
+
 /* BLU */
 .blu-color-offguard {
   background-color: rgb(210 255 196);

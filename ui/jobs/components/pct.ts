@@ -1,5 +1,8 @@
+import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
+import { kAbility } from '../constants';
+import { PartialFieldMatches } from '../event_emitter';
 
 import { BaseComponent, ComponentInterface } from './base';
 
@@ -7,6 +10,10 @@ export class PCTComponent extends BaseComponent {
   whitePaint: ResourceBox;
   paletteGauge: ResourceBox;
   livingCanvasStacks: HTMLDivElement;
+
+  livingMuseBox: TimerBox;
+  steelMuseBox: TimerBox;
+  scenicMuseBox: TimerBox;
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -26,7 +33,38 @@ export class PCTComponent extends BaseComponent {
     }
     this.bars.addJobBarContainer().appendChild(this.livingCanvasStacks);
 
+    this.livingMuseBox = this.bars.addProcBox({
+      id: 'pct-procs-livingmuses',
+      fgColor: 'pct-color-livingmuse',
+    });
+    this.steelMuseBox = this.bars.addProcBox({
+      id: 'pct-procs-steelmuses',
+      fgColor: 'pct-color-steelmuse',
+    });
+    this.scenicMuseBox = this.bars.addProcBox({
+      id: 'pct-procs-scenicmuses',
+      fgColor: 'pct-color-scenicmuse',
+    });
+
     this.reset();
+  }
+
+  override onUseAbility(id: string, _ability: PartialFieldMatches<'Ability'>): void {
+    switch (id) {
+      // Living Muses
+      case kAbility.PomMuse:
+      case kAbility.WingedMuse:
+      case kAbility.ClawedMuse:
+      case kAbility.FangedMuse:
+        this.livingMuseBox.duration = 40;
+        break;
+      case kAbility.StrikingMuse:
+        this.steelMuseBox.duration = 60;
+        break;
+      case kAbility.StarryMuse:
+        this.scenicMuseBox.duration = 120;
+        break;
+    }
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['PCT']): void {
@@ -61,13 +99,15 @@ export class PCTComponent extends BaseComponent {
   }
 
   override reset(): void {
-    super.reset();
     this.paletteGauge.innerText = '';
     this.whitePaint.innerText = '';
     this.livingCanvasStacks.childNodes?.forEach((stack) => {
       if (stack instanceof HTMLElement)
         stack.classList.remove('active', 'pulse');
     });
+    this.livingMuseBox.duration = 0;
+    this.steelMuseBox.duration = 0;
+    this.scenicMuseBox.duration = 0;
   }
 }
 
