@@ -183,6 +183,7 @@ export class BRDComponent extends BaseComponent {
   override onYouGainEffect(id: string): void {
     switch (id) {
       case EffectId.StraightShotReady:
+      case EffectId.HawksEye:
         this.straightShotProc.duration = 30;
         break;
       // Bard is complicated
@@ -206,6 +207,7 @@ export class BRDComponent extends BaseComponent {
   override onYouLoseEffect(id: string): void {
     switch (id) {
       case EffectId.StraightShotReady:
+      case EffectId.HawksEye:
         this.straightShotProc.duration = 0;
         break;
       case EffectId.ArmysMuse:
