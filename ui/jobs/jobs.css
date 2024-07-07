@@ -459,6 +459,38 @@ div.justbuffs div#procs-container {
   background-color: rgb(255 100 100);
 }
 
+/* Living Canvas Progress - total 4 steps */
+
+/* First: Pom */
+#pct-stacks-living > div.active:nth-child(1) {
+  background-color: rgb(250 112 12);
+}
+
+/* Second: Wing */
+#pct-stacks-living > div.active:nth-child(2) {
+  background-color: rgb(177 106 165);
+}
+
+/* Third: Claw */
+#pct-stacks-living > div.active:nth-child(3) {
+  background-color: rgb(217 142 187);
+}
+
+/* Fourth: Fang */
+#pct-stacks-living > div.active:nth-child(4) {
+  background-color: rgb(74 27 27);
+}
+
+@keyframes pct-living-pulse {
+  50% {
+    box-shadow: 0 0 4px 0 rgb(247 185 243);
+  }
+}
+
+#pct-stacks-living > div.pulse {
+  animation: pct-living-pulse 1s infinite;
+}
+
 /* Procs */
 
 /*
@@ -1281,7 +1313,7 @@ div.justbuffs div#procs-container {
 
 @keyframes pct-whitepaint-pulse {
   50% {
-    background-color: rgb(48, 207, 221);
+    background-color: rgb(48 207 221);
   }
 }
 
