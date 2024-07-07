@@ -875,7 +875,6 @@ const data = {
   'HatedOfLevin': '8C5',
   'HatedOfTheVortex': '8BB',
   'HatedOfTheWyrm': '8D5',
-  'HawksEye': 'F15',
   'Headache': '3E3',
   'Headwind': '642',
   'HeartAndSoul': 'A69',
