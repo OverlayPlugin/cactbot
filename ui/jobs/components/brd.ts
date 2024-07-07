@@ -191,7 +191,7 @@ export class BRDComponent extends BaseComponent {
     switch (id) {
       case EffectId.StraightShotReady:
       case EffectId.HawksEye:
-        this.straightShotProc.duration = 30;
+        this.straightShotProc.duration = 30 + 1; // time won't go down before animation complete;
         break;
       case EffectId.Barrage:
         if (this.ffxivVersion < 700)
@@ -226,7 +226,7 @@ export class BRDComponent extends BaseComponent {
       case EffectId.Barrage:
         if (this.ffxivVersion < 700)
           break;
-        this.straightShotProc.duration = this.hawkeyeselapsed;
+        this.straightShotProc.duration = 30 + 1 - this.hawkeyeselapsed;
         break;
       case EffectId.ArmysMuse:
         // Muse effect ends
