@@ -361,10 +361,10 @@ namespace Cactbot {
       [FieldOffset(0x00)]
       public ushort songMilliseconds;
 
-      [FieldOffset(0x04)]
+      [FieldOffset(0x05)]
       public byte songProcs;
 
-      [FieldOffset(0x05)]
+      [FieldOffset(0x06)]
       public byte soulGauge;
 
       [NonSerialized]
