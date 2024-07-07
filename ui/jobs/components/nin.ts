@@ -108,9 +108,9 @@ export class NINComponent extends BaseComponent {
       case kAbility.ArmorCrush: {
         if (this.kazematoi.innerText === '5') {
           // Pulse the kazematoi count to indicate that you are wasting it.
-          this.kazematoi.parentElement!.classList.add('nin-kazematoi', 'pulse');
+          this.kazematoi.parentElement?.classList.add('nin-kazematoi', 'pulse');
           setTimeout(
-            () => this.kazematoi.parentElement!.classList.remove('nin-kazematoi', 'pulse'),
+            () => this.kazematoi.parentElement?.classList.remove('nin-kazematoi', 'pulse'),
             3000,
           );
         }
