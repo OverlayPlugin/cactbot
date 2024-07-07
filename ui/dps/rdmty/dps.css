@@ -290,11 +290,11 @@ li:last-child {
 }
 
 .show-job-colors .vpr .bar {
-  background-color: rgb(16,130,16);
+  background-color: rgb(16 130 16);
 }
 
 .show-job-colors .pct .bar {
-  background-color: rgb(252,146,225);
+  background-color: rgb(252 146 225);
 }
 
 .job-icon {
