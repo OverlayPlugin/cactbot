@@ -116,7 +116,7 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         `${detail.jobDetail.soul} | ${detail.jobDetail.shroud} | ${detail.jobDetail.enshroudMilliseconds} | ${detail.jobDetail.lemureShroud} | ${detail.jobDetail.voidShroud}`;
     } else if (detail.job === 'PCT' && detail.jobDetail) {
       jobInfo.innerText =
-        `${detail.jobDetail.palleteGauge} | ${detail.jobDetail.paint} | (${detail.jobDetail.creatureMotif} | ${
+        `${detail.jobDetail.paletteGauge} | ${detail.jobDetail.paint} | (${detail.jobDetail.creatureMotif} | ${
           detail.jobDetail.weaponMotif ? 'Weapon' : 'None'
         } | ${detail.jobDetail.landscapeMotif ? 'Landscape' : 'None'}) | (${
           detail.jobDetail.depictions.join('+') || 'None'
