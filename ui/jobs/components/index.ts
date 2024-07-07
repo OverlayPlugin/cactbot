@@ -22,7 +22,7 @@ import { DRKComponent } from './drk';
 import { GNBComponent } from './gnb';
 import { MCHComponent } from './mch';
 import { MNKComponent } from './mnk';
-import { NINComponent } from './nin';
+import { NIN6xComponent, NINComponent } from './nin';
 import { PCTComponent } from './pct';
 import { PLDComponent } from './pld';
 import { RDMComponent } from './rdm';
@@ -133,10 +133,10 @@ export class ComponentManager {
   }
 
   getJobComponents(job: Job): BaseComponent {
-    // if (this.o.ffxivVersion < ???) {
-    //   if (job === 'XXX')
-    //     return new XXXOldComponent(this.o);
-    // }
+    if (this.o.ffxivVersion < 700) {
+      if (job === 'NIN')
+        return new NIN6xComponent(this.o);
+    }
 
     const Component = ComponentMap[job];
 
