@@ -89,6 +89,7 @@ export interface JobDetail {
     songProcs: number;
     soulGauge: number;
     coda: (BardSongType)[];
+    LastCodaCost: number;
   };
   'MCH': {
     overheatMilliseconds: number;

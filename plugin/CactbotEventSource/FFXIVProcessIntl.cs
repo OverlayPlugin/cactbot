@@ -359,7 +359,11 @@ namespace Cactbot {
       }
 
       [FieldOffset(0x00)]
-      public ushort songMilliseconds;
+      public ushort songMilliseconds; // 00~01
+
+      // 02~03 is related to song and songProcs, but not sure what it is.
+      // 02 changes upon songProcs/soulGauge/Coda changes.
+      // 03 set on 0b when song active, changes upon songProcs/soulGauge cost, but reset to 0b at next songProcs/soulGauge gain.
 
       [FieldOffset(0x04)]
       public byte songProcs;
@@ -367,8 +371,11 @@ namespace Cactbot {
       [FieldOffset(0x05)]
       public byte soulGauge;
 
-      [NonSerialized]
       [FieldOffset(0x06)]
+      public byte LastCodaCost;
+
+      [NonSerialized]
+      [FieldOffset(0x07)]
       private SongFlags songFlags;
 
       public String songName {
