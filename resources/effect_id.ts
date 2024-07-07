@@ -174,6 +174,7 @@ const data = {
   'BannerOfTranscendentFinesse': '932',
   'BannerOfUnyieldingDefense': '930',
   'BardamsPrice': '4FA',
+  'Barrage': '80',
   'BasicInstinct': '9C2',
   'BattleEfficiencyDown': '2BD',
   'BattleFever': '28E',
