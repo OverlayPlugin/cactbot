@@ -21,7 +21,7 @@ export class BRDComponent extends BaseComponent {
   armysCoda: HTMLDivElement;
 
   ethosStacks = 0;
-  hawkeyeselapsed = 0;
+  hawkeyeselapsed = 31;
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -192,11 +192,13 @@ export class BRDComponent extends BaseComponent {
       case EffectId.StraightShotReady:
       case EffectId.HawksEye:
         this.straightShotProc.duration = 30 + 1; // time won't go down before animation complete;
+        this.hawkeyeselapsed = 0;
         break;
       case EffectId.Barrage:
         if (this.ffxivVersion < 700)
           break;
-        this.hawkeyeselapsed = this.straightShotProc.elapsed;
+        if (this.hawkeyeselapsed !== 31)
+          this.hawkeyeselapsed = this.straightShotProc.elapsed;
         this.straightShotProc.duration = 10;
         break;
       // Bard is complicated
@@ -222,11 +224,13 @@ export class BRDComponent extends BaseComponent {
       case EffectId.StraightShotReady:
       case EffectId.HawksEye:
         this.straightShotProc.duration = 0;
+        this.straightShotProc.reset();
+        this.hawkeyeselapsed = 31;
         break;
       case EffectId.Barrage:
         if (this.ffxivVersion < 700)
           break;
-        this.straightShotProc.duration = 30 + 1 - this.hawkeyeselapsed;
+        this.straightShotProc.duration = 31 - this.hawkeyeselapsed - this.straightShotProc.elapsed;
         break;
       case EffectId.ArmysMuse:
         // Muse effect ends
@@ -248,5 +252,6 @@ export class BRDComponent extends BaseComponent {
     this.repertoireTimer.duration = 0;
     this.ethosStacks = 0;
     this.songBox.duration = 0;
+    this.hawkeyeselapsed = 31;
   }
 }
