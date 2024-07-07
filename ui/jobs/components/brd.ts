@@ -134,12 +134,18 @@ export class BRDComponent extends BaseComponent {
       this.repertoireBox.innerText = '';
       this.repertoireBox.parentNode.classList.add('ballad');
       this.songBox.fg = computeBackgroundColorFrom(this.songBox, 'brd-color-song.ballad');
-      this.songBox.threshold = 14;
+      if (this.ffxivVersion < 700)
+        this.songBox.threshold = 14;
+      else
+        this.songBox.threshold = 5;
     } else if (jobDetail.songName === 'Paeon') {
       this.repertoireBox.innerText = jobDetail.songProcs.toString();
       this.repertoireBox.parentNode.classList.add('paeon');
       this.songBox.fg = computeBackgroundColorFrom(this.songBox, 'brd-color-song.paeon');
-      this.songBox.threshold = 3;
+      if (this.ffxivVersion < 700)
+        this.songBox.threshold = 3;
+      else
+        this.songBox.threshold = 15;
     }
 
     if (this.songBox.duration === null)
