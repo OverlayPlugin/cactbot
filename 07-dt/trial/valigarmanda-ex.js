@@ -11,6 +11,7 @@ const mtFireOutputStrings = {
   leftWedgeSafe: {
     en: '<= Left Wedge Safe',
     de: '<= Linker Spalt sicher',
+    fr: '<= Coin gauche sûr',
     cn: '<= 左侧安全',
   },
   middleWedgeSafe: {
@@ -21,6 +22,7 @@ const mtFireOutputStrings = {
   rightWedgeSafe: {
     en: 'Right Wedge Safe =>',
     de: 'Rechter Spalt sicher =>',
+    fr: 'Coin droit sûr =>',
     cn: '右侧安全 =>',
   },
 };
@@ -28,11 +30,13 @@ const bigAoeOutputStrings = {
   cone: {
     en: 'Front Corner',
     de: 'Vordere Ecken',
+    fr: 'Coin devant',
     cn: '前面角落',
   },
   donut: {
     en: 'Donut (In)',
     de: 'Donut (Rein)',
+    fr: 'Donut (Intérieur)',
     cn: '中间月环',
   },
   out: Outputs.outOfMelee,
@@ -135,6 +139,7 @@ Options.Triggers.push({
         combo: {
           en: '${type} => Stack w/Partner',
           de: '${type} => Sammeln mit Partner',
+          fr: '${type} => Package avec votre partenaire',
           cn: '${type} => 和搭档分摊',
         },
       },
@@ -185,6 +190,7 @@ Options.Triggers.push({
         soakSwap: {
           en: 'Tank Tower (soak/swap)',
           de: 'Tank Türme (nehmen/wechseln)',
+          fr: 'Tank tour (encaisser/swap)',
           cn: '双T轮换踩塔',
         },
       },
@@ -238,16 +244,19 @@ Options.Triggers.push({
         combo: {
           en: 'Kill Adds + Healer Groups ${role}',
           de: 'Adds besiegen + Heiler Gruppen ${role}',
+          fr: 'Tuez les adds + groupe sur les heals ${role}',
           cn: '击杀小怪 + 治疗分摊组 ${role}',
         },
         tank: {
           en: '(be in front)',
           de: '(rein vorne)',
+          fr: '(allez devant)',
           cn: '(站在最前面)',
         },
         nonTank: {
           en: '(behind tank)',
           de: '(hinter den Tank)',
+          fr: '(derrière le tank)',
           cn: '(站坦克后面)',
         },
       },
@@ -345,6 +354,7 @@ Options.Triggers.push({
         killFeather: {
           en: 'Kill Feather => Stand in safe tile',
           de: 'Feder besiegen => Auf sicherer Flächen sein',
+          fr: 'Tuez la plume => restez sur la tuile sûre',
           cn: '击杀羽毛 => 站安全格内',
         },
       },
@@ -365,11 +375,13 @@ Options.Triggers.push({
         ice: {
           en: 'Spread - elevated tile',
           de: 'Verteilen - auf schwebender Flächen',
+          fr: 'Dispersion - tuile surélevée',
           cn: '分散 - 高台格',
         },
         lightning: {
           en: 'Spread - ground tile',
           de: 'Verteilen - Flächen auf dem Boden',
+          fr: 'Dispersion - tuile au sol',
           cn: '分散 - 地面格',
         },
       },
@@ -396,6 +408,7 @@ Options.Triggers.push({
         combo: {
           en: '${type} => Bait Puddles',
           de: '${type} => Flächen ködern',
+          fr: '${type} => attirez les puddles',
           cn: '${type} => 引导火圈',
         },
       },
@@ -448,40 +461,48 @@ Options.Triggers.push({
         avoid: {
           en: 'Dodge spheres - elevated tile',
           de: 'Spheren ausweichen - schwebende Fläche',
+          fr: 'Évitez les sphères - tuile surélevée',
         },
         combo: {
           en: '${dir} - elevated tile',
           de: '${dir} - schwebende Fläche',
+          fr: '${dir} - tuile surélevée',
           cn: '${dir} - 高台格',
         },
         northFront: {
           en: 'North Row, Front Half',
           de: 'Nördliche Reihe, Vordere Hälfte',
+          fr: 'Ligne Nord, Moitié avant',
           cn: '上(北)行 前半',
         },
         northBack: {
           en: 'North Row, Back Half',
           de: 'Nördliche Reihe, Hintere Hälfte',
+          fr: 'Ligne Nord, Moitié arrière',
           cn: '上(北)行 后半',
         },
         middleFront: {
           en: 'Middle Row, Front Half',
           de: 'Mittlere Reihe, Vordere Hälfte',
+          fr: 'Ligne centrale, Moitié avant',
           cn: '中间行 前半',
         },
         middleBack: {
           en: 'Middle Row, Back Half',
           de: 'Mittlere Reihe, Hintere Hälfte',
+          fr: 'Ligne centrale, Moitié arrière',
           cn: '中间行 后半',
         },
         southFront: {
           en: 'South Row, Front Half',
           de: 'Südliche Reihe, Vordere Hälfte',
+          fr: 'Ligne Sud, Moitié avant',
           cn: '下(南)行 前半',
         },
         southBack: {
           en: 'South Row, Back Half',
           de: 'Südliche Reihe, Hintere Hälfte',
+          fr: 'Ligne Sud, Moitié arrière',
           cn: '下(南)行 后半',
         },
       },
@@ -505,11 +526,13 @@ Options.Triggers.push({
         ice: {
           en: 'Spread - elevated tile',
           de: 'Verteilen - auf schwebender Flächen',
+          fr: 'Dispersion - tuile surélevée',
           cn: '分散 - 高台格',
         },
         lightning: {
           en: 'Spread - ground tile',
           de: 'Verteilen - Flächen auf dem Boden',
+          fr: 'Dispersion - tuile au sol',
           cn: '分散 - 地面格',
         },
       },
@@ -527,11 +550,13 @@ Options.Triggers.push({
         soakTower: {
           en: 'Soak Tower',
           de: 'Turm nehmen',
+          fr: 'Prenez la Tour',
           cn: '踩塔',
         },
         avoidTower: {
           en: 'Avoid Tower',
           de: 'Turm vermeiden',
+          fr: 'Évitez la tour',
           cn: '远离塔',
         },
       },
@@ -626,31 +651,37 @@ Options.Triggers.push({
         backLeft: {
           en: 'Be Back/Left',
           de: 'Sei Hinten/Links',
+          fr: 'Arrière/Gauche',
           cn: '左/后 安全',
         },
         frontRight: {
           en: 'Be Front/Right',
           de: 'Sei Vorne/Rechts',
+          fr: 'Devant/Droite',
           cn: '右/前 安全',
         },
         coneNWSafe: {
           en: 'NW Safe',
           de: 'NW Sicher',
+          fr: 'NO Sûr',
           cn: '左上(西北) 安全',
         },
         coneNESafe: {
           en: 'NE Safe',
           de: 'NO Sicher',
+          fr: 'NE Sûr',
           cn: '右上(东北) 安全',
         },
         unknown: {
           en: 'Dodge Avalanche',
           de: 'Lawine ausweichen',
+          fr: 'Esquivez l\'avalanche',
           cn: '躲避雪崩',
         },
         combo: {
           en: '${type} - ${safe}',
           de: '${type} - ${safe}',
+          fr: '${type} - ${safe}',
           cn: '${type} - ${safe}',
         },
       },
@@ -699,16 +730,19 @@ Options.Triggers.push({
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
           de: '<= Geh Links (Lawine ausweichen)',
+          fr: '<= Allez à gauche (Esquivez l\'avalanche)',
           cn: '<= 去左边 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
           de: 'Geh Rechts (Lawine ausweichen) =>',
+          fr: 'Allez à droite (Esquivez l\'avalanche) =>',
           cn: '去右边 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
           de: 'Lawine ausweichen',
+          fr: 'Esquivez l\'avalanche',
           cn: '躲避雪崩',
         },
       },
@@ -752,16 +786,19 @@ Options.Triggers.push({
         dodgeLeft: {
           en: '<= Go Left (Dodge Avalanche)',
           de: '<= Geh Links (Lawine ausweichen)',
+          fr: '<= Allez à gauche (Esquivez l\'avalanche)',
           cn: '<= 去左边 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
           de: 'Geh Rechts (Lawine ausweichen) =>',
+          fr: 'Allez à droite (Esquivez l\'avalanche) =>',
           cn: '去右边 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
           de: 'Lawine ausweichen',
+          fr: 'Esquivez l\'avalanche',
           cn: '躲避雪崩',
         },
       },
@@ -844,7 +881,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sphere': 'sphère arcanique',
         'Feather of Ruin': 'plume de Valigarmanda',
@@ -883,6 +919,15 @@ Options.Triggers.push({
         'Valigarmanda': 'Valigarmanda',
         'Volcanic Drop': 'Obus volcanique',
         'Wrath Unfurled': 'Rage déployée',
+        '\\(cast\\)': '(Incante)',
+        '\\(damage\\)': '(Dommage)',
+        '\\(enrage\\)': '(Enrage)',
+        '\\(fire phase\\)': '(Phase de Feu)',
+        '\\(ice phase\\)': '(Phase de Glace)',
+        '\\(ice or storm phase?\\)': '(Phase de Feu ou de Glace)',
+        '\\(knockback\\)': '(Poussée)',
+        '\\(storm phase\\)': '(Phase Orageuse)',
+        '\\(tower\\)': '(Tour)',
       },
     },
     {
