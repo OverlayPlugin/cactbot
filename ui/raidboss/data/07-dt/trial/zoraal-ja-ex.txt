@@ -8,7 +8,7 @@ hideall "--sync--"
 # 937B - Right sword glowing, safe spot is front+right
 # 999B - Left sword glowing, safe spot is front+left
 
-# Forward Half:
+# Backward Half:
 # 937D - Right sword glowing, safe spot is back+left
 # 937E - Left sword glowing, safe spot is back+right
 
@@ -17,12 +17,12 @@ hideall "--sync--"
 3.2 "--sync--" Ability { id: "93A7", source: "Zoraal Ja" } window 3.2,1
 8.0 "--sync--" StartsUsing { id: "9398", source: "Zoraal Ja" } window 8,8
 12.7 "Actualize" Ability { id: "9398", source: "Zoraal Ja" }
-23.0 "Multidirectional Divide (cast)" Ability { id: "93A2", source: "Zoraal Ja" }
-34.0 "Multidirectional Divide (damage)" Ability { id: "93A3", source: "Zoraal Ja" }
+23.0 "--sync--" Ability { id: "93A2", source: "Zoraal Ja" } # Multidirectional Divice, drops lines (no damage)
+34.0 "Multidirectional Divide" Ability { id: "93A3", source: "Zoraal Ja" } # damage from line drops
 35.0 "Half Full" #Ability { id: "939E|9380", source: "Zoraal Ja" }
 35.0 "Forward Edge/Backward Edge" #Ability { id: "9972|937F", source: "Zoraal Ja" }
-44.2 "Multidirectional Divide (cast)" Ability { id: "93A2", source: "Zoraal Ja" }
-55.2 "Multidirectional Divide (damage)" Ability { id: "93A3", source: "Zoraal Ja" }
+44.2 "--sync--" Ability { id: "93A2", source: "Zoraal Ja" }
+55.2 "Multidirectional Divide" Ability { id: "93A3", source: "Zoraal Ja" }
 55.3 "Regicidal Rage" #Ability { id: "993C", source: "Zoraal Ja" }
 
 # Tiles phase
@@ -35,7 +35,7 @@ hideall "--sync--"
 121.1 "Blade Warp" Ability { id: "935E", source: "Zoraal Ja" }
 129.3 "Forged Track (cast)" Ability { id: "935F", source: "Zoraal Ja" }
 137.5 "Forged Track (damage)" Ability { id: "939D", source: "Fang" }
-137.6 "Fiery Edge/Stormy Edge" #Ability { id: "938[36]", source: "Fang" }
+137.6 "Fiery Edge/Stormy Edge" #Ability { id: "9383|9386", source: "Fang" }
 142.3 "Chasm of Vollok" Ability { id: "9389", source: "Zoraal Ja" }
 147.3 "Actualize" Ability { id: "9398", source: "Zoraal Ja" } window 5,5
 
@@ -82,7 +82,7 @@ hideall "--sync--"
 402.8 "Projection of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
 407.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
 412.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
-414.7 "Half Circuit" Ability { id: "936[BC]", source: "Zoraal Ja" }
+414.7 "Half Circuit" Ability { id: "936B|936C", source: "Zoraal Ja" }
 417.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
 422.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
 427.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
