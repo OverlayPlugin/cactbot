@@ -127,7 +127,7 @@ export class NINComponent extends BaseComponent {
 
     this.kazematoi.innerText = jobDetail.kazematoi?.toString() ?? '0';
     if (+this.kazematoi.innerText >= 4) {
-      // Pulse the kazematoi count to indicate that you are wasting it.
+      // Pulse the kazematoi count to indicate that you shouldn't use Armor Crash again.
       this.kazematoi.parentElement?.classList.add('nin-kazematoi', 'pulse');
     } else {
       this.kazematoi.parentElement?.classList.remove('nin-kazematoi', 'pulse');
