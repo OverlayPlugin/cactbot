@@ -902,8 +902,19 @@ div.justbuffs div#procs-container {
 }
 
 /* NIN */
-.nin-color-huton {
+.nin-color-huton,
+.nin-color-kazematoi {
   background-color: rgb(0 255 255);
+}
+
+@keyframes kazematoi-pulse {
+  50% {
+    background-color: rgb(255 50 0);
+  }
+}
+
+.nin-kazematoi.pulse {
+  animation: 1s kazematoi-pulse infinite;
 }
 
 .nin-color-trickattack {

@@ -495,13 +495,10 @@ namespace Cactbot {
     [StructLayout(LayoutKind.Explicit)]
     public struct NinjaJobMemory {
       [FieldOffset(0x00)]
-      public ushort hutonMilliseconds;
-
-      [FieldOffset(0x02)]
       public byte ninkiAmount;
 
-      [FieldOffset(0x03)]
-      private byte hutonCount; // Why though?
+      [FieldOffset(0x02)]
+      public byte kazematoi;
     };
 
     [StructLayout(LayoutKind.Explicit)]
