@@ -62,10 +62,10 @@ const knownMapping: Readonly<MappingTable> = {
   'Lady of Crowns': 1877,
   'Divination': 1878,
   'Further Ruin': 2701,
-  'The Balance': 1882,
+  'The Balance': 3887,
   'The Bole': 1883,
   'The Arrow': 1884,
-  'The Spear': 1885,
+  'The Spear': 3889,
   'The Ewer': 1886,
   'The Spire': 1887,
   'Atonement Ready': 1902, // updated in Patch 7.0
@@ -95,6 +95,8 @@ const knownMapping: Readonly<MappingTable> = {
 // Use this only when you need to handle different effects with a same name.
 const customMapping: Readonly<MappingTable> = {
   'EmboldenSelf': 1239,
+  'TheBalance6x': 1882,
+  'TheSpear6x': 1885,
 };
 
 const assembleData = (apiData: XivApiStatus): OutputEffectId => {
