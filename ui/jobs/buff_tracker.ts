@@ -624,7 +624,7 @@ export class BuffTracker {
     };
 
     // Abilities that are different in 6.5 version.
-    const v650: { [s: string]: BuffInfo } = {
+    const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
       balance: {
         gainEffect: [EffectId.TheBalance6x],
         loseEffect: [EffectId.TheBalance6x],
