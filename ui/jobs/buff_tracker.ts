@@ -645,16 +645,8 @@ export class BuffTracker {
       },
     };
 
-    // Abilities that are different in 6.0 version.
-    const v600: { [s: string]: BuffInfo } = {};
-
     if (this.ffxivVersion < 700) {
       for (const [key, entry] of Object.entries(v650))
-        this.buffInfo[key] = entry;
-    }
-
-    if (this.ffxivVersion < 610) {
-      for (const [key, entry] of Object.entries(v600))
         this.buffInfo[key] = entry;
     }
 
