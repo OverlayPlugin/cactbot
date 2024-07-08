@@ -545,8 +545,30 @@ export class BuffTracker {
         sortKey: 14,
         cooldown: 120,
       },
-      // TODO: following raidbuff has been removed in 7.0
-      // Remove them when CN and KO reach 7.0.
+    };
+
+    // Abilities that are different in 6.5 version.
+    // TODO: following raidbuff has been removed in 7.0
+    // Remove them when CN and KO reach 7.0.
+    const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
+      balance: {
+        gainEffect: [EffectId.TheBalance6x],
+        loseEffect: [EffectId.TheBalance6x],
+        useEffectDuration: true,
+        icon: balanceImage,
+        // Orange.
+        borderColor: '#ff9900',
+        sortKey: 4,
+      },
+      spear: {
+        gainEffect: [EffectId.TheSpear6x],
+        loseEffect: [EffectId.TheSpear6x],
+        useEffectDuration: true,
+        icon: spearImage,
+        // Dark Blue.
+        borderColor: '#4477dd',
+        sortKey: 4,
+      },
       arrow: {
         gainEffect: [EffectId.TheArrow],
         loseEffect: [EffectId.TheArrow],
@@ -620,28 +642,6 @@ export class BuffTracker {
         borderColor: '#FA8737',
         sortKey: 10,
         cooldown: 120,
-      },
-    };
-
-    // Abilities that are different in 6.5 version.
-    const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
-      balance: {
-        gainEffect: [EffectId.TheBalance6x],
-        loseEffect: [EffectId.TheBalance6x],
-        useEffectDuration: true,
-        icon: balanceImage,
-        // Orange.
-        borderColor: '#ff9900',
-        sortKey: 4,
-      },
-      spear: {
-        gainEffect: [EffectId.TheSpear6x],
-        loseEffect: [EffectId.TheSpear6x],
-        useEffectDuration: true,
-        icon: spearImage,
-        // Dark Blue.
-        borderColor: '#4477dd',
-        sortKey: 4,
       },
     };
 
