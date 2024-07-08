@@ -173,7 +173,6 @@ export const kAbility = {
   Bunshin: '406D',
   Hide: '8C5',
   Mug: '8C8',
-  KunaisBane: '905E',
   Dokumori: '905D',
   // SAM
   Hakaze: '1D35',
