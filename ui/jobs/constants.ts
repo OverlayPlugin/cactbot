@@ -283,6 +283,8 @@ export const kAbility = {
   Manafication: '1D61',
   Fleche: '1D5D',
   ContreSixte: '1D5F',
+  // PCT
+  StarryMuse: '8773',
   // BLU
   SongOfTorment: '2C7A',
   OffGuard: '2C93',
