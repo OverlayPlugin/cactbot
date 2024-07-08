@@ -347,7 +347,7 @@ export class BuffTracker {
         sharesCooldownWith: ['offguard'],
       },
       mug: {
-        cooldownAbility: [kAbility.Mug],
+        cooldownAbility: [kAbility.Mug, kAbility.Dokumori],
         mobGainsEffect: EffectId.VulnerabilityUp,
         mobLosesEffect: EffectId.VulnerabilityUp,
         useEffectDuration: true,
