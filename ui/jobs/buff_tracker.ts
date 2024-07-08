@@ -361,8 +361,8 @@ export class BuffTracker {
       },
       dokumori: {
         cooldownAbility: [kAbility.Dokumori],
-        mobGainsEffect: EffectId.VulnerabilityUp,
-        mobLosesEffect: EffectId.VulnerabilityUp,
+        mobGainsEffect: EffectId.Dokumori,
+        mobLosesEffect: EffectId.Dokumori,
         useEffectDuration: true,
         durationSeconds: 20,
         icon: dokumoriImage,
