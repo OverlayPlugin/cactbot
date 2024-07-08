@@ -37,12 +37,14 @@ const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
     fr: '<= Coin gauche sûr',
     ja: '<= 左が安地',
     cn: '<= 左侧安全',
+    ko: '<= 왼쪽 안전',
   },
   middleWedgeSafe: {
     en: 'Middle Wedge Safe',
     de: 'Mittel Spalt sicher',
     ja: '中央が安地',
     cn: '中间安全',
+    ko: '가운데 안전',
   },
   rightWedgeSafe: {
     en: 'Right Wedge Safe =>',
@@ -50,6 +52,7 @@ const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
     fr: 'Coin droit sûr =>',
     ja: '右が安地 =>',
     cn: '右侧安全 =>',
+    ko: '오른쪽 안전 =>',
   },
 };
 
@@ -60,6 +63,7 @@ const bigAoeOutputStrings: OutputStrings = {
     fr: 'Coin devant',
     ja: '前方の角へ',
     cn: '前面角落',
+    ko: '앞쪽 구석으로',
   },
   donut: {
     en: 'Donut (In)',
@@ -67,6 +71,7 @@ const bigAoeOutputStrings: OutputStrings = {
     fr: 'Donut (Intérieur)',
     ja: 'ドーナツの中へ',
     cn: '中间月环',
+    ko: '도넛 안으로',
   },
   out: Outputs.outOfMelee,
 };
@@ -176,6 +181,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${type} => Package avec votre partenaire',
           ja: '${type} => ペアで頭割り',
           cn: '${type} => 和搭档分摊',
+          ko: '${type} => 파트너 쉐어',
         },
       },
     },
@@ -228,6 +234,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tank tour (encaisser/swap)',
           ja: 'タンク塔 (踏む/スイッチ)',
           cn: '双T轮换踩塔',
+          ko: '탱커 기둥 (밟기/교대)',
         },
       },
     },
@@ -283,6 +290,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tuez les adds + groupe sur les heals ${role}',
           ja: '雑魚を倒して + ヒラグループ ${role}',
           cn: '击杀小怪 + 治疗分摊组 ${role}',
+          ko: '쫄 잡기 + 힐러 그룹 ${role}',
         },
         tank: {
           en: '(be in front)',
@@ -290,6 +298,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(allez devant)',
           ja: '(前へ)',
           cn: '(站在最前面)',
+          ko: '(앞에 서기)',
         },
         nonTank: {
           en: '(behind tank)',
@@ -297,6 +306,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(derrière le tank)',
           ja: '(タンクの後ろへ)',
           cn: '(站坦克后面)',
+          ko: '(탱커 뒤에 서기)',
         },
       },
     },
@@ -397,6 +407,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tuez la plume => restez sur la tuile sûre',
           ja: '羽を壊す => 安全な床へ',
           cn: '击杀羽毛 => 站安全格内',
+          ko: '깃털 부수기 => 안전한 칸으로',
         },
       },
     },
@@ -419,6 +430,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dispersion - tuile surélevée',
           ja: '散開 - 高台',
           cn: '分散 - 高台格',
+          ko: '산개 - 공중부양 칸',
         },
         lightning: {
           en: 'Spread - ground tile',
@@ -426,6 +438,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dispersion - tuile au sol',
           ja: '散開 - 地面',
           cn: '分散 - 地面格',
+          ko: '산개 - 지상 칸',
         },
       },
     },
@@ -454,6 +467,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${type} => attirez les puddles',
           ja: '${type} => 捨てて',
           cn: '${type} => 引导火圈',
+          ko: '${type} => 장판 유도',
         },
       },
     },
@@ -507,6 +521,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Spheren ausweichen - schwebende Fläche',
           fr: 'Évitez les sphères - tuile surélevée',
           ja: '玉を避ける - 高台',
+          ko: '장판 피하기 - 공중부양 칸',
         },
         combo: {
           en: '${dir} - elevated tile',
@@ -514,6 +529,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir} - tuile surélevée',
           ja: '${dir} - 高台',
           cn: '${dir} - 高台格',
+          ko: '${dir} - 공중부양 칸',
         },
         northFront: {
           en: 'North Row, Front Half',
@@ -521,6 +537,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne Nord, Moitié avant',
           ja: '北側の前方へ',
           cn: '上(北)行 前半',
+          ko: '북쪽 줄, 앞부분',
         },
         northBack: {
           en: 'North Row, Back Half',
@@ -528,6 +545,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne Nord, Moitié arrière',
           ja: '北側の後方へ',
           cn: '上(北)行 后半',
+          ko: '북쪽 줄, 뒷부분',
         },
         middleFront: {
           en: 'Middle Row, Front Half',
@@ -535,6 +553,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne centrale, Moitié avant',
           ja: '中央の前方へ',
           cn: '中间行 前半',
+          ko: '가운데 줄, 앞부분',
         },
         middleBack: {
           en: 'Middle Row, Back Half',
@@ -542,6 +561,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne centrale, Moitié arrière',
           ja: '中央の後方へ',
           cn: '中间行 后半',
+          ko: '가운데 줄, 뒷부분',
         },
         southFront: {
           en: 'South Row, Front Half',
@@ -549,6 +569,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne Sud, Moitié avant',
           ja: '南側の前方へ',
           cn: '下(南)行 前半',
+          ko: '남쪽 줄, 앞부분',
         },
         southBack: {
           en: 'South Row, Back Half',
@@ -556,6 +577,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne Sud, Moitié arrière',
           ja: '南側の後方へ',
           cn: '下(南)行 后半',
+          ko: '남쪽 줄, 뒷부분',
         },
       },
     },
@@ -581,6 +603,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dispersion - tuile surélevée',
           ja: '散開 - 高台',
           cn: '分散 - 高台格',
+          ko: '산개 - 공중부양 칸',
         },
         lightning: {
           en: 'Spread - ground tile',
@@ -588,6 +611,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dispersion - tuile au sol',
           ja: '散開 - 地面',
           cn: '分散 - 地面格',
+          ko: '산개 - 지상 칸',
         },
       },
     },
@@ -607,6 +631,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez la Tour',
           ja: '塔を踏む',
           cn: '踩塔',
+          ko: '기둥 밟기',
         },
         avoidTower: {
           en: 'Avoid Tower',
@@ -614,6 +639,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Évitez la tour',
           ja: '塔を避ける',
           cn: '远离塔',
+          ko: '기둥 피하기',
         },
       },
     },
@@ -715,6 +741,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Arrière/Gauche',
           ja: '後ろ/左へ',
           cn: '左/后 安全',
+          ko: '뒤/왼쪽으로',
         },
         frontRight: {
           en: 'Be Front/Right',
@@ -722,6 +749,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Devant/Droite',
           ja: '前/右へ',
           cn: '右/前 安全',
+          ko: '앞/오른쪽으로',
         },
         coneNWSafe: {
           en: 'NW Safe',
@@ -729,6 +757,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'NO Sûr',
           ja: '左上(北西) 安地',
           cn: '左上(西北) 安全',
+          ko: '왼쪽 위 안전',
         },
         coneNESafe: {
           en: 'NE Safe',
@@ -736,6 +765,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'NE Sûr',
           ja: '右上(北東) 安地',
           cn: '右上(东北) 安全',
+          ko: '오른쪽 위 안전',
         },
         unknown: {
           en: 'Dodge Avalanche',
@@ -743,6 +773,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Esquivez l\'avalanche',
           ja: '雪崩を避けて',
           cn: '躲避雪崩',
+          ko: '눈사태 피하기',
         },
         combo: {
           en: '${type} - ${safe}',
@@ -750,6 +781,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${type} - ${safe}',
           ja: '${type} - ${safe}',
           cn: '${type} - ${safe}',
+          ko: '${type} - ${safe}',
         },
       },
     },
@@ -802,6 +834,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '<= Allez à gauche (Esquivez l\'avalanche)',
           ja: '<= 左へ (雪崩を避けて)',
           cn: '<= 去左边 (躲避雪崩)',
+          ko: '<= 왼쪽으로 (눈사태 피하기)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
@@ -809,6 +842,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez à droite (Esquivez l\'avalanche) =>',
           ja: '右へ => (雪崩を避けて)',
           cn: '去右边 (躲避雪崩) =>',
+          ko: '오른쪽으로 (눈사태 피하기) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
@@ -816,6 +850,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Esquivez l\'avalanche',
           ja: '雪崩を避けて',
           cn: '躲避雪崩',
+          ko: '눈사태 피하기',
         },
       },
     },
@@ -861,6 +896,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '<= Allez à gauche (Esquivez l\'avalanche)',
           ja: '<= 左へ (雪崩を避けて)',
           cn: '<= 去左边 (躲避雪崩)',
+          ko: '<= 왼쪽으로 (눈사태 피하기)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
@@ -868,6 +904,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez à droite (Esquivez l\'avalanche) =>',
           ja: '右へ => (雪崩を避けて)',
           cn: '去右边 (躲避雪崩) =>',
+          ko: '오른쪽으로 (눈사태 피하기) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
@@ -875,6 +912,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Esquivez l\'avalanche',
           ja: '雪崩を避けて',
           cn: '躲避雪崩',
+          ko: '눈사태 피하기',
         },
       },
     },

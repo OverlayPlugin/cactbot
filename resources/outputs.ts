@@ -450,7 +450,7 @@ export default {
     fr: '<= Allez à Gauche/Ouest',
     ja: '<= 左/西へ',
     cn: '<= 去左/西边',
-    ko: '<= 왼쪽으로',
+    ko: '<= 왼쪽/서쪽',
   },
   getRightAndEast: {
     en: 'Get Right/East =>',
@@ -458,7 +458,7 @@ export default {
     fr: 'Allez à Droite/Est =>',
     ja: '右/東へ =>',
     cn: '去右/东边 =>',
-    ko: '오른쪽으로 =>',
+    ko: '오른쪽/동쪽 =>',
   },
   leftThenRight: {
     en: 'Left => Right',
