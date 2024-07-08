@@ -90,9 +90,9 @@ hideall "--sync--"
 441.9 "Regicidal Rage" Ability { id: "993C", source: "Zoraal Ja" }
 454.0 "Projection of Turmoil" Ability { id: "9A88", source: "Zoraal Ja" }
 460.5 "Might of Vollok" duration 40
-476.9 "Half Full 1" Ability { id: "9380|939E", source: "Zoraal Ja" }
-486.0 "Half Full 2" Ability { id: "9380|939E", source: "Zoraal Ja" }
-496.3 "Half Full 3" Ability { id: "9380|939E", source: "Zoraal Ja" }
+476.9 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
+486.0 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
+496.3 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
 505.3 "Bitter Whirlwind (initial)" Ability { id: "993E", source: "Zoraal Ja" }
 508.5 "Bitter Whirlwind (damage)" Ability { id: "9940", source: "Zoraal Ja" }
 511.5 "Bitter Whirlwind (damage)" Ability { id: "9940", source: "Zoraal Ja" }
