@@ -10,7 +10,6 @@ import brotherhoodImage from '../../resources/ffxiv/status/brotherhood.png';
 import chainStratagemImage from '../../resources/ffxiv/status/chain-stratagem.png';
 import devilmentImage from '../../resources/ffxiv/status/devilment.png';
 import divinationImage from '../../resources/ffxiv/status/divination.png';
-import dokumoriImage from '../../resources/ffxiv/status/dokumori.png';
 import dragonSightImage from '../../resources/ffxiv/status/dragon-sight.png';
 import emboldenImage from '../../resources/ffxiv/status/embolden.png';
 import ewerImage from '../../resources/ffxiv/status/ewer.png';
@@ -356,18 +355,6 @@ export class BuffTracker {
         icon: mugImage,
         // Magenta.
         borderColor: '#FC4AE6',
-        sortKey: 1,
-        cooldown: 120,
-      },
-      dokumori: {
-        cooldownAbility: [kAbility.Dokumori],
-        mobGainsEffect: EffectId.Dokumori,
-        mobLosesEffect: EffectId.Dokumori,
-        useEffectDuration: true,
-        durationSeconds: 20,
-        icon: dokumoriImage,
-        // Purple.
-        borderColor: '#8F3DE8',
         sortKey: 1,
         cooldown: 120,
       },
