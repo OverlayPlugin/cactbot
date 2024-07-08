@@ -95,6 +95,7 @@ const knownMapping: Readonly<MappingTable> = {
 // Use this only when you need to handle different effects with a same name.
 const customMapping: Readonly<MappingTable> = {
   'EmboldenSelf': 1239,
+  // TODO: remove them once CN/KO launch 7.0
   'TheBalance6x': 1882,
   'TheSpear6x': 1885,
 };
