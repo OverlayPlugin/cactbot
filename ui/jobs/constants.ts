@@ -160,6 +160,11 @@ export const kAbility = {
   DragonSight: '1CE6',
   BattleLitany: 'DE5',
   DraconianFury: '64AA',
+  Drakesbane: '9058',
+  ChaoticSpring: '64AC',
+  HeavensThrust: '64AB',
+  SpiralBlow: '905B',
+  LanceBarrage: '905A',
   // NIN
   SpinningEdge: '8C0',
   GustSlash: '8C2',
@@ -193,6 +198,7 @@ export const kAbility = {
   HissatsuGuren: '1D48',
   HissatsuSenei: '4061',
   Fuko: '64B4',
+  Gyofu: '9063',
   // RPR
   Slice: '5F35',
   WaxingSlice: '5F36',
@@ -300,11 +306,6 @@ export const kComboActions: string[][] = [
   [
     kAbility.FastBlade,
     kAbility.RiotBlade,
-    kAbility.GoringBlade,
-  ],
-  [
-    kAbility.FastBlade,
-    kAbility.RiotBlade,
     kAbility.RoyalAuthority,
   ],
   [
@@ -356,11 +357,85 @@ export const kComboActions: string[][] = [
     kAbility.TrueThrust,
     kAbility.Disembowel,
     kAbility.ChaosThrust,
+    kAbility.WheelingThrust,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.TrueThrust,
+    kAbility.VorpalThrust,
+    kAbility.FullThrust,
+    kAbility.FangAndClaw,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.RaidenThrust, // lv76 Draconian Fire
+    kAbility.Disembowel,
+    kAbility.ChaosThrust,
+    kAbility.WheelingThrust,
+    kAbility.Drakesbane,
   ],
   [
     kAbility.RaidenThrust,
+    kAbility.VorpalThrust,
+    kAbility.FullThrust,
+    kAbility.FangAndClaw,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.TrueThrust, // lv86
     kAbility.Disembowel,
-    kAbility.ChaosThrust,
+    kAbility.ChaoticSpring,
+    kAbility.WheelingThrust,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.TrueThrust,
+    kAbility.VorpalThrust,
+    kAbility.HeavensThrust,
+    kAbility.FangAndClaw,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.RaidenThrust, // lv86 Draconian Fire
+    kAbility.Disembowel,
+    kAbility.ChaoticSpring,
+    kAbility.WheelingThrust,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.RaidenThrust,
+    kAbility.VorpalThrust,
+    kAbility.HeavensThrust,
+    kAbility.FangAndClaw,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.TrueThrust, // lv96
+    kAbility.SpiralBlow,
+    kAbility.ChaoticSpring,
+    kAbility.WheelingThrust,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.TrueThrust,
+    kAbility.LanceBarrage,
+    kAbility.HeavensThrust,
+    kAbility.FangAndClaw,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.RaidenThrust, // lv96 Draconian Fire
+    kAbility.SpiralBlow,
+    kAbility.ChaoticSpring,
+    kAbility.WheelingThrust,
+    kAbility.Drakesbane,
+  ],
+  [
+    kAbility.RaidenThrust,
+    kAbility.LanceBarrage,
+    kAbility.HeavensThrust,
+    kAbility.FangAndClaw,
+    kAbility.Drakesbane,
   ],
   [
     kAbility.DoomSpike,
@@ -400,6 +475,20 @@ export const kComboActions: string[][] = [
   ],
   [
     kAbility.Hakaze,
+    kAbility.Yukikaze,
+  ],
+  [
+    kAbility.Gyofu,
+    kAbility.Jinpu,
+    kAbility.Gekko,
+  ],
+  [
+    kAbility.Gyofu,
+    kAbility.Shifu,
+    kAbility.Kasha,
+  ],
+  [
+    kAbility.Gyofu,
     kAbility.Yukikaze,
   ],
   [
@@ -492,11 +581,20 @@ export const kComboBreakers = [
   kAbility.DemonSlaughter,
   // DRG
   kAbility.TrueThrust,
+  kAbility.RaidenThrust,
   kAbility.VorpalThrust,
+  kAbility.LanceBarrage,
   kAbility.FullThrust,
+  kAbility.HeavensThrust,
   kAbility.Disembowel,
+  kAbility.SpiralBlow,
   kAbility.ChaosThrust,
+  kAbility.ChaoticSpring,
+  kAbility.WheelingThrust,
+  kAbility.FangAndClaw,
+  kAbility.Drakesbane,
   kAbility.DoomSpike,
+  kAbility.DraconianFury,
   kAbility.SonicThrust,
   kAbility.CoerthanTorment,
   // NIN
@@ -508,6 +606,7 @@ export const kComboBreakers = [
   kAbility.HakkeMujinsatsu,
   // SAM
   kAbility.Hakaze,
+  kAbility.Gyofu,
   kAbility.Jinpu,
   kAbility.Gekko,
   kAbility.Shifu,
@@ -542,13 +641,10 @@ export const kComboBreakers = [
 
 export const kComboBreakers630 = [
   ...kComboBreakers,
-  kAbility.Atonement,
 ];
 
 export const kComboBreakers620 = [
   ...kComboBreakers630,
-  kAbility.GoringBlade,
-  kAbility.Confiteor,
 ];
 
 // (level = index) [Sub, Div]
