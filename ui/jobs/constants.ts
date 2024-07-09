@@ -301,17 +301,16 @@ export const kAbility = {
 
 // Combo actions for every jobs, this would apply to ComboTracker when
 // it is initialized, for determining whether the current action is in combo.
-export const kComboActions: string[][] = [
+// For upgradable skill actions, use array to represent the combo action chain.
+// For example, PLD's Fast Blade -> Riot Blade -> Royal Authority / Rage of Halone
+// combo chain would be represented as
+// ['Fast Blade', 'Riot Blade', ['Royal Authority', 'Rage of Halone']].
+export const kComboActions: Array<Array<string | string[]>> = [
   // PLD
   [
     kAbility.FastBlade,
     kAbility.RiotBlade,
-    kAbility.RoyalAuthority,
-  ],
-  [
-    kAbility.FastBlade,
-    kAbility.RiotBlade,
-    kAbility.RageOfHalone,
+    [kAbility.RoyalAuthority, kAbility.RageOfHalone],
   ],
   [
     kAbility.TotalEclipse,
@@ -321,12 +320,7 @@ export const kComboActions: string[][] = [
   [
     kAbility.HeavySwing,
     kAbility.Maim,
-    kAbility.StormsEye,
-  ],
-  [
-    kAbility.HeavySwing,
-    kAbility.Maim,
-    kAbility.StormsPath,
+    [kAbility.StormsEye, kAbility.StormsPath],
   ],
   [
     kAbility.Overpower,
@@ -451,12 +445,7 @@ export const kComboActions: string[][] = [
   [
     kAbility.SpinningEdge,
     kAbility.GustSlash,
-    kAbility.AeolianEdge,
-  ],
-  [
-    kAbility.SpinningEdge,
-    kAbility.GustSlash,
-    kAbility.ArmorCrush,
+    [kAbility.AeolianEdge, kAbility.ArmorCrush],
   ],
   [
     kAbility.DeathBlossom,
@@ -466,12 +455,7 @@ export const kComboActions: string[][] = [
   [
     kAbility.Hakaze,
     kAbility.Jinpu,
-    kAbility.Gekko,
-  ],
-  [
-    kAbility.Hakaze,
-    kAbility.Shifu,
-    kAbility.Kasha,
+    [kAbility.Gekko, kAbility.Kasha],
   ],
   [
     kAbility.Hakaze,
@@ -492,20 +476,8 @@ export const kComboActions: string[][] = [
     kAbility.Yukikaze,
   ],
   [
-    kAbility.Fuga,
-    kAbility.Mangetsu,
-  ],
-  [
-    kAbility.Fuga,
-    kAbility.Oka,
-  ],
-  [
-    kAbility.Fuko,
-    kAbility.Mangetsu,
-  ],
-  [
-    kAbility.Fuko,
-    kAbility.Oka,
+    [kAbility.Fuga, kAbility.Fuko],
+    [kAbility.Mangetsu, kAbility.Oka],
   ],
   // RPR
   [
@@ -519,24 +491,9 @@ export const kComboActions: string[][] = [
   ],
   // MCH
   [
-    kAbility.SplitShot,
-    kAbility.SlugShot,
-    kAbility.CleanShot,
-  ],
-  [
-    kAbility.HeatedSplitShot,
-    kAbility.SlugShot,
-    kAbility.CleanShot,
-  ],
-  [
-    kAbility.HeatedSplitShot,
-    kAbility.HeatedSlugShot,
-    kAbility.CleanShot,
-  ],
-  [
-    kAbility.HeatedSplitShot,
-    kAbility.HeatedSlugShot,
-    kAbility.HeatedCleanShot,
+    [kAbility.SplitShot, kAbility.HeatedSplitShot],
+    [kAbility.SlugShot, kAbility.HeatedSplitShot],
+    [kAbility.CleanShot, kAbility.HeatedCleanShot],
   ],
   // DNC
   [

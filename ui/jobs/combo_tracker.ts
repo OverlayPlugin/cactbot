@@ -127,7 +127,32 @@ export class ComboTracker extends EventEmitter<{ combo: ComboCallback }> {
       comboBreakers: breakers,
       comboDelayMs: kComboDelay * 1000,
     });
-    kComboActions.forEach((skillList) => comboTracker.AddCombo(skillList));
+
+    const normalise = (raw: (string | string[])[][]): string[][] => {
+      const queue = [...raw];
+      const result = [];
+      while (queue.length) {
+        const item = queue.shift();
+        if (typeof item === 'undefined')
+          continue;
+        if (item?.every((i) => typeof i === 'string')) {
+          result.push(item as string[]);
+          continue;
+        }
+        const idx = item.findIndex((i) => Array.isArray(i));
+        const arr = item[idx] as string[];
+        for (const i of arr) {
+          const copy = [...item];
+          copy[idx] = i;
+          queue.push(copy);
+        }
+      }
+      return result;
+    };
+    const normalised = normalise(kComboActions);
+    for (const skillList of normalised) {
+      comboTracker.AddCombo(skillList);
+    }
     return comboTracker;
   }
 }
