@@ -86,6 +86,17 @@ export default {
     cn: '坦克死刑',
     ko: '탱버',
   },
+  tetherBusters: {
+    en: 'Tank Tethers',
+    de: 'Tank-Verbindungen',
+    fr: 'Liens Tank',
+    ja: 'タンク線取り',
+    cn: '坦克截线',
+    ko: '탱커가 선 가로채기',
+  },
+  avoidTetherBusters: {
+    en: 'Avoid Tank Tethers',
+  },
   tankCleave: {
     en: 'Tank cleave',
     de: 'Tank Cleave',

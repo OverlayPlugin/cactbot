@@ -53,9 +53,9 @@ hideall "--sync--"
 # Instead of syncing (which will be random based on player resolution),
 # display a long duration while the line is moving
 221.0 "Might of Vollok" duration 40
-264.8 "Bitter Whirlwind (initial)" Ability { id: "993E", source: "Zoraal Ja" }
-268.0 "Bitter Whirlwind (damage)" Ability { id: "9940", source: "Zoraal Ja" }
-271.0 "Bitter Whirlwind (damage)" Ability { id: "9940", source: "Zoraal Ja" }
+264.8 "Bitter Whirlwind (1)" Ability { id: "993E", source: "Zoraal Ja" }
+268.0 "Bitter Whirlwind (2)" Ability { id: "9940", source: "Zoraal Ja" }
+271.0 "Bitter Whirlwind (3)" Ability { id: "9940", source: "Zoraal Ja" }
 
 # Body-Chucking Phase
 286.3 "Dawn of an Age" Ability { id: "9397", source: "Zoraal Ja" } window 5,5
@@ -93,9 +93,9 @@ hideall "--sync--"
 476.9 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
 486.0 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
 496.3 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
-505.3 "Bitter Whirlwind (initial)" Ability { id: "993E", source: "Zoraal Ja" }
-508.5 "Bitter Whirlwind (damage)" Ability { id: "9940", source: "Zoraal Ja" }
-511.5 "Bitter Whirlwind (damage)" Ability { id: "9940", source: "Zoraal Ja" }
+505.3 "Bitter Whirlwind (1)" Ability { id: "993E", source: "Zoraal Ja" }
+508.5 "Bitter Whirlwind (2)" Ability { id: "9940", source: "Zoraal Ja" }
+511.5 "Bitter Whirlwind (3)" Ability { id: "9940", source: "Zoraal Ja" }
 
 # Swords & Tiles Phase 2
 526.8 "Dawn of an Age" Ability { id: "9397", source: "Zoraal Ja" } window 5,5

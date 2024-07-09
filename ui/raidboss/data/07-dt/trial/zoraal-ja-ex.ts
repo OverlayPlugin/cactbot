@@ -189,17 +189,8 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          tetherBuster: {
-            en: 'Tank Tethers',
-            de: 'Tank-Verbindungen',
-            fr: 'Liens Tank',
-            ja: 'タンク線取り',
-            cn: '坦克截线',
-            ko: '탱커가 선 가로채기',
-          },
-          busterAvoid: {
-            en: 'Avoid Tank Tethers',
-          },
+          tetherBuster: Outputs.tetherBusters,
+          busterAvoid: Outputs.avoidTetherBusters,
         };
 
         if (data.role === 'tank')
@@ -366,11 +357,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Zoraal Ja Ex Knockaround Swords + Spread',
       type: 'StartsUsing',
-      netRegex: { id: '9393', source: 'Fang' },
+      netRegex: { id: '9393', source: 'Fang', capture: false },
       condition: (data) => data.phase === 'knockaround',
       delaySeconds: 0.2,
       suppressSeconds: 1,
-      alertText: (data, matches, output) => {
+      alertText: (data, _matches, output) => {
         if (data.safeQuadrants.length !== 2)
           return output.unknown!();
 
