@@ -507,7 +507,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Zooraal Ja Ex Knockaround Tornado Debuff Gain',
+      id: 'Zoraal Ja Ex Knockaround Tornado Debuff Gain',
       type: 'GainsEffect',
       netRegex: { effectId: '830' }, // Wind Resistance Down II - 45.96s duration
       condition: (data, matches) => {
@@ -518,7 +518,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.cantTakeTornadoJump = true,
     },
     {
-      id: 'Zooraal Ja Ex Knockaround Tornado Debuff Lose',
+      id: 'Zoraal Ja Ex Knockaround Tornado Debuff Lose',
       type: 'LosesEffect',
       netRegex: { effectId: '830' }, // Wind Resistance Down II - 45.96s duration
       condition: (data, matches) => data.phase === 'knockaround' && data.me === matches.target,
