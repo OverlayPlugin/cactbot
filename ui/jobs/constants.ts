@@ -409,7 +409,7 @@ export const kComboActions: Array<Array<string | string[]>> = [
   // MCH
   [
     [kAbility.SplitShot, kAbility.HeatedSplitShot],
-    [kAbility.SlugShot, kAbility.HeatedSplitShot],
+    [kAbility.SlugShot, kAbility.HeatedSlugShot],
     [kAbility.CleanShot, kAbility.HeatedCleanShot],
   ],
   // DNC
