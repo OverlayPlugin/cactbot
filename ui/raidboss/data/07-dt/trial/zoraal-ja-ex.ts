@@ -1,4 +1,3 @@
-import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
@@ -6,16 +5,89 @@ import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TO DO:
-// * Sync (swords & knockaround phases) - call safe tile(s)
 // * Forged Track + Fiery/Stormy Edge - call knockback dir/safe lanes
-// * Yellow (Titan) spread markers - maybe better call than 'spread', possibly based on phase?
 // * Knockaround phase - call out whether to jump or stay for Forward Edge/Backward Edge?
 // * Knockaround phase - call whether to jump or stay to break chains?
 
 type Phase = 'arena' | 'swords' | 'lines' | 'knockaround';
+
+const tileNames = [
+  'northCorner',
+  'northwestNorth',
+  'northeastNorth',
+  'northwestWest',
+  'insideNorth',
+  'northeastEast',
+  'westCorner',
+  'insideWest',
+  'insideEast',
+  'eastCorner',
+  'southwestWest',
+  'insideSouth',
+  'southeastEast',
+  'southwestSouth',
+  'southeastSouth',
+  'southCorner',
+] as const;
+
+type TileName = typeof tileNames[number] | 'unknown';
+type TileMap = { [y: number]: { [x: number]: TileName } };
+
+const syncTilesMap: TileMap = {
+  // y1: { x1: tileName, x2: tileName, etc. }
+  // Use rounded ints for all positions to avoid fuzzy floating point values on StartsUsing lines
+  89: { 100: 'northCorner' },
+  93: {
+    96: 'northwestNorth',
+    104: 'northeastNorth',
+  },
+  96: {
+    93: 'northwestWest',
+    100: 'insideNorth',
+    107: 'northeastEast',
+  },
+  100: {
+    89: 'westCorner',
+    96: 'insideWest',
+    104: 'insideEast',
+    111: 'eastCorner',
+  },
+  104: {
+    93: 'southwestWest',
+    100: 'insideSouth',
+    107: 'southeastEast',
+  },
+  107: {
+    96: 'southwestSouth',
+    104: 'southeastSouth',
+  },
+  111: { 100: 'southCorner' },
+};
+
+const findClosestTile: (x: number, y: number) => TileName = (x, y) => {
+  const tileValues = Object.keys(syncTilesMap).map(Number);
+  const closestX = tileValues.reduce((a, b) => Math.abs(b - x) < Math.abs(a - x) ? b : a);
+  const closestY = tileValues.reduce((a, b) => Math.abs(b - y) < Math.abs(a - y) ? b : a);
+
+  const possibleTiles = syncTilesMap[closestY];
+  if (possibleTiles === undefined) {
+    return 'unknown';
+  }
+  const closestTile = possibleTiles[closestX];
+  if (closestTile === undefined) {
+    return 'unknown';
+  }
+  return closestTile;
+};
+
+const quadrantNames = ['north', 'east', 'south', 'west'] as const;
+type QuadrantName = typeof quadrantNames[number];
 export interface Data extends RaidbossData {
   phase: Phase;
+  safeTiles: TileName[];
   drumTargets: string[];
+  drumFar: boolean; // got knocked by enum partner to far platform
+  safeQuadrants: QuadrantName[];
   halfCircuitSafeSide?: 'left' | 'right';
   seenHalfCircuit: boolean;
 }
@@ -27,7 +99,10 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => {
     return {
       phase: 'arena',
+      safeTiles: [...tileNames] as TileName[],
       drumTargets: [],
+      drumFar: false,
+      safeQuadrants: [...quadrantNames] as QuadrantName[],
       seenHalfCircuit: false,
     };
   },
@@ -139,42 +214,92 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'Zoraal Ja Ex Sync',
-      type: 'Ability',
-      netRegex: { id: '9359', source: 'Zoraal Ja', capture: false },
-      infoText: (_data, _matches, output) => output.text!(),
+      id: 'Zoraal Ja Ex Chasm of Vollok Sword Collect',
+      type: 'StartsUsing',
+      netRegex: { id: '9399', source: 'Fang' },
+      run: (data, matches) => {
+        const mirrorAdjust = 21.21;
+        let swordX = parseFloat(matches.x);
+        let swordY = parseFloat(matches.y);
+        if (swordX < 100 && swordY < 100) { // NW mirror platform
+          swordX += mirrorAdjust;
+          swordY += mirrorAdjust;
+        } else if (swordX < 100) { // SW mirror platform
+          swordX += mirrorAdjust;
+          swordY -= mirrorAdjust;
+        } else if (swordY < 100) { // NE mirror platform
+          swordX -= mirrorAdjust;
+          swordY += mirrorAdjust;
+        } else { // SE mirror platform
+          swordX -= mirrorAdjust;
+          swordY -= mirrorAdjust;
+        }
+
+        const adjustedTile = findClosestTile(swordX, swordY);
+        data.safeTiles = data.safeTiles.filter((tile) => tile !== adjustedTile);
+      },
+    },
+    {
+      id: 'Zoraal Ja Ex Chasm of Vollok + Half Full',
+      type: 'StartsUsing',
+      // 9368 - Right Sword (left/west safe)
+      // 9369 - Left Sword (right/east safe)
+      // Boss always faces north
+      netRegex: { id: ['9368', '9369'], source: 'Zoraal Ja' },
+      condition: (data) => data.phase === 'swords' && !data.seenHalfCircuit,
+      alertText: (data, matches, output) => {
+        // We should already have 8 safe tiles from Sword Collect
+        // To make this call somewhat reasonable, use the following priority system
+        // for calling a safe tile, depending on sword cleave:
+        //   1. insideEast/insideWest
+        //   2. insideNorth/insideSouth, lean E/W
+        //   3. If all inside are bad, the outer intercard pairs (E/W depending on cleave)
+        const safeSide = matches.id === '9368' ? 'west' : 'east';
+        const leanOutput = matches.id === '9368' ? output.leanWest!() : output.leanEast!();
+
+        if (safeSide === 'west' && data.safeTiles.includes('insideWest'))
+          return output.insideWest!();
+        else if (safeSide === 'east' && data.safeTiles.includes('insideEast'))
+          return output.insideEast!();
+        else if (data.safeTiles.includes('insideNorth'))
+          return output.insideNS!({ lean: leanOutput });
+        else if (safeSide === 'east')
+          return output.intercardsEast!();
+        return output.intercardsWest!();
+      },
       outputStrings: {
-        text: {
-          en: 'Avoid Swords',
+        insideWest: {
+          en: 'Inner West Diamond'
+        },
+        insideEast: {
+          en: 'Inner East Diamond'
+        },
+        insideNS: {
+          en: 'Inner North/South Diamonds - ${lean}',
+
+        },
+        leanWest: {
+          en: 'Lean West',
+        },
+        leanEast: {
+          en: 'Lean East',
+        },
+        intercardsEast: {
+          en: 'Outer Intercard Diamonds - East',
+        },
+        intercardsWest: {
+          en: 'Outer Intercard Diamonds - West',
         },
       },
     },
-    // Use explicit output rather than Outputs.left/Outputs.right for these triggers
-    // Boss likes to jump & rotate, so pure 'left'/'right' can be misleading
-    // Only use these two triggers during swords1 and Might of Vollok in lines2
-    // All other phases/uses use other triggers.
     {
-      id: 'Zoraal Ja Ex Half Full Right Sword',
-      type: 'StartsUsing',
-      netRegex: { id: '9368', source: 'Zoraal Ja', capture: false },
-      condition: (data) => data.phase === 'swords' || data.seenHalfCircuit,
-      alertText: (_data, _matches, output) => output.rightSword!(),
+      id: 'Zoraal Ja Ex Swords Spread Markers',
+      type: 'HeadMarker',
+      netRegex: { id: '00B9' },
+      condition: (data, matches) => data.phase === 'swords' && data.me === matches.target,
+      alertText: (_data, _matches, output) => output.safeSpread!(),
       outputStrings: {
-        rightSword: {
-          en: 'Boss\'s Left',
-        },
-      },
-    },
-    {
-      id: 'Zoraal Ja Ex Half Full Left Sword',
-      type: 'StartsUsing',
-      netRegex: { id: '9369', source: 'Zoraal Ja', capture: false },
-      condition: (data) => data.phase === 'swords' || data.seenHalfCircuit,
-      alertText: (_data, _matches, output) => output.leftSword!(),
-      outputStrings: {
-        leftSword: {
-          en: 'Boss\'s Right',
-        },
+        safeSpread: Outputs.spread,
       },
     },
     {
@@ -198,6 +323,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         if (data.drumTargets.includes(data.me))
           return output.enumOnYou!();
+        data.drumFar = true;
         return output.enumKnockback!();
       },
       run: (data) => data.drumTargets = [],
@@ -211,13 +337,69 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Zoraal Ja Ex Spread Markers',
-      type: 'HeadMarker',
-      netRegex: { id: '00B9' },
-      condition: Conditions.targetIsYou(),
-      alertText: (_data, _matches, output) => output.safeSpread!(),
+      id: 'Zoraal Ja Ex Knockaround Swords Collect',
+      type: 'StartsUsing',
+      netRegex: { id: '9393', source: 'Fang' },
+      condition: (data) => data.phase === 'knockaround',
+      run: (data, matches) => {
+        const mirrorAdjust = 21.21;
+        let swordX = parseFloat(matches.x);
+        let swordY = parseFloat(matches.y);
+        if (swordX < 99 && swordY < 99) { // mirror plat - some wiggle room for float shenanigans
+          swordX += mirrorAdjust;
+          swordY += mirrorAdjust;
+        }
+
+        let swordQuad: QuadrantName;
+        if (swordX < 99)
+          swordQuad = 'west';
+        else if (swordX > 101)
+          swordQuad = 'east';
+        else if (swordY < 99)
+          swordQuad = 'south';
+        else
+          swordQuad = 'north';
+
+        data.safeQuadrants = data.safeQuadrants.filter((quad) => quad !== swordQuad);
+      },
+    },
+    {
+      id: 'Zoraal Ja Ex Knockaround Swords + Spread',
+      type: 'StartsUsing',
+      netRegex: { id: '9393', source: 'Fang' },
+      condition: (data) => data.phase === 'knockaround',
+      delaySeconds: 0.2,
+      suppressSeconds: 1,
+      alertText: (data, matches, output) => {
+        if (data.safeQuadrants.length !== 2)
+          return output.unknown!();
+
+        // Call these as left/right based on whether the player is on the knock plat or not
+        // Assume they are facing the boss at this point.
+        if (data.drumFar) {
+          if (data.safeQuadrants.includes('east'))
+            return output.left!();
+          else if (data.safeQuadrants.includes('south'))
+            return output.right!();
+          return output.unknown!();
+        }
+
+        if (data.safeQuadrants.includes('west'))
+          return output.left!();
+        else if (data.safeQuadrants.includes('north'))
+          return output.right!();
+        return output.unknown!();
+      },
       outputStrings: {
-        safeSpread: Outputs.spread,
+        unknown: {
+          en: 'Safe Quadrant + Spread Out',
+        },
+        left: {
+          en: '<= Front Left Quadrant + Spread Out',
+        },
+        right: {
+          en: 'Front Right Quadrant + Spread Out =>',
+        },
       },
     },
     {
@@ -265,6 +447,32 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         combo: {
           en: '${inOut} + ${side}',
+        },
+      },
+    },
+    // Use explicit output rather than Outputs.left/Outputs.right for these triggers
+    // Boss likes to jump & rotate, so pure 'left'/'right' can be misleading
+    {
+      id: 'Zoraal Ja Ex Might of Vollok Right Sword',
+      type: 'StartsUsing',
+      netRegex: { id: '9368', source: 'Zoraal Ja', capture: false },
+      condition: (data) => data.phase === 'lines' && data.seenHalfCircuit,
+      alertText: (_data, _matches, output) => output.rightSword!(),
+      outputStrings: {
+        rightSword: {
+          en: 'Boss\'s Left',
+        },
+      },
+    },
+    {
+      id: 'Zoraal Ja Ex Might of Vollok Left Sword',
+      type: 'StartsUsing',
+      netRegex: { id: '9369', source: 'Zoraal Ja', capture: false },
+      condition: (data) => data.phase === 'lines' && data.seenHalfCircuit,
+      alertText: (_data, _matches, output) => output.leftSword!(),
+      outputStrings: {
+        leftSword: {
+          en: 'Boss\'s Right',
         },
       },
     },
