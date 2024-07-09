@@ -1,13 +1,12 @@
+import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { TriggerSet } from '../../../../../types/trigger';
+import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // TO DO:
 // * Forged Track + Fiery/Stormy Edge - call knockback dir/safe lanes
-// * Knockaround phase - call out whether to jump or stay for Forward Edge/Backward Edge?
-// * Knockaround phase - call whether to jump or stay to break chains?
 
 type Phase = 'arena' | 'swords' | 'lines' | 'knockaround';
 
@@ -82,12 +81,26 @@ const findClosestTile: (x: number, y: number) => TileName = (x, y) => {
 
 const quadrantNames = ['north', 'east', 'south', 'west'] as const;
 type QuadrantName = typeof quadrantNames[number];
+const mirrorPlatformLocs = ['northwest', 'northeast', 'southwest', 'southeast'] as const;
+type MirrorPlatformLoc = typeof mirrorPlatformLocs[number];
+
+const stayGoOutputStrings: OutputStrings = {
+  stay: {
+    en: 'Stay',
+  },
+  goAcross: {
+    en: 'Go Across',
+  },
+};
+
 export interface Data extends RaidbossData {
   phase: Phase;
   safeTiles: TileName[];
   drumTargets: string[];
   drumFar: boolean; // got knocked by enum partner to far platform
+  mirrorPlatformLoc?: MirrorPlatformLoc;
   safeQuadrants: QuadrantName[];
+  cantTakeTornadoJump: boolean;
   halfCircuitSafeSide?: 'left' | 'right';
   seenHalfCircuit: boolean;
 }
@@ -103,6 +116,7 @@ const triggerSet: TriggerSet<Data> = {
       drumTargets: [],
       drumFar: false,
       safeQuadrants: [...quadrantNames] as QuadrantName[],
+      cantTakeTornadoJump: false,
       seenHalfCircuit: false,
     };
   },
@@ -138,11 +152,21 @@ const triggerSet: TriggerSet<Data> = {
       // Right sword glowing (right safe)
       id: 'Zoraal Ja Ex Forward Half Right Sword',
       type: 'StartsUsing',
-      netRegex: { id: '937B', source: 'Zoraal Ja', capture: false },
-      alertText: (_data, _matches, output) => output.frontRight!(),
+      netRegex: { id: ['937B', '999A'], source: 'Zoraal Ja', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.phase === 'knockaround') { // 999A is the knockaround version
+          const stayGo = data.drumFar ? output.goAcross!() : output.stay!();
+          return output.frontRightKnockaround!({ stayGo: stayGo });
+        }
+        return output.frontRight!();
+      },
       outputStrings: {
         frontRight: {
           en: 'Front + Boss\'s Right',
+        },
+        ...stayGoOutputStrings,
+        frontRightKnockaround: {
+          en: 'Front + Boss\'s Right (${stayGo})',
         },
       },
     },
@@ -150,11 +174,21 @@ const triggerSet: TriggerSet<Data> = {
       // Left sword glowing (left safe)
       id: 'Zoraal Ja Ex Forward Half Left Sword',
       type: 'StartsUsing',
-      netRegex: { id: '937C', source: 'Zoraal Ja', capture: false },
-      alertText: (_data, _matches, output) => output.frontLeft!(),
+      netRegex: { id: ['937C', '999B'], source: 'Zoraal Ja', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.phase === 'knockaround') { // 999B is the knockaround version
+          const stayGo = data.drumFar ? output.goAcross!() : output.stay!();
+          return output.frontLeftKnockaround!({ stayGo: stayGo });
+        }
+        return output.frontLeft!();
+      },
       outputStrings: {
         frontLeft: {
           en: 'Front + Boss\'s Left',
+        },
+        ...stayGoOutputStrings,
+        frontLeftKnockaround: {
+          en: 'Front + Boss\'s Left (${stayGo})',
         },
       },
     },
@@ -162,11 +196,21 @@ const triggerSet: TriggerSet<Data> = {
       // Right sword glowing (left safe)
       id: 'Zoraal Ja Ex Backward Half Right Sword',
       type: 'StartsUsing',
-      netRegex: { id: '937D', source: 'Zoraal Ja', capture: false },
-      alertText: (_data, _matches, output) => output.backRight!(),
+      netRegex: { id: ['937D', '999C'], source: 'Zoraal Ja', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.phase === 'knockaround') { // 999C is the knockaround version
+          const stayGo = data.drumFar ? output.stay!() : output.goAcross!();
+          return output.backRightKnockaround!({ stayGo: stayGo });
+        }
+        return output.backRight!();
+      },
       outputStrings: {
         backRight: {
           en: 'Behind + Boss\'s Left',
+        },
+        ...stayGoOutputStrings,
+        backRightKnockaround: {
+          en: 'Behind + Boss\'s Left (${stayGo})',
         },
       },
     },
@@ -174,11 +218,21 @@ const triggerSet: TriggerSet<Data> = {
       // Left sword glowing (right safe)
       id: 'Zoraal Ja Ex Backward Half Left Sword',
       type: 'StartsUsing',
-      netRegex: { id: '937E', source: 'Zoraal Ja', capture: false },
-      alertText: (_data, _matches, output) => output.backLeft!(),
+      netRegex: { id: ['937E', '999D'], source: 'Zoraal Ja', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.phase === 'knockaround') { // 999D is the knockaround version
+          const stayGo = data.drumFar ? output.stay!() : output.goAcross!();
+          return output.backLeftKnockaround!({ stayGo: stayGo });
+        }
+        return output.backLeft!();
+      },
       outputStrings: {
         backLeft: {
           en: 'Behind + Boss\'s Right',
+        },
+        ...stayGoOutputStrings,
+        backLeftKnockaround: {
+          en: 'Behind + Boss\'s Right (${stayGo})',
         },
       },
     },
@@ -260,14 +314,13 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         insideWest: {
-          en: 'Inner West Diamond'
+          en: 'Inner West Diamond',
         },
         insideEast: {
-          en: 'Inner East Diamond'
+          en: 'Inner East Diamond',
         },
         insideNS: {
           en: 'Inner North/South Diamonds - ${lean}',
-
         },
         leanWest: {
           en: 'Lean West',
@@ -327,6 +380,7 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+
     {
       id: 'Zoraal Ja Ex Knockaround Swords Collect',
       type: 'StartsUsing',
@@ -336,20 +390,36 @@ const triggerSet: TriggerSet<Data> = {
         const mirrorAdjust = 21.21;
         let swordX = parseFloat(matches.x);
         let swordY = parseFloat(matches.y);
-        if (swordX < 99 && swordY < 99) { // mirror plat - some wiggle room for float shenanigans
+
+        // It seems like the mirror platform is always either NW or NE of the main platform?
+        // But handle all 4 possibilities just in case.
+        if (swordX < 91 && swordY < 91) {
+          data.mirrorPlatformLoc = 'northwest';
           swordX += mirrorAdjust;
           swordY += mirrorAdjust;
+        } else if (swordX < 91) {
+          data.mirrorPlatformLoc = 'southwest';
+          swordX += mirrorAdjust;
+          swordY -= mirrorAdjust;
+        } else if (swordY < 91) {
+          data.mirrorPlatformLoc = 'northeast';
+          swordX -= mirrorAdjust;
+          swordY += mirrorAdjust;
+        } else if (swordY > 109) {
+          data.mirrorPlatformLoc = 'southeast';
+          swordX -= mirrorAdjust;
+          swordY -= mirrorAdjust;
         }
 
         let swordQuad: QuadrantName;
-        if (swordX < 99)
+        if (swordX < 98)
           swordQuad = 'west';
-        else if (swordX > 101)
+        else if (swordX > 102)
           swordQuad = 'east';
         else if (swordY < 99)
-          swordQuad = 'south';
-        else
           swordQuad = 'north';
+        else
+          swordQuad = 'south';
 
         data.safeQuadrants = data.safeQuadrants.filter((quad) => quad !== swordQuad);
       },
@@ -362,23 +432,66 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.2,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        if (data.safeQuadrants.length !== 2)
+        if (data.safeQuadrants.length !== 2 || data.mirrorPlatformLoc === undefined)
           return output.unknown!();
 
         // Call these as left/right based on whether the player is on the knock plat or not
         // Assume they are facing the boss at this point.
-        if (data.drumFar) {
-          if (data.safeQuadrants.includes('east'))
-            return output.left!();
-          else if (data.safeQuadrants.includes('south'))
-            return output.right!();
+        // There will always be one safe quadrant closest to the boss on each platform.
+
+        if (data.drumFar) { // player is on the mirror platform
+          if (data.mirrorPlatformLoc === 'northwest')
+            return data.safeQuadrants.includes('east')
+              ? output.left!()
+              : (data.safeQuadrants.includes('south')
+                ? output.right!()
+                : output.unknown!());
+          else if (data.mirrorPlatformLoc === 'northeast')
+            return data.safeQuadrants.includes('west')
+              ? output.right!()
+              : (data.safeQuadrants.includes('south')
+                ? output.left!()
+                : output.unknown!());
+          else if (data.mirrorPlatformLoc === 'southeast')
+            return data.safeQuadrants.includes('west')
+              ? output.left!()
+              : (data.safeQuadrants.includes('north')
+                ? output.right!()
+                : output.unknown!());
+          else if (data.mirrorPlatformLoc === 'southwest')
+            return data.safeQuadrants.includes('east')
+              ? output.right!()
+              : (data.safeQuadrants.includes('north')
+                ? output.left!()
+                : output.unknown!());
           return output.unknown!();
         }
 
-        if (data.safeQuadrants.includes('west'))
-          return output.left!();
-        else if (data.safeQuadrants.includes('north'))
-          return output.right!();
+        // player is on the main platform
+        if (data.mirrorPlatformLoc === 'northwest')
+          return data.safeQuadrants.includes('west')
+            ? output.left!()
+            : (data.safeQuadrants.includes('north')
+              ? output.right!()
+              : output.unknown!());
+        else if (data.mirrorPlatformLoc === 'northeast')
+          return data.safeQuadrants.includes('north')
+            ? output.left!()
+            : (data.safeQuadrants.includes('east')
+              ? output.right!()
+              : output.unknown!());
+        else if (data.mirrorPlatformLoc === 'southeast')
+          return data.safeQuadrants.includes('east')
+            ? output.left!()
+            : (data.safeQuadrants.includes('south')
+              ? output.right!()
+              : output.unknown!());
+        else if (data.mirrorPlatformLoc === 'southwest')
+          return data.safeQuadrants.includes('south')
+            ? output.left!()
+            : (data.safeQuadrants.includes('west')
+              ? output.right!()
+              : output.unknown!());
         return output.unknown!();
       },
       outputStrings: {
@@ -394,6 +507,24 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Zooraal Ja Ex Knockaround Tornado Debuff Gain',
+      type: 'GainsEffect',
+      netRegex: { effectId: '830' }, // Wind Resistance Down II - 45.96s duration
+      condition: (data, matches) => {
+        return data.phase === 'knockaround' &&
+          data.me === matches.target &&
+          parseFloat(matches.duration) > 10; // we don't care about the shorter one
+      },
+      run: (data) => data.cantTakeTornadoJump = true,
+    },
+    {
+      id: 'Zooraal Ja Ex Knockaround Tornado Debuff Lose',
+      type: 'LosesEffect',
+      netRegex: { effectId: '830' }, // Wind Resistance Down II - 45.96s duration
+      condition: (data, matches) => data.phase === 'knockaround' && data.me === matches.target,
+      run: (data) => data.cantTakeTornadoJump = false,
+    },
+    {
       id: 'Zoraal Ja Ex Duty\'s Edge',
       type: 'StartsUsing',
       netRegex: { id: '9374', source: 'Zoraal Ja', capture: false },
@@ -401,9 +532,20 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Zoraal Ja Ex Burning Chains',
-      type: 'Ability',
-      netRegex: { id: '9395', source: 'Zoraal Ja', capture: false },
-      response: Responses.breakChains(),
+      type: 'GainsEffect',
+      netRegex: { effectId: '301' },
+      condition: Conditions.targetIsYou(),
+      alertText: (data, _matches, output) => {
+        const stayGo = data.cantTakeTornadoJump ? output.stay!() : output.goAcross!();
+        return output.combo!({ breakChains: output.breakChains!(), stayGo: stayGo });
+      },
+      outputStrings: {
+        breakChains: Outputs.breakChains,
+        ...stayGoOutputStrings,
+        combo: {
+          en: '${breakChains} (${stayGo})',
+        },
+      },
     },
     {
       id: 'Zoraal Ja Ex Half Circuit Left/Right Collect',
