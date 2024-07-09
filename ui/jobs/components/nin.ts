@@ -144,6 +144,7 @@ export class NINComponent extends BaseComponent {
   override reset(): void {
     this.bunshin.duration = 0;
     this.kazematoi.innerText = '0';
+    this.kazematoi.parentElement?.classList.remove('nin-kazematoi', 'pulse');
     this.mudraTriggerCd = true;
     this.ninjutsu.duration = 0;
     this.trickAttack.duration = 0;
