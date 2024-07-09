@@ -126,7 +126,7 @@ export class NINComponent extends BaseComponent {
       this.ninki.parentNode.classList.add('high');
 
     this.kazematoi.innerText = jobDetail.kazematoi?.toString() ?? '0';
-    if (+this.kazematoi.innerText >= 4) {
+    if (jobDetail.kazematoi >= 4) {
       // Pulse the kazematoi count to indicate that you shouldn't use Armor Crash again.
       this.kazematoi.parentElement?.classList.add('nin-kazematoi', 'pulse');
     } else {
