@@ -302,6 +302,7 @@ export const kAbility = {
 // Combo actions for every jobs, this would apply to ComboTracker when
 // it is initialized, for determining whether the current action is in combo.
 // For upgradable skill actions, use array to represent the combo action chain.
+// (Can also be used on only last skill different combo)
 // For example, PLD's Fast Blade -> Riot Blade -> Royal Authority / Rage of Halone
 // combo chain would be represented as
 // ['Fast Blade', 'Riot Blade', ['Royal Authority', 'Rage of Halone']].
@@ -348,96 +349,21 @@ export const kComboActions: Array<Array<string | string[]>> = [
   ],
   // DRG
   [
-    kAbility.TrueThrust,
-    kAbility.Disembowel,
-    kAbility.ChaosThrust,
+    [kAbility.TrueThrust, kAbility.RaidenThrust],
+    [kAbility.Disembowel, kAbility.SpiralBlow],
+    [kAbility.ChaosThrust, kAbility.ChaoticSpring],
     kAbility.WheelingThrust,
     kAbility.Drakesbane,
   ],
   [
-    kAbility.TrueThrust,
-    kAbility.VorpalThrust,
-    kAbility.FullThrust,
+    [kAbility.TrueThrust, kAbility.RaidenThrust],
+    [kAbility.VorpalThrust, kAbility.LanceBarrage],
+    [kAbility.FullThrust, kAbility.HeavensThrust],
     kAbility.FangAndClaw,
     kAbility.Drakesbane,
   ],
   [
-    kAbility.RaidenThrust, // lv76 Draconian Fire
-    kAbility.Disembowel,
-    kAbility.ChaosThrust,
-    kAbility.WheelingThrust,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.RaidenThrust,
-    kAbility.VorpalThrust,
-    kAbility.FullThrust,
-    kAbility.FangAndClaw,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.TrueThrust, // lv86
-    kAbility.Disembowel,
-    kAbility.ChaoticSpring,
-    kAbility.WheelingThrust,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.TrueThrust,
-    kAbility.VorpalThrust,
-    kAbility.HeavensThrust,
-    kAbility.FangAndClaw,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.RaidenThrust, // lv86 Draconian Fire
-    kAbility.Disembowel,
-    kAbility.ChaoticSpring,
-    kAbility.WheelingThrust,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.RaidenThrust,
-    kAbility.VorpalThrust,
-    kAbility.HeavensThrust,
-    kAbility.FangAndClaw,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.TrueThrust, // lv96
-    kAbility.SpiralBlow,
-    kAbility.ChaoticSpring,
-    kAbility.WheelingThrust,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.TrueThrust,
-    kAbility.LanceBarrage,
-    kAbility.HeavensThrust,
-    kAbility.FangAndClaw,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.RaidenThrust, // lv96 Draconian Fire
-    kAbility.SpiralBlow,
-    kAbility.ChaoticSpring,
-    kAbility.WheelingThrust,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.RaidenThrust,
-    kAbility.LanceBarrage,
-    kAbility.HeavensThrust,
-    kAbility.FangAndClaw,
-    kAbility.Drakesbane,
-  ],
-  [
-    kAbility.DoomSpike,
-    kAbility.SonicThrust,
-    kAbility.CoerthanTorment,
-  ],
-  [
-    kAbility.DraconianFury,
+    [kAbility.DoomSpike, kAbility.DraconianFury],
     kAbility.SonicThrust,
     kAbility.CoerthanTorment,
   ],
@@ -453,26 +379,17 @@ export const kComboActions: Array<Array<string | string[]>> = [
   ],
   // SAM
   [
-    kAbility.Hakaze,
-    kAbility.Jinpu,
-    [kAbility.Gekko, kAbility.Kasha],
-  ],
-  [
-    kAbility.Hakaze,
-    kAbility.Yukikaze,
-  ],
-  [
-    kAbility.Gyofu,
+    [kAbility.Hakaze, kAbility.Gyofu],
     kAbility.Jinpu,
     kAbility.Gekko,
   ],
   [
-    kAbility.Gyofu,
+    [kAbility.Hakaze, kAbility.Gyofu],
     kAbility.Shifu,
     kAbility.Kasha,
   ],
   [
-    kAbility.Gyofu,
+    [kAbility.Hakaze, kAbility.Gyofu],
     kAbility.Yukikaze,
   ],
   [
