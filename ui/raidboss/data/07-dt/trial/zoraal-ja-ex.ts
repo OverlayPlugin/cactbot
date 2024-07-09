@@ -350,7 +350,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Zoraal Ja Ex Bitter Whirlwind',
       type: 'StartsUsing',
       netRegex: { id: '993E', source: 'Zoraal Ja' },
-      response: Responses.tankBuster(),
+      response: Responses.tankBusterSwap(),
     },
     {
       id: 'Zoraal Ja Ex Drum of Vollok Collect',
@@ -362,7 +362,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Zoraal Ja Ex Drum of Vollok',
       type: 'StartsUsing',
       netRegex: { id: '938F', source: 'Zoraal Ja', capture: false },
-      delaySeconds: 1,
+      delaySeconds: 0.3, // let Collect run first
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
         if (data.drumTargets.includes(data.me))
@@ -380,7 +380,6 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-
     {
       id: 'Zoraal Ja Ex Knockaround Swords Collect',
       type: 'StartsUsing',
@@ -416,7 +415,7 @@ const triggerSet: TriggerSet<Data> = {
           swordQuad = 'west';
         else if (swordX > 102)
           swordQuad = 'east';
-        else if (swordY < 99)
+        else if (swordY < 98)
           swordQuad = 'north';
         else
           swordQuad = 'south';
@@ -435,10 +434,9 @@ const triggerSet: TriggerSet<Data> = {
         if (data.safeQuadrants.length !== 2 || data.mirrorPlatformLoc === undefined)
           return output.unknown!();
 
-        // Call these as left/right based on whether the player is on the knock plat or not
+        // Call these as left/right based on whether the player is on the mirror plat or not
         // Assume they are facing the boss at this point.
         // There will always be one safe quadrant closest to the boss on each platform.
-
         if (data.drumFar) { // player is on the mirror platform
           if (data.mirrorPlatformLoc === 'northwest')
             return data.safeQuadrants.includes('east')
@@ -530,6 +528,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '9374', source: 'Zoraal Ja', capture: false },
       response: Responses.stackMarker(),
     },
+    // Calling 'Stay'/'Go Across' is based on whether the player receives the chains debuff
+    // and whether they still have the Wind Resistance debuff from jumping for Forward/Backward Half
+    // This can lead to some potentially erroneous results - e.g., a player dies (debuff removed
+    // early), is rezzed on the wrong platform, jumps early, etc.  We could instead call stay/go by
+    // role, but that would break in non-standard comps, and could still lead to the same erroneous
+    // results.  There doesn't seem to be a perfect solution here.
     {
       id: 'Zoraal Ja Ex Burning Chains',
       type: 'GainsEffect',
@@ -583,8 +587,10 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-    // Use explicit output rather than Outputs.left/Outputs.right for these triggers
-    // Boss likes to jump & rotate, so pure 'left'/'right' can be misleading
+    // Continue to use 'Boss\'s X' output rather than Outputs.left/.right for these triggers
+    // Zoraal Ja jumps and rotates as the line moves through the arena, and players may
+    // change directions, so use boss-relative rather than trying to guess which way the player
+    // is facing.
     {
       id: 'Zoraal Ja Ex Might of Vollok Right Sword',
       type: 'StartsUsing',
