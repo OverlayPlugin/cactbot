@@ -65,9 +65,11 @@ const mirrorPlatformLocs = ['northwest', 'northeast', 'southwest', 'southeast'];
 const stayGoOutputStrings = {
   stay: {
     en: 'Stay',
+    de: 'Bleib Stehen',
   },
   goAcross: {
     en: 'Go Across',
+    de: 'Geh rüber',
   },
 };
 Options.Triggers.push({
@@ -128,10 +130,12 @@ Options.Triggers.push({
       outputStrings: {
         frontRight: {
           en: 'Front + Boss\'s Right',
+          de: 'Vorne + Rechts vom Boss',
         },
         ...stayGoOutputStrings,
         frontRightKnockaround: {
           en: 'Front + Boss\'s Right (${stayGo})',
+          de: 'Vorne + Rechts vom Boss (${stayGo})',
         },
       },
     },
@@ -150,10 +154,12 @@ Options.Triggers.push({
       outputStrings: {
         frontLeft: {
           en: 'Front + Boss\'s Left',
+          de: 'Vorne + Links vom Boss',
         },
         ...stayGoOutputStrings,
         frontLeftKnockaround: {
           en: 'Front + Boss\'s Left (${stayGo})',
+          de: 'Vorne + Links vom Boss (${stayGo})',
         },
       },
     },
@@ -172,10 +178,12 @@ Options.Triggers.push({
       outputStrings: {
         backRight: {
           en: 'Behind + Boss\'s Left',
+          de: 'Hinten + Links vom Boss',
         },
         ...stayGoOutputStrings,
         backRightKnockaround: {
           en: 'Behind + Boss\'s Left (${stayGo})',
+          de: 'Hinten + Links vom Boss (${stayGo})',
         },
       },
     },
@@ -194,10 +202,12 @@ Options.Triggers.push({
       outputStrings: {
         backLeft: {
           en: 'Behind + Boss\'s Right',
+          de: 'Hinten + Rechts vom Boss',
         },
         ...stayGoOutputStrings,
         backLeftKnockaround: {
           en: 'Behind + Boss\'s Right (${stayGo})',
+          de: 'Hinten + Rechts vom Boss (${stayGo})',
         },
       },
     },
@@ -277,24 +287,31 @@ Options.Triggers.push({
       outputStrings: {
         insideWest: {
           en: 'Inner West Diamond',
+          de: 'Innerer Westlicher Diamant',
         },
         insideEast: {
           en: 'Inner East Diamond',
+          de: 'Innerer Östlicher Diamant',
         },
         insideNS: {
           en: 'Inner North/South Diamonds - ${lean}',
+          de: 'Innerer Nördlicher/Südlicher Diamant - ${lean}',
         },
         leanWest: {
           en: 'Lean West',
+          de: 'Westlich halten',
         },
         leanEast: {
           en: 'Lean East',
+          de: 'Östlich halten',
         },
         intercardsEast: {
           en: 'Outer Intercard Diamonds - East',
+          de: 'Äußere Interkardinale Diamanten - Osten',
         },
         intercardsWest: {
           en: 'Outer Intercard Diamonds - West',
+          de: 'Äußere Interkardinale Diamanten - Westen',
         },
       },
     },
@@ -336,9 +353,11 @@ Options.Triggers.push({
       outputStrings: {
         enumOnYou: {
           en: 'Partner stack (on you)',
+          de: 'Mit Partner sammeln (auf dir)',
         },
         enumKnockback: {
           en: 'Partner stack (knockback)',
+          de: 'Mit Partner sammeln (Rückstoß)',
         },
       },
     },
@@ -452,12 +471,15 @@ Options.Triggers.push({
       outputStrings: {
         unknown: {
           en: 'Safe Quadrant + Spread Out',
+          de: 'Sicherer Quadrant + Verteilen',
         },
         left: {
           en: '<= Front Left Quadrant + Spread Out',
+          de: '<= Vorderer linker Quadrant + Verteilen',
         },
         right: {
           en: 'Front Right Quadrant + Spread Out =>',
+          de: 'Vorderer rechter Quadrant + Verteilen =>',
         },
       },
     },
@@ -505,6 +527,7 @@ Options.Triggers.push({
         ...stayGoOutputStrings,
         combo: {
           en: '${breakChains} (${stayGo})',
+          de: '${breakChains} (${stayGo})',
         },
       },
     },
@@ -533,14 +556,17 @@ Options.Triggers.push({
       outputStrings: {
         left: {
           en: 'Boss\'s Left',
+          de: 'Links vom Boss',
         },
         right: {
           en: 'Boss\'s Right',
+          de: 'Rechts vom Boss',
         },
         in: Outputs.in,
         out: Outputs.out,
         combo: {
           en: '${inOut} + ${side}',
+          de: '${inOut} + ${side}',
         },
       },
     },
@@ -557,6 +583,7 @@ Options.Triggers.push({
       outputStrings: {
         rightSword: {
           en: 'Boss\'s Left',
+          de: 'Links vom Boss',
         },
       },
     },
@@ -569,6 +596,7 @@ Options.Triggers.push({
       outputStrings: {
         leftSword: {
           en: 'Boss\'s Right',
+          de: 'Rechts vom Boss',
         },
       },
     },
@@ -577,9 +605,118 @@ Options.Triggers.push({
     {
       'locale': 'en',
       'replaceText': {
-        'Forward Edge/Backward Edge': 'Forward/Backward Edge',
         'Fiery Edge/Stormy Edge': 'Fiery/Stormy Edge',
+        'Forward Edge/Backward Edge': 'Forward/Backward Edge',
         'Siege of Vollok/Walls of Vollok': 'Siege/Walls of Vollok',
+      },
+    },
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Fang': 'Reißzahn',
+        'Zoraal Ja': 'Zoraal Ja',
+      },
+      'replaceText': {
+        '\\(cast\\)': '(wirken)',
+        '\\(damage\\)': '(Schaden)',
+        '\\(enrage\\)': '(Finalangriff)',
+        '\\(lines drop\\)': '',
+        'Actualize': 'Verwirklichung',
+        'Aero III': 'Windga',
+        'Backward Edge': 'Hinterklinge',
+        'Bitter Whirlwind': 'Bitterer Wirbelwind',
+        'Blade Warp': 'Klingensprung',
+        'Burning Chains': 'Brennende Ketten',
+        'Chasm of Vollok': 'Klippe von Vollok',
+        'Dawn of an Age': 'Dämmerung eines Zeitalters',
+        'Drum of Vollok': 'Trommel von Vollok',
+        'Duty\'s Edge': 'Pflichtes Schneide',
+        'Fiery Edge': 'Feurige Klinge',
+        'Forged Track': 'Unbestimmter Pfad',
+        'Forward Edge': 'Vorderklinge',
+        'Greater Gateway': 'Großes Tor der Welten',
+        'Half Circuit': 'Halbe Runde',
+        'Half Full': 'Halbes Ganzes',
+        'Multidirectional Divide': 'Wechselseitige Klingen',
+        'Projection of Triumph': 'Vorhersage von Triumph',
+        'Projection of Turmoil': 'Vorhersage von Aufruhr',
+        'Regicidal Rage': 'Wut des Regizids',
+        'Siege of Vollok': 'Belagerung von Vollok',
+        'Stormy Edge': 'Stürmische Klinge',
+        'Sync(?![-h])': 'Synchro',
+        '(?<! )Vollok': 'Vollok',
+        'Walls of Vollok': 'Mauern von Vollok',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Fang': 'crochet',
+        'Zoraal Ja': 'Zoraal Ja',
+      },
+      'replaceText': {
+        'Actualize': 'Actualisation',
+        'Aero III': 'Méga Vent',
+        'Backward Edge': 'Lames régressives',
+        'Bitter Whirlwind': 'Tourbillon amer',
+        'Blade Warp': 'Invocation incisive',
+        'Burning Chains': 'Chaînes brûlantes',
+        'Chasm of Vollok': 'Trappe de Vollok',
+        'Dawn of an Age': 'Âge de l\'aurore',
+        'Drum of Vollok': 'Coup de Vollok',
+        'Duty\'s Edge': 'Devoir d\'acier',
+        'Fiery Edge': 'Lames de feu',
+        'Forged Track': 'Traque incisive',
+        'Forward Edge': 'Lames saillantes',
+        'Greater Gateway': 'Passerelle enchantée',
+        'Half Circuit': 'Demi-circuit',
+        'Half Full': 'Demi-plénitude',
+        'Multidirectional Divide': 'Division multidirectionnelle',
+        'Projection of Triumph': 'Lames repoussantes',
+        'Projection of Turmoil': 'Salve repoussante',
+        'Regicidal Rage': 'Régicide',
+        'Siege of Vollok': 'Anneau de Vollok',
+        'Stormy Edge': 'Lames de vent',
+        'Sync(?![-h])': 'Synchronisation',
+        '(?<! )Vollok': 'Vollok',
+        'Walls of Vollok': 'Cercle de Vollok',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Fang': '双牙剣',
+        'Zoraal Ja': 'ゾラージャ',
+      },
+      'replaceText': {
+        'Actualize': 'アクチュアライズ',
+        'Aero III': 'エアロガ',
+        'Backward Edge': 'バックワードエッジ',
+        'Bitter Whirlwind': 'ビターウィンド',
+        'Blade Warp': 'サモンエッジ',
+        'Burning Chains': '炎の鎖',
+        'Chasm of Vollok': 'ピット・オブ・ヴォロク',
+        'Dawn of an Age': 'ドーン・エイジ',
+        'Drum of Vollok': 'ノック・オブ・ヴォロク',
+        'Duty\'s Edge': 'デューティエッジ',
+        'Fiery Edge': 'ファイアエッジ',
+        'Forged Track': 'エッジトラック',
+        'Forward Edge': 'フォワードエッジ',
+        'Greater Gateway': 'エンチャント・ゲートウェイ',
+        'Half Circuit': 'ルーズハーフ・サーキット',
+        'Half Full': 'ルーズハーフ',
+        'Multidirectional Divide': 'マルチウェイ',
+        'Projection of Triumph': 'プロジェクション・エッジ',
+        'Projection of Turmoil': 'プロジェクション・バースト',
+        'Regicidal Rage': 'レジサイド',
+        'Siege of Vollok': 'リング・オブ・ヴォロク',
+        'Stormy Edge': 'ウィンドエッジ',
+        'Sync(?![-h])': 'シンクロナス',
+        '(?<! )Vollok': 'エッジ・ザ・ヴォロク',
+        'Walls of Vollok': 'サークル・オブ・ヴォロク',
       },
     },
   ],
