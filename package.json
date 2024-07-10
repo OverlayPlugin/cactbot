@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
   "version": "0.32.2",
-  "releaseSummary": "Job module update + translations",
+  "releaseSummary": "initial ex2, jobs module update + translations",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
