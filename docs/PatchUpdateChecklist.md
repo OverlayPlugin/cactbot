@@ -334,7 +334,7 @@ Test at least one job with the cactbot jobs overlay and make sure boxes update.
 ## et voila, release
 
 Once the resources are updated and the signatures and memory data look good,
-do a cactbot release!
+[do a cactbot release](https://github.com/OverlayPlugin/cactbot/blob/main/CONTRIBUTING.md#how-to-release)!
 
 ## Other Things
 
@@ -342,18 +342,12 @@ It'd be nice to have a list of OverlayPlugin steps too, but that could live else
 
 ### New expansion changes
 
-When a new expansion releases, there are a variety of changes that will be needed
-in various files to, e.g., support new jobs or account for job changes/re-works.
-This is a partial working list of potential changes that may be needed:
+When a new expansion releases, in addition to adding support for a large amount of new content,
+changes to existing code will almost certainly be necessary.
+For example, support for new jobs will need to be added to virtually every module, and
+changes to existing jobs will need to be accounted for.
 
-- Update buff tracker with job buff changes
-   See <https://github.com/quisquous/cactbot/pull/3717>
-
-- Add job icons
-   See <https://github.com/quisquous/cactbot/pull/3718> & <https://github.com/quisquous/cactbot/pull/3723>
-
-- Add new job enums
-   See <https://github.com/quisquous/cactbot/pull/3719>
-
-- Add new expac to config files
-   See <https://github.com/quisquous/cactbot/pull/3725>
+It is strongly recommended to create a single tracking issue with a list of all tasks to be done,
+and to keep the issue updated by linking to related PRs as they are submitted.
+This maintains a single point of reference for future expansions and troubleshooting.
+For example, <https://github.com/OverlayPlugin/cactbot/issues/170>
