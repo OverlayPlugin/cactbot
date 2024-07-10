@@ -2,6 +2,24 @@
 
 This is a guide for steps to update cactbot when FFXIV has a patch.
 
+## Table of Contents
+
+* [Game Data Resource Updates](#game-data-resource-updates)
+  * [Run update scripts](#run-update-scripts)
+    * [effect_id data](#effect_id-data)
+    * [hunt data](#hunt-data)
+    * [zone_id & zone_info data](#zone_id--zone_info-data)
+  * [Update Content List](#update-content-list)
+* [Create a Meta-issue to Track Content Work](#create-a-meta-issue-to-track-content-work)
+* [In Game Memory Verification](#in-game-memory-verification)
+  * [Check memory signatures](#check-memory-signatures)
+  * [Verify Job data](#verify-job-data)
+  * [memtest overlay](#memtest-overlay)
+* [et voila, release](#et-voila-release)
+* [Other Things](#other-things)
+  * [OverlayPlugin Changes](#overlayplugin-changes)
+  * [New Expansion - Tracking Cactbot Work](#new-expansion---tracking-cactbot-work)
+
 ## Game Data Resource Updates
 
 Once the patch is downloadable, [XIVAPI](https://xivapi.com) will be updated
@@ -252,9 +270,9 @@ cactbot has a number of memory signatures that it uses.
 
 There are four signatures, which all live in [FFXIVProcessIntl.cs](https://github.com/OverlayPlugin/cactbot/blob/main/plugin/CactbotEventSource/FFXIVProcessIntl.cs).
 
-- Charmap (information about your character)
-- Job Data (gauge info for your job)
-- In Combat (whether the game thinks you are in combat)
+* Charmap (information about your character)
+* Job Data (gauge info for your job)
+* In Combat (whether the game thinks you are in combat)
 
 OverlayPlugin also duplicates the charmap and in combat signatures,
 so if cactbot is broken please update those as well.
@@ -338,9 +356,13 @@ Once the resources are updated and the signatures and memory data look good,
 
 ## Other Things
 
-It'd be nice to have a list of OverlayPlugin steps too, but that could live elsewhere.
+### OverlayPlugin Changes
 
-### New expansion changes
+It'd be nice to have a list of OverlayPlugin steps too, but that could live elsewhere.
+As an example of an OverlayPlugin tracking issue for a full expansion release,
+see <https://github.com/OverlayPlugin/OverlayPlugin/issues/358>.
+
+### New Expansion - Tracking Cactbot Work
 
 When a new expansion releases, in addition to adding support for a large amount of new content,
 changes to existing code will almost certainly be necessary.
