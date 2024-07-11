@@ -96,6 +96,7 @@ export const kAbility = {
   BloodWeapon: 'E29',
   Delirium: '1CDE',
   LivingShadow: '4058',
+  SaltedEarth: 'E37',
   // GNB
   KeenEdge: '3F09',
   BrutalShell: '3F0B',

@@ -552,6 +552,18 @@ div.justbuffs div#procs-container {
   background-color: rgb(180 200 220);
 }
 
+@keyframes pulse-red {
+  50% {
+    background-color: rgb(255 50 0);
+  }
+}
+
+@keyframes pulse-white { /* For those self red color */
+  50% {
+    background-color: rgb(255 255 255);
+  }
+}
+
 /* PLD */
 .pld-color-oath {
   background-color: rgb(255 210 45);
@@ -627,6 +639,11 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 0 10);
 }
 
+.drk-color-blood.pulse {
+  animation: 1s pulse-white infinite;
+}
+
+
 .drk-color-darkside {
   background-color: rgb(129 33 138);
 }
@@ -635,24 +652,12 @@ div.justbuffs div#procs-container {
   background-color: rgb(133 0 0 / 70%);
 }
 
-.drk-color-bloodweapon.active {
-  background-color: rgb(199 0 0);
-}
-
-.drk-color-delirium {
+.drk-color-saltedearth {
   background-color: rgb(255 80 80 / 60%);
-}
-
-.drk-color-delirium.active {
-  background-color: rgb(255 80 80);
 }
 
 .drk-color-livingshadow {
   background-color: rgb(123 58 126 / 50%);
-}
-
-.drk-color-livingshadow.active {
-  background-color: rgb(179 0 189);
 }
 
 /* GNB */
