@@ -5,9 +5,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
-// TO DO:
-// * Forged Track + Fiery/Stormy Edge - call knockback dir/safe lanes
-
 type Phase = 'arena' | 'swords' | 'lines' | 'knockaround';
 
 const tileNames = [
@@ -81,8 +78,90 @@ const findClosestTile: (x: number, y: number) => TileName = (x, y) => {
 
 const quadrantNames = ['north', 'east', 'south', 'west'] as const;
 type QuadrantName = typeof quadrantNames[number];
-const mirrorPlatformLocs = ['northwest', 'northeast', 'southwest', 'southeast'] as const;
-type MirrorPlatformLoc = typeof mirrorPlatformLocs[number];
+
+const knockPlatforms = ['northwest', 'northeast', 'southwest', 'southeast'] as const;
+type Intercard = typeof knockPlatforms[number];
+
+// Forged Track
+// The NE & NW platforms always have wind+fire tethers; SE & SW platforms always have line cleaves
+// There are two possible arrangements for wind/fire and two for line cleave, so four in total.
+// 1. Fire/Wind: Either both pairs of fire tethers will be closer to N than wind tethers, or both
+//     will be closer to E&W. We'll call these 'fireInside' and 'fireOutside' respectively.
+// 2. Line Cleaves: The line cleave tethers are identical for SE & SW, but one set is
+//    inverted (e.g. mirror platform and main platform connections are swapped).
+//    The easiest way to describe / distingish the two possible configurations is to look at
+//    adjacent pairs of tiles on the SE/SW edge of the *main plat*. On one intercard, the tethers
+//    coming from the adjacent tile pairs cross each other; on the other intercard, they do not
+//    cross each other but run more parallel. So, in one configuration, the adjacent SE tethers
+//    cross while the adjacent SW tethers do not; in the second config, it's vice-versa.
+//    We'll call these configurations 'seCross' and 'swCross' respectively.
+// tldr; 4 possible arrangements: fireInside or fireOutside + seCross or swCross.
+//
+// We can determine which it is based on MapEffect combinations:
+//   locations '05'/'08' - NW/NE platforms (unclear which is which, but doesn't matter):
+//      { location: '05', flags: '00020001' } - fireInside
+//      { location: '08', flags: '00020001' } - fireOutside
+//   locations '02'/'03' - SE/SW platforms (same):
+//      { location: '02', flags: '02000100' } - swCross
+//      { location: '03', flags: '02000100' } - seCross
+const forgedTrackMapEffectFlags = ['00020001', '02000100'];
+const forgedTrackMapEffectLocs = ['02', '03', '05', '08'];
+
+type FireWindSetup = 'fireInside' | 'fireOutside';
+type LineCleaveSetup = 'seCross' | 'swCross';
+
+// define "safe lanes" for each intercardinal side of the main platform,
+// consisting of all 4 tiles on that side.  Order the corner tiles last,
+// so they will be used for a safe callout only if no intercard tile is safe
+const forgedTrackSafeLanes: { [K in Intercard]: TileName[] } = {
+  'northeast': ['northeastNorth', 'northeastEast', 'northCorner', 'eastCorner'],
+  'southeast': ['southeastEast', 'southeastSouth', 'eastCorner', 'southCorner'],
+  'southwest': ['southwestSouth', 'southwestWest', 'southCorner', 'westCorner'],
+  'northwest': ['northwestWest', 'northwestNorth', 'westCorner', 'northCorner'],
+};
+
+// For seCross & swCross, handle the crossing tether logic by mapping each of the possible tiles
+// the sword could start on, through its tether, to the near and far tiles it will hit
+// (thereby eliminating those as potential safe spots).
+const crossMap: {
+  [Setup in LineCleaveSetup]: {
+    [Tile in TileName]?: [TileName, TileName];
+  };
+} = {
+  'seCross': {
+    'eastCorner': ['southeastEast', 'northwestNorth'], // crosses to southeastEast
+    'southeastEast': ['southCorner', 'westCorner'], // crosses to southCorner
+    'southeastSouth': ['eastCorner', 'northCorner'], // crosses to eastCorner
+    'southwestSouth': ['southCorner', 'eastCorner'], // crosses to southCorner
+    'southwestWest': ['westCorner', 'northCorner'], // crosses to westcorner
+    'westCorner': ['southwestSouth', 'northeastEast'], // crosses to southwestSouth
+  },
+  'swCross': {
+    'eastCorner': ['southeastSouth', 'northwestWest'], // crosses to southeastSouth
+    'southeastEast': ['eastCorner', 'northCorner'], // crosses to eastCorner
+    'southeastSouth': ['southCorner', 'westCorner'], // crosses to southCorner
+    'southwestSouth': ['westCorner', 'northCorner'], // crosses to westCorner
+    'southwestWest': ['southCorner', 'eastCorner'], // crosses too southCorner
+    'westCorner': ['southwestWest', 'northeastNorth'], // crosses to southwestWest
+  },
+};
+
+// A `southCorner` starting sword needs special handling, as it will hit different tiles
+// depending on whether it originates from the southeast or southwest platform.
+const crossMapSouthCorner: {
+  [Setup in LineCleaveSetup]: {
+    [Platform in Intercard]?: [TileName, TileName];
+  };
+} = {
+  'seCross': {
+    'southeast': ['southeastSouth', 'northwestWest'], // southCorner crosses to southeastSouth
+    'southwest': ['southwestWest', 'northeastNorth'], // southCorner crosses to southwestWest
+  },
+  'swCross': {
+    'southeast': ['southeastEast', 'northwestNorth'], // southCorner crosses to southeastEast
+    'southwest': ['southwestSouth', 'northeastEast'], // southCorner crosses to southwestSouth
+  },
+};
 
 const stayGoOutputStrings: OutputStrings = {
   stay: {
@@ -97,11 +176,16 @@ const stayGoOutputStrings: OutputStrings = {
 
 export interface Data extends RaidbossData {
   phase: Phase;
-  safeTiles: TileName[];
+  unsafeTiles: TileName[];
+  forgedTrackSafeTiles: TileName[];
+  fireWindSetup?: FireWindSetup;
+  lineCleaveSetup?: LineCleaveSetup;
+  fireWindEffect?: 'fire' | 'wind';
+  fireWindSafeDir?: Intercard;
   drumTargets: string[];
   drumFar: boolean; // got knocked by enum partner to far platform
-  mirrorPlatformLoc?: MirrorPlatformLoc;
-  safeQuadrants: QuadrantName[];
+  knockPlatform?: Intercard;
+  unsafeQuadrants: QuadrantName[];
   cantTakeTornadoJump: boolean;
   halfCircuitSafeSide?: 'left' | 'right';
   seenHalfCircuit: boolean;
@@ -114,10 +198,11 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => {
     return {
       phase: 'arena',
-      safeTiles: [...tileNames] as TileName[],
+      unsafeTiles: [],
+      forgedTrackSafeTiles: [],
       drumTargets: [],
       drumFar: false,
-      safeQuadrants: [...quadrantNames] as QuadrantName[],
+      unsafeQuadrants: [],
       cantTakeTornadoJump: false,
       seenHalfCircuit: false,
     };
@@ -273,7 +358,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '9399', source: 'Fang' },
       run: (data, matches) => {
-        const mirrorAdjust = 21.21;
+        const mirrorAdjust = 21.21; // sqrt(5^2 + 5^2) * 3
         let swordX = parseFloat(matches.x);
         let swordY = parseFloat(matches.y);
         if (swordX < 100 && swordY < 100) { // NW mirror platform
@@ -291,7 +376,9 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         const adjustedTile = findClosestTile(swordX, swordY);
-        data.safeTiles = data.safeTiles.filter((tile) => tile !== adjustedTile);
+        if (adjustedTile === 'unknown')
+          return;
+        data.unsafeTiles.push(adjustedTile);
       },
     },
     {
@@ -302,8 +389,8 @@ const triggerSet: TriggerSet<Data> = {
       // Boss always faces north
       netRegex: { id: ['9368', '9369'], source: 'Zoraal Ja' },
       condition: (data) => data.phase === 'swords' && !data.seenHalfCircuit,
+      durationSeconds: 6,
       alertText: (data, matches, output) => {
-        // We should already have 8 safe tiles from Sword Collect
         // To make this call somewhat reasonable, use the following priority system
         // for calling a safe tile, depending on sword cleave:
         //   1. insideEast/insideWest
@@ -312,16 +399,21 @@ const triggerSet: TriggerSet<Data> = {
         const safeSide = matches.id === '9368' ? 'west' : 'east';
         const leanOutput = matches.id === '9368' ? output.leanWest!() : output.leanEast!();
 
-        if (safeSide === 'west' && data.safeTiles.includes('insideWest'))
+        const safeTiles = tileNames.filter((tile) => !data.unsafeTiles.includes(tile));
+        if (safeTiles.length !== 8)
+          return;
+
+        if (safeSide === 'west' && safeTiles.includes('insideWest'))
           return output.insideWest!();
-        else if (safeSide === 'east' && data.safeTiles.includes('insideEast'))
+        else if (safeSide === 'east' && safeTiles.includes('insideEast'))
           return output.insideEast!();
-        else if (data.safeTiles.includes('insideNorth'))
+        else if (safeTiles.includes('insideNorth'))
           return output.insideNS!({ lean: leanOutput });
         else if (safeSide === 'east')
           return output.intercardsEast!();
         return output.intercardsWest!();
       },
+      run: (data) => data.unsafeTiles = [],
       outputStrings: {
         insideWest: {
           en: 'Inner West Diamond',
@@ -361,6 +453,213 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.safeSpread!(),
       outputStrings: {
         safeSpread: Outputs.spread,
+      },
+    },
+    // For Forged Track, we use four triggers:
+    // 1. Collect the MapEffect lines to determine the fire/wind/line cleave configuration
+    // 2. Collect the fire/wind sword, determine the effect and safe direction
+    // 3. Collect each line cleave sword to determine safe lanes
+    // 4. Provide a consolidated alert
+    {
+      id: 'Zoraal Ja Ex Forged Track MapEffect Collect',
+      type: 'MapEffect',
+      netRegex: { flags: forgedTrackMapEffectFlags, location: forgedTrackMapEffectLocs },
+      condition: (data) => data.phase === 'swords',
+      run: (data, matches) => {
+        if (matches.location === '05')
+          data.fireWindSetup = 'fireInside';
+        else if (matches.location === '08')
+          data.fireWindSetup = 'fireOutside';
+        else if (matches.location === '02')
+          data.lineCleaveSetup = 'swCross';
+        else if (matches.location === '03')
+          data.lineCleaveSetup = 'seCross';
+      },
+    },
+    {
+      id: 'Zoraal Ja Ex Forged Track Fire/Wind Sword Collect',
+      type: 'StartsUsing',
+      netRegex: { id: '939C', source: 'Fang' },
+      condition: (data, matches) => data.phase === 'swords' && parseFloat(matches.y) < 85, // fire/wind sword
+      run: (data, matches) => {
+        if (data.fireWindSetup === undefined)
+          return;
+
+        // Same as Chasm of Vollok, remap the sword position to a corresponding main platform tile
+        // But unlike Chasm of Vollok, these Fang actors are positioned at the bak of the tiles,
+        // so we need a slightly different mirrorAdjust value
+        const mirrorAdjust = 22.98; // sqrt(5^2 + 5^2) * 3.25
+        const swordY = parseFloat(matches.y) + mirrorAdjust;
+        let swordX = parseFloat(matches.x);
+
+        let fireWindPlatform: 'northwest' | 'northeast';
+
+        if (swordX < 85) {
+          swordX += mirrorAdjust;
+          fireWindPlatform = 'northwest';
+        } else {
+          swordX -= mirrorAdjust;
+          fireWindPlatform = 'northeast';
+        }
+
+        const swordTile = findClosestTile(swordX, swordY);
+        if (swordTile === 'unknown')
+          return;
+
+        // To avoid repeated nested if/else statements, assume we're seeing fireInside.
+        // At the end, check the real value, and if it's fireOutside, just flip this bool
+        // before setting `data.fireWindEffect` (it works because they're mirrored).
+        let isFireCleave = false;
+
+        // Since the fire/wind tethers always map to the same tiles, we can use fixed logic
+        if (swordTile === 'northCorner') {
+          isFireCleave = true;
+          // corner tile could have two outcomes depending which platform it came from
+          data.fireWindSafeDir = fireWindPlatform === 'northwest'
+            ? 'southwest'
+            : 'southeast';
+        } else if (swordTile === 'northeastNorth') {
+          isFireCleave = true;
+          data.fireWindSafeDir = 'northwest';
+        } else if (swordTile === 'northeastEast')
+          data.fireWindSafeDir = 'southeast';
+        else if (swordTile === 'eastCorner')
+          data.fireWindSafeDir = 'northwest';
+        else if (swordTile === 'northwestNorth') {
+          isFireCleave = true;
+          data.fireWindSafeDir = 'northeast';
+        } else if (swordTile === 'northwestWest')
+          data.fireWindSafeDir = 'southwest';
+        else if (swordTile === 'westCorner')
+          data.fireWindSafeDir = 'northeast';
+        else
+          return;
+
+        data.forgedTrackSafeTiles = forgedTrackSafeLanes[data.fireWindSafeDir];
+
+        if (data.fireWindSetup === 'fireOutside')
+          isFireCleave = !isFireCleave;
+        data.fireWindEffect = isFireCleave ? 'fire' : 'wind';
+      },
+    },
+    {
+      id: 'Zoraal Ja Ex Forged Track Cleave Swords Collect',
+      type: 'StartsUsing',
+      netRegex: { id: '939C', source: 'Fang' },
+      condition: (data, matches) => data.phase === 'swords' && parseFloat(matches.y) > 115, // line cleave swords
+      delaySeconds: 0.2, // let Fire/Wind Collect run first
+      run: (data, matches) => {
+        if (data.lineCleaveSetup === undefined || data.forgedTrackSafeTiles.length !== 4)
+          return;
+
+        const mirrorAdjust = 22.98; // sqrt(5^2 + 5^2) * 3.25
+        const swordY = parseFloat(matches.y) - mirrorAdjust;
+        let swordX = parseFloat(matches.x);
+
+        let lineCleavePlatform: 'southwest' | 'southeast';
+
+        if (swordX < 85) {
+          swordX += mirrorAdjust;
+          lineCleavePlatform = 'southwest';
+        } else {
+          swordX -= mirrorAdjust;
+          lineCleavePlatform = 'southeast';
+        }
+        const swordTile = findClosestTile(swordX, swordY);
+        if (swordTile === 'unknown')
+          return `Unknown Tile`;
+
+        const unsafeTiles = swordTile === 'southCorner'
+          ? crossMapSouthCorner[data.lineCleaveSetup][lineCleavePlatform]
+          : crossMap[data.lineCleaveSetup][swordTile];
+
+        if (unsafeTiles === undefined)
+          return;
+        data.unsafeTiles.push(...unsafeTiles);
+      },
+    },
+    {
+      id: 'Zoraal Ja Ex Forged Track',
+      type: 'StartsUsing',
+      netRegex: { id: '935F', source: 'Zoraal Ja', capture: false },
+      condition: (data) => data.phase === 'swords',
+      delaySeconds: 0.4, // let the collectors finish
+      durationSeconds: 9,
+      alertText: (data, _matches, output) => {
+        if (data.fireWindEffect === undefined)
+          return output.unknown!();
+        const fireWindOutput = output[data.fireWindEffect]!();
+
+        if (data.fireWindSafeDir === undefined)
+          return fireWindOutput;
+        const fireWindSafeOutput = output.fireWindSafe!({
+          fireWind: fireWindOutput,
+          safeDir: output[data.fireWindSafeDir]!(),
+        });
+
+        // There should always be two safe tiles, but we only need one. Use the first one in the
+        // array, as it is ordered to give preference to intercard (non-corner) tiles.
+        let tileOutput: string;
+        const safeTiles = data.forgedTrackSafeTiles.filter((tile) =>
+          !data.unsafeTiles.includes(tile)
+        );
+        if (safeTiles.length !== 2)
+          return `WTF? ${safeTiles.length} = ${safeTiles.join('|')}`;
+        const [safe0] = safeTiles;
+        if (safe0 === undefined)
+          return fireWindSafeOutput;
+
+        // if the first safe tile is a corner, both are. So we can call corners generally as being
+        // safe (to avoid overloading the player with directional text).
+        // Otherwise, call leanLeft/leanRight based on the tile orientation to the boss.
+        if (safe0.includes('Corner'))
+          tileOutput = output.corner!();
+        else if (data.fireWindSafeDir === 'northwest')
+          tileOutput = safe0 === 'northwestNorth' ? output.leanLeft!() : output.leanRight!();
+        else if (data.fireWindSafeDir === 'northeast')
+          tileOutput = safe0 === 'northeastEast' ? output.leanLeft!() : output.leanRight!();
+        else if (data.fireWindSafeDir === 'southeast')
+          tileOutput = safe0 === 'southeastSouth' ? output.leanLeft!() : output.leanRight!();
+        else
+          tileOutput = safe0 === 'southwestWest' ? output.leanLeft!() : output.leanRight!();
+
+        return output.combo!({ fireWindCombo: fireWindSafeOutput, tile: tileOutput });
+      },
+      run: (data) => {
+        data.forgedTrackSafeTiles = [];
+        data.unsafeTiles = [];
+        delete data.fireWindSetup;
+        delete data.lineCleaveSetup;
+        delete data.fireWindEffect;
+        delete data.fireWindSafeDir;
+      },
+      outputStrings: {
+        leanLeft: {
+          en: '<= Inside Left (Facing Boss)',
+        },
+        leanRight: {
+          en: 'Inside Right (Facing Boss) =>',
+        },
+        corner: {
+          en: 'Corners Safe',
+        },
+        northwest: Outputs.northwest,
+        northeast: Outputs.northeast,
+        southeast: Outputs.southeast,
+        southwest: Outputs.southwest,
+        fire: {
+          en: 'Go Far',
+        },
+        wind: Outputs.knockback,
+        fireWindSafe: {
+          en: '${fireWind} ${safeDir}',
+        },
+        combo: {
+          en: '${fireWindCombo} + ${tile}',
+        },
+        unknown: {
+          en: 'Avoid Swords',
+        },
       },
     },
     {
@@ -412,19 +711,19 @@ const triggerSet: TriggerSet<Data> = {
         // It seems like the mirror platform is always either NW or NE of the main platform?
         // But handle all 4 possibilities just in case.
         if (swordX < 91 && swordY < 91) {
-          data.mirrorPlatformLoc = 'northwest';
+          data.knockPlatform = 'northwest';
           swordX += mirrorAdjust;
           swordY += mirrorAdjust;
         } else if (swordX < 91) {
-          data.mirrorPlatformLoc = 'southwest';
+          data.knockPlatform = 'southwest';
           swordX += mirrorAdjust;
           swordY -= mirrorAdjust;
         } else if (swordY < 91) {
-          data.mirrorPlatformLoc = 'northeast';
+          data.knockPlatform = 'northeast';
           swordX -= mirrorAdjust;
           swordY += mirrorAdjust;
         } else if (swordY > 109) {
-          data.mirrorPlatformLoc = 'southeast';
+          data.knockPlatform = 'southeast';
           swordX -= mirrorAdjust;
           swordY -= mirrorAdjust;
         }
@@ -439,7 +738,7 @@ const triggerSet: TriggerSet<Data> = {
         else
           swordQuad = 'south';
 
-        data.safeQuadrants = data.safeQuadrants.filter((quad) => quad !== swordQuad);
+        data.unsafeQuadrants.push(swordQuad);
       },
     },
     {
@@ -450,63 +749,65 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.2,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        if (data.safeQuadrants.length !== 2 || data.mirrorPlatformLoc === undefined)
+        const safeQuadrants = quadrantNames.filter((quad) => !data.unsafeQuadrants.includes(quad));
+
+        if (safeQuadrants.length !== 2 || data.knockPlatform === undefined)
           return output.unknown!();
 
         // Call these as left/right based on whether the player is on the mirror plat or not
         // Assume they are facing the boss at this point.
         // There will always be one safe quadrant closest to the boss on each platform.
         if (data.drumFar) { // player is on the mirror platform
-          if (data.mirrorPlatformLoc === 'northwest')
-            return data.safeQuadrants.includes('east')
+          if (data.knockPlatform === 'northwest')
+            return safeQuadrants.includes('east')
               ? output.left!()
-              : (data.safeQuadrants.includes('south')
+              : (safeQuadrants.includes('south')
                 ? output.right!()
                 : output.unknown!());
-          else if (data.mirrorPlatformLoc === 'northeast')
-            return data.safeQuadrants.includes('west')
+          else if (data.knockPlatform === 'northeast')
+            return safeQuadrants.includes('west')
               ? output.right!()
-              : (data.safeQuadrants.includes('south')
+              : (safeQuadrants.includes('south')
                 ? output.left!()
                 : output.unknown!());
-          else if (data.mirrorPlatformLoc === 'southeast')
-            return data.safeQuadrants.includes('west')
+          else if (data.knockPlatform === 'southeast')
+            return safeQuadrants.includes('west')
               ? output.left!()
-              : (data.safeQuadrants.includes('north')
+              : (safeQuadrants.includes('north')
                 ? output.right!()
                 : output.unknown!());
-          else if (data.mirrorPlatformLoc === 'southwest')
-            return data.safeQuadrants.includes('east')
+          else if (data.knockPlatform === 'southwest')
+            return safeQuadrants.includes('east')
               ? output.right!()
-              : (data.safeQuadrants.includes('north')
+              : (safeQuadrants.includes('north')
                 ? output.left!()
                 : output.unknown!());
           return output.unknown!();
         }
 
         // player is on the main platform
-        if (data.mirrorPlatformLoc === 'northwest')
-          return data.safeQuadrants.includes('west')
+        if (data.knockPlatform === 'northwest')
+          return safeQuadrants.includes('west')
             ? output.left!()
-            : (data.safeQuadrants.includes('north')
+            : (safeQuadrants.includes('north')
               ? output.right!()
               : output.unknown!());
-        else if (data.mirrorPlatformLoc === 'northeast')
-          return data.safeQuadrants.includes('north')
+        else if (data.knockPlatform === 'northeast')
+          return safeQuadrants.includes('north')
             ? output.left!()
-            : (data.safeQuadrants.includes('east')
+            : (safeQuadrants.includes('east')
               ? output.right!()
               : output.unknown!());
-        else if (data.mirrorPlatformLoc === 'southeast')
-          return data.safeQuadrants.includes('east')
+        else if (data.knockPlatform === 'southeast')
+          return safeQuadrants.includes('east')
             ? output.left!()
-            : (data.safeQuadrants.includes('south')
+            : (safeQuadrants.includes('south')
               ? output.right!()
               : output.unknown!());
-        else if (data.mirrorPlatformLoc === 'southwest')
-          return data.safeQuadrants.includes('south')
+        else if (data.knockPlatform === 'southwest')
+          return safeQuadrants.includes('south')
             ? output.left!()
-            : (data.safeQuadrants.includes('west')
+            : (safeQuadrants.includes('west')
               ? output.right!()
               : output.unknown!());
         return output.unknown!();
@@ -548,6 +849,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Zoraal Ja Ex Duty\'s Edge',
       type: 'StartsUsing',
       netRegex: { id: '9374', source: 'Zoraal Ja', capture: false },
+      durationSeconds: 10,
       response: Responses.stackMarker(),
     },
     // Calling 'Stay'/'Go Across' is based on whether the player receives the chains debuff
@@ -640,6 +942,53 @@ const triggerSet: TriggerSet<Data> = {
         leftSword: {
           en: 'Boss\'s Right',
           de: 'Rechts vom Boss',
+        },
+      },
+    },
+    {
+      // This Chasm of Vollok happens in swords2 and has no Half Full cleave.
+      id: 'Zoraal Ja Ex Chasm of Vollok No Cleave',
+      type: 'StartsUsing',
+      netRegex: { id: '9399', source: 'Fang', capture: false },
+      condition: (data) => data.phase === 'swords' && data.seenHalfCircuit,
+      delaySeconds: 1,
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        // We should already have 8 safe tiles from Sword Collect
+        // There are only six possible patterns:
+        // 1. All inside tiles safe.
+        // 2. No inside tiles safe (all intercard pairs safe).
+        // 3-6.  Inside East&West OR North&South safe.
+        const safeTiles = tileNames.filter((tile) => !data.unsafeTiles.includes(tile));
+        if (safeTiles.length !== 8)
+          return;
+
+        const eastWestSafe = safeTiles.includes('insideEast') && safeTiles.includes('insideWest');
+        const northSouthSafe = safeTiles.includes('insideNorth') &&
+          safeTiles.includes('insideSouth');
+
+        if (eastWestSafe && northSouthSafe)
+          return output.inside!();
+        else if (eastWestSafe)
+          return output.eastWest!();
+        else if (northSouthSafe)
+          return output.northSouth!();
+        return output.intercard!();
+      },
+      run: (data) => data.unsafeTiles = [],
+      outputStrings: {
+        inside: {
+          en: 'Inside Safe',
+        },
+        eastWest: {
+          en: 'Inside East/West Safe',
+        },
+        northSouth: {
+          en: 'Inside North/South Safe',
+        },
+        intercard: {
+          en: 'Ouside Intercards Safe (Avoid Corners)',
         },
       },
     },
