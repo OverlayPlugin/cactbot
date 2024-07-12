@@ -125,7 +125,7 @@ export const calcGCDFromStat = (
     if (ffxivVersion < 700)
       type2Buffs += player.speedBuffs.huton ? 15 : 0;
     else
-      type2Buffs += 15;
+      type2Buffs += player.level >= 45 ? 15 : 0;
   } else if (player.job === 'MNK') {
     type2Buffs += 5 * getLightningStacksByLevel(player.level);
   } else if (player.job === 'BRD') {
