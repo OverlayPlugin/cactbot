@@ -127,17 +127,17 @@ export class SAMComponent extends BaseComponent {
             this.tsubameGaeshi.duration = 60;
           }
           break;
-        }
-      } else {
-        switch (id) {
-          // In DawnTrail, Tsubame Gaeshi no longer have cooldown.
-          // spare this box for Ikishoten, while keep its name for easy compatibility.
-          case kAbility.Ikishoten:
-            this.tsubameGaeshi.duration = 120;
-            break;
-        }
+      }
+    } else {
+      switch (id) {
+        // In DawnTrail, Tsubame Gaeshi no longer have cooldown.
+        // spare this box for Ikishoten, while keep its name for easy compatibility.
+        case kAbility.Ikishoten:
+          this.tsubameGaeshi.duration = 120;
+          break;
       }
     }
+  }
 
   override onMobGainsEffectFromYou(id: string): void {
     if (id === EffectId.Higanbana)
