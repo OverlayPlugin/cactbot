@@ -98,7 +98,7 @@ export const calcGCDFromStat = (
   player: PlayerLike,
   stat: number,
   ffxivVersion: FfxivVersion,
-  actionDelay = 2500
+  actionDelay = 2500,
 ): number => {
   // If stats haven't been updated, use a reasonable default value.
   if (stat === 0)
