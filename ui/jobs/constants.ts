@@ -199,6 +199,7 @@ export const kAbility = {
   HissatsuSenei: '4061',
   Fuko: '64B4',
   Gyofu: '9063',
+  Ikishoten: '4062',
   // RPR
   Slice: '5F35',
   WaxingSlice: '5F36',
