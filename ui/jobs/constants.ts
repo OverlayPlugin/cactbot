@@ -113,6 +113,7 @@ export const kAbility = {
   Aero2: '84',
   Dia: '4094',
   Assize: 'DF3',
+  PresenceOfMind: '88',
   // SCH
   Bio: '45C8',
   Bio2: '45C9',
