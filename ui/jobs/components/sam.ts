@@ -117,17 +117,17 @@ export class SAMComponent extends BaseComponent {
         case kAbility.KaeshiHiganbana:
         case kAbility.KaeshiGoken:
         case kAbility.KaeshiSetsugekka:
-            if (this.player.level >= 84) {
-              if (matches.targetIndex === '0') {
-                // Avoid multiple call in AOE
-                this.tsubameGaeshi.duration = 60 + this.tsubameGaeshi.value;
-                this.lastTsubameGaeshiTimestamp = matches.timestamp;
-              }
-            } else {
-              this.tsubameGaeshi.duration = 60;
+          if (this.player.level >= 84) {
+            if (matches.targetIndex === '0') {
+              // Avoid multiple call in AOE
+              this.tsubameGaeshi.duration = 60 + this.tsubameGaeshi.value;
+              this.lastTsubameGaeshiTimestamp = matches.timestamp;
             }
-          break;
+          } else {
+            this.tsubameGaeshi.duration = 60;
           }
+          break;
+        }
       } else {
         switch (id) {
           // In DawnTrail, Tsubame Gaeshi no longer have cooldown.
