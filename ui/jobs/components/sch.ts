@@ -11,6 +11,7 @@ export class SCHComponent extends BaseComponent {
   bioBox: TimerBox;
   aetherflowBox: TimerBox;
   lucidBox: TimerBox;
+  tid1 = 0;
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -41,6 +42,21 @@ export class SCHComponent extends BaseComponent {
     this.reset();
   }
 
+  RefreshAFthreholds(): void {
+    // dynamically adjust alert threholds depends on aetherflow stacks
+    this.aetherflowBox.threshold = this.player.gcdSpell * (
+      +this.aetherflowStackBox.innerText || 1
+    ) + 1;
+    if (
+      +this.aetherflowStackBox.innerText * 5 >=
+      (this.aetherflowBox.duration ?? 0) - this.aetherflowBox.elapsed
+    ) {
+      this.aetherflowStackBox.parentNode.classList.add('too-much-stacks');
+    } else {
+      this.aetherflowStackBox.parentNode.classList.remove('too-much-stacks');
+    }
+  }
+
   override onJobDetailUpdate(jobDetail: JobDetail['SCH']): void {
     const aetherflow = jobDetail.aetherflowStacks;
     const fairygauge = jobDetail.fairyGauge;
@@ -55,18 +71,7 @@ export class SCHComponent extends BaseComponent {
       f.classList.remove('bright');
       this.fairyGaugeBox.innerText = fairygauge.toString();
     }
-
-    // dynamically annouce user depends on their aetherflow stacks right now
-    this.aetherflowBox.threshold = this.player.gcdSpell * (aetherflow || 1) + 1;
-
-    const p = this.aetherflowStackBox.parentNode;
-    const s = this.aetherflowBox.duration ?? 0 - this.aetherflowBox.elapsed;
-    if (aetherflow * 5 >= s) {
-      // turn red when stacks are too much before AF ready
-      p.classList.add('too-much-stacks');
-    } else {
-      p.classList.remove('too-much-stacks');
-    }
+    this.RefreshAFthreholds();
   }
 
   override onUseAbility(id: string): void {
@@ -79,6 +84,19 @@ export class SCHComponent extends BaseComponent {
       case kAbility.Aetherflow:
         this.aetherflowBox.duration = 60;
         this.aetherflowStackBox.parentNode.classList.remove('too-much-stacks');
+        // check at -15s, -10s, -5s and 0s
+        this.tid1 = window.setTimeout(() => {
+          this.RefreshAFthreholds();
+          window.setTimeout(() => {
+            this.RefreshAFthreholds();
+            window.setTimeout(() => {
+              this.RefreshAFthreholds();
+              window.setTimeout(() => {
+                this.RefreshAFthreholds();
+              }, 5000);
+            }, 5000);
+          }, 5000);
+        }, 45000);
         break;
       case kAbility.LucidDreaming:
         this.lucidBox.duration = 60;
@@ -98,5 +116,6 @@ export class SCHComponent extends BaseComponent {
     this.bioBox.duration = 0;
     this.aetherflowBox.duration = 0;
     this.lucidBox.duration = 0;
+    window.clearTimeout(this.tid1);
   }
 }
