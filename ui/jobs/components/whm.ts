@@ -133,6 +133,5 @@ export class WHMComponent extends BaseComponent {
     this.assizeBox.duration = 0;
     this.pomBox.duration = 0;
     this.lucidBox.duration = 0;
-    this.player.speedBuffs.presenceOfMind = false;
   }
 }
