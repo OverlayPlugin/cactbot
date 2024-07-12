@@ -493,7 +493,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Kette zerreissen, dann stack',
           fr: 'Cassez les liens, puis packez-vous',
           ja: '鎖を引き、集合',
-          cn: '拉断锁链然后攻击',
+          cn: '拉断连线然后分摊',
           ko: '선 끊고 모이기',
         },
         breakTethers: {
@@ -501,7 +501,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ketten zerreissen',
           fr: 'Cassez les liens',
           ja: '鎖',
-          cn: '拉断锁链',
+          cn: '拉断连线',
           ko: '선 끊기',
         },
       },

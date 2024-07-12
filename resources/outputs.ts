@@ -656,7 +656,7 @@ export default {
     de: 'Kette zerbrechen',
     fr: 'Brisez les chaines',
     ja: '線を切る',
-    cn: '切断连线',
+    cn: '拉断连线',
     ko: '선 끊기',
   },
   moveChainsTogether: {
