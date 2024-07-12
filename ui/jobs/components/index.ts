@@ -134,10 +134,10 @@ export class ComponentManager {
 
   getJobComponents(job: Job): BaseComponent {
     if (this.o.ffxivVersion < 700) {
-      if (job === 'NIN')
-        return new NIN6xComponent(this.o);
       if (job === 'DRK')
         return new DRK6xComponent(this.o);
+      if (job === 'NIN')
+        return new NIN6xComponent(this.o);
     }
 
     const Component = ComponentMap[job];
