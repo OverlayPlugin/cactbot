@@ -148,7 +148,7 @@ export class MCHComponent extends BaseComponent {
     switch (id) {
       case kAbility.Drill:
       case kAbility.Bioblaster:
-        this.drillBox.duration = this.player.getActionCooldown(20000, 'skill');
+        this.drillBox.duration = this.player.getActionCooldown(20000, 'skill') + this.drillBox.value;
         break;
       case kAbility.AirAnchor:
       case kAbility.HotShot:
