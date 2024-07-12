@@ -45,11 +45,11 @@ export class SCHComponent extends BaseComponent {
   RefreshAFthreholds(): void {
     // dynamically adjust alert threholds depends on aetherflow stacks
     this.aetherflowBox.threshold = this.player.gcdSpell * (
-      +this.aetherflowStackBox.innerText || 1
-    ) + 1;
+          +this.aetherflowStackBox.innerText || 1
+        ) + 1;
     if (
       +this.aetherflowStackBox.innerText * 5 >=
-      (this.aetherflowBox.duration ?? 0) - this.aetherflowBox.elapsed
+        (this.aetherflowBox.duration ?? 0) - this.aetherflowBox.elapsed
     ) {
       this.aetherflowStackBox.parentNode.classList.add('too-much-stacks');
     } else {
