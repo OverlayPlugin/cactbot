@@ -668,7 +668,14 @@ namespace Cactbot {
 
       [NonSerialized]
       [FieldOffset(0x04)]
+      private byte Fury;
+
+      [NonSerialized]
+      [FieldOffset(0x05)]
       private byte Nadi;
+
+      [FieldOffset(0x06)]
+      public ushort MasterfulReadyMilisecond;
 
       public string[] beastChakra {
         get {
@@ -692,6 +699,24 @@ namespace Cactbot {
             return true;
           else
             return false;
+        }
+      }
+
+      public int opoopoFury {
+        get {
+          return Fury & 0x3;
+        }
+      }
+
+      public int raptorFury {
+        get {
+          return (Fury >> 2) & 0x3;
+        }
+      }
+
+      public int coeurlFury {
+        get {
+          return (Fury >> 4) & 0x3;
         }
       }
     };

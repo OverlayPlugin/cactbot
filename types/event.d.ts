@@ -57,6 +57,9 @@ export interface JobDetail {
     beastChakra: ('Coeurl' | 'Opo' | 'Raptor')[];
     solarNadi: boolean;
     lunarNadi: boolean;
+    opoopoFury: number;
+    raptorFury: number;
+    coeurlFury: number;
   };
   'DRG': {
     eyesAmount: number;
