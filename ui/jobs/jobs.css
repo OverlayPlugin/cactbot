@@ -332,6 +332,38 @@ div.justbuffs div#procs-container {
   background-color: rgb(190 43 30);
 }
 
+#ast-stacks-card1.balance {
+  background-color: #ff9900;
+}
+
+#ast-stacks-card1.spear {
+  background-color: #4477dd;
+}
+
+#ast-stacks-card2.arrow {
+  background-color: #37ccee;
+}
+
+#ast-stacks-card2.bole {
+  background-color: #22dd77;
+}
+
+#ast-stacks-card3.spire {
+  background-color: #ddd044;
+}
+
+#ast-stacks-card3.ewer {
+  background-color: #66ccdd;
+}
+
+#ast-stacks-card4.lord {
+  background-color: #9a2222;
+}
+
+#ast-stacks-card4.lady {
+  background-color: #9e5599;
+}
+
 #ast-stacks-sign > div.solar {
   background-color: rgb(190 43 30);
 }
@@ -739,16 +771,20 @@ div.justbuffs div#procs-container {
   background-color: rgb(120 170 250);
 }
 
-.ast-color-benefic {
+.ast-color-draw {
+  background-color: rgb(64 65 163);
+}
+
+.ast-color-draw.astral {
   background-color: rgb(62 224 170);
 }
 
-.ast-color-helios {
-  background-color: rgb(175 235 215);
+.ast-color-draw.umbral {
+  background-color: rgb(150 110 180);
 }
 
-.ast-color-draw {
-  background-color: rgb(64 65 163);
+.ast-color-lucid {
+  background-color: rgb(227 148 210);
 }
 
 .ast-color-card {
@@ -761,18 +797,6 @@ div.justbuffs div#procs-container {
 
 .ast-color-card.melee {
   background-color: rgb(120 170 250);
-}
-
-.ast-color-seal {
-  background-color: rgb(180 200 220);
-}
-
-.ast-color-seal.ready {
-  background-color: rgb(62 224 170);
-}
-
-.ast-color-lucid {
-  background-color: rgb(227 148 210);
 }
 
 .ast-color-card.lady {

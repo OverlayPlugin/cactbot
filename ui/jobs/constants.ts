@@ -131,6 +131,8 @@ export const kAbility = {
   Draw: 'E06',
   MinorArcana: '1D13',
   Divination: '40A8',
+  AstralDraw: '9099',
+  UmbralDraw: '909A',
   // SGE
   Rhizomata: '5EF5',
   Phlegma: '5EE1',
