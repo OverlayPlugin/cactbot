@@ -746,11 +746,7 @@ namespace Cactbot {
 
       [NonSerialized]
       [FieldOffset(0x00)]
-      private byte _card12;
-
-      [NonSerialized]
-      [FieldOffset(0x01)]
-      private byte _card34;
+      private ushort _card;
 
       [NonSerialized]
       [FieldOffset(0x02)]
@@ -758,25 +754,25 @@ namespace Cactbot {
 
       public string card1 {
         get {
-          return ((Card)(_card12 & 0xF)).ToString();
+          return ((Card)(_card & 0xF)).ToString();
         }
       }
 
       public string card2 {
         get {
-          return ((Card)(_card12 >> 4)).ToString();
+          return ((Card)((_card >> 4) & 0xF)).ToString();
         }
       }
 
         public string card3 {
         get {
-          return ((Card)(_card34 & 0xF)).ToString();
+          return ((Card)((_card >> 8) & 0xF)).ToString();
         }
       }
 
       public string card4 {
         get {
-          return ((Card)(_card34 >> 4)).ToString();
+          return ((Card)((_card >> 12) & 0xF)).ToString();
         }
       }
 
