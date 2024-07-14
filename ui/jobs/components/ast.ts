@@ -80,7 +80,7 @@ export class ASTComponent extends BaseComponent {
     this.card4.classList.add(`${card4.toLocaleLowerCase()}`);
     this.drawBox.fg = computeBackgroundColorFrom(
       this.drawBox,
-      `ast-color-draw.${nextdraw.toLocaleLowerCase()}`
+      `ast-color-draw.${nextdraw.toLocaleLowerCase()}`,
     );
   }
 
