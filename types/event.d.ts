@@ -42,9 +42,16 @@ export interface JobDetail {
     fairyStatus: number;
   };
   'AST': {
+    /* TODO: should be removed when CN/KR server reach 7.0 */
     heldCard: 'None' | 'Balance' | 'Bole' | 'Arrow' | 'Spear' | 'Ewer' | 'Spire';
     crownCard: 'None' | 'Lord' | 'Lady';
     arcanums: ('Solar' | 'Lunar' | 'Celestial')[];
+    /* 7.0 */
+    card1: 'None' | 'Balance' | 'Spear';
+    card2: 'None' | 'Arrow' | 'Bole';
+    card3: 'None' | 'Spire' | 'Ewer';
+    card4: 'None' | 'Lord' | 'Lady';
+    nextdraw: 'Astral' | 'Umbral';
   };
   'SGE': {
     addersgallMilliseconds: number;
