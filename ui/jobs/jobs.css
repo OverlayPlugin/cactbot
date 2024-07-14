@@ -266,7 +266,6 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 1 big resource box */
-.pld #right-side-icons,
 .drk #right-side-icons,
 .whm #right-side-icons,
 .sge #right-side-icons,
@@ -275,6 +274,7 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 2 big resource box */
+.pld #right-side-icons,
 .sch #right-side-icons,
 .ast #right-side-icons {
   left: 288px;
