@@ -78,7 +78,10 @@ export class ASTComponent extends BaseComponent {
     this.card2.classList.add(`${card2.toLocaleLowerCase()}`);
     this.card3.classList.add(`${card3.toLocaleLowerCase()}`);
     this.card4.classList.add(`${card4.toLocaleLowerCase()}`);
-    this.drawBox.fg = computeBackgroundColorFrom(this.drawBox, `ast-color-draw.${nextdraw.toLocaleLowerCase()}`);
+    this.drawBox.fg = computeBackgroundColorFrom(
+      this.drawBox,
+      `ast-color-draw.${nextdraw.toLocaleLowerCase()}`
+    );
   }
 
   override onUseAbility(id: string): void {

@@ -94,7 +94,8 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
     } else if (detail.job === 'ACN' && detail.jobDetail) {
       jobInfo.innerText = detail.jobDetail.aetherflowStacks.toString();
     } else if (detail.job === 'AST' && detail.jobDetail) {
-      jobInfo.innerText = `${detail.jobDetail.card1} | ${detail.jobDetail.card2} | ${detail.jobDetail.card3} | ${detail.jobDetail.card4} | ${detail.jobDetail.nextdraw}`;
+      jobInfo.innerText =
+        `${detail.jobDetail.card1} | ${detail.jobDetail.card2} | ${detail.jobDetail.card3} | ${detail.jobDetail.card4} | ${detail.jobDetail.nextdraw}`;
     } else if (detail.job === 'MNK' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.chakraStacks} | ${detail.jobDetail.lunarNadi.toString()} | ${detail.jobDetail.solarNadi.toString()} | [${
