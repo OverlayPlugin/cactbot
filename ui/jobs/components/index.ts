@@ -21,7 +21,7 @@ import { DRGComponent } from './drg';
 import { DRK6xComponent, DRKComponent } from './drk';
 import { GNBComponent } from './gnb';
 import { MCHComponent } from './mch';
-import { MNKComponent } from './mnk';
+import { MNK6xComponent, MNKComponent } from './mnk';
 import { NIN6xComponent, NINComponent } from './nin';
 import { PCTComponent } from './pct';
 import { PLDComponent } from './pld';
@@ -136,6 +136,8 @@ export class ComponentManager {
     if (this.o.ffxivVersion < 700) {
       if (job === 'DRK')
         return new DRK6xComponent(this.o);
+      if (job === 'MNK')
+        return new MNK6xComponent(this.o);
       if (job === 'NIN')
         return new NIN6xComponent(this.o);
     }
