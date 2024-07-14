@@ -12,13 +12,17 @@ import { BaseComponent, ComponentInterface } from './base';
 export class MNKComponent extends BaseComponent {
   formTimer: TimerBar;
   chakraBox: ResourceBox;
-  dragonKickBox: TimerBox;
-  twinSnakesBox: TimerBox;
-  demolishBox: TimerBox;
+  perfectbalanceBox: TimerBox;
+  riddleOfFireBox: TimerBox;
+  riddleOfWindBox: TimerBox;
+  brotherhoodBox: TimerBox;
   perfectBalanceActive = false;
   lunarStacks: HTMLDivElement[];
   beastChakraStacks: HTMLDivElement[] = [];
   solarStacks: HTMLDivElement[];
+  opoopoStacks: HTMLDivElement[] = [];
+  raptorStacks: HTMLDivElement[] = [];
+  coeurlStacks: HTMLDivElement[] = [];
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -32,26 +36,67 @@ export class MNKComponent extends BaseComponent {
       classList: ['mnk-color-chakra'],
     });
 
-    this.dragonKickBox = this.bars.addProcBox({
-      id: 'mnk-procs-dragonkick',
-      fgColor: 'mnk-color-dragonkick',
-      threshold: 6,
+    this.perfectbalanceBox = this.bars.addProcBox({
+      id: 'mnk-procs-perfectbalance',
+      fgColor: 'mnk-color-perfectbalance',
     });
 
-    this.twinSnakesBox = this.bars.addProcBox({
-      id: 'mnk-procs-twinsnakes',
-      fgColor: 'mnk-color-twinsnakes',
-      threshold: 6,
+    this.riddleOfFireBox = this.bars.addProcBox({
+      id: 'mnk-procs-riddleoffire',
+      fgColor: 'mnk-color-riddleoffire',
     });
 
-    this.demolishBox = this.bars.addProcBox({
-      id: 'mnk-procs-demolish',
-      fgColor: 'mnk-color-demolish',
-      // Slightly shorter time, to make the box not pop right as
-      // you hit snap punch at t=6 (which is probably fine).
-      threshold: 5,
+    this.riddleOfWindBox = this.bars.addProcBox({
+      id: 'mnk-procs-riddleofwind',
+      fgColor: 'mnk-color-riddleofwind',
     });
 
+    this.brotherhoodBox = this.bars.addProcBox({
+      id: 'mnk-procs-brotherhood',
+      fgColor: 'mnk-color-brotherhood',
+    });
+
+    // Fury Gauge
+    const stacksContainer2 = document.createElement('div');
+    stacksContainer2.id = 'mnk-stacks2';
+    stacksContainer2.classList.add('stacks');
+    this.bars.addJobBarContainer().appendChild(stacksContainer2);
+
+    const opoopoStacksContainer = document.createElement('div');
+    opoopoStacksContainer.id = 'mnk-stacks-opoopo';
+    stacksContainer2.appendChild(opoopoStacksContainer);
+
+    const raptorStacksContainer = document.createElement('div');
+    raptorStacksContainer.id = 'mnk-stacks-raptor';
+    stacksContainer2.appendChild(raptorStacksContainer);
+
+    const coeurlStacksContainer = document.createElement('div');
+    coeurlStacksContainer.id = 'mnk-stacks-coeurl';
+    stacksContainer2.appendChild(coeurlStacksContainer);
+
+    this.opoopoStacks = [];
+    this.raptorStacks = [];
+    this.coeurlStacks = [];
+
+    for (let i = 0; i < 1; i++) {
+      const opoopoStack = document.createElement('div');
+      opoopoStacksContainer.appendChild(opoopoStack);
+      this.opoopoStacks.push(opoopoStack);
+    }
+
+    for (let i = 0; i < 2; i++) {
+      const raptorStack = document.createElement('div');
+      raptorStacksContainer.appendChild(raptorStack);
+      this.raptorStacks.push(raptorStack);
+    }
+
+    for (let i = 0; i < 3; i++) {
+      const coeurlStack = document.createElement('div');
+      coeurlStacksContainer.appendChild(coeurlStack);
+      this.coeurlStacks.push(coeurlStack);
+    }
+
+    // Masterful Gauge
     const stacksContainer = document.createElement('div');
     stacksContainer.id = 'mnk-stacks';
     stacksContainer.classList.add('stacks');
@@ -105,41 +150,33 @@ export class MNKComponent extends BaseComponent {
     });
     this.lunarStacks[0]?.classList.toggle('active', jobDetail.lunarNadi);
     this.solarStacks[0]?.classList.toggle('active', jobDetail.solarNadi);
-  }
 
-  override onUseAbility(id: string): void {
-    if (id === kAbility.Demolish) {
-      // it start counting down when you cast demolish
-      // but DOT appears on target about 1 second later
-      this.demolishBox.duration = 18 + 1;
+    for (let i = 0; i < 3; ++i) {
+      this.opoopoStacks[i]?.classList.toggle('active', jobDetail.opoopoFury > i);
+      this.raptorStacks[i]?.classList.toggle('active', jobDetail.raptorFury > i);
+      this.coeurlStacks[i]?.classList.toggle('active', jobDetail.coeurlFury > i);
     }
   }
 
-  override onYouLoseEffect(id: string): void {
+  override onUseAbility(id: string): void {
     switch (id) {
-      case EffectId.DisciplinedFist:
-        this.twinSnakesBox.duration = 0;
+      case kAbility.PerfectBalance:
+        this.perfectbalanceBox.duration = 40 + this.perfectbalanceBox.value;
         break;
-      case EffectId.LeadenFist:
-        this.dragonKickBox.duration = 0;
+      case kAbility.RiddleOfFire:
+        this.riddleOfFireBox.duration = 60;
         break;
-      case EffectId.PerfectBalance:
-        this.formTimer.duration = 0;
-        this.formTimer.fg = computeBackgroundColorFrom(this.formTimer, 'mnk-color-form');
-        this.perfectBalanceActive = false;
+      case kAbility.RiddleOfWind:
+        this.riddleOfWindBox.duration = 90;
+        break;
+      case kAbility.Brotherhood:
+        this.brotherhoodBox.duration = 120;
         break;
     }
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.DisciplinedFist:
-        // -0.5 for logline delay
-        this.twinSnakesBox.duration = parseFloat(matches.duration ?? '0') - 0.5;
-        break;
-      case EffectId.LeadenFist:
-        this.dragonKickBox.duration = 30;
-        break;
       case EffectId.PerfectBalance:
         if (!this.perfectBalanceActive) {
           this.formTimer.duration = 0;
@@ -159,10 +196,32 @@ export class MNKComponent extends BaseComponent {
     }
   }
 
+  override onYouLoseEffect(id: string): void {
+    switch (id) {
+      case EffectId.PerfectBalance:
+        this.formTimer.duration = 0;
+        this.formTimer.fg = computeBackgroundColorFrom(this.formTimer, 'mnk-color-form');
+        this.perfectBalanceActive = false;
+        break;
+    }
+  }
+
+  override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
+    this.perfectbalanceBox.valuescale = gcdSkill;
+    this.perfectbalanceBox.threshold = gcdSkill + 1;
+    this.riddleOfFireBox.valuescale = gcdSkill;
+    this.riddleOfFireBox.threshold = gcdSkill + 1;
+    this.riddleOfWindBox.valuescale = gcdSkill;
+    this.riddleOfWindBox.threshold = gcdSkill + 1;
+    this.brotherhoodBox.valuescale = gcdSkill;
+    this.brotherhoodBox.threshold = gcdSkill + 1;
+  }
+
   override reset(): void {
-    this.twinSnakesBox.duration = 0;
-    this.demolishBox.duration = 0;
-    this.dragonKickBox.duration = 0;
+    this.perfectbalanceBox.duration = 0;
+    this.riddleOfFireBox.duration = 0;
+    this.riddleOfWindBox.duration = 0;
+    this.brotherhoodBox.duration = 0;
     this.formTimer.duration = 0;
     this.formTimer.fg = computeBackgroundColorFrom(this.formTimer, 'mnk-color-form');
     this.perfectBalanceActive = false;

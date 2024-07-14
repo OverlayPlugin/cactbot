@@ -143,6 +143,9 @@ export const kAbility = {
   Bootshine: '35',
   FourPointFury: '4059',
   Brotherhood: '1CE4',
+  PerfectBalance: '45',
+  RiddleOfFire: '1CE3',
+  RiddleOfWind: '64A6',
   // DRG
   TrueThrust: '4B',
   RaidenThrust: '405F',

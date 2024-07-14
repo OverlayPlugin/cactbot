@@ -360,11 +360,9 @@ div.justbuffs div#procs-container {
   flex: 5;
 }
 
-#mnk-stacks-lunar > div {
-  background-color: rgb(66 19 128 / 20%);
-}
-
-#mnk-stacks-solar > div {
+#mnk-stacks-lunar > div,
+#mnk-stacks-solar > div,
+#mnk-stacks-raptor > div {
   background-color: rgb(66 19 128 / 20%);
 }
 
@@ -376,15 +374,18 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 200 200);
 }
 
-#mnk-stacks-beastchakra > div.opo {
+#mnk-stacks-beastchakra > div.opo,
+#mnk-stacks-raptor > div.active  {
   background-color: rgb(150 90 180);
 }
 
-#mnk-stacks-beastchakra > div.coeurl {
+#mnk-stacks-beastchakra > div.coeurl,
+#mnk-stacks-opoopo > div.active {
   background-color: rgb(240 100 150);
 }
 
-#mnk-stacks-beastchakra > div.raptor {
+#mnk-stacks-beastchakra > div.raptor,
+#mnk-stacks-coeurl > div.active {
   background-color: rgb(75 155 120);
 }
 
@@ -839,6 +840,22 @@ div.justbuffs div#procs-container {
 
 .mnk-color-demolish {
   background-color: rgb(60 80 200);
+}
+
+.mnk-color-perfectbalance {
+  background-color: rgb(225 80 0);
+}
+
+.mnk-color-riddleoffire {
+  background-color: rgb(255 0 0);
+}
+
+.mnk-color-riddleofwind {
+  background-color: rgb(60 160 120);
+}
+
+.mnk-color-brotherhood {
+  background-color: rgb(255 170 50);
 }
 
 /* DRG */
