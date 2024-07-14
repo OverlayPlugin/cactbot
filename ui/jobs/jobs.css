@@ -266,6 +266,7 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 1 big resource box */
+.pld #right-side-icons,
 .drk #right-side-icons,
 .whm #right-side-icons,
 .sge #right-side-icons,
@@ -274,7 +275,6 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 2 big resource box */
-.pld #right-side-icons,
 .sch #right-side-icons,
 .ast #right-side-icons {
   left: 288px;
@@ -581,11 +581,13 @@ div.justbuffs div#procs-container {
   background-color: rgb(214 237 255);
 }
 
-.pld-color-atonement.any {
+.pld-color-atonement.any,
+.pld-color-requiescat {
   background-color: rgb(25 156 255);
 }
 
-.pld-color-gore {
+.pld-color-gore,
+.pld-color-scorn {
   background-color: rgb(255 135 35);
 }
 

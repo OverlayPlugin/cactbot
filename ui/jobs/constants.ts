@@ -59,6 +59,7 @@ export const kAbility = {
   ShieldLob: '18',
   ShieldBash: '10',
   Requiescat: '1CD7',
+  Imperator: '9039',
   HolySpirit: '1CD8',
   HolyCircle: '404A',
   Confiteor: '404B',
@@ -70,6 +71,7 @@ export const kAbility = {
   BladeofTruth: '6495',
   BladeOfValor: '6496',
   Atonement: '404C',
+  CircleOfScorn: '17',
   // WAR
   HeavySwing: '1F',
   Maim: '25',
