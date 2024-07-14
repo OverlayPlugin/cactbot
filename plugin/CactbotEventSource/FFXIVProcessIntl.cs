@@ -764,7 +764,7 @@ namespace Cactbot {
 
       public string card2 {
         get {
-          return ((Card)(_card12 & 0xF0)).ToString();
+          return ((Card)(_card12 & 0xF0 >> 4)).ToString();
         }
       }
 
@@ -776,7 +776,7 @@ namespace Cactbot {
 
       public string card4 {
         get {
-          return ((Card)(_card34 & 0xF0)).ToString();
+          return ((Card)(_card34 & 0xF0 >> 4)).ToString();
         }
       }
 
