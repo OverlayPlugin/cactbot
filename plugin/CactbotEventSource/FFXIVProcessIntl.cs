@@ -686,7 +686,7 @@ namespace Cactbot {
 
       public bool solarNadi {
         get {
-          if ((Nadi & 0x4) == 0x4)
+          if ((Nadi & 0x2) == 0x2)
             return true;
           else
             return false;
@@ -695,7 +695,7 @@ namespace Cactbot {
 
       public bool lunarNadi {
         get {
-          if ((Nadi & 0x2) == 0x2)
+          if ((Nadi & 0x1) == 0x1)
             return true;
           else
             return false;
