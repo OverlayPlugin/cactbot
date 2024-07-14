@@ -248,7 +248,6 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for no resource box */
-.ast #right-side-icons,
 .blu #right-side-icons {
   left: 204px;
 }
@@ -276,7 +275,8 @@ div.justbuffs div#procs-container {
 
 /* Space for 2 big resource box */
 .pld #right-side-icons,
-.sch #right-side-icons {
+.sch #right-side-icons,
+.ast #right-side-icons {
   left: 288px;
 }
 
@@ -333,11 +333,11 @@ div.justbuffs div#procs-container {
 }
 
 #ast-stacks-card1.balance {
-  background-color: #ff9900;
+  background-color: #f90;
 }
 
 #ast-stacks-card1.spear {
-  background-color: #4477dd;
+  background-color: #47d;
 }
 
 #ast-stacks-card2.arrow {
@@ -345,7 +345,7 @@ div.justbuffs div#procs-container {
 }
 
 #ast-stacks-card2.bole {
-  background-color: #22dd77;
+  background-color: #2d7;
 }
 
 #ast-stacks-card3.spire {
@@ -353,7 +353,7 @@ div.justbuffs div#procs-container {
 }
 
 #ast-stacks-card3.ewer {
-  background-color: #66ccdd;
+  background-color: #6cd;
 }
 
 #ast-stacks-card4.lord {
