@@ -1311,6 +1311,10 @@ div.justbuffs div#procs-container {
   background-color: rgb(192 250 255);
 }
 
+.pct-color-whitepaint.black {
+  background-color: rgb(22 25 27);
+}
+
 .pct-color-livingmuse {
   background-color: rgb(139 184 52);
 }

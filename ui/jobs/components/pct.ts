@@ -1,3 +1,4 @@
+import EffectId from '../../../resources/effect_id';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
@@ -49,6 +50,22 @@ export class PCTComponent extends BaseComponent {
     this.reset();
   }
 
+  override onYouGainEffect(id: string, _effect: PartialFieldMatches<'GainsEffect'>): void {
+    switch (id) {
+      case EffectId.BlackPaint:
+        this.whitePaint.parentElement?.classList.add('blackpaint');
+        break;
+    }
+  }
+
+  override onYouLoseEffect(id: string, _effect: PartialFieldMatches<'LosesEffect'>): void {
+    switch (id) {
+      case EffectId.BlackPaint:
+        this.whitePaint.parentElement?.classList.remove('blackpaint');
+        break;
+    }
+  }
+
   override onUseAbility(id: string, _ability: PartialFieldMatches<'Ability'>): void {
     switch (id) {
       // Living Muses
@@ -96,6 +113,7 @@ export class PCTComponent extends BaseComponent {
   override reset(): void {
     this.paletteGauge.innerText = '';
     this.whitePaint.innerText = '';
+    this.whitePaint.parentElement?.classList.remove('blackpaint');
     this.livingCanvasStacks.childNodes?.forEach((stack) => {
       if (stack instanceof HTMLElement)
         stack.classList.remove('active', 'pulse');
