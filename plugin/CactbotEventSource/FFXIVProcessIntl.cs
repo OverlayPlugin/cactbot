@@ -895,7 +895,7 @@ namespace Cactbot {
       }
 
       [FieldOffset(0x00)]
-      public byte palleteGauge;
+      public byte paletteGauge;
       [FieldOffset(0x02)]
       public byte paint;
 
