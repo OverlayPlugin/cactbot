@@ -1796,6 +1796,7 @@ const data = {
   'SwiftDeception': 'B8D',
   'SwiftL': '66C',
   'SwiftkicksGoblixer': '3E7',
+  'Swiftscaled': 'E55',
   'SwiftskinsVenom': 'E4A',
   'SwirlingWaters': '73C',
   'SwordBearer': '98D',
