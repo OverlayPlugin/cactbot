@@ -52,7 +52,7 @@ export class PCTComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, _effect: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.BlackPaint:
+      case EffectId.MonochromeTones:
         this.whitePaint.parentElement?.classList.add('blackpaint');
         break;
     }
@@ -60,7 +60,7 @@ export class PCTComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string, _effect: PartialFieldMatches<'LosesEffect'>): void {
     switch (id) {
-      case EffectId.BlackPaint:
+      case EffectId.MonochromeTones:
         this.whitePaint.parentElement?.classList.remove('blackpaint');
         break;
     }
@@ -73,10 +73,10 @@ export class PCTComponent extends BaseComponent {
       case kAbility.WingedMuse:
       case kAbility.ClawedMuse:
       case kAbility.FangedMuse:
-        this.livingMuseBox.duration = 40 + (this.livingMuseBox.duration ?? 0);
+        this.livingMuseBox.duration = 40 + (this.livingMuseBox.value ?? 0);
         break;
       case kAbility.StrikingMuse:
-        this.steelMuseBox.duration = 60 + (this.steelMuseBox.duration ?? 0);
+        this.steelMuseBox.duration = 60 + (this.steelMuseBox.value ?? 0);
         break;
       case kAbility.StarryMuse:
         this.scenicMuseBox.duration = 120;
