@@ -21,10 +21,10 @@ import { DRG6xComponent, DRGComponent } from './drg';
 import { DRK6xComponent, DRKComponent } from './drk';
 import { GNBComponent } from './gnb';
 import { MCHComponent } from './mch';
-import { MNKComponent } from './mnk';
+import { MNK6xComponent, MNKComponent } from './mnk';
 import { NIN6xComponent, NINComponent } from './nin';
 import { PCTComponent } from './pct';
-import { PLDComponent } from './pld';
+import { PLD6xComponent, PLDComponent } from './pld';
 import { RDMComponent } from './rdm';
 import { RPRComponent } from './rpr';
 import { SAMComponent } from './sam';
@@ -134,10 +134,14 @@ export class ComponentManager {
 
   getJobComponents(job: Job): BaseComponent {
     if (this.o.ffxivVersion < 700) {
+      if (job === 'PLD')
+        return new PLD6xComponent(this.o);
       if (job === 'DRK')
         return new DRK6xComponent(this.o);
       if (job === 'AST')
         return new AST6xComponent(this.o);
+      if (job === 'MNK')
+        return new MNK6xComponent(this.o);
       if (job === 'DRG')
         return new DRG6xComponent(this.o);
       if (job === 'NIN')

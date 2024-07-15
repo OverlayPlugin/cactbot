@@ -59,6 +59,7 @@ export const kAbility = {
   ShieldLob: '18',
   ShieldBash: '10',
   Requiescat: '1CD7',
+  Imperator: '9039',
   HolySpirit: '1CD8',
   HolyCircle: '404A',
   Confiteor: '404B',
@@ -70,6 +71,7 @@ export const kAbility = {
   BladeofTruth: '6495',
   BladeOfValor: '6496',
   Atonement: '404C',
+  CircleOfScorn: '17',
   // WAR
   HeavySwing: '1F',
   Maim: '25',
@@ -145,6 +147,9 @@ export const kAbility = {
   Bootshine: '35',
   FourPointFury: '4059',
   Brotherhood: '1CE4',
+  PerfectBalance: '45',
+  RiddleOfFire: '1CE3',
+  RiddleOfWind: '64A6',
   // DRG
   TrueThrust: '4B',
   RaidenThrust: '405F',
