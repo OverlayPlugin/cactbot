@@ -842,7 +842,8 @@ div.justbuffs div#procs-container {
 }
 
 /* DRG */
-.drg-color-disembowel {
+.drg-color-disembowel,
+.drg-color-powerserge {
   background-color: rgb(0 255 255 / 70%);
 }
 

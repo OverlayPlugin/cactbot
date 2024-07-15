@@ -10,7 +10,7 @@ import { BaseComponent, ComponentInterface } from './base';
 
 export class DRGComponent extends BaseComponent {
   highJumpBox: TimerBox;
-  disembowelBox: TimerBox;
+  powerSergeBox: TimerBox;
   lanceChargeBox: TimerBox;
   geirskogulBox: TimerBox;
   firstmindsFocus: ResourceBox;
@@ -22,9 +22,9 @@ export class DRGComponent extends BaseComponent {
     super(o);
 
     // Boxes
-    this.disembowelBox = this.bars.addProcBox({
-      id: 'drg-procs-disembowel',
-      fgColor: 'drg-color-disembowel',
+    this.powerSergeBox = this.bars.addProcBox({
+      id: 'drg-procs-powerserge',
+      fgColor: 'drg-color-powerserge',
       notifyWhenExpired: true,
     });
     this.highJumpBox = this.bars.addProcBox({
@@ -58,11 +58,11 @@ export class DRGComponent extends BaseComponent {
     // Both Disembowel and SonicThrust apply PowerSurge for 30s,
     // but Disembowel will lock the buff duration until fully act.
     if (skill === kAbility.Disembowel)
-      this.disembowelBox.duration = 30 + 1;
+      this.powerSergeBox.duration = 30 + 1;
     if (skill === kAbility.SpiralBlow)
-      this.disembowelBox.duration = 30 + 1; // FIXME: not sure the animation lock still 1s
+      this.powerSergeBox.duration = 30 + 1; // FIXME: not sure the animation lock still 1s
     if (skill === kAbility.SonicThrust)
-      this.disembowelBox.duration = 30;
+      this.powerSergeBox.duration = 30;
     this.comboTimer.duration = 0;
     if (combo.isFinalSkill)
       return;
@@ -104,8 +104,8 @@ export class DRGComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.disembowelBox.valuescale = gcdSkill;
-    this.disembowelBox.threshold = gcdSkill * 4;
+    this.powerSergeBox.valuescale = gcdSkill;
+    this.powerSergeBox.threshold = gcdSkill * 4;
     this.highJumpBox.valuescale = gcdSkill;
     this.highJumpBox.threshold = gcdSkill + 1;
   }
@@ -116,7 +116,7 @@ export class DRGComponent extends BaseComponent {
 
   override reset(): void {
     this.highJumpBox.duration = 0;
-    this.disembowelBox.duration = 0;
+    this.powerSergeBox.duration = 0;
     this.lanceChargeBox.duration = 0;
     this.lanceChargeBox.fg = computeBackgroundColorFrom(
       this.lanceChargeBox,
