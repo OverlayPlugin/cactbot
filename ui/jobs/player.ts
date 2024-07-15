@@ -25,6 +25,7 @@ export type SpeedBuffs = {
   paeonStacks: number;
   museStacks: number;
   circleOfPower: boolean;
+  swiftscaled: boolean;
 };
 
 export type GainCallback = (id: string, matches: PartialFieldMatches<'GainsEffect'>) => void;
@@ -92,7 +93,7 @@ export class PlayerBase {
   speedBuffs: SpeedBuffs;
   jobDetail?: JobDetail[keyof JobDetail];
 
-  constructor() {
+  constructor(public ffxivVersion: FfxivVersion) {
     // basic info
     this.id = 0;
     this.idHex = '';
@@ -117,21 +118,22 @@ export class PlayerBase {
     this.rotation = 0;
 
     this.speedBuffs = {
-      presenceOfMind: true,
-      fuka: true,
-      huton: true,
+      presenceOfMind: false,
+      fuka: false,
+      huton: false,
       paeonStacks: 0,
       museStacks: 0,
-      circleOfPower: true,
+      circleOfPower: false,
+      swiftscaled: false,
     };
   }
 
   get gcdSkill(): number {
-    return calcGCDFromStat(this, this.stats?.skillSpeed ?? 0);
+    return calcGCDFromStat(this, this.stats?.skillSpeed ?? 0, this.ffxivVersion);
   }
 
   get gcdSpell(): number {
-    return calcGCDFromStat(this, this.stats?.spellSpeed ?? 0);
+    return calcGCDFromStat(this, this.stats?.spellSpeed ?? 0, this.ffxivVersion);
   }
 
   /** compute cooldown based on the current player's stat data */
@@ -156,9 +158,9 @@ export class Player extends PlayerBase {
   constructor(
     jobsEmitter: JobsEventEmitter,
     partyTracker: PartyTracker,
-    private ffxivVersion: FfxivVersion,
+    ffxivVersion: FfxivVersion,
   ) {
-    super();
+    super(ffxivVersion);
     this.ee = new EventEmitter();
     this.jobsEmitter = jobsEmitter;
     this.partyTracker = partyTracker;

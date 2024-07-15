@@ -15,6 +15,7 @@ import { ToMatches } from '../../types/net_matches';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
 
 import { kLevelMod, kMeleeWithMpJobs } from './constants';
+import { FfxivVersion } from './jobs';
 import { SpeedBuffs } from './player';
 
 const getLocaleRegex = (locale: string, regexes: {
@@ -93,7 +94,12 @@ type PlayerLike = {
 };
 
 // Source: http://theoryjerks.akhmorning.com/guide/speed/
-export const calcGCDFromStat = (player: PlayerLike, stat: number, actionDelay = 2500): number => {
+export const calcGCDFromStat = (
+  player: PlayerLike,
+  stat: number,
+  ffxivVersion: FfxivVersion,
+  actionDelay = 2500,
+): number => {
   // If stats haven't been updated, use a reasonable default value.
   if (stat === 0)
     return actionDelay / 1000;
@@ -111,10 +117,16 @@ export const calcGCDFromStat = (player: PlayerLike, stat: number, actionDelay = 
       else
         type1Buffs += 10;
     }
+  } else if (player.job === 'VPR') {
+    // FIXME: not sure whether it is type1
+    type1Buffs += player.speedBuffs.swiftscaled ? 15 : 0;
   }
 
   if (player.job === 'NIN') {
-    type2Buffs += player.speedBuffs.huton ? 15 : 0;
+    if (ffxivVersion < 700)
+      type2Buffs += player.speedBuffs.huton ? 15 : 0;
+    else
+      type2Buffs += player.level >= 45 ? 15 : 0;
   } else if (player.job === 'MNK') {
     type2Buffs += 5 * getLightningStacksByLevel(player.level);
   } else if (player.job === 'BRD') {

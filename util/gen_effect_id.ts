@@ -89,6 +89,7 @@ const knownMapping: Readonly<MappingTable> = {
   'Overheated': 2688,
   'Hawk\'s Eye': 3861,
   'Barrage': 128,
+  'Swiftscaled': 3669,
 };
 
 // These custom name of effect will not be checked, but you'd better make it clean.
