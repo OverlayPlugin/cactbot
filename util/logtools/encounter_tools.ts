@@ -56,6 +56,7 @@ export const ignoredCombatants = PetData['en'].concat([
   'G\'raha Tia\'s Avatar',
   'Gosetsu',
   'Hien',
+  'Koana',
   'Krile',
   'Liturgic Bell',
   'Lyse',
