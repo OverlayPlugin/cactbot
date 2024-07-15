@@ -117,7 +117,8 @@ export const calcGCDFromStat = (
       else
         type1Buffs += 10;
     }
-  } else if (player.job === 'VPR') { // not sure it is type1
+  } else if (player.job === 'VPR') {
+    // FIXME: not sure whether it is type1
     type1Buffs += player.speedBuffs.swiftscaled ? 15 : 0;
   }
 
