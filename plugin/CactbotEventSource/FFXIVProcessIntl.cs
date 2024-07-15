@@ -646,9 +646,9 @@ namespace Cactbot {
     public struct MonkJobMemory {
       public enum Beast : byte {
         None = 0,
-        Coeurl = 1,
-        Opo = 2,
-        Raptor = 3,
+        Opo = 1,
+        Raptor = 2,
+        Coeurl = 3,
       }
 
       [FieldOffset(0x00)]

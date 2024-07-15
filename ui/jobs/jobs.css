@@ -374,17 +374,17 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 200 200);
 }
 
-#mnk-stacks-beastchakra > div.opo,
+#mnk-stacks-beastchakra > div.raptor,
 #mnk-stacks-raptor > div.active {
   background-color: rgb(150 90 180);
 }
 
-#mnk-stacks-beastchakra > div.coeurl,
+#mnk-stacks-beastchakra > div.opo,
 #mnk-stacks-opoopo > div.active {
   background-color: rgb(240 100 150);
 }
 
-#mnk-stacks-beastchakra > div.raptor,
+#mnk-stacks-beastchakra > div.coeurl,
 #mnk-stacks-coeurl > div.active {
   background-color: rgb(75 155 120);
 }
