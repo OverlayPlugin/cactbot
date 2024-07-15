@@ -11,6 +11,7 @@ export class PCTComponent extends BaseComponent {
   whitePaint: ResourceBox;
   paletteGauge: ResourceBox;
   livingCanvasStacks: HTMLDivElement;
+  portraitStacks: HTMLDivElement;
 
   livingMuseBox: TimerBox;
   steelMuseBox: TimerBox;
@@ -33,6 +34,15 @@ export class PCTComponent extends BaseComponent {
       this.livingCanvasStacks.appendChild(stack);
     }
     this.bars.addJobBarContainer().appendChild(this.livingCanvasStacks);
+
+    this.portraitStacks = document.createElement('div');
+    this.portraitStacks.id = 'pct-stacks-portrait';
+    this.portraitStacks.classList.add('stacks');
+    for (let i = 0; i < 2; i++) {
+      const stack = document.createElement('div');
+      this.portraitStacks.appendChild(stack);
+    }
+    this.bars.addJobBarContainer().appendChild(this.portraitStacks);
 
     this.livingMuseBox = this.bars.addProcBox({
       id: 'pct-procs-livingmuses',
@@ -109,6 +119,8 @@ export class PCTComponent extends BaseComponent {
         break;
       }
     }
+    this.portraitStacks.children[0]?.classList.toggle('active', jobDetail.mooglePortrait);
+    this.portraitStacks.children[1]?.classList.toggle('active', jobDetail.madeenPortrait);
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {

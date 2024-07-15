@@ -493,6 +493,14 @@ div.justbuffs div#procs-container {
   animation: pct-living-pulse 1s infinite;
 }
 
+#pct-stacks-portrait > div.active:nth-child(1) {
+  background-color: rgb(255 255 255);
+}
+
+#pct-stacks-portrait > div.active:nth-child(2) {
+  background-color: rgb(175 190 100);
+}
+
 /* Procs */
 
 /*
