@@ -180,7 +180,9 @@ export class DRG6xComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
+
   override onCombo(skill: string): void {
     // Both Disembowel and SonicThrust apply PowerSurge for 30s,
     // but Disembowel will lock the buff duration until fully act.
