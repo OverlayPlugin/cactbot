@@ -26,7 +26,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Ihuykatumu Ihuykatumu Flytrap Decay': '8E99', // get under
     'Ihuykatumu Prime Punutiy Shore Shaker 1': '8EA3', // inner puddle AoE
     'Ihuykatumu Prime Punutiy Shore Shaker 2': '8EA4', // inner ring AoE
-    'Ihuykatumu Prime Punutiy Shore Shaker 3': '8EA5', // outer ring AoE'
+    'Ihuykatumu Prime Punutiy Shore Shaker 3': '8EA5', // outer ring AoE
 
     // ** Adds, pre-boss 2 ** //
     'Ihuykatumu Ihuykatumu Treant Arboreal Storm': '9B52', // circle AoE
@@ -35,12 +35,12 @@ const triggerSet: OopsyTriggerSet<Data> = {
     // ** Drowsie ** //
     'Ihuykatumu Ihuykatumu Ivy Arise': '8E7E', // circle AoEs (ivy drops)
     'Ihuykatumu Ihuykatumu Ivy Wallop Small': '8E7F', // ivy line cleave AoE
-    'Ihuykatumu Ihuykatumu Ivy Wallop Large': '8E82', // ivy line cleave AoE'
+    'Ihuykatumu Ihuykatumu Ivy Wallop Large': '8E82', // ivy line cleave AoE
     'Ihuykatumu Drowsie Sneeze': '8E7B', // big conal AoE
 
     // ** Adds, pre-boss 3 ** //
     'Ihuykatumu Ihuykatumu Puma Megablaster': '9649', // conal AoE
-    'Ihuykatumu Ihuykatumu Maip Ripper Claw': '964A', // conal AoE'
+    'Ihuykatumu Ihuykatumu Maip Ripper Claw': '964A', // conal AoE
 
     // ** Apollyon ** //
     'Ihuykatumu Apollyon Razor Zephyr': '8DF4', // line cleave AoE
