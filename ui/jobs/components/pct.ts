@@ -1,4 +1,5 @@
 import EffectId from '../../../resources/effect_id';
+import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
@@ -16,6 +17,7 @@ export class PCTComponent extends BaseComponent {
   livingMuseBox: TimerBox;
   steelMuseBox: TimerBox;
   scenicMuseBox: TimerBox;
+  hammerTimer: TimerBar;
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -26,6 +28,12 @@ export class PCTComponent extends BaseComponent {
     this.paletteGauge = this.bars.addResourceBox({
       classList: ['pct-color-palettegauge'],
     });
+
+    this.hammerTimer = this.bars.addTimerBar({
+      id: 'pct-timers-hammer',
+      fgColor: 'pct-color-steelmuse',
+    });
+
     this.livingCanvasStacks = document.createElement('div');
     this.livingCanvasStacks.id = 'pct-stacks-living';
     this.livingCanvasStacks.classList.add('stacks');
@@ -74,6 +82,8 @@ export class PCTComponent extends BaseComponent {
       case EffectId.MonochromeTones:
         this.whitePaint.parentElement?.classList.remove('black');
         break;
+      case EffectId.HammerTime:
+        this.hammerTimer.duration = 0;
     }
   }
 
@@ -88,6 +98,8 @@ export class PCTComponent extends BaseComponent {
         break;
       case kAbility.StrikingMuse:
         this.steelMuseBox.duration = 60 + (this.steelMuseBox.value ?? 0);
+        this.hammerTimer.stylefill = 'empty';
+        this.hammerTimer.duration = 30;
         break;
       case kAbility.StarryMuse:
         this.scenicMuseBox.duration = 120;
@@ -121,6 +133,12 @@ export class PCTComponent extends BaseComponent {
     }
     this.portraitStacks.children[0]?.classList.toggle('active', jobDetail.mooglePortrait);
     this.portraitStacks.children[1]?.classList.toggle('active', jobDetail.madeenPortrait);
+
+    // when set on fill, inactive timer is full, indicate availble weapon motif, vise versa.
+    if (jobDetail.weaponMotif === true)
+      this.hammerTimer.stylefill = 'fill';
+    else
+      this.hammerTimer.stylefill = 'empty';
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
@@ -140,6 +158,7 @@ export class PCTComponent extends BaseComponent {
     this.livingMuseBox.duration = 0;
     this.steelMuseBox.duration = 0;
     this.scenicMuseBox.duration = 0;
+    this.hammerTimer.stylefill = 'empty';
   }
 }
 
