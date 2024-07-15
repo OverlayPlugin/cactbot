@@ -92,10 +92,7 @@ export class MCHComponent extends BaseComponent {
     // These two seconds are shown by half adjust, not like others' ceil.
     if (jobDetail.overheatActive === true) {
       this.heatGauge.parentNode.classList.add('overheat');
-      if (this.ffxivVersion >= 630)
-        this.heatGauge.innerText = this.overheatstack.toString();
-      else
-        this.heatGauge.innerText = Math.round(jobDetail.overheatMilliseconds / 1000).toString();
+      this.heatGauge.innerText = this.overheatstack.toString();
     } else {
       this.heatGauge.parentNode.classList.remove('overheat');
       this.heatGauge.innerText = jobDetail.heat.toString();
@@ -125,7 +122,7 @@ export class MCHComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Overheated && this.ffxivVersion >= 630)
+    if (id === EffectId.Overheated)
       this.overheatstack = parseInt(matches.count ?? '0');
   }
   override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
@@ -148,7 +145,8 @@ export class MCHComponent extends BaseComponent {
     switch (id) {
       case kAbility.Drill:
       case kAbility.Bioblaster:
-        this.drillBox.duration = this.player.getActionCooldown(20000, 'skill');
+        this.drillBox.duration = this.player.getActionCooldown(20000, 'skill') +
+          this.drillBox.value;
         break;
       case kAbility.AirAnchor:
       case kAbility.HotShot:

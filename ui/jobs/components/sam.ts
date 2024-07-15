@@ -63,14 +63,14 @@ export class SAMComponent extends BaseComponent {
       fgColor: 'sam-color-fuka',
       notifyWhenExpired: true,
     });
-    this.tsubameGaeshi = this.bars.addProcBox({
-      id: 'sam-procs-tsubamegaeshi',
-      fgColor: 'sam-color-tsubamegaeshi',
-    });
     this.higanbana = this.bars.addProcBox({
       id: 'sam-procs-higanbana',
       fgColor: 'sam-color-higanbana',
       notifyWhenExpired: true,
+    });
+    this.tsubameGaeshi = this.bars.addProcBox({
+      id: 'sam-procs-tsubamegaeshi',
+      fgColor: 'sam-color-tsubamegaeshi',
     });
 
     this.reset();
@@ -112,21 +112,30 @@ export class SAMComponent extends BaseComponent {
   }
 
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
-    switch (id) {
-      case kAbility.KaeshiHiganbana:
-      case kAbility.KaeshiGoken:
-      case kAbility.KaeshiSetsugekka:
-        if (this.player.level >= 84) {
-          if (matches.timestamp !== this.lastTsubameGaeshiTimestamp) {
-            // TODO: use targetIndex instead.
-            // Avoid multiple call in AOE
-            this.tsubameGaeshi.duration = 60 + this.tsubameGaeshi.value;
-            this.lastTsubameGaeshiTimestamp = matches.timestamp;
+    if (this.ffxivVersion < 700) {
+      switch (id) {
+        case kAbility.KaeshiHiganbana:
+        case kAbility.KaeshiGoken:
+        case kAbility.KaeshiSetsugekka:
+          if (this.player.level >= 84) {
+            if (matches.targetIndex === '0') {
+              // Avoid multiple call in AOE
+              this.tsubameGaeshi.duration = 60 + this.tsubameGaeshi.value;
+              this.lastTsubameGaeshiTimestamp = matches.timestamp;
+            }
+          } else {
+            this.tsubameGaeshi.duration = 60;
           }
-        } else {
-          this.tsubameGaeshi.duration = 60;
-        }
-        break;
+          break;
+      }
+    } else {
+      switch (id) {
+        // In DawnTrail, Tsubame Gaeshi no longer have cooldown.
+        // spare this box for Ikishoten, while keep its name for easy compatibility.
+        case kAbility.Ikishoten:
+          this.tsubameGaeshi.duration = 120;
+          break;
+      }
     }
   }
 
@@ -141,7 +150,7 @@ export class SAMComponent extends BaseComponent {
     this.fugetsu.valuescale = gcdSkill;
     this.fugetsu.threshold = gcdSkill * 6;
     this.tsubameGaeshi.valuescale = gcdSkill;
-    this.tsubameGaeshi.threshold = gcdSkill * 4;
+    this.tsubameGaeshi.threshold = this.ffxivVersion < 700 ? gcdSkill * 4 : gcdSkill + 1;
     this.higanbana.valuescale = gcdSkill;
     this.higanbana.threshold = gcdSkill * 4;
   }

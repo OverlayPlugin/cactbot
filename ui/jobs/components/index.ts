@@ -18,7 +18,7 @@ import { BLUComponent } from './blu';
 import { BRDComponent } from './brd';
 import { DNCComponent } from './dnc';
 import { DRGComponent } from './drg';
-import { DRKComponent } from './drk';
+import { DRK6xComponent, DRKComponent } from './drk';
 import { GNBComponent } from './gnb';
 import { MCHComponent } from './mch';
 import { MNKComponent } from './mnk';
@@ -134,6 +134,8 @@ export class ComponentManager {
 
   getJobComponents(job: Job): BaseComponent {
     if (this.o.ffxivVersion < 700) {
+      if (job === 'DRK')
+        return new DRK6xComponent(this.o);
       if (job === 'NIN')
         return new NIN6xComponent(this.o);
     }
