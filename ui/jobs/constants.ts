@@ -96,6 +96,7 @@ export const kAbility = {
   BloodWeapon: 'E29',
   Delirium: '1CDE',
   LivingShadow: '4058',
+  SaltedEarth: 'E37',
   // GNB
   KeenEdge: '3F09',
   BrutalShell: '3F0B',
@@ -113,6 +114,7 @@ export const kAbility = {
   Aero2: '84',
   Dia: '4094',
   Assize: 'DF3',
+  PresenceOfMind: '88',
   // SCH
   Bio: '45C8',
   Bio2: '45C9',
@@ -160,6 +162,11 @@ export const kAbility = {
   DragonSight: '1CE6',
   BattleLitany: 'DE5',
   DraconianFury: '64AA',
+  Drakesbane: '9058',
+  ChaoticSpring: '64AC',
+  HeavensThrust: '64AB',
+  SpiralBlow: '905B',
+  LanceBarrage: '905A',
   // NIN
   SpinningEdge: '8C0',
   GustSlash: '8C2',
@@ -173,6 +180,8 @@ export const kAbility = {
   Bunshin: '406D',
   Hide: '8C5',
   Mug: '8C8',
+  Dokumori: '905D',
+  KunaisBane: '905E',
   // SAM
   Hakaze: '1D35',
   Jinpu: '1D36',
@@ -191,6 +200,8 @@ export const kAbility = {
   HissatsuGuren: '1D48',
   HissatsuSenei: '4061',
   Fuko: '64B4',
+  Gyofu: '9063',
+  Ikishoten: '4062',
   // RPR
   Slice: '5F35',
   WaxingSlice: '5F36',
@@ -300,22 +311,17 @@ export const kAbility = {
 
 // Combo actions for every jobs, this would apply to ComboTracker when
 // it is initialized, for determining whether the current action is in combo.
-export const kComboActions: string[][] = [
+// For upgradable skill actions, use array to represent the combo action chain.
+// (Can also be used on only last skill different combo)
+// For example, PLD's Fast Blade -> Riot Blade -> Royal Authority / Rage of Halone
+// combo chain would be represented as
+// ['Fast Blade', 'Riot Blade', ['Royal Authority', 'Rage of Halone']].
+export const kComboActions: Array<Array<string | string[]>> = [
   // PLD
   [
     kAbility.FastBlade,
     kAbility.RiotBlade,
-    kAbility.GoringBlade,
-  ],
-  [
-    kAbility.FastBlade,
-    kAbility.RiotBlade,
-    kAbility.RoyalAuthority,
-  ],
-  [
-    kAbility.FastBlade,
-    kAbility.RiotBlade,
-    kAbility.RageOfHalone,
+    [kAbility.RoyalAuthority, kAbility.RageOfHalone],
   ],
   [
     kAbility.TotalEclipse,
@@ -325,12 +331,7 @@ export const kComboActions: string[][] = [
   [
     kAbility.HeavySwing,
     kAbility.Maim,
-    kAbility.StormsEye,
-  ],
-  [
-    kAbility.HeavySwing,
-    kAbility.Maim,
-    kAbility.StormsPath,
+    [kAbility.StormsEye, kAbility.StormsPath],
   ],
   [
     kAbility.Overpower,
@@ -358,22 +359,21 @@ export const kComboActions: string[][] = [
   ],
   // DRG
   [
-    kAbility.TrueThrust,
-    kAbility.Disembowel,
-    kAbility.ChaosThrust,
+    [kAbility.TrueThrust, kAbility.RaidenThrust],
+    [kAbility.Disembowel, kAbility.SpiralBlow],
+    [kAbility.ChaosThrust, kAbility.ChaoticSpring],
+    kAbility.WheelingThrust,
+    kAbility.Drakesbane,
   ],
   [
-    kAbility.RaidenThrust,
-    kAbility.Disembowel,
-    kAbility.ChaosThrust,
+    [kAbility.TrueThrust, kAbility.RaidenThrust],
+    [kAbility.VorpalThrust, kAbility.LanceBarrage],
+    [kAbility.FullThrust, kAbility.HeavensThrust],
+    kAbility.FangAndClaw,
+    kAbility.Drakesbane,
   ],
   [
-    kAbility.DoomSpike,
-    kAbility.SonicThrust,
-    kAbility.CoerthanTorment,
-  ],
-  [
-    kAbility.DraconianFury,
+    [kAbility.DoomSpike, kAbility.DraconianFury],
     kAbility.SonicThrust,
     kAbility.CoerthanTorment,
   ],
@@ -381,12 +381,7 @@ export const kComboActions: string[][] = [
   [
     kAbility.SpinningEdge,
     kAbility.GustSlash,
-    kAbility.AeolianEdge,
-  ],
-  [
-    kAbility.SpinningEdge,
-    kAbility.GustSlash,
-    kAbility.ArmorCrush,
+    [kAbility.AeolianEdge, kAbility.ArmorCrush],
   ],
   [
     kAbility.DeathBlossom,
@@ -394,34 +389,22 @@ export const kComboActions: string[][] = [
   ],
   // SAM
   [
-    kAbility.Hakaze,
+    [kAbility.Hakaze, kAbility.Gyofu],
     kAbility.Jinpu,
     kAbility.Gekko,
   ],
   [
-    kAbility.Hakaze,
+    [kAbility.Hakaze, kAbility.Gyofu],
     kAbility.Shifu,
     kAbility.Kasha,
   ],
   [
-    kAbility.Hakaze,
+    [kAbility.Hakaze, kAbility.Gyofu],
     kAbility.Yukikaze,
   ],
   [
-    kAbility.Fuga,
-    kAbility.Mangetsu,
-  ],
-  [
-    kAbility.Fuga,
-    kAbility.Oka,
-  ],
-  [
-    kAbility.Fuko,
-    kAbility.Mangetsu,
-  ],
-  [
-    kAbility.Fuko,
-    kAbility.Oka,
+    [kAbility.Fuga, kAbility.Fuko],
+    [kAbility.Mangetsu, kAbility.Oka],
   ],
   // RPR
   [
@@ -435,24 +418,9 @@ export const kComboActions: string[][] = [
   ],
   // MCH
   [
-    kAbility.SplitShot,
-    kAbility.SlugShot,
-    kAbility.CleanShot,
-  ],
-  [
-    kAbility.HeatedSplitShot,
-    kAbility.SlugShot,
-    kAbility.CleanShot,
-  ],
-  [
-    kAbility.HeatedSplitShot,
-    kAbility.HeatedSlugShot,
-    kAbility.CleanShot,
-  ],
-  [
-    kAbility.HeatedSplitShot,
-    kAbility.HeatedSlugShot,
-    kAbility.HeatedCleanShot,
+    [kAbility.SplitShot, kAbility.HeatedSplitShot],
+    [kAbility.SlugShot, kAbility.HeatedSlugShot],
+    [kAbility.CleanShot, kAbility.HeatedCleanShot],
   ],
   // DNC
   [
@@ -497,11 +465,20 @@ export const kComboBreakers = [
   kAbility.DemonSlaughter,
   // DRG
   kAbility.TrueThrust,
+  kAbility.RaidenThrust,
   kAbility.VorpalThrust,
+  kAbility.LanceBarrage,
   kAbility.FullThrust,
+  kAbility.HeavensThrust,
   kAbility.Disembowel,
+  kAbility.SpiralBlow,
   kAbility.ChaosThrust,
+  kAbility.ChaoticSpring,
+  kAbility.WheelingThrust,
+  kAbility.FangAndClaw,
+  kAbility.Drakesbane,
   kAbility.DoomSpike,
+  kAbility.DraconianFury,
   kAbility.SonicThrust,
   kAbility.CoerthanTorment,
   // NIN
@@ -513,6 +490,7 @@ export const kComboBreakers = [
   kAbility.HakkeMujinsatsu,
   // SAM
   kAbility.Hakaze,
+  kAbility.Gyofu,
   kAbility.Jinpu,
   kAbility.Gekko,
   kAbility.Shifu,
@@ -547,18 +525,14 @@ export const kComboBreakers = [
 
 export const kComboBreakers630 = [
   ...kComboBreakers,
-  kAbility.Atonement,
 ];
 
 export const kComboBreakers620 = [
   ...kComboBreakers630,
-  kAbility.GoringBlade,
-  kAbility.Confiteor,
 ];
 
-// [level][Sub][Div]
-// FIXME: Due to 6.0 data downscale, seems all parameter between lv50-80 has been changed
-// 70 80 90 has been determined, between them still lack
+// (level = index) [Sub, Div]
+// Reference: https://www.akhmorning.com/allagan-studies/modifiers/levelmods/
 export const kLevelMod = [
   [0, 0],
   [56, 56],
@@ -611,44 +585,54 @@ export const kLevelMod = [
   [322, 322],
   [331, 331],
   [341, 341], // lv50
-  [342, 900],
-  [344, 900],
-  [345, 900],
-  [346, 900],
-  [347, 900],
-  [349, 900],
-  [350, 900],
-  [351, 900],
-  [352, 900],
-  [354, 900],
-  [355, 900],
-  [356, 900],
-  [357, 900],
-  [358, 900],
-  [369, 900],
-  [360, 900],
-  [361, 900],
-  [362, 900],
-  [363, 900],
-  [364, 900], // lv70, determined
-  [365, 1300],
-  [366, 1300],
-  [367, 1300],
-  [368, 1300],
-  [370, 1300],
-  [372, 1300],
-  [374, 1300],
-  [376, 1300],
-  [378, 1300],
-  [380, 1300], // lv80, determined
-  [382, 1900],
-  [384, 1900],
-  [386, 1900],
-  [388, 1900],
-  [390, 1900],
-  [392, 1900],
-  [394, 1900],
-  [396, 1900],
-  [398, 1900],
-  [400, 1900], // lv90, determined
+  [342, 366],
+  [344, 392],
+  [345, 418],
+  [346, 444],
+  [347, 470],
+  [349, 496],
+  [350, 522],
+  [351, 548],
+  [352, 574],
+  [354, 600], // lv60
+  [355, 630],
+  [356, 660],
+  [357, 690],
+  [358, 720],
+  [359, 750],
+  [360, 780],
+  [361, 810],
+  [362, 840],
+  [363, 870],
+  [364, 900], // lv70
+  [365, 940],
+  [366, 980],
+  [367, 1020],
+  [368, 1060],
+  [370, 1100],
+  [372, 1140],
+  [374, 1180],
+  [376, 1220],
+  [378, 1260],
+  [380, 1300], // lv80
+  [382, 1360],
+  [384, 1420],
+  [386, 1480],
+  [388, 1540],
+  [390, 1600],
+  [392, 1660],
+  [394, 1720],
+  [396, 1780],
+  [398, 1840],
+  [400, 1900], // lv90
+  [402, 1988],
+  [404, 2076],
+  [406, 2164],
+  [408, 2252],
+  [410, 2340],
+  [412, 2428],
+  [414, 2516],
+  [416, 2604],
+  [418, 2692],
+  [420, 2780], // lv100
 ] as const;

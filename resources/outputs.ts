@@ -86,6 +86,17 @@ export default {
     cn: '坦克死刑',
     ko: '탱버',
   },
+  tetherBusters: {
+    en: 'Tank Tethers',
+    de: 'Tank-Verbindungen',
+    fr: 'Liens Tank',
+    ja: 'タンク線取り',
+    cn: '坦克截线',
+    ko: '탱커가 선 가로채기',
+  },
+  avoidTetherBusters: {
+    en: 'Avoid Tank Tethers',
+  },
   tankCleave: {
     en: 'Tank cleave',
     de: 'Tank Cleave',
@@ -450,7 +461,7 @@ export default {
     fr: '<= Allez à Gauche/Ouest',
     ja: '<= 左/西へ',
     cn: '<= 去左/西边',
-    ko: '<= 왼쪽으로',
+    ko: '<= 왼쪽/서쪽',
   },
   getRightAndEast: {
     en: 'Get Right/East =>',
@@ -458,7 +469,7 @@ export default {
     fr: 'Allez à Droite/Est =>',
     ja: '右/東へ =>',
     cn: '去右/东边 =>',
-    ko: '오른쪽으로 =>',
+    ko: '오른쪽/동쪽 =>',
   },
   leftThenRight: {
     en: 'Left => Right',
@@ -645,7 +656,7 @@ export default {
     de: 'Kette zerbrechen',
     fr: 'Brisez les chaines',
     ja: '線を切る',
-    cn: '切断连线',
+    cn: '拉断连线',
     ko: '선 끊기',
   },
   moveChainsTogether: {

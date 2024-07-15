@@ -23,12 +23,14 @@ const jobOrder = [
   'NIN',
   'SAM',
   'RPR',
+  'VPR',
   'BRD',
   'MCH',
   'DNC',
   'BLM',
   'SMN',
   'RDM',
+  'PCT',
   'BLU',
 ] as const;
 

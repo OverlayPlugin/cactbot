@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ketten mit ${partner} zerbrechen',
           fr: 'Cassez les chaînes avec ${partner}',
           ja: '線切り: ${partner}',
-          cn: '与 ${partner} 拉断连锁',
+          cn: '与 ${partner} 拉断连线',
           ko: '${partner} 사슬 끊기',
         },
       },

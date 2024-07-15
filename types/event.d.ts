@@ -65,8 +65,10 @@ export interface JobDetail {
     firstmindsFocus: number;
   };
   'NIN': {
+    /** TODO: should be removed when CN/KR server reach 7.0 */
     hutonMilliseconds: number;
     ninkiAmount: number;
+    kazematoi: number;
   };
   'SAM': {
     kenki: number;
@@ -89,6 +91,7 @@ export interface JobDetail {
     songProcs: number;
     soulGauge: number;
     coda: (BardSongType)[];
+    LastCodaCost: number;
   };
   'MCH': {
     overheatMilliseconds: number;

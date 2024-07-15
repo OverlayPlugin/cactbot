@@ -116,8 +116,7 @@ class FFLogs {
     // For Event retrieval, check whether the data is paginated.
     // If it is, recursively retrieve it until it is all obtained.
     if (data.nextPageTimestamp !== undefined) {
-      const nextOptions = new URLSearchParams();
-      Object.assign(nextOptions, options);
+      const nextOptions = new URLSearchParams(options);
       nextOptions.set('start', data.nextPageTimestamp.toString());
       data = data as FFLogsEventResponse;
       const nextData = await this.callFFLogs(

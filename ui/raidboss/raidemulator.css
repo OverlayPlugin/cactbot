@@ -66,6 +66,10 @@ body {
   background: url("../../resources/ffxiv/jobs/rpr-framed.png") 0 / contain;
 }
 
+.vpr .jobicon {
+  background: url("../../resources/ffxiv/jobs/vpr-framed.png") 0 / contain;
+}
+
 .brd .jobicon {
   background: url("../../resources/ffxiv/jobs/brd-framed.png") 0 / contain;
 }
@@ -88,6 +92,10 @@ body {
 
 .rdm .jobicon {
   background: url("../../resources/ffxiv/jobs/rdm-framed.png") 0 / contain;
+}
+
+.pct .jobicon {
+  background: url("../../resources/ffxiv/jobs/pct-framed.png") 0 / contain;
 }
 
 .blu .jobicon {

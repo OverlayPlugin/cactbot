@@ -69,7 +69,7 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         detail.jobDetail.steps.join(', ')
       }] | ${detail.jobDetail.currentStep}`;
     } else if (detail.job === 'NIN' && detail.jobDetail) {
-      jobInfo.innerText = `${detail.jobDetail.hutonMilliseconds} | ${detail.jobDetail.ninkiAmount}`;
+      jobInfo.innerText = `${detail.jobDetail.ninkiAmount} | ${detail.jobDetail.kazematoi}`;
     } else if (detail.job === 'DRG' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.bloodMilliseconds} | ${detail.jobDetail.lifeMilliseconds} | ${detail.jobDetail.eyesAmount} | ${detail.jobDetail.firstmindsFocus}`;

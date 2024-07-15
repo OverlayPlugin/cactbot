@@ -254,6 +254,7 @@ div.justbuffs div#procs-container {
 
 /* Space for 2 resource boxes */
 .drg #right-side-icons,
+.nin #right-side-icons,
 .sam #right-side-icons,
 .rpr #right-side-icons,
 .brd #right-side-icons,
@@ -583,6 +584,18 @@ div.justbuffs div#procs-container {
   background-color: rgb(180 200 220);
 }
 
+@keyframes pulse-red {
+  50% {
+    background-color: rgb(255 50 0);
+  }
+}
+
+@keyframes pulse-white { /* For those self red color */
+  50% {
+    background-color: rgb(255 255 255);
+  }
+}
+
 /* PLD */
 .pld-color-oath {
   background-color: rgb(255 210 45);
@@ -658,6 +671,10 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 0 10);
 }
 
+.drk-color-blood.pulse {
+  animation: 1s pulse-white infinite;
+}
+
 .drk-color-darkside {
   background-color: rgb(129 33 138);
 }
@@ -666,24 +683,12 @@ div.justbuffs div#procs-container {
   background-color: rgb(133 0 0 / 70%);
 }
 
-.drk-color-bloodweapon.active {
-  background-color: rgb(199 0 0);
-}
-
-.drk-color-delirium {
+.drk-color-saltedearth {
   background-color: rgb(255 80 80 / 60%);
-}
-
-.drk-color-delirium.active {
-  background-color: rgb(255 80 80);
 }
 
 .drk-color-livingshadow {
   background-color: rgb(123 58 126 / 50%);
-}
-
-.drk-color-livingshadow.active {
-  background-color: rgb(179 0 189);
 }
 
 /* GNB */
@@ -718,6 +723,10 @@ div.justbuffs div#procs-container {
 
 .whm-color-assize {
   background-color: rgb(62 224 170);
+}
+
+.whm-color-pom {
+  background-color: rgb(230 100 140);
 }
 
 .whm-color-lucid {
@@ -934,8 +943,19 @@ div.justbuffs div#procs-container {
 }
 
 /* NIN */
-.nin-color-huton {
+.nin-color-huton,
+.nin-color-kazematoi {
   background-color: rgb(0 255 255);
+}
+
+@keyframes kazematoi-pulse {
+  50% {
+    background-color: rgb(255 50 0);
+  }
+}
+
+.nin-kazematoi.pulse {
+  animation: 1s kazematoi-pulse infinite;
 }
 
 .nin-color-trickattack {

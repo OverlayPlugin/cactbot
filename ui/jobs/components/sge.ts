@@ -84,10 +84,7 @@ export class SGEComponent extends BaseComponent {
       case kAbility.Phlegma2:
       case kAbility.Phlegma3:
         if (matches.targetIndex === '0') { // Avoid multiple call in AOE
-          if (this.ffxivVersion >= 630)
-            this.phlegma.duration = 40 + this.phlegma.value;
-          else
-            this.phlegma.duration = 45 + this.phlegma.value;
+          this.phlegma.duration = 40 + this.phlegma.value;
         }
         break;
       case kAbility.Rhizomata:
@@ -104,7 +101,8 @@ export class SGEComponent extends BaseComponent {
       case EffectId.EukrasianDosis:
       case EffectId.EukrasianDosisIi:
       case EffectId.EukrasianDosisIii:
-        this.eukrasianDosis.duration = parseInt(matches.duration ?? '0', 10);
+      case EffectId.EukrasianDyskrasia:
+        this.eukrasianDosis.duration = parseInt(matches.duration ?? '0', 10) - 0.5;
         break;
     }
   }
