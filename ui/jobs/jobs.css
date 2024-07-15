@@ -846,7 +846,8 @@ div.justbuffs div#procs-container {
   background-color: rgb(0 255 255 / 70%);
 }
 
-.drg-color-blood {
+.drg-color-blood,
+.drg-color-geirskogul {
   background-color: rgb(180 200 220);
 }
 
@@ -866,7 +867,8 @@ div.justbuffs div#procs-container {
   background-color: rgb(217 51 0 / 70%);
 }
 
-.drg-color-blood.life {
+.drg-color-blood.life,
+.drg-color-geirskogul.active {
   background-color: rgb(217 51 0);
 }
 

@@ -167,6 +167,7 @@ export const kAbility = {
   HeavensThrust: '64AB',
   SpiralBlow: '905B',
   LanceBarrage: '905A',
+  Geirskogul: 'DE3',
   // NIN
   SpinningEdge: '8C0',
   GustSlash: '8C2',
