@@ -94,14 +94,13 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
     } else if (detail.job === 'ACN' && detail.jobDetail) {
       jobInfo.innerText = detail.jobDetail.aetherflowStacks.toString();
     } else if (detail.job === 'AST' && detail.jobDetail) {
-      jobInfo.innerText = `${detail.jobDetail.heldCard} | ${detail.jobDetail.crownCard} | [${
-        detail.jobDetail.arcanums.join(', ')
-      }]`;
+      jobInfo.innerText =
+        `${detail.jobDetail.card1} | ${detail.jobDetail.card2} | ${detail.jobDetail.card3} | ${detail.jobDetail.card4} | ${detail.jobDetail.nextdraw}`;
     } else if (detail.job === 'MNK' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.chakraStacks} | ${detail.jobDetail.lunarNadi.toString()} | ${detail.jobDetail.solarNadi.toString()} | [${
           detail.jobDetail.beastChakra.join(', ')
-        }]`;
+        }] | ${detail.jobDetail.opoopoFury} | ${detail.jobDetail.raptorFury} | ${detail.jobDetail.coeurlFury}`;
     } else if (detail.job === 'MCH' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.heat} (${detail.jobDetail.overheatMilliseconds}) | ${detail.jobDetail.battery} (${detail.jobDetail.batteryMilliseconds}) | last: ${detail.jobDetail.lastBatteryAmount} | ${detail.jobDetail.overheatActive.toString()} | ${detail.jobDetail.robotActive.toString()}`;
@@ -116,7 +115,7 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         `${detail.jobDetail.soul} | ${detail.jobDetail.shroud} | ${detail.jobDetail.enshroudMilliseconds} | ${detail.jobDetail.lemureShroud} | ${detail.jobDetail.voidShroud}`;
     } else if (detail.job === 'PCT' && detail.jobDetail) {
       jobInfo.innerText =
-        `${detail.jobDetail.palleteGauge} | ${detail.jobDetail.paint} | (${detail.jobDetail.creatureMotif} | ${
+        `${detail.jobDetail.paletteGauge} | ${detail.jobDetail.paint} | (${detail.jobDetail.creatureMotif} | ${
           detail.jobDetail.weaponMotif ? 'Weapon' : 'None'
         } | ${detail.jobDetail.landscapeMotif ? 'Landscape' : 'None'}) | (${
           detail.jobDetail.depictions.join('+') || 'None'

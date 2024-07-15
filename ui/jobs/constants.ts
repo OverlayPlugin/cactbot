@@ -59,6 +59,7 @@ export const kAbility = {
   ShieldLob: '18',
   ShieldBash: '10',
   Requiescat: '1CD7',
+  Imperator: '9039',
   HolySpirit: '1CD8',
   HolyCircle: '404A',
   Confiteor: '404B',
@@ -70,6 +71,7 @@ export const kAbility = {
   BladeofTruth: '6495',
   BladeOfValor: '6496',
   Atonement: '404C',
+  CircleOfScorn: '17',
   // WAR
   HeavySwing: '1F',
   Maim: '25',
@@ -131,6 +133,8 @@ export const kAbility = {
   Draw: 'E06',
   MinorArcana: '1D13',
   Divination: '40A8',
+  AstralDraw: '9099',
+  UmbralDraw: '909A',
   // SGE
   Rhizomata: '5EF5',
   Phlegma: '5EE1',
@@ -143,6 +147,9 @@ export const kAbility = {
   Bootshine: '35',
   FourPointFury: '4059',
   Brotherhood: '1CE4',
+  PerfectBalance: '45',
+  RiddleOfFire: '1CE3',
+  RiddleOfWind: '64A6',
   // DRG
   TrueThrust: '4B',
   RaidenThrust: '405F',
@@ -167,6 +174,7 @@ export const kAbility = {
   HeavensThrust: '64AB',
   SpiralBlow: '905B',
   LanceBarrage: '905A',
+  Geirskogul: 'DE3',
   // NIN
   SpinningEdge: '8C0',
   GustSlash: '8C2',
@@ -293,6 +301,11 @@ export const kAbility = {
   Fleche: '1D5D',
   ContreSixte: '1D5F',
   // PCT
+  PomMuse: '876E',
+  WingedMuse: '876F',
+  ClawedMuse: '8770',
+  FangedMuse: '8771',
+  StrikingMuse: '8772',
   StarryMuse: '8773',
   // BLU
   SongOfTorment: '2C7A',
