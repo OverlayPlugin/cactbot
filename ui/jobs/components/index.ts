@@ -17,7 +17,7 @@ import { BLMComponent } from './blm';
 import { BLUComponent } from './blu';
 import { BRDComponent } from './brd';
 import { DNCComponent } from './dnc';
-import { DRGComponent } from './drg';
+import { DRG6xComponent, DRGComponent } from './drg';
 import { DRK6xComponent, DRKComponent } from './drk';
 import { GNBComponent } from './gnb';
 import { MCHComponent } from './mch';
@@ -136,6 +136,8 @@ export class ComponentManager {
     if (this.o.ffxivVersion < 700) {
       if (job === 'DRK')
         return new DRK6xComponent(this.o);
+      if (job === 'DRG')
+        return new DRG6xComponent(this.o);
       if (job === 'NIN')
         return new NIN6xComponent(this.o);
     }
