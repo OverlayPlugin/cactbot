@@ -48,12 +48,13 @@ export class PCTComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   override onYouGainEffect(id: string, _effect: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
       case EffectId.MonochromeTones:
-        this.whitePaint.parentElement?.classList.add('blackpaint');
+        this.whitePaint.parentElement?.classList.add('black');
         break;
     }
   }
@@ -61,7 +62,7 @@ export class PCTComponent extends BaseComponent {
   override onYouLoseEffect(id: string, _effect: PartialFieldMatches<'LosesEffect'>): void {
     switch (id) {
       case EffectId.MonochromeTones:
-        this.whitePaint.parentElement?.classList.remove('blackpaint');
+        this.whitePaint.parentElement?.classList.remove('black');
         break;
     }
   }
@@ -110,10 +111,16 @@ export class PCTComponent extends BaseComponent {
     }
   }
 
+  override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
+    this.livingMuseBox.threshold = gcdSpell * 3;
+    this.steelMuseBox.threshold = gcdSpell * 3;
+    this.scenicMuseBox.threshold = gcdSpell * 3;
+  }
+
   override reset(): void {
     this.paletteGauge.innerText = '';
     this.whitePaint.innerText = '';
-    this.whitePaint.parentElement?.classList.remove('blackpaint');
+    this.whitePaint.parentElement?.classList.remove('black');
     this.livingCanvasStacks.childNodes?.forEach((stack) => {
       if (stack instanceof HTMLElement)
         stack.classList.remove('active', 'pulse');
