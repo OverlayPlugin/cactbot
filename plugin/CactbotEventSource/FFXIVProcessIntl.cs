@@ -646,9 +646,9 @@ namespace Cactbot {
     public struct MonkJobMemory {
       public enum Beast : byte {
         None = 0,
-        Coeurl = 1,
-        Opo = 2,
-        Raptor = 3,
+        Opo = 1,
+        Raptor = 2,
+        Coeurl = 3,
       }
 
       [FieldOffset(0x00)]
@@ -668,7 +668,14 @@ namespace Cactbot {
 
       [NonSerialized]
       [FieldOffset(0x04)]
+      private byte Fury;
+
+      [NonSerialized]
+      [FieldOffset(0x05)]
       private byte Nadi;
+
+      [FieldOffset(0x06)]
+      public ushort MasterfulReadyMilisecond;
 
       public string[] beastChakra {
         get {
@@ -679,7 +686,7 @@ namespace Cactbot {
 
       public bool solarNadi {
         get {
-          if ((Nadi & 0x4) == 0x4)
+          if ((Nadi & 0x2) == 0x2)
             return true;
           else
             return false;
@@ -688,10 +695,28 @@ namespace Cactbot {
 
       public bool lunarNadi {
         get {
-          if ((Nadi & 0x2) == 0x2)
+          if ((Nadi & 0x1) == 0x1)
             return true;
           else
             return false;
+        }
+      }
+
+      public int opoopoFury {
+        get {
+          return Fury & 0x3;
+        }
+      }
+
+      public int raptorFury {
+        get {
+          return (Fury >> 2) & 0x3;
+        }
+      }
+
+      public int coeurlFury {
+        get {
+          return (Fury >> 4) & 0x3;
         }
       }
     };
@@ -740,45 +765,52 @@ namespace Cactbot {
         Spear = 4,
         Ewer = 5,
         Spire = 6,
-        Lord = 0x70,
-        Lady = 0x80,
-      }
-
-      public enum Arcanum : byte {
-        None = 0,
-        Solar = 1,
-        Lunar = 2,
-        Celestial = 3,
+        Lord = 7,
+        Lady = 8,
       }
 
       [NonSerialized]
-      [FieldOffset(0x05)]
-      private byte _heldCard;
+      [FieldOffset(0x00)]
+      private ushort _card;
 
       [NonSerialized]
-      [FieldOffset(0x06)]
-      private byte _arcanumsmix;
+      [FieldOffset(0x02)]
+      private byte _nextdraw;
 
-      public string heldCard {
+      public string card1 {
         get {
-          return ((Card)(_heldCard & 0xF)).ToString();
+          return ((Card)(_card & 0xF)).ToString();
         }
       }
 
-      public string crownCard {
+      public string card2 {
         get {
-          return ((Card)(_heldCard & 0xF0)).ToString();
+          return ((Card)((_card >> 4) & 0xF)).ToString();
         }
       }
 
-      public string[] arcanums {
+        public string card3 {
         get {
-          var _arcanums = new List<Arcanum>();
-          for (var i = 0; i < 3; i++) {
-            int arcanum = (_arcanumsmix >> 2 * i) & 0x3;
-            _arcanums.Add((Arcanum)arcanum);
+          return ((Card)((_card >> 8) & 0xF)).ToString();
+        }
+      }
+
+      public string card4 {
+        get {
+          return ((Card)((_card >> 12) & 0xF)).ToString();
+        }
+      }
+
+      public string nextdraw {
+        get {
+          if (_nextdraw == 0)
+          {
+            return "Astral";
+          } else
+          {
+            return "Umbral";
           }
-          return _arcanums.Select(a => a.ToString()).Where(a => a != "None").ToArray();
+
         }
       }
     };
@@ -870,7 +902,7 @@ namespace Cactbot {
       }
 
       [FieldOffset(0x00)]
-      public byte palleteGauge;
+      public byte paletteGauge;
       [FieldOffset(0x02)]
       public byte paint;
 

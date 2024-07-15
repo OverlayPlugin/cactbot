@@ -261,7 +261,8 @@ div.justbuffs div#procs-container {
 .mch #right-side-icons,
 .dnc #right-side-icons,
 .smn #right-side-icons,
-.rdm #right-side-icons {
+.rdm #right-side-icons,
+.pct #right-side-icons {
   left: 278px;
 }
 
@@ -332,6 +333,38 @@ div.justbuffs div#procs-container {
   background-color: rgb(190 43 30);
 }
 
+#ast-stacks-card1.balance {
+  background-color: #f90;
+}
+
+#ast-stacks-card1.spear {
+  background-color: #47d;
+}
+
+#ast-stacks-card2.arrow {
+  background-color: #37ccee;
+}
+
+#ast-stacks-card2.bole {
+  background-color: #2d7;
+}
+
+#ast-stacks-card3.spire {
+  background-color: #ddd044;
+}
+
+#ast-stacks-card3.ewer {
+  background-color: #6cd;
+}
+
+#ast-stacks-card4.lord {
+  background-color: #9a2222;
+}
+
+#ast-stacks-card4.lady {
+  background-color: #9e5599;
+}
+
 #ast-stacks-sign > div.solar {
   background-color: rgb(190 43 30);
 }
@@ -360,11 +393,9 @@ div.justbuffs div#procs-container {
   flex: 5;
 }
 
-#mnk-stacks-lunar > div {
-  background-color: rgb(66 19 128 / 20%);
-}
-
-#mnk-stacks-solar > div {
+#mnk-stacks-lunar > div,
+#mnk-stacks-solar > div,
+#mnk-stacks-raptor > div {
   background-color: rgb(66 19 128 / 20%);
 }
 
@@ -376,15 +407,18 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 200 200);
 }
 
-#mnk-stacks-beastchakra > div.opo {
+#mnk-stacks-beastchakra > div.raptor,
+#mnk-stacks-raptor > div.active {
   background-color: rgb(150 90 180);
 }
 
-#mnk-stacks-beastchakra > div.coeurl {
+#mnk-stacks-beastchakra > div.opo,
+#mnk-stacks-opoopo > div.active {
   background-color: rgb(240 100 150);
 }
 
-#mnk-stacks-beastchakra > div.raptor {
+#mnk-stacks-beastchakra > div.coeurl,
+#mnk-stacks-coeurl > div.active {
   background-color: rgb(75 155 120);
 }
 
@@ -458,6 +492,46 @@ div.justbuffs div#procs-container {
 
 #rdm-stacks-manastack > div.active {
   background-color: rgb(255 100 100);
+}
+
+/* Living Canvas Progress - total 4 steps */
+
+/* First: Pom */
+#pct-stacks-living > div.active:nth-child(1) {
+  background-color: rgb(250 112 12);
+}
+
+/* Second: Wing */
+#pct-stacks-living > div.active:nth-child(2) {
+  background-color: rgb(177 106 165);
+}
+
+/* Third: Claw */
+#pct-stacks-living > div.active:nth-child(3) {
+  background-color: rgb(217 142 187);
+}
+
+/* Fourth: Fang */
+#pct-stacks-living > div.active:nth-child(4) {
+  background-color: rgb(74 27 27);
+}
+
+@keyframes pct-living-pulse {
+  50% {
+    box-shadow: 0 0 4px 0 rgb(247 185 243);
+  }
+}
+
+#pct-stacks-living > div.pulse {
+  animation: pct-living-pulse 1s infinite;
+}
+
+#pct-stacks-portrait > div.active:nth-child(1) {
+  background-color: rgb(255 255 255);
+}
+
+#pct-stacks-portrait > div.active:nth-child(2) {
+  background-color: rgb(175 190 100);
 }
 
 /* Procs */
@@ -581,11 +655,13 @@ div.justbuffs div#procs-container {
   background-color: rgb(214 237 255);
 }
 
-.pld-color-atonement.any {
+.pld-color-atonement.any,
+.pld-color-requiescat {
   background-color: rgb(25 156 255);
 }
 
-.pld-color-gore {
+.pld-color-gore,
+.pld-color-scorn {
   background-color: rgb(255 135 35);
 }
 
@@ -739,16 +815,20 @@ div.justbuffs div#procs-container {
   background-color: rgb(120 170 250);
 }
 
-.ast-color-benefic {
+.ast-color-draw {
+  background-color: rgb(64 65 163);
+}
+
+.ast-color-draw.astral {
   background-color: rgb(62 224 170);
 }
 
-.ast-color-helios {
-  background-color: rgb(175 235 215);
+.ast-color-draw.umbral {
+  background-color: rgb(150 110 180);
 }
 
-.ast-color-draw {
-  background-color: rgb(64 65 163);
+.ast-color-lucid {
+  background-color: rgb(227 148 210);
 }
 
 .ast-color-card {
@@ -761,18 +841,6 @@ div.justbuffs div#procs-container {
 
 .ast-color-card.melee {
   background-color: rgb(120 170 250);
-}
-
-.ast-color-seal {
-  background-color: rgb(180 200 220);
-}
-
-.ast-color-seal.ready {
-  background-color: rgb(62 224 170);
-}
-
-.ast-color-lucid {
-  background-color: rgb(227 148 210);
 }
 
 .ast-color-card.lady {
@@ -841,12 +909,30 @@ div.justbuffs div#procs-container {
   background-color: rgb(60 80 200);
 }
 
+.mnk-color-perfectbalance {
+  background-color: rgb(225 80 0);
+}
+
+.mnk-color-riddleoffire {
+  background-color: rgb(255 0 0);
+}
+
+.mnk-color-riddleofwind {
+  background-color: rgb(60 160 120);
+}
+
+.mnk-color-brotherhood {
+  background-color: rgb(255 170 50);
+}
+
 /* DRG */
-.drg-color-disembowel {
+.drg-color-disembowel,
+.drg-color-powerserge {
   background-color: rgb(0 255 255 / 70%);
 }
 
-.drg-color-blood {
+.drg-color-blood,
+.drg-color-geirskogul {
   background-color: rgb(180 200 220);
 }
 
@@ -866,7 +952,8 @@ div.justbuffs div#procs-container {
   background-color: rgb(217 51 0 / 70%);
 }
 
-.drg-color-blood.life {
+.drg-color-blood.life,
+.drg-color-geirskogul.active {
   background-color: rgb(217 51 0);
 }
 
@@ -1287,6 +1374,36 @@ div.justbuffs div#procs-container {
 
 .rdm-color-contresixte {
   background-color: rgb(30 80 170);
+}
+
+/* PCT */
+.pct-color-palettegauge {
+  background-color: rgb(192 250 255);
+}
+
+.pct-color-palettegauge.full {
+  /* Rainbow color */
+  background: linear-gradient(90deg, #2d68b1, #c4247f, #fac16d, #e4f57b, #0a9b4f, #0bab7a, #0bb4a8);
+}
+
+.pct-color-whitepaint {
+  background-color: rgb(110 255 255);
+}
+
+.pct-color-whitepaint.black {
+  background-color: rgb(125 0 235);
+}
+
+.pct-color-livingmuse {
+  background-color: rgb(139 184 52);
+}
+
+.pct-color-steelmuse {
+  background-color: rgb(170 55 40);
+}
+
+.pct-color-scenicmuse {
+  background-color: rgb(140 78 174);
 }
 
 /* BLU */
