@@ -173,6 +173,7 @@ export class AST6xComponent extends BaseComponent {
     }
 
     this.reset();
+    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['AST']): void {
