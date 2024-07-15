@@ -47,6 +47,7 @@ export class NINComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onYouGainEffect(id: string): void {
@@ -198,6 +199,7 @@ export class NIN6xComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onYouGainEffect(id: string): void {
@@ -269,10 +271,13 @@ export class NIN6xComponent extends BaseComponent {
 
   override onJobDetailUpdate(jobDetail: JobDetail['NIN']): void {
     if (jobDetail.hutonMilliseconds > 0) {
-      if (!this.player.speedBuffs.huton)
+      if (!this.player.speedBuffs.huton) {
         this.player.speedBuffs.huton = true;
+        this.onStatChange({ gcdSkill: this.player.gcdSkill });
+      }
     } else if (this.player.speedBuffs.huton) {
       this.player.speedBuffs.huton = false;
+      this.onStatChange({ gcdSkill: this.player.gcdSkill });
     }
     this.ninki.innerText = jobDetail.ninkiAmount.toString();
     this.ninki.parentNode.classList.remove('high', 'low');

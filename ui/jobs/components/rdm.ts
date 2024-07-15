@@ -93,6 +93,7 @@ export class RDMComponent extends BaseComponent {
     }
 
     this.reset();
+    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   override onUseAbility(id: string): void {

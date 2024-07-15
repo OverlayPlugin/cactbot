@@ -74,6 +74,7 @@ export class SAMComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onCombo(skill: string, combo: ComboTracker): void {
@@ -98,6 +99,7 @@ export class SAMComponent extends BaseComponent {
     if (id === EffectId.Fuka) {
       this.fuka.duration = parseFloat(matches.duration ?? '0') - 0.5; // -0.5s for log line delay
       this.player.speedBuffs.fuka = true;
+      this.onStatChange({ gcdSkill: this.player.gcdSkill });
     }
     if (id === EffectId.Fugetsu)
       this.fugetsu.duration = parseFloat(matches.duration ?? '0') - 0.5; // -0.5s for log line delay
@@ -106,6 +108,7 @@ export class SAMComponent extends BaseComponent {
     if (id === EffectId.Fuka) {
       this.fuka.duration = 0;
       this.player.speedBuffs.fuka = false;
+      this.onStatChange({ gcdSkill: this.player.gcdSkill });
     }
     if (id === EffectId.Fugetsu)
       this.fugetsu.duration = 0;

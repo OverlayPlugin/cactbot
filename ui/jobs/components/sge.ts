@@ -71,6 +71,7 @@ export class SGEComponent extends BaseComponent {
       classList: ['sge-color-adder'],
     });
     this.reset();
+    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   private _addActiveOnStacks(elements: HTMLDivElement[], stacks: number) {

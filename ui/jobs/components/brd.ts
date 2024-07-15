@@ -88,6 +88,7 @@ export class BRDComponent extends BaseComponent {
     this.straightShotProc.bigatzero = false;
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onUseAbility(id: string): void {
@@ -175,8 +176,10 @@ export class BRDComponent extends BaseComponent {
     // GCD calculate
     if (
       jobDetail.songName === 'Paeon' && this.player.speedBuffs.paeonStacks !== jobDetail.songProcs
-    )
+    ) {
       this.player.speedBuffs.paeonStacks = jobDetail.songProcs;
+      this.onStatChange({ gcdSkill: this.player.gcdSkill });
+    }
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
@@ -212,11 +215,13 @@ export class BRDComponent extends BaseComponent {
         // If we let paeon run out, get the temp stacks from ethos
         this.player.speedBuffs.museStacks = this.ethosStacks ?? this.player.speedBuffs.paeonStacks;
         this.player.speedBuffs.paeonStacks = 0;
+        this.onStatChange({ gcdSkill: this.player.gcdSkill });
         break;
       case EffectId.ArmysEthos:
         // Not under muse or paeon, so store the stacks
         this.ethosStacks = this.player.speedBuffs.paeonStacks;
         this.player.speedBuffs.paeonStacks = 0;
+        this.onStatChange({ gcdSkill: this.player.gcdSkill });
         break;
     }
   }
@@ -237,12 +242,14 @@ export class BRDComponent extends BaseComponent {
         // Muse effect ends
         this.player.speedBuffs.museStacks = 0;
         this.player.speedBuffs.paeonStacks = 0;
+        this.onStatChange({ gcdSkill: this.player.gcdSkill });
         break;
       case EffectId.ArmysEthos:
         // Didn't use a song and ethos ran out
         this.ethosStacks = 0;
         this.player.speedBuffs.museStacks = 0;
         this.player.speedBuffs.paeonStacks = 0;
+        this.onStatChange({ gcdSkill: this.player.gcdSkill });
         break;
     }
   }

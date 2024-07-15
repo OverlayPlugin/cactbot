@@ -48,6 +48,7 @@ export class DRKComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
@@ -154,6 +155,7 @@ export class DRK6xComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {

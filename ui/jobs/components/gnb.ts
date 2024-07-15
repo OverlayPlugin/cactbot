@@ -47,6 +47,7 @@ export class GNBComponent extends BaseComponent {
     });
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
     this.gnashingFangBox.valuescale = gcdSkill;

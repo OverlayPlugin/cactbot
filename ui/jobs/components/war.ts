@@ -42,6 +42,7 @@ export class WARComponent extends BaseComponent {
     this.bonus = 0;
 
     this.reset();
+    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['WAR']): void {
