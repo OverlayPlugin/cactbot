@@ -96,6 +96,7 @@ export const kAbility = {
   BloodWeapon: 'E29',
   Delirium: '1CDE',
   LivingShadow: '4058',
+  SaltedEarth: 'E37',
   // GNB
   KeenEdge: '3F09',
   BrutalShell: '3F0B',
@@ -113,6 +114,7 @@ export const kAbility = {
   Aero2: '84',
   Dia: '4094',
   Assize: 'DF3',
+  PresenceOfMind: '88',
   // SCH
   Bio: '45C8',
   Bio2: '45C9',
@@ -199,6 +201,7 @@ export const kAbility = {
   HissatsuSenei: '4061',
   Fuko: '64B4',
   Gyofu: '9063',
+  Ikishoten: '4062',
   // RPR
   Slice: '5F35',
   WaxingSlice: '5F36',

@@ -10,6 +10,7 @@ export class WHMComponent extends BaseComponent {
   lilysecondBox: ResourceBox;
   diaBox: TimerBox;
   assizeBox: TimerBox;
+  pomBox: TimerBox;
   lucidBox: TimerBox;
   lilyStacks: HTMLDivElement[];
   bloodlilyStacks: HTMLDivElement[];
@@ -29,6 +30,10 @@ export class WHMComponent extends BaseComponent {
     this.assizeBox = this.bars.addProcBox({
       id: 'whm-procs-assize',
       fgColor: 'whm-color-assize',
+    });
+    this.pomBox = this.bars.addProcBox({
+      id: 'whm-procs-pom',
+      fgColor: 'whm-color-pom',
     });
     this.lucidBox = this.bars.addProcBox({
       id: 'whm-procs-lucid',
@@ -92,10 +97,10 @@ export class WHMComponent extends BaseComponent {
         this.diaBox.duration = 30;
         break;
       case kAbility.Assize:
-        if (this.ffxivVersion >= 630)
-          this.assizeBox.duration = 40;
-        else
-          this.assizeBox.duration = 45;
+        this.assizeBox.duration = 40;
+        break;
+      case kAbility.PresenceOfMind:
+        this.pomBox.duration = 120;
         break;
       case kAbility.LucidDreaming:
         this.lucidBox.duration = 60;
@@ -117,6 +122,8 @@ export class WHMComponent extends BaseComponent {
     this.diaBox.threshold = gcdSpell + 1;
     this.assizeBox.valuescale = gcdSpell;
     this.assizeBox.threshold = gcdSpell + 1;
+    this.pomBox.valuescale = gcdSpell;
+    this.pomBox.threshold = gcdSpell + 1;
     this.lucidBox.valuescale = gcdSpell;
     this.lucidBox.threshold = gcdSpell + 1;
   }
@@ -124,6 +131,7 @@ export class WHMComponent extends BaseComponent {
   override reset(): void {
     this.diaBox.duration = 0;
     this.assizeBox.duration = 0;
+    this.pomBox.duration = 0;
     this.lucidBox.duration = 0;
   }
 }
