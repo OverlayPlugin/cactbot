@@ -56,10 +56,10 @@ export class PCTComponent extends BaseComponent {
       case kAbility.WingedMuse:
       case kAbility.ClawedMuse:
       case kAbility.FangedMuse:
-        this.livingMuseBox.duration = 40;
+        this.livingMuseBox.duration = 40 + (this.livingMuseBox.duration ?? 0);
         break;
       case kAbility.StrikingMuse:
-        this.steelMuseBox.duration = 60;
+        this.steelMuseBox.duration = 60 + (this.steelMuseBox.duration ?? 0);
         break;
       case kAbility.StarryMuse:
         this.scenicMuseBox.duration = 120;
