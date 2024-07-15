@@ -22,11 +22,11 @@ export class PCTComponent extends BaseComponent {
   constructor(o: ComponentInterface) {
     super(o);
 
-    this.whitePaint = this.bars.addResourceBox({
-      classList: ['pct-color-whitepaint'],
-    });
     this.paletteGauge = this.bars.addResourceBox({
       classList: ['pct-color-palettegauge'],
+    });
+    this.whitePaint = this.bars.addResourceBox({
+      classList: ['pct-color-whitepaint'],
     });
 
     this.hammerTimer = this.bars.addTimerBar({
@@ -108,8 +108,10 @@ export class PCTComponent extends BaseComponent {
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['PCT']): void {
-    this.whitePaint.innerText = jobDetail.paint.toString();
     this.paletteGauge.innerText = jobDetail.paletteGauge.toString();
+    this.paletteGauge.parentNode.classList.toggle('full', jobDetail.paletteGauge === 100);
+
+    this.whitePaint.innerText = jobDetail.paint.toString();
 
     // Light up the rendered stacks for the current living canvas objects.
     livingCanvasObjects.forEach((obj, i) => {
@@ -131,6 +133,8 @@ export class PCTComponent extends BaseComponent {
         break;
       }
     }
+
+    // Portrait
     this.portraitStacks.children[0]?.classList.toggle('active', jobDetail.mooglePortrait);
     this.portraitStacks.children[1]?.classList.toggle('active', jobDetail.madeenPortrait);
 

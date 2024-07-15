@@ -1332,16 +1332,20 @@ div.justbuffs div#procs-container {
 
 /* PCT */
 .pct-color-palettegauge {
+  background-color: rgb(192 250 255);
+}
+
+.pct-color-palettegauge.full {
   /* Rainbow color */
   background: linear-gradient(90deg, #2d68b1, #c4247f, #fac16d, #e4f57b, #0a9b4f, #0bab7a, #0bb4a8);
 }
 
 .pct-color-whitepaint {
-  background-color: rgb(192 250 255);
+  background-color: rgb(110 255 255);
 }
 
 .pct-color-whitepaint.black {
-  background-color: rgb(22 25 27);
+  background-color: rgb(125 0 235);
 }
 
 .pct-color-livingmuse {
