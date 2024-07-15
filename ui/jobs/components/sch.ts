@@ -86,6 +86,7 @@ export class SCHComponent extends BaseComponent {
         this.aetherflowBox.duration = 60;
         this.aetherflowStackBox.parentNode.classList.remove('pulse');
         // check at -15s, -10s, -5s and 0s
+        // TODO: improve this ugly code.
         this.tid1 = window.setTimeout(() => {
           this.RefreshAFthreholds();
           window.setTimeout(() => {
