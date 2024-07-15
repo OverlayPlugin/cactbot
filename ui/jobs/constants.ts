@@ -169,6 +169,7 @@ export const kAbility = {
   HeavensThrust: '64AB',
   SpiralBlow: '905B',
   LanceBarrage: '905A',
+  Geirskogul: 'DE3',
   // NIN
   SpinningEdge: '8C0',
   GustSlash: '8C2',
@@ -295,6 +296,11 @@ export const kAbility = {
   Fleche: '1D5D',
   ContreSixte: '1D5F',
   // PCT
+  PomMuse: '876E',
+  WingedMuse: '876F',
+  ClawedMuse: '8770',
+  FangedMuse: '8771',
+  StrikingMuse: '8772',
   StarryMuse: '8773',
   // BLU
   SongOfTorment: '2C7A',

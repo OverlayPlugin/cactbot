@@ -146,7 +146,7 @@ export interface JobDetail {
     manaStacks: number;
   };
   'PCT': {
-    palleteGauge: number;
+    paletteGauge: number;
     paint: 0 | 1 | 2 | 3 | 4 | 5;
     creatureMotif: 'Pom' | 'Wing' | 'Claw' | 'Maw' | 'None';
     weaponMotif: boolean;
