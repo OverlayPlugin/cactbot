@@ -718,8 +718,8 @@ div.justbuffs div#procs-container {
   background-color: rgb(255 96 207);
 }
 
-.sch-color-aetherflow.too-much-stacks {
-  background-color: rgb(240 30 30);
+.sch-color-aetherflow.pulse {
+  animation: 1s pulse-white infinite;
 }
 
 .sch-color-fairygauge {

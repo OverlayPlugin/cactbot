@@ -51,9 +51,9 @@ export class SCHComponent extends BaseComponent {
       +this.aetherflowStackBox.innerText * 5 >=
         (this.aetherflowBox.duration ?? 0) - this.aetherflowBox.elapsed
     ) {
-      this.aetherflowStackBox.parentNode.classList.add('too-much-stacks');
+      this.aetherflowStackBox.parentNode.classList.add('pulse');
     } else {
-      this.aetherflowStackBox.parentNode.classList.remove('too-much-stacks');
+      this.aetherflowStackBox.parentNode.classList.remove('pulse');
     }
   }
 
@@ -83,7 +83,7 @@ export class SCHComponent extends BaseComponent {
         break;
       case kAbility.Aetherflow:
         this.aetherflowBox.duration = 60;
-        this.aetherflowStackBox.parentNode.classList.remove('too-much-stacks');
+        this.aetherflowStackBox.parentNode.classList.remove('pulse');
         // check at -15s, -10s, -5s and 0s
         this.tid1 = window.setTimeout(() => {
           this.RefreshAFthreholds();
