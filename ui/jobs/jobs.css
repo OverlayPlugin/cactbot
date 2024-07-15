@@ -1311,16 +1311,6 @@ div.justbuffs div#procs-container {
   background-color: rgb(192 250 255);
 }
 
-@keyframes pct-whitepaint-pulse {
-  50% {
-    background-color: rgb(48 207 221);
-  }
-}
-
-.pct-color-whitepaint.pulse {
-  animation: pct-whitepaint-pulse 1s infinite;
-}
-
 .pct-color-livingmuse {
   background-color: rgb(139 184 52);
 }

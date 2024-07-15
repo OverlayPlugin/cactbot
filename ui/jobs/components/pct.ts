@@ -69,11 +69,6 @@ export class PCTComponent extends BaseComponent {
 
   override onJobDetailUpdate(jobDetail: JobDetail['PCT']): void {
     this.whitePaint.innerText = jobDetail.paint.toString();
-    if (this.whitePaint.innerText === '5') {
-      this.whitePaint.parentElement?.classList.add('pulse');
-    } else {
-      this.whitePaint.parentElement?.classList.remove('pulse');
-    }
     this.paletteGauge.innerText = jobDetail.paletteGauge.toString();
 
     // Light up the rendered stacks for the current living canvas objects.
