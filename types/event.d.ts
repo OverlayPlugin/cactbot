@@ -142,7 +142,7 @@ export interface JobDetail {
     usableArcanum: ('Ruby' | 'Topaz' | 'Emerald')[];
     activePrimal: 'Ifrit' | 'Titan' | 'Garuda' | null;
     nextSummoned: 'Bahamut' | 'Phoenix' | 'SolarBahamut';
-    summomStatus: boolean;
+    summonStatus: boolean;
   };
   'RDM': {
     whiteMana: number;

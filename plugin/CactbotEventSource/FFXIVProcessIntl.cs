@@ -591,7 +591,7 @@ namespace Cactbot {
 
       [NonSerialized]
       [FieldOffset(0x04)]
-      private byte _summomStatus;
+      private byte _summonStatus;
 
       [NonSerialized]
       [FieldOffset(0x06)]
@@ -601,9 +601,9 @@ namespace Cactbot {
       [FieldOffset(0x07)]
       private byte stance;
 
-      public Boolean summomStatus {
+      public Boolean summonStatus {
         get {
-          if (_summomStatus != 0)
+          if (_summonStatus != 0)
             return true;
           else
             return false;
