@@ -570,18 +570,57 @@ namespace Cactbot {
 
     [StructLayout(LayoutKind.Explicit)]
     public struct SummonerJobMemory {
+      public enum activeArcanum : byte {
+        None = 0,
+        Ifrit = 1,
+        Titan = 2,
+        Garuda = 3,
+      }
+
+      public enum nextSummon : byte {
+        Bahamut = 0,
+        Phoenix = 1 << 2,
+        SolarBahamut = 2 << 2, // I guess!
+      }
+
       [FieldOffset(0x00)]
       public ushort tranceMilliseconds;
 
       [FieldOffset(0x02)]
       public ushort attunementMilliseconds;
 
+      [NonSerialized]
+      [FieldOffset(0x04)]
+      private byte _summomStatus;
+
+      [NonSerialized]
       [FieldOffset(0x06)]
-      public byte attunement;
+      private byte _attunement;
 
       [NonSerialized]
       [FieldOffset(0x07)]
       private byte stance;
+
+      public Boolean summomStatus {
+        get {
+          if (_summomStatus != 0)
+            return true;
+          else
+            return false;
+        }
+      }
+
+      public int attunement {
+        get {
+          return (_attunement & 0x1C) >> 2;
+        }
+      }
+
+      public string activePrimal {
+        get {
+          return ((activeArcanum)(_attunement & 0x3)).ToString();
+        }
+      }
 
       public string[] usableArcanum {
         get {
@@ -597,25 +636,9 @@ namespace Cactbot {
         }
       }
 
-      public string activePrimal {
-        get {
-          if ((stance & 0xC) == 0x4)
-            return "Ifrit";
-          else if ((stance & 0xC) == 0x8)
-            return "Titan";
-          else if ((stance & 0xC) == 0xC)
-            return "Garuda";
-          else
-            return null;
-        }
-      }
-
       public String nextSummoned {
         get {
-          if ((stance & 0x10) == 0)
-            return "Bahamut";
-          else
-            return "Phoenix";
+          return ((nextSummon)(stance & 0xC)).ToString();
         }
       }
 
