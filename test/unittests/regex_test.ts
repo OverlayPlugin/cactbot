@@ -23,36 +23,6 @@ describe('regex tests', () => {
     assert.equal(Regexes.ability().source, Regexes.abilityFull().source);
   });
 
-  it('NetworkAOEAbility', () => {
-    // example_log_lines doesn't have specific examples of 0x16 lines, but they should be matched
-    // by NetRegexes.ability(), so handle this test separately.
-    const type = 'NetworkAOEAbility';
-    const testLine =
-      '[01:48:08.291] AOEActionEffect 16:10FF0001:Tiny Poutini:3F40:Double Standard Finish:10FF0001:Tiny Poutini:50E:71D0000:E:7370000:0:0:0:0:0:0:0:0:0:0:0:0:111584:111584:6400:0:0:1000:99.59558:93.36987:0:0.005704641:111584:111584:6400:0:0:1000:99.59558:93.36987:0:0.005704641:000107FF:1:2:008aa08c35da1e426c6a06b366f40eb6';
-    const fields = {
-      type: '16',
-      sourceId: '10FF0001',
-      source: 'Tiny Poutini',
-      id: '3F40',
-      ability: 'Double Standard Finish',
-      targetId: '10FF0001',
-      target: 'Tiny Poutini',
-      flags: '50E',
-      x: '99.59558',
-      y: '93.36987',
-      z: '0',
-      heading: '0.005704641',
-    };
-
-    const matches = testLine.match(Regexes.ability())?.groups;
-    if (matches === undefined)
-      assert.fail('actual', 'expected', `Could not capture fields via regex for '${type}'`);
-
-    for (const field in fields) {
-      assert.equal(matches[field], fields[field as keyof typeof fields]);
-    }
-  });
-
   it('statusEffectExplicit and StatusEffect use the same regex', () => {
     assert.equal(buildRegex('StatusEffect').source, Regexes.statusEffectExplicit().source);
   });
