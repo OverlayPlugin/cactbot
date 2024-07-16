@@ -146,7 +146,7 @@ export class PlayerBase {
     else
       throw new Error(`Invalid type: ${type as string}`);
 
-    return calcGCDFromStat(this, speed, originalCd);
+    return calcGCDFromStat(this, speed, this.ffxivVersion, originalCd);
   }
 }
 export class Player extends PlayerBase {
