@@ -9897,7 +9897,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
-      'de': 'Neue Bande der Freundschaft',
+      'de': 'Neue Bande der Freund­schaft',
       'en': 'Dreams of a New Day',
       'fr': 'Rêves éveillés',
       'ja': '寝ても覚めても',

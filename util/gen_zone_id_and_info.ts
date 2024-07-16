@@ -65,7 +65,7 @@ const _TT_FIELDS = [
   'Map.SizeFactor',
   'Map.OffsetX',
   'Map.OffsetY',
-  'TerritoryIntendedUse',
+  'TerritoryIntendedUse.fake_prop', // must specify TIU to get row_id, but no fields needed
   'ExVersion.fake_prop', // must specify ExVersion to get row_id, but no fields needed
 ];
 
@@ -129,7 +129,7 @@ type ResultTerritoryType = {
         'Name@ja'?: string;
       };
     };
-    TerritoryIntendedUse?: number;
+    TerritoryIntendedUse?: RowIdOnly;
     WeatherRate?: number;
   };
 };
@@ -347,12 +347,13 @@ const generateZoneIdMap = (
     const ttPlaceName = territory.fields.PlaceName?.fields.Name ?? '';
     const ttCfcId = territory.fields.ContentFinderCondition?.row_id;
     const ttCfcName = territory.fields.ContentFinderCondition?.fields.Name;
-    const ttUse = territory.fields.TerritoryIntendedUse;
-    const isTownZone = ttUse === 0;
+    const ttUse = territory.fields.TerritoryIntendedUse?.row_id;
+    const isTownZone = ttUse === 0 || ttUse === undefined;
     const isOverworldZone = ttUse === 1;
     const cfcDerivedCfcId = cfcDerivedTtToCfcMap[ttId];
     const syntheticName = syntheticIdsToNames[ttId];
 
+    // we expplicitly allow 'None' for cfcIdForName
     // this is used for town/overworld territories that we still
     // want to export in zone_info
     let cfcIdForName: 'None' | number | undefined;
@@ -536,9 +537,6 @@ const generateZoneInfoMap = async (
   // if it's a town/overworld zone)
   for (const [key] of Object.entries(ttToCfcIdMap)) {
     const ttId = parseInt(key);
-    if (ttId in zoneInfoMap)
-      continue;
-
     const ttZoneData = ttData[ttId];
 
     // If already populated by synthetic data, skip it.
