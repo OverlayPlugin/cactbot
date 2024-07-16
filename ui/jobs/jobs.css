@@ -1307,7 +1307,8 @@ div.justbuffs div#procs-container {
   background-color: rgb(60 80 200);
 }
 
-.smn-color-demisummon {
+.smn-color-demisummon,
+.smn-color-demisummon.solarbahamutready {
   background-color: rgb(180 200 220);
 }
 
