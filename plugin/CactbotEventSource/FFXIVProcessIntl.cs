@@ -580,7 +580,7 @@ namespace Cactbot {
       public enum nextSummon : byte {
         Bahamut = 0,
         Phoenix = 1 << 2,
-        SolarBahamut = 2 << 2, // I guess!
+        SolarBahamut = 2 << 2, // FIXME: guessed, not tested
       }
 
       [FieldOffset(0x00)]
