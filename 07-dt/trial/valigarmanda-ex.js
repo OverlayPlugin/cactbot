@@ -11,7 +11,7 @@ const mtFireOutputStrings = {
   leftWedgeSafe: {
     en: '<= Left Wedge Safe',
     de: '<= Linker Spalt sicher',
-    fr: '<= Coin gauche sûr',
+    fr: '<= Cône gauche sûr',
     ja: '<= 左が安地',
     cn: '<= 左侧安全',
     ko: '<= 왼쪽 안전',
@@ -19,6 +19,7 @@ const mtFireOutputStrings = {
   middleWedgeSafe: {
     en: 'Middle Wedge Safe',
     de: 'Mittel Spalt sicher',
+    fr: 'Cône central sûr',
     ja: '中央が安地',
     cn: '中间安全',
     ko: '가운데 안전',
@@ -26,7 +27,7 @@ const mtFireOutputStrings = {
   rightWedgeSafe: {
     en: 'Right Wedge Safe =>',
     de: 'Rechter Spalt sicher =>',
-    fr: 'Coin droit sûr =>',
+    fr: 'Cône droit sûr =>',
     ja: '右が安地 =>',
     cn: '右侧安全 =>',
     ko: '오른쪽 안전 =>',
@@ -202,7 +203,7 @@ Options.Triggers.push({
         soakSwap: {
           en: 'Tank Tower (soak/swap)',
           de: 'Tank Türme (nehmen/wechseln)',
-          fr: 'Tank tour (encaisser/swap)',
+          fr: 'Tank : Tour (encaisser/swap)',
           ja: 'タンク塔 (踏む/スイッチ)',
           cn: '双T轮换踩塔',
           ko: '탱커 기둥 (밟기/교대)',

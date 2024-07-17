@@ -132,10 +132,12 @@ const stayGoOutputStrings = {
   stay: {
     en: 'Stay',
     de: 'Bleib Stehen',
+    fr: 'Restez',
   },
   goAcross: {
     en: 'Go Across',
     de: 'Geh rüber',
+    fr: 'Traversez',
   },
 };
 Options.Triggers.push({
@@ -198,11 +200,13 @@ Options.Triggers.push({
         frontRight: {
           en: 'Front + Boss\'s Right',
           de: 'Vorne + Rechts vom Boss',
+          fr: 'Devant + Droite du boss',
         },
         ...stayGoOutputStrings,
         frontRightKnockaround: {
           en: 'Front + Boss\'s Right (${stayGo})',
           de: 'Vorne + Rechts vom Boss (${stayGo})',
+          fr: 'Devant + Droite du boss (${stayGo})',
         },
       },
     },
@@ -222,11 +226,13 @@ Options.Triggers.push({
         frontLeft: {
           en: 'Front + Boss\'s Left',
           de: 'Vorne + Links vom Boss',
+          fr: 'Devant + Gauche du boss',
         },
         ...stayGoOutputStrings,
         frontLeftKnockaround: {
           en: 'Front + Boss\'s Left (${stayGo})',
           de: 'Vorne + Links vom Boss (${stayGo})',
+          fr: 'Devant + Gauche du boss(${stayGo})',
         },
       },
     },
@@ -246,11 +252,13 @@ Options.Triggers.push({
         backRight: {
           en: 'Behind + Boss\'s Left',
           de: 'Hinten + Links vom Boss',
+          fr: 'Derrière + Gauche du boss',
         },
         ...stayGoOutputStrings,
         backRightKnockaround: {
           en: 'Behind + Boss\'s Left (${stayGo})',
           de: 'Hinten + Links vom Boss (${stayGo})',
+          fr: 'Derrière + Gauche du boss (${stayGo})',
         },
       },
     },
@@ -270,11 +278,13 @@ Options.Triggers.push({
         backLeft: {
           en: 'Behind + Boss\'s Right',
           de: 'Hinten + Rechts vom Boss',
+          fr: 'Derrière + Droite du boss',
         },
         ...stayGoOutputStrings,
         backLeftKnockaround: {
           en: 'Behind + Boss\'s Right (${stayGo})',
           de: 'Hinten + Rechts vom Boss (${stayGo})',
+          fr: 'Derrière + Droite du boss (${stayGo})',
         },
       },
     },
@@ -361,30 +371,37 @@ Options.Triggers.push({
         insideWest: {
           en: 'Inner West Diamond',
           de: 'Innerer Westlicher Diamant',
+          fr: 'Diamant intérieur Ouest',
         },
         insideEast: {
           en: 'Inner East Diamond',
           de: 'Innerer Östlicher Diamant',
+          fr: 'Diamant intérieur Est',
         },
         insideNS: {
           en: 'Inner North/South Diamonds - ${lean}',
           de: 'Innerer Nördlicher/Südlicher Diamant - ${lean}',
+          fr: 'Diamant intérieur Nord/Sud - ${lean}',
         },
         leanWest: {
           en: 'Lean West',
           de: 'Westlich halten',
+          fr: 'Vers l\'Ouest',
         },
         leanEast: {
           en: 'Lean East',
           de: 'Östlich halten',
+          fr: 'Vers l\'Est',
         },
         intercardsEast: {
           en: 'Outer Intercard Diamonds - East',
           de: 'Äußere Interkardinale Diamanten - Osten',
+          fr: 'Diamant extérieur intercardinal - Est',
         },
         intercardsWest: {
           en: 'Outer Intercard Diamonds - West',
           de: 'Äußere Interkardinale Diamanten - Westen',
+          fr: 'Diamant extérieur intercardinal - Ouest',
         },
       },
     },
@@ -562,12 +579,15 @@ Options.Triggers.push({
       outputStrings: {
         leanLeft: {
           en: '<= Inside Left (Facing Boss)',
+          fr: '<= Gauche intérieur (en regardant le boss)',
         },
         leanRight: {
           en: 'Inside Right (Facing Boss) =>',
+          fr: 'Droite intérieur (en regardant le boss) =>',
         },
         corner: {
           en: 'Corners Safe',
+          fr: 'Coins sûrs',
         },
         northwest: Outputs.northwest,
         northeast: Outputs.northeast,
@@ -579,12 +599,15 @@ Options.Triggers.push({
         wind: Outputs.knockback,
         fireWindSafe: {
           en: '${fireWind} ${safeDir}',
+          fr: '${fireWind} ${safeDir}',
         },
         combo: {
           en: '${fireWindCombo} + ${tile}',
+          fr: '${fireWindCombo} + ${tile}',
         },
         unknown: {
           en: 'Avoid Swords',
+          fr: 'Évitez les épées',
         },
       },
     },
@@ -617,10 +640,12 @@ Options.Triggers.push({
         enumOnYou: {
           en: 'Partner stack (on you)',
           de: 'Mit Partner sammeln (auf dir)',
+          fr: 'Package partenaire (sur vous)',
         },
         enumKnockback: {
           en: 'Partner stack (knockback)',
           de: 'Mit Partner sammeln (Rückstoß)',
+          fr: 'Package partenaire (poussée)',
         },
       },
     },
@@ -736,14 +761,17 @@ Options.Triggers.push({
         unknown: {
           en: 'Safe Quadrant + Spread Out',
           de: 'Sicherer Quadrant + Verteilen',
+          fr: 'Quadrant sûr + Dispersion',
         },
         left: {
           en: '<= Front Left Quadrant + Spread Out',
           de: '<= Vorderer linker Quadrant + Verteilen',
+          fr: '<= Quadrant avant gauche + Dispersion',
         },
         right: {
           en: 'Front Right Quadrant + Spread Out =>',
           de: 'Vorderer rechter Quadrant + Verteilen =>',
+          fr: 'Quadrant avant droit + Dispersion =>',
         },
       },
     },
@@ -793,6 +821,7 @@ Options.Triggers.push({
         combo: {
           en: '${breakChains} (${stayGo})',
           de: '${breakChains} (${stayGo})',
+          fr: '${breakChains} (${stayGo})',
         },
       },
     },
@@ -822,16 +851,19 @@ Options.Triggers.push({
         left: {
           en: 'Boss\'s Left',
           de: 'Links vom Boss',
+          fr: 'À gauche du boss',
         },
         right: {
           en: 'Boss\'s Right',
           de: 'Rechts vom Boss',
+          fr: 'À droite du boss',
         },
         in: Outputs.in,
         out: Outputs.out,
         combo: {
           en: '${inOut} + ${side}',
           de: '${inOut} + ${side}',
+          fr: '${inOut} + ${side}',
         },
       },
     },
@@ -849,6 +881,7 @@ Options.Triggers.push({
         rightSword: {
           en: 'Boss\'s Left',
           de: 'Links vom Boss',
+          fr: 'À gauche du boss',
         },
       },
     },
@@ -862,6 +895,7 @@ Options.Triggers.push({
         leftSword: {
           en: 'Boss\'s Right',
           de: 'Rechts vom Boss',
+          fr: 'À droite du boss',
         },
       },
     },
@@ -898,15 +932,19 @@ Options.Triggers.push({
       outputStrings: {
         inside: {
           en: 'Inside Safe',
+          fr: 'Intérieur sûr',
         },
         eastWest: {
           en: 'Inside East/West Safe',
+          fr: 'Intérieur Est/Ouest sûr',
         },
         northSouth: {
           en: 'Inside North/South Safe',
+          fr: 'Intérieur Nord/Sud sûr',
         },
         intercard: {
           en: 'Ouside Intercards Safe (Avoid Corners)',
+          fr: 'Intercardinal extérieur sûr (Évitez les coins)',
         },
       },
     },
