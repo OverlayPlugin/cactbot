@@ -203,12 +203,19 @@ export class BLMComponent extends BaseComponent {
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
     this.thunderDot.threshold = gcdSpell * 2 + 1;
     this.manafont.threshold = gcdSpell * 2 + 1;
-    setTimeout(() => {
-      this.maxpoly = this.player.level >= 98 ? 3 : this.player.level >= 80 ? 2 : 1;
-      for (let i = 0; i < 3; ++i) {
-        this.xenoStacks[i]?.classList.toggle('hide', this.maxpoly < i + 1);
-      }
-    }, 500);
+    // FIXME: will not work if loaded without status/map changes, until Ley Lines.
+    this.maxpoly = this.player.level >= 98
+      ? 3
+      : this.player.level >= 80
+      ? 2
+      : this.player.level >= 70
+      ? 1
+      : this.player.level > 0
+      ? 0
+      : 3; // with reload, it will return lv0, default show all.
+    for (let i = 0; i < 3; ++i) {
+      this.xenoStacks[i]?.classList.toggle('hide', this.maxpoly < i + 1);
+    }
   }
 
   override reset(): void {
