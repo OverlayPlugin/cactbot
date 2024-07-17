@@ -114,6 +114,7 @@ export class SCHComponent extends BaseComponent {
   override reset(): void {
     this.bioBox.duration = 0;
     this.aetherflowBox.duration = 0;
+    this.aetherflowStackBox.innerText = '0';
     this.lucidBox.duration = 0;
     window.clearTimeout(this.tid1);
   }
