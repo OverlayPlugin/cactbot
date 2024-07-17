@@ -94,7 +94,7 @@ export class ASTComponent extends BaseComponent {
         break;
       case kAbility.AstralDraw:
       case kAbility.UmbralDraw:
-        this.drawBox.duration = 60;
+        this.drawBox.duration = 55;
         break;
       case kAbility.LucidDreaming:
         this.lucidBox.duration = 60;

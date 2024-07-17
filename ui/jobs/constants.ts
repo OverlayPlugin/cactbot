@@ -111,6 +111,9 @@ export const kAbility = {
   LightningShot: '3F0F',
   Bloodfest: '3F24',
   NoMercy: '3F0A',
+  ReignOfBeasts: '9049',
+  NobleBlood: '904A',
+  LionHeart: '904B',
   // WHM
   Aero: '79',
   Aero2: '84',
@@ -274,6 +277,7 @@ export const kAbility = {
   DreadwyrmTrance: 'DFD',
   SummonBahamut: '1D03',
   SummonPhoenix: '64E7',
+  SummonSolarBahamut: '9080',
   // RDM
   Verstone: '1D57',
   Verfire: '1D56',

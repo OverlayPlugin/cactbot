@@ -794,8 +794,8 @@ div.justbuffs div#procs-container {
   background-color: rgb(255 96 207);
 }
 
-.sch-color-aetherflow.too-much-stacks {
-  background-color: rgb(240 30 30);
+.sch-color-aetherflow.pulse {
+  animation: 1s pulse-white infinite;
 }
 
 .sch-color-fairygauge {
@@ -1312,7 +1312,8 @@ div.justbuffs div#procs-container {
   background-color: rgb(60 80 200);
 }
 
-.smn-color-demisummon {
+.smn-color-demisummon,
+.smn-color-demisummon.solarbahamutready {
   background-color: rgb(180 200 220);
 }
 

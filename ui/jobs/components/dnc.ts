@@ -71,11 +71,13 @@ export class DNCComponent extends BaseComponent {
       case EffectId.FlourishingSymmetry:
       case EffectId.FlourishingFlow:
       case EffectId.ThreefoldFanDance:
-      case EffectId.FourfoldFanDance: {
+      case EffectId.FourfoldFanDance:
+      case EffectId.FinishingMoveReady: {
         if (!this.flourishEffect.includes(effect))
           this.flourishEffect.push(effect);
         if (
-          this.flourishEffect.length === 4 && this.flourishIsActive ||
+          this.flourishEffect.length === 5 && this.flourishIsActive ||
+          this.player.level < 96 && this.flourishEffect.length === 4 && this.flourishIsActive ||
           this.player.level < 86 && this.flourishEffect.length === 3 && this.flourishIsActive
         ) {
           this.flourish.duration = 60 - this.flourish.elapsed;

@@ -87,7 +87,9 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         `${detail.jobDetail.aetherflowStacks} | ${detail.jobDetail.tranceMilliseconds} | ${detail.jobDetail.attunement} | ${detail.jobDetail.attunementMilliseconds} | ${
           detail
             .jobDetail.activePrimal ?? '-'
-        } | [${detail.jobDetail.usableArcanum.join(', ')}] | ${detail.jobDetail.nextSummoned}`;
+        } | [${
+          detail.jobDetail.usableArcanum.join(', ')
+        }] | ${detail.jobDetail.nextSummoned} | ${detail.jobDetail.summonStatus.toString()}`;
     } else if (detail.job === 'SCH' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.aetherflowStacks} | ${detail.jobDetail.fairyGauge} | ${detail.jobDetail.fairyStatus} (${detail.jobDetail.fairyMilliseconds})`;

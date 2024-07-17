@@ -78,6 +78,7 @@ export class SMNComponent extends BaseComponent {
     }
 
     this.reset();
+    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   private _addActiveOnStacks(elements: HTMLDivElement[], stacks: number) {
@@ -107,6 +108,10 @@ export class SMNComponent extends BaseComponent {
       jobDetail.nextSummoned === 'Phoenix',
     );
     this.demiSummoningBox.parentNode.classList.toggle(
+      'solarbahamutready',
+      jobDetail.nextSummoned === 'SolarBahamut',
+    );
+    this.demiSummoningBox.parentNode.classList.toggle(
       'garuda',
       jobDetail.activePrimal === 'Garuda',
     );
@@ -114,11 +119,17 @@ export class SMNComponent extends BaseComponent {
     this.demiSummoningBox.parentNode.classList.toggle('ifrit', jobDetail.activePrimal === 'Ifrit');
 
     this.tranceBox.fg = computeBackgroundColorFrom(this.tranceBox, 'smn-color-trance');
-    if (jobDetail.nextSummoned === 'Phoenix')
+    if (jobDetail.nextSummoned === 'Phoenix') {
       this.tranceBox.fg = computeBackgroundColorFrom(
         this.tranceBox,
         'smn-color-demisummon.firebirdready',
       );
+    } else if (jobDetail.nextSummoned === 'SolarBahamut') {
+      this.tranceBox.fg = computeBackgroundColorFrom(
+        this.tranceBox,
+        'smn-color-demisummon.solarbahamutready',
+      );
+    }
 
     // Arcanum and Attunement Guage
     this._addActiveOnStacks(
@@ -156,6 +167,7 @@ export class SMNComponent extends BaseComponent {
       case kAbility.EnergySiphon:
         this.energyDrainBox.duration = 60;
         break;
+      case kAbility.SummonSolarBahamut:
       case kAbility.SummonBahamut:
       case kAbility.SummonPhoenix:
       case kAbility.Aethercharge:
