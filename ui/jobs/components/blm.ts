@@ -107,6 +107,8 @@ export class BLMComponent extends BaseComponent {
       case kAbility.HighThunder1:
         this.thunderDot.duration = 30;
         break;
+      case kAbility.Manafont:
+        this.manafont.duration = 100;
     }
   }
 
