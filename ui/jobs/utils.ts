@@ -146,7 +146,7 @@ export const calcGCDFromStat = (
   const astralUmbralMod = 100;
 
   // If stats haven't been updated, use a reasonable default value.
-  let gcdMs = 2500;
+  let gcdMs = actionDelay;
   if (stat !== 0) {
     const mod = kLevelMod[player.level];
     if (!mod)
