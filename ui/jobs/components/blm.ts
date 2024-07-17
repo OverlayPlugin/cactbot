@@ -148,6 +148,7 @@ export class BLMComponent extends BaseComponent {
         maxMp: this.player.maxMp,
         umbralStacks: this.umbralStacks,
         inCombat: this.inCombat,
+        ffxivVersion: this.ffxivVersion,
       });
     }
 
