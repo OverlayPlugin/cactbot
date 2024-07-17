@@ -86,14 +86,14 @@ export class PCTComponent extends BaseComponent {
     }
   }
 
-  override onUseAbility(id: string, _ability: PartialFieldMatches<'Ability'>): void {
+  override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     switch (id) {
       // Living Muses
       case kAbility.PomMuse:
       case kAbility.WingedMuse:
       case kAbility.ClawedMuse:
       case kAbility.FangedMuse:
-        if (_ability.targetIndex === '0') {
+        if (matches.targetIndex === '0') {
           this.livingMuseBox.duration = 40 + (this.livingMuseBox.value ?? 0);
         }
         break;
