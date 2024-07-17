@@ -1026,7 +1026,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         intercard: {
           en: 'Ouside Intercards Safe (Avoid Corners)',
-          fr: 'Intercardinal extérieur sûr (Évitez les coins',
+          fr: 'Intercardinal extérieur sûr (Évitez les coins)',
         },
       },
     },
