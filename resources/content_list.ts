@@ -410,6 +410,16 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.AnabaseiosTheEleventhCircleSavage,
   ZoneId.AnabaseiosTheTwelfthCircleSavage,
 
+  // Alliance Raids (Dawntrail)
+
+  // Normal Raids (Dawntrail)
+  ZoneId.AacLightHeavyweightM1,
+  ZoneId.AacLightHeavyweightM2,
+  ZoneId.AacLightHeavyweightM3,
+  ZoneId.AacLightHeavyweightM4,
+
+  // Savage Raids (Dawntrail)
+
   // Variant & Criterion Dungeons
   ZoneId.TheSildihnSubterrane,
   ZoneId.AnotherSildihnSubterrane,
