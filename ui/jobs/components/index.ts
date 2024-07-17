@@ -13,7 +13,7 @@ import { doesJobNeedMPBar, isPvPZone, RegexesHolder } from '../utils';
 
 import { AST6xComponent, ASTComponent } from './ast';
 import { BaseComponent, ComponentInterface, ShouldShow } from './base';
-import { BLMComponent } from './blm';
+import { BLM6xComponent, BLMComponent } from './blm';
 import { BLUComponent } from './blu';
 import { BRDComponent } from './brd';
 import { DNCComponent } from './dnc';
@@ -146,6 +146,8 @@ export class ComponentManager {
         return new DRG6xComponent(this.o);
       if (job === 'NIN')
         return new NIN6xComponent(this.o);
+      if (job === 'BLM')
+        return new BLM6xComponent(this.o);
     }
 
     const Component = ComponentMap[job];
