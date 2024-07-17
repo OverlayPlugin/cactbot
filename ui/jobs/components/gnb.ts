@@ -66,7 +66,7 @@ export class GNBComponent extends BaseComponent {
           cooldown: 60,
           threshold: this.player.gcdSkill + 1,
           activecolor: 'gnb-color-nomercy.active',
-          deactivecolor: 'gnb-color-nomercy'
+          deactivecolor: 'gnb-color-nomercy',
         });
         break;
       }
