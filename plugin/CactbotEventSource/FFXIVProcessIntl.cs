@@ -602,7 +602,7 @@ namespace Cactbot {
       public ushort attunementMilliseconds;
 
       /// <summary>
-      /// 0x04: 0x17 = Summoned Carbuncle, 0x00 = Not Summoned
+      /// 0x04: 0x17 = Summoned, 0x00 = Not Summoned
       /// </summary>
       [NonSerialized]
       [FieldOffset(0x04)]
@@ -652,10 +652,11 @@ namespace Cactbot {
 
       public string nextSummoned {
         get {
-          foreach (var flag in new List<Stance> { Stance.SolarBahamut, Stance.Phoenix, Stance.Bahamut }) {
+          foreach (var flag in new List<Stance> { Stance.SolarBahamut, Stance.Phoenix }) {
             if (stance.HasFlag(flag))
               return flag.ToString();
           }
+          return "Bahamut";
         }
       }
 
