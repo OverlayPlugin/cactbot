@@ -842,7 +842,6 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Safe Quadrant + Spread Out',
           de: 'Sicherer Quadrant + Verteilen',
           fr: 'Quadrant sûr + Dispersion',
-          fr: '',
         },
         left: {
           en: '<= Front Left Quadrant + Spread Out',
