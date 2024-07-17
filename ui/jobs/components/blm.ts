@@ -193,7 +193,7 @@ export class BLMComponent extends BaseComponent {
       const nextPoly = jobDetail.nextPolyglotMilliseconds;
       this.xenoTimer.innerText = Math.ceil(nextPoly / 1000.0).toString();
       xp.classList.add('active');
-      if (fouls === this.maxpoly - 1 && nextPoly < 5000)
+      if (fouls === this.maxpoly && nextPoly < 5000)
         xp.classList.add('pulse');
       else
         xp.classList.remove('pulse');
