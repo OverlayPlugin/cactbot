@@ -610,7 +610,9 @@ export class Bars {
     if (data.umbralStacks === -3)
       umbralTick = kMPUI3Rate;
 
-    const mpTick = data.ffxivVersion > 700 ? data.maxMp * baseTick : Math.floor(data.maxMp * baseTick) + Math.floor(data.maxMp * umbralTick);
+    const mpTick = data.ffxivVersion < 700
+      ? Math.floor(data.maxMp * baseTick) + Math.floor(data.maxMp * umbralTick)
+      : data.maxMp * baseTick;
     if (delta === mpTick && data.umbralStacks <= 0) // MP ticks disabled in AF
       this.o.mpTicker.duration = kMPTickInterval;
 

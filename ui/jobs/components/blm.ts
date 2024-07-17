@@ -352,6 +352,7 @@ export class BLM6xComponent extends BaseComponent {
         maxMp: this.player.maxMp,
         umbralStacks: this.umbralStacks,
         inCombat: this.inCombat,
+        ffxivVersion: this.ffxivVersion,
       });
     }
     const fouls = jobDetail.polyglot;

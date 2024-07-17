@@ -185,6 +185,7 @@ export class ComponentManager {
         ...data,
         inCombat: this.component?.inCombat ?? false,
         umbralStacks: umbralStacks,
+        ffxivVersion: this.ffxivVersion,
       });
 
       // update mp bar color
