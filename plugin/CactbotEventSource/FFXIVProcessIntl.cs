@@ -602,7 +602,7 @@ namespace Cactbot {
       public ushort attunementMilliseconds;
 
       /// <summary>
-      /// 0x04: 0x17 = Summoned, 0x00 = Not Summoned
+      /// 0x04: 0x17 = Summoned other than Carbuncle, 0x00 = Other Condition
       /// </summary>
       [NonSerialized]
       [FieldOffset(0x04)]
