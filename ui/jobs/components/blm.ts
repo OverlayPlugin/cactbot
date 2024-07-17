@@ -121,7 +121,6 @@ export class BLMComponent extends BaseComponent {
         break;
       case EffectId.CircleOfPower:
         this.player.speedBuffs.circleOfPower = true;
-        this.onStatChange({ gcdSpell: this.player.gcdSpell });
         break;
     }
   }
@@ -136,7 +135,6 @@ export class BLMComponent extends BaseComponent {
         break;
       case EffectId.CircleOfPower:
         this.player.speedBuffs.circleOfPower = false;
-        this.onStatChange({ gcdSpell: this.player.gcdSpell });
         break;
     }
   }
