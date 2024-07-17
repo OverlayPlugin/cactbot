@@ -86,19 +86,16 @@ export class SCHComponent extends BaseComponent {
         this.aetherflowBox.duration = 60;
         this.aetherflowStackBox.parentNode.classList.remove('pulse');
         // check at -15s, -10s, -5s and 0s
-        // TODO: improve this ugly code.
         this.tid1 = window.setTimeout(() => {
+          const now = new Date().getTime();
           this.RefreshAFthreholds();
-          window.setTimeout(() => {
+          const timer = window.setInterval(() => {
+            if (new Date().getTime() - now >= 15 * 1000) {
+              window.clearInterval(timer);
+            }
             this.RefreshAFthreholds();
-            window.setTimeout(() => {
-              this.RefreshAFthreholds();
-              window.setTimeout(() => {
-                this.RefreshAFthreholds();
-              }, 5000);
-            }, 5000);
-          }, 5000);
-        }, 45000);
+          }, 5 * 1000);
+        }, 45 * 1000);
         break;
       case kAbility.LucidDreaming:
         this.lucidBox.duration = 60;
