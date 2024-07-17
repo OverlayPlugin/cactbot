@@ -584,11 +584,12 @@ namespace Cactbot {
         AetherFlow1 = 1 << 0,
         AetherFlow2 = 1 << 1,
         AetherFlow3 = AetherFlow1 | AetherFlow2,
-        // 3 bit: Phoenix Ready
-        Phoenix = 1 << 3,
-        // 4 bit: Solar Bahamut Ready
+        // 2 bit: Phoenix Ready
+        Phoenix = 1 << 2,
+        // 3 bit: Solar Bahamut Ready
         // FIXME: guessed, not tested
-        SolarBahamut = 1 << 4,
+        SolarBahamut = 1 << 3,
+        // 4 bit: Unknown
         // 5-7 bits: Usable Arcanum
         Ruby = 1 << 5, // Fire/Ifrit
         Topaz = 1 << 6, // Earth/Titan
