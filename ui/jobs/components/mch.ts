@@ -142,12 +142,14 @@ export class MCHComponent extends BaseComponent {
     }
   }
 
-  override onUseAbility(id: string): void {
+  override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     switch (id) {
       case kAbility.Drill:
       case kAbility.Bioblaster:
-        this.drillBox.duration = this.player.getActionCooldown(20000, 'skill') +
-          this.drillBox.value;
+        if (matches.targetIndex === '0') {
+          this.drillBox.duration = this.player.getActionCooldown(20000, 'skill') +
+            this.drillBox.value;
+        }
         break;
       case kAbility.AirAnchor:
       case kAbility.HotShot:
