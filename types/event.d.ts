@@ -141,7 +141,8 @@ export interface JobDetail {
     attunement: number;
     usableArcanum: ('Ruby' | 'Topaz' | 'Emerald')[];
     activePrimal: 'Ifrit' | 'Titan' | 'Garuda' | null;
-    nextSummoned: 'Bahamut' | 'Phoenix';
+    nextSummoned: 'Bahamut' | 'Phoenix' | 'SolarBahamut';
+    summonStatus: boolean;
   };
   'RDM': {
     whiteMana: number;

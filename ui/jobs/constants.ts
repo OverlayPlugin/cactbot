@@ -274,6 +274,7 @@ export const kAbility = {
   DreadwyrmTrance: 'DFD',
   SummonBahamut: '1D03',
   SummonPhoenix: '64E7',
+  SummonSolarBahamut: '9080',
   // RDM
   Verstone: '1D57',
   Verfire: '1D56',
