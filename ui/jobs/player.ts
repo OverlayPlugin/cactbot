@@ -183,6 +183,15 @@ export class Player extends PlayerBase {
     this.jobsEmitter = jobsEmitter;
     this.partyTracker = partyTracker;
 
+    this.speedBuffs = new Proxy(this.speedBuffs, {
+      set: (target, p, newValue, receiver) => {
+        Reflect.set(target, p, newValue, receiver);
+        // emit event when speed buffs changed
+        this.emit('stat', this.stats, { gcdSkill: this.gcdSkill, gcdSpell: this.gcdSpell });
+        return true;
+      },
+    });
+
     // setup combo tracker
     this.combo = ComboTracker.setup(this.ffxivVersion, this);
 
