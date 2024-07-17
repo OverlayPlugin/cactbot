@@ -13,16 +13,17 @@ const _EFFECT_ID: OutputFileAttributes = {
   asConst: true,
 };
 
-const _ENDPOINT = 'Status';
+const _SHEET = 'Status';
 
-const _COLUMNS = [
-  'ID',
+const _FIELDS = [
   'Name',
 ];
 
 type ResultStatus = {
-  ID: number;
-  Name: string | null;
+  row_id: number;
+  fields: {
+    Name?: string;
+  };
 };
 
 type XivApiStatus = ResultStatus[];
@@ -108,13 +109,13 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
 
   log.debug('Processing & assembling data...');
   for (const effect of apiData) {
-    const id = effect.ID;
-    const rawName = effect.Name;
-    if (rawName === null || id === null)
+    const id = effect.row_id;
+    const rawName = effect.fields.Name;
+    if (rawName === undefined)
       continue;
     const name = cleanName(rawName);
     // Skip empty strings.
-    if (!name)
+    if (name === '')
       continue;
 
     // See comment above specifically about known mappings.
@@ -175,8 +176,8 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const api = new XivApi(null, log);
 
   const apiData = await api.queryApi(
-    _ENDPOINT,
-    _COLUMNS,
+    _SHEET,
+    _FIELDS,
   ) as XivApiStatus;
 
   const outputData = assembleData(apiData);

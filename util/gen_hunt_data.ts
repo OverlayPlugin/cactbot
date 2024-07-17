@@ -31,17 +31,15 @@ export type HuntMap = {
   asConst: false,
 };
 
-const _ENDPOINT = 'NotoriousMonster';
+const _SHEET = 'NotoriousMonster';
 
-const _COLUMNS = [
-  'ID',
+const _FIELDS = [
   'Rank',
-  'BNpcBase.ID',
-  'BNpcName.ID',
-  'BNpcName.Name_de',
-  'BNpcName.Name_en',
-  'BNpcName.Name_fr',
-  'BNpcName.Name_ja',
+  'BNpcBase.fake_prop', // must specify BNpcBase to get row_id, but no fields needed
+  'BNpcName.Singular',
+  'BNpcName.Singular@de',
+  'BNpcName.Singular@fr',
+  'BNpcName.Singular@ja',
 ];
 
 type LocaleOutputColumns = [key: string, ...indices: string[]];
@@ -69,22 +67,26 @@ type LocaleTextOrArray = LocaleObject<string | string[]>;
 type Rank = 'S' | 'SS+' | 'SS-' | 'A' | 'B';
 
 type ResultMonsterBNpcName = {
-  ID: string | number;
-  Name_de: string | null;
-  Name_en: string | null;
-  Name_fr: string | null;
-  Name_ja: string | null;
+  row_id: number;
+  fields: {
+    Singular?: string;
+    'Singular@de'?: string;
+    'Singular@fr'?: string;
+    'Singular@ja'?: string;
+  };
 };
 
 type ResultMonsterBNpcBase = {
-  ID: string | number;
+  row_id: number;
 };
 
 type ResultMonster = {
-  ID: string | number;
-  Rank: string | number | null;
-  BNpcBase: ResultMonsterBNpcBase;
-  BNpcName: ResultMonsterBNpcName;
+  row_id: number;
+  fields: {
+    BNpcBase?: ResultMonsterBNpcBase;
+    BNpcName?: ResultMonsterBNpcName;
+    Rank?: number;
+  };
 };
 
 type XivApiNotoriousMonster = ResultMonster[];
@@ -148,21 +150,15 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
   const localeCsvTables = await fetchLocaleCsvTables();
 
   for (const record of apiData) {
-    const baseId = typeof record.BNpcBase.ID === 'number'
-      ? record.BNpcBase.ID.toString()
-      : record.BNpcBase.ID;
-    const nameId = typeof record.BNpcName.ID === 'number'
-      ? record.BNpcName.ID.toString()
-      : record.BNpcName.ID;
-    const rankId = typeof record.Rank === 'number'
-      ? record.Rank.toString()
-      : record.Rank;
+    const baseId = record.fields.BNpcBase?.row_id.toString();
+    const nameId = record.fields.BNpcName?.row_id.toString();
+    const rankId = record.fields.Rank?.toString();
     let rank: Rank;
 
-    if (!nameId || !baseId)
+    if (nameId === undefined || baseId === undefined)
       continue;
 
-    const name = record.BNpcName.Name_en ?? '';
+    const name = record.fields.BNpcName?.fields.Singular ?? '';
     if (name === '')
       continue;
 
@@ -177,19 +173,19 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
     else
       rank = 'B';
 
-    if (
-      record.BNpcName.Name_de === null ||
-      record.BNpcName.Name_en === null ||
-      record.BNpcName.Name_fr === null ||
-      record.BNpcName.Name_ja === null
-    )
+    const nameEn = record.fields.BNpcName?.fields.Singular ?? '';
+    const nameDe = record.fields.BNpcName?.fields['Singular@de'] ?? '';
+    const nameFr = record.fields.BNpcName?.fields['Singular@fr'] ?? '';
+    const nameJa = record.fields.BNpcName?.fields['Singular@ja'] ?? '';
+
+    if (nameEn === '' || nameDe === '' || nameFr === '' || nameJa === '')
       continue;
 
     const localeNames: LocaleTextOrArray = {
-      'de': deLocaleSubstitutions(record.BNpcName.Name_de),
-      'en': record.BNpcName.Name_en,
-      'fr': record.BNpcName.Name_fr,
-      'ja': record.BNpcName.Name_ja,
+      'de': deLocaleSubstitutions(nameDe),
+      'en': nameEn,
+      'fr': nameFr,
+      'ja': nameJa,
     };
 
     const cnLocaleEntry = localeCsvTables.cn[nameId];
@@ -206,7 +202,7 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
     if (typeof koLocaleName === 'string' && koLocaleName !== '')
       localeNames['ko'] = koLocaleName;
 
-    log.debug(`Collected hunt data for ${record.BNpcName.Name_en} (ID: ${nameId})`);
+    log.debug(`Collected hunt data for ${nameEn} (ID: ${nameId})`);
     formattedData[name] = {
       id: nameId,
       name: localeNames,
@@ -224,8 +220,8 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const api = new XivApi(null, log);
 
   const apiData = await api.queryApi(
-    _ENDPOINT,
-    _COLUMNS,
+    _SHEET,
+    _FIELDS,
   ) as XivApiNotoriousMonster;
 
   const outputData = await assembleData(apiData);
