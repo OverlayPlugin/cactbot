@@ -570,17 +570,29 @@ namespace Cactbot {
 
     [StructLayout(LayoutKind.Explicit)]
     public struct SummonerJobMemory {
-      public enum activeArcanum : byte {
+      public enum ActiveArcanum : byte {
         None = 0,
         Ifrit = 1,
         Titan = 2,
         Garuda = 3,
       }
 
-      public enum nextSummon : byte {
-        Bahamut = 0,
-        Phoenix = 1 << 2,
-        SolarBahamut = 2 << 2, // FIXME: guessed, not tested
+      [Flags]
+      public enum Stance : byte {
+        None = 0,
+        // 0-1 bits: AetherFlows
+        AetherFlow1 = 1 << 0,
+        AetherFlow2 = 1 << 1,
+        AetherFlow3 = AetherFlow1 | AetherFlow2,
+        // 3 bit: Phoenix Ready
+        Phoenix = 1 << 3,
+        // 4 bit: Solar Bahamut Ready
+        // FIXME: guessed, not tested
+        SolarBahamut = 1 << 4,
+        // 5-7 bits: Usable Arcanum
+        Ruby = 1 << 5, // Fire/Ifrit
+        Topaz = 1 << 6, // Earth/Titan
+        Emerald = 1 << 7, // Wind/Garuda
       }
 
       [FieldOffset(0x00)]
@@ -589,62 +601,70 @@ namespace Cactbot {
       [FieldOffset(0x02)]
       public ushort attunementMilliseconds;
 
+      /// <summary>
+      /// 0x04: 0x17 = Summoned Carbuncle, 0x00 = Not Summoned
+      /// </summary>
       [NonSerialized]
       [FieldOffset(0x04)]
       private byte _summonStatus;
 
+      /// <summary>
+      /// (From right to left)
+      /// 1-2 bits: Active Primal
+      /// 3-5 bits: Counts of Attunement Stacks
       [NonSerialized]
       [FieldOffset(0x06)]
       private byte _attunement;
 
       [NonSerialized]
       [FieldOffset(0x07)]
-      private byte stance;
+      private Stance stance;
 
-      public Boolean summonStatus {
+      public bool summonStatus {
         get {
-          if (_summonStatus != 0)
-            return true;
-          else
-            return false;
+          return _summonStatus != 0;
         }
       }
 
       public int attunement {
         get {
-          return (_attunement & 0x1C) >> 2;
+          return (_attunement >> 2) & 0x7; // = 0b111, to get the last 3 bits.
         }
       }
 
       public string activePrimal {
         get {
-          return ((activeArcanum)(_attunement & 0x3)).ToString();
+          return ((ActiveArcanum)(_attunement & 0x3)).ToString();
         }
       }
 
       public string[] usableArcanum {
         get {
           var arcanums = new List<string>();
-          if ((stance & 0x20) != 0)
-            arcanums.Add("Ruby"); // Fire/Ifrit
-          if ((stance & 0x40) != 0)
-            arcanums.Add("Topaz"); // Earth/Titan
-          if ((stance & 0x80) != 0)
-            arcanums.Add("Emerald"); // Wind/Garuda
+          foreach (var flag in [Stance.Ruby, Stance.Topaz, Stance.Emerald]) {
+            if (stance.HasFlag(flag))
+              arcanums.Add(flag.ToString());
+          }
 
           return arcanums.ToArray();
         }
       }
 
-      public String nextSummoned {
+      public string nextSummoned {
         get {
-          return ((nextSummon)(stance & 0xC)).ToString();
+          foreach (var flag in [Stance.SolarBahamut, Stance.Phoenix, Stance.Bahamut]) {
+            if (stance.HasFlag(flag))
+              return flag.ToString();
+          }
         }
       }
 
       public int aetherflowStacks {
         get {
-          return stance & 0x3;
+          return stance.HasFlag(Stance.AetherFlow3) ? 3 :
+                 stance.HasFlag(Stance.AetherFlow2) ? 2 :
+                 stance.HasFlag(Stance.AetherFlow1) ? 1 :
+                 0;
         }
       }
     };
