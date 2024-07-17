@@ -100,10 +100,6 @@ export const calcGCDFromStat = (
   ffxivVersion: FfxivVersion,
   actionDelay = 2500,
 ): number => {
-  // If stats haven't been updated, use a reasonable default value.
-  if (stat === 0)
-    return actionDelay / 1000;
-
   let type1Buffs = 0;
   let type2Buffs = 0;
   if (player.job === 'BLM') {
@@ -149,10 +145,14 @@ export const calcGCDFromStat = (
   // TODO: this probably isn't useful to track
   const astralUmbralMod = 100;
 
-  const mod = kLevelMod[player.level];
-  if (!mod)
-    throw new UnreachableCode();
-  const gcdMs = Math.floor(1000 - Math.floor(130 * (stat - mod[0]) / mod[1])) * actionDelay / 1000;
+  // If stats haven't been updated, use a reasonable default value.
+  let gcdMs = actionDelay;
+  if (stat !== 0 && player.level > 0) {
+    const mod = kLevelMod[player.level];
+    if (!mod)
+      throw new UnreachableCode();
+    gcdMs = Math.floor(1000 - Math.floor(130 * (stat - mod[0]) / mod[1])) * actionDelay / 1000;
+  }
   const a = (100 - type1Buffs) / 100;
   const b = (100 - type2Buffs) / 100;
   const gcdC = Math.floor(Math.floor(a * b * gcdMs / 10) * astralUmbralMod / 100);

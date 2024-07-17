@@ -131,7 +131,8 @@ export class SGEComponent extends BaseComponent {
     // Due to unknown reason, if you sync to below lv45,
     // addersgall is not availble but memory still says you have 3 addersgall.
     // To avoid confusing, hide stacksContainer below lv45.
-    this.stacksContainer.classList.toggle('hide', this.player.level < 45);
+    // FIXME: return lv0 when loaded without status change, default show.
+    this.stacksContainer.classList.toggle('hide', this.player.level < 45 && this.player.level > 0);
   }
 
   override reset(): void {

@@ -133,7 +133,6 @@ export class MNKComponent extends BaseComponent {
     this.solarStacks.push(solarStack);
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['MNK']): void {

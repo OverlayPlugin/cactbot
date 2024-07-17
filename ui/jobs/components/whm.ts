@@ -91,10 +91,8 @@ export class WHMComponent extends BaseComponent {
     switch (id) {
       case kAbility.Aero:
       case kAbility.Aero2:
-        this.diaBox.duration = 30 + 1;
-        break;
       case kAbility.Dia:
-        this.diaBox.duration = 30;
+        this.diaBox.duration = 30 + 1;
         break;
       case kAbility.Assize:
         this.assizeBox.duration = 40;

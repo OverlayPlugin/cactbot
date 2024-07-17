@@ -89,7 +89,7 @@ export class PlayerBase {
     z: number;
   };
   rotation: number;
-  stats?: Stats;
+  stats: Stats;
   speedBuffs: SpeedBuffs;
   jobDetail?: JobDetail[keyof JobDetail];
 
@@ -126,23 +126,41 @@ export class PlayerBase {
       circleOfPower: false,
       swiftscaled: false,
     };
+
+    this.stats = {
+      attackMagicPotency: 0,
+      attackPower: 0,
+      criticalHit: 0,
+      determination: 0,
+      dexterity: 0,
+      directHit: 0,
+      healMagicPotency: 0,
+      intelligence: 0,
+      mind: 0,
+      piety: 0,
+      skillSpeed: 0,
+      spellSpeed: 0,
+      strength: 0,
+      tenacity: 0,
+      vitality: 0,
+    };
   }
 
   get gcdSkill(): number {
-    return calcGCDFromStat(this, this.stats?.skillSpeed ?? 0, this.ffxivVersion);
+    return calcGCDFromStat(this, this.stats.skillSpeed, this.ffxivVersion);
   }
 
   get gcdSpell(): number {
-    return calcGCDFromStat(this, this.stats?.spellSpeed ?? 0, this.ffxivVersion);
+    return calcGCDFromStat(this, this.stats.spellSpeed, this.ffxivVersion);
   }
 
   /** compute cooldown based on the current player's stat data */
   getActionCooldown(originalCd: number, type: 'skill' | 'spell'): number {
     let speed = 0;
     if (type === 'skill')
-      speed = this.stats?.skillSpeed ?? 0;
+      speed = this.stats.skillSpeed;
     else if (type === 'spell')
-      speed = this.stats?.spellSpeed ?? 0;
+      speed = this.stats.spellSpeed;
     else
       throw new Error(`Invalid type: ${type as string}`);
 
@@ -164,6 +182,15 @@ export class Player extends PlayerBase {
     this.ee = new EventEmitter();
     this.jobsEmitter = jobsEmitter;
     this.partyTracker = partyTracker;
+
+    this.speedBuffs = new Proxy(this.speedBuffs, {
+      set: (target, p, newValue, receiver) => {
+        Reflect.set(target, p, newValue, receiver);
+        // emit event when speed buffs changed
+        this.emit('stat', this.stats, { gcdSkill: this.gcdSkill, gcdSpell: this.gcdSpell });
+        return true;
+      },
+    });
 
     // setup combo tracker
     this.combo = ComboTracker.setup(this.ffxivVersion, this);
@@ -286,8 +313,7 @@ export class Player extends PlayerBase {
       // the `onPlayerChangedEvent` event, and we have job components
       // that relies on the stat data when initializing, so we need to
       // manually emit the stat data here.
-      if (this.stats)
-        this.emit('stat', this.stats, { gcdSkill: this.gcdSkill, gcdSpell: this.gcdSpell });
+      this.emit('stat', this.stats, { gcdSkill: this.gcdSkill, gcdSpell: this.gcdSpell });
     }
 
     // update level

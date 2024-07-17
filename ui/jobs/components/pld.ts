@@ -60,7 +60,6 @@ export class PLDComponent extends BaseComponent {
     }
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['PLD']): void {
@@ -222,7 +221,6 @@ export class PLD6xComponent extends BaseComponent {
     }
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['PLD']): void {

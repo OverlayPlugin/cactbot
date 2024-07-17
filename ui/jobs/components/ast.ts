@@ -55,7 +55,6 @@ export class ASTComponent extends BaseComponent {
     [this.card1, this.card2, this.card3, this.card4].forEach((e) => cardContainer.appendChild(e));
 
     this.reset();
-    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['AST']): void {
@@ -173,7 +172,6 @@ export class AST6xComponent extends BaseComponent {
     }
 
     this.reset();
-    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['AST']): void {

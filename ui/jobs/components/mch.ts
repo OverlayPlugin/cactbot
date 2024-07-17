@@ -78,6 +78,7 @@ export class MCHComponent extends BaseComponent {
 
     this.reset();
   }
+
   override onCombo(skill: string, combo: ComboTracker): void {
     this.comboTimer.duration = 0;
     if (combo.isFinalSkill)

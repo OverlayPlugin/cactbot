@@ -112,7 +112,7 @@ export class SAMComponent extends BaseComponent {
   }
 
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
-    if (this.ffxivVersion < 700) {
+    if (this.ffxivVersion < 700)
       switch (id) {
         case kAbility.KaeshiHiganbana:
         case kAbility.KaeshiGoken:
@@ -123,12 +123,12 @@ export class SAMComponent extends BaseComponent {
               this.tsubameGaeshi.duration = 60 + this.tsubameGaeshi.value;
               this.lastTsubameGaeshiTimestamp = matches.timestamp;
             }
-          } else {
+          } else
             this.tsubameGaeshi.duration = 60;
-          }
+
           break;
       }
-    } else {
+    else
       switch (id) {
         // In DawnTrail, Tsubame Gaeshi no longer have cooldown.
         // spare this box for Ikishoten, while keep its name for easy compatibility.
@@ -136,7 +136,6 @@ export class SAMComponent extends BaseComponent {
           this.tsubameGaeshi.duration = 120;
           break;
       }
-    }
   }
 
   override onMobGainsEffectFromYou(id: string): void {
