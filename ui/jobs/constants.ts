@@ -262,6 +262,9 @@ export const kAbility = {
   Thunder2: '1D17',
   Thunder3: '99',
   Thunder4: '1CFC',
+  Manafont: '9E',
+  HighThunder1: '907A',
+  HighThunder2: '907B',
   // SMN
   EnergyDrain: '407C',
   EnergySiphon: '407E',
