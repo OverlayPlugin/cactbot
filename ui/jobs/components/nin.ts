@@ -126,12 +126,11 @@ export class NINComponent extends BaseComponent {
       this.ninki.parentNode.classList.add('high');
 
     this.kazematoi.innerText = jobDetail.kazematoi?.toString() ?? '0';
-    if (jobDetail.kazematoi >= 4) {
+    if (jobDetail.kazematoi >= 4)
       // Pulse the kazematoi count to indicate that you shouldn't use Armor Crash again.
       this.kazematoi.parentElement?.classList.add('nin-kazematoi', 'pulse');
-    } else {
+    else
       this.kazematoi.parentElement?.classList.remove('nin-kazematoi', 'pulse');
-    }
   }
   override onCombo(skill: string, combo: ComboTracker): void {
     this.comboTimer.duration = 0;
@@ -269,14 +268,11 @@ export class NIN6xComponent extends BaseComponent {
 
   override onJobDetailUpdate(jobDetail: JobDetail['NIN']): void {
     if (jobDetail.hutonMilliseconds > 0) {
-      if (!this.player.speedBuffs.huton) {
+      if (!this.player.speedBuffs.huton)
         this.player.speedBuffs.huton = true;
-        this.onStatChange({ gcdSkill: this.player.gcdSkill });
-      }
-    } else if (this.player.speedBuffs.huton) {
+    } else if (this.player.speedBuffs.huton)
       this.player.speedBuffs.huton = false;
-      this.onStatChange({ gcdSkill: this.player.gcdSkill });
-    }
+
     this.ninki.innerText = jobDetail.ninkiAmount.toString();
     this.ninki.parentNode.classList.remove('high', 'low');
     if (jobDetail.ninkiAmount < 50)

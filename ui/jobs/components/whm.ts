@@ -107,16 +107,12 @@ export class WHMComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string): void {
-    if (id === EffectId.PresenceOfMind) {
+    if (id === EffectId.PresenceOfMind)
       this.player.speedBuffs.presenceOfMind = true;
-      this.onStatChange({ gcdSpell: this.player.gcdSpell });
-    }
   }
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.PresenceOfMind) {
+    if (id === EffectId.PresenceOfMind)
       this.player.speedBuffs.presenceOfMind = false;
-      this.onStatChange({ gcdSpell: this.player.gcdSpell });
-    }
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {

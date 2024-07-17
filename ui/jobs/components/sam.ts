@@ -98,7 +98,6 @@ export class SAMComponent extends BaseComponent {
     if (id === EffectId.Fuka) {
       this.fuka.duration = parseFloat(matches.duration ?? '0') - 0.5; // -0.5s for log line delay
       this.player.speedBuffs.fuka = true;
-      this.onStatChange({ gcdSkill: this.player.gcdSkill });
     }
     if (id === EffectId.Fugetsu)
       this.fugetsu.duration = parseFloat(matches.duration ?? '0') - 0.5; // -0.5s for log line delay
@@ -107,14 +106,13 @@ export class SAMComponent extends BaseComponent {
     if (id === EffectId.Fuka) {
       this.fuka.duration = 0;
       this.player.speedBuffs.fuka = false;
-      this.onStatChange({ gcdSkill: this.player.gcdSkill });
     }
     if (id === EffectId.Fugetsu)
       this.fugetsu.duration = 0;
   }
 
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
-    if (this.ffxivVersion < 700) {
+    if (this.ffxivVersion < 700)
       switch (id) {
         case kAbility.KaeshiHiganbana:
         case kAbility.KaeshiGoken:
@@ -125,12 +123,12 @@ export class SAMComponent extends BaseComponent {
               this.tsubameGaeshi.duration = 60 + this.tsubameGaeshi.value;
               this.lastTsubameGaeshiTimestamp = matches.timestamp;
             }
-          } else {
+          } else
             this.tsubameGaeshi.duration = 60;
-          }
+
           break;
       }
-    } else {
+    else
       switch (id) {
         // In DawnTrail, Tsubame Gaeshi no longer have cooldown.
         // spare this box for Ikishoten, while keep its name for easy compatibility.
@@ -138,7 +136,6 @@ export class SAMComponent extends BaseComponent {
           this.tsubameGaeshi.duration = 120;
           break;
       }
-    }
   }
 
   override onMobGainsEffectFromYou(id: string): void {
