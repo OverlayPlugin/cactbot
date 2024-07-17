@@ -641,7 +641,7 @@ namespace Cactbot {
       public string[] usableArcanum {
         get {
           var arcanums = new List<string>();
-          foreach (var flag in [Stance.Ruby, Stance.Topaz, Stance.Emerald]) {
+          foreach (var flag in new List<Stance> { Stance.Ruby, Stance.Topaz, Stance.Emerald }) {
             if (stance.HasFlag(flag))
               arcanums.Add(flag.ToString());
           }
@@ -652,7 +652,7 @@ namespace Cactbot {
 
       public string nextSummoned {
         get {
-          foreach (var flag in [Stance.SolarBahamut, Stance.Phoenix, Stance.Bahamut]) {
+          foreach (var flag in new List<Stance> { Stance.SolarBahamut, Stance.Phoenix, Stance.Bahamut }) {
             if (stance.HasFlag(flag))
               return flag.ToString();
           }
