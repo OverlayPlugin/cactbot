@@ -111,6 +111,9 @@ export const kAbility = {
   LightningShot: '3F0F',
   Bloodfest: '3F24',
   NoMercy: '3F0A',
+  ReignOfBeasts: '9049',
+  NobleBlood: '904A',
+  LionHeart: '904B',
   // WHM
   Aero: '79',
   Aero2: '84',

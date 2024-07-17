@@ -38,32 +38,34 @@ export const worldNameToWorld = (name: string): World | undefined => {
   asConst: true,
 };
 
-const _ENDPOINT = 'World';
+const _SHEET = 'World';
 
-const _COLUMNS = [
-  'ID',
+const _FIELDS = [
   'InternalName',
   'Name',
   'Region',
   'UserType',
-  'DataCenter.ID',
   'DataCenter.Name',
   'IsPublic',
 ];
 
 type ResultDataCenter = {
-  ID: string | number | null;
-  Name: string | null;
+  row_id: number;
+  fields: {
+    Name?: string;
+  };
 };
 
 type ResultWorld = {
-  ID: number;
-  InternalName: string | null;
-  Name: string | null;
-  Region: number | null;
-  UserType: number | null;
-  DataCenter: ResultDataCenter;
-  IsPublic: string | number | null;
+  row_id: number;
+  fields: {
+    InternalName?: string;
+    Name?: string;
+    Region?: number;
+    UserType?: number;
+    DataCenter?: ResultDataCenter;
+    IsPublic?: boolean;
+  };
 };
 
 type XivApiWorld = ResultWorld[];
@@ -92,26 +94,14 @@ const log = new ConsoleLogger();
 log.setLogLevel('alert');
 
 const scrubDataCenter = (dc: ResultDataCenter): OutputDataCenter | undefined => {
-  if (dc.ID === null || dc.ID === '')
+  const dcName = dc.fields.Name ?? '';
+  if (dcName === '')
     return;
-  if (dc.Name === null || dc.Name === '')
-    return;
-  const idNum = typeof dc.ID === 'string' ? parseInt(dc.ID) : dc.ID;
+  const idNum = dc.row_id;
   return {
     id: idNum,
-    name: dc.Name,
+    name: dcName,
   };
-};
-
-const scrubIsPublic = (pub: string | number | null): boolean | undefined => {
-  if (pub === null || pub === '')
-    return;
-  const pubNum = typeof pub === 'string' ? parseInt(pub) : pub;
-  if (pubNum === 0)
-    return false;
-  if (pubNum === 1)
-    return true;
-  return;
 };
 
 const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
@@ -119,38 +109,39 @@ const assembleData = (apiData: XivApiWorld): OutputWorldIds => {
   const formattedData: OutputWorldIds = {};
 
   for (const data of apiData) {
-    const dc = scrubDataCenter(data.DataCenter);
-    const isPublic = scrubIsPublic(data.IsPublic);
+    const dcResult = data.fields.DataCenter;
+    if (dcResult === undefined)
+      continue;
+    const dc = scrubDataCenter(dcResult);
+
+    const intName = data.fields.InternalName;
+    const name = data.fields.Name ?? ''; // filter out empty strings or we get a ton of trash
+    const region = data.fields.Region;
+    const userType = data.fields.UserType;
+    const isPublic = data.fields.IsPublic;
 
     // there are many hundreds of dev/test/whatever entries in
     // the World table that substantially clutter the data
     // for our use cases, we only care about public worlds
     if (!isPublic) {
-      log.debug(`Found non-public world (ID: ${data.ID} | Name: ${data.Name ?? ''}). Ignoring.`);
+      log.debug(`Found non-public world (ID: ${data.row_id} | Name: ${name}). Ignoring.`);
       continue;
     }
 
-    if (
-      data.InternalName === null ||
-      data.Name === null ||
-      data.Name === '' || // filter out empty strings or we get a ton of trash
-      data.Region === null ||
-      data.UserType === null
-    ) {
-      log.debug(`Data missing for ID: ${data.ID} (Name: ${data.Name ?? ''}). Ignoring.`);
+    if (intName === undefined || name === '' || region === undefined || userType === undefined) {
+      log.debug(`Data missing for ID: ${data.row_id} (Name: ${name}). Ignoring.`);
       continue;
     }
-    log.debug(
-      `Collected world data for ${dc?.name ?? 'no_data_center'}:${data.Name} (ID: ${data.ID})`,
-    );
-    formattedData[data.ID.toString()] = {
-      id: data.ID,
-      internalName: data.InternalName,
-      name: data.Name,
-      region: data.Region,
-      userType: data.UserType,
+    log.debug(`Collected world data for ${dc?.name ?? 'no_dc'}:${name} (ID: ${data.row_id})`);
+
+    formattedData[data.row_id.toString()] = {
+      id: data.row_id,
+      internalName: intName,
+      name: name,
+      region: region,
+      userType: userType,
       dataCenter: dc,
-      // isPublic: isPublic, // value is always implicitly 'true' given the filter above
+      // isPublic: isPublic, - value is always 'true' given the filter above
     };
   }
   log.debug('Data assembly/formatting complete.');
@@ -164,8 +155,8 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const api = new XivApi(null, log);
 
   const apiData = await api.queryApi(
-    _ENDPOINT,
-    _COLUMNS,
+    _SHEET,
+    _FIELDS,
   ) as XivApiWorld;
 
   const outputData = assembleData(apiData);

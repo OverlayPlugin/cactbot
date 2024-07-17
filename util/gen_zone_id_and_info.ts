@@ -47,47 +47,42 @@ const _CONTENT_TYPE: OutputFileAttributes = {
   asConst: true,
 };
 
-const _TT_ENDPOINT = 'TerritoryType';
+const _TT_SHEET = 'TerritoryType';
 
-const _TT_COLUMNS = [
-  'ID',
-  'ContentFinderCondition.ID',
-  'ContentFinderCondition.Name_de',
-  'ContentFinderCondition.Name_en',
-  'ContentFinderCondition.Name_fr',
-  'ContentFinderCondition.Name_ja',
-  'ContentFinderCondition.ContentType.ID',
-  'PlaceName.ID',
-  'PlaceName.Name_de',
-  'PlaceName.Name_en',
-  'PlaceName.Name_fr',
-  'PlaceName.Name_ja',
+const _TT_FIELDS = [
+  'ContentFinderCondition.Name',
+  'ContentFinderCondition.Name@de',
+  'ContentFinderCondition.Name@fr',
+  'ContentFinderCondition.Name@ja',
+  // must specify CFC.* to get row_ids, but no fields needed
+  'ContentFinderCondition.ContentType.fake_prop',
+  'ContentFinderCondition.TerritoryType.fake_prop',
+  'PlaceName.Name',
+  'PlaceName.Name@de',
+  'PlaceName.Name@fr',
+  'PlaceName.Name@ja',
   'WeatherRate',
-  'MapTargetID',
   'Map.SizeFactor',
   'Map.OffsetX',
   'Map.OffsetY',
-  'TerritoryIntendedUse.ID',
-  'ExVersion.ID',
+  'TerritoryIntendedUse.fake_prop', // must specify TIU to get row_id, but no fields needed
+  'ExVersion.fake_prop', // must specify ExVersion to get row_id, but no fields needed
 ];
 
-const _CFC_ENDPOINT = 'ContentFinderCondition';
+const _CFC_SHEET = 'ContentFinderCondition';
 
-const _CFC_COLUMNS = [
-  'ID',
-  'Name_de',
-  'Name_en',
-  'Name_fr',
-  'Name_ja',
-  'ContentType.ID',
+const _CFC_FIELDS = [
+  'Name',
+  'Name@de',
+  'Name@fr',
+  'Name@ja',
   'ContentType.Name',
-  'TerritoryType.ID',
+  'TerritoryType.fake_prop', // must specify TT to get row_id, but no fields needed
 ];
 
-const _CT_ENDPOINT = 'ContentType';
+const _CT_SHEET = 'ContentType';
 
-const _CT_COLUMNS = [
-  'ID',
+const _CT_FIELDS = [
   'Name',
 ];
 
@@ -108,72 +103,63 @@ type LocaleCsvNames = {
   ko?: string | undefined;
 };
 
+type RowIdOnly = {
+  row_id: number;
+};
+
 type ResultTerritoryType = {
-  ID: number;
-  ContentFinderCondition: {
-    ID: string | number | null;
-    ContentType: {
-      ID: string | number | null;
+  row_id: number;
+  fields: {
+    ContentFinderCondition?: ResultContentFinderCondition;
+    ExVersion?: RowIdOnly;
+    Map?: {
+      row_id: number;
+      fields: {
+        OffsetX?: number;
+        OffsetY?: number;
+        SizeFactor?: number;
+      };
     };
-    Name_de: string | null;
-    Name_en: string | null;
-    Name_fr: string | null;
-    Name_ja: string | null;
-    TerritoryType: {
-      ID: string | number | null;
+    PlaceName?: {
+      row_id: number;
+      fields: {
+        Name?: string;
+        'Name@de'?: string;
+        'Name@fr'?: string;
+        'Name@ja'?: string;
+      };
     };
+    TerritoryIntendedUse?: RowIdOnly;
+    WeatherRate?: number;
   };
-  ExVersion: {
-    ID: string | number;
-  };
-  Map: {
-    OffsetX: string | number | null;
-    OffsetY: string | number | null;
-    SizeFactor: string | number | null;
-  };
-  MapTargetID: string | number | null;
-  PlaceName: {
-    ID: string | number | null;
-    Name_de: string | null;
-    Name_en: string | null;
-    Name_fr: string | null;
-    Name_ja: string | null;
-  };
-  TerritoryIntendedUse: {
-    ID: string | number | null;
-  };
-  WeatherRate: string | number;
 };
 
 type ResultContentFinderCondition = {
-  ID: number;
-  Name_de: string | null;
-  Name_en: string | null;
-  Name_fr: string | null;
-  Name_ja: string | null;
-  ContentType: {
-    ID: string | number | null;
-    Name: string | null;
-  };
-  TerritoryType: {
-    ID: string | number | null;
+  row_id: number;
+  fields: {
+    Name?: string;
+    'Name@de'?: string;
+    'Name@fr'?: string;
+    'Name@ja'?: string;
+    ContentType?: ResultContentType;
+    TerritoryType?: RowIdOnly;
   };
 };
 
 type ResultContentType = {
-  ID: number;
-  Name: string | null;
+  row_id: number;
+  fields: {
+    Name?: string;
+  };
 };
 
-type XivApiTerritoryType = {
+type IndexedTerritoryType = {
   [key: number]: ResultTerritoryType;
 };
 
-type XivApiContentFinderCondition = {
+type IndexedContentFinderCondition = {
   [key: number]: ResultContentFinderCondition;
 };
-
-type XivApiContentType = ResultContentType[];
 
 type ZoneIDOutput = {
   [zone: string]: number | null;
@@ -205,18 +191,18 @@ const _SCRIPT_NAME = path.basename(import.meta.url);
 const log = new ConsoleLogger();
 log.setLogLevel('alert');
 
-const indexTtData = (data: ResultTerritoryType[]): XivApiTerritoryType => {
-  const ttData: XivApiTerritoryType = {};
+const indexTtData = (data: ResultTerritoryType[]): IndexedTerritoryType => {
+  const ttData: IndexedTerritoryType = {};
   for (const row of data) {
-    ttData[row.ID] = row;
+    ttData[row.row_id] = row;
   }
   return ttData;
 };
 
-const indexCfcData = (data: ResultContentFinderCondition[]): XivApiContentFinderCondition => {
-  const cfcData: XivApiContentFinderCondition = {};
+const indexCfcData = (data: ResultContentFinderCondition[]): IndexedContentFinderCondition => {
+  const cfcData: IndexedContentFinderCondition = {};
   for (const row of data) {
-    cfcData[row.ID] = row;
+    cfcData[row.row_id] = row;
   }
   return cfcData;
 };
@@ -261,8 +247,8 @@ const fetchLocaleCsvTables = async () => {
 };
 
 const generateZoneIdMap = (
-  ttData: XivApiTerritoryType,
-  cfcData: XivApiContentFinderCondition,
+  ttData: IndexedTerritoryType,
+  cfcData: IndexedContentFinderCondition,
 ): {
   zoneMap: ZoneIDOutput;
   idMap: TTToCFCIDMap;
@@ -281,10 +267,10 @@ const generateZoneIdMap = (
   // These take precedence over later collisions.
   const ttDerivedCfcNames: { [id: number]: string } = {};
 
-  for (const [, territory] of Object.entries(ttData)) {
-    const ttId = territory.ID;
-    const ttCfcName = territory.ContentFinderCondition.Name_en;
-    if (ttCfcName === null || ttCfcName === '')
+  for (const [id, territory] of Object.entries(ttData)) {
+    const ttId = parseInt(id);
+    const ttCfcName = territory.fields.ContentFinderCondition?.fields.Name ?? '';
+    if (ttCfcName === '')
       continue;
     ttDerivedCfcNames[ttId] = cleanName(ttCfcName);
   }
@@ -294,25 +280,23 @@ const generateZoneIdMap = (
   // If multiple CFC entries reference the same territoryId with
   // different names, we have a collision and cannot reliably use
   // CFC data. (But we trust Overrides.forceTtToCfcMap!)
-  const cfcDerivedTtToCfcMap: { [id: number]: number | null } = {};
+  const cfcDerivedTtToCfcMap: { [id: number]: number } = {};
   const cfcTtIdCollisions: number[] = [];
 
   // We also want a map of CFC.ID to CFC.Name based on the CFC endpoint
   // since not every TT record includes CFC data.
   const cfcIdToName: { [id: number]: string } = {};
 
-  for (const [, cfcEntry] of Object.entries(cfcData)) {
-    const cfcId = cfcEntry.ID;
-    const cfcName = cfcEntry.Name_en;
+  for (const [id, cfcEntry] of Object.entries(cfcData)) {
+    const cfcId = parseInt(id);
+    const cfcName = cfcEntry.fields.Name ?? '';
 
-    if (cfcName !== null && cfcName !== '')
+    if (cfcName !== '')
       cfcIdToName[cfcId] = cfcName;
 
-    let cfcTtId = cfcEntry.TerritoryType.ID;
-    if (cfcTtId === null)
+    const cfcTtId = cfcEntry.fields.TerritoryType?.row_id;
+    if (cfcTtId === undefined)
       continue;
-
-    cfcTtId = typeof cfcTtId === 'number' ? cfcTtId : parseInt(cfcTtId);
 
     if (
       cfcDerivedTtToCfcMap[cfcTtId] === undefined &&
@@ -327,11 +311,8 @@ const generateZoneIdMap = (
       // we might have a collision. check this CFC name against the one we
       // previously stored. if it matches, OK; if it doesn't, it's a collison
       const earlierCfcId = cfcDerivedTtToCfcMap[cfcTtId];
-      if (typeof earlierCfcId === 'number') {
-        const earlierCfcName = cfcData[earlierCfcId]?.Name_en;
-        if (earlierCfcName === cfcName)
-          continue;
-      }
+      if (earlierCfcId !== undefined && cfcData[earlierCfcId]?.fields.Name === cfcName)
+        continue;
       delete cfcDerivedTtToCfcMap[cfcTtId];
       cfcTtIdCollisions.push(cfcTtId);
     }
@@ -361,17 +342,13 @@ const generateZoneIdMap = (
   };
 
   log.debug('Beginning main processing loop...');
-  for (const [, territory] of Object.entries(ttData)) {
-    const ttId = territory.ID;
-    const ttPlaceName = territory.PlaceName.Name_en;
-    const ttCfcId = typeof territory.ContentFinderCondition.ID === 'string'
-      ? parseInt(territory.ContentFinderCondition.ID)
-      : territory.ContentFinderCondition.ID;
-    const ttCfcName = territory.ContentFinderCondition.Name_en;
-    const ttUse = typeof territory.TerritoryIntendedUse.ID === 'string'
-      ? parseInt(territory.TerritoryIntendedUse.ID)
-      : territory.TerritoryIntendedUse.ID;
-    const isTownZone = ttUse === 0 || ttUse === null;
+  for (const [id, territory] of Object.entries(ttData)) {
+    const ttId = parseInt(id);
+    const ttPlaceName = territory.fields.PlaceName?.fields.Name ?? '';
+    const ttCfcId = territory.fields.ContentFinderCondition?.row_id;
+    const ttCfcName = territory.fields.ContentFinderCondition?.fields.Name;
+    const ttUse = territory.fields.TerritoryIntendedUse?.row_id;
+    const isTownZone = ttUse === 0 || ttUse === undefined;
     const isOverworldZone = ttUse === 1;
     const cfcDerivedCfcId = cfcDerivedTtToCfcMap[ttId];
     const syntheticName = syntheticIdsToNames[ttId];
@@ -388,9 +365,9 @@ const generateZoneIdMap = (
       // Grab a cfcId for this name if possible just in case, since not all
       // synthetic ids have synthetic zone_info, so we may need it later.
       log.debug(`Using synthetic zone override info for ${syntheticName} (ID: ${ttId})`);
-      cfcIdForName = ttCfcId === null ? undefined : ttCfcId;
+      cfcIdForName = ttCfcId;
       zoneName = syntheticName;
-    } else if (ttCfcId !== null && ttCfcId !== 0 && ttCfcName !== null) {
+    } else if (ttCfcId !== undefined && ttCfcId !== 0 && ttCfcName !== undefined) {
       // Step 2 - we have a CFC.Name present in TT
       cfcIdForName = ttCfcId;
       zoneName = cleanName(ttCfcName);
@@ -403,7 +380,7 @@ const generateZoneIdMap = (
         log.debug(`Using linked CFC name for ${zoneName} (ID: ${ttId})`);
     } else if (
       cfcDerivedCfcId !== undefined &&
-      cfcDerivedCfcId !== null
+      cfcDerivedCfcId !== 0
     ) {
       // Step 3 - we're deriving the name from CFC, not from TT
       cfcIdForName = cfcDerivedCfcId;
@@ -421,7 +398,7 @@ const generateZoneIdMap = (
       // Step 4 - we can't determine name from any CFC data, so use PlaceName
       // World zones like Middle La Noscea are not in CFC.
       // If we don't have a PlaceName, bail out.
-      if (ttPlaceName === null) {
+      if (ttPlaceName === '') {
         log.info(
           `No name data could be matched for town/overworld zone with ID ${ttId}. Skipping...`,
         );
@@ -461,7 +438,7 @@ const generateZoneIdMap = (
     if (collisionNames.includes(zoneName)) {
       // We've already seen a collision for this name before, so bail out.
       if (!isKnownCollision(zoneName, ttId)) {
-        log.info(`Found additinoal collision for ${zoneName} (ID: ${ttId})`);
+        log.info(`Found additional collision for ${zoneName} (ID: ${ttId})`);
       } else {
         log.debug(`Found expected/known collision for ${zoneName} (ID: $[ttId})`);
       }
@@ -495,7 +472,7 @@ const generateZoneIdMap = (
     }
 
     // Good name data for this territory, and no collisions.  We can keep it.
-    if (cfcIdForName !== undefined)
+    if (cfcIdForName !== undefined && cfcIdForName !== 0)
       finalTtIdToCfcId[ttId] = cfcIdForName;
 
     nameMap[zoneName] = ttId;
@@ -533,13 +510,14 @@ const generateZoneIdMap = (
 };
 
 const generateZoneInfoMap = async (
-  ttData: XivApiTerritoryType,
-  cfcData: XivApiContentFinderCondition,
+  ttData: IndexedTerritoryType,
+  cfcData: IndexedContentFinderCondition,
   ttToCfcIdMap: TTToCFCIDMap,
 ): Promise<ZoneInfoOutput> => {
   log.debug('Generating zone_info data...');
-  const capitalize = (str: string | null): string | undefined => {
-    if (str === null)
+
+  const capitalize = (str: string | undefined): string | undefined => {
+    if (str === undefined || str === '')
       return;
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -567,73 +545,51 @@ const generateZoneInfoMap = async (
 
     if (ttZoneData === undefined) {
       log.alert(
-        `Unexpectedly could not find zone info for territory ID ${ttId}. This must be resovled before merge.`,
+        `Unexpectedly could not find zone info for territory ID ${ttId}. Resolve before merge.`,
       );
       continue;
     }
 
-    const zoneExVersion = typeof ttZoneData.ExVersion.ID === 'string'
-      ? parseInt(ttZoneData.ExVersion.ID)
-      : ttZoneData.ExVersion.ID;
-
-    let offsetX = ttZoneData.Map.OffsetX;
-    let offsetY = ttZoneData.Map.OffsetY;
-    let sizeFactor = ttZoneData.Map.SizeFactor;
-    if (offsetX === null || offsetY === null || sizeFactor === null) {
-      // xivapi will return a null Map object when MapTargetId = 0, even though
-      // it's a valid record. We could do a separate endpoint to fetch this manually,
-      // but since it's extremely unlikely to ever change, just hardcode it.
-      const mapTargetId = ttZoneData.MapTargetID;
-      if (
-        mapTargetId !== null &&
-        mapTargetId === (typeof mapTargetId === 'string' ? '0' : 0)
-      ) {
-        offsetX = 0;
-        offsetY = 0;
-        sizeFactor = 100;
-      } else {
-        log.alert(
-          `No map data found for territory ID ${ttId}.  This must be resolved before merge.`,
-        );
-        continue;
-      }
+    const zoneExVersion = ttZoneData.fields.ExVersion?.row_id;
+    if (zoneExVersion === undefined) {
+      log.alert(`No exVersion data found for territory ID ${ttId}. Resolve before merge.`);
+      continue;
     }
 
-    offsetX = typeof offsetX === 'string' ? parseInt(offsetX) : offsetX;
-    offsetY = typeof offsetY === 'string' ? parseInt(offsetY) : offsetY;
-    sizeFactor = typeof sizeFactor === 'string' ? parseInt(sizeFactor) : sizeFactor;
+    const offsetX = ttZoneData.fields.Map?.fields.OffsetX;
+    const offsetY = ttZoneData.fields.Map?.fields.OffsetY;
+    const sizeFactor = ttZoneData.fields.Map?.fields.SizeFactor;
+    if (offsetX === undefined || offsetY === undefined || sizeFactor === undefined) {
+      log.alert(`No map data found for territory ID ${ttId}. Resolve before merge.`);
+      continue;
+    }
 
-    const weatherRate = typeof ttZoneData.WeatherRate === 'string'
-      ? parseInt(ttZoneData.WeatherRate)
-      : ttZoneData.WeatherRate;
+    const weatherRate = ttZoneData.fields.WeatherRate;
+    if (weatherRate === undefined) {
+      log.alert(`No weather rate data found for territory ID ${ttId}. Resolve before merge.`);
+      continue;
+    }
 
-    const cfcId = ttToCfcIdMap[ttId];
+    const cfcId = ttToCfcIdMap[ttId] ?? 0;
     let zoneName: LocaleText;
     let contentType: number | undefined;
 
-    if (cfcId === undefined || cfcId === 'None') {
+    if (cfcId === 'None' || cfcId === 0) {
       // town/overworld zone with no CFC data; use PlaceName
-      let placeId = ttZoneData.PlaceName.ID;
-      const enName = capitalize(ttZoneData.PlaceName.Name_en);
-      if (
-        placeId === null ||
-        enName === undefined
-      ) {
-        log.alert(`No PlaceName data available for ${ttId}.  This must be resovled before merge.`);
+      const placeId = ttZoneData.fields.PlaceName?.row_id;
+      const enName = capitalize(ttZoneData.fields.PlaceName?.fields.Name);
+      if (placeId === undefined || enName === undefined) {
+        log.alert(`No PlaceName data available for ${ttId}. Resolve before merge.`);
         continue;
       }
 
       const ttNames = {
         // cactbot-ignore-missing-translations
         en: enName,
-        de: capitalize(ttZoneData.PlaceName.Name_de),
-        fr: capitalize(ttZoneData.PlaceName.Name_fr),
-        ja: capitalize(ttZoneData.PlaceName.Name_ja),
+        de: capitalize(ttZoneData.fields.PlaceName?.fields['Name@de']),
+        fr: capitalize(ttZoneData.fields.PlaceName?.fields['Name@fr']),
+        ja: capitalize(ttZoneData.fields.PlaceName?.fields['Name@ja']),
       };
-
-      placeId = typeof placeId === 'string'
-        ? parseInt(placeId)
-        : placeId;
 
       // PlaceName data from the cn/ko csvs could be undefined or empty string.
       // In either case, we'll ignore it.
@@ -656,14 +612,14 @@ const generateZoneInfoMap = async (
       const cfcZoneData = cfcData[cfcId];
       if (cfcZoneData === undefined) {
         log.alert(
-          `No CFC data available for territory ID ${ttId} (paired with CFC ID: ${cfcId}).  This must be resolved before merge.`,
+          `No CFC data available for territory ID ${ttId} (paired with CFC ID: ${cfcId}). Resolve before merge.`,
         );
         continue;
       }
-      const enName = capitalize(cfcZoneData.Name_en);
+      const enName = capitalize(cfcZoneData.fields.Name);
       if (enName === undefined) {
         log.alert(
-          `No CFC name available for territory ID ${ttId} (paired with CFC ID: ${cfcId}).  This must be resolved before merge.`,
+          `No CFC name available for territory ID ${ttId} (paired with CFC ID: ${cfcId}). Resolve before merge.`,
         );
         continue;
       }
@@ -671,9 +627,9 @@ const generateZoneInfoMap = async (
       const cfcNames = {
         // cactbot-ignore-missing-translations
         en: enName,
-        de: capitalize(cfcZoneData.Name_de),
-        fr: capitalize(cfcZoneData.Name_fr),
-        ja: capitalize(cfcZoneData.Name_ja),
+        de: capitalize(cfcZoneData.fields['Name@de']),
+        fr: capitalize(cfcZoneData.fields['Name@fr']),
+        ja: capitalize(cfcZoneData.fields['Name@ja']),
       };
 
       // CFC data from the cn/ko csvs could be undefined or empty string.
@@ -692,15 +648,16 @@ const generateZoneInfoMap = async (
 
       zoneName = Object.assign({}, cfcNames, localeCfcNames);
 
-      let cTypeId = ttZoneData.ContentFinderCondition.ContentType.ID ??
-        cfcData[cfcId]?.ContentType.ID;
+      const ttCfcCtId = ttZoneData.fields.ContentFinderCondition?.fields.ContentType?.row_id;
+      const cfcCtId = cfcData[cfcId]?.fields.ContentType?.row_id;
+      contentType = (ttCfcCtId ?? 0) === 0 ? cfcCtId : ttCfcCtId;
 
-      if (cTypeId === null)
-        cTypeId = undefined;
-      else if (typeof cTypeId === 'string')
-        cTypeId = parseInt(cTypeId);
-
-      contentType = cTypeId;
+      if (contentType === undefined || contentType === 0) {
+        log.alert(
+          `No content type data available for territory ID ${ttId} (paired with CFC ID: ${cfcId}). Resolve before merge.`,
+        );
+        continue;
+      }
     }
 
     const zoneInfo: ZoneInfoData = {
@@ -722,16 +679,17 @@ const generateZoneInfoMap = async (
 };
 
 const generateContentTypeMap = (
-  ctData: XivApiContentType,
+  ctData: ResultContentType[],
 ): ContentTypeOutput => {
   log.debug('Generating content_type data...');
   const contentTypeMap: ContentTypeOutput = {};
 
   for (const ct of ctData) {
-    if (ct.ID === null || ct.Name === null || ct.Name === '')
+    const name = ct.fields.Name ?? '';
+    if (name === '')
       continue;
-    contentTypeMap[cleanName(ct.Name)] = ct.ID;
-    log.debug(`Collected content_type data for ID: ${ct.ID} (${ct.Name}).`);
+    contentTypeMap[cleanName(name)] = ct.row_id;
+    log.debug(`Collected content_type data for ID: ${ct.row_id} (${name}).`);
   }
 
   // Add sythetic content types
@@ -746,7 +704,7 @@ const generateContentTypeMap = (
 const assembleData = async (
   ttRawData: ResultTerritoryType[],
   cfcRawData: ResultContentFinderCondition[],
-  ctData: XivApiContentType,
+  ctData: ResultContentType[],
 ): Promise<OutputContainer> => {
   const ttData = indexTtData(ttRawData);
   const cfcData = indexCfcData(cfcRawData);
@@ -770,19 +728,19 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const api = new XivApi(null, log);
 
   const ttRawData = await api.queryApi(
-    _TT_ENDPOINT,
-    _TT_COLUMNS,
+    _TT_SHEET,
+    _TT_FIELDS,
   ) as ResultTerritoryType[];
 
   const cfcRawData = await api.queryApi(
-    _CFC_ENDPOINT,
-    _CFC_COLUMNS,
+    _CFC_SHEET,
+    _CFC_FIELDS,
   ) as ResultContentFinderCondition[];
 
   const ctRawData = await api.queryApi(
-    _CT_ENDPOINT,
-    _CT_COLUMNS,
-  ) as XivApiContentType;
+    _CT_SHEET,
+    _CT_FIELDS,
+  ) as ResultContentType[];
 
   const outputData = await assembleData(ttRawData, cfcRawData, ctRawData);
 

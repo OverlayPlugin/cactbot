@@ -32,6 +32,9 @@ type FightEncInfo = ZoneEncInfo & {
 
 // Some NPCs can be picked up by our entry processor.
 // We list them out explicitly here so we can ignore them at will.
+
+// TODO: Zoraal Ja is an ally combatant in Worqor Lar Dor (duty support),
+// but an enemy combatant in Everkeep. Need to figure out how to handle this.
 export const ignoredCombatants = PetData['en'].concat([
   '',
   'Alisaie',
@@ -53,6 +56,8 @@ export const ignoredCombatants = PetData['en'].concat([
   'G\'raha Tia\'s Avatar',
   'Gosetsu',
   'Hien',
+  'Koana',
+  'Krile',
   'Liturgic Bell',
   'Lyse',
   'Mikoto',
@@ -73,6 +78,7 @@ export const ignoredCombatants = PetData['en'].concat([
   'Urianger',
   'Urianger\'s Avatar',
   'Varshahn',
+  'Wuk Lamat',
   'Y\'shtola',
   'Y\'shtola\'s Avatar',
   'Yugiri',
