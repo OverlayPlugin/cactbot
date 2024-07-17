@@ -40,7 +40,6 @@ export class SCHComponent extends BaseComponent {
     });
 
     this.reset();
-    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   RefreshAFthreholds(): void {

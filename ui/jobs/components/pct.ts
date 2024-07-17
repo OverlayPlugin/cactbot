@@ -66,7 +66,6 @@ export class PCTComponent extends BaseComponent {
     });
 
     this.reset();
-    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   override onYouGainEffect(id: string, _effect: PartialFieldMatches<'GainsEffect'>): void {

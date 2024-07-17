@@ -47,7 +47,6 @@ export class NINComponent extends BaseComponent {
     });
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onYouGainEffect(id: string): void {
@@ -199,7 +198,6 @@ export class NIN6xComponent extends BaseComponent {
     });
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onYouGainEffect(id: string): void {

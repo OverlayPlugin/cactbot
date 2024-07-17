@@ -77,7 +77,6 @@ export class MCHComponent extends BaseComponent {
     }
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onCombo(skill: string, combo: ComboTracker): void {

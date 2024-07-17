@@ -26,7 +26,6 @@ export class BLUComponent extends BaseComponent {
     });
 
     this.reset();
-    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   override onUseAbility(id: string): void {

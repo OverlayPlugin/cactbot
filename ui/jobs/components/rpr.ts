@@ -75,7 +75,6 @@ export class RPRComponent extends BaseComponent {
     }
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['RPR']): void {

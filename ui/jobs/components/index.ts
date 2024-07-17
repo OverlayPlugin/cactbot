@@ -255,6 +255,12 @@ export class ComponentManager {
           this.ffxivVersion,
         );
       }
+
+      // Emit stats event for the new job
+      this.player.emit('stat', this.player.stats, {
+        gcdSkill: this.player.gcdSkill,
+        gcdSpell: this.player.gcdSpell,
+      });
     });
 
     // update RegexesHolder when the player name changes

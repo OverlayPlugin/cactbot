@@ -88,7 +88,6 @@ export class BRDComponent extends BaseComponent {
     this.straightShotProc.bigatzero = false;
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onUseAbility(id: string): void {

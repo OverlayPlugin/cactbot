@@ -53,7 +53,6 @@ export class DRGComponent extends BaseComponent {
     });
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onCombo(skill: string, combo: ComboTracker): void {
@@ -180,7 +179,6 @@ export class DRG6xComponent extends BaseComponent {
     });
 
     this.reset();
-    this.onStatChange({ gcdSkill: this.player.gcdSkill });
   }
 
   override onCombo(skill: string): void {

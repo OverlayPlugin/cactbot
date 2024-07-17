@@ -67,7 +67,6 @@ export class WHMComponent extends BaseComponent {
     }
 
     this.reset();
-    this.onStatChange({ gcdSpell: this.player.gcdSpell });
   }
 
   private _addActiveOnStacks(elements: HTMLDivElement[], stacks: number) {
