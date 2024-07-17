@@ -147,7 +147,7 @@ export const calcGCDFromStat = (
 
   // If stats haven't been updated, use a reasonable default value.
   let gcdMs = actionDelay;
-  if (stat !== 0) {
+  if (stat !== 0 && player.level > 0) {
     const mod = kLevelMod[player.level];
     if (!mod)
       throw new UnreachableCode();
