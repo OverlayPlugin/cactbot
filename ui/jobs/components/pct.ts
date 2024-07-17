@@ -93,7 +93,9 @@ export class PCTComponent extends BaseComponent {
       case kAbility.WingedMuse:
       case kAbility.ClawedMuse:
       case kAbility.FangedMuse:
-        this.livingMuseBox.duration = 40 + (this.livingMuseBox.value ?? 0);
+        if (_ability.targetIndex === '0') {
+          this.livingMuseBox.duration = 40 + (this.livingMuseBox.value ?? 0);
+        }
         break;
       case kAbility.StrikingMuse:
         this.steelMuseBox.duration = 60 + (this.steelMuseBox.value ?? 0);
