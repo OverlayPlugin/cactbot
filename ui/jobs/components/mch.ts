@@ -147,8 +147,8 @@ export class MCHComponent extends BaseComponent {
       case kAbility.Drill:
       case kAbility.Bioblaster:
         if (_ability.targetIndex === '0') {
-        this.drillBox.duration = this.player.getActionCooldown(20000, 'skill') +
-          this.drillBox.value;
+          this.drillBox.duration = this.player.getActionCooldown(20000, 'skill') +
+            this.drillBox.value;
         }
         break;
       case kAbility.AirAnchor:
