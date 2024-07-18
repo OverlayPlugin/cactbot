@@ -90,6 +90,8 @@ const knownMapping: Readonly<MappingTable> = {
   'Overheated': 2688,
   'Hawk\'s Eye': 3861,
   'Barrage': 128,
+  'Noxious Gnash': 3667,
+  'Hunter\'s Instinct': 3668,
   'Swiftscaled': 3669,
 };
 

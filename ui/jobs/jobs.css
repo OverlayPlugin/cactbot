@@ -1107,6 +1107,15 @@ div.justbuffs div#procs-container {
   background-color: rgb(0 170 170);
 }
 
+/* VPR */
+.vpr-color-noxious-gnash {
+  background-color: rgb(50 9 9);
+}
+
+.vpr-color-hunters-instinct {
+  background-color: rgb(65 22 0);
+}
+
 /* BRD */
 .brd-color-causticbite {
   background-color: rgb(182 68 235);
