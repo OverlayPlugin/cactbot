@@ -1,8 +1,78 @@
 ### Arcadion (R2N): AAC Light-heavyweight M2
+# -ii 917E 91C7 9A65 9166 9168 9172 9A6A 9165 916B 916C 916E 917C 916D 917F 9A66 9169
+# -it "Honey B. Lovely"
+
+# 9163 = teleport to middle
 
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
-
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+5.6 "--sync--" StartsUsing { id: "9164", source: "Honey B. Lovely" }
+10.6 "Call Me Honey" Ability { id: "9164", source: "Honey B. Lovely" }
+24.1 "Tempting Twist" Ability { id: "9B3A", source: "Honey B. Lovely" }
+33.9 "Honey Beeline" Ability { id: "9B39", source: "Honey B. Lovely" }
+41.2 "Honeyed Breeze" Ability { id: "9167", source: "Honey B. Lovely" }
+52.8 "Tempting Twist/Honey Beeline" Ability { id: ["9B39", "9B3A", "9B3B", "9B3C"], source: "Honey B. Lovely" }
+59.4 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+70.1 "Honey B. Live" Ability { id: "9A7E", source: "Honey B. Lovely" }
+
+# First hearts phase
+80.0 "Love Me Tender" Ability { id: "9174", source: "Honey B. Lovely" }
+88.1 "Heartsore" Ability { id: "917A", source: "Honey B. Lovely" }
+97.1 "Fracture" Ability { id: "9178", source: "Honey B. Lovely" }
+99.1 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+105.4 "Loveseeker" Ability { id: "9AC1", source: "Honey B. Lovely" }
+105.4 "Heart-struck" duration 33
+110.5 "Love Me Tender" Ability { id: "9174", source: "Honey B. Lovely" }
+138.4 "Blow Kiss" Ability { id: "9173", source: "Honey B. Lovely" }
+146.1 "Love Me Tender" Ability { id: "9174", source: "Honey B. Lovely" }
+152.2 "Heart-struck" duration 3.2
+160.7 "Blow Kiss" Ability { id: "9173", source: "Honey B. Lovely" }
+171.5 "Honey B. Finale" Ability { id: "917B", source: "Honey B. Lovely" }
+# End first hearts phase
+
+180.6 "Honeyed Breeze" Ability { id: "9167", source: "Honey B. Lovely" }
+186.8 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+192.1 "Splash of Venom" Ability { id: "9169", source: "Honey B. Lovely" }
+202.6 "Tempting Twist/Honey Beeline" Ability { id: ["9B39", "9B3A", "9B3B", "9B3C"], source: "Honey B. Lovely" }
+212.9 "Splash of Venom/Drop of Venom" Ability { id: ["916F", "9170"], source: "Honey B. Lovely" }
+219.9 "Drop of Venom" Ability { id: "916A", source: "Honey B. Lovely" }
+229.4 "Honey Beeline/Tempting Twist" Ability { id: ["9B39", "9B3A", "9B3B", "9B3C"], source: "Honey B. Lovely" }
+239.7 "Splash of Venom/Drop of Venom" Ability { id: ["916F", "9170"], source: "Honey B. Lovely" }
+251.8 "Alarm Pheromones" Ability { id: "917D", source: "Honey B. Lovely" }
+251.8 "Blinding Love" duration 34.3
+293.1 "Tempting Twist/Honey Beeline" Ability { id: ["9B39", "9B3A", "9B3B", "9B3C"], source: "Honey B. Lovely" }
+
+299.7 label "loop"
+299.7 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+310.4 "Honey B. Live" Ability { id: "9A7E", source: "Honey B. Lovely" }
+
+# Second hearts phase
+315.2 "Love Me Tender" Ability { id: "9174", source: "Honey B. Lovely" }
+323.3 "Heartsick" Ability { id: "9B8D", source: "Honey B. Lovely" }
+323.3 "Fracture x6" duration 17
+339.3 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+345.5 "Loveseeker" Ability { id: "9AC1", source: "Honey B. Lovely" }
+345.5 "Heart-struck" duration 42.1
+350.6 "Love Me Tender" Ability { id: "9174", source: "Honey B. Lovely" }
+376.9 "Blow Kiss" Ability { id: "9173", source: "Honey B. Lovely" }
+387.6 "Honey B. Finale" Ability { id: "917B", source: "Honey B. Lovely" }
+# End second hearts phase
+
+396.7 "Honeyed Breeze" Ability { id: "9167", source: "Honey B. Lovely" }
+402.9 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+408.1 "Alarm Pheromones" Ability { id: "917D", source: "Honey B. Lovely" }
+408.1 "Blinding Love" duration 28.3
+413.1 "Drop of Venom" Ability { id: "916A", source: "Honey B. Lovely" }
+436.2 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+445.4 "Tempting Twist/Honey Beeline" Ability { id: ["9B39", "9B3A", "9B3B", "9B3C"], source: "Honey B. Lovely" }
+455.7 "Splash of Venom/Drop of Venom" Ability { id: ["916F", "9170"], source: "Honey B. Lovely" }
+456.7 "Splash of Venom" Ability { id: "9169", source: "Honey B. Lovely" }
+463.8 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+473.6 "Honey Beeline/Tempting Twist" Ability { id: ["9B39", "9B3A", "9B3B", "9B3C"], source: "Honey B. Lovely" }
+483.9 "Splash of Venom/Drop of Venom" Ability { id: ["916F", "9170"], source: "Honey B. Lovely" }
+490.9 "Call Me Honey" Ability { id: "9164", source: "Honey B. Lovely" }
+500.0 "Honeyed Breeze" Ability { id: "9167", source: "Honey B. Lovely" }
+510.2 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" } forcejump "loop"
