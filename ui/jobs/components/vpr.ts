@@ -231,5 +231,8 @@ export class VPRComponent extends BaseComponent {
     this.noxiousGnashTimer.duration = 0;
     this.huntersInstinctTimer.duration = 0;
     this.swiftscaledTimer.duration = 0;
+    this.vipersight.classList.remove('active');
+    this.vipersight.dataset.stacks = '0';
+    this.vipersight.dataset.side = '';
   }
 }
