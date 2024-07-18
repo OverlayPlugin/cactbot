@@ -20,7 +20,7 @@ hideall "--sync--"
 1010.1 "Punutiy Press" Ability { id: "8E8C", source: "Prime Punutiy" } window 1011,5
 1016.3 "Hydrowave" Ability { id: "8E8D", source: "Prime Punutiy" }
 1030.1 "Resurface" Ability { id: "8E8E", source: "Prime Punutiy" }
-1042.2 "Bury (multiple)" #Ability { id: "8E91", source: "Prime Punutiy" } duration 10
+1042.2 "Bury x8" #Ability { id: "8E91", source: "Prime Punutiy" } duration 10
 1055.2 "Decay" Ability { id: "8E99", source: "Ihuykatumu Flytrap" }
 1060.4 "Hydrowave" Ability { id: "8E8D", source: "Prime Punutiy" }
 # timing on 8E9A seems to vary between pulls, perhaps due to auto-attack timing?
@@ -36,7 +36,7 @@ hideall "--sync--"
 1109.9 "Shore Shaker (inner ring)" Ability { id: "8EA4", source: "Prime Punutiy" }
 1111.9 "Shore Shaker (outer ring)" Ability { id: "8EA5", source: "Prime Punutiy" }
 1122.7 "Resurface" Ability { id: "8E8E", source: "Prime Punutiy" }
-1134.8 "Bury (multiple)" #Ability { id: "8E91", source: "Prime Punutiy" } duration 8
+1134.8 "Bury x8" #Ability { id: "8E91", source: "Prime Punutiy" } duration 8
 1147.8 "Decay" Ability { id: "8E99", source: "Ihuykatumu Flytrap" }
 1153.0 "Hydrowave" Ability { id: "8E8D", source: "Prime Punutiy" }
 1165.2 "Punutiy Press" Ability { id: "8E8C", source: "Prime Punutiy" }
@@ -60,7 +60,7 @@ hideall "--sync--"
 # Drowsie #
 #~~~~~~~~~#
 
-# TODO: Does Flagrand Spread + Sneeze timing vary depending on when adds die?
+# TODO: Does Flagrant Spread + Sneeze timing vary depending on when adds die?
 
 # -ii 8E80 8EAB 8EAC 8EAD 8EAA 8E85
 # -p 8F9A:2000.1

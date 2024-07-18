@@ -4,6 +4,8 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODO: Add better (directional?) callout for Drowsie's Wallop (ivy cleaves)
+
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
@@ -86,7 +88,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Ihuykatumu Drowsie Sneeze',
       type: 'StartsUsing',
       netRegex: { id: '8E7B', source: 'Drowsie', capture: false },
-      response: Responses.getBehind(),
+      response: Responses.awayFromFront(),
     },
     {
       id: 'Ihuykatumu Drowsie Flagrant Spread',
@@ -116,7 +118,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Get away after 3rd jump',
+          en: 'Away on 3rd jump',
         },
       },
     },
@@ -128,7 +130,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Get away after 3rd jump',
+          en: 'Away on 3rd jump',
         },
       },
     },
@@ -159,7 +161,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Dodge line cleaves from whirlwind',
+          en: 'Avoid Whirlwind star lines',
         },
       },
     },
@@ -171,7 +173,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Dodge line cleaves from whirlwind',
+          en: 'Avoid Whirlwind star lines',
         },
       },
     },
@@ -183,7 +185,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Dodge line cleaves from whirlwind',
+          en: 'Avoid Whirlwind star lines',
         },
       },
     },
