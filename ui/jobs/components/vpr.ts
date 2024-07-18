@@ -1,4 +1,5 @@
 import EffectId from '../../../resources/effect_id';
+import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
@@ -10,6 +11,7 @@ import { BaseComponent, ComponentInterface } from './base';
 export class VPRComponent extends BaseComponent {
   rattlingCoil: ResourceBox;
   serpentOfferings: ResourceBox;
+  comboTimer: TimerBar;
   noxiousGnashTimer: TimerBox;
   huntersInstinctTimer: TimerBox;
   swiftscaledTimer: TimerBox;
@@ -24,6 +26,11 @@ export class VPRComponent extends BaseComponent {
 
     this.serpentOfferings = this.bars.addResourceBox({
       classList: ['vpr-color-serpentofferings'],
+    });
+
+    this.comboTimer = this.bars.addTimerBar({
+      id: 'vpr-timers-combo',
+      fgColor: 'combo-color',
     });
 
     this.noxiousGnashTimer = this.bars.addProcBox({
@@ -54,6 +61,26 @@ export class VPRComponent extends BaseComponent {
         if (matches.targetIndex === '0') {
           this.dreadComboTimer.duration = 40 + (this.dreadComboTimer.value ?? 0);
         }
+        break;
+      // Due to viper auto combo, combo action cannot be used out of combo.
+      // It's unnecessary to use combo tracker.
+      case kAbility.SteelFangs:
+      case kAbility.DreadFangs:
+      case kAbility.HuntersSting:
+      case kAbility.SwiftskinsSting:
+      case kAbility.SteelMaw:
+      case kAbility.DreadMaw:
+      case kAbility.HuntersBite:
+      case kAbility.SwiftskinsBite:
+        this.comboTimer.duration = this.comboDuration;
+        break;
+      case kAbility.FlankstingStrike:
+      case kAbility.FlanksbaneFang:
+      case kAbility.HindstingStrike:
+      case kAbility.HindsbaneFang:
+      case kAbility.JaggedMaw:
+      case kAbility.BloodiedMaw:
+        this.comboTimer.duration = 0;
         break;
     }
   }
