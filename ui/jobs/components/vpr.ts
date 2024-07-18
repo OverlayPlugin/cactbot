@@ -44,6 +44,10 @@ export class VPRComponent extends BaseComponent {
       [EffectId.HindsbaneVenom]: 'right',
     },
     // Multiple target - second skill
+    [kAbility.HuntersBite]: {
+      [EffectId.GrimhuntersVenom]: 'left',
+      [EffectId.GrimskinsVenom]: 'right',
+    },
     [kAbility.SwiftskinsBite]: {
       [EffectId.GrimhuntersVenom]: 'left',
       [EffectId.GrimskinsVenom]: 'right',
