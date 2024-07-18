@@ -1109,19 +1109,19 @@ div.justbuffs div#procs-container {
 
 /* VPR */
 .vpr-color-noxious-gnash {
-  background-color: rgb(50 9 9);
+  background-color: rgb(100 20 30);
 }
 
 .vpr-color-hunters-instinct {
-  background-color: rgb(65 22 0);
+  background-color: rgb(255 60 140);
 }
 
 .vpr-color-rattling-coil {
-  background-color: rgb(105 50 13);
+  background-color: rgb(255 60 50);
 }
 
 .vpr-color-swiftscaled {
-  background-color: rgb(20 159 201);
+  background-color: rgb(255 200 60);
 }
 
 /* BRD */
