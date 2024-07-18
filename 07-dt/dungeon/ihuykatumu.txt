@@ -1,0 +1,145 @@
+### IHUYKATUMU
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~~~#
+# Prime Punutiy #
+#~~~~~~~~~~~~~~~#
+# TODO: Does Shore Shaker timing vary depending on when adds die?
+
+# -ii 8E92 8E93 8E94 8E95 8E96 8E97 8E98 8E9F 8EA0 8E90 8E8F
+# ic "Petit Punutiy" "Prodigious Punutiy"
+# -p 8E8C:1010.1
+
+# The Punutiy Pool will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "132A" } window 1000,1
+1010.1 "Punutiy Press" Ability { id: "8E8C", source: "Prime Punutiy" } window 1011,5
+1016.3 "Hydrowave" Ability { id: "8E8D", source: "Prime Punutiy" }
+1030.1 "Resurface" Ability { id: "8E8E", source: "Prime Punutiy" }
+1042.2 "Bury x8" #Ability { id: "8E91", source: "Prime Punutiy" } duration 10
+1055.2 "Decay" Ability { id: "8E99", source: "Ihuykatumu Flytrap" }
+1060.4 "Hydrowave" Ability { id: "8E8D", source: "Prime Punutiy" }
+# timing on 8E9A seems to vary between pulls, perhaps due to auto-attack timing?
+1073.3 "Song of the Punutiy" Ability { id: "8E9A", source: "Prime Punutiy" } window 5,5
+1076.9 "--sync--" Ability { id: "8E9E", source: "Punutiy" }
+# Both Prodigious Punutiys use Punutiy Flop (8E9C) (large AoE)
+# Petit Punutiy uses Punutiy Flop (8EA1) (small AoE)
+# Punutiy uses Hydrowave (8E9D) (conal AoE)
+1084.9 "Punutiy Flop/Hydrowave" Ability { id: "8E9D", source: "Punutiy" }
+1102.9 "--sync--" StartsUsing { id: "8EA2", source: "Prime Punutiy" } window 18,18
+1106.9 "Shore Shaker (cast)" Ability { id: "8EA2", source: "Prime Punutiy" }
+1107.9 "Shore Shaker (puddle)" Ability { id: "8EA3", source: "Prime Punutiy" }
+1109.9 "Shore Shaker (inner ring)" Ability { id: "8EA4", source: "Prime Punutiy" }
+1111.9 "Shore Shaker (outer ring)" Ability { id: "8EA5", source: "Prime Punutiy" }
+1122.7 "Resurface" Ability { id: "8E8E", source: "Prime Punutiy" }
+1134.8 "Bury x8" #Ability { id: "8E91", source: "Prime Punutiy" } duration 8
+1147.8 "Decay" Ability { id: "8E99", source: "Ihuykatumu Flytrap" }
+1153.0 "Hydrowave" Ability { id: "8E8D", source: "Prime Punutiy" }
+1165.2 "Punutiy Press" Ability { id: "8E8C", source: "Prime Punutiy" }
+
+# loop begins
+1181.5 "Song of the Punutiy" Ability { id: "8E9A", source: "Prime Punutiy" } window 5,5
+1185.1 "--sync--" Ability { id: "8E9E", source: "Punutiy" }
+1193.1 "Punutiy Flop/Hydrowave" Ability { id: "8E9D", source: "Punutiy" }
+1211.5 "--sync--" StartsUsing { id: "8EA2", source: "Prime Punutiy" } window 18,18
+1215.5 "Shore Shaker (cast)" Ability { id: "8EA2", source: "Prime Punutiy" }
+1216.5 "Shore Shaker (puddle)" Ability { id: "8EA3", source: "Prime Punutiy" }
+1218.5 "Shore Shaker (inner ring)" Ability { id: "8EA4", source: "Prime Punutiy" }
+1220.5 "Shore Shaker (outer ring)" Ability { id: "8EA5", source: "Prime Punutiy" }
+1223.9 "Hydrowave" Ability { id: "8E8D", source: "Prime Punutiy" }
+1234.0 "Punutiy Press" Ability { id: "8E8C", source: "Prime Punutiy" }
+1246.2 "Punutiy Press" Ability { id: "8E8C", source: "Prime Punutiy" }
+
+1260.5 "Song of the Punutiy" Ability { id: "8E9A", source: "Prime Punutiy" } forcejump 1181.5
+
+#~~~~~~~~~#
+# Drowsie #
+#~~~~~~~~~#
+
+# TODO: Does Flagrant Spread + Sneeze timing vary depending on when adds die?
+
+# -ii 8E80 8EAB 8EAC 8EAD 8EAA 8E85
+# -p 8F9A:2000.1
+
+# Note: Flagrant Spread (8EAA/8E85) not included because timing is variable and the
+# casts are often interrupted due to quick add deaths
+
+# Drowsie's Grotto will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "132B" } window 2000,1
+2000.1 "--sync--" Ability { id: "8F9A", source: "Drowsie" } window 2001,5
+2014.4 "Uppercut" Ability { id: "98DC", source: "Drowsie" } window 2015,5
+2025.2 "Sow" Ability { id: "8E7C", source: "Drowsie" }
+2030.8 "Drowsy Dance" Ability { id: "8E7D", source: "Drowsie" }
+2035.7 "Arise" Ability { id: "8E7E", source: "Ihuykatumu Ivy" }
+2046.7 "Wallop (small)" Ability { id: "8E7F", source: "Ihuykatumu Ivy" }
+2055.1 "--sync--" Ability { id: "8E81", source: "Drowsie" }
+2061.7 "Wallop (large)" Ability { id: "8E82", source: "Ihuykatumu Ivy" }
+2066.8 "Sneeze" Ability { id: "8E7B", source: "Drowsie" }
+2080.2 "Spit" Ability { id: "8E83", source: "Drowsie" }
+2081.5 "--sync--" Ability { id: "8E84", source: "Green Clot" }
+2124.5 "Sneeze" Ability { id: "8E7B", source: "Drowsie" }
+2136.8 "Uppercut" Ability { id: "98DC", source: "Drowsie" }
+
+# loop begins
+2149.0 "Sow" Ability { id: "8E7C", source: "Drowsie" }
+2154.6 "Drowsy Dance" Ability { id: "8E7D", source: "Drowsie" }
+2159.5 "Arise" Ability { id: "8E7E", source: "Ihuykatumu Ivy" }
+2170.5 "Wallop (small)" Ability { id: "8E7F", source: "Ihuykatumu Ivy" }
+2178.8 "--sync--" Ability { id: "8E81", source: "Drowsie" }
+2185.3 "Wallop (large)" Ability { id: "8E82", source: "Ihuykatumu Ivy" }
+2190.5 "Sneeze" Ability { id: "8E7B", source: "Drowsie" }
+2202.9 "Uppercut" Ability { id: "98DC", source: "Drowsie" }
+
+2217.9 "Sow" Ability { id: "8E7C", source: "Drowsie" } forcejump 2149
+
+#~~~~~~~~~~#
+# Apollyon #
+#~~~~~~~~~~#
+
+# -ii 8DF8 8DF6 8DFA 8DFD 8DFE 8E01 8E05
+# -ic "Ihuykatumu Sandworm"
+# -p 8DF4:3009.3
+
+# Breathcatch will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "132C" } window 3000,1
+3009.3 "Razor Zephyr" Ability { id: "8DF4", source: "Apollyon" } window 3010,5
+3019.0 "Blade" Ability { id: "8DFB", source: "Apollyon" }
+3040.2 "High Wind" Ability { id: "8DF5", source: "Apollyon" }
+3056.3 "Swarming Locust" Ability { id: "8DF7", source: "Apollyon" }
+3062.0 "Blades of Famine" Ability { id: "8DF9", source: "Apollyon" }
+3069.6 "Blades of Famine" Ability { id: "8DF9", source: "Apollyon" }
+3081.5 "Levinsickle" Ability { id: "8DFC", source: "Apollyon" }
+3090.6 "Wing of Lightning 1" Ability { id: "8DFF", source: "Apollyon" }
+3094.6 "Wing of Lightning 2" Ability { id: "8DFF", source: "Apollyon" }
+3097.0 "Thunder III" Ability { id: "8E00", source: "Apollyon" }
+3105.1 "--sync--" Ability { id: "8E02", source: "Ihuykatumu Sandworm" }
+3117.2 "High Wind" Ability { id: "8DF5", source: "Apollyon" }
+3135.0 "Blade" Ability { id: "8E04", source: "Apollyon" }
+3139.9 "Wind Sickle" Ability { id: "8E06", source: "Apollyon" }
+3144.6 "Razor Storm" Ability { id: "8E03", source: "Apollyon" }
+3156.8 "Windwhistle" Ability { id: "8E07", source: "Apollyon" }
+3166.8 "Cutting Wind 1" Ability { id: "8E08", source: "Apollyon" }
+3170.0 "Razor Zephyr" Ability { id: "8DF4", source: "Apollyon" }
+3174.9 "Cutting Wind 2" Ability { id: "8E08", source: "Apollyon" }
+3182.9 "Cutting Wind 3" Ability { id: "8E08", source: "Apollyon" }
+3184.7 "Thunder III" Ability { id: "8E00", source: "Apollyon" }
+
+# loop begins
+3197.7 "Levinsickle" Ability { id: "8DFC", source: "Apollyon" }
+3206.7 "Wing of Lightning 1" Ability { id: "8DFF", source: "Apollyon" }
+3210.7 "Wing of Lightning 2" Ability { id: "8DFF", source: "Apollyon" }
+3215.9 "Razor Zephyr" Ability { id: "8DF4", source: "Apollyon" }
+3223.0 "High Wind" Ability { id: "8DF5", source: "Apollyon" }
+3230.4 "Windwhistle" Ability { id: "8E07", source: "Apollyon" }
+3240.4 "Cutting Wind 1" Ability { id: "8E08", source: "Apollyon" }
+3243.6 "Razor Zephyr" Ability { id: "8DF4", source: "Apollyon" }
+3248.4 "Cutting Wind 2" Ability { id: "8E08", source: "Apollyon" }
+3256.4 "Cutting Wind 3" Ability { id: "8E08", source: "Apollyon" }
+3258.4 "Thunder III" Ability { id: "8E00", source: "Apollyon" }
+3270.1 "Blade" Ability { id: "8DFB", source: "Apollyon" }
+
+3286.1 "Levinsickle" Ability { id: "8DFC", source: "Apollyon" } forcejump 3197.7
