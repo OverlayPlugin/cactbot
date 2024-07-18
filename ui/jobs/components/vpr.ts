@@ -9,6 +9,7 @@ import { BaseComponent, ComponentInterface } from './base';
 
 export class VPRComponent extends BaseComponent {
   rattlingCoil: ResourceBox;
+  serpentOfferings: ResourceBox;
   noxiousGnashTimer: TimerBox;
   huntersInstinctTimer: TimerBox;
   swiftscaledTimer: TimerBox;
@@ -19,6 +20,10 @@ export class VPRComponent extends BaseComponent {
 
     this.rattlingCoil = this.bars.addResourceBox({
       classList: ['vpr-color-rattling-coil'],
+    });
+
+    this.serpentOfferings = this.bars.addResourceBox({
+      classList: ['vpr-color-serpentofferings'],
     });
 
     this.noxiousGnashTimer = this.bars.addProcBox({
@@ -97,6 +102,16 @@ export class VPRComponent extends BaseComponent {
 
   override onJobDetailUpdate(jobDetail: JobDetail['VPR']): void {
     this.rattlingCoil.innerText = jobDetail.rattlingCoilStacks.toString();
+
+    const so = jobDetail.serpentOffering;
+    this.serpentOfferings.innerText = so.toString();
+    this.serpentOfferings.parentNode.classList.remove('high', 'active');
+    if (so >= 50)
+      this.serpentOfferings.parentNode.classList.add('high');
+    else if (jobDetail.anguineTribute > 0) {
+      this.serpentOfferings.parentNode.classList.add('active');
+      this.serpentOfferings.innerText = jobDetail.anguineTribute.toString();
+    }
   }
 
   override reset(): void {
