@@ -1,5 +1,6 @@
 import Conditions from '../../../../../resources/conditions';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -184,35 +185,47 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '9309', source: 'Black Cat', capture: false },
       durationSeconds: 9.5,
-      response: Responses.goRightThenLeft(),
+      response: Responses.goLeftThenRight(),
     },
     {
       id: 'R1N One-two Paw Left Right',
       type: 'StartsUsing',
       netRegex: { id: '930C', source: 'Black Cat', capture: false },
       durationSeconds: 9.5,
-      response: Responses.goLeftThenRight(),
+      response: Responses.goRightThenLeft(),
     },
     {
       id: 'R1N Black Cat Crossing',
-      type: 'StartsUsing',
-      netRegex: { id: '930F', source: 'Black Cat', capture: false },
-      infoText: (_data, _matches, output) => output.text!(),
+      type: 'StartsUsingExtra',
+      netRegex: { id: '9311', capture: true },
+      suppressSeconds: 5,
+      infoText: (_data, matches, output) => {
+        const heading = parseFloat(matches.heading);
+        const dir = Directions.hdgTo8DirNum(heading);
+        if (dir % 2 === 0) {
+          // `dir % 2 === 0` = this is aimed at a cardinal, so intercards safe first
+          return output.cardsIntercards!();
+        }
+        return output.intercardsCards!();
+      },
       outputStrings: {
-        text: {
+        cardsIntercards: {
           en: 'Cards => Intercards',
+        },
+        intercardsCards: {
+          en: 'Intercards => Cards',
         },
       },
     },
     {
       id: 'R1N Elevate and Eviscerate',
       type: 'StartsUsing',
-      netRegex: { id: '9317', source: 'Black Cat', capture: true },
+      netRegex: { id: '9317', source: ['Black Cat', 'Copy Cat'], capture: true },
       condition: Conditions.targetIsYou(),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Aim for pristine tile',
+          en: 'Aim for uncracked tile',
         },
       },
     },
@@ -248,7 +261,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'West, West => East',
+          en: 'West => East at marker',
         },
       },
     },
@@ -260,7 +273,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'West, East => West',
+          en: 'East => West at marker',
         },
       },
     },
@@ -272,7 +285,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'East, West => East',
+          en: 'West => East at marker',
         },
       },
     },
@@ -284,7 +297,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'East, East => West',
+          en: 'East => West at marker',
         },
       },
     },
