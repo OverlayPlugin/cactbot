@@ -935,6 +935,11 @@ namespace Cactbot {
         PitOfDread = 4,
         HuntersDen = 5,
         SwiftskinsDen = 6,
+        Reawaken = 7,
+        FirstGeneration = 8,
+        SecondGeneration = 9,
+        ThirdGeneration = 10,
+        FourthGeneration = 11,
       }
 
       [FieldOffset(0x00)]
