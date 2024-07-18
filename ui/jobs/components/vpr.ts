@@ -86,10 +86,14 @@ export class VPRComponent extends BaseComponent {
       fgColor: 'vpr-color-dreadcombo',
     });
 
+    const stackContainer = document.createElement('div');
+    stackContainer.classList.add('stacks');
+    this.bars.addJobBarContainer().appendChild(stackContainer);
+
     this.vipersight = document.createElement('div');
     this.vipersight.id = 'vpr-stacks-vipersight';
-    this.bars.addJobBarContainer().appendChild(this.vipersight);
-    this.vipersight.classList.add('stacks');
+    stackContainer.appendChild(this.vipersight);
+
     for (const side of ['left', 'right']) {
       const d = document.createElement('div');
       d.classList.add(side);
