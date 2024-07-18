@@ -277,6 +277,8 @@ namespace Cactbot {
                 return JObject.FromObject(*(SageJobMemory*)&p[0]);
             case EntityJob.RPR:
                 return JObject.FromObject(*(ReaperJobMemory*)&p[0]);
+            case EntityJob.VPR:
+                return JObject.FromObject(*(ViperJobMemory*)&p[0]);
             case EntityJob.PCT:
                 return JObject.FromObject(*(PictomancerJobMemory*)&p[0]);
           }
@@ -923,6 +925,42 @@ namespace Cactbot {
       [FieldOffset(0x05)]
       public byte voidShroud;
     }
+
+    [StructLayout(LayoutKind.Explicit)]
+    public struct ViperJobMemory {
+      public enum DreadCombo : byte {
+        Dreadwinder = 1,
+        HuntersCoil = 2,
+        SwiftskinsCoil = 3,
+        PitOfDread = 4,
+        HuntersDen = 5,
+        SwiftskinsDen = 6,
+      }
+
+      [FieldOffset(0x00)]
+      public byte rattlingCoilStacks;
+
+      [FieldOffset(0x01)]
+      public byte anguineTribute;
+
+      [FieldOffset(0x02)]
+      public byte serpentOffering;
+
+      [NonSerialized]
+      [FieldOffset(0x03)]
+      private DreadCombo _dreadCombo;
+
+      public string dreadCombo {
+        get {
+          return _dreadCombo.ToString();
+        }
+      }
+
+      [FieldOffset(0x06)]
+      public ushort reawakenedTimer;
+    }
+
+
 
     [StructLayout(LayoutKind.Explicit)]
     public struct PictomancerJobMemory {
