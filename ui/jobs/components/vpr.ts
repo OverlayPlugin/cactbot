@@ -165,6 +165,8 @@ export class VPRComponent extends BaseComponent {
       case EffectId.HindstungVenom:
       case EffectId.FlanksbaneVenom:
       case EffectId.FlankstungVenom:
+      case EffectId.GrimhuntersVenom:
+      case EffectId.GrimskinsVenom:
         this.currentVenomEffect = id;
         break;
     }
@@ -183,6 +185,8 @@ export class VPRComponent extends BaseComponent {
       case EffectId.HindstungVenom:
       case EffectId.FlanksbaneVenom:
       case EffectId.FlankstungVenom:
+      case EffectId.GrimhuntersVenom:
+      case EffectId.GrimskinsVenom:
         this.currentVenomEffect = '';
         break;
     }
