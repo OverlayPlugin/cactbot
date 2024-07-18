@@ -188,6 +188,7 @@ export class VPRComponent extends BaseComponent {
       case EffectId.GrimhuntersVenom:
       case EffectId.GrimskinsVenom:
         this.currentVenomEffect = '';
+        this.vipersight.dataset.stacks = '0';
         break;
     }
   }
