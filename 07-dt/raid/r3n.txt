@@ -1,8 +1,86 @@
 ### Arcadion (R3N): AAC Light-heavyweight M3
 
+# 93AB = tp north/mid
+
+# -ii 93CE 93CF 93D2 93D7 9A81 9B44 9B59 9B5B 9B58 9AE0 9AE1 968D 93CD 9B5A 9B5B
+# -it "Brute Bomber"
+
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
-
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+13.0 "--sync--" StartsUsing { id: "93D6", source: "Brute Bomber" }
+17.7 "Brutal Impact x4" Ability { id: "93D6", source: "Brute Bomber" } duration 3
+28.0 "Knuckle Sandwich" Ability { id: "93D5", source: "Brute Bomber" }
+35.2 "--north--" Ability { id: "93AB", source: "Brute Bomber" }
+43.1 "Brutal Lariat (cast)" Ability { id: ["9AD4", "9AD5"], source: "Brute Bomber" }
+44.3 "Brutal Lariat (damage)" Ability { id: ["9AD6", "9AD7"], source: "Brute Bomber" }
+50.0 "--north--" Ability { id: "93AB", source: "Brute Bomber" }
+57.9 "Brutal Lariat (cast)" Ability { id: ["9AD4", "9AD5"], source: "Brute Bomber" }
+59.1 "Brutal Lariat (damage)" Ability { id: ["9AD6", "9AD7"], source: "Brute Bomber" }
+60.8 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+68.5 "Murderous Mist" Ability { id: "93B5", source: "Brute Bomber" }
+78.7 "Barbarous Barrage" Ability { id: "93B2", source: "Brute Bomber" }
+88.8 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+89.8 "Explosion" Ability { id: "93B3", source: "Brute Bomber" }
+96.7 "Fire Spin (cast)" Ability { id: ["93D0", "93D1"], source: "Brute Bomber" }
+97.1 "Fire Spin (cones)" duration 7 #Ability { id: ["9B58", "9B59"], source: "Brute Bomber" }
+112.1 "Fuses of Fury" Ability { id: "93B6", source: "Brute Bomber" }
+119.5 "Self-destruct (short)" Ability { id: "93B8", source: "Lit Fuse" }
+122.5 "Self-destruct (long)" Ability { id: "93B9", source: "Lit Fuse" }
+123.5 "--north--" Ability { id: "93AB", source: "Brute Bomber" }
+131.4 "Brutal Lariat (cast)" Ability { id: ["9AD4", "9AD5"], source: "Brute Bomber" }
+132.6 "Brutal Lariat (damage)" Ability { id: ["9AD6", "9AD7"], source: "Brute Bomber" }
+142.3 "Fuses of Fury" Ability { id: "93B6", source: "Brute Bomber" }
+149.7 "Self-destruct (short)" Ability { id: "93B8", source: "Lit Fuse" }
+152.7 "Self-destruct (long)" Ability { id: "93B9", source: "Lit Fuse" }
+158.7 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+165.7 "Doping Draught" Ability { id: "93BE", source: "Brute Bomber" }
+195.8 "--north--" Ability { id: "93AB", source: "Brute Bomber" }
+203.7 "Lariat Combo (cast)" Ability { id: ["9ADC", "9ADD", "9ADE", "9ADF"], source: "Brute Bomber" }
+204.9 "Lariat Combo (damage)" Ability { id: ["9AE4", "9AE5"], source: "Brute Bomber" }
+209.2 "Lariat Combo (damage)" Ability { id: ["9AE6", "9AE7"], source: "Brute Bomber" }
+211.9 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+218.3 "Brutal Burn (cast)" Ability { id: "9428", source: "Brute Bomber" }
+218.7 "Brutal Burn (damage)" Ability { id: "9429", source: "Brute Bomber" }
+225.4 "Brutal Impact x6" Ability { id: "93D6", source: "Brute Bomber" } duration 5
+232.0 "--north--" Ability { id: "93AB", source: "Brute Bomber" }
+239.9 "Lariat Combo (cast)" Ability { id: ["9ADC", "9ADD", "9ADE", "9ADF"], source: "Brute Bomber" }
+241.1 "Lariat Combo (damage)" Ability { id: ["9AE4", "9AE5"], source: "Brute Bomber" }
+245.4 "Lariat Combo (damage)" Ability { id: ["9AE6", "9AE7"], source: "Brute Bomber" }
+
+255.2 label "loop"
+255.2 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+262.2 "Infernal Spin (cast)" Ability { id: ["9B42", "9B43"], source: "Brute Bomber" }
+262.8 "Infernal Spin/Explosive Rain" duration 11 #Ability { id: "93CD", source: "Brute Bomber" }
+271.4 "--north--" Ability { id: "93AB", source: "Brute Bomber" }
+279.2 "Lariat Combo (cast)" Ability { id: ["9ADC", "9ADD", "9ADE", "9ADF"], source: "Brute Bomber" }
+280.4 "Lariat Combo (damage)" Ability { id: ["9AE4", "9AE5"], source: "Brute Bomber" }
+284.7 "Lariat Combo (damage)" Ability { id: ["9AE6", "9AE7"], source: "Brute Bomber" }
+287.4 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+293.7 "Brutal Burn (cast)" Ability { id: "9428", source: "Brute Bomber" }
+294.3 "Brutal Burn (damage)" Ability { id: "9429", source: "Brute Bomber" }
+301.0 "Brutal Impact x6" Ability { id: "93D6", source: "Brute Bomber" } duration 5
+317.6 "Fuses of Fury" Ability { id: "93B6", source: "Brute Bomber" }
+320.0 "--north--" Ability { id: "93AB", source: "Brute Bomber" }
+326.0 "Self-destruct (short)" Ability { id: "93B8", source: "Lit Fuse" }
+327.8 "Lariat Combo (cast)" Ability { id: ["9ADC", "9ADD", "9ADE", "9ADF"], source: "Brute Bomber" }
+329.0 "Self-destruct (long)" Ability { id: "93B9", source: "Lit Fuse" }
+329.0 "Lariat Combo (damage)" Ability { id: ["9AE4", "9AE5"], source: "Brute Bomber" }
+333.3 "Lariat Combo (damage)" Ability { id: ["9AE6", "9AE7"], source: "Brute Bomber" }
+336.0 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+343.0 "Brutal Impact x6" Ability { id: "93D6", source: "Brute Bomber" } duration 5
+357.6 "Knuckle Sandwich" Ability { id: "93D5", source: "Brute Bomber" }
+369.7 "Barbarous Barrage" Ability { id: "93B2", source: "Brute Bomber" }
+375.8 "Fuses of Fury" Ability { id: "93B6", source: "Brute Bomber" }
+382.4 "Explosion" Ability { id: "93B3", source: "Brute Bomber" }
+385.4 "--middle--" Ability { id: "93AB", source: "Brute Bomber" }
+386.4 "Self-destruct (short)" Ability { id: "93B8", source: "Lit Fuse" }
+389.4 "Self-destruct (long)" Ability { id: "93B9", source: "Lit Fuse" }
+393.2 "Murderous Mist" Ability { id: "93B5", source: "Brute Bomber" }
+400.9 "Brutal Burn (cast)" Ability { id: "9428", source: "Brute Bomber" }
+401.3 "Brutal Burn (damage)" Ability { id: "9429", source: "Brute Bomber" }
+408.0 "Brutal Impact x6" Ability { id: "93D6", source: "Brute Bomber" } duration 5
+422.7 "Knuckle Sandwich" Ability { id: "93D5", source: "Brute Bomber" }
+434.8 "--middle--" Ability { id: "93AB", source: "Brute Bomber" } forcejump "loop"
