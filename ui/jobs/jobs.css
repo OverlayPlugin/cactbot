@@ -442,11 +442,11 @@ div.justbuffs div#procs-container {
   background-color: rgb(255 0 255);
 }
 
-#vpr-stacks-vipersight[data-stack="1"] {
+#vpr-stacks-vipersight[data-stacks="1"] {
   --bg-color: rgb(100 20 30);
 }
 
-#vpr-stacks-vipersight[data-stack="2"] {
+#vpr-stacks-vipersight[data-stacks="2"] {
   --bg-color: rgb(8 50 128);
 }
 
