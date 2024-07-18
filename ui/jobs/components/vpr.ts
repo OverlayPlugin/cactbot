@@ -87,12 +87,15 @@ export class VPRComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
+      // Both buff have an animation lock, + 0.5s
+      // (buff time won't go down until animation fully acted)
+      // FIXME: Swiftskin's Coil has a little longer animation lock for swiftscaled
       case EffectId.Swiftscaled:
         this.player.speedBuffs.swiftscaled = true;
-        this.swiftscaledTimer.duration = Number(matches.duration) || 0;
+        this.swiftscaledTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
       case EffectId.HuntersInstinct:
-        this.huntersInstinctTimer.duration = Number(matches.duration) || 0;
+        this.huntersInstinctTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
     }
   }
@@ -121,7 +124,7 @@ export class VPRComponent extends BaseComponent {
         // For the same reason, timer will not reset when target with debuff is defeated.
         const duration = parseFloat(matches.duration ?? '0') || 0;
         if (this.noxiousGnashTimer.value < duration)
-          this.noxiousGnashTimer.duration = duration;
+          this.noxiousGnashTimer.duration = duration - 0.5; // debuff delay
         break;
       }
     }
