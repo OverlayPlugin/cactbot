@@ -223,6 +223,9 @@ export const kAbility = {
   SoulSlice: '5F3C',
   SoulScythe: '5F3D',
   ArcaneCircle: '5F55',
+  // VPR
+  Dreadwinder: '873C',
+  PitOfDread: '873F',
   // BRD
   BattleVoice: '76',
   MagesBallad: '72',

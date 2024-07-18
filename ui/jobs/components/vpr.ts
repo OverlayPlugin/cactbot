@@ -2,6 +2,7 @@ import EffectId from '../../../resources/effect_id';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
+import { kAbility } from '../constants';
 import { PartialFieldMatches } from '../event_emitter';
 
 import { BaseComponent, ComponentInterface } from './base';
@@ -11,6 +12,7 @@ export class VPRComponent extends BaseComponent {
   noxiousGnashTimer: TimerBox;
   huntersInstinctTimer: TimerBox;
   swiftscaledTimer: TimerBox;
+  dreadComboTimer: TimerBox;
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -33,6 +35,22 @@ export class VPRComponent extends BaseComponent {
       id: 'vpr-timers-swiftscaled',
       fgColor: 'vpr-color-swiftscaled',
     });
+
+    this.dreadComboTimer = this.bars.addProcBox({
+      id: 'vpr-timers-dreadcombo',
+      fgColor: 'vpr-color-dreadcombo',
+    });
+  }
+
+  override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
+    switch (id) {
+      case kAbility.Dreadwinder:
+      case kAbility.PitOfDread:
+        if (matches.targetIndex === '0') {
+          this.dreadComboTimer.duration = 40 + (this.dreadComboTimer.value ?? 0);
+        }
+        break;
+    }
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
