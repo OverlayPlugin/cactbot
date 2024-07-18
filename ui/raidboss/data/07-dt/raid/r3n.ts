@@ -71,6 +71,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Knockback Towers',
+          de: 'Rückstoß Türme',
         },
       },
     },
@@ -100,6 +101,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Long => Short',
+          de: 'Lange => Kurz',
         },
       },
     },
@@ -112,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'East, then West',
+          de: 'Osten, dann Westen',
         },
       },
     },
@@ -124,6 +127,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'East, stay East',
+          de: 'Osten, bleib Osten',
         },
       },
     },
@@ -136,6 +140,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'West, then East',
+          de: 'Westen, dann Osten',
         },
       },
     },
@@ -148,6 +153,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'West, stay West',
+          de: 'Westen, bleib Westen',
         },
       },
     },
@@ -167,6 +173,84 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: Outputs.counterclockwise,
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Brute Bomber': 'Brutalo Bomber',
+        'Lit Fuse': 'Zündschnurbombe',
+      },
+      'replaceText': {
+        '\\(cast\\)': '(wirken)',
+        '\\(cones\\)': '(kegel)',
+        '\\(damage\\)': '(Schaden)',
+        '\\(long\\)': '(lange)',
+        '\\(short\\)': '(kurz)',
+        'Barbarous Barrage': 'Brutalo-Bomben',
+        'Brutal Burn': 'Brutalo-Feuer',
+        'Brutal Impact': 'Knallender Impakt',
+        'Brutal Lariat': 'Brutalo-Lariat',
+        'Doping Draught': 'Aufputschen',
+        'Explosion': 'Explosion',
+        'Explosive Rain': 'Bombenregen',
+        'Fire Spin': 'Feuertornado',
+        'Fuses of Fury': 'Zündschnurbomben',
+        'Infernal Spin': 'Ultimativer Feuertornado',
+        'Knuckle Sandwich': 'Knöchelschlag',
+        'Lariat Combo': 'Lariat-Kombination',
+        'Murderous Mist': 'Grüner Nebel',
+        'Self-destruct': 'Selbstzerstörung',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Brute Bomber': 'Brute Bomber',
+        'Lit Fuse': 'bombo à mèche',
+      },
+      'replaceText': {
+        'Barbarous Barrage': 'Bombardement brutal',
+        'Brutal Burn': 'Brûlure brutale',
+        'Brutal Impact': 'Impact brutal',
+        'Brutal Lariat': 'Lariat brutal',
+        'Doping Draught': 'Dopage',
+        'Explosion': 'Explosion',
+        'Explosive Rain': 'Pluie explosive',
+        'Fire Spin': 'Toupie enflammée',
+        'Fuses of Fury': 'Bombos à mèche',
+        'Infernal Spin': 'Toupie infernale',
+        'Knuckle Sandwich': 'Sandwich de poings',
+        'Lariat Combo': 'Combo de lariats',
+        'Murderous Mist': 'Vapeur venimeuse',
+        'Self-destruct': 'Auto-destruction',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Brute Bomber': 'ブルートボンバー',
+        'Lit Fuse': 'フューズボム',
+      },
+      'replaceText': {
+        'Barbarous Barrage': 'ボンバリアンボム',
+        'Brutal Burn': 'ブルートファイヤー',
+        'Brutal Impact': 'スマッシュインパクト',
+        'Brutal Lariat': 'ブルートラリアット',
+        'Doping Draught': 'ドーピング',
+        'Explosion': '爆発',
+        'Explosive Rain': 'ボムレイン',
+        'Fire Spin': 'スピニングファイヤー',
+        'Fuses of Fury': 'フューズボム',
+        'Infernal Spin': '極盛り式スピニングファイヤー',
+        'Knuckle Sandwich': 'ナックルパート',
+        'Lariat Combo': 'ラリアットコンビネーション',
+        'Murderous Mist': 'グリーンミスト',
+        'Self-destruct': '自爆',
       },
     },
   ],
