@@ -107,8 +107,8 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Alarm Pheromones': 'Alarmpheromon',
+        'Blinding Love': 'Blinde Liebe',
         'Blow Kiss': 'Kusshand',
-        'Blinding Love': 'fgh',
         'Call Me Honey': 'Lieblicher Ruf',
         'Drop of Venom': 'Gifttropfen',
         'Fracture': 'Sprengung',
@@ -133,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Alarm Pheromones': 'Phéromones d\'alerte',
+        'Blinding Love': 'Amour aveuglant',
         'Blow Kiss': 'Baiser renversant',
         'Call Me Honey': 'Appelez-moi Lovely',
         'Drop of Venom': 'Chute de venin',
@@ -158,6 +159,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Alarm Pheromones': 'アラームフェロモン',
+        'Blinding Love': 'ラブ・イズ・ブラインド',
         'Blow Kiss': 'キッスブロー',
         'Call Me Honey': 'ラブリーコール',
         'Drop of Venom': 'ベノムドロップ',
