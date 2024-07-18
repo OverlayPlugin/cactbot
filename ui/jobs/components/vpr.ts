@@ -17,6 +17,39 @@ export class VPRComponent extends BaseComponent {
   swiftscaledTimer: TimerBox;
   dreadComboTimer: TimerBox;
 
+  vipersight: HTMLDivElement;
+  currentVenomEffect = '';
+
+  static vipersightMap: Record<string, Record<string, 'left' | 'right'>> = {
+    // Single target - first skill
+    [kAbility.SteelFangs]: {
+      [EffectId.FlankstungVenom]: 'left',
+      [EffectId.FlanksbaneVenom]: 'left',
+      [EffectId.HindstungVenom]: 'right',
+      [EffectId.HindsbaneVenom]: 'right',
+    },
+    [kAbility.DreadFangs]: {
+      [EffectId.FlankstungVenom]: 'left',
+      [EffectId.FlanksbaneVenom]: 'left',
+      [EffectId.HindstungVenom]: 'right',
+      [EffectId.HindsbaneVenom]: 'right',
+    },
+    // Single target - second skill
+    [kAbility.HuntersSting]: {
+      [EffectId.FlankstungVenom]: 'left',
+      [EffectId.FlanksbaneVenom]: 'right',
+    },
+    [kAbility.SwiftskinsSting]: {
+      [EffectId.HindstungVenom]: 'left',
+      [EffectId.HindsbaneVenom]: 'right',
+    },
+    // Multiple target - second skill
+    [kAbility.SwiftskinsBite]: {
+      [EffectId.GrimhuntersVenom]: 'left',
+      [EffectId.GrimskinsVenom]: 'right',
+    },
+  };
+
   constructor(o: ComponentInterface) {
     super(o);
 
@@ -52,9 +85,25 @@ export class VPRComponent extends BaseComponent {
       id: 'vpr-timers-dreadcombo',
       fgColor: 'vpr-color-dreadcombo',
     });
+
+    this.vipersight = document.createElement('div');
+    this.vipersight.id = 'vpr-stacks-vipersight';
+    this.bars.addJobBarContainer().appendChild(this.vipersight);
+    this.vipersight.classList.add('stacks');
+    for (const side of ['left', 'right']) {
+      const d = document.createElement('div');
+      d.classList.add(side);
+      this.vipersight.appendChild(d);
+    }
   }
 
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
+    if (id in VPRComponent.vipersightMap) {
+      const side = VPRComponent.vipersightMap[id]?.[this.currentVenomEffect];
+      this.vipersight.dataset.side = side ?? 'both';
+      this.vipersight.classList.add('active');
+    }
+
     switch (id) {
       case kAbility.Dreadwinder:
       case kAbility.PitOfDread:
@@ -66,13 +115,17 @@ export class VPRComponent extends BaseComponent {
       // It's unnecessary to use combo tracker.
       case kAbility.SteelFangs:
       case kAbility.DreadFangs:
-      case kAbility.HuntersSting:
-      case kAbility.SwiftskinsSting:
       case kAbility.SteelMaw:
       case kAbility.DreadMaw:
+        this.comboTimer.duration = this.comboDuration;
+        this.vipersight.dataset.stacks = '1';
+        break;
+      case kAbility.HuntersSting:
+      case kAbility.SwiftskinsSting:
       case kAbility.HuntersBite:
       case kAbility.SwiftskinsBite:
         this.comboTimer.duration = this.comboDuration;
+        this.vipersight.dataset.stacks = '2';
         break;
       case kAbility.FlankstingStrike:
       case kAbility.FlanksbaneFang:
@@ -81,6 +134,9 @@ export class VPRComponent extends BaseComponent {
       case kAbility.JaggedMaw:
       case kAbility.BloodiedMaw:
         this.comboTimer.duration = 0;
+        // Disable Vipersight when player deliver any third combo skill
+        this.vipersight.classList.remove('active');
+        this.vipersight.dataset.stacks = '0';
         break;
     }
   }
@@ -97,6 +153,12 @@ export class VPRComponent extends BaseComponent {
       case EffectId.HuntersInstinct:
         this.huntersInstinctTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
+      case EffectId.HindsbaneVenom:
+      case EffectId.HindstungVenom:
+      case EffectId.FlanksbaneVenom:
+      case EffectId.FlankstungVenom:
+        this.currentVenomEffect = id;
+        break;
     }
   }
 
@@ -108,6 +170,12 @@ export class VPRComponent extends BaseComponent {
         break;
       case EffectId.HuntersInstinct:
         this.huntersInstinctTimer.duration = 0;
+        break;
+      case EffectId.HindsbaneVenom:
+      case EffectId.HindstungVenom:
+      case EffectId.FlanksbaneVenom:
+      case EffectId.FlankstungVenom:
+        this.currentVenomEffect = '';
         break;
     }
   }

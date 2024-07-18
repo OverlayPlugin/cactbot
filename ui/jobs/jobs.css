@@ -442,6 +442,21 @@ div.justbuffs div#procs-container {
   background-color: rgb(255 0 255);
 }
 
+#vpr-stacks-vipersight[data-stack="1"] {
+  --bg-color: rgb(100 20 30);
+}
+
+#vpr-stacks-vipersight[data-stack="2"] {
+  --bg-color: rgb(8 50 128);
+}
+
+#vpr-stacks-vipersight.active[data-side="both"] > div.left,
+#vpr-stacks-vipersight.active[data-side="both"] > div.right,
+#vpr-stacks-vipersight.active[data-side="left"] > div.left,
+#vpr-stacks-vipersight.active[data-side="right"] > div.right {
+  background-color: var(--bg-color);
+}
+
 #brd-stacks-magescoda.active {
   background-color: rgb(143 90 143);
 }
