@@ -1,8 +1,142 @@
 ### Arcadion (R1N): AAC Light-heavyweight M1
 
+# -ii 98EF 933E 6854
+# -it "Black Cat"
+
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
-
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+13.6 "Bloody Scratch" Ability { id: "9340", source: "Black Cat" }
+18.7 "--middle--" Ability { id: "9308", source: "Black Cat" }
+26.9 "One-two Paw (cast)" Ability { id: ["9309", "930C"], source: "Black Cat" }
+27.8 "One-two Paw (damage)" Ability { id: ["930A", "930B", "930D", "930E"], source: "Black Cat" }
+30.8 "One-two Paw (damage)" Ability { id: ["930A", "930B", "930D", "930E"], source: "Black Cat" }
+38.0 "One-two Paw (cast)" Ability { id: ["9309", "930C"], source: "Black Cat" }
+38.9 "One-two Paw (damage)" Ability { id: ["930A", "930B", "930D", "930E"], source: "Black Cat" }
+41.9 "One-two Paw (damage)" Ability { id: ["930A", "930B", "930D", "930E"], source: "Black Cat" }
+48.1 "--middle--" Ability { id: "9308", source: "Black Cat" }
+57.1 "Black Cat Crossing (cast)" Ability { id: ["930F", "9310"], source: "Black Cat" }
+58.1 "Black Cat Crossing (damage)" Ability { id: ["9311", "9312"], source: "Black Cat" }
+60.1 "Black Cat Crossing (cast)" Ability { id: ["930F", "9310"], source: "Black Cat" }
+61.2 "Black Cat Crossing (damage)" Ability { id: ["9311", "9312"], source: "Black Cat" }
+68.2 "Biscuit Maker" Ability { id: "934A", source: "Black Cat" }
+74.2 "Clawful (cast)" Ability { id: "933C", source: "Black Cat" }
+75.2 "Clawful (damage)" Ability { id: "933D", source: "Black Cat" }
+85.3 "--middle--" Ability { id: "9308", source: "Black Cat" }
+# The boss telegraphs hits with IDs:
+# 9315 (first hit on tile)
+# 996B (second hit on tile)
+# We don't sync for Mouser because the IDs are repeated
+88.6 "Mouser (telegraphs)" duration 8.7
+# Hits are two IDs:
+# 9316 (animation)
+# 945A (damage)
+98.2 "Mouser (hits)" duration 8.6
+# There's an additional ability 9314 which is an animation played at the end of the hits section
+# Impact doesn't always hit, because sometimes players miss platforms.
+# There's probably also `Ability` lines triggered for someone breaking a platform?
+107.2 "--sync--" Ability { id: "9314", source: "Black Cat" }
+127.2 "Elevate and Eviscerate" Ability { id: "9317", source: "Black Cat" }
+130.9 "Impact" Ability { id: "9952", source: "Black Cat" }
+137.5 "Elevate and Eviscerate" Ability { id: "9317", source: "Black Cat" }
+141.2 "Impact" Ability { id: "9952", source: "Black Cat" }
+147.8 "Elevate and Eviscerate" Ability { id: "9317", source: "Black Cat" }
+151.5 "Impact" Ability { id: "9952", source: "Black Cat" }
+158.1 "Elevate and Eviscerate" Ability { id: "9317", source: "Black Cat" }
+161.8 "Impact" Ability { id: "9952", source: "Black Cat" }
+164.2 "--middle--" Ability { id: "9308", source: "Black Cat" }
+172.4 "Shockwave (cast)" Ability { id: "931D", source: "Black Cat" }
+173.4 "Shockwave (damage)" Ability { id: "931E", source: "Black Cat" }
+180.4 "Bloody Scratch" Ability { id: "9340", source: "Black Cat" }
+188.5 "--middle--" Ability { id: "9308", source: "Black Cat" }
+# The boss telegraphs pounce paths with, in order:
+# 9332/9334/9336/9338/933A - paw print paths, rectangle AoEs
+# 9333/9335/9337/9339/933B - paw print circles, circle AoEs
+# Actual cast bar is 9AD2
+# Additional animations tied to 9ACE, 9ACF
+191.5 "Predaceous Pounce (telegraphs)" StartsUsing { id: "9332", source: "Black Cat" } duration 10.7
+# Actual hits are:
+# 9964 - rectangle aoe
+# 9931 - circle aoe
+# Animations are tied to 9B16, 9B17, 9930
+# No sync on this because of repeated IDs
+205.0 "Predaceous Pounce (hits)" duration 5.3
+# For Grimalkin Gale, 933E puts spread markers on, but actual damage is 933F
+218.1 "Grimalkin Gale" Ability { id: "933F", source: "Black Cat" }
+225.2 "Biscuit Maker" Ability { id: "934A", source: "Black Cat" }
+231.3 "--middle--" Ability { id: "9308", source: "Black Cat" }
+# from video:
+# 9321 = jumping east, west safe then east
+# 931F = jumping west, west safe then east
+# from other logs:
+# 9320 = jumping west, ???east safe then west???
+# speculation:
+# 9322 = jumping east, ???west safe then east???
+240.6 "Leaping One-two Paw (cast)" Ability { id: ["931F", "9320", "9321", "9322"], source: "Black Cat" }
+241.6 "Leaping One-two Paw (jump)" #Ability { id: ["9323", "9326"], source: "Black Cat" }
+242.4 "Leaping One-two Paw (damage)" #Ability { id: ["9324", "9328"], source: "Black Cat" }
+244.4 "Leaping One-two Paw (damage)" #Ability { id: ["9325", "9327"], source: "Black Cat" }
+# 9810 = jumping boss-relative right, front/back/sides safe first
+# 9329 = jumping boss-relative left, diagonals safe first
+# Boss always faces east or west for the mechanic
+# 932A/932B are for animations?
+
+254.8 "Leaping Black Cat Crossing (cast)" Ability { id: ["9329", "9810"], source: "Black Cat" }
+256.8 "Leaping Black Cat Crossing (damage)" Ability { id: "932C", source: "Black Cat" }
+258.8 "Leaping Black Cat Crossing (damage)" Ability { id: "932D", source: "Black Cat" }
+264.8 "Clawful (cast)" Ability { id: "933C", source: "Black Cat" }
+265.8 "Clawful (damage)" Ability { id: "933D", source: "Black Cat" }
+272.8 label "loop"
+272.8 "Bloody Scratch" Ability { id: "9340", source: "Black Cat" }
+282.9 "--middle--" Ability { id: "9308", source: "Black Cat" }
+286.3 "Mouser (telegraphs)" duration 8.7
+295.0 "Mouser (hits)" duration 8.6
+305.0 "--sync--" Ability { id: "9314", source: "Black Cat" }
+# Copy Cat clone does the E&E, boss does line stack
+317.0 "Copycat" Ability { id: "9318", source: "Black Cat" }
+# 6854 is something to do with the line stack marker, but we can ignore it unless we really need the callout 0.4s earlier than the actual cast
+329.1 "Elevate and Eviscerate" Ability { id: "9317", source: "Copy Cat" }
+329.3 "Overshadow (cast)" Ability { id: "9319", source: "Black Cat" }
+329.5 "Overshadow (damage)" Ability { id: "931A", source: "Black Cat" }
+332.8 "Impact" Ability { id: "9952", source: "Copy Cat" }
+340.7 "Elevate and Eviscerate" Ability { id: "9317", source: "Copy Cat" }
+340.8 "Overshadow (cast)" Ability { id: "9319", source: "Black Cat" }
+341.0 "Overshadow (damage)" Ability { id: "931A", source: "Black Cat" }
+344.3 "Impact" Ability { id: "9952", source: "Copy Cat" }
+352.3 "Elevate and Eviscerate" Ability { id: "9317", source: "Copy Cat" }
+352.5 "Overshadow (cast)" Ability { id: "9319", source: "Black Cat" }
+352.7 "Overshadow (damage)" Ability { id: "931A", source: "Black Cat" }
+355.8 "Impact" Ability { id: "9952", source: "Copy Cat" }
+363.7 "Elevate and Eviscerate" Ability { id: "9317", source: "Copy Cat" }
+363.9 "Overshadow (cast)" Ability { id: "9319", source: "Black Cat" }
+364.1 "Overshadow (damage)" Ability { id: "931A", source: "Black Cat" }
+367.3 "Impact" Ability { id: "9952", source: "Copy Cat" }
+370.1 "--middle--" Ability { id: "9308", source: "Black Cat" }
+378.3 "Shockwave (cast)" Ability { id: "931D", source: "Black Cat" }
+379.3 "Shockwave (damage)" Ability { id: "931E", source: "Black Cat" }
+386.3 "Biscuit Maker" Ability { id: "934A", source: "Black Cat" }
+
+# Copy Cat clone does the Predaceous Pounce, boss does ~~nothing~~ auto attacks
+397.3 "Copycat" Ability { id: "9318", source: "Black Cat" }
+402.1 "Predaceous Pounce (telegraphs)" StartsUsing { id: "9332", source: "Black Cat" } duration 10.7
+415.6 "Predaceous Pounce (hits)" duration 5.3
+417.3 "--middle--" Ability { id: "9308", source: "Black Cat" }
+425.9 "One-two Paw (cast)" Ability { id: ["9309", "930C"], source: "Black Cat" }
+426.8 "One-two Paw (damage)" Ability { id: ["930A", "930B", "930D", "930E"], source: "Black Cat" }
+429.8 "One-two Paw (damage)" Ability { id: ["930A", "930B", "930D", "930E"], source: "Black Cat" }
+435.0 "Clawful (cast)" Ability { id: "933C", source: "Black Cat" }
+436.0 "Clawful (damage)" Ability { id: "933D", source: "Black Cat" }
+444.0 "--sync--" Ability { id: "9308", source: "Black Cat" }
+455.0 "Leaping One-two Paw (cast)" Ability { id: ["931F", "9320", "9321", "9322"], source: "Black Cat" }
+456.0 "Leaping One-two Paw (jump)" #Ability { id: ["9323", "9326"], source: "Black Cat" }
+456.8 "Leaping One-two Paw (damage)" #Ability { id: ["9324", "9328"], source: "Black Cat" }
+458.8 "Leaping One-two Paw (damage)" #Ability { id: ["9325", "9327"], source: "Black Cat" }
+461.8 "Grimalkin Gale" Ability { id: "933F", source: "Black Cat" }
+471.2 "Leaping Black Cat Crossing (cast)" Ability { id: ["9329", "9810"], source: "Black Cat" }
+473.2 "Leaping Black Cat Crossing (damage)" Ability { id: "932C", source: "Black Cat" }
+475.2 "Leaping Black Cat Crossing (damage)" Ability { id: "932D", source: "Black Cat" }
+478.0 "Grimalkin Gale" Ability { id: "933F", source: "Black Cat" }
+484.2 "Clawful (cast)" Ability { id: "933C", source: "Black Cat" }
+485.2 "Clawful (damage)" Ability { id: "933D", source: "Black Cat" }
+492.2 "Bloody Scratch" Ability { id: "9340", source: "Black Cat" } forcejump "loop"
