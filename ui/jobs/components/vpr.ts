@@ -56,11 +56,24 @@ export class VPRComponent extends BaseComponent {
         this.player.speedBuffs.swiftscaled = false;
         this.swiftscaledTimer.duration = 0;
         break;
-      case EffectId.NoxiousGnash:
-        this.noxiousGnashTimer.duration = 0;
-        break;
       case EffectId.HuntersInstinct:
         this.huntersInstinctTimer.duration = 0;
+        break;
+    }
+  }
+
+  override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
+    switch (id) {
+      case EffectId.NoxiousGnash:
+        // FIXME:
+        // Noxious Gnash can be different duration on multiple target,
+        // and this condition will only monitor the longest one.
+        // If you defeat a target with longer Noxious Gnash duration remains
+        // and move to a new or shorter duration target,
+        // This timer will not work well until new Noxious Gnash duration exceed timer.
+        // For the same reason, timer will not reset when target with debuff is defeated.
+        if (this.noxiousGnashTimer.value < parseFloat(matches.duration ?? '0'))
+          this.noxiousGnashTimer.duration = parseFloat(matches.duration ?? '0') - 0.5;
         break;
     }
   }
