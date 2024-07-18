@@ -1128,12 +1128,20 @@ div.justbuffs div#procs-container {
   background-color: rgb(255 60 50);
 }
 
+.vpr-color-rattling-coil.pulse {
+  animation: 1s pulse-white infinite;
+}
+
 .vpr-color-serpentofferings {
   background-color: rgb(255 30 20 / 30%);
 }
 
 .vpr-color-serpentofferings.high {
   background-color: rgb(90 150 220);
+}
+
+.vpr-color-serpentofferings.high.pulse {
+  animation: 1s pulse-red infinite;
 }
 
 .vpr-color-serpentofferings.active {

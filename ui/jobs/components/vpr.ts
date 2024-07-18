@@ -129,16 +129,18 @@ export class VPRComponent extends BaseComponent {
 
   override onJobDetailUpdate(jobDetail: JobDetail['VPR']): void {
     this.rattlingCoil.innerText = jobDetail.rattlingCoilStacks.toString();
+    this.rattlingCoil.parentNode.classList.toggle('pulse', jobDetail.rattlingCoilStacks === 3);
 
     const so = jobDetail.serpentOffering;
     this.serpentOfferings.innerText = so.toString();
-    this.serpentOfferings.parentNode.classList.remove('high', 'active');
-    if (so >= 50)
-      this.serpentOfferings.parentNode.classList.add('high');
-    else if (jobDetail.anguineTribute > 0) {
+    this.serpentOfferings.parentNode.classList.remove('high', 'active', 'pulse');
+    if (jobDetail.anguineTribute > 0) {
       this.serpentOfferings.parentNode.classList.add('active');
       this.serpentOfferings.innerText = jobDetail.anguineTribute.toString();
-    }
+    } else if (so === 100)
+      this.serpentOfferings.parentNode.classList.add('high', 'pulse');
+    else if (so >= 50)
+      this.serpentOfferings.parentNode.classList.add('high');
   }
 
   override reset(): void {
