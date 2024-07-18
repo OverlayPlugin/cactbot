@@ -9,7 +9,8 @@ import { BaseComponent, ComponentInterface } from './base';
 export class VPRComponent extends BaseComponent {
   rattlingCoil: ResourceBox;
   noxiousGnashTimer: TimerBox;
-  huntersInstinct: TimerBox;
+  huntersInstinctTimer: TimerBox;
+  swiftscaledTimer: TimerBox;
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -23,9 +24,14 @@ export class VPRComponent extends BaseComponent {
       fgColor: 'vpr-color-noxious-gnash',
     });
 
-    this.huntersInstinct = this.bars.addProcBox({
+    this.huntersInstinctTimer = this.bars.addProcBox({
       id: 'vpr-timers-hunters-instinct',
       fgColor: 'vpr-color-hunters-instinct',
+    });
+
+    this.swiftscaledTimer = this.bars.addProcBox({
+      id: 'vpr-timers-swiftscaled',
+      fgColor: 'vpr-color-swiftscaled',
     });
   }
 
@@ -33,12 +39,13 @@ export class VPRComponent extends BaseComponent {
     switch (id) {
       case EffectId.Swiftscaled:
         this.player.speedBuffs.swiftscaled = true;
+        this.swiftscaledTimer.duration = Number(matches.duration) || 0;
         break;
       case EffectId.NoxiousGnash:
         this.noxiousGnashTimer.duration = Number(matches.duration) || 0;
         break;
       case EffectId.HuntersInstinct:
-        this.huntersInstinct.duration = Number(matches.duration) || 0;
+        this.huntersInstinctTimer.duration = Number(matches.duration) || 0;
         break;
     }
   }
@@ -47,12 +54,13 @@ export class VPRComponent extends BaseComponent {
     switch (id) {
       case EffectId.Swiftscaled:
         this.player.speedBuffs.swiftscaled = false;
+        this.swiftscaledTimer.duration = 0;
         break;
       case EffectId.NoxiousGnash:
         this.noxiousGnashTimer.duration = 0;
         break;
       case EffectId.HuntersInstinct:
-        this.huntersInstinct.duration = 0;
+        this.huntersInstinctTimer.duration = 0;
         break;
     }
   }
@@ -64,6 +72,7 @@ export class VPRComponent extends BaseComponent {
   override reset(): void {
     this.rattlingCoil.innerText = '0';
     this.noxiousGnashTimer.duration = 0;
-    this.huntersInstinct.duration = 0;
+    this.huntersInstinctTimer.duration = 0;
+    this.swiftscaledTimer.duration = 0;
   }
 }

@@ -1120,6 +1120,10 @@ div.justbuffs div#procs-container {
   background-color: rgb(105 50 13);
 }
 
+.vpr-color-swiftscaled {
+  background-color: rgb(20 159 201);
+}
+
 /* BRD */
 .brd-color-causticbite {
   background-color: rgb(182 68 235);
