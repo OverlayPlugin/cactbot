@@ -98,13 +98,18 @@ export interface JobDetail {
     rattlingCoilStacks: number;
     anguineTribute: number;
     serpentOffering: number;
-    dreadCombo:
+    advancedCombo:
       | 'Dreadwinder'
       | 'HuntersCoil'
       | 'SwiftskinsCoil'
       | 'PitOfDread'
       | 'HuntersDen'
-      | 'SwiftskinsDen';
+      | 'SwiftskinsDen'
+      | 'Reawaken'
+      | 'FirstGeneration'
+      | 'SecondGeneration'
+      | 'ThirdGeneration'
+      | 'FourthGeneration';
     reawakenedTimer: number;
   };
   'BRD': {

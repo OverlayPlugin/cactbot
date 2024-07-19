@@ -928,7 +928,7 @@ namespace Cactbot {
 
     [StructLayout(LayoutKind.Explicit)]
     public struct ViperJobMemory {
-      public enum DreadCombo : byte {
+      public enum AdvancedCombo : byte {
         Dreadwinder = 1,
         HuntersCoil = 2,
         SwiftskinsCoil = 3,
@@ -953,11 +953,11 @@ namespace Cactbot {
 
       [NonSerialized]
       [FieldOffset(0x03)]
-      private DreadCombo _dreadCombo;
+      private AdvancedCombo _advancedCombo;
 
-      public string dreadCombo {
+      public string advancedCombo {
         get {
-          return _dreadCombo.ToString();
+          return _advancedCombo.ToString();
         }
       }
 

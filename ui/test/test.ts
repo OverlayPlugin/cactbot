@@ -117,7 +117,7 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         `${detail.jobDetail.soul} | ${detail.jobDetail.shroud} | ${detail.jobDetail.enshroudMilliseconds} | ${detail.jobDetail.lemureShroud} | ${detail.jobDetail.voidShroud}`;
     } else if (detail.job === 'VPR' && detail.jobDetail) {
       jobInfo.innerText =
-        `${detail.jobDetail.rattlingCoilStacks} | ${detail.jobDetail.anguineTribute} | ${detail.jobDetail.serpentOffering} | ${detail.jobDetail.dreadCombo} | ${detail.jobDetail.reawakenedTimer}`;
+        `${detail.jobDetail.rattlingCoilStacks} | ${detail.jobDetail.anguineTribute} | ${detail.jobDetail.serpentOffering} | ${detail.jobDetail.advancedCombo} | ${detail.jobDetail.reawakenedTimer}`;
     } else if (detail.job === 'PCT' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.paletteGauge} | ${detail.jobDetail.paint} | (${detail.jobDetail.creatureMotif} | ${
