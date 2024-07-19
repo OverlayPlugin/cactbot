@@ -445,6 +445,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Inner East Diamond',
           de: 'Innerer Östlicher Diamant',
           fr: 'Diamant intérieur Est',
+          ja: '内側 東の床へ',
         },
         insideNS: {
           en: 'Inner North/South Diamonds - ${lean}',
