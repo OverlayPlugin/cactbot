@@ -1,8 +1,123 @@
 ### Arcadion (R4N): AAC Light-heavyweight M4
 
+# -ii 90EE 92B3 92B5 92B6 98EA 8A07 8D36 8F97 92C3
+# -it "Wicked Thunder"
+# -p 92B1:1004.7
+
+# 90EE - normal autoattack
+# 8F97 - autoattack when wings are out?
+# 92C9 - teleport
+# 92A7 - Something to do with the tp north, maybe what triggers gun?
+# 92AB - ライトロール - "Right Roll" - boss shooting her right/player left 3/4ths
+# 92AC - レフトロール - "Left Roll" - boss shooting her left/player right 3/4ths
+
+# 92BC/92BD/92BE/92BF - boss cleaves
+# 9A05/9A0F - clone cleaves
+
+
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+6.9 "--sync--" StartsUsing { id: "92C7", source: "Wicked Thunder" } window 10,10
+11.6 "Wrath of Zeus" Ability { id: "92C7", source: "Wicked Thunder" }
+24.7 "Sidewise Spark" Ability { id: ["92BC", "92BD", "92BE", "92BF"], source: "Wicked Thunder" }
+30.8 "--middle--" Ability { id: "92C9", source: "Wicked Thunder" }
+35.1 "Shadows' Sabbath" Ability { id: "9BBF", source: "Wicked Thunder" }
+44.3 "Sidewise Spark (clone)" Ability { id: ["9A05", "9A0F"], source: "Wicked Replica" }
+46.3 "Shadows' Sabbath" Ability { id: "9BBF", source: "Wicked Thunder" }
+55.5 "Sidewise Spark (clone)" Ability { id: ["9A05", "9A0F"], source: "Wicked Replica" }
+62.6 "Wicked Jolt" Ability { id: "92C8", source: "Wicked Thunder" }
+68.7 "--north--" Ability { id: "92C9", source: "Wicked Thunder" }
+70.1 "--sync--" Ability { id: "92A7", source: "Wicked Thunder" }
+77.2 "Right Roll/Left Roll" Ability { id: ["92AB", "92AC"], source: "Wicked Thunder" }
+79.2 "Stampeding Thunder x7" Ability { id: "8A06", source: "Wicked Thunder" } duration 7.1
+89.1 "--east/west--" Ability { id: "92C9", source: "Wicked Thunder" }
+101.4 "Threefold Blast" Ability { id: ["92AD", "92B0"], source: "Wicked Thunder" }
+101.8 "Wicked Cannon" Ability { id: ["4E40", "92AE", "92AF", "9BAC", "9BBE"], source: "Wicked Thunder" } window 2,0.5
+103.2 "Wicked Cannon" #Ability { id: "9BBE", source: "Wicked Thunder" }
+105.1 "Wicked Cannon" #Ability { id: "92AF", source: "Wicked Thunder" }
+121.8 "Fourfold Blast" Ability { id: ["9B4F", "9B55"], source: "Wicked Thunder" }
+122.2 "Wicked Cannon" Ability { id: ["4E40", "92AE", "92AF", "9BAC", "9BBE"], source: "Wicked Thunder" } window 2,0.5
+123.6 "Wicked Cannon" #Ability { id: "9BBE", source: "Wicked Thunder" }
+125.5 "Wicked Cannon" #Ability { id: "9BBE", source: "Wicked Thunder" }
+127.4 "Wicked Cannon" #Ability { id: "92AF", source: "Wicked Thunder" }
+130.5 "--sync--" Ability { id: "92A8", source: "Wicked Thunder" }
+131.3 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+139.6 "Wicked Bolt x5" Ability { id: "92C2", source: "Wicked Thunder" } duration 5
+148.7 "--middle--" Ability { id: "92C9", source: "Wicked Thunder" }
+150.0 "--sync--" Ability { id: "92A9", source: "Wicked Thunder" }
+157.1 "--north--" Ability { id: "92C9", source: "Wicked Thunder" }
+164.4 "Bewitching Flight (cast)" Ability { id: "8DE4", source: "Wicked Thunder" }
+165.4 "Bewitching Flight (damage)" Ability { id: "92B8", source: "Wicked Thunder" }
+175.4 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+178.4 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+179.4 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+182.4 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+183.3 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+185.4 "--middle--" Ability { id: "92C9", source: "Wicked Thunder" }
+186.4 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+187.3 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+191.3 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+193.7 "Sidewise Spark" Ability { id: ["92BC", "92BD", "92BE", "92BF"], source: "Wicked Thunder" }
+196.8 "--sync--" Ability { id: "92AA", source: "Wicked Thunder" }
+206.9 "Wrath of Zeus" Ability { id: "92C7", source: "Wicked Thunder" }
+214.1 "--middle--" Ability { id: "92C9", source: "Wicked Thunder" }
+
+218.2 label "loop"
+218.2 "Shadows' Sabbath" Ability { id: "9BBF", source: "Wicked Thunder" }
+227.4 "Sidewise Spark (clone)" Ability { id: ["9A05", "9A0F"], source: "Wicked Replica" } window 2,1
+229.4 "Sidewise Spark (clone)" #Ability { id: "9A05", source: "Wicked Replica" }
+231.4 "Sidewise Spark (clone)" #Ability { id: "9A0F", source: "Wicked Replica" }
+233.4 "Sidewise Spark (clone)" #Ability { id: "9A0F", source: "Wicked Replica" }
+235.4 "Sidewise Spark" Ability { id: ["92BC", "92BD", "92BE", "92BF"], source: "Wicked Thunder" }
+244.5 "Wrath of Zeus" Ability { id: "92C7", source: "Wicked Thunder" }
+252.7 "Wicked Jolt" Ability { id: "92C8", source: "Wicked Thunder" }
+259.8 "--north--" Ability { id: "92C9", source: "Wicked Thunder" }
+261.2 "--sync--" Ability { id: "92A7", source: "Wicked Thunder" }
+268.2 "Right Roll/Left Roll" Ability { id: ["92AB", "92AC"], source: "Wicked Thunder" }
+270.2 "Stampeding Thunder x7" Ability { id: "8A06", source: "Wicked Thunder" } duration 7.1
+280.1 "--sync--" Ability { id: "92C9", source: "Wicked Thunder" }
+297.4 "Fivefold Blast" Ability { id: "9B56", source: "Wicked Thunder" }
+297.8 "Wicked Cannon" Ability { id: ["4E40", "92AE", "92AF", "9BAC", "9BBE"], source: "Wicked Thunder" } window 2,0.5
+299.2 "Wicked Cannon" #Ability { id: "9BBE", source: "Wicked Thunder" }
+301.1 "Wicked Cannon" #Ability { id: "9BAC", source: "Wicked Thunder" }
+303.0 "Wicked Cannon" #Ability { id: "9BBE", source: "Wicked Thunder" }
+304.9 "Wicked Cannon" #Ability { id: "92AE", source: "Wicked Thunder" }
+308.0 "--sync--" Ability { id: "92A8", source: "Wicked Thunder" }
+313.8 "Thunderstorm" Ability { id: "92C5", source: "Wicked Thunder" }
+320.1 "Wicked Bolt x5" Ability { id: "92C2", source: "Wicked Thunder" } duration 5
+330.2 "--middle--" Ability { id: "92C9", source: "Wicked Thunder" }
+331.4 "--sync--" Ability { id: "92A9", source: "Wicked Thunder" }
+341.4 "Shadows' Sabbath" Ability { id: "949C", source: "Wicked Thunder" }
+345.6 "--north--" Ability { id: "92C9", source: "Wicked Thunder" }
+353.0 "Bewitching Flight (cast)" Ability { id: "8DE4", source: "Wicked Thunder" }
+354.0 "Bewitching Flight (damage)" #Ability { id: "92B8", source: "Wicked Thunder" }
+364.0 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+368.0 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+372.0 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+376.0 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+376.1 "--middle--" Ability { id: "92C9", source: "Wicked Thunder" }
+380.0 "Burst" Ability { id: "92B9", source: "Wicked Thunder" }
+380.4 "Witch Hunt" Ability { id: "92B4", source: "Wicked Thunder" } duration 11
+398.5 "Soaring Soulpress (cast)" Ability { id: "92C0", source: "Wicked Thunder" }
+398.9 "Soaring Soulpress (damage)" Ability { id: "92C1", source: "Wicked Thunder" }
+402.0 "--sync--" Ability { id: "92AA", source: "Wicked Thunder" }
+412.1 "Wrath of Zeus" Ability { id: "92C7", source: "Wicked Thunder" }
+420.5 "Wicked Jolt" Ability { id: "92C8", source: "Wicked Thunder" }
+427.6 "--middle--" Ability { id: "92C9", source: "Wicked Thunder" }
+431.7 "Shadows' Sabbath" Ability { id: "9BBF", source: "Wicked Thunder" } forcejump "loop"
+
+# Soft enrage at 20%
+1000.0 "--sync--" StartsUsing { id: "92B1", source: "Wicked Thunder" } window 1000,0
+1005.0 "Wicked Hypercannon x10" Ability { id: "92B1", source: "Wicked Thunder" } duration 9.7
+1026.3 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+1029.3 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+# Loop from the 2nd instance of Wicked Hypercannon since it has a different ID
+1030.3 label "loop2"
+1030.3 "Wicked Hypercannon x10" Ability { id: "92B2", source: "Wicked Thunder" } duration 9.7
+1051.6 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+1054.6 "Thunderslam" Ability { id: "92C6", source: "Wicked Thunder" }
+1055.6 "Wicked Hypercannon x10" Ability { id: "92B2", source: "Wicked Thunder" } duration 9.7 forcejump "loop2"
