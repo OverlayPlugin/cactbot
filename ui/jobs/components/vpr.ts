@@ -243,10 +243,11 @@ export class VPRComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.noxiousGnashTimer.threshold = gcdSkill * 3 + 1;
-    this.huntersInstinctTimer.threshold = gcdSkill * 3 + 1;
-    this.swiftscaledTimer.threshold = gcdSkill * 3 + 1;
-    this.dreadComboTimer.threshold = gcdSkill * 2 + 1;
+    // Can safely use Reawaken than use Dread Combo to extend buffs
+    this.noxiousGnashTimer.threshold = gcdSkill * 5 + 1;
+    this.huntersInstinctTimer.threshold = gcdSkill * 8 + 1;
+    this.swiftscaledTimer.threshold = gcdSkill * 8 + 1;
+    this.dreadComboTimer.threshold = gcdSkill * 5 + 1;
   }
 
   override reset(): void {
