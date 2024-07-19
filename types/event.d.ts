@@ -130,6 +130,7 @@ export interface JobDetail {
     umbralHearts: number;
     polyglot: number;
     nextPolyglotMilliseconds: number;
+    astralSoulStacks: number;
   };
   'ACN': {
     aetherflowStacks: number;

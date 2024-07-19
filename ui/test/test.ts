@@ -75,7 +75,7 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         `${detail.jobDetail.bloodMilliseconds} | ${detail.jobDetail.lifeMilliseconds} | ${detail.jobDetail.eyesAmount} | ${detail.jobDetail.firstmindsFocus}`;
     } else if (detail.job === 'BLM' && detail.jobDetail) {
       jobInfo.innerText =
-        `${detail.jobDetail.umbralStacks} (${detail.jobDetail.umbralMilliseconds}) | ${detail.jobDetail.umbralHearts} | ${detail.jobDetail.polyglot} ${detail.jobDetail.enochian.toString()} (${detail.jobDetail.nextPolyglotMilliseconds}) | ${detail.jobDetail.paradox.toString()}`;
+        `${detail.jobDetail.umbralStacks} (${detail.jobDetail.umbralMilliseconds}) | ${detail.jobDetail.umbralHearts} | ${detail.jobDetail.polyglot} ${detail.jobDetail.enochian.toString()} (${detail.jobDetail.nextPolyglotMilliseconds}) | ${detail.jobDetail.paradox.toString()} | ${detail.jobDetail.astralSoulStacks}`;
     } else if (detail.job === 'THM' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.umbralStacks} (${detail.jobDetail.umbralMilliseconds})`;
