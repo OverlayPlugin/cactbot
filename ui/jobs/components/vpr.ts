@@ -3,7 +3,7 @@ import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
-import { kAbility } from '../constants';
+import { kAbility, kComboDelay } from '../constants';
 import { PartialFieldMatches } from '../event_emitter';
 
 import { BaseComponent, ComponentInterface } from './base';
@@ -19,6 +19,8 @@ export class VPRComponent extends BaseComponent {
 
   vipersight: HTMLDivElement;
   currentVenomEffect = '';
+  currentComboAction = '';
+  tid1 = 0;
 
   static vipersightMap: Record<string, Record<string, 'left' | 'right'>> = {
     // Single target - first skill
@@ -107,6 +109,7 @@ export class VPRComponent extends BaseComponent {
 
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     if (id in VPRComponent.vipersightMap) {
+      this.currentComboAction = id;
       const side = VPRComponent.vipersightMap[id]?.[this.currentVenomEffect];
       this.vipersight.dataset.side = side ?? 'both';
       this.vipersight.classList.add('active');
@@ -127,6 +130,10 @@ export class VPRComponent extends BaseComponent {
       case kAbility.DreadMaw:
         this.comboTimer.duration = this.comboDuration;
         this.vipersight.dataset.stacks = '1';
+        window.clearTimeout(this.tid1);
+        this.tid1 = window.setTimeout(() => {
+          this.vipersight.classList.remove('active');
+        }, kComboDelay * 1000);
         break;
       case kAbility.HuntersSting:
       case kAbility.SwiftskinsSting:
@@ -134,6 +141,10 @@ export class VPRComponent extends BaseComponent {
       case kAbility.SwiftskinsBite:
         this.comboTimer.duration = this.comboDuration;
         this.vipersight.dataset.stacks = '2';
+        window.clearTimeout(this.tid1);
+        this.tid1 = window.setTimeout(() => {
+          this.vipersight.classList.remove('active');
+        }, kComboDelay * 1000);
         break;
       case kAbility.FlankstingStrike:
       case kAbility.FlanksbaneFang:
@@ -145,6 +156,7 @@ export class VPRComponent extends BaseComponent {
         // Disable Vipersight when player deliver any third combo skill
         this.vipersight.classList.remove('active');
         this.vipersight.dataset.stacks = '0';
+        window.clearTimeout(this.tid1);
         break;
     }
   }
@@ -188,7 +200,10 @@ export class VPRComponent extends BaseComponent {
       case EffectId.GrimhuntersVenom:
       case EffectId.GrimskinsVenom:
         this.currentVenomEffect = '';
-        this.vipersight.dataset.stacks = '0';
+        if (this.vipersight.dataset.stacks !== '0') {
+          this.vipersight.dataset.side = 'both';
+          this.vipersight.classList.add('active');
+        }
         break;
     }
   }
@@ -235,5 +250,6 @@ export class VPRComponent extends BaseComponent {
     this.vipersight.classList.remove('active');
     this.vipersight.dataset.stacks = '0';
     this.vipersight.dataset.side = '';
+    window.clearTimeout(this.tid1);
   }
 }

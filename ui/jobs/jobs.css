@@ -443,11 +443,11 @@ div.justbuffs div#procs-container {
 }
 
 #vpr-stacks-vipersight[data-stacks="1"] {
-  --bg-color: rgb(100 20 30);
+  --bg-color: rgb(255, 0, 0);
 }
 
 #vpr-stacks-vipersight[data-stacks="2"] {
-  --bg-color: rgb(8 50 128);
+  --bg-color: rgb(20 200 255);
 }
 
 #vpr-stacks-vipersight.active[data-side="both"] > div.left,
