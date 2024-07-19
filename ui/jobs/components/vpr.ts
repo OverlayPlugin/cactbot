@@ -242,6 +242,13 @@ export class VPRComponent extends BaseComponent {
       this.serpentOfferings.parentNode.classList.add('high');
   }
 
+  override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
+    this.noxiousGnashTimer.threshold = gcdSkill * 3 + 1;
+    this.huntersInstinctTimer.threshold = gcdSkill * 3 + 1;
+    this.swiftscaledTimer.threshold = gcdSkill * 3 + 1;
+    this.dreadComboTimer.threshold = gcdSkill * 2 + 1;
+  }
+
   override reset(): void {
     this.rattlingCoil.innerText = '0';
     this.noxiousGnashTimer.duration = 0;

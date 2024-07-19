@@ -443,7 +443,7 @@ div.justbuffs div#procs-container {
 }
 
 #vpr-stacks-vipersight[data-stacks="1"] {
-  --bg-color: rgb(255, 0, 0);
+  --bg-color: rgb(255 0 0);
 }
 
 #vpr-stacks-vipersight[data-stacks="2"] {
