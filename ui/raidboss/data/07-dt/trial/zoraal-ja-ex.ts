@@ -653,14 +653,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         leanLeft: {
           en: '<= Inside Left (Facing Boss)',
+          de: '<= Innen links (Boss anschauen)',
           fr: '<= Gauche intérieur (en regardant le boss)',
         },
         leanRight: {
           en: 'Inside Right (Facing Boss) =>',
+          de: 'Innen Rechts (Boss anschauen) =>',
           fr: 'Droite intérieur (en regardant le boss) =>',
         },
         corner: {
           en: 'Corners Safe',
+          de: 'Ecken sicher',
           fr: 'Coins sûrs',
         },
         northwest: Outputs.northwest,
@@ -669,18 +672,22 @@ const triggerSet: TriggerSet<Data> = {
         southwest: Outputs.southwest,
         fire: {
           en: 'Go Far',
+          de: 'Weit gehen',
         },
         wind: Outputs.knockback,
         fireWindSafe: {
           en: '${fireWind} ${safeDir}',
+          de: '${fireWind} ${safeDir}',
           fr: '${fireWind} ${safeDir}',
         },
         combo: {
           en: '${fireWindCombo} + ${tile}',
+          de: '${fireWindCombo} + ${tile}',
           fr: '${fireWindCombo} + ${tile}',
         },
         unknown: {
           en: 'Avoid Swords',
+          de: 'Vermeide Schwerter',
           fr: 'Évitez les épées',
         },
       },
@@ -1014,18 +1021,22 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         inside: {
           en: 'Inside Safe',
+          de: 'Innen sicher',
           fr: 'Intérieur sûr',
         },
         eastWest: {
           en: 'Inside East/West Safe',
+          de: 'Innen Osten/Westen sicher',
           fr: 'Intérieur Est/Ouest sûr',
         },
         northSouth: {
           en: 'Inside North/South Safe',
+          de: 'Innen Norden/Süden sicher',
           fr: 'Intérieur Nord/Sud sûr',
         },
         intercard: {
-          en: 'Ouside Intercards Safe (Avoid Corners)',
+          en: 'Outside Intercards Safe (Avoid Corners)',
+          de: 'Außen Interkardinal sicher (Ecken vermeiden)',
           fr: 'Intercardinal extérieur sûr (Évitez les coins)',
         },
       },
@@ -1042,7 +1053,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Fang': 'Reißzahn',
         'Zoraal Ja': 'Zoraal Ja',
@@ -1051,7 +1061,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(cast\\)': '(wirken)',
         '\\(damage\\)': '(Schaden)',
         '\\(enrage\\)': '(Finalangriff)',
-        '\\(lines drop\\)': '',
+        '\\(lines drop\\)': '(Linien kommen)',
         'Actualize': 'Verwirklichung',
         'Aero III': 'Windga',
         'Backward Edge': 'Hinterklinge',
@@ -1068,6 +1078,7 @@ const triggerSet: TriggerSet<Data> = {
         'Greater Gateway': 'Großes Tor der Welten',
         'Half Circuit': 'Halbe Runde',
         'Half Full': 'Halbes Ganzes',
+        'Might of Vollok': 'Macht von Vollok',
         'Multidirectional Divide': 'Wechselseitige Klingen',
         'Projection of Triumph': 'Vorhersage von Triumph',
         'Projection of Turmoil': 'Vorhersage von Aufruhr',
@@ -1103,6 +1114,7 @@ const triggerSet: TriggerSet<Data> = {
         'Greater Gateway': 'Passerelle enchantée',
         'Half Circuit': 'Demi-circuit',
         'Half Full': 'Demi-plénitude',
+        'Might of Vollok': 'Puissance de Vollok',
         'Multidirectional Divide': 'Division multidirectionnelle',
         'Projection of Triumph': 'Lames repoussantes',
         'Projection of Turmoil': 'Salve repoussante',
@@ -1138,6 +1150,7 @@ const triggerSet: TriggerSet<Data> = {
         'Greater Gateway': 'エンチャント・ゲートウェイ',
         'Half Circuit': 'ルーズハーフ・サーキット',
         'Half Full': 'ルーズハーフ',
+        'Might of Vollok': 'パワー・オブ・ヴォロク',
         'Multidirectional Divide': 'マルチウェイ',
         'Projection of Triumph': 'プロジェクション・エッジ',
         'Projection of Turmoil': 'プロジェクション・バースト',

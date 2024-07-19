@@ -211,9 +211,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cardsIntercards: {
           en: 'Cards => Intercards',
+          de: 'Karten => Interkardinal',
         },
         intercardsCards: {
           en: 'Intercards => Cards',
+          de: 'Interkardinal => Karten',
         },
       },
     },
@@ -226,6 +228,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Aim for uncracked tile',
+          de: 'Ziehle auf nich gerissene Fläche',
         },
       },
     },
@@ -262,6 +265,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'West => East at marker',
+          de: 'Westen => Osten bei der Markierung',
         },
       },
     },
@@ -274,6 +278,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'East => West at marker',
+          de: 'Osten => Westen bei der Markierung',
         },
       },
     },
@@ -286,6 +291,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'West => East at marker',
+          de: 'Westen => Osten bei der Markierung',
         },
       },
     },
@@ -298,6 +304,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'East => West at marker',
+          de: 'Osten => Westen bei der Markierung',
         },
       },
     },
@@ -306,6 +313,87 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '931D', source: 'Black Cat', capture: false },
       response: Responses.knockback(),
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Black Cat': 'Schwarze Katze',
+        'Copy Cat': 'felin(?:e|er|es|en) Nachahmung',
+      },
+      'replaceText': {
+        '(?<! )Black Cat Crossing': 'Kreuzklaue',
+        '(?<! )One-two Paw': 'Doppelklaue',
+        'Biscuit Maker': 'Milchtritt',
+        'Bloody Scratch': 'Blutiger Rundumkratzer',
+        'Clawful': 'Volle Kralle',
+        'Copycat': 'Feline Nachahmung',
+        'Elevate and Eviscerate': 'Präziser Höhenflug',
+        'Grimalkin Gale': 'Katerstrophaler Wind',
+        'Impact': 'Impakt',
+        'Leaping Black Cat Crossing': 'Kreuzklauensprung',
+        'Leaping One-two Paw': 'Doppelklauensprung',
+        'Mouser': 'Mäusejagd',
+        'Overshadow': 'Überschattung',
+        'Predaceous Pounce': 'Feliner Beutezug',
+        'Shockwave': 'Schockwelle',
+        '\\(cast\\)': '(wirken)',
+        '\\(damage\\)': '(Schaden)',
+        '\\(hits\\)': '(Treffer)',
+        '\\(jump\\)': '(Sprung)',
+        '\\(telegraphs\\)': '(angezeigt)',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Black Cat': 'Black Cat',
+        'Copy Cat': 'double félin',
+      },
+      'replaceText': {
+        '(?<! )Black Cat Crossing': 'Griffade croisée',
+        '(?<! )One-two Paw': 'Griffade un-deux',
+        'Biscuit Maker': 'Coup de tatane',
+        'Bloody Scratch': 'Griffure sanglante',
+        'Clawful': 'Lacération lourde',
+        'Copycat': 'Double félin',
+        'Elevate and Eviscerate': 'Élévation éviscérante',
+        'Grimalkin Gale': 'Rafale féline',
+        'Impact': 'Impact',
+        'Leaping Black Cat Crossing': 'Griffade croisée bondissante',
+        'Leaping One-two Paw': 'Griffade un-deux bondissante',
+        'Mouser': 'Carnage dératiseur',
+        'Overshadow': 'Ombragement',
+        'Predaceous Pounce': 'Prédation preste',
+        'Shockwave': 'Onde de choc',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Black Cat': 'ブラックキャット',
+        'Copy Cat': 'コピーキャット',
+      },
+      'replaceText': {
+        '(?<! )Black Cat Crossing': 'クロスネイル',
+        '(?<! )One-two Paw': 'デュアルネイル',
+        'Biscuit Maker': 'ビスケットメーカー',
+        'Bloody Scratch': 'ブラッディースクラッチ',
+        'Clawful': 'マッシブ・クロウフル',
+        'Copycat': 'コピーキャット',
+        'Elevate and Eviscerate': 'エレベート・エビセレート',
+        'Grimalkin Gale': 'キャッタクリスム・ゲイル',
+        'Impact': '衝撃',
+        'Leaping Black Cat Crossing': 'リーピング・クロスネイル',
+        'Leaping One-two Paw': 'リーピング・デュアルネイル',
+        'Mouser': 'マウサーラッシュ',
+        'Overshadow': 'オーバーシャドウ',
+        'Predaceous Pounce': 'キャッツレイド',
+        'Shockwave': '衝撃波',
+      },
     },
   ],
 };
