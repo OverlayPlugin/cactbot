@@ -14,6 +14,7 @@ export class BLMComponent extends BaseComponent {
   manafont: TimerBox;
   xenoStacks: HTMLElement[];
   heartStacks: HTMLElement[];
+  astralSoulStacks: HTMLElement[];
   umbralTimer: ResourceBox;
   xenoTimer: ResourceBox;
 
@@ -77,6 +78,19 @@ export class BLMComponent extends BaseComponent {
       xenoStacksContainer.appendChild(d);
       this.xenoStacks.push(d);
     }
+
+    const astralSoulStacksContainer = document.createElement('div');
+    astralSoulStacksContainer.id = 'blm-stacks-astral-souls';
+    this.astralSoulStacks = [];
+    for (let i = 0; i < 6; ++i) {
+      const d = document.createElement('div');
+      astralSoulStacksContainer.appendChild(d);
+      this.astralSoulStacks.push(d);
+    }
+    const astralSoulStacksContainerContainer = document.createElement('div');
+    astralSoulStacksContainerContainer.classList.add('stacks');
+    astralSoulStacksContainerContainer.appendChild(astralSoulStacksContainer);
+    this.bars.addJobBarContainer().appendChild(astralSoulStacksContainerContainer);
 
     this.umbralTimer = this.bars.addResourceBox({
       classList: ['blm-umbral-timer'],
@@ -197,6 +211,14 @@ export class BLMComponent extends BaseComponent {
         xp.classList.add('pulse');
       else
         xp.classList.remove('pulse');
+    }
+
+    const asStacks = jobDetail.astralSoulStacks;
+    for (let i = 0; i < 6; ++i) {
+      if (asStacks > i)
+        this.astralSoulStacks[i]?.classList.add('active');
+      else
+        this.astralSoulStacks[i]?.classList.remove('active');
     }
   }
 

@@ -474,6 +474,14 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 50 200);
 }
 
+#blm-stacks-astral-souls {
+  margin-top: 2px;
+}
+
+#blm-stacks-astral-souls > div.active {
+  background-color: rgb(255 40 0);
+}
+
 #smn-stacks-ruin4 > div.active {
   background-color: rgb(65 0 200);
 }
@@ -557,6 +565,10 @@ div.justbuffs div#procs-container {
 
 #procs-container.compact {
   top: 80px;
+}
+
+.blm #procs-container.compact {
+  top: 100px;
 }
 
 #procs-container > div {
