@@ -114,7 +114,7 @@ export class BLMComponent extends BaseComponent {
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
       case EffectId.Thunderhead:
-        this.thunderProc.duration = parseFloat(matches.duration ?? '0');
+        this.thunderProc.duration = parseFloat(matches.duration ?? '0') - 0.5;
         break;
       case EffectId.Firestarter:
         this.fireProc.duration = parseFloat(matches.duration ?? '0');
