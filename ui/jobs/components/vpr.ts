@@ -108,7 +108,7 @@ export class VPRComponent extends BaseComponent {
   }
 
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
-    if (id in VPRComponent.vipersightMap) {
+    if (id in VPRComponent.vipersightMap && matches.targetId !== 'E0000000') {
       this.currentComboAction = id;
       const side = VPRComponent.vipersightMap[id]?.[this.currentVenomEffect];
       this.vipersight.dataset.side = side ?? 'both';
@@ -128,23 +128,27 @@ export class VPRComponent extends BaseComponent {
       case kAbility.DreadFangs:
       case kAbility.SteelMaw:
       case kAbility.DreadMaw:
-        this.comboTimer.duration = this.comboDuration;
-        this.vipersight.dataset.stacks = '1';
-        window.clearTimeout(this.tid1);
-        this.tid1 = window.setTimeout(() => {
-          this.vipersight.classList.remove('active');
-        }, kComboDelay * 1000);
+        if (matches.targetId !== 'E0000000') {
+          this.comboTimer.duration = this.comboDuration;
+          this.vipersight.dataset.stacks = '1';
+          window.clearTimeout(this.tid1);
+          this.tid1 = window.setTimeout(() => {
+            this.vipersight.classList.remove('active');
+          }, kComboDelay * 1000);
+        }
         break;
       case kAbility.HuntersSting:
       case kAbility.SwiftskinsSting:
       case kAbility.HuntersBite:
       case kAbility.SwiftskinsBite:
-        this.comboTimer.duration = this.comboDuration;
-        this.vipersight.dataset.stacks = '2';
-        window.clearTimeout(this.tid1);
-        this.tid1 = window.setTimeout(() => {
-          this.vipersight.classList.remove('active');
-        }, kComboDelay * 1000);
+        if (matches.targetId !== 'E0000000') {
+          this.comboTimer.duration = this.comboDuration;
+          this.vipersight.dataset.stacks = '2';
+          window.clearTimeout(this.tid1);
+          this.tid1 = window.setTimeout(() => {
+            this.vipersight.classList.remove('active');
+          }, kComboDelay * 1000);
+        }
         break;
       case kAbility.FlankstingStrike:
       case kAbility.FlanksbaneFang:
