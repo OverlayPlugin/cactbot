@@ -722,7 +722,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${fireWind} ${safeDir}',
           fr: '${fireWind} ${safeDir}',
           ja: '${fireWind} ${safeDir}',
-          cn: '${fireWind} ${safeDir}',
+          cn: '${fireWind}, ${safeDir}',
         },
         combo: {
           en: '${fireWindCombo} + ${tile}',
