@@ -98,6 +98,7 @@ export default {
     en: 'Avoid Tank Tethers',
     fr: 'Évitez les liens des Tanks',
     ja: 'タンクの線を避けて',
+    cn: '远离坦克连线',
   },
   tankCleave: {
     en: 'Tank cleave',
