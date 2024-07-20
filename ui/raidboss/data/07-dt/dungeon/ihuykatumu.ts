@@ -29,6 +29,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get under Flytrap',
           de: 'Geh unter die Fliegenfalle',
+          cn: '进入月环',
         },
       },
     },
@@ -42,6 +43,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stay out of inhale',
           de: 'Steh auserhalb des Soges',
+          cn: '呆在AoE外面',
         },
       },
     },
@@ -71,6 +73,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Ivy cleaves (small)',
           de: 'Efeu-Cleave ausweichen (klein)',
+          cn: '注意触手直线AoE（小）',
         },
       },
     },
@@ -85,6 +88,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Ivy cleaves (big)',
           de: 'Efeu-Cleave ausweichen (groß)',
+          cn: '注意触手直线AoE（大）',
         },
       },
     },
@@ -124,6 +128,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away on 3rd jump',
           de: 'Weg vom 3. Sprung',
+          cn: '远离第三次跳跃落点',
         },
       },
     },
@@ -137,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away on 3rd jump',
           de: 'Weg vom 3. Sprung',
+          cn: '远离第三次跳跃落点',
         },
       },
     },
@@ -157,6 +163,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'In, then follow jump',
           de: 'Rein, dann Sprüngen folgen',
+          cn: '进入月环 => 去BOSS身后',
         },
       },
     },
@@ -170,6 +177,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid Whirlwind star lines',
           de: 'Wirbelwind-Sternenlinien vermeiden',
+          cn: '注意风圈星形的直线AoE',
         },
       },
     },
