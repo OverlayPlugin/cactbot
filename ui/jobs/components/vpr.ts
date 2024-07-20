@@ -137,6 +137,7 @@ export class VPRComponent extends BaseComponent {
           }, kComboDelay * 1000);
         } else {
           this.comboTimer.duration = 0;
+          this.vipersight.classList.remove('active');
         }
         break;
       case kAbility.HuntersSting:
@@ -152,6 +153,7 @@ export class VPRComponent extends BaseComponent {
           }, kComboDelay * 1000);
         } else {
           this.comboTimer.duration = 0;
+          this.vipersight.classList.remove('active');
         }
         break;
       case kAbility.FlankstingStrike:
