@@ -69,13 +69,13 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         detail.jobDetail.steps.join(', ')
       }] | ${detail.jobDetail.currentStep}`;
     } else if (detail.job === 'NIN' && detail.jobDetail) {
-      jobInfo.innerText = `${detail.jobDetail.hutonMilliseconds} | ${detail.jobDetail.ninkiAmount}`;
+      jobInfo.innerText = `${detail.jobDetail.ninkiAmount} | ${detail.jobDetail.kazematoi}`;
     } else if (detail.job === 'DRG' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.bloodMilliseconds} | ${detail.jobDetail.lifeMilliseconds} | ${detail.jobDetail.eyesAmount} | ${detail.jobDetail.firstmindsFocus}`;
     } else if (detail.job === 'BLM' && detail.jobDetail) {
       jobInfo.innerText =
-        `${detail.jobDetail.umbralStacks} (${detail.jobDetail.umbralMilliseconds}) | ${detail.jobDetail.umbralHearts} | ${detail.jobDetail.polyglot} ${detail.jobDetail.enochian.toString()} (${detail.jobDetail.nextPolyglotMilliseconds}) | ${detail.jobDetail.paradox.toString()}`;
+        `${detail.jobDetail.umbralStacks} (${detail.jobDetail.umbralMilliseconds}) | ${detail.jobDetail.umbralHearts} | ${detail.jobDetail.polyglot} ${detail.jobDetail.enochian.toString()} (${detail.jobDetail.nextPolyglotMilliseconds}) | ${detail.jobDetail.paradox.toString()} | ${detail.jobDetail.astralSoulStacks}`;
     } else if (detail.job === 'THM' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.umbralStacks} (${detail.jobDetail.umbralMilliseconds})`;
@@ -87,21 +87,22 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
         `${detail.jobDetail.aetherflowStacks} | ${detail.jobDetail.tranceMilliseconds} | ${detail.jobDetail.attunement} | ${detail.jobDetail.attunementMilliseconds} | ${
           detail
             .jobDetail.activePrimal ?? '-'
-        } | [${detail.jobDetail.usableArcanum.join(', ')}] | ${detail.jobDetail.nextSummoned}`;
+        } | [${
+          detail.jobDetail.usableArcanum.join(', ')
+        }] | ${detail.jobDetail.nextSummoned} | ${detail.jobDetail.summonStatus.toString()}`;
     } else if (detail.job === 'SCH' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.aetherflowStacks} | ${detail.jobDetail.fairyGauge} | ${detail.jobDetail.fairyStatus} (${detail.jobDetail.fairyMilliseconds})`;
     } else if (detail.job === 'ACN' && detail.jobDetail) {
       jobInfo.innerText = detail.jobDetail.aetherflowStacks.toString();
     } else if (detail.job === 'AST' && detail.jobDetail) {
-      jobInfo.innerText = `${detail.jobDetail.heldCard} | ${detail.jobDetail.crownCard} | [${
-        detail.jobDetail.arcanums.join(', ')
-      }]`;
+      jobInfo.innerText =
+        `${detail.jobDetail.card1} | ${detail.jobDetail.card2} | ${detail.jobDetail.card3} | ${detail.jobDetail.card4} | ${detail.jobDetail.nextdraw}`;
     } else if (detail.job === 'MNK' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.chakraStacks} | ${detail.jobDetail.lunarNadi.toString()} | ${detail.jobDetail.solarNadi.toString()} | [${
           detail.jobDetail.beastChakra.join(', ')
-        }]`;
+        }] | ${detail.jobDetail.opoopoFury} | ${detail.jobDetail.raptorFury} | ${detail.jobDetail.coeurlFury}`;
     } else if (detail.job === 'MCH' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.heat} (${detail.jobDetail.overheatMilliseconds}) | ${detail.jobDetail.battery} (${detail.jobDetail.batteryMilliseconds}) | last: ${detail.jobDetail.lastBatteryAmount} | ${detail.jobDetail.overheatActive.toString()} | ${detail.jobDetail.robotActive.toString()}`;
@@ -114,6 +115,22 @@ addOverlayListener('onPlayerChangedEvent', (e) => {
     } else if (detail.job === 'RPR' && detail.jobDetail) {
       jobInfo.innerText =
         `${detail.jobDetail.soul} | ${detail.jobDetail.shroud} | ${detail.jobDetail.enshroudMilliseconds} | ${detail.jobDetail.lemureShroud} | ${detail.jobDetail.voidShroud}`;
+    } else if (detail.job === 'VPR' && detail.jobDetail) {
+      jobInfo.innerText =
+        `${detail.jobDetail.rattlingCoilStacks} | ${detail.jobDetail.anguineTribute} | ${detail.jobDetail.serpentOffering} | ${detail.jobDetail.advancedCombo} | ${detail.jobDetail.reawakenedTimer}`;
+    } else if (detail.job === 'PCT' && detail.jobDetail) {
+      jobInfo.innerText =
+        `${detail.jobDetail.paletteGauge} | ${detail.jobDetail.paint} | (${detail.jobDetail.creatureMotif} | ${
+          detail.jobDetail.weaponMotif ? 'Weapon' : 'None'
+        } | ${detail.jobDetail.landscapeMotif ? 'Landscape' : 'None'}) | (${
+          detail.jobDetail.depictions.join('+') || 'None'
+        }) | ${
+          detail.jobDetail.mooglePortrait
+            ? 'Moogle'
+            : detail.jobDetail.madeenPortrait
+            ? 'Madeen'
+            : 'None'
+        }`;
     } else {
       jobInfo.innerText = '';
     }

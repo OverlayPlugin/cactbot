@@ -21,6 +21,7 @@ export class BRDComponent extends BaseComponent {
   armysCoda: HTMLDivElement;
 
   ethosStacks = 0;
+  hawkeyeselapsed = 31;
 
   constructor(o: ComponentInterface) {
     super(o);
@@ -134,12 +135,18 @@ export class BRDComponent extends BaseComponent {
       this.repertoireBox.innerText = '';
       this.repertoireBox.parentNode.classList.add('ballad');
       this.songBox.fg = computeBackgroundColorFrom(this.songBox, 'brd-color-song.ballad');
-      this.songBox.threshold = 14;
+      if (this.ffxivVersion < 700)
+        this.songBox.threshold = 14;
+      else
+        this.songBox.threshold = 5;
     } else if (jobDetail.songName === 'Paeon') {
       this.repertoireBox.innerText = jobDetail.songProcs.toString();
       this.repertoireBox.parentNode.classList.add('paeon');
       this.songBox.fg = computeBackgroundColorFrom(this.songBox, 'brd-color-song.paeon');
-      this.songBox.threshold = 3;
+      if (this.ffxivVersion < 700)
+        this.songBox.threshold = 3;
+      else
+        this.songBox.threshold = 15;
     }
 
     if (this.songBox.duration === null)
@@ -183,8 +190,18 @@ export class BRDComponent extends BaseComponent {
   override onYouGainEffect(id: string): void {
     switch (id) {
       case EffectId.StraightShotReady:
-        this.straightShotProc.duration = 30;
+      case EffectId.HawksEye:
+        this.straightShotProc.duration = 30 + 1; // time won't go down before animation complete;
+        this.hawkeyeselapsed = 0;
         break;
+      case EffectId.Barrage: {
+        if (this.ffxivVersion < 700)
+          break;
+        if (this.hawkeyeselapsed !== 31)
+          this.hawkeyeselapsed = this.straightShotProc.elapsed;
+        this.straightShotProc.duration = 10;
+        break;
+      }
       // Bard is complicated
       // Paeon -> Minuet/Ballad -> muse -> muse ends
       // Paeon -> runs out -> ethos -> within 30s -> Minuet/Ballad -> muse -> muse ends
@@ -206,7 +223,15 @@ export class BRDComponent extends BaseComponent {
   override onYouLoseEffect(id: string): void {
     switch (id) {
       case EffectId.StraightShotReady:
+      case EffectId.HawksEye:
         this.straightShotProc.duration = 0;
+        this.straightShotProc.reset();
+        this.hawkeyeselapsed = 31;
+        break;
+      case EffectId.Barrage:
+        if (this.ffxivVersion < 700)
+          break;
+        this.straightShotProc.duration = 31 - this.hawkeyeselapsed - this.straightShotProc.elapsed;
         break;
       case EffectId.ArmysMuse:
         // Muse effect ends
@@ -228,5 +253,6 @@ export class BRDComponent extends BaseComponent {
     this.repertoireTimer.duration = 0;
     this.ethosStacks = 0;
     this.songBox.duration = 0;
+    this.hawkeyeselapsed = 31;
   }
 }

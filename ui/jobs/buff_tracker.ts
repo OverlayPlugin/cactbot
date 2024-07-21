@@ -10,6 +10,7 @@ import brotherhoodImage from '../../resources/ffxiv/status/brotherhood.png';
 import chainStratagemImage from '../../resources/ffxiv/status/chain-stratagem.png';
 import devilmentImage from '../../resources/ffxiv/status/devilment.png';
 import divinationImage from '../../resources/ffxiv/status/divination.png';
+import dokumoriImage from '../../resources/ffxiv/status/dokumori.png';
 import dragonSightImage from '../../resources/ffxiv/status/dragon-sight.png';
 import emboldenImage from '../../resources/ffxiv/status/embolden.png';
 import ewerImage from '../../resources/ffxiv/status/ewer.png';
@@ -25,6 +26,7 @@ import searingLightImage from '../../resources/ffxiv/status/searing-light.png';
 import spearImage from '../../resources/ffxiv/status/spear.png';
 import spireImage from '../../resources/ffxiv/status/spire.png';
 import standardFinishImage from '../../resources/ffxiv/status/standard-finish.png';
+import starryMuseImage from '../../resources/ffxiv/status/starry-muse.png';
 import technicalFinishImage from '../../resources/ffxiv/status/technical-finish.png';
 import umbralImage from '../../resources/ffxiv/status/umbral.png';
 import PartyTracker from '../../resources/party';
@@ -327,7 +329,6 @@ export class BuffTracker {
         mobGainsEffect: EffectId.OffGuard,
         mobLosesEffect: EffectId.OffGuard,
         useEffectDuration: true,
-        durationSeconds: 15,
         icon: offguardImage,
         borderColor: '#47bf41',
         sortKey: 1,
@@ -339,7 +340,6 @@ export class BuffTracker {
         mobGainsEffect: EffectId.PeculiarLight,
         mobLosesEffect: EffectId.PeculiarLight,
         useEffectDuration: true,
-        durationSeconds: 15,
         icon: peculiarLightImage,
         borderColor: '#F28F7B',
         sortKey: 1,
@@ -351,8 +351,18 @@ export class BuffTracker {
         mobGainsEffect: EffectId.VulnerabilityUp,
         mobLosesEffect: EffectId.VulnerabilityUp,
         useEffectDuration: true,
-        durationSeconds: 20,
         icon: mugImage,
+        // Magenta.
+        borderColor: '#FC4AE6',
+        sortKey: 1,
+        cooldown: 120,
+      },
+      Dokumori: {
+        cooldownAbility: [kAbility.Dokumori],
+        mobGainsEffect: EffectId.Dokumori,
+        mobLosesEffect: EffectId.Dokumori,
+        useEffectDuration: true,
+        icon: dokumoriImage,
         // Magenta.
         borderColor: '#FC4AE6',
         sortKey: 1,
@@ -363,7 +373,6 @@ export class BuffTracker {
         gainEffect: [EffectId.BattleLitany],
         loseEffect: [EffectId.BattleLitany],
         useEffectDuration: true,
-        durationSeconds: 15,
         partyOnly: true,
         icon: battleLitanyImage,
         // Cyan.
@@ -376,22 +385,12 @@ export class BuffTracker {
         gainEffect: [EffectId.Embolden, EffectId.EmboldenSelf],
         loseEffect: [EffectId.Embolden, EffectId.EmboldenSelf],
         useEffectDuration: true,
-        durationSeconds: 20,
         partyOnly: true,
         icon: emboldenImage,
         // Lime.
         borderColor: '#57FC4A',
         sortKey: 3,
         cooldown: 120,
-      },
-      arrow: {
-        gainEffect: [EffectId.TheArrow],
-        loseEffect: [EffectId.TheArrow],
-        useEffectDuration: true,
-        icon: arrowImage,
-        // Light Blue.
-        borderColor: '#37ccee',
-        sortKey: 4,
       },
       balance: {
         gainEffect: [EffectId.TheBalance],
@@ -402,24 +401,6 @@ export class BuffTracker {
         borderColor: '#ff9900',
         sortKey: 4,
       },
-      bole: {
-        gainEffect: [EffectId.TheBole],
-        loseEffect: [EffectId.TheBole],
-        useEffectDuration: true,
-        icon: boleImage,
-        // Green.
-        borderColor: '#22dd77',
-        sortKey: 4,
-      },
-      ewer: {
-        gainEffect: [EffectId.TheEwer],
-        loseEffect: [EffectId.TheEwer],
-        useEffectDuration: true,
-        icon: ewerImage,
-        // Light Blue.
-        borderColor: '#66ccdd',
-        sortKey: 4,
-      },
       spear: {
         gainEffect: [EffectId.TheSpear],
         loseEffect: [EffectId.TheSpear],
@@ -427,33 +408,6 @@ export class BuffTracker {
         icon: spearImage,
         // Dark Blue.
         borderColor: '#4477dd',
-        sortKey: 4,
-      },
-      spire: {
-        gainEffect: [EffectId.TheSpire],
-        loseEffect: [EffectId.TheSpire],
-        useEffectDuration: true,
-        icon: spireImage,
-        // Yellow.
-        borderColor: '#ddd044',
-        sortKey: 4,
-      },
-      ladyOfCrowns: {
-        gainEffect: [EffectId.LadyOfCrowns],
-        loseEffect: [EffectId.LadyOfCrowns],
-        useEffectDuration: true,
-        icon: ladyOfCrownsImage,
-        // Purple.
-        borderColor: '#9e5599',
-        sortKey: 4,
-      },
-      lordOfCrowns: {
-        gainEffect: [EffectId.LordOfCrowns],
-        loseEffect: [EffectId.LordOfCrowns],
-        useEffectDuration: true,
-        icon: lordOfCrownsImage,
-        // Dark Red.
-        borderColor: '#9a2222',
         sortKey: 4,
       },
       devilment: {
@@ -489,7 +443,6 @@ export class BuffTracker {
         gainEffect: [EffectId.TechnicalFinish],
         loseEffect: [EffectId.TechnicalFinish],
         useEffectDuration: true,
-        durationSeconds: 20,
         partyOnly: true,
         icon: technicalFinishImage,
         // Dark Peach.
@@ -502,7 +455,6 @@ export class BuffTracker {
         gainEffect: [EffectId.BattleVoice],
         loseEffect: [EffectId.BattleVoice],
         useEffectDuration: true,
-        durationSeconds: 15,
         partyOnly: true,
         icon: battleVoiceImage,
         // Red.
@@ -515,7 +467,6 @@ export class BuffTracker {
         gainEffect: [EffectId.RadiantFinale],
         loseEffect: [EffectId.RadiantFinale],
         useEffectDuration: true,
-        durationSeconds: 15,
         partyOnly: true,
         icon: finaleImage,
         // Yellow.
@@ -528,12 +479,149 @@ export class BuffTracker {
         mobGainsEffect: EffectId.ChainStratagem,
         mobLosesEffect: EffectId.ChainStratagem,
         useEffectDuration: true,
-        durationSeconds: 15,
         icon: chainStratagemImage,
         // Blue.
         borderColor: '#4674E5',
         sortKey: 8,
         cooldown: 120,
+      },
+      starrymuse: {
+        cooldownAbility: [kAbility.StarryMuse],
+        gainEffect: [EffectId.StarryMuse],
+        loseEffect: [EffectId.StarryMuse],
+        useEffectDuration: true,
+        partyOnly: true,
+        icon: starryMuseImage,
+        // Dark purple.
+        borderColor: '#5C1F58',
+        sortKey: 9,
+        cooldown: 120,
+      },
+      brotherhood: {
+        cooldownAbility: [kAbility.Brotherhood],
+        gainEffect: [EffectId.Brotherhood],
+        loseEffect: [EffectId.Brotherhood],
+        useEffectDuration: true,
+        partyOnly: true,
+        icon: brotherhoodImage,
+        // Dark Orange.
+        borderColor: '#994200',
+        sortKey: 11,
+        cooldown: 120,
+      },
+      divination: {
+        cooldownAbility: [kAbility.Divination],
+        gainEffect: [EffectId.Divination],
+        loseEffect: [EffectId.Divination],
+        useEffectDuration: true,
+        partyOnly: true,
+        icon: divinationImage,
+        // Dark purple.
+        borderColor: '#5C1F58',
+        sortKey: 13,
+        cooldown: 120,
+      },
+      arcaneCircle: {
+        cooldownAbility: [kAbility.ArcaneCircle],
+        gainEffect: [EffectId.ArcaneCircle],
+        loseEffect: [EffectId.ArcaneCircle],
+        useEffectDuration: true,
+        partyOnly: true,
+        icon: arcaneCircleImage,
+        // Light pink..
+        borderColor: '#F3A6FF',
+        sortKey: 14,
+        cooldown: 120,
+      },
+      searingLight: {
+        cooldownAbility: [kAbility.SearingLight],
+        gainEffect: [EffectId.SearingLight],
+        loseEffect: [EffectId.SearingLight],
+        useEffectDuration: true,
+        partyOnly: true,
+        icon: searingLightImage,
+        // Pink.
+        borderColor: '#FF4A9D',
+        sortKey: 14,
+        cooldown: 120,
+      },
+    };
+
+    // Abilities that are different in 6.5 version.
+    // TODO: following raidbuff has been removed in 7.0
+    // Remove them when CN and KO reach 7.0.
+    const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
+      balance: {
+        gainEffect: [EffectId.TheBalance6x],
+        loseEffect: [EffectId.TheBalance6x],
+        useEffectDuration: true,
+        icon: balanceImage,
+        // Orange.
+        borderColor: '#ff9900',
+        sortKey: 4,
+      },
+      spear: {
+        gainEffect: [EffectId.TheSpear6x],
+        loseEffect: [EffectId.TheSpear6x],
+        useEffectDuration: true,
+        icon: spearImage,
+        // Dark Blue.
+        borderColor: '#4477dd',
+        sortKey: 4,
+      },
+      arrow: {
+        gainEffect: [EffectId.TheArrow],
+        loseEffect: [EffectId.TheArrow],
+        useEffectDuration: true,
+        icon: arrowImage,
+        // Light Blue.
+        borderColor: '#37ccee',
+        sortKey: 4,
+      },
+      bole: {
+        gainEffect: [EffectId.TheBole],
+        loseEffect: [EffectId.TheBole],
+        useEffectDuration: true,
+        icon: boleImage,
+        // Green.
+        borderColor: '#22dd77',
+        sortKey: 4,
+      },
+      ewer: {
+        gainEffect: [EffectId.TheEwer],
+        loseEffect: [EffectId.TheEwer],
+        useEffectDuration: true,
+        icon: ewerImage,
+        // Light Blue.
+        borderColor: '#66ccdd',
+        sortKey: 4,
+      },
+      spire: {
+        gainEffect: [EffectId.TheSpire],
+        loseEffect: [EffectId.TheSpire],
+        useEffectDuration: true,
+        icon: spireImage,
+        // Yellow.
+        borderColor: '#ddd044',
+        sortKey: 4,
+      },
+      ladyOfCrowns: {
+        gainEffect: [EffectId.LadyOfCrowns],
+        loseEffect: [EffectId.LadyOfCrowns],
+        useEffectDuration: true,
+        icon: ladyOfCrownsImage,
+        // Purple.
+        borderColor: '#9e5599',
+        sortKey: 4,
+      },
+      lordOfCrowns: {
+        gainEffect: [EffectId.LordOfCrowns],
+        loseEffect: [EffectId.LordOfCrowns],
+        useEffectDuration: true,
+        icon: lordOfCrownsImage,
+        // Dark Red.
+        borderColor: '#9a2222',
+        sortKey: 4,
       },
       lefteye: {
         gainEffect: [EffectId.LeftEye],
@@ -555,73 +643,10 @@ export class BuffTracker {
         sortKey: 10,
         cooldown: 120,
       },
-      brotherhood: {
-        cooldownAbility: [kAbility.Brotherhood],
-        gainEffect: [EffectId.Brotherhood],
-        loseEffect: [EffectId.Brotherhood],
-        useEffectDuration: true,
-        durationSeconds: 15,
-        partyOnly: true,
-        icon: brotherhoodImage,
-        // Dark Orange.
-        borderColor: '#994200',
-        sortKey: 11,
-        cooldown: 120,
-      },
-      divination: {
-        cooldownAbility: [kAbility.Divination],
-        gainEffect: [EffectId.Divination],
-        loseEffect: [EffectId.Divination],
-        useEffectDuration: true,
-        durationSeconds: 15,
-        partyOnly: true,
-        icon: divinationImage,
-        // Dark purple.
-        borderColor: '#5C1F58',
-        sortKey: 13,
-        cooldown: 120,
-      },
-      arcaneCircle: {
-        cooldownAbility: [kAbility.ArcaneCircle],
-        gainEffect: [EffectId.ArcaneCircle],
-        loseEffect: [EffectId.ArcaneCircle],
-        useEffectDuration: true,
-        durationSeconds: 20,
-        partyOnly: true,
-        icon: arcaneCircleImage,
-        // Light pink..
-        borderColor: '#F3A6FF',
-        sortKey: 14,
-        cooldown: 120,
-      },
-      searingLight: {
-        cooldownAbility: [kAbility.SearingLight],
-        gainEffect: [EffectId.SearingLight],
-        loseEffect: [EffectId.SearingLight],
-        useEffectDuration: true,
-        durationSeconds: 30,
-        partyOnly: true,
-        icon: searingLightImage,
-        // Pink.
-        borderColor: '#FF4A9D',
-        sortKey: 14,
-        cooldown: 120,
-      },
     };
 
-    // Abilities that are different in 6.1 version.
-    const v610: { [s: string]: BuffInfo } = {};
-
-    // Abilities that are different in 6.0 version.
-    const v600: { [s: string]: BuffInfo } = {};
-
-    if (this.ffxivVersion < 620) {
-      for (const [key, entry] of Object.entries(v610))
-        this.buffInfo[key] = entry;
-    }
-
-    if (this.ffxivVersion < 610) {
-      for (const [key, entry] of Object.entries(v600))
+    if (this.ffxivVersion < 700) {
+      for (const [key, entry] of Object.entries(v650))
         this.buffInfo[key] = entry;
     }
 

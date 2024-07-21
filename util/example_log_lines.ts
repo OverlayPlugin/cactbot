@@ -1,14 +1,19 @@
-// Contains example log lines used for LogGuide.md and unit testing.
-import { Lang } from './languages';
-import { LogDefinitionName } from './netlog_defs';
-import NetRegexes from './netregexes';
-import Regexes from './regexes';
+// Contains example log lines used for LogGuide.md.
+// Use `npm run generate-log-guide` after updating this file.
+// Also make sure to add unit tests in /test/helper/example_log_lines_test_data.ts.
+
+// cactbot-ignore-all-missing-translations
+
+import { Lang } from '../resources/languages';
+import { LogDefinitionName } from '../resources/netlog_defs';
+import NetRegexes from '../resources/netregexes';
+import Regexes from '../resources/regexes';
 
 // Exclude these types since examples are not included in LogGuide.md, and we
 // don't specifically unit test them.
 type ExcludedLineName =
   | 'None'
-  | 'NetworkAOEAbility'
+  // | 'NetworkAOEAbility' - not included in LogGuide.md, but we do unit test it.
   | 'NetworkWorld'
   | 'ParserInfo'
   | 'ProcessInfo'
@@ -19,9 +24,9 @@ type ExcludedLineName =
 
 export type ExampleLineName = Exclude<LogDefinitionName, ExcludedLineName>;
 
-type ExampleRegex = {
-  network: string;
-  logLine: string;
+export type ExampleRegex<T> = {
+  network: T;
+  logLine: T;
 };
 
 type LangStrings =
@@ -32,17 +37,17 @@ type LangStrings =
     [lang in Exclude<Lang, 'en'>]?: readonly string[];
   };
 
-type ExampleLineEntry = {
+export type ExampleLineDef = {
   // regexes is optional: LogGuide.md will build default regexes if not provided.
-  regexes?: Partial<ExampleRegex>;
+  regexes?: Partial<ExampleRegex<string>>;
   examples: LangStrings;
 };
 
 type ExampleLines = {
-  [type in ExampleLineName]: ExampleLineEntry;
+  [T in ExampleLineName]: ExampleLineDef;
 };
 
-const exampleLogLines: ExampleLines = {
+const exampleLogLines = {
   GameLog: {
     regexes: {
       network: NetRegexes.gameLog({ capture: true }).source,
@@ -56,6 +61,8 @@ const exampleLogLines: ExampleLines = {
         '00|2021-04-26T14:12:30.0000000-04:00|302B||The gravity node uses Forked Lightning.|45d50c5f5322adf787db2bd00d85493d',
         '00|2021-04-26T14:12:30.0000000-04:00|322A||The attack misses.|f9f57724eb396a6a94232e9159175e8c',
         '00|2021-07-05T18:01:21.0000000-04:00|0044|Tsukuyomi|Oh...it\'s going to be a long night.|1a81d186fd4d19255f2e01a1694c7607',
+        '00|2020-02-26T18:59:23.0000000-08:00|0038||cactbot wipe|77364412c17033eb8c87dafe7ce3c665',
+        '00|2020-03-10T18:29:02.0000000-07:00|001D|Tini Poutini|Tini Poutini straightens her spectacles for you.|05ca458b4d400d1f878d3c420f962b99',
       ],
     },
   },
@@ -150,11 +157,21 @@ const exampleLogLines: ExampleLines = {
     },
     examples: {
       en: [
-        '21|2021-07-27T12:48:22.4630000-04:00|40024FD1|Steam Bit|F67|Aetherochemical Laser|10FF0001|Tini Poutini|750003|4620000|1B|F678000|0|0|0|0|0|0|0|0|0|0|0|0|36022|36022|5200|10000|0|1000|1.846313|-12.31409|10.60608|-2.264526|16000|16000|8840|10000|0|1000|-9.079163|-14.02307|18.7095|1.416605|0000DE1F|0|5d60825d70bb46d7fcc8fc0339849e8e',
-        '21|2021-07-27T12:46:22.9530000-04:00|10FF0002|Potato Chippy|07|Attack|40024FC5|Right Foreleg|710003|3910000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|378341|380640|8840|10000|0|1000|-6.37015|-7.477235|10.54466|0.02791069|26396|26396|10000|10000|0|1000|-5.443688|-1.163282|10.54466|-2.9113|0000DB6E|0|58206bdd1d0bd8d70f27f3fb2523912b',
-        '21|2021-07-27T12:46:21.5820000-04:00|10FF0001|Tini Poutini|03|Sprint|10FF0001|Tini Poutini|1E00000E|320000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|0000DB68|0|29301d52854712315e0951abff146adc',
-        '21|2021-07-27T12:47:28.4670000-04:00|40025026|Steam Bit|F6F|Laser Absorption|40024FC4|The Manipulator|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|685814|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|16000|16000|8840|10000|0|1000|0|22.5|10.64999|-3.141593|0000DCEC|0|0f3be60aec05333aae73a042edb7edb4',
-        '21|2021-07-27T12:48:39.1260000-04:00|40024FCE|The Manipulator|13D0|Seed Of The Sky|E0000000||0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|||||||||||16000|16000|8840|10000|0|1000|8.055649|-17.03842|10.58736|-4.792213E-05|0000DE92|0|ca5594611cf4ca4e276f64f2cfba5ffa',
+        '21|2021-07-27T12:48:22.4630000-04:00|40024FD1|Steam Bit|F67|Aetherochemical Laser|10FF0001|Tini Poutini|750003|4620000|1B|F678000|0|0|0|0|0|0|0|0|0|0|0|0|36022|36022|5200|10000|0|1000|1.846313|-12.31409|10.60608|-2.264526|16000|16000|8840|10000|0|1000|-9.079163|-14.02307|18.7095|1.416605|0000DE1F|0|1|5d60825d70bb46d7fcc8fc0339849e8e',
+        '21|2021-07-27T12:46:22.9530000-04:00|10FF0002|Potato Chippy|07|Attack|40024FC5|Right Foreleg|710003|3910000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|378341|380640|8840|10000|0|1000|-6.37015|-7.477235|10.54466|0.02791069|26396|26396|10000|10000|0|1000|-5.443688|-1.163282|10.54466|-2.9113|0000DB6E|0|1|58206bdd1d0bd8d70f27f3fb2523912b',
+        '21|2021-07-27T12:46:21.5820000-04:00|10FF0001|Tini Poutini|03|Sprint|10FF0001|Tini Poutini|1E00000E|320000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|0000DB68|0|1|29301d52854712315e0951abff146adc',
+        '21|2021-07-27T12:47:28.4670000-04:00|40025026|Steam Bit|F6F|Laser Absorption|40024FC4|The Manipulator|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|685814|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|16000|16000|8840|10000|0|1000|0|22.5|10.64999|-3.141593|0000DCEC|0|1|0f3be60aec05333aae73a042edb7edb4',
+        '21|2021-07-27T12:48:39.1260000-04:00|40024FCE|The Manipulator|13D0|Seed Of The Sky|E0000000||0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|||||||||||16000|16000|8840|10000|0|1000|8.055649|-17.03842|10.58736|-4.792213E-05|0000DE92|0|1|ca5594611cf4ca4e276f64f2cfba5ffa',
+      ],
+    },
+  },
+  // Note: `NetworkAOEAbility` examples are not included in LogGuide.md because they have the same
+  // structure as `Ability`, but they are included here for unit testing.
+  NetworkAOEAbility: {
+    examples: {
+      en: [
+        '22|2024-06-07T15:35:31.6490000-07:00|4004DA6A|Hulder|69C1|Lay of Mislaid Memory|10FF0001|Tini Poutini|750003|36C60000|1001E0E|6FD0000|4100000E|AFA0000|1B|69C18000|0|0|0|0|0|0|0|0|56269|56269|10000|10000|||412.38|-642.76|168.66|-2.85|5642456|11048472|10000|10000|||410.42|-650.11|170.72|-0.51|00346744|5|17|6ac9f2ba4e359b93',
+        '22|2024-06-09T08:19:23.0170000-07:00|400D8D19|Demi-Phoenix|4085|Everlasting Flight|10FF0002|Potato Chippy|D1050E|74C0000|1B|40858000|0|0|0|0|0|0|0|0|0|0|0|0|120871|120871|10000|10000|||77.07|376.12|-1.60|2.76|73688|73688|10000|10000|||90.42|373.92|-1.60|-1.76|00ADE8DA|3|4|ae450d05eb2a216a',
       ],
     },
   },
@@ -174,9 +191,9 @@ const exampleLogLines: ExampleLines = {
     },
     examples: {
       en: [
-        '24|2021-07-27T12:47:05.5100000-04:00|10FF0002|Potato Chippy|HoT|0|3A1|21194|21194|8964|10000|0|1000|-1.815857|-5.630676|10.55192|2.929996|63d7d7e99108018a1890f367f89eae43',
-        '24|2021-07-27T12:47:05.5990000-04:00|10FF0001|Tini Poutini|HoT|0|3BC|26396|26396|10000|10000|0|1000|-0.1373901|-8.438293|10.54466|3.122609|21b814e6f165bc1cde4a6dc23046ecb0',
-        '24|2021-07-27T12:47:06.9340000-04:00|40024FC4|The Manipulator|DoT|0|B7F|709685|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|ce3fd23ca493a37ab7663b8212044e78',
+        '24|2022-07-07T21:59:30.6210000-07:00|10FF0001|Tini Poutini|DoT|3C0|9920|32134|63300|10000|10000|||90.44|87.60|0.00|-3.07|4000F123|Shikigami of the Pyre|5|7328307|7439000|10000|10000|||99.78|104.81|0.00|2.95|549a72f2e53a9dea',
+        '24|2023-07-05T20:05:54.6070000-07:00|10FF0006|French Fry|HoT|0|2824|91002|91002|10000|10000|||97.46|101.98|0.00|3.13|10FF0007|Mimite Mite|0|81541|81541|9600|10000|||100.04|110.55|0.00|-3.08|1ea68a0cb73843c7bb51808eeb8e80f8',
+        '24|2023-07-05T20:05:55.9400000-07:00|4001AAAF|Pandæmonium|DoT|0|1D1B|43502881|43656896|10000|10000|||100.00|65.00|0.00|0.00|10FF0003|Papas Fritas|FFFFFFFF|77094|77094|9200|10000|||100.16|99.85|0.00|-2.84|5b77b8e553b0ee5797caa1ab87b5a910',
       ],
     },
   },
@@ -204,6 +221,7 @@ const exampleLogLines: ExampleLines = {
         '26|2021-04-26T14:36:09.4340000-04:00|35|Physical Damage Up|15.00|400009D5|Dark General|400009D5|Dark General|00|48865|48865|cbcfac4df1554b8f59f343f017ebd793',
         '26|2021-04-26T14:23:38.7560000-04:00|13B|Whispering Dawn|21.00|4000B283|Selene|10FF0002|Potato Chippy|4000016E|00|51893|49487|c7400f0eed1fe9d29834369affc22d3b',
         '26|2021-07-02T21:57:07.9110000-04:00|D2|Doom|9.97|40003D9F||10FF0001|Tini Poutini|00|26396|26396|86ff6bf4cfdd68491274fce1db5677e8',
+        '26|2020-04-24T10:00:03.1370000-08:00|8D1|Lightsteeped|39.95|E0000000||10FF0001|Tini Poutini|01|103650|||ba7a8b1ffce9f0f57974de250e9da307',
       ],
     },
   },
@@ -422,9 +440,9 @@ const exampleLogLines: ExampleLines = {
   CombatantMemory: {
     examples: {
       en: [
-        '261|2023-04-20T19:04:39.3810000-07:00|Add|400139C5|Type|2|TargetID|10FFFFFF|Name|Omega|MaxHP|8557964|PosX|100|PosY|90|PosZ|-5.456968E-12|Heading|-4.792213E-05|Radius|12.006|BNpcID|3D5C|CurrentMP|10000|MaxMP|10000|Level|90|BNpcNameID|1E0F|WorldID|65535|CurrentWorldID|65535|NPCTargetID|1084E23D|CastDurationMax|-3.689349E+19|e173dbd66eb7c1fe',
-        '261|2023-04-20T19:04:41.9200000-07:00|Change|400139C5|PosX|100.1179|PosY|95.16841|PosZ|-5.456968E-12|Heading|0.08906358|eac28822c9abcde9',
-        '261|2023-04-20T19:06:46.2900000-07:00|Remove|400139C5|09a3165588ea6b13',
+        '261|2023-05-26T21:37:40.5600000-04:00|Add|40008953|BNpcID|3F5A|BNpcNameID|304E|CastTargetID|E0000000|CurrentMP|10000|CurrentWorldID|65535|Heading|-3.1416|Level|90|MaxHP|69200|MaxMP|10000|ModelStatus|18432|Name|Golbez\'s Shadow|NPCTargetID|E0000000|PosX|100.0000|PosY|100.0000|PosZ|0.0300|Radius|7.5000|Type|2|WorldID|65535|9d9028a8e087e4c3',
+        '261|2023-05-26T21:39:41.2920000-04:00|Change|10001234|CurrentMP|2400|Heading|-2.3613|2f5ff0a91385050a',
+        '261|2023-05-26T21:39:42.7380000-04:00|Remove|40008AA0|f4b30f181245b5da',
       ],
     },
   },
@@ -433,7 +451,7 @@ const exampleLogLines: ExampleLines = {
       en: [
         '262|2023-04-21T23:24:05.8320000-04:00|en|0000001C|_rsv_32789_-1_1_0_1_SE2DC5B04_EE2DC5B04|Run: ****mi* (Omega Version)|34159b6f2093e889',
         '262|2023-04-21T23:24:05.9210000-04:00|en|00000031|_rsv_3448_-1_1_1_0_S74CFC3B0_E74CFC3B0|Burning with dynamis inspired by Omega\'s passion.|ce9d03bb211d894f',
-        '262|2023-04-21T23:24:06.0630000-04:00|en|00000051|_rsv_35827_-1_1_0_0_S13095D61_E13095D61|Further testing is required.�����,\\r���)������ ��, assist me with this evaluation.|38151741aad7fe51',
+        '262|2023-04-21T23:24:06.0630000-04:00|en|00000051|_rsv_35827_-1_1_0_0_S13095D61_E13095D61|Further testing is required.�����, ���)������ ��, assist me with this evaluation.|38151741aad7fe51',
       ],
     },
   },
@@ -555,6 +573,10 @@ const exampleLogLines: ExampleLines = {
       ],
     },
   },
-};
+} as const;
+
+// Verify typing (e.g. required line types are present), but export `as const`.
+const assertExampleLogLines: ExampleLines = exampleLogLines;
+console.assert(assertExampleLogLines);
 
 export default exampleLogLines;

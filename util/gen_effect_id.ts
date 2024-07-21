@@ -13,16 +13,17 @@ const _EFFECT_ID: OutputFileAttributes = {
   asConst: true,
 };
 
-const _ENDPOINT = 'Status';
+const _SHEET = 'Status';
 
-const _COLUMNS = [
-  'ID',
+const _FIELDS = [
   'Name',
 ];
 
 type ResultStatus = {
-  ID: number;
-  Name: string | null;
+  row_id: number;
+  fields: {
+    Name?: string;
+  };
 };
 
 type XivApiStatus = ResultStatus[];
@@ -62,13 +63,13 @@ const knownMapping: Readonly<MappingTable> = {
   'Lady of Crowns': 1877,
   'Divination': 1878,
   'Further Ruin': 2701,
-  'The Balance': 1882,
+  'The Balance': 3887,
   'The Bole': 1883,
   'The Arrow': 1884,
-  'The Spear': 1885,
+  'The Spear': 3889,
   'The Ewer': 1886,
   'The Spire': 1887,
-  'Sword Oath': 1902,
+  'Atonement Ready': 1902, // updated in Patch 7.0
   'Tactician': 1951,
   // This is for others, 1821 is for self.
   'Standard Finish': 2105,
@@ -87,12 +88,20 @@ const knownMapping: Readonly<MappingTable> = {
   'Radiant Finale': 2964,
   'Requiescat': 1368,
   'Overheated': 2688,
+  'Hawk\'s Eye': 3861,
+  'Barrage': 128,
+  'Noxious Gnash': 3667,
+  'Hunter\'s Instinct': 3668,
+  'Swiftscaled': 3669,
 };
 
 // These custom name of effect will not be checked, but you'd better make it clean.
 // Use this only when you need to handle different effects with a same name.
 const customMapping: Readonly<MappingTable> = {
   'EmboldenSelf': 1239,
+  // TODO: remove them once CN/KO launch 7.0
+  'TheBalance6x': 1882,
+  'TheSpear6x': 1885,
 };
 
 const assembleData = (apiData: XivApiStatus): OutputEffectId => {
@@ -102,13 +111,13 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
 
   log.debug('Processing & assembling data...');
   for (const effect of apiData) {
-    const id = effect.ID;
-    const rawName = effect.Name;
-    if (rawName === null || id === null)
+    const id = effect.row_id;
+    const rawName = effect.fields.Name;
+    if (rawName === undefined)
       continue;
     const name = cleanName(rawName);
     // Skip empty strings.
-    if (!name)
+    if (name === '')
       continue;
 
     // See comment above specifically about known mappings.
@@ -169,8 +178,8 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
   const api = new XivApi(null, log);
 
   const apiData = await api.queryApi(
-    _ENDPOINT,
-    _COLUMNS,
+    _SHEET,
+    _FIELDS,
   ) as XivApiStatus;
 
   const outputData = assembleData(apiData);

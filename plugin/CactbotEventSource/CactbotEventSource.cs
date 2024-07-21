@@ -161,7 +161,7 @@ namespace Cactbot {
         url = Path.GetFullPath(Path.Combine(dir, configFile));
 
       control.VisibleChanged += (o, e) => {
-        if (initDone)
+        if (initDone || !control.Visible)
           return;
         initDone = true;
         control.Init(url);

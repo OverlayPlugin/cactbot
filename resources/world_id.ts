@@ -185,13 +185,6 @@ const data: Worlds = {
     'region': 1,
     'userType': 3,
   },
-  '38': {
-    'id': 38,
-    'internalName': 'Shemhazai',
-    'name': 'Shemhazai',
-    'region': 1,
-    'userType': 3,
-  },
   '39': {
     'dataCenter': {
       'id': 6,
@@ -929,9 +922,97 @@ const data: Worlds = {
     'region': 1,
     'userType': 3,
   },
-  '3000': {
+  '408': {
+    'dataCenter': {
+      'id': 11,
+      'name': 'Dynamis',
+    },
+    'id': 408,
+    'internalName': 'Cuchulainn',
+    'name': 'Cuchulainn',
+    'region': 1,
+    'userType': 3,
+  },
+  '409': {
+    'dataCenter': {
+      'id': 11,
+      'name': 'Dynamis',
+    },
+    'id': 409,
+    'internalName': 'Kraken',
+    'name': 'Kraken',
+    'region': 1,
+    'userType': 3,
+  },
+  '410': {
+    'dataCenter': {
+      'id': 11,
+      'name': 'Dynamis',
+    },
+    'id': 410,
+    'internalName': 'Rafflesia',
+    'name': 'Rafflesia',
+    'region': 1,
+    'userType': 3,
+  },
+  '411': {
+    'dataCenter': {
+      'id': 11,
+      'name': 'Dynamis',
+    },
+    'id': 411,
+    'internalName': 'Golem',
+    'name': 'Golem',
+    'region': 1,
+    'userType': 3,
+  },
+  '412': {
     'dataCenter': {
       'id': 12,
+      'name': 'Shadow',
+    },
+    'id': 412,
+    'internalName': 'Titania',
+    'name': 'Titania',
+    'region': 1,
+    'userType': 5,
+  },
+  '413': {
+    'dataCenter': {
+      'id': 12,
+      'name': 'Shadow',
+    },
+    'id': 413,
+    'internalName': 'Innocence',
+    'name': 'Innocence',
+    'region': 1,
+    'userType': 5,
+  },
+  '414': {
+    'dataCenter': {
+      'id': 12,
+      'name': 'Shadow',
+    },
+    'id': 414,
+    'internalName': 'Pixie',
+    'name': 'Pixie',
+    'region': 1,
+    'userType': 5,
+  },
+  '415': {
+    'dataCenter': {
+      'id': 12,
+      'name': 'Shadow',
+    },
+    'id': 415,
+    'internalName': 'Tycoon',
+    'name': 'Tycoon',
+    'region': 1,
+    'userType': 5,
+  },
+  '3000': {
+    'dataCenter': {
+      'id': 13,
       'name': 'NA Cloud DC (Beta)',
     },
     'id': 3000,
@@ -942,7 +1023,7 @@ const data: Worlds = {
   },
   '3001': {
     'dataCenter': {
-      'id': 12,
+      'id': 13,
       'name': 'NA Cloud DC (Beta)',
     },
     'id': 3001,

@@ -35,8 +35,10 @@ export default class RaidEmulator extends EventBus {
   ): void {
     // If language was autodetected from the encounter, set the current ParserLanguage
     // appropriately
-    if (enc.language)
+    if (enc.language) {
       this.options.ParserLanguage = enc.language;
+      this.popupText?.setParserLanguage(enc.language);
+    }
 
     this.currentEncounter = new AnalyzedEncounter(this.options, enc, this, watchCombatantsOverride);
     void this.dispatch('preCurrentEncounterChanged', this.currentEncounter);

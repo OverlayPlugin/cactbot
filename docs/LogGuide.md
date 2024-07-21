@@ -526,6 +526,8 @@ Network Log Line Examples:
 00|2021-04-26T14:12:30.0000000-04:00|302B||The gravity node uses Forked Lightning.|45d50c5f5322adf787db2bd00d85493d
 00|2021-04-26T14:12:30.0000000-04:00|322A||The attack misses.|f9f57724eb396a6a94232e9159175e8c
 00|2021-07-05T18:01:21.0000000-04:00|0044|Tsukuyomi|Oh...it's going to be a long night.|1a81d186fd4d19255f2e01a1694c7607
+00|2020-02-26T18:59:23.0000000-08:00|0038||cactbot wipe|77364412c17033eb8c87dafe7ce3c665
+00|2020-03-10T18:29:02.0000000-07:00|001D|Tini Poutini|Tini Poutini straightens her spectacles for you.|05ca458b4d400d1f878d3c420f962b99
 
 Parsed Log Line Examples:
 [14:12:30.000] ChatLog 00:0839::You change to warrior.
@@ -534,6 +536,8 @@ Parsed Log Line Examples:
 [14:12:30.000] ChatLog 00:302B::The gravity node uses Forked Lightning.
 [14:12:30.000] ChatLog 00:322A::The attack misses.
 [18:01:21.000] ChatLog 00:0044:Tsukuyomi:Oh...it's going to be a long night.
+[18:59:23.000] ChatLog 00:0038::cactbot wipe
+[18:29:02.000] ChatLog 00:001D:Tini Poutini:Tini Poutini straightens her spectacles for you.
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
@@ -733,20 +737,20 @@ changed zones.
 
 ```log
 Network Log Line Structure:
-04|[timestamp]|[id]|[name]|[job]|[level]|[owner]|[?]|[world]|[npcNameId]|[npcBaseId]|[?]|[hp]|[?]|[?]|[?]|[?]|[x]|[y]|[z]|[heading]
+04|[timestamp]|[id]|[name]|[job]|[level]|[owner]|[?]|[world]|[npcNameId]|[npcBaseId]|[currentHp]|[hp]|[currentMp]|[mp]|[?]|[?]|[x]|[y]|[z]|[heading]
 
 Parsed Log Line Structure:
-[timestamp] RemoveCombatant 04:[id]:[name]:[job]:[level]:[owner]:[?]:[world]:[npcNameId]:[npcBaseId]:[?]:[hp]:[?]:[?]:[?]:[?]:[x]:[y]:[z]:[heading]
+[timestamp] RemoveCombatant 04:[id]:[name]:[job]:[level]:[owner]:[?]:[world]:[npcNameId]:[npcBaseId]:[currentHp]:[hp]:[currentMp]:[mp]:[?]:[?]:[x]:[y]:[z]:[heading]
 ```
 
 #### Regexes
 
 ```log
 Network Log Line Regex:
-^(?<type>04)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<name>[^|]*)\|(?<job>[^|]*)\|(?<level>[^|]*)\|(?<owner>[^|]*)\|(?:[^|]*\|)(?<world>[^|]*)\|(?<npcNameId>[^|]*)\|(?<npcBaseId>[^|]*)\|(?:[^|]*\|)(?<hp>[^|]*)\|(?:[^|]*\|){4}(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|
+^(?<type>04)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<name>[^|]*)\|(?<job>[^|]*)\|(?<level>[^|]*)\|(?<owner>[^|]*)\|(?:[^|]*\|)(?<world>[^|]*)\|(?<npcNameId>[^|]*)\|(?<npcBaseId>[^|]*)\|(?<currentHp>[^|]*)\|(?<hp>[^|]*)\|(?<currentMp>[^|]*)\|(?<mp>[^|]*)\|(?:[^|]*\|){2}(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) RemoveCombatant (?<type>04):(?<id>[^:]*):(?<name>[^:]*):(?<job>[^:]*):(?<level>[^:]*):(?<owner>[^:]*):[^:]*:(?<world>[^:]*):(?<npcNameId>[^:]*):(?<npcBaseId>[^:]*):[^:]*:(?<hp>[^:]*)(?::[^:]*){4}:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) RemoveCombatant (?<type>04):(?<id>[^:]*):(?<name>[^:]*):(?<job>[^:]*):(?<level>[^:]*):(?<owner>[^:]*):[^:]*:(?<world>[^:]*):(?<npcNameId>[^:]*):(?<npcBaseId>[^:]*):(?<currentHp>[^:]*):(?<hp>[^:]*):(?<currentMp>[^:]*):(?<mp>[^:]*)(?::[^:]*){2}:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*)(?:$|:)
 ```
 
 #### Examples
@@ -976,18 +980,18 @@ Parsed Log Line Regex:
 
 ```log
 Network Log Line Examples:
-21|2021-07-27T12:48:22.4630000-04:00|40024FD1|Steam Bit|F67|Aetherochemical Laser|10FF0001|Tini Poutini|750003|4620000|1B|F678000|0|0|0|0|0|0|0|0|0|0|0|0|36022|36022|5200|10000|0|1000|1.846313|-12.31409|10.60608|-2.264526|16000|16000|8840|10000|0|1000|-9.079163|-14.02307|18.7095|1.416605|0000DE1F|0|5d60825d70bb46d7fcc8fc0339849e8e
-21|2021-07-27T12:46:22.9530000-04:00|10FF0002|Potato Chippy|07|Attack|40024FC5|Right Foreleg|710003|3910000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|378341|380640|8840|10000|0|1000|-6.37015|-7.477235|10.54466|0.02791069|26396|26396|10000|10000|0|1000|-5.443688|-1.163282|10.54466|-2.9113|0000DB6E|0|58206bdd1d0bd8d70f27f3fb2523912b
-21|2021-07-27T12:46:21.5820000-04:00|10FF0001|Tini Poutini|03|Sprint|10FF0001|Tini Poutini|1E00000E|320000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|0000DB68|0|29301d52854712315e0951abff146adc
-21|2021-07-27T12:47:28.4670000-04:00|40025026|Steam Bit|F6F|Laser Absorption|40024FC4|The Manipulator|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|685814|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|16000|16000|8840|10000|0|1000|0|22.5|10.64999|-3.141593|0000DCEC|0|0f3be60aec05333aae73a042edb7edb4
-21|2021-07-27T12:48:39.1260000-04:00|40024FCE|The Manipulator|13D0|Seed Of The Sky|E0000000||0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|||||||||||16000|16000|8840|10000|0|1000|8.055649|-17.03842|10.58736|-4.792213E-05|0000DE92|0|ca5594611cf4ca4e276f64f2cfba5ffa
+21|2021-07-27T12:48:22.4630000-04:00|40024FD1|Steam Bit|F67|Aetherochemical Laser|10FF0001|Tini Poutini|750003|4620000|1B|F678000|0|0|0|0|0|0|0|0|0|0|0|0|36022|36022|5200|10000|0|1000|1.846313|-12.31409|10.60608|-2.264526|16000|16000|8840|10000|0|1000|-9.079163|-14.02307|18.7095|1.416605|0000DE1F|0|1|5d60825d70bb46d7fcc8fc0339849e8e
+21|2021-07-27T12:46:22.9530000-04:00|10FF0002|Potato Chippy|07|Attack|40024FC5|Right Foreleg|710003|3910000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|378341|380640|8840|10000|0|1000|-6.37015|-7.477235|10.54466|0.02791069|26396|26396|10000|10000|0|1000|-5.443688|-1.163282|10.54466|-2.9113|0000DB6E|0|1|58206bdd1d0bd8d70f27f3fb2523912b
+21|2021-07-27T12:46:21.5820000-04:00|10FF0001|Tini Poutini|03|Sprint|10FF0001|Tini Poutini|1E00000E|320000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|19053|26706|10000|10000|0|1000|-1.210526|17.15058|10.69944|-2.88047|0000DB68|0|1|29301d52854712315e0951abff146adc
+21|2021-07-27T12:47:28.4670000-04:00|40025026|Steam Bit|F6F|Laser Absorption|40024FC4|The Manipulator|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|685814|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|16000|16000|8840|10000|0|1000|0|22.5|10.64999|-3.141593|0000DCEC|0|1|0f3be60aec05333aae73a042edb7edb4
+21|2021-07-27T12:48:39.1260000-04:00|40024FCE|The Manipulator|13D0|Seed Of The Sky|E0000000||0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|||||||||||16000|16000|8840|10000|0|1000|8.055649|-17.03842|10.58736|-4.792213E-05|0000DE92|0|1|ca5594611cf4ca4e276f64f2cfba5ffa
 
 Parsed Log Line Examples:
-[12:48:22.463] ActionEffect 15:40024FD1:Steam Bit:F67:Aetherochemical Laser:10FF0001:Tini Poutini:750003:4620000:1B:F678000:0:0:0:0:0:0:0:0:0:0:0:0:36022:36022:5200:10000:0:1000:1.846313:-12.31409:10.60608:-2.264526:16000:16000:8840:10000:0:1000:-9.079163:-14.02307:18.7095:1.416605:0000DE1F:0
-[12:46:22.953] ActionEffect 15:10FF0002:Potato Chippy:07:Attack:40024FC5:Right Foreleg:710003:3910000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:378341:380640:8840:10000:0:1000:-6.37015:-7.477235:10.54466:0.02791069:26396:26396:10000:10000:0:1000:-5.443688:-1.163282:10.54466:-2.9113:0000DB6E:0
-[12:46:21.582] ActionEffect 15:10FF0001:Tini Poutini:03:Sprint:10FF0001:Tini Poutini:1E00000E:320000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:19053:26706:10000:10000:0:1000:-1.210526:17.15058:10.69944:-2.88047:19053:26706:10000:10000:0:1000:-1.210526:17.15058:10.69944:-2.88047:0000DB68:0
-[12:47:28.467] ActionEffect 15:40025026:Steam Bit:F6F:Laser Absorption:40024FC4:The Manipulator:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:685814:872320:8840:10000:0:1000:-0.01531982:-13.86256:10.59466:-4.792213E-05:16000:16000:8840:10000:0:1000:0:22.5:10.64999:-3.141593:0000DCEC:0
-[12:48:39.126] ActionEffect 15:40024FCE:The Manipulator:13D0:Seed Of The Sky:E0000000::0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:::::::::::16000:16000:8840:10000:0:1000:8.055649:-17.03842:10.58736:-4.792213E-05:0000DE92:0
+[12:48:22.463] ActionEffect 15:40024FD1:Steam Bit:F67:Aetherochemical Laser:10FF0001:Tini Poutini:750003:4620000:1B:F678000:0:0:0:0:0:0:0:0:0:0:0:0:36022:36022:5200:10000:0:1000:1.846313:-12.31409:10.60608:-2.264526:16000:16000:8840:10000:0:1000:-9.079163:-14.02307:18.7095:1.416605:0000DE1F:0:1
+[12:46:22.953] ActionEffect 15:10FF0002:Potato Chippy:07:Attack:40024FC5:Right Foreleg:710003:3910000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:378341:380640:8840:10000:0:1000:-6.37015:-7.477235:10.54466:0.02791069:26396:26396:10000:10000:0:1000:-5.443688:-1.163282:10.54466:-2.9113:0000DB6E:0:1
+[12:46:21.582] ActionEffect 15:10FF0001:Tini Poutini:03:Sprint:10FF0001:Tini Poutini:1E00000E:320000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:19053:26706:10000:10000:0:1000:-1.210526:17.15058:10.69944:-2.88047:19053:26706:10000:10000:0:1000:-1.210526:17.15058:10.69944:-2.88047:0000DB68:0:1
+[12:47:28.467] ActionEffect 15:40025026:Steam Bit:F6F:Laser Absorption:40024FC4:The Manipulator:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:685814:872320:8840:10000:0:1000:-0.01531982:-13.86256:10.59466:-4.792213E-05:16000:16000:8840:10000:0:1000:0:22.5:10.64999:-3.141593:0000DCEC:0:1
+[12:48:39.126] ActionEffect 15:40024FCE:The Manipulator:13D0:Seed Of The Sky:E0000000::0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:::::::::::16000:16000:8840:10000:0:1000:8.055649:-17.03842:10.58736:-4.792213E-05:0000DE92:0:1
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
@@ -1291,14 +1295,14 @@ Parsed Log Line Regex:
 
 ```log
 Network Log Line Examples:
-24|2021-07-27T12:47:05.5100000-04:00|10FF0002|Potato Chippy|HoT|0|3A1|21194|21194|8964|10000|0|1000|-1.815857|-5.630676|10.55192|2.929996|63d7d7e99108018a1890f367f89eae43
-24|2021-07-27T12:47:05.5990000-04:00|10FF0001|Tini Poutini|HoT|0|3BC|26396|26396|10000|10000|0|1000|-0.1373901|-8.438293|10.54466|3.122609|21b814e6f165bc1cde4a6dc23046ecb0
-24|2021-07-27T12:47:06.9340000-04:00|40024FC4|The Manipulator|DoT|0|B7F|709685|872320|8840|10000|0|1000|-0.01531982|-13.86256|10.59466|-4.792213E-05|ce3fd23ca493a37ab7663b8212044e78
+24|2022-07-07T21:59:30.6210000-07:00|10FF0001|Tini Poutini|DoT|3C0|9920|32134|63300|10000|10000|||90.44|87.60|0.00|-3.07|4000F123|Shikigami of the Pyre|5|7328307|7439000|10000|10000|||99.78|104.81|0.00|2.95|549a72f2e53a9dea
+24|2023-07-05T20:05:54.6070000-07:00|10FF0006|French Fry|HoT|0|2824|91002|91002|10000|10000|||97.46|101.98|0.00|3.13|10FF0007|Mimite Mite|0|81541|81541|9600|10000|||100.04|110.55|0.00|-3.08|1ea68a0cb73843c7bb51808eeb8e80f8
+24|2023-07-05T20:05:55.9400000-07:00|4001AAAF|Pandæmonium|DoT|0|1D1B|43502881|43656896|10000|10000|||100.00|65.00|0.00|0.00|10FF0003|Papas Fritas|FFFFFFFF|77094|77094|9200|10000|||100.16|99.85|0.00|-2.84|5b77b8e553b0ee5797caa1ab87b5a910
 
 Parsed Log Line Examples:
-[12:47:05.510] DoTHoT 18:10FF0002:Potato Chippy:HoT:0:3A1:21194:21194:8964:10000:0:1000:-1.815857:-5.630676:10.55192:2.929996
-[12:47:05.599] DoTHoT 18:10FF0001:Tini Poutini:HoT:0:3BC:26396:26396:10000:10000:0:1000:-0.1373901:-8.438293:10.54466:3.122609
-[12:47:06.934] DoTHoT 18:40024FC4:The Manipulator:DoT:0:B7F:709685:872320:8840:10000:0:1000:-0.01531982:-13.86256:10.59466:-4.792213E-05
+[21:59:30.621] DoTHoT 18:10FF0001:Tini Poutini:DoT:3C0:9920:32134:63300:10000:10000:::90.44:87.60:0.00:-3.07:4000F123:Shikigami of the Pyre:5:7328307:7439000:10000:10000:::99.78:104.81:0.00:2.95
+[20:05:54.607] DoTHoT 18:10FF0006:French Fry:HoT:0:2824:91002:91002:10000:10000:::97.46:101.98:0.00:3.13:10FF0007:Mimite Mite:0:81541:81541:9600:10000:::100.04:110.55:0.00:-3.08
+[20:05:55.940] DoTHoT 18:4001AAAF:Pandæmonium:DoT:0:1D1B:43502881:43656896:10000:10000:::100.00:65.00:0.00:0.00:10FF0003:Papas Fritas:FFFFFFFF:77094:77094:9200:10000:::100.16:99.85:0.00:-2.84
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
@@ -1387,11 +1391,13 @@ Network Log Line Examples:
 26|2021-04-26T14:36:09.4340000-04:00|35|Physical Damage Up|15.00|400009D5|Dark General|400009D5|Dark General|00|48865|48865|cbcfac4df1554b8f59f343f017ebd793
 26|2021-04-26T14:23:38.7560000-04:00|13B|Whispering Dawn|21.00|4000B283|Selene|10FF0002|Potato Chippy|4000016E|00|51893|49487|c7400f0eed1fe9d29834369affc22d3b
 26|2021-07-02T21:57:07.9110000-04:00|D2|Doom|9.97|40003D9F||10FF0001|Tini Poutini|00|26396|26396|86ff6bf4cfdd68491274fce1db5677e8
+26|2020-04-24T10:00:03.1370000-08:00|8D1|Lightsteeped|39.95|E0000000||10FF0001|Tini Poutini|01|103650|||ba7a8b1ffce9f0f57974de250e9da307
 
 Parsed Log Line Examples:
 [14:36:09.434] StatusAdd 1A:35:Physical Damage Up:15.00:400009D5:Dark General:400009D5:Dark General:00:48865:48865
 [14:23:38.756] StatusAdd 1A:13B:Whispering Dawn:21.00:4000B283:Selene:10FF0002:Potato Chippy:4000016E:00:51893:49487
 [21:57:07.911] StatusAdd 1A:D2:Doom:9.97:40003D9F::10FF0001:Tini Poutini:00:26396:26396
+[10:00:03.137] StatusAdd 1A:8D1:Lightsteeped:39.95:E0000000::10FF0001:Tini Poutini:01:103650::
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END -->
@@ -2564,20 +2570,20 @@ This is so that it is obvious which log lines and versions to expect for a given
 
 ```log
 Network Log Line Structure:
-256|[timestamp]|[id]|[source]|[version]
+256|[timestamp]|[id]|[source]|[name]|[version]
 
 Parsed Log Line Structure:
-[timestamp] 256 100:[id]:[source]:[version]
+[timestamp] 256 100:[id]:[source]:[name]:[version]
 ```
 
 #### Regexes
 
 ```log
 Network Log Line Regex:
-^(?<type>256)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<source>[^|]*)\|(?<version>[^|]*)\|
+^(?<type>256)\|(?<timestamp>[^|]*)\|(?<id>[^|]*)\|(?<source>[^|]*)\|(?<name>[^|]*)\|(?<version>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) 256 (?<type>100):(?<id>[^:]*):(?<source>[^:]*):(?<version>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) 256 (?<type>100):(?<id>[^:]*):(?<source>[^:]*):(?<name>[^:]*):(?<version>[^:]*)(?:$|:)
 ```
 
 #### Examples
@@ -2874,14 +2880,14 @@ Parsed Log Line Regex:
 
 ```log
 Network Log Line Examples:
-261|2023-04-20T19:04:39.3810000-07:00|Add|400139C5|Type|2|TargetID|10FFFFFF|Name|Omega|MaxHP|8557964|PosX|100|PosY|90|PosZ|-5.456968E-12|Heading|-4.792213E-05|Radius|12.006|BNpcID|3D5C|CurrentMP|10000|MaxMP|10000|Level|90|BNpcNameID|1E0F|WorldID|65535|CurrentWorldID|65535|NPCTargetID|1084E23D|CastDurationMax|-3.689349E+19|e173dbd66eb7c1fe
-261|2023-04-20T19:04:41.9200000-07:00|Change|400139C5|PosX|100.1179|PosY|95.16841|PosZ|-5.456968E-12|Heading|0.08906358|eac28822c9abcde9
-261|2023-04-20T19:06:46.2900000-07:00|Remove|400139C5|09a3165588ea6b13
+261|2023-05-26T21:37:40.5600000-04:00|Add|40008953|BNpcID|3F5A|BNpcNameID|304E|CastTargetID|E0000000|CurrentMP|10000|CurrentWorldID|65535|Heading|-3.1416|Level|90|MaxHP|69200|MaxMP|10000|ModelStatus|18432|Name|Golbez's Shadow|NPCTargetID|E0000000|PosX|100.0000|PosY|100.0000|PosZ|0.0300|Radius|7.5000|Type|2|WorldID|65535|9d9028a8e087e4c3
+261|2023-05-26T21:39:41.2920000-04:00|Change|10001234|CurrentMP|2400|Heading|-2.3613|2f5ff0a91385050a
+261|2023-05-26T21:39:42.7380000-04:00|Remove|40008AA0|f4b30f181245b5da
 
 Parsed Log Line Examples:
-[19:04:39.381] 261 105:Add:400139C5:Type:2:TargetID:10FFFFFF:Name:Omega:MaxHP:8557964:PosX:100:PosY:90:PosZ:-5.456968E-12:Heading:-4.792213E-05:Radius:12.006:BNpcID:3D5C:CurrentMP:10000:MaxMP:10000:Level:90:BNpcNameID:1E0F:WorldID:65535:CurrentWorldID:65535:NPCTargetID:1084E23D:CastDurationMax:-3.689349E+19
-[19:04:41.920] 261 105:Change:400139C5:PosX:100.1179:PosY:95.16841:PosZ:-5.456968E-12:Heading:0.08906358
-[19:06:46.290] 261 105:Remove:400139C5
+[21:37:40.560] 261 105:Add:40008953:BNpcID:3F5A:BNpcNameID:304E:CastTargetID:E0000000:CurrentMP:10000:CurrentWorldID:65535:Heading:-3.1416:Level:90:MaxHP:69200:MaxMP:10000:ModelStatus:18432:Name:Golbez's Shadow:NPCTargetID:E0000000:PosX:100.0000:PosY:100.0000:PosZ:0.0300:Radius:7.5000:Type:2:WorldID:65535
+[21:39:41.292] 261 105:Change:10001234:CurrentMP:2400:Heading:-2.3613
+[21:39:42.738] 261 105:Remove:40008AA0
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=CombatantMemory&lang=en-US) -->
@@ -2937,12 +2943,12 @@ Parsed Log Line Regex:
 Network Log Line Examples:
 262|2023-04-21T23:24:05.8320000-04:00|en|0000001C|_rsv_32789_-1_1_0_1_SE2DC5B04_EE2DC5B04|Run: ****mi* (Omega Version)|34159b6f2093e889
 262|2023-04-21T23:24:05.9210000-04:00|en|00000031|_rsv_3448_-1_1_1_0_S74CFC3B0_E74CFC3B0|Burning with dynamis inspired by Omega's passion.|ce9d03bb211d894f
-262|2023-04-21T23:24:06.0630000-04:00|en|00000051|_rsv_35827_-1_1_0_0_S13095D61_E13095D61|Further testing is required.�����,\r���)������ ��, assist me with this evaluation.|38151741aad7fe51
+262|2023-04-21T23:24:06.0630000-04:00|en|00000051|_rsv_35827_-1_1_0_0_S13095D61_E13095D61|Further testing is required.�����, ���)������ ��, assist me with this evaluation.|38151741aad7fe51
 
 Parsed Log Line Examples:
 [23:24:05.832] 262 106:en:0000001C:_rsv_32789_-1_1_0_1_SE2DC5B04_EE2DC5B04:Run: ****mi* (Omega Version)
 [23:24:05.921] 262 106:en:00000031:_rsv_3448_-1_1_1_0_S74CFC3B0_E74CFC3B0:Burning with dynamis inspired by Omega's passion.
-[23:24:06.063] 262 106:en:00000051:_rsv_35827_-1_1_0_0_S13095D61_E13095D61:Further testing is required.�����,\r���)������ ��, assist me with this evaluation.
+[23:24:06.063] 262 106:en:00000051:_rsv_35827_-1_1_0_0_S13095D61_E13095D61:Further testing is required.�����, ���)������ ��, assist me with this evaluation.
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=RSVData&lang=en-US) -->

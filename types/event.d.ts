@@ -42,9 +42,16 @@ export interface JobDetail {
     fairyStatus: number;
   };
   'AST': {
+    /* TODO: should be removed when CN/KR server reach 7.0 */
     heldCard: 'None' | 'Balance' | 'Bole' | 'Arrow' | 'Spear' | 'Ewer' | 'Spire';
     crownCard: 'None' | 'Lord' | 'Lady';
     arcanums: ('Solar' | 'Lunar' | 'Celestial')[];
+    /* 7.0 */
+    card1: 'None' | 'Balance' | 'Spear';
+    card2: 'None' | 'Arrow' | 'Bole';
+    card3: 'None' | 'Spire' | 'Ewer';
+    card4: 'None' | 'Lord' | 'Lady';
+    nextdraw: 'Astral' | 'Umbral';
   };
   'SGE': {
     addersgallMilliseconds: number;
@@ -57,6 +64,9 @@ export interface JobDetail {
     beastChakra: ('Coeurl' | 'Opo' | 'Raptor')[];
     solarNadi: boolean;
     lunarNadi: boolean;
+    opoopoFury: number;
+    raptorFury: number;
+    coeurlFury: number;
   };
   'DRG': {
     eyesAmount: number;
@@ -65,8 +75,10 @@ export interface JobDetail {
     firstmindsFocus: number;
   };
   'NIN': {
+    /** TODO: should be removed when CN/KR server reach 7.0 */
     hutonMilliseconds: number;
     ninkiAmount: number;
+    kazematoi: number;
   };
   'SAM': {
     kenki: number;
@@ -82,6 +94,24 @@ export interface JobDetail {
     lemureShroud: number;
     voidShroud: number;
   };
+  'VPR': {
+    rattlingCoilStacks: number;
+    anguineTribute: number;
+    serpentOffering: number;
+    advancedCombo:
+      | 'Dreadwinder'
+      | 'HuntersCoil'
+      | 'SwiftskinsCoil'
+      | 'PitOfDread'
+      | 'HuntersDen'
+      | 'SwiftskinsDen'
+      | 'Reawaken'
+      | 'FirstGeneration'
+      | 'SecondGeneration'
+      | 'ThirdGeneration'
+      | 'FourthGeneration';
+    reawakenedTimer: number;
+  };
   'BRD': {
     songName: BardSongType;
     lastPlayed: BardSongType;
@@ -89,6 +119,7 @@ export interface JobDetail {
     songProcs: number;
     soulGauge: number;
     coda: (BardSongType)[];
+    LastCodaCost: number;
   };
   'MCH': {
     overheatMilliseconds: number;
@@ -117,6 +148,7 @@ export interface JobDetail {
     umbralHearts: number;
     polyglot: number;
     nextPolyglotMilliseconds: number;
+    astralSoulStacks: number;
   };
   'ACN': {
     aetherflowStacks: number;
@@ -128,12 +160,23 @@ export interface JobDetail {
     attunement: number;
     usableArcanum: ('Ruby' | 'Topaz' | 'Emerald')[];
     activePrimal: 'Ifrit' | 'Titan' | 'Garuda' | null;
-    nextSummoned: 'Bahamut' | 'Phoenix';
+    nextSummoned: 'Bahamut' | 'Phoenix' | 'SolarBahamut';
+    summonStatus: boolean;
   };
   'RDM': {
     whiteMana: number;
     blackMana: number;
     manaStacks: number;
+  };
+  'PCT': {
+    paletteGauge: number;
+    paint: 0 | 1 | 2 | 3 | 4 | 5;
+    creatureMotif: 'Pom' | 'Wing' | 'Claw' | 'Maw' | 'None';
+    weaponMotif: boolean;
+    landscapeMotif: boolean;
+    depictions: ('Pom' | 'Wing' | 'Claw')[];
+    mooglePortrait: boolean;
+    madeenPortrait: boolean;
   };
 }
 

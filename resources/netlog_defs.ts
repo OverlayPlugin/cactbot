@@ -29,6 +29,9 @@ export type LogDefinition<K extends LogDefinitionName> = {
   subFields?: LogDefSubFields<K>;
   // Map of field indices to anonymize, in the format: playerId: (optional) playerName.
   playerIds?: PlayerIdMap<K>;
+  // A list of field indices that may contains player ids and, if so, will be anonymized.
+  // If an index is listed here and in `playerIds`, it will be treated as a possible id field.
+  possiblePlayerIds?: readonly LogDefFieldIdx<K>[];
   // A list of field indices that are ok to be blank (or have invalid ids).
   blankFields?: readonly LogDefFieldIdx<K>[];
   // This field index (and all after) will be treated as optional when creating capturing regexes.
@@ -41,6 +44,11 @@ export type LogDefinition<K extends LogDefinitionName> = {
     sortKeys?: boolean;
     primaryKey: string;
     possibleKeys: readonly string[];
+    // Repeating fields that will be anonymized if present. Same structure as `playerIds`,
+    // but uses repeating field keys (names) in place of field indices. However, the 'id' field
+    // of an id/name pair can be a fixed field index. See `CombatantMemory` example.
+    keysToAnonymize?: K extends RepeatingFieldsTypes ? { [idField: string | number]: string | null }
+      : never;
   };
   // See `AnalysisOptions` type. Omitting this property means no log lines will be included;
   // however, if raidboss triggers are found using this line type, an automated workflow will
@@ -278,7 +286,12 @@ const latestLogDefinitions = {
       world: 8,
       npcNameId: 9,
       npcBaseId: 10,
+      currentHp: 11,
       hp: 12,
+      currentMp: 13,
+      mp: 14,
+      // currentTp: 15,
+      // maxTp: 16,
       x: 17,
       y: 18,
       z: 19,
@@ -829,6 +842,7 @@ const latestLogDefinitions = {
       data2: 6,
       data3: 7,
     },
+    possiblePlayerIds: [4, 5, 6, 7],
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
@@ -1155,7 +1169,8 @@ const latestLogDefinitions = {
       timestamp: 1,
       id: 2,
       source: 3,
-      version: 4,
+      name: 4,
+      version: 5,
     },
     globalInclude: true,
     canAnonymize: true,
@@ -1263,12 +1278,7 @@ const latestLogDefinitions = {
     },
     canAnonymize: true,
     firstOptionalField: 5,
-    // TODO: fix this data structure and anonymizer to be able to handle repeatingFields.
-    // At the very least, Name and PCTargetID need to be anonymized as well.
-    firstUnknownField: 4,
-    playerIds: {
-      3: null,
-    },
+    // doesn't use `playerIds`, as the `id` field must be handled with the 'Name' repeating field
     repeatingFields: {
       startingIndex: 4,
       label: 'pair',
@@ -1276,6 +1286,15 @@ const latestLogDefinitions = {
       sortKeys: true,
       primaryKey: 'key',
       possibleKeys: combatantMemoryKeys,
+      keysToAnonymize: {
+        // eslint-disable-next-line quote-props
+        3: 'Name', // 'ID' repeating field not used? need to use non-repeating `id` (3) field
+        'OwnerID': null,
+        'TargetID': null,
+        'PCTargetID': null,
+        'NPCTargetID': null,
+        'CastTargetID': null,
+      },
     },
     analysisOptions: {
       include: 'filter',
@@ -1573,6 +1592,7 @@ const latestLogDefinitions = {
     playerIds: {
       2: null,
     },
+    possiblePlayerIds: [4, 5, 6, 7],
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
@@ -1600,6 +1620,7 @@ const latestLogDefinitions = {
     playerIds: {
       2: null,
     },
+    possiblePlayerIds: [4, 5, 6, 7, 8, 9],
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {

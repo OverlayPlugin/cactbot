@@ -83,11 +83,12 @@ const parseJavascriptFile = async (
   const keyRe = /^\s*(\w{2}):/;
   const fixmeRe = /\/\/ FIX-?ME/;
   const ignoreRe = /cactbot-ignore-missing-translations/;
+  const ignoreAllRe = /cactbot-ignore-all-missing-translations/; // file-wide ignore
 
   for await (const line of lineReader) {
     lineNumber++;
-    // Immediately exit if the file is auto-generated
-    if (line.match('// Auto-generated')) {
+    // Immediately exit if the file is auto-generated or we're ignoring all missing translations.
+    if (line.match('// Auto-generated') || line.match(ignoreAllRe)) {
       lineReader.close();
       lineReader.removeAllListeners();
       return;

@@ -212,7 +212,7 @@ class PageState {
 class WebNotifier implements Notifier {
   constructor(private errorDiv: HTMLElement) {}
 
-  private errorFunc(severity: 'warn' | 'error', reason: string, splitLine?: string[]) {
+  private errorFunc(severity: 'info' | 'warn' | 'error', reason: string, splitLine?: string[]) {
     const splitStr = splitLine === undefined ? '' : `:${splitLine.join('|')}`;
     const outputStr = `${severity}: ${reason}${splitStr}`;
 
@@ -220,6 +220,10 @@ class WebNotifier implements Notifier {
     div.innerHTML = outputStr;
     div.classList.add(severity);
     this.errorDiv.appendChild(div);
+  }
+
+  public info(reason: string, splitLine?: string[]): void {
+    this.errorFunc('info', reason, splitLine);
   }
 
   public warn(reason: string, splitLine?: string[]): void {

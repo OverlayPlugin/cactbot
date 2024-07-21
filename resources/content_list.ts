@@ -116,6 +116,16 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheAetherfont,
   ZoneId.TheLunarSubterrane,
 
+  // Dungeons (Dawntrail)
+  ZoneId.Ihuykatumu,
+  ZoneId.WorqorZormor,
+  ZoneId.TheSkydeepCenote,
+  ZoneId.Vanguard,
+  ZoneId.Origenics,
+  ZoneId.Alexandria,
+  ZoneId.TenderValley,
+  ZoneId.TheStrayboroughDeadwalk,
+
   // Trials (A Realm Reborn)
   ZoneId.TheBowlOfEmbers,
   ZoneId.TheNavel,
@@ -232,6 +242,15 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.ContainmentBayP1T6Unreal,
   ZoneId.ContainmentBayZ1T9Unreal,
   ZoneId.TheSingularityReactorUnreal,
+
+  // Trials (Dawntrail)
+  ZoneId.WorqorLarDor,
+  ZoneId.Everkeep,
+  ZoneId.TheInterphos,
+
+  // High-end Trials (Dawntrail)
+  ZoneId.WorqorLarDorExtreme,
+  ZoneId.EverkeepExtreme,
 
   // Alliance Raids (A Realm Reborn)
   ZoneId.TheLabyrinthOfTheAncients,
@@ -390,6 +409,16 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.AnabaseiosTheTenthCircleSavage,
   ZoneId.AnabaseiosTheEleventhCircleSavage,
   ZoneId.AnabaseiosTheTwelfthCircleSavage,
+
+  // Alliance Raids (Dawntrail)
+
+  // Normal Raids (Dawntrail)
+  ZoneId.AacLightHeavyweightM1,
+  ZoneId.AacLightHeavyweightM2,
+  ZoneId.AacLightHeavyweightM3,
+  ZoneId.AacLightHeavyweightM4,
+
+  // Savage Raids (Dawntrail)
 
   // Variant & Criterion Dungeons
   ZoneId.TheSildihnSubterrane,

@@ -5,13 +5,15 @@
 * [Code of Conduct](#code-of-conduct)
 * [Issues and Bug Reports](#issues-and-bug-reports)
 * [Pull Requests](#pull-requests)
+  * [Development Workflow](#development-workflow)
+  * [Code Review Culture](#code-review-culture)
 * [Coding Style](#coding-style)
 * [Desired Features](#desired-features)
 * [Trigger Guidelines](#trigger-guidelines)
-  * [Trigger Severity](#trigger-severity)
-  * [Trigger Text](#trigger-text)
 * [Timeline Guidelines](#timeline-guidelines)
-* [Roadmap](#roadmap)
+* [Oopsy Guidelines](#oopsy-guidelines)
+* [Markdown Guidelines](#markdown-guidelines)
+* [How to Release](#how-to-release)
 
 ## Code of Conduct
 
@@ -182,8 +184,8 @@ See these links:
 
 ## Coding Style
 
-The ideal end state is that all C#, Python, and Javascript code is linted and autoformatted.
-The current state is that Javascript and Python are fairly well linted
+The ideal end state is that all C# and Javascript code is linted and autoformatted.
+The current state is that Javascript is fairly well linted
 (although variable naming conventions are all over the place)
 and C# is not very consistent.
 Over time, it would be nice to move towards that ideal state.

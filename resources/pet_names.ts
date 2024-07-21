@@ -57,6 +57,7 @@ const data: PetData = {
     'Smaragd-Garuda',
     'Bernstein-Karfunkel',
     'Obsidian-Karfunkel',
+    'Sol-Bahamut',
   ],
   'en': [
     'Emerald Carbuncle',
@@ -82,6 +83,7 @@ const data: PetData = {
     'Emerald Garuda',
     'Amber Carbuncle',
     'Obsidian Carbuncle',
+    'Solar Bahamut',
   ],
   'fr': [
     'Carbuncle émeraude',
@@ -107,6 +109,7 @@ const data: PetData = {
     'Garuda émeraude',
     'Carbuncle ambre',
     'Carbuncle obsidienne',
+    'Sol-Bahamut',
   ],
   'ja': [
     'カーバンクル・エメラルド',
@@ -132,6 +135,7 @@ const data: PetData = {
     'ガルーダ・エメラルド',
     'カーバンクル・アンバー',
     'カーバンクル・オブシダン',
+    'ソルバハムート',
   ],
   'ko': [
     '카벙클 에메랄드',

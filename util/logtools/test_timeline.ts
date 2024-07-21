@@ -258,15 +258,35 @@ const testTimelineFileStartEnd = async (
     console.error(`Invalid start datetime '${args.end}', aborting.`);
     process.exit(-2);
   }
-  const allLines = fs.readFileSync(logFilePath).toString().split('\n');
+
+  const startTimestamp = startDate.getTime();
+  const endTimestamp = endDate.getTime();
+
+  const logFileStream = fs.createReadStream(logFilePath);
+
+  const logFileReadLine = readline.createInterface({
+    input: logFileStream,
+    crlfDelay: Infinity,
+  });
 
   const repo = new LogRepository();
-  const lineEvents = allLines.map((line) => ParseLine.parse(repo, line)).filter((l) => {
-    const timestamp = l?.timestamp;
+
+  const lineEvents: LineEvent[] = [];
+
+  for await (const line of logFileReadLine) {
+    const parsedLine = ParseLine.parse(repo, line);
+
+    if (parsedLine === undefined)
+      continue;
+
+    const timestamp = parsedLine?.timestamp;
+
     if (timestamp === undefined)
-      return false;
-    return timestamp >= startDate.getTime() && timestamp <= endDate.getTime();
-  }) as LineEvent[];
+      continue;
+
+    if (timestamp >= startTimestamp && timestamp <= endTimestamp)
+      lineEvents.push(parsedLine);
+  }
 
   const driftWarn = args.drift_warning ?? defaultDriftWarn;
   const driftFail = args.drift_failure ?? defaultDriftFail;
@@ -363,12 +383,12 @@ export const main = async (): Promise<void> => {
     ['-s', '--start'],
     {
       type: 'string',
-      help: 'Timestamp of the start, e.g. \'12:34:56.789',
+      help: 'Timestamp of the start, e.g. \'2024-01-23T12:34:56.7890000-04:00\'',
     },
   );
   parser.addArgument(
     ['-e', '--end'],
-    { type: 'string', help: 'Timestamp of the end, e.g. \'12:34:56.789' },
+    { type: 'string', help: 'Timestamp of the end, e.g. \'2024-01-23T12:34:56.7890000-04:00\'' },
   );
 
   // Output Format arguments

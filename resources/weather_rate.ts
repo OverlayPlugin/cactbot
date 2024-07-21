@@ -1788,7 +1788,7 @@ const data: WeatherRateType = {
       100,
     ],
     'weathers': [
-      'Astromagnetic Storm',
+      'Astromagnetic Storms',
       'Fair Skies',
       'Umbral Wind',
     ],
@@ -2004,26 +2004,166 @@ const data: WeatherRateType = {
     ],
   },
   155: {
-    'rates': [],
-    'weathers': [],
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Lyrical Catharsis',
+    ],
   },
   156: {
-    'rates': [],
-    'weathers': [],
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Thunderstorms',
+    ],
   },
   157: {
-    'rates': [],
-    'weathers': [],
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Projection',
+    ],
   },
   158: {
-    'rates': [],
-    'weathers': [],
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Liminality',
+    ],
   },
   159: {
+    'rates': [
+      40,
+      80,
+      85,
+      95,
+      100,
+    ],
+    'weathers': [
+      'Clear Skies',
+      'Fair Skies',
+      'Clouds',
+      'Fog',
+      'Rain',
+    ],
+  },
+  160: {
+    'rates': [
+      20,
+      50,
+      70,
+      80,
+      90,
+      100,
+    ],
+    'weathers': [
+      'Clear Skies',
+      'Fair Skies',
+      'Clouds',
+      'Fog',
+      'Wind',
+      'Snow',
+    ],
+  },
+  161: {
+    'rates': [
+      25,
+      60,
+      75,
+      85,
+      95,
+      100,
+    ],
+    'weathers': [
+      'Clear Skies',
+      'Fair Skies',
+      'Clouds',
+      'Fog',
+      'Rain',
+      'Showers',
+    ],
+  },
+  162: {
+    'rates': [
+      15,
+      55,
+      70,
+      85,
+      100,
+    ],
+    'weathers': [
+      'Clear Skies',
+      'Fair Skies',
+      'Clouds',
+      'Fog',
+      'Rain',
+    ],
+  },
+  163: {
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Fair Skies',
+    ],
+  },
+  164: {
+    'rates': [
+      5,
+      50,
+      70,
+      85,
+      100,
+    ],
+    'weathers': [
+      'Clear Skies',
+      'Fair Skies',
+      'Clouds',
+      'Dust Storms',
+      'Gales',
+    ],
+  },
+  165: {
+    'rates': [
+      5,
+      25,
+      40,
+      45,
+      50,
+      100,
+    ],
+    'weathers': [
+      'Fair Skies',
+      'Clouds',
+      'Fog',
+      'Rain',
+      'Thunderstorms',
+      'Umbral Static',
+    ],
+  },
+  166: {
+    'rates': [
+      10,
+      20,
+      40,
+      100,
+    ],
+    'weathers': [
+      'Rain',
+      'Fog',
+      'Clouds',
+      'Fair Skies',
+    ],
+  },
+  167: {
     'rates': [],
     'weathers': [],
   },
-  160: {
+  168: {
     'rates': [],
     'weathers': [],
   },
