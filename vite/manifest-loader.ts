@@ -28,6 +28,12 @@ const findManifestFiles = (dir: string): string[] => {
   );
 };
 
+const normalizePath = (path: string): string => {
+  if (os.platform() !== 'win32')
+    return path;
+  return path.replace(/\\/g, '/');
+};
+
 export default function manifestLoader(
   manifestFiles: { dir: string; filename: string }[],
 ): Plugin[] {
@@ -44,17 +50,11 @@ export default function manifestLoader(
 
           lines.forEach((rawName, fileIdx) => {
             // normalize filepaths between windows / unix
-            // TODO: separate different OS logic into different functions
-            // rather than mixing them in the same function
-            const name = os.platform() !== 'win32'
-              ? rawName.replace(/\\/g, '/').replace(/^\//, '')
-              : rawName;
+            const name = normalizePath(rawName).replace(/^\/+/, '');
             const _importSource = `${name.endsWith('.txt') ? 'timeline:' : ''}${
               path.join(cwd, dir, name)
             }`;
-            const importSource = os.platform() !== 'win32'
-              ? _importSource
-              : _importSource.replace(/\\/g, '\\\\');
+            const importSource = normalizePath(_importSource).replace(/\\/g, '\\\\');
 
             // Use static imports instead of dynamic ones to put files in the bundle.
             const fileVar = `file${fileIdx}`;
@@ -62,9 +62,7 @@ export default function manifestLoader(
             if (importSource.startsWith('timeline:')) {
               hmrMap[importSource] = name;
             }
-            outputStr += `'${
-              os.platform() !== 'win32' ? name : name.replace(/\\/g, '\\\\')
-            }': ${fileVar},`;
+            outputStr += `'${normalizePath(name).replace(/\\/g, '\\\\')}': ${fileVar},`;
           });
 
           outputStr += '};';
@@ -98,7 +96,7 @@ export default function manifestLoader(
             // watch the file for HMR
             this.addWatchFile(fsPath);
             return dedent(`
-              const content = ${JSON.stringify(content.replace(/\r\n/g, '\n'))};
+              const content = ${JSON.stringify(dedent(content.replace(/\r?\n/g, '\n')))};
               export default content;
             `);
           }
