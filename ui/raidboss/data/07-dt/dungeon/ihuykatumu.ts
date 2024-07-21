@@ -73,7 +73,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Ivy cleaves (small)',
           de: 'Efeu-Cleave ausweichen (klein)',
-          cn: '注意触手直线AoE（小）',
+          cn: '注意触手直线AoE (小)',
         },
       },
     },
