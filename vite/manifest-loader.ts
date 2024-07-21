@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { readFile } from 'fs/promises';
+import os from 'os';
 import path from 'path';
 
 import virtual from '@rollup/plugin-virtual';
@@ -43,9 +44,17 @@ export default function manifestLoader(
 
           lines.forEach((rawName, fileIdx) => {
             // normalize filepaths between windows / unix
-            const name = rawName.replace(/\\/g, '/').replace(/^\//, '');
-            const importSource = (name.endsWith('.txt') ? 'timeline:' : '') +
-              path.join(cwd, dir, name);
+            // TODO: separate different OS logic into different functions
+            // rather than mixing them in the same function
+            const name = os.platform() !== 'win32'
+              ? rawName.replace(/\\/g, '/').replace(/^\//, '')
+              : rawName;
+            const _importSource = `${name.endsWith('.txt') ? 'timeline:' : ''}${
+              path.join(cwd, dir, name)
+            }`;
+            const importSource = os.platform() !== 'win32'
+              ? _importSource
+              : _importSource.replace(/\\/g, '\\\\');
 
             // Use static imports instead of dynamic ones to put files in the bundle.
             const fileVar = `file${fileIdx}`;
@@ -53,7 +62,9 @@ export default function manifestLoader(
             if (importSource.startsWith('timeline:')) {
               hmrMap[importSource] = name;
             }
-            outputStr += `'${name}': ${fileVar},`;
+            outputStr += `'${
+              os.platform() !== 'win32' ? name : name.replace(/\\/g, '\\\\')
+            }': ${fileVar},`;
           });
 
           outputStr += '};';
