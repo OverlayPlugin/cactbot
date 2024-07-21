@@ -62,6 +62,7 @@
     "@rollup/plugin-virtual": "^3.0.2",
     "@types/argparse": "^1.0.38",
     "@types/chai": "^4.3.1",
+    "@types/dedent": "^0.7.2",
     "@types/inquirer": "^7.3.2",
     "@types/inquirer-fuzzy-path": "^2.3.0",
     "@types/is-ci": "^3.0.0",
