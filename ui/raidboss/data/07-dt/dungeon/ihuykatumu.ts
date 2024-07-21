@@ -43,7 +43,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stay out of inhale',
           de: 'Steh auserhalb des Soges',
-          cn: '呆在AoE外面',
+          cn: '躲开 Boss 吸气 + 全场 AoE',
         },
       },
     },
