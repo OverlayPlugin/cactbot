@@ -72,6 +72,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback Towers',
           de: 'Rückstoß Türme',
+          cn: '击退塔',
         },
       },
     },
@@ -102,6 +103,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Long => Short',
           de: 'Lange => Kurz',
+          cn: '长引线 => 短引线',
         },
       },
     },
@@ -115,6 +117,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East, then West',
           de: 'Osten, dann Westen',
+          cn: '东 => 西',
         },
       },
     },
@@ -128,6 +131,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East, stay East',
           de: 'Osten, bleib Osten',
+          cn: '东 => 呆在东',
         },
       },
     },
@@ -141,6 +145,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West, then East',
           de: 'Westen, dann Osten',
+          cn: '西 => 东',
         },
       },
     },
@@ -154,6 +159,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West, stay West',
           de: 'Westen, bleib Westen',
+          cn: '西 => 呆在西',
         },
       },
     },

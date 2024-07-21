@@ -93,7 +93,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stacks',
           de: 'Sammeln',
           fr: 'Package',
-          cn: '分摊',
+          cn: '分组分摊',
           ko: '쉐어',
         },
       },

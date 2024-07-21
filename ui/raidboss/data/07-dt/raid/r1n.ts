@@ -212,10 +212,12 @@ const triggerSet: TriggerSet<Data> = {
         cardsIntercards: {
           en: 'Cards => Intercards',
           de: 'Karten => Interkardinal',
+          cn: 'X字 => +字',
         },
         intercardsCards: {
           en: 'Intercards => Cards',
           de: 'Interkardinal => Karten',
+          cn: '+字 => X字',
         },
       },
     },
@@ -229,6 +231,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Aim for uncracked tile',
           de: 'Ziehle auf nich gerissene Fläche',
+          cn: '瞄准完好的平台',
         },
       },
     },
@@ -266,6 +269,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
+          cn: '西 => 标记东侧',
         },
       },
     },
@@ -279,6 +283,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
+          cn: '东 => 标记西侧',
         },
       },
     },
@@ -292,6 +297,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
+          cn: '西 => 标记东侧',
         },
       },
     },
@@ -305,6 +311,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
+          cn: '东 => 标记西侧',
         },
       },
     },
