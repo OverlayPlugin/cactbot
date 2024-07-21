@@ -169,7 +169,7 @@ const stayGoOutputStrings: OutputStrings = {
     de: 'Bleib Stehen',
     fr: 'Restez',
     ja: 'そのまま跳ばない',
-    cn: '呆着',
+    cn: '留在当前平台',
   },
   goAcross: {
     en: 'Go Across',

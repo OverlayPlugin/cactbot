@@ -43,7 +43,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stay out of inhale',
           de: 'Steh auserhalb des Soges',
-          cn: '呆在AoE外面',
+          cn: '躲开 Boss 吸气 + 全场 AoE',
         },
       },
     },
@@ -73,7 +73,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Ivy cleaves (small)',
           de: 'Efeu-Cleave ausweichen (klein)',
-          cn: '注意触手直线AoE（小）',
+          cn: '注意触手直线AoE (小)',
         },
       },
     },
@@ -88,7 +88,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Ivy cleaves (big)',
           de: 'Efeu-Cleave ausweichen (groß)',
-          cn: '注意触手直线AoE（大）',
+          cn: '注意触手直线AoE (大)',
         },
       },
     },
