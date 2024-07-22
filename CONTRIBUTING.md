@@ -119,9 +119,9 @@ will immediately update the overlay,
 prompting a refresh within the overlay itself.
 This is the recommended approach of validating local code changes.
 
-For convenience, webpack has access to the `/user/webpack/` directory 
-inside your local git root.  You can use this directory to store assets
-for your persoonal user confiiguration (if any).
+For convenience, webpack has access to the `/user/webpack/` directory
+inside your local git root.
+You can use this directory to store assets for your persoonal user confiiguration (if any).
 The `/user/` directory is also suppressed for change tracking by `/.gitignore`.
 
 Alternatively, `npm run build` will locally create a production distribution
