@@ -371,6 +371,8 @@ const triggerSet: TriggerSet<Data> = {
         'Burst': '爆発',
         'Fivefold Blast': 'クインティカノン',
         'Fourfold Blast': 'クアドラカノン',
+        'Right Roll': 'ライトロール',
+        'Left Roll': 'レフトロール',
         'Shadows\' Sabbath': 'ブラックサバト',
         'Sidewise Spark': 'サイドスパーク',
         'Soaring Soulpress': 'フライング・ソウルプレス',
