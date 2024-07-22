@@ -212,12 +212,12 @@ const triggerSet: TriggerSet<Data> = {
         cardsIntercards: {
           en: 'Cards => Intercards',
           de: 'Karten => Interkardinal',
-          cn: 'X字 => +字',
+          cn: '斜角 => 十字',
         },
         intercardsCards: {
           en: 'Intercards => Cards',
           de: 'Interkardinal => Karten',
-          cn: '+字 => X字',
+          cn: '十字 => 斜角',
         },
       },
     },
