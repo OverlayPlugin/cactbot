@@ -1,18 +1,32 @@
 // TODO: Map out MapEffect data if needed? Might be useful for prep for savage.
-// TODO: Better triggers for Sidewise Spark. Some sort of phase detection and collect setup is needed
-// as well as identifying the clones based on npc ID or something
-// TODO: Same thing for Bewitching Flight, collector for the loop to combine trigger with clone
-// TODO: Witch Hunt, determine starting point and figure out how to word the dodge
+// TODO: Better triggers for Bewitching Flight, collector for the loop to combine trigger with clone
+// and better wording for safe spot callout
 // TODO: Might be able to use `npcYellData` to detect phase push, I didn't look into it very much
 const effectB9AMap = {
   orangeDiamondFront: '2D3',
   blueCircleBack: '2D4',
 };
+const directionOutputStrings = {
+  ...Directions.outputStringsCardinalDir,
+  unknown: Outputs.unknown,
+  goLeft: Outputs.left,
+  goRight: Outputs.right,
+  separator: {
+    en: ' => ',
+    de: ' => ',
+    ja: ' => ',
+  },
+  combo: {
+    en: '${dirs}',
+    de: '${dirs}',
+    ja: '${dirs}',
+  },
+};
 const b9aValueToNorthSouth = (searchValue) => {
   if (searchValue === effectB9AMap.blueCircleBack) {
-    return 'north';
+    return 'dirN';
   } else if (searchValue === effectB9AMap.orangeDiamondFront) {
-    return 'south';
+    return 'dirS';
   }
   return 'unknown';
 };
@@ -62,37 +76,86 @@ Options.Triggers.push({
     actors: [],
     expectedCleaves: 1,
     storedCleaves: [],
+    sidewiseSparkCounter: 0,
   }),
   triggers: [
-    /* {
-          id: 'R4N Actor Collector',
-          type: 'StartsUsing',
-          netRegex: { id: '92C7', source: 'Wicked Thunder', capture: false },
-          promise: async (data) => {
-            data.actors = (await callOverlayHandler({
-              call: 'getCombatants',
-            })).combatants;
-          },
-        },
-        {
-          id: 'R4N Clone Cleave Collector',
-          type: 'CombatantMemory',
-          // Filter to only enemy actors for performance
-          netRegex: { id: '4[0-9A-Fa-f]{7}', pair: [{ key: 'WeaponId', value: ['33', '121'] }], capture: true },
-          condition: (data, matches) => {
-            const initActorData = data.actors.find((actor) => actor.ID === parseInt(matches.id, 16));
-            if (!initActorData)
-              return false;
-
-            const weaponId = matches.pairWeaponId;
-            if (weaponId === undefined)
-              return false;
-
-            data.storedCleaves.push(weaponId === '121' ? 'left' : 'right');
-
-            return data.storedCleaves.length >= data.expectedCleaves;
-          },
-        },*/
+    {
+      id: 'R4N Actor Collector',
+      type: 'StartsUsing',
+      netRegex: { id: '92C7', source: 'Wicked Thunder', capture: false },
+      promise: async (data) => {
+        data.actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+      },
+    },
+    {
+      id: 'R4N ActorSetPos Collector',
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-F]{7}', capture: true },
+      run: (data, matches) => {
+        const actor = data.actors.find((actor) => actor.ID === parseInt(matches.id, 16));
+        if (actor === undefined)
+          return;
+        actor.PosX = parseFloat(matches.x);
+        actor.PosY = parseFloat(matches.y);
+        actor.PosZ = parseFloat(matches.z);
+        actor.Heading = parseFloat(matches.heading);
+      },
+    },
+    {
+      id: 'R4N Clone Cleave Collector',
+      type: 'CombatantMemory',
+      // Filter to only enemy actors for performance
+      // TODO: Change this to an ActorControlExtra line if OverlayPlugin adds SetModelState as a valid category
+      netRegex: {
+        id: '4[0-9A-Fa-f]{7}',
+        pair: [{ key: 'WeaponId', value: ['33', '121'] }],
+        capture: true,
+      },
+      condition: (data, matches) => {
+        const actorID = parseInt(matches.id, 16);
+        const initActorData = data.actors.find((actor) => actor.ID === actorID);
+        if (!initActorData)
+          return false;
+        const weaponId = matches.pairWeaponId;
+        if (weaponId === undefined)
+          return false;
+        const cleaveDir = weaponId === '121' ? 'left' : 'right';
+        // Sometimes we get extra lines with weaponId changed. Update an existing actor if it's already in the array.
+        const existingCleave = data.storedCleaves.find((cleave) => cleave.id === actorID);
+        if (existingCleave !== undefined) {
+          existingCleave.dir = cleaveDir;
+        } else {
+          data.storedCleaves.push({
+            dir: cleaveDir,
+            id: actorID,
+          });
+        }
+        // If we're only expecting one, or if we're expecting 5 and have two
+        return data.expectedCleaves === 1 || data.storedCleaves.length === 2;
+      },
+      // Delay half a second to allow `ActorSetPos` line to happen as well
+      delaySeconds: 0.5,
+      durationSeconds: 7.3,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const dirs = data.storedCleaves.map((entry) => {
+          const actor = data.actors.find((actor) => actor.ID === entry.id);
+          if (actor === undefined)
+            return output.unknown();
+          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
+          const offset = entry.dir === 'left' ? 1 : -1;
+          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
+        }).map((dir) => output[dir]());
+        return output.combo({ dirs: dirs.join(output.separator()) });
+      },
+      run: (data) => {
+        if (data.expectedCleaves === 1)
+          data.storedCleaves = [];
+      },
+      outputStrings: directionOutputStrings,
+    },
     {
       id: 'R4N Headmarker Soaring Soulpress Stack',
       type: 'HeadMarker',
@@ -124,18 +187,45 @@ Options.Triggers.push({
       netRegex: { id: '92C7', source: 'Wicked Thunder', capture: false },
       response: Responses.aoe(),
     },
-    /* {
-          id: 'R4N Sidewise Spark Go Left',
-          type: 'StartsUsing',
-          netRegex: { id: ['92BC', '92BE'], source: 'Wicked Thunder', capture: false },
-          response: Responses.goLeft(),
-        },
-        {
-          id: 'R4N Sidewise Spark Go Right',
-          type: 'StartsUsing',
-          netRegex: { id: ['92BD', '92BF'], source: 'Wicked Thunder', capture: false },
-          response: Responses.goRight(),
-        },*/
+    {
+      id: 'R4N Sidewise Spark Counter',
+      type: 'StartsUsing',
+      netRegex: { id: ['92BC', '92BD', '92BE', '92BF'], source: 'Wicked Thunder', capture: false },
+      delaySeconds: 1,
+      run: (data) => {
+        data.sidewiseSparkCounter++;
+        if (data.sidewiseSparkCounter > 1) {
+          data.expectedCleaves = 5;
+        }
+      },
+    },
+    {
+      id: 'R4N Sidewise Spark',
+      type: 'StartsUsing',
+      // IDs for safe spots are C/E = left safe, D/F = right safe
+      netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: true },
+      durationSeconds: 7.3,
+      infoText: (data, matches, output) => {
+        // If this is the first cleave, it's boss relative because boss isn't fixed north
+        if (data.sidewiseSparkCounter === 0)
+          return ['92BC', '92BE'].includes(matches.id) ? output.goLeft() : output.goRight();
+        const dirs = data.storedCleaves.map((entry) => {
+          const actor = data.actors.find((actor) => actor.ID === entry.id);
+          if (actor === undefined)
+            return output.unknown();
+          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
+          const offset = entry.dir === 'left' ? 1 : -1;
+          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
+        });
+        dirs.push(['92BC', '92BE'].includes(matches.id) ? 'dirW' : 'dirE');
+        const mappedDirs = dirs.map((dir) => output[dir]());
+        return output.combo({ dirs: mappedDirs.join(output.separator()) });
+      },
+      run: (data) => {
+        data.storedCleaves = [];
+      },
+      outputStrings: directionOutputStrings,
+    },
     {
       id: 'R4N Left Roll',
       type: 'Ability',
@@ -192,21 +282,7 @@ Options.Triggers.push({
         data.expectedBlasts = 0;
         data.storedBlasts = [];
       },
-      outputStrings: {
-        south: Outputs.dirS,
-        north: Outputs.dirN,
-        unknown: Outputs.unknown,
-        separator: {
-          en: ' => ',
-          de: ' => ',
-          ja: ' => ',
-        },
-        combo: {
-          en: '${dirs}',
-          de: '${dirs}',
-          ja: '${dirs}',
-        },
-      },
+      outputStrings: directionOutputStrings,
     },
     {
       id: 'R4N Bewitching Flight Right Safe',
@@ -266,6 +342,81 @@ Options.Triggers.push({
           de: 'Nord-Offset sicher',
           ja: '最北端の床へ',
         },
+      },
+    },
+    {
+      id: 'R4N Witch Hunt',
+      type: 'StartsUsingExtra',
+      netRegex: { id: '92B5', capture: true },
+      condition: (data, matches) => {
+        const posX = parseFloat(matches.x);
+        const posY = parseFloat(matches.y);
+        // If this is a dead center blast, ignore it, since we can't tell the spiral direction from it
+        if (Math.abs(posX - 100.009) < Number.EPSILON && Math.abs(posY - 100.009) < Number.EPSILON)
+          return false;
+        if (data.storedWitchHuntCast !== undefined)
+          return true;
+        data.storedWitchHuntCast = matches;
+        return false;
+      },
+      suppressSeconds: 15,
+      infoText: (data, matches, output) => {
+        const storedCast = data.storedWitchHuntCast;
+        if (storedCast === undefined)
+          return output.unknown();
+        const firstCastTargetX = parseFloat(storedCast.x);
+        const firstCastTargetY = parseFloat(storedCast.y);
+        const secondCastTargetX = parseFloat(matches.x);
+        const secondCastTargetY = parseFloat(matches.y);
+        // Figure out if we're going out to in, or in to out
+        const dist = Math.hypot(
+          firstCastTargetX - secondCastTargetX,
+          firstCastTargetY - secondCastTargetY,
+        );
+        const outToIn = dist < 15;
+        // Determine our starting quadrant and distance
+        const startingWest = firstCastTargetX < 100;
+        const startingNorth = firstCastTargetY < 100;
+        // Figure out if the puddles are rotating clockwise or counterclockwise
+        let clockwise;
+        if (Math.abs(firstCastTargetX - secondCastTargetX) < Number.EPSILON) {
+          if (startingWest)
+            clockwise = firstCastTargetY < secondCastTargetY;
+          else
+            clockwise = secondCastTargetY < firstCastTargetY;
+        } else {
+          if (startingNorth)
+            clockwise = firstCastTargetX < secondCastTargetX;
+          else
+            clockwise = secondCastTargetX < firstCastTargetX;
+        }
+        let startingDir = Directions.xyTo8DirNum(firstCastTargetX, firstCastTargetY, 100, 100);
+        if (clockwise) {
+          // example: first hit close nw, second hit close ne
+          // dodge is north, out to in
+          // add 1 or subtract 2 to direction to get starting point
+          startingDir = (startingDir + (outToIn ? 6 : 1)) % 8;
+        } else {
+          // example: first hit close nw, second hit close sw
+          // dodge is west, out to in
+          // subtract 1 or add 2 from direction to get starting point
+          startingDir = (startingDir + (outToIn ? 2 : 7)) % 8;
+        }
+        const outputDir = Directions.output8Dir[startingDir] ?? 'unknown';
+        if (outToIn) {
+          return output.outToIn({ dir: output[outputDir]() });
+        }
+        return output.inToOut({ dir: output[outputDir]() });
+      },
+      outputStrings: {
+        outToIn: {
+          en: '${dir}, Out => In',
+        },
+        inToOut: {
+          en: '${dir}, In => Out',
+        },
+        unknown: Outputs.unknown,
+        ...Directions.outputStrings8Dir,
       },
     },
   ],
