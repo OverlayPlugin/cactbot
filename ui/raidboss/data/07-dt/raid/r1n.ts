@@ -212,10 +212,12 @@ const triggerSet: TriggerSet<Data> = {
         cardsIntercards: {
           en: 'Cards => Intercards',
           de: 'Karten => Interkardinal',
+          ja: '十字 => 斜め',
         },
         intercardsCards: {
           en: 'Intercards => Cards',
           de: 'Interkardinal => Karten',
+          ja: '斜め => 十字',
         },
       },
     },
@@ -229,6 +231,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Aim for uncracked tile',
           de: 'Ziehle auf nich gerissene Fläche',
+          ja: '割れていない床を狙う',
         },
       },
     },
@@ -266,6 +269,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
+          ja: 'マーカーに 西 => 東',
         },
       },
     },
@@ -279,6 +283,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
+          ja: 'マーカーに 東 => 西',
         },
       },
     },
@@ -292,6 +297,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
+          ja: 'マーカーに 西 => 東',
         },
       },
     },
@@ -305,6 +311,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
+          ja: 'マーカーに 東 => 西',
         },
       },
     },
@@ -372,7 +379,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Black Cat': 'ブラックキャット',
         'Copy Cat': 'コピーキャット',

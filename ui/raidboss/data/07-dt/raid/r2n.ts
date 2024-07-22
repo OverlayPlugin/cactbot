@@ -93,6 +93,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stacks',
           de: 'Sammeln',
           fr: 'Package',
+          ja: '集合',
           cn: '分摊',
           ko: '쉐어',
         },
@@ -153,7 +154,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Honey B. Lovely': 'ハニー・B・ラブリー',
       },

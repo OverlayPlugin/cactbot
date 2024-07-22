@@ -72,6 +72,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback Towers',
           de: 'Rückstoß Türme',
+          ja: 'ノックバック 塔',
         },
       },
     },
@@ -102,6 +103,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Long => Short',
           de: 'Lange => Kurz',
+          ja: '導火線の長い方 => 短い方',
         },
       },
     },
@@ -115,6 +117,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East, then West',
           de: 'Osten, dann Westen',
+          ja: '東、そして西',
         },
       },
     },
@@ -128,6 +131,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East, stay East',
           de: 'Osten, bleib Osten',
+          ja: '東にそのまま',
         },
       },
     },
@@ -141,6 +145,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West, then East',
           de: 'Westen, dann Osten',
+          ja: '西、そして東',
         },
       },
     },
@@ -154,6 +159,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West, stay West',
           de: 'Westen, bleib Westen',
+          ja: '西にそのまま',
         },
       },
     },
@@ -231,7 +237,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Brute Bomber': 'ブルートボンバー',
         'Lit Fuse': 'フューズボム',

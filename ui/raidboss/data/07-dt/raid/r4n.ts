@@ -229,10 +229,12 @@ const triggerSet: TriggerSet<Data> = {
         separator: {
           en: ' => ',
           de: ' => ',
+          ja: ' => ',
         },
         combo: {
           en: '${dirs}',
           de: '${dirs}',
+          ja: '${dirs}',
         },
       },
     },
@@ -247,6 +249,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East offset safe',
           de: 'Ost-Offset sicher',
+          ja: '最東端の床へ',
         },
       },
     },
@@ -261,6 +264,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'South offset safe',
           de: 'Süd-Offset sicher',
+          ja: '最南端の床へ',
         },
       },
     },
@@ -275,6 +279,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West offset safe',
           de: 'West-Offset sicher',
+          ja: '最西端の床へ',
         },
       },
     },
@@ -289,6 +294,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'North offset safe',
           de: 'Nord-Offset sicher',
+          ja: '最北端の床へ',
         },
       },
     },
@@ -356,7 +362,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Wicked Replica': 'ウィケッドサンダーの幻影',
         'Wicked Thunder': 'ウィケッドサンダー',

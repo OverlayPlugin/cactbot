@@ -1047,7 +1047,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sphere': '立体魔法陣',
         'Feather of Ruin': 'ヴァリガルマンダの羽根',
