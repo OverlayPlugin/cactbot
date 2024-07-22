@@ -400,7 +400,7 @@ Options.Triggers.push({
           de: 'Verteilen - auf schwebender Flächen',
           fr: 'Dispersion - tuile surélevée',
           ja: '散開 - 高台',
-          cn: '分散 - 高台格',
+          cn: '分散 - 浮空格',
           ko: '산개 - 공중부양 칸',
         },
         lightning: {
@@ -499,7 +499,7 @@ Options.Triggers.push({
           de: '${dir} - schwebende Fläche',
           fr: '${dir} - tuile surélevée',
           ja: '${dir} - 高台',
-          cn: '${dir} - 高台格',
+          cn: '${dir} - 浮空格',
           ko: '${dir} - 공중부양 칸',
         },
         northFront: {
@@ -573,7 +573,7 @@ Options.Triggers.push({
           de: 'Verteilen - auf schwebender Flächen',
           fr: 'Dispersion - tuile surélevée',
           ja: '散開 - 高台',
-          cn: '分散 - 高台格',
+          cn: '分散 - 浮空格',
           ko: '산개 - 공중부양 칸',
         },
         lightning: {

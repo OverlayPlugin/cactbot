@@ -19,6 +19,7 @@ Options.Triggers.push({
         text: {
           en: 'Get under Flytrap',
           de: 'Geh unter die Fliegenfalle',
+          cn: '进入月环',
         },
       },
     },
@@ -32,6 +33,7 @@ Options.Triggers.push({
         text: {
           en: 'Stay out of inhale',
           de: 'Steh auserhalb des Soges',
+          cn: '躲开 Boss 吸气 + 全场 AoE',
         },
       },
     },
@@ -60,6 +62,7 @@ Options.Triggers.push({
         text: {
           en: 'Dodge Ivy cleaves (small)',
           de: 'Efeu-Cleave ausweichen (klein)',
+          cn: '注意触手直线AoE (小)',
         },
       },
     },
@@ -74,6 +77,7 @@ Options.Triggers.push({
         text: {
           en: 'Dodge Ivy cleaves (big)',
           de: 'Efeu-Cleave ausweichen (groß)',
+          cn: '注意触手直线AoE (大)',
         },
       },
     },
@@ -112,6 +116,7 @@ Options.Triggers.push({
         text: {
           en: 'Away on 3rd jump',
           de: 'Weg vom 3. Sprung',
+          cn: '远离第三次跳跃落点',
         },
       },
     },
@@ -125,6 +130,7 @@ Options.Triggers.push({
         text: {
           en: 'Away on 3rd jump',
           de: 'Weg vom 3. Sprung',
+          cn: '远离第三次跳跃落点',
         },
       },
     },
@@ -145,6 +151,7 @@ Options.Triggers.push({
         text: {
           en: 'In, then follow jump',
           de: 'Rein, dann Sprüngen folgen',
+          cn: '进入月环 => 去BOSS身后',
         },
       },
     },
@@ -158,6 +165,7 @@ Options.Triggers.push({
         text: {
           en: 'Avoid Whirlwind star lines',
           de: 'Wirbelwind-Sternenlinien vermeiden',
+          cn: '注意风圈星形的直线AoE',
         },
       },
     },
