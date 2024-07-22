@@ -169,7 +169,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'In, then follow jump',
           de: 'Rein, dann Sprüngen folgen',
-          ja: 'ドーナツ、そしてボスへ追いかける',
+          ja: 'ドーナツ、そしてボスを追いかける',
           cn: '进入月环 => 去BOSS身后',
         },
       },
