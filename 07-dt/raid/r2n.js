@@ -83,6 +83,7 @@ Options.Triggers.push({
           en: 'Stacks',
           de: 'Sammeln',
           fr: 'Package',
+          ja: '集合',
           cn: '分组分摊',
           ko: '쉐어',
         },
@@ -143,7 +144,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Honey B. Lovely': 'ハニー・B・ラブリー',
       },

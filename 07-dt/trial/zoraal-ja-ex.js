@@ -1124,7 +1124,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Fang': '双牙剣',
         'Zoraal Ja': 'ゾラージャ',
