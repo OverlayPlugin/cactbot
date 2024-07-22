@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.32.3",
-  "releaseSummary": "initial r1n-r4n, more ex2, msq 91 dungeon, more jobs",
+  "version": "0.32.4",
+  "releaseSummary": "full DT jobs support, more arcadion, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
