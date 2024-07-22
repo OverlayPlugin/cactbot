@@ -98,7 +98,7 @@ Options.Triggers.push({
           en: '${protomander} duplicate',
           de: 'Doppelter ${protomander}',
           fr: '${protomander} dupliqué(e)',
-          ja: 'もっています: ${protomander}',
+          ja: '${protomander} 被り',
           cn: '${protomander} 重复',
           ko: '${protomander} 중복',
         },
