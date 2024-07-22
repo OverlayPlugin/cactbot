@@ -272,7 +272,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
-          ja: 'マーカーに 西 => 東',
+          ja: '西 => マーカーの東',
           cn: '西 => 标记东侧',
         },
       },
@@ -287,7 +287,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
-          ja: 'マーカーに 東 => 西',
+          ja: '東 => マーカーの西',
           cn: '东 => 标记西侧',
         },
       },
@@ -302,7 +302,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
-          ja: 'マーカーに 西 => 東',
+          ja: '西 => マーカーの東',
           cn: '西 => 标记东侧',
         },
       },
@@ -317,7 +317,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
-          ja: 'マーカーに 東 => 西',
+          ja: '東 => マーカーの西',
           cn: '东 => 标记西侧',
         },
       },
