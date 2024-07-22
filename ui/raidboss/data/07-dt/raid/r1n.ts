@@ -202,11 +202,10 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, matches, output) => {
         const heading = parseFloat(matches.heading);
         const dir = Directions.hdgTo8DirNum(heading);
-        if (dir % 2 === 0) {
+        if (dir % 2 === 0)
           // `dir % 2 === 0` = this is aimed at a cardinal, so intercards safe first
-          return output.cardsIntercards!();
-        }
-        return output.intercardsCards!();
+          return output.intercardsCards!();
+        return output.cardsIntercards!();
       },
       outputStrings: {
         cardsIntercards: {

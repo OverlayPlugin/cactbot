@@ -1359,7 +1359,7 @@ const latestLogDefinitions = {
       2: null,
     },
     canAnonymize: true,
-    firstOptionalField: 7,
+    firstOptionalField: undefined,
     analysisOptions: {
       include: 'filter',
       filters: { sourceId: '4.{7}' }, // NPC casts only
