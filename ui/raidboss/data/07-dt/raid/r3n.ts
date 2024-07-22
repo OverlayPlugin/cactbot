@@ -131,7 +131,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'East, stay East',
           de: 'Osten, bleib Osten',
-          cn: '东 => 呆在东',
+          cn: '东 => 呆在原地',
         },
       },
     },
@@ -159,7 +159,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'West, stay West',
           de: 'Westen, bleib Westen',
-          cn: '西 => 呆在西',
+          cn: '西 => 呆在原地',
         },
       },
     },
