@@ -697,7 +697,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Innen Rechts (Boss anschauen) =>',
           fr: 'Droite intérieur (en regardant le boss) =>',
           ja: '右内側 (ボス正面) =>',
-          cn: '右外侧 (面向BOSS) =>',
+          cn: '右内侧 (面向BOSS) =>',
         },
         corner: {
           en: 'Corners Safe',
@@ -736,7 +736,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vermeide Schwerter',
           fr: 'Évitez les épées',
           ja: '剣を避けて',
-          cn: '远离剑',
+          cn: '躲开剑',
         },
       },
     },
