@@ -367,6 +367,11 @@ const triggerSet: TriggerSet<Data> = {
         'Wicked Thunder': 'ウィケッドサンダー',
       },
       'replaceText': {
+        'west--': '西--',
+        '--east': '--東',
+        '\\(cast\\)': '(詠唱)',
+        '\\(clone\\)': '(分身)',
+        '\\(damage\\)': '(ダメージ)',
         'Bewitching Flight': 'フライングウィッチ',
         'Burst': '爆発',
         'Fivefold Blast': 'クインティカノン',
