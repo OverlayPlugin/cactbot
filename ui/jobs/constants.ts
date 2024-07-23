@@ -277,6 +277,7 @@ export const kAbility = {
   StandardStep: '3E7D',
   TechnicalStep: '3E7E',
   Flourish: '3E8D',
+  FinishingMove: '9078',
   // BLM
   Thunder1: '90',
   Thunder2: '1D17',

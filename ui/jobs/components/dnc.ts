@@ -93,6 +93,7 @@ export class DNCComponent extends BaseComponent {
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     switch (id) {
       case kAbility.StandardStep:
+      case kAbility.FinishingMove:
         this.standardStep.duration = 30;
         break;
       case kAbility.TechnicalStep:
