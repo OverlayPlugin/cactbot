@@ -15,11 +15,13 @@ const directionOutputStrings = {
     en: ' => ',
     de: ' => ',
     ja: ' => ',
+    cn: ' => ',
   },
   combo: {
     en: '${dirs}',
     de: '${dirs}',
     ja: '${dirs}',
+    cn: '${dirs}',
   },
 };
 const b9aValueToNorthSouth = (searchValue) => {
@@ -296,6 +298,7 @@ Options.Triggers.push({
           en: 'East offset safe',
           de: 'Ost-Offset sicher',
           ja: '最東端の床へ',
+          cn: '右(东)侧 安全',
         },
       },
     },
@@ -311,6 +314,7 @@ Options.Triggers.push({
           en: 'South offset safe',
           de: 'Süd-Offset sicher',
           ja: '最南端の床へ',
+          cn: '下(南)侧 安全',
         },
       },
     },
@@ -326,6 +330,7 @@ Options.Triggers.push({
           en: 'West offset safe',
           de: 'West-Offset sicher',
           ja: '最西端の床へ',
+          cn: '左(西)侧 安全',
         },
       },
     },
@@ -341,6 +346,7 @@ Options.Triggers.push({
           en: 'North offset safe',
           de: 'Nord-Offset sicher',
           ja: '最北端の床へ',
+          cn: '上(北)侧 安全',
         },
       },
     },
@@ -411,9 +417,11 @@ Options.Triggers.push({
       outputStrings: {
         outToIn: {
           en: '${dir}, Out => In',
+          cn: '${dir}, 远离 => 靠近',
         },
         inToOut: {
           en: '${dir}, In => Out',
+          cn: '${dir}, 靠近 => 远离',
         },
         unknown: Outputs.unknown,
         ...Directions.outputStrings8Dir,
