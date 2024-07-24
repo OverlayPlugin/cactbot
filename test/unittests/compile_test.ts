@@ -20,7 +20,7 @@ describe('compile test', () => {
     try {
       process.chdir(projectRoot);
       fs.rmSync('dist', { recursive: true, force: true });
-      await exec('npx ttsc --declaration', [], {
+      await exec('npx tsc --declaration', [], {
         listeners: {
           stdout: (data) => output += data.toString(),
           stderr: (data) => {
