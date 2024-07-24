@@ -35,6 +35,7 @@ const settings = {
   'parserOptions': {
     'ecmaVersion': 2022,
     'sourceType': 'module',
+    'project': './tsconfig.eslint.json',
   },
   'plugins': [
     'deprecation',
