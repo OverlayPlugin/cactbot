@@ -129,7 +129,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Honey B. Lovely': 'Honey B. Lovely',
       },
