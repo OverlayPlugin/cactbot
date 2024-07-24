@@ -1,4 +1,4 @@
-### Arcadion (R1N): AAC Light-heavyweight M1
+### Arcadion (M1N): AAC Light-heavyweight M1
 
 # -ii 98EF 933E 6854
 # -it "Black Cat"

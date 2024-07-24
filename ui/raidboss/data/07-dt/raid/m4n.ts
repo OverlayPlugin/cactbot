@@ -110,7 +110,7 @@ const headMarkerData = {
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM4',
   zoneId: ZoneId.AacLightHeavyweightM4,
-  timelineFile: 'r4n.txt',
+  timelineFile: 'm4n.txt',
   initData: () => ({
     expectedBlasts: 0,
     storedBlasts: [],
@@ -121,7 +121,7 @@ const triggerSet: TriggerSet<Data> = {
   }),
   triggers: [
     {
-      id: 'R4N Actor Collector',
+      id: 'M4N Actor Collector',
       type: 'StartsUsing',
       netRegex: { id: '92C7', source: 'Wicked Thunder', capture: false },
       promise: async (data) => {
@@ -131,7 +131,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4N ActorSetPos Collector',
+      id: 'M4N ActorSetPos Collector',
       type: 'ActorSetPos',
       netRegex: { id: '4[0-9A-F]{7}', capture: true },
       run: (data, matches) => {
@@ -146,7 +146,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4N Clone Cleave Collector',
+      id: 'M4N Clone Cleave Collector',
       type: 'CombatantMemory',
       // Filter to only enemy actors for performance
       // TODO: Change this to an ActorControlExtra line if OverlayPlugin adds SetModelState as a valid category
@@ -204,38 +204,38 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: directionOutputStrings,
     },
     {
-      id: 'R4N Headmarker Soaring Soulpress Stack',
+      id: 'M4N Headmarker Soaring Soulpress Stack',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.stack, capture: true },
       response: Responses.stackMarkerOn(),
     },
     {
-      id: 'R4N Headmarker Wicked Bolt Multi Hit Stack',
+      id: 'M4N Headmarker Wicked Bolt Multi Hit Stack',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.multiHitStack, capture: true },
       response: Responses.stackMarkerOn(),
     },
     {
-      id: 'R4N Headmarker Thunderstorm Spread',
+      id: 'M4N Headmarker Thunderstorm Spread',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.spread, capture: false },
       suppressSeconds: 5,
       response: Responses.spread(),
     },
     {
-      id: 'R4N Headmarker Wicked Jolt Tankbuster',
+      id: 'M4N Headmarker Wicked Jolt Tankbuster',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.tankBusterLine, capture: true },
       response: Responses.tankBuster(),
     },
     {
-      id: 'R4N Wrath of Zeus',
+      id: 'M4N Wrath of Zeus',
       type: 'StartsUsing',
       netRegex: { id: '92C7', source: 'Wicked Thunder', capture: false },
       response: Responses.aoe(),
     },
     {
-      id: 'R4N Sidewise Spark Counter',
+      id: 'M4N Sidewise Spark Counter',
       type: 'StartsUsing',
       netRegex: { id: ['92BC', '92BD', '92BE', '92BF'], source: 'Wicked Thunder', capture: false },
       delaySeconds: 1,
@@ -247,7 +247,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4N Sidewise Spark',
+      id: 'M4N Sidewise Spark',
       type: 'StartsUsing',
       // IDs for safe spots are C/E = left safe, D/F = right safe
       netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: true },
@@ -278,37 +278,37 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: directionOutputStrings,
     },
     {
-      id: 'R4N Left Roll',
+      id: 'M4N Left Roll',
       type: 'Ability',
       netRegex: { id: '92AC', source: 'Wicked Thunder', capture: false },
       response: Responses.goWest(),
     },
     {
-      id: 'R4N Right Roll',
+      id: 'M4N Right Roll',
       type: 'Ability',
       netRegex: { id: '92AB', source: 'Wicked Thunder', capture: false },
       response: Responses.goEast(),
     },
     {
-      id: 'R4N Threefold Blast Initializer',
+      id: 'M4N Threefold Blast Initializer',
       type: 'StartsUsing',
       netRegex: { id: ['92AD', '92B0'], source: 'Wicked Thunder', capture: false },
       run: (data) => data.expectedBlasts = 3,
     },
     {
-      id: 'R4N Fourfold Blast Initializer',
+      id: 'M4N Fourfold Blast Initializer',
       type: 'StartsUsing',
       netRegex: { id: ['9B4F', '9B55'], source: 'Wicked Thunder', capture: false },
       run: (data) => data.expectedBlasts = 4,
     },
     {
-      id: 'R4N Fivefold Blast Initializer',
+      id: 'M4N Fivefold Blast Initializer',
       type: 'StartsUsing',
       netRegex: { id: ['9B56', '9B57'], source: 'Wicked Thunder', capture: false },
       run: (data) => data.expectedBlasts = 5,
     },
     {
-      id: 'R4N XFold Blast Collector',
+      id: 'M4N XFold Blast Collector',
       type: 'GainsEffect',
       netRegex: { effectId: 'B9A', count: Object.values(effectB9AMap), capture: true },
       condition: (data, matches) => {
@@ -338,7 +338,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: directionOutputStrings,
     },
     {
-      id: 'R4N Bewitching Flight Right Safe',
+      id: 'M4N Bewitching Flight Right Safe',
       type: 'StartsUsing',
       netRegex: { id: '8DE4', source: 'Wicked Thunder', capture: false },
       // Disabled until we have a better way to phrase this.
@@ -354,7 +354,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4N Bewitching Flight South Safe',
+      id: 'M4N Bewitching Flight South Safe',
       type: 'StartsUsing',
       netRegex: { id: '8DE4', source: 'Wicked Replica', capture: false },
       // Disabled until we have a better way to phrase this.
@@ -370,7 +370,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4N Bewitching Flight Left Safe',
+      id: 'M4N Bewitching Flight Left Safe',
       type: 'StartsUsing',
       netRegex: { id: '8DE6', source: 'Wicked Thunder', capture: false },
       // Disabled until we have a better way to phrase this.
@@ -386,7 +386,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4N Bewitching Flight North Safe',
+      id: 'M4N Bewitching Flight North Safe',
       type: 'StartsUsing',
       netRegex: { id: '8DE6', source: 'Wicked Replica', capture: false },
       // Disabled until we have a better way to phrase this.
@@ -402,7 +402,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4N Witch Hunt',
+      id: 'M4N Witch Hunt',
       type: 'StartsUsingExtra',
       netRegex: { id: '92B5', capture: true },
       condition: (data, matches) => {
