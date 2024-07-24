@@ -108,7 +108,11 @@ type XIVAPINpcYellResponse = {
 // These return types are identical
 type XIVAPIBattleTalk2Response = XIVAPINpcYellResponse;
 
-type TriggerSuggestTypes = typeof triggerSuggestOptions[number];
+type TriggerSuggestTypes =
+  | typeof triggerSuggestOptions[number]
+  | `AoE (circle, range = ${number})`
+  | `Rectangle AoE, CastType = ${number}`
+  | 'Plus AoE';
 
 type GenerateTriggersArgs = {
   'files': string[] | null;
@@ -1248,7 +1252,7 @@ const generateTriggersTextFromTriggerInfo = async (
     // TODO: More default suggestions. Figure out how things work for square (CastType=12)
     // vs left/right/etc positioning
     const castTypeSuggestions = new Set<TriggerSuggestTypes>();
-    const castTypeFullSuggestions = new Set<TriggerSuggestTypes | string>();
+    const castTypeFullSuggestions = new Set<TriggerSuggestTypes>();
     if (xivapiAbilityInfo !== undefined) {
       const xivApiAbilities = mapInfo.fights
         .flatMap((fight) => fight.instances.filter((instance) => instance.groups?.type === '20'))

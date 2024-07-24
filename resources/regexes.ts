@@ -321,7 +321,7 @@ const parseHelper = <T extends LogDefinitionName>(
           defaultFieldValue,
         );
       } else {
-        str += fieldValue;
+        str += fieldValue?.toString();
       }
     }
 

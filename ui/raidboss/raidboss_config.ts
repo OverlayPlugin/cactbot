@@ -527,7 +527,7 @@ const setOptionsFromOutputValue = (
     options.SoundAlertsEnabled = false;
     options.SpokenAlertsEnabled = false;
   } else {
-    console.error(`unknown output type: ${value.toString()}`);
+    console.error(`unknown output type: ${JSON.stringify(value)}`);
   }
 };
 
@@ -762,6 +762,7 @@ class RaidbossConfigurator {
             detailText = this.base.translate(kMiscTranslations.valueIsFunction);
             detailCls.push('function-text');
           } else {
+            // eslint-disable-next-line @typescript-eslint/no-base-to-string
             detailText = trigFunc.toString();
           }
 
@@ -1345,7 +1346,8 @@ class RaidbossConfigurator {
         if (result === null || result === undefined)
           return false;
 
-        // Super hack:
+        // FIXME: Super hack:
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         const resultStr = result.toString();
         if (resultStr.includes('undefined') || resultStr.includes('NaN'))
           return false;

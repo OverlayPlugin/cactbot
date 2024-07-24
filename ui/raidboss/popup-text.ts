@@ -1482,6 +1482,8 @@ export class PopupText {
       if (result !== undefined) {
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (result)
+          // FIXME:
+          // eslint-disable-next-line @typescript-eslint/no-base-to-string
           triggerHelper.ttsText = result?.toString();
       } else {
         triggerHelper.ttsText = triggerHelper.defaultTTSText;
