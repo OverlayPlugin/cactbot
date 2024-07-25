@@ -1,4 +1,4 @@
-### Arcadion (R2N): AAC Light-heavyweight M2
+### Arcadion (M2N): AAC Light-heavyweight M2
 # -ii 917E 91C7 9A65 9166 9168 9172 9A6A 9165 916B 916C 916E 917C 916D 917F 9A66 9169
 # -it "Honey B. Lovely"
 

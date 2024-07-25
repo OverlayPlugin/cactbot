@@ -1,4 +1,4 @@
-### Arcadion (R4N): AAC Light-heavyweight M4
+### Arcadion (M4N): AAC Light-heavyweight M4
 
 # -ii 90EE 92B3 92B5 92B6 98EA 8A07 8D36 8F97 92C3
 # -it "Wicked Thunder"
