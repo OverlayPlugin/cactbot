@@ -639,6 +639,7 @@ Options.Triggers.push({
         fire: {
           en: 'Go Far',
           de: 'Weit gehen',
+          fr: 'Éloignez-vous',
           ja: '離れて',
           cn: '远离',
         },
@@ -1088,12 +1089,15 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Fang': 'crochet',
         'Zoraal Ja': 'Zoraal Ja',
       },
       'replaceText': {
+        '\\(cast\\)': '(Incantation)',
+        '\\(damage\\)': '(Dommage)',
+        '\\(enrage\\)': '(Enrage)',
+        '\\(lines drop\\)': '(Lignes)',
         'Actualize': 'Actualisation',
         'Aero III': 'Méga Vent',
         'Backward Edge': 'Lames régressives',

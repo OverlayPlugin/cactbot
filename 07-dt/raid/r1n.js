@@ -196,12 +196,14 @@ Options.Triggers.push({
         cardsIntercards: {
           en: 'Cards => Intercards',
           de: 'Karten => Interkardinal',
+          fr: 'Cardinal => Intercardinal',
           ja: '十字 => 斜め',
           cn: '斜角 => 十字',
         },
         intercardsCards: {
           en: 'Intercards => Cards',
           de: 'Interkardinal => Karten',
+          fr: 'Intercardinal => Cardinal',
           ja: '斜め => 十字',
           cn: '十字 => 斜角',
         },
@@ -217,6 +219,7 @@ Options.Triggers.push({
         text: {
           en: 'Aim for uncracked tile',
           de: 'Ziehle auf nich gerissene Fläche',
+          fr: 'Visez une tuile non-brisée',
           ja: '割れていない床を狙う',
           cn: '瞄准完好的平台',
         },
@@ -256,6 +259,7 @@ Options.Triggers.push({
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
+          fr: 'Ouest => Est depuis le marqueur',
           ja: '西 => マーカーの東',
           cn: '左(西) => 标记右(东)侧',
         },
@@ -271,6 +275,7 @@ Options.Triggers.push({
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
+          fr: 'Est => Ouest depuis le marqueur',
           ja: '東 => マーカーの西',
           cn: '右(东) => 标记左(西)侧',
         },
@@ -286,6 +291,7 @@ Options.Triggers.push({
         text: {
           en: 'West => East at marker',
           de: 'Westen => Osten bei der Markierung',
+          fr: 'Ouest => Est depuis le marqueur',
           ja: '西 => マーカーの東',
           cn: '左(西) => 标记右(东)侧',
         },
@@ -301,6 +307,7 @@ Options.Triggers.push({
         text: {
           en: 'East => West at marker',
           de: 'Osten => Westen bei der Markierung',
+          fr: 'Est => Ouest depuis le marqueur',
           ja: '東 => マーカーの西',
           cn: '右(东) => 标记左(西)侧',
         },
@@ -345,7 +352,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Black Cat': 'Black Cat',
         'Copy Cat': 'double félin',
@@ -366,6 +372,11 @@ Options.Triggers.push({
         'Overshadow': 'Ombragement',
         'Predaceous Pounce': 'Prédation preste',
         'Shockwave': 'Onde de choc',
+        '\\(cast\\)': '(Incantation)',
+        '\\(damage\\)': '(Dommage)',
+        '\\(hits\\)': '(Coup)',
+        '\\(jump\\)': '(Saut)',
+        '\\(telegraphs\\)': '(Télégraphes)',
       },
     },
     {
