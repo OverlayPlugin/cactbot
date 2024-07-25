@@ -121,7 +121,7 @@ export class BLMComponent extends BaseComponent {
         this.thunderDot.duration = 30;
         break;
       case kAbility.Manafont:
-        this.manafont.duration = 100;
+        this.manafont.duration = this.player.level >= 84 ? 100 : 120;
     }
   }
 
