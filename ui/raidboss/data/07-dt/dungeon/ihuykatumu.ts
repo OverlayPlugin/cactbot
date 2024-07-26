@@ -29,6 +29,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get under Flytrap',
           de: 'Geh unter die Fliegenfalle',
+          fr: 'Allez sous le piège à vent',
           ja: 'ドーナツ範囲に入る',
           cn: '进入月环',
         },
@@ -44,6 +45,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stay out of inhale',
           de: 'Steh auserhalb des Soges',
+          fr: 'Sortez du Turbinage',
           ja: '吸い込む範囲から離れる',
           cn: '躲开 Boss 吸气 + 全场 AoE',
         },
@@ -75,6 +77,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Ivy cleaves (small)',
           de: 'Efeu-Cleave ausweichen (klein)',
+          fr: 'Esquivez les cleaves du lierre (petit)',
           ja: '植物の直線範囲攻撃を避ける (小)',
           cn: '注意触手直线AoE (小)',
         },
@@ -91,6 +94,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Ivy cleaves (big)',
           de: 'Efeu-Cleave ausweichen (groß)',
+          fr: 'Esquivez les cleaves du lierre (large)',
           ja: '植物の直線範囲攻撃を避ける (大)',
           cn: '注意触手直线AoE (大)',
         },
@@ -132,6 +136,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away on 3rd jump',
           de: 'Weg vom 3. Sprung',
+          fr: 'Loin du 3ème saut',
           ja: '3回目のジャンプ目標地点から離れる',
           cn: '远离第三次跳跃落点',
         },
@@ -147,6 +152,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away on 3rd jump',
           de: 'Weg vom 3. Sprung',
+          fr: 'Loin du 3ème saut',
           ja: '3回目のジャンプ目標地点から離れる',
           cn: '远离第三次跳跃落点',
         },
@@ -169,6 +175,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'In, then follow jump',
           de: 'Rein, dann Sprüngen folgen',
+          fr: 'Intérieur, puis suivez le saut',
           ja: 'ドーナツ、そしてボスを追いかける',
           cn: '进入月环 => 去BOSS身后',
         },
@@ -184,6 +191,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid Whirlwind star lines',
           de: 'Wirbelwind-Sternenlinien vermeiden',
+          fr: 'Évitez les lignes des étoiles de vent',
           ja: '風の8方向直線攻撃から避ける',
           cn: '注意风圈星形的直线AoE',
         },
@@ -199,6 +207,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid Whirlwind star lines',
           de: 'Wirbelwind-Sternenlinien vermeiden',
+          fr: 'Évitez les lignes des étoiles de vent',
           ja: '風の8方向直線攻撃から避ける',
           cn: '注意风圈星形的直线AoE',
         },
@@ -214,6 +223,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid Whirlwind star lines',
           de: 'Wirbelwind-Sternenlinien vermeiden',
+          fr: 'Évitez les lignes des étoiles de vent',
           ja: '風の8方向直線攻撃から避ける',
           cn: '注意风圈星形的直线AoE',
         },
@@ -271,7 +281,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Apollyon': 'apollyon',
         'Drowsie': 'Somnolent',
@@ -283,6 +292,12 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Punutiy': 'punutiy',
       },
       'replaceText': {
+        '\\(cast\\)': '(Incantation)',
+        '\\(inner ring\\)': '(Anneau intérieur)',
+        '\\(large\\)': '(Large)',
+        '\\(outer ring\\)': '(Anneau extérieur)',
+        '\\(puddle\\)': '(Flaque)',
+        '\\(small\\)': '(Petit)',
         'Arise': 'Apparition',
         'Blade(?!s )': 'Ravisseuse',
         'Blades of Famine': 'Lames locustes',
