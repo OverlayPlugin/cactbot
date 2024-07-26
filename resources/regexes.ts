@@ -321,7 +321,10 @@ const parseHelper = <T extends LogDefinitionName>(
           defaultFieldValue,
         );
       } else {
-        str += fieldValue?.toString();
+        // FIXME: handle lint error here
+        // ref: https://github.com/OverlayPlugin/cactbot/pull/274#discussion_r1692439720
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+        str += fieldValue;
       }
     }
 

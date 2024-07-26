@@ -527,7 +527,10 @@ const setOptionsFromOutputValue = (
     options.SoundAlertsEnabled = false;
     options.SpokenAlertsEnabled = false;
   } else {
-    console.error(`unknown output type: ${JSON.stringify(value)}`);
+    // FIXME: handle lint error here
+    // ref: https://github.com/OverlayPlugin/cactbot/pull/274#discussion_r1692375852
+    // eslint-ignore-next-line @typescript-eslint/no-base-to-string
+    console.error(`unknown output type: ${value.toString()}`);
   }
 };
 
