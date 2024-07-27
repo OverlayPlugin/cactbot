@@ -89,21 +89,12 @@ export class NINComponent extends BaseComponent {
         this.ninjutsu.duration = 0;
         break;
       case kAbility.TrickAttack:
-        this.tid1 = showDuration({
-          tid: this.tid1,
-          timerbox: this.trickAttack,
-          duration: 15 + 0.5, // Trick Attack has an animation lock
-          cooldown: 60,
-          threshold: this.player.gcdSkill * 4 + 1,
-          activecolor: 'nin-color-trickattack.active',
-          deactivecolor: 'nin-color-trickattack',
-        });
-        break;
       case kAbility.KunaisBane:
         this.tid1 = showDuration({
           tid: this.tid1,
           timerbox: this.trickAttack,
-          duration: 15 + 1, // Kunai's Bane has a longer animation lock
+          // TA & KB has an animation lock, KB's is longer.
+          duration: 15 + (id === kAbility.KunaisBane ? 1 : 0.5),
           cooldown: 60,
           threshold: this.player.gcdSkill * 4 + 1,
           activecolor: 'nin-color-trickattack.active',
