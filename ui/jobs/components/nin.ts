@@ -142,7 +142,7 @@ export class NINComponent extends BaseComponent {
     this.mudraTriggerCd = true;
     this.ninjutsu.duration = 0;
     this.trickAttack.duration = 0;
-    this.trickAttack.threshold = this.player.gcdSkill * 4;
+    this.trickAttack.threshold = this.player.gcdSkill * 4 + 1;
     this.trickAttack.fg = computeBackgroundColorFrom(
       this.trickAttack,
       'nin-color-trickattack',
