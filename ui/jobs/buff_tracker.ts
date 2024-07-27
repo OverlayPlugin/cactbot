@@ -361,7 +361,7 @@ export class BuffTracker {
         cooldownAbility: [kAbility.Dokumori],
         mobGainsEffect: EffectId.Dokumori,
         mobLosesEffect: EffectId.Dokumori,
-        useEffectDuration: true,
+        durationSeconds: 20 + 0.5, // This debuff has an animation lock
         icon: dokumoriImage,
         // Magenta.
         borderColor: '#FC4AE6',
