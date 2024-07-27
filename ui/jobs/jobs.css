@@ -270,8 +270,7 @@ div.justbuffs div#procs-container {
 /* Space for 1 big resource box */
 .drk #right-side-icons,
 .whm #right-side-icons,
-.sge #right-side-icons,
-.nin #right-side-icons {
+.sge #right-side-icons {
   left: 250px;
 }
 
