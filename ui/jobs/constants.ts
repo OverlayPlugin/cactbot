@@ -19,6 +19,123 @@ export const kWellFedContentTypes: number[] = [
   ContentType.UltimateRaids,
 ];
 
+export const EffectId = {
+  // General
+  WellFed: '30',
+  Medicated: '31',
+  // PLD
+  Requiescat: '558',
+  AtonementReady: '76E', // to-remove
+  // WAR
+  SurgingTempest: 'A75',
+  // DRK
+
+  // GNB
+
+  // WHM
+  PresenceOfMind: '9D',
+  // SCH
+  ChainStratagem: '4C5',
+  // AST
+  Divination: '756',
+  TheBalance: 'F2F',
+  TheSpear: 'F31',
+  TheBalance6x: '75A', // to-remove
+  TheSpear6x: '75D', // to-remove
+  TheArrow: '75C', // to-remove
+  TheBole: '75B', // to-remove
+  TheEwer: '75E', // to-remove
+  TheSpire: '75F', // to-remove
+  LordOfCrowns: '754', // to-remove
+  LadyOfCrowns: '755', // to-remove
+  // SGE
+  EukrasianDosis: 'A36',
+  EukrasianDosisIi: 'A37',
+  EukrasianDosisIii: 'A38',
+  EukrasianDyskrasia: 'F39',
+  // MNK
+  OpoOpoForm: '6B',
+  RaptorForm: '6C',
+  CoeurlForm: '6D',
+  PerfectBalance: '6E',
+  FormlessFist: '9D1',
+  Brotherhood: '4A1',
+  DisciplinedFist: 'BB9', // to-remove
+  LeadenFist: '745', // to-remove
+  // DRG
+  BattleLitany: '312',
+  LeftEye: '5AE', // to-remove
+  RightEye: '776', // to-remove
+  // NIN
+  VulnerabilityUp: '27E',
+  Dokumori: 'F09',
+  Mudra: '1F0',
+  Kassatsu: '1F1',
+  // SAM
+  Fugetsu: '512',
+  Fuka: '513',
+  Higanbana: '4CC',
+  // RPR
+  ArcaneCircle: 'A27',
+  DeathsDesign: 'A1A',
+  // VPR
+  FlankstungVenom: 'E3D',
+  FlanksbaneVenom: 'E3E',
+  HindstungVenom: 'E3F',
+  HindsbaneVenom: 'E40',
+  GrimhuntersVenom: 'E41',
+  GrimskinsVenom: 'E42',
+  NoxiousGnash: 'E53',
+  HuntersInstinct: 'E54',
+  Swiftscaled: 'E55',
+  // BRD
+  VenomousBite: '7C',
+  Windbite: '81',
+  CausticBite: '4B0',
+  Stormbite: '4B1',
+  BattleVoice: '8D',
+  RadiantFinale: 'B94',
+  HawksEye: 'F15',
+  Barrage: '80',
+  ArmysMuse: '78C',
+  ArmysEthos: '78D',
+  StraightShotReady: '7A', // to-remove
+  // MCH
+  Overheated: 'A80',
+  Wildfire: '35D',
+  // DNC
+  Devilment: '721',
+  StandardFinish: '839',
+  TechnicalFinish: '71E',
+  FlourishingSymmetry: 'BC9',
+  FlourishingFlow: 'BCA',
+  ThreefoldFanDance: '71C',
+  FourfoldFanDance: 'A8B',
+  FinishingMoveReady: 'F1C',
+  // BLM
+  Firestarter: 'A5',
+  Thunderhead: 'F1E',
+  CircleOfPower: '2E2',
+  Thundercloud: 'A4', // to-remove
+  // SMN
+  SearingLight: 'A8F',
+  // RDM
+  Embolden: '511',
+  EmboldenSelf: '4D7',
+  VerstoneReady: '4D3',
+  VerfireReady: '4D2',
+  // PCT
+  HammerTime: 'E60',
+  StarryMuse: 'E65',
+  MonochromeTones: 'E6B',
+  // BLU
+  AstralAttenuation: '849',
+  UmbralAttenuation: '84A',
+  PhysicalAttenuation: '84B',
+  OffGuard: '6B5',
+  PeculiarLight: '6B9',
+} as const;
+
 export const kAbility = {
   // LB
   ShieldWall: 'C5', // T LB1

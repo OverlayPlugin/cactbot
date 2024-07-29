@@ -1,9 +1,8 @@
-import EffectId from '../../../resources/effect_id';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
-import { kAbility, kComboDelay } from '../constants';
+import { kAbility, kComboDelay, EffectId } from '../constants';
 import { PartialFieldMatches } from '../event_emitter';
 
 import { BaseComponent, ComponentInterface } from './base';

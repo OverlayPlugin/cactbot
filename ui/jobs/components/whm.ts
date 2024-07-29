@@ -1,8 +1,7 @@
-import EffectId from '../../../resources/effect_id';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
-import { kAbility } from '../constants';
+import { kAbility, EffectId } from '../constants';
 
 import { BaseComponent, ComponentInterface } from './base';
 

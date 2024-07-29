@@ -1,10 +1,9 @@
-import EffectId from '../../../resources/effect_id';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
 import { ComboTracker } from '../combo_tracker';
-import { kAbility } from '../constants';
+import { kAbility, EffectId } from '../constants';
 import { computeBackgroundColorFrom, showDuration } from '../utils';
 
 import { BaseComponent, ComponentInterface } from './base';

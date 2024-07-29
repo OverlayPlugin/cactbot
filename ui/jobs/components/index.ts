@@ -1,10 +1,9 @@
-import EffectId from '../../../resources/effect_id';
 import PartyTracker from '../../../resources/party';
 import Util from '../../../resources/util';
 import { Job } from '../../../types/job';
 import { Bars } from '../bars';
 import { BuffTracker } from '../buff_tracker';
-import { kWellFedContentTypes } from '../constants';
+import { kWellFedContentTypes, EffectId } from '../constants';
 import { JobsEventEmitter } from '../event_emitter';
 import { FfxivVersion } from '../jobs';
 import { JobsOptions } from '../jobs_options';
