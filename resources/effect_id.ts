@@ -1278,6 +1278,7 @@ const data = {
   'NeedleVeil': 'EA7',
   'NewMoon': '600',
   'Nightmare': '1A7',
+  'NoMercy': '727',
   'Noctoshield': '1AA',
   'NocturnalBalance': '7FB',
   'NocturnalBenefic': 'C1C',

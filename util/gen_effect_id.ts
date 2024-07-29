@@ -93,6 +93,7 @@ const knownMapping: Readonly<MappingTable> = {
   'Noxious Gnash': 3667,
   'Hunter\'s Instinct': 3668,
   'Swiftscaled': 3669,
+  'No Mercy': 1831,
 };
 
 // These custom name of effect will not be checked, but you'd better make it clean.
