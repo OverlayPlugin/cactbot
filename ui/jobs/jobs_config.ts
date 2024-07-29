@@ -99,7 +99,7 @@ UserConfig.registerOptions('jobs', {
         en: 'Show MP ticker out of combat',
         de: 'Zeige MP-Ticker auserhalb des Kampfes',
         fr: 'Afficher le symbole PM hors combat',
-        ja: 'MP自然回復ミーターを常時表示する',
+        ja: 'MP自然回復メーターを常時表示する',
         cn: '一直显示MP自然恢复监控',
         ko: '전투 중이 아닐 때, MP 티커 표시',
       },
