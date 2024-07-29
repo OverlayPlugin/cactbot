@@ -3,7 +3,7 @@ import Util from '../../../resources/util';
 import { Job } from '../../../types/job';
 import { Bars } from '../bars';
 import { BuffTracker } from '../buff_tracker';
-import { kWellFedContentTypes, EffectId } from '../constants';
+import { EffectId, kWellFedContentTypes } from '../constants';
 import { JobsEventEmitter } from '../event_emitter';
 import { FfxivVersion } from '../jobs';
 import { JobsOptions } from '../jobs_options';
