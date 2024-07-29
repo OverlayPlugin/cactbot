@@ -4,9 +4,9 @@ import inquirer from 'inquirer';
 import { UnreachableCode } from '../resources/not_reached';
 
 import { ConsoleLogger, LogLevelKey, LogLevelLabel, logLevels } from './console_logger';
-import { default as generateEffectIds } from './gen_effect_id';
 import { default as generateHunt } from './gen_hunt_data';
 import { default as generatePetNames } from './gen_pet_names';
+import { default as generateSheetStatus } from './gen_sheet_status';
 import { default as generateWeatherRate } from './gen_weather_rate';
 import { default as generateWorldIds } from './gen_world_ids';
 import { default as generateZoneIdandZoneInfo } from './gen_zone_id_and_info';
@@ -14,7 +14,7 @@ import { default as generateZoneIdandZoneInfo } from './gen_zone_id_and_info';
 import { ActionChoiceType } from '.';
 
 const fileKeys = [
-  'effect_id',
+  'sheet_status',
   'hunt_data',
   'pet_names',
   'weather_rate',
@@ -28,7 +28,7 @@ const allLabel = '* Generate All Data Files';
 type FileKey = typeof fileKeys[number];
 
 const fileKeyToFunc: { [K in FileKey]: (logLevel: LogLevelKey) => Promise<void> } = {
-  'effect_id': generateEffectIds,
+  'sheet_status': generateSheetStatus,
   'hunt_data': generateHunt,
   'pet_names': generatePetNames,
   'weather_rate': generateWeatherRate,

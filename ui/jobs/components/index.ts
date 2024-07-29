@@ -1,5 +1,5 @@
-import EffectId from '../../../resources/effect_id';
 import PartyTracker from '../../../resources/party';
+import Status from '../../../resources/sheet_status';
 import Util from '../../../resources/util';
 import { Job } from '../../../types/job';
 import { Bars } from '../bars';
@@ -229,7 +229,7 @@ export class ComponentManager {
 
       // add food buff trigger
       this.player.onYouGainEffect((id, matches) => {
-        if (id === EffectId.WellFed) {
+        if (id === Status['30'].id) {
           const seconds = parseFloat(matches.duration ?? '0');
           const now = Date.now(); // This is in ms.
           this.foodBuffExpiresTimeMs = now + seconds * 1000;
@@ -237,7 +237,7 @@ export class ComponentManager {
         }
       });
       this.player.onYouLoseEffect((id) => {
-        if (id === EffectId.WellFed) {
+        if (id === Status['30'].id) {
           this.foodBuffExpiresTimeMs = Date.now();
           this._updateFoodBuff();
         }

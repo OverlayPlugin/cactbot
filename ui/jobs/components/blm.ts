@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
@@ -127,13 +127,13 @@ export class BLMComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.Thunderhead:
+      case Status['F1E'].id:
         this.thunderProc.duration = parseFloat(matches.duration ?? '0') - 0.5;
         break;
-      case EffectId.Firestarter:
+      case Status['A5'].id:
         this.fireProc.duration = parseFloat(matches.duration ?? '0');
         break;
-      case EffectId.CircleOfPower:
+      case Status['2E2'].id:
         this.player.speedBuffs.circleOfPower = true;
         break;
     }
@@ -141,13 +141,13 @@ export class BLMComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.Thunderhead:
+      case Status['F1E'].id:
         this.thunderProc.duration = 0;
         break;
-      case EffectId.Firestarter:
+      case Status['A5'].id:
         this.fireProc.duration = 0;
         break;
-      case EffectId.CircleOfPower:
+      case Status['2E2'].id:
         this.player.speedBuffs.circleOfPower = false;
         break;
     }
@@ -339,13 +339,13 @@ export class BLM6xComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.Thundercloud:
+      case Status['F1E'].id:
         this.thunderProc.duration = parseFloat(matches.duration ?? '0');
         break;
-      case EffectId.Firestarter:
+      case Status['A5'].id:
         this.fireProc.duration = parseFloat(matches.duration ?? '0');
         break;
-      case EffectId.CircleOfPower:
+      case Status['2E2'].id:
         this.player.speedBuffs.circleOfPower = true;
         break;
     }
@@ -353,13 +353,13 @@ export class BLM6xComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.Thundercloud:
+      case Status['F1E'].id:
         this.thunderProc.duration = 0;
         break;
-      case EffectId.Firestarter:
+      case Status['A5'].id:
         this.fireProc.duration = 0;
         break;
-      case EffectId.CircleOfPower:
+      case Status['2E2'].id:
         this.player.speedBuffs.circleOfPower = false;
         break;
     }

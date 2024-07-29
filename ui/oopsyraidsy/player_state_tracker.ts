@@ -1,6 +1,7 @@
 import logDefinitions from '../../resources/netlog_defs';
 import { UnreachableCode } from '../../resources/not_reached';
 import PartyTracker from '../../resources/party';
+import Status from '../../resources/sheet_status';
 import { Party } from '../../types/event';
 import {
   DeathReportData,
@@ -28,9 +29,6 @@ import { OopsyOptions } from './oopsy_options';
 
 const emptyId = 'E0000000';
 const timestampFieldIdx = 1;
-
-// TODO: add this to effect_id.ts?
-const raiseEffectId = '94';
 
 const getTimestamp = (splitLine: string[]): number => {
   const timestampField = splitLine[timestampFieldIdx];
@@ -341,7 +339,7 @@ export class PlayerStateTracker {
 
     // Upon coming back to life, players get Transcendent / Weakness / Brink of Death.
     // However, they also get a Raise effect prior to coming back to life.
-    if (effectId !== raiseEffectId)
+    if (effectId !== Status['94'].id)
       this.deadIds.delete(targetId);
 
     // Keep track of active buffs in case they have a very long duration and fall outside the

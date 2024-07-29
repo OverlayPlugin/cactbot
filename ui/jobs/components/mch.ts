@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -123,11 +123,11 @@ export class MCHComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Overheated)
+    if (id === Status['A80'].id)
       this.overheatstack = parseInt(matches.count ?? '0');
   }
   override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Wildfire) {
+    if (id === Status['35D'].id) {
       this.wildFireActive = true;
       this.wildFireCounts = parseInt(matches.count ?? '0');
       this.refreshWildFireGauge();
@@ -136,7 +136,7 @@ export class MCHComponent extends BaseComponent {
   }
 
   override onMobLosesEffectFromYou(id: string): void {
-    if (id === EffectId.Wildfire) {
+    if (id === Status['35D'].id) {
       this.wildFireActive = false;
       this.refreshWildFireGauge();
     }

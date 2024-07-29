@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -96,7 +96,7 @@ export class RPRComponent extends BaseComponent {
 
   override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.DeathsDesign:
+      case Status['A1A'].id:
         // FIXME:
         // Death's Design can be different duration on multiple target,
         // and this condition will only monitor the longest one.

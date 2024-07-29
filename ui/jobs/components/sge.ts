@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
@@ -98,10 +98,10 @@ export class SGEComponent extends BaseComponent {
 
   override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.EukrasianDosis:
-      case EffectId.EukrasianDosisIi:
-      case EffectId.EukrasianDosisIii:
-      case EffectId.EukrasianDyskrasia:
+      case Status['A36'].id:
+      case Status['A37'].id:
+      case Status['A38'].id:
+      case Status['F39'].id:
         this.eukrasianDosis.duration = parseInt(matches.duration ?? '0', 10) - 0.5;
         break;
     }

@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -95,19 +95,19 @@ export class SAMComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Fuka) {
+    if (id === Status['513'].id) {
       this.fuka.duration = parseFloat(matches.duration ?? '0') - 0.5; // -0.5s for log line delay
       this.player.speedBuffs.fuka = true;
     }
-    if (id === EffectId.Fugetsu)
+    if (id === Status['512'].id)
       this.fugetsu.duration = parseFloat(matches.duration ?? '0') - 0.5; // -0.5s for log line delay
   }
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.Fuka) {
+    if (id === Status['513'].id) {
       this.fuka.duration = 0;
       this.player.speedBuffs.fuka = false;
     }
-    if (id === EffectId.Fugetsu)
+    if (id === Status['512'].id)
       this.fugetsu.duration = 0;
   }
 
@@ -139,7 +139,7 @@ export class SAMComponent extends BaseComponent {
   }
 
   override onMobGainsEffectFromYou(id: string): void {
-    if (id === EffectId.Higanbana)
+    if (id === Status['4CC'].id)
       this.higanbana.duration = 60 - 0.5; // -0.5s for log line delay
   }
 

@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -109,10 +109,10 @@ export class BRDComponent extends BaseComponent {
     // Log line of getting DoT comes a little late after DoT appear on target,
     // so -0.5s
     switch (id) {
-      case EffectId.Stormbite:
-      case EffectId.Windbite:
-      case EffectId.CausticBite:
-      case EffectId.VenomousBite:
+      case Status['4B1'].id:
+      case Status['81'].id:
+      case Status['4B0'].id:
+      case Status['7C'].id:
         this.biteBox.duration = 45 - 0.5;
         break;
     }
@@ -189,12 +189,12 @@ export class BRDComponent extends BaseComponent {
 
   override onYouGainEffect(id: string): void {
     switch (id) {
-      case EffectId.StraightShotReady:
-      case EffectId.HawksEye:
+      case Status['7A'].id:
+      case Status['F15'].id:
         this.straightShotProc.duration = 30 + 1; // time won't go down before animation complete;
         this.hawkeyeselapsed = 0;
         break;
-      case EffectId.Barrage: {
+      case Status['80'].id: {
         if (this.ffxivVersion < 700)
           break;
         if (this.hawkeyeselapsed !== 31)
@@ -207,13 +207,13 @@ export class BRDComponent extends BaseComponent {
       // Paeon -> runs out -> ethos -> within 30s -> Minuet/Ballad -> muse -> muse ends
       // Paeon -> runs out -> ethos -> ethos runs out
       // Track Paeon Stacks through to next song GCD buff
-      case EffectId.ArmysMuse:
+      case Status['78C'].id:
         // We just entered Minuet/Ballad, add muse effect
         // If we let paeon run out, get the temp stacks from ethos
         this.player.speedBuffs.museStacks = this.ethosStacks ?? this.player.speedBuffs.paeonStacks;
         this.player.speedBuffs.paeonStacks = 0;
         break;
-      case EffectId.ArmysEthos:
+      case Status['78D'].id:
         // Not under muse or paeon, so store the stacks
         this.ethosStacks = this.player.speedBuffs.paeonStacks;
         this.player.speedBuffs.paeonStacks = 0;
@@ -222,23 +222,23 @@ export class BRDComponent extends BaseComponent {
   }
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.StraightShotReady:
-      case EffectId.HawksEye:
+      case Status['7A'].id:
+      case Status['F15'].id:
         this.straightShotProc.duration = 0;
         this.straightShotProc.reset();
         this.hawkeyeselapsed = 31;
         break;
-      case EffectId.Barrage:
+      case Status['80'].id:
         if (this.ffxivVersion < 700)
           break;
         this.straightShotProc.duration = 31 - this.hawkeyeselapsed - this.straightShotProc.elapsed;
         break;
-      case EffectId.ArmysMuse:
+      case Status['78C'].id:
         // Muse effect ends
         this.player.speedBuffs.museStacks = 0;
         this.player.speedBuffs.paeonStacks = 0;
         break;
-      case EffectId.ArmysEthos:
+      case Status['78D'].id:
         // Didn't use a song and ethos ran out
         this.ethosStacks = 0;
         this.player.speedBuffs.museStacks = 0;

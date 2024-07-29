@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
@@ -107,11 +107,11 @@ export class WHMComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string): void {
-    if (id === EffectId.PresenceOfMind)
+    if (id === Status['9D'].id)
       this.player.speedBuffs.presenceOfMind = true;
   }
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.PresenceOfMind)
+    if (id === Status['9D'].id)
       this.player.speedBuffs.presenceOfMind = false;
   }
 

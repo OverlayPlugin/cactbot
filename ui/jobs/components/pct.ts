@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -70,7 +70,7 @@ export class PCTComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, _effect: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.MonochromeTones:
+      case Status['E6B'].id:
         this.whitePaint.parentElement?.classList.add('black');
         break;
     }
@@ -78,10 +78,10 @@ export class PCTComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string, _effect: PartialFieldMatches<'LosesEffect'>): void {
     switch (id) {
-      case EffectId.MonochromeTones:
+      case Status['E6B'].id:
         this.whitePaint.parentElement?.classList.remove('black');
         break;
-      case EffectId.HammerTime:
+      case Status['E60'].id:
         this.hammerTimer.duration = 0;
     }
   }

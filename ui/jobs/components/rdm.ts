@@ -1,5 +1,5 @@
-import EffectId from '../../../resources/effect_id';
 import ResourceBar from '../../../resources/resourcebar';
+import Status from '../../../resources/sheet_status';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
@@ -142,17 +142,17 @@ export class RDMComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.VerstoneReady)
+    if (id === Status['4D3'].id)
       this.whiteProc.duration = parseFloat(matches.duration ?? '0') -
         (this.player.gcdSpell * 0.8 - 0.5);
-    if (id === EffectId.VerfireReady)
+    if (id === Status['4D2'].id)
       this.blackProc.duration = parseFloat(matches.duration ?? '0') -
         (this.player.gcdSpell * 0.8 - 0.5);
   }
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.VerstoneReady)
+    if (id === Status['4D3'].id)
       this.whiteProc.duration = 0;
-    if (id === EffectId.VerfireReady)
+    if (id === Status['4D2'].id)
       this.blackProc.duration = 0;
   }
 

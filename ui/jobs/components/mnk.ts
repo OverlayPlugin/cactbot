@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -177,7 +177,7 @@ export class MNKComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.PerfectBalance:
+      case Status['6E'].id:
         if (!this.perfectBalanceActive) {
           this.formTimer.duration = 0;
           this.formTimer.duration = parseFloat(matches.duration ?? '0');
@@ -185,10 +185,10 @@ export class MNKComponent extends BaseComponent {
           this.perfectBalanceActive = true;
         }
         break;
-      case EffectId.OpoOpoForm:
-      case EffectId.RaptorForm:
-      case EffectId.CoeurlForm:
-      case EffectId.FormlessFist:
+      case Status['6B'].id:
+      case Status['6C'].id:
+      case Status['6D'].id:
+      case Status['9D1'].id:
         this.formTimer.duration = 0;
         this.formTimer.duration = parseFloat(matches.duration ?? '0');
         this.formTimer.fg = computeBackgroundColorFrom(this.formTimer, 'mnk-color-form');
@@ -198,7 +198,7 @@ export class MNKComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.PerfectBalance:
+      case Status['6E'].id:
         this.formTimer.duration = 0;
         this.formTimer.fg = computeBackgroundColorFrom(this.formTimer, 'mnk-color-form');
         this.perfectBalanceActive = false;
@@ -336,13 +336,13 @@ export class MNK6xComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.DisciplinedFist:
+      case Status['BB9'].id:
         this.twinSnakesBox.duration = 0;
         break;
-      case EffectId.LeadenFist:
+      case Status['745'].id:
         this.dragonKickBox.duration = 0;
         break;
-      case EffectId.PerfectBalance:
+      case Status['6E'].id:
         this.formTimer.duration = 0;
         this.formTimer.fg = computeBackgroundColorFrom(this.formTimer, 'mnk-color-form');
         this.perfectBalanceActive = false;
@@ -352,14 +352,14 @@ export class MNK6xComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.DisciplinedFist:
+      case Status['BB9'].id:
         // -0.5 for logline delay
         this.twinSnakesBox.duration = parseFloat(matches.duration ?? '0') - 0.5;
         break;
-      case EffectId.LeadenFist:
+      case Status['745'].id:
         this.dragonKickBox.duration = 30;
         break;
-      case EffectId.PerfectBalance:
+      case Status['6E'].id:
         if (!this.perfectBalanceActive) {
           this.formTimer.duration = 0;
           this.formTimer.duration = parseFloat(matches.duration ?? '0');
@@ -367,10 +367,10 @@ export class MNK6xComponent extends BaseComponent {
           this.perfectBalanceActive = true;
         }
         break;
-      case EffectId.OpoOpoForm:
-      case EffectId.RaptorForm:
-      case EffectId.CoeurlForm:
-      case EffectId.FormlessFist:
+      case Status['6B'].id:
+      case Status['6C'].id:
+      case Status['6D'].id:
+      case Status['9D1'].id:
         this.formTimer.duration = 0;
         this.formTimer.duration = parseFloat(matches.duration ?? '0');
         this.formTimer.fg = computeBackgroundColorFrom(this.formTimer, 'mnk-color-form');

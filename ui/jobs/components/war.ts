@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -86,14 +86,14 @@ export class WARComponent extends BaseComponent {
       this.comboTimer.duration = this.comboDuration;
   }
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id !== EffectId.SurgingTempest)
+    if (id !== Status['A75'].id)
       return;
     const duration = parseFloat(matches.duration ?? '0');
     this.tempestBox.duration = duration + this.bonus - 0.5; // buff logline delay
     this.bonus = 0;
   }
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.SurgingTempest)
+    if (id === Status['A75'].id)
       this.tempestBox.duration = 0;
   }
 

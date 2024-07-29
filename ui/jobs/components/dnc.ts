@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -68,11 +68,11 @@ export class DNCComponent extends BaseComponent {
 
   override onYouLoseEffect(effect: string): void {
     switch (effect) {
-      case EffectId.FlourishingSymmetry:
-      case EffectId.FlourishingFlow:
-      case EffectId.ThreefoldFanDance:
-      case EffectId.FourfoldFanDance:
-      case EffectId.FinishingMoveReady: {
+      case Status['BC9'].id:
+      case Status['BCA'].id:
+      case Status['71C'].id:
+      case Status['A8B'].id:
+      case Status['F1C'].id: {
         if (!this.flourishEffect.includes(effect))
           this.flourishEffect.push(effect);
         if (

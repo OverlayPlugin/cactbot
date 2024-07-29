@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -25,34 +25,34 @@ export class VPRComponent extends BaseComponent {
   static vipersightMap: Record<string, Record<string, 'left' | 'right'>> = {
     // Single target - first skill
     [kAbility.SteelFangs]: {
-      [EffectId.FlankstungVenom]: 'left',
-      [EffectId.FlanksbaneVenom]: 'left',
-      [EffectId.HindstungVenom]: 'right',
-      [EffectId.HindsbaneVenom]: 'right',
+      [Status['E3D'].id]: 'left',
+      [Status['E3E'].id]: 'left',
+      [Status['E3F'].id]: 'right',
+      [Status['E40'].id]: 'right',
     },
     [kAbility.DreadFangs]: {
-      [EffectId.FlankstungVenom]: 'left',
-      [EffectId.FlanksbaneVenom]: 'left',
-      [EffectId.HindstungVenom]: 'right',
-      [EffectId.HindsbaneVenom]: 'right',
+      [Status['E3D'].id]: 'left',
+      [Status['E3E'].id]: 'left',
+      [Status['E3F'].id]: 'right',
+      [Status['E40'].id]: 'right',
     },
     // Single target - second skill
     [kAbility.HuntersSting]: {
-      [EffectId.FlankstungVenom]: 'left',
-      [EffectId.FlanksbaneVenom]: 'right',
+      [Status['E3D'].id]: 'left',
+      [Status['E3E'].id]: 'right',
     },
     [kAbility.SwiftskinsSting]: {
-      [EffectId.HindstungVenom]: 'left',
-      [EffectId.HindsbaneVenom]: 'right',
+      [Status['E3F'].id]: 'left',
+      [Status['E40'].id]: 'right',
     },
     // Multiple target - second skill
     [kAbility.HuntersBite]: {
-      [EffectId.GrimhuntersVenom]: 'left',
-      [EffectId.GrimskinsVenom]: 'right',
+      [Status['E41'].id]: 'left',
+      [Status['E42'].id]: 'right',
     },
     [kAbility.SwiftskinsBite]: {
-      [EffectId.GrimhuntersVenom]: 'left',
-      [EffectId.GrimskinsVenom]: 'right',
+      [Status['E41'].id]: 'left',
+      [Status['E42'].id]: 'right',
     },
   };
 
@@ -176,19 +176,19 @@ export class VPRComponent extends BaseComponent {
       // Both buff have an animation lock, + 0.5s
       // (buff time won't go down until animation fully acted)
       // FIXME: Swiftskin's Coil has a little longer animation lock for swiftscaled
-      case EffectId.Swiftscaled:
+      case Status['E55'].id:
         this.player.speedBuffs.swiftscaled = true;
         this.swiftscaledTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
-      case EffectId.HuntersInstinct:
+      case Status['E54'].id:
         this.huntersInstinctTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
-      case EffectId.HindsbaneVenom:
-      case EffectId.HindstungVenom:
-      case EffectId.FlanksbaneVenom:
-      case EffectId.FlankstungVenom:
-      case EffectId.GrimhuntersVenom:
-      case EffectId.GrimskinsVenom:
+      case Status['E40'].id:
+      case Status['E3F'].id:
+      case Status['E3E'].id:
+      case Status['E3D'].id:
+      case Status['E41'].id:
+      case Status['E42'].id:
         this.currentVenomEffect = id;
         break;
     }
@@ -196,19 +196,19 @@ export class VPRComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.Swiftscaled:
+      case Status['E55'].id:
         this.player.speedBuffs.swiftscaled = false;
         this.swiftscaledTimer.duration = 0;
         break;
-      case EffectId.HuntersInstinct:
+      case Status['E54'].id:
         this.huntersInstinctTimer.duration = 0;
         break;
-      case EffectId.HindsbaneVenom:
-      case EffectId.HindstungVenom:
-      case EffectId.FlanksbaneVenom:
-      case EffectId.FlankstungVenom:
-      case EffectId.GrimhuntersVenom:
-      case EffectId.GrimskinsVenom:
+      case Status['E40'].id:
+      case Status['E3F'].id:
+      case Status['E3E'].id:
+      case Status['E3D'].id:
+      case Status['E41'].id:
+      case Status['E42'].id:
         this.currentVenomEffect = '';
         if (this.vipersight.dataset.stacks !== '0') {
           this.vipersight.dataset.side = 'both';
@@ -220,7 +220,7 @@ export class VPRComponent extends BaseComponent {
 
   override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.NoxiousGnash: {
+      case Status['E53'].id: {
         // FIXME:
         // Noxious Gnash can be different duration on multiple target,
         // and this condition will only monitor the longest one.

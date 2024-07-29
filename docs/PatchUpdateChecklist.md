@@ -6,7 +6,7 @@ This is a guide for steps to update cactbot when FFXIV has a patch.
 
 * [Game Data Resource Updates](#game-data-resource-updates)
   * [Run update scripts](#run-update-scripts)
-    * [effect_id data](#effect_id-data)
+    * [sheet_status data](#sheet_status-data)
     * [hunt data](#hunt-data)
     * [zone_id & zone_info data](#zone_id--zone_info-data)
   * [Update Content List](#update-content-list)
@@ -37,7 +37,7 @@ or you can run all of them by selecting `* Generate All Data Files`.
 The scripts that will be run (and the resources files they genereate) are:
 
 ```typescript
-gen_effect_ids.ts  => resources/effect_id.ts
+gen_sheet_statuss.ts  => resources/sheet_status.ts
 gen_hunt_data.ts => resources/hunt.ts
 gen_pet_names.ts => resources/pet_names.ts
 gen_weather_rate.ts => resources/weather_rate.ts
@@ -55,7 +55,7 @@ you can use the XIVAPI CLI helper utility to request and filter XIVAPI data --
 and see it as JSON console output -- by running `npm run query`.
 Use `npm run query -- -h` for info on how to use the utility.
 
-#### effect_id data
+#### sheet_status data
 
 As new status effects are added to the game, those names may conflict with existing names.
 Effect names may be reused in later content with a new ID
@@ -65,20 +65,6 @@ And job changes may result in a new status effect being added,
 rather than replacing the existing one of the same name.
 In short, there are many reasons why there may be multiple entries
 in the `Status` table with the same name.
-
-The script maintains a set of 'known mappings' of player-applied status effect and IDs.
-To support the jobs module, these status effects will always be added with these IDs,
-and any conflicts will be disregarded.  
-This is problematic if a job is updated and a new status is added with the same name/new ID.
-The script will notify of a conflict only at the 'debug' logging level only,
-because the current list of conflicts is extremely noisy.
-So until better state-tracking between game patches is implemented,
-the only other method to determine if a job effect has been replaced with a new status ID
-is if the jobs module stops properly tracking the buff, or if someone notices in game data.
-
-Tf a job status effect has been reassigned a new statuus ID in game,
-make sure to update `knownMapping` in `gen_effect_id` with the new ID,
-and re-run the script.
 
 #### hunt data
 
@@ -98,7 +84,7 @@ The `gen_zone_id_and_info` script usually needs special handling.
 
 The concept of "zones" and "zone names" in cactbot is a bit of an amalgam.
 The ID used in cactbot for each zone corresponds to the zone change event,
-and is derived from the `TerritoryType.ID` column.  
+and is derived from the `TerritoryType.ID` column.
 Names for that zone, however, may come from `ContentFinderCondition` or `PlaceName`.
 The names for overworld/town zones, for example, are determined differently
 than the names for raid zones.
@@ -235,7 +221,7 @@ See: <https://github.com/quisquous/cactbot/pull/5824/files>
 
 The reason for this is so we can maintain working triggers and timelines
 for Chinese and Korean users who have not updated to the new patch
-and are still using the older content.  
+and are still using the older content.
 At the same time, we can now independently modify the triggers and timelines
 for the new content (since it may have changed).
 

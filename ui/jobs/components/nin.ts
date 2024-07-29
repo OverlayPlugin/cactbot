@@ -1,4 +1,4 @@
-import EffectId from '../../../resources/effect_id';
+import Status from '../../../resources/sheet_status';
 import TimerBar from '../../../resources/timerbar';
 import TimerBox from '../../../resources/timerbox';
 import { JobDetail } from '../../../types/event';
@@ -52,7 +52,7 @@ export class NINComponent extends BaseComponent {
   override onYouGainEffect(id: string): void {
     switch (id) {
       // Ninjutsu's cooldown begins to countdown at the first mudra.
-      case EffectId.Mudra: {
+      case Status['1F0'].id: {
         if (!this.mudraTriggerCd)
           return;
         if (this.ninjutsu.duration === null)
@@ -66,7 +66,7 @@ export class NINComponent extends BaseComponent {
         this.mudraTriggerCd = false;
         break;
       }
-      case EffectId.Kassatsu:
+      case Status['1F1'].id:
         this.mudraTriggerCd = false;
         break;
     }
@@ -74,9 +74,9 @@ export class NINComponent extends BaseComponent {
   // On each mudra, Mudra effect will be gain once,
   // use mudraTriggerCd to tell that whether bars mudra trigger cooldown.
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.Mudra)
+    if (id === Status['1F0'].id)
       this.mudraTriggerCd = true;
-    if (id === EffectId.Kassatsu)
+    if (id === Status['1F1'].id)
       this.mudraTriggerCd = true;
   }
 
@@ -197,7 +197,7 @@ export class NIN6xComponent extends BaseComponent {
   override onYouGainEffect(id: string): void {
     switch (id) {
       // Ninjutsu's cooldown begins to countdown at the first mudra.
-      case EffectId.Mudra: {
+      case Status['1F0'].id: {
         if (!this.mudraTriggerCd)
           return;
         if (this.ninjutsu.duration === null)
@@ -211,7 +211,7 @@ export class NIN6xComponent extends BaseComponent {
         this.mudraTriggerCd = false;
         break;
       }
-      case EffectId.Kassatsu:
+      case Status['1F1'].id:
         this.mudraTriggerCd = false;
         break;
     }
@@ -219,9 +219,9 @@ export class NIN6xComponent extends BaseComponent {
   // On each mudra, Mudra effect will be gain once,
   // use mudraTriggerCd to tell that whether bars mudra trigger cooldown.
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.Mudra)
+    if (id === Status['1F0'].id)
       this.mudraTriggerCd = true;
-    if (id === EffectId.Kassatsu)
+    if (id === Status['1F1'].id)
       this.mudraTriggerCd = true;
   }
 
