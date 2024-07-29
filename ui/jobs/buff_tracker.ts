@@ -1,4 +1,3 @@
-import EffectId from '../../resources/effect_id';
 import arcaneCircleImage from '../../resources/ffxiv/status/arcane-circle.png';
 import arrowImage from '../../resources/ffxiv/status/arrow.png';
 import astralImage from '../../resources/ffxiv/status/astral.png';
@@ -33,7 +32,7 @@ import PartyTracker from '../../resources/party';
 import WidgetList from '../../resources/widget_list';
 import { NetMatches } from '../../types/net_matches';
 
-import { kAbility } from './constants';
+import { EffectId, kAbility } from './constants';
 import { FfxivVersion } from './jobs';
 import { JobsOptions } from './jobs_options';
 import { makeAuraTimerIcon } from './utils';
