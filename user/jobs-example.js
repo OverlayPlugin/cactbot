@@ -25,7 +25,6 @@ Options.DrkLowMPThreshold = 2999;
 Options.BlmMediumMPThreshold = 3999;
 Options.BlmLowMPThreshold = 2399;
 
-
 const kRed =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAySURBVEhL7c0xEQAgDAAxhHSsf2d4QMJPbLnLnnNnvxIkQRIkQRIkQRIkQRIkQfoczD4cGLQ9QOmZGwAAAABJRU5ErkJggg==';
 
