@@ -1,0 +1,254 @@
+### Alexandria
+
+hideall "--Reset--"
+hideall "--sync--"
+
+
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~#
+# Antivirus X #
+#~~~~~~~~~~~~~#
+
+# --ii 8E24
+
+# The Volatile Memory Cache will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1104" } window 1000,1
+1013.1 "--sync--" Ability { id: "8E1A", source: "Antivirus X" } # Immune Response cast
+1014.1 "Immune Response (front)" Ability { id: "8E1B", source: "Antivirus X" }
+1023.2 "--sync--" Ability { id: "8E1C", source: "Antivirus X" } # Immune Response cast
+1024.2 "Immune Response (sides)" Ability { id: "8E1D", source: "Antivirus X" }
+1041.4 "Pathocircuit Purge/Pathocross Purge 1" Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1044.0 "Pathocircuit Purge/Pathocross Purge 2" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1046.4 "Pathocircuit Purge/Pathocross Purge 3" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1048.8 "Pathocircuit Purge/Pathocross Purge 4" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1051.2 "Pathocircuit Purge/Pathocross Purge 5" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1054.2 "--sync--" Ability { id: ["8E1A", "8E1C"], source: "Antivirus X" }
+1055.2 "Immune Response" Ability { id: ["8E1B", "8E1D"], source: "Antivirus X" }
+1063.3 "--sync--" Ability { id: "8E20", source: "Antivirus X" } # Quarantine cast
+1065.3 "Quarantine" Ability { id: "8E22", source: "Antivirus X" }
+1065.3 "Disinfection" Ability { id: "8E21", source: "Antivirus X" }
+
+1081.4 label "antivirusLoop"
+1081.4 "Pathocircuit Purge/Pathocross Purge 1" Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1083.4 "--sync--" Ability { id: ["8E1A", "8E1C"], source: "Antivirus X" } # Immune Response cast
+1084.0 "Pathocircuit Purge/Pathocross Purge 2" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1084.4 "Immune Response" Ability { id: ["8E1B", "8E1D"], source: "Antivirus X" }
+1086.4 "Pathocircuit Purge/Pathocross Purge 3" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1088.8 "Pathocircuit Purge/Pathocross Purge 4" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1091.2 "Pathocircuit Purge/Pathocross Purge 5" #Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] }
+1093.3 "--sync--" Ability { id: ["8E1A", "8E1C"], source: "Antivirus X" } # Immune Response cast
+1094.3 "Immune Response" Ability { id: ["8E1B", "8E1D"], source: "Antivirus X" }
+1101.4 "--sync--" Ability { id: "8E20", source: "Antivirus X" } # Quarantine cast
+1103.4 "Quarantine" Ability { id: "8E22", source: "Antivirus X" }
+1103.4 "Disinfection" Ability { id: "8E21", source: "Antivirus X" }
+1111.5 "Cytolysis" Ability { id: "8E23", source: "Antivirus X" }
+
+1134.6 "Pathocircuit Purge/Pathocross Purge" Ability { id: ["8E1E", "8E1F"], source: ["Interferon R", "Interferon C"] } forcejump "antivirusLoop"
+
+#~~~~~~~~~#
+# Amalgam #
+#~~~~~~~~~#
+
+# -ii 8DF1 8DEA 8DEB 8DEC 98E2 9955
+
+# The Corrupted Memory Cache will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "118F" } window 2000,1
+2011.1 "Electrowave" Ability { id: "8DF2", source: "Amalgam" }
+2019.7 "Disassembly" Ability { id: "8DE3", source: "Amalgam" }
+2034.8 "Supercell Matrix" Ability { id: "98E0", source: "Amalgam" }
+2036.5 "--sync--" Ability { id: "8DE5", source: "Amalgam" }
+2045.5 "Centralized Current" Ability { id: "8DE7", source: "Amalgam" }
+2052.7 "Split Current" Ability { id: "8DE9", source: "Amalgam" }
+2063.7 "Disassembly" Ability { id: "8DE3", source: "Amalgam" }
+2078.8 "Supercell Matrix (triangle)" Ability { id: "98E0", source: "Amalgam" }
+2078.9 "Supercell Matrix (lasers)" Ability { id: "98E2", source: "Amalgam" }
+2080.5 "--sync--" Ability { id: "8DE5", source: "Amalgam" }
+2081.6 "Static Spark" Ability { id: "8DEE", source: "Amalgam" }
+2089.3 "Centralized Current/Split Current" Ability { id: ["8DE7","8DE9"], source: "Amalgam" }
+
+2098.4 label "amalgamLoop"
+2098.4 "Amalgamight" Ability { id: "8DF3", source: "Amalgam" }
+2109.4 "Disassembly" Ability { id: "8DE3", source: "Amalgam" }
+2114.0 "Voltburst 1" #Ability { id: "8DF0", source: "Amalgam" }
+2116.0 "Voltburst 2" #Ability { id: "8DF0", source: "Amalgam" }
+2118.0 "Voltburst 3 " #Ability { id: "8DF0", source: "Amalgam" }
+2124.7 "Supercell Matrix" Ability { id: "98E0", source: "Amalgam" }
+2126.4 "--sync--" Ability { id: "8DE5", source: "Amalgam" }
+2127.5 "Static Spark" Ability { id: "8DEE", source: "Amalgam" }
+2137.9 "Superbolt" Ability { id: "8DED", source: "Amalgam" }
+2149.2 "Ternary Charge (inner)" Ability { id: "9956", source: "Amalgam" }
+2151.2 "Ternary Charge (outer)" Ability { id: "9957", source: "Amalgam" }
+2153.2 "Ternary Charge (corners)" Ability { id: "9958", source: "Amalgam" }
+2156.5 "Centralized Current/Split Current" Ability { id: ["8DE7","8DE9"], source: "Amalgam" }
+2164.6 "Electrowave" Ability { id: "8DF2", source: "Amalgam" }
+
+2171.7 "Amalgamight" Ability { id: "8DF3", source: "Amalgam" } forcejump "amalgamLoop"
+
+#~~~~~~~~~~~~#
+# Eliminator #
+#~~~~~~~~~~~~#
+
+# -ii 8F9C 8FA0 8FAF 8F9E 8F9F 8FAB 8FAF 8FB9 8FBC 994F 9950 9AAF 9AB0
+# -ic "Elimination Claw" "Elimbit" "Lightning Generator"
+
+# It's not entirely clear why there are so many Partition abilities.
+# The general pattern is one self-cast on Eliminator per usage,
+# either a base Partition or a Reconfigured Partition,
+# with the animations and damage being separate abilities.
+# Animations appear to resolve as self-casts as well,
+# while damaging instances start as self-casts but then
+# target either any players in the damage zone or the E0000000 environmental actor.
+
+# 8FA0 and 985F are both used exactly once, on the first Partition.
+# Thereafter, 8F9F + 9951 are used for left-cleave animations + damage,
+# while 8F9E and 9946 are used for right cleaves.
+
+# Reconfigured Partition does not in itself do damage.
+# It's a very short-duration cast with a Partition cast alongside.
+# (That is, even though the visible castbar shows Reconfigured,
+# the actual underlying cast and resolution are all "standard" Partitions.)
+
+# In general, we will try to use the actual damage snapshots
+# for the displayed timeline entries.
+
+# TODO: Determine the full Eliminator intermission sequence to enrage.
+# (Duty support kills the pylons too fast to see the full sequence.)
+
+# Reascension will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1193" } window 3000,1
+3010.1 "Disruption" Ability { id: "8F9D", source: "Eliminator" }
+3013.2 "--center--" Ability { id: "8F9B", source: "Eliminator" }
+3020.5 "Partition" Ability { id: "985F", source: "Eliminator" }
+3030.0 "Partition" Ability { id: "9951", source: "Eliminator" }
+3037.6 "--center--" Ability { id: "8F9B", source: "Eliminator" }
+3042.8 "Subroutine" Ability { id: "8FA4", source: "Eliminator" }
+3052.0 "Terminate" Ability { id: "9ABF", source: "Eliminator" }
+3052.0 "Partition" Ability { id: "9946", source: "Eliminator" }
+3055.3 "--sync--" Ability { id: "8FA6", source: "Eliminator" }
+3060.4 "Subroutine" Ability { id: "8FA7", source: "Eliminator" }
+3069.6 "Halo of Destruction" Ability { id: "9AC0", source: "Eliminator" }
+3069.6 "Partition" Ability { id: ["9946", "9951"], source: "Eliminator" }
+3073.3 "--sync--" Ability { id: "8FA9", source: "Eliminator" }
+3073.4 "Electray" Ability { id: "994B", source: "Eliminator" }
+3075.4 "--sync--" Ability { id: "8FAA", source: "Eliminator" }
+3080.5 "Overexposure" Ability { id: "8FAC", source: "Eliminator" }
+3089.8 "Subroutine" Ability { id: "8FAD", source: "Eliminator" }
+3091.9 "--center--" Ability { id: "8F9B", source: "Eliminator" }
+3091.9 "--untargetable--"
+
+# Intermission
+3103.8 "Halo of Destruction" Ability { id: "9AC0", source: "Eliminator" }
+3107.7 "Terminate" Ability { id: "9ABF", source: "Eliminator" }
+3124.1 "Light of Salvation" Ability { id: "8FB0", source: "Eliminator" }
+3126.1 "--sync--" Ability { id: "8FB2", source: "Eliminator" }
+3131.7 "Light of Devotion" Ability { id: "8FB3", source: "Eliminator" }
+
+
+3143.4 "--sync--" Ability { id: "8FB4", source: "Eliminator" } window 45,10
+3145.4 "--center--" Ability { id: "8F9B", source: "Eliminator" }
+3147.4 "--targetable--"
+3147.4 "--sync--" Ability { id: "8FB5", source: "Eliminator" } # Holo Ark; no damage, visual only
+3157.3 "Holo Ark" Ability { id: "8FB6", source: "Eliminator" }
+
+3168.6 label "eliminatorLoop"
+3168.6 "--center--" Ability { id: "8F9B", source: "Eliminator" }
+3173.9 "Subroutine" Ability { id: "8FAD", source: "Eliminator" }
+3182.0 "Impact" Ability { id: "8FBA", source: "Eliminator" }
+3187.1 "Light of Salvation" Ability { id: "8FB0", source: "Eliminator" }
+3191.9 "Partition" Ability { id: ["9946", "9951"], source: "Eliminator" }
+3194.5 "--sync--" Ability { id: "8FB4", source: "Eliminator" }
+3202.6 "Elimination" Ability { id: "8FBB", source: "Eliminator" }
+3211.9 "Explosion 1" #Ability { id: "9947", source: "Eliminator" }
+3213.2 "Explosion 2" #Ability { id: "9947", source: "Eliminator" }
+3214.5 "Explosion 3" #Ability { id: "9947", source: "Eliminator" }
+3215.5 "--center--" Ability { id: "8F9B", source: "Eliminator" }
+3215.8 "Explosion 4" #Ability { id: "9947", source: "Eliminator" }
+3220.8 "Subroutine" Ability { id: "8FAD", source: "Eliminator" }
+3230.0 "Halo of Destruction" Ability { id: "9AC0", source: "Eliminator" }
+3230.0 "Partition" Ability { id: ["9946", "9951"], source: "Eliminator" }
+3232.0 "Terminate" Ability { id: "9ABF", source: "Eliminator" }
+3235.6 "--sync--" Ability { id: "8FB4", source: "Eliminator" }
+3242.6 "Disruption" Ability { id: "8F9D", source: "Eliminator" }
+
+3248.7 "--center--" Ability { id: "8F9B", source: "Eliminator" } forcejump "eliminatorLoop"
+
+### ALL ENCOUNTER ABILITIES
+
+### Antivirus X
+# 8E1A Immune Response
+# 8E1B Immune Response
+# 8E1C Immune Response
+# 8E1D Immune Response
+# 8E1E Pathocircuit Purge
+# 8E1F Pathocross Purge
+# 8E20 Quarantine
+# 8E21 Disinfection
+# 8E22 Quarantine
+# 8E23 Cytolysis
+# 8E24 [auto-attack]
+
+### AMALGAM
+# 368 attack
+# 8DE3 Disassembly
+# 8DE5 --sync-- (recombine)
+# 8DE7 Centralized Current
+# 8DE9 Split Current
+# 8DEA Split Current
+# 8DEB Split Current
+# 8DEC Superbolt
+# 8DED Superbolt
+# 8DEE Static Spark
+# 8DF0 Voltburst
+# 8DF1 Electrowave
+# 8DF2 Electrowave
+# 8DF3 Amalgamight
+# 98E0 Supercell Matrix
+# 98E2 Supercell Matrix
+# 9955 Ternary Charge
+# 9956 Ternary Charge
+# 9957 Ternary Charge
+# 9958 Ternary Charge
+
+# ALL ENCOUNTER ABILITIES
+# 8F9B --center--
+# 8F9C --sync--
+# 8F9D Disruption
+# 8F9E Partition
+# 8F9F Partition
+# 8FA0 Partition
+# 8FA4 Subroutine
+# 8FA5 Terminate
+# 8FA6 --sync--
+# 8FA7 Subroutine
+# 8FA8 Halo of Destruction
+# 8FA9 --sync--
+# 8FAA --sync--
+# 8FAB Overexposure
+# 8FAC Overexposure
+# 8FAD Subroutine
+# 8FAE Light of Salvation
+# 8FAF --sync--
+# 8FB0 Light of Salvation
+# 8FB2 --sync--
+# 8FB4 --sync--
+# 8FB5 Holo Ark
+# 8FB6 Holo Ark
+# 8FB7 [auto-attack]
+# 8FB8 Compression
+# 8FB9 Compression
+# 8FBA Impact
+# 8FBB Elimination
+# 8FBC Elimination
+# 985F Partition
+# 9946 Partition
+# 9947 Explosion
+# 994B Electray
+# 994F Reconfigured Partition
+# 9950 Reconfigured Partition
+# 9951 Partition
+# 9AAF Partition
+# 9ABF Terminate
+# 9AC0 Halo of Destruction
