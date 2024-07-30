@@ -35,6 +35,7 @@ const triggerSet: TriggerSet<Data> = {
     en: 'The Palace of the Dead (All Floors)',
     de: 'Palast der Toten (Alle Ebenen)',
     fr: 'Le palais des morts (Tous les étages)',
+    ja: '死者の宮殿 (全階層)',
     cn: '死者宫殿 (全楼层)',
     ko: '망자의 궁전 (전체 층)',
   },
