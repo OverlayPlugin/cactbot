@@ -4,7 +4,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-
 // TODO: Improve the Purge sequence calls to be actively timed.
 // TODO: Handle overlaps between Purge and Immune Response
 
@@ -47,7 +46,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => {
         const call = matches.name === 'Interferon C' ? 'Avoid' : 'In';
         data.interferonCalls.push(call);
-      }
+      },
     },
     {
       id: 'Alexandria AntivirusX Interferon Call',
@@ -57,8 +56,8 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 15,
       infoText: (data, _matches, output) => {
         if (data.interferonCalls.length !== 5)
-            return;
-          return output.combo!({ calls: data.interferonCalls.join(output.separator!()) });
+          return;
+        return output.combo!({ calls: data.interferonCalls.join(output.separator!()) });
       },
       run: (data) => {
         if (data.interferonCalls.length === 5) {
@@ -279,7 +278,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Centralized Current/Split Current': 'Centralized/Split Current',
         'Pathocircuit Purge/Pathocross Purge': 'Purge',
-      }
+      },
     },
   ],
 };
