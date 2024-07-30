@@ -37,7 +37,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Alexandria AntivirusX Immune Response Back',
       type: 'StartsUsing',
-      netRegex: { id: '8E1B', source: 'Antivirus X', capture: false },
+      netRegex: { id: '8E1C', source: 'Antivirus X', capture: false },
       response: Responses.goFront(),
     },
     {
