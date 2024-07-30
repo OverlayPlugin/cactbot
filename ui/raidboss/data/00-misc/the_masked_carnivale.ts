@@ -1391,7 +1391,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Away from boss => Stop Everything',
           de: 'Weg vom Boss => Stoppe alles',
           fr: 'Éloignez-vous du boss => Arrêtez tout',
-          ja: 'ボスから離れる => 動かない',
+          ja: 'ボスから離れる => 動くな',
           cn: '远离BOSS => 停停停',
           ko: '보스와 멀리 떨어지기 => 행동 멈추기',
         },
