@@ -244,6 +244,7 @@ export default {
     en: 'Stacks',
     de: 'Sammeln',
     fr: 'Package',
+    ja: '頭割り',
     cn: '分摊',
     ko: '쉐어',
   },
