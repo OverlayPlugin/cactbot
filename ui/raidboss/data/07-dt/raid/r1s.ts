@@ -34,7 +34,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R1S Bloody Scratch',
       type: 'StartsUsing',
       netRegex: { id: '9494', source: 'Black Cat', capture: false },
-      response: Responses.aoe(),
+      response: Responses.bigAoe(),
     },
   ],
 };
