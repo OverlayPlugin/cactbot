@@ -12,6 +12,7 @@ Options.Triggers.push({
           en: 'Stack (ignore adds)',
           de: 'Sammeln (Adds ignorieren)',
           fr: 'Packez-vous: ne tuez pas les Adds',
+          ja: '集合 (雑魚無視)',
           cn: '集合 (忽略小怪)',
           ko: '모이기 (쫄은 무시)',
         },

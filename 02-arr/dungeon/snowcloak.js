@@ -12,6 +12,7 @@ Options.Triggers.push({
           en: 'Hide behind Ice',
           de: 'Hinter dem Eis verstecken',
           fr: 'Cachez vous derrière un pilier de glace',
+          ja: '氷柱の後ろに',
           cn: '躲在冰柱后',
           ko: '얼음 뒤에 숨기',
         },
