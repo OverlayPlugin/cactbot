@@ -144,13 +144,9 @@ export class SAMComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.fuka.valuescale = gcdSkill;
     this.fuka.threshold = gcdSkill * 6;
-    this.fugetsu.valuescale = gcdSkill;
     this.fugetsu.threshold = gcdSkill * 6;
-    this.tsubameGaeshi.valuescale = gcdSkill;
     this.tsubameGaeshi.threshold = this.ffxivVersion < 700 ? gcdSkill * 4 : gcdSkill + 1;
-    this.higanbana.valuescale = gcdSkill;
     this.higanbana.threshold = gcdSkill * 4;
   }
 

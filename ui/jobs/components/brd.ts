@@ -180,10 +180,7 @@ export class BRDComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.biteBox.valuescale = gcdSkill;
     this.biteBox.threshold = gcdSkill * 2;
-    this.songBox.valuescale = gcdSkill;
-    this.empyrealBox.valuescale = gcdSkill;
     this.empyrealBox.threshold = gcdSkill;
   }
 

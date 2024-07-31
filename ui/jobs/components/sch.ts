@@ -103,10 +103,7 @@ export class SCHComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.bioBox.valuescale = gcdSpell;
     this.bioBox.threshold = gcdSpell + 1;
-    this.aetherflowBox.valuescale = gcdSpell;
-    this.lucidBox.valuescale = gcdSpell;
     this.lucidBox.threshold = gcdSpell + 1;
   }
 
