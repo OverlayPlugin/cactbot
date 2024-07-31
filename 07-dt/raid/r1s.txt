@@ -1,8 +1,217 @@
 ### Arcadion (R1S): AAC Light-heavyweight M1 Savage
 
+# -ii 98F0 943D 943E 9467 9464 9459 945A 947F 9443 996C 9444 94A6 9442 9B83 9472 9479 948A 948B 948C 948D 948E 948F 9490 9491 9492 9308 9493 9AD0 9AD1
+# -it "Black Cat"
+
+# 98F0 - autoattacks
+# 943D - Quadruple Crossing 0.7s telegraph, pointless
+# 943E - Quadruple Crossing second telegraph castbar, pointless
+# 9467, 9464 - Clone animation change for second One-two Paw cleave
+# 9459 - Leaping Quadruple Crossing 0.7s telegraph, pointless
+# 945A - Leaping Quadruple Crossing second telegraph castbar, pointless
+# 947F - Clone Quadruple Swipe hidden castbar for telegraph/animation
+# 9443, 996C - Mouser telegraphs
+# 9444, 94A6 - Mouser hits
+# 9442 - Mouser end animation
+# 9B83 - Invisible clone uses this for some reason, doesn't do anything
+# 9472, 946F - Leaping One-two Paw clone's cast
+# 9476, 9473 - Leaping One-two Paw clone's jump animation
+# 9479, 9853 - Leaping Quadruple Crossing clone's castbar, pointless
+# 947A - Leaping Quadruple Crossing clone's jump, pointless
+# 947B - Leaping Quadruple Crossing clone's 0.7s telegraph, pointless
+# 947C - Leaping Quadruple Crossing clone's second telegraph castbar, pointless
+# 948A, 948B, 948C, 948D, 948E, 948F, 9490, 9491, 9492, 9493, 9AD0, 9AD1 - Predaceous Pounce telegraphs
+# 9B18, 9B1D, 9488, 9966, 9489 - Predaceous Pounce hits
+
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+# Sync on first boss jump middle, not standard but it works.
+5.2 "--middle--" Ability { id: "9308", source: "Black Cat" }
+13.3 "Quadruple Crossing (cast)" Ability { id: "943C", source: "Black Cat" }
+14.1 "Quadruple Crossing (damage)" Ability { id: "943F", source: "Black Cat" }
+17.1 "Quadruple Crossing (damage)" Ability { id: "943F", source: "Black Cat" }
+20.0 "Quadruple Crossing (damage)" Ability { id: "9440", source: "Black Cat" }
+23.0 "Quadruple Crossing (damage)" Ability { id: "9440", source: "Black Cat" }
+32.4 "Biscuit Maker (First)" Ability { id: "9495", source: "Black Cat" }
+34.4 "Biscuit Maker (Second)" Ability { id: "9496", source: "Black Cat" }
+44.4 "--middle--" Ability { id: "9308", source: "Black Cat" }
+49.4 "Nine Lives" Ability { id: "9461", source: "Black Cat" }
+56.4 "One-two Paw (cast)" Ability { id: ["9439", "9436"], source: "Black Cat" }
+57.4 "One-two Paw (damage)" Ability { id: ["943B", "9437"], source: "Black Cat" }
+60.4 "One-two Paw (damage)" Ability { id: ["943A", "9438"], source: "Black Cat" }
+64.4 "Soulshade" Ability { id: "9462", source: "Black Cat" }
+69.7 "--sync--" Ability { id: "9463", source: "Soulshade" }
+72.7 "--middle--" Ability { id: "9308", source: "Black Cat" }
+78.7 "Nine Lives" Ability { id: "9461", source: "Black Cat" }
+81.7 "One-two Paw (damage)" Ability { id: ["9467", "9465"], source: "Soulshade" }
+84.7 "One-two Paw (damage)" Ability { id: ["9468", "9466"], source: "Soulshade" }
+86.7 "Quadruple Swipe/Double Swipe (cast)" Ability { id: ["945D", "945F"], source: "Black Cat" }
+87.7 "Quadruple Swipe/Double Swipe (damage)" Ability { id: ["945E", "9460"], source: "Black Cat" }
+92.7 "Soulshade" Ability { id: "9462", source: "Black Cat" }
+99.7 "Leaping Quadruple Crossing (cast)" Ability { id: ["9457", "982F"], source: "Black Cat" }
+100.1 "--sync--" Ability { id: "9463", source: "Soulshade" }
+100.8 "Leaping Quadruple Crossing (jump)" Ability { id: "9458", source: "Black Cat" }
+101.6 "Leaping Quadruple Crossing (damage)" Ability { id: "945B", source: "Black Cat" }
+104.5 "Leaping Quadruple Crossing (damage)" Ability { id: "945B", source: "Black Cat" }
+107.4 "Leaping Quadruple Crossing (damage)" Ability { id: "945C", source: "Black Cat" }
+110.2 "Leaping Quadruple Crossing (damage)" Ability { id: "945C", source: "Black Cat" }
+111.1 "Quadruple Swipe/Double Swipe" Ability { id: ["9480", "9482"], source: "Soulshade" }
+121.8 "Bloody Scratch" Ability { id: "9494", source: "Black Cat" }
+
+# Tiles 1 phase, starting with Mouser
+131.9 "--middle--" Ability { id: "9308", source: "Black Cat" }
+135.3 "Mouser (telegraphs)" StartsUsing { id: "9441", source: "Black Cat" } duration 9.7
+145.0 "Mouser (hits)" Ability { id: "9441", source: "Black Cat" } duration 10.4
+166.0 "Copycat" Ability { id: "9445", source: "Black Cat" }
+175.9 "Elevate and Eviscerate (cast)" Ability { id: ["9446", "9448"], source: "Copy Cat" }
+178.3 "Elevate and Eviscerate (hit)" Ability { id: ["9447", "9449"], source: "Copy Cat" }
+179.2 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+182.1 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+187.1 "Elevate and Eviscerate (cast)" Ability { id: ["9446", "9448"], source: "Copy Cat" }
+189.5 "Elevate and Eviscerate (hit)" Ability { id: ["9447", "9449"], source: "Copy Cat" }
+190.4 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+193.3 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+198.3 "Elevate and Eviscerate (cast)" Ability { id: ["9446", "9448"], source: "Copy Cat" }
+200.7 "Elevate and Eviscerate (hit)" Ability { id: ["9447", "9449"], source: "Copy Cat" }
+201.6 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+202.2 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+209.5 "Elevate and Eviscerate (cast)" Ability { id: ["9446", "9448"], source: "Copy Cat" }
+211.9 "Elevate and Eviscerate (hit)" Ability { id: ["9447", "9449"], source: "Copy Cat" }
+212.8 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+213.4 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+216.1 "--middle--" Ability { id: "9308", source: "Black Cat" }
+223.2 "Biscuit Maker (First)" Ability { id: "9495", source: "Black Cat" }
+225.2 "Biscuit Maker (Second)" Ability { id: "9496", source: "Black Cat" }
+235.2 "Shockwave (cast)" Ability { id: "944B", source: "Black Cat" }
+236.2 "Shockwave (hit)" Ability { id: "944C", source: "Black Cat" }
+240.0 "Grimalkin Gale" Ability { id: "9B84", source: "Black Cat" }
+# End tiles 1 phase
+
+250.3 "--middle--" Ability { id: "9308", source: "Black Cat" }
+255.3 "Nine Lives" Ability { id: "9461", source: "Black Cat" }
+262.3 "Leaping One-two Paw (cast)" Ability { id: ["9450", "944F"], source: "Black Cat" }
+263.3 "Leaping One-two Paw (jump)" Ability { id: ["9454", "9451"], source: "Black Cat" }
+264.1 "Leaping One-two Paw (damage)" Ability { id: ["9456", "9452"], source: "Black Cat" }
+266.1 "Leaping One-two Paw (damage)" Ability { id: ["9455", "9453"], source: "Black Cat" }
+271.3 "Soulshade" Ability { id: "9462", source: "Black Cat" }
+276.3 "Nine Lives" Ability { id: "9461", source: "Black Cat" }
+283.5 "Leaping Quadruple Crossing (cast)" Ability { id: "9457", source: "Black Cat" }
+284.5 "Leaping Quadruple Crossing (jump)" Ability { id: "9458", source: "Black Cat" }
+285.3 "Leaping Quadruple Crossing (damage)" Ability { id: "945B", source: "Black Cat" }
+288.2 "Leaping Quadruple Crossing (damage)" Ability { id: "945B", source: "Black Cat" }
+291.1 "Leaping Quadruple Crossing (damage)" Ability { id: "945C", source: "Black Cat" }
+294.1 "Leaping Quadruple Crossing (damage)" Ability { id: "945C", source: "Black Cat" }
+298.5 "Soulshade" Ability { id: "9462", source: "Black Cat" }
+
+# Two patterns for this mini-phase. One has an earlier sync to match
+311.6 "--sync--" Ability { id: "9463", source: "Soulshade" } jump "pattern2"
+
+# Pattern 1: Half-room cleaves then prox baits
+318.6 label "pattern1"
+318.6 "--sync--" Ability { id: "87A2", source: "Black Cat" }
+323.6 "Tempestuous Tear (cast)" Ability { id: "9483", source: "Black Cat" }
+324.4 "Leaping One-two Paw" Ability { id: "9478", source: "Soulshade" }
+324.4 "Tempestuous Tear (damage)" Ability { id: "9484", source: "Black Cat" }
+326.4 "Leaping One-two Paw" Ability { id: "9477", source: "Soulshade" }
+335.6 "--sync--" Ability { id: "9463", source: "Soulshade" }
+348.7 "Nailchipper (cast)" Ability { id: "9485", source: "Black Cat" }
+349.5 "Leaping Quadruple Crossing" Ability { id: "947D", source: "Soulshade" }
+349.6 "Nailchipper (damage)" Ability { id: "9486", source: "Black Cat" }
+352.4 "Leaping Quadruple Crossing" Ability { id: "947D", source: "Soulshade" }
+355.3 "Leaping Quadruple Crossing" Ability { id: "947E", source: "Soulshade" }
+358.3 "Nailchipper (damage)" Ability { id: "9486", source: "Black Cat" }
+358.3 "Leaping Quadruple Crossing" Ability { id: "947E", source: "Soulshade" }
+369.7 "Bloody Scratch" Ability { id: "9494", source: "Black Cat" } forcejump "tiles2"
+
+# Pattern 2: Prox baits then half-room cleaves
+400.0 label "pattern2"
+400.0 "--sync--" Ability { id: "9463", source: "Soulshade" }
+413.0 "Nailchipper (cast)" Ability { id: "9485", source: "Black Cat" }
+413.8 "Leaping Quadruple Crossing" Ability { id: "947D", source: "Soulshade" }
+413.9 "Nailchipper (damage)" Ability { id: "9486", source: "Black Cat" }
+416.7 "Leaping Quadruple Crossing" Ability { id: "947D", source: "Soulshade" }
+419.7 "Leaping Quadruple Crossing" Ability { id: "947E", source: "Soulshade" }
+422.6 "Nailchipper (damage)" Ability { id: "9486", source: "Black Cat" }
+422.6 "Leaping Quadruple Crossing" Ability { id: "947E", source: "Soulshade" }
+430.9 "--sync--" Ability { id: "9463", source: "Soulshade" }
+438.0 "--sync--" Ability { id: "87A2", source: "Black Cat" }
+443.0 "Tempestuous Tear (cast)" Ability { id: "9483", source: "Black Cat" }
+443.9 "Tempestuous Tear (damage)" Ability { id: "9484", source: "Black Cat" }
+443.9 "Leaping One-two Paw" Ability { id: "9474", source: "Soulshade" }
+445.9 "Leaping One-two Paw" Ability { id: "9475", source: "Soulshade" }
+458.0 "Bloody Scratch" Ability { id: "9494", source: "Black Cat" } forcejump "tiles2"
+
+# Begin tiles 2 phase
+500.0 label "tiles2"
+500.0 "Bloody Scratch" Ability { id: "9494", source: "Black Cat" }
+511.1 "--middle--" Ability { id: "9308", source: "Black Cat" }
+514.6 "Mouser (telegraphs)" StartsUsing { id: "9441", source: "Black Cat" } duration 9.7
+524.3 "Mouser (hits)" Ability { id: "9441", source: "Black Cat" } duration 10.4
+545.4 "Copycat" Ability { id: "9445", source: "Black Cat" }
+551.6 "--middle--" Ability { id: "9308", source: "Black Cat" }
+553.6 "--sync--" Ability { id: "6854", source: "Black Cat" }
+555.2 "Elevate and Eviscerate (cast)" Ability { id: "9448", source: "Copy Cat" }
+557.6 "Elevate and Eviscerate (hit)" Ability { id: "9449", source: "Copy Cat" }
+558.5 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+558.7 "Overshadow/Splintering Nails (cast)" Ability { id: ["9497", "9499"], source: "Black Cat" }
+558.9 "Overshadow/Splintering Nails (damage)" #Ability { id: ["9498", "949A"], source: "Black Cat" }
+558.9 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+564.0 "--middle--" Ability { id: "9308", source: "Black Cat" }
+567.6 "Elevate and Eviscerate (cast)" Ability { id: "9446", source: "Copy Cat" }
+570.0 "Elevate and Eviscerate (hit)" Ability { id: "9447", source: "Copy Cat" }
+570.9 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+571.1 "Overshadow/Splintering Nails (cast)" Ability { id: ["9497", "9499"], source: "Black Cat" }
+572.0 "Overshadow/Splintering Nails (damage)" #Ability { id: ["9498", "949A"], source: "Black Cat" }
+573.8 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+576.5 "--middle--" Ability { id: "9308", source: "Black Cat" }
+580.1 "Elevate and Eviscerate (cast)" Ability { id: "9448", source: "Copy Cat" }
+582.5 "Elevate and Eviscerate (hit)" Ability { id: "9449", source: "Copy Cat" }
+583.4 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+583.5 "Overshadow/Splintering Nails (cast)" Ability { id: ["9497", "9499"], source: "Black Cat" }
+583.8 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+584.2 "Overshadow/Splintering Nails (damage)" #Ability { id: ["9498", "949A"], source: "Black Cat" }
+588.6 "--middle--" Ability { id: "9308", source: "Black Cat" }
+590.6 "--sync--" Ability { id: "6854", source: "Black Cat" }
+592.2 "Elevate and Eviscerate (cast)" Ability { id: "9446", source: "Copy Cat" }
+594.6 "Elevate and Eviscerate (hit)" Ability { id: "9447", source: "Copy Cat" }
+595.5 "Shockwave" Ability { id: "944A", source: "Copy Cat" }
+595.7 "Overshadow/Splintering Nails (cast)" Ability { id: ["9497", "9499"], source: "Black Cat" }
+595.9 "Overshadow/Splintering Nails (damage)" #Ability { id: ["9498", "949A"], source: "Black Cat" }
+598.2 "Impact" Ability { id: ["9953", "9954"], source: "Copy Cat" }
+599.0 "--middle--" Ability { id: "9308", source: "Black Cat" }
+606.0 "Biscuit Maker (First)" Ability { id: "9495", source: "Black Cat" }
+608.1 "Biscuit Maker (Second)" Ability { id: "9496", source: "Black Cat" }
+619.1 "Shockwave (cast)" Ability { id: "944B", source: "Black Cat" }
+620.1 "Shockwave (knockback)" Ability { id: "944C", source: "Black Cat" }
+623.9 "Grimalkin Gale" Ability { id: "9B84", source: "Black Cat" }
+# End tiles 2 phase
+
+634.2 "--middle--" Ability { id: "9308", source: "Black Cat" }
+643.3 "Raining Cats (cast)" Ability { id: "9ABB", source: "Black Cat" }
+644.1 "Raining Cats (stacks)" #Ability { id: "949F", source: "Black Cat" }
+644.1 "Raining Cats (tethers)" #Ability { id: "949D", source: "Black Cat" }
+649.3 "Raining Cats (cast)" Ability { id: "9ABC", source: "Black Cat" }
+650.1 "Raining Cats (stacks)" #Ability { id: "949F", source: "Black Cat" }
+650.1 "Raining Cats (tethers)" #Ability { id: "949D", source: "Black Cat" }
+655.3 "Raining Cats (cast)" Ability { id: "9ABC", source: "Black Cat" }
+656.1 "Raining Cats (stacks)" #Ability { id: "949F", source: "Black Cat" }
+656.1 "Raining Cats (tethers)" #Ability { id: "949D", source: "Black Cat" }
+661.3 "Raining Cats (cast)" Ability { id: "9ABD", source: "Black Cat" }
+662.1 "Raining Cats (stacks)" #Ability { id: "949F", source: "Black Cat" }
+662.1 "Raining Cats (tethers)" #Ability { id: "949D", source: "Black Cat" }
+673.4 "Copycat" Ability { id: "9445", source: "Black Cat" }
+678.5 "Predaceous Pounce (telegraphs)" StartsUsing { id: "9AD3", source: "Copy Cat" } duration 12.7
+688.6 "--middle--" Ability { id: "9308", source: "Black Cat" }
+691.2 "Predaceous Pounce (hits)" Ability { id: "9AD3", source: "Copy Cat" } duration 4.8
+696.0 "One-two Paw (cast)" Ability { id: "9439", source: "Black Cat" }
+696.7 "One-two Paw (damage)" Ability { id: "943B", source: "Black Cat" }
+699.7 "One-two Paw (damage)" Ability { id: "943A", source: "Black Cat" }
+710.7 "--middle--" Ability { id: "9308", source: "Black Cat" }
+# These are pulled from fflogs and manually re-timed, might not be perfectly accurate
+713.8 "Mouser (cast)" StartsUsing { id: "9B8E", source: "Black Cat" } duration 8
+# Enrage ends at 10:02:xxx into pull
+721.8 "Mouser (enrage)" Ability { id: "9B8E", source: "Black Cat" } duration 8.5
