@@ -47,7 +47,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Alexandria Eliminator Elimination Explosion': '9947', // Exploding criscross lasers
   },
   damageFail: {
-    'Alexandria Eliminator Compression': '8FB9', // Inside blue knockback AoE, boss 3 (presumed)
+    'Alexandria Eliminator Compression': '8FB9', // Inside blue knockback AoE, boss 3
   },
   gainsEffectWarn: {
     'Alexandria Eliminator Electrocution': 'C01', // Wall touch, boss 3
