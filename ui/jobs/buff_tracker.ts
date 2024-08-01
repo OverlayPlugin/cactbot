@@ -382,8 +382,9 @@ export class BuffTracker {
       },
       embolden: {
         cooldownAbility: [kAbility.Embolden],
-        gainEffect: [EffectId.Embolden_511, EffectId.EmboldenSelf],
-        loseEffect: [EffectId.Embolden_511, EffectId.EmboldenSelf],
+        // 511 for party, 4D7 for self
+        gainEffect: [EffectId.Embolden_511, EffectId.Embolden_4D7],
+        loseEffect: [EffectId.Embolden_511, EffectId.Embolden_4D7],
         useEffectDuration: true,
         partyOnly: true,
         icon: emboldenImage,
@@ -421,8 +422,9 @@ export class BuffTracker {
         cooldown: 120,
       },
       standardFinish: {
-        gainEffect: [EffectId.StandardFinish_839],
-        loseEffect: [EffectId.StandardFinish_839],
+        // 839 for other, 71D for self
+        gainEffect: [EffectId.StandardFinish_839, EffectId.StandardFinish_71D],
+        loseEffect: [EffectId.StandardFinish_839, EffectId.StandardFinish_71D],
         useEffectDuration: true,
         icon: standardFinishImage,
         // Green.
@@ -464,6 +466,7 @@ export class BuffTracker {
       },
       finale: {
         cooldownAbility: [kAbility.RadiantFinale],
+        // B94 for buff, AA2 for visual effect
         gainEffect: [EffectId.RadiantFinale_B94],
         loseEffect: [EffectId.RadiantFinale_B94],
         useEffectDuration: true,
@@ -552,8 +555,8 @@ export class BuffTracker {
     // Remove them when CN and KO reach 7.0.
     const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
       balance: {
-        gainEffect: [EffectId.TheBalance6x],
-        loseEffect: [EffectId.TheBalance6x],
+        gainEffect: [EffectId.TheBalance_75A],
+        loseEffect: [EffectId.TheBalance_75A],
         useEffectDuration: true,
         icon: balanceImage,
         // Orange.
@@ -561,8 +564,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       spear: {
-        gainEffect: [EffectId.TheSpear6x],
-        loseEffect: [EffectId.TheSpear6x],
+        gainEffect: [EffectId.TheSpear_75D],
+        loseEffect: [EffectId.TheSpear_75D],
         useEffectDuration: true,
         icon: spearImage,
         // Dark Blue.
