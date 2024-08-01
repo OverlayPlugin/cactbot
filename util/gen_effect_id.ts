@@ -109,6 +109,7 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
   const formattedData: OutputEffectId = {};
   const foundNames = new Set();
   const map = new Map<string, number>();
+  const collisionNames = new Set<string>();
 
   log.debug('Processing & assembling data...');
   for (const effect of apiData) {
@@ -116,7 +117,7 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
     const rawName = effect.fields.Name;
     if (rawName === undefined)
       continue;
-    const name = cleanName(rawName);
+    let name = cleanName(rawName);
     // Skip empty strings.
     if (name === '')
       continue;
@@ -135,10 +136,14 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
 
     if (map.has(name)) {
       log.info(
-        `Collision detected: ${name} (IDs: ${id}, ${map.get(name) ?? ''}).  Skipping...`,
+        `Collision detected: ${name} (IDs: ${id}, ${map.get(name) ?? ''}).  Renaming...`,
       );
-      map.delete(name);
-      continue;
+      const oid = map.get(name) ?? 0;
+      if (oid) {
+        map.set(`${name}_${oid.toString(16).toUpperCase()}`, oid);
+      }
+      collisionNames.add(name);
+      name = `${name}_${id.toString(16).toUpperCase()}`;
     }
     if (foundNames.has(name)) {
       log.debug(`Additional collision: ${name} (new ID: ${id}). Skipping...`);
@@ -150,6 +155,11 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
     log.debug(`Adding ${name} (ID: ${id}) to data output.`);
   }
   log.debug('Completed initial pass. Starting post-processing...');
+
+  for (const name of collisionNames) {
+    map.delete(name);
+  }
+  log.debug('Collisions names removed.');
 
   // Make sure everything specified in known_mapping was found in the above loop.
   for (const rawName of Object.keys(knownMapping)) {
