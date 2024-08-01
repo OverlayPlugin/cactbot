@@ -130,7 +130,6 @@ const assembleData = (apiData: XivApiStatus): OutputEffectId => {
     if (rawName in knownMapping) {
       if (id !== knownMapping[rawName]) {
         log.debug(`Conflict with known/static mapping: ${name} (ID: ${id})`);
-        continue;
       }
     }
 

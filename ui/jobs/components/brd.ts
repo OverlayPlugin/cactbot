@@ -109,9 +109,9 @@ export class BRDComponent extends BaseComponent {
     // Log line of getting DoT comes a little late after DoT appear on target,
     // so -0.5s
     switch (id) {
-      case EffectId.Stormbite:
+      case EffectId.Stormbite_4B1:
       case EffectId.Windbite:
-      case EffectId.CausticBite:
+      case EffectId.CausticBite_4B0:
       case EffectId.VenomousBite:
         this.biteBox.duration = 45 - 0.5;
         break;
@@ -190,11 +190,11 @@ export class BRDComponent extends BaseComponent {
   override onYouGainEffect(id: string): void {
     switch (id) {
       case EffectId.StraightShotReady:
-      case EffectId.HawksEye:
+      case EffectId.HawksEye_F15:
         this.straightShotProc.duration = 30 + 1; // time won't go down before animation complete;
         this.hawkeyeselapsed = 0;
         break;
-      case EffectId.Barrage: {
+      case EffectId.Barrage_80: {
         if (this.ffxivVersion < 700)
           break;
         if (this.hawkeyeselapsed !== 31)
@@ -223,12 +223,12 @@ export class BRDComponent extends BaseComponent {
   override onYouLoseEffect(id: string): void {
     switch (id) {
       case EffectId.StraightShotReady:
-      case EffectId.HawksEye:
+      case EffectId.HawksEye_F15:
         this.straightShotProc.duration = 0;
         this.straightShotProc.reset();
         this.hawkeyeselapsed = 31;
         break;
-      case EffectId.Barrage:
+      case EffectId.Barrage_80:
         if (this.ffxivVersion < 700)
           break;
         this.straightShotProc.duration = 31 - this.hawkeyeselapsed - this.straightShotProc.elapsed;

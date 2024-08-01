@@ -139,7 +139,7 @@ export class SAMComponent extends BaseComponent {
   }
 
   override onMobGainsEffectFromYou(id: string): void {
-    if (id === EffectId.Higanbana)
+    if (id === EffectId.Higanbana_4CC)
       this.higanbana.duration = 60 - 0.5; // -0.5s for log line delay
   }
 

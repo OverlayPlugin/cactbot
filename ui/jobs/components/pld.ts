@@ -121,14 +121,14 @@ export class PLDComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.stacksContainer.classList.remove('hide');
       this.setRequiescat(parseInt(matches.count ?? '0'));
     }
   }
 
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.setRequiescat(0);
       this.stacksContainer.classList.add('hide');
     }
@@ -302,7 +302,7 @@ export class PLD6xComponent extends BaseComponent {
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     if (id === EffectId.AtonementReady && this.ffxivVersion < 700)
       this.setAtonement(this.atonementBox, parseInt(matches.count ?? '0'));
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.stacksContainer.classList.remove('hide');
       this.setRequiescat(parseInt(matches.count ?? '0'));
     }
@@ -311,7 +311,7 @@ export class PLD6xComponent extends BaseComponent {
   override onYouLoseEffect(id: string): void {
     if (id === EffectId.AtonementReady && this.ffxivVersion < 700)
       this.setAtonement(this.atonementBox, 0);
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.setRequiescat(0);
       this.stacksContainer.classList.add('hide');
     }

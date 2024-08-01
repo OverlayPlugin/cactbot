@@ -348,8 +348,8 @@ export class BuffTracker {
       },
       mug: {
         cooldownAbility: [kAbility.Mug],
-        mobGainsEffect: EffectId.VulnerabilityUp,
-        mobLosesEffect: EffectId.VulnerabilityUp,
+        mobGainsEffect: EffectId.VulnerabilityUp_27E,
+        mobLosesEffect: EffectId.VulnerabilityUp_27E,
         useEffectDuration: true,
         icon: mugImage,
         // Magenta.
@@ -370,8 +370,8 @@ export class BuffTracker {
       },
       litany: {
         cooldownAbility: [kAbility.BattleLitany],
-        gainEffect: [EffectId.BattleLitany],
-        loseEffect: [EffectId.BattleLitany],
+        gainEffect: [EffectId.BattleLitany_312],
+        loseEffect: [EffectId.BattleLitany_312],
         useEffectDuration: true,
         partyOnly: true,
         icon: battleLitanyImage,
@@ -382,8 +382,8 @@ export class BuffTracker {
       },
       embolden: {
         cooldownAbility: [kAbility.Embolden],
-        gainEffect: [EffectId.Embolden, EffectId.EmboldenSelf],
-        loseEffect: [EffectId.Embolden, EffectId.EmboldenSelf],
+        gainEffect: [EffectId.Embolden_511, EffectId.EmboldenSelf],
+        loseEffect: [EffectId.Embolden_511, EffectId.EmboldenSelf],
         useEffectDuration: true,
         partyOnly: true,
         icon: emboldenImage,
@@ -393,8 +393,8 @@ export class BuffTracker {
         cooldown: 120,
       },
       balance: {
-        gainEffect: [EffectId.TheBalance],
-        loseEffect: [EffectId.TheBalance],
+        gainEffect: [EffectId.TheBalance_F2F],
+        loseEffect: [EffectId.TheBalance_F2F],
         useEffectDuration: true,
         icon: balanceImage,
         // Orange.
@@ -402,8 +402,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       spear: {
-        gainEffect: [EffectId.TheSpear],
-        loseEffect: [EffectId.TheSpear],
+        gainEffect: [EffectId.TheSpear_F31],
+        loseEffect: [EffectId.TheSpear_F31],
         useEffectDuration: true,
         icon: spearImage,
         // Dark Blue.
@@ -421,8 +421,8 @@ export class BuffTracker {
         cooldown: 120,
       },
       standardFinish: {
-        gainEffect: [EffectId.StandardFinish],
-        loseEffect: [EffectId.StandardFinish],
+        gainEffect: [EffectId.StandardFinish_839],
+        loseEffect: [EffectId.StandardFinish_839],
         useEffectDuration: true,
         icon: standardFinishImage,
         // Green.
@@ -440,8 +440,8 @@ export class BuffTracker {
           kAbility.SingleTechnicalFinish,
           kAbility.TechnicalFinish,
         ],
-        gainEffect: [EffectId.TechnicalFinish],
-        loseEffect: [EffectId.TechnicalFinish],
+        gainEffect: [EffectId.TechnicalFinish_71E],
+        loseEffect: [EffectId.TechnicalFinish_71E],
         useEffectDuration: true,
         partyOnly: true,
         icon: technicalFinishImage,
@@ -464,8 +464,8 @@ export class BuffTracker {
       },
       finale: {
         cooldownAbility: [kAbility.RadiantFinale],
-        gainEffect: [EffectId.RadiantFinale],
-        loseEffect: [EffectId.RadiantFinale],
+        gainEffect: [EffectId.RadiantFinale_B94],
+        loseEffect: [EffectId.RadiantFinale_B94],
         useEffectDuration: true,
         partyOnly: true,
         icon: finaleImage,
@@ -476,8 +476,8 @@ export class BuffTracker {
       },
       chain: {
         cooldownAbility: [kAbility.ChainStratagem],
-        mobGainsEffect: EffectId.ChainStratagem,
-        mobLosesEffect: EffectId.ChainStratagem,
+        mobGainsEffect: EffectId.ChainStratagem_4C5,
+        mobLosesEffect: EffectId.ChainStratagem_4C5,
         useEffectDuration: true,
         icon: chainStratagemImage,
         // Blue.
@@ -499,8 +499,8 @@ export class BuffTracker {
       },
       brotherhood: {
         cooldownAbility: [kAbility.Brotherhood],
-        gainEffect: [EffectId.Brotherhood],
-        loseEffect: [EffectId.Brotherhood],
+        gainEffect: [EffectId.Brotherhood_4A1],
+        loseEffect: [EffectId.Brotherhood_4A1],
         useEffectDuration: true,
         partyOnly: true,
         icon: brotherhoodImage,
@@ -511,8 +511,8 @@ export class BuffTracker {
       },
       divination: {
         cooldownAbility: [kAbility.Divination],
-        gainEffect: [EffectId.Divination],
-        loseEffect: [EffectId.Divination],
+        gainEffect: [EffectId.Divination_756],
+        loseEffect: [EffectId.Divination_756],
         useEffectDuration: true,
         partyOnly: true,
         icon: divinationImage,
@@ -570,8 +570,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       arrow: {
-        gainEffect: [EffectId.TheArrow],
-        loseEffect: [EffectId.TheArrow],
+        gainEffect: [EffectId.TheArrow_75C],
+        loseEffect: [EffectId.TheArrow_75C],
         useEffectDuration: true,
         icon: arrowImage,
         // Light Blue.
@@ -579,8 +579,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       bole: {
-        gainEffect: [EffectId.TheBole],
-        loseEffect: [EffectId.TheBole],
+        gainEffect: [EffectId.TheBole_75B],
+        loseEffect: [EffectId.TheBole_75B],
         useEffectDuration: true,
         icon: boleImage,
         // Green.
@@ -588,8 +588,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       ewer: {
-        gainEffect: [EffectId.TheEwer],
-        loseEffect: [EffectId.TheEwer],
+        gainEffect: [EffectId.TheEwer_75E],
+        loseEffect: [EffectId.TheEwer_75E],
         useEffectDuration: true,
         icon: ewerImage,
         // Light Blue.
@@ -597,8 +597,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       spire: {
-        gainEffect: [EffectId.TheSpire],
-        loseEffect: [EffectId.TheSpire],
+        gainEffect: [EffectId.TheSpire_75F],
+        loseEffect: [EffectId.TheSpire_75F],
         useEffectDuration: true,
         icon: spireImage,
         // Yellow.
@@ -606,8 +606,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       ladyOfCrowns: {
-        gainEffect: [EffectId.LadyOfCrowns],
-        loseEffect: [EffectId.LadyOfCrowns],
+        gainEffect: [EffectId.LadyOfCrowns_755],
+        loseEffect: [EffectId.LadyOfCrowns_755],
         useEffectDuration: true,
         icon: ladyOfCrownsImage,
         // Purple.
@@ -615,8 +615,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       lordOfCrowns: {
-        gainEffect: [EffectId.LordOfCrowns],
-        loseEffect: [EffectId.LordOfCrowns],
+        gainEffect: [EffectId.LordOfCrowns_754],
+        loseEffect: [EffectId.LordOfCrowns_754],
         useEffectDuration: true,
         icon: lordOfCrownsImage,
         // Dark Red.
@@ -624,8 +624,8 @@ export class BuffTracker {
         sortKey: 4,
       },
       lefteye: {
-        gainEffect: [EffectId.LeftEye],
-        loseEffect: [EffectId.LeftEye],
+        gainEffect: [EffectId.LeftEye_5AE],
+        loseEffect: [EffectId.LeftEye_5AE],
         useEffectDuration: true,
         icon: dragonSightImage,
         // Orange.
@@ -634,8 +634,8 @@ export class BuffTracker {
         cooldown: 120,
       },
       righteye: {
-        gainEffect: [EffectId.RightEye],
-        loseEffect: [EffectId.RightEye],
+        gainEffect: [EffectId.RightEye_776],
+        loseEffect: [EffectId.RightEye_776],
         useEffectDuration: true,
         icon: dragonSightImage,
         // Orange.
