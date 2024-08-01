@@ -33,6 +33,7 @@ Options.Triggers.push({
         text: {
           en: 'Out + Spread',
           de: 'Raus + Verteilen',
+          cn: '外 + 分散',
         },
       },
     },
@@ -45,6 +46,7 @@ Options.Triggers.push({
         text: {
           en: 'In + Spread',
           de: 'Rein + Verteilen',
+          cn: '内 + 分散',
         },
       },
     },
@@ -57,6 +59,7 @@ Options.Triggers.push({
         text: {
           en: 'Away + Spread',
           de: 'Weg + Verteilen',
+          cn: '远离 + 分散',
         },
       },
     },
@@ -69,6 +72,7 @@ Options.Triggers.push({
         text: {
           en: 'Knockback + Spread',
           de: 'Rückstoß + Verteilen',
+          cn: '击退 + 分散',
         },
       },
     },
@@ -86,6 +90,7 @@ Options.Triggers.push({
         getHit: {
           en: 'Get hit by mist',
           de: 'Werde vom Nebel getroffen',
+          cn: '吃连线分身半场刀',
         },
       },
     },
@@ -98,6 +103,7 @@ Options.Triggers.push({
         text: {
           en: 'Away + Partners',
           de: 'Weg + Partner',
+          cn: '远离 + 分摊',
         },
       },
     },
@@ -110,6 +116,7 @@ Options.Triggers.push({
         text: {
           en: 'Knockback + Partners',
           de: 'Rückstoß + Partner',
+          cn: '击退 + 分摊',
         },
       },
     },
@@ -122,6 +129,7 @@ Options.Triggers.push({
         text: {
           en: 'Out + Partners',
           de: 'Raus + Partner',
+          cn: '外 + 分摊',
         },
       },
     },
@@ -134,6 +142,7 @@ Options.Triggers.push({
         text: {
           en: 'In + Partners',
           de: 'Rein + Partner',
+          cn: '内 + 分摊',
         },
       },
     },
@@ -147,6 +156,7 @@ Options.Triggers.push({
         text: {
           en: 'Short Fuse',
           de: 'Kurze Lunte',
+          cn: '短引线',
         },
       },
     },
@@ -160,6 +170,7 @@ Options.Triggers.push({
         text: {
           en: 'Long Fuse',
           de: 'Lange Lunte',
+          cn: '长引线',
         },
       },
     },
@@ -177,10 +188,12 @@ Options.Triggers.push({
         short: {
           en: 'Short Fuse',
           de: 'Kurze Lunte',
+          cn: '短引线',
         },
         long: {
           en: 'Long Fuse',
           de: 'Lange Lunte',
+          cn: '长引线',
         },
       },
     },

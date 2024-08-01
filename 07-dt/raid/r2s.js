@@ -68,6 +68,7 @@ Options.Triggers.push({
         text: {
           en: 'Stored Partners',
           de: 'Gespeichert: Partner',
+          cn: '存储分摊',
         },
       },
     },
@@ -81,6 +82,7 @@ Options.Triggers.push({
         text: {
           en: 'Stored Spread',
           de: 'Gespeichert: Verteilen',
+          cn: '存储分散',
         },
       },
     },
@@ -94,6 +96,7 @@ Options.Triggers.push({
         text: {
           en: 'Stored Partners',
           de: 'Gespeichert: Partner',
+          cn: '存储分摊',
         },
       },
     },
@@ -107,6 +110,7 @@ Options.Triggers.push({
         text: {
           en: 'Stored Spread',
           de: 'Gespeichert: Verteilen',
+          cn: '存储分散',
         },
       },
     },
@@ -136,10 +140,12 @@ Options.Triggers.push({
         spread: {
           en: 'Spread',
           de: 'Verteilen',
+          cn: '分散',
         },
         partners: {
           en: 'Partners',
           de: 'Partner',
+          cn: '分摊',
         },
         unknown: Outputs.unknown,
       },
@@ -190,6 +196,7 @@ Options.Triggers.push({
         text: {
           en: 'Under Intercards => Out => Cards',
           de: 'Rein Interkardinal => Raus => Kardinal',
+          cn: '内斜角 => 外斜角 => 外正点',
         },
       },
     },
@@ -203,6 +210,7 @@ Options.Triggers.push({
         text: {
           en: 'Out Cards => Intercards => Under',
           de: 'Raus Kardinal => Interkardinal => Rein',
+          cn: '外正点 => 外斜角 => 内斜角',
         },
       },
     },
