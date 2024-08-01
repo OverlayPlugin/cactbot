@@ -12,7 +12,6 @@ export class VPRComponent extends BaseComponent {
   rattlingCoil: ResourceBox;
   serpentOfferings: ResourceBox;
   comboTimer: TimerBar;
-  noxiousGnashTimer: TimerBox;
   huntersInstinctTimer: TimerBox;
   swiftscaledTimer: TimerBox;
   dreadComboTimer: TimerBox;
@@ -70,11 +69,6 @@ export class VPRComponent extends BaseComponent {
     this.comboTimer = this.bars.addTimerBar({
       id: 'vpr-timers-combo',
       fgColor: 'combo-color',
-    });
-
-    this.noxiousGnashTimer = this.bars.addProcBox({
-      id: 'vpr-timers-noxious-gnash',
-      fgColor: 'vpr-color-noxious-gnash',
     });
 
     this.huntersInstinctTimer = this.bars.addProcBox({
@@ -218,24 +212,6 @@ export class VPRComponent extends BaseComponent {
     }
   }
 
-  override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    switch (id) {
-      case EffectId.NoxiousGnash: {
-        // FIXME:
-        // Noxious Gnash can be different duration on multiple target,
-        // and this condition will only monitor the longest one.
-        // If you defeat a target with longer Noxious Gnash duration remains
-        // and move to a new or shorter duration target,
-        // This timer will not work well until new Noxious Gnash duration exceed timer.
-        // For the same reason, timer will not reset when target with debuff is defeated.
-        const duration = parseFloat(matches.duration ?? '0') || 0;
-        if (this.noxiousGnashTimer.value < duration)
-          this.noxiousGnashTimer.duration = duration - 0.5; // debuff delay
-        break;
-      }
-    }
-  }
-
   override onJobDetailUpdate(jobDetail: JobDetail['VPR']): void {
     this.rattlingCoil.innerText = jobDetail.rattlingCoilStacks.toString();
     this.rattlingCoil.parentNode.classList.toggle('pulse', jobDetail.rattlingCoilStacks === 3);
@@ -254,7 +230,6 @@ export class VPRComponent extends BaseComponent {
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
     // Can safely use Reawaken than use Dread Combo to extend buffs
-    this.noxiousGnashTimer.threshold = gcdSkill * 5 + 1;
     this.huntersInstinctTimer.threshold = gcdSkill * 8 + 1;
     this.swiftscaledTimer.threshold = gcdSkill * 8 + 1;
     this.dreadComboTimer.threshold = gcdSkill * 5 + 1;
@@ -262,7 +237,6 @@ export class VPRComponent extends BaseComponent {
 
   override reset(): void {
     this.rattlingCoil.innerText = '0';
-    this.noxiousGnashTimer.duration = 0;
     this.huntersInstinctTimer.duration = 0;
     this.swiftscaledTimer.duration = 0;
     this.vipersight.classList.remove('active');
