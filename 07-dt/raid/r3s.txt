@@ -1,8 +1,147 @@
 ### Arcadion (R3S): AAC Light-heavyweight M3 Savage
 
+# -ii 9A82 9426 9424 93F3
+
+# 9A82 - Autoattacks
+# 9426 - Followup hits for Brutal Impact
+# 9424 - Followup hits for Knuckle Sandwich
+# 93F3 - Fusefield spark explosions
+# 941D - Infernal Spin animation
+# 941E, 9BB0 - Infernal Spin AoEs
+# 9417, 9419, 9418, 941A, 941B - Explosive Rain AoEs
+
+# 93D8/93DA = Lariats, no burning hands
+# 93D9/93DB = Lariats, with burning hands
+
+# 93E0/93DE = Dives, no burning hands
+# 93E1/93DF = Dives, with burning hands
+
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+6.8 "--sync--" StartsUsing { id: "9425", source: "Brute Bomber" } window 7,0
+11.5 "Brutal Impact x4" Ability { id: "9425", source: "Brute Bomber" } duration 3.2
+20.9 "Knuckle Sandwich x4" Ability { id: "9423", source: "Brute Bomber" } duration 3
+28.1 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+37.0 "Quadruple Lariat/Octuple Lariat (cast)" Ability { id: ["93DA", "93D8"], source: "Brute Bomber" }
+37.7 "Blazing Lariat" Ability { id: "93DD", source: "Brute Bomber" }
+37.7 "Quadruple Lariat/Octuple Lariat (damage)" Ability { id: ["93EA", "93E8"], source: "Brute Bomber" }
+47.8 "Octoboom Dive/Quadroboom Dive (cast)" Ability { id: ["93DE", "93E0"], source: "Brute Bomber" }
+48.7 "Octoboom Dive/Quadroboom Dive (damage)" Ability { id: ["93EC", "93F6"], source: "Brute Bomber" }
+51.8 "Diveboom" Ability { id: "93E2", source: "Brute Bomber" }
+52.4 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+60.0 "Brutal Impact x4" Ability { id: "9425", source: "Brute Bomber" } duration 3.2
+
+76.4 "Barbarous Barrage" Ability { id: "93FB", source: "Brute Bomber" }
+86.8 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+87.5 "Explosion" Ability { id: "968E", source: "Brute Bomber" }
+90.5 "Explosion" Ability { id: "93FC", source: "Brute Bomber" }
+93.5 "Explosion" Ability { id: "968F", source: "Brute Bomber" }
+95.5 "Murderous Mist" Ability { id: "93FE", source: "Brute Bomber" }
+102.6 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+
+109.3 "Doping Draught" Ability { id: "9407", source: "Brute Bomber" }
+134.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+142.9 "Quadruple Lariat/Octuple Lariat (cast)" Ability { id: ["93D9", "93DB"], source: "Brute Bomber" }
+143.7 "Blazing Lariat" Ability { id: "93DC", source: "Brute Bomber" }
+143.8 "Quadruple Lariat/Octuple Lariat (damage)" Ability { id: ["93E9", "93EB"], source: "Brute Bomber" }
+153.8 "Octoboom Dive/Quadroboom Dive (cast)" Ability { id: ["93DF", "93E1"], source: "Brute Bomber" }
+154.7 "Octoboom Dive/Quadroboom Dive (damage)" Ability { id: ["93ED", "93F6"], source: "Brute Bomber" }
+157.9 "Diveboom" Ability { id: "93E3", source: "Brute Bomber" }
+158.6 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+166.3 "Brutal Impact x6" Ability { id: "9425", source: "Brute Bomber" } duration 5.2
+177.6 "Knuckle Sandwich" Ability { id: "9423", source: "Brute Bomber" } duration 5.1
+189.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+
+195.4 "Tag Team" Ability { id: "93E7", source: "Brute Bomber" }
+204.6 "Chain Deathmatch" Ability { id: "93E5", source: "Brute Bomber" }
+214.0 "Lariat Combo" Ability { id: "9B35", source: "Brute Distortion" }
+216.9 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+218.3 "Lariat Combo" Ability { id: "9B37", source: "Brute Distortion" }
+225.7 "Quadruple Lariat/Octuple Lariat (cast)" Ability { id: ["93D9", "93DB", "93DA", "93D8"], source: "Brute Bomber" }
+226.5 "Blazing Lariat" #Ability { id: "93DD", source: "Brute Bomber" }
+226.5 "Quadruple Lariat/Octuple Lariat (damage)" Ability { id: ["93E9", "93EB", "93EA", "93E8"], source: "Brute Bomber" }
+233.6 "Brutal Impact x6" Ability { id: "9425", source: "Brute Bomber" } duration 5.2
+246.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+
+253.0 "Final Fusedown" Ability { id: "9406", source: "Brute Bomber" }
+265.1 "Self-Destruct" Ability { id: "9401", source: "Lit Fuse" }
+265.2 "Explosion" Ability { id: "9404", source: "Brute Bomber" }
+270.1 "Self-Destruct" Ability { id: "9402", source: "Lit Fuse" }
+270.2 "Explosion" Ability { id: "9405", source: "Brute Bomber" }
+277.2 "Octoboom Dive/Quadroboom Dive (cast)" Ability { id: ["93DE", "93E0", "93DF", "93E1"], source: "Brute Bomber" }
+278.0 "Octoboom Dive/Quadroboom Dive (damage)" Ability { id: ["93EC", "93F6", "93ED", "93F6"], source: "Brute Bomber" }
+281.2 "Diveboom" Ability { id: "93E2", source: "Brute Bomber" }
+290.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+
+297.0 "Fusefield" Ability { id: "93EE", source: "Brute Bomber" }
+303.1 "Bombarian Flame" Ability { id: "93EF", source: "Brute Bomber" }
+305.3 "--sync--" Ability { id: "93F0", source: "Brute Bomber" }
+305.3 "Mana Explosion x8" duration 30
+345.5 "--sync--" Ability { id: "93F1", source: "Brute Bomber" }
+353.7 "Knuckle Sandwich x8" Ability { id: "9423", source: "Brute Bomber" } duration 5.1
+364.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+
+370.8 "Doping Draught" Ability { id: "9427", source: "Brute Bomber" }
+389.9 "Octoboom Bombarian Special" Ability { id: "9752", source: "Brute Bomber" }
+391.0 "Bombarian Special x10" Ability { id: "940B", source: "Brute Bomber" } duration 19
+413.7 "Bombariboom" Ability { id: "9753", source: "Brute Bomber" }
+418.7 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+425.5 "Fuses of Fury" Ability { id: "93FF", source: "Brute Bomber" }
+
+431.5 "Tag Team" Ability { id: "93E7", source: "Brute Bomber" }
+441.7 "Chain Deathmatch" Ability { id: "93E5", source: "Brute Bomber" }
+444.6 "Self-Destruct" Ability { id: "9401", source: "Lit Fuse" }
+449.6 "Self-Destruct" Ability { id: "9402", source: "Lit Fuse" }
+456.6 "Murderous Mist" Ability { id: "9BD7", source: "Brute Bomber" }
+456.6 "Lariat Combo" Ability { id: "9BED", source: "Brute Distortion" }
+456.6 "Lariat Combo" Ability { id: "9BEE", source: "Brute Distortion" }
+460.9 "Lariat Combo" Ability { id: "9BEF", source: "Brute Distortion" }
+460.9 "Lariat Combo" Ability { id: "9BF0", source: "Brute Distortion" }
+469.3 "Octoboom Dive/Quadroboom Dive (cast)" Ability { id: ["93DE", "93E0", "93DF", "93E1"], source: "Brute Bomber" }
+470.2 "Octoboom Dive/Quadroboom Dive (damage)" Ability { id: ["93EC", "93F6", "93ED", "93F6"], source: "Brute Bomber" }
+473.4 "Diveboom" Ability { id: "93E3", source: "Brute Bomber" }
+474.5 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+482.7 "Brutal Impact x8" Ability { id: "9425", source: "Brute Bomber" } duration 7.3
+496.1 "Knuckle Sandwich x8" Ability { id: "9423", source: "Brute Bomber" } duration 7.4
+508.5 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+
+515.3 "Fuse or Foe" Ability { id: "9403", source: "Brute Bomber" }
+524.7 "Explosive Rain" Ability { id: "9416", source: "Brute Bomber" }
+524.7 "Infernal Spin" Ability { id: "9BAF", source: "Brute Bomber" } duration 6.8
+535.7 "Explosion" Ability { id: "9404", source: "Brute Bomber" }
+536.8 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+540.8 "Explosion" #Ability { id: "9405", source: "Brute Bomber" }
+545.6 "Quadruple Lariat/Octuple Lariat (cast)" Ability { id: ["93D9", "93DB", "93DA", "93D8"], source: "Brute Bomber" }
+546.4 "Blazing Lariat" Ability { id: "93DC", source: "Brute Bomber" }
+546.4 "Quadruple Lariat/Octuple Lariat (damage)" Ability { id: ["93E9", "93EB", "93EA", "93E8"], source: "Brute Bomber" }
+553.7 "Brutal Impact x8" Ability { id: "9425", source: "Brute Bomber" } duration 7.3
+
+573.2 "Barbarous Barrage" Ability { id: "93FB", source: "Brute Bomber" }
+584.2 "Explosion" Ability { id: "968E", source: "Brute Bomber" }
+584.6 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+587.0 "Explosion" #Ability { id: "93FC", source: "Brute Bomber" }
+590.0 "Explosion" Ability { id: "968F", source: "Brute Bomber" }
+592.0 "Lariat Combo" Ability { id: "9AE9", source: "Brute Bomber" }
+593.2 "Lariat Combo" Ability { id: "9AF0", source: "Brute Bomber" }
+597.6 "Lariat Combo" Ability { id: "9AED", source: "Brute Bomber" }
+597.6 "Lariat Combo" Ability { id: "9AF3", source: "Brute Bomber" }
+600.2 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+613.0 "Knuckle Sandwich x8" Ability { id: "9423", source: "Brute Bomber" } duration 7.4
+628.4 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
+
+635.4 "Doping Draught" Ability { id: "9998", source: "Brute Bomber" }
+654.6 "Special Bombarian Special" Ability { id: "942B", source: "Brute Bomber" }
+655.6 "Special Bombarian Special" Ability { id: "942C", source: "Brute Bomber" }
+657.2 "Special Bombarian Special" Ability { id: "942D", source: "Brute Bomber" }
+659.2 "Special Bombarian Special" Ability { id: "942E", source: "Brute Bomber" }
+661.3 "Special Bombarian Special" Ability { id: "942F", source: "Brute Bomber" }
+662.6 "Special Bombarian Special" Ability { id: "9430", source: "Brute Bomber" }
+664.4 "Special Bombarian Special" Ability { id: "9431", source: "Brute Bomber" }
+667.1 "Special Bombarian Special" Ability { id: "9432", source: "Brute Bomber" }
+668.5 "Special Bombarian Special" Ability { id: "9433", source: "Brute Bomber" }
+675.2 "Special Bombarian Special" Ability { id: "9434", source: "Brute Bomber" }
+675.2 "Special Bombarian Special (enrage)" Ability { id: "9435", source: "Brute Bomber" }
