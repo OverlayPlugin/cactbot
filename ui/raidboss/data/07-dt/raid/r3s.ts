@@ -43,6 +43,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out + Spread',
+          cn: '外 + 分散',
         },
       },
     },
@@ -54,6 +55,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In + Spread',
+          cn: '内 + 分散',
         },
       },
     },
@@ -65,6 +67,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away + Spread',
+          cn: '远离 + 分散',
         },
       },
     },
@@ -76,6 +79,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Knockback + Spread',
+          cn: '击退 + 分散',
         },
       },
     },
@@ -92,6 +96,7 @@ const triggerSet: TriggerSet<Data> = {
         getBehind: Outputs.getBehind,
         getHit: {
           en: 'Get hit by mist',
+          cn: '吃连线分身半场刀',
         },
       },
     },
@@ -103,6 +108,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away + Partners',
+          cn: '远离 + 分摊',
         },
       },
     },
@@ -114,6 +120,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Knockback + Partners',
+          cn: '击退 + 分摊',
         },
       },
     },
@@ -125,6 +132,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out + Partners',
+          cn: '外 + 分摊',
         },
       },
     },
@@ -136,6 +144,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In + Partners',
+          cn: '内 + 分摊',
         },
       },
     },
@@ -148,6 +157,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Short Fuse',
+          cn: '短引线',
         },
       },
     },
@@ -160,6 +170,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Long Fuse',
+          cn: '长引线',
         },
       },
     },
@@ -176,9 +187,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         short: {
           en: 'Short Fuse',
+          cn: '短引线',
         },
         long: {
           en: 'Long Fuse',
+          cn: '长引线',
         },
       },
     },
