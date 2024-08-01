@@ -213,7 +213,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Out Kardinal => Intercards => Under',
+          en: 'Out Cards => Intercards => Under',
           de: 'Raus Kardinal => Interkardinal => Rein',
         },
       },
