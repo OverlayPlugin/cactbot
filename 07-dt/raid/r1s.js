@@ -308,6 +308,7 @@ Options.Triggers.push({
         swSeStay: {
           en: '${dir1} ${sep} ${dir2} (Stay)',
           de: '${dir1} ${sep} ${dir2} (Stehen bleiben)',
+          ja: '${dir1} ${sep} ${dir2} (そのまま)',
         },
         separator: {
           en: ' => ',
@@ -353,6 +354,7 @@ Options.Triggers.push({
         text: {
           en: 'Launch Forward (Aim for uncracked tile)',
           de: 'Schlag Vorwärts (Ziel auf eine ganze Fläche)',
+          ja: '前方吹き飛ばし (割れていない床を狙って)',
         },
       },
     },
@@ -366,6 +368,7 @@ Options.Triggers.push({
         text: {
           en: '${target} Launch',
           de: '${target} Start',
+          ja: '${target} に吹き飛ばし',
         },
       },
     },
@@ -379,6 +382,7 @@ Options.Triggers.push({
         text: {
           en: 'Stand on uncracked tile',
           de: 'Steh auf einer ganzen Fläche',
+          ja: '割れてない床に立って',
         },
       },
     },
@@ -392,6 +396,7 @@ Options.Triggers.push({
         text: {
           en: '${target} Stun',
           de: '${target} Betäubung',
+          ja: '${target} にスタン',
         },
       },
     },
@@ -463,7 +468,7 @@ Options.Triggers.push({
           en: 'Role positions',
           de: 'Rollenposition',
           fr: 'Positions par rôle',
-          ja: 'ロール特定位置へ',
+          ja: 'ロールの担当位置へ',
           cn: '去指定位置',
           ko: '직업별 산개위치로',
         },
