@@ -1,8 +1,137 @@
 ### Arcadion (R2S): AAC Light-heavyweight M2 Savage
 
+# -ii 91C8 91B1 91B4 91AE 91AF 91B0 9193 91AB
+
+# 91C8 - Boss autos
+# 91B1, 91B4 - Extra Laceration hits
+# 91AE, 91AF, 91B0 - Animations during Laceration hits
+# 9193 - Poison Sting puddle drop damage. Not the actual puddle spawn
+# 91AB - Big Burst damage from players resolving a/b debuffs in soft enrage
+
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+10.6 "Call Me Honey" Ability { id: "9183", source: "Honey B. Lovely" }
+17.7 "Splash of Venom/Drop of Venom (cast)" Ability { id: ["9184", "9185"], source: "Honey B. Lovely" }
+19.8 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+28.8 "Honey Beeline/Tempting Twist (cast)" Ability { id: ["9186", "9187"], source: "Honey B. Lovely" }
+29.6 "Honey Beeline/Tempting Twist (damage)" Ability { id: ["9AC9", "9ACA"], source: "Honey B. Lovely" }
+34.0 "Splash of Venom/Drop of Venom (damage)" Ability { id: ["9189", "918A"], source: "Honey B. Lovely" }
+40.0 "Drop of Venom/Splash of Venom (cast)" Ability { id: ["9185", "9184"], source: "Honey B. Lovely" }
+47.7 "Tempting Twist/Honey Beeline (cast)" Ability { id: ["9187", "9186"], source: "Honey B. Lovely" }
+48.4 "Tempting Twist/Honey Beeline (damage)" Ability { id: ["9ACA", "9AC9"], source: "Honey B. Lovely" }
+53.0 "Drop of Venom/Splash of Venom (damage)" Ability { id: ["918A", "9189"], source: "Honey B. Lovely" }
+60.0 "Killer Sting/Stinging Slash (cast)" Ability { id: ["919C", "919B"], source: "Honey B. Lovely" }
+61.2 "Killer Sting/Stinging Slash (damage)" Ability { id: ["919E", "919D"], source: "Honey B. Lovely" }
+69.1 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+
+# First Beat
+73.2 "Honey B. Live: 1st Beat (cast)" Ability { id: "9C24", source: "Honey B. Lovely" }
+79.5 "Honey B. Live: 1st Beat (damage)" Ability { id: "9A7F", source: "Honey B. Lovely" }
+87.4 "Centerstage Combo/Outerstage Combo" Ability { id: ["91AC", "91AD"], source: "Honey B. Lovely" }
+88.6 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+91.6 "Laceration" Ability { id: "91B2", source: "Honey B. Lovely" }
+94.9 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+103.0 "Love Me Tender" Ability { id: "919F", source: "Honey B. Lovely" }
+113.2 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+117.2 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+121.2 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+125.2 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+129.2 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+133.2 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+136.3 "Loveseeker (cast)" Ability { id: "9B7D", source: "Honey B. Lovely" }
+137.3 "Loveseeker (damage)" Ability { id: "9B7E", source: "Honey B. Lovely" }
+150.4 "Love Me Tender" Ability { id: "919F", source: "Honey B. Lovely" }
+158.5 "Heartsick" Ability { id: "91A0", source: "Honey B. Lovely" }
+168.6 "Centerstage Combo/Outerstage Combo" Ability { id: ["91AC", "91AD"], source: "Honey B. Lovely" }
+169.8 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+172.8 "Laceration" Ability { id: "91B2", source: "Honey B. Lovely" }
+176.1 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+187.2 "Honey B. Finale" Ability { id: "918F", source: "Honey B. Lovely" }
+# End First Beat
+
+201.4 "Killer Sting/Stinging Slash (cast)" Ability { id: ["919C", "919B"], source: "Honey B. Lovely" }
+202.4 "Killer Sting/Stinging Slash (damage)" Ability { id: ["919E", "919D"], source: "Honey B. Lovely" }
+209.6 "Alarm Pheromones" Ability { id: "917D", source: "Honey B. Lovely" }
+220.2 "Blinding Love" duration 17.5
+243.3 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+
+# Second Beat
+247.6 "Honey B. Live: 2nd Beat" Ability { id: "9C25", source: "Honey B. Lovely" }
+253.9 "Honey B. Live: 2nd Beat" Ability { id: "9C27", source: "Honey B. Lovely" }
+261.8 "Spread Love/Drop of Love (cast)" Ability { id: ["9B08", "9B09"], source: "Honey B. Lovely" }
+271.9 "Love Me Tender" Ability { id: "919F", source: "Honey B. Lovely" }
+276.0 "Heart-Struck" #Ability { id: "91A7", source: "Honey B. Lovely" }
+278.0 "Heart-Struck" #Ability { id: "91A7", source: "Honey B. Lovely" }
+280.0 "Heart-Struck" #Ability { id: "91A7", source: "Honey B. Lovely" }
+280.0 "Heartsick" Ability { id: "91A0", source: "Honey B. Lovely" }
+282.0 "Heart-Struck" #Ability { id: "91A7", source: "Honey B. Lovely" }
+284.0 "Heart-Struck" #Ability { id: "91A7", source: "Honey B. Lovely" }
+286.0 "Heartsore" Ability { id: "91A1", source: "Honey B. Lovely" }
+287.0 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+296.0 "Tempting Twist/Honey Beeline (cast)" Ability { id: ["9B0C", "9B0D"], source: "Honey B. Lovely" }
+296.8 "Tempting Twist/Honey Beeline (damage)" Ability { id: ["9B10", "9B11"], source: "Honey B. Lovely" }
+297.0 "--sync--" Ability { id: "9B0A", source: "Sweetheart" }
+301.2 "Spread Love/Drop of Love (cast)" Ability { id: ["9B0E", "9B0F"], source: "Honey B. Lovely" }
+301.3 "Splinter" Ability { id: "9B0B", source: "Sweetheart" }
+301.6 "--sync--" Ability { id: "918E", source: "Honey B. Lovely" }
+310.2 "Honey B. Finale" Ability { id: "918F", source: "Honey B. Lovely" }
+# End Second Beat
+
+321.4 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+328.5 "Splash of Venom/Drop of Venom (cast)" Ability { id: ["9184", "9185"], source: "Honey B. Lovely" }
+333.6 "Alarm Pheromones" Ability { id: "917D", source: "Honey B. Lovely" }
+341.5 "Poison Sting (cast)" Ability { id: "9194", source: "Honey B. Lovely" }
+341.7 "Poison Sting (drop)" Ability { id: "9195", source: "Honey B. Lovely" }
+343.0 "Blinding Love" duration 25
+346.7 "Poison Sting (drop)" Ability { id: "9195", source: "Honey B. Lovely" }
+351.7 "Poison Sting (drop)" Ability { id: "9195", source: "Honey B. Lovely" }
+356.8 "Poison Sting (drop)" Ability { id: "9195", source: "Honey B. Lovely" }
+367.0 "Bee Sting (cast)" Ability { id: "91A8", source: "Honey B. Lovely" }
+368.0 "Bee Sting (damage)" Ability { id: "91A9", source: "Honey B. Lovely" }
+375.0 "Killer Sting/Stinging Slash (cast)" Ability { id: ["919C", "919B"], source: "Honey B. Lovely" }
+376.2 "Killer Sting/Stinging Slash (damage)" Ability { id: ["919E", "919D"], source: "Honey B. Lovely" }
+388.2 "Tempting Twist/Honey Beeline (cast)" Ability { id: ["9187", "9186"], source: "Honey B. Lovely" }
+389.0 "Tempting Twist/Honey Beeline (damage)" Ability { id: ["9ACA", "9AC9"], source: "Honey B. Lovely" }
+393.4 "Splash of Venom/Drop of Venom (damage)" Ability { id: ["9189", "918A"], source: "Honey B. Lovely" }
+402.4 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+
+# Third Beat
+406.5 "Honey B. Live: 3rd Beat" Ability { id: "9C26", source: "Honey B. Lovely" }
+412.8 "Honey B. Live: 3rd Beat" Ability { id: "9C28", source: "Honey B. Lovely" }
+419.7 "Spread Love/Drop of Love (cast)" Ability { id: ["9B08", "9B09"], source: "Honey B. Lovely" }
+426.8 "Centerstage Combo/Outerstage Combo" Ability { id: ["91AC", "91AD"], source: "Honey B. Lovely" }
+428.0 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+431.0 "Laceration" Ability { id: "91B2", source: "Honey B. Lovely" }
+434.3 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+438.9 "Big Burst" Ability { id: "91B6", source: "Honey B. Lovely" }
+442.2 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+446.4 "Centerstage Combo/Outerstage Combo" Ability { id: ["91AC", "91AD"], source: "Honey B. Lovely" }
+447.6 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+450.6 "Laceration" Ability { id: "91B2", source: "Honey B. Lovely" }
+453.9 "Laceration" Ability { id: "91B3", source: "Honey B. Lovely" }
+458.9 "Big Burst" Ability { id: "91B6", source: "Honey B. Lovely" }
+461.9 "Fracture" Ability { id: "91A3", source: "Honey B. Lovely" }
+471.7 "Tempting Twist/Honey Beeline (cast)" Ability { id: ["9B0C", "9B0D"], source: "Honey B. Lovely" }
+472.5 "Tempting Twist/Honey Beeline (damage)" Ability { id: ["9B10", "9B11"], source: "Honey B. Lovely" }
+472.7 "--sync--" Ability { id: "9B0A", source: "Sweetheart" }
+476.9 "Spread Love/Drop of Love (cast)" Ability { id: ["9B0E", "9B0F"], source: "Honey B. Lovely" }
+477.0 "Splinter" Ability { id: "9B0B", source: "Sweetheart" }
+484.9 "Honey B. Finale" Ability { id: "918F", source: "Honey B. Lovely" }
+# End Third Beat
+
+498.0 "Killer Sting/Stinging Slash (cast)" Ability { id: ["919C", "919B"], source: "Honey B. Lovely" }
+499.2 "Killer Sting/Stinging Slash (damage)" Ability { id: ["919E", "919D"], source: "Honey B. Lovely" }
+508.2 "--middle--" Ability { id: "9163", source: "Honey B. Lovely" }
+511.3 "Rotten Heart (cast)" Ability { id: "91AA", source: "Honey B. Lovely" }
+515.0 "Rotten Heart (damage)" Ability { id: "91D2", source: "Honey B. Lovely" }
+531.5 "Call Me Honey" Ability { id: "9183", source: "Honey B. Lovely" }
+548.6 "Call Me Honey" Ability { id: "9183", source: "Honey B. Lovely" }
+565.7 "Call Me Honey" Ability { id: "9183", source: "Honey B. Lovely" }
+582.9 "Call Me Honey" Ability { id: "9183", source: "Honey B. Lovely" }
+604.9 "Sheer Heart Attack (stun for enrage)" Ability { id: "91B7", source: "Honey B. Lovely" }
+605.9 "--sync--" Ability { id: "9703", source: "Honey B. Lovely" }
+608.1 "Honey B. Finale (enrage)" Ability { id: "91B8", source: "Honey B. Lovely" }
