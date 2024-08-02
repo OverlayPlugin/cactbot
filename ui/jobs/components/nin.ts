@@ -105,10 +105,7 @@ export class NINComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.trickAttack.valuescale = gcdSkill;
-    this.bunshin.valuescale = gcdSkill;
     this.bunshin.threshold = gcdSkill * 8;
-    this.ninjutsu.valuescale = gcdSkill;
     this.ninjutsu.threshold = gcdSkill * 2;
   }
 
@@ -254,10 +251,7 @@ export class NIN6xComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.trickAttack.valuescale = gcdSkill;
-    this.bunshin.valuescale = gcdSkill;
     this.bunshin.threshold = gcdSkill * 8;
-    this.ninjutsu.valuescale = gcdSkill;
     this.ninjutsu.threshold = gcdSkill * 2;
   }
 

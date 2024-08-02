@@ -207,13 +207,9 @@ export class MNKComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.perfectbalanceBox.valuescale = gcdSkill;
     this.perfectbalanceBox.threshold = gcdSkill + 1;
-    this.riddleOfFireBox.valuescale = gcdSkill;
     this.riddleOfFireBox.threshold = gcdSkill + 1;
-    this.riddleOfWindBox.valuescale = gcdSkill;
     this.riddleOfWindBox.threshold = gcdSkill + 1;
-    this.brotherhoodBox.valuescale = gcdSkill;
     this.brotherhoodBox.threshold = gcdSkill + 1;
   }
 

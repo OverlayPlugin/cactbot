@@ -180,13 +180,9 @@ export class MCHComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.drillBox.valuescale = gcdSkill;
     this.drillBox.threshold = gcdSkill * 3 + 1;
-    this.airAnchorBox.valuescale = gcdSkill;
     this.airAnchorBox.threshold = gcdSkill * 3 + 1;
-    this.chainSawBox.valuescale = gcdSkill;
     this.chainSawBox.threshold = gcdSkill * 3 + 1;
-    this.wildFireBox.valuescale = gcdSkill;
     this.wildFireBox.threshold = gcdSkill + 1;
   }
 
