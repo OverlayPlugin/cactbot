@@ -246,7 +246,7 @@ export class VPRComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    // Can safely use Reawaken than use Dread Combo to extend buffs
+    // Can safely use Reawaken than use Vice Combo to extend buffs
     this.huntersInstinctTimer.threshold = gcdSkill * 8 + 1;
     this.swiftscaledTimer.threshold = gcdSkill * 8 + 1;
     this.viceComboTimer.threshold = gcdSkill * 5 + 1;
@@ -254,10 +254,17 @@ export class VPRComponent extends BaseComponent {
 
   override reset(): void {
     this.rattlingCoil.innerText = '0';
+    this.rattlingCoil.parentNode.classList.remove('pulse');
+    this.serpentOfferings.innerText = '0';
+    this.serpentOfferings.parentNode.classList.remove('high', 'active', 'pulse');
+    this.comboTimer.duration = 0;
     this.huntersInstinctTimer.duration = 0;
     this.swiftscaledTimer.duration = 0;
-    this.vipersight.dataset.stacks = '0';
-    this.vipersight.dataset.side = '';
+    this.viceComboTimer.duration = 0;
+    this.Combo = '';
+    this.Venom = '';
+    this.Honed = '';
+    this.refreshVipersight(this.Combo, this.Venom, this.Honed);
     window.clearTimeout(this.tid1);
   }
 }
