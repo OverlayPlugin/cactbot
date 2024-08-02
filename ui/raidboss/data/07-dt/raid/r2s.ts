@@ -214,6 +214,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Under Intercards => Out => Cards',
           de: 'Rein Interkardinal => Raus => Kardinal',
+          ja: '斜め内側 => 外側 => 十字',
           cn: '内斜角 => 外斜角 => 外正点',
         },
       },
