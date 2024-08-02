@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.32.4",
-  "releaseSummary": "full DT jobs support, more arcadion, i18n",
+  "version": "0.32.5",
+  "releaseSummary": "initial savage floors 1-3, jobs fixes",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
