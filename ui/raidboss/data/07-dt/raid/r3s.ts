@@ -147,6 +147,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out + Partners',
           de: 'Raus + Partner',
+          ja: '外側 + ペア',
           cn: '外 + 分摊',
         },
       },
