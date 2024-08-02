@@ -339,7 +339,7 @@ export class BLM6xComponent extends BaseComponent {
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
     switch (id) {
-      case EffectId.Thundercloud:
+      case EffectId.Thundercloud_A4:
         this.thunderProc.duration = parseFloat(matches.duration ?? '0');
         break;
       case EffectId.Firestarter:
@@ -353,7 +353,7 @@ export class BLM6xComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.Thundercloud:
+      case EffectId.Thundercloud_A4:
         this.thunderProc.duration = 0;
         break;
       case EffectId.Firestarter:

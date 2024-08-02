@@ -170,11 +170,11 @@ export class VPRComponent extends BaseComponent {
       // Both buff have an animation lock, + 0.5s
       // (buff time won't go down until animation fully acted)
       // FIXME: Swiftskin's Coil has a little longer animation lock for swiftscaled
-      case EffectId.Swiftscaled:
+      case EffectId.Swiftscaled_E55:
         this.player.speedBuffs.swiftscaled = true;
         this.swiftscaledTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
-      case EffectId.HuntersInstinct:
+      case EffectId.HuntersInstinct_E54:
         this.huntersInstinctTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
       case EffectId.HindsbaneVenom:
@@ -190,11 +190,11 @@ export class VPRComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.Swiftscaled:
+      case EffectId.Swiftscaled_E55:
         this.player.speedBuffs.swiftscaled = false;
         this.swiftscaledTimer.duration = 0;
         break;
-      case EffectId.HuntersInstinct:
+      case EffectId.HuntersInstinct_E54:
         this.huntersInstinctTimer.duration = 0;
         break;
       case EffectId.HindsbaneVenom:
