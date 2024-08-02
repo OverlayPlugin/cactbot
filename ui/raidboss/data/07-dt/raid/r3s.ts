@@ -162,7 +162,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'In + Partners',
           de: 'Rein + Partner',
           ja: '内側 + ペア',
-          cn: '内 + 分摊',
+          cn: '月环 + 分摊',
         },
       },
     },
