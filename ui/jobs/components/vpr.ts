@@ -17,9 +17,27 @@ export class VPRComponent extends BaseComponent {
   dreadComboTimer: TimerBox;
 
   vipersight: HTMLDivElement;
-  currentVenomEffect = '';
-  currentComboAction = '';
+  Combo = '';
+  Venom = '';
+  Honed = '';
   tid1 = 0;
+
+  static comboStage: Record<string, string> = {
+    [kAbility.SteelFangs]: '1',
+    [kAbility.DreadFangs]: '1',
+    [kAbility.HuntersSting]: '2',
+    [kAbility.SwiftskinsSting]: '2',
+    [kAbility.SteelMaw]: '1',
+    [kAbility.DreadMaw]: '1',
+    [kAbility.HuntersBite]: '2',
+    [kAbility.SwiftskinsBite]: '2',
+    ['']: '0',
+  };
+
+  static honedMap: Record<string, string> = {
+    [EffectId.HonedSteel]: 'left',
+    [EffectId.HonedReavers]: 'right',
+  };
 
   static vipersightMap: Record<string, Record<string, 'left' | 'right'>> = {
     // Single target - first skill
@@ -101,14 +119,17 @@ export class VPRComponent extends BaseComponent {
     }
   }
 
-  override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
-    if (id in VPRComponent.vipersightMap && matches.targetId !== 'E0000000') {
-      this.currentComboAction = id;
-      const side = VPRComponent.vipersightMap[id]?.[this.currentVenomEffect];
-      this.vipersight.dataset.side = side ?? 'both';
-      this.vipersight.classList.add('active');
+  refreshVipersight(combo: string, venom: string, honed: string): void {
+    const stage = VPRComponent.comboStage[combo];
+    this.vipersight.dataset.stacks = stage;
+    if (stage !== '0') {
+      this.vipersight.dataset.side = VPRComponent.vipersightMap[combo]?.[venom] ?? 'both';
+    } else {
+      this.vipersight.dataset.side = VPRComponent.honedMap[honed] ?? 'both';
     }
+  }
 
+  override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     switch (id) {
       case kAbility.Dreadwinder:
       case kAbility.PitOfDread:
@@ -122,32 +143,23 @@ export class VPRComponent extends BaseComponent {
       case kAbility.DreadFangs:
       case kAbility.SteelMaw:
       case kAbility.DreadMaw:
-        if (matches.targetId !== 'E0000000') {
-          this.comboTimer.duration = this.comboDuration;
-          this.vipersight.dataset.stacks = '1';
-          window.clearTimeout(this.tid1);
-          this.tid1 = window.setTimeout(() => {
-            this.vipersight.classList.remove('active');
-          }, kComboDelay * 1000);
-        } else {
-          this.comboTimer.duration = 0;
-          this.vipersight.classList.remove('active');
-        }
-        break;
       case kAbility.HuntersSting:
       case kAbility.SwiftskinsSting:
       case kAbility.HuntersBite:
       case kAbility.SwiftskinsBite:
         if (matches.targetId !== 'E0000000') {
           this.comboTimer.duration = this.comboDuration;
-          this.vipersight.dataset.stacks = '2';
+          this.Combo = id;
+          this.refreshVipersight(this.Combo, this.Venom, this.Honed);
           window.clearTimeout(this.tid1);
           this.tid1 = window.setTimeout(() => {
-            this.vipersight.classList.remove('active');
+            this.Combo = '';
+            this.refreshVipersight(this.Combo, this.Venom, this.Honed);
           }, kComboDelay * 1000);
         } else {
           this.comboTimer.duration = 0;
-          this.vipersight.classList.remove('active');
+          this.Combo = '';
+          this.refreshVipersight(this.Combo, this.Venom, this.Honed);
         }
         break;
       case kAbility.FlankstingStrike:
@@ -157,9 +169,8 @@ export class VPRComponent extends BaseComponent {
       case kAbility.JaggedMaw:
       case kAbility.BloodiedMaw:
         this.comboTimer.duration = 0;
-        // Disable Vipersight when player deliver any third combo skill
-        this.vipersight.classList.remove('active');
-        this.vipersight.dataset.stacks = '0';
+        this.Combo = '';
+        this.refreshVipersight(this.Combo, this.Venom, this.Honed);
         window.clearTimeout(this.tid1);
         break;
     }
@@ -183,7 +194,11 @@ export class VPRComponent extends BaseComponent {
       case EffectId.FlankstungVenom:
       case EffectId.GrimhuntersVenom:
       case EffectId.GrimskinsVenom:
-        this.currentVenomEffect = id;
+        this.Venom = id;
+        break;
+      case EffectId.HonedSteel:
+      case EffectId.HonedReavers:
+        this.Honed = id;
         break;
     }
   }
@@ -203,11 +218,13 @@ export class VPRComponent extends BaseComponent {
       case EffectId.FlankstungVenom:
       case EffectId.GrimhuntersVenom:
       case EffectId.GrimskinsVenom:
-        this.currentVenomEffect = '';
-        if (this.vipersight.dataset.stacks !== '0') {
-          this.vipersight.dataset.side = 'both';
-          this.vipersight.classList.add('active');
-        }
+        this.Venom = '';
+        this.refreshVipersight(this.Combo, this.Venom, this.Honed);
+        break;
+      case EffectId.HonedSteel:
+      case EffectId.HonedReavers:
+        this.Honed = '';
+        this.refreshVipersight(this.Combo, this.Venom, this.Honed);
         break;
     }
   }
@@ -239,7 +256,6 @@ export class VPRComponent extends BaseComponent {
     this.rattlingCoil.innerText = '0';
     this.huntersInstinctTimer.duration = 0;
     this.swiftscaledTimer.duration = 0;
-    this.vipersight.classList.remove('active');
     this.vipersight.dataset.stacks = '0';
     this.vipersight.dataset.side = '';
     window.clearTimeout(this.tid1);

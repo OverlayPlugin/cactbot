@@ -442,6 +442,10 @@ div.justbuffs div#procs-container {
   background-color: rgb(255 0 255);
 }
 
+#vpr-stacks-vipersight[data-stacks="0"] {
+  --bg-color: rgb(255 255 0);
+}
+
 #vpr-stacks-vipersight[data-stacks="1"] {
   --bg-color: rgb(255 0 0);
 }
@@ -450,10 +454,10 @@ div.justbuffs div#procs-container {
   --bg-color: rgb(20 200 255);
 }
 
-#vpr-stacks-vipersight.active[data-side="both"] > div.left,
-#vpr-stacks-vipersight.active[data-side="both"] > div.right,
-#vpr-stacks-vipersight.active[data-side="left"] > div.left,
-#vpr-stacks-vipersight.active[data-side="right"] > div.right {
+#vpr-stacks-vipersight[data-side="both"] > div.left,
+#vpr-stacks-vipersight[data-side="both"] > div.right,
+#vpr-stacks-vipersight[data-side="left"] > div.left,
+#vpr-stacks-vipersight[data-side="right"] > div.right {
   background-color: var(--bg-color);
 }
 
