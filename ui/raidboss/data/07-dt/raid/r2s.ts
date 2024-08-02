@@ -156,11 +156,13 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread',
           de: 'Verteilen',
+          ja: '散開',
           cn: '分散',
         },
         partners: {
           en: 'Partners',
           de: 'Partner',
+          ja: 'ペア',
           cn: '分摊',
         },
         unknown: Outputs.unknown,
