@@ -176,6 +176,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Short Fuse',
           de: 'Kurze Lunte',
+          ja: '短い導線',
           cn: '短引线',
         },
       },
@@ -190,6 +191,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Long Fuse',
           de: 'Lange Lunte',
+          ja: '長い導線',
           cn: '长引线',
         },
       },
@@ -208,11 +210,13 @@ const triggerSet: TriggerSet<Data> = {
         short: {
           en: 'Short Fuse',
           de: 'Kurze Lunte',
+          ja: '短い導線',
           cn: '短引线',
         },
         long: {
           en: 'Long Fuse',
           de: 'Lange Lunte',
+          ja: '長い導線',
           cn: '长引线',
         },
       },
