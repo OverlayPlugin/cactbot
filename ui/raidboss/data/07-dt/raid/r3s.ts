@@ -44,6 +44,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out + Spread',
           de: 'Raus + Verteilen',
+          ja: '外側 + 散開',
           cn: '外 + 分散',
         },
       },
