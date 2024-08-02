@@ -80,6 +80,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored Partners',
           de: 'Gespeichert: Partner',
+          ja: 'あとでペア',
           cn: '存储分摊',
         },
       },
@@ -94,6 +95,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored Spread',
           de: 'Gespeichert: Verteilen',
+          ja: 'あとで散開',
           cn: '存储分散',
         },
       },
@@ -108,6 +110,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored Partners',
           de: 'Gespeichert: Partner',
+          ja: 'あとでペア',
           cn: '存储分摊',
         },
       },
@@ -122,6 +125,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored Spread',
           de: 'Gespeichert: Verteilen',
+          ja: 'あとで散開',
           cn: '存储分散',
         },
       },
@@ -152,11 +156,13 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread',
           de: 'Verteilen',
+          ja: '散開',
           cn: '分散',
         },
         partners: {
           en: 'Partners',
           de: 'Partner',
+          ja: 'ペア',
           cn: '分摊',
         },
         unknown: Outputs.unknown,
@@ -208,6 +214,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Under Intercards => Out => Cards',
           de: 'Rein Interkardinal => Raus => Kardinal',
+          ja: '斜め内側 => 外側 => 十字',
           cn: '内斜角 => 外斜角 => 外正点',
         },
       },
@@ -222,6 +229,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out Cards => Intercards => Under',
           de: 'Raus Kardinal => Interkardinal => Rein',
+          ja: '外十字 => 外斜め => 内側',
           cn: '外正点 => 外斜角 => 内斜角',
         },
       },

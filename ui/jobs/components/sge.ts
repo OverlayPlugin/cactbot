@@ -100,7 +100,7 @@ export class SGEComponent extends BaseComponent {
     switch (id) {
       case EffectId.EukrasianDosis:
       case EffectId.EukrasianDosisIi:
-      case EffectId.EukrasianDosisIii:
+      case EffectId.EukrasianDosisIii_A38:
       case EffectId.EukrasianDyskrasia:
         this.eukrasianDosis.duration = parseInt(matches.duration ?? '0', 10) - 0.5;
         break;
@@ -120,13 +120,9 @@ export class SGEComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.eukrasianDosis.valuescale = gcdSpell;
     this.eukrasianDosis.threshold = gcdSpell + 1;
-    this.phlegma.valuescale = gcdSpell;
     this.phlegma.threshold = gcdSpell + 1;
-    this.rhizomata.valuescale = gcdSpell;
     this.rhizomata.threshold = gcdSpell + 1;
-    this.lucidDream.valuescale = gcdSpell;
     this.lucidDream.threshold = gcdSpell + 1;
     // Due to unknown reason, if you sync to below lv45,
     // addersgall is not availble but memory still says you have 3 addersgall.

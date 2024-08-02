@@ -102,9 +102,7 @@ export class RDMComponent extends BaseComponent {
       this.contreSixteBox.duration = this.player.level < 74 ? 45 : 35;
   }
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.flecheBox.valuescale = gcdSpell;
     this.flecheBox.threshold = gcdSpell + 1;
-    this.contreSixteBox.valuescale = gcdSpell;
     this.contreSixteBox.threshold = gcdSpell + 1;
   }
 

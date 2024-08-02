@@ -105,9 +105,7 @@ export class DRGComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.powerSergeBox.valuescale = gcdSkill;
     this.powerSergeBox.threshold = gcdSkill * 4;
-    this.highJumpBox.valuescale = gcdSkill;
     this.highJumpBox.threshold = gcdSkill + 1;
   }
 
@@ -230,9 +228,7 @@ export class DRG6xComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.disembowelBox.valuescale = gcdSkill;
     this.disembowelBox.threshold = gcdSkill * 5;
-    this.highJumpBox.valuescale = gcdSkill;
     this.highJumpBox.threshold = gcdSkill + 1;
   }
 

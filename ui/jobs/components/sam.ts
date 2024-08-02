@@ -139,18 +139,14 @@ export class SAMComponent extends BaseComponent {
   }
 
   override onMobGainsEffectFromYou(id: string): void {
-    if (id === EffectId.Higanbana)
+    if (id === EffectId.Higanbana_4CC)
       this.higanbana.duration = 60 - 0.5; // -0.5s for log line delay
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.fuka.valuescale = gcdSkill;
     this.fuka.threshold = gcdSkill * 6;
-    this.fugetsu.valuescale = gcdSkill;
     this.fugetsu.threshold = gcdSkill * 6;
-    this.tsubameGaeshi.valuescale = gcdSkill;
     this.tsubameGaeshi.threshold = this.ffxivVersion < 700 ? gcdSkill * 4 : gcdSkill + 1;
-    this.higanbana.valuescale = gcdSkill;
     this.higanbana.threshold = gcdSkill * 4;
   }
 
