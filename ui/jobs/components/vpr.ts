@@ -14,7 +14,7 @@ export class VPRComponent extends BaseComponent {
   comboTimer: TimerBar;
   huntersInstinctTimer: TimerBox;
   swiftscaledTimer: TimerBox;
-  dreadComboTimer: TimerBox;
+  viceComboTimer: TimerBox;
 
   vipersight: HTMLDivElement;
   Combo = '';
@@ -99,9 +99,9 @@ export class VPRComponent extends BaseComponent {
       fgColor: 'vpr-color-swiftscaled',
     });
 
-    this.dreadComboTimer = this.bars.addProcBox({
-      id: 'vpr-timers-dreadcombo',
-      fgColor: 'vpr-color-dreadcombo',
+    this.viceComboTimer = this.bars.addProcBox({
+      id: 'vpr-timers-vicecombo',
+      fgColor: 'vpr-color-vicecombo',
     });
 
     const stackContainer = document.createElement('div');
@@ -131,10 +131,10 @@ export class VPRComponent extends BaseComponent {
 
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     switch (id) {
-      case kAbility.Dreadwinder:
-      case kAbility.PitOfDread:
+      case kAbility.Vicewinder:
+      case kAbility.Vicepit:
         if (matches.targetIndex === '0') {
-          this.dreadComboTimer.duration = 40 + (this.dreadComboTimer.value ?? 0);
+          this.viceComboTimer.duration = 40 + (this.viceComboTimer.value ?? 0);
         }
         break;
       // Due to viper auto combo, combo action cannot be used out of combo.
@@ -249,7 +249,7 @@ export class VPRComponent extends BaseComponent {
     // Can safely use Reawaken than use Dread Combo to extend buffs
     this.huntersInstinctTimer.threshold = gcdSkill * 8 + 1;
     this.swiftscaledTimer.threshold = gcdSkill * 8 + 1;
-    this.dreadComboTimer.threshold = gcdSkill * 5 + 1;
+    this.viceComboTimer.threshold = gcdSkill * 5 + 1;
   }
 
   override reset(): void {

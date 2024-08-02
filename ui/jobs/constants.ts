@@ -238,8 +238,8 @@ export const kAbility = {
   SwiftskinsBite: '8739',
   JaggedMaw: '873A',
   BloodiedMaw: '873B',
-  Dreadwinder: '873C',
-  PitOfDread: '873F',
+  Vicewinder: '873C',
+  Vicepit: '873F',
   // BRD
   BattleVoice: '76',
   MagesBallad: '72',
