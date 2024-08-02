@@ -80,7 +80,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored Partners',
           de: 'Gespeichert: Partner',
-          ja: 'あとで頭割り',
+          ja: 'あとでペア',
           cn: '存储分摊',
         },
       },
