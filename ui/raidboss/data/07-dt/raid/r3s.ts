@@ -86,7 +86,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback + Spread',
           de: 'Rückstoß + Verteilen',
-          ja: '吹き飛ばし + 散開',
+          ja: 'ノックバック + 散開',
           cn: '击退 + 分散',
         },
       },
