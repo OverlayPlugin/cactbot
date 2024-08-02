@@ -119,6 +119,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away + Partners',
           de: 'Weg + Partner',
+          ja: '離れて + ペア',
           cn: '远离 + 分摊',
         },
       },
@@ -132,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Knockback + Partners',
           de: 'Rückstoß + Partner',
+          ja: 'ノックバック + ペア',
           cn: '击退 + 分摊',
         },
       },
