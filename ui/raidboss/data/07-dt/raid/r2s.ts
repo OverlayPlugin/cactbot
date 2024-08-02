@@ -125,6 +125,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored Spread',
           de: 'Gespeichert: Verteilen',
+          ja: 'あとで散開',
           cn: '存储分散',
         },
       },
