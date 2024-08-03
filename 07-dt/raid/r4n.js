@@ -423,11 +423,13 @@ Options.Triggers.push({
       outputStrings: {
         outToIn: {
           en: '${dir}, Out => In',
+          de: '${dir}, Raus => Rein',
           fr: '${dir}, Extérieur => Intérieur',
           cn: '${dir}, 远离 => 靠近',
         },
         inToOut: {
           en: '${dir}, In => Out',
+          de: '${dir}, Rein => Raus',
           fr: '${dir}, Intérieur => Extérieur',
           cn: '${dir}, 靠近 => 远离',
         },

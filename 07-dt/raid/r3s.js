@@ -220,6 +220,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Out => In => Knockback => Spread',
+          de: 'Raus => Rein => Rückstoß => Verteilen',
         },
       },
     },
@@ -231,6 +232,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Out => In => Knockback => Partners',
+          de: 'Raus => Rein => Rückstoß => Partner',
         },
       },
     },
