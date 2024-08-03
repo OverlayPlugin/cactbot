@@ -246,6 +246,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out => In => Knockback => Partners',
           de: 'Raus => Rein => Rückstoß => Partner',
+          ja: '外側 => 内側 => ノックバック => ペア',
         },
       },
     },
