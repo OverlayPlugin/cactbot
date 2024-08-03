@@ -86,7 +86,7 @@ hideall "--sync--"
 364.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
 
 370.8 "Doping Draught" Ability { id: "9427", source: "Brute Bomber" }
-389.9 "Octoboom Bombarian Special" Ability { id: "9752", source: "Brute Bomber" }
+389.9 "Octoboom Bombarian Special/Quadroboom Bombarian Special" Ability { id: ["9752", "940A"], source: "Brute Bomber" }
 391.0 "Bombarian Special x10" Ability { id: "940B", source: "Brute Bomber" } duration 19
 413.7 "Bombariboom" Ability { id: "9753", source: "Brute Bomber" }
 418.7 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
