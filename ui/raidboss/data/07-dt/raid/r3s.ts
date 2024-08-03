@@ -233,6 +233,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out => In => Knockback => Spread',
           de: 'Raus => Rein => Rückstoß => Verteilen',
+          ja: '外側 => 内側 => ノックバック => 散開',
         },
       },
     },
