@@ -250,7 +250,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Honey B. Lovely': 'Suzie Summ Honigsüß',
         'Sweetheart': 'honigsüß(?:e|er|es|en) Herz',

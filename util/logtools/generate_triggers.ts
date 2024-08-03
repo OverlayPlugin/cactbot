@@ -1149,6 +1149,7 @@ Offsets: ${allOffsets.sort(numberSort).join(', ')}
       outputStrings: {
         text: {
           en: 'Custom Text',
+          de: 'Benutzerdefinierter Text',
           fr: 'Texte personnalisé',
         },
       },
@@ -1502,6 +1503,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       outputStrings: {
         text: {
           en: 'Custom Text',
+          de: 'Benutzerdefinierter Text',
           fr: 'Texte personnalisé',
         },
       },
@@ -1520,6 +1522,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       outputStrings: {
         text: {
           en: 'Custom Text',
+          de: 'Benutzerdefinierter Text',
           fr: 'Texte personnalisé',
         },
       },

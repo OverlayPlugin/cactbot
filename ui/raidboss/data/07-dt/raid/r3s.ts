@@ -232,6 +232,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out => In => Knockback => Spread',
+          de: 'Raus => Rein => Rückstoß => Verteilen',
         },
       },
     },
@@ -243,6 +244,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out => In => Knockback => Partners',
+          de: 'Raus => Rein => Rückstoß => Partner',
         },
       },
     },
