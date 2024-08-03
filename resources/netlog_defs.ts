@@ -490,7 +490,7 @@ const latestLogDefinitions = {
       6: 7,
       47: 48,
     },
-    blankFields: [6],
+    blankFields: [6, 47, 48],
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
@@ -552,7 +552,7 @@ const latestLogDefinitions = {
       6: 7,
       47: 48,
     },
-    blankFields: [6],
+    blankFields: [6, 47, 48],
     canAnonymize: true,
     firstOptionalField: undefined,
     analysisOptions: {
