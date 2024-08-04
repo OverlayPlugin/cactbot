@@ -95,11 +95,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R3S Barbarous Barrage Knockback',
+      id: 'R3S Barbarous Barrage Uptime Knockback',
       // 15s captures all three tower explosions
       // 12s captures first two tower explosions
       // 9s captures first tower explosion
       type: 'StartsUsing',
+      disabled: true,
       netRegex: { id: '93FB', source: 'Brute Bomber', capture: false },
       delaySeconds: 12,
       response: Responses.knockback(),
