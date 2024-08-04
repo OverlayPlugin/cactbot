@@ -998,20 +998,20 @@ Parsed Log Line Examples:
 
 | Index | Example        | Explanation                                                     |
 |-------|----------------|-----------------------------------------------------------------|
-| 0     | 15             | type id (in hex)                                                |
+| 0     | 21             | type id (in decimal for network, hex for parsed)                |
 | 1     | 10532971       | caster object id                                                |
 | 2     | Tini Poutini   | caster name                                                     |
 | 3     | 07             | ability id                                                      |
 | 4     | Attack         | ability name                                                    |
 | 5     | 40001299       | target object id                                                |
 | 6     | Striking Dummy | target name                                                     |
-| 7-22  | 0              | pairs of action effects (see: [action effects](#action-effects) |
+| 7-22  | F,E578000      | pairs of action effects (see: [action effects](#action-effects) |
 | 23    | 2778           | target current hp                                               |
 | 24    | 2778           | target max hp                                                   |
 | 25    | 0              | target current mp                                               |
 | 26    | 0              | target max mp                                                   |
-| 27    | 1000           | target current tp                                               |
-| 28    | 1000           | target max tp                                                   |
+| 27    | 1000           | unused, formerly target current tp                              |
+| 28    | 1000           | unused, formerly target max tp                                  |
 | 29    | -653.9767      | target x position                                               |
 | 30    | -807.7275      | target y position                                               |
 | 31    | 31.99997       | target z position                                               |
@@ -1019,11 +1019,22 @@ Parsed Log Line Examples:
 | 33    | 74095          | caster max hp                                                   |
 | 34    | 4560           | caster current mp                                               |
 | 35    | 4560           | caster max mp                                                   |
-| 36    | 1000           | caster current tp                                               |
-| 37    | 1000           | caster max tp                                                   |
+| 36    | 1000           | unused, formerly caster current tp                              |
+| 37    | 1000           | unused, formerly caster max tp                                  |
 | 38    | -653.0394      | caster x position                                               |
 | 39    | -807.9677      | caster y position                                               |
 | 40    | 31.99997       | caster z position                                               |
+| 41    | 1.423          | caster heading                                                  |
+| 42    | 12ABC          | sequential ID                                                   |
+| 43    | 0              | target index (0 <= n < target count)                            |
+| 44    | 3              | target count                                                    |
+| 45    | 1023ABCD       | caster owner object id (or 00 if no owner)                      |
+| 46    | Tini Poutini   | caster owner name (or blank if no owner)                        |
+| 47    | 01             | effect display type                                             |
+| 48    | 07             | action id                                                       |
+| 49    | 07             | action animation id                                             |
+| 50    | 1.100          | animation lock (seconds)                                        |
+| 51    | AB23           | cast angle (in hex)                                             |
 
 Network ability lines are a combination of raw network data
 (e.g. the `710003` flags and the `9420000` damage)
