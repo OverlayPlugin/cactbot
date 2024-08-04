@@ -6,6 +6,9 @@ import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    barbarousBarrageKnockback: 'none' | 'first' | 'two' | 'all';
+  };
   phaseTracker: number;
 }
 
@@ -15,6 +18,27 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM3Savage',
   zoneId: ZoneId.AacLightHeavyweightM3Savage,
+  config: [
+    {
+      id: 'barbarousBarrageKnockback',
+      name: {
+        en: 'Barbarous Barrage Uptime Knockback',
+      },
+      comment: {
+        en: 'Select towers to dodge with knockback immunity.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None (No Callout)': 'none',
+          'First Tower': 'first',
+          'First Two Towers (Recommended)': 'two',
+          'All three towers': 'all',
+        },
+      },
+      default: 'none',
+    },
+  ],
   timelineFile: 'r3s.txt',
   initData: () => ({
     phaseTracker: 0,
@@ -96,14 +120,27 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R3S Barbarous Barrage Uptime Knockback',
-      // 15s captures all three tower explosions
-      // 12s captures first two tower explosions
-      // 9s captures first tower explosion
       type: 'StartsUsing',
-      disabled: true,
       netRegex: { id: '93FB', source: 'Brute Bomber', capture: false },
-      delaySeconds: 12,
-      response: Responses.knockback(),
+      delaySeconds: (data) => {
+        switch (data.triggerSetConfig.barbarousBarrageKnockback) {
+          case 'first':
+            return 9;
+          case 'two':
+            return 12;
+          case 'all':
+            return 15;
+          case 'none':
+            return 0;
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.triggerSetConfig.barbarousBarrageKnockback !== 'none')
+          return output.knockback!();
+      },
+      outputStrings: {
+        knockback: Outputs.knockback,
+      },
     },
     {
       id: 'R3S Murderous Mist',
