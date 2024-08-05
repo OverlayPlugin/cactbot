@@ -28,8 +28,6 @@ type LeftRight = 'left' | 'right';
 
 type AetherialId = keyof typeof aetherialAbility;
 type AetherialEffect = 'iceRight' | 'iceLeft' | 'fireRight' | 'fireLeft';
-type ActorModelStateId = keyof typeof actorModelStates;
-type ActorModelState = typeof actorModelStates[ActorModelStateId];
 type MidnightState = 'gun' | 'wings';
 type IonClusterDebuff = 'yellowShort' | 'yellowLong' | 'blueShort' | 'blueLong';
 type SunriseCardinalPair = 'northSouth' | 'eastWest';
@@ -46,7 +44,6 @@ type ReplicaData = {
   [id: string]: {
     location?: DirectionOutput8;
     cardinalFacing?: 'opposite' | 'adjacent';
-    modelState?: ActorModelState;
     cannonColor?: 'yellow' | 'blue';
   };
 };
@@ -60,14 +57,7 @@ const phaseMap: { [id: string]: Phase } = {
 
 const actorControlCategoryMap = {
   'setModelState': '003F',
-  'vfxUnknown49': '0031',
-} as const;
-
-const actorModelStates = {
-  '7': 'gun',
-  '1C': 'towerDash',
-  '1F': 'wings',
-  '39': 'ionCannon',
+  'playActionTimeline': '0197',
 } as const;
 
 const aetherialAbility = {
@@ -79,10 +69,6 @@ const aetherialAbility = {
 
 const isAetherialId = (id: string): id is AetherialId => {
   return id in aetherialAbility;
-};
-
-const isActorModelStateId = (param1: string): param1 is ActorModelStateId => {
-  return Object.keys(actorModelStates).includes(param1);
 };
 
 // Replicas face center, so the half they cleave will render all those intercards unsafe.
@@ -935,23 +921,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R4S Model State Collect',
-      type: 'ActorControlExtra',
-      netRegex: {
-        id: '4.{7}',
-        category: actorControlCategoryMap.setModelState,
-        param1: Object.keys(actorModelStates),
-      },
-      condition: (data) => data.phase !== 'door',
-      run: (data, matches) => {
-        const id = matches.id;
-        const modelStateId = matches.param1;
-        if (!isActorModelStateId(modelStateId))
-          throw new UnreachableCode();
-        (data.replicas[id] ??= {}).modelState = actorModelStates[modelStateId];
-      },
-    },
-    {
       id: 'R4S Azure Thunder',
       type: 'StartsUsing',
       netRegex: { id: '962F', source: 'Wicked Thunder', capture: false },
@@ -1144,42 +1113,42 @@ const triggerSet: TriggerSet<Data> = {
 
     // Midnight Sabbath
     {
-      // ActorControl vfxUnknown49 (0x0031) determines which sets of clones execute first
-      // param1 = F4 (executes first) or F2 (executes second)
+      // ActorControl (category 0x0197) determines the firing order of the adds.
+      // All cardinal adds get one value, and all intercardinal adds get a different value.
+      // The 4 adds to fire first will always get either 11D1 (guns) or 11D3 (wings)
+      // The 4 adds to fire second will always get either 11D2 (guns) or 11D4 (wings)
       id: 'R4S Midnight Sabbath First Adds',
       type: 'ActorControlExtra',
-      netRegex: { id: '4.{7}', category: actorControlCategoryMap.vfxUnknown49, param1: 'F4' },
+      netRegex: {
+        id: '4.{7}',
+        category: actorControlCategoryMap.playActionTimeline,
+        param1: ['11D1', '11D3'],
+      },
       condition: (data) => data.phase === 'midnight',
-      delaySeconds: 0.5, // let the positio/effect collector finish
+      delaySeconds: 0.5, // let the position collector finish
       suppressSeconds: 1, // we only need one
       run: (data, matches) => {
         const id = matches.id;
         const loc = data.replicas[id]?.location;
-        const modelState = data.replicas[id]?.modelState;
-
-        if (loc === undefined || modelState === undefined)
+        if (loc === undefined)
           return;
 
         data.midnightCardFirst = isCardinalDir(loc);
-        data.midnightFirstAdds = modelState === 'wings' ? 'wings' : 'gun';
+        data.midnightFirstAdds = matches.param1 === '11D3' ? 'wings' : 'gun';
       },
     },
     {
       id: 'R4S Midnight Sabbath Second Adds',
       type: 'ActorControlExtra',
-      netRegex: { id: '4.{7}', category: actorControlCategoryMap.vfxUnknown49, param1: 'F2' },
-      condition: (data) => data.phase === 'midnight',
-      delaySeconds: 0.5,
-      suppressSeconds: 1, // we only need one
-      run: (data, matches) => {
-        const id = matches.id;
-        const modelState = data.replicas[id]?.modelState;
-
-        if (modelState === undefined)
-          return;
-
-        data.midnightSecondAdds = modelState === 'wings' ? 'wings' : 'gun';
+      netRegex: {
+        id: '4.{7}',
+        category: actorControlCategoryMap.playActionTimeline,
+        param1: ['11D2', '11D4'],
       },
+      condition: (data) => data.phase === 'midnight',
+      delaySeconds: 0.5, // let the position collector finish
+      suppressSeconds: 1, // we only need one
+      run: (data, matches) => data.midnightSecondAdds = matches.param1 === '11D4' ? 'wings' : 'gun',
     },
     {
       id: 'R4S Concentrated/Scattered Burst 1',
@@ -1187,6 +1156,7 @@ const triggerSet: TriggerSet<Data> = {
       // 962B - Concentrated Burst (Partners => Spread)
       // 962C - Scattered Burst (Spread => Partners)
       netRegex: { id: ['962B', '962C'], source: 'Wicked Thunder' },
+      delaySeconds: 0.2, // cast starts ~1s after the ActorConotrol collectors, so just in case
       alertText: (data, matches, output) => {
         const firstMech = matches.id === '962B' ? 'partners' : 'spread';
         const firstMechStr = output[firstMech]!();
@@ -1219,7 +1189,7 @@ const triggerSet: TriggerSet<Data> = {
         const secondMech = matches.id === '962B' ? 'spread' : 'partners';
         const secondMechStr = output[secondMech]!();
 
-        if (data.midnightCardFirst === undefined || data.midnightFirstAdds === undefined)
+        if (data.midnightCardFirst === undefined || data.midnightSecondAdds === undefined)
           return secondMechStr;
 
         const secondAddsOnCards = !data.midnightCardFirst;
@@ -1381,6 +1351,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
       },
     },
+
     // Sunrise Sabbath
     {
       id: 'R4S Ion Cluster Debuff Initial',
@@ -1418,8 +1389,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R4S Sunrise Sabbath Jumping Clone Collect 1',
       type: 'ActorControlExtra',
+      // '1C' = jumping clone
       netRegex: { id: '4.{7}', category: actorControlCategoryMap.setModelState, param1: '1C' },
-      condition: (data) => data.phase === 'sunrise',
+      condition: (data) => data.phase === 'sunrise' && !data.seenFirstSunrise,
       // they both face opposite or adjacent, so we only need one to resolve the mechanic
       suppressSeconds: 1,
       run: (data, matches) => {
