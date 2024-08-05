@@ -1155,7 +1155,7 @@ const triggerSet: TriggerSet<Data> = {
       // 962B - Concentrated Burst (Partners => Spread)
       // 962C - Scattered Burst (Spread => Partners)
       netRegex: { id: ['962B', '962C'], source: 'Wicked Thunder' },
-      delaySeconds: 0.2, // cast starts ~1s after the ActorConotrol collectors, so just in case
+      delaySeconds: 0.2, // cast starts ~1s after the ActorControl collectors, so just in case
       alertText: (data, matches, output) => {
         const firstMech = matches.id === '962B' ? 'partners' : 'spread';
         const firstMechStr = output[firstMech]!();
