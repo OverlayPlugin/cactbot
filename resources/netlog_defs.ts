@@ -717,12 +717,14 @@ const latestLogDefinitions = {
       targetId: 2,
       target: 3,
       id: 6,
+      data0: 7,
     },
     playerIds: {
       2: 3,
     },
+    possiblePlayerIds: [7],
     canAnonymize: true,
-    firstOptionalField: undefined,
+    firstOptionalField: 7,
     analysisOptions: {
       include: 'all',
       combatantIdFields: 2,
