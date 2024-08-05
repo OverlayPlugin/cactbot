@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash';
+import _ from 'lodash';
 
 import logDefinitions, {
   LogDefFieldIdx,
@@ -12,6 +12,7 @@ import { UnreachableCode } from '../../resources/not_reached';
 import FakeNameGenerator from './fake_name_generator';
 import { Notifier } from './notifier';
 import { ReindexedLogDefs } from './splitter';
+
 
 // TODO: Anonymizer currently finds/replaces player ids (potentially paired with a player name).
 // There are a few edge cases (Countdown/CountdownCancel) where a player name may apepar
@@ -68,11 +69,11 @@ export default class Anonymizer {
   }
 
   isLogDefinition<K extends LogDefinitionName>(def: { name: K }): def is LogDefinition<K> {
-    return isEqual(def, logDefinitions[def.name]);
+    return _.isEqual(def, logDefinitions[def.name]);
   }
 
   isReindexedLogDefs(remap: Partial<ReindexedLogDefs>): remap is ReindexedLogDefs {
-    return Object.values(logDefinitions).every((d) => isEqual(remap[d.type], d));
+    return Object.values(logDefinitions).every((d) => _.isEqual(remap[d.type], d));
   }
 
   processLogDefs(): ReindexedLogDefs {
