@@ -124,6 +124,7 @@ const kPrefixToCategory = {
     de: 'Dawntrail (DT 7.x)',
     fr: 'Dawntrail (DT 7.x)',
     ja: '黄金のレガシー (7.x)',
+    cn: '金曦之遗辉 (7.x)',
   },
   'user': {
     en: 'User Triggers',
