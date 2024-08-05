@@ -232,7 +232,7 @@ const headMarkerData = {
   // Vfx Path: tank_lockon02k1
   tankbuster: '00DA',
   // Vfx Path: lockon8_t0w
-  lineStack: '00F4',
+  nailchipper: '00F4',
   // Vfx Path: loc05sp_05a_se_p
   spreadMarker: '0178',
   // Vfx Path: m0884_vanish_7sec_p1
@@ -352,11 +352,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R1S Headmarker Line Stack',
+      id: 'R1S Headmarker Nailchipper',
       type: 'HeadMarker',
-      netRegex: { id: headMarkerData.lineStack, capture: true },
+      netRegex: { id: headMarkerData.nailchipper, capture: true },
+      durationSeconds: 5,
       suppressSeconds: 5,
-      response: Responses.stackMarkerOn(),
+      alertText: (data, matches, output) => {
+        // Nailchipper (and the associated head marker) either goes on all
+        // support or all dps. If the nailchippers went on the same role
+        // (support or DPS) as the player, then they can't be hit by the
+        // next Quadruple Crossing. If the nailchippers went on the opposite
+        // role, then the player must go in and bait the next quadruple
+        // crossing.
+        if (data.party.isDPS(matches.target))
+          return output.dps!();
+
+        return output.support!();
+      },
+      outputStrings: {
+        support: {
+          en: 'Support out',
+        },
+        dps: {
+          en: 'DPS out',
+        },
+      },
     },
     {
       id: 'R1S Headmarker Spread Markers',
