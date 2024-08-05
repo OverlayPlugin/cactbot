@@ -13,7 +13,6 @@ import FakeNameGenerator from './fake_name_generator';
 import { Notifier } from './notifier';
 import { ReindexedLogDefs } from './splitter';
 
-
 // TODO: Anonymizer currently finds/replaces player ids (potentially paired with a player name).
 // There are a few edge cases (Countdown/CountdownCancel) where a player name may apepar
 // with no corresponding id (e.g. a blank id). We don't currently handle that scenario given the
