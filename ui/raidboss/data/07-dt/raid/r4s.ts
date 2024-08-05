@@ -187,7 +187,7 @@ export interface Data extends RaidbossData {
   midnightSecondAdds?: MidnightState;
   ionClusterDebuff?: IonClusterDebuff;
   sunriseCannons: string[];
-  sunriseClones: string[];
+  sunriseCloneToWatch?: string;
   sunriseTowerSpots?: SunriseCardinalPair;
   seenFirstSunrise: boolean;
   rainingSwords: {
@@ -222,7 +222,6 @@ const triggerSet: TriggerSet<Data> = {
       twilightSafe: Directions.outputIntercardDir,
       replicaCleaveCount: 0,
       sunriseCannons: [],
-      sunriseClones: [],
       seenFirstSunrise: false,
       rainingSwords: {
         tetherCount: 0,
@@ -1402,7 +1401,7 @@ const triggerSet: TriggerSet<Data> = {
         if (loc === undefined || facing === undefined)
           return;
 
-        data.sunriseClones.push(id);
+        data.sunriseCloneToWatch = id;
         if (loc === 'dirN' || loc === 'dirS')
           data.sunriseTowerSpots = facing === 'opposite' ? 'northSouth' : 'eastWest';
         else if (loc === 'dirE' || loc === 'dirW')
@@ -1417,13 +1416,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R4S Replica Jumping Clone Collect 2',
       type: 'ActorMove',
       netRegex: { id: '4.{7}' },
-      condition: (data) => data.phase === 'sunrise' && data.seenFirstSunrise,
-      suppressSeconds: 1, // only need one, and no other ActorMove packets near this time
+      condition: (data, matches) =>
+        data.phase === 'sunrise' && data.seenFirstSunrise &&
+        data.sunriseCloneToWatch === matches.id,
       run: (data, matches) => {
-        const id = matches.id;
-        if (!data.sunriseClones.includes(id))
-          return;
-
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
         const hdg = parseFloat(matches.heading);
