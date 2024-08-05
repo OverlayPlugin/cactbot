@@ -123,7 +123,7 @@ const exVersionToShortName: { [exVersion: string]: LocaleText } = {
     de: 'DT',
     fr: 'DT',
     ja: '黄金',
-    cn: '7,x',
+    cn: '7.X',
   },
 };
 
