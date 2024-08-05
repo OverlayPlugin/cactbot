@@ -345,7 +345,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       // count: 2F6 = near, 2F7 = far
       netRegex: { effectId: 'B9A', count: ['2F6', '2F7'] },
-      condition: (data) => data.seenBasicWitchHunt = false,
+      condition: (data) => !data.seenBasicWitchHunt,
       run: (data, matches) => data.witchHuntBait = matches.count === '2F6' ? 'near' : 'far',
     },
     {
@@ -393,8 +393,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       // count: 2F6 = near, 2F7 = far
       netRegex: { effectId: 'B9A', count: ['2F6', '2F7'] },
-      condition: (data) => data.seenBasicWitchHunt = true,
-      suppressSeconds: 15,
+      condition: (data) => data.seenBasicWitchHunt,
+      suppressSeconds: 15, // don't re-collect, as the effects occur 3 more times
       run: (data, matches) => data.witchHuntBait = matches.count === '2F6' ? 'near' : 'far',
     },
     {
