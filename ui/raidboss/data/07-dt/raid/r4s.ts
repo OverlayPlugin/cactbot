@@ -48,6 +48,10 @@ type ReplicaData = {
   };
 };
 
+const centerX = 100;
+const p1CenterY = 100;
+const p2CenterY = 165; // wall-boss platform is south
+
 const phaseMap: { [id: string]: Phase } = {
   '95F2': 'crosstail', // Cross Tail Switch
   '9623': 'twilight', // Twilight Sabbath
@@ -99,7 +103,7 @@ const isIntercardDir = (dir: DirectionOutput8): dir is DirectionIntercard => {
   return (Directions.outputIntercardDir as string[]).includes(dir);
 };
 
-const startingSwordList = [[0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3], [0, 1, 2, 3]];
+const getStartingSwords = (): number[][] => Array(4).fill(0).map(() => [0, 1, 2, 3]);
 
 const swordQuiverSafeMap = {
   '95F9': 'sidesAndBack', // front cleave
@@ -178,6 +182,7 @@ export interface Data extends RaidbossData {
   // Phase 2
   replicas: ReplicaData;
   mustardBombTargets: string[];
+  kindlingCauldronTargets: string[];
   aetherialEffect?: AetherialEffect;
   twilightSafe: DirectionOutputIntercard[];
   replicaCleaveCount: number;
@@ -219,6 +224,7 @@ const triggerSet: TriggerSet<Data> = {
       // Phase 2
       replicas: {},
       mustardBombTargets: [],
+      kindlingCauldronTargets: [],
       twilightSafe: Directions.outputIntercardDir,
       replicaCleaveCount: 0,
       sunriseCannons: [],
@@ -226,8 +232,8 @@ const triggerSet: TriggerSet<Data> = {
       rainingSwords: {
         tetherCount: 0,
         firstActorId: 0,
-        left: [...startingSwordList],
-        right: [...startingSwordList],
+        left: getStartingSwords(),
+        right: getStartingSwords(),
       },
     };
   },
@@ -521,7 +527,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '95C5', source: 'Wicked Thunder', capture: false },
       alertText: (data, _matches, output) => {
-        // On the first cast, it will spwan intercardinal mines that are hit by Witchgleams.
+        // On the first cast, it will spawn intercardinal mines that are hit by Witchgleams.
         // On the second cast, players will be hit by Witchgleams.
         if (Object.keys(data.electromines).length === 0)
           return output.cardinals!();
@@ -540,8 +546,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => {
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
-        // centerX = 100, centerY = 100 during phase 1
-        const intercard = Directions.xyToIntercardDirOutput(x, y, 100, 100);
+        const intercard = Directions.xyToIntercardDirOutput(x, y, centerX, p1CenterY);
         data.electromines[matches.id] = intercard;
       },
     },
@@ -904,11 +909,10 @@ const triggerSet: TriggerSet<Data> = {
         const y = parseFloat(matches.y);
         const hdg = parseFloat(matches.heading);
 
-        // centerX = 100, centerY = 165 during phase 2
-        const locDir = Directions.xyTo8DirOutput(x, y, 100, 165);
+        const locDir = Directions.xyTo8DirOutput(x, y, centerX, p2CenterY);
         (data.replicas[matches.id] ??= {}).location = locDir;
 
-        // Determining the facing for clonnes on cardinals using 4Dir could get a little messy -
+        // Determining the facing for clones on cardinals using 4Dir could get a little messy -
         // e.g., a NW-facing clone could result in a value of N or W depending on pixels/rounding.
         // To be safe, use the full 8-dir compass, and then adjust based on the clone's position
         // Note: We only care about heading for clones on cardinals during Sunrise Sabbath
@@ -942,7 +946,12 @@ const triggerSet: TriggerSet<Data> = {
       // 961F - Mustard Bomb (tank tethers, x2)
       // 9620 - Kindling Cauldron (spread explosions, x4)
       netRegex: { id: ['961F', '9620'], source: 'Wicked Thunder' },
-      run: (data, matches) => data.mustardBombTargets.push(matches.target),
+      run: (data, matches) => {
+        if (matches.id === '961F')
+          data.mustardBombTargets.push(matches.target);
+        else
+          data.kindlingCauldronTargets.push(matches.target);
+        },
     },
     {
       id: 'R4S Mustard Bomb Followup',
@@ -951,13 +960,21 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.2,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if (!data.mustardBombTargets.includes(data.me))
+        if (data.mustardBombTargets.includes(data.me))
+          return output.passDebuff!();
+        else if (!data.kindlingCauldronTargets.includes(data.me))
           return output.getDebuff!();
       },
-      run: (data) => data.mustardBombTargets = [],
+      run: (data) => {
+        data.mustardBombTargets = [];
+        data.kindlingCauldronTargets = [];
+      },
       outputStrings: {
+        passDebuff: {
+          en: 'Pass Debuff',
+        },
         getDebuff: {
-          en: 'Get Debuff from Tank',
+          en: 'Get Debuff',
         },
       },
     },
@@ -1262,7 +1279,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '9617', capture: true },
       condition: Conditions.targetIsYou(),
       run: (data, matches) =>
-        data.rainingSwords.mySide = parseFloat(matches.x) < 100 ? 'left' : 'right',
+        data.rainingSwords.mySide = parseFloat(matches.x) < centerX ? 'left' : 'right',
     },
     {
       id: 'R4S Raining Swords Collect + Initial',
@@ -1424,8 +1441,7 @@ const triggerSet: TriggerSet<Data> = {
         const y = parseFloat(matches.y);
         const hdg = parseFloat(matches.heading);
 
-        // centerX = 100, centerY = 165 during phase 2
-        const locDir = Directions.xyTo4DirNum(x, y, 100, 165) % 2; // 0 = N/S, 1 = E/W
+        const locDir = Directions.xyTo4DirNum(x, y, centerX, p2CenterY) % 2; // 0 = N/S, 1 = E/W
         const hdgDir = Directions.outputFrom8DirNum(Directions.hdgTo8DirNum(hdg));
         data.sunriseTowerSpots = isCardinalDir(hdgDir)
           ? (locDir === 0 ? 'northSouth' : 'eastWest') // opposite-facing
@@ -1475,7 +1491,7 @@ const triggerSet: TriggerSet<Data> = {
         };
         const task = data.seenFirstSunrise ? swapMap[data.ionClusterDebuff] : data.ionClusterDebuff;
 
-        // use bracket notatioon because cactbot eslint doesn't handle spread operators
+        // use bracket notation because cactbot eslint doesn't handle spread operators
         // in outputStrings; see #266 for more info
         let towerSoakStr = output['unknown']!();
         let cannonBaitStr = output['unknown']!();
