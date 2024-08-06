@@ -951,7 +951,7 @@ const triggerSet: TriggerSet<Data> = {
           data.mustardBombTargets.push(matches.target);
         else
           data.kindlingCauldronTargets.push(matches.target);
-        },
+      },
     },
     {
       id: 'R4S Mustard Bomb Followup',
