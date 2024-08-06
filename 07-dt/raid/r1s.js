@@ -7,14 +7,10 @@
 const mapEffectTileState = {
   'cracked': '00020001',
   'clear': '00040004',
+  'quickRebuid': '00080004',
   'broken': '00200010',
   'refreshing': '00800004',
   'rebuilding': '01000004', // rebuilding from broken
-};
-const mapEffectTileOverlay = {
-  'clear': '00040004',
-  'willBreak': '00080010',
-  'willCrack': '00200004',
 };
 const mapEffectData = {
   '00': {
@@ -23,52 +19,10 @@ const mapEffectData = {
     'centerY': 85,
     ...mapEffectTileState,
   },
-  '01': {
-    'location': '01',
-    'centerX': 95,
-    'centerY': 85,
-    ...mapEffectTileState,
-  },
-  '02': {
-    'location': '02',
-    'centerX': 105,
-    'centerY': 85,
-    ...mapEffectTileState,
-  },
   '03': {
     'location': '03',
     'centerX': 115,
     'centerY': 85,
-    ...mapEffectTileState,
-  },
-  '04': {
-    'location': '04',
-    'centerX': 85,
-    'centerY': 95,
-    ...mapEffectTileState,
-  },
-  '05': {
-    'location': '05',
-    'centerX': 95,
-    'centerY': 95,
-    ...mapEffectTileState,
-  },
-  '06': {
-    'location': '06',
-    'centerX': 105,
-    'centerY': 95,
-    ...mapEffectTileState,
-  },
-  '07': {
-    'location': '07',
-    'centerX': 115,
-    'centerY': 95,
-    ...mapEffectTileState,
-  },
-  '08': {
-    'location': '08',
-    'centerX': 85,
-    'centerY': 105,
     ...mapEffectTileState,
   },
   '09': {
@@ -83,140 +37,14 @@ const mapEffectData = {
     'centerY': 105,
     ...mapEffectTileState,
   },
-  '0B': {
-    'location': '0B',
-    'centerX': 115,
-    'centerY': 105,
-    ...mapEffectTileState,
-  },
-  '0C': {
-    'location': '0C',
-    'centerX': 85,
-    'centerY': 115,
-    ...mapEffectTileState,
-  },
-  '0D': {
-    'location': '0D',
-    'centerX': 95,
-    'centerY': 115,
-    ...mapEffectTileState,
-  },
-  '0E': {
-    'location': '0E',
-    'centerX': 105,
-    'centerY': 115,
-    ...mapEffectTileState,
-  },
-  '0F': {
-    'location': '0F',
-    'centerX': 115,
-    'centerY': 115,
-    ...mapEffectTileState,
-  },
-  '10': {
-    'location': '10',
-    'centerX': 85,
-    'centerY': 85,
-    ...mapEffectTileOverlay,
-  },
-  '11': {
-    'location': '11',
-    'centerX': 95,
-    'centerY': 85,
-    ...mapEffectTileOverlay,
-  },
-  '12': {
-    'location': '12',
-    'centerX': 105,
-    'centerY': 85,
-    ...mapEffectTileOverlay,
-  },
-  '13': {
-    'location': '13',
-    'centerX': 115,
-    'centerY': 85,
-    ...mapEffectTileOverlay,
-  },
-  '14': {
-    'location': '14',
-    'centerX': 85,
-    'centerY': 95,
-    ...mapEffectTileOverlay,
-  },
-  '15': {
-    'location': '15',
-    'centerX': 95,
-    'centerY': 95,
-    ...mapEffectTileOverlay,
-  },
-  '16': {
-    'location': '16',
-    'centerX': 105,
-    'centerY': 95,
-    ...mapEffectTileOverlay,
-  },
-  '17': {
-    'location': '17',
-    'centerX': 115,
-    'centerY': 95,
-    ...mapEffectTileOverlay,
-  },
-  '18': {
-    'location': '18',
-    'centerX': 85,
-    'centerY': 105,
-    ...mapEffectTileOverlay,
-  },
-  '19': {
-    'location': '19',
-    'centerX': 95,
-    'centerY': 105,
-    ...mapEffectTileOverlay,
-  },
-  '1A': {
-    'location': '1A',
-    'centerX': 105,
-    'centerY': 105,
-    ...mapEffectTileOverlay,
-  },
-  '1B': {
-    'location': '1B',
-    'centerX': 115,
-    'centerY': 105,
-    ...mapEffectTileOverlay,
-  },
-  '1C': {
-    'location': '1C',
-    'centerX': 85,
-    'centerY': 115,
-    ...mapEffectTileOverlay,
-  },
-  '1D': {
-    'location': '1D',
-    'centerX': 95,
-    'centerY': 115,
-    ...mapEffectTileOverlay,
-  },
-  '1E': {
-    'location': '1E',
-    'centerX': 105,
-    'centerY': 115,
-    ...mapEffectTileOverlay,
-  },
-  '1F': {
-    'location': '1F',
-    'centerX': 115,
-    'centerY': 115,
-    ...mapEffectTileOverlay,
-  },
 };
 const headMarkerData = {
   // Vfx Path: tank_lockon02k1
   tankbuster: '00DA',
   // Vfx Path: lockon8_t0w
-  lineStack: '00F4',
+  spreadMarker1: '00F4',
   // Vfx Path: loc05sp_05a_se_p
-  spreadMarker: '0178',
+  spreadMarker2: '0178',
   // Vfx Path: m0884_vanish_7sec_p1
   pawprint: '021A',
 };
@@ -226,8 +54,30 @@ Options.Triggers.push({
   timelineFile: 'r1s.txt',
   initData: () => ({
     actorSetPosTracker: {},
+    storedLeaps: {
+      oneTwoPaw: {},
+      quadCross: {},
+    },
   }),
   triggers: [
+    {
+      id: 'R1S Shockwave Knockback Safe Directions',
+      type: 'MapEffect',
+      netRegex: { location: ['00', '03'], flags: mapEffectTileState.quickRebuid, capture: true },
+      infoText: (_data, matches, output) => {
+        if (matches.location === '00')
+          return output.nwSE();
+        return output.neSW();
+      },
+      outputStrings: {
+        nwSE: {
+          en: 'Knockback (NW/SE Safe)',
+        },
+        neSW: {
+          en: 'Knockback (NE/SW Safe)',
+        },
+      },
+    },
     {
       id: 'R1S One-two Paw Right Left',
       type: 'StartsUsing',
@@ -326,16 +176,22 @@ Options.Triggers.push({
       },
     },
     {
-      id: 'R1S Headmarker Line Stack',
+      id: 'R1S Headmarker Nailchipper Spread',
       type: 'HeadMarker',
-      netRegex: { id: headMarkerData.lineStack, capture: true },
+      netRegex: { id: headMarkerData.spreadMarker1, capture: true },
+      condition: Conditions.targetIsYou(),
       suppressSeconds: 5,
-      response: Responses.stackMarkerOn(),
+      infoText: (_data, _matches, output) => output.outSpread(),
+      outputStrings: {
+        outSpread: {
+          en: 'Out + Spread',
+        },
+      },
     },
     {
-      id: 'R1S Headmarker Spread Markers',
+      id: 'R1S Headmarker Grimalkin Gale Spread',
       type: 'HeadMarker',
-      netRegex: { id: headMarkerData.spreadMarker, capture: false },
+      netRegex: { id: headMarkerData.spreadMarker2, capture: false },
       suppressSeconds: 5,
       response: Responses.spread(),
     },
@@ -476,6 +332,163 @@ Options.Triggers.push({
           ja: 'ロールの担当位置へ',
           cn: '去指定位置',
           ko: '직업별 산개위치로',
+        },
+      },
+    },
+    {
+      id: 'R1S Leaping One-two Paw',
+      type: 'StartsUsing',
+      netRegex: { id: ['944D', '944E', '944F', '9450'], source: 'Black Cat', capture: true },
+      infoText: (_data, matches, output) => {
+        if (matches.id === '944D') {
+          return output.combo({ dir: output.dirW(), cleaves: output.outsideIn() });
+        } else if (matches.id === '944E') {
+          return output.combo({ dir: output.dirW(), cleaves: output.insideOut() });
+        } else if (matches.id === '944F') {
+          return output.combo({ dir: output.dirE(), cleaves: output.insideOut() });
+        } else if (matches.id === '9450') {
+          return output.combo({ dir: output.dirE(), cleaves: output.outsideIn() });
+        }
+        return output.unknown();
+      },
+      run: (data, matches) => {
+        if (matches.id === '944D') {
+          data.storedLeaps.oneTwoPaw.leftRight = 'left';
+          data.storedLeaps.oneTwoPaw.firstCleaveSide = 'right';
+        } else if (matches.id === '944E') {
+          data.storedLeaps.oneTwoPaw.leftRight = 'left';
+          data.storedLeaps.oneTwoPaw.firstCleaveSide = 'left';
+        } else if (matches.id === '944F') {
+          data.storedLeaps.oneTwoPaw.leftRight = 'right';
+          data.storedLeaps.oneTwoPaw.firstCleaveSide = 'right';
+        } else if (matches.id === '9450') {
+          data.storedLeaps.oneTwoPaw.leftRight = 'right';
+          data.storedLeaps.oneTwoPaw.firstCleaveSide = 'left';
+        }
+      },
+      outputStrings: {
+        dirE: Outputs.dirE,
+        dirW: Outputs.dirW,
+        insideOut: {
+          en: 'Inside => Outside',
+        },
+        outsideIn: {
+          en: 'Outside => Inside',
+        },
+        combo: {
+          en: '${dir}, ${cleaves}',
+        },
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'R1S Leaping Quadruple Crossing',
+      type: 'StartsUsing',
+      netRegex: { id: ['9457', '982F'], source: 'Black Cat', capture: true },
+      condition: (data) => data.storedLeaps.oneTwoPaw.leftRight !== undefined,
+      infoText: (_data, _matches, output) => {
+        return output.proximity();
+      },
+      run: (data, matches) => {
+        if (matches.id === '9457') {
+          data.storedLeaps.quadCross.leftRight = 'left';
+        } else if (matches.id === '982F') {
+          data.storedLeaps.quadCross.leftRight = 'right';
+        }
+      },
+      outputStrings: {
+        proximity: {
+          en: 'Proximity baits at target',
+        },
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'R1S Leaping clone collector',
+      type: 'Tether',
+      netRegex: { id: '0066', capture: true },
+      infoText: (data, matches, output) => {
+        const actorSetPosEntry = data.actorSetPosTracker[matches.sourceId];
+        if (actorSetPosEntry === undefined) {
+          console.error(
+            `R1S Leaping clone collector: Missing ActorSetPos line for actor ID ${matches.sourceId}`,
+          );
+          return;
+        }
+        const cloneNorthSouth = parseFloat(actorSetPosEntry.y) < 100 ? 'north' : 'south';
+        if (data.storedLeaps.oneTwoPaw.firstCleaveSide !== undefined) {
+          if (data.storedLeaps.oneTwoPaw.northSouth === undefined) {
+            data.storedLeaps.oneTwoPaw.northSouth = cloneNorthSouth;
+            return;
+          }
+        }
+        if (data.storedLeaps.quadCross.leftRight !== undefined) {
+          if (data.storedLeaps.quadCross.northSouth === undefined) {
+            data.storedLeaps.quadCross.northSouth = cloneNorthSouth;
+            return;
+          }
+        }
+        if (
+          data.storedLeaps.oneTwoPaw.northSouth !== undefined &&
+          data.storedLeaps.quadCross.northSouth !== undefined
+        ) {
+          if (
+            data.storedLeaps.oneTwoPaw.resolved !== true &&
+            data.storedLeaps.oneTwoPaw.northSouth === cloneNorthSouth
+          ) {
+            data.storedLeaps.oneTwoPaw.resolved = true;
+            let dir;
+            if (data.storedLeaps.oneTwoPaw.northSouth === 'north') {
+              if (data.storedLeaps.oneTwoPaw.leftRight === 'left')
+                dir = 'dirE';
+              else
+                dir = 'dirW';
+            } else {
+              if (data.storedLeaps.oneTwoPaw.leftRight === 'left')
+                dir = 'dirW';
+              else
+                dir = 'dirE';
+            }
+            let inOut = 'in';
+            if (data.storedLeaps.oneTwoPaw.leftRight !== data.storedLeaps.oneTwoPaw.firstCleaveSide)
+              inOut = 'out';
+            return output.healerStacks({ dir: output[dir](), inOut: output[inOut]() });
+          }
+          if (
+            data.storedLeaps.quadCross.resolved !== true &&
+            data.storedLeaps.quadCross.northSouth === cloneNorthSouth
+          ) {
+            data.storedLeaps.quadCross.resolved = true;
+            let dir;
+            if (data.storedLeaps.oneTwoPaw.northSouth === 'north') {
+              if (data.storedLeaps.oneTwoPaw.leftRight === 'left')
+                dir = 'dirE';
+              else
+                dir = 'dirW';
+            } else {
+              if (data.storedLeaps.oneTwoPaw.leftRight === 'left')
+                dir = 'dirW';
+              else
+                dir = 'dirE';
+            }
+            return output.proximity({ dir: output[dir]() });
+          }
+        }
+      },
+      outputStrings: {
+        dirE: Outputs.dirE,
+        dirW: Outputs.dirW,
+        in: {
+          en: 'In + Healer Stacks => Out',
+        },
+        out: {
+          en: 'Out + Healer Stacks => In',
+        },
+        healerStacks: {
+          en: 'Go ${dir} => ${inOut}',
+        },
+        proximity: {
+          en: 'Go ${dir} => Proximity Baits + Spreads',
         },
       },
     },
