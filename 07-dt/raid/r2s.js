@@ -19,6 +19,56 @@ Options.Triggers.push({
   }),
   triggers: [
     {
+      id: 'R2S Beat Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: ['9C24', '9C25', '9C26'], capture: true },
+      run: (data, matches) => {
+        if (matches.id === '9C24')
+          data.beat = 1;
+        else if (matches.id === '9C25')
+          data.beat = 2;
+        else
+          data.beat = 3;
+      },
+    },
+    {
+      id: 'R2S Heart Debuff',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['F52', 'F53', 'F54'], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (data) => data.beat === 1 ? 17 : 0,
+      suppressSeconds: (data) => {
+        if (data.beat === 1)
+          return 120;
+        if (data.beat === 2)
+          return 70;
+        // We don't care about heart stacks during beat 3
+        return 9999;
+      },
+      infoText: (data, matches, output) => {
+        if (data.beat === 1) {
+          return output.beatOne();
+        }
+        if (data.beat === 2) {
+          if (matches.effectId === 'F52')
+            return output.beatTwoZeroHearts();
+          if (matches.effectId === 'F53')
+            return output.beatTwoOneHearts();
+        }
+      },
+      outputStrings: {
+        beatOne: {
+          en: 'Soak towers - need 2-3 hearts',
+        },
+        beatTwoZeroHearts: {
+          en: 'Puddles & Stacks',
+        },
+        beatTwoOneHearts: {
+          en: 'Spreads & Towers',
+        },
+      },
+    },
+    {
       id: 'R2S Headmarker Shared Tankbuster',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.sharedBuster, capture: true },
@@ -159,13 +209,13 @@ Options.Triggers.push({
     {
       id: 'R2S Honey Beeline',
       type: 'StartsUsing',
-      netRegex: { id: '9186', source: 'Honey B. Lovely', capture: false },
+      netRegex: { id: ['9186', '9B0C'], source: 'Honey B. Lovely', capture: false },
       response: Responses.goSides(),
     },
     {
       id: 'R2S Tempting Twist',
       type: 'StartsUsing',
-      netRegex: { id: '9187', source: 'Honey B. Lovely', capture: false },
+      netRegex: { id: ['9187', '9B0D'], source: 'Honey B. Lovely', capture: false },
       response: Responses.getUnder(),
     },
     {
