@@ -25,7 +25,10 @@ type NearFar = 'near' | 'far'; // wherever you are...
 type InOut = 'in' | 'out';
 type NorthSouth = 'north' | 'south';
 type LeftRight = 'left' | 'right';
-
+type CondenserMap = {
+  long: string[];
+  short: string[];
+};
 type AetherialId = keyof typeof aetherialAbility;
 type AetherialEffect = 'iceRight' | 'iceLeft' | 'fireRight' | 'fireLeft';
 type MidnightState = 'gun' | 'wings';
@@ -190,6 +193,7 @@ export interface Data extends RaidbossData {
   starEffect?: 'partners' | 'spread';
   witchgleamSelfCount: number;
   condenserTimer?: 'short' | 'long';
+  condenserMap: CondenserMap;
   electronStreamSafe?: 'yellow' | 'blue';
   electronStreamSide?: NorthSouth;
   seenConductorDebuffs: boolean;
@@ -234,6 +238,10 @@ const triggerSet: TriggerSet<Data> = {
       electromines: {},
       electrominesSafe: [],
       witchgleamSelfCount: 0,
+      condenserMap: {
+        long: [],
+        short: [],
+      },
       seenConductorDebuffs: false,
       fulminousFieldCount: 0,
       conductionPointTargets: [],
@@ -666,10 +674,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R4S Electrical Condenser Debuff Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'F9F', capture: true },
+      condition: Conditions.targetIsNotYou(),
+      run: (data, matches) => {
+        data.condenserTimer = parseFloat(matches.duration) > 30 ? 'long' : 'short';
+        const shortName = data.party.member(matches.target).nick;
+        if (data.condenserTimer === 'long')
+          data.condenserMap.long.push(shortName);
+        else
+          data.condenserMap.short.push(shortName);
+      },
+    },
+    {
       id: 'R4S Electrical Condenser Debuff Initial',
       type: 'GainsEffect',
       netRegex: { effectId: 'F9F', capture: true },
       condition: Conditions.targetIsYou(),
+      delaySeconds: 0.5,
       infoText: (data, matches, output) => {
         data.condenserTimer = parseFloat(matches.duration) > 30 ? 'long' : 'short';
         // Long debuff players will pick up an extra stack later.
@@ -677,20 +700,21 @@ const triggerSet: TriggerSet<Data> = {
         if (data.condenserTimer === 'long')
           data.witchgleamSelfCount++;
 
+        // Some strats use long/short debuff assignments to do position swaps for EE2.
+        const same = data.condenserMap[data.condenserTimer].join(', ');
+
         // Note: Taking unexpected lightning damage from Four/Eight Star, Sparks, or Sidewise Spark
         // will cause the stack count to increase. We could try to try to track that, but it makes
         // the final mechanic resolvable only under certain conditions (which still cause deaths),
         // so don't bother for now.  PRs welcome? :)
-        return output[data.condenserTimer]!();
+        return output[data.condenserTimer]!({ same: same });
       },
       outputStrings: {
         short: {
-          en: 'Short Debuff',
-          cn: '短 BUFF',
+          en: 'Short Debuff (w/ ${same})',
         },
         long: {
-          en: 'Long Debuff',
-          cn: '长 BUFF',
+          en: 'Long Debuff (w/ ${same})',
         },
       },
     },
@@ -728,9 +752,24 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.2,
       alertText: (data, matches, output) => {
         const starEffect = data.starEffect ?? 'unknown';
+
+        // Some strats have stack/spread positions based on Witchgleam stack count,
+        // so for the long debuffs, add that info (both for positioning and as a reminder).
+        const reminder = data.condenserTimer === 'long'
+          ? output.stacks!({ stacks: data.witchgleamSelfCount })
+          : '';
+
         if (matches.id === '95EC')
-          return output.combo!({ dir: output.west!(), mech: output[starEffect]!() });
-        return output.combo!({ dir: output.east!(), mech: output[starEffect]!() });
+          return output.combo!({
+            dir: output.west!(),
+            mech: output[starEffect]!(),
+            remind: reminder,
+          });
+        return output.combo!({
+          dir: output.east!(),
+          mech: output[starEffect]!(),
+          remind: reminder,
+        });
       },
       outputStrings: {
         east: Outputs.east,
@@ -738,9 +777,11 @@ const triggerSet: TriggerSet<Data> = {
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
         unknown: Outputs.unknown,
+        stacks: {
+          en: '(${stacks} stacks after)',
+        },
         combo: {
-          en: '${dir} => ${mech}',
-          cn: '${dir} => ${mech}',
+          en: '${dir} => ${mech} ${remind}',
         },
       },
     },
