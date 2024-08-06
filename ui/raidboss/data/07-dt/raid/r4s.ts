@@ -792,7 +792,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         tank: {
           en: '${dir} - Be in Front',
-          cn: '${dir} - 站最前',
+          cn: '${dir} - 站在最前',
         },
         nonTank: {
           en: '${dir} - Behind Tank',
