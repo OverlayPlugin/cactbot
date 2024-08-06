@@ -11,142 +11,20 @@ const mapEffectTileState = {
   'refreshing': '00800004',
   'rebuilding': '01000004', // rebuilding from broken
 };
-const mapEffectTileOverlay = {
-  'clear': '00040004',
-  'willBreak': '00080010',
-  'willCrack': '00200004',
-};
 const mapEffectData = {
-  '00': {
-    'location': '00',
-    ...mapEffectTileState,
-  },
-  '01': {
-    'location': '01',
-    ...mapEffectTileState,
-  },
-  '02': {
-    'location': '02',
-    ...mapEffectTileState,
-  },
-  '03': {
-    'location': '03',
-    ...mapEffectTileState,
-  },
-  '04': {
-    'location': '04',
-    ...mapEffectTileState,
-  },
-  '05': {
-    'location': '05',
-    ...mapEffectTileState,
-  },
-  '06': {
-    'location': '06',
-    ...mapEffectTileState,
-  },
-  '07': {
-    'location': '07',
-    ...mapEffectTileState,
-  },
-  '08': {
-    'location': '08',
-    ...mapEffectTileState,
-  },
   '09': {
     'location': '09',
+    'centerX': 95,
+    'centerY': 105,
     ...mapEffectTileState,
   },
   '0A': {
     'location': '0A',
+    'centerX': 105,
+    'centerY': 105,
     ...mapEffectTileState,
-  },
-  '0B': {
-    'location': '0B',
-    ...mapEffectTileState,
-  },
-  '0C': {
-    'location': '0C',
-    ...mapEffectTileState,
-  },
-  '0D': {
-    'location': '0D',
-    ...mapEffectTileState,
-  },
-  '0E': {
-    'location': '0E',
-    ...mapEffectTileState,
-  },
-  '0F': {
-    'location': '0F',
-    ...mapEffectTileState,
-  },
-  '10': {
-    'location': '10',
-    ...mapEffectTileOverlay,
-  },
-  '11': {
-    'location': '11',
-    ...mapEffectTileOverlay,
-  },
-  '12': {
-    'location': '12',
-    ...mapEffectTileOverlay,
-  },
-  '13': {
-    'location': '13',
-    ...mapEffectTileOverlay,
-  },
-  '14': {
-    'location': '14',
-    ...mapEffectTileOverlay,
-  },
-  '15': {
-    'location': '15',
-    ...mapEffectTileOverlay,
-  },
-  '16': {
-    'location': '16',
-    ...mapEffectTileOverlay,
-  },
-  '17': {
-    'location': '17',
-    ...mapEffectTileOverlay,
-  },
-  '18': {
-    'location': '18',
-    ...mapEffectTileOverlay,
-  },
-  '19': {
-    'location': '19',
-    ...mapEffectTileOverlay,
-  },
-  '1A': {
-    'location': '1A',
-    ...mapEffectTileOverlay,
-  },
-  '1B': {
-    'location': '1B',
-    ...mapEffectTileOverlay,
-  },
-  '1C': {
-    'location': '1C',
-    ...mapEffectTileOverlay,
-  },
-  '1D': {
-    'location': '1D',
-    ...mapEffectTileOverlay,
-  },
-  '1E': {
-    'location': '1E',
-    ...mapEffectTileOverlay,
-  },
-  '1F': {
-    'location': '1F',
-    ...mapEffectTileOverlay,
   },
 };
-console.assert(mapEffectData);
 const headMarkerData = {
   // Vfx Path: com_share1f
   stack: '5D',
@@ -157,14 +35,95 @@ const headMarkerData = {
 };
 console.assert(headMarkerData);
 // TODO:
-// Mouser
 // Predaceous Pounce
 // Leaping Black Cat Crossing
 Options.Triggers.push({
   id: 'AacLightHeavyweightM1',
   zoneId: ZoneId.AacLightHeavyweightM1,
   timelineFile: 'r1n.txt',
+  initData: () => ({
+    actorSetPosTracker: {},
+  }),
   triggers: [
+    {
+      id: 'R1N ActorSetPos Collector',
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-F]{7}', capture: true },
+      run: (data, matches) => {
+        data.actorSetPosTracker[matches.id] = matches;
+      },
+    },
+    {
+      id: 'R1N Mouser',
+      type: 'StartsUsing',
+      netRegex: { id: '996B', capture: true },
+      condition: (data, matches) => {
+        const actorSetPosLine = data.actorSetPosTracker[matches.sourceId];
+        if (actorSetPosLine === undefined)
+          return false;
+        const x = parseFloat(actorSetPosLine.x);
+        const y = parseFloat(actorSetPosLine.y);
+        /*
+                Exmaple lines:
+                ActorSetPos to middle of danger square
+                271|2024-07-16T21:52:30.1570000-04:00|40011591|-0.0001|00|00|85.0000|115.0000|0.0000|568c67125874f71f
+                StartsUsing, 9315 = first hit, 996B = second hit
+                20|2024-07-16T21:52:30.2340000-04:00|40011591|Black Cat|9315|unknown_9315|40011591|Black Cat|0.700|85.00|115.00|0.00|0.00|64ce76ea56417e29
+                Rest of lines not relevant for trigger, but show cast target is north middle edge of square, facing south
+                263|2024-07-16T21:52:30.2340000-04:00|40011591|9315|84.994|109.989|0.000|0.000|dc062eb396f50364
+                21|2024-07-16T21:52:31.2130000-04:00|40011591|Black Cat|9315|unknown_9315|40011591|Black Cat|1B|93158000|0|0|0|0|0|0|0|0|0|0|0|0|0|0|44|44|0|10000|||85.00|115.00|0.00|0.00|44|44|0|10000|||85.00|115.00|0.00|0.00|00008530|0|1|00||01|9315|9315|0.200|7FFF|9ed19cd6e527be66
+                264|2024-07-16T21:52:31.2130000-04:00|40011591|9315|00008530|0|||||9177fd99528a2344
+                 */
+        const loc = Object.values(mapEffectData)
+          .find((tile) =>
+            tile.location.startsWith('0') && Math.abs(tile.centerX - x) < 1 &&
+            Math.abs(tile.centerY - y) < 1
+          );
+        if (loc === undefined)
+          return false;
+        const tile = loc.location;
+        if (tile !== '09' && tile !== '0A')
+          return false;
+        data.mouserMatchedTile = tile;
+        return true;
+      },
+      // We don't need a suppressSeconds since only one of the SW/SE tiles will get hit twice
+      durationSeconds: 11,
+      infoText: (data, _matches, output) => {
+        const dangerTile = data.mouserMatchedTile;
+        if (dangerTile === undefined)
+          return false;
+        // Danger tile is SW, so safe movement is SW => SE (Stay)
+        if (dangerTile === '09') {
+          return output.swSeStay({
+            dir1: output['dirSW'](),
+            sep: output.separator(),
+            dir2: output['dirSE'](),
+          });
+        }
+        const dirs = ['dirSW', 'dirSE', 'dirSW'].map((e) => output[e]());
+        return output.combo({ dirs: dirs.join(output.separator()) });
+      },
+      run: (data) => delete data.mouserMatchedTile,
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        swSeStay: {
+          en: '${dir1} ${sep} ${dir2} (Stay)',
+        },
+        separator: {
+          en: ' => ',
+          de: ' => ',
+          ja: ' => ',
+          cn: ' => ',
+        },
+        combo: {
+          en: '${dirs}',
+          de: '${dirs}',
+          ja: '${dirs}',
+          cn: '${dirs}',
+        },
+      },
+    },
     {
       id: 'R1N One-two Paw Right Left',
       type: 'StartsUsing',
