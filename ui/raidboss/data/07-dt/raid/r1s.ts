@@ -379,7 +379,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rollenposition',
           fr: 'Positions par rôle',
           ja: 'ロールの担当位置へ',
-          cn: '去指定位置',
+          cn: '职能分散站位',
           ko: '직업별 산개위치로',
         },
       },
@@ -420,12 +420,15 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         insideOut: {
           en: 'Inside => Outside',
+          cn: '停 => 穿',
         },
         outsideIn: {
           en: 'Outside => Inside',
+          cn: '穿 => 停',
         },
         combo: {
           en: '${dir}, ${cleaves}',
+          cn: '去 ${dir}, ${cleaves}',
         },
         unknown: Outputs.unknown,
       },
@@ -448,6 +451,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         proximity: {
           en: 'Proximity baits at target',
+          cn: '引导站位',
         },
         unknown: Outputs.unknown,
       },
@@ -538,15 +542,19 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         in: {
           en: 'In + Healer Stacks => Out',
+          cn: '停 + 治疗组分摊 => 穿',
         },
         out: {
           en: 'Out + Healer Stacks => In',
+          cn: '穿 + 治疗组分摊 => 停',
         },
         healerStacks: {
           en: 'Go ${dir} => ${inOut}',
+          cn: '去 ${dir} => ${inOut}',
         },
         proximity: {
           en: 'Go ${dir} => Proximity Baits + Spreads',
+          cn: '去 ${dir} => 引导站位 + 分散',
         },
       },
     },
