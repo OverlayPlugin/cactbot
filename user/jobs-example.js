@@ -55,7 +55,7 @@ Options.PerBuffOptions = {
 
     // sortKey controls the order of the buffs when multiple buffs are shown.
     // Smaller numbers are higher priority and will be shown closer to the middle.
-    // The existing buffs are ranged from 0-14, see above link.
+    // The existing buffs are ranged from 1-9, see above link.
     // You can use any numerical value you want here, including negatives.
     // This example sets the Balance to be a very high priority.
     sortKey: -1,
