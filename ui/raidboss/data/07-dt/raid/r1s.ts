@@ -424,7 +424,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         outsideIn: {
           en: 'Outside => Inside',
-          cn: '穿 => 停',
+          cn: '穿 => 穿',
         },
         combo: {
           en: '${dir}, ${cleaves}',
