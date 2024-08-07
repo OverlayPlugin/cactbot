@@ -741,9 +741,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         short: {
           en: 'Short Debuff (w/ ${same})',
+          ja: '短いデバフ (同デバフ: ${same})',
         },
         long: {
           en: 'Long Debuff (w/ ${same})',
+          ja: '長いデバフ (同デバフ: ${same})',
         },
       },
     },
