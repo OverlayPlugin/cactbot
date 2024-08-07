@@ -867,7 +867,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         tank: {
           en: '${dir} - Be in Front',
-          ja: '${dir} - 前方へ',
+          ja: '${dir} - ボス近くで受けて',
           cn: '${dir} - 站在最前',
         },
         nonTank: {
@@ -900,7 +900,7 @@ const triggerSet: TriggerSet<Data> = {
           unknown: Outputs.unknown,
           tank: {
             en: '${dir} - Be in Front',
-            ja: '${dir} - 前方へ',
+            ja: '${dir} - ボス近くで受けて',
             cn: '${dir} - 站在最前',
           },
           nonTank: {
@@ -1532,7 +1532,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         safe: {
           en: '${side} Side: ${order}',
-          ja: '${side} 側: ${order}',
+          ja: '${side} : ${order}',
           cn: '${side} 侧: ${order}',
         },
         unknown: Outputs.unknown,
