@@ -122,12 +122,15 @@ const witchHuntAlertOutputStrings = {
   out: Outputs.out,
   near: {
     en: 'Baits Close (Party Far)',
+    ja: '近づいて (他は離れる)',
   },
   far: {
     en: 'Baits Far (Party Close)',
+    ja: '離れて (他は近づく)',
   },
   combo: {
     en: '${inOut} => ${bait}',
+    ja: '${inOut} => ${bait}',
   },
   unknown: Outputs.unknown,
 } as const;
@@ -135,15 +138,19 @@ const witchHuntAlertOutputStrings = {
 const tailThrustOutputStrings = {
   iceLeft: {
     en: 'Double Knockback (<== Start on Left)',
+    ja: 'ノックバック2回 (<== 左から開始)',
   },
   iceRight: {
     en: 'Double Knockback (Start on Right ==>)',
+    ja: 'ノックバック2回 (右から開始 ==>)',
   },
   fireLeft: {
     en: 'Fire - Start Front + Right ==>',
+    ja: '炎 - 前方へ + 右側から開始 ==>',
   },
   fireRight: {
     en: '<== Fire - Start Front + Left',
+    ja: '<== 炎 - 前方へ + 左側から開始',
   },
   unknown: Outputs.unknown,
 } as const;
@@ -151,12 +158,15 @@ const tailThrustOutputStrings = {
 const swordQuiverOutputStrings = {
   frontAndSides: {
     en: 'Go Front / Sides',
+    ja: '前方へ / 横へ',
   },
   frontAndBack: {
     en: 'Go Front / Back',
+    ja: '前方へ / 後ろへ',
   },
   sidesAndBack: {
     en: 'Go Sides / Back',
+    ja: '横へ / 後ろへ',
   },
 } as const;
 
@@ -295,6 +305,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Avoid Front + Side Cleaves',
+          ja: '前と横からの範囲を避けて',
         },
       },
     },
@@ -325,9 +336,11 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         spreadAvoid: {
           en: 'Spread (Avoid Side Cleaves)',
+          ja: '横範囲を避けて散開',
         },
         combo: {
           en: '${inOut} + ${spread}',
+          ja: '${inOut} + ${spread}',
         },
       },
     },
@@ -367,12 +380,15 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         near: {
           en: 'Spread (Be Closer)',
+          ja: '散開 (近づく)',
         },
         far: {
           en: 'Spread (Be Further)',
+          ja: '散開 (離れる)',
         },
         combo: {
           en: '${inOut} + ${spread}',
+          ja: '${inOut} + ${spread}',
         },
       },
     },
@@ -426,9 +442,11 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         near: {
           en: 'Close',
+          ja: '近づく',
         },
         far: {
           en: 'Far',
+          ja: '離れる',
         },
         separator: {
           en: ' => ',
@@ -438,9 +456,11 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitStep: {
           en: '${inOut} (${bait})',
+          ja: '${inOut} (${bait})',
         },
         baitCombo: {
           en: 'Baits: ${allBaits}',
+          ja: '誘導: ${allBaits}',
         },
         unknown: Outputs.unknown,
       },
@@ -617,6 +637,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
         combo: {
           en: '${dir} => ${mech}',
+          ja: '${dir} => ${mech}',
         },
       },
     },
@@ -641,9 +662,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         short: {
           en: 'Short Debuff',
+          ja: '短いデバフ',
         },
         long: {
           en: 'Long Debuff',
+          ja: '長いデバフ',
         },
       },
     },
@@ -666,6 +689,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spread: {
           en: 'Spread (${stacks} stacks)',
+          ja: '散開 (充電 ${stacks} 回)',
         },
       },
     },
@@ -692,6 +716,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         combo: {
           en: '${dir} => ${mech}',
+          ja: '${dir} => ${mech}',
         },
       },
     },
@@ -743,9 +768,11 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         tank: {
           en: '${dir} - Be in Front',
+          ja: '${dir} - 前方へ',
         },
         nonTank: {
           en: '${dir} - Behind Tank',
+          ja: '${dir} - タンクの後ろへ',
         },
       },
     },
@@ -761,16 +788,20 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           swap: {
             en: 'Swap Sides',
+            ja: '入れ替わる',
           },
           stay: {
             en: 'Stay',
+            ja: 'そのまま',
           },
           unknown: Outputs.unknown,
           tank: {
             en: '${dir} - Be in Front',
+            ja: '${dir} - 前方へ',
           },
           nonTank: {
             en: '${dir} - Behind Tank',
+            ja: '${dir} - タンクの後ろへ',
           },
         };
 
@@ -822,18 +853,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         remoteCurrent: {
           en: 'Far Cone on You',
+          ja: '自分に遠距離への扇範囲',
         },
         proximateCurrent: {
           en: 'Near Cone on You',
+          ja: '自分に近距離への扇範囲',
         },
         spinningConductor: {
           en: 'Small AoE on You',
+          ja: '自分に小さい円範囲',
         },
         roundhouseConductor: {
           en: 'Donut AoE on You',
+          ja: '自分にドーナツ範囲',
         },
         colliderConductor: {
           en: 'Get Hit by Cone',
+          ja: '扇範囲に当たって',
         },
       },
     },
@@ -847,6 +883,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Dodge w/Partner x7',
+          ja: '相方と避ける x7',
         },
       },
     },
@@ -890,9 +927,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         near: {
           en: 'In Front of Partner',
+          ja: '相方の前へ',
         },
         far: {
           en: 'Behind Partner',
+          ja: '相方の後ろへ',
         },
       },
     },
@@ -972,9 +1011,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         passDebuff: {
           en: 'Pass Debuff',
+          ja: 'デバフを渡して',
         },
         getDebuff: {
           en: 'Get Debuff',
+          ja: 'デバフを取って',
         },
       },
     },
@@ -1010,6 +1051,7 @@ const triggerSet: TriggerSet<Data> = {
         ...tailThrustOutputStrings,
         stored: {
           en: 'Stored: ${effect}',
+          ja: 'あとで ${effect}',
         },
       },
     },
@@ -1034,6 +1076,7 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           lb3: {
             en: 'LB3!',
+            ja: 'LB3!',
           },
         };
 
@@ -1123,6 +1166,7 @@ const triggerSet: TriggerSet<Data> = {
         sides: Outputs.sides,
         combo: {
           en: '${dir} => ${inSides}',
+          ja: '${dir} => ${inSides}',
         },
       },
     },
@@ -1190,6 +1234,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} => ${mech}',
+          ja: '${dir} => ${mech}',
         },
         cardinals: Outputs.cardinals,
         intercards: Outputs.intercards,
@@ -1220,6 +1265,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} => ${mech}',
+          ja: '${dir} => ${mech}',
         },
         cardinals: Outputs.cardinals,
         intercards: Outputs.intercards,
@@ -1246,6 +1292,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         towers: {
           en: 'Tower Positions',
+          ja: '塔を踏んで',
         },
       },
     },
@@ -1320,6 +1367,7 @@ const triggerSet: TriggerSet<Data> = {
         right: Outputs.right,
         safe: {
           en: '${side}: Start at ${first}',
+          ja: '${side}: ${first} から',
         },
         unknown: Outputs.unknown,
       },
@@ -1363,6 +1411,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         safe: {
           en: '${side} Side: ${order}',
+          ja: '${side} 側: ${order}',
         },
         unknown: Outputs.unknown,
       },
@@ -1390,15 +1439,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         yellowLong: {
           en: 'Long Yellow Debuff (Towers First)',
+          ja: '黄色の長いデバフ (先に塔踏み)',
         },
         blueLong: {
           en: 'Long Blue Debuff (Towers First)',
+          ja: '青色の長いデバフ (先に塔踏み)',
         },
         yellowShort: {
           en: 'Short Yellow Debuff (Cannons First)',
+          ja: '黄色の短いデバフ (先にビーム誘導)',
         },
         blueShort: {
           en: 'Short Blue Debuff (Cannons First)',
+          ja: '青色の短いデバフ (先にビーム誘導)',
         },
       },
     },
@@ -1519,21 +1572,27 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir,
         northSouth: {
           en: 'N/S',
+          ja: '北/南',
         },
         eastWest: {
           en: 'E/W',
+          ja: '東/西',
         },
         yellowLong: {
           en: 'Soak Tower (${bait})',
+          ja: '塔を踏んで (${bait})',
         },
         blueLong: {
           en: 'Soak Tower (${bait})',
+          ja: '塔を踏んで (${bait})',
         },
         yellowShort: {
           en: 'Blue Cannon (${loc}) - Point ${bait}',
+          ja: '青色のビーム誘導 (${loc}) - ${bait} に向けて',
         },
         blueShort: {
           en: 'Yellow Cannon (${loc}) - Point ${bait}',
+          ja: '黄色のビーム誘導 (${loc}) - ${bait} に向けて',
         },
       },
     },
