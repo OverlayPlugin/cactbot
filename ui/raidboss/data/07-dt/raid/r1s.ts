@@ -420,11 +420,11 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         insideOut: {
           en: 'Inside => Outside',
-          cn: '停 => 穿',
+          cn: '场内 => 场外',
         },
         outsideIn: {
           en: 'Outside => Inside',
-          cn: '穿 => 穿',
+          cn: '场外 => 场内',
         },
         combo: {
           en: '${dir}, ${cleaves}',
@@ -542,11 +542,11 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         in: {
           en: 'In + Healer Stacks => Out',
-          cn: '停 + 治疗组分摊 => 穿',
+          cn: '场内 + 治疗组分摊 => 场外',
         },
         out: {
           en: 'Out + Healer Stacks => In',
-          cn: '穿 + 治疗组分摊 => 停',
+          cn: '场外 + 治疗组分摊 => 场内',
         },
         healerStacks: {
           en: 'Go ${dir} => ${inOut}',
