@@ -1757,6 +1757,16 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: swordQuiverOutputStrings,
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Electromine': 'エレクトリックマイン',
+        'Wicked Thunder': 'ウィケッドサンダー',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
