@@ -203,7 +203,7 @@ export default class RaidEmulatorPopupText extends StubbedPopupText {
       ? triggerHelper.valueOrFunction(triggerHelper.trigger.delaySeconds)
       : 0;
 
-    if (delay === undefined || delay === null || delay <= 0 || typeof delay !== 'number')
+    if (delay === undefined || delay === null || typeof delay !== 'number' || delay <= 0)
       return;
 
     let ret: Promise<void>;
