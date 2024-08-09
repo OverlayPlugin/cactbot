@@ -176,17 +176,17 @@ const tailThrustOutputStrings = {
 const swordQuiverOutputStrings = {
   frontAndSides: {
     en: 'Go Front / Sides',
-    ja: '前方 / 横側',
+    ja: '前方 / 横側 へ',
     cn: '去前 / 侧边',
   },
   frontAndBack: {
     en: 'Go Front / Back',
-    ja: '前方 / 後ろ寄り',
+    ja: '前方 / 後方 へ',
     cn: '去前 / 后边',
   },
   sidesAndBack: {
     en: 'Go Sides / Back',
-    ja: '横 / 後ろ寄り',
+    ja: '横 / 後方 へ',
     cn: '去侧 / 后边',
   },
 } as const;
@@ -962,12 +962,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         remoteCurrent: {
           en: 'Far Cone on You',
-          ja: '自分に遠方扇範囲',
+          ja: '自分から遠い人に扇範囲',
           cn: '远雷点名',
         },
         proximateCurrent: {
           en: 'Near Cone on You',
-          ja: '自分に近方扇範囲',
+          ja: '自分から近い人に扇範囲',
           cn: '近雷点名',
         },
         spinningConductor: {
