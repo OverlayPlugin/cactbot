@@ -1842,6 +1842,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'fr',
       'missingTranslations': true,
       'replaceSync': {
+        'Electromine': 'électromine',
         'Wicked Replica': 'copie de Wicked Thunder',
         'Wicked Thunder': 'Wicked Thunder',
       },
@@ -1900,6 +1901,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ja',
       'missingTranslations': true,
       'replaceSync': {
+        'Electromine': 'エレクトリックマイン',
         'Wicked Replica': 'ウィケッドサンダーの幻影',
         'Wicked Thunder': 'ウィケッドサンダー',
       },
