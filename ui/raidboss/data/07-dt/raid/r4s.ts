@@ -741,11 +741,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         short: {
           en: 'Short Debuff (w/ ${same})',
-          ja: '短いデバフ (同デバフ: ${same})',
+          ja: '短いデバフ (同じく/ ${same})',
+          cn: '短 Debuff (和 ${same})',
         },
         long: {
           en: 'Long Debuff (w/ ${same})',
-          ja: '長いデバフ (同デバフ: ${same})',
+          ja: '長いデバフ (同じく/ ${same})',
+          cn: '长 Debuff (和 ${same})',
         },
       },
     },
@@ -768,7 +770,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spread: {
           en: 'Spread (${stacks} stacks)',
-          ja: '散開 (${stacks} 回充電)',
+          ja: '散開 (${stacks} 回のほう)',
           cn: '分散 (${stacks} 分摊)',
         },
       },
@@ -811,11 +813,13 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         stacks: {
           en: '(${stacks} stacks after)',
-          ja: '(${stacks} 回充電)',
+          ja: '(${stacks} 回のほう)',
+          cn: '(${stacks} 待会分摊)',
         },
         combo: {
           en: '${dir} => ${mech} ${remind}',
           ja: '${dir} => ${mech} ${remind}',
+          cn: '${dir} => ${mech} ${remind}',
         },
       },
     },

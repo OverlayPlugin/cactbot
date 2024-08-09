@@ -74,12 +74,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         beatOne: {
           en: 'Soak towers - need 2-3 hearts',
+          cn: '踩塔 - 踩到2-3颗心',
         },
         beatTwoZeroHearts: {
           en: 'Puddles & Stacks',
+          cn: '集合分摊放圈',
         },
         beatTwoOneHearts: {
           en: 'Spreads & Towers',
+          cn: '分散 / 踩塔',
         },
       },
     },

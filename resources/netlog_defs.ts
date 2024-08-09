@@ -492,7 +492,8 @@ const latestLogDefinitions = {
     },
     blankFields: [6, 47, 48],
     canAnonymize: true,
-    firstOptionalField: undefined,
+    // @TODO: Set this back to `undefined` after KR/CN have access to the new fields
+    firstOptionalField: 47,
     analysisOptions: {
       include: 'filter',
       filters: { sourceId: '4.{7}' }, // NPC abilities only
@@ -554,7 +555,8 @@ const latestLogDefinitions = {
     },
     blankFields: [6, 47, 48],
     canAnonymize: true,
-    firstOptionalField: undefined,
+    // @TODO: Set this back to `undefined` after KR/CN have access to the new fields
+    firstOptionalField: 47,
     analysisOptions: {
       include: 'filter',
       filters: { sourceId: '4.{7}' }, // NPC abilities only
