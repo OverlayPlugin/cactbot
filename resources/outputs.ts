@@ -237,7 +237,7 @@ export default {
     de: 'Auf ${player} sammeln',
     fr: 'Packez-vous sur ${player}',
     ja: '${player}に頭割り',
-    cn: '靠近 ${player}集合',
+    cn: '靠近 ${player}分摊',
     ko: '"${player}" 쉐어징',
   },
   stackPartner: {
@@ -245,7 +245,7 @@ export default {
     de: 'Mit Partner stacken',
     fr: 'Packez-vous avec votre partenaire',
     ja: 'ペア',
-    cn: '与搭档集合',
+    cn: '与搭档分摊',
     ko: '파트너랑 모이기',
   },
   stackMiddle: {
