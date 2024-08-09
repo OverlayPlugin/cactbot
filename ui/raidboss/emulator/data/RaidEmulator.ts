@@ -40,6 +40,9 @@ export default class RaidEmulator extends EventBus {
       this.popupText?.setParserLanguage(enc.language);
     }
 
+    // Clear our current timestamp early to prevent issues with double seek on load
+    this.currentLogTime = undefined;
+
     this.currentEncounter = new AnalyzedEncounter(this.options, enc, this, watchCombatantsOverride);
     void this.dispatch('preCurrentEncounterChanged', this.currentEncounter);
     void this.currentEncounter.analyze().then(() => {
