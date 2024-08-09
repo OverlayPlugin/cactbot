@@ -109,7 +109,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get hit by mist',
           de: 'Werde vom Nebel getroffen',
           ja: 'ミストに当たって',
-          cn: '吃连线分身半场刀',
+          cn: '吃本体270度毒',
         },
       },
     },
