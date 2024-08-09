@@ -98,17 +98,25 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { location: ['00', '03'], flags: mapEffectTileState.quickRebuid, capture: true },
       infoText: (_data, matches, output) => {
         if (matches.location === '00')
-          return output.nwSE!();
+          return output.knockback!({
+            pos1: output.northwest!(),
+            pos2: output.southeast!(),
+          });
 
-        return output.neSW!();
+        return output.knockback!({
+          pos1: output.northeast!(),
+          pos2: output.southwest!(),
+        });
       },
       outputStrings: {
-        nwSE: {
-          en: 'Knockback (NW/SE Safe)',
+        knockback: {
+          en: 'Knockback (${pos1}/${pos2} Safe)',
+          cn: '击退 (${pos1}/${pos2} 安全)',
         },
-        neSW: {
-          en: 'Knockback (NE/SW Safe)',
-        },
+        northeast: Outputs.dirNE,
+        northwest: Outputs.dirNW,
+        southeast: Outputs.dirSE,
+        southwest: Outputs.dirSW,
       },
     },
     {
@@ -225,6 +233,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         outSpread: {
           en: 'Out + Spread',
+          cn: '远离 + 分散',
         },
       },
     },
@@ -370,7 +379,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rollenposition',
           fr: 'Positions par rôle',
           ja: 'ロールの担当位置へ',
-          cn: '去指定位置',
+          cn: '职能分散站位',
           ko: '직업별 산개위치로',
         },
       },
@@ -411,12 +420,15 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         insideOut: {
           en: 'Inside => Outside',
+          cn: '场内 => 场外',
         },
         outsideIn: {
           en: 'Outside => Inside',
+          cn: '场外 => 场内',
         },
         combo: {
           en: '${dir}, ${cleaves}',
+          cn: '去 ${dir}, ${cleaves}',
         },
         unknown: Outputs.unknown,
       },
@@ -439,6 +451,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         proximity: {
           en: 'Proximity baits at target',
+          cn: '引导站位',
         },
         unknown: Outputs.unknown,
       },
@@ -529,15 +542,19 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         in: {
           en: 'In + Healer Stacks => Out',
+          cn: '场内 + 治疗组分摊 => 场外',
         },
         out: {
           en: 'Out + Healer Stacks => In',
+          cn: '场外 + 治疗组分摊 => 场内',
         },
         healerStacks: {
           en: 'Go ${dir} => ${inOut}',
+          cn: '去 ${dir} => ${inOut}',
         },
         proximity: {
           en: 'Go ${dir} => Proximity Baits + Spreads',
+          cn: '去 ${dir} => 引导站位 + 分散',
         },
       },
     },

@@ -712,9 +712,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         short: {
           en: 'Short Debuff (w/ ${same})',
+          cn: '短 Debuff (和 ${same})',
         },
         long: {
           en: 'Long Debuff (w/ ${same})',
+          cn: '长 Debuff (和 ${same})',
         },
       },
     },
@@ -779,9 +781,11 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         stacks: {
           en: '(${stacks} stacks after)',
+          cn: '(${stacks} 待会分摊)',
         },
         combo: {
           en: '${dir} => ${mech} ${remind}',
+          cn: '${dir} => ${mech} ${remind}',
         },
       },
     },
