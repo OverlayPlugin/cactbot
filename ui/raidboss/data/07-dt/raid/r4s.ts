@@ -781,7 +781,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         stacks: {
           en: '(${stacks} stacks after)',
-          cn: '(${stacks} 待会分摊)',
+          cn: '(${stacks} 层雷)',
         },
         combo: {
           en: '${dir} => ${mech} ${remind}',
