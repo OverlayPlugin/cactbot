@@ -739,7 +739,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spread: {
           en: 'Spread (${stacks} stacks)',
-          cn: '分散 (${stacks} 分摊)',
+          cn: '分散 (${stacks} 层雷)',
         },
       },
     },
