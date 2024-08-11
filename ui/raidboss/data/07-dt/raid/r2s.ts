@@ -74,14 +74,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         beatOne: {
           en: 'Soak towers - need 2-3 hearts',
+          de: 'Nimm Türme - benötigt 2-3 Herzen',
           cn: '踩塔 - 踩到2-3颗心',
         },
         beatTwoZeroHearts: {
           en: 'Puddles & Stacks',
+          de: 'Flächen + sammeln',
           cn: '集合分摊放圈',
         },
         beatTwoOneHearts: {
           en: 'Spreads & Towers',
+          de: 'Verteilen + Türme',
           cn: '分散 / 踩塔',
         },
       },
@@ -114,6 +117,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Drop Puddle Outside',
+          de: 'Lege Fläche außen ab',
         },
       },
     },

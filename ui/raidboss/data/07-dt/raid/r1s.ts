@@ -111,6 +111,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockback: {
           en: 'Knockback (${pos1}/${pos2} Safe)',
+          de: 'Rückstoß (${pos1}/${pos2} sicher)',
           cn: '击退 (${pos1}/${pos2} 安全)',
         },
         northeast: Outputs.dirNE,
@@ -233,6 +234,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         outSpread: {
           en: 'Out + Spread',
+          de: 'Raus + Verteilen',
           cn: '远离 + 分散',
         },
       },
@@ -420,14 +422,17 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         insideOut: {
           en: 'Inside => Outside',
+          de: 'Rein => Raus',
           cn: '场内 => 场外',
         },
         outsideIn: {
           en: 'Outside => Inside',
+          de: 'Raus => Rein',
           cn: '场外 => 场内',
         },
         combo: {
           en: '${dir}, ${cleaves}',
+          de: '${dir}, ${cleaves}',
           cn: '去 ${dir}, ${cleaves}',
         },
         unknown: Outputs.unknown,
@@ -451,6 +456,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         proximity: {
           en: 'Proximity baits at target',
+          de: 'Nah-Distanz-Köder vom Ziel',
           cn: '引导站位',
         },
         unknown: Outputs.unknown,
@@ -542,18 +548,22 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.dirW,
         in: {
           en: 'In + Healer Stacks => Out',
+          de: 'Rein + Auf Heiler sammeln => Raus',
           cn: '场内 + 治疗组分摊 => 场外',
         },
         out: {
           en: 'Out + Healer Stacks => In',
+          de: 'Raus + Auf Heiler sammeln => Rein',
           cn: '场外 + 治疗组分摊 => 场内',
         },
         healerStacks: {
           en: 'Go ${dir} => ${inOut}',
+          de: 'Geh nach ${dir} => ${inOut}',
           cn: '去 ${dir} => ${inOut}',
         },
         proximity: {
           en: 'Go ${dir} => Proximity Baits + Spreads',
+          de: 'Geh nach ${dir} => Nah-Distanz-Köder + Verteilen',
           cn: '去 ${dir} => 引导站位 + 分散',
         },
       },
