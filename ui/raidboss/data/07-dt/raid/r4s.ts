@@ -124,26 +124,31 @@ const witchHuntAlertOutputStrings = {
   in: {
     en: 'In',
     de: 'Rein',
+    ja: '中へ',
     cn: '月环',
   },
   out: {
     en: 'Out',
     de: 'Raus',
+    ja: '外へ',
     cn: '钢铁',
   },
   near: {
     en: 'Baits Close (Party Far)',
     de: 'Nah ködern (Gruppe fern)',
+    ja: '近づいて誘導 (他は離れる)',
     cn: '靠近引导 (小队远离)',
   },
   far: {
     en: 'Baits Far (Party Close)',
     de: 'Fern ködern (Gruppe nah)',
+    ja: '離れて誘導 (他は近づく)',
     cn: '远离引导 (小队靠近)',
   },
   combo: {
     en: '${inOut} => ${bait}',
     de: '${inOut} => ${bait}',
+    ja: '${inOut} => ${bait}',
     cn: '${inOut} => ${bait}',
   },
   unknown: Outputs.unknown,
@@ -153,21 +158,25 @@ const tailThrustOutputStrings = {
   iceLeft: {
     en: 'Double Knockback (<== Start on Left)',
     de: 'Doppel-Rückstoß (<== Starte Links)',
+    ja: '2連続ノックバック (<== 左から開始)',
     cn: '两次击退 (<== 左边开始)',
   },
   iceRight: {
     en: 'Double Knockback (Start on Right ==>)',
     de: 'Doppel-Rückstoß (Starte Rechts ==>)',
+    ja: '2連続ノックバック (右から開始 ==>)',
     cn: '两次击退 (右边开始 ==>)',
   },
   fireLeft: {
     en: 'Fire - Start Front + Right ==>',
     de: 'Feuer - Starte Vorne + Rechts ==>',
+    ja: '火 - 最前列 + 右側へ ==>',
     cn: '火 - 右右右 ==>',
   },
   fireRight: {
     en: '<== Fire - Start Front + Left',
     de: '<== Feuer - Starte Vorne + Links',
+    ja: '<== 火 - 最前列 + 左側へ',
     cn: '<== 火 - 左左左',
   },
   unknown: Outputs.unknown,
@@ -177,16 +186,19 @@ const swordQuiverOutputStrings = {
   frontAndSides: {
     en: 'Go Front / Sides',
     de: 'Geh nach Vorne / Seiten',
+    ja: '前方 / 横側 へ',
     cn: '去前 / 侧边',
   },
   frontAndBack: {
     en: 'Go Front / Back',
     de: 'Geh nach Vorne / Hinten',
+    ja: '前方 / 後方 へ',
     cn: '去前 / 后边',
   },
   sidesAndBack: {
     en: 'Go Sides / Back',
     de: 'Geh Seitlich / Hinten',
+    ja: '横 / 後方 へ',
     cn: '去侧 / 后边',
   },
 } as const;
@@ -332,6 +344,7 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Avoid Front + Side Cleaves',
           de: 'Vermeide Frontal + Seiten-Angriff',
+          ja: '縦と横の範囲を避けて',
           cn: '远离BOSS和场边直线AoE',
         },
       },
@@ -362,21 +375,25 @@ const triggerSet: TriggerSet<Data> = {
         in: {
           en: 'In',
           de: 'Rein',
+          ja: '中へ',
           cn: '内场',
         },
         out: {
           en: 'Out',
           de: 'Raus',
+          ja: '外へ',
           cn: '外场',
         },
         spreadAvoid: {
           en: 'Spread (Avoid Side Cleaves)',
           de: 'Verteilen (Vermeide Seiten-Angriff)',
+          ja: '散開 (横の範囲を避けて)',
           cn: '分散 (注意场边直线)',
         },
         combo: {
           en: '${inOut} + ${spread}',
           de: '${inOut} + ${spread}',
+          ja: '${inOut} + ${spread}',
           cn: '${inOut} + ${spread}',
         },
       },
@@ -416,26 +433,31 @@ const triggerSet: TriggerSet<Data> = {
         in: {
           en: 'In',
           de: 'Rein',
+          ja: '中へ',
           cn: '内场',
         },
         out: {
           en: 'Out',
           de: 'Raus',
+          ja: '外へ',
           cn: '外场',
         },
         near: {
           en: 'Spread (Be Closer)',
           de: 'Verteilen (Sei näher dran)',
+          ja: '散開(近づく)',
           cn: '靠近分散',
         },
         far: {
           en: 'Spread (Be Further)',
           de: 'Verteilen (Sei weiter weg)',
+          ja: '散開(離れる)',
           cn: '远离分散',
         },
         combo: {
           en: '${inOut} + ${spread}',
           de: '${inOut} + ${spread}',
+          ja: '${inOut} + ${spread}',
           cn: '${inOut} + ${spread}',
         },
       },
@@ -489,21 +511,25 @@ const triggerSet: TriggerSet<Data> = {
         in: {
           en: 'In',
           de: 'Rein',
+          ja: '中へ',
           cn: '月环',
         },
         out: {
           en: 'Out',
           de: 'Raus',
+          ja: '外へ',
           cn: '钢铁',
         },
         near: {
           en: 'Close',
           de: 'Nah',
+          ja: '近づく',
           cn: '近',
         },
         far: {
           en: 'Far',
           de: 'Fern',
+          ja: '離れる',
           cn: '远',
         },
         separator: {
@@ -515,11 +541,13 @@ const triggerSet: TriggerSet<Data> = {
         baitStep: {
           en: '${inOut} (${bait})',
           de: '${inOut} (${bait})',
+          ja: '${inOut} (${bait})',
           cn: '${inOut} (${bait})',
         },
         baitCombo: {
           en: 'Baits: ${allBaits}',
           de: 'Ködern: ${allBaits}',
+          ja: '誘導: ${allBaits}',
           cn: '引导: ${allBaits}',
         },
         unknown: Outputs.unknown,
@@ -698,6 +726,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir} => ${mech}',
           de: '${dir} => ${mech}',
+          ja: '${dir} => ${mech}',
           cn: '${dir} => ${mech}',
         },
       },
@@ -742,11 +771,13 @@ const triggerSet: TriggerSet<Data> = {
         short: {
           en: 'Short Debuff (w/ ${same})',
           de: 'Kurzer Debuff (mit ${same})',
+          ja: '短いデバフ (同じく/ ${same})',
           cn: '短 Debuff (和 ${same})',
         },
         long: {
           en: 'Long Debuff (w/ ${same})',
           de: 'Langer Debuff (mit ${same})',
+          ja: '長いデバフ (同じく/ ${same})',
           cn: '长 Debuff (和 ${same})',
         },
       },
@@ -771,6 +802,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread (${stacks} stacks)',
           de: 'Verteilen (${stacks} sammeln)',
+          ja: '散開 (${stacks} 回のほう)',
           cn: '分散 (${stacks} 分摊)',
         },
       },
@@ -814,11 +846,13 @@ const triggerSet: TriggerSet<Data> = {
         stacks: {
           en: '(${stacks} stacks after)',
           de: '(${stacks} danach sammeln)',
+          ja: '(${stacks} 回のほう)',
           cn: '(${stacks} 待会分摊)',
         },
         combo: {
           en: '${dir} => ${mech} ${remind}',
           de: '${dir} => ${mech} ${remind}',
+          ja: '${dir} => ${mech} ${remind}',
           cn: '${dir} => ${mech} ${remind}',
         },
       },
@@ -872,11 +906,13 @@ const triggerSet: TriggerSet<Data> = {
         tank: {
           en: '${dir} - Be in Front',
           de: '${dir} - Sei Vorne',
+          ja: '${dir} - ボス近くで受けて',
           cn: '${dir} - 站在最前',
         },
         nonTank: {
           en: '${dir} - Behind Tank',
           de: '${dir} - Hinter dem Tank',
+          ja: '${dir} - タンクの後ろへ',
           cn: '${dir} - 站在T后面',
         },
       },
@@ -894,22 +930,26 @@ const triggerSet: TriggerSet<Data> = {
           swap: {
             en: 'Swap Sides',
             de: 'Seiten wechseln',
+            ja: '場所を交代',
             cn: '交换场地',
           },
           stay: {
             en: 'Stay',
             de: 'Stehen bleiben',
+            ja: 'そのまま',
             cn: '呆在这个半场',
           },
           unknown: Outputs.unknown,
           tank: {
             en: '${dir} - Be in Front',
             de: '${dir} - Sei Vorne',
+            ja: '${dir} - ボス近くで受けて',
             cn: '${dir} - 站在最前',
           },
           nonTank: {
             en: '${dir} - Behind Tank',
             de: '${dir} - Hinter dem Tank',
+            ja: '${dir} - タンクの後ろへ',
             cn: '${dir} - 站在T后面',
           },
         };
@@ -963,26 +1003,31 @@ const triggerSet: TriggerSet<Data> = {
         remoteCurrent: {
           en: 'Far Cone on You',
           de: 'Fern-Kegel auf DIR',
+          ja: '自分から遠い人に扇範囲',
           cn: '远雷点名',
         },
         proximateCurrent: {
           en: 'Near Cone on You',
           de: 'Nah-Kegel auf DIR',
+          ja: '自分から近い人に扇範囲',
           cn: '近雷点名',
         },
         spinningConductor: {
           en: 'Small AoE on You',
           de: 'Kleine AoE auf DIR',
+          ja: '自分に小さい円範囲',
           cn: '钢铁点名',
         },
         roundhouseConductor: {
           en: 'Donut AoE on You',
           de: 'Donut AoE auf DIR',
+          ja: '自分にドーナツ範囲',
           cn: '月环点名',
         },
         colliderConductor: {
           en: 'Get Hit by Cone',
           de: 'Werde vom Kegel getroffen',
+          ja: '扇範囲に当たって',
           cn: '去吃雷',
         },
       },
@@ -998,6 +1043,7 @@ const triggerSet: TriggerSet<Data> = {
         dodge: {
           en: 'Dodge w/Partner x7',
           de: 'mit Partner ausweichen x7',
+          ja: '相方と避ける x7',
         },
       },
     },
@@ -1042,11 +1088,13 @@ const triggerSet: TriggerSet<Data> = {
         near: {
           en: 'In Front of Partner',
           de: 'Sei vor deinem Partner',
+          ja: '相方の前へ',
           cn: '站在队友前面',
         },
         far: {
           en: 'Behind Partner',
           de: 'Sei hinter deinem Partner',
+          ja: '相方の後ろへ',
           cn: '躲在队友身后',
         },
       },
@@ -1128,11 +1176,13 @@ const triggerSet: TriggerSet<Data> = {
         passDebuff: {
           en: 'Pass Debuff',
           de: 'Debuff übergeben',
+          ja: 'デバフを渡して',
           cn: '传递 Debuff',
         },
         getDebuff: {
           en: 'Get Debuff',
           de: 'Debuff nehmen',
+          ja: 'デバフを取って',
           cn: '获取 Debuff',
         },
       },
@@ -1170,6 +1220,7 @@ const triggerSet: TriggerSet<Data> = {
         stored: {
           en: 'Stored: ${effect}',
           de: 'Gespeichert: ${effect}',
+          ja: 'あとで: ${effect}',
           cn: '存储: ${effect}',
         },
       },
@@ -1196,6 +1247,7 @@ const triggerSet: TriggerSet<Data> = {
           lb3: {
             en: 'LB3!',
             de: 'LB3!',
+            ja: 'タンク LB3!',
             cn: '坦克 LB!',
           },
         };
@@ -1287,6 +1339,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir} => ${inSides}',
           de: '${dir} => ${inSides}',
+          ja: '${dir} => ${inSides}',
           cn: '${dir} => ${inSides}',
         },
       },
@@ -1356,6 +1409,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir} => ${mech}',
           de: '${dir} => ${mech}',
+          ja: '${dir} => ${mech}',
           cn: '${dir} => ${mech}',
         },
         cardinals: Outputs.cardinals,
@@ -1388,6 +1442,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir} => ${mech}',
           de: '${dir} => ${mech}',
+          ja: '${dir} => ${mech}',
           cn: '${dir} => ${mech}',
         },
         cardinals: Outputs.cardinals,
@@ -1416,6 +1471,7 @@ const triggerSet: TriggerSet<Data> = {
         towers: {
           en: 'Tower Positions',
           de: 'Turm Positionen',
+          ja: '塔の位置へ',
           cn: '踩塔站位',
         },
       },
@@ -1492,6 +1548,7 @@ const triggerSet: TriggerSet<Data> = {
         safe: {
           en: '${side}: Start at ${first}',
           de: '${side}: Starte ${first}',
+          ja: '${side}: まずは ${first} から',
           cn: '${side}: 从 ${first} 开始',
         },
         unknown: Outputs.unknown,
@@ -1537,6 +1594,7 @@ const triggerSet: TriggerSet<Data> = {
         safe: {
           en: '${side} Side: ${order}',
           de: '${side} Seite: ${order}',
+          ja: '${side} : ${order}',
           cn: '${side} 侧: ${order}',
         },
         unknown: Outputs.unknown,
@@ -1566,21 +1624,25 @@ const triggerSet: TriggerSet<Data> = {
         yellowLong: {
           en: 'Long Yellow Debuff (Towers First)',
           de: 'Langer Gelber Debuff (Turm zuerst)',
+          ja: '長い黄色デバフ (塔から)',
           cn: '长黄 (先踩塔)',
         },
         blueLong: {
           en: 'Long Blue Debuff (Towers First)',
           de: 'Langer Blauer Debuff (Turm zuerst)',
+          ja: '長い青色デバフ (塔から)',
           cn: '长蓝 (先踩塔)',
         },
         yellowShort: {
           en: 'Short Yellow Debuff (Cannons First)',
           de: 'Kurzer Gelber Debuff (Kanone zuerst)',
+          ja: '短い黄色デバフ (ビーム誘導から)',
           cn: '短黄 (先引导)',
         },
         blueShort: {
           en: 'Short Blue Debuff (Cannons First)',
           de: 'Kurzer Blauer Debuff (Kanone zuerst)',
+          ja: '短い青色デバフ (ビーム誘導から)',
           cn: '短蓝 (先引导)',
         },
       },
@@ -1703,31 +1765,37 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'N/S',
           de: 'N/S',
+          ja: '南/北',
           cn: '南/北',
         },
         eastWest: {
           en: 'E/W',
           de: 'O/W',
+          ja: '東/西',
           cn: '东/西',
         },
         yellowLong: {
           en: 'Soak Tower (${bait})',
           de: 'Turm nehmen (${bait})',
+          ja: '塔を踏んで (${bait})',
           cn: '踩塔 (${bait})',
         },
         blueLong: {
           en: 'Soak Tower (${bait})',
           de: 'Turm nehmen (${bait})',
+          ja: '塔を踏んで (${bait})',
           cn: '踩塔 (${bait})',
         },
         yellowShort: {
           en: 'Blue Cannon (${loc}) - Point ${bait}',
           de: 'Blaue Kanone (${loc}) - Richte nach ${bait}',
+          ja: '青いビーム誘導 (${loc}) - ${bait}',
           cn: '蓝激光 (${loc}) - ${bait}',
         },
         blueShort: {
           en: 'Yellow Cannon (${loc}) - Point ${bait}',
           de: 'Gelbe Kanone (${loc}) - Richte nach ${bait}',
+          ja: '黄色いビーム誘導 (${loc}) - ${bait}',
           cn: '黄激光 (${loc}) - ${bait}',
         },
       },

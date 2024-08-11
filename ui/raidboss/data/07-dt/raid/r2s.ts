@@ -106,9 +106,22 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.spread(),
     },
     {
+      id: 'R2S Headmarker Alarm Pheromones Puddle',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.spreadMarker1, capture: true },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Drop Puddle Outside',
+        },
+      },
+    },
+    {
       id: 'R2S Headmarker Party Stacks',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.heartStackMarker, capture: false },
+      suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.stacks!(),
       outputStrings: {
         stacks: Outputs.stacks,
