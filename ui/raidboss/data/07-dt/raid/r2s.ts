@@ -113,7 +113,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Drop Puddle',
+          en: 'Drop Puddle Outside',
         },
       },
     },
