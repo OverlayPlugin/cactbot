@@ -1,4 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -52,10 +53,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid',
           ko: '피하기',
         },
-        in: {
-          en: 'In',
-          ko: '안으로',
-        },
+        in: Outputs.in,
       },
     },
     {
