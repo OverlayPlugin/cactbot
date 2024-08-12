@@ -112,6 +112,7 @@ const triggerSet: TriggerSet<Data> = {
         knockback: {
           en: 'Knockback (${pos1}/${pos2} Safe)',
           de: 'Rückstoß (${pos1}/${pos2} sicher)',
+          ja: 'ノックバック (${pos1}/${pos2} が安地)',
           cn: '击退 (${pos1}/${pos2} 安全)',
         },
         northeast: Outputs.dirNE,
