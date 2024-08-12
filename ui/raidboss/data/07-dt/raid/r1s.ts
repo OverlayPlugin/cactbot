@@ -235,6 +235,7 @@ const triggerSet: TriggerSet<Data> = {
         outSpread: {
           en: 'Out + Spread',
           de: 'Raus + Verteilen',
+          ja: '外へ + 散開',
           cn: '远离 + 分散',
         },
       },
