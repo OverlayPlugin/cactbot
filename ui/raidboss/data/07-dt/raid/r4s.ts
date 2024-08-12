@@ -1404,17 +1404,41 @@ const triggerSet: TriggerSet<Data> = {
           ? (data.midnightCardFirst ? output.cardinals!() : output.intercards!())
           : (data.midnightCardFirst ? output.intercards!() : output.cardinals!());
 
-        return output.combo!({ dir: dirStr, mech: firstMechStr });
+        const typeStr = data.midnightFirstAdds === 'wings' ? output.wings!() : output.guns!();
+
+        return output.combo!({ dir: dirStr, mech: firstMechStr, type: typeStr });
       },
       outputStrings: {
         combo: {
-          en: '${dir} => ${mech}',
-          de: '${dir} => ${mech}',
-          ja: '${dir} => ${mech}',
-          cn: '${dir} => ${mech}',
+          en: '${dir} => ${type} + ${mech}',
+          de: '${dir} => ${type} + ${mech}',
+          ja: '${dir} => ${type} + ${mech}',
+          cn: '${dir} => ${type} + ${mech}',
         },
-        cardinals: Outputs.cardinals,
-        intercards: Outputs.intercards,
+        cardinals: {
+          en: 'Cardinals',
+          de: 'Kardinal',
+          fr: 'Cardinaux',
+          ja: '十字回避',
+          cn: '去正点',
+          ko: '십자방향으로',
+        },
+        intercards: {
+          en: 'Intercards',
+          de: 'Interkardinal',
+          fr: 'Intercardinal',
+          ja: '斜めへ',
+          cn: '去四角',
+          ko: '대각선 쪽으로',
+        },
+        guns: {
+          en: 'Avoid Line',
+          cn: '躲避直线',
+        },
+        wings: {
+          en: 'Donut',
+          cn: '月环',
+        },
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
       },
@@ -1437,17 +1461,41 @@ const triggerSet: TriggerSet<Data> = {
           ? (secondAddsOnCards ? output.cardinals!() : output.intercards!())
           : (secondAddsOnCards ? output.intercards!() : output.cardinals!());
 
-        return output.combo!({ dir: dirStr, mech: secondMechStr });
+        const typeStr = data.midnightSecondAdds === 'wings' ? output.wings!() : output.guns!();
+
+        return output.combo!({ dir: dirStr, mech: secondMechStr, type: typeStr });
       },
       outputStrings: {
         combo: {
-          en: '${dir} => ${mech}',
-          de: '${dir} => ${mech}',
-          ja: '${dir} => ${mech}',
-          cn: '${dir} => ${mech}',
+          en: '${dir} => ${type} + ${mech}',
+          de: '${dir} => ${type} + ${mech}',
+          ja: '${dir} => ${type} + ${mech}',
+          cn: '${dir} => ${type} + ${mech}',
         },
-        cardinals: Outputs.cardinals,
-        intercards: Outputs.intercards,
+        cardinals: {
+          en: 'Cardinals',
+          de: 'Kardinal',
+          fr: 'Cardinaux',
+          ja: '十字回避',
+          cn: '去正点',
+          ko: '십자방향으로',
+        },
+        intercards: {
+          en: 'Intercards',
+          de: 'Interkardinal',
+          fr: 'Intercardinal',
+          ja: '斜めへ',
+          cn: '去四角',
+          ko: '대각선 쪽으로',
+        },
+        guns: {
+          en: 'Avoid Line',
+          cn: '躲避直线',
+        },
+        wings: {
+          en: 'Donut',
+          cn: '月环',
+        },
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
         unknown: Outputs.unknown,
