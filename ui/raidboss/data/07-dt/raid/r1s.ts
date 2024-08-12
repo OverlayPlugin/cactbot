@@ -554,21 +554,25 @@ const triggerSet: TriggerSet<Data> = {
         in: {
           en: 'In + Healer Stacks => Out',
           de: 'Rein + Auf Heiler sammeln => Raus',
+          ja: '中へ + ヒラ頭割り => 外へ',
           cn: '场内 + 治疗组分摊 => 场外',
         },
         out: {
           en: 'Out + Healer Stacks => In',
           de: 'Raus + Auf Heiler sammeln => Rein',
+          ja: '外へ + ヒラ頭割り => 中へ',
           cn: '场外 + 治疗组分摊 => 场内',
         },
         healerStacks: {
           en: 'Go ${dir} => ${inOut}',
           de: 'Geh nach ${dir} => ${inOut}',
+          ja: '${dir} へ => ${inOut}',
           cn: '去 ${dir} => ${inOut}',
         },
         proximity: {
           en: 'Go ${dir} => Proximity Baits + Spreads',
           de: 'Geh nach ${dir} => Nah-Distanz-Köder + Verteilen',
+          ja: '${dir} へ => ボスに近づいて誘導 + 散開',
           cn: '去 ${dir} => 引导站位 + 分散',
         },
       },
