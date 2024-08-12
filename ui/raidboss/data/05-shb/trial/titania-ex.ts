@@ -41,6 +41,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'TitaniaEx Mist Failure',
       type: 'AddedCombatant',
       netRegex: { name: 'Spirit Of Dew', capture: false },
+      suppressSeconds: 3,
       response: Responses.killExtraAdd(),
     },
     {
