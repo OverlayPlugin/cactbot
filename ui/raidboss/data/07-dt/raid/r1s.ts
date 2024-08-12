@@ -461,6 +461,7 @@ const triggerSet: TriggerSet<Data> = {
         proximity: {
           en: 'Proximity baits at target',
           de: 'Nah-Distanz-Köder vom Ziel',
+          ja: 'ボスに近づいて誘導',
           cn: '引导站位',
         },
         unknown: Outputs.unknown,
