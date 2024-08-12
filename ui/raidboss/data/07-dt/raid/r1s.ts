@@ -424,16 +424,19 @@ const triggerSet: TriggerSet<Data> = {
         insideOut: {
           en: 'Inside => Outside',
           de: 'Rein => Raus',
+          ja: '内側 => 外側',
           cn: '场内 => 场外',
         },
         outsideIn: {
           en: 'Outside => Inside',
           de: 'Raus => Rein',
+          ja: '外側 => 内側',
           cn: '场外 => 场内',
         },
         combo: {
           en: '${dir}, ${cleaves}',
           de: '${dir}, ${cleaves}',
+          ja: '${dir}, ${cleaves}',
           cn: '去 ${dir}, ${cleaves}',
         },
         unknown: Outputs.unknown,
