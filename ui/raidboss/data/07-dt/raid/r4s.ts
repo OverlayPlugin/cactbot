@@ -345,7 +345,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid Front + Side Cleaves',
           de: 'Vermeide Frontal + Seiten-Angriff',
           ja: '縦と横の範囲を避けて',
-          cn: '远离BOSS和场边直线AoE',
+          cn: '躲避场边横向和BOSS纵向激光',
         },
       },
     },
@@ -1196,11 +1196,11 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.goSides(),
     },
     {
-      id: 'R4S Wicked Special In',
+      id: 'R4S Wicked Special Middle',
       type: 'StartsUsing',
       netRegex: { id: '9612', source: 'Wicked Thunder', capture: false },
       condition: (data) => data.secondTwilightCleaveSafe === undefined,
-      response: Responses.getIn(),
+      response: Responses.goMiddle(),
     },
     {
       id: 'R4S Aetherial Conversion',
@@ -1329,19 +1329,19 @@ const triggerSet: TriggerSet<Data> = {
           throw new UnreachableCode();
 
         return matches.id === '9610'
-          ? output.combo!({ dir: output[dir]!(), inSides: output.sides!() })
-          : output.combo!({ dir: output[dir]!(), inSides: output.in!() });
+          ? output.combo!({ dir: output[dir]!(), middleSides: output.sides!() })
+          : output.combo!({ dir: output[dir]!(), middleSides: output.middle!() });
       },
       run: (data) => delete data.secondTwilightCleaveSafe,
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
-        in: Outputs.in,
+        middle: Outputs.middle,
         sides: Outputs.sides,
         combo: {
-          en: '${dir} => ${inSides}',
-          de: '${dir} => ${inSides}',
-          ja: '${dir} => ${inSides}',
-          cn: '${dir} => ${inSides}',
+          en: '${dir} => ${middleSides}',
+          de: '${dir} => ${middleSides}',
+          ja: '${dir} => ${middleSides}',
+          cn: '${dir} => ${middleSides}',
         },
       },
     },
