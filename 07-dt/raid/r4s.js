@@ -903,6 +903,7 @@ Options.Triggers.push({
           en: 'Dodge w/Partner x7',
           de: 'mit Partner ausweichen x7',
           ja: '相方と避ける x7',
+          cn: '与搭档躲避 7 次扇形',
         },
       },
     },
