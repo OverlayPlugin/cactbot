@@ -365,6 +365,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(damage\\)': '(Schaden)',
         '\\(drop\\)': '(Tropfen)',
         '\\(enrage\\)': '(Finalangriff)',
+        '\\(stun for': '(Betäubung für',
       },
     },
     {

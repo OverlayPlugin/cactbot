@@ -133,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         swSeStay: {
           en: '${dir1} ${sep} ${dir2} (Stay)',
+          de: '${dir1} ${sep} ${dir2} (bleib Stehen)',
           ko: '${dir1} ${sep} ${dir2} (그대로)',
         },
         separator: {
