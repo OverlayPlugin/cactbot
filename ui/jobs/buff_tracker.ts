@@ -14,8 +14,6 @@ import dokumoriImage from '../../resources/ffxiv/status/dokumori.png';
 import dragonSightImage from '../../resources/ffxiv/status/dragon-sight.png';
 import emboldenImage from '../../resources/ffxiv/status/embolden.png';
 import ewerImage from '../../resources/ffxiv/status/ewer.png';
-import ladyOfCrownsImage from '../../resources/ffxiv/status/lady-of-crowns.png';
-import lordOfCrownsImage from '../../resources/ffxiv/status/lord-of-crowns.png';
 import mugImage from '../../resources/ffxiv/status/mug.png';
 import offguardImage from '../../resources/ffxiv/status/offguard.png';
 import peculiarLightImage from '../../resources/ffxiv/status/peculiar-light.png';
@@ -292,61 +290,68 @@ export class BuffTracker {
 
     this.buffInfo = {
       potion: {
+        // increase main stat, equals to 8%~9% damage bonus (based on ilv)
         gainEffect: [EffectId.Medicated],
         loseEffect: [EffectId.Medicated],
         useEffectDuration: true,
         icon: potionImage,
         borderColor: '#AA41B2',
-        sortKey: 0,
+        sortKey: 2,
         cooldown: 270,
       },
       astralAttenuation: {
+        // 5% damage bonus (BLU: fire, wind, and lightning)
         mobGainsEffect: EffectId.AstralAttenuation,
         mobLosesEffect: EffectId.AstralAttenuation,
         useEffectDuration: true,
         icon: astralImage,
         borderColor: '#9bdec0',
-        sortKey: 0,
+        sortKey: 9,
       },
       umbralAttenuation: {
+        // 5% damage bonus (BLU: water, earth, and ice)
         mobGainsEffect: EffectId.UmbralAttenuation,
         mobLosesEffect: EffectId.UmbralAttenuation,
         useEffectDuration: true,
         icon: umbralImage,
         borderColor: '#4d8bc9',
-        sortKey: 0,
+        sortKey: 9,
       },
       physicalAttenuation: {
+        // 5% damage bonus (BLU: Physical)
         mobGainsEffect: EffectId.PhysicalAttenuation,
         mobLosesEffect: EffectId.PhysicalAttenuation,
         useEffectDuration: true,
         icon: physicalImage,
         borderColor: '#fff712',
-        sortKey: 0,
+        sortKey: 9,
       },
       offguard: {
+        // 5% damage bonus (BLU)
         cooldownAbility: [kAbility.OffGuard],
         mobGainsEffect: EffectId.OffGuard,
         mobLosesEffect: EffectId.OffGuard,
         useEffectDuration: true,
         icon: offguardImage,
         borderColor: '#47bf41',
-        sortKey: 1,
+        sortKey: 9,
         cooldown: 60,
         sharesCooldownWith: ['peculiar'],
       },
       peculiar: {
+        // 5% damage bonus (BLU: Magic)
         cooldownAbility: [kAbility.PeculiarLight],
         mobGainsEffect: EffectId.PeculiarLight,
         mobLosesEffect: EffectId.PeculiarLight,
         useEffectDuration: true,
         icon: peculiarLightImage,
         borderColor: '#F28F7B',
-        sortKey: 1,
+        sortKey: 9,
         cooldown: 60,
         sharesCooldownWith: ['offguard'],
       },
       mug: {
+        // 5% damage bonus
         cooldownAbility: [kAbility.Mug],
         mobGainsEffect: EffectId.VulnerabilityUp_27E,
         mobLosesEffect: EffectId.VulnerabilityUp_27E,
@@ -354,10 +359,11 @@ export class BuffTracker {
         icon: mugImage,
         // Magenta.
         borderColor: '#FC4AE6',
-        sortKey: 1,
+        sortKey: 5,
         cooldown: 120,
       },
       Dokumori: {
+        // 5% damage bonus
         cooldownAbility: [kAbility.Dokumori],
         mobGainsEffect: EffectId.Dokumori,
         mobLosesEffect: EffectId.Dokumori,
@@ -365,10 +371,11 @@ export class BuffTracker {
         icon: dokumoriImage,
         // Magenta.
         borderColor: '#FC4AE6',
-        sortKey: 1,
+        sortKey: 5,
         cooldown: 120,
       },
       litany: {
+        // 10% Crit, equals to 5%~6% damage bonus (about 3k crit)
         cooldownAbility: [kAbility.BattleLitany],
         gainEffect: [EffectId.BattleLitany_312],
         loseEffect: [EffectId.BattleLitany_312],
@@ -377,10 +384,11 @@ export class BuffTracker {
         icon: battleLitanyImage,
         // Cyan.
         borderColor: '#099',
-        sortKey: 2,
+        sortKey: 4,
         cooldown: 120,
       },
       embolden: {
+        // 5% damage bonus
         cooldownAbility: [kAbility.Embolden],
         // 511 for party, 4D7 for self
         gainEffect: [EffectId.Embolden_511, EffectId.Embolden_4D7],
@@ -390,38 +398,42 @@ export class BuffTracker {
         icon: emboldenImage,
         // Lime.
         borderColor: '#57FC4A',
-        sortKey: 3,
+        sortKey: 5,
         cooldown: 120,
       },
       balance: {
+        // 6% damage bonus for melee
         gainEffect: [EffectId.TheBalance_F2F],
         loseEffect: [EffectId.TheBalance_F2F],
         useEffectDuration: true,
         icon: balanceImage,
         // Orange.
         borderColor: '#ff9900',
-        sortKey: 4,
+        sortKey: 3,
       },
       spear: {
+        // 6% damage bonus for ranged
         gainEffect: [EffectId.TheSpear_F31],
         loseEffect: [EffectId.TheSpear_F31],
         useEffectDuration: true,
         icon: spearImage,
         // Dark Blue.
         borderColor: '#4477dd',
-        sortKey: 4,
+        sortKey: 3,
       },
       devilment: {
+        // 20% crit + 20% DH, equals to 15%+ damage bonus
         gainEffect: [EffectId.Devilment],
         loseEffect: [EffectId.Devilment],
         useEffectDuration: true,
         icon: devilmentImage,
         // Dark Green.
         borderColor: '#006400',
-        sortKey: 5,
+        sortKey: 1,
         cooldown: 120,
       },
       standardFinish: {
+        // 5% damage bonus
         // 839 for other, 71D for self
         gainEffect: [EffectId.StandardFinish_839, EffectId.StandardFinish_71D],
         loseEffect: [EffectId.StandardFinish_839, EffectId.StandardFinish_71D],
@@ -429,9 +441,10 @@ export class BuffTracker {
         icon: standardFinishImage,
         // Green.
         borderColor: '#32CD32',
-        sortKey: 6,
+        sortKey: 8,
       },
       technicalFinish: {
+        // 5% damage bonus
         // This tracker may not be accurate.
         // Technical Step cooldown when start dancing,
         // but raidbuff take effects on finish.
@@ -449,10 +462,11 @@ export class BuffTracker {
         icon: technicalFinishImage,
         // Dark Peach.
         borderColor: '#E0757C',
-        sortKey: 6,
+        sortKey: 5,
         cooldown: 120,
       },
       battlevoice: {
+        // 20% DH, equals to 4~5% damage bonus (about dh 2k)
         cooldownAbility: [kAbility.BattleVoice],
         gainEffect: [EffectId.BattleVoice],
         loseEffect: [EffectId.BattleVoice],
@@ -461,10 +475,11 @@ export class BuffTracker {
         icon: battleVoiceImage,
         // Red.
         borderColor: '#D6371E',
-        sortKey: 7,
+        sortKey: 6,
         cooldown: 120,
       },
       finale: {
+        // 6% damage bonus
         cooldownAbility: [kAbility.RadiantFinale],
         // B94 for buff, AA2 for visual effect
         gainEffect: [EffectId.RadiantFinale_B94],
@@ -474,10 +489,11 @@ export class BuffTracker {
         icon: finaleImage,
         // Yellow.
         borderColor: '#ddd044',
-        sortKey: 7,
+        sortKey: 3,
         cooldown: 110,
       },
       chain: {
+        // 10% crit, equals to 5%~6% damage bonus (about 3k crit)
         cooldownAbility: [kAbility.ChainStratagem],
         mobGainsEffect: EffectId.ChainStratagem_4C5,
         mobLosesEffect: EffectId.ChainStratagem_4C5,
@@ -485,10 +501,11 @@ export class BuffTracker {
         icon: chainStratagemImage,
         // Blue.
         borderColor: '#4674E5',
-        sortKey: 8,
+        sortKey: 4,
         cooldown: 120,
       },
       starrymuse: {
+        // 5% damage bonus
         cooldownAbility: [kAbility.StarryMuse],
         gainEffect: [EffectId.StarryMuse],
         loseEffect: [EffectId.StarryMuse],
@@ -497,10 +514,11 @@ export class BuffTracker {
         icon: starryMuseImage,
         // Dark purple.
         borderColor: '#5C1F58',
-        sortKey: 9,
+        sortKey: 5,
         cooldown: 120,
       },
       brotherhood: {
+        // 5% damage bonus
         cooldownAbility: [kAbility.Brotherhood],
         gainEffect: [EffectId.Brotherhood_4A1],
         loseEffect: [EffectId.Brotherhood_4A1],
@@ -509,10 +527,11 @@ export class BuffTracker {
         icon: brotherhoodImage,
         // Dark Orange.
         borderColor: '#994200',
-        sortKey: 11,
+        sortKey: 5,
         cooldown: 120,
       },
       divination: {
+        // 6% damage bonus
         cooldownAbility: [kAbility.Divination],
         gainEffect: [EffectId.Divination_756],
         loseEffect: [EffectId.Divination_756],
@@ -521,10 +540,11 @@ export class BuffTracker {
         icon: divinationImage,
         // Dark purple.
         borderColor: '#5C1F58',
-        sortKey: 13,
+        sortKey: 3,
         cooldown: 120,
       },
       arcaneCircle: {
+        // 3% damage bonus
         cooldownAbility: [kAbility.ArcaneCircle],
         gainEffect: [EffectId.ArcaneCircle],
         loseEffect: [EffectId.ArcaneCircle],
@@ -533,10 +553,11 @@ export class BuffTracker {
         icon: arcaneCircleImage,
         // Light pink..
         borderColor: '#F3A6FF',
-        sortKey: 14,
+        sortKey: 7,
         cooldown: 120,
       },
       searingLight: {
+        // 5% damage bonus
         cooldownAbility: [kAbility.SearingLight],
         gainEffect: [EffectId.SearingLight],
         loseEffect: [EffectId.SearingLight],
@@ -545,7 +566,7 @@ export class BuffTracker {
         icon: searingLightImage,
         // Pink.
         borderColor: '#FF4A9D',
-        sortKey: 14,
+        sortKey: 5,
         cooldown: 120,
       },
     };
@@ -555,95 +576,74 @@ export class BuffTracker {
     // Remove them when CN and KO reach 7.0.
     const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
       balance: {
+        // 6% damage bonus for melee
         gainEffect: [EffectId.TheBalance_75A],
         loseEffect: [EffectId.TheBalance_75A],
         useEffectDuration: true,
         icon: balanceImage,
         // Orange.
         borderColor: '#ff9900',
-        sortKey: 4,
+        sortKey: 3,
       },
       spear: {
+        // 6% damage bonus for melee
         gainEffect: [EffectId.TheSpear_75D],
         loseEffect: [EffectId.TheSpear_75D],
         useEffectDuration: true,
         icon: spearImage,
         // Dark Blue.
         borderColor: '#4477dd',
-        sortKey: 4,
+        sortKey: 3,
       },
       arrow: {
+        // 6% damage bonus for melee
         gainEffect: [EffectId.TheArrow_75C],
         loseEffect: [EffectId.TheArrow_75C],
         useEffectDuration: true,
         icon: arrowImage,
         // Light Blue.
         borderColor: '#37ccee',
-        sortKey: 4,
+        sortKey: 3,
       },
       bole: {
+        // 6% damage bonus for ranged
         gainEffect: [EffectId.TheBole_75B],
         loseEffect: [EffectId.TheBole_75B],
         useEffectDuration: true,
         icon: boleImage,
         // Green.
         borderColor: '#22dd77',
-        sortKey: 4,
+        sortKey: 3,
       },
       ewer: {
+        // 6% damage bonus for ranged
         gainEffect: [EffectId.TheEwer_75E],
         loseEffect: [EffectId.TheEwer_75E],
         useEffectDuration: true,
         icon: ewerImage,
         // Light Blue.
         borderColor: '#66ccdd',
-        sortKey: 4,
+        sortKey: 3,
       },
       spire: {
+        // 6% damage bonus for ranged
         gainEffect: [EffectId.TheSpire_75F],
         loseEffect: [EffectId.TheSpire_75F],
         useEffectDuration: true,
         icon: spireImage,
         // Yellow.
         borderColor: '#ddd044',
-        sortKey: 4,
-      },
-      ladyOfCrowns: {
-        gainEffect: [EffectId.LadyOfCrowns_755],
-        loseEffect: [EffectId.LadyOfCrowns_755],
-        useEffectDuration: true,
-        icon: ladyOfCrownsImage,
-        // Purple.
-        borderColor: '#9e5599',
-        sortKey: 4,
-      },
-      lordOfCrowns: {
-        gainEffect: [EffectId.LordOfCrowns_754],
-        loseEffect: [EffectId.LordOfCrowns_754],
-        useEffectDuration: true,
-        icon: lordOfCrownsImage,
-        // Dark Red.
-        borderColor: '#9a2222',
-        sortKey: 4,
+        sortKey: 3,
       },
       lefteye: {
+        // 5% damage bonus
         gainEffect: [EffectId.LeftEye_5AE],
         loseEffect: [EffectId.LeftEye_5AE],
         useEffectDuration: true,
         icon: dragonSightImage,
         // Orange.
         borderColor: '#FA8737',
-        sortKey: 9,
-        cooldown: 120,
-      },
-      righteye: {
-        gainEffect: [EffectId.RightEye_776],
-        loseEffect: [EffectId.RightEye_776],
-        useEffectDuration: true,
-        icon: dragonSightImage,
-        // Orange.
-        borderColor: '#FA8737',
-        sortKey: 10,
+        sortKey: 5,
         cooldown: 120,
       },
     };

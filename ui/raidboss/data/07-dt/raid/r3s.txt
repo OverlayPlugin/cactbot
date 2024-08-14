@@ -53,7 +53,7 @@ hideall "--sync--"
 157.9 "Diveboom" Ability { id: "93E3", source: "Brute Bomber" }
 158.6 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
 166.3 "Brutal Impact x6" Ability { id: "9425", source: "Brute Bomber" } duration 5.2
-177.6 "Knuckle Sandwich" Ability { id: "9423", source: "Brute Bomber" } duration 5.1
+177.6 "Knuckle Sandwich x6" Ability { id: "9423", source: "Brute Bomber" } duration 5.1
 189.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
 
 195.4 "Tag Team" Ability { id: "93E7", source: "Brute Bomber" }
@@ -82,7 +82,7 @@ hideall "--sync--"
 305.3 "--sync--" Ability { id: "93F0", source: "Brute Bomber" }
 305.3 "Mana Explosion x8" duration 30
 345.5 "--sync--" Ability { id: "93F1", source: "Brute Bomber" }
-353.7 "Knuckle Sandwich x8" Ability { id: "9423", source: "Brute Bomber" } duration 5.1
+353.7 "Knuckle Sandwich x6" Ability { id: "9423", source: "Brute Bomber" } duration 5.1
 364.0 "--middle--" Ability { id: "93F4", source: "Brute Bomber" }
 
 370.8 "Doping Draught" Ability { id: "9427", source: "Brute Bomber" }

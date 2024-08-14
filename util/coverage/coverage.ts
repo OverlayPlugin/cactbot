@@ -73,6 +73,7 @@ const exVersionToName = {
     de: 'Dawntrail (DT 7.x)',
     fr: 'Dawntrail (DT 7.x)',
     ja: '黄金のレガシー (7.x)',
+    cn: '金曦之遗辉 (7.x)',
   },
 } as const;
 
@@ -122,6 +123,7 @@ const exVersionToShortName: { [exVersion: string]: LocaleText } = {
     de: 'DT',
     fr: 'DT',
     ja: '黄金',
+    cn: '7.X',
   },
 };
 

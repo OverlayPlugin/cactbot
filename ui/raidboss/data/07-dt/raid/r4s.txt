@@ -1,8 +1,358 @@
 ### Arcadion (R4S): AAC Light-heavyweight M4 Savage
 
+# -ii 98EB 95E9 95EA 95E6 95DF 95E7 4D11 4D12 95E4 9AC2 95C8 95C9 95CA 9785 9AC2 95CB 95CC 95CF
+# -ii 95EE 95D4 92A7 8D37 95D8 95D9 92A8 95DA 95DB 95DC 90FE 95F3 95F4 95F5 95F6 9610 9612 8E5E
+# -ii 961E 9603 9607 960D 962B 962C 95FC 95FD 95FE 95FF 9601
+# -ic "Gun Battery"
+# -ic "Wicked Replica"
+# -ic "Serpent's Tongue"
+
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
+##### "P1" (Ixion) #####
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+10.6 "--sync--" StartsUsing { id: "95EF", source: "Wicked Thunder" }
+15.6 "Wrath of Zeus" Ability { id: "95EF", source: "Wicked Thunder" }
+23.8 "--sync--" Ability { id: "92A9", source: "Wicked Thunder" }
+30.9 "--north--" Ability { id: "92C9", source: "Wicked Thunder" }
+38.2 "Bewitching Flight" Ability { id: "9671", source: "Wicked Thunder" }
+41.3 "--center--" Ability { id: "92C9", source: "Wicked Thunder" }
+49.6 "Electrifying Witch Hunt" Ability { id: "95E5", source: "Wicked Thunder" }
+57.6 "Witch Hunt + Forked Lightning" Ability { id: "95DE", source: "Wicked Thunder" }
+74.7 "Widening Witch Hunt/Narrowing Witch Hunt" Ability { id: "95E0|95E1", source: "Wicked Thunder" }
+78.1 "Thundering/Lightning Vortex 2" Ability { id: "95E2|95E3", source: "Wicked Thunder" }
+81.5 "Thundering/Lightning Vortex 3" Ability { id: "95E2|95E3", source: "Wicked Thunder" }
+84.9 "Thundering/Lightning Vortex 4" Ability { id: "95E2|95E3", source: "Wicked Thunder" }
+88.3 "--sync--" Ability { id: "92AA", source: "Wicked Thunder" }
+98.4 "Wrath of Zeus" Ability { id: "95EF", source: "Wicked Thunder" }
+105.6 "--center--" Ability { id: "92C9", source: "Wicked Thunder" }
+109.7 "Electrope Edge (mines)" Ability { id: "95C5", source: "Wicked Thunder" }
+116.8 "Witchgleam" Ability { id: "95C6", source: "Wicked Thunder" }
+
+# No syncs on mine hits because of how close they occur to one another
+117.9 "(first mines hit)" #Ability { id: "95C7", source: "Wicked Thunder" }
+119.4 "(second mines hit)" #Ability { id: "95C7", source: "Wicked Thunder" }
+120.9 "(third mines hit)" #Ability { id: "95C7", source: "Wicked Thunder" }
+
+134.4 "Spark + Sidewise Spark" Ability { id: "95EC|95ED", source: "Wicked Thunder" }
+134.4 "Four Star/Eight Star" Ability { id: "95D0|95D1", source: "Wicked Thunder" }
+142.6 "Wicked Jolt" Ability { id: "95F0", source: "Wicked Thunder" }
+145.7 "Wicked Jolt (second hit)" Ability { id: "95F1", source: "Wicked Thunder" }
+152.9 "--center--" Ability { id: "92C9", source: "Wicked Thunder" }
+157.0 "Electrope Edge (players)" Ability { id: "95C5", source: "Wicked Thunder" }
+
+# No syncs on these because of how many/how close they occur to one another
+164.2 "Witchgleam (first set)" #Ability { id: "9786", source: "Wicked Thunder" }
+165.7 "Witchgleam (second set)" #Ability { id: "9786", source: "Wicked Thunder" }
+167.2 "Witchgleam (third set)" #Ability { id: "9786", source: "Wicked Thunder" }
+168.7 "Witchgleam (fourth set)" #Ability { id: "9786", source: "Wicked Thunder" }
+172.1 "Lightning Cage" Ability { id: "95CE", source: "Wicked Thunder" }
+
+# Boss uses Spark II (95CB) on 2 players and Spark III (95CC) on 2 players,
+# then repeats that after the Sidewise SPark + Four/Eight Star combo.
+# No syncs on these because of how many/how close they occur to one another
+179.9 "(first sparks detonate)" #Ability { id: "95CC", source: "Wicked Thunder" }
+189.2 "Sidewise Spark" Ability { id: "95EC|95ED", source: "Wicked Thunder" }
+189.2 "Four Star/Eight Star" Ability { id: "95D0|95D1", source: "Wicked Thunder" }
+199.8 "(second sparks detonate)" #Ability { id: "95CC", source: "Wicked Thunder" }
+206.4 "Wicked Bolt x6" Ability { id: "92C2", source: "Wicked Thunder" } duration 5
+221.6 "--north--" Ability { id: "92C9", source: "Wicked Thunder" }
+
+# These abilities have Japanese names in the exds, but Google Translate:
+230.0 "Right Roll/Left Roll" Ability { id: "95D2|95D3", source: "Wicked Thunder" }
+232.0 "Stampeding Thunder x6" Ability { id: "8A06", source: "Wicked Thunder" } duration 7
+239.0 "(floor no more)" Ability { id: "8E2F", source: "Wicked Thunder" }
+241.9 "--teleport--" Ability { id: "92C9", source: "Wicked Thunder" }
+249.2 "Electron Stream" Ability { id: "95D7", source: "Wicked Thunder" }
+
+# There are eight debuffs going off that trigger various effects
+# Rather than sync to these, just display a single entry with no sync
+254.3 "(debuffs resolve)" #Ability { id: "95DA|95DB|95DC", source: "Wicked Thunder" }
+262.3 "Electron Stream" Ability { id: "95D6", source: "Wicked Thunder" }
+267.3 "(debuffs resolve)" #Ability { id: "95DA|95DB|95DC", source: "Wicked Thunder" }
+275.3 "Electron Stream" Ability { id: "95D7", source: "Wicked Thunder" }
+280.4 "(debuffs resolve)" #Ability { id: "95DA|95DB|95DC", source: "Wicked Thunder" }
+288.7 "Wicked Jolt" Ability { id: "95F0", source: "Wicked Thunder" }
+291.8 "Wicked Jolt (second hit)" Ability { id: "95F1", source: "Wicked Thunder" }
+302.9 "--center--" Ability { id: "92C9", source: "Wicked Thunder" }
+313.7 "Electrope Transplant" Ability { id: "98D3", source: "Wicked Thunder" }
+323.9 "Fulminous Field 1" Ability { id: "98CD", source: "Wicked Thunder" }
+326.9 "Fulminous Field 2" Ability { id: "98CD", source: "Wicked Thunder" }
+329.9 "Fulminous Field 3" Ability { id: "98CD", source: "Wicked Thunder" }
+332.9 "Fulminous Field 4" #Ability { id: "98CD", source: "Wicked Thunder" }
+332.9 "Fulminous Field 5" #Ability { id: "98CD", source: "Wicked Thunder" }
+332.9 "Conduction Point" Ability { id: "98CE", source: "Wicked Thunder" }
+335.9 "Fulminous Field 6" Ability { id: "98CD", source: "Wicked Thunder" }
+
+# occurs twice, so don't sync
+335.9 "Forked Fissures" #Ability { id: "98CF", source: "Wicked Thunder" }
+338.9 "Fulminous Field 7" Ability { id: "98CD", source: "Wicked Thunder" }
+349.9 "Fulminous Field 1" Ability { id: "98CD", source: "Wicked Thunder" }
+352.9 "Fulminous Field 2" Ability { id: "98CD", source: "Wicked Thunder" }
+355.9 "Fulminous Field 3" Ability { id: "98CD", source: "Wicked Thunder" }
+358.9 "Fulminous Field 4" #Ability { id: "98CD", source: "Wicked Thunder" }
+358.9 "Fulminous Field 5" #Ability { id: "98CD", source: "Wicked Thunder" }
+358.9 "Conduction Point" Ability { id: "98CE", source: "Wicked Thunder" }
+361.9 "Fulminous Field 6" Ability { id: "98CD", source: "Wicked Thunder" }
+361.9 "Forked Fissures" #Ability { id: "98CF", source: "Wicked Thunder" }
+364.9 "Fulminous Field 7" Ability { id: "98CD", source: "Wicked Thunder" }
+375.2 "Soulshock" Ability { id: "4E41", source: "Wicked Thunder" }
+
+# No syncs on these because of how many/how close they occur to one another
+378.5 "Impact" #Ability { id: "4E42", source: "Wicked Thunder" }
+381.2 "Impact" #Ability { id: "4E42", source: "Wicked Thunder" }
+383.9 "Cannonbolt" Ability { id: "98D0", source: "Wicked Thunder" }
+383.9 "--untargetable--"
+
+
+##### "P2" (Wall Boss) #####
+396.0 "--targetable--"
+403.1 "--sync--" StartsUsing { id: "95F2", source: "Wicked Thunder" }
+408.1 "Cross Tail Switch x10" Ability { id: "95F2", source: "Wicked Thunder" } duration 9
+
+# Wicked Blaze (95F7) is a 4-hit light-party stack (95F8 is subsequent hits)
+# Sabertail (95F5/95F6) are exaflares
+# Too many abilities to sync, so skip the Sabertails and no syncs for the Wicked Blaze followups
+426.0 "Wicked Blaze" Ability { id: "95F7", source: "Wicked Thunder" }
+#426.0 "Wicked Blaze" #Ability { id: "95F8", source: "Wicked Thunder" }
+427.6 "Wicked Blaze 2" #Ability { id: "95F8", source: "Wicked Thunder" }
+429.0 "Wicked Blaze 3" #Ability { id: "95F8", source: "Wicked Thunder" }
+430.6 "Wicked Blaze 4" #Ability { id: "95F8", source: "Wicked Thunder" }
+437.2 "Wicked Special" Ability { id: "9611|9613", source: "Wicked Thunder" }
+
+# No syncs on Mustard Bombs because of how many/how close they occur to one another
+452.4 "--sync--" Ability { id: "961E", source: "Wicked Thunder" }
+453.1 "Mustard Bomb (spread + tethers)" #Ability { id: "961F", source: "Wicked Thunder" }
+462.6 "Mustard Bomb (debuffs)" #Ability { id: "9621", source: "Wicked Thunder" }
+470.7 "--sync--" Ability { id: "9603", source: "Wicked Thunder" }
+479.8 "Tail Thrust/Switch of Tides" Ability { id: "960E|960F", source: "Wicked Thunder" }
+483.8 "Tail Thrust/Switch of Tides" Ability { id: "960E|960F", source: "Wicked Thunder" }
+500.9 "Azure Thunder" Ability { id: "962F", source: "Wicked Thunder" }
+507.0 "Twilight Sabbath" Ability { id: "9623", source: "Wicked Thunder" }
+515.1 "Wicked Fire (puddles drop)" Ability { id: "9630", source: "Wicked Thunder" }
+
+# No syncs on the combos because of how many/how close they occur to one another
+518.1 "Wicked Fire + Sidewise Spark" #Ability { id: "9631", source: "Wicked Thunder" }
+526.2 "Wicked Special + Sidewise Spark" Ability { id: "9613", source: "Wicked Thunder" }
+536.4 "Midnight Sabbath" Ability { id: "9AB9", source: "Wicked Thunder" }
+547.5 "Wicked Flare/Wicked Spark 1" Ability { id: "962D|962E", source: "Wicked Thunder" }
+551.5 "Wicked Flare/Wicked Spark 2" Ability { id: "962D|962E", source: "Wicked Thunder" }
+556.5 "Wicked Special" Ability { id: "9611|9613", source: "Wicked Thunder" }
+563.6 "Wicked Thunder" Ability { id: "949B", source: "Wicked Thunder" }
+583.9 "Flame Slash" Ability { id: "9614", source: "Wicked Thunder" }
+589.0 "Raining Swords" Ability { id: "9616", source: "Wicked Thunder" }
+610.1 "Chain Lightning" Ability { id: "9619", source: "Wicked Thunder" } duration 19.8
+637.2 "Tail Thrust/Switch of Tides" Ability { id: "960E|960F", source: "Wicked Thunder" }
+641.2 "Tail Thrust/Switch of Tides" Ability { id: "960E|960F", source: "Wicked Thunder" }
+653.1 "Mustard Bomb (spread + tethers)" #Ability { id: "961F", source: "Wicked Thunder" }
+662.8 "Mustard Bomb (debuffs)" #Ability { id: "9621", source: "Wicked Thunder" }
+678.6 "Azure Thunder" Ability { id: "962F", source: "Wicked Thunder" }
+
+684.7 "Ion Cluster" Ability { id: "9622", source: "Wicked Thunder" }
+690.8 "Sunrise Sabbath" Ability { id: "9ABA", source: "Wicked Thunder" }
+
+# No syncs on Soaring Soulpress (towers) or Negatron/Positron Stream (cannons)
+# because of how many/how close they occur to one another
+704.0 "(first towers/cannons resolve)" #Ability { id: "9628", source: "Wicked Replica" }
+711.8 "Wicked Special" Ability { id: "9611|9613", source: "Wicked Thunder" }
+720.6 "(second towers/cannons resolve)" #Ability { id: "995B", source: "Wicked Replica" }
+727.9 "Tail Thrust/Switch of Tides" Ability { id: "960E|960F", source: "Wicked Thunder" }
+731.9 "Tail Thrust/Switch of Tides" Ability { id: "960E|960F", source: "Wicked Thunder" }
+
+# No entries for subsequent line drops (95[C-F]) because it's too spammy
+743.1 "Sword Quiver" Ability { id: "95F9|95FA|95FB", source: "Wicked Thunder" } duration 4.5
+751.8 "Burst + Laceration" Ability { id: "9600", source: "Wicked Thunder" }
+760.0 "Sword Quiver" Ability { id: "95F9|95FA|95FB", source: "Wicked Thunder" } duration 4.5
+768.8 "Burst + Laceration" Ability { id: "9600", source: "Wicked Thunder" }
+776.9 "Sword Quiver" Ability { id: "95F9|95FA|95FB", source: "Wicked Thunder" } duration 4.5
+785.6 "Burst + Laceration" Ability { id: "9600", source: "Wicked Thunder" }
+804.5 "Wicked Thunder (enrage)" Ability { id: "9632", source: "Wicked Thunder" }
+
+# IGNORED ABILITIES
+# 98EB --sync-- (autos P1)
+# 95E9 Bewitching Flight (followup)
+# 95EA Burst (lines exploding; happens concurrently with 95E5)
+# 95E6 Electrifying Witch Hunt (from Wicked Replica - paired with 95E5)
+# 95DF Witch Hunt (from Wicked Replica - paired with 95DE)
+# 95E7 Forked Lightning (happens concurrently with 95DE/95DF)
+# 4D11 Lightning Vortex (followup)
+# 4D12 Thundering (followup)
+# 95E4 Witch Hunt (happens ~concurrently with 95E2/95E3)
+# 9AC2 Witchgleam (vfx/no damage)
+# 95C8 Symphony Fantastique (vfx/no damage)
+# 95C9 Spark (happens concurrently with 95ED)
+# 95CA Spark II (happens concurrently with 95ED)
+# 9785 Witchgleam (cast)
+# 9AC2 Witchgleam (happens ~concurrently with 9786)
+# 95CF Lightning Cage (happens concurrently with 95CB/95CC)
+# 95EE Wicked Bolt (followup hits/damage after 92C2)
+# 95D4 Ion Cluster (vfx/no damage)
+# 92A7 --sync-- (vfx?)
+# 8D37 Stampeding Thunder (followup hits/damage after 8A06)
+# 95D8 Positron Stream (happens concurrently with 95D6/95D7)
+# 95D9 Negatron Stream (happens concurrently with 95D6/95D7)
+# 92A8 --sync-- (vfx?)
+# 95DA Axe Current (handled with single "debuffs resolve" entry)
+# 95DB Spinning Current (handled with single "debuffs resolve" entry)
+# 95DC Roundhouse Current (handled with single "debuffs resolve" entry)
+# 90FE Fulminous Field (cast)
+# 95F3 Cross Tail Switch (followup hits/damage after 95F2)
+# 95F4 Cross Tail Switch (followup hits/damage after 95F2)
+# 95F5 Sabertail (happens concurrently with 95F7/95F8)
+# 95F6 Sabertail (happens concurrently with 95F7/95F8)
+# 9610 Wicked Special (happens concurrently with 9611)
+# 9612 Wicked Special (happens concurrently with 9613)
+# 8E5E --sync-- (autos P2)
+# 961E Mustard Bomb (cast)
+# 9620 Kindling Cauldron (happens concurrently with 961F)
+# 9603 Aetherial Conversion (vfx/no damage)
+# 9604 Aetherial Conversion (vfx/no damage)
+# 9605 Aetherial Conversion (vfx/no damage)
+# 9607 Tail Thrust (cast)
+# 9608 Tail Thrust (cast)
+# 9609 Tail Thrust (cast)
+# 960B Tail Thrust (vfx?)
+# 960B Tail Thrust (vfx?)
+# 960D Tail Thrust (vfx?)
+# 962B Concentrated Burst (cast/happens concurrently with first 962D/962E)
+# 962C Scattered Burst (cast/happens concurrently with first 962D/962E)
+# 9615 Flame Slash (vfx followup)
+# 961A Chain Lightning (rod explosions - but spammy)
+# 961B Chain Lightning (rod explosions - but spammy
+# 95D5 Ionic Discharge (vfx/no damage?)
+# 9601 Laceration (happens concurrently with 9600)
+
+# ALL ENCOUNTER ABILITIES
+# 4D11 Lightning Vortex
+# 4D12 Thundering
+# 4E41 Soulshock
+# 4E42 Impact
+# 8A06 Stampeding Thunder
+# 8D37 Stampeding Thunder
+# 8E2F Stampeding Thunder
+# 8E5E --sync-- (autos P2)
+# 90FE Fulminous Field
+# 92A7 --sync--
+# 92A8 --sync--
+# 92A9 --sync-- (wings out)
+# 92AA --sync-- (wings away)
+# 92C2 Wicked Bolt
+# 92C9 --sync--
+# 949B Wicked Thunder
+# 95C5 Electrope Edge
+# 95C6 Witchgleam
+# 95C7 Witchgleam
+# 95C8 Symphony Fantastique
+# 95C9 Spark
+# 95CA Spark II
+# 95CB Spark II
+# 95CC Spark III
+# 95CE Lightning Cage
+# 95CF Lightning Cage
+# 95D0 Four Star
+# 95D1 Eight Star
+# 95D2 ライトロール
+# 95D4 Ion Cluster
+# 95D5 Ionic Discharge
+# 95D6 Electron Stream
+# 95D7 Electron Stream
+# 95D8 Positron Stream
+# 95D9 Negatron Stream
+# 95DA Axe Current
+# 95DB Spinning Current
+# 95DC Roundhouse Current
+# 95DE Witch Hunt
+# 95DF Witch Hunt
+# 95E0 Widening Witch Hunt
+# 95E1 Narrowing Witch Hunt
+# 95E2 Lightning Vortex
+# 95E3 Thundering
+# 95E4 Witch Hunt
+# 95E5 Electrifying Witch Hunt
+# 95E6 Electrifying Witch Hunt
+# 95E7 Forked Lightning
+# 95E9 Bewitching Flight
+# 95EA Burst
+# 95EB Electray
+# 95ED Sidewise Spark
+# 95EE Wicked Bolt
+# 95EF Wrath of Zeus
+# 95F0 Wicked Jolt
+# 95F1 Wicked Jolt
+# 95F2 Cross Tail Switch
+# 95F3 Cross Tail Switch
+# 95F4 Cross Tail Switch
+# 95F5 Sabertail
+# 95F6 Sabertail
+# 95F7 Wicked Blaze
+# 95F8 Wicked Blaze
+# 95F9 Sword Quiver
+# 95FB Sword Quiver
+# 95FC Sword Quiver
+# 95FD Sword Quiver
+# 95FE Sword Quiver
+# 95FF Sword Quiver
+# 9600 Burst
+# 9601 Laceration
+# 9602 Aetherial Conversion
+# 9603 Aetherial Conversion
+# 9604 Aetherial Conversion
+# 9605 Aetherial Conversion
+# 9606 Tail Thrust
+# 9607 Tail Thrust
+# 9608 Tail Thrust
+# 9609 Tail Thrust
+# 960A Tail Thrust
+# 960B Tail Thrust
+# 960D Tail Thrust
+# 960E Tail Thrust
+# 960F Switch of Tides
+# 9610 Wicked Special
+# 9611 Wicked Special
+# 9612 Wicked Special
+# 9613 Wicked Special
+# 9614 Flame Slash
+# 9615 Flame Slash
+# 9616 Raining Swords
+# 9617 Raining Swords
+# 9619 Chain Lightning
+# 961A Chain Lightning
+# 961B Chain Lightning
+# 961E Mustard Bomb
+# 961F Mustard Bomb
+# 9620 Kindling Cauldron
+# 9621 Mustard Bomb
+# 9622 Ion Cluster
+# 9623 Twilight Sabbath
+# 9624 Wicked Cannon
+# 9625 Positron Stream
+# 9626 Negatron Stream
+# 9627 Thundering
+# 9628 Soaring Soulpress
+# 9629 Sidewise Spark
+# 962A Sidewise Spark
+# 962B Concentrated Burst
+# 962D Wicked Spark
+# 962E Wicked Flare
+# 962F Azure Thunder
+# 9630 Wicked Fire
+# 9631 Wicked Fire
+# 9632 Wicked Thunder
+# 9671 Bewitching Flight
+# 9785 Witchgleam
+# 9786 Witchgleam
+# 98CD Fulminous Field
+# 98CE Conduction Point
+# 98CF Forked Fissures
+# 98D0 Cannonbolt
+# 98D3 Electrope Transplant
+# 98EB --sync-- (autos)
+# 9959 Positron Stream
+# 995A Negatron Stream
+# 995B Soaring Soulpress
+# 9AB9 Midnight Sabbath
+# 9ABA Sunrise Sabbath
+# 9AC2 Witchgleam
