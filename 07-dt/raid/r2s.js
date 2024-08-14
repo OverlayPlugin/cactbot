@@ -109,6 +109,7 @@ Options.Triggers.push({
         text: {
           en: 'Drop Puddle Outside',
           de: 'Lege Fläche außen ab',
+          cn: '在场边放毒圈',
           ko: '바깥쪽에 장판 놓기',
         },
       },
