@@ -202,11 +202,15 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Drop of Venom',
       type: 'StartsUsing',
       netRegex: { id: '9185', source: 'Honey B. Lovely', capture: false },
-      alarmText: (_data, _matches, output) => output.text!(),
+      infoText: (data, _matches, output) => {
+        // don't display a 'Stored' trigger for the first two, as the mech resolves immediately
+        if (data.partnersSpreadCounter > 2)
+          return output.text!();
+      },
       run: (data) => data.storedPartnersSpread = 'partners',
       outputStrings: {
         text: {
-          en: 'Stored Partners',
+          en: 'Stored: Partners',
           de: 'Gespeichert: Partner',
           ja: 'あとでペア',
           cn: '存储分摊',
@@ -218,11 +222,15 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Splash of Venom',
       type: 'StartsUsing',
       netRegex: { id: '9184', source: 'Honey B. Lovely', capture: false },
-      alarmText: (_data, _matches, output) => output.text!(),
+      infoText: (data, _matches, output) => {
+        // don't display a 'Stored' trigger for the first two, as the mech resolves immediately
+        if (data.partnersSpreadCounter > 2)
+          return output.text!();
+      },
       run: (data) => data.storedPartnersSpread = 'spread',
       outputStrings: {
         text: {
-          en: 'Stored Spread',
+          en: 'Stored: Spread',
           de: 'Gespeichert: Verteilen',
           ja: 'あとで散開',
           cn: '存储分散',
@@ -234,11 +242,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Drop of Love',
       type: 'StartsUsing',
       netRegex: { id: '9B09', source: 'Honey B. Lovely', capture: false },
-      alarmText: (_data, _matches, output) => output.text!(),
+      // no need for conditional on data.partnersSpreadCounter, as these happen later in the fight
+      infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.storedPartnersSpread = 'partners',
       outputStrings: {
         text: {
-          en: 'Stored Partners',
+          en: 'Stored: Partners',
           de: 'Gespeichert: Partner',
           ja: 'あとでペア',
           cn: '存储分摊',
@@ -250,11 +259,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Spread Love',
       type: 'StartsUsing',
       netRegex: { id: '9B08', source: 'Honey B. Lovely', capture: false },
-      alarmText: (_data, _matches, output) => output.text!(),
+      // no need for conditional on data.partnersSpreadCounter, as these happen later in the fight
+      infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.storedPartnersSpread = 'spread',
       outputStrings: {
         text: {
-          en: 'Stored Spread',
+          en: 'Stored: Spread',
           de: 'Gespeichert: Verteilen',
           ja: 'あとで散開',
           cn: '存储分散',
@@ -263,28 +273,45 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R2S Delayed Partners/Spread Callout',
+      id: 'R2S Honey Beeline Initial',
       type: 'StartsUsing',
-      netRegex: { id: ['9184', '9185', '9B08', '9B09'], source: 'Honey B. Lovely', capture: false },
-      delaySeconds: (data) => {
-        // TODO: Review these delay timings
-        switch (data.partnersSpreadCounter) {
-          case 1:
-            return 14;
-          case 2:
-            return 11;
-          case 3:
-            return 37;
-          case 4:
-            return 62;
-          case 5:
-            return 55;
-        }
-        return 0;
+      netRegex: { id: ['9186', '9B0C'], source: 'Honey B. Lovely', capture: false },
+      response: Responses.goSides(), // default is alertText, no need to specify
+    },
+    {
+      id: 'R2S Honey Beeline After Reminder',
+      type: 'StartsUsing',
+      netRegex: { id: ['9186', '9B0C'], source: 'Honey B. Lovely', capture: false },
+      delaySeconds: 1.5, // add a short delay to avoid overlapping alerts
+      infoText: (data, _matches, output) => {
+        const mech = data.storedPartnersSpread;
+        return mech === undefined ? output.middle!() : output[mech]!();
       },
-      durationSeconds: 7,
-      infoText: (data, _matches, output) => output[data.storedPartnersSpread ?? 'unknown']!(),
       outputStrings: {
+        middle: {
+          en: '(middle after)',
+        },
+        partners: {
+          en: '(middle + partners after)',
+        },
+        spread: {
+          en: '(middle + spread after)',
+        },
+      },
+    },
+    {
+      id: 'R2S Honey Beeline Followup',
+      type: 'Ability',
+      netRegex: { id: ['9186', '9B0C'], source: 'Honey B. Lovely', capture: false },
+      alertText: (data, _matches, output) => {
+        const mech = data.storedPartnersSpread;
+        const outStr = mech === undefined
+          ? output.middle!()
+          : output.combo!({ next: output.middle!(), mech: output[mech]!() });
+        return outStr;
+      },
+      outputStrings: {
+        middle: Outputs.middle,
         spread: {
           en: 'Spread',
           de: 'Verteilen',
@@ -299,20 +326,69 @@ const triggerSet: TriggerSet<Data> = {
           cn: '分摊',
           ko: '쉐어',
         },
-        unknown: Outputs.unknown,
+        combo: {
+          en: '${next} + ${mech}',
+        },
       },
     },
     {
-      id: 'R2S Honey Beeline',
-      type: 'StartsUsing',
-      netRegex: { id: ['9186', '9B0C'], source: 'Honey B. Lovely', capture: false },
-      response: Responses.goSides(),
-    },
-    {
-      id: 'R2S Tempting Twist',
+      id: 'R2S Tempting Twist Initial',
       type: 'StartsUsing',
       netRegex: { id: ['9187', '9B0D'], source: 'Honey B. Lovely', capture: false },
-      response: Responses.getUnder(),
+      response: Responses.getUnder('alert'),
+    },
+    {
+      id: 'R2S Tempting Twist After Reminder',
+      type: 'StartsUsing',
+      netRegex: { id: ['9187', '9B0D'], source: 'Honey B. Lovely', capture: false },
+      delaySeconds: 1.5, // add a short delay to avoid overlapping alerts
+      infoText: (data, _matches, output) => {
+        const mech = data.storedPartnersSpread;
+        return mech === undefined ? output.out!() : output[mech]!();
+      },
+      outputStrings: {
+        out: {
+          en: '(out after)',
+        },
+        partners: {
+          en: '(out + partners after)',
+        },
+        spread: {
+          en: '(out + spread after)',
+        },
+      },
+    },
+    {
+      id: 'R2S Tempting Twist Followup',
+      type: 'Ability',
+      netRegex: { id: ['9187', '9B0D'], source: 'Honey B. Lovely', capture: false },
+      alertText: (data, _matches, output) => {
+        const mech = data.storedPartnersSpread;
+        const outStr = mech === undefined
+          ? output.out!()
+          : output.combo!({ next: output.out!(), mech: output[mech]!() });
+        return outStr;
+      },
+      outputStrings: {
+        out: Outputs.out,
+        spread: {
+          en: 'Spread',
+          de: 'Verteilen',
+          ja: '散開',
+          cn: '分散',
+          ko: '산개',
+        },
+        partners: {
+          en: 'Partners',
+          de: 'Partner',
+          ja: 'ペア',
+          cn: '分摊',
+          ko: '쉐어',
+        },
+        combo: {
+          en: '${next} + ${mech}',
+        },
+      },
     },
     {
       id: 'R2S Honey B. Live: 1st Beat',
