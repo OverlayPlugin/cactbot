@@ -486,10 +486,11 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: 'F5E' },
       condition: Conditions.targetIsYou(),
       // short debuffs are 26s, longs are 46s
-      run: (data, matches) => data.poisonDebuff = parseFloat(matches.duration) > 30 ? 'long' : 'short',
+      run: (data, matches) =>
+        data.poisonDebuff = parseFloat(matches.duration) > 30 ? 'long' : 'short',
     },
     {
-      id: 'R2S Poison First Defamation',
+      id: 'R2S Poison First Defamations',
       type: 'GainsEffect',
       netRegex: { effectId: 'F5E', capture: false },
       delaySeconds: 20, // 6 sec. before expiration
@@ -503,7 +504,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: poisonOutputStrings,
     },
     {
-      id: 'R2S Poison Second Defamation',
+      id: 'R2S Poison Second Defamations',
       type: 'GainsEffect',
       netRegex: { effectId: 'F5E', capture: false },
       delaySeconds: 40, // 6 sec. before expiration
@@ -522,6 +523,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: 'F5E' },
       // use condition instead of suppress to prevent race condition with Poison Debuff Tracker
       condition: Conditions.targetIsYou(),
+      // delay until the opposite (short/long) debuff resolves
       delaySeconds: (data) => data.poisonDebuff === 'long' ? 26 : 46,
       alertText: (data, _matches, output) => {
         // if no poison debuff, there really can't be an accurate call anyway
@@ -568,7 +570,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['F5C', 'F5D'] },
       condition: Conditions.targetIsYou(),
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 9,
-      alertText: (data, matches, output) => {
+      alertText: (data, _matches, output) => {
         let partner = output.unknown!();
         const myType = data.beelovedType;
         if (myType === undefined)
@@ -579,7 +581,8 @@ const triggerSet: TriggerSet<Data> = {
           return output.merge!({ player: partner });
 
         const partnerType = myType === 'alpha' ? 'beta' : 'alpha';
-        partner = data.party.member(data.beelovedDebuffs[partnerType][orderIdx]).nick ?? output.unknown!();
+        partner = data.party.member(data.beelovedDebuffs[partnerType][orderIdx]).nick ??
+          output.unknown!();
         return output.merge!({ player: partner });
       },
       outputStrings: {
@@ -592,7 +595,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R2S Beeloved Venom Other Merge',
       type: 'GainsEffect',
-      // only fire on the Alpha debuffs, so the trigger fires once per merge
+      // only fire on the Alpha debuffs so the trigger fires once per merge
       netRegex: { effectId: 'F5C' },
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 9,
       infoText: (data, matches, output) => {
