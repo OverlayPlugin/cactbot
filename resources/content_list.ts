@@ -419,6 +419,10 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.AacLightHeavyweightM4,
 
   // Savage Raids (Dawntrail)
+  ZoneId.AacLightHeavyweightM1Savage,
+  ZoneId.AacLightHeavyweightM2Savage,
+  ZoneId.AacLightHeavyweightM3Savage,
+  ZoneId.AacLightHeavyweightM4Savage,
 
   // Variant & Criterion Dungeons
   ZoneId.TheSildihnSubterrane,
