@@ -17,6 +17,7 @@ export interface Data extends RaidbossData {
   beatTwoOneStart?: boolean;
   beatTwoSpreadCollect: string[];
   tankLaserCollect: string[];
+  poisonDebuff?: 'short' | 'long';
 }
 
 const headMarkerData = {
@@ -31,6 +32,23 @@ const headMarkerData = {
   // Vfx Path: m0906_share4_7s0k2
   heartStackMarker: '0205',
 } as const;
+
+const poisonOutputStrings = {
+  defamationOnYou: {
+    en: 'Defamation on YOU',
+    de: 'Ehrenstrafe aud DIR',
+    fr: 'Diffamation sur VOUS',
+    ja: '自分の巨大な爆発',
+    cn: '大圈点名',
+    ko: '광역징 대상자',
+  },
+  defamations: {
+    en: 'Defamations',
+  },
+  in: {
+    en: 'In (Avoid Defamations)',
+  },
+};
 
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM2Savage',
@@ -449,6 +467,58 @@ const triggerSet: TriggerSet<Data> = {
           cn: '外正点 => 外斜角 => 内斜角',
           ko: '칼끝딜 십자 => 밖으로 => 보스 아래 대각',
         },
+      },
+    },
+    {
+      id: 'R2S Poison Debuff Tracker',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'F5E' },
+      condition: Conditions.targetIsYou(),
+      // short debuffs are 26s, longs are 46s
+      run: (data, matches) => data.poisonDebuff = parseFloat(matches.duration) > 30 ? 'long' : 'short',
+    },
+    {
+      id: 'R2S Poison First Defamation',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'F5E', capture: false },
+      delaySeconds: 20, // 6 sec. before expiration
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.poisonDebuff === undefined)
+          return output.defamations!();
+        return data.poisonDebuff === 'short' ? output.defamationOnYou!() : output.in!();
+      },
+      outputStrings: poisonOutputStrings,
+    },
+    {
+      id: 'R2S Poison Second Defamation',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'F5E', capture: false },
+      delaySeconds: 40, // 6 sec. before expiration
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.poisonDebuff === undefined)
+          return output.defamations!();
+        return data.poisonDebuff === 'short' ? output.in!() : output.defamationOnYou!();
+      },
+      outputStrings: poisonOutputStrings,
+    },
+    {
+      id: 'R2S Poison Towers',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'F5E' },
+      // use condition instead of suppress to prevent race condition with Poison Debuff Tracker
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (data) => data.poisonDebuff === 'long' ? 26 : 46,
+      alertText: (data, _matches, output) => {
+        // if no poison debuff, there really can't be an accurate call anyway
+        if (data.poisonDebuff !== undefined)
+          return output.towers!();
+      },
+      outputStrings: {
+        towers: Outputs.getTowers,
       },
     },
     {
