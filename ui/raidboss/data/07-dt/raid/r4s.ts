@@ -1411,25 +1411,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} => ${type} + ${mech}',
-          de: '${dir} => ${type} + ${mech}',
-          ja: '${dir} => ${type} + ${mech}',
           cn: '${dir} => ${type} + ${mech}',
         },
         cardinals: {
-          en: 'Cardinals',
-          de: 'Kardinal',
-          fr: 'Cardinaux',
-          ja: '十字回避',
+          en: 'Go Cardinals',
           cn: '去正点',
-          ko: '십자방향으로',
         },
         intercards: {
-          en: 'Intercards',
-          de: 'Interkardinal',
-          fr: 'Intercardinal',
-          ja: '斜めへ',
+          en: 'Go Intercards',
           cn: '去四角',
-          ko: '대각선 쪽으로',
         },
         guns: {
           en: 'Avoid Line',
