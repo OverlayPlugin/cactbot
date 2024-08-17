@@ -5,6 +5,11 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODO:
+//  - Beat 1: Track player hearts and only fire `Headmarker Party Stacks` based on <=2 hearts?
+//     - Related: Perhaps call 'Don't stack' if player has 3 hearts?
+//  - Beat 2: Add a 'Soak Tower' call for 1-heart players that don't get a spread?
+
 export interface Data extends RaidbossData {
   partnersSpreadCounter: number;
   storedPartnersSpread?: 'partners' | 'spread';
