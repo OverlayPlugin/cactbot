@@ -18,6 +18,11 @@ export interface Data extends RaidbossData {
   beatTwoSpreadCollect: string[];
   tankLaserCollect: string[];
   poisonDebuff?: 'short' | 'long';
+  beelovedDebuffs: {
+    alpha: string[];
+    beta: string[];
+  };
+  beelovedType?: 'alpha' | 'beta';
 }
 
 const headMarkerData = {
@@ -50,6 +55,8 @@ const poisonOutputStrings = {
   },
 };
 
+const beelovedDebuffDurationOrder = [12, 28, 44, 62];
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM2Savage',
   zoneId: ZoneId.AacLightHeavyweightM2Savage,
@@ -58,6 +65,10 @@ const triggerSet: TriggerSet<Data> = {
     partnersSpreadCounter: 0,
     beatTwoSpreadCollect: [],
     tankLaserCollect: [],
+    beelovedDebuffs: {
+      alpha: Array(4).map(() => ''),
+      beta: Array(4).map(() => ''),
+    },
   }),
   triggers: [
     {
@@ -532,6 +543,81 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '91AA', source: 'Honey B. Lovely', capture: false },
       response: Responses.bigAoe(),
+    },
+    {
+      id: 'R2S Beeloved Venom Tracker',
+      type: 'GainsEffect',
+      // F5C: Alpha, F5D: Beta
+      // durations are 12s, 28s, 44s, and 62s
+      netRegex: { effectId: ['F5C', 'F5D'] },
+      run: (data, matches) => {
+        const type = matches.effectId === 'F5C' ? 'alpha' : 'beta';
+        if (data.me === matches.target)
+          data.beelovedType = type;
+
+        const duration = parseFloat(matches.duration);
+        const orderIdx = beelovedDebuffDurationOrder.indexOf(duration);
+        if (orderIdx === -1) // should not happen
+          return;
+        data.beelovedDebuffs[type][orderIdx] = matches.target;
+      },
+    },
+    {
+      id: 'R2S Beeloved Venom Player Merge',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['F5C', 'F5D'] },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 9,
+      alertText: (data, matches, output) => {
+        let partner = output.unknown!();
+        const myType = data.beelovedType;
+        if (myType === undefined)
+          return output.merge!({ player: partner });
+
+        const orderIdx = data.beelovedDebuffs[myType].indexOf(data.me);
+        if (orderIdx === -1)
+          return output.merge!({ player: partner });
+
+        const partnerType = myType === 'alpha' ? 'beta' : 'alpha';
+        partner = data.party.member(data.beelovedDebuffs[partnerType][orderIdx]).nick ?? output.unknown!();
+        return output.merge!({ player: partner });
+      },
+      outputStrings: {
+        merge: {
+          en: 'Merge w/ ${player}',
+        },
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'R2S Beeloved Venom Other Merge',
+      type: 'GainsEffect',
+      // only fire on the Alpha debuffs, so the trigger fires once per merge
+      netRegex: { effectId: 'F5C' },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 9,
+      infoText: (data, matches, output) => {
+        const duration = parseFloat(matches.duration);
+        const orderIdx = beelovedDebuffDurationOrder.indexOf(duration);
+        if (orderIdx === -1) // should not happen
+          return;
+
+        const alpha = data.beelovedDebuffs.alpha[orderIdx] ?? output.unknown!();
+        const beta = data.beelovedDebuffs.beta[orderIdx] ?? output.unknown!();
+
+        // no alert if we're one of the players; that's handled by Player Merge
+        if (alpha === data.me || beta === data.me)
+          return;
+
+        const alphaShort = data.party.member(alpha).nick ?? output.unknown!();
+        const betaShort = data.party.member(beta).nick ?? output.unknown!();
+        return output.merge!({ alpha: alphaShort, beta: betaShort });
+      },
+      outputStrings: {
+        merge: {
+          en: 'Merge: ${alpha} + ${beta}',
+        },
+        unknown: Outputs.unknown,
+      },
     },
   ],
   timelineReplace: [
