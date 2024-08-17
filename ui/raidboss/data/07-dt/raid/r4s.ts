@@ -1406,7 +1406,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const typeStr = data.midnightFirstAdds === 'wings' ? output.wings!() : output.guns!();
 
-        return output.combo!({ dir: dirStr, mech: firstMechStr, type: typeStr });
+        return output.combo!({ dir: dirStr, type: typeStr, mech: firstMechStr });
       },
       outputStrings: {
         combo: {
@@ -1463,7 +1463,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const typeStr = data.midnightSecondAdds === 'wings' ? output.wings!() : output.guns!();
 
-        return output.combo!({ dir: dirStr, mech: secondMechStr, type: typeStr });
+        return output.combo!({ dir: dirStr, type: typeStr, mech: secondMechStr });
       },
       outputStrings: {
         combo: {
