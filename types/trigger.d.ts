@@ -148,6 +148,7 @@ type BaseNetTrigger<Data extends RaidbossData, Type extends TriggerTypes> = {
   // Leave undefined to preserve defaults and default overrides
   durationSeconds?: TriggerField<Data, NetMatches[Type], number | undefined>;
   suppressSeconds?: TriggerField<Data, NetMatches[Type], number>;
+  countdownSeconds?: TriggerField<Data, NetMatches[Type], number>;
   promise?: TriggerField<Data, NetMatches[Type], Promise<void>>;
   // Leave undefined to preserve defaults and default overrides
   sound?: TriggerField<Data, NetMatches[Type], string | undefined>;

@@ -369,6 +369,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Test Countdown',
       type: 'Countdown',
       netRegex: { result: '00' },
+      countdownSeconds: (_data, matches) => parseFloat(matches.countdownTime),
       infoText: (_data, matches, output) =>
         output.countdown!({ player: matches.name, seconds: matches.countdownTime }),
       outputStrings: {

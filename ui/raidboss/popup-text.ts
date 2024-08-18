@@ -529,6 +529,7 @@ export interface TriggerHelper {
     alertText: number;
     infoText: number;
   };
+  countdown?: number;
   ttsText?: string;
   rumbleDurationMs?: number;
   rumbleWeak?: number;
@@ -1139,6 +1140,7 @@ export class PopupText {
     const delayPromise = this._onTriggerInternalDelaySeconds(triggerHelper);
     this._onTriggerInternalDurationSeconds(triggerHelper);
     this._onTriggerInternalSuppressSeconds(triggerHelper);
+    this._onTriggerInternalCountdownSeconds(triggerHelper);
 
     const triggerPostDelay = () => {
       const promise = this._onTriggerInternalPromise(triggerHelper);
@@ -1374,6 +1376,13 @@ export class PopupText {
       this.triggerSuppress[triggerHelper.trigger.id] = triggerHelper.now + suppress * 1000;
   }
 
+  _onTriggerInternalCountdownSeconds(triggerHelper: TriggerHelper): void {
+    let valueCountdown = triggerHelper.valueOrFunction(triggerHelper.trigger.countdownSeconds);
+    if (typeof valueCountdown !== 'number')
+      valueCountdown = undefined;
+    triggerHelper.countdown = valueCountdown;
+  }
+
   _onTriggerInternalPromise(triggerHelper: TriggerHelper): Promise<void> | undefined {
     let promise: Promise<void> | undefined;
     if ('promise' in triggerHelper.trigger) {
@@ -1576,6 +1585,13 @@ export class PopupText {
     const holder = this[lowerTextKey]?.getElementsByClassName('holder')[0];
     const div = this._makeTextElement(triggerHelper, text, textElementClass);
 
+    if (triggerHelper.countdown !== undefined) {
+      const endTime = triggerHelper.now + (triggerHelper.countdown * 1000);
+      const span = document.createElement('span');
+      div.appendChild(span);
+      this._updateCountdownInternal(span, endTime);
+    }
+
     if (!holder)
       throw new UnreachableCode();
 
@@ -1624,8 +1640,7 @@ export class PopupText {
       let duration = triggerHelper.duration?.fromConfig ?? triggerHelper.duration?.fromTrigger;
       if (duration === undefined && triggerHelper.duration)
         duration = triggerHelper.duration[lowerTextKey];
-      if (duration === undefined)
-        duration = 0;
+      duration = Math.max(duration ?? 0, triggerHelper.countdown ?? 0);
 
       this._createTextFor(triggerHelper, text, textType, lowerTextKey, duration);
       if (triggerHelper.soundUrl === undefined) {
@@ -1646,6 +1661,20 @@ export class PopupText {
     div.classList.add('animate-text');
     div.innerText = text;
     return div;
+  }
+
+  _updateCountdownInternal(span: HTMLElement, endTime: number): void {
+    const updateCountdown = () => {
+      let remainingTime = (endTime - +new Date()) / 1000;
+      if (remainingTime <= 0) {
+        remainingTime = 0;
+        clearInterval(interval);
+      }
+      span.textContent = ` (${remainingTime.toFixed(1)})`;
+    };
+
+    const interval = window.setInterval(updateCountdown, 100);
+    updateCountdown(); // Initial call to set the countdown immediately
   }
 
   _playAudioFile(_triggerHelper: TriggerHelper, url: string, volume?: number): void {
