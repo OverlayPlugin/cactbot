@@ -246,7 +246,7 @@ export default {
     fr: 'Packez-vous avec votre partenaire',
     ja: 'ペア',
     cn: '与搭档分摊',
-    ko: '파트너랑 모이기',
+    ko: '파트너와 쉐어',
   },
   stackMiddle: {
     en: 'Stack in middle',
@@ -254,7 +254,7 @@ export default {
     fr: 'Packez-vous au milieu',
     ja: '中央で頭割り',
     cn: '中间集合',
-    ko: '중앙에서 모이기',
+    ko: '중앙에서 쉐어',
   },
   baitPuddles: {
     en: 'Bait puddles',

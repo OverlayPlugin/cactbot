@@ -218,6 +218,7 @@ const triggerSet: TriggerSet<Data> = {
           de: ' => ',
           ja: ' => ',
           cn: ' => ',
+          ko: ' => ',
         },
         combo: {
           en: '${dirs}',
@@ -569,14 +570,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein + Auf Heiler sammeln => Raus',
           ja: '中へ + ヒラ頭割り => 外へ',
           cn: '场内 + 治疗分摊组 => 场外',
-          ko: '안으로 +  힐러 그룹 쉐어 => 밖으로',
+          ko: '안으로 + 힐러 그룹 쉐어 => 밖으로',
         },
         out: {
           en: 'Out + Healer Stacks => In',
           de: 'Raus + Auf Heiler sammeln => Rein',
           ja: '外へ + ヒラ頭割り => 中へ',
           cn: '场外 + 治疗分摊组 => 场内',
-          ko: '밖으로 +  힐러 그룹 쉐어 => 안으로',
+          ko: '밖으로 + 힐러 그룹 쉐어 => 안으로',
         },
         healerStacks: {
           en: 'Go ${dir} => ${inOut}',
