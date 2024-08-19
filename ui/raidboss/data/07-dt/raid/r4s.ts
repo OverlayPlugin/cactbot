@@ -790,6 +790,21 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.witchgleamSelfCount++,
     },
     {
+      id: 'R4S Witchgleam Self Reminder',
+      type: 'StartsUsing',
+      netRegex: { id: '95CE', source: 'Wicked Thunder', capture: false },
+      condition: (data) => data.condenserTimer === 'long',
+      delaySeconds: 3,
+      infoText: (data, _matches, output) =>
+        output.witchgleamTimes!({ times: data.witchgleamSelfCount }),
+      outputStrings: {
+        witchgleamTimes: {
+          en: '${times} stacks (later)',
+          cn: '(稍后 ${times} 层)',
+        },
+      },
+    },
+    {
       id: 'R4S Electrical Condenser Debuff Expiring',
       type: 'GainsEffect',
       netRegex: { effectId: 'F9F', capture: true },
