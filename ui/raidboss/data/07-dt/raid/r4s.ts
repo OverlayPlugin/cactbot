@@ -1290,7 +1290,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gespeichert: ${effect}',
           ja: 'あとで: ${effect}',
           cn: '存储: ${effect}',
-          ko: '기억: ${effect}',
+          ko: '저장: ${effect}',
         },
       },
     },
