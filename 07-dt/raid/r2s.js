@@ -16,6 +16,7 @@ Options.Triggers.push({
   timelineFile: 'r2s.txt',
   initData: () => ({
     partnersSpreadCounter: 0,
+    beatTwoSpreadCollect: [],
   }),
   triggers: [
     {
@@ -52,8 +53,10 @@ Options.Triggers.push({
         if (data.beat === 2) {
           if (matches.effectId === 'F52')
             return output.beatTwoZeroHearts();
-          if (matches.effectId === 'F53')
+          if (matches.effectId === 'F53') {
+            data.beatTwoOneStart = true;
             return output.beatTwoOneHearts();
+          }
         }
       },
       outputStrings: {
@@ -93,11 +96,32 @@ Options.Triggers.push({
       response: Responses.tankCleave(),
     },
     {
+      id: 'R2S Headmarker Spread Collect',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.spreadMarker2, capture: true },
+      run: (data, matches) => data.beatTwoSpreadCollect.push(matches.target),
+    },
+    {
       id: 'R2S Headmarker Spread',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.spreadMarker2, capture: false },
-      suppressSeconds: 5,
-      response: Responses.spread(),
+      delaySeconds: 0.1,
+      alertText: (data, _matches, output) => {
+        if (data.beatTwoSpreadCollect.includes(data.me))
+          return output.avoidTowers();
+        else if (data.beatTwoOneStart)
+          return output.towers();
+      },
+      run: (data) => {
+        data.beatTwoSpreadCollect = [];
+        data.beatTwoOneStart = false;
+      },
+      outputStrings: {
+        avoidTowers: {
+          en: 'Spread -- Avoid Towers',
+        },
+        towers: Outputs.getTowers,
+      },
     },
     {
       id: 'R2S Headmarker Alarm Pheromones Puddle',
