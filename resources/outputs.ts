@@ -190,6 +190,14 @@ export default {
     cn: '分散',
     ko: '산개',
   },
+  defamationOnYou: {
+    en: 'Defamation on YOU',
+    de: 'Ehrenstrafe aud DIR',
+    fr: 'Diffamation sur VOUS',
+    ja: '自分に巨大な爆発',
+    cn: '大圈点名',
+    ko: '광역징 대상자',
+  },
   protean: {
     en: 'Protean',
     de: 'Himmelsrichtungen',

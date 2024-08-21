@@ -39,14 +39,7 @@ const headMarkerData = {
 } as const;
 
 const poisonOutputStrings = {
-  defamationOnYou: {
-    en: 'Defamation on YOU',
-    de: 'Ehrenstrafe aud DIR',
-    fr: 'Diffamation sur VOUS',
-    ja: '自分の巨大な爆発',
-    cn: '大圈点名',
-    ko: '광역징 대상자',
-  },
+  defamationOnYou: Outputs.defamationOnYou,
   defamations: {
     en: 'Defamations',
   },
@@ -569,7 +562,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: ['F5C', 'F5D'] },
       condition: Conditions.targetIsYou(),
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 9,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 10,
       alertText: (data, _matches, output) => {
         let partner = output.unknown!();
         const myType = data.beelovedType;
@@ -587,7 +580,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         merge: {
-          en: 'Merge w/ ${player}',
+          en: 'Merge Soon w/ ${player}',
         },
         unknown: Outputs.unknown,
       },
@@ -597,7 +590,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       // only fire on the Alpha debuffs so the trigger fires once per merge
       netRegex: { effectId: 'F5C' },
-      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 9,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 10,
       infoText: (data, matches, output) => {
         const duration = parseFloat(matches.duration);
         const orderIdx = beelovedDebuffDurationOrder.indexOf(duration);
