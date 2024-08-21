@@ -9,6 +9,8 @@ export interface Data extends RaidbossData {
   partnersSpreadCounter: number;
   storedPartnersSpread?: 'partners' | 'spread';
   beat?: 1 | 2 | 3;
+  beatTwoOneStart?: boolean;
+  beatTwoSpreadCollect: string[];
 }
 
 const headMarkerData = {
@@ -30,6 +32,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r2s.txt',
   initData: () => ({
     partnersSpreadCounter: 0,
+    beatTwoSpreadCollect: [],
   }),
   triggers: [
     {
@@ -67,25 +70,33 @@ const triggerSet: TriggerSet<Data> = {
         if (data.beat === 2) {
           if (matches.effectId === 'F52')
             return output.beatTwoZeroHearts!();
-          if (matches.effectId === 'F53')
+          if (matches.effectId === 'F53') {
+            data.beatTwoOneStart = true;
             return output.beatTwoOneHearts!();
+          }
         }
       },
       outputStrings: {
         beatOne: {
           en: 'Soak towers - need 2-3 hearts',
           de: 'Nimm Türme - benötigt 2-3 Herzen',
+          ja: '塔を踏む - 2-3個のハートに調整',
           cn: '踩塔 - 踩到2-3颗心',
+          ko: '기둥 들어가기 - 하트 2-3개 유지하기',
         },
         beatTwoZeroHearts: {
           en: 'Puddles & Stacks',
           de: 'Flächen + sammeln',
+          ja: '集合捨てと頭割り',
           cn: '集合分摊放圈',
+          ko: '장판 피하기 + 쉐어',
         },
         beatTwoOneHearts: {
           en: 'Spreads & Towers',
           de: 'Verteilen + Türme',
+          ja: '散開 / 塔踏み',
           cn: '分散 / 踩塔',
+          ko: '산개 / 기둥',
         },
       },
     },
@@ -102,11 +113,32 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankCleave(),
     },
     {
+      id: 'R2S Headmarker Spread Collect',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.spreadMarker2, capture: true },
+      run: (data, matches) => data.beatTwoSpreadCollect.push(matches.target),
+    },
+    {
       id: 'R2S Headmarker Spread',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.spreadMarker2, capture: false },
-      suppressSeconds: 5,
-      response: Responses.spread(),
+      delaySeconds: 0.1,
+      alertText: (data, _matches, output) => {
+        if (data.beatTwoSpreadCollect.includes(data.me))
+          return output.avoidTowers!();
+        else if (data.beatTwoOneStart)
+          return output.towers!();
+      },
+      run: (data) => {
+        data.beatTwoSpreadCollect = [];
+        data.beatTwoOneStart = false;
+      },
+      outputStrings: {
+        avoidTowers: {
+          en: 'Spread -- Avoid Towers',
+        },
+        towers: Outputs.getTowers,
+      },
     },
     {
       id: 'R2S Headmarker Alarm Pheromones Puddle',
@@ -118,6 +150,8 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Drop Puddle Outside',
           de: 'Lege Fläche außen ab',
+          cn: '在场边放毒圈',
+          ko: '바깥쪽에 장판 놓기',
         },
       },
     },
@@ -155,6 +189,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gespeichert: Partner',
           ja: 'あとでペア',
           cn: '存储分摊',
+          ko: '나중에 쉐어',
         },
       },
     },
@@ -170,6 +205,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gespeichert: Verteilen',
           ja: 'あとで散開',
           cn: '存储分散',
+          ko: '나중에 산개',
         },
       },
     },
@@ -185,6 +221,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gespeichert: Partner',
           ja: 'あとでペア',
           cn: '存储分摊',
+          ko: '나중에 쉐어',
         },
       },
     },
@@ -200,6 +237,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gespeichert: Verteilen',
           ja: 'あとで散開',
           cn: '存储分散',
+          ko: '나중에 산개',
         },
       },
     },
@@ -231,12 +269,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verteilen',
           ja: '散開',
           cn: '分散',
+          ko: '산개',
         },
         partners: {
           en: 'Partners',
           de: 'Partner',
           ja: 'ペア',
           cn: '分摊',
+          ko: '쉐어',
         },
         unknown: Outputs.unknown,
       },
@@ -289,6 +329,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein Interkardinal => Raus => Kardinal',
           ja: '斜め内側 => 外側 => 十字',
           cn: '内斜角 => 外斜角 => 外正点',
+          ko: '보스 아래 대각 => 밖으로 => 십자',
         },
       },
     },
@@ -304,6 +345,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus Kardinal => Interkardinal => Rein',
           ja: '外十字 => 外斜め => 内側',
           cn: '外正点 => 外斜角 => 内斜角',
+          ko: '칼끝딜 십자 => 밖으로 => 보스 아래 대각',
         },
       },
     },
@@ -362,6 +404,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(damage\\)': '(Schaden)',
         '\\(drop\\)': '(Tropfen)',
         '\\(enrage\\)': '(Finalangriff)',
+        '\\(stun for': '(Betäubung für',
       },
     },
     {
