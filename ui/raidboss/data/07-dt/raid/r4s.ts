@@ -1425,15 +1425,15 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         combo: {
-          en: '${dir} => ${type} + ${mech}',
-          cn: '${dir} => ${type} + ${mech}',
+          en: '${dir} + ${type} + ${mech}',
+          cn: '${dir} + ${type} + ${mech}',
         },
         cardinals: {
-          en: 'Go Cardinals',
+          en: 'Cardinals',
           cn: '去正点',
         },
         intercards: {
-          en: 'Go Intercards',
+          en: 'Intercards',
           cn: '去四角',
         },
         guns: {
@@ -1472,15 +1472,15 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         combo: {
-          en: '${dir} => ${type} + ${mech}',
-          cn: '${dir} => ${type} + ${mech}',
+          en: '${dir} + ${type} + ${mech}',
+          cn: '${dir} + ${type} + ${mech}',
         },
         cardinals: {
-          en: 'Go Cardinals',
+          en: 'Cardinals',
           cn: '去正点',
         },
         intercards: {
-          en: 'Go Intercards',
+          en: 'Intercards',
           cn: '去四角',
         },
         guns: {
