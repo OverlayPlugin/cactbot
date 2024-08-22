@@ -17,6 +17,7 @@ Options.Triggers.push({
   initData: () => ({
     partnersSpreadCounter: 0,
     beatTwoSpreadCollect: [],
+    tankLaserCollect: [],
   }),
   triggers: [
     {
@@ -90,10 +91,27 @@ Options.Triggers.push({
       response: Responses.sharedTankBuster(),
     },
     {
-      id: 'R2S Headmarker Cone Tankbuster',
+      id: 'R2S Headmarker Cone Tankbuster Collect',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.tankLaser, capture: true },
-      response: Responses.tankCleave(),
+      run: (data, matches) => data.tankLaserCollect.push(matches.target),
+    },
+    {
+      id: 'R2S Headmarker Cone Tankbuster',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.tankLaser, capture: false },
+      delaySeconds: 0.1,
+      suppressSeconds: 5,
+      alertText: (data, _matches, output) => {
+        if (data.tankLaserCollect.includes(data.me))
+          return output.cleaveOnYou();
+        return output.avoidCleave();
+      },
+      run: (data) => data.tankLaserCollect = [],
+      outputStrings: {
+        cleaveOnYou: Outputs.tankCleaveOnYou,
+        avoidCleave: Outputs.avoidTankCleave,
+      },
     },
     {
       id: 'R2S Headmarker Spread Collect',
