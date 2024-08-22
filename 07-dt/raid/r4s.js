@@ -223,7 +223,7 @@ Options.Triggers.push({
     {
       id: 'R4S Bewitching Flight',
       type: 'StartsUsing',
-      netRegex: { id: '9671', source: 'Wicked Thunder', capture: false },
+      netRegex: { id: ['9671', '8DEF'], source: 'Wicked Thunder', capture: false },
       infoText: (_data, _matches, output) => output.avoid(),
       outputStrings: {
         avoid: {
