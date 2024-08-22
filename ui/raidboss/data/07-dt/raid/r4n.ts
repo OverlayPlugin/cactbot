@@ -297,19 +297,28 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R4N Threefold Blast Initializer',
       type: 'StartsUsing',
       netRegex: { id: ['92AD', '92B0'], source: 'Wicked Thunder', capture: false },
-      run: (data) => data.expectedBlasts = 3,
+      run: (data) => {
+        data.expectedBlasts = 3;
+        data.storedBlasts = [];
+      },
     },
     {
       id: 'R4N Fourfold Blast Initializer',
       type: 'StartsUsing',
       netRegex: { id: ['9B4F', '9B55'], source: 'Wicked Thunder', capture: false },
-      run: (data) => data.expectedBlasts = 4,
+      run: (data) => {
+        data.expectedBlasts = 4;
+        data.storedBlasts = [];
+      },
     },
     {
       id: 'R4N Fivefold Blast Initializer',
       type: 'StartsUsing',
       netRegex: { id: ['9B56', '9B57'], source: 'Wicked Thunder', capture: false },
-      run: (data) => data.expectedBlasts = 5,
+      run: (data) => {
+        data.expectedBlasts = 5;
+        data.storedBlasts = [];
+      },
     },
     {
       id: 'R4N XFold Blast Collector',
@@ -317,12 +326,14 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: 'B9A', count: Object.values(effectB9AMap), capture: true },
       condition: (data, matches) => {
         const count = matches.count;
+        if (data.expectedBlasts === 0)
+          return false;
 
         if (!isEffectB9AValue(count))
           return false;
         data.storedBlasts.push(count);
 
-        return data.expectedBlasts > 0 && data.storedBlasts.length >= data.expectedBlasts;
+        return data.storedBlasts.length >= data.expectedBlasts;
       },
       durationSeconds: (data) => {
         if (data.expectedBlasts === 3)
@@ -337,9 +348,38 @@ const triggerSet: TriggerSet<Data> = {
       },
       run: (data) => {
         data.expectedBlasts = 0;
-        data.storedBlasts = [];
       },
       outputStrings: directionOutputStrings,
+    },
+    {
+      id: 'R4N Wicked Cannon',
+      type: 'Ability',
+      netRegex: {
+        id: ['4E40', '9BBE', '9A2F', '9BAC', '92AE'],
+        source: 'Wicked Thunder',
+        capture: false,
+      },
+      durationSeconds: 2,
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = directionOutputStrings;
+        const thisBlast = data.storedBlasts.shift();
+
+        if (data.storedBlasts.length === 0)
+          return;
+
+        const nextBlast = data.storedBlasts[0];
+        const dir = output[b9aValueToNorthSouth(nextBlast)]!();
+
+        if (thisBlast === nextBlast)
+          return { infoText: dir };
+
+        return { alertText: dir };
+      },
+      run: (data) => {
+        data.expectedBlasts = 0;
+      },
     },
     {
       id: 'R4N Bewitching Flight Right Safe',
