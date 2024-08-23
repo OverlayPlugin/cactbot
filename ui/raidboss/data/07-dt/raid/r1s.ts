@@ -546,13 +546,13 @@ const triggerSet: TriggerSet<Data> = {
             data.storedLeaps.quadCross.resolved = true;
             let dir: 'dirE' | 'dirW';
 
-            if (data.storedLeaps.oneTwoPaw.northSouth === 'north') {
-              if (data.storedLeaps.oneTwoPaw.leftRight === 'left')
+            if (data.storedLeaps.quadCross.northSouth === 'north') {
+              if (data.storedLeaps.quadCross.leftRight === 'left')
                 dir = 'dirE';
               else
                 dir = 'dirW';
             } else {
-              if (data.storedLeaps.oneTwoPaw.leftRight === 'left')
+              if (data.storedLeaps.quadCross.leftRight === 'left')
                 dir = 'dirW';
               else
                 dir = 'dirE';
