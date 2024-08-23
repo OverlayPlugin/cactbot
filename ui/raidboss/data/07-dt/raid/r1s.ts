@@ -112,6 +112,7 @@ const triggerSet: TriggerSet<Data> = {
         knockback: {
           en: 'Knockback (${pos1}/${pos2} Safe)',
           de: 'Rückstoß (${pos1}/${pos2} sicher)',
+          fr: 'Poussée (${pos1}/${pos2} sûr)',
           ja: 'ノックバック (${pos1}/${pos2} が安地)',
           cn: '击退 (${pos1}/${pos2} 安全)',
           ko: '넉백 (${pos1}/${pos2} 안전)',
@@ -209,6 +210,7 @@ const triggerSet: TriggerSet<Data> = {
         swSeStay: {
           en: '${dir1} ${sep} ${dir2} (Stay)',
           de: '${dir1} ${sep} ${dir2} (Stehen bleiben)',
+          fr: '${dir1} ${sep} ${dir2} (Restez)',
           ja: '${dir1} ${sep} ${dir2} (そのまま)',
           cn: '${dir1} ${sep} ${dir2} (不动)',
           ko: '${dir1} ${sep} ${dir2} (그대로)',
@@ -216,6 +218,7 @@ const triggerSet: TriggerSet<Data> = {
         separator: {
           en: ' => ',
           de: ' => ',
+          fr: ' => ',
           ja: ' => ',
           cn: ' => ',
           ko: ' => ',
@@ -223,6 +226,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dirs}',
           de: '${dirs}',
+          fr: '${dirs}',
           ja: '${dirs}',
           cn: '${dirs}',
           ko: '${dirs}',
@@ -240,6 +244,7 @@ const triggerSet: TriggerSet<Data> = {
         outSpread: {
           en: 'Out + Spread',
           de: 'Raus + Verteilen',
+          fr: 'Extérieur + Dispersion',
           ja: '外へ + 散開',
           cn: '远离 + 分散',
           ko: '밖으로 + 산개',
@@ -269,6 +274,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Launch Forward (Aim for uncracked tile)',
           de: 'Schlag Vorwärts (Ziel auf eine ganze Fläche)',
+          fr: 'Saut vers l\'avant (Visez une tuile saine)',
           ja: '前方吹き飛ばし (割れていない床を狙って)',
           cn: '向前击飞 (瞄准完好的地板)',
           ko: '전방으로 날아감 (부서지지 않은 칸으로 유도)',
@@ -285,6 +291,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${target} Launch',
           de: '${target} Start',
+          fr: '${target} Saut',
           ja: '${target} に吹き飛ばし',
           cn: '${target} 击飞',
           ko: '${target} 날아감',
@@ -301,6 +308,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stand on uncracked tile',
           de: 'Steh auf einer ganzen Fläche',
+          fr: 'Restez sur une tuile saine',
           ja: '割れてない床に立って',
           cn: '被砸 (站在完好的场地)',
           ko: '부서지지 않은 칸으로 유도',
@@ -317,6 +325,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${target} Stun',
           de: '${target} Betäubung',
+          fr: '${target} Étourdissment',
           ja: '${target} にスタン',
           cn: '${target} 被砸',
           ko: '${target} 기절',
@@ -434,6 +443,7 @@ const triggerSet: TriggerSet<Data> = {
         insideOut: {
           en: 'Inside => Outside',
           de: 'Rein => Raus',
+          fr: 'Intérieur => Extérieur',
           ja: '内側 => 外側',
           cn: '场内 => 场外',
           ko: '안으로 => 밖으로',
@@ -441,6 +451,7 @@ const triggerSet: TriggerSet<Data> = {
         outsideIn: {
           en: 'Outside => Inside',
           de: 'Raus => Rein',
+          fr: 'Extérieur => Intérieur',
           ja: '外側 => 内側',
           cn: '场外 => 场内',
           ko: '밖으로 => 안으로',
@@ -448,6 +459,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${dir}, ${cleaves}',
           de: '${dir}, ${cleaves}',
+          fr: '${dir}, ${cleaves}',
           ja: '${dir}, ${cleaves}',
           cn: '${dir}, ${cleaves}',
           ko: '${dir}, ${cleaves}',
@@ -474,6 +486,7 @@ const triggerSet: TriggerSet<Data> = {
         proximity: {
           en: 'Proximity baits at target',
           de: 'Nah-Distanz-Köder vom Ziel',
+          fr: 'Baits proches de la cible',
           ja: 'ボスに近づいて誘導',
           cn: '引导站位',
           ko: '대상 근처에서 유도',
@@ -568,6 +581,7 @@ const triggerSet: TriggerSet<Data> = {
         in: {
           en: 'In + Healer Stacks => Out',
           de: 'Rein + Auf Heiler sammeln => Raus',
+          fr: 'Intérieur + Packs sur les heals => Extérieur',
           ja: '中へ + ヒラ頭割り => 外へ',
           cn: '场内 + 治疗分摊组 => 场外',
           ko: '안으로 + 힐러 그룹 쉐어 => 밖으로',
@@ -575,6 +589,7 @@ const triggerSet: TriggerSet<Data> = {
         out: {
           en: 'Out + Healer Stacks => In',
           de: 'Raus + Auf Heiler sammeln => Rein',
+          fr: 'Extérieur + Packs sur les heals => Intérieur',
           ja: '外へ + ヒラ頭割り => 中へ',
           cn: '场外 + 治疗分摊组 => 场内',
           ko: '밖으로 + 힐러 그룹 쉐어 => 안으로',
@@ -582,6 +597,7 @@ const triggerSet: TriggerSet<Data> = {
         healerStacks: {
           en: 'Go ${dir} => ${inOut}',
           de: 'Geh nach ${dir} => ${inOut}',
+          fr: 'Allez ${dir} => ${inOut}',
           ja: '${dir} へ => ${inOut}',
           cn: '去 ${dir} => ${inOut}',
           ko: '${dir}으로 이동 => ${inOut}',
@@ -589,6 +605,7 @@ const triggerSet: TriggerSet<Data> = {
         proximity: {
           en: 'Go ${dir} => Proximity Baits + Spreads',
           de: 'Geh nach ${dir} => Nah-Distanz-Köder + Verteilen',
+          fr: 'Allez ${dir} => Baits proches + Dispersion',
           ja: '${dir} へ => ボスに近づいて誘導 + 散開',
           cn: '去 ${dir} => 引导站位 + 分散',
           ko: '${dir}으로 이동 => 대상 근처에서 유도 + 산개',
@@ -643,13 +660,24 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Black Cat': 'Black Cat',
         'Copy Cat': 'double félin',
         'Soulshade': 'ombre d\'âme',
       },
       'replaceText': {
+        '\\(First\\)': '(Premier)',
+        '\\(Second\\)': '(Deuxième)',
+        '\\(cast\\)': '(Incante)',
+        '\\(damage\\)': '(Dommage)',
+        '\\(enrage\\)': '(Enrage)',
+        '\\(hit\\)': '(Coup)',
+        '\\(hits\\)': '(Coups)',
+        '\\(jump\\)': '(Saut)',
+        '\\(knockback\\)': '(Poussée)',
+        '\\(stacks\\)': '(Package)',
+        '\\(telegraphs\\)': '(Télégraphe)',
+        '\\(tethers\\)': '(Liens)',
         'Biscuit Maker': 'Coup de tatane',
         'Bloody Scratch': 'Griffure sanglante',
         'Copycat': 'Double félin',
