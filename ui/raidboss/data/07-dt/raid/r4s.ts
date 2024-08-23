@@ -1735,6 +1735,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '4.{7}', category: actorControlCategoryMap.setModelState, param1: '1C' },
       condition: (data) => data.phase === 'sunrise' && !data.seenFirstSunrise,
       // they both face opposite or adjacent, so we only need one to resolve the mechanic
+      delaySeconds: 0.2,
       suppressSeconds: 1,
       run: (data, matches) => {
         const id = matches.id;
