@@ -42,6 +42,27 @@ const tagTeamOutputStrings = {
 Options.Triggers.push({
   id: 'AacLightHeavyweightM3Savage',
   zoneId: ZoneId.AacLightHeavyweightM3Savage,
+  config: [
+    {
+      id: 'barbarousBarrageKnockback',
+      name: {
+        en: 'Barbarous Barrage Uptime Knockback',
+      },
+      comment: {
+        en: 'Select towers to dodge with knockback immunity.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None (No Callout)': 'none',
+          'First Tower': 'first',
+          'First Two Towers (Recommended)': 'two',
+          'All three towers': 'all',
+        },
+      },
+      default: 'none',
+    },
+  ],
   timelineFile: 'r3s.txt',
   initData: () => ({
     phaseTracker: 0,
@@ -124,6 +145,30 @@ Options.Triggers.push({
           cn: '击退 + 分散',
           ko: '넉백 + 산개',
         },
+      },
+    },
+    {
+      id: 'R3S Barbarous Barrage Uptime Knockback',
+      type: 'StartsUsing',
+      netRegex: { id: '93FB', source: 'Brute Bomber', capture: false },
+      delaySeconds: (data) => {
+        switch (data.triggerSetConfig.barbarousBarrageKnockback) {
+          case 'first':
+            return 9;
+          case 'two':
+            return 12;
+          case 'all':
+            return 15;
+          case 'none':
+            return 0;
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.triggerSetConfig.barbarousBarrageKnockback !== 'none')
+          return output.knockback();
+      },
+      outputStrings: {
+        knockback: Outputs.knockback,
       },
     },
     {
