@@ -766,7 +766,7 @@ export default {
     de: 'Kardinal',
     fr: 'Cardinaux',
     ja: '十字回避',
-    cn: '十字',
+    cn: '去正点',
     ko: '십자방향으로',
   },
   intercards: {
@@ -774,7 +774,7 @@ export default {
     de: 'Interkardinal',
     fr: 'Intercardinal',
     ja: '斜めへ',
-    cn: '四角',
+    cn: '去斜角',
     ko: '대각선 쪽으로',
   },
   north: {
