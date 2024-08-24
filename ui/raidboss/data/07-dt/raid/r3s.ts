@@ -13,6 +13,9 @@ type TagTeamClone = {
 };
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    barbarousBarrageKnockback: 'none' | 'first' | 'two' | 'all';
+  };
   phaseTracker: number;
   tagTeamCloneTethered?: number;
   tagTeamClones: TagTeamClone[];
@@ -65,15 +68,48 @@ const tagTeamOutputStrings = {
   ...Directions.outputStrings8Dir,
   safeDirs: {
     en: 'Safe: ${dirs} => ${last}',
+    de: 'Sicher: ${dirs} => ${last}',
+    cn: '安全区: ${dirs} => ${last}',
   },
   separator: {
     en: '/',
+    de: '/',
+    cn: '/',
   },
 } as const;
 
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM3Savage',
   zoneId: ZoneId.AacLightHeavyweightM3Savage,
+  config: [
+    {
+      id: 'barbarousBarrageKnockback',
+      name: {
+        en: 'Barbarous Barrage Uptime Knockback',
+        de: 'Brutalo-Bomben Uptime Rückstoß',
+      },
+      comment: {
+        en: 'Select towers to dodge with knockback immunity.',
+        de: 'Wähle welche Türme mit Rückstoß-Immunität genommen werden.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None (No Callout)': 'none',
+          'First Tower': 'first',
+          'First Two Towers (Recommended)': 'two',
+          'All three towers': 'all',
+        },
+        de: {
+          'Keine (keine Ansage)': 'none',
+          'Erster Turm': 'first',
+          'Ersten zwei Türme (empfohlen)': 'two',
+          'Alle drei Türme': 'all',
+        },
+      },
+      default: 'none',
+    },
+  ],
   timelineFile: 'r3s.txt',
   initData: () => ({
     phaseTracker: 0,
@@ -156,6 +192,30 @@ const triggerSet: TriggerSet<Data> = {
           cn: '击退 + 分散',
           ko: '넉백 + 산개',
         },
+      },
+    },
+    {
+      id: 'R3S Barbarous Barrage Uptime Knockback',
+      type: 'StartsUsing',
+      netRegex: { id: '93FB', source: 'Brute Bomber', capture: false },
+      delaySeconds: (data) => {
+        switch (data.triggerSetConfig.barbarousBarrageKnockback) {
+          case 'first':
+            return 9;
+          case 'two':
+            return 12;
+          case 'all':
+            return 15;
+          case 'none':
+            return 0;
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.triggerSetConfig.barbarousBarrageKnockback !== 'none')
+          return output.knockback!();
+      },
+      outputStrings: {
+        knockback: Outputs.knockback,
       },
     },
     {
@@ -345,6 +405,8 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsCardinalDir,
         tetheredTo: {
           en: 'Tethered to ${dir} clone',
+          de: 'Vrebindung zum ${dir} Klon',
+          cn: '连线分身: ${dir}',
         },
       },
     },
@@ -533,9 +595,13 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         comboGo: {
           en: 'Knockback ${firstDir1}/${firstDir2} => Go ${secondDir}',
+          de: 'Rückstoß ${firstDir1}/${firstDir2} => Geh nach ${secondDir}',
+          cn: '击退 ${firstDir1}/${firstDir2} => 穿 ${secondDir}',
         },
         comboStay: {
           en: 'Knockback ${firstDir1}/${firstDir2}, Stay ${secondDir}',
+          de: 'Rückstoß ${firstDir1}/${firstDir2} => Bleibe im ${secondDir}',
+          cn: '击退 ${firstDir1}/${firstDir2}, 停 ${secondDir}',
         },
       },
     },

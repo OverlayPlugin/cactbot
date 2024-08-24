@@ -190,6 +190,14 @@ export default {
     cn: '分散',
     ko: '산개',
   },
+  defamationOnYou: {
+    en: 'Defamation on YOU',
+    de: 'Ehrenstrafe aud DIR',
+    fr: 'Diffamation sur VOUS',
+    ja: '自分に巨大な爆発',
+    cn: '大圈点名',
+    ko: '광역징 대상자',
+  },
   protean: {
     en: 'Protean',
     de: 'Himmelsrichtungen',
@@ -246,7 +254,7 @@ export default {
     fr: 'Packez-vous avec votre partenaire',
     ja: 'ペア',
     cn: '与搭档分摊',
-    ko: '파트너랑 모이기',
+    ko: '파트너와 쉐어',
   },
   stackMiddle: {
     en: 'Stack in middle',
@@ -254,7 +262,7 @@ export default {
     fr: 'Packez-vous au milieu',
     ja: '中央で頭割り',
     cn: '中间集合',
-    ko: '중앙에서 모이기',
+    ko: '중앙에서 쉐어',
   },
   baitPuddles: {
     en: 'Bait puddles',
