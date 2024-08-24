@@ -1505,6 +1505,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
+        unknown: Outputs.unknown,
       },
     },
     {
