@@ -318,7 +318,7 @@ export class EncounterFinder {
     this.currentZone = {
       zoneName: zoneName,
       startLine: line,
-      zoneId: parseInt(matches.id),
+      zoneId: parseInt(matches.id, 16),
       startTime: TLFuncs.dateFromMatches(matches),
     };
   }
