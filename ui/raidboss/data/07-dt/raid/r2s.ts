@@ -229,11 +229,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Drop of Venom',
       type: 'StartsUsing',
       netRegex: { id: '9185', source: 'Honey B. Lovely', capture: false },
-      infoText: (data, _matches, output) => {
-        // don't display a 'Stored' trigger for the first two, as the mech resolves immediately
-        if (data.partnersSpreadCounter > 2)
-          return output.text!();
-      },
+      infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.storedPartnersSpread = 'partners',
       outputStrings: {
         text: {
@@ -249,11 +245,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Splash of Venom',
       type: 'StartsUsing',
       netRegex: { id: '9184', source: 'Honey B. Lovely', capture: false },
-      infoText: (data, _matches, output) => {
-        // don't display a 'Stored' trigger for the first two, as the mech resolves immediately
-        if (data.partnersSpreadCounter > 2)
-          return output.text!();
-      },
+      infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.storedPartnersSpread = 'spread',
       outputStrings: {
         text: {
@@ -269,7 +261,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Drop of Love',
       type: 'StartsUsing',
       netRegex: { id: '9B09', source: 'Honey B. Lovely', capture: false },
-      // no need for conditional on data.partnersSpreadCounter, as these happen later in the fight
       infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.storedPartnersSpread = 'partners',
       outputStrings: {
@@ -286,7 +277,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R2S Spread Love',
       type: 'StartsUsing',
       netRegex: { id: '9B08', source: 'Honey B. Lovely', capture: false },
-      // no need for conditional on data.partnersSpreadCounter, as these happen later in the fight
       infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.storedPartnersSpread = 'spread',
       outputStrings: {
