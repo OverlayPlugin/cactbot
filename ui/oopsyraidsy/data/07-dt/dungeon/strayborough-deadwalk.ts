@@ -25,7 +25,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Strayborough Deadwalk Stray Rascal Ancient Aero': '998E', // Line AoE
     'Strayborough Deadwalk Stray Tiger Rush': '9991', // Line AoE
     'Strayborough Deadwalk Stray Elephant Trunk Tawse': '998F', // Conal AoE
-    'Strayborough Deadwalk Skywheel Tilt-a-wheel': '998B', // Giant circle AoE
+    'Strayborough Deadwalk Skywheel Tilt-a-wheel': '998B', // Giant circle AoE, Ferris wheel environmental.
 
     // Boss 2
     'Strayborough Deadwalk Stray Phantagenitrix Tricksome Treat': '8F70', // Genie teacup explosion

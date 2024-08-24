@@ -140,7 +140,6 @@ hideall "--sync--"
 
 # The Restive Hall will be sealed off
 3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13F4" } window 3000,1
-3003.0 "攻撃" Ability { id: "417C", source: "Träumerei" }
 3012.0 "Bitter Regret (middle)" Ability { id: "9113", source: "Träumerei" }
 3022.1 "Bitter Regret (sides)" Ability { id: "9114", source: "Träumerei" }
 3027.3 "Poltergeist" Ability { id: "910C", source: "Träumerei" }
