@@ -41,9 +41,11 @@ const poisonOutputStrings = {
   defamationOnYou: Outputs.defamationOnYou,
   defamations: {
     en: 'Defamations',
+    de: 'Große AoE auf dir',
   },
   in: {
     en: 'In (Avoid Defamations)',
+    de: 'Mitte (weiche den AoEs aus)',
   },
 };
 
@@ -183,6 +185,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidTowers: {
           en: 'Spread -- Avoid Towers',
+          de: 'Verteilen -- Vermeide Türme',
           cn: '分散 - 躲开塔',
         },
         towers: Outputs.getTowers,
@@ -307,12 +310,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         middle: {
           en: '(middle after)',
+          de: '(danach mitte)',
         },
         partners: {
           en: '(middle + partners after)',
+          de: '(mitte + danach mit partner sammeln)',
         },
         spread: {
           en: '(middle + spread after)',
+          de: '(mitte + danach verteilen)',
         },
       },
     },
@@ -345,6 +351,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         combo: {
           en: '${next} + ${mech}',
+          de: '${next} + ${mech}',
         },
       },
     },
@@ -366,12 +373,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         out: {
           en: '(out after)',
+          de: '(danach raus)',
         },
         partners: {
           en: '(out + partners after)',
+          de: '(raus + danach mit partner sammeln)',
         },
         spread: {
           en: '(out + spread after)',
+          de: '(raus + danach verteilen)',
         },
       },
     },
@@ -404,6 +414,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         combo: {
           en: '${next} + ${mech}',
+          de: '${next} + ${mech}',
         },
       },
     },
@@ -571,6 +582,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: 'Merge Soon w/ ${player}',
+          de: 'Bald berühren mit ${player}',
         },
         unknown: Outputs.unknown,
       },
@@ -601,6 +613,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: 'Merge: ${alpha} + ${beta}',
+          de: 'Berühren: ${alpha} + ${beta}',
         },
         unknown: Outputs.unknown,
       },
