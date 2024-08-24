@@ -701,6 +701,7 @@ Options.Triggers.push({
       outputStrings: {
         witchgleamTimes: {
           en: '${times} stacks (later)',
+          de: '${times} Treffer (später)',
           cn: '(稍后 ${times} 层)',
           ko: '(${times} 스택)',
         },

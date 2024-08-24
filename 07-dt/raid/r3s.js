@@ -32,10 +32,12 @@ const tagTeamOutputStrings = {
   ...Directions.outputStrings8Dir,
   safeDirs: {
     en: 'Safe: ${dirs} => ${last}',
+    de: 'Sicher: ${dirs} => ${last}',
     cn: '安全区: ${dirs} => ${last}',
   },
   separator: {
     en: '/',
+    de: '/',
     cn: '/',
   },
 };
@@ -47,9 +49,11 @@ Options.Triggers.push({
       id: 'barbarousBarrageKnockback',
       name: {
         en: 'Barbarous Barrage Uptime Knockback',
+        de: 'Brutalo-Bomben Uptime Rückstoß',
       },
       comment: {
         en: 'Select towers to dodge with knockback immunity.',
+        de: 'Wähle welche Türme mit Rückstoß-Immunität genommen werden.',
       },
       type: 'select',
       options: {
@@ -58,6 +62,12 @@ Options.Triggers.push({
           'First Tower': 'first',
           'First Two Towers (Recommended)': 'two',
           'All three towers': 'all',
+        },
+        de: {
+          'Keine (keine Ansage)': 'none',
+          'Erster Turm': 'first',
+          'Ersten zwei Türme (empfohlen)': 'two',
+          'Alle drei Türme': 'all',
         },
       },
       default: 'none',
@@ -355,6 +365,7 @@ Options.Triggers.push({
         ...Directions.outputStringsCardinalDir,
         tetheredTo: {
           en: 'Tethered to ${dir} clone',
+          de: 'Vrebindung zum ${dir} Klon',
           cn: '连线分身: ${dir}',
         },
       },
@@ -525,10 +536,12 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         comboGo: {
           en: 'Knockback ${firstDir1}/${firstDir2} => Go ${secondDir}',
+          de: 'Rückstoß ${firstDir1}/${firstDir2} => Geh nach ${secondDir}',
           cn: '击退 ${firstDir1}/${firstDir2} => 穿 ${secondDir}',
         },
         comboStay: {
           en: 'Knockback ${firstDir1}/${firstDir2}, Stay ${secondDir}',
+          de: 'Rückstoß ${firstDir1}/${firstDir2} => Bleibe im ${secondDir}',
           cn: '击退 ${firstDir1}/${firstDir2}, 停 ${secondDir}',
         },
       },

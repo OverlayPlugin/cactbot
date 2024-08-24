@@ -14,9 +14,11 @@ const poisonOutputStrings = {
   defamationOnYou: Outputs.defamationOnYou,
   defamations: {
     en: 'Defamations',
+    de: 'Große AoE auf dir',
   },
   in: {
     en: 'In (Avoid Defamations)',
+    de: 'Mitte (weiche den AoEs aus)',
   },
 };
 const beelovedDebuffDurationOrder = [12, 28, 44, 62];
@@ -152,6 +154,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidTowers: {
           en: 'Spread -- Avoid Towers',
+          de: 'Verteilen -- Vermeide Türme',
           cn: '分散 - 躲开塔',
         },
         towers: Outputs.getTowers,
@@ -276,12 +279,15 @@ Options.Triggers.push({
       outputStrings: {
         middle: {
           en: '(middle after)',
+          de: '(danach mitte)',
         },
         partners: {
           en: '(middle + partners after)',
+          de: '(mitte + danach mit partner sammeln)',
         },
         spread: {
           en: '(middle + spread after)',
+          de: '(mitte + danach verteilen)',
         },
       },
     },
@@ -314,6 +320,7 @@ Options.Triggers.push({
         },
         combo: {
           en: '${next} + ${mech}',
+          de: '${next} + ${mech}',
         },
       },
     },
@@ -335,12 +342,15 @@ Options.Triggers.push({
       outputStrings: {
         out: {
           en: '(out after)',
+          de: '(danach raus)',
         },
         partners: {
           en: '(out + partners after)',
+          de: '(raus + danach mit partner sammeln)',
         },
         spread: {
           en: '(out + spread after)',
+          de: '(raus + danach verteilen)',
         },
       },
     },
@@ -373,6 +383,7 @@ Options.Triggers.push({
         },
         combo: {
           en: '${next} + ${mech}',
+          de: '${next} + ${mech}',
         },
       },
     },
@@ -537,6 +548,7 @@ Options.Triggers.push({
       outputStrings: {
         merge: {
           en: 'Merge Soon w/ ${player}',
+          de: 'Bald berühren mit ${player}',
         },
         unknown: Outputs.unknown,
       },
@@ -564,6 +576,7 @@ Options.Triggers.push({
       outputStrings: {
         merge: {
           en: 'Merge: ${alpha} + ${beta}',
+          de: 'Berühren: ${alpha} + ${beta}',
         },
         unknown: Outputs.unknown,
       },
