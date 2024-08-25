@@ -333,6 +333,17 @@ Options.Triggers.push({
       },
     },
     {
+      id: 'R3S Octoboom Bombarian Special Reminder',
+      type: 'StartsUsing',
+      netRegex: { id: '9752', source: 'Brute Bomber', capture: false },
+      delaySeconds: 20,
+      durationSeconds: 7,
+      alertText: (_data, _matches, output) => output.spread(),
+      outputStrings: {
+        spread: Outputs.spread,
+      },
+    },
+    {
       id: 'R3S Quadroboom Bombarian Special',
       type: 'StartsUsing',
       netRegex: { id: '940A', source: 'Brute Bomber', capture: false },
@@ -345,6 +356,17 @@ Options.Triggers.push({
           cn: '钢铁 => 月环 => 击退 => 双人分摊',
           ko: '밖으로 => 안으로 => 넉백 => 쉐어',
         },
+      },
+    },
+    {
+      id: 'R3S Quadroboom Bombarian Special Reminder',
+      type: 'StartsUsing',
+      netRegex: { id: '940A', source: 'Brute Bomber', capture: false },
+      delaySeconds: 20,
+      durationSeconds: 7,
+      alertText: (_data, _matches, output) => output.stack(),
+      outputStrings: {
+        stack: Outputs.stackPartner,
       },
     },
     {
