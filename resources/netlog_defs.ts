@@ -701,6 +701,10 @@ const latestLogDefinitions = {
           sourceId: '[E4].{7}',
           targetId: '1.{7}',
         },
+        { // effects applied by NPCs to other NPCs (including themselves)
+          sourceId: '4.{7}',
+          targetId: '4.{7}',
+        },
         { // known effectIds of interest
           effectId: ['B9A', '808'],
         },
@@ -804,6 +808,10 @@ const latestLogDefinitions = {
         { // effect from environment/NPC applied to player
           sourceId: '[E4].{7}',
           targetId: '1.{7}',
+        },
+        { // effects applied by NPCs to other NPCs (including themselves)
+          sourceId: '4.{7}',
+          targetId: '4.{7}',
         },
         { // known effectIds of interest
           effectId: ['B9A', '808'],
