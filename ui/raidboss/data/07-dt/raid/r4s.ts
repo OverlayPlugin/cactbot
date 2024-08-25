@@ -1200,6 +1200,12 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
+      id: 'R4S Wicked Thunder',
+      type: 'StartsUsing',
+      netRegex: { id: '949B', source: 'Wicked Thunder', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
       id: 'R4S Mustard Bomb Initial',
       type: 'StartsUsing',
       netRegex: { id: '961E', source: 'Wicked Thunder', capture: false },
