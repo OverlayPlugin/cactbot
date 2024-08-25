@@ -48,7 +48,7 @@ hideall "--sync--"
 664.4 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
 678.3 "Chilling Cataclysm" Ability { id: "9960", source: "Arcane Sphere" }
 686.7 "Disaster Zone" Ability { id: "8D44", source: "Valigarmanda" }
-695.8 "--sync--" Ability { id: "9691", source: "Valigarmanda" } forcejump "adds"
+695.8 "Ruin Foretold" Ability { id: "9691", source: "Valigarmanda" } forcejump "adds"
 
 1008.4 label "initial-ice-storm"
 1019.8 "Skyruin (ice phase)" Ability { id: "8D42", source: "Valigarmanda" }
@@ -67,10 +67,9 @@ hideall "--sync--"
 1185.0 "Ruinfall (tower)" Ability { id: "8D5B", source: "Valigarmanda" }
 1187.4 "Ruinfall (knockback)" Ability { id: "8D5D", source: "Valigarmanda" }
 1189.1 "Ruinfall (AoEs)" Ability { id: "98D9", source: "Valigarmanda" }
-1195.8 "--sync--" Ability { id: "9691", source: "Valigarmanda" } forcejump "adds"
+1195.8 "Ruin Foretold" Ability { id: "9691", source: "Valigarmanda" } forcejump "adds"
 
 1595.8 label "adds"
-1595.8 "Ruin Foretold"
 # Mini-loop until adds are dead
 1603.9 "Calamitous Cry/Echo" Ability { id: "8D60", source: "Valigarmanda" }
 1609.9 "Calamitous Cry/Echo" Ability { id: "8D61", source: "Valigarmanda" }
