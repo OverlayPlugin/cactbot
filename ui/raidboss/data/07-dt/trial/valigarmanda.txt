@@ -17,11 +17,11 @@ hideall "--sync--"
 10.3 "--sync--" StartsUsing { id: "8D3F", source: "Valigarmanda" }
 16.7 "Strangling Coil" Ability { id: "8D3F", source: "Valigarmanda" }
 31.9 "Slithering Strike" Ability { id: "8D3D", source: "Valigarmanda" }
-47.2 "Slithering Strike/Strangling Coil" Ability { id: "8D3D|8D3F", source: "Valigarmanda" }
+47.2 "Slithering Strike/Strangling Coil" Ability { id: ["8D3D", "8D3F"], source: "Valigarmanda" }
 61.5 "Susurrant Breath" Ability { id: "8D3B", source: "Valigarmanda" }
-75.8 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+75.8 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 84.5 "Ice Talon" Ability { id: "8D58", source: "Valigarmanda" }
-101.5 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+101.5 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 
 # After the opener, the boss begins storm or ice phase, followed by the opposite.
 # Because the Skyruin casts that start each phase are used in both loops,
@@ -42,20 +42,20 @@ hideall "--sync--"
 597.0 "Ruinfall (knockback)" Ability { id: "8D5D", source: "Valigarmanda" }
 598.7 "Ruinfall (AoEs)" Ability { id: "98D9", source: "Valigarmanda" }
 611.7 "Skyruin (ice phase)" Ability { id: "8D42", source: "Valigarmanda" }
-631.8 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
+631.8 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
 639.2 "Freezing Dust" Ability { id: "8D51", source: "Valigarmanda" }
-652.4 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
-664.4 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+652.4 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
+664.4 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 678.3 "Chilling Cataclysm" Ability { id: "9960", source: "Arcane Sphere" }
 686.7 "Disaster Zone" Ability { id: "8D44", source: "Valigarmanda" }
 695.8 "Ruin Foretold" Ability { id: "9691", source: "Valigarmanda" } forcejump "adds"
 
 1008.4 label "initial-ice-storm"
 1019.8 "Skyruin (ice phase)" Ability { id: "8D42", source: "Valigarmanda" }
-1039.9 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
+1039.9 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
 1047.2 "Freezing Dust" Ability { id: "8D51", source: "Valigarmanda" }
-1060.3 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
-1072.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+1060.3 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
+1072.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 1086.1 "Chilling Cataclysm" Ability { id: "9960", source: "Arcane Sphere" }
 1094.5 "Disaster Zone" Ability { id: "8D44", source: "Valigarmanda" }
 1110.2 "Skyruin (storm phase)" Ability { id: "8D43", source: "Valigarmanda" }
@@ -88,7 +88,7 @@ hideall "--sync--"
 1851.5 "Eruption 1" #Ability { id: "8D5F", source: "Valigarmanda" }
 1853.5 "Eruption 2" #Ability { id: "8D5F", source: "Valigarmanda" }
 1855.5 "Eruption 3" #Ability { id: "8D5F", source: "Valigarmanda" }
-1859.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+1859.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 
 # Boss will now endlessly loop between storm and ice phases.
 # The first phase always matches the first phase from the opener.
@@ -106,7 +106,7 @@ hideall "--sync--"
 2035.5 "Hail of Feathers" Ability { id: "8D4A", source: "Valigarmanda" }
 2051.9 "Blighted Bolt" Ability { id: "8D4C", source: "Valigarmanda" }
 2073.5 "Arcane Lightning" Ability { id: "9859", source: "Arcane Sphere" }
-2078.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+2078.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 2091.2 "Disaster Zone" Ability { id: "8D46", source: "Valigarmanda" }
 2101.0 "Ruinfall (tower)" Ability { id: "8D5B", source: "Valigarmanda" }
 2103.4 "Ruinfall (knockback)" Ability { id: "8D5D", source: "Valigarmanda" }
@@ -114,30 +114,30 @@ hideall "--sync--"
 2108.7 "--sync--" StartsUsing { id: "8D41", source: "Valigarmanda" }
 2120.1 "Skyruin (ice phase)" Ability { id: "8D42", source: "Valigarmanda" }
 2137.1 "Chilling Cataclysm" Ability { id: "9960", source: "Arcane Sphere" }
-2139.1 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
-2148.0 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+2139.1 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
+2148.0 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 2161.9 "Freezing Dust" Ability { id: "8D51", source: "Valigarmanda" }
 2163.9 "Chilling Cataclysm" Ability { id: "9960", source: "Arcane Sphere" }
-2174.7 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
-2183.3 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
+2174.7 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
+2183.3 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
 2197.1 "Disaster Zone" Ability { id: "8D44", source: "Valigarmanda" }
 2206.5 "Ice Talon" Ability { id: "8D58", source: "Valigarmanda" }
 2226.4 "--sync--" Ability { id: "8D5E", source: "Valigarmanda" }
 2231.4 "Eruption 1" #Ability { id: "8D5F", source: "Valigarmanda" }
 2233.4 "Eruption 2" #Ability { id: "8D5F", source: "Valigarmanda" }
 2235.4 "Eruption 3" #Ability { id: "8D5F", source: "Valigarmanda" }
-2239.2 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+2239.2 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 2252.4 "--sync--" StartsUsing { id: "95C2", source: "Valigarmanda" } forcejump "loop-storm-ice"
 
 2500.0 label "loop-ice-storm"
 2511.4 "Skyruin (ice phase)" Ability { id: "8D42", source: "Valigarmanda" } window 11.4,5
 2528.4 "Chilling Cataclysm" Ability { id: "9960", source: "Arcane Sphere" }
-2530.4 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
-2539.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+2530.4 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
+2539.3 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 2553.1 "Freezing Dust" Ability { id: "8D51", source: "Valigarmanda" }
 2555.1 "Chilling Cataclysm" Ability { id: "9960", source: "Arcane Sphere" }
-2565.9 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
-2574.6 "Northern Cross" Ability { id: "8D48|8D49", source: "Valigarmanda" }
+2565.9 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
+2574.6 "Northern Cross" Ability { id: ["8D48", "8D49"], source: "Valigarmanda" }
 2588.3 "Disaster Zone" Ability { id: "8D44", source: "Valigarmanda" }
 2597.6 "Ice Talon" Ability { id: "8D58", source: "Valigarmanda" }
 2607.2 "--sync--" StartsUsing { id: "95C2", source: "Valigarmanda" }
@@ -147,7 +147,7 @@ hideall "--sync--"
 2642.7 "Hail of Feathers" Ability { id: "8D4A", source: "Valigarmanda" }
 2659.0 "Blighted Bolt" Ability { id: "8D4C", source: "Valigarmanda" }
 2680.6 "Arcane Lightning" Ability { id: "9859", source: "Arcane Sphere" }
-2685.4 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+2685.4 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 2698.3 "Disaster Zone" Ability { id: "8D46", source: "Valigarmanda" }
 2708.1 "Ruinfall (tower)" Ability { id: "8D5B", source: "Valigarmanda" }
 2710.5 "Ruinfall (knockback)" Ability { id: "8D5D", source: "Valigarmanda" }
@@ -156,7 +156,7 @@ hideall "--sync--"
 2731.2 "Eruption 1" #Ability { id: "8D5F", source: "Valigarmanda" }
 2733.2 "Eruption 2" #Ability { id: "8D5F", source: "Valigarmanda" }
 2735.2 "Eruption 3" #Ability { id: "8D5F", source: "Valigarmanda" }
-2739.0 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: "8D3B|8D3D|8D3F", source: "Valigarmanda" }
+2739.0 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 2752.2 "--sync--" StartsUsing { id: "8D41", source: "Valigarmanda" } forcejump "loop-ice-storm"
 
 # IGNORED ABILITIES
