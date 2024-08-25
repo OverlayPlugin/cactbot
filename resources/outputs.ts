@@ -993,6 +993,15 @@ export default {
     cn: 'DPS',
     ko: '딜러',
   },
+  // for sequenced mechanics
+  next: {
+    en: ' => ',
+    de: ' => ',
+    fr: ' => ',
+    ja: ' => ',
+    cn: ' => ',
+    ko: ' => ',
+  },
   // Literal numbers.
   num0: numberToOutputString(0),
   num1: numberToOutputString(1),
