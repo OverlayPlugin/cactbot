@@ -58,15 +58,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Dodge cleaves x4',
+          cn: '躲避顺劈 x4',
         },
         behind: {
           en: 'Behind + Left (for 3) => Go Front',
+          cn: '后 + 左(3次) => 前',
         },
         right: {
           en: 'Right (for 2) => Left => Front',
+          cn: '右(2次) => 左 => 前',
         },
         front: {
           en: 'Front + Left (stay)',
+          cn: '前 + 左 (不动)',
         },
       },
     },
@@ -91,6 +95,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         leftFront: {
           en: 'Left => Front',
+          cn: '左 => 前',
         },
       },
     },
@@ -118,6 +123,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out + Stay Out',
+          cn: '远离 + 保持远离',
         },
       },
     },
@@ -130,6 +136,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In + Stay In',
+          cn: '靠近 + 保持靠近',
         },
       },
     },
@@ -153,15 +160,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         forward: {
           en: 'Forced March: Forward',
+          cn: '强制移动: 前',
         },
         backward: {
           en: 'Forced March: Backward',
+          cn: '强制移动: 后',
         },
         left: {
           en: 'Forced March: Left',
+          cn: '强制移动: 左',
         },
         right: {
           en: 'Forced March: Right',
+          cn: '强制移动: 右',
         },
       },
     },

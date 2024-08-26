@@ -47,6 +47,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out (then behind)',
+          cn: '远离 (然后去背后)',
         },
       },
     },
@@ -64,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Follow jump (then out => behind)',
+          cn: '跟随跳跃 (然后远离 => 背后)',
         },
       },
     },
@@ -76,6 +78,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out => Behind',
+          cn: '远离 => 背后',
         },
       },
     },

@@ -37,9 +37,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cardinals: {
           en: '(cardinals later)',
+          cn: '(稍后去正点)',
         },
         intercards: {
           en: '(intercards later)',
+          cn: '(稍后去斜角)',
         },
       },
     },
@@ -121,12 +123,15 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         repel: {
           en: 'Forced knockback',
+          cn: '强制击退',
         },
         attract: {
           en: 'Forced draw-in',
+          cn: '强制吸引',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          cn: '${magnet} => ${dir}',
         },
       },
     },
@@ -151,12 +156,15 @@ const triggerSet: TriggerSet<Data> = {
         in: Outputs.in,
         repel: {
           en: 'Forced knockback',
+          cn: '强制击退',
         },
         attract: {
           en: 'Forced draw-in',
+          cn: '强制吸引',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          cn: '${magnet} => ${dir}',
         },
       },
     },
