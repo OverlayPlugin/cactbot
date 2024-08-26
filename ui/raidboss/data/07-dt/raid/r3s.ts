@@ -89,7 +89,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Barbarous Barrage Uptime Knockback',
         de: 'Brutalo-Bomben Uptime Rückstoß',
-        ja: 'ボンバリアンボム吹き飛ばし無効のタイミング',
+        ja: 'ボンバリアンボムのアムレン/堅実 限界タイミング通知',
         cn: '击退塔uptime打法击退提示时机调整功能',
       },
       comment: {
