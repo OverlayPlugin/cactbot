@@ -42,13 +42,13 @@ const poisonOutputStrings = {
   defamations: {
     en: 'Defamations',
     de: 'Große AoE auf dir',
-    ja: '自分に巨大なAoE',
+    ja: '自分に巨大な爆発',
     cn: '大圈点名',
   },
   in: {
     en: 'In (Avoid Defamations)',
     de: 'Mitte (weiche den AoEs aus)',
-    ja: '中央へ (巨大AoEを避けて)',
+    ja: '中央へ (巨大な爆発を避けて)',
     cn: '去脚下 (远离大圈)',
   },
 };
