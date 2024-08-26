@@ -16,7 +16,7 @@ const effectIdToForcedMarchDir: { [id: string]: ForcedMarch } = {
 };
 
 // For Yehehe's directional debuffs and attacks, use 0-3 for relative direction
-// e.g. 0=front, 1=right, 2=back,3=left
+// e.g. 0=front, 1=right, 2=back, 3=left
 // Then use that array index to map to the safe dir for that cleave:
 const yeheheCleaveToSafe = ['back', 'left', 'front', 'right'] as const;
 type YeheheDir = typeof yeheheCleaveToSafe[number] | 'unknown';
