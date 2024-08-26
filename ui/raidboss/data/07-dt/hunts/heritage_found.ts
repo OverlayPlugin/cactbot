@@ -162,7 +162,32 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Atticus the Primogenitor ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Heshuala': 'Heshuala',
+        'Urna Variabilis': 'Urna Variabilis',
+        'Atticus the Primogenitor': 'Atticus d(?:er|ie|as) Primogenitor',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Heshuala': 'Heshuala',
+        'Urna Variabilis': 'pod variant',
+        'Atticus the Primogenitor': 'Atticus le primogéniteur',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Heshuala': 'ヘシュワラ',
+        'Urna Variabilis': 'ヴァリアポッド',
+        'Atticus the Primogenitor': '先駆けのアティカス',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
