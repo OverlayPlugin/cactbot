@@ -15,11 +15,13 @@ const poisonOutputStrings = {
   defamations: {
     en: 'Defamations',
     de: 'Große AoE auf dir',
+    ja: '自分に巨大な爆発',
     cn: '大圈点名',
   },
   in: {
     en: 'In (Avoid Defamations)',
     de: 'Mitte (weiche den AoEs aus)',
+    ja: '中央へ (巨大な爆発を避けて)',
     cn: '去脚下 (远离大圈)',
   },
 };
@@ -157,6 +159,7 @@ Options.Triggers.push({
         avoidTowers: {
           en: 'Spread -- Avoid Towers',
           de: 'Verteilen -- Vermeide Türme',
+          ja: '散開 -- 塔は避けて',
           cn: '分散 - 躲开塔',
         },
         towers: Outputs.getTowers,
@@ -172,6 +175,7 @@ Options.Triggers.push({
         text: {
           en: 'Drop Puddle Outside',
           de: 'Lege Fläche außen ab',
+          ja: '外側に捨てて',
           cn: '在场边放毒圈',
           ko: '바깥쪽에 장판 놓기',
         },
@@ -282,16 +286,19 @@ Options.Triggers.push({
         middle: {
           en: '(middle after)',
           de: '(danach mitte)',
+          ja: '(後で内側へ)',
           cn: '(稍后场中)',
         },
         partners: {
           en: '(middle + partners after)',
           de: '(mitte + danach mit partner sammeln)',
+          ja: '(後で内側へ + ペア)',
           cn: '(稍后场中 + 分摊)',
         },
         spread: {
           en: '(middle + spread after)',
           de: '(mitte + danach verteilen)',
+          ja: '(後で内側へ + 散開)',
           cn: '(稍后场中 + 分散)',
         },
       },
@@ -326,6 +333,7 @@ Options.Triggers.push({
         combo: {
           en: '${next} + ${mech}',
           de: '${next} + ${mech}',
+          ja: '${next} + ${mech}',
           cn: '${next} + ${mech}',
         },
       },
@@ -349,16 +357,19 @@ Options.Triggers.push({
         out: {
           en: '(out after)',
           de: '(danach raus)',
+          ja: '(後で外側へ)',
           cn: '(稍后远离)',
         },
         partners: {
           en: '(out + partners after)',
           de: '(raus + danach mit partner sammeln)',
+          ja: '(後で外側へ + ペア)',
           cn: '(稍后远离 + 分摊)',
         },
         spread: {
           en: '(out + spread after)',
           de: '(raus + danach verteilen)',
+          ja: '(後で外側へ + 散開)',
           cn: '(稍后远离 + 分散)',
         },
       },
@@ -393,6 +404,7 @@ Options.Triggers.push({
         combo: {
           en: '${next} + ${mech}',
           de: '${next} + ${mech}',
+          ja: '${next} + ${mech}',
           cn: '${next} + ${mech}',
         },
       },
@@ -559,6 +571,7 @@ Options.Triggers.push({
         merge: {
           en: 'Merge Soon w/ ${player}',
           de: 'Bald berühren mit ${player}',
+          ja: '${player} と重なって',
           cn: '准备和 ${player} 撞毒',
         },
         unknown: Outputs.unknown,
@@ -588,6 +601,7 @@ Options.Triggers.push({
         merge: {
           en: 'Merge: ${alpha} + ${beta}',
           de: 'Berühren: ${alpha} + ${beta}',
+          ja: '組み合わせ: ${alpha} + ${beta}',
           cn: '撞毒: ${alpha} + ${beta}',
         },
         unknown: Outputs.unknown,

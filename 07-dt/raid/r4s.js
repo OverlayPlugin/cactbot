@@ -702,6 +702,7 @@ Options.Triggers.push({
         witchgleamTimes: {
           en: '${times} stacks (later)',
           de: '${times} Treffer (später)',
+          ja: '${times} 回のほう (後)',
           cn: '(稍后 ${times} 层)',
           ko: '(${times} 스택)',
         },
@@ -1336,10 +1337,12 @@ Options.Triggers.push({
         },
         guns: {
           en: 'Avoid Line',
+          ja: 'ビームを避けて',
           cn: '躲避直线',
         },
         wings: {
           en: 'Donut',
+          ja: 'ドーナツ',
           cn: '月环',
         },
         cardinals: Outputs.cardinals,
@@ -1376,10 +1379,12 @@ Options.Triggers.push({
         },
         guns: {
           en: 'Avoid Line',
+          ja: 'ビームを避けて',
           cn: '躲避直线',
         },
         wings: {
           en: 'Donut',
+          ja: 'ドーナツ',
           cn: '月环',
         },
         cardinals: Outputs.cardinals,
