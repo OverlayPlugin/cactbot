@@ -113,8 +113,8 @@ const triggerSet: TriggerSet<Data> = {
           return output.out!();
 
         if (bossMagnet === myMagnet)
-          return output.combo!({ dir: output.out!(), magnet: output.repel!() });
-        return output.combo!({ dir: output.out!(), magnet: output.attract!() });
+          return output.combo!({ magnet: output.repel!(), dir: output.out!() });
+        return output.combo!({ magnet: output.attract!(), dir: output.out!() });
       },
       run: (data) => delete data.magnetronDebuff,
       outputStrings: {
@@ -126,7 +126,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Forced draw-in',
         },
         combo: {
-          en: '${dir} (${magnet})',
+          en: '${magnet} => ${dir}',
         },
       },
     },
@@ -143,8 +143,8 @@ const triggerSet: TriggerSet<Data> = {
           return output.in!();
 
         if (bossMagnet === myMagnet)
-          return output.combo!({ dir: output.in!(), magnet: output.repel!() });
-        return output.combo!({ dir: output.in!(), magnet: output.attract!() });
+          return output.combo!({ magnet: output.repel!(), dir: output.in!() });
+        return output.combo!({ magnet: output.attract!(), dir: output.in!() });
       },
       run: (data) => delete data.magnetronDebuff,
       outputStrings: {
@@ -156,7 +156,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Forced draw-in',
         },
         combo: {
-          en: '${dir} (${magnet})',
+          en: '${magnet} => ${dir}',
         },
       },
     },
