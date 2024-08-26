@@ -69,11 +69,13 @@ const tagTeamOutputStrings = {
   safeDirs: {
     en: 'Safe: ${dirs} => ${last}',
     de: 'Sicher: ${dirs} => ${last}',
+    ja: '安地: ${dirs} => ${last}',
     cn: '安全区: ${dirs} => ${last}',
   },
   separator: {
     en: '/',
     de: '/',
+    ja: '/',
     cn: '/',
   },
 } as const;
@@ -87,11 +89,13 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Barbarous Barrage Uptime Knockback',
         de: 'Brutalo-Bomben Uptime Rückstoß',
+        ja: 'ボンバリアンボム吹き飛ばし無効のタイミング',
         cn: '击退塔uptime打法击退提示时机调整功能',
       },
       comment: {
         en: 'Select towers to dodge with knockback immunity.',
         de: 'Wähle welche Türme mit Rückstoß-Immunität genommen werden.',
+        ja: 'ノックバック無効で避ける塔を選択してください',
         cn: '选择防击退覆盖的塔。',
       },
       type: 'select',
@@ -107,6 +111,12 @@ const triggerSet: TriggerSet<Data> = {
           'Erster Turm': 'first',
           'Ersten zwei Türme (empfohlen)': 'two',
           'Alle drei Türme': 'all',
+        },
+        ja: {
+          'なし (コールなし)': 'none',
+          '最初の塔': 'first',
+          '最初の2つ (推奨)': 'two',
+          '全ての塔': 'all',
         },
         cn: {
           '关闭功能': 'none',
@@ -436,6 +446,7 @@ const triggerSet: TriggerSet<Data> = {
         tetheredTo: {
           en: 'Tethered to ${dir} clone',
           de: 'Vrebindung zum ${dir} Klon',
+          ja: '${dir} の分身に繋がれた',
           cn: '连线分身: ${dir}',
         },
       },
@@ -626,11 +637,13 @@ const triggerSet: TriggerSet<Data> = {
         comboGo: {
           en: 'Knockback ${firstDir1}/${firstDir2} => Go ${secondDir}',
           de: 'Rückstoß ${firstDir1}/${firstDir2} => Geh nach ${secondDir}',
+          ja: 'ノックバック ${firstDir1}/${firstDir2} => ${secondDir} へ移動',
           cn: '击退 ${firstDir1}/${firstDir2} => 穿 ${secondDir}',
         },
         comboStay: {
           en: 'Knockback ${firstDir1}/${firstDir2}, Stay ${secondDir}',
           de: 'Rückstoß ${firstDir1}/${firstDir2} => Bleibe im ${secondDir}',
+          ja: 'ノックバック ${firstDir1}/${firstDir2} => ${secondDir} で待機',
           cn: '击退 ${firstDir1}/${firstDir2}, 停 ${secondDir}',
         },
       },
