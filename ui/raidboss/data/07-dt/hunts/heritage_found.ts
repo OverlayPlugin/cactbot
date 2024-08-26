@@ -20,7 +20,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Hunt Heshuala Electrical Overload',
       type: 'StartsUsing',
-      netRegex: { id: '98C1', source: 'Heshuala' },
+      netRegex: { id: '98C1', source: 'Heshuala', capture: false },
       response: Responses.aoe(),
     },
     {
@@ -76,7 +76,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Hunt Urna Magnetron',
       type: 'StartsUsing',
-      netRegex: { id: '98C4', source: 'Urna Variabilis' },
+      netRegex: { id: '98C4', source: 'Urna Variabilis', capture: false },
       response: Responses.aoe(),
     },
     {
@@ -88,7 +88,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Hunt Urna Electrowave',
       type: 'StartsUsing',
-      netRegex: { id: '98CC', source: 'Urna Variabilis' },
+      netRegex: { id: '98CC', source: 'Urna Variabilis', capture: false },
       response: Responses.aoe(),
     },
     {
