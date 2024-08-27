@@ -23,9 +23,11 @@ Options.Triggers.push({
       outputStrings: {
         cardinals: {
           en: '(cardinals later)',
+          cn: '(稍后去正点)',
         },
         intercards: {
           en: '(intercards later)',
+          cn: '(稍后去斜角)',
         },
       },
     },
@@ -105,12 +107,15 @@ Options.Triggers.push({
         out: Outputs.out,
         repel: {
           en: 'Forced knockback',
+          cn: '强制击退',
         },
         attract: {
           en: 'Forced draw-in',
+          cn: '强制吸引',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          cn: '${magnet} => ${dir}',
         },
       },
     },
@@ -134,12 +139,15 @@ Options.Triggers.push({
         in: Outputs.in,
         repel: {
           en: 'Forced knockback',
+          cn: '强制击退',
         },
         attract: {
           en: 'Forced draw-in',
+          cn: '强制吸引',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          cn: '${magnet} => ${dir}',
         },
       },
     },

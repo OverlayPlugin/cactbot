@@ -32,6 +32,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Face away from landing marker',
+          cn: '背对落地点',
         },
       },
     },
@@ -45,6 +46,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Face toward landing marker',
+          cn: '面向落地点',
         },
       },
     },
@@ -56,6 +58,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stack (face away from target)',
+          cn: '分摊 (背对目标)',
         },
       },
     },

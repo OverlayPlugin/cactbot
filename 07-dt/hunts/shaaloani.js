@@ -45,6 +45,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Follow dash (in after)',
+          cn: '跟随冲锋',
         },
       },
     },
@@ -64,15 +65,19 @@ Options.Triggers.push({
       outputStrings: {
         forward: {
           en: 'Forced March: Forward (later)',
+          cn: '(稍后 强制移动: 前)',
         },
         backward: {
           en: 'Forced March: Backward (later)',
+          cn: '(稍后 强制移动: 后)',
         },
         left: {
           en: 'Forced March: Left (later)',
+          cn: '(稍后 强制移动: 左)',
         },
         right: {
           en: 'Forced March: Right (later)',
+          cn: '(稍后 强制移动: 右)',
         },
       },
     },
@@ -90,15 +95,19 @@ Options.Triggers.push({
       outputStrings: {
         forward: {
           en: 'Forced March: Forward',
+          cn: '强制移动: 前',
         },
         backward: {
           en: 'Forced March: Backward',
+          cn: '强制移动: 后',
         },
         left: {
           en: 'Forced March: Left',
+          cn: '强制移动: 左',
         },
         right: {
           en: 'Forced March: Right',
+          cn: '强制移动: 右',
         },
       },
     },
