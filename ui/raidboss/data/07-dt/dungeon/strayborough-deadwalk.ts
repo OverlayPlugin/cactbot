@@ -197,7 +197,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Strayborough Deadwalk Träumerei Malicious Mist',
       type: 'StartsUsing',
       netRegex: { id: '9130', source: 'Träumerei', capture: false },
-      response: Responses.aoe(),
+      response: Responses.bleedAoe(),
     },
     {
       // There are two different Bitter Regret mechanics from adds,
