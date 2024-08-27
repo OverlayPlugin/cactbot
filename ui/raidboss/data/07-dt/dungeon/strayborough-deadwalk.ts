@@ -40,6 +40,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         nightmare: {
           en: 'Avoid nightmare puddles',
+          ko: '악몽 장판 피하기',
         },
       },
     },
@@ -51,6 +52,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         charge: {
           en: 'Avoid charging dolls',
+          ko: '시전중인 인형 피하기',
         },
       },
     },
@@ -62,6 +64,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         exaflares: {
           en: 'Avoid exaflares',
+          ko: '엑사플레어 피하기',
         },
       },
     },
@@ -74,6 +77,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         chasingPuddles: {
           en: 'Chasing puddles on YOU',
+          ko: '따라오는 장판 피하기',
         },
       },
     },
@@ -128,9 +132,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ghostTether: {
           en: 'Stretch tether',
+          ko: '선 늘이기',
         },
         fleshTether: {
           en: 'Become ghost => stretch tether',
+          ko: '유령 변신 => 선 늘이기',
         },
       },
     },
@@ -151,9 +157,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         becomeGhost: {
           en: 'Become a ghost',
+          ko: '유령 변신',
         },
         stayGhost: {
           en: 'Stay a ghost',
+          ko: '유령 유지',
         },
       },
     },
@@ -177,9 +185,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         becomeFlesh: {
           en: 'Clear ghost status',
+          ko: '유령 해제',
         },
         stayFlesh: {
           en: 'Avoid ghost tiles',
+          ko: '유령 장판 피하기',
         },
       },
     },
@@ -217,6 +227,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeLines: {
           en: 'Start mid => Dodge lines',
+          ko: '가운데 => 줄 피하기',
         },
       },
     },

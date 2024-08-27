@@ -61,6 +61,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           triggerType: 'GainsEffect',
           text: {
             en: 'Unstretched tether',
+            ko: '충분히 멀어지지 않음',
           },
         };
       },
