@@ -51,6 +51,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Face away from landing marker',
           de: 'Schau weg von der Ziel-Markierung',
           cn: '背对落地点',
+          ko: '바닥징 뒤돌기',
         },
       },
     },
@@ -66,6 +67,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Face toward landing marker',
           de: 'Schau zur Ziel-Markierung',
           cn: '面向落地点',
+          ko: '바닥징 쳐다보기',
         },
       },
     },
@@ -79,6 +81,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stack (face away from target)',
           de: 'Sammeln (Schau weg vom Ziel)',
           cn: '分摊 (背对目标)',
+          ko: '쉐어 (대상에게서 뒤돌기)',
         },
       },
     },
@@ -126,7 +129,32 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: The Forecaster ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Cat\'s Eye': 'Katzenauge',
+        'Sally the Sweeper': 'Sally (?:der|die|das) Fegerin',
+        'The Forecaster': 'Wetterreporter',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Cat\'s Eye': 'Œil-de-chat',
+        'Sally the Sweeper': 'Sally la balayeuse',
+        'The Forecaster': 'Monsieur météo',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Cat\'s Eye': 'キャッツアイ',
+        'Sally the Sweeper': 'サリー・ザ・スイーパー',
+        'The Forecaster': 'ウェザーリポーター',
+      },
+    },
+  ],
 };
 
 export default triggerSet;

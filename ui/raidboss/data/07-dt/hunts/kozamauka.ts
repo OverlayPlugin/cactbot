@@ -49,6 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Out (then behind)',
           de: 'Raus (danach Hinten)',
           cn: '远离 (然后去背后)',
+          ko: '밖으로 (그리고 뒤로)',
         },
       },
     },
@@ -68,6 +69,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Follow jump (then out => behind)',
           de: 'Sprung folgen (dann Raus => Hinten)',
           cn: '跟随跳跃 (然后远离 => 背后)',
+          ko: '돌진 따라가기 (그리고 밖 => 뒤로)',
         },
       },
     },
@@ -82,6 +84,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Out => Behind',
           de: 'Raus => Hinten',
           cn: '远离 => 背后',
+          ko: '밖 => 뒤로',
         },
       },
     },
@@ -154,7 +157,32 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Ihnuxokiy ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Pkuucha': 'Pkuucha',
+        'The Raintriller': 'Regentriller',
+        'Ihnuxokiy': 'Ihnuxokiy',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Pkuucha': 'Pkuucha',
+        'The Raintriller': 'Trilleur de pluie',
+        'Ihnuxokiy': 'Ihnuxokiy',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Pkuucha': 'プクーチャ',
+        'The Raintriller': 'レイントリラー',
+        'Ihnuxokiy': 'イヌショキー',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
