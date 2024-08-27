@@ -24,10 +24,12 @@ Options.Triggers.push({
         cardinals: {
           en: '(cardinals later)',
           cn: '(稍后去正点)',
+          ko: '(나중에 십자방향)',
         },
         intercards: {
           en: '(intercards later)',
           cn: '(稍后去斜角)',
+          ko: '(나중에 대각선)',
         },
       },
     },
@@ -108,14 +110,17 @@ Options.Triggers.push({
         repel: {
           en: 'Forced knockback',
           cn: '强制击退',
+          ko: '강제 넉백',
         },
         attract: {
           en: 'Forced draw-in',
           cn: '强制吸引',
+          ko: '강제 끌어당김',
         },
         combo: {
           en: '${magnet} => ${dir}',
           cn: '${magnet} => ${dir}',
+          ko: '${magnet} => ${dir}',
         },
       },
     },
@@ -140,14 +145,17 @@ Options.Triggers.push({
         repel: {
           en: 'Forced knockback',
           cn: '强制击退',
+          ko: '강제 넉백',
         },
         attract: {
           en: 'Forced draw-in',
           cn: '强制吸引',
+          ko: '강제 끌어당김',
         },
         combo: {
           en: '${magnet} => ${dir}',
           cn: '${magnet} => ${dir}',
+          ko: '${magnet} => ${dir}',
         },
       },
     },

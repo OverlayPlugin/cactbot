@@ -32,6 +32,7 @@ Options.Triggers.push({
         text: {
           en: 'Out (then behind)',
           cn: '远离 (然后去背后)',
+          ko: '밖으로 (그리고 뒤로)',
         },
       },
     },
@@ -50,6 +51,7 @@ Options.Triggers.push({
         text: {
           en: 'Follow jump (then out => behind)',
           cn: '跟随跳跃 (然后远离 => 背后)',
+          ko: '돌진 따라가기 (그리고 밖 => 뒤로)',
         },
       },
     },
@@ -63,6 +65,7 @@ Options.Triggers.push({
         text: {
           en: 'Out => Behind',
           cn: '远离 => 背后',
+          ko: '밖 => 뒤로',
         },
       },
     },
