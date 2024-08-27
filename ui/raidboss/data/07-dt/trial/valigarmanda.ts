@@ -407,6 +407,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
+        'Calamitous Cry/Calamitous Echo': 'Calamitous Cry/Echo',
         'Strangling Coil/Slithering Strike/Susurrant Breath': 'Middle/Away/Front Corners',
       },
     },
@@ -418,7 +419,6 @@ const triggerSet: TriggerSet<Data> = {
         'Valigarmanda': 'Valigarmanda',
       },
       'replaceText': {
-        'Echo': 'Schrei',
         '\\(AoEs\\)': '(AoEs)',
         '\\(ice phase\\)': '(Eis Phase)',
         '\\(knockback\\)': '(Rückstoß)',
@@ -427,6 +427,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arcane Lightning': 'Geflügelter Blitz',
         'Blighted Bolt': 'Unheilvoller Blitzschlag',
         'Calamitous Cry': 'Unheilvoller Schrei',
+        'Calamitous Echo': 'Unheilvolles Echo',
         'Chilling Cataclysm': 'Gefrorenes Desaster',
         'Disaster Zone': 'Katastrophengebiet',
         'Eruption': 'Eruption',
@@ -456,6 +457,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arcane Lightning': 'Éclairs foudroyants',
         'Blighted Bolt': 'Éclairs de foudre catastrophiques',
         'Calamitous Cry': 'Cri calamiteux',
+        'Calamitous Echo': 'Écho calamiteux',
         'Chilling Cataclysm': 'Désastre glaçant',
         'Disaster Zone': 'Zone de désastre',
         'Eruption': 'Éruption',
@@ -485,6 +487,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arcane Lightning': 'ライトニングボルト',
         'Blighted Bolt': '災厄の落雷',
         'Calamitous Cry': 'カラミティクライ',
+        'Calamitous Echo': 'カラミティエコー',
         'Chilling Cataclysm': 'コールドディザスター',
         'Disaster Zone': 'ディザスターゾーン',
         'Eruption': 'エラプション',
