@@ -1337,11 +1337,13 @@ Options.Triggers.push({
         },
         guns: {
           en: 'Avoid Line',
+          de: 'Weiche den Linien aus',
           ja: 'ビームを避けて',
           cn: '躲避直线',
         },
         wings: {
           en: 'Donut',
+          de: 'Donut',
           ja: 'ドーナツ',
           cn: '月环',
         },
@@ -1379,11 +1381,13 @@ Options.Triggers.push({
         },
         guns: {
           en: 'Avoid Line',
+          de: 'Weiche den Linien aus',
           ja: 'ビームを避けて',
           cn: '躲避直线',
         },
         wings: {
           en: 'Donut',
+          de: 'Donut',
           ja: 'ドーナツ',
           cn: '月环',
         },

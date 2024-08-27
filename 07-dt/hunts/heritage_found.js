@@ -23,11 +23,13 @@ Options.Triggers.push({
       outputStrings: {
         cardinals: {
           en: '(cardinals later)',
+          de: '(später Kardinal)',
           cn: '(稍后去正点)',
           ko: '(나중에 십자방향)',
         },
         intercards: {
           en: '(intercards later)',
+          de: '(später Interkardinal)',
           cn: '(稍后去斜角)',
           ko: '(나중에 대각선)',
         },
@@ -109,16 +111,19 @@ Options.Triggers.push({
         out: Outputs.out,
         repel: {
           en: 'Forced knockback',
+          de: 'Erzwungener Rückstoß',
           cn: '强制击退',
           ko: '강제 넉백',
         },
         attract: {
           en: 'Forced draw-in',
+          de: 'Erzwungenes Rein-Ziehen',
           cn: '强制吸引',
           ko: '강제 끌어당김',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          de: '${magnet} => ${dir}',
           cn: '${magnet} => ${dir}',
           ko: '${magnet} => ${dir}',
         },
@@ -144,16 +149,19 @@ Options.Triggers.push({
         in: Outputs.in,
         repel: {
           en: 'Forced knockback',
+          de: 'Erzwungener Rückstoß',
           cn: '强制击退',
           ko: '강제 넉백',
         },
         attract: {
           en: 'Forced draw-in',
+          de: 'Erzwungenes Rein-Ziehen',
           cn: '强制吸引',
           ko: '강제 끌어당김',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          de: '${magnet} => ${dir}',
           cn: '${magnet} => ${dir}',
           ko: '${magnet} => ${dir}',
         },
