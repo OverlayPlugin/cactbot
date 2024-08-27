@@ -154,31 +154,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Ihnuxokiy ****** //
   ],
-  timelineReplace: [
-    {
-      'locale': 'de',
-      'replaceSync': {
-        'Pkuucha': 'Pkuucha',
-        'The Raintriller': 'Regentriller',
-      },
-    },
-    {
-      'locale': 'fr',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Pkuucha': 'Pkuucha',
-        'The Raintriller': 'Trilleur de pluie',
-      },
-    },
-    {
-      'locale': 'ja',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Pkuucha': 'プクーチャ',
-        'The Raintriller': 'レイントリラー',
-      },
-    },
-  ],
+  timelineReplace: [],
 };
 
 export default triggerSet;

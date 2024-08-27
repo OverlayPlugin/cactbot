@@ -291,32 +291,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Sansheya ****** //
   ],
-  timelineReplace: [
-    {
-      'locale': 'de',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Keheniheyamewi': 'Keheniheyamewi',
-        'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
-      },
-    },
-    {
-      'locale': 'fr',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Keheniheyamewi': 'Keheniheyamewi',
-        'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
-      },
-    },
-    {
-      'locale': 'ja',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Keheniheyamewi': 'ケヘニヘヤメウィ',
-        'Yehehetoaua\'pyo': 'エヘヘトーワポ',
-      },
-    },
-  ],
+  timelineReplace: [],
 };
 
 export default triggerSet;

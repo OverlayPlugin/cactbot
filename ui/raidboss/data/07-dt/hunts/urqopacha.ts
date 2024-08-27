@@ -201,31 +201,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Kirlirger the Abhorrent ****** //
   ],
-  timelineReplace: [
-    {
-      'locale': 'de',
-      'replaceSync': {
-        'Nechuciho': 'Nechuciho',
-        'Queen Hawk': 'Falkenkönigin',
-      },
-    },
-    {
-      'locale': 'fr',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Nechuciho': 'Nechukiho',
-        'Queen Hawk': 'reine des guêpes',
-      },
-    },
-    {
-      'locale': 'ja',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Nechuciho': 'ネチュキホ',
-        'Queen Hawk': 'クイーンホーク',
-      },
-    },
-  ],
+  timelineReplace: [],
 };
 
 export default triggerSet;

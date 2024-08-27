@@ -126,32 +126,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: The Forecaster ****** //
   ],
-  timelineReplace: [
-    {
-      'locale': 'de',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Cat\'s Eye': 'Katzenauge',
-        'Sally the Sweeper': 'Sally (?:der|die|das) Fegerin',
-      },
-    },
-    {
-      'locale': 'fr',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Cat\'s Eye': 'Œil-de-chat',
-        'Sally the Sweeper': 'Sally la balayeuse',
-      },
-    },
-    {
-      'locale': 'ja',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Cat\'s Eye': 'キャッツアイ',
-        'Sally the Sweeper': 'サリー・ザ・スイーパー',
-      },
-    },
-  ],
+  timelineReplace: [],
 };
 
 export default triggerSet;
