@@ -407,7 +407,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
-        'Calamitous Cry/Calamitous Echo': 'Calamitous Cry/Echo',
+        'Calamitous Cry + Calamitous Echo': 'Calamitous Cry + Echo',
+        'Slithering Strike/Strangling Coil': 'Middle/Away',
         'Strangling Coil/Slithering Strike/Susurrant Breath': 'Middle/Away/Front Corners',
       },
     },
