@@ -168,7 +168,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Heshuala': 'Heshuala',
         'Urna Variabilis': 'Urna Variabilis',
-        'Atticus the Primogenitor': 'Atticus d(?:er|ie|as) Primogenitor',
+        'Atticus the Primogenitor': 'Atticus (?:der|die|das) Primogenitor',
       },
     },
     {

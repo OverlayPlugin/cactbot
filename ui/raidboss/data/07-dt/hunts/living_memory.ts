@@ -125,7 +125,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'de',
       'replaceSync': {
         'Cat\'s Eye': 'Katzenauge',
-        'Sally the Sweeper': 'Sally d(?:er|ie|as) Fegerin',
+        'Sally the Sweeper': 'Sally (?:der|die|das) Fegerin',
         'The Forecaster': 'Wetterreporter',
       },
     },

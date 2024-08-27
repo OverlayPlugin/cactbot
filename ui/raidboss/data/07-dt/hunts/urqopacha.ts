@@ -185,7 +185,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Nechuciho': 'Nechuciho',
         'Queen Hawk': 'Falkenkönigin',
-        'Kirlirger the Abhorrent': 'Kirlirger d(?:er|ie|as) Abscheuliche[rs]?',
+        'Kirlirger the Abhorrent': 'Kirlirger (?:der|die|das) Abscheuliche[rs]?',
       },
     },
     {
