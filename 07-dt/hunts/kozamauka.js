@@ -134,5 +134,30 @@ Options.Triggers.push({
     },
     // ****** S-RANK: Ihnuxokiy ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Pkuucha': 'Pkuucha',
+        'The Raintriller': 'Regentriller',
+        'Ihnuxokiy': 'Ihnuxokiy',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Pkuucha': 'Pkuucha',
+        'The Raintriller': 'Trilleur de pluie',
+        'Ihnuxokiy': 'Ihnuxokiy',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Pkuucha': 'プクーチャ',
+        'The Raintriller': 'レイントリラー',
+        'Ihnuxokiy': 'イヌショキー',
+      },
+    },
+  ],
 });

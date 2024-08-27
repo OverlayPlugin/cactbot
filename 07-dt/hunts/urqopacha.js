@@ -174,5 +174,30 @@ Options.Triggers.push({
     },
     // ****** S-RANK: Kirlirger the Abhorrent ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Nechuciho': 'Nechuciho',
+        'Queen Hawk': 'Falkenkönigin',
+        'Kirlirger the Abhorrent': 'Kirlirger (?:der|die|das) Abscheuliche[rs]?',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Nechuciho': 'Nechukiho',
+        'Queen Hawk': 'reine des guêpes',
+        'Kirlirger the Abhorrent': 'Kirlirger l\'abominable',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Nechuciho': 'ネチュキホ',
+        'Queen Hawk': 'クイーンホーク',
+        'Kirlirger the Abhorrent': '厭忌のキーリーゲー',
+      },
+    },
+  ],
 });

@@ -247,5 +247,30 @@ Options.Triggers.push({
     },
     // ****** S-RANK: Sansheya ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Keheniheyamewi': 'Keheniheyamewi',
+        'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
+        'Sansheya': 'Sansheya',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Keheniheyamewi': 'Keheniheyamewi',
+        'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
+        'Sansheya': 'Sansheya',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Keheniheyamewi': 'ケヘニヘヤメウィ',
+        'Yehehetoaua\'pyo': 'エヘヘトーワポ',
+        'Sansheya': 'サンシェヤ',
+      },
+    },
+  ],
 });
