@@ -58,18 +58,22 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Dodge cleaves x4',
+          de: 'Weiche Cleaves aus x4',
           cn: '躲避顺劈 x4',
         },
         behind: {
           en: 'Behind + Left (for 3) => Go Front',
+          de: 'Hinten + Links (für 3) => Geh nach Vorne',
           cn: '后 + 左(3次) => 前',
         },
         right: {
           en: 'Right (for 2) => Left => Front',
+          de: 'Rechts (für 2) => Links => Vorne',
           cn: '右(2次) => 左 => 前',
         },
         front: {
           en: 'Front + Left (stay)',
+          de: 'Vorne + Links (bleib stehen)',
           cn: '前 + 左 (不动)',
         },
       },
@@ -95,6 +99,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         leftFront: {
           en: 'Left => Front',
+          de: 'Links => Vorne',
           cn: '左 => 前',
         },
       },
@@ -123,6 +128,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out + Stay Out',
+          de: 'Raus + Bleib drausen',
           cn: '远离 + 保持远离',
         },
       },
@@ -136,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In + Stay In',
+          de: 'Rein + Bleib drinnen',
           cn: '靠近 + 保持靠近',
         },
       },
@@ -160,18 +167,22 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         forward: {
           en: 'Forced March: Forward',
+          de: 'Geistlenkung: vorwärts',
           cn: '强制移动: 前',
         },
         backward: {
           en: 'Forced March: Backward',
+          de: 'Geistlenkung: rückwärts',
           cn: '强制移动: 后',
         },
         left: {
           en: 'Forced March: Left',
+          de: 'Geistlenkung: links',
           cn: '强制移动: 左',
         },
         right: {
           en: 'Forced March: Right',
+          de: 'Geistlenkung: rechts',
           cn: '强制移动: 右',
         },
       },
@@ -190,7 +201,31 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Kirlirger the Abhorrent ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Nechuciho': 'Nechuciho',
+        'Queen Hawk': 'Falkenkönigin',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Nechuciho': 'Nechukiho',
+        'Queen Hawk': 'reine des guêpes',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Nechuciho': 'ネチュキホ',
+        'Queen Hawk': 'クイーンホーク',
+      },
+    },
+  ],
 };
 
 export default triggerSet;

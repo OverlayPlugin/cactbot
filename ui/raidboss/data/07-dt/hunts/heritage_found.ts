@@ -37,10 +37,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cardinals: {
           en: '(cardinals later)',
+          de: '(später Kardinal)',
           cn: '(稍后去正点)',
         },
         intercards: {
           en: '(intercards later)',
+          de: '(später Interkardinal)',
           cn: '(稍后去斜角)',
         },
       },
@@ -123,14 +125,17 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         repel: {
           en: 'Forced knockback',
+          de: 'Erzwungener Rückstoß',
           cn: '强制击退',
         },
         attract: {
           en: 'Forced draw-in',
+          de: 'Erzwungenes Rein-Ziehen',
           cn: '强制吸引',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          de: '${magnet} => ${dir}',
           cn: '${magnet} => ${dir}',
         },
       },
@@ -156,21 +161,48 @@ const triggerSet: TriggerSet<Data> = {
         in: Outputs.in,
         repel: {
           en: 'Forced knockback',
+          de: 'Erzwungener Rückstoß',
           cn: '强制击退',
         },
         attract: {
           en: 'Forced draw-in',
+          de: 'Erzwungenes Rein-Ziehen',
           cn: '强制吸引',
         },
         combo: {
           en: '${magnet} => ${dir}',
+          de: '${magnet} => ${dir}',
           cn: '${magnet} => ${dir}',
         },
       },
     },
     // ****** S-RANK: Atticus the Primogenitor ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Heshuala': 'Heshuala',
+        'Urna Variabilis': 'Urna Variabilis',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Heshuala': 'heshuala',
+        'Urna Variabilis': 'pod variant',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Heshuala': 'ヘシュワラ',
+        'Urna Variabilis': 'ヴァリアポッド',
+      },
+    },
+  ],
 };
 
 export default triggerSet;

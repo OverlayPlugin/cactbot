@@ -61,6 +61,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           triggerType: 'GainsEffect',
           text: {
             en: 'Unstretched tether',
+            de: 'Verbindung nicht langgezogen',
           },
         };
       },

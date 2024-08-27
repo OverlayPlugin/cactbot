@@ -94,7 +94,32 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Neyoozoteel ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Rrax Yity\'a': 'Rrax Yity\'a',
+        'Starcrier': 'Sternschreier',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Rrax Yity\'a': 'Rrax Yity\'a',
+        'Starcrier': 'furopluminescent',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Rrax Yity\'a': 'ラシュイチャ',
+        'Starcrier': '幻煌鳥',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
