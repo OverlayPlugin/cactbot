@@ -59,18 +59,22 @@ const triggerSet: TriggerSet<Data> = {
         dodge: {
           en: 'Dodge cleaves x4',
           cn: '躲避顺劈 x4',
+          ko: '장판 피하기 x4',
         },
         behind: {
           en: 'Behind + Left (for 3) => Go Front',
           cn: '后 + 左(3次) => 前',
+          ko: '뒤 + 왼쪽 (3번) => 앞으로',
         },
         right: {
           en: 'Right (for 2) => Left => Front',
           cn: '右(2次) => 左 => 前',
+          ko: '오른쪽 (2번) => 왼쪽 => 앞으로',
         },
         front: {
           en: 'Front + Left (stay)',
           cn: '前 + 左 (不动)',
+          ko: '앞으로 + 왼쪽 (그대로)',
         },
       },
     },
@@ -96,6 +100,7 @@ const triggerSet: TriggerSet<Data> = {
         leftFront: {
           en: 'Left => Front',
           cn: '左 => 前',
+          ko: '왼쪽 => 앞',
         },
       },
     },
@@ -124,6 +129,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out + Stay Out',
           cn: '远离 + 保持远离',
+          ko: '밖으로 + 계속 밖에 있기',
         },
       },
     },
@@ -137,6 +143,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'In + Stay In',
           cn: '靠近 + 保持靠近',
+          ko: '안으로 + 계속 안에 있기',
         },
       },
     },
@@ -161,18 +168,22 @@ const triggerSet: TriggerSet<Data> = {
         forward: {
           en: 'Forced March: Forward',
           cn: '强制移动: 前',
+          ko: '강제이동: 앞',
         },
         backward: {
           en: 'Forced March: Backward',
           cn: '强制移动: 后',
+          ko: '강제이동: 뒤',
         },
         left: {
           en: 'Forced March: Left',
           cn: '强制移动: 左',
+          ko: '강제이동: 왼쪽',
         },
         right: {
           en: 'Forced March: Right',
           cn: '强制移动: 右',
+          ko: '강제이동: 오른쪽',
         },
       },
     },

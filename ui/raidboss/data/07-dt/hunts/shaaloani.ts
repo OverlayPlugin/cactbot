@@ -65,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Follow dash (in after)',
           cn: '跟随冲锋',
+          ko: '돌진 따라가기 (그리고 안으로)',
         },
       },
     },
@@ -85,18 +86,22 @@ const triggerSet: TriggerSet<Data> = {
         forward: {
           en: 'Forced March: Forward (later)',
           cn: '(稍后 强制移动: 前)',
+          ko: '강제이동: 앞 (나중에)',
         },
         backward: {
           en: 'Forced March: Backward (later)',
           cn: '(稍后 强制移动: 后)',
+          ko: '강제이동: 뒤 (나중에)',
         },
         left: {
           en: 'Forced March: Left (later)',
           cn: '(稍后 强制移动: 左)',
+          ko: '강제이동: 왼쪽 (나중에)',
         },
         right: {
           en: 'Forced March: Right (later)',
           cn: '(稍后 强制移动: 右)',
+          ko: '강제이동: 오른쪽 (나중에)',
         },
       },
     },
@@ -115,18 +120,22 @@ const triggerSet: TriggerSet<Data> = {
         forward: {
           en: 'Forced March: Forward',
           cn: '强制移动: 前',
+          ko: '강제이동: 앞',
         },
         backward: {
           en: 'Forced March: Backward',
           cn: '强制移动: 后',
+          ko: '강제이동: 뒤',
         },
         left: {
           en: 'Forced March: Left',
           cn: '强制移动: 左',
+          ko: '강제이동: 왼쪽',
         },
         right: {
           en: 'Forced March: Right',
           cn: '强制移动: 右',
+          ko: '강제이동: 오른쪽',
         },
       },
     },

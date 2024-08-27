@@ -50,6 +50,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Face away from landing marker',
           cn: '背对落地点',
+          ko: '바닥징 뒤돌기',
         },
       },
     },
@@ -64,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Face toward landing marker',
           cn: '面向落地点',
+          ko: '바닥징 쳐다보기',
         },
       },
     },
@@ -76,6 +78,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stack (face away from target)',
           cn: '分摊 (背对目标)',
+          ko: '쉐어 (대상에게서 뒤돌기)',
         },
       },
     },

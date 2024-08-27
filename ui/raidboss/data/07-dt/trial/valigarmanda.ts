@@ -182,6 +182,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Be on elevated tile',
+          ko: '공중부양 칸에 있기',
         },
       },
     },
@@ -194,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Be on ground tile - avoid feathers',
+          ko: '지상 칸에 있기 - 깃털 피하기',
         },
       },
     },
@@ -346,6 +348,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge star lines',
+          ko: '8방향 장판 피하기',
         },
       },
     },
@@ -395,6 +398,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait/dodge puddles x3',
+          ko: '장판 유도/피하기 x3',
         },
       },
     },
