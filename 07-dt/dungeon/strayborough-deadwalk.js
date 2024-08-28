@@ -24,6 +24,7 @@ Options.Triggers.push({
         nightmare: {
           en: 'Avoid nightmare puddles',
           de: 'Weiche den Alptraum-Flächen aus',
+          ko: '악몽 장판 피하기',
         },
       },
     },
@@ -36,6 +37,7 @@ Options.Triggers.push({
         charge: {
           en: 'Avoid charging dolls',
           de: 'Weiche den verfolgenden Puppen aus',
+          ko: '돌진하는 인형 피하기',
         },
       },
     },
@@ -48,6 +50,7 @@ Options.Triggers.push({
         exaflares: {
           en: 'Avoid exaflares',
           de: 'Weiche den Exaflares aus',
+          ko: '엑사플레어 피하기',
         },
       },
     },
@@ -61,6 +64,7 @@ Options.Triggers.push({
         chasingPuddles: {
           en: 'Chasing puddles on YOU',
           de: 'Verfolgende Flächen auf DIR',
+          ko: '따라오는 장판 피하기',
         },
       },
     },
@@ -116,10 +120,12 @@ Options.Triggers.push({
         ghostTether: {
           en: 'Stretch tether',
           de: 'Verbindungen langziehen',
+          ko: '선 늘이기',
         },
         fleshTether: {
           en: 'Become ghost => stretch tether',
           de: 'Werde ein Geist => Verbindungen langzeiehen',
+          ko: '유령 변신 => 선 늘이기',
         },
       },
     },
@@ -141,10 +147,12 @@ Options.Triggers.push({
         becomeGhost: {
           en: 'Become a ghost',
           de: 'Werde ein Geist',
+          ko: '유령 변신',
         },
         stayGhost: {
           en: 'Stay a ghost',
           de: 'Bleib ein Geist',
+          ko: '유령 유지',
         },
       },
     },
@@ -169,10 +177,12 @@ Options.Triggers.push({
         becomeFlesh: {
           en: 'Clear ghost status',
           de: 'Reinige Geist Status',
+          ko: '유령 해제',
         },
         stayFlesh: {
           en: 'Avoid ghost tiles',
           de: 'Vermeide Geist-Flächen',
+          ko: '유령 장판 피하기',
         },
       },
     },
@@ -211,6 +221,7 @@ Options.Triggers.push({
         dodgeLines: {
           en: 'Start mid => Dodge lines',
           de: 'Starte Mittig => Weiche Linien aus',
+          ko: '가운데 => 줄 피하기',
         },
       },
     },
