@@ -55,7 +55,6 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid charging dolls',
           de: 'Weiche den verfolgenden Puppen aus',
           ko: '돌진하는 인형 피하기',
-
         },
       },
     },
