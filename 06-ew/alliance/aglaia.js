@@ -220,7 +220,8 @@ Options.Triggers.push({
     {
       id: 'Aglaia Lions Double Immolation',
       type: 'StartsUsing',
-      netRegex: { id: '7177', source: ['Lion of Aglaia', 'Lioness of Aglaia'], capture: false },
+      netRegex: { id: '71D7', source: ['Lion of Aglaia', 'Lioness of Aglaia'], capture: false },
+      // 71D7 = visible cast from both adds, 71D8 = actual damage source
       response: Responses.aoe(),
     },
     {
