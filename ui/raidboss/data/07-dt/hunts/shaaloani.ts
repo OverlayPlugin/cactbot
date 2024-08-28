@@ -64,7 +64,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Follow dash (in after)',
+          de: 'Folge dem Ansturm (danach Rein)',
           cn: '跟随冲锋',
+          ko: '돌진 따라가기 (그리고 안으로)',
         },
       },
     },
@@ -84,19 +86,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         forward: {
           en: 'Forced March: Forward (later)',
+          de: 'Geistlenkung: vorwärts (später)',
           cn: '(稍后 强制移动: 前)',
+          ko: '강제이동: 앞 (나중에)',
         },
         backward: {
           en: 'Forced March: Backward (later)',
+          de: 'Geistlenkung: rückwärts (später)',
           cn: '(稍后 强制移动: 后)',
+          ko: '강제이동: 뒤 (나중에)',
         },
         left: {
           en: 'Forced March: Left (later)',
+          de: 'Geistlenkung: links (später)',
           cn: '(稍后 强制移动: 左)',
+          ko: '강제이동: 왼쪽 (나중에)',
         },
         right: {
           en: 'Forced March: Right (later)',
+          de: 'Geistlenkung: rechts (später)',
           cn: '(稍后 强制移动: 右)',
+          ko: '강제이동: 오른쪽 (나중에)',
         },
       },
     },
@@ -114,19 +124,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         forward: {
           en: 'Forced March: Forward',
+          de: 'Geistlenkung: vorwärts',
           cn: '强制移动: 前',
+          ko: '강제이동: 앞',
         },
         backward: {
           en: 'Forced March: Backward',
+          de: 'Geistlenkung: rückwärts',
           cn: '强制移动: 后',
+          ko: '강제이동: 뒤',
         },
         left: {
           en: 'Forced March: Left',
+          de: 'Geistlenkung: links',
           cn: '强制移动: 左',
+          ko: '강제이동: 왼쪽',
         },
         right: {
           en: 'Forced March: Right',
+          de: 'Geistlenkung: rechts',
           cn: '强制移动: 右',
+          ko: '강제이동: 오른쪽',
         },
       },
     },
@@ -282,7 +300,32 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Sansheya ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Keheniheyamewi': 'Keheniheyamewi',
+        'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
+        'Sansheya': 'Sansheya',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Keheniheyamewi': 'Keheniheyamewi',
+        'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
+        'Sansheya': 'Sansheya',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Keheniheyamewi': 'ケヘニヘヤメウィ',
+        'Yehehetoaua\'pyo': 'エヘヘトーワポ',
+        'Sansheya': 'サンシェヤ',
+      },
+    },
+  ],
 };
 
 export default triggerSet;

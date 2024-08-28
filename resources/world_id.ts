@@ -966,50 +966,6 @@ const data: Worlds = {
     'region': 1,
     'userType': 3,
   },
-  '412': {
-    'dataCenter': {
-      'id': 12,
-      'name': 'Shadow',
-    },
-    'id': 412,
-    'internalName': 'Titania',
-    'name': 'Titania',
-    'region': 1,
-    'userType': 5,
-  },
-  '413': {
-    'dataCenter': {
-      'id': 12,
-      'name': 'Shadow',
-    },
-    'id': 413,
-    'internalName': 'Innocence',
-    'name': 'Innocence',
-    'region': 1,
-    'userType': 5,
-  },
-  '414': {
-    'dataCenter': {
-      'id': 12,
-      'name': 'Shadow',
-    },
-    'id': 414,
-    'internalName': 'Pixie',
-    'name': 'Pixie',
-    'region': 1,
-    'userType': 5,
-  },
-  '415': {
-    'dataCenter': {
-      'id': 12,
-      'name': 'Shadow',
-    },
-    'id': 415,
-    'internalName': 'Tycoon',
-    'name': 'Tycoon',
-    'region': 1,
-    'userType': 5,
-  },
   '3000': {
     'dataCenter': {
       'id': 13,

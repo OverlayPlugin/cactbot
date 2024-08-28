@@ -9365,6 +9365,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 0,
     'name': {
+      'cn': '纵使前路狱火焰毒',
       'de': 'Der Pfad der Flammen',
       'en': 'Memory of Embers',
       'fr': 'Flammes primordiales',

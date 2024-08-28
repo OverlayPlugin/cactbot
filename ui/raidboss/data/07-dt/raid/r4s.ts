@@ -1496,12 +1496,14 @@ const triggerSet: TriggerSet<Data> = {
         },
         guns: {
           en: 'Avoid Line',
+          de: 'Weiche den Linien aus',
           ja: 'ビームを避けて',
           cn: '躲避直线',
           ko: '직선 장판 피하기',
         },
         wings: {
           en: 'Donut',
+          de: 'Donut',
           ja: 'ドーナツ',
           cn: '月环',
           ko: '도넛 장판',
@@ -1545,12 +1547,14 @@ const triggerSet: TriggerSet<Data> = {
         },
         guns: {
           en: 'Avoid Line',
+          de: 'Weiche den Linien aus',
           ja: 'ビームを避けて',
           cn: '躲避直线',
           ko: '직선 장판 피하기',
         },
         wings: {
           en: 'Donut',
+          de: 'Donut',
           ja: 'ドーナツ',
           cn: '月环',
           ko: '도넛 장판',

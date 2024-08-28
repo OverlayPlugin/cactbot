@@ -6,7 +6,7 @@
 # -p 9565:1800 (end of adds)
 # -p 95C2:1872.5 (loop storm->ice)
 # -p 8D41:1872.5 (loop ice->storm)
-# -ii 8D3C 8D3E 8D40 8D59 95C2 8D50 8E09 8D4D 8D4E 8D47 8D5A 8D41 9961 87A2 6854 8D62 8D63 
+# -ii 8D3C 8D3E 8D40 8D59 95C2 8D50 8E09 8D4D 8D4E 8D47 8D5A 8D41 9961 87A2 6854 8D62 8D63
 # -ii 9566 9567 8D65 8D5E 8D45
 # -ic "Feather of Ruin"
 
@@ -71,13 +71,13 @@ hideall "--sync--"
 
 1595.8 label "adds"
 # Mini-loop until adds are dead
-1603.9 "Calamitous Cry/Echo" Ability { id: "8D60", source: "Valigarmanda" }
-1609.9 "Calamitous Cry/Echo" Ability { id: "8D61", source: "Valigarmanda" }
-1615.9 "Calamitous Cry/Echo" Ability { id: "8D61", source: "Valigarmanda" }
-1621.9 "Calamitous Cry/Echo" Ability { id: "8D61", source: "Valigarmanda" }
-1627.9 "Calamitous Cry/Echo" Ability { id: "8D61", source: "Valigarmanda" }
-1633.9 "Calamitous Cry/Echo" Ability { id: "8D61", source: "Valigarmanda" }
-1639.9 "Calamitous Cry/Echo" Ability { id: "8D61", source: "Valigarmanda" } forcejump 1609.9
+1603.9 "Calamitous Cry + Calamitous Echo" Ability { id: "8D60", source: "Valigarmanda" }
+1609.9 "Calamitous Cry + Calamitous Echo" Ability { id: "8D61", source: "Valigarmanda" }
+1615.9 "Calamitous Cry + Calamitous Echo" Ability { id: "8D61", source: "Valigarmanda" }
+1621.9 "Calamitous Cry + Calamitous Echo" Ability { id: "8D61", source: "Valigarmanda" }
+1627.9 "Calamitous Cry + Calamitous Echo" Ability { id: "8D61", source: "Valigarmanda" }
+1633.9 "Calamitous Cry + Calamitous Echo" Ability { id: "8D61", source: "Valigarmanda" }
+1639.9 "Calamitous Cry + Calamitous Echo" Ability { id: "8D61", source: "Valigarmanda" } forcejump 1609.9
 # exit mini-loop
 1800.0 "--sync--" Ability { id: "9565", source: "Flame-kissed Beacon" } window 200,0
 1803.9 "--sync--" Ability { id: "95B3", source: "Valigarmanda" }

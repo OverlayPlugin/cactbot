@@ -58,19 +58,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Dodge cleaves x4',
+          de: 'Weiche Cleaves aus x4',
           cn: '躲避顺劈 x4',
+          ko: '장판 피하기 x4',
         },
         behind: {
           en: 'Behind + Left (for 3) => Go Front',
+          de: 'Hinten + Links (für 3) => Geh nach Vorne',
           cn: '后 + 左(3次) => 前',
+          ko: '뒤 + 왼쪽 (3번) => 앞으로',
         },
         right: {
           en: 'Right (for 2) => Left => Front',
+          de: 'Rechts (für 2) => Links => Vorne',
           cn: '右(2次) => 左 => 前',
+          ko: '오른쪽 (2번) => 왼쪽 => 앞으로',
         },
         front: {
           en: 'Front + Left (stay)',
+          de: 'Vorne + Links (bleib stehen)',
           cn: '前 + 左 (不动)',
+          ko: '앞으로 + 왼쪽 (그대로)',
         },
       },
     },
@@ -95,7 +103,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         leftFront: {
           en: 'Left => Front',
+          de: 'Links => Vorne',
           cn: '左 => 前',
+          ko: '왼쪽 => 앞',
         },
       },
     },
@@ -123,7 +133,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out + Stay Out',
+          de: 'Raus + Bleib drausen',
           cn: '远离 + 保持远离',
+          ko: '밖으로 + 계속 밖에 있기',
         },
       },
     },
@@ -136,7 +148,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In + Stay In',
+          de: 'Rein + Bleib drinnen',
           cn: '靠近 + 保持靠近',
+          ko: '안으로 + 계속 안에 있기',
         },
       },
     },
@@ -160,19 +174,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         forward: {
           en: 'Forced March: Forward',
+          de: 'Geistlenkung: vorwärts',
           cn: '强制移动: 前',
+          ko: '강제이동: 앞',
         },
         backward: {
           en: 'Forced March: Backward',
+          de: 'Geistlenkung: rückwärts',
           cn: '强制移动: 后',
+          ko: '강제이동: 뒤',
         },
         left: {
           en: 'Forced March: Left',
+          de: 'Geistlenkung: links',
           cn: '强制移动: 左',
+          ko: '강제이동: 왼쪽',
         },
         right: {
           en: 'Forced March: Right',
+          de: 'Geistlenkung: rechts',
           cn: '强制移动: 右',
+          ko: '강제이동: 오른쪽',
         },
       },
     },
@@ -190,7 +212,32 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ****** S-RANK: Kirlirger the Abhorrent ****** //
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Nechuciho': 'Nechuciho',
+        'Queen Hawk': 'Falkenkönigin',
+        'Kirlirger the Abhorrent': 'Kirlirger (?:der|die|das) Abscheuliche[rs]?',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Nechuciho': 'Nechukiho',
+        'Queen Hawk': 'reine des guêpes',
+        'Kirlirger the Abhorrent': 'Kirlirger l\'abominable',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Nechuciho': 'ネチュキホ',
+        'Queen Hawk': 'クイーンホーク',
+        'Kirlirger the Abhorrent': '厭忌のキーリーゲー',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
