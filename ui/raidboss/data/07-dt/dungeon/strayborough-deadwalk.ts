@@ -52,7 +52,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         charge: {
           en: 'Avoid charging dolls',
-          ko: '시전중인 인형 피하기',
+          ko: '돌진하는 인형 피하기',
         },
       },
     },

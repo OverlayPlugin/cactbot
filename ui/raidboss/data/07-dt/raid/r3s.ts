@@ -93,7 +93,7 @@ const triggerSet: TriggerSet<Data> = {
         de: 'Brutalo-Bomben Uptime Rückstoß',
         ja: 'ボンバリアンボムのアムレン/堅実 限界タイミング通知',
         cn: '击退塔uptime打法击退提示时机调整功能',
-        ko: '봄바리안 봄 넉백 처리방법 설정',
+        ko: '봄바리안 봄 업타임 넉백 설정',
       },
       comment: {
         en: 'Select towers to dodge with knockback immunity.',
