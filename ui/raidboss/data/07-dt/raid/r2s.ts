@@ -42,6 +42,7 @@ const poisonOutputStrings = {
   defamations: {
     en: 'Defamations',
     de: 'Große AoE auf dir',
+    fr: 'Grosse AoE sur vous',
     ja: '自分に巨大な爆発',
     cn: '大圈点名',
     ko: '광역 대상자',
@@ -49,6 +50,7 @@ const poisonOutputStrings = {
   in: {
     en: 'In (Avoid Defamations)',
     de: 'Mitte (weiche den AoEs aus)',
+    fr: 'Intérieur (évitez les AoE)',
     ja: '中央へ (巨大な爆発を避けて)',
     cn: '去脚下 (远离大圈)',
     ko: '안으로 (광역 피하기)',
@@ -116,6 +118,7 @@ const triggerSet: TriggerSet<Data> = {
         beatOne: {
           en: 'Soak towers - need 2-3 hearts',
           de: 'Nimm Türme - benötigt 2-3 Herzen',
+          fr: 'Prenez les tours - 2-3 cœurs nécessaires',
           ja: '塔を踏む - 2-3個のハートに調整',
           cn: '踩塔 - 踩到2-3颗心',
           ko: '기둥 들어가기 - 하트 2-3개 유지하기',
@@ -123,6 +126,7 @@ const triggerSet: TriggerSet<Data> = {
         beatTwoZeroHearts: {
           en: 'Puddles & Stacks',
           de: 'Flächen + sammeln',
+          fr: 'Puddles + Package',
           ja: '集合捨てと頭割り',
           cn: '集合分摊放圈',
           ko: '장판 피하기 + 쉐어',
@@ -130,6 +134,7 @@ const triggerSet: TriggerSet<Data> = {
         beatTwoOneHearts: {
           en: 'Spreads & Towers',
           de: 'Verteilen + Türme',
+          fr: 'Dispersion + Tours',
           ja: '散開 / 塔踏み',
           cn: '分散 / 踩塔',
           ko: '산개 / 기둥',
@@ -192,6 +197,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidTowers: {
           en: 'Spread -- Avoid Towers',
           de: 'Verteilen -- Vermeide Türme',
+          fr: 'Dispersion -- Évitez les tours',
           ja: '散開 -- 塔は避けて',
           cn: '分散 - 躲开塔',
           ko: '산개 -- 기둥 피하기',
@@ -209,6 +215,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Drop Puddle Outside',
           de: 'Lege Fläche außen ab',
+          fr: 'Déposez le puddle à l\'extérieur',
           ja: '外側に捨てて',
           cn: '在场边放毒圈',
           ko: '바깥쪽에 장판 놓기',
@@ -247,6 +254,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored: Partners',
           de: 'Gespeichert: Partner',
+          fr: 'Enregistré : Partenaires',
           ja: 'あとでペア',
           cn: '存储分摊',
           ko: '나중에 쉐어',
@@ -263,6 +271,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored: Spread',
           de: 'Gespeichert: Verteilen',
+          fr: 'Enregistré : Dispersion',
           ja: 'あとで散開',
           cn: '存储分散',
           ko: '나중에 산개',
@@ -279,6 +288,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored: Partners',
           de: 'Gespeichert: Partner',
+          fr: 'Enregistré : Partenaires',
           ja: 'あとでペア',
           cn: '存储分摊',
           ko: '나중에 쉐어',
@@ -295,6 +305,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored: Spread',
           de: 'Gespeichert: Verteilen',
+          fr: 'Enregistré : Dispersion',
           ja: 'あとで散開',
           cn: '存储分散',
           ko: '나중에 산개',
@@ -320,6 +331,7 @@ const triggerSet: TriggerSet<Data> = {
         middle: {
           en: '(middle after)',
           de: '(danach mitte)',
+          fr: '(milieu après)',
           ja: '(後で内側へ)',
           cn: '(稍后场中)',
           ko: '(나중에 중앙으로)',
@@ -327,6 +339,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: {
           en: '(middle + partners after)',
           de: '(mitte + danach mit partner sammeln)',
+          fr: '(milieu + partenaires après)',
           ja: '(後で内側へ + ペア)',
           cn: '(稍后场中 + 分摊)',
           ko: '(나중에 중앙으로 + 쉐어)',
@@ -334,6 +347,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: '(middle + spread after)',
           de: '(mitte + danach verteilen)',
+          fr: '(milieu + dispersion après)',
           ja: '(後で内側へ + 散開)',
           cn: '(稍后场中 + 分散)',
           ko: '(나중에 중앙으로 + 산개)',
@@ -356,6 +370,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread',
           de: 'Verteilen',
+          fr: 'Dispersion',
           ja: '散開',
           cn: '分散',
           ko: '산개',
@@ -363,6 +378,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: {
           en: 'Partners',
           de: 'Partner',
+          fr: 'Partenaires',
           ja: 'ペア',
           cn: '分摊',
           ko: '쉐어',
@@ -370,6 +386,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${next} + ${mech}',
           de: '${next} + ${mech}',
+          fr: '${next} + ${mech}',
           ja: '${next} + ${mech}',
           cn: '${next} + ${mech}',
           ko: '${next} + ${mech}',
@@ -395,6 +412,7 @@ const triggerSet: TriggerSet<Data> = {
         out: {
           en: '(out after)',
           de: '(danach raus)',
+          fr: '(extérieur après)',
           ja: '(後で外側へ)',
           cn: '(稍后远离)',
           ko: '(나중에 밖으로)',
@@ -402,6 +420,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: {
           en: '(out + partners after)',
           de: '(raus + danach mit partner sammeln)',
+          fr: '(extérieur + partenaires après',
           ja: '(後で外側へ + ペア)',
           cn: '(稍后远离 + 分摊)',
           ko: '(나중에 밖으로 + 쉐어)',
@@ -409,6 +428,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: '(out + spread after)',
           de: '(raus + danach verteilen)',
+          fr: '(extérieur + dispersion après)',
           ja: '(後で外側へ + 散開)',
           cn: '(稍后远离 + 分散)',
           ko: '(나중에 밖으로 + 산개)',
@@ -431,6 +451,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread',
           de: 'Verteilen',
+          fr: 'Dispersion',
           ja: '散開',
           cn: '分散',
           ko: '산개',
@@ -438,6 +459,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: {
           en: 'Partners',
           de: 'Partner',
+          fr: 'Partenaires',
           ja: 'ペア',
           cn: '分摊',
           ko: '쉐어',
@@ -445,6 +467,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${next} + ${mech}',
           de: '${next} + ${mech}',
+          fr: '${next} + ${mech}',
           ja: '${next} + ${mech}',
           cn: '${next} + ${mech}',
           ko: '${next} + ${mech}',
@@ -485,6 +508,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Under Intercards => Out => Cards',
           de: 'Rein Interkardinal => Raus => Kardinal',
+          fr: 'Dessous intercardinal => Extérieur => Cardinal',
           ja: '斜め内側 => 外側 => 十字',
           cn: '内斜角 => 外斜角 => 外正点',
           ko: '보스 아래 대각 => 밖으로 => 십자',
@@ -501,6 +525,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out Cards => Intercards => Under',
           de: 'Raus Kardinal => Interkardinal => Rein',
+          fr: 'Extérieur cardinal => Intercardinal => Dessous',
           ja: '外十字 => 外斜め => 内側',
           cn: '外正点 => 外斜角 => 内斜角',
           ko: '칼끝딜 십자 => 밖으로 => 보스 아래 대각',
@@ -616,6 +641,7 @@ const triggerSet: TriggerSet<Data> = {
         merge: {
           en: 'Merge Soon w/ ${player}',
           de: 'Bald berühren mit ${player}',
+          fr: 'Fusion bientôt avec ${player}',
           ja: '${player} と重なって',
           cn: '准备和 ${player} 撞毒',
           ko: '${player} 과 융합하기',
@@ -650,6 +676,7 @@ const triggerSet: TriggerSet<Data> = {
         merge: {
           en: 'Merge: ${alpha} + ${beta}',
           de: 'Berühren: ${alpha} + ${beta}',
+          fr: 'Fusion : ${alpha} + ${beta}',
           ja: '組み合わせ: ${alpha} + ${beta}',
           cn: '撞毒: ${alpha} + ${beta}',
           ko: '융합: ${alpha} + ${beta}',
@@ -705,10 +732,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Honey B. Lovely': 'Honey B. Lovely',
-        'Sweetheart': 'cœur chaleureux',
+        'Sweetheart': 'Cœur chaleureux',
       },
       'replaceText': {
         'Alarm Pheromones': 'Phéromones d\'alerte',
@@ -741,6 +767,11 @@ const triggerSet: TriggerSet<Data> = {
         'Spread Love': 'Pluie d\'amour',
         'Stinging Slash': 'Taillade tueuse',
         'Tempting Twist': 'Tourbillon tentateur',
+        '\\(cast\\)': '(Incante)',
+        '\\(damage\\)': '(Dommage)',
+        '\\(drop\\)': '(Goutte)',
+        '\\(enrage\\)': '(Enrage)',
+        '\\(stun for': '(Étourdi pour',
       },
     },
     {
