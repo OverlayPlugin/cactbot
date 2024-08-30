@@ -41,6 +41,7 @@ const triggerSet: TriggerSet<Data> = {
         nightmare: {
           en: 'Avoid nightmare puddles',
           de: 'Weiche den Alptraum-Flächen aus',
+          fr: 'Évitez les puddles des cauchemards',
           ko: '악몽 장판 피하기',
         },
       },
@@ -54,6 +55,7 @@ const triggerSet: TriggerSet<Data> = {
         charge: {
           en: 'Avoid charging dolls',
           de: 'Weiche den verfolgenden Puppen aus',
+          fr: 'Évitez les poupées',
           ko: '돌진하는 인형 피하기',
         },
       },
@@ -67,6 +69,7 @@ const triggerSet: TriggerSet<Data> = {
         exaflares: {
           en: 'Avoid exaflares',
           de: 'Weiche den Exaflares aus',
+          fr: 'Évitez les brasiers',
           ko: '엑사플레어 피하기',
         },
       },
@@ -81,6 +84,7 @@ const triggerSet: TriggerSet<Data> = {
         chasingPuddles: {
           en: 'Chasing puddles on YOU',
           de: 'Verfolgende Flächen auf DIR',
+          fr: 'Puddles sur VOUS',
           ko: '따라오는 장판 피하기',
         },
       },
@@ -137,11 +141,13 @@ const triggerSet: TriggerSet<Data> = {
         ghostTether: {
           en: 'Stretch tether',
           de: 'Verbindungen langziehen',
+          fr: 'Étirez le lien',
           ko: '선 늘이기',
         },
         fleshTether: {
           en: 'Become ghost => stretch tether',
           de: 'Werde ein Geist => Verbindungen langzeiehen',
+          fr: 'Transformez-vous en fantôme => Étirez lien',
           ko: '유령 변신 => 선 늘이기',
         },
       },
@@ -164,11 +170,13 @@ const triggerSet: TriggerSet<Data> = {
         becomeGhost: {
           en: 'Become a ghost',
           de: 'Werde ein Geist',
+          fr: 'Transformez-vous en fantôme',
           ko: '유령 변신',
         },
         stayGhost: {
           en: 'Stay a ghost',
           de: 'Bleib ein Geist',
+          fr: 'Restez en fantôme',
           ko: '유령 유지',
         },
       },
@@ -194,11 +202,13 @@ const triggerSet: TriggerSet<Data> = {
         becomeFlesh: {
           en: 'Clear ghost status',
           de: 'Reinige Geist Status',
+          fr: 'Effacez le status de fantôme',
           ko: '유령 해제',
         },
         stayFlesh: {
           en: 'Avoid ghost tiles',
           de: 'Vermeide Geist-Flächen',
+          fr: 'Évitez les marques de fantôme',
           ko: '유령 장판 피하기',
         },
       },
@@ -238,6 +248,7 @@ const triggerSet: TriggerSet<Data> = {
         dodgeLines: {
           en: 'Start mid => Dodge lines',
           de: 'Starte Mittig => Weiche Linien aus',
+          fr: 'Démarrez au milieu => Évitez les lignes',
           ko: '가운데 => 줄 피하기',
         },
       },
@@ -320,17 +331,22 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'His Royal Headness Leonogg I': 'Sa Cabochesté Boubouille Ier',
-        'Jack-in-the-Pot': 'diablothé',
-        'Noble Noggin': 'bonne bouille',
-        'Spectral Samovar': 'théière spectrale',
-        'Stray Geist': 'fantôme errant',
-        'Stray Phantagenitrix': 'maman fantôme errante',
+        'Jack-in-the-Pot': 'Diablothé',
+        'Noble Noggin': 'Bonne bouille',
+        'Spectral Samovar': 'Théière spectrale',
+        'Stray Geist': 'Fantôme errant',
+        'Stray Phantagenitrix': 'Maman fantôme errante',
         'Träumerei': 'Träumerei',
       },
       'replaceText': {
+        '\\(cast\\)': '(Incante)',
+        '\\(lines\\)': '(Lignes)',
+        '\\(middle/sides\\)': '(Milieu/Côtés)',
+        '\\(plonk\\)': '(Tombe)',
+        '\\(sides\\)': '(Côtés)',
+        '\\(solid lines\\)': '(Lignes solides)',
         'Bitter Regret': 'Souvenirs amers',
         'Evil Scheme': 'Plan machiavélique',
         'Falling Nightmare': 'Chute cauchemardesque',

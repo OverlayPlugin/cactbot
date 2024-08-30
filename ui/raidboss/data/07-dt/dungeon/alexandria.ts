@@ -52,6 +52,7 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Avoid',
           de: 'Weiche aus',
+          fr: 'Évitez',
           ko: '피하기',
         },
         in: Outputs.in,
@@ -77,6 +78,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${calls}',
           de: '${calls}',
+          fr: '${calls}',
           ko: '${calls}',
         },
         separator: {
@@ -97,6 +99,7 @@ const triggerSet: TriggerSet<Data> = {
         spreadDontStack: {
           en: 'Cleave -- Don\'t stack!',
           de: 'Cleave -- Verteilen!',
+          fr: 'Cleave -- Dispersion !',
           ko: '광역 탱버 -- 쉐어 맞지 말기',
         },
       },
@@ -137,6 +140,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidLightning: {
           en: 'Out of lightning triangle',
           de: 'Raus aus dem Blitz-Dreieck',
+          fr: 'Éloignez-vous du triangle de foudre',
           ko: '삼각형 밖으로',
         },
       },
@@ -151,6 +155,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidLasers: {
           en: 'Avoid Wall Lasers',
           de: 'Vermeide Wand-Laser',
+          fr: 'Évitez les lasers des murs',
           ko: '벽 레이저 피하기',
         },
       },
@@ -222,6 +227,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidHand: {
           en: 'Avoid hand laser',
           de: 'Weiche den Hand-Laser aus',
+          fr: 'Évitez le laser de la main',
           ko: '손이 쏘는 레이저 피하기',
         },
       },
@@ -236,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
         underElimbit: {
           en: 'Get under Elimbit',
           de: 'Geh unter Eliminator',
+          fr: 'Allez sous Annihilation',
           ko: '비트 밑으로',
         },
       },
@@ -292,6 +299,7 @@ const triggerSet: TriggerSet<Data> = {
         dodgeLasers: {
           en: 'Dodge Multiple Lasers',
           de: 'Weiche den Lasern aus',
+          fr: 'Esquivez les lasers multiples',
           ko: '다중 레이저 피하기',
         },
       },
@@ -353,13 +361,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Amalgam': 'Amalgame Y',
         'Antivirus X': 'Anti-virus X',
         'Eliminator': 'Annihilation',
-        'Interferon C': 'programme anti-intrusion C',
-        'Interferon R': 'programme anti-intrusion R',
+        'Interferon C': 'Programme anti-intrusion C',
+        'Interferon R': 'Programme anti-intrusion R',
       },
       'replaceText': {
         'Amalgamight': 'Ardeur amalgamée',
@@ -391,6 +398,11 @@ const triggerSet: TriggerSet<Data> = {
         'Terminate': 'Terminaison',
         'Ternary Charge': 'Charge ternaire',
         'Voltburst': 'Éclat d\'éclair',
+        '\\(corners\\)': '(Coins)',
+        '\\(front\\)': '(Devant)',
+        '\\(lasers\\)': '(Lasers)',
+        '\\(sides\\)': '(Côtés)',
+        '\\(triangle\\)': '(Triangle)',
       },
     },
     {
