@@ -246,19 +246,19 @@ const triggerSet: TriggerSet<Data> = {
     // The cast id does not otherwise indicate the sequence or even the # of cleaves (3 or 6).
 
     // When performing 3 cleaves, cleaves are never repeated (e.g., Atticus will always cleave
-    // left, right, or front, in any order). A 6-cleave combo is essentially 2 sets of 3 cleaves.
+    // left, right, and front, in any order). A 6-cleave combo is essentially 2 sets of 3 cleaves.
     // The first set will cleave all three directions, as will the second set.
     // The sequence of cleaves in the second set has no correlation to the first set.
 
     // At the start of the encoounter, Atticus will perform 3 cleaves. It will then use Brutality
-    // (giving itself the Twisted Tongue buff that speeds up aall future NpcYell lines), followed
+    // (giving itself the Twisted Tongue buff that speeds up all future NpcYell lines), followed
     // by 3 more cleaves. Next, it will perform a 6-cleave combo. From that point on, Atticus can
-    // perform either 3 or 6 cleave sets, with no dialog or abilities (other than the number of
-    // `NpcYell` lines) to telegraph whether it will be 3 or 6 cleaves.
+    // perform either 3- or 6-cleave sets, with no dialog or abilities (other than the number of
+    // `NpcYell` lines) to telegraph whether it will use 3 or 6 cleaves.
 
     // The `NpcYell` ids range from `41EA`-`4207` (`4208`-`420A` are each used once as boss dialog,
     // but are not reused). Many of these rows have duplicative text, but the `Unknown2` property
-    // of each row corresponds to which head will say the line: 18 = left, 25 = middle, 19 = right.
+    // on each row corresponds to which head will say the line: 18 = left, 25 = middle, 19 = right.
     // See, e.g., https://beta.xivapi.com/api/1/sheet/NpcYell/16874.
     {
       id: 'Hunt Atticus Breath Sequence Collect',
