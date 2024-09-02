@@ -5,8 +5,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// TODO: Add triggers for Sansheya (S-Rank)
-
 type ForcedMarch = 'forward' | 'backward' | 'left' | 'right';
 const effectIdToForcedMarchDir: { [id: string]: ForcedMarch } = {
   871: 'forward', // Forward March
@@ -298,7 +296,115 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: yeheheOutputStrings,
     },
+
     // ****** S-RANK: Sansheya ****** //
+    {
+      id: 'Hunt Sansheya Veil of Heat',
+      type: 'StartsUsing',
+      netRegex: { id: '9973', source: 'Sansheya', capture: false },
+      response: Responses.getOut(),
+    },
+    {
+      id: 'Hunt Sansheya Halo of Heat',
+      type: 'StartsUsing',
+      netRegex: { id: '9974', source: 'Sansheya', capture: false },
+      response: Responses.getIn(),
+    },
+    {
+      id: 'Hunt Sansheya Fire\'s Domain',
+      type: 'StartsUsing',
+      netRegex: { id: '9975', source: 'Sansheya', capture: false },
+      infoText: (_data, _matches, output) => output.avoid!(),
+      outputStrings: {
+        avoid: {
+          en: 'Avoid Tethered Cleave',
+        },
+      },
+    },
+    {
+      id: 'Hunt Sansheya Twinscorch Left',
+      type: 'StartsUsing',
+      netRegex: { id: '9AB1', source: 'Sansheya', capture: false },
+      durationSeconds: 6.7,
+      response: Responses.goRightThenLeft('alert'),
+    },
+    {
+      id: 'Hunt Sansheya Twinscorch Right',
+      type: 'StartsUsing',
+      netRegex: { id: '9AB2', source: 'Sansheya', capture: false },
+      durationSeconds: 6.7,
+      response: Responses.goLeftThenRight('alert'),
+    },
+    {
+      id: 'Hunt Sansheya Captive Bolt',
+      type: 'StartsUsing',
+      netRegex: { id: '9980', source: 'Sansheya' },
+      response: Responses.stackMarkerOn(),
+    },
+    {
+      id: 'Hunt Sansheya Culling Blade',
+      type: 'StartsUsing',
+      netRegex: { id: '997F', source: 'Sansheya', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Hunt Sansheya Pyre of Rebirth',
+      type: 'GainsEffect',
+      // 102C: Boiling (18s) - applies 3s Pyretic debuff on expiration
+      netRegex: { effectId: '102C', source: 'Sansheya' },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 3,
+      durationSeconds: 6,
+      response: Responses.stopMoving(),
+    },
+    {
+      id: 'Hunt Sansheya Twinscorched Halo Left',
+      type: 'StartsUsing',
+      netRegex: { id: '9979', source: 'Sansheya', capture: false },
+      durationSeconds: 7.3,
+      alertText: (_data, _matches, output) => output.haloLeft!(),
+      outputStrings: {
+        haloLeft: {
+          en: 'Right => Left + In',
+        },
+      },
+    },
+    {
+      id: 'Hunt Sansheya Twinscorched Halo Right',
+      type: 'StartsUsing',
+      netRegex: { id: '997B', source: 'Sansheya', capture: false },
+      durationSeconds: 7.3,
+      alertText: (_data, _matches, output) => output.haloRight!(),
+      outputStrings: {
+        haloRight: {
+          en: 'Left => Right + In',
+        },
+      },
+    },
+    {
+      id: 'Hunt Sansheya Twinscorched Veil Left',
+      type: 'StartsUsing',
+      netRegex: { id: '997A', source: 'Sansheya', capture: false },
+      durationSeconds: 7.3,
+      alertText: (_data, _matches, output) => output.veilLeft!(),
+      outputStrings: {
+        veilLeft: {
+          en: 'Right => Left + Out',
+        },
+      },
+    },
+    {
+      id: 'Hunt Sansheya Twinscorched Veil Right',
+      type: 'StartsUsing',
+      netRegex: { id: '997C', source: 'Sansheya', capture: false },
+      durationSeconds: 7.3,
+      alertText: (_data, _matches, output) => output.veilRight!(),
+      outputStrings: {
+        veilRight: {
+          en: 'Left => Right + Out',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
