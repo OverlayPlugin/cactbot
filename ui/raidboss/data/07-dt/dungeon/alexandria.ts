@@ -41,6 +41,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.goFront(),
     },
     {
+      // Interferon R is 12842, Interferon C is 12843
       id: 'Alexandria AntivirusX Interferon Collect',
       type: 'AddedCombatant',
       netRegex: { npcNameId: ['12842', '12843'] },
