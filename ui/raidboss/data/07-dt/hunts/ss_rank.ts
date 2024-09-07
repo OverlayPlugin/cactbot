@@ -29,7 +29,12 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Hunt Arch Aethereater Aetherodynamics',
       type: 'StartsUsing',
-      netRegex: { id: '9B9F', source: 'Arch Aethereater', capture: false },
+      // Not clear why there are four ids that can be used -- might be connected to the Soulless Stream variants?
+      netRegex: {
+        id: ['9A57', '9A58', '9B9F', '9BA0'],
+        source: 'Arch Aethereater',
+        capture: false,
+      },
       response: Responses.aoe(),
     },
     {
@@ -45,12 +50,15 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 3, // these are fast and they happen back to back without much of a telegraph
       response: Responses.awayFromFront(),
     },
+    // There's some weirdness in the logs where the heat/cold debuffs may be reapplied.
+    // Total duration doesn't change, but suppress just for safety.
     {
       id: 'Hunt Arch Aethereater Heatstroke',
       type: 'GainsEffect',
       netRegex: { effectId: '102D' },
       condition: Conditions.targetIsYou(),
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 3,
+      suppressSeconds: (_data, matches) => parseFloat(matches.duration),
       response: Responses.stopMoving(),
     },
     {
@@ -59,6 +67,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: '102E' },
       condition: Conditions.targetIsYou(),
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 3,
+      suppressSeconds: (_data, matches) => parseFloat(matches.duration),
       infoText: (_data, _matches, output) => output.frozen!(),
       outputStrings: {
         frozen: {
