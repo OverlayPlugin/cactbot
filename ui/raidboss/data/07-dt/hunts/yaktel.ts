@@ -4,7 +4,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// TODO: Add triggers for Neyoozoteel (S-Rank)
 // TODO: Rrax Triplicate Reflex - add individual side calls (or a swap call when sides change?)
 
 type WingbladeSafe = 'left' | 'right';
@@ -92,7 +91,62 @@ const triggerSet: TriggerSet<Data> = {
         next: Outputs.next,
       },
     },
+
     // ****** S-RANK: Neyoozoteel ****** //
+    {
+      id: 'Hunt Neyoozoteel Noxious Sap',
+      type: 'StartsUsing',
+      netRegex: { id: '91BC', source: 'Neyoozoteel', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Hunt Neyoozoteel Cocopult',
+      type: 'StartsUsing',
+      netRegex: { id: '91BB', source: 'Neyoozoteel', capture: false },
+      infoText: (_data, _matches, output) => output.stackThenBehind!(),
+      outputStrings: {
+        stackThenBehind: {
+          en: 'Stack => Away From Front',
+        },
+      },
+    },
+    // Whirling Omen applies three directional buffs that are consumed cumulatively in order
+    // (e.g. Left -> Rear actually means cleaves will be Left -> Right).
+    // There are 4 cast ids, each with a fixed set of debuffs, so we only need the id to determine
+    // the overall safe spot. These triggers use a long duration, as some casts will be followed by
+    // F64 (Delayed Nerotoxicity), which lock the player in place for the cleave sequence.
+    {
+      id: 'Hunt Neyoozoteel Whirling Omen Front',
+      type: 'Ability',
+      // 9200: Left -> Back -> Right
+      netRegex: { id: '9200', source: 'Neyoozoteel', capture: false },
+      durationSeconds: 19,
+      response: Responses.goFront(),
+    },
+    {
+      id: 'Hunt Neyoozoteel Whirling Omen Right',
+      type: 'Ability',
+      // 9200: Back -> Right -> Right
+      netRegex: { id: '9201', source: 'Neyoozoteel', capture: false },
+      durationSeconds: 19,
+      response: Responses.goRight(),
+    },
+    {
+      id: 'Hunt Neyoozoteel Whirling Omen Left',
+      type: 'Ability',
+      // 9202: Right -> Left -> Back
+      netRegex: { id: '9202', source: 'Neyoozoteel', capture: false },
+      durationSeconds: 19,
+      response: Responses.goLeft(),
+    },
+    {
+      id: 'Hunt Neyoozoteel Whirling Omen Back',
+      type: 'Ability',
+      // 9203: Left -> Back -> Left
+      netRegex: { id: '9203', source: 'Neyoozoteel', capture: false },
+      durationSeconds: 19,
+      response: Responses.getBehind(),
+    },
   ],
   timelineReplace: [
     {
