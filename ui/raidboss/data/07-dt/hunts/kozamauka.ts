@@ -240,6 +240,7 @@ const triggerSet: TriggerSet<Data> = {
         const leftRight = output[data.leftRightFace ?? 'unknown']!();
         return output.combo!({ leftRight: leftRight });
       },
+      run: (data) => delete data.leftRightFace,
       outputStrings: {
         combo: {
           en: 'Forced March: ${leftRight}',
