@@ -318,6 +318,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Avoid Tethered Cleave',
+          de: 'Vermeide Verbundene-Kegelangriff',
         },
       },
     },
@@ -366,6 +367,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         haloLeft: {
           en: 'Right => Left + In',
+          de: 'Rechts => Links + Rein',
         },
       },
     },
@@ -378,6 +380,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         haloRight: {
           en: 'Left => Right + In',
+          de: 'Links => Rechts + Rein',
         },
       },
     },
@@ -390,6 +393,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         veilLeft: {
           en: 'Right => Left + Out',
+          de: 'Rechts => Links + Raus',
         },
       },
     },
@@ -402,6 +406,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         veilRight: {
           en: 'Left => Right + Out',
+          de: 'Links => Rechts + Raus',
         },
       },
     },
