@@ -188,7 +188,7 @@ const triggerSet: TriggerSet<Data> = {
     // during that time.
     //
     // The safest way to handle this is probably to call the initial Forward/Backward debuff
-    // with a "(then x)" to indicate that the Left/Right debuff will follow.  As soon as th
+    // with a "(then x)" to indicate that the Left/Right debuff will follow.  As soon as the
     // Forward/Backward Forced March begins, we can then fire the Left/Right Forced March reminder.
     //
     // TODO: Countdowns here would be really useful...
@@ -215,7 +215,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         combo: {
-          en: 'Forced March: ${foreBack} (then ${leftRight})',
+          en: 'Forced March: ${foreBack} => ${leftRight}',
         },
         forward: {
           en: 'Forward',
