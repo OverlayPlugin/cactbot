@@ -64,6 +64,7 @@ Options.Triggers.push({
       outputStrings: {
         frozen: {
           en: 'Frozen soon',
+          de: 'Bald einfrieren',
         },
       },
     },
@@ -88,6 +89,7 @@ Options.Triggers.push({
       outputStrings: {
         iceLeft: {
           en: 'Right => Get Under',
+          de: 'Rechts => Geh unter den Gegner',
         },
       },
     },
@@ -100,6 +102,7 @@ Options.Triggers.push({
       outputStrings: {
         iceRight: {
           en: 'Left => Get Under',
+          de: 'Links => Geh unter den Gegner',
         },
       },
     },
@@ -112,6 +115,7 @@ Options.Triggers.push({
       outputStrings: {
         fireRight: {
           en: 'Left => Out',
+          de: 'Links => Raus',
         },
       },
     },
@@ -124,7 +128,28 @@ Options.Triggers.push({
       outputStrings: {
         fireLeft: {
           en: 'Right => Out',
+          de: 'Rechts => Raus',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Arch Aethereater': 'Herr der Kristallisation',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Arch Aethereater': 'seigneur des cristallisateurs',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Arch Aethereater': 'ロード・オブ・クリスタライザー',
       },
     },
   ],

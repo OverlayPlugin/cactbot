@@ -284,6 +284,7 @@ Options.Triggers.push({
       outputStrings: {
         avoid: {
           en: 'Avoid Tethered Cleave',
+          de: 'Vermeide Verbundene-Kegelangriff',
         },
       },
     },
@@ -332,6 +333,7 @@ Options.Triggers.push({
       outputStrings: {
         haloLeft: {
           en: 'Right => Left + In',
+          de: 'Rechts => Links + Rein',
         },
       },
     },
@@ -344,6 +346,7 @@ Options.Triggers.push({
       outputStrings: {
         haloRight: {
           en: 'Left => Right + In',
+          de: 'Links => Rechts + Rein',
         },
       },
     },
@@ -356,6 +359,7 @@ Options.Triggers.push({
       outputStrings: {
         veilLeft: {
           en: 'Right => Left + Out',
+          de: 'Rechts => Links + Raus',
         },
       },
     },
@@ -368,6 +372,7 @@ Options.Triggers.push({
       outputStrings: {
         veilRight: {
           en: 'Left => Right + Out',
+          de: 'Links => Rechts + Raus',
         },
       },
     },
