@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.32.8",
-  "releaseSummary": "more Savage, Strayborough Deadwalk, Worqor Lar Dor normal, A-rank Hunts, more i18n",
-  "releaseInDraft": "true",
+  "version": "0.32.9",
+  "releaseSummary": "S-Rank hunts, Alexandria i18n fix, more i18n translations",
+  "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",
