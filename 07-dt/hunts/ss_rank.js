@@ -65,6 +65,7 @@ Options.Triggers.push({
         frozen: {
           en: 'Frozen soon',
           de: 'Bald einfrieren',
+          fr: 'Gelé bientôt',
         },
       },
     },
@@ -90,6 +91,7 @@ Options.Triggers.push({
         iceLeft: {
           en: 'Right => Get Under',
           de: 'Rechts => Geh unter den Gegner',
+          fr: 'Droite => Allez dessous',
         },
       },
     },
@@ -103,6 +105,7 @@ Options.Triggers.push({
         iceRight: {
           en: 'Left => Get Under',
           de: 'Links => Geh unter den Gegner',
+          fr: 'Gauche => Allez dessous',
         },
       },
     },
@@ -116,6 +119,7 @@ Options.Triggers.push({
         fireRight: {
           en: 'Left => Out',
           de: 'Links => Raus',
+          fr: 'Droite => Extérieur',
         },
       },
     },
@@ -129,6 +133,7 @@ Options.Triggers.push({
         fireLeft: {
           en: 'Right => Out',
           de: 'Rechts => Raus',
+          fr: 'Gauche => Extérieur',
         },
       },
     },
@@ -143,7 +148,7 @@ Options.Triggers.push({
     {
       'locale': 'fr',
       'replaceSync': {
-        'Arch Aethereater': 'seigneur des cristallisateurs',
+        'Arch Aethereater': 'Seigneur des cristallisateurs',
       },
     },
     {

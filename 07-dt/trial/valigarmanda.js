@@ -159,6 +159,7 @@ Options.Triggers.push({
         text: {
           en: 'Be on elevated tile',
           de: 'Sei auf einer schwebenden Fläche',
+          fr: 'Restez sur une tuile surélevée',
           ko: '공중부양 칸에 있기',
         },
       },
@@ -173,6 +174,7 @@ Options.Triggers.push({
         text: {
           en: 'Be on ground tile - avoid feathers',
           de: 'Sei auf einer Boden-Fläche - vermeide Federn',
+          fr: 'Restez sur une tuile au sol - Évitez les plumes',
           ko: '지상 칸에 있기 - 깃털 피하기',
         },
       },
@@ -326,6 +328,7 @@ Options.Triggers.push({
         text: {
           en: 'Dodge star lines',
           de: 'Wiche Sternen-Linien aus',
+          fr: 'Esquivez les lignes depuis les étoiles',
           ko: '8방향 장판 피하기',
         },
       },
@@ -377,6 +380,7 @@ Options.Triggers.push({
         text: {
           en: 'Bait/dodge puddles x3',
           de: 'Köder und weiche Flächen aus x3',
+          fr: 'Déposez/Esquivez les puddles x3',
           ko: '장판 유도/피하기 x3',
         },
       },
@@ -427,13 +431,17 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sphere': 'sphère arcanique',
         'Flame-kissed Beacon': 'pylône de feu',
         'Valigarmanda': 'Valigarmanda',
       },
       'replaceText': {
+        '\\(AoEs\\)': '(AoEs)',
+        '\\(ice phase\\)': '(Phase de glace)',
+        '\\(knockback\\)': '(Poussée)',
+        '\\(storm phase\\)': '(Phase d\'orage)',
+        '\\(tower\\)': '(Tour)',
         'Arcane Lightning': 'Éclairs foudroyants',
         'Blighted Bolt': 'Éclairs de foudre catastrophiques',
         'Calamitous Cry': 'Cri calamiteux',

@@ -110,11 +110,13 @@ Options.Triggers.push({
         swSeStay: {
           en: '${dir1} ${sep} ${dir2} (Stay)',
           de: '${dir1} ${sep} ${dir2} (bleib Stehen)',
+          fr: '${dir1} ${sep} ${dir2} (Restez)',
           ko: '${dir1} ${sep} ${dir2} (그대로)',
         },
         separator: {
           en: ' => ',
           de: ' => ',
+          fr: ' => ',
           ja: ' => ',
           cn: ' => ',
           ko: ' => ',
@@ -122,6 +124,7 @@ Options.Triggers.push({
         combo: {
           en: '${dirs}',
           de: '${dirs}',
+          fr: '${dirs}',
           ja: '${dirs}',
           cn: '${dirs}',
           ko: '${dirs}',

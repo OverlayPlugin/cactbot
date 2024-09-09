@@ -65,6 +65,7 @@ Options.Triggers.push({
         separator: {
           en: ' => ',
           de: ' => ',
+          fr: ' => ',
           ko: ' => ',
         },
       },
