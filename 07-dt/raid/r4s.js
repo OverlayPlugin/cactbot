@@ -720,7 +720,7 @@ Options.Triggers.push({
       outputStrings: {
         spread: {
           en: 'Spread (${stacks} stacks)',
-          de: 'Verteilen (${stacks} sammeln)',
+          de: 'Verteilen (${stacks} Ladungen)',
           ja: '散開 (${stacks} 回のほう)',
           cn: '分散 (${stacks} 层)',
           ko: '산개 (${stacks} 스택)',
@@ -763,7 +763,7 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         stacks: {
           en: '(${stacks} stacks after)',
-          de: '(${stacks} danach sammeln)',
+          de: '(danach ${stacks} Ladungen)',
           ja: '(${stacks} 回のほう)',
           cn: '(${stacks} 层雷)',
           ko: '(나중에 ${stacks} 스택)',
