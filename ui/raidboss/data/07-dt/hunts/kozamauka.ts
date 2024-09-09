@@ -1,11 +1,10 @@
+import Conditions from '../../../../../resources/conditions';
 import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
-
-// TODO: Add triggers for Ihnuxokiy (S-Rank)
 
 type DoReMiseryAbility = 'out' | 'in' | 'behind';
 const doReMiseryNpcYellMap: { [id: string]: DoReMiseryAbility[] } = {
@@ -29,6 +28,8 @@ const doReMiseryOutputs = {
 
 export interface Data extends RaidbossData {
   nextDoReMisery: DoReMiseryAbility[];
+  nextAetherstock?: 'out' | 'in';
+  leftRightFace?: 'left' | 'right';
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -155,7 +156,121 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.nextDoReMisery = [],
       outputStrings: doReMiseryOutputs,
     },
+
     // ****** S-RANK: Ihnuxokiy ****** //
+    {
+      id: 'Hunt Ihnuxokiy Abyssal Smog Initial',
+      type: 'StartsUsing',
+      netRegex: { id: '9B5D', source: 'Ihnuxokiy', capture: false },
+      durationSeconds: 8,
+      response: Responses.getBehind(),
+    },
+    {
+      id: 'Hunt Ihnuxokiy Aetherstock Out Collect',
+      type: 'Ability',
+      netRegex: { id: '9B62', source: 'Ihnuxokiy', capture: false },
+      run: (data) => data.nextAetherstock = 'out',
+    },
+    {
+      id: 'Hunt Ihnuxokiy Aetherstock In Collect',
+      type: 'Ability',
+      netRegex: { id: '9B63', source: 'Ihnuxokiy', capture: false },
+      run: (data) => data.nextAetherstock = 'in',
+    },
+    // Ihnuxokiy applies an 8s Forward March/About Face debuff & 12s Left/Right Face debuff.
+    // On expiration, each then converts to a 3s Forced March.
+    // The Abyssal Smog frontal cleave snapshots 1 second after the first Forced March has expired,
+    // just as the Left/Right Face debuff is converting to a Forced March.
+    // The stored Aethersock snapshots as the Left/Right Face Forced March debuff expires.
+    //
+    // Because there is a 1s gap between the end of the Forward/Backward Forced March
+    // and the start of the Left/Right Forced March, players may change their position/facing
+    // during that time.
+    //
+    // The safest way to handle this is probably to call the initial Forward/Backward debuff
+    // with a "(then x)" to indicate that the Left/Right debuff will follow.  As soon as the
+    // Forward/Backward Forced March begins, we can then fire the Left/Right Forced March reminder.
+    //
+    // TODO: Countdowns here would be really useful...
+    {
+      id: 'Hunt Ihnuxokiy Left/Right Face Collect',
+      type: 'GainsEffect',
+      // 873: Left Face, 874: Right Face
+      netRegex: { effectId: ['873', '874'] },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => data.leftRightFace = matches.effectId === '873' ? 'left' : 'right',
+    },
+    {
+      id: 'Hunt Ihnuxokiy Forced March Forward/Backward',
+      type: 'GainsEffect',
+      // 871: Forward March, 872: About Face
+      netRegex: { effectId: ['871', '872'] },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 0.2, // let Left/Right Face Collect run first
+      durationSeconds: (_data, matches) => parseInt(matches.duration) - 0.2,
+      infoText: (data, matches, output) => {
+        const foreBack = matches.effectId === '871' ? output.forward!() : output.backward!();
+        const leftRight = output[data.leftRightFace ?? 'unknown']!();
+        return output.combo!({ foreBack: foreBack, leftRight: leftRight });
+      },
+      outputStrings: {
+        combo: {
+          en: 'Forced March: ${foreBack} => ${leftRight}',
+        },
+        forward: {
+          en: 'Forward',
+        },
+        backward: {
+          en: 'Backward',
+        },
+        left: Outputs.left,
+        right: Outputs.right,
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'Hunt Ihnuxokiy Forced March Left/Right',
+      type: 'GainsEffect',
+      // 873: Left Face, 874: Right Face
+      netRegex: { effectId: ['873', '874'] },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseInt(matches.duration) - 4,
+      durationSeconds: 4,
+      infoText: (data, _matches, output) => {
+        const leftRight = output[data.leftRightFace ?? 'unknown']!();
+        return output.combo!({ leftRight: leftRight });
+      },
+      run: (data) => delete data.leftRightFace,
+      outputStrings: {
+        combo: {
+          en: 'Forced March: ${leftRight}',
+        },
+        left: Outputs.left,
+        right: Outputs.right,
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'Hunt Ihnuxokiy Abyssal Smog Combo',
+      type: 'StartsUsing',
+      netRegex: { id: '9B94', source: 'Ihnuxokiy', capture: false },
+      delaySeconds: 2, // avoid collision with first Forced March call
+      durationSeconds: 10.5,
+      alertText: (data, _matches, output) => {
+        const inOut = output[data.nextAetherstock ?? 'unknown']!();
+        return output.combo!({ behind: output.behind!(), inOut: inOut });
+      },
+      run: (data) => delete data.nextAetherstock,
+      outputStrings: {
+        combo: {
+          en: '${behind} => ${inOut}',
+        },
+        behind: Outputs.getBehind,
+        out: Outputs.out,
+        in: Outputs.in,
+        unknown: Outputs.unknown,
+      },
+    },
   ],
   timelineReplace: [
     {
