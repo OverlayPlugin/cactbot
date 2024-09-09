@@ -216,12 +216,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Forced March: ${foreBack} => ${leftRight}',
+          de: 'Geistlenkung: ${foreBack} => ${leftRight}',
         },
         forward: {
           en: 'Forward',
+          de: 'vorwärts',
         },
         backward: {
           en: 'Backward',
+          de: 'rückwärts',
         },
         left: Outputs.left,
         right: Outputs.right,
@@ -244,6 +247,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Forced March: ${leftRight}',
+          de: 'Geistlenkung: ${leftRight}',
         },
         left: Outputs.left,
         right: Outputs.right,
@@ -264,6 +268,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${behind} => ${inOut}',
+          de: '${behind} => ${inOut}',
         },
         behind: Outputs.getBehind,
         out: Outputs.out,

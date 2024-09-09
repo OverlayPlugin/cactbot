@@ -74,6 +74,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         frozen: {
           en: 'Frozen soon',
+          de: 'Bald einfrieren',
         },
       },
     },
@@ -98,6 +99,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         iceLeft: {
           en: 'Right => Get Under',
+          de: 'Rechts => Geh unter den Gegner',
         },
       },
     },
@@ -110,6 +112,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         iceRight: {
           en: 'Left => Get Under',
+          de: 'Links => Geh unter den Gegner',
         },
       },
     },
@@ -122,6 +125,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         fireRight: {
           en: 'Left => Out',
+          de: 'Links => Raus',
         },
       },
     },
@@ -134,7 +138,28 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         fireLeft: {
           en: 'Right => Out',
+          de: 'Rechts => Raus',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Arch Aethereater': 'Herr der Kristallisation',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Arch Aethereater': 'seigneur des cristallisateurs',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Arch Aethereater': 'ロード・オブ・クリスタライザー',
       },
     },
   ],
