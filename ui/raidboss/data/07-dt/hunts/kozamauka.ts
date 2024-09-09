@@ -70,7 +70,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Follow jump (then out => behind)',
           de: 'Sprung folgen (dann Raus => Hinten)',
-          de: 'Suivez le saut (puis extérieur => derrière)',
+          fr: 'Suivez le saut (puis extérieur => derrière)',
           cn: '跟随跳跃 (然后远离 => 背后)',
           ko: '돌진 따라가기 (그리고 밖 => 뒤로)',
         },
