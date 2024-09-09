@@ -62,6 +62,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           text: {
             en: 'Unstretched tether',
             de: 'Verbindung nicht langgezogen',
+            fr: 'Lien non-étiré',
             ko: '충분히 멀어지지 않음',
           },
         };

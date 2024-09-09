@@ -70,6 +70,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Face away from landing marker',
           de: 'Schau weg von der Ziel-Markierung',
+          fr: 'Orientez-vous ailleurs du marqueur d\'arrivée',
           cn: '背对落地点',
           ko: '바닥징 뒤돌기',
         },
@@ -86,6 +87,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Face toward landing marker',
           de: 'Schau zur Ziel-Markierung',
+          fr: 'Orientez-vous vers le marqueur d\'arrivée',
           cn: '面向落地点',
           ko: '바닥징 쳐다보기',
         },
@@ -100,6 +102,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stack (face away from target)',
           de: 'Sammeln (Schau weg vom Ziel)',
+          fr: 'Pack (ne regardez pas la cible)',
           cn: '分摊 (背对目标)',
           ko: '쉐어 (대상에게서 뒤돌기)',
         },

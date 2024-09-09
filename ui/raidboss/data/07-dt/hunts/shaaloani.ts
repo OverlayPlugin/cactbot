@@ -63,6 +63,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Follow dash (in after)',
           de: 'Folge dem Ansturm (danach Rein)',
+          fr: 'Suivez la ruée (intérieur ensuite)',
           cn: '跟随冲锋',
           ko: '돌진 따라가기 (그리고 안으로)',
         },
@@ -85,24 +86,28 @@ const triggerSet: TriggerSet<Data> = {
         forward: {
           en: 'Forced March: Forward (later)',
           de: 'Geistlenkung: vorwärts (später)',
+          fr: 'Marche forcée : Avant (après)',
           cn: '(稍后 强制移动: 前)',
           ko: '강제이동: 앞 (나중에)',
         },
         backward: {
           en: 'Forced March: Backward (later)',
           de: 'Geistlenkung: rückwärts (später)',
+          fr: 'Marche forcée : Arrière (après)',
           cn: '(稍后 强制移动: 后)',
           ko: '강제이동: 뒤 (나중에)',
         },
         left: {
           en: 'Forced March: Left (later)',
           de: 'Geistlenkung: links (später)',
+          fr: 'Marche forcée : Gauche (après)',
           cn: '(稍后 强制移动: 左)',
           ko: '강제이동: 왼쪽 (나중에)',
         },
         right: {
           en: 'Forced March: Right (later)',
           de: 'Geistlenkung: rechts (später)',
+          fr: 'Marche forcée : Droite (après)',
           cn: '(稍后 强制移动: 右)',
           ko: '강제이동: 오른쪽 (나중에)',
         },
@@ -123,24 +128,28 @@ const triggerSet: TriggerSet<Data> = {
         forward: {
           en: 'Forced March: Forward',
           de: 'Geistlenkung: vorwärts',
+          fr: 'Marche forcée : Avant',
           cn: '强制移动: 前',
           ko: '강제이동: 앞',
         },
         backward: {
           en: 'Forced March: Backward',
           de: 'Geistlenkung: rückwärts',
+          fr: 'Marche forcée : Arrière',
           cn: '强制移动: 后',
           ko: '강제이동: 뒤',
         },
         left: {
           en: 'Forced March: Left',
           de: 'Geistlenkung: links',
+          fr: 'Marche forcée : Gauche',
           cn: '强制移动: 左',
           ko: '강제이동: 왼쪽',
         },
         right: {
           en: 'Forced March: Right',
           de: 'Geistlenkung: rechts',
+          fr: 'Marche forcée : Droite',
           cn: '强制移动: 右',
           ko: '강제이동: 오른쪽',
         },
@@ -368,6 +377,7 @@ const triggerSet: TriggerSet<Data> = {
         haloLeft: {
           en: 'Right => Left + In',
           de: 'Rechts => Links + Rein',
+          fr: 'Droite => Gauche + Intérieur',
         },
       },
     },
@@ -381,6 +391,7 @@ const triggerSet: TriggerSet<Data> = {
         haloRight: {
           en: 'Left => Right + In',
           de: 'Links => Rechts + Rein',
+          fr: 'Gauche => Droite + Intérieur',
         },
       },
     },
@@ -394,6 +405,7 @@ const triggerSet: TriggerSet<Data> = {
         veilLeft: {
           en: 'Right => Left + Out',
           de: 'Rechts => Links + Raus',
+          fr: 'Droite => Gauche + Extérieur',
         },
       },
     },
@@ -407,6 +419,7 @@ const triggerSet: TriggerSet<Data> = {
         veilRight: {
           en: 'Left => Right + Out',
           de: 'Links => Rechts + Raus',
+          fr: 'Gauche => Droite + Extérieur',
         },
       },
     },

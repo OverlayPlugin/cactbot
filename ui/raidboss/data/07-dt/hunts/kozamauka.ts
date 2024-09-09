@@ -49,6 +49,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out (then behind)',
           de: 'Raus (danach Hinten)',
+          fr: 'Extérieur (puis derrière)',
           cn: '远离 (然后去背后)',
           ko: '밖으로 (그리고 뒤로)',
         },
@@ -69,6 +70,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Follow jump (then out => behind)',
           de: 'Sprung folgen (dann Raus => Hinten)',
+          de: 'Suivez le saut (puis extérieur => derrière)',
           cn: '跟随跳跃 (然后远离 => 背后)',
           ko: '돌진 따라가기 (그리고 밖 => 뒤로)',
         },
@@ -84,6 +86,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Out => Behind',
           de: 'Raus => Hinten',
+          fr: 'Extérieur => Derrière',
           cn: '远离 => 背后',
           ko: '밖 => 뒤로',
         },
@@ -217,14 +220,17 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: 'Forced March: ${foreBack} => ${leftRight}',
           de: 'Geistlenkung: ${foreBack} => ${leftRight}',
+          fr: 'Marche forcée : ${foreBack} => ${leftRight}',
         },
         forward: {
           en: 'Forward',
           de: 'vorwärts',
+          fr: 'Avant',
         },
         backward: {
           en: 'Backward',
           de: 'rückwärts',
+          fr: 'Arrière',
         },
         left: Outputs.left,
         right: Outputs.right,
@@ -248,6 +254,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: 'Forced March: ${leftRight}',
           de: 'Geistlenkung: ${leftRight}',
+          fr: 'Marche forcée : ${leftRight}',
         },
         left: Outputs.left,
         right: Outputs.right,
@@ -269,6 +276,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${behind} => ${inOut}',
           de: '${behind} => ${inOut}',
+          fr: '${behind} => ${inOut}',
         },
         behind: Outputs.getBehind,
         out: Outputs.out,

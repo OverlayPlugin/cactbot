@@ -85,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
         separator: {
           en: ' => ',
           de: ' => ',
+          fr: ' => ',
           ko: ' => ',
         },
       },
