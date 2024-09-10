@@ -296,7 +296,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Start ${dir1} => ${dir2}',
-          de: 'Start ${dir1} => ${dir2}',
+          de: 'Starte ${dir1} => ${dir2}',
           fr: 'Start ${dir1} => ${dir2}',
         },
         front: Outputs.front,
@@ -358,32 +358,32 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rotate: {
           en: 'Start ${dir3} => ${dir1} => ${dir2} (Keep Rotating)',
-          de: 'Start ${dir3} => ${dir1} => ${dir2} (Weiter Rotieren)',
+          de: 'Starte ${dir3} => ${dir1} => ${dir2} (Weiter Rotieren)',
           fr: 'Départ ${dir3} => ${dir1} => ${dir2} (Continuez à tourner)',
         },
         earlyDelay: {
           en: 'Start ${dir3} => ${dir1} (for 2) => ${dir3} => ${dir2}',
-          de: 'Start ${dir3} => ${dir1} (für 2) => ${dir3} => ${dir2}',
+          de: 'Starte ${dir3} => ${dir1} (für 2) => ${dir3} => ${dir2}',
           fr: 'Départ ${dir3} => ${dir1} (für 2) => ${dir3} => ${dir2}',
         },
         lateDelay1: {
           en: 'Start ${dir3} => ${dir1} => ${dir2} (for 2) => ${dir1}',
-          de: 'Start ${dir3} => ${dir1} => ${dir2} (für 2) => ${dir1}',
+          de: 'Starte ${dir3} => ${dir1} => ${dir2} (für 2) => ${dir1}',
           fr: 'Départ ${dir3} => ${dir1} => ${dir2} (für 2) => ${dir1}',
         },
         lateDelay3: {
           en: 'Start ${dir3} => ${dir1} => ${dir2} (for 2) => ${dir3}',
-          de: 'Start ${dir3} => ${dir1} => ${dir2} (für 2) => ${dir3}',
+          de: 'Starte ${dir3} => ${dir1} => ${dir2} (für 2) => ${dir3}',
           fr: 'Départ ${dir3} => ${dir1} => ${dir2} (für 2) => ${dir3}',
         },
         bigDelay2: {
           en: 'Start ${dir3} => ${dir1} (for 3) => ${dir2}',
-          de: 'Start ${dir3} => ${dir1} (für 3) => ${dir2}',
+          de: 'Starte ${dir3} => ${dir1} (für 3) => ${dir2}',
           fr: 'Départ ${dir3} => ${dir1} (für 3) => ${dir2}',
         },
         bigDelay3: {
           en: 'Start ${dir3} => ${dir1} (for 3) => ${dir3}',
-          de: 'Start ${dir3} => ${dir1} (für 3) => ${dir3}',
+          de: 'Starte ${dir3} => ${dir1} (für 3) => ${dir3}',
           fr: 'Départ ${dir3} => ${dir1} (für 3) => ${dir3}',
         },
         front: Outputs.front,
