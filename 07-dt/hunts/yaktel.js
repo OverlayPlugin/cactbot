@@ -91,7 +91,7 @@ Options.Triggers.push({
       outputStrings: {
         stackThenBehind: {
           en: 'Stack => Away From Front',
-          de: 'Sammmeln => Weg von Vorne',
+          de: 'Sammeln => Weg von Vorne',
         },
       },
     },
