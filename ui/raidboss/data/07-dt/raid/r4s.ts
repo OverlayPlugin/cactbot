@@ -184,7 +184,7 @@ const tailThrustOutputStrings = {
   fireLeft: {
     en: 'Fire - Start Front + Right ==>',
     de: 'Feuer - Starte Vorne + Rechts ==>',
-    fr: 'Feu - Démarrez Devant + Droite =>',
+    fr: 'Feu - Démarrez Devant + Droite ==>',
     ja: '火 - 最前列 + 右側へ ==>',
     cn: '火 - 右右右 ==>',
     ko: '불 - 오른쪽 앞에서 시작 ==>',
