@@ -176,7 +176,7 @@ const tailThrustOutputStrings = {
   iceRight: {
     en: 'Double Knockback (Start on Right ==>)',
     de: 'Doppel-Rückstoß (Starte Rechts ==>)',
-    fr: 'Double poussée (Démarrez à droite =>',
+    fr: 'Double poussée (Démarrez à droite ==>)',
     ja: '2連続ノックバック (右から開始 ==>)',
     cn: '两次击退 (右边开始 ==>)',
     ko: '넉백 2번 (오른쪽에서 시작 ==>)',
