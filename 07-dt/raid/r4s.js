@@ -60,6 +60,7 @@ const witchHuntAlertOutputStrings = {
   in: {
     en: 'In',
     de: 'Rein',
+    fr: 'Intérieur',
     ja: '中へ',
     cn: '月环',
     ko: '안',
@@ -67,6 +68,7 @@ const witchHuntAlertOutputStrings = {
   out: {
     en: 'Out',
     de: 'Raus',
+    fr: 'Extérieur',
     ja: '外へ',
     cn: '钢铁',
     ko: '밖',
@@ -74,6 +76,7 @@ const witchHuntAlertOutputStrings = {
   near: {
     en: 'Baits Close (Party Far)',
     de: 'Nah ködern (Gruppe fern)',
+    fr: 'Déposez près (Groupe au loin)',
     ja: '近づいて誘導 (他は離れる)',
     cn: '引导近 (小队远)',
     ko: '가까이 유도 (본대 멀리)',
@@ -81,6 +84,7 @@ const witchHuntAlertOutputStrings = {
   far: {
     en: 'Baits Far (Party Close)',
     de: 'Fern ködern (Gruppe nah)',
+    fr: 'Déposez au loin (Groupe près)',
     ja: '離れて誘導 (他は近づく)',
     cn: '引导远 (小队近)',
     ko: '멀리 유도 (본대 가까이)',
@@ -88,6 +92,7 @@ const witchHuntAlertOutputStrings = {
   combo: {
     en: '${inOut} => ${bait}',
     de: '${inOut} => ${bait}',
+    fr: '${inOut} => ${bait}',
     ja: '${inOut} => ${bait}',
     cn: '${inOut} => ${bait}',
     ko: '${inOut} => ${bait}',
@@ -98,6 +103,7 @@ const tailThrustOutputStrings = {
   iceLeft: {
     en: 'Double Knockback (<== Start on Left)',
     de: 'Doppel-Rückstoß (<== Starte Links)',
+    fr: 'Double poussée (<== Démarrez à gauche)',
     ja: '2連続ノックバック (<== 左から開始)',
     cn: '两次击退 (<== 左边开始)',
     ko: '넉백 2번 (<== 왼쪽에서 시작)',
@@ -105,6 +111,7 @@ const tailThrustOutputStrings = {
   iceRight: {
     en: 'Double Knockback (Start on Right ==>)',
     de: 'Doppel-Rückstoß (Starte Rechts ==>)',
+    fr: 'Double poussée (Démarrez à droite ==>)',
     ja: '2連続ノックバック (右から開始 ==>)',
     cn: '两次击退 (右边开始 ==>)',
     ko: '넉백 2번 (오른쪽에서 시작 ==>)',
@@ -112,6 +119,7 @@ const tailThrustOutputStrings = {
   fireLeft: {
     en: 'Fire - Start Front + Right ==>',
     de: 'Feuer - Starte Vorne + Rechts ==>',
+    fr: 'Feu - Démarrez Devant + Droite ==>',
     ja: '火 - 最前列 + 右側へ ==>',
     cn: '火 - 右右右 ==>',
     ko: '불 - 오른쪽 앞에서 시작 ==>',
@@ -119,6 +127,7 @@ const tailThrustOutputStrings = {
   fireRight: {
     en: '<== Fire - Start Front + Left',
     de: '<== Feuer - Starte Vorne + Links',
+    fr: '<== Feu - Démarrez Devant + Gauche',
     ja: '<== 火 - 最前列 + 左側へ',
     cn: '<== 火 - 左左左',
     ko: '<== 불 - 왼쪽 앞에서 시작',
@@ -129,6 +138,7 @@ const swordQuiverOutputStrings = {
   frontAndSides: {
     en: 'Go Front / Sides',
     de: 'Geh nach Vorne / Seiten',
+    fr: 'Allez Devant / Côtés',
     ja: '前方 / 横側 へ',
     cn: '去前 / 侧边',
     ko: '앞 / 양옆으로',
@@ -136,6 +146,7 @@ const swordQuiverOutputStrings = {
   frontAndBack: {
     en: 'Go Front / Back',
     de: 'Geh nach Vorne / Hinten',
+    fr: 'Allez Devant / Derrière',
     ja: '前方 / 後方 へ',
     cn: '去前 / 后边',
     ko: '앞 / 뒤로',
@@ -143,6 +154,7 @@ const swordQuiverOutputStrings = {
   sidesAndBack: {
     en: 'Go Sides / Back',
     de: 'Geh Seitlich / Hinten',
+    fr: 'Allez Côtés / Derrière',
     ja: '横 / 後方 へ',
     cn: '去侧 / 后边',
     ko: '양옆 / 뒤로',
@@ -241,6 +253,7 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid Front + Side Cleaves',
           de: 'Vermeide Frontal + Seiten-Angriff',
+          fr: 'Évitez les cleaves Avant + Côtés',
           ja: '縦と横の範囲を避けて',
           cn: '躲避前方激光 + 场边直线AoE',
           ko: '전방 + 양옆 레이저 피하기',
@@ -273,6 +286,7 @@ Options.Triggers.push({
         in: {
           en: 'In',
           de: 'Rein',
+          fr: 'Intérieur',
           ja: '中へ',
           cn: '内场',
           ko: '안',
@@ -280,6 +294,7 @@ Options.Triggers.push({
         out: {
           en: 'Out',
           de: 'Raus',
+          fr: 'Extérieur',
           ja: '外へ',
           cn: '外场',
           ko: '밖',
@@ -287,6 +302,7 @@ Options.Triggers.push({
         spreadAvoid: {
           en: 'Spread (Avoid Side Cleaves)',
           de: 'Verteilen (Vermeide Seiten-Angriff)',
+          fr: 'Dispersion (Évitez les cleaves de côtés)',
           ja: '散開 (横の範囲を避けて)',
           cn: '分散 (注意场边直线AoE)',
           ko: '산개 (양옆 레이저 피하기)',
@@ -294,6 +310,7 @@ Options.Triggers.push({
         combo: {
           en: '${inOut} + ${spread}',
           de: '${inOut} + ${spread}',
+          fr: '${inOut} + ${spread}',
           ja: '${inOut} + ${spread}',
           cn: '${inOut} + ${spread}',
           ko: '${inOut} + ${spread}',
@@ -334,6 +351,7 @@ Options.Triggers.push({
         in: {
           en: 'In',
           de: 'Rein',
+          fr: 'Intérieur',
           ja: '中へ',
           cn: '内场',
           ko: '안',
@@ -341,6 +359,7 @@ Options.Triggers.push({
         out: {
           en: 'Out',
           de: 'Raus',
+          fr: 'Extérieur',
           ja: '外へ',
           cn: '外场',
           ko: '밖',
@@ -348,6 +367,7 @@ Options.Triggers.push({
         near: {
           en: 'Spread (Be Closer)',
           de: 'Verteilen (Sei näher dran)',
+          fr: 'Dispersion (Près)',
           ja: '散開(近づく)',
           cn: '靠近分散',
           ko: '산개 (가까이)',
@@ -355,6 +375,7 @@ Options.Triggers.push({
         far: {
           en: 'Spread (Be Further)',
           de: 'Verteilen (Sei weiter weg)',
+          fr: 'Dispersion (Loin)',
           ja: '散開(離れる)',
           cn: '远离分散',
           ko: '산개 (멀리)',
@@ -362,6 +383,7 @@ Options.Triggers.push({
         combo: {
           en: '${inOut} + ${spread}',
           de: '${inOut} + ${spread}',
+          fr: '${inOut} + ${spread}',
           ja: '${inOut} + ${spread}',
           cn: '${inOut} + ${spread}',
           ko: '${inOut} + ${spread}',
@@ -414,6 +436,7 @@ Options.Triggers.push({
         in: {
           en: 'In',
           de: 'Rein',
+          fr: 'Intérieur',
           ja: '中へ',
           cn: '月环',
           ko: '안',
@@ -421,6 +444,7 @@ Options.Triggers.push({
         out: {
           en: 'Out',
           de: 'Raus',
+          fr: 'Extérieur',
           ja: '外へ',
           cn: '钢铁',
           ko: '밖',
@@ -428,6 +452,7 @@ Options.Triggers.push({
         near: {
           en: 'Close',
           de: 'Nah',
+          fr: 'Près',
           ja: '近づく',
           cn: '近',
           ko: '가까이',
@@ -435,6 +460,7 @@ Options.Triggers.push({
         far: {
           en: 'Far',
           de: 'Fern',
+          fr: 'Loin',
           ja: '離れる',
           cn: '远',
           ko: '멀리',
@@ -442,6 +468,7 @@ Options.Triggers.push({
         separator: {
           en: ' => ',
           de: ' => ',
+          fr: ' => ',
           ja: ' => ',
           cn: ' => ',
           ko: ' => ',
@@ -449,6 +476,7 @@ Options.Triggers.push({
         baitStep: {
           en: '${inOut} (${bait})',
           de: '${inOut} (${bait})',
+          fr: '${inOut} (${bait})',
           ja: '${inOut} (${bait})',
           cn: '${inOut} (${bait})',
           ko: '${inOut} (${bait})',
@@ -456,6 +484,7 @@ Options.Triggers.push({
         baitCombo: {
           en: 'Baits: ${allBaits}',
           de: 'Ködern: ${allBaits}',
+          fr: 'Dépose : ${allBaits}',
           ja: '誘導: ${allBaits}',
           cn: '引导: ${allBaits}',
           ko: '유도: ${allBaits}',
@@ -626,6 +655,7 @@ Options.Triggers.push({
         combo: {
           en: '${dir} => ${mech}',
           de: '${dir} => ${mech}',
+          fr: '${dir} => ${mech}',
           ja: '${dir} => ${mech}',
           cn: '${dir} => ${mech}',
           ko: '${dir} => ${mech}',
@@ -670,6 +700,7 @@ Options.Triggers.push({
         short: {
           en: 'Short Debuff (w/ ${same})',
           de: 'Kurzer Debuff (mit ${same})',
+          fr: 'Debuff court (avec ${same})',
           ja: '短いデバフ (同じく/ ${same})',
           cn: '短 Debuff (和 ${same})',
           ko: '짧은 디버프 (+ ${same})',
@@ -677,6 +708,7 @@ Options.Triggers.push({
         long: {
           en: 'Long Debuff (w/ ${same})',
           de: 'Langer Debuff (mit ${same})',
+          fr: 'Debuff long (avec ${same})',
           ja: '長いデバフ (同じく/ ${same})',
           cn: '长 Debuff (和 ${same})',
           ko: '긴 디버프 (+ ${same})',
@@ -702,6 +734,7 @@ Options.Triggers.push({
         witchgleamTimes: {
           en: '${times} stacks (later)',
           de: '${times} Treffer (später)',
+          fr: '${times} packages (après)',
           ja: '${times} 回のほう (後)',
           cn: '(稍后 ${times} 层)',
           ko: '(${times} 스택)',
@@ -721,6 +754,7 @@ Options.Triggers.push({
         spread: {
           en: 'Spread (${stacks} stacks)',
           de: 'Verteilen (${stacks} Ladungen)',
+          fr: 'Dispersion (${stacks} package)',
           ja: '散開 (${stacks} 回のほう)',
           cn: '分散 (${stacks} 层)',
           ko: '산개 (${stacks} 스택)',
@@ -764,6 +798,7 @@ Options.Triggers.push({
         stacks: {
           en: '(${stacks} stacks after)',
           de: '(danach ${stacks} Ladungen)',
+          fr: '(${stacks} packages après)',
           ja: '(${stacks} 回のほう)',
           cn: '(${stacks} 层雷)',
           ko: '(나중에 ${stacks} 스택)',
@@ -771,6 +806,7 @@ Options.Triggers.push({
         combo: {
           en: '${dir} => ${mech} ${remind}',
           de: '${dir} => ${mech} ${remind}',
+          fr: '${dir} => ${mech} ${remind}',
           ja: '${dir} => ${mech} ${remind}',
           cn: '${dir} => ${mech} ${remind}',
           ko: '${dir} => ${mech} ${remind}',
@@ -824,6 +860,7 @@ Options.Triggers.push({
         tank: {
           en: '${dir} - Be in Front',
           de: '${dir} - Sei Vorne',
+          fr: '${dir} - Devant le groupe',
           ja: '${dir} - ボス近くで受けて',
           cn: '${dir} - 站在最前面',
           ko: '${dir} - 맨 앞으로',
@@ -831,6 +868,7 @@ Options.Triggers.push({
         nonTank: {
           en: '${dir} - Behind Tank',
           de: '${dir} - Hinter dem Tank',
+          fr: '${dir} - Derrière le tank',
           ja: '${dir} - タンクの後ろへ',
           cn: '${dir} - 站坦克后面',
           ko: '${dir} - 탱커 뒤로',
@@ -850,6 +888,7 @@ Options.Triggers.push({
           swap: {
             en: 'Swap Sides',
             de: 'Seiten wechseln',
+            fr: 'Changez de côté',
             ja: '場所を交代',
             cn: '穿',
             ko: '교체',
@@ -857,6 +896,7 @@ Options.Triggers.push({
           stay: {
             en: 'Stay',
             de: 'Stehen bleiben',
+            fr: 'Restez',
             ja: 'そのまま',
             cn: '停',
             ko: '그대로',
@@ -865,6 +905,7 @@ Options.Triggers.push({
           tank: {
             en: '${dir} - Be in Front',
             de: '${dir} - Sei Vorne',
+            fr: '${dir} - Devant le groupe',
             ja: '${dir} - ボス近くで受けて',
             cn: '${dir} - 站在最前面',
             ko: '${dir} - 맨 앞으로',
@@ -872,6 +913,7 @@ Options.Triggers.push({
           nonTank: {
             en: '${dir} - Behind Tank',
             de: '${dir} - Hinter dem Tank',
+            fr: '${dir} - Derrière le tank',
             ja: '${dir} - タンクの後ろへ',
             cn: '${dir} - 站坦克后面',
             ko: '${dir} - 탱커 뒤로',
@@ -922,6 +964,7 @@ Options.Triggers.push({
         remoteCurrent: {
           en: 'Far Cone on You',
           de: 'Fern-Kegel auf DIR',
+          fr: 'Cône éloigné sur Vous',
           ja: '自分から遠い人に扇範囲',
           cn: '远雷点名',
           ko: '원거리 화살표 대상자',
@@ -929,6 +972,7 @@ Options.Triggers.push({
         proximateCurrent: {
           en: 'Near Cone on You',
           de: 'Nah-Kegel auf DIR',
+          fr: 'Cône proche sur Vous',
           ja: '自分から近い人に扇範囲',
           cn: '近雷点名',
           ko: '근거리 화살표 대상자',
@@ -936,6 +980,7 @@ Options.Triggers.push({
         spinningConductor: {
           en: 'Small AoE on You',
           de: 'Kleine AoE auf DIR',
+          fr: 'Petite AoE sur Vous',
           ja: '自分に小さい円範囲',
           cn: '小钢铁点名',
           ko: '작은 원형징 대상자',
@@ -943,6 +988,7 @@ Options.Triggers.push({
         roundhouseConductor: {
           en: 'Donut AoE on You',
           de: 'Donut AoE auf DIR',
+          fr: 'Donut sur Vous',
           ja: '自分にドーナツ範囲',
           cn: '月环点名',
           ko: '도넛징 대상자',
@@ -950,6 +996,7 @@ Options.Triggers.push({
         colliderConductor: {
           en: 'Get Hit by Cone',
           de: 'Werde vom Kegel getroffen',
+          fr: 'Encaissez un cône',
           ja: '扇範囲に当たって',
           cn: '吃雷',
           ko: '화살표 장판 맞기',
@@ -966,6 +1013,7 @@ Options.Triggers.push({
         dodge: {
           en: 'Dodge w/Partner x7',
           de: 'mit Partner ausweichen x7',
+          fr: 'Esquivez avec votre partenaire x7',
           ja: '相方と避ける x7',
           cn: '与搭档躲避 7 次扇形',
           ko: '파트너와 함께 피하기 x7',
@@ -1012,6 +1060,7 @@ Options.Triggers.push({
         near: {
           en: 'In Front of Partner',
           de: 'Sei vor deinem Partner',
+          fr: 'Devant votre partenaire',
           ja: '相方の前へ',
           cn: '站在搭档前面 (挡枪)',
           ko: '파트너 앞으로',
@@ -1019,6 +1068,7 @@ Options.Triggers.push({
         far: {
           en: 'Behind Partner',
           de: 'Sei hinter deinem Partner',
+          fr: 'Derrière votre partenaire',
           ja: '相方の後ろへ',
           cn: '站在搭档后面',
           ko: '파트너 뒤로',
@@ -1104,6 +1154,7 @@ Options.Triggers.push({
         passDebuff: {
           en: 'Pass Debuff',
           de: 'Debuff übergeben',
+          fr: 'Donner le debuff',
           ja: 'デバフを渡して',
           cn: '传火',
           ko: '디버프 전달',
@@ -1111,6 +1162,7 @@ Options.Triggers.push({
         getDebuff: {
           en: 'Get Debuff',
           de: 'Debuff nehmen',
+          fr: 'Prenez le debuff',
           ja: 'デバフを取って',
           cn: '接火',
           ko: '디버프 받기',
@@ -1150,6 +1202,7 @@ Options.Triggers.push({
         stored: {
           en: 'Stored: ${effect}',
           de: 'Gespeichert: ${effect}',
+          fr: 'Enregistré : ${effect}',
           ja: 'あとで: ${effect}',
           cn: '存储: ${effect}',
           ko: '저장: ${effect}',
@@ -1177,6 +1230,7 @@ Options.Triggers.push({
           lb3: {
             en: 'LB3!',
             de: 'LB3!',
+            fr: 'Transcendance !',
             ja: 'タンク LB3!',
             cn: '坦克 LB!',
             ko: '탱 3단 리밋!',
@@ -1264,6 +1318,7 @@ Options.Triggers.push({
         combo: {
           en: '${dir} => ${middleSides}',
           de: '${dir} => ${middleSides}',
+          fr: '${dir} => ${middleSides}',
           ja: '${dir} => ${middleSides}',
           cn: '${dir} => ${middleSides}',
           ko: '${dir} => ${middleSides}',
@@ -1331,6 +1386,7 @@ Options.Triggers.push({
         combo: {
           en: '${dir} + ${type} + ${mech}',
           de: '${dir} + ${type} + ${mech}',
+          fr: '${dir} + ${type} + ${mech}',
           ja: '${dir} + ${type} + ${mech}',
           cn: '${dir} + ${type} + ${mech}',
           ko: '${dir} + ${type} + ${mech}',
@@ -1338,6 +1394,7 @@ Options.Triggers.push({
         guns: {
           en: 'Avoid Line',
           de: 'Weiche den Linien aus',
+          fr: 'Évitez la ligne',
           ja: 'ビームを避けて',
           cn: '躲避直线',
           ko: '직선 장판 피하기',
@@ -1345,6 +1402,7 @@ Options.Triggers.push({
         wings: {
           en: 'Donut',
           de: 'Donut',
+          fr: 'Donut',
           ja: 'ドーナツ',
           cn: '月环',
           ko: '도넛 장판',
@@ -1377,6 +1435,7 @@ Options.Triggers.push({
         combo: {
           en: '${dir} + ${type} + ${mech}',
           de: '${dir} + ${type} + ${mech}',
+          fr: '${dir} + ${type} + ${mech}',
           ja: '${dir} + ${type} + ${mech}',
           cn: '${dir} + ${type} + ${mech}',
           ko: '${dir} + ${type} + ${mech}',
@@ -1384,6 +1443,7 @@ Options.Triggers.push({
         guns: {
           en: 'Avoid Line',
           de: 'Weiche den Linien aus',
+          fr: 'Évitez la ligne',
           ja: 'ビームを避けて',
           cn: '躲避直线',
           ko: '직선 장판 피하기',
@@ -1391,6 +1451,7 @@ Options.Triggers.push({
         wings: {
           en: 'Donut',
           de: 'Donut',
+          fr: 'Donut',
           ja: 'ドーナツ',
           cn: '月环',
           ko: '도넛 장판',
@@ -1420,6 +1481,7 @@ Options.Triggers.push({
         towers: {
           en: 'Tower Positions',
           de: 'Turm Positionen',
+          fr: 'Position tour',
           ja: '塔の位置へ',
           cn: '八人塔站位',
           ko: '기둥 자리잡기',
@@ -1491,6 +1553,7 @@ Options.Triggers.push({
         safe: {
           en: '${side}: Start at ${first}',
           de: '${side}: Starte ${first}',
+          fr: '${side} : Démarrez ${first}',
           ja: '${side}: まずは ${first} から',
           cn: '${side}: 从 ${first} 开始',
           ko: '${side}: ${first}에서 시작',
@@ -1528,6 +1591,7 @@ Options.Triggers.push({
         separator: {
           en: ' => ',
           de: ' => ',
+          fr: ' => ',
           ja: ' => ',
           cn: ' => ',
           ko: ' => ',
@@ -1535,6 +1599,7 @@ Options.Triggers.push({
         safe: {
           en: '${side} Side: ${order}',
           de: '${side} Seite: ${order}',
+          fr: 'Côté ${side} : ${order}',
           ja: '${side} : ${order}',
           cn: '${side} 侧: ${order}',
           ko: '${side}: ${order}',
@@ -1565,6 +1630,7 @@ Options.Triggers.push({
         yellowLong: {
           en: 'Long Yellow Debuff (Towers First)',
           de: 'Langer Gelber Debuff (Turm zuerst)',
+          fr: 'Debuff jaune long (Tour en 1er)',
           ja: '長い黄色デバフ (塔から)',
           cn: '长黄 (先踩塔)',
           ko: '긴 노란색 디버프 (기둥 먼저)',
@@ -1572,6 +1638,7 @@ Options.Triggers.push({
         blueLong: {
           en: 'Long Blue Debuff (Towers First)',
           de: 'Langer Blauer Debuff (Turm zuerst)',
+          fr: 'Debuff bleu long (Tour en 1er)',
           ja: '長い青色デバフ (塔から)',
           cn: '长蓝 (先踩塔)',
           ko: '긴 파란색 디버프 (기둥 먼저)',
@@ -1579,6 +1646,7 @@ Options.Triggers.push({
         yellowShort: {
           en: 'Short Yellow Debuff (Cannons First)',
           de: 'Kurzer Gelber Debuff (Kanone zuerst)',
+          fr: 'Debuff jaune court (Canons en 1er)',
           ja: '短い黄色デバフ (ビーム誘導から)',
           cn: '短黄 (先引导)',
           ko: '짧은 노란색 디버프 (레이저 먼저)',
@@ -1586,6 +1654,7 @@ Options.Triggers.push({
         blueShort: {
           en: 'Short Blue Debuff (Cannons First)',
           de: 'Kurzer Blauer Debuff (Kanone zuerst)',
+          fr: 'Debuff bleu court (Canons en 1er)',
           ja: '短い青色デバフ (ビーム誘導から)',
           cn: '短蓝 (先引导)',
           ko: '짧은 파란색 디버프 (레이저 먼저)',
@@ -1703,6 +1772,7 @@ Options.Triggers.push({
         northSouth: {
           en: 'N/S',
           de: 'N/S',
+          fr: 'N/S',
           ja: '南/北',
           cn: '上(北)/下(南)',
           ko: '남/북',
@@ -1710,6 +1780,7 @@ Options.Triggers.push({
         eastWest: {
           en: 'E/W',
           de: 'O/W',
+          fr: 'E/O',
           ja: '東/西',
           cn: '左(西)/右(东)',
           ko: '동/서',
@@ -1717,6 +1788,7 @@ Options.Triggers.push({
         yellowLong: {
           en: 'Soak Tower (${bait})',
           de: 'Turm nehmen (${bait})',
+          fr: 'Prenez une tour (${bait})',
           ja: '塔を踏んで (${bait})',
           cn: '踩塔 (${bait})',
           ko: '기둥 밟기 (${bait})',
@@ -1724,6 +1796,7 @@ Options.Triggers.push({
         blueLong: {
           en: 'Soak Tower (${bait})',
           de: 'Turm nehmen (${bait})',
+          fr: 'Prenez une tour (${bait})',
           ja: '塔を踏んで (${bait})',
           cn: '踩塔 (${bait})',
           ko: '기둥 밟기 (${bait})',
@@ -1731,6 +1804,7 @@ Options.Triggers.push({
         yellowShort: {
           en: 'Blue Cannon (${loc}) - Point ${bait}',
           de: 'Blaue Kanone (${loc}) - Richte nach ${bait}',
+          fr: 'Canon bleu ${loc}) - Pointez ${bait}',
           ja: '青いビーム誘導 (${loc}) - ${bait}',
           cn: '蓝激光 (${loc}) - 打向 ${bait}',
           ko: '파란 레이저 (${loc}) - ${bait}쪽으로',
@@ -1738,6 +1812,7 @@ Options.Triggers.push({
         blueShort: {
           en: 'Yellow Cannon (${loc}) - Point ${bait}',
           de: 'Gelbe Kanone (${loc}) - Richte nach ${bait}',
+          fr: 'Canon jaune ${loc}) - Pointez ${bait}',
           ja: '黄色いビーム誘導 (${loc}) - ${bait}',
           cn: '黄激光 (${loc}) - 打向 ${bait}',
           ko: '노란 레이저 (${loc}) - ${bait}쪽으로',
@@ -1850,10 +1925,9 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Electromine': 'électromine',
-        'Wicked Replica': 'copie de Wicked Thunder',
+        'Electromine': 'Électromine',
+        'Wicked Replica': 'Copie de Wicked Thunder',
         'Wicked Thunder': 'Wicked Thunder',
       },
       'replaceText': {
@@ -1879,12 +1953,14 @@ Options.Triggers.push({
         'Impact': 'Impact',
         'Ion Cluster': 'Accumulation d\'ions',
         'Laceration': 'Lacération',
+        'Left Roll': 'Rouleau gauche',
         'Lightning Cage': 'Cage d\'éclairs',
         'Lightning Vortex': 'Vortex foudroyant',
         'Midnight Sabbath': 'Diablerie obscure - Minuit',
         'Mustard Bomb': 'Bombe sulfurée',
         'Narrowing Witch Hunt': 'Piqué fulgurant condensé',
         'Raining Swords': 'Pluie d\'épées',
+        'Right Roll': 'Rouleau droite',
         'Sidewise Spark': 'Éclair latéral',
         'Soulshock': 'Choc d\'âme',
         'Stampeding Thunder': 'Tonnerre déferlant',
@@ -1905,6 +1981,26 @@ Options.Triggers.push({
         'Widening Witch Hunt': 'Piqué fulgurant élargi',
         'Witchgleam': 'Rayon éclatant',
         'Wrath of Zeus': 'Colère de Zeus',
+        '\\(debuffs resolve\\)': '(Résolution des debuffs)',
+        '\\(debuffs\\)': '(Debuffs)',
+        '\\(enrage\\)': '(Enrage)',
+        '\\(first mines hit\\)': '(Premier coup des mines)',
+        '\\(first set\\)': '(Premier Set)',
+        '\\(first sparks detonate\\)': '(Premiere explostion des étincelles)',
+        '\\(first towers/cannons resolve\\)': '(Première résolution tours/canons)',
+        '\\(floor no more\\)': '(Plus de sol)',
+        '\\(fourth set\\)': '(Quatrième set)',
+        '\\(mines\\)': '(Mines)',
+        '\\(players\\)': '(Joueurs)',
+        '\\(puddles drop\\)': '(Arrivée des puddles)',
+        '\\(second hit\\)': '(Second coup)',
+        '\\(second mines hit\\)': '(Second coup des mines)',
+        '\\(second set\\)': '(Second Set)',
+        '\\(second sparks detonate\\)': '(Seconde explostion des étincelles)',
+        '\\(second towers/cannons resolve\\)': '(Seconde résolution tours/canons)',
+        '\\(spread \\+ tethers\\)': '(Dispersion + Liens)',
+        '\\(third mines hit\\)': '(Troisième coup des mines)',
+        '\\(third set\\)': '(Troisième Set)',
       },
     },
     {

@@ -294,6 +294,7 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid Tethered Cleave',
           de: 'Vermeide Verbundene-Kegelangriff',
+          fr: 'Évitez le cleave du lien',
         },
       },
     },
