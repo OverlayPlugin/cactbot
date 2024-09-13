@@ -108,6 +108,7 @@ const triggerSet: TriggerSet<Data> = {
         stackThenBehind: {
           en: 'Stack => Away From Front',
           de: 'Sammeln => Weg von Vorne',
+          fr: 'Package => Loin du devant',
         },
       },
     },
