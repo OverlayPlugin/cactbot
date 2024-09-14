@@ -1556,6 +1556,9 @@ export class PopupText {
         /\s*(<[-=]|[=-]>)\s*/g,
         arrowReplacement[this.displayLang],
       );
+      // * Countdown substitution marker, if present
+      triggerHelper.ttsText = triggerHelper.ttsText.replaceAll('{{CD}}', '');
+
       this.ttsSay(triggerHelper.ttsText);
     } else if (triggerHelper.soundUrl !== undefined && triggerHelper.soundAlertsEnabled) {
       this._playAudioFile(triggerHelper, triggerHelper.soundUrl, triggerHelper.soundVol);
@@ -1585,10 +1588,32 @@ export class PopupText {
     const holder = this[lowerTextKey]?.getElementsByClassName('holder')[0];
     const div = this._makeTextElement(triggerHelper, text, textElementClass);
 
-    if (triggerHelper.countdown !== undefined) {
+    if (
+      triggerHelper.countdown !== undefined &&
+      triggerHelper.countdown > 0 // allow users to override with 0 to disable countdown
+    ) {
       const endTime = triggerHelper.now + (triggerHelper.countdown * 1000);
       const span = document.createElement('span');
-      div.appendChild(span);
+
+      // if the localized output string contains the {{CD}} substitution marker,
+      // insert the countdown timer there; otherwise, append it.
+      if (text.includes('{{CD}}')) {
+        const parts = text.split('{{CD}}');
+        if (parts.length > 2) {
+          // if more than one marker, remove them all and append the countdown
+          console.log(`Too many {{CD}} markers specified in output text: ${text}`);
+          div.innerHTML = div.innerHTML.replaceAll('{{CD}}', '');
+          div.appendChild(span);
+        } else {
+          div.innerHTML = parts[0] ?? '';
+          div.appendChild(span);
+          // use insertAdjacentHTML to avoid breaking the span node
+          div.insertAdjacentHTML('beforeend', parts[1] ?? '');
+        }
+      } else {
+        div.appendChild(span);
+      }
+
       this._updateCountdownInternal(span, endTime);
     }
 

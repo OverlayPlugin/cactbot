@@ -375,6 +375,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         countdown: {
           en: '${player} started ${seconds}s countdown',
+          // or inline: '${player} started {{CD}} countdown',
           de: '${player} startet ${seconds}s countdown',
           fr: '${player} a démarré un compte à rebours de ${seconds}s',
           ja: '${player} が ${seconds} 秒のカウントダウンを開始しました',
