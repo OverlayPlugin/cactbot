@@ -33,10 +33,12 @@ const raiseAbilityIds = [
 ];
 
 const targetMitAbilityIdToDuration: { [id: string]: number } = {
+  // Casters and melees gain a L98 trait that increases Feint and Addle from 10s to 15s
+  // TODO: Add a level check to determine duration?
   '1D6F': 10, // reprisal
-  '1D7D': 10, // feint
+  '1D7D': 15, // feint
   'B47': 10, // dismantle
-  '1D88': 10, // addle
+  '1D88': 15, // addle
 };
 const targetMitAbilityIds = Object.keys(targetMitAbilityIdToDuration);
 
@@ -48,9 +50,12 @@ const partyMitAbilityIdToDuration: { [id: string]: number } = {
   '3F20': 15, // heart of light
   // healers
   '4098': 20, // temperance
+  '9093': 10, // divine caress
   'BC': 15, // sacred soil
   '650C': 20, // expedient
   '409A': 20, // fey/seraphic illumination (order)
+  'E1D': 5, // collective unconscious
+  '9087': 15, // sun sign
   '5EEA': 15, // kerachole
   '5EF6': 20, // holos
   '5EF7': 15, // panhaima
@@ -69,6 +74,7 @@ const partyMitAbilityIds = Object.keys(partyMitAbilityIdToDuration);
 const shieldEffectIdToAbilityId: { [id: string]: string } = {
   '5B1': '1CDC', // shake it off
   '552': 'DD4', // divine veil
+  'F3F': '9093', // divine caress
   'D25': '5EF6', // holosakos -> holos
   'A53': '5EF7', // panhaimatinon -> panhaima
 };
