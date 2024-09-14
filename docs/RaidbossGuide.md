@@ -375,7 +375,7 @@ following the expiration of any `delaySeconds` value and after any `promise` is 
 If `countdownSeconds` is larger than the specified (or default) `durationSeconds`,
 the trigger duration will be extended to match the countdown.
 If the countdown is smaller than the duration, the countdown will stop at (0.0),
-and will continue to be displayed asa such until the duration expires.
+and will continue to be displayed as such until the duration expires.
 By default, the countdown is appended to the trigger text,
 but if `{{CD}}` is present in the output string, the countdown will be placed there instead.
 If `countdownSeconds` is set (or overriden) to 0, a countdown will not be displayed.
