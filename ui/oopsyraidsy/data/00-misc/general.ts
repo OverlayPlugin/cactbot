@@ -33,9 +33,9 @@ const raiseAbilityIds = [
 ];
 
 const targetMitAbilityIdToDuration: { [id: string]: number } = {
-  // Casters and melees gain a L98 trait that increases Feint and Addle from 10s to 15s
+  // There are L98 traits that increase Reprisal, Feint, and Addle from 10s to 15s
   // TODO: Add a level check to determine duration?
-  '1D6F': 10, // reprisal
+  '1D6F': 15, // reprisal
   '1D7D': 15, // feint
   'B47': 10, // dismantle
   '1D88': 15, // addle
