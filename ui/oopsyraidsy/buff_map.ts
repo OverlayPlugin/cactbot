@@ -52,6 +52,13 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     collectSeconds: 2,
   },
   {
+    // SCH
+    id: 'Seraphism',
+    type: 'heal',
+    effectId: 'F2D',
+    collectSeconds: 2,
+  },
+  {
     // AST
     id: 'Collective Unconscious',
     type: 'mitigation',
