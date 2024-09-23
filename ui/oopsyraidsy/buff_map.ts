@@ -402,6 +402,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     abilityId: '5EE4',
   },
   {
+    id: 'Eukrasian Prognosis II',
+    type: 'mitigation',
+    abilityId: '90AA',
+  },
+  {
     id: 'Ixochole',
     type: 'heal',
     abilityId: '5EEB',
