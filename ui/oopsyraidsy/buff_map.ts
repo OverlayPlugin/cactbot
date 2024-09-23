@@ -213,6 +213,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     type: 'heal',
     abilityId: ['6507', '6508'],
   },
+  {
+    id: 'Divine Caress',
+    type: 'mitigation',
+    abilityId: '9093',
+  },
   // ************ SCH ************ //
   {
     // SCH LB3
