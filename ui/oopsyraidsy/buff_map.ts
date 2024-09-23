@@ -1,3 +1,9 @@
+// TODO: We could add BRD's songs (Minuet = 8A8, Ballad = 8A9, Paeon = 8AA),
+// but effect re-application lines are continuously sent by ACT (as this is a cancellable buff).
+// If we use a collectSeconds for the full duration, the 'missed' message is very delayed;
+// but any shorter, we'll get repeated 'missed' messages for the same buff.
+// Probably need to add support for a 'suppressSeconds' property...
+
 export type MissableBuffType = 'heal' | 'damage' | 'mitigation';
 
 export type MissableEffect = {
@@ -516,12 +522,6 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
 
   // ******************** Magical Ranged DPS ******************** //
   // ************ SMN ************ //
-  {
-    // (5.x ability, removed in Endwalker)
-    id: 'Devotion',
-    type: 'damage',
-    abilityId: '1D1A',
-  },
   {
     id: 'Searing Light',
     type: 'damage',
