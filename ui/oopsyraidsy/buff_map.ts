@@ -45,6 +45,13 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     collectSeconds: 24,
   },
   {
+    // WHM
+    id: 'Temperance',
+    type: 'mitigation',
+    effectId: '751',
+    collectSeconds: 2,
+  },
+  {
     // AST
     id: 'Collective Unconscious',
     type: 'mitigation',
@@ -193,11 +200,6 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     id: 'Afflatus Rapture',
     type: 'heal',
     abilityId: '4096',
-  },
-  {
-    id: 'Temperance',
-    type: 'mitigation',
-    abilityId: '751',
   },
   {
     id: 'Plenary Indulgence',
