@@ -427,6 +427,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     // 5EFE on enemies, and 6CB6 on friendlies.
     abilityId: '6CB6',
   },
+  {
+    id: 'Philosophia',
+    type: 'heal',
+    abilityId: '90AB',
+  },
 
   // ******************** Melee DPS ******************** //
   // ************ MNK ************ //
