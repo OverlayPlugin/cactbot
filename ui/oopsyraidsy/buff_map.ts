@@ -549,6 +549,12 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     type: 'mitigation',
     abilityId: '6501',
   },
+  // ************ PCT ************ //
+  {
+    id: 'Tempera Grassa',
+    type: 'mitigation',
+    abilityId: '877E',
+  },
   // ************ BLU ************ //
   {
     id: 'White Wind',
