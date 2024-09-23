@@ -359,6 +359,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     type: 'heal',
     abilityId: '1D15',
   },
+  {
+    id: 'Sun Sign',
+    type: 'mitigation',
+    abilityId: '90A7',
+  },
   // ************ SGE ************ //
   {
     // SGE LB3
