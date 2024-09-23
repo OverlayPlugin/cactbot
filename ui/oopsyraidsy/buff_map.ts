@@ -34,16 +34,6 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     ignoreSelf: true,
     collectSeconds: 15,
   },
-  {
-    // PLD
-    id: 'Divine Veil',
-    type: 'mitigation',
-    // TODO: 552 is 6.4, remove 2D7 once everything is on 6.4
-    // TODO: veil now applies to the paladin in ... 6.3?
-    effectId: ['2D7', '552'],
-    ignoreSelf: true,
-    collectSeconds: 2,
-  },
 
   // ******************** Healers ******************** //
   {
@@ -102,6 +92,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     id: 'Last Bastion',
     type: 'mitigation',
     abilityId: 'C7',
+  },
+  {
+    id: 'Divine Veil',
+    type: 'mitigation',
+    abilityId: 'DD4',
   },
   // ************ WAR ************ //
   {
