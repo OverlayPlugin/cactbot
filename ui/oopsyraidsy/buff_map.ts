@@ -89,11 +89,9 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     effectId: 'A87',
     collectSeconds: 15,
   },
-
   // ******************** Magical Ranged DPS ******************** //
 
   // ******************** Field Operations & Misc. ******************** //
-
 ] as const;
 
 // missedAbilityBuffMap is for buffs/effects that have a corresponding
@@ -194,9 +192,9 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     abilityId: '85',
   },
   {
-    "id": "Medica III",
-    "type": "heal",
-    "abilityId": "9092"
+    'id': 'Medica III',
+    'type': 'heal',
+    'abilityId': '9092',
   },
   {
     id: 'Cure III',
