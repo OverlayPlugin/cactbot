@@ -289,6 +289,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     type: 'mitigation',
     abilityId: '650C',
   },
+  {
+    id: 'Accession',
+    type: 'heal',
+    abilityId: '9098',
+  },
   // ************ AST ************ //
   {
     // AST LB3
