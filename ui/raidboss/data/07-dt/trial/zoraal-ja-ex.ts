@@ -433,8 +433,8 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, matches, output) => {
         // To make this call somewhat reasonable, use the following priority system
         // for calling a safe tile, depending on sword cleave:
-        //   1. insideEast/insideWest
-        //   2. insideNorth/insideSouth, lean E/W
+        //   1. insideNorth/insideSouth, lean E/W
+        //   2. insideEast/insideWest
         //   3. If all inside are bad, the outer intercard pairs (E/W depending on cleave)
         const safeSide = matches.id === '9368' ? 'west' : 'east';
         const leanOutput = matches.id === '9368' ? output.leanWest!() : output.leanEast!();
@@ -443,12 +443,12 @@ const triggerSet: TriggerSet<Data> = {
         if (safeTiles.length !== 8)
           return;
 
-        if (safeSide === 'west' && safeTiles.includes('insideWest'))
+        if (safeTiles.includes('insideNorth'))
+          return output.insideNS!({ lean: leanOutput });
+        else if (safeSide === 'west' && safeTiles.includes('insideWest'))
           return output.insideWest!();
         else if (safeSide === 'east' && safeTiles.includes('insideEast'))
           return output.insideEast!();
-        else if (safeTiles.includes('insideNorth'))
-          return output.insideNS!({ lean: leanOutput });
         else if (safeSide === 'east')
           return output.intercardsEast!();
         return output.intercardsWest!();
