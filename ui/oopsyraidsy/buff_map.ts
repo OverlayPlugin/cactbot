@@ -1,8 +1,8 @@
 // TODO: We could add BRD's songs (Minuet = 8A8, Ballad = 8A9, Paeon = 8AA),
 // but effect re-application lines are continuously sent by ACT (as this is a cancellable buff).
-// If we use a collectSeconds for the full duration, the 'missed' message is very delayed;
+// If we use `collectSeconds` for the full duration, the 'missed' message will be very delayed;
 // but any shorter, we'll get repeated 'missed' messages for the same buff.
-// Probably need to add support for a 'suppressSeconds' property...
+// We probably need to add support for something like a 'suppressSeconds' property.
 
 export type MissableBuffType = 'heal' | 'damage' | 'mitigation';
 
@@ -24,11 +24,10 @@ export type MissableAbility = {
 
 export type MissableBuff = MissableAbility | MissableEffect;
 
-// missedEffectBuffMap is for buffs that are solely applied/measured by
-// `GainsEffect`/`LosesEffect` lines, e.g., where there is no corresponding
-// `Ability`/`NetworkAoEAbility` line to indicate the player received the effect.
-// These are commonly used for bubble-type AoE buffs, like WHM's Asylum.
-// If there is an ability line for each affected player, use missedAbilityBuffMap instead.
+// missedEffectBuffMap is for buffs that can be detected solely by `GainsEffect` lines,
+// where there is no corresponding `Ability` line to indicate the player received the effect.
+// These are predominantly bubble-type AoE buffs, like WHM's Asylum.
+// If there is an ability line for each affected player, use `missedAbilityBuffMap` instead.
 export const missedEffectBuffMap: readonly MissableEffect[] = [
   // ******************** Tanks ******************** //
   {
@@ -94,10 +93,9 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
   // ******************** Field Operations & Misc. ******************** //
 ] as const;
 
-// missedAbilityBuffMap is for buffs/effects that have a corresponding
-// `Ability` / `NetworkAoEAbility` for **each affected player**.  If the effect's application
-// to a particular player can only be measured by `GainsEffect`/`LosesEffect` lines, use
-// missedEffectBuffMap instead.
+// missedAbilityBuffMap is for buffs that have a corresponding Ability line for
+// each affected player.  If the effect's application to a particular player can only
+// be measured by `GainsEffect` lines, use `missedEffectBuffMap` instead.
 export const missedAbilityBuffMap: readonly MissableAbility[] = [
   // ******************** Tanks ******************** //
   {
