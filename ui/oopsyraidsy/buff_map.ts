@@ -46,7 +46,7 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     // WHM
     id: 'Asylum',
     type: 'heal',
-    // 777 = you (bubble duration), 778 = you + others (healing).  Use both in case everybody is missed.
+    // 777 = you (bubble), 778 = you + others (healing).  Use both in case everybody is missed.
     effectId: ['777', '778'],
     collectSeconds: 24,
   },
