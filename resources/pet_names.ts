@@ -32,6 +32,7 @@ const data: PetData = {
     '绿宝石迦楼罗',
     '琥珀宝石兽',
     '黑曜宝石兽',
+    '烈日巴哈姆特',
   ],
   'de': [
     'Smaragd-Karfunkel',
