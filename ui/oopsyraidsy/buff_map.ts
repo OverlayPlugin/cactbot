@@ -317,6 +317,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     abilityId: 'E11',
   },
   {
+    id: 'Helios Conjunction',
+    type: 'heal',
+    abilityId: '90A6',
+  },
+  {
     id: 'Celestial Opposition',
     type: 'heal',
     abilityId: '40A9',
