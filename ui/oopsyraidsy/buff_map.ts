@@ -37,6 +37,14 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
 
   // ******************** Healers ******************** //
   {
+    // WHM
+    id: 'Asylum',
+    type: 'heal',
+    // 777 = you (bubble duration), 778 = you + others (healing).  Use both in case everybody is missed.
+    effectId: ['777', '778'],
+    collectSeconds: 24,
+  },
+  {
     // AST
     id: 'Collective Unconscious',
     type: 'mitigation',
