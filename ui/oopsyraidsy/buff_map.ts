@@ -18,14 +18,13 @@ export type MissableAbility = {
 
 export type MissableBuff = MissableAbility | MissableEffect;
 
+// missedEffectBuffMap is for buffs that are solely applied/measured by
+// `GainsEffect`/`LosesEffect` lines, e.g., where there is no corresponding
+// `Ability`/`NetworkAoEAbility` line to indicate the player received the effect.
+// These are commonly used for bubble-type AoE buffs, like WHM's Asylum.
+// If there is an ability line for each affected player, use missedAbilityBuffMap instead.
 export const missedEffectBuffMap: readonly MissableEffect[] = [
-  {
-    // AST
-    id: 'Collective Unconscious',
-    type: 'mitigation',
-    effectId: '351',
-    collectSeconds: 20,
-  },
+  // ******************** Tanks ******************** //
   {
     // PLD
     id: 'Passage of Arms',
@@ -45,6 +44,17 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     ignoreSelf: true,
     collectSeconds: 2,
   },
+
+  // ******************** Healers ******************** //
+  {
+    // AST
+    id: 'Collective Unconscious',
+    type: 'mitigation',
+    effectId: '351',
+    collectSeconds: 20,
+  },
+
+  // ******************** Melee DPS ******************** //
   {
     // RPR heal
     id: 'Crest of Time Returned',
@@ -52,6 +62,8 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     effectId: 'A26',
     collectSeconds: 2,
   },
+
+  // ******************** Physical Ranged DPS ******************** //
   {
     // DNC channeled heal
     id: 'Improvisation',
@@ -59,8 +71,17 @@ export const missedEffectBuffMap: readonly MissableEffect[] = [
     effectId: 'A87',
     collectSeconds: 15,
   },
+
+  // ******************** Magical Ranged DPS ******************** //
+
+  // ******************** Field Operations & Misc. ******************** //
+
 ] as const;
 
+// missedAbilityBuffMap is for buffs/effects that have a corresponding
+// `Ability` / `NetworkAoEAbility` for **each affected player**.  If the effect's application
+// to a particular player can only be measured by `GainsEffect`/`LosesEffect` lines, use
+// missedEffectBuffMap instead.
 export const missedAbilityBuffMap: readonly MissableAbility[] = [
   // ******************** Tanks ******************** //
   {
