@@ -533,6 +533,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     type: 'heal',
     abilityId: '4085',
   },
+  {
+    id: 'Lux Solaris',
+    type: 'heal',
+    abilityId: '9085',
+  },
   // ************ RDM ************ //
   {
     id: 'Embolden',
