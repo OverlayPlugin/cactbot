@@ -555,6 +555,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     type: 'mitigation',
     abilityId: '877E',
   },
+  {
+    id: 'Starry Muse',
+    type: 'damage',
+    abilityId: '8773',
+  },
   // ************ BLU ************ //
   {
     id: 'White Wind',
