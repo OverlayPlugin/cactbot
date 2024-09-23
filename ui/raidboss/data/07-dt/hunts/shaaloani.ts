@@ -28,9 +28,144 @@ const yeheheOutputStrings = {
   next: Outputs.next,
 } as const;
 
+//     SOUTH
+// -------------
+// OFL OF- OFR |Outer
+// IFL IF- IFR |Inner
+// IBL IB- IBR |Inner
+// OBL OB- OBR |Outer
+//   OF  IF  IB  OB
+//   L-R L-R L-R L-R
+// 0b000_000_000_000
+enum TtokSafeSpots {
+  None = 0,
+  Left = 0b100_100_100_100,
+  Right = 0b001_001_001_001,
+  // ------------------
+  In = 0b000_111_111_000,
+  Out = 0b111_000_000_111,
+  Front = 0b111_111_000_000,
+  Back = 0b00_000_111_111,
+  FR_BL = 0b001_001_100_100,
+  FL_BR = 0b100_100_001_001,
+  InRight = TtokSafeSpots.In & TtokSafeSpots.Right,
+  InLeft = TtokSafeSpots.In & TtokSafeSpots.Left,
+}
+
+const ttokrroneTempestSandspoutOutputStrings = {
+  unknown: Outputs.unknown,
+  in: Outputs.getUnder,
+  out: Outputs.outOfMelee,
+  outOfHitbox: {
+    en: 'out of hitbox',
+  },
+  right: Outputs.right,
+  left: Outputs.left,
+  back: Outputs.back,
+  front: Outputs.front,
+  rear: {
+    en: 'rear',
+  },
+  rightFlank: {
+    en: 'right flank',
+  },
+  leftFlank: {
+    en: 'left flank',
+  },
+  avoidSpheres: {
+    en: 'Avoid sand sphere explosions',
+  },
+  triple: {
+    en: '${inOut} and ${dir2} ${dir3}',
+  },
+  double: {
+    en: '${inOut} and ${dir2}',
+  },
+  // single: {
+  //   en: '${inOut}',
+  // },
+  awayFrom: {
+    en: '${out} + avoid ${dir}',
+  },
+} as const;
+
+type Point = { x: number; y: number };
+type TtokrroneDodge = 'in' | 'out' | 'right' | 'left' | 'front' | 'back' | 'unknown';
+// const ttokrroneDesertTempest: { [id: string]: TtokrroneDodge[] } = {
+//   '91D3': ['out'],
+//   '91D4': ['in'],
+//   '91D5': ['in', 'right'],
+//   '91D6': ['in', 'left'],
+// };
+const ttokrroneDesertTempest2: { [id: string]: TtokSafeSpots } = {
+  '91D3': TtokSafeSpots.Out,
+  '91D4': TtokSafeSpots.In,
+  '91D5': TtokSafeSpots.InRight,
+  '91D6': TtokSafeSpots.InLeft,
+};
+const ttokrroneDesertTempestIds = Object.keys(ttokrroneDesertTempest2);
+
+const ttokrroneDustdevilOutputStrings = {
+  outOfHitbox: {
+    en: 'Out of hitbox + stay out',
+  },
+  clockwise: Outputs.clockwise,
+  counterclockwise: Outputs.counterclockwise,
+  rotateFront: {
+    en: 'Rotating frontal cleave', // ${dir}'
+  },
+  rotateRear: {
+    en: 'Rotating rear cleave', // ${dir}'
+  },
+} as const;
+
+const identifyOrbSafeSpots = (pattern: Point[]) => {
+  // Each time Ttokrrone summons sand orbs either 7 or 8 are spawned in 4 patterns.
+  // (these are relative to where the boss faces, which is south)
+  // 7 covering all rel. north
+  // 7 covering all rel. south
+  // 8 covering the rel. NE and SW quadrants with some overlap in the middle
+  // 8 covering the rel. NW and SE quadrants with some overlap in the middle
+  // since each pattern is composed of a quadrant of AOEs we can check for any orbs in each quadrant
+  // (centered around the arena center) and then check the final result to determine the pattern.
+  const detected: boolean[] = [false, false, false, false]; // TL, TR, BL, BR
+  for (const point of pattern) {
+    const xGt = point.x > 53.0;
+    const yGt = point.y > -825.0;
+    detected[0] = !detected[0] ? !xGt && !yGt : detected[0];
+    detected[1] = !detected[1] ? xGt && !yGt : detected[1];
+    detected[2] = !detected[2] ? !xGt && yGt : detected[2];
+    detected[3] = !detected[3] ? xGt && yGt : detected[3];
+  }
+  // Returns the SAFE SPOTS so opposite of what is detected
+  if (detected[0] && detected[1]) {
+    // AOEs all bottom
+    return TtokSafeSpots.Front;
+  }
+  if (detected[2] && detected[3]) {
+    // AOEs all top
+    return TtokSafeSpots.Back;
+  }
+  if (detected[0] && detected[3]) {
+    // AOEs are front left, back right
+    return TtokSafeSpots.FR_BL;
+  }
+  if (detected[1] && detected[2]) {
+    // AOEs are front right, back left
+    return TtokSafeSpots.FL_BR;
+  }
+  console.error('sand pattern not recognized');
+  return TtokSafeSpots.None;
+};
+
 export interface Data extends RaidbossData {
   yeheheTurnBuffs: number[];
   yeheheSecondSafeDir?: YeheheDir;
+  ttokSandOrbs: Point[];
+  ttokSandOrbPatterns: TtokSafeSpots[];
+  ttokSandOrbsLastSeenTimestamp: number;
+  ttokSandOrbSets: number;
+  ttokSandOrbOnSet: number;
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -38,6 +173,11 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.Shaaloani,
   initData: () => ({
     yeheheTurnBuffs: [],
+    ttokSandOrbs: [],
+    ttokSandOrbPatterns: [],
+    ttokSandOrbsLastSeenTimestamp: -1,
+    ttokSandOrbSets: 0,
+    ttokSandOrbOnSet: 0,
   }),
   triggers: [
     // ****** A-RANK: Keheniheyamewi ****** //
@@ -424,6 +564,245 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // ****** Boss Fate: Ttokrrone ****** //
+    // Casts fang/right/left/tail-ward sandspout then turns that way to cleave.
+    // This unfortunately rotates the boss if there happens to be a Tempest after...
+    {
+      id: 'Hunt Ttokrrone Sandspout',
+      type: 'StartsUsing',
+      netRegex: { id: ['91C1', '91C2', '91C3', '91C4'], source: 'Ttokrrone', capture: true },
+      delaySeconds: 0.7,
+      durationSeconds: 4,
+      response: (data, matches, output) => {
+        const pattern = data.ttokSandOrbPatterns[data.ttokSandOrbOnSet];
+        let awaySide = 'front';
+        let dir1: TtokrroneDodge = 'unknown';
+        let dir2: TtokrroneDodge = 'unknown';
+        // cactbot-builtin-response
+        output.responseOutputStrings = ttokrroneTempestSandspoutOutputStrings;
+        // To Improve: This has issues with some combinations
+        if (matches.id === '91C1') {
+          awaySide = output.front!();
+        } else if (matches.id === '91C2') {
+          awaySide = output.rear!();
+        } else if (matches.id === '91C3') {
+          awaySide = output.rightFlank!();
+        } else if (matches.id === '91C4') {
+          awaySide = output.leftFlank!();
+        }
+        if (pattern) {
+          const safeSpot = TtokSafeSpots.Out & pattern;
+          if (safeSpot & TtokSafeSpots.Back) {
+            dir1 = 'back';
+          } else if (safeSpot & TtokSafeSpots.Front) {
+            dir1 = 'front';
+          }
+
+          if (safeSpot & TtokSafeSpots.Right) {
+            dir2 = 'right';
+          } else if (safeSpot & TtokSafeSpots.Left) {
+            dir2 = 'left';
+          }
+          // console.warn(matches.timestamp, safeSpot.toString(2).padStart(12, '0'), pattern, dir1, dir2);
+          data.ttokSandOrbOnSet++;
+          return {
+            alertText: output.triple!({
+              inOut: output.outOfHitbox!(),
+              dir2: output[dir1]!(),
+              dir3: output[dir2]!(),
+            }),
+          };
+        }
+        return {
+          infoText: output.awayFrom!({ out: output.outOfHitbox!(), dir: awaySide }),
+        };
+      },
+    },
+    // The boss does either in; out; in-right + out-left; and out-right + in-left
+    // can be combined with sand orbs explosions.
+    {
+      id: 'Hunt Ttokrrone Desert Tempest',
+      type: 'StartsUsing',
+      netRegex: { id: ttokrroneDesertTempestIds, source: 'Ttokrrone', capture: true },
+      delaySeconds: 0.7,
+      durationSeconds: 6.5,
+      response: (data, matches, output) => {
+        const tempest = ttokrroneDesertTempest2[matches.id]!;
+        const pattern = data.ttokSandOrbPatterns[data.ttokSandOrbOnSet];
+        let inOut: TtokrroneDodge = 'unknown';
+        let dir2: TtokrroneDodge | null = null;
+        let dir3: TtokrroneDodge | null = null;
+        // cactbot-builtin-response
+        output.responseOutputStrings = ttokrroneTempestSandspoutOutputStrings;
+
+        if (tempest & TtokSafeSpots.In) {
+          inOut = 'in';
+        } else if (tempest & TtokSafeSpots.Out) {
+          inOut = 'out';
+        }
+        if (tempest === TtokSafeSpots.InRight) {
+          dir2 = 'right';
+        } else if (tempest === TtokSafeSpots.InLeft) {
+          dir2 = 'left';
+        }
+
+        if (pattern) {
+          const safeSpot = tempest & pattern;
+          if (!dir2 && !(safeSpot & 0b010_010_010_010)) {
+            // if the tempest was only in or out, but the sand pattern needs right or left
+            // console.warn(matches.timestamp, safeSpot, TtokSafeSpots[tempest], pattern);
+            if (safeSpot & TtokSafeSpots.Right) {
+              dir2 = 'right';
+            } else if (safeSpot & TtokSafeSpots.Left) {
+              dir2 = 'left';
+            }
+            console.info(
+              matches.timestamp,
+              safeSpot.toString(2).padStart(12, '0'),
+              `${TtokSafeSpots[tempest]!} ${pattern} ${inOut} ${dir2!} ---`,
+            );
+          }
+          if (safeSpot & TtokSafeSpots.Back) {
+            dir3 = 'back';
+          } else if (safeSpot & TtokSafeSpots.Front) {
+            dir3 = 'front';
+          }
+          // swap in case dir2 is null, and its more natural phrasing
+          [dir2, dir3] = [dir3, dir2];
+          data.ttokSandOrbOnSet++;
+        }
+        if (dir2 && dir3) {
+          return {
+            alertText: output.triple!({
+              inOut: output[inOut]!(),
+              dir2: output[dir2]!(),
+              dir3: output[dir3]!(),
+            }),
+            infoText: output.avoidSpheres!(),
+          };
+        }
+        if (dir2) {
+          return {
+            alertText: output.double!({ inOut: output[inOut]!(), dir2: output[dir2]!() }),
+            // warn to dodge in case something goes wrong and the safe spot can be small
+            infoText: data.ttokSandOrbSets > 0 ? output.avoidSpheres!() : null,
+          };
+        }
+        return {
+          alertText: output[inOut]!(),
+          infoText: data.ttokSandOrbSets > 0 ? output.avoidSpheres!() : null,
+        };
+      },
+    },
+    // Aoe
+    {
+      id: 'Hunt Ttokrrone Touchdown',
+      type: 'StartsUsing',
+      netRegex: { id: '91DB', source: 'Ttokrrone', capture: false },
+      durationSeconds: 4,
+      response: Responses.aoe(),
+      run: (data) => {
+        // Reset everything as orb sequences start with a touchdown.
+        data.ttokSandOrbSets = 0;
+        data.ttokSandOrbOnSet = 0;
+        data.ttokSandOrbs = [];
+        data.ttokSandOrbPatterns = [];
+      },
+    },
+    // Front cleave, rotates C or CCW and cleaves 4 or 7 times (?)
+    {
+      id: 'Hunt Ttokrrone Fangward Dustdevil',
+      type: 'StartsUsing',
+      netRegex: { id: ['91C9', '91C5'], source: 'Ttokrrone', capture: false },
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.outOfHitbox!(),
+      infoText: (_data, _matches, output) => {
+        // let dir = output.clockwise!();
+        // if (_matches.id === '91C9') {
+        //   dir = output.counterclockwise!();
+        // }
+        return output.rotateFront!();
+      },
+      outputStrings: ttokrroneDustdevilOutputStrings,
+    },
+    // Rear cleave (boss turns to do front cleaves) then rotates C or CCW and cleaves 4 or 7 times (?)
+    {
+      id: 'Hunt Ttokrrone Tailward Dustdevil',
+      type: 'StartsUsing',
+      netRegex: { id: ['91CA', '91C6'], source: 'Ttokrrone', capture: false },
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.outOfHitbox!(),
+      infoText: (_data, _matches, output) => {
+        // let dir = output.clockwise!();
+        // if (_matches.id === '91CA') {
+        //   dir = output.counterclockwise!();
+        // }
+        return output.rotateRear!();
+      },
+      outputStrings: ttokrroneDustdevilOutputStrings,
+    },
+    // Dashes around 6 times
+    {
+      id: 'Hunt Ttokrrone Landswallow',
+      type: 'StartsUsing',
+      netRegex: { id: '96F2', source: 'Ttokrrone', capture: false },
+      delaySeconds: 0,
+      durationSeconds: 15,
+      infoText: (_data, _matches, output) => output.dodgeToRight!(),
+      outputStrings: {
+        dodgeToRight: {
+          en: 'Go to safe side of first dash => move in after',
+        },
+      },
+    },
+    // Store any sand spheres that start to explode. Unsure why there are 2 IDs
+    {
+      id: 'Hunt Ttokrrone Sand Spheres Sandburst Collect',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['994D', '994E'] },
+      run: (data, matches) => {
+        // if we have recorded 6 orbs we can identify any pattern
+        if (data.ttokSandOrbs.length >= 6) {
+          const tsNow = Date.parse(matches.timestamp);
+          data.ttokSandOrbPatterns[data.ttokSandOrbOnSet] = identifyOrbSafeSpots(data.ttokSandOrbs);
+          // if there is a second set of orbs and its been >1 second, clear the orb list to record the second set
+          if (
+            data.ttokSandOrbSets === 2 && Math.abs(tsNow - data.ttokSandOrbsLastSeenTimestamp) >= 1
+          ) {
+            data.ttokSandOrbs = [];
+          }
+        }
+        data.ttokSandOrbsLastSeenTimestamp = Date.parse(matches.timestamp);
+        data.ttokSandOrbs.push({ x: parseFloat(matches.x), y: parseFloat(matches.y) });
+      },
+    },
+    // The sand spheres cast "Sandburst" to explode, some patterns have 2 IDs, but it doesn't seem to matter?
+    // {
+    //   id: 'Hunt Ttokrrone Sand Spheres Sandburst',
+    //   type: 'StartsUsing',
+    //   netRegex: { id: ['994D', '994E'], source: 'Sand Sphere', capture: false },
+    //   delaySeconds: 0.2,
+    //   durationSeconds: 5,
+    //   suppressSeconds: 1,
+    //   alertText: (_data, _matches, output) => output.avoidSpheres!(),
+    //   outputStrings: {
+    //     avoidSpheres: {
+    //       en: 'Avoid sand explosions',
+    //     },
+    //   },
+    // },
+    // Orbs summon themselves with "Summoning Sands", is also a smallish ground AOE
+    {
+      id: 'Hunt Ttokrrone Sand Spheres Summon',
+      type: 'StartsUsing',
+      netRegex: { id: '96F7', source: 'Sand Sphere', capture: false },
+      preRun: (data) => {
+        data.ttokSandOrbSets++;
+      },
+      suppressSeconds: 1,
+    },
   ],
   timelineReplace: [
     {
@@ -432,6 +811,8 @@ const triggerSet: TriggerSet<Data> = {
         'Keheniheyamewi': 'Keheniheyamewi',
         'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
         'Sansheya': 'Sansheya',
+        'Ttokrrone': 'Ttokrrone',
+        'Sand Sphere': 'Sandwirbel',
       },
     },
     {
@@ -440,6 +821,8 @@ const triggerSet: TriggerSet<Data> = {
         'Keheniheyamewi': 'Keheniheyamewi',
         'Yehehetoaua\'pyo': 'Yehehetoaua\'pyo',
         'Sansheya': 'Sansheya',
+        'Ttokrrone': 'Ttokrrone',
+        'Sand Sphere': 'Sphère de Sable',
       },
     },
     {
@@ -448,6 +831,8 @@ const triggerSet: TriggerSet<Data> = {
         'Keheniheyamewi': 'ケヘニヘヤメウィ',
         'Yehehetoaua\'pyo': 'エヘヘトーワポ',
         'Sansheya': 'サンシェヤ',
+        'Ttokrrone': 'トクローネ',
+        'Sand Sphere': '砂球',
       },
     },
   ],
