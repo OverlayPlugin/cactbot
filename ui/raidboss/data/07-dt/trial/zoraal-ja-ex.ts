@@ -444,9 +444,15 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         if (safeSide === 'west' && safeTiles.includes('insideWest'))
-          return output.insideWest!();
+          if (safeTiles.includes('insideNorth'))
+            return output.insideWest!();
+          else
+            return output.insideWestDiamond!();
         else if (safeSide === 'east' && safeTiles.includes('insideEast'))
-          return output.insideEast!();
+          if (safeTiles.includes('insideNorth'))
+            return output.insideEast!();
+          else
+            return output.insideEastDiamond!();
         else if (safeTiles.includes('insideNorth'))
           return output.insideNS!({ lean: leanOutput });
         else if (safeSide === 'east')
@@ -456,6 +462,9 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.unsafeTiles = [],
       outputStrings: {
         insideWest: {
+          en: 'Inside West',
+        },
+        insideWestDiamond: {
           en: 'Inner West Diamond',
           de: 'Innerer Westlicher Diamant',
           fr: 'Diamant intérieur Ouest',
@@ -464,6 +473,9 @@ const triggerSet: TriggerSet<Data> = {
           ko: '안 왼쪽 칸',
         },
         insideEast: {
+          en: 'Inside East',
+        },
+        insideEastDiamond: {
           en: 'Inner East Diamond',
           de: 'Innerer Östlicher Diamant',
           fr: 'Diamant intérieur Est',
