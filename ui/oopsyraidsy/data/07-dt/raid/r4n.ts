@@ -7,7 +7,7 @@ export type Data = OopsyData;
 // TODO:
 //  - Add trigger for missing Wicked Bolt (stack)
 //  - Add trigger for missing Soaring Soulpress (stack)
-//  - Do something more with Right/Left Roll? 3+ hits?
+//  - Do something more with Stampeding Thunder? 3+ hits?
 
 const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.AacLightHeavyweightM3,
@@ -21,8 +21,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
 
     // The Wicked Cannon ids are all over the place... /shrug
     'R4N Wicked Cannon Initial': '4E40', // first cannon, can be N or S
-    'R4N Wicked Cannon Subsequent North': '9BAC', // not the first or last, hits N
-    'R4N Wicked Cannon Subsequent South': '9BBE', // not the first or last, hits S
+    'R4N Wicked Cannon Subsequent North': '9BAC', // not the first or last cannon, hits N
+    'R4N Wicked Cannon Subsequent South': '9BBE', // not the first or last cannon, hits S
     'R4N Wicked Cannon Final South': '92AE', // last cannon, hits S
     'R4N Wicked Cannon Final North': '92AF', // last cannon, hits N
 
@@ -37,7 +37,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
   shareWarn: {
     'R4N Wicked Jolt': '92C8', // buster line cleave
     'R4N Thunderstorm': '92C5', // spread circle AoEs
-  }
+  },
 };
 
 export default triggerSet;
