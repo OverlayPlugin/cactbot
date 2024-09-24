@@ -380,6 +380,12 @@ Options.Triggers.push({
         '(?<! )Punutiy': '海牛',
       },
       'replaceText': {
+        '\\(cast\\)': '(咏唱)',
+        '\\(inner ring\\)': '(内环)',
+        '\\(large\\)': '(大)',
+        '\\(outer ring\\)': '(外环)',
+        '\\(puddle\\)': '(圈)',
+        '\\(small\\)': '(小)',
         'Arise': '出现',
         'Blade(?!s )': '镰击',
         'Blades of Famine': '飞蝗之刃',

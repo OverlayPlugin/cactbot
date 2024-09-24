@@ -93,6 +93,7 @@ Options.Triggers.push({
           en: 'Stack => Away From Front',
           de: 'Sammeln => Weg von Vorne',
           fr: 'Package => Loin du devant',
+          cn: '集合 => 远离正面',
         },
       },
     },
@@ -157,6 +158,14 @@ Options.Triggers.push({
         'Starcrier': '幻煌鳥',
         'Rrax Yity\'a': 'ラシュイチャ',
         'Neyoozoteel': 'ネヨーゾテール',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Starcrier': '幻煌鸟',
+        'Rrax Yity\'a': '血鸣鼠',
+        'Neyoozoteel': '内尤佐缇',
       },
     },
   ],

@@ -236,5 +236,13 @@ Options.Triggers.push({
         'The Forecaster': 'ウェザーリポーター',
       },
     },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Cat\'s Eye': '猫眼',
+        'Sally the Sweeper': '清除者萨利',
+        'The Forecaster': '天气预报机器人',
+      },
+    },
   ],
 });

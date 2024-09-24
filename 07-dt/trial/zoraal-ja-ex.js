@@ -1207,6 +1207,10 @@ Options.Triggers.push({
         'Zoraal Ja': '佐拉加',
       },
       'replaceText': {
+        '\\(cast\\)': '(咏唱)',
+        '\\(damage\\)': '(伤害)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(lines drop\\)': '(直线落下)',
         'Actualize': '自我实现',
         'Aero III': '暴风',
         'Backward Edge': '后向斩',
