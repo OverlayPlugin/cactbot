@@ -30,7 +30,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'R3N Explosive Rain Baited': '968D', // baited circle AoEs
   },
   gainsEffectWarn: {
-    'R3N Burns': 'BF9', // stepping into wall
+    'R3N Burns': 'BF9', // walking into wall
   },
 };
 
