@@ -1,7 +1,7 @@
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
-import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
+import { DirectionOutput8, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
@@ -23,7 +23,7 @@ type B9AMapKeys = keyof typeof effectB9AMap;
 type B9AMapValues = typeof effectB9AMap[B9AMapKeys];
 
 const directionOutputStrings = {
-  ...Directions.outputStringsCardinalDir,
+  ...Directions.outputStrings8Dir,
   unknown: Outputs.unknown,
   goLeft: Outputs.left,
   goRight: Outputs.right,
@@ -34,6 +34,9 @@ const directionOutputStrings = {
     ja: ' => ',
     cn: ' => ',
     ko: ' => ',
+  },
+  intercardStay: {
+    en: '${dir} => Stay',
   },
   combo: {
     en: '${dirs}',
@@ -86,8 +89,8 @@ const isEffectB9AValue = (value: string | undefined): value is B9AMapValues => {
 const getCleaveDirs = (
   actors: PluginCombatantState[],
   storedCleaves: StoredCleave[],
-): DirectionOutputCardinal[] => {
-  return storedCleaves.map((entry) => {
+): DirectionOutput8[] => {
+  const dirs: DirectionOutput8[] = storedCleaves.map((entry) => {
     const actor = actors.find((actor) => actor.ID === entry.id);
     if (actor === undefined)
       return 'unknown';
@@ -95,6 +98,22 @@ const getCleaveDirs = (
     const offset = entry.dir === 'left' ? 1 : -1;
     return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
   });
+
+  // Check if all directions lead to the same intercard. If so, there's no
+  // reason to call a sequence. We don't need to check the cardinals,
+  // because it will only be true either when there is exactly one element,
+  // or in the extremely unlikely event that every clone pointed in the same
+  // direction.
+  if (dirs.every((dir) => ['dirN', 'dirE'].includes(dir)))
+    return ['dirNE'];
+  if (dirs.every((dir) => ['dirS', 'dirE'].includes(dir)))
+    return ['dirSE'];
+  if (dirs.every((dir) => ['dirS', 'dirW'].includes(dir)))
+    return ['dirSW'];
+  if (dirs.every((dir) => ['dirN', 'dirW'].includes(dir)))
+    return ['dirNW'];
+
+  return dirs;
 };
 
 const npcYellData = {
@@ -301,10 +320,18 @@ const triggerSet: TriggerSet<Data> = {
           id: actorID,
         });
 
+        const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, data.storedCleaves);
+        if (dirs.length === 1) {
+          // Stop any future callouts, since we know its safe to stay now
+          data.storedCleaves = [];
+          const dir = dirs[0]!;
+          const mappedDir = output[dir]!();
+          return output.intercardStay!({ dir: mappedDir });
+        }
+
         if (data.triggerSetConfig.sidewiseSpark !== 'collected')
           return;
 
-        const dirs = getCleaveDirs(data.actors, data.storedCleaves);
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
         return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
