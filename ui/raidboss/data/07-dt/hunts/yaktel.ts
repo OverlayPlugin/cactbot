@@ -110,6 +110,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Sammeln => Weg von Vorne',
           fr: 'Package => Loin du devant',
           cn: '集合 => 远离正面',
+          ko: '쉐어 => 보스 전방 피하기',
         },
       },
     },
