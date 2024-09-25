@@ -1,7 +1,7 @@
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
-import { Directions } from '../../../../../resources/util';
+import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
@@ -45,16 +45,18 @@ const directionOutputStrings = {
   },
 } as const;
 
+type StoredCleave = {
+  id: number;
+  dir: 'left' | 'right';
+};
+
 export interface Data extends RaidbossData {
   expectedBlasts: 0 | 3 | 4 | 5;
   storedBlasts: B9AMapValues[];
   // expectedCleaves is either 1 or 5, due to the amount of time between the first
   // and second clone cleaves at the start of the encounter
   expectedCleaves: 1 | 5;
-  storedCleaves: {
-    id: number;
-    dir: 'left' | 'right';
-  }[];
+  storedCleaves: StoredCleave[];
   actors: PluginCombatantState[];
   sidewiseSparkCounter: number;
   storedWitchHuntCast?: NetMatches['StartsUsingExtra'];
@@ -76,6 +78,20 @@ const isEffectB9AValue = (value: string | undefined): value is B9AMapValues => {
   if (value === undefined)
     return false;
   return Object.values<string>(effectB9AMap).includes(value);
+};
+
+const getCleaveDirs = (
+  actors: PluginCombatantState[],
+  storedCleaves: StoredCleave[],
+): DirectionOutputCardinal[] => {
+  return storedCleaves.map((entry) => {
+    const actor = actors.find((actor) => actor.ID === entry.id);
+    if (actor === undefined)
+      return 'unknown';
+    const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
+    const offset = entry.dir === 'left' ? 1 : -1;
+    return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
+  });
 };
 
 const npcYellData = {
@@ -190,16 +206,10 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 7.3,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const dirs = data.storedCleaves.map((entry) => {
-          const actor = data.actors.find((actor) => actor.ID === entry.id);
-          if (actor === undefined)
-            return output.unknown!();
-          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
-          const offset = entry.dir === 'left' ? 1 : -1;
-          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
-        }).map((dir) => output[dir]!());
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves);
+        const mappedDirs = dirs.map((dir) => output[dir]!());
 
-        return output.combo!({ dirs: dirs.join(output.separator!()) });
+        return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
       run: (data) => {
         if (data.expectedCleaves === 1)
@@ -261,14 +271,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.sidewiseSparkCounter === 0)
           return ['92BC', '92BE'].includes(matches.id) ? output.goLeft!() : output.goRight!();
 
-        const dirs = data.storedCleaves.map((entry) => {
-          const actor = data.actors.find((actor) => actor.ID === entry.id);
-          if (actor === undefined)
-            return output.unknown!();
-          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
-          const offset = entry.dir === 'left' ? 1 : -1;
-          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
-        });
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves);
 
         dirs.push(['92BC', '92BE'].includes(matches.id) ? 'dirW' : 'dirE');
 
