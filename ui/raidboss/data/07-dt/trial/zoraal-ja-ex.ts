@@ -183,6 +183,9 @@ const stayGoOutputStrings: OutputStrings = {
 };
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    chasmVollokPriority: 'inside' | 'north' | 'south' | 'northSouth';
+  };
   phase: Phase;
   unsafeTiles: TileName[];
   forgedTrackSafeTiles: TileName[];
@@ -202,6 +205,27 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'EverkeepExtreme',
   zoneId: ZoneId.EverkeepExtreme,
+  config: [
+    {
+      id: 'chasmVollokPriority',
+      name: {
+        en: 'Chasm of Vollok Safe Spot Priority',
+      },
+      comment: {
+        en: 'Select which safe spots have priority during callouts.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Inside Tiles': 'inside',
+          'North and South Corner': 'northSouth',
+          'North Corner': 'north',
+          'South Corner': 'south',
+        },
+      },
+      default: 'inside',
+    },
+  ],
   timelineFile: 'zoraal-ja-ex.txt',
   initData: () => {
     return {
@@ -431,26 +455,66 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.phase === 'swords' && !data.seenHalfCircuit,
       durationSeconds: 6,
       alertText: (data, matches, output) => {
-        // To make this call somewhat reasonable, use the following priority system
-        // for calling a safe tile, depending on sword cleave:
+        // To make this call somewhat reasonable, we need a priority system
+        // for which tiles to call.
+        //
+        // This is configurable with the following options:
+        //
+        // inside tiles:
         //   1. insideEast/insideWest
         //   2. insideNorth/insideSouth, lean E/W
         //   3. If all inside are bad, the outer intercard pairs (E/W depending on cleave)
+        //
+        // north and south corners:
+        //   1. north/south corner, lean E/W
+        //   2. insideNorth/insideSouth, lean E/W
+        //   3. outer intercard pairs (E/W) depending on cleave
+        //
+        // north corner:
+        //   Same as north/south, but call only the north side
+        //
+        // south corner:
+        //   Same as north/South, but call only the south side
         const safeSide = matches.id === '9368' ? 'west' : 'east';
         const leanOutput = matches.id === '9368' ? output.leanWest!() : output.leanEast!();
 
-        const safeTiles = tileNames.filter((tile) => !data.unsafeTiles.includes(tile));
+        const safeTiles: TileName[] = tileNames.filter((tile) => !data.unsafeTiles.includes(tile));
         if (safeTiles.length !== 8)
           return;
 
-        if (safeSide === 'west' && safeTiles.includes('insideWest'))
-          return output.insideWest!();
-        else if (safeSide === 'east' && safeTiles.includes('insideEast'))
+        const insidePriority: TileName[] = ['insideEast', 'insideNorth'];
+        const northSouthPriority: TileName[] = ['northCorner', 'insideNorth'];
+
+        const priority = data.triggerSetConfig.chasmVollokPriority === 'inside'
+          ? insidePriority
+          : northSouthPriority;
+
+        const safeTile = priority.find((tile) => safeTiles.includes(tile));
+
+        if (safeTile === 'insideEast') {
+          // insideEast is always safe together with insideWest
+          if (safeSide === 'west')
+            return output.insideWest!();
           return output.insideEast!();
-        else if (safeTiles.includes('insideNorth'))
+        } else if (safeTile === 'insideNorth') {
+          // insideNorth is always safe together with insideSouth
+          if (data.triggerSetConfig.chasmVollokPriority === 'north')
+            return output.insideN!({ lean: leanOutput });
+          if (data.triggerSetConfig.chasmVollokPriority === 'south')
+            return output.insideS!({ lean: leanOutput });
           return output.insideNS!({ lean: leanOutput });
-        else if (safeSide === 'east')
+        } else if (safeTile === 'northCorner') {
+          // northCorner is always safe together with southCorner
+          if (data.triggerSetConfig.chasmVollokPriority === 'north')
+            return output.cornerN!({ lean: leanOutput });
+          if (data.triggerSetConfig.chasmVollokPriority === 'south')
+            return output.cornerS!({ lean: leanOutput });
+          return output.cornerNS!({ lean: leanOutput });
+        }
+        // If none of the above were safe, the outer intercards are.
+        if (safeSide === 'east') {
           return output.intercardsEast!();
+        }
         return output.intercardsWest!();
       },
       run: (data) => data.unsafeTiles = [],
@@ -478,6 +542,21 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 南/北の床へ - ${lean}',
           cn: '内侧 上(北)/下(南)地板 - ${lean}',
           ko: '안 남/북쪽 칸 - ${lean}',
+        },
+        insideN: {
+          en: 'Inner North Diamond - ${lean}',
+        },
+        insideS: {
+          en: 'Inner South Diamond - ${lean}',
+        },
+        cornerNS: {
+          en: 'North/South Corner Diamonds - ${lean}',
+        },
+        cornerN: {
+          en: 'North Corner Diamond - ${lean}',
+        },
+        cornerS: {
+          en: 'South Corner Diamond - ${lean}',
         },
         leanWest: {
           en: 'Lean West',
@@ -1107,20 +1186,41 @@ const triggerSet: TriggerSet<Data> = {
         // 1. All inside tiles safe.
         // 2. No inside tiles safe (all intercard pairs safe).
         // 3-6.  Inside East&West OR North&South safe.
-        const safeTiles = tileNames.filter((tile) => !data.unsafeTiles.includes(tile));
+        const safeTiles: TileName[] = tileNames.filter((tile) => !data.unsafeTiles.includes(tile));
         if (safeTiles.length !== 8)
           return;
 
-        const eastWestSafe = safeTiles.includes('insideEast') && safeTiles.includes('insideWest');
-        const northSouthSafe = safeTiles.includes('insideNorth') &&
-          safeTiles.includes('insideSouth');
+        const insidePriority: TileName[] = ['insideEast', 'insideNorth'];
+        const northSouthPriority: TileName[] = ['northCorner', 'insideNorth'];
 
-        if (eastWestSafe && northSouthSafe)
+        const priority = data.triggerSetConfig.chasmVollokPriority === 'inside'
+          ? insidePriority
+          : northSouthPriority;
+
+        const safeTile = priority.find((tile) => safeTiles.includes(tile));
+        const insideSafe = safeTiles.includes('insideEast') && safeTiles.includes('insideNorth');
+
+        if (insideSafe) {
+          // Always prefer inside safe first
           return output.inside!();
-        else if (eastWestSafe)
+        } else if (safeTile === 'insideEast') {
+          // insideEast is always safe together with insideWest
           return output.eastWest!();
-        else if (northSouthSafe)
-          return output.northSouth!();
+        } else if (safeTile === 'insideNorth') {
+          // insideNorth is always safe together with insideSouth
+          if (data.triggerSetConfig.chasmVollokPriority === 'north')
+            return output.insideN!();
+          if (data.triggerSetConfig.chasmVollokPriority === 'south')
+            return output.insideS!();
+          return output.insideNS!();
+        } else if (safeTile === 'northCorner') {
+          // northCorner is always safe together with southCorner
+          if (data.triggerSetConfig.chasmVollokPriority === 'north')
+            return output.cornerN!();
+          if (data.triggerSetConfig.chasmVollokPriority === 'south')
+            return output.cornerS!();
+          return output.cornerNS!();
+        }
         return output.intercard!();
       },
       run: (data) => data.unsafeTiles = [],
@@ -1141,13 +1241,28 @@ const triggerSet: TriggerSet<Data> = {
           cn: '内侧 右(东)/左(西)安全',
           ko: '안쪽 동/서 안전',
         },
-        northSouth: {
+        insideNS: {
           en: 'Inside North/South Safe',
           de: 'Innen Norden/Süden sicher',
           fr: 'Intérieur Nord/Sud sûr',
           ja: '内側 北/南が安地',
           cn: '内侧 上(北)/下(南)安全',
           ko: '안쪽 북/남 안전',
+        },
+        insideN: {
+          en: 'Inside North Safe',
+        },
+        insideS: {
+          en: 'Inside South Safe',
+        },
+        cornerNS: {
+          en: 'North/South Corners Safe',
+        },
+        cornerN: {
+          en: 'North Corner Safe',
+        },
+        cornerS: {
+          en: 'South Corner Safe',
         },
         intercard: {
           en: 'Outside Intercards Safe (Avoid Corners)',
