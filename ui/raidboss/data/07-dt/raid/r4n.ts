@@ -51,6 +51,9 @@ type StoredCleave = {
 };
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    sidewiseSpark: 'collected' | 'sequence';
+  };
   expectedBlasts: 0 | 3 | 4 | 5;
   storedBlasts: B9AMapValues[];
   // expectedCleaves is either 1 or 5, due to the amount of time between the first
@@ -130,6 +133,25 @@ const headMarkerData = {
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM4',
   zoneId: ZoneId.AacLightHeavyweightM4,
+  config: [
+    {
+      id: 'sidewiseSpark',
+      name: {
+        en: 'Sidewise Spark Clone Callout Method',
+      },
+      comment: {
+        en: 'Select how to callout Sidewise Spark cleaves from clones.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Sequence of moves as cleaves finish': 'sequence',
+          'Collect all cleaves and call once': 'collected',
+        },
+      },
+      default: 'collected',
+    },
+  ],
   timelineFile: 'r4n.txt',
   initData: () => ({
     expectedBlasts: 0,
@@ -267,22 +289,53 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: true },
       durationSeconds: 7.3,
       infoText: (data, matches, output) => {
+        const cleaveDir = ['92BC', '92BE'].includes(matches.id) ? 'right' : 'left';
+        const actorID = parseInt(matches.sourceId, 16);
+
         // If this is the first cleave, it's boss relative because boss isn't fixed north
-        if (data.sidewiseSparkCounter === 0)
-          return ['92BC', '92BE'].includes(matches.id) ? output.goLeft!() : output.goRight!();
+        if (data.storedCleaves.length === 0)
+          return cleaveDir === 'right' ? output.goLeft!() : output.goRight!();
+
+        data.storedCleaves.push({
+          dir: cleaveDir,
+          id: actorID,
+        });
+
+        if (data.triggerSetConfig.sidewiseSpark !== 'collected')
+          return;
 
         const dirs = getCleaveDirs(data.actors, data.storedCleaves);
-
-        dirs.push(['92BC', '92BE'].includes(matches.id) ? 'dirW' : 'dirE');
-
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
         return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
-      run: (data) => {
-        data.storedCleaves = [];
+      outputStrings: directionOutputStrings,
+    },
+    {
+      id: 'R4N Sidewise Spark Hit',
+      type: 'Ability',
+      netRegex: { id: ['9A05', '9A0F'], source: 'Wicked Replica', capture: false },
+      condition: (data, _matches) => data.triggerSetConfig.sidewiseSpark === 'sequence',
+      durationSeconds: 2,
+      infoText: (data, _matches, output) => {
+        data.storedCleaves.shift();
+
+        if (data.storedCleaves.length === 0)
+          return;
+
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves);
+        const mappedDirs = dirs.map((dir) => output[dir]!());
+
+        return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
       outputStrings: directionOutputStrings,
+    },
+    {
+      id: 'R4N Sidewise Spark Cleanup',
+      type: 'Ability',
+      // IDs for safe spots are C/E = left safe, D/F = right safe
+      netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: false },
+      run: (data) => data.storedCleaves = [],
     },
     {
       id: 'R4N Left Roll',
