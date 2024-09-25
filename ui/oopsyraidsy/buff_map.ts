@@ -556,6 +556,11 @@ export const missedAbilityBuffMap: readonly MissableAbility[] = [
     type: 'damage',
     abilityId: '8773',
   },
+  {
+    id: 'Star Prism',
+    type: 'heal',
+    abilityId: '877A', // 8779 is the damage component
+  },
   // ************ BLU ************ //
   {
     id: 'White Wind',
