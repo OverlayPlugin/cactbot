@@ -116,6 +116,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack (face toward target)',
+          cn: '分摊 (面向目标)',
         },
       },
     },
