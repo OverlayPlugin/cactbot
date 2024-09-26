@@ -96,6 +96,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stack (face toward target)',
+          cn: '分摊 (面向目标)',
         },
       },
     },
