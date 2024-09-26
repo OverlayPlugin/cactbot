@@ -444,7 +444,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Zoraal Ja Ex Half Circuit Left/Right Collect',
+      id: 'ZoraalJa Half Circuit Left/Right Collect',
       type: 'StartsUsing',
       // 936B - Right Sword (left safe)
       // 936C - Left Sword (right safe)
@@ -452,7 +452,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => data.halfCircuitSafeSide = matches.id === '936B' ? 'left' : 'right',
     },
     {
-      id: 'Zoraal Ja Ex Half Circuit',
+      id: 'ZoraalJa Half Circuit',
       type: 'StartsUsing',
       // 936E - Swords Out (in safe)
       // 936F - Swords In (out safe)
