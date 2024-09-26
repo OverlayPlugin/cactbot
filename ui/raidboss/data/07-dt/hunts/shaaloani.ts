@@ -152,6 +152,7 @@ export interface Data extends RaidbossData {
   ttokSandOrbsLastSeenTimestamp: number;
   ttokSandOrbSets: number;
   ttokSandOrbOnSet: number;
+  ttokRotated: number;
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -164,6 +165,7 @@ const triggerSet: TriggerSet<Data> = {
     ttokSandOrbsLastSeenTimestamp: -1,
     ttokSandOrbSets: 0,
     ttokSandOrbOnSet: 0,
+    ttokRotated: 0,
   }),
   triggers: [
     // ****** A-RANK: Keheniheyamewi ****** //
@@ -562,26 +564,31 @@ const triggerSet: TriggerSet<Data> = {
         const pattern = data.ttokSandOrbPatterns[data.ttokSandOrbOnSet];
         let sandspoutPattern = TtokSafeSpots.Out;
         let awaySide = 'front';
+        let rotation = 0;
         let dir1: TtokrroneDodge = 'unknown';
         let dir2: TtokrroneDodge = 'unknown';
         // cactbot-builtin-response
         output.responseOutputStrings = ttokrroneTempestSandspoutOutputStrings;
 
         if (matches.id === '91C1') { // front cleave
-          sandspoutPattern &= 0b101_101_000_000;
+          sandspoutPattern = 0b101_000_000_111; // except in front
           awaySide = output.front!();
+          rotation = 0;
         } else if (matches.id === '91C2') { // back cleave
-          sandspoutPattern &= 0b000_000_0101_101;
+          sandspoutPattern = 0b111_000_000_101; // except behind
           awaySide = output.rear!();
+          rotation = 2;
         } else if (matches.id === '91C3') { // right cleave
           awaySide = output.rightFlank!();
+          rotation = 1;
         } else if (matches.id === '91C4') { // left cleave
           awaySide = output.leftFlank!();
+          rotation = 3;
         }
 
         if (pattern) {
           const safeSpot = sandspoutPattern & pattern;
-          let backFrontSpot: TtokSafeSpots = 4095; // all ones in case this is not set
+          let backFrontSpot: TtokSafeSpots = 0b111_111_111_111;
           if (safeSpot & TtokSafeSpots.Back) {
             backFrontSpot = TtokSafeSpots.Back;
             dir1 = 'back';
@@ -596,6 +603,7 @@ const triggerSet: TriggerSet<Data> = {
             dir2 = 'left';
           }
           data.ttokSandOrbOnSet++;
+          data.ttokRotated = rotation;
           return {
             alertText: output.triple!({
               inOut: output.outOfHitbox!(),
@@ -609,7 +617,7 @@ const triggerSet: TriggerSet<Data> = {
         };
       },
     },
-    // The boss does either in; out; in-right + out-left; and out-right + in-left
+    // The boss does either in; out; in-right + out-left; or out-right + in-left
     // can be combined with sand orbs explosions.
     {
       id: 'Hunt Ttokrrone Desert Tempest',
@@ -622,7 +630,7 @@ const triggerSet: TriggerSet<Data> = {
         let inOut: TtokrroneDodge = 'unknown';
         let dir2: TtokrroneDodge | null = null;
         let dir3: TtokrroneDodge | null = null;
-        let backFrontSpot: TtokSafeSpots = 4095; // all ones in case this is not set
+        let backFrontSpot: TtokSafeSpots = 0b111_111_111_111;
 
         if (tempest & TtokSafeSpots.In) {
           inOut = 'in';
@@ -635,7 +643,7 @@ const triggerSet: TriggerSet<Data> = {
           dir2 = 'left';
         }
 
-        if (pattern) {
+        if (pattern && data.ttokRotated === 0) {
           const safeSpot = tempest & pattern;
 
           if (safeSpot & TtokSafeSpots.Back) {
@@ -685,6 +693,7 @@ const triggerSet: TriggerSet<Data> = {
         data.ttokSandOrbOnSet = 0;
         data.ttokSandOrbs = [];
         data.ttokSandOrbPatterns = [];
+        data.ttokRotated = 0;
       },
     },
     // Front cleave, rotates C or CCW and cleaves 4 or 7 times (maybe health dependent?)
