@@ -4,7 +4,9 @@ import { OopsyTriggerSet } from '../../../../../types/oopsy';
 
 export type Data = OopsyData;
 
-// TODO: Add trigger for missing Brutal Burn (stack)
+// TODO:
+//   - Add trigger for missing Brutal Burn (stack)
+//   - Add trigger for Knuckle Sandwich (shared buster)
 
 const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.AacLightHeavyweightM3,
