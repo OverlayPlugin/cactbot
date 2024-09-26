@@ -109,6 +109,8 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stack => Away From Front',
           de: 'Sammeln => Weg von Vorne',
           fr: 'Package => Loin du devant',
+          cn: '集合 => 远离正面',
+          ko: '쉐어 => 보스 전방 피하기',
         },
       },
     },
@@ -173,6 +175,14 @@ const triggerSet: TriggerSet<Data> = {
         'Starcrier': '幻煌鳥',
         'Rrax Yity\'a': 'ラシュイチャ',
         'Neyoozoteel': 'ネヨーゾテール',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Starcrier': '幻煌鸟',
+        'Rrax Yity\'a': '血鸣鼠',
+        'Neyoozoteel': '内尤佐缇',
       },
     },
   ],

@@ -9380,6 +9380,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '丛林竞流生息河岸',
       'de': 'Ihuykatumu',
       'en': 'Ihuykatumu',
       'fr': 'La Remontée de l\'Ihuykatumu',
@@ -9569,6 +9570,7 @@ const data: ZoneInfoType = {
   1185: {
     'exVersion': 5,
     'name': {
+      'cn': '图莱尤拉',
       'de': 'Tuliyollal',
       'en': 'Tuliyollal',
       'fr': 'Tuliyollal',
@@ -9582,6 +9584,7 @@ const data: ZoneInfoType = {
   1186: {
     'exVersion': 5,
     'name': {
+      'cn': '九号解决方案',
       'de': 'Lösung Neun',
       'en': 'Solution Nine',
       'fr': 'Solution Neuf',
@@ -9595,6 +9598,7 @@ const data: ZoneInfoType = {
   1187: {
     'exVersion': 5,
     'name': {
+      'cn': '奥阔帕恰山',
       'de': 'Urqopacha',
       'en': 'Urqopacha',
       'fr': 'Urqopacha',
@@ -9608,6 +9612,7 @@ const data: ZoneInfoType = {
   1188: {
     'exVersion': 5,
     'name': {
+      'cn': '克扎玛乌卡湿地',
       'de': 'Kozama\'uka',
       'en': 'Kozama\'uka',
       'fr': 'Kozama\'uka',
@@ -9621,6 +9626,7 @@ const data: ZoneInfoType = {
   1189: {
     'exVersion': 5,
     'name': {
+      'cn': '亚克特尔树海',
       'de': 'Yak T\'el',
       'en': 'Yak T\'el',
       'fr': 'Yak T\'el',
@@ -9634,6 +9640,7 @@ const data: ZoneInfoType = {
   1190: {
     'exVersion': 5,
     'name': {
+      'cn': '夏劳尼荒野',
       'de': 'Shaaloani',
       'en': 'Shaaloani',
       'fr': 'Shaaloani',
@@ -9647,6 +9654,7 @@ const data: ZoneInfoType = {
   1191: {
     'exVersion': 5,
     'name': {
+      'cn': '遗产之地',
       'de': 'Ewiges Erbe',
       'en': 'Heritage Found',
       'fr': 'L\'Hoirie recouvrée',
@@ -9660,6 +9668,7 @@ const data: ZoneInfoType = {
   1192: {
     'exVersion': 5,
     'name': {
+      'cn': '活着的记忆',
       'de': 'Lebende Erinnerung',
       'en': 'Living Memory',
       'fr': 'La Mémoire vivante',
@@ -9674,6 +9683,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '通天绝壁沃刻佐莫山',
       'de': 'Worqor Zormor',
       'en': 'Worqor Zormor',
       'fr': 'Worqor Zormor',
@@ -9688,6 +9698,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '神圣禁地深空天坑',
       'de': 'Himmelstiefer Cenote',
       'en': 'The Skydeep Cenote',
       'fr': 'Le cénote des Cieux infinis',
@@ -9702,6 +9713,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '艳翼蛇鸟歼灭战',
       'de': 'Zel Tajaal - Valigarmanda',
       'en': 'Worqor Lar Dor',
       'fr': 'Worqor Lar Dor',
@@ -9716,6 +9728,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '艳翼蛇鸟歼殛战',
       'de': 'Gok Tajaal - Valigarmanda',
       'en': 'Worqor Lar Dor (Extreme)',
       'fr': 'Worqor Lar Dor (extrême)',
@@ -9730,6 +9743,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '前哨基地先锋营',
       'de': 'Der Außenposten',
       'en': 'Vanguard',
       'fr': 'L\'Avant-garde',
@@ -9744,6 +9758,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '忆中金曦亚历山德里亚',
       'de': 'Alexandria',
       'en': 'Alexandria',
       'fr': 'Alexandrie',
@@ -9758,6 +9773,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '佐拉加歼灭战',
       'de': 'Zel Tajaal - Zoraal Ja',
       'en': 'Everkeep',
       'fr': 'Le Pinacle de l\'Éternité',
@@ -9772,6 +9788,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '佐拉加歼殛战',
       'de': 'Gok Tajaal - Zoraal Ja',
       'en': 'Everkeep (Extreme)',
       'fr': 'Le Pinacle de l\'Éternité (extrême)',
@@ -9786,6 +9803,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '永恒女王歼灭战',
       'de': 'Zel Tajaal - Ewige Königin',
       'en': 'The Interphos',
       'fr': 'Interphos',
@@ -9800,6 +9818,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '荒野秘境仙人刺谷',
       'de': 'Kaktorsenke',
       'en': 'Tender Valley',
       'fr': 'La Vallée des Pampas',
@@ -9814,6 +9833,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '噩梦乐园迷途鬼区',
       'de': 'Mahrlingen-Promenade',
       'en': 'The Strayborough Deadwalk',
       'fr': 'Le Parc-aux-Errants',
@@ -9828,6 +9848,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '魂魄工厂创生设施',
       'de': 'Origenik',
       'en': 'Origenics',
       'fr': 'L\'Origenèse',
@@ -9856,6 +9877,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '一位国王，一位父亲',
       'de': 'Des Vaters viele Sorgen',
       'en': 'A Father First',
       'fr': 'L\'Aurarque et le père',
@@ -9870,6 +9892,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '为守护笑容而战',
       'de': 'Mit scharfer Axt und leichtem Lächeln',
       'en': 'Taking a Stand',
       'fr': 'Préserver la paix',
@@ -9884,6 +9907,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '友之试炼',
       'de': 'Von Schuld und Sühne',
       'en': 'The Feat of the Brotherhood',
       'fr': 'L\'épreuve de l\'amitié',
@@ -9898,6 +9922,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '守护者还是毁灭者',
       'de': 'Schützer des Volkes, Schlächter des Volkes',
       'en': 'The Protector and the Destroyer',
       'fr': 'Protecteurs et destructeurs',
@@ -9912,6 +9937,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '不论酣睡还是无眠',
       'de': 'Neue Bande der Freund­schaft',
       'en': 'Dreams of a New Day',
       'fr': 'Rêves éveillés',
@@ -9926,6 +9952,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '剧毒与康复的巅峰对决',
       'de': 'Heilkunst gegen Hexerei',
       'en': 'An Antidote for Anarchy',
       'fr': 'Les deux faces du scorpion',
@@ -9940,6 +9967,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '无可指摘的猎人',
       'de': 'Krönender Abschuss',
       'en': 'A Hunter True',
       'fr': 'Chasseuse à lunettes... chasseuse honnête',
@@ -9954,6 +9982,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '打倒！沙尔托菲特盗贼团',
       'de': 'Der mächtigste Schild',
       'en': 'The Mightiest Shield',
       'fr': 'Mauvais cru pour Chalteaufite',
@@ -9968,6 +9997,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '祭器创造的假象',
       'de': 'Ein Mythos in Trümmern',
       'en': 'Heroes and Pretenders',
       'fr': 'Le château de cartes s\'effondre',
@@ -10094,6 +10124,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '旅行画家的森都旅程',
       'de': 'Nächtliche Ruhestörung',
       'en': 'Mind over Manor',
       'fr': 'Tapage nocturne',
@@ -10108,6 +10139,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '旅行画家的幻想旅程',
       'de': 'Begegnungen und Abschiede',
       'en': 'Somewhere Only She Knows',
       'fr': 'L\'œuvre de la maturité',
@@ -10122,6 +10154,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '蝰蛇剑士的使命',
       'de': 'Einführung in die Viperologie',
       'en': 'Fangs of the Viper',
       'fr': 'Le devoir des rôdeurs vipère',
@@ -10136,6 +10169,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '图拉尔威爪猎手',
       'de': 'Der Wille der Natur',
       'en': 'Vengeance of the Viper',
       'fr': 'Le fléau des Tural vidraal',

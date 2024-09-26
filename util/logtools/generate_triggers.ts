@@ -1151,6 +1151,7 @@ Offsets: ${allOffsets.sort(numberSort).join(', ')}
           en: 'Custom Text',
           de: 'Benutzerdefinierter Text',
           fr: 'Texte personnalisé',
+          cn: '自定义文本',
         },
       },
     },`;
@@ -1505,6 +1506,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
           en: 'Custom Text',
           de: 'Benutzerdefinierter Text',
           fr: 'Texte personnalisé',
+          cn: '自定义文本',
         },
       },
     },`;
@@ -1524,6 +1526,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
           en: 'Custom Text',
           de: 'Benutzerdefinierter Text',
           fr: 'Texte personnalisé',
+          cn: '自定义文本',
         },
       },
     },`;

@@ -341,6 +341,14 @@ const triggerSet: TriggerSet<Data> = {
         'Kirlirger the Abhorrent': '厭忌のキーリーゲー',
       },
     },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Nechuciho': '内丘奇霍',
+        'Queen Hawk': '鹰蜂女王',
+        'Kirlirger the Abhorrent': '厌忌之人 奇里格',
+      },
+    },
   ],
 };
 
