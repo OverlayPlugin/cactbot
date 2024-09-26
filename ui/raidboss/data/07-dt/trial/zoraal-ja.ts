@@ -426,6 +426,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'ZoraalJa Duty\'s Edge',
+      type: 'Ability',
+      // 9374 is the self-targeted ability; 8A#F is the player-targeeted stack marker (no 0x14 line though)
+      netRegex: { id: '8AEF', source: 'Zoraal Ja' },
+      response: Responses.stackMarkerOn(),
+    },
+    {
       id: 'ZoraalJa Half Full Right Sword',
       type: 'StartsUsing',
       netRegex: { id: '9368', source: 'Zoraal Ja', capture: false },
