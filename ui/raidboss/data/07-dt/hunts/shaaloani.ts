@@ -81,9 +81,6 @@ const ttokrroneTempestSandspoutOutputStrings = {
   double: {
     en: '${inOut} and ${dir2}',
   },
-  // single: {
-  //   en: '${inOut}',
-  // },
   awayFrom: {
     en: '${out} + avoid ${dir}',
   },
@@ -718,10 +715,6 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.outOfHitbox!(),
       infoText: (_data, _matches, output) => {
-        // let dir = output.clockwise!();
-        // if (_matches.id === '91C9') {
-        //   dir = output.counterclockwise!();
-        // }
         return output.rotateFront!();
       },
       outputStrings: ttokrroneDustdevilOutputStrings,
@@ -735,10 +728,6 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.outOfHitbox!(),
       infoText: (_data, _matches, output) => {
-        // let dir = output.clockwise!();
-        // if (_matches.id === '91CA') {
-        //   dir = output.counterclockwise!();
-        // }
         return output.rotateRear!();
       },
       outputStrings: ttokrroneDustdevilOutputStrings,
@@ -748,7 +737,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Landswallow',
       type: 'StartsUsing',
       netRegex: { id: '96F2', source: 'Ttokrrone', capture: false },
-      delaySeconds: 0,
       durationSeconds: 15,
       infoText: (_data, _matches, output) => output.dodgeToRight!(),
       outputStrings: {
