@@ -3,7 +3,7 @@ import ZoneId from '../../../../resources/zone_id';
 import { OopsyData } from '../../../../types/data';
 import { OopsyTriggerSet } from '../../../../types/oopsy';
 
-type MitTracker = {
+type EffectTracker = {
   [abilityId: string]: {
     time: number;
     source: string;
@@ -16,13 +16,13 @@ export interface Data extends OopsyData {
   lastRaisedLostTime: { [targetId: string]: string };
   raiseTargetTracker: { [sourceId: string]: string };
   targetMitTracker: {
-    [targetId: string]: MitTracker;
+    [targetId: string]: EffectTracker;
   };
-  partyMitTracker: MitTracker;
+  partyMitTracker: EffectTracker;
   targetDamageTracker: {
-    [targetId: string]: MitTracker;
+    [targetId: string]: EffectTracker;
   };
-  partyDamageTracker: MitTracker;
+  partyDamageTracker: EffectTracker;
 }
 
 const raiseAbilityIds = [
