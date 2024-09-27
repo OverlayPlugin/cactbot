@@ -19,6 +19,10 @@ export interface Data extends OopsyData {
     [targetId: string]: MitTracker;
   };
   partyMitTracker: MitTracker;
+  targetDamageTracker: {
+    [targetId: string]: MitTracker;
+  };
+  partyDamageTracker: MitTracker;
 }
 
 const raiseAbilityIds = [
@@ -39,6 +43,9 @@ const targetMitAbilityIdToDuration: { [id: string]: number } = {
   '1D7D': 15, // feint
   'B47': 10, // dismantle
   '1D88': 15, // addle
+  '2C7C': 15, // bad breath
+  '4781': 10, // magic hammer
+  '8712': 10, // candy cane
 };
 const targetMitAbilityIds = Object.keys(targetMitAbilityIdToDuration);
 
@@ -62,6 +69,7 @@ const partyMitAbilityIdToDuration: { [id: string]: number } = {
   // melee
   '41': 15, // mantra
   // ranged
+  // TODO: troubadour/tactician/shield samba should match for overwriting each other
   '1CED': 15, // troubadour
   '1CF0': 15, // nature's minne
   '3E8C': 15, // shield samba
@@ -79,6 +87,35 @@ const shieldEffectIdToAbilityId: { [id: string]: string } = {
   'A53': '5EF7', // panhaimatinon -> panhaima
 };
 
+const targetDamageAbilityIdToDuration: { [id: string]: number } = {
+  '1D0C': 20, // chain stratagem
+  '905D': 20, // dokumori
+  '2C93': 15, // off-guard
+  '2C9D': 15, // peculiar light
+  '8707': 60, // breath of magic
+  '8713': Number.MAX_SAFE_INTEGER, // mortal flame (infinite duration)
+  '5750': 60, // lost flare star
+};
+const targetDamageAbilityIds = Object.keys(targetDamageAbilityIdToDuration);
+
+const partyDamageAbilityIdToDuration: { [id: string]: number } = {
+  // healers
+  '40A8': 20, // divination
+  // melee
+  '1CE4': 20, // brotherhood
+  'DE5': 20, // battle litany
+  '5F55': 20, // arcane circle
+  // ranged
+  '76': 20, // battle voice
+  '64B9': 20, // radiant finale
+  '81C2': 20, // quadruple technical finish (if you overwrite dinky technical finish, good for you)
+  // casters
+  '64C9': 20, // searing light
+  '1D60': 20, // embolden
+  '8773': 20, // starry muse
+};
+const partyDamageAbilityIds = Object.keys(partyDamageAbilityIdToDuration);
+
 // General mistakes; these apply everywhere.
 const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.MatchAll,
@@ -90,6 +127,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
       raiseTargetTracker: {},
       targetMitTracker: {},
       partyMitTracker: {},
+      targetDamageTracker: {},
+      partyDamageTracker: {},
     };
   },
   triggers: [
@@ -296,6 +335,59 @@ const triggerSet: OopsyTriggerSet<Data> = {
         const abilityId = shieldEffectIdToAbilityId[matches.effectId];
         if (abilityId !== undefined)
           delete data.partyMitTracker[abilityId];
+      },
+    },
+    {
+      id: 'General Overwritten Damage Effect',
+      type: 'Ability',
+      netRegex: NetRegexes.ability({ id: targetDamageAbilityIds.concat(partyDamageAbilityIds) }),
+      mistake: (data, matches) => {
+        const isTargetDamage = targetDamageAbilityIds.includes(matches.id);
+        const isPartyDamage = partyDamageAbilityIds.includes(matches.id);
+        if (isTargetDamage && matches.targetId === 'E0000000') // missed
+          return;
+        if (isPartyDamage && !data.party.partyIds_.includes(matches.sourceId))
+          return;
+        if (isPartyDamage && matches.targetId !== matches.sourceId)
+          return;
+
+        const damageTracker = isTargetDamage
+          ? (data.targetDamageTracker[matches.targetId] ??= {})
+          : data.partyDamageTracker;
+        const newTime = new Date(matches.timestamp).getTime();
+        const newSource = matches.source;
+        const lastTime = damageTracker[matches.id]?.time;
+        const lastSource = damageTracker[matches.id]?.source;
+
+        damageTracker[matches.id] = {
+          time: newTime,
+          source: newSource,
+        };
+
+        const duration = isTargetDamage
+          ? targetDamageAbilityIdToDuration[matches.id]
+          : partyDamageAbilityIdToDuration[matches.id];
+        if (lastTime !== undefined && lastSource !== undefined && duration !== undefined) {
+          const diff = newTime - lastTime;
+          const leeway =
+            (duration * 1000 - diff) > data.options.MinimumTimeForOverwrittenDamage * 1000;
+          if (diff < duration * 1000 && leeway) {
+            const lastSourceShort = data.party.member(lastSource).toString();
+            return {
+              type: 'warn',
+              blame: matches.source,
+              reportId: matches.sourceId,
+              text: {
+                en: `overwrote ${lastSourceShort}'s ${matches.ability}`,
+                de: `überschrieb ${lastSourceShort}'s ${matches.ability}`,
+                fr: `a écrasé ${matches.ability} de ${lastSourceShort}`,
+                ja: `${lastSourceShort}の${matches.ability}を上書き`,
+                cn: `顶掉了${lastSourceShort}的${matches.ability}`,
+                ko: `${lastSourceShort}의 ${matches.ability} 덮어씀`,
+              },
+            };
+          }
+        }
       },
     },
   ],
