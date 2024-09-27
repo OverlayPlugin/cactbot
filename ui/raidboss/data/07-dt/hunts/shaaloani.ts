@@ -569,6 +569,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Sandspout',
       type: 'StartsUsing',
       netRegex: { id: ['91C1', '91C2', '91C3', '91C4'], source: 'Ttokrrone', capture: true },
+      condition: (data) => data.inCombat,
       durationSeconds: 4.9,
       response: (data, matches, output) => {
         const pattern = data.ttokSandOrbPatterns[data.ttokSandOrbOnSet];
@@ -633,6 +634,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Desert Tempest',
       type: 'StartsUsing',
       netRegex: { id: ttokrroneDesertTempestIds, source: 'Ttokrrone', capture: true },
+      condition: (data) => data.inCombat,
       durationSeconds: 7,
       alertText: (data, matches, output) => {
         const tempest = ttokrroneDesertTempest[matches.id]!;
@@ -695,6 +697,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Touchdown',
       type: 'StartsUsing',
       netRegex: { id: '91DB', source: 'Ttokrrone', capture: false },
+      condition: (data) => data.inCombat,
       durationSeconds: 4,
       response: Responses.aoe(),
       run: (data) => {
@@ -711,6 +714,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Fangward Dustdevil',
       type: 'StartsUsing',
       netRegex: { id: ['91C9', '91C5'], source: 'Ttokrrone', capture: false },
+      condition: (data) => data.inCombat,
       durationSeconds: 6,
       suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.outOfHitbox!(),
@@ -724,6 +728,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Tailward Dustdevil',
       type: 'StartsUsing',
       netRegex: { id: ['91CA', '91C6'], source: 'Ttokrrone', capture: false },
+      condition: (data) => data.inCombat,
       durationSeconds: 6,
       suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.outOfHitbox!(),
@@ -737,6 +742,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Landswallow',
       type: 'StartsUsing',
       netRegex: { id: '96F2', source: 'Ttokrrone', capture: false },
+      condition: (data) => data.inCombat,
       durationSeconds: 15,
       infoText: (_data, _matches, output) => output.dodgeToRight!(),
       outputStrings: {
@@ -750,6 +756,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Sand Spheres Sandburst',
       type: 'StartsUsing',
       netRegex: { id: ['994D', '994E'], source: 'Sand Sphere', capture: true },
+      condition: (data) => data.inCombat,
       delaySeconds: (_data, matches) => matches.id === '994E' ? 0 : 2,
       durationSeconds: 5,
       suppressSeconds: 1,
