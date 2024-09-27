@@ -72,13 +72,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R1N Mouser',
+      id: 'R1N Mouser Collect',
       type: 'StartsUsing',
-      netRegex: { id: '996B', capture: true },
-      condition: (data, matches) => {
+      netRegex: { id: '996B' },
+      delaySeconds: 0.2, // in case ActorSetPos line happens first
+      run: (data, matches) => {
         const actorSetPosLine = data.actorSetPosTracker[matches.sourceId];
         if (actorSetPosLine === undefined)
-          return false;
+          return;
         const x = parseFloat(actorSetPosLine.x);
         const y = parseFloat(actorSetPosLine.y);
         /*
@@ -98,22 +99,28 @@ const triggerSet: TriggerSet<Data> = {
             Math.abs(tile.centerY - y) < 1
           );
         if (loc === undefined)
-          return false;
+          return;
 
         const tile = loc.location;
-
         if (tile !== '09' && tile !== '0A')
-          return false;
+          return;
 
         data.mouserMatchedTile = tile;
-        return true;
       },
+    },
+    {
+      id: 'R1N Mouser',
+      type: 'StartsUsing',
+      netRegex: { id: '996B', capture: false },
+      delaySeconds: 0.2,
       // We don't need a suppressSeconds since only one of the SW/SE tiles will get hit twice
       durationSeconds: 11,
       infoText: (data, _matches, output) => {
+        // Undef check for data.mouserMatchedTile needs to happen here as opposed to a `condition`,
+        // as the delay needs to happen first.
         const dangerTile = data.mouserMatchedTile;
         if (dangerTile === undefined)
-          return false;
+          return;
 
         // Danger tile is SW, so safe movement is SW => SE (Stay)
         if (dangerTile === '09') {
