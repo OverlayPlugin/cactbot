@@ -24,11 +24,12 @@ hideall "--sync--"
 101.5 "Strangling Coil/Slithering Strike/Susurrant Breath" Ability { id: ["8D3B", "8D3D", "8D3F"], source: "Valigarmanda" }
 
 # After the opener, the boss begins storm or ice phase, followed by the opposite.
+# There is an HP push here (unknown), so we need a backwards window.
 # Because the Skyruin casts that start each phase are used in both loops,
-# we can't use windows or forcejumps to move between phases.
+# we can't use forcejumps to move between phases.
 # Instead, lump both phases together and create two branches based on starting phase.
-108.4 "--sync--" StartsUsing { id: "95C2", source: "Valigarmanda" } jump "initial-storm-ice"
-108.4 "--sync--" StartsUsing { id: "8D41", source: "Valigarmanda" } jump "initial-ice-storm"
+108.4 "--sync--" StartsUsing { id: "95C2", source: "Valigarmanda" } window 108.4,50 jump "initial-storm-ice"
+108.4 "--sync--" StartsUsing { id: "8D41", source: "Valigarmanda" } window 108.4,50 jump "initial-ice-storm"
 119.8 "Skyruin (storm/ice phase?)"
 
 508.4 label "initial-storm-ice"
