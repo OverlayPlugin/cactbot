@@ -60,9 +60,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
   unknown: Outputs.unknown,
   in: Outputs.getUnder,
   out: Outputs.outOfMelee,
-  outOfHitbox: {
-    en: 'out of hitbox',
-  },
+  outOfHitbox: Outputs.outOfHitbox,
   right: Outputs.right,
   left: Outputs.left,
   back: Outputs.back,

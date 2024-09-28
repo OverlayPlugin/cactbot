@@ -429,6 +429,10 @@ export default {
     cn: '离开近战距离',
     ko: '근접범위 밖으로',
   },
+  // be just outside the boss's target circle
+  outOfHitbox: {
+    en: 'Out of hitbox',
+  },
   inThenOut: {
     en: 'In => out',
     de: 'Rein, dann raus',
