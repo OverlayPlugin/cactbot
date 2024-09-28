@@ -6,6 +6,8 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODO: Ttokrrone - Cover the case where the boss rotates before Tempest is cast
+
 type ForcedMarch = 'forward' | 'backward' | 'left' | 'right';
 const effectIdToForcedMarchDir: { [id: string]: ForcedMarch } = {
   871: 'forward', // Forward March
