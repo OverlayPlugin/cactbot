@@ -105,6 +105,8 @@ export class DamageTracker {
   private engageTime?: number;
   private firstPuller?: string;
   private lastTimestamp = 0;
+  // logReplayMode - if using oopsy_viewer, we need to handle delays/suppresses differently
+  public logReplayMode = false;
   private triggerSuppress: { [triggerId: string]: number } = {};
   private data: OopsyData;
   private timestampCallbacks: {
@@ -396,7 +398,9 @@ export class DamageTracker {
   }
 
   OnTrigger(trigger: LooseOopsyTrigger, execMatches: RegExpExecArray, timestamp: number): void {
-    const triggerTime = Date.now();
+    // If running in replay mode, pretend that the current time is the log line timstamp
+    // so delays/suppresses work correctly.
+    const triggerTime = this.logReplayMode ? timestamp : Date.now();
 
     // TODO: turn this into a helper?? this was copied/pasted from popup-text.js
 
@@ -480,7 +484,10 @@ export class DamageTracker {
 
     if (delaySeconds <= 0)
       f();
-    else
+    else if (this.logReplayMode) { // in replay mode, we can't use timeouts to control delays
+      const execTs = triggerTime + delaySeconds * 1000;
+      this.OnRequestTimestampCallback(execTs, () => f());
+    } else
       this.timers.push(window.setTimeout(f, delaySeconds * 1000));
   }
 
