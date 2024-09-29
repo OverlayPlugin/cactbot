@@ -16,7 +16,7 @@ import { TimelineParser, TimelineReplacement } from '../ui/raidboss/timeline_par
 import { ErrorFuncType } from './find_missing_translations';
 
 const isKeyOf = <T>(key: unknown, obj: T): key is keyof T => {
-  if (typeof obj !== 'object')
+  if (typeof obj !== 'object' || obj === null)
     return false;
   if (Array.isArray(obj))
     return false;
