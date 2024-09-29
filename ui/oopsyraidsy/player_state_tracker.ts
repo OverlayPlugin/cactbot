@@ -28,6 +28,7 @@ import { OopsyOptions } from './oopsy_options';
 
 const emptyId = 'E0000000';
 const timestampFieldIdx = 1;
+const dummyPartyEntry: Party = { id: emptyId, name: '???', worldId: 0, job: 0, inParty: true };
 
 // TODO: add this to effect_id.ts?
 const raiseEffectId = '94';
@@ -83,7 +84,13 @@ export class PlayerStateTracker {
   private triggerSets: ProcessedOopsyTriggerSet[] = [];
   private partyIds: Set<string> = new Set();
   private deadIds: Set<string> = new Set();
-  private idToPartyInfo: { [combatantId: string]: Party } = {};
+  // `combatantPartyInfo` is the combatant info we get from AddedCombatant lines, which could be
+  // party members, pets, NPCs, etc. `currPartyInfo` is a subset of the objects in
+  // `combatantPartyInfo` (direct assignment, so we don't have to separately maintain), and contains
+  // the combatants who are in the party (or alliance) based on PartyList lines.  We need both maps
+  // because we may get PartyList lines before or after the relevant AddedCombatant lines.
+  private combatantPartyInfo: { [combatantId: string]: Party } = {};
+  private currPartyInfo: { [combatantId: string]: Party } = {};
   private petIdToOwnerId: { [petId: string]: string } = {};
   private abilityIdToBuff: { [abilityId: string]: MissableAbility } = {};
   private effectIdToBuff: { [effectId: string]: MissableEffect } = {};
@@ -170,21 +177,23 @@ export class PlayerStateTracker {
     this.mistakeSoloMap = {};
   }
 
-  // Called to update the list of player ids we care about.
+  // Called to update partyTracker & the list of player ids we care about.
   OnPartyChanged(): void {
-    // TODO: do we need to clean anything else up here if this changes?
-    // Or, do we just assume party doesn't change unless at zone change, so ignore edge cases?
-    const arr = [...this.partyTracker.partyIds];
+    // Always make sure that the current player is 'in party', e.g., after a zone change
+    // or starting solo/duty support content where no PartyList is sent.
+    // Use a dummy party entry if neccessary until we get real data from AddedCombatant.
+    if (this.myPlayerId !== undefined && !(this.myPlayerId in this.currPartyInfo)) {
+      const newPlayerEntry = { ...dummyPartyEntry, id: this.myPlayerId };
+      this.currPartyInfo[this.myPlayerId] = this.combatantPartyInfo[this.myPlayerId] ??=
+        newPlayerEntry;
+    }
 
-    // Include the player in the party for mistakes even if there is no party.
-    if (this.myPlayerId !== undefined && !arr.includes(this.myPlayerId))
-      arr.push(this.myPlayerId);
-
-    this.partyIds = new Set(arr);
+    this.partyTracker.onPartyChanged({ party: Object.values(this.currPartyInfo) });
+    this.partyIds = new Set(this.partyTracker.partyIds);
   }
 
   private Reset(): void {
-    // Deliberately do not clear idToPartyInfo here.
+    // Deliberately do not clear currPartyInfo/combatantPartyInfo here.
     this.petIdToOwnerId = {};
     this.deadIds.clear();
     this.trackedEvents = [];
@@ -195,7 +204,9 @@ export class PlayerStateTracker {
     this.Reset();
     // combatants and party info are re-sent on zone change, so clear here
     // to periodically trim this.
-    this.idToPartyInfo = {};
+    this.currPartyInfo = {};
+    this.combatantPartyInfo = {};
+    this.OnPartyChanged();
     this.collector.OnChangeZone(timestamp, zoneName, zoneId);
   }
 
@@ -211,27 +222,41 @@ export class PlayerStateTracker {
       // Generate the party info we would get from OverlayPlugin via logs.
       const worldId = parseInt(worldIdStr, 16);
       const job = parseInt(jobStr, 16);
-      // Consider everybody in the party for now and we'll figure it out later.
-      const inParty = true;
-      this.idToPartyInfo[id] = { id, name, worldId, job, inParty };
+
+      const entry = this.combatantPartyInfo[id];
+      if (entry !== undefined) { // update existing combatant entry
+        entry.name = name;
+        entry.worldId = worldId;
+        entry.job = job;
+      } else { // add new combatant
+        // Assume combatant is not in party; if we later get a PartyList with them, we'll update
+        const inParty = false;
+        this.combatantPartyInfo[id] = { id, name, worldId, job, inParty };
+      }
+
+      // If combatant is already in `currPartyInfo`, either as a party member or non-party
+      // alliance member, fire OnPartyChanged() so the new info gets picked up.
+      if (id in this.currPartyInfo)
+        this.OnPartyChanged();
+
+      // Track pet owners as well.
+      const petId = splitLine[logDefinitions.AddedCombatant.fields.id];
+      const ownerId = splitLine[logDefinitions.AddedCombatant.fields.ownerId];
+      if (petId === undefined || ownerId === undefined)
+        return;
+      if (ownerId === '0' || ownerId === '0000')
+        return;
+
+      // Fix any lowercase ids.
+      this.petIdToOwnerId[petId.toUpperCase()] = ownerId.toUpperCase();
     }
-
-    // Track pet owners as well.
-    const petId = splitLine[logDefinitions.AddedCombatant.fields.id];
-    const ownerId = splitLine[logDefinitions.AddedCombatant.fields.ownerId];
-    if (petId === undefined || ownerId === undefined)
-      return;
-    if (ownerId === '0' || ownerId === '0000')
-      return;
-
-    // Fix any lowercase ids.
-    this.petIdToOwnerId[petId.toUpperCase()] = ownerId.toUpperCase();
   }
 
   OnPartyList(_line: string, splitLine: string[]): void {
     // So that party lists can be used from logs, we will fake `onPartyChanged` events
-    // using log information.  AddedCombatant seems to come before PartyList lines,
-    // so we accumulate those and then generate the party info from here.
+    // using log information.  However, because AddedCombatant sometimes comes after PartyList,
+    // we'll use a dummy party entry for party members for whom we don't have combatant info,
+    // then update it and fire new PartyChanged events when those AddedCombatant lines arrive.
 
     // Start from id0 and drop the hash at the end.
     const count = parseInt(splitLine[logDefinitions.PartyList.fields.partyCount] ?? '');
@@ -239,16 +264,12 @@ export class PlayerStateTracker {
       return;
 
     const ids = splitLine.slice(logDefinitions.PartyList.fields.id0, -1);
-    const party: Party[] = [];
     ids.forEach((id, idx) => {
-      const p = this.idToPartyInfo[id];
-      if (!p)
-        return;
+      const p = (this.combatantPartyInfo[id] ??= { ...dummyPartyEntry, id: id });
       // count is 1-indexed and idx is 0-indexed.
       p.inParty = idx < count;
-      party.push(p);
+      this.currPartyInfo[id] = p; // use direct assignment to keep these entries in sync
     });
-    this.partyTracker.onPartyChanged({ party });
     this.OnPartyChanged();
   }
 
