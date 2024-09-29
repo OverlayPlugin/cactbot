@@ -558,6 +558,8 @@ Options.Triggers.push({
           data.lineCleaveSetup = 'swCross';
         else if (matches.location === '03')
           data.lineCleaveSetup = 'seCross';
+        else
+          console.error('Could not determine Forged Track setup.');
       },
     },
     {
@@ -583,8 +585,12 @@ Options.Triggers.push({
           fireWindPlatform = 'northeast';
         }
         const swordTile = findClosestTile(swordX, swordY);
-        if (swordTile === 'unknown')
+        if (swordTile === 'unknown') {
+          console.error(
+            `Could not map fire/wind sword at [x:${matches.x}, y: ${matches.y}] to tile.`,
+          );
           return;
+        }
         // To avoid repeated nested if/else statements, assume we're seeing fireInside.
         // At the end, check the real value, and if it's fireOutside, just flip this bool
         // before setting `data.fireWindEffect` (it works because they're mirrored).
@@ -610,8 +616,10 @@ Options.Triggers.push({
           data.fireWindSafeDir = 'southwest';
         else if (swordTile === 'westCorner')
           data.fireWindSafeDir = 'northeast';
-        else
+        else {
+          console.error(`Could not determine fireWindSafeDir for swordTile ${swordTile}`);
           return;
+        }
         data.forgedTrackSafeTiles = forgedTrackSafeLanes[data.fireWindSafeDir];
         if (data.fireWindSetup === 'fireOutside')
           isFireCleave = !isFireCleave;
@@ -623,10 +631,16 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '939C', source: 'Fang' },
       condition: (data, matches) => data.phase === 'swords' && parseFloat(matches.y) > 115,
-      delaySeconds: 0.2,
+      delaySeconds: 0.4,
       run: (data, matches) => {
-        if (data.lineCleaveSetup === undefined || data.forgedTrackSafeTiles.length !== 4)
+        if (data.lineCleaveSetup === undefined || data.forgedTrackSafeTiles.length !== 4) {
+          console.error(
+            `Could not determine lineCleaveSetup (${
+              data.lineCleaveSetup ?? 'undef'
+            }) or valid safe tiles (${data.forgedTrackSafeTiles.join(',')}).`,
+          );
           return;
+        }
         const mirrorAdjust = 22.98; // sqrt(5^2 + 5^2) * 3.25
         const swordY = parseFloat(matches.y) - mirrorAdjust;
         let swordX = parseFloat(matches.x);
@@ -639,13 +653,19 @@ Options.Triggers.push({
           lineCleavePlatform = 'southeast';
         }
         const swordTile = findClosestTile(swordX, swordY);
-        if (swordTile === 'unknown')
-          return `Unknown Tile`;
+        if (swordTile === 'unknown') {
+          console.error(`Could not map cleave sword at [x:${matches.x}, y: ${matches.y}] to tile.`);
+          return;
+        }
         const unsafeTiles = swordTile === 'southCorner'
           ? crossMapSouthCorner[data.lineCleaveSetup][lineCleavePlatform]
           : crossMap[data.lineCleaveSetup][swordTile];
-        if (unsafeTiles === undefined)
+        if (unsafeTiles === undefined) {
+          console.error(
+            `Could not determine unsafe tiles for cleave sword at [x:${matches.x}, y: ${matches.y}]`,
+          );
           return;
+        }
         data.unsafeTiles.push(...unsafeTiles);
       },
     },
@@ -654,7 +674,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '935F', source: 'Zoraal Ja', capture: false },
       condition: (data) => data.phase === 'swords',
-      delaySeconds: 0.4,
+      delaySeconds: 0.6,
       durationSeconds: 9,
       alertText: (data, _matches, output) => {
         if (data.fireWindEffect === undefined)
@@ -672,8 +692,10 @@ Options.Triggers.push({
         const safeTiles = data.forgedTrackSafeTiles.filter((tile) =>
           !data.unsafeTiles.includes(tile)
         );
-        if (safeTiles.length !== 2)
-          return `WTF? ${safeTiles.length} = ${safeTiles.join('|')}`;
+        if (safeTiles.length !== 2) {
+          console.error(`Expected 2 safe tiles, got ${safeTiles.length}: ${safeTiles.join(',')}`);
+          return output.unknown();
+        }
         const [safe0] = safeTiles;
         if (safe0 === undefined)
           return fireWindSafeOutput;
