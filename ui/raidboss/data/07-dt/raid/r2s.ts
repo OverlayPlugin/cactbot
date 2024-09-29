@@ -420,7 +420,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: {
           en: '(out + partners after)',
           de: '(raus + danach mit partner sammeln)',
-          fr: '(extérieur + partenaires après',
+          fr: '(extérieur + partenaires après)',
           ja: '(後で外側へ + ペア)',
           cn: '(稍后远离 + 分摊)',
           ko: '(나중에 밖으로 + 쉐어)',
