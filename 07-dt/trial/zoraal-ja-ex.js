@@ -154,9 +154,11 @@ Options.Triggers.push({
       id: 'chasmVollokPriority',
       name: {
         en: 'Chasm of Vollok Safe Spot Priority',
+        cn: '无敌裂斩安全区优先级',
       },
       comment: {
         en: 'Select which safe spots have priority during callouts.',
+        cn: '选择播报安全区的优先级',
       },
       type: 'select',
       options: {
@@ -165,6 +167,12 @@ Options.Triggers.push({
           'North and South Corner': 'northSouth',
           'North Corner': 'north',
           'South Corner': 'south',
+        },
+        cn: {
+          '中间': 'inside',
+          '南北角落': 'northSouth',
+          '北边角落': 'north',
+          '南边角落': 'south',
         },
       },
       default: 'inside',
@@ -482,18 +490,23 @@ Options.Triggers.push({
         },
         insideN: {
           en: 'Inner North Diamond - ${lean}',
+          cn: '内侧 上(北)地板 - ${lean}',
         },
         insideS: {
           en: 'Inner South Diamond - ${lean}',
+          cn: '内侧 下(南)地板 - ${lean}',
         },
         cornerNS: {
           en: 'North/South Corner Diamonds - ${lean}',
+          cn: '上(北)/下(南)角地板 - ${lean}',
         },
         cornerN: {
           en: 'North Corner Diamond - ${lean}',
+          cn: '上(北)角地板 - ${lean}',
         },
         cornerS: {
           en: 'South Corner Diamond - ${lean}',
+          cn: '下(南)角地板 - ${lean}',
         },
         leanWest: {
           en: 'Lean West',
@@ -1183,18 +1196,23 @@ Options.Triggers.push({
         },
         insideN: {
           en: 'Inside North Safe',
+          cn: '内侧 上(北)安全',
         },
         insideS: {
           en: 'Inside South Safe',
+          cn: '内侧 下(南)安全',
         },
         cornerNS: {
           en: 'North/South Corners Safe',
+          cn: '上(北)/下(南)角安全',
         },
         cornerN: {
           en: 'North Corner Safe',
+          cn: '上(北)角安全',
         },
         cornerS: {
           en: 'South Corner Safe',
+          cn: '下(南)角安全',
         },
         intercard: {
           en: 'Outside Intercards Safe (Avoid Corners)',
