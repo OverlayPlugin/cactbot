@@ -10,7 +10,7 @@ export type Data = OopsyData;
 //  - Do something more with Stampeding Thunder? 3+ hits?
 
 const triggerSet: OopsyTriggerSet<Data> = {
-  zoneId: ZoneId.AacLightHeavyweightM3,
+  zoneId: ZoneId.AacLightHeavyweightM4,
   damageWarn: {
     'R4N Sidewise Spark Right 1': '92BC', // half-room cleave
     'R4N Sidewise Spark Left 1': '92BD', // half-room cleave
