@@ -240,8 +240,92 @@ const swordQuiverOutputStrings = {
   },
 } as const;
 
+const conductorCurrentStringsNoStrat = {
+  remoteCurrent: {
+    en: 'Far Cone on You',
+    de: 'Fern-Kegel auf DIR',
+    fr: 'Cône éloigné sur Vous',
+    ja: '自分から遠い人に扇範囲',
+    cn: '远雷点名',
+    ko: '원거리 화살표 대상자',
+  },
+  proximateCurrent: {
+    en: 'Near Cone on You',
+    de: 'Nah-Kegel auf DIR',
+    fr: 'Cône proche sur Vous',
+    ja: '自分から近い人に扇範囲',
+    cn: '近雷点名',
+    ko: '근거리 화살표 대상자',
+  },
+  spinningConductorSupport: {
+    en: 'Small AoE on You',
+    de: 'Kleine AoE auf DIR',
+    fr: 'Petite AoE sur Vous',
+    ja: '自分に小さい円範囲',
+    cn: '小钢铁点名',
+    ko: '작은 원형징 대상자',
+  },
+  spinningConductorDPS: {
+    en: 'Small AoE on You',
+    de: 'Kleine AoE auf DIR',
+    fr: 'Petite AoE sur Vous',
+    ja: '自分に小さい円範囲',
+    cn: '小钢铁点名',
+    ko: '작은 원형징 대상자',
+  },
+  roundhouseConductorSupport: {
+    en: 'Donut AoE on You',
+    de: 'Donut AoE auf DIR',
+    fr: 'Donut sur Vous',
+    ja: '自分にドーナツ範囲',
+    cn: '月环点名',
+    ko: '도넛징 대상자',
+  },
+  roundhouseConductorDPS: {
+    en: 'Donut AoE on You',
+    de: 'Donut AoE auf DIR',
+    fr: 'Donut sur Vous',
+    ja: '自分にドーナツ範囲',
+    cn: '月环点名',
+    ko: '도넛징 대상자',
+  },
+  colliderConductor: {
+    en: 'Get Hit by Cone',
+    de: 'Werde vom Kegel getroffen',
+    fr: 'Encaissez un cône',
+    ja: '扇範囲に当たって',
+    cn: '吃雷',
+    ko: '화살표 장판 맞기',
+  },
+} as const;
+
+const conductorCurrentStringsDNStrat = {
+  remoteCurrent: {
+    en: 'Front of Middle (Far Cone)',
+  },
+  proximateCurrent: {
+    en: 'Front of Middle (Near Cone)',
+  },
+  spinningConductorSupport: {
+    en: 'Front Left (Small AoE)',
+  },
+  spinningConductorDPS: {
+    en: 'Front Right (Small AoE)',
+  },
+  roundhouseConductorSupport: {
+    en: 'Front Left (Donut AoE)',
+  },
+  roundhouseConductorDPS: {
+    en: 'Front Right (Donut AoE)',
+  },
+  colliderConductor: {
+    en: 'Middle, Behind Current (Get Hit by Cone)',
+  },
+} as const;
+
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
+    ionCluster: 'none' | 'DN';
     witchHunt: 'none' | 'DN';
   };
   phase: Phase;
@@ -293,6 +377,26 @@ const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM4Savage',
   zoneId: ZoneId.AacLightHeavyweightM4Savage,
   config: [
+    {
+      id: 'ionCluster',
+      name: {
+        en: 'Ion Cluster Debuff Strategy',
+      },
+      comment: {
+        en: `Strategy for resolving debuffs during Ion Cluster.
+
+             None: Call the debuff only, no strategy.
+             DN: use rivet positions based on the shabin pastebin.`,
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None': 'none',
+          'DN': 'DN',
+        },
+      },
+      default: 'none',
+    },
     {
       id: 'witchHunt',
       name: {
@@ -1209,63 +1313,29 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['FA2', 'FA3', 'FA4', 'FA5', 'FA6'] },
       condition: Conditions.targetIsYou(),
       durationSeconds: 5,
-      alertText: (_data, matches, output) => {
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = data.triggerSetConfig.ionCluster === 'DN'
+          ? conductorCurrentStringsDNStrat
+          : conductorCurrentStringsNoStrat;
         switch (matches.effectId) {
           case 'FA2':
-            return output.remoteCurrent!();
+            return { alertText: output.remoteCurrent!() };
           case 'FA3':
-            return output.proximateCurrent!();
+            return { alertText: output.proximateCurrent!() };
           case 'FA4':
-            return output.spinningConductor!();
+            if (data.role === 'tank' || data.role === 'healer')
+              return { alertText: output.spinningConductorSupport!() };
+            return { alertText: output.spinningConductorDPS!() };
           case 'FA5':
-            return output.roundhouseConductor!();
+            if (data.role === 'tank' || data.role === 'healer')
+              return { alertText: output.roundhouseConductorSupport!() };
+            return { alertText: output.roundhouseConductorDPS!() };
           case 'FA6':
-            return output.colliderConductor!();
+            return { alertText: output.colliderConductor!() };
         }
       },
       run: (data) => data.seenConductorDebuffs = true,
-      outputStrings: {
-        remoteCurrent: {
-          en: 'Far Cone on You',
-          de: 'Fern-Kegel auf DIR',
-          fr: 'Cône éloigné sur Vous',
-          ja: '自分から遠い人に扇範囲',
-          cn: '远雷点名',
-          ko: '원거리 화살표 대상자',
-        },
-        proximateCurrent: {
-          en: 'Near Cone on You',
-          de: 'Nah-Kegel auf DIR',
-          fr: 'Cône proche sur Vous',
-          ja: '自分から近い人に扇範囲',
-          cn: '近雷点名',
-          ko: '근거리 화살표 대상자',
-        },
-        spinningConductor: {
-          en: 'Small AoE on You',
-          de: 'Kleine AoE auf DIR',
-          fr: 'Petite AoE sur Vous',
-          ja: '自分に小さい円範囲',
-          cn: '小钢铁点名',
-          ko: '작은 원형징 대상자',
-        },
-        roundhouseConductor: {
-          en: 'Donut AoE on You',
-          de: 'Donut AoE auf DIR',
-          fr: 'Donut sur Vous',
-          ja: '自分にドーナツ範囲',
-          cn: '月环点名',
-          ko: '도넛징 대상자',
-        },
-        colliderConductor: {
-          en: 'Get Hit by Cone',
-          de: 'Werde vom Kegel getroffen',
-          fr: 'Encaissez un cône',
-          ja: '扇範囲に当たって',
-          cn: '吃雷',
-          ko: '화살표 장판 맞기',
-        },
-      },
     },
 
     // Fulminous Field
