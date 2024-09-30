@@ -6,7 +6,7 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
 import { NetMatches } from '../../../../../types/net_matches';
-import { FullLocaleText, TriggerSet } from '../../../../../types/trigger';
+import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Map out MapEffect data if needed? Might be useful for prep for savage.
 // TODO: Better triggers for Bewitching Flight, collector for the loop to combine trigger with clone
@@ -30,6 +30,10 @@ const directionOutputStrings = {
   stay: {
     en: 'Stay',
   },
+  num2: Outputs.num2,
+  num3: Outputs.num3,
+  num4: Outputs.num4,
+  num5: Outputs.num5,
   separator: {
     en: ' => ',
     de: ' => ',
@@ -262,19 +266,19 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 7.3,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const mode = data.triggerSetConfig.sidewiseSpark === 'collected'
-          ? 'keepAll'
-          : 'collapse';
+        const mode = data.triggerSetConfig.sidewiseSpark === 'sequence'
+          ? 'collapse'
+          : 'keepAll';
         const dirs = getCleaveDirs(data.actors, data.storedCleaves, mode);
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
         const cleaves: number = data.storedCleaves.length;
         if (dirs.length === 1 && cleaves > 1) {
-          const cleaveNums: { [key: number]: FullLocaleText } = {
-            2: Outputs.num1,
-            3: Outputs.num2,
-            4: Outputs.num4,
-            5: Outputs.num5,
+          const cleaveNums: { [key: number]: string } = {
+            2: output.num2!(),
+            3: output.num3!(),
+            4: output.num4!(),
+            5: output.num5!(),
           };
 
           if (cleaves in cleaveNums) {
@@ -342,13 +346,19 @@ const triggerSet: TriggerSet<Data> = {
       // IDs for safe spots are C/E = left safe, D/F = right safe
       netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: true },
       durationSeconds: 7.3,
-      infoText: (data, matches, output) => {
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = directionOutputStrings;
         const cleaveDir = ['92BC', '92BE'].includes(matches.id) ? 'right' : 'left';
         const actorID = parseInt(matches.sourceId, 16);
 
         // If this is the first cleave, it's boss relative because boss isn't fixed north
-        if (data.storedCleaves.length === 0)
-          return cleaveDir === 'right' ? output.goLeft!() : output.goRight!();
+        if (data.storedCleaves.length === 0) {
+          const string = cleaveDir === 'right' ? output.goLeft!() : output.goRight!();
+          return { alertText: string };
+        }
+
+        const previousDirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
 
         data.storedCleaves.push({
           dir: cleaveDir,
@@ -356,22 +366,39 @@ const triggerSet: TriggerSet<Data> = {
         });
 
         const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
-        if (dirs.length === 1) {
-          // Stop any future callouts, since we know its safe to stay now
+
+        // Stop any future callouts, since we know its safe to stay now
+        if (dirs.length === 1)
           data.storedCleaves = [];
+
+        /* For sequence mode, check if the next safe spot is the same as the
+         * previous one. If it is, there's no need for a callout here.
+         * If everything collapses to one spot, the player should already be
+         * moving to this spot and is safe for the rest of the mechanic.
+         * Otherwise, we'll call stay at the next sidewise spark hit.
+         * There's no need to duplicate this again.
+         */
+        if (
+          data.triggerSetConfig.sidewiseSpark === 'sequence' &&
+          dirs.length > 0 && previousDirs.length > 0 &&
+          dirs[0] === previousDirs[0]
+        )
+          return;
+
+        if (dirs.length === 1) {
           const dir = dirs[0]!;
           const mappedDir = output[dir]!();
-          return output.intercardStay!({ dir: mappedDir });
+          const string = output.intercardStay!({ dir: mappedDir });
+          return { infoText: string };
         }
 
         if (data.triggerSetConfig.sidewiseSpark !== 'collected')
           return;
 
         const mappedDirs = dirs.map((dir) => output[dir]!());
-
-        return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
+        const string = output.combo!({ dirs: mappedDirs.join(output.separator!()) });
+        return { alertText: string };
       },
-      outputStrings: directionOutputStrings,
     },
     {
       id: 'R4N Sidewise Spark Hit',
@@ -403,11 +430,11 @@ const triggerSet: TriggerSet<Data> = {
 
         const cleaves: number = data.storedCleaves.length;
         if (dirs.length === 1 && cleaves > 1) {
-          const cleaveNums: { [key: number]: FullLocaleText } = {
-            2: Outputs.num1,
-            3: Outputs.num2,
-            4: Outputs.num4,
-            5: Outputs.num5,
+          const cleaveNums: { [key: number]: string } = {
+            2: output.num2!(),
+            3: output.num3!(),
+            4: output.num4!(),
+            5: output.num5!(),
           };
 
           if (cleaves in cleaveNums) {
