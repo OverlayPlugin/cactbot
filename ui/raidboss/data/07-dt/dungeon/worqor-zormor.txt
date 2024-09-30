@@ -1,0 +1,144 @@
+### WORQOR ZORMOR
+# ZoneId: 1193
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~~~#
+# Ryoqor Terteh #
+#~~~~~~~~~~~~~~~#
+
+# -ii 8DB7 8DB0 8DB6 8F69
+# -p 8DB8:1014.1
+
+# The Calmgrounds will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1188" } window 1000,1
+1009.1 "--sync--" StartsUsing { id: "8DB8", source: "Ryoqor Terteh" } window 10,5
+1014.1 "Frosting Fracas" Ability { id: "8DB8", source: "Ryoqor Terteh" }
+1020.5 "Fluffle Up" Ability { id: "8DA9", source: "Ryoqor Terteh" }
+1034.5 "Cold Feat" Ability { id: "8DAA", source: "Ryoqor Terteh" }
+1040.4 "Ice Scream (first)" Ability { id: "8DAE", source: "Rorrloh Teh" }
+1045.4 "Ice Scream (second)" Ability { id: "8DAE", source: "Rorrloh Teh" }
+1054.3 "Fluffle Up" Ability { id: "8DA9", source: "Ryoqor Terteh" }
+1068.3 "Cold Feat" Ability { id: "8DAA", source: "Ryoqor Terteh" }
+1074.2 "Frozen Swirl (first)" Ability { id: "8DAF", source: "Qorrloh Teh" }
+1079.2 "Frozen Swirl (second)" Ability { id: "8DAF", source: "Qorrloh Teh" }
+1087.2 "Snowscoop" Ability { id: "8DB3", source: "Ryoqor Terteh" }
+1097.1 "Snow Boulder (first)" #Ability { id: "8DB6", source: "Snowball" }
+1099.1 "Snow Boulder (second)" #Ability { id: "8DB6", source: "Snowball" }
+1100.9 "Sparkling Sprinkling" Ability { id: "8DB9", source: "Ryoqor Terteh" }
+
+# begin loop
+1110.9 "Fluffle Up" Ability { id: "8DA9", source: "Ryoqor Terteh" }
+1124.9 "Cold Feat" Ability { id: "8DAA", source: "Ryoqor Terteh" }
+1130.8 "Frozen Swirl" Ability { id: "8DAF", source: "Qorrloh Teh" }
+1130.8 "Ice Scream" Ability { id: "8DAE", source: "Rorrloh Teh" }
+1135.8 "Frozen Swirl" Ability { id: "8DAF", source: "Qorrloh Teh" }
+1135.8 "Ice Scream" Ability { id: "8DAE", source: "Rorrloh Teh" }
+1145.5 "Frosting Fracas" Ability { id: "8DB8", source: "Ryoqor Terteh" }
+1158.2 "Snowscoop" Ability { id: "8DB3", source: "Ryoqor Terteh" }
+1168.1 "Snow Boulder" #Ability { id: "8DB6", source: "Snowball" }
+1170.1 "Snow Boulder" #Ability { id: "8DB6", source: "Snowball" }
+1171.9 "Sparkling Sprinkling" Ability { id: "8DB9", source: "Ryoqor Terteh" }
+1187.3 "Frosting Fracas" Ability { id: "8DB8", source: "Ryoqor Terteh" }
+1197.9 "Frosting Fracas" Ability { id: "8DB8", source: "Ryoqor Terteh" }
+1211.0 "Fluffle Up" Ability { id: "8DA9", source: "Ryoqor Terteh" } forcejump 1110.9
+
+# IGNORED ABILITIES
+# 8DB0 Frozen Swirl (damage)
+# 8DB6 Snow Boulder (vfx)
+# 8DB7 Frosting Fracas (vfx?)
+# 8F69 Sparkling Sprinkling (castbar)
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 8DA9 Fluffle Up
+# 8DAA Cold Feat
+# 8DAE Ice Scream
+# 8DAF Frozen Swirl
+# 8DB0 Frozen Swirl
+# 8DB3 Snowscoop
+# 8DB6 Snow Boulder
+# 8DB7 Frosting Fracas
+# 8DB8 Frosting Fracas
+# 8DB9 Sparkling Sprinkling
+# 8F69 Sparkling Sprinkling
+
+#~~~~~~~~~~~#
+# Kahderyor #
+#~~~~~~~~~~~#
+
+# -ii 8DBD 8DC8 8DC7 8DC2 8DCA 8DC0 8DC1
+# -ic
+# -p 8DBA:2009.1
+
+# The Council Of Morgar will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "118D" } window 2000,1
+2004.1 "--sync--" StartsUsing { id: "8DBA", source: "Kahderyor" }
+2009.1 "Wind Unbound" Ability { id: "8DBA", source: "Kahderyor" }
+2021.6 "Crystalline Crush" Ability { id: "8D39", source: "Kahderyor" }
+2032.7 "Wind Shot" Ability { id: "8DBC", source: "Kahderyor" }
+2041.8 "Earthen Shot" Ability { id: "8DBB", source: "Kahderyor" }
+2051.7 "Crystalline Storm" Ability { id: "8DBE", source: "Kahderyor" }
+2063.0 "Earthen Shot" Ability { id: "8DBB", source: "Kahderyor" }
+2074.1 "Wind Shot" Ability { id: "8DBC", source: "Kahderyor" }
+2084.6 "Wind Unbound" Ability { id: "8DBA", source: "Kahderyor" }
+2093.5 "Seed Crystals" Ability { id: "8DC3", source: "Kahderyor" }
+2106.6 "Sharpened Sights" Ability { id: "8DBF", source: "Kahderyor" }
+2113.6 "Eye of the Fierce" Ability { id: "8DC9", source: "Kahderyor" }
+2113.6 "Stalagmite Circle/Cyclonic Ring" Ability { id: ["8DC5", "8DC6"], source: "Kahderyor" }
+2120.6 "Eye of the Fierce" Ability { id: "8DC9", source: "Kahderyor" }
+2120.6 "Stalagmite Circle/Cyclonic Ring" Ability { id: ["8DC5", "8DC6"], source: "Kahderyor" }
+
+# begin loop
+2130.6 "Wind Unbound" Ability { id: "8DBA", source: "Kahderyor" }
+2139.7 "Wind Unbound" Ability { id: "8DBA", source: "Kahderyor" }
+2147.0 "Crystalline Storm" Ability { id: "8DBE", source: "Kahderyor" }
+2158.3 "Earthen Shot" Ability { id: "8DBB", source: "Kahderyor" }
+2169.4 "Wind Shot" Ability { id: "8DBC", source: "Kahderyor" }
+2179.9 "Wind Unbound" Ability { id: "8DBA", source: "Kahderyor" }
+2188.8 "Seed Crystals" Ability { id: "8DC3", source: "Kahderyor" }
+2202.1 "Sharpened Sights" Ability { id: "8DBF", source: "Kahderyor" }
+2209.1 "Eye of the Fierce" Ability { id: "8DC9", source: "Kahderyor" }
+2209.1 "Stalagmite Circle/Cyclonic Ring" Ability { id: ["8DC5", "8DC6"], source: "Kahderyor" }
+2216.1 "Eye of the Fierce" Ability { id: "8DC9", source: "Kahderyor" }
+2216.1 "Stalagmite Circle/Cyclonic Ring" Ability { id: ["8DC5", "8DC6"], source: "Kahderyor" }
+2226.2 "Wind Unbound" Ability { id: "8DBA", source: "Kahderyor" } forcejump 2130.6
+
+# IGNORED ABILITIES
+# 8DBD Crystalline Crush (vfx)
+# 8DC0 Stalagmite Circle (vfx)
+# 8DC1 Cyclonic Ring (vfx)
+# 8DC2 Crystalline Storm (damage)
+# 8DC7 Earthen Shot (player spread; ~same time as other arena cast)
+# 8DC8 Wind Shot (player donut; ~same time as other arena cast)
+# 8DCA Seed Crystals (each player; ~same time as boss cast)
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 8D39 Crystalline Crush
+# 8DBA Wind Unbound
+# 8DBB Earthen Shot
+# 8DBC Wind Shot
+# 8DBD Crystalline Crush
+# 8DBE Crystalline Storm
+# 8DBF Sharpened Sights
+# 8DC0 Stalagmite Circle
+# 8DC1 Cyclonic Ring
+# 8DC2 Crystalline Storm
+# 8DC3 Seed Crystals
+# 8DC5 Stalagmite Circle
+# 8DC6 Cyclonic Ring
+# 8DC7 Earthen Shot
+# 8DC8 Wind Shot
+# 8DC9 Eye of the Fierce
+# 8DCA Seed Crystals
+
+#~~~~~~~~~~~#
+# Gurfurlur #
+#~~~~~~~~~~~#
+
+

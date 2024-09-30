@@ -1010,6 +1010,10 @@ export default {
   and: {
     en: ' + ',
   },
+  // for either/or directions or mechanics
+  or: {
+    en: ' / ',
+  },
   // Literal numbers.
   num0: numberToOutputString(0),
   num1: numberToOutputString(1),
