@@ -89,6 +89,7 @@ const isEffectB9AValue = (value: string | undefined): value is B9AMapValues => {
 const getCleaveDirs = (
   actors: PluginCombatantState[],
   storedCleaves: StoredCleave[],
+  mode: 'collapse' | 'keepAll',
 ): DirectionOutput8[] => {
   const dirs: DirectionOutput8[] = storedCleaves.map((entry) => {
     const actor = actors.find((actor) => actor.ID === entry.id);
@@ -99,7 +100,7 @@ const getCleaveDirs = (
     return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
   });
 
-  if (dirs.length === 1)
+  if (mode === 'keepAll' || dirs.length === 1)
     return dirs;
 
   // Check if all directions lead to the same intercard. If so, there's no
@@ -250,7 +251,10 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 7.3,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const dirs = getCleaveDirs(data.actors, data.storedCleaves);
+        const mode = data.triggerSetConfig.sidewiseSpark === 'collected'
+          ? 'keepAll'
+          : 'collapse';
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves, mode);
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
         return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
@@ -323,7 +327,7 @@ const triggerSet: TriggerSet<Data> = {
           id: actorID,
         });
 
-        const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, data.storedCleaves);
+        const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
         if (dirs.length === 1) {
           // Stop any future callouts, since we know its safe to stay now
           data.storedCleaves = [];
@@ -353,7 +357,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.storedCleaves.length === 0)
           return;
 
-        const dirs = getCleaveDirs(data.actors, data.storedCleaves);
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
         return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
