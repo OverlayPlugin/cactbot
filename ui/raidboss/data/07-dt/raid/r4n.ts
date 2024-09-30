@@ -99,6 +99,9 @@ const getCleaveDirs = (
     return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
   });
 
+  if (dirs.length === 1)
+    return dirs;
+
   // Check if all directions lead to the same intercard. If so, there's no
   // reason to call a sequence. We don't need to check the cardinals,
   // because it will only be true either when there is exactly one element,
