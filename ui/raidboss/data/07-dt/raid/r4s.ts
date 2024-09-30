@@ -22,6 +22,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 type Phase = 'door' | 'crosstail' | 'twilight' | 'midnight' | 'sunrise';
 
 type NearFar = 'near' | 'far'; // wherever you are...
+type RoleBait = 'tank' | 'healer' | 'melee' | 'ranged';
 type InOut = 'in' | 'out';
 type NorthSouth = 'north' | 'south';
 type LeftRight = 'left' | 'right';
@@ -152,6 +153,24 @@ const witchHuntAlertOutputStrings = {
     ja: '離れて誘導 (他は近づく)',
     cn: '引导远 (小队近)',
     ko: '멀리 유도 (본대 가까이)',
+  },
+  baitNear: {
+    en: 'Close (Party Far)',
+  },
+  baitFar: {
+    en: 'Far (Party Close)',
+  },
+  meleeNear: {
+    en: 'Melee Close (Party Far)',
+  },
+  rangedFar: {
+    en: 'Ranged Far (Party Close)',
+  },
+  partyNear: {
+    en: 'Close (Baits Far)',
+  },
+  partyFar: {
+    en: 'Far (Baits Close)',
   },
   combo: {
     en: '${inOut} => ${bait}',
@@ -313,6 +332,7 @@ const conductorCurrentStringsDNStrat = {
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     ionCluster: 'none' | 'DN';
+    witchHunt: 'none' | 'DN';
   };
   phase: Phase;
   // Phase 1
@@ -375,6 +395,23 @@ const triggerSet: TriggerSet<Data> = {
         en: {
           'None - Just call your debuff': 'none',
           'DN - Call rivet positions (Support left, DPS right)': 'DN',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'witchHunt',
+      name: {
+        en: 'Witch Hunt Bait Strategy',
+      },
+      comment: {
+        en: 'Strategy for baiting Witch Hunt AoEs',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None - Just call party and bait player positions.': 'none',
+          'DN - Supports take first and second baits, prioritizing uptime.': 'DN',
         },
       },
       default: 'none',
@@ -642,11 +679,21 @@ const triggerSet: TriggerSet<Data> = {
         data.witchHuntAoESafe = aoeOrder[0];
 
         // assumes Near first; if Far first, just reverse
-        let baitOrder: NearFar[] = ['near', 'far', 'near', 'far'];
-        if (data.witchHuntBait === undefined)
+        let baitOrder: (NearFar | RoleBait)[];
+
+        if (data.witchHuntBait === 'near') {
+          if (data.triggerSetConfig.witchHunt === 'DN')
+            baitOrder = ['tank', 'healer', 'melee', 'ranged'];
+          else
+            baitOrder = ['near', 'far', 'near', 'far'];
+        } else if (data.witchHuntBait === 'far') {
+          if (data.triggerSetConfig.witchHunt === 'DN')
+            baitOrder = ['far', 'near', 'far', 'near'];
+          else
+            baitOrder = ['healer', 'tank', 'ranged', 'melee'];
+        } else {
           baitOrder = [];
-        else if (data.witchHuntBait === 'far')
-          baitOrder = baitOrder.reverse();
+        }
 
         const baits: string[] = [];
         for (let i = 0; i < aoeOrder.length; ++i) {
@@ -688,6 +735,18 @@ const triggerSet: TriggerSet<Data> = {
           ja: '離れる',
           cn: '远',
           ko: '멀리',
+        },
+        tank: {
+          en: 'Tanks',
+        },
+        healer: {
+          en: 'Healers',
+        },
+        melee: {
+          en: 'Melee',
+        },
+        ranged: {
+          en: 'Ranged',
         },
         separator: {
           en: ' => ',
@@ -734,7 +793,27 @@ const triggerSet: TriggerSet<Data> = {
         if (data.witchHuntBait !== undefined)
           data.witchHuntBait = data.witchHuntBait === 'near' ? 'far' : 'near';
 
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Tanks take the first near bait
+          if (bait === 'near') {
+            if (data.role === 'tank')
+              return 'baitNear';
+            return 'partyFar';
+          }
+
+          // DN Strat: Healers take the first far bait
+          if (bait === 'far') {
+            if (data.role === 'healer')
+              return 'baitFar';
+            return 'partyNear';
+          }
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
@@ -754,7 +833,27 @@ const triggerSet: TriggerSet<Data> = {
         if (data.witchHuntBait !== undefined)
           data.witchHuntBait = data.witchHuntBait === 'near' ? 'far' : 'near';
 
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Tanks take the first near bait
+          if (bait === 'near') {
+            if (data.role === 'tank')
+              return 'baitNear';
+            return 'partyFar';
+          }
+
+          // DN Strat: Healers take the first far bait
+          if (bait === 'far') {
+            if (data.role === 'healer')
+              return 'baitFar';
+            return 'partyNear';
+          }
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
@@ -774,7 +873,27 @@ const triggerSet: TriggerSet<Data> = {
         if (data.witchHuntBait !== undefined)
           data.witchHuntBait = data.witchHuntBait === 'near' ? 'far' : 'near';
 
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Melee take the second near bait
+          if (bait === 'near') {
+            if (data.role === 'tank' || data.role === 'healer')
+              return 'partyFar';
+            return 'meleeNear';
+          }
+
+          // DN Strat: Ranged take the second far bait
+          if (bait === 'far') {
+            if (data.role === 'tank' || data.role === 'healer')
+              return 'partyNear';
+            return 'rangedFar';
+          }
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
@@ -787,7 +906,28 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         const inOut = data.witchHuntAoESafe ?? output.unknown!();
         const bait = data.witchHuntBait ?? output.unknown!();
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Melee take the second near bait
+          if (bait === 'near') {
+            if (data.role === 'tank' || data.role === 'healer')
+              return 'partyFar';
+            return 'meleeNear';
+          }
+
+          // DN Strat: Ranged take the second far bait
+          if (bait === 'far') {
+            if (data.role === 'tank' || data.role === 'healer')
+              return 'partyNear';
+            return 'rangedFar';
+          }
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
