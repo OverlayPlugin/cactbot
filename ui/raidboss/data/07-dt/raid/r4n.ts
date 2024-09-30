@@ -27,6 +27,9 @@ const directionOutputStrings = {
   unknown: Outputs.unknown,
   goLeft: Outputs.left,
   goRight: Outputs.right,
+  stay: {
+    en: 'Stay',
+  },
   separator: {
     en: ' => ',
     de: ' => ',
@@ -376,7 +379,11 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['9A05', '9A0F'], source: 'Wicked Replica', capture: false },
       condition: (data, _matches) => data.triggerSetConfig.sidewiseSpark === 'sequence',
       durationSeconds: 2,
-      infoText: (data, _matches, output) => {
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = directionOutputStrings;
+        const previousDirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
+
         data.storedCleaves.shift();
 
         if (data.storedCleaves.length === 0)
@@ -384,6 +391,15 @@ const triggerSet: TriggerSet<Data> = {
 
         const dirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
         const mappedDirs = dirs.map((dir) => output[dir]!());
+
+        /* If the next safe spot is the same as the previous spot, just call
+         * a simple stay.
+         */
+        if (
+          dirs.length > 0 && previousDirs.length > 0 &&
+          dirs[0] === previousDirs[0]
+        )
+          return { infoText: output.stay!() };
 
         const cleaves: number = data.storedCleaves.length;
         if (dirs.length === 1 && cleaves > 1) {
@@ -395,16 +411,17 @@ const triggerSet: TriggerSet<Data> = {
           };
 
           if (cleaves in cleaveNums) {
-            return output.numHits!({
+            const string = output.numHits!({
               dir: mappedDirs[0],
               num: cleaveNums[cleaves],
             });
+            return { alertText: string };
           }
         }
 
-        return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
+        const string = output.combo!({ dirs: mappedDirs.join(output.separator!()) });
+        return { alertText: string };
       },
-      outputStrings: directionOutputStrings,
     },
     {
       id: 'R4N Sidewise Spark Cleanup',
