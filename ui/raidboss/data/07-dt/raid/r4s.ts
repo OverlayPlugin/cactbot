@@ -327,6 +327,8 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     ionCluster: 'none' | 'DN';
     witchHunt: 'none' | 'DN';
+    sunrise: 'none' | 'snakePrio';
+    sunriseUptime: true | false;
   };
   phase: Phase;
   // Phase 1
@@ -417,6 +419,38 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
       default: 'none',
+    },
+    {
+      id: 'sunrise',
+      name: {
+        en: 'Sunrise Sabbath Strategy',
+      },
+      comment: {
+        en: `Strategy for resolving Sunrise Sabbath.<br>
+             None: Call debuffs, both tower spawns, and matching towers.<br>
+             Snakes Prio: Popular priority system used in NA PF. Support players
+             start looking for tower or cannon from the northwest going counter clockwise.
+             DPS players look for tower or cannon from the north going clockwise.`,
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None': 'none',
+          'Snakes Prio': 'snakePrio',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'sunriseUptime',
+      name: {
+        en: 'Sunrise Sabbath Uptime Cannon Baits',
+      },
+      comment: {
+        en: 'Call cannon baits assuming the AutoCAD waymark uptime cannon bait spots.',
+      },
+      type: 'checkbox',
+      default: false,
     },
   ],
   timelineFile: 'r4s.txt',
@@ -2160,19 +2194,67 @@ const triggerSet: TriggerSet<Data> = {
         // in outputStrings; see #266 for more info
         let towerSoakStr = output['unknown']!();
         let cannonBaitStr = output['unknown']!();
+        let cannonBaitSpots = undefined;
 
         if (data.sunriseTowerSpots !== undefined) {
-          towerSoakStr = output[data.sunriseTowerSpots]!();
-          cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
-            ? output.eastWest!()
-            : output.northSouth!();
+          if (data.triggerSetConfig.sunrise === 'snakePrio') {
+            if (data.sunriseTowerSpots === 'northSouth') {
+              towerSoakStr = data.role === 'dps'
+                ? output['dirN']!()
+                : output['dirS']!();
+            } else {
+              towerSoakStr = data.role === 'dps'
+                ? output['dirE']!()
+                : output['dirW']!();
+            }
+          } else {
+            towerSoakStr = output[data.sunriseTowerSpots]!();
+          }
+          if (data.triggerSetConfig.sunriseUptime) {
+            cannonBaitSpots = data.sunriseTowerSpots;
+            cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
+              ? output.northSouth!()
+              : output.eastWest!();
+          } else {
+            cannonBaitSpots = data.sunriseTowerSpots === 'northSouth'
+              ? 'eastWest'
+              : 'northSouth';
+            cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
+              ? output.eastWest!()
+              : output.northSouth!();
+          }
         }
 
         if (task === 'yellowShort' || task === 'blueShort') {
           const cannonLocs = task === 'yellowShort' ? blueCannons : yellowCannons;
-          const locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
-          return output[task]!({ loc: locStr, bait: cannonBaitStr });
+          let locStr = output['unknown']!();
+
+          if (data.triggerSetConfig.sunrise === 'snakePrio') {
+            const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW'];
+            const supPrio: DirectionOutputIntercard[] = ['dirNW', 'dirSW', 'dirSE'];
+            const cannonPrio = data.role === 'dps' ? dpsPrio : supPrio;
+            const cannon = cannonPrio.find((loc) => cannonLocs.includes(loc));
+            locStr = cannon ? output[cannon]!() : output['unknown']!();
+            if (cannonBaitSpots === 'northSouth') {
+              cannonBaitStr = cannon === 'dirNE' || cannon === 'dirNW'
+                ? output['dirN']!()
+                : output['dirS']!();
+            } else if (cannonBaitSpots === 'eastWest') {
+              cannonBaitStr = cannon === 'dirNE' || cannon === 'dirSE'
+                ? output['dirE']!()
+                : output['dirW']!();
+            }
+          } else {
+            locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
+          }
+
+          const finalBaitStr = data.triggerSetConfig.sunriseUptime
+            ? output.baitUptime!({ bait: cannonBaitStr })
+            : output.baitNormal!({ bait: cannonBaitStr });
+
+          return output[task]!({ loc: locStr, bait: finalBaitStr });
         }
+
         return output[task]!({ bait: towerSoakStr });
       },
       run: (data) => {
@@ -2181,7 +2263,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.sunriseTowerSpots;
       },
       outputStrings: {
-        ...Directions.outputStringsIntercardDir,
+        ...Directions.outputStrings8Dir,
         northSouth: {
           en: 'N/S',
           de: 'N/S',
@@ -2214,21 +2296,27 @@ const triggerSet: TriggerSet<Data> = {
           cn: '踩塔 (${bait})',
           ko: '기둥 밟기 (${bait})',
         },
+        baitNormal: {
+          en: 'Point ${bait}',
+        },
+        baitUptime: {
+          en: 'Stand ${bait} side',
+        },
         yellowShort: {
-          en: 'Blue Cannon (${loc}) - Point ${bait}',
-          de: 'Blaue Kanone (${loc}) - Richte nach ${bait}',
-          fr: 'Canon bleu ${loc}) - Pointez ${bait}',
+          en: 'Blue Cannon (${loc}) - ${bait}',
+          de: 'Blaue Kanone (${loc}) - ${bait}',
+          fr: 'Canon bleu ${loc}) - ${bait}',
           ja: '青いビーム誘導 (${loc}) - ${bait}',
-          cn: '蓝激光 (${loc}) - 打向 ${bait}',
-          ko: '파란 레이저 (${loc}) - ${bait}쪽으로',
+          cn: '蓝激光 (${loc}) - ${bait}',
+          ko: '파란 레이저 (${loc}) - ${bait}',
         },
         blueShort: {
           en: 'Yellow Cannon (${loc}) - Point ${bait}',
-          de: 'Gelbe Kanone (${loc}) - Richte nach ${bait}',
-          fr: 'Canon jaune ${loc}) - Pointez ${bait}',
+          de: 'Gelbe Kanone (${loc}) - ${bait}',
+          fr: 'Canon jaune ${loc}) - ${bait}',
           ja: '黄色いビーム誘導 (${loc}) - ${bait}',
-          cn: '黄激光 (${loc}) - 打向 ${bait}',
-          ko: '노란 레이저 (${loc}) - ${bait}쪽으로',
+          cn: '黄激光 (${loc}) - ${bait}',
+          ko: '노란 레이저 (${loc}) - ${bait}',
         },
       },
     },
