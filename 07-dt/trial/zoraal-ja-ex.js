@@ -154,10 +154,12 @@ Options.Triggers.push({
       id: 'chasmVollokPriority',
       name: {
         en: 'Chasm of Vollok Safe Spot Priority',
+        fr: 'Priorité des zones sûres pour Trappe de Vollok',
         cn: '无敌裂斩安全区优先级',
       },
       comment: {
         en: 'Select which safe spots have priority during callouts.',
+        fr: 'Sélectionnez quelle zone sûre a la priorité pendant les calls.',
         cn: '选择播报安全区的优先级',
       },
       type: 'select',
@@ -167,6 +169,12 @@ Options.Triggers.push({
           'North and South Corner': 'northSouth',
           'North Corner': 'north',
           'South Corner': 'south',
+        },
+        fr: {
+          'Tuiles intérieures': 'inside',
+          'Coins nord et sud': 'northSouth',
+          'Coin nord': 'north',
+          'Coin sud': 'south',
         },
         cn: {
           '中间': 'inside',
@@ -490,22 +498,27 @@ Options.Triggers.push({
         },
         insideN: {
           en: 'Inner North Diamond - ${lean}',
+          fr: 'Diamand intérieur Nord - ${lean}',
           cn: '内侧 上(北)地板 - ${lean}',
         },
         insideS: {
           en: 'Inner South Diamond - ${lean}',
+          fr: 'Diamand intérieur Sud - ${lean}',
           cn: '内侧 下(南)地板 - ${lean}',
         },
         cornerNS: {
           en: 'North/South Corner Diamonds - ${lean}',
+          fr: 'Diamand coin Nord/Sud - ${lean}',
           cn: '上(北)/下(南)角地板 - ${lean}',
         },
         cornerN: {
           en: 'North Corner Diamond - ${lean}',
+          fr: 'Diamand coin Nord - ${lean}',
           cn: '上(北)角地板 - ${lean}',
         },
         cornerS: {
           en: 'South Corner Diamond - ${lean}',
+          fr: 'Diamand coin Sud - ${lean}',
           cn: '下(南)角地板 - ${lean}',
         },
         leanWest: {
@@ -1196,22 +1209,27 @@ Options.Triggers.push({
         },
         insideN: {
           en: 'Inside North Safe',
+          fr: 'Nord intérieur sûr',
           cn: '内侧 上(北)安全',
         },
         insideS: {
           en: 'Inside South Safe',
+          fr: 'Sud intérieur sûr',
           cn: '内侧 下(南)安全',
         },
         cornerNS: {
           en: 'North/South Corners Safe',
+          fr: 'Coin Nord/Sud sûrs',
           cn: '上(北)/下(南)角安全',
         },
         cornerN: {
           en: 'North Corner Safe',
+          fr: 'Coin Nord sûr',
           cn: '上(北)角安全',
         },
         cornerS: {
           en: 'South Corner Safe',
+          fr: 'Coin Sud sûr',
           cn: '下(南)角安全',
         },
         intercard: {
