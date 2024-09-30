@@ -272,23 +272,6 @@ const triggerSet: TriggerSet<Data> = {
         const dirs = getCleaveDirs(data.actors, data.storedCleaves, mode);
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
-        const cleaves: number = data.storedCleaves.length;
-        if (dirs.length === 1 && cleaves > 1) {
-          const cleaveNums: { [key: number]: string } = {
-            2: output.num2!(),
-            3: output.num3!(),
-            4: output.num4!(),
-            5: output.num5!(),
-          };
-
-          if (cleaves in cleaveNums) {
-            return output.numHits!({
-              dir: mappedDirs[0],
-              num: cleaveNums[cleaves],
-            });
-          }
-        }
-
         return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
       run: (data) => {
