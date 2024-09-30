@@ -581,7 +581,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         cornerS: {
           en: 'South Corner Diamond - ${lean}',
-          fr: 'Diamand coind Sud - ${lean}',
+          fr: 'Diamand coin Sud - ${lean}',
           cn: '下(南)角地板 - ${lean}',
         },
         leanWest: {
