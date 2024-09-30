@@ -6,7 +6,7 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
 import { NetMatches } from '../../../../../types/net_matches';
-import { TriggerSet } from '../../../../../types/trigger';
+import { FullLocaleText, TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Map out MapEffect data if needed? Might be useful for prep for savage.
 // TODO: Better triggers for Bewitching Flight, collector for the loop to combine trigger with clone
@@ -37,6 +37,14 @@ const directionOutputStrings = {
   },
   intercardStay: {
     en: '${dir} => Stay',
+  },
+  numHits: {
+    en: '${dir} x${num}',
+    de: '${dir} x${num}',
+    fr: '${dir} x${num}',
+    ja: '${dir} x${num}',
+    cn: '${dir} x${num}',
+    ko: '${dir} x${num}',
   },
   combo: {
     en: '${dirs}',
@@ -257,6 +265,23 @@ const triggerSet: TriggerSet<Data> = {
         const dirs = getCleaveDirs(data.actors, data.storedCleaves, mode);
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
+        const cleaves: number = data.storedCleaves.length;
+        if (dirs.length === 1 && cleaves > 1) {
+          const cleaveNums: { [key: number]: FullLocaleText } = {
+            2: Outputs.num1,
+            3: Outputs.num2,
+            4: Outputs.num4,
+            5: Outputs.num5,
+          };
+
+          if (cleaves in cleaveNums) {
+            return output.numHits!({
+              dir: mappedDirs[0],
+              num: cleaveNums[cleaves],
+            });
+          }
+        }
+
         return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
       run: (data) => {
@@ -359,6 +384,23 @@ const triggerSet: TriggerSet<Data> = {
 
         const dirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
         const mappedDirs = dirs.map((dir) => output[dir]!());
+
+        const cleaves: number = data.storedCleaves.length;
+        if (dirs.length === 1 && cleaves > 1) {
+          const cleaveNums: { [key: number]: FullLocaleText } = {
+            2: Outputs.num1,
+            3: Outputs.num2,
+            4: Outputs.num4,
+            5: Outputs.num5,
+          };
+
+          if (cleaves in cleaveNums) {
+            return output.numHits!({
+              dir: mappedDirs[0],
+              num: cleaveNums[cleaves],
+            });
+          }
+        }
 
         return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
