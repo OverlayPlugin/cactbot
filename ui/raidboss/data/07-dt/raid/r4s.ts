@@ -333,6 +333,7 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     ionCluster: 'none' | 'DN';
     witchHunt: 'none' | 'DN';
+    sunrise: 'none' | 'uptime';
   };
   phase: Phase;
   // Phase 1
@@ -412,6 +413,24 @@ const triggerSet: TriggerSet<Data> = {
         en: {
           'None - Just call party and bait player positions.': 'none',
           'DN - Supports take first and second baits, prioritizing uptime.': 'DN',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'sunrise',
+      name: {
+        en: 'Sunrise Sabaath Strategy',
+      },
+      comment: {
+        en: 'Strategy for resolving Sunrise Sabaath',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None - Just call debuff and both tower spawns.': 'none',
+          'Uptime - Call specific cannon and tower spots using priority system (DPS N and CW, Support NW and CCW). Assumes AutoCAD uptime waymarks.':
+            'uptime',
         },
       },
       default: 'none',
@@ -2151,7 +2170,19 @@ const triggerSet: TriggerSet<Data> = {
         let cannonBaitStr = output['unknown']!();
 
         if (data.sunriseTowerSpots !== undefined) {
-          towerSoakStr = output[data.sunriseTowerSpots]!();
+          if (data.triggerSetConfig.sunrise === 'uptime') {
+            if (data.sunriseTowerSpots === 'northSouth') {
+              towerSoakStr = data.role === 'dps'
+                ? output.northTower!()
+                : output.southTower!();
+            } else {
+              towerSoakStr = data.role === 'dps'
+                ? output.eastTower!()
+                : output.westTower!();
+            }
+          } else {
+            towerSoakStr = output[data.sunriseTowerSpots]!();
+          }
           cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
             ? output.eastWest!()
             : output.northSouth!();
@@ -2159,9 +2190,32 @@ const triggerSet: TriggerSet<Data> = {
 
         if (task === 'yellowShort' || task === 'blueShort') {
           const cannonLocs = task === 'yellowShort' ? blueCannons : yellowCannons;
+
+          if (data.triggerSetConfig.sunrise === 'uptime') {
+            const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
+            const supPrio: DirectionOutputIntercard[] = ['dirNW', 'dirSW', 'dirSE', 'dirNE'];
+            const cannonPrio = data.role === 'dps' ? dpsPrio : supPrio;
+            const cannon = cannonPrio.find((loc) => cannonLocs.includes(loc));
+            const locStr = cannon ? output[cannon]!() : output['unknown']!();
+            if (data.sunriseTowerSpots === 'northSouth') {
+              cannonBaitStr = cannon === 'dirNE' || cannon === 'dirNW'
+                ? output['dirN']!()
+                : output['dirS']!();
+            } else {
+              cannonBaitStr = cannon === 'dirNE' || cannon === 'dirSE'
+                ? output['dirE']!()
+                : output['dirW']!();
+            }
+            return output['uptimeCannon']!({ loc: locStr, tower: cannonBaitStr });
+          }
+
           const locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
           return output[task]!({ loc: locStr, bait: cannonBaitStr });
         }
+
+        if (data.triggerSetConfig.sunrise === 'uptime')
+          return towerSoakStr;
+
         return output[task]!({ bait: towerSoakStr });
       },
       run: (data) => {
@@ -2170,7 +2224,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.sunriseTowerSpots;
       },
       outputStrings: {
-        ...Directions.outputStringsIntercardDir,
+        ...Directions.outputStrings8Dir,
         northSouth: {
           en: 'N/S',
           de: 'N/S',
@@ -2218,6 +2272,21 @@ const triggerSet: TriggerSet<Data> = {
           ja: '黄色いビーム誘導 (${loc}) - ${bait}',
           cn: '黄激光 (${loc}) - 打向 ${bait}',
           ko: '노란 레이저 (${loc}) - ${bait}쪽으로',
+        },
+        northTower: {
+          en: 'North Tower',
+        },
+        southTower: {
+          en: 'South Tower',
+        },
+        eastTower: {
+          en: 'East Tower',
+        },
+        westTower: {
+          en: 'West Tower',
+        },
+        uptimeCannon: {
+          en: '${loc} Cannon - Bait ${tower} side',
         },
       },
     },
