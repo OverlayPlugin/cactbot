@@ -2244,7 +2244,11 @@ const triggerSet: TriggerSet<Data> = {
             locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
           }
 
-          return output[task]!({ loc: locStr, bait: cannonBaitStr });
+          const finalBaitStr = data.triggerSetConfig.sunriseUptime
+            ? output.baitUptime!({ bait: cannonBaitStr })
+            : output.baitNormal!({ bait: cannonBaitStr });
+
+          return output[task]!({ loc: locStr, bait: finalBaitStr });
         }
 
         return output[task]!({ bait: towerSoakStr });
@@ -2288,21 +2292,27 @@ const triggerSet: TriggerSet<Data> = {
           cn: '踩塔 (${bait})',
           ko: '기둥 밟기 (${bait})',
         },
+        baitNormal: {
+          en: 'Point ${bait}',
+        },
+        baitUptime: {
+          en: 'Stand ${bait} side',
+        },
         yellowShort: {
-          en: 'Blue Cannon (${loc}) - Point ${bait}',
-          de: 'Blaue Kanone (${loc}) - Richte nach ${bait}',
-          fr: 'Canon bleu ${loc}) - Pointez ${bait}',
+          en: 'Blue Cannon (${loc}) - ${bait}',
+          de: 'Blaue Kanone (${loc}) - ${bait}',
+          fr: 'Canon bleu ${loc}) - ${bait}',
           ja: '青いビーム誘導 (${loc}) - ${bait}',
-          cn: '蓝激光 (${loc}) - 打向 ${bait}',
-          ko: '파란 레이저 (${loc}) - ${bait}쪽으로',
+          cn: '蓝激光 (${loc}) - ${bait}',
+          ko: '파란 레이저 (${loc}) - ${bait}',
         },
         blueShort: {
           en: 'Yellow Cannon (${loc}) - Point ${bait}',
-          de: 'Gelbe Kanone (${loc}) - Richte nach ${bait}',
-          fr: 'Canon jaune ${loc}) - Pointez ${bait}',
+          de: 'Gelbe Kanone (${loc}) - ${bait}',
+          fr: 'Canon jaune ${loc}) - ${bait}',
           ja: '黄色いビーム誘導 (${loc}) - ${bait}',
-          cn: '黄激光 (${loc}) - 打向 ${bait}',
-          ko: '노란 레이저 (${loc}) - ${bait}쪽으로',
+          cn: '黄激光 (${loc}) - ${bait}',
+          ko: '노란 레이저 (${loc}) - ${bait}',
         },
       },
     },
