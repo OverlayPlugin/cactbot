@@ -389,13 +389,16 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Ion Cluster Debuff Strategy',
       },
       comment: {
-        en: 'Strategy for resolving debuffs during Ion Cluster.',
+        en: `Strategy for resolving debuffs during Ion Cluster.
+
+             None - Call the debuff only, no strategy.
+             DN - use rivet positions based on the shabin pastebin.`,
       },
       type: 'select',
       options: {
         en: {
-          'None - Just call your debuff': 'none',
-          'DN - Call rivet positions (Support left, DPS right)': 'DN',
+          'None': 'none',
+          'DN': 'DN',
         },
       },
       default: 'none',
@@ -406,13 +409,18 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Witch Hunt Bait Strategy',
       },
       comment: {
-        en: 'Strategy for baiting Witch Hunt AoEs',
+        en: `Strategy for baiting Witch Hunt AoEs.
+
+             None - Call both party and bait positions, no strategy.
+             DN - Flexible priority to maximize melee uptime, with tanks taking
+                  first near bait, healers taking first far bait, melees taking
+                  second near bait, and ranged taking second far bait.`,
       },
       type: 'select',
       options: {
         en: {
-          'None - Just call party and bait player positions.': 'none',
-          'DN - Supports take first and second baits, prioritizing uptime.': 'DN',
+          'None': 'none',
+          'DN': 'DN',
         },
       },
       default: 'none',
@@ -423,14 +431,17 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Sunrise Sabaath Strategy',
       },
       comment: {
-        en: 'Strategy for resolving Sunrise Sabaath',
+        en: `Strategy for resolving Sunrise Sabaath.
+
+             None - Call debuff, both tower spawns, and both matching towers.,
+             Snake Prio + Uptime - Same as Snake Prio, but use the uptime positions
+                                   for baiting the cannons.`,
       },
       type: 'select',
       options: {
         en: {
-          'None - Just call debuff and both tower spawns.': 'none',
-          'Uptime - Call specific cannon and tower spots using priority system (DPS N and CW, Support NW and CCW). Assumes AutoCAD uptime waymarks.':
-            'uptime',
+          'None': 'none',
+          'Snakes Prio + Uptime': 'uptime',
         },
       },
       default: 'none',
