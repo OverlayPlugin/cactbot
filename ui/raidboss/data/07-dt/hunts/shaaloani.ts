@@ -127,20 +127,20 @@ const identifyOrbSafeSpots = (pattern: Point[]) => {
     const yGt = point.y > -825.0;
     topLeft = !topLeft ? !xGt && !yGt : topLeft;
     topRight = !topRight ? xGt && !yGt : topRight;
-    bottomRight = !bottomRight ? !xGt && yGt : bottomRight;
-    bottomLeft = !bottomLeft ? xGt && yGt : bottomLeft;
+    bottomLeft = !bottomLeft ? !xGt && yGt : bottomLeft;
+    bottomRight = !bottomRight ? xGt && yGt : bottomRight;
   }
   // Returns the SAFE SPOTS so opposite of what is detected
   if (topLeft && topRight) { // AOEs all bottom
     return TtokSafeSpots.Front;
   }
-  if (bottomRight && bottomLeft) { // AOEs all top
+  if (bottomLeft && bottomRight) { // AOEs all top
     return TtokSafeSpots.Back;
   }
-  if (topLeft && bottomLeft) { // AOEs are front left, back right
+  if (topLeft && bottomRight) { // AOEs are front left, back right
     return TtokSafeSpots.FR_BL;
   }
-  if (topRight && bottomRight) { // AOEs are front right, back left
+  if (topRight && bottomLeft) { // AOEs are front right, back left
     return TtokSafeSpots.FL_BR;
   }
   console.error('sand sphere pattern not recognized');
@@ -573,7 +573,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Sandspout',
       type: 'StartsUsing',
       netRegex: { id: ['91C1', '91C2', '91C3', '91C4'], source: 'Ttokrrone', capture: true },
-      // condition: (data) => data.inCombat,
       durationSeconds: 6,
       response: (data, matches, output) => {
         const pattern = data.ttokSandOrbPatterns[data.ttokSandOrbOnSet];
@@ -638,7 +637,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Desert Tempest',
       type: 'StartsUsing',
       netRegex: { id: ttokrroneDesertTempestIds, source: 'Ttokrrone', capture: true },
-      // condition: (data) => data.inCombat,
       durationSeconds: 7,
       alertText: (data, matches, output) => {
         const tempest = ttokrroneDesertTempest[matches.id];
@@ -681,10 +679,6 @@ const triggerSet: TriggerSet<Data> = {
               rightLeft = 'left';
             }
           }
-          if (rightLeft === null) {
-            // swap to cover if tempest is in/out and sand orbs are all front/back
-            [rightLeft, backFront] = [backFront, rightLeft];
-          }
         }
         if (pattern) {
           // must always be incremented even if the boss rotates
@@ -701,6 +695,9 @@ const triggerSet: TriggerSet<Data> = {
         if (rightLeft) {
           return output.double!({ inOut: output[inOut]!(), dir2: output[rightLeft]!() });
         }
+        if (backFront) {
+          return output.double!({ inOut: output[inOut]!(), dir2: output[backFront]!() });
+        }
         return output[inOut]!();
       },
       outputStrings: ttokrroneTempestSandspoutOutputStrings,
@@ -710,7 +707,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Touchdown',
       type: 'StartsUsing',
       netRegex: { id: '91DB', source: 'Ttokrrone', capture: false },
-      // condition: (data) => data.inCombat,
       response: Responses.aoe(),
       run: (data) => {
         // Reset everything as orb sequences start with a touchdown.
@@ -726,7 +722,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Fangward Dustdevil',
       type: 'StartsUsing',
       netRegex: { id: ['91C9', '91C5'], source: 'Ttokrrone', capture: false },
-      // condition: (data) => data.inCombat,
       durationSeconds: 16,
       suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.outOfHitbox!(),
@@ -740,7 +735,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Tailward Dustdevil',
       type: 'StartsUsing',
       netRegex: { id: ['91CA', '91C6'], source: 'Ttokrrone', capture: false },
-      // condition: (data) => data.inCombat,
       durationSeconds: 16,
       suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.outOfHitbox!(),
@@ -754,7 +748,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Landswallow',
       type: 'StartsUsing',
       netRegex: { id: '96F2', source: 'Ttokrrone', capture: false },
-      // condition: (data) => data.inCombat,
       durationSeconds: 15,
       infoText: (_data, _matches, output) => output.dodge!(),
       outputStrings: {
@@ -768,7 +761,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Hunt Ttokrrone Sand Spheres Sandburst',
       type: 'StartsUsing',
       netRegex: { id: ['994D', '994E'], source: 'Sand Sphere', capture: true },
-      // condition: (data) => data.inCombat,
       delaySeconds: (_data, matches) => matches.id === '994E' ? 0 : 2,
       durationSeconds: 5,
       suppressSeconds: 1,
