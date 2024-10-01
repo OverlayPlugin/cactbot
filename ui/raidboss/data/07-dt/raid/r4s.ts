@@ -2225,8 +2225,8 @@ const triggerSet: TriggerSet<Data> = {
           const cannonLocs = task === 'yellowShort' ? blueCannons : yellowCannons;
 
           if (data.triggerSetConfig.sunrise === 'snakePrio') {
-            const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
-            const supPrio: DirectionOutputIntercard[] = ['dirNW', 'dirSW', 'dirSE', 'dirNE'];
+            const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW'];
+            const supPrio: DirectionOutputIntercard[] = ['dirNW', 'dirSW', 'dirSE'];
             const cannonPrio = data.role === 'dps' ? dpsPrio : supPrio;
             const cannon = cannonPrio.find((loc) => cannonLocs.includes(loc));
             const locStr = cannon ? output[cannon]!() : output['unknown']!();
