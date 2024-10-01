@@ -2196,12 +2196,12 @@ const triggerSet: TriggerSet<Data> = {
           if (data.triggerSetConfig.sunrise === 'snakePrio') {
             if (data.sunriseTowerSpots === 'northSouth') {
               towerSoakStr = data.role === 'dps'
-                ? output.northTower!()
-                : output.southTower!();
+                ? output['dirN']!()
+                : output['dirS']!();
             } else {
               towerSoakStr = data.role === 'dps'
-                ? output.eastTower!()
-                : output.westTower!();
+                ? output['dirE']!()
+                : output['dirW']!();
             }
           } else {
             towerSoakStr = output[data.sunriseTowerSpots]!();
@@ -2223,13 +2223,14 @@ const triggerSet: TriggerSet<Data> = {
 
         if (task === 'yellowShort' || task === 'blueShort') {
           const cannonLocs = task === 'yellowShort' ? blueCannons : yellowCannons;
+          let locStr = output['unknown']!();
 
           if (data.triggerSetConfig.sunrise === 'snakePrio') {
             const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW'];
             const supPrio: DirectionOutputIntercard[] = ['dirNW', 'dirSW', 'dirSE'];
             const cannonPrio = data.role === 'dps' ? dpsPrio : supPrio;
             const cannon = cannonPrio.find((loc) => cannonLocs.includes(loc));
-            const locStr = cannon ? output[cannon]!() : output['unknown']!();
+            locStr = cannon ? output[cannon]!() : output['unknown']!();
             if (cannonBaitSpots === 'northSouth') {
               cannonBaitStr = cannon === 'dirNE' || cannon === 'dirNW'
                 ? output['dirN']!()
@@ -2239,15 +2240,12 @@ const triggerSet: TriggerSet<Data> = {
                 ? output['dirE']!()
                 : output['dirW']!();
             }
-            return output['specificCannon']!({ loc: locStr, bait: cannonBaitStr });
+          } else {
+            locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
           }
 
-          const locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
           return output[task]!({ loc: locStr, bait: cannonBaitStr });
         }
-
-        if (data.triggerSetConfig.sunrise === 'snakePrio')
-          return towerSoakStr;
 
         return output[task]!({ bait: towerSoakStr });
       },
@@ -2305,21 +2303,6 @@ const triggerSet: TriggerSet<Data> = {
           ja: '黄色いビーム誘導 (${loc}) - ${bait}',
           cn: '黄激光 (${loc}) - 打向 ${bait}',
           ko: '노란 레이저 (${loc}) - ${bait}쪽으로',
-        },
-        northTower: {
-          en: 'North Tower',
-        },
-        southTower: {
-          en: 'South Tower',
-        },
-        eastTower: {
-          en: 'East Tower',
-        },
-        westTower: {
-          en: 'West Tower',
-        },
-        specificCannon: {
-          en: '${loc} Cannon - Bait ${bait}',
         },
       },
     },
