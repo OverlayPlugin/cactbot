@@ -410,12 +410,11 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Witch Hunt Bait Strategy',
       },
       comment: {
-        en: `Strategy for baiting Witch Hunt AoEs.
-
-             None - Call both party and bait positions, no strategy.
-             DN - Flexible priority to maximize melee uptime, with tanks taking
-                  first near bait, healers taking first far bait, melees taking
-                  second near bait, and ranged taking second far bait.`,
+        en: `Strategy for baiting Witch Hunt AoEs.<br>
+             None: Call both party and bait positions with no specific strategy.<br>
+             DN: DN uptime strategy, with flexible priority where Tanks take the first near bait,
+             Healers take the first far bait, Melee DPS take the second near bait, and finally
+             Ranged DPS take the second far bait.`,
       },
       type: 'select',
       options: {
@@ -432,13 +431,11 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Sunrise Sabbath Strategy',
       },
       comment: {
-        en: `Strategy for resolving Sunrise Sabbath.
-
-             None - Call debuff, both tower spawns, and both matching towers.,
-             Snake Prio - Use the snakes priority system with support looking for
-                          a matching tower or cannon starting at North West and going
-                          counter clockwise. DPS look for matching tower or cannon
-                          starting North and going clockwise.`,
+        en: `Strategy for resolving Sunrise Sabbath.<br>
+             None: Call debuffs, both tower spawns, and matching towers.<br>
+             Snakes Prio - Popular priority system used in NA PF. Support players
+             start looking for tower or cannon from the northwest going counter clockwise.
+             DPS players look for tower or cannon from the north going clockwise.`,
       },
       type: 'select',
       options: {
@@ -455,7 +452,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Sunrise Sabbath Uptime Cannon Baits',
       },
       comment: {
-        en: 'Use the AutoCAD waymark uptime cannon bait spots.',
+        en: 'Call cannon baits assuming the AutoCAD waymark uptime cannon bait spots.',
       },
       type: 'checkbox',
       default: false,
