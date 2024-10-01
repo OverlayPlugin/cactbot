@@ -4,8 +4,9 @@ import { OopsyTriggerSet } from '../../../../../types/oopsy';
 
 export type Data = OopsyData;
 
-// TODO: Add trigger for missed Kahderyor Crystalline Crush (stack)
-// TODO: Figure out ground indicator damage for Wind Shot/Earthen Shot
+// TODO: Add trigger for missed Kahderyor Crystalline Crush (boss 2 stack tower)
+// TODO: Add trigger to capture non-zero damage for Wind Shot (meaning hit by ground aoe)
+// TODO: Add trigger for missed Sledgehammer (boss 3 stack)
 
 const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.WorqorZormor,
@@ -27,21 +28,31 @@ const triggerSet: OopsyTriggerSet<Data> = {
 
     // ** Kahderyor ** //
     'WorqorZormor Kahderyor Wind Shot': '8DC8', // player-targeted donut aoes
+    'WorqorZormor Kahderyor Earthen Shot Ground': '8DCB', // ground aoes
     'WorqorZormor Kahderyor Crystalline Storm': '8DC2', // lines on ground
     'WorqorZormor Kahderyor Stalagmite Circle': '8DC5', // inner puddle aoe during gaze mech
     'WorqorZormor Kahderyor Cyclonic Ring': '8DC6', // outer donut aoe during gaze mech
 
     // ** Adds Pre-Boss 3 ** //
+    'WorqorZormor Tulichu Deeproot': '95B1', // circle aoe
+    'WorqorZormor Iguana Languid Lap': '996E', // conal aoe
+    'WorqorZormor Pitcher Weed Nepenthic Plunge': '996F', // conal aoe
+    'WorqorZormor Tulichu Odious Lunge': '95B2', // circle aoe
 
     // ** Gurfurlur ** //
-
+    'WorqorZormor Gurfurlur Lithic Impact': '8DCE', // standing where a tile will drop
+    'WorqorZormor Gurfurlur Allfire 1': '8DCF', // inner fire tiles
+    'WorqorZormor Gurfurlur Allfire 2': '8DD0', // middle fire tiles
+    'WorqorZormor Gurfurlur Allfire 3': '8DD1', // outer fire tiles
+    'WorqorZormor Gurfurlur Whirlwind': '8DD7', // persistent wind aoes
   },
   gainsEffectWarn: {
     'WorqorZormor Kahderyor Confused': '0B', // getting hit by gaze mech
   },
   shareWarn: {
     'WorqorZormor Ryoqor Sparkling Sprinkling': '8DB9', // spreads
-    'WorqorZormor Kahderyor Earthen Shot': '8DC7', // spreads
+    'WorqorZormor Kahderyor Earthen Shot Player': '8DC7', // spreads
+    'WorqorZormor Gurfurlur Volcanic Drop': '8DD2', // spreads
   },
 };
 

@@ -72,12 +72,11 @@ hideall "--sync--"
 #~~~~~~~~~~~#
 
 # -ii 8DBD 8DC8 8DC7 8DC2 8DCA 8DC0 8DC1
-# -ic
 # -p 8DBA:2009.1
 
 # The Council Of Morgar will be sealed off
 2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "118D" } window 2000,1
-2004.1 "--sync--" StartsUsing { id: "8DBA", source: "Kahderyor" }
+2004.1 "--sync--" StartsUsing { id: "8DBA", source: "Kahderyor" } window 5,5
 2009.1 "Wind Unbound" Ability { id: "8DBA", source: "Kahderyor" }
 2021.6 "Crystalline Crush" Ability { id: "8D39", source: "Kahderyor" }
 2032.7 "Wind Shot" Ability { id: "8DBC", source: "Kahderyor" }
@@ -141,4 +140,98 @@ hideall "--sync--"
 # Gurfurlur #
 #~~~~~~~~~~~#
 
+# -ii 8E17 8DDA 995C 8DD7
+# -ic "Aura Sphere"
+# -p 8DBA:2009.1 -p 8DDB:3500
 
+# Karryor The Resting will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "118E" } window 3000,1
+3005.1 "--sync--" StartsUsing { id: "8DAD", source: "Gurfurlur" } window 5,5
+3010.1 "Heaving Haymaker" Ability { id: "8DAD", source: "Gurfurlur" }
+3016.8 "Stonework" Ability { id: "8DCD", source: "Gurfurlur" }
+
+# boss can do either a fire tile or a water tile at the start, then the opposite
+# fake timeline entries, and then sync based on MapEffect (the only indicator...)
+3019.8 "--sync--" MapEffect { flags: "00020001", location: "1A" } jump "fire-first"
+3019.8 "--sync--" MapEffect { flags: "00020001", location: "1B" } jump "water-first"
+3020.7 "Lithic Impact"
+3029.8 "Allfire / Great Flood?"
+3036.1 "Volcanic Drop?"
+3043.4 "Stonework"
+3047.2 "Lithic Impact"
+
+######## OPENER FORK ########
+3119.8 label "fire-first"
+3120.7 "Lithic Impact" Ability { id: "8DCE", source: "Gurfurlur" }
+3129.8 "Allfire (close)" Ability { id: "8DCF", source: "Gurfurlur" }
+3131.4 "Allfire (mid)" Ability { id: "8DD0", source: "Gurfurlur" }
+3133.0 "Allfire (far)" Ability { id: "8DD1", source: "Gurfurlur" }
+3136.1 "Volcanic Drop" Ability { id: "8DD2", source: "Gurfurlur" }
+3143.4 "Stonework" Ability { id: "8DCD", source: "Gurfurlur" }
+3147.2 "Lithic Impact" Ability { id: "8DCE", source: "Gurfurlur" }
+3156.3 "Great Flood" Ability { id: "8DD3", source: "Gurfurlur" }
+3167.7 "--sync--" Ability { id: "8DDB", source: "Gurfurlur" } forcejump "resume"
+
+3219.8 label "water-first"
+3220.7 "Lithic Impact" Ability { id: "8DCE", source: "Gurfurlur" }
+3229.7 "Great Flood" Ability { id: "8DD3", source: "Gurfurlur" }
+3240.3 "Stonework" Ability { id: "8DCD", source: "Gurfurlur" }
+3244.1 "Lithic Impact" Ability { id: "8DCE", source: "Gurfurlur" }
+3253.2 "Allfire (close)" Ability { id: "8DCF", source: "Gurfurlur" }
+3254.8 "Allfire (mid)" Ability { id: "8DD0", source: "Gurfurlur" }
+3256.2 "Allfire (fire)" Ability { id: "8DD1", source: "Gurfurlur" }
+3259.3 "Volcanic Drop" Ability { id: "8DD2", source: "Gurfurlur" }
+3268.6 "--sync--" Ability { id: "8DDB", source: "Gurfurlur" } forcejump "resume"
+######## END FORK ########
+
+3500.0 label "resume"
+3505.0 "Sledgehammer x3" Ability { id: "8DD9", source: "Gurfurlur" } duration 3 window 500,5
+3516.7 "Arcane Stomp" Ability { id: "8DDF", source: "Gurfurlur" }
+3550.7 "Enduring Glory" Ability { id: "8DE0", source: "Gurfurlur" }
+
+# begin loop
+3565.4 "Stonework" Ability { id: "8DCD", source: "Gurfurlur" }
+3569.3 "Lithic Impact" Ability { id: "8DCE", source: "Gurfurlur" }
+3578.4 "Windswrath" Ability { id: "8DD6", source: "Gurfurlur" }
+3594.3 "Windswrath" Ability { id: "98A2", source: "Gurfurlur" }
+3610.7 "Stonework" Ability { id: "8DCD", source: "Gurfurlur" }
+3614.5 "Lithic Impact" Ability { id: "8DCE", source: "Gurfurlur" }
+3623.6 "Great Flood" Ability { id: "8DD3", source: "Gurfurlur" }
+3623.6 "Allfire (close)" Ability { id: "8DCF", source: "Gurfurlur" }
+3625.2 "Allfire (mid)" Ability { id: "8DD0", source: "Gurfurlur" }
+3626.6 "Allfire (far)" Ability { id: "8DD1", source: "Gurfurlur" }
+3629.7 "Volcanic Drop" Ability { id: "8DD2", source: "Gurfurlur" }
+3640.8 "Heaving Haymaker" Ability { id: "8DAD", source: "Gurfurlur" }
+3649.0 "--sync--" Ability { id: "8DDB", source: "Gurfurlur" }
+3654.0 "Sledgehammer" Ability { id: "8DD9", source: "Gurfurlur" }
+3668.2 "Heaving Haymaker" Ability { id: "8DAD", source: "Gurfurlur" }
+3683.3 "Stonework" Ability { id: "8DCD", source: "Gurfurlur" } forcejump 3565.4
+
+# IGNORED ABILITIES
+# 8DDA Sledgehammer (followup)
+# 8E17 Heaving Haymaker (damage)
+# 995C Sledgehammer (followup)
+# 8DD7 Whirlwind (persistent wind aoes)
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 8DAD Heaving Haymaker
+# 8DCD Stonework
+# 8DCE Lithic Impact
+# 8DCF Allfire
+# 8DD0 Allfire
+# 8DD1 Allfire
+# 8DD2 Volcanic Drop
+# 8DD3 Great Flood
+# 8DD6 Windswrath
+# 8DD7 Whirlwind
+# 8DD9 Sledgehammer
+# 8DDA Sledgehammer
+# 8DDB --sync--
+# 8DDF Arcane Stomp
+# 8DE0 Enduring Glory
+# 8DE1 Shroud of Eons
+# 8DE2 Shroud of Eons
+# 8E17 Heaving Haymaker
+# 98A2 Windswrath
+# 995C Sledgehammer

@@ -1,7 +1,10 @@
-// import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { DirectionOutput8, DirectionOutputIntercard, Directions } from '../../../../../resources/util';
+import {
+  DirectionOutput8,
+  DirectionOutputIntercard,
+  Directions,
+} from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -12,6 +15,8 @@ export interface Data extends RaidbossData {
   ryoqorAddTether: string[];
   ryoqorFollowupSafeDirs: DirectionOutput8[];
   seenCrystallineStorm: boolean;
+  seenFirstWaterTile: boolean;
+  seenFirstFireTile: boolean;
 }
 
 const ryoqorCenter = { x: -108, y: 119 };
@@ -21,6 +26,7 @@ const getFacingDir = (pos: number, hdg: number): DirectionOutputIntercard => {
   if (!(pos >= 0 && pos <= 3) || !(hdg >= 0 && hdg <= 3))
     return facing;
 
+  // we can shortcut this, since pos + hdg =1 means NE & =5 means SW
   if (pos + hdg === 1)
     facing = 'dirNE';
   else if (pos + hdg === 5)
@@ -36,10 +42,10 @@ const getFacingDir = (pos: number, hdg: number): DirectionOutputIntercard => {
 
 const coldFeatOutputStrings = {
   start: {
-    en: 'Start ${dir}'
+    en: 'Start ${dir}',
   },
   followup: {
-    en: 'Go ${dir}'
+    en: 'Go ${dir}',
   },
   avoidStart: {
     en: 'Avoid cleaves from untethered adds',
@@ -61,6 +67,8 @@ const triggerSet: TriggerSet<Data> = {
     ryoqorAddTether: [],
     ryoqorFollowupSafeDirs: [],
     seenCrystallineStorm: false,
+    seenFirstWaterTile: false,
+    seenFirstFireTile: false,
   }),
   triggers: [
     // ** Ryoqor Terteh ** //
@@ -77,7 +85,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.fluffleUpCount++,
     },
     {
-      // small adds with quarter-arena cleaves
+      // small cardinal adds with quarter-arena cleaves
       id: 'WorqorZormor Ryoqor Ice Scream Collect',
       type: 'StartsUsing',
       netRegex: { id: '8DAE', source: 'Rorrloh Teh' },
@@ -89,7 +97,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const facingDir = getFacingDir(pos, hdg);
         data.ryoqorAddCleaveDir[matches.sourceId] = facingDir;
-      }
+      },
     },
     {
       // large intercard adds with circle aoe cleaves
@@ -104,7 +112,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // add tethers to indicate delayed resolution
+      // tethers to indicate adds with delayed resolution
       id: 'WorqorZormor Cold Feat Tether Collect',
       type: 'Tether',
       netRegex: { id: '0110', target: 'Ryoqor Terteh' },
@@ -127,7 +135,7 @@ const triggerSet: TriggerSet<Data> = {
         let secondDirs: DirectionOutput8[] = [];
 
         if (data.fluffleUpCount === 1) {
-          // 2 intercards will be safe first, then the other two
+          // 2 intercards will be safe first, then the other 2
           firstDirs = [...Directions.outputIntercardDir].filter((d) => coldDirs.includes(d));
           secondDirs = [...Directions.outputIntercardDir].filter((d) => !coldDirs.includes(d));
           if (firstDirs.length !== 2 || secondDirs.length !== 2)
@@ -155,27 +163,38 @@ const triggerSet: TriggerSet<Data> = {
 
           return output.avoidStart!();
         } else if (data.fluffleUpCount > 2) {
-          // from this point on (loop), there are both types of adds,
-          // so safe spots will always be 1 intercard => 1 intercard.
-          // we can't just rely on the tethered add intercards as safe because of overlap
-          const firstUnsafeDirs = [...new Set(
-            Object.keys(data.ryoqorAddCleaveDir)
-              .filter((id) => !coldAddsIds.includes(id))
-              .map((id) => data.ryoqorAddCleaveDir[id])
-              .filter((dir): dir is DirectionOutputIntercard => dir !== undefined)
-          )];
-          const firstSafeDirs = [...Directions.outputIntercardDir].filter((d) => !firstUnsafeDirs.includes(d));
+          // From this point on (loop), both types of adds are present,
+          // so safe spots will always be 1 intercard => 1 adjacent intercard.
+          // We can't just rely on the tethered add intercards as safe because
+          // an unsafe add will cleave one of them.  Instead, we need to map
+          // out all the unsafe intercards, then find the remaining safe one.
+          const firstUnsafeDirs = [
+            ...new Set( // to remove duplicates
+              Object.keys(data.ryoqorAddCleaveDir)
+                .filter((id) => !coldAddsIds.includes(id))
+                .map((id) => data.ryoqorAddCleaveDir[id])
+                .filter((dir): dir is DirectionOutputIntercard => dir !== undefined),
+            ),
+          ];
+          const firstSafeDirs = [...Directions.outputIntercardDir].filter((d) =>
+            !firstUnsafeDirs.includes(d)
+          );
 
           if (firstSafeDirs.length !== 1)
             return output.avoidStart!();
 
-          const secondUnsafeDirs = [...new Set(
+          const secondUnsafeDirs = [
+            ...new Set( // to remove duplicates
               Object.keys(data.ryoqorAddCleaveDir)
                 .filter((id) => coldAddsIds.includes(id))
                 .map((id) => data.ryoqorAddCleaveDir[id])
-                .filter((dir): dir is DirectionOutputIntercard => dir !== undefined)
-          )];
-          const secondSafeDirs = [...Directions.outputIntercardDir].filter((d) => !secondUnsafeDirs.includes(d));
+                .filter((dir): dir is DirectionOutputIntercard => dir !== undefined),
+            ),
+          ];
+          const secondSafeDirs = [...Directions.outputIntercardDir].filter((d) =>
+            !secondUnsafeDirs.includes(d)
+          );
+
           if (secondSafeDirs.length === 1)
             data.ryoqorFollowupSafeDirs = secondSafeDirs;
 
@@ -190,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '8DAA', source: 'Ryoqor Terteh', capture: false },
       delaySeconds: 9.5,
-      alertText: (data, _matches, output) => {
+      infoText: (data, _matches, output) => {
         if (data.ryoqorFollowupSafeDirs.length === 0)
           return output.avoidFollowup!();
 
@@ -259,7 +278,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         spreadFromHole: {
-          en: 'Spread + Away from hole',
+          en: 'Spread + Away from puddle',
         },
         spreadFromLines: {
           en: 'Spread + Away from lines',
@@ -274,7 +293,121 @@ const triggerSet: TriggerSet<Data> = {
     },
 
     // ** Gurfurlur ** //
-
+    {
+      id: 'WorqorZormor Gurfurlur Heaving Haymaker',
+      type: 'StartsUsing',
+      netRegex: { id: '8DAD', source: 'Gurfurlur', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'WorqorZormor Gurfurlur Enduring Glory',
+      type: 'StartsUsing',
+      netRegex: { id: '8DE0', source: 'Gurfurlur', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'WorqorZormor Gurfurlur Sledgehammer',
+      type: 'StartsUsing',
+      netRegex: { id: '8DD9', source: 'Gurfurlur', capture: false },
+      durationSeconds: 6,
+      infoText: (_data, _matches, output) => output.stack!(),
+      outputStrings: {
+        stack: {
+          en: 'Stack (3 hits)',
+        },
+      },
+    },
+    {
+      id: 'WorqorZormor Arcane Stomp',
+      type: 'Ability',
+      netRegex: { id: '8DDF', source: 'Gurfurlur', capture: false },
+      durationSeconds: 20,
+      infoText: (_data, _matches, output) => output.absorb!(),
+      outputStrings: {
+        absorb: {
+          en: 'Absorb all orbs',
+        },
+      },
+    },
+    // flags: '00020001'
+    // location: '1A' (fire - east), '1B' (water - west), '1D' (wind - center)
+    {
+      id: 'WorqorZormor Gurfurlur First Water Tile',
+      type: 'MapEffect',
+      // Water tile west (does not seem to be a water tile east possible in the first phase?)
+      netRegex: { flags: '00020001', location: '1B', capture: false },
+      condition: (data) => !data.seenFirstWaterTile,
+      delaySeconds: 2,
+      durationSeconds: 7,
+      alertText: (_data, _matches, output) => output.kb!(),
+      run: (data) => data.seenFirstWaterTile = true,
+      outputStrings: {
+        kb: {
+          en: 'Knockback (from West)',
+        },
+      },
+    },
+    {
+      id: 'WorqorZormor Gurfurlur First Fire Tile',
+      type: 'MapEffect',
+      // Fire tile east (does not seem to be a fire tile west possible in the first phase?)
+      netRegex: { flags: '00020001', location: '1A', capture: false },
+      condition: (data) => !data.seenFirstFireTile,
+      delaySeconds: 2,
+      durationSeconds: 9,
+      alertText: (_data, _matches, output) => output.dodgeSpread!(),
+      run: (data) => data.seenFirstFireTile = true,
+      outputStrings: {
+        dodgeSpread: {
+          en: 'Dodge toward fire crystal => Spread',
+        },
+      },
+    },
+    {
+      id: 'WorqorZormor Gurfurlur Fire/Water Combo',
+      type: 'MapEffect',
+      // 1A + 1B are same as original config (fire east + water west)
+      // 19 + 1C mean swapped (water east + fire west - but not sure which is which)
+      // These are always sent in these pairs; we only need to capture one.
+      netRegex: { flags: '00020001', location: ['19', '1A'] },
+      condition: (data) => data.seenFirstWaterTile && data.seenFirstFireTile,
+      durationSeconds: 9,
+      alertText: (_data, matches, output) => {
+        return matches.location === '19' ? output.kbEast!() : output.kbWest!();
+      },
+      outputStrings: {
+        kbEast: {
+          en: 'Knockback (from East) to Fire crystal => Spread',
+        },
+        kbWest: {
+          en: 'Knockback (from West) to Fire crystal => Spread',
+        },
+      },
+    },
+    {
+      id: 'WorqorZormor Gurfurlur Wind Tile Initial',
+      type: 'MapEffect',
+      netRegex: { flags: '00020001', location: '1D', capture: false },
+      delaySeconds: 4,
+      infoText: (_data, _matches, output) => output.kbAoe!(),
+      outputStrings: {
+        kbAoe: {
+          en: 'Knockback + AoE',
+        },
+      },
+    },
+    {
+      id: 'WorqorZormor Gurfurlur Wind Tile Followup',
+      type: 'MapEffect',
+      netRegex: { flags: '00020001', location: '1D', capture: false },
+      delaySeconds: 20.4,
+      infoText: (_data, _matches, output) => output.kbAoe2!(),
+      outputStrings: {
+        kbAoe2: {
+          en: 'Knockback + AoE (avoid adds)',
+        },
+      },
+    },
   ],
   timelineReplace: [],
 };
