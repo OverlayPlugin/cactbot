@@ -313,19 +313,19 @@ const conductorCurrentStringsDNStrat = {
     en: 'Front of Middle (Near Cone)',
   },
   spinningConductorSupport: {
-    en: 'Left Rivet (Small AoE)',
+    en: 'Front Left (Small AoE)',
   },
   spinningConductorDPS: {
-    en: 'Right Rivet (Small AoE)',
+    en: 'Front Right (Small AoE)',
   },
   roundhouseConductorSupport: {
-    en: 'Left Rivet (Donut AoE)',
+    en: 'Front Left (Donut AoE)',
   },
   roundhouseConductorDPS: {
-    en: 'Right Rivet (Donut AoE)',
+    en: 'Front Right (Donut AoE)',
   },
   colliderConductor: {
-    en: 'Middle Rivet (Get Hit by Cone)',
+    en: 'Middle, Behind Current (Get Hit by Cone)',
   },
 } as const;
 
