@@ -429,10 +429,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'sunrise',
       name: {
-        en: 'Sunrise Sabaath Strategy',
+        en: 'Sunrise Sabbath Strategy',
       },
       comment: {
-        en: `Strategy for resolving Sunrise Sabaath.
+        en: `Strategy for resolving Sunrise Sabbath.
 
              None - Call debuff, both tower spawns, and both matching towers.,
              Snake Prio - Use the snakes priority system with support looking for
@@ -444,7 +444,7 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'None': 'none',
-          'Snakes Prio': 'snakesPrio',
+          'Snakes Prio': 'snakePrio',
         },
       },
       default: 'none',
@@ -452,7 +452,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'sunriseUptime',
       name: {
-        en: 'Sunrise Sabaath Uptime Cannon Baits',
+        en: 'Sunrise Sabbath Uptime Cannon Baits',
       },
       comment: {
         en: 'Use the AutoCAD waymark uptime cannon bait spots.',
