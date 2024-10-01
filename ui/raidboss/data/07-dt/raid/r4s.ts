@@ -333,7 +333,8 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     ionCluster: 'none' | 'DN';
     witchHunt: 'none' | 'DN';
-    sunrise: 'none' | 'uptime';
+    sunrise: 'none' | 'snakePrio';
+    sunriseUptime: true | false;
   };
   phase: Phase;
   // Phase 1
@@ -434,17 +435,30 @@ const triggerSet: TriggerSet<Data> = {
         en: `Strategy for resolving Sunrise Sabaath.
 
              None - Call debuff, both tower spawns, and both matching towers.,
-             Snake Prio + Uptime - Same as Snake Prio, but use the uptime positions
-                                   for baiting the cannons.`,
+             Snake Prio - Use the snakes priority system with support looking for
+                          a matching tower or cannon starting at North West and going
+                          counter clockwise. DPS look for matching tower or cannon
+                          starting North and going clockwise.`,
       },
       type: 'select',
       options: {
         en: {
           'None': 'none',
-          'Snakes Prio + Uptime': 'uptime',
+          'Snakes Prio': 'snakesPrio',
         },
       },
       default: 'none',
+    },
+    {
+      id: 'sunriseUptime',
+      name: {
+        en: 'Sunrise Sabaath Uptime Cannon Baits',
+      },
+      comment: {
+        en: 'Use the AutoCAD waymark uptime cannon bait spots.',
+      },
+      type: 'checkbox',
+      default: false,
     },
   ],
   timelineFile: 'r4s.txt',
@@ -2179,9 +2193,10 @@ const triggerSet: TriggerSet<Data> = {
         // in outputStrings; see #266 for more info
         let towerSoakStr = output['unknown']!();
         let cannonBaitStr = output['unknown']!();
+        let cannonBaitSpots = undefined;
 
         if (data.sunriseTowerSpots !== undefined) {
-          if (data.triggerSetConfig.sunrise === 'uptime') {
+          if (data.triggerSetConfig.sunrise === 'snakePrio') {
             if (data.sunriseTowerSpots === 'northSouth') {
               towerSoakStr = data.role === 'dps'
                 ? output.northTower!()
@@ -2194,37 +2209,47 @@ const triggerSet: TriggerSet<Data> = {
           } else {
             towerSoakStr = output[data.sunriseTowerSpots]!();
           }
-          cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
-            ? output.eastWest!()
-            : output.northSouth!();
+          if (data.triggerSetConfig.sunriseUptime) {
+            cannonBaitSpots = data.sunriseTowerSpots;
+            cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
+              ? output.northSouth!()
+              : output.eastWest!();
+          } else {
+            cannonBaitSpots = data.sunriseTowerSpots === 'northSouth'
+              ? 'eastWest'
+              : 'northSouth';
+            cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
+              ? output.eastWest!()
+              : output.northSouth!();
+          }
         }
 
         if (task === 'yellowShort' || task === 'blueShort') {
           const cannonLocs = task === 'yellowShort' ? blueCannons : yellowCannons;
 
-          if (data.triggerSetConfig.sunrise === 'uptime') {
+          if (data.triggerSetConfig.sunrise === 'snakePrio') {
             const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
             const supPrio: DirectionOutputIntercard[] = ['dirNW', 'dirSW', 'dirSE', 'dirNE'];
             const cannonPrio = data.role === 'dps' ? dpsPrio : supPrio;
             const cannon = cannonPrio.find((loc) => cannonLocs.includes(loc));
             const locStr = cannon ? output[cannon]!() : output['unknown']!();
-            if (data.sunriseTowerSpots === 'northSouth') {
+            if (cannonBaitSpots === 'northSouth') {
               cannonBaitStr = cannon === 'dirNE' || cannon === 'dirNW'
                 ? output['dirN']!()
                 : output['dirS']!();
-            } else {
+            } else if (cannonBaitSpots === 'eastWest') {
               cannonBaitStr = cannon === 'dirNE' || cannon === 'dirSE'
                 ? output['dirE']!()
                 : output['dirW']!();
             }
-            return output['uptimeCannon']!({ loc: locStr, tower: cannonBaitStr });
+            return output['specificCannon']!({ loc: locStr, bait: cannonBaitStr });
           }
 
           const locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
           return output[task]!({ loc: locStr, bait: cannonBaitStr });
         }
 
-        if (data.triggerSetConfig.sunrise === 'uptime')
+        if (data.triggerSetConfig.sunrise === 'snakePrio')
           return towerSoakStr;
 
         return output[task]!({ bait: towerSoakStr });
@@ -2296,8 +2321,8 @@ const triggerSet: TriggerSet<Data> = {
         westTower: {
           en: 'West Tower',
         },
-        uptimeCannon: {
-          en: '${loc} Cannon - Bait ${tower} side',
+        specificCannon: {
+          en: '${loc} Cannon - Bait ${bait}',
         },
       },
     },
