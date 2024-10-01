@@ -729,9 +729,9 @@ const triggerSet: TriggerSet<Data> = {
             baitOrder = ['near', 'far', 'near', 'far'];
         } else if (data.witchHuntBait === 'far') {
           if (data.triggerSetConfig.witchHunt === 'DN')
-            baitOrder = ['far', 'near', 'far', 'near'];
-          else
             baitOrder = ['healer', 'tank', 'ranged', 'melee'];
+          else
+            baitOrder = ['far', 'near', 'far', 'near'];
         } else {
           baitOrder = [];
         }
