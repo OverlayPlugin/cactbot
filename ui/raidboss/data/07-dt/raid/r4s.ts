@@ -1287,10 +1287,17 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.2,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if (data.mustardBombTargets.includes(data.me))
-          return output.passDebuff!();
-        else if (!data.kindlingCauldronTargets.includes(data.me))
+        if (data.mustardBombTargets.includes(data.me)) {
+          const safePlayers = data.party.partyNames.filter((m) =>
+            !data.kindlingCauldronTargets.includes(m) &&
+            !data.mustardBombTargets.includes(m)
+          );
+          const toStr = safePlayers.map((m) => data.party.member(m).nick).join(', ');
+
+          return output.passDebuff!({ to: toStr });
+        } else if (!data.kindlingCauldronTargets.includes(data.me)) {
           return output.getDebuff!();
+        }
       },
       run: (data) => {
         data.mustardBombTargets = [];
@@ -1298,12 +1305,12 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         passDebuff: {
-          en: 'Pass Debuff',
-          de: 'Debuff übergeben',
-          fr: 'Donner le debuff',
-          ja: 'デバフを渡して',
-          cn: '传火',
-          ko: '디버프 전달',
+          en: 'Pass Debuff (${to})',
+          de: 'Debuff übergeben (${to})',
+          fr: 'Donner le debuff (${to})',
+          ja: 'デバフを渡して (${to})',
+          cn: '传火 (${to})',
+          ko: '디버프 전달 (${to})',
         },
         getDebuff: {
           en: 'Get Debuff',
