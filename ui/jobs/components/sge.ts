@@ -14,7 +14,7 @@ export class SGEComponent extends BaseComponent {
   adderTimerBox: ResourceBox;
   eukrasianDosis: TimerBox;
   phlegma: TimerBox;
-  rhizomata: TimerBox;
+  psyche: TimerBox;
   lucidDream: TimerBox;
 
   constructor(o: ComponentInterface) {
@@ -57,9 +57,9 @@ export class SGEComponent extends BaseComponent {
       fgColor: 'sge-color-phlegma',
     });
 
-    this.rhizomata = this.bars.addProcBox({
-      id: 'sge-proc-rhizomata',
-      fgColor: 'sge-color-rhizomata',
+    this.psyche = this.bars.addProcBox({
+      id: 'sge-proc-psyche',
+      fgColor: 'sge-color-psyche',
     });
 
     this.lucidDream = this.bars.addProcBox({
@@ -88,7 +88,12 @@ export class SGEComponent extends BaseComponent {
         }
         break;
       case kAbility.Rhizomata:
-        this.rhizomata.duration = 90;
+        if (this.ffxivVersion < 700)
+          this.psyche.duration = 90;
+        break;
+      case kAbility.Psyche:
+        if (this.ffxivVersion >= 700)
+          this.psyche.duration = 60;
         break;
       case kAbility.LucidDreaming:
         this.lucidDream.duration = 60;
@@ -122,7 +127,7 @@ export class SGEComponent extends BaseComponent {
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
     this.eukrasianDosis.threshold = gcdSpell + 1;
     this.phlegma.threshold = gcdSpell + 1;
-    this.rhizomata.threshold = gcdSpell + 1;
+    this.psyche.threshold = gcdSpell + 1;
     this.lucidDream.threshold = gcdSpell + 1;
     // Due to unknown reason, if you sync to below lv45,
     // addersgall is not availble but memory still says you have 3 addersgall.
@@ -134,7 +139,7 @@ export class SGEComponent extends BaseComponent {
   override reset(): void {
     this.eukrasianDosis.duration = 0;
     this.phlegma.duration = 0;
-    this.rhizomata.duration = 0;
+    this.psyche.duration = 0;
     this.lucidDream.duration = 0;
   }
 }

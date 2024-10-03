@@ -143,6 +143,7 @@ export const kAbility = {
   Phlegma: '5EE1',
   Phlegma2: '5EF3',
   Phlegma3: '5EF9',
+  Psyche: '90A9',
   // MNK
   DragonKick: '4A',
   TwinSnakes: '3D',
