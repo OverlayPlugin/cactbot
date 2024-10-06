@@ -154,11 +154,11 @@ const witchHuntAlertOutputStrings = {
     cn: '引导远 (小队近)',
     ko: '멀리 유도 (본대 가까이)',
   },
-  baitNear: {
-    en: 'Close (Party Far)',
+  tanksNear: {
+    en: 'Tanks Close (Party Far)',
   },
-  baitFar: {
-    en: 'Far (Party Close)',
+  healersFar: {
+    en: 'Healers Far (Party Close)',
   },
   meleeNear: {
     en: 'Melee Close (Party Far)',
@@ -848,7 +848,7 @@ const triggerSet: TriggerSet<Data> = {
           // DN Strat: Healers take the first far bait
           if (bait === 'far') {
             if (data.role === 'healer')
-              return 'baitFar';
+              return 'healersFar';
             return 'partyNear';
           }
           return bait;
@@ -881,14 +881,14 @@ const triggerSet: TriggerSet<Data> = {
           // DN Strat: Tanks take the first near bait
           if (bait === 'near') {
             if (data.role === 'tank')
-              return 'baitNear';
+              return 'tanksNear';
             return 'partyFar';
           }
 
           // DN Strat: Healers take the first far bait
           if (bait === 'far') {
             if (data.role === 'healer')
-              return 'baitFar';
+              return 'healersFar';
             return 'partyNear';
           }
           return bait;
@@ -920,16 +920,16 @@ const triggerSet: TriggerSet<Data> = {
 
           // DN Strat: Melee take the second near bait
           if (bait === 'near') {
-            if (data.role === 'tank' || data.role === 'healer')
-              return 'partyFar';
-            return 'meleeNear';
+            if (data.role === 'dps')
+              return 'meleeNear';
+            return 'partyFar';
           }
 
           // DN Strat: Ranged take the second far bait
           if (bait === 'far') {
-            if (data.role === 'tank' || data.role === 'healer')
-              return 'partyNear';
-            return 'rangedFar';
+            if (data.role === 'dps')
+              return 'rangedFar';
+            return 'partyNear';
           }
           return bait;
         };
@@ -954,16 +954,16 @@ const triggerSet: TriggerSet<Data> = {
 
           // DN Strat: Melee take the second near bait
           if (bait === 'near') {
-            if (data.role === 'tank' || data.role === 'healer')
-              return 'partyFar';
-            return 'meleeNear';
+            if (data.role === 'dps')
+              return 'meleeNear';
+            return 'partyFar';
           }
 
           // DN Strat: Ranged take the second far bait
           if (bait === 'far') {
-            if (data.role === 'tank' || data.role === 'healer')
-              return 'partyNear';
-            return 'rangedFar';
+            if (data.role === 'dps')
+              return 'rangedFar';
+            return 'partyNear';
           }
           return bait;
         };
