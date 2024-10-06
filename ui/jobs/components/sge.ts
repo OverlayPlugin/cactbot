@@ -88,8 +88,8 @@ export class SGEComponent extends BaseComponent {
         }
         break;
       case kAbility.Psyche:
-          this.psyche.duration = 60;
-          break;
+        this.psyche.duration = 60;
+        break;
       // TODO: remove this when no region is in 6.X
       case kAbility.Rhizomata:
         if (this.ffxivVersion < 700)
