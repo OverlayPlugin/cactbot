@@ -183,8 +183,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
-          'Sequence of moves as cleaves finish': 'sequence',
           'Collect all cleaves and call once': 'collected',
+          'Sequence of moves as cleaves finish': 'sequence',
         },
       },
       default: 'collected',
