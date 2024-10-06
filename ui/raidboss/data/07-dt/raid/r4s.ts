@@ -392,8 +392,8 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en: `Strategy for resolving debuffs during Ion Cluster.
 
-             None - Call the debuff only, no strategy.
-             DN - use rivet positions based on the shabin pastebin.`,
+             None: Call the debuff only, no strategy.
+             DN: use rivet positions based on the shabin pastebin.`,
       },
       type: 'select',
       options: {
@@ -433,7 +433,7 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en: `Strategy for resolving Sunrise Sabbath.<br>
              None: Call debuffs, both tower spawns, and matching towers.<br>
-             Snakes Prio - Popular priority system used in NA PF. Support players
+             Snakes Prio: Popular priority system used in NA PF. Support players
              start looking for tower or cannon from the northwest going counter clockwise.
              DPS players look for tower or cannon from the north going clockwise.`,
       },
