@@ -68,7 +68,7 @@
     "@types/markdown-magic": "^1.0.1",
     "@types/mini-css-extract-plugin": "^1.4.3",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^18.7.23",
+    "@types/node": "^20.11.25",
     "@types/node-fetch": "^2.5.10",
     "@types/tar-fs": "^2.0.0",
     "@types/webpack": "^5.28.0",

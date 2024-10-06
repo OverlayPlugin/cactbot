@@ -3,7 +3,7 @@ description: "run actions/setup-node and `npm ci`"
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'npm'
