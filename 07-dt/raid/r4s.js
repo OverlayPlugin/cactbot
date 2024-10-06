@@ -818,13 +818,13 @@ Options.Triggers.push({
       id: 'R4S Left Roll',
       type: 'Ability',
       netRegex: { id: '95D3', source: 'Wicked Thunder', capture: false },
-      response: Responses.goLeft(),
+      response: Responses.goWest(),
     },
     {
       id: 'R4S Right Roll',
       type: 'Ability',
       netRegex: { id: '95D2', source: 'Wicked Thunder', capture: false },
-      response: Responses.goRight(),
+      response: Responses.goEast(),
     },
     {
       id: 'R4S Electron Stream Debuff',
