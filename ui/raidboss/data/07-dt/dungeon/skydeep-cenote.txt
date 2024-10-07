@@ -121,7 +121,7 @@ hideall "--sync--"
 # Maulskull #
 #~~~~~~~~~~~#
 
-# -ii 8F46 8F40 8F43 8F44 8F64 8F42 8F50 8F4E 8F53 8F54 8F3A 98D1 8F60 8F61 8F67 8F51
+# -ii 8F46 8F40 8F43 8F44 8F64 8F42 8F50 8F4E 8F53 8F54 8F3A 98D1 8F60 8F61 8F67 8F51 8F56 8F57
 # -p 8F3D:3013.1
 
 # Gatekeep's Anvil will be sealed off
@@ -142,14 +142,13 @@ hideall "--sync--"
 3075.5 "Deep Thunder 1" #Ability { id: "8F52", source: "Maulskull" }
 3076.6 "Deep Thunder 2" #Ability { id: "8F52", source: "Maulskull" }
 3077.6 "Deep Thunder 3" #Ability { id: "8F52", source: "Maulskull" }
-3087.0 "Ringing Blows" Ability { id: ["8F56", "8F57"], source: "Maulskull" }
-3088.9 "Impact + Skullcrush" Ability { id: "8F3B", source: "Maulskull" }
+3088.9 "Ringing Blows" Ability { id: "8F3B", source: "Maulskull" }
 3091.0 "Stonecarver (first)" Ability { id: "8F58", source: "Maulskull" }
 3093.6 "Stonecarver (second)" Ability { id: "8F59", source: "Maulskull" }
 3102.3 "Wrought Fire" Ability { id: "98D2", source: "Maulskull" }
-3115.5 "Impact + Skullcrush" Ability { id: "8F63", source: "Maulskull" }
+3115.5 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
 3119.5 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
-3129.7 "Impact + Skullcrush" Ability { id: "8F63", source: "Maulskull" }
+3129.7 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
 3133.5 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
 3144.1 "Ashlayer" Ability { id: "8F68", source: "Maulskull" }
 3153.2 "Maulwork" Ability { id: ["8F47", "8F48", "8F49", "8F4A"], source: "Maulskull" }
@@ -165,15 +164,14 @@ hideall "--sync--"
 3181.6 "Deep Thunder 3" #Ability { id: "8F52", source: "Maulskull" }
 3182.7 "Deep Thunder 4" #Ability { id: "8F52", source: "Maulskull" }
 3183.7 "Deep Thunder 5" #Ability { id: "8F52", source: "Maulskull" }
-3194.0 "Ringing Blows" Ability { id: ["8F56", "8F57"], source: "Maulskull" }
-3196.0 "Impact + Skullcrush" Ability { id: "8F3B", source: "Maulskull" }
+3196.0 "Ringing Blows" Ability { id: "8F3B", source: "Maulskull" }
 3198.1 "Stonecarver (first)" Ability { id: "8F58", source: "Maulskull" }
 3200.7 "Stonecarver (second)" Ability { id: "8F59", source: "Maulskull" }
 3209.4 "Wrought Fire" Ability { id: "98D2", source: "Maulskull" }
-3223.5 "Impact + Skullcrush" Ability { id: "8F63", source: "Maulskull" }
+3223.5 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
 3227.4 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
 3237.7 "Ashlayer" Ability { id: "8F68", source: "Maulskull" }
-3247.7 "Impact + Skullcrush" Ability { id: "8F63", source: "Maulskull" }
+3247.7 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
 3251.7 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
 3262.9 "--sync--" Ability { id: "8F4F", source: "Maulskull" } forcejump 3178.3
 
@@ -189,6 +187,8 @@ hideall "--sync--"
 # 8F51 --sync--
 # 8F53 Deep Thunder (vfx)
 # 8F54 --sync--
+# 8F56 Ringing Blows (cast, followed by 8F3B)
+# 8F57 Ringing Blows (cast, followed by 8F3B)
 # 8F5B Stonecarver (vfx)
 # 8F5C Stonecarver (vfx)
 # 8F60 Colossal Impact (vfx)
