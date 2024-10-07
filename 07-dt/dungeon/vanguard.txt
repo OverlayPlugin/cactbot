@@ -1,0 +1,250 @@
+### VANGUARD
+# ZoneId: 1198
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~~~~~~~~~~~#
+# Vanguard Commander R8 #
+#~~~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii 8E33 8ED3 8ED4 8ED5 8ED6 8ED7 8EDC 9140 9147
+# -p 8EDB:1011.0
+
+# The Central Garage will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1333" } window 1000,1
+1006.0 "--sync--" StartsUsing { id: "8EDB", source: "Vanguard Commander R8" }
+1011.0 "Electrowave" Ability { id: "8EDB", source: "Vanguard Commander R8" }
+1027.9 "Enhanced Mobility" Ability { id: ["8ECF", "8ED0", "98E4", "98E5"], source: "Vanguard Commander R8" }
+1029.3 "Rapid Rotary" Ability { id: ["8ED1", "8ED2", "98E6", "98E7"], source: "Vanguard Commander R8" }
+1039.7 "Dispatch" Ability { id: "8ED8", source: "Vanguard Commander R8" }
+1047.3 "Rush" Ability { id: "8ED9", source: "Vanguard Sentry R8" }
+1053.9 "Electrowave" Ability { id: "8EDB", source: "Vanguard Commander R8" }
+1060.0 "Dispatch" Ability { id: "8ED8", source: "Vanguard Commander R8" }
+1070.6 "Aerial Offensive" Ability { id: "8EDA", source: "Vanguard Sentry R8" }
+
+# begin loop
+1085.0 "Enhanced Mobility" Ability { id: ["8ECF", "8ED0", "98E4", "98E5"], source: "Vanguard Commander R8" }
+1086.4 "Rapid Rotary" Ability { id: ["8ED1", "8ED2", "98E6", "98E7"], source: "Vanguard Commander R8" }
+1096.8 "Dispatch" Ability { id: "8ED8", source: "Vanguard Commander R8" }
+1103.9 "Electrosurge + Rush" Ability { id: "8EDD", source: "Vanguard Commander R8" }
+1104.3 "--sync--" Ability { id: "8ED9", source: "Vanguard Sentry R8" } # Rush
+1111.0 "Dispatch" Ability { id: "8ED8", source: "Vanguard Commander R8" }
+1126.6 "Aerial Offensive (sides)" Ability { id: "8EDA", source: "Vanguard Sentry R8" }
+1130.6 "Aerial Offensive (corners)" Ability { id: "8EDA", source: "Vanguard Sentry R8" }
+1140.0 "Electrowave" Ability { id: "8EDB", source: "Vanguard Commander R8" }
+1158.9 "Enhanced Mobility" Ability { id: ["8ECF", "8ED0", "98E4", "98E5"], source: "Vanguard Commander R8" } forcejump 1085
+
+# IGNORED ABILITIES
+# 8E33 --sync-- (autos)
+# 8ED3 Enhanced Mobility (simultaneous with 8ECF)
+# 8ED4 Enhanced Mobility (simultaneous with 98E5)
+# 8ED5 Rapid Rotary (damage)
+# 8ED6 Rapid Rotary (damage)
+# 8ED7 Rapid Rotary (damage)
+# 8EDC Electrosurge (cast)
+# 9140 Enhanced Mobility (simultaneous with 8ED0)
+# 9147 Enhanced Mobility (simultaneous with 98E4)
+
+# ALL ENCOUNTER ABILITIES
+# 8E33 --sync--
+# 8ECF Enhanced Mobility
+# 8ED0 Enhanced Mobility
+# 8ED1 Rapid Rotary
+# 8ED2 Rapid Rotary
+# 8ED3 Enhanced Mobility
+# 8ED4 Enhanced Mobility
+# 8ED5 Rapid Rotary
+# 8ED6 Rapid Rotary
+# 8ED7 Rapid Rotary
+# 8ED8 Dispatch
+# 8ED9 Rush
+# 8EDA Aerial Offensive
+# 8EDB Electrowave
+# 8EDC Electrosurge
+# 8EDD Electrosurge
+# 9140 Enhanced Mobility
+# 9147 Enhanced Mobility
+# 98E4 Enhanced Mobility
+# 98E5 Enhanced Mobility
+# 98E6 Rapid Rotary
+# 98E7 Rapid Rotary
+
+#~~~~~~~~~~~#
+# Protector #
+#~~~~~~~~~~~#
+
+# -ii 9121 91E0 91E7 91DF 911F 91E4 91E3
+# -ic "Explosive Turrent" "Laser Turret"
+# -p 9129:2011.1
+
+# Explosive Turrent (9124 - Shock) & Laser Turrent (9123 - Homing Cannon)
+# get extremely spammy.  It's better to just ignore these combatants and
+# do an unsync'd '(ground AoEs)' for the duration of their spam.
+# Same with Laser Turret's Blast Cannon (911F).
+
+# The Safety Inspection Chamber will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1334" } window 2000,1
+2006.1 "--sync--" StartsUsing { id: "9129", source: "Protector" }
+2011.1 "Electrowave" Ability { id: "9129", source: "Protector" }
+2018.2 "Search and Destroy" Ability { id: "9122", source: "Protector" }
+2025.4 "(ground AoEs)" duration 11
+2041.3 "Fulminous Fence" Ability { id: "911D", source: "Protector" }
+2049.4 "Battery Circuit" Ability { id: "9127", source: "Protector" } duration 13.2
+2049.4 "Electrowhirl" Ability { id: "91E6", source: "Protector" }
+2051.6 "Bombardment" Ability { id: "9868", source: "Protector" }
+# The next Electrowhirls & Bombardments are concurrent, so combine them
+2054.8 "Electrowhirl + Bombardment" Ability { id: "9128", source: "Protector" }
+2058.1 "Electrowhirl + Bombardment" Ability { id: "9128", source: "Protector" }
+2061.3 "Electrowhirl + Bombardment" Ability { id: "9128", source: "Protector" }
+2068.6 "Rapid Thunder" Ability { id: "912A", source: "Protector" }
+2076.0 "Motion Sensor" Ability { id: "911E", source: "Protector" }
+2083.4 "Blast Cannon" duration 9.6
+2097.9 "Search and Destroy" Ability { id: "9122", source: "Protector" }
+2105.1 "(ground AoEs)" duration 11
+2124.7 "Tracking Bolt/Heavy Blast Cannon" Ability { id: ["91E1","91E5"], source: "Protector" }
+
+# begin loop
+2138.9 "Electrowave" Ability { id: "9129", source: "Protector" }
+2153.3 "Motion Sensor" Ability { id: "911E", source: "Protector" }
+2160.7 "Blast Cannon" duration 9.6
+2175.2 "Search and Destroy" Ability { id: "9122", source: "Protector" }
+2182.4 "(ground AoEs)" duration 11
+2202.1 "Tracking Bolt/Heavy Blast Cannon" Ability { id: ["91E1","91E5"], source: "Protector" }
+2213.3 "Electrowave" Ability { id: "9129", source: "Protector" } forcejump 2138.9
+
+# IGNORED ABILITIES
+# 911F Blast Cannon (persistent line cleaves)
+# 9121 --sync--
+# 91E0 Battery Circuit (persistent rotating AoE)
+# 91E3 --sync--
+# 91E4 Tracking Bolt (cast)
+# 91E7 Battery Circuit (initial conal, concurrent with 9127)
+
+# ALL ENCOUNTER ABILITIES
+# 36E attack
+# 911D Fulminous Fence
+# 911E Motion Sensor
+# 911F Blast Cannon
+# 9121 --sync--
+# 9122 Search and Destroy
+# 9123 Homing Cannon
+# 9124 Shock
+# 9126 Electrostatic Contact
+# 9127 Battery Circuit
+# 9128 Electrowhirl
+# 9129 Electrowave
+# 912A Rapid Thunder
+# 91DF --sync--
+# 91E0 Battery Circuit
+# 91E1 Heavy Blast Cannon
+# 91E3 --sync--
+# 91E4 Tracking Bolt
+# 91E5 Tracking Bolt
+# 91E6 Electrowhirl
+# 91E7 Battery Circuit
+# 9868 Bombardment
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Zander the Snakeskinner #
+#~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii 8EE4 8EE5 8EE6 8EE7 8EE9 8EEA 8EEB 8EEC 8EF0 8EF1 9948 9949
+# -it "Zander the Snakeskinner"
+# -p 8EF2:3011.1
+# -p 8EE0:3500.0
+
+# ** PHASE 1 **
+# The Vanguard Control Room will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1335" } window 3000,1
+3006.1 "--sync--" StartsUsing { id: "8EF2", source: "Zander the Snakeskinner" }
+3011.1 "Electrothermia" Ability { id: "8EF2", source: "Zander the Snakeskinner" }
+3021.9 "Soulbane Saber" Ability { id: "8EDE", source: "Zander the Snakeskinner" }
+3028.9 "Burst" Ability { id: "8EDF", source: "Zander the Snakeskinner" }
+3038.0 "Saber Rush" Ability { id: "8EF3", source: "Zander the Snakeskinner" }
+
+# Use numbering on the Sabers/Bursts since they overlap
+# begin p1 loop
+3047.6 "Soulbane Saber 1" Ability { id: "8EDE", source: "Zander the Snakeskinner" }
+3052.8 "Soulbane Saber 2" Ability { id: "8EDE", source: "Zander the Snakeskinner" }
+3054.6 "Burst 1" Ability { id: "8EDF", source: "Zander the Snakeskinner" }
+3058.2 "Soulbane Saber 3" Ability { id: "8EDE", source: "Zander the Snakeskinner" }
+3059.9 "Soulbane Shock" Ability { id: "9422", source: "Zander the Snakeskinner" }
+3060.0 "Burst 2" Ability { id: "8EDF", source: "Zander the Snakeskinner" }
+3063.6 "Soulbane Saber 4" Ability { id: "8EDE", source: "Zander the Snakeskinner" }
+3065.4 "Burst 3" Ability { id: "8EDF", source: "Zander the Snakeskinner" }
+3070.4 "Soulbane Shock" Ability { id: "9422", source: "Zander the Snakeskinner" }
+3070.6 "Burst 4" Ability { id: "8EDF", source: "Zander the Snakeskinner" }
+3076.7 "Electrothermia" Ability { id: "8EF2", source: "Zander the Snakeskinner" }
+3086.9 "Saber Rush" Ability { id: "8EF3", source: "Zander the Snakeskinner" }
+3104.5 "Soulbane Saber 1" Ability { id: "8EDE", source: "Zander the Snakeskinner" } forcejump 3047.6
+
+# ** PHASE 2 **
+3500.0 "--sync--" Ability { id: "8EE0", source: "Zander the Snakeskinner" } window 500,0
+3506.1 "--sync--" Ability { id: "8EE1", source: "Zander the Snakeskinner" }
+3519.2 "--sync--" Ability { id: "8EE2", source: "Zander the Snakeskinner" }
+3524.2 "--targetable--"
+3535.3 "Syntheslean" Ability { id: "914E", source: "Zander the Snakeskinner" }
+
+# begin p2 loop
+3546.1 "Syntheslither" Ability { id: ["8EE3", "8EE8"], source: "Zander the Snakeskinner" } duration 3.1
+3554.3 "Syntheslither" Ability { id: ["8EE3", "8EE8"], source: "Zander the Snakeskinner" } duration 3.1
+3564.9 "Shade Shot" Ability { id: "8EF5", source: "Zander the Snakeskinner" }
+3573.6 "Slitherbane Foreguard/Slitherbane Rearguard 1" Ability { id: ["8EED", "8EEE"], source: "Zander the Snakeskinner" }
+3579.8 "Slitherbane Foreguard/Slitherbane Rearguard 2" Ability { id: ["8EED", "8EEE"], source: "Zander the Snakeskinner" }
+3580.7 "Burst 1" Ability { id: "8EEF", source: "Zander the Snakeskinner" }
+3586.1 "Slitherbane Foreguard/Slitherbane Rearguard 3" Ability { id: ["8EED", "8EEE"], source: "Zander the Snakeskinner" }
+3587.0 "Burst 2" Ability { id: "8EEF", source: "Zander the Snakeskinner" }
+3592.4 "Slitherbane Foreguard/Slitherbane Rearguard 4" Ability { id: ["8EED", "8EEE"], source: "Zander the Snakeskinner" }
+3593.3 "Burst 3" Ability { id: "8EEF", source: "Zander the Snakeskinner" }
+3599.5 "Burst 4" Ability { id: "8EEF", source: "Zander the Snakeskinner" }
+3611.5 "Screech" Ability { id: "8EF4", source: "Zander the Snakeskinner" }
+3628.3 "Syntheslither" Ability { id: "8EE3", source: "Zander the Snakeskinner" } forcejump 3546.1
+
+# IGNORED ABILITIES
+# 8EE4 Syntheslither (follow-up cleave)
+# 8EE5 Syntheslither (follow-up cleave)
+# 8EE6 Syntheslither (follow-up cleave)
+# 8EE7 Syntheslither (follow-up cleave)
+# 8EE9 Syntheslither (follow-up cleave)
+# 8EEA Syntheslither (follow-up cleave)
+# 8EEB Syntheslither (follow-up cleave)
+# 8EEC Syntheslither (follow-up cleave)
+# 8EF0 Slitherbane Foreguard (concurrent)
+# 8EF1 Slitherbane Rearguard (concurrent)
+# 9948 --sync-- (p1 autos)
+# 9949 --sync-- (p2 autos)
+
+# ALL ENCOUNTER ABILITIES
+# 366 attack
+# 8EDE Soulbane Saber
+# 8EDF Burst
+# 8EE0 --sync--
+# 8EE1 --sync--
+# 8EE2 --sync--
+# 8EE3 Syntheslither
+# 8EE4 Syntheslither
+# 8EE5 Syntheslither
+# 8EE6 Syntheslither
+# 8EE7 Syntheslither
+# 8EE8 Syntheslither
+# 8EE9 Syntheslither
+# 8EEA Syntheslither
+# 8EEB Syntheslither
+# 8EEC Syntheslither
+# 8EED Slitherbane Foreguard
+# 8EEE Slitherbane Rearguard
+# 8EEF Burst
+# 8EF0 Slitherbane Foreguard
+# 8EF1 Slitherbane Rearguard
+# 8EF2 Electrothermia
+# 8EF3 Saber Rush
+# 8EF4 Screech
+# 8EF5 Shade Shot
+# 914E Syntheslean
+# 9422 Soulbane Shock
+# 9948 --sync--
+# 9949 --sync--
