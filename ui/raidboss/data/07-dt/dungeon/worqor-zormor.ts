@@ -291,6 +291,18 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '8DC9', source: 'Kahderyor', capture: false },
       response: Responses.lookAway('alert'),
     },
+    {
+      id: 'WorqorZormor Kahderyor Seed Crystals',
+      type: 'StartsUsing',
+      netRegex: { id: '8DC3', source: 'Kahderyor', capture: false },
+      durationSeconds: 7,
+      infoText: (_data, _matches, output) => output.spreadBreak!(),
+      outputStrings: {
+        spreadBreak: {
+          en: 'Spread => Break crystals',
+        },
+      },
+    },
 
     // ** Gurfurlur ** //
     {
