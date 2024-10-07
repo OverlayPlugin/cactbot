@@ -60,7 +60,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Vanguard Zander Syntheslither 9': '8EEB', // conal on slither track
     'Vanguard Zander Syntheslither 10': '8EEC', // conal on slither track
     'Vanguard Zander Slitherbane Foreguard Half': '8EED', // half-arena frontal cleave
-    'Vanguard Zander Slitherbane Rearguard Halff': '8EEE', // full-arena backward cleave
+    'Vanguard Zander Slitherbane Rearguard Half': '8EEE', // full-arena backward cleave
     'Vanguard Zander Slitherbane Foreguard Line': '8EF0', // line cleave
     'Vanguard Zander Slitherbane Rearguard Line': '8EF1', // line cleave
     'Vanguard Zander Burst P2': '8EEF', // expanding half-arena cleave

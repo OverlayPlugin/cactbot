@@ -7,7 +7,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 // TODO:
 //   - Callout for Battery Circuit (rotating cleave + exploding circles)?
 //   - Callout for Zander's Soulbane Saber (line cleave + expanding aoe)?
-//   - Quadrant (direcitonal) call for Zander's Foreguard/Rearguard?
+//   - Quadrant (directional) call for Zander's Foreguard/Rearguard?
 
 export interface Data extends RaidbossData {
   seenFirstRush: boolean;
