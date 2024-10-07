@@ -17,20 +17,20 @@ hideall "--sync--"
 27.4 "Double-edged Swords (first)" Ability { id: "9352", source: "Zoraal Ja" } window 5,1
 29.7 "Double-edged Swords (second)" #Ability { id: "9352", source: "Zoraal Ja" }
 37.9 "Patricidal Pique" Ability { id: "9353", source: "Zoraal Ja" }
-41.1 "--sync--" Ability { id: "98E1", source: "Zoraal Ja" }
+41.1 "--center--" Ability { id: "98E1", source: "Zoraal Ja" }
 47.2 "Soul Overflow" Ability { id: "934B", source: "Zoraal Ja" }
 64.3 "Calamity's Edge" Ability { id: "934C", source: "Zoraal Ja" }
 73.1 "Burst" Ability { id: "934D", source: "Shadow of Tural" }
 78.5 "Patricidal Pique" Ability { id: "9353", source: "Zoraal Ja" }
-82.6 "--sync--" Ability { id: "98E1", source: "Zoraal Ja" }
+82.6 "--center--" Ability { id: "98E1", source: "Zoraal Ja" }
 
 # The same ids get used for the Fang swords in close proximity, making syncs unreliable.
 87.5 "Vorpal Trail (contracting)" Ability { id: "934E", source: "Zoraal Ja" } duration 8.5
-95.5 "--sync--" Ability { id: "98E1", source: "Zoraal Ja" }
+95.5 "--center--" Ability { id: "98E1", source: "Zoraal Ja" }
 98.0 "Vorpal Trail (expanding)" duration 8.5
 101.7 "Double-edged Swords (first)" Ability { id: "9352", source: "Zoraal Ja" } window 5,1
 103.9 "Double-edged Swords (second)" #Ability { id: "9352", source: "Zoraal Ja" }
-109.2 "--sync--" Ability { id: "98E1", source: "Zoraal Ja" }
+109.2 "--center--" Ability { id: "98E1", source: "Zoraal Ja" }
 115.4 "Soul Overflow" Ability { id: "934B", source: "Zoraal Ja" }
 126.5 "Calamity's Edge" Ability { id: "934C", source: "Zoraal Ja" }
 134.8 "Double-edged Swords (first)" Ability { id: "9352", source: "Zoraal Ja" } window 5,1
@@ -38,14 +38,14 @@ hideall "--sync--"
 137.3 "Double-edged Swords (second)" #Ability { id: "9352", source: "Zoraal Ja" }
 
 # mini-loop until phase jump
-144.5 "--sync--" Ability { id: "98E1", source: "Zoraal Ja" }
+144.5 "--center--" Ability { id: "98E1", source: "Zoraal Ja" }
 149.5 "Vorpal Trail (contracting)" Ability { id: "934E", source: "Zoraal Ja" } duration 8.5
-157.5 "--sync--" Ability { id: "98E1", source: "Zoraal Ja" }
+157.5 "--center--" Ability { id: "98E1", source: "Zoraal Ja" }
 160.0 "Vorpal Trail (expanding)" duration 8.5
 163.9 "Double-edged Swords (first)" Ability { id: "9352", source: "Zoraal Ja" } window 5,1
 166.1 "Double-edged Swords (second)" #Ability { id: "9352", source: "Zoraal Ja" }
 175.3 "Calamity's Edge" Ability { id: "934C", source: "Zoraal Ja" }
-180.4 "--sync--" Ability { id: "98E1", source: "Zoraal Ja" } forcejump 144.5
+180.4 "--center--" Ability { id: "98E1", source: "Zoraal Ja" } forcejump 144.5
 
 ##### INTERMISSION #####
 
@@ -58,10 +58,10 @@ hideall "--sync--"
 # Use NpcYell to detect the start of Phase 2 (since fight can reset to here)
 # Zoraal Ja: "This power is proof of my authority!"
 391.3 "--sync--" NpcYell { npcNameId: "2493", npcYellId: "44BF" } window 391.3,20
-399.0 "--sync--" Ability { id: "9355", source: "Zoraal Ja" }
+399.0 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 407.1 "Smiting Circuit" Ability { id: "9363", source: "Zoraal Ja" }
 418.1 "Smiting Circuit" Ability { id: "9363", source: "Zoraal Ja" }
-425.2 "--sync--" Ability { id: "9355", source: "Zoraal Ja" }
+425.2 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 433.3 "Dawn of an Age" Ability { id: "9354", source: "Zoraal Ja" }
 
 # platforms mini-phase 1
@@ -79,14 +79,14 @@ hideall "--sync--"
 534.7 "Forged Track" Ability { id: "935F", source: "Zoraal Ja" }
 543.4 "--sync--" Ability { id: "9360", source: "Zoraal Ja" }
 549.0 "Actualize" Ability { id: "9356", source: "Zoraal Ja" }
-556.2 "--sync--" Ability { id: "9355", source: "Zoraal Ja" }
+556.2 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 
 # arena mini-phase 1
 563.5 "Half Full" Ability { id: ["9368", "9369"], source: "Zoraal Ja" }
 575.0 "Half Circuit" Ability { id: "936D", source: "Zoraal Ja" }
 580.8 "Fire III" Ability { id: "9378", source: "Zoraal Ja" }
 587.2 "Half Circuit" Ability { id: "936D", source: "Zoraal Ja" }
-594.2 "--sync--" Ability { id: "9355", source: "Zoraal Ja" }
+594.2 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 
 # START OF LOOP
 602.3 "Dawn of an Age" Ability { id: "9354", source: "Zoraal Ja" }
@@ -104,19 +104,19 @@ hideall "--sync--"
 691.3 "Sync" Ability { id: "9359", source: "Zoraal Ja" }
 699.3 "Chasm of Vollok" Ability { id: "935A", source: "Zoraal Ja" }
 699.5 "Sync" Ability { id: "9359", source: "Zoraal Ja" }
-703.7 "--sync--" Ability { id: "9355", source: "Zoraal Ja" }
+703.7 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 707.5 "Chasm of Vollok" Ability { id: "935A", source: "Zoraal Ja" }
 711.1 "Half Full" Ability { id: ["9368", "9369"], source: "Zoraal Ja" }
 719.1 "Duty's Edge (x4)" Ability { id: "9374", source: "Zoraal Ja" } duration 6.7
 735.9 "Actualize" Ability { id: "9356", source: "Zoraal Ja" }
 
 # arena mini-phase 2
-743.0 "--sync--" Ability { id: "9355", source: "Zoraal Ja" }
+743.0 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 751.4 "Half Circuit" Ability { id: "936D", source: "Zoraal Ja" }
 757.2 "Fire III" Ability { id: "9378", source: "Zoraal Ja" }
 763.6 "Half Circuit" Ability { id: "936D", source: "Zoraal Ja" }
 773.8 "Bitter Reaping" Ability { id: "9379", source: "Zoraal Ja" }
-781.6 "--sync--" Ability { id: "9355", source: "Zoraal Ja" }
+781.6 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 789.7 "Dawn of an Age" Ability { id: "9354", source: "Zoraal Ja" } forcejump 602.3
 # END OF LOOP
 
@@ -150,7 +150,7 @@ hideall "--sync--"
 # 9352 Double-edged Swords
 # 9353 Patricidal Pique
 # 9354 Dawn of an Age
-# 9355 --sync--
+# 9355 --sync-- (re-center)
 # 9356 Actualize
 # 9357 Vollok
 # 9358 Chasm of Vollok
@@ -185,4 +185,4 @@ hideall "--sync--"
 # 93A6 攻撃
 # 9527 Vorpal Trail
 # 9528 Vorpal Trail
-# 98E1 --sync--
+# 98E1 --sync-- (re-center)
