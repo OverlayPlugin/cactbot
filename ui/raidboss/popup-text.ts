@@ -1541,8 +1541,8 @@ export class PopupText {
       // * Korean TTS reads wrong with '1번째'
       triggerHelper.ttsText = triggerHelper.ttsText.replace('1번째', '첫번째');
       // * arrows at the front or the end are directions, e.g. "east =>"
-      triggerHelper.ttsText = triggerHelper.ttsText.replace(/[-=]>\s*$/g, '');
-      triggerHelper.ttsText = triggerHelper.ttsText.replace(/^\s*<[-=]/g, '');
+      triggerHelper.ttsText = triggerHelper.ttsText.replace(/[-=]+>\s*$/g, '');
+      triggerHelper.ttsText = triggerHelper.ttsText.replace(/^\s*<[-=]+/g, '');
       // * arrows in the middle are a sequence, e.g. "in => out => spread"
       const arrowReplacement = {
         en: ' then ',

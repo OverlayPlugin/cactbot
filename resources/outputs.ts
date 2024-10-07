@@ -1006,6 +1006,10 @@ export default {
     cn: ' => ',
     ko: ' => ',
   },
+  // for combo mechanics/names
+  and: {
+    en: ' + ',
+  },
   // Literal numbers.
   num0: numberToOutputString(0),
   num1: numberToOutputString(1),
