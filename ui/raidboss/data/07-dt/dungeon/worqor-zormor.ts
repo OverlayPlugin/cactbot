@@ -416,7 +416,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.kbAoe2!(),
       outputStrings: {
         kbAoe2: {
-          en: 'Knockback + AoE (avoid adds)',
+          en: 'Knockback + AoE (avoid tornadoes)',
         },
       },
     },
