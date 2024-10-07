@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.32.10",
-  "releaseSummary": "Support for CN patch 7.0, more i18n, Oopsy updates",
+  "version": "0.32.11",
+  "releaseSummary": "Dawntrail Dungeons, Everkeep Normal, Ttokrrone, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
