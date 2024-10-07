@@ -1,0 +1,244 @@
+### THE SKYDEEP CENOTE
+# ZoneId: 1194
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~#
+# Feather Ray #
+#~~~~~~~~~~~~~#
+
+# -ii 9529
+# -ic
+# -p 8F83:1011.1
+
+# Unsung Elegy will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13A7" } window 1000,1
+1006.1 "--sync--" StartsUsing { id: "8F83", source: "Feather Ray" } window 5,5
+1011.1 "Immersion" Ability { id: "8F83", source: "Feather Ray" }
+1019.1 "Troublesome Tail" Ability { id: "8F77", source: "Feather Ray" }
+1028.2 "Worrisome Wave (boss)" Ability { id: "8F78", source: "Feather Ray" }
+1034.4 "Worrisome Wave (party)" Ability { id: "8F79", source: "Feather Ray" }
+1045.0 "Hydro Ring" Ability { id: "8F7D", source: "Feather Ray" }
+1051.1 "Blowing Bubbles" Ability { id: "8F7C", source: "Feather Ray" }
+
+# begin loop
+1073.8 "Bubble Bomb" Ability { id: "8F7F", source: "Feather Ray" }
+1081.9 "Rolling Current" Ability { id: ["8F80", "8F81"], source: "Feather Ray" }
+1085.3 "Burst" #Ability { id: "8F82", source: "Airy Bubble" }
+1093.3 "Hydro Ring" Ability { id: "8F7D", source: "Feather Ray" }
+1100.4 "Troublesome Tail" Ability { id: "8F77", source: "Feather Ray" }
+1106.5 "Trouble Bubbles" Ability { id: "9783", source: "Feather Ray" }
+1136.1 "Immersion" Ability { id: "8F83", source: "Feather Ray" }
+1142.4 "Bubble Bomb" Ability { id: "8F7F", source: "Feather Ray" } forcejump 1073.8
+
+# IGNORED ABILITIES
+# 9529 --sync--
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 8F77 Troublesome Tail
+# 8F78 Worrisome Wave
+# 8F79 Worrisome Wave
+# 8F7C Blowing Bubbles
+# 8F7D Hydro Ring
+# 8F7E Pop
+# 8F7F Bubble Bomb
+# 8F80 Rolling Current
+# 8F81 Rolling Current
+# 8F82 Burst
+# 8F83 Immersion
+# 9529 --sync--
+# 9783 Trouble Bubbles
+
+#~~~~~~~~~~#
+# Firearms #
+#~~~~~~~~~~#
+
+# -ii 8E5B 96B5 96B6 96B7 96B8 9705 9706 9707
+# -ic
+# -p 8E60:2013.1
+
+# Vurgar Mettlegrounds will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13A8" } window 2000,1
+2008.1 "--sync--" StartsUsing { id: "8E60", source: "Firearms" } window 8,5
+2013.1 "Dynamic Dominance" Ability { id: "8E60", source: "Firearms" }
+2023.3 "Mirror Maneuver" Ability { id: "98E3", source: "Firearms" }
+2025.3 "--north--" Ability { id: "8E63", source: "Firearms" }
+2037.7 "Thunderlight Burst" Ability { id: "8E5D", source: "Firearms" }
+2043.0 "--center--" Ability { id: "8E63", source: "Firearms" }
+2047.3 "Ancient Artillery" Ability { id: "8E5A", source: "Firearms" }
+2055.3 "Emergent Artillery" Ability { id: "9858", source: "Firearms" }
+2060.7 "Artillery" Ability { id: "9704", source: "Firearms" }
+2071.7 "Pummel" Ability { id: "8E5F", source: "Firearms" }
+
+# begin loop
+2081.8 "Mirror Maneuver" Ability { id: "98E3", source: "Firearms" }
+2083.8 "--north--" Ability { id: "8E63", source: "Firearms" }
+2096.4 "Thunderlight Burst" Ability { id: "8E5D", source: "Firearms" }
+2106.7 "Dynamic Dominance" Ability { id: "8E60", source: "Firearms" }
+2108.8 "--center--" Ability { id: "8E63", source: "Firearms" }
+2113.1 "Ancient Artillery" Ability { id: "8E5A", source: "Firearms" }
+2121.1 "Emergent Artillery" Ability { id: "9858", source: "Firearms" }
+2126.5 "Artillery" Ability { id: "9704", source: "Firearms" }
+2129.5 "Thunderlight Flurry" Ability { id: "8E62", source: "Firearms" }
+2141.4 "Mirror Maneuver" Ability { id: "98E3", source: "Firearms" } forcejump 2081.8
+
+# IGNORED ABILITIES
+# 8E5B Thunderlight Burst (boss-targeted)
+# 96B5 Thunderlight Burst (seequential cleave)
+# 96B6 Thunderlight Burst (seequential cleave)
+# 96B7 Thunderlight Burst (seequential cleave)
+# 96B8 Thunderlight Burst (seequential cleave)
+# 9705 Artillery (concurrent with 9704)
+# 9706 Artillery (concurrent with 9704)
+# 9707 Artillery (concurrent with 9704)
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 8E5A Ancient Artillery
+# 8E5B Thunderlight Burst
+# 8E5D Thunderlight Burst
+# 8E5F Pummel
+# 8E60 Dynamic Dominance
+# 8E62 Thunderlight Flurry
+# 8E63 --sync--
+# 96B5 Thunderlight Burst
+# 96B6 Thunderlight Burst
+# 96B7 Thunderlight Burst
+# 96B8 Thunderlight Burst
+# 9704 Artillery
+# 9705 Artillery
+# 9706 Artillery
+# 9707 Artillery
+# 9858 Emergent Artillery
+# 98E3 Mirror Maneuver
+
+#~~~~~~~~~~~#
+# Maulskull #
+#~~~~~~~~~~~#
+
+# -ii 8F46 8F40 8F43 8F44 8F64 8F42 8F50 8F4E 8F53 8F54 8F3A 98D1 8F60 8F61 8F67 8F51 8F56 8F57
+# -p 8F3D:3013.1
+
+# Gatekeep's Anvil will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13A9" } window 3000,1
+3005.2 "--sync--" StartsUsing { id: "8F3D", source: "Maulskull" }
+3013.1 "--sync--" Ability { id: "8F3D", source: "Maulskull" }
+3014.1 "Stonecarver (first)" Ability { id: "8F3E", source: "Maulskull" }
+3016.7 "Stonecarver (second)" #Ability { id: "8F3F", source: "Maulskull" }
+3030.4 "Impact + Skullcrush" Ability { id: "8F45", source: "Maulskull" }
+3033.0 "--sync--" Ability { id: "9708", source: "Maulskull" }
+3035.0 "Destructive Heat" Ability { id: "8F65", source: "Maulskull" }
+3044.3 "Maulwork" Ability { id: ["8F47", "8F48", "8F49", "8F4A"], source: "Maulskull" }
+3049.4 "Landing 1" Ability { id: "8F4B", source: "Maulskull" }
+3053.4 "Landing 2" Ability { id: "8F4B", source: "Maulskull" }
+3057.4 "Landing 3" Ability { id: "8F4B", source: "Maulskull" }
+3059.4 "Shatter" Ability { id: ["8F4C", "8F4D"], source: "Maulskull" }
+3074.4 "--sync--" Ability { id: "8F4F", source: "Maulskull" } # Deep Thunder cast
+3075.5 "Deep Thunder 1" #Ability { id: "8F52", source: "Maulskull" }
+3076.6 "Deep Thunder 2" #Ability { id: "8F52", source: "Maulskull" }
+3077.6 "Deep Thunder 3" #Ability { id: "8F52", source: "Maulskull" }
+3088.9 "Ringing Blows" Ability { id: "8F3B", source: "Maulskull" }
+3091.0 "Stonecarver (first)" Ability { id: "8F58", source: "Maulskull" }
+3093.6 "Stonecarver (second)" Ability { id: "8F59", source: "Maulskull" }
+3102.3 "Wrought Fire" Ability { id: "98D2", source: "Maulskull" }
+3115.5 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
+3119.5 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
+3129.7 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
+3133.5 "Building Heat/Destructive Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
+3144.1 "Ashlayer" Ability { id: "8F68", source: "Maulskull" }
+3153.2 "Maulwork" Ability { id: ["8F47", "8F48", "8F49", "8F4A"], source: "Maulskull" }
+3158.3 "Landing 1" Ability { id: "8F4B", source: "Maulskull" }
+3162.3 "Landing 2" Ability { id: "8F4B", source: "Maulskull" }
+3166.3 "Landing 3" Ability { id: "8F4B", source: "Maulskull" }
+3168.3 "Shatter" Ability { id: ["8F4C", "8F4D"], source: "Maulskull" }
+
+# begin loop
+3178.3 "--sync--" Ability { id: "8F4F", source: "Maulskull" } # Deep Thunder cast
+3179.4 "Deep Thunder 1" #Ability { id: "8F52", source: "Maulskull" }
+3180.5 "Deep Thunder 2" #Ability { id: "8F52", source: "Maulskull" }
+3181.6 "Deep Thunder 3" #Ability { id: "8F52", source: "Maulskull" }
+3182.7 "Deep Thunder 4" #Ability { id: "8F52", source: "Maulskull" }
+3183.7 "Deep Thunder 5" #Ability { id: "8F52", source: "Maulskull" }
+3196.0 "Ringing Blows" Ability { id: "8F3B", source: "Maulskull" }
+3198.1 "Stonecarver (first)" Ability { id: "8F58", source: "Maulskull" }
+3200.7 "Stonecarver (second)" Ability { id: "8F59", source: "Maulskull" }
+3209.4 "Wrought Fire" Ability { id: "98D2", source: "Maulskull" }
+3223.5 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
+3227.4 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
+3237.7 "Ashlayer" Ability { id: "8F68", source: "Maulskull" }
+3247.7 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
+3251.7 "Building Heat/Destructive Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
+3262.9 "--sync--" Ability { id: "8F4F", source: "Maulskull" } forcejump 3178.3
+
+# IGNORED ABILITIES
+# 8F3A Skullcrush (paired with 8F3B)
+# 8F40 Stonecarver (vfx?)
+# 8F42 --sync--
+# 8F43 Skullcrush (cast)
+# 8F44 Skullcrush (puddle damage)
+# 8F46 --sync-- (autos)
+# 8F4E Shatter (paired with 8F4D)
+# 8F50 --sync--
+# 8F51 --sync--
+# 8F53 Deep Thunder (vfx)
+# 8F54 --sync--
+# 8F56 Ringing Blows (cast, followed by 8F3B)
+# 8F57 Ringing Blows (cast, followed by 8F3B)
+# 8F5B Stonecarver (vfx)
+# 8F5C Stonecarver (vfx)
+# 8F60 Colossal Impact (vfx)
+# 8F61 Colossal Impact (vfx)
+# 8F62 Colossal Impact (paired with 8F63)
+# 8F64 Charcore (vfx?)
+# 8F67 Ashlayer (vfx)
+# 98D1 Wrought Fire (vfx?)
+
+# ALL ENCOUNTER ABILITIES
+# 8F3A Skullcrush
+# 8F3B Impact
+# 8F3D Stonecarver
+# 8F3E Stonecarver
+# 8F3F Stonecarver
+# 8F40 Stonecarver
+# 8F42 --sync--
+# 8F43 Skullcrush
+# 8F44 Skullcrush
+# 8F45 Impact
+# 8F46 --sync--
+# 8F47 Maulwork
+# 8F48 Maulwork
+# 8F49 Maulwork
+# 8F4A Maulwork
+# 8F4B Landing
+# 8F4C Shatter
+# 8F4D Shatter
+# 8F4E Shatter
+# 8F4F Deep Thunder
+# 8F50 --sync--
+# 8F51 --sync--
+# 8F52 Deep Thunder
+# 8F53 Deep Thunder
+# 8F54 --sync--
+# 8F56 Ringing Blows
+# 8F57 Ringing Blows
+# 8F58 Stonecarver
+# 8F59 Stonecarver
+# 8F5B Stonecarver
+# 8F5C Stonecarver
+# 8F60 Colossal Impact
+# 8F61 Colossal Impact
+# 8F62 Colossal Impact
+# 8F63 Impact
+# 8F64 Charcore
+# 8F65 Destructive Heat
+# 8F66 Building Heat
+# 8F67 Ashlayer
+# 8F68 Ashlayer
+# 9708 --sync--
+# 98D1 Wrought Fire
+# 98D2 Wrought Fire
