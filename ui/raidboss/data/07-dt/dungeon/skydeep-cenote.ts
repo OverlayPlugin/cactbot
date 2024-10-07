@@ -286,7 +286,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.seenShatter = true,
     },
     {
-      id: 'SkydeepCenote Maulskull Stonecrusher + Skullcrush',
+      id: 'SkydeepCenote Maulskull Stonecarver + Skullcrush',
       type: 'StartsUsingExtra',
       // 8F58 is the first half-arena cleave, but the actor can be east or west.
       netRegex: { id: '8F58' },
@@ -300,7 +300,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '<== Knockback Back Left (Right After)',
         },
         west: {
-          en: 'Knockback Back Right ==> (Left After)',
+          en: 'Knockback Back Right (Left After) ==>',
         },
       },
     },
