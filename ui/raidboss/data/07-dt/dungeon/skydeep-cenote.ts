@@ -39,7 +39,7 @@ const triggerSet: TriggerSet<Data> = {
   triggers: [
     // ** Feather Ray ** //
     {
-      id: 'SkydeepCenote Feather Ray Immerssion',
+      id: 'SkydeepCenote Feather Ray Immersion',
       type: 'StartsUsing',
       netRegex: { id: '8F83', source: 'Feather Ray', capture: false },
       response: Responses.aoe(),
