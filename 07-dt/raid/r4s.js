@@ -101,20 +101,20 @@ const witchHuntAlertOutputStrings = {
 };
 const tailThrustOutputStrings = {
   iceLeft: {
-    en: 'Double Knockback (<== Start on Left)',
-    de: 'Doppel-Rückstoß (<== Starte Links)',
-    fr: 'Double poussée (<== Démarrez à gauche)',
-    ja: '2連続ノックバック (<== 左から開始)',
-    cn: '两次击退 (<== 左边开始)',
-    ko: '넉백 2번 (<== 왼쪽에서 시작)',
+    en: '<== (Start on Left) Double Knockback',
+    de: '<== (Starte Links) Doppel-Rückstoß',
+    fr: '<== (Démarrez à gauche) Double poussée',
+    ja: '<== (左から開始) 2連続ノックバック',
+    cn: '<== (左边开始) 两次击退',
+    ko: '<== (왼쪽에서 시작) 넉백 2번',
   },
   iceRight: {
-    en: 'Double Knockback (Start on Right ==>)',
-    de: 'Doppel-Rückstoß (Starte Rechts ==>)',
-    fr: 'Double poussée (Démarrez à droite ==>)',
-    ja: '2連続ノックバック (右から開始 ==>)',
-    cn: '两次击退 (右边开始 ==>)',
-    ko: '넉백 2번 (오른쪽에서 시작 ==>)',
+    en: '(Start on Right) Double Knockback ==>',
+    de: '(Starte Rechts) Doppel-Rückstoß ==>',
+    fr: '(Démarrez à droite) Double poussée ==>',
+    ja: '(右から開始) 2連続ノックバック ==>',
+    cn: '(右边开始) 两次击退 ==>',
+    ko: '(오른쪽에서 시작) 넉백 2번 ==>',
   },
   fireLeft: {
     en: 'Fire - Start Front + Right ==>',
