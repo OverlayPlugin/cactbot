@@ -219,7 +219,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'SkydeepCenote Maulskull Initial Stonecrusher',
+      id: 'SkydeepCenote Maulskull Initial Stonecarver',
       type: 'StartsUsingExtra',
       // 8F3E is the first half-arena cleave, but the actor can be east or west.
       netRegex: { id: '8F3E' },
