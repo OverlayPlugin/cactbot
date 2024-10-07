@@ -354,6 +354,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Destructive Heat/Building Heat': 'Destructive/Building Heat',
+        'Building Heat/Destructive Heat': 'Building/Destructive Heat',
       },
     },
   ],

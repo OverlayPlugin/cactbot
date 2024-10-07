@@ -149,7 +149,7 @@ hideall "--sync--"
 3115.5 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
 3119.5 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
 3129.7 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
-3133.5 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
+3133.5 "Building Heat/Destructive Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
 3144.1 "Ashlayer" Ability { id: "8F68", source: "Maulskull" }
 3153.2 "Maulwork" Ability { id: ["8F47", "8F48", "8F49", "8F4A"], source: "Maulskull" }
 3158.3 "Landing 1" Ability { id: "8F4B", source: "Maulskull" }
@@ -172,7 +172,7 @@ hideall "--sync--"
 3227.4 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
 3237.7 "Ashlayer" Ability { id: "8F68", source: "Maulskull" }
 3247.7 "Colossal Impact" Ability { id: "8F63", source: "Maulskull" }
-3251.7 "Destructive Heat/Building Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
+3251.7 "Building Heat/Destructive Heat" Ability { id: ["8F65", "8F66"], source: "Maulskull" }
 3262.9 "--sync--" Ability { id: "8F4F", source: "Maulskull" } forcejump 3178.3
 
 # IGNORED ABILITIES
