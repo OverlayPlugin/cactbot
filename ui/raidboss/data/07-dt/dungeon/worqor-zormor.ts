@@ -288,8 +288,21 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'WorqorZormor Kahderyor Eye of the Fierce',
       type: 'StartsUsing',
-      netRegex: { id: '8DC9', source: 'Kahderyor', capture: false },
-      response: Responses.lookAway('alert'),
+      // 8DC5 - Stalagmite Circle
+      // 8DC6 - Cyclonic Ring
+      netRegex: { id: ['8DC5', '8DC6'], source: 'Kahderyor' },
+      alertText: (_data, matches, output) => {
+        const inOut = matches.id === '8DC5' ? output.out!() : output.in!();
+        return output.combo!({ inOut: inOut, lookAway: output.lookAway!() });
+      },
+      outputStrings: {
+        combo: {
+          en: '${inOut} + ${lookAway}',
+        },
+        in: Outputs.in,
+        out: Outputs.out,
+        lookAway: Outputs.lookAway,
+      },
     },
     {
       id: 'WorqorZormor Kahderyor Seed Crystals',
