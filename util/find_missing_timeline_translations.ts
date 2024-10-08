@@ -22,6 +22,8 @@ const isKeyOf = <T>(key: unknown, obj: T): key is keyof T => {
     return false;
   if (typeof key !== 'string')
     return false;
+  if (obj === null)
+    return false;
   return (key in obj);
 };
 
