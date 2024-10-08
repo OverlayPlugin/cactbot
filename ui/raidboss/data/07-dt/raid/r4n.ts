@@ -1,7 +1,7 @@
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
-import { Directions } from '../../../../../resources/util';
+import { DirectionOutput8, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
@@ -23,10 +23,17 @@ type B9AMapKeys = keyof typeof effectB9AMap;
 type B9AMapValues = typeof effectB9AMap[B9AMapKeys];
 
 const directionOutputStrings = {
-  ...Directions.outputStringsCardinalDir,
+  ...Directions.outputStrings8Dir,
   unknown: Outputs.unknown,
   goLeft: Outputs.left,
   goRight: Outputs.right,
+  stay: {
+    en: 'Stay',
+  },
+  num2: Outputs.num2,
+  num3: Outputs.num3,
+  num4: Outputs.num4,
+  num5: Outputs.num5,
   separator: {
     en: ' => ',
     de: ' => ',
@@ -34,6 +41,17 @@ const directionOutputStrings = {
     ja: ' => ',
     cn: ' => ',
     ko: ' => ',
+  },
+  intercardStay: {
+    en: '${dir} => Stay',
+  },
+  numHits: {
+    en: '${dir} x${num}',
+    de: '${dir} x${num}',
+    fr: '${dir} x${num}',
+    ja: '${dir} x${num}',
+    cn: '${dir} x${num}',
+    ko: '${dir} x${num}',
   },
   combo: {
     en: '${dirs}',
@@ -45,16 +63,21 @@ const directionOutputStrings = {
   },
 } as const;
 
+type StoredCleave = {
+  id: number;
+  dir: 'left' | 'right';
+};
+
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    sidewiseSpark: 'collected' | 'sequence';
+  };
   expectedBlasts: 0 | 3 | 4 | 5;
   storedBlasts: B9AMapValues[];
   // expectedCleaves is either 1 or 5, due to the amount of time between the first
   // and second clone cleaves at the start of the encounter
   expectedCleaves: 1 | 5;
-  storedCleaves: {
-    id: number;
-    dir: 'left' | 'right';
-  }[];
+  storedCleaves: StoredCleave[];
   actors: PluginCombatantState[];
   sidewiseSparkCounter: number;
   storedWitchHuntCast?: NetMatches['StartsUsingExtra'];
@@ -76,6 +99,40 @@ const isEffectB9AValue = (value: string | undefined): value is B9AMapValues => {
   if (value === undefined)
     return false;
   return Object.values<string>(effectB9AMap).includes(value);
+};
+
+const getCleaveDirs = (
+  actors: PluginCombatantState[],
+  storedCleaves: StoredCleave[],
+  mode: 'collapse' | 'keepAll',
+): DirectionOutput8[] => {
+  const dirs: DirectionOutput8[] = storedCleaves.map((entry) => {
+    const actor = actors.find((actor) => actor.ID === entry.id);
+    if (actor === undefined)
+      return 'unknown';
+    const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
+    const offset = entry.dir === 'left' ? 1 : -1;
+    return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
+  });
+
+  if (mode === 'keepAll' || dirs.length === 1)
+    return dirs;
+
+  // Check if all directions lead to the same intercard. If so, there's no
+  // reason to call a sequence. We don't need to check the cardinals,
+  // because it will only be true either when there is exactly one element,
+  // or in the extremely unlikely event that every clone pointed in the same
+  // direction.
+  if (dirs.every((dir) => ['dirN', 'dirE'].includes(dir)))
+    return ['dirNE'];
+  if (dirs.every((dir) => ['dirS', 'dirE'].includes(dir)))
+    return ['dirSE'];
+  if (dirs.every((dir) => ['dirS', 'dirW'].includes(dir)))
+    return ['dirSW'];
+  if (dirs.every((dir) => ['dirN', 'dirW'].includes(dir)))
+    return ['dirNW'];
+
+  return dirs;
 };
 
 const npcYellData = {
@@ -114,6 +171,25 @@ const headMarkerData = {
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM4',
   zoneId: ZoneId.AacLightHeavyweightM4,
+  config: [
+    {
+      id: 'sidewiseSpark',
+      name: {
+        en: 'Sidewise Spark Clone Callout Method',
+      },
+      comment: {
+        en: 'Select how to callout Sidewise Spark cleaves from clones.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Collect all cleaves and call once': 'collected',
+          'Sequence of moves as cleaves finish': 'sequence',
+        },
+      },
+      default: 'collected',
+    },
+  ],
   timelineFile: 'r4n.txt',
   initData: () => ({
     expectedBlasts: 0,
@@ -190,16 +266,13 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 7.3,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const dirs = data.storedCleaves.map((entry) => {
-          const actor = data.actors.find((actor) => actor.ID === entry.id);
-          if (actor === undefined)
-            return output.unknown!();
-          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
-          const offset = entry.dir === 'left' ? 1 : -1;
-          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
-        }).map((dir) => output[dir]!());
+        const mode = data.triggerSetConfig.sidewiseSpark === 'sequence'
+          ? 'collapse'
+          : 'keepAll';
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves, mode);
+        const mappedDirs = dirs.map((dir) => output[dir]!());
 
-        return output.combo!({ dirs: dirs.join(output.separator!()) });
+        return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
       run: (data) => {
         if (data.expectedCleaves === 1)
@@ -256,30 +329,116 @@ const triggerSet: TriggerSet<Data> = {
       // IDs for safe spots are C/E = left safe, D/F = right safe
       netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: true },
       durationSeconds: 7.3,
-      infoText: (data, matches, output) => {
-        // If this is the first cleave, it's boss relative because boss isn't fixed north
-        if (data.sidewiseSparkCounter === 0)
-          return ['92BC', '92BE'].includes(matches.id) ? output.goLeft!() : output.goRight!();
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = directionOutputStrings;
+        const cleaveDir = ['92BC', '92BE'].includes(matches.id) ? 'right' : 'left';
+        const actorID = parseInt(matches.sourceId, 16);
 
-        const dirs = data.storedCleaves.map((entry) => {
-          const actor = data.actors.find((actor) => actor.ID === entry.id);
-          if (actor === undefined)
-            return output.unknown!();
-          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
-          const offset = entry.dir === 'left' ? 1 : -1;
-          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
+        // If this is the first cleave, it's boss relative because boss isn't fixed north
+        if (data.storedCleaves.length === 0) {
+          const string = cleaveDir === 'right' ? output.goLeft!() : output.goRight!();
+          return { alertText: string };
+        }
+
+        const previousDirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
+
+        data.storedCleaves.push({
+          dir: cleaveDir,
+          id: actorID,
         });
 
-        dirs.push(['92BC', '92BE'].includes(matches.id) ? 'dirW' : 'dirE');
+        const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
+
+        // Stop any future callouts, since we know its safe to stay now
+        if (dirs.length === 1)
+          data.storedCleaves = [];
+
+        /* For sequence mode, check if the next safe spot is the same as the
+         * previous one. If it is, there's no need for a callout here.
+         * If everything collapses to one spot, the player should already be
+         * moving to this spot and is safe for the rest of the mechanic.
+         * Otherwise, we'll call stay at the next sidewise spark hit.
+         * There's no need to duplicate this again.
+         */
+        if (
+          data.triggerSetConfig.sidewiseSpark === 'sequence' &&
+          dirs.length > 0 && previousDirs.length > 0 &&
+          dirs[0] === previousDirs[0]
+        )
+          return;
+
+        if (dirs.length === 1) {
+          const dir = dirs[0]!;
+          const mappedDir = output[dir]!();
+          const string = output.intercardStay!({ dir: mappedDir });
+          return { infoText: string };
+        }
+
+        if (data.triggerSetConfig.sidewiseSpark !== 'collected')
+          return;
 
         const mappedDirs = dirs.map((dir) => output[dir]!());
+        const string = output.combo!({ dirs: mappedDirs.join(output.separator!()) });
+        return { alertText: string };
+      },
+    },
+    {
+      id: 'R4N Sidewise Spark Hit',
+      type: 'Ability',
+      netRegex: { id: ['9A05', '9A0F'], source: 'Wicked Replica', capture: false },
+      condition: (data, _matches) => data.triggerSetConfig.sidewiseSpark === 'sequence',
+      durationSeconds: 2,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = directionOutputStrings;
+        const previousDirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
 
-        return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
+        data.storedCleaves.shift();
+
+        if (data.storedCleaves.length === 0)
+          return;
+
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves, 'collapse');
+        const mappedDirs = dirs.map((dir) => output[dir]!());
+
+        /* If the next safe spot is the same as the previous spot, just call
+         * a simple stay.
+         */
+        if (
+          dirs.length > 0 && previousDirs.length > 0 &&
+          dirs[0] === previousDirs[0]
+        )
+          return { infoText: output.stay!() };
+
+        const cleaves: number = data.storedCleaves.length;
+        if (dirs.length === 1 && cleaves > 1) {
+          const cleaveNums: { [key: number]: string } = {
+            2: output.num2!(),
+            3: output.num3!(),
+            4: output.num4!(),
+            5: output.num5!(),
+          };
+
+          if (cleaves in cleaveNums) {
+            const string = output.numHits!({
+              dir: mappedDirs[0],
+              num: cleaveNums[cleaves],
+            });
+            return { alertText: string };
+          }
+        }
+
+        const string = output.combo!({ dirs: mappedDirs.join(output.separator!()) });
+        return { alertText: string };
       },
-      run: (data) => {
-        data.storedCleaves = [];
-      },
-      outputStrings: directionOutputStrings,
+    },
+    {
+      id: 'R4N Sidewise Spark Cleanup',
+      type: 'Ability',
+      // IDs for safe spots are C/E = left safe, D/F = right safe
+      netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: false },
+      run: (data) => data.storedCleaves = [],
     },
     {
       id: 'R4N Left Roll',
