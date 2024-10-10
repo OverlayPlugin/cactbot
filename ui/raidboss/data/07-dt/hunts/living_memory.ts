@@ -115,9 +115,6 @@ const cardOutputStrings = {
   start: {
     en: 'Start ${dir}',
   },
-  startThen: {
-    en: 'Start ${dir} => ${dir1} => ${dir2}',
-  },
 };
 
 export interface Data extends RaidbossData {
@@ -476,29 +473,29 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = cardOutputStrings;
         data.muDrawnCardIds.push(matches.id);
         const cardValue = muCardFirstDrawMap[matches.id];
-        if (cardValue === undefined)
-          throw new UnreachableCode();
-        const cardPosIndex = data.muCardSpots.indexOf(cardValue);
-        const twoCardSafeSpot = CardSafeDirectionCol[cardPosIndex];
+        if (cardValue !== undefined) {
+          const cardPosIndex = data.muCardSpots.indexOf(cardValue);
+          const twoCardSafeSpot = CardSafeDirectionCol[cardPosIndex];
 
-        if (data.muTwoCardPattern && twoCardSafeSpot !== undefined) {
-          data.muSafeDirections.push(twoCardSafeSpot);
-        }
+          if (data.muTwoCardPattern && twoCardSafeSpot !== undefined) {
+            data.muSafeDirections.push(twoCardSafeSpot);
+          }
 
-        if (data.muTwoCardPattern) {
+          if (data.muTwoCardPattern) {
+            return {
+              alertText: output.start!({ dir: output[twoCardSafeSpot ?? 'unknown']!() }),
+            };
+          }
+          // three card pattern
+          const safeSpots = muThreeCardPatternMap[matches.id];
+          if (safeSpots === undefined)
+            throw new UnreachableCode();
+          data.muSafeDirections = safeSpots;
           return {
-            alertText: output.start!({ dir: output[twoCardSafeSpot ?? 'unknown']!() }),
+            alertText: output.start!({ dir: output[safeSpots[0]]!() }),
+            infoText: safeSpots.map((dir) => output[dir]!()).join(output.next!()),
           };
         }
-        // three card pattern
-        const safeSpots = muThreeCardPatternMap[matches.id];
-        if (safeSpots === undefined)
-          throw new UnreachableCode();
-        data.muSafeDirections = safeSpots;
-        return {
-          alertText: output.start!({ dir: output[safeSpots[0]]!() }),
-          infoText: safeSpots.map((dir) => output[dir]!()).join(output.next!()),
-        };
       },
     },
     {
