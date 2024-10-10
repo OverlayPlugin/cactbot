@@ -125,7 +125,6 @@ export interface Data extends RaidbossData {
   muOnCard: number;
   muSafeDirections: CardSafeDirection[];
   muTwoCardPattern: boolean | null;
-  muIsHoopCombo: boolean;
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -139,7 +138,6 @@ const triggerSet: TriggerSet<Data> = {
     muOnCard: 0,
     muSafeDirections: [],
     muTwoCardPattern: null,
-    muIsHoopCombo: false,
   }),
   triggers: [
     // ****** A-RANK: Cat's Eye ****** //
@@ -399,21 +397,6 @@ const triggerSet: TriggerSet<Data> = {
         protean: 'Protean (x2)',
       },
     },
-    // Magic hoop casts Twinkle Toss in the order they spawned
-    {
-      id: 'Hunt Mica the Magical Magical Hoop Spawn',
-      type: 'AddedCombatant',
-      netRegex: { name: 'Magical Hoop', capture: false },
-      suppressSeconds: 6,
-      run: (data) => data.muIsHoopCombo = true,
-    },
-    {
-      id: 'Hunt Mica the Magical Magical Hoop Cleanup',
-      type: 'RemovedCombatant',
-      netRegex: { name: 'Magical Hoop', capture: false },
-      suppressSeconds: 6,
-      run: (data) => data.muIsHoopCombo = false,
-    },
     // Spawns a formation of 6 cards in various patterns.
     {
       id: 'Hunt Mica the Magical Mu Deal',
@@ -546,8 +529,7 @@ const triggerSet: TriggerSet<Data> = {
         'Cat\'s Eye': 'Katzenauge',
         'Sally the Sweeper': 'Sally (?:der|die|das) Fegerin',
         'The Forecaster': 'Wetterreporter',
-        // 'Mica the Magical Mu': 'Mica (?:der|die|das) Magisch[rs] Mu', // ???
-        // 'magical hoop': 'Mu-gisch[a] Reifen',
+        // 'Mica the Magical Mu': 'Mica (?:der|die|das) Magisch[rs] Mu',
       },
     },
     {
@@ -557,7 +539,6 @@ const triggerSet: TriggerSet<Data> = {
         'Sally the Sweeper': 'Sally la balayeuse',
         'The Forecaster': 'Monsieur météo',
         'Mica the Magical Mu': 'Mica le mu',
-        'magical hoop': 'anneau mu-gique',
       },
     },
     {
@@ -567,7 +548,6 @@ const triggerSet: TriggerSet<Data> = {
         'Sally the Sweeper': 'サリー・ザ・スイーパー',
         'The Forecaster': 'ウェザーリポーター',
         'Mica the Magical Mu': 'マイカ・ザ・ムー',
-        'magical hoop': 'ムーの輪',
       },
     },
     {
@@ -577,15 +557,6 @@ const triggerSet: TriggerSet<Data> = {
         'Sally the Sweeper': '清除者萨利',
         'The Forecaster': '天气预报机器人',
         'Mica the Magical Mu': '亩鼠米卡',
-        'magical hoop': '亩鼠的圆环',
-      },
-    },
-    {
-      'locale': 'cn',
-      'replaceSync': {
-        'Cat\'s Eye': '猫眼',
-        'Sally the Sweeper': '清除者萨利',
-        'The Forecaster': '天气预报机器人',
       },
     },
   ],
