@@ -124,7 +124,7 @@ export interface Data extends RaidbossData {
   muDrawnCardIds: string[];
   muOnCard: number;
   muSafeDirections: CardSafeDirection[];
-  muTwoCardPattern: boolean | null;
+  muCardPattern: 'two' | 'three' | null;
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -137,7 +137,7 @@ const triggerSet: TriggerSet<Data> = {
     muDrawnCardIds: [],
     muOnCard: 0,
     muSafeDirections: [],
-    muTwoCardPattern: null,
+    muCardPattern: null,
   }),
   triggers: [
     // ****** A-RANK: Cat's Eye ****** //
@@ -343,7 +343,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // tank buster cleave (part of 9730 Shimmerstrike)
     {
-      id: 'Hunt Mica the Magical Shimmerstorm Tankbuster',
+      id: 'Hunt Mica the Magical Mu Shimmerstorm Tankbuster',
       type: 'StartsUsing',
       netRegex: { id: '9731', source: 'Mica the Magical Mu', capture: true },
       suppressSeconds: 1,
@@ -351,7 +351,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // random puddles under people. Shimmerstorm (972F) or Shimmerstrike (9730) spawn them.
     {
-      id: 'Hunt Mica the Magical Shimmerstorm',
+      id: 'Hunt Mica the Magical Mu Shimmerstorm',
       type: 'StartsUsing',
       netRegex: { id: '972F', source: 'Mica the Magical Mu', capture: false },
       suppressSeconds: 1,
@@ -359,13 +359,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     // donut followed by point-blank aoe (972D Twinkling Ring -> 9729 Twinkling Flourish)
     {
-      id: 'Hunt Mica the Magical Round of Applause',
+      id: 'Hunt Mica the Magical Mu Round of Applause',
       type: 'StartsUsing',
       netRegex: { id: '972B', source: 'Mica the Magical Mu', capture: false },
       response: Responses.getInThenOut(),
     },
     {
-      id: 'Hunt Mica the Magical Twinkling Ring',
+      id: 'Hunt Mica the Magical Mu Twinkling Ring',
       type: 'Ability',
       netRegex: { id: '972D', source: 'Mica the Magical Mu', capture: false },
       suppressSeconds: 1,
@@ -373,13 +373,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     // point-blank aoe followed by donut (972A Twinkling Flourish -> 972C Twinkling Ring)
     {
-      id: 'Hunt Mica the Magical Flourishing Bow',
+      id: 'Hunt Mica the Magical Mu Flourishing Bow',
       type: 'StartsUsing',
       netRegex: { id: '9728', source: 'Mica the Magical Mu', capture: false },
       response: Responses.getOutThenIn(),
     },
     {
-      id: 'Hunt Mica the Magical Twinkling Flourish',
+      id: 'Hunt Mica the Magical Mu Twinkling Flourish',
       type: 'Ability',
       netRegex: { id: '972A', source: 'Mica the Magical Mu', capture: false },
       suppressSeconds: 1,
@@ -387,7 +387,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // protein pizza slices, echo after (9726 4.7s, 9727 6.7)
     {
-      id: 'Hunt Mica the Magical Double Misdirect',
+      id: 'Hunt Mica the Magical Mu Double Misdirect',
       type: 'StartsUsing',
       netRegex: { id: '9725', source: 'Mica the Magical Mu', capture: false },
       infoText: (_data, _matches, output) => {
@@ -447,28 +447,33 @@ const triggerSet: TriggerSet<Data> = {
       },
       condition: (data) => data.muDrawnCardIds.length === 0,
       preRun: (data) => {
-        const [card1, card2, card3] = data.muCardSpots;
-        data.muTwoCardPattern = card1 === 1 && card2 === 2 && card3 === 3;
+        if (data.muCardSpots.length === 6) {
+          const [card1, card2, card3] = data.muCardSpots;
+          data.muCardPattern = (card1 === 1 && card2 === 2 && card3 === 3) ? 'two' : 'three';
+        } else {
+          data.muCardPattern = null;
+        }
       },
-      durationSeconds: (data) => data.muTwoCardPattern ? 21 : 24,
+      durationSeconds: (data) => data.muCardPattern ? 21 : 24,
       response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = cardOutputStrings;
         data.muDrawnCardIds.push(matches.id);
-        const cardValue = muCardFirstDrawMap[matches.id];
-        if (cardValue !== undefined) {
-          const cardPosIndex = data.muCardSpots.indexOf(cardValue);
-          const twoCardSafeSpot = CardSafeDirectionCol[cardPosIndex];
 
-          if (data.muTwoCardPattern && twoCardSafeSpot !== undefined) {
-            data.muSafeDirections.push(twoCardSafeSpot);
-          }
+        if (data.muCardPattern === 'two') {
+          const cardValue = muCardFirstDrawMap[matches.id];
+          if (cardValue !== undefined) {
+            const cardPosIndex = data.muCardSpots.indexOf(cardValue);
+            const twoCardSafeSpot = CardSafeDirectionCol[cardPosIndex];
 
-          if (data.muTwoCardPattern) {
-            return {
-              alertText: output.start!({ dir: output[twoCardSafeSpot ?? 'unknown']!() }),
-            };
+            if (twoCardSafeSpot !== undefined) {
+              data.muSafeDirections.push(twoCardSafeSpot);
+              return {
+                alertText: output.start!({ dir: output[twoCardSafeSpot]!() }),
+              };
+            }
           }
+        } else if (data.muCardPattern === 'three') {
           // three card pattern
           const safeSpots = muThreeCardPatternMap[matches.id];
           if (safeSpots === undefined)
@@ -496,12 +501,11 @@ const triggerSet: TriggerSet<Data> = {
         const cardPosIndex = data.muCardSpots.indexOf(cardValue);
         const twoCardSafeSpot = CardSafeDirectionCol[cardPosIndex];
 
-        if (data.muTwoCardPattern && twoCardSafeSpot !== undefined) {
-          data.muSafeDirections.push(twoCardSafeSpot);
-        }
-
-        if (data.muDrawnCardIds.length === 2 && data.muTwoCardPattern) {
-          return data.muSafeDirections.map((dir) => output[dir]!()).join(output.next!());
+        if (data.muCardPattern === 'two') {
+          if (twoCardSafeSpot !== undefined)
+            data.muSafeDirections.push(twoCardSafeSpot);
+          if (data.muDrawnCardIds.length === 2)
+            return data.muSafeDirections.map((dir) => output[dir]!()).join(output.next!());
         }
       },
       outputStrings: cardOutputStrings,
