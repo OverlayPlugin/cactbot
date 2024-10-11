@@ -587,7 +587,6 @@ const testTriggerFile = (file: string, info: TriggerSetInfo) => {
                 `'${key}' in '${id}' outputStrings contains a mid-string long arrow: [${lang}]: '${template}'`,
               );
 
-
             // Build params with a set for uniqueness, but store as an array later for ease of use.
             const params = new Set<string>();
             template.replace(paramRegex, (fullMatch, key: string) => {
