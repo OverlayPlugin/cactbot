@@ -229,6 +229,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         away: {
           en: 'Away from adds',
+          fr: 'Éloignez-vous des adds',
         },
       },
     },
@@ -241,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeCombo: {
           en: 'Dodge contracting swords (front/back combo after)',
+          fr: 'Esquivez les épées combattantes (combo avant/arrière ensuite)',
         },
       },
     },
@@ -254,6 +256,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Dodge expanding swords',
+          fr: 'Évitez les épées en expansion',
         },
       },
     },
@@ -358,6 +361,7 @@ const triggerSet: TriggerSet<Data> = {
         westCorner: Outputs.west,
         unknown: {
           en: 'Avoid swords',
+          fr: 'Évitez les épées',
         },
       },
     },
@@ -410,18 +414,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         insideNorth: {
           en: 'Inner North Diamond',
+          fr: 'Diamand nord intérieur',
         },
         insideEast: {
           en: 'Inner East Diamond',
+          fr: 'Diamand est intérieur',
         },
         insideSouth: {
           en: 'Inner South Diamond',
+          fr: 'Diamand sud intérieur',
         },
         insideWest: {
           en: 'Inner West Diamond',
+          fr: 'Diamand est intérieur',
         },
         unknown: {
           en: 'Avoid Line Cleaves',
+          fr: 'Évitez les cleaves en ligne',
         },
       },
     },

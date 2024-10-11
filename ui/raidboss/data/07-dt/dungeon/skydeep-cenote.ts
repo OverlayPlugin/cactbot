@@ -53,6 +53,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         wave: {
           en: 'Look away from party',
+          fr: 'Ne regardez pas le groupe',
         },
       },
     },
@@ -64,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Avoid bubbles',
+          fr: 'Évitez les bulles',
         },
       },
     },
@@ -75,6 +77,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Avoid bubbles',
+          fr: 'Évitez les bulles',
         },
       },
     },
@@ -144,9 +147,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidDir: {
           en: 'Safe: ${dir} (on hitbox)',
+          fr: 'Sûr : ${dir} (sur la hitbox)',
         },
         avoid: {
           en: 'Avoid shifting bubbles',
+          fr: 'Éviter les bulles mobiles',
         },
         ...Directions.outputStringsIntercardDir,
       },
@@ -177,9 +182,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         awayFromOrb: {
           en: 'North + Away from orb',
+          fr: 'Nord + Évitez les orbes',
         },
         nearOrb: {
           en: 'Be close to North orb',
+          fr: 'Près de l\'orbe nord',
         },
       },
     },
@@ -191,6 +198,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tiles: {
           en: 'Avoid exploding rows/columns',
+          fr: 'Évitez les lignes/colonnes explosives',
         },
       },
     },
@@ -212,9 +220,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackThree: {
           en: 'Stack (3 hits)',
+          fr: 'Pack (3 coups)',
         },
         stackFive: {
           en: 'Stack (5 hits)',
+          fr: 'Pack (5 coups)',
         },
       },
     },
@@ -242,6 +252,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbAoeSpread: {
           en: 'Knockback (AoE) => Spread',
+          fr: 'Poussée (AoE) => Dispersion',
         },
       },
     },
@@ -254,6 +265,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeSides: {
           en: 'Avoid AoEs (sides after)',
+          fr: 'Évitez les AoE (côtés ensuite)',
         },
       },
     },
@@ -274,6 +286,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeMiddle: {
           en: 'Avoid AoEs (middle after)',
+          fr: 'Évitez les AoE (milieu ensuite)',
         },
       },
     },
@@ -298,9 +311,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         east: {
           en: '<== Knockback Back Left (Right After)',
+          fr: '<== Poussée arrière gauche (Droite ensuite)',
         },
         west: {
           en: 'Knockback Back Right (Left After) ==>',
+          fr: 'Poussée arrière droite (Gauche ensuite) ==>',
         },
       },
     },
@@ -316,6 +331,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockback: {
           en: 'Knockback (to ${dir})',
+          fr: 'Poussée (vers ${dir})',
         },
         dirNE: Outputs.dirNE,
         dirNW: Outputs.dirNW,
@@ -332,6 +348,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadAfter: {
           en: '(spread after)',
+          fr: '(dispersion ensuite)',
         },
       },
     },
@@ -345,6 +362,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackAfter: {
           en: '(stack after)',
+          fr: '(pack ensuite)',
         },
       },
     },

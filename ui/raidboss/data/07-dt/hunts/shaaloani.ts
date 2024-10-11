@@ -69,21 +69,27 @@ const ttokrroneTempestSandspoutOutputStrings = {
   front: Outputs.front,
   rear: {
     en: 'rear',
+    fr: 'arrière',
   },
   rightFlank: {
     en: 'right flank',
+    fr: 'flanc gauche',
   },
   leftFlank: {
     en: 'left flank',
+    fr: 'flanc droit',
   },
   triple: {
     en: '${inOut} + ${dir2} + ${dir3}',
+    fr: '${inOut} + ${dir2} + ${dir3}',
   },
   double: {
     en: '${inOut} + ${dir2}',
+    fr: '${inOut} + ${dir2}',
   },
   awayFrom: {
     en: '${out} + avoid ${dir}',
+    fr: '${out} + évitez ${dir}',
   },
 } as const;
 
@@ -100,12 +106,15 @@ const ttokrroneDesertTempestIds = Object.keys(ttokrroneDesertTempest);
 const ttokrroneDustdevilOutputStrings = {
   outOfHitbox: {
     en: 'Out of hitbox + stay out',
+    fr: 'Extérieur de la hitbox + restez à l\'extérieur',
   },
   rotateFront: {
     en: 'Rotating frontal cleave', // ${dir}'
+    fr: 'Cleave frontal tournant',
   },
   rotateRear: {
     en: 'Rotating rear cleave', // ${dir}'
+    fr: 'Cleave arrière tournant',
   },
 } as const;
 
@@ -753,6 +762,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Go to safe side of first dash => move in after',
+          fr: 'Allez du côté sûr après le 1er dash => allez à l\'intérieur ensuite',
         },
       },
     },
@@ -768,6 +778,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidSpheres: {
           en: 'Avoid exploding sand spheres',
+          fr: 'Évitez les sphères de sables explosives',
         },
       },
     },

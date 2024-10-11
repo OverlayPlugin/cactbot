@@ -432,6 +432,7 @@ export default {
   // be just outside the boss's target circle
   outOfHitbox: {
     en: 'Out of hitbox',
+    fr: 'Extérieur de la hitbox',
   },
   inThenOut: {
     en: 'In => out',
@@ -1009,10 +1010,12 @@ export default {
   // for combo mechanics/names
   and: {
     en: ' + ',
+    fr: ' + ',
   },
   // for either/or directions or mechanics
   or: {
     en: ' / ',
+    fr: ' / ',
   },
   // Literal numbers.
   num0: numberToOutputString(0),

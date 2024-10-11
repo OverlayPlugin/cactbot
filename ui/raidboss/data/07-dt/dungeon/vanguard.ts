@@ -39,6 +39,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         corners: {
           en: 'Go outside (corners)',
+          fr: 'Extérieur (coins)',
         },
       },
     },
@@ -53,6 +54,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         inside: {
           en: 'Go inside',
+          fr: 'Intérieur',
         },
       },
     },
@@ -68,9 +70,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         northSouth: {
           en: 'Dodge North/South line cleaves',
+          fr: 'Esquivez les cleaves en ligne N/S',
         },
         grid: {
           en: 'Spread + dodge grid cleaves',
+          fr: 'Dispersion + esquivez les cleaves en grille',
         },
       },
     },

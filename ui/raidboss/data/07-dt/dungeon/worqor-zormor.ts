@@ -43,15 +43,19 @@ const getFacingDir = (pos: number, hdg: number): DirectionOutputIntercard => {
 const coldFeatOutputStrings = {
   start: {
     en: 'Start ${dir}',
+    fr: 'Début ${dir}',
   },
   followup: {
     en: 'Go ${dir}',
+    fr: 'Allez ${dir}',
   },
   avoidStart: {
     en: 'Avoid cleaves from untethered adds',
+    fr: 'Évitez les cleaves des adds non-liés',
   },
   avoidFollowup: {
     en: 'Avoid cleaves from remaining adds',
+    fr: 'Évitez les cleaves des adds restants',
   },
   or: Outputs.or,
   ...Directions.outputStrings8Dir,
@@ -232,6 +236,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidAndSpread: {
           en: 'Avoid lines => Spread after',
+          fr: 'Évitez les lignes => Dispersion ensuite',
         },
       },
     },
@@ -261,9 +266,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackInHole: {
           en: 'Stack donuts in hole',
+          fr: 'Pack donuts dans le trou',
         },
         stackInLines: {
           en: 'Stack donuts in safe lines',
+          fr: 'Pack donuts dans les lignes sûres',
         },
       },
     },
@@ -279,9 +286,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadFromHole: {
           en: 'Spread + Away from puddle',
+          fr: 'Dispersion + Loin des flaques',
         },
         spreadFromLines: {
           en: 'Spread + Away from lines',
+          fr: 'Dispersion + Loin des lignes',
         },
       },
     },
@@ -298,6 +307,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${inOut} + ${lookAway}',
+          fr: '${inOut} + ${lookAway}',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -313,6 +323,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadBreak: {
           en: 'Spread => Break crystals',
+          fr: 'Dispersion => Cassez les cristaux',
         },
       },
     },
@@ -339,6 +350,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stack: {
           en: 'Stack (3 hits)',
+          fr: 'Pack (3 coups)',
         },
       },
     },
@@ -351,6 +363,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         absorb: {
           en: 'Absorb all orbs',
+          fr: 'Absorbez tous les orbes',
         },
       },
     },
@@ -369,6 +382,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kb: {
           en: 'Knockback (from West)',
+          fr: 'Poussée (depuis l\'ouest)',
         },
       },
     },
@@ -385,6 +399,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeSpread: {
           en: 'Dodge toward fire crystal => Spread',
+          fr: 'Esquivez vers le cristal de feu => Dispersion',
         },
       },
     },
@@ -403,9 +418,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbEast: {
           en: 'Knockback (from East) to Fire crystal => Spread',
+          fr: 'Poussée (depuis l\'est) vers le cristal de feu => Dispersion',
         },
         kbWest: {
           en: 'Knockback (from West) to Fire crystal => Spread',
+          fr: 'Poussée (depuis l\'ouest) vers le cristal de feu => Dispersion',
         },
       },
     },
@@ -418,6 +435,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbAoe: {
           en: 'Knockback + AoE',
+          fr: 'Poussée + AoE',
         },
       },
     },
@@ -430,6 +448,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbAoe2: {
           en: 'Knockback + AoE (avoid tornadoes)',
+          fr: 'Poussée + AoE (évitez les tornades)',
         },
       },
     },
