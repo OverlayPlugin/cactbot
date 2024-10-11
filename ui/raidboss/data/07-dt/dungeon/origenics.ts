@@ -371,8 +371,8 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         right: {
-          en: '(Far North lane: Knockback Right ==>)',
-          fr: '(Ligne nord éloignée : Poussée droite ==>)',
+          en: '(Far North lane: Knockback Right) ==>',
+          fr: '(Ligne nord éloignée : Poussée droite) ==>',
         },
         left: {
           en: '(<== Far North lane: Knockback Left)',
