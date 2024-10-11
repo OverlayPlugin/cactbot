@@ -269,13 +269,19 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: true },
       durationSeconds: 7.3,
       infoText: (data, matches, output) => {
+        const cleaveDir = ['92BC', '92BE'].includes(matches.id) ? 'right' : 'left';
+        const actorID = parseInt(matches.sourceId, 16);
+
         // If this is the first cleave, it's boss relative because boss isn't fixed north
-        if (data.sidewiseSparkCounter === 0)
-          return ['92BC', '92BE'].includes(matches.id) ? output.goLeft!() : output.goRight!();
+        if (data.storedCleaves.length === 0)
+          return cleaveDir === 'right' ? output.goLeft!() : output.goRight!();
+
+        data.storedCleaves.push({
+          dir: cleaveDir,
+          id: actorID,
+        });
 
         const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, data.storedCleaves);
-
-        dirs.push(['92BC', '92BE'].includes(matches.id) ? 'dirW' : 'dirE');
 
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
