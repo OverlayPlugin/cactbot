@@ -34,6 +34,7 @@ Options.Triggers.push({
       outputStrings: {
         wave: {
           en: 'Look away from party',
+          fr: 'Ne regardez pas le groupe',
         },
       },
     },
@@ -45,6 +46,7 @@ Options.Triggers.push({
       outputStrings: {
         avoid: {
           en: 'Avoid bubbles',
+          fr: 'Évitez les bulles',
         },
       },
     },
@@ -56,6 +58,7 @@ Options.Triggers.push({
       outputStrings: {
         avoid: {
           en: 'Avoid bubbles',
+          fr: 'Évitez les bulles',
         },
       },
     },
@@ -119,9 +122,11 @@ Options.Triggers.push({
       outputStrings: {
         avoidDir: {
           en: 'Safe: ${dir} (on hitbox)',
+          fr: 'Sûr : ${dir} (sur la hitbox)',
         },
         avoid: {
           en: 'Avoid shifting bubbles',
+          fr: 'Éviter les bulles mobiles',
         },
         ...Directions.outputStringsIntercardDir,
       },
@@ -151,9 +156,11 @@ Options.Triggers.push({
       outputStrings: {
         awayFromOrb: {
           en: 'North + Away from orb',
+          fr: 'Nord + Évitez les orbes',
         },
         nearOrb: {
           en: 'Be close to North orb',
+          fr: 'Près de l\'orbe nord',
         },
       },
     },
@@ -165,6 +172,7 @@ Options.Triggers.push({
       outputStrings: {
         tiles: {
           en: 'Avoid exploding rows/columns',
+          fr: 'Évitez les lignes/colonnes explosives',
         },
       },
     },
@@ -185,9 +193,11 @@ Options.Triggers.push({
       outputStrings: {
         stackThree: {
           en: 'Stack (3 hits)',
+          fr: 'Pack (3 coups)',
         },
         stackFive: {
           en: 'Stack (5 hits)',
+          fr: 'Pack (5 coups)',
         },
       },
     },
@@ -215,6 +225,7 @@ Options.Triggers.push({
       outputStrings: {
         kbAoeSpread: {
           en: 'Knockback (AoE) => Spread',
+          fr: 'Poussée (AoE) => Dispersion',
         },
       },
     },
@@ -227,6 +238,7 @@ Options.Triggers.push({
       outputStrings: {
         dodgeSides: {
           en: 'Avoid AoEs (sides after)',
+          fr: 'Évitez les AoE (côtés ensuite)',
         },
       },
     },
@@ -247,6 +259,7 @@ Options.Triggers.push({
       outputStrings: {
         dodgeMiddle: {
           en: 'Avoid AoEs (middle after)',
+          fr: 'Évitez les AoE (milieu ensuite)',
         },
       },
     },
@@ -271,9 +284,11 @@ Options.Triggers.push({
       outputStrings: {
         east: {
           en: '<== Knockback Back Left (Right After)',
+          fr: '<== Poussée arrière gauche (Droite ensuite)',
         },
         west: {
           en: 'Knockback Back Right (Left After) ==>',
+          fr: 'Poussée arrière droite (Gauche ensuite) ==>',
         },
       },
     },
@@ -289,6 +304,7 @@ Options.Triggers.push({
       outputStrings: {
         knockback: {
           en: 'Knockback (to ${dir})',
+          fr: 'Poussée (vers ${dir})',
         },
         dirNE: Outputs.dirNE,
         dirNW: Outputs.dirNW,
@@ -305,6 +321,7 @@ Options.Triggers.push({
       outputStrings: {
         spreadAfter: {
           en: '(spread after)',
+          fr: '(dispersion ensuite)',
         },
       },
     },
@@ -318,6 +335,7 @@ Options.Triggers.push({
       outputStrings: {
         stackAfter: {
           en: '(stack after)',
+          fr: '(pack ensuite)',
         },
       },
     },

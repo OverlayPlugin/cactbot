@@ -19,15 +19,19 @@ const getFacingDir = (pos, hdg) => {
 const coldFeatOutputStrings = {
   start: {
     en: 'Start ${dir}',
+    fr: 'Début ${dir}',
   },
   followup: {
     en: 'Go ${dir}',
+    fr: 'Allez ${dir}',
   },
   avoidStart: {
     en: 'Avoid cleaves from untethered adds',
+    fr: 'Évitez les cleaves des adds non-liés',
   },
   avoidFollowup: {
     en: 'Avoid cleaves from remaining adds',
+    fr: 'Évitez les cleaves des adds restants',
   },
   or: Outputs.or,
   ...Directions.outputStrings8Dir,
@@ -194,6 +198,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidAndSpread: {
           en: 'Avoid lines => Spread after',
+          fr: 'Évitez les lignes => Dispersion ensuite',
         },
       },
     },
@@ -222,9 +227,11 @@ Options.Triggers.push({
       outputStrings: {
         stackInHole: {
           en: 'Stack donuts in hole',
+          fr: 'Pack donuts dans le trou',
         },
         stackInLines: {
           en: 'Stack donuts in safe lines',
+          fr: 'Pack donuts dans les lignes sûres',
         },
       },
     },
@@ -240,9 +247,11 @@ Options.Triggers.push({
       outputStrings: {
         spreadFromHole: {
           en: 'Spread + Away from puddle',
+          fr: 'Dispersion + Loin des flaques',
         },
         spreadFromLines: {
           en: 'Spread + Away from lines',
+          fr: 'Dispersion + Loin des lignes',
         },
       },
     },
@@ -259,6 +268,7 @@ Options.Triggers.push({
       outputStrings: {
         combo: {
           en: '${inOut} + ${lookAway}',
+          fr: '${inOut} + ${lookAway}',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -274,6 +284,7 @@ Options.Triggers.push({
       outputStrings: {
         spreadBreak: {
           en: 'Spread => Break crystals',
+          fr: 'Dispersion => Cassez les cristaux',
         },
       },
     },
@@ -299,6 +310,7 @@ Options.Triggers.push({
       outputStrings: {
         stack: {
           en: 'Stack (3 hits)',
+          fr: 'Pack (3 coups)',
         },
       },
     },
@@ -311,6 +323,7 @@ Options.Triggers.push({
       outputStrings: {
         absorb: {
           en: 'Absorb all orbs',
+          fr: 'Absorbez tous les orbes',
         },
       },
     },
@@ -329,6 +342,7 @@ Options.Triggers.push({
       outputStrings: {
         kb: {
           en: 'Knockback (from West)',
+          fr: 'Poussée (depuis l\'ouest)',
         },
       },
     },
@@ -345,6 +359,7 @@ Options.Triggers.push({
       outputStrings: {
         dodgeSpread: {
           en: 'Dodge toward fire crystal => Spread',
+          fr: 'Esquivez vers le cristal de feu => Dispersion',
         },
       },
     },
@@ -363,9 +378,11 @@ Options.Triggers.push({
       outputStrings: {
         kbEast: {
           en: 'Knockback (from East) to Fire crystal => Spread',
+          fr: 'Poussée (depuis l\'est) vers le cristal de feu => Dispersion',
         },
         kbWest: {
           en: 'Knockback (from West) to Fire crystal => Spread',
+          fr: 'Poussée (depuis l\'ouest) vers le cristal de feu => Dispersion',
         },
       },
     },
@@ -378,6 +395,7 @@ Options.Triggers.push({
       outputStrings: {
         kbAoe: {
           en: 'Knockback + AoE',
+          fr: 'Poussée + AoE',
         },
       },
     },
@@ -390,6 +408,7 @@ Options.Triggers.push({
       outputStrings: {
         kbAoe2: {
           en: 'Knockback + AoE (avoid tornadoes)',
+          fr: 'Poussée + AoE (évitez les tornades)',
         },
       },
     },

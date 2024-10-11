@@ -83,6 +83,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidFront: {
           en: '${dir} (Avoid Front)',
+          fr: '${dir} (Évitez l\'avant)',
         },
         cleaveRight: Outputs.left,
         cleaveLeft: Outputs.right,
@@ -115,6 +116,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidRear: {
           en: '${dir} (Avoid Rear)',
+          fr: '${dir} (Évitez l\'arrière)',
         },
         cleaveRight: Outputs.left,
         cleaveLeft: Outputs.right,
@@ -142,6 +144,7 @@ Options.Triggers.push({
         cleaveLeft: Outputs.right,
         cleaveRear: {
           en: 'Avoid Rear',
+          fr: 'Évitez l\'arrière',
         },
         next: Outputs.next,
       },
@@ -178,12 +181,15 @@ Options.Triggers.push({
       outputStrings: {
         combo: {
           en: '${dir} + Avoid Droid Cleaves',
+          fr: '${dir} + Évitez les cleaves des droids',
         },
         frontLeft: {
           en: 'Back Right / Front Left',
+          fr: 'Arrière droite / Avant gauche',
         },
         frontRight: {
           en: 'Back Left / Front Right',
+          fr: 'Arrière gauche / Avant droit',
         },
       },
     },
@@ -199,6 +205,7 @@ Options.Triggers.push({
       outputStrings: {
         avoid: {
           en: 'Stand in line with flickering droid',
+          fr: 'Restez sur la ligne du droide clignotant',
         },
       },
     },
@@ -249,20 +256,25 @@ Options.Triggers.push({
       outputStrings: {
         middleLanes: {
           en: 'Middle lanes (${side} turrets)',
+          fr: 'Lignes centrales (tourelles ${side})',
         },
         farLanes: {
           en: 'Far N/S lanes (${side} turrets)',
+          fr: 'Lignes N/S éloignées (tourelles ${side})',
         },
         middleNorth: {
           en: 'Middle North lane (${side} turrets)',
+          fr: 'Ligne centrale nord (tourelles ${side})',
         },
         middleSouth: {
           en: 'Middle South lane (${side} turrets)',
+          fr: 'Ligne centrale sud (tourelles ${side})',
         },
         east: Outputs.east,
         west: Outputs.west,
         avoid: {
           en: 'Stand in line with flickering turrets',
+          fr: 'Restez sur la ligne de la tourelle clignotante',
         },
       },
     },
@@ -285,6 +297,7 @@ Options.Triggers.push({
       outputStrings: {
         safeTurret: {
           en: 'Knockback into real turret => Spread',
+          fr: 'Poussée sur la vraie tourelle => Dispersion',
         },
       },
     },
@@ -308,10 +321,12 @@ Options.Triggers.push({
       },
       outputStrings: {
         right: {
-          en: '(Far North lane: Knockback Right ==>)',
+          en: '(Far North lane: Knockback Right) ==>',
+          fr: '(Ligne nord éloignée : Poussée droite) ==>',
         },
         left: {
-          en: '(<== Far North lane: Knockback Left)',
+          en: '<== (Far North lane: Knockback Left)',
+          fr: '<== (Ligne sur éloignée : Poussée gauche)',
         },
       },
     },
@@ -365,6 +380,7 @@ Options.Triggers.push({
       outputStrings: {
         spread: {
           en: '${dir} => Spread',
+          fr: '${dir} => Dispersion',
         },
         north: Outputs.north,
         middle: Outputs.middle,
@@ -379,6 +395,7 @@ Options.Triggers.push({
       outputStrings: {
         kb: {
           en: 'Knockback N/S',
+          fr: 'Poussée N/S',
         },
       },
     },
@@ -392,9 +409,11 @@ Options.Triggers.push({
       outputStrings: {
         kbSpread: {
           en: 'Knockback to behind boss => Spread',
+          fr: 'Poussée vers l\'arrière du boss => Dispersion',
         },
         kb: {
           en: 'Knockback to behind boss',
+          fr: 'Poussée vers l\'arrière du boss',
         },
       },
     },
@@ -408,6 +427,7 @@ Options.Triggers.push({
       outputStrings: {
         avoid: {
           en: 'Avoid lance zig-zag',
+          fr: 'Évitez la lance en zig-zag',
         },
       },
     },
