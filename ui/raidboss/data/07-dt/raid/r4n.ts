@@ -281,7 +281,13 @@ const triggerSet: TriggerSet<Data> = {
           id: actorID,
         });
 
-        const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, data.storedCleaves);
+        // If we got 5 hits, the first 2 were already called out while
+        // collecting the clone hits. Don't repeat them.
+        const remainingHits = data.storedCleaves.length === 5
+          ? data.storedCleaves.slice(-3)
+          : data.storedCleaves;
+
+        const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, remainingHits);
 
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
