@@ -753,7 +753,7 @@ export class DamageTracker {
     this.job = e.detail.job;
     this.role = Util.jobToRole(this.job);
     this.ReloadTriggers();
-    this.playerStateTracker.SetPlayerId(e.detail.id.toString(16));
+    this.playerStateTracker.SetPlayerId(e.detail.id.toString(16).toUpperCase());
   }
 
   ProcessDataFiles(): void {
