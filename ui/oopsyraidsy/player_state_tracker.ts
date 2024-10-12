@@ -211,7 +211,7 @@ export class PlayerStateTracker {
   }
 
   OnAddedCombatant(_line: string, splitLine: string[]): void {
-    const id = splitLine[logDefinitions.AddedCombatant.fields.id];
+    const id = splitLine[logDefinitions.AddedCombatant.fields.id]?.toUpperCase();
     const name = splitLine[logDefinitions.AddedCombatant.fields.name];
     const worldIdStr = splitLine[logDefinitions.AddedCombatant.fields.worldId];
     const jobStr = splitLine[logDefinitions.AddedCombatant.fields.job];
@@ -280,6 +280,7 @@ export class PlayerStateTracker {
   }
 
   SetPlayerId(id: string): void {
+    id = id.toUpperCase();
     if (this.myPlayerId === id)
       return;
     this.myPlayerId = id;
