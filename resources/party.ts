@@ -402,6 +402,7 @@ const jobLocalizedAbbr: Record<Job, LocaleText> = {
     fr: 'VPR',
     ja: 'ヴァイパー',
     cn: '蝰蛇',
+    ko: '바이퍼',
   },
   PCT: {
     en: 'PCT',
@@ -409,6 +410,7 @@ const jobLocalizedAbbr: Record<Job, LocaleText> = {
     fr: 'PIC',
     ja: 'ピクトマンサー',
     cn: '画家',
+    ko: '픽토',
   },
 };
 
@@ -747,6 +749,7 @@ const jobLocalizedFull: Record<Job, LocaleText> = {
     fr: 'Rôdeur vipère',
     ja: 'ヴァイパー',
     cn: '蝰蛇剑士',
+    ko: '바이퍼',
   },
   PCT: {
     en: 'Pictomancer',
@@ -754,6 +757,7 @@ const jobLocalizedFull: Record<Job, LocaleText> = {
     fr: 'Pictomancien',
     ja: 'ピクトマンサー',
     cn: '绘灵法师',
+    ko: '픽토맨서',
   },
 };
 
