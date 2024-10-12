@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.32.11",
-  "releaseSummary": "Dawntrail Dungeons, Everkeep Normal, Ttokrrone, i18n",
+  "version": "0.32.12",
+  "releaseSummary": "Oopsy bugfix, i18n updates, M4N adjustments",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
