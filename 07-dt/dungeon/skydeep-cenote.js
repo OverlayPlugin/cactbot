@@ -35,6 +35,7 @@ Options.Triggers.push({
         wave: {
           en: 'Look away from party',
           fr: 'Ne regardez pas le groupe',
+          cn: '背对小队成员',
         },
       },
     },
@@ -47,6 +48,7 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid bubbles',
           fr: 'Évitez les bulles',
+          cn: '躲避泡泡',
         },
       },
     },
@@ -59,6 +61,7 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid bubbles',
           fr: 'Évitez les bulles',
+          cn: '躲避泡泡',
         },
       },
     },
@@ -123,10 +126,12 @@ Options.Triggers.push({
         avoidDir: {
           en: 'Safe: ${dir} (on hitbox)',
           fr: 'Sûr : ${dir} (sur la hitbox)',
+          cn: '安全区: ${dir} (判定圈上)',
         },
         avoid: {
           en: 'Avoid shifting bubbles',
           fr: 'Éviter les bulles mobiles',
+          cn: '躲避被击退的泡泡',
         },
         ...Directions.outputStringsIntercardDir,
       },
@@ -157,10 +162,12 @@ Options.Triggers.push({
         awayFromOrb: {
           en: 'North + Away from orb',
           fr: 'Nord + Évitez les orbes',
+          cn: '北 + 远离黄球',
         },
         nearOrb: {
           en: 'Be close to North orb',
           fr: 'Près de l\'orbe nord',
+          cn: '靠近北边黄球',
         },
       },
     },
@@ -173,6 +180,7 @@ Options.Triggers.push({
         tiles: {
           en: 'Avoid exploding rows/columns',
           fr: 'Évitez les lignes/colonnes explosives',
+          cn: '躲避爆炸行/列',
         },
       },
     },
@@ -194,10 +202,12 @@ Options.Triggers.push({
         stackThree: {
           en: 'Stack (3 hits)',
           fr: 'Pack (3 coups)',
+          cn: '集合 (3次)',
         },
         stackFive: {
           en: 'Stack (5 hits)',
           fr: 'Pack (5 coups)',
+          cn: '集合 (5次)',
         },
       },
     },
@@ -226,6 +236,7 @@ Options.Triggers.push({
         kbAoeSpread: {
           en: 'Knockback (AoE) => Spread',
           fr: 'Poussée (AoE) => Dispersion',
+          cn: '击退 (AOE) => 分散',
         },
       },
     },
@@ -239,6 +250,7 @@ Options.Triggers.push({
         dodgeSides: {
           en: 'Avoid AoEs (sides after)',
           fr: 'Évitez les AoE (côtés ensuite)',
+          cn: '躲 AOE (然后去两侧)',
         },
       },
     },
@@ -260,6 +272,7 @@ Options.Triggers.push({
         dodgeMiddle: {
           en: 'Avoid AoEs (middle after)',
           fr: 'Évitez les AoE (milieu ensuite)',
+          cn: '躲 AOE (然后去中间)',
         },
       },
     },
@@ -285,10 +298,12 @@ Options.Triggers.push({
         east: {
           en: '<== Knockback Back Left (Right After)',
           fr: '<== Poussée arrière gauche (Droite ensuite)',
+          cn: '<== 击退到左后 (然后去右)',
         },
         west: {
           en: 'Knockback Back Right (Left After) ==>',
           fr: 'Poussée arrière droite (Gauche ensuite) ==>',
+          cn: '击退到右后 (然后去左) ==>',
         },
       },
     },
@@ -305,6 +320,7 @@ Options.Triggers.push({
         knockback: {
           en: 'Knockback (to ${dir})',
           fr: 'Poussée (vers ${dir})',
+          cn: '击退 (去 ${dir})',
         },
         dirNE: Outputs.dirNE,
         dirNW: Outputs.dirNW,
@@ -322,6 +338,7 @@ Options.Triggers.push({
         spreadAfter: {
           en: '(spread after)',
           fr: '(dispersion ensuite)',
+          cn: '(然后分散)',
         },
       },
     },
@@ -336,6 +353,7 @@ Options.Triggers.push({
         stackAfter: {
           en: '(stack after)',
           fr: '(pack ensuite)',
+          cn: '(然后集合)',
         },
       },
     },

@@ -232,7 +232,7 @@ Options.Triggers.push({
           en: 'Get under Elimbit',
           de: 'Geh unter Eliminator',
           fr: 'Allez sous Annihilation',
-          cn: '站在清除者身下',
+          cn: '站在浮游炮下',
           ko: '비트 밑으로',
         },
       },

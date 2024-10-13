@@ -186,6 +186,7 @@ Options.Triggers.push({
         away: {
           en: 'Away from adds',
           fr: 'Éloignez-vous des adds',
+          cn: '远离小怪',
         },
       },
     },
@@ -199,6 +200,7 @@ Options.Triggers.push({
         dodgeCombo: {
           en: 'Dodge contracting swords (front/back combo after)',
           fr: 'Esquivez les épées combattantes (combo avant/arrière ensuite)',
+          cn: '躲避向内步进 AOE (然后前后刀)',
         },
       },
     },
@@ -213,6 +215,7 @@ Options.Triggers.push({
         dodge: {
           en: 'Dodge expanding swords',
           fr: 'Évitez les épées en expansion',
+          cn: '躲避向外步进 AOE',
         },
       },
     },
@@ -316,6 +319,7 @@ Options.Triggers.push({
         unknown: {
           en: 'Avoid swords',
           fr: 'Évitez les épées',
+          cn: '躲避剑',
         },
       },
     },
@@ -366,22 +370,27 @@ Options.Triggers.push({
         insideNorth: {
           en: 'Inner North Diamond',
           fr: 'Diamand nord intérieur',
+          cn: '上北内侧方格',
         },
         insideEast: {
           en: 'Inner East Diamond',
           fr: 'Diamand est intérieur',
+          cn: '右东内侧方格',
         },
         insideSouth: {
           en: 'Inner South Diamond',
           fr: 'Diamand sud intérieur',
+          cn: '下南内侧方格',
         },
         insideWest: {
           en: 'Inner West Diamond',
           fr: 'Diamand est intérieur',
+          cn: '左西内侧方格',
         },
         unknown: {
           en: 'Avoid Line Cleaves',
           fr: 'Évitez les cleaves en ligne',
+          cn: '躲避直线剑击',
         },
       },
     },
