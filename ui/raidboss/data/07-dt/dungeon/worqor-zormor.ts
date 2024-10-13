@@ -453,7 +453,7 @@ const triggerSet: TriggerSet<Data> = {
         kbAoe: {
           en: 'Knockback + AoE',
           fr: 'Poussée + AoE',
-          cn: '击退 +  AOE',
+          cn: '击退 + AOE',
         },
       },
     },
