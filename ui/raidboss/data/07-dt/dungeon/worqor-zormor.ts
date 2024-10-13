@@ -467,7 +467,7 @@ const triggerSet: TriggerSet<Data> = {
         kbAoe2: {
           en: 'Knockback + AoE (avoid tornadoes)',
           fr: 'Poussée + AoE (évitez les tornades)',
-          cn: '击退 +  AOE (躲避龙卷风)',
+          cn: '击退 + AOE (躲避龙卷风)',
         },
       },
     },
