@@ -433,6 +433,7 @@ export default {
   outOfHitbox: {
     en: 'Out of hitbox',
     fr: 'Extérieur de la hitbox',
+    cn: '离开目标圈',
   },
   inThenOut: {
     en: 'In => out',
@@ -1011,11 +1012,13 @@ export default {
   and: {
     en: ' + ',
     fr: ' + ',
+    cn: ' + ',
   },
   // for either/or directions or mechanics
   or: {
     en: ' / ',
     fr: ' / ',
+    cn: ' / ',
   },
   // Literal numbers.
   num0: numberToOutputString(0),

@@ -230,6 +230,7 @@ const triggerSet: TriggerSet<Data> = {
         away: {
           en: 'Away from adds',
           fr: 'Éloignez-vous des adds',
+          cn: '远离小怪',
         },
       },
     },
@@ -243,6 +244,7 @@ const triggerSet: TriggerSet<Data> = {
         dodgeCombo: {
           en: 'Dodge contracting swords (front/back combo after)',
           fr: 'Esquivez les épées combattantes (combo avant/arrière ensuite)',
+          cn: '躲避收缩剑击 (然后前后刀)',
         },
       },
     },
@@ -257,6 +259,7 @@ const triggerSet: TriggerSet<Data> = {
         dodge: {
           en: 'Dodge expanding swords',
           fr: 'Évitez les épées en expansion',
+          cn: '躲避扩散剑击',
         },
       },
     },
@@ -362,6 +365,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: {
           en: 'Avoid swords',
           fr: 'Évitez les épées',
+          cn: '躲避剑',
         },
       },
     },
@@ -415,22 +419,27 @@ const triggerSet: TriggerSet<Data> = {
         insideNorth: {
           en: 'Inner North Diamond',
           fr: 'Diamand nord intérieur',
+          cn: '上北内侧方格',
         },
         insideEast: {
           en: 'Inner East Diamond',
           fr: 'Diamand est intérieur',
+          cn: '右东内侧方格',
         },
         insideSouth: {
           en: 'Inner South Diamond',
           fr: 'Diamand sud intérieur',
+          cn: '下南内侧方格',
         },
         insideWest: {
           en: 'Inner West Diamond',
           fr: 'Diamand est intérieur',
+          cn: '左西内侧方格',
         },
         unknown: {
           en: 'Avoid Line Cleaves',
           fr: 'Évitez les cleaves en ligne',
+          cn: '躲避直线剑击',
         },
       },
     },

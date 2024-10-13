@@ -142,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${dir1} ${sep} ${dir2} (Stay)',
           de: '${dir1} ${sep} ${dir2} (bleib Stehen)',
           fr: '${dir1} ${sep} ${dir2} (Restez)',
+          cn: '${dir1} ${sep} ${dir2} (不动)',
           ko: '${dir1} ${sep} ${dir2} (그대로)',
         },
         separator: {

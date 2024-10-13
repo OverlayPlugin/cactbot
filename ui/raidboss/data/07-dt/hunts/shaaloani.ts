@@ -70,26 +70,32 @@ const ttokrroneTempestSandspoutOutputStrings = {
   rear: {
     en: 'rear',
     fr: 'arrière',
+    cn: '后',
   },
   rightFlank: {
     en: 'right flank',
     fr: 'flanc gauche',
+    cn: '右侧',
   },
   leftFlank: {
     en: 'left flank',
     fr: 'flanc droit',
+    cn: '左侧',
   },
   triple: {
     en: '${inOut} + ${dir2} + ${dir3}',
     fr: '${inOut} + ${dir2} + ${dir3}',
+    cn: '${inOut} + ${dir2} + ${dir3}',
   },
   double: {
     en: '${inOut} + ${dir2}',
     fr: '${inOut} + ${dir2}',
+    cn: '${inOut} + ${dir2}',
   },
   awayFrom: {
     en: '${out} + avoid ${dir}',
     fr: '${out} + évitez ${dir}',
+    cn: '${out} + 躲避 ${dir}',
   },
 } as const;
 
@@ -107,14 +113,17 @@ const ttokrroneDustdevilOutputStrings = {
   outOfHitbox: {
     en: 'Out of hitbox + stay out',
     fr: 'Extérieur de la hitbox + restez à l\'extérieur',
+    cn: '判定圈外 + 待在外面',
   },
   rotateFront: {
     en: 'Rotating frontal cleave', // ${dir}'
     fr: 'Cleave frontal tournant',
+    cn: '旋转正面顺劈',
   },
   rotateRear: {
     en: 'Rotating rear cleave', // ${dir}'
     fr: 'Cleave arrière tournant',
+    cn: '旋转背后顺劈',
   },
 } as const;
 
@@ -763,6 +772,7 @@ const triggerSet: TriggerSet<Data> = {
         dodge: {
           en: 'Go to safe side of first dash => move in after',
           fr: 'Allez du côté sûr après le 1er dash => allez à l\'intérieur ensuite',
+          cn: '前往首次冲锋安全区 => 去里面',
         },
       },
     },
@@ -779,6 +789,7 @@ const triggerSet: TriggerSet<Data> = {
         avoidSpheres: {
           en: 'Avoid exploding sand spheres',
           fr: 'Évitez les sphères de sables explosives',
+          cn: '躲避沙球爆炸',
         },
       },
     },
