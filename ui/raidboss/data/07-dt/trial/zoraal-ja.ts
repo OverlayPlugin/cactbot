@@ -259,7 +259,7 @@ const triggerSet: TriggerSet<Data> = {
         dodge: {
           en: 'Dodge expanding swords',
           fr: 'Évitez les épées en expansion',
-          cn: '躲避扩散剑击',
+          cn: '躲避向外步进 AOE',
         },
       },
     },
