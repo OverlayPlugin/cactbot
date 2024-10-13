@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
         dodgeCombo: {
           en: 'Dodge contracting swords (front/back combo after)',
           fr: 'Esquivez les épées combattantes (combo avant/arrière ensuite)',
-          cn: '躲避收缩剑击 (然后前后刀)',
+          cn: '躲避向内步进 AOE (然后前后刀)',
         },
       },
     },
