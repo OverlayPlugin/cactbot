@@ -500,7 +500,7 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Avoid lance zig-zag',
           fr: 'Évitez la lance en zig-zag',
-          cn: '躲避长枪直线 AOE',
+          cn: '躲避长枪折线 AOE',
         },
       },
     },
