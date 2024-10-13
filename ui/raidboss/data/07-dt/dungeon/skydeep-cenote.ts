@@ -277,7 +277,7 @@ const triggerSet: TriggerSet<Data> = {
         dodgeSides: {
           en: 'Avoid AoEs (sides after)',
           fr: 'Évitez les AoE (côtés ensuite)',
-          cn: '远离 AOE (然后去两侧)',
+          cn: '躲 AOE (然后去两侧)',
         },
       },
     },
