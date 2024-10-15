@@ -86,7 +86,7 @@ Options.Triggers.push({
           de: 'Raketen Tether (auf ${player})',
           fr: 'Lien missile sur ${player}',
           ja: '${player}にミサイル',
-          cn: '导弹连线(on ${player})',
+          cn: '导弹连线 ${player}',
           ko: '"${player}" 유도 미사일 대상',
         },
       },
