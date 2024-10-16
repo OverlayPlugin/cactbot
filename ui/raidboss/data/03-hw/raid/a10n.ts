@@ -123,7 +123,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh weg--Laser auf DIR',
           fr: 'Éloignez-vous - Laser sur VOUS',
           ja: '自分にレーザー - 離れて',
-          cn: '出去--激光点名',
+          cn: '出人群，激光点名',
           ko: '멀리 - 선 대상자',
         },
         avoid: {
@@ -131,7 +131,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Weiche dem Markierungs-Laser aus',
           fr: 'Évitez le laser',
           ja: 'レーザーを避ける',
-          cn: '躲避追踪激光',
+          cn: '躲避激光',
           ko: '선 피하기',
         },
       },
