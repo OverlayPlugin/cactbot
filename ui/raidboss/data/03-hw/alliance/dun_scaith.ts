@@ -439,7 +439,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid line AoEs',
           de: 'Weiche den Linien AoEs aus',
           fr: 'Évitez les AoEs en ligne',
-          ja: 'スカアハの正面に立たない', // FIXME
+          ja: '直線AoEを避ける',
           cn: '躲避星状AOE',
           ko: '직선 장판 피하기',
         },

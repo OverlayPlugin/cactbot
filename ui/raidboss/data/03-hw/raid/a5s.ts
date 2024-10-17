@@ -111,7 +111,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'refresh debuff in puddle soon',
           de: 'Debuff in der Fläche bald erneuern',
           fr: 'Rafraîchissez le debuff dans la zone au sol bientôt',
-          ja: 'デバフを癒す', // FIXME
+          ja: '薬でデバフを更新',
           cn: '踩圈刷新debuff',
           ko: '디버프 해제하기',
         },
