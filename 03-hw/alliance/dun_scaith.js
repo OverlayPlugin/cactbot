@@ -31,7 +31,7 @@ Options.Triggers.push({
           de: 'Raus aus den Todeskreisen',
           fr: 'Sortez du cercle de mort',
           ja: 'ヴォイド・デス、外へ',
-          cn: '离开圈内并扯断连线',
+          cn: '远离即死圈（还有一次吸引）',
           ko: '데스 장판 빠져나오기',
         },
       },
@@ -103,6 +103,7 @@ Options.Triggers.push({
       // Deathgaze has two separate casts for this
       // Which one appears to depend on whether it's used alongside Bolt of Darkness
       // Mechanically the handling is the same
+      // FIXME: This is not only a knockback. Players stand too close will take massive damage.
       id: 'Dun Scaith Aero 3',
       type: 'StartsUsing',
       netRegex: { id: ['1C7B', '1C8D'], source: 'Deathgaze Hollow', capture: false },
@@ -218,7 +219,7 @@ Options.Triggers.push({
           de: 'Gehe zu einem Unverbundenen',
           fr: 'Allez sous une Gueule non liée',
           ja: '線のないアトモスに近づく',
-          cn: '靠近无线小怪',
+          cn: '靠近任意无连线小怪',
           ko: '아무 아트모스 근처로',
         },
         avoidAllUntethered: {
@@ -226,7 +227,7 @@ Options.Triggers.push({
           de: 'Vermeide alle Unverbundenen',
           fr: 'Évitez toutes les Gueules non liées',
           ja: '線のないアトモスから離れる',
-          cn: '远离无线小怪',
+          cn: '远离所有无连线小怪',
           ko: '모든 아트모스 피하기',
         },
         goToUntetheredBlue: {
@@ -234,7 +235,7 @@ Options.Triggers.push({
           de: 'Gehe zu dem nicht verbundenen blauem Atomos',
           fr: 'Allez sous une Gueule bleue non liée',
           ja: '線のない青色アトモスに近づく',
-          cn: '靠近蓝色小怪',
+          cn: '靠近无连线蓝色小怪',
           ko: '파란 아트모스로 이동',
         },
         goToUntetheredYellow: {
@@ -242,7 +243,7 @@ Options.Triggers.push({
           de: 'Gehe zu dem nicht verbundenen gelben Atomos',
           fr: 'Allez sous une Gueule jaune non liée',
           ja: '線のない黄色アトモスに近づく',
-          cn: '靠近黄色小怪',
+          cn: '靠近无连线黄色小怪',
           ko: '노란 아트모스로 이동',
         },
         avoidUntetheredBlue: {
@@ -250,7 +251,7 @@ Options.Triggers.push({
           de: 'Weiche dem nicht verbundenen blauem Atomos aus',
           fr: 'Évitez une Gueule bleue non liée',
           ja: '線のない青色アトモスから離れる',
-          cn: '远离蓝色小怪',
+          cn: '远离无连线蓝色小怪',
           ko: '파란 아트모스 피하기',
         },
         avoidUntetheredYellow: {
@@ -258,7 +259,7 @@ Options.Triggers.push({
           de: 'Weiche dem nicht verbundenen gelben Atomos aus',
           fr: 'Évitez une Gueule jaune non liée',
           ja: '線のない黄色アトモスから離れる',
-          cn: '远离黄色小怪',
+          cn: '远离无连线黄色小怪',
           ko: '노란 아트모스 피하기',
         },
       },
@@ -285,7 +286,7 @@ Options.Triggers.push({
           de: 'Flächen ausweichen',
           fr: 'Évitez les zones au sol',
           ja: '円範囲攻撃、避ける',
-          cn: '离开圈圈',
+          cn: '躲避扩大AOE',
           ko: '장판 피하기',
         },
       },
@@ -365,7 +366,7 @@ Options.Triggers.push({
           de: 'Weiche den Bit AoEs aus',
           fr: 'Évitez les AoE des forets',
           ja: 'AoEを避ける',
-          cn: '躲避小型AOE',
+          cn: '躲避浮游炮AOE',
           ko: '비트 장판 피하기',
         },
       },
@@ -401,7 +402,7 @@ Options.Triggers.push({
           de: 'Weiche den Armschlägen aus',
           fr: 'Évitez les claques de bras',
           ja: '影の手を避ける',
-          cn: '站在boss背后方向',
+          cn: '避开影之手方向',
           ko: '날개 피하기',
         },
       },
@@ -423,8 +424,8 @@ Options.Triggers.push({
           en: 'Avoid line AoEs',
           de: 'Weiche den Linien AoEs aus',
           fr: 'Évitez les AoEs en ligne',
-          ja: 'スカアハの正面に立たない',
-          cn: '躲开boss正面路线',
+          ja: '直線AoEを避ける',
+          cn: '躲避星状AOE',
           ko: '직선 장판 피하기',
         },
       },
@@ -465,6 +466,8 @@ Options.Triggers.push({
       },
     },
     {
+      // FIXME: Connla Spawn with a proximity damage, not normal AOE.
+      // Also, it will gain damage increase when close to Scathach.
       id: 'Dun Scaith Connla Spawn',
       type: 'StartsUsing',
       netRegex: { id: '1CD1', source: 'Connla', capture: false },
@@ -475,7 +478,7 @@ Options.Triggers.push({
           de: 'Weiche AoE aus, besiege Connla',
           fr: 'Évitez les AoE, tuez Connla',
           ja: 'AoEを避け、コンラを倒す',
-          cn: '躲避AOE后击杀康拉',
+          cn: '远离衰减AOE，拉开并击杀康拉',
           ko: '장판 피하고 콘라 처치',
         },
       },
@@ -520,6 +523,8 @@ Options.Triggers.push({
       response: Responses.lookAway(),
     },
     {
+      // FIXME: This is a buff that prevent boss from stun to avoid interuption of next action.
+      // Due to the increase of player damage, it almost only cast before Ruinous Omen.
       id: 'Dun Scaith Noctoshield',
       type: 'GainsEffect',
       netRegex: { target: 'Diabolos', effectId: '1AA', capture: false },
@@ -531,7 +536,7 @@ Options.Triggers.push({
           de: 'Harter Hit vom Boss - Schild/Milderung',
           fr: 'Le boss frappe fort - Bouclier/Mitigation',
           ja: '大ダメージ物理タンクバスター - ダメージ軽減/バリア',
-          cn: 'MT大伤害物理死刑—注意减伤/治疗盾',
+          cn: '高伤害AOE，注意减伤/治疗盾',
           ko: '탱커버스터 - 뎀감/보호막',
         },
       },
@@ -581,7 +586,7 @@ Options.Triggers.push({
           de: 'Blick-Sammeln auf DIR',
           fr: 'Package sur VOUS',
           ja: '自分に頭割り',
-          cn: '点名分摊',
+          cn: '分摊点名',
           ko: '시선 쉐어 대상자',
         },
         stackOnAndLookAway: {
