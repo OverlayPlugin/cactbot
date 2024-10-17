@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./ui",
+    "./types",
+    "./resources",
+    "./util",
+    "./test",
+    "./webpack",
+    "./user",
+    "./.github/scripts",
+    "./eslint",
+    "./.eslintrc.cjs",
+    "./.mocharc.cjs"
+  ],
+  "exclude": [
+    "./dist"
+  ]
+}
