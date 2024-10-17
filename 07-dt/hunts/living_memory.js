@@ -98,6 +98,7 @@ Options.Triggers.push({
           en: 'Stack (face toward target)',
           fr: 'Pack (regardez la cible)',
           cn: '分摊 (面向目标)',
+          ko: '쉐어 (대상 바라보기)',
         },
       },
     },
