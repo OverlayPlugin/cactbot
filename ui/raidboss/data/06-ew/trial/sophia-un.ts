@@ -115,7 +115,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ansturm-Angriff ausweichen',
           fr: 'Évitez l\'attaque Charge',
           ja: '突進回避',
-          cn: '躲避击飞',
+          cn: '躲避冲锋',
           ko: '돌진 공격 피하기',
         },
       },

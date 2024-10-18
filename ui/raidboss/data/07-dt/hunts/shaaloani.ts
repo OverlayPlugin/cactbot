@@ -71,31 +71,37 @@ const ttokrroneTempestSandspoutOutputStrings = {
     en: 'rear',
     fr: 'arrière',
     cn: '后',
+    ko: '후방',
   },
   rightFlank: {
     en: 'right flank',
     fr: 'flanc gauche',
     cn: '右侧',
+    ko: '오른쪽 측면',
   },
   leftFlank: {
     en: 'left flank',
     fr: 'flanc droit',
     cn: '左侧',
+    ko: '왼쪽 측면',
   },
   triple: {
     en: '${inOut} + ${dir2} + ${dir3}',
     fr: '${inOut} + ${dir2} + ${dir3}',
     cn: '${inOut} + ${dir2} + ${dir3}',
+    ko: '${inOut} + ${dir2} + ${dir3}',
   },
   double: {
     en: '${inOut} + ${dir2}',
     fr: '${inOut} + ${dir2}',
     cn: '${inOut} + ${dir2}',
+    ko: '${inOut} + ${dir2}',
   },
   awayFrom: {
     en: '${out} + avoid ${dir}',
     fr: '${out} + évitez ${dir}',
     cn: '${out} + 躲避 ${dir}',
+    ko: '${out} + ${dir} 피하기',
   },
 } as const;
 
@@ -114,16 +120,19 @@ const ttokrroneDustdevilOutputStrings = {
     en: 'Out of hitbox + stay out',
     fr: 'Extérieur de la hitbox + restez à l\'extérieur',
     cn: '判定圈外 + 待在外面',
+    ko: '히트박스 밖으로 + 밖에 있기',
   },
   rotateFront: {
     en: 'Rotating frontal cleave', // ${dir}'
     fr: 'Cleave frontal tournant',
     cn: '旋转正面顺劈',
+    ko: '전방 회전 장판',
   },
   rotateRear: {
     en: 'Rotating rear cleave', // ${dir}'
     fr: 'Cleave arrière tournant',
     cn: '旋转背后顺劈',
+    ko: '후방 회전 장판',
   },
 } as const;
 
@@ -773,6 +782,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Go to safe side of first dash => move in after',
           fr: 'Allez du côté sûr après le 1er dash => allez à l\'intérieur ensuite',
           cn: '前往首次冲锋安全区 => 去里面',
+          ko: '첫 돌진의 안전지대로 이동 => 그 후 첫 돌진 자리로',
         },
       },
     },
@@ -790,6 +800,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid exploding sand spheres',
           fr: 'Évitez les sphères de sables explosives',
           cn: '躲避沙球爆炸',
+          ko: '폭발하는 모래구체 피하기',
         },
       },
     },

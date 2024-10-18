@@ -21,7 +21,7 @@ const triggerSet: TriggerSet<Data> = {
   ],
   triggers: [
     {
-      id: 'A4S Discord Marker',
+      id: 'A4S Discoid Marker',
       type: 'HeadMarker',
       netRegex: { id: '00AE' },
       alertText: (data, matches, output) => {
@@ -88,7 +88,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Laser Verbindungen',
           fr: 'Liens laser',
           ja: 'レーザー線',
-          cn: '镭射连线',
+          cn: '激光连线',
           ko: '레이저 선',
         },
       },
