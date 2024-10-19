@@ -185,7 +185,8 @@ Options.Triggers.push({
       replicas: {},
       mustardBombTargets: [],
       kindlingCauldronTargets: [],
-      twilightSafe: Directions.outputIntercardDir,
+      twilightSafeFirst: Directions.outputIntercardDir,
+      twilightSafeSecond: Directions.outputIntercardDir,
       replicaCleaveCount: 0,
       sunriseCannons: [],
       seenFirstSunrise: false,
@@ -1260,48 +1261,69 @@ Options.Triggers.push({
     },
     // Twilight Sabbath
     {
-      id: 'R4S Wicked Fire',
-      type: 'StartsUsing',
-      netRegex: { id: '9630', source: 'Wicked Thunder', capture: false },
-      infoText: (_data, _matches, output) => output.bait(),
-      outputStrings: {
-        bait: Outputs.baitPuddles,
-      },
-    },
-    {
       id: 'R4S Twilight Sabbath Sidewise Spark',
-      type: 'GainsEffect',
-      // count: 319 - add cleaves to its right, 31A - add cleaves to its left
-      netRegex: { effectId: '808', count: ['319', '31A'] },
+      type: 'ActorControlExtra',
+      // category: 0197 - PlayActionTimeline
+      // param1: 11D6 - first,  right cleave
+      // param1: 11D7 - second, right cleave
+      // param1: 11D8 - first,  left cleave
+      // param1: 11D9 - second, left cleave
+      netRegex: { category: '0197', param1: ['11D6', '11D7', '11D8', '11D9'] },
       condition: (data) => data.phase === 'twilight',
+      // delay 0.1s to prevent out-of-order line issues
+      delaySeconds: 0.1,
+      durationSeconds: 9,
       alertText: (data, matches, output) => {
         data.replicaCleaveCount++;
-        const dir = data.replicas[matches.targetId]?.location;
+        const dir = data.replicas[matches.id]?.location;
         if (dir === undefined || !isCardinalDir(dir))
           return;
-        const cleaveDir = matches.count === '319' ? 'right' : 'left';
+        const cleaveDir = ['11D6', '11D7'].includes(matches.param1) ? 'right' : 'left';
         const unsafeDirs = replicaCleaveUnsafeMap[dir][cleaveDir];
-        data.twilightSafe = data.twilightSafe.filter((d) => !unsafeDirs.includes(d));
-        if (data.replicaCleaveCount !== 2)
-          return;
-        const [safe0] = data.twilightSafe;
-        if (safe0 === undefined)
-          return;
-        // on the first combo, set the second safe spot to unknown, and return the first safe spot
-        // for second combo, just store the safe spot for a combined call with Wicked Special
-        if (!data.secondTwilightCleaveSafe) {
-          data.secondTwilightCleaveSafe = 'unknown';
-          return output[safe0]();
+        const firstSet = ['11D6', '11D8'].includes(matches.param1);
+        if (firstSet) {
+          data.twilightSafeFirst = data.twilightSafeFirst.filter((d) => !unsafeDirs.includes(d));
+        } else {
+          data.twilightSafeSecond = data.twilightSafeSecond.filter((d) => !unsafeDirs.includes(d));
         }
-        data.secondTwilightCleaveSafe = safe0;
+        // Once we have all four accounted for, set our second spot for use in Wicked Special combo,
+        // and then return our first safe spot
+        if (data.replicaCleaveCount !== 4)
+          return;
+        const [safeSecond] = data.twilightSafeSecond;
+        data.secondTwilightCleaveSafe = safeSecond;
+        if (data.secondTwilightCleaveSafe === undefined) {
+          data.secondTwilightCleaveSafe = 'unknown';
+        }
+        const [safeFirst] = data.twilightSafeFirst;
+        // If we couldn't find the first safe spot, at least remind players to bait puddles
+        if (safeFirst === undefined)
+          return output.bait();
+        return output.combo({
+          bait: output.bait(),
+          dir1: output[safeFirst](),
+          dir2: output[data.secondTwilightCleaveSafe](),
+        });
       },
       run: (data) => {
-        if (data.replicaCleaveCount !== 2)
+        if (data.replicaCleaveCount !== 4)
           return;
         data.replicaCleaveCount = 0;
-        data.twilightSafe = Directions.outputIntercardDir;
+        data.twilightSafeFirst = Directions.outputIntercardDir;
+        data.twilightSafeSecond = Directions.outputIntercardDir;
       },
-      outputStrings: Directions.outputStringsIntercardDir,
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        bait: Outputs.baitPuddles,
+        combo: {
+          en: '${bait} => ${dir1} => ${dir2}',
+          de: '${bait} => ${dir1} => ${dir2}',
+          fr: '${bait} => ${dir1} => ${dir2}',
+          ja: '${bait} => ${dir1} => ${dir2}',
+          cn: '${bait} => ${dir1} => ${dir2}',
+          ko: '${bait} => ${dir1} => ${dir2}',
+        },
+      },
     },
     {
       id: 'R4S Twilight Sabbath + Wicked Special',
