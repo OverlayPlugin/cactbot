@@ -22,6 +22,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 type Phase = 'door' | 'crosstail' | 'twilight' | 'midnight' | 'sunrise';
 
 type NearFar = 'near' | 'far'; // wherever you are...
+type RoleBait = 'tank' | 'healer' | 'melee' | 'ranged';
 type InOut = 'in' | 'out';
 type NorthSouth = 'north' | 'south';
 type LeftRight = 'left' | 'right';
@@ -153,6 +154,18 @@ const witchHuntAlertOutputStrings = {
     cn: '引导远 (小队近)',
     ko: '멀리 유도 (본대 가까이)',
   },
+  tanksNear: {
+    en: 'Tanks Close (Party Far)',
+  },
+  healersFar: {
+    en: 'Healers Far (Party Close)',
+  },
+  meleeNear: {
+    en: 'Melee Close (Party Far)',
+  },
+  rangedFar: {
+    en: 'Ranged Far (Party Close)',
+  },
   combo: {
     en: '${inOut} => ${bait}',
     de: '${inOut} => ${bait}',
@@ -227,7 +240,96 @@ const swordQuiverOutputStrings = {
   },
 } as const;
 
+const conductorCurrentStringsNoStrat = {
+  remoteCurrent: {
+    en: 'Far Cone on You',
+    de: 'Fern-Kegel auf DIR',
+    fr: 'Cône éloigné sur Vous',
+    ja: '自分から遠い人に扇範囲',
+    cn: '远雷点名',
+    ko: '원거리 화살표 대상자',
+  },
+  proximateCurrent: {
+    en: 'Near Cone on You',
+    de: 'Nah-Kegel auf DIR',
+    fr: 'Cône proche sur Vous',
+    ja: '自分から近い人に扇範囲',
+    cn: '近雷点名',
+    ko: '근거리 화살표 대상자',
+  },
+  spinningConductorSupport: {
+    en: 'Small AoE on You',
+    de: 'Kleine AoE auf DIR',
+    fr: 'Petite AoE sur Vous',
+    ja: '自分に小さい円範囲',
+    cn: '小钢铁点名',
+    ko: '작은 원형징 대상자',
+  },
+  spinningConductorDPS: {
+    en: 'Small AoE on You',
+    de: 'Kleine AoE auf DIR',
+    fr: 'Petite AoE sur Vous',
+    ja: '自分に小さい円範囲',
+    cn: '小钢铁点名',
+    ko: '작은 원형징 대상자',
+  },
+  roundhouseConductorSupport: {
+    en: 'Donut AoE on You',
+    de: 'Donut AoE auf DIR',
+    fr: 'Donut sur Vous',
+    ja: '自分にドーナツ範囲',
+    cn: '月环点名',
+    ko: '도넛징 대상자',
+  },
+  roundhouseConductorDPS: {
+    en: 'Donut AoE on You',
+    de: 'Donut AoE auf DIR',
+    fr: 'Donut sur Vous',
+    ja: '自分にドーナツ範囲',
+    cn: '月环点名',
+    ko: '도넛징 대상자',
+  },
+  colliderConductor: {
+    en: 'Get Hit by Cone',
+    de: 'Werde vom Kegel getroffen',
+    fr: 'Encaissez un cône',
+    ja: '扇範囲に当たって',
+    cn: '吃雷',
+    ko: '화살표 장판 맞기',
+  },
+} as const;
+
+const conductorCurrentStringsDNStrat = {
+  remoteCurrent: {
+    en: 'Front of Middle (Far Cone)',
+  },
+  proximateCurrent: {
+    en: 'Front of Middle (Near Cone)',
+  },
+  spinningConductorSupport: {
+    en: 'Front Left (Small AoE)',
+  },
+  spinningConductorDPS: {
+    en: 'Front Right (Small AoE)',
+  },
+  roundhouseConductorSupport: {
+    en: 'Front Left (Donut AoE)',
+  },
+  roundhouseConductorDPS: {
+    en: 'Front Right (Donut AoE)',
+  },
+  colliderConductor: {
+    en: 'Middle, Behind Current (Get Hit by Cone)',
+  },
+} as const;
+
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    ionCluster: 'none' | 'DN';
+    witchHunt: 'none' | 'DN';
+    sunrise: 'none' | 'snakePrio';
+    sunriseUptime: true | false;
+  };
   phase: Phase;
   // Phase 1
   bewitchingBurstSafe?: InOut;
@@ -276,6 +378,81 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'AacLightHeavyweightM4Savage',
   zoneId: ZoneId.AacLightHeavyweightM4Savage,
+  config: [
+    {
+      id: 'ionCluster',
+      name: {
+        en: 'Ion Cluster Debuff Strategy',
+      },
+      comment: {
+        en: `Strategy for resolving debuffs during Ion Cluster.
+
+             None: Call the debuff only, no strategy.
+             DN: use rivet positions based on the shabin pastebin.`,
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None': 'none',
+          'DN': 'DN',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'witchHunt',
+      name: {
+        en: 'Witch Hunt Bait Strategy',
+      },
+      comment: {
+        en: `Strategy for baiting Witch Hunt AoEs.<br>
+             None: Call both party and bait positions with no specific strategy.<br>
+             DN: DN uptime strategy, with flexible priority where Tanks take the first near bait,
+             Healers take the first far bait, Melee DPS take the second near bait, and finally
+             Ranged DPS take the second far bait.`,
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None': 'none',
+          'DN': 'DN',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'sunrise',
+      name: {
+        en: 'Sunrise Sabbath Strategy',
+      },
+      comment: {
+        en: `Strategy for resolving Sunrise Sabbath.<br>
+             None: Call debuffs, both tower spawns, and matching towers.<br>
+             Snakes Prio: Popular priority system used in NA PF. Support players
+             start looking for tower or cannon from the northwest going counter clockwise.
+             DPS players look for tower or cannon from the north going clockwise.`,
+      },
+      type: 'select',
+      options: {
+        en: {
+          'None': 'none',
+          'Snakes Prio': 'snakePrio',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'sunriseUptime',
+      name: {
+        en: 'Sunrise Sabbath Uptime Cannon Baits',
+      },
+      comment: {
+        en: 'Call cannon baits assuming the AutoCAD waymark uptime cannon bait spots.',
+      },
+      type: 'checkbox',
+      default: false,
+    },
+  ],
   timelineFile: 'r4s.txt',
   initData: () => {
     return {
@@ -539,11 +716,21 @@ const triggerSet: TriggerSet<Data> = {
         data.witchHuntAoESafe = aoeOrder[0];
 
         // assumes Near first; if Far first, just reverse
-        let baitOrder: NearFar[] = ['near', 'far', 'near', 'far'];
-        if (data.witchHuntBait === undefined)
+        let baitOrder: (NearFar | RoleBait)[];
+
+        if (data.witchHuntBait === 'near') {
+          if (data.triggerSetConfig.witchHunt === 'DN')
+            baitOrder = ['tank', 'healer', 'melee', 'ranged'];
+          else
+            baitOrder = ['near', 'far', 'near', 'far'];
+        } else if (data.witchHuntBait === 'far') {
+          if (data.triggerSetConfig.witchHunt === 'DN')
+            baitOrder = ['healer', 'tank', 'ranged', 'melee'];
+          else
+            baitOrder = ['far', 'near', 'far', 'near'];
+        } else {
           baitOrder = [];
-        else if (data.witchHuntBait === 'far')
-          baitOrder = baitOrder.reverse();
+        }
 
         const baits: string[] = [];
         for (let i = 0; i < aoeOrder.length; ++i) {
@@ -585,6 +772,18 @@ const triggerSet: TriggerSet<Data> = {
           ja: '離れる',
           cn: '远',
           ko: '멀리',
+        },
+        tank: {
+          en: 'Tanks',
+        },
+        healer: {
+          en: 'Healers',
+        },
+        melee: {
+          en: 'Melee',
+        },
+        ranged: {
+          en: 'Ranged',
         },
         separator: {
           en: ' => ',
@@ -631,7 +830,22 @@ const triggerSet: TriggerSet<Data> = {
         if (data.witchHuntBait !== undefined)
           data.witchHuntBait = data.witchHuntBait === 'near' ? 'far' : 'near';
 
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Tanks take the first near bait
+          if (bait === 'near')
+            return 'tanksNear';
+
+          // DN Strat: Healers take the first far bait
+          if (bait === 'far')
+            return 'healersFar';
+
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
@@ -651,7 +865,22 @@ const triggerSet: TriggerSet<Data> = {
         if (data.witchHuntBait !== undefined)
           data.witchHuntBait = data.witchHuntBait === 'near' ? 'far' : 'near';
 
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Tanks take the first near bait
+          if (bait === 'near')
+            return 'tanksNear';
+
+          // DN Strat: Healers take the first far bait
+          if (bait === 'far')
+            return 'healersFar';
+
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
@@ -671,7 +900,22 @@ const triggerSet: TriggerSet<Data> = {
         if (data.witchHuntBait !== undefined)
           data.witchHuntBait = data.witchHuntBait === 'near' ? 'far' : 'near';
 
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Melee take the second near bait
+          if (bait === 'near')
+            return 'meleeNear';
+
+          // DN Strat: Ranged take the second far bait
+          if (bait === 'far')
+            return 'rangedFar';
+
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
@@ -684,7 +928,23 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         const inOut = data.witchHuntAoESafe ?? output.unknown!();
         const bait = data.witchHuntBait ?? output.unknown!();
-        return output.combo!({ inOut: output[inOut]!(), bait: output[bait]!() });
+
+        const spot = () => {
+          if (data.triggerSetConfig.witchHunt === 'none')
+            return bait;
+
+          // DN Strat: Melee take the second near bait
+          if (bait === 'near')
+            return 'meleeNear';
+
+          // DN Strat: Ranged take the second far bait
+          if (bait === 'far')
+            return 'rangedFar';
+
+          return bait;
+        };
+
+        return output.combo!({ inOut: output[inOut]!(), bait: output[spot()]!() });
       },
       outputStrings: witchHuntAlertOutputStrings,
     },
@@ -1087,63 +1347,29 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['FA2', 'FA3', 'FA4', 'FA5', 'FA6'] },
       condition: Conditions.targetIsYou(),
       durationSeconds: 5,
-      alertText: (_data, matches, output) => {
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = data.triggerSetConfig.ionCluster === 'DN'
+          ? conductorCurrentStringsDNStrat
+          : conductorCurrentStringsNoStrat;
         switch (matches.effectId) {
           case 'FA2':
-            return output.remoteCurrent!();
+            return { alertText: output.remoteCurrent!() };
           case 'FA3':
-            return output.proximateCurrent!();
+            return { alertText: output.proximateCurrent!() };
           case 'FA4':
-            return output.spinningConductor!();
+            if (data.role === 'tank' || data.role === 'healer')
+              return { alertText: output.spinningConductorSupport!() };
+            return { alertText: output.spinningConductorDPS!() };
           case 'FA5':
-            return output.roundhouseConductor!();
+            if (data.role === 'tank' || data.role === 'healer')
+              return { alertText: output.roundhouseConductorSupport!() };
+            return { alertText: output.roundhouseConductorDPS!() };
           case 'FA6':
-            return output.colliderConductor!();
+            return { alertText: output.colliderConductor!() };
         }
       },
       run: (data) => data.seenConductorDebuffs = true,
-      outputStrings: {
-        remoteCurrent: {
-          en: 'Far Cone on You',
-          de: 'Fern-Kegel auf DIR',
-          fr: 'Cône éloigné sur Vous',
-          ja: '自分から遠い人に扇範囲',
-          cn: '远雷点名',
-          ko: '원거리 화살표 대상자',
-        },
-        proximateCurrent: {
-          en: 'Near Cone on You',
-          de: 'Nah-Kegel auf DIR',
-          fr: 'Cône proche sur Vous',
-          ja: '自分から近い人に扇範囲',
-          cn: '近雷点名',
-          ko: '근거리 화살표 대상자',
-        },
-        spinningConductor: {
-          en: 'Small AoE on You',
-          de: 'Kleine AoE auf DIR',
-          fr: 'Petite AoE sur Vous',
-          ja: '自分に小さい円範囲',
-          cn: '小钢铁点名',
-          ko: '작은 원형징 대상자',
-        },
-        roundhouseConductor: {
-          en: 'Donut AoE on You',
-          de: 'Donut AoE auf DIR',
-          fr: 'Donut sur Vous',
-          ja: '自分にドーナツ範囲',
-          cn: '月环点名',
-          ko: '도넛징 대상자',
-        },
-        colliderConductor: {
-          en: 'Get Hit by Cone',
-          de: 'Werde vom Kegel getroffen',
-          fr: 'Encaissez un cône',
-          ja: '扇範囲に当たって',
-          cn: '吃雷',
-          ko: '화살표 장판 맞기',
-        },
-      },
     },
 
     // Fulminous Field
@@ -1968,19 +2194,67 @@ const triggerSet: TriggerSet<Data> = {
         // in outputStrings; see #266 for more info
         let towerSoakStr = output['unknown']!();
         let cannonBaitStr = output['unknown']!();
+        let cannonBaitSpots = undefined;
 
         if (data.sunriseTowerSpots !== undefined) {
-          towerSoakStr = output[data.sunriseTowerSpots]!();
-          cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
-            ? output.eastWest!()
-            : output.northSouth!();
+          if (data.triggerSetConfig.sunrise === 'snakePrio') {
+            if (data.sunriseTowerSpots === 'northSouth') {
+              towerSoakStr = data.role === 'dps'
+                ? output['dirN']!()
+                : output['dirS']!();
+            } else {
+              towerSoakStr = data.role === 'dps'
+                ? output['dirE']!()
+                : output['dirW']!();
+            }
+          } else {
+            towerSoakStr = output[data.sunriseTowerSpots]!();
+          }
+          if (data.triggerSetConfig.sunriseUptime) {
+            cannonBaitSpots = data.sunriseTowerSpots;
+            cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
+              ? output.northSouth!()
+              : output.eastWest!();
+          } else {
+            cannonBaitSpots = data.sunriseTowerSpots === 'northSouth'
+              ? 'eastWest'
+              : 'northSouth';
+            cannonBaitStr = data.sunriseTowerSpots === 'northSouth'
+              ? output.eastWest!()
+              : output.northSouth!();
+          }
         }
 
         if (task === 'yellowShort' || task === 'blueShort') {
           const cannonLocs = task === 'yellowShort' ? blueCannons : yellowCannons;
-          const locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
-          return output[task]!({ loc: locStr, bait: cannonBaitStr });
+          let locStr = output['unknown']!();
+
+          if (data.triggerSetConfig.sunrise === 'snakePrio') {
+            const dpsPrio: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW'];
+            const supPrio: DirectionOutputIntercard[] = ['dirNW', 'dirSW', 'dirSE'];
+            const cannonPrio = data.role === 'dps' ? dpsPrio : supPrio;
+            const cannon = cannonPrio.find((loc) => cannonLocs.includes(loc));
+            locStr = cannon ? output[cannon]!() : output['unknown']!();
+            if (cannonBaitSpots === 'northSouth') {
+              cannonBaitStr = cannon === 'dirNE' || cannon === 'dirNW'
+                ? output['dirN']!()
+                : output['dirS']!();
+            } else if (cannonBaitSpots === 'eastWest') {
+              cannonBaitStr = cannon === 'dirNE' || cannon === 'dirSE'
+                ? output['dirE']!()
+                : output['dirW']!();
+            }
+          } else {
+            locStr = cannonLocs.map((loc) => output[loc]!()).join('/');
+          }
+
+          const finalBaitStr = data.triggerSetConfig.sunriseUptime
+            ? output.baitUptime!({ bait: cannonBaitStr })
+            : output.baitNormal!({ bait: cannonBaitStr });
+
+          return output[task]!({ loc: locStr, bait: finalBaitStr });
         }
+
         return output[task]!({ bait: towerSoakStr });
       },
       run: (data) => {
@@ -1989,7 +2263,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.sunriseTowerSpots;
       },
       outputStrings: {
-        ...Directions.outputStringsIntercardDir,
+        ...Directions.outputStrings8Dir,
         northSouth: {
           en: 'N/S',
           de: 'N/S',
@@ -2022,21 +2296,27 @@ const triggerSet: TriggerSet<Data> = {
           cn: '踩塔 (${bait})',
           ko: '기둥 밟기 (${bait})',
         },
+        baitNormal: {
+          en: 'Point ${bait}',
+        },
+        baitUptime: {
+          en: 'Stand ${bait} side',
+        },
         yellowShort: {
-          en: 'Blue Cannon (${loc}) - Point ${bait}',
-          de: 'Blaue Kanone (${loc}) - Richte nach ${bait}',
-          fr: 'Canon bleu ${loc}) - Pointez ${bait}',
+          en: 'Blue Cannon (${loc}) - ${bait}',
+          de: 'Blaue Kanone (${loc}) - ${bait}',
+          fr: 'Canon bleu ${loc}) - ${bait}',
           ja: '青いビーム誘導 (${loc}) - ${bait}',
-          cn: '蓝激光 (${loc}) - 打向 ${bait}',
-          ko: '파란 레이저 (${loc}) - ${bait}쪽으로',
+          cn: '蓝激光 (${loc}) - ${bait}',
+          ko: '파란 레이저 (${loc}) - ${bait}',
         },
         blueShort: {
           en: 'Yellow Cannon (${loc}) - Point ${bait}',
-          de: 'Gelbe Kanone (${loc}) - Richte nach ${bait}',
-          fr: 'Canon jaune ${loc}) - Pointez ${bait}',
+          de: 'Gelbe Kanone (${loc}) - ${bait}',
+          fr: 'Canon jaune ${loc}) - ${bait}',
           ja: '黄色いビーム誘導 (${loc}) - ${bait}',
-          cn: '黄激光 (${loc}) - 打向 ${bait}',
-          ko: '노란 레이저 (${loc}) - ${bait}쪽으로',
+          cn: '黄激光 (${loc}) - ${bait}',
+          ko: '노란 레이저 (${loc}) - ${bait}',
         },
       },
     },
