@@ -432,7 +432,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shockwave': '冲击波',
         '\\(cast\\)': '(咏唱)',
         '\\(damage\\)': '(伤害)',
-        '\\(hits\\)': '(撞击)',
+        '\\(hits\\)': '(命中)',
         '\\(jump\\)': '(跳)',
         '\\(telegraphs\\)': '(预兆)',
       },
