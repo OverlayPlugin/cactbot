@@ -52,7 +52,9 @@
     "./resources",
     "./util",
     "./test",
-    "./webpack"
+    "./webpack",
+    "./vite",
+    "./vite.config.ts"
   ],
   "exclude": [
     "./eslint",
