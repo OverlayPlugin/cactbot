@@ -1611,7 +1611,7 @@ const data: HuntMap = {
   'Sally the Sweeper': {
     'id': '13435',
     'name': {
-      'cn': '清除者萨利',
+      'cn': '清扫者萨莉',
       'de': [
         'Sally der Fegerin',
         'Sally die Fegerin',

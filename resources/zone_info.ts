@@ -9370,6 +9370,7 @@ const data: ZoneInfoType = {
       'en': 'Memory of Embers',
       'fr': 'Flammes primordiales',
       'ja': '炎影の旅路',
+      'ko': '염영의 여로',
     },
     'offsetX': 0,
     'offsetY': 0,
@@ -10012,6 +10013,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 轻量级1',
       'de': 'Arkadion - Halbschwergewicht R1',
       'en': 'AAC Light-heavyweight M1',
       'fr': 'Poids mi-lourds CCA - match 1',
@@ -10040,6 +10042,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 轻量级2',
       'de': 'Arkadion - Halbschwergewicht R2',
       'en': 'AAC Light-heavyweight M2',
       'fr': 'Poids mi-lourds CCA - match 2',
@@ -10068,6 +10071,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 轻量级3',
       'de': 'Arkadion - Halbschwergewicht R3',
       'en': 'AAC Light-heavyweight M3',
       'fr': 'Poids mi-lourds CCA - match 3',
@@ -10096,6 +10100,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 轻量级4',
       'de': 'Arkadion - Halbschwergewicht R4',
       'en': 'AAC Light-heavyweight M4',
       'fr': 'Poids mi-lourds CCA - match 4',
