@@ -1,7 +1,7 @@
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
-import { Directions } from '../../../../../resources/util';
+import { DirectionOutput8, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
@@ -23,10 +23,14 @@ type B9AMapKeys = keyof typeof effectB9AMap;
 type B9AMapValues = typeof effectB9AMap[B9AMapKeys];
 
 const directionOutputStrings = {
-  ...Directions.outputStringsCardinalDir,
+  ...Directions.outputStrings8Dir,
   unknown: Outputs.unknown,
   goLeft: Outputs.left,
   goRight: Outputs.right,
+  stay: {
+    en: 'Stay',
+  },
+  num2: Outputs.num2,
   separator: {
     en: ' => ',
     de: ' => ',
@@ -34,6 +38,17 @@ const directionOutputStrings = {
     ja: ' => ',
     cn: ' => ',
     ko: ' => ',
+  },
+  intercardStay: {
+    en: '${dir} => Stay',
+  },
+  numHits: {
+    en: '${dir} x${num}',
+    de: '${dir} x${num}',
+    fr: '${dir} x${num}',
+    ja: '${dir} x${num}',
+    cn: '${dir} x${num}',
+    ko: '${dir} x${num}',
   },
   combo: {
     en: '${dirs}',
@@ -45,16 +60,18 @@ const directionOutputStrings = {
   },
 } as const;
 
+type StoredCleave = {
+  id: number;
+  dir: 'left' | 'right';
+};
+
 export interface Data extends RaidbossData {
   expectedBlasts: 0 | 3 | 4 | 5;
   storedBlasts: B9AMapValues[];
   // expectedCleaves is either 1 or 5, due to the amount of time between the first
   // and second clone cleaves at the start of the encounter
   expectedCleaves: 1 | 5;
-  storedCleaves: {
-    id: number;
-    dir: 'left' | 'right';
-  }[];
+  storedCleaves: StoredCleave[];
   actors: PluginCombatantState[];
   sidewiseSparkCounter: number;
   storedWitchHuntCast?: NetMatches['StartsUsingExtra'];
@@ -76,6 +93,39 @@ const isEffectB9AValue = (value: string | undefined): value is B9AMapValues => {
   if (value === undefined)
     return false;
   return Object.values<string>(effectB9AMap).includes(value);
+};
+
+const getCleaveDirs = (
+  actors: PluginCombatantState[],
+  storedCleaves: StoredCleave[],
+): DirectionOutput8[] => {
+  const dirs: DirectionOutput8[] = storedCleaves.map((entry) => {
+    const actor = actors.find((actor) => actor.ID === entry.id);
+    if (actor === undefined)
+      return 'unknown';
+    const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
+    const offset = entry.dir === 'left' ? 1 : -1;
+    return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
+  });
+
+  if (dirs.length === 1)
+    return dirs;
+
+  // Check if all directions lead to the same intercard. If so, there's no
+  // reason to call a sequence. We don't need to check the cardinals,
+  // because it will only be true either when there is exactly one element,
+  // or in the extremely unlikely event that every clone pointed in the same
+  // direction.
+  if (dirs.every((dir) => ['dirN', 'dirE'].includes(dir)))
+    return ['dirNE'];
+  if (dirs.every((dir) => ['dirS', 'dirE'].includes(dir)))
+    return ['dirSE'];
+  if (dirs.every((dir) => ['dirS', 'dirW'].includes(dir)))
+    return ['dirSW'];
+  if (dirs.every((dir) => ['dirN', 'dirW'].includes(dir)))
+    return ['dirNW'];
+
+  return dirs;
 };
 
 const npcYellData = {
@@ -190,16 +240,14 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 7.3,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const dirs = data.storedCleaves.map((entry) => {
-          const actor = data.actors.find((actor) => actor.ID === entry.id);
-          if (actor === undefined)
-            return output.unknown!();
-          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
-          const offset = entry.dir === 'left' ? 1 : -1;
-          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
-        }).map((dir) => output[dir]!());
+        const dirs = getCleaveDirs(data.actors, data.storedCleaves);
+        const mappedDirs = dirs.map((dir) => output[dir]!());
 
-        return output.combo!({ dirs: dirs.join(output.separator!()) });
+        /* if we collapsed the callout to intercard, include x2 */
+        if (mappedDirs.length === 1 && data.storedCleaves.length === 2)
+          return output.numHits!({ dir: mappedDirs[0], num: output.num2!() });
+
+        return output.combo!({ dirs: mappedDirs.join(output.separator!()) });
       },
       run: (data) => {
         if (data.expectedCleaves === 1)
@@ -257,20 +305,31 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['92BC', '92BE', '92BD', '92BF'], source: 'Wicked Thunder', capture: true },
       durationSeconds: 7.3,
       infoText: (data, matches, output) => {
-        // If this is the first cleave, it's boss relative because boss isn't fixed north
-        if (data.sidewiseSparkCounter === 0)
-          return ['92BC', '92BE'].includes(matches.id) ? output.goLeft!() : output.goRight!();
+        const cleaveDir = ['92BC', '92BE'].includes(matches.id) ? 'right' : 'left';
+        const actorID = parseInt(matches.sourceId, 16);
 
-        const dirs = data.storedCleaves.map((entry) => {
-          const actor = data.actors.find((actor) => actor.ID === entry.id);
-          if (actor === undefined)
-            return output.unknown!();
-          const actorFacing = Directions.hdgTo4DirNum(actor.Heading);
-          const offset = entry.dir === 'left' ? 1 : -1;
-          return Directions.outputFromCardinalNum((actorFacing + 4 + offset) % 4);
+        // If this is the first cleave, it's boss relative because boss isn't fixed north
+        if (data.storedCleaves.length === 0)
+          return cleaveDir === 'right' ? output.goLeft!() : output.goRight!();
+
+        data.storedCleaves.push({
+          dir: cleaveDir,
+          id: actorID,
         });
 
-        dirs.push(['92BC', '92BE'].includes(matches.id) ? 'dirW' : 'dirE');
+        // If we got 5 hits, the first 2 were already called out while
+        // collecting the clone hits. Don't repeat them.
+        const remainingHits = data.storedCleaves.length === 5
+          ? data.storedCleaves.slice(-3)
+          : data.storedCleaves;
+
+        const dirs: DirectionOutput8[] = getCleaveDirs(data.actors, remainingHits);
+
+        if (dirs.length === 1) {
+          const dir = dirs[0]!;
+          const mappedDir = output[dir]!();
+          return output.intercardStay!({ dir: mappedDir });
+        }
 
         const mappedDirs = dirs.map((dir) => output[dir]!());
 
