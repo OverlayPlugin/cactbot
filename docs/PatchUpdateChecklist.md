@@ -66,7 +66,7 @@ rather than replacing the existing one of the same name.
 In short, there are many reasons why there may be multiple entries
 in the `Status` table with the same name.
 
-These multi-entry status effects will be added with their IDs (`_hex`) followed their names.
+These multi-entry status effects will be added with their IDs (`_hex`) following their names.
 This is problematic if a job is updated and a new status is added with the same name/new ID.
 The script will notify of a conflict only at the 'debug' logging level only,
 because the current list of conflicts is extremely noisy.
