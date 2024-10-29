@@ -177,6 +177,31 @@ const triggerSet: TriggerSet<Data> = {
         'Tempting Twist': 'ハニーツイスター',
       },
     },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Honey B. Lovely': '蜂蜂小甜心',
+      },
+      'replaceText': {
+        'Alarm Pheromones': '告警信息素',
+        'Blinding Love': '盲目的爱',
+        'Blow Kiss': '飞吻',
+        'Call Me Honey': '甜言蜜语',
+        'Drop of Venom': '毒液滴落',
+        'Fracture': '炸裂',
+        'Heart-struck': '心震',
+        'Heartsick': '心病',
+        'Heartsore': '心伤',
+        'Honey B. Finale': '蜂蜂落幕曲',
+        'Honey B. Live': '蜂蜂演唱会',
+        'Honey Beeline': '甜心烈风',
+        'Honeyed Breeze': '甜心突风',
+        'Love Me Tender': '温柔地爱我',
+        'Loveseeker': '求爱',
+        'Splash of Venom': '毒液雨',
+        'Tempting Twist': '甜心旋风',
+      },
+    },
   ],
 };
 
