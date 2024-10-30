@@ -75,7 +75,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Magitek-Laser',
           fr: 'Rayon Magitek',
           ja: '魔導レーザー',
-          cn: '直线AOE',
+          cn: '正面直线AOE',
           ko: '마도 레이저',
         },
       },
@@ -98,7 +98,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Orb Marker',
           fr: 'Orbe',
           ja: 'マーカー',
-          cn: '死刑点名',
+          cn: '红球点名',
           ko: '원자 파동 징',
         },
       },
@@ -123,7 +123,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Aura-Kanone auf ${player}',
           fr: 'Marque Bleue sur ${player}',
           ja: '${player}に青玉',
-          cn: '蓝球点名${player}',
+          cn: '蓝球点 ${player}',
           ko: '"${player}" 파란징',
         },
         blueMarkerOnYou: {
@@ -251,7 +251,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Biblio: Positionen',
           fr: 'Biblio : Positions',
           ja: 'ビブリオタフ: 定めた位置へ',
-          cn: '图书：站位',
+          cn: '图书：踩塔',
           ko: '비블리오: 지정 위치로',
         },
         dada: {
@@ -267,7 +267,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Flieger: Raus aus Nahkampf-Reichweite',
           fr: 'Vaisseaux : Sortez de la mêlée',
           ja: 'エアフォース: 離れる',
-          cn: '飞机：远离近战范围',
+          cn: '飞机：钢铁',
           ko: '에어포스: 근접 범위 밖으로',
         },
         ultros: {
@@ -275,7 +275,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ultros: Tine - Verteilen',
           fr: 'Orthros : Encre, dispersez-vous',
           ja: 'オルトロス: インク 散開',
-          cn: '章鱼：墨汁快散开',
+          cn: '章鱼：散开',
           ko: '오르트로스: 먹물 산개',
         },
         virus: {
