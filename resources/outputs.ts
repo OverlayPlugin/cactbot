@@ -229,7 +229,7 @@ export default {
     de: 'Heiler-Gruppen',
     fr: 'Groupes sur les heals',
     ja: 'ヒラに頭割り',
-    cn: '治疗分摊组',
+    cn: '双奶分组分摊',
     ko: '힐러 그룹 쉐어',
   },
   stackOnYou: {
@@ -269,7 +269,7 @@ export default {
     de: 'Flächen Ködern',
     fr: 'Attirez les flaques',
     ja: 'AOE誘導',
-    cn: '诱导圈圈',
+    cn: '诱导放圈',
     ko: '장판 유도',
   },
   // For general more-than-one-stack-at-a-time situations
@@ -701,7 +701,7 @@ export default {
     de: 'Bewegen!',
     fr: 'Bougez !',
     ja: '動く！',
-    cn: '快动！',
+    cn: '保持运动！',
     ko: '움직이기!',
   },
   breakChains: {
@@ -741,7 +741,7 @@ export default {
     de: 'Nahe Verbindungen (${player})',
     fr: 'Liens proches avec (${player})',
     ja: '${player}に近づく',
-    cn: '靠近连线 (${player})',
+    cn: '近线 (${player})',
     ko: '상대와 가까이 붙기 (${player})',
   },
   farTethersWithPlayer: {
@@ -749,7 +749,7 @@ export default {
     de: 'Entfernte Verbindungen (${player})',
     fr: 'Liens éloignés avec (${player})',
     ja: ' (${player})から離れる',
-    cn: '远离连线 (${player})',
+    cn: '远线 (${player})',
     ko: '상대와 떨어지기 (${player})',
   },
   getTowers: {
