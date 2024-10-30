@@ -237,7 +237,7 @@ export default {
     de: 'Auf DIR sammeln',
     fr: 'Package sur VOUS',
     ja: '自分に頭割り',
-    cn: '集合点名',
+    cn: '分摊点名',
     ko: '쉐어징 대상자',
   },
   stackOnPlayer: {
