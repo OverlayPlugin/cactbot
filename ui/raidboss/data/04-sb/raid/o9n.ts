@@ -64,7 +64,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stack for Donuts',
           de: 'Für Donuts sammeln',
           fr: 'Packez-vous pour les donuts',
-          cn: '集合躲避水环',
+          cn: '集合放月环',
           ko: '모여서 도넛장판 피하기',
         },
       },
