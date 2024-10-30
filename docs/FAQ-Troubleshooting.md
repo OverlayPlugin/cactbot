@@ -2,7 +2,7 @@
 
 - [General FFXIV ACT Troubleshooting](#general-ffxiv-act-troubleshooting)
 - [Installation Testing](#installation-testing)
-  - [Verify That Your Plugins Are in the Right Order](#verify-that-your-plugins-are-in-the-correct-order)
+  - [Verify That Your Plugins Are in the Right Order](#verify-that-your-plugins-are-in-the-right-order)
   - [Verify Your Language Settings Match](#verify-your-language-settings-match)
   - [Verify That You Have Added the Overlays You Want](#verify-that-you-have-added-the-overlays-you-want)
   - [Summerford Farms Raidboss Test](#summerford-farms-raidboss-test)
