@@ -49,7 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Licht',
           fr: 'Lumière',
           ja: '魔界の光',
-          cn: '光点名',
+          cn: '距离衰减点名',
           ko: '빛장판',
         },
       },
