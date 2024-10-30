@@ -135,7 +135,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nächste Drehung: Kanten oder Ecken',
           fr: 'Tour suivant : Cardinal ou Coins',
           ja: '次: コーナー',
-          cn: '下一转：靠边火角落',
+          cn: '下一转：靠边或角落',
           ko: '십자 / 대각선',
         },
       },

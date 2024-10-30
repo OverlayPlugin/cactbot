@@ -37,7 +37,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nächste Drehung: Rein oder raus',
           fr: 'Tour suivant : Intérieur ou Extérieur',
           ja: '次: 中/外',
-          cn: '下一转:内圈/外圈',
+          cn: '下一转:靠近或远离',
           ko: '다음: 안으로 혹은 밖으로',
         },
       },
