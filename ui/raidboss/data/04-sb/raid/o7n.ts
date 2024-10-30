@@ -80,7 +80,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stand in glowing bomb circle',
           de: 'Steh im grün-leuchtenden Kreis der Bombe',
           fr: 'Placez-vous dans le cercle lumineux',
-          cn: '站在炸弹发光圈内',
+          cn: '踩发光的导线',
           ko: '장판에 한명씩 들어가기',
         },
       },
