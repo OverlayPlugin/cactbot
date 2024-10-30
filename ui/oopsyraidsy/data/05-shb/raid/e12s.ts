@@ -213,7 +213,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             de: `${matches.ability} (von ${ownerNick}, #${number} norden)`,
             fr: `${matches.ability} (de ${ownerNick}, #${number} nord)`,
             ja: `${matches.ability} (北の${ownerNick}から、#${number})`,
-            cn: `${matches.ability} (来自上方${ownerNick}，#${number})`,
+            cn: `${matches.ability} (来自北方${ownerNick}，#${number})`,
             ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번 북쪽)`,
           };
         } else if (isStatuePositionKnown && !isStatueNorth) {
@@ -222,7 +222,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             de: `${matches.ability} (von ${ownerNick}, #${number} Süden)`,
             fr: `${matches.ability} (de ${ownerNick}, #${number} sud)`,
             ja: `${matches.ability} (南の${ownerNick}から、#${number})`,
-            cn: `${matches.ability} (来自下方${ownerNick}，#${number})`,
+            cn: `${matches.ability} (来自南方${ownerNick}，#${number})`,
             ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번 남쪽)`,
           };
         }
@@ -397,7 +397,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           de: 'Nordem, großer Löwe',
           fr: 'Grand lion du nord',
           ja: '大ライオン(北)',
-          cn: '上方大狮子',
+          cn: '北方大狮子',
           ko: '북쪽 큰 사자',
         };
         const southBigLion: LocaleText = {
@@ -405,7 +405,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           de: 'Süden, großer Löwe',
           fr: 'Grand lion du sud',
           ja: '大ライオン(南)',
-          cn: '下方大狮子',
+          cn: '南方大狮子',
           ko: '남쪽 큰 사자',
         };
         const shared: LocaleText = {
