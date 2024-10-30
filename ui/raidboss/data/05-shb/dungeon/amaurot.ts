@@ -33,7 +33,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Meteor im Westen ablegen',
           fr: 'Déposez le météore à l\'ouest',
           ja: 'メテオを西に',
-          cn: '西侧放陨石',
+          cn: '左边放陨石',
           ko: '메테오 서쪽으로 빼기',
         },
         dropMeteorEast: {
@@ -41,7 +41,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Meteor im Osten ablegen',
           fr: 'Déposez le météore à l\'est',
           ja: 'メテオを東に',
-          cn: '陨石放东边',
+          cn: '陨石放右边',
           ko: '메테오 동쪽으로 빼기',
         },
         meteor: {

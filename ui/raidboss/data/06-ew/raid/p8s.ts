@@ -597,7 +597,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'NW Ecke',
           fr: 'Coin NO',
           ja: '北西の隅',
-          cn: '左上 (西北) 角',
+          cn: '左上角',
           ko: '북서쪽 구석',
         },
         cornerNE: {
@@ -605,7 +605,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'NO Ecke',
           fr: 'Coin NE',
           ja: '北東の隅',
-          cn: '右上 (东北) 角',
+          cn: '右上角',
           ko: '북동쪽 구석',
         },
         cornerSE: {
@@ -613,7 +613,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'SO Ecke',
           fr: 'Coin SE',
           ja: '南東の隅',
-          cn: '右下 (东南) 角',
+          cn: '右下角',
           ko: '남동쪽 구석',
         },
         cornerSW: {
@@ -621,7 +621,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'SW Ecke',
           fr: 'Coin SO',
           ja: '南西の隅',
-          cn: '左下 (西南) 角',
+          cn: '左下角',
           ko: '남서쪽 구석',
         },
         outsideNorth: {
@@ -629,7 +629,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Norden raus',
           fr: 'Nord Extérieur',
           ja: '北の外側',
-          cn: '上 (北) 外侧',
+          cn: '上外侧',
           ko: '북쪽 바깥',
         },
         insideNorth: {
@@ -637,7 +637,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Norden rein',
           fr: 'Nord Intérieur',
           ja: '北の内側',
-          cn: '上 (北) 内侧',
+          cn: '上内侧',
           ko: '북쪽 안',
         },
         outsideEast: {
@@ -645,7 +645,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Osten raus',
           fr: 'Est Extérieur',
           ja: '東の外側',
-          cn: '右 (东) 外侧',
+          cn: '右外侧',
           ko: '동쪽 바깥',
         },
         insideEast: {
@@ -653,7 +653,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Osten rein',
           fr: 'Est Intérieur',
           ja: '東の内側',
-          cn: '右 (东) 内侧',
+          cn: '右内侧',
           ko: '동쪽 안',
         },
         outsideSouth: {
@@ -661,7 +661,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Süden raus',
           fr: 'Sud Extérieur',
           ja: '南の外側',
-          cn: '下 (南) 外侧',
+          cn: '下外侧',
           ko: '남쪽 바깥',
         },
         insideSouth: {
@@ -669,7 +669,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Süden rein',
           fr: 'Sud Intérieur',
           ja: '南の内側',
-          cn: '下 (南) 内侧',
+          cn: '下内侧',
           ko: '남쪽 안',
         },
         outsideWest: {
@@ -677,7 +677,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Westen raus',
           fr: 'Ouest Extérieur',
           ja: '西の外側',
-          cn: '左 (西) 外侧',
+          cn: '左外侧',
           ko: '서쪽 바깥',
         },
         insideWest: {
@@ -685,7 +685,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Westen rein',
           fr: 'Ouest Intérieur',
           ja: '西の内側',
-          cn: '左 (西) 内侧',
+          cn: '左内侧',
           ko: '서쪽 안',
         },
       },
@@ -1446,7 +1446,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Norden/Süden Vogel',
           fr: 'Oiseau Nord/Sud',
           ja: '南北フェニックス',
-          cn: '南/北 凤凰',
+          cn: '上/下 凤凰',
           ko: '새 남/북쪽',
         },
         eastWest: {
@@ -1454,7 +1454,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen Vogel',
           fr: 'Oiseau Est/Ouest',
           ja: '東西フェニックス',
-          cn: '东/西 凤凰',
+          cn: '左/右 凤凰',
           ko: '새 동/서쪽',
         },
       },
@@ -1667,7 +1667,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Norden / Süden',
           fr: 'Nord / Sud',
           ja: '南・北',
-          cn: '南 / 北',
+          cn: '上/下',
           ko: '남/북쪽',
         },
         eastWest: {
@@ -1675,7 +1675,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten / Westen',
           fr: 'Est / Ouest',
           ja: '東・西',
-          cn: '东 / 西',
+          cn: '左/右',
           ko: '동/서쪽',
         },
         north: Outputs.north,

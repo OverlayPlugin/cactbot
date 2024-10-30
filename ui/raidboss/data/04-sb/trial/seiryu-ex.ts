@@ -281,7 +281,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Im Süden stacken',
           fr: 'Packez-vous au sud',
           ja: '南でスタック',
-          cn: '南侧集合',
+          cn: '下侧集合',
           ko: '남쪽에서 모이기',
         },
         stackIfNoTether: {
