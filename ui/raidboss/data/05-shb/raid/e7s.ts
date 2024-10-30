@@ -456,7 +456,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Süden',
           fr: 'Allez au Sud',
           ja: '南へ',
-          cn: '前往下侧',
+          cn: '前往下半场',
           ko: '남쪽',
         },
         goNorthwest: {

@@ -236,8 +236,8 @@ const triggerSet: TriggerSet<Data> = {
         cn: {
           '中间': 'inside',
           '上/下角落': 'northSouth',
-          '上边角落': 'north',
-          '下边角落': 'south',
+          '上半场角落': 'north',
+          '下半场角落': 'south',
         },
         ko: {
           '중앙': 'inside',

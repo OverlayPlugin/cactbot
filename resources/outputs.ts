@@ -513,7 +513,7 @@ export default {
     de: '<= Nach Links/Westen',
     fr: '<= Allez à Gauche/Ouest',
     ja: '<= 左/西へ',
-    cn: '<= 去左侧',
+    cn: '<= 去左半场',
     ko: '<= 왼쪽/서쪽',
   },
   getRightAndEast: {
@@ -521,7 +521,7 @@ export default {
     de: 'Nach Rechts/Osten =>',
     fr: 'Allez à Droite/Est =>',
     ja: '右/東へ =>',
-    cn: '去右侧 =>',
+    cn: '去右半场 =>',
     ko: '오른쪽/동쪽 =>',
   },
   leftThenRight: {

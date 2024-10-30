@@ -1315,7 +1315,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Norden (Donut unten/Kreise oben)',
           fr: 'Allez au nord (donut en bas/cercle en haut)',
           ja: '北へ (下にドーナツ/上に円)',
-          cn: '去 下环上圆列 上侧',
+          cn: '去 下环上圆列 上半场',
           ko: '북쪽으로 (도넛이 아래, 원이 위인 곳)',
         },
         secondWeave: {
@@ -1323,7 +1323,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Süden (Viereck unten/Kreise oben)',
           fr: 'Restez au sud (carré en bas/cercle en haut)',
           ja: '南へ（下に四角/上に円）',
-          cn: '待在 下方上圆列 下侧',
+          cn: '待在 下方上圆列 下半场',
           ko: '남쪽으로 (사각형이 아래, 원이 위인 곳)',
         },
       },
@@ -1344,7 +1344,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Geh nach Süden; Rückstoß zum leuchtenden Donut',
             fr: 'Allez au sud; Poussée vers le donut embrasé',
             ja: '南へ、光ってるドーナツへノックバック',
-            cn: '去 发光环形列 下侧',
+            cn: '去 发光环形列 下半场',
             ko: '남쪽으로, 빛나는 도넛쪽으로 넉백',
           },
           goNorth: {
@@ -1352,7 +1352,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Geh nach Norden; Rückstoß zum leuchtenden Kreis',
             fr: 'Allez au nord; Poussée depuis le cercle verdâtre',
             ja: '北へ、光ってる円からノックバック',
-            cn: '去 发光圆形列 上侧',
+            cn: '去 发光圆形列 上半场',
             ko: '북쪽으로, 빛나는 원에서 넉백',
           },
         };

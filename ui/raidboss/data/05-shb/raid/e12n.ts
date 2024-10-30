@@ -34,7 +34,7 @@ const bombOutputStrings = {
     de: 'Zwichen den Bomben im Norden',
     fr: 'Entre les bombes au Nord',
     ja: '北の岩へ',
-    cn: '去上边岩石中间',
+    cn: '去上半场岩石中间',
     ko: '북쪽 폭탄 사이',
   },
   'south': {
@@ -42,7 +42,7 @@ const bombOutputStrings = {
     de: 'Zwichen den Bomben im Süden',
     fr: 'Entre les bombes au Sud',
     ja: '南の岩へ',
-    cn: '去下边岩石中间',
+    cn: '去下半场岩石中间',
     ko: '남쪽 폭탄 사이',
   },
   'east': {

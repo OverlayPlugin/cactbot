@@ -108,7 +108,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nördliche Ecken',
           fr: 'Au coin nord',
           ja: '北の角へ',
-          cn: '去上边角落',
+          cn: '去上半场角落',
           ko: '북쪽 모서리',
         },
         ec: {
@@ -124,7 +124,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'südliche Ecken',
           fr: 'Au coin sud',
           ja: '南の角へ',
-          cn: '去下边角落',
+          cn: '去下半场角落',
           ko: '남쪽 모서리',
         },
         wc: {

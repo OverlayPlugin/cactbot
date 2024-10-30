@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
         nearOrb: {
           en: 'Be close to North orb',
           fr: 'Près de l\'orbe nord',
-          cn: '靠近上边黄球',
+          cn: '靠近上半场黄球',
           ko: '북쪽 구슬에 가까이 붙기',
         },
       },

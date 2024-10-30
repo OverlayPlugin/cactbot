@@ -174,7 +174,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nach Süden: stack auf DIR',
           fr: 'Allez au sud : Package sur VOUS',
           ja: '南へ: 自分に頭割り',
-          cn: '去下边分摊点名',
+          cn: '去下半场分摊点名',
           ko: '남쪽으로: 쉐어징 대상자',
         },
         goNorth: {
@@ -182,7 +182,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nach norden',
           fr: 'Allez au nord',
           ja: '南へ',
-          cn: '去下边',
+          cn: '去下半场',
           ko: '북쪽으로',
         },
         goSouthStackOnFriend: {
@@ -190,7 +190,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nach süden: stack auf freund',
           fr: 'Allez au sud : Package sur un ami',
           ja: '南へ: 頭割り',
-          cn: '去下边分摊',
+          cn: '去下半场分摊',
           ko: '남쪽으로: 쉐어징',
         },
       },
