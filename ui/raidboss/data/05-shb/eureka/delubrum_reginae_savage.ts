@@ -1315,7 +1315,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Norden (Donut unten/Kreise oben)',
           fr: 'Allez au nord (donut en bas/cercle en haut)',
           ja: '北へ (下にドーナツ/上に円)',
-          cn: '去 下环上圆列 上半场',
+          cn: '去上半场 下环上圆列 ',
           ko: '북쪽으로 (도넛이 아래, 원이 위인 곳)',
         },
         secondWeave: {
