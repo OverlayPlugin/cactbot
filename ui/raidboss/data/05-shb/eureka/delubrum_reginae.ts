@@ -663,7 +663,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Lass dich zum Kreis im Norden zurückstoßen',
           fr: 'Faites-vous pousser dans le cercle',
           ja: '北のドーナツ範囲へ吹き飛ばされる',
-          cn: '击退到上月环中',
+          cn: '击退到上方月环中',
           ko: '원으로 넉백 당하기',
         },
       },
