@@ -570,7 +570,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Südliche Reihe, Vordere Hälfte',
           fr: 'Ligne Sud, Moitié avant',
           ja: '南側の前方へ',
-          cn: '第四行前半',
+          cn: '第三行前半',
           ko: '남쪽 줄, 앞부분',
         },
         southBack: {
