@@ -1299,7 +1299,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Innen Osten/Westen sicher',
           fr: 'Intérieur Est/Ouest sûr',
           ja: '内側 東/西が安地',
-          cn: '内侧 右/左安全',
+          cn: '内侧 左/右安全',
           ko: '안쪽 동/서 안전',
         },
         insideNS: {
