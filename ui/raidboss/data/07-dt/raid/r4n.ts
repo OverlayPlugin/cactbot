@@ -201,27 +201,20 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R4N Clone Cleave Collector',
-      type: 'CombatantMemory',
-      // Filter to only enemy actors for performance
-      // TODO: Change this to an ActorControlExtra line if OverlayPlugin adds SetModelState as a valid category
-      netRegex: {
-        id: '4[0-9A-Fa-f]{7}',
-        pair: [{ key: 'WeaponId', value: ['33', '121'] }],
-        capture: true,
-      },
+      type: 'ActorControlExtra',
+      // category: 0197 - PlayActionTimeline
+      // param1: 11D6 - right cleave
+      // param1: 11D8 - left cleave
+      netRegex: { category: '0197', param1: ['11D6', '11D8'] },
       condition: (data, matches) => {
         const actorID = parseInt(matches.id, 16);
         const initActorData = data.actors.find((actor) => actor.ID === actorID);
         if (!initActorData)
           return false;
 
-        const weaponId = matches.pairWeaponId;
-        if (weaponId === undefined)
-          return false;
+        const cleaveDir = matches.param1 === '11D8' ? 'left' : 'right';
 
-        const cleaveDir = weaponId === '121' ? 'left' : 'right';
-
-        // Sometimes we get extra lines with weaponId changed. Update an existing actor if it's already in the array.
+        // Check for an existing entry in case we get extra lines
         const existingCleave = data.storedCleaves.find((cleave) => cleave.id === actorID);
         if (existingCleave !== undefined) {
           existingCleave.dir = cleaveDir;
