@@ -554,7 +554,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Mittlere Reihe, Vordere Hälfte',
           fr: 'Ligne centrale, Moitié avant',
           ja: '中央の前方へ',
-          cn: '二三行前半',
+          cn: '第二行前半',
           ko: '가운데 줄, 앞부분',
         },
         middleBack: {
