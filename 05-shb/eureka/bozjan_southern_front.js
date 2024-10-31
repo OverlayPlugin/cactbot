@@ -532,7 +532,7 @@ Options.Triggers.push({
           de: 'Gehe nach Nordosten',
           fr: 'Allez au nord-est',
           ja: '北東へ',
-          cn: '去右上(东北)',
+          cn: '去右上',
           ko: '북동쪽으로',
         },
         southeast: {
@@ -540,7 +540,7 @@ Options.Triggers.push({
           de: 'Gehe nach Südosten',
           fr: 'Allez au sud-est',
           ja: '南東へ',
-          cn: '去右下(东南)',
+          cn: '去右下',
           ko: '남동쪽으로',
         },
         southwest: {
@@ -548,7 +548,7 @@ Options.Triggers.push({
           de: 'Gehe nach Südwesten',
           fr: 'Allez au sud-ouest',
           ja: '南西へ',
-          cn: '去左下(西南)',
+          cn: '去左下',
           ko: '남서쪽으로',
         },
         northwest: {
@@ -556,7 +556,7 @@ Options.Triggers.push({
           de: 'Gehe nach Nordwesten',
           fr: 'Allez au nord-ouest',
           ja: '北西へ',
-          cn: '去左上(西北)',
+          cn: '去左上',
           ko: '북서쪽으로',
         },
       },

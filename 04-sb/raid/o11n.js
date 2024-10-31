@@ -90,7 +90,7 @@ Options.Triggers.push({
           de: 'Stehenbleiben (Links)',
           fr: 'Restez (À gauche)',
           ja: 'そのまま (左に)',
-          cn: '呆在左边',
+          cn: '待在左边',
           ko: '멈추기 (왼쪽)',
         },
       },
@@ -111,7 +111,7 @@ Options.Triggers.push({
           de: 'Stehenbleiben (Rechts)',
           fr: 'Restez (À droite)',
           ja: 'そのまま (右に)',
-          cn: '呆在右边',
+          cn: '待在右边',
           ko: '멈추기 (오른쪽)',
         },
         moveRight: {

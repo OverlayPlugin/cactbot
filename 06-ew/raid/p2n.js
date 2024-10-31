@@ -93,7 +93,7 @@ Options.Triggers.push({
           de: 'nördliche Ecken',
           fr: 'Au coin nord',
           ja: '北の角へ',
-          cn: '去上 (北) 边角落',
+          cn: '去上半场角落',
           ko: '북쪽 모서리',
         },
         ec: {
@@ -101,7 +101,7 @@ Options.Triggers.push({
           de: 'östliche Ecken',
           fr: 'Au coin est',
           ja: '東の角へ',
-          cn: '去右 (东) 边角落',
+          cn: '去右边角落',
           ko: '동쪽 모서리',
         },
         sc: {
@@ -109,7 +109,7 @@ Options.Triggers.push({
           de: 'südliche Ecken',
           fr: 'Au coin sud',
           ja: '南の角へ',
-          cn: '去下 (南) 边角落',
+          cn: '去下半场角落',
           ko: '남쪽 모서리',
         },
         wc: {
@@ -117,7 +117,7 @@ Options.Triggers.push({
           de: 'westliche Ecken',
           fr: 'Au coin ouest',
           ja: '西の角へ',
-          cn: '去左 (西) 边角落',
+          cn: '去左边角落',
           ko: '서쪽 모서리',
         },
       },

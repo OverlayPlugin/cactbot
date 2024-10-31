@@ -60,7 +60,7 @@ Options.Triggers.push({
         northSouth: {
           en: 'Dodge North/South line cleaves',
           fr: 'Esquivez les cleaves en ligne N/S',
-          cn: '躲避 南/北 直线攻击',
+          cn: '躲避 上/下 直线攻击',
           ko: '남/북쪽 직선 장판 피하기',
         },
         grid: {

@@ -428,7 +428,7 @@ Options.Triggers.push({
         kb: {
           en: 'Knockback N/S',
           fr: 'Poussée N/S',
-          cn: '向 南/北 击退',
+          cn: '向 上/下 击退',
           ko: '남/북쪽으로 넉백',
         },
       },

@@ -1009,7 +1009,7 @@ Options.Triggers.push({
           de: 'nördlicher Diamant + ${mechanic}',
           fr: 'Diamant Nord + ${mechanic}',
           ja: '北 + ${mechanic}',
-          cn: '上 (北) 菱形 + ${mechanic}',
+          cn: '上菱形 + ${mechanic}',
           ko: '북쪽 + ${mechanic}',
         },
         east: {
@@ -1017,7 +1017,7 @@ Options.Triggers.push({
           de: 'östlicher Diamant + ${mechanic}',
           fr: 'Diamant Est + ${mechanic}',
           ja: '東 + ${mechanic}',
-          cn: '右 (东) 菱形 + ${mechanic}',
+          cn: '右菱形 + ${mechanic}',
           ko: '동쪽 + ${mechanic}',
         },
         south: {
@@ -1025,7 +1025,7 @@ Options.Triggers.push({
           de: 'südlicher Diamant + ${mechanic}',
           fr: 'Diamant Sud + ${mechanic}',
           ja: '南 + ${mechanic}',
-          cn: '下 (南) 菱形 + ${mechanic}',
+          cn: '下菱形 + ${mechanic}',
           ko: '남쪽 + ${mechanic}',
         },
         west: {
@@ -1033,7 +1033,7 @@ Options.Triggers.push({
           de: 'westlicher Diamant + ${mechanic}',
           fr: 'Diamant Ouest + ${mechanic}',
           ja: '西 + ${mechanic}',
-          cn: '左 (西) 菱形 + ${mechanic}',
+          cn: '左菱形 + ${mechanic}',
           ko: '서쪽 + ${mechanic}',
         },
         northeast: {
@@ -1041,7 +1041,7 @@ Options.Triggers.push({
           de: 'nordöstliches Viereck + ${mechanic}',
           fr: 'Carré Nord-Est + ${mechanic}',
           ja: '北東 + ${mechanic}',
-          cn: '右上 (东北) 正方形 + ${mechanic}',
+          cn: '右上 正方形 + ${mechanic}',
           ko: '북동쪽 + ${mechanic}',
         },
         southeast: {
@@ -1049,7 +1049,7 @@ Options.Triggers.push({
           de: 'südöstliches Viereck + ${mechanic}',
           fr: 'Carré Sud-Est + ${mechanic}',
           ja: '南東 + ${mechanic}',
-          cn: '右下 (东南) 正方形 + ${mechanic}',
+          cn: '右下 正方形 + ${mechanic}',
           ko: '남동쪽 + ${mechanic}',
         },
         southwest: {
@@ -1057,7 +1057,7 @@ Options.Triggers.push({
           de: 'südwestliches Viereck + ${mechanic}',
           fr: 'Carré Sud-Ouest + ${mechanic}',
           ja: '南西 + ${mechanic}',
-          cn: '左下 (西南) 正方形 + ${mechanic}',
+          cn: '左下 正方形 + ${mechanic}',
           ko: '남서쪽 + ${mechanic}',
         },
         northwest: {
@@ -1065,7 +1065,7 @@ Options.Triggers.push({
           de: 'nordwestliches Viereck + ${mechanic}',
           fr: 'Carré Nord-Ouest + ${mechanic}',
           ja: '北西 + ${mechanic}',
-          cn: '左上 (西北) 正方形 + ${mechanic}',
+          cn: '左上 正方形 + ${mechanic}',
           ko: '북서쪽 + ${mechanic}',
         },
         ...basicStackSpreadOutputStrings,
@@ -2306,7 +2306,7 @@ Options.Triggers.push({
           de: 'Norden/Süden',
           fr: 'Nord/Sud',
           ja: '北・南',
-          cn: '上 (北)/下 (南)',
+          cn: '上/下',
           ko: '북쪽/남쪽',
         },
         eastWest: {
@@ -2314,7 +2314,7 @@ Options.Triggers.push({
           de: 'Osten/Westen',
           fr: 'Est/Ouest',
           ja: '東・西',
-          cn: '左 (西)/右 (东)',
+          cn: '左/右',
           ko: '동쪽/서쪽',
         },
       },

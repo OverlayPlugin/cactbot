@@ -1622,7 +1622,7 @@ Options.Triggers.push({
           de: 'Kein Erdstoß; im süden sammeln',
           fr: 'Pas de Secousse; packez-vous au Sud.',
           ja: 'シェイカーない；頭割りで南',
-          cn: '无点名，南侧集合',
+          cn: '无点名，正下方集合',
           ko: '징 없음, 모여서 쉐어',
         },
         tenstrikeNotOnYou: {

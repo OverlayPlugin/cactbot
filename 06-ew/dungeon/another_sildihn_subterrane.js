@@ -315,7 +315,7 @@ Options.Triggers.push({
           de: 'Hinter Puschel und Gruppe (Osten/Westen)',
           fr: 'Derrière les pompons et le groupe (Est/Ouest)',
           ja: 'たまの一番後ろへ (東西)',
-          cn: '站在球和队友后 (东/西)',
+          cn: '站在球和队友后 (左/右)',
           ko: '구슬 뒤로 (동/서)',
         },
         getBehindParty: {
@@ -409,7 +409,7 @@ Options.Triggers.push({
             de: 'Tank Buster auf DIR, Osten/Westen zwischen Puschel',
             fr: 'Tankbuster sur VOUS, entre les pompons Est/Ouest',
             ja: '自分に強攻撃、東西で誘導',
-            cn: '死刑点名, 左(西)/右(东) 球下引导',
+            cn: '死刑点名, 左/右 球下引导',
             ko: '나에게 탱버, 동/서쪽 구슬 사이로',
           },
         };
@@ -1343,7 +1343,7 @@ Options.Triggers.push({
           de: 'NW Ecke',
           fr: 'Coin NO',
           ja: '北西 隅',
-          cn: '左上 (西北) 角',
+          cn: '左上角',
           ko: '북서쪽 구석',
         },
         outsideNNW: {
@@ -1351,7 +1351,7 @@ Options.Triggers.push({
           de: 'NNW außen',
           fr: 'Extérieur NNO',
           ja: '1列 西の内側',
-          cn: '外侧 上偏左 (北偏西)',
+          cn: '外侧 上偏左',
           ko: '바깥 북쪽 왼칸',
         },
         outsideNNE: {
@@ -1359,7 +1359,7 @@ Options.Triggers.push({
           de: 'NNO außen',
           fr: 'Extérieur NNE',
           ja: '1列 東の内側',
-          cn: '外侧 上偏右 (北偏东)',
+          cn: '外侧 上偏右',
           ko: '바깥 북쪽 오른칸',
         },
         outsideNE: {
@@ -1367,7 +1367,7 @@ Options.Triggers.push({
           de: 'NO Ecke',
           fr: 'Coin NE',
           ja: '北東 隅',
-          cn: '右上 (东北) 角',
+          cn: '右上角',
           ko: '북동쪽 구석',
         },
         outsideWNW: {
@@ -1375,7 +1375,7 @@ Options.Triggers.push({
           de: 'WNW außen',
           fr: 'Extérieur ONO',
           ja: '2列 西の外側',
-          cn: '外侧 左偏上 (西偏北)',
+          cn: '外侧 左偏上',
           ko: '바깥 서쪽 위칸',
         },
         insideNW: {
@@ -1383,7 +1383,7 @@ Options.Triggers.push({
           de: 'NW innen',
           fr: 'Intérieur NO',
           ja: '内側 北西',
-          cn: '内侧 左上 (西北)',
+          cn: '内侧 左上',
           ko: '안 북서쪽',
         },
         insideNE: {
@@ -1391,7 +1391,7 @@ Options.Triggers.push({
           de: 'NO innen',
           fr: 'Intérieur NE',
           ja: '内側 北東',
-          cn: '内侧 右上 (东北)',
+          cn: '内侧 右上',
           ko: '안 북동쪽',
         },
         outsideENE: {
@@ -1399,7 +1399,7 @@ Options.Triggers.push({
           de: 'ONO außen',
           fr: 'Extérieur ENE',
           ja: '2列 東の外側',
-          cn: '外侧 右偏上 (东偏北)',
+          cn: '外侧 右偏上',
           ko: '바깥 동쪽 위칸',
         },
         outsideWSW: {
@@ -1407,7 +1407,7 @@ Options.Triggers.push({
           de: 'WSW außen',
           fr: 'Extérieur OSO',
           ja: '3列 西の外側',
-          cn: '外侧 左偏下 (西偏南)',
+          cn: '外侧 左偏下',
           ko: '바깥 서쪽 아래칸',
         },
         insideSW: {
@@ -1415,7 +1415,7 @@ Options.Triggers.push({
           de: 'SW innen',
           fr: 'Intérieur SO',
           ja: '内側 南西',
-          cn: '内侧 左下 (西南)',
+          cn: '内侧 左下',
           ko: '안 남서쪽',
         },
         insideSE: {
@@ -1423,7 +1423,7 @@ Options.Triggers.push({
           de: 'SO innen',
           fr: 'Intérieur SE',
           ja: '内側 南東',
-          cn: '内侧 右下 (东南)',
+          cn: '内侧 右下',
           ko: '안 남동쪽',
         },
         outsideESE: {
@@ -1431,7 +1431,7 @@ Options.Triggers.push({
           de: 'OSO außen',
           fr: 'Extérieur ESE',
           ja: '3列 東の外側',
-          cn: '外侧 右偏下 (东偏南)',
+          cn: '外侧 右偏下',
           ko: '바깥 동쪽 아래칸',
         },
         outsideSW: {
@@ -1439,7 +1439,7 @@ Options.Triggers.push({
           de: 'SW Ecke',
           fr: 'Coin SO',
           ja: '南西 隅',
-          cn: '左下 (西南) 角',
+          cn: '左下角',
           ko: '남서쪽 구석',
         },
         outsideSSW: {
@@ -1447,7 +1447,7 @@ Options.Triggers.push({
           de: 'SSW außen',
           fr: 'Extérieur SSO',
           ja: '4列 西の内側',
-          cn: '外侧 下偏左 (南偏西)',
+          cn: '外侧 下偏左',
           ko: '바깥 남쪽 왼칸',
         },
         outsideSSE: {
@@ -1455,7 +1455,7 @@ Options.Triggers.push({
           de: 'SSO außen',
           fr: 'Extérieur SSE',
           ja: '4列 東の内側',
-          cn: '外侧 下偏右 (南偏东)',
+          cn: '外侧 下偏右',
           ko: '바깥 남쪽 오른칸',
         },
         outsideSE: {
@@ -1463,7 +1463,7 @@ Options.Triggers.push({
           de: 'SO Ecke',
           fr: 'Coin SE',
           ja: '南東 隅',
-          cn: '右下 (东南) 角',
+          cn: '右下角',
           ko: '남동쪽 구석',
         },
         unknown: Outputs.unknown,

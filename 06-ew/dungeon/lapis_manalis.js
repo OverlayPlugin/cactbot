@@ -58,7 +58,7 @@ Options.Triggers.push({
           de: 'Norden-Mittig',
           fr: 'Milieu-Nord',
           ja: '中央ー北',
-          cn: '中央-上 (北)',
+          cn: '中央-上',
           ko: '중앙-북쪽',
         },
         middlesouth: {
@@ -66,7 +66,7 @@ Options.Triggers.push({
           de: 'Süden-Mittig',
           fr: 'Milieu-Sud',
           ja: '中央ー南',
-          cn: '中央-下 (南)',
+          cn: '中央-下',
           ko: '중앙-남쪽',
         },
         text: {

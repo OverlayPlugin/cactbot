@@ -180,7 +180,7 @@ Options.Triggers.push({
           de: 'Links/Westen',
           fr: 'Gauche/Ouest',
           ja: '左/西へ',
-          cn: '左(西)',
+          cn: '左',
           ko: '왼쪽/서쪽',
         },
         east: {
@@ -188,7 +188,7 @@ Options.Triggers.push({
           de: 'Rechts/Osten',
           fr: 'Droite/Est',
           ja: '右/東へ',
-          cn: '右(东)',
+          cn: '右',
           ko: '오른쪽/동쪽',
         },
       },

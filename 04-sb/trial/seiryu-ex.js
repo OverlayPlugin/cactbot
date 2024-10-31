@@ -264,7 +264,7 @@ Options.Triggers.push({
           de: 'Im Süden stacken',
           fr: 'Packez-vous au sud',
           ja: '南でスタック',
-          cn: '南侧集合',
+          cn: '下半场边缘分摊',
           ko: '남쪽에서 모이기',
         },
         stackIfNoTether: {

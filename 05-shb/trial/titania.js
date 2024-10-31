@@ -154,7 +154,7 @@ Options.Triggers.push({
           de: 'Adds im Osten sammeln (bei Senfsamen)',
           fr: 'Groupe sur l\'Add Est (Pousse-de-moutarde)',
           ja: '東の雑魚 (マスタードシード)',
-          cn: '东边小怪 (芥子)',
+          cn: '右边小怪 (芥子)',
           ko: '쫄 모으기 (겨자씨 쪽)',
         },
         killMustardseedEast: {
@@ -162,7 +162,7 @@ Options.Triggers.push({
           de: 'Senfsamen angreifen (Osten)',
           fr: 'Tuez Pousse-de-moutarde (Est)',
           ja: '雑魚マスタードシードを倒す (東)',
-          cn: '击杀芥子 (东)',
+          cn: '击杀芥子 (右)',
           ko: '겨자씨 잡기(동쪽)',
         },
       },

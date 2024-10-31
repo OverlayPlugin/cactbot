@@ -729,14 +729,14 @@ Options.Triggers.push({
           en: 'North/South',
           de: 'Norden/Süden',
           fr: 'Nord/Sud',
-          cn: '上(北)/下(南)',
+          cn: '上/下',
           ko: '북/남',
         },
         eastWestSafe: {
           en: 'East/West',
           de: 'Osten/Westen',
           fr: 'Est/Ouest',
-          cn: '左(西)/右(东)',
+          cn: '左/右',
           ko: '동/서',
         },
         cornersSafe: {

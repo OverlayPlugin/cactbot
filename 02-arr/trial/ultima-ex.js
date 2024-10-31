@@ -131,7 +131,7 @@ Options.Triggers.push({
           en: 'Orbs: Cardinals (N/S first)',
           de: 'Orbs: Kardinal (N/S zuerst)',
           fr: 'Orbes : Cardinaux (N/S en premier)',
-          cn: '球: 十字（先南/北）',
+          cn: '球: 十字（先上/下）',
           ko: '구슬: 십자(남/북 먼저)',
         },
         boom3: {

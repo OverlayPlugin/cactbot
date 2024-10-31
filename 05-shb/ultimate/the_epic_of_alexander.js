@@ -90,7 +90,7 @@ const radiantOutputStrings = {
     de: 'Sacrement Norden',
     fr: 'Sacrement Nord',
     ja: '拝火は北',
-    cn: '月环上（北）',
+    cn: '月环上',
     ko: '성례: 북',
   },
   east: {
@@ -98,7 +98,7 @@ const radiantOutputStrings = {
     de: 'Sacrement Osten',
     fr: 'Sacrement Est',
     ja: '拝火は東',
-    cn: '月环右（东）',
+    cn: '月环右',
     ko: '성례: 동',
   },
   south: {
@@ -106,7 +106,7 @@ const radiantOutputStrings = {
     de: 'Sacrement Süden',
     fr: 'Sacrement Sud',
     ja: '拝火は南',
-    cn: '月环下（南）',
+    cn: '月环下',
     ko: '성례: 남',
   },
   west: {
@@ -114,7 +114,7 @@ const radiantOutputStrings = {
     de: 'Sacrement Westen',
     fr: 'Sacrement Ouest',
     ja: '拝火は西',
-    cn: '月环左（西）',
+    cn: '月环左',
     ko: '성례: 서',
   },
   unknown: Outputs.unknown,
@@ -2206,7 +2206,7 @@ Options.Triggers.push({
           de: 'Keine Klone: vielleicht Lila O->S ???',
           fr: 'Pas de Clone : peut-être E->S ???',
           ja: 'クローン無し: 多分東から南???',
-          cn: '不明: 最可能小暗 东->南 ???',
+          cn: '不明: 最可能小暗 右->下 ???',
           ko: '분신 없음: 아마도 동→남 ???',
         },
         purpleBait: {
@@ -2214,7 +2214,7 @@ Options.Triggers.push({
           de: 'Lila Köder: locke O',
           fr: 'Attirez le Violet : attirez à l\'E',
           ja: '逃亡監察: 東へ',
-          cn: '大暗: 东',
+          cn: '大暗: 右',
           ko: '보라/도망감찰: 유도역할/동쪽',
         },
         orangeBait: {
@@ -2222,7 +2222,7 @@ Options.Triggers.push({
           de: 'Orange Köder: locke N',
           fr: 'Attirez l\'Orange : attirez au N',
           ja: '接触保護: 北へ',
-          cn: '大光: 北',
+          cn: '大光: 上',
           ko: '노랑/접촉보호: 유도역할/북쪽',
         },
         purpleNoTether: {
@@ -2230,7 +2230,7 @@ Options.Triggers.push({
           de: 'Lila, keine Verbindung: O->W',
           fr: 'Violet, pas de lien : E->O',
           ja: '逃亡禁止, 線無し: 東から西へ',
-          cn: '小暗, 无连线: 东->西',
+          cn: '小暗, 无连线: 右->左',
           ko: '보라/접촉금지/선없음: 동→서',
         },
         orangeNoTether: {
@@ -2239,7 +2239,7 @@ Options.Triggers.push({
           de: 'Orange, keine Verbindung: O->N',
           fr: 'Orange, pas de lien : E->N',
           ja: '接触禁止, 線無し: 東から北へ',
-          cn: '小光, 无连线: 东->北',
+          cn: '小光, 无连线: 右->上',
           ko: '노랑/접촉금지/선없음: 동→북',
         },
         purpleCloseTether: {
@@ -2247,7 +2247,7 @@ Options.Triggers.push({
           de: 'Lila, nahe Verbindungr: O->N',
           fr: 'Violet, lien rapproché : E->N',
           ja: '逃亡禁止, 接近強制: 東から北へ',
-          cn: '小暗, 接近连线: 东->北',
+          cn: '小暗, 接近连线: 右->上',
           ko: '보라/도망금지/강제접근: 동→북',
         },
         orangeCloseTether: {
@@ -2255,7 +2255,7 @@ Options.Triggers.push({
           de: 'Orange, nahe Verbindung: O->N',
           fr: 'Orange, lien rapproché : E->N',
           ja: '接触禁止, 接近強制: 東から北へ',
-          cn: '小光, 接近连线: 东->北',
+          cn: '小光, 接近连线: 右->上',
           ko: '노랑/접촉금지/강제접근: 동→북',
         },
         purpleFarTether: {
@@ -2263,7 +2263,7 @@ Options.Triggers.push({
           de: 'Lila, entfernte Verbindung: O->S',
           fr: 'Violet, lien éloigné : E->S',
           ja: '逃亡禁止, 接近禁止: 東から南へ',
-          cn: '小暗, 远离连线: 东->南',
+          cn: '小暗, 远离连线: 右->下',
           ko: '보라/도망금지/접근금지: 동→남',
         },
         orangeFarTether: {
@@ -2271,7 +2271,7 @@ Options.Triggers.push({
           de: 'Orange, entfernte Verbindung: O->N',
           fr: 'Orange, lien éloigné : E->N',
           ja: '接触禁止, 接近禁止: 東から北へ',
-          cn: '小光, 远离连线: 东->北',
+          cn: '小光, 远离连线: 右->上',
           ko: '노랑/접촉금지/접근금지: 동→북',
         },
       },
@@ -2537,7 +2537,7 @@ Options.Triggers.push({
           de: 'Warte in der Mitte, ausweichen nach Norden',
           fr: 'Attendez au milieu, esquivez au Nord',
           ja: '中央から北へ',
-          cn: '中间 -> 北',
+          cn: '中间 -> 上',
           ko: '가운데서 북쪽으로',
         },
         goNorthDodgeSouth: {
@@ -2545,7 +2545,7 @@ Options.Triggers.push({
           de: 'Geh nach Norden, ausweichen nach Süden',
           fr: 'Allez 1 au Nord, esquivez au Sud',
           ja: '北から中央へ',
-          cn: '北 -> 中间',
+          cn: '上 -> 中间',
           ko: '북쪽에서 가운데로',
         },
         goNorthDodgeWest: {
@@ -2553,7 +2553,7 @@ Options.Triggers.push({
           de: 'Geh nach Norden, ausweichen nach Westen',
           fr: 'Allez 1 au Nord, esquivez à l\'Ouest',
           ja: '北から西へ',
-          cn: '北 -> 西北',
+          cn: '上 -> 左上',
           ko: '북쪽에서 서쪽으로',
         },
         goSouthDodgeEast: {
@@ -2561,7 +2561,7 @@ Options.Triggers.push({
           de: 'Geh nach Süden, ausweichen nach Osten',
           fr: 'Allez 1 au Sud, esquivez à l\'Est',
           ja: '南から東へ',
-          cn: '南 -> 东南',
+          cn: '下 -> 右下',
           ko: '남쪽에서 동쪽으로',
         },
         waitMiddleDodgeSouth: {
@@ -2569,7 +2569,7 @@ Options.Triggers.push({
           de: 'Warte in der Mitte, ausweichen nach Süden',
           fr: 'Attendez au milieu, esquivez au Sud',
           ja: '中央から南へ',
-          cn: '中间 -> 南',
+          cn: '中间 -> 下',
           ko: '가운데서 남쪽으로',
         },
         goSouthDodgeNorth: {
@@ -2577,7 +2577,7 @@ Options.Triggers.push({
           de: 'Geh nach Süden, ausweichen nach Norden',
           fr: 'Allez 1 au Sud, esquivez au Nord',
           ja: '南から北へ',
-          cn: '南 -> 中间',
+          cn: '下 -> 中间',
           ko: '남쪽에서 북쪽으로',
         },
       },

@@ -81,7 +81,7 @@ Options.Triggers.push({
           de: '-100G: Nach Norden/Süden',
           fr: 'Gravité -100 : Allez au nord/sud',
           ja: '-100 G: 北/南へ',
-          cn: '去北边/南边',
+          cn: '去上/下半场边缘',
           ko: '중력 마이너스 100: 남/북쪽으로',
         },
       },
