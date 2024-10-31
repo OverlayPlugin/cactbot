@@ -1623,7 +1623,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Laser (Osten)',
           fr: 'Laser (Est)',
           ja: 'レーザー (東)',
-          cn: '左半场激光',
+          cn: '右半场激光',
           ko: '동쪽 레이저',
         },
       },
