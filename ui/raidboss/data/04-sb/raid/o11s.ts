@@ -332,7 +332,7 @@ const triggerSet: TriggerSet<Data> = {
         'Force Quit': '强制结束',
         'Guided Missile Kyrios': '跟踪导弹P',
         'Long Needle Kyrios': '大型导弹P',
-        '(?<! )Loop': '空翻',
+        '(?<! )Loop': '循环',
         'Magnetism': '磁力',
         'Mustard Bomb': '芥末爆弹',
         'Pantokrator': '全能之主',
