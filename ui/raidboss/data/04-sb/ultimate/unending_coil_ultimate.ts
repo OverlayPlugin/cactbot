@@ -1716,7 +1716,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stack on safe spot',
           de: 'In Sicherheit steken',
           fr: 'Packez-vous au point safe',
-          ja: '頭割りで安全', // FIXME：no damage here
+          ja: '安置へ集合',
           cn: '安全点集合',
           ko: '안전장소에 모이기',
         },

@@ -242,7 +242,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'move away',
           de: 'wegbewegen',
           fr: 'Éloignez-vous',
-          ja: '散開', // FIXME
+          ja: '移動',
           cn: '躲开原地',
           ko: '떨어지기',
         },

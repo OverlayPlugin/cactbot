@@ -118,7 +118,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Don\'t Stack!',
           de: 'Nicht Sammeln!',
           fr: 'Ne vous packez pas !',
-          ja: '重ならないで！', // FIXME
+          ja: '頭割りしないで！',
           cn: '别去分摊！',
           ko: '아직 모이지 말기!',
         },
