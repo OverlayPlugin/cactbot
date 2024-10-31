@@ -754,7 +754,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Enumeration Norden/Süden',
           fr: 'Énumération Nord/Sud',
           ja: '北・南でエアーバンプ',
-          cn: '上半场/下半场 蓝圈分摊',
+          cn: '上/下两侧 蓝圈分摊',
           ko: '2인 장판 북쪽/남쪽',
         },
         southEnumeration: {
