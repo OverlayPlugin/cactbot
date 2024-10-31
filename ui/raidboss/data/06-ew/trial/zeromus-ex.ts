@@ -701,7 +701,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verteilen Norden/Süden',
           fr: 'Écartez-vous Nord/Sud',
           ja: '北・南で散会',
-          cn: '上半场/下半场 分散',
+          cn: '上/下两侧 分散',
           ko: '북쪽/남쪽으로 산개',
         },
         southSpread: {
