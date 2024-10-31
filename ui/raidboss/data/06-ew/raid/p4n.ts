@@ -140,7 +140,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh zur südlichen Kante',
           fr: 'Allez au bord sud',
           ja: '南側へ',
-          cn: '去下半场',
+          cn: '去下半场边缘',
           ko: '남쪽 구석으로',
         },
       },
