@@ -100,7 +100,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh seitlich nach N/S',
           fr: 'Allez côtés N/S',
           ja: '北/南側へ',
-          cn: '去上/下半场',
+          cn: '去上/下两侧',
           ko: '남/북쪽으로',
         },
         ttsText: {
