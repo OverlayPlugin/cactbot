@@ -1352,7 +1352,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Geh nach Norden; Rückstoß zum leuchtenden Kreis',
             fr: 'Allez au nord; Poussée depuis le cercle verdâtre',
             ja: '北へ、光ってる円からノックバック',
-            cn: '去 发光圆形列 上半场',
+            cn: '去上半场 发光圆形列 ',
             ko: '북쪽으로, 빛나는 원에서 넉백',
           },
         };
