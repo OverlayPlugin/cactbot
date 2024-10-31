@@ -562,7 +562,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Mittlere Reihe, Hintere Hälfte',
           fr: 'Ligne centrale, Moitié arrière',
           ja: '中央の後方へ',
-          cn: '二三行后半',
+          cn: '第二行后半',
           ko: '가운데 줄, 뒷부분',
         },
         southFront: {
