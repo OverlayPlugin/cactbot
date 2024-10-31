@@ -419,7 +419,7 @@ const triggerSet: TriggerSet<Data> = {
         fr:
           'L\'emplacement des deux sœurs à bloquer pour les tanks. dir1 est toujours le premier emplacement de la sœur en commençant par le nord et en allant dans le sens des aiguilles d\'une montre.',
         ja: 'タンクがブロックする2人の分身の位置。dir1 は基本的に「北」から始まり、時計回りに最初の分身の位置に戻ります。',
-        cn: '两分身待坦克阻挡的位置。dir1 始终是从上开始顺时针方向的第一个分身位置',
+        cn: '两分身待坦克阻挡的位置。dir1 始终是从地图上方开始顺时针方向的第一个分身位置',
         ko: '탱커가 막을 두 분신의 위치. dir1은 북쪽에서 시계방향으로 도는 것을 기준으로 항상 첫 번째 분신의 위치입니다',
       },
       type: 'StartsUsing',
