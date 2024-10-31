@@ -81,7 +81,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh seitlich nach Osten/Westen',
           fr: 'Allez côtés Est/Ouest',
           ja: '東側や西側へ',
-          cn: '去左/右半场',
+          cn: '去左/右两侧',
           ko: '동쪽이나 서쪽으로',
         },
       },
