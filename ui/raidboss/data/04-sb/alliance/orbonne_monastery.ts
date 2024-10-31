@@ -107,7 +107,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Searchlight on YOU',
           de: 'Suchscheinwerfer auf DIR',
           fr: 'Repérage sur VOUS',
-          ja: '地雷を外に放置（踏まない）', // FIXME
+          ja: '外に放置',
           cn: '远离人群放圈',
           ko: '탐조등 대상자',
         },
@@ -183,7 +183,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Use Swords On Jails',
           de: 'Kristalle mit Schwert zerschlagen',
           fr: 'Utilisez les épées sur les prisons',
-          ja: '（コンテンツアクション）剣で魂を討つ', // FIXME
+          ja: '（コンテンツアクション）剣で模造聖域を破る',
           cn: '用剑击破囚牢',
           ko: '감옥에 검 사용하기',
         },
@@ -431,7 +431,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bolt on YOU',
           de: 'Blitz auf DIR',
           fr: 'Éclair sur VOUS',
-          ja: '剣から離れる', // FIXME
+          ja: '自分に無双稲妻突き',
           cn: '无双惊电突点名',
           ko: '번개찌르기 대상자',
         },
@@ -589,7 +589,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Look for Hashmal dash',
           de: 'Nach Hashmal-Dash ausschau halten',
           fr: 'Repérez Hashmal pour la ruée',
-          ja: '十字レーザーを避ける', // FIXME
+          ja: 'ブーストエッジ見逃すな！',
           cn: '观察左右躲避半场刀',
           ko: '하쉬말 돌진 확인',
         },

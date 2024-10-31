@@ -99,7 +99,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'watch for safe',
           de: 'nach sicherer Position schauen',
           fr: 'Trouvez une zone safe',
-          ja: '安置へ', // FIXME
+          ja: 'ブロックされてない方角から攻撃',
           cn: '攻击未格挡的方向',
           ko: '안전지대 찾기',
         },

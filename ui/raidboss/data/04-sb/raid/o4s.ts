@@ -146,7 +146,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'thunder',
           de: 'blitzga',
           fr: 'foudre',
-          ja: '離れる', // FIXME
+          ja: 'タンク大ダメージ',
           cn: '死刑',
           ko: '선더가',
         },
@@ -451,7 +451,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Color sides',
           de: 'Farbige Seiten',
           fr: 'Côtés de couleur',
-          ja: '同じ色に', // FIXME
+          ja: 'デバフと異なる色へ',
           cn: 'debuff异色侧',
           ko: '색깔 맞기',
         },
@@ -538,7 +538,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Color sides',
           de: 'Farbige Seiten',
           fr: 'Côtés de couleur',
-          ja: '同じ色に', // FIXME
+          ja: 'デバフと異なる色へ',
           cn: 'debuff异色侧',
           ko: '색깔 방향',
         },
@@ -616,7 +616,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Charge: be behind other tank',
           de: 'Aufladung: hinter anderen Tank',
           fr: 'Charge : Placez-vous derrière l\'autre tank',
-          ja: '突進: 他のタンクの後ろに', // FIXME
+          ja: '運動会: 他のタンクの後ろに',
           cn: '站在另一个坦克后面',
           ko: '탱커 뒤에 있기',
         },
@@ -624,7 +624,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Charge: be in the very back',
           de: 'Aufladung: Ganz nach hinten',
           fr: 'Charge : Placez-vous tout au fond',
-          ja: '突進: 後ろの遠くへ', // FIXME
+          ja: '運動会: 後ろの遠くへ',
           cn: '去最后',
           ko: '가장 뒤에 있기',
         },
@@ -632,7 +632,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Charge: be in front!',
           de: 'Aufladung: Ganz nach vorn',
           fr: 'Charge : Placez-vous devant !',
-          ja: '突進: 前方に', // FIXME
+          ja: '運動会: 前方に',
           cn: '去最前',
           ko: '앞쪽으로',
         },
@@ -640,7 +640,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Charge: be behind tanks',
           de: 'Aufladung: Hinter die Tanks',
           fr: 'Charge : Placez-vous derrière les tanks',
-          ja: '突進: タンクの後ろに', // FIXME
+          ja: '運動会: タンクの後ろに',
           cn: '站在坦克后面',
           ko: '탱커 뒤로',
         },
@@ -648,7 +648,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'charge',
           de: 'aufladung',
           fr: 'Charge',
-          ja: '無の氾濫', // FIXME
+          ja: '運動会',
           cn: '排队',
           ko: '무의 범람',
         },

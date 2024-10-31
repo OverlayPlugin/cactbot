@@ -634,7 +634,7 @@ export default {
     en: 'Prey on YOU',
     de: 'Marker auf DIR',
     fr: 'Marquage sur VOUS',
-    ja: '自分に捕食', // FIXME
+    ja: '自分にマーキング',
     cn: '猎物点名',
     ko: '홍옥징 대상자',
   },
@@ -642,7 +642,7 @@ export default {
     en: 'Prey on ${player}',
     de: 'Marker auf ${player}',
     fr: 'Marquage sur ${player}',
-    ja: '${player}に捕食', // FIXME
+    ja: '${player}にマーキング',
     cn: '${player} 的猎物点名',
     ko: '"${player}" 홍옥징',
   },
