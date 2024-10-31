@@ -309,7 +309,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh zur Kante im Norden / Süden',
           fr: 'Allez au bord Nord/Sud',
           ja: '南北の隅へ',
-          cn: '去南北边缘',
+          cn: '去上/下边缘',
           ko: '남/북쪽 끝으로',
         },
         eastWest: {
@@ -317,7 +317,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh zur Kante im Osten / Westen',
           fr: 'Allez au bord Est/Ouest',
           ja: '東西の隅へ',
-          cn: '去东西边缘',
+          cn: '去左/右边缘',
           ko: '동/서쪽 끝으로',
         },
       },

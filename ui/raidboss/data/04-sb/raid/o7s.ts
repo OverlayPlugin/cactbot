@@ -161,7 +161,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verlassen: Bleib mittig',
           fr: 'Isolement : restez au milieu',
           ja: '孤独: 内側へ',
-          cn: '呆在中间',
+          cn: '待在中间',
           ko: '고독감: 중앙에 있기',
         },
       },

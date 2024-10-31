@@ -2269,7 +2269,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'N/S',
           fr: 'N/S',
           ja: '南/北',
-          cn: '上(北)/下(南)',
+          cn: '上/下',
           ko: '남/북',
         },
         eastWest: {
@@ -2277,7 +2277,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'O/W',
           fr: 'E/O',
           ja: '東/西',
-          cn: '左(西)/右(东)',
+          cn: '左/右',
           ko: '동/서',
         },
         yellowLong: {

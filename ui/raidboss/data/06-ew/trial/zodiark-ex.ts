@@ -258,7 +258,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Unter NW Quetzalcoatl',
           fr: 'Sous le Quetzalcóatl NO',
           ja: '北東の鳥の下',
-          cn: '站在左上 (西北) 鸟',
+          cn: '站在左上鸟',
           ko: '북동쪽 새 밑으로', // This is northeast. Because Korean folks go there.
         },
       },
@@ -415,7 +415,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Außen Norden',
           fr: 'Nord Extérieur',
           ja: '北の外側',
-          cn: '上 (北) 外',
+          cn: '上外',
           ko: '북쪽 바깥',
         },
         insideNorth: {
@@ -423,7 +423,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Innen Norden',
           fr: 'Nord Intérieur',
           ja: '北の内側',
-          cn: '上 (北) 内',
+          cn: '上内',
           ko: '북쪽 안',
         },
         outsideWest: {
@@ -431,7 +431,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Außen Westen',
           fr: 'Ouest Extérieur',
           ja: '西の外側',
-          cn: '左 (西) 外',
+          cn: '左外',
           ko: '서쪽 바깥',
         },
         insideWest: {
@@ -439,7 +439,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Innen Westen',
           fr: 'Ouest Intérieur',
           ja: '西の内側',
-          cn: '左 (西) 内',
+          cn: '左内',
           ko: '서쪽 안',
         },
         outsideEast: {
@@ -447,7 +447,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Außen Osten',
           fr: 'Est Extérieur',
           ja: '東の外側',
-          cn: '右 (东) 外',
+          cn: '右外',
           ko: '동쪽 바깥',
         },
         insideEast: {
@@ -455,7 +455,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Innen Osten',
           fr: 'Est Intérieur',
           ja: '東の内側',
-          cn: '右 (东) 内',
+          cn: '右内',
           ko: '동쪽 안',
         },
         ...paradeigmaLeanOutputStrings,
@@ -570,7 +570,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nördliche Kegel-AoE',
           fr: 'Cône Nord',
           ja: '北のさんかく',
-          cn: '上 (北) 扇形',
+          cn: '上扇形',
           ko: '북쪽 삼각형',
         },
         eastCone: {
@@ -578,7 +578,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Östliche Kegel-AoE',
           fr: 'Cône Est',
           ja: '東のさんかく',
-          cn: '右 (东) 扇形',
+          cn: '右扇形',
           ko: '동쪽 삼각형',
         },
         westCone: {
@@ -586,7 +586,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Westliche Kegel-AoE',
           fr: 'Cône Ouest',
           ja: '西のさんかく',
-          cn: '左 (西) 扇形',
+          cn: '左扇形',
           ko: '서쪽 삼각형',
         },
         southCone: {
@@ -594,7 +594,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Südliche Kegel-AoE',
           fr: 'Cône Sud',
           ja: '南のさんかく',
-          cn: '下 (南) 扇形',
+          cn: '下扇形',
           ko: '남쪽 삼각형',
         },
       },
@@ -898,7 +898,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Doppel-Fäuste (nördlich außen)',
           fr: 'Poings doubles (nord extérieur)',
           ja: 'ダブルフィスト (北の外側)',
-          cn: '双拳 (上北外)',
+          cn: '双拳 (上外)',
           ko: '양 옆 큰 원형 장판 (북쪽 바깥)',
         },
         adikia1InsideNorth: {
@@ -906,7 +906,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Doppel-Fäuste (nördlich innen)',
           fr: 'Poings doubles (nord intérieur)',
           ja: 'ダブルフィスト (北の内側)',
-          cn: '双拳 (上北内)',
+          cn: '双拳 (上内)',
           ko: '양 옆 큰 원형 장판 (북쪽 안)',
         },
         adikia2: {

@@ -54,7 +54,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'zur südlichen Kante',
           fr: 'Allez vers le bord sud',
           ja: '南へ',
-          cn: '前往南侧边缘',
+          cn: '前往下半场边缘',
           ko: '남쪽으로',
         },
       },

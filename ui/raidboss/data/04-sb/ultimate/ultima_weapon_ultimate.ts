@@ -419,7 +419,7 @@ const triggerSet: TriggerSet<Data> = {
         fr:
           'L\'emplacement des deux sœurs à bloquer pour les tanks. dir1 est toujours le premier emplacement de la sœur en commençant par le nord et en allant dans le sens des aiguilles d\'une montre.',
         ja: 'タンクがブロックする2人の分身の位置。dir1 は基本的に「北」から始まり、時計回りに最初の分身の位置に戻ります。',
-        cn: '两分身待坦克阻挡的位置。dir1 始终是从上 (北) 开始顺时针方向的第一个分身位置',
+        cn: '两分身待坦克阻挡的位置。dir1 始终是从地图上方开始顺时针方向的第一个分身位置',
         ko: '탱커가 막을 두 분신의 위치. dir1은 북쪽에서 시계방향으로 도는 것을 기준으로 항상 첫 번째 분신의 위치입니다',
       },
       type: 'StartsUsing',
@@ -884,8 +884,8 @@ const triggerSet: TriggerSet<Data> = {
         ja: `最初の楔が南東の場合、逆Zと通常Zの両方で南東/北西に出現します。
              最初の楔が南の場合、逆Zなら南東/北西、通常Zなら南西/北東に出現します。
              これは一例で、他の釘の順序もサポートされています。`,
-        cn: `如果第一个火神柱在东南，则反向 Z 和正常 Z 都会提示东南/西北
-             如果第一个火神柱在南, 则反向 Z 将提示东南/西北，正常 Z 将提示西南/东北。
+        cn: `如果第一个火神柱在右下，则反向 Z 和正常 Z 都会提示右下/左上
+             如果第一个火神柱在下, 则反向 Z 将提示右下/左上，正常 Z 将提示左下/右上。
              这些只是示例, 还支持其他火神柱顺序。`,
         ko: `첫 번째 기둥이 남동쪽인 경우, 역방향 Z와 일반 Z 모두에 대해 남동/북서를 호출합니다.
              첫 번째 기둥이 남쪽인 경우, 역방향 Z는 남동/북서를, 일반 Z는 남서/북동를 호출합니다.
@@ -1607,7 +1607,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Laser (Norden)',
           fr: 'Laser (Nord)',
           ja: 'レーザー (北)',
-          cn: '右侧激光',
+          cn: '上半场激光',
           ko: '북쪽 레이저',
         },
       },
@@ -1623,7 +1623,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Laser (Osten)',
           fr: 'Laser (Est)',
           ja: 'レーザー (東)',
-          cn: '左侧激光',
+          cn: '右半场激光',
           ko: '동쪽 레이저',
         },
       },

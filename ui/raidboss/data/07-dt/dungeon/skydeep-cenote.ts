@@ -193,13 +193,13 @@ const triggerSet: TriggerSet<Data> = {
         awayFromOrb: {
           en: 'North + Away from orb',
           fr: 'Nord + Évitez les orbes',
-          cn: '北 + 远离黄球',
+          cn: '上 + 远离黄球',
           ko: '북쪽 + 구슬에서 멀리 떨어지기',
         },
         nearOrb: {
           en: 'Be close to North orb',
           fr: 'Près de l\'orbe nord',
-          cn: '靠近北边黄球',
+          cn: '靠近上半场黄球',
           ko: '북쪽 구슬에 가까이 붙기',
         },
       },

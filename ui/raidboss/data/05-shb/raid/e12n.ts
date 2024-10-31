@@ -34,7 +34,7 @@ const bombOutputStrings = {
     de: 'Zwichen den Bomben im Norden',
     fr: 'Entre les bombes au Nord',
     ja: '北の岩へ',
-    cn: '去北边岩石中间',
+    cn: '去正上岩石中间',
     ko: '북쪽 폭탄 사이',
   },
   'south': {
@@ -42,7 +42,7 @@ const bombOutputStrings = {
     de: 'Zwichen den Bomben im Süden',
     fr: 'Entre les bombes au Sud',
     ja: '南の岩へ',
-    cn: '去南边岩石中间',
+    cn: '去正下岩石中间',
     ko: '남쪽 폭탄 사이',
   },
   'east': {
@@ -50,7 +50,7 @@ const bombOutputStrings = {
     de: 'Zwichen den Bomben im Osten',
     fr: 'Entre les bombes à l\'Est',
     ja: '東の岩へ',
-    cn: '去东边岩石中间',
+    cn: '去右边岩石中间',
     ko: '동쪽 폭탄 사이',
   },
   'west': {
@@ -58,7 +58,7 @@ const bombOutputStrings = {
     de: 'Zwichen den Bomben im Westen',
     fr: 'Entre les bombes à l\'Ouest',
     ja: '西の岩へ',
-    cn: '去西边岩石中间',
+    cn: '去左边岩石中间',
     ko: '서쪽 폭탄 사이',
   },
 };
@@ -96,7 +96,7 @@ const primalOutputStrings = {
     de: 'Norden/Süden + Raus',
     fr: 'Nord/Sud + Extérieur',
     ja: '北/南 + 外へ',
-    cn: '南北远离',
+    cn: '上/下远离',
     ko: '북/남 + 바깥',
   },
   '008E0091': {

@@ -122,7 +122,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '-100G: Nach Norden/Süden und wegschauen',
           fr: 'Gravité -100 : Allez au nord/sud et détournez le regard',
           ja: '-100 G: 北/南へ、ボスを見ないで',
-          cn: '前往南边/北边并背对boss',
+          cn: '去上/下半场边缘并背对boss',
           ko: '중력 마이너스 100: 남/북쪽에서 바깥쪽 보기',
         },
       },
