@@ -182,7 +182,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nach norden',
           fr: 'Allez au nord',
           ja: '南へ',
-          cn: '去下半场',
+          cn: '去上半场',
           ko: '북쪽으로',
         },
         goSouthStackOnFriend: {
