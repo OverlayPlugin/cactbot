@@ -1323,7 +1323,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Süden (Viereck unten/Kreise oben)',
           fr: 'Restez au sud (carré en bas/cercle en haut)',
           ja: '南へ（下に四角/上に円）',
-          cn: '待在 下方上圆列 下半场',
+          cn: '待在下半场 下方上圆列 ',
           ko: '남쪽으로 (사각형이 아래, 원이 위인 곳)',
         },
       },
