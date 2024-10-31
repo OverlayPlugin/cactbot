@@ -147,7 +147,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Auf deinem Stein sammeln',
           fr: 'Packez-vous avec votre rocher',
           ja: '自分の岩に貼りつく',
-          cn: '与自己的石堆重合',
+          cn: '与自己的石堆分摊',
           ko: '돌과 같이 맞기',
         },
         stackOnYou: Outputs.stackOnYou,
