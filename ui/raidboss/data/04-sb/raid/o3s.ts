@@ -671,7 +671,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         '\\(Apanda\\)': '(阿班达)',
         '\\(Books\\)': '(图书)',
-        '\\(Cave\\)': '(监狱)',
+        '\\(Cave\\)': '(墓地)',
         '\\(Clock\\)': '(八方)',
         '\\(Crystals\\)': '(水晶)',
         '\\(Great Dragon\\)': '(巨龙)',

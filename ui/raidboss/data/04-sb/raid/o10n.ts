@@ -286,7 +286,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!/)Out': '远离',
         'Northern Cross': '北十字星',
         'Protostar': '原恒星',
-        'Spin': '回转',
+        'Spin': '横转',
         'Tail End': '煞尾',
         'Thunderstorm': '雷暴',
       },

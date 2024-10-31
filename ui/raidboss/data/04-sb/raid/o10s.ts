@@ -339,7 +339,7 @@ const triggerSet: TriggerSet<Data> = {
         'Protostar': '原恒星',
         'Shaker/Thunder': '大地摇动/闪雷风暴',
         'Signal': '信号',
-        'Spin': '回转',
+        'Spin': '横转',
         'Tail End': '煞尾',
         'Thunderstorm': '雷暴',
         'Time Immemorial': '开天辟地',

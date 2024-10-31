@@ -608,7 +608,7 @@ const triggerSet: TriggerSet<Data> = {
         'Chaos': '卡奥斯',
       },
       'replaceText': {
-        'Big Bang': '돌출',
+        'Big Bang': '顶起',
         'Blaze': '烈焰',
         'Bowels of Agony': '深层痛楚',
         'Chaotic Dispersion': '散布混沌',
@@ -616,7 +616,7 @@ const triggerSet: TriggerSet<Data> = {
         'Damning Edict': '诅咒敕令',
         'Earthquake': '地震',
         'Fiendish Orbs': '追踪',
-        'Knock(?! )': '中弹',
+        'Knock(?! )': '轰击',
         'Long/Lat Implosion': '经/纬聚爆',
         'Soul of Chaos': '混沌之魂',
         'Stray Earth': '混沌之土',

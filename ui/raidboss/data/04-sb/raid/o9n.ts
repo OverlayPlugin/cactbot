@@ -254,7 +254,7 @@ const triggerSet: TriggerSet<Data> = {
         'Damning Edict': '诅咒敕令',
         'Earthquake': '大地震',
         'Fiendish Orbs': '追踪',
-        'Knock(?! )': '中弹',
+        'Knock(?! )': '轰击',
         'Long/Lat Implosion': '经/纬度聚爆',
         'Soul of Chaos': '混沌之魂',
         'Stray Flames': '混沌之炎',

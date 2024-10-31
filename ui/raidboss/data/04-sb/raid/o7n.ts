@@ -254,7 +254,7 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Ray': '魔导激光',
         'Main Cannon': '主加农炮',
         'Missile Simulation': '加载导弹模拟程序',
-        'Plane Laser': '平面激光',
+        'Plane Laser': '小飞机激光',
         'Prey': '猎物',
         'Run Program': '实体化程序',
         'Shockwave': '冲击波',
