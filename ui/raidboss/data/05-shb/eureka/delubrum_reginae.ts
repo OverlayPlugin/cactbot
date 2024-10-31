@@ -655,7 +655,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh zum Kreis im Norden',
           fr: 'Allez au cercle Nord',
           ja: '北のドーナツ範囲に入る',
-          cn: '去上月环',
+          cn: '去上方月环',
           ko: '북쪽 원으로 이동',
         },
         weaveWithKnockback: {
