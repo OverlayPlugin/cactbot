@@ -98,7 +98,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Orb Marker',
           fr: 'Orbe',
           ja: 'マーカー',
-          cn: '红球点名',
+          cn: '放球点名',
           ko: '원자 파동 징',
         },
       },
