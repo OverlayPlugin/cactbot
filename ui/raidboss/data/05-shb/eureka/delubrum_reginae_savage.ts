@@ -1344,7 +1344,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Geh nach Süden; Rückstoß zum leuchtenden Donut',
             fr: 'Allez au sud; Poussée vers le donut embrasé',
             ja: '南へ、光ってるドーナツへノックバック',
-            cn: '去 发光环形列 下半场',
+            cn: '去下半场 发光环形列 ',
             ko: '남쪽으로, 빛나는 도넛쪽으로 넉백',
           },
           goNorth: {
