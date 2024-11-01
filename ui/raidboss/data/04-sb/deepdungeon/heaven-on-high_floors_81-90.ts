@@ -32,7 +32,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus oder unterbreche ${name}',
           fr: 'Extérieur ou interrompez ${name}',
           ja: '外へ、または${name}に詠唱中断',
-          cn: '出去或打断 ${name}',
+          cn: '远离或打断 ${name}',
           ko: '밖으로 또는 ${name} 시전 끊기',
         },
       },

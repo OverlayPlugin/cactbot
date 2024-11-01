@@ -179,7 +179,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Acid Rain': '酸雨',
         'Add Wave': '一波小怪',
-        'Crossing Whistle': '交叉汽笛',
+        'Crossing Whistle': '魔界汽笛（直线）',
         'Diabolic Chimney': '魔界喷烟',
         'Diabolic Headlamp': '魔界前照灯',
         'Diabolic Light': '魔界光',
@@ -190,7 +190,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ghosts': '幽灵',
         'Head On': '追尾',
         'Saintly Beam': '圣光射线',
-        'Tether Whistle': '连线汽笛',
+        'Tether Whistle': '魔界汽笛（连线）',
       },
     },
     {
