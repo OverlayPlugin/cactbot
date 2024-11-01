@@ -169,7 +169,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stack and Stay Out',
           de: 'Stack und Bleiben',
           fr: 'Packez-vous et restez à l\'extérieur',
-          ja: '中央に集合', // FIXME
+          ja: '頭割り，そして外で待機',
           cn: '分摊然后留在外面',
           ko: '산개하고 바깥에 있기',
         },

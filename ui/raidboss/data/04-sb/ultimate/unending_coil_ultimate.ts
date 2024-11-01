@@ -1319,7 +1319,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'YOU Stack for Twin',
           de: 'DU stackst für Twintania',
           fr: 'Packez-vous pour Gémellia',
-          ja: '自分にタニアには頭割り', // FIXME
+          ja: '自分にツインタニア',
           cn: '双塔俯冲点名',
           ko: '내가 트윈징 대상자',
         },
@@ -1343,7 +1343,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'stack for twin',
           de: 'stek für twintania',
           fr: 'Packez-vous pour Gémellia',
-          ja: '頭割り', // FIXME
+          ja: 'ツインタニア',
           cn: '双塔俯冲点名',
           ko: '트윈타니아 옆에 서기',
         },
