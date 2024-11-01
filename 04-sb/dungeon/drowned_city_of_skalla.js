@@ -70,7 +70,7 @@ Options.Triggers.push({
           de: 'Schweif-Flächenangriff',
           fr: 'Évitez la queue',
           ja: 'しっぽ！',
-          cn: '尾巴攻击',
+          cn: '躲开背后',
           ko: '꼬리쓸기',
         },
       },

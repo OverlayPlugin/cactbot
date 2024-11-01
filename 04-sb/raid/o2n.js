@@ -41,7 +41,7 @@ Options.Triggers.push({
           de: 'Sammeln Marker auf DIR',
           fr: 'Marqueur de package sur VOUS',
           ja: '自分に集合',
-          cn: '集合点名',
+          cn: '分摊点名',
           ko: '쉐어징 대상자',
         },
         stackOn: Outputs.stackOnPlayer,
