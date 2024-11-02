@@ -16,6 +16,13 @@ const uznairOutputStrings = {
     ko: '곧 쫄 나옴',
   },
 };
+const altarAssemblyIds = [
+  '7604',
+  '7605',
+  '7606',
+  '7607',
+  '7608', // Altar Queen
+];
 Options.Triggers.push({
   id: 'TheShiftingAltarsOfUznair',
   zoneId: ZoneId.TheShiftingAltarsOfUznair,
@@ -28,9 +35,7 @@ Options.Triggers.push({
       netRegex: { npcNameId: '7602' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: uznairOutputStrings.spawn,
-      },
+      outputStrings: uznairOutputStrings,
     },
     {
       id: 'Shifting Altars of Uznair Altar Matanga Spawn',
@@ -39,19 +44,12 @@ Options.Triggers.push({
       netRegex: { npcNameId: '7603' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: uznairOutputStrings.spawn,
-      },
+      outputStrings: uznairOutputStrings,
     },
     {
       id: 'Shifting Altars of Uznair Altar Assembly Spawn',
-      // 7604 = Altar Onion
-      // 7605 = Altar Egg
-      // 7606 = Altar Garlic
-      // 7607 = Altar Tomato
-      // 7608 = Altar Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '760[4-8]', capture: false },
+      netRegex: { npcNameId: altarAssemblyIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text(),
       outputStrings: {
@@ -88,9 +86,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '3400', source: 'Altar Skatene', capture: false },
       infoText: (_data, _matches, output) => output.adds(),
-      outputStrings: {
-        adds: uznairOutputStrings.adds,
-      },
+      outputStrings: uznairOutputStrings,
     },
     {
       id: 'Shifting Altars of Uznair Altar Totem Flames of Fury Collect',
@@ -240,9 +236,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '343A', source: 'Altar Mandragora', capture: false },
       infoText: (_data, _matches, output) => output.adds(),
-      outputStrings: {
-        adds: uznairOutputStrings.adds,
-      },
+      outputStrings: uznairOutputStrings,
     },
     {
       id: 'Shifting Altars of Uznair Altar Airavata Huff',
@@ -268,9 +262,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '3436', source: 'The Great Gold Whisker', capture: false },
       infoText: (_data, _matches, output) => output.adds(),
-      outputStrings: {
-        adds: uznairOutputStrings.adds,
-      },
+      outputStrings: uznairOutputStrings,
     },
     // ---------------- final summon: Altar Apanda ----------------
     {

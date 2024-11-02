@@ -24,6 +24,13 @@ const agononOutputStrings = {
     ko: '곧 쫄 나옴',
   },
 };
+const gymnasiouMandragoraiIds = [
+  '12036',
+  '12037',
+  '12038',
+  '12039',
+  '12040', // Gymnastic Queen
+];
 Options.Triggers.push({
   id: 'TheShiftingGymnasionAgonon',
   zoneId: ZoneId.TheShiftingGymnasionAgonon,
@@ -38,19 +45,12 @@ Options.Triggers.push({
       netRegex: { npcNameId: '1203[45]' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: agononOutputStrings.spawn,
-      },
+      outputStrings: agononOutputStrings,
     },
     {
       id: 'Shifting Gymnasion Agonon Gymnasiou Mandragorai Spawn',
-      // 12036 = Gymnastic Onion
-      // 12037 = Gymnastic Eggplant
-      // 12038 = Gymnastic Garlic
-      // 12039 = Gymnastic Tomato
-      // 12040 = Gymnastic Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: ['1203[6-9]', '12040'], capture: false },
+      netRegex: { npcNameId: gymnasiouMandragoraiIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text(),
       outputStrings: {
@@ -411,9 +411,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '7E28', source: 'Lyssa Chrysine', capture: false },
       infoText: (_data, _matches, output) => output.adds(),
-      outputStrings: {
-        adds: agononOutputStrings.adds,
-      },
+      outputStrings: agononOutputStrings,
     },
     {
       id: 'Shifting Gymnasion Agonon Lyssa Chrysine Skull Dasher',
@@ -432,9 +430,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '7E20', source: 'Lampas Chrysine', capture: false },
       infoText: (_data, _matches, output) => output.adds(),
-      outputStrings: {
-        adds: agononOutputStrings.adds,
-      },
+      outputStrings: agononOutputStrings,
     },
     {
       id: 'Shifting Gymnasion Agonon Gymnasiou Mandragoras Ram',
@@ -447,9 +443,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '7E2C', source: 'Gymnasiou Mandragoras', capture: false },
       infoText: (_data, _matches, output) => output.adds(),
-      outputStrings: {
-        adds: agononOutputStrings.adds,
-      },
+      outputStrings: agononOutputStrings,
     },
     // ---------------- final summon: Narkissos ----------------
     {

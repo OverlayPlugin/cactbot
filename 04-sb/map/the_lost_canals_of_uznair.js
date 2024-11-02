@@ -21,9 +21,7 @@ Options.Triggers.push({
       netRegex: { npcNameId: '6567' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: uznairOutputStrings.spawn,
-      },
+      outputStrings: uznairOutputStrings,
     },
     {
       id: 'Lost Canals of Uznair Abharamu Spawn',
@@ -32,9 +30,7 @@ Options.Triggers.push({
       netRegex: { npcNameId: '6568' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: uznairOutputStrings.spawn,
-      },
+      outputStrings: uznairOutputStrings,
     },
     // ---------------- cage mobs ----------------
     {

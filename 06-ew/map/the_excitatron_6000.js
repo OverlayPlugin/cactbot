@@ -9,6 +9,13 @@ const excitatronOutputStrings = {
     ko: '${name} 등장!',
   },
 };
+const excitingMandragorasIds = [
+  '10835',
+  '10836',
+  '10837',
+  '10838',
+  '10839', // Exciting Queen
+];
 Options.Triggers.push({
   id: 'TheExcitatron6000',
   zoneId: ZoneId.TheExcitatron6000,
@@ -21,9 +28,7 @@ Options.Triggers.push({
       netRegex: { npcNameId: '10834' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: excitatronOutputStrings.spawn,
-      },
+      outputStrings: excitatronOutputStrings,
     },
     {
       id: 'Excitatron Golden Supporter Spawn',
@@ -32,19 +37,12 @@ Options.Triggers.push({
       netRegex: { npcNameId: '10833' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: excitatronOutputStrings.spawn,
-      },
+      outputStrings: excitatronOutputStrings,
     },
     {
       id: 'Excitatron Exciting Mandragoras Spawn',
-      // 10835 = Exciting Onion
-      // 10836 = Exciting Egg
-      // 10837 = Exciting Garlic
-      // 10838 = Exciting Tomato
-      // 10839 = Exciting Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '1083[5-9]', capture: false },
+      netRegex: { npcNameId: excitingMandragorasIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text(),
       outputStrings: {

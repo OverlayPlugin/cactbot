@@ -8,6 +8,13 @@ const uznairOutputStrings = {
     ko: '${name} 등장!',
   },
 };
+const canalCrewIds = [
+  '6847',
+  '6848',
+  '6849',
+  '6850',
+  '6851', // Canal Queen
+];
 Options.Triggers.push({
   id: 'TheHiddenCanalsOfUznair',
   zoneId: ZoneId.TheHiddenCanalsOfUznair,
@@ -20,9 +27,7 @@ Options.Triggers.push({
       netRegex: { npcNameId: '6567' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: uznairOutputStrings.spawn,
-      },
+      outputStrings: uznairOutputStrings,
     },
     {
       id: 'Hidden Canals of Uznair Abharamu Spawn',
@@ -31,19 +36,12 @@ Options.Triggers.push({
       netRegex: { npcNameId: '6568' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn({ name: matches.name }),
-      outputStrings: {
-        spawn: uznairOutputStrings.spawn,
-      },
+      outputStrings: uznairOutputStrings,
     },
     {
       id: 'Hidden Canals of Uznair Canal Crew Spawn',
-      // 6847 = Canal Onion
-      // 6848 = Canal Egg
-      // 6849 = Canal Garlic
-      // 6850 = Canal Tomato
-      // 6851 = Canal Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: ['684[7-9]', '685[01]'], capture: false },
+      netRegex: { npcNameId: canalCrewIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text(),
       outputStrings: {
