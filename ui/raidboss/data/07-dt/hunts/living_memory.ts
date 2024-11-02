@@ -356,7 +356,14 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '972F', source: 'Mica the Magical Mu', capture: false },
       suppressSeconds: 1,
-      response: Responses.moveAway(),
+      alertText: (_data, _matches, output) => {
+        return output.avoid!();
+      },
+      outputStrings: {
+        avoid: {
+          en: 'Dodge puddles',
+        },
+      },
     },
     // donut followed by point-blank aoe (972D Twinkling Ring -> 9729 Twinkling Flourish)
     {
@@ -386,7 +393,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       response: Responses.getIn(),
     },
-    // protein pizza slices, echo after (9726 4.7s, 9727 6.7)
+    // protein pizza slices, echo after (9726 6.7s, 9727 4.7s)
     {
       id: 'Hunt Mica the Magical Mu Double Misdirect',
       type: 'StartsUsing',
@@ -395,7 +402,21 @@ const triggerSet: TriggerSet<Data> = {
         return output.protean!();
       },
       outputStrings: {
-        protean: 'Protean (x2)',
+        protean: 'Protean (then dodge into)',
+      },
+    },
+    {
+      id: 'Hunt Mica the Magical Mu Double Misdirect Move',
+      type: 'Ability',
+      netRegex: { id: '9727', source: 'Mica the Magical Mu', capture: false },
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => {
+        return output.moveInto!();
+      },
+      outputStrings: {
+        moveInto: {
+          en: 'Dodge',
+        },
       },
     },
     // Spawns a formation of 6 cards in various patterns.
