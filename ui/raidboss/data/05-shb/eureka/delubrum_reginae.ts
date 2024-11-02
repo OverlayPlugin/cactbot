@@ -655,7 +655,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh zum Kreis im Norden',
           fr: 'Allez au cercle Nord',
           ja: '北のドーナツ範囲に入る',
-          cn: '去上面(北面)月环',
+          cn: '去上方月环',
           ko: '북쪽 원으로 이동',
         },
         weaveWithKnockback: {
@@ -663,7 +663,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Lass dich zum Kreis im Norden zurückstoßen',
           fr: 'Faites-vous pousser dans le cercle',
           ja: '北のドーナツ範囲へ吹き飛ばされる',
-          cn: '击退到上面(北面)月环中',
+          cn: '击退到上方月环中',
           ko: '원으로 넉백 당하기',
         },
       },
@@ -1041,7 +1041,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Auf Dunkel (O/W von der Mitte)',
           fr: 'Sur une foncée (E/O du centre)',
           ja: '闇へ (東西)',
-          cn: '去黑色 (东西/左右)',
+          cn: '去黑色 (左/右)',
           ko: '어두운 타일 (맵 중앙의 왼/오른쪽)',
         },
         bowLight: {

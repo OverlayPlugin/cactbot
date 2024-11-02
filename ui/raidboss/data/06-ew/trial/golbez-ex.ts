@@ -165,7 +165,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'NW / SO',
           fr: 'NO / SE',
           ja: '北西 / 南東',
-          cn: '左上 (西北) / 右下 (东南)',
+          cn: '左上 / 右下',
           ko: '북서 / 남동',
         },
         dirNESW: {
@@ -173,7 +173,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'NO / SW',
           fr: 'NE / SO',
           ja: '北東 / 南西',
-          cn: '右上 (东北) / 左下 (西南)',
+          cn: '右上 / 左下',
           ko: '북동 / 남서',
         },
       },

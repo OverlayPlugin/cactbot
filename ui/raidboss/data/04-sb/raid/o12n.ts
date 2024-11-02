@@ -96,7 +96,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus da',
           fr: 'Sortez',
           ja: '外へ',
-          cn: '远离',
+          cn: '远离人群',
           ko: '파티에서 멀어지기',
         },
       },

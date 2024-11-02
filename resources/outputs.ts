@@ -229,7 +229,7 @@ export default {
     de: 'Heiler-Gruppen',
     fr: 'Groupes sur les heals',
     ja: 'ヒラに頭割り',
-    cn: '治疗分摊组',
+    cn: '双奶分组分摊',
     ko: '힐러 그룹 쉐어',
   },
   stackOnYou: {
@@ -237,7 +237,7 @@ export default {
     de: 'Auf DIR sammeln',
     fr: 'Package sur VOUS',
     ja: '自分に頭割り',
-    cn: '集合点名',
+    cn: '分摊点名',
     ko: '쉐어징 대상자',
   },
   stackOnPlayer: {
@@ -269,7 +269,7 @@ export default {
     de: 'Flächen Ködern',
     fr: 'Attirez les flaques',
     ja: 'AOE誘導',
-    cn: '诱导圈圈',
+    cn: '诱导放圈',
     ko: '장판 유도',
   },
   // For general more-than-one-stack-at-a-time situations
@@ -432,6 +432,9 @@ export default {
   // be just outside the boss's target circle
   outOfHitbox: {
     en: 'Out of hitbox',
+    fr: 'Extérieur de la hitbox',
+    cn: '离开目标圈',
+    ko: '히트박스 밖으로',
   },
   inThenOut: {
     en: 'In => out',
@@ -510,7 +513,7 @@ export default {
     de: '<= Nach Links/Westen',
     fr: '<= Allez à Gauche/Ouest',
     ja: '<= 左/西へ',
-    cn: '<= 去左/西边',
+    cn: '<= 去左半场',
     ko: '<= 왼쪽/서쪽',
   },
   getRightAndEast: {
@@ -518,7 +521,7 @@ export default {
     de: 'Nach Rechts/Osten =>',
     fr: 'Allez à Droite/Est =>',
     ja: '右/東へ =>',
-    cn: '去右/东边 =>',
+    cn: '去右半场 =>',
     ko: '오른쪽/동쪽 =>',
   },
   leftThenRight: {
@@ -631,16 +634,16 @@ export default {
     en: 'Prey on YOU',
     de: 'Marker auf DIR',
     fr: 'Marquage sur VOUS',
-    ja: '自分に捕食',
-    cn: '掠食点名',
+    ja: '自分にマーキング',
+    cn: '猎物点名',
     ko: '홍옥징 대상자',
   },
   preyOnPlayer: {
     en: 'Prey on ${player}',
     de: 'Marker auf ${player}',
     fr: 'Marquage sur ${player}',
-    ja: '${player}に捕食',
-    cn: '掠食点名${player}',
+    ja: '${player}にマーキング',
+    cn: '${player} 的猎物点名',
     ko: '"${player}" 홍옥징',
   },
   awayFromGroup: {
@@ -698,7 +701,7 @@ export default {
     de: 'Bewegen!',
     fr: 'Bougez !',
     ja: '動く！',
-    cn: '快动！',
+    cn: '保持运动！',
     ko: '움직이기!',
   },
   breakChains: {
@@ -738,7 +741,7 @@ export default {
     de: 'Nahe Verbindungen (${player})',
     fr: 'Liens proches avec (${player})',
     ja: '${player}に近づく',
-    cn: '靠近连线 (${player})',
+    cn: '近线 (${player})',
     ko: '상대와 가까이 붙기 (${player})',
   },
   farTethersWithPlayer: {
@@ -746,7 +749,7 @@ export default {
     de: 'Entfernte Verbindungen (${player})',
     fr: 'Liens éloignés avec (${player})',
     ja: ' (${player})から離れる',
-    cn: '远离连线 (${player})',
+    cn: '远线 (${player})',
     ko: '상대와 떨어지기 (${player})',
   },
   getTowers: {
@@ -786,7 +789,7 @@ export default {
     de: 'Norden',
     fr: 'Nord',
     ja: '北',
-    cn: '上(北)',
+    cn: '上',
     ko: '북쪽',
   },
   south: {
@@ -794,7 +797,7 @@ export default {
     de: 'Süden',
     fr: 'Sud',
     ja: '南',
-    cn: '下(南)',
+    cn: '下',
     ko: '남쪽',
   },
   east: {
@@ -802,7 +805,7 @@ export default {
     de: 'Osten',
     fr: 'Est',
     ja: '東',
-    cn: '右(东)',
+    cn: '右',
     ko: '동쪽',
   },
   west: {
@@ -810,7 +813,7 @@ export default {
     de: 'Westen',
     fr: 'Ouest',
     ja: '西',
-    cn: '左(西)',
+    cn: '左',
     ko: '서쪽',
   },
   northwest: {
@@ -818,7 +821,7 @@ export default {
     de: 'Nordwesten',
     fr: 'Nord-Ouest',
     ja: '北西',
-    cn: '左上(西北)',
+    cn: '左上',
     ko: '북서쪽',
   },
   northeast: {
@@ -826,7 +829,7 @@ export default {
     de: 'Nordosten',
     fr: 'Nord-Est',
     ja: '北東',
-    cn: '右上(东北)',
+    cn: '右上',
     ko: '북동쪽',
   },
   southwest: {
@@ -834,7 +837,7 @@ export default {
     de: 'Südwesten',
     fr: 'Sud-Ouest',
     ja: '南西',
-    cn: '左下(西南)',
+    cn: '左下',
     ko: '남서쪽',
   },
   southeast: {
@@ -842,7 +845,7 @@ export default {
     de: 'Südosten',
     fr: 'Sud-Est',
     ja: '南東',
-    cn: '右下(东南)',
+    cn: '右下',
     ko: '남동쪽',
   },
   dirN: {
@@ -850,7 +853,7 @@ export default {
     de: 'N',
     fr: 'N',
     ja: '北',
-    cn: '上(北)',
+    cn: '上',
     ko: '북',
   },
   dirS: {
@@ -858,7 +861,7 @@ export default {
     de: 'S',
     fr: 'S',
     ja: '南',
-    cn: '下(南)',
+    cn: '下',
     ko: '남',
   },
   dirE: {
@@ -866,7 +869,7 @@ export default {
     de: 'O',
     fr: 'E',
     ja: '東',
-    cn: '右(东)',
+    cn: '右',
     ko: '동',
   },
   dirW: {
@@ -874,7 +877,7 @@ export default {
     de: 'W',
     fr: 'O',
     ja: '西',
-    cn: '左(西)',
+    cn: '左',
     ko: '서',
   },
   dirNW: {
@@ -882,7 +885,7 @@ export default {
     de: 'NW',
     fr: 'NO',
     ja: '北西',
-    cn: '左上(西北)',
+    cn: '左上',
     ko: '북서',
   },
   dirNE: {
@@ -890,7 +893,7 @@ export default {
     de: 'NO',
     fr: 'NE',
     ja: '北東',
-    cn: '右上(东北)',
+    cn: '右上',
     ko: '북동',
   },
   dirSW: {
@@ -898,7 +901,7 @@ export default {
     de: 'SW',
     fr: 'SO',
     ja: '南西',
-    cn: '左下(西南)',
+    cn: '左下',
     ko: '남서',
   },
   dirSE: {
@@ -906,7 +909,7 @@ export default {
     de: 'SO',
     fr: 'SE',
     ja: '南東',
-    cn: '右下(东南)',
+    cn: '右下',
     ko: '남동',
   },
   dirNNE: {
@@ -914,7 +917,7 @@ export default {
     de: 'NNO',
     fr: 'NNE',
     ja: '北北東(1時)',
-    cn: '上偏右(北偏东)',
+    cn: '上偏右',
     ko: '1시',
   },
   dirENE: {
@@ -922,7 +925,7 @@ export default {
     de: 'ONO',
     fr: 'ENE',
     ja: '東北東(2時)',
-    cn: '右偏上(东偏北)',
+    cn: '右偏上',
     ko: '2시',
   },
   dirESE: {
@@ -930,7 +933,7 @@ export default {
     de: 'OSO',
     fr: 'ESE',
     ja: '東南東(4時)',
-    cn: '右偏下(东偏南)',
+    cn: '右偏下',
     ko: '4시',
   },
   dirSSE: {
@@ -938,7 +941,7 @@ export default {
     de: 'SSO',
     fr: 'SSE',
     ja: '南南東(5時)',
-    cn: '下偏右(南偏东)',
+    cn: '下偏右',
     ko: '5시',
   },
   dirSSW: {
@@ -946,7 +949,7 @@ export default {
     de: 'SSW',
     fr: 'SSO',
     ja: '南南西(7時)',
-    cn: '下偏左(南偏西)',
+    cn: '下偏左',
     ko: '7시',
   },
   dirWSW: {
@@ -954,7 +957,7 @@ export default {
     de: 'WSW',
     fr: 'OSO',
     ja: '西南西(8時)',
-    cn: '左偏下(西偏南)',
+    cn: '左偏下',
     ko: '8시',
   },
   dirWNW: {
@@ -962,7 +965,7 @@ export default {
     de: 'WNW',
     fr: 'ONO',
     ja: '西北西(10時)',
-    cn: '左偏上(西偏北)',
+    cn: '左偏上',
     ko: '10시',
   },
   dirNNW: {
@@ -970,7 +973,7 @@ export default {
     de: 'NNW',
     fr: 'NNO',
     ja: '北北西(11時)',
-    cn: '上偏左(北偏西)',
+    cn: '上偏左',
     ko: '11시',
   },
   tank: {
@@ -1009,10 +1012,16 @@ export default {
   // for combo mechanics/names
   and: {
     en: ' + ',
+    fr: ' + ',
+    cn: ' + ',
+    ko: ' + ',
   },
   // for either/or directions or mechanics
   or: {
     en: ' / ',
+    fr: ' / ',
+    cn: ' / ',
+    ko: ' / ',
   },
   // Literal numbers.
   num0: numberToOutputString(0),

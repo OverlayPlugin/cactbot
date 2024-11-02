@@ -229,6 +229,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         away: {
           en: 'Away from adds',
+          fr: 'Éloignez-vous des adds',
+          cn: '远离小怪',
+          ko: '쫄들과 멀어지기',
         },
       },
     },
@@ -241,6 +244,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodgeCombo: {
           en: 'Dodge contracting swords (front/back combo after)',
+          fr: 'Esquivez les épées combattantes (combo avant/arrière ensuite)',
+          cn: '躲避向内步进 AOE (然后前后刀)',
+          ko: '모여드는 칼 피하기 (이후 앞/뒤 콤보)',
         },
       },
     },
@@ -254,6 +260,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Dodge expanding swords',
+          fr: 'Évitez les épées en expansion',
+          cn: '躲避向外步进 AOE',
+          ko: '퍼져 나가는 칼 피하기',
         },
       },
     },
@@ -358,6 +367,9 @@ const triggerSet: TriggerSet<Data> = {
         westCorner: Outputs.west,
         unknown: {
           en: 'Avoid swords',
+          fr: 'Évitez les épées',
+          cn: '躲避剑',
+          ko: '칼 피하기',
         },
       },
     },
@@ -410,18 +422,33 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         insideNorth: {
           en: 'Inner North Diamond',
+          fr: 'Diamand nord intérieur',
+          cn: '上内侧方格',
+          ko: '안 북쪽 칸',
         },
         insideEast: {
           en: 'Inner East Diamond',
+          fr: 'Diamand est intérieur',
+          cn: '右内侧方格',
+          ko: '안 동쪽 칸',
         },
         insideSouth: {
           en: 'Inner South Diamond',
+          fr: 'Diamand sud intérieur',
+          cn: '下内侧方格',
+          ko: '안 남쪽 칸',
         },
         insideWest: {
           en: 'Inner West Diamond',
+          fr: 'Diamand est intérieur',
+          cn: '左内侧方格',
+          ko: '안 서쪽 칸',
         },
         unknown: {
           en: 'Avoid Line Cleaves',
+          fr: 'Évitez les cleaves en ligne',
+          cn: '躲避直线剑击',
+          ko: '직선 장판 피하기',
         },
       },
     },

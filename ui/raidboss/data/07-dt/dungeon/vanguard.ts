@@ -39,6 +39,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         corners: {
           en: 'Go outside (corners)',
+          fr: 'Extérieur (coins)',
+          cn: '去外面 (四角)',
+          ko: '밖으로 (구석)',
         },
       },
     },
@@ -53,6 +56,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         inside: {
           en: 'Go inside',
+          fr: 'Intérieur',
+          cn: '去里面',
+          ko: '안으로',
         },
       },
     },
@@ -68,9 +74,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         northSouth: {
           en: 'Dodge North/South line cleaves',
+          fr: 'Esquivez les cleaves en ligne N/S',
+          cn: '躲避 上/下 直线攻击',
+          ko: '남/북쪽 직선 장판 피하기',
         },
         grid: {
           en: 'Spread + dodge grid cleaves',
+          fr: 'Dispersion + esquivez les cleaves en grille',
+          cn: '分散 + 躲避网格攻击',
+          ko: '산개 + 격자 장판 피하기',
         },
       },
     },

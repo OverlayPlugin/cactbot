@@ -120,6 +120,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidFront: {
           en: '${dir} (Avoid Front)',
+          fr: '${dir} (Évitez l\'avant)',
+          cn: '${dir} (避开正面)',
+          ko: '${dir} (앞 피하기)',
         },
         cleaveRight: Outputs.left,
         cleaveLeft: Outputs.right,
@@ -154,6 +157,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidRear: {
           en: '${dir} (Avoid Rear)',
+          fr: '${dir} (Évitez l\'arrière)',
+          cn: '${dir} (避开后方)',
+          ko: '${dir} (뒤 피하기)',
         },
         cleaveRight: Outputs.left,
         cleaveLeft: Outputs.right,
@@ -184,6 +190,9 @@ const triggerSet: TriggerSet<Data> = {
         cleaveLeft: Outputs.right,
         cleaveRear: {
           en: 'Avoid Rear',
+          fr: 'Évitez l\'arrière',
+          cn: '避开后方',
+          ko: '뒤 피하기',
         },
         next: Outputs.next,
       },
@@ -222,12 +231,21 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} + Avoid Droid Cleaves',
+          fr: '${dir} + Évitez les cleaves des droids',
+          cn: '${dir} + 躲避机器人激光',
+          ko: '${dir} + 로봇 레이저 피하기',
         },
         frontLeft: {
           en: 'Back Right / Front Left',
+          fr: 'Arrière droite / Avant gauche',
+          cn: '右后 / 左前',
+          ko: '오른쪽 뒤 / 왼쪽 앞',
         },
         frontRight: {
           en: 'Back Left / Front Right',
+          fr: 'Arrière gauche / Avant droit',
+          cn: '左后 / 右前',
+          ko: '왼쪽 뒤 / 오른쪽 앞',
         },
       },
     },
@@ -243,6 +261,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Stand in line with flickering droid',
+          fr: 'Restez sur la ligne du droide clignotant',
+          cn: '站在闪烁机器人列',
+          ko: '빛나는 로봇이 있는 줄에 서기',
         },
       },
     },
@@ -298,20 +319,35 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         middleLanes: {
           en: 'Middle lanes (${side} turrets)',
+          fr: 'Lignes centrales (tourelles ${side})',
+          cn: '第二/三行 (${side} 炮台)',
+          ko: '2/3번째 줄 (${side} 포탑)',
         },
         farLanes: {
           en: 'Far N/S lanes (${side} turrets)',
+          fr: 'Lignes N/S éloignées (tourelles ${side})',
+          cn: '第一/四行 (${side} 炮台)',
+          ko: '1/4번째 줄 (${side} 포탑)',
         },
         middleNorth: {
           en: 'Middle North lane (${side} turrets)',
+          fr: 'Ligne centrale nord (tourelles ${side})',
+          cn: '第二行 (${side} 炮台)',
+          ko: '2번째 줄 (${side} 포탑)',
         },
         middleSouth: {
           en: 'Middle South lane (${side} turrets)',
+          fr: 'Ligne centrale sud (tourelles ${side})',
+          cn: '第三行 (${side} 炮台)',
+          ko: '3번째 줄 (${side} 포탑)',
         },
         east: Outputs.east,
         west: Outputs.west,
         avoid: {
           en: 'Stand in line with flickering turrets',
+          fr: 'Restez sur la ligne de la tourelle clignotante',
+          cn: '站在闪烁炮台行',
+          ko: '빛나는 포탑이 있는 줄에 서기',
         },
       },
     },
@@ -334,6 +370,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         safeTurret: {
           en: 'Knockback into real turret => Spread',
+          fr: 'Poussée sur la vraie tourelle => Dispersion',
+          cn: '击退到实体炮台 => 分散',
+          ko: '진짜 포탑이 있는 곳으로 넉백 => 산개',
         },
       },
     },
@@ -358,10 +397,16 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         right: {
-          en: '(Far North lane: Knockback Right ==>)',
+          en: '(Far North lane: Knockback Right) ==>',
+          fr: '(Ligne nord éloignée : Poussée droite) ==>',
+          cn: '(第一行: 向右击退) ==>',
+          ko: '(1번째 줄: 오른쪽 넉백) ==>',
         },
         left: {
-          en: '(<== Far North lane: Knockback Left)',
+          en: '<== (Far North lane: Knockback Left)',
+          fr: '<== (Ligne sur éloignée : Poussée gauche)',
+          cn: '<== (第一行: 向左击退)',
+          ko: '<== (1번째 줄: 왼쪽 넉백)',
         },
       },
     },
@@ -418,6 +463,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spread: {
           en: '${dir} => Spread',
+          fr: '${dir} => Dispersion',
+          cn: '${dir} => 分散',
+          ko: '${dir} => 산개',
         },
         north: Outputs.north,
         middle: Outputs.middle,
@@ -432,6 +480,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kb: {
           en: 'Knockback N/S',
+          fr: 'Poussée N/S',
+          cn: '向 上/下 击退',
+          ko: '남/북쪽으로 넉백',
         },
       },
     },
@@ -445,9 +496,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbSpread: {
           en: 'Knockback to behind boss => Spread',
+          fr: 'Poussée vers l\'arrière du boss => Dispersion',
+          cn: '击退到 BOSS 背后 => 分散',
+          ko: '보스 뒤로 넉백 => 산개',
         },
         kb: {
           en: 'Knockback to behind boss',
+          fr: 'Poussée vers l\'arrière du boss',
+          cn: '击退到 BOSS 背后',
+          ko: '보스 뒤로 넉백',
         },
       },
     },
@@ -461,6 +518,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Avoid lance zig-zag',
+          fr: 'Évitez la lance en zig-zag',
+          cn: '躲避长枪折线 AOE',
+          ko: '지그재그 장판 피하기',
         },
       },
     },

@@ -33,6 +33,14 @@ const agononOutputStrings = {
   },
 } as const;
 
+const gymnasiouMandragoraiIds = [
+  '12036', // Gymnastic Onion
+  '12037', // Gymnastic Eggplant
+  '12038', // Gymnastic Garlic
+  '12039', // Gymnastic Tomato
+  '12040', // Gymnastic Queen
+] as const;
+
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
@@ -50,19 +58,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '1203[45]' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: agononOutputStrings.spawn,
-      },
+      outputStrings: agononOutputStrings,
     },
     {
       id: 'Shifting Gymnasion Agonon Gymnasiou Mandragorai Spawn',
-      // 12036 = Gymnastic Onion
-      // 12037 = Gymnastic Eggplant
-      // 12038 = Gymnastic Garlic
-      // 12039 = Gymnastic Tomato
-      // 12040 = Gymnastic Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: ['1203[6-9]', '12040'], capture: false },
+      netRegex: { npcNameId: gymnasiouMandragoraiIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -423,9 +424,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '7E28', source: 'Lyssa Chrysine', capture: false },
       infoText: (_data, _matches, output) => output.adds!(),
-      outputStrings: {
-        adds: agononOutputStrings.adds,
-      },
+      outputStrings: agononOutputStrings,
     },
     {
       id: 'Shifting Gymnasion Agonon Lyssa Chrysine Skull Dasher',
@@ -444,9 +443,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '7E20', source: 'Lampas Chrysine', capture: false },
       infoText: (_data, _matches, output) => output.adds!(),
-      outputStrings: {
-        adds: agononOutputStrings.adds,
-      },
+      outputStrings: agononOutputStrings,
     },
     {
       id: 'Shifting Gymnasion Agonon Gymnasiou Mandragoras Ram',
@@ -459,9 +456,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '7E2C', source: 'Gymnasiou Mandragoras', capture: false },
       infoText: (_data, _matches, output) => output.adds!(),
-      outputStrings: {
-        adds: agononOutputStrings.adds,
-      },
+      outputStrings: agononOutputStrings,
     },
     // ---------------- final summon: Narkissos ----------------
     {
