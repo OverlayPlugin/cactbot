@@ -423,25 +423,25 @@ const triggerSet: TriggerSet<Data> = {
         insideNorth: {
           en: 'Inner North Diamond',
           fr: 'Diamand nord intérieur',
-          cn: '上北内侧方格',
+          cn: '上内侧方格',
           ko: '안 북쪽 칸',
         },
         insideEast: {
           en: 'Inner East Diamond',
           fr: 'Diamand est intérieur',
-          cn: '右东内侧方格',
+          cn: '右内侧方格',
           ko: '안 동쪽 칸',
         },
         insideSouth: {
           en: 'Inner South Diamond',
           fr: 'Diamand sud intérieur',
-          cn: '下南内侧方格',
+          cn: '下内侧方格',
           ko: '안 남쪽 칸',
         },
         insideWest: {
           en: 'Inner West Diamond',
           fr: 'Diamand est intérieur',
-          cn: '左西内侧方格',
+          cn: '左内侧方格',
           ko: '안 서쪽 칸',
         },
         unknown: {

@@ -456,7 +456,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Süden',
           fr: 'Allez au Sud',
           ja: '南へ',
-          cn: '前往南侧',
+          cn: '前往下半场',
           ko: '남쪽',
         },
         goNorthwest: {
@@ -464,7 +464,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Nordwesten',
           fr: 'Allez au Nord-Ouest',
           ja: '北西へ',
-          cn: '前往西北',
+          cn: '前往左上',
           ko: '북서쪽',
         },
         goNortheast: {
@@ -472,7 +472,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Nordosten',
           fr: 'Allez au Nord-Est',
           ja: '北東へ',
-          cn: '前往东北',
+          cn: '前往右上',
           ko: '북동쪽',
         },
       },

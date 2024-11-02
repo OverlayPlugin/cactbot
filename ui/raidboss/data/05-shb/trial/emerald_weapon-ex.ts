@@ -459,7 +459,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Norden; Achte auf die Lücken zwischen den Soldaten',
           fr: 'Allez au Nord, esquivez les soldats et les bombes plongeantes',
           ja: '飛行部隊と射撃部隊を見覚える', // FIXME
-          cn: '去北边；躲避士兵射击/飞机轰炸',
+          cn: '去上边缘；躲避士兵射击/飞机轰炸',
           ko: '북쪽으로 이동, 엑사플레어, 병사 사격 확인',
         },
       },

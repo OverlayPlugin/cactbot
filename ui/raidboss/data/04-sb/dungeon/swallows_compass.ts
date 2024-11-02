@@ -388,7 +388,7 @@ const triggerSet: TriggerSet<Data> = {
         'Flames Of Hate': '怨念之火',
         'Greater Palm': '掌击',
         'Might Of The Tengu': '天狗碾',
-        'Mirage': 'Mirage',
+        'Mirage': '海市蜃楼',
         'Mount Huaguo': '花果山',
         'Mountain Falls': '泥石流',
         'Mythmaker': '惊天动地',

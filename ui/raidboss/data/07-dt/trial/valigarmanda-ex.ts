@@ -538,7 +538,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nördliche Reihe, Vordere Hälfte',
           fr: 'Ligne Nord, Moitié avant',
           ja: '北側の前方へ',
-          cn: '上(北)行 前半',
+          cn: '第一行前半',
           ko: '북쪽 줄, 앞부분',
         },
         northBack: {
@@ -546,7 +546,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nördliche Reihe, Hintere Hälfte',
           fr: 'Ligne Nord, Moitié arrière',
           ja: '北側の後方へ',
-          cn: '上(北)行 后半',
+          cn: '第一行后半',
           ko: '북쪽 줄, 뒷부분',
         },
         middleFront: {
@@ -554,7 +554,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Mittlere Reihe, Vordere Hälfte',
           fr: 'Ligne centrale, Moitié avant',
           ja: '中央の前方へ',
-          cn: '中间行 前半',
+          cn: '第二行前半',
           ko: '가운데 줄, 앞부분',
         },
         middleBack: {
@@ -562,7 +562,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Mittlere Reihe, Hintere Hälfte',
           fr: 'Ligne centrale, Moitié arrière',
           ja: '中央の後方へ',
-          cn: '中间行 后半',
+          cn: '第二行后半',
           ko: '가운데 줄, 뒷부분',
         },
         southFront: {
@@ -570,7 +570,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Südliche Reihe, Vordere Hälfte',
           fr: 'Ligne Sud, Moitié avant',
           ja: '南側の前方へ',
-          cn: '下(南)行 前半',
+          cn: '第三行前半',
           ko: '남쪽 줄, 앞부분',
         },
         southBack: {
@@ -578,7 +578,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Südliche Reihe, Hintere Hälfte',
           fr: 'Ligne Sud, Moitié arrière',
           ja: '南側の後方へ',
-          cn: '下(南)行 后半',
+          cn: '第三行后半',
           ko: '남쪽 줄, 뒷부분',
         },
       },
@@ -758,7 +758,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'NW Sicher',
           fr: 'NO Sûr',
           ja: '左上(北西) 安地',
-          cn: '左上(西北) 安全',
+          cn: '左上 安全',
           ko: '왼쪽 위 안전',
         },
         coneNESafe: {
@@ -766,7 +766,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'NO Sicher',
           fr: 'NE Sûr',
           ja: '右上(北東) 安地',
-          cn: '右上(东北) 安全',
+          cn: '右上 安全',
           ko: '오른쪽 위 안전',
         },
         unknown: {

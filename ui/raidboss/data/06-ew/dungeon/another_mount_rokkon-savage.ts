@@ -1142,7 +1142,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nördlicher Diamant + ${mechanic}',
           fr: 'Diamant Nord + ${mechanic}',
           ja: '北 + ${mechanic}',
-          cn: '上 (北) 菱形 + ${mechanic}',
+          cn: '上菱形 + ${mechanic}',
           ko: '북쪽 + ${mechanic}',
         },
         east: {
@@ -1150,7 +1150,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'östlicher Diamant + ${mechanic}',
           fr: 'Diamant Est + ${mechanic}',
           ja: '東 + ${mechanic}',
-          cn: '右 (东) 菱形 + ${mechanic}',
+          cn: '右菱形 + ${mechanic}',
           ko: '동쪽 + ${mechanic}',
         },
         south: {
@@ -1158,7 +1158,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'südlicher Diamant + ${mechanic}',
           fr: 'Diamant Sud + ${mechanic}',
           ja: '南 + ${mechanic}',
-          cn: '下 (南) 菱形 + ${mechanic}',
+          cn: '下菱形 + ${mechanic}',
           ko: '남쪽 + ${mechanic}',
         },
         west: {
@@ -1166,7 +1166,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'westlicher Diamant + ${mechanic}',
           fr: 'Diamant Ouest + ${mechanic}',
           ja: '西 + ${mechanic}',
-          cn: '左 (西) 菱形 + ${mechanic}',
+          cn: '左菱形 + ${mechanic}',
           ko: '서쪽 + ${mechanic}',
         },
         northeast: {
@@ -1174,7 +1174,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nordöstliches Viereck + ${mechanic}',
           fr: 'Carré Nord-Est + ${mechanic}',
           ja: '北東 + ${mechanic}',
-          cn: '右上 (东北) 正方形 + ${mechanic}',
+          cn: '右上 正方形 + ${mechanic}',
           ko: '북동쪽 + ${mechanic}',
         },
         southeast: {
@@ -1182,7 +1182,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'südöstliches Viereck + ${mechanic}',
           fr: 'Carré Sud-Est + ${mechanic}',
           ja: '南東 + ${mechanic}',
-          cn: '右下 (东南) 正方形 + ${mechanic}',
+          cn: '右下 正方形 + ${mechanic}',
           ko: '남동쪽 + ${mechanic}',
         },
         southwest: {
@@ -1190,7 +1190,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'südwestliches Viereck + ${mechanic}',
           fr: 'Carré Sud-Ouest + ${mechanic}',
           ja: '南西 + ${mechanic}',
-          cn: '左下 (西南) 正方形 + ${mechanic}',
+          cn: '左下 正方形 + ${mechanic}',
           ko: '남서쪽 + ${mechanic}',
         },
         northwest: {
@@ -1198,7 +1198,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nordwestliches Viereck + ${mechanic}',
           fr: 'Carré Nord-Ouest + ${mechanic}',
           ja: '北西 + ${mechanic}',
-          cn: '左上 (西北) 正方形 + ${mechanic}',
+          cn: '左上 正方形 + ${mechanic}',
           ko: '북서쪽 + ${mechanic}',
         },
         ...basicStackSpreadOutputStrings,
@@ -2470,7 +2470,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Norden/Süden',
           fr: 'Nord/Sud',
           ja: '北・南',
-          cn: '上 (北)/下 (南)',
+          cn: '上/下',
           ko: '북쪽/남쪽',
         },
         eastWest: {
@@ -2478,7 +2478,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           fr: 'Est/Ouest',
           ja: '東・西',
-          cn: '左 (西)/右 (东)',
+          cn: '左/右',
           ko: '동쪽/서쪽',
         },
       },

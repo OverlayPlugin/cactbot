@@ -409,7 +409,7 @@ const triggerSet: TriggerSet<Data> = {
         kb: {
           en: 'Knockback (from West)',
           fr: 'Poussée (depuis l\'ouest)',
-          cn: '击退 (从左西边)',
+          cn: '击退 (从左边)',
           ko: '넉백 (서쪽에서)',
         },
       },
@@ -449,13 +449,13 @@ const triggerSet: TriggerSet<Data> = {
         kbEast: {
           en: 'Knockback (from East) to Fire crystal => Spread',
           fr: 'Poussée (depuis l\'est) vers le cristal de feu => Dispersion',
-          cn: '从右东边 击退 到火石板 => 分散',
+          cn: '从右边击退到火石板 => 分散',
           ko: '불 크리스탈로 넉백 (동쪽에서) => 산개',
         },
         kbWest: {
           en: 'Knockback (from West) to Fire crystal => Spread',
           fr: 'Poussée (depuis l\'ouest) vers le cristal de feu => Dispersion',
-          cn: '从左西边 击退 到火石板 => 分散',
+          cn: '从左边击退到火石板 => 分散',
           ko: '불 크리스탈로 넉백 (서쪽에서) => 산개',
         },
       },
