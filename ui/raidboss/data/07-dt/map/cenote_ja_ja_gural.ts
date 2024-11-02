@@ -15,6 +15,14 @@ const cenoteJaJaOutputStrings = {
   },
 } as const;
 
+const tuligoraTroupesIds = [
+  '13242', // Turali Onion
+  '13243', // Turali Eggplant
+  '13244', // Turali Garlic
+  '13245', // Turali Tomato
+  '13246', // Tuligora Queen
+] as const;
+
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
@@ -30,9 +38,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '13240' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: cenoteJaJaOutputStrings.spawn,
-      },
+      outputStrings: cenoteJaJaOutputStrings,
     },
     {
       id: 'Cenote Ja Ja Uolon of Fortune Spawn',
@@ -41,19 +47,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '13241' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: cenoteJaJaOutputStrings.spawn,
-      },
+      outputStrings: cenoteJaJaOutputStrings,
     },
     {
       id: 'Cenote Ja Ja Tuligora Troupes Spawn',
-      // 13242 = Turali Onion
-      // 13243 = Turali Eggplant
-      // 13244 = Turali Garlic
-      // 13245 = Turali Tomato
-      // 13246 = Tuligora Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '1324[2-6]', capture: false },
+      netRegex: { npcNameId: tuligoraTroupesIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {

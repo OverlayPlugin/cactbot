@@ -29,9 +29,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '5058' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: aquapolisOutputStrings.spawn,
-      },
+      outputStrings: aquapolisOutputStrings,
     },
     {
       id: 'Aquapolis Arges Spawn',
@@ -40,9 +38,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '5059' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: aquapolisOutputStrings.spawn,
-      },
+      outputStrings: aquapolisOutputStrings,
     },
     {
       id: 'Aquapolis Arges 100-tonze Swipe',
