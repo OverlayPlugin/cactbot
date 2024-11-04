@@ -692,7 +692,7 @@ export default {
     de: 'Bewegen!',
     fr: 'Bougez !',
     ja: '避けて！',
-    cn: '快躲开！',
+    cn: '离开原地！',
     ko: '이동하기!',
   },
   moveAround: {
