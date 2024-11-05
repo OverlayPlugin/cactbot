@@ -402,7 +402,7 @@ const triggerSet: TriggerSet<Data> = {
         return output.protean!();
       },
       outputStrings: {
-        protean: 'Protean (then dodge into)',
+        protean: 'Protean x2 (avoid => move into first cleaves)',
       },
     },
     {
@@ -410,14 +410,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: '9727', source: 'Mica the Magical Mu', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => {
-        return output.moveInto!();
-      },
-      outputStrings: {
-        moveInto: {
-          en: 'Dodge',
-        },
-      },
+      response: Responses.moveAway('alert'),
     },
     // Spawns a formation of 6 cards in various patterns.
     {
