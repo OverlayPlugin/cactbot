@@ -553,7 +553,7 @@ export default {
     de: 'Seiten',
     fr: 'Côtés',
     ja: '横へ',
-    cn: '去侧面',
+    cn: '去两侧',
     ko: '양옆으로',
   },
   middle: {

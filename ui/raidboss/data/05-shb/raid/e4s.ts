@@ -91,7 +91,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Schau nach den Grimm der Erde Marker',
           fr: 'Repérez une marque de Terre maléfique',
           ja: '範囲見て',
-          cn: '观察地板',
+          cn: '确认扩散标记位置',
           ko: '사악한 대지 패턴 확인',
         },
       },
@@ -174,7 +174,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Bombe auf DIR',
           fr: 'Bombe sur VOUS',
           ja: 'マーカーついた',
-          cn: '炸弹点名',
+          cn: '陨石点名',
           ko: '거리감쇠 징 대상자',
         },
       },
@@ -239,7 +239,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zuerst zu den Seiten gehen',
           fr: 'Allez aux cardinaux en premier',
           ja: 'まずは十字',
-          cn: '十字',
+          cn: '先去正点',
           ko: '먼저 측면으로 이동',
         },
         goCornersFirst: {
@@ -390,16 +390,9 @@ const triggerSet: TriggerSet<Data> = {
         return output.stackOn!({ player: data.party.member(matches.target) });
       },
       outputStrings: {
-        awayFromTanks: {
-          en: 'Away from Tanks',
-          de: 'Weg von den Tanks',
-          fr: 'Éloignez-vous des tanks',
-          ja: 'タンクから離れ',
-          cn: '远离坦克',
-          ko: '탱커에서 멀어지기',
-        },
-        stackOnYou: Outputs.stackOnYou,
-        stackOn: Outputs.stackOnPlayer,
+        awayFromTanks: Outputs.avoidTankCleave,
+        stackOnYou: Outputs.sharedTankbusterOnYou,
+        stackOn: Outputs.sharedTankbusterOnPlayer,
       },
     },
     {
@@ -695,7 +688,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tumult': '怒震',
         'Voice of the Land': '大地之号',
         'Weight of the Land': '大地之重',
-        'Weight of the World': '铁球',
+        'Weight of the World': '大陆之重',
       },
     },
     {
