@@ -91,7 +91,7 @@ const triggerSet: TriggerSet<Data> = {
         de: 'Aktiviere Uptime Rückstoß Strategie',
         fr: 'Activer la strat Poussée-Uptime',
         ja: 'エデン零式共鳴編４層：cactbot「ヘヴンリーストライク (ノックバック)」ギミック', // FIXME
-        cn: '启用 cactbot 精确计时防击退策略',
+        cn: '启用击退镜 uptime 策略',
         ko: '정확한 타이밍 넉백방지 공략 사용',
       },
       comment: {
@@ -128,7 +128,7 @@ const triggerSet: TriggerSet<Data> = {
              人群在 BOSS 瞬移后分成两组, 分别站在 BOSS 身后。
              坦克根据红镜和绿镜的位置进行调整。
              一个坦克必须在分组中间，另一个坦克最靠近绿镜。
-             绿镜熄灭后，坦克调整到红镜位置。`,
+             绿镜消失后，坦克调整到红镜位置。`,
         ko: `캑트봇이 거울 나라 4의 이중 넉백을 호출하게 하려면 이 옵션을 활성화하세요.
              알람은 보스의 시전 중간이나 이후에 발생하며
              녹색 및 빨강 거울의 넉백을 모두 피하려면 반응 시간이 1.4초 미만이어야 합니다.
@@ -204,7 +204,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verbindung ${num}',
           fr: 'Lien ${num}',
           ja: '線 ${num}',
-          cn: '和${num}连线',
+          cn: '第 ${num} 次截线',
           ko: '선: ${num}',
         },
       },
@@ -398,7 +398,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Frosthieb als nächstes (nach außen drehen)',
           fr: 'Taillade de givre (pointez vers l\'extérieur)',
           ja: '次はフロストスラッシュ', // FIXME
-          cn: '冰霜斩 (去背后)',
+          cn: '即将冰霜斩 (拉背对人群)',
           ko: '서리 참격 (뒤로)',
         },
         drivingFrostNext: {
@@ -406,7 +406,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Froststoß als nächstes (nach innen drehen)',
           fr: 'Percée de givre (pointez vers l\'intérieur)',
           ja: '次はフロストスラスト', // FIXME
-          cn: '冰霜刺 (去前面)',
+          cn: '即将冰霜刺 (拉面对人群)',
           ko: '서리 일격 (앞으로)',
         },
       },
@@ -455,7 +455,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Star on YOU',
           de: 'Stern auf DIR',
           fr: 'Étoile sur VOUS',
-          cn: '冰针点名',
+          cn: '冰花点名',
           ko: '별 징 대상자',
         },
       },
@@ -575,21 +575,21 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Under => Under Cardinal Mirrors',
           de: 'Unter den Boss => Unter Kardinal-Spiegel',
           fr: 'Dessous => Sous les miroirs cardinaux',
-          cn: '下方 => 正点镜下方',
+          cn: '脚下 => 正点镜下方',
           ko: '보스 밑 => 십자 방향 거울 밑',
         },
         getUnderIntercards: {
           en: 'Under => Under Intercard Mirrors',
           de: 'Unter den Boss => Unter Interkardinal-Spiegel',
           fr: 'Dessous => Sous les miroirs intercardinaux',
-          cn: '下方 => 斜点镜下方',
+          cn: '脚下 => 斜点镜下方',
           ko: '보스 밑 => 대각선 방향 거울 밑',
         },
         getUnderUnknown: {
           en: 'Under Boss => Under Mirrors',
           de: 'Unter den Boss => Unter Spiegel',
           fr: 'Sous le boss => Sous les miroirs',
-          cn: 'BOSS 下方 => 镜下方',
+          cn: 'BOSS 脚下 => 镜下方',
           ko: '보스 밑 => 거울 밑',
         },
         getUnder: Outputs.getUnder,
@@ -824,8 +824,8 @@ const triggerSet: TriggerSet<Data> = {
         fr: `Rapide signifie que vous pouvez passer directement du premier au troisième point sûr.
              Lent signifie que vous devez aller de 1 => 2 => 3 sans omettre 2.
              C'est pour les lanceurs de sorts qui ne veulent pas se déplacer autant.`,
-        cn: `快指你可以从第 1 个安全点直接到达第 3 个安全点。
-             慢指你需要走 1 => 2 => 3 ,不跳过 2。
+        cn: `“快”指你可以直接从第 1 个安全点穿到第 3 个安全点。
+             “慢”指你需要走 1 => 2 => 3, 不能跳过 2。
              适用于不想移动太多的读条职业。`,
         ko: `빠름은 첫 번째 안전 지점에서 세 번째 안전 지점으로 바로 이동할 수 있음을 의미합니다.
              느림은 2번을 건너뛰지 않고 1번 => 2번 => 3번으로 이동해야 한다는 뜻입니다.

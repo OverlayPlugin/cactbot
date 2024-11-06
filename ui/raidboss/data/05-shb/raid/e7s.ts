@@ -413,7 +413,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Flächen ködern',
           fr: 'Placez les zones au sol',
           ja: '誘導',
-          cn: '放圈',
+          cn: '诱导黄圈',
           ko: '장판 버리기',
         },
       },
