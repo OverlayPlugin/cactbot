@@ -25,14 +25,7 @@ export interface Data extends RaidbossData {
 const phaserOutputStrings = {
   sides: Outputs.sides,
   out: Outputs.out,
-  healerStacks: {
-    en: 'Healer Stacks',
-    de: 'Bei den Heilern sammeln',
-    fr: 'Packages sur les heals',
-    ja: 'ヒーラーに集合',
-    cn: '治疗集合',
-    ko: '힐러 모이기',
-  },
+  healerStacks: Outputs.healerGroups,
   tankSpread: {
     en: 'Tank Spread',
     de: 'Tanks verteilen',
@@ -59,7 +52,7 @@ const artOfDarknessOutputStrings = {
     de: 'Mit Partner stacken',
     fr: 'Packez-vous avec votre partenaire',
     ja: '相方とスタック',
-    cn: '与搭档集合',
+    cn: '与搭档集合分摊',
     ko: '쉐어뎀 파트너랑 모이기',
   },
   protean: {
@@ -67,7 +60,7 @@ const artOfDarknessOutputStrings = {
     de: 'Himmelsrichtungen',
     fr: 'Positions',
     ja: '散開',
-    cn: '散开',
+    cn: '八方散开',
     ko: '산개',
   },
   unknown: Outputs.unknown,
@@ -225,7 +218,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Dornenstrauch plazieren',
           fr: 'Placez les ronces',
           ja: '苗木を捨てる',
-          cn: '击退放置树苗',
+          cn: '击退放置荆棘',
           ko: '장판 유도하기',
         },
       },
