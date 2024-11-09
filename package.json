@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.32.12",
-  "releaseSummary": "Oopsy bugfix, i18n updates",
+  "version": "0.32.13",
+  "releaseSummary": "M4S strategy options, M4N improvements, Cenote Ja Ja Gural, more i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
