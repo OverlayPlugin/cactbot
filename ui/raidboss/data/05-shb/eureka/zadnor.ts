@@ -689,7 +689,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Zadnor Time Fire IV',
       type: 'StartsUsing',
-      netRegex: { source: '4th-Make Belias', id: '5D9A' },
+      netRegex: { source: '4th-Make Belias', id: '5D9A', capture: false },
       condition: (data) => data.ce === 'time',
       response: Responses.aoe(),
     },
