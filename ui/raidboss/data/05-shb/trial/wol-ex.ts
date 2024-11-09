@@ -48,7 +48,7 @@ const sharedOutputStrings = {
     de: 'Himmelsrichtungen',
     fr: 'Positions',
     ja: '散開',
-    cn: '散开',
+    cn: '八方分散',
     ko: '위치 산개',
   },
 };
@@ -62,7 +62,7 @@ const imbuedOutputStrings = {
     de: 'Raus',
     fr: 'Exterieur',
     ja: '外へ',
-    cn: '钢铁',
+    cn: '远离',
     ko: '밖으로',
   },
 };
@@ -109,7 +109,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rollenposition',
           fr: 'Positions par rôle',
           ja: 'ロール特定位置へ',
-          cn: '去指定位置',
+          cn: '职能三刀站位',
           ko: '직업군별 위치로',
         },
         limitBreak2: {
@@ -117,7 +117,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Heiler stacks',
           fr: 'Packages sur les healers',
           ja: 'ヒーラーと集合',
-          cn: '与治疗集合',
+          cn: '双奶分组分摊',
           ko: '좌우 산개',
         },
         limitBreak3: {
@@ -516,7 +516,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Krieger Cleave auf DIR',
           fr: 'Cleave du Guerrier sur VOUS',
           ja: '自分に戦士の範囲攻撃',
-          cn: '战士顺劈点名',
+          cn: '战士扇形点名',
           ko: '전사 범위 공격 대상자',
         },
       },
