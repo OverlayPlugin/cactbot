@@ -146,7 +146,7 @@ Options.Triggers.push({
           de: 'Zu Ifrit bewegen',
           fr: 'Allez sur Ifrit',
           ja: 'イフリートところへ',
-          cn: '踢球 集合待机',
+          cn: '去脚下',
           ko: '이프리트로 이동',
         },
       },

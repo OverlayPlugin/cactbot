@@ -106,7 +106,7 @@ const primalOutputStrings = {
     de: 'sammeln',
     fr: 'packez-vous',
     ja: 'ヒラ頭割り',
-    cn: '治疗分摊',
+    cn: '双奶分组分摊',
     ko: '그룹 쉐어',
   },
   'stack': {
@@ -115,8 +115,8 @@ const primalOutputStrings = {
     en: 'group stack',
     de: 'In Gruppen sammeln',
     fr: 'package en groupe',
-    ja: '頭割り',
-    cn: '集合',
+    ja: '全体頭割り',
+    cn: '全体分摊',
     ko: '쉐어',
   },
 };
@@ -177,7 +177,7 @@ const intermediateRelativityOutputStringsRaw = {
     de: 'Eis',
     fr: 'Glace',
     ja: 'ブリザガ',
-    cn: '冰三',
+    cn: '冰环',
     ko: '블리자가',
   },
   aero: {
@@ -185,7 +185,7 @@ const intermediateRelativityOutputStringsRaw = {
     de: 'Wind',
     fr: 'Vent',
     ja: 'エアロガ',
-    cn: '风三',
+    cn: '风击退',
     ko: '에어로가',
   },
 };
@@ -584,7 +584,7 @@ Options.Triggers.push({
             de: 'Köder innen #${num}',
             fr: 'Orientez vers l\'intérieur #${num}',
             ja: '中へ誘導 #${num}',
-            cn: '向内诱导 #${num}',
+            cn: '诱导激光 #${num} (内)',
             ko: '내부 유도 #${num}',
           },
           baitOuter: {
@@ -592,7 +592,7 @@ Options.Triggers.push({
             de: 'Köder außen #${num}',
             fr: 'Orientez vers l\'extérieur #${num}',
             ja: '外へ誘導 #${num}',
-            cn: '向外诱导 #${num}',
+            cn: '诱导激光 #${num} (外)',
             ko: '외부 유도 #${num}',
           },
           baitUnknown: {
@@ -600,7 +600,7 @@ Options.Triggers.push({
             de: 'Köder #${num}',
             fr: 'Orientez #${num}',
             ja: '誘導 #${num}',
-            cn: '诱导 #${num}',
+            cn: '诱导激光 #${num}',
             ko: '유도 #${num}',
           },
         };
@@ -683,7 +683,7 @@ Options.Triggers.push({
             de: 'Links + Köder innen #1',
             fr: 'À gauche + Orientez vers l\'intérieur #1',
             ja: '左 + 中へ誘導 #1',
-            cn: '左 + 向内诱导 #1',
+            cn: '左 + 诱导激光 #1 (内)',
             ko: '왼쪽 + 내부 유도 #1',
           },
           goLeftBaitOuter: {
@@ -691,7 +691,7 @@ Options.Triggers.push({
             de: 'Links + Köder außen #1',
             fr: 'À gauche + Orientez vers l\'extérieur #1',
             ja: '左 + 外へ誘導 #1',
-            cn: '左 + 向外诱导 #1',
+            cn: '左 + 诱导激光 #1 (外)',
             ko: '왼쪽 + 외부 유도 #1',
           },
           goLeftBaitUnknown: {
@@ -699,7 +699,7 @@ Options.Triggers.push({
             de: 'Links + Köder #1',
             fr: 'À gauche + Orientez #1',
             ja: '左 + 誘導 #1',
-            cn: '左 + 诱导 #1',
+            cn: '左 + 诱导激光 #1',
             ko: '왼쪽 + 유도 #1',
           },
         };
@@ -726,7 +726,7 @@ Options.Triggers.push({
             de: 'Rechts + Köder innen #1',
             fr: 'À droite + Orientez vers l\'intérieur #1',
             ja: '右 + 中へ誘導 #1',
-            cn: '右 + 向内诱导 #1',
+            cn: '右 + 诱导激光 #1 (内)',
             ko: '오른쪽 + 내부 유도 #1',
           },
           goRightBaitOuter: {
@@ -734,7 +734,7 @@ Options.Triggers.push({
             de: 'Rechts + Köder außen #1',
             fr: 'À droite + Orientez vers l\'extérieur #1',
             ja: '右 + 外へ誘導 #1',
-            cn: '右 + 向外诱导 #1',
+            cn: '右 + 诱导激光 #1 (外)',
             ko: '오른쪽 + 외부 유도 #1',
           },
           goRightBaitUnknown: {
@@ -742,7 +742,7 @@ Options.Triggers.push({
             de: 'Rechts + Köder #1',
             fr: 'À droite + Orientez #1',
             ja: '右 + 誘導 #1',
-            cn: '右 + 诱导 #1',
+            cn: '右 + 诱导激光 #1',
             ko: '오른쪽 + 유도 #1',
           },
         };
@@ -815,14 +815,7 @@ Options.Triggers.push({
         return output.junctionWithCast();
       },
       outputStrings: {
-        junctionWithCast: {
-          en: 'Healer Stacks',
-          de: 'Heiler-Gruppen',
-          fr: 'Packages sur les Heals',
-          ja: 'ヒラ頭割り',
-          cn: '治疗分摊',
-          ko: '힐러 쉐어',
-        },
+        junctionWithCast: Outputs.healerGroups,
         earthenFury: {
           en: 'Big AOE, Bombs Soon',
           de: 'Große AoE, bald Bomben',
@@ -1056,7 +1049,7 @@ Options.Triggers.push({
           de: 'Gruppe Rein (Tanks Raus)',
           fr: 'Équipe à l\'intérieur (Tanks à l\'extérieur)',
           ja: 'ボスの足元へ (タンクは離れる)',
-          cn: '小队进 (T出)',
+          cn: '人群靠近 (T远离引导)',
           ko: '본대 안 (탱커 밖)',
         },
         tanksOutPartyIn: {
@@ -1064,7 +1057,7 @@ Options.Triggers.push({
           de: 'Tanks Raus (Gruppe Rein)',
           fr: 'Tanks à l\'extérieur (Équipe à l\'intérieur',
           ja: 'ボスからはなれる (パーティーが内側)',
-          cn: 'T出 (小队进)',
+          cn: 'T远离引导 (人群靠近)',
           ko: '탱커 밖 (본대 안)',
         },
       },
@@ -1086,7 +1079,7 @@ Options.Triggers.push({
           de: 'Gruppe Raus (Tanks Rein)',
           fr: 'Équipe à l\'extérieur (Tanks à l\'intérieur)',
           ja: 'ボスから離れる (タンクが内側)',
-          cn: '小队出 (T进)',
+          cn: '人群远离 (T靠近引导)',
           ko: '본대 밖 (탱커 안)',
         },
         tanksInPartyOut: {
@@ -1094,7 +1087,7 @@ Options.Triggers.push({
           de: 'Gruppe Rein (Tanks Raus)',
           fr: 'Tanks à l\'intérieur (Équipe à l\'extérieur',
           ja: 'ボスに足元へ (パーティーは離れる)',
-          cn: 'T进 (小队出)',
+          cn: 'T靠近引导 (人群远离)',
           ko: '탱커 안 (본대 밖)',
         },
       },
@@ -1361,8 +1354,8 @@ Options.Triggers.push({
             en: 'Move!',
             de: 'Bewegen!',
             fr: 'Bougez !',
-            ja: '避けて！',
-            cn: '快移动！',
+            ja: '次へ！',
+            cn: '下一步！',
             ko: '이동하기!',
           },
         }, intermediateRelativityOutputStrings);
@@ -1426,7 +1419,7 @@ Options.Triggers.push({
           de: 'Nach draußen schauen',
           fr: 'Regardez vers l\'extérieur',
           ja: '外に向け',
-          cn: '背对',
+          cn: '面向场外',
           ko: '바깥 보기',
         },
       },
@@ -1536,14 +1529,14 @@ Options.Triggers.push({
           de: 'In Gruppen sammeln',
           fr: 'Packez-vous en groupe',
           ja: '頭割り',
-          cn: '集合',
+          cn: '分组分摊',
           ko: '쉐어',
         },
         stacksOn: {
           en: 'Stacks (${player1}, ${player2})',
           de: 'Sammeln (${player1}, ${player2})',
           fr: 'Packages (${player1}, ${player2})',
-          cn: '分摊 (${player1}, ${player2})',
+          cn: '分组分摊 (${player1}, ${player2})',
           ko: '쉐어 (${player1}, ${player2})',
         },
         knockbackIntoStackGroups: {
@@ -1551,7 +1544,7 @@ Options.Triggers.push({
           de: 'Rückstoß, dann in Gruppen sammeln',
           fr: 'Poussée puis packez-vous en groupe',
           ja: '頭割り位置に向かってノックバックを',
-          cn: '击退分摊',
+          cn: '击退 => 分摊',
           ko: '넉백 후 쉐어',
         },
         knockbackIntoStacksOn: {
@@ -1587,7 +1580,7 @@ Options.Triggers.push({
           de: 'Rückstoß dann verteilen',
           fr: 'Poussée puis dispersez-vous',
           ja: '散開のためノックバックを',
-          cn: '分散击退',
+          cn: '击退 => 分散',
           ko: '넉백 후 산개',
         },
       },
@@ -1619,14 +1612,14 @@ Options.Triggers.push({
           de: 'In Gruppen sammeln',
           fr: 'Packez-vous en groupe',
           ja: '集合',
-          cn: '集合',
+          cn: '分组分摊',
           ko: '쉐어',
         },
         stacksOn: {
           en: 'Stacks (${player1}, ${player2})',
           de: 'Sammeln (${player1}, ${player2})',
           fr: 'Packages (${player1}, ${player2})',
-          cn: '分摊 (${player1}, ${player2})',
+          cn: '分组分摊 (${player1}, ${player2})',
           ko: '쉐어 (${player1}, ${player2})',
         },
       },
@@ -1653,8 +1646,8 @@ Options.Triggers.push({
             en: 'Eye (w/${player})',
             de: 'Auge (mit ${player})',
             fr: 'Œil(avec ${player})',
-            ja: '自分に目 (w/${player})',
-            cn: '石化眼点名 (与${player})',
+            ja: '自分にシャドウアイ (w/${player})',
+            cn: '暗黑眼点名 (与${player})',
             ko: '시선징 (+${player})',
           },
           doubleAero: {

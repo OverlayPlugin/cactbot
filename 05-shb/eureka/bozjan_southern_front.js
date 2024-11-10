@@ -76,7 +76,7 @@ const orbOutputStrings = {
     de: 'Stop (Außen)',
     fr: 'Arrêtez (Extérieur)',
     ja: 'ストップ (外に)',
-    cn: '停停停 (外面)',
+    cn: '停停停 (远离)',
     ko: '멈추기 (바깥에서)',
   },
   move: {
@@ -100,8 +100,8 @@ const orbOutputStrings = {
     en: 'Rings',
     de: 'Ringe',
     fr: 'Anneaux',
-    ja: 'ドーナツ',
-    cn: '月环',
+    ja: '地震',
+    cn: '扩散地震',
     ko: '고리장판',
   },
 };
@@ -242,7 +242,7 @@ Options.Triggers.push({
           de: 'Nimm eine´Verbindung',
           fr: 'Prenez un lien',
           ja: '線を取る',
-          cn: '接线',
+          cn: '接线（吃一次）',
           ko: '선 하나 낚아채기',
         },
       },

@@ -39,7 +39,7 @@ Options.Triggers.push({
           de: 'Schwerter!',
           fr: 'Épées !',
           ja: '剣くるよ',
-          cn: '剑!',
+          cn: '回返剑!',
           ko: '검 돌아옴!',
         },
       },

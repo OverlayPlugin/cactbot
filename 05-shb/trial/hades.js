@@ -251,7 +251,7 @@ Options.Triggers.push({
           de: 'Verteilen (Ohne stacken)',
           fr: 'Dispersez-vous (Pas de package !)',
           ja: '散開（重ならないように）',
-          cn: '分散（不要重合!）',
+          cn: '分散（别去分摊！）',
           ko: '산개（모이지마세요!）',
         },
       },

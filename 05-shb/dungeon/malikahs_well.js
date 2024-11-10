@@ -26,7 +26,7 @@ Options.Triggers.push({
           de: 'Nahkämpfer Rückstoß',
           fr: 'Poussée au CaC',
           ja: '近接最大距離ノックバック',
-          cn: '近战击退',
+          cn: '小范围击退',
           ko: '근거리 넉백',
         },
       },

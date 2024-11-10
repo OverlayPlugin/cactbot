@@ -340,7 +340,7 @@ Options.Triggers.push({
           de: 'Geh in eine Intercardinale Himmelsrichtung vom Boss',
           fr: 'Allez en intercardinal du boss',
           ja: 'ボスの斜めへ',
-          cn: '去Boss的对角线方向',
+          cn: '去Boss斜角',
           ko: '보스의 대각선 방향으로 피하기',
         },
       },
@@ -839,7 +839,7 @@ Options.Triggers.push({
             de: 'Flare + Rückstoß (geh weg)',
             fr: 'Brasier + poussée (éloignez-vous)',
             ja: 'フレア + ノックバック (離れる)',
-            cn: '核爆 + 击退 (远离)',
+            cn: '核爆 + 击退 (远离人群)',
             ko: '플레어 + 넉백 (멀리)',
           },
         };
@@ -887,7 +887,7 @@ Options.Triggers.push({
           de: 'Nimm die äußeren Bomben',
           fr: 'Prenez les bombes extérieur',
           ja: '外の爆弾を取る',
-          cn: '吃外面的炸弹',
+          cn: '去外圈炸弹',
           ko: '바깥쪽의 폭탄 사용하기',
         },
       },
@@ -904,7 +904,7 @@ Options.Triggers.push({
           de: 'Rückstoß weg von der Sphere',
           fr: 'Poussée loin de la sphère',
           ja: 'ノックバック、玉から離れる',
-          cn: '击退，远离球',
+          cn: '击退到远离球的方向',
           ko: '구슬 쪽에서 넉백',
         },
       },
@@ -920,7 +920,7 @@ Options.Triggers.push({
           de: 'Raus, weiche den Cleaves aus',
           fr: 'À l\'extérieur, évitez les cleaves',
           ja: '外へ、範囲攻撃注意',
-          cn: '远离，躲避顺劈',
+          cn: '远离，躲避光刃扇形',
           ko: '가시 피하면서 밖으로',
         },
       },
@@ -936,7 +936,7 @@ Options.Triggers.push({
           de: 'Rein, weiche den Cleaves aus',
           fr: 'À l\'intérieur, évitez les cleaves',
           ja: '中へ、範囲攻撃注意',
-          cn: '靠近，躲避顺劈',
+          cn: '靠近，躲避光刃扇形',
           ko: '가시 피하면서 안으로',
         },
       },
@@ -972,7 +972,7 @@ Options.Triggers.push({
         id: '0089',
         capture: false,
       },
-      // Yellow tether between Knight and Warrior gives them a Physical Vulnerability Down debuff.
+      // Purple tether between Knight and Warrior gives them a Magical Vulnerability Down debuff.
       infoText: (_data, _matches, output) => output.text(),
       outputStrings: {
         text: {
@@ -1074,7 +1074,7 @@ Options.Triggers.push({
           de: 'Blitz (keine Verbindung)',
           fr: 'Lumière (non liée)',
           ja: '雷 (線なし)',
-          cn: '雷 (无连线)',
+          cn: '重力 (无连线)',
           ko: '보라색 장판 (선 없음)',
         },
         bigNoTether: {
@@ -1504,7 +1504,7 @@ Options.Triggers.push({
           de: '+2 Heiß-Pfeile',
           fr: 'La flèche de chaleur +2',
           ja: '炎属性+2',
-          cn: '火+2箭',
+          cn: '接火+2箭',
           ko: '+2 불 화살',
         },
         plusOne: {
@@ -1512,7 +1512,7 @@ Options.Triggers.push({
           de: '+1 Heiß-Pfeile',
           fr: 'La flèche de chaleur +1',
           ja: '炎属性+1',
-          cn: '火+1箭',
+          cn: '接火+1箭',
           ko: '+1 불 화살',
         },
         emptySpot: {
@@ -1520,7 +1520,7 @@ Options.Triggers.push({
           de: 'Leeres Feld',
           fr: 'L\'emplacement vide',
           ja: 'そのままにする',
-          cn: '空白',
+          cn: '不接箭',
           ko: '빈 자리',
         },
         minusOne: {
@@ -1528,7 +1528,7 @@ Options.Triggers.push({
           de: '-1 Kalt-Pfeile',
           fr: 'La flèche de froid -1',
           ja: '氷属性-1',
-          cn: '冰-1箭',
+          cn: '接冰-1箭',
           ko: '-1 얼음 화살',
         },
         minusTwo: {
@@ -1536,7 +1536,7 @@ Options.Triggers.push({
           de: '-2 Kalt-Pfeile',
           fr: 'La flèche de froid -2',
           ja: '氷属性-2',
-          cn: '冰-2箭',
+          cn: '接冰-2箭',
           ko: '-2 얼음 화살',
         },
         unknownTemperature: {
@@ -1544,7 +1544,7 @@ Options.Triggers.push({
           de: 'Entgegengesetze Pfeile',
           fr: 'La flèche de l\'élément opposé',
           ja: '体温と逆のあみだ',
-          cn: '相反温度的箭',
+          cn: '接相反温度的箭',
           ko: '반대속성 화살',
         },
         forwards: {
@@ -1584,7 +1584,7 @@ Options.Triggers.push({
           de: 'Folge ${arrow}',
           fr: 'Suivez ${arrow}',
           ja: '${arrow}に従う',
-          cn: '接${arrow}',
+          cn: '${arrow}',
           ko: '${arrow}쪽으로',
         },
         marchToArrow: {
@@ -1986,7 +1986,7 @@ Options.Triggers.push({
           de: 'Sichere Stelle ${dir1} => ${dir2} für Cleave',
           fr: '${dir1} Zone safe => ${dir2} pour le cleave',
           ja: '${dir1}に安置 => ${dir2}範囲攻撃に',
-          cn: '去${dir1}方安全点 => 去${dir2}吃顺劈',
+          cn: '去${dir1}方安全点 => 去${dir2}方吃刀',
           ko: '${dir1} 안전 지대 => ${dir2} 광역 맞기',
         },
         safeSpot: {
@@ -2301,8 +2301,8 @@ Options.Triggers.push({
             en: 'Invuln Tank Buster',
             de: 'Unverwundbarkeit für Tank Buster benutzen',
             fr: 'Invincible sur le Tank buster',
-            ja: 'タンクバスター (被ダメージ上昇付き)',
-            cn: '易伤死刑',
+            ja: 'インビンでタンクバスターを受ける',
+            cn: '开无敌吃死刑',
             ko: '무적기로 탱버 처리',
           },
         };
@@ -2390,7 +2390,7 @@ Options.Triggers.push({
           de: 'Geh in die Blase',
           fr: 'Allez dans la bulle',
           ja: '泡に入る',
-          cn: '进泡泡',
+          cn: '进雷护罩',
           ko: '보호막 안에 들어가기',
         },
       },
