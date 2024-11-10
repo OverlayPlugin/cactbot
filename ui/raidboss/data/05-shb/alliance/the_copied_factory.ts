@@ -196,7 +196,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Spread Tethers',
           de: 'Verbindungen Verteilen',
           fr: 'Dispersez les liens',
-          ja: '散開、線を断つ', // FIXME
+          ja: '線を重ならないように散開',
           cn: '散开放置连线',
           ko: '산개 선 (탱 혼자도 가능)',
         },

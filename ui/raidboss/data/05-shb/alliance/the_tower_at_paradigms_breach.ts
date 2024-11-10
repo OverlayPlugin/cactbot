@@ -236,7 +236,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Knockback -> Out of Middle',
           de: 'Rückstoß -> Raus aus der Mitte',
           fr: 'Poussée -> Sortez du milieu',
-          ja: 'ノックバック -> 外へ',
+          ja: 'ノックバック -> 横へ',
           cn: '击退 -> 去两侧',
           ko: '넉백 -> 가운데 피하기',
         },

@@ -123,7 +123,7 @@ const orbOutputStrings = {
     en: 'Rings',
     de: 'Ringe',
     fr: 'Anneaux',
-    ja: 'ドーナツ', // FIXME
+    ja: '地震',
     cn: '扩散地震',
     ko: '고리장판',
   },

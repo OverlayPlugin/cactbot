@@ -166,7 +166,7 @@ const primalOutputStrings = {
     en: 'group stack',
     de: 'In Gruppen sammeln',
     fr: 'package en groupe',
-    ja: '頭割り',
+    ja: '全体頭割り',
     cn: '全体分摊',
     ko: '쉐어',
   },
@@ -1474,7 +1474,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Move!',
             de: 'Bewegen!',
             fr: 'Bougez !',
-            ja: '避けて！', // FIXME
+            ja: '次へ！',
             cn: '下一步！',
             ko: '이동하기!',
           },
@@ -1774,7 +1774,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Eye (w/${player})',
             de: 'Auge (mit ${player})',
             fr: 'Œil(avec ${player})',
-            ja: '自分に目 (w/${player})', // FIXME
+            ja: '自分にシャドウアイ (w/${player})',
             cn: '暗黑眼点名 (与${player})',
             ko: '시선징 (+${player})',
           },

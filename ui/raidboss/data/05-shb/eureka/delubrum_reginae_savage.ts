@@ -2425,7 +2425,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Invuln Tank Buster',
             de: 'Unverwundbarkeit für Tank Buster benutzen',
             fr: 'Invincible sur le Tank buster',
-            ja: 'タンクバスター (被ダメージ上昇付き)', // FIXME
+            ja: 'インビンでタンクバスターを受ける',
             cn: '开无敌吃死刑',
             ko: '무적기로 탱버 처리',
           },

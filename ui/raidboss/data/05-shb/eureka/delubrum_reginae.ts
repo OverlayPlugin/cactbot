@@ -520,7 +520,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Follow untethered adds',
           de: 'Folge den nicht verbundenen Adds',
           fr: 'Suivez les adds non liés',
-          ja: '線に繋がらない雑魚から離れる', // FIXME
+          ja: '線に繋がらない雑魚に追う',
           cn: '跟随无连线小怪',
           ko: '선 연결되지 않은 쫄 따라가기',
         },

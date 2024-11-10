@@ -182,7 +182,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Move to last explosions',
           de: 'Zur letzten Explosion bewegen',
           fr: 'Allez sur la dernière explosion',
-          ja: '最後に爆発した岩へ', // FIXME
+          ja: 'ついさっき爆発した岩へ',
           cn: '去刚才爆炸的区域',
           ko: '마지막 폭발 위치로',
         },

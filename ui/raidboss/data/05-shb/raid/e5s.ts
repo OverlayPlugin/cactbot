@@ -237,7 +237,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Cleanse In Cloud',
           de: 'In der Wolke reinigen',
           fr: 'Purifiez-vous dans le nuage',
-          ja: '麻痺をエスナ', // FIXME
+          ja: '雷雲の範囲攻撃でデバフ解除',
           cn: '雷云清Debuff',
           ko: '디버프 제거하기',
         },
