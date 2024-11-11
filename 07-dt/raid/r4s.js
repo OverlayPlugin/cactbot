@@ -91,15 +91,19 @@ const witchHuntAlertOutputStrings = {
   },
   tanksNear: {
     en: 'Tanks Close (Party Far)',
+    cn: '坦克近 (小队远)',
   },
   healersFar: {
     en: 'Healers Far (Party Close)',
+    cn: '治疗远 (小队近)',
   },
   meleeNear: {
     en: 'Melee Close (Party Far)',
+    cn: '近战近 (小队远)',
   },
   rangedFar: {
     en: 'Ranged Far (Party Close)',
+    cn: '远程远 (小队近)',
   },
   combo: {
     en: '${inOut} => ${bait}',
@@ -233,24 +237,31 @@ const conductorCurrentStringsNoStrat = {
 const conductorCurrentStringsDNStrat = {
   remoteCurrent: {
     en: 'Front of Middle (Far Cone)',
+    cn: '中前 (远扇形)',
   },
   proximateCurrent: {
     en: 'Front of Middle (Near Cone)',
+    cn: '中前 (近扇形)',
   },
   spinningConductorSupport: {
     en: 'Front Left (Small AoE)',
+    cn: '左前 (小圈)',
   },
   spinningConductorDPS: {
     en: 'Front Right (Small AoE)',
+    cn: '右前 (小圈)',
   },
   roundhouseConductorSupport: {
     en: 'Front Left (Donut AoE)',
+    cn: '左前 (月环)',
   },
   roundhouseConductorDPS: {
     en: 'Front Right (Donut AoE)',
+    cn: '右前 (月环)',
   },
   colliderConductor: {
     en: 'Middle, Behind Current (Get Hit by Cone)',
+    cn: '中间, 扇形后 (吃扇形)',
   },
 };
 Options.Triggers.push({
@@ -261,16 +272,24 @@ Options.Triggers.push({
       id: 'ionCluster',
       name: {
         en: 'Ion Cluster Debuff Strategy',
+        cn: '离子簇 Debuff 策略',
       },
       comment: {
         en: `Strategy for resolving debuffs during Ion Cluster.
              None: Call the debuff only, no strategy.
              DN: use rivet positions based on the shabin pastebin.`,
+        cn: `在 离子簇 机制中处理 debuff 的策略。
+             无: 只播报 Debuff, 不使用策略。
+             DN: 使用基于 shabin pastebin 的固定站位。`,
       },
       type: 'select',
       options: {
         en: {
           'None': 'none',
+          'DN': 'DN',
+        },
+        cn: {
+          '无': 'none',
           'DN': 'DN',
         },
       },
@@ -280,6 +299,7 @@ Options.Triggers.push({
       id: 'witchHunt',
       name: {
         en: 'Witch Hunt Bait Strategy',
+        cn: '魔女狩猎诱导策略',
       },
       comment: {
         en: `Strategy for baiting Witch Hunt AoEs.<br>
@@ -287,11 +307,20 @@ Options.Triggers.push({
              DN: DN uptime strategy, with flexible priority where Tanks take the first near bait,
              Healers take the first far bait, Melee DPS take the second near bait, and finally
              Ranged DPS take the second far bait.`,
+        cn: `诱导魔女狩猎 AOE 的策略。<br>
+             无: 同时播报小队和诱导位置，无特定策略。<br>
+             DN: DN uptime 策略, 优先级灵活, 坦克负责第一个近诱导,
+             治疗负责第一个远诱导, 近战 DPS 负责第二个近诱导,
+             最后远程 DPS 负责第二个远诱导。`,
       },
       type: 'select',
       options: {
         en: {
           'None': 'none',
+          'DN': 'DN',
+        },
+        cn: {
+          '无': 'none',
           'DN': 'DN',
         },
       },
@@ -301,6 +330,7 @@ Options.Triggers.push({
       id: 'sunrise',
       name: {
         en: 'Sunrise Sabbath Strategy',
+        cn: '黑色安息日的日出策略',
       },
       comment: {
         en: `Strategy for resolving Sunrise Sabbath.<br>
@@ -308,11 +338,20 @@ Options.Triggers.push({
              Snakes Prio: Popular priority system used in NA PF. Support players
              start looking for tower or cannon from the northwest going counter clockwise.
              DPS players look for tower or cannon from the north going clockwise.`,
+        cn: `处理黑色安息日的日出的策略。<br>
+             无: 播报 Debuff, 双塔生成, 和匹配的塔。<br>
+             Snakes Prio: 流行于北美招募版的优先级系统。
+             T 奶玩家从西北方开始逆时针寻找塔或炮。
+             DPS 玩家从正北方开始顺时针寻找塔或炮。`,
       },
       type: 'select',
       options: {
         en: {
           'None': 'none',
+          'Snakes Prio': 'snakePrio',
+        },
+        cn: {
+          '无': 'none',
           'Snakes Prio': 'snakePrio',
         },
       },
@@ -322,9 +361,11 @@ Options.Triggers.push({
       id: 'sunriseUptime',
       name: {
         en: 'Sunrise Sabbath Uptime Cannon Baits',
+        cn: '黑色安息日的日出 使用 uptime 炮诱导打法',
       },
       comment: {
         en: 'Call cannon baits assuming the AutoCAD waymark uptime cannon bait spots.',
+        cn: '基于 AutoCAD 标点的 uptime 炮诱导打法播报炮诱导。',
       },
       type: 'checkbox',
       default: false,
@@ -644,15 +685,19 @@ Options.Triggers.push({
         },
         tank: {
           en: 'Tanks',
+          cn: '坦克',
         },
         healer: {
           en: 'Healers',
+          cn: '治疗',
         },
         melee: {
           en: 'Melee',
+          cn: '近战',
         },
         ranged: {
           en: 'Ranged',
+          cn: '远程',
         },
         separator: {
           en: ' => ',
@@ -2073,9 +2118,11 @@ Options.Triggers.push({
         },
         baitNormal: {
           en: 'Point ${bait}',
+          cn: '指向 (${bait})',
         },
         baitUptime: {
           en: 'Stand ${bait} side',
+          cn: '站 ${bait} 侧',
         },
         yellowShort: {
           en: 'Blue Cannon (${loc}) - ${bait}',
@@ -2336,6 +2383,86 @@ Options.Triggers.push({
         'Widening Witch Hunt': '円輪式ウィッチハント',
         'Witchgleam': 'シャインスパーク',
         'Wrath of Zeus': 'ラス・オブ・ゼウス',
+      },
+    },
+    {
+      'locale': 'cn',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Wicked Replica': '狡雷的幻影',
+        'Wicked Thunder': '狡雷',
+      },
+      'replaceText': {
+        '(?<! )Spark': '辉光电火花',
+        '(?<! )Witch Hunt': '魔女狩猎',
+        'Azure Thunder': '青雷',
+        'Bewitching Flight': '魔女回翔',
+        'Burst': '爆炸',
+        'Cannonbolt': '聚雷加农炮',
+        'Chain Lightning': '雷光链',
+        'Conduction Point': '指向雷',
+        'Cross Tail Switch': '交叉乱尾击',
+        'Eight Star': '八雷星',
+        'Electrifying Witch Hunt': '惊电魔女狩猎',
+        'Electron Stream': '电子流',
+        'Electrope Edge': '雷转质展开',
+        'Electrope Transplant': '雷转质移植',
+        'Flame Slash': '火焰斩',
+        'Forked Fissures': '惊电裂隙',
+        'Forked Lightning': '叉形闪电',
+        'Four Star': '四雷星',
+        'Fulminous Field': '雷电力场',
+        'Impact': '冲击',
+        'Ion Cluster': '离子簇',
+        'Laceration': '斩击',
+        'Left Roll': '左列',
+        'Lightning Cage': '电牢笼',
+        'Lightning Vortex': '电闪圆',
+        'Midnight Sabbath': '黑色安息日的午夜',
+        'Mustard Bomb': '芥末爆弹',
+        'Narrowing Witch Hunt': '环圆式魔女狩猎',
+        'Raining Swords': '剑雨',
+        'Right Roll': '右列',
+        'Sidewise Spark': '侧方电火花',
+        'Soulshock': '灵魂震荡',
+        'Stampeding Thunder': '奔雷炮',
+        'Sunrise Sabbath': '黑色安息日的日出',
+        'Switch of Tides': '尖尾溅',
+        'Sword Quiver': '剑舞',
+        'Tail Thrust': '尖尾刺',
+        'Thundering': '电闪环',
+        'Twilight Sabbath': '黑色安息日的日落',
+        'Wicked Blaze': '狡诡炽焰',
+        'Wicked Bolt': '狡诡落雷',
+        'Wicked Fire': '狡诡火炎',
+        'Wicked Flare': '狡诡核爆',
+        'Wicked Jolt': '狡诡摇荡',
+        'Wicked Spark': '狡诡电火花',
+        'Wicked Special': '狡诡特技',
+        'Wicked Thunder': '狡诡闪雷',
+        'Widening Witch Hunt': '圆环式魔女狩猎',
+        'Witchgleam': '辉光电火花',
+        'Wrath of Zeus': '宙斯之怒',
+        '\\(debuffs resolve\\)': '(处理 Debuff)',
+        '\\(debuffs\\)': '(Debuff)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(first mines hit\\)': '(第一轮魔方充能)',
+        '\\(first set\\)': '(第一轮充能)',
+        '\\(first sparks detonate\\)': '(第一轮火花引爆)',
+        '\\(first towers/cannons resolve\\)': '(第一轮塔/炮)',
+        '\\(floor no more\\)': '(地板消失)',
+        '\\(fourth set\\)': '(第四轮充能)',
+        '\\(mines\\)': '(魔方)',
+        '\\(players\\)': '(玩家)',
+        '\\(puddles drop\\)': '(放圈)',
+        '\\(second hit\\)': '(第二击)',
+        '\\(second mines hit\\)': '(第二轮魔方充能)',
+        '\\(second set\\)': '(第二轮充能)',
+        '\\(second sparks detonate\\)': '(第二轮火花引爆)',
+        '\\(second towers/cannons resolve\\)': '(第二轮塔/炮)',
+        '\\(spread \\+ tethers\\)': '(分散 + 连线)',
+        '\\(third mines hit\\)': '(第三轮魔方充能)',
+        '\\(third set\\)': '(第三轮充能)',
       },
     },
   ],

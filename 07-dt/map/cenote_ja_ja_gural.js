@@ -47,6 +47,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Tuligora Troupes spawned, kill in order!',
+          cn: '图拉尔蔓德拉战队 已生成，按顺序击杀！',
         },
       },
     },

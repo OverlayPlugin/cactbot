@@ -92,6 +92,7 @@ const cardOutputStrings = {
   unknown: Outputs.unknown,
   start: {
     en: 'Start ${dir}',
+    cn: '${dir} 开始',
   },
 };
 Options.Triggers.push({
@@ -326,6 +327,7 @@ Options.Triggers.push({
       outputStrings: {
         avoid: {
           en: 'Dodge puddles',
+          cn: '躲避圈圈',
         },
       },
     },
