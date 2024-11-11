@@ -9864,6 +9864,7 @@ const data: ZoneInfoType = {
     'contentType': 9,
     'exVersion': 5,
     'name': {
+      'cn': '加加财富天坑',
       'de': 'Cenote Ja Ja Gural',
       'en': 'Cenote Ja Ja Gural',
       'fr': 'Cénote Ja Ja Gural',
@@ -9983,7 +9984,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
-      'cn': '打倒！沙尔托菲特盗贼团',
+      'cn': '打倒！沙尔托菲特盗贼团！',
       'de': 'Der mächtigste Schild',
       'en': 'The Mightiest Shield',
       'fr': 'Mauvais cru pour Chalteaufite',
@@ -10028,6 +10029,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 轻量级1',
       'de': 'Arkadion - Halbschwergewicht R1 (episch)',
       'en': 'AAC Light-heavyweight M1 (Savage)',
       'fr': 'Poids mi-lourds CCA - match 1 (sadique)',
@@ -10057,6 +10059,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 轻量级2',
       'de': 'Arkadion - Halbschwergewicht R2 (episch)',
       'en': 'AAC Light-heavyweight M2 (Savage)',
       'fr': 'Poids mi-lourds CCA - match 2 (sadique)',
@@ -10086,6 +10089,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 轻量级3',
       'de': 'Arkadion - Halbschwergewicht R3 (episch)',
       'en': 'AAC Light-heavyweight M3 (Savage)',
       'fr': 'Poids mi-lourds CCA - match 3 (sadique)',
@@ -10115,6 +10119,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 轻量级4',
       'de': 'Arkadion - Halbschwergewicht R4 (episch)',
       'en': 'AAC Light-heavyweight M4 (Savage)',
       'fr': 'Poids mi-lourds CCA - match 4 (sadique)',
