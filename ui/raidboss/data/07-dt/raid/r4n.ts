@@ -29,6 +29,7 @@ const directionOutputStrings = {
   goRight: Outputs.right,
   stay: {
     en: 'Stay',
+    cn: '停',
   },
   num2: Outputs.num2,
   separator: {
@@ -41,6 +42,7 @@ const directionOutputStrings = {
   },
   intercardStay: {
     en: '${dir} => Stay',
+    cn: '${dir} => 停',
   },
   numHits: {
     en: '${dir} x${num}',
