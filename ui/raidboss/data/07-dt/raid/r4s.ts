@@ -401,7 +401,7 @@ const triggerSet: TriggerSet<Data> = {
 
              None: Call the debuff only, no strategy.
              DN: use rivet positions based on the shabin pastebin.`,
-        cn: `在离子群期间处理 debuff 的策略。
+        cn: `在 离子簇 机制中处理 debuff 的策略。
 
              无: 只播报 Debuff, 不使用策略。
              DN: 使用基于 shabin pastebin 的固定站位。`,
