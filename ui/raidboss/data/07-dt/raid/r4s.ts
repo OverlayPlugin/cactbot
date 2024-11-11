@@ -489,7 +489,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       comment: {
         en: 'Call cannon baits assuming the AutoCAD waymark uptime cannon bait spots.',
-        cn: '假设 AutoCAD 路标的炮位置 uptime, 播报炮诱导。',
+        cn: '基于 AutoCAD 标点的 uptime 炮诱导打法播报炮诱导。',
       },
       type: 'checkbox',
       default: false,
