@@ -485,7 +485,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'sunriseUptime',
       name: {
         en: 'Sunrise Sabbath Uptime Cannon Baits',
-        cn: '黑色安息日的日出炮诱导',
+        cn: '黑色安息日的日出 使用 uptime 炮诱导打法',
       },
       comment: {
         en: 'Call cannon baits assuming the AutoCAD waymark uptime cannon bait spots.',
