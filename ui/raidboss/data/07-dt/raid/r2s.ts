@@ -853,7 +853,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tempting Twist': '甜心旋风',
         '\\(cast\\)': '(咏唱)',
         '\\(damage\\)': '(伤害)',
-        '\\(drop\\)': '(滴落)',
+        '\\(drop\\)': '(放圈)',
         '\\(enrage\\)': '(狂暴)',
         '\\(stun for': '(眩晕',
       },
