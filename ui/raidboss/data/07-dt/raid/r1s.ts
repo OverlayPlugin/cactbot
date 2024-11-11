@@ -755,7 +755,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(cast\\)': '(咏唱)',
         '\\(damage\\)': '(伤害)',
         '\\(enrage\\)': '(狂暴)',
-        '\\(hit\\)': '(打击)',
+        '\\(hit\\)': '(命中)',
         '\\(hits\\)': '(命中)',
         '\\(jump\\)': '(跳)',
         '\\(knockback\\)': '(击退)',
