@@ -2615,8 +2615,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
+        'Electromine': '雷转质矿组',
         'Wicked Replica': '狡雷的幻影',
         'Wicked Thunder': '狡雷',
       },
