@@ -296,7 +296,7 @@ export class PLD6xComponent extends BaseComponent {
   // Sword Oath changed to Atonement Ready in Patch 7.0, using the same ID through
   // FIXME: Unavailble for 7.0 for now
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.AtonementReady && this.ffxivVersion < 700)
+    if (id === EffectId.AtonementReady_76E && this.ffxivVersion < 700)
       this.setAtonement(this.atonementBox, parseInt(matches.count ?? '0'));
     if (id === EffectId.Requiescat_558) {
       this.stacksContainer.classList.remove('hide');
@@ -305,7 +305,7 @@ export class PLD6xComponent extends BaseComponent {
   }
 
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.AtonementReady && this.ffxivVersion < 700)
+    if (id === EffectId.AtonementReady_76E && this.ffxivVersion < 700)
       this.setAtonement(this.atonementBox, 0);
     if (id === EffectId.Requiescat_558) {
       this.setRequiescat(0);

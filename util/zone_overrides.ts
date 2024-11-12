@@ -86,6 +86,8 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   'TheBurn64': 789,
   'TheDrownedCityOfSkalla64': 731,
   'TheGhimlytDark64': 793,
+  // 7.1 revamp
+  'Halatali70': 162,
 };
 
 // This will override the data-soourced ContentType with our own value.
@@ -586,6 +588,23 @@ const _SYNTHETIC_ZONE_INFO: ZoneInfoType = {
       'fr': '(6.4)Les Ténèbres de Ghimlyt',
       'ja': '(6.4)境界戦線 ギムリトダーク',
       'ko': '(6.4)김리트 황야',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 200,
+    'weatherRate': 0,
+  },
+  // 7.1 updates - content removed/reworked
+  162: {
+    'contentType': 2,
+    'exVersion': 0,
+    'name': {
+      'cn': '(7.0)魔兽领域日影地修炼所',
+      'de': '(7.0)Halatali',
+      'en': '(7.0)Halatali',
+      'fr': '(7.0)Halatali',
+      'ja': '(7.0)魔獣領域 ハラタリ修練所',
+      'ko': '(7.0)할라탈리 수련장',
     },
     'offsetX': 0,
     'offsetY': 0,
