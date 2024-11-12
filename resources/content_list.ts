@@ -125,6 +125,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.Alexandria,
   ZoneId.TenderValley,
   ZoneId.TheStrayboroughDeadwalk,
+  ZoneId.YuweyawataFieldStation,
 
   // Trials (A Realm Reborn)
   ZoneId.TheBowlOfEmbers,
@@ -251,6 +252,8 @@ const contentList: (ZoneIdType)[] = [
   // High-end Trials (Dawntrail)
   ZoneId.WorqorLarDorExtreme,
   ZoneId.EverkeepExtreme,
+  ZoneId.TheMinstrelsBalladSphenesBurden,
+  ZoneId.TheJadeStoaUnreal,
 
   // Alliance Raids (A Realm Reborn)
   ZoneId.TheLabyrinthOfTheAncients,
@@ -411,6 +414,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.AnabaseiosTheTwelfthCircleSavage,
 
   // Alliance Raids (Dawntrail)
+  ZoneId.JeunoTheFirstWalk,
 
   // Normal Raids (Dawntrail)
   ZoneId.AacLightHeavyweightM1,

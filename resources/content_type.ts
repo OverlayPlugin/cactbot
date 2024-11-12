@@ -19,7 +19,6 @@ const data = {
   'Guildhests': 3,
   'IslandSanctuary': 36,
   'Levequests': 10,
-  'MaskedCarnivale': 27,
   'OceanFishing': 31,
   'OverallCompletion': 14,
   'PlayerCommendation': 15,

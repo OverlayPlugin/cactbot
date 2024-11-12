@@ -92,7 +92,7 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
 
 // This will override the data-soourced ContentType with our own value.
 const _SYNTHETIC_CONTENT_TYPE: NameKeyToTerritoryId = {
-  'MaskedCarnivale': 27,
+  // empty since 7.1
 };
 
 // Certain collisions will always happen and we don't care because we're not
