@@ -781,7 +781,7 @@ const triggerSet: TriggerSet<Data> = {
         dodge: {
           en: 'Go to safe side of first dash => move in after',
           fr: 'Allez du côté sûr après le 1er dash => allez à l\'intérieur ensuite',
-          cn: '前往首次冲锋安全区 => 去里面',
+          cn: '前往首次冲锋两侧 => 躲进去',
           ko: '첫 돌진의 안전지대로 이동 => 그 후 첫 돌진 자리로',
         },
       },

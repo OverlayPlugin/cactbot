@@ -237,13 +237,13 @@ const triggerSet: TriggerSet<Data> = {
         stackThree: {
           en: 'Stack (3 hits)',
           fr: 'Pack (3 coups)',
-          cn: '集合 (3次)',
+          cn: '分摊 (3次)',
           ko: '쉐어 (3번)',
         },
         stackFive: {
           en: 'Stack (5 hits)',
           fr: 'Pack (5 coups)',
-          cn: '集合 (5次)',
+          cn: '分摊 (5次)',
           ko: '쉐어 (5번)',
         },
       },

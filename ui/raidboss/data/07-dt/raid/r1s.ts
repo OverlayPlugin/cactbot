@@ -495,7 +495,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nah-Distanz-Köder vom Ziel',
           fr: 'Baits proches de la cible',
           ja: 'ボスに近づいて誘導',
-          cn: '引导站位',
+          cn: '靠近引导站位',
           ko: '대상 근처에서 유도',
         },
         unknown: Outputs.unknown,
@@ -590,7 +590,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein + Auf Heiler sammeln => Raus',
           fr: 'Intérieur + Packs sur les heals => Extérieur',
           ja: '中へ + ヒラ頭割り => 外へ',
-          cn: '场内 + 治疗分摊组 => 场外',
+          cn: '场内 + 治疗分组分摊 => 场外',
           ko: '안으로 + 힐러 그룹 쉐어 => 밖으로',
         },
         out: {
@@ -598,7 +598,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus + Auf Heiler sammeln => Rein',
           fr: 'Extérieur + Packs sur les heals => Intérieur',
           ja: '外へ + ヒラ頭割り => 中へ',
-          cn: '场外 + 治疗分摊组 => 场内',
+          cn: '场外 + 治疗分组分摊 => 场内',
           ko: '밖으로 + 힐러 그룹 쉐어 => 안으로',
         },
         healerStacks: {

@@ -707,8 +707,8 @@ const triggerSet: TriggerSet<Data> = {
         'Wicked Thunder': '狡雷',
       },
       'replaceText': {
-        'Left Roll': '左列',
-        'Right Roll': '右列',
+        'Left Roll': '左转',
+        'Right Roll': '右转',
         'west--': '西--',
         '--east': '--东',
         '\\(cast\\)': '(咏唱)',

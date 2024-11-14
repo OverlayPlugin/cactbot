@@ -1483,7 +1483,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(cast\\)': '(咏唱)',
         '\\(damage\\)': '(伤害)',
         '\\(enrage\\)': '(狂暴)',
-        '\\(lines drop\\)': '(直线落下)',
+        '\\(lines drop\\)': '(放置直线)',
         'Actualize': '自我实现',
         'Aero III': '暴风',
         'Backward Edge': '后向斩',

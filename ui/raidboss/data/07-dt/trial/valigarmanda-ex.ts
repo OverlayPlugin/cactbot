@@ -290,7 +290,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Adds besiegen + Heiler Gruppen ${role}',
           fr: 'Tuez les adds + groupe sur les heals ${role}',
           ja: '雑魚を倒して + ヒラグループ ${role}',
-          cn: '击杀小怪 + 治疗分摊组 ${role}',
+          cn: '击杀小怪 + 治疗分组分摊 ${role}',
           ko: '쫄 잡기 + 힐러 그룹 ${role}',
         },
         tank: {
