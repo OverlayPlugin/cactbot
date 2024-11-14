@@ -553,7 +553,7 @@ export default {
     de: 'Seiten',
     fr: 'Côtés',
     ja: '横へ',
-    cn: '去侧面',
+    cn: '去两侧',
     ko: '양옆으로',
   },
   middle: {
@@ -692,7 +692,7 @@ export default {
     de: 'Bewegen!',
     fr: 'Bougez !',
     ja: '避けて！',
-    cn: '快躲开！',
+    cn: '离开原地！',
     ko: '이동하기!',
   },
   moveAround: {

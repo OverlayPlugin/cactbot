@@ -27,6 +27,7 @@ const defaultOopsyNonConfigOptions: OopsyNonConfigOptions = {
   IgnoreContentTypes: [
     ContentType.Pvp,
     ContentType.Eureka,
+    ContentType.SaveTheQueen,
   ],
   IgnoreZoneIds: [
     // Bozja zones have an (unnamed) content type of 29 which also applies

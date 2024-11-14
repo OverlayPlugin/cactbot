@@ -79,7 +79,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Halt nach dem Add ausschau',
           fr: 'Cherchez les adds',
           ja: '雑魚に注意',
-          cn: '冲锋',
+          cn: '注意小怪冲锋',
           ko: '쫄 위치 확인',
         },
         bigKnockback: {
@@ -237,7 +237,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Cleanse In Cloud',
           de: 'In der Wolke reinigen',
           fr: 'Purifiez-vous dans le nuage',
-          ja: '麻痺をエスナ',
+          ja: '雷雲の範囲攻撃でデバフ解除',
           cn: '雷云清Debuff',
           ko: '디버프 제거하기',
         },
@@ -400,7 +400,7 @@ const triggerSet: TriggerSet<Data> = {
         'stormcloud': '雷暴云',
         '(?<! )Ramuh': '拉姆',
         'Will Of Ramuh': '拉姆幻影',
-        'Raiden': '莱丁',
+        'Raiden': '雷电',
         'Will Of Ixion': '伊克西翁幻影',
       },
       'replaceText': {

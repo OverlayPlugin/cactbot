@@ -114,6 +114,7 @@ const cardOutputStrings = {
   unknown: Outputs.unknown,
   start: {
     en: 'Start ${dir}',
+    cn: '${dir} 开始',
   },
 };
 
@@ -362,6 +363,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Dodge puddles',
+          cn: '躲避圈圈',
         },
       },
     },

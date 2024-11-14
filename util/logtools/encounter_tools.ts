@@ -161,12 +161,16 @@ export class EncounterFinder {
     // There are some seal messages in older raids, but not consistently.
     // Therefore, we can't require them.
     const keepTypes: Array<number> = [
+      ContentType.ChaoticAllianceRaid,
+      ContentType.DeepDungeons,
       ContentType.Dungeons,
       ContentType.Eureka,
       ContentType.Raids,
+      ContentType.SaveTheQueen,
+      ContentType.TheMaskedCarnivale,
+      ContentType.TreasureHunt,
       ContentType.Trials,
       ContentType.UltimateRaids,
-      ContentType.DeepDungeons,
       ContentType.VCDungeonFinder,
     ];
 
