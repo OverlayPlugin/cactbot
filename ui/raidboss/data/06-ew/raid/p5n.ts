@@ -94,7 +94,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh ins leere Feld (ohne Stein)',
           fr: 'Allez dans une case vide (sans pierres)',
           ja: '石がないマスへ',
-          cn: '去空方块 (没有石头)',
+          cn: '去没有石头的格子',
           ko: '돌이 없는 빈 칸으로',
         },
         moveAway: {

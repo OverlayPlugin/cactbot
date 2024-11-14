@@ -959,7 +959,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Schrei später (mit ${player})',
             fr: 'Cri plus tard (avec ${player})',
             ja: '自分に魔眼 (+${player})',
-            cn: '石化点名 (+ ${player}',
+            cn: '大石化点名 (+ ${player}',
             ko: '나중에 마안 (+ ${player})',
           },
           stack: {
@@ -1258,7 +1258,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zerquetschen',
           fr: 'Écrasement',
           ja: 'クラッシュ',
-          cn: '碎击',
+          cn: '大圈',
           ko: '파괴',
         },
         impact: Outputs.knockback,
@@ -2324,7 +2324,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Nimm Klon Verbindung',
             fr: 'Prenez les liens des clones',
             ja: '線を付けて散開位置へ',
-            cn: '拉线',
+            cn: '引导分身连线',
             ko: '선 가져가기',
           },
           alpha: {

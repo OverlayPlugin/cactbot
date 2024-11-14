@@ -522,7 +522,7 @@ const triggerSet: TriggerSet<Data> = {
           `Afficher la position finale uniquement dans l\'ordre des paires choisies, sans inversion.
             Par exemple, pour le BPOG, le X bleu (croix) sera loin à l\'ouest.
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
-        cn: `只报自己图案的最终位置，没有位置变换。例如，对于 BPOG 打法，蓝 X 是第一列（西面最远）。
+        cn: `直接报自己图案的最终位置，不报变换前的。例如，对于 BPOG 打法，蓝 X 会直接报第一列（西面最远）。
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
         ko: `선택한 도형 순서에 따른 최종 위치만 알립니다. 예시에서 파보빨초를 기준으로 파랑 X는 1열이 됩니다.
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
@@ -531,7 +531,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Classical Concepts 2: Actual only & no inversion',
         de: 'Classical Concepts 2: Nur tatsächlich & keine Umkehrung',
         fr: 'Classical Concepts 2 : Actuel uniquement & pas d\'inversion',
-        cn: '经典概念2: 实际位置 (没有位置变换)',
+        cn: '经典概念2: 直接报最终位置 (不报变换)',
         ko: '원소 이데아 2: 반전 없이 실제 위치만 알림',
       },
       type: 'checkbox',
@@ -1985,7 +1985,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gruppe Raus (Tanks Rein)',
           fr: 'Équipe à l\'extérieur (Tanks à l\'intérieur)',
           ja: 'ボスから離れる (タンクが内側)',
-          cn: '小队出 (T进)',
+          cn: '人群远离 (T靠近)',
           ko: '본대 밖 (탱커 안)',
         },
         tanksInPartyOut: {
@@ -1993,7 +1993,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Tanks Rein (Gruppe Raus)',
           fr: 'Tanks à l\'intérieur (Équipe à l\'extérieur',
           ja: 'ボスに足元へ (パーティーは離れる)',
-          cn: 'T进 (小队出)',
+          cn: 'T靠近 (人群远离)',
           ko: '탱커 안 (본대 밖)',
         },
       },
@@ -2010,7 +2010,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gruppe Rein (Tanks Raus)',
           fr: 'Équipe à l\'intérieur (Tanks à l\'extérieur)',
           ja: 'ボスの足元へ (タンクは離れる)',
-          cn: '小队进 (T出)',
+          cn: '小队靠近 (T远离)',
           ko: '본대 안 (탱커 밖)',
         },
         tanksOutPartyIn: {
@@ -2018,7 +2018,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Tanks Raus (Gruppe Rein)',
           fr: 'Tanks à l\'extérieur (Équipe à l\'intérieur',
           ja: 'ボスからはなれる (パーティーが内側)',
-          cn: 'T出 (小队进)',
+          cn: 'T远离 (小队靠近)',
           ko: '탱커 밖 (본대 안)',
         },
       },
@@ -3030,7 +3030,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Innerer Kreis',
           fr: 'Cercle intérieur',
           ja: 'ドーナツ',
-          cn: '月环',
+          cn: '环型',
           ko: '가운데 원',
         },
       },
@@ -4140,7 +4140,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Initial Fire: ${player1}, ${player2}',
             de: 'Initiales Feuer: ${player1}, ${player2}',
             fr: 'Feu initial : ${player1}, ${player2}',
-            cn: '火标记点: ${player1}, ${player2}',
+            cn: '火点: ${player1}, ${player2}',
             ko: '첫 불: ${player1}, ${player2}',
           },
           beacon: {
@@ -4148,7 +4148,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Initiales Feuer (mit ${partner})',
             fr: 'Feu initial (avec ${partner})',
             ja: '自分に初炎 (${partner})', // FIXME
-            cn: '火标记点名 (和 ${partner})',
+            cn: '火点名 (和 ${partner})',
             ko: '첫 불 대상자 (+ ${partner})',
           },
         };
@@ -4192,7 +4192,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nochmal Feuer',
           fr: 'Feu à nouveau',
           ja: '再び炎！無職とあたまわり',
-          cn: '二次火标记点名',
+          cn: '二次火点名',
           ko: '두번째 불',
         },
       },
@@ -4216,7 +4216,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Mit Feuer sammeln',
           fr: 'Package avec le Feu',
           ja: '無職！炎とあたまわり', // FIXME
-          cn: '与火标记分摊',
+          cn: '与火分摊',
           ko: '불 쉐어',
         },
         wind: {
@@ -4245,7 +4245,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Feuer (mit ${team})',
             fr: 'Feu (avec ${team})',
             ja: '自分に炎 (${team})',
-            cn: '火标记点名 (和 ${team})',
+            cn: '火点名 (和 ${team})',
             ko: '불 (+ ${team})',
           },
           wind: {
@@ -4253,7 +4253,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Wind (mit ${team})',
             fr: 'Vent (avec ${team})',
             ja: '自分に風 (${team})',
-            cn: '风标记点名 (和 ${team})',
+            cn: '风点名 (和 ${team})',
             ko: '바람 (+ ${team})',
           },
           windBeacon: {
@@ -4261,7 +4261,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Initial Wind',
             fr: 'Vent inital',
             ja: '自分に初風', // FIXME
-            cn: '风标记点名',
+            cn: '风点名',
             ko: '첫 바람 대상자',
           },
         };
@@ -4313,7 +4313,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Feuer Markierung',
             fr: 'Marqueur de feu',
             ja: '自分に初炎!', // FIXME
-            cn: '火标记点名',
+            cn: '传火点名',
             ko: '불 대상자',
           },
           fireOn: {
@@ -4321,7 +4321,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Feuer auf ${player}',
             fr: 'Feu sur ${player}',
             ja: '初炎: ${player}',
-            cn: '火标记点 ${player}',
+            cn: '传火点 ${player}',
             ko: '불: ${player}',
           },
         };
@@ -4698,7 +4698,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(Floor Drop\\)': '(地板坠落)',
         '\\(cast\\)': '(咏唱)',
         '\\(enrage\\)': '(狂暴)',
-        '\\(proximity\\)': '(近)',
+        '\\(proximity\\)': '(距离衰减)',
         '\\(spread\\)': '(分散)',
         '--tethers--': '--连线--',
         'Apodialogos': '远距离对话',

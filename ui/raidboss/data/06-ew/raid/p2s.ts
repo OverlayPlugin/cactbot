@@ -105,14 +105,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.groups!(),
       outputStrings: {
-        groups: {
-          en: 'Healer Groups',
-          de: 'Heiler-Gruppen',
-          fr: 'Groupes sur les heals',
-          ja: 'ヒラに頭割り',
-          cn: '与治疗分摊',
-          ko: '힐러 그룹 쉐어',
-        },
+        groups: Outputs.healerGroups,
       },
     },
     {
@@ -135,7 +128,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Marker: ${player1}, ${player2}',
             fr: 'Marques sur : ${player1}, ${player2}',
             ja: 'マーカー: ${player1}, ${player2}',
-            cn: '标记: ${player1}, ${player2}',
+            cn: '大圈: ${player1}, ${player2}',
             ko: '징: ${player1}, ${player2}',
           },
           avariceOnYou: {
@@ -143,7 +136,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Marker auf DIR',
             fr: 'Marque sur VOUS',
             ja: 'マーカーついた',
-            cn: '标记点名',
+            cn: '大圈点名',
             ko: '내가 징 대상자',
           },
           unknown: Outputs.unknown,
@@ -317,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
             de: '#${num} Viereck, geh gegenüber',
             fr: '#${num} Carré, allez à l\'opposé',
             ja: '四角 #${num}：ボスの対角へ',
-            cn: '方块 #${num}: 去Boss对角',
+            cn: '连线 #${num}: 去Boss对角',
             ko: '#${num} 네모, 보스 대각 발판으로',
           },
           // Trying not to confuse with boss/across
@@ -326,7 +319,7 @@ const triggerSet: TriggerSet<Data> = {
             de: '#${num} Viereck, Boss Fläche',
             fr: '#${num} Carré, case du boss',
             ja: '四角 #${num}：ボスの下へ',
-            cn: '方块 #${num}: 去Boss脚下',
+            cn: '连线 #${num}: 去Boss脚下',
             ko: '#${num} 네모, 보스 발판으로',
           },
           triangle: {

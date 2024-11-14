@@ -519,7 +519,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Minotaurus-Verbindung (Große Kegel-AoE)',
             fr: 'Lien Minotaure (Gros Cleave)',
             ja: 'ミノから扇',
-            cn: '牛头人连线 (大顺劈)',
+            cn: '牛头人连线 (拉远扇形)',
             ko: '미노타우로스 (부채꼴 장판)',
           },
           famineMinotaurTether: {
@@ -527,7 +527,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Überkreuze Minotaurus-Verbindung (Große Kegel-AoE)',
             fr: 'Lien Minotaure en croix (Gros Cleave)',
             ja: 'ミノからの扇を交える',
-            cn: '交叉牛头人连线 (大顺劈)',
+            cn: '交叉牛头人连线 (拉远扇形)',
             ko: '미노타우로스 선 교차시키기 (부채꼴 장판)',
           },
           warMinotaurTether: {
@@ -535,7 +535,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Minotaurus-Verbindung (Große Kegel-AoE)',
             fr: 'Lien Minotaure (Gros Cleave)',
             ja: 'ミノから扇',
-            cn: '牛头人连线 (大顺劈)',
+            cn: '牛头人连线 (拉远扇形)',
             ko: '미노타우로스 (부채꼴 장판)',
           },
           warBirdTether: {
@@ -551,7 +551,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Keine Verbindung, Minotaurus-Verbindung ködern (Mitte)',
             fr: 'Aucun lien, encaissez le cleave du Minotaure (Milieu)',
             ja: '線なし、中央で扇を誘導',
-            cn: '无连线，诱导牛头人顺劈 (中间)',
+            cn: '无连线，诱导牛头人扇形 (中间)',
             ko: '선 없음, 미노타우로스 유도 (중앙)',
           },
           famineNoTether: {
@@ -559,7 +559,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Keine Verbindung, Minotaurus-Verbindung ködern',
             fr: 'Aucun lien, encaissez le cleave du Minotaure',
             ja: '線なし、ミノからの扇を誘導',
-            cn: '无连线，诱导牛头人顺劈',
+            cn: '无连线，诱导牛头人扇形',
             ko: '선 없음, 미노타우로스 유도',
           },
         };
