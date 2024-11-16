@@ -813,7 +813,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Brute Bomber': '野蛮爆弹',
         'Brute Distortion': '野蛮爆弹的幻影',
-        'Lit Fuse': '引线爆弹怪',
+        'Lit Fuse': '导火线爆弹怪',
       },
       'replaceText': {
         '\\(cast\\)': '(咏唱)',
@@ -830,10 +830,10 @@ const triggerSet: TriggerSet<Data> = {
         'Doping Draught': '打药',
         'Explosion': '爆炸',
         'Explosive Rain': '爆弹雨',
-        'Final Fusedown': '零式引线爆弹',
-        'Fuse or Foe': '设置引线',
+        'Final Fusedown': '零式导火线爆弹',
+        'Fuse or Foe': '设置导火线',
         'Fusefield': '导火线区域',
-        'Fuses of Fury': '引线爆弹',
+        'Fuses of Fury': '导火线爆弹',
         'Infernal Spin': '超华丽野蛮旋火',
         'Knuckle Sandwich': '拳面猛击',
         'Lariat Combo': '碎颈臂连击',

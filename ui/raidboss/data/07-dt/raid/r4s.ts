@@ -2621,7 +2621,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wicked Thunder': '狡雷',
       },
       'replaceText': {
-        '(?<! )Spark': '辉光电火花',
+        '(?<! )Spark': '电火花',
         '(?<! )Witch Hunt': '魔女狩猎',
         'Azure Thunder': '青雷',
         'Bewitching Flight': '魔女回翔',
@@ -2667,7 +2667,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wicked Jolt': '狡诡摇荡',
         'Wicked Spark': '狡诡电火花',
         'Wicked Special': '狡诡特技',
-        'Wicked Thunder': '狡诡闪雷',
+        'Wicked Thunder': '狡雷',
         'Widening Witch Hunt': '圆环式魔女狩猎',
         'Witchgleam': '辉光电火花',
         'Wrath of Zeus': '宙斯之怒',
