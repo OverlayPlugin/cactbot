@@ -111,7 +111,7 @@ Options.Triggers.push({
           de: 'Weiche den Kopflaser aus',
           fr: 'Évitez les lasers des têtes',
           ja: '顔の直線AoEを避ける',
-          cn: '躲避头部激光',
+          cn: '躲避人头激光',
           ko: '머리가 쏘는 레이저 피하기',
         },
       },
@@ -384,7 +384,7 @@ Options.Triggers.push({
       },
       'replaceText': {
         '\\(big\\)': '(大)',
-        '\\(cast\\)': '(投掷)',
+        '\\(cast\\)': '(咏唱)',
         '\\(small\\)': '(小)',
         'Aporrhoia': '流溢',
         'Crash': '冲撞',

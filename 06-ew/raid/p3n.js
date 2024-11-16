@@ -204,7 +204,7 @@ Options.Triggers.push({
           de: 'Interkardinal aufteilen',
           fr: 'Dispersez-vous en intercardinal',
           ja: 'フィールド十字分断',
-          cn: '分割场地',
+          cn: '分散到场地四角',
           ko: '대각선 쪽으로 나눠 자리잡기',
         },
       },

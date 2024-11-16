@@ -216,7 +216,7 @@ Options.Triggers.push({
           de: 'Weiche den Enden der Linien aus',
           fr: 'Évitez les fins de lignes',
           ja: '線の端から離れる',
-          cn: '远离线',
+          cn: '远离线末端',
           ko: '선의 끝부분 피하기',
         },
       },

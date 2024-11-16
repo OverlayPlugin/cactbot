@@ -328,7 +328,7 @@ Options.Triggers.push({
         'Hesperos': '赫斯珀洛斯',
       },
       'replaceText': {
-        '\\(cleave\\)': '(顺劈)',
+        '\\(cleave\\)': '(扇形)',
         '\\(knockback\\)': '(击退)',
         'Acid Pinax': '剧毒板画',
         'Belone Bursts': '附魔佩罗涅·爆炸',

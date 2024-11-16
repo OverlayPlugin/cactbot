@@ -156,7 +156,7 @@ Options.Triggers.push({
           de: 'Geh hinter den ruhigen Klon',
           fr: 'Allez derrière le vrai clone',
           ja: '動いていないドグの後ろへ',
-          cn: '找不动的boss',
+          cn: '去不动的boss后面贴边',
           ko: '가만히 있는 분신 뒤로',
         },
       },

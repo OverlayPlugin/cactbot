@@ -16,7 +16,7 @@ Options.Triggers.push({
           de: 'Geh hinter ihn und dann raus',
           fr: 'Passez derrière et à l\'extérieur',
           ja: '後ろの外側へ',
-          cn: '去背后',
+          cn: '去背后远离',
           ko: '뒤로 그리고 밖으로',
         },
       },
@@ -51,7 +51,7 @@ Options.Triggers.push({
             de: 'Geh raus mit dem Marker',
             fr: 'Partez avec le marquage',
             ja: 'ボスから離れる',
-            cn: '快躲开标记',
+            cn: '远离人群',
             ko: '나에게 징 멀리 빠지기',
           },
           missleMarker: {
@@ -81,7 +81,7 @@ Options.Triggers.push({
             de: 'Platziere Donut-Marker unter ihm',
             fr: 'En dessous le marquage du donut',
             ja: 'ボスから離れる',
-            cn: '放置环形标记',
+            cn: 'boss脚下放置环形标记',
             ko: '나에게 도넛 장판',
           },
           missleMarker: {

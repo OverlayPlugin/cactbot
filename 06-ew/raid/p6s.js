@@ -736,7 +736,7 @@ Options.Triggers.push({
           de: 'Kreise ködern',
           fr: 'Déposez les cercles',
           ja: 'ゆか誘導',
-          cn: '集合放圈',
+          cn: '诱导放圈',
           ko: '장판 유도',
         },
       },

@@ -15,7 +15,7 @@ Options.Triggers.push({
           de: 'Weiche dem Augenlaser aus',
           fr: 'Évitez les lasers',
           ja: '目からビーム',
-          cn: '躲避视线激光',
+          cn: '躲避小怪激光',
           ko: '눈이 쏘는 레이저 피하기',
         },
       },

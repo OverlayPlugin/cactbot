@@ -413,7 +413,7 @@ Options.Triggers.push({
           de: 'Weiche den "+" von Silkie und den Puscheln aus',
           fr: 'Évitez les croix de Silkie et des pompons',
           ja: 'ボスとたまの斜め',
-          cn: '躲避交叉攻击',
+          cn: '躲避boss和绒球的十字AoE',
           ko: '보스와 구슬의 십자방향 피하기',
         },
       },

@@ -263,7 +263,7 @@ Options.Triggers.push({
           de: 'Rückstoß in die Wand',
           fr: 'Poussée sur un mur',
           ja: 'ノックバック',
-          cn: '向墙边击退',
+          cn: '击退到墙上',
           ko: '벽으로 넉백',
         },
       },
@@ -552,7 +552,7 @@ Options.Triggers.push({
           de: 'Sprung ködern',
           fr: 'Encaissez le saut',
           ja: '突進誘導',
-          cn: '引导BOSS',
+          cn: '出人群放火',
           ko: '돌진 유도',
         },
         soak: {
@@ -596,7 +596,7 @@ Options.Triggers.push({
           de: 'Sprung ködern',
           fr: 'Encaissez le saut',
           ja: '突進誘導',
-          cn: '引导BOSS',
+          cn: '出人群放火',
           ko: '돌진 유도',
         },
         soak: {

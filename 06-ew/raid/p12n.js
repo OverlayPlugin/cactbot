@@ -26,7 +26,7 @@ const wingOutputStrings = {
     de: 'Linke Flanke',
     fr: 'Flanc gauche',
     ja: '左',
-    cn: '左翅膀',
+    cn: '左翼',
     ko: '왼쪽',
   },
   rightFlank: {
@@ -34,7 +34,7 @@ const wingOutputStrings = {
     de: 'Rechte Flanke',
     fr: 'Flanc droit',
     ja: '右',
-    cn: '右翅膀',
+    cn: '右翼',
     ko: '오른쪽',
   },
 };
@@ -181,7 +181,7 @@ Options.Triggers.push({
           de: 'Donut folgen (Cleave ausweichen)',
           fr: 'Suivez le donut (évitez le cleave)',
           ja: 'ボスの横からドーナツへ',
-          cn: '跟随月环（远离钢铁）',
+          cn: '跟随月环（避开直线AOE）',
           ko: '도넛 따라가기 (광역기 피하기)',
         },
         superchain4: {
@@ -324,7 +324,7 @@ Options.Triggers.push({
       },
       'replaceText': {
         '\\(spread\\)': '(分散)',
-        '\\(stack\\)': '(集合)',
+        '\\(stack\\)': '(分摊)',
         'Clear Cut': '横斩',
         'Dialogos': '对话',
         'Glaukopis': '明眸',

@@ -55,7 +55,7 @@ Options.Triggers.push({
           de: 'Normal ausweichen -> leuchtende Reihe',
           fr: 'Évitez normal -> ligne brillante',
           ja: '安置 -> ひかり',
-          cn: '去安全区 -> 发光行',
+          cn: '去普通分身行 -> 发光分身行',
           ko: '안전 지대 -> 빛나는 열로 피하기',
         },
       },
@@ -100,14 +100,7 @@ Options.Triggers.push({
         // cactbot-builtin-response
         output.responseOutputStrings = {
           tankCleaveOnYou: Outputs.tankCleaveOnYou,
-          tankCleaves: {
-            en: 'Avoid Tank Cleaves',
-            de: 'Weiche Tank-Cleaves aus',
-            fr: 'Évitez le cleave sur le tank',
-            ja: 'タンク範囲攻撃回避',
-            cn: '躲避坦克顺劈',
-            ko: '광역 탱버 피하기',
-          },
+          tankCleaves: Outputs.avoidTankCleaves,
         };
         if (data.tankbusters.includes(data.me))
           return { alertText: output.tankCleaveOnYou() };
@@ -235,7 +228,7 @@ Options.Triggers.push({
           de: 'Unter Löwin => Raus',
           fr: 'Sous la Lionne => Extérieur',
           ja: 'ライオンの下 => 外へ',
-          cn: '去雌狮 => 外面',
+          cn: '内 => 外',
           ko: '보스 밑 => 바깥으로',
         },
       },
@@ -251,7 +244,7 @@ Options.Triggers.push({
           de: 'Raus => Unter Löwin',
           fr: 'Extérieur => Sous la lionne',
           ja: '外 => ライオンの下へ',
-          cn: '外面 => 去雌狮',
+          cn: '外 => 内',
           ko: '바깥 => 보스 밑으로',
         },
       },
@@ -284,14 +277,7 @@ Options.Triggers.push({
         // cactbot-builtin-response
         output.responseOutputStrings = {
           tankCleaveOnYou: Outputs.tankCleaveOnYou,
-          tankCleaves: {
-            en: 'Avoid Tank Cleaves',
-            de: 'Weiche Tank-Cleaves aus',
-            fr: 'Évitez les cleaves sur le tank',
-            ja: 'タンク範囲攻撃回避',
-            cn: '躲避坦克顺劈',
-            ko: '광역 탱버 피하기',
-          },
+          tankCleaves: Outputs.avoidTankCleaves,
         };
         if (data.tankbusters.includes(data.me))
           return { alertText: output.tankCleaveOnYou() };
@@ -358,7 +344,7 @@ Options.Triggers.push({
           de: 'Protean verteilen auf DIR',
           fr: 'Position sur VOUS',
           ja: '自分に散会マーカー',
-          cn: '万变水波点名',
+          cn: '扇形散开点名',
           ko: '산개징 대상자',
         },
       },
@@ -407,7 +393,7 @@ Options.Triggers.push({
             de: 'Marker draußen ablegen',
             fr: 'Déposez les marqueurs à l\'extérieur',
             ja: '外側で捨てる',
-            cn: '人群外放置标记',
+            cn: '远离人群放追踪AOE',
             ko: '밖에서 징 처리',
           },
           ignoreLineStack: {
@@ -415,7 +401,7 @@ Options.Triggers.push({
             de: 'Falsches Sammeln ignorieren',
             fr: 'Ignorez le faux marqueur de package',
             ja: '偽頭割り無視',
-            cn: '忽略假点名',
+            cn: '忽略假分摊',
             ko: '가짜 쉐어 무시',
           },
         };
@@ -447,7 +433,7 @@ Options.Triggers.push({
           de: 'Falschen Pfeil ignorieren',
           fr: 'Ignorez la fausse flèche',
           ja: '矢印は偽物',
-          cn: '忽略假箭头',
+          cn: '忽略假追踪AOE',
           ko: '가짜 화살표징 무시',
         },
       },
@@ -490,7 +476,7 @@ Options.Triggers.push({
           de: 'Geh zum blauen Quadrant',
           fr: 'Allez sur le quart bleu',
           ja: '青い安置',
-          cn: '前往蓝色区域',
+          cn: '前往蓝色夹角',
           ko: '파랑 장판으로',
         },
       },
@@ -510,7 +496,7 @@ Options.Triggers.push({
           de: 'Geh zum orangenen Quadrant',
           fr: 'Allez sur le quart orange',
           ja: '赤い安置',
-          cn: '前往橙色区域',
+          cn: '前往橙色夹角',
           ko: '주황 장판으로',
         },
       },
@@ -563,14 +549,7 @@ Options.Triggers.push({
         // cactbot-builtin-response
         output.responseOutputStrings = {
           tankCleaveOnYou: Outputs.tankCleaveOnYou,
-          tankCleaves: {
-            en: 'Avoid Tank Cleaves',
-            de: 'Weiche den Tank-Cleaves aus',
-            fr: 'Évitez les cleaves sur le tank',
-            ja: 'タンク範囲攻撃回避',
-            cn: '躲避坦克顺劈',
-            ko: '광역 탱버 피하기',
-          },
+          tankCleaves: Outputs.avoidTankCleaves,
         };
         if (data.tankbusters.includes(data.me))
           return { alertText: output.tankCleaveOnYou() };
@@ -593,7 +572,7 @@ Options.Triggers.push({
             de: 'Unter ihn => Marker drausen ablegen',
             fr: 'Dessous => Déposez le marqueur à l\'extérieur',
             ja: 'ボスの下 => 外側で捨てる',
-            cn: 'BOSS身下 => 人群外放置标记',
+            cn: 'BOSS身下 => 远离放追踪AOE',
             ko: '보스 밑 => 밖에서 화살표징 처리',
           },
           ignoreLineStack: {
@@ -635,7 +614,7 @@ Options.Triggers.push({
           de: 'Raus (falschen Pfeil ignorieren)',
           fr: 'Extérieur (ignorez la fausse flèche)',
           ja: '外側へ (矢印は偽物)',
-          cn: '去外面 (忽略假箭头)',
+          cn: '远离 (忽略假追踪AOE)',
           ko: '밖으로 (가짜 화살표징 무시)',
         },
         out: Outputs.out,
@@ -1004,9 +983,9 @@ Options.Triggers.push({
       },
       'replaceText': {
         '--hammer--': '--锤子--',
-        '\(fake\)': '假',
-        '\(proximity\)': '近',
-        '\(summon\)': '召唤',
+        '\(fake\)': '(假)',
+        '\(proximity\)': '(距离衰减)',
+        '\(summon\)': '(召唤)',
         'Advent of the Eighth': '彗星环',
         'As Above, So Below': '生死抉择之炎',
         'Balance': '灵魂的清算',

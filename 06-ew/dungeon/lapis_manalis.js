@@ -58,7 +58,7 @@ Options.Triggers.push({
           de: 'Norden-Mittig',
           fr: 'Milieu-Nord',
           ja: '中央ー北',
-          cn: '中央-上',
+          cn: '中上',
           ko: '중앙-북쪽',
         },
         middlesouth: {
@@ -66,7 +66,7 @@ Options.Triggers.push({
           de: 'Süden-Mittig',
           fr: 'Milieu-Sud',
           ja: '中央ー南',
-          cn: '中央-下',
+          cn: '中下',
           ko: '중앙-남쪽',
         },
         text: {
@@ -108,7 +108,7 @@ Options.Triggers.push({
           de: 'Weg vom verbundenen Felsen',
           fr: 'Éloignez-vous du rocher lié',
           ja: '線の繋がる石回避',
-          cn: '躲避连线石头',
+          cn: '远离连线石头',
           ko: '선 연결된 돌 피하기',
         },
       },

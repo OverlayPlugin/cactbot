@@ -222,7 +222,7 @@ Options.Triggers.push({
         'Golbez\'s Shadow': '高贝扎的幻影',
       },
       'replaceText': {
-        '\\(preview\\)': '(预览)',
+        '\\(preview\\)': '(预兆)',
         'Arctic Assault': '极寒突袭',
         'Azdaja\'s Shadow': '黑龙剑阿珠达雅',
         'Binding Cold': '咒缚寒气',
