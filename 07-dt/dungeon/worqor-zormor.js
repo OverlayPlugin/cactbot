@@ -333,7 +333,7 @@ Options.Triggers.push({
         stack: {
           en: 'Stack (3 hits)',
           fr: 'Pack (3 coups)',
-          cn: '集合 (3次)',
+          cn: '分摊 (3次)',
           ko: '쉐어 (3번)',
         },
       },
