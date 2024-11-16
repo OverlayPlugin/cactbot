@@ -16,31 +16,31 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'byakko-ex.txt',
   triggers: [
     {
-      id: 'ByaEx Heavenly Strike',
+      id: 'ByakkoEx Heavenly Strike',
       type: 'StartsUsing',
       netRegex: { id: '27DA', source: 'Byakko' },
-      response: Responses.tankBuster(),
+      response: Responses.tankCleave(),
     },
     {
-      id: 'ByaEx Flying Donut',
+      id: 'ByakkoEx Sweep The Leg Intermission', // Donut AoE, no outer safe spots
       type: 'StartsUsing',
       netRegex: { id: '27F4', source: 'Byakko', capture: false },
       response: Responses.getIn(),
     },
     {
-      id: 'ByaEx Sweep The Leg',
+      id: 'ByakkoEx Sweep The Leg Standard', // 270-degree frontal cleave
       type: 'StartsUsing',
       netRegex: { id: '27DB', source: 'Byakko', capture: false },
       response: Responses.getBehind(),
     },
     {
-      id: 'ByaEx Storm Pulse',
+      id: 'ByakkoEx Storm Pulse',
       type: 'StartsUsing',
       netRegex: { id: '27DC', source: 'Byakko', capture: false },
       response: Responses.aoe(),
     },
     {
-      id: 'ByaEx Distant Clap',
+      id: 'ByakkoEx Distant Clap',
       type: 'StartsUsing',
       netRegex: { id: '27DD', source: 'Byakko', target: 'Byakko', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
@@ -56,7 +56,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx State Of Shock Tank 1',
+      id: 'ByakkoEx State Of Shock Tank 1',
       type: 'StartsUsing',
       netRegex: { id: '27E0', source: 'Byakko' },
       condition: (data, matches) => data.role === 'tank' && matches.target !== data.me,
@@ -73,7 +73,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx State Of Shock Tank 2',
+      id: 'ByakkoEx State Of Shock Tank 2',
       type: 'StartsUsing',
       netRegex: { id: '27E0', source: 'Byakko' },
       condition: (data, matches) => data.role === 'tank' && matches.target === data.me,
@@ -91,7 +91,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx Roar Counter',
+      id: 'ByakkoEx Roar Counter',
       type: 'StartsUsing',
       netRegex: { id: '27F9', source: 'Hakutei', capture: false },
       run: (data) => {
@@ -99,7 +99,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx Roar of Thunder',
+      id: 'ByakkoEx Roar of Thunder',
       type: 'StartsUsing',
       netRegex: { id: '27F9', source: 'Hakutei', capture: false },
       delaySeconds: 14,
@@ -122,7 +122,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx Bubble',
+      id: 'ByakkoEx Gale Force', // Role spreads + expanding hemispheres
       type: 'HeadMarker',
       netRegex: { id: '0065' },
       condition: Conditions.targetIsYou(),
@@ -139,7 +139,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx Ominous Wind',
+      id: 'ByakkoEx Ominous Wind',
       type: 'GainsEffect',
       netRegex: { effectId: '5C9' },
       condition: Conditions.targetIsYou(),
@@ -156,7 +156,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx Puddle Marker',
+      id: 'ByakkoEx Aratama', // Prey marker + 3x puddles
       type: 'HeadMarker',
       netRegex: { id: '0004' },
       condition: Conditions.targetIsYou(),
@@ -173,7 +173,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx G100',
+      id: 'ByakkoEx White Herald', // Tank flare marker
       type: 'HeadMarker',
       netRegex: { id: '0057' },
       condition: Conditions.targetIsYou(),
@@ -192,7 +192,7 @@ const triggerSet: TriggerSet<Data> = {
     // https://xivapi.com/InstanceContentTextData/18606
     // en: Twofold is my wrath, twice-cursed my foes!
     {
-      id: 'ByaEx Tiger Add',
+      id: 'ByakkoEx Tiger Add',
       type: 'BattleTalk2',
       netRegex: { instanceContentTextId: '48AE', capture: false },
       condition: (data) => data.role === 'tank' || data.job === 'BLU',
@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx Stake Counter',
+      id: 'ByakkoEx Stake Counter',
       type: 'StartsUsing',
       netRegex: { id: '27E2', source: 'Byakko', capture: false },
       run: (data) => {
@@ -217,14 +217,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ByaEx Stake Counter Cleanup',
+      id: 'ByakkoEx Stake Counter Cleanup',
       type: 'StartsUsing',
       netRegex: { id: '27E2', source: 'Byakko', capture: false },
       delaySeconds: 20,
       run: (data) => delete data.stakeCount,
     },
     {
-      id: 'ByaEx Highest Stakes',
+      id: 'ByakkoEx Highest Stakes',
       type: 'StartsUsing',
       netRegex: { id: '27E2', source: 'Byakko', capture: false },
       infoText: (data, _matches, output) => output.text!({ num: data.stakeCount }),
