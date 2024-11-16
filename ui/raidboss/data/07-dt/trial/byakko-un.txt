@@ -86,7 +86,7 @@ hideall "Answer On High"
 364.1 "--north--" Ability { id: "9BF9", source: "Byakko" }
 369.9 "Fire And Lightning" Ability { id: "9BFA", source: "Byakko" }
 
-373.1 "--center--" Ability { id: "9BF9", source: "Byakko" }
+373.1 "--north--" Ability { id: "9BF9", source: "Byakko" }
 374.5 "Dance Of The Incomplete" Ability { id: "9BF4", source: "Byakko" }
 379.5 "--tiger targetable--"
 388.8 "--tiger untargetable--"
@@ -105,7 +105,7 @@ hideall "Answer On High"
 450.6 "--sync--" Ability { id: "9C20", source: "Hakutei" }
 
 451.5 "--sync--" Ability { id: "9C1F", source: "Byakko" }
-453.5 "--north--" Ability { id: "9BF9", source: "Byakko" }
+453.5 "--jump--" Ability { id: "9BF9", source: "Byakko" }
 459.3 "Fire And Lightning" Ability { id: "9BFA", source: "Byakko" }
 474.5 "Storm Pulse x2" Ability { id: "9BFD", source: "Byakko" }
 484.8 "Bombogenesis" Ability { id: "9C08", source: "Byakko" }
