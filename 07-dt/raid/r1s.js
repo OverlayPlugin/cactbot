@@ -718,7 +718,7 @@ Options.Triggers.push({
         'Bloody Scratch': '血腥抓挠',
         'Copycat': '模仿之猫',
         'Double Swipe': '双重利爪',
-        'Elevate and Eviscerate': '击飞开膛',
+        'Elevate and Eviscerate': '腾身开膛',
         'Grimalkin Gale': '猫怪突风',
         'Impact': '冲击',
         'Leaping One-two Paw': '猫跳二连尖甲',
