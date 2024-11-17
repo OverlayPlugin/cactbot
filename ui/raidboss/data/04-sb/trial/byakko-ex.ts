@@ -7,6 +7,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 export interface Data extends RaidbossData {
   roarCount?: number;
   stakeCount?: number;
+  flareMarker?: string;
 }
 
 // Byakko Extreme
@@ -14,12 +15,20 @@ const triggerSet: TriggerSet<Data> = {
   id: 'TheJadeStoaExtreme',
   zoneId: ZoneId.TheJadeStoaExtreme,
   timelineFile: 'byakko-ex.txt',
+  timelineTriggers: [
+    {
+      id: 'ByakkoEx Fell Swoop',
+      regex: /Fell Swoop/,
+      beforeSeconds: 5,
+      response: Responses.bigAoe('alert'),
+    },
+  ],
   triggers: [
     {
       id: 'ByakkoEx Heavenly Strike',
       type: 'StartsUsing',
       netRegex: { id: '27DA', source: 'Byakko' },
-      response: Responses.tankCleave(),
+      response: Responses.tankCleave('alert'),
     },
     {
       id: 'ByakkoEx Sweep The Leg Intermission', // Donut AoE, no outer safe spots
@@ -43,17 +52,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ByakkoEx Distant Clap',
       type: 'StartsUsing',
       netRegex: { id: '27DD', source: 'Byakko', target: 'Byakko', capture: false },
-      alertText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Distant Clap',
-          de: 'Donnergrollen',
-          fr: 'Tonnerre lointain',
-          ja: '遠雷',
-          cn: '月环',
-          ko: '원뢰',
-        },
-      },
+      condition: (data) => data.flareMarker !== data.me,
+      delaySeconds: 0.1,
+      response: Responses.getUnder(),
+      run: (data) => delete data.flareMarker,
     },
     {
       id: 'ByakkoEx State Of Shock Tank 1',
@@ -126,7 +128,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: '0065' },
       condition: Conditions.targetIsYou(),
-      infoText: (_data, _matches, output) => output.text!(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Drop bubble outside',
@@ -143,7 +145,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: '5C9' },
       condition: Conditions.targetIsYou(),
-      infoText: (_data, _matches, output) => output.text!(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Pink bubble',
@@ -177,17 +179,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: '0057' },
       condition: Conditions.targetIsYou(),
-      infoText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Get away',
-          de: 'Weg da',
-          fr: 'Éloignez-vous',
-          ja: '離れる',
-          cn: '远离人群',
-          ko: '멀리가기',
-        },
-      },
+      response: Responses.awayFrom(),
+      run: (data, matches) => data.flareMarker = matches.target,
     },
     // https://xivapi.com/InstanceContentTextData/18606
     // en: Twofold is my wrath, twice-cursed my foes!
