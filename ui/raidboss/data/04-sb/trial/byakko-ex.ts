@@ -55,7 +55,6 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.flareMarker !== data.me,
       delaySeconds: 0.1,
       response: Responses.getUnder(),
-      run: (data) => delete data.flareMarker,
     },
     {
       id: 'ByakkoEx State Of Shock Tank 1',
@@ -181,6 +180,12 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       response: Responses.awayFrom(),
       run: (data, matches) => data.flareMarker = matches.target,
+    },
+    {
+      id: 'ByakkoEx White Herald Cleanup', // Tank flare marker
+      type: 'Ability',
+      netRegex: { id: '9C1A', source: 'Hakutei', capture: false },
+      run: (data) => delete data.flareMarker,
     },
     // https://xivapi.com/InstanceContentTextData/18606
     // en: Twofold is my wrath, twice-cursed my foes!
