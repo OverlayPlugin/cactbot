@@ -4,6 +4,9 @@
 # Phase two pulled from -r GBaArv7yzHnXck8D -rf 17
 # A lot of manual cleanup applied
 
+hideall "--Reset--"
+hideall "--sync--"
+
 # Phase one
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 13.1 "--sync--" StartsUsing { id: "A00C", source: "Queen Eternal" }
