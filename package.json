@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.33.0",
-  "releaseSummary": "initial 7.1 support",
+  "version": "0.33.1",
+  "releaseSummary": "ex3, Byakko Unreal, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
