@@ -191,9 +191,11 @@ Options.Triggers.push({
         rightLeft: Outputs.rightThenLeft,
         left: {
           en: 'Knockback Left',
+          cn: '向左击退',
         },
         right: {
           en: 'Knockback Right',
+          cn: '向右击退',
         },
         break: Outputs.breakChains,
         unknown: Outputs.unknown,
@@ -232,6 +234,7 @@ Options.Triggers.push({
       outputStrings: {
         up: {
           en: 'Up',
+          cn: '上浮',
         },
       },
     },
@@ -244,6 +247,7 @@ Options.Triggers.push({
       outputStrings: {
         downSoak: {
           en: 'Down, soak tower',
+          cn: '下降 => 踩塔',
         },
       },
     },
@@ -265,6 +269,7 @@ Options.Triggers.push({
       outputStrings: {
         cone: {
           en: 'Cone on YOU',
+          cn: '扇形点名',
         },
       },
     },
@@ -281,6 +286,7 @@ Options.Triggers.push({
       outputStrings: {
         downSoak: {
           en: 'Down, soak tower',
+          cn: '下降 => 踩塔',
         },
       },
     },
@@ -299,6 +305,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Hide behind rocks',
+          cn: '躲在石头后',
         },
       },
     },
@@ -380,6 +387,7 @@ Options.Triggers.push({
         ...Directions.outputStringsCardinalDir,
         text: {
           en: '${laserDir} laser, ${sideDir} side, w/ ${partner}',
+          cn: '${laserDir} 激光, ${sideDir} 侧, 和 ${partner}',
         },
         unknown: Outputs.unknown,
       },
@@ -415,6 +423,7 @@ Options.Triggers.push({
       outputStrings: {
         spread: {
           en: 'Flare Marker Spread',
+          cn: '核爆点名分散',
         },
         stack: Outputs.stackMarker,
         dorito: Outputs.doritoStack,
@@ -475,12 +484,15 @@ Options.Triggers.push({
       outputStrings: {
         unknown: {
           en: 'Spread ???, stretch tethers',
+          cn: '???分散, 拉线至变色',
         },
         west: {
           en: 'Spread West, stretch tethers',
+          cn: '左分散, 拉线至变色',
         },
         east: {
           en: 'Spread East, stretch tethers',
+          cn: '右分散, 拉线至变色',
         },
       },
     },
@@ -537,12 +549,15 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         wind: {
           en: 'Wind/Green',
+          cn: '风/绿地板',
         },
         earth: {
           en: 'Earth/Yellow',
+          cn: '土/黄地板',
         },
         ice: {
           en: 'Ice/Blue',
+          cn: '冰/蓝地板',
         },
         combo: {
           en: '${elem} => ${spread}',
@@ -580,6 +595,7 @@ Options.Triggers.push({
       outputStrings: {
         back: {
           en: 'Back, Tank Towers => AoE',
+          cn: '去后半场, 坦克踩塔 => AoE',
         },
       },
     },
