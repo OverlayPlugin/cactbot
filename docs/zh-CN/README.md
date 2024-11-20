@@ -313,14 +313,14 @@ Cactbot 的所有 UI 模块都包含在 [ui/](ui/) 文件夹中。如果你按�
 |<img src="../../resources/ffxiv/jobs/nin-large.png" width="30px" /><br> 忍者 |**资源区**：忍气量、风缠档数、连击计时器。<br> **监控区**：百雷铳持续时间和冷却时间、分身之术冷却时间、结印冷却时间。|
 |<img src="../../resources/ffxiv/jobs/sam-large.png" width="30px" /><br> 武士 |**资源区**：剑气量、剑压档数、连击计时器、持有的闪。<br> **监控区**：风月 buff 持续时间、风花 buff 持续时间、彼岸花 DoT 持续时间、意气冲天冷却时间。|
 |<img src="../../resources/ffxiv/jobs/rpr-large.png" width="30px"/><br> 钐镰客 |**资源区**：灵魂量值、魂衣量值、连击计时器、夜游魂和虚无魂档数（处于附体状态时）。<br> **监控区**：死亡烙印持续时间、灵魂切割和灵魂钐割冷却时间、暴食冷却时间、神秘环持续时间和冷却时间。|
-|<img src="./resources/ffxiv/jobs/vpr-large.png" width="30px"/><br> 蝰蛇剑士 |**资源区**: 飞蛇之魂档数、灵力值、连击计时器、连击提示器。 <br> **监控区**: 猛袭 buff 持续时间、疾速 buff 持续时间、强碎灵蛇连击冷却时间。|
+|<img src="../../resources/ffxiv/jobs/vpr-large.png" width="30px"/><br> 蝰蛇剑士 |**资源区**: 飞蛇之魂档数、灵力值、连击计时器、连击提示器。 <br> **监控区**: 猛袭 buff 持续时间、疾速 buff 持续时间、强碎灵蛇连击冷却时间。|
 |<img src="../../resources/ffxiv/jobs/brd-large.png" width="30px" /><br> 吟游诗人 |**资源区**：诗心档数、灵魂之声量、诗心获得计时器、持有的尾声。<br> **监控区**：风蚀箭和毒咬箭 DoT 持续时间、当前战歌持续时间、九天连箭冷却时间、鹰眼/纷乱箭 buff 持续时间。|
 |<img src="../../resources/ffxiv/jobs/mch-large.png" width="30px" /><br> 机工士 |**资源区**：枪管热度量或过热档数、电能量或后式自走人偶持续时间、连击计时器、野火 GCD 计数器（发动野火时）。<br> **监控区**：钻头和毒菌冲击冷却时间、空气锚冷却时间、回转飞锯冷却时间、野火持续时间与冷却时间。|
 |<img src="../../resources/ffxiv/jobs/dnc-large.png" width="30px" /><br> 舞者 |**资源区**：幻扇数、伶俐量、连击计时器。<br> **监控区**：标准舞步冷却时间、技巧舞步持续时间与冷却时间、百花争艳持续时间与冷却时间。|
 |<img src="../../resources/ffxiv/jobs/blm-large.png" width="30px" /><br> 黑魔法师 |**资源区**：灵极冰与星极火持续时间、通晓获得计时器、魔力恢复计时器、灵极心档数和通晓档数、星极魂档数。<br> **监控区**：火苗触发持续时间、云砧触发持续时间、雷系 DoT 持续时间、魔泉冷却时间。|
 |<img src="../../resources/ffxiv/jobs/smn-large.png" width="30px" /><br> 召唤师 |**资源区**：附体或属性以太持续时间、以太超流档数、持有的宝石奥秘和保存在其中的属性以太。<br> **监控区**：能量吸收和能量抽取冷却时间、龙神召唤或不死鸟召唤冷却时间、醒梦冷却时间。|
 |<img src="../../resources/ffxiv/jobs/rdm-large.png" width="30px" /><br> 赤魔法师 |**资源区**：白魔元与黑魔元量、魔元集档数（如果有）。<br> **监控区**：赤飞石预备持续时间、赤火炎预备持续时间、飞刺冷却时间、六分反击冷却时间。|
-|<img src="./resources/ffxiv/jobs/pct-large.png" width="30px"/><br> 绘灵法师 |**资源区**: 调色值、白色/黑色颜料档数、重锤连击计时器、动物彩绘画板、莫古力或马蒂恩标识。 <br> **监控区**: 动物构想冷却时间、重锤构想冷却时间、星空构想冷却时间。|
+|<img src="../../resources/ffxiv/jobs/pct-large.png" width="30px"/><br> 绘灵法师 |**资源区**: 调色值、白色/黑色颜料档数、重锤连击计时器、动物彩绘画板、莫古力或马蒂恩标识。 <br> **监控区**: 动物构想冷却时间、重锤构想冷却时间、星空构想冷却时间。|
 |<img src="../../resources/ffxiv/jobs/blu-large.png" width="30px" /><br> 青魔法师 |**资源区**：无。<br> **监控区**：破防和惊奇光冷却时间、苦闷之歌或月下彼岸花或以太火花 DoT 持续时间、醒梦冷却时间。|
 
 </details>
