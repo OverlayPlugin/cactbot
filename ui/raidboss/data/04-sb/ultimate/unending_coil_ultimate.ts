@@ -383,7 +383,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Hatch on YOU',
-          de: 'Ausbrüten auf DIR',
+          de: 'Austritt auf DIR',
           fr: 'Éclosion sur VOUS',
           ja: '自分に魔力爆散',
           cn: '黑球点名',
@@ -406,7 +406,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Hatch: ${players}',
-          de: 'Ausbrüten: ${players}',
+          de: 'Austritt: ${players}',
           fr: 'Éclosion : ${players}',
           ja: '魔力爆散${players}',
           cn: '黑球点：${players}',
@@ -505,7 +505,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack => In',
-          de: 'Stack => Rein',
+          de: 'Sammeln => Rein',
           fr: 'Packez-vous => Intérieur',
           ja: '頭割り => 密着',
           cn: '分摊 => 靠近',
@@ -523,7 +523,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack => Out',
-          de: 'Stack => Raus',
+          de: 'Sammeln => Raus',
           fr: 'Packez-vous => Extérieur',
           ja: '頭割り => 離れ',
           cn: '分摊 => 远离',
@@ -541,7 +541,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In => Stack',
-          de: 'Rein => Stack',
+          de: 'Rein => Sammeln',
           fr: 'Intérieur => Packez-vous',
           ja: '密着 => 頭割り',
           cn: '靠近 => 分摊',
@@ -580,7 +580,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away from Tank => Stack',
-          de: 'Weg vom Tank => Stack',
+          de: 'Weg vom Tank => Sammeln',
           fr: 'Éloignez-vous du tank => Packez-vous',
           ja: 'タンクから離れ => 頭割り',
           cn: '远离坦克 => 分摊',
@@ -677,7 +677,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In => Spread => Stack',
-          de: 'Rein => Verteilen => Stack',
+          de: 'Rein => Verteilen => Sammeln',
           fr: 'Intérieur => Dispersion => Package',
           ja: '密着 => 散開 => 頭割り',
           cn: '靠近 => 分散 => 分摊',
@@ -696,7 +696,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out => Stack => Spread',
-          de: 'Raus => Stack => Verteilen',
+          de: 'Raus => Sammeln => Verteilen',
           fr: 'Extérieur => Package => Dispersion',
           ja: '離れ => 頭割り => 散開',
           cn: '远离 => 分摊 => 分散',
@@ -715,7 +715,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out => Spread => Stack',
-          de: 'Raus => Verteilen => Stack',
+          de: 'Raus => Verteilen => Sammeln',
           fr: 'Extérieur => Dispersion => Package',
           ja: '離れ => 散開 => 頭割り',
           cn: '远离 => 分散 => 分摊',
@@ -874,7 +874,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'UCU Nael Cleanse Callout',
       type: 'Ability',
-      netRegex: { source: 'Fang Of Light', id: '26CA', capture: false },
+      netRegex: { source: 'Fang of Light', id: '26CA', capture: false },
       infoText: (data, _matches, output) => {
         data.doomCount ??= 0;
         let name;
@@ -887,7 +887,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cleanse #${num}: ${player}',
-          de: 'Medica #${num}: ${player}',
+          de: 'Reinige #${num}: ${player}',
           fr: 'Purifiez #${num}: ${player}',
           ja: '解除に番目${num}: ${player}',
           cn: '解除死宣 #${num}: ${player}',
@@ -1054,7 +1054,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'UCU Dragon Tracker',
       type: 'Ability',
       netRegex: {
-        source: ['Iceclaw', 'Thunderwing', 'Fang Of Light', 'Tail Of Darkness', 'Firehorn'],
+        source: ['Iceclaw', 'Thunderwing', 'Fang of Light', 'Tail Of Darkness', 'Firehorn'],
         id: ['26C6', '26C7', '26CA', '26C9', '26C5'],
       },
       condition: (data, matches) => !(matches.source in data.seenDragon),
@@ -1317,7 +1317,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         twinOnYou: {
           en: 'YOU Stack for Twin',
-          de: 'DU stackst für Twintania',
+          de: 'DU: Sammeln für Twintania',
           fr: 'Packez-vous pour Gémellia',
           ja: '自分にツインタニア',
           cn: '双塔俯冲点名',
@@ -1341,7 +1341,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         stackTTS: {
           en: 'stack for twin',
-          de: 'stek für twintania',
+          de: 'Sammeln für Twintania',
           fr: 'Packez-vous pour Gémellia',
           ja: 'ツインタニア',
           cn: '双塔俯冲点名',
@@ -1483,7 +1483,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Megaflare Stack',
-          de: 'Megaflare Stack',
+          de: 'Megaflare Sammeln',
           fr: 'Mégabrasier, packez-vous',
           ja: 'メガフレア頭割り',
           cn: '分摊百万核爆',
@@ -1706,7 +1706,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         quickmarchNotOnYou: {
           en: 'No shaker; stack south.',
-          de: 'Kein Erdstoß; im süden sammeln',
+          de: 'Kein Erdstoß; im Süden sammeln',
           fr: 'Pas de Secousse; packez-vous au Sud.',
           ja: 'シェイカーない；頭割りで南',
           cn: '无点名，正下方分摊',
@@ -1714,7 +1714,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         tenstrikeNotOnYou: {
           en: 'Stack on safe spot',
-          de: 'In Sicherheit steken',
+          de: 'In Sicherheit sammeln',
           fr: 'Packez-vous au point safe',
           ja: '安置へ集合',
           cn: '安全点集合',
@@ -1890,8 +1890,9 @@ const triggerSet: TriggerSet<Data> = {
         'Fang of Light': 'Lichtklaue',
         'Firehorn': 'Feuerhorn',
         'Iceclaw': 'Eisklaue',
-        'Nael Deus Darnus': 'Nael deus Darnus',
         'Nael Geminus': 'Nael Geminus',
+        'Nael deus Darnus': 'Nael deus Darnus',
+        'Phoenix': 'Phönix',
         'Ragnarok': 'Ragnarök',
         'Tail of Darkness': 'Dunkelschweif',
         'Thunderwing': 'Donnerschwinge',
@@ -1901,7 +1902,7 @@ const triggerSet: TriggerSet<Data> = {
         '--push--': '--stoß--',
         'Aetheric Profusion': 'Ätherische Profusion',
         'Akh Morn': 'Akh Morn',
-        'Bahamut Marker': 'Bahamut Marker',
+        'Bahamut Marker': 'Bahamut Markierung',
         'Bahamut\'s Claw': 'Klauen Bahamuts',
         'Bahamut\'s Favor': 'Bahamuts Segen',
         'Blackfire Trio': 'Schwarzfeuer-Trio',
@@ -1918,7 +1919,7 @@ const triggerSet: TriggerSet<Data> = {
         'Earth Shaker': 'Erdstoß',
         'Exaflare': 'Exaflare',
         'Fellruin Trio': 'Untergangs-Trio',
-        'Fireball(?! Soak)': 'Feuerball',
+        'Fireball': 'Feuerball',
         'Flames Of Rebirth': 'Flammen der Wiedergeburt',
         'Flare Breath': 'Flare-Atem',
         'Flatten': 'Einebnen',
@@ -1928,24 +1929,28 @@ const triggerSet: TriggerSet<Data> = {
         'Heavensfall Trio': 'Himmelssturz-Trio',
         'Heavensfall(?! )': 'Himmelssturz',
         'Hypernova': 'Supernova',
+        'Iron Chariot': 'Eiserner Streitwagen',
         'Liquid Hell': 'Höllenschmelze',
         'Lunar Dive': 'Lunarer Sturz',
-        '(?<! )Marker(?!\\w)': 'Marker',
-        'Megaflare(?! Dive)': 'Megaflare',
+        'Lunar Dynamo': 'Lunarer Dynamo',
+        '(?<! )Marker(?!\\w)': 'Markierung',
         'Megaflare Dive': 'Megaflare-Sturz',
+        'Megaflare(?! Dive)': 'Megaflare',
         'Meteor Stream': 'Meteorflug',
         'Meteor/Dive or Dive/Beam': 'Meteor/Sturzflug oder Sturzflug/Strahl',
         'Morn Afah': 'Morn Afah',
-        'Nael Marker': 'Nael Marker',
-        'Pepperoni': 'Salami',
-        'Plummet(?!\/)': 'Herabstürzen',
+        'Nael Marker': 'Nael Markierung',
+        'Pepperoni': 'Megaflare Markierung',
+        'Plummet(?!/)': 'Herabstürzen',
         'Quickmarch Trio': 'Todesmarsch-Trio',
         'Random Combo Attack': 'Zufälliger Komboangriff',
-        '(?<!\/)Ravensbeak': 'Bradamante',
+        '(?<!/)Ravensbeak': 'Bradamante',
+        'Raven Dive': 'Bahamuts Schwinge',
+        'Ravensbeak': 'Bradamante',
         'Seventh Umbral Era': 'Siebte Ära des Schattens',
         'Spread': 'Verteilen',
         'Stack': 'Sammeln',
-        'Targeted Fire': 'Feuer auf Ziel',
+        'Targeted Fire': 'Gezieltes Feuer',
         'Tempest Wing': 'Sturm-Schwinge',
         'Tenstrike Trio': 'Zehnschlag-Trio',
         'Teraflare': 'Teraflare',
@@ -1953,8 +1958,8 @@ const triggerSet: TriggerSet<Data> = {
         'Thermionic Beam': 'Thermionischer Strahl',
         'Thermionic Burst': 'Thermionische Eruption',
         'Towers': 'Türme',
-        'Triple Nael Quote': 'Drei Nael Zitate',
-        'Twin Marker': 'Twin Marker',
+        'Triple Nael Quote': 'Dreifaches Nael Zitat',
+        'Twin Marker': 'Twintania Markierung',
         'Twister': 'Wirbelsturm',
         'Twisting Dive': 'Spiralschwinge',
         'Wings of Salvation': 'Rettende Schwinge',
