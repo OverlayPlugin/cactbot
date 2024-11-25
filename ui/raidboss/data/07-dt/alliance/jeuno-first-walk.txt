@@ -1,0 +1,173 @@
+### JEUNO: THE FIRST WALK
+# ZoneId: 1248
+
+
+hideall "--Reset--"
+hideall "--sync--"
+
+
+
+# -ii 9FE6 9FF1 9FF3 9FEB 9FEC 9FED A003 9FF5 9FFE 9FFF
+
+# A number of Prishe's abilities are two-part,
+# with a visual snapshot occurring before a damage event.
+# The snapshot locks in when the visual element resolves,
+# so we display the visual and then ignore the damage event.
+
+10000.0 "--sync--" InCombat { inGameCombat: "1" } window 10000,1
+10008.1 "Banishga" Ability { id: "9FE7", source: "Prishe of the Distant Chains" } window 10008.1,10
+10015.3 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+10029.5 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+10032.1 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+
+# This second Knuckle Sandwich shows up in a few Very Slow logs.
+10049.5 "Knuckle Sandwich?" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+10051.9 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+10055.5 "--sync--" StartsUsing { id: "9FFD", source: "Prishe of the Distant Chains" } window 55.5,10
+10061.7 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+10070.4 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" }
+10082.3 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+10090.5 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+
+10098.2 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+10104.5 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" } window 104.5,10
+10119.9 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+10136.5 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" }
+10144.3 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10148.3 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10152.3 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10156.3 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10156.3 "Explosion 5" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10162.6 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+10164.7 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+10178.5 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+10195.8 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+10204.2 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+# From here, Prishe seems to have three different rotation blocks.
+# She can use Banishga, Banishga 4, or Banish Storm.
+# Each of these blocks closes with Asuran Fists,
+# but she doesn't always seem to use the final A000 hit.
+# More research is needed.
+10214.4 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+10215.1 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+10223.3 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+
+# Banishga block
+10995.3 label "banishgaBlock"
+10995.3 "--sync--" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" }
+
+11000.0 "Banishga" Ability { id: "9FE7", source: "Prishe of the Distant Chains" }
+11007.2 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+11021.4 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+11023.8 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+11033.6 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+11042.3 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" } window 15,15
+11054.2 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+11062.4 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+11070.1 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+11076.3 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+11091.8 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+11108.4 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" } window 15,15
+11116.3 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11116.3 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11120.3 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11124.3 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11128.3 "Explosion 5 " #Ability { id: "9FFB", source: "Luminous Remnant" }
+11139.2 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+11147.6 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+11157.8 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+11158.5 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+11166.7 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+# Banish Storm block
+11997.0 label "banishStormBlock"
+11997.0 "--sync--" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" }
+
+12000.0 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" }
+12006.1 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+12011.9 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+12020.3 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+12022.7 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+12031.4 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+# This Banishga IV cast seems to vary significantly on timing. Sync widely and hope for the best
+12034.4 "--sync--" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 10,10
+12039.1 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" }
+12046.2 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+12046.9 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12046.9 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12050.9 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12052.6 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+12054.8 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12058.8 "Explosion 5" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12068.1 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+12081.8 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+12091.5 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+12099.9 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+12110.2 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+12110.8 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+12119.0 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+
+# Banishga 4 block
+12995.3 label "banishgaIVBlock"
+12995.3 "--sync--" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" }
+
+13000.0 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" }
+13002.1 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+13016.2 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+13016.6 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13016.6 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13018.6 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+13020.6 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13024.6 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13028.6 "Explosion 5" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13030.7 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+13040.8 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" } window 15,15
+13042.9 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+13049.2 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+13052.7 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+13064.7 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+13086.0 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+13097.1 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+13105.5 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+13115.7 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+13116.4 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+13124.6 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+
+# ALL ENCOUNTER ABILITIES
+# 9FE5 --center--
+# 9FE6 --sync--: auto-attack
+# 9FE7 Banishga: Raidwide
+# 9FE8 Knuckle Sandwich: 1-tick visual
+# 9FE9 Knuckle Sandwich: 2-tick visual
+# 9FEA Knuckle Sandwich: 3-tick visual
+# 9FEB Knuckle Sandwich: 1-tick inner circle AoE
+# 9FEC Knuckle Sandwich: 2-tick inner circle AoE
+# 9FED Knuckle Sandwich: 3-tick inner circle AoE
+# 9FEE Brittle Impact: 1-tick outer donut AoE
+# 9FEF Brittle Impact: 2-tick outer donut AoE
+# 9FF0 Brittle Impact: 3-tick outer donut AoE
+# 9FF1 Nullifying Dropkick: Shared tank buster, circle stack (simultaneous with 9FFD)
+# 9FF2 Banish Storm: Visuals for pathing Banish circles
+# 9FF3 Banish: Pathing circle AoEs
+# 9FF4 Crystalline Thorns: Thorn generation cast
+# 9FF5 Thornbite: Thorns appear
+# 9FF6 Auroral Uppercut: 1-tick knockback visual
+# 9FF7 Auroral Uppercut: 2-tick knockback visual
+# 9FF8 Auroral Uppercut: 3-tick knockback visual
+# 9FF9 Auroral Uppercut: Knockback execution
+# 9FFA Banishga IV: Raidwide; summons orbs
+# 9FFB Explosion: Orb chariot AoEs
+# 9FFC Asuran Fists: Stack marker cast
+# 9FFD Nullifying Dropkick: Shared tank buster, circle stack (simultaneous with 9FF1)
+# 9FFE Asuran Fists: Stack marker damage
+# 9FFF Asuran Fists: Stack marker damage
+# A000 Asuran Fists: Stack marker final hit
+# A002 Holy: Spread marker cast
+# A003 Holy: Spread marker damage
