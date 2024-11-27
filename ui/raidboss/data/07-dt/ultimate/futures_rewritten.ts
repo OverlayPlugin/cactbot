@@ -10,7 +10,14 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'futures_rewritten.txt',
   timelineTriggers: [],
   triggers: [],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      locale: 'en',
+      replaceText: {
+        'Sinbound Fire III/Sinbound Thunder III': 'Sinbound Fire/Thunder',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
