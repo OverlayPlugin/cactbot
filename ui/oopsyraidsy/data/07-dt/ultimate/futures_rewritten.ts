@@ -6,26 +6,13 @@ export type Data = OopsyData;
 
 const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.FuturesRewrittenUltimate,
-  damageWarn: {
-
-  },
-  damageFail: {
-
-  },
-  gainsEffectFail: {
-
-  },
-  shareWarn: {
-
-  },
-  shareFail: {
-
-  },
-  soloWarn: {
-  },
-  triggers: [
-
-  ],
+  damageWarn: {},
+  damageFail: {},
+  gainsEffectFail: {},
+  shareWarn: {},
+  shareFail: {},
+  soloWarn: {},
+  triggers: [],
 };
 
 export default triggerSet;
