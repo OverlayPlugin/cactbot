@@ -1,0 +1,122 @@
+### FUTURES REWRITTEN (ULTIMATE)
+# ZoneId: 1238
+
+# -ii 9CB4 9CD8 9CD9 9CC9 9CCA 9CCC 9CCD 9CCF 9CE5 9CE6 9CE9
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+13.9 "--sync--" Ability { id: ["9CD0", "9CD4"], source: "Fatebreaker" } # Cyclonic Break castbar
+14.6 "Cyclonic Break 1 (targeted)" Ability { id: "9CD1", source: "Fatebreaker" }
+16.6 "Cyclonic Break 2 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker" }
+16.6 "Sinsmoke/Sinsmite" Ability { id: ["9CD3", "9CD5"], source: "Fatebreaker" }
+18.6 "Cyclonic Break 3 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker" }
+20.6 "Cyclonic Break 4 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker" }
+24.4 "Powder Mark Trail" Ability { id: "9CE8", source: "Fatebreaker" }
+28.5 "--center--" Ability { id: "9CED", source: "Fatebreaker" }
+35.2 "Utopian Sky" Ability { id: ["9CDA", "9CDB"], source: "Fatebreaker" }
+35.2 "--untargetable--"
+
+
+40.6 "Burn Mark" Ability { id: "9CE9", source: "Fatebreaker" }
+49.5 "--sync--" Ability { id: "9CDD", source: "Fatebreaker's Image" } # Blasting Zone castbar
+50.4 "Sinbound Fire III/Sinbound Thunder III" Ability { id: ["9CDF", "9CE0"], source: ["Fatebreaker", "Fatebreaker's Image"] }
+50.5 "Blasting Zone" Ability { id: "9CDE", source: "Fatebreaker's Image" }
+55.9 "--sync--" Ability { id: ["9D89", "9D8A"], source: "Fatebreaker's Image" } # Cyclonic Break castbar
+56.6 "Cyclonic Break 1 (targeted)" Ability { id: "9CD1", source: "Fatebreaker's Image" }
+58.6 "Cyclonic Break 2 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker's Image" }
+58.6 "Sinsmoke/Sinsmite" Ability { id: ["9CD3", "9CD5"], source: ["Fatebreaker", "Fatebreaker's Image"] }
+60.6 "Cyclonic Break 3 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker's Image" }
+62.6 "Cyclonic Break 4 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker's Image" }
+63.8 "Turn of the Heavens" Ability { id: ["9CD6", "9CD7"], source: "Fatebreaker's Image" }
+64.8 "Burnt Strike (lightning)" Ability { id: "9CE3", source: "Fatebreaker's Image" }
+66.5 "Burnout" Ability { id: "9CE4", source: "Fatebreaker's Image" }
+70.8 "Burnt Strike (fire)" Ability { id: "9CE1", source: "Fatebreaker's Image" }
+72.8 "Blastburn" Ability { id: "9CE2", source: "Fatebreaker's Image" }
+75.4 "Floating Fetters" Ability { id: "9CEB", source: "Fatebreaker's Image" }
+78.6 "Sinsmoke" Ability { id: "9CE7", source: "Fatebreaker's Image" }
+
+79.8 "--targetable--"
+86.0 "Burnished Glory" Ability { id: "9CEA", source: "Fatebreaker" }
+101.4 "Fall of Faith" Ability { id: ["9CC9", "9CCC"], source: "Fatebreaker" } # This is manually left in since it's a visible castbar.
+102.2 "Floating Fetters 1" #Ability { id: "9CEB", source: "Fatebreaker" }
+105.2 "Floating Fetters 2" #Ability { id: "9CEB", source: "Fatebreaker's Image" }
+105.5 "Sinblaze/Sinsmite 1" #Ability { id: ["9CCE", "9CDC"], source: "Fatebreaker" }
+107.5 "Floating Fetters 3" #Ability { id: "9CEB", source: "Fatebreaker's Image" }
+108.4 "Sinblaze/Sinsmite 2" #Ability { id: ["9CCE", "9CDC"], source: "Fatebreaker's Image" }
+109.9 "Floating Fetters 4" #Ability { id: "9CEB", source: "Fatebreaker's Image" }
+110.8 "Sinblaze/Sinsmite 3" #Ability { id: ["9CCE", "9CDC"], source: "Fatebreaker" }
+113.3 "Sinblaze/Sinsmite 4" #Ability { id: ["9CCE", "9CDC"], source: "Fatebreaker's Image" }
+121.3 "Burnished Glory" Ability { id: "9CEA", source: "Fatebreaker" }
+
+129.9 "Powder Mark Trail" Ability { id: "9CE8", source: "Fatebreaker" }
+132.3 "--center--" Ability { id: "9CED", source: "Fatebreaker" }
+141.3 "Burnt Strike" Ability { id: ["9CC1", "9CC5"], source: "Fatebreaker" }
+143.1 "Blastburn/Burnout" #Ability { id: ["9CC2", "9CC6"], source: "Fatebreaker" }
+# TODO: Add all tower explosion IDs
+145.1 "Explosion" #Ability { id: "9CBD", source: "Fatebreaker" }
+150.5 "--sync--"StartsUsing { id: "9CC0", source: "Fatebreaker" } # Burnished Glory
+160.2 "Burnished Glory (enrage)" Ability { id: "9CC0", source: "Fatebreaker" }
+
+# IGNORED ABILITIES
+# Fatebreaker
+# 9CB4 --sync--: Auto-attack
+# 9CC9 Fall of Faith: Tether castbar, fire
+# 9CCA Solemn Charge: Rush to tether target, clones
+# 9CCC Fall of Faith: Tether castbar, lightning
+# 9CCD Solemn Charge: Rush to tether target, Fatebreaker
+# 9CCF Bow Shock: Lightning bait cones (Sinsmite follow-up)
+# 9CD8 Brightfire: Turn of the Heavens circle explosions
+# 9CD9 Brightfire: Turn of the Heavens circle explosions
+# 9CE5 Bound of Faith: Roots + lifts tether target
+# 9CE6 Solemn Charge: Rush to tether target, clones, Turn of the Heavens
+# 9CE9 Burn Mark: Tower failure
+
+# ALL ENCOUNTER ABILITIES
+# 9CB4 --sync--: Auto-attack
+# 9CBD Explosion: Tower damage
+# 9CBE Explosion: Tower damage
+# 9CC0 Burnished Glory: Enrage
+# 9CC1 Burnt Strike: Guillotine cleave, fire
+# 9CC2 Blastburn: Fire Burnt Strike knockback
+# 9CC5 Burnt Strike: Guillotine cleave, lightning
+# 9CC6 Burnout: Lightning Burnt Strike expansion
+# 9CC7 Explosion: Tower damage
+# 9CC9 Fall of Faith: Tether castbar, fire
+# 9CCA Solemn Charge: Rush to tether target, clones
+# 9CCC Fall of Faith: Tether castbar, lightning
+# 9CCD Solemn Charge: Rush to tether target, Fatebreaker
+# 9CCE Sinsmite: Tether damage, lightning
+# 9CCF Bow Shock: Lightning bait cones (Sinsmite follow-up)
+# 9CD0 Cyclonic Break: Protean castbar, fire
+# 9CD1 Cyclonic Break: Protean, targeted
+# 9CD2 Cyclonic Break: Protean, follow-up
+# 9CD3 Sinsmoke: Protean follow-up, pairs
+# 9CD4 Cyclonic Break: Protean castbar, lightning
+# 9CD5 Sinsmite: Protean follow-up, spreads
+# 9CD6 Turn of the Heavens: Emote for Brightfire circle expansion, fire
+# 9CD7 Turn of the Heavens: Emote for Brightfire circle expansion, lightning
+# 9CD8 Brightfire: Turn of the Heavens circle explosions
+# 9CD9 Brightfire: Turn of the Heavens circle explosions
+# 9CDA Utopian Sky: Intermission/trio castbar, fire
+# 9CDB Utopian Sky: Intermission/trio castbar, lightning
+# 9CDC Sinblaze: Tether damage, fire
+# 9CDD Blasting Zone: Utopian Sky line AoE castbar
+# 9CDE Blasting Zone: Utopian Sky line AoEs
+# 9CDF Sinbound Fire III: Utopian Sky light party stacks
+# 9CE0 Sinbound Thunder III: Utopian Sky spreads
+# 9CE1 Burnt Strike: Utopian Sky guillotine cleave, fire
+# 9CE2 Blastburn: Utopian Sky fire Burnt Strike knockback
+# 9CE3 Burnt Strike: Utopian Sky guillotine cleave, lightning
+# 9CE4 Burnout: Utopian Sky lightning Burnt Strike expansion
+# 9CE5 Bound of Faith: Utopian Sky -- Roots + lifts tether target
+# 9CE6 Solemn Charge: Utopian Sky -- Rush to tether target, clones
+# 9CE7 Sinsmoke: Utopian Sky fire tether damage
+# 9CE8 Powder Mark Trail: Splashing tank buster
+# 9CE9 Burn Mark: Tower failure
+# 9CEA Burnished Glory: Raidwide + bleed
+# 9CEB Floating Fetters: Roots + lifts tether target
+# 9CED --sync--: --center--
+# 9D89 Cyclonic Break: Utopian Sky Protean castbar, fire
+# 9D8A Cyckonic Break: Utopian Sky Protean castbar, lightning
