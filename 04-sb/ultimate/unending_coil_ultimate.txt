@@ -79,9 +79,9 @@ hideall "--sync--"
 262.4 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
 #235.1 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
 #238.3 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
-266.4 "Doom x2" Ability { id: "26C9", source: "Tail of Darkness" }
+266.4 "Doom x2" Ability { id: "26C9", source: "Tail Of Darkness" }
 268.4 "Fireball (1)" Ability { id: "26C5", source: "Firehorn" }
-269.4 "Wings Of Salvation x2" Ability { id: "26CA", source: "Fang of Light" } duration 4
+269.4 "Wings Of Salvation x2" Ability { id: "26CA", source: "Fang Of Light" } duration 4
 276.6 "Bahamut's Claw x5" duration 2.8 #Ability { id: "26B5", source: "Nael deus Darnus" }
 283.3 "Fireball (2)" Ability { id: "26C5", source: "Firehorn" }
 
@@ -89,8 +89,8 @@ hideall "--sync--"
 287.3 "Chain Lightning" Ability { id: "26C8", source: "Thunderwing" }
 #262.8 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
 #265.8 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
-295.3 "Doom x3" Ability { id: "26C9", source: "Tail of Darkness" }
-297.3 "Wings Of Salvation x3" Ability { id: "26CA", source: "Fang of Light" } duration 8
+295.3 "Doom x3" Ability { id: "26C9", source: "Tail Of Darkness" }
+297.3 "Wings Of Salvation x3" Ability { id: "26CA", source: "Fang Of Light" } duration 8
 306.2 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
 309.2 "Fireball (3)" Ability { id: "26C5", source: "Firehorn" }
 
@@ -99,9 +99,9 @@ hideall "--sync--"
 #295.3 "Raven Dive" Ability { id: "26BE", source: "Nael deus Darnus" }
 #298.3 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
 330.2 "Fireball (4)" Ability { id: "26C5", source: "Firehorn" }
-331.2 "Doom x3" Ability { id: "26C9", source: "Tail of Darkness" }
+331.2 "Doom x3" Ability { id: "26C9", source: "Tail Of Darkness" }
 333.2 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
-333.3 "Wings Of Salvation x3" Ability { id: "26CA", source: "Fang of Light" } duration 8
+333.3 "Wings Of Salvation x3" Ability { id: "26CA", source: "Fang Of Light" } duration 8
 350.6 "Ravensbeak" Ability { id: "26B6", source: "Nael deus Darnus" }
 
 355.8 "Marker 1"
@@ -109,14 +109,14 @@ hideall "--sync--"
 360.8 "Hypernova x4" duration 6 #Ability { id: "26BF", source: "Nael deus Darnus" }
 363.8 "Marker 3"
 366.8 "Cauterize" #Ability { id: "26CD", source: "Thunderwing" }
-#339.5 "Cauterize" #Ability { id: "26CE", source: "Tail of Darkness" }
+#339.5 "Cauterize" #Ability { id: "26CE", source: "Tail Of Darkness" }
 368.3 "--untargetable--"
 368.3 "Meteor/Dive or Dive/Beam" duration 3 # first mechanic -> second
 #342.7 "Meteor Stream" Ability { id: "26C0", source: "Nael Geminus" }
 370.8 "Cauterize" #Ability { id: "26CB", source: "Firehorn" }
 #345.7 "Dalamud Dive" Ability { id: "26C1", source: "Nael deus Darnus" }
 374.7 "Cauterize" #Ability { id: "26CC", source: "Iceclaw" }
-#347.5 "Cauterize" #Ability { id: "26CF", source: "Fang of Light" }
+#347.5 "Cauterize" #Ability { id: "26CF", source: "Fang Of Light" }
 
 377.0 "Bahamut's Claw x5" duration 2.8 #Ability { id: "26B5", source: "Nael deus Darnus" }
 
@@ -233,10 +233,10 @@ hideall "--sync--"
 801.4 "Lunar Dive" Ability { id: "26C3", source: "Nael deus Darnus" }
 808.4 "Cauterize" #Ability { id: "26CB", source: "Firehorn" }
 810.6 "Cauterize" #Ability { id: "26CC", source: "Iceclaw" }
-812.6 "Cauterize" #Ability { id: "26CF", source: "Fang of Light" }
+812.6 "Cauterize" #Ability { id: "26CF", source: "Fang Of Light" }
 814.4 "Bahamut Marker"
 814.6 "Cauterize" #Ability { id: "26CD", source: "Thunderwing" }
-816.6 "Cauterize" #Ability { id: "26CE", source: "Tail of Darkness" }
+816.6 "Cauterize" #Ability { id: "26CE", source: "Tail Of Darkness" }
 818.6 "Megaflare Dive" Ability { id: "26E1", source: "Bahamut Prime" }
 823.4 "Twin Marker"
 826.4 "Stack" Ability { id: "26DE", source: "Bahamut Prime" }
