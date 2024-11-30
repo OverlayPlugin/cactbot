@@ -114,6 +114,7 @@ const cardOutputStrings = {
   unknown: Outputs.unknown,
   start: {
     en: 'Start ${dir}',
+    de: 'Starte ${dir}',
     fr: 'Début ${dir}',
     cn: '${dir} 开始',
     ko: '${dir} 시작',
@@ -206,6 +207,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack (face toward target)',
+          de: 'Sammeln (Schau das Ziel an)',
           fr: 'Pack (regardez la cible)',
           cn: '分摊 (面向目标)',
           ko: '쉐어 (대상 바라보기)',
@@ -365,6 +367,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Dodge puddles',
+          de: 'Weiche den Flächen aus',
           fr: 'Évitez les flaques',
           cn: '躲避圈圈',
           ko: '장판 피하기',
@@ -549,12 +552,11 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Cat\'s Eye': 'Katzenauge',
         'Sally the Sweeper': 'Sally (?:der|die|das) Fegerin',
         'The Forecaster': 'Wetterreporter',
-        // 'Mica the Magical Mu': 'Mica (?:der|die|das) Magisch[rs] Mu',
+        'Mica the Magical Mu': 'Mica (?:der|die|das) Magisch(?:e|er|es|en) Mu',
       },
     },
     {
