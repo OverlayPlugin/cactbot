@@ -183,7 +183,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Protector': 'Protektor',
         'Vanguard Commander R8': 'Außenposten-Kommandant R8',
