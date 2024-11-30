@@ -156,24 +156,28 @@ const witchHuntAlertOutputStrings = {
   },
   tanksNear: {
     en: 'Tanks Close (Party Far)',
+    de: 'Tanks nahe (Gruppe weit weg)',
     fr: 'Tanks près (Groupe au loin)',
     cn: '坦克近 (小队远)',
     ko: '탱커 가까이 (본대 멀리)',
   },
   healersFar: {
     en: 'Healers Far (Party Close)',
+    de: 'Heiler weit weg (Gruppe nahe)',
     fr: 'Healers loin (Groupe près)',
     cn: '治疗远 (小队近)',
     ko: '힐러 멀리 (본대 가까이)',
   },
   meleeNear: {
     en: 'Melee Close (Party Far)',
+    de: 'Nahkämpfer nahe (Gruppe weit weg)',
     fr: 'DPS Mêlée près (Groupe au loin)',
     cn: '近战近 (小队远)',
     ko: '근딜 가까이 (본대 멀리)',
   },
   rangedFar: {
     en: 'Ranged Far (Party Close)',
+    de: 'Fernkämpfer weit weg (Gruppe nahe)',
     fr: 'DPS Distance loin (Groupe près)',
     cn: '远程远 (小队近)',
     ko: '원딜 멀리 (본대 가까이)',
@@ -314,42 +318,49 @@ const conductorCurrentStringsNoStrat = {
 const conductorCurrentStringsDNStrat = {
   remoteCurrent: {
     en: 'Front of Middle (Far Cone)',
+    de: 'Vorne mittig (Fern-Kegel)',
     fr: 'Devant au milieu (loin du cône)',
     cn: '中前 (远扇形)',
     ko: '앞 가운데 (멀리 화살표)',
   },
   proximateCurrent: {
     en: 'Front of Middle (Near Cone)',
+    de: 'Vorne mittig (Nah-Kegel)',
     fr: 'Devant au milieu (près du cône)',
     cn: '中前 (近扇形)',
     ko: '앞 가운데 (가까이 화살표)',
   },
   spinningConductorSupport: {
     en: 'Front Left (Small AoE)',
+    de: 'Vorne links (kleine AoE)',
     fr: 'Devant à gauche (petite AoE)',
     cn: '左前 (小圈)',
     ko: '앞 왼쪽 (작은 원형징)',
   },
   spinningConductorDPS: {
     en: 'Front Right (Small AoE)',
+    de: 'Vorne rechts (kleine AoE)',
     fr: 'Devant à droite (petite AoE)',
     cn: '右前 (小圈)',
     ko: '앞 오른쪽 (작은 원형징)',
   },
   roundhouseConductorSupport: {
     en: 'Front Left (Donut AoE)',
+    de: 'Vorne links (Donut AoE)',
     fr: 'Devant à gauche (AoE en donut)',
     cn: '左前 (月环)',
     ko: '앞 왼쪽 (도넛징)',
   },
   roundhouseConductorDPS: {
     en: 'Front Right (Donut AoE)',
+    de: 'Vorne rechts (Donut AoE)',
     fr: 'Devant à droite (AoE en donut)',
     cn: '右前 (月环)',
     ko: '앞 오른쪽 (도넛징)',
   },
   colliderConductor: {
     en: 'Middle, Behind Current (Get Hit by Cone)',
+    de: 'Mitte, hinter Leitstrom (Lass dich vom Kegel treffen)',
     fr: 'Milieu à l\'arrière (prenez le cône)',
     cn: '中间, 扇形后 (吃扇形)',
     ko: '가운데, 화살표 뒤 (화살표 장판 맞기)',
@@ -416,6 +427,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ionCluster',
       name: {
         en: 'Ion Cluster Debuff Strategy',
+        de: 'Ionen-Ansammlung Debuff Strategie',
         fr: 'Mécanique pour Accumulation d\'ions',
         cn: '离子簇 Debuff 策略',
         ko: '이온 클러스터 디버프 전략',
@@ -425,6 +437,10 @@ const triggerSet: TriggerSet<Data> = {
 
              None: Call the debuff only, no strategy.
              DN: use rivet positions based on the <a href="https://pastebin.com/teF90QGm" target="_blank">shabin pastebin</a>.`,
+        de: `Strategie zur Auflösung von Debuffs während Ionen-Ansammlung.
+
+            None: Nenn den Debuff, keine Strategie.
+            DN: Besnutze die Nieten-Positionen, basierend auf <a href="https://pastebin.com/teF90QGm" target="_blank">shabin pastebin</a>.`,
         fr: `Mécanique pour résoudre Accumulation d\'ions.
 
              Aucune : Affiche seulement le debuff, aucune stratégie.
@@ -441,6 +457,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
+          'None': 'none',
+          'DN': 'DN',
+        },
+        de: {
           'None': 'none',
           'DN': 'DN',
         },
@@ -463,6 +483,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'witchHunt',
       name: {
         en: 'Witch Hunt Bait Strategy',
+        de: 'Hexenjagd Köder Strategie',
         fr: 'Mécanique pour Piqué fulgurant',
         cn: '魔女狩猎诱导策略',
         ko: '마녀 사냥 유도 전략',
@@ -473,6 +494,11 @@ const triggerSet: TriggerSet<Data> = {
              DN: DN uptime strategy, with flexible priority where Tanks take the first near bait,
              Healers take the first far bait, Melee DPS take the second near bait, and finally
              Ranged DPS take the second far bait.`,
+        de: `Strategie zum ködern der Hexenjagd.<br>
+             None: Zeige beides, Party und Köder Positionen, ohne specifische Strategie.<br>
+             DN: DN uptime Strategie, mit flexibler Priorität, bei der Tanks den ersten Nah-Köder,
+             Heiler die ersten entfernten Köder, Nahkämpfer die weiten Nah-Köder und schlussendlich
+             Fernkämpfer die zweiten entfernten Köder nehmen.`,
         fr: `Stratégie pour résoudre Piqué fulgurant.<br>
              Aucune : Affiche les positions du groupe de bait sans stratégie spécifique.<br>
              DN : Stratégie DN Uptime, avec une priorité ajustée ou les tanks prennent le bait le plus proche,
@@ -491,6 +517,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
+          'None': 'none',
+          'DN': 'DN',
+        },
+        de: {
           'None': 'none',
           'DN': 'DN',
         },
@@ -513,6 +543,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'sunrise',
       name: {
         en: 'Sunrise Sabbath Strategy',
+        de: 'Morgensonnensabbat Strategie',
         fr: 'Mécanique pour Diablerie obscure - Aurore',
         cn: '黑色安息日的日出策略',
         ko: 'Sunrise Sabbath 전략',
@@ -523,6 +554,11 @@ const triggerSet: TriggerSet<Data> = {
              Snakes Prio: Popular priority system used in NA PF. Support players
              start looking for tower or cannon from the northwest going counter clockwise.
              DPS players look for tower or cannon from the north going clockwise.`,
+        de: `Strategie zum lösen von Morgensonnensabbat.<br>
+             None: Nenne den Debuff, beide Orte der Türme und passende Türme.<br>
+             Snakes Prio: Populäres prioritäten System des NA PFs. Support Spieler
+             starten Nord-Westen und suchen ihre Kanone gegen den Uhrzeigersinn.
+             DPS Spieler schauen Norden im Uhrzeigersinn nach ihrer Kanone.`,
         fr: `Stratégie pour résoudre Diablerie obscure - Aurore<br>
              Aucune : Affiche les debuffs pour l\'apparition des tours et également les tours à prendre.<br>
              Snakes Prio: Mécanique populaire sur les centres de données NA en PF. Les supports
@@ -546,6 +582,10 @@ const triggerSet: TriggerSet<Data> = {
           'None': 'none',
           'Snakes Prio': 'snakePrio',
         },
+        de: {
+          'None': 'none',
+          'Snakes Prio': 'snakePrio',
+        },
         fr: {
           'Aucune': 'none',
           'Snakes Prio': 'snakePrio',
@@ -565,12 +605,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'sunriseUptime',
       name: {
         en: 'Sunrise Sabbath Uptime Cannon Baits',
+        de: 'Morgensonnensabbat - Uptime - Kanonen ködern',
         fr: 'Diablerie obscure - Aurore Uptime - Bait des canons',
         cn: '黑色安息日的日出 使用 uptime 炮诱导打法',
         ko: 'Sunrise Sabbath 업타임 대포 유도',
       },
       comment: {
         en: 'Call cannon baits assuming the AutoCAD waymark uptime cannon bait spots.',
+        de: 'Nenne Kanonen-Köder bei verwendung der AutoCAD-Wegmarkierungen',
         fr: 'Affiche les bait des canons selon les marqueurs AutoCAD.',
         cn: '基于 AutoCAD 标点的 uptime 炮诱导打法播报炮诱导。',
         ko: 'AutoCAD 지면 표식을 기반으로 대포 유도를 알립니다.',
@@ -901,21 +943,25 @@ const triggerSet: TriggerSet<Data> = {
         },
         tank: {
           en: 'Tanks',
+          de: 'Tanks',
           cn: '坦克',
           ko: '탱커',
         },
         healer: {
           en: 'Healers',
+          de: 'Heiler',
           cn: '治疗',
           ko: '힐러',
         },
         melee: {
           en: 'Melee',
+          de: 'Nahkämpfer',
           cn: '近战',
           ko: '근딜',
         },
         ranged: {
           en: 'Ranged',
+          de: 'Fernkämpfer',
           cn: '远程',
           ko: '원딜',
         },
@@ -2432,11 +2478,13 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitNormal: {
           en: 'Point ${bait}',
+          de: 'Zeige ${bait}',
           cn: '指向 (${bait})',
           ko: '${bait}쪽으로',
         },
         baitUptime: {
           en: 'Stand ${bait} side',
+          de: 'Stehe ${bait} Seite',
           cn: '站 ${bait} 侧',
           ko: '${bait}쪽 면에 서기',
         },
