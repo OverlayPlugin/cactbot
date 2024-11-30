@@ -167,7 +167,7 @@ const forgedTrackCleaveMap: {
 
 export interface Data extends RaidbossData {
   bitterReapingTargets: string[];
-  seenFirstSync: boolean; // all future Chasm of Vollok swords are on mirror platforms
+  seenFirstSync: boolean; // all future Chasm Of Vollok swords are on mirror platforms
   unsafeTiles: MappedTile[];
   halfCircuitSafeSide?: 'left' | 'right';
 }
@@ -222,7 +222,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'ZoraalJa Shadow Burst',
       type: 'StartsUsing',
-      netRegex: { id: '934D', source: 'Shadow of Tural', capture: false },
+      netRegex: { id: '934D', source: 'Shadow Of Tural', capture: false },
       delaySeconds: 3,
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.away!(),
@@ -335,7 +335,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.seenFirstSync = true,
     },
     {
-      id: 'ZoraalJa Chasm of Vollok Sword Collect',
+      id: 'ZoraalJa Chasm Of Vollok Sword Collect',
       type: 'StartsUsing',
       netRegex: { id: '9358', source: 'Fang' },
       run: (data, matches) => {
@@ -348,7 +348,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'ZoraalJa Chasm of Vollok',
+      id: 'ZoraalJa Chasm Of Vollok',
       type: 'StartsUsing',
       netRegex: { id: '9358', source: 'Fang', capture: false },
       delaySeconds: 0.2,
@@ -542,7 +542,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'de',
       'replaceSync': {
         'Fang': 'Reißzahn',
-        'Shadow of Tural': 'Schatten Turals',
+        'Shadow Of Tural': 'Schatten Turals',
         'Zoraal Ja': 'Zoraal Ja',
       },
       'replaceText': {
@@ -551,7 +551,7 @@ const triggerSet: TriggerSet<Data> = {
         'Blade Warp': 'Klingensprung',
         'Burst': 'Explosion',
         'Calamity\'s Edge': 'Klinge des Unheils',
-        'Chasm of Vollok': 'Spalt von Vollok',
+        'Chasm Of Vollok': 'Spalt von Vollok',
         'Dawn of an Age': 'Dämmerung eines Zeitalters',
         'Double-edged Swords': 'Zweischneidige Schwerter',
         'Duty\'s Edge': 'Pflichtes Schneide',
@@ -572,7 +572,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'fr',
       'replaceSync': {
         'Fang': 'crochet',
-        'Shadow of Tural': 'ombre sacrifiée',
+        'Shadow Of Tural': 'ombre sacrifiée',
         'Zoraal Ja': 'Zoraal Ja',
       },
       'replaceText': {
@@ -581,7 +581,7 @@ const triggerSet: TriggerSet<Data> = {
         'Blade Warp': 'Invocation incisive',
         'Burst': 'Explosion',
         'Calamity\'s Edge': 'Lames calamiteuses',
-        'Chasm of Vollok': 'Trappe de Vollok',
+        'Chasm Of Vollok': 'Trappe de Vollok',
         'Dawn of an Age': 'Âge de l\'aurore',
         'Double-edged Swords': 'Doubles tranchants',
         'Duty\'s Edge': 'Devoir d\'acier',
@@ -602,7 +602,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ja',
       'replaceSync': {
         'Fang': '双牙剣',
-        'Shadow of Tural': '民の幻影',
+        'Shadow Of Tural': '民の幻影',
         'Zoraal Ja': 'ゾラージャ',
       },
       'replaceText': {
@@ -611,7 +611,7 @@ const triggerSet: TriggerSet<Data> = {
         'Blade Warp': 'サモンエッジ',
         'Burst': '爆発',
         'Calamity\'s Edge': 'カラミティエッジ',
-        'Chasm of Vollok': 'ピット・オブ・ヴォロク',
+        'Chasm Of Vollok': 'ピット・オブ・ヴォロク',
         'Dawn of an Age': 'ドーン・エイジ',
         'Double-edged Swords': 'ツインエッジ',
         'Duty\'s Edge': 'デューティエッジ',
@@ -632,7 +632,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Fang': '双牙剑',
-        'Shadow of Tural': '民众的幻影',
+        'Shadow Of Tural': '民众的幻影',
         'Zoraal Ja': '佐拉加',
       },
       'replaceText': {
@@ -641,7 +641,7 @@ const triggerSet: TriggerSet<Data> = {
         'Blade Warp': '利刃召唤',
         'Burst': '爆炸',
         'Calamity\'s Edge': '灾祸斩',
-        'Chasm of Vollok': '无敌裂斩',
+        'Chasm Of Vollok': '无敌裂斩',
         'Dawn of an Age': '新曦世纪',
         'Double-edged Swords': '双锋合刃',
         'Duty\'s Edge': '责任之刃',
