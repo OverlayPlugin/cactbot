@@ -1946,7 +1946,6 @@ const triggerSet: TriggerSet<Data> = {
         'Random Combo Attack': 'Zufälliger Komboangriff',
         '(?<!/)Ravensbeak': 'Bradamante',
         'Raven Dive': 'Bahamuts Schwinge',
-        'Ravensbeak': 'Bradamante',
         'Seventh Umbral Era': 'Siebte Ära des Schattens',
         'Spread': 'Verteilen',
         'Stack': 'Sammeln',
