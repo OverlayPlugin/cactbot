@@ -29,6 +29,7 @@ const directionOutputStrings = {
   goRight: Outputs.right,
   stay: {
     en: 'Stay',
+    de: 'Bleib stehen',
     fr: 'Restez',
     cn: '停',
     ko: '대기',
@@ -44,6 +45,7 @@ const directionOutputStrings = {
   },
   intercardStay: {
     en: '${dir} => Stay',
+    de: '${dir} => Bleib stehen',
     fr: '${dir} => Restez',
     cn: '${dir} => 停',
     ko: '${dir} => 대기',
