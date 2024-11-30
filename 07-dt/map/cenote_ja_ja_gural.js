@@ -47,6 +47,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Tuligora Troupes spawned, kill in order!',
+          de: 'Turalische Truppen sind erschienen, besiege sie in der Reihenfolge!',
           fr: 'Les troupes de Tuligora sont apparues, tuez-les dans l\'ordre !',
           cn: '图拉尔蔓德拉战队 已生成，按顺序击杀！',
         },
@@ -91,6 +92,36 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '9582', source: 'Golden Molter' },
       response: Responses.tankBuster(),
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Bull Apollyon': 'Bullen-Apollyon',
+        'Golden Molter': 'Golden(?:e|er|es|en) Wandler',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Bull Apollyon': 'apollyon buffle',
+        'Golden Molter': 'transmueur doré',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Bull Apollyon': 'ブルアポリオン',
+        'Golden Molter': 'ゴールデン・モルター',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Bull Apollyon': '莽撞亚波伦',
+        'Golden Molter': '黄金蜕皮蜥',
+      },
     },
   ],
 });
