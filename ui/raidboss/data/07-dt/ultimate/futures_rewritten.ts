@@ -26,6 +26,7 @@ const triggerSet: TriggerSet<Data> = {
   },
   timelineTriggers: [],
   triggers: [
+    // General triggers
     {
       id: 'FRU ActorSetPos Collector',
       type: 'ActorSetPos',
@@ -34,6 +35,7 @@ const triggerSet: TriggerSet<Data> = {
         data.actorSetPosTracker[matches.id] = matches;
       },
     },
+    // P1 -- Fatebreaker
     {
       id: 'FRU P1 Cyclonic Break Fire',
       type: 'StartsUsing',
@@ -246,6 +248,15 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // P2 -- Usurper Of Frost
+
+    // Crystals
+
+    // P3 -- Oracle Of Darkness
+
+    // P4 -- Duo
+
+    // P5 -- Pandora
   ],
   timelineReplace: [
     {
