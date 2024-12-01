@@ -328,6 +328,14 @@ const triggerSet: TriggerSet<Data> = {
         'Ihnuxokiy': '伊努索奇',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Pkuucha': '프쿠차',
+        'The Raintriller': '빗물흥얼이',
+        'Ihnuxokiy': '이누쇼키',
+      },
+    },
   ],
 };
 

@@ -586,6 +586,15 @@ const triggerSet: TriggerSet<Data> = {
         'Mica the Magical Mu': '亩鼠米卡',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Cat\'s Eye': '캣츠아이',
+        'Sally the Sweeper': '청소부 샐리',
+        'The Forecaster': '기상예보기',
+        'Mica the Magical Mu': '마술다람쥐 마이카',
+      },
+    },
   ],
 };
 

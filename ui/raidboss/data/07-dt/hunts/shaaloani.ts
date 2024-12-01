@@ -886,6 +886,16 @@ const triggerSet: TriggerSet<Data> = {
         'Sand Sphere': '沙球',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Keheniheyamewi': '케헤니헤야메위',
+        'Yehehetoaua\'pyo': '예헤헤토와포',
+        'Sansheya': '산셰야',
+        'Ttokrrone': '토크로네',
+        'Sand Sphere': '모래 구체',
+      },
+    },
   ],
 };
 
