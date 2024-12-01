@@ -75,11 +75,16 @@ hideall "--sync--"
 
 # ALL ENCOUNTER ABILITIES
 # 9CB4 --sync--: Auto-attack
+# 9CBA Explosion: Tower damage
+# 9CBB Explosion: Tower damage
+# 9CBC Explosion: Tower damage
 # 9CBD Explosion: Tower damage
 # 9CBE Explosion: Tower damage
+# 9CBF Explosion: Tower damage
 # 9CC0 Burnished Glory: Enrage
 # 9CC1 Burnt Strike: Guillotine cleave, fire
 # 9CC2 Blastburn: Fire Burnt Strike knockback
+# 9CC3 Explosion: Tower damage
 # 9CC5 Burnt Strike: Guillotine cleave, lightning
 # 9CC6 Burnout: Lightning Burnt Strike expansion
 # 9CC7 Explosion: Tower damage
