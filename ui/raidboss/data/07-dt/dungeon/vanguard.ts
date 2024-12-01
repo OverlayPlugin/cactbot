@@ -314,7 +314,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         '\\(corners\\)': '(四角)',
         '\\(ground AoEs\\)': '(地面 AoE)',
-        '\\(sides\\)': '(场边)',
+        '\\(sides\\)': '(四边)',
         '(?<! )Rush': '突进',
         'Aerial Offensive': '空袭',
         'Battery Circuit': '旋回式冲击炮',
