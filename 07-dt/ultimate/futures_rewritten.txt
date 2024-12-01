@@ -29,7 +29,7 @@ hideall "--sync--"
 58.6 "Sinsmoke/Sinsmite" Ability { id: ["9CD3", "9CD5"], source: ["Fatebreaker", "Fatebreaker's Image"] }
 60.6 "Cyclonic Break 3 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker's Image" }
 62.6 "Cyclonic Break 4 (follow-up)" #Ability { id: "9CD2", source: "Fatebreaker's Image" }
-63.8 "Turn of the Heavens" Ability { id: ["9CD6", "9CD7"], source: "Fatebreaker's Image" }
+63.8 "Turn Of The Heavens" Ability { id: ["9CD6", "9CD7"], source: "Fatebreaker's Image" }
 64.8 "Burnt Strike (lightning)" Ability { id: "9CE3", source: "Fatebreaker's Image" }
 66.5 "Burnout" Ability { id: "9CE4", source: "Fatebreaker's Image" }
 70.8 "Burnt Strike (fire)" Ability { id: "9CE1", source: "Fatebreaker's Image" }
@@ -39,7 +39,7 @@ hideall "--sync--"
 
 79.8 "--targetable--"
 86.0 "Burnished Glory" Ability { id: "9CEA", source: "Fatebreaker" }
-101.4 "Fall of Faith" Ability { id: ["9CC9", "9CCC"], source: "Fatebreaker" } # This is manually left in since it's a visible castbar.
+101.4 "Fall Of Faith" Ability { id: ["9CC9", "9CCC"], source: "Fatebreaker" } # This is manually left in since it's a visible castbar.
 102.2 "Floating Fetters 1" #Ability { id: "9CEB", source: "Fatebreaker" }
 105.2 "Floating Fetters 2" #Ability { id: "9CEB", source: "Fatebreaker's Image" }
 105.5 "Sinblaze/Sinsmite 1" #Ability { id: ["9CCE", "9CDC"], source: "Fatebreaker" }
@@ -62,15 +62,15 @@ hideall "--sync--"
 # IGNORED ABILITIES
 # Fatebreaker
 # 9CB4 --sync--: Auto-attack
-# 9CC9 Fall of Faith: Tether castbar, fire
+# 9CC9 Fall Of Faith: Tether castbar, fire
 # 9CCA Solemn Charge: Rush to tether target, clones
-# 9CCC Fall of Faith: Tether castbar, lightning
+# 9CCC Fall Of Faith: Tether castbar, lightning
 # 9CCD Solemn Charge: Rush to tether target, Fatebreaker
 # 9CCF Bow Shock: Lightning bait cones (Sinsmite follow-up)
-# 9CD8 Brightfire: Turn of the Heavens circle explosions
-# 9CD9 Brightfire: Turn of the Heavens circle explosions
+# 9CD8 Brightfire: Turn Of The Heavens circle explosions
+# 9CD9 Brightfire: Turn Of The Heavens circle explosions
 # 9CE5 Bound of Faith: Roots + lifts tether target
-# 9CE6 Solemn Charge: Rush to tether target, clones, Turn of the Heavens
+# 9CE6 Solemn Charge: Rush to tether target, clones, Turn Of The Heavens
 # 9CE9 Burn Mark: Tower failure
 
 # ALL ENCOUNTER ABILITIES
@@ -83,9 +83,9 @@ hideall "--sync--"
 # 9CC5 Burnt Strike: Guillotine cleave, lightning
 # 9CC6 Burnout: Lightning Burnt Strike expansion
 # 9CC7 Explosion: Tower damage
-# 9CC9 Fall of Faith: Tether castbar, fire
+# 9CC9 Fall Of Faith: Tether castbar, fire
 # 9CCA Solemn Charge: Rush to tether target, clones
-# 9CCC Fall of Faith: Tether castbar, lightning
+# 9CCC Fall Of Faith: Tether castbar, lightning
 # 9CCD Solemn Charge: Rush to tether target, Fatebreaker
 # 9CCE Sinsmite: Tether damage, lightning
 # 9CCF Bow Shock: Lightning bait cones (Sinsmite follow-up)
@@ -95,10 +95,10 @@ hideall "--sync--"
 # 9CD3 Sinsmoke: Protean follow-up, pairs
 # 9CD4 Cyclonic Break: Protean castbar, lightning
 # 9CD5 Sinsmite: Protean follow-up, spreads
-# 9CD6 Turn of the Heavens: Emote for Brightfire circle expansion, fire
-# 9CD7 Turn of the Heavens: Emote for Brightfire circle expansion, lightning
-# 9CD8 Brightfire: Turn of the Heavens circle explosions
-# 9CD9 Brightfire: Turn of the Heavens circle explosions
+# 9CD6 Turn Of The Heavens: Emote for Brightfire circle expansion, fire
+# 9CD7 Turn Of The Heavens: Emote for Brightfire circle expansion, lightning
+# 9CD8 Brightfire: Turn Of The Heavens circle explosions
+# 9CD9 Brightfire: Turn Of The Heavens circle explosions
 # 9CDA Utopian Sky: Intermission/trio castbar, fire
 # 9CDB Utopian Sky: Intermission/trio castbar, lightning
 # 9CDC Sinblaze: Tether damage, fire
