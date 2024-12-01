@@ -641,7 +641,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Ambrose the Undeparted': '实验体安布罗斯',
         'Deceiver': '欺骗者',
@@ -650,6 +649,11 @@ Options.Triggers.push({
         'Origenics Sentry G9': '创生哨兵G9',
       },
       'replaceText': {
+        '--mid-north--': '--北边中央--',
+        '\\(cages\\)': '(笼子)',
+        '\\(lance\\)': '(雷枪)',
+        '\\(puddle drop\\)': '(放置毒球)',
+        '\\(spread\\)': '(分散)',
         'Bionic Thrash': '回旋臂',
         'Collective Agony': '念力波动',
         'Convulsive Crush': '殴打',

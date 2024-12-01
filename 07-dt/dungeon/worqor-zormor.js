@@ -598,7 +598,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Gurfurlur': '固伏鲁',
         'Kahderyor': '卡德由夜鸟',

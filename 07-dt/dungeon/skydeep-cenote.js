@@ -533,7 +533,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Airy Bubble': '水泡',
         'Feather Ray': '羽环鳐',
@@ -541,6 +540,10 @@ Options.Triggers.push({
         'Maulskull': '锤颅巨兵',
       },
       'replaceText': {
+        '\\(boss\\)': '(BOSS)',
+        '\\(first\\)': '(一)',
+        '\\(party\\)': '(玩家)',
+        '\\(second\\)': '(二)',
         'Ancient Artillery': '火炮启动',
         '(?<! )Artillery': '火炮',
         'Ashlayer': '热能放射',

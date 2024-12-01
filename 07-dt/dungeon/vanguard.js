@@ -288,7 +288,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Protector': '保护者',
         'Vanguard Commander R8': '先锋营指挥官R8',
@@ -296,6 +295,9 @@ Options.Triggers.push({
         'Zander the Snakeskinner': '蟒蛇将 詹德',
       },
       'replaceText': {
+        '\\(corners\\)': '(四角)',
+        '\\(ground AoEs\\)': '(地面 AoE)',
+        '\\(sides\\)': '(四边)',
         '(?<! )Rush': '突进',
         'Aerial Offensive': '空袭',
         'Battery Circuit': '旋回式冲击炮',
