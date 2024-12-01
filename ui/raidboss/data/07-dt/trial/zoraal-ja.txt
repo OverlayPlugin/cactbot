@@ -62,7 +62,7 @@ hideall "--sync--"
 407.1 "Smiting Circuit" Ability { id: "9363", source: "Zoraal Ja" }
 418.1 "Smiting Circuit" Ability { id: "9363", source: "Zoraal Ja" }
 425.2 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
-433.3 "Dawn of an Age" Ability { id: "9354", source: "Zoraal Ja" }
+433.3 "Dawn Of An Age" Ability { id: "9354", source: "Zoraal Ja" }
 
 # platforms mini-phase 1
 447.4 "Vollok" Ability { id: "9357", source: "Zoraal Ja" }
@@ -89,7 +89,7 @@ hideall "--sync--"
 594.2 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
 
 # START OF LOOP
-602.3 "Dawn of an Age" Ability { id: "9354", source: "Zoraal Ja" }
+602.3 "Dawn Of An Age" Ability { id: "9354", source: "Zoraal Ja" }
 
 # platforms mini-phase 2
 616.4 "Gateway" Ability { id: "935B", source: "Zoraal Ja" }
@@ -117,7 +117,7 @@ hideall "--sync--"
 763.6 "Half Circuit" Ability { id: "936D", source: "Zoraal Ja" }
 773.8 "Bitter Reaping" Ability { id: "9379", source: "Zoraal Ja" }
 781.6 "--center--" Ability { id: "9355", source: "Zoraal Ja" }
-789.7 "Dawn of an Age" Ability { id: "9354", source: "Zoraal Ja" } forcejump 602.3
+789.7 "Dawn Of An Age" Ability { id: "9354", source: "Zoraal Ja" } forcejump 602.3
 # END OF LOOP
 
 # IGNORED ABILITIES
@@ -149,7 +149,7 @@ hideall "--sync--"
 # 9351 Double-edged Swords
 # 9352 Double-edged Swords
 # 9353 Patricidal Pique
-# 9354 Dawn of an Age
+# 9354 Dawn Of An Age
 # 9355 --sync-- (re-center)
 # 9356 Actualize
 # 9357 Vollok
