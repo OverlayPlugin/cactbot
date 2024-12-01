@@ -305,7 +305,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Protector': '保护者',
         'Vanguard Commander R8': '先锋营指挥官R8',
@@ -313,6 +312,9 @@ const triggerSet: TriggerSet<Data> = {
         'Zander the Snakeskinner': '蟒蛇将 詹德',
       },
       'replaceText': {
+        '\\(corners\\)': '(四角)',
+        '\\(ground AoEs\\)': '(地面 AoE)',
+        '\\(sides\\)': '(场边)',
         '(?<! )Rush': '突进',
         'Aerial Offensive': '空袭',
         'Battery Circuit': '旋回式冲击炮',

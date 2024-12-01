@@ -638,7 +638,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Gurfurlur': '固伏鲁',
         'Kahderyor': '卡德由夜鸟',
