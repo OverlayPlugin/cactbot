@@ -1,10 +1,15 @@
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { DirectionOutput8, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
+import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
+  actorSetPosTracker: { [id: string]: NetMatches['ActorSetPos'] };
+  p1ConcealSafeDirs: DirectionOutput8[];
+  p1StackSpread?: 'stack' | 'spread';
   p1FallOfFaithTethers: ('fire' | 'lightning')[];
 }
 
@@ -14,11 +19,21 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'futures_rewritten.txt',
   initData: () => {
     return {
+      actorSetPosTracker: {},
+      p1ConcealSafeDirs: [...Directions.output8Dir],
       p1FallOfFaithTethers: [],
     };
   },
   timelineTriggers: [],
   triggers: [
+    {
+      id: 'FRU ActorSetPos Collector',
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-F]{7}', capture: true },
+      run: (data, matches) => {
+        data.actorSetPosTracker[matches.id] = matches;
+      },
+    },
     {
       id: 'FRU P1 Cyclonic Break Fire',
       type: 'StartsUsing',
@@ -58,27 +73,61 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankBusterSwap(),
     },
     {
-      id: 'FRU P1 Utopian Sky',
-      type: 'Ability',
+      id: 'FRU P1 Utopian Sky Collector',
+      type: 'StartsUsing',
+      netRegex: { id: ['9CDA', '9CDB'], capture: true },
+      run: (data, matches) => {
+        data.p1StackSpread = matches.id === '9CDA' ? 'stack' : 'spread';
+      },
+    },
+    {
+      id: 'FRU Conceal Safe',
+      type: 'ActorControlExtra',
       netRegex: {
-        id: ['9CDA', '9CDB'],
-        source: ['Fatebreaker', 'Fatebreaker\'s Image'],
+        category: '003F',
+        param1: '4',
         capture: true,
       },
-      delaySeconds: 6,
-      durationSeconds: 10,
-      alertText: (_data, matches, output) => {
-        if (matches.id === '9CDA')
-          return output.utopianFire!();
-        if (matches.id === '9CDB')
-          return output.utopianThunder!();
-        return output.unknownUtopian!();
+      condition: (data) => data.p1StackSpread !== undefined,
+      durationSeconds: 8,
+      alertText: (data, matches, output) => {
+        const clone = data.actorSetPosTracker[matches.id];
+        if (clone === undefined)
+          return;
+        const dir1 = Directions.hdgTo8DirNum(parseFloat(clone.heading));
+        const dir2 = (dir1 + 4) % 8;
+        data.p1ConcealSafeDirs = data.p1ConcealSafeDirs.filter((dir) =>
+          dir !== Directions.outputFrom8DirNum(dir1) && dir !== Directions.outputFrom8DirNum(dir2)
+        );
+
+        if (data.p1ConcealSafeDirs.length !== 2)
+          return;
+
+        const [dir1Out, dir2Out] = data.p1ConcealSafeDirs;
+
+        if (dir1Out === undefined || dir2Out === undefined)
+          return;
+
+        return output.combo!({
+          dir1: output[dir1Out]!(),
+          dir2: output[dir2Out]!(),
+          mech: output[data.p1StackSpread ?? 'unknown']!(),
+        });
       },
       outputStrings: {
-        utopianFire: Outputs.stacks,
-        utopianThunder: Outputs.spread,
-        unknownUtopian: Outputs.unknown,
+        ...Directions.outputStrings8Dir,
+        combo: {
+          en: '${dir1} / ${dir2} => ${mech}',
+        },
+        stack: Outputs.stacks,
+        spread: Outputs.spread,
       },
+    },
+    {
+      id: 'FRU P1 Burnished Glory',
+      type: 'StartsUsing',
+      netRegex: { id: '9CEA', source: 'Fatebreaker', capture: false },
+      response: Responses.bleedAoe(),
     },
     {
       id: 'FRU P1 Burnt Strike Fire',
@@ -88,12 +137,12 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Line Cleave -> Knockback',
-          de: 'Linien AoE -> Rückstoß',
-          fr: 'AoE en ligne -> Poussée',
-          ja: '直線範囲 -> ノックバック',
-          cn: '直线 -> 击退',
-          ko: '직선 장판 -> 넉백',
+          en: 'Line Cleave => Knockback',
+          de: 'Linien AoE => Rückstoß',
+          fr: 'AoE en ligne => Poussée',
+          ja: '直線範囲 => ノックバック',
+          cn: '直线 => 击退',
+          ko: '직선 장판 => 넉백',
         },
       },
     },
@@ -105,12 +154,12 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Line Cleave -> Out',
-          de: 'Linien AoE -> Raus',
-          fr: 'AoE en ligne -> Extérieur',
-          ja: '直線範囲 -> 離れる',
-          cn: '直线 -> 去外侧',
-          ko: '직선 장판 -> 바깥으로',
+          en: 'Line Cleave => Out',
+          de: 'Linien AoE => Raus',
+          fr: 'AoE en ligne => Extérieur',
+          ja: '直線範囲 => 離れる',
+          cn: '直线 => 去外侧',
+          ko: '직선 장판 => 바깥으로',
         },
       },
     },
