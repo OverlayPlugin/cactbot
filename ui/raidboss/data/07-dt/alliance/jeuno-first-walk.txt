@@ -14,7 +14,8 @@ hideall "--sync--"
 # The snapshot locks in when the visual element resolves,
 # so we display the visual and then ignore the damage event.
 
-10000.0 "--sync--" InCombat { inGameCombat: "1" } window 10000,1
+# The grand dais will be sealed off
+10000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "141E" } window 10000,1
 10008.1 "Banishga" Ability { id: "9FE7", source: "Prishe of the Distant Chains" } window 10008.1,10
 10015.3 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
 10029.5 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
@@ -139,6 +140,18 @@ hideall "--sync--"
 13116.4 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
 13124.6 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
 
+# IGNORED ABILITIES
+# 9FE6 --sync--: auto-attack
+# 9FEB Knuckle Sandwich: 1-tick inner circle AoE
+# 9FEC Knuckle Sandwich: 2-tick inner circle AoE
+# 9FED Knuckle Sandwich: 3-tick inner circle AoE
+# 9FF1 Nullifying Dropkick: Shared tank buster, circle stack (simultaneous with 9FFD)
+# 9FF3 Banish: Pathing circle AoEs
+# 9FF5 Thornbite: Thorns appear
+# 9FF9 Auroral Uppercut: Knockback execution
+# 9FFE Asuran Fists: Stack marker damage
+# 9FFF Asuran Fists: Stack marker damage
+# A003 Holy: Spread marker damage
 
 # ALL ENCOUNTER ABILITIES
 # 9FE5 --center--
@@ -171,3 +184,175 @@ hideall "--sync--"
 # A000 Asuran Fists: Stack marker final hit
 # A002 Holy: Spread marker cast
 # A003 Holy: Spread marker damage
+
+
+# -ii 9BF2 9F72 9F73 9F74 9F75 9F76 9F8B 9F8C 9F95 9F98 9F9C A156 A157 A158 A159 9F90 9F8E
+# -ic "Biting Wind" "Darter" "Ravaging Wind"
+
+# The Hurricane Wing puddles follow an increasing "ladder" of abilities.
+# In -> out first round:: 9F7D, 9F7E, 9F7F, 9F80
+# In -> out second round: 9F87, 9F88, 9F89, 9F8A
+# Out -> in first round:  9F78, 9F79, 9F7A, 9F7B
+# Out -> in second round: 9F82, 9F83, 9F84, 9F85
+
+# Dragon's Aery will be sealed off
+20000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "141F" } window 20000,1
+20011.1 "Dark Matter Blast" Ability { id: "9F96", source: "Fafnir the Forgotten" } window 20011.1,10
+20024.2 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20025.2 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20038.3 "Offensive Posture?" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20039.5 "Touchdown?" Ability { id: "A09C", source: "Fafnir the Forgotten" }
+
+20044.5 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth window 44.5,10
+20056.6 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20057.8 "Dragon Breath" duration 4 #Ability { id: "9F6F", source: "Fafnir the Forgotten" }
+20075.1 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20076.3 "Touchdown" Ability { id: "A09C", source: "Fafnir the Forgotten" }
+20087.3 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20088.3 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20098.7 "Baleful Breath x5" Ability { id: "9F94", source: "Fafnir the Forgotten" } duration 7
+20105.5 "--sync--" Ability { id: "9B76", source: "Fafnir the Forgotten" } # Baleful Breath final hit
+20112.6 "Sharp Spike" Ability { id: "9F97", source: "Fafnir the Forgotten" }
+20114.0 "--Darters spawn--"
+20123.7 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20130.8 "Hurricane Wing (raidwides)" Ability { id: "9F71", source: "Fafnir the Forgotten" } duration 11
+20143.4 "--north--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20149.0 "Hurricane Wing 1 (rings)" Ability { id: ["9F78", "9F7D"], source: "Fafnir the Forgotten" }
+20151.0 "Hurricane Wing 2 (rings)" Ability { id: ["9F79","9F7E"], source: "Fafnir the Forgotten" }
+20152.9 "Horrid Roar 1 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20152.9 "Hurricane Wing 3 (rings)" Ability { id: ["9F7A", "9F7F"], source: "Fafnir the Forgotten" }
+20154.9 "Hurricane Wing 4 (rings)" Ability { id: ["9F7B", "9F80"], source: "Fafnir the Forgotten" }
+20157.9 "Horrid Roar 1 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20159.9 "Horrid Roar 2 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20159.9 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20161.9 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20163.9 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20164.9 "Horrid Roar 2 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20165.9 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20167.0 "Horrid Roar 3 (spread)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20171.0 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20173.0 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20173.1 "Horrid Roar 3 (spreads explode)" Ability { id: "9F93", source: "Fafnir the Forgotten" }
+20174.1 "Horrid Roar 4 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20175.0 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20177.0 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20179.3 "Horrid Roar 4 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20181.3 "--center--" Ability { id: "9F6D", source: "Fafnir the Forgotten" } window 15,15 # Baleful Nail
+20193.3 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20194.3 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20204.6 "Baleful Breath x5" Ability { id: "9F94", source: "Fafnir the Forgotten" } duration 7
+20211.5 "--sync--" Ability { id: "9B76", source: "Fafnir the Forgotten" } # Baleful Breath final hit
+20219.7 "--north--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20230.1 "Absolute Terror/Winged Terror" Ability { id: ["9F8D", "9F8F"], source: "Fafnir the Forgotten" }
+20248.3 "Winged Terror/Absolute Terror?" Ability { id: ["9F8F", "9F8D"], source: "Fafnir the Forgotten" } # can be skipped with high DPS
+20259.5 "Dark Matter Blast" Ability { id: "9F96", source: "Fafnir the Forgotten" } window 30,30
+
+20268.7 label "fafnirLoop"
+20268.7 "Horrid Roar (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20271.8 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20273.8 "Horrid Roar (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20281.8 "Horrid Roar" #Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20284.7 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20285.8 "Horrid Roar (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20285.9 "Dragon Breath" duration 4 #Ability { id: "9F6F", source: "Fafnir the Forgotten" }
+20301.0 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20302.2 "Spike Flail/Touchdown" Ability { id: ["A09A", "A09C"], source: "Fafnir the Forgotten" }
+20309.2 "Sharp Spike" Ability { id: "9F97", source: "Fafnir the Forgotten" }
+20318.3 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20325.4 "Hurricane Wing (raidwides)" Ability { id: "9F71", source: "Fafnir the Forgotten" } duration 11
+20338.1 "--north--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20343.7 "Hurricane Wing 1 (rings)" Ability { id: ["9F78", "9F7D"], source: "Fafnir the Forgotten" }
+20345.6 "Horrid Roar 1 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20345.7 "Hurricane Wing 2 (rings)" Ability { id: ["9F79","9F7E"], source: "Fafnir the Forgotten" }
+20347.7 "Hurricane Wing 3 (rings)" Ability { id: ["9F7A", "9F7F"], source: "Fafnir the Forgotten" }
+20349.7 "Hurricane Wing 4 (rings)" Ability { id: ["9F7B", "9F80"], source: "Fafnir the Forgotten" }
+20350.7 "Horrid Roar 1(explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20352.7 "Horrid Roar 2 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20354.7 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20356.7 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20357.8 "Horrid Roar 2 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20358.7 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20359.8 "Horrid Roar 3 (spread)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20360.7 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20365.7 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20365.8 "Horrid Roar 3 (spreads explode)" Ability { id: "9F93", source: "Fafnir the Forgotten" }
+20367.7 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20369.7 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20371.7 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20380.8 "Absolute Terror/Winged Terror" Ability { id: ["9F8D", "9F8F"], source: "Fafnir the Forgotten" }
+20382.8 "--Darters spawn--"
+20385.0 "--center--" Ability { id: "9F6D", source: "Fafnir the Forgotten" } # Baleful Nail
+20397.0 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20398.0 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20408.4 "Baleful Breath x5" Ability { id: "9F94", source: "Fafnir the Forgotten" } duration 7
+20416.8 "--sync--" Ability { id: "9B76", source: "Fafnir the Forgotten" } # Baleful Breath final hit
+20428.9 "Dark Matter Blast" Ability { id: "9F96", source: "Fafnir the Forgotten" }
+20441.0 "Horrid Roar (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" } window 30,30 forcejump "fafnirLoop"
+
+
+# IGNORED ABILITIES
+# 9BF2 Baleful Breath
+# 9EB9 --sync--
+# 9F72 Hurricane Wing
+# 9F73 Hurricane Wing
+# 9F74 Hurricane Wing
+# 9F75 Hurricane Wing
+# 9F76 Hurricane Wing
+# 9F8B Great Whirlwind
+# 9F8C Great Whirlwind
+# 9F95 Baleful Breath
+# 9F97 Sharp Spike
+# 9F9C --sync--
+# A156 Hurricane Wing
+# A157 Hurricane Wing
+# A158 Hurricane Wing
+# A159 Hurricane Wing
+
+# ALL ENCOUNTER ABILITIES
+# 9B76 Baleful Breath: Multi-hit stack marker, final hit
+# 9BC1 Great Whirlwind:
+# 9BC2 Great Whirlwind
+# 9BF2 Baleful Breath
+# 9EB9 --sync--
+# 9F6B Offensive Posture
+# 9F6D Baleful Nail
+# 9F6E Offensive Posture
+# 9F6F Dragon Breath
+# 9F70 Offensive Posture
+# 9F71 Hurricane Wing: Cyclone raidwide, hit 1
+# 9F72 Hurricane Wing: Cyclone raidwide, hit 2
+# 9F73 Hurricane Wing: Cyclone raidwide, hit 3
+# 9F74 Hurricane Wing: Cyclone raidwide, hit 4
+# 9F75 Hurricane Wing: Cyclone raidwide, hit 5
+# 9F76 Hurricane Wing: Cyclone raidwide, hit 6
+# 9F78 Hurricane Wing
+# 9F79 Hurricane Wing
+# 9F7A Hurricane Wing
+# 9F7B Hurricane Wing
+# 9F82 Hurricane Wing
+# 9F83 Hurricane Wing
+# 9F84 Hurricane Wing
+# 9F85 Hurricane Wing
+# 9F8B Great Whirlwind
+# 9F8C Great Whirlwind
+# 9F8D Absolute Terror: Hot Tail castber
+# 9F8E Absolute Terror: Hot Tail
+# 9F8F Winged Terror: Hot Wing castbar
+# 9F90 Winged Terror: Hot Wing
+# 9F91 Horrid Roar
+# 9F92 Horrid Roar
+# 9F93 Horrid Roar
+# 9F94 Baleful Breath
+# 9F95 Baleful Breath
+# 9F96 Dark Matter Blast
+# 9F97 Sharp Spike: Tank buster castbar
+# 9F98 Sharp Spike: Cleaving tank busters
+# 9F99 Shuddering Earth: Reposition
+# 9F9B Pestilent Sphere
+# 9F9C --sync--
+# A09A Spike Flail
+# A09C Touchdown
+# A156 Hurricane Wing: Cyclone raidwide, hit 7
+# A157 Hurricane Wing: Cyclone raidwide, hit 8
+# A158 Hurricane Wing: Cyclone raidwide, hit 9
+# A159 Hurricane Wing: Cyclone raidwide, hit 10
