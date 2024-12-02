@@ -569,6 +569,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(knockback\\)': '(넉백)',
         '\\(storm phase\\)': '(번개 페이즈)',
         '\\(tower\\)': '(기둥)',
+        '\\(storm/ice phase\\?\\)': '(번개/얼음 페이즈?)',
         'Arcane Lightning': '벼락불',
         'Blighted Bolt': '재앙의 낙뢰',
         'Calamitous Cry': '재앙의 포효',
