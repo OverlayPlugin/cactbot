@@ -1,14 +1,18 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Math out the explosion patterns on Banishga IV and call in/out pattern.
-// TODO: Figure out the targeting on Prishe's Asuran Fists (repeated stack marker)
+// TODO: Math out the Banish Storm safespots.
 
-export type Data = RaidbossData;
+export interface Data extends RaidbossData {
+  dragonBreathFacingNumber?: number;
+  spikeTargets?: string[];
+}
 
 const prishePunchDelays: string[] = [
   '9FE8',
@@ -19,11 +23,6 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Jeuno: The First Walk',
   zoneId: ZoneId.JeunoTheFirstWalk,
   timelineFile: 'jeuno-first-walk.txt',
-  initData: () => {
-    return {
-
-    };
-  },
   triggers: [
     {
       id: 'Jeuno First Walk Prishe Banishga',
@@ -148,7 +147,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'Jeuno First Walk Prishe Banishga Orbs',
+      id: 'Jeuno First Walk Prishe Banishga IV Orbs',
       type: 'Ability',
       netRegex: { id: '9FFA', source: 'Prishe Of The Distant Chains', capture: false },
       durationSeconds: 6,
@@ -161,19 +160,148 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // This is self-targeted, and there's no clear information currently on who gets the stack marker.
+      // This is self-targeted and the stack point is a tower in the center.
       id: 'Jeuno First Walk Prishe Asuran Fists',
       type: 'StartsUsing',
       netRegex: { id: '9FFC', source: 'Prishe Of The Distant Chains', capture: false },
       durationSeconds: 6,
       response: Responses.stackMarker(),
     },
+    {
+      id: 'Jeuno First Walk Fafnir Dark Matter Blast',
+      type: 'StartsUsing',
+      netRegex: { id: '9F96', source: 'Fafnir The Forgotten', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Spike Flail',
+      type: 'StartsUsing',
+      netRegex: { id: 'A09A', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 7,
+      response: Responses.goFront(),
+    },
+    {
+      // The cast used here is Offensive Posture.
+      id: 'Jeuno First Walk Fafnir Dragon Breath',
+      type: 'StartsUsing',
+      netRegex: { id: '9F6E', source: 'Fafnir The Forgotten', capture: true },
+      durationSeconds: 7,
+      response: Responses.goMiddle(),
+      run: (data, matches) => {
+        const headingNumber = Directions.hdgTo8DirNum(parseFloat(matches.heading));
+        data.dragonBreathFacingNumber = headingNumber;
+      },
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Touchdown',
+      type: 'StartsUsing',
+      netRegex: { id: 'A09C', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 7,
+      alertText: (data, _matches, output) => {
+        if (data.dragonBreathFacingNumber !== undefined) {
+          const dirOutputIndex = Directions.outputFrom8DirNum(data.dragonBreathFacingNumber);
+          return output.outAtDirection!({ safeDir: Outputs[dirOutputIndex] });
+        }
+        return output.getOut!();
+      },
+      outputStrings: {
+        outAtDirection: {
+          en: 'Get out toward ${safeDir}',
+        },
+        getOut: Outputs.out,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Baleful Breath',
+      type: 'StartsUsing',
+      netRegex: { id: '9BF2', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 7,
+      response: Responses.stackMarker(),
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Sharp Spike Collect',
+      type: 'HeadMarker',
+      netRegex: { id: '0156', capture: true },
+      run: (data, matches) => {
+        data.spikeTargets ??= [];
+        data.spikeTargets.push(matches.target);
+      }
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Sharp Spike Call',
+      type: 'StartsUsing',
+      netRegex: { id: '9F97', source: 'Fafnir The Forgotten', capture: false },
+      delaySeconds: 0.5,
+      durationSeconds: 6.5,
+      alertText: (data, _matches, output) => {
+        if (data.spikeTargets?.includes(data.me))
+          return output.cleaveOnYou!();
+        return output.avoidCleave!();
+      },
+      run: (data) => {
+        // Dragon Breath is also deleted here because Sharp Spike
+        // consistently follows Dragon Breath,
+        // while Touchdown does not.
+        delete data.spikeTargets;
+        delete data.dragonBreathFacingNumber;
+      },
+      outputStrings: {
+        cleaveOnYou: Outputs.tankCleaveOnYou,
+        avoidCleave: Outputs.avoidTankCleaves,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Horrid Roar Spread',
+      type: 'HeadMarker',
+      netRegex: { id: '01F3', capture: true },
+      condition: Conditions.targetIsYou(),
+      response: Responses.spread(),
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Absolute Terror',
+      type: 'StartsUsing',
+      netRegex: { id: '9F8D', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 5,
+      response: Responses.goSides(),
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Winged Terror',
+      type: 'StartsUsing',
+      netRegex: { id: '9F8F', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 5,
+      response: Responses.goMiddle(),
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Hurricane Wing Outer Ring',
+      type: 'StartsUsing',
+      netRegex: { id: '9F78', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.outerFirst!(),
+      outputStrings: {
+        outerFirst: {
+          en: 'Rings out to in',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Hurricane Wing Inner Ring',
+      type: 'StartsUsing',
+      netRegex: { id: '9F7D', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.outerFirst!(),
+      outputStrings: {
+        outerFirst: {
+          en: 'Rings in to out',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
       'locale': 'en',
       'replaceText': {
-
+        'Absolute Terror/Winged Terror': 'Absolute/Winged Terror',
+        'Winged Terror/Absolute Terror': 'Winged/Absolute Terror',
       },
     },
   ],
