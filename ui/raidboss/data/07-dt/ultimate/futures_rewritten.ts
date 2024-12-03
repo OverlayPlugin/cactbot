@@ -49,6 +49,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         clockPairs: {
           en: 'Clock spots => Pairs',
+          de: 'Himmelsrichtungen => Paare',
         },
       },
     },
@@ -65,6 +66,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         clockSpread: {
           en: 'Clock spots => Spread',
+          de: 'Himmelsrichtungen => Verteilen',
         },
       },
     },
@@ -120,6 +122,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         combo: {
           en: '${dir1} / ${dir2} => ${mech}',
+          de: '${dir1} / ${dir2} => ${mech}',
         },
         stack: Outputs.stacks,
         spread: Outputs.spread,
@@ -174,6 +177,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lightningSafe: {
           en: 'Lightning Safe',
+          de: 'Blitz Sicher',
         },
       },
     },
@@ -186,6 +190,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         fireSafe: {
           en: 'Fire Safe',
+          de: 'Feuer Sicher',
         },
       },
     },
@@ -227,24 +232,31 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         fire: {
           en: 'Fire',
+          de: 'Feuer',
         },
         lightning: {
           en: 'Lightning',
+          de: 'Blitz',
         },
         one: {
           en: '1',
+          de: '1',
         },
         two: {
           en: '2',
+          de: '2',
         },
         three: {
           en: '3',
+          de: '3',
         },
         tether: {
           en: '${num}: ${elem}',
+          de: '${num}: ${elem}',
         },
         all: {
           en: '${e1} => ${e2} => ${e3} => ${e4}',
+          de: '${e1} => ${e2} => ${e3} => ${e4}',
         },
       },
     },
