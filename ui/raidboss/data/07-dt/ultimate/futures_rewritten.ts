@@ -35,6 +35,8 @@ export interface Data extends RaidbossData {
   p1ConcealSafeDirs: DirectionOutput8[];
   p1StackSpread?: 'stack' | 'spread';
   p1FallOfFaithTethers: ('fire' | 'lightning')[];
+  p2QuadrupleFirstTarget: string;
+  p2QuadrupleDebuffApplied: boolean;
   p2IcicleImpactStart: DirectionOutput8;
   p2AxeScytheSafe?: 'in' | 'out';
   p2FrigidStoneTargets: string[];
@@ -49,6 +51,8 @@ const triggerSet: TriggerSet<Data> = {
       actorSetPosTracker: {},
       p1ConcealSafeDirs: [...Directions.output8Dir],
       p1FallOfFaithTethers: [],
+      p2QuadrupleFirstTarget: '',
+      p2QuadrupleDebuffApplied: false,
       p2IcicleImpactStart: 'unknown',
       p2FrigidStoneTargets: [],
     };
@@ -279,24 +283,55 @@ const triggerSet: TriggerSet<Data> = {
     },
     // P2 -- Usurper Of Frost
     {
-      id: 'FRU P2 Quadruple Slap',
+      id: 'FRU P2 Quadruple Slap First',
       type: 'StartsUsing',
       netRegex: { id: '9CFF', source: 'Usurper of Frost' },
       response: Responses.tankBuster(),
+      run: (data, matches) => data.p2QuadrupleFirstTarget = matches.target,
     },
     {
-      id: 'FRU P2 Quadruple Slap Cleanse',
+      // Cleansable debuff may be applied with first cast (9CFF)
+      // although there are ways to avoid appplication (e.g. Warden's Paean)
+      id: 'FRU P2 Quadruple Slap Debuff Collect',
       type: 'GainsEffect',
       netRegex: { effectId: '1042', source: 'Usurper of Frost' },
-      condition: (data) => data.CanCleanse(),
-      infoText: (data, matches, output) =>
-        output.cleanse!({ player: data.party.member(matches.target).nick }),
-      outputStrings: {
-        cleanse: {
-          en: 'Cleanse ${player}',
-        },
+      run: (data) => data.p2QuadrupleDebuffApplied = true,
+    },
+    {
+      id: 'FRU P2 Quadruple Slap Second',
+      type: 'StartsUsing',
+      // short (2.2s) cast time
+      netRegex: { id: '9D00', source: 'Usurper of Frost' },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          onYou: Outputs.tankBusterOnYou,
+          onTarget: Outputs.tankBusterOnPlayer,
+          busterCleanse: {
+            en: '${buster} (Cleanse?)',
+          },
+        };
+
+        const onTarget = output.onTarget!({ player: data.party.member(matches.target) });
+        let busterStr: string;
+
+        if (data.me === matches.target)
+          busterStr = output.onYou!();
+        else if (
+          data.p2QuadrupleFirstTarget === matches.target &&
+          data.p2QuadrupleDebuffApplied &&
+          data.CanCleanse()
+        ) {
+          busterStr = output.busterCleanse!({ buster: onTarget });
+        } else
+          busterStr = onTarget;
+
+        if (data.me === matches.target || data.role === 'healer')
+          return { alertText: busterStr };
+        return { infoText: busterStr };
       },
     },
+
     {
       id: 'FRU P2 Diamond Dust',
       type: 'StartsUsing',
