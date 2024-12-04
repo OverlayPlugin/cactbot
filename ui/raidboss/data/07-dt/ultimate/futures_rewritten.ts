@@ -314,7 +314,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'FRU P2 Icicle Impact Initial Collect',
       type: 'StartsUsing',
-      netRegex: { id: '9D06', source: 'Usurper of Frost' },
+      netRegex: { id: '9D06' },
       // there are 2 actors 180 degrees apart, but we only need to collect one
       condition: (data) => data.p2IcicleImpactStart === 'unknown',
       suppressSeconds: 1,
