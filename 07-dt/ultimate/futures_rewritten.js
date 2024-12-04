@@ -34,6 +34,7 @@ Options.Triggers.push({
       outputStrings: {
         clockPairs: {
           en: 'Clock spots => Pairs',
+          de: 'Himmelsrichtungen => Paare',
         },
       },
     },
@@ -50,6 +51,7 @@ Options.Triggers.push({
       outputStrings: {
         clockSpread: {
           en: 'Clock spots => Spread',
+          de: 'Himmelsrichtungen => Verteilen',
         },
       },
     },
@@ -101,6 +103,7 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         combo: {
           en: '${dir1} / ${dir2} => ${mech}',
+          de: '${dir1} / ${dir2} => ${mech}',
         },
         stack: Outputs.stacks,
         spread: Outputs.spread,
@@ -155,6 +158,7 @@ Options.Triggers.push({
       outputStrings: {
         lightningSafe: {
           en: 'Lightning Safe',
+          de: 'Blitz Sicher',
         },
       },
     },
@@ -167,6 +171,7 @@ Options.Triggers.push({
       outputStrings: {
         fireSafe: {
           en: 'Fire Safe',
+          de: 'Feuer Sicher',
         },
       },
     },
@@ -204,24 +209,31 @@ Options.Triggers.push({
       outputStrings: {
         fire: {
           en: 'Fire',
+          de: 'Feuer',
         },
         lightning: {
           en: 'Lightning',
+          de: 'Blitz',
         },
         one: {
           en: '1',
+          de: '1',
         },
         two: {
           en: '2',
+          de: '2',
         },
         three: {
           en: '3',
+          de: '3',
         },
         tether: {
           en: '${num}: ${elem}',
+          de: '${num}: ${elem}',
         },
         all: {
           en: '${e1} => ${e2} => ${e3} => ${e4}',
+          de: '${e1} => ${e2} => ${e3} => ${e4}',
         },
       },
     },
