@@ -292,10 +292,16 @@ const triggerSet: TriggerSet<Data> = {
     {
       // Cleansable debuff may be applied with first cast (9CFF)
       // although there are ways to avoid appplication (e.g. Warden's Paean)
-      id: 'FRU P2 Quadruple Slap Debuff Collect',
+      id: 'FRU P2 Quadruple Slap Debuff Gain',
       type: 'GainsEffect',
-      netRegex: { effectId: '1042', source: 'Usurper of Frost' },
+      netRegex: { effectId: '1042', source: 'Usurper of Frost', capture: false },
       run: (data) => data.p2QuadrupleDebuffApplied = true,
+    },
+    {
+      id: 'FRU P2 Quadruple Slap Debuff Loss',
+      type: 'LosesEffect',
+      netRegex: { effectId: '1042', source: 'Usurper of Frost', capture: false },
+      run: (data) => data.p2QuadrupleDebuffApplied = false,
     },
     {
       id: 'FRU P2 Quadruple Slap Second',
