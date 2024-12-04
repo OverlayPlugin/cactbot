@@ -251,6 +251,7 @@ Options.Triggers.push({
       },
     },
     {
+      'missingTranslations': true,
       'locale': 'de',
       'replaceSync': {
         'Fatebreaker(?!\')': 'fusioniert(?:e|er|es|en) Ascian',
@@ -278,6 +279,7 @@ Options.Triggers.push({
       },
     },
     {
+      'missingTranslations': true,
       'locale': 'fr',
       'replaceSync': {
         'Fatebreaker(?!\')': 'Sabreur de destins',
@@ -305,6 +307,7 @@ Options.Triggers.push({
       },
     },
     {
+      'missingTranslations': true,
       'locale': 'ja',
       'replaceSync': {
         'Fatebreaker(?!\')': 'フェイトブレイカー',
