@@ -38,7 +38,7 @@ const config: UserConfig = {
         assetFileNames: '[name].[ext]',
         chunkFileNames: '[name].bundle.js',
         manualChunks: (id) => {
-          if (/ui\/raidboss\/data\/.*(?:ts|js|txt\?raw)$/.test(id)) {
+          if (/ui\/raidboss\/data\/.*(?:ts|js|txt\?raw)$/.test(id) || /^\0?timeline:/.test(id)) {
             return 'ui/common/raidboss_data';
           }
           if (/ui\/oopsyraidsy\/data\/.*(?:ts|js)$/.test(id)) {
