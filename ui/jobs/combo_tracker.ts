@@ -7,6 +7,7 @@ import {
   kComboBreakers630,
   kComboDelay,
 } from './constants';
+import { PartialFieldMatches } from './event_emitter';
 import { FfxivVersion } from './jobs';
 import { Player } from './player';
 
@@ -56,7 +57,7 @@ export class ComboTracker extends EventEmitter<{ combo: ComboCallback }> {
     this.isFinalSkill = false;
 
     // register events
-    this.player.on('action/you', (id) => this.HandleAbility(id));
+    this.player.on('action/you', (id, matches) => this.HandleAbility(id, matches));
     this.player.on('hp', ({ hp }) => {
       if (hp === 0)
         this.AbortCombo();
@@ -81,8 +82,10 @@ export class ComboTracker extends EventEmitter<{ combo: ComboCallback }> {
     });
   }
 
-  HandleAbility(id: string): void {
-    if (id in this.considerNext) {
+  HandleAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
+    if (matches.targetIndex !== '0')
+      return;
+    if (id in this.considerNext && matches.targetId !== 'E0000000') {
       this.StateTransition(id, this.considerNext[id]);
       return;
     }

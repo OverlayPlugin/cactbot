@@ -25,6 +25,14 @@ const lyheGhiahOutputStrings = {
   },
 } as const;
 
+const dungeonCrewIds = [
+  '9801', // Secret Onion
+  '9802', // Secret Egg
+  '9803', // Secret Garlic
+  '9804', // Secret Tomato
+  '9805', // Secret Queen
+] as const;
+
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
@@ -40,9 +48,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '9774' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: lyheGhiahOutputStrings.spawn,
-      },
+      outputStrings: lyheGhiahOutputStrings,
     },
     {
       id: 'Shifting Oubliettes of Lyhe Ghiah The Keeper of the Keys Spawn',
@@ -51,19 +57,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '9773' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: lyheGhiahOutputStrings.spawn,
-      },
+      outputStrings: lyheGhiahOutputStrings,
     },
     {
       id: 'Shifting Oubliettes of Lyhe Ghiah Dungeon Crew Spawn',
-      // 9801 = Secret Onion
-      // 9802 = Secret Egg
-      // 9803 = Secret Garlic
-      // 9804 = Secret Tomato
-      // 9805 = Secret Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '980[1-5]', capture: false },
+      netRegex: { npcNameId: dungeonCrewIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -183,9 +182,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '54EA', source: 'Fuath Troublemaker', capture: false },
       infoText: (_data, _matches, output) => output.adds!(),
-      outputStrings: {
-        adds: lyheGhiahOutputStrings.adds,
-      },
+      outputStrings: lyheGhiahOutputStrings,
     },
     {
       id: 'Shifting Oubliettes of Lyhe Ghiah Secret Korrigan Ram',
@@ -204,9 +201,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '54AC', source: 'Secret Korrigan', capture: false },
       infoText: (_data, _matches, output) => output.adds!(),
-      outputStrings: {
-        adds: lyheGhiahOutputStrings.adds,
-      },
+      outputStrings: lyheGhiahOutputStrings,
     },
     {
       id: 'Shifting Oubliettes of Lyhe Ghiah Secret Keeper Heavy Scrapline',

@@ -86,7 +86,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Großeknall auf DIR',
           fr: 'Double cannon sur VOUS',
           ja: '自分にブームカノン',
-          cn: '死刑点名',
+          cn: '红球点名',
           ko: '우레 포격 대상자',
         },
       },

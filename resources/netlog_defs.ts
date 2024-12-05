@@ -476,15 +476,24 @@ const latestLogDefinitions = {
       sequence: 44,
       targetIndex: 45,
       targetCount: 46,
+      ownerId: 47,
+      ownerName: 48,
+      effectDisplayType: 49,
+      actionId: 50,
+      actionAnimationId: 51,
+      animationLockTime: 52,
+      rotationHex: 53,
     },
     possibleRsvFields: 5,
     playerIds: {
       2: 3,
       6: 7,
+      47: 48,
     },
-    blankFields: [6],
+    blankFields: [6, 47, 48],
     canAnonymize: true,
-    firstOptionalField: undefined,
+    // @TODO: Set this back to `undefined` after KR/CN have access to the new fields
+    firstOptionalField: 47,
     analysisOptions: {
       include: 'filter',
       filters: { sourceId: '4.{7}' }, // NPC abilities only
@@ -530,15 +539,24 @@ const latestLogDefinitions = {
       sequence: 44,
       targetIndex: 45,
       targetCount: 46,
+      ownerId: 47,
+      ownerName: 48,
+      effectDisplayType: 49,
+      actionId: 50,
+      actionAnimationId: 51,
+      animationLockTime: 52,
+      rotationHex: 53,
     },
     possibleRsvFields: 5,
     playerIds: {
       2: 3,
       6: 7,
+      47: 48,
     },
-    blankFields: [6],
+    blankFields: [6, 47, 48],
     canAnonymize: true,
-    firstOptionalField: undefined,
+    // @TODO: Set this back to `undefined` after KR/CN have access to the new fields
+    firstOptionalField: 47,
     analysisOptions: {
       include: 'filter',
       filters: { sourceId: '4.{7}' }, // NPC abilities only
@@ -683,6 +701,10 @@ const latestLogDefinitions = {
           sourceId: '[E4].{7}',
           targetId: '1.{7}',
         },
+        { // effects applied by NPCs to other NPCs (including themselves)
+          sourceId: '4.{7}',
+          targetId: '4.{7}',
+        },
         { // known effectIds of interest
           effectId: ['B9A', '808'],
         },
@@ -701,12 +723,14 @@ const latestLogDefinitions = {
       targetId: 2,
       target: 3,
       id: 6,
+      data0: 7,
     },
     playerIds: {
       2: 3,
     },
+    possiblePlayerIds: [7],
     canAnonymize: true,
-    firstOptionalField: undefined,
+    firstOptionalField: 7,
     analysisOptions: {
       include: 'all',
       combatantIdFields: 2,
@@ -784,6 +808,10 @@ const latestLogDefinitions = {
         { // effect from environment/NPC applied to player
           sourceId: '[E4].{7}',
           targetId: '1.{7}',
+        },
+        { // effects applied by NPCs to other NPCs (including themselves)
+          sourceId: '4.{7}',
+          targetId: '4.{7}',
         },
         { // known effectIds of interest
           effectId: ['B9A', '808'],
@@ -1359,7 +1387,7 @@ const latestLogDefinitions = {
       2: null,
     },
     canAnonymize: true,
-    firstOptionalField: 7,
+    firstOptionalField: undefined,
     analysisOptions: {
       include: 'filter',
       filters: { sourceId: '4.{7}' }, // NPC casts only
@@ -1388,7 +1416,7 @@ const latestLogDefinitions = {
       2: null,
     },
     canAnonymize: true,
-    firstOptionalField: 9,
+    firstOptionalField: undefined,
   },
   ContentFinderSettings: {
     type: '265',

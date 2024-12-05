@@ -93,6 +93,7 @@ export class DNCComponent extends BaseComponent {
   override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     switch (id) {
       case kAbility.StandardStep:
+      case kAbility.FinishingMove:
         this.standardStep.duration = 30;
         break;
       case kAbility.TechnicalStep:
@@ -149,11 +150,8 @@ export class DNCComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.standardStep.valuescale = gcdSkill;
     this.standardStep.threshold = gcdSkill + 1;
-    this.technicalStep.valuescale = gcdSkill;
     this.technicalStep.threshold = gcdSkill + 1;
-    this.flourish.valuescale = gcdSkill;
     this.flourish.threshold = gcdSkill + 1;
   }
 

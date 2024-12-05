@@ -16,7 +16,7 @@ jobs:
       do_release: ${{ steps.check_tag.outputs.do_release }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -64,7 +64,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -75,7 +75,7 @@ jobs:
 
       - name: Check dependencies cache
         id: cache-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./plugin/ThirdParty
           key: |
@@ -156,7 +156,7 @@ jobs:
     if: ${{ github.repository == 'OverlayPlugin/cactbot' }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup-js-env
 

@@ -2160,8 +2160,12 @@ const data: WeatherRateType = {
     ],
   },
   167: {
-    'rates': [],
-    'weathers': [],
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Electrostatic Dust',
+    ],
   },
   168: {
     'rates': [],

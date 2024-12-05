@@ -166,13 +166,9 @@ export class RPRComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.deathsDesignBox.valuescale = gcdSkill;
     this.deathsDesignBox.threshold = gcdSkill * 3 + 1;
-    this.gluttonyBox.valuescale = gcdSkill;
     this.gluttonyBox.threshold = gcdSkill * 2 + 1;
-    this.soulSliceBox.valuescale = gcdSkill;
     this.soulSliceBox.threshold = gcdSkill * 2 + 1;
-    this.arcaneCircleBox.valuescale = gcdSkill;
     this.arcaneCircleBox.threshold = gcdSkill + 1;
   }
 

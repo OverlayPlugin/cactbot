@@ -260,11 +260,10 @@ export class Bars {
     return textDiv as ResourceBox;
   }
 
-  addProcBox({ id, fgColor, threshold, scale, notifyWhenExpired }: {
+  addProcBox({ id, fgColor, threshold, notifyWhenExpired }: {
     id?: string;
     fgColor?: string;
     threshold?: number;
-    scale?: number;
     notifyWhenExpired?: boolean;
   }): TimerBox {
     let container = id !== undefined ? document.getElementById(id) : undefined;
@@ -281,7 +280,6 @@ export class Bars {
       threshold: threshold ? threshold : 0,
       hideafter: null,
       roundupthreshold: false,
-      valuescale: scale ? scale : 1,
     });
     container.innerHTML = ''; // remove any existing timer boxes, if there are.
     container.appendChild(timerBox);

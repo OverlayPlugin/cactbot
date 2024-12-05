@@ -76,6 +76,7 @@ const initViewer = (options: OopsyOptions, _isConnected: boolean) => {
   mistakeCollector.AddObserver(table);
 
   const damageTracker = new DamageTracker(options, mistakeCollector, partyTracker, oopsyFileData);
+  damageTracker.logReplayMode = true;
 
   const fileDrop = document.getElementById('filedrop');
   if (!fileDrop)

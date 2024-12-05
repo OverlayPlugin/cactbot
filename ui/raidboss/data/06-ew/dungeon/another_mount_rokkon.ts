@@ -589,11 +589,11 @@ const triggerSet: TriggerSet<Data> = {
           遠隔まだは近接が2人の場合は、ここの設定を無視して近接呼び出しはありません。
           および、タンク+ヒーラ+DPS2人じゃないパティは志願しません。`,
         cn: `对于所有双人分摊，该选项指定了选择谁与谁分摊的优先级。
-           如果你想让近战和坦克分摊 (假设分摊没有同时点这两个人), 选择含有“近战 (melee)”的选项。
-           近战 (melee) 分摊指的是 近战+坦克 和 治疗+远程。职能分摊指的是 坦克 + 治疗 和 DPS + DPS。
-           搭档分摊指的是 支援 + DPS 和 支援 + DPS (任何组合都有可能，支援位是坦克和治疗)。
-           如果队伍中有两名远程 DPS 或近战 DPS, 无论此配置选项如何, 它都不会报“近战 (melees)”。
-           没有考虑对非标准阵容队伍 (非 2 支援 + 2DPS) 构成的支持。`,
+           如果你想让近战优先和坦克分摊, 选择含有“近战”的选项。
+           近战分摊指的是 近战+坦克 和 治疗+远程。职能分摊指的是 坦克 + 治疗 和 DPS + DPS。
+           搭档分摊指的是 坦克 + DPS 和 治疗 + DPS (任意组合均可)。
+           如果队伍中有两名远程 DPS 或近战 DPS, 无论此配置选项如何, 它都不会报“近战分摊”。
+           没有考虑对非标准阵容队伍 (非1T1N2DPS) 构成的支持。`,
         ko: `2인 쉐어에서, 함께 쉐어를 맞을 사람의 우선 순위를 지정합니다. 근딜과 탱커를 함께 배치하고 싶다면 근딜이 포함된 옵션을 선택하세요.
            근딜 쉐어는 근딜+탱커와 힐러+원딜을 의미합니다. 역할별 쉐어는 탱커+힐러와 딜러+딜러를 의미합니다.
            파트너 쉐어는 탱힐+딜러와 탱힐+딜러를 의미합니다(어떤 조합도 가능).
@@ -1137,7 +1137,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nördlicher Diamant + ${mechanic}',
           fr: 'Diamant Nord + ${mechanic}',
           ja: '北 + ${mechanic}',
-          cn: '上 (北) 菱形 + ${mechanic}',
+          cn: '上菱形 + ${mechanic}',
           ko: '북쪽 + ${mechanic}',
         },
         east: {
@@ -1145,7 +1145,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'östlicher Diamant + ${mechanic}',
           fr: 'Diamant Est + ${mechanic}',
           ja: '東 + ${mechanic}',
-          cn: '右 (东) 菱形 + ${mechanic}',
+          cn: '右菱形 + ${mechanic}',
           ko: '동쪽 + ${mechanic}',
         },
         south: {
@@ -1153,7 +1153,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'südlicher Diamant + ${mechanic}',
           fr: 'Diamant Sud + ${mechanic}',
           ja: '南 + ${mechanic}',
-          cn: '下 (南) 菱形 + ${mechanic}',
+          cn: '下菱形 + ${mechanic}',
           ko: '남쪽 + ${mechanic}',
         },
         west: {
@@ -1161,7 +1161,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'westlicher Diamant + ${mechanic}',
           fr: 'Diamant Ouest + ${mechanic}',
           ja: '西 + ${mechanic}',
-          cn: '左 (西) 菱形 + ${mechanic}',
+          cn: '左菱形 + ${mechanic}',
           ko: '서쪽 + ${mechanic}',
         },
         northeast: {
@@ -1169,7 +1169,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nordöstliches Viereck + ${mechanic}',
           fr: 'Carré Nord-Est + ${mechanic}',
           ja: '北東 + ${mechanic}',
-          cn: '右上 (东北) 正方形 + ${mechanic}',
+          cn: '右上 正方形 + ${mechanic}',
           ko: '북동쪽 + ${mechanic}',
         },
         southeast: {
@@ -1177,7 +1177,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'südöstliches Viereck + ${mechanic}',
           fr: 'Carré Sud-Est + ${mechanic}',
           ja: '南東 + ${mechanic}',
-          cn: '右下 (东南) 正方形 + ${mechanic}',
+          cn: '右下 正方形 + ${mechanic}',
           ko: '남동쪽 + ${mechanic}',
         },
         southwest: {
@@ -1185,7 +1185,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'südwestliches Viereck + ${mechanic}',
           fr: 'Carré Sud-Ouest + ${mechanic}',
           ja: '南西 + ${mechanic}',
-          cn: '左下 (西南) 正方形 + ${mechanic}',
+          cn: '左下 正方形 + ${mechanic}',
           ko: '남서쪽 + ${mechanic}',
         },
         northwest: {
@@ -1193,7 +1193,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'nordwestliches Viereck + ${mechanic}',
           fr: 'Carré Nord-Ouest + ${mechanic}',
           ja: '北西 + ${mechanic}',
-          cn: '左上 (西北) 正方形 + ${mechanic}',
+          cn: '左上 正方形 + ${mechanic}',
           ko: '북서쪽 + ${mechanic}',
         },
         ...basicStackSpreadOutputStrings,
@@ -1711,8 +1711,8 @@ const triggerSet: TriggerSet<Data> = {
         fr:
           `Complètement mixé signifie que tout le monde à les deux couleurs (deux de l'une et un de l'autre).
            Mixé à moitié signifie que deux personnes ont les deux couleurs et deux ont la même couleur.`,
-        cn: `全异色 指的是所有人的 3 个 buff 中有 2 个同色 buff (2 个是一种颜色, 剩下 1 个是另一种)。
-             半异色 指的是 2 个人有 2 个同色buff, 其余 2 人拥有 3 个同色buff。`,
+        cn: `“全异色” 指的是所有人的 3 个 buff 都有 2 种颜色 (2 个是一种颜色, 剩下 1 个是另一种)。
+             “半异色” 指的是有 2 人的 3 个 buff 有 2 种颜色, 另外 2 人的 3 个 buff 全部是同一种颜色。`,
         ko: `완전 혼합은 모든 사람이 두 가지 색을 가지고 있음을 의미합니다 (한 가지 색 두 개, 다른 색 하나).
              반혼합은 두 사람이 두 가지 종류를 가지고 있고, 다른 두 사람은 모두 같은 색을 가지고 있음을 의미합니다.`,
       },
@@ -2069,7 +2069,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Unter ihn => Seiten + Geh Raus',
           fr: 'Dessous => Côtés + Extérieur',
           ja: 'ボスの下へ => 横へ + 外',
-          cn: '去脚下 => 两侧 + 出去',
+          cn: '去脚下 => 两侧 + 远离',
           ko: '안 => 양 옆 + 밖',
         },
       },
@@ -2086,7 +2086,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Seiten + Raus',
           fr: 'Côtés + Extérieur',
           ja: '横へ + 外',
-          cn: '两侧 + 出去',
+          cn: '两侧 + 远离',
           ko: '양 옆 + 밖',
         },
       },
@@ -2465,7 +2465,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Norden/Süden',
           fr: 'Nord/Sud',
           ja: '北・南',
-          cn: '上 (北)/下 (南)',
+          cn: '上/下',
           ko: '북쪽/남쪽',
         },
         eastWest: {
@@ -2473,7 +2473,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           fr: 'Est/Ouest',
           ja: '東・西',
-          cn: '左 (西)/右 (东)',
+          cn: '左/右',
           ko: '동쪽/서쪽',
         },
       },

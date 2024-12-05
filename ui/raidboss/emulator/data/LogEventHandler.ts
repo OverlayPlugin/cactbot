@@ -19,9 +19,9 @@ export default class LogEventHandler extends EventBus {
       if (res) {
         this.endFight();
       } else if (lineObj instanceof LineEvent0x01) {
+        this.endFight();
         this.currentZoneId = lineObj.zoneId;
         this.currentZoneName = lineObj.zoneName;
-        this.endFight();
       }
     }
   }

@@ -527,6 +527,9 @@ const setOptionsFromOutputValue = (
     options.SoundAlertsEnabled = false;
     options.SpokenAlertsEnabled = false;
   } else {
+    // FIXME: handle lint error here
+    // ref: https://github.com/OverlayPlugin/cactbot/pull/274#discussion_r1692375852
+    // eslint-ignore-next-line @typescript-eslint/no-base-to-string
     console.error(`unknown output type: ${value.toString()}`);
   }
 };
@@ -762,6 +765,7 @@ class RaidbossConfigurator {
             detailText = this.base.translate(kMiscTranslations.valueIsFunction);
             detailCls.push('function-text');
           } else {
+            // eslint-disable-next-line @typescript-eslint/no-base-to-string
             detailText = trigFunc.toString();
           }
 
@@ -1345,7 +1349,8 @@ class RaidbossConfigurator {
         if (result === null || result === undefined)
           return false;
 
-        // Super hack:
+        // FIXME: Super hack:
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         const resultStr = result.toString();
         if (resultStr.includes('undefined') || resultStr.includes('NaN'))
           return false;

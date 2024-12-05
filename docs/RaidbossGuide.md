@@ -88,6 +88,7 @@ This is just a grab bag of miscellaneous thoughts about triggers.
 
 - triggers should be timed so that when the text appears it it safe to do that mechanic, e.g. if there's a stack=>spread don't call spread until the stack has gone off
 - use `delaySeconds` sparingly; it's more reliable to trigger off of ability or damage than a delay from a much earlier cast or ability (the stack=>spread example calling spread would use the stack damage)
+- use `countdownSeconds` sparingly: it's best for overlapping mechanics that require timed pre-positioing (e.g. Forced March, stuns, etc.), or mechanics that do not correspond to a timeline entry
 - knockbacks generally use 5s of delay to make sure that when the trigger text appears it is safe to hit the button
 - prefer using a normal trigger over a timeline trigger, as timeline triggers can be inconsistent from unknown hp pushes
 - always use `suppressSeconds` for timeline triggers (TODO: make this automatic or suppress until the next jump)
@@ -258,6 +259,7 @@ Timeline triggers (whose regex matches timeline text) are in their own section.
   delaySeconds: 0,
   durationSeconds: 3,
   suppressSeconds: 0,
+  countdownSeconds: 5,
   promise: function(data, matches, output) { return promise to wait for resolution of },
   sound: '',
   soundVolume: 1,
@@ -363,6 +365,21 @@ The time to wait begins at the time of the initial regex match
 and is unaffected by presence or absence of a delaySeconds value.
 Once a trigger with this element activates,
 it will not activate again until after its timeout period is over.
+
+**countdownSeconds**
+Displays a running countdown in tenths-of-a-second increments (x.y)
+for the specified number of seconds.
+May be a number or a `function(data, matches, output)`.
+The time begins to run at the time the trigger output is created,
+following the expiration of any `delaySeconds` value and after any `promise` is returned.
+If `countdownSeconds` is larger than the specified (or default) `durationSeconds`,
+the trigger duration will be extended to match the countdown.
+If the countdown is smaller than the duration, the countdown will stop at (0.0),
+and will continue to be displayed as such until the duration expires.
+By default, the countdown is appended to the trigger text,
+but if `{{CD}}` is present in the output string, the countdown will be placed there instead.
+If `countdownSeconds` is set (or overriden) to 0, a countdown will not be displayed.
+Neither the substitution marker (`{{CD}}`) nor the countdown value itself is output by tts.
 
 **sound**
 Sound file to play, or one of 'Info', 'Alert', 'Alarm', or 'Long'.
@@ -546,6 +563,7 @@ Trigger elements are evaluated in this order, and must be listed in this order:
 - durationSeconds
 - suppressSeconds
 - (the delaySeconds occurs here)
+- countdownSeconds
 - promise
 - (awaiting the promise occurs here)
 - sound

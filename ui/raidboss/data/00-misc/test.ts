@@ -369,11 +369,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Test Countdown',
       type: 'Countdown',
       netRegex: { result: '00' },
+      countdownSeconds: (_data, matches) => parseFloat(matches.countdownTime),
       infoText: (_data, matches, output) =>
         output.countdown!({ player: matches.name, seconds: matches.countdownTime }),
       outputStrings: {
         countdown: {
           en: '${player} started ${seconds}s countdown',
+          // or inline: '${player} started {{CD}} countdown',
+          de: '${player} startet ${seconds}s countdown',
           fr: '${player} a démarré un compte à rebours de ${seconds}s',
           ja: '${player} が ${seconds} 秒のカウントダウンを開始しました',
           cn: '${player} 开始倒计时 ${seconds}秒',
@@ -390,6 +393,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         countdownFail: {
           en: '${player} failed to start countdown (result code: ${code})',
+          de: '${player} konnte Countdown nicht starten (Ergebniscode: ${code})',
           fr: '${player} a échoué à démarrer un compte à rebours (result code: ${code})',
           ja: '${player} がカウントダウンを開始できませんでした (コード: ${code})',
           cn: '${player} 开始倒计时失败 (结果代码: ${code})',
@@ -405,6 +409,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         countdownCancel: {
           en: '${player} cancelled countdown',
+          de: '${player} hat den Countdown abgebrochen',
           fr: '${player} a annulé le compte à rebours',
           ja: '${player} がカウントダウンをキャンセルしました',
           cn: '${player} 取消倒计时',

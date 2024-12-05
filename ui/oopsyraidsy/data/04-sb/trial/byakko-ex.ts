@@ -11,24 +11,24 @@ const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.TheJadeStoaExtreme,
   damageWarn: {
     // Popping Unrelenting Anguish bubbles
-    'ByaEx Aratama': '27F6',
+    'ByakkoEx Aratama': '27F6',
     // Stepping in growing orb
-    'ByaEx Vacuum Claw': '27E9',
+    'ByakkoEx Vacuum Claw': '27E9',
     // Lightning Puddles
-    'ByaEx Hunderfold Havoc 1': '27E5',
-    'ByaEx Hunderfold Havoc 2': '27E6',
+    'ByakkoEx Hunderfold Havoc 1': '27E5',
+    'ByakkoEx Hunderfold Havoc 2': '27E6',
   },
   damageFail: {
-    'ByaEx Sweep The Leg': '27DB',
-    'ByaEx Fire and Lightning': '27DE',
-    'ByaEx Distant Clap': '27DD',
+    'ByakkoEx Sweep The Leg': '27DB',
+    'ByakkoEx Fire and Lightning': '27DE',
+    'ByakkoEx Distant Clap': '27DD',
     // Midphase line attack
-    'ByaEx Imperial Guard': '27F1',
+    'ByakkoEx Imperial Guard': '27F1',
   },
   triggers: [
     {
       // Pink bubble collision
-      id: 'ByaEx Ominous Wind',
+      id: 'ByakkoEx Ominous Wind',
       type: 'Ability',
       netRegex: NetRegexes.ability({ id: '27EC', ...playerDamageFields }),
       mistake: (_data, matches) => {

@@ -99,10 +99,10 @@ export interface JobDetail {
     anguineTribute: number;
     serpentOffering: number;
     advancedCombo:
-      | 'Dreadwinder'
+      | 'Vicewinder'
       | 'HuntersCoil'
       | 'SwiftskinsCoil'
-      | 'PitOfDread'
+      | 'Vicepit'
       | 'HuntersDen'
       | 'SwiftskinsDen'
       | 'Reawaken'

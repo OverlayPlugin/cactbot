@@ -8,7 +8,7 @@ using RainbowMage.OverlayPlugin;
 
 namespace Cactbot {
   public class FFXIVProcessIntl : FFXIVProcess {
-    // Last updated for FFXIV 7.0
+    // Last updated for FFXIV 7.1
 
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct EntityMemory {
@@ -41,10 +41,10 @@ namespace Cactbot {
       [FieldOffset(0xC0)]
       public Single rotation;
 
-      [FieldOffset(0x1BC)]
+      [FieldOffset(0x1AC)]
       public CharacterDetails charDetails;
 
-      [FieldOffset(0x1E6)]
+      [FieldOffset(0x1D6)]
       public byte shieldPercentage;
     }
 
@@ -935,10 +935,10 @@ namespace Cactbot {
     [StructLayout(LayoutKind.Explicit)]
     public struct ViperJobMemory {
       public enum AdvancedCombo : byte {
-        Dreadwinder = 1,
+        Vicewinder = 1,
         HuntersCoil = 2,
         SwiftskinsCoil = 3,
-        PitOfDread = 4,
+        Vicepit = 4,
         HuntersDen = 5,
         SwiftskinsDen = 6,
         Reawaken = 7,

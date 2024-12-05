@@ -17,6 +17,14 @@ const lyheGhiahOutputStrings = {
   },
 } as const;
 
+const dungeonCrewIds = [
+  '8684', // Dungeon Onion
+  '8685', // Dungeon Egg
+  '8686', // Dungeon Garlic
+  '8687', // Dungeon Tomato
+  '8688', // Dungeon Queen
+] as const;
+
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
@@ -32,9 +40,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '9774' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: lyheGhiahOutputStrings.spawn,
-      },
+      outputStrings: lyheGhiahOutputStrings,
     },
     {
       id: 'Dungeons of Lyhe Ghiah The Keeper of the Keys Spawn',
@@ -43,19 +49,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '9773' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: lyheGhiahOutputStrings.spawn,
-      },
+      outputStrings: lyheGhiahOutputStrings,
     },
     {
       id: 'Dungeons of Lyhe Ghiah Dungeon Crew Spawn',
-      // 8684 = Dungeon Onion
-      // 8685 = Dungeon Egg
-      // 8686 = Dungeon Garlic
-      // 8687 = Dungeon Tomato
-      // 8688 = Dungeon Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '868[4-8]', capture: false },
+      netRegex: { npcNameId: dungeonCrewIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {

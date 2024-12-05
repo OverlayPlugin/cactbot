@@ -19,10 +19,6 @@ node_modules
 .DS_Store
 util/DEPS.cache
 
-# Python
-__pycache__
-*.py[cod]
-*$py.class
 # Environments
 .env
 .venv

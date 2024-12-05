@@ -51,11 +51,8 @@ export class DRKComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.bloodWeapon.valuescale = gcdSkill;
     this.bloodWeapon.threshold = gcdSkill + 1;
-    this.saltedEarth.valuescale = gcdSkill;
     this.saltedEarth.threshold = gcdSkill + 1;
-    this.livingShadow.valuescale = gcdSkill;
     this.livingShadow.threshold = gcdSkill + 1;
   }
 
@@ -157,11 +154,8 @@ export class DRK6xComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.bloodWeapon.valuescale = gcdSkill;
     this.bloodWeapon.threshold = gcdSkill + 1;
-    this.delirium.valuescale = gcdSkill;
     this.delirium.threshold = gcdSkill + 1;
-    this.livingShadow.valuescale = gcdSkill;
     this.livingShadow.threshold = gcdSkill * 4 + 1;
   }
 

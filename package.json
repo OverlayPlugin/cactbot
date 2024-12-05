@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.32.3",
-  "releaseSummary": "initial r1n-r4n, more ex2, msq 91 dungeon, more jobs",
+  "version": "0.33.1",
+  "releaseSummary": "ex3, Byakko Unreal, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
@@ -156,7 +156,6 @@
       "eslint --max-warnings=0 --plugin tsc --rule 'tsc/config: [2, {configFile: \"./tsconfig.json\"}]'"
     ],
     "*.md": "markdownlint",
-    "*.py": "python -m pylint --errors-only",
     "ui/(raidboss|oopsyraidsy)/data/**": [
       "node --loader=ts-node/esm test/test_data_files.ts"
     ]

@@ -121,27 +121,23 @@ export class PLDComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.stacksContainer.classList.remove('hide');
       this.setRequiescat(parseInt(matches.count ?? '0'));
     }
   }
 
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.setRequiescat(0);
       this.stacksContainer.classList.add('hide');
     }
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.scornBox.valuescale = gcdSkill;
     this.scornBox.threshold = gcdSkill + 1;
-    this.expiacionBox.valuescale = gcdSkill;
     this.expiacionBox.threshold = gcdSkill + 1;
-    this.requiescatBox.valuescale = gcdSkill;
     this.requiescatBox.threshold = gcdSkill + 1;
-    this.fightOrFlightBox.valuescale = gcdSkill;
     this.fightOrFlightBox.threshold = gcdSkill * 2 + 1;
   }
 
@@ -300,29 +296,26 @@ export class PLD6xComponent extends BaseComponent {
   // Sword Oath changed to Atonement Ready in Patch 7.0, using the same ID through
   // FIXME: Unavailble for 7.0 for now
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.AtonementReady && this.ffxivVersion < 700)
+    if (id === EffectId.AtonementReady_76E && this.ffxivVersion < 700)
       this.setAtonement(this.atonementBox, parseInt(matches.count ?? '0'));
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.stacksContainer.classList.remove('hide');
       this.setRequiescat(parseInt(matches.count ?? '0'));
     }
   }
 
   override onYouLoseEffect(id: string): void {
-    if (id === EffectId.AtonementReady && this.ffxivVersion < 700)
+    if (id === EffectId.AtonementReady_76E && this.ffxivVersion < 700)
       this.setAtonement(this.atonementBox, 0);
-    if (id === EffectId.Requiescat) {
+    if (id === EffectId.Requiescat_558) {
       this.setRequiescat(0);
       this.stacksContainer.classList.add('hide');
     }
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.goreBox.valuescale = gcdSkill;
     this.goreBox.threshold = gcdSkill * 3 + 0.3;
-    this.expiacionBox.valuescale = gcdSkill;
     this.expiacionBox.threshold = gcdSkill;
-    this.fightOrFlightBox.valuescale = gcdSkill;
     this.fightOrFlightBox.threshold = gcdSkill * 2 + 1;
   }
 

@@ -12,7 +12,7 @@ const sharedOutputStrings = {
     de: 'Teleport zur östlichen plattform',
     fr: 'Téléportez-vous vers la plateforme est',
     ja: '東の足場へテレポ',
-    cn: '传送到右边(东边)平台',
+    cn: '传送到右边平台',
     ko: '동쪽으로 이동',
   },
   teleportWest: {
@@ -20,7 +20,7 @@ const sharedOutputStrings = {
     de: 'Teleport zur westlichen plattform',
     fr: 'Téléportez-vous vers la plateforme ouest',
     ja: '西の足場へテレポ',
-    cn: '传送到左边(西边)平台',
+    cn: '传送到左边平台',
     ko: '서쪽으로 이동',
   },
 };

@@ -143,6 +143,7 @@ export const kAbility = {
   Phlegma: '5EE1',
   Phlegma2: '5EF3',
   Phlegma3: '5EF9',
+  Psyche: '90A9',
   // MNK
   DragonKick: '4A',
   TwinSnakes: '3D',
@@ -238,8 +239,8 @@ export const kAbility = {
   SwiftskinsBite: '8739',
   JaggedMaw: '873A',
   BloodiedMaw: '873B',
-  Dreadwinder: '873C',
-  PitOfDread: '873F',
+  Vicewinder: '873C',
+  Vicepit: '873F',
   // BRD
   BattleVoice: '76',
   MagesBallad: '72',
@@ -277,6 +278,7 @@ export const kAbility = {
   StandardStep: '3E7D',
   TechnicalStep: '3E7E',
   Flourish: '3E8D',
+  FinishingMove: '9078',
   // BLM
   Thunder1: '90',
   Thunder2: '1D17',

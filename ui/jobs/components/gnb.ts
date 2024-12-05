@@ -49,10 +49,7 @@ export class GNBComponent extends BaseComponent {
     this.reset();
   }
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.gnashingFangBox.valuescale = gcdSkill;
     this.gnashingFangBox.threshold = gcdSkill * 3 + 1;
-    this.noMercyBox.valuescale = gcdSkill;
-    this.bloodfestBox.valuescale = gcdSkill;
     this.bloodfestBox.threshold = gcdSkill * 3 + 1;
   }
 

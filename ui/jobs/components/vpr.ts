@@ -12,15 +12,32 @@ export class VPRComponent extends BaseComponent {
   rattlingCoil: ResourceBox;
   serpentOfferings: ResourceBox;
   comboTimer: TimerBar;
-  noxiousGnashTimer: TimerBox;
   huntersInstinctTimer: TimerBox;
   swiftscaledTimer: TimerBox;
-  dreadComboTimer: TimerBox;
+  viceComboTimer: TimerBox;
 
   vipersight: HTMLDivElement;
-  currentVenomEffect = '';
-  currentComboAction = '';
+  Combo = '';
+  Venom = '';
+  Honed = '';
   tid1 = 0;
+
+  static comboStage: Record<string, string> = {
+    [kAbility.SteelFangs]: '1',
+    [kAbility.DreadFangs]: '1',
+    [kAbility.HuntersSting]: '2',
+    [kAbility.SwiftskinsSting]: '2',
+    [kAbility.SteelMaw]: '1',
+    [kAbility.DreadMaw]: '1',
+    [kAbility.HuntersBite]: '2',
+    [kAbility.SwiftskinsBite]: '2',
+    ['']: '0',
+  };
+
+  static honedMap: Record<string, string> = {
+    [EffectId.HonedSteel]: 'left',
+    [EffectId.HonedReavers]: 'right',
+  };
 
   static vipersightMap: Record<string, Record<string, 'left' | 'right'>> = {
     // Single target - first skill
@@ -72,11 +89,6 @@ export class VPRComponent extends BaseComponent {
       fgColor: 'combo-color',
     });
 
-    this.noxiousGnashTimer = this.bars.addProcBox({
-      id: 'vpr-timers-noxious-gnash',
-      fgColor: 'vpr-color-noxious-gnash',
-    });
-
     this.huntersInstinctTimer = this.bars.addProcBox({
       id: 'vpr-timers-hunters-instinct',
       fgColor: 'vpr-color-hunters-instinct',
@@ -87,9 +99,9 @@ export class VPRComponent extends BaseComponent {
       fgColor: 'vpr-color-swiftscaled',
     });
 
-    this.dreadComboTimer = this.bars.addProcBox({
-      id: 'vpr-timers-dreadcombo',
-      fgColor: 'vpr-color-dreadcombo',
+    this.viceComboTimer = this.bars.addProcBox({
+      id: 'vpr-timers-vicecombo',
+      fgColor: 'vpr-color-vicecombo',
     });
 
     const stackContainer = document.createElement('div');
@@ -107,19 +119,22 @@ export class VPRComponent extends BaseComponent {
     }
   }
 
-  override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
-    if (id in VPRComponent.vipersightMap && matches.targetId !== 'E0000000') {
-      this.currentComboAction = id;
-      const side = VPRComponent.vipersightMap[id]?.[this.currentVenomEffect];
-      this.vipersight.dataset.side = side ?? 'both';
-      this.vipersight.classList.add('active');
+  refreshVipersight(combo: string, venom: string, honed: string): void {
+    const stage = VPRComponent.comboStage[combo];
+    this.vipersight.dataset.stacks = stage;
+    if (stage !== '0') {
+      this.vipersight.dataset.side = VPRComponent.vipersightMap[combo]?.[venom] ?? 'both';
+    } else {
+      this.vipersight.dataset.side = VPRComponent.honedMap[honed] ?? 'both';
     }
+  }
 
+  override onUseAbility(id: string, matches: PartialFieldMatches<'Ability'>): void {
     switch (id) {
-      case kAbility.Dreadwinder:
-      case kAbility.PitOfDread:
+      case kAbility.Vicewinder:
+      case kAbility.Vicepit:
         if (matches.targetIndex === '0') {
-          this.dreadComboTimer.duration = 40 + (this.dreadComboTimer.value ?? 0);
+          this.viceComboTimer.duration = 40 + (this.viceComboTimer.value ?? 0);
         }
         break;
       // Due to viper auto combo, combo action cannot be used out of combo.
@@ -128,32 +143,23 @@ export class VPRComponent extends BaseComponent {
       case kAbility.DreadFangs:
       case kAbility.SteelMaw:
       case kAbility.DreadMaw:
-        if (matches.targetId !== 'E0000000') {
-          this.comboTimer.duration = this.comboDuration;
-          this.vipersight.dataset.stacks = '1';
-          window.clearTimeout(this.tid1);
-          this.tid1 = window.setTimeout(() => {
-            this.vipersight.classList.remove('active');
-          }, kComboDelay * 1000);
-        } else {
-          this.comboTimer.duration = 0;
-          this.vipersight.classList.remove('active');
-        }
-        break;
       case kAbility.HuntersSting:
       case kAbility.SwiftskinsSting:
       case kAbility.HuntersBite:
       case kAbility.SwiftskinsBite:
         if (matches.targetId !== 'E0000000') {
           this.comboTimer.duration = this.comboDuration;
-          this.vipersight.dataset.stacks = '2';
+          this.Combo = id;
+          this.refreshVipersight(this.Combo, this.Venom, this.Honed);
           window.clearTimeout(this.tid1);
           this.tid1 = window.setTimeout(() => {
-            this.vipersight.classList.remove('active');
+            this.Combo = '';
+            this.refreshVipersight(this.Combo, this.Venom, this.Honed);
           }, kComboDelay * 1000);
         } else {
           this.comboTimer.duration = 0;
-          this.vipersight.classList.remove('active');
+          this.Combo = '';
+          this.refreshVipersight(this.Combo, this.Venom, this.Honed);
         }
         break;
       case kAbility.FlankstingStrike:
@@ -163,9 +169,8 @@ export class VPRComponent extends BaseComponent {
       case kAbility.JaggedMaw:
       case kAbility.BloodiedMaw:
         this.comboTimer.duration = 0;
-        // Disable Vipersight when player deliver any third combo skill
-        this.vipersight.classList.remove('active');
-        this.vipersight.dataset.stacks = '0';
+        this.Combo = '';
+        this.refreshVipersight(this.Combo, this.Venom, this.Honed);
         window.clearTimeout(this.tid1);
         break;
     }
@@ -176,11 +181,11 @@ export class VPRComponent extends BaseComponent {
       // Both buff have an animation lock, + 0.5s
       // (buff time won't go down until animation fully acted)
       // FIXME: Swiftskin's Coil has a little longer animation lock for swiftscaled
-      case EffectId.Swiftscaled:
+      case EffectId.Swiftscaled_E55:
         this.player.speedBuffs.swiftscaled = true;
         this.swiftscaledTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
-      case EffectId.HuntersInstinct:
+      case EffectId.HuntersInstinct_E54:
         this.huntersInstinctTimer.duration = (Number(matches.duration) || 0) + 0.5;
         break;
       case EffectId.HindsbaneVenom:
@@ -189,18 +194,22 @@ export class VPRComponent extends BaseComponent {
       case EffectId.FlankstungVenom:
       case EffectId.GrimhuntersVenom:
       case EffectId.GrimskinsVenom:
-        this.currentVenomEffect = id;
+        this.Venom = id;
+        break;
+      case EffectId.HonedSteel:
+      case EffectId.HonedReavers:
+        this.Honed = id;
         break;
     }
   }
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.Swiftscaled:
+      case EffectId.Swiftscaled_E55:
         this.player.speedBuffs.swiftscaled = false;
         this.swiftscaledTimer.duration = 0;
         break;
-      case EffectId.HuntersInstinct:
+      case EffectId.HuntersInstinct_E54:
         this.huntersInstinctTimer.duration = 0;
         break;
       case EffectId.HindsbaneVenom:
@@ -209,30 +218,14 @@ export class VPRComponent extends BaseComponent {
       case EffectId.FlankstungVenom:
       case EffectId.GrimhuntersVenom:
       case EffectId.GrimskinsVenom:
-        this.currentVenomEffect = '';
-        if (this.vipersight.dataset.stacks !== '0') {
-          this.vipersight.dataset.side = 'both';
-          this.vipersight.classList.add('active');
-        }
+        this.Venom = '';
+        this.refreshVipersight(this.Combo, this.Venom, this.Honed);
         break;
-    }
-  }
-
-  override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    switch (id) {
-      case EffectId.NoxiousGnash: {
-        // FIXME:
-        // Noxious Gnash can be different duration on multiple target,
-        // and this condition will only monitor the longest one.
-        // If you defeat a target with longer Noxious Gnash duration remains
-        // and move to a new or shorter duration target,
-        // This timer will not work well until new Noxious Gnash duration exceed timer.
-        // For the same reason, timer will not reset when target with debuff is defeated.
-        const duration = parseFloat(matches.duration ?? '0') || 0;
-        if (this.noxiousGnashTimer.value < duration)
-          this.noxiousGnashTimer.duration = duration - 0.5; // debuff delay
+      case EffectId.HonedSteel:
+      case EffectId.HonedReavers:
+        this.Honed = '';
+        this.refreshVipersight(this.Combo, this.Venom, this.Honed);
         break;
-      }
     }
   }
 
@@ -253,21 +246,25 @@ export class VPRComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    // Can safely use Reawaken than use Dread Combo to extend buffs
-    this.noxiousGnashTimer.threshold = gcdSkill * 5 + 1;
+    // Can safely use Reawaken than use Vice Combo to extend buffs
     this.huntersInstinctTimer.threshold = gcdSkill * 8 + 1;
     this.swiftscaledTimer.threshold = gcdSkill * 8 + 1;
-    this.dreadComboTimer.threshold = gcdSkill * 5 + 1;
+    this.viceComboTimer.threshold = gcdSkill * 5 + 1;
   }
 
   override reset(): void {
     this.rattlingCoil.innerText = '0';
-    this.noxiousGnashTimer.duration = 0;
+    this.rattlingCoil.parentNode.classList.remove('pulse');
+    this.serpentOfferings.innerText = '0';
+    this.serpentOfferings.parentNode.classList.remove('high', 'active', 'pulse');
+    this.comboTimer.duration = 0;
     this.huntersInstinctTimer.duration = 0;
     this.swiftscaledTimer.duration = 0;
-    this.vipersight.classList.remove('active');
-    this.vipersight.dataset.stacks = '0';
-    this.vipersight.dataset.side = '';
+    this.viceComboTimer.duration = 0;
+    this.Combo = '';
+    this.Venom = '';
+    this.Honed = '';
+    this.refreshVipersight(this.Combo, this.Venom, this.Honed);
     window.clearTimeout(this.tid1);
   }
 }

@@ -66,9 +66,7 @@ rather than replacing the existing one of the same name.
 In short, there are many reasons why there may be multiple entries
 in the `Status` table with the same name.
 
-The script maintains a set of 'known mappings' of player-applied status effect and IDs.
-To support the jobs module, these status effects will always be added with these IDs,
-and any conflicts will be disregarded.  
+These multi-entry status effects will be added with their IDs (`_hex`) following their names.
 This is problematic if a job is updated and a new status is added with the same name/new ID.
 The script will notify of a conflict only at the 'debug' logging level only,
 because the current list of conflicts is extremely noisy.
@@ -76,9 +74,7 @@ So until better state-tracking between game patches is implemented,
 the only other method to determine if a job effect has been replaced with a new status ID
 is if the jobs module stops properly tracking the buff, or if someone notices in game data.
 
-Tf a job status effect has been reassigned a new statuus ID in game,
-make sure to update `knownMapping` in `gen_effect_id` with the new ID,
-and re-run the script.
+If a job status effect has been reassigned a new status ID in game, make sure to re-run the script.
 
 #### hunt data
 

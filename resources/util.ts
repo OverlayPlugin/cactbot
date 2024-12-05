@@ -336,6 +336,13 @@ const xyTo4DirNum = (x: number, y: number, centerX: number, centerY: number): nu
   return Math.round(2 - 2 * Math.atan2(x, y) / Math.PI) % 4;
 };
 
+const xyTo4DirIntercardNum = (x: number, y: number, centerX: number, centerY: number): number => {
+  // NE = 0, SE = 1, SW = 2, NW = 3
+  x = x - centerX;
+  y = y - centerY;
+  return Math.round(2 - 2 * ((Math.PI / 4) + Math.atan2(x, y)) / Math.PI) % 4;
+};
+
 const hdgTo8DirNum = (heading: number): number => {
   // N = 0, NE = 1, ..., NW = 7
   return (Math.round(4 - 4 * heading / Math.PI) % 8 + 8) % 8;
@@ -354,6 +361,10 @@ const outputFromCardinalNum = (dirNum: number): DirectionOutputCardinal => {
   return outputCardinalDir[dirNum] ?? 'unknown';
 };
 
+const outputFromIntercardNum = (dirNum: number): DirectionOutputIntercard => {
+  return outputIntercardDir[dirNum] ?? 'unknown';
+};
+
 export const Directions = {
   output8Dir: output8Dir,
   output16Dir: output16Dir,
@@ -369,6 +380,7 @@ export const Directions = {
   hdgTo8DirNum: hdgTo8DirNum,
   hdgTo4DirNum: hdgTo4DirNum,
   outputFrom8DirNum: outputFrom8DirNum,
+  outputFromCardinalNum: outputFromCardinalNum,
   combatantStatePosTo8Dir: (
     combatant: PluginCombatantState,
     centerX: number,
@@ -431,6 +443,15 @@ export const Directions = {
   ): DirectionOutputCardinal => {
     const dirNum = xyTo4DirNum(x, y, centerX, centerY);
     return outputFromCardinalNum(dirNum);
+  },
+  xyToIntercardDirOutput: (
+    x: number,
+    y: number,
+    centerX: number,
+    centerY: number,
+  ): DirectionOutputIntercard => {
+    const dirNum = xyTo4DirIntercardNum(x, y, centerX, centerY);
+    return outputFromIntercardNum(dirNum);
   },
 };
 

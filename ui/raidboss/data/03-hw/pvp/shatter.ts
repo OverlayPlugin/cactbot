@@ -45,7 +45,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Grosses Eis: Norden',
           fr: 'Grosse Glace : Nord',
           ja: '氷: 北',
-          cn: '大冰: 北方',
+          cn: '大冰: 上方',
           ko: '큰 얼음: 북쪽',
         },
         southeast: {
@@ -53,7 +53,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Grosses Eis: Süden',
           fr: 'Grosse Glace : Sud-Est',
           ja: '氷: 南東',
-          cn: '大冰: 东南',
+          cn: '大冰: 右下',
           ko: '큰 얼음: 남동쪽',
         },
         southwest: {
@@ -61,7 +61,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Grosses Eis: Südwesten',
           fr: 'Grosse Glace : Sud-Ouest',
           ja: '氷: 西南',
-          cn: '大冰: 西南',
+          cn: '大冰: 左下',
           ko: '큰 얼음: 남서쪽',
         },
       },

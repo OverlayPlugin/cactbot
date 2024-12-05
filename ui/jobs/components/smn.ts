@@ -180,10 +180,7 @@ export class SMNComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.energyDrainBox.valuescale = gcdSpell;
     this.energyDrainBox.threshold = gcdSpell + 1;
-    this.tranceBox.valuescale = gcdSpell;
-    this.lucidBox.valuescale = gcdSpell;
     this.lucidBox.threshold = gcdSpell + 1;
   }
 

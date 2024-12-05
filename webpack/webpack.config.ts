@@ -77,6 +77,10 @@ export default (
           noErrorOnMissing: true,
         },
         {
+          from: 'user/webpack/**/*',
+          noErrorOnMissing: true,
+        },
+        {
           from: 'util/coverage/missing_translations*.html',
         },
       ],

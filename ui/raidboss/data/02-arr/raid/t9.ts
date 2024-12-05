@@ -220,7 +220,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Leicht fixierbar auf DIR',
           fr: 'Sangle accélérée sur VOUS',
           ja: '自分に拘束加速',
-          cn: '连坐点名',
+          cn: '拘束加速点名',
           ko: '구속 가속',
         },
       },
@@ -480,7 +480,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gehe zu ${marker} (im ${dir})',
           fr: 'Allez en ${marker} (direction ${dir})',
           ja: '${marker}に行く' + ' (あと ${dir}秒)',
-          cn: '去${marker} (在 ${dir}秒)',
+          cn: '去${marker} (在 ${dir})',
           ko: '${marker}로 이동' + ' (${dir}쪽)',
         },
         goToMarker: {

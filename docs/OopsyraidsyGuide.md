@@ -293,8 +293,6 @@ you can also use it via <https://localhost:8080/ui/oopsyraidsy/oopsy_viewer.html
 You can drag a network log file to the the viewer and it will process and show all the mistakes.
 The [troubleshooting guide](FAQ-Troubleshooting.md#how-to-find-a-network-log) has information on where to find a network log.
 
-NOTE: any trigger with `delaySeconds` will not work, sorry. PRs welcome!
-
 ## Future Oopsy Work
 
 Unfortunately, Oopsy is always a little bit less loved than Raidboss and so has fallen behind on features.
@@ -302,7 +300,6 @@ There's plenty of work that could be done to make it better if you want to contr
 
 Easier tasks:
 
-- Make the [Oopsy Viewer](#testing-oopsy) support `delaySeconds` properly
 - create an oopsy `Util` library to collect helper functions like [these](https://github.com/OverlayPlugin/cactbot/blob/main/ui/oopsyraidsy/data/06-ew/dungeon/aloalo_island.ts) or [these](https://github.com/OverlayPlugin/cactbot/blob/main/ui/oopsyraidsy/data/06-ew/raid/p8s.ts) so that it isn't repeated
   - bonus: add support for a helper for "you took two of these", for cases where somebody is hit by two stacks
   - bonus: add support for "this person missed the stack"
