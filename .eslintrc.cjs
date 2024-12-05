@@ -1,3 +1,4 @@
+// @ts-check
 'use strict';
 
 const path = require('path');
@@ -7,6 +8,7 @@ const path = require('path');
 const rulesDirPlugin = require('eslint-plugin-rulesdir');
 rulesDirPlugin.RULES_DIR = path.join(__dirname, 'eslint');
 
+/** @type {import('eslint').Linter.Config} */
 const settings = {
   'env': {
     'browser': true,
@@ -34,10 +36,11 @@ const settings = {
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
     'ecmaVersion': 2022,
-    'project': './tsconfig.eslint.json',
+    'project': ['./tsconfig.eslint.json'],
     'sourceType': 'module',
   },
   'plugins': [
+    '@typescript-eslint',
     'deprecation',
     'import',
     'rulesdir',
@@ -210,7 +213,7 @@ const tsOverrides = {
   'files': ['*.ts'],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
-    'project': ['./tsconfig.json'],
+    'project': ['./tsconfig.eslint.json'],
     'tsconfigRootDir': __dirname,
   },
   'plugins': ['@typescript-eslint', 'prefer-arrow', 'unicorn'],
@@ -265,6 +268,7 @@ const overrides = [
   {
     'files': ['*.cjs'],
     'parserOptions': {
+      ...settings.parserOptions,
       'sourceType': 'script',
     },
   },
