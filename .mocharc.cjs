@@ -10,7 +10,7 @@ module.exports = {
   ],
   'node-option': [
     'experimental-specifier-resolution=node',
-    'loader=ts-node/esm'
+    'loader=ts-node/esm',
   ],
   'extension': [
     '.js',

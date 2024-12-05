@@ -34,7 +34,7 @@
     //    "noPropertyAccessFromIndexSignature": false, // used by trigger output strings
     "forceConsistentCasingInFileNames": true
   },
-    "include": [
+  "include": [
     "./ui",
     "./types",
     "./resources"
