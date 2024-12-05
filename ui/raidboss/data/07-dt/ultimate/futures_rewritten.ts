@@ -398,7 +398,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${inOut} + Far => Drop Puddle (${dir})',
         },
         baitCleave: {
-          en: '${inOut} + Close (${dir})',
+          en: '${inOut} + Close Bait (${dir})',
         },
         in: Outputs.in,
         out: Outputs.out,
