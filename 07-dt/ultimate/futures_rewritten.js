@@ -35,6 +35,8 @@ Options.Triggers.push({
         clockPairs: {
           en: 'Clock spots => Pairs',
           de: 'Himmelsrichtungen => Paare',
+          ja: '八方向 => ペア',
+          cn: '八方 => 两人分摊',
         },
       },
     },
@@ -52,6 +54,8 @@ Options.Triggers.push({
         clockSpread: {
           en: 'Clock spots => Spread',
           de: 'Himmelsrichtungen => Verteilen',
+          ja: '八方向 => 散開',
+          cn: '八方 => 分散',
         },
       },
     },
@@ -104,6 +108,8 @@ Options.Triggers.push({
         combo: {
           en: '${dir1} / ${dir2} => ${mech}',
           de: '${dir1} / ${dir2} => ${mech}',
+          ja: '${dir1} / ${dir2} => ${mech}',
+          cn: '${dir1} / ${dir2} => ${mech}',
         },
         stack: Outputs.stacks,
         spread: Outputs.spread,
@@ -159,6 +165,8 @@ Options.Triggers.push({
         lightningSafe: {
           en: 'Lightning Safe',
           de: 'Blitz Sicher',
+          ja: '雷安置',
+          cn: '雷安全',
         },
       },
     },
@@ -172,6 +180,8 @@ Options.Triggers.push({
         fireSafe: {
           en: 'Fire Safe',
           de: 'Feuer Sicher',
+          ja: '炎安置',
+          cn: '火安全',
         },
       },
     },
@@ -210,30 +220,44 @@ Options.Triggers.push({
         fire: {
           en: 'Fire',
           de: 'Feuer',
+          ja: '炎',
+          cn: '火',
         },
         lightning: {
           en: 'Lightning',
           de: 'Blitz',
+          ja: '雷',
+          cn: '雷',
         },
         one: {
           en: '1',
           de: '1',
+          ja: '1',
+          cn: '1',
         },
         two: {
           en: '2',
           de: '2',
+          ja: '2',
+          cn: '2',
         },
         three: {
           en: '3',
           de: '3',
+          ja: '3',
+          cn: '3',
         },
         tether: {
           en: '${num}: ${elem}',
           de: '${num}: ${elem}',
+          ja: '${num}: ${elem}',
+          cn: '${num}: ${elem}',
         },
         all: {
           en: '${e1} => ${e2} => ${e3} => ${e4}',
           de: '${e1} => ${e2} => ${e3} => ${e4}',
+          ja: '${e1} => ${e2} => ${e3} => ${e4}',
+          cn: '${e1} => ${e2} => ${e3} => ${e4}',
         },
       },
     },
