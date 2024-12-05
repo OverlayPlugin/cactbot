@@ -726,6 +726,59 @@ const zoneReplace: ZoneReplace[] = [
       '8D2E': '8D2F', // Angular Addition self-targeted ability to give boss V
     },
   },
+  {
+    fileMap: {
+      'ui/raidboss/data/04-sb/trial/byakko-ex.ts': 'ui/raidboss/data/07-dt/trial/byakko-un.ts',
+      'ui/raidboss/data/04-sb/trial/byakko-ex.txt': 'ui/raidboss/data/07-dt/trial/byakko-un.txt',
+      'ui/oopsyraidsy/data/04-sb/trial/byakko-ex.ts':
+        'ui/oopsyraidsy/data/07-dt/trial/byakko-un.ts',
+    },
+    prefix: { 'ByakkoEx': 'ByakkoUn' },
+    other: {
+      'TheJadeStoaExtreme': 'TheJadeStoaUnreal',
+      'Byakko Extreme': 'Byakko Unreal',
+      'byakko-ex.txt': 'byakko-un.txt',
+    },
+    id: {
+      '25D1': '9BF4', // Dance Of The Incomplete
+      '265E': '9BF7', // --Hakutei sync--
+      '2756': '9BF8', // State Of Shock 2
+      '2757': '9BF9', // --reposition--
+      '27D9': '9BFA', // Fire And Lightning
+      '27DA': '9BFB', // Heavenly Strike
+      '27DB': '9BFC', // Sweep The Leg
+      '27DC': '9BFD', // Storm Pulse
+      '27DD': '9BFE', // Distant Clap
+      '27DE': '9BFF', // Fire And Lightning
+      '27DF': '9C00', // Steel Claw
+      '27E0': '9C01', // State of Shock 1
+      '27E1': '9C02', // Clutch
+      '27E2': '9C03', // Highest Stakes
+      '27E3': '9C04', // Highest Stakes
+      '27E4': '9C05', // Answer On High
+      '27E5': '9C06', // Hundredfold Havoc 1
+      '27E6': '9C07', // Hundredfold Havoc 2
+      '27E7': '9C08', // Bombogenesis
+      '27E8': '9C09', // Gale Force
+      '27E9': '9C0A', // Vacuum Claw
+      '27EB': '9C0C', // Ominous Wind
+      '27EC': '9C0D', // Ominous Wind Collision
+      '27ED': '9C0E', // Unrelenting Anguish
+      '27EE': '9C0F', // [Phase 2 opener]
+      '27F1': '9C12', // Imperial Guard
+      '27F3': '9C14', // Sweep The Leg
+      '27F4': '9C15', // Sweep The Leg
+      '27F6': '9C16', // Aratama
+      '27F7': '9C17', // The Voice Of Thunder
+      '27F9': '9C19', // The Roar Of Thunder
+      '27FA': '9C1A', // White Herald
+      '27FB': '9C1B', // Fell Swoop
+      '29E4': '9C1F', // --sync--
+      '29E5': '9C20', // --Hakutei sync--
+      '2A09': '9C21', // Storm Pulse Enrage
+      '2A2A': '9C22', // [Phase 3 opener]
+    },
+  },
 ];
 
 const processFile = (filename: string, zone: ZoneReplace, inputText: string): string => {

@@ -21,48 +21,48 @@ hideall "--sync--"
 58.9 "Regicidal Rage" Ability { id: "993C", source: "Zoraal Ja" }
 
 # Swords & Tiles Phase 1
-74.2 "Dawn of an Age" Ability { id: "9397", source: "Zoraal Ja" }
+74.2 "Dawn Of An Age" Ability { id: "9397", source: "Zoraal Ja" }
 88.3 "Vollok" Ability { id: "9357", source: "Zoraal Ja" }
 98.6 "Sync" Ability { id: "9359", source: "Zoraal Ja" }
-107.6 "Chasm of Vollok" Ability { id: "939A", source: "Zoraal Ja" }
+107.6 "Chasm Of Vollok" Ability { id: "939A", source: "Zoraal Ja" }
 108.2 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
 117.1 "Greater Gateway" Ability { id: "9381", source: "Zoraal Ja" }
 125.2 "Blade Warp" Ability { id: "935E", source: "Zoraal Ja" }
 133.3 "Forged Track (cast)" Ability { id: "935F", source: "Zoraal Ja" }
 141.6 "Fiery Edge/Stormy Edge" Ability { id: "9382|9385", source: "Fang" }
 141.6 "Forged Track (damage)" #Ability { id: "939D", source: "Fang" }
-146.4 "Chasm of Vollok" Ability { id: "9389", source: "Zoraal Ja" }
+146.4 "Chasm Of Vollok" Ability { id: "9389", source: "Zoraal Ja" }
 151.4 "Actualize" Ability { id: "9398", source: "Zoraal Ja" } window 5,5
 
 # Lines, Lines, Lines Phase 1
-163.7 "Projection of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
-# Don't sync 'Siege/Walls of Vollok' due to spamminess
-173.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B|938C", source: "Fang" }
+163.7 "Projection Of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
+# Don't sync 'Siege/Walls Of Vollok' due to spamminess
+173.8 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B|938C", source: "Fang" }
 # Second cast, with identical ID, but happens with the first Siege/Walls so don't display
-#173.8 "Projection of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
-178.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B|938C", source: "Fang" }
-183.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B|938C", source: "Fang" }
-188.9 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B|938C", source: "Fang" }
+#173.8 "Projection Of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
+178.8 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B|938C", source: "Fang" }
+183.8 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B|938C", source: "Fang" }
+188.9 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B|938C", source: "Fang" }
 192.4 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
 192.4 "Forward Edge/Backward Edge" #Ability { id: "9972|937F", source: "Zoraal Ja" }
-193.9 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
-198.9 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
+193.9 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
+198.9 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
 202.4 "Actualize" Ability { id: "9398", source: "Zoraal Ja" }
-214.5 "Projection of Turmoil" Ability { id: "9A88", source: "Zoraal Ja" }
-# Might of Vollok (938D) occurs when a player crosses the line
+214.5 "Projection Of Turmoil" Ability { id: "9A88", source: "Zoraal Ja" }
+# Might Of Vollok (938D) occurs when a player crosses the line
 # Instead of syncing (which will be random based on player resolution),
 # display a long duration while the line is moving
-221.0 "Might of Vollok" duration 40
+221.0 "Might Of Vollok" duration 40
 264.8 "Bitter Whirlwind (1)" Ability { id: "993E", source: "Zoraal Ja" }
 268.0 "Bitter Whirlwind (2)" Ability { id: "9940", source: "Zoraal Ja" }
 271.0 "Bitter Whirlwind (3)" Ability { id: "9940", source: "Zoraal Ja" }
 
 # Body-Chucking Phase
-286.3 "Dawn of an Age" Ability { id: "9397", source: "Zoraal Ja" } window 5,5
-304.4 "Drum of Vollok" Ability { id: "938F", source: "Zoraal Ja" }
+286.3 "Dawn Of An Age" Ability { id: "9397", source: "Zoraal Ja" } window 5,5
+304.4 "Drum Of Vollok" Ability { id: "938F", source: "Zoraal Ja" }
 315.5 "Vollok" Ability { id: "9392", source: "Zoraal Ja" }
 324.6 "Sync" Ability { id: "9359", source: "Zoraal Ja" }
-333.6 "Chasm of Vollok" Ability { id: "9389", source: "Zoraal Ja" }
+333.6 "Chasm Of Vollok" Ability { id: "9389", source: "Zoraal Ja" }
 333.7 "Aero III" Ability { id: "9390", source: "Zoraal Ja" }
 350.1 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" } window 5,5
 350.1 "Forward Edge/Backward Edge" #Ability { id: "9972|937F", source: "Zoraal Ja" }
@@ -76,20 +76,20 @@ hideall "--sync--"
 390.5 "Actualize" Ability { id: "9398", source: "Zoraal Ja" } window 5,5
 
 # Lines, Lines, Lines Phase 2
-403.7 "Projection of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
-# Don't sync 'Siege/Walls of Vollok' due to spamminess
-413.7 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
+403.7 "Projection Of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
+# Don't sync 'Siege/Walls Of Vollok' due to spamminess
+413.7 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
 # Second cast, with identical ID, but happens with the first Siege/Walls so don't display
-#413.7 "Projection of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
-418.6 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
-423.6 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
+#413.7 "Projection Of Triumph" Ability { id: "938A", source: "Zoraal Ja" }
+418.6 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
+423.6 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
 425.9 "Half Circuit" Ability { id: "939F", source: "Zoraal Ja" }
-428.7 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
-433.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
-438.8 "Siege of Vollok/Walls of Vollok" #Ability { id: "938B", source: "Fang" }
+428.7 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
+433.8 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
+438.8 "Siege Of Vollok/Walls Of Vollok" #Ability { id: "938B", source: "Fang" }
 441.9 "Regicidal Rage" Ability { id: "993C", source: "Zoraal Ja" }
-454.0 "Projection of Turmoil" Ability { id: "9A88", source: "Zoraal Ja" }
-460.5 "Might of Vollok" duration 40
+454.0 "Projection Of Turmoil" Ability { id: "9A88", source: "Zoraal Ja" }
+460.5 "Might Of Vollok" duration 40
 476.9 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
 486.0 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
 496.3 "Half Full" Ability { id: "9380|939E", source: "Zoraal Ja" }
@@ -98,11 +98,11 @@ hideall "--sync--"
 511.5 "Bitter Whirlwind (3)" Ability { id: "9940", source: "Zoraal Ja" }
 
 # Swords & Tiles Phase 2
-526.8 "Dawn of an Age" Ability { id: "9397", source: "Zoraal Ja" } window 5,5
+526.8 "Dawn Of An Age" Ability { id: "9397", source: "Zoraal Ja" } window 5,5
 540.9 "Vollok" Ability { id: "9357", source: "Zoraal Ja" }
 550.0 "Sync" Ability { id: "9359", source: "Zoraal Ja" }
-559.0 "Chasm of Vollok (cast)" Ability { id: "939A", source: "Zoraal Ja" }
-562.2 "Chasm of Vollok (damage)" Ability { id: "9389", source: "Zoraal Ja" }
+559.0 "Chasm Of Vollok (cast)" Ability { id: "939A", source: "Zoraal Ja" }
+562.2 "Chasm Of Vollok (damage)" Ability { id: "9389", source: "Zoraal Ja" }
 567.1 "Duty's Edge (cast)" Ability { id: "9374", source: "Zoraal Ja" }
 567.5 "Duty's Edge (damage 1)" #Ability { id: "94A7", source: "Zoraal Ja" }
 569.5 "Duty's Edge (damage 2)" #Ability { id: "94A7", source: "Zoraal Ja" }
@@ -113,7 +113,7 @@ hideall "--sync--"
 598.8 "Forged Track (cast)" Ability { id: "935F", source: "Zoraal Ja" }
 607.0 "Fiery Edge/Stormy Edge" Ability { id: "9382|9385", source: "Fang" }
 607.0 "Forged Track (damage)" #Ability { id: "939D", source: "Fang" }
-611.9 "Chasm of Vollok" Ability { id: "9389", source: "Zoraal Ja" }
+611.9 "Chasm Of Vollok" Ability { id: "9389", source: "Zoraal Ja" }
 616.9 "Actualize" Ability { id: "9398", source: "Zoraal Ja" } window 5,5
 
 # Final Phase/Enrage
@@ -131,7 +131,7 @@ hideall "--sync--"
 # 937B Forward Half (effect/damage is 937F Forward Edge)
 # 937D Backward Half (effect/damage is 9972 Backward Edge)
 # 993B Regicidal Rage (used duplicatively with 993C)
-# 9399 Chasm of Vollok (used duplicatively with 939A)
+# 9399 Chasm Of Vollok (used duplicatively with 939A)
 # 9368 Half Full (used duplicatively with 939E)
 # 9369 Half Full (used duplicatively with 939E)
 # 9360 --sync-- (damage related to Forged Track or Fiery/Stormy Edge?)
@@ -142,11 +142,11 @@ hideall "--sync--"
 # 9387 Stormy Edge (used duplicatively with 9385 Stormy Edge)
 # 937C Forward Half (effect/damage is 937F Forward Edge)
 # 937E Backward Half (effect/damage is 9972 Backward Edge)
-# 938D Might of Vollok (player-caused damage from crossing the line)
+# 938D Might Of Vollok (player-caused damage from crossing the line)
 # 993D Bitter Whirlwind (uused duplicatively with 993E)
 # 993F Bitter Whirlwind (used duplicatively with 9940)
-# 938E Drum of Vollok (used duplicatively with 938F)
-# 9394 Chasm of Vollok (used duplicatively with 9389)
+# 938E Drum Of Vollok (used duplicatively with 938F)
+# 9394 Chasm Of Vollok (used duplicatively with 9389)
 # 9393 Vollok (used duplicatively with 9389)
 # 9391 Aero III (used duplicatively with 9390)
 # 8AEF --sync-- (line stack animation?)

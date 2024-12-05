@@ -9,6 +9,7 @@ export const defaultOptions = {
   IgnoreContentTypes: [
     ContentType.Pvp,
     ContentType.Eureka,
+    ContentType.SaveTheQueen,
   ],
 };
 

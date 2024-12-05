@@ -402,6 +402,8 @@ class PullCounter {
 
     try {
       if (typeof e.data !== 'string')
+        // FIXME:
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         throw new Error(e.data.toString());
 
       const parsed: unknown = JSON.parse(e.data);

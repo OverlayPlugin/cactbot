@@ -37,7 +37,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Schilde und Abschwächungen',
           fr: 'Boucliers et mitigation',
           ja: 'ダメージ軽減とバリアを',
-          cn: '切盾减伤',
+          cn: '大AOE，刷盾减伤',
           ko: '뎀감, 보호막',
         },
       },

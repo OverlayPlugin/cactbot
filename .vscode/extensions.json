@@ -5,8 +5,6 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "maikotan.cactbot-highlight",
-    "dprint.dprint",
-    "ms-python.black-formatter",
-    "ms-python.pylint"
+    "dprint.dprint"
   ]
 }

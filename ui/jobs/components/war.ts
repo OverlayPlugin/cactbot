@@ -98,11 +98,8 @@ export class WARComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.tempestBox.valuescale = gcdSkill;
     this.tempestBox.threshold = gcdSkill * 3 + 1;
-    this.upheavalBox.valuescale = gcdSkill;
     this.upheavalBox.threshold = gcdSkill;
-    this.innerReleaseBox.valuescale = gcdSkill;
     this.innerReleaseBox.threshold = gcdSkill * 3;
   }
 

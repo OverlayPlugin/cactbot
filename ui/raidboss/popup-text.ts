@@ -529,6 +529,7 @@ export interface TriggerHelper {
     alertText: number;
     infoText: number;
   };
+  countdown?: number;
   ttsText?: string;
   rumbleDurationMs?: number;
   rumbleWeak?: number;
@@ -1139,6 +1140,7 @@ export class PopupText {
     const delayPromise = this._onTriggerInternalDelaySeconds(triggerHelper);
     this._onTriggerInternalDurationSeconds(triggerHelper);
     this._onTriggerInternalSuppressSeconds(triggerHelper);
+    this._onTriggerInternalCountdownSeconds(triggerHelper);
 
     const triggerPostDelay = () => {
       const promise = this._onTriggerInternalPromise(triggerHelper);
@@ -1374,6 +1376,13 @@ export class PopupText {
       this.triggerSuppress[triggerHelper.trigger.id] = triggerHelper.now + suppress * 1000;
   }
 
+  _onTriggerInternalCountdownSeconds(triggerHelper: TriggerHelper): void {
+    let valueCountdown = triggerHelper.valueOrFunction(triggerHelper.trigger.countdownSeconds);
+    if (typeof valueCountdown !== 'number')
+      valueCountdown = undefined;
+    triggerHelper.countdown = valueCountdown;
+  }
+
   _onTriggerInternalPromise(triggerHelper: TriggerHelper): Promise<void> | undefined {
     let promise: Promise<void> | undefined;
     if ('promise' in triggerHelper.trigger) {
@@ -1482,6 +1491,8 @@ export class PopupText {
       if (result !== undefined) {
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (result)
+          // FIXME:
+          // eslint-disable-next-line @typescript-eslint/no-base-to-string
           triggerHelper.ttsText = result?.toString();
       } else {
         triggerHelper.ttsText = triggerHelper.defaultTTSText;
@@ -1530,8 +1541,8 @@ export class PopupText {
       // * Korean TTS reads wrong with '1번째'
       triggerHelper.ttsText = triggerHelper.ttsText.replace('1번째', '첫번째');
       // * arrows at the front or the end are directions, e.g. "east =>"
-      triggerHelper.ttsText = triggerHelper.ttsText.replace(/[-=]>\s*$/g, '');
-      triggerHelper.ttsText = triggerHelper.ttsText.replace(/^\s*<[-=]/g, '');
+      triggerHelper.ttsText = triggerHelper.ttsText.replace(/[-=]+>\s*$/g, '');
+      triggerHelper.ttsText = triggerHelper.ttsText.replace(/^\s*<[-=]+/g, '');
       // * arrows in the middle are a sequence, e.g. "in => out => spread"
       const arrowReplacement = {
         en: ' then ',
@@ -1545,6 +1556,9 @@ export class PopupText {
         /\s*(<[-=]|[=-]>)\s*/g,
         arrowReplacement[this.displayLang],
       );
+      // * Countdown substitution marker, if present
+      triggerHelper.ttsText = triggerHelper.ttsText.replaceAll('{{CD}}', '');
+
       this.ttsSay(triggerHelper.ttsText);
     } else if (triggerHelper.soundUrl !== undefined && triggerHelper.soundAlertsEnabled) {
       this._playAudioFile(triggerHelper, triggerHelper.soundUrl, triggerHelper.soundVol);
@@ -1573,6 +1587,35 @@ export class PopupText {
 
     const holder = this[lowerTextKey]?.getElementsByClassName('holder')[0];
     const div = this._makeTextElement(triggerHelper, text, textElementClass);
+
+    if (
+      triggerHelper.countdown !== undefined &&
+      triggerHelper.countdown > 0 // allow users to override with 0 to disable countdown
+    ) {
+      const endTime = triggerHelper.now + (triggerHelper.countdown * 1000);
+      const span = document.createElement('span');
+
+      // if the localized output string contains the {{CD}} substitution marker,
+      // insert the countdown timer there; otherwise, append it.
+      if (text.includes('{{CD}}')) {
+        const parts = text.split('{{CD}}');
+        if (parts.length > 2) {
+          // if more than one marker, remove them all and append the countdown
+          console.log(`Too many {{CD}} markers specified in output text: ${text}`);
+          div.innerHTML = div.innerHTML.replaceAll('{{CD}}', '');
+          div.appendChild(span);
+        } else {
+          div.innerHTML = parts[0] ?? '';
+          div.appendChild(span);
+          // use insertAdjacentHTML to avoid breaking the span node
+          div.insertAdjacentHTML('beforeend', parts[1] ?? '');
+        }
+      } else {
+        div.appendChild(span);
+      }
+
+      this._updateCountdownInternal(span, endTime);
+    }
 
     if (!holder)
       throw new UnreachableCode();
@@ -1622,8 +1665,7 @@ export class PopupText {
       let duration = triggerHelper.duration?.fromConfig ?? triggerHelper.duration?.fromTrigger;
       if (duration === undefined && triggerHelper.duration)
         duration = triggerHelper.duration[lowerTextKey];
-      if (duration === undefined)
-        duration = 0;
+      duration = Math.max(duration ?? 0, triggerHelper.countdown ?? 0);
 
       this._createTextFor(triggerHelper, text, textType, lowerTextKey, duration);
       if (triggerHelper.soundUrl === undefined) {
@@ -1644,6 +1686,20 @@ export class PopupText {
     div.classList.add('animate-text');
     div.innerText = text;
     return div;
+  }
+
+  _updateCountdownInternal(span: HTMLElement, endTime: number): void {
+    const updateCountdown = () => {
+      let remainingTime = (endTime - +new Date()) / 1000;
+      if (remainingTime <= 0) {
+        remainingTime = 0;
+        clearInterval(interval);
+      }
+      span.textContent = ` (${remainingTime.toFixed(1)})`;
+    };
+
+    const interval = window.setInterval(updateCountdown, 100);
+    updateCountdown(); // Initial call to set the countdown immediately
   }
 
   _playAudioFile(_triggerHelper: TriggerHelper, url: string, volume?: number): void {

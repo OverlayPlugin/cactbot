@@ -49,7 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Weg von den leuchtenden Kreisen',
           fr: 'Loin des cercles brillants',
           ja: '光っている円から離れる',
-          cn: '远离黑洞',
+          cn: '远离光球',
           ko: '빛나는 원에서 멀리 떨어지기',
         },
       },
@@ -339,7 +339,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '\\(cast\\)': '(咏唱)',
-        '\\(proximity\\)': '(接近)',
+        '\\(proximity\\)': '(距离衰减)',
         'Abyssal Echoes': '深渊回声',
         'Abyssal Nox': '深渊之夜',
         'Big Bang': '宇宙大爆炸',

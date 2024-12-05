@@ -150,11 +150,8 @@ export class DNCComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.standardStep.valuescale = gcdSkill;
     this.standardStep.threshold = gcdSkill + 1;
-    this.technicalStep.valuescale = gcdSkill;
     this.technicalStep.threshold = gcdSkill + 1;
-    this.flourish.valuescale = gcdSkill;
     this.flourish.threshold = gcdSkill + 1;
   }
 

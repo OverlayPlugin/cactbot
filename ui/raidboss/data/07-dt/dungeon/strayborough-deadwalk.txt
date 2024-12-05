@@ -1,0 +1,196 @@
+### THE STRAYBOROUGH DEADWALK
+# ZoneId: 4
+
+hideall "--Reset--"
+hideall "--sync--"
+
+
+#~~~~~~~~~~~#
+# LEONOGG 1 #
+#~~~~~~~~~~~#
+
+# -ii 8EB6 9B04 8EB7 8EB5 8EB8 8EBD
+
+# Friendship Round will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13F2" } window 1000,1
+1011.1 "Malicious Mist" Ability { id: "8EB1", source: "His Royal Headness Leonogg I" }
+1018.2 "Falling Nightmare (cast)" Ability { id: "8EAE", source: "His Royal Headness Leonogg I" }
+1023.2 "Falling Nightmare (plonk)" #Ability { id: "8EB4", source: "Noble Noggin" }
+1025.2 "--sync--" Ability { id: "8EB0", source: "His Royal Headness Leonogg I" } # Morbid Fascination
+1035.6 "Team Spirit" Ability { id: "8EAF", source: "His Royal Headness Leonogg I" }
+1041.7 "Spirited Charge" Ability { id: "8EF6", source: "His Royal Headness Leonogg I" }
+1053.9 "Evil Scheme 1" Ability { id: "9B03", source: "His Royal Headness Leonogg I" }
+1061.7 "Evil Scheme 2" Ability { id: "9B03", source: "His Royal Headness Leonogg I" }
+1070.4 "Team Spirit" Ability { id: "8EAF", source: "His Royal Headness Leonogg I" }
+1075.5 "Spirited Charge" Ability { id: "8EF6", source: "His Royal Headness Leonogg I" }
+1082.7 "--sync--" Ability { id: "9B05", source: "His Royal Headness Leonogg I" } # Looming Nightmare
+1084.7 "Looming Nightmare 1" Ability { id: "9B06", source: "His Royal Headness Leonogg I" }
+1086.4 "Looming Nightmare 2" #Ability { id: "9B07", source: "His Royal Headness Leonogg I" }
+1088.0 "Looming Nightmare 3" #Ability { id: "9B07", source: "His Royal Headness Leonogg I" }
+1089.6 "Looming Nightmare 4" #Ability { id: "9B07", source: "His Royal Headness Leonogg I" }
+1091.2 "Looming Nightmare 5" #Ability { id: "9B07", source: "His Royal Headness Leonogg I" }
+
+1103.4 label "leonoggLoop"
+1103.4 "Team Spirit" Ability { id: "8EAF", source: "His Royal Headness Leonogg I" }
+1108.5 "Spirited Charge" Ability { id: "8EF6", source: "His Royal Headness Leonogg I" }
+1115.7 "Scream 1" Ability { id: "8EB2", source: "His Royal Headness Leonogg I" }
+1117.5 "Scream 2" #Ability { id: "8EB3", source: "His Royal Headness Leonogg I" }
+1119.2 "Scream 3" #Ability { id: "8EB3", source: "His Royal Headness Leonogg I" }
+1126.2 "--sync--" Ability { id: "9B05", source: "His Royal Headness Leonogg I" }
+1128.2 "Looming Nightmare 1" Ability { id: "9B06", source: "His Royal Headness Leonogg I" }
+1129.9 "Looming Nightmare 2" #Ability { id: "9B07", source: "His Royal Headness Leonogg I" }
+1131.5 "Looming Nightmare 3" #Ability { id: "9B07", source: "His Royal Headness Leonogg I" }
+1133.1 "Looming Nightmare 4" #Ability { id: "9B07", source: "His Royal Headness Leonogg I" }
+1139.5 "Evil Scheme 1" Ability { id: "9B03", source: "His Royal Headness Leonogg I" }
+1147.3 "Evil Scheme 2" Ability { id: "9B03", source: "His Royal Headness Leonogg I" }
+1151.3 "Malicious Mist" Ability { id: "8EB1", source: "His Royal Headness Leonogg I" }
+1160.0 "Falling Nightmare (cast)" Ability { id: "8EAE", source: "His Royal Headness Leonogg I" }
+1165.0 "Falling Nightmare (plonk)" #Ability { id: "8EB4", source: "Noble Noggin" }
+1172.1 "Malicious Mist" Ability { id: "8EB1", source: "His Royal Headness Leonogg I" }
+
+1182.7 "Team Spirit" Ability { id: "8EAF", source: "His Royal Headness Leonogg I" } window 30,30 forcejump "leonoggLoop"
+
+# IGNORED ABILITIES
+# 8EB5 --sync-- Unknown
+# 8EB6 --sync-- Unknown. Used constantly through the encounter
+# 8EB7 Overattachment -- Collision with noble add
+# 8EB8 Falling Nightmare -- Falling heads, from noble add collision
+# 8EBD Scream -- Unknown. Possibly effects from the pizza slices?
+# 9B04 Evil Scheme -- Exaflare puddles
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 8EAE Falling Nightmare -- Summon falling heads
+# 8EAF Team Spirit -- Summon noble adds
+# 8EB0 Morbid Fascination -- Unknown. Possibly boss black heart animation?
+# 8EB1 Malicious Mist -- Raidwide
+# 8EB2 Scream -- Pizza slice castbar
+# 8EB3 Scream -- Pizza slice ground effects
+# 8EB4 Falling Nightmare -- Falling heads, from summon
+# 8EB5 --sync-- Unknown
+# 8EB6 --sync-- Unknown. Used constantly through the encounter
+# 8EB7 Overattachment -- Collision with noble add
+# 8EB8 Falling Nightmare -- Falling heads, from noble add collision
+# 8EBD Scream -- Unknown. Possibly effects from the pizza slices?
+# 8EF6 Spirited Charge -- Activate noble adds
+# 9B02 Evil Scheme -- Exaflare castbar
+# 9B03 Evil Scheme -- Exaflare floor markers
+# 9B04 Evil Scheme -- Exaflare puddles
+# 9B05 Looming Nightmare -- Chasing AoE castbar
+# 9B06 Looming Nightmare -- Initial chasing AoE
+# 9B07 Looming Nightmare -- Chasing AoE repeated
+
+
+
+#~~~~~~~~~~~~~~~~~#
+# Jack-in-the-pot #
+#~~~~~~~~~~~~~~~~~#
+
+# -ii 8F74 9131
+
+# The Party Plaza will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13F3" } window 2000,1
+2011.0 "Troubling Teacups" Ability { id: "8F6C", source: "Jack-in-the-Pot" }
+2020.1 "--sync--" Ability { id: "8F71", source: "Stray Phantagenitrix" } # Puppet
+2022.1 "Tea Awhirl" Ability { id: "8F6D", source: "Jack-in-the-Pot" }
+2034.2 "Tricksome Treat" Ability { id: "8F70", source: "Stray Phantagenitrix" }
+2043.0 "Troubling Teacups" Ability { id: "8F6C", source: "Jack-in-the-Pot" }
+2051.1 "--sync--" Ability { id: "8F71", source: "Stray Phantagenitrix" } # Puppet
+2053.1 "Tea Awhirl" Ability { id: "8F6D", source: "Jack-in-the-Pot" }
+2068.2 "Tricksome Treat" Ability { id: "8F70", source: "Stray Phantagenitrix" }
+
+2074.8 label "jackLoop"
+2074.8 "Toiling Teapots" Ability { id: "8F72", source: "Jack-in-the-Pot" }
+2079.5 "Piping Pour 1" Ability { id: "8F73", source: "Spectral Samovar" }
+2084.5 "Piping Pour 2" Ability { id: "8F73", source: "Spectral Samovar" }
+2089.5 "Piping Pour 3" Ability { id: "8F73", source: "Spectral Samovar" }
+2096.9 "Last Drop" Ability { id: "8F76", source: "Jack-in-the-Pot" }
+2106.3 "Troubling Teacups" Ability { id: "8F6C", source: "Jack-in-the-Pot" }
+2114.4 "--sync--" Ability { id: "8F71", source: "Stray Phantagenitrix" } # Puppet
+2116.4 "Tea Awhirl" Ability { id: "8F6D", source: "Jack-in-the-Pot" }
+2131.5 "Tricksome Treat" Ability { id: "8F70", source: "Stray Phantagenitrix" }
+2140.5 "Sordid Steam" Ability { id: "8F75", source: "Jack-in-the-Pot" }
+
+2150.5 "Toiling Teapots" Ability { id: "8F72", source: "Jack-in-the-Pot" } window 30,30 forcejump "jackLoop"
+
+
+# IGNORED ABILITIES
+# 8F74 Mad Tea Party -- Poison teacup expansion
+# 9131 Right Wingblade -- Auto-attack
+
+# ALL ENCOUNTER ABILITIES
+# 8F6C Troubling Teacups -- Summon genies
+# 8F6D Tea Awhirl -- Spinning teacups
+# 8F70 Tricksome Treat -- Ghost explosions after Tea Awhirl
+# 8F71 Puppet -- Ghost testhers to teacups
+# 8F72 Toiling Teapots -- Summon poison teacups
+# 8F73 Piping Pour -- Activate poison teacups
+# 8F74 Mad Tea Party -- Poison teacup expansion
+# 8F75 Sordid Steam -- Raidwide
+# 8F76 Last Drop -- Tank buster
+# 9131 Right Wingblade -- Auto-attack
+
+
+
+#~~~~~~~~~~~#
+# Träumerei #
+#~~~~~~~~~~~#
+
+# -ii 417C 9117 911A 911B
+
+# The Restive Hall will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13F4" } window 3000,1
+3012.0 "Bitter Regret (middle)" Ability { id: "9113", source: "Träumerei" }
+3022.1 "Bitter Regret (sides)" Ability { id: "9114", source: "Träumerei" }
+3027.3 "Poltergeist" Ability { id: "910C", source: "Träumerei" }
+3033.4 "Memorial March" Ability { id: "9110", source: "Träumerei" }
+3034.7 "Impact" #Ability { id: "910D", source: "Träumerei" }
+3047.4 "Ill Intent" #Ability { id: "9AB7", source: "Stray Geist" }
+
+3062.4 label "träumereiLoop"
+3062.4 "Fleshbuster/Ghostduster" Ability { id: ["9119", "911C"], source: "Träumerei" }
+3070.4 "Malicious Mist" Ability { id: "9130", source: "Träumerei" }
+3079.5 "Memorial March" Ability { id: "90C9", source: "Träumerei" }
+3085.6 "Bitter Regret (lines 1)" #Ability { id: "91DC", source: "Stray Phantagenitrix" }
+3088.2 "Bitter Regret (lines 2)" #Ability { id: "91DC", source: "Stray Phantagenitrix" }
+3090.6 "Bitter Regret (middle/sides)" Ability { id: ["9113", "9114"], source: "Träumerei" }
+3102.8 "Fleshbuster/Ghostduster" Ability { id: ["9119", "911C"], source: "Träumerei" }
+3111.9 "Poltergeist" Ability { id: "910C", source: "Träumerei" }
+3118.9 "Impact" #Ability { id: "910D", source: "Träumerei" }
+3120.0 "Memorial March" Ability { id: "9110", source: "Träumerei" }
+3133.9 "Malicious Mist" #Ability { id: "9112", source: "Stray Geist" }
+3133.9 "Bitter Regret (solid lines)" Ability { id: "91DC", source: "Stray Phantagenitrix" }
+3142.9 "Fleshbuster/Ghostduster" Ability { id: ["9119", "911C"], source: "Träumerei" }
+3145.9 "--sync--" Ability { id: "9118", source: "Träumerei" } # Ghostcrush head marker
+3150.9 "Ghostcrusher" Ability { id: "9117", source: "Träumerei" }
+3158.1 "Memorial March" Ability { id: "9110", source: "Träumerei" }
+3172.1 "Malicious Mist" #Ability { id: "9112", source: "Stray Geist" }
+3174.1 "Bitter Regret (middle/sides)" Ability { id: ["9113", "9114"], source: "Träumerei" }
+
+3185.2 "Fleshbuster/Ghostduster" Ability { id: ["9119", "911C"], source: "Träumerei" } window 30,30 forcejump "träumereiLoop"
+
+# IGNORED ABILITIES
+# 417C 攻撃 -- auto-attack
+# 9116 Ghostcrusher -- Self-cast for stack laser
+# 911A Ghostduster -- Fake spread circles. Kills any players with a ghost debuff
+# 911B Bitter Regret -- Side line attack (middle safe)
+
+# ALL ENCOUNTER ABILITIES
+# 417C 攻撃 -- auto-attack
+# 90C9 Memorial March -- Ghost summoning (lines)
+# 910C Poltergeist -- Wall summoning
+# 910D Impact -- Falling walls
+# 9110 Memorial March -- Ghost summoning (tethers)
+# 9112 Malicious Mist -- Ghost tethers
+# 9113 Bitter Regret -- Middle line attack (sides safe)
+# 9114 Bitter Regret -- Side line attack (middle safe)
+# 9116 Ghostcrusher -- Self-cast for stack laser
+# 9117 Ghostcrusher -- Stack laser. Does *not* kill ghosts
+# 9118 [Ghostcrusher head marker]
+# 9119 Ghostduster -- Self-cast for spread circles
+# 911A Ghostduster -- Fake spread circles. Kills any players with a ghost debuff
+# 911B Bitter Regret -- Side line attack (middle safe)
+# 911C Fleshbuster -- Kills any players without a ghost debuff
+# 9130 Malicious Mist -- Basic raidwide
+# 91DC Bitter Regret -- Line attack from adds
+# 9AB7 Ill Intent -- Ghost tethers

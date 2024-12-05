@@ -3,7 +3,7 @@ import ZoneId from '../../../../resources/zone_id';
 import { OopsyData } from '../../../../types/data';
 import { OopsyTriggerSet } from '../../../../types/oopsy';
 
-type MitTracker = {
+type AbilityTracker = {
   [abilityId: string]: {
     time: number;
     source: string;
@@ -16,9 +16,13 @@ export interface Data extends OopsyData {
   lastRaisedLostTime: { [targetId: string]: string };
   raiseTargetTracker: { [sourceId: string]: string };
   targetMitTracker: {
-    [targetId: string]: MitTracker;
+    [targetId: string]: AbilityTracker;
   };
-  partyMitTracker: MitTracker;
+  partyMitTracker: AbilityTracker;
+  targetDamageTracker: {
+    [targetId: string]: AbilityTracker;
+  };
+  partyDamageTracker: AbilityTracker;
 }
 
 const raiseAbilityIds = [
@@ -33,10 +37,15 @@ const raiseAbilityIds = [
 ];
 
 const targetMitAbilityIdToDuration: { [id: string]: number } = {
-  '1D6F': 10, // reprisal
-  '1D7D': 10, // feint
+  // There are L98 traits that increase Reprisal, Feint, and Addle from 10s to 15s
+  // TODO: Add a level check to determine duration?
+  '1D6F': 15, // reprisal
+  '1D7D': 15, // feint
   'B47': 10, // dismantle
-  '1D88': 10, // addle
+  '1D88': 15, // addle
+  '2C7C': 15, // bad breath
+  '4781': 10, // magic hammer
+  '8712': 10, // candy cane
 };
 const targetMitAbilityIds = Object.keys(targetMitAbilityIdToDuration);
 
@@ -48,15 +57,19 @@ const partyMitAbilityIdToDuration: { [id: string]: number } = {
   '3F20': 15, // heart of light
   // healers
   '4098': 20, // temperance
+  '9093': 10, // divine caress
   'BC': 15, // sacred soil
   '650C': 20, // expedient
   '409A': 20, // fey/seraphic illumination (order)
+  'E1D': 5, // collective unconscious
+  '9087': 15, // sun sign
   '5EEA': 15, // kerachole
   '5EF6': 20, // holos
   '5EF7': 15, // panhaima
   // melee
   '41': 15, // mantra
   // ranged
+  // TODO: troubadour/tactician/shield samba should match for overwriting each other
   '1CED': 15, // troubadour
   '1CF0': 15, // nature's minne
   '3E8C': 15, // shield samba
@@ -69,9 +82,39 @@ const partyMitAbilityIds = Object.keys(partyMitAbilityIdToDuration);
 const shieldEffectIdToAbilityId: { [id: string]: string } = {
   '5B1': '1CDC', // shake it off
   '552': 'DD4', // divine veil
+  'F3F': '9093', // divine caress
   'D25': '5EF6', // holosakos -> holos
   'A53': '5EF7', // panhaimatinon -> panhaima
 };
+
+const targetDamageAbilityIdToDuration: { [id: string]: number } = {
+  '1D0C': 20, // chain stratagem
+  '905D': 20, // dokumori
+  '2C93': 15, // off-guard
+  '2C9D': 15, // peculiar light
+  '8707': 60, // breath of magic
+  '8713': Number.MAX_SAFE_INTEGER, // mortal flame (infinite duration)
+  '5750': 60, // lost flare star
+};
+const targetDamageAbilityIds = Object.keys(targetDamageAbilityIdToDuration);
+
+const partyDamageAbilityIdToDuration: { [id: string]: number } = {
+  // healers
+  '40A8': 20, // divination
+  // melee
+  '1CE4': 20, // brotherhood
+  'DE5': 20, // battle litany
+  '5F55': 20, // arcane circle
+  // ranged
+  '76': 20, // battle voice
+  '64B9': 20, // radiant finale
+  '81C2': 20, // quadruple technical finish (if you overwrite dinky technical finish, good for you)
+  // casters
+  '64C9': 20, // searing light
+  '1D60': 20, // embolden
+  '8773': 20, // starry muse
+};
+const partyDamageAbilityIds = Object.keys(partyDamageAbilityIdToDuration);
 
 // General mistakes; these apply everywhere.
 const triggerSet: OopsyTriggerSet<Data> = {
@@ -84,6 +127,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
       raiseTargetTracker: {},
       targetMitTracker: {},
       partyMitTracker: {},
+      targetDamageTracker: {},
+      partyDamageTracker: {},
     };
   },
   triggers: [
@@ -272,7 +317,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               text: {
                 en: `overwrote ${lastSourceShort}'s ${matches.ability}`,
                 de: `überschrieb ${lastSourceShort}'s ${matches.ability}`,
-                fr: `a écrasé la résurrection de ${lastSourceShort} ${matches.ability}`,
+                fr: `a écrasé ${matches.ability} de ${lastSourceShort}`,
                 ja: `${lastSourceShort}の${matches.ability}を上書き`,
                 cn: `顶掉了${lastSourceShort}的${matches.ability}`,
                 ko: `${lastSourceShort}의 ${matches.ability} 덮어씀`,
@@ -290,6 +335,59 @@ const triggerSet: OopsyTriggerSet<Data> = {
         const abilityId = shieldEffectIdToAbilityId[matches.effectId];
         if (abilityId !== undefined)
           delete data.partyMitTracker[abilityId];
+      },
+    },
+    {
+      id: 'General Overwritten Damage Effect',
+      type: 'Ability',
+      netRegex: NetRegexes.ability({ id: targetDamageAbilityIds.concat(partyDamageAbilityIds) }),
+      mistake: (data, matches) => {
+        const isTargetDamage = targetDamageAbilityIds.includes(matches.id);
+        const isPartyDamage = partyDamageAbilityIds.includes(matches.id);
+        if (isTargetDamage && matches.targetId === 'E0000000') // missed
+          return;
+        if (isPartyDamage && !data.party.partyIds_.includes(matches.sourceId))
+          return;
+        if (isPartyDamage && matches.targetId !== matches.sourceId)
+          return;
+
+        const damageTracker = isTargetDamage
+          ? (data.targetDamageTracker[matches.targetId] ??= {})
+          : data.partyDamageTracker;
+        const newTime = new Date(matches.timestamp).getTime();
+        const newSource = matches.source;
+        const lastTime = damageTracker[matches.id]?.time;
+        const lastSource = damageTracker[matches.id]?.source;
+
+        damageTracker[matches.id] = {
+          time: newTime,
+          source: newSource,
+        };
+
+        const duration = isTargetDamage
+          ? targetDamageAbilityIdToDuration[matches.id]
+          : partyDamageAbilityIdToDuration[matches.id];
+        if (lastTime !== undefined && lastSource !== undefined && duration !== undefined) {
+          const diff = newTime - lastTime;
+          const leeway =
+            (duration * 1000 - diff) > data.options.MinimumTimeForOverwrittenDamage * 1000;
+          if (diff < duration * 1000 && leeway) {
+            const lastSourceShort = data.party.member(lastSource).toString();
+            return {
+              type: 'warn',
+              blame: matches.source,
+              reportId: matches.sourceId,
+              text: {
+                en: `overwrote ${lastSourceShort}'s ${matches.ability}`,
+                de: `überschrieb ${lastSourceShort}'s ${matches.ability}`,
+                fr: `a écrasé ${matches.ability} de ${lastSourceShort}`,
+                ja: `${lastSourceShort}の${matches.ability}を上書き`,
+                cn: `顶掉了${lastSourceShort}的${matches.ability}`,
+                ko: `${lastSourceShort}의 ${matches.ability} 덮어씀`,
+              },
+            };
+          }
+        }
       },
     },
   ],

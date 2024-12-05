@@ -32,8 +32,6 @@ export interface JobsConfigOptions {
   ShowMPNumber: Job[];
   ShowMPTicker: Job[];
 
-  MaxLevel: number;
-
   PerBuffOptions: {
     [s: string]: Partial<BuffInfo>;
   };
@@ -79,8 +77,6 @@ const defaultJobsConfigOptions: JobsConfigOptions = {
 
   ShowMPTicker: ['BLM'],
 
-  MaxLevel: 80,
-
   PerBuffOptions: {
     // This is noisy since it's more or less permanently on you.
     // Players are unlikely to make different decisions based on this.
@@ -90,9 +86,13 @@ const defaultJobsConfigOptions: JobsConfigOptions = {
   },
 
   FarThresholdOffence: 24,
-  PldMediumMPThreshold: 6199,
-  PldLowMPThreshold: 4399,
+  // cannot cast more spell before Requiescat combo.
+  PldMediumMPThreshold: 5399,
+  // cannot complete Requiescat combo.
+  PldLowMPThreshold: 3599,
+  // Only one MP consuming abilities cast allowed.
   DrkMediumMPThreshold: 5999,
+  // cannot cast MP consuming abilities.
   DrkLowMPThreshold: 2999,
   // One more fire IV and then despair.
   BlmMediumMPThreshold: 3999,

@@ -5,7 +5,7 @@ import { JobDetail } from '../../../types/event';
 import { ResourceBox } from '../bars';
 import { ComboTracker } from '../combo_tracker';
 import { kAbility } from '../constants';
-import { computeBackgroundColorFrom } from '../utils';
+import { computeBackgroundColorFrom, showDuration } from '../utils';
 
 import { BaseComponent, ComponentInterface } from './base';
 
@@ -89,31 +89,23 @@ export class NINComponent extends BaseComponent {
         this.ninjutsu.duration = 0;
         break;
       case kAbility.TrickAttack:
-      case kAbility.KunaisBane: {
-        this.trickAttack.duration = 15;
-        this.trickAttack.threshold = 1000;
-        this.trickAttack.fg = computeBackgroundColorFrom(
-          this.trickAttack,
-          'nin-color-trickattack.active',
-        );
-        this.tid1 = window.setTimeout(() => {
-          this.trickAttack.duration = 45;
-          this.trickAttack.threshold = this.player.gcdSkill * 4;
-          this.trickAttack.fg = computeBackgroundColorFrom(
-            this.trickAttack,
-            'nin-color-trickattack',
-          );
-        }, 15000);
+      case kAbility.KunaisBane:
+        this.tid1 = showDuration({
+          tid: this.tid1,
+          timerbox: this.trickAttack,
+          // TA & KB has an animation lock, KB's is longer.
+          duration: 15 + (id === kAbility.KunaisBane ? 1 : 0.5),
+          cooldown: 60,
+          threshold: this.player.gcdSkill * 4 + 1,
+          activecolor: 'nin-color-trickattack.active',
+          deactivecolor: 'nin-color-trickattack',
+        });
         break;
-      }
     }
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.trickAttack.valuescale = gcdSkill;
-    this.bunshin.valuescale = gcdSkill;
     this.bunshin.threshold = gcdSkill * 8;
-    this.ninjutsu.valuescale = gcdSkill;
     this.ninjutsu.threshold = gcdSkill * 2;
   }
 
@@ -147,7 +139,7 @@ export class NINComponent extends BaseComponent {
     this.mudraTriggerCd = true;
     this.ninjutsu.duration = 0;
     this.trickAttack.duration = 0;
-    this.trickAttack.threshold = this.player.gcdSkill * 4;
+    this.trickAttack.threshold = this.player.gcdSkill * 4 + 1;
     this.trickAttack.fg = computeBackgroundColorFrom(
       this.trickAttack,
       'nin-color-trickattack',
@@ -259,10 +251,7 @@ export class NIN6xComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.trickAttack.valuescale = gcdSkill;
-    this.bunshin.valuescale = gcdSkill;
     this.bunshin.threshold = gcdSkill * 8;
-    this.ninjutsu.valuescale = gcdSkill;
     this.ninjutsu.threshold = gcdSkill * 2;
   }
 

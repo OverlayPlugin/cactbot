@@ -31,7 +31,7 @@ jobs:
   msbuild:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: ./.github/actions/setup-js-env
 
@@ -43,7 +43,7 @@ jobs:
 
       - name: Check dependencies cache
         id: cache-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./plugin/ThirdParty
           key: |
@@ -76,7 +76,7 @@ jobs:
         run: ./util/publish.sh
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cactbot-${{ env.artifact_sha }}
           path: publish/cactbot-release/

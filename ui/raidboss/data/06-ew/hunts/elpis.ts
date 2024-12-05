@@ -67,7 +67,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Geh mit Wasser raus',
             fr: 'Partez avec l\'eau',
             ja: 'ボスから離れる',
-            cn: '快躲开水',
+            cn: '远离人群',
             ko: '나에게 물징 멀리 빠지기',
           },
           waterMarker: {

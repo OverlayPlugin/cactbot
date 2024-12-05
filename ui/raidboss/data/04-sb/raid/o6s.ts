@@ -49,7 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Dämonischer Stein auf DIR',
           fr: 'Pierre démoniaque sur VOUS',
           ja: '自分にデモニックストーン',
-          cn: '引导aoe',
+          cn: '引导5连追踪aoe',
           ko: '악령의 돌 장판 대상자',
         },
       },

@@ -30,7 +30,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh zum geschlossenen Mund',
           fr: 'Allez sur une bouche silencieuse',
           ja: '閉じた口へ',
-          cn: '找闭着的嘴',
+          cn: '去闭着的嘴处',
           ko: '말이 없는 입 쪽으로',
         },
       },
@@ -270,7 +270,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '\\(Knockback\\)': '(击退)',
-        '\\(Spread\\)': '(扩散)',
+        '\\(Spread\\)': '(分散)',
         '--meteor': '--陨石',
         'Aether Siphon': '属性吸收',
         'Aether Spray': '属性放出',

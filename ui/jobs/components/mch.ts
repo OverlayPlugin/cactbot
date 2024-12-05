@@ -123,11 +123,11 @@ export class MCHComponent extends BaseComponent {
   }
 
   override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Overheated)
+    if (id === EffectId.Overheated_A80)
       this.overheatstack = parseInt(matches.count ?? '0');
   }
   override onMobGainsEffectFromYou(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
-    if (id === EffectId.Wildfire) {
+    if (id === EffectId.Wildfire_35D) {
       this.wildFireActive = true;
       this.wildFireCounts = parseInt(matches.count ?? '0');
       this.refreshWildFireGauge();
@@ -136,7 +136,7 @@ export class MCHComponent extends BaseComponent {
   }
 
   override onMobLosesEffectFromYou(id: string): void {
-    if (id === EffectId.Wildfire) {
+    if (id === EffectId.Wildfire_35D) {
       this.wildFireActive = false;
       this.refreshWildFireGauge();
     }
@@ -180,13 +180,9 @@ export class MCHComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSkill }: { gcdSkill: number }): void {
-    this.drillBox.valuescale = gcdSkill;
     this.drillBox.threshold = gcdSkill * 3 + 1;
-    this.airAnchorBox.valuescale = gcdSkill;
     this.airAnchorBox.threshold = gcdSkill * 3 + 1;
-    this.chainSawBox.valuescale = gcdSkill;
     this.chainSawBox.threshold = gcdSkill * 3 + 1;
-    this.wildFireBox.valuescale = gcdSkill;
     this.wildFireBox.threshold = gcdSkill + 1;
   }
 

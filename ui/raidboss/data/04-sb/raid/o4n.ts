@@ -247,7 +247,7 @@ const triggerSet: TriggerSet<Data> = {
         'Doom': '死亡宣告',
         'Flare': '核爆',
         'Holy': '神圣',
-        'Mega Blizzard/Fire/Thunder': '冰封/爆炎/暴雷 ++',
+        'Mega Blizzard/Fire/Thunder': '冰封/爆炎/暴雷（强化）',
         'Meteor': '陨石',
         'The Decisive Battle': '决战',
         '(?<!/)Thunder III': '暴雷',

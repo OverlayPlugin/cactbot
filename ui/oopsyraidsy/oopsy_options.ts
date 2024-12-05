@@ -27,6 +27,7 @@ const defaultOopsyNonConfigOptions: OopsyNonConfigOptions = {
   IgnoreContentTypes: [
     ContentType.Pvp,
     ContentType.Eureka,
+    ContentType.SaveTheQueen,
   ],
   IgnoreZoneIds: [
     // Bozja zones have an (unnamed) content type of 29 which also applies
@@ -50,6 +51,7 @@ type OopsyConfigOptions = {
   TimeToShowDeathReportMs: number;
   DeathReportSide: DeathReportSide;
   MinimumTimeForOverwrittenMit: number;
+  MinimumTimeForOverwrittenDamage: number;
 };
 
 const defaultOopsyConfigOptions: OopsyConfigOptions = {
@@ -60,6 +62,7 @@ const defaultOopsyConfigOptions: OopsyConfigOptions = {
   TimeToShowDeathReportMs: 4000,
   DeathReportSide: 'left',
   MinimumTimeForOverwrittenMit: 2,
+  MinimumTimeForOverwrittenDamage: 2,
 };
 
 export interface OopsyOptions

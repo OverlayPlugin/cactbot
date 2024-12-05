@@ -38,7 +38,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Fläche auf DIR',
           fr: 'Zone au sol sur VOUS',
           ja: '自分に水溜り',
-          cn: '水球点名',
+          cn: '放水圈点名',
           ko: '징 대상자',
         },
       },

@@ -17,6 +17,14 @@ const excitatronOutputStrings = {
   },
 } as const;
 
+const excitingMandragorasIds = [
+  '10835', // Exciting Onion
+  '10836', // Exciting Egg
+  '10837', // Exciting Garlic
+  '10838', // Exciting Tomato
+  '10839', // Exciting Queen
+] as const;
+
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
@@ -32,9 +40,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '10834' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: excitatronOutputStrings.spawn,
-      },
+      outputStrings: excitatronOutputStrings,
     },
     {
       id: 'Excitatron Golden Supporter Spawn',
@@ -43,19 +49,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '10833' },
       suppressSeconds: 1,
       infoText: (_data, matches, output) => output.spawn!({ name: matches.name }),
-      outputStrings: {
-        spawn: excitatronOutputStrings.spawn,
-      },
+      outputStrings: excitatronOutputStrings,
     },
     {
       id: 'Excitatron Exciting Mandragoras Spawn',
-      // 10835 = Exciting Onion
-      // 10836 = Exciting Egg
-      // 10837 = Exciting Garlic
-      // 10838 = Exciting Tomato
-      // 10839 = Exciting Queen
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '1083[5-9]', capture: false },
+      netRegex: { npcNameId: excitingMandragorasIds, capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {

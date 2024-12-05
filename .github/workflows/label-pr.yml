@@ -73,7 +73,7 @@ jobs:
     needs: job_picker
     if: needs.job_picker.outputs.run == 'pr_review'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Force checkout the main repo (base branch) so that repo secrets
           # are not available to unexpected/malicious PR code.
@@ -104,7 +104,7 @@ jobs:
     needs: job_picker
     if: needs.job_picker.outputs.run == 'push_commit'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Force checkout the main repo (base branch) so that repo secrets
           # are not available to unexpected/malicious PR code.

@@ -1,4 +1,4 @@
-import { isEqual } from 'lodash';
+import _ from 'lodash';
 
 import logDefinitions, {
   LogDefinition,
@@ -83,11 +83,11 @@ export default class Splitter {
   }
 
   isLogDefinition<K extends LogDefinitionName>(def: { name: K }): def is LogDefinition<K> {
-    return isEqual(def, logDefinitions[def.name]);
+    return _.isEqual(def, logDefinitions[def.name]);
   }
 
   isReindexedLogDefs(remap: Partial<ReindexedLogDefs>): remap is ReindexedLogDefs {
-    return Object.values(logDefinitions).every((d) => isEqual(remap[d.type], d));
+    return Object.values(logDefinitions).every((d) => _.isEqual(remap[d.type], d));
   }
 
   processAnalysisOptions(): ReindexedLogDefs {

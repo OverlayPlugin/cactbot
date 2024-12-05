@@ -101,10 +101,7 @@ export class ASTComponent extends BaseComponent {
     }
   }
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.combustBox.valuescale = gcdSpell;
     this.combustBox.threshold = gcdSpell + 1;
-    this.drawBox.valuescale = gcdSpell;
-    this.lucidBox.valuescale = gcdSpell;
     this.lucidBox.threshold = gcdSpell + 1;
   }
 
@@ -243,13 +240,9 @@ export class AST6xComponent extends BaseComponent {
     }
   }
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.combustBox.valuescale = gcdSpell;
     this.combustBox.threshold = gcdSpell + 1;
-    this.drawBox.valuescale = gcdSpell;
     this.drawBox.threshold = gcdSpell + 1;
-    this.minorDrawBox.valuescale = gcdSpell;
     this.minorDrawBox.threshold = gcdSpell + 1;
-    this.lucidBox.valuescale = gcdSpell;
     this.lucidBox.threshold = gcdSpell + 1;
   }
 

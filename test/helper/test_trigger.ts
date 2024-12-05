@@ -553,6 +553,10 @@ const testTriggerFile = (file: string, info: TriggerSetInfo) => {
         // TODO: share this with popup-text.js?
         const paramRegex = /\${\s*([^}\s]+)\s*}/g;
 
+        // Test for long arrows (e.g. <---, ==>) in the middle of an output string
+        // that will cause bad tts output.
+        const longArrowRegex = /\S\s*(<[-=]{2,}|[-=]{2,}>)\s*\S/g;
+
         // key => [] of params
         const outputStringsParams: { [key: string]: string[] } = {};
 
@@ -577,6 +581,11 @@ const testTriggerFile = (file: string, info: TriggerSetInfo) => {
               );
               continue;
             }
+
+            if (longArrowRegex.test(template))
+              assert.fail(
+                `'${key}' in '${id}' outputStrings contains a mid-string long arrow: [${lang}]: '${template}'`,
+              );
 
             // Build params with a set for uniqueness, but store as an array later for ease of use.
             const params = new Set<string>();

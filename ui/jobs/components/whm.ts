@@ -116,13 +116,9 @@ export class WHMComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.diaBox.valuescale = gcdSpell;
     this.diaBox.threshold = gcdSpell + 1;
-    this.assizeBox.valuescale = gcdSpell;
     this.assizeBox.threshold = gcdSpell + 1;
-    this.pomBox.valuescale = gcdSpell;
     this.pomBox.threshold = gcdSpell + 1;
-    this.lucidBox.valuescale = gcdSpell;
     this.lucidBox.threshold = gcdSpell + 1;
   }
 

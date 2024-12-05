@@ -14,7 +14,7 @@ export class SGEComponent extends BaseComponent {
   adderTimerBox: ResourceBox;
   eukrasianDosis: TimerBox;
   phlegma: TimerBox;
-  rhizomata: TimerBox;
+  psyche: TimerBox;
   lucidDream: TimerBox;
 
   constructor(o: ComponentInterface) {
@@ -57,9 +57,9 @@ export class SGEComponent extends BaseComponent {
       fgColor: 'sge-color-phlegma',
     });
 
-    this.rhizomata = this.bars.addProcBox({
-      id: 'sge-proc-rhizomata',
-      fgColor: 'sge-color-rhizomata',
+    this.psyche = this.bars.addProcBox({
+      id: 'sge-proc-psyche',
+      fgColor: 'sge-color-psyche',
     });
 
     this.lucidDream = this.bars.addProcBox({
@@ -87,8 +87,13 @@ export class SGEComponent extends BaseComponent {
           this.phlegma.duration = 40 + this.phlegma.value;
         }
         break;
+      case kAbility.Psyche:
+        this.psyche.duration = 60;
+        break;
+      // TODO: remove this when no region is in 6.X
       case kAbility.Rhizomata:
-        this.rhizomata.duration = 90;
+        if (this.ffxivVersion < 700)
+          this.psyche.duration = 90;
         break;
       case kAbility.LucidDreaming:
         this.lucidDream.duration = 60;
@@ -100,7 +105,7 @@ export class SGEComponent extends BaseComponent {
     switch (id) {
       case EffectId.EukrasianDosis:
       case EffectId.EukrasianDosisIi:
-      case EffectId.EukrasianDosisIii:
+      case EffectId.EukrasianDosisIii_A38:
       case EffectId.EukrasianDyskrasia:
         this.eukrasianDosis.duration = parseInt(matches.duration ?? '0', 10) - 0.5;
         break;
@@ -120,13 +125,9 @@ export class SGEComponent extends BaseComponent {
   }
 
   override onStatChange({ gcdSpell }: { gcdSpell: number }): void {
-    this.eukrasianDosis.valuescale = gcdSpell;
     this.eukrasianDosis.threshold = gcdSpell + 1;
-    this.phlegma.valuescale = gcdSpell;
     this.phlegma.threshold = gcdSpell + 1;
-    this.rhizomata.valuescale = gcdSpell;
-    this.rhizomata.threshold = gcdSpell + 1;
-    this.lucidDream.valuescale = gcdSpell;
+    this.psyche.threshold = gcdSpell + 1;
     this.lucidDream.threshold = gcdSpell + 1;
     // Due to unknown reason, if you sync to below lv45,
     // addersgall is not availble but memory still says you have 3 addersgall.
@@ -138,7 +139,7 @@ export class SGEComponent extends BaseComponent {
   override reset(): void {
     this.eukrasianDosis.duration = 0;
     this.phlegma.duration = 0;
-    this.rhizomata.duration = 0;
+    this.psyche.duration = 0;
     this.lucidDream.duration = 0;
   }
 }

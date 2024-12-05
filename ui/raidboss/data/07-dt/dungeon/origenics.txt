@@ -1,0 +1,220 @@
+### ORIGENICS
+# ZoneId: 1208
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~#
+# Herpekaris #
+#~~~~~~~~~~~~#
+
+# -ii 8E71 8E72 8E73 8E7A
+# -p 8EA7:1011.1
+
+# The Resource Transport Elevator will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "139C" } window 1000,1
+1006.1 "--sync--" StartsUsing { id: "8EA7", source: "Herpekaris" }
+1011.1 "Strident Shriek" Ability { id: "8EA7", source: "Herpekaris" }
+1017.3 "--north--" Ability { id: "8EA8", source: "Herpekaris" }
+1021.7 "Vasoconstrictor" Ability { id: "8E6B", source: "Herpekaris" }
+1022.8 "Poison Heart (puddle drop)" Ability { id: "8E6C", source: "Herpekaris" }
+# combine Venomspill + Pod Burst, which happen at the same time
+1029.8 "Venomspill + Pod Burst 1" Ability { id: "9676", source: "Herpekaris" }
+1034.9 "Venomspill + Pod Burst 2" Ability { id: "9677", source: "Herpekaris" }
+1039.9 "Venomspill + Pod Burst 3" Ability { id: "9677", source: "Herpekaris" }
+1045.0 "Venomspill + Pod Burst 4" Ability { id: "9677", source: "Herpekaris" }
+
+# begin loop
+1049.2 "--center--" Ability { id: "8EA8", source: "Herpekaris" }
+1059.5 "Writhing Riot" Ability { id: "8E6F", source: "Herpekaris" }
+1059.8 "Right Sweep/Left Sweep/Rear Sweep 1" #Ability { id: ["8E75", "8E76", "8E77"], source: "Herpekaris" } window 1.5,1.5
+1061.8 "Right Sweep/Left Sweep/Rear Sweep 2" #Ability { id: ["8E75", "8E76", "8E77"], source: "Herpekaris" } window 1.5,1.5
+1063.8 "Right Sweep/Left Sweep/Rear Sweep 3" #Ability { id: ["8E75", "8E76", "8E77"], source: "Herpekaris" } window 1.5,1.5
+1071.9 "Strident Shriek" Ability { id: "8EA7", source: "Herpekaris" }
+1079.1 "--north--" Ability { id: "8EA8", source: "Herpekaris" }
+1083.5 "Vasoconstrictor" Ability { id: "8E6B", source: "Herpekaris" }
+1084.6 "Poison Heart (puddle drop)" Ability { id: "8E6C", source: "Herpekaris" }
+1091.6 "Venomspill + Pod Burst 1" Ability { id: "9676", source: "Herpekaris" }
+1096.6 "Venomspill + Pod Burst 2" Ability { id: "9677", source: "Herpekaris" }
+1101.7 "Venomspill + Pod Burst 3" Ability { id: "9677", source: "Herpekaris" }
+1106.7 "Venomspill + Pod Burst 4" Ability { id: "9677", source: "Herpekaris" }
+1109.4 "Poison Heart (spread)" Ability { id: "9421", source: "Herpekaris" }
+1119.6 "Collective Agony" Ability { id: "8E79", source: "Herpekaris" }
+1128.7 "Strident Shriek" Ability { id: "8EA7", source: "Herpekaris" }
+1137.9 "Convulsive Crush" Ability { id: "8EA6", source: "Herpekaris" }
+1149.0 "--center--" Ability { id: "8EA8", source: "Herpekaris" } forcejump 1049.2
+
+# IGNORED ABILITIES
+# 8E71 --sync-- (telegraph of Right Sweep)
+# 8E72 --sync-- (telegraph of Left Sweep)
+# 8E73 --sync-- (telegraph of Rear Sweep)
+# 8E7A --sync-- (vfx)
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 8E64 Venomspill
+# 8E65 Venomspill
+# 8E66 Venomspill
+# 8E6B Vasoconstrictor
+# 8E6C Poison Heart
+# 8E6F Writhing Riot
+# 8E71 --sync-- (telegraph of Right Sweep)
+# 8E72 --sync-- (telegraph of Left Sweep)
+# 8E73 --sync-- (telegraph of Rear Sweep)
+# 8E75 Right Sweep
+# 8E76 Left Sweep
+# 8E77 Rear Sweep
+# 8E79 Collective Agony
+# 8E7A --sync-- (vfx)
+# 8EA6 Convulsive Crush
+# 8EA7 Strident Shriek
+# 8EA8 --sync-- (jump)
+# 924B Venomspill
+# 9421 Poison Heart
+# 9676 Pod Burst
+# 9677 Pod Burst
+
+#~~~~~~~~~~#
+# Deceiver #
+#~~~~~~~~~~#
+
+# -ii 8E10 8E11 8E14 8E0D 8E4A 9797 8E0F
+# -p 8E13:2012.1
+
+# The Surveillance Room will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13A0" } window 2000,1
+2007.1 "--sync--" StartsUsing { id: "8E13", source: "Deceiver" }
+2012.1 "Electrowave" Ability { id: "8E13", source: "Deceiver" }
+2018.3 "--center--" Ability { id: "8E0A", source: "Deceiver" }
+2028.6 "Bionic Thrash" Ability { id: "8E12", source: "Deceiver" }
+2037.8 "Initialize Androids" Ability { id: "8E0B", source: "Deceiver" }
+2051.9 "Synchroshot" Ability { id: "8E15", source: "Origenics Sentry G9" }
+2069.9 "--center--" Ability { id: "8E0A", source: "Deceiver" }
+2076.2 "Initialize Turrets" Ability { id: "8E0C", source: "Deceiver" }
+2087.0 "Laser Lash 1" Ability { id: "8E0E", source: "Deceiver" }
+2099.3 "Laser Lash 2" Ability { id: "8E0E", source: "Deceiver" }
+2100.4 "--north--" Ability { id: "8E0A", source: "Deceiver" }
+2111.3 "Surge" Ability { id: "9B38", source: "Deceiver" }
+2113.7 "Electray" Ability { id: "95B0", source: "Deceiver" }
+
+# begin loop
+2120.9 "Initialize Androids" Ability { id: "8E0B", source: "Deceiver" }
+2125.0 "--center--" Ability { id: "8E0A", source: "Deceiver" }
+2135.1 "Synchroshot + Bionic Thrash" Ability { id: "8E15", source: "Origenics Sentry G9" }
+2153.4 "--center--" Ability { id: "8E0A", source: "Deceiver" }
+2159.6 "Initialize Turrets" Ability { id: "8E0C", source: "Deceiver" }
+2170.4 "Laser Lash 1" Ability { id: "8E0E", source: "Deceiver" }
+2182.6 "Laser Lash 2" Ability { id: "8E0E", source: "Deceiver" }
+2183.7 "--north--" Ability { id: "8E0A", source: "Deceiver" }
+2194.5 "Surge" Ability { id: "9B38", source: "Deceiver" }
+2196.9 "Electray" Ability { id: "95B0", source: "Deceiver" }
+2209.0 "Electrowave" Ability { id: "8E13", source: "Deceiver" }
+2220.1 "Initialize Androids" Ability { id: "8E0B", source: "Deceiver" } forcejump 2120.9
+
+# IGNORED ABILITIES
+# 8E0D Initialize Turrets (vfx; real turret)
+# 8E0F Surge (vfx)
+# 8E10 Bionic Thrash (cast)
+# 8E11 Bionic Thrash (cast)
+# 8E14 Synchroshot (fake android cleave; concurrent with 8E15)
+# 8E4A --sync-- (vfx; flickering turrent)
+# 9797 レーザーガン (fake turret cleave)
+
+# ALL ENCOUNTER ABILITIES
+# 366 attack
+# 369 attack
+# 8E0A --sync-- (jump)
+# 8E0B Initialize Androids
+# 8E0C Initialize Turrets
+# 8E0D Initialize Turrets (vfx; real turret)
+# 8E0E Laser Lash
+# 8E0F Surge (vfx)
+# 8E10 Bionic Thrash (cast)
+# 8E11 Bionic Thrash (cast)
+# 8E12 Bionic Thrash (damage)
+# 8E13 Electrowave
+# 8E14 Synchroshot (fake android cleave; concurrent with 8E15)
+# 8E15 Synchroshot
+# 8E4A --sync-- (vfx; flickering turrent)
+# 95B0 Electray
+# 9797 レーザーガン
+# 9B38 Surge
+
+#~~~~~~~~~~~~~~~~~~~~~~~~#
+# Ambrose the Undeparted #
+#~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii 8E4B 8E51 8E52 98A0 9829 8E4E
+# -p 8E54:3011.1
+
+# The Enhancement Testing Grounds will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "13A2" } window 3000,1
+3006.1 "--sync--" StartsUsing { id: "8E54", source: "Ambrose the Undeparted" }
+3011.1 "Psychic Wave" Ability { id: "8E54", source: "Ambrose the Undeparted" }
+3017.3 "--center--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3024.4 "Overwhelming Charge" Ability { id: "9941", source: "Ambrose the Undeparted" }
+3030.6 "--mid-north--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3043.5 "Psychokinesis (cages)" Ability { id: "8E4C", source: "Ambrose the Undeparted" }
+3062.7 "--center--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3071.8 "Extrasensory Field" Ability { id: "8E50", source: "Ambrose the Undeparted" }
+3082.9 "Voltaic Slash" Ability { id: "8E55", source: "Ambrose the Undeparted" }
+3085.0 "--center--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3094.1 "Psychokinetic Charge" Ability { id: "988F", source: "Ambrose the Undeparted" }
+3096.2 "Overwhelming Charge" Ability { id: "8E53", source: "Ambrose the Undeparted" }
+3102.4 "--north--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3111.4 "Electrolance" Ability { id: "8E4D", source: "Ambrose the Undeparted" }
+3122.7 "Psychokinesis (lance)" Ability { id: "9811", source: "Ambrose the Undeparted" }
+3123.4 "Rush" #Ability { id: "982A", source: "Electrolance" } duration 4.5
+3130.3 "Electrolance Assimilation" Ability { id: "8E4F", source: "Ambrose the Undeparted" }
+3137.4 "--mid-north--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3149.5 "Psychokinesis (cages)" Ability { id: "8E4C", source: "Ambrose the Undeparted" }
+3151.4 "Whorl of the Mind" Ability { id: "8E56", source: "Ambrose the Undeparted" }
+3173.7 "Psychic Wave" Ability { id: "8E54", source: "Ambrose the Undeparted" }
+
+# begin loop
+3179.9 "--center--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3189.3 "Psychokinetic Charge" Ability { id: "988F", source: "Ambrose the Undeparted" }
+3191.3 "Overwhelming Charge" Ability { id: "8E53", source: "Ambrose the Undeparted" }
+3194.0 "Whorl of the Mind" Ability { id: "8E56", source: "Ambrose the Undeparted" }
+3209.6 "Psychic Wave" Ability { id: "8E54", source: "Ambrose the Undeparted" }
+3216.8 "--north--" Ability { id: "8E57", source: "Ambrose the Undeparted" }
+3225.7 "Electrolance" Ability { id: "8E4D", source: "Ambrose the Undeparted" }
+3237.0 "Psychokinesis (lance)" Ability { id: "9811", source: "Ambrose the Undeparted" }
+3237.7 "Rush" #Ability { id: "982A", source: "Electrolance" } duration 4.5
+3244.6 "Electrolance Assimilation" Ability { id: "8E4F", source: "Ambrose the Undeparted" }
+3257.6 "Voltaic Slash" Ability { id: "8E55", source: "Ambrose the Undeparted" }
+3264.7 "--center--" Ability { id: "8E57", source: "Ambrose the Undeparted" } forcejump 3179.9
+
+# IGNORED ABILITIES
+# 8E4B Psychokinesis (cast; concurrent with 8E4C)
+# 8E4E Electrolance Assimilation (vfx)
+# 8E51 Extrasensory Expulsion (concurrent with 8E50/988F)
+# 8E52 Extrasensory Expulsion (concurrent with 8E50/988F)
+# 9829 --sync-- (vfx - lance telegraphs)
+# 98A0 Overwhelming Charge (damage / concurrent with 8E53)
+
+# ALL ENCOUNTER ABILITIES
+# 366 attack
+# 368 attack
+# 8E4B Psychokinesis (cast; concurrent with 8E4C)
+# 8E4C Psychokinesis
+# 8E4D Electrolance
+# 8E4E Electrolance Assimilation (vfx)
+# 8E4F Electrolance Assimilation
+# 8E50 Extrasensory Field (first use; no frontal cleave)
+# 8E51 Extrasensory Expulsion (concurrent with 8E50/988F)
+# 8E52 Extrasensory Expulsion (concurrent with 8E51)
+# 8E53 Overwhelming Charge
+# 8E54 Psychic Wave
+# 8E55 Voltaic Slash
+# 8E56 Whorl of the Mind
+# 8E57 --sync-- (jump)
+# 9811 Psychokinesis
+# 9829 --sync-- (vfx - lance telegraphs)
+# 982A Rush
+# 988F Psychokinetic Charge
+# 98A0 Overwhelming Charge (damage / concurrent with 8E53)
+# 9941 Overwhelming Charge
