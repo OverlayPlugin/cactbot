@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "module": "ES2022",
+    "moduleResolution": "bundler"
+  },
+  "include": [
+    "./ui",
+    "./types",
+    "./resources"
+  ]
+}

@@ -94,7 +94,7 @@
     "eslint-plugin-tsc": "^2.0.0",
     "eslint-plugin-unicorn": "^44.0.2",
     "fast-levenshtein": "^3.0.0",
-    "fork-ts-checker-webpack-plugin": "^7.2.11",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
     "fs-extra": "^10.1.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^4.2.5",
@@ -117,7 +117,7 @@
     "stylelint-config-standard": "^25.0.0",
     "tar-fs": "^2.1.1",
     "ts-loader": "^9.3.0",
-    "ts-node": "^10.8.0",
+    "ts-node": "^10.9.2",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^5.1.6",
     "webpack": "^5.76.0",
@@ -164,5 +164,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "packageManager": "npm@10.8.2+sha512.c7f0088c520a46596b85c6f8f1da943400199748a0f7ea8cb8df75469668dc26f6fb3ba26df87e2884a5ebe91557292d0f3db7d0929cdb4f14910c3032ac81fb"
 }

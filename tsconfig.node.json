@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "module": "ES2022",
+    "target": "ES2022",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "./util",
+    "./test",
+    "./webpack"
+  ]
+}

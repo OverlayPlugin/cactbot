@@ -88,7 +88,7 @@ export default (
   ];
 
   if (!isCI)
-    plugins.unshift(new ForkTsCheckerWebpackPlugin());
+    plugins.unshift(new ForkTsCheckerWebpackPlugin({ typescript: { configFile: 'tsconfig.project.json' } }));
 
   return {
     entry: entries,

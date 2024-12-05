@@ -9,7 +9,7 @@
   },
   "compilerOptions": {
     "target": "ES2022",
-    "module": "ES2022",
+    "module": "CommonJS",
     "allowJs": true,
     "strict": true,
     "declaration": false,
@@ -17,7 +17,7 @@
     "types": [
       "node"
     ],
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "skipLibCheck": false,
     "esModuleInterop": true,
     "rootDir": "./",
@@ -38,18 +38,14 @@
     //    "noPropertyAccessFromIndexSignature": false, // used by trigger output strings
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "./ui",
-    "./types",
-    "./resources",
-    "./util",
-    "./test",
-    "./webpack"
-  ],
   "exclude": [
     "./eslint",
     "./.eslintrc.cjs",
     "./dist",
     "**/*.spec.ts"
+  ],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.project.json" }
   ]
 }
