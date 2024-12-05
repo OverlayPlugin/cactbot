@@ -369,7 +369,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'FRU P2 House of Light/Frigid Stone',
       type: 'HeadMarker',
-      netRegex: { id: '0159' },
+      netRegex: { id: '0159' }, // source name can vary due to actor re-use
       alertText: (data, matches, output) => {
         data.p2FrigidStoneTargets.push(matches.target);
         if (data.p2FrigidStoneTargets.length !== 4)
@@ -411,7 +411,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P2 Heavenly Strike',
       type: 'Ability',
       // use the 'star' (Frigid Stone) drops to fire this alert, as Heavenly Strike has no cast time.
-      netRegex: { id: '9D07', source: 'Usurper of Frost', capture: false },
+      netRegex: { id: '9D07', capture: false }, // source name can vary due to actor re-use
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
         const startDir = data.p2IcicleImpactStart;
