@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 import isCI from 'is-ci';
 import type { UserConfig } from 'vite';
@@ -9,6 +9,10 @@ import manifestLoader from './manifest-loader';
 
 const config: UserConfig = {
   build: {
+    // Do not emit assets, as they are copied by viteStaticCopy
+    assetsInlineLimit: 0,
+    emitAssets: false,
+
     rollupOptions: {
       input: {
         config: resolve(__dirname, '..', 'ui/config/config.html'),
@@ -31,6 +35,7 @@ const config: UserConfig = {
         test: resolve(__dirname, '..', 'ui/test/test.html'),
       },
       output: {
+        assetFileNames: '[name].[ext]',
         chunkFileNames: '[name].bundle.js',
         manualChunks: (id) => {
           if (/ui\/raidboss\/data\/.*(?:ts|js|txt\?raw)$/.test(id)) {
@@ -82,11 +87,23 @@ const config: UserConfig = {
           dest: '',
         },
         {
+          src: 'ui/**/*.css',
+          dest: '',
+        },
+        {
           src: 'ui/*/skins/**/*',
           dest: '',
         },
         {
+          src: 'ui/eureka/*.png',
+          dest: '',
+        },
+        {
           src: 'util/coverage/missing_translations*.html',
+          dest: '',
+        },
+        {
+          src: 'user',
           dest: '',
         },
       ],
