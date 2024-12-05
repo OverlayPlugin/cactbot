@@ -1,14 +1,18 @@
 {
+  "ts-node": {
+    "experimentalSpecifierResolution": "node"
+  },
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
     "allowJs": true,
     "strict": true,
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "types": [
       "node"
     ],
+    "composite": true,
     "moduleResolution": "bundler",
     "skipLibCheck": false,
     "esModuleInterop": true,
