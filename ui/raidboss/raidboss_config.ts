@@ -529,7 +529,7 @@ const setOptionsFromOutputValue = (
   } else {
     // FIXME: handle lint error here
     // ref: https://github.com/OverlayPlugin/cactbot/pull/274#discussion_r1692375852
-    // eslint-ignore-next-line @typescript-eslint/no-base-to-string
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     console.error(`unknown output type: ${value.toString()}`);
   }
 };

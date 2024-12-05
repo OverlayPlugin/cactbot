@@ -636,7 +636,7 @@ const triggerSet: TriggerSet<Data> = {
           rotation = 3;
         }
 
-        if (pattern) {
+        if (typeof pattern === 'number') {
           const safeSpot = sandspoutPattern & pattern;
           let backFrontSpot = TtokSafeSpots.All;
           if (safeSpot & TtokSafeSpots.Back) {
@@ -696,7 +696,7 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         // if the boss rotates we give up and only call out the Tempest portion.
-        if (pattern && data.ttokRotated === 0) {
+        if ((typeof pattern === 'number') && data.ttokRotated === 0) {
           const safeSpot = tempest & pattern;
 
           if (safeSpot & TtokSafeSpots.Back) {
@@ -716,7 +716,7 @@ const triggerSet: TriggerSet<Data> = {
             }
           }
         }
-        if (pattern) {
+        if (typeof pattern === 'number') {
           // must always be incremented even if the boss rotates
           data.ttokSandOrbOnSet++;
         }
