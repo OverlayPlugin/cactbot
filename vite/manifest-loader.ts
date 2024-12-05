@@ -16,7 +16,7 @@ const recurseDir = (dir: string): string[] => {
   });
 };
 
-const ignorePathRegexes = [/(?:^|\/)\w*_manifest\.txt$/, /(?:^|\/)readme\.\w*$/i];
+const ignorePathRegexes = [/(?:^|\/)\w*\.manifest$/, /(?:^|\/)readme\.\w*$/i];
 
 const findManifestFiles = (dir: string): string[] => {
   const actualDir = fs.lstatSync(dir).isFile() ? path.dirname(dir) : dir;
@@ -41,7 +41,7 @@ export default function manifestLoader(
   return [
     ...manifestFiles.map(({ dir, filename }) =>
       virtual({
-        [`${cwd}/${dir}/${filename}`]: (() => {
+        [filename]: (() => {
           const lines = findManifestFiles(dir);
 
           let importStr = '';
@@ -84,13 +84,13 @@ export default function manifestLoader(
       return {
         name: 'timeline-loader',
         resolveId(id) {
-          if (id.startsWith('timeline:') && id.endsWith('.txt') && !id.endsWith('manifest.txt')) {
+          if (id.startsWith('timeline:') && id.endsWith('.txt')) {
             return `\0${id}`;
           }
           return null;
         },
         async load(id) {
-          if (id.startsWith(PREFIX) && id.endsWith('.txt') && !id.endsWith('manifest.txt')) {
+          if (id.startsWith(PREFIX) && id.endsWith('.txt')) {
             const fsPath = id.slice(PREFIX.length);
             const content = await readFile(fsPath, 'utf-8');
             // watch the file for HMR

@@ -92,8 +92,8 @@ const config: UserConfig = {
       ],
     }),
     ...manifestLoader([
-      { dir: 'ui/raidboss/data', filename: 'raidboss_manifest.txt' },
-      { dir: 'ui/oopsyraidsy/data', filename: 'oopsy_manifest.txt' },
+      { dir: 'ui/raidboss/data', filename: 'raidboss.manifest' },
+      { dir: 'ui/oopsyraidsy/data', filename: 'oopsy.manifest' },
     ]),
     ...(isCI ? [] : [checker({ typescript: true })]),
   ],

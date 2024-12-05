@@ -1,7 +1,8 @@
+import raidbossFileData from 'raidboss.manifest';
+
 import { UnreachableCode } from '../../../../resources/not_reached';
 import Util from '../../../../resources/util';
 import { LooseTrigger } from '../../../../types/trigger';
-import raidbossFileData from '../../data/raidboss_manifest.txt';
 import { PopupTextGenerator, TriggerHelper } from '../../popup-text';
 import { RaidbossOptions } from '../../raidboss_options';
 import { TimelineLoader } from '../../timeline';
