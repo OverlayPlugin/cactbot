@@ -1,0 +1,20 @@
+{
+  "ts-node": {
+    "moduleTypes": {
+      "webpack/*": "cjs",
+      // Globs are also supported with the same behavior as tsconfig "include"
+      "webpack/**/*": "cjs"
+    },
+    "esm": true
+  },
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "module": "CommonJS",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "./webpack"
+  ]
+}

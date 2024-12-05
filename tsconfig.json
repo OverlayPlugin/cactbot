@@ -1,15 +1,7 @@
 {
-  "ts-node": {
-    "moduleTypes": {
-      "webpack/*": "cjs",
-      // Globs are also supported with the same behavior as tsconfig "include"
-      "webpack/**/*": "cjs"
-    },
-    "esm": true
-  },
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
+    "module": "ES2022",
     "allowJs": true,
     "strict": true,
     "declaration": false,
@@ -17,7 +9,7 @@
     "types": [
       "node"
     ],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "skipLibCheck": false,
     "esModuleInterop": true,
     "rootDir": "./",
@@ -38,6 +30,11 @@
     //    "noPropertyAccessFromIndexSignature": false, // used by trigger output strings
     "forceConsistentCasingInFileNames": true
   },
+    "include": [
+    "./ui",
+    "./types",
+    "./resources"
+  ],
   "exclude": [
     "./eslint",
     "./.eslintrc.cjs",
@@ -46,6 +43,6 @@
   ],
   "references": [
     { "path": "./tsconfig.node.json" },
-    { "path": "./tsconfig.project.json" }
+    { "path": "./tsconfig.webpack.json" }
   ]
 }
