@@ -10,7 +10,9 @@
     "./.github/scripts",
     "./eslint",
     "./.eslintrc.cjs",
-    "./.mocharc.cjs"
+    "./.mocharc.cjs",
+    "./vite",
+    "./vite.config.ts"
   ],
   "exclude": [
     "./dist"
