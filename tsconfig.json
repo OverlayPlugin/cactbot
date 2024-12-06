@@ -38,11 +38,6 @@
     "./ui",
     "./types",
     "./resources",
-    "./util",
-    "./test",
-    "./webpack",
-    "./vite",
-    "./vite.config.ts"
   ],
   "exclude": [
     "./eslint",
