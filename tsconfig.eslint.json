@@ -6,7 +6,6 @@
     "./resources",
     "./util",
     "./test",
-    "./webpack",
     "./user",
     "./.github/scripts",
     "./eslint",

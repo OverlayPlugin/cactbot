@@ -46,7 +46,6 @@
     "**/*.spec.ts"
   ],
   "references": [
-    { "path": "./tsconfig.node.json" },
-    { "path": "./tsconfig.webpack.json" }
+    { "path": "./tsconfig.node.json" }
   ]
 }
