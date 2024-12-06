@@ -196,9 +196,9 @@ const processOopsyFile = (
   thisCoverage.oopsy = { num: numTriggers };
 };
 
-const processOopsyCoverage = async (manifest: string, coverage: Coverage) => {
-  const manifestLines = findManifestFiles(manifest);
-  const dataDir = path.dirname(manifest);
+const processOopsyCoverage = async (dir: string, coverage: Coverage) => {
+  const manifestLines = findManifestFiles(dir);
+  const dataDir = dir;
   for (const line of manifestLines) {
     if (!line.endsWith('.js') && !line.endsWith('.ts'))
       continue;
