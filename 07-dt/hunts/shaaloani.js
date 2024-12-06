@@ -584,33 +584,33 @@ Options.Triggers.push({
           awaySide = output.leftFlank();
           rotation = 3;
         }
-        if (pattern) {
-          const safeSpot = sandspoutPattern & pattern;
-          let backFrontSpot = TtokSafeSpots.All;
-          if (safeSpot & TtokSafeSpots.Back) {
-            backFrontSpot = TtokSafeSpots.Back;
-            dir1 = 'back';
-          } else if (safeSpot & TtokSafeSpots.Front) {
-            backFrontSpot = TtokSafeSpots.Front;
-            dir1 = 'front';
-          }
-          if (safeSpot & backFrontSpot & TtokSafeSpots.Right) {
-            dir2 = 'right';
-          } else if (safeSpot & backFrontSpot & TtokSafeSpots.Left) {
-            dir2 = 'left';
-          }
-          data.ttokSandOrbOnSet++;
-          data.ttokRotated = rotation;
+        if (pattern === undefined) {
           return {
-            alertText: output.triple({
-              inOut: output.outOfHitbox(),
-              dir2: output[dir1](),
-              dir3: output[dir2](),
-            }),
+            infoText: output.awayFrom({ out: output.outOfHitbox(), dir: awaySide }),
           };
         }
+        const safeSpot = sandspoutPattern & pattern;
+        let backFrontSpot = TtokSafeSpots.All;
+        if (safeSpot & TtokSafeSpots.Back) {
+          backFrontSpot = TtokSafeSpots.Back;
+          dir1 = 'back';
+        } else if (safeSpot & TtokSafeSpots.Front) {
+          backFrontSpot = TtokSafeSpots.Front;
+          dir1 = 'front';
+        }
+        if (safeSpot & backFrontSpot & TtokSafeSpots.Right) {
+          dir2 = 'right';
+        } else if (safeSpot & backFrontSpot & TtokSafeSpots.Left) {
+          dir2 = 'left';
+        }
+        data.ttokSandOrbOnSet++;
+        data.ttokRotated = rotation;
         return {
-          infoText: output.awayFrom({ out: output.outOfHitbox(), dir: awaySide }),
+          alertText: output.triple({
+            inOut: output.outOfHitbox(),
+            dir2: output[dir1](),
+            dir3: output[dir2](),
+          }),
         };
       },
     },
@@ -635,13 +635,18 @@ Options.Triggers.push({
         } else if (tempest & TtokSafeSpots.Out) {
           inOut = 'out';
         }
+        // must always be incremented even if the boss rotates
+        data.ttokSandOrbOnSet++;
+        if (pattern === undefined) {
+          return output[inOut]();
+        }
         if (tempest === TtokSafeSpots.InRight) {
           rightLeft = 'right';
         } else if (tempest === TtokSafeSpots.InLeft) {
           rightLeft = 'left';
         }
         // if the boss rotates we give up and only call out the Tempest portion.
-        if (pattern && data.ttokRotated === 0) {
+        if (data.ttokRotated === 0) {
           const safeSpot = tempest & pattern;
           if (safeSpot & TtokSafeSpots.Back) {
             backFrontSpot = TtokSafeSpots.Back;
@@ -659,10 +664,6 @@ Options.Triggers.push({
               rightLeft = 'left';
             }
           }
-        }
-        if (pattern) {
-          // must always be incremented even if the boss rotates
-          data.ttokSandOrbOnSet++;
         }
         if (rightLeft && backFront) {
           return output.triple({
