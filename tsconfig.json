@@ -37,7 +37,7 @@
   "include": [
     "./ui",
     "./types",
-    "./resources",
+    "./resources"
   ],
   "exclude": [
     "./eslint",
