@@ -767,7 +767,7 @@ export class TimelineParser {
             timeline.options.ParserLanguage,
             timeline.replacements,
           ).params;
-          line = line.replace(/{[^}]*}/, `{ ${JSON.stringify(translatedParams)} }`);
+          line = line.replace(/{[^}]*}/, JSON.stringify(translatedParams));
         }
       }
 

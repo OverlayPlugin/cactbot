@@ -20,7 +20,7 @@ async function main() {
   fs.rmSync('dist', { recursive: true, force: true });
   fs.mkdirSync('npm-package');
 
-  await exec('npx ttsc --declaration');
+  await exec('npx tsc --declaration');
   fs.renameSync('dist/ui', 'npm-package/ui');
   fsExtra.copySync('types', 'npm-package/types', {});
   fs.renameSync('dist/resources', 'npm-package/resources');

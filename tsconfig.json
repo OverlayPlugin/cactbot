@@ -1,31 +1,19 @@
 {
   "ts-node": {
-    "compiler": "ttypescript",
-    "moduleTypes": {
-      "webpack/*": "cjs",
-      // Globs are also supported with the same behavior as tsconfig "include"
-      "webpack/**/*": "cjs"
-    },
-    "esm": true
+    "experimentalSpecifierResolution": "node"
   },
   "compilerOptions": {
-    "plugins": [
-      {
-        "transform": "@zoltu/typescript-transformer-append-js-extension/output/index.js",
-        "after": true
-      }
-    ],
-
     "target": "ES2022",
     "module": "ES2022",
     "allowJs": true,
     "strict": true,
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "types": [
       "node"
     ],
-    "moduleResolution": "node",
+    "composite": true,
+    "moduleResolution": "bundler",
     "skipLibCheck": false,
     "esModuleInterop": true,
     "rootDir": "./",
@@ -61,5 +49,9 @@
     "./.eslintrc.cjs",
     "./dist",
     "**/*.spec.ts"
+  ],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.webpack.json" }
   ]
 }
