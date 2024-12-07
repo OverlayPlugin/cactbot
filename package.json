@@ -112,12 +112,14 @@
     "style-loader": "^3.3.1",
     "stylelint": "^14.8.2",
     "stylelint-config-standard": "^25.0.0",
+    "systemjs": "^6.15.1",
     "tar-fs": "^2.1.1",
     "ts-loader": "^9.3.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^3.9.0",
     "vite": "^6.0.0",
     "vite-plugin-checker": "^0.8.0",
+    "vite-plugin-minify": "^2.1.0",
     "vite-plugin-static-copy": "^2.2.0"
   },
   "engines": {
@@ -159,5 +161,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "packageManager": "npm@10.8.2+sha512.c7f0088c520a46596b85c6f8f1da943400199748a0f7ea8cb8df75469668dc26f6fb3ba26df87e2884a5ebe91557292d0f3db7d0929cdb4f14910c3032ac81fb"
 }

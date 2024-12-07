@@ -8,11 +8,11 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import manifestLoader from './manifest-loader';
 
 const config: UserConfig = {
+  base: './',
   build: {
-    // Do not emit assets, as they are copied by viteStaticCopy
-    assetsInlineLimit: 0,
-    emitAssets: false,
-
+    assetsDir: '',
+    assetsInlineLimit: 50 * 1024,
+    modulePreload: false,
     rollupOptions: {
       input: {
         config: resolve(__dirname, '..', 'ui/config/config.html'),
@@ -35,7 +35,9 @@ const config: UserConfig = {
         test: resolve(__dirname, '..', 'ui/test/test.html'),
       },
       output: {
-        assetFileNames: '[name].[ext]',
+        assetFileNames: (chunkInfo) => {
+          return `${chunkInfo.originalFileNames[0]}`;
+        },
         chunkFileNames: '[name].bundle.js',
         manualChunks: (id) => {
           if (/ui\/raidboss\/data\/.*(?:ts|js|txt\?raw)$/.test(id) || /^\0?timeline:/.test(id)) {
@@ -47,7 +49,7 @@ const config: UserConfig = {
           if (/ui\/raidboss\/(?:raidemulator.ts$|emulator\/.*(?:ts|js)$)/.test(id)) {
             return 'ui/raidboss/raidemulator';
           }
-          if (/resources\/.*\.(?:ts|js)$/.test(id)) {
+          if (/resources\/.*\.(?:ts|js)$/.test(id) || id.includes('node_modules')) {
             return 'ui/common/vendor';
           }
           if (!/\.(?:ts|js)$/.test(id)) {
@@ -84,10 +86,6 @@ const config: UserConfig = {
       targets: [
         {
           src: 'resources/{ffxiv,sounds,images}/**/*',
-          dest: '',
-        },
-        {
-          src: 'ui/**/*.css',
           dest: '',
         },
         {
