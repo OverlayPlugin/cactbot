@@ -18,7 +18,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "build-gh-pages": "npm run build -- --sourcemap inline",
     "start": "vite",
     "fetch-deps": "node --loader=ts-node/esm ./util/fetch_deps.ts",
@@ -59,6 +59,10 @@
     "@babel/preset-typescript": "^7.14.5",
     "@dprint/json": "^0.16.0",
     "@dprint/typescript": "^0.75.0",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
     "@rollup/plugin-virtual": "^3.0.2",
     "@types/argparse": "^1.0.38",
     "@types/chai": "^4.3.1",
@@ -76,6 +80,7 @@
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
     "@typescript-eslint/utils": "^7.11.0",
+    "@web/rollup-plugin-html": "^2.3.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.3.6",
     "chalk": "^2.4.2",
@@ -109,6 +114,9 @@
     "postcss": "^8.3.5",
     "proxy-agent": "^5.0.0",
     "recast": "^0.20.4",
+    "rollup": "^4.28.1",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-css-only": "^4.5.2",
     "style-loader": "^3.3.1",
     "stylelint": "^14.8.2",
     "stylelint-config-standard": "^25.0.0",
@@ -161,6 +169,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "packageManager": "npm@10.8.2+sha512.c7f0088c520a46596b85c6f8f1da943400199748a0f7ea8cb8df75469668dc26f6fb3ba26df87e2884a5ebe91557292d0f3db7d0929cdb4f14910c3032ac81fb"
+  }
 }
