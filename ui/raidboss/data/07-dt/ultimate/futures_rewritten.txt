@@ -75,14 +75,14 @@ hideall "--sync--"
 239.0 "--untargetable--"
 244.6 "Axe Kick/Scythe Kick" Ability { id: ["9D0A", "9D0B"], source: "Oracle's Reflection" }
 245.5 "The House of Light" Ability { id: "9D0E" }
-247.2 "Frigid Stone" Ability { id: "9D07", source: "Usurper of Frost" }
-247.6 "Icicle Impact" Ability { id: "9D06", source: "Usurper of Frost" }
+247.2 "Frigid Stone" Ability { id: "9D07" }
+247.6 "Icicle Impact" Ability { id: "9D06" }
 248.4 "--center--" Ability { id: "9CEF" }
 251.5 "Heavenly Strike" Ability { id: "9D0F", source: "Usurper of Frost" }
-251.6 "Icicle Impact" Ability { id: "9D06", source: "Usurper of Frost" }
-254.2 "Frigid Needle" Ability { id: "9D08", source: "Usurper of Frost" }
+251.6 "Icicle Impact" Ability { id: "9D06" }
+254.2 "Frigid Needle" Ability { id: "9D08" }
 254.6 "Sinbound Holy (cast)" Ability { id: "9D10", source: "Oracle's Reflection" }
-255.5 "Icicle Impact" Ability { id: "9D06", source: "Usurper of Frost" }
+255.5 "Icicle Impact" Ability { id: "9D06" }
 255.5 "Sinbound Holy 1 (puddles)" #Ability { id: "9D11", source: "Usurper of Frost" }
 256.9 "Sinbound Holy 2 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
 258.5 "Sinbound Holy 3 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
@@ -114,7 +114,7 @@ hideall "--sync--"
 370.8 "The House of Light" Ability { id: "9CFC", source: "Usurper of Frost" }
 376.2 "--center--" Ability { id: "9CEF", source: "Usurper of Frost" }
 379.5 "--sync--" StartsUsing { id: "9D20", source: "Usurper of Frost" }
-390.1 "Absolute Zero (enrage)" Ability { id: "9D8E", source: "Usurper of Frost" }
+390.1 "Absolute Zero (enrage)" Ability { id: "9D8D", source: "Usurper of Frost" }
 
 # Timeline entries below here are from FFLogs reports and should be re-generated with valid
 # network log files when they're available. Notably, mechanics with variations
@@ -122,6 +122,7 @@ hideall "--sync--"
 # Additionally, like all FFLogs-generated timelines, the actual entries can vary significantly over time.
 
 # Adds Phase
+# The Heimal Storm casts from the Crystals of Light will stop once they all are killed.
 392.4 "Swelling Frost" Ability { id: "9D21", source: "Usurper of Frost" }
 424.4 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
 425.4 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
@@ -130,16 +131,17 @@ hideall "--sync--"
 431.8 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 434.7 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
 434.9 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
-438.1 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
+438.1 "Hiemal Storm?" Ability { id: "9D40", source: "Crystal of Light" }
 439.9 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
-441.3 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
-444.5 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
+441.3 "Hiemal Storm?" Ability { id: "9D40", source: "Crystal of Light" }
+444.5 "Hiemal Storm?" Ability { id: "9D40", source: "Crystal of Light" }
 445.2 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
-447.7 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
+447.7 "Hiemal Storm?" Ability { id: "9D40", source: "Crystal of Light" }
 450.5 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
+455.7 "Endless Ice Age (enrage)" Ability { id: "9D43", source: "Ice Veil" } # interrupted once <50% HP
 
 # Phase Three
-488.8 "--sync--" WasDefeated { source: 'Ice Veil' } window 488.8,10
+488.8 "--sync--" WasDefeated { target: 'Ice Veil' } window 488.8,10
 500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500.0,0
 514.3 "--targetable--"
 518.3 "Hell's Judgment" Ability { id: "9D49", source: "Oracle of Darkness" }
