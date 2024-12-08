@@ -10,7 +10,9 @@
   },
   "include": [
     "./util",
-    "./test"
+    "./test",
+    "./vite",
+    "./vite.config.ts"
   ],
   "references": [{ "path": "./tsconfig.json" }]
 }

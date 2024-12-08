@@ -29,8 +29,8 @@ type MissingTranslationsDict = {
 // Paths are relative to current file.
 // We can't import the manifest directly from util/ because that's webpack magic,
 // so need to do the same processing its loader would do.
-const raidbossManifest = '../ui/raidboss/data/raidboss_manifest.txt';
-const oopsyManifest = '../ui/oopsyraidsy/data/oopsy_manifest.txt';
+const raidbossManifest = '../ui/raidboss/data/';
+const oopsyManifest = '../ui/oopsyraidsy/data/';
 const outputFileName = 'coverage/coverage_report.ts';
 
 const missingOutputFileNames = {
@@ -99,12 +99,12 @@ const processRaidbossFile = (
 };
 
 const processRaidbossCoverage = async (
-  manifest: string,
+  dir: string,
   coverage: Coverage,
   missingTranslations: MissingTranslationsDict,
 ) => {
-  const manifestLines = findManifestFiles(manifest);
-  const dataDir = path.dirname(manifest);
+  const manifestLines = findManifestFiles(dir);
+  const dataDir = dir;
   for (const line of manifestLines) {
     if (!line.endsWith('.js') && !line.endsWith('.ts'))
       continue;
@@ -196,9 +196,9 @@ const processOopsyFile = (
   thisCoverage.oopsy = { num: numTriggers };
 };
 
-const processOopsyCoverage = async (manifest: string, coverage: Coverage) => {
-  const manifestLines = findManifestFiles(manifest);
-  const dataDir = path.dirname(manifest);
+const processOopsyCoverage = async (dir: string, coverage: Coverage) => {
+  const manifestLines = findManifestFiles(dir);
+  const dataDir = dir;
   for (const line of manifestLines) {
     if (!line.endsWith('.js') && !line.endsWith('.ts'))
       continue;
