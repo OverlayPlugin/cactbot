@@ -493,6 +493,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
+        'Shining Armor + Frost Armor': 'Shining + Frost Armor',
         'Sinbound Fire III/Sinbound Thunder III': 'Sinbound Fire/Thunder',
       },
     },
