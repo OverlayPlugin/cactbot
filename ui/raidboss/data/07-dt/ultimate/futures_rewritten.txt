@@ -61,6 +61,8 @@ hideall "--sync--"
 160.2 "Burnished Glory (enrage)" Ability { id: "9CC0", source: "Fatebreaker" }
 
 # Phase Two
+# Source actors are elided on some lines where stale data can make P1 actors fill it in.
+# Ability IDs should be sufficient in those cases.
 # Sync on the map change
 200.0 "--sync--" MapEffect { flags: "00020001", location: "17" } window 200.0,0
 204.1 "--targetable--"
@@ -72,10 +74,10 @@ hideall "--sync--"
 235.9 "Diamond Dust" Ability { id: "9D05", source: "Usurper of Frost" }
 239.0 "--untargetable--"
 244.6 "Axe Kick/Scythe Kick" Ability { id: ["9D0A", "9D0B"], source: "Oracle's Reflection" }
-245.5 "The House of Light" Ability { id: "9D0E", source: ["Fatebreaker's Image", "Oracle's Reflection", "Usurper Of Frost"] }
+245.5 "The House of Light" Ability { id: "9D0E" }
 247.2 "Frigid Stone" Ability { id: "9D07", source: "Usurper of Frost" }
 247.6 "Icicle Impact" Ability { id: "9D06", source: "Usurper of Frost" }
-248.4 "--center--" Ability { id: "9CEF", source: "Oracle's Reflection" }
+248.4 "--center--" Ability { id: "9CEF" }
 251.5 "Heavenly Strike" Ability { id: "9D0F", source: "Usurper of Frost" }
 251.6 "Icicle Impact" Ability { id: "9D06", source: "Usurper of Frost" }
 254.2 "Frigid Needle" Ability { id: "9D08", source: "Usurper of Frost" }
@@ -100,11 +102,13 @@ hideall "--sync--"
 340.7 "Luminous Hammer 1" #Ability { id: "9D1A", source: "Usurper of Frost" }
 342.3 "Luminous Hammer 2" #Ability { id: "9D1A", source: "Usurper of Frost" }
 343.9 "Luminous Hammer 3" #Ability { id: "9D1A", source: "Usurper of Frost" }
-344.0 "Bright Hunger" Ability { id: "9D15", source: "Usurper of Frost" }
+344.0 "Bright Hunger (solo towers)" Ability { id: "9D15", source: "Usurper of Frost" }
 345.4 "Luminous Hammer 4" #Ability { id: "9D1A", source: "Usurper of Frost" }
 347.0 "Luminous Hammer 5" #Ability { id: "9D1A", source: "Usurper of Frost" }
 349.8 "Powerful Light" Ability { id: "9D19", source: "Usurper of Frost" }
-358.8 "Bright Hunger" Ability { id: "9D15", source: "Usurper of Frost" }
+352.2 "Burst 1" #Ability { id: "9D1B", source: "Holy Light" }
+355.2 "Burst 2" #Ability { id: "9D1B", source: "Holy Light" }
+358.8 "Bright Hunger (group tower)" Ability { id: "9D15", source: "Usurper of Frost" }
 361.9 "Banish III" Ability { id: ["9D1C", "9D1D"], source: "Usurper of Frost" }
 364.9 "--targetable--"
 370.8 "The House of Light" Ability { id: "9CFC", source: "Usurper of Frost" }
@@ -135,7 +139,9 @@ hideall "--sync--"
 450.5 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
 
 # Phase Three
+488.8 "--sync--" WasDefeated { source: 'Ice Veil' } window 488.8,10
 500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500.0,0
+514.3 "--targetable--"
 518.3 "Hell's Judgment" Ability { id: "9D49", source: "Oracle of Darkness" }
 521.4 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
 532.4 "Ultimate Relativity" Ability { id: "9D4A", source: "Oracle of Darkness" }
