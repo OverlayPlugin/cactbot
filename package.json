@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
   "version": "0.33.3",
-  "releaseSummary": "FRU fix",
+  "releaseSummary": "FRU fixes",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
