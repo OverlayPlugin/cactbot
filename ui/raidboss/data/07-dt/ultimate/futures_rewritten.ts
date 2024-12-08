@@ -659,9 +659,9 @@ const triggerSet: TriggerSet<Data> = {
             case 'opposite':
               return output.aaccCursed!();
             case 'clockwise':
-              return output.aaccClockwise!();
+              return output.aaccRotateCCW!();
             case 'counterclockwise':
-              return output.aaccCounterclockwise!();
+              return output.aaccRotateCW!();
             default:
               break;
           }
@@ -671,10 +671,10 @@ const triggerSet: TriggerSet<Data> = {
         aaccCursed: {
           en: 'Cursed Add - Fast Clockwise',
         },
-        aaccClockwise: {
+        aaccRotateCCW: {
           en: 'Rotate Counterclockwise (away from add)',
         },
-        aaccCounterclockwise: {
+        aaccRotateCW: {
           en: 'Rotate Clockwise (away from add)',
         },
         same: {
