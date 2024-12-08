@@ -402,14 +402,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'FRU P2 Icicle Impact Initial Collect',
-      type: 'StartsUsing',
+      type: 'StartsUsingExtra',
       netRegex: { id: '9D06' },
       // there are 2 actors 180 degrees apart, but we only need to collect one
       condition: (data) => data.p2IcicleImpactStart === 'unknown',
       suppressSeconds: 1,
       run: (data, matches) => {
-        const x = parseInt(matches.x);
-        const y = parseInt(matches.y);
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
         const dir = Directions.xyTo8DirOutput(x, y, centerX, centerY);
         data.p2IcicleImpactStart = dir;
       },
