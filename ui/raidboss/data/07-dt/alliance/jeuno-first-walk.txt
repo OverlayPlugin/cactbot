@@ -1,11 +1,12 @@
 ### JEUNO: THE FIRST WALK
 # ZoneId: 1248
 
-
 hideall "--Reset--"
 hideall "--sync--"
 
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Prishe Of The Distant Chains #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 # -ii 9FE6 9FF1 9FF3 9FEB 9FEC 9FED A003 9FF5 9FFE 9FFF
 
@@ -186,6 +187,10 @@ hideall "--sync--"
 # A003 Holy: Spread marker damage
 
 
+#~~~~~~~~~~~~~~~~~~~~~#
+# Fafnir The Forgotten#
+#~~~~~~~~~~~~~~~~~~~~~#
+
 # -ii 9BF2 9F72 9F73 9F74 9F75 9F76 9F8B 9F8C 9F95 9F98 9F9C A156 A157 A158 A159 9F90 9F8E
 # -ic "Biting Wind" "Darter" "Ravaging Wind"
 
@@ -291,68 +296,265 @@ hideall "--sync--"
 
 
 # IGNORED ABILITIES
-# 9BF2 Baleful Breath
-# 9EB9 --sync--
-# 9F72 Hurricane Wing
-# 9F73 Hurricane Wing
-# 9F74 Hurricane Wing
-# 9F75 Hurricane Wing
-# 9F76 Hurricane Wing
-# 9F8B Great Whirlwind
-# 9F8C Great Whirlwind
-# 9F95 Baleful Breath
-# 9F97 Sharp Spike
-# 9F9C --sync--
-# A156 Hurricane Wing
-# A157 Hurricane Wing
-# A158 Hurricane Wing
-# A159 Hurricane Wing
+# 9BF2 Baleful Breath: Multi-hit stack marker castbar
+# 9EB9 --sync--: Auto-attack
+# 9F72 Hurricane Wing: Cyclone raidwide, hit 2
+# 9F73 Hurricane Wing: Cyclone raidwide, hit 3
+# 9F74 Hurricane Wing: Cyclone raidwide, hit 4
+# 9F75 Hurricane Wing: Cyclone raidwide, hit 5
+# 9F76 Hurricane Wing: Cyclone raidwide, hit 6
+# 9F8B Great Whirlwind: Roving puddle AoEs, Ravaging Wind (big)
+# 9F8C Great Whirlwind: Roving puddle AoEs, BIting Wind (small)
+# 9F95 Baleful Breath: Multi-hit stack marker middle hits
+# 9F98 Sharp Spike: Cleaving tank busters
+# 9F9C --sync--: Darter auto?
+# A156 Hurricane Wing: Cyclone raidwide, hit 7
+# A157 Hurricane Wing: Cyclone raidwide, hit 8
+# A158 Hurricane Wing: Cyclone raidwide, hit 9
+# A159 Hurricane Wing: Cyclone raidwide, hit 10
 
 # ALL ENCOUNTER ABILITIES
 # 9B76 Baleful Breath: Multi-hit stack marker, final hit
-# 9BC1 Great Whirlwind:
-# 9BC2 Great Whirlwind
-# 9BF2 Baleful Breath
-# 9EB9 --sync--
-# 9F6B Offensive Posture
-# 9F6D Baleful Nail
-# 9F6E Offensive Posture
-# 9F6F Dragon Breath
-# 9F70 Offensive Posture
+# 9BC1 Great Whirlwind: Initial puddles, Ravaging Wind (big)
+# 9BC2 Great Whirlwind: Initial puddles, Biting Wind (small)
+# 9BF2 Baleful Breath: Multi-hit stack marker castbar
+# 9EB9 --sync--: Auto-attack
+# 9F6B Offensive Posture: Spike Flail windup
+# 9F6D Baleful Nail: Reposition
+# 9F6E Offensive Posture: Dragon breath windup
+# 9F6F Dragon Breath: Outer ring fire breath
+# 9F70 Offensive Posture: Touchdown windup
 # 9F71 Hurricane Wing: Cyclone raidwide, hit 1
 # 9F72 Hurricane Wing: Cyclone raidwide, hit 2
 # 9F73 Hurricane Wing: Cyclone raidwide, hit 3
 # 9F74 Hurricane Wing: Cyclone raidwide, hit 4
 # 9F75 Hurricane Wing: Cyclone raidwide, hit 5
 # 9F76 Hurricane Wing: Cyclone raidwide, hit 6
-# 9F78 Hurricane Wing
-# 9F79 Hurricane Wing
-# 9F7A Hurricane Wing
-# 9F7B Hurricane Wing
-# 9F82 Hurricane Wing
-# 9F83 Hurricane Wing
-# 9F84 Hurricane Wing
-# 9F85 Hurricane Wing
-# 9F8B Great Whirlwind
-# 9F8C Great Whirlwind
+# 9F78 Hurricane Wing: First cyclone ring, out to in, hit 1
+# 9F79 Hurricane Wing: First cyclone ring, out to in, hit 2
+# 9F7A Hurricane Wing: First cyclone ring, out to in, hit 3
+# 9F7B Hurricane Wing: First cyclone ring, out to in, hit 4
+# 9F7D Hurricane Wing: First cyclone ring, in to out, hit 1
+# 9F7E Hurricane Wing: First cyclone ring, in to out, hit 2
+# 9F7F Hurricane Wing: First cyclone ring, in to out, hit 3
+# 9F80 Hurricane Wing: First cyclone ring, in to out, hit 4
+# 9F82 Hurricane Wing: Second/third cyclone ring, out to in, hit 1
+# 9F83 Hurricane Wing: Second/third cyclone ring, out to in, hit 2
+# 9F84 Hurricane Wing: Second/third cyclone ring, out to in, hit 3
+# 9F85 Hurricane Wing: Second/third cyclone ring, out to in, hit 4
+# 9F87 Hurricane Wing: Second/third cyclone ring, in to out, hit 1
+# 9F88 Hurricane Wing: Second/third cyclone ring, in to out, hit 2
+# 9F89 Hurricane Wing: Second/third cyclone ring, in to out, hit 3
+# 9F8A Hurricane Wing: Second/third cyclone ring, in to out, hit 4
+# 9F8B Great Whirlwind: Roving puddle AoEs, Ravaging Wind (big)
+# 9F8C Great Whirlwind: Roving puddle AoEs, BIting Wind (small)
 # 9F8D Absolute Terror: Hot Tail castber
 # 9F8E Absolute Terror: Hot Tail
 # 9F8F Winged Terror: Hot Wing castbar
 # 9F90 Winged Terror: Hot Wing
-# 9F91 Horrid Roar
-# 9F92 Horrid Roar
-# 9F93 Horrid Roar
-# 9F94 Baleful Breath
-# 9F95 Baleful Breath
-# 9F96 Dark Matter Blast
+# 9F91 Horrid Roar: Castbar for puddles and spreads
+# 9F92 Horrid Roar: Targeted puddles
+# 9F93 Horrid Roar: Spread marker
+# 9F94 Baleful: Multi-hit stack marker first hit
+# 9F95 Baleful Breath: Multi-hit stack marker middle hits
+# 9F96 Dark Matter Blast: Raidwide
 # 9F97 Sharp Spike: Tank buster castbar
 # 9F98 Sharp Spike: Cleaving tank busters
 # 9F99 Shuddering Earth: Reposition
-# 9F9B Pestilent Sphere
-# 9F9C --sync--
-# A09A Spike Flail
-# A09C Touchdown
+# 9F9B Pestilent Sphere: Buster? Darter add
+# 9F9C --sync--: Darter auto?
+# A09A Spike Flail: 270-degree rear cone AoE
+# A09C Touchdown: Large circle AoE
 # A156 Hurricane Wing: Cyclone raidwide, hit 7
 # A157 Hurricane Wing: Cyclone raidwide, hit 8
 # A158 Hurricane Wing: Cyclone raidwide, hit 9
 # A159 Hurricane Wing: Cyclone raidwide, hit 10
+
+
+#~~~~~~~~~~~~#
+# Ark Angels #
+#~~~~~~~~~~~~#
+
+# -ii 9EAF A068 806D 806E A06F A073 A075 A077 A088 A090 A091 A092 A093
+
+# The La'loff Amphitheater will be sealed off
+30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1420" } window 30000,1
+30004.1 "--sync--" Ability { id: ["A062", "A063", "A064"], source: ["Ark Angel TT", "Ark Angel GK", "Ark Angel MR"] } # The Decisive Battle
+30013.2 "Cloudsplitter" Ability { id: "A076", source: "Ark Angel MR" }
+30022.2 "Meikyo Shisui" Ability { id: "A078", source: "Ark Angel GK" }
+30026.2 "Tachi: Yukikaze" Ability { id: "A079", source: "Ark Angel GK" }
+30030.2 "Tachi: Gekko" Ability { id: "A07A", source: "Ark Angel GK" }
+30030.8 "Tachi: Yukikaze" Ability { id: "A079", source: "Ark Angel GK" }
+30035.1 "Tachi: Kasha" Ability { id: "A07B", source: "Ark Angel GK" }
+30038.1 "Concerted Dissolution" Ability { id: "A07C", source: "Ark Angel GK" }
+30043.7 "Light's Chain" Ability { id: "A07D", source: "Ark Angel GK" }
+30043.8 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30046.4 "Meteor (castbar)" StartsUsing { id: 'A08A', source: 'Ark Angel TT'} duration 10.7
+30057.1 "Meteor?" Ability { id: 'A08A', source: 'Ark Angel TT'}
+30058.9 "--MR center--" Ability { id: "A06A", source: "Ark Angel MR" }
+30065.1 "Havoc Spiral" Ability { id: "A06B", source: "Ark Angel MR" } duration 8
+30076.9 "Spiral Finish" Ability { id: "A06C", source: "Ark Angel MR" }
+30092.3 "Dragonfall (cast)" Ability { id: "A07E", source: "Ark Angel GK" }
+30092.5 "Dragonfall 1 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30094.8 "Dragonfall 2 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30097.1 "Dragonfall 3 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30097.4 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30110.2 "Guillotine" Ability { id: "A067", source: "Ark Angel TT" } duration 5
+30114.4 "--sync--" Ability { id: "A069", source: "Ark Angel TT" } # Guillotine final hit
+30124.6 "--all untargetable--"
+30128.8 "--EV + HM targetable--"
+30135.0 "Utsusemi" Ability { id: "A080", source: "Ark Angel HM" }
+30137.0 "Dominion Slash" Ability { id: "A085", source: "Ark Angel EV" }
+30143.1 "Mighty Strikes" Ability { id: "A081", source: "Ark Angel HM" }
+30150.1 "Critical Strikes" Ability { id: "A082", source: "Ark Angel HM" }
+30152.5 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30155.7 "Divine Dominion" Ability { id: "A086", source: "Ark Angel EV" }
+30155.9 "Critical Strikes" Ability { id: "A082", source: "Ark Angel HM" }
+30159.3 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30168.5 "Holy" Ability { id: "A089", source: "Ark Angel EV" }
+30174.8 "--EV + HM center--" Ability { id: ["9EA9", "A356"], source: ["Ark Angel EV", "Ark Angel HM"] }
+30176.2 "--EV untargetable--"
+30176.2 "Proud Palisade" Ability { id: "A448", source: "Ark Angel EV" }
+30177.3 "Mijin Gakure (cast)" StartsUsing { id: "A08C", source: "Ark Angel HM" } duration 29.7
+30208.3 "Mijin Gakure" Ability { id: "A08C", source: "Ark Angel HM" }
+30217.6 "--sync--" Ability { id: "A06A", source: "Ark Angel MR" } window 50,10 # MR jumps to edge
+30221.8 "Rampage x4 (line indicators)" duration 3 #Ability { id: "A071", source: "Ark Angel MR" }
+30225.8 "Rampage (circle indicator)" Ability { id: "A072", source: "Ark Angel MR" }
+30226.7 "--sync--" Ability { id: "A070", source: "Ark Angel MR" } # Rampage castbar
+30226.9 "Rampage x4 (line AoE)" duration 3 #Ability { id: "A073", source: "Ark Angel MR" }
+30231.3 "Rampage (circle AoE)" Ability { id: "A074", source: "Ark Angel MR" }
+30235.5 "--MR targetable--"
+30235.5 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30248.3 "Guillotine" Ability { id: "A067", source: "Ark Angel TT" } duration 5
+30252.5 "--sync--" Ability { id: "A069", source: "Ark Angel TT" } # Guillotine
+30256.7 "--GK targetable--"
+30260.8 "Meikyo Shisui" Ability { id: "A078", source: "Ark Angel GK" }
+30264.8 "Tachi: Yukikaze 1" Ability { id: "A079", source: "Ark Angel GK" }
+30268.8 "Tachi: Gekko" Ability { id: "A07A", source: "Ark Angel GK" }
+30269.3 "Tachi: Yukikaze 2" Ability { id: "A079", source: "Ark Angel GK" }
+30273.6 "Tachi: Kasha" Ability { id: "A07B", source: "Ark Angel GK" }
+30276.6 "Concerted Dissolution" Ability { id: "A07C", source: "Ark Angel GK" }
+30279.2 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30281.2 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30282.2 "Light's Chain" Ability { id: "A07D", source: "Ark Angel GK" }
+30283.8 "Meteor (castbar)" StartsUsing { id: 'A08A', source: 'Ark Angel TT'} duration 10.7
+30286.2 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30294.5 "Meteor?" Ability { id: 'A08A', source: 'Ark Angel TT'}
+30303.6 "Arrogance Incarnate x5" Ability { id: "A087", source: "Ark Angel EV" } duration 5
+30314.4 "Cloudsplitter" Ability { id: "A076", source: "Ark Angel MR" }
+
+30325.7 label "angelLoop"
+30325.7 "--MR jump-" Ability { id: "A06A", source: "Ark Angel MR" }
+30330.1 "Rampage x4 (line indicators)" duration 3 #Ability { id: "A071", source: "Ark Angel MR" }
+30334.1 "Rampage (circle indicator)" Ability { id: "A072", source: "Ark Angel MR" }
+30335.0 "--sync--" Ability { id: "A070", source: "Ark Angel MR" } # Rampage castbar
+30335.2 "Rampage x4 (line AoE)" duration 3 #Ability { id: "A073", source: "Ark Angel MR" }
+30338.5 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30339.6 "Rampage (circle AoE)" Ability { id: "A074", source: "Ark Angel MR" }
+30351.1 "Guillotine" Ability { id: "A067", source: "Ark Angel TT" } duration 5
+30355.3 "--sync--" Ability { id: "A069", source: "Ark Angel TT" } # Guillotine
+30361.0 "--HM center--" Ability { id: "9EA9", source: "Ark Angel HM" }
+30367.3 "Mighty Strikes" Ability { id: "A194", source: "Ark Angel HM" }
+30369.4 "Critical Reaver x4 (raidwide)" duration 4 #Ability { id: "A195", source: "Ark Angel HM" }
+30387.2 "Critical Reaver (big raidwide)?" Ability { id: "A13B", source: "Ark Angel HM" }
+30401.3 "Dominion Slash?" Ability { id: "A085", source: "Ark Angel EV" }
+30403.3 "--MR center--" Ability { id: "A06A", source: "Ark Angel MR" } window 30,30
+30409.5 "Havoc Spiral" Ability { id: "A06B", source: "Ark Angel MR" } duration 8
+30419.9 "Divine Dominion" Ability { id: "A086", source: "Ark Angel EV" }
+30421.6 "Spiral Finish" Ability { id: "A06C", source: "Ark Angel MR" }
+30427.2 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30429.6 "Meteor (castbar)" StartsUsing { id: 'A08A', source: 'Ark Angel TT'} duration 10.7
+30440.3 "Meteor?" Ability { id: "A08A", source: "Ark Angel TT" }
+30450.6 "Meikyo Shisui" Ability { id: "A078", source: "Ark Angel GK" }
+30454.6 "Tachi: Yukikaze 1 (grid)" Ability { id: "A079", source: "Ark Angel GK" }
+30458.6 "Tachi: Gekko (gaze)" Ability { id: "A07A", source: "Ark Angel GK" }
+30459.2 "Tachi: Yukikaze 2 (grid)" Ability { id: "A079", source: "Ark Angel GK" }
+30463.5 "Tachi: Kasha (circle)" Ability { id: "A07B", source: "Ark Angel GK" }
+30466.5 "Concerted Dissolution" Ability { id: "A07C", source: "Ark Angel GK" }
+30467.4 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30472.1 "Light's Chain" Ability { id: "A07D", source: "Ark Angel GK" }
+30474.4 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30482.2 "Cloudsplitter" Ability { id: "A076", source: "Ark Angel MR" }
+30495.9 "Raiton" Ability { id: "A095", source: "Ark Angel HM" }
+30504.2 "Dominion Slash" Ability { id: "A085", source: "Ark Angel EV" }
+30516.2 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30523.0 "Divine Dominion" Ability { id: "A086", source: "Ark Angel EV" }
+30523.2 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30533.4 "Dragonfall (cast)" Ability { id: "A07E", source: "Ark Angel GK" }
+30533.7 "Dragonfall 1 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30536.1 "Dragonfall 2 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30538.4 "Dragonfall 3 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30558.8 "Arrogance Incarnate" Ability { id: "A087", source: "Ark Angel EV" }
+
+30577.6 "--MR Jump--" Ability { id: "A06A", source: "Ark Angel MR" } forcejump "angelLoop"
+
+
+# IGNORED ABILITIES
+# 9EAF Attack
+# A068 Guillotine: Initial frontal hits, TT
+# A06D Spiral Finish: Knockback, MR
+# A06F Havoc Spiral: Cone cyclone individual strikes, MR
+# A073 Rampage: Rampage line cast, MR
+# A075 Rampage: Rampage circle cast, MR
+# A077 Cloudsplitter: Tank cleave, MR
+# A088 Arrogance Incarnate: Multi-hit stack marker, EV
+# A090 Aethersplit: Unknown self-cast, GK
+# A091 Aethersplit: Unknown self-cast, GK
+# A092 Aethersplit: Unknown self-cast, GK
+# A093 Aethersplit: Unknown self-cast, GK
+
+# ALL ENCOUNTER ABILITIES
+# 366 attack
+# 5B5 attack
+# 9EA9 --sync-- : HM reposition
+# 9EAF --sync--: EV auto-attack
+# A061 the Decisive Battle: Inflicts Epic Hero debuff (Alpha)
+# A062 the Decisive Battle: Inflicts Vaunted Hero debuff (Gamma)
+# A063 the Decisive Battle: Inflict Fated Hero debuff (Beta)
+# A064 --sync--: TT reposition
+# A067 Guillotine: 270-degree frontal cone, TT
+# A068 Guillotine: Initial frontal hits, TT
+# A069 Guillotine: Final frontal hit, TT
+# A06A --sync--: MR reposition
+# A06B Havoc Spiral: Castbar for cone cyclone
+# A06C Spiral Finish: Knockback visuals, MR
+# A06D Spiral Finish: Knockback, MR
+# A06E Havoc Spiral: Cone cyclone activate, MR
+# A06F Havoc Spiral: Cone cyclone individual strikes, MR
+# A070 Rampage: Rampage castbar, MR
+# A071 --sync--: Rampage line indicator, MR
+# A072 --sync--: Rampage circle indicator, MR
+# A073 Rampage: Rampage line cast, MR
+# A074 Rampage: Reposition for Rampage circle, MR
+# A075 Rampage: Rampage circle cast, MR
+# A076 Cloudsplitter: Tank cleave cast, MR
+# A077 Cloudsplitter: Tank cleave, MR
+# A078 Meikyo Shisui: Wind-up for Yukikaze, GK
+# A079 Tachi: Yukikaze: Grid AoE, GK
+# A07A Tachi: Gekko: Gaze attack, GK
+# A07B Tachi: Kasha: Giant circle AoE, GK
+# A07C Concerted Dissolution: Pizza slize AoE, GK
+# A07D Light's Chain: Donut AoE, GK
+# A07E Dragonfall: Party stacks castbar, GK
+# A07F Dragonfall: Party stacks, GK
+# A080 Utsusemi: Chain castbar, HM
+# A081 Mighty Strikes: Small repeated circle AoEs, HM
+# A082 Critical Strikes: Mini-buster? HM
+# A083 Cross Reaver: Cross AoE indicator, HM
+# A084 Cross Reaver: Cross AoE, HM
+# A085 Dominion Slash: Raidwide, EV
+# A086 Divine Dominion: Chain clones disappear? EV
+# A087 Arrogance Incarnate: Multi-hit stack marker cast, EV
+# A088 Arrogance Incarnate: Multi-hit stack marker, EV
+# A089 Holy: Raidwide, EV
+# A08A Meteor: Heavy raidwide castbar, interruptible, TT
+# A08B Meteor: Heavy raidwide, TT. (Logs exist with it being used by MR, might be stale data)
+# A090 Aethersplit: Unknown self-cast, GK
+# A091 Aethersplit: Unknown self-cast, GK
+# A092 Aethersplit: Unknown self-cast, GK
+# A093 Aethersplit: Unknown self-cast, GK
+# A13B Critical Reaver: Heavy raidwide, interruptible, HM
+# A194 Mighty Strikes: Critical hit self-buff, HM
+# A195 Critical Reaver: Multi-hit raidwide, HM
+# A356 --sync--: EV reposition
+# A448 Proud Palisade: Summons Ark Shield, EV
