@@ -460,6 +460,7 @@ Options.Triggers.push({
         'Fatebreaker\'s Image': 'Abbild des fusionierten Ascians',
         'Usurper of Frost': 'Shiva-Mitron',
         'Oracle\'s Reflection': 'Spiegelbild des Orakels',
+        'Ice Veil': 'Immerfrost-Kristall',
       },
       'replaceText': {
         'Blastburn': 'Brandstoß',
@@ -490,6 +491,7 @@ Options.Triggers.push({
         'Fatebreaker\'s Image': 'double du Sabreur de destins',
         'Usurper of Frost': 'Shiva-Mitron',
         'Oracle\'s Reflection': 'reflet de la prêtresse',
+        'Ice Veil': 'bloc de glaces éternelles',
       },
       'replaceText': {
         'Blastburn': 'Explosion brûlante',
@@ -520,6 +522,7 @@ Options.Triggers.push({
         'Fatebreaker\'s Image': 'フェイトブレイカーの幻影',
         'Usurper of Frost': 'シヴァ・ミトロン',
         'Oracle\'s Reflection': '巫女の鏡像',
+        'Ice Veil': '永久氷晶',
       },
       'replaceText': {
         'Blastburn': 'バーンブラスト',
