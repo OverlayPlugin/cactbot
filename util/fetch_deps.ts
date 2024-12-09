@@ -9,7 +9,7 @@ import json5 from 'json5';
 import JSZip from 'jszip';
 import _ from 'lodash';
 import fetch from 'node-fetch';
-import ProxyAgent from 'proxy-agent';
+import { ProxyAgent } from 'proxy-agent';
 import tar from 'tar-fs';
 
 import { UnreachableCode } from '../resources/not_reached';
@@ -52,7 +52,7 @@ const endsWith = (s: string, suffix: Iterable<string>): boolean => {
 };
 
 const downloadFile = async (url: string, localPath: string): Promise<void> => {
-  const res = await fetch(url, { agent: ProxyAgent() });
+  const res = await fetch(url, { agent: new ProxyAgent() });
   await fs.writeFile(localPath, new DataView(await res.arrayBuffer()));
 };
 

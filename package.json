@@ -18,9 +18,9 @@
     "package.json"
   ],
   "scripts": {
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --progress --config webpack/webpack.prod.ts",
-    "build-gh-pages": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack --config webpack/webpack.ghpages.ts",
-    "start": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" webpack serve --config webpack/webpack.dev.ts",
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_OPTIONS=\"--loader=ts-node/esm\" webpack --progress --config webpack/webpack.prod.ts",
+    "build-gh-pages": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_OPTIONS=\"--loader=ts-node/esm\" webpack --config webpack/webpack.ghpages.ts",
+    "start": "cross-env TS_NODE_PROJECT=\"tsconfig.webpack.json\" NODE_OPTIONS=\"--loader=ts-node/esm\" webpack serve --config webpack/webpack.dev.ts",
     "fetch-deps": "node --loader=ts-node/esm ./util/fetch_deps.ts",
     "tsc-no-emit": "tsc --noEmit",
     "lint": "run-s lint:**",
@@ -110,7 +110,7 @@
     "node-fetch": "^3.2.10",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.3.5",
-    "proxy-agent": "^5.0.0",
+    "proxy-agent": "^6.4.0",
     "recast": "^0.20.4",
     "style-loader": "^3.3.1",
     "stylelint": "^14.8.2",
