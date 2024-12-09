@@ -11,7 +11,8 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   dragonBreathFacingNumber?: number;
-  spikeTargets?: string[];
+  spikeTargets: string[];
+  splitterTargets: string[];
 }
 
 const prishePunchDelays: string[] = [
@@ -23,6 +24,12 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Jeuno: The First Walk',
   zoneId: ZoneId.JeunoTheFirstWalk,
   timelineFile: 'jeuno-first-walk.txt',
+  initData: () => {
+    return {
+      spikeTargets: [],
+      splitterTargets: [],
+    };
+  },
   triggers: [
     {
       id: 'Jeuno First Walk Prishe Banishga',
@@ -188,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 7,
       response: Responses.goMiddle(),
       run: (data, matches) => {
+        console.log(matches.heading);
         const headingNumber = Directions.hdgTo8DirNum(parseFloat(matches.heading));
         data.dragonBreathFacingNumber = headingNumber;
       },
@@ -222,10 +230,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Jeuno First Walk Fafnir Sharp Spike Collect',
       type: 'HeadMarker',
       netRegex: { id: '0156', capture: true },
-      run: (data, matches) => {
-        data.spikeTargets ??= [];
-        data.spikeTargets.push(matches.target);
-      }
+      run: (data, matches) => data.spikeTargets.push(matches.target),
     },
     {
       id: 'Jeuno First Walk Fafnir Sharp Spike Call',
@@ -242,7 +247,7 @@ const triggerSet: TriggerSet<Data> = {
         // Dragon Breath is also deleted here because Sharp Spike
         // consistently follows Dragon Breath,
         // while Touchdown does not.
-        delete data.spikeTargets;
+        data.spikeTargets = [];
         delete data.dragonBreathFacingNumber;
       },
       outputStrings: {
@@ -295,6 +300,136 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'Jeuno First Walk Angels CloudSplitter Collect',
+      type: 'HeadMarker',
+      netRegex: { id: '01D0', capture: true },
+      run: (data, matches) => data.splitterTargets.push(matches.target),
+    },
+    {
+      id: 'Jeuno First Walk Angels CloudSplitter Call',
+      type: 'StartsUsing',
+      netRegex: { id: 'A077', source: 'Ark Angel MR', capture: false },
+      delaySeconds: 0.5,
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.splitterTargets?.includes(data.me))
+          return output.cleaveOnYou!();
+        return output.avoidCleave!();
+      },
+      run: (data) => data.splitterTargets = [],
+      outputStrings: {
+        cleaveOnYou: Outputs.tankCleaveOnYou,
+        avoidCleave: Outputs.avoidTankCleaves,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Angels Gekko',
+      type: 'StartsUsing',
+      netRegex: { id: 'A07A', source: 'Ark Angel GK', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      response: Responses.lookAwayFromSource(),
+    },
+    {
+      id: 'Jeuno First Walk Angels Meteor',
+      type: 'StartsUsing',
+      netRegex: { id: 'A08A', source: 'Ark Angel TT', capture: true },
+      durationSeconds: 5,
+      response: Responses.interruptIfPossible(),
+    },
+    {
+      id: 'Jeuno First Walk Spiral Finish',
+      type: 'StartsUsing',
+      netRegex: { id: 'A06C', source: 'Ark Angel MR', capture: false },
+      delaySeconds: 5.5,
+      response: Responses.knockback(),
+    },
+    {
+      id: 'Jeuno First Walk Angels Havoc Spiral Clockwise',
+      type: 'HeadMarker',
+      netRegex: { id: '00A7', capture: false },
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.clockwise!(),
+      outputStrings: {
+        clockwise: Outputs.clockwise,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Angels Havoc Spiral Counterclockwise',
+      type: 'HeadMarker',
+      netRegex: { id: '00A8', capture: false },
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.counterclockwise!(),
+      outputStrings: {
+        counterclockwise: Outputs.counterclockwise,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Angels Dragonfall',
+      type: 'StartsUsing',
+      netRegex: { id: 'A07E', source: 'Ark Angel GK', capture: false },
+      alertText: (_data, _matches, output) => output.stacks!(),
+      outputStrings: {
+        stacks: Outputs.stacks,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Angels Arrogance Incarnate',
+      type: 'HeadMarker',
+      netRegex: { id: '0131', capture: true },
+      response: Responses.stackMarkerOn(),
+    },
+    {
+      id: 'Jeuno First Walk Angels Guillotine',
+      type: 'StartsUsing',
+      netRegex: { id: 'A067', source: 'Ark Angel TT', capture: false },
+      durationSeconds: 10,
+      response: Responses.getBehind(),
+    },
+    {
+      id: 'Jeuno First Walk Angels Dominion Slash',
+      type: 'StartsUsing',
+      netRegex: { id: 'A085', source: 'Ark Angel EV', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Jeuno First Walk Angels Holy',
+      type: 'StartsUsing',
+      netRegex: { id: 'A089', source: 'Ark Angel EV', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Jeuno First Walk Angels Proud Palisade',
+      type: 'AddedCombatant',
+      netRegex: { npcBaseId: '18260', capture: false }, // Ark Shield
+      response: Responses.killAdds(),
+    },
+    {
+      id: 'Jeuno First Walk Angels Mijin Gakure',
+      type: 'RemovedCombatant',
+      netRegex: { npcBaseId: '18260', capture: false }, // Ark Shield
+      condition: (data) => data.CanSilence(),
+      alarmText: (_data, _matches, output) => output.interruptHM!(),
+      outputStrings: {
+        interruptHM: {
+          en: 'Interrupt HM',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Angels Chasing Tether',
+      type: 'Tether',
+      netRegex: { id: '0125', capture: true },
+      // Because tether sources and targets are not 100% consistent, check both.
+      condition: (data, matches) => [matches.source, matches.target].includes(data.me),
+      durationSeconds: 10,
+      alertText: (_data, _matches, output) => output.runFromTether!(),
+      outputStrings: {
+        runFromTether: {
+          en: 'Chasing tether -- run away!',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
@@ -302,6 +437,9 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Absolute Terror/Winged Terror': 'Absolute/Winged Terror',
         'Winged Terror/Absolute Terror': 'Winged/Absolute Terror',
+        'Tachi: Yukikaze': 'Yukikaze',
+        'Tachi: Gekko': 'Gekko',
+        'Tachi: Kasha': 'Kasha',
       },
     },
   ],
