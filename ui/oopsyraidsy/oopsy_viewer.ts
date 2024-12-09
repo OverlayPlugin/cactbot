@@ -1,3 +1,5 @@
+import oopsyFileData from 'oopsy.manifest';
+
 import { UnreachableCode } from '../../resources/not_reached';
 import { callOverlayHandler } from '../../resources/overlay_plugin_api';
 import PartyTracker from '../../resources/party';
@@ -5,7 +7,6 @@ import UserConfig from '../../resources/user_config';
 import { LocaleText } from '../../types/trigger';
 
 import { DamageTracker, earlyPullTriggerId } from './damage_tracker';
-import oopsyFileData from './data/oopsy_manifest.txt';
 import { MistakeCollector } from './mistake_collector';
 import defaultOptions, { OopsyOptions } from './oopsy_options';
 import { OopsySummaryList, OopsySummaryTable } from './oopsy_summary_list';
