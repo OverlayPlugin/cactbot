@@ -558,3 +558,190 @@ hideall "--sync--"
 # A195 Critical Reaver: Multi-hit raidwide, HM
 # A356 --sync--: EV reposition
 # A448 Proud Palisade: Summons Ark Shield, EV
+
+
+#~~~~~~~~~~~~~#
+# Shadow Lord #
+#~~~~~~~~~~~~~#
+
+# -ii A313 9F3E 9F3F 9F5D 9F61 9F5C 9F5D 9F5E 9F5F 9F60 9F46 9F47 9F48 9F49 A3AC 9F68 A444 A357 A358 A229 A23A A424 A425 A426 A427
+
+# The Throne Room will be sealed off
+40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1418" } window 40000,1
+40022.1 "Giga Slash 1" Ability { id: ["9F40", "94F2"], source: "Shadow Lord" }
+40024.1 "Giga Slash 2" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
+40028.1 "--center-" Ability { id: "9F6A", source: "Shadow Lord" }
+40034.4 "Umbra Smash" Ability { id: "9F5B", source: "Shadow Lord" } duration 12
+40055.8 "Giga Slash 1" Ability { id: ["9F40", "94F2"], source: "Shadow Lord" }
+40057.8 "Giga Slash 2" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
+40066.8 "Flames of Hatred" Ability { id: "9F69", source: "Shadow Lord" }
+40077.9 "Implosion" Ability { id: ["9F44", "9F45"], source: "Shadow Lord" }
+40081.0 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40089.3 "Cthonic Fury" Ability { id: "9F4A", source: "Shadow Lord" } window 89,10
+40104.4 "Burning Moat" Ability { id: "9F4D", source: "Shadow Lord" }
+40114.4 "Burning Court" Ability { id: "9F4C", source: "Shadow Lord" }
+40123.4 "Dark Nebula (cast)" Ability { id: "9F50", source: "Shadow Lord" }
+40129.5 "Dark Nebula (knockback)" Ability { id: "A23C", source: "Shadow Lord" }
+40141.5 "Implosion" Ability { id: ["9F44", "9F45"], source: "Shadow Lord" }
+40151.6 "Burning Court/Burning Moat" Ability { id: ["9F4C", "9F4D"], source: "Shadow Lord" }
+40151.6 "Burning Keep/Burning Battlements" Ability { id: ["9F4E", "9F4F"], source: "Shadow Lord" }
+40163.6 "Echoes of Agony x5" Ability { id: "A3AB", source: "Shadow Lord" } duration 5
+40177.7 "Cthonic Fury" Ability { id: "9F4B", source: "Shadow Lord" }
+40180.8 "--north--" Ability { id: "9F6A", source: "Shadow Lord" }
+40187.5 "Nightfall" Ability { id: "A0B8", source: "Shadow Lord" }
+40221.6 "Tera Slash" Ability { id: "A0B9", source: "Shadow Lord" } window 221,10
+40227.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40248.7 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40250.7 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40252.7 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+
+# ~307s loop.
+40256.7 label "lordLoop"
+40256.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40261.0 "Shadow Spawn" Ability { id: "9F52", source: "Shadow Lord" }
+40279.1 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40281.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40283.1 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+40289.1 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40292.1 "Giga Slash 1 (add)" Ability { id: ["9F40", "94F2"], source: ["Shadow Lord"] }
+40294.1 "Giga Slash 2 (add)" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
+40298.4 "Implosion (boss)" Ability { id: ["9F44", "9F45"], source: "Shadow Lord" }
+40303.1 "Implosion (add)" Ability { id: "9F44", "9F45", source: "Lordly Shadow" }
+40311.5 "Unbridled Rage" Ability { id: "9F67", source: "Shadow Lord" }
+40318.5 "Dark Nova" Ability { id: "A177", source: "Shadow Lord" } window 318,10
+40327.6 "Echoes of Agony x7" Ability { id: "A3AB", source: "Shadow Lord" } duration 7
+40341.7 "--Binding Indicator 1--" #Ability { id: "A229", source: "Shadow Lord" }
+40344.1 "--Binding Indicator 2--" #Ability { id: "A229", source: "Shadow Lord" }
+40346.5 "--Binding Indicator 1--" #Ability { id: "A229", source: "Shadow Lord" }
+40349.6 "Binding Sigil (castbar)" Ability { id: "9F55", source: "Shadow Lord" }
+40351.7 "Soul Binding 1" #Ability { id: "A22A", source: "Shadow Lord" }
+40354.1 "Soul Binding 2" #Ability { id: "A22A", source: "Shadow Lord" }
+40356.7 "Soul Binding 3" #Ability { id: "A22A", source: "Shadow Lord" }
+40357.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40361.1 "Burst" Ability { id: "A23B", source: "Shadow Lord" }
+40368.1 "Damning Strikes (castbar)" Ability { id: "9F57", source: "Shadow Lord" }
+40370.6 "Impact 1" Ability { id: "9F58", source: "Shadow Lord" }
+40373.1 "Impact 2" Ability { id: "A096", source: "Shadow Lord" }
+40375.8 "Impact 3" Ability { id: "A097", source: "Shadow Lord" }
+40383.5 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40391.8 "Cthonic Fury" Ability { id: "9F4A", source: "Shadow Lord" } window 30,30
+40397.9 "Dark Nebula (castbar)" Ability { id: "9F50", source: "Shadow Lord" }
+40412.0 "Dark Nebula 1 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40414.0 "--corner--" Ability { id: "9F6A", source: "Shadow Lord" }
+40415.0 "Dark Nebula 2 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40418.0 "Dark Nebula 3 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40421.0 "Dark Nebula 4 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40431.4 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40433.4 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40435.4 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+40438.4 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40445.4 "Burning Court/Burning Moat" Ability { id: ["9F4C", "9F4D"], source: "Shadow Lord" }
+40445.4 "Burning Keep/Burning Battlements" Ability { id: ["9F4E", "9F4F"], source: "Shadow Lord" }
+40456.8 "Dark Nova" Ability { id: "A177", source: "Shadow Lord" }
+40465.8 "Cthonic Fury" Ability { id: "9F4B", source: "Shadow Lord" }
+40469.0 "--sync--" Ability { id: "9F6A", source: "Shadow Lord" }
+40473.3 "Shadow Spawn" Ability { id: "9F52", source: "Shadow Lord" }
+40481.4 "Umbra Smash (single lines)" Ability { id: "9F5B", source: "Shadow Lord" } duration 12
+40494.9 "Umbra Smash (exalines)" Ability { id: "9F53", source: "Lordly Shadow" } duration 7
+40508.9 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40510.9 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40512.9 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+40530.9 "Doom Arc" Ability { id: "9F66", source: "Shadow Lord" }
+40556.1 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40558.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40560.1 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+
+40564.1 "--sync--" Ability { id: "9F6A", source: "Shadow Lord" } forcejump "lordLoop"
+
+# IGNORED ABILITIES
+# 9F3E Giga Slash: Giga Slash castbar, left safe first
+# 9F3F Giga Slash: Giga Slash castbar, right safe first
+# 9F46 Implosion: Chariot AoE, with 9497 left cleave
+# 9F47 Implosion: Half-room left cleave
+# 9F48 Implosion: Chariot AoE, with 9F49 right cleave
+# 9F49 Implosion: Half-room right cleave
+# 9F5C Umbra Smash: Turning animation for Smash follow-ups?
+# 9F5D Umbra Smash: 4x line AoE, line 1
+# 9F5E Umbra Smash: 4x line AoE, line 2
+# 9F5F Umbra Smash: 4x line AoE, line 3
+# 9F60 Umbra Smash: 4x line AoE, line 4
+# 9F61 Umbra Wave: Line AoE
+# 9F68 Unbridled Rage: Tank lasers, non-shared
+# A229 --sync--: Exatrines indicator
+# A23A --sync--: Unknown, maybe related to Binding Sigil targets?
+# A313 --sync--: Auto-attack
+# A357 --sync--: Damning Strikes repositions 2/3
+# A358 --sync--: Damning Strikes reposition 1
+# A3AC Echoes of Agony: Multi-hit stack marker
+# A424 Giga Slash: Nightfall: Castbar, cleaving left -> right -> front
+# A425 Giga Slash: Nightfall: Castbar, cleaving left -> right -> back
+# A426 Giga Slash: Nightfall: Castbar, cleaving right -> left -> front
+# A427 Giga Slash: Nightfall: Castbar, cleaving right -> left -> back
+# A444 Damning Strikes: Tower animations 1/2?
+
+# ALL ENCOUNTER ABILITIES
+# 9F3E Giga Slash: Giga Slash castbar, left safe first
+# 9F3F Giga Slash: Giga Slash castbar, right safe first
+# 9F40 Giga Slash: Right cleave, wide safespot
+# 9F41 Giga Slash: Left cleave, narrow safespot
+# 9F42 Giga Slash: Left cleave, wide safespot
+# 9F43 Giga Slash: Right cleave, narrow safespot
+# 9F44 Implosion: Chariot + half-room AoE castbar, right safe
+# 9F45 Implosion: Chariot + half-room AoE castbar, left safe
+# 9F46 Implosion: Chariot AoE, with 9497 left cleave
+# 9F47 Implosion: Half-room left cleave
+# 9F48 Implosion: Chariot AoE, with 9F49 right cleave
+# 9F49 Implosion: Half-room right cleave
+# 9F4A Cthonic Fury: Intermission start raidwide
+# 9F4B Cthonic Fury: Intermission end raidwide
+# 9F4C Burning Court: Corner circle AoEs, intermission
+# 9F4D Burning Moat: Side rectangle AoEs, intermission
+# 9F4E Burning Keep: Outer square safe AoE, intermission
+# 9F4F Burning Battlements: Inner square safe AoE, intermission
+# 9F50 Dark Nebula: Knockback line castbar
+# 9F51 Dark Nebula: Knockback line
+# 9F52 Shadow Spawn: Summon adds
+# 9F53 Umbra Smash: Exalines cast
+# 9F54 Umbra Smash: Exalines
+# 9F55 Binding Sigil: Exatrine castbar
+# 9F57 Damning Strikes: Tower castbar
+# 9F58 Impact: Daming Strikes tower 1?
+# 9F59 Damning Strikes: Tower animation 3?
+# 9F5B Umbra Smash: 4x line AoE castbar
+# 9F5C Umbra Smash: Turning animation for Smash follow-ups?
+# 9F5D Umbra Smash: 4x line AoE, line 1
+# 9F5E Umbra Smash: 4x line AoE, line 2
+# 9F5F Umbra Smash: 4x line AoE, line 3
+# 9F60 Umbra Smash: 4x line AoE, line 4
+# 9F61 Umbra Wave: Line AoE
+# 9F66 Doom Arc: Raidwide + bleed
+# 9F67 Unbridled Rage: Tank lasers castbar
+# 9F68 Unbridled Rage: Tank lasers, non-shared
+# 9F69 Flames of Hatred: Raidwide
+# 9F6A --sync--: Reposition
+# A096 Impact: Daming Strikes tower 2?
+# A097 Impact: Daming Strikes tower 3?
+# A0B8 Nightfall: Tera Slash pre-cast
+# A0B9 Tera Slash: High-damage raidwide
+# A177 Dark Nova: Spread circles
+# A229 --sync--: Exatrines indicator
+# A22A Soul Binding: Exatrines
+# A23A --sync--: Unknown, maybe related to Binding Sigil targets?
+# A23B Burst: Knock-up attack on targets hit by Binding Sigil
+# A23C Dark Nebula: Knockback line
+# A313 --sync--: Auto-attack
+# A357 --sync--: Damning Strikes repositions 2/3
+# A358 --sync--: Damning Strikes reposition 1
+# A3AB Echoes of Agony: Multi-hit stack marker castbar
+# A3AC Echoes of Agony: Multi-hit stack marker
+# A424 Giga Slash: Nightfall: Castbar, cleaving left -> right -> front
+# A425 Giga Slash: Nightfall: Castbar, cleaving left -> right -> back
+# A426 Giga Slash: Nightfall: Castbar, cleaving right -> left -> front
+# A427 Giga Slash: Nightfall: Castbar, cleaving right -> left -> back
+# A428 Giga Slash: Nightfall: Front cleave, wide safespot
+# A429 Giga Slash: Nightfall: Rear cleave, wide safespot
+# A42B Giga Slash: Nightfall: Left cleave, wide safespot
+# A42C Giga Slash: Nightfall: Right cleave, narrow safespot
+# A42D Giga Slash: Nightfall: Right cleave, wide safespot
+# A42E Giga Slash: Nightfall: Left cleave, narrow safespot
+# A444 Damning Strikes: Tower animations 1/2?
