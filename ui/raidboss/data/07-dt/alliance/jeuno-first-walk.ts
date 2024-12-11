@@ -8,11 +8,16 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Math out the explosion patterns on Banishga IV and call in/out pattern.
 // TODO: Math out the Banish Storm safespots.
+// TODO: Math out the Binding Sigil safespots.
 
 export interface Data extends RaidbossData {
   dragonBreathFacingNumber?: number;
   spikeTargets: string[];
   splitterTargets: string[];
+  burningBattlementsActive: boolean;
+  burningKeepActive: boolean;
+  seenNebula: boolean;
+  rageTargets: string[];
 }
 
 const prishePunchDelays: string[] = [
@@ -28,6 +33,10 @@ const triggerSet: TriggerSet<Data> = {
     return {
       spikeTargets: [],
       splitterTargets: [],
+      burningKeepActive: false,
+      burningBattlementsActive: false,
+      seenNebula: false,
+      rageTargets: [],
     };
   },
   triggers: [
@@ -429,6 +438,304 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Chasing tether -- run away!',
         },
       },
+    },
+    {
+      // 9F3E slashes left then right. 9F3F slashes right then left.
+      id: 'Jeuno First Walk Shadow Lord Giga Slash',
+      type: 'StartsUsing',
+      netRegex: { id: ['9F3E', '9F3F'], source: 'Shadow Lord', capture: true },
+      durationSeconds: 10,
+      alertText: (_data, matches, output) => {
+        if (matches.id === '9F3E')
+          return output.rightThenLeft!();
+        return output.leftThenRight!();
+      },
+      outputStrings: {
+        leftThenRight: Outputs.leftThenRight,
+        rightThenLeft: Outputs.rightThenLeft,
+      },
+    },
+    {
+      // 9F3E slashes left then right. 9F3F slashes right then left.
+      id: 'Jeuno First Walk Lordly Shadow Giga Slash',
+      type: 'StartsUsing',
+      netRegex: { id: ['9F3E', '9F3F'], source: 'Lordly Shadow', capture: true },
+      durationSeconds: 10,
+      alertText: (_data, matches, output) => {
+        if (matches.id === '9F3E')
+          return output.rightThenLeftShadow!();
+        return output.leftThenRightShadow!();
+      },
+      outputStrings: {
+        leftThenRightShadow: {
+          en: 'Left => right on shadow',
+        },
+        rightThenLeftShadow: {
+          en: 'Right => left on shadow',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Umbra Smash',
+      type: 'StartsUsing',
+      netRegex: { id: '9F5B', source: 'Shadow Lord', capture: false },
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.avoidRadiatingLines!(),
+      outputStrings: {
+        avoidRadiatingLines: {
+          en: 'Avoid Radiating Lines',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Flames Of Hatred',
+      type: 'StartsUsing',
+      netRegex: { id: '9F69', source: 'Shadow Lord', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Cthonic Fury',
+      type: 'StartsUsing',
+      netRegex: { id: '9F4A', source: 'Shadow Lord', capture: false },
+      durationSeconds: 6,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Burning Battlements',
+      type: 'StartsUsing',
+      netRegex: { id: '9F4F', source: 'Shadow Lord', capture: false },
+      run: (data) => data.burningBattlementsActive = true,
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Burning Keep',
+      type: 'StartsUsing',
+      netRegex: { id: '9F4E', source: 'Shadow Lord', capture: false },
+      run: (data) => data.burningKeepActive = true,
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Burning Moat',
+      type: 'StartsUsing',
+      netRegex: { id: '9F4D', source: 'Shadow Lord', capture: false },
+      delaySeconds: 0.2,
+      durationSeconds: 6,
+      infoText: (data, _matches, output) => {
+        if (data.burningBattlementsActive)
+          return output.moatWithBattlements!();
+        if (data.burningKeepActive)
+          return output.moatWithKeep!();
+        return output.getInCircles!();
+      },
+      run: (data) => {
+        data.burningBattlementsActive = false;
+        data.burningKeepActive = false;
+      },
+      outputStrings: {
+        getInCircles: {
+          en: 'Get in circles',
+        },
+        moatWithBattlements: {
+          en: 'In circles + Close to boss',
+        },
+        moatWithKeep: {
+          en: 'In circles + Away from boss',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Burning Court',
+      type: 'StartsUsing',
+      netRegex: { id: '9F4C', source: 'Shadow Lord', capture: false },
+      delaySeconds: 0.2,
+      durationSeconds: 6,
+      infoText: (data, _matches, output) => {
+        if (data.burningBattlementsActive)
+          return output.courtWithBattlements!();
+        if (data.burningKeepActive)
+          return output.courtWithKeep!();
+        return output.outOfCircles!();
+      },
+      outputStrings: {
+        outOfCircles: {
+          en: 'Out of circles',
+        },
+        courtWithBattlements: {
+          en: 'Out of circles + close to boss',
+        },
+        courtWithKeep: {
+          en: 'Out of circles + away from boss',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: ['9F44', '9F45'], source: 'Shadow Lord', capture: true },
+      durationSeconds: 7,
+      alertText: (_data, matches, output) => {
+        if (matches.id === '9F44')
+          return output.rightAndOut!();
+        return output.leftAndOut!();
+      },
+      outputStrings: {
+        leftAndOut: {
+          en: 'Go left + get out',
+        },
+        rightAndOut: {
+          en: 'Go right + get out',
+        },
+      }
+    },
+    {
+      id: 'Jeuno First Walk Lordly Shadow Implosion',
+      type: 'StartsUsing',
+      netRegex: { id: ['9F44', '9F45'], source: 'Lordly Shadow', capture: true },
+      durationSeconds: 7,
+      alertText: (_data, matches, output) => {
+        if (matches.id === '9F44')
+          return output.rightAndOut!();
+        return output.leftAndOut!();
+      },
+      outputStrings: {
+        leftAndOut: {
+          en: 'Left of add + get out',
+        },
+        rightAndOut: {
+          en: 'Right of add + get out',
+        },
+      }
+    },
+    {
+      id: 'Jeuno Firest Walk Shadow Lord Dark Nebula',
+      type: 'StartsUsing',
+      netRegex: { id: '9F50', source: 'Shadow Lord', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.seenNebula)
+          return output.lineMultiKnockback!();
+        return output.lineSingleKnockback!();
+      },
+      run: (data) => data.seenNebula = true,
+      outputStrings: {
+        lineMultiKnockback: {
+          en: '4x knockback from lines',
+        },
+        lineSingleKnockback: {
+          en: 'Knockback from line',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Echoes Of Agony',
+      type: 'HeadMarker',
+      netRegex: { id: '0221', capture: true },
+      response: Responses.stackMarkerOn(),
+    },
+    // There's no castbar for Tera Slash.
+    // Activate off the "Tera Slash in 10 seconds" message.
+    // https://github.com/xivapi/ffxiv-datamining/blob/13aae911aee5a36623ab4922dcdb4e1b485682f0/csv/LogMessage.csv#L10840
+    {
+      id: 'Jeuno First Walk Shadow Lord Tera Slash',
+      type: 'SystemLogMessage',
+      netRegex: { id: '29AB', capture: false },
+      durationSeconds: 10,
+      response: Responses.bigAoe('alarm'),
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Unbridled Rage Collect',
+      type: 'HeadMarker',
+      netRegex: { id: '01D7', capture: true },
+      run: (data, matches) => data.spikeTargets.push(matches.target),
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Unbridled Rage Call',
+      type: 'StartsUsing',
+      netRegex: { id: '9F67', source: 'Shadow Lord', capture: false },
+      delaySeconds: 0.5,
+      alertText: (data, _matches, output) => {
+        if (data.rageTargets?.includes(data.me))
+          return output.cleaveOnYou!();
+        return output.avoidCleave!();
+      },
+      run: (data) => data.rageTargets = [],
+      outputStrings: {
+        cleaveOnYou: Outputs.tankCleaveOnYou,
+        avoidCleave: Outputs.avoidTankCleaves,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Dark Nova',
+      type: 'HeadMarker',
+      netRegex: { id: '0137', capture: true },
+      condition: Conditions.targetIsYou(),
+      response: Responses.spread(),
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Binding Sigil',
+      type: 'StartsUsing',
+      netRegex: { id: '9F55', capture: false },
+      durationSeconds: 10,
+      infoText: (_data, _matches, output) => output.sigilDodge!(),
+      outputStrings: {
+        sigilDodge: {
+          en: 'Dodge puddles 3 to 1',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Damning Strikes',
+      type: 'StartsUsing',
+      netRegex: { id: '9F57', capture: false },
+      durationSeconds: 7,
+      infoText: (_data, _matches, output) => output.towers!(),
+      outputStrings: {
+        towers: Outputs.getTowers,
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Nightfall Slash',
+      type: 'StartsUsing',
+      netRegex: { id: ['A424', 'A425', 'A426', 'A427'], source: 'Shadow Lord', capture: true },
+      durationSeconds: 10,
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'A424')
+          return output.rightLeftBack!();
+        if (matches.id === 'A425')
+          return output.rightLeftFront!();
+        if (matches.id === 'A426')
+          return output.leftRightBack!();
+        return output.leftRightFront!();
+      },
+      outputStrings: {
+        rightLeftBack: {
+          en: 'Start right => left => back',
+        },
+        rightLeftFront: {
+          en: 'Start right => left => front',
+        },
+        leftRightBack: {
+          en: 'Start left => right => back',
+        },
+        leftRightFront: {
+          en: 'Start left => right => front',
+        },
+      }
+    },
+    {
+      id: 'Jeuno First Walk Lordly Shadow Umbra Smash',
+      type: 'StartsUsing',
+      netRegex: { id: '9F53', capture: false },
+      infoText: (_data, _matches, output) => output.smashDodge!(),
+      outputStrings: {
+        smashDodge: {
+          en: 'Dodge Exalines, out => in',
+        },
+      },
+    },
+    {
+      id: 'Jeuno First Walk Shadow Lord Doom Arc',
+      type: 'StartsUsing',
+      netRegex: { id: '9F66', source: 'Shadow Lord', capture: false },
+      durationSeconds: 14,
+      response: Responses.bleedAoe(),
     },
   ],
   timelineReplace: [
