@@ -1,0 +1,250 @@
+### THE INTERPHOS
+# ZoneId: 4
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# -ii 8EFD 8F01 8F03 8F06 8F07 8F09 8F0A 8F0B 8F0C 8F14 8F17 8F25 8F30 9A60 9C7B
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+17.7 "Legitimate Force 1" Ability { id: ["8F1E", "8F1F", "8F20", "8F21"], source: "Queen Eternal" } window 20,20
+20.8 "Legitimate Force 2" Ability { id: ["8F22", "8F23"], source: "Queen Eternal" }
+28.9 "Aethertithe (pre-cast)" Ability { id: "8EFC", source: "Queen Eternal" }
+39.0 "Aethertithe 1" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+46.1 "Aethertithe 2" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+53.2 "Aethertithe 3" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+63.4 "Coronation" Ability { id: "8F15", source: "Queen Eternal" }
+71.4 "Waltz of the Regalia 1" #Ability { id: "8F18", source: "Queen Eternal" }
+74.4 "Waltz of the Regalia 2" #Ability { id: "8F18", source: "Queen Eternal" }
+77.4 "Waltz of the Regalia 3" #Ability { id: "8F18", source: "Queen Eternal" }
+80.4 "Waltz of the Regalia 4" #Ability { id: "8F18", source: "Queen Eternal" }
+80.4 "Prosecution Of War" Ability { id: "8EFA", source: "Queen Eternal" }
+83.4 "Waltz of the Regalia 5" #Ability { id: "8F18", source: "Queen Eternal" }
+86.4 "Waltz of the Regalia 6" #Ability { id: "8F18", source: "Queen Eternal" }
+89.4 "Waltz of the Regalia 7" #Ability { id: "8F18", source: "Queen Eternal" }
+92.4 "Waltz of the Regalia 8" #Ability { id: "8F18", source: "Queen Eternal" }
+97.7 "Legitimate Force 1" Ability { id: ["8F1E", "8F1F", "8F20", "8F21"], source: "Queen Eternal" }
+100.8 "Legitimate Force 2" Ability { id: ["8F22", "8F23"], source: "Queen Eternal" }
+103.8 "--sync--" Ability { id: "8F16", source: "Queen Eternal" } # Lock and Key
+
+112.9 "Virtual Shift" Ability { id: "8EFE", source: "Queen Eternal" } window 112.9,10
+121.0 "Coronation" Ability { id: "8F15", source: "Queen Eternal" }
+133.2 "Ruthless Regalia" Ability { id: "8F1A", source: "Queen Eternal" }
+145.2 "Downburst" Ability { id: "8F02", source: "Queen Eternal" }
+156.3 "Brutal Crown" Ability { id: "8F19", source: "Queen Eternal" }
+166.3 "Powerful Gust" Ability { id: "8F04", source: "Queen Eternal" }
+169.4 "--sync--" Ability { id: "8F16", source: "Queen Eternal" } # Lock and Key
+
+178.5 "Virtual Shift" Ability { id: "8F00", source: "Queen Eternal" } window 178.5,10 # safe because it's a different ID
+188.7 "Coronation" Ability { id: "8F15", source: "Queen Eternal" }
+194.8 "Aethertithe" Ability { id: "8EFC", source: "Queen Eternal" }
+200.8 "Ruthless Regalia" Ability { id: "8F1A", source: "Queen Eternal" }
+204.8 "Aethertithe 1" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+211.9 "Aethertithe 2" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+219.0 "Aethertithe 3" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+223.8 "--sync--" Ability { id: "8F16", source: "Queen Eternal" } # Lock and Key
+
+232.9 "Prosecution Of War" Ability { id: "8EFA", source: "Queen Eternal" }
+
+# From here we can either go to the Castellation phase,
+# or loop through a quick Force -> Force -> Buster -> Force
+# hold-pattern block.
+
+241.0 "--sync--" StartsUsing { id: "8EFF", source: "Queen Eternal" } window 241.0,10 jump "castellationBlock"
+245.7 "Virtual Shift?" Ability { id: "8EFF", source: "Queen Eternal" }
+
+248.1 label "castellationHold"
+248.1 "Legitimate Force 1" Ability { id: ["8F1E", "8F1F", "8F20", "8F21"], source: "Queen Eternal" } window 15,15
+251.2 "Legitimate Force 2" Ability { id: ["8F22", "8F23"], source: "Queen Eternal" }
+259.2 "Royal Domain" Ability { id: "8EFB", source: "Queen Eternal" }
+276.3 "Legitimate Force 1" Ability { id: ["8F1E", "8F1F", "8F20", "8F21"], source: "Queen Eternal" }
+279.4 "Legitimate Force 2" Ability { id: ["8F22", "8F23"], source: "Queen Eternal" }
+293.5 "Prosecution Of War" Ability { id: "8EFA", source: "Queen Eternal" }
+308.6 "Legitimate Force" Ability { id: "8F20", source: "Queen Eternal" } window 20,20 forcejump "castellationHold"
+
+
+
+400.0 label "castellationBlock"
+400.0 "--sync--" StartsUsing { id: "8EFF", source: "Queen Eternal" } window 175,10
+404.7 "Virtual Shift" Ability { id: "8EFF", source: "Queen Eternal" }
+412.8 "Castellation 1" Ability { id: "8F05", source: "Queen Eternal" }
+420.5 "Besiegement 1" Ability { id: "8F08", source: "Queen Eternal" }
+430.2 "Castellation 2" Ability { id: "8F05", source: "Queen Eternal" }
+437.9 "Besiegement 2" Ability { id: "8F08", source: "Queen Eternal" }
+446.3 "Besiegement 3" Ability { id: "8F08", source: "Queen Eternal" }
+453.3 "Legitimate Force 1" Ability { id: ["8F1E", "8F1F", "8F20", "8F21"], source: "Queen Eternal" }
+456.4 "Legitimate Force 2" Ability { id: ["8F22", "8F23"], source: "Queen Eternal" }
+468.5 "Virtual Shift" Ability { id: "8F00", source: "Queen Eternal" } window 100,10
+476.7 "Coronation" Ability { id: "8F15", source: "Queen Eternal" }
+487.8 "Legitimate Force 1" Ability { id: ["8F1E", "8F1F", "8F20", "8F21"], source: "Queen Eternal" }
+490.9 "Legitimate Force 2" Ability { id: ["8F22", "8F23"], source: "Queen Eternal" }
+495.8 "Brutal Crown" Ability { id: "8F19", source: "Queen Eternal" }
+498.9 "--sync--" Ability { id: "8F16", source: "Queen Eternal" } # Lock and Key
+
+# It's possible there's a loop here,
+# but across More Than Five logs, we haven't seen one.
+# Royal Domain doesn't seem to be option, but Prosecution Of War definitely is.
+510.0 "Royal Domain" Ability { id: "8EFB", source: "Queen Eternal" }
+512.1 "Prosecution Of War?" Ability { id: "8EFA", source: "Queen Eternal" }
+
+# Absolute Authority madness
+# Seems to be at a 55-51% HP threshold?
+581.3 "--sync--" StartsUsing { id: "9A6B", source: "Queen Eternal" } window 500,10
+600.0 "Absolute Authority (pre-cast)" Ability { id: "9A6B", source: "Queen Eternal" }
+606.2 "Absolute Authority (flare)" Ability { id: "9A5E", source: "Queen Eternal" }
+610.3 "Absolute Authority (puddles 1)" #Ability { id: "8F0E", source: "Queen Eternal" }
+610.6 "Absolute Authority (abandonment)" Ability { id: "9A5F", source: "Queen Eternal" }
+614.5 "Authority\'s Hold" # LosesEffect { effectId: "1022" }
+614.5 "Absolute Authority (puddles 2)" #Ability { id: "8F0E", source: "Queen Eternal" }
+617.7 "Absolute Authority (gaze)" Ability { id: "8F10", source: "Queen Eternal" }
+618.9 "Absolute Authority (puddles 3)" #Ability { id: "8F0E", source: "Queen Eternal" }
+620.3 "Absolute Authority (raidwide)" Ability { id: "8F0D", source: "Queen Eternal" }
+639.5 "Divide and Conquer x8 (single)" Ability { id: "8F1C", source: "Queen Eternal" } duration 8
+651.1 "Divide and Conquer (all)" #Ability { id: "8F1D", source: "Queen Eternal" }
+656.7 "Coronation" Ability { id: "8F15", source: "Queen Eternal" }
+662.8 "Aethertithe (cast)" Ability { id: "8EFC", source: "Queen Eternal" }
+672.9 "Aethertithe 1" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+680.0 "Aethertithe 2" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+682.9 "Brutal Crown" Ability { id: "8F19", source: "Queen Eternal" }
+687.1 "Aethertithe 3" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+691.9 "--sync--" Ability { id: "8F16", source: "Queen Eternal" } window 30,20 # Lock and Key
+
+# A long two-part block loops until approximately 35%.
+# It is probable but uncertain that Sphene must complete all Regalia
+# and Divide And Conquer casts in this first section before phasing.
+# Yes, this block starts on a non-round number,
+# but it follows exactly on time from the Authority block.
+691.9 label "finalHold"
+699.1 "Coronation" Ability { id: "8F15", source: "Queen Eternal" }
+707.1 "Waltz of the Regalia 1" Ability { id: "8F18", source: "Queen Eternal" }
+707.2 "Prosecution Of War" Ability { id: "8EFA", source: "Queen Eternal" }
+710.2 "Waltz of the Regalia 2" #Ability { id: "8F18", source: "Queen Eternal" }
+713.2 "Waltz of the Regalia 3" #Ability { id: "8F18", source: "Queen Eternal" }
+716.2 "Waltz of the Regalia 4" #Ability { id: "8F18", source: "Queen Eternal" }
+716.4 "Divide and Conquer x8" Ability { id: "8F1C", source: "Queen Eternal" } duration 8
+719.1 "Waltz of the Regalia 5" #Ability { id: "8F18", source: "Queen Eternal" }
+722.1 "Waltz of the Regalia 6" #Ability { id: "8F18", source: "Queen Eternal" }
+725.2 "Waltz of the Regalia 7" #Ability { id: "8F18", source: "Queen Eternal" }
+728.1 "Divide and Conquer (all)" Ability { id: "8F1D", source: "Queen Eternal" }
+728.1 "Waltz of the Regalia 8" #Ability { id: "8F18", source: "Queen Eternal" }
+730.5 "--sync--" Ability { id: "8F16", source: "Queen Eternal" } window 20,30 # Lock and Key
+
+# If Sphene is pushed anywhere within this section,
+# she will immediately jump to her second Authority block.
+733.8 "--sync--" StartsUsing { id: "8EFB", source: "Queen Eternal" }
+738.5 "Royal Domain" Ability { id: "8EFB", source: "Queen Eternal" }
+753.6 "Legitimate Force 1" Ability { id: ["8F1E", "8F1F", "8F20", "8F21"], source: "Queen Eternal" }
+756.7 "Legitimate Force 2" Ability { id: ["8F22", "8F23"], source: "Queen Eternal" }
+766.8 "Coronation" Ability { id: "8F15", source: "Queen Eternal" }
+772.9 "Aethertithe (cast)" Ability { id: "8EFC", source: "Queen Eternal" }
+783.0 "Aethertithe 1" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+790.1 "Aethertithe 2" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+792.9 "Brutal Crown" Ability { id: "8F19", source: "Queen Eternal" }
+797.2 "Aethertithe 3" Ability { id: ["8F31", "8F32", "8F33"], source: "Queen Eternal" }
+802.0 "--sync--" Ability { id: "8F16", source: "Queen Eternal" } forcejump "finalHold"
+
+
+# Second Absolute Authority is *probably* at a 35% HP threshold?
+900.0 "--sync--" StartsUsing { id: "9A6B", source: "Queen Eternal" } window 230,10
+918.7 "Absolute Authority (pre-cast)" Ability { id: "9A6B", source: "Queen Eternal" }
+924.9 "Absolute Authority (flare)" Ability { id: "9A5E", source: "Queen Eternal" }
+928.1 "Absolute Authority (stun)" Ability { id: "8F13", source: "Queen Eternal" }
+928.8 "--untargetable--"
+931.8 "Morning Stars" Ability { id: "98DE", source: "Queen Eternal" } window 1000,10
+
+# Wuk Lamat gives her Power Of Friendship speech
+
+# This first section of the end block is timed differently.
+1010.8 "--targetable--"
+1021.0 "Dynastic Diadem" Ability { id: "9C7A", source: "Queen Eternal" } window 500,10
+1028.1 "Royal Banishment AoE x5" Ability { id: "8F24", source: "Queen Eternal" } duration 8
+1034.2 "Royal Banishment (cones 1)" #Ability { id: "8F27", source: "Queen Eternal" }
+1036.2 "Royal Banishment (cones 2)" #Ability { id: "8F27", source: "Queen Eternal" }
+1047.4 "Royal Banishment AoE x5" Ability { id: "8F24", source: "Queen Eternal" } duration 8
+1053.5 "Royal Banishment (cones 1)" #Ability { id: "8F27", source: "Queen Eternal" }
+1055.5 "Royal Banishment (cones 2)" #Ability { id: "8F27", source: "Queen Eternal" }
+
+# So far we have no logs to verify this loop.
+# It's uncertain what will happen here,
+# since the delay between Diadem and Banishment here
+# fits with the dialogue. More data will be needed.
+1068.6 label "diademLoop"
+1068.6 "Dynastic Diadem" Ability { id: "9C7A", source: "Queen Eternal" }
+1093.9 "Royal Banishment AoE x5" Ability { id: "8F24", source: "Queen Eternal" } duration 8
+1100.0 "Royal Banishment (cones 1)" #Ability { id: "8F27", source: "Queen Eternal" }
+1102.0 "Royal Banishment (cones 2)" #Ability { id: "8F27", source: "Queen Eternal" }
+1113.2 "Royal Banishment AoE x5" Ability { id: "8F24", source: "Queen Eternal" } duration 8
+1119.3 "Royal Banishment (cones 1)" #Ability { id: "8F27", source: "Queen Eternal" }
+1121.3 "Royal Banishment (cones 2)" #Ability { id: "8F27", source: "Queen Eternal" }
+1134.4 "Dynastic Diadem" Ability { id: "9C7A", source: "Queen Eternal" } forcejump "diademLoop"
+
+# IGNORED ABILITIES
+# 8EFD Aethertithe -- Repeated light raidwide
+# 8F01 Downburst -- Point knockback cast
+# 8F03 Powerful Gust -- Side knockback cast
+# 8F06 Besiegement -- Unknown, something with the castle wall rush
+# 8F07 Besiegement -- Unknown, something with the castle wall rush
+# 8F09 Besiegement -- Unknown, something with the castle wall rush
+# 8F0A Besiegement -- Unknown, something with the castle wall rush
+# 8F0B Absolute Authority -- Self-cast for flares?
+# 8F0C Absolute Authority -- Repeated light raidwide
+# 8F14 Absolute Authority -- ???
+# 8F17 Waltz of the Regalia -- Targeted circles pre-cast
+# 8F25 Royal Banishment -- AoE
+# 8F30 --sync-- -- Auto-attack
+# 9A60 Absolute Authority -- Dorito marker failure
+# 9C7B Dynastic Diadem -- Donut AoE?
+
+# ALL ENCOUNTER ABILITIES
+# 8EFA Prosecution Of War -- Tank buster, non-splashing
+# 8EFC Aethertithe -- Pre-cast
+# 8EFD Aethertithe -- Repeated light raidwide
+# 8EFE Virtual Shift -- Arena change to X layout
+# 8EFF Virtual Shift -- Arena change to 2x rectangle layout
+# 8F00 Virtual Shift -- Arena change to standard layout
+# 8F01 Downburst -- Point knockback cast
+# 8F02 Downburst -- Point knockback
+# 8F03 Powerful Gust -- Side knockback cast
+# 8F04 Powerful Gust -- Side knockback
+# 8F05 Castellation -- Generate castle wall
+# 8F06 Besiegement -- Unknown, something with the castle wall rush
+# 8F07 Besiegement -- Unknown, something with the castle wall rush
+# 8F08 Besiegement -- Unknown, something with the castle wall rush
+# 8F09 Besiegement -- Unknown, something with the castle wall rush
+# 8F0A Besiegement -- Unknown, something with the castle wall rush
+# 8F0B Absolute Authority -- Self-cast for flares?
+# 8F0C Absolute Authority -- Repeated light raidwide
+# 8F0D Absolute Authority -- Final raidwide
+# 8F0E Absolute Authority -- Puddles
+# 8F0F Absolute Authority -- Acceleration Bomb; shows as a self-cast in the log
+# 8F10 Absolute Authority -- Cursed Shriek
+# 8F13 Absolute Authority -- Down for the Count
+# 8F14 Absolute Authority -- ???
+# 8F15 Coronation -- Pre-cast for circle/laser sections
+# 8F16 Lock and Key -- Phase change
+# 8F17 Waltz of the Regalia -- Targeted circles pre-cast
+# 8F18 Waltz of the Regalia -- Targeted circles
+# 8F19 Brutal Crown -- Dynamo AoE, centered on small robot helper
+# 8F1A Ruthless Regalia -- Tether laser
+# 8F1C Divide and Conquer -- Targeted laser castbar
+# 8F1D Divide and Conquer -- Targeted lasers
+# 8F1E Legitimate Force -- Left cleave, high hand, low left follow-up
+# 8F1F Legitimate Force -- Left cleave, high hand, low right follow-up
+# 8F20 Legitimate Force -- Right cleave, high hand, low right follow-up
+# 8F21 Legitimate Force -- Right cleave, high hand, low left follow-up
+# 8F22 Legitimate Force -- Left cleave, low hand
+# 8F23 Legitimate Force -- Right cleave, low hand
+# 8F24 Royal Banishment -- AoE + cones castbar
+# 8F25 Royal Banishment -- AoE
+# 8F27 Royal Banishment -- Cones (used for all instances)
+# 8F30 --sync-- -- Auto-attack
+# 8F31 Aethertithe -- Right conal cleave
+# 8F32 Aethertithe -- Center conal cleave
+# 8F33 Aethertithe -- Left conal cleave
+# 98DE Morning Stars -- Cutscene start?
+# 9A5E Absolute Authority -- Flare damage
+# 9A5F Absolute Authority -- Dorito marker
+# 9A60 Absolute Authority -- Dorito marker failure
+# 9A6B Absolute Authority -- self-cast for Absolute Authority phase
+# 9C7A Dynastic Diadem -- Donut AoE pre-cast?
+# 9C7B Dynastic Diadem -- Donut AoE?
