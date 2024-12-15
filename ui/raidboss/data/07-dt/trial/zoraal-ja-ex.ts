@@ -1539,7 +1539,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '\\(cast\\)': '(시전)',
-        '\\(damage\\)': '(피해)',
+        '\\(damage( \\d)?\\)': '(피해$1)',
         '\\(enrage\\)': '(전멸기)',
         '\\(lines drop\\)': '(장판 생성)',
         'Actualize': '실현',

@@ -72,7 +72,7 @@ const bigAoeOutputStrings: OutputStrings = {
     fr: 'Donut (Intérieur)',
     ja: 'ドーナツの中へ',
     cn: '中间月环',
-    ko: '도넛 안으로',
+    ko: '도넛 (중앙으로)',
   },
   out: Outputs.outOfMelee,
 };

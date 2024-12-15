@@ -688,6 +688,12 @@ const triggerSet: TriggerSet<Data> = {
         'Snowball': '눈덩이',
       },
       'replaceText': {
+        '\\(first\\)': '(1)',
+        '\\(second\\)': '(2)',
+        '\\(close\\)': '(가까이)',
+        '\\(mid\\)': '(중간)',
+        '\\(far\\)': '(멀리)',
+        '\\(fire\\)': '(불)',
         'Allfire': '대분화',
         'Arcane Stomp': '왕발 딛기',
         'Cold Feat': '빙결',

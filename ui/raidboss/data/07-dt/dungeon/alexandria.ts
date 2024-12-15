@@ -148,7 +148,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus aus dem Blitz-Dreieck',
           fr: 'Éloignez-vous du triangle de foudre',
           cn: '远离闪电三角',
-          ko: '삼각형 밖으로',
+          ko: '전기 삼각형 밖으로',
         },
       },
     },
