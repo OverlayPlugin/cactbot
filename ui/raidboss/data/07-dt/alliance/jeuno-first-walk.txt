@@ -191,7 +191,7 @@ hideall "--sync--"
 # Fafnir The Forgotten#
 #~~~~~~~~~~~~~~~~~~~~~#
 
-# -ii 9BF2 9F72 9F73 9F74 9F75 9F76 9F8B 9F8C 9F95 9F98 9F9C A156 A157 A158 A159 9F90 9F8E
+# -ii 9BF2 9EB9 9F72 9F73 9F74 9F75 9F76 9F8B 9F8C 9F95 9F98 9F9C A156 A157 A158 A159 9F90 9F8E 9F6F
 # -ic "Biting Wind" "Darter" "Ravaging Wind"
 
 # The Hurricane Wing puddles follow an increasing "ladder" of abilities.
@@ -298,6 +298,7 @@ hideall "--sync--"
 # IGNORED ABILITIES
 # 9BF2 Baleful Breath: Multi-hit stack marker castbar
 # 9EB9 --sync--: Auto-attack
+# 9F6F Dragon Breath: Outer ring fire breath
 # 9F72 Hurricane Wing: Cyclone raidwide, hit 2
 # 9F73 Hurricane Wing: Cyclone raidwide, hit 3
 # 9F74 Hurricane Wing: Cyclone raidwide, hit 4
@@ -305,6 +306,8 @@ hideall "--sync--"
 # 9F76 Hurricane Wing: Cyclone raidwide, hit 6
 # 9F8B Great Whirlwind: Roving puddle AoEs, Ravaging Wind (big)
 # 9F8C Great Whirlwind: Roving puddle AoEs, BIting Wind (small)
+# 9F8E Absolute Terror: Hot Tail
+# 9F90 Winged Terror: Hot Wing
 # 9F95 Baleful Breath: Multi-hit stack marker middle hits
 # 9F98 Sharp Spike: Cleaving tank busters
 # 9F9C --sync--: Darter auto?

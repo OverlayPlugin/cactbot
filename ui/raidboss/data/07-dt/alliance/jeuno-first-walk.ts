@@ -198,11 +198,19 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // The cast used here is Offensive Posture.
-      id: 'Jeuno First Walk Fafnir Dragon Breath',
+      id: 'Jeuno First Walk Fafnir Dragon Breath Call',
       type: 'StartsUsing',
-      netRegex: { id: '9F6E', source: 'Fafnir The Forgotten', capture: true },
+      netRegex: { id: '9F6E', source: 'Fafnir The Forgotten', capture: false },
       durationSeconds: 7,
       response: Responses.goMiddle(),
+    },
+    {
+      // The cast used here is Offensive Posture.
+      // Heading data can be stale on StartsUsing lines,
+      // so store off the actual cast instead.
+      id: 'Jeuno First Walk Fafnir Dragon Breath Store',
+      type: 'Ability',
+      netRegex: { id: '9F6E', source: 'Fafnir The Forgotten', capture: true },
       run: (data, matches) => {
         console.log(matches.heading);
         const headingNumber = Directions.hdgTo8DirNum(parseFloat(matches.heading));
@@ -217,15 +225,24 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         if (data.dragonBreathFacingNumber !== undefined) {
           const dirOutputIndex = Directions.outputFrom8DirNum(data.dragonBreathFacingNumber);
-          return output.outAtDirection!({ safeDir: Outputs[dirOutputIndex] });
+          return output.outAtDirection!({ safeDir: output[dirOutputIndex]!() });
         }
         return output.getOut!();
       },
       outputStrings: {
+        getOut: Outputs.out,
         outAtDirection: {
           en: 'Get out toward ${safeDir}',
         },
-        getOut: Outputs.out,
+        dirN: Outputs.north,
+        dirE: Outputs.east,
+        dirS: Outputs.south,
+        DirW: Outputs.west,
+        dirNE: Outputs.dirNE,
+        dirSE: Outputs.dirSE,
+        dirSW: Outputs.dirSW,
+        dirNW: Outputs.dirNW,
+        unknown: Outputs.unknown,
       },
     },
     {
@@ -344,7 +361,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A08A', source: 'Ark Angel TT', capture: true },
       durationSeconds: 5,
-      response: Responses.interruptIfPossible(),
+      response: Responses.interruptIfPossible('alarm'),
     },
     {
       id: 'Jeuno First Walk Spiral Finish',
@@ -415,9 +432,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Jeuno First Walk Angels Mijin Gakure',
-      type: 'RemovedCombatant',
-      netRegex: { npcBaseId: '18260', capture: false }, // Ark Shield
+      type: 'LosesEffect',
+      netRegex: { effectId: '1140', capture: true }, // Uninterrupted
       condition: (data) => data.CanSilence(),
+      // We use bare text for this since the canned interruption responses
+      // assume a source match rather than a target.
       alarmText: (_data, _matches, output) => output.interruptHM!(),
       outputStrings: {
         interruptHM: {
@@ -438,6 +457,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Chasing tether -- run away!',
         },
       },
+    },
+    {
+      id: 'Jeuno First Walk Angels Critical Reaver',
+      type: 'StartsUsing',
+      netRegex: { id: 'A13B', source: 'Ark Angel HM', capture: true },
+      durationSeconds: 5,
+      response: Responses.interruptIfPossible('alarm'),
     },
     {
       // 9F3E slashes left then right. 9F3F slashes right then left.
@@ -518,6 +544,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '9F4D', source: 'Shadow Lord', capture: false },
       delaySeconds: 0.2,
       durationSeconds: 6,
+      suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         if (data.burningBattlementsActive)
           return output.moatWithBattlements!();
@@ -547,6 +574,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '9F4C', source: 'Shadow Lord', capture: false },
       delaySeconds: 0.2,
       durationSeconds: 6,
+      suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         if (data.burningBattlementsActive)
           return output.courtWithBattlements!();
@@ -589,6 +617,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Jeuno First Walk Lordly Shadow Implosion',
       type: 'StartsUsing',
       netRegex: { id: ['9F44', '9F45'], source: 'Lordly Shadow', capture: true },
+      delaySeconds: 3,
       durationSeconds: 7,
       alertText: (_data, matches, output) => {
         if (matches.id === '9F44')
