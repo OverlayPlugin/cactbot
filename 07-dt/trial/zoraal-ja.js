@@ -617,6 +617,8 @@ Options.Triggers.push({
         'Zoraal Ja': '조라쟈',
       },
       'replaceText': {
+        '\\(first\\)': '(1)',
+        '\\(second\\)': '(2)',
         'Actualize': '실현',
         'Bitter Reaping': '쓰라린 수확',
         'Blade Warp': '칼날 소환',

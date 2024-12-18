@@ -274,7 +274,7 @@ Options.Triggers.push({
           de: 'Vermeide AoEs (danach Seiten)',
           fr: 'Évitez les AoE (côtés ensuite)',
           cn: '躲 AOE (然后去两侧)',
-          ko: '장판 피하기 (이후 옆으로)',
+          ko: '장판 피하기 (이후 양옆으로)',
         },
       },
     },
