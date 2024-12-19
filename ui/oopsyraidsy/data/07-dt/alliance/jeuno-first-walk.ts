@@ -159,7 +159,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           },
         };
       },
-    }
+    },
   ],
 };
 

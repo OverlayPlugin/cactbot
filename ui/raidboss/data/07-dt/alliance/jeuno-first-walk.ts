@@ -49,7 +49,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Jeuno First Walk Prishe Knuckle Sandwich',
       type: 'StartsUsing',
-      netRegex: { id: ['9FE8', '9FE9', '9FEA'], source: 'Prishe Of The Distant Chains', capture: true },
+      netRegex: {
+        id: ['9FE8', '9FE9', '9FEA'],
+        source: 'Prishe Of The Distant Chains',
+        capture: true,
+      },
       // The player is intended to count the number of "wait for it" emotes from Prishe.
       // Delay to match how many she would call per ability.
       // (It's not necessary to delay past 6 seconds,
@@ -116,7 +120,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Jeuno First Walk Prishe Auroral Uppercut',
       type: 'StartsUsing',
-      netRegex: { id: ['9FF6', '9FF7', '9FF8'], source: 'Prishe Of The Distant Chains', capture: true },
+      netRegex: {
+        id: ['9FF6', '9FF7', '9FF8'],
+        source: 'Prishe Of The Distant Chains',
+        capture: true,
+      },
       // The player is intended to count the number of "wait for it" emotes from Prishe.
       // Delay to match how many she would call per ability.
       // (It's not necessary to delay past 6 seconds,
@@ -433,7 +441,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Jeuno First Walk Angels Mijin Gakure',
       type: 'LosesEffect',
-      netRegex: { effectId: '1140', capture: true }, // Uninterrupted
+      netRegex: { effectId: '1140', capture: false }, // Uninterrupted
       condition: (data) => data.CanSilence(),
       // We use bare text for this since the canned interruption responses
       // assume a source match rather than a target.
@@ -611,7 +619,7 @@ const triggerSet: TriggerSet<Data> = {
         rightAndOut: {
           en: 'Go right + get out',
         },
-      }
+      },
     },
     {
       id: 'Jeuno First Walk Lordly Shadow Implosion',
@@ -631,7 +639,7 @@ const triggerSet: TriggerSet<Data> = {
         rightAndOut: {
           en: 'Right of add + get out',
         },
-      }
+      },
     },
     {
       id: 'Jeuno Firest Walk Shadow Lord Dark Nebula',
@@ -746,7 +754,7 @@ const triggerSet: TriggerSet<Data> = {
         leftRightFront: {
           en: 'Start left => right => front',
         },
-      }
+      },
     },
     {
       id: 'Jeuno First Walk Lordly Shadow Umbra Smash',

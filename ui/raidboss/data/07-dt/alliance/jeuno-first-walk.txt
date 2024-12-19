@@ -595,7 +595,7 @@ hideall "--sync--"
 40221.6 "Tera Slash" Ability { id: "A0B9", source: "Shadow Lord" } window 221,10
 40227.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
 40248.7 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
-40250.7 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40250.7 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
 40252.7 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
 
 # ~307s loop.
@@ -603,13 +603,13 @@ hideall "--sync--"
 40256.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
 40261.0 "Shadow Spawn" Ability { id: "9F52", source: "Shadow Lord" }
 40279.1 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
-40281.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40281.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
 40283.1 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
 40289.1 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
 40292.1 "Giga Slash 1 (add)" Ability { id: ["9F40", "94F2"], source: ["Shadow Lord"] }
 40294.1 "Giga Slash 2 (add)" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
 40298.4 "Implosion (boss)" Ability { id: ["9F44", "9F45"], source: "Shadow Lord" }
-40303.1 "Implosion (add)" Ability { id: "9F44", "9F45", source: "Lordly Shadow" }
+40303.1 "Implosion (add)" Ability { id: ["9F44", "9F45"], source: "Lordly Shadow" }
 40311.5 "Unbridled Rage" Ability { id: "9F67", source: "Shadow Lord" }
 40318.5 "Dark Nova" Ability { id: "A177", source: "Shadow Lord" } window 318,10
 40327.6 "Echoes of Agony x7" Ability { id: "A3AB", source: "Shadow Lord" } duration 7
@@ -635,7 +635,7 @@ hideall "--sync--"
 40418.0 "Dark Nebula 3 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
 40421.0 "Dark Nebula 4 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
 40431.4 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
-40433.4 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40433.4 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
 40435.4 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
 40438.4 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
 40445.4 "Burning Court/Burning Moat" Ability { id: ["9F4C", "9F4D"], source: "Shadow Lord" }
@@ -647,11 +647,11 @@ hideall "--sync--"
 40481.4 "Umbra Smash (single lines)" Ability { id: "9F5B", source: "Shadow Lord" } duration 12
 40494.9 "Umbra Smash (exalines)" Ability { id: "9F53", source: "Lordly Shadow" } duration 7
 40508.9 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
-40510.9 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40510.9 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
 40512.9 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
 40530.9 "Doom Arc" Ability { id: "9F66", source: "Shadow Lord" }
 40556.1 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
-40558.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C" "A42E"], source: "Shadow Lord" }
+40558.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
 40560.1 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
 
 40564.1 "--sync--" Ability { id: "9F6A", source: "Shadow Lord" } forcejump "lordLoop"
