@@ -153,13 +153,13 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         shortKnockback: {
-          en: 'Aim short knockback',
+          en: 'Knockback (short)',
         },
         midKnockback: {
-          en: 'Aim mid knockback',
+          en: 'Knockback (mid)',
         },
         bigKnockback: {
-          en: 'Aim big knockback',
+          en: 'Knockback (big)',
         },
         unknownKnockback: Outputs.unknown,
       },
@@ -179,7 +179,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.avoidOrbs!(),
       outputStrings: {
         avoidOrbs: {
-          en: 'Avoid large orbs',
+          en: 'Avoid exploding orbs',
         },
       },
     },
@@ -210,7 +210,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '9F6E', source: 'Fafnir The Forgotten', capture: false },
       durationSeconds: 7,
-      response: Responses.goMiddle(),
+      response: Responses.getUnder(),
     },
     {
       // The cast used here is Offensive Posture.
@@ -220,7 +220,6 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: '9F6E', source: 'Fafnir The Forgotten', capture: true },
       run: (data, matches) => {
-        console.log(matches.heading);
         const headingNumber = Directions.hdgTo8DirNum(parseFloat(matches.heading));
         data.dragonBreathFacingNumber = headingNumber;
       },
@@ -245,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
         dirN: Outputs.north,
         dirE: Outputs.east,
         dirS: Outputs.south,
-        DirW: Outputs.west,
+        dirW: Outputs.west,
         dirNE: Outputs.dirNE,
         dirSE: Outputs.dirSE,
         dirSW: Outputs.dirSW,
@@ -309,6 +308,18 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '9F8F', source: 'Fafnir The Forgotten', capture: false },
       durationSeconds: 5,
       response: Responses.goMiddle(),
+    },
+    {
+      id: 'Jeuno First Walk Fafnir Hurricane Wing Raidwide',
+      type: 'StartsUsing',
+      netRegex: { id: '9F71', source: 'Fafnir The Forgotten', capture: false },
+      durationSeconds: 7,
+      infoText: (_data, _matches, output) => output.outerFirst!(),
+      outputStrings: {
+        outerFirst: {
+          en: 'Raidwide x10',
+        },
+      },
     },
     {
       id: 'Jeuno First Walk Fafnir Hurricane Wing Outer Ring',
@@ -436,7 +447,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Jeuno First Walk Angels Proud Palisade',
       type: 'AddedCombatant',
       netRegex: { npcBaseId: '18260', capture: false }, // Ark Shield
-      response: Responses.killAdds(),
+      alertText: (_data, _matches, output) => output.killShield!(),
+      outputStrings: {
+        killShield: {
+          en: 'Kill Ark Shield',
+        },
+      },
     },
     {
       id: 'Jeuno First Walk Angels Mijin Gakure',
@@ -502,10 +518,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         leftThenRightShadow: {
-          en: 'Left => right on shadow',
+          en: 'Left => right of shadow',
         },
         rightThenLeftShadow: {
-          en: 'Right => left on shadow',
+          en: 'Right => left of shadow',
         },
       },
     },
@@ -634,10 +650,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         leftAndOut: {
-          en: 'Left of add + get out',
+          en: 'Left of shadow + get out',
         },
         rightAndOut: {
-          en: 'Right of add + get out',
+          en: 'Right of shadow + get out',
         },
       },
     },
