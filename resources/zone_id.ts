@@ -415,6 +415,7 @@ const data = {
   'TheClockworkCastletown': 1116,
   'TheCloudDeck': 950,
   'TheCloudDeckExtreme': 951,
+  'TheCloudOfDarknessChaotic': 1241,
   'TheCopiedFactory': 882,
   'TheCrownOfTheImmaculate': 846,
   'TheCrownOfTheImmaculateExtreme': 848,

@@ -10294,6 +10294,20 @@ const data: ZoneInfoType = {
     'sizeFactor': 400,
     'weatherRate': 93,
   },
+  1241: {
+    'contentType': 37,
+    'exVersion': 5,
+    'name': {
+      'de': 'Die Wolke der Dunkelheit (chaotisch)',
+      'en': 'The Cloud of Darkness (Chaotic)',
+      'fr': 'La Tour de Ténèbres (chaotique)',
+      'ja': '滅暗闇の雲激闘戦',
+    },
+    'offsetX': -100,
+    'offsetY': -100,
+    'sizeFactor': 400,
+    'weatherRate': 28,
+  },
   1242: {
     'contentType': 2,
     'exVersion': 5,
@@ -10313,7 +10327,7 @@ const data: ZoneInfoType = {
     'exVersion': 5,
     'name': {
       'de': 'Gok Tajaal - Ewige Königin',
-      'en': 'The Minstrel’s Ballad: Sphene\'s Burden',
+      'en': 'The Minstrel\'s Ballad: Sphene\'s Burden',
       'fr': 'Interphos (extrême)',
       'ja': '極エターナルクイーン討滅戦',
     },
