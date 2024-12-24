@@ -202,6 +202,31 @@ const triggerSet: TriggerSet<Data> = {
         'Tempting Twist': '甜心旋风',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Honey B. Lovely': '허니 B. 러블리',
+      },
+      'replaceText': {
+        'Alarm Pheromones': '페로몬 경보',
+        'Blinding Love': '맹목적인 사랑',
+        'Blow Kiss': '손키스',
+        'Call Me Honey': '러블리한 인사',
+        'Drop of Venom': '독성 빗방울',
+        'Fracture': '작렬',
+        'Heart-struck': '애통',
+        'Heartsick': '가슴앓이',
+        'Heartsore': '상심',
+        'Honey B. Finale': '허니 B. 피날레',
+        'Honey B. Live': '허니 B. 라이브',
+        'Honey Beeline': '허니 폭발',
+        'Honeyed Breeze': '허니 돌풍',
+        'Love Me Tender': '러브 미 텐더',
+        'Loveseeker': '구애',
+        'Splash of Venom': '독성 비',
+        'Tempting Twist': '허니 회오리',
+      },
+    },
   ],
 };
 
