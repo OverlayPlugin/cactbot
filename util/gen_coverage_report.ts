@@ -297,9 +297,12 @@ const buildTotals = (coverage: Coverage, missingTranslations: MissingTranslation
     const origContentType = zoneInfo.contentType;
     if (origContentType === undefined)
       continue;
-    // Until we get more V&C dungeons (if ever), lump them in with "dungeons".
+
     const contentTypeRemap: { [type: number]: number } = {
+      // Until we get more V&C dungeons (if ever), lump them in with "dungeons".
       [ContentType.VCDungeonFinder]: ContentType.Dungeons,
+      // lump chaotic alliance raids with raids for now.
+      [ContentType.ChaoticAllianceRaid]: ContentType.Raids,
     };
     const contentType = contentTypeRemap[origContentType] ?? origContentType;
 
