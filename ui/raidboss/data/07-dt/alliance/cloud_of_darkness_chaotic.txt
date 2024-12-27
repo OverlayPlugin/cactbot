@@ -1,7 +1,7 @@
 ### THE CLOUD OF DARKNESS (CHAOTIC)
 # ZoneId: 1241
 # -it "Cloud of Darkness" "Atomos" "Stygian Shadow"
-# -ii 9DFB 9DFD 9DFF 9E3B 9E3C 9E40 9E41 9E43 9E4E 9E4F 9E51 9E52 9E58 A12D
+# -ii 9E3B 9E3C 9E41 9E45 9E46 9E4B 9E51 9E52
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -10,32 +10,107 @@ hideall "--sync--"
 
 # opening
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-14.2 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
-26.2 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
-38.6 "Deluge of Darkness" Ability { id: "9E3D", source: "Cloud of Darkness" }
-41.6 "--sync--" Ability { id: "9E56", source: "Cloud of Darkness" }
+13.6 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+14.3 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+25.7 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+26.5 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+38.9 "Deluge of Darkness" Ability { id: "9E3D", source: "Cloud of Darkness" }
+41.9 "--sync--" Ability { id: "9E56", source: "Cloud of Darkness" }
 
 # diamond phase 1
+53.0 "Grim Embrace" Ability { id: ["9E39", "9E3A"], source: "Cloud of Darkness" }
+61.0 "Grim Embrace" Ability { id: ["9E39", "9E3A"], source: "Cloud of Darkness" }
+71.2 "--sync--" StartsUsing { id: "9E58", source: "Cloud of Darkness" } window 10,10 jump "flare-branch-1"
+73.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+75.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+76.2 "--sync--" StartsUsing { id: "9E4C", source: "Cloud of Darkness" } window 10,10 jump "aero-branch-1"
+77.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+79.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+
+## Flare branch 1
+100.0 label "flare-branch-1"
+101.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+103.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+103.8 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+105.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+107.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+111.9 "Unholy Darkness (cast)" Ability { id: "A12D", source: "Cloud of Darkness" }
+112.9 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+120.7 "Unholy Darkness (damage)" Ability { id: "A12E", source: "Cloud of Darkness" }
+127.0 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+127.7 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+134.0 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
+152.1 "--sync--" Ability { id: "9E4F", source: "Cloud of Darkness" }
+153.0 "Break IV" Ability { id: "9E50", source: "Cloud of Darkness" }
+164.0 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+164.7 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+166.9 "Vortex" Ability { id: "9E47", source: "Cloud of Darkness" }
+168.9 "Death IV" Ability { id: "9E48", source: "Cloud of Darkness" }
+170.9 "Death IV" Ability { id: "9E49", source: "Ball of Naught" }
+179.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+181.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+183.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+185.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+196.8 "Death IV/Aero IV (cast)" Ability { id: ["9E43", "9E4C"], source: "Cloud of Darkness" }
+197.4 "Vortex/Aero IV" Ability { id: ["9E44", "9E4A"], source: "Cloud of Darkness" }
+205.5 "--sync--" StartsUsing { id: "9E3E", source: "Cloud of Darkness" } window 10,10 forcejump "diamond-phase-1-end"
+
+## Death IV branch 1
+300.0 label "death-branch-1"
+
+## Aero IV branch 1
+400.0 label "aero-branch-1"
+400.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+402.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+405.7 "Aero IV (cast)" Ability { id: "9E4C", source: "Cloud of Darkness" }
+406.3 "Aero IV (damage)" Ability { id: "9E4A", source: "Cloud of Darkness" }
+417.3 "Enaero IV" Ability { id: "9E54", source: "Cloud of Darkness" }
+428.3 "Rapid-sequence Particle Beam (cast)" Ability { id: "9E40", source: "Cloud of Darkness" }
+429.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Death's Hand" }
+431.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+433.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+435.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+455.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+457.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+459.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+461.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+464.5 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+465.3 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+467.4 "Aero IV" Ability { id: "9E4D", source: "Cloud of Darkness" }
+480.6 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+489.6 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+500.9 "--sync--" StartsUsing { id: "9E3E", source: "Cloud of Darkness" } window 10,10 forcejump "diamond-phase-1-end"
+
+## end of diamond phase 1
+600.0 label "diamond-phase-1-end"
+606.9 "Flood of Darkness" Ability { id: "9E3E", source: "Cloud of Darkness" }
+621.0 "Deluge of Darkness" Ability { id: "9E01", source: "Cloud of Darkness" }
+624.0 "--sync--" Ability { id: "9E02", source: "Cloud of Darkness" }
 
 # tile phase
+625.2 "--adds targetable--"
+639.5 "Dark Dominion" Ability { id: "9E08", source: "Cloud of Darkness" }
 
 # diamond phase 2
 
+## Flare branch 2
+
+## Death IV branch 2
+
+## Aero IV branch 2
+
+## end of diamond phase 2
+
 
 # IGNORED ABILITIES
-# 9DFB Blade of Darkness - under front right (cast)
-# 9DFD Blade of Darkness - under front left (cast)
-# 9DFF Blade of Darkness - out (cast)
 # 9E3B Grim Embrace
 # 9E3C Grim Embrace
-# 9E40 Rapid-sequence Particle Beam - alliance wild charge (cast)
-# 9E41 Rapid-sequence Particle Beam - alliance wild charge (cast)
-# 9E43 Death IV
-# 9E4E Aero IV
-# 9E4F Break IV
+# 9E41 Rapid-sequence Particle Beam
+# 9E45 Death IV
+# 9E46 Death IV
+# 9E4B Aero IV
+# 9E51 Break IV
 # 9E52 Break IV
-# 9E58 Flare - cast
-# A12D Unholy Darkness
 
 # ALL ENCOUNTER ABILITIES
 # 9DF9 attack
@@ -104,8 +179,10 @@ hideall "--sync--"
 # 9E43 Death IV
 # 9E44 Vortex
 # 9E45 Death IV
+# 9E46 Death IV
 # 9E47 Vortex
 # 9E48 Death IV
+# 9E49 Death IV
 # 9E4A Aero IV
 # 9E4B Aero IV
 # 9E4C Aero IV
@@ -113,6 +190,7 @@ hideall "--sync--"
 # 9E4E Aero IV
 # 9E4F Break IV
 # 9E50 Break IV
+# 9E51 Break IV
 # 9E52 Break IV
 # 9E53 Endeath IV
 # 9E54 Enaero IV
