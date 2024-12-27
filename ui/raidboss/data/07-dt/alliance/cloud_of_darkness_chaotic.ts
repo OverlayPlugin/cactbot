@@ -137,6 +137,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Cloud Chaotic Blade of Darkness',
       type: 'StartsUsing',
       netRegex: { id: ['9DFD', '9DFB', '9DFF'], source: 'Cloud of Darkness', capture: true },
+      durationSeconds: (data) => data.bladeOfDarknessFollowup !== undefined ? 7 : 3,
       suppressSeconds: 2,
       infoText: (data, matches, output) => {
         const mech = matches.id === '9DFD' ? 'left' : (matches.id === '9DFB' ? 'right' : 'out');
