@@ -8,11 +8,18 @@ hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
+# opening
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 14.2 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
 26.2 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
 38.6 "Deluge of Darkness" Ability { id: "9E3D", source: "Cloud of Darkness" }
 41.6 "--sync--" Ability { id: "9E56", source: "Cloud of Darkness" }
+
+# diamond phase 1
+
+# tile phase
+
+# diamond phase 2
 
 
 # IGNORED ABILITIES
