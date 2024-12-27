@@ -1,7 +1,7 @@
 ### THE CLOUD OF DARKNESS (CHAOTIC)
 # ZoneId: 1241
 # -it "Cloud of Darkness" "Atomos" "Stygian Shadow"
-# -ii 9E3B 9E3C 9E41 9E45 9E46 9E4B 9E4E 9E51 9E52
+# -ii 9E3B 9E3C 9E41 9E45 9E46 9E48 9E49 9E4B 9E4E 9E51 9E52
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -24,6 +24,7 @@ hideall "--sync--"
 73.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 75.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 76.2 "--sync--" StartsUsing { id: "9E4C", source: "Cloud of Darkness" } window 10,10 jump "aero-branch-1"
+76.2 "--sync--" StartsUsing { id: "9E43", source: "Cloud of Darkness" } window 10,10 jump "death-branch-1"
 77.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 79.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 
@@ -44,9 +45,7 @@ hideall "--sync--"
 153.0 "Break IV" Ability { id: "9E50", source: "Cloud of Darkness" }
 164.0 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
 164.7 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
-166.9 "Vortex" Ability { id: "9E47", source: "Cloud of Darkness" }
-168.9 "Death IV" Ability { id: "9E48", source: "Cloud of Darkness" }
-170.9 "Death IV" Ability { id: "9E49", source: "Ball of Naught" }
+166.9 "Vortex/Aero IV" Ability { id: ["9E47", "9E4D"], source: "Cloud of Darkness" }
 179.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 181.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 183.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
@@ -57,39 +56,59 @@ hideall "--sync--"
 
 ## Death IV branch 1
 300.0 label "death-branch-1"
+300.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+302.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+305.4 "Death IV (cast)" Ability { id: "9E43", source: "Cloud of Darkness" }
+306.0 "Vortex" Ability { id: "9E44", source: "Cloud of Darkness" }
+317.0 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
+328.0 "Rapid-sequence Particle Beam (cast)" Ability { id: "9E40", source: "Cloud of Darkness" }
+328.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+330.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+332.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+334.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+355.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+357.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+359.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+361.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+364.3 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+365.0 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+367.2 "Vortex/Aero IV" Ability { id: ["9E47", "9E4D"], source: "Cloud of Darkness" }
+380.4 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+389.4 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+400.7 "--sync--" StartsUsing { id: "9E3E", source: "Cloud of Darkness" } window 10,10 forcejump "diamond-phase-1-end"
 
 ## Aero IV branch 1
-400.0 label "aero-branch-1"
-400.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
-402.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
-405.7 "Aero IV (cast)" Ability { id: "9E4C", source: "Cloud of Darkness" }
-406.3 "Aero IV (damage)" Ability { id: "9E4A", source: "Cloud of Darkness" }
-417.3 "Enaero IV" Ability { id: "9E54", source: "Cloud of Darkness" }
-428.3 "Rapid-sequence Particle Beam (cast)" Ability { id: "9E40", source: "Cloud of Darkness" }
-429.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Death's Hand" }
-431.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
-433.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
-435.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
-455.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
-457.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
-459.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
-461.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
-464.5 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
-465.3 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
-467.4 "Aero IV" Ability { id: "9E4D", source: "Cloud of Darkness" }
-480.6 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
-489.6 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
-500.9 "--sync--" StartsUsing { id: "9E3E", source: "Cloud of Darkness" } window 10,10 forcejump "diamond-phase-1-end"
+500.0 label "aero-branch-1"
+500.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+502.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+505.7 "Aero IV (cast)" Ability { id: "9E4C", source: "Cloud of Darkness" }
+506.3 "Aero IV (damage)" Ability { id: "9E4A", source: "Cloud of Darkness" }
+517.3 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
+528.3 "Rapid-sequence Particle Beam (cast)" Ability { id: "9E40", source: "Cloud of Darkness" }
+529.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Death's Hand" }
+531.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+533.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+535.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+555.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+557.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+559.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+561.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+564.5 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+565.3 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+567.4 "Vortex/Aero IV" Ability { id: ["9E47", "9E4D"], source: "Cloud of Darkness" }
+580.6 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+589.6 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+600.9 "--sync--" StartsUsing { id: "9E3E", source: "Cloud of Darkness" } window 10,10 forcejump "diamond-phase-1-end"
 
 ## end of diamond phase 1
-600.0 label "diamond-phase-1-end"
-606.9 "Flood of Darkness" Ability { id: "9E3E", source: "Cloud of Darkness" }
-621.0 "Deluge of Darkness" Ability { id: "9E01", source: "Cloud of Darkness" }
-624.0 "--sync--" Ability { id: "9E02", source: "Cloud of Darkness" }
+700.0 label "diamond-phase-1-end"
+706.9 "Flood of Darkness" Ability { id: "9E3E", source: "Cloud of Darkness" }
+721.0 "Deluge of Darkness" Ability { id: "9E01", source: "Cloud of Darkness" }
+724.0 "--sync--" Ability { id: "9E02", source: "Cloud of Darkness" }
 
 # tile phase
-625.2 "--adds targetable--"
-639.5 "Dark Dominion" Ability { id: "9E08", source: "Cloud of Darkness" }
+725.2 "--adds targetable--"
+739.5 "Dark Dominion" Ability { id: "9E08", source: "Cloud of Darkness" }
 
 # diamond phase 2
 
@@ -108,6 +127,8 @@ hideall "--sync--"
 # 9E41 Rapid-sequence Particle Beam
 # 9E45 Death IV
 # 9E46 Death IV
+# 9E48 Death IV
+# 9E49 Death IV
 # 9E4B Aero IV
 # 9E4E Aero IV
 # 9E51 Break IV
