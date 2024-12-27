@@ -1,7 +1,7 @@
 ### THE CLOUD OF DARKNESS (CHAOTIC)
 # ZoneId: 1241
 # -it "Cloud of Darkness" "Atomos" "Stygian Shadow"
-# -ii 9E3B 9E3C 9E41 9E45 9E46 9E4B 9E51 9E52
+# -ii 9E3B 9E3C 9E41 9E45 9E46 9E4B 9E4E 9E51 9E52
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -109,6 +109,7 @@ hideall "--sync--"
 # 9E45 Death IV
 # 9E46 Death IV
 # 9E4B Aero IV
+# 9E4E Aero IV
 # 9E51 Break IV
 # 9E52 Break IV
 
@@ -138,8 +139,11 @@ hideall "--sync--"
 # 9E12 Diffusive-force Particle Beam
 # 9E13 Active-pivot Particle Beam
 # 9E14 Active-pivot Particle Beam
+# 9E15 Active-pivot Particle Beam
+# 9E16 Active-pivot Particle Beam
 # 9E17 Active-pivot Particle Beam
 # 9E18 Particle Concentration
+# 9E19 Particle Beam
 # 9E1A Particle Beam
 # 9E1B Particle Beam
 # 9E1C Particle Beam
@@ -152,11 +156,14 @@ hideall "--sync--"
 # 9E23 the Third Art of Darkness
 # 9E24 the Art of Darkness
 # 9E25 the Art of Darkness
+# 9E26 Hyper-focused Particle Beam
+# 9E27 Hyper-focused Particle Beam
 # 9E28 Multi-pronged Particle Beam
 # 9E29 Multi-pronged Particle Beam
 # 9E2A Evil Seed
 # 9E2B Evil Seed
 # 9E2C Thorny Vine
+# 9E2D Thorny Vine
 # 9E2E --sync--
 # 9E2F Lateral-core Phaser
 # 9E30 Core-lateral Phaser
