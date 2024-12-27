@@ -1,0 +1,124 @@
+### THE CLOUD OF DARKNESS (CHAOTIC)
+# ZoneId: 1241
+# -it "Cloud of Darkness" "Atomos" "Stygian Shadow"
+# -ii 9DFB 9DFD 9DFF 9E3B 9E3C 9E40 9E41 9E43 9E4E 9E4F 9E51 9E52 9E58 A12D
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+14.2 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+26.2 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+38.6 "Deluge of Darkness" Ability { id: "9E3D", source: "Cloud of Darkness" }
+41.6 "--sync--" Ability { id: "9E56", source: "Cloud of Darkness" }
+
+
+# IGNORED ABILITIES
+# 9DFB Blade of Darkness - under front right (cast)
+# 9DFD Blade of Darkness - under front left (cast)
+# 9DFF Blade of Darkness - out (cast)
+# 9E3B Grim Embrace
+# 9E3C Grim Embrace
+# 9E40 Rapid-sequence Particle Beam - alliance wild charge (cast)
+# 9E41 Rapid-sequence Particle Beam - alliance wild charge (cast)
+# 9E43 Death IV
+# 9E4E Aero IV
+# 9E4F Break IV
+# 9E52 Break IV
+# 9E58 Flare - cast
+# A12D Unholy Darkness
+
+# ALL ENCOUNTER ABILITIES
+# 9DF9 attack
+# 9DFA attack
+# 9DFB Blade of Darkness - under front right (cast)
+# 9DFC Blade of Darkness - under front right (damage)
+# 9DFD Blade of Darkness - under front left (cast)
+# 9DFE Blade of Darkness - under front left (damage)
+# 9DFF Blade of Darkness - out (cast)
+# 9E00 Blade of Darkness - out (damage)
+# 9E01 Deluge of Darkness - bleed aoe
+# 9E02 --sync--
+# 9E06 Evaporation
+# 9E07 Flood of Darkness
+# 9E08 Dark Dominion - aoe
+# 9E09 Ghastly Gloom
+# 9E0A Ghastly Gloom
+# 9E0B Ghastly Gloom
+# 9E0C Ghastly Gloom
+# 9E0D Chaos-condensed Particle Beam
+# 9E0E Chaos-condensed Particle Beam
+# 9E0F Chaos-condensed Particle Beam
+# 9E10 Diffusive-force Particle Beam
+# 9E11 Diffusive-force Particle Beam
+# 9E12 Diffusive-force Particle Beam
+# 9E13 Active-pivot Particle Beam
+# 9E14 Active-pivot Particle Beam
+# 9E17 Active-pivot Particle Beam
+# 9E18 Particle Concentration
+# 9E1A Particle Beam
+# 9E1B Particle Beam
+# 9E1C Particle Beam
+# 9E1D Feint Particle Beam
+# 9E1E Feint Particle Beam
+# 9E1F Feint Particle Beam
+# 9E20 the Third Art of Darkness
+# 9E21 the Art of Darkness
+# 9E22 the Art of Darkness
+# 9E23 the Third Art of Darkness
+# 9E24 the Art of Darkness
+# 9E25 the Art of Darkness
+# 9E28 Multi-pronged Particle Beam
+# 9E29 Multi-pronged Particle Beam
+# 9E2A Evil Seed
+# 9E2B Evil Seed
+# 9E2C Thorny Vine
+# 9E2E --sync--
+# 9E2F Lateral-core Phaser
+# 9E30 Core-lateral Phaser
+# 9E31 Phaser
+# 9E32 Curse of Darkness
+# 9E33 Curse of Darkness
+# 9E34 Dark-Energy Particle Beam
+# 9E35 Attack
+# 9E36 Excruciate
+# 9E39 Grim Embrace
+# 9E3A Grim Embrace
+# 9E3B Grim Embrace
+# 9E3C Grim Embrace
+# 9E3D Deluge of Darkness - bleed aoe
+# 9E3E Flood of Darkness - aoe
+# 9E3F Razing-volley Particle Beam - line aoe
+# 9E40 Rapid-sequence Particle Beam - alliance wild charge (cast)
+# 9E41 Rapid-sequence Particle Beam - alliance wild charge (cast)
+# 9E42 Rapid-sequence Particle Beam - alliance wild charge (damage)
+# 9E43 Death IV
+# 9E44 Vortex
+# 9E45 Death IV
+# 9E47 Vortex
+# 9E48 Death IV
+# 9E4A Aero IV
+# 9E4B Aero IV
+# 9E4C Aero IV
+# 9E4D Aero IV
+# 9E4E Aero IV
+# 9E4F Break IV
+# 9E50 Break IV
+# 9E52 Break IV
+# 9E53 Endeath IV
+# 9E54 Enaero IV
+# 9E55 Deluge of Darkness - enrage
+# 9E56 --sync--
+# 9E58 Flare - cast
+# 9E59 Flare - damage
+# A12D Unholy Darkness
+# A12E Unholy Darkness
+# A182 Particle Beam
+# A183 Particle Beam
+# A184 attack
+# A185 attack
+# A2C9 Looming Chaos
+# A2CA Looming Chaos
+# A2CB Looming Chaos
