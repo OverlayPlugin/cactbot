@@ -82,10 +82,10 @@ hideall "--sync--"
 500.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 502.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
 505.7 "Aero IV (cast)" Ability { id: "9E4C", source: "Cloud of Darkness" }
-506.3 "Aero IV (damage)" Ability { id: "9E4A", source: "Cloud of Darkness" }
+506.3 "Aero IV" Ability { id: "9E4A", source: "Cloud of Darkness" }
 517.3 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
 528.3 "Rapid-sequence Particle Beam (cast)" Ability { id: "9E40", source: "Cloud of Darkness" }
-529.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Death's Hand" }
+529.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
 531.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
 533.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
 535.2 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
@@ -186,16 +186,16 @@ hideall "--sync--"
 # 9E2C Thorny Vine
 # 9E2D Thorny Vine
 # 9E2E --sync--
-# 9E2F Lateral-core Phaser
-# 9E30 Core-lateral Phaser
+# 9E2F Lateral-core Phaser - cleave middle then sides
+# 9E30 Core-lateral Phaser - cleave sides then middle
 # 9E31 Phaser
 # 9E32 Curse of Darkness
 # 9E33 Curse of Darkness
 # 9E34 Dark-Energy Particle Beam
 # 9E35 Attack
-# 9E36 Excruciate
-# 9E39 Grim Embrace
-# 9E3A Grim Embrace
+# 9E36 Excruciate - tankbuster from Stygian Shadow
+# 9E39 Grim Embrace - hand will spawn in front of players
+# 9E3A Grim Embrace - hand will spawn behind players
 # 9E3B Grim Embrace
 # 9E3C Grim Embrace
 # 9E3D Deluge of Darkness - bleed aoe
@@ -216,22 +216,22 @@ hideall "--sync--"
 # 9E4C Aero IV
 # 9E4D Aero IV
 # 9E4E Aero IV
-# 9E4F Break IV
-# 9E50 Break IV
-# 9E51 Break IV
-# 9E52 Break IV
+# 9E4F Break IV - gaze attack (cast from boss)
+# 9E50 Break IV - gaze attack (damage from boss)
+# 9E51 Break IV - gaze attack (cast from adds)
+# 9E52 Break IV - gaze attack (damage from adds)
 # 9E53 Endeath IV
 # 9E54 Enaero IV
 # 9E55 Deluge of Darkness - enrage
-# 9E56 --sync--
+# 9E56 --sync-- - change from opener to diamond phase
 # 9E58 Flare - cast
 # 9E59 Flare - damage
-# A12D Unholy Darkness
-# A12E Unholy Darkness
+# A12D Unholy Darkness - healer stacks (cast)
+# A12E Unholy Darkness - healer stacks (damage)
 # A182 Particle Beam
 # A183 Particle Beam
 # A184 attack
 # A185 attack
-# A2C9 Looming Chaos
-# A2CA Looming Chaos
-# A2CB Looming Chaos
+# A2C9 Looming Chaos - cast (from adds)
+# A2CA Looming Chaos - cast (from boss)
+# A2CB Looming Chaos - aoe (from boss clone)

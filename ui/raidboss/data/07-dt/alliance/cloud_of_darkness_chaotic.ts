@@ -77,7 +77,6 @@ const triggerSet: TriggerSet<Data> = {
     deadlyEmbraceDodgeDirectionCollected: 'unknown',
     deadlyEmbraceDodgeDirection: 'unknown',
   }),
-  timelineTriggers: [],
   triggers: [
     {
       id: 'Cloud Chaotic Inner/Outer Darkness Gain',
@@ -120,16 +119,13 @@ const triggerSet: TriggerSet<Data> = {
         // so limit to only calling for players in your immediate party.
         return data.CanCleanse() && data.party.inParty(matches.target);
       },
-      alertText: (data, matches, output) => {
-        return output.text!({ player: data.party.member(matches.target) });
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => {
+        return output.text!();
       },
       outputStrings: {
         text: {
-          en: 'Cleanse ${player}',
-          de: 'Reinige ${player}',
-          fr: 'Guérissez ${player}',
-          cn: '康复 ${player}',
-          ko: '${player} 디버프 해제',
+          en: 'Cleanse Doom',
         },
       },
     },
@@ -239,9 +235,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Cloud Chaotic Break IV',
       type: 'StartsUsing',
-      // sometimes listed as coming from Death's Hand due to actor re-use,
-      // source omitted to prevent trigger issues.
-      netRegex: { id: '9E50', capture: false },
+      // 9E4F = dummy cast from boss (ends slightly before actual cast)
+      // 9E50 = actual cast from boss (sometimes has stale source name)
+      // 9E51 = dummy cast from adds (source: Sinister Eye)
+      // 9E52 = actual cast from adds (sometimes has stale source name)
+      netRegex: { id: '9E4F', source: 'Cloud of Darkness', capture: false },
       response: Responses.lookAway(),
     },
     {
@@ -260,7 +258,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Cloud Chaotic Death IV',
       type: 'StartsUsing',
       netRegex: { id: '9E43', source: 'Cloud of Darkness', capture: false },
-      response: Responses.getOutThenIn(),
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Far away => in',
+        },
+      },
     },
     {
       id: 'Cloud Chaotic Aero IV',
@@ -407,6 +410,41 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { npcNameId: '13626', capture: false },
       suppressSeconds: 1,
       response: Responses.killAdds(),
+    },
+    {
+      id: 'Cloud Chaotic Thorny Vine',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1BD', capture: true },
+      condition: Conditions.targetIsYou(),
+      response: Responses.breakChains(),
+    },
+    {
+      id: 'Cloud Chaotic Looming Chaos',
+      type: 'StartsUsing',
+      netRegex: { id: 'A2CB', source: 'Cloud of Darkness', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'AoE + player swaps',
+        },
+      },
+    },
+    {
+      id: 'Cloud Chaotic Particle Concentration',
+      type: 'Ability',
+      netRegex: { id: '9E18', source: 'Cloud Of Darkness', capture: false },
+      durationSeconds: 6,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Get Towers',
+          de: 'Türme nehmen',
+          fr: 'Prenez les tours',
+          ja: '塔を踏む',
+          cn: '踩塔',
+          ko: '기둥 들어가기',
+        },
+      },
     },
   ],
   timelineReplace: [],
