@@ -9,7 +9,6 @@ import { TriggerSet } from '../../../../../types/trigger';
 // TODO: timeline w/ all 3 diamond phase patterns
 // TODO: limit inner/outer triggers based on player location
 // TODO: limit outer triggers based on east/west groups
-// TODO: tower soaks?
 // TODO: tile refreshes?
 // TODO: Feint Particle Beam (chasing aoes)
 // TODO: Looming Chaos player swaps?
