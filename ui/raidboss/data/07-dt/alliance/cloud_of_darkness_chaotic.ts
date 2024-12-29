@@ -22,9 +22,9 @@ export interface Data extends RaidbossData {
 }
 
 const headMarkerData = {
-  // player about to be tethered to bramble
+  // player about to be tethered
   // Vfx Path: m0005sp_09o0t
-  '000C': '000C',
+  'tetherMarker': '000C',
   // stack marker on healers
   // Offsets: 83994
   // Vfx Path: com_share2i
@@ -68,7 +68,7 @@ const headMarkerData = {
   'rotateCounterClockwise': '0235',
   // bramble about to tether to a player
   // Vfx Path: exclamation_8s_x
-  '0239': '0239',
+  'exclamationMarker': '0239',
 } as const;
 
 const triggerSet: TriggerSet<Data> = {
