@@ -29,6 +29,9 @@ const headMarkerData = {
   // Offsets: 83994
   // Vfx Path: com_share2i
   'healerStack': '0064',
+  // chasing AoE marker
+  // Vfx Path: tracking_lockon01i
+  'chasingAoe': '00C5',
   // Stygian Shadow telegraph
   // Offsets: 220975
   // Vfx Path: m0684_charge_c0x
@@ -442,6 +445,23 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔を踏む',
           cn: '踩塔',
           ko: '기둥 들어가기',
+        },
+      },
+    },
+    {
+      id: 'Cloud Chaotic Feint Particle Beam',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.chasingAoe, capture: true },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Chasing AoE on YOU',
+          de: 'Verfolgende AoE auf DIR',
+          fr: 'Ruée sur VOUS',
+          ja: '追跡AOE',
+          cn: '追踪AOE点名',
+          ko: '연속장판 대상자',
         },
       },
     },
