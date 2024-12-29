@@ -1,5 +1,5 @@
 import PartyTracker from '../../resources/party';
-import { OopsyMistake } from '../../types/oopsy';
+import { OopsyMistake, OopsyMistakeType } from '../../types/oopsy';
 
 import { DeathReport } from './death_report';
 import { MistakeObserver, ViewEvent } from './mistake_observer';
@@ -23,7 +23,7 @@ export class OopsySummaryTable implements MistakeObserver {
     [name: string]: TableRow;
   };
   // TODO: should this come from options?
-  private types: readonly string[] = ['death', 'fail', 'warn', 'pull'];
+  private types: readonly OopsyMistakeType[] = ['death', 'fail', 'warn', 'pull', 'damage'];
   private sortCol = 'death';
   private sortAsc = false;
 
