@@ -91,7 +91,6 @@ export interface Data extends RaidbossData {
   thirdArtOfDarkness: {
     east?: ThirdArtOfDarkness[];
     west?: ThirdArtOfDarkness[];
-    first?: string;
   };
 }
 
