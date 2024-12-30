@@ -13,7 +13,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 // TODO: tile refreshes?
 
 type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
-type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread' | 'unknown';
+type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread';
 
 const thirdArtOfDarknessHeadmarker = {
   '00EF': 'leftCleave',
@@ -538,7 +538,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Cloud Chaotic The Third Art of Darkness Early Call',
+      id: 'Cloud Chaotic The Third Art of Darkness Initial',
       type: 'StartsUsing',
       netRegex: { id: ['9E20', '9E23'], source: 'Stygian Shadow', capture: true },
       condition: (data, matches) => {
@@ -553,11 +553,12 @@ const triggerSet: TriggerSet<Data> = {
           : data.thirdArtOfDarkness.west;
 
         if (!shadowData) {
-          console.error(`Cloud Chaotic The Third Art of Darkness: missing data`);
-          return;
+          console.error(
+            `Cloud Chaotic The Third Art of Darkness Initial: missing shadowData for side ${side}`,
+          );
         }
 
-        const [mech1] = shadowData;
+        const [mech1] = shadowData ?? [];
 
         return output.text!({
           first: mech1 === undefined ? output.unknown!() : output[mech1]!(),
@@ -591,11 +592,12 @@ const triggerSet: TriggerSet<Data> = {
           : data.thirdArtOfDarkness.west;
 
         if (!shadowData) {
-          console.error(`Cloud Chaotic The Third Art of Darkness: missing data`);
-          return;
+          console.error(
+            `Cloud Chaotic The Third Art of Darkness: missing shadowData missing shadowData for side ${side}`,
+          );
         }
 
-        const [mech1, mech2, mech3] = shadowData;
+        const [mech1, mech2, mech3] = shadowData ?? [];
 
         return output.text!({
           first: mech1 === undefined ? output.unknown!() : output[mech1]!(),
