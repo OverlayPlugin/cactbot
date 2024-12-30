@@ -266,8 +266,8 @@ hideall "--sync--"
 # 9E23 the Third Art of Darkness
 # 9E24 the Art of Darkness
 # 9E25 the Art of Darkness
-# 9E26 Hyper-focused Particle Beam
-# 9E27 Hyper-focused Particle Beam
+# 9E26 Hyper-focused Particle Beam - add protean (self-cast)
+# 9E27 Hyper-focused Particle Beam - add protean (damage)
 # 9E28 Multi-pronged Particle Beam
 # 9E29 Multi-pronged Particle Beam
 # 9E2A Evil Seed

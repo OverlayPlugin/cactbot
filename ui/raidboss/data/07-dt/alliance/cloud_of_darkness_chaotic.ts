@@ -13,11 +13,11 @@ import { TriggerSet } from '../../../../../types/trigger';
 // TODO: tile refreshes?
 
 type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
-type ThirdArtOfDarkness = 'rightCleave' | 'leftCleave' | 'pairStacks' | 'proteanSpread' | 'unknown';
+type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread' | 'unknown';
 
 const thirdArtOfDarknessHeadmarker = {
-  '00EF': 'rightCleave',
-  '00F0': 'leftCleave',
+  '00EF': 'leftCleave',
+  '00F0': 'rightCleave',
   '00F1': 'pairStacks',
   '00F2': 'proteanSpread',
 } as const;
@@ -45,11 +45,11 @@ const headMarkerData = {
   // Stygian Shadow telegraph
   // Offsets: 220975
   // Vfx Path: m0684_charge_c0x
-  'rightCleave': '00EF',
+  'leftCleave': '00EF',
   // Stygian Shadow telegraph
   // Offsets: 220975
   // Vfx Path: m0684_charge_c1x
-  'leftCleave': '00F0',
+  'rightCleave': '00F0',
   // Stygian Shadow telegraph
   // Vfx Path: m0684_charge_c2x
   'pairStacks': '00F1',
@@ -567,8 +567,8 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Start ${first}',
         },
-        rightCleave: Outputs.left,
         leftCleave: Outputs.right,
+        rightCleave: Outputs.left,
         pairStacks: Outputs.stacks,
         proteanSpread: Outputs.protean,
         unknown: Outputs.unknown,
@@ -612,8 +612,8 @@ const triggerSet: TriggerSet<Data> = {
           cn: '${first} => ${second} => ${third}',
           ko: '${first} => ${second} => ${third}',
         },
-        rightCleave: Outputs.left,
         leftCleave: Outputs.right,
+        rightCleave: Outputs.left,
         pairStacks: Outputs.stacks,
         proteanSpread: Outputs.protean,
         unknown: Outputs.unknown,
