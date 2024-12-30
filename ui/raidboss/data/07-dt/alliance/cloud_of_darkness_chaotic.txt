@@ -278,8 +278,8 @@ hideall "--sync--"
 # 9E2F Lateral-core Phaser - cleave middle then sides (cast)
 # 9E30 Core-lateral Phaser - cleave sides then middle (cast)
 # 9E31 Phaser - add cleave (damage from Lateral-core/Core-lateral Phaser)
-# 9E32 Curse of Darkness
-# 9E33 Curse of Darkness
+# 9E32 Curse of Darkness - dummy cast?
+# 9E33 Curse of Darkness - aoe
 # 9E34 Dark-Energy Particle Beam
 # 9E35 Attack
 # 9E36 Excruciate - tankbuster from Stygian Shadow

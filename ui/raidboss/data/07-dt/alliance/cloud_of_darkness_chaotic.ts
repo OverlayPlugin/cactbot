@@ -1,25 +1,35 @@
 import Conditions from '../../../../../resources/conditions';
+import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODO: tile phase timeline
 // TODO: RSV replacements for timeline
-// TODO: timeline w/ all 3 diamond phase patterns
-// TODO: limit inner/outer triggers based on player location
-// TODO: limit outer triggers based on east/west groups
+// TODO: tweak trigger durations/delays
 // TODO: tile refreshes?
-// TODO: Feint Particle Beam (chasing aoes)
-// TODO: Looming Chaos player swaps?
 
-export interface Data extends RaidbossData {
-  deadlyEmbraceDodgeDirectionCollected: 'front' | 'back' | 'unknown';
-  deadlyEmbraceDodgeDirection: 'front' | 'back' | 'unknown';
-  bladeOfDarknessFollowup?: 'death' | 'aero';
-  innerDarkness?: boolean;
-  outerDarkness?: boolean;
-}
+type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
+type ThirdArtOfDarkness = 'rightCleave' | 'leftCleave' | 'pairStacks' | 'proteanSpread' | 'unknown';
+
+const thirdArtOfDarknessHeadmarker = {
+  '00EF': 'rightCleave',
+  '00F0': 'leftCleave',
+  '00F1': 'pairStacks',
+  '00F2': 'proteanSpread',
+} as const;
+
+const isThirdArtOfDarknessId = (id: string): id is ThirdArtOfDarknessId => {
+  return id in thirdArtOfDarknessHeadmarker;
+};
+
+const center = {
+  'x': 100,
+  'y': 100,
+} as const;
 
 const headMarkerData = {
   // player about to be tethered
@@ -71,6 +81,20 @@ const headMarkerData = {
   'exclamationMarker': '0239',
 } as const;
 
+export interface Data extends RaidbossData {
+  deadlyEmbraceDodgeDirectionCollected: 'front' | 'back' | 'unknown';
+  deadlyEmbraceDodgeDirection: 'front' | 'back' | 'unknown';
+  bladeOfDarknessFollowup?: 'death' | 'aero';
+  innerDarkness?: boolean;
+  outerDarkness?: boolean;
+  mySide?: 'east' | 'west';
+  thirdArtOfDarkness: {
+    east?: ThirdArtOfDarkness[];
+    west?: ThirdArtOfDarkness[];
+    first?: string;
+  };
+}
+
 const triggerSet: TriggerSet<Data> = {
   id: 'TheCloudOfDarknessChaotic',
   zoneId: ZoneId.TheCloudOfDarknessChaotic,
@@ -78,40 +102,9 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     deadlyEmbraceDodgeDirectionCollected: 'unknown',
     deadlyEmbraceDodgeDirection: 'unknown',
+    thirdArtOfDarkness: {},
   }),
   triggers: [
-    {
-      id: 'Cloud Chaotic Inner/Outer Darkness Gain',
-      type: 'GainsEffect',
-      netRegex: { effectId: ['1051', '1052'], capture: true },
-      condition: Conditions.targetIsYou(),
-      run: (data, matches) => {
-        switch (matches.effectId) {
-          case '1051':
-            data.innerDarkness = true;
-            break;
-          case '1052':
-            data.outerDarkness = true;
-            break;
-        }
-      },
-    },
-    {
-      id: 'Cloud Chaotic Inner/Outer Darkness Lose',
-      type: 'LosesEffect',
-      netRegex: { effectId: ['1051', '1052'], capture: true },
-      condition: Conditions.targetIsYou(),
-      run: (data, matches) => {
-        switch (matches.effectId) {
-          case '1051':
-            delete data.innerDarkness;
-            break;
-          case '1052':
-            delete data.outerDarkness;
-            break;
-        }
-      },
-    },
     {
       id: 'Cloud Chaotic Doom',
       type: 'GainsEffect',
@@ -172,7 +165,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Cloud Chaotic Deluge of Darkness',
       type: 'StartsUsing',
       netRegex: { id: ['9E3D', '9E01'], source: 'Cloud of Darkness', capture: false },
-      response: Responses.bleedAoe(),
+      response: Responses.bleedAoe('alert'),
     },
     {
       id: 'Cloud Chaotic Grim Embrace Collector',
@@ -280,17 +273,88 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'Cloud Chaotic Flood of Darkness Interrupt',
-      type: 'StartsUsing',
-      netRegex: { id: '9E37', source: 'Stygian Shadow', capture: true },
-      condition: (data) => data.outerDarkness,
-      response: Responses.interruptIfPossible(),
+      id: 'Cloud Chaotic Inner/Outer Darkness Gain',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1051', '1052'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        switch (matches.effectId) {
+          case '1051':
+            data.innerDarkness = true;
+            break;
+          case '1052':
+            data.outerDarkness = true;
+            break;
+        }
+      },
+    },
+    {
+      id: 'Cloud Chaotic Inner/Outer Darkness Lose',
+      type: 'LosesEffect',
+      netRegex: { effectId: ['1051', '1052'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        switch (matches.effectId) {
+          case '1051':
+            delete data.innerDarkness;
+            break;
+          case '1052':
+            delete data.outerDarkness;
+            break;
+        }
+      },
     },
     {
       id: 'Cloud Chaotic Dark Dominion',
       type: 'StartsUsing',
       netRegex: { id: '9E08', source: 'Cloud of Darkness', capture: false },
       response: Responses.aoe(),
+    },
+    {
+      id: 'Cloud Chaotic Side Collector',
+      type: 'Ability',
+      // 9E08 = Dark Dominion (from boss), occurs before The Third Art of Darkness add mechanics
+      // 9E2E = unknown (from both adds), occurs before Lateral-core/Core-lateral add mechanics
+      netRegex: { id: ['9E08', '9E2E'], capture: false },
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+
+        const me = actors.find((actor) => actor.Name === data.me);
+
+        if (!me) {
+          console.error(`Cloud Chaotic Side Collector: can't find player ${data.me}`);
+        } else {
+          data.mySide = me.PosX < center.x ? 'east' : 'west';
+        }
+      },
+    },
+    {
+      id: 'Cloud Chaotic Atomos Spawn',
+      type: 'AddedCombatant',
+      // 13626 = Atomos
+      netRegex: { npcNameId: '13626', capture: false },
+      suppressSeconds: 1,
+      response: Responses.killAdds(),
+    },
+    {
+      id: 'Cloud Chaotic Particle Concentration',
+      type: 'Ability',
+      netRegex: { id: '9E18', source: 'Cloud Of Darkness', capture: false },
+      durationSeconds: 6,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Get Towers',
+          de: 'Türme nehmen',
+          fr: 'Prenez les tours',
+          ja: '塔を踏む',
+          cn: '踩塔',
+          ko: '기둥 들어가기',
+        },
+      },
     },
     {
       id: 'Cloud Chaotic Ghastly Gloom',
@@ -310,6 +374,16 @@ const triggerSet: TriggerSet<Data> = {
         },
         under: Outputs.getUnder,
       },
+    },
+    {
+      id: 'Cloud Chaotic Flood of Darkness Interrupt',
+      type: 'StartsUsing',
+      netRegex: { id: '9E37', source: 'Stygian Shadow', capture: true },
+      condition: (data, matches) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        return data.outerDarkness && side === data.mySide;
+      },
+      response: Responses.interruptIfPossible(),
     },
     {
       id: 'Cloud Chaotic Diffusive-force Particle Beam',
@@ -341,7 +415,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Cloud Chaotic Curse Of Darkness',
+      id: 'Cloud Chaotic Curse Of Darkness AoE',
+      type: 'StartsUsing',
+      netRegex: { id: '9E33', source: 'Stygian Shadow', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Cloud Chaotic Curse Of Darkness Face Laser',
       type: 'GainsEffect',
       netRegex: { effectId: '953', capture: true },
       condition: Conditions.targetIsYou(),
@@ -362,13 +442,17 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Cloud Chaotic Excruciate',
       type: 'StartsUsing',
       netRegex: { id: '9E36', source: 'Stygian Shadow', capture: true },
+      condition: (data, matches) => data.party.inParty(matches.target),
       response: Responses.tankBuster(),
     },
     {
       id: 'Cloud Chaotic Lateral-core Phaser',
       type: 'StartsUsing',
-      netRegex: { id: '9E2F', source: 'Stygian Shadow', capture: false },
-      condition: (data) => data.outerDarkness,
+      netRegex: { id: '9E2F', source: 'Stygian Shadow', capture: true },
+      condition: (data, matches) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        return data.outerDarkness && side === data.mySide;
+      },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -379,8 +463,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Cloud Chaotic Core-lateral Phaser',
       type: 'StartsUsing',
-      netRegex: { id: '9E30', source: 'Stygian Shadow', capture: false },
-      condition: (data) => data.outerDarkness,
+      netRegex: { id: '9E30', source: 'Stygian Shadow', capture: true },
+      condition: (data, matches) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        return data.outerDarkness && side === data.mySide;
+      },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -406,14 +493,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Cloud Chaotic Atomos Spawn',
-      type: 'AddedCombatant',
-      // 13626 = Atomos
-      netRegex: { npcNameId: '13626', capture: false },
-      suppressSeconds: 1,
-      response: Responses.killAdds(),
-    },
-    {
       id: 'Cloud Chaotic Thorny Vine',
       type: 'GainsEffect',
       netRegex: { effectId: '1BD', capture: true },
@@ -421,30 +500,145 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.breakChains(),
     },
     {
+      id: 'Cloud Chaotic The Third Art of Darkness Collector',
+      type: 'HeadMarker',
+      netRegex: {
+        id: Object.keys(thirdArtOfDarknessHeadmarker),
+        target: 'Stygian Shadow',
+        capture: true,
+      },
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+
+        const actorID = parseInt(matches.targetId, 16);
+        const actor = actors.find((actor) => actor.ID === actorID);
+
+        if (!actor) {
+          console.error(
+            `Cloud Chaotic The Third Art of Darkness Collector: can't find actor ${actorID}`,
+          );
+          return;
+        }
+
+        if (!isThirdArtOfDarknessId(matches.id)) {
+          throw new UnreachableCode();
+        }
+
+        const side = actor.PosX < center.x ? 'east' : 'west';
+        const mech = thirdArtOfDarknessHeadmarker[matches.id];
+
+        if (side === 'east') {
+          data.thirdArtOfDarkness.east ??= [];
+          data.thirdArtOfDarkness.east.push(mech);
+        } else {
+          data.thirdArtOfDarkness.west ??= [];
+          data.thirdArtOfDarkness.west.push(mech);
+        }
+      },
+    },
+    {
+      id: 'Cloud Chaotic The Third Art of Darkness Early Call',
+      type: 'StartsUsing',
+      netRegex: { id: ['9E20', '9E23'], source: 'Stygian Shadow', capture: true },
+      condition: (data, matches) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        return data.outerDarkness && side === data.mySide;
+      },
+      delaySeconds: 2,
+      infoText: (data, matches, output) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        const shadowData = side === 'east'
+          ? data.thirdArtOfDarkness.east
+          : data.thirdArtOfDarkness.west;
+
+        if (!shadowData) {
+          console.error(`Cloud Chaotic The Third Art of Darkness: missing data`);
+          return;
+        }
+
+        const [mech1] = shadowData;
+
+        return output.text!({
+          first: mech1 === undefined ? output.unknown!() : output[mech1]!(),
+        });
+      },
+      outputStrings: {
+        text: {
+          en: 'Start ${first}',
+        },
+        rightCleave: Outputs.left,
+        leftCleave: Outputs.right,
+        pairStacks: Outputs.stacks,
+        proteanSpread: Outputs.protean,
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'Cloud Chaotic The Third Art of Darkness',
+      type: 'StartsUsing',
+      netRegex: { id: ['9E20', '9E23'], source: 'Stygian Shadow', capture: true },
+      condition: (data, matches) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        return data.outerDarkness && side === data.mySide;
+      },
+      // the adds take a long time to telegraph their upcoming mechanics
+      delaySeconds: 7.5,
+      infoText: (data, matches, output) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        const shadowData = side === 'east'
+          ? data.thirdArtOfDarkness.east
+          : data.thirdArtOfDarkness.west;
+
+        if (!shadowData) {
+          console.error(`Cloud Chaotic The Third Art of Darkness: missing data`);
+          return;
+        }
+
+        const [mech1, mech2, mech3] = shadowData;
+
+        return output.text!({
+          first: mech1 === undefined ? output.unknown!() : output[mech1]!(),
+          second: mech2 === undefined ? output.unknown!() : output[mech2]!(),
+          third: mech3 === undefined ? output.unknown!() : output[mech3]!(),
+        });
+      },
+      outputStrings: {
+        text: {
+          en: '${first} => ${second} => ${third}',
+          de: '${first} => ${second} => ${third}',
+          fr: '${first} => ${second} => ${third}',
+          ja: '${first} => ${second} => ${third}',
+          cn: '${first} => ${second} => ${third}',
+          ko: '${first} => ${second} => ${third}',
+        },
+        rightCleave: Outputs.left,
+        leftCleave: Outputs.right,
+        pairStacks: Outputs.stacks,
+        proteanSpread: Outputs.protean,
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'Cloud Chaotic The Third Art of Darkness Cleanup',
+      type: 'Ability',
+      netRegex: { id: ['9E20', '9E23'], source: 'Stygian Shadow', capture: false },
+      suppressSeconds: 1,
+      run: (data) => {
+        delete data.thirdArtOfDarkness.east;
+        delete data.thirdArtOfDarkness.west;
+      },
+    },
+    {
       id: 'Cloud Chaotic Looming Chaos',
       type: 'StartsUsing',
       netRegex: { id: 'A2CB', source: 'Cloud of Darkness', capture: false },
+      preRun: (data) => delete data.mySide,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'AoE + player swaps',
-        },
-      },
-    },
-    {
-      id: 'Cloud Chaotic Particle Concentration',
-      type: 'Ability',
-      netRegex: { id: '9E18', source: 'Cloud Of Darkness', capture: false },
-      durationSeconds: 6,
-      infoText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Get Towers',
-          de: 'Türme nehmen',
-          fr: 'Prenez les tours',
-          ja: '塔を踏む',
-          cn: '踩塔',
-          ko: '기둥 들어가기',
         },
       },
     },
