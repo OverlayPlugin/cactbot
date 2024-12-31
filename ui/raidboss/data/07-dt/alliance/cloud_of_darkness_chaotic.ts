@@ -8,9 +8,8 @@ import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: tile phase timeline
-// TODO: RSV replacements for timeline
 // TODO: tweak trigger durations/delays
-// TODO: tile refreshes?
+// TODO: pvp tile refreshes?
 
 type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
 type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread';
@@ -394,6 +393,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Cloud Chaotic Chaos-condensed Particle Beam',
       type: 'StartsUsing',
       netRegex: { id: '9E0D', source: 'Cloud of Darkness', capture: false },
+      // this is a Wild Charge, tanks should be in front
       response: Responses.stackMarker(),
     },
     {
@@ -441,7 +441,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Cloud Chaotic Excruciate',
       type: 'StartsUsing',
       netRegex: { id: '9E36', source: 'Stygian Shadow', capture: true },
-      condition: (data, matches) => data.party.inParty(matches.target),
+      // TODO: some strats may prefer to have this call for any party members
+      // being targeted by the buster due to player positioning
+      condition: (data, matches) => {
+        const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
+        return data.outerDarkness && side === data.mySide;
+      },
       response: Responses.tankBuster(),
     },
     {
@@ -545,6 +550,7 @@ const triggerSet: TriggerSet<Data> = {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
         return data.outerDarkness && side === data.mySide;
       },
+      // delay enough to capture the first mechanic telegraph
       delaySeconds: 2,
       infoText: (data, matches, output) => {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
@@ -583,7 +589,7 @@ const triggerSet: TriggerSet<Data> = {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
         return data.outerDarkness && side === data.mySide;
       },
-      // the adds take a long time to telegraph their upcoming mechanics
+      // the adds take a long time to telegraph all of their upcoming mechanics
       delaySeconds: 7.5,
       alertText: (data, matches, output) => {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
