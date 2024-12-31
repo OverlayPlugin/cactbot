@@ -9,7 +9,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: tile phase timeline
 // TODO: tweak trigger durations/delays
-// TODO: pvp tile refreshes?
+// TODO: tile refreshes?
 
 type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
 type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread';
@@ -445,7 +445,7 @@ const triggerSet: TriggerSet<Data> = {
       // being targeted by the buster due to player positioning
       condition: (data, matches) => {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
-        return data.outerDarkness && side === data.mySide;
+        return data.me === matches.target || (data.outerDarkness && side === data.mySide);
       },
       response: Responses.tankBuster(),
     },
