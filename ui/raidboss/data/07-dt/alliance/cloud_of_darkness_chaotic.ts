@@ -585,7 +585,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       // the adds take a long time to telegraph their upcoming mechanics
       delaySeconds: 7.5,
-      infoText: (data, matches, output) => {
+      alertText: (data, matches, output) => {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
         const shadowData = side === 'east'
           ? data.thirdArtOfDarkness.east
@@ -593,7 +593,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if (!shadowData) {
           console.error(
-            `Cloud Chaotic The Third Art of Darkness: missing shadowData missing shadowData for side ${side}`,
+            `Cloud Chaotic The Third Art of Darkness: missing shadowData for side ${side}`,
           );
         }
 
