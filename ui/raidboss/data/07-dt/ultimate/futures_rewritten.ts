@@ -11,6 +11,23 @@ import { RaidbossData } from '../../../../../types/data';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODO:
+//  - P3: Apoc explosion rotation/safe spots
+//  - P3: Darkest Dance (tb bait)
+//  - P4: Somber Dance (tb bait x2)
+
+type Phase = 'p1' | 'p2-dd' | 'p2-mm' | 'p2-lr' | 'p3-ur' | 'p3-apoc' | 'p4-dld' | 'p4-ct' | 'p5';
+const phases: { [id: string]: Phase } = {
+  '9CFF': 'p2-dd', // Quadruple Slap (pre-Diamond Dust)
+  '9CF3': 'p2-mm', // Mirror, Mirror
+  '9D14': 'p2-lr', // Light Rampant
+  '9D49': 'p3-ur', // Hell's Judgment (pre-Ultimate Relativity)
+  '9D4D': 'p3-apoc', // Spell-in-Waiting: Refrain (pre-Apocalypse)
+  '9D36': 'p4-dld', // Materialization (pre-Darklit Dragonsong)
+  '9D30': 'p4-ct', // Crystallize Time
+  // tbd: 'p5',
+};
+
 const centerX = 100;
 const centerY = 100;
 
@@ -85,6 +102,9 @@ const findNorthDirNum = (dirs: number[]): number => {
   return -1;
 };
 
+type ApocDebuffLength = 'short' | 'medium' | 'long' | 'none';
+type ApocDebuffMap = Record<ApocDebuffLength, string[]>;
+
 const p3UROutputStrings = {
   yNorthStrat: {
     en: '${debuff} (${dir})',
@@ -114,10 +134,14 @@ export interface Data extends RaidbossData {
     sinboundRotate: 'aacc' | 'addposonly'; // aacc = always away, cursed clockwise
     ultimateRel: 'yNorthDPSEast' | 'none';
   };
+  // General
+  phase: Phase | 'unknown';
   actorSetPosTracker: { [id: string]: NetMatches['ActorSetPos'] };
+  // P1 -- Fatebreaker
   p1ConcealSafeDirs: DirectionOutput8[];
   p1StackSpread?: 'stack' | 'spread';
   p1FallOfFaithTethers: ('fire' | 'lightning')[];
+  // P2 -- Usurper Of Frost
   p2QuadrupleFirstTarget: string;
   p2QuadrupleDebuffApplied: boolean;
   p2IcicleImpactStart: DirectionOutput8[];
@@ -127,12 +151,19 @@ export interface Data extends RaidbossData {
   p2LightsteepedCount: number;
   p2LightRampantPuddles: string[];
   p2SeenFirstHolyLight: boolean;
+  // P3 -- Oracle of Darkness
   p3RelativityRoleCount: number;
   p3RelativityDebuff?: RelativityDebuff;
   p3RelativityRoleMap: ReturnType<typeof newRoleMap>;
   p3RelativityStoplights: { [id: string]: NetMatches['AddedCombatant'] };
   p3RelativityYellowDirNums: number[];
   p3RelativityMyDirStr: string;
+  p3ApocDebuffCount: number;
+  p3ApocDebuffs: ApocDebuffMap;
+  p3MyApocDebuff?: ApocDebuffLength;
+  // P4 -- Duo
+  p4RefulgentChains: string[];
+  p4DarklitStacks: string[];
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -179,6 +210,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'futures_rewritten.txt',
   initData: () => {
     return {
+      phase: 'p1',
       actorSetPosTracker: {},
       p1ConcealSafeDirs: [...Directions.output8Dir],
       p1FallOfFaithTethers: [],
@@ -194,11 +226,28 @@ const triggerSet: TriggerSet<Data> = {
       p3RelativityStoplights: {},
       p3RelativityYellowDirNums: [],
       p3RelativityMyDirStr: '',
+      p3ApocDebuffCount: 0,
+      p3ApocDebuffs: {
+        short: [],
+        medium: [],
+        long: [],
+        none: [],
+      },
+      p4RefulgentChains: [],
+      p4DarklitStacks: [],
     };
   },
   timelineTriggers: [],
   triggers: [
+    // ************************
     // General triggers
+    // ************************
+    {
+      id: 'FRU Phase Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: Object.keys(phases) },
+      run: (data, matches) => data.phase = phases[matches.id] ?? 'unknown',
+    },
     {
       id: 'FRU ActorSetPos Collector',
       type: 'ActorSetPos',
@@ -207,7 +256,9 @@ const triggerSet: TriggerSet<Data> = {
         data.actorSetPosTracker[matches.id] = matches;
       },
     },
-    // P1 -- Fatebreaker
+    // ************************
+    // P1-- Fatebreaker
+    // ************************
     {
       id: 'FRU P1 Cyclonic Break Fire',
       type: 'StartsUsing',
@@ -468,7 +519,9 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    // ************************
     // P2 -- Usurper Of Frost
+    // ************************
     {
       id: 'FRU P2 Quadruple Slap First',
       type: 'StartsUsing',
@@ -524,7 +577,7 @@ const triggerSet: TriggerSet<Data> = {
         return { infoText: busterStr };
       },
     },
-
+    // ***** Diamond Dust *****
     {
       id: 'FRU P2 Diamond Dust',
       type: 'StartsUsing',
@@ -536,7 +589,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       // 9D0A - Axe Kick (be out), 9D0B - Scythe Kick (be in)
       netRegex: { id: ['9D0A', '9D0B'], source: 'Oracle\'s Reflection' },
-      condition: (data) => data.p2AxeScytheSafe === undefined, // don't overwrite during Mirror, Mirror
+      // Only fire during Diamond Dust (same ids used during Mirror Mirror)
+      condition: (data) => data.phase === 'p2-dd',
       run: (data, matches) => data.p2AxeScytheSafe = matches.id === '9D0A' ? 'out' : 'in',
     },
     {
@@ -573,28 +627,29 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         const inOut = data.p2AxeScytheSafe ? output[data.p2AxeScytheSafe]!() : output.unknown!();
+        const mech = data.p2FrigidStoneTargets.includes(data.me) ? 'dropPuddle' : 'baitCleave';
         const firstIcicle = data.p2IcicleImpactStart[0] ?? 'unknown';
+
+        if (firstIcicle === 'unknown')
+          return output.combo!({ inOut: inOut, dir: output.unknown!(), mech: output[mech]!() });
 
         // Assumes that if first Icicle Impacts spawn on cardinals, House of Light baits will also be
         // cardinals and Frigid Stone puddle drops will be intercards, and vice versa.
-        if (data.p2FrigidStoneTargets.includes(data.me)) {
-          const dir = firstIcicle === 'unknown'
-            ? output.unknown!()
-            : (isCardinalDir(firstIcicle) ? output.intercards!() : output.cardinals!());
-          return output.dropPuddle!({ inOut: inOut, dir: dir });
-        }
+        const dir = mech === 'baitCleave'
+          ? (isCardinalDir(firstIcicle) ? output.cardinals!() : output.intercards!())
+          : (isCardinalDir(firstIcicle) ? output.intercards!() : output.cardinals!());
 
-        const dir = firstIcicle === 'unknown'
-          ? output.unknown!()
-          : (isCardinalDir(firstIcicle) ? output.cardinals!() : output.intercards!());
-        return output.baitCleave!({ inOut: inOut, dir: dir });
+        return output.combo!({ inOut: inOut, dir: dir, mech: output[mech]!() });
       },
       outputStrings: {
+        combo: {
+          en: '${inOut} + ${dir} => ${mech}',
+        },
         dropPuddle: {
-          en: '${inOut} + Far => Drop Puddle (${dir})',
+          en: 'Drop Puddle',
         },
         baitCleave: {
-          en: '${inOut} + Close Bait (${dir})',
+          en: 'Bait',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -636,13 +691,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // TODO: Add 'Always Away, Cursed Clockwise' strat
       id: 'FRU P2 Sinbound Holy Rotation',
       type: 'Ability',
-      // We can determine the player's knockbac dir from Heavenly Strike (9D0F).  It occurs after
-      // Shiva is already casting Sinbound Holy.
+      // We can determine the player's knockbac dir from Heavenly Strike (9D0F).
+      // It occurs after Shiva is already casting Sinbound Holy.
       netRegex: { id: '9D0F' },
       condition: Conditions.targetIsYou(),
+      delaySeconds: 1,
       durationSeconds: 5,
       infoText: (data, matches, output) => {
         const x = parseFloat(matches.targetX);
@@ -669,19 +724,15 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         aaccCursed: {
-          en: 'Cursed Add - Fast Clockwise',
+          en: 'Cursed - Fast Clockwise',
         },
-        aaccRotateCCW: {
-          en: 'Rotate Counterclockwise (away from add)',
-        },
-        aaccRotateCW: {
-          en: 'Rotate Clockwise (away from add)',
-        },
+        aaccRotateCCW: Outputs.counterclockwise,
+        aaccRotateCW: Outputs.clockwise,
         same: {
-          en: 'Add is on knockback',
+          en: 'Cursed - Add on knockback',
         },
         opposite: {
-          en: 'Add is opposite knockback',
+          en: 'Cursed - Add opposite you',
         },
         clockwise: {
           en: 'Add is clockwise',
@@ -695,6 +746,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P2 Shining Armor',
       type: 'GainsEffect',
       netRegex: { effectId: '8E1', capture: false },
+      condition: (data) => data.phase === 'p2-dd',
       suppressSeconds: 1,
       countdownSeconds: 4.9,
       response: Responses.lookAway('alarm'),
@@ -731,7 +783,7 @@ const triggerSet: TriggerSet<Data> = {
       // 9D01 - Twin Stillness (back safe -> front safe)
       // 9D02 - Twin Silence (front safe -> back safe)
       netRegex: { id: ['9D01', '9D02'] },
-      delaySeconds: 3, // waiting until the Ability line fires is too late, so delay off the 0x14 line.
+      delaySeconds: 2.9, // waiting until the Ability line fires is too late, so delay off the 0x14 line.
       alertText: (_data, matches, output) =>
         matches.id === '9D01' ? output.stillness!() : output.silence!(),
       outputStrings: {
@@ -739,11 +791,13 @@ const triggerSet: TriggerSet<Data> = {
         stillness: Outputs.front,
       },
     },
+    // ***** Mirror Mirror *****
     {
-      id: 'FRU P2 Mirror Mirror Initial',
+      id: 'FRU P2 Mirror Mirror Initial Cleaves',
       type: 'StartsUsing',
       netRegex: { id: '9D0B', source: 'Usurper of Frost', capture: false },
-      condition: (data) => data.p2AxeScytheSafe !== undefined, // don't fire during DD
+      // Only fire during Mirror Mirror (same ids used during Diamond Dust)
+      condition: (data) => data.phase === 'p2-mm',
       delaySeconds: 1,
       alertText: (_data, _matches, output) => output.baitCleave!(),
       outputStrings: {
@@ -753,7 +807,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'FRU P2 Mirror Mirror Reflected',
+      id: 'FRU P2 Mirror Mirror Reflected Cleaves',
       type: 'StartsUsing',
       // 9D0D = Reflected Scythe Kick (from Frozen Mirrors)
       netRegex: { id: '9D0D', capture: false },
@@ -767,13 +821,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // separate trigger for Banish II during LR
       id: 'FRU P2 Mirror Mirror Banish III',
       type: 'StartsUsing',
       // 9D1C - Banish III (partners)
       // 9D1D - Banish III (spread)
       netRegex: { id: ['9D1C', '9D1D'] },
-      condition: (data) => data.p2SeenFirstHolyLight === false,
+      // Only fire during Mirror Mirror (same ids used during Light Rampant)
+      condition: (data) => data.phase === 'p2-mm',
       infoText: (_data, matches, output) =>
         matches.id === '9D1C' ? output.partners!() : output.spread!(),
       outputStrings: {
@@ -781,6 +835,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
       },
     },
+    // ***** Light Rampant *****
     {
       id: 'FRU P2 Lightsteeped Counter',
       type: 'GainsEffect',
@@ -818,9 +873,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'FRU P2 Light Rampant Tower',
       type: 'Ability',
-      // fire when the second set of Holy Light orbs explode
+      // fire when the first set of Holy Light orbs explode
       netRegex: { id: '9D1B', source: 'Holy Light', capture: false },
-      suppressSeconds: 1,
+      condition: (data) => !data.p2SeenFirstHolyLight,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
@@ -832,8 +887,6 @@ const triggerSet: TriggerSet<Data> = {
           },
         };
 
-        if (!data.p2SeenFirstHolyLight)
-          return;
         return data.p2LightsteepedCount === 2
           ? { alertText: output.towerSoak!() }
           : { infoText: output.towerAvoid!() };
@@ -841,14 +894,14 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.p2SeenFirstHolyLight = true,
     },
     {
-      // separate trigger for Banish II during MM
       id: 'FRU P2 Light Rampant Banish III',
       type: 'StartsUsing',
       // 9D1C - Banish III (partners)
       // 9D1D - Banish III (spread)
       netRegex: { id: ['9D1C', '9D1D'], source: 'Usurper of Frost' },
-      condition: (data) => data.p2SeenFirstHolyLight === true,
-      delaySeconds: 1,
+      // Only fire during Light Rampant (same ids used during Mirror Mirror)
+      condition: (data) => data.phase === 'p2-lr',
+      delaySeconds: 0.5, // avoid excessive collision with tower callout
       alertText: (data, matches, output) => {
         const partnerSpread = matches.id === '9D1C' ? output.partners!() : output.spread!();
         if (data.p2LightsteepedCount === 2)
@@ -876,7 +929,10 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 4,
       response: Responses.bigAoe(),
     },
-    // Crystals
+    // ************************
+    // Intermission / Crystals
+    // ************************
+    // There's not really too much to do here.
     {
       id: 'FRU Intermission Junction',
       type: 'WasDefeated',
@@ -884,7 +940,10 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 5,
       response: Responses.bigAoe(),
     },
+    // ************************
     // P3 -- Oracle Of Darkness
+    // ************************
+    // ***** Ultimate Relativity *****
     {
       id: 'FRU P3 Ultimate Relativity AoE',
       type: 'StartsUsing',
@@ -898,6 +957,7 @@ const triggerSet: TriggerSet<Data> = {
       // 997 = Spell-in-Waiting: Dark Fire III (11s, 21s, or 31s)
       // 99E = Spell-in-Waiting: Dark Blizzard III (21s)
       netRegex: { effectId: ['997', '99E'] },
+      condition: (data) => data.phase === 'p3-ur',
       run: (data, matches) => {
         data.p3RelativityRoleCount++;
 
@@ -939,7 +999,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P3 Ultimate Relativity Initial Debuff',
       type: 'GainsEffect',
       netRegex: { effectId: ['997', '99E'], capture: false },
-      condition: (data) => data.p3RelativityRoleCount === 8,
+      condition: (data) => data.phase === 'p3-ur' && data.p3RelativityRoleCount === 8,
       durationSeconds: 8,
       infoText: (data, _matches, output) => {
         const role = data.role === 'dps' ? 'dps' : 'support';
@@ -970,10 +1030,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         debuffSolo: {
-          en: '${debuff} on you',
+          en: '${debuff}',
         },
         debuffShared: {
-          en: '${debuff} on you (w/ ${other})',
+          en: '${debuff} (w/ ${other})',
         },
         shortFire: {
           en: 'Short Fire',
@@ -1066,8 +1126,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'FRU P3 Ultimate Rel 1st Fire/Stack',
       type: 'GainsEffect',
-      netRegex: { effectId: '9A0' },
-      condition: Conditions.targetIsYou(),
+      netRegex: { effectId: '9A0' }, // Spell-in-Waiting: Return
+      condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: 4,
       durationSeconds: 7,
       alertText: (data, _matches, output) => {
@@ -1096,7 +1156,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P3 Ultimate Rel 1st Bait/Rewind',
       type: 'GainsEffect',
       netRegex: { effectId: '9A0' },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: 11,
       alertText: (data, _matches, output) => {
         const role = data.role === 'dps' ? 'dps' : 'support';
@@ -1146,7 +1206,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P3 Ultimate Rel 2nd Fire/Stack + Ice',
       type: 'GainsEffect',
       netRegex: { effectId: '9A0' },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: 16,
       alertText: (data, _matches, output) => {
         const debuff = data.p3RelativityDebuff;
@@ -1174,7 +1234,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P3 Ultimate Rel 2nd Bait/Rewind',
       type: 'GainsEffect',
       netRegex: { effectId: '9A0' },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: 21,
       alertText: (data, _matches, output) => {
         const role = data.role === 'dps' ? 'dps' : 'support';
@@ -1221,7 +1281,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P3 Ultimate Rel 3rd Fire/Stack',
       type: 'GainsEffect',
       netRegex: { effectId: '9A0' },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: 26,
       alertText: (data, _matches, output) => {
         const debuff = data.p3RelativityDebuff;
@@ -1246,10 +1306,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'FRU P3 Ultimate Rel 3nd Bait/Rewind',
+      id: 'FRU P3 Ultimate Rel 3nd Bait',
       type: 'GainsEffect',
       netRegex: { effectId: '9A0' },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: 31,
       alertText: (data, _matches, output) => {
         const debuff = data.p3RelativityDebuff;
@@ -1276,18 +1336,222 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'FRU P3 Ultimate Rel Look Out',
+      id: 'FRU P3 Ultimate Rel Rewind',
       type: 'GainsEffect',
-      // 99B - Rewind triggered
-      netRegex: { effectId: '99B' },
-      condition: Conditions.targetIsYou(),
+      netRegex: { effectId: '994' }, // 994 - Return
+      condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4,
-      countdownSeconds: (_data, matches) => parseFloat(matches.duration),
+      countdownSeconds: 4,
       response: Responses.lookAway('alarm'),
     },
-    // P4 -- Duo
+    {
+      id: 'FRU P3 Shockwave Pulsar',
+      type: 'StartsUsing',
+      netRegex: { id: '9D5A', source: 'Oracle of Darkness', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'FRU P3 Black Halo',
+      type: 'StartsUsing',
+      netRegex: { id: '9D62', source: 'Oracle of Darkness' },
+      response: Responses.sharedTankBuster(),
+    },
+    // ***** Apocalypse *****
+    {
+      id: 'FRU P3 Apoc Dark Water Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
+      condition: (data) => data.phase === 'p3-apoc',
+      durationSeconds: 6,
+      infoText: (data, matches, output) => {
+        data.p3ApocDebuffCount++;
+        const dur = parseFloat(matches.duration);
+        const debuffLength = dur < 11 ? 'short' : (dur < 30 ? 'medium' : 'long');
+        data.p3ApocDebuffs[debuffLength].push(matches.target);
+        if (data.me === matches.target)
+          data.p3MyApocDebuff = debuffLength;
 
+        if (data.p3ApocDebuffCount < 6)
+          return;
+
+        data.p3MyApocDebuff ??= 'none';
+
+        // Add the two players who didn't get a debuff
+        const noDebuffs = data.party.partyNames.filter((name) =>
+          !data.p3ApocDebuffs.short.includes(name) &&
+          !data.p3ApocDebuffs.medium.includes(name) &&
+          !data.p3ApocDebuffs.long.includes(name)
+        );
+
+        data.p3ApocDebuffs.none = [...noDebuffs];
+        const [same] = data.p3ApocDebuffs[data.p3MyApocDebuff].filter((p) => p !== data.me);
+        const player = data.party.member(same).nick;
+        return output.combo!({ debuff: output[data.p3MyApocDebuff]!(), same: player });
+      },
+      outputStrings: {
+        combo: {
+          en: 'Stack: ${debuff} (w/ ${same})',
+        },
+        short: {
+          en: 'Short',
+        },
+        medium: {
+          en: 'Medium',
+        },
+        long: {
+          en: 'Long',
+        },
+        none: {
+          en: 'No Debuff',
+        },
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'FRU P3 Apoc First Stacks',
+      type: 'GainsEffect',
+      netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
+      condition: (data, matches) => data.phase === 'p3-apoc' && parseFloat(matches.duration) < 11,
+      delaySeconds: 6,
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      response: Responses.stackThenSpread(),
+    },
+    {
+      id: 'FRU P3 Apoc Second Stacks',
+      type: 'Ability',
+      netRegex: { id: '9D52', source: 'Oracle of Darkness', capture: false }, // Dark Eruption (spread aoes)
+      condition: (data) => data.phase === 'p3-apoc',
+      delaySeconds: 1,
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.stacks!(),
+      outputStrings: {
+        stacks: Outputs.stacks,
+      },
+    },
+    {
+      id: 'FRU P3 Darkest Dance + Third Stacks',
+      type: 'Ability',
+      netRegex: { id: '9CF5', source: 'Oracle of Darkness', capture: false }, // Darkest Dance (self-targeted)
+      durationSeconds: 7,
+      alertText: (_data, _matches, output) => output.kbStacks!(),
+      outputStrings: {
+        kbStacks: {
+          en: 'Knockback => Stacks',
+        },
+      },
+    },
+    {
+      id: 'FRU P3 Memory\'s End',
+      type: 'StartsUsing',
+      netRegex: { id: '9D6C', source: 'Oracle of Darkness', capture: false },
+      delaySeconds: 5, // 9.7s cast time
+      response: Responses.bigAoe(),
+    },
+    // ************************
+    // P4 -- Duo
+    // ************************
+    {
+      id: 'FRU P4 Akh Rhai',
+      type: 'GainsEffect',
+      // no castbar, vfx-based cue
+      // invisible actors spawn 4.6s after this effect is applied and use Akh Rhai
+      netRegex: { effectId: '8E1', capture: false },
+      condition: (data) => data.phase === 'p4-dld',
+      delaySeconds: 4.7,
+      suppressSeconds: 1,
+      response: Responses.moveAway('alert'),
+    },
+    // ***** Darklit Dragonsong *****
+    {
+      id: 'FRU P4 Darklit Dragonsong',
+      type: 'StartsUsing',
+      netRegex: { id: '9D6D', source: 'Oracle of Darkness', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'FRU PP4 Refulgent Chain Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: '8CD' }, // Refulgent Chain
+      condition: (data) => data.phase === 'p4-dld',
+      run: (data, matches) => data.p4RefulgentChains.push(matches.target),
+    },
+    {
+      id: 'FRU P4 Darklit Stacks',
+      type: 'GainsEffect',
+      netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
+      condition: (data) => data.phase === 'p4-dld',
+      delaySeconds: 2, // delay until after Refulgent Chains go out
+      infoText: (data, matches, output) => {
+        data.p4DarklitStacks.push(matches.target);
+        if (data.p4DarklitStacks.length !== 2)
+          return;
+
+        const and = output.and!();
+        const targets = data.p4DarklitStacks.map((p) => data.party.member(p).nick).join(and);
+        return output.stacks!({ players: targets });
+      },
+      outputStrings: {
+        stacks: {
+          en: 'Stacks Later (${players})',
+        },
+        and: Outputs.and,
+      },
+    },
+    {
+      id: 'FRU P4 Path of Light',
+      type: 'StartsUsing',
+      netRegex: { id: '9CFB', source: 'Usurper of Frost', capture: false },
+      delaySeconds: 3, // 7.7s cast time, give time for tether/stack adjusts
+      alertText: (data, _matches, output) =>
+        data.p4RefulgentChains.includes(data.me) ? output.tether!() : output.bait!(),
+      outputStrings: {
+        tether: {
+          en: 'Soak Tower',
+        },
+        bait: {
+          en: 'Bait Cleave',
+        },
+      },
+    },
+    {
+      id: 'FRU P4 Spirit Taker',
+      type: 'StartsUsing',
+      netRegex: { id: '96D0', source: 'Oracle of Darkness', capture: false },
+      condition: (data) => data.phase === 'p4-dld',
+      delaySeconds: 0.5, // delay until after Path of Light snapshots
+      durationSeconds: 2,
+      response: Responses.spread('alert'),
+    },
+    {
+      id: 'FRU P4 Hallowed Wings',
+      type: 'StartsUsing',
+      netRegex: { id: ['9D23', '9D24'], source: 'Usurper of Frost' },
+      condition: (data) => data.phase === 'p4-dld',
+      delaySeconds: 1, // avoid collision with Spirit Taker
+      infoText: (_data, matches, output) => {
+        const dir = matches.id === '9D23' ? 'east' : 'west';
+        return output.combo!({ dir: output[dir]!(), stacks: output.stacks!() });
+      },
+      outputStrings: {
+        combo: {
+          en: '${dir} => ${stacks}',
+        },
+        east: Outputs.east,
+        west: Outputs.west,
+        stacks: Outputs.stacks,
+      },
+    },
+    // ***** Crystallize Time *****
+    {
+      id: 'FRU P4 Crystallize Time',
+      type: 'StartsUsing',
+      netRegex: { id: '9D6D', source: 'Oracle of Darkness', capture: false },
+      response: Responses.bigAoe(),
+    },
+    // ************************
     // P5 -- Pandora
+    // ************************
   ],
   timelineReplace: [
     {
