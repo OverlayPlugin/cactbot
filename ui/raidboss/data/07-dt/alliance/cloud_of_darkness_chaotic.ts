@@ -9,7 +9,8 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: tile phase timeline
 // TODO: tweak trigger durations/delays
-// TODO: tile refreshes?
+// TODO: Break IV safe look-away direction
+// TODO: tile refresh reminders?
 
 type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
 type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread';
