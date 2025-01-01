@@ -825,6 +825,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Jeuno First Walk Lordly Shadow Umbra Smash',
       type: 'StartsUsing',
       netRegex: { id: '9F53', capture: false },
+      suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.smashDodge!(),
       outputStrings: {
         smashDodge: {
