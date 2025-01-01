@@ -10,6 +10,10 @@ export type Data = OopsyData;
 const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.JeunoTheFirstWalk,
   damageWarn: {
+    // Initial trash
+    'Jeuno First Walk Goblin Replica Seismostomp': 'A2B4', // Circle puddle AoE
+    'Jeuno First Walk Vanguard Pathfinder Toss': 'A2B7', // Circle puddle AoE
+
     // Prishe
     'Jeuno First Walk Prishe Knuckle Sandwich Small': '9FEB',
     'Jeuno First Walk Prishe Knuckle Sandwich Mid': '9FEC',
@@ -19,6 +23,12 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Jeuno First Walk Prishe Brittle Impact Big': '9FF0',
     'Jeuno First Walk Prishe Banish': '9FF3', // Pathing circles
     'Jeuno First Walk Prishe Explosion': '9FFB', // Banishga IV orb explosions
+
+    // Pre-Fafnir trash
+    'Jeuno First Walk Skimmer Cursed Sphere': 'A2B8', // Small circle puddle AoE
+    'Jeuno First Walk Bark Spider Spider Web': 'A2BB', // Circle puddle AoE
+    'Jeuno First Walk Death Cap Agaricus': 'A2BD', // Circle puddle AoE
+    'Jeuno First Walk Elder Goobhue Scoop': 'A2BF', // 90-degree conal AoE
 
     // Fafnir
     'Jeuno First Walk Ravaging Wind Great Whirlwind Initial': '9BC1', // Initial puddle, large roving AoE circles
@@ -46,6 +56,14 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Jeuno First Walk Fafnir Winged Terror': '9F90', // Hot Wing
     'Jeuno First Walk Fafnir Spike Flail': 'A09A', // Tail cleave cone AoE
     'Jeuno First Walk Fafnir Touchdown': 'A09C', // Giant chariot AoE
+
+    // Post-Fafnir trash
+    'Jeuno First Walk Groundskeeper Isle Drop': 'A2C6', // Circle puddle AoE
+    'Jeuno First Walk Flamingo Wing Cutter': 'A2C8', // 90-degree conal AoE, small
+
+    'Jeuno First Walk Despot Scrapline': 'A1B1', // Chariot AoE
+    'Jeuno First Walk Despot Isle Drop': 'A2E3', // Circle puddle AoE
+    'Jeuno First Walk Despot Typhoon': 'A3AE', // Dynamo AoE
 
     // Ark Angels
     'Jeuno First Walk Angels TT Guillotine Initial': 'A068', // 270-degree frontal cleave, initial hits
@@ -99,6 +117,9 @@ const triggerSet: OopsyTriggerSet<Data> = {
 
     // Fafnir
     'Jeuno First Walk Fafnir Burns': 'BF9', // Standing in dragon breath
+
+    // Post-Fafnir trash
+    'Jeuno First Walk Sprinkler Blind': 'DA6', // Gaze attack, Mysterious Light
 
     // Ark Angels
     'Jeuno First Walk Ark Angels GK Petrification': '5E7', // Gaze attack, Gekko

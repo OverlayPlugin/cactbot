@@ -192,6 +192,12 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stackMarker(),
     },
     {
+      id: 'Jeuno First Walk Aquarius Hundred Fists',
+      type: 'StartsUsing',
+      netRegex: { id: '9EC8', source: 'Aquarius', capture: true },
+      response: Responses.interruptIfPossible(),
+    },
+    {
       id: 'Jeuno First Walk Fafnir Dark Matter Blast',
       type: 'StartsUsing',
       netRegex: { id: '9F96', source: 'Fafnir The Forgotten', capture: false },
@@ -317,7 +323,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.outerFirst!(),
       outputStrings: {
         outerFirst: {
-          en: 'Raidwide x10',
+          en: 'AoE x10',
         },
       },
     },
@@ -346,6 +352,24 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Jeuno First Walk Sprinkler Mysterious Light',
+      type: 'StartsUsing',
+      netRegex: { id: 'A2C3', source: 'Sprinkler', capture: true },
+      response: Responses.lookAwayFromSource(),
+    },
+    {
+      id: 'Jeuno First Walk Despot Scrapline Storm',
+      type: 'StartsUsing',
+      netRegex: { id: '9ECA', source: 'Despot', capture: false },
+      response: Responses.getOutThenIn(),
+    },
+    {
+      id: 'Jeuno First Walk Despot Panzerfaust',
+      type: 'StartsUsing',
+      netRegex: { id: 'A2E2', source: 'Despot', capture: true },
+      response: Responses.interruptIfPossible(),
+    },
+    {
       id: 'Jeuno First Walk Angels CloudSplitter Collect',
       type: 'HeadMarker',
       netRegex: { id: '01D0', capture: true },
@@ -354,7 +378,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Jeuno First Walk Angels CloudSplitter Call',
       type: 'StartsUsing',
-      netRegex: { id: 'A077', source: 'Ark Angel MR', capture: false },
+      netRegex: { id: 'A076', source: 'Ark Angel MR', capture: false },
       delaySeconds: 0.5,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
