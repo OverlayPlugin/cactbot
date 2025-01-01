@@ -1560,6 +1560,9 @@ const triggerSet: TriggerSet<Data> = {
         'Axe Kick/Scythe Kick': 'Axe/Scythe Kick',
         'Shining Armor + Frost Armor': 'Shining + Frost Armor',
         'Sinbound Fire III/Sinbound Thunder III': 'Sinbound Fire/Thunder',
+        'Dark Fire III/Unholy Darkness': '(spreads/stack)',
+        'Dark Fire III/Dark Blizzard III/Unholy Darkness': '(spreads/donut/stack)',
+        'Shadoweye/Dark Water III/Dark Eruption': '(gazes/stack/spreads)'
       },
     },
     {
