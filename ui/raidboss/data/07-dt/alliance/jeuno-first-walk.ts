@@ -370,6 +370,31 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.interruptIfPossible(),
     },
     {
+      // We could call this more easily with the Hero debuffs,
+      // but those are delayed by about four seconds compared to the initial tethers.
+      id: 'Jeuno First Walk Angels Decisive Battle',
+      type: 'Tether',
+      netRegex: { id: '012B', capture: true },
+      condition: (data, matches) => {
+        return matches.source === data.me || matches.target === data.me;
+      },
+      alertText: (_data, matches, output) => {
+        if (matches.sourceId.startsWith('4'))
+          return output.attackAngel!({ angel: matches.source });
+        if (matches.targetId.startsWith('4'))
+          return output.attackAngel!({ angel: matches.target });
+        return output.unknownAngel!();
+      },
+      outputStrings: {
+        attackAngel: {
+          en: 'Attack ${angel}',
+        },
+        unknownAngel: {
+          en: 'Attack angel with matching buff',
+        },
+      },
+    },
+    {
       id: 'Jeuno First Walk Angels CloudSplitter Collect',
       type: 'HeadMarker',
       netRegex: { id: '01D0', capture: true },
