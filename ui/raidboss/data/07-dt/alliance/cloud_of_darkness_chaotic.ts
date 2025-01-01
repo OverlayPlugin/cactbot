@@ -218,7 +218,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.flareMarker, capture: true },
       condition: Conditions.targetIsYou(),
-      infoText: (_data, _matches, output) => output.flare!(),
+      alertText: (_data, _matches, output) => output.flare!(),
       outputStrings: {
         flare: {
           en: 'Flare on you',
