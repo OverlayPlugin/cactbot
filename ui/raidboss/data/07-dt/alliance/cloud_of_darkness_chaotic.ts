@@ -451,7 +451,7 @@ const triggerSet: TriggerSet<Data> = {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
         return data.me === matches.target || (data.outerDarkness && side === data.mySide);
       },
-      response: Responses.tankBuster(),
+      response: Responses.tankCleave(),
     },
     {
       id: 'Cloud Chaotic Lateral-core Phaser',
