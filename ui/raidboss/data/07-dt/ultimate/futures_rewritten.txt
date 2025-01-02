@@ -87,7 +87,7 @@ hideall "--sync--"
 256.9 "Sinbound Holy 2 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
 258.5 "Sinbound Holy 3 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
 260.1 "Sinbound Holy 4 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
-263.9 "Shining Armor + Frost Armor" Ability { id: ["9FC8", "9CF9"], source: ["Oracle's Reflection", "Usurper Of Frost"] }
+263.9 "Shining Armor + Frost Armor" Ability { id: ["9CF8", "9CF9"], source: ["Oracle's Reflection", "Usurper Of Frost"] }
 270.5 "Twin Stillness/Twin Silence" Ability { id: ["9D01", "9D02"], source: "Oracle's Reflection" }
 272.6 "Twin Silence/Twin Stillness" Ability { id: ["9D03", "9D04"], source: "Oracle's Reflection" }
 276.2 "--targetable--"
