@@ -124,6 +124,7 @@ hideall "--sync--"
 # Adds Phase
 # The Heimal Storm casts from the Crystals of Light will stop once they all are killed.
 392.4 "Swelling Frost" Ability { id: "9D21", source: "Usurper of Frost" }
+411.4 "--adds targetable--"
 424.4 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
 425.4 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 428.6 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
