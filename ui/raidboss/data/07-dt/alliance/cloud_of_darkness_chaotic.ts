@@ -7,10 +7,13 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// TODO: tile phase timeline
 // TODO: tweak trigger durations/delays
-// TODO: Break IV safe look-away direction
+// TODO: Break IV safe look-away direction?
+// TODO: Surecast/Arm's Length call for Break IV/Aero IV during Blade of Darkness?
+// TODO: tank swap call for autos/Lightning Resistance Down stacks?
 // TODO: tile refresh reminders?
+// TODO: Active-pivot Particle Beam - call move/stay based on player position?
+// TODO: Provoke call for tanks after Looming Chaos swaps?
 
 type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
 type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread';
@@ -65,7 +68,7 @@ const headMarkerData = {
   'flareMarker': '015A',
   // player who will drop a bramble
   // Vfx Path: m0302_seed_8s_x
-  'brambleSeed': '0227',
+  'evilSeed': '0227',
   // countdown to hand spawning on player
   // Offsets: 86301,97364,104403,111399,145339,153274,165355
   // Vfx Path: l1rz_grasp_count5s_0x
@@ -385,17 +388,17 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.interruptIfPossible(),
     },
     {
-      id: 'Cloud Chaotic Diffusive-force Particle Beam',
-      type: 'StartsUsing',
-      netRegex: { id: '9E10', source: 'Cloud of Darkness', capture: false },
-      response: Responses.spread(),
-    },
-    {
       id: 'Cloud Chaotic Chaos-condensed Particle Beam',
       type: 'StartsUsing',
       netRegex: { id: '9E0D', source: 'Cloud of Darkness', capture: false },
       // this is a Wild Charge, tanks should be in front
       response: Responses.stackMarker(),
+    },
+    {
+      id: 'Cloud Chaotic Diffusive-force Particle Beam',
+      type: 'StartsUsing',
+      netRegex: { id: '9E10', source: 'Cloud of Darkness', capture: false },
+      response: Responses.spread(),
     },
     {
       id: 'Cloud Chaotic Active-pivot Particle Beam',
@@ -481,9 +484,9 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Cloud Chaotic Bait Bramble',
+      id: 'Cloud Chaotic Evil Seed',
       type: 'HeadMarker',
-      netRegex: { id: headMarkerData.brambleSeed, capture: true },
+      netRegex: { id: headMarkerData.evilSeed, capture: true },
       condition: Conditions.targetIsYou(),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
