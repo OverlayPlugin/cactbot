@@ -24,7 +24,7 @@ const phases: { [id: string]: Phase } = {
   '9D49': 'p3-ur', // Hell's Judgment (pre-Ultimate Relativity)
   '9D4D': 'p3-apoc', // Spell-in-Waiting: Refrain (pre-Apocalypse)
   '9D36': 'p4-dld', // Materialization (pre-Darklit Dragonsong)
-  '9D30': 'p4-ct', // Crystallize Time
+  '9D6A': 'p4-ct', // Crystallize Time
   // tbd: 'p5',
 };
 
@@ -1341,7 +1341,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: '994' }, // 994 - Return
       condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4,
-      countdownSeconds: 4,
+      countdownSeconds: (_data, matches) => parseFloat(matches.duration),
       response: Responses.lookAway('alarm'),
     },
     {
@@ -1481,7 +1481,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
       condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 2, // delay until after Refulgent Chains go out
+      delaySeconds: 2.5, // delay until after Refulgent Chains go out
+      durationSeconds: 5,
       infoText: (data, matches, output) => {
         data.p4DarklitStacks.push(matches.target);
         if (data.p4DarklitStacks.length !== 2)
@@ -1493,7 +1494,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         stacks: {
-          en: 'Stacks Later (${players})',
+          en: '(stacks after on ${players})',
         },
         and: Outputs.and,
       },
@@ -1517,7 +1518,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'FRU P4 Spirit Taker',
       type: 'StartsUsing',
-      netRegex: { id: '96D0', source: 'Oracle of Darkness', capture: false },
+      netRegex: { id: '9D60', source: 'Oracle of Darkness', capture: false },
       condition: (data) => data.phase === 'p4-dld',
       delaySeconds: 0.5, // delay until after Path of Light snapshots
       durationSeconds: 2,
@@ -1546,7 +1547,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'FRU P4 Crystallize Time',
       type: 'StartsUsing',
-      netRegex: { id: '9D6D', source: 'Oracle of Darkness', capture: false },
+      netRegex: { id: '9D6A', source: 'Oracle of Darkness', capture: false },
       response: Responses.bigAoe(),
     },
     // ************************
