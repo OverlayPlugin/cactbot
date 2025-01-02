@@ -151,6 +151,8 @@ export interface Data extends RaidbossData {
   p2LightsteepedCount: number;
   p2LightRampantPuddles: string[];
   p2SeenFirstHolyLight: boolean;
+  // Intermission
+  intermissionCrystalDeadCount: number;
   // P3 -- Oracle of Darkness
   p3RelativityRoleCount: number;
   p3RelativityDebuff?: RelativityDebuff;
@@ -221,6 +223,7 @@ const triggerSet: TriggerSet<Data> = {
       p2LightsteepedCount: 0,
       p2LightRampantPuddles: [],
       p2SeenFirstHolyLight: false,
+      intermissionCrystalDeadCount: 0,
       p3RelativityRoleCount: 0,
       p3RelativityRoleMap: newRoleMap(),
       p3RelativityStoplights: {},
@@ -932,7 +935,21 @@ const triggerSet: TriggerSet<Data> = {
     // ************************
     // Intermission / Crystals
     // ************************
-    // There's not really too much to do here.
+    {
+      id: 'FRU Intermission Crystals Dead',
+      type: 'WasDefeated',
+      netRegex: { target: 'Crystal of Light', capture: false },
+      infoText: (data, _matches, output) => {
+        data.intermissionCrystalDeadCount++;
+        if (data.intermissionCrystalDeadCount === 4)
+          return output.targetVeil!();
+      },
+      outputStrings: {
+        targetVeil: {
+          en: 'Target Ice Veil',
+        },
+      },
+    },
     {
       id: 'FRU Intermission Junction',
       type: 'WasDefeated',
