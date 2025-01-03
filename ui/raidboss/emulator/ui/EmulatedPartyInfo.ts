@@ -73,6 +73,7 @@ export default class EmulatedPartyInfo extends EventBus {
   private $triggerInfo: HTMLElement;
   private $triggerHideSkippedCheckbox: HTMLInputElement;
   private $triggerHideCollectCheckbox: HTMLInputElement;
+  private $triggerHideGeneralCheckbox: HTMLInputElement;
   private $triggerBar: HTMLElement;
   private latestDisplayedState: number;
   private currentPerspective?: string;
@@ -98,8 +99,14 @@ export default class EmulatedPartyInfo extends EventBus {
     if (!(collector instanceof HTMLInputElement))
       throw new UnreachableCode();
     this.$triggerHideCollectCheckbox = collector;
+    const general = querySelectorSafe(document, '.triggerHideGeneral');
+    if (!(general instanceof HTMLInputElement))
+      throw new UnreachableCode();
+    this.$triggerHideGeneralCheckbox = general;
     this.$triggerBar = querySelectorSafe(document, '.player-triggers');
     this.latestDisplayedState = 0;
+
+    // @TODO: Maybe this could be dynamic in scale, or possibly show at least one of each role?
     for (let i = 0; i < 8; ++i)
       this.triggerBars[i] = querySelectorSafe(this.$triggerBar, `.player${i.toString()}`);
 
@@ -129,9 +136,14 @@ export default class EmulatedPartyInfo extends EventBus {
         this.hideCollectorTriggers();
       else
         this.showCollectorTriggers();
+      if (this.$triggerHideGeneralCheckbox.checked)
+        this.hideGeneralTriggers();
+      else
+        this.showGeneralTriggers();
     };
     this.$triggerHideSkippedCheckbox.addEventListener('change', this.updateTriggerState);
     this.$triggerHideCollectCheckbox.addEventListener('change', this.updateTriggerState);
+    this.$triggerHideGeneralCheckbox.addEventListener('change', this.updateTriggerState);
 
     this.$triggerItemTemplate = getTemplateChild(document, 'template.trigger-item');
     this.$playerInfoRowTemplate = getTemplateChild(document, 'template.player-info-row');
@@ -160,6 +172,18 @@ export default class EmulatedPartyInfo extends EventBus {
 
   showCollectorTriggers(): void {
     this.$triggerInfo.querySelectorAll('.trigger-no-output').forEach((n) => {
+      n.classList.remove('d-none');
+    });
+  }
+
+  hideGeneralTriggers(): void {
+    this.$triggerInfo.querySelectorAll('.trigger-general').forEach((n) => {
+      n.classList.add('d-none');
+    });
+  }
+
+  showGeneralTriggers(): void {
+    this.$triggerInfo.querySelectorAll('.trigger-general').forEach((n) => {
       n.classList.remove('d-none');
     });
   }
@@ -199,7 +223,7 @@ export default class EmulatedPartyInfo extends EventBus {
       if (!isJobOrder(aJob) || !isJobOrder(bJob))
         return 0;
       return EmulatedPartyInfo.jobOrder.indexOf(aJob) - EmulatedPartyInfo.jobOrder.indexOf(bJob);
-    }).slice(0, 8);
+    });
     document.querySelectorAll('.playerTriggerInfo').forEach((n) => {
       n.remove();
     });
@@ -209,37 +233,39 @@ export default class EmulatedPartyInfo extends EventBus {
       const bar = this.triggerBars[i];
       const combatant = tracker.combatants[id];
       const perspective = encounter.perspectives[id];
-      if (!bar || !combatant || !perspective)
+      if (!combatant || !perspective)
         throw new UnreachableCode();
       const firstState = combatant.nextState(0);
       this.displayedParty[id] = obj;
       this.$partyInfo.append(obj.$rootElem);
       this.$triggerInfo.append(obj.$triggerElem);
-      bar.classList.remove('tank');
-      bar.classList.remove('healer');
-      bar.classList.remove('dps');
-      if (firstState.Job) {
-        bar.classList.add(
-          Util.jobToRole(Util.jobEnumToJob(firstState.Job)),
-        );
-      }
+      if (bar !== undefined) {
+        bar.classList.remove('tank');
+        bar.classList.remove('healer');
+        bar.classList.remove('dps');
+        if (firstState.Job) {
+          bar.classList.add(
+            Util.jobToRole(Util.jobEnumToJob(firstState.Job)),
+          );
+        }
 
-      const trimmedDuration = encounter.encounter.duration - encounter.encounter.initialOffset;
+        const trimmedDuration = encounter.encounter.duration - encounter.encounter.initialOffset;
 
-      for (const trigger of perspective.triggers) {
-        if (
-          !trigger.status.executed ||
-          trigger.resolvedOffset > encounter.encounter.duration ||
-          trigger.resolvedOffset < encounter.encounter.initialOffset
-        )
-          continue;
+        for (const trigger of perspective.triggers) {
+          if (
+            !trigger.status.executed ||
+            trigger.resolvedOffset > encounter.encounter.duration ||
+            trigger.resolvedOffset < encounter.encounter.initialOffset
+          )
+            continue;
 
-        const $e = cloneSafe(this.$triggerItemTemplate);
-        const adjustedOffset = trigger.resolvedOffset - encounter.encounter.initialOffset;
-        $e.style.left = `${(adjustedOffset / trimmedDuration * 100).toString()}%`;
-        const triggerId = trigger.triggerHelper.trigger.id ?? 'Unknown Trigger';
-        this.tooltips.push(new Tooltip($e, 'bottom', triggerId));
-        bar.append($e);
+          const $e = cloneSafe(this.$triggerItemTemplate);
+          const adjustedOffset = trigger.resolvedOffset - encounter.encounter.initialOffset;
+          $e.style.left = `${(adjustedOffset / trimmedDuration * 100).toString()}%`;
+          const triggerId = trigger.triggerHelper.trigger.id ?? 'Unknown Trigger';
+          this.tooltips.push(new Tooltip($e, 'bottom', triggerId));
+          bar.append($e);
+        }
       }
     }
 
@@ -385,6 +411,13 @@ export default class EmulatedPartyInfo extends EventBus {
         $trigger.classList.add('trigger-no-output');
       else
         $trigger.classList.add('trigger-output');
+
+      // Could instead map the trigger via ID back to the trigger set and then check the zone info
+      // on the trigger set, but that's a lot of extra effort and overhead.
+      if (trigger.triggerHelper.trigger.filename !== '00-misc/general.ts')
+        $trigger.classList.add('trigger-not-general');
+      else
+        $trigger.classList.add('trigger-general');
 
       $triggerContainer.append($trigger);
     }

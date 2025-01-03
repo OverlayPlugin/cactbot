@@ -349,6 +349,9 @@ const emulatorLabels: Translation = {
     ja: '無出力トリガーを隠す',
     cn: '隐藏收集器',
   },
+  ' label[for=hideGeneral]': {
+    en: 'Hide General',
+  },
 } as const;
 
 const emulatorTooltips: Translation = {
@@ -365,6 +368,9 @@ const emulatorTooltips: Translation = {
     fr: 'Masquer les triggers sans sortie',
     ja: '出力がないトリガーを隠す',
     cn: '隐藏没有输出的触发器',
+  },
+  '.triggerHideGeneral': {
+    en: 'Hide triggers that are not for a specific zone',
   },
   '.connectedIndicator': {
     en: 'Connected to websocket',
