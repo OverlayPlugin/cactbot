@@ -1,0 +1,751 @@
+### JEUNO: THE FIRST WALK
+# ZoneId: 1248
+
+hideall "--Reset--"
+hideall "--sync--"
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Prishe Of The Distant Chains #
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii 9FE6 9FF1 9FF3 9FEB 9FEC 9FED A003 9FF5 9FFE 9FFF
+
+# A number of Prishe's abilities are two-part,
+# with a visual snapshot occurring before a damage event.
+# The snapshot locks in when the visual element resolves,
+# so we display the visual and then ignore the damage event.
+
+# The grand dais will be sealed off
+10000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "141E" } window 10000,1
+10006.7 "--sync--" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 10006.7,10
+10011.1 "Banishga" Ability { id: "9FE7", source: "Prishe of the Distant Chains" }
+10018.3 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+10032.5 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+10035.1 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+
+# This second Knuckle Sandwich shows up in a few Very Slow logs.
+10052.5 "Knuckle Sandwich?" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+10054.9 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+10058.5 "--sync--" StartsUsing { id: "9FFD", source: "Prishe of the Distant Chains" } window 55.5,10
+10064.7 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+10073.4 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" }
+10085.3 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+10093.5 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+
+10101.2 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+10107.5 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" } window 104.5,10
+10122.9 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+10139.5 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" }
+10147.3 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10151.3 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10155.3 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10159.3 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10159.3 "Explosion 5" #Ability { id: "9FFB", source: "Luminous Remnant" }
+10165.6 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+10167.7 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+10181.5 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+10198.8 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+10207.2 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+# From here, Prishe seems to have three different rotation blocks.
+# She can use Banishga, Banishga 4, or Banish Storm.
+# Each of these blocks closes with Asuran Fists,
+# but she doesn't always seem to use the final A000 hit.
+# More research is needed.
+10217.4 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+10218.1 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+10226.3 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+
+# Banishga block
+10995.3 label "banishgaBlock"
+10995.3 "--sync--" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" }
+
+11000.0 "Banishga" Ability { id: "9FE7", source: "Prishe of the Distant Chains" }
+11007.2 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+11021.4 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+11023.8 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+11033.6 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+11042.3 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" } window 15,15
+11054.2 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+11062.4 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+11070.1 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+11076.3 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+11091.8 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+11108.4 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" } window 15,15
+11116.3 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11116.3 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11120.3 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11124.3 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+11128.3 "Explosion 5 " #Ability { id: "9FFB", source: "Luminous Remnant" }
+11139.2 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+11147.6 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+11157.8 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+11158.5 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+11166.7 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+# Banish Storm block
+11997.0 label "banishStormBlock"
+11997.0 "--sync--" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" }
+
+12000.0 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" }
+12006.1 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+12011.9 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+12020.3 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+12022.7 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+12031.4 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+# This Banishga IV cast seems to vary significantly on timing. Sync widely and hope for the best
+12034.4 "--sync--" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 10,10
+12039.1 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" }
+12046.2 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+12046.9 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12046.9 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12050.9 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12052.6 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+12054.8 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12058.8 "Explosion 5" #Ability { id: "9FFB", source: "Luminous Remnant" }
+12068.1 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+12081.8 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+12091.5 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+12099.9 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+12110.2 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+12110.8 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+12119.0 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+
+# Banishga 4 block
+12995.3 label "banishgaIVBlock"
+12995.3 "--sync--" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" }
+
+13000.0 "Banishga IV" Ability { id: "9FFA", source: "Prishe of the Distant Chains" }
+13002.1 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+13016.2 "Knuckle Sandwich" Ability { id: ["9FE8", "9FE9", "9FEA"], source: "Prishe of the Distant Chains" }
+13016.6 "Explosion 1" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13016.6 "Explosion 2" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13018.6 "Brittle Impact" Ability { id: ["9FEE", "9FEF", "9FF0"], source: "Prishe of the Distant Chains" }
+13020.6 "Explosion 3" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13024.6 "Explosion 4" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13028.6 "Explosion 5" #Ability { id: "9FFB", source: "Luminous Remnant" }
+13030.7 "Holy" Ability { id: "A002", source: "Prishe of the Distant Chains" }
+13040.8 "Banish Storm" Ability { id: "9FF2", source: "Prishe of the Distant Chains" } window 15,15
+13042.9 "--center--" Ability { id: "9FE5", source: "Prishe of the Distant Chains" }
+13049.2 "Crystalline Thorns" Ability { id: "9FF4", source: "Prishe of the Distant Chains" }
+13052.7 "Banish x15" duration 11.2 #Ability { id: "9FF3", source: "Prishe of the Distant Chains" }
+13064.7 "Auroral Uppercut" Ability { id: ["9FF6", "9FF7", "9FF8"], source: "Prishe of the Distant Chains" }
+13086.0 "Nullifying Dropkick" Ability { id: "9FFD", source: "Prishe of the Distant Chains" }
+13097.1 "Asuran Fists x8" Ability { id: "9FFC", source: "Prishe of the Distant Chains" } duration 9
+13105.5 "--sync--" Ability { id: "A000", source: "Prishe of the Distant Chains" } # Asuran Fists final hit
+
+13115.7 "Banishga IV?" StartsUsing { id: "9FFA", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaIVBlock"
+13116.4 "Banish Storm?" StartsUsing { id: "9FF2", source: "Prishe of the Distant Chains" } window 20,20 jump "banishStormBlock"
+13124.6 "Banishga?" StartsUsing { id: "9FE7", source: "Prishe of the Distant Chains" } window 20,20 jump "banishgaBlock"
+
+# IGNORED ABILITIES
+# 9FE6 --sync--: auto-attack
+# 9FEB Knuckle Sandwich: 1-tick inner circle AoE
+# 9FEC Knuckle Sandwich: 2-tick inner circle AoE
+# 9FED Knuckle Sandwich: 3-tick inner circle AoE
+# 9FF1 Nullifying Dropkick: Shared tank buster, circle stack (simultaneous with 9FFD)
+# 9FF3 Banish: Pathing circle AoEs
+# 9FF5 Thornbite: Thorns appear
+# 9FF9 Auroral Uppercut: Knockback execution
+# 9FFE Asuran Fists: Stack marker damage
+# 9FFF Asuran Fists: Stack marker damage
+# A003 Holy: Spread marker damage
+
+# ALL ENCOUNTER ABILITIES
+# 9FE5 --center--
+# 9FE6 --sync--: auto-attack
+# 9FE7 Banishga: Raidwide
+# 9FE8 Knuckle Sandwich: 1-tick visual
+# 9FE9 Knuckle Sandwich: 2-tick visual
+# 9FEA Knuckle Sandwich: 3-tick visual
+# 9FEB Knuckle Sandwich: 1-tick inner circle AoE
+# 9FEC Knuckle Sandwich: 2-tick inner circle AoE
+# 9FED Knuckle Sandwich: 3-tick inner circle AoE
+# 9FEE Brittle Impact: 1-tick outer donut AoE
+# 9FEF Brittle Impact: 2-tick outer donut AoE
+# 9FF0 Brittle Impact: 3-tick outer donut AoE
+# 9FF1 Nullifying Dropkick: Shared tank buster, circle stack (simultaneous with 9FFD)
+# 9FF2 Banish Storm: Visuals for pathing Banish circles
+# 9FF3 Banish: Pathing circle AoEs
+# 9FF4 Crystalline Thorns: Thorn generation cast
+# 9FF5 Thornbite: Thorns appear
+# 9FF6 Auroral Uppercut: 1-tick knockback visual
+# 9FF7 Auroral Uppercut: 2-tick knockback visual
+# 9FF8 Auroral Uppercut: 3-tick knockback visual
+# 9FF9 Auroral Uppercut: Knockback execution
+# 9FFA Banishga IV: Raidwide; summons orbs
+# 9FFB Explosion: Orb chariot AoEs
+# 9FFC Asuran Fists: Stack marker cast
+# 9FFD Nullifying Dropkick: Shared tank buster, circle stack (simultaneous with 9FF1)
+# 9FFE Asuran Fists: Stack marker damage
+# 9FFF Asuran Fists: Stack marker damage
+# A000 Asuran Fists: Stack marker final hit
+# A002 Holy: Spread marker cast
+# A003 Holy: Spread marker damage
+
+
+#~~~~~~~~~~~~~~~~~~~~~#
+# Fafnir The Forgotten#
+#~~~~~~~~~~~~~~~~~~~~~#
+
+# -ii 9BF2 9EB9 9F72 9F73 9F74 9F75 9F76 9F8B 9F8C 9F95 9F98 9F9C A156 A157 A158 A159 9F90 9F8E 9F6F
+# -ic "Biting Wind" "Darter" "Ravaging Wind"
+
+# The Hurricane Wing puddles follow an increasing "ladder" of abilities.
+# In -> out first round:: 9F7D, 9F7E, 9F7F, 9F80
+# In -> out second round: 9F87, 9F88, 9F89, 9F8A
+# Out -> in first round:  9F78, 9F79, 9F7A, 9F7B
+# Out -> in second round: 9F82, 9F83, 9F84, 9F85
+
+# Dragon's Aery will be sealed off
+20000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "141F" } window 20000,1
+20011.1 "Dark Matter Blast" Ability { id: "9F96", source: "Fafnir the Forgotten" } window 20011.1,10
+20024.2 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20025.2 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20038.3 "Offensive Posture?" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20039.5 "Touchdown?" Ability { id: "A09C", source: "Fafnir the Forgotten" }
+
+20044.5 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth window 44.5,10
+20056.6 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20057.8 "Dragon Breath" duration 4 #Ability { id: "9F6F", source: "Fafnir the Forgotten" }
+20075.1 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20076.3 "Touchdown" Ability { id: "A09C", source: "Fafnir the Forgotten" }
+20087.3 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20088.3 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20098.7 "Baleful Breath x5" Ability { id: "9F94", source: "Fafnir the Forgotten" } duration 7
+20105.5 "--sync--" Ability { id: "9B76", source: "Fafnir the Forgotten" } # Baleful Breath final hit
+20112.6 "Sharp Spike" Ability { id: "9F97", source: "Fafnir the Forgotten" }
+20114.0 "--Darters spawn--"
+20123.7 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20130.8 "Hurricane Wing x10 (raidwides)" Ability { id: "9F71", source: "Fafnir the Forgotten" } duration 11
+20143.4 "--north--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20149.0 "Hurricane Wing 1 (rings)" Ability { id: ["9F78", "9F7D"], source: "Fafnir the Forgotten" }
+20151.0 "Hurricane Wing 2 (rings)" Ability { id: ["9F79","9F7E"], source: "Fafnir the Forgotten" }
+20152.9 "Horrid Roar 1 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20152.9 "Hurricane Wing 3 (rings)" Ability { id: ["9F7A", "9F7F"], source: "Fafnir the Forgotten" }
+20154.9 "Hurricane Wing 4 (rings)" Ability { id: ["9F7B", "9F80"], source: "Fafnir the Forgotten" }
+20157.9 "Horrid Roar 1 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20159.9 "Horrid Roar 2 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20159.9 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20161.9 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20163.9 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20164.9 "Horrid Roar 2 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20165.9 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20167.0 "Horrid Roar 3 (spread)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20171.0 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20173.0 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20173.1 "Horrid Roar 3 (spreads explode)" Ability { id: "9F93", source: "Fafnir the Forgotten" }
+20174.1 "Horrid Roar 4 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20175.0 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20177.0 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20179.3 "Horrid Roar 4 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20181.3 "--center--" Ability { id: "9F6D", source: "Fafnir the Forgotten" } window 15,15 # Baleful Nail
+20193.3 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20194.3 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20204.6 "Baleful Breath x5" Ability { id: "9F94", source: "Fafnir the Forgotten" } duration 7
+20211.5 "--sync--" Ability { id: "9B76", source: "Fafnir the Forgotten" } # Baleful Breath final hit
+20219.7 "--north--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20230.1 "Absolute Terror/Winged Terror" Ability { id: ["9F8D", "9F8F"], source: "Fafnir the Forgotten" }
+20248.3 "Winged Terror/Absolute Terror?" Ability { id: ["9F8F", "9F8D"], source: "Fafnir the Forgotten" } # can be skipped with high DPS
+20259.5 "Dark Matter Blast" Ability { id: "9F96", source: "Fafnir the Forgotten" } window 30,30
+
+20268.7 label "fafnirLoop"
+20268.7 "Horrid Roar (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20271.8 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20273.8 "Horrid Roar (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20281.8 "Horrid Roar" #Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20284.7 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20285.8 "Horrid Roar (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20285.9 "Dragon Breath" duration 4 #Ability { id: "9F6F", source: "Fafnir the Forgotten" }
+20301.0 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20302.2 "Spike Flail/Touchdown" Ability { id: ["A09A", "A09C"], source: "Fafnir the Forgotten" }
+20309.2 "Sharp Spike" Ability { id: "9F97", source: "Fafnir the Forgotten" }
+20318.3 "--center--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20325.4 "Hurricane Wing x10 (raidwides)" Ability { id: "9F71", source: "Fafnir the Forgotten" } duration 11
+20338.1 "--north--" Ability { id: "9F99", source: "Fafnir the Forgotten" } # Shuddering Earth
+20343.7 "Hurricane Wing 1 (rings)" Ability { id: ["9F78", "9F7D"], source: "Fafnir the Forgotten" }
+20345.6 "Horrid Roar 1 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20345.7 "Hurricane Wing 2 (rings)" Ability { id: ["9F79","9F7E"], source: "Fafnir the Forgotten" }
+20347.7 "Hurricane Wing 3 (rings)" Ability { id: ["9F7A", "9F7F"], source: "Fafnir the Forgotten" }
+20349.7 "Hurricane Wing 4 (rings)" Ability { id: ["9F7B", "9F80"], source: "Fafnir the Forgotten" }
+20350.7 "Horrid Roar 1(explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20352.7 "Horrid Roar 2 (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20354.7 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20356.7 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20357.8 "Horrid Roar 2 (explode)" Ability { id: "9F92", source: "Fafnir the Forgotten" }
+20358.7 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20359.8 "Horrid Roar 3 (spread)" Ability { id: "9F91", source: "Fafnir the Forgotten" }
+20360.7 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20365.7 "Hurricane Wing 1 (rings)" Ability { id: ["9F82", "9F87"], source: "Fafnir the Forgotten" }
+20365.8 "Horrid Roar 3 (spreads explode)" Ability { id: "9F93", source: "Fafnir the Forgotten" }
+20367.7 "Hurricane Wing 2 (rings)" Ability { id: ["9F83", "9F88"], source: "Fafnir the Forgotten" }
+20369.7 "Hurricane Wing 3 (rings)" Ability { id: ["9F84", "9F89"], source: "Fafnir the Forgotten" }
+20371.7 "Hurricane Wing 4 (rings)" Ability { id: ["9F85", "9F8A"], source: "Fafnir the Forgotten" }
+20380.8 "Absolute Terror/Winged Terror" Ability { id: ["9F8D", "9F8F"], source: "Fafnir the Forgotten" }
+20382.8 "--Darters spawn--"
+20385.0 "--center--" Ability { id: "9F6D", source: "Fafnir the Forgotten" } # Baleful Nail
+20397.0 "Offensive Posture" Ability { id: ["9F6B","9F6E", "9F70"], source: "Fafnir the Forgotten" }
+20398.0 "Spike Flail" Ability { id: "A09A", source: "Fafnir the Forgotten" }
+20408.4 "Baleful Breath x5" Ability { id: "9F94", source: "Fafnir the Forgotten" } duration 7
+20416.8 "--sync--" Ability { id: "9B76", source: "Fafnir the Forgotten" } # Baleful Breath final hit
+20428.9 "Dark Matter Blast" Ability { id: "9F96", source: "Fafnir the Forgotten" }
+20441.0 "Horrid Roar (puddles)" Ability { id: "9F91", source: "Fafnir the Forgotten" } window 30,30 forcejump "fafnirLoop"
+
+
+# IGNORED ABILITIES
+# 9BF2 Baleful Breath: Multi-hit stack marker castbar
+# 9EB9 --sync--: Auto-attack
+# 9F6F Dragon Breath: Outer ring fire breath
+# 9F72 Hurricane Wing: Cyclone raidwide, hit 2
+# 9F73 Hurricane Wing: Cyclone raidwide, hit 3
+# 9F74 Hurricane Wing: Cyclone raidwide, hit 4
+# 9F75 Hurricane Wing: Cyclone raidwide, hit 5
+# 9F76 Hurricane Wing: Cyclone raidwide, hit 6
+# 9F8B Great Whirlwind: Roving puddle AoEs, Ravaging Wind (big)
+# 9F8C Great Whirlwind: Roving puddle AoEs, BIting Wind (small)
+# 9F8E Absolute Terror: Hot Tail
+# 9F90 Winged Terror: Hot Wing
+# 9F95 Baleful Breath: Multi-hit stack marker middle hits
+# 9F98 Sharp Spike: Cleaving tank busters
+# 9F9C --sync--: Darter auto?
+# A156 Hurricane Wing: Cyclone raidwide, hit 7
+# A157 Hurricane Wing: Cyclone raidwide, hit 8
+# A158 Hurricane Wing: Cyclone raidwide, hit 9
+# A159 Hurricane Wing: Cyclone raidwide, hit 10
+
+# ALL ENCOUNTER ABILITIES
+# 9B76 Baleful Breath: Multi-hit stack marker, final hit
+# 9BC1 Great Whirlwind: Initial puddles, Ravaging Wind (big)
+# 9BC2 Great Whirlwind: Initial puddles, Biting Wind (small)
+# 9BF2 Baleful Breath: Multi-hit stack marker castbar
+# 9EB9 --sync--: Auto-attack
+# 9F6B Offensive Posture: Spike Flail windup
+# 9F6D Baleful Nail: Reposition
+# 9F6E Offensive Posture: Dragon breath windup
+# 9F6F Dragon Breath: Outer ring fire breath
+# 9F70 Offensive Posture: Touchdown windup
+# 9F71 Hurricane Wing: Cyclone raidwide, hit 1
+# 9F72 Hurricane Wing: Cyclone raidwide, hit 2
+# 9F73 Hurricane Wing: Cyclone raidwide, hit 3
+# 9F74 Hurricane Wing: Cyclone raidwide, hit 4
+# 9F75 Hurricane Wing: Cyclone raidwide, hit 5
+# 9F76 Hurricane Wing: Cyclone raidwide, hit 6
+# 9F78 Hurricane Wing: First cyclone ring, out to in, hit 1
+# 9F79 Hurricane Wing: First cyclone ring, out to in, hit 2
+# 9F7A Hurricane Wing: First cyclone ring, out to in, hit 3
+# 9F7B Hurricane Wing: First cyclone ring, out to in, hit 4
+# 9F7D Hurricane Wing: First cyclone ring, in to out, hit 1
+# 9F7E Hurricane Wing: First cyclone ring, in to out, hit 2
+# 9F7F Hurricane Wing: First cyclone ring, in to out, hit 3
+# 9F80 Hurricane Wing: First cyclone ring, in to out, hit 4
+# 9F82 Hurricane Wing: Second/third cyclone ring, out to in, hit 1
+# 9F83 Hurricane Wing: Second/third cyclone ring, out to in, hit 2
+# 9F84 Hurricane Wing: Second/third cyclone ring, out to in, hit 3
+# 9F85 Hurricane Wing: Second/third cyclone ring, out to in, hit 4
+# 9F87 Hurricane Wing: Second/third cyclone ring, in to out, hit 1
+# 9F88 Hurricane Wing: Second/third cyclone ring, in to out, hit 2
+# 9F89 Hurricane Wing: Second/third cyclone ring, in to out, hit 3
+# 9F8A Hurricane Wing: Second/third cyclone ring, in to out, hit 4
+# 9F8B Great Whirlwind: Roving puddle AoEs, Ravaging Wind (big)
+# 9F8C Great Whirlwind: Roving puddle AoEs, BIting Wind (small)
+# 9F8D Absolute Terror: Hot Tail castber
+# 9F8E Absolute Terror: Hot Tail
+# 9F8F Winged Terror: Hot Wing castbar
+# 9F90 Winged Terror: Hot Wing
+# 9F91 Horrid Roar: Castbar for puddles and spreads
+# 9F92 Horrid Roar: Targeted puddles
+# 9F93 Horrid Roar: Spread marker
+# 9F94 Baleful: Multi-hit stack marker first hit
+# 9F95 Baleful Breath: Multi-hit stack marker middle hits
+# 9F96 Dark Matter Blast: Raidwide
+# 9F97 Sharp Spike: Tank buster castbar
+# 9F98 Sharp Spike: Cleaving tank busters
+# 9F99 Shuddering Earth: Reposition
+# 9F9B Pestilent Sphere: Buster? Darter add
+# 9F9C --sync--: Darter auto?
+# A09A Spike Flail: 270-degree rear cone AoE
+# A09C Touchdown: Large circle AoE
+# A156 Hurricane Wing: Cyclone raidwide, hit 7
+# A157 Hurricane Wing: Cyclone raidwide, hit 8
+# A158 Hurricane Wing: Cyclone raidwide, hit 9
+# A159 Hurricane Wing: Cyclone raidwide, hit 10
+
+
+#~~~~~~~~~~~~#
+# Ark Angels #
+#~~~~~~~~~~~~#
+
+# -ii 9EAF A068 806D 806E A06F A073 A075 A077 A088 A090 A091 A092 A093
+
+# The La'loff Amphitheater will be sealed off
+30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1420" } window 30000,1
+30004.1 "--sync--" Ability { id: ["A062", "A063", "A064"], source: ["Ark Angel TT", "Ark Angel GK", "Ark Angel MR"] } # The Decisive Battle
+30013.2 "Cloudsplitter" Ability { id: "A076", source: "Ark Angel MR" }
+30022.2 "Meikyo Shisui" Ability { id: "A078", source: "Ark Angel GK" }
+30026.2 "Tachi: Yukikaze" Ability { id: "A079", source: "Ark Angel GK" }
+30030.2 "Tachi: Gekko" Ability { id: "A07A", source: "Ark Angel GK" }
+30030.8 "Tachi: Yukikaze" Ability { id: "A079", source: "Ark Angel GK" }
+30035.1 "Tachi: Kasha" Ability { id: "A07B", source: "Ark Angel GK" }
+30038.1 "Concerted Dissolution" Ability { id: "A07C", source: "Ark Angel GK" }
+30043.7 "Light's Chain" Ability { id: "A07D", source: "Ark Angel GK" }
+30043.8 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30046.4 "Meteor (castbar)" StartsUsing { id: 'A08A', source: 'Ark Angel TT'} duration 10.7
+30057.1 "Meteor?" Ability { id: 'A08A', source: 'Ark Angel TT'}
+30058.9 "--MR center--" Ability { id: "A06A", source: "Ark Angel MR" }
+30065.1 "Havoc Spiral" Ability { id: "A06B", source: "Ark Angel MR" } duration 8
+30076.9 "Spiral Finish" Ability { id: "A06C", source: "Ark Angel MR" }
+30092.3 "Dragonfall (cast)" Ability { id: "A07E", source: "Ark Angel GK" }
+30092.5 "Dragonfall 1 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30094.8 "Dragonfall 2 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30097.1 "Dragonfall 3 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30097.4 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30110.2 "Guillotine" Ability { id: "A067", source: "Ark Angel TT" } duration 5
+30114.4 "--sync--" Ability { id: "A069", source: "Ark Angel TT" } # Guillotine final hit
+30124.6 "--all untargetable--"
+30128.8 "--EV + HM targetable--"
+30135.0 "Utsusemi" Ability { id: "A080", source: "Ark Angel HM" }
+30137.0 "Dominion Slash" Ability { id: "A085", source: "Ark Angel EV" }
+30143.1 "Mighty Strikes" Ability { id: "A081", source: "Ark Angel HM" }
+30150.1 "Critical Strikes" Ability { id: "A082", source: "Ark Angel HM" }
+30152.5 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30155.7 "Divine Dominion" Ability { id: "A086", source: "Ark Angel EV" }
+30155.9 "Critical Strikes" Ability { id: "A082", source: "Ark Angel HM" }
+30159.3 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30168.5 "Holy" Ability { id: "A089", source: "Ark Angel EV" }
+30174.8 "--EV + HM center--" Ability { id: ["9EA9", "A356"], source: ["Ark Angel EV", "Ark Angel HM"] }
+30176.2 "--EV untargetable--"
+30176.2 "Proud Palisade" Ability { id: "A448", source: "Ark Angel EV" }
+30177.3 "Mijin Gakure (cast)" StartsUsing { id: "A08C", source: "Ark Angel HM" } duration 29.7
+30208.3 "Mijin Gakure" Ability { id: "A08C", source: "Ark Angel HM" }
+30217.6 "--sync--" Ability { id: "A06A", source: "Ark Angel MR" } window 50,10 # MR jumps to edge
+30221.8 "Rampage x4 (line indicators)" duration 3 #Ability { id: "A071", source: "Ark Angel MR" }
+30225.8 "Rampage (circle indicator)" Ability { id: "A072", source: "Ark Angel MR" }
+30226.7 "--sync--" Ability { id: "A070", source: "Ark Angel MR" } # Rampage castbar
+30226.9 "Rampage x4 (line AoE)" duration 3 #Ability { id: "A073", source: "Ark Angel MR" }
+30231.3 "Rampage (circle AoE)" Ability { id: "A074", source: "Ark Angel MR" }
+30235.5 "--MR targetable--"
+30235.5 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30248.3 "Guillotine" Ability { id: "A067", source: "Ark Angel TT" } duration 5
+30252.5 "--sync--" Ability { id: "A069", source: "Ark Angel TT" } # Guillotine
+30256.7 "--GK targetable--"
+30260.8 "Meikyo Shisui" Ability { id: "A078", source: "Ark Angel GK" }
+30264.8 "Tachi: Yukikaze 1" Ability { id: "A079", source: "Ark Angel GK" }
+30268.8 "Tachi: Gekko" Ability { id: "A07A", source: "Ark Angel GK" }
+30269.3 "Tachi: Yukikaze 2" Ability { id: "A079", source: "Ark Angel GK" }
+30273.6 "Tachi: Kasha" Ability { id: "A07B", source: "Ark Angel GK" }
+30276.6 "Concerted Dissolution" Ability { id: "A07C", source: "Ark Angel GK" }
+30279.2 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30281.2 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30282.2 "Light's Chain" Ability { id: "A07D", source: "Ark Angel GK" }
+30283.8 "Meteor (castbar)" StartsUsing { id: 'A08A', source: 'Ark Angel TT'} duration 10.7
+30286.2 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30294.5 "Meteor?" Ability { id: 'A08A', source: 'Ark Angel TT'}
+30303.6 "Arrogance Incarnate x5" Ability { id: "A087", source: "Ark Angel EV" } duration 5
+30314.4 "Cloudsplitter" Ability { id: "A076", source: "Ark Angel MR" }
+
+30325.7 label "angelLoop"
+30325.7 "--MR jump-" Ability { id: "A06A", source: "Ark Angel MR" }
+30330.1 "Rampage x4 (line indicators)" duration 3 #Ability { id: "A071", source: "Ark Angel MR" }
+30334.1 "Rampage (circle indicator)" Ability { id: "A072", source: "Ark Angel MR" }
+30335.0 "--sync--" Ability { id: "A070", source: "Ark Angel MR" } # Rampage castbar
+30335.2 "Rampage x4 (line AoE)" duration 3 #Ability { id: "A073", source: "Ark Angel MR" }
+30338.5 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30339.6 "Rampage (circle AoE)" Ability { id: "A074", source: "Ark Angel MR" }
+30351.1 "Guillotine" Ability { id: "A067", source: "Ark Angel TT" } duration 5
+30355.3 "--sync--" Ability { id: "A069", source: "Ark Angel TT" } # Guillotine
+30361.0 "--HM center--" Ability { id: "9EA9", source: "Ark Angel HM" }
+30367.3 "Mighty Strikes" Ability { id: "A194", source: "Ark Angel HM" }
+30369.4 "Critical Reaver x4 (raidwide)" duration 4 #Ability { id: "A195", source: "Ark Angel HM" }
+30387.2 "Critical Reaver (big raidwide)?" Ability { id: "A13B", source: "Ark Angel HM" }
+30401.3 "Dominion Slash?" Ability { id: "A085", source: "Ark Angel EV" }
+30403.3 "--MR center--" Ability { id: "A06A", source: "Ark Angel MR" } window 30,30
+30409.5 "Havoc Spiral" Ability { id: "A06B", source: "Ark Angel MR" } duration 8
+30419.9 "Divine Dominion" Ability { id: "A086", source: "Ark Angel EV" }
+30421.6 "Spiral Finish" Ability { id: "A06C", source: "Ark Angel MR" }
+30427.2 "--TT jump--" Ability { id: "A064", source: "Ark Angel TT" }
+30429.6 "Meteor (castbar)" StartsUsing { id: 'A08A', source: 'Ark Angel TT'} duration 10.7
+30440.3 "Meteor?" Ability { id: "A08A", source: "Ark Angel TT" }
+30450.6 "Meikyo Shisui" Ability { id: "A078", source: "Ark Angel GK" }
+30454.6 "Tachi: Yukikaze 1 (grid)" Ability { id: "A079", source: "Ark Angel GK" }
+30458.6 "Tachi: Gekko (gaze)" Ability { id: "A07A", source: "Ark Angel GK" }
+30459.2 "Tachi: Yukikaze 2 (grid)" Ability { id: "A079", source: "Ark Angel GK" }
+30463.5 "Tachi: Kasha (circle)" Ability { id: "A07B", source: "Ark Angel GK" }
+30466.5 "Concerted Dissolution" Ability { id: "A07C", source: "Ark Angel GK" }
+30467.4 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30472.1 "Light's Chain" Ability { id: "A07D", source: "Ark Angel GK" }
+30474.4 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30482.2 "Cloudsplitter" Ability { id: "A076", source: "Ark Angel MR" }
+30495.9 "Raiton" Ability { id: "A095", source: "Ark Angel HM" }
+30504.2 "Dominion Slash" Ability { id: "A085", source: "Ark Angel EV" }
+30516.2 "--sync--" Ability { id: "A083", source: "Ark Angel HM" } # Cross Reaver indicator
+30523.0 "Divine Dominion" Ability { id: "A086", source: "Ark Angel EV" }
+30523.2 "Cross Reaver" Ability { id: "A084", source: "Ark Angel HM" }
+30533.4 "Dragonfall (cast)" Ability { id: "A07E", source: "Ark Angel GK" }
+30533.7 "Dragonfall 1 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30536.1 "Dragonfall 2 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30538.4 "Dragonfall 3 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
+30558.8 "Arrogance Incarnate" Ability { id: "A087", source: "Ark Angel EV" }
+
+30577.6 "--MR Jump--" Ability { id: "A06A", source: "Ark Angel MR" } forcejump "angelLoop"
+
+
+# IGNORED ABILITIES
+# 9EAF Attack
+# A068 Guillotine: Initial frontal hits, TT
+# A06D Spiral Finish: Knockback, MR
+# A06F Havoc Spiral: Cone cyclone individual strikes, MR
+# A073 Rampage: Rampage line cast, MR
+# A075 Rampage: Rampage circle cast, MR
+# A077 Cloudsplitter: Tank cleave, MR
+# A088 Arrogance Incarnate: Multi-hit stack marker, EV
+# A090 Aethersplit: Unknown self-cast, GK
+# A091 Aethersplit: Unknown self-cast, GK
+# A092 Aethersplit: Unknown self-cast, GK
+# A093 Aethersplit: Unknown self-cast, GK
+
+# ALL ENCOUNTER ABILITIES
+# 366 attack
+# 5B5 attack
+# 9EA9 --sync-- : HM reposition
+# 9EAF --sync--: EV auto-attack
+# A061 the Decisive Battle: Inflicts Epic Hero debuff (Alpha)
+# A062 the Decisive Battle: Inflicts Vaunted Hero debuff (Gamma)
+# A063 the Decisive Battle: Inflict Fated Hero debuff (Beta)
+# A064 --sync--: TT reposition
+# A067 Guillotine: 270-degree frontal cone, TT
+# A068 Guillotine: Initial frontal hits, TT
+# A069 Guillotine: Final frontal hit, TT
+# A06A --sync--: MR reposition
+# A06B Havoc Spiral: Castbar for cone cyclone
+# A06C Spiral Finish: Knockback visuals, MR
+# A06D Spiral Finish: Knockback, MR
+# A06E Havoc Spiral: Cone cyclone activate, MR
+# A06F Havoc Spiral: Cone cyclone individual strikes, MR
+# A070 Rampage: Rampage castbar, MR
+# A071 --sync--: Rampage line indicator, MR
+# A072 --sync--: Rampage circle indicator, MR
+# A073 Rampage: Rampage line cast, MR
+# A074 Rampage: Reposition for Rampage circle, MR
+# A075 Rampage: Rampage circle cast, MR
+# A076 Cloudsplitter: Tank cleave cast, MR
+# A077 Cloudsplitter: Tank cleave, MR
+# A078 Meikyo Shisui: Wind-up for Yukikaze, GK
+# A079 Tachi: Yukikaze: Grid AoE, GK
+# A07A Tachi: Gekko: Gaze attack, GK
+# A07B Tachi: Kasha: Giant circle AoE, GK
+# A07C Concerted Dissolution: Pizza slize AoE, GK
+# A07D Light's Chain: Donut AoE, GK
+# A07E Dragonfall: Party stacks castbar, GK
+# A07F Dragonfall: Party stacks, GK
+# A080 Utsusemi: Chain castbar, HM
+# A081 Mighty Strikes: Small repeated circle AoEs, HM
+# A082 Critical Strikes: Mini-buster? HM
+# A083 Cross Reaver: Cross AoE indicator, HM
+# A084 Cross Reaver: Cross AoE, HM
+# A085 Dominion Slash: Raidwide, EV
+# A086 Divine Dominion: Chain clones disappear? EV
+# A087 Arrogance Incarnate: Multi-hit stack marker cast, EV
+# A088 Arrogance Incarnate: Multi-hit stack marker, EV
+# A089 Holy: Raidwide, EV
+# A08A Meteor: Heavy raidwide castbar, interruptible, TT
+# A08B Meteor: Heavy raidwide, TT. (Logs exist with it being used by MR, might be stale data)
+# A090 Aethersplit: Unknown self-cast, GK
+# A091 Aethersplit: Unknown self-cast, GK
+# A092 Aethersplit: Unknown self-cast, GK
+# A093 Aethersplit: Unknown self-cast, GK
+# A13B Critical Reaver: Heavy raidwide, interruptible, HM
+# A194 Mighty Strikes: Critical hit self-buff, HM
+# A195 Critical Reaver: Multi-hit raidwide, HM
+# A356 --sync--: EV reposition
+# A448 Proud Palisade: Summons Ark Shield, EV
+
+
+#~~~~~~~~~~~~~#
+# Shadow Lord #
+#~~~~~~~~~~~~~#
+
+# -ii A313 9F3E 9F3F 9F5D 9F61 9F5C 9F5D 9F5E 9F5F 9F60 9F46 9F47 9F48 9F49 A3AC 9F68 A444 A357 A358 A229 A23A A424 A425 A426 A427
+
+# The Throne Room will be sealed off
+40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1418" } window 40000,1
+40022.1 "Giga Slash 1" Ability { id: ["9F40", "94F2"], source: "Shadow Lord" }
+40024.1 "Giga Slash 2" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
+40028.1 "--center-" Ability { id: "9F6A", source: "Shadow Lord" }
+40034.4 "Umbra Smash" Ability { id: "9F5B", source: "Shadow Lord" } duration 12
+40055.8 "Giga Slash 1" Ability { id: ["9F40", "94F2"], source: "Shadow Lord" }
+40057.8 "Giga Slash 2" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
+40066.8 "Flames of Hatred" Ability { id: "9F69", source: "Shadow Lord" }
+40077.9 "Implosion" Ability { id: ["9F44", "9F45"], source: "Shadow Lord" }
+40081.0 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40089.3 "Cthonic Fury" Ability { id: "9F4A", source: "Shadow Lord" } window 89,10
+40104.4 "Burning Moat" Ability { id: "9F4D", source: "Shadow Lord" }
+40114.4 "Burning Court" Ability { id: "9F4C", source: "Shadow Lord" }
+40123.4 "Dark Nebula (cast)" Ability { id: "9F50", source: "Shadow Lord" }
+40129.5 "Dark Nebula (knockback)" Ability { id: "A23C", source: "Shadow Lord" }
+40141.5 "Implosion" Ability { id: ["9F44", "9F45"], source: "Shadow Lord" }
+40151.6 "Burning Court/Burning Moat" Ability { id: ["9F4C", "9F4D"], source: "Shadow Lord" }
+40151.6 "Burning Keep/Burning Battlements" Ability { id: ["9F4E", "9F4F"], source: "Shadow Lord" }
+40163.6 "Echoes of Agony x5" Ability { id: "A3AB", source: "Shadow Lord" } duration 5
+40177.7 "Cthonic Fury" Ability { id: "9F4B", source: "Shadow Lord" }
+40180.8 "--north--" Ability { id: "9F6A", source: "Shadow Lord" }
+40187.5 "Nightfall" Ability { id: "A0B8", source: "Shadow Lord" }
+40221.6 "Tera Slash" Ability { id: "A0B9", source: "Shadow Lord" } window 221,10
+40227.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40248.7 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40250.7 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
+40252.7 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+
+# ~307s loop.
+40256.7 label "lordLoop"
+40256.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40261.0 "Shadow Spawn" Ability { id: "9F52", source: "Shadow Lord" }
+40279.1 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40281.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
+40283.1 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+40289.1 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40292.1 "Giga Slash 1 (add)" Ability { id: ["9F40", "94F2"], source: ["Shadow Lord"] }
+40294.1 "Giga Slash 2 (add)" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
+40298.4 "Implosion (boss)" Ability { id: ["9F44", "9F45"], source: "Shadow Lord" }
+40303.1 "Implosion (add)" Ability { id: ["9F44", "9F45"], source: "Lordly Shadow" }
+40311.5 "Unbridled Rage" Ability { id: "9F67", source: "Shadow Lord" }
+40318.5 "Dark Nova" Ability { id: "A177", source: "Shadow Lord" } window 318,10
+40327.6 "Echoes of Agony x7" Ability { id: "A3AB", source: "Shadow Lord" } duration 7
+40341.7 "--Binding Indicator 1--" #Ability { id: "A229", source: "Shadow Lord" }
+40344.1 "--Binding Indicator 2--" #Ability { id: "A229", source: "Shadow Lord" }
+40346.5 "--Binding Indicator 1--" #Ability { id: "A229", source: "Shadow Lord" }
+40349.6 "Binding Sigil (castbar)" Ability { id: "9F55", source: "Shadow Lord" }
+40351.7 "Soul Binding 1" #Ability { id: "A22A", source: "Shadow Lord" }
+40354.1 "Soul Binding 2" #Ability { id: "A22A", source: "Shadow Lord" }
+40356.7 "Soul Binding 3" #Ability { id: "A22A", source: "Shadow Lord" }
+40357.7 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40361.1 "Burst" Ability { id: "A23B", source: "Shadow Lord" }
+40368.1 "Damning Strikes (castbar)" Ability { id: "9F57", source: "Shadow Lord" }
+40370.6 "Impact 1" Ability { id: "9F58", source: "Shadow Lord" }
+40373.1 "Impact 2" Ability { id: "A096", source: "Shadow Lord" }
+40375.8 "Impact 3" Ability { id: "A097", source: "Shadow Lord" }
+40383.5 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40391.8 "Cthonic Fury" Ability { id: "9F4A", source: "Shadow Lord" } window 30,30
+40397.9 "Dark Nebula (castbar)" Ability { id: "9F50", source: "Shadow Lord" }
+40412.0 "Dark Nebula 1 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40414.0 "--corner--" Ability { id: "9F6A", source: "Shadow Lord" }
+40415.0 "Dark Nebula 2 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40418.0 "Dark Nebula 3 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40421.0 "Dark Nebula 4 (knockback)" Ability { id: "9F51", source: "Shadow Lord" }
+40431.4 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40433.4 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
+40435.4 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+40438.4 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
+40445.4 "Burning Court/Burning Moat" Ability { id: ["9F4C", "9F4D"], source: "Shadow Lord" }
+40445.4 "Burning Keep/Burning Battlements" Ability { id: ["9F4E", "9F4F"], source: "Shadow Lord" }
+40456.8 "Dark Nova" Ability { id: "A177", source: "Shadow Lord" }
+40465.8 "Cthonic Fury" Ability { id: "9F4B", source: "Shadow Lord" }
+40469.0 "--sync--" Ability { id: "9F6A", source: "Shadow Lord" }
+40473.3 "Shadow Spawn" Ability { id: "9F52", source: "Shadow Lord" }
+40481.4 "Umbra Smash (single lines)" Ability { id: "9F5B", source: "Shadow Lord" } duration 12
+40494.9 "Umbra Smash (exalines)" Ability { id: "9F53", source: "Lordly Shadow" } duration 7
+40508.9 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40510.9 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
+40512.9 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+40530.9 "Doom Arc" Ability { id: "9F66", source: "Shadow Lord" }
+40556.1 "Giga Slash: Nightfall 1" Ability { id: ["A42B", "A42D"], source: "Shadow Lord" }
+40558.1 "Giga Slash: Nightfall 2" Ability { id: ["A42C", "A42E"], source: "Shadow Lord" }
+40560.1 "Giga Slash: Nightfall 3" Ability { id: ["A428", "A429"], source: "Shadow Lord" }
+
+40564.1 "--sync--" Ability { id: "9F6A", source: "Shadow Lord" } forcejump "lordLoop"
+
+# IGNORED ABILITIES
+# 9F3E Giga Slash: Giga Slash castbar, left safe first
+# 9F3F Giga Slash: Giga Slash castbar, right safe first
+# 9F46 Implosion: Chariot AoE, with 9497 left cleave
+# 9F47 Implosion: Half-room left cleave
+# 9F48 Implosion: Chariot AoE, with 9F49 right cleave
+# 9F49 Implosion: Half-room right cleave
+# 9F5C Umbra Smash: Turning animation for Smash follow-ups?
+# 9F5D Umbra Smash: 4x line AoE, line 1
+# 9F5E Umbra Smash: 4x line AoE, line 2
+# 9F5F Umbra Smash: 4x line AoE, line 3
+# 9F60 Umbra Smash: 4x line AoE, line 4
+# 9F61 Umbra Wave: Line AoE
+# 9F68 Unbridled Rage: Tank lasers, non-shared
+# A229 --sync--: Exatrines indicator
+# A23A --sync--: Unknown, maybe related to Binding Sigil targets?
+# A313 --sync--: Auto-attack
+# A357 --sync--: Damning Strikes repositions 2/3
+# A358 --sync--: Damning Strikes reposition 1
+# A3AC Echoes of Agony: Multi-hit stack marker
+# A424 Giga Slash: Nightfall: Castbar, cleaving left -> right -> front
+# A425 Giga Slash: Nightfall: Castbar, cleaving left -> right -> back
+# A426 Giga Slash: Nightfall: Castbar, cleaving right -> left -> front
+# A427 Giga Slash: Nightfall: Castbar, cleaving right -> left -> back
+# A444 Damning Strikes: Tower animations 1/2?
+
+# ALL ENCOUNTER ABILITIES
+# 9F3E Giga Slash: Giga Slash castbar, left safe first
+# 9F3F Giga Slash: Giga Slash castbar, right safe first
+# 9F40 Giga Slash: Right cleave, wide safespot
+# 9F41 Giga Slash: Left cleave, narrow safespot
+# 9F42 Giga Slash: Left cleave, wide safespot
+# 9F43 Giga Slash: Right cleave, narrow safespot
+# 9F44 Implosion: Chariot + half-room AoE castbar, right safe
+# 9F45 Implosion: Chariot + half-room AoE castbar, left safe
+# 9F46 Implosion: Chariot AoE, with 9497 left cleave
+# 9F47 Implosion: Half-room left cleave
+# 9F48 Implosion: Chariot AoE, with 9F49 right cleave
+# 9F49 Implosion: Half-room right cleave
+# 9F4A Cthonic Fury: Intermission start raidwide
+# 9F4B Cthonic Fury: Intermission end raidwide
+# 9F4C Burning Court: Corner circle AoEs, intermission
+# 9F4D Burning Moat: Side rectangle AoEs, intermission
+# 9F4E Burning Keep: Outer square safe AoE, intermission
+# 9F4F Burning Battlements: Inner square safe AoE, intermission
+# 9F50 Dark Nebula: Knockback line castbar
+# 9F51 Dark Nebula: Knockback line
+# 9F52 Shadow Spawn: Summon adds
+# 9F53 Umbra Smash: Exalines cast
+# 9F54 Umbra Smash: Exalines
+# 9F55 Binding Sigil: Exatrine castbar
+# 9F57 Damning Strikes: Tower castbar
+# 9F58 Impact: Daming Strikes tower 1?
+# 9F59 Damning Strikes: Tower animation 3?
+# 9F5B Umbra Smash: 4x line AoE castbar
+# 9F5C Umbra Smash: Turning animation for Smash follow-ups?
+# 9F5D Umbra Smash: 4x line AoE, line 1
+# 9F5E Umbra Smash: 4x line AoE, line 2
+# 9F5F Umbra Smash: 4x line AoE, line 3
+# 9F60 Umbra Smash: 4x line AoE, line 4
+# 9F61 Umbra Wave: Line AoE
+# 9F66 Doom Arc: Raidwide + bleed
+# 9F67 Unbridled Rage: Tank lasers castbar
+# 9F68 Unbridled Rage: Tank lasers, non-shared
+# 9F69 Flames of Hatred: Raidwide
+# 9F6A --sync--: Reposition
+# A096 Impact: Daming Strikes tower 2?
+# A097 Impact: Daming Strikes tower 3?
+# A0B8 Nightfall: Tera Slash pre-cast
+# A0B9 Tera Slash: High-damage raidwide
+# A177 Dark Nova: Spread circles
+# A229 --sync--: Exatrines indicator
+# A22A Soul Binding: Exatrines
+# A23A --sync--: Unknown, maybe related to Binding Sigil targets?
+# A23B Burst: Knock-up attack on targets hit by Binding Sigil
+# A23C Dark Nebula: Knockback line
+# A313 --sync--: Auto-attack
+# A357 --sync--: Damning Strikes repositions 2/3
+# A358 --sync--: Damning Strikes reposition 1
+# A3AB Echoes of Agony: Multi-hit stack marker castbar
+# A3AC Echoes of Agony: Multi-hit stack marker
+# A424 Giga Slash: Nightfall: Castbar, cleaving left -> right -> front
+# A425 Giga Slash: Nightfall: Castbar, cleaving left -> right -> back
+# A426 Giga Slash: Nightfall: Castbar, cleaving right -> left -> front
+# A427 Giga Slash: Nightfall: Castbar, cleaving right -> left -> back
+# A428 Giga Slash: Nightfall: Front cleave, wide safespot
+# A429 Giga Slash: Nightfall: Rear cleave, wide safespot
+# A42B Giga Slash: Nightfall: Left cleave, wide safespot
+# A42C Giga Slash: Nightfall: Right cleave, narrow safespot
+# A42D Giga Slash: Nightfall: Right cleave, wide safespot
+# A42E Giga Slash: Nightfall: Left cleave, narrow safespot
+# A444 Damning Strikes: Tower animations 1/2?
