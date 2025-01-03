@@ -801,7 +801,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(motion\\)': '(Déplacement)',
         '\\(orb\\)': '(Orbe)',
         '\\(platforms\\)': '(Platformes)',
-        '\\(right tower\\)': '(Tour gauche)',
+        '\\(right tower\\)': '(Tour droite)',
         '\\(rotate\\)': '(Rotation)',
         '\\(spread\\)': '(Dispersion)',
         'Absolute Authority': 'Autorité absolue',
