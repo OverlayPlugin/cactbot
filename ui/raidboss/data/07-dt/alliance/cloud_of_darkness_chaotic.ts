@@ -10,10 +10,8 @@ import { TriggerSet } from '../../../../../types/trigger';
 // TODO: tweak trigger durations/delays
 // TODO: Break IV safe look-away direction?
 // TODO: Surecast/Arm's Length call for Break IV/Aero IV during Blade of Darkness?
-// TODO: tank swap call for autos/Lightning Resistance Down stacks?
 // TODO: tile refresh reminders?
 // TODO: Active-pivot Particle Beam - call move/stay based on player position?
-// TODO: Provoke call for tanks after Looming Chaos swaps?
 
 type ThirdArtOfDarknessId = keyof typeof thirdArtOfDarknessHeadmarker;
 type ThirdArtOfDarkness = 'leftCleave' | 'rightCleave' | 'pairStacks' | 'proteanSpread';
@@ -124,6 +122,21 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse Doom',
         },
+      },
+    },
+    {
+      id: 'Cloud Chaotic Lightning Resistance Down Swap',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1122', capture: true },
+      condition: (data, matches) => {
+        const stackCount = parseInt(matches.count);
+        return stackCount >= 5 && data.role === 'tank' && data.party.inParty(matches.target);
+      },
+      alertText: (_data, _matches, output) => {
+        return output.tankSwap!();
+      },
+      outputStrings: {
+        tankSwap: Outputs.tankSwap,
       },
     },
     {
@@ -650,6 +663,25 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + player swaps',
+        },
+      },
+    },
+    {
+      id: 'Cloud Chaotic Looming Chaos Enmity Reset',
+      type: 'Ability',
+      netRegex: { id: 'A2CB', source: 'Cloud of Darkness', capture: false },
+      condition: (data) => data.role === 'tank',
+      delaySeconds: 3,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Provoke Boss',
+          de: 'Boss abspotten',
+          fr: 'Provoquez le Boss',
+          ja: '挑発',
+          cn: '挑衅',
+          ko: '보스 도발',
         },
       },
     },
