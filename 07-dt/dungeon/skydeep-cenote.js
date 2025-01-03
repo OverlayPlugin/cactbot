@@ -449,7 +449,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Airy Bubble': 'bulle irisée',
         'Feather Ray': 'raie manta',
@@ -457,6 +456,10 @@ Options.Triggers.push({
         'Maulskull': 'Cabosseur',
       },
       'replaceText': {
+        '\\(boss\\)': '(Boss)',
+        '\\(first\\)': '(Premier)',
+        '\\(party\\)': '(groupe)',
+        '\\(second\\)': '(Deuxième)',
         'Ancient Artillery': 'Activation du canon',
         '(?<! )Artillery': 'Tir d\'artillerie',
         'Ashlayer': 'Rayonnement calorifique',

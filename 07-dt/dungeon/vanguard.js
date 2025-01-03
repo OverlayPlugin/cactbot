@@ -208,7 +208,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Protector': 'Protecteur',
         'Vanguard Commander R8': 'commandant de L\'Avant-garde R8',
@@ -216,6 +215,9 @@ Options.Triggers.push({
         'Zander the Snakeskinner': 'Zander le constricteur',
       },
       'replaceText': {
+        '\\(corners\\)': '(Coins)',
+        '\\(ground AoEs\\)': '(AoE au sol)',
+        '\\(sides\\)': '(Côtés)',
         '(?<! )Rush': 'Ruée',
         'Aerial Offensive': 'Attaque aérienne',
         'Battery Circuit': 'Fulgurocanon rotatif',

@@ -514,7 +514,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Gurfurlur': 'Gurfurlur',
         'Kahderyor': 'Kahderyor',
