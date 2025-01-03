@@ -157,7 +157,7 @@ const contentTypeToLabel: { [contentType: number]: LocaleText } = {
   [ContentType.Dungeons]: {
     en: 'Dgn',
     de: 'Dgn',
-    fr: 'Djn',
+    fr: 'Donjon',
     ja: 'ID',
     cn: '迷宫挑战',
     ko: '던전',
@@ -172,6 +172,7 @@ const contentTypeToLabel: { [contentType: number]: LocaleText } = {
   },
   [ContentType.ChaoticAllianceRaid]: {
     en: 'Chaotic',
+    fr: 'Chaotique',
   },
 } as const;
 

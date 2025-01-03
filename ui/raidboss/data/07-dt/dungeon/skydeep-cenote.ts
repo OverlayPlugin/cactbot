@@ -476,7 +476,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Airy Bubble': 'bulle irisée',
         'Feather Ray': 'raie manta',
@@ -484,6 +483,10 @@ const triggerSet: TriggerSet<Data> = {
         'Maulskull': 'Cabosseur',
       },
       'replaceText': {
+        '\\(boss\\)': '(Boss)',
+        '\\(first\\)': '(Premier)',
+        '\\(party\\)': '(groupe)',
+        '\\(second\\)': '(Deuxième)',
         'Ancient Artillery': 'Activation du canon',
         '(?<! )Artillery': 'Tir d\'artillerie',
         'Ashlayer': 'Rayonnement calorifique',

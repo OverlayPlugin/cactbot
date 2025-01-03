@@ -944,24 +944,28 @@ const triggerSet: TriggerSet<Data> = {
         tank: {
           en: 'Tanks',
           de: 'Tanks',
+          fr: 'Tanks',
           cn: '坦克',
           ko: '탱커',
         },
         healer: {
           en: 'Healers',
           de: 'Heiler',
+          fr: 'Healers',
           cn: '治疗',
           ko: '힐러',
         },
         melee: {
           en: 'Melee',
           de: 'Nahkämpfer',
+          fr: 'Melée',
           cn: '近战',
           ko: '근딜',
         },
         ranged: {
           en: 'Ranged',
           de: 'Fernkämpfer',
+          fr: 'Distant',
           cn: '远程',
           ko: '원딜',
         },
@@ -2479,12 +2483,14 @@ const triggerSet: TriggerSet<Data> = {
         baitNormal: {
           en: 'Point ${bait}',
           de: 'Zeige ${bait}',
+          fr: 'Pointez ${bait}',
           cn: '指向 (${bait})',
           ko: '${bait}쪽으로',
         },
         baitUptime: {
           en: 'Stand ${bait} side',
           de: 'Stehe ${bait} Seite',
+          fr: 'Restez côté ${bait}',
           cn: '站 ${bait} 侧',
           ko: '${bait}쪽 면에 서기',
         },
