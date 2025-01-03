@@ -551,11 +551,9 @@ const triggerSet: TriggerSet<Data> = {
         const mech = thirdArtOfDarknessHeadmarker[matches.id];
 
         if (side === 'east') {
-          data.thirdArtOfDarkness.east ??= [];
-          data.thirdArtOfDarkness.east.push(mech);
+          (data.thirdArtOfDarkness.east ??= []).push(mech);
         } else {
-          data.thirdArtOfDarkness.west ??= [];
-          data.thirdArtOfDarkness.west.push(mech);
+          (data.thirdArtOfDarkness.east ??= []).push(mech);
         }
       },
     },
