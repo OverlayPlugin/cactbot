@@ -618,6 +618,7 @@ const triggerSet: TriggerSet<Data> = {
         'Origenics Sentry G9': 'sentinelle de l\'Origenèse G9',
       },
       'replaceText': {
+        '--mid-north--': '--Milieu Nord--',
         '\\(cages\\)': '(Cages)',
         '\\(lance\\)': '(Lance)',
         '\\(puddle drop\\)': '(Dépose des flaques)',

@@ -835,8 +835,11 @@ const triggerSet: TriggerSet<Data> = {
         'Ruthless Regalia': 'Monarchie brutale',
         'Tyranny\'s Grasp': 'Main réginale',
         'Virtual Shift': 'Transfert virtuel',
+        'Wind of Change': 'Vent du changement',
         'Weighty Blow': 'Coup gravitationnel',
         'World Shatter': 'Monde brisé',
+        'Right(?! )': 'Gauche',
+        'Left(?! )': 'Droite',
       },
     },
     {
