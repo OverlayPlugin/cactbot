@@ -1,9 +1,9 @@
 {
   "ts-node": {
     "moduleTypes": {
-      "webpack/*": "cjs",
       // Globs are also supported with the same behavior as tsconfig "include"
-      "webpack/**/*": "cjs"
+      "webpack/*": "cjs",
+      "webpack/loaders/*": "esm"
     },
     "esm": true
   },
