@@ -459,7 +459,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '9E36', source: 'Stygian Shadow', capture: true },
       // TODO: some strats may prefer to have this call for any party members
-      // being targeted by the buster due to player positioning
+      // being targeted by the buster regardless of inside/outside position
       condition: (data, matches) => {
         const side = parseFloat(matches.x) < center.x ? 'east' : 'west';
         return data.me === matches.target || (data.outerDarkness && side === data.mySide);
