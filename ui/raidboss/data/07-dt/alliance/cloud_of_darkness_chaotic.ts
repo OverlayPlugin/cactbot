@@ -553,7 +553,7 @@ const triggerSet: TriggerSet<Data> = {
         if (side === 'east') {
           (data.thirdArtOfDarkness.east ??= []).push(mech);
         } else {
-          (data.thirdArtOfDarkness.east ??= []).push(mech);
+          (data.thirdArtOfDarkness.west ??= []).push(mech);
         }
       },
     },
