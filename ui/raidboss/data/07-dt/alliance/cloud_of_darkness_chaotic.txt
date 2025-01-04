@@ -1,0 +1,362 @@
+### THE CLOUD OF DARKNESS (CHAOTIC)
+# ZoneId: 1241
+
+# -ii 9E0E 9E0F 9E11 9E12 9E14 9E16 9E17 9E1F 9E21 9E22 9E24 9E25 9E26 9E27 9E28 9E29 9E3B 9E3C 9E41 9E45 9E46 9E48 9E49 9E4B 9E4E 9E51 9E52 A183
+# -it "Stygian Shadow"
+# Cloud of Darkness and Atomos do not have 34 NameToggle lines
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+# opener
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+13.6 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+14.3 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+25.7 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+26.5 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+38.9 "Deluge of Darkness" Ability { id: "9E3D", source: "Cloud of Darkness" }
+41.9 "--sync--" Ability { id: "9E56", source: "Cloud of Darkness" }
+
+# diamond phase 1
+53.0 "Grim Embrace" Ability { id: ["9E39", "9E3A"], source: "Cloud of Darkness" }
+61.0 "Grim Embrace" Ability { id: ["9E39", "9E3A"], source: "Cloud of Darkness" }
+71.2 "--sync--" StartsUsing { id: "9E58", source: "Cloud of Darkness" } window 10,10 jump "flare-branch-1"
+73.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+75.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+76.2 "--sync--" StartsUsing { id: "9E43", source: "Cloud of Darkness" } window 10,10 jump "death-branch-1"
+76.2 "--sync--" StartsUsing { id: "9E4C", source: "Cloud of Darkness" } window 10,10 jump "aero-branch-1"
+77.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+79.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+
+## Flare branch 1
+100.0 label "flare-branch-1"
+101.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+103.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+103.8 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+105.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+107.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+111.9 "Unholy Darkness (cast)" Ability { id: "A12D", source: "Cloud of Darkness" }
+112.9 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+120.7 "Unholy Darkness (damage)" Ability { id: "A12E", source: "Cloud of Darkness" }
+127.0 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+127.7 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+134.0 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
+152.1 "--sync--" Ability { id: "9E4F", source: "Cloud of Darkness" }
+153.0 "Break IV" Ability { id: "9E50", source: "Cloud of Darkness" }
+164.0 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+164.7 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+166.9 "Vortex/Aero IV" Ability { id: ["9E47", "9E4D"], source: "Cloud of Darkness" }
+179.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+181.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+183.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+185.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+196.8 "Death IV/Aero IV (cast)" Ability { id: ["9E43", "9E4C"], source: "Cloud of Darkness" }
+197.4 "Vortex/Aero IV" Ability { id: ["9E44", "9E4A"], source: "Cloud of Darkness" }
+205.5 "--sync--" StartsUsing { id: "9E3E", source: "Cloud of Darkness" } window 10,10 forcejump "diamond-phase-1-end"
+
+## Death IV branch 1
+300.0 label "death-branch-1"
+300.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+302.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+305.4 "Death IV (cast)" Ability { id: "9E43", source: "Cloud of Darkness" }
+306.0 "Vortex" Ability { id: "9E44", source: "Cloud of Darkness" } window 10,10 forcejump "death/aero-branch-merge-1"
+
+## Aero IV branch 1
+400.0 label "aero-branch-1"
+400.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+402.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+405.4 "Aero IV (cast)" Ability { id: "9E4C", source: "Cloud of Darkness" }
+406.0 "Aero IV" Ability { id: "9E4A", source: "Cloud of Darkness" } window 10,10 forcejump "death/aero-branch-merge-1"
+
+## Death IV/Aero IV branch merge 1
+500.0 label "death/aero-branch-merge-1"
+511.0 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
+522.0 "Rapid-sequence Particle Beam (cast)" Ability { id: "9E40", source: "Cloud of Darkness" }
+522.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+524.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+526.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+528.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+549.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+551.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+553.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+555.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+558.3 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+559.0 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+561.2 "Vortex/Aero IV" Ability { id: ["9E47", "9E4D"], source: "Cloud of Darkness" }
+574.4 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+583.4 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+594.7 "--sync--" StartsUsing { id: "9E3E", source: "Cloud of Darkness" } window 10,10 forcejump "diamond-phase-1-end"
+
+# end of diamond phase 1
+600.0 label "diamond-phase-1-end"
+606.9 "Flood of Darkness" Ability { id: "9E3E", source: "Cloud of Darkness" }
+621.0 "Deluge of Darkness" Ability { id: "9E01", source: "Cloud of Darkness" }
+624.0 "--sync--" Ability { id: "9E02", source: "Cloud of Darkness" }
+
+# tile phase
+625.2 "--adds targetable--"
+639.5 "Dark Dominion" Ability { id: "9E08", source: "Cloud of Darkness" }
+651.5 "Particle Concentration" Ability { id: "9E18", source: "Cloud of Darkness" }
+652.5 "the Third Art of Darkness" Ability { id: ["9E20", "9E23"], source: "Stygian Shadow" } duration 7
+662.7 "Particle Beam" Ability { id: ["9E1A", "9E1B", "9E1C"], source: "Cloud of Darkness" }
+682.7 "--sync--" Ability { id: ["9E09", "9E0B"], source: "Cloud of Darkness" }
+683.5 "Ghastly Gloom" Ability { id: ["9E0A", "9E0C"], source: "Cloud of Darkness" }
+690.7 "--sync--" Ability { id: "9E32", source: "Stygian Shadow" }
+691.7 "Curse of Darkness" Ability { id: "9E33", source: "Stygian Shadow" }
+698.8 "Dark-energy Particle Beam" Ability { id: "9E34", source: "Cloud of Darkness" }
+700.7 "Evil Seed (cast)" Ability { id: "9E2A", source: "Stygian Shadow" }
+714.7 "Evil Seed (brambles drop)" Ability { id: "9E2B", source: "Stygian Shadow" }
+720.1 "--sync--" Ability { id: ["9E09", "9E0B"], source: "Cloud of Darkness" }
+720.9 "Ghastly Gloom" Ability { id: ["9E0A", "9E0C"], source: "Cloud of Darkness" }
+724.9 "Dark-energy Particle Beam" Ability { id: "9E34", source: "Stygian Shadow" }
+734.0 "Thorny Vine" Ability { id: "9E2C", source: "Stygian Shadow" }
+762.2 "Chaos-condensed Particle Beam/Diffusive-force Particle Beam" Ability { id: ["9E0D", "9E10"], source: "Cloud of Darkness" }
+765.1 "--sync--" Ability { id: "9E2E", source: "Stygian Shadow" }
+774.1 "Lateral-core Phaser/Core-lateral Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
+776.1 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
+777.5 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
+781.3 "Active-pivot Particle Beam" Ability { id: ["9E13", "9E15"], source: "Cloud of Darkness" } duration 7.5
+788.6 "Dark-energy Particle Beam" Ability { id: "9E34", source: "Stygian Shadow" }
+794.2 "Excruciate" Ability { id: "9E36", source: "Stygian Shadow" }
+807.5 "--sync--" Ability { id: "A2C9", source: "Stygian Shadow" }
+807.5 "--sync--" Ability { id: "A2CA", source: "Cloud of Darkness" }
+808.2 "Looming Chaos" Ability { id: "A2CB", source: "Cloud of Darkness" }
+819.1 "--sync--" Ability { id: "9E32", source: "Stygian Shadow" }
+820.1 "Curse of Darkness" Ability { id: "9E33", source: "Stygian Shadow" }
+822.2 "--sync--" Ability { id: "9E2E", source: "Stygian Shadow" }
+830.2 "Particle Concentration" Ability { id: "9E18", source: "Cloud of Darkness" }
+831.2 "Lateral-core Phaser/Core-lateral Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
+833.2 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
+834.8 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
+841.5 "Particle Beam" Ability { id: ["9E1A", "9E1B", "9E1C"], source: "Cloud of Darkness" }
+845.3 "Dark-energy Particle Beam" Ability { id: "9E34", source: "Stygian Shadow" }
+847.5 "Dark Dominion" Ability { id: "9E08", source: "Cloud of Darkness" }
+856.5 "Feint Particle Beam (cast)" Ability { id: "9E1D", source: "Cloud of Darkness" }
+861.5 "Feint Particle Beam (chasing AoEs)" Ability { id: "9E1E", source: "Cloud of Darkness" } duration 5.2
+864.4 "the Third Art of Darkness" Ability { id: ["9E20", "9E23"], source: "Stygian Shadow" } duration 7
+876.2 "Dark-energy Particle Beam" Ability { id: "9E34", source: "Stygian Shadow" }
+890.4 "--sync--" Ability { id: ["9E09", "9E0B"], source: "Cloud of Darkness" }
+891.1 "Ghastly Gloom" Ability { id: ["9E0A", "9E0C"], source: "Cloud of Darkness" }
+891.2 "--sync--" Ability { id: "9E2E", source: "Stygian Shadow" }
+900.2 "Lateral-core Phaser/Core-lateral Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
+902.2 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
+903.8 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
+909.8 "Chaos-condensed Particle Beam/Diffusive-force Particle Beam" Ability { id: ["9E0D", "9E10"], source: "Cloud of Darkness" }
+924.3 "Dark-energy Particle Beam" Ability { id: "9E34", source: "Stygian Shadow" }
+927.4 "--adds untargetable--"
+930.4 "Evaporation" Ability { id: "9E06", source: "Stygian Shadow" }
+935.2 "Flood of Darkness" Ability { id: "9E07", source: "Cloud of Darkness" }
+
+# transition
+938.3 "--sync--" Ability { id: "9E02", source: "Cloud of Darkness" }
+951.3 "Deluge of Darkness" Ability { id: "9E3D", source: "Cloud of Darkness" }
+954.3 "--sync--" Ability { id: "9E56", source: "Cloud of Darkness" }
+
+# diamond phase 2
+965.4 "Grim Embrace" Ability { id: ["9E39", "9E3A"], source: "Cloud of Darkness" }
+973.4 "Grim Embrace" Ability { id: ["9E39", "9E3A"], source: "Cloud of Darkness" }
+983.6 "--sync--" StartsUsing { id: "9E58", source: "Cloud of Darkness" } window 10,10 jump "flare-branch-2"
+985.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+987.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+988.6 "--sync--" StartsUsing { id: "9E43", source: "Cloud of Darkness" } window 10,10 jump "death-branch-2"
+988.6 "--sync--" StartsUsing { id: "9E4C", source: "Cloud of Darkness" } window 10,10 jump "aero-branch-2"
+989.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+991.4 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+
+## Flare branch 2
+1000.0 label "flare-branch-2"
+1001.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1003.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1003.8 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+1005.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1007.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1011.9 "Unholy Darkness (cast)" Ability { id: "A12D", source: "Cloud of Darkness" }
+1012.9 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+1020.7 "Unholy Darkness (damage)" Ability { id: "A12E", source: "Cloud of Darkness" }
+1027.0 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+1027.7 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+1034.0 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
+1052.1 "--sync--" Ability { id: "9E4F", source: "Cloud of Darkness" }
+1053.0 "Break IV" Ability { id: "9E50", source: "Cloud of Darkness" }
+1064.0 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+1064.7 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+1066.9 "Vortex/Aero IV" Ability { id: ["9E47", "9E4D"], source: "Cloud of Darkness" }
+1079.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1081.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1083.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1085.0 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1096.8 "Death IV/Aero IV (cast)" Ability { id: ["9E43", "9E4C"], source: "Cloud of Darkness" }
+1097.4 "Vortex/Aero IV" Ability { id: ["9E44", "9E4A"], source: "Cloud of Darkness" }
+1105.5 "--sync--" StartsUsing { id: "9E55", source: "Cloud of Darkness" } window 10,10 forcejump "enrage"
+
+## Death IV branch 2
+1200.0 label "death-branch-2"
+1200.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1202.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1205.4 "Death IV (cast)" Ability { id: "9E43", source: "Cloud of Darkness" }
+1206.0 "Vortex" Ability { id: "9E44", source: "Cloud of Darkness" } window 10,10 forcejump "death/aero-branch-merge-2"
+
+## Aero IV branch 2
+1300.0 label "aero-branch-2"
+1300.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1302.8 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1305.4 "Aero IV (cast)" Ability { id: "9E4C", source: "Cloud of Darkness" }
+1306.0 "Aero IV" Ability { id: "9E4A", source: "Cloud of Darkness" } window 10,10 forcejump "death/aero-branch-merge-2"
+
+## Death IV/Aero IV branch merge 2
+1400.0 label "death/aero-branch-merge-2"
+1411.0 "Endeath IV/Enaero IV" Ability { id: ["9E53", "9E54"], source: "Cloud of Darkness" }
+1422.0 "Rapid-sequence Particle Beam (cast)" Ability { id: "9E40", source: "Cloud of Darkness" }
+1422.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+1424.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+1426.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+1428.9 "Rapid-sequence Particle Beam" #Ability { id: "9E42", source: "Cloud of Darkness" }
+1449.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1451.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1453.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1455.1 "Razing-volley Particle Beam" #Ability { id: "9E3F", source: "Cloudlet of Darkness" }
+1458.3 "--sync--" Ability { id: ["9DFB", "9DFD", "9DFF"], source: "Cloud of Darkness" }
+1459.0 "Blade of Darkness" Ability { id: ["9DFC", "9DFE", "9E00"], source: "Cloud of Darkness" }
+1461.2 "Vortex/Aero IV" Ability { id: ["9E47", "9E4D"], source: "Cloud of Darkness" }
+1474.4 "Flare (cast)" Ability { id: "9E58", source: "Cloud of Darkness" }
+1483.4 "Flare (damage)" Ability { id: "9E59", source: "Cloud of Darkness" }
+1494.7 "--sync--" StartsUsing { id: "9E55", source: "Cloud of Darkness" } window 10,10 forcejump "enrage"
+
+# enrage
+1600.0 label "enrage"
+1612.0 "Deluge of Darkness (enrage)" Ability { id: "9E55", source: "Cloud of Darkness" }
+
+
+# IGNORED ABILITIES
+# 9E0E Chaos-condensed Particle Beam
+# 9E0F Chaos-condensed Particle Beam
+# 9E11 Diffusive-force Particle Beam
+# 9E12 Diffusive-force Particle Beam
+# 9E14 Active-pivot Particle Beam
+# 9E16 Active-pivot Particle Beam
+# 9E17 Active-pivot Particle Beam
+# 9E1F Feint Particle Beam
+# 9E21 the Art of Darkness
+# 9E22 the Art of Darkness
+# 9E24 the Art of Darkness
+# 9E25 the Art of Darkness
+# 9E26 Hyper-focused Particle Beam
+# 9E27 Hyper-focused Particle Beam
+# 9E28 Multi-pronged Particle Beam
+# 9E29 Multi-pronged Particle Beam
+# 9E3B Grim Embrace
+# 9E3C Grim Embrace
+# 9E41 Rapid-sequence Particle Beam
+# 9E45 Death IV
+# 9E46 Death IV
+# 9E48 Death IV
+# 9E49 Death IV
+# 9E4B Aero IV
+# 9E4E Aero IV
+# 9E51 Break IV
+# 9E52 Break IV
+# A183 Particle Beam
+
+# ALL ENCOUNTER ABILITIES
+# 9DF9 attack
+# 9DFA attack
+# 9DFB Blade of Darkness - under front right (cast)
+# 9DFC Blade of Darkness - under front right (damage)
+# 9DFD Blade of Darkness - under front left (cast)
+# 9DFE Blade of Darkness - under front left (damage)
+# 9DFF Blade of Darkness - out (cast)
+# 9E00 Blade of Darkness - out (damage)
+# 9E01 Deluge of Darkness - bleed aoe
+# 9E02 --sync--
+# 9E06 Evaporation - adds absorbed into and damage boss
+# 9E07 Flood of Darkness
+# 9E08 Dark Dominion - aoe
+# 9E09 Ghastly Gloom - cross cleave (cast)
+# 9E0A Ghastly Gloom - cross cleave (damage)
+# 9E0B Ghastly Gloom - donut (cast)
+# 9E0C Ghastly Gloom - donut (damage)
+# 9E0D Chaos-condensed Particle Beam - cast
+# 9E0E Chaos-condensed Particle Beam - damage (to platform players)
+# 9E0F Chaos-condensed Particle Beam - damage (to tile players)
+# 9E10 Diffusive-force Particle Beam - cast
+# 9E11 Diffusive-force Particle Beam - damage
+# 9E12 Diffusive-force Particle Beam - damage
+# 9E13 Active-pivot Particle Beam - clockwise (cast)
+# 9E14 Active-pivot Particle Beam
+# 9E15 Active-pivot Particle Beam - counterclockwise (cast)
+# 9E16 Active-pivot Particle Beam - hidden cast
+# 9E17 Active-pivot Particle Beam - damage
+# 9E18 Particle Concentration
+# 9E19 Particle Beam
+# 9E1A Particle Beam - 1 person tower soak
+# 9E1B Particle Beam - 2 person tower soak
+# 9E1C Particle Beam - 3 person tower soak
+# 9E1D Feint Particle Beam - dummy cast (from boss)
+# 9E1E Feint Particle Beam - hidden cast (one per targeted player)
+# 9E1F Feint Particle Beam - damage cast
+# 9E20 the Third Art of Darkness - cast (from adds)
+# 9E21 the Art of Darkness - right cleave (hidden cast)
+# 9E22 the Art of Darkness - right cleave (damage)
+# 9E23 the Third Art of Darkness - cast (from adds)
+# 9E24 the Art of Darkness - left cleave (hidden cast)
+# 9E25 the Art of Darkness - left cleave (damage)
+# 9E26 Hyper-focused Particle Beam - add protean (hidden cast)
+# 9E27 Hyper-focused Particle Beam - add protean (damage)
+# 9E28 Multi-pronged Particle Beam - pair stacks (hidden cast)
+# 9E29 Multi-pronged Particle Beam - pair stacks (damage)
+# 9E2A Evil Seed - cast (from adds)
+# 9E2B Evil Seed - brambles drop from players
+# 9E2C Thorny Vine - brambles tether to players
+# 9E2D Thorny Vine
+# 9E2E --sync--
+# 9E2F Lateral-core Phaser - cleave middle then sides (cast)
+# 9E30 Core-lateral Phaser - cleave sides then middle (cast)
+# 9E31 Phaser - add cleave (damage from Lateral-core/Core-lateral Phaser)
+# 9E32 Curse of Darkness - dummy cast
+# 9E33 Curse of Darkness - aoe + debuffs
+# 9E34 Dark-energy Particle Beam - eye lasers
+# 9E35 attack
+# 9E36 Excruciate - tankbuster from Stygian Shadow
+# 9E39 Grim Embrace - hand will spawn in front of players
+# 9E3A Grim Embrace - hand will spawn behind players
+# 9E3B Grim Embrace
+# 9E3C Grim Embrace
+# 9E3D Deluge of Darkness - bleed aoe
+# 9E3E Flood of Darkness - aoe
+# 9E3F Razing-volley Particle Beam - line aoe
+# 9E40 Rapid-sequence Particle Beam - alliance wild charge (cast)
+# 9E41 Rapid-sequence Particle Beam - alliance wild charge (cast)
+# 9E42 Rapid-sequence Particle Beam - alliance wild charge (damage)
+# 9E43 Death IV
+# 9E44 Vortex
+# 9E45 Death IV
+# 9E46 Death IV
+# 9E47 Vortex
+# 9E48 Death IV
+# 9E49 Death IV
+# 9E4A Aero IV
+# 9E4B Aero IV
+# 9E4C Aero IV
+# 9E4D Aero IV
+# 9E4E Aero IV
+# 9E4F Break IV - gaze attack (cast from boss)
+# 9E50 Break IV - gaze attack (damage from boss)
+# 9E51 Break IV - gaze attack (cast from adds)
+# 9E52 Break IV - gaze attack (damage from adds)
+# 9E53 Endeath IV
+# 9E54 Enaero IV
+# 9E55 Deluge of Darkness - enrage
+# 9E56 --sync--
+# 9E58 Flare - cast
+# 9E59 Flare - damage
+# A12D Unholy Darkness - healer stacks (cast)
+# A12E Unholy Darkness - healer stacks (damage)
+# A182 Particle Beam
+# A183 Particle Beam - raidwide from tower soak failure
+# A184 attack
+# A185 attack
+# A2C9 Looming Chaos - cast (from adds)
+# A2CA Looming Chaos - cast (from boss)
+# A2CB Looming Chaos - aoe (from boss clone)
