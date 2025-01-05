@@ -1358,7 +1358,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: '994' }, // 994 - Return
       condition: (data, matches) => data.phase === 'p3-ur' && data.me === matches.target,
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 4,
-      countdownSeconds: (_data, matches) => parseFloat(matches.duration),
+      countdownSeconds: 4,
       response: Responses.lookAway('alarm'),
     },
     {
