@@ -529,6 +529,7 @@ export interface TriggerHelper {
     alertText: number;
     infoText: number;
   };
+  adjustedDelay?: number;
   countdown?: number;
   ttsText?: string;
   rumbleDurationMs?: number;
@@ -1340,6 +1341,7 @@ export class PopupText {
 
     if (adjustedDelay <= 0)
       return;
+    triggerHelper.adjustedDelay = adjustedDelay;
 
     const triggerID = this.currentTriggerID++;
     return new Promise((res, rej) => {
@@ -1592,7 +1594,9 @@ export class PopupText {
       triggerHelper.countdown !== undefined &&
       triggerHelper.countdown > 0 // allow users to override with 0 to disable countdown
     ) {
-      const endTime = triggerHelper.now + (triggerHelper.countdown * 1000);
+      const endTime = triggerHelper.now +
+        ((triggerHelper.adjustedDelay ?? 0) * 1000) +
+        (triggerHelper.countdown * 1000);
       const span = document.createElement('span');
 
       // if the localized output string contains the {{CD}} substitution marker,
