@@ -442,6 +442,26 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'Test Trigger Countdown',
+      type: 'GameLog',
+      netRegex: {
+        line: 'cactbot test trigger countdown',
+        code: Util.gameLogCodes.echo,
+        capture: false,
+      },
+      delaySeconds: 2,
+      durationSeconds: 7, // should cause countdown to be displayed at 0.0 for 2 seconds.
+      countdownSeconds: 5,
+      infoText: (data, _matches, output) => {
+        return output.text!();
+      },
+      outputStrings: {
+        text: {
+          en: 'Trigger countdown test',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
