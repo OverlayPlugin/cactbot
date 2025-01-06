@@ -191,6 +191,7 @@ const raidEmulatorOnLoad = async () => {
 
   timelineController.SetPopupTextInterface(new PopupTextGenerator(popupText));
 
+  timelineUI.setPopupText(popupText);
   emulator.setPopupText(popupText);
 
   const emulatorWatchCombatantsOverride = new RaidEmulatorWatchCombatantsOverride(
