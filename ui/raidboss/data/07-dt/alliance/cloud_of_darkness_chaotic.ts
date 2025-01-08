@@ -121,6 +121,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cleanse Doom',
+          cn: '驱散死宣',
         },
       },
     },
@@ -162,15 +163,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${mech} => ${followup}',
+          cn: '${mech} => ${followup}',
         },
         left: {
           en: 'Left, under hand',
+          cn: '左边脚下',
         },
         right: {
           en: 'Right, under hand',
+          cn: '右边脚下',
         },
         aero: {
           en: 'Knockback',
+          cn: '击退',
         },
         death: Outputs.outThenIn,
         out: Outputs.out,
@@ -203,9 +208,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         back: {
           en: 'Bait hand, dodge backwards',
+          cn: '面朝场外放手',
         },
         front: {
           en: 'Bait hand, dodge forwards',
+          cn: '面朝场内放手',
         },
         unknown: Outputs.unknown,
       },
@@ -218,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Wild Charge (alliances)',
+          cn: '分队挡枪分摊'
         },
       },
     },
@@ -239,6 +247,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         flare: {
           en: 'Flare on you',
+          cn: '核爆点名',
         },
       },
     },
@@ -272,6 +281,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Far away => in',
+          cn: '远离 => 中间'
         },
       },
     },
@@ -386,6 +396,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         corners: {
           en: 'Corners',
+          cn: '去四角',
         },
         under: Outputs.getUnder,
       },
@@ -425,6 +436,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rotate: {
           en: 'Rotate ${rotateStr}',
+          cn: '${rotateStr} 旋转'
         },
         clockwise: Outputs.clockwise,
         counterClockwise: Outputs.counterclockwise,
@@ -449,7 +461,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Laser nach draußen richten',
           fr: 'Orientez le laser vers l\'extérieur',
           ja: 'レーザーを外に向ける',
-          cn: '向外引导激光',
+          cn: '面向场外放激光',
           ko: '바깥 바라보기 (레이저 유도)',
         },
       },
@@ -478,6 +490,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Sides => middle',
+          cn: '两侧 => 中间',
         },
       },
     },
@@ -493,6 +506,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Middle => sides',
+          cn: '中间 => 两侧',
         },
       },
     },
@@ -508,7 +522,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Dornenstrauch plazieren',
           fr: 'Placez les ronces',
           ja: '苗木を捨てる',
-          cn: '击退放置荆棘',
+          cn: '放置荆棘',
           ko: '장판 유도하기',
         },
       },
@@ -588,6 +602,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Start ${first}',
+          cn: '先 ${first}',
         },
         leftCleave: Outputs.right,
         rightCleave: Outputs.left,
@@ -661,6 +676,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + player swaps',
+          cn: 'AoE + 换位'
         },
       },
     },
