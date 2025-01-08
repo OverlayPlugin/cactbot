@@ -225,7 +225,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Wild Charge (alliances)',
-          cn: '分队挡枪分摊'
+          cn: '分队挡枪分摊',
         },
       },
     },
@@ -281,7 +281,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Far away => in',
-          cn: '远离 => 中间'
+          cn: '远离 => 中间',
         },
       },
     },
@@ -436,7 +436,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rotate: {
           en: 'Rotate ${rotateStr}',
-          cn: '${rotateStr} 旋转'
+          cn: '${rotateStr} 旋转',
         },
         clockwise: Outputs.clockwise,
         counterClockwise: Outputs.counterclockwise,
@@ -676,7 +676,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + player swaps',
-          cn: 'AoE + 换位'
+          cn: 'AoE + 换位',
         },
       },
     },
