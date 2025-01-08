@@ -108,21 +108,27 @@ type ApocDebuffMap = Record<ApocDebuffLength, string[]>;
 const p3UROutputStrings = {
   yNorthStrat: {
     en: '${debuff} (${dir})',
+    de: '${debuff} (${dir})',
   },
   dirCombo: {
     en: '${inOut} + ${dir}',
+    de: '${inOut} + ${dir}',
   },
   fireSpread: {
     en: 'Fire - Spread',
+    de: 'Feuer - verteilen',
   },
   dropRewind: {
     en: 'Drop Rewind',
+    de: 'Lege Rückführung ab',
   },
   baitStoplight: {
     en: 'Bait Stoplight',
+    de: 'Köder Sanduhr',
   },
   avoidStoplights: {
     en: 'Avoid stoplights',
+    de: 'Vermeide Sanduhren',
   },
   stack: Outputs.stackMarker,
   middle: Outputs.middle,
@@ -177,15 +183,22 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en:
           `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        de:
+          `Immer Weg, Verflucht im Uhrzeigersinn: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
       },
       name: {
         en: 'P2 Diamond Dust / Sinbound Holy',
+        de: 'P2 Diamantenstaub / Sünden-Sanctus',
       },
       type: 'select',
       options: {
         en: {
           'Always Away, Cursed Clockwise': 'aacc',
           'Call Add Position Only': 'addposonly',
+        },
+        de: {
+          'Immer Weg, Verflucht im Uhrzeigersinn': 'aacc',
+          'Nenne nur die Add Positionen': 'addposonly',
         },
       },
       default: 'aacc', // `addposonly` is not super helpful, and 'aacc' seems to be predominant
@@ -195,15 +208,22 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en:
           `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        de:
+          `Y Norden, DPS O-SW, Supp W-NO: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
       },
       name: {
         en: 'P3 Ultimate Relativity',
+        de: 'P3 Fatale Relativität',
       },
       type: 'select',
       options: {
         en: {
           'Y North, DPS E-SW, Supp W-NE': 'yNorthDPSEast',
           'Call Debuffs w/ No Positions': 'none',
+        },
+        de: {
+          'Y Norden, DPS O-SW, Supp W-NO': 'yNorthDPSEast',
+          'Nenne Debuff ohne Positionen': 'none',
         },
       },
       default: 'yNorthDPSEast',
@@ -558,6 +578,7 @@ const triggerSet: TriggerSet<Data> = {
           onTarget: Outputs.tankBusterOnPlayer,
           busterCleanse: {
             en: '${buster} (Cleanse?)',
+            de: '${buster} (Reinigen?)',
           },
         };
 
@@ -647,12 +668,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${inOut} + ${dir} => ${mech}',
+          de: '${inOut} + ${dir} => ${mech}',
         },
         dropPuddle: {
           en: 'Drop Puddle',
+          de: 'Fläche ablegen',
         },
         baitCleave: {
           en: 'Bait',
+          de: 'Ködern',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -675,6 +699,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbDir: {
           en: '${kb} (${dir1}/${dir2})',
+          de: '${kb} (${dir1}/${dir2})',
         },
         kb: Outputs.knockback,
         ...Directions.outputStrings8Dir,
@@ -728,20 +753,25 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         aaccCursed: {
           en: 'Cursed - Fast Clockwise',
+          de: 'Verflucht - Schnell im Uhrzeigersinn',
         },
         aaccRotateCCW: Outputs.counterclockwise,
         aaccRotateCW: Outputs.clockwise,
         same: {
           en: 'Cursed - Add on knockback',
+          de: 'Verflucht - Add beim Rückstoß',
         },
         opposite: {
           en: 'Cursed - Add opposite you',
+          de: 'Verflucht - Add gegenüber von DIR',
         },
         clockwise: {
           en: 'Add is clockwise',
+          de: 'Add ist im Uhrzeigersinn',
         },
         counterclockwise: {
           en: 'Add is counterclockwise',
+          de: 'Add ist gegen den Uhrzeigersinn',
         },
       },
     },
@@ -766,6 +796,7 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           aaccSilence: {
             en: '(stay in front)',
+            de: '(steh vorne)',
           },
           silence: Outputs.front,
           stillness: Outputs.back,
@@ -806,6 +837,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitCleave: {
           en: 'Bait cleave',
+          de: 'Cleve ködern',
         },
       },
     },
@@ -820,6 +852,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitCleave: {
           en: 'Bait cleave',
+          de: 'Cleve ködern',
         },
       },
     },
@@ -867,9 +900,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         puddle: {
           en: 'Puddles on you (w/ ${other})',
+          de: 'Flächen auf DIR (mit ${other})',
         },
         tether: {
           en: 'Tether on you (Puddles: ${p1}, ${p2})',
+          de: 'Verbindung auf DIR (Flächen: ${p1}, ${p2})',
         },
       },
     },
@@ -884,9 +919,11 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           towerSoak: {
             en: 'Soak middle tower',
+            de: 'Mittleren Turm nehmen',
           },
           towerAvoid: {
             en: 'Avoid middle tower',
+            de: 'Vermeide mittleren Turm',
           },
         };
 
@@ -914,6 +951,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         afterTower: {
           en: '${partnerSpread} (after tower)',
+          de: '${partnerSpread} (nach Turm)',
         },
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
@@ -947,6 +985,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         targetVeil: {
           en: 'Target Ice Veil',
+          de: 'Ziele auf Immerfrost-Kristall',
         },
       },
     },
@@ -1048,21 +1087,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         debuffSolo: {
           en: '${debuff}',
+          de: '${debuff}',
         },
         debuffShared: {
           en: '${debuff} (w/ ${other})',
+          de: '${debuff} (mit ${other})',
         },
         shortFire: {
           en: 'Short Fire',
+          de: 'Kurzes Feuer',
         },
         mediumFire: {
           en: 'Medium Fire',
+          de: 'Mittleres Feuer',
         },
         longFire: {
           en: 'Long Fire',
+          de: 'Langes Feuer',
         },
         ice: {
           en: 'Ice',
+          de: 'Eis',
         },
       },
     },
@@ -1408,18 +1453,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Stack: ${debuff} (w/ ${same})',
+          de: 'Sammeln: ${debuff} (mit ${same})',
         },
         short: {
           en: 'Short',
+          de: 'Kurz',
         },
         medium: {
           en: 'Medium',
+          de: 'Mittel',
         },
         long: {
           en: 'Long',
+          de: 'Lang',
         },
         none: {
           en: 'No Debuff',
+          de: 'Kein Debuff',
         },
         unknown: Outputs.unknown,
       },
@@ -1455,6 +1505,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbStacks: {
           en: 'Knockback => Stacks',
+          de: 'Rückstoß => Sammeln',
         },
       },
     },
@@ -1512,6 +1563,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stacks: {
           en: '(stacks after on ${players})',
+          de: '(danach auf ${players} sammeln)',
         },
         and: Outputs.and,
       },
@@ -1526,9 +1578,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tether: {
           en: 'Soak Tower',
+          de: 'Turm nehmen',
         },
         bait: {
           en: 'Bait Cleave',
+          de: 'Cleave ködern',
         },
       },
     },
@@ -1554,6 +1608,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} => ${stacks}',
+          de: '${dir} => ${stacks}',
         },
         east: Outputs.east,
         west: Outputs.west,
@@ -1576,9 +1631,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Axe Kick/Scythe Kick': 'Axe/Scythe Kick',
-        'Dark Fire III/Dark Blizzard III/Unholy Darkness': '(spreads/donut/stack)',
-        'Dark Fire III/Unholy Darkness': '(spreads/stack)',
-        'Shadoweye/Dark Water III/Dark Eruption': '(gazes/stack/spreads)',
         'Shining Armor + Frost Armor': 'Shining + Frost Armor',
         'Sinbound Fire III/Sinbound Thunder III': 'Sinbound Fire/Thunder',
       },
