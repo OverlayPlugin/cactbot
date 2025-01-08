@@ -436,7 +436,7 @@ class UserConfig {
   handleSkin(skinName: string) {
     if (!skinName || skinName === 'default')
       return;
-    const skinCSSRelativeHref = `skins/${skinName}/${skinName}.css`;
+    const skinCSSRelativeHref = `../raidboss/skins/${skinName}/${skinName}.css`;
     this.appendCSSLink(skinCSSRelativeHref);
   }
   appendJSLink(src: string) {
