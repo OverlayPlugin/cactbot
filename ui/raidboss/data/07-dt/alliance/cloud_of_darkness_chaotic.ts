@@ -121,6 +121,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cleanse Doom',
+          de: 'Verhängnis Reinigenm',
         },
       },
     },
@@ -162,15 +163,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${mech} => ${followup}',
+          de: '${mech} => ${followup}',
         },
         left: {
           en: 'Left, under hand',
+          de: 'Links, unter die Hand',
         },
         right: {
           en: 'Right, under hand',
+          de: 'Rechts, unter die Hand',
         },
         aero: {
           en: 'Knockback',
+          de: 'Rückstoß',
         },
         death: Outputs.outThenIn,
         out: Outputs.out,
@@ -203,9 +208,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         back: {
           en: 'Bait hand, dodge backwards',
+          de: 'Hand ködern, nach Hinten ausweichen',
         },
         front: {
           en: 'Bait hand, dodge forwards',
+          de: 'Hand ködern, nach Vorne ausweichen',
         },
         unknown: Outputs.unknown,
       },
@@ -218,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Wild Charge (alliances)',
+          de: 'Wilde Rage (Allianzen)',
         },
       },
     },
@@ -239,6 +247,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         flare: {
           en: 'Flare on you',
+          de: 'Flare auf DIR',
         },
       },
     },
@@ -272,6 +281,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Far away => in',
+          de: 'Weit weg => Rein',
         },
       },
     },
@@ -386,6 +396,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         corners: {
           en: 'Corners',
+          de: 'Ecken',
         },
         under: Outputs.getUnder,
       },
@@ -425,6 +436,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rotate: {
           en: 'Rotate ${rotateStr}',
+          de: 'Rotiere ${rotateStr}',
         },
         clockwise: Outputs.clockwise,
         counterClockwise: Outputs.counterclockwise,
@@ -478,6 +490,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Sides => middle',
+          de: 'Seiten => Mitte',
         },
       },
     },
@@ -493,6 +506,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Middle => sides',
+          de: 'Mitte => Seiten',
         },
       },
     },
@@ -588,6 +602,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Start ${first}',
+          de: 'Start ${first}',
         },
         leftCleave: Outputs.right,
         rightCleave: Outputs.left,
@@ -661,6 +676,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + player swaps',
+          de: 'AoE + Spieler-Wechsel',
         },
       },
     },
@@ -701,7 +717,140 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Cloud Of Darkness': 'Wolke der Dunkelheit',
+        'Cloud of Darkness': 'Wolke der Dunkelheit',
+        'Cloudlet of Darkness': 'Zirrus der Dunkelheit',
+        'Stygian Shadow': 'abyssisch(?:e|er|es|en) Abscheulichkeit',
+      },
+      'replaceText': {
+        'Active-pivot Particle Beam': 'Rotierender Partikelstrahl',
+        'Aero IV': 'Windka',
+        'Blade of Darkness': 'Schwarze Schneide',
+        'Break IV': 'Stillstandka',
+        'Chaos-condensed Particle Beam': 'Hyperdichter Partikelstrahl',
+        'Core-lateral Phaser': 'Lateral-Zentral-Phaser',
+        'Curse of Darkness': 'Partikelfluch',
+        'Dark Dominion': 'Dunkle Herrschaft',
+        'Dark-energy Particle Beam': 'Dunkler Partikelstrahl',
+        'Death IV': 'Todka',
+        'Deluge of Darkness': 'Sintflut der Dunkelheit',
+        'Diffusive-force Particle Beam': 'Diffusiver Partikelstrahl',
+        'Enaero IV': 'Adwindka',
+        'Endeath IV': 'Adtodka',
+        'Evaporation': 'Verflüchtigung',
+        'Evil Seed': 'Saatkugel',
+        'Excruciate': 'Kreuzigung',
+        'Feint Particle Beam': 'Schein-Partikelstrahl',
+        'Flare': 'Flare',
+        'Flood of Darkness': 'Dunkle Flut',
+        'Ghastly Gloom': 'Schaurige Schwärze',
+        'Grim Embrace': 'Grimmige Umarmung',
+        'Lateral-core Phaser': 'Zentral-Lateral-Phaser',
+        'Looming Chaos': 'Aufziehendes Chaos',
+        'Particle Beam': 'Partikeldetonation',
+        'Particle Concentration': 'Partikelkugel',
+        'Phaser': 'Phaser',
+        'Rapid-sequence Particle Beam': 'Dauerfeuer-Partikelstrahl',
+        'Razing-volley Particle Beam': 'Salvenfeuer-Partikelstrahl',
+        'Thorny Vine': 'Dornenranken',
+        'Unholy Darkness': 'Unheiliges Dunkel',
+        'Vortex': 'Einsaugen',
+        'the Third Art of Darkness': 'Dunkle Taktik: Dreifach',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Cloud of Darkness': 'Nuage de Ténèbres',
+        'Cloudlet of Darkness': 'stratus de Ténèbres',
+        'Stygian Shadow': 'suppôt de Ténèbres',
+      },
+      'replaceText': {
+        'Active-pivot Particle Beam': 'Canon plasma rotatif',
+        'Aero IV': 'Giga Vent',
+        'Blade of Darkness': 'Ténèbres acérées',
+        'Break IV': 'Giga Brèche',
+        'Chaos-condensed Particle Beam': 'Canon plasma hyperconcentré',
+        'Core-lateral Phaser': 'Faisceaux latéraux et centrés',
+        'Curse of Darkness': 'Malédiction particulaire',
+        'Dark Dominion': 'Domaines obscurs',
+        'Dark-energy Particle Beam': 'Faisceau de particules maudit',
+        'Death IV': 'Giga Mort',
+        'Deluge of Darkness': 'Grand déluge de Ténèbres',
+        'Diffusive-force Particle Beam': 'Canon plasma diffus',
+        'Enaero IV': 'Onction : Giga Vent',
+        'Endeath IV': 'Onction : Giga Mort',
+        'Evaporation': 'Évaporation',
+        'Evil Seed': 'Tir semant',
+        'Excruciate': 'Empalement ténébreux',
+        'Feint Particle Beam': 'Rayon pénétrant',
+        'Flare': 'Brasier',
+        'Flood of Darkness': 'Déluge de Ténèbres',
+        'Ghastly Gloom': 'Nuée calorifique',
+        'Grim Embrace': 'Étreinte funèbre',
+        'Lateral-core Phaser': 'Faisceaux centrés et latéraux',
+        'Looming Chaos': 'Chaos rampant',
+        'Particle Beam': 'Rayon explosif',
+        'Particle Concentration': 'Rayon sphérique',
+        'Phaser': 'Faisceau de particules bondissant',
+        'Rapid-sequence Particle Beam': 'Rafale plasmique',
+        'Razing-volley Particle Beam': 'Salve plasmique',
+        'Thorny Vine': 'Sarment de ronces',
+        'Unholy Darkness': 'Miracle ténébreux',
+        'Vortex': 'Aspiration',
+        'the Third Art of Darkness': 'Arts ténébreux triple',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Cloud of Darkness': '暗闇の雲',
+        'Cloudlet of Darkness': '暗闇の片乱雲',
+        'Stygian Shadow': '闇より出づる者',
+      },
+      'replaceText': {
+        'Active-pivot Particle Beam': '旋回式波動砲',
+        'Aero IV': 'エアロジャ',
+        'Blade of Darkness': '闇の刃',
+        'Break IV': 'ブレクジャ',
+        'Chaos-condensed Particle Beam': '凝縮式波動砲',
+        'Core-lateral Phaser': '跳躍波動砲【側撃・正撃】',
+        'Curse of Darkness': '波動の呪詛',
+        'Dark Dominion': '深闇領域',
+        'Dark-energy Particle Beam': '呪詛式 波動砲',
+        'Death IV': 'デスジャ',
+        'Deluge of Darkness': '闇の大氾濫',
+        'Diffusive-force Particle Beam': '分散式波動砲',
+        'Enaero IV': 'エンエアロジャ',
+        'Endeath IV': 'エンデスジャ',
+        'Evaporation': '雲散',
+        'Evil Seed': '種子弾',
+        'Excruciate': '磔殺',
+        'Feint Particle Beam': '潜地式波動砲',
+        'Flare': 'フレア',
+        'Flood of Darkness': '闇の氾濫',
+        'Ghastly Gloom': '怖れの雲',
+        'Grim Embrace': 'グリムエンブレイス',
+        'Lateral-core Phaser': '跳躍波動砲【正撃・側撃】',
+        'Looming Chaos': 'ルーミングカオス',
+        'Particle Beam': '波動爆発',
+        'Particle Concentration': '波動球',
+        'Phaser': '跳躍波動砲',
+        'Rapid-sequence Particle Beam': '連射式波動砲',
+        'Razing-volley Particle Beam': '斉射式波動砲',
+        'Thorny Vine': '茨の蔓',
+        'Unholy Darkness': 'ダークホーリー',
+        'Vortex': '吸引',
+        'the Third Art of Darkness': '闇の戦技：三重',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
