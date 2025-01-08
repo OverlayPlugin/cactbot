@@ -121,6 +121,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cleanse Doom',
+          de: 'Verhängnis Reinigenm',
         },
       },
     },
@@ -162,15 +163,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${mech} => ${followup}',
+          de: '${mech} => ${followup}',
         },
         left: {
           en: 'Left, under hand',
+          de: 'Links, unter die Hand',
         },
         right: {
           en: 'Right, under hand',
+          de: 'Rechts, unter die Hand',
         },
         aero: {
           en: 'Knockback',
+          de: 'Rückstoß',
         },
         death: Outputs.outThenIn,
         out: Outputs.out,
@@ -203,9 +208,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         back: {
           en: 'Bait hand, dodge backwards',
+          de: 'Hand ködern, nach Hinten ausweichen',
         },
         front: {
           en: 'Bait hand, dodge forwards',
+          de: 'Hand ködern, nach Vorne ausweichen',
         },
         unknown: Outputs.unknown,
       },
@@ -218,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Wild Charge (alliances)',
+          de: 'Wilde Rage (Allianzen)',
         },
       },
     },
@@ -239,6 +247,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         flare: {
           en: 'Flare on you',
+          de: 'Flare auf DIR',
         },
       },
     },
@@ -272,6 +281,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Far away => in',
+          de: 'Weit weg => Rein',
         },
       },
     },
@@ -386,6 +396,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         corners: {
           en: 'Corners',
+          de: 'Ecken',
         },
         under: Outputs.getUnder,
       },
@@ -425,6 +436,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rotate: {
           en: 'Rotate ${rotateStr}',
+          de: 'Rotiere ${rotateStr}',
         },
         clockwise: Outputs.clockwise,
         counterClockwise: Outputs.counterclockwise,
@@ -478,6 +490,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Sides => middle',
+          de: 'Seiten => Mitte',
         },
       },
     },
@@ -493,6 +506,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Middle => sides',
+          de: 'Mitte => Seiten',
         },
       },
     },
@@ -588,6 +602,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Start ${first}',
+          de: 'Start ${first}',
         },
         leftCleave: Outputs.right,
         rightCleave: Outputs.left,
@@ -661,6 +676,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + player swaps',
+          de: 'AoE + Spieler-Wechsel',
         },
       },
     },
@@ -704,7 +720,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Cloud Of Darkness': 'Wolke der Dunkelheit',
         'Cloud of Darkness': 'Wolke der Dunkelheit',
