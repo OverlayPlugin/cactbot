@@ -87,6 +87,7 @@ Options.Triggers.push({
         text: {
           en: 'Cleanse Doom',
           de: 'Verhängnis Reinigenm',
+          cn: '驱散死宣',
         },
       },
     },
@@ -127,18 +128,22 @@ Options.Triggers.push({
         combo: {
           en: '${mech} => ${followup}',
           de: '${mech} => ${followup}',
+          cn: '${mech} => ${followup}',
         },
         left: {
           en: 'Left, under hand',
           de: 'Links, unter die Hand',
+          cn: '左边脚下',
         },
         right: {
           en: 'Right, under hand',
           de: 'Rechts, unter die Hand',
+          cn: '右边脚下',
         },
         aero: {
           en: 'Knockback',
           de: 'Rückstoß',
+          cn: '击退',
         },
         death: Outputs.outThenIn,
         out: Outputs.out,
@@ -172,10 +177,12 @@ Options.Triggers.push({
         back: {
           en: 'Bait hand, dodge backwards',
           de: 'Hand ködern, nach Hinten ausweichen',
+          cn: '面朝场外放手',
         },
         front: {
           en: 'Bait hand, dodge forwards',
           de: 'Hand ködern, nach Vorne ausweichen',
+          cn: '面朝场内放手',
         },
         unknown: Outputs.unknown,
       },
@@ -189,6 +196,7 @@ Options.Triggers.push({
         text: {
           en: 'Wild Charge (alliances)',
           de: 'Wilde Rage (Allianzen)',
+          cn: '分队挡枪分摊',
         },
       },
     },
@@ -211,6 +219,7 @@ Options.Triggers.push({
         flare: {
           en: 'Flare on you',
           de: 'Flare auf DIR',
+          cn: '核爆点名',
         },
       },
     },
@@ -245,6 +254,7 @@ Options.Triggers.push({
         text: {
           en: 'Far away => in',
           de: 'Weit weg => Rein',
+          cn: '远离 => 中间',
         },
       },
     },
@@ -358,6 +368,7 @@ Options.Triggers.push({
         corners: {
           en: 'Corners',
           de: 'Ecken',
+          cn: '去四角',
         },
         under: Outputs.getUnder,
       },
@@ -398,6 +409,7 @@ Options.Triggers.push({
         rotate: {
           en: 'Rotate ${rotateStr}',
           de: 'Rotiere ${rotateStr}',
+          cn: '${rotateStr} 旋转',
         },
         clockwise: Outputs.clockwise,
         counterClockwise: Outputs.counterclockwise,
@@ -422,7 +434,7 @@ Options.Triggers.push({
           de: 'Laser nach draußen richten',
           fr: 'Orientez le laser vers l\'extérieur',
           ja: 'レーザーを外に向ける',
-          cn: '向外引导激光',
+          cn: '面向场外放激光',
           ko: '바깥 바라보기 (레이저 유도)',
         },
       },
@@ -452,6 +464,7 @@ Options.Triggers.push({
         text: {
           en: 'Sides => middle',
           de: 'Seiten => Mitte',
+          cn: '两侧 => 中间',
         },
       },
     },
@@ -468,6 +481,7 @@ Options.Triggers.push({
         text: {
           en: 'Middle => sides',
           de: 'Mitte => Seiten',
+          cn: '中间 => 两侧',
         },
       },
     },
@@ -483,7 +497,7 @@ Options.Triggers.push({
           de: 'Dornenstrauch plazieren',
           fr: 'Placez les ronces',
           ja: '苗木を捨てる',
-          cn: '击退放置荆棘',
+          cn: '放置荆棘',
           ko: '장판 유도하기',
         },
       },
@@ -556,6 +570,7 @@ Options.Triggers.push({
         text: {
           en: 'Start ${first}',
           de: 'Start ${first}',
+          cn: '先 ${first}',
         },
         leftCleave: Outputs.right,
         rightCleave: Outputs.left,
@@ -627,6 +642,7 @@ Options.Triggers.push({
         text: {
           en: 'AoE + player swaps',
           de: 'AoE + Spieler-Wechsel',
+          cn: 'AoE + 换位',
         },
       },
     },
