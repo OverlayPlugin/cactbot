@@ -234,7 +234,6 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Wild Charge (alliances)',
           de: 'Wilde Rage (Allianzen)',
           cn: '分队挡枪分摊',
-
         },
       },
     },
@@ -258,7 +257,6 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Flare on you',
           de: 'Flare auf DIR',
           cn: '核爆点名',
-
         },
       },
     },
@@ -294,7 +292,6 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Far away => in',
           de: 'Weit weg => Rein',
           cn: '远离 => 中间',
-
         },
       },
     },
