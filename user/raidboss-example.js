@@ -1,10 +1,11 @@
-// Rename this file to `raidboss.js` and edit it to change the raidboss ui.
-// This file is Javascript.  Anything after "//" on a line is a comment.
+// Rename this file to `raidboss.js` and edit it to change the raidboss UI.
+
+// This file is JavaScript.  Anything after "//" on a line is a comment.
 // If you edit this file, remember to reload ACT or click the "Reload overlay"
 // button on the raidboss overlay.
 // If there are errors in this file, they will appear in the OverlayPlugin.dll
 // log window in ACT.
-// See: http://github.com/quisquous/cactbot/blob/main/docs/CactbotCustomization.md#check-the-overlayplugin-log-for-errors
+// See: https://github.com/OverlayPlugin/cactbot/blob/main/docs/CactbotCustomization.md#check-the-overlayplugin-log-for-errors
 
 // Path to sound played for info-priority text popups, or when "Info" is
 // specified as the sound name.
@@ -26,19 +27,19 @@ Options.LongSound = '../../resources/sounds/BigWigs/Long.webm';
 Options.PullSound = '../../resources/sounds/freesound/sonar.webm';
 
 // A set of nicknames to use for players, when trying to shorten names.
-// See: https://github.com/quisquous/cactbot/blob/main/docs/CactbotCustomization.md#customizing-behavior
+// See: https://github.com/OverlayPlugin/cactbot/blob/main/docs/CactbotCustomization.md#customizing-behavior
 Options.PlayerNicks = {
   'Captain Jimmy': 'Jimmy',
   'Pipira Pira': 'Fish',
 };
 
 // An array of user-defined triggers, in the format defined in the trigger guide:
-// See: https://github.com/quisquous/cactbot/blob/main/docs/CactbotCustomization.md#overriding-raidboss-triggers
-// See also: https://github.com/quisquous/cactbot/tree/main/docs/RaidbossGuide.md
+// See: https://github.com/OverlayPlugin/cactbot/blob/main/docs/CactbotCustomization.md#overriding-raidboss-triggers
+// See also: https://github.com/OverlayPlugin/cactbot/blob/main/docs/RaidbossGuide.md
 
 // Here's an example of overriding a trigger.
 // This overrides the "Test Poke" trigger from:
-// https://github.com/quisquous/cactbot/blob/main/ui/raidboss/data/00-misc/test.js
+// https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/00-misc/test.txt
 
 Options.Triggers.push({
   zoneId: ZoneId.MiddleLaNoscea,
@@ -88,7 +89,7 @@ Options.Triggers.push({
   triggers: [
     // A more complicated regen trigger.
     {
-      // This is a made up id that does not exist in cactbot.
+      // This is a made up id that does not exist in Cactbot.
       id: 'User Example Regen',
       // This will match log lines from ACT that look like this:
       // "Nacho Queen gains the effect of Regen from Taco Cat for 21.00 Seconds."

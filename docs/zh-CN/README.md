@@ -94,7 +94,7 @@ Cactbot 提供以下悬浮窗：
 
 ![Cactbot 选择屏幕截图](../../screenshots/get_plugins_cactbot.png)
 
-这会将 Cactbot 下载到 `%APPDATA%\Advanced Combat Tracker\Plugins\Cactbot-version\Cactbot` 文件夹中，并在插件列表中启用 `CactbotOverlay.dll`。
+这会将 Cactbot 下载到 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot` 文件夹中，并在插件列表中启用 `CactbotOverlay.dll`。
 
 ### 插件加载顺序
 
@@ -211,7 +211,7 @@ Cactbot 理应在 Node LTS 版本运行，若你在 LTS 上遇到问题，请提
 
 ## 悬浮窗概述
 
-Cactbot 的所有 UI 模块都包含在 [ui/](ui/) 文件夹中。如果你按照上述说明安装了 Cactbot，则很有可能是 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot-version\Cactbot\ui\`。
+Cactbot 的所有 UI 模块都包含在 [ui/](ui/) 文件夹中。如果你按照上述说明安装了 Cactbot，则很有可能是 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot\ui\`。
 
 每个 Cactbot UI 模块都应当作为单独的悬浮窗添加。有关配置的更多信息，请参见 [添加悬浮窗模块](#添加悬浮窗模块) 部分。
 

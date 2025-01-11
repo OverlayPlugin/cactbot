@@ -105,7 +105,7 @@ ACT -> Plugins -> OverlayPlugin.dll -> Cactbot -> Cactbot 사용자 디렉토리
 cactbot이 설치된 경로가 기본값으로 설정됩니다.
 
 가능하면 cactbot이 설치된 `cactbot/user`를 사용하는 것이 좋습니다.
-보통은 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot-version\cactbot\user`
+보통은 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot\user`
 (해루봇을 사용한다면, `ACT 설치 경로\Plugins\cactbot\user`)입니다.
 
 하지만 해루봇을 사용하신다면, cactbot 업데이트시 cactbot 폴더 내 내용이

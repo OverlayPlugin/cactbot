@@ -1,4 +1,10 @@
-// Rename this file to `jobs.js` and edit it to change the jobs ui.
+// Rename this file to `jobs.js` and edit it to change the jobs UI.
+
+// This file is JavaScript.  Anything after "//" on a line is a comment.
+// If you edit this file, remember to reload ACT or click the "Reload overlay"
+// button on the jobs overlay.
+// If there are errors in this file, they will appear in the OverlayPlugin.dll
+// log window in ACT.
 
 // List of jobs to show an hp value for.
 Options.ShowHPNumber = ['PLD', 'WAR', 'DRK', 'GNB', 'WHM', 'SCH', 'AST', 'SGE', 'BLU'];
@@ -9,19 +15,19 @@ Options.ShowMPNumber = ['PLD', 'DRK', 'WHM', 'SCH', 'AST', 'SGE', 'BLM', 'BLU'];
 // List of jobs to show an mp ticker for.
 Options.ShowMPTicker = ['BLM'];
 
-// The distance that mp bar turn orange for caster,
+// The distance that the mp bar turns orange for a caster,
 // indicating target out of range for casters.
 Options.FarThresholdOffence = 24;
 
-// When MP falls below this, the MP bar turn blue/red for for paladin.
+// When MP falls below this, the MP bar turns blue/red for for paladin.
 Options.PldMediumMPThreshold = 5399;
 Options.PldLowMPThreshold = 3599;
 
-// When MP falls below this, the MP bar turn blue/red for dark knight.
+// When MP falls below this, the MP bar turns blue/red for dark knight.
 Options.DrkMediumMPThreshold = 5999;
 Options.DrkLowMPThreshold = 2999;
 
-// When MP falls below this, the MP bar turn blue/red for black mage.
+// When MP falls below this, the MP bar turns blue/red for black mage.
 Options.BlmMediumMPThreshold = 3999;
 Options.BlmLowMPThreshold = 2399;
 
