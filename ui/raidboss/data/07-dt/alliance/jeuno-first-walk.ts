@@ -355,6 +355,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Jeuno First Walk Sprinkler Mysterious Light',
       type: 'StartsUsing',
       netRegex: { id: 'A2C3', source: 'Sprinkler', capture: true },
+      suppressSeconds: 1, // These can overlap, so make sure there's a bit of separation.
       response: Responses.lookAwayFromSource(),
     },
     {
@@ -595,7 +596,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Jeuno First Walk Shadow Lord Cthonic Fury',
       type: 'StartsUsing',
-      netRegex: { id: '9F4A', source: 'Shadow Lord', capture: false },
+      netRegex: { id: ['9F4A', '9F4B'], source: 'Shadow Lord', capture: false },
       durationSeconds: 6,
       response: Responses.aoe(),
     },
