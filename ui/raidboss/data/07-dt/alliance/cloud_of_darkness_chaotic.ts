@@ -122,6 +122,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse Doom',
           de: 'Verhängnis Reinigenm',
+          ja: '死の宣告にエスナ',
           cn: '驱散死宣',
         },
       },
@@ -165,21 +166,25 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${mech} => ${followup}',
           de: '${mech} => ${followup}',
+          ja: '${mech} => ${followup}',
           cn: '${mech} => ${followup}',
         },
         left: {
           en: 'Left, under hand',
           de: 'Links, unter die Hand',
+          ja: '左 手の下へ',
           cn: '左边脚下',
         },
         right: {
           en: 'Right, under hand',
           de: 'Rechts, unter die Hand',
+          ja: '右 手の下へ',
           cn: '右边脚下',
         },
         aero: {
           en: 'Knockback',
           de: 'Rückstoß',
+          ja: 'ノックバック',
           cn: '击退',
         },
         death: Outputs.outThenIn,
@@ -214,11 +219,13 @@ const triggerSet: TriggerSet<Data> = {
         back: {
           en: 'Bait hand, dodge backwards',
           de: 'Hand ködern, nach Hinten ausweichen',
+          ja: '手を避ける くるっとターン',
           cn: '面朝场外放手',
         },
         front: {
           en: 'Bait hand, dodge forwards',
           de: 'Hand ködern, nach Vorne ausweichen',
+          ja: '手を避ける 前に進む',
           cn: '面朝场内放手',
         },
         unknown: Outputs.unknown,
@@ -233,6 +240,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Wild Charge (alliances)',
           de: 'Wilde Rage (Allianzen)',
+          ja: '頭割り アラ単位集合',
           cn: '分队挡枪分摊',
         },
       },
@@ -256,6 +264,7 @@ const triggerSet: TriggerSet<Data> = {
         flare: {
           en: 'Flare on you',
           de: 'Flare auf DIR',
+          ja: '自分にフレア 捨てる',
           cn: '核爆点名',
         },
       },
@@ -291,6 +300,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Far away => in',
           de: 'Weit weg => Rein',
+          ja: '離れて 吸い込み後 中へ',
           cn: '远离 => 中间',
         },
       },
@@ -407,6 +417,7 @@ const triggerSet: TriggerSet<Data> = {
         corners: {
           en: 'Corners',
           de: 'Ecken',
+          ja: '角へ',
           cn: '去四角',
         },
         under: Outputs.getUnder,
@@ -448,6 +459,7 @@ const triggerSet: TriggerSet<Data> = {
         rotate: {
           en: 'Rotate ${rotateStr}',
           de: 'Rotiere ${rotateStr}',
+          ja: '回転ビーム ${rotateStr}',
           cn: '${rotateStr} 旋转',
         },
         clockwise: Outputs.clockwise,
@@ -503,6 +515,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Sides => middle',
           de: 'Seiten => Mitte',
+          ja: 'サイド => 真ん中',
           cn: '两侧 => 中间',
         },
       },
@@ -520,6 +533,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Middle => sides',
           de: 'Mitte => Seiten',
+          ja: '真ん中 => サイド',
           cn: '中间 => 两侧',
         },
       },
@@ -617,6 +631,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Start ${first}',
           de: 'Start ${first}',
+          ja: '最初は ${first} から',
           cn: '先 ${first}',
         },
         leftCleave: Outputs.right,
@@ -692,6 +707,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'AoE + player swaps',
           de: 'AoE + Spieler-Wechsel',
+          ja: 'AoE + プレイヤーシャッフル',
           cn: 'AoE + 换位',
         },
       },
@@ -709,7 +725,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Provoke Boss',
           de: 'Boss abspotten',
           fr: 'Provoquez le Boss',
-          ja: '挑発',
+          ja: '敵視リセット 挑発！',
           cn: '挑衅',
           ko: '보스 도발',
         },
