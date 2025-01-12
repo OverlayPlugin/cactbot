@@ -12,8 +12,6 @@ import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO:
-//  - P3: Apoc explosion rotation/safe spots
-//  - P3: Darkest Dance (tb bait)
 //  - P4: Somber Dance (tb bait x2)
 
 type Phase = 'p1' | 'p2-dd' | 'p2-mm' | 'p2-lr' | 'p3-ur' | 'p3-apoc' | 'p4-dld' | 'p4-ct' | 'p5';
@@ -25,7 +23,7 @@ const phases: { [id: string]: Phase } = {
   '9D4D': 'p3-apoc', // Spell-in-Waiting: Refrain (pre-Apocalypse)
   '9D36': 'p4-dld', // Materialization (pre-Darklit Dragonsong)
   '9D6A': 'p4-ct', // Crystallize Time
-  // tbd: 'p5',
+  '9D72': 'p5', // Fulgent Blade
 };
 
 const centerX = 100;
@@ -133,6 +131,7 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     sinboundRotate: 'aacc' | 'addposonly'; // aacc = always away, cursed clockwise
     ultimateRel: 'yNorthDPSEast' | 'none';
+    apoc: 'dpsNE-CW' | 'none';
   };
   // General
   phase: Phase | 'unknown';
@@ -163,6 +162,9 @@ export interface Data extends RaidbossData {
   p3ApocDebuffCount: number;
   p3ApocDebuffs: ApocDebuffMap;
   p3MyApocDebuff?: ApocDebuffLength;
+  p3ApocFirstDirNum?: number;
+  p3ApocRotationDir?: 1 | -1; // 1 = clockwise, -1 = counterclockwise
+  p3CalledApoc: boolean;
   // P4 -- Duo
   p4RefulgentChains: string[];
   p4DarklitStacks: string[];
@@ -208,6 +210,24 @@ const triggerSet: TriggerSet<Data> = {
       },
       default: 'yNorthDPSEast',
     },
+    {
+      id: 'apoc',
+      comment: {
+        en:
+          `DPS NE->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+      },
+      name: {
+        en: 'P3 Apocalypse',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'DPS NE->S, Support SW->N': 'dpsNE-CW',
+          'Call All Safe': 'none',
+        },
+      },
+      default: 'dpsNE-CW',
+    },
   ],
   timelineFile: 'futures_rewritten.txt',
   initData: () => {
@@ -236,6 +256,7 @@ const triggerSet: TriggerSet<Data> = {
         long: [],
         none: [],
       },
+      p3CalledApoc: false,
       p4RefulgentChains: [],
       p4DarklitStacks: [],
     };
@@ -1424,15 +1445,129 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
       },
     },
+    // There are 8 combatants (one at each cardinal+intercard) that spawn with a heading indicative
+    // of the mechanic rotation (i.e., all will be facing clockwise or counterclockwise).
+    // There are two combatants that spawn at center with headings indicative of where the first
+    // two outer combatants will explode.  These are always directly opposite, so we only need one.
+    {
+      id: 'FRU P3 Apoc Collect',
+      type: 'CombatantMemory',
+      netRegex: { change: 'Add', pair: [{ key: 'BNpcID', value: '1EB0FF' }] },
+      condition: (data) => data.phase === 'p3-apoc',
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+        const isCenterActor = Math.round(x) === 100 && Math.round(y) === 100;
+        const hdg = parseFloat(matches.pairHeading ?? '0');
+
+        if (data.p3ApocFirstDirNum === undefined && isCenterActor)
+          data.p3ApocFirstDirNum = Directions.hdgTo8DirNum(hdg);
+        else if (data.p3ApocRotationDir === undefined && !isCenterActor) {
+          const pos = Directions.xyTo8DirOutput(x, y, centerX, centerY);
+          const facing = Directions.outputFrom8DirNum(Directions.hdgTo8DirNum(hdg));
+          const relative = getRelativeClockPos(pos, facing);
+          data.p3ApocRotationDir = relative === 'clockwise'
+            ? 1
+            : (relative === 'counterclockwise' ? -1 : undefined);
+        }
+      },
+    },
+    {
+      id: 'FRU P3 Apoc Safe',
+      type: 'CombatantMemory',
+      netRegex: { change: 'Add', pair: [{ key: 'BNpcID', value: '1EB0FF' }], capture: false },
+      condition: (data) => data.phase === 'p3-apoc' && !data.p3CalledApoc,
+      delaySeconds: 8.2, // delay to avoid collision with stacks & Spirit Taker
+      durationSeconds: 11,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const startNum = data.p3ApocFirstDirNum;
+        const rotationDir = data.p3ApocRotationDir;
+        if (startNum === undefined || rotationDir === undefined)
+          return;
+
+        // Safe spot(s) are 1 behind the starting dir and it's opposite (+4)\
+        // Melees can spread one additional dir away from the rotation direction
+        const safe = [
+          (startNum - rotationDir + 8) % 8,
+          (startNum + 4 - rotationDir + 8) % 8
+        ];
+
+        const toward = [
+          (safe[0]! - rotationDir + 8) % 8,
+          (safe[1]! - rotationDir + 8) % 8
+        ];
+
+        // We shouldn't just sort safe[], and toward[], since the elements are paired
+        // and sorting might impact order of just one and not both.
+        if (safe[0]! > safe[1]!) {
+          safe.reverse();
+          toward.reverse();
+        }
+
+        let safeStr = output['unknown']!();
+        let towardStr = output['unknown']!();
+
+        if (data.triggerSetConfig.apoc === 'dpsNE-CW') {
+          const dpsDirs = [1, 2, 3, 4];
+          const suppDirs = [5, 6, 7, 0];
+          const myDirs = data.role === 'dps' ? dpsDirs : suppDirs;
+
+          // use the index from safe, so we can make sure we're giving the correct 'toward'.
+          const idx = safe.findIndex((idx) => myDirs.includes(idx));
+          if (idx === -1)
+            return output.safe!({ dir1: safeStr, dir2: towardStr });
+
+          const safeDir = safe[idx];
+          const towardDir = toward[idx];
+          if (safeDir === undefined || towardDir === undefined)
+            return output.safe!({ dir1: safeStr, dir2: towardStr });
+
+          safeStr = output[Directions.output8Dir[safeDir] ?? 'unknown']!();
+          towardStr = output[Directions.output8Dir[towardDir] ?? 'unknown']!();
+          return output.safe!({ dir1: safeStr, dir2: towardStr });
+        }
+
+        safeStr = safe
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        towardStr = toward
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        return output.safe!({ dir1: safeStr, dir2: towardStr });
+      },
+      run: (data) => data.p3CalledApoc = true,
+      outputStrings: {
+        safe: {
+          en: 'Apoc Safe: ${dir1} (melee toward ${dir2})',
+        },
+        ...Directions.outputStrings8Dir,
+        or: Outputs.or,
+      },
+    },
     {
       id: 'FRU P3 Apoc First Stacks',
       type: 'GainsEffect',
-      netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
-      condition: (data, matches) => data.phase === 'p3-apoc' && parseFloat(matches.duration) < 11,
+      netRegex: { effectId: '99D', capture: false }, // Spell-in-Waiting: Dark Water III
+      // first debuff has 10.0s duration
+      condition: (data) => data.phase === 'p3-apoc',
       delaySeconds: 6,
-      durationSeconds: 6,
+      durationSeconds: 3.5,
       suppressSeconds: 1,
-      response: Responses.stackThenSpread(),
+      response: Responses.stackThenSpread('info'),
+    },
+    {
+      // Fire this just a tiny bit before the first Dark Water debuffs expire (10.0s).
+      // A tiny bit early (0.2s) won't cause people to leave the stack, but the reaction
+      // time on Spirit Taker is very short so the little extra helps.
+      id: 'FRU P3 Apoc Spirit Taker',
+      type: 'GainsEffect',
+      netRegex: { effectId: '99D', capture: false },
+      condition: (data) => data.phase === 'p3-apoc',
+      delaySeconds: 9.8, // first Dark Water Debuffs expire at 10.0s
+      durationSeconds: 2,
+      suppressSeconds: 1,
+      response: Responses.spread('alert'),
     },
     {
       id: 'FRU P3 Apoc Second Stacks',
@@ -1447,7 +1582,21 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'FRU P3 Darkest Dance + Third Stacks',
+      id: 'FRU P3 Apoc Darkest Dance Jump Bait',
+      type: 'StartsUsing',
+      netRegex: { id: '9CF5', source: 'Oracle of Darkness', capture: false },
+      condition: (data) => data.phase === 'p3-apoc' && data.role === 'tank',
+      delaySeconds: 3, // delay until the Dark Water stack debuff is just about to expire
+      durationSeconds: 2,
+      infoText: (_data, _matches, output) => output.bait!(),
+      outputStrings: {
+        bait: {
+          en: 'Bait Jump?',
+        },
+      },
+    },
+    {
+      id: 'FRU P3 Darkest Dance KB + Third Stacks',
       type: 'Ability',
       netRegex: { id: '9CF5', source: 'Oracle of Darkness', capture: false }, // Darkest Dance (self-targeted)
       durationSeconds: 7,
