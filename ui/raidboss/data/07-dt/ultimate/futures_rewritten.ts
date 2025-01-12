@@ -1090,7 +1090,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       // boss tethers to 5 stoplights - 0085 are purple tethers, 0086 are yellow
       netRegex: { id: '0086' },
-      // condition: (data) => data.triggerSetConfig.ultimateRel === 'yNorthDPSEast',
+      condition: (data) => data.phase === 'p3-ur',
       run: (data, matches, output) => {
         const id = matches.sourceId;
         const stoplight = data.p3RelativityStoplights[id];
