@@ -84,7 +84,10 @@ const newRoleMap = () => ({
   ice: '',
 });
 
-const findNorthDirNum = (dirs: number[]): number => {
+// Helper for Ultimate Relativity that finds relative North based on the yellow-tethered lights
+// It takes an array of dir nums (e.g. 0-8), finds the two dir nums that have a single gap
+// between them (e.g. 1 and 3) -- the apex of the "Y" -- and returns the dir num of the gap.
+const findURNorthDirNum = (dirs: number[]): number => {
   for (let i = 0; i < dirs.length; i++) {
     for (let j = i + 1; j < dirs.length; j++) {
       const [dir1, dir2] = [dirs[i], dirs[j]];
@@ -1107,7 +1110,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.p3RelativityYellowDirNums.length !== 3)
           return;
 
-        const northDirNum = findNorthDirNum(data.p3RelativityYellowDirNums);
+        const northDirNum = findURNorthDirNum(data.p3RelativityYellowDirNums);
         if (northDirNum === -1 || data.p3RelativityDebuff === undefined) {
           data.p3RelativityMyDirStr = output.unknown!();
           return;
