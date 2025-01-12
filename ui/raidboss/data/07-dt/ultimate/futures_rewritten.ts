@@ -1384,7 +1384,25 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P3 Black Halo',
       type: 'StartsUsing',
       netRegex: { id: '9D62', source: 'Oracle of Darkness' },
-      response: Responses.sharedTankBuster(),
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          onYou: {
+            en: 'Shared tank cleave on YOU',
+          },
+          share: {
+            en: 'Shared tank cleave on ${target}',
+          },
+          avoid: {
+            en: 'Avoid tank cleave',
+          },
+        };
+        if (data.me === matches.target)
+          return { alertText: output.onYou!() };
+        else if (data.role === 'tank')
+          return { alertText: output.share!({ target: data.party.member(matches.target).nick }) };
+        return { infoText: output.avoid!() };
+      }
     },
     // ***** Apocalypse *****
     {
