@@ -12,7 +12,7 @@ import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO:
-//  - P4: Somber Dance (tb bait x2)
+//  - P4 + P5
 
 type Phase = 'p1' | 'p2-dd' | 'p2-mm' | 'p2-lr' | 'p3-ur' | 'p3-apoc' | 'p4-dld' | 'p4-ct' | 'p5';
 const phases: { [id: string]: Phase } = {
@@ -165,9 +165,6 @@ export interface Data extends RaidbossData {
   p3ApocFirstDirNum?: number;
   p3ApocRotationDir?: 1 | -1; // 1 = clockwise, -1 = counterclockwise
   p3CalledApoc: boolean;
-  // P4 -- Duo
-  p4RefulgentChains: string[];
-  p4DarklitStacks: string[];
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -257,8 +254,6 @@ const triggerSet: TriggerSet<Data> = {
         none: [],
       },
       p3CalledApoc: false,
-      p4RefulgentChains: [],
-      p4DarklitStacks: [],
     };
   },
   timelineTriggers: [],
@@ -1617,105 +1612,7 @@ const triggerSet: TriggerSet<Data> = {
     // ************************
     // P4 -- Duo
     // ************************
-    {
-      id: 'FRU P4 Akh Rhai',
-      type: 'GainsEffect',
-      // no castbar, vfx-based cue
-      // invisible actors spawn 4.6s after this effect is applied and use Akh Rhai
-      netRegex: { effectId: '8E1', capture: false },
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 4.7,
-      suppressSeconds: 1,
-      response: Responses.moveAway('alert'),
-    },
-    // ***** Darklit Dragonsong *****
-    {
-      id: 'FRU P4 Darklit Dragonsong',
-      type: 'StartsUsing',
-      netRegex: { id: '9D6D', source: 'Oracle of Darkness', capture: false },
-      response: Responses.bigAoe(),
-    },
-    {
-      id: 'FRU PP4 Refulgent Chain Collect',
-      type: 'GainsEffect',
-      netRegex: { effectId: '8CD' }, // Refulgent Chain
-      condition: (data) => data.phase === 'p4-dld',
-      run: (data, matches) => data.p4RefulgentChains.push(matches.target),
-    },
-    {
-      id: 'FRU P4 Darklit Stacks',
-      type: 'GainsEffect',
-      netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 2.5, // delay until after Refulgent Chains go out
-      durationSeconds: 5,
-      infoText: (data, matches, output) => {
-        data.p4DarklitStacks.push(matches.target);
-        if (data.p4DarklitStacks.length !== 2)
-          return;
 
-        const and = output.and!();
-        const targets = data.p4DarklitStacks.map((p) => data.party.member(p).nick).join(and);
-        return output.stacks!({ players: targets });
-      },
-      outputStrings: {
-        stacks: {
-          en: '(stacks after on ${players})',
-        },
-        and: Outputs.and,
-      },
-    },
-    {
-      id: 'FRU P4 Path of Light',
-      type: 'StartsUsing',
-      netRegex: { id: '9CFB', source: 'Usurper of Frost', capture: false },
-      delaySeconds: 3, // 7.7s cast time, give time for tether/stack adjusts
-      alertText: (data, _matches, output) =>
-        data.p4RefulgentChains.includes(data.me) ? output.tether!() : output.bait!(),
-      outputStrings: {
-        tether: {
-          en: 'Soak Tower',
-        },
-        bait: {
-          en: 'Bait Cleave',
-        },
-      },
-    },
-    {
-      id: 'FRU P4 Spirit Taker',
-      type: 'StartsUsing',
-      netRegex: { id: '9D60', source: 'Oracle of Darkness', capture: false },
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 0.5, // delay until after Path of Light snapshots
-      durationSeconds: 2,
-      response: Responses.spread('alert'),
-    },
-    {
-      id: 'FRU P4 Hallowed Wings',
-      type: 'StartsUsing',
-      netRegex: { id: ['9D23', '9D24'], source: 'Usurper of Frost' },
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 1, // avoid collision with Spirit Taker
-      infoText: (_data, matches, output) => {
-        const dir = matches.id === '9D23' ? 'east' : 'west';
-        return output.combo!({ dir: output[dir]!(), stacks: output.stacks!() });
-      },
-      outputStrings: {
-        combo: {
-          en: '${dir} => ${stacks}',
-        },
-        east: Outputs.east,
-        west: Outputs.west,
-        stacks: Outputs.stacks,
-      },
-    },
-    // ***** Crystallize Time *****
-    {
-      id: 'FRU P4 Crystallize Time',
-      type: 'StartsUsing',
-      netRegex: { id: '9D6A', source: 'Oracle of Darkness', capture: false },
-      response: Responses.bigAoe(),
-    },
     // ************************
     // P5 -- Pandora
     // ************************
