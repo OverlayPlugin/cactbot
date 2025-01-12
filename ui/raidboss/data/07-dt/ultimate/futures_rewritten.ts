@@ -1402,7 +1402,7 @@ const triggerSet: TriggerSet<Data> = {
         else if (data.role === 'tank')
           return { alertText: output.share!({ target: data.party.member(matches.target).nick }) };
         return { infoText: output.avoid!() };
-      }
+      },
     },
     // ***** Apocalypse *****
     {
@@ -1500,12 +1500,12 @@ const triggerSet: TriggerSet<Data> = {
         // Melees can spread one additional dir away from the rotation direction
         const safe = [
           (startNum - rotationDir + 8) % 8,
-          (startNum + 4 - rotationDir + 8) % 8
+          (startNum + 4 - rotationDir + 8) % 8,
         ];
 
         const toward = [
           (safe[0]! - rotationDir + 8) % 8,
-          (safe[1]! - rotationDir + 8) % 8
+          (safe[1]! - rotationDir + 8) % 8,
         ];
 
         // We shouldn't just sort safe[], and toward[], since the elements are paired
