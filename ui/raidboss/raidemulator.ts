@@ -1,3 +1,5 @@
+import raidbossFileData from 'raidboss.manifest';
+
 import './raidboss_config';
 import DTFuncs from '../../resources/datetime';
 import { browserLanguagesToLang, Lang, langMap } from '../../resources/languages';
@@ -6,7 +8,6 @@ import { callOverlayHandler } from '../../resources/overlay_plugin_api';
 import UserConfig from '../../resources/user_config';
 import { ConverterWorkerMessage } from '../../types/worker';
 
-import raidbossFileData from './data/raidboss_manifest.txt';
 import AnalyzedEncounter from './emulator/data/AnalyzedEncounter';
 import CombatantTracker from './emulator/data/CombatantTracker';
 import Encounter from './emulator/data/Encounter';

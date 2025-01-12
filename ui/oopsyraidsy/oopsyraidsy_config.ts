@@ -1,3 +1,5 @@
+import oopsyFileData from 'oopsy.manifest';
+
 import { UnreachableCode } from '../../resources/not_reached';
 import UserConfig, { OptionsTemplate, UserFileCallback } from '../../resources/user_config';
 import { BaseOptions } from '../../types/data';
@@ -10,7 +12,6 @@ import {
 } from '../config/config';
 
 import { generateBuffTriggerIds } from './buff_map';
-import oopsyFileData from './data/oopsy_manifest.txt';
 import { OopsyOptions } from './oopsy_options';
 
 const oopsyHelpers: (keyof LooseOopsyTriggerSet)[] = [

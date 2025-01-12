@@ -92,6 +92,9 @@ const rules = {
     'error',
     {
       'caseSensitive': true,
+      'ignore': [
+        '.*\\.manifest$',
+      ],
     },
   ],
   'import/no-useless-path-segments': 'error',

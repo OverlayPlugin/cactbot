@@ -1,3 +1,5 @@
+import raidbossFileData from 'raidboss.manifest';
+
 import { isLang, Lang } from '../../resources/languages';
 import { buildNetRegexForTrigger } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
@@ -32,7 +34,6 @@ import {
   ConfigProcessedFileMap,
 } from '../config/config';
 
-import raidbossFileData from './data/raidboss_manifest.txt';
 import { RaidbossTriggerField, RaidbossTriggerOutput } from './popup-text';
 import raidbossOptions, { RaidbossOptions } from './raidboss_options';
 import { TimelineParser } from './timeline_parser';

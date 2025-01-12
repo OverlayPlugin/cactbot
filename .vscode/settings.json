@@ -29,7 +29,7 @@
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts",
     "package.json": ".npmrc,package-lock.json, yarn.lock,.editorconfig,.eslintrc.cjs,.markdownlint.yml,.mocharc.cjs",
-    "tsconfig.json": "tsconfig.*.json,tsconfig-for-webpack.json",
+    "tsconfig.json": "tsconfig.*.json",
     ".gitignore": ".gitattributes",
     "README.md": "CONTRIBUTING.md,CODE_OF_CONDUCT.md,LICENSE"
   },
@@ -40,7 +40,7 @@
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts",
     "package.json": ".npmrc,package-lock.json, yarn.lock,.editorconfig,.eslintrc.cjs,.markdownlint.yml,.mocharc.cjs",
-    "tsconfig.json": "tsconfig.*.json,tsconfig-for-webpack.json",
+    "tsconfig.json": "tsconfig.*.json",
     ".gitignore": ".gitattributes",
     "README.md": "CONTRIBUTING.md,CODE_OF_CONDUCT.md,LICENSE"
   }

@@ -6,12 +6,13 @@
     "./resources",
     "./util",
     "./test",
-    "./webpack",
     "./user",
     "./.github/scripts",
     "./eslint",
     "./.eslintrc.cjs",
-    "./.mocharc.cjs"
+    "./.mocharc.cjs",
+    "./vite",
+    "./vite.config.ts"
   ],
   "exclude": [
     "./dist"

@@ -1,8 +1,9 @@
+import raidbossFileData from 'raidboss.manifest';
+
 import { addOverlayListener } from '../../resources/overlay_plugin_api';
 import { addRemotePlayerSelectUI } from '../../resources/player_override';
 import UserConfig from '../../resources/user_config';
 
-import raidbossFileData from './data/raidboss_manifest.txt';
 import { HTMLTimelineUI } from './html_timeline_ui';
 import { PopupText, PopupTextGenerator } from './popup-text';
 import defaultOptions from './raidboss_options';
