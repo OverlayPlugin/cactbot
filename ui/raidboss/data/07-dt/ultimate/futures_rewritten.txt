@@ -113,7 +113,6 @@ hideall "--sync--"
 364.9 "--targetable--"
 370.8 "The House of Light" Ability { id: "9CFC", source: "Usurper of Frost" }
 376.2 "--center--" Ability { id: "9CEF", source: "Usurper of Frost" }
-379.5 "--sync--" StartsUsing { id: "9D20", source: "Usurper of Frost" }
 390.1 "Absolute Zero (enrage)" Ability { id: "9D8D", source: "Usurper of Frost" }
 
 # Timeline entries below here are from FFLogs reports and should be re-generated with valid
@@ -156,7 +155,7 @@ hideall "--sync--"
 569.3 "Sinbound Meltdown 3 (x10)" Ability { id: "9D2B", source: "Delight's Hourglass" } duration 10.2
 572.5 "Stun + Rewind"
 575.0 "Shadoweye/Dark Water III/Dark Eruption" Ability { id: "9D56", source: "Oracle of Darkness" }
-578.6 "Shell Crusher (x2)" Ability { id: "9D5E", source: "Oracle of Darkness" }
+578.6 "Shell Crusher" Ability { id: "9D5E", source: "Oracle of Darkness" }
 587.1 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
 595.5 "Black Halo" Ability { id: "9D62", source: "Oracle of Darkness" }
 604.6 "Spell-in-Waiting Refrain" Ability { id: "9D4D", source: "Oracle of Darkness" }
@@ -171,7 +170,7 @@ hideall "--sync--"
 647.3 "Darkest Dance (knockback)" Ability { id: "9CF7", source: "Oracle of Darkness" }
 651.2 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
 656.6 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
-670.3 "Memory's End" Ability { id: "9D6C", source: "Oracle of Darkness" }
+670.3 "Memory's End (enrage)" Ability { id: "9D6C", source: "Oracle of Darkness" }
 
 # Phase Four
 684.7 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 10,10
