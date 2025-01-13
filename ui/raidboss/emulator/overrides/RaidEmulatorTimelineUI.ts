@@ -26,7 +26,7 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
   $barContainer: HTMLElement;
   $progressTemplate: HTMLElement;
 
-  private popupText?: PopupText;
+  popupText?: PopupText;
 
   constructor(protected options: RaidbossOptions) {
     super();
@@ -179,13 +179,55 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
   }
 
   // Override
-  override OnTrigger(
+  public override OnShowInfoText(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        infoText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnShowAlertText(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        alertText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnShowAlarmText(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        alarmText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnSpeakTTS(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        infoText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnTrigger(
     trigger: LooseTimelineTrigger,
     matches: RegExpExecArray | null,
     currentTime: number,
   ): void {
-    if (this.popupText) {
-      this.popupText.OnTrigger(trigger, matches, currentTime);
-    }
+    this.popupText?.OnTrigger(trigger, matches, currentTime);
   }
 }
