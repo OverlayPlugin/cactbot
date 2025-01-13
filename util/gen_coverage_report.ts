@@ -26,19 +26,6 @@ import {
 import { findMissingTranslations, MissingTranslationErrorType } from './find_missing_translations';
 import findManifestFiles from './manifest';
 
-// eslint can't find these types from simple-git for some reason
-// Redefine the parts that we actually use
-type TagResult = {
-  all: string[];
-};
-
-type LogResult = {
-  latest: {
-    date: string;
-    hash: string;
-  } | null;
-};
-
 type MissingTranslations = {
   file: string;
   line?: number;
@@ -485,17 +472,11 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
 (async () => {
   const git = simpleGit();
 
-  let tagData: TagResult | undefined;
-
-  await git.tags({
-    '--sort': '-authordate',
+  const tagData = await git.tags({
     '--format': '%(objectname)|%(refname:strip=2)|%(authordate)|%(*authordate)',
-  }, (_err, data) => {
-    tagData = data;
   });
-  tagData ??= undefined;
 
-  const tags: Tags = {};
+  const unsortedTags: (Tags[string] & { name: string })[] = [];
 
   for (const tag of tagData?.all ?? []) {
     const [tagHash, tagName, tagDate, commitDate] = tag.split('|', 4);
@@ -508,11 +489,40 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
     if (isNaN(tagDateObj.getTime())) {
       tagDateObj = new Date(commitDate);
     }
-    tags[tagName] = {
+    unsortedTags.push({
+      name: tagName,
       tagDate: tagDateObj.getTime(),
       tagHash: tagHash,
+      files: [],
+    });
+  }
+
+  const tags: Tags = {};
+
+  // This hash is the default "initial commit" hash for git, all repos have it
+  let lastVersion = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
+
+  for (const tag of unsortedTags.sort((l, r) => l.tagDate - r.tagDate)) {
+    const result = await git.raw(['diff-tree', '-r', lastVersion, tag.name]);
+    lastVersion = tag.name;
+
+    tags[tag.name] = {
+      tagDate: tag.tagDate,
+      tagHash: tag.tagHash,
+      files: result.split('\n').map((line) => {
+        const matches =
+          /^:(?<oldMode>[^\s]+) (?<newMode>[^\s]+) (?<oldHash>[^\s]+) (?<newHash>[^\s]+) (?<action>[^\s]+)\s*(?<name>[^\s].*?)$/
+            .exec(line);
+
+        return {
+          hash: matches?.groups?.['newHash'] ?? '',
+          name: matches?.groups?.['name'] ?? '',
+        };
+      }),
     };
   }
+
+  const reverseOrderTags = Object.keys(tags).reverse();
 
   const pulls: Pulls = [];
 
@@ -523,6 +533,8 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
     repo: 'cactbot',
     state: 'open',
   });
+
+  const notUndefined = <T>(v: T | undefined): v is T => v !== undefined;
 
   for (const openPull of openPulls) {
     const pullFiles = await octokit.paginate(
@@ -537,11 +549,24 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
 
     const files = pullFiles.map((f) => f.filename);
 
+    const zones = pullFiles
+      .filter((f) =>
+        (f.filename.startsWith('ui/raidboss/data') ||
+          f.filename.startsWith('ui/oopsyraidsy/data')) && f.filename.endsWith('.ts')
+      )
+      .map((f) => /ZoneId\.([a-zA-Z0-9]+)/.exec(f.patch ?? '')?.[1])
+      .filter(notUndefined)
+      .map((zoneId) =>
+        zoneId in ZoneId ? ZoneId[zoneId as keyof typeof ZoneId] as number : undefined
+      )
+      .filter(notUndefined);
+
     pulls.push({
       number: openPull.number,
       title: openPull.title,
       url: openPull.html_url,
       files: files,
+      zones: zones,
     });
   }
 
@@ -566,13 +591,10 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
 
   for (const coverageEntry of Object.values(coverage)) {
     for (const file of coverageEntry.files) {
-      let logData: undefined | LogResult;
-      await git.log({
+      const logData = await git.log({
         file: file.name,
         maxCount: 1,
-      }, (_err, data) => logData = data);
-
-      logData ??= undefined;
+      });
 
       if (logData === undefined)
         continue;
@@ -587,15 +609,13 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
       }
 
       if (file.commit !== undefined) {
-        let tagData: undefined | string;
-        await git.tag({
-          '--sort': 'authordate',
-          '--contains': file.commit,
-        }, (_err, data) => tagData = data.split('\n')[0]?.trim());
-        tagData ??= undefined;
-
-        if (tagData !== undefined) {
-          file.tag = tagData;
+        for (const tag of reverseOrderTags) {
+          const tagFile = tags[tag]?.files.find((tagFile) => tagFile.name === file.name);
+          if (tagFile) {
+            file.tag = tag;
+            file.tagHash = tagFile.hash;
+            break;
+          }
         }
       }
     }

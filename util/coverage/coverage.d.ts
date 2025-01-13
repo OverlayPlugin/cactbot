@@ -25,6 +25,7 @@ export type CoverageEntry = {
     name: string;
     commit?: string;
     tag?: string;
+    tagHash?: string;
   }[];
   lastModified: number;
 };
@@ -61,6 +62,10 @@ export type Tags = {
   [tagName: string]: {
     tagDate: number;
     tagHash: string;
+    files: {
+      name: string;
+      hash: string;
+    }[];
   };
 };
 
@@ -69,4 +74,5 @@ export type Pulls = {
   number: number;
   title: string;
   files: string[];
+  zones: number[];
 }[];

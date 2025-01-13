@@ -490,7 +490,14 @@ const buildZoneGrid = (container: HTMLElement, lang: Lang, coverage: Coverage) =
         const hasOopsy = zoneCoverage.oopsy && zoneCoverage.oopsy.num > 0;
         const hasTriggers = zoneCoverage.triggers.num > 0;
 
-        if (!hasTriggers && !hasOopsy && !zoneCoverage.timeline.hasFile) {
+        const openPRs = pulls
+          .filter((pr) =>
+            (pr.files.find((file) => zoneCoverage.files.find((file2) => file === file2.name)) !==
+              undefined) ||
+            pr.zones.includes(zoneId)
+          );
+
+        if (!hasTriggers && !hasOopsy && !zoneCoverage.timeline.hasFile && openPRs.length === 0) {
           const div = addDiv(container, 'text', translate(miscStrings.unsupported, lang));
           div.style.color = 'red';
           return;
@@ -516,14 +523,10 @@ const buildZoneGrid = (container: HTMLElement, lang: Lang, coverage: Coverage) =
           ),
         ].sort((left, right) => right?.tagDate - left?.tagDate)[0];
 
-        const openPRs = pulls
-          .filter((pr) =>
-            pr.files.find((file) => zoneCoverage.files.find((file2) => file === file2.name))
-          );
-
         let color = 'green';
 
-        const unreleased = version?.tag === undefined;
+        const unreleased = version?.tag === undefined ||
+          (version?.tagDate ?? 0) < zoneCoverage.lastModified;
 
         if (unreleased || openPRs.length > 0) {
           color = 'orange';
@@ -535,7 +538,7 @@ const buildZoneGrid = (container: HTMLElement, lang: Lang, coverage: Coverage) =
           lastUpdated.toString();
 
         if (openPRs.length > 0) {
-          titleText += `Open PRs: ${openPRs.map((pr) => `#${pr.number}`).join(', ')} | `;
+          titleText = `Open PRs: ${openPRs.map((pr) => `#${pr.number}`).join(', ')} | ${titleText}`;
         }
 
         const div = document.createElement('div');
