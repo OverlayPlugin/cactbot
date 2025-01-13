@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.33.3",
-  "releaseSummary": "FRU fixes",
+  "version": "0.33.4",
+  "releaseSummary": "Interphos, Jeuno, Cloud Chaotic, more FRU",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
