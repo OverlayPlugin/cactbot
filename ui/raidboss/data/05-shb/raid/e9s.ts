@@ -488,7 +488,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Orientez le laser vers l\'extérieur',
           ja: 'レーザーを外に向ける',
           cn: '向外引导激光',
-          ko: '바깥 바라보기 (레이저 유도)',
+          ko: '레이저를 바깥으로 유도하기',
         },
       },
     },
