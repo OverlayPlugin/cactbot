@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'MareLamentorum',
   zoneId: ZoneId.MareLamentorum,
+  comments: {
+    en: 'Hunts',
+  },
   resetWhenOutOfCombat: false,
   initData: () => {
     return {

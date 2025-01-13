@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheForbiddenLandEurekaHydatos',
   zoneId: ZoneId.TheForbiddenLandEurekaHydatos,
+  comments: {
+    en: 'Baldesion Arsenal triggers/timelines only',
+  },
   timelineFile: 'eureka_hydatos.txt',
   resetWhenOutOfCombat: false,
   timelineTriggers: [

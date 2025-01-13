@@ -2,6 +2,9 @@
 Options.Triggers.push({
   id: 'SohmAl',
   zoneId: ZoneId.SohmAl,
+  comments: {
+    en: 'pre-6.2 rework',
+  },
   timelineFile: 'sohm_al.txt',
   timelineTriggers: [
     {

@@ -101,6 +101,9 @@ const cardOutputStrings = {
 Options.Triggers.push({
   id: 'LivingMemory',
   zoneId: ZoneId.LivingMemory,
+  comments: {
+    en: 'Hunts and Mica the Magical Mu boss FATE',
+  },
   initData: () => ({
     executionSafe: [],
     forecastSafe: [],

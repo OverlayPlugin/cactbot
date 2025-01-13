@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'BrayfloxsLongstop',
   zoneId: ZoneId.BrayfloxsLongstop,
+  comments: {
+    en: 'pre-6.1 rework',
+  },
   initData: () => {
     return {
       pelicanPoisons: [],

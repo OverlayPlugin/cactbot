@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'Garlemald',
   zoneId: ZoneId.Garlemald,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Aegeiros Leafstorm',

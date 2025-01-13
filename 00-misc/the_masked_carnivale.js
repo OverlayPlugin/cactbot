@@ -9,6 +9,9 @@ Options.Triggers.push({
     cn: '假面狂欢',
     ko: '가면 무투회',
   },
+  comments: {
+    en: 'BLU Masked Carnivale Stages 1-32',
+  },
   triggers: [
     // ================ Stage 01 Act 1 ================
     // intentionally blank

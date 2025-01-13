@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'Lakeland',
   zoneId: ZoneId.Lakeland,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Nariphon Piercing Resistance Down II Gain',

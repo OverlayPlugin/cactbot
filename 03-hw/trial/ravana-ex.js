@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'ThokAstThokExtreme',
   zoneId: ZoneId.ThokAstThokExtreme,
+  comments: {
+    en: 'Timeline only, no triggers',
+  },
   timelineFile: 'ravana-ex.txt',
   triggers: [],
   timelineReplace: [

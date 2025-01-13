@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheDrownedCityOfSkalla',
   zoneId: ZoneId.TheDrownedCityOfSkalla,
+  comments: {
+    en: 'pre-6.5 rework',
+  },
   timelineFile: 'drowned_city_of_skalla.txt',
   timelineTriggers: [
     {

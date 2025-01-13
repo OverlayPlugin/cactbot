@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheForbiddenLandEurekaPyros',
   zoneId: ZoneId.TheForbiddenLandEurekaPyros,
+  comments: {
+    en: 'Mostly incomplete',
+  },
   resetWhenOutOfCombat: false,
   triggers: [
     {

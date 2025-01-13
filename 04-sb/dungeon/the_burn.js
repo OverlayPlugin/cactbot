@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheBurn',
   zoneId: ZoneId.TheBurn,
+  comments: {
+    en: 'pre-6.5 rework',
+  },
   timelineFile: 'the_burn.txt',
   triggers: [
     {

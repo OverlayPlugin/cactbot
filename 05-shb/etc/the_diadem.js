@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheDiadem',
   zoneId: ZoneId.TheDiadem,
+  comments: {
+    en: 'Inactivity warning and timed node spawn alert',
+  },
   resetWhenOutOfCombat: false,
   triggers: [
     // https://xivapi.com/LogMessage/916

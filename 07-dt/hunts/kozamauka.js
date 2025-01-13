@@ -18,6 +18,9 @@ const doReMiseryOutputs = {
 Options.Triggers.push({
   id: 'Kozamauka',
   zoneId: ZoneId.Kozamauka,
+  comments: {
+    en: 'Hunts',
+  },
   initData: () => ({
     nextDoReMisery: [],
   }),

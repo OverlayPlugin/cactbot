@@ -34,6 +34,9 @@ const gymnasiouMandragoraiIds = [
 Options.Triggers.push({
   id: 'TheShiftingGymnasionAgonon',
   zoneId: ZoneId.TheShiftingGymnasionAgonon,
+  comments: {
+    en: 'Missing several summons',
+  },
   triggers: [
     // ---------------- random treasure mobs ----------------
     {

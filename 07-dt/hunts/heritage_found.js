@@ -35,6 +35,9 @@ const atticusBreathSeqAbilityIds = ['985B', '985C', '985D'];
 Options.Triggers.push({
   id: 'HeritageFound',
   zoneId: ZoneId.HeritageFound,
+  comments: {
+    en: 'Hunts',
+  },
   initData: () => ({
     atticusCleaves: [],
   }),

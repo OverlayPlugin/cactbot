@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'Kholusia',
   zoneId: ZoneId.Kholusia,
+  comments: {
+    en: 'Hunts, missing Formidable boss FATE',
+  },
   triggers: [
     {
       id: 'Hunt Lil Murderer Goblin Punch',

@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheGhimlytDark',
   zoneId: ZoneId.TheGhimlytDark,
+  comments: {
+    en: 'pre-6.5 rework',
+  },
   timelineFile: 'ghimlyt_dark.txt',
   timelineTriggers: [
     {

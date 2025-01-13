@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'Yanxia',
   zoneId: ZoneId.Yanxia,
+  comments: {
+    en: 'Hunts: Angada only',
+  },
   triggers: [
     {
       id: 'Angada Scythe Tail',

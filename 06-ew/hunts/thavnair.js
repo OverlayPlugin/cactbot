@@ -9,6 +9,9 @@ const tankBusterOnParty = (data, matches) => {
 Options.Triggers.push({
   id: 'Thavnair',
   zoneId: ZoneId.Thavnair,
+  comments: {
+    en: 'Hunts and Daivadipa boss FATE',
+  },
   resetWhenOutOfCombat: false,
   initData: () => {
     return {

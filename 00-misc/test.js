@@ -9,6 +9,9 @@ const strikingDummyNames = {
 Options.Triggers.push({
   id: 'CactbotTest',
   zoneId: ZoneId.MiddleLaNoscea,
+  comments: {
+    en: 'Cactbot test triggers',
+  },
   config: [
     {
       id: 'testTriggerOutput',

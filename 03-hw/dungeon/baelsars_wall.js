@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'BaelsarsWall',
   zoneId: ZoneId.BaelsarsWall,
+  comments: {
+    en: 'pre-6.3 rework',
+  },
   timelineFile: 'baelsars_wall.txt',
   timelineTriggers: [
     {

@@ -2,6 +2,9 @@
 Options.Triggers.push({
   id: 'AmhAraeng',
   zoneId: ZoneId.AmhAraeng,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Mailktender Sabotendance',

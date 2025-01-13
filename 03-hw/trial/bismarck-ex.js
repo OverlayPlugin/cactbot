@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheLimitlessBlueExtreme',
   zoneId: ZoneId.TheLimitlessBlueExtreme,
+  comments: {
+    en: 'Mostly incomplete',
+  },
   triggers: [
     {
       id: 'Bismarck Sharp Gust',

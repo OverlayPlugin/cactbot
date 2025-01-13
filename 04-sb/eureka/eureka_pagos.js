@@ -1,6 +1,9 @@
 Options.Triggers.push({
   id: 'TheForbiddenLandEurekaPagos',
   zoneId: ZoneId.TheForbiddenLandEurekaPagos,
+  comments: {
+    en: 'Inactivity warning only',
+  },
   resetWhenOutOfCombat: false,
   triggers: [
     // https://xivapi.com/LogMessage/916

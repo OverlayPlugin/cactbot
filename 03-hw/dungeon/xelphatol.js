@@ -2,6 +2,9 @@
 Options.Triggers.push({
   id: 'Xelphatol',
   zoneId: ZoneId.Xelphatol,
+  comments: {
+    en: 'pre-6.3 rework',
+  },
   timelineFile: 'xelphatol.txt',
   timelineTriggers: [
     {
