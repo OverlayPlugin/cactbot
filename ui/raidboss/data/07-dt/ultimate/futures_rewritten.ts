@@ -45,9 +45,6 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'FuturesRewrittenUltimate',
   zoneId: ZoneId.FuturesRewrittenUltimate,
-  comments: {
-    en: 'Triggers: P1-2 / Timeline: P1-5',
-  },
   timelineFile: 'futures_rewritten.txt',
   initData: () => {
     return {
