@@ -182,6 +182,7 @@ Overrides the zone name from [zone_info.ts](../resources/zone_info.ts).
 
 **comments**
 An optional comment for this trigger set that will appear on the [Cactbot Content Coverage report](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html).
+Supports HTML, but be aware that the font used on the coverage report does not support bold/italics.
 
 **initData**
 A function that can be used to initialize the data this trigger set uses.
