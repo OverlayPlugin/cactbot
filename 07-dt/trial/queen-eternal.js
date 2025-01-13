@@ -68,6 +68,7 @@ Options.Triggers.push({
       outputStrings: {
         repeatedAOE: {
           en: 'Continuous light AoE',
+          cn: '连续小AoE',
         },
       },
     },
@@ -118,6 +119,7 @@ Options.Triggers.push({
       outputStrings: {
         regaliaYou: {
           en: 'Laser tether on YOU',
+          cn: '激光连线点名',
         },
       },
     },
@@ -145,6 +147,7 @@ Options.Triggers.push({
       outputStrings: {
         floating: {
           en: 'Gravitation -- Levitating',
+          cn: '重力 -- 上浮',
         },
       },
     },
@@ -161,6 +164,7 @@ Options.Triggers.push({
       outputStrings: {
         falling: {
           en: 'Gravitation -- Falling',
+          cn: '重力 -- 下降',
         },
       },
     },
@@ -177,6 +181,7 @@ Options.Triggers.push({
       outputStrings: {
         floating: {
           en: 'Gravitation -- Levitating',
+          cn: '重力 -- 上浮',
         },
       },
     },
@@ -197,9 +202,11 @@ Options.Triggers.push({
       outputStrings: {
         fallCastle: {
           en: 'In front of ground windows',
+          cn: '正对下层空洞',
         },
         floatCastle: {
           en: 'In front of middle windows',
+          cn: '正对上层空洞',
         },
       },
     },
@@ -211,6 +218,7 @@ Options.Triggers.push({
       outputStrings: {
         getInDonut: {
           en: 'Get in robot circle',
+          cn: '小月环',
         },
       },
     },
@@ -238,6 +246,7 @@ Options.Triggers.push({
       outputStrings: {
         gazeLater: {
           en: 'Gaze on you soon',
+          cn: '石化眼点名',
         },
       },
     },
@@ -259,9 +268,11 @@ Options.Triggers.push({
       outputStrings: {
         shriekYou: {
           en: 'Gaze -- look away from ${otherTarget}',
+          cn: '石化眼 -- 背对 ${otherTarget}',
         },
         shriekOthers: {
           en: 'Look away from ${comboTargets}',
+          cn: '背对 ${comboTargets}',
         },
       },
     },
@@ -274,6 +285,7 @@ Options.Triggers.push({
       outputStrings: {
         bombLater: {
           en: 'Acceleration Bomb soon',
+          cn: '稍后 加速度炸弹',
         },
       },
     },
@@ -300,6 +312,7 @@ Options.Triggers.push({
       outputStrings: {
         flareMarker: {
           en: 'Flare on YOU',
+          cn: '核爆点名',
         },
       },
     },
@@ -325,6 +338,7 @@ Options.Triggers.push({
       outputStrings: {
         fiveAOE: {
           en: '5x AoEs',
+          cn: 'AoE (5次)',
         },
       },
     },

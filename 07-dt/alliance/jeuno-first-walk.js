@@ -59,12 +59,15 @@ Options.Triggers.push({
       outputStrings: {
         smallCircle: {
           en: 'Outside small circle => in',
+          cn: '内环外 => 进',
         },
         midCircle: {
           en: 'Outside mid circle => in',
+          cn: '中环外 => 进',
         },
         bigCircle: {
           en: 'Outside big circle => in',
+          cn: '外环外 => 进',
         },
         unknownCircle: Outputs.unknown,
       },
@@ -83,6 +86,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidCircles: {
           en: 'Avoid radiating circles',
+          cn: '躲避步进圆圈',
         },
       },
     },
@@ -129,12 +133,15 @@ Options.Triggers.push({
       outputStrings: {
         shortKnockback: {
           en: 'Knockback (short)',
+          cn: '击退 (短距离)',
         },
         midKnockback: {
           en: 'Knockback (mid)',
+          cn: '击退 (中距离)',
         },
         bigKnockback: {
           en: 'Knockback (big)',
+          cn: '击退 (长距离)',
         },
         unknownKnockback: Outputs.unknown,
       },
@@ -155,6 +162,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidOrbs: {
           en: 'Avoid exploding orbs',
+          cn: '躲开即将爆炸的球',
         },
       },
     },
@@ -221,6 +229,7 @@ Options.Triggers.push({
         getOut: Outputs.out,
         outAtDirection: {
           en: 'Get out toward ${safeDir}',
+          cn: '去 ${safeDir} 远离',
         },
         dirN: Outputs.north,
         dirE: Outputs.east,
@@ -299,6 +308,7 @@ Options.Triggers.push({
       outputStrings: {
         outerFirst: {
           en: 'AoE x10',
+          cn: 'AoE (10次)',
         },
       },
     },
@@ -311,6 +321,7 @@ Options.Triggers.push({
       outputStrings: {
         outerFirst: {
           en: 'Rings out to in',
+          cn: '步进月环 (由外到内)',
         },
       },
     },
@@ -323,6 +334,7 @@ Options.Triggers.push({
       outputStrings: {
         outerFirst: {
           en: 'Rings in to out',
+          cn: '步进月环 (由内到外)',
         },
       },
     },
@@ -364,9 +376,11 @@ Options.Triggers.push({
       outputStrings: {
         attackAngel: {
           en: 'Attack ${angel}',
+          cn: '攻击 ${angel}',
         },
         unknownAngel: {
           en: 'Attack angel with matching buff',
+          cn: '攻击对应Buff的Boss',
         },
       },
     },
@@ -476,6 +490,7 @@ Options.Triggers.push({
       outputStrings: {
         killShield: {
           en: 'Kill Ark Shield',
+          cn: '击杀 Ark Shield', // FIXME: Update name while cn 7.1
         },
       },
     },
@@ -490,6 +505,7 @@ Options.Triggers.push({
       outputStrings: {
         interruptHM: {
           en: 'Interrupt HM',
+          cn: '打断 HM', // FIXME: Update name while cn 7.1
         },
       },
     },
@@ -504,6 +520,7 @@ Options.Triggers.push({
       outputStrings: {
         runFromTether: {
           en: 'Chasing tether -- run away!',
+          cn: '追踪连线 -- 快跑!',
         },
       },
     },
@@ -544,9 +561,11 @@ Options.Triggers.push({
       outputStrings: {
         leftThenRightShadow: {
           en: 'Left => right of shadow',
+          cn: '分身 左 => 右',
         },
         rightThenLeftShadow: {
           en: 'Right => left of shadow',
+          cn: '分身 右 => 左',
         },
       },
     },
@@ -559,6 +578,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidRadiatingLines: {
           en: 'Avoid Radiating Lines',
+          cn: '躲避步进直线',
         },
       },
     },
@@ -608,12 +628,15 @@ Options.Triggers.push({
       outputStrings: {
         getInCircles: {
           en: 'Get in circles',
+          cn: '去圆圈内',
         },
         moatWithBattlements: {
           en: 'In circles + Close to boss',
+          cn: '圆圈内 + 靠近Boss',
         },
         moatWithKeep: {
           en: 'In circles + Away from boss',
+          cn: '圆圈内 + 远离Boss',
         },
       },
     },
@@ -634,12 +657,15 @@ Options.Triggers.push({
       outputStrings: {
         outOfCircles: {
           en: 'Out of circles',
+          cn: '去圆圈外',
         },
         courtWithBattlements: {
           en: 'Out of circles + close to boss',
+          cn: '圆圈外 + 靠近Boss',
         },
         courtWithKeep: {
           en: 'Out of circles + away from boss',
+          cn: '圆圈外 + 远离Boss',
         },
       },
     },
@@ -656,9 +682,11 @@ Options.Triggers.push({
       outputStrings: {
         leftAndOut: {
           en: 'Go left + get out',
+          cn: '左 + 远离',
         },
         rightAndOut: {
           en: 'Go right + get out',
+          cn: '右 + 远离',
         },
       },
     },
@@ -676,9 +704,11 @@ Options.Triggers.push({
       outputStrings: {
         leftAndOut: {
           en: 'Left of shadow + get out',
+          cn: '分身 左 + 远离',
         },
         rightAndOut: {
           en: 'Right of shadow + get out',
+          cn: '分身 右 + 远离',
         },
       },
     },
@@ -695,9 +725,11 @@ Options.Triggers.push({
       outputStrings: {
         lineMultiKnockback: {
           en: '4x knockback from lines',
+          cn: '4x 直线击退',
         },
         lineSingleKnockback: {
           en: 'Knockback from line',
+          cn: '从直线击退',
         },
       },
     },
@@ -755,6 +787,7 @@ Options.Triggers.push({
       outputStrings: {
         sigilDodge: {
           en: 'Dodge puddles 3 to 1',
+          cn: '三穿一躲避圆圈',
         },
       },
     },
@@ -785,15 +818,19 @@ Options.Triggers.push({
       outputStrings: {
         rightLeftBack: {
           en: 'Start right => left => back',
+          cn: '右 => 左 => 后',
         },
         rightLeftFront: {
           en: 'Start right => left => front',
+          cn: '右 => 左 => 前',
         },
         leftRightBack: {
           en: 'Start left => right => back',
+          cn: '左 => 右 => 后',
         },
         leftRightFront: {
           en: 'Start left => right => front',
+          cn: '左 => 右 => 前',
         },
       },
     },
@@ -806,6 +843,7 @@ Options.Triggers.push({
       outputStrings: {
         smashDodge: {
           en: 'Dodge Exalines, out => in',
+          cn: '躲避步进直线, 远离 => 靠近',
         },
       },
     },
