@@ -1643,7 +1643,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Apademak': '아페데마크',
         'Arena Catoblepas': '투기장 카토블레파스',
@@ -1665,8 +1664,10 @@ Options.Triggers.push({
         'Crom Dubh': '크롬 두브',
         'Durinn': '두린',
         'Epilogi': '에필로기',
+        'Gilded Cyclops': '골도르 사이클롭스',
         'Gladiatorial Node': '투기 시스템',
         'Gogo, Master of Mimicry': '흉내쟁이 고고',
+        'Goldor': '골도르',
         'Guimauve': '기모브',
         'Hydnora': '히드노라',
         'Kreios': '크레이오스',
