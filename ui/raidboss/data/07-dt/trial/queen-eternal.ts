@@ -85,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
         repeatedAOE: {
           en: 'Continuous light AoE',
           cn: '连续小AoE',
+          ko: '지속적인 약한 전체 공격',
         },
       },
     },
@@ -136,6 +137,7 @@ const triggerSet: TriggerSet<Data> = {
         regaliaYou: {
           en: 'Laser tether on YOU',
           cn: '激光连线点名',
+          ko: '레이저 선 대상자',
         },
       },
     },
@@ -164,6 +166,7 @@ const triggerSet: TriggerSet<Data> = {
         floating: {
           en: 'Gravitation -- Levitating',
           cn: '重力 -- 上浮',
+          ko: '중력 -- 상승',
         },
       },
     },
@@ -181,6 +184,7 @@ const triggerSet: TriggerSet<Data> = {
         falling: {
           en: 'Gravitation -- Falling',
           cn: '重力 -- 下降',
+          ko: '중력 -- 하강',
         },
       },
     },
@@ -198,6 +202,7 @@ const triggerSet: TriggerSet<Data> = {
         floating: {
           en: 'Gravitation -- Levitating',
           cn: '重力 -- 上浮',
+          ko: '중력 -- 상승',
         },
       },
     },
@@ -219,10 +224,12 @@ const triggerSet: TriggerSet<Data> = {
         fallCastle: {
           en: 'In front of ground windows',
           cn: '正对下层空洞',
+          ko: '아래쪽 뚫린 곳',
         },
         floatCastle: {
           en: 'In front of middle windows',
           cn: '正对上层空洞',
+          ko: '가운데층 뚫린 곳',
         },
       },
     },
@@ -235,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
         getInDonut: {
           en: 'Get in robot circle',
           cn: '小月环',
+          ko: '로봇 원 안으로',
         },
       },
     },
@@ -263,6 +271,7 @@ const triggerSet: TriggerSet<Data> = {
         gazeLater: {
           en: 'Gaze on you soon',
           cn: '石化眼点名',
+          ko: '곧 시선징 대상자',
         },
       },
     },
@@ -285,10 +294,12 @@ const triggerSet: TriggerSet<Data> = {
         shriekYou: {
           en: 'Gaze -- look away from ${otherTarget}',
           cn: '石化眼 -- 背对 ${otherTarget}',
+          ko: '시선징 -- ${otherTarget}에게서 뒤돌기',
         },
         shriekOthers: {
           en: 'Look away from ${comboTargets}',
           cn: '背对 ${comboTargets}',
+          ko: '${comboTargets}에게서 뒤돌기',
         },
       },
     },
@@ -302,6 +313,7 @@ const triggerSet: TriggerSet<Data> = {
         bombLater: {
           en: 'Acceleration Bomb soon',
           cn: '稍后 加速度炸弹',
+          ko: '곧 가속도 폭탄',
         },
       },
     },
@@ -329,6 +341,7 @@ const triggerSet: TriggerSet<Data> = {
         flareMarker: {
           en: 'Flare on YOU',
           cn: '核爆点名',
+          ko: '플레어 대상자',
         },
       },
     },
@@ -355,6 +368,7 @@ const triggerSet: TriggerSet<Data> = {
         fiveAOE: {
           en: '5x AoEs',
           cn: 'AoE (5次)',
+          ko: '전체공격 (5x)',
         },
       },
     },
