@@ -10,6 +10,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'SohmAl',
   zoneId: ZoneId.SohmAl,
+  comments: {
+    en: 'pre-6.2 rework',
+  },
   timelineFile: 'sohm_al.txt',
   timelineTriggers: [
     {

@@ -143,6 +143,9 @@ const tankBusterOnParty = (ceName?: string) => (data: Data, matches: NetMatches[
 const triggerSet: TriggerSet<Data> = {
   id: 'TheBozjanSouthernFront',
   zoneId: ZoneId.TheBozjanSouthernFront,
+  comments: {
+    en: 'Castrum Lacus Litore triggers/timeline.  Missing almost all Critical Engagements.',
+  },
   timelineFile: 'bozjan_southern_front.txt',
   timeline: [
     (data) => {

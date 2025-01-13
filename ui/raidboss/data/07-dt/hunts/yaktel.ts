@@ -15,6 +15,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'YakTel',
   zoneId: ZoneId.YakTel,
+  comments: {
+    en: 'Hunts',
+  },
   initData: () => ({
     rraxTriplicateSafe: [],
   }),

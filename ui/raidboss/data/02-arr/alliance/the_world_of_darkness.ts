@@ -23,6 +23,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'TheWorldOfDarkness',
   zoneId: ZoneId.TheWorldOfDarkness,
+  comments: {
+    en: 'Mostly incomplete',
+  },
   triggers: [
     {
       id: 'Angra Mainyu Gain Sullen',

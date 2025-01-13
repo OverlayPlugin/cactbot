@@ -8,6 +8,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'TheLimitlessBlueExtreme',
   zoneId: ZoneId.TheLimitlessBlueExtreme,
+  comments: {
+    en: 'Mostly incomplete',
+  },
   triggers: [
     {
       id: 'Bismarck Sharp Gust',

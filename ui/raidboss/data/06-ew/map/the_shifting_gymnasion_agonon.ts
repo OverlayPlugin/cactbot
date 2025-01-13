@@ -46,6 +46,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'TheShiftingGymnasionAgonon',
   zoneId: ZoneId.TheShiftingGymnasionAgonon,
+  comments: {
+    en: 'Missing several summons',
+  },
 
   triggers: [
     // ---------------- random treasure mobs ----------------

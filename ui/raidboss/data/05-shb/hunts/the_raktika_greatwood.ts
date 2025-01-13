@@ -11,6 +11,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'TheRaktikaGreatwood',
   zoneId: ZoneId.TheRaktikaGreatwood,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Grassman Chest Thump',

@@ -10,6 +10,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'AmhAraeng',
   zoneId: ZoneId.AmhAraeng,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Mailktender Sabotendance',

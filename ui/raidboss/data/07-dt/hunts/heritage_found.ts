@@ -51,6 +51,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'HeritageFound',
   zoneId: ZoneId.HeritageFound,
+  comments: {
+    en: 'Hunts',
+  },
   initData: () => ({
     atticusCleaves: [],
   }),

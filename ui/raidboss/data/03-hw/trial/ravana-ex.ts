@@ -7,6 +7,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'ThokAstThokExtreme',
   zoneId: ZoneId.ThokAstThokExtreme,
+  comments: {
+    en: 'Timeline only, no triggers',
+  },
   timelineFile: 'ravana-ex.txt',
   triggers: [],
   timelineReplace: [

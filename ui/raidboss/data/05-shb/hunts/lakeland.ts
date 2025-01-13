@@ -11,6 +11,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'Lakeland',
   zoneId: ZoneId.Lakeland,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Nariphon Piercing Resistance Down II Gain',

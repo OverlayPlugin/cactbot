@@ -103,6 +103,9 @@ const tankBusterOnParty = (ceName?: string) => (data: Data, matches: NetMatches[
 const triggerSet: TriggerSet<Data> = {
   id: 'Zadnor',
   zoneId: ZoneId.Zadnor,
+  comments: {
+    en: 'Dalriada triggers/timeline.  Some Critical Engagements.',
+  },
   timelineFile: 'zadnor.txt',
   resetWhenOutOfCombat: false,
   triggers: [
