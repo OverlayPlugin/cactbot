@@ -148,11 +148,11 @@ hideall "--sync--"
 521.4 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
 532.4 "Ultimate Relativity" Ability { id: "9D4A", source: "Oracle of Darkness" }
 544.2 "Dark Fire III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
-549.3 "Sinbound Meltdown 1 (x10)" Ability { id: "9D2B", source: "Delight's Hourglass" } duration 10.2
+549.3 "Sinbound Meltdown 1 (x10)" Ability { id: "9D2B" } duration 10.2
 554.0 "Dark Fire III/Dark Blizzard III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
-558.8 "Sinbound Meltdown 2 (x10)" Ability { id: "9D2B", source: "Delight's Hourglass" } duration 10.2
+558.8 "Sinbound Meltdown 2 (x10)" Ability { id: "9D2B" } duration 10.2
 563.6 "Dark Fire III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
-569.3 "Sinbound Meltdown 3 (x10)" Ability { id: "9D2B", source: "Delight's Hourglass" } duration 10.2
+569.3 "Sinbound Meltdown 3 (x10)" Ability { id: "9D2B" } duration 10.2
 572.5 "Stun + Rewind"
 575.0 "Shadoweye/Dark Water III/Dark Eruption" Ability { id: "9D56", source: "Oracle of Darkness" }
 578.6 "Shell Crusher" Ability { id: "9D5E", source: "Oracle of Darkness" }
