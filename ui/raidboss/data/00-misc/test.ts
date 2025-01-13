@@ -459,6 +459,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Trigger countdown test',
+          ko: '트리거 카운트다운 테스트',
         },
       },
     },
@@ -632,7 +633,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'ko',
-      missingTranslations: true,
       replaceSync: {
         'You bid farewell to the striking dummy': '.*나무인형에게 작별 인사를 합니다',
         'You bow courteously to the striking dummy': '.*나무인형에게 공손하게 인사합니다',
@@ -645,6 +645,7 @@ const triggerSet: TriggerSet<Data> = {
         'cactbot test watch': 'cactbot 탐지 테스트',
         'cactbot test combatant cast': 'cactbot 스킬 시전 테스트',
         'cactbot test outputStrings': 'cactbot outputStrings 테스트',
+        'cactbot test trigger countdown': 'cactbot 트리거 카운트다운 테스트',
         'You clap for the striking dummy': '.*나무인형에게 박수를 보냅니다',
         'You psych yourself up alongside the striking dummy': '.*나무인형에게 힘을 불어넣습니다',
         'You poke the striking dummy': '.*나무인형을 쿡쿡 찌릅니다',
