@@ -165,7 +165,6 @@ export interface Data extends RaidbossData {
   p3MyApocDebuff?: ApocDebuffLength;
   p3ApocFirstDirNum?: number;
   p3ApocRotationDir?: 1 | -1; // 1 = clockwise, -1 = counterclockwise
-  p3CalledApoc: boolean;
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -1409,7 +1408,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // ***** Apocalypse *****
     {
-      id: 'FRU P3 Apoc Dark Water Collect',
+      id: 'FRU P3 Apoc Dark Water Debuff',
       type: 'GainsEffect',
       netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
       condition: (data) => data.phase === 'p3-apoc',
@@ -1486,11 +1485,49 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      // Silent early infoText with safe dirs
+      id: 'FRU P3 Apoc Safe Early',
+      type: 'CombatantMemory',
+      netRegex: { change: 'Add', pair: [{ key: 'BNpcID', value: '1EB0FF' }], capture: false },
+      condition: (data) => data.phase === 'p3-apoc',
+      delaySeconds: 0.9, // collect + short delay to avoid collision with Dark Water Debuff
+      durationSeconds: 8.2,
+      suppressSeconds: 1,
+      soundVolume: 0,
+      infoText: (data, _matches, output) => {
+        const startNum = data.p3ApocFirstDirNum;
+        const rotationDir = data.p3ApocRotationDir;
+        if (startNum === undefined || rotationDir === undefined)
+          return;
+
+        // Safe spot(s) are 1 behind the starting dir and it's opposite (+4)
+        const safe = [
+          (startNum - rotationDir + 8) % 8,
+          (startNum + 4 - rotationDir + 8) % 8,
+        ];
+        safe.sort((a, b) => a - b);
+
+        const safeStr = safe
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        return output.safe!({ dir1: safeStr });
+      },
+      tts: null,
+      outputStrings: {
+        safe: {
+          en: '(Apoc safe later: ${dir1})',
+        },
+        ...Directions.outputStrings8Dir,
+        or: Outputs.or,
+      },
+    },
+    {
+      // Displays during Spirit Taker
       id: 'FRU P3 Apoc Safe',
       type: 'CombatantMemory',
       netRegex: { change: 'Add', pair: [{ key: 'BNpcID', value: '1EB0FF' }], capture: false },
-      condition: (data) => data.phase === 'p3-apoc' && !data.p3CalledApoc,
-      delaySeconds: 8.2, // delay to avoid collision with stacks & Spirit Taker
+      condition: (data) => data.phase === 'p3-apoc',
+      delaySeconds: 9.2,
       durationSeconds: 11,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
@@ -1499,8 +1536,8 @@ const triggerSet: TriggerSet<Data> = {
         if (startNum === undefined || rotationDir === undefined)
           return;
 
-        // Safe spot(s) are 1 behind the starting dir and it's opposite (+4)\
-        // Melees can spread one additional dir away from the rotation direction
+        // Safe spot(s) are 1 behind the starting dir and it's opposite (+4)
+        // Melees lean one additional dir away from the rotation direction
         const safe = [
           (startNum - rotationDir + 8) % 8,
           (startNum + 4 - rotationDir + 8) % 8,
@@ -1549,10 +1586,9 @@ const triggerSet: TriggerSet<Data> = {
           .join(output.or!());
         return output.safe!({ dir1: safeStr, dir2: towardStr });
       },
-      run: (data) => data.p3CalledApoc = true,
       outputStrings: {
         safe: {
-          en: 'Apoc Safe: ${dir1} (melee toward ${dir2})',
+          en: 'Safe: ${dir1} (lean ${dir2})',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1567,10 +1603,10 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 6,
       durationSeconds: 3.5,
       suppressSeconds: 1,
-      response: Responses.stackThenSpread('info'),
+      response: Responses.stackThenSpread(),
     },
     {
-      // Fire this just a tiny bit before the first Dark Water debuffs expire (10.0s).
+      // Fire this just before the first Dark Water debuffs expire (10.0s).
       // A tiny bit early (0.2s) won't cause people to leave the stack, but the reaction
       // time on Spirit Taker is very short so the little extra helps.
       id: 'FRU P3 Apoc Spirit Taker',
@@ -1601,11 +1637,30 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.phase === 'p3-apoc' && data.role === 'tank',
       delaySeconds: 3, // delay until the Dark Water stack debuff is just about to expire
       durationSeconds: 2,
-      infoText: (_data, _matches, output) => output.bait!(),
+      infoText: (data, _matches, output) => {
+        const startNum = data.p3ApocFirstDirNum;
+        const rotationDir = data.p3ApocRotationDir;
+        if (startNum === undefined || rotationDir === undefined)
+          return;
+
+        // Safe spot(s) are 2 behind the starting dir and it's opposite (+4)
+        const baitDirs = [
+          (startNum - (rotationDir * 2) + 8) % 8,
+          (startNum + 4 - (rotationDir * 2) + 8) % 8,
+        ];
+        baitDirs.sort((a, b) => a - b);
+
+        const baitStr = baitDirs
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        return output.bait!({ dirs: baitStr });
+      },
       outputStrings: {
         bait: {
-          en: 'Bait Jump?',
+          en: 'Bait Jump (${dirs})?',
         },
+        ...Directions.outputStrings8Dir,
+        or: Outputs.or,
       },
     },
     {
