@@ -61,6 +61,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Turalische Truppen sind erschienen, besiege sie in der Reihenfolge!',
           fr: 'Les troupes de Tuligora sont apparues, tuez-les dans l\'ordre !',
           cn: '图拉尔蔓德拉战队 已生成，按顺序击杀！',
+          ko: '만드라즈 등장, 순서대로 잡기!',
         },
       },
     },
@@ -132,6 +133,13 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Bull Apollyon': '莽撞亚波伦',
         'Golden Molter': '黄金蜕皮蜥',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Bull Apollyon': '황소 아폴리온',
+        'Golden Molter': '황금 허물',
       },
     },
   ],
