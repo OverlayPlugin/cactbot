@@ -196,7 +196,9 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ultimateRel',
       comment: {
         en:
-          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.  
+          Directional output is true north (i.e., "east" means actual east,
+          not wherever is east of the "Y" north spot).`,
       },
       name: {
         en: 'P3 Ultimate Relativity',
