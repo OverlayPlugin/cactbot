@@ -87,7 +87,7 @@ hideall "--sync--"
 256.9 "Sinbound Holy 2 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
 258.5 "Sinbound Holy 3 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
 260.1 "Sinbound Holy 4 (puddles)" #Ability { id: "9D11", source: "Oracle's Reflection" }
-263.9 "Shining Armor + Frost Armor" Ability { id: ["9FC8", "9CF9"], source: ["Oracle's Reflection", "Usurper Of Frost"] }
+263.9 "Shining Armor + Frost Armor" Ability { id: ["9CF8", "9CF9"], source: ["Oracle's Reflection", "Usurper Of Frost"] }
 270.5 "Twin Stillness/Twin Silence" Ability { id: ["9D01", "9D02"], source: "Oracle's Reflection" }
 272.6 "Twin Silence/Twin Stillness" Ability { id: ["9D03", "9D04"], source: "Oracle's Reflection" }
 276.2 "--targetable--"
@@ -113,7 +113,6 @@ hideall "--sync--"
 364.9 "--targetable--"
 370.8 "The House of Light" Ability { id: "9CFC", source: "Usurper of Frost" }
 376.2 "--center--" Ability { id: "9CEF", source: "Usurper of Frost" }
-379.5 "--sync--" StartsUsing { id: "9D20", source: "Usurper of Frost" }
 390.1 "Absolute Zero (enrage)" Ability { id: "9D8D", source: "Usurper of Frost" }
 
 # Timeline entries below here are from FFLogs reports and should be re-generated with valid
@@ -124,6 +123,7 @@ hideall "--sync--"
 # Adds Phase
 # The Heimal Storm casts from the Crystals of Light will stop once they all are killed.
 392.4 "Swelling Frost" Ability { id: "9D21", source: "Usurper of Frost" }
+411.4 "--adds targetable--"
 424.4 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
 425.4 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 428.6 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
@@ -142,48 +142,35 @@ hideall "--sync--"
 
 # Phase Three
 488.8 "--sync--" WasDefeated { target: 'Ice Veil' } window 488.8,10
-500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500.0,0
+500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500.0,5
 514.3 "--targetable--"
 518.3 "Hell's Judgment" Ability { id: "9D49", source: "Oracle of Darkness" }
 521.4 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
 532.4 "Ultimate Relativity" Ability { id: "9D4A", source: "Oracle of Darkness" }
-542.1 "Speed/Quicken/Slow" #Ability { id: "9D65", source: "Oracle of Darkness" }
-544.2 "Dark Fire III" Ability { id: "9D54", source: "Oracle of Darkness" }
-544.2 "Unholy Darkness" #Ability { id: "9D55", source: "Oracle of Darkness" }
-549.3 "Sinbound Meltdown" Ability { id: "9D2B", source: "Delight's Hourglass" }
-551.3 "Sinbound Meltdown (x9)" duration 8.2
-554.0 "Dark Blizzard III" Ability { id: "9D57", source: "Crystal of Darkness" }
-554.0 "Unholy Darkness" Ability { id: "9D55", source: "Crystal of Darkness" }
-558.8 "Sinbound Meltdown (x9)" duration 8.2
-563.6 "Dark Fire III" Ability { id: "9D54", source: "Oracle of Darkness" }
-563.6 "Unholy Darkness" Ability { id: "9D55", source: "Oracle of Darkness" }
-569.3 "Sinbound Meltdown" Ability { id: "9D2B", source: "Delight's Hourglass" }
-571.3 "Sinbound Meltdown (x9)" duration 8.2
-574.9 "Shadoweye" Ability { id: "9D56", source: "Oracle of Darkness" }
-574.9 "Dark Eruption" #Ability { id: "9D52", source: "Oracle of Darkness" }
-574.9 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
-574.9 "Shadoweye" Ability { id: "9D56", source: "Oracle of Darkness" }
+544.2 "Dark Fire III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
+549.3 "Sinbound Meltdown 1 (x10)" Ability { id: "9D2B" } duration 10.2
+554.0 "Dark Fire III/Dark Blizzard III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
+558.8 "Sinbound Meltdown 2 (x10)" Ability { id: "9D2B" } duration 10.2
+563.6 "Dark Fire III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
+569.3 "Sinbound Meltdown 3 (x10)" Ability { id: "9D2B" } duration 10.2
+572.5 "Stun + Rewind"
+575.0 "Shadoweye/Dark Water III/Dark Eruption" Ability { id: "9D56", source: "Oracle of Darkness" }
 578.6 "Shell Crusher" Ability { id: "9D5E", source: "Oracle of Darkness" }
-579.0 "Shell Crusher" Ability { id: "9D5F", source: "Oracle of Darkness" }
 587.1 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
 595.5 "Black Halo" Ability { id: "9D62", source: "Oracle of Darkness" }
 604.6 "Spell-in-Waiting Refrain" Ability { id: "9D4D", source: "Oracle of Darkness" }
 619.7 "Apocalypse" Ability { id: "9D68", source: "Oracle of Darkness" }
 623.1 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
 624.8 "Spirit Taker" Ability { id: "9D60", source: "Oracle of Darkness" }
-625.1 "Spirit Taker" Ability { id: "9D61", source: "Oracle of Darkness" }
 628.0 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
 633.7 "Apocalypse (x6)" duration 10.0
-635.4 "Dark Eruption" Ability { id: "9D51", source: "Oracle of Darkness" }
 636.5 "Dark Eruption" Ability { id: "9D52", source: "Oracle of Darkness" }
 642.1 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
-644.0 "Darkest Dance" Ability { id: "9CF5", source: "Oracle of Darkness" }
-644.4 "Darkest Dance" Ability { id: "9CF6", source: "Oracle of Darkness" }
-647.3 "Darkest Dance" Ability { id: "9CF7", source: "Oracle of Darkness" }
+644.4 "Darkest Dance (jump)" Ability { id: "9CF6", source: "Oracle of Darkness" }
+647.3 "Darkest Dance (knockback)" Ability { id: "9CF7", source: "Oracle of Darkness" }
 651.2 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
 656.6 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
-670.3 "Memory's End" Ability { id: "9D6C", source: "Oracle of Darkness" }
-670.3 "Memory's End" Ability { id: "9D8F", source: "Oracle of Darkness" }
+670.3 "Memory's End (enrage)" Ability { id: "9D6C", source: "Oracle of Darkness" }
 
 # Phase Four
 684.7 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 10,10
