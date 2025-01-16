@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.33.4",
-  "releaseSummary": "Interphos, Jeuno, Cloud Chaotic, more FRU",
-  "releaseInDraft": "false",
+  "version": "0.33.5",
+  "releaseSummary": "KO 7.05, Yuweyawata Field Station, more FRU",
+  "releaseInDraft": "true",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",
