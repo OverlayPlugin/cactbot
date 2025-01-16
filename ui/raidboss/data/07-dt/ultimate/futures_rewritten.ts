@@ -142,6 +142,7 @@ export interface Data extends RaidbossData {
   // P1 -- Fatebreaker
   p1ConcealSafeDirs: DirectionOutput8[];
   p1StackSpread?: 'stack' | 'spread';
+  p1SeenBurnishedGlory: boolean;
   p1FallOfFaithTethers: ('fire' | 'lightning')[];
   // P2 -- Usurper Of Frost
   p2QuadrupleFirstTarget: string;
@@ -237,6 +238,7 @@ const triggerSet: TriggerSet<Data> = {
       phase: 'p1',
       actorSetPosTracker: {},
       p1ConcealSafeDirs: [...Directions.output8Dir],
+      p1SeenBurnishedGlory: false,
       p1FallOfFaithTethers: [],
       p2QuadrupleFirstTarget: '',
       p2QuadrupleDebuffApplied: false,
@@ -388,6 +390,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '9CEA', source: 'Fatebreaker', capture: false },
       response: Responses.bleedAoe(),
+      run: (data) => data.p1SeenBurnishedGlory = true,
     },
     {
       id: 'FRU P1 Burnt Strike Fire',
@@ -457,25 +460,94 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'FRU P1 Fall of Faith Collector',
-      type: 'StartsUsing',
+      type: 'Tether',
       netRegex: {
-        id: ['9CC9', '9CCC'],
+        id: ['00F9', '011F'], // 00F9 = fire; 011F = lightning
         source: ['Fatebreaker', 'Fatebreaker\'s Image'],
         capture: true,
       },
-      durationSeconds: (data) => data.p1FallOfFaithTethers.length >= 3 ? 8.7 : 3,
-      infoText: (data, matches, output) => {
-        const curTether = matches.id === '9CC9' ? 'fire' : 'lightning';
+      // Only collect after Burnished Glory, since '00F9' tethers are used during TotH.
+      condition: (data) => data.phase === 'p1' && data.p1SeenBurnishedGlory,
+      durationSeconds: (data) => data.p1FallOfFaithTethers.length >= 3 ? 12.2 : 3,
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          fire: {
+            en: 'Fire',
+            de: 'Feuer',
+            ja: '炎',
+            cn: '火',
+            ko: '불',
+          },
+          lightning: {
+            en: 'Lightning',
+            de: 'Blitz',
+            ja: '雷',
+            cn: '雷',
+            ko: '번개',
+          },
+          one: {
+            en: '1',
+            de: '1',
+            ja: '1',
+            cn: '1',
+            ko: '1',
+          },
+          two: {
+            en: '2',
+            de: '2',
+            ja: '2',
+            cn: '2',
+            ko: '2',
+          },
+          three: {
+            en: '3',
+            de: '3',
+            ja: '3',
+            cn: '3',
+            ko: '3',
+          },
+          onYou: {
+            en: 'On YOU',
+          },
+          tether: {
+            en: '${num}: ${elem} (${target})',
+            de: '${num}: ${elem} (${target})',
+            ja: '${num}: ${elem} (${target})',
+            cn: '${num}: ${elem} (${target})',
+            ko: '${num}: ${elem} (${target})',
+          },
+          all: {
+            en: '${e1} => ${e2} => ${e3} => ${e4}',
+            de: '${e1} => ${e2} => ${e3} => ${e4}',
+            ja: '${e1} => ${e2} => ${e3} => ${e4}',
+            cn: '${e1} => ${e2} => ${e3} => ${e4}',
+            ko: '${e1} => ${e2} => ${e3} => ${e4}',
+          },
+        };
+
+        const curTether = matches.id === '00F9' ? 'fire' : 'lightning';
         data.p1FallOfFaithTethers.push(curTether);
 
         if (data.p1FallOfFaithTethers.length < 4) {
           const num = data.p1FallOfFaithTethers.length === 1
             ? 'one'
             : (data.p1FallOfFaithTethers.length === 2 ? 'two' : 'three');
-          return output.tether!({
-            num: output[num]!(),
-            elem: output[curTether]!(),
-          });
+          if (data.me === matches.target)
+            return {
+              alertText: output.tether!({
+                num: output[num]!(),
+                elem: output[curTether]!(),
+                target: output.onYou!(),
+              }),
+            };
+          return {
+            infoText: output.tether!({
+              num: output[num]!(),
+              elem: output[curTether]!(),
+              target: data.party.member(matches.target).nick,
+            }),
+          };
         }
 
         const [e1, e2, e3, e4] = data.p1FallOfFaithTethers;
@@ -483,63 +555,14 @@ const triggerSet: TriggerSet<Data> = {
         if (e1 === undefined || e2 === undefined || e3 === undefined || e4 === undefined)
           return;
 
-        return output.all!({
-          e1: output[e1]!(),
-          e2: output[e2]!(),
-          e3: output[e3]!(),
-          e4: output[e4]!(),
-        });
-      },
-      outputStrings: {
-        fire: {
-          en: 'Fire',
-          de: 'Feuer',
-          ja: '炎',
-          cn: '火',
-          ko: '불',
-        },
-        lightning: {
-          en: 'Lightning',
-          de: 'Blitz',
-          ja: '雷',
-          cn: '雷',
-          ko: '번개',
-        },
-        one: {
-          en: '1',
-          de: '1',
-          ja: '1',
-          cn: '1',
-          ko: '1',
-        },
-        two: {
-          en: '2',
-          de: '2',
-          ja: '2',
-          cn: '2',
-          ko: '2',
-        },
-        three: {
-          en: '3',
-          de: '3',
-          ja: '3',
-          cn: '3',
-          ko: '3',
-        },
-        tether: {
-          en: '${num}: ${elem}',
-          de: '${num}: ${elem}',
-          ja: '${num}: ${elem}',
-          cn: '${num}: ${elem}',
-          ko: '${num}: ${elem}',
-        },
-        all: {
-          en: '${e1} => ${e2} => ${e3} => ${e4}',
-          de: '${e1} => ${e2} => ${e3} => ${e4}',
-          ja: '${e1} => ${e2} => ${e3} => ${e4}',
-          cn: '${e1} => ${e2} => ${e3} => ${e4}',
-          ko: '${e1} => ${e2} => ${e3} => ${e4}',
-        },
+        return {
+          infoText: output.all!({
+            e1: output[e1]!(),
+            e2: output[e2]!(),
+            e3: output[e3]!(),
+            e4: output[e4]!(),
+          }),
+        };
       },
     },
     // ************************
