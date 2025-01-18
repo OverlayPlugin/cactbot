@@ -12,9 +12,7 @@ import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO:
-//  - P3: Apoc explosion rotation/safe spots
-//  - P3: Darkest Dance (tb bait)
-//  - P4: Somber Dance (tb bait x2)
+//  - P4 + P5
 
 type Phase = 'p1' | 'p2-dd' | 'p2-mm' | 'p2-lr' | 'p3-ur' | 'p3-apoc' | 'p4-dld' | 'p4-ct' | 'p5';
 const phases: { [id: string]: Phase } = {
@@ -25,7 +23,7 @@ const phases: { [id: string]: Phase } = {
   '9D4D': 'p3-apoc', // Spell-in-Waiting: Refrain (pre-Apocalypse)
   '9D36': 'p4-dld', // Materialization (pre-Darklit Dragonsong)
   '9D6A': 'p4-ct', // Crystallize Time
-  // tbd: 'p5',
+  '9D72': 'p5', // Fulgent Blade
 };
 
 const centerX = 100;
@@ -86,7 +84,10 @@ const newRoleMap = () => ({
   ice: '',
 });
 
-const findNorthDirNum = (dirs: number[]): number => {
+// Helper for Ultimate Relativity that finds relative North based on the yellow-tethered lights
+// It takes an array of dir nums (e.g. 0-8), finds the two dir nums that have a single gap
+// between them (e.g. 1 and 3) -- the apex of the "Y" -- and returns the dir num of the gap.
+const findURNorthDirNum = (dirs: number[]): number => {
   for (let i = 0; i < dirs.length; i++) {
     for (let j = i + 1; j < dirs.length; j++) {
       const [dir1, dir2] = [dirs[i], dirs[j]];
@@ -139,6 +140,7 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     sinboundRotate: 'aacc' | 'addposonly'; // aacc = always away, cursed clockwise
     ultimateRel: 'yNorthDPSEast' | 'none';
+    apoc: 'dpsNE-CW' | 'none';
   };
   // General
   phase: Phase | 'unknown';
@@ -157,8 +159,6 @@ export interface Data extends RaidbossData {
   p2LightsteepedCount: number;
   p2LightRampantPuddles: string[];
   p2SeenFirstHolyLight: boolean;
-  // Intermission
-  intermissionCrystalDeadCount: number;
   // P3 -- Oracle of Darkness
   p3RelativityRoleCount: number;
   p3RelativityDebuff?: RelativityDebuff;
@@ -169,14 +169,16 @@ export interface Data extends RaidbossData {
   p3ApocDebuffCount: number;
   p3ApocDebuffs: ApocDebuffMap;
   p3MyApocDebuff?: ApocDebuffLength;
-  // P4 -- Duo
-  p4RefulgentChains: string[];
-  p4DarklitStacks: string[];
+  p3ApocFirstDirNum?: number;
+  p3ApocRotationDir?: 1 | -1; // 1 = clockwise, -1 = counterclockwise
 }
 
 const triggerSet: TriggerSet<Data> = {
   id: 'FuturesRewrittenUltimate',
   zoneId: ZoneId.FuturesRewrittenUltimate,
+  comments: {
+    en: 'Triggers: P1-3 / Timeline: P1-5',
+  },
   config: [
     {
       id: 'sinboundRotate',
@@ -207,9 +209,9 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ultimateRel',
       comment: {
         en:
-          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
-        de:
-          `Y Norden, DPS O-SW, Supp W-NO: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
+          Directional output is true north (i.e., "east" means actual east,
+          not wherever is east of the "Y" north spot).`,
       },
       name: {
         en: 'P3 Ultimate Relativity',
@@ -221,12 +223,26 @@ const triggerSet: TriggerSet<Data> = {
           'Y North, DPS E-SW, Supp W-NE': 'yNorthDPSEast',
           'Call Debuffs w/ No Positions': 'none',
         },
-        de: {
-          'Y Norden, DPS O-SW, Supp W-NO': 'yNorthDPSEast',
-          'Nenne Debuff ohne Positionen': 'none',
-        },
       },
       default: 'yNorthDPSEast',
+    },
+    {
+      id: 'apoc',
+      comment: {
+        en:
+          `DPS NE->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+      },
+      name: {
+        en: 'P3 Apocalypse',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'DPS NE->S, Support SW->N': 'dpsNE-CW',
+          'Call All Safe': 'none',
+        },
+      },
+      default: 'dpsNE-CW',
     },
   ],
   timelineFile: 'futures_rewritten.txt',
@@ -243,7 +259,6 @@ const triggerSet: TriggerSet<Data> = {
       p2LightsteepedCount: 0,
       p2LightRampantPuddles: [],
       p2SeenFirstHolyLight: false,
-      intermissionCrystalDeadCount: 0,
       p3RelativityRoleCount: 0,
       p3RelativityRoleMap: newRoleMap(),
       p3RelativityStoplights: {},
@@ -256,8 +271,7 @@ const triggerSet: TriggerSet<Data> = {
         long: [],
         none: [],
       },
-      p4RefulgentChains: [],
-      p4DarklitStacks: [],
+      p3CalledApoc: false,
     };
   },
   timelineTriggers: [],
@@ -974,14 +988,11 @@ const triggerSet: TriggerSet<Data> = {
     // Intermission / Crystals
     // ************************
     {
-      id: 'FRU Intermission Crystals Dead',
-      type: 'WasDefeated',
-      netRegex: { target: 'Crystal of Light', capture: false },
-      infoText: (data, _matches, output) => {
-        data.intermissionCrystalDeadCount++;
-        if (data.intermissionCrystalDeadCount === 4)
-          return output.targetVeil!();
-      },
+      id: 'FRU Intermission Target Veil',
+      type: 'LosesEffect',
+      // 307 - Invincibility
+      netRegex: { effectId: '307', target: 'Ice Veil', capture: false },
+      infoText: (_data, _matches, output) => output.targetVeil!(),
       outputStrings: {
         targetVeil: {
           en: 'Target Ice Veil',
@@ -1122,7 +1133,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       // boss tethers to 5 stoplights - 0085 are purple tethers, 0086 are yellow
       netRegex: { id: '0086' },
-      // condition: (data) => data.triggerSetConfig.ultimateRel === 'yNorthDPSEast',
+      condition: (data) => data.phase === 'p3-ur',
       run: (data, matches, output) => {
         const id = matches.sourceId;
         const stoplight = data.p3RelativityStoplights[id];
@@ -1136,7 +1147,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.p3RelativityYellowDirNums.length !== 3)
           return;
 
-        const northDirNum = findNorthDirNum(data.p3RelativityYellowDirNums);
+        const northDirNum = findURNorthDirNum(data.p3RelativityYellowDirNums);
         if (northDirNum === -1 || data.p3RelativityDebuff === undefined) {
           data.p3RelativityMyDirStr = output.unknown!();
           return;
@@ -1416,11 +1427,29 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P3 Black Halo',
       type: 'StartsUsing',
       netRegex: { id: '9D62', source: 'Oracle of Darkness' },
-      response: Responses.sharedTankBuster(),
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          onYou: {
+            en: 'Shared tank cleave on YOU',
+          },
+          share: {
+            en: 'Shared tank cleave on ${target}',
+          },
+          avoid: {
+            en: 'Avoid tank cleave',
+          },
+        };
+        if (data.me === matches.target)
+          return { alertText: output.onYou!() };
+        else if (data.role === 'tank')
+          return { alertText: output.share!({ target: data.party.member(matches.target).nick }) };
+        return { infoText: output.avoid!() };
+      },
     },
     // ***** Apocalypse *****
     {
-      id: 'FRU P3 Apoc Dark Water Collect',
+      id: 'FRU P3 Apoc Dark Water Debuff',
       type: 'GainsEffect',
       netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
       condition: (data) => data.phase === 'p3-apoc',
@@ -1474,15 +1503,166 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
       },
     },
+    // There are 8 combatants (one at each cardinal+intercard) that spawn with a heading indicative
+    // of the mechanic rotation (i.e., all will be facing clockwise or counterclockwise).
+    // There are two combatants that spawn at center with headings indicative of where the first
+    // two outer combatants will explode.  These are always directly opposite, so we only need one.
+    {
+      id: 'FRU P3 Apoc Collect',
+      type: 'CombatantMemory',
+      netRegex: { change: 'Add', pair: [{ key: 'BNpcID', value: '1EB0FF' }] },
+      condition: (data) => data.phase === 'p3-apoc',
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const y = parseFloat(matches.pairPosY ?? '0');
+        const isCenterActor = Math.round(x) === 100 && Math.round(y) === 100;
+        const hdg = parseFloat(matches.pairHeading ?? '0');
+
+        if (data.p3ApocFirstDirNum === undefined && isCenterActor)
+          data.p3ApocFirstDirNum = Directions.hdgTo8DirNum(hdg);
+        else if (data.p3ApocRotationDir === undefined && !isCenterActor) {
+          const pos = Directions.xyTo8DirOutput(x, y, centerX, centerY);
+          const facing = Directions.outputFrom8DirNum(Directions.hdgTo8DirNum(hdg));
+          const relative = getRelativeClockPos(pos, facing);
+          data.p3ApocRotationDir = relative === 'clockwise'
+            ? 1
+            : (relative === 'counterclockwise' ? -1 : undefined);
+        }
+      },
+    },
+    {
+      // Silent early infoText with safe dirs
+      id: 'FRU P3 Apoc Safe Early',
+      type: 'CombatantMemory',
+      netRegex: { change: 'Add', pair: [{ key: 'BNpcID', value: '1EB0FF' }], capture: false },
+      condition: (data) => data.phase === 'p3-apoc',
+      delaySeconds: 0.9, // collect + short delay to avoid collision with Dark Water Debuff
+      durationSeconds: 8.2,
+      suppressSeconds: 1,
+      soundVolume: 0,
+      infoText: (data, _matches, output) => {
+        const startNum = data.p3ApocFirstDirNum;
+        const rotationDir = data.p3ApocRotationDir;
+        if (startNum === undefined || rotationDir === undefined)
+          return;
+
+        // Safe spot(s) are 1 behind the starting dir and it's opposite (+4)
+        const safe = [
+          (startNum - rotationDir + 8) % 8,
+          (startNum + 4 - rotationDir + 8) % 8,
+        ];
+        safe.sort((a, b) => a - b);
+
+        const safeStr = safe
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        return output.safe!({ dir1: safeStr });
+      },
+      tts: null,
+      outputStrings: {
+        safe: {
+          en: '(Apoc safe later: ${dir1})',
+        },
+        ...Directions.outputStrings8Dir,
+        or: Outputs.or,
+      },
+    },
+    {
+      // Displays during Spirit Taker
+      id: 'FRU P3 Apoc Safe',
+      type: 'CombatantMemory',
+      netRegex: { change: 'Add', pair: [{ key: 'BNpcID', value: '1EB0FF' }], capture: false },
+      condition: (data) => data.phase === 'p3-apoc',
+      delaySeconds: 9.2,
+      durationSeconds: 11,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const startNum = data.p3ApocFirstDirNum;
+        const rotationDir = data.p3ApocRotationDir;
+        if (startNum === undefined || rotationDir === undefined)
+          return;
+
+        // Safe spot(s) are 1 behind the starting dir and it's opposite (+4)
+        // Melees lean one additional dir away from the rotation direction
+        const safe = [
+          (startNum - rotationDir + 8) % 8,
+          (startNum + 4 - rotationDir + 8) % 8,
+        ];
+
+        const toward = [
+          (safe[0]! - rotationDir + 8) % 8,
+          (safe[1]! - rotationDir + 8) % 8,
+        ];
+
+        // We shouldn't just sort safe[], and toward[], since the elements are paired
+        // and sorting might impact order of just one and not both.
+        if (safe[0]! > safe[1]!) {
+          safe.reverse();
+          toward.reverse();
+        }
+
+        let safeStr = output['unknown']!();
+        let towardStr = output['unknown']!();
+
+        if (data.triggerSetConfig.apoc === 'dpsNE-CW') {
+          const dpsDirs = [1, 2, 3, 4];
+          const suppDirs = [5, 6, 7, 0];
+          const myDirs = data.role === 'dps' ? dpsDirs : suppDirs;
+
+          // use the index from safe, so we can make sure we're giving the correct 'toward'.
+          const idx = safe.findIndex((idx) => myDirs.includes(idx));
+          if (idx === -1)
+            return output.safe!({ dir1: safeStr, dir2: towardStr });
+
+          const safeDir = safe[idx];
+          const towardDir = toward[idx];
+          if (safeDir === undefined || towardDir === undefined)
+            return output.safe!({ dir1: safeStr, dir2: towardStr });
+
+          safeStr = output[Directions.output8Dir[safeDir] ?? 'unknown']!();
+          towardStr = output[Directions.output8Dir[towardDir] ?? 'unknown']!();
+          return output.safe!({ dir1: safeStr, dir2: towardStr });
+        }
+
+        safeStr = safe
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        towardStr = toward
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        return output.safe!({ dir1: safeStr, dir2: towardStr });
+      },
+      outputStrings: {
+        safe: {
+          en: 'Safe: ${dir1} (lean ${dir2})',
+        },
+        ...Directions.outputStrings8Dir,
+        or: Outputs.or,
+      },
+    },
     {
       id: 'FRU P3 Apoc First Stacks',
       type: 'GainsEffect',
-      netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
-      condition: (data, matches) => data.phase === 'p3-apoc' && parseFloat(matches.duration) < 11,
+      netRegex: { effectId: '99D', capture: false }, // Spell-in-Waiting: Dark Water III
+      // first debuff has 10.0s duration
+      condition: (data) => data.phase === 'p3-apoc',
       delaySeconds: 6,
-      durationSeconds: 6,
+      durationSeconds: 3.5,
       suppressSeconds: 1,
       response: Responses.stackThenSpread(),
+    },
+    {
+      // Fire this just before the first Dark Water debuffs expire (10.0s).
+      // A tiny bit early (0.2s) won't cause people to leave the stack, but the reaction
+      // time on Spirit Taker is very short so the little extra helps.
+      id: 'FRU P3 Apoc Spirit Taker',
+      type: 'GainsEffect',
+      netRegex: { effectId: '99D', capture: false },
+      condition: (data) => data.phase === 'p3-apoc',
+      delaySeconds: 9.8, // first Dark Water Debuffs expire at 10.0s
+      durationSeconds: 2,
+      suppressSeconds: 1,
+      response: Responses.spread('alert'),
     },
     {
       id: 'FRU P3 Apoc Second Stacks',
@@ -1497,7 +1677,40 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'FRU P3 Darkest Dance + Third Stacks',
+      id: 'FRU P3 Apoc Darkest Dance Jump Bait',
+      type: 'StartsUsing',
+      netRegex: { id: '9CF5', source: 'Oracle of Darkness', capture: false },
+      condition: (data) => data.phase === 'p3-apoc' && data.role === 'tank',
+      delaySeconds: 3, // delay until the Dark Water stack debuff is just about to expire
+      durationSeconds: 2,
+      infoText: (data, _matches, output) => {
+        const startNum = data.p3ApocFirstDirNum;
+        const rotationDir = data.p3ApocRotationDir;
+        if (startNum === undefined || rotationDir === undefined)
+          return;
+
+        // Safe spot(s) are 2 behind the starting dir and it's opposite (+4)
+        const baitDirs = [
+          (startNum - (rotationDir * 2) + 8) % 8,
+          (startNum + 4 - (rotationDir * 2) + 8) % 8,
+        ];
+        baitDirs.sort((a, b) => a - b);
+
+        const baitStr = baitDirs
+          .map((dir) => output[Directions.output8Dir[dir] ?? 'unknown']!())
+          .join(output.or!());
+        return output.bait!({ dirs: baitStr });
+      },
+      outputStrings: {
+        bait: {
+          en: 'Bait Jump (${dirs})?',
+        },
+        ...Directions.outputStrings8Dir,
+        or: Outputs.or,
+      },
+    },
+    {
+      id: 'FRU P3 Darkest Dance KB + Third Stacks',
       type: 'Ability',
       netRegex: { id: '9CF5', source: 'Oracle of Darkness', capture: false }, // Darkest Dance (self-targeted)
       durationSeconds: 7,
@@ -1519,109 +1732,7 @@ const triggerSet: TriggerSet<Data> = {
     // ************************
     // P4 -- Duo
     // ************************
-    {
-      id: 'FRU P4 Akh Rhai',
-      type: 'GainsEffect',
-      // no castbar, vfx-based cue
-      // invisible actors spawn 4.6s after this effect is applied and use Akh Rhai
-      netRegex: { effectId: '8E1', capture: false },
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 4.7,
-      suppressSeconds: 1,
-      response: Responses.moveAway('alert'),
-    },
-    // ***** Darklit Dragonsong *****
-    {
-      id: 'FRU P4 Darklit Dragonsong',
-      type: 'StartsUsing',
-      netRegex: { id: '9D6D', source: 'Oracle of Darkness', capture: false },
-      response: Responses.bigAoe(),
-    },
-    {
-      id: 'FRU PP4 Refulgent Chain Collect',
-      type: 'GainsEffect',
-      netRegex: { effectId: '8CD' }, // Refulgent Chain
-      condition: (data) => data.phase === 'p4-dld',
-      run: (data, matches) => data.p4RefulgentChains.push(matches.target),
-    },
-    {
-      id: 'FRU P4 Darklit Stacks',
-      type: 'GainsEffect',
-      netRegex: { effectId: '99D' }, // Spell-in-Waiting: Dark Water III
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 2.5, // delay until after Refulgent Chains go out
-      durationSeconds: 5,
-      infoText: (data, matches, output) => {
-        data.p4DarklitStacks.push(matches.target);
-        if (data.p4DarklitStacks.length !== 2)
-          return;
 
-        const and = output.and!();
-        const targets = data.p4DarklitStacks.map((p) => data.party.member(p).nick).join(and);
-        return output.stacks!({ players: targets });
-      },
-      outputStrings: {
-        stacks: {
-          en: '(stacks after on ${players})',
-          de: '(danach auf ${players} sammeln)',
-        },
-        and: Outputs.and,
-      },
-    },
-    {
-      id: 'FRU P4 Path of Light',
-      type: 'StartsUsing',
-      netRegex: { id: '9CFB', source: 'Usurper of Frost', capture: false },
-      delaySeconds: 3, // 7.7s cast time, give time for tether/stack adjusts
-      alertText: (data, _matches, output) =>
-        data.p4RefulgentChains.includes(data.me) ? output.tether!() : output.bait!(),
-      outputStrings: {
-        tether: {
-          en: 'Soak Tower',
-          de: 'Turm nehmen',
-        },
-        bait: {
-          en: 'Bait Cleave',
-          de: 'Cleave ködern',
-        },
-      },
-    },
-    {
-      id: 'FRU P4 Spirit Taker',
-      type: 'StartsUsing',
-      netRegex: { id: '9D60', source: 'Oracle of Darkness', capture: false },
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 0.5, // delay until after Path of Light snapshots
-      durationSeconds: 2,
-      response: Responses.spread('alert'),
-    },
-    {
-      id: 'FRU P4 Hallowed Wings',
-      type: 'StartsUsing',
-      netRegex: { id: ['9D23', '9D24'], source: 'Usurper of Frost' },
-      condition: (data) => data.phase === 'p4-dld',
-      delaySeconds: 1, // avoid collision with Spirit Taker
-      infoText: (_data, matches, output) => {
-        const dir = matches.id === '9D23' ? 'east' : 'west';
-        return output.combo!({ dir: output[dir]!(), stacks: output.stacks!() });
-      },
-      outputStrings: {
-        combo: {
-          en: '${dir} => ${stacks}',
-          de: '${dir} => ${stacks}',
-        },
-        east: Outputs.east,
-        west: Outputs.west,
-        stacks: Outputs.stacks,
-      },
-    },
-    // ***** Crystallize Time *****
-    {
-      id: 'FRU P4 Crystallize Time',
-      type: 'StartsUsing',
-      netRegex: { id: '9D6A', source: 'Oracle of Darkness', capture: false },
-      response: Responses.bigAoe(),
-    },
     // ************************
     // P5 -- Pandora
     // ************************
@@ -1633,6 +1744,9 @@ const triggerSet: TriggerSet<Data> = {
         'Axe Kick/Scythe Kick': 'Axe/Scythe Kick',
         'Shining Armor + Frost Armor': 'Shining + Frost Armor',
         'Sinbound Fire III/Sinbound Thunder III': 'Sinbound Fire/Thunder',
+        'Dark Fire III/Unholy Darkness': '(spreads/stack)',
+        'Dark Fire III/Dark Blizzard III/Unholy Darkness': '(spreads/donut/stack)',
+        'Shadoweye/Dark Water III/Dark Eruption': '(gazes/stack/spreads)',
       },
     },
     {
@@ -1763,233 +1877,65 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      'locale': 'fr',
       'missingTranslations': true,
+      'locale': 'fr',
       'replaceSync': {
-        'Crystal of Darkness': 'cristal de Ténèbres',
-        'Crystal of Light': 'cristal de Lumière',
-        'Delight\'s Hourglass': 'sablier de plaisir',
-        'Drachen Wanderer': 'esprit du Dragon divin',
-        'Fatebreaker\'s Image': 'double du Sabreur de destins',
         'Fatebreaker(?!\')': 'Sabreur de destins',
-        'Fragment of Fate': 'fragment du futur',
-        'Frozen Mirror': 'miroir de glace',
-        'Holy Light': 'lumière sacrée',
-        'Ice Veil': 'bloc de glaces éternelles',
-        'Oracle of Darkness': 'prêtresse des Ténèbres',
-        'Oracle\'s Reflection': 'reflet de la prêtresse',
-        'Pandora': 'Pandora-Mitron',
-        'Sorrow\'s Hourglass': 'sablier de chagrin',
+        'Fatebreaker\'s Image': 'double du Sabreur de destins',
         'Usurper of Frost': 'Shiva-Mitron',
+        'Oracle\'s Reflection': 'reflet de la prêtresse',
+        'Ice Veil': 'bloc de glaces éternelles',
       },
       'replaceText': {
-        'Absolute Zero': 'Zéro absolu',
-        'Akh Morn': 'Akh Morn',
-        'Akh Rhai': 'Akh Rhai',
-        'Apocalypse': 'Apocalypse',
-        'Axe Kick': 'Jambe pourfendeuse',
-        'Banish III': 'Méga Bannissement',
-        'Black Halo': 'Halo de noirceur',
         'Blastburn': 'Explosion brûlante',
         'Blasting Zone': 'Zone de destruction',
-        'Bright Hunger': 'Lumière dévorante',
         'Burn Mark': 'Marque explosive',
         'Burnished Glory': 'Halo luminescent',
         'Burnout': 'Combustion totale',
         'Burnt Strike': 'Frappe brûlante',
-        'Burst': 'Explosion',
-        'Cruel Path of Darkness': 'Voie intense de Ténèbres',
-        'Cruel Path of Light': 'Voie intense de Lumière',
-        'Crystallize Time': 'Cristallisation temporelle',
         'Cyclonic Break': 'Brisement cyclonique',
-        'Dark Aero III': 'Méga Vent ténébreux',
-        'Dark Blizzard III': 'Méga Glace ténébreuse',
-        'Dark Eruption': 'Éruption ténébreuse',
-        'Dark Fire III': 'Méga Feu ténébreux',
-        'Dark Water III': 'Méga Eau ténébreuse',
-        'Darkest Dance': 'Danse de la nuit profonde',
-        'Darklit Dragonsong': 'Chant de Lumière et de Ténèbres',
-        'Diamond Dust': 'Poussière de diamant',
-        'Drachen Armor': 'Armure des dragons',
-        'Edge of Oblivion': 'Oubli proche',
-        'Endless Ice Age': 'Déluge de Lumière',
         'Explosion': 'Explosion',
         'Fall Of Faith': 'Section illuminée',
         'Floating Fetters': 'Entraves flottantes',
-        'Frigid Needle': 'Dards de glace',
-        'Frigid Stone': 'Rocher de glace',
-        'Fulgent Blade': 'Épées rémanentes',
-        'Hallowed Ray': 'Rayon Miracle',
-        'Hallowed Wings': 'Aile sacrée',
-        'Heavenly Strike': 'Frappe céleste',
-        'Hell\'s Judgment': 'Jugement dernier',
-        'Hiemal Storm': 'Tempête hiémale',
-        'Icicle Impact': 'Impact de stalactite',
-        'Junction': 'Jonction',
-        'Light Rampant': 'Débordement de Lumière',
-        'Longing of the Lost': 'Esprit du Dragon divin',
-        'Luminous Hammer': 'Érosion lumineuse',
-        'Maelstrom': 'Maelström',
-        'Materialization': 'Concrétisation',
-        'Memory\'s End': 'Mort des souvenirs',
-        'Mirror Image': 'Double dans le miroir',
-        'Mirror, Mirror': 'Monde des miroirs',
-        'Morn Afah': 'Morn Afah',
-        'Pandora\'s Box': 'Boîte de Pandore',
-        'Paradise Lost': 'Paradis perdu',
-        'Paradise Regained': 'Paradis retrouvé',
-        'Polarizing Paths': 'Épée astro-ombrale',
-        'Polarizing Strikes': 'Épée astro-ombrale',
         'Powder Mark Trail': 'Marquage fatal enchaîné',
-        'Powerful Light': 'Explosion sacrée',
-        'Quadruple Slap': 'Quadruple gifle',
-        'Quicken': 'Accélération',
-        'Quietus': 'Quietus',
-        'Reflected Scythe Kick': 'Réverbération : Jambe faucheuse',
-        '(?<! )Scythe Kick': 'Jambe faucheuse',
-        'Shadoweye': 'Œil de l\'ombre',
-        'Shell Crusher': 'Broyeur de carapace',
-        'Shockwave Pulsar': 'Pulsar à onde de choc',
         'Sinblaze': 'Embrasement authentique',
-        'Sinbound Blizzard III': 'Méga Glace authentique',
         'Sinbound Fire III': 'Méga Feu authentique',
-        'Sinbound Holy': 'Miracle authentique',
-        'Sinbound Meltdown': 'Fusion authentique',
         'Sinbound Thunder III': 'Méga Foudre authentique',
         'Sinsmite': 'Éclair du péché',
         'Sinsmoke': 'Flammes du péché',
-        'Slow': 'Lenteur',
-        'Somber Dance': 'Danse du crépuscule',
-        'Speed': 'Vitesse',
-        'Spell-in-Waiting Refrain': 'Déphasage incantatoire',
-        'Spirit Taker': 'Arracheur d\'esprit',
-        'Swelling Frost': 'Vague de glace',
-        'The House of Light': 'Raz-de-lumière',
-        'The Path of Darkness': 'Voie de Ténèbres',
-        'The Path of Light': 'Voie de Lumière',
-        'Tidal Light': 'Grand torrent de Lumière',
         'Turn Of The Heavens': 'Cercles rituels',
-        'Twin Silence': 'Entaille de la tranquilité',
-        'Twin Stillness': 'Entaille de la quiétude',
-        'Ultimate Relativity': 'Compression temporelle fatale',
-        'Unholy Darkness': 'Miracle ténébreux',
         'Utopian Sky': 'Ultime paradis',
-        'Wings Dark and Light': 'Ailes de Lumière et de Ténèbres',
       },
     },
     {
-      'locale': 'ja',
       'missingTranslations': true,
+      'locale': 'ja',
       'replaceSync': {
-        'Crystal of Darkness': '闇水晶',
-        'Crystal of Light': '光水晶',
-        'Delight\'s Hourglass': '楽しみの砂時計',
-        'Drachen Wanderer': '聖竜気',
-        'Fatebreaker\'s Image': 'フェイトブレイカーの幻影',
         'Fatebreaker(?!\')': 'フェイトブレイカー',
-        'Fragment of Fate': '未来の欠片',
-        'Frozen Mirror': '氷面鏡',
-        'Holy Light': '聖なる光',
-        'Ice Veil': '永久氷晶',
-        'Oracle of Darkness': '闇の巫女',
-        'Oracle\'s Reflection': '巫女の鏡像',
-        'Pandora': 'パンドラ・ミトロン',
-        'Sorrow\'s Hourglass': '悲しみの砂時計',
+        'Fatebreaker\'s Image': 'フェイトブレイカーの幻影',
         'Usurper of Frost': 'シヴァ・ミトロン',
+        'Oracle\'s Reflection': '巫女の鏡像',
+        'Ice Veil': '永久氷晶',
       },
       'replaceText': {
-        'Absolute Zero': '絶対零度',
-        'Akh Morn': 'アク・モーン',
-        'Akh Rhai': 'アク・ラーイ',
-        'Apocalypse': 'アポカリプス',
-        'Axe Kick': 'アクスキック',
-        'Banish III': 'バニシュガ',
-        'Black Halo': 'ブラックヘイロー',
         'Blastburn': 'バーンブラスト',
         'Blasting Zone': 'ブラスティングゾーン',
-        'Bright Hunger': '浸食光',
         'Burn Mark': '爆印',
         'Burnished Glory': '光焔光背',
         'Burnout': 'バーンアウト',
         'Burnt Strike': 'バーンストライク',
-        'Burst': '爆発',
-        'Cruel Path of Darkness': '闇の重波動',
-        'Cruel Path of Light': '光の重波動',
-        'Crystallize Time': '時間結晶',
         'Cyclonic Break': 'サイクロニックブレイク',
-        'Dark Aero III': 'ダークエアロガ',
-        'Dark Blizzard III': 'ダークブリザガ',
-        'Dark Eruption': 'ダークエラプション',
-        'Dark Fire III': 'ダークファイガ',
-        'Dark Water III': 'ダークウォタガ',
-        'Darkest Dance': '暗夜の舞踏技',
-        'Darklit Dragonsong': '光と闇の竜詩',
-        'Diamond Dust': 'ダイアモンドダスト',
-        'Drachen Armor': 'ドラゴンアーマー',
-        'Edge of Oblivion': '忘却の此方',
-        'Endless Ice Age': '光の氾濫',
         'Explosion': '爆発',
         'Fall Of Faith': 'シンソイルセヴァー',
         'Floating Fetters': '浮遊拘束',
-        'Frigid Needle': 'アイスニードル',
-        'Frigid Stone': 'アイスストーン',
-        'Fulgent Blade': '光塵の剣',
-        'Hallowed Ray': 'ホーリーレイ',
-        'Hallowed Wings': 'ホーリーウィング',
-        'Heavenly Strike': 'ヘヴンリーストライク',
-        'Hell\'s Judgment': 'ヘル・ジャッジメント',
-        'Hiemal Storm': 'ハイマルストーム',
-        'Icicle Impact': 'アイシクルインパクト',
-        'Junction': 'ジャンクション',
-        'Light Rampant': '光の暴走',
-        'Longing of the Lost': '聖竜気',
-        'Luminous Hammer': 'ルミナスイロード',
-        'Maelstrom': 'メイルシュトローム',
-        'Materialization': '具象化',
-        'Memory\'s End': 'エンド・オブ・メモリーズ',
-        'Mirror Image': '鏡写し',
-        'Mirror, Mirror': '鏡の国',
-        'Morn Afah': 'モーン・アファー',
-        'Pandora\'s Box': 'パンドラの櫃',
-        'Paradise Lost': 'パラダイスロスト',
-        'Paradise Regained': 'パラダイスリゲイン',
-        'Polarizing Paths': '星霊の剣',
-        'Polarizing Strikes': '星霊の剣',
         'Powder Mark Trail': '連鎖爆印刻',
-        'Powerful Light': '光爆',
-        'Quadruple Slap': 'クアドラスラップ',
-        'Quicken': 'クイック',
-        'Quietus': 'クワイタス',
-        'Reflected Scythe Kick': 'ミラーリング・サイスキック',
-        '(?<! )Scythe Kick': 'サイスキック',
-        'Shadoweye': 'シャドウアイ',
-        'Shell Crusher': 'シェルクラッシャー',
-        'Shockwave Pulsar': 'ショックウェーブ・パルサー',
         'Sinblaze': 'シンブレイズ',
-        'Sinbound Blizzard III': 'シンブリザガ',
         'Sinbound Fire III': 'シンファイガ',
-        'Sinbound Holy': 'シンホーリー',
-        'Sinbound Meltdown': 'シンメルトン',
         'Sinbound Thunder III': 'シンサンダガ',
         'Sinsmite': 'シンボルト',
         'Sinsmoke': 'シンフレイム',
-        'Slow': 'スロウ',
-        'Somber Dance': '宵闇の舞踏技',
-        'Speed': 'スピード',
-        'Spell-in-Waiting Refrain': 'ディレイスペル・リフレイン',
-        'Spirit Taker': 'スピリットテイカー',
-        'Swelling Frost': '凍波',
-        'The House of Light': '光の津波',
-        'The Path of Darkness': '闇の波動',
-        'The Path of Light': '光の波動',
-        'Tidal Light': '光の大波',
         'Turn Of The Heavens': '転輪召',
-        'Twin Silence': '閑寂の双剣技',
-        'Twin Stillness': '静寂の双剣技',
-        'Ultimate Relativity': '時間圧縮・絶',
-        'Unholy Darkness': 'ダークホーリー',
         'Utopian Sky': '楽園絶技',
-        'Wings Dark and Light': '光と闇の片翼',
       },
     },
   ],
