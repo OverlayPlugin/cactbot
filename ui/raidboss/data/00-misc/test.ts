@@ -27,6 +27,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'CactbotTest',
   zoneId: ZoneId.MiddleLaNoscea,
+  comments: {
+    en: 'Cactbot test triggers',
+  },
   config: [
     {
       id: 'testTriggerOutput',
@@ -442,10 +445,32 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'Test Trigger Countdown',
+      type: 'GameLog',
+      netRegex: {
+        line: 'cactbot test trigger countdown.*?',
+        code: Util.gameLogCodes.echo,
+        capture: false,
+      },
+      delaySeconds: 2,
+      durationSeconds: 7, // should cause countdown to be displayed at 0.0 for 2 seconds.
+      countdownSeconds: 5,
+      infoText: (_data, _matches, output) => {
+        return output.text!();
+      },
+      outputStrings: {
+        text: {
+          en: 'Trigger countdown test',
+          ko: '트리거 카운트다운 테스트',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
       locale: 'de',
+      missingTranslations: true,
       replaceSync: {
         'You bid farewell to the striking dummy': 'Du winkst der Trainingspuppe zum Abschied zu',
         'You bow courteously to the striking dummy':
@@ -486,6 +511,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'fr',
+      missingTranslations: true,
       replaceSync: {
         'cactbot lang': 'cactbot langue',
         'cactbot test response': 'cactbot test de réponse',
@@ -570,6 +596,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'cn',
+      missingTranslations: true,
       replaceSync: {
         'You bid farewell to the striking dummy': '.*向木人告别',
         'You bow courteously to the striking dummy': '.*恭敬地对木人行礼',
@@ -621,6 +648,7 @@ const triggerSet: TriggerSet<Data> = {
         'cactbot test watch': 'cactbot 탐지 테스트',
         'cactbot test combatant cast': 'cactbot 스킬 시전 테스트',
         'cactbot test outputStrings': 'cactbot outputStrings 테스트',
+        'cactbot test trigger countdown': 'cactbot 트리거 카운트다운 테스트',
         'You clap for the striking dummy': '.*나무인형에게 박수를 보냅니다',
         'You psych yourself up alongside the striking dummy': '.*나무인형에게 힘을 불어넣습니다',
         'You poke the striking dummy': '.*나무인형을 쿡쿡 찌릅니다',

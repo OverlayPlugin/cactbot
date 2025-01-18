@@ -28,7 +28,10 @@ jobs:
     needs: check-gh-pages
     if: needs.check-gh-pages.outputs.found == 'true'
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: ./.github/actions/setup-js-env
 

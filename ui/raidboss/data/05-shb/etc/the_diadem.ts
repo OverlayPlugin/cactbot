@@ -8,6 +8,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'TheDiadem',
   zoneId: ZoneId.TheDiadem,
+  comments: {
+    en: 'Inactivity warning and timed node spawn alert',
+  },
   resetWhenOutOfCombat: false,
   triggers: [
     // https://xivapi.com/LogMessage/916

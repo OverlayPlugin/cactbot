@@ -1,4 +1,6 @@
 import { UnreachableCode } from '../../../../resources/not_reached';
+import { LooseTimelineTrigger } from '../../../../types/trigger';
+import { PopupText } from '../../popup-text';
 import { RaidbossOptions } from '../../raidboss_options';
 import { TimelineUI } from '../../timeline';
 import { Event } from '../../timeline_parser';
@@ -23,6 +25,9 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
   emulatedStatus = 'pause';
   $barContainer: HTMLElement;
   $progressTemplate: HTMLElement;
+
+  popupText?: PopupText;
+
   constructor(protected options: RaidbossOptions) {
     super();
     const container = document.querySelector('.timer-bar-container');
@@ -100,6 +105,10 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
     bar.$bar.style.width = `${barProg}%`;
   }
 
+  setPopupText(popupText: PopupText): void {
+    this.popupText = popupText;
+  }
+
   override Init(): void {
     // This space intentionally left blank
   }
@@ -167,5 +176,58 @@ export default class RaidEmulatorTimelineUI extends TimelineUI {
       if (expired && this.options.KeepExpiredTimerBarsForSeconds)
         bar.forceRemoveAt += this.options.KeepExpiredTimerBarsForSeconds * 1000;
     });
+  }
+
+  // Override
+  public override OnShowInfoText(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        infoText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnShowAlertText(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        alertText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnShowAlarmText(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        alarmText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnSpeakTTS(text: string, currentTime: number): void {
+    this.popupText?.OnTrigger(
+      {
+        infoText: text,
+        tts: text,
+      },
+      null,
+      currentTime,
+    );
+  }
+
+  public override OnTrigger(
+    trigger: LooseTimelineTrigger,
+    matches: RegExpExecArray | null,
+    currentTime: number,
+  ): void {
+    this.popupText?.OnTrigger(trigger, matches, currentTime);
   }
 }

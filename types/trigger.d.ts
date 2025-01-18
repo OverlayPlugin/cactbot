@@ -219,6 +219,8 @@ export type BaseTriggerSet<Data extends RaidbossData> = {
   timelineTriggers?: TimelineTrigger<Data>[];
   timelineReplace?: TimelineReplacement[];
   timelineStyles?: TimelineStyle[];
+  // Comments to be displayed alongside this trigger set where appropriate
+  comments?: LocaleText;
 };
 
 // If Data contains required properties that are not on RaidbossData, require initData

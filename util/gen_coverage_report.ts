@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import { Octokit } from '@octokit/core';
+import { paginateRest } from '@octokit/plugin-paginate-rest';
+import { simpleGit } from 'simple-git';
+
 import contentList from '../resources/content_list';
 import ContentType from '../resources/content_type';
 import { isLang, Lang, languages } from '../resources/languages';
@@ -11,7 +15,14 @@ import { LooseOopsyTriggerSet } from '../types/oopsy';
 import { LooseTriggerSet } from '../types/trigger';
 import { oopsyTriggerSetFields } from '../ui/oopsyraidsy/oopsy_fields';
 
-import { Coverage, CoverageEntry, CoverageTotals, TranslationTotals } from './coverage/coverage.d';
+import {
+  Coverage,
+  CoverageEntry,
+  CoverageTotals,
+  Pulls,
+  Tags,
+  TranslationTotals,
+} from './coverage/coverage.d';
 import { findMissingTranslations, MissingTranslationErrorType } from './find_missing_translations';
 import findManifestFiles from './manifest';
 
@@ -25,6 +36,17 @@ type MissingTranslations = {
 type MissingTranslationsDict = {
   [lang in Lang]?: MissingTranslations[];
 };
+
+type SimpleGit = ReturnType<typeof simpleGit>;
+
+// This hash is the default "initial commit" hash for git, all repos have it
+// If for some reason the entire git tree is re-imported into a newer version of git,
+// the default commit hash will be an SHA-256 hash as follows instead:
+// 6ef19b41225c5369f1c104d45d8d85efa9b057b53b14b4b9b939dd74decc5321
+// This can be derived as needed via `git hash-object -t tree /dev/null`
+const DEFAULT_COMMIT_HASH = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
+
+const notUndefined = <T>(v: T | undefined): v is T => v !== undefined;
 
 // Paths are relative to current file.
 // We can't import the manifest directly from util/ because that's webpack magic,
@@ -50,6 +72,8 @@ const emptyCoverage = (): CoverageEntry => {
       num: 0,
     },
     timeline: {},
+    files: [],
+    lastModified: 0,
   };
 };
 
@@ -61,6 +85,7 @@ const processRaidbossFile = (
   timelineContents: string | undefined,
   coverage: Coverage,
   missingTranslations: MissingTranslationsDict,
+  isSingle: boolean,
 ) => {
   let numTriggers = 0;
   if (triggerSet.triggers)
@@ -69,6 +94,10 @@ const processRaidbossFile = (
     numTriggers += triggerSet.timelineTriggers.length;
 
   const thisCoverage = coverage[zoneId] ??= emptyCoverage();
+
+  thisCoverage.files.push({ name: triggerFileName });
+  if (timelineFileName !== undefined)
+    thisCoverage.files.push({ name: timelineFileName });
 
   const timelineEntry: Coverage[string]['timeline'] = {};
   // 1000 here is an arbitrary limit to ignore stub timeline files that haven't been filled out.
@@ -83,6 +112,9 @@ const processRaidbossFile = (
 
   thisCoverage.timeline = timelineEntry;
   thisCoverage.triggers.num = numTriggers;
+  thisCoverage.comments = triggerSet.comments;
+  if (isSingle)
+    thisCoverage.label = triggerSet.zoneLabel;
 
   for (const [lang, missing] of Object.entries(missingTranslations)) {
     if (!isLang(lang))
@@ -137,7 +169,7 @@ const processRaidbossCoverage = async (
     // Only process real zones.
     if (zoneId === ZoneId.MatchAll)
       continue;
-    if (!Array.isArray(zoneId) && (!ZoneInfo[zoneId] || !contentList.includes(zoneId)))
+    if (!Array.isArray(zoneId) && !ZoneInfo[zoneId])
       continue;
 
     // TODO: this is kind of a hack, and maybe we should do this better.
@@ -155,6 +187,7 @@ const processRaidbossCoverage = async (
           timelineContents,
           coverage,
           missingTranslations,
+          false,
         );
     } else {
       processRaidbossFile(
@@ -165,12 +198,14 @@ const processRaidbossCoverage = async (
         timelineContents,
         coverage,
         missingTranslations,
+        true,
       );
     }
   }
 };
 
 const processOopsyFile = (
+  triggerFileName: string,
   _triggerFile: string,
   zoneId: number,
   triggerSet: LooseOopsyTriggerSet,
@@ -194,6 +229,9 @@ const processOopsyFile = (
 
   const thisCoverage = coverage[zoneId] ??= emptyCoverage();
   thisCoverage.oopsy = { num: numTriggers };
+  thisCoverage.files.push({
+    name: triggerFileName.replace(/^\.\.\//, ''),
+  });
 };
 
 const processOopsyCoverage = async (manifest: string, coverage: Coverage) => {
@@ -217,16 +255,16 @@ const processOopsyCoverage = async (manifest: string, coverage: Coverage) => {
     // Only process real zones.
     if (zoneId === ZoneId.MatchAll)
       continue;
-    if (!Array.isArray(zoneId) && (!ZoneInfo[zoneId] || !contentList.includes(zoneId)))
+    if (!Array.isArray(zoneId) && !ZoneInfo[zoneId])
       continue;
 
     if (Array.isArray(zoneId)) {
       for (const id of zoneId) {
         if (id !== ZoneId.MatchAll)
-          processOopsyFile(line, id, triggerSet, coverage);
+          processOopsyFile(triggerFileName, line, id, triggerSet, coverage);
       }
     } else {
-      processOopsyFile(line, zoneId, triggerSet, coverage);
+      processOopsyFile(triggerFileName, line, zoneId, triggerSet, coverage);
     }
   }
 };
@@ -377,17 +415,21 @@ const writeCoverageReport = (
   coverage: Coverage,
   totals: CoverageTotals,
   translationTotals: TranslationTotals,
+  tags: Tags,
+  pulls: Pulls,
 ) => {
   const str = `// Auto-generated from ${currentFileName}\n` +
     `// DO NOT EDIT THIS FILE DIRECTLY\n\n` +
     `// Disable eslint for auto-generated file\n` +
     `/* eslint-disable */\n` +
-    `import { Coverage, CoverageTotals, TranslationTotals } from './coverage.d';\n\n` +
+    `import { Coverage, CoverageTotals, TranslationTotals, Tags, Pulls } from './coverage.d';\n\n` +
     `export const coverage: Coverage = ${JSON.stringify(coverage, undefined, 2)};\n\n` +
     `export const coverageTotals: CoverageTotals = ${JSON.stringify(totals, undefined, 2)};\n` +
     `export const translationTotals: TranslationTotals = ${
       JSON.stringify(translationTotals, undefined, 2)
-    };\n`;
+    };\n` +
+    `export const tags: Tags = ${JSON.stringify(tags, undefined, 2)};\n` +
+    `export const pulls: Pulls = ${JSON.stringify(pulls, undefined, 2)};\n`;
 
   // Overwrite the file, if it already exists.
   const flags = 'w';
@@ -438,7 +480,143 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
   }
 };
 
+const mapCoverageTags = async (coverage: Coverage, git: SimpleGit, tags: Tags) => {
+  const reverseOrderTags = Object.keys(tags).reverse();
+
+  for (const coverageEntry of Object.values(coverage)) {
+    for (const file of coverageEntry.files) {
+      const logData = await git.log({
+        file: file.name,
+        maxCount: 1,
+      });
+
+      if (logData === undefined)
+        continue;
+
+      const latest = logData.latest;
+      if (latest !== null) {
+        coverageEntry.lastModified = Math.max(
+          coverageEntry.lastModified,
+          (new Date(latest.date)).getTime(),
+        );
+        file.commit = latest.hash;
+      }
+
+      if (file.commit !== undefined) {
+        for (const tag of reverseOrderTags) {
+          const tagFile = tags[tag]?.files.find((tagFile) => tagFile.name === file.name);
+          if (tagFile) {
+            file.tag = tag;
+            file.tagHash = tagFile.hash;
+            break;
+          }
+        }
+      }
+    }
+  }
+};
+
+const extractTagsAndPulls = async (git: SimpleGit) => {
+  const tagData = await git.tags({
+    '--format': '%(objectname)|%(refname:strip=2)|%(authordate)|%(*authordate)',
+  });
+
+  const unsortedTags: (Tags[string] & { name: string })[] = [];
+
+  for (const tag of tagData?.all ?? []) {
+    const [tagHash, tagName, tagDate, commitDate] = tag.split('|', 4);
+    if (
+      tagHash === undefined || tagName === undefined ||
+      tagDate === undefined || commitDate === undefined
+    )
+      continue;
+    let tagDateObj = new Date(tagDate);
+    if (isNaN(tagDateObj.getTime())) {
+      tagDateObj = new Date(commitDate);
+    }
+    unsortedTags.push({
+      name: tagName,
+      tagDate: tagDateObj.getTime(),
+      tagHash: tagHash,
+      files: [],
+    });
+  }
+
+  const tags: Tags = {};
+
+  let lastVersion = DEFAULT_COMMIT_HASH;
+
+  for (const tag of unsortedTags.sort((l, r) => l.tagDate - r.tagDate)) {
+    const result = await git.raw(['diff-tree', '-r', lastVersion, tag.name]);
+    lastVersion = tag.name;
+
+    tags[tag.name] = {
+      tagDate: tag.tagDate,
+      tagHash: tag.tagHash,
+      files: result.split('\n').map((line) => {
+        const matches =
+          /^:(?<oldMode>[^\s]+) (?<newMode>[^\s]+) (?<oldHash>[^\s]+) (?<newHash>[^\s]+) (?<action>[^\s]+)\s*(?<name>[^\s].*?)$/
+            .exec(line);
+
+        return {
+          hash: matches?.groups?.['newHash'] ?? '',
+          name: matches?.groups?.['name'] ?? '',
+        };
+      }),
+    };
+  }
+
+  const pulls: Pulls = [];
+
+  const octokit = new (Octokit.plugin(paginateRest))();
+
+  const openPulls = await octokit.paginate('GET /repos/{owner}/{repo}/pulls', {
+    owner: 'OverlayPlugin',
+    repo: 'cactbot',
+    state: 'open',
+  });
+
+  for (const openPull of openPulls) {
+    const pullFiles = await octokit.paginate(
+      'GET /repos/{owner}/{repo}/pulls/{pull_number}/files',
+      {
+        owner: 'OverlayPlugin',
+        repo: 'cactbot',
+        // eslint-disable-next-line camelcase
+        pull_number: openPull.number,
+      },
+    );
+
+    const files = pullFiles.map((f) => f.filename);
+
+    const zones = pullFiles
+      .filter((f) =>
+        (f.filename.startsWith('ui/raidboss/data') ||
+          f.filename.startsWith('ui/oopsyraidsy/data')) && f.filename.endsWith('.ts')
+      )
+      .map((f) => /ZoneId\.([a-zA-Z0-9]+)/.exec(f.patch ?? '')?.[1])
+      .filter(notUndefined)
+      .map((zoneId) =>
+        zoneId in ZoneId ? ZoneId[zoneId as keyof typeof ZoneId] as number : undefined
+      )
+      .filter(notUndefined);
+
+    pulls.push({
+      number: openPull.number,
+      title: openPull.title,
+      url: openPull.html_url,
+      files: files,
+      zones: zones,
+    });
+  }
+  return { tags, pulls };
+};
+
 (async () => {
+  const git = simpleGit();
+
+  const { tags, pulls }: { tags: Tags; pulls: Pulls } = await extractTagsAndPulls(git);
+
   // Do this prior to chdir which conflicts with find_missing_timeline_translations.ts.
   // FIXME: make that script more robust to cwd.
   const missingTranslations = await processMissingTranslations();
@@ -454,11 +632,22 @@ const writeMissingTranslations = (missing: MissingTranslations[], outputFileName
   const currentPathAndFile = process.argv?.[1] ?? '';
   const currentFileName = path.basename(currentPathAndFile);
   process.chdir(path.dirname(currentPathAndFile));
-  const coverage = {};
+  const coverage: Coverage = {};
   await processRaidbossCoverage(raidbossManifest, coverage, missingTranslations);
   await processOopsyCoverage(oopsyManifest, coverage);
+
+  await mapCoverageTags(coverage, git, tags);
+
   const { totals, translationTotals } = buildTotals(coverage, missingTranslations);
-  writeCoverageReport(currentFileName, outputFileName, coverage, totals, translationTotals);
+  writeCoverageReport(
+    currentFileName,
+    outputFileName,
+    coverage,
+    totals,
+    translationTotals,
+    tags,
+    pulls,
+  );
 })().catch((e) => {
   console.error(e);
   process.exit(1);

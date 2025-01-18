@@ -3,7 +3,7 @@
 # This is an example of how to override your timeline.
 #
 # The original file is in:
-# https://github.com/quisquous/cactbot/blob/main/ui/raidboss/data/00-misc/test.txt
+# https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/00-misc/test.txt
 
 0 "--Reset--" sync /You bid farewell to the striking dummy/ window 10000 jump 0
 

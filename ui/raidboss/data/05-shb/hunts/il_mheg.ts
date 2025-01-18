@@ -8,6 +8,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'IlMheg',
   zoneId: ZoneId.IlMheg,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Pauldia Rusting Claw',

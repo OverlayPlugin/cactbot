@@ -17,6 +17,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'TheForbiddenLandEurekaHydatos',
   zoneId: ZoneId.TheForbiddenLandEurekaHydatos,
+  comments: {
+    en: 'Baldesion Arsenal triggers/timelines only',
+  },
   timelineFile: 'eureka_hydatos.txt',
   resetWhenOutOfCombat: false,
   timelineTriggers: [

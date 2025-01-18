@@ -17,6 +17,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'UltimaThule',
   zoneId: ZoneId.UltimaThule,
+  comments: {
+    en: 'Hunts and Chi boss FATE',
+  },
   triggers: [
     {
       id: 'Hunt Arch-Eta Energy Wave',

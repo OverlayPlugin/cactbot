@@ -85,7 +85,7 @@ Cactbot 将按照字母顺序优先加载用户文件夹中的子文件夹里的
 
 如果没有选择，Cactbot 将自动选择其安装目录下的默认文件夹。
 
-建议你选择 Cactbot 安装目录下的 `cactbot/user` 文件夹。该文件夹通常为位于 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot-version\cactbot\user`。 有部分示例配置文件位于 [此文件夹](../../user) 下。
+建议你选择 Cactbot 安装目录下的 `cactbot/user` 文件夹。该文件夹通常为位于 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot\user`。 有部分示例配置文件位于 [此文件夹](../../user) 下。
 
 ## 样式自定义
 

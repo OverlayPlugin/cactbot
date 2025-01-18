@@ -8,6 +8,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'Labyrinthos',
   zoneId: ZoneId.Labyrinthos,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Hulder Lay of Mislaid Memory',

@@ -11,6 +11,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'Kholusia',
   zoneId: ZoneId.Kholusia,
+  comments: {
+    en: 'Hunts, missing Formidable boss FATE',
+  },
   triggers: [
     {
       id: 'Hunt Lil Murderer Goblin Punch',

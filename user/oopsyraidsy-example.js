@@ -1,10 +1,16 @@
-// Rename this file to `oopsyraidsy.js` then edit to change the oopsyraidsy ui.
+// Rename this file to `oopsyraidsy.js` then edit to change the oopsyraidsy UI.
+
+// This file is JavaScript.  Anything after "//" on a line is a comment.
+// If you edit this file, remember to reload ACT or click the "Reload overlay"
+// button on the oopsyraidsy overlay.
+// If there are errors in this file, they will appear in the OverlayPlugin.dll
+// log window in ACT.
 
 // A set of triggers to be ignored. The key is the 'id' of the trigger, and
 // the value should be true if the trigger is to be ignored, whereas false
 // will have no effect.  The trigger ids can be found in the trigger files for
 // each fight in the files inside of this directory:
-// https://github.com/quisquous/cactbot/tree/main/ui/oopsyraidsy/data/
+// https://github.com/OverlayPlugin/cactbot/tree/main/ui/oopsyraidsy/data
 Options.DisabledTriggers = {
   'General Rabbit Medium': true,
   'General Early Pull': true,
@@ -28,7 +34,7 @@ Options.PlayerNicks = {
 Options.AbilityIdNameMap['26CA'] = 'White Swirly';
 
 // An array of user-defined triggers, in the format defined in the readme:
-// https://github.com/quisquous/cactbot/tree/main/docs/OopsyraidsyGuide.md
+// https://github.com/OverlayPlugin/cactbot/blob/main/docs/OopsyraidsyGuide.md
 //
 // Here's an example trigger to show a line in the mistake log when
 // you crit adlo yourself in Summerford Farms.

@@ -134,6 +134,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'LivingMemory',
   zoneId: ZoneId.LivingMemory,
+  comments: {
+    en: 'Hunts and Mica the Magical Mu boss FATE',
+  },
   initData: () => ({
     executionSafe: [],
     forecastSafe: [],

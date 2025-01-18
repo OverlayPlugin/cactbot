@@ -4,6 +4,7 @@ import { isLang, Lang, langMap, langToLocale, languages } from '../../resources/
 import { UnreachableCode } from '../../resources/not_reached';
 import ZoneInfo from '../../resources/zone_info';
 import { LocaleObject, LocaleText } from '../../types/trigger';
+import { kPrefixToCategory } from '../../ui/config/config';
 
 import {
   Coverage,
@@ -12,7 +13,7 @@ import {
   CoverageTotals,
   TranslationTotals,
 } from './coverage.d';
-import { coverage, coverageTotals, translationTotals } from './coverage_report';
+import { coverage, coverageTotals, pulls, tags, translationTotals } from './coverage_report';
 
 import './coverage.css';
 
@@ -24,62 +25,19 @@ const emptyTotal: CoverageTotalEntry = {
 
 // TODO: these tables are pretty wide, add some sort of alternating highlight?
 // TODO: make it possible to click on a zone row and highlight/link to it.
+type exKeys = Exclude<keyof typeof kPrefixToCategory, '00-misc' | 'user'>;
 
-// TODO: borrowed from ui/config/config.js
-// Probably this should live somewhere else.
-const exVersionToName = {
-  '0': {
-    en: 'A Realm Reborn (ARR 2.x)',
-    de: 'A Realm Reborn (ARR 2.x)',
-    fr: 'A Realm Reborn (ARR 2.x)',
-    ja: '新生エオルゼア (2.x)',
-    cn: '重生之境 (2.x)',
-    ko: '신생 에오르제아 (2.x)',
-  },
-  '1': {
-    en: 'Heavensward (HW 3.x)',
-    de: 'Heavensward (HW 3.x)',
-    fr: 'Heavensward (HW 3.x)',
-    ja: '蒼天のイシュガルド (3.x)',
-    cn: '苍穹之禁城 (3.x)',
-    ko: '창천의 이슈가르드 (3.x)',
-  },
-  '2': {
-    en: 'Stormblood (SB 4.x)',
-    de: 'Stormblood (SB 4.x)',
-    fr: 'Stormblood (SB 4.x)',
-    ja: '紅蓮のリベレーター (4.x)',
-    cn: '红莲之狂潮 (4.x)',
-    ko: '홍련의 해방자 (4.x)',
-  },
-  '3': {
-    en: 'Shadowbringers (ShB 5.x)',
-    de: 'Shadowbringers (ShB 5.x)',
-    fr: 'Shadowbringers (ShB 5.x)',
-    ja: '漆黒のヴィランズ (5.x)',
-    cn: '暗影之逆焰 (5.x)',
-    ko: '칠흑의 반역자 (5.x)',
-  },
-  '4': {
-    en: 'Endwalker (EW 6.x)',
-    de: 'Endwalker (EW 6.x)',
-    fr: 'Endwalker (EW 6.x)',
-    ja: '暁月のフィナーレ (6.x)',
-    cn: '晓月之终途 (6.x)',
-    ko: '효월의 종언 (6.x)',
-  },
-  '5': {
-    en: 'Dawntrail (DT 7.x)',
-    de: 'Dawntrail (DT 7.x)',
-    fr: 'Dawntrail (DT 7.x)',
-    ja: '黄金のレガシー (7.x)',
-    cn: '金曦之遗辉 (7.x)',
-    ko: '황금의 유산 (7.x)',
-  },
-} as const;
+const exVersionToDirName: readonly exKeys[] = [
+  '02-arr',
+  '03-hw',
+  '04-sb',
+  '05-shb',
+  '06-ew',
+  '07-dt',
+] as const;
 
-const exVersionToShortName: { [exVersion: string]: LocaleText } = {
-  '0': {
+const exVersionToShortName: { [exVersion in exKeys]: LocaleText } = {
+  '02-arr': {
     en: 'ARR',
     de: 'ARR',
     fr: 'ARR',
@@ -87,7 +45,7 @@ const exVersionToShortName: { [exVersion: string]: LocaleText } = {
     cn: '2.X',
     ko: '신생',
   },
-  '1': {
+  '03-hw': {
     en: 'HW',
     de: 'HW',
     fr: 'HW',
@@ -95,7 +53,7 @@ const exVersionToShortName: { [exVersion: string]: LocaleText } = {
     cn: '3.X',
     ko: '창천',
   },
-  '2': {
+  '04-sb': {
     en: 'SB',
     de: 'SB',
     fr: 'SB',
@@ -103,7 +61,7 @@ const exVersionToShortName: { [exVersion: string]: LocaleText } = {
     cn: '4.X',
     ko: '홍련',
   },
-  '3': {
+  '05-shb': {
     en: 'ShB',
     de: 'ShB',
     fr: 'ShB',
@@ -111,7 +69,7 @@ const exVersionToShortName: { [exVersion: string]: LocaleText } = {
     cn: '5.X',
     ko: '칠흑',
   },
-  '4': {
+  '06-ew': {
     en: 'EW',
     de: 'EW',
     fr: 'EW',
@@ -119,7 +77,7 @@ const exVersionToShortName: { [exVersion: string]: LocaleText } = {
     cn: '6.X',
     ko: '효월',
   },
-  '5': {
+  '07-dt': {
     en: 'DT',
     de: 'DT',
     fr: 'DT',
@@ -241,6 +199,12 @@ const zoneGridHeaders = {
     cn: '已翻译',
     ko: '번역됨',
   },
+  releaseVersion: {
+    en: 'Release Version',
+  },
+  comments: {
+    en: 'Comments',
+  },
 } as const;
 
 const miscStrings = {
@@ -289,6 +253,22 @@ const miscStrings = {
     ja: 'エラー：npm run coverage-report を実行し、データを生成しよう。',
     cn: '错误：请先运行 npm run coverage-report 以生成数据。',
     ko: '에러: 데이터를 생성하려면 node npm run coverage-report를 실행하세요.',
+  },
+  // Indicator that content is unsupported
+  unsupported: {
+    en: 'Unsupported',
+  },
+  // Indicator that content has not had a release yet
+  unreleased: {
+    en: 'Unreleased',
+  },
+  // Prefix for hover text of release version column
+  mergeDate: {
+    en: 'Merge Date: ',
+  },
+  // Prefix for hover text of release version column
+  releaseDate: {
+    en: 'Release Date: ',
   },
 } as const;
 
@@ -345,6 +325,7 @@ const addDiv = (container: HTMLElement, cls: string, text?: string) => {
   if (text !== undefined)
     div.innerHTML = text;
   container.appendChild(div);
+  return div;
 };
 
 const buildExpansionGrid = (container: HTMLElement, lang: Lang, totals: CoverageTotals) => {
@@ -359,11 +340,13 @@ const buildExpansionGrid = (container: HTMLElement, lang: Lang, totals: Coverage
   addDiv(container, 'label', translate(miscStrings.oopsy, lang));
 
   // By expansion.
-  for (const [exVersion, name] of Object.entries(exVersionToName)) {
+  for (const exKey of exVersionToDirName) {
+    const name = kPrefixToCategory[exKey];
+    const exIndex = exVersionToDirName.indexOf(exKey);
     const expansionName = translate(name, lang);
     addDiv(container, 'header', expansionName);
 
-    const versionInfo = totals.byExpansion[exVersion];
+    const versionInfo = totals.byExpansion[exIndex];
     const overall = versionInfo?.overall ?? emptyTotal;
     addDiv(container, 'data', `${overall.raidboss} / ${overall.total}`);
 
@@ -421,96 +404,197 @@ const buildZoneGrid = (container: HTMLElement, lang: Lang, coverage: Coverage) =
       addDiv(container, 'label', translate(header, lang));
   }
 
+  const buildRow = (
+    zoneId: number,
+    exDirName: exKeys | '00-misc',
+    zone: (typeof ZoneInfo)[number],
+  ) => {
+    const zoneCoverage: CoverageEntry = coverage[zoneId] ?? {
+      oopsy: { num: 0 },
+      triggers: { num: 0 },
+      timeline: {},
+      files: [],
+      lastModified: 0,
+    };
+
+    // Build in order of zone grid headers, so the headers can be rearranged
+    // and the data will follow.
+    const headerFuncs: Record<keyof typeof zoneGridHeaders, () => void> = {
+      expansion: () => {
+        const shortName = kPrefixToCategory[exDirName];
+        const text = shortName !== undefined ? translate(shortName, lang) : undefined;
+        addDiv(container, 'text', text);
+      },
+      type: () => {
+        const label = zone.contentType !== undefined
+          ? contentTypeToLabel[zone.contentType]
+          : undefined;
+        const text = label !== undefined ? translate(label, lang) : undefined;
+        addDiv(container, 'text', text);
+      },
+      name: () => {
+        let name = translate(zoneCoverage.label ?? zone.name, lang);
+        name = name.replace('<Emphasis>', '<i>');
+        name = name.replace('</Emphasis>', '</i>');
+        const div = addDiv(container, 'text', name);
+        div.id = `${zoneId}_${name.replaceAll(/[^a-zA-Z0-9 ]/g, '').replaceAll(' ', '_')}`;
+      },
+      triggers: () => {
+        const emoji = zoneCoverage.triggers.num > 0 ? '✔️' : undefined;
+        addDiv(container, 'emoji', emoji);
+      },
+      timeline: () => {
+        let emoji = undefined;
+        if (zoneCoverage.timeline.hasNoTimeline)
+          emoji = '➖';
+        else if (zoneCoverage.timeline.timelineNeedsFixing)
+          emoji = '⚠️';
+        else if (zoneCoverage.timeline.hasFile)
+          emoji = '✔️';
+
+        addDiv(container, 'emoji', emoji);
+      },
+      oopsy: () => {
+        const emoji = zoneCoverage.oopsy && zoneCoverage.oopsy.num > 0 ? '✔️' : undefined;
+        addDiv(container, 'emoji', emoji);
+      },
+      translated: () => {
+        let emoji = undefined;
+
+        const translations = zoneCoverage.translations?.[lang];
+
+        if (lang === 'en') {
+          emoji = undefined;
+        } else if (translations === undefined) {
+          emoji = '✔️';
+        } else {
+          const isMissingSync = translations.sync !== undefined && translations.sync > 0;
+
+          let totalMissing = 0;
+          for (const value of Object.values(translations))
+            totalMissing += value;
+
+          // Missing a sync translation means that triggers or timelines won't work properly
+          // and so count as "not being translated at all". If all syncs are translated but
+          // there are missing timeline texts or output strings, that's a "partial" translation
+          // given the warning sign.
+          if (totalMissing === 0)
+            emoji = '✔️';
+          else if (!isMissingSync)
+            emoji = '⚠️';
+        }
+
+        addDiv(container, 'emoji', emoji);
+      },
+      releaseVersion: () => {
+        const hasOopsy = zoneCoverage.oopsy && zoneCoverage.oopsy.num > 0;
+        const hasTriggers = zoneCoverage.triggers.num > 0;
+
+        const openPRs = pulls
+          .filter((pr) =>
+            (pr.files.find((file) => zoneCoverage.files.find((file2) => file === file2.name)) !==
+              undefined) ||
+            pr.zones.includes(zoneId)
+          );
+
+        if (!hasTriggers && !hasOopsy && !zoneCoverage.timeline.hasFile && openPRs.length === 0) {
+          const div = addDiv(container, 'text', translate(miscStrings.unsupported, lang));
+          div.style.color = 'red';
+          return;
+        }
+
+        const notUndefined = <T>(v: T | undefined): v is T => v !== undefined;
+        const lastUpdated = new Date(zoneCoverage.lastModified);
+        const version = [
+          ...new Set(
+            zoneCoverage.files.map((file) => {
+              const fileTag = file.tag;
+              if (fileTag === undefined)
+                return undefined;
+              const tag = tags[fileTag];
+              if (tag === undefined)
+                return undefined;
+              return {
+                tag: file.tag,
+                ...tag,
+              };
+            })
+              .filter(notUndefined),
+          ),
+        ].sort((left, right) => right?.tagDate - left?.tagDate)[0];
+
+        let color = 'green';
+
+        const unreleased = version?.tag === undefined ||
+          (version?.tagDate ?? 0) < zoneCoverage.lastModified;
+
+        if (unreleased || openPRs.length > 0) {
+          color = 'orange';
+        }
+
+        const displayText = version?.tag ?? translate(miscStrings.unreleased, lang);
+        let titleText =
+          translate(unreleased ? miscStrings.mergeDate : miscStrings.releaseDate, lang) +
+          lastUpdated.toString();
+
+        if (openPRs.length > 0) {
+          titleText = `Open PRs: ${openPRs.map((pr) => `#${pr.number}`).join(', ')} | ${titleText}`;
+        }
+
+        const div = document.createElement('div');
+        div.classList.add('text');
+        div.innerHTML = `<abbr title="${titleText}">${displayText}</abbr>`;
+        container.appendChild(div);
+        div.style.color = color;
+      },
+      comments: () => {
+        const comments = zoneCoverage.comments;
+        const text = comments !== undefined ? translate(comments, lang) : undefined;
+        addDiv(container, 'text', text);
+      },
+    };
+
+    for (const func of Object.values(headerFuncs))
+      func();
+  };
+
+  const checkedZoneIds: number[] = [];
+
   // By expansion, then content list.
-  for (const exVersion in exVersionToName) {
+  for (const exVersion in exVersionToShortName) {
     for (const zoneId of contentList) {
       if (zoneId === null)
         continue;
       const zone = ZoneInfo[zoneId];
       if (!zone)
         continue;
-      if (zone.exVersion.toString() !== exVersion)
+      const exDirName = exVersionToDirName[zone.exVersion];
+      if (exDirName !== exVersion)
         continue;
 
-      const zoneCoverage: CoverageEntry = coverage[zoneId] ?? {
-        oopsy: { num: 0 },
-        triggers: { num: 0 },
-        timeline: {},
-      };
+      buildRow(zoneId, exDirName, zone);
 
-      // Build in order of zone grid headers, so the headers can be rearranged
-      // and the data will follow.
-      const headerFuncs: Record<keyof typeof zoneGridHeaders, () => void> = {
-        expansion: () => {
-          const shortName = exVersionToShortName[zone.exVersion.toString()];
-          const text = shortName !== undefined ? translate(shortName, lang) : undefined;
-          addDiv(container, 'text', text);
-        },
-        type: () => {
-          const label = zone.contentType !== undefined
-            ? contentTypeToLabel[zone.contentType]
-            : undefined;
-          const text = label !== undefined ? translate(label, lang) : undefined;
-          addDiv(container, 'text', text);
-        },
-        name: () => {
-          let name = translate(zone.name, lang);
-          name = name.replace('<Emphasis>', '<i>');
-          name = name.replace('</Emphasis>', '</i>');
-          addDiv(container, 'text', name);
-        },
-        triggers: () => {
-          const emoji = zoneCoverage.triggers.num > 0 ? '✔️' : undefined;
-          addDiv(container, 'emoji', emoji);
-        },
-        timeline: () => {
-          let emoji = undefined;
-          if (zoneCoverage.timeline.hasNoTimeline)
-            emoji = '➖';
-          else if (zoneCoverage.timeline.timelineNeedsFixing)
-            emoji = '⚠️';
-          else if (zoneCoverage.timeline.hasFile)
-            emoji = '✔️';
-
-          addDiv(container, 'emoji', emoji);
-        },
-        oopsy: () => {
-          const emoji = zoneCoverage.oopsy && zoneCoverage.oopsy.num > 0 ? '✔️' : undefined;
-          addDiv(container, 'emoji', emoji);
-        },
-        translated: () => {
-          let emoji = undefined;
-
-          const translations = zoneCoverage.translations?.[lang];
-
-          if (lang === 'en') {
-            emoji = undefined;
-          } else if (translations === undefined) {
-            emoji = '✔️';
-          } else {
-            const isMissingSync = translations.sync !== undefined && translations.sync > 0;
-
-            let totalMissing = 0;
-            for (const value of Object.values(translations))
-              totalMissing += value;
-
-            // Missing a sync translation means that triggers or timelines won't work properly
-            // and so count as "not being translated at all". If all syncs are translated but
-            // there are missing timeline texts or output strings, that's a "partial" translation
-            // given the warning sign.
-            if (totalMissing === 0)
-              emoji = '✔️';
-            else if (!isMissingSync)
-              emoji = '⚠️';
-          }
-
-          addDiv(container, 'emoji', emoji);
-        },
-      };
-
-      for (const func of Object.values(headerFuncs))
-        func();
+      checkedZoneIds.push(zoneId);
     }
+
+    // Add a divider row between expansions
+    Object.keys(zoneGridHeaders).forEach(() => {
+      addDiv(container, 'grid-row-divider', '&nbsp;');
+    });
+  }
+
+  // Everything else
+  for (const zoneIdStr in coverage) {
+    const zoneId = parseInt(zoneIdStr);
+    if (zoneId.toString() !== zoneIdStr)
+      continue;
+    if (checkedZoneIds.includes(zoneId))
+      continue;
+    const zone = ZoneInfo[zoneId];
+    if (!zone)
+      continue;
+
+    buildRow(zoneId, '00-misc', zone);
   }
 };
 

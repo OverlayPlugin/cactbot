@@ -35,6 +35,9 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'Kozamauka',
   zoneId: ZoneId.Kozamauka,
+  comments: {
+    en: 'Hunts',
+  },
   initData: () => ({
     nextDoReMisery: [],
   }),

@@ -111,7 +111,7 @@ Select `Cactbot` and then click `Download and Enable`.
 ![cactbot selection screenshot](screenshots/get_plugins_cactbot.png)
 
 This will download the cactbot into
-`%APPDATA%\Advanced Combat Tracker\Plugins\cactbot-version\cactbot`
+`%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot`
 and enable `CactbotOverlay.dll` in the list of plugins.
 
 ### Plugin Load Order
@@ -247,7 +247,7 @@ for more details about using Webpack.
 
 The [ui/](ui/) directory contains cactbot's overlays.
 If you installed cactbot following the instructions above,
-this will most likely be `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot-version\cactbot\ui\`.
+this will most likely be `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot\ui\`.
 
 Each cactbot overlay should be added as a separate overlay.
 See the [Adding Overlays](#adding-overlays) section for more details about setup.

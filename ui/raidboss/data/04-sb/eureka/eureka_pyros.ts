@@ -8,6 +8,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'TheForbiddenLandEurekaPyros',
   zoneId: ZoneId.TheForbiddenLandEurekaPyros,
+  comments: {
+    en: 'Mostly incomplete',
+  },
   resetWhenOutOfCombat: false,
   triggers: [
     {

@@ -109,10 +109,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: 'EDA' },
       condition: Conditions.targetIsYou(),
-      // 15s duration - countdown ends at 14s for safety (game lag)
-      delaySeconds: 10,
-      durationSeconds: 5,
-      countdownSeconds: 14, // with 10s delay, countdown will not appear until 4s remaining
+      // 15s duration
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5,
+      countdownSeconds: 5,
       response: Responses.stopMoving(),
     },
     {

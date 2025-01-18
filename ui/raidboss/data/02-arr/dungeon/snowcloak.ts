@@ -7,6 +7,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'Snowcloak',
   zoneId: ZoneId.Snowcloak,
+  comments: {
+    en: 'pre-6.2 rework',
+  },
   triggers: [
     {
       id: 'Snowcloak Lunar Cry',

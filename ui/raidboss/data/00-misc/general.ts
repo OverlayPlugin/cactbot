@@ -12,6 +12,9 @@ const caresAboutTankStuff = (data: RaidbossData) => {
 const triggerSet: TriggerSet<Data> = {
   id: 'CactbotGeneral',
   zoneId: ZoneId.MatchAll,
+  comments: {
+    en: 'General triggers for all occasions and zones',
+  },
   triggers: [
     {
       id: 'General Provoke',

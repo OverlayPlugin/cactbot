@@ -11,6 +11,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'Elpis',
   zoneId: ZoneId.Elpis,
+  comments: {
+    en: 'Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Gurangatch Left Hammer Slammer',

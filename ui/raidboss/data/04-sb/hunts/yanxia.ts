@@ -8,6 +8,9 @@ export type Data = RaidbossData;
 const triggerSet: TriggerSet<Data> = {
   id: 'Yanxia',
   zoneId: ZoneId.Yanxia,
+  comments: {
+    en: 'Hunts: Angada only',
+  },
   triggers: [
     {
       id: 'Angada Scythe Tail',

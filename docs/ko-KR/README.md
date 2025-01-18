@@ -112,7 +112,7 @@ Startup Wizard에서,
 ![cactbot selection 스크린샷](../../screenshots/get_plugins_cactbot.png)
 
 이렇게 해서 cactbot을
-`%APPDATA%\Advanced Combat Tracker\Plugins\cactbot-version\cactbot`에 다운로드하고
+`%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot`에 다운로드하고
 `CactbotOverlay.dll`을 플러그인 리스트에서 활성화합니다.
 
 **참고**: ACT가 기대하는 압축 파일 구조와
@@ -246,7 +246,7 @@ Webpack에 대해 더 자세히 알고 싶다면
 
 [ui/](../../ui/) 디렉토리는 cactbot의 ui 모듈을 가지고 있습니다.
 만약 cactbot을 상기 설명에 따라 설치했다면,
-이 디렉토리는 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot-version\cactbot\ui\`에 있을 것입니다.
+이 디렉토리는 `%APPDATA%\Advanced Combat Tracker\Plugins\cactbot\cactbot\ui\`에 있을 것입니다.
 
 각각의 cactbot ui 모듈은 분리된 오버레이로 따로 추가해야 합니다.
 더욱 자세한 오버레이 설치 방법을 확인하려면 [오버레이 모듈 추가하기](#오버레이-모듈-추가하기) 문단을 확인하세요.

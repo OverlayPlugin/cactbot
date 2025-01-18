@@ -86,7 +86,7 @@ body > div {
 
 #zone-grid {
   display: grid;
-  grid-template-columns: max-content repeat(6, minmax(60px, max-content));
+  grid-template-columns: max-content repeat(8, minmax(60px, max-content));
   column-gap: 20px;
   row-gap: 10px;
   justify-items: left;
