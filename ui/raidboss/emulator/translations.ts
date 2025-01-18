@@ -351,6 +351,7 @@ const emulatorLabels: Translation = {
   },
   ' label[for=hideGeneral]': {
     en: 'Hide General',
+    de: 'Allgemein Ausblenden',
   },
 } as const;
 
@@ -371,6 +372,7 @@ const emulatorTooltips: Translation = {
   },
   '.triggerHideGeneral': {
     en: 'Hide triggers that are not for a specific zone',
+    de: 'Trigger ausblenden, die sich nicht auf eine bestimmte Zone beziehen',
   },
   '.connectedIndicator': {
     en: 'Connected to websocket',

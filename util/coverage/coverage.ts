@@ -130,6 +130,7 @@ const contentTypeToLabel: { [contentType: number]: LocaleText } = {
   },
   [ContentType.ChaoticAllianceRaid]: {
     en: 'Chaotic',
+    de: 'Chaotisch',
     fr: 'Chaotique',
   },
 } as const;
@@ -201,9 +202,11 @@ const zoneGridHeaders = {
   },
   releaseVersion: {
     en: 'Release Version',
+    de: 'Veröffentlichung-Version',
   },
   comments: {
     en: 'Comments',
+    de: 'Kommentare',
   },
 } as const;
 
@@ -257,18 +260,22 @@ const miscStrings = {
   // Indicator that content is unsupported
   unsupported: {
     en: 'Unsupported',
+    de: 'Nicht unterstützt',
   },
   // Indicator that content has not had a release yet
   unreleased: {
     en: 'Unreleased',
+    de: 'Unveröffentlicht',
   },
   // Prefix for hover text of release version column
   mergeDate: {
     en: 'Merge Date: ',
+    de: 'Merge Datum: ',
   },
   // Prefix for hover text of release version column
   releaseDate: {
     en: 'Release Date: ',
+    de: 'Veröffentlichungs-Datum: ',
   },
 } as const;
 
