@@ -1416,7 +1416,7 @@ const triggerSet: TriggerSet<Data> = {
     // If the player takes the dark water stack on a different cardinal dir, they swapped groups
     // and will need to stay swapped throughout the mechanic.
     {
-      id: 'FRU P3 APoc Dark Water Side Collect',
+      id: 'FRU P3 Apoc Dark Water Side Collect',
       type: 'GainsEffect',
       netRegex: { effectId: '99D', capture: false }, // Spell-in-Waiting: Dark Water III
       condition: (data) => data.phase === 'p3-apoc',
