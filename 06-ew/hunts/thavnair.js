@@ -10,7 +10,7 @@ Options.Triggers.push({
   id: 'Thavnair',
   zoneId: ZoneId.Thavnair,
   comments: {
-    en: 'Hunts and Daivadipa boss FATE',
+    en: 'A Rank Hunts and Daivadipa boss FATE',
   },
   resetWhenOutOfCombat: false,
   initData: () => {

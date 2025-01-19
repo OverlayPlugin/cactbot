@@ -19,7 +19,7 @@ Options.Triggers.push({
   id: 'Kozamauka',
   zoneId: ZoneId.Kozamauka,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   initData: () => ({
     nextDoReMisery: [],

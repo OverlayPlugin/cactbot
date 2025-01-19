@@ -36,7 +36,7 @@ Options.Triggers.push({
   id: 'HeritageFound',
   zoneId: ZoneId.HeritageFound,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   initData: () => ({
     atticusCleaves: [],

@@ -10,7 +10,7 @@ Options.Triggers.push({
   id: 'UltimaThule',
   zoneId: ZoneId.UltimaThule,
   comments: {
-    en: 'Hunts and Chi boss FATE',
+    en: 'A Rank Hunts and Chi boss FATE',
   },
   triggers: [
     {

@@ -2,7 +2,7 @@ Options.Triggers.push({
   id: 'TheRaktikaGreatwood',
   zoneId: ZoneId.TheRaktikaGreatwood,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {

@@ -2,7 +2,7 @@ Options.Triggers.push({
   id: 'TheTempest',
   zoneId: ZoneId.TheTempest,
   comments: {
-    en: 'Hunts, missing Archaeotania boss FATE',
+    en: 'A Rank Hunts, missing Archaeotania boss FATE',
   },
   triggers: [
     {

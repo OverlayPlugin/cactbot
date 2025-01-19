@@ -2,7 +2,7 @@ Options.Triggers.push({
   id: 'MareLamentorum',
   zoneId: ZoneId.MareLamentorum,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   resetWhenOutOfCombat: false,
   initData: () => {

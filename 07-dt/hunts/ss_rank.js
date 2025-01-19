@@ -17,6 +17,9 @@ Options.Triggers.push({
     cn: 'SS 级狩猎怪',
     ko: 'SS급 마물',
   },
+  comments: {
+    en: 'SS Rank Hunts',
+  },
   triggers: [
     {
       id: 'Hunt Arch Aethereater Aetherodynamics',

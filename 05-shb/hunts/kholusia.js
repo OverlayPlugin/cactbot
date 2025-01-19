@@ -2,7 +2,7 @@ Options.Triggers.push({
   id: 'Kholusia',
   zoneId: ZoneId.Kholusia,
   comments: {
-    en: 'Hunts, missing Formidable boss FATE',
+    en: 'A Rank Hunts, missing Formidable boss FATE',
   },
   triggers: [
     {

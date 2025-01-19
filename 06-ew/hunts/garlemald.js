@@ -2,7 +2,7 @@ Options.Triggers.push({
   id: 'Garlemald',
   zoneId: ZoneId.Garlemald,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {

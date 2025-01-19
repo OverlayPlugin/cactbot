@@ -8,7 +8,7 @@ Options.Triggers.push({
   id: 'Urqopacha',
   zoneId: ZoneId.Urqopacha,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     // ****** A-RANK: Nechuciho ****** //

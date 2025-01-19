@@ -2,7 +2,7 @@ Options.Triggers.push({
   id: 'Lakeland',
   zoneId: ZoneId.Lakeland,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {

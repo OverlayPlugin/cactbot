@@ -2,7 +2,7 @@ Options.Triggers.push({
   id: 'Labyrinthos',
   zoneId: ZoneId.Labyrinthos,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {
