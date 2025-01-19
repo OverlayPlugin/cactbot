@@ -2,6 +2,8 @@ import ZoneId from '../../../../../resources/zone_id';
 import { OopsyData } from '../../../../../types/data';
 import { OopsyTriggerSet } from '../../../../../types/oopsy';
 
+// TODO: trash triggers
+
 export type Data = OopsyData;
 
 const triggerSet: OopsyTriggerSet<Data> = {

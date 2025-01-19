@@ -34,17 +34,13 @@ hideall "--sync--"
 1063.6 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" }
 1068.9 "Gore" Ability { id: "9EB6", source: "Lindblum Zaghnal" }
 1071.0 "Sparking Fissure" Ability { id: "A133", source: "Lindblum Zaghnal" }
-1072.3 "--adds targetable--"
+1072.3 "--adds 1 targetable--"
 1079.0 "Sparking Fissure" Ability { id: "9EB7", source: "Lindblum Zaghnal" }
-1081.0 "--adds targetable--"
+1081.0 "--adds 2 targetable--"
 1088.1 "Sparking Fissure" Ability { id: "9EB7", source: "Lindblum Zaghnal" }
-1089.1 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
-1089.5 "--adds targetable--"
-1090.2 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
-1091.2 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
-1099.8 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
-1100.8 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
-1101.8 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
+1089.1 "Lightning Bolt x3" duration 2 #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
+1089.5 "--adds 3 targetable--"
+1099.8 "Lightning Bolt x3" duration 2 #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
 1110.5 "Sparking Fissure (big)" Ability { id: "A12A", source: "Lindblum Zaghnal" }
 1116.2 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" }
 
@@ -65,9 +61,7 @@ hideall "--sync--"
 1169.7 "Electrical Overload" Ability { id: "9EBB", source: "Lindblum Zaghnal" }
 1182.5 "Lightning Storm" Ability { id: "9EBC", source: "Lindblum Zaghnal" }
 1182.9 "--sync--" Ability { id: "9EBD", source: "Lindblum Zaghnal" }
-1183.9 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
-1184.9 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
-1185.9 "Lightning Bolt" #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
+1183.9 "Lightning Bolt x3" duration 2 #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
 1193.9 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" } forcejump "zaghnal-loop"
 
 # IGNORED ABILITIES
