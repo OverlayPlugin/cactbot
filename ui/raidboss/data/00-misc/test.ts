@@ -32,7 +32,7 @@ const triggerSet: TriggerSet<Data> = {
   },
   comments: {
     en:
-      'Testing/troubleshooting triggers (See <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>)',
+      'Testing/troubleshooting triggers (See: <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>)',
   },
   config: [
     {
