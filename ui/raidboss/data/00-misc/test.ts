@@ -27,8 +27,11 @@ export interface Data extends RaidbossData {
 const triggerSet: TriggerSet<Data> = {
   id: 'CactbotTest',
   zoneId: ZoneId.MiddleLaNoscea,
+  zoneLabel: {
+    en: 'Cactbot test triggers (Summerford Farms)',
+  },
   comments: {
-    en: 'Cactbot test triggers',
+    en: 'Cactbot test triggers (Summerford Farms)',
   },
   config: [
     {
