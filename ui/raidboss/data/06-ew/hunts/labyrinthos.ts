@@ -9,7 +9,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Labyrinthos',
   zoneId: ZoneId.Labyrinthos,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {

@@ -12,7 +12,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Kholusia',
   zoneId: ZoneId.Kholusia,
   comments: {
-    en: 'Hunts, missing Formidable boss FATE',
+    en: 'A Rank Hunts, missing Formidable boss FATE',
   },
   triggers: [
     {
