@@ -9,6 +9,10 @@ import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    heavensfallTowerPosition: 'disabled' | '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
+  };
+
   // TODO: replace partyList with data.party
   partyList: { [name: string]: boolean };
   hpThresholds: number[];
@@ -35,6 +39,12 @@ export interface Data extends RaidbossData {
   trio?: 'quickmarch' | 'blackfire' | 'fellruin' | 'heavensfall' | 'tenstrike' | 'octet';
   trioSourceIds: { [name: string]: number };
   combatantData: PluginCombatantState[];
+  heavensfallNaelAngle?: number;
+  heavensfallTowerSpots: {
+    x: number;
+    y: number;
+    angle: number;
+  }[];
   shakers: string[];
   megaStack: string[];
   octetMarker: string[];
@@ -196,6 +206,33 @@ export const findDragonMarks = (
 const triggerSet: TriggerSet<Data> = {
   id: 'TheUnendingCoilOfBahamutUltimate',
   zoneId: ZoneId.TheUnendingCoilOfBahamutUltimate,
+  config: [
+    {
+      id: 'heavensfallTowerPosition',
+      comment: {
+        en:
+          `With a tower at Nael being position 1, rotating clockwise, your tower poisition. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees guide</a> is position 7.`,
+      },
+      name: {
+        en: 'P3 Heavensfall Tower Position',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Disable tower callout': 'disabled',
+          'Position 1': '0',
+          'Position 2': '1',
+          'Position 3': '2',
+          'Position 4': '3',
+          'Position 5': '4',
+          'Position 6': '5',
+          'Position 7': '6',
+          'Position 8': '7',
+        },
+      },
+      default: 'disabled',
+    },
+  ],
   timelineFile: 'unending_coil_ultimate.txt',
   initData: () => {
     return {
@@ -222,6 +259,7 @@ const triggerSet: TriggerSet<Data> = {
       naelDiveMarkerCount: 0,
       trioSourceIds: {},
       combatantData: [],
+      heavensfallTowerSpots: [],
       shakers: [],
       megaStack: [],
       octetMarker: [],
@@ -1437,30 +1475,27 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.trio === 'quickmarch',
       run: (data, matches) => data.trioSourceIds.twin = parseInt(matches.sourceId, 16),
     },
-    // For Blackfire:
-    // After bosses jump, there's no clear log line we can trigger off of to find Nael's position
-    // until it's effectively too late.  The best way to do this seems to be to fire the trigger
-    // with a delay when Bahamut uses Blackfire Trio before all 3 bosses jump.
     {
       id: 'UCU Blackfire Party Dir',
-      type: 'Ability',
-      netRegex: { id: '26E3', source: 'Bahamut Prime', capture: false },
-      condition: (data) => data.trio === 'blackfire',
-      delaySeconds: 3.5,
-      promise: async (data) => {
-        if (data.trioSourceIds.nael === undefined)
-          return;
-        data.combatantData = [];
-        data.combatantData = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [data.trioSourceIds.nael],
-        })).combatants;
+      type: 'ActorSetPos',
+      netRegex: { capture: true },
+      condition: (data, matches) => {
+        if (data.trio !== 'blackfire')
+          return false;
+        if (parseInt(matches.id, 16) !== data.trioSourceIds.nael)
+          return false;
+
+        // Nael jumps to beside Bahamut during the cast, floating 0.0405 off the floor
+        // When the jump to outside happens, Z === 0
+        if (Math.abs(parseFloat(matches.z)) > 0.01)
+          return false;
+
+        return true;
       },
-      alertText: (data, _matches, output) => {
-        if (data.combatantData[0] === undefined)
-          return;
-        const nael = data.combatantData[0];
-        const naelDirOutput = Directions.combatantStatePosTo8DirOutput(nael, centerX, centerY);
+      alertText: (_data, matches, output) => {
+        const posX = parseFloat(matches.x);
+        const posY = parseFloat(matches.y);
+        const naelDirOutput = Directions.xyTo8DirOutput(posX, posY, centerX, centerY);
         return output.naelPosition!({ dir: output[naelDirOutput]!() });
       },
       outputStrings: {
@@ -1633,6 +1668,7 @@ const triggerSet: TriggerSet<Data> = {
         }
         if (naelAngle === undefined || bahamutAngle === undefined || twinAngle === undefined)
           return;
+        data.heavensfallNaelAngle = naelAngle;
         if (naelAngle >= 0 && bahamutAngle >= 0 && twinAngle >= 0) {
           if (isClockwise(naelAngle, bahamutAngle))
             naelPos = isClockwise(naelAngle, twinAngle) ? 'left' : 'middle';
@@ -1653,6 +1689,56 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         right: Outputs.right,
         unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'UCU Heavensfall Tower Spot',
+      type: 'StartsUsingExtra',
+      netRegex: { id: '26DF', capture: true },
+      condition: (data) =>
+        data.triggerSetConfig.heavensfallTowerPosition !== 'disabled' &&
+        data.trio === 'heavensfall',
+      preRun: (data, matches) => {
+        const posX = parseFloat(matches.x);
+        const posY = parseFloat(matches.y);
+        const angle = (Math.round(180 - 180 * Math.atan2(posX, posY) / Math.PI) % 360);
+        data.heavensfallTowerSpots.push({
+          x: posX,
+          y: posY,
+          angle: angle,
+        });
+      },
+      infoText: (data, _matches, output) => {
+        if (data.heavensfallTowerSpots.length < 8)
+          return;
+
+        const naelAngle = data.heavensfallNaelAngle;
+        if (naelAngle === undefined)
+          return;
+        const wantedIdx = parseInt(data.triggerSetConfig.heavensfallTowerPosition);
+        const towers = data.heavensfallTowerSpots.sort((l, r) => {
+          const lAngle = l.angle < naelAngle ? l.angle + 360 : l.angle;
+          const rAngle = r.angle < naelAngle ? r.angle + 360 : r.angle;
+          return rAngle - lAngle;
+        });
+
+        const towersMap = towers.map((t) => Directions.hdgTo16DirNum(t.angle * (Math.PI / 180)));
+
+        const towerDir = towersMap[wantedIdx];
+
+        const myTowerDir = towerDir !== undefined
+          ? Directions.output16Dir[towerDir] ?? 'unknown'
+          : 'unknown';
+
+        return output.tower!({
+          dir: output[myTowerDir]!(),
+        });
+      },
+      outputStrings: {
+        tower: {
+          en: 'Tower: ${dir}',
+        },
+        ...Directions.outputStrings16Dir,
       },
     },
     {
@@ -2046,6 +2132,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': 'バハムート・プライム',
         'Fang Of Light': 'ライトファング',
@@ -2123,6 +2210,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': '至尊巴哈姆特',
         'Fang Of Light': '光牙',
@@ -2200,6 +2288,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': '바하무트 프라임',
         'Fang Of Light': '빛의 송곳니',
