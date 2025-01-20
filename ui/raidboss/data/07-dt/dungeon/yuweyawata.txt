@@ -1,0 +1,255 @@
+### YUWEYAWATA FIELD STATION
+# ZoneId: 1242
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~~~~~~#
+# Lindblum Zaghnal #
+#~~~~~~~~~~~~~~~~~~#
+
+# -ii 9EB8 9EBA A0A2
+# -it "Raw Electrope"
+# -p 9EBB:1010.1
+
+# The Crystal Quarry will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1408" } window 1000,1
+1005.1 "--sync--" StartsUsing { id: "9EBB", source: "Lindblum Zaghnal" }
+1010.1 "Electrical Overload" Ability { id: "9EBB", source: "Lindblum Zaghnal" }
+1017.5 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" }
+1022.7 "Gore" Ability { id: "A132", source: "Lindblum Zaghnal" }
+1032.4 "Line Voltage" Ability { id: "9EB1", source: "Lindblum Zaghnal" }
+1035.4 "Line Voltage" Ability { id: "9EB1", source: "Lindblum Zaghnal" }
+1038.4 "Line Voltage" Ability { id: "9EB1", source: "Lindblum Zaghnal" }
+1043.8 "Caber Toss" Ability { id: "9EB0", source: "Lindblum Zaghnal" }
+1045.8 "Cell Shock" Ability { id: "9EB2", source: "Lindblum Zaghnal" }
+1047.1 "Line Voltage (multiple)" Ability { id: "A0A1", source: "Lindblum Zaghnal" } duration 7.6
+1048.3 "--sync--" Ability { id: "9EB3", source: "Lindblum Zaghnal" }
+1054.9 "--sync--" Ability { id: "9EB3", source: "Lindblum Zaghnal" }
+1057.2 "Lightning Storm" Ability { id: "9EBC", source: "Lindblum Zaghnal" }
+1057.8 "--sync--" Ability { id: "9EBD", source: "Lindblum Zaghnal" }
+1063.6 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" }
+1068.9 "Gore" Ability { id: "9EB6", source: "Lindblum Zaghnal" }
+1071.0 "Sparking Fissure" Ability { id: "A133", source: "Lindblum Zaghnal" }
+1072.3 "--adds 1 targetable--"
+1079.0 "Sparking Fissure" Ability { id: "9EB7", source: "Lindblum Zaghnal" }
+1081.0 "--adds 2 targetable--"
+1088.1 "Sparking Fissure" Ability { id: "9EB7", source: "Lindblum Zaghnal" }
+1089.1 "Lightning Bolt x3" duration 2 #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
+1089.5 "--adds 3 targetable--"
+1099.8 "Lightning Bolt x3" duration 2 #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
+1110.5 "Sparking Fissure (big)" Ability { id: "A12A", source: "Lindblum Zaghnal" }
+1116.2 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" }
+
+# loop
+1116.2 label "zaghnal-loop"
+1121.6 "Gore" Ability { id: "A132", source: "Lindblum Zaghnal" }
+1131.3 "Line Voltage" Ability { id: "9EB1", source: "Lindblum Zaghnal" }
+1134.3 "Line Voltage" Ability { id: "9EB1", source: "Lindblum Zaghnal" }
+1137.3 "Line Voltage" Ability { id: "9EB1", source: "Lindblum Zaghnal" }
+1142.7 "Caber Toss" Ability { id: "9EB0", source: "Lindblum Zaghnal" }
+1144.7 "Cell Shock" Ability { id: "9EB2", source: "Lindblum Zaghnal" }
+1146.0 "Line Voltage (multiple)" Ability { id: "A0A1", source: "Lindblum Zaghnal" } duration 7.6
+1147.2 "--sync--" Ability { id: "9EB3", source: "Lindblum Zaghnal" }
+1153.8 "--sync--" Ability { id: "9EB3", source: "Lindblum Zaghnal" }
+1156.1 "Lightning Storm" Ability { id: "9EBC", source: "Lindblum Zaghnal" }
+1156.7 "--sync--" Ability { id: "9EBD", source: "Lindblum Zaghnal" }
+1162.4 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" }
+1169.7 "Electrical Overload" Ability { id: "9EBB", source: "Lindblum Zaghnal" }
+1182.5 "Lightning Storm" Ability { id: "9EBC", source: "Lindblum Zaghnal" }
+1182.9 "--sync--" Ability { id: "9EBD", source: "Lindblum Zaghnal" }
+1183.9 "Lightning Bolt x3" duration 2 #Ability { id: "9EBE", source: "Lindblum Zaghnal" }
+1193.9 "--sync--" Ability { id: "9EAE", source: "Lindblum Zaghnal" } forcejump "zaghnal-loop"
+
+# IGNORED ABILITIES
+# 9EB8 Sparking Fissure
+# 9EBA Electrify
+# A0A2 Line Voltage
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 9EAE --sync--
+# 9EB0 Caber Toss - castbar of pillar being tossed
+# 9EB1 Line Voltage - multiple line aoes from pillar, gives vuln stack
+# 9EB2 Cell Shock - damage from circular pillar aoe, gives vuln stack
+# 9EB3 Line Voltage - fat line aoe, gives vuln stack
+# 9EB6 Gore - boss digging into ground
+# 9EB7 Sparking Fissure - no cast raidwide
+# 9EB8 Sparking Fissure - boss self-cast
+# 9EBA Electrify - raidwide from adds (interrupted on death), gives vuln stack
+# 9EBB Electrical Overload - raidwide
+# 9EBC Lightning Storm - self-cast, spread aoe markers
+# 9EBD Lightning Storm - damage from spread aoes
+# 9EBE Lightning Bolt - ground aoe, gives vuln stack
+# A0A1 Line Voltage - line aoe self-cast?
+# A0A2 Line Voltage - skinny line aoe, gives vuln stack
+# A12A Sparking Fissure - long cast big raidwide
+# A132 Gore - boss digging into pillar
+# A133 Sparking Fissure - short cast raidwide
+
+
+#~~~~~~~~~~~~~~~~~~~~#
+# Overseer Kanilokka #
+#~~~~~~~~~~~~~~~~~~~~#
+
+# -ii 9ED3
+# -it "Overseer Kanilokka"
+# -p 9ED2:2010.1
+
+# The Soul Center will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1409" } window 2000,1
+2005.1 "--sync--" StartsUsing { id: "9ED2", source: "Overseer Kanilokka" }
+2010.1 "Dark Souls" Ability { id: "9ED2", source: "Overseer Kanilokka" }
+2019.0 "Free Spirits" Ability { id: "9EBF", source: "Overseer Kanilokka" }
+2020.0 "--sync--" Ability { id: "9EC0", source: "Overseer Kanilokka" }
+2025.1 "Soulweave x8" duration 10.6 #Ability { id: "9EC2", source: "Preserved Soul" }
+2040.4 "Phantom Flood" Ability { id: "9EC3", source: "Overseer Kanilokka" } window 10,10
+2041.7 "--sync--" Ability { id: "9EC4", source: "Overseer Kanilokka" }
+2053.5 "Dark II" Ability { id: "9ECE", source: "Overseer Kanilokka" }
+2053.9 "--sync--" Ability { id: "9ED0", source: "Overseer Kanilokka" }
+2055.9 "Dark II" Ability { id: "9ECF", source: "Overseer Kanilokka" }
+2056.3 "--sync--" Ability { id: "9ED1", source: "Overseer Kanilokka" }
+2062.3 "Telltale Tears" Ability { id: "9EC9", source: "Overseer Kanilokka" }
+2069.4 "Lost Hope" Ability { id: "9EC5", source: "Overseer Kanilokka" }
+2070.2 "--untargetable--"
+2086.5 "Necrohazard" Ability { id: "9EC6", source: "Overseer Kanilokka" }
+2088.1 "--targetable--"
+2096.8 "Bloodburst" Ability { id: "9EC7", source: "Overseer Kanilokka" }
+2106.9 "Free Spirits" Ability { id: "9EBF", source: "Overseer Kanilokka" }
+
+# loop
+2106.9 label "kanilokka-loop"
+2107.9 "--sync--" Ability { id: "9EC0", source: "Overseer Kanilokka" }
+2113.0 "Soulweave x8" duration 10.6 #Ability { id: "9EC2", source: "Preserved Soul" }
+2116.5 "Telltale Tears" Ability { id: "9EC9", source: "Overseer Kanilokka" } window 4,4
+2123.1 "Telltale Tears" Ability { id: "9EC9", source: "Overseer Kanilokka" }
+2130.6 "Dark II" Ability { id: "9ECE", source: "Overseer Kanilokka" } window 10,10
+2131.2 "--sync--" Ability { id: "9ED0", source: "Overseer Kanilokka" }
+2133.2 "Dark II" Ability { id: "9ECF", source: "Overseer Kanilokka" }
+2133.8 "--sync--" Ability { id: "9ED1", source: "Overseer Kanilokka" }
+2134.0 "Soul Douse" Ability { id: "9ECB", source: "Overseer Kanilokka" }
+2143.9 "Dark Souls" Ability { id: "9ED2", source: "Overseer Kanilokka" }
+2153.6 "Bloodburst" Ability { id: "9EC7", source: "Overseer Kanilokka" }
+2162.7 "Bloodburst" Ability { id: "9EC7", source: "Overseer Kanilokka" }
+2174.0 "Free Spirits" Ability { id: "9EBF", source: "Overseer Kanilokka" } forcejump "kanilokka-loop"
+
+# IGNORED ABILITIES
+# 9ED3 --sync--
+
+# ALL ENCOUNTER ABILITIES
+# 9EBF Free Spirits - boss self-cast
+# 9EC0 Free Spirits - raidwide, spawns bleed-wall surrounding arena
+# 9EC1 Soulweave - line aoe counter-clockwise, gives vuln stack
+# 9EC2 Soulweave - line aoe clockwise, gives vuln stack
+# 9EC3 Phantom Flood - boss self-cast
+# 9EC4 Phantom Flood - donut aoe, gives vuln stack
+# 9EC5 Lost Hope - inflicts Temporary Misdirection
+# 9EC6 Necrohazard - proximity raidwide from center of room, aggressive fall-off
+# 9EC7 Bloodburst - raidwide
+# 9EC9 Telltale Tears - spread aoes on dps/healer
+# 9ECB Soul Douse - party stack
+# 9ECE Dark II - boss-self cast?
+# 9ECF Dark II - boss-self cast?
+# 9ED0 Dark II - cone aoe damage (first set), gives vuln stack
+# 9ED1 Dark II - cone aoe damage (second set), gives vuln stack
+# 9ED2 Dark Souls - tankbuster
+# 9ED3 --sync-- - boss auto attack
+
+
+#~~~~~~~~~~~#
+# Lunipyati #
+#~~~~~~~~~~~#
+
+# -ii 9EAD
+# -p 9EA4:3011.4
+
+# The Dust Yoke will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "140A" } window 3000,1
+3006.4 "--sync--" StartsUsing { id: "9EA4", source: "Lunipyati" }
+3011.4 "Raging Claw" Ability { id: "9EA4", source: "Lunipyati" } duration 2.4
+3011.8 "--sync--" Ability { id: "9EA5", source: "Lunipyati" }
+3020.1 "--sync--" Ability { id: "9EAC", source: "Lunipyati" }
+3027.5 "Leporine Loaf" Ability { id: "9E9B", source: "Lunipyati" }
+3032.7 "--sync--" StartsUsing { id: "9E9F", source: "Lunipyati" } window 10,10 jump "lunipyati-boulder-dance"
+3037.7 "--sync--" StartsUsing { id: "9E9E", source: "Lunipyati" } window 10,10 jump "lunipyati-leaping-earth"
+
+# Leaping Earth first
+3100.0 label "lunipyati-leaping-earth"
+3101.5 "Leaping Earth (arcs)" duration 3.7 #Ability { id: "9E9E", source: "Lunipyati" }
+3101.8 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3105.3 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3112.7 "Leaping Earth (arcs)" duration 3.7 #Ability { id: "9E9E", source: "Lunipyati" }
+3113.3 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3116.8 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3122.8 "Leaping Earth (spiral)" duration 5.1 #Ability { id: "9E9E", source: "Lunipyati" }
+3123.2 "--sync--" Ability { id: "9ED5", source: "Lunipyati" }
+3138.8 "Boulder Dance" Ability { id: "9E9F", source: "Lunipyati" } duration 4.4
+3140.3 "--sync--" Ability { id: "9EA0", source: "Lunipyati" }
+3151.8 "Boulder Dance" Ability { id: "9E9F", source: "Lunipyati" } duration 4.4
+3153.3 "--sync--" Ability { id: "9EA0", source: "Lunipyati" }
+3158.8 "Jagged Edge" Ability { id: "9EA7", source: "Lunipyati" }
+3161.9 "--sync--" StartsUsing { id: "9E9C", source: "Lunipyati" } window 10,10 forcejump "lunipyati-merge"
+
+# Boulder Dance first
+3300.0 label "lunipyati-boulder-dance"
+3306.0 "Boulder Dance" Ability { id: "9E9F", source: "Lunipyati" } duration 4.4
+3307.3 "--sync--" Ability { id: "9EA0", source: "Lunipyati" }
+3319.0 "Boulder Dance" Ability { id: "9E9F", source: "Lunipyati" } duration 4.4
+3320.3 "--sync--" Ability { id: "9EA0", source: "Lunipyati" }
+3326.0 "Jagged Edge" Ability { id: "9EA7", source: "Lunipyati" }
+3337.7 "Leaping Earth (arcs)" duration 3.7 #Ability { id: "9E9E", source: "Lunipyati" }
+3338.0 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3341.4 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3348.8 "Leaping Earth (arcs)" duration 3.7 #Ability { id: "9E9E", source: "Lunipyati" }
+3349.4 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3352.9 "--sync--" Ability { id: "9ED6", source: "Lunipyati" }
+3358.9 "Leaping Earth (spiral)" duration 5.1 #Ability { id: "9E9E", source: "Lunipyati" }
+3359.3 "--sync--" Ability { id: "9ED5", source: "Lunipyati" }
+3366.9 "--sync--" StartsUsing { id: "9E9C", source: "Lunipyati" } window 10,10 forcejump "lunipyati-merge"
+
+# merge
+3500.0 label "lunipyati-merge"
+3507.0 "Crater Carve" Ability { id: "9E9C", source: "Lunipyati" }
+3509.1 "--sync--" Ability { id: "9E9D", source: "Lunipyati" }
+
+# loop
+3525.1 label "lunipyati-loop"
+3525.1 "Beastly Roar" Ability { id: "9EA2", source: "Lunipyati" }
+3526.7 "Rock Blast" duration 9 #Ability { id: "9EA3", source: "Lunipyati" }
+3535.3 "--sync--" Ability { id: "9EAC", source: "Lunipyati" }
+3542.0 "Raging Claw" Ability { id: "9EA4", source: "Lunipyati" } duration 2.4
+3542.4 "--sync--" Ability { id: "9EA5", source: "Lunipyati" }
+3547.5 "Jagged Edge" Ability { id: "9EA7", source: "Lunipyati" }
+3554.2 "Turali Stone IV" Ability { id: "9EA8", source: "Lunipyati" }
+3562.6 "Sonic Howl" Ability { id: "9EAA", source: "Lunipyati" }
+3571.7 "Sonic Howl" Ability { id: "9EAA", source: "Lunipyati" }
+3580.8 "Slabber" Ability { id: "9EAB", source: "Lunipyati" }
+3599.9 "Beastly Roar" Ability { id: "9EA2", source: "Lunipyati" } forcejump "lunipyati-loop"
+
+# IGNORED ABILITIES
+# 9EAD --sync--
+
+# ALL ENCOUNTER ABILITIES
+# 9E9B Leporine Loaf - raidwide, spawns bleed-wall surrounding arena
+# 9E9C Crater Carve - self-cast
+# 9E9D Crater Carve - damage, creates hole in center of arena
+# 9E9E Leaping Earth - damage from radiating spiral aoes
+# 9E9F Boulder Dance - damage from Boulder Dance source aoe, gives vuln stack
+# 9EA0 Boulder Dance - damage from Boulder Dance target aoe, gives vuln stack
+# 9EA1 Boulder Dance - continuous damage from standing in Boulder Dance aoe (source or target)
+# 9EA2 Beastly Roar - proximity raidwide from under boss
+# 9EA3 Rock Blast - chasing aoe from boss around edge of arena, gives vuln stack
+# 9EA4 Raging Claw - self-cast
+# 9EA5 Raging Claw - first frontal cleave (high damage)
+# 9EA6 Raging Claw - follow-up frontal cleaves (lesser damage)
+# 9EA7 Jagged Edge - spread aoes
+# 9EA8 Turali Stone IV - party stack
+# 9EAA Sonic Howl - raidwide
+# 9EAB Slabber - tankbuster
+# 9EAC --sync--
+# 9EAD --sync-- - boss auto attack
+# 9ED5 --sync--
+# 9ED6 --sync--

@@ -52,8 +52,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'HeritageFound',
   zoneId: ZoneId.HeritageFound,
   comments: {
-    en: 'Hunts',
-    de: 'Hohe Jagd',
+    en: 'A Rank Hunts',
   },
   initData: () => ({
     atticusCleaves: [],

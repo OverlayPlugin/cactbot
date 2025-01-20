@@ -21,8 +21,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Urqopacha',
   zoneId: ZoneId.Urqopacha,
   comments: {
-    en: 'Hunts',
-    de: 'Hohe Jagd',
+    en: 'A Rank Hunts',
   },
   triggers: [
     // ****** A-RANK: Nechuciho ****** //

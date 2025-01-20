@@ -36,8 +36,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Kozamauka',
   zoneId: ZoneId.Kozamauka,
   comments: {
-    en: 'Hunts',
-    de: 'Hohe Jagd',
+    en: 'A Rank Hunts',
   },
   initData: () => ({
     nextDoReMisery: [],
