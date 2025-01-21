@@ -311,8 +311,8 @@ hideall "--sync--"
 # 9E2C Thorny Vine - brambles tether to players
 # 9E2D Thorny Vine
 # 9E2E --sync--
-# 9E2F Lateral-core Phaser - cleave middle then sides (cast)
-# 9E30 Core-lateral Phaser - cleave sides then middle (cast)
+# 9E2F Lateral-core Phaser - cleave sides then middle (cast)
+# 9E30 Core-lateral Phaser - cleave middle then sides (cast)
 # 9E31 Phaser - add cleave (damage from Lateral-core/Core-lateral Phaser)
 # 9E32 Curse of Darkness - dummy cast
 # 9E33 Curse of Darkness - aoe + debuffs
