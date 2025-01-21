@@ -8,9 +8,9 @@ for folks who want to write ACT triggers for ff14.
 
 This guide was last updated for:
 
-- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.58
-- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.7.0.1
-- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.28
+- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 7.16
+- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.7.2.2
+- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.43
 
 ## TOC
 
@@ -3040,7 +3040,7 @@ This line is always output for a given Ability hit, regardless of if that Abilit
 a corresponding StartsUsing line.
 
 If the ability has no target, or is single-target, the `dataFlag` value will be `0`,
-and the `x`/`y`/`z`/`heading` fields will be blank.
+and the `x`/`y`/`z` fields will be blank.
 
 If the ability targets the ground, for example `Asylum`/`Sacred Soil`/caster LB3, the
 `dataFlag` value will be `1` and the `x`/`y`/`z`/`heading` fields will correspond to the
@@ -3051,11 +3051,15 @@ source actor's position, while `heading` is the direction that the ability is ca
 towards.
 
 If there is some sort of error related to parsing this data from the network packet,
-`dataFlag` will be `256`, and the `x`/`y`/`z`/`heading` fields will be blank.
+`dataFlag` will be `256`, and the `x`/`y`/`z`/`heading`/`animationTargetId` fields will be blank.
 
 `globalEffectCounter` is equivalent to `sequence` field in
 [NetworkAbility](#line-21-0x15-networkability) and
 [NetworkAOEAbility](#line-22-0x16-networkaoeability).
+
+`animationTargetId` is the ID of the entity serving as location basis for the ability.
+For example, Sage's Dyskrasia will have the Sage as the `animationTargetId`, as the AoE is centered on the Sage;
+but Sage's Phlegma will have the primary target as the `animationTargetId`, as the AoE is centered on the selected target.
 
 Note that unlike [StartsUsingExtra](#line-263-0x107-startsusingextra), you do not need
 to worry about whether or not there is an actor target, as this represents the final

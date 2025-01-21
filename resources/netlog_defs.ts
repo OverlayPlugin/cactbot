@@ -1410,8 +1410,9 @@ const latestLogDefinitions = {
       y: 7,
       z: 8,
       heading: 9,
+      animationTargetId: 10,
     },
-    blankFields: [6],
+    blankFields: [6, 7, 8],
     playerIds: {
       2: null,
     },
