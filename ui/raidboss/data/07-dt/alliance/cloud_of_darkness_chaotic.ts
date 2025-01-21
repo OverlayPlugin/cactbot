@@ -515,7 +515,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankCleave(),
     },
     {
-      id: 'Cloud Chaotic Core-lateral Phaser',
+      id: 'Cloud Chaotic Core-lateral Phaser 9E2F',
       type: 'StartsUsing',
       netRegex: { id: '9E2F', source: 'Stygian Shadow', capture: true },
       condition: (data, matches) => {
@@ -534,7 +534,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Cloud Chaotic Lateral-core Phaser',
+      id: 'Cloud Chaotic Lateral-core Phaser 9E30',
       type: 'StartsUsing',
       netRegex: { id: '9E30', source: 'Stygian Shadow', capture: true },
       condition: (data, matches) => {
