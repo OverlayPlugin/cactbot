@@ -14,12 +14,14 @@ import ZoneInfo from '../resources/zone_info';
 import { LooseOopsyTriggerSet } from '../types/oopsy';
 import { LooseTriggerSet } from '../types/trigger';
 import { oopsyTriggerSetFields } from '../ui/oopsyraidsy/oopsy_fields';
+import { TimelineParser } from '../ui/raidboss/timeline_parser';
 
 import {
   Coverage,
   CoverageEntry,
   CoverageTotals,
   Pulls,
+  Tag,
   Tags,
   TranslationTotals,
 } from './coverage/coverage.d';
@@ -74,6 +76,9 @@ const emptyCoverage = (): CoverageEntry => {
     timeline: {},
     files: [],
     lastModified: 0,
+    allTags: [],
+    openPRs: [],
+    comments: [],
   };
 };
 
@@ -95,16 +100,22 @@ const processRaidbossFile = (
 
   const thisCoverage = coverage[zoneId] ??= emptyCoverage();
 
-  thisCoverage.files.push({ name: triggerFileName });
+  thisCoverage.files?.push({ name: triggerFileName });
   if (timelineFileName !== undefined)
-    thisCoverage.files.push({ name: timelineFileName });
+    thisCoverage.files?.push({ name: timelineFileName });
 
-  const timelineEntry: Coverage[string]['timeline'] = {};
-  // 1000 here is an arbitrary limit to ignore stub timeline files that haven't been filled out.
-  // ifrit-nm is the shortest real timeline, at 1800 characters.
-  // TODO: consider processing the timeline and finding the max time? or some other heuristic.
-  if (timelineContents !== undefined && timelineContents.length > 1000)
-    timelineEntry.hasFile = true;
+  const timelineEntry: Coverage[string]['timeline'] = thisCoverage.timeline ?? {};
+  if (timelineContents !== undefined) {
+    const timelineParser = new TimelineParser(timelineContents, [], []);
+    timelineEntry.entries = timelineParser.events.length;
+    const firstEvent = timelineParser.events.sort((l, r) => l.time - r.time)[0]?.time ?? 0;
+    const lastEvent = timelineParser.events.sort((l, r) => r.time - l.time)[0]?.time ?? 0;
+    timelineEntry.duration = lastEvent - firstEvent;
+
+    // TODO: Consider if this covers all edge cases.
+    timelineEntry.hasFile = timelineEntry.duration > 5;
+  }
+
   if (triggerSet.hasNoTimeline)
     timelineEntry.hasNoTimeline = true;
   else if (triggerSet.timelineNeedsFixing)
@@ -112,7 +123,11 @@ const processRaidbossFile = (
 
   thisCoverage.timeline = timelineEntry;
   thisCoverage.triggers.num = numTriggers;
-  thisCoverage.comments = triggerSet.comments;
+
+  if (triggerSet.comments) {
+    thisCoverage.comments?.push(triggerSet.comments);
+  }
+
   if (isSingle)
     thisCoverage.label = triggerSet.zoneLabel;
 
@@ -125,6 +140,8 @@ const processRaidbossFile = (
       if (translation.file !== triggerFileName && translation.file !== timelineFileName)
         continue;
       const langEntry = (thisCoverage.translations ??= {})[lang] ??= {};
+      const translationCountEntry = (thisCoverage.translationCount ??= {});
+      translationCountEntry[translation.type] = (translationCountEntry[translation.type] ?? 0) + 1;
       langEntry[translation.type] = (langEntry[translation.type] ?? 0) + 1;
     }
   }
@@ -229,7 +246,7 @@ const processOopsyFile = (
 
   const thisCoverage = coverage[zoneId] ??= emptyCoverage();
   thisCoverage.oopsy = { num: numTriggers };
-  thisCoverage.files.push({
+  thisCoverage.files?.push({
     name: triggerFileName.replace(/^\.\.\//, ''),
   });
 };
@@ -484,7 +501,7 @@ const mapCoverageTags = async (coverage: Coverage, git: SimpleGit, tags: Tags) =
   const reverseOrderTags = Object.keys(tags).reverse();
 
   for (const coverageEntry of Object.values(coverage)) {
-    for (const file of coverageEntry.files) {
+    for (const file of coverageEntry.files ?? []) {
       const logData = await git.log({
         file: file.name,
         maxCount: 1,
@@ -504,7 +521,7 @@ const mapCoverageTags = async (coverage: Coverage, git: SimpleGit, tags: Tags) =
 
       if (file.commit !== undefined) {
         for (const tag of reverseOrderTags) {
-          const tagFile = tags[tag]?.files.find((tagFile) => tagFile.name === file.name);
+          const tagFile = tags[tag]?.files?.find((tagFile) => tagFile.name === file.name);
           if (tagFile) {
             file.tag = tag;
             file.tagHash = tagFile.hash;
@@ -516,12 +533,51 @@ const mapCoverageTags = async (coverage: Coverage, git: SimpleGit, tags: Tags) =
   }
 };
 
+const postProcessCoverage = (coverage: Coverage, pulls: Pulls, tags: Tags) => {
+  for (const [zoneId, zoneCoverage] of Object.entries(coverage)) {
+    const openPRs = pulls
+      .filter((pr) =>
+        (pr.files?.find((file) => zoneCoverage.files?.find((file2) => file === file2.name)) !==
+          undefined) ||
+        pr.zones.includes(parseInt(zoneId))
+      );
+
+    const allTags = zoneCoverage.files?.map((file) => {
+      const fileTag = file.tag;
+      if (fileTag === undefined)
+        return undefined;
+      const tag = tags[fileTag];
+      if (tag === undefined)
+        return undefined;
+      return {
+        tag: file.tag,
+        ...tag,
+      };
+    })
+      .filter(notUndefined)
+      .filter((value, index, array) => array.findIndex((v2) => v2.tag === value.tag) === index)
+      .sort((left, right) => right?.tagDate - left?.tagDate);
+    zoneCoverage.allTags = (allTags ?? []).map((tag) => tag.tagName);
+    zoneCoverage.openPRs = openPRs.map((pr) => pr.number);
+    // Remove file info to reduce the size of the generated file for performance
+    delete zoneCoverage.files;
+  }
+
+  // Remove file info to reduce the size of the generated file for performance
+  for (const pr of pulls) {
+    delete pr.files;
+  }
+  for (const tag of Object.values(tags)) {
+    delete tag.files;
+  }
+};
+
 const extractTagsAndPulls = async (git: SimpleGit) => {
   const tagData = await git.tags({
     '--format': '%(objectname)|%(refname:strip=2)|%(authordate)|%(*authordate)',
   });
 
-  const unsortedTags: (Tags[string] & { name: string })[] = [];
+  const unsortedTags: Tag[] = [];
 
   for (const tag of tagData?.all ?? []) {
     const [tagHash, tagName, tagDate, commitDate] = tag.split('|', 4);
@@ -535,7 +591,7 @@ const extractTagsAndPulls = async (git: SimpleGit) => {
       tagDateObj = new Date(commitDate);
     }
     unsortedTags.push({
-      name: tagName,
+      tagName: tagName,
       tagDate: tagDateObj.getTime(),
       tagHash: tagHash,
       files: [],
@@ -547,10 +603,11 @@ const extractTagsAndPulls = async (git: SimpleGit) => {
   let lastVersion = DEFAULT_COMMIT_HASH;
 
   for (const tag of unsortedTags.sort((l, r) => l.tagDate - r.tagDate)) {
-    const result = await git.raw(['diff-tree', '-r', lastVersion, tag.name]);
-    lastVersion = tag.name;
+    const result = await git.raw(['diff-tree', '-r', lastVersion, tag.tagName]);
+    lastVersion = tag.tagName;
 
-    tags[tag.name] = {
+    tags[tag.tagName] = {
+      tagName: tag.tagName,
       tagDate: tag.tagDate,
       tagHash: tag.tagHash,
       files: result.split('\n').map((line) => {
@@ -566,9 +623,23 @@ const extractTagsAndPulls = async (git: SimpleGit) => {
     };
   }
 
-  const pulls: Pulls = [];
-
   const octokit = new (Octokit.plugin(paginateRest))();
+
+  const releases = await octokit.paginate('GET /repos/{owner}/{repo}/releases', {
+    owner: 'OverlayPlugin',
+    repo: 'cactbot',
+  });
+
+  for (const release of releases) {
+    const tag = tags[release.tag_name];
+
+    if (tag === undefined)
+      continue;
+
+    tag.tagTitle = release.name ?? undefined;
+  }
+
+  const pulls: Pulls = [];
 
   const openPulls = await octokit.paginate('GET /repos/{owner}/{repo}/pulls', {
     owner: 'OverlayPlugin',
@@ -637,6 +708,8 @@ const extractTagsAndPulls = async (git: SimpleGit) => {
   await processOopsyCoverage(oopsyManifest, coverage);
 
   await mapCoverageTags(coverage, git, tags);
+
+  postProcessCoverage(coverage, pulls, tags);
 
   const { totals, translationTotals } = buildTotals(coverage, missingTranslations);
   writeCoverageReport(
