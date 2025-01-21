@@ -970,10 +970,10 @@ Parsed Log Line Structure:
 
 ```log
 Network Log Line Regex:
-^(?<type>2[12])\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<source>[^|]*)\|(?<id>[^|]*)\|(?<ability>[^|]*)\|(?<targetId>[^|]*)\|(?<target>[^|]*)\|(?<flags>[^|]*)\|(?<damage>[^|]*)\|(?:[^|]*\|){14}(?<targetCurrentHp>[^|]*)\|(?<targetMaxHp>[^|]*)\|(?<targetCurrentMp>[^|]*)\|(?<targetMaxMp>[^|]*)\|(?:[^|]*\|){2}(?<targetX>[^|]*)\|(?<targetY>[^|]*)\|(?<targetZ>[^|]*)\|(?<targetHeading>[^|]*)\|(?<currentHp>[^|]*)\|(?<maxHp>[^|]*)\|(?<currentMp>[^|]*)\|(?<maxMp>[^|]*)\|(?:[^|]*\|){2}(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|(?<sequence>[^|]*)\|(?<targetIndex>[^|]*)\|(?<targetCount>[^|]*)\|(?<ownerId>[^|]*)\|(?<ownerName>[^|]*)\|(?<effectDisplayType>[^|]*)\|(?<actionId>[^|]*)\|(?<actionAnimationId>[^|]*)\|(?<animationLockTime>[^|]*)\|(?<rotationHex>[^|]*)\|
+^(?<type>2[12])\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<source>[^|]*)\|(?<id>[^|]*)\|(?<ability>[^|]*)\|(?<targetId>[^|]*)\|(?<target>[^|]*)\|(?<flags>[^|]*)\|(?<damage>[^|]*)\|(?:[^|]*\|){14}(?<targetCurrentHp>[^|]*)\|(?<targetMaxHp>[^|]*)\|(?<targetCurrentMp>[^|]*)\|(?<targetMaxMp>[^|]*)\|(?:[^|]*\|){2}(?<targetX>[^|]*)\|(?<targetY>[^|]*)\|(?<targetZ>[^|]*)\|(?<targetHeading>[^|]*)\|(?<currentHp>[^|]*)\|(?<maxHp>[^|]*)\|(?<currentMp>[^|]*)\|(?<maxMp>[^|]*)\|(?:[^|]*\|){2}(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|(?<sequence>[^|]*)\|(?<targetIndex>[^|]*)\|(?<targetCount>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) (?:ActionEffect|AOEActionEffect) (?<type>(?:15|16)):(?<sourceId>[^:]*):(?<source>[^:]*):(?<id>[^:]*):(?<ability>(?:[^:]|: )*?):(?<targetId>[^:]*):(?<target>[^:]*):(?<flags>[^:]*):(?<damage>[^:]*)(?::[^:]*){14}:(?<targetCurrentHp>[^:]*):(?<targetMaxHp>[^:]*):(?<targetCurrentMp>[^:]*):(?<targetMaxMp>[^:]*)(?::[^:]*){2}:(?<targetX>[^:]*):(?<targetY>[^:]*):(?<targetZ>[^:]*):(?<targetHeading>[^:]*):(?<currentHp>[^:]*):(?<maxHp>[^:]*):(?<currentMp>[^:]*):(?<maxMp>[^:]*)(?::[^:]*){2}:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*):(?<sequence>[^:]*):(?<targetIndex>[^:]*):(?<targetCount>[^:]*):(?<ownerId>[^:]*):(?<ownerName>[^:]*):(?<effectDisplayType>[^:]*):(?<actionId>[^:]*):(?<actionAnimationId>[^:]*):(?<animationLockTime>[^:]*):(?<rotationHex>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) (?:ActionEffect|AOEActionEffect) (?<type>(?:15|16)):(?<sourceId>[^:]*):(?<source>[^:]*):(?<id>[^:]*):(?<ability>(?:[^:]|: )*?):(?<targetId>[^:]*):(?<target>[^:]*):(?<flags>[^:]*):(?<damage>[^:]*)(?::[^:]*){14}:(?<targetCurrentHp>[^:]*):(?<targetMaxHp>[^:]*):(?<targetCurrentMp>[^:]*):(?<targetMaxMp>[^:]*)(?::[^:]*){2}:(?<targetX>[^:]*):(?<targetY>[^:]*):(?<targetZ>[^:]*):(?<targetHeading>[^:]*):(?<currentHp>[^:]*):(?<maxHp>[^:]*):(?<currentMp>[^:]*):(?<maxMp>[^:]*)(?::[^:]*){2}:(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*):(?<sequence>[^:]*):(?<targetIndex>[^:]*):(?<targetCount>[^:]*)(?:$|:)
 ```
 
 #### Examples
@@ -1463,10 +1463,10 @@ When an actor dies, you will get 30-lines for buffs that were removed by it dyin
 
 ```log
 Network Log Line Structure:
-27|[timestamp]|[targetId]|[target]|[?]|[?]|[id]
+27|[timestamp]|[targetId]|[target]|[?]|[?]|[id]|[data0]
 
 Parsed Log Line Structure:
-[timestamp] TargetIcon 1B:[targetId]:[target]:[?]:[?]:[id]
+[timestamp] TargetIcon 1B:[targetId]:[target]:[?]:[?]:[id]:[data0]
 ```
 
 #### Regexes
@@ -3071,34 +3071,34 @@ snapshotted location of the Ability.
 
 ```log
 Network Log Line Structure:
-264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]
+264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]|[animationTargetId]
 
 Parsed Log Line Structure:
-[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]
+[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]:[animationTargetId]
 ```
 
 #### Regexes
 
 ```log
 Network Log Line Regex:
-^(?<type>264)\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<id>[^|]*)\|(?<globalEffectCounter>[^|]*)\|(?<dataFlag>[^|]*)\|(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|
+^(?<type>264)\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<id>[^|]*)\|(?<globalEffectCounter>[^|]*)\|(?<dataFlag>[^|]*)\|(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|(?<animationTargetId>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) 264 (?<type>108):(?<sourceId>[^:]*):(?<id>[^:]*):(?<globalEffectCounter>[^:]*):(?<dataFlag>[^:]*):(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) 264 (?<type>108):(?<sourceId>[^:]*):(?<id>[^:]*):(?<globalEffectCounter>[^:]*):(?<dataFlag>[^:]*):(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*):(?<animationTargetId>[^:]*)(?:$|:)
 ```
 
 #### Examples
 
 ```log
 Network Log Line Examples:
-264|2023-11-02T20:53:56.6450000-04:00|10001234|0005|000003EF|0|||||9f7371fa0e3a42c8
-264|2023-11-02T21:39:20.0910000-04:00|10001234|0085|0000533E|1|0.000|0.000|0.000|2.920|2e9ae29c1b65f930
-264|2023-11-02T21:39:15.6790000-04:00|40000D6E|8C45|000052DD|1|-14.344|748.558|130.009|2.483|f6b3ffa6c97f0540
+264|2023-11-04T17:53:45.2940000+01:00|4000619F|8BC0|00000664|0||||3.141|1234ABCD|fc680d77fb5897f1
+264|2023-11-04T17:53:45.2940000+01:00|4000619E|8BC0|00000663|1|0.000|0.000|0.000|-1.589|1234ABCD|711909381311a052
+264|2023-11-04T17:53:45.2940000+01:00|4000619D|8BC0|00000662|1|1.000|2.000|3.000|1.570|1234ABCD|7e82907c710ee781
 
 Parsed Log Line Examples:
-[20:53:56.645] 264 108:10001234:0005:000003EF:0::::
-[21:39:20.091] 264 108:10001234:0085:0000533E:1:0.000:0.000:0.000:2.920
-[21:39:15.679] 264 108:40000D6E:8C45:000052DD:1:-14.344:748.558:130.009:2.483
+[17:53:45.294] 264 108:4000619F:8BC0:00000664:0::::3.141:1234ABCD
+[17:53:45.294] 264 108:4000619E:8BC0:00000663:1:0.000:0.000:0.000:-1.589:1234ABCD
+[17:53:45.294] 264 108:4000619D:8BC0:00000662:1:1.000:2.000:3.000:1.570:1234ABCD
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=AbilityExtra&lang=en-US) -->
