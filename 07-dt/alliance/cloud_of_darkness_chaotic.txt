@@ -114,7 +114,7 @@ hideall "--sync--"
 734.0 "Thorny Vine" Ability { id: "9E2C", source: "Stygian Shadow" }
 762.2 "Chaos-condensed Particle Beam/Diffusive-force Particle Beam" Ability { id: ["9E0D", "9E10"], source: "Cloud of Darkness" }
 765.1 "--sync--" Ability { id: "9E2E", source: "Stygian Shadow" }
-774.1 "Lateral-core Phaser/Core-lateral Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
+774.1 "Core-lateral Phaser/Lateral-core Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
 776.1 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
 777.5 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
 781.3 "Active-pivot Particle Beam" Ability { id: ["9E13", "9E15"], source: "Cloud of Darkness" } duration 7.5
@@ -127,7 +127,7 @@ hideall "--sync--"
 820.1 "Curse of Darkness" Ability { id: "9E33", source: "Stygian Shadow" }
 822.2 "--sync--" Ability { id: "9E2E", source: "Stygian Shadow" }
 830.2 "Particle Concentration" Ability { id: "9E18", source: "Cloud of Darkness" }
-831.2 "Lateral-core Phaser/Core-lateral Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
+831.2 "Core-lateral Phaser/Lateral-core Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
 833.2 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
 834.8 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
 841.5 "Particle Beam" Ability { id: ["9E1A", "9E1B", "9E1C"], source: "Cloud of Darkness" }
@@ -140,7 +140,7 @@ hideall "--sync--"
 890.4 "--sync--" Ability { id: ["9E09", "9E0B"], source: "Cloud of Darkness" }
 891.1 "Ghastly Gloom" Ability { id: ["9E0A", "9E0C"], source: "Cloud of Darkness" }
 891.2 "--sync--" Ability { id: "9E2E", source: "Stygian Shadow" }
-900.2 "Lateral-core Phaser/Core-lateral Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
+900.2 "Core-lateral Phaser/Lateral-core Phaser" Ability { id: ["9E2F", "9E30"], source: "Stygian Shadow" }
 902.2 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
 903.8 "Phaser" #Ability { id: "9E31", source: "Stygian Shadow" }
 909.8 "Chaos-condensed Particle Beam/Diffusive-force Particle Beam" Ability { id: ["9E0D", "9E10"], source: "Cloud of Darkness" }
@@ -311,8 +311,8 @@ hideall "--sync--"
 # 9E2C Thorny Vine - brambles tether to players
 # 9E2D Thorny Vine
 # 9E2E --sync--
-# 9E2F Lateral-core Phaser - cleave middle then sides (cast)
-# 9E30 Core-lateral Phaser - cleave sides then middle (cast)
+# 9E2F Core-lateral Phaser - cleave middle then sides (cast)
+# 9E30 Lateral-core Phaser - cleave sides then middle (cast)
 # 9E31 Phaser - add cleave (damage from Lateral-core/Core-lateral Phaser)
 # 9E32 Curse of Darkness - dummy cast
 # 9E33 Curse of Darkness - aoe + debuffs

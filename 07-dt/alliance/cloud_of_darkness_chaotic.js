@@ -332,7 +332,7 @@ Options.Triggers.push({
       id: 'Cloud Chaotic Side Collector',
       type: 'Ability',
       // 9E08 = Dark Dominion (from boss), occurs before The Third Art of Darkness add mechanics
-      // 9E2E = unknown (from both adds), occurs before Lateral-core/Core-lateral add mechanics
+      // 9E2E = unknown (from both adds), occurs before Core-lateral/Lateral-core add mechanics
       netRegex: { id: ['9E08', '9E2E'], capture: false },
       suppressSeconds: 1,
       promise: async (data) => {
@@ -476,7 +476,7 @@ Options.Triggers.push({
       response: Responses.tankCleave(),
     },
     {
-      id: 'Cloud Chaotic Lateral-core Phaser',
+      id: 'Cloud Chaotic Core-lateral Phaser 9E2F',
       type: 'StartsUsing',
       netRegex: { id: '9E2F', source: 'Stygian Shadow', capture: true },
       condition: (data, matches) => {
@@ -495,7 +495,7 @@ Options.Triggers.push({
       },
     },
     {
-      id: 'Cloud Chaotic Core-lateral Phaser',
+      id: 'Cloud Chaotic Lateral-core Phaser 9E30',
       type: 'StartsUsing',
       netRegex: { id: '9E30', source: 'Stygian Shadow', capture: true },
       condition: (data, matches) => {
@@ -731,7 +731,7 @@ Options.Triggers.push({
         'Blade of Darkness': 'Schwarze Schneide',
         'Break IV': 'Stillstandka',
         'Chaos-condensed Particle Beam': 'Hyperdichter Partikelstrahl',
-        'Core-lateral Phaser': 'Lateral-Zentral-Phaser',
+        'Core-lateral Phaser': 'Zentral-Lateral-Phaser',
         'Curse of Darkness': 'Partikelfluch',
         'Dark Dominion': 'Dunkle Herrschaft',
         'Dark-energy Particle Beam': 'Dunkler Partikelstrahl',
@@ -748,7 +748,7 @@ Options.Triggers.push({
         'Flood of Darkness': 'Dunkle Flut',
         'Ghastly Gloom': 'Schaurige Schwärze',
         'Grim Embrace': 'Grimmige Umarmung',
-        'Lateral-core Phaser': 'Zentral-Lateral-Phaser',
+        'Lateral-core Phaser': 'Lateral-Zentral-Phaser',
         'Looming Chaos': 'Aufziehendes Chaos',
         '(?<! )Particle Beam': 'Partikeldetonation',
         'Particle Concentration': 'Partikelkugel',
@@ -775,7 +775,7 @@ Options.Triggers.push({
         'Blade of Darkness': 'Ténèbres acérées',
         'Break IV': 'Giga Brèche',
         'Chaos-condensed Particle Beam': 'Canon plasma hyperconcentré',
-        'Core-lateral Phaser': 'Faisceaux latéraux et centrés',
+        'Core-lateral Phaser': 'Faisceaux centrés et latéraux',
         'Curse of Darkness': 'Malédiction particulaire',
         'Dark Dominion': 'Domaines obscurs',
         'Dark-energy Particle Beam': 'Faisceau de particules maudit',
@@ -792,7 +792,7 @@ Options.Triggers.push({
         'Flood of Darkness': 'Déluge de Ténèbres',
         'Ghastly Gloom': 'Nuée calorifique',
         'Grim Embrace': 'Étreinte funèbre',
-        'Lateral-core Phaser': 'Faisceaux centrés et latéraux',
+        'Lateral-core Phaser': 'Faisceaux latéraux et centrés',
         'Looming Chaos': 'Chaos rampant',
         '(?<! )Particle Beam': 'Rayon explosif',
         'Particle Concentration': 'Rayon sphérique',
@@ -819,7 +819,7 @@ Options.Triggers.push({
         'Blade of Darkness': '闇の刃',
         'Break IV': 'ブレクジャ',
         'Chaos-condensed Particle Beam': '凝縮式波動砲',
-        'Core-lateral Phaser': '跳躍波動砲【側撃・正撃】',
+        'Core-lateral Phaser': '跳躍波動砲【正撃・側撃】',
         'Curse of Darkness': '波動の呪詛',
         'Dark Dominion': '深闇領域',
         'Dark-energy Particle Beam': '呪詛式 波動砲',
@@ -836,7 +836,7 @@ Options.Triggers.push({
         'Flood of Darkness': '闇の氾濫',
         'Ghastly Gloom': '怖れの雲',
         'Grim Embrace': 'グリムエンブレイス',
-        'Lateral-core Phaser': '跳躍波動砲【正撃・側撃】',
+        'Lateral-core Phaser': '跳躍波動砲【側撃・正撃】',
         'Looming Chaos': 'ルーミングカオス',
         '(?<! )Particle Beam': '波動爆発',
         'Particle Concentration': '波動球',
