@@ -1713,6 +1713,15 @@ const triggerSet: TriggerSet<Data> = {
         'Usurper of Frost': 'Shiva-Mitron',
         'Oracle\'s Reflection': 'Spiegelbild des Orakels',
         'Ice Veil': 'Immerfrost-Kristall',
+        'Frozen Mirror': 'Eisspiegel',
+        'Holy Light': 'heilig\\[a\\] Licht',
+        'Crystal of Darkness': '[^:]+', // FIXME
+        'Crystal of Light': 'Lichtkristall',
+        'Oracle of Darkness': 'Orakel\\[p\\] der Dunkelheit',
+        'Fragment of Fate': '[^:]+', // FIXME
+        'Sorrow\'s Hourglass': 'Sanduhr\\[p\\] der Sorge',
+        'Drachen Wanderer': 'Seele\\[p\\] des heiligen Drachen',
+        'Pandora': '[^:]+', // FIXME
       },
       'replaceText': {
         'Blastburn': 'Brandstoß',
@@ -1744,6 +1753,15 @@ const triggerSet: TriggerSet<Data> = {
         'Usurper of Frost': 'Shiva-Mitron',
         'Oracle\'s Reflection': 'reflet de la prêtresse',
         'Ice Veil': 'bloc de glaces éternelles',
+        'Frozen Mirror': 'miroir de glace',
+        'Holy Light': 'lumière sacrée',
+        'Crystal of Darkness': '[^:]+', // FIXME
+        'Crystal of Light': 'cristal de Lumière',
+        'Oracle of Darkness': 'prêtresse des Ténèbres',
+        'Fragment of Fate': '[^:]+', // FIXME
+        'Sorrow\'s Hourglass': 'sablier de chagrin',
+        'Drachen Wanderer': 'esprit du Dragon divin',
+        'Pandora': '[^:]+', // FIXME
       },
       'replaceText': {
         'Blastburn': 'Explosion brûlante',
@@ -1775,6 +1793,15 @@ const triggerSet: TriggerSet<Data> = {
         'Usurper of Frost': 'シヴァ・ミトロン',
         'Oracle\'s Reflection': '巫女の鏡像',
         'Ice Veil': '永久氷晶',
+        'Frozen Mirror': '氷面鏡',
+        'Holy Light': '聖なる光',
+        'Crystal of Darkness': '闇水晶',
+        'Crystal of Light': '光水晶',
+        'Oracle of Darkness': '闇の巫女',
+        'Fragment of Fate': '未来の欠片',
+        'Sorrow\'s Hourglass': '悲しみの砂時計',
+        'Drachen Wanderer': '聖竜気',
+        'Pandora': 'パンドラ・ミトロン',
       },
       'replaceText': {
         'Blastburn': 'バーンブラスト',
