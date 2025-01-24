@@ -1093,8 +1093,11 @@ Options.Triggers.push({
         const debuff = data.p3RelativityDebuff;
         if (debuff === undefined)
           return;
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps() : output.iceSupport();
           return output[debuff]();
+        }
         const dirStr = data.p3RelativityMyDirStr;
         if (debuff === 'longFire')
           return output.yNorthStrat({ debuff: output.longFire(), dir: dirStr });
@@ -1166,8 +1169,11 @@ Options.Triggers.push({
         const debuff = data.p3RelativityDebuff;
         if (debuff === undefined)
           return;
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps() : output.iceSupport();
           return output[debuff]();
+        }
         const dirStr = data.p3RelativityMyDirStr;
         if (debuff === 'shortFire')
           return output.yNorthStrat({ debuff: output.shortFire(), dir: dirStr });
