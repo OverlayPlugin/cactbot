@@ -164,7 +164,7 @@ export interface Data extends RaidbossData {
   p3ApocDebuffCount: number;
   p3ApocDebuffs: ApocDebuffMap;
   p3ApocMyDebuff?: ApocDebuffLength;
-  p3ApocInitialSide?: DirectionOutputCardinal;
+  p3ApocInitialSide?: 'east' | 'west';
   p3ApocGroupSwap?: boolean;
   p3ApocFirstDirNum?: number;
   p3ApocRotationDir?: 1 | -1; // 1 = clockwise, -1 = counterclockwise
@@ -1429,12 +1429,8 @@ const triggerSet: TriggerSet<Data> = {
         const me = combatantData.combatants[0];
         if (!me)
           return;
-        data.p3ApocInitialSide = Directions.xyToCardinalDirOutput(
-          me.PosX,
-          me.PosY,
-          centerX,
-          centerY,
-        );
+
+        data.p3ApocInitialSide = me.PosX > centerX ? 'east' : 'west';
       },
     },
     {
@@ -1443,13 +1439,14 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '9D4F' },
       condition: (data, matches) => data.phase === 'p3-apoc' && data.me === matches.target,
       run: (data, matches) => {
+        // this is set for the first dark water stack; don't overwrite it
         if (data.p3ApocGroupSwap !== undefined)
           return;
 
         const x = parseFloat(matches.targetX);
-        const y = parseFloat(matches.targetY);
-        const stackSide = Directions.xyToCardinalDirOutput(x, y, centerX, centerY);
-        data.p3ApocGroupSwap = data.p3ApocInitialSide !== stackSide;
+        const stackSide = x > centerX ? 'east' : 'west';
+        // if p3ApocInitialSide isn't set for whatever reason, assume no swap (for safety)
+        data.p3ApocGroupSwap = (data.p3ApocInitialSide ?? stackSide) !== stackSide;
       },
     },
     {
