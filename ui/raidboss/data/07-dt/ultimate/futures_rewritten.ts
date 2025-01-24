@@ -109,21 +109,27 @@ type ApocDebuffMap = Record<ApocDebuffLength, string[]>;
 const p3UROutputStrings = {
   yNorthStrat: {
     en: '${debuff} (${dir})',
+    cn: '${debuff} (${dir})',
   },
   dirCombo: {
     en: '${inOut} + ${dir}',
+    cn: '${inOut} + ${dir}',
   },
   fireSpread: {
     en: 'Fire - Spread',
+    cn: '火分散',
   },
   dropRewind: {
     en: 'Drop Rewind',
+    cn: '放置回返',
   },
   baitStoplight: {
     en: 'Bait Stoplight',
+    cn: '引导激光',
   },
   avoidStoplights: {
     en: 'Avoid stoplights',
+    cn: '远离激光',
   },
   stack: Outputs.stackMarker,
   middle: Outputs.middle,
@@ -172,6 +178,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.FuturesRewrittenUltimate,
   comments: {
     en: 'Triggers: P1-3 / Timeline: P1-5',
+    cn: '触发器: P1-3 / 时间轴: P1-5',
   },
   config: [
     {
@@ -196,7 +203,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ultimateRel',
       comment: {
         en:
-          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.  
+          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
           Directional output is true north (i.e., "east" means actual east,
           not wherever is east of the "Y" north spot).`,
       },
@@ -667,12 +674,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${inOut} + ${dir} => ${mech}',
+          cn: '${inOut} + ${dir} => ${mech}',
         },
         dropPuddle: {
           en: 'Drop Puddle',
+          cn: '放置冰花',
         },
         baitCleave: {
           en: 'Bait',
+          cn: '引导水波',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -695,6 +705,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbDir: {
           en: '${kb} (${dir1}/${dir2})',
+          cn: '${kb} (${dir1}/${dir2})',
         },
         kb: Outputs.knockback,
         ...Directions.outputStrings8Dir,
@@ -826,6 +837,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitCleave: {
           en: 'Bait cleave',
+          cn: '引导水波',
         },
       },
     },
@@ -840,6 +852,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitCleave: {
           en: 'Bait cleave',
+          cn: '引导水波',
         },
       },
     },
@@ -887,9 +900,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         puddle: {
           en: 'Puddles on you (w/ ${other})',
+          cn: '放置大圈 (和 ${other})',
         },
         tether: {
           en: 'Tether on you (Puddles: ${p1}, ${p2})',
+          cn: '拉线踩塔 (大圈: ${p1}, ${p2})',
         },
       },
     },
@@ -904,9 +919,11 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           towerSoak: {
             en: 'Soak middle tower',
+            cn: '踩塔',
           },
           towerAvoid: {
             en: 'Avoid middle tower',
+            cn: '不去踩塔',
           },
         };
 
@@ -934,6 +951,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         afterTower: {
           en: '${partnerSpread} (after tower)',
+          cn: '踩塔后 + ${partnerSpread}',
         },
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
@@ -964,6 +982,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         targetVeil: {
           en: 'Target Ice Veil',
+          cn: '集火大光',
         },
       },
     },
@@ -1065,21 +1084,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         debuffSolo: {
           en: '${debuff}',
+          cn: '${debuff}',
         },
         debuffShared: {
           en: '${debuff} (w/ ${other})',
+          cn: '${debuff} (和 ${other})',
         },
         shortFire: {
           en: 'Short Fire',
+          cn: '短火',
         },
         mediumFire: {
           en: 'Medium Fire',
+          cn: '中火',
         },
         longFire: {
           en: 'Long Fire',
+          cn: '长火',
         },
         ice: {
           en: 'Ice',
+          cn: '冰点名',
         },
       },
     },
@@ -1393,12 +1418,15 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           onYou: {
             en: 'Shared tank cleave on YOU',
+            cn: '坦克分摊点名',
           },
           share: {
             en: 'Shared tank cleave on ${target}',
+            cn: '坦克分摊 (和 ${target})',
           },
           avoid: {
             en: 'Avoid tank cleave',
+            cn: '远离分摊顺劈',
           },
         };
         if (data.me === matches.target)
@@ -1443,18 +1471,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Stack: ${debuff} (w/ ${same})',
+          cn: '${debuff} 分摊 (和 ${same})',
         },
         short: {
           en: 'Short',
+          cn: '短',
         },
         medium: {
           en: 'Medium',
+          cn: '中',
         },
         long: {
           en: 'Long',
+          cn: '长',
         },
         none: {
           en: 'No Debuff',
+          cn: '无点名',
         },
         unknown: Outputs.unknown,
       },
@@ -1518,6 +1551,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         safe: {
           en: '(Apoc safe later: ${dir1})',
+          cn: '${dir1} 稍后安全',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1591,6 +1625,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         safe: {
           en: 'Safe: ${dir1} (lean ${dir2})',
+          cn: '${dir1}, ${dir2} 安全',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1660,6 +1695,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Bait Jump (${dirs})?',
+          cn: '${dirs} 引导超级跳',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1674,6 +1710,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         kbStacks: {
           en: 'Knockback => Stacks',
+          cn: '击退 => 四四分摊',
         },
       },
     },
