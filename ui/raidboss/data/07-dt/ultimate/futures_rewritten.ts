@@ -1198,8 +1198,11 @@ const triggerSet: TriggerSet<Data> = {
         if (debuff === undefined)
           return;
 
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps!() : output.iceSupport!();
           return output[debuff]!();
+        }
 
         const dirStr = data.p3RelativityMyDirStr;
 
@@ -1276,8 +1279,11 @@ const triggerSet: TriggerSet<Data> = {
         if (debuff === undefined)
           return;
 
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps!() : output.iceSupport!();
           return output[debuff]!();
+        }
 
         const dirStr = data.p3RelativityMyDirStr;
 
