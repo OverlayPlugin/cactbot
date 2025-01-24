@@ -196,7 +196,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ultimateRel',
       comment: {
         en:
-          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.  
+          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
           Directional output is true north (i.e., "east" means actual east,
           not wherever is east of the "Y" north spot).`,
       },
@@ -1781,7 +1781,7 @@ const triggerSet: TriggerSet<Data> = {
         'Powerful Light': 'Entladenes Licht',
         'Luminous Hammer': 'Gleißende Erosion',
         'Burst': 'Einschlag',
-        'Banish III': 'Verbannga',
+        'Banish III(?! )': 'Verbannga',
         'Banish III Divided': 'Geteiltes Verbannga',
         'Absolute Zero': 'Absoluter Nullpunkt',
         'Swelling Frost': 'Frostwoge',
@@ -1790,7 +1790,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wings Dark and Light': '[^\|]+', // FIXME
         'Polarizing Paths': '[^\|]+', // FIXME
         'Sinbound Meltdown': 'Sündenschmelze',
-        'Sinbound Fire': 'Sünden-Feuer',
+        'Sinbound Fire(?! )': 'Sünden-Feuer',
         'Akh Rhai': 'Akh Rhai',
         'Darklit Dragonsong': '[^\|]+', // FIXME
         'Crystallize Time': '[^\|]+', // FIXME
@@ -1917,7 +1917,7 @@ const triggerSet: TriggerSet<Data> = {
         'Powerful Light': 'Explosion sacrée',
         'Luminous Hammer': 'Érosion lumineuse',
         'Burst': 'Explosion',
-        'Banish III': 'Méga Bannissement',
+        'Banish III(?! )': 'Méga Bannissement',
         'Banish III Divided': 'Méga Bannissement fractionné',
         'Absolute Zero': 'Zéro absolu',
         'Swelling Frost': 'Vague de glace',
@@ -1926,7 +1926,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wings Dark and Light': '[^\|]+', // FIXME
         'Polarizing Paths': '[^\|]+', // FIXME
         'Sinbound Meltdown': 'Fusion authentique',
-        'Sinbound Fire': 'Feu authentique',
+        'Sinbound Fire(?! )': 'Feu authentique',
         'Akh Rhai': 'Akh Rhai',
         'Darklit Dragonsong': '[^\|]+', // FIXME
         'Crystallize Time': '[^\|]+', // FIXME
@@ -2053,7 +2053,7 @@ const triggerSet: TriggerSet<Data> = {
         'Powerful Light': '光爆',
         'Luminous Hammer': 'ルミナスイロード',
         'Burst': '爆発',
-        'Banish III': 'バニシュガ',
+        'Banish III(?! )': 'バニシュガ',
         'Banish III Divided': 'ディバイデッド・バニシュガ',
         'Absolute Zero': '絶対零度',
         'Swelling Frost': '凍波',
@@ -2062,7 +2062,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wings Dark and Light': '光と闇の片翼',
         'Polarizing Paths': '星霊の剣',
         'Sinbound Meltdown': 'シンメルトン',
-        'Sinbound Fire': 'シンファイア',
+        'Sinbound Fire(?! )': 'シンファイア',
         'Akh Rhai': 'アク・ラーイ',
         'Darklit Dragonsong': '光と闇の竜詩',
         'Crystallize Time': '時間結晶',
