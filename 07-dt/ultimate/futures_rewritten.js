@@ -1298,6 +1298,41 @@ Options.Triggers.push({
       },
     },
     // ***** Apocalypse *****
+    // Get the player's cardinal dir relative to the boss when the Dark Water debuffs are applied
+    // If the player takes the dark water stack on a different cardinal dir, they swapped groups
+    // and will need to stay swapped throughout the mechanic.
+    {
+      id: 'FRU P3 Apoc Dark Water Side Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: '99D', capture: false },
+      condition: (data) => data.phase === 'p3-apoc',
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const combatantData = await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        });
+        const me = combatantData.combatants[0];
+        if (!me)
+          return;
+        data.p3ApocInitialSide = me.PosX > centerX ? 'east' : 'west';
+      },
+    },
+    {
+      id: 'FRU P3 Apoc Dark Water Swap Check',
+      type: 'Ability',
+      netRegex: { id: '9D4F' },
+      condition: (data, matches) => data.phase === 'p3-apoc' && data.me === matches.target,
+      run: (data, matches) => {
+        // this is set for the first dark water stack; don't overwrite it
+        if (data.p3ApocGroupSwap !== undefined)
+          return;
+        const x = parseFloat(matches.targetX);
+        const stackSide = x > centerX ? 'east' : 'west';
+        // if p3ApocInitialSide isn't set for whatever reason, assume no swap (for safety)
+        data.p3ApocGroupSwap = (data.p3ApocInitialSide ?? stackSide) !== stackSide;
+      },
+    },
     {
       id: 'FRU P3 Apoc Dark Water Debuff',
       type: 'GainsEffect',
@@ -1310,10 +1345,10 @@ Options.Triggers.push({
         const debuffLength = dur < 11 ? 'short' : (dur < 30 ? 'medium' : 'long');
         data.p3ApocDebuffs[debuffLength].push(matches.target);
         if (data.me === matches.target)
-          data.p3MyApocDebuff = debuffLength;
+          data.p3ApocMyDebuff = debuffLength;
         if (data.p3ApocDebuffCount < 6)
           return;
-        data.p3MyApocDebuff ??= 'none';
+        data.p3ApocMyDebuff ??= 'none';
         // Add the two players who didn't get a debuff
         const noDebuffs = data.party.partyNames.filter((name) =>
           !data.p3ApocDebuffs.short.includes(name) &&
@@ -1321,9 +1356,9 @@ Options.Triggers.push({
           !data.p3ApocDebuffs.long.includes(name)
         );
         data.p3ApocDebuffs.none = [...noDebuffs];
-        const [same] = data.p3ApocDebuffs[data.p3MyApocDebuff].filter((p) => p !== data.me);
+        const [same] = data.p3ApocDebuffs[data.p3ApocMyDebuff].filter((p) => p !== data.me);
         const player = data.party.member(same).nick;
-        return output.combo({ debuff: output[data.p3MyApocDebuff](), same: player });
+        return output.combo({ debuff: output[data.p3ApocMyDebuff](), same: player });
       },
       outputStrings: {
         combo: {
@@ -1500,9 +1535,18 @@ Options.Triggers.push({
       condition: (data) => data.phase === 'p3-apoc',
       delaySeconds: 1,
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.stacks(),
-      outputStrings: {
-        stacks: Outputs.stacks,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stacks: Outputs.stacks,
+          stacksSwap: {
+            en: '${stacks} (Swapped)',
+          },
+        };
+        const stacksStr = output.stacks();
+        return data.p3ApocGroupSwap
+          ? { alertText: output.stacksSwap({ stacks: stacksStr }) }
+          : { infoText: stacksStr };
       },
     },
     {
@@ -1541,10 +1585,16 @@ Options.Triggers.push({
       type: 'Ability',
       netRegex: { id: '9CF5', source: 'Oracle of Darkness', capture: false },
       durationSeconds: 7,
-      alertText: (_data, _matches, output) => output.kbStacks(),
+      alertText: (data, _matches, output) => {
+        const kbStacks = output.kbStacks();
+        return data.p3ApocGroupSwap ? output.kbStacksSwap({ kbStacks: kbStacks }) : kbStacks;
+      },
       outputStrings: {
         kbStacks: {
           en: 'Knockback => Stacks',
+        },
+        kbStacksSwap: {
+          en: '${kbStacks} (Swapped)',
         },
       },
     },
