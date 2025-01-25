@@ -1625,7 +1625,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         safe: {
           en: 'Safe: ${dir1} (lean ${dir2})',
-          cn: '${dir1}, ${dir2} 安全',
+          cn: '${dir1} 偏 ${dir2} 安全',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
