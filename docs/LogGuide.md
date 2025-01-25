@@ -8,9 +8,9 @@ for folks who want to write ACT triggers for ff14.
 
 This guide was last updated for:
 
-- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 6.58
-- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.7.0.1
-- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.28
+- [FF14](https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/) Patch 7.16
+- [FFXIV Plugin](https://github.com/ravahn/FFXIV_ACT_Plugin/releases) Patch 2.7.2.3
+- [OverlayPlugin](https://github.com/OverlayPlugin/OverlayPlugin/releases) Patch 0.19.43
 
 ## TOC
 
@@ -1463,10 +1463,10 @@ When an actor dies, you will get 30-lines for buffs that were removed by it dyin
 
 ```log
 Network Log Line Structure:
-27|[timestamp]|[targetId]|[target]|[?]|[?]|[id]
+27|[timestamp]|[targetId]|[target]|[?]|[?]|[id]|[data0]
 
 Parsed Log Line Structure:
-[timestamp] TargetIcon 1B:[targetId]:[target]:[?]:[?]:[id]
+[timestamp] TargetIcon 1B:[targetId]:[target]:[?]:[?]:[id]:[data0]
 ```
 
 #### Regexes
@@ -1509,61 +1509,61 @@ It seems likely this was implemented later and nobody wanted to break old conten
 
 #### Head Marker IDs
 
-ID | Name | Sample Locations | Consistent meaning?
---- | --- | --- | ---
-000[1-2, 4] | Prey Circle (orange) | o6s, The Burn boss 2 | Yes
-0007 | Green Meteor | t9n/s | N/A
-0008 | Ghost Meteor | t9n/s | N/A
-0009 | Red Meteor | t9n/s | N/A
-000A | Yellow Meteor | t9n/s | N/A
-000D | Devour Flower | t6n/s, Sohm Al boss 1 | Yes
-000E | Prey Circle (blue) | t6n/s, o7s | No
-0010 | Teal Crystal | Ultima Weapon Ultimate |N/A
-0011 | Heavenly Laser (red) | t8n/s, e1n | No
-0017 | Red Pinwheel | Sohm Al boss 2, Susano N/EX, e3n/s | No
-0028 | Earth Shaker | Sephirot N/EX, o4s | Yes
-001C | Gravity Puddle | e1n | N/A
-001E | Prey Sphere (orange) | Dun Scaith boss 3, o7n/s | No
-001F | Prey Sphere (blue) | t10 | N/A
-003[2-5] | Sword Markers 1-4 | Ravana N/EX, Twinning boss 1 | N/A
-0037 | Red Dorito | Weeping City boss 2, Ridorana boss 1 | Yes
-0039 | Purple Spread Circle (large) | Ravana N/EX, Shinryu EX | Yes
-003E | Stack Marker (bordered) | o8n/s, Dun Scaith | Yes
-0046 | Green Pinwheel | Dun Scaith boss 1, o5n/s | Yes
-0048 | Stack Marker | Sephirot | Yes
-004B | Acceleration Bomb | Weeping City boss 3, Susano N/EX, o4s | Yes
-004C | Purple Fire Circle (large) | e2n/s | Yes
-0054 | Thunder Tether (orange) | Titania EX | N/A
-0057 | Flare | o4n/s, e2n/s | Yes
-005C | Prey (dark) | Dun Scaith boss 3/4, Holminster Switch boss 3 | No
-005D | Stack Marker (tank--no border) | Dun Scaith boss 4, e4s | Yes
-0060 | Orange Spread Circle (small) | Hades N | Yes
-0061 | Chain Tether (orange) | The Vault boss 3, Shinryu N/EX | Yes
-0064 | Stack Marker (bordered) | o3s, Ridorana boss 3 | Yes
-0065 | Spread Bubble | o3s, Byakko EX | N/A
-006E | Levinbolt | Susano EX | N/A
-0076 | Prey (dark) | Bahamut Ultimate | N/A
-0078 | Orange Spread Circle (large) | Akadaemia Anyder | Yes
-007B | Scatter (animated Play symbol) | Rabanastre boss 4 | N/A
-007C | Turn Away (animated eye symbol) | Rabanastre boss 4 | N/A
-007E | Green Crystal | Shinryu N/EX | No
-0083 | Sword Meteor (Tsukuyomi) | Tsukuyomi EX | N/A
-0087 | Prey Sphere (blue) | Akadaemia Anyder | N/A
-008A | Orange Spread Circle (large) | Innocence N/EX, Orbonne boss 3 | Yes
-008B | Purple Spread Circle (small) | Ridorana boss 1, Hades N | Yes
-008E | Death From Above | o10s | N/A
-008F | Death From Below | o10s | N/A
-009[1-8] | Fundamental Synergy Square/Circle | o12s | N/A
-00A1 | Stack Marker (bordered) | Titania N/EX | Yes
-00A9 | Orange Spread Circle (small) | o11n/s, e3n/s | Yes
-00AB | Green Poison Circle | Qitana Ravel | N/A
-00AC | Reprobation Tether | Innocence EX | N/A
-00AE | Blue Pinwheel | Sohm Al boss 2 | N/A
-00B9 | Yellow Triangle (spread) | e4s | N/A
-00BA | Orange Square (stack) | e4s |N/A
-00BB | Blue Square (big spread) | e4s |N/A
-00BD | Purple Spread Circle (giant) | TItania N/EX | Yes
-00BF | Granite Gaol | e4s | N/A
+| ID | Name | Sample Locations | Consistent meaning? |
+| --- | --- | --- | --- |
+| 000[1-2, 4] | Prey Circle (orange) | o6s, The Burn boss 2 | Yes |
+| 0007 | Green Meteor | t9n/s | N/A |
+| 0008 | Ghost Meteor | t9n/s | N/A |
+| 0009 | Red Meteor | t9n/s | N/A |
+| 000A | Yellow Meteor | t9n/s | N/A |
+| 000D | Devour Flower | t6n/s, Sohm Al boss 1 | Yes |
+| 000E | Prey Circle (blue) | t6n/s, o7s | No |
+| 0010 | Teal Crystal | Ultima Weapon Ultimate |N/A |
+| 0011 | Heavenly Laser (red) | t8n/s, e1n | No |
+| 0017 | Red Pinwheel | Sohm Al boss 2, Susano N/EX, e3n/s | No |
+| 0028 | Earth Shaker | Sephirot N/EX, o4s | Yes |
+| 001C | Gravity Puddle | e1n | N/A |
+| 001E | Prey Sphere (orange) | Dun Scaith boss 3, o7n/s | No |
+| 001F | Prey Sphere (blue) | t10 | N/A |
+| 003[2-5] | Sword Markers 1-4 | Ravana N/EX, Twinning boss 1 | N/A |
+| 0037 | Red Dorito | Weeping City boss 2, Ridorana boss 1 | Yes |
+| 0039 | Purple Spread Circle (large) | Ravana N/EX, Shinryu EX | Yes |
+| 003E | Stack Marker (bordered) | o8n/s, Dun Scaith | Yes |
+| 0046 | Green Pinwheel | Dun Scaith boss 1, o5n/s | Yes |
+| 0048 | Stack Marker | Sephirot | Yes |
+| 004B | Acceleration Bomb | Weeping City boss 3, Susano N/EX, o4s | Yes |
+| 004C | Purple Fire Circle (large) | e2n/s | Yes |
+| 0054 | Thunder Tether (orange) | Titania EX | N/A |
+| 0057 | Flare | o4n/s, e2n/s | Yes |
+| 005C | Prey (dark) | Dun Scaith boss 3/4, Holminster Switch boss 3 | No |
+| 005D | Stack Marker (tank--no border) | Dun Scaith boss 4, e4s | Yes |
+| 0060 | Orange Spread Circle (small) | Hades N | Yes |
+| 0061 | Chain Tether (orange) | The Vault boss 3, Shinryu N/EX | Yes |
+| 0064 | Stack Marker (bordered) | o3s, Ridorana boss 3 | Yes |
+| 0065 | Spread Bubble | o3s, Byakko EX | N/A |
+| 006E | Levinbolt | Susano EX | N/A |
+| 0076 | Prey (dark) | Bahamut Ultimate | N/A |
+| 0078 | Orange Spread Circle (large) | Akadaemia Anyder | Yes |
+| 007B | Scatter (animated Play symbol) | Rabanastre boss 4 | N/A |
+| 007C | Turn Away (animated eye symbol) | Rabanastre boss 4 | N/A |
+| 007E | Green Crystal | Shinryu N/EX | No |
+| 0083 | Sword Meteor (Tsukuyomi) | Tsukuyomi EX | N/A |
+| 0087 | Prey Sphere (blue) | Akadaemia Anyder | N/A |
+| 008A | Orange Spread Circle (large) | Innocence N/EX, Orbonne boss 3 | Yes |
+| 008B | Purple Spread Circle (small) | Ridorana boss 1, Hades N | Yes |
+| 008E | Death From Above | o10s | N/A |
+| 008F | Death From Below | o10s | N/A |
+| 009[1-8] | Fundamental Synergy Square/Circle | o12s | N/A |
+| 00A1 | Stack Marker (bordered) | Titania N/EX | Yes |
+| 00A9 | Orange Spread Circle (small) | o11n/s, e3n/s | Yes |
+| 00AB | Green Poison Circle | Qitana Ravel | N/A |
+| 00AC | Reprobation Tether | Innocence EX | N/A |
+| 00AE | Blue Pinwheel | Sohm Al boss 2 | N/A |
+| 00B9 | Yellow Triangle (spread) | e4s | N/A |
+| 00BA | Orange Square (stack) | e4s |N/A |
+| 00BB | Blue Square (big spread) | e4s |N/A |
+| 00BD | Purple Spread Circle (giant) | TItania N/EX | Yes |
+| 00BF | Granite Gaol | e4s | N/A |
 
 #### Offset Headmarkers
 
@@ -2428,12 +2428,12 @@ Parsed Log Line Examples:
 
 The `id` parameter is an id into the [LogMessage table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/LogMessage.csv).
 
-id (hex) | Link | Shortened Message
---- | --- | ---
-0x2EE | [link](https://xivapi.com/LogMessage/750?pretty=true) | You obtain (an item)
-0x7DC | [link](https://xivapi.com/LogMessage/2012?pretty=true) | will be sealed off in X seconds
-0x7DD | [link](https://xivapi.com/LogMessage/2013?pretty=true) | is sealed off
-0x7DE | [link](https://xivapi.com/LogMessage/2014?pretty=true) | is no longer sealed
+| id (hex) | Link | Shortened Message |
+| --- | --- | --- |
+| 0x2EE | [link](https://xivapi.com/LogMessage/750?pretty=true) | You obtain (an item) |
+| 0x7DC | [link](https://xivapi.com/LogMessage/2012?pretty=true) | will be sealed off in X seconds |
+| 0x7DD | [link](https://xivapi.com/LogMessage/2013?pretty=true) | is sealed off |
+| 0x7DE | [link](https://xivapi.com/LogMessage/2014?pretty=true) | is no longer sealed |
 
 The log message itself determines the other parameters.
 It seems that `IntegerParameter(1)` in the log message corresponds to `param1`
@@ -3040,7 +3040,7 @@ This line is always output for a given Ability hit, regardless of if that Abilit
 a corresponding StartsUsing line.
 
 If the ability has no target, or is single-target, the `dataFlag` value will be `0`,
-and the `x`/`y`/`z`/`heading` fields will be blank.
+and the `x`/`y`/`z` fields will be blank.
 
 If the ability targets the ground, for example `Asylum`/`Sacred Soil`/caster LB3, the
 `dataFlag` value will be `1` and the `x`/`y`/`z`/`heading` fields will correspond to the
@@ -3051,11 +3051,15 @@ source actor's position, while `heading` is the direction that the ability is ca
 towards.
 
 If there is some sort of error related to parsing this data from the network packet,
-`dataFlag` will be `256`, and the `x`/`y`/`z`/`heading` fields will be blank.
+`dataFlag` will be `256`, and the `x`/`y`/`z`/`heading`/`animationTargetId` fields will be blank.
 
 `globalEffectCounter` is equivalent to `sequence` field in
 [NetworkAbility](#line-21-0x15-networkability) and
 [NetworkAOEAbility](#line-22-0x16-networkaoeability).
+
+`animationTargetId` is the ID of the entity serving as location basis for the ability.
+For example, Sage's Dyskrasia will have the Sage as the `animationTargetId`, as the AoE is centered on the Sage;
+but Sage's Phlegma will have the primary target as the `animationTargetId`, as the AoE is centered on the selected target.
 
 Note that unlike [StartsUsingExtra](#line-263-0x107-startsusingextra), you do not need
 to worry about whether or not there is an actor target, as this represents the final
@@ -3067,34 +3071,34 @@ snapshotted location of the Ability.
 
 ```log
 Network Log Line Structure:
-264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]
+264|[timestamp]|[sourceId]|[id]|[globalEffectCounter]|[dataFlag]|[x]|[y]|[z]|[heading]|[animationTargetId]
 
 Parsed Log Line Structure:
-[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]
+[timestamp] 264 108:[sourceId]:[id]:[globalEffectCounter]:[dataFlag]:[x]:[y]:[z]:[heading]:[animationTargetId]
 ```
 
 #### Regexes
 
 ```log
 Network Log Line Regex:
-^(?<type>264)\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<id>[^|]*)\|(?<globalEffectCounter>[^|]*)\|(?<dataFlag>[^|]*)\|(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|
+^(?<type>264)\|(?<timestamp>[^|]*)\|(?<sourceId>[^|]*)\|(?<id>[^|]*)\|(?<globalEffectCounter>[^|]*)\|(?<dataFlag>[^|]*)\|(?<x>[^|]*)\|(?<y>[^|]*)\|(?<z>[^|]*)\|(?<heading>[^|]*)\|(?<animationTargetId>[^|]*)\|
 
 Parsed Log Line Regex:
-(?<timestamp>^.{14}) 264 (?<type>108):(?<sourceId>[^:]*):(?<id>[^:]*):(?<globalEffectCounter>[^:]*):(?<dataFlag>[^:]*):(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*)(?:$|:)
+(?<timestamp>^.{14}) 264 (?<type>108):(?<sourceId>[^:]*):(?<id>[^:]*):(?<globalEffectCounter>[^:]*):(?<dataFlag>[^:]*):(?<x>[^:]*):(?<y>[^:]*):(?<z>[^:]*):(?<heading>[^:]*):(?<animationTargetId>[^:]*)(?:$|:)
 ```
 
 #### Examples
 
 ```log
 Network Log Line Examples:
-264|2023-11-02T20:53:56.6450000-04:00|10001234|0005|000003EF|0|||||9f7371fa0e3a42c8
-264|2023-11-02T21:39:20.0910000-04:00|10001234|0085|0000533E|1|0.000|0.000|0.000|2.920|2e9ae29c1b65f930
-264|2023-11-02T21:39:15.6790000-04:00|40000D6E|8C45|000052DD|1|-14.344|748.558|130.009|2.483|f6b3ffa6c97f0540
+264|2023-11-04T17:53:45.2940000+01:00|4000619F|8BC0|00000664|0||||3.141|1234ABCD|fc680d77fb5897f1
+264|2023-11-04T17:53:45.2940000+01:00|4000619E|8BC0|00000663|1|0.000|0.000|0.000|-1.589|1234ABCD|711909381311a052
+264|2023-11-04T17:53:45.2940000+01:00|4000619D|8BC0|00000662|1|1.000|2.000|3.000|1.570|1234ABCD|7e82907c710ee781
 
 Parsed Log Line Examples:
-[20:53:56.645] 264 108:10001234:0005:000003EF:0::::
-[21:39:20.091] 264 108:10001234:0085:0000533E:1:0.000:0.000:0.000:2.920
-[21:39:15.679] 264 108:40000D6E:8C45:000052DD:1:-14.344:748.558:130.009:2.483
+[17:53:45.294] 264 108:4000619F:8BC0:00000664:0::::3.141:1234ABCD
+[17:53:45.294] 264 108:4000619E:8BC0:00000663:1:0.000:0.000:0.000:-1.589:1234ABCD
+[17:53:45.294] 264 108:4000619D:8BC0:00000662:1:1.000:2.000:3.000:1.570:1234ABCD
 ```
 
 <!-- AUTO-GENERATED-CONTENT:END (logLines:type=AbilityExtra&lang=en-US) -->

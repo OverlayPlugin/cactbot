@@ -171,7 +171,7 @@ export interface Data extends RaidbossData {
   p3ApocDebuffCount: number;
   p3ApocDebuffs: ApocDebuffMap;
   p3ApocMyDebuff?: ApocDebuffLength;
-  p3ApocInitialSide?: DirectionOutputCardinal;
+  p3ApocInitialSide?: 'east' | 'west';
   p3ApocGroupSwap?: boolean;
   p3ApocFirstDirNum?: number;
   p3ApocRotationDir?: 1 | -1; // 1 = clockwise, -1 = counterclockwise
@@ -214,7 +214,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ultimateRel',
       comment: {
         en:
-          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
+          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.  
           Directional output is true north (i.e., "east" means actual east,
           not wherever is east of the "Y" north spot).`,
         de:
@@ -493,95 +493,25 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'FRU P1 Fall of Faith Collector',
-      type: 'Tether',
+      type: 'StartsUsing',
       netRegex: {
-        id: ['00F9', '011F'], // 00F9 = fire; 011F = lightning
+        id: ['9CC9', '9CCC'],
         source: ['Fatebreaker', 'Fatebreaker\'s Image'],
         capture: true,
       },
-      // Only collect after Burnished Glory, since '00F9' tethers are used during TotH.
-      condition: (data) => data.phase === 'p1' && data.p1SeenBurnishedGlory,
-      durationSeconds: (data) => data.p1FallOfFaithTethers.length >= 3 ? 12.2 : 3,
-      response: (data, matches, output) => {
-        // cactbot-builtin-response
-        output.responseOutputStrings = {
-          fire: {
-            en: 'Fire',
-            de: 'Feuer',
-            ja: '炎',
-            cn: '火',
-            ko: '불',
-          },
-          lightning: {
-            en: 'Lightning',
-            de: 'Blitz',
-            ja: '雷',
-            cn: '雷',
-            ko: '번개',
-          },
-          one: {
-            en: '1',
-            de: '1',
-            ja: '1',
-            cn: '1',
-            ko: '1',
-          },
-          two: {
-            en: '2',
-            de: '2',
-            ja: '2',
-            cn: '2',
-            ko: '2',
-          },
-          three: {
-            en: '3',
-            de: '3',
-            ja: '3',
-            cn: '3',
-            ko: '3',
-          },
-          onYou: {
-            en: 'On YOU',
-            de: 'Auf DIR',
-          },
-          tether: {
-            en: '${num}: ${elem} (${target})',
-            de: '${num}: ${elem} (${target})',
-            ja: '${num}: ${elem} (${target})',
-            cn: '${num}: ${elem} (${target})',
-            ko: '${num}: ${elem} (${target})',
-          },
-          all: {
-            en: '${e1} => ${e2} => ${e3} => ${e4}',
-            de: '${e1} => ${e2} => ${e3} => ${e4}',
-            ja: '${e1} => ${e2} => ${e3} => ${e4}',
-            cn: '${e1} => ${e2} => ${e3} => ${e4}',
-            ko: '${e1} => ${e2} => ${e3} => ${e4}',
-          },
-        };
-
-        const curTether = matches.id === '00F9' ? 'fire' : 'lightning';
+      durationSeconds: (data) => data.p1FallOfFaithTethers.length >= 3 ? 8.7 : 3,
+      infoText: (data, matches, output) => {
+        const curTether = matches.id === '9CC9' ? 'fire' : 'lightning';
         data.p1FallOfFaithTethers.push(curTether);
 
         if (data.p1FallOfFaithTethers.length < 4) {
           const num = data.p1FallOfFaithTethers.length === 1
             ? 'one'
             : (data.p1FallOfFaithTethers.length === 2 ? 'two' : 'three');
-          if (data.me === matches.target)
-            return {
-              alertText: output.tether!({
-                num: output[num]!(),
-                elem: output[curTether]!(),
-                target: output.onYou!(),
-              }),
-            };
-          return {
-            infoText: output.tether!({
-              num: output[num]!(),
-              elem: output[curTether]!(),
-              target: data.party.member(matches.target).nick,
-            }),
-          };
+          return output.tether!({
+            num: output[num]!(),
+            elem: output[curTether]!(),
+          });
         }
 
         const [e1, e2, e3, e4] = data.p1FallOfFaithTethers;
@@ -589,14 +519,63 @@ const triggerSet: TriggerSet<Data> = {
         if (e1 === undefined || e2 === undefined || e3 === undefined || e4 === undefined)
           return;
 
-        return {
-          infoText: output.all!({
-            e1: output[e1]!(),
-            e2: output[e2]!(),
-            e3: output[e3]!(),
-            e4: output[e4]!(),
-          }),
-        };
+        return output.all!({
+          e1: output[e1]!(),
+          e2: output[e2]!(),
+          e3: output[e3]!(),
+          e4: output[e4]!(),
+        });
+      },
+      outputStrings: {
+        fire: {
+          en: 'Fire',
+          de: 'Feuer',
+          ja: '炎',
+          cn: '火',
+          ko: '불',
+        },
+        lightning: {
+          en: 'Lightning',
+          de: 'Blitz',
+          ja: '雷',
+          cn: '雷',
+          ko: '번개',
+        },
+        one: {
+          en: '1',
+          de: '1',
+          ja: '1',
+          cn: '1',
+          ko: '1',
+        },
+        two: {
+          en: '2',
+          de: '2',
+          ja: '2',
+          cn: '2',
+          ko: '2',
+        },
+        three: {
+          en: '3',
+          de: '3',
+          ja: '3',
+          cn: '3',
+          ko: '3',
+        },
+        tether: {
+          en: '${num}: ${elem}',
+          de: '${num}: ${elem}',
+          ja: '${num}: ${elem}',
+          cn: '${num}: ${elem}',
+          ko: '${num}: ${elem}',
+        },
+        all: {
+          en: '${e1} => ${e2} => ${e3} => ${e4}',
+          de: '${e1} => ${e2} => ${e3} => ${e4}',
+          ja: '${e1} => ${e2} => ${e3} => ${e4}',
+          cn: '${e1} => ${e2} => ${e3} => ${e4}',
+          ko: '${e1} => ${e2} => ${e3} => ${e4}',
+        },
       },
     },
     // ************************
@@ -1280,8 +1259,11 @@ const triggerSet: TriggerSet<Data> = {
         if (debuff === undefined)
           return;
 
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps!() : output.iceSupport!();
           return output[debuff]!();
+        }
 
         const dirStr = data.p3RelativityMyDirStr;
 
@@ -1358,8 +1340,11 @@ const triggerSet: TriggerSet<Data> = {
         if (debuff === undefined)
           return;
 
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps!() : output.iceSupport!();
           return output[debuff]!();
+        }
 
         const dirStr = data.p3RelativityMyDirStr;
 
@@ -1511,12 +1496,8 @@ const triggerSet: TriggerSet<Data> = {
         const me = combatantData.combatants[0];
         if (!me)
           return;
-        data.p3ApocInitialSide = Directions.xyToCardinalDirOutput(
-          me.PosX,
-          me.PosY,
-          centerX,
-          centerY,
-        );
+
+        data.p3ApocInitialSide = me.PosX > centerX ? 'east' : 'west';
       },
     },
     {
@@ -1525,13 +1506,14 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '9D4F' },
       condition: (data, matches) => data.phase === 'p3-apoc' && data.me === matches.target,
       run: (data, matches) => {
+        // this is set for the first dark water stack; don't overwrite it
         if (data.p3ApocGroupSwap !== undefined)
           return;
 
         const x = parseFloat(matches.targetX);
-        const y = parseFloat(matches.targetY);
-        const stackSide = Directions.xyToCardinalDirOutput(x, y, centerX, centerY);
-        data.p3ApocGroupSwap = data.p3ApocInitialSide !== stackSide;
+        const stackSide = x > centerX ? 'east' : 'west';
+        // if p3ApocInitialSide isn't set for whatever reason, assume no swap (for safety)
+        data.p3ApocGroupSwap = (data.p3ApocInitialSide ?? stackSide) !== stackSide;
       },
     },
     {
