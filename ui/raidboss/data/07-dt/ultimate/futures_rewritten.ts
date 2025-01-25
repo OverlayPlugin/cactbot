@@ -982,7 +982,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         targetVeil: {
           en: 'Target Ice Veil',
-          cn: '集火大光',
+          cn: '集火永久冰晶',
         },
       },
     },
