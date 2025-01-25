@@ -9,7 +9,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'IlMheg',
   zoneId: ZoneId.IlMheg,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {

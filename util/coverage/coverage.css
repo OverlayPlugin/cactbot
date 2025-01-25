@@ -1,5 +1,9 @@
+html {
+  background-color: initial;
+}
+
 body {
-  margin: 20px;
+  padding: 20px;
   padding-top: 2em;
 }
 
@@ -18,82 +22,92 @@ body > div {
   margin-bottom: 10px;
 }
 
-#language-select {
-  display: grid;
-  grid-auto-flow: column;
-  width: 400px;
-  align-items: end;
-}
-
-#description {
-  white-space: nowrap;
-}
-
-#description-emoji {
-  float: left;
-  margin-right: 5px;
-}
-
-#description-text {
-  display: inline-block;
-  white-space: normal;
-  max-width: 800px;
-}
-
 #warning {
   font-size: 30px;
   color: red;
-}
-
-.label {
-  font-weight: bold;
-  font-size: 20px;
-  background-color: white;
-  position: sticky;
-  top: 0;
-  padding: 3px 0;
-}
-
-#expansion-grid > .label {
-  justify-self: right;
-}
-
-.header {
-  font-size: 18px;
-}
-
-.data {
-  justify-self: right;
 }
 
 .emoji {
   text-align: center;
 }
 
-#expansion-grid {
-  display: grid;
-  grid-template-columns: max-content repeat(6, minmax(60px, max-content));
-  column-gap: 20px;
-  row-gap: 10px;
+.table > thead {
+  position: sticky;
+  top: 0;
 }
 
-#translation-grid {
-  display: grid;
-  grid-template-columns: max-content repeat(4, minmax(60px, max-content));
-  column-gap: 20px;
-  row-gap: 10px;
+#zone-table > tbody > .expansion-row {
+  position: sticky;
+  top: calc(1em + 1rem);
 }
 
-#zone-grid {
-  display: grid;
-  grid-template-columns: max-content repeat(8, minmax(60px, max-content));
-  column-gap: 20px;
-  row-gap: 10px;
-  justify-items: left;
+.table .collapsed > td:not(:first-child) {
+  display: table-cell;
 }
 
-#expansion-grid > div,
-#translation-grid > div,
-#zone-grid > div {
-  width: 100%;
+#zone-table .comment {
+  margin: calc(-0.5rem - 1px) 0 calc(-0.5rem - 4px);
+  padding: calc(0.5rem + 1px) 0 calc(0.5rem + 3px);
+  font-size: inherit;
+  max-width: initial;
+  word-wrap: initial;
+  hyphens: initial;
+  display: inline-block;
+  padding-right: 0.5rem;
 }
+
+#zone-table .comment + .comment {
+  padding-left: 0.5rem;
+  border-left: var(--bs-border-width) solid var(--bs-table-border-color);
+}
+
+#zone-table .zone-table-content-row {
+  cursor: pointer;
+}
+
+:target {
+  scroll-margin-top: calc(2em + 2rem);
+}
+
+/* I can't find a way for stlyelint to allow wrapping these selectors across multiple lines */
+/* stylelint-disable max-line-length */
+
+/* For base striped row, color pulled straight from base bootstrap */
+#zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > *,
+#zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) + .collapse > * {
+  background-color: rgb(0 0 0 / 5%);
+}
+
+/* For the rest, convert base RGB for cells to HSL, reduce luminance by 15% */
+#zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > td.table-success {
+  background-color: rgb(159 203 183);
+}
+
+#zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > td.table-warning {
+  background-color: rgb(255 225 128);
+}
+
+#zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > td.table-danger {
+  background-color: rgb(237 151 158);
+}
+
+/* Alternates for dark theme */
+html[data-bs-theme="dark"] #zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > *,
+html[data-bs-theme="dark"] #zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) + .collapse > * {
+  background-color: rgb(255 255 255 / 5%);
+}
+
+/* For the rest, convert base RGB for cells to HSL, reduce luminance by 15% */
+html[data-bs-theme="dark"] #zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > td.table-success {
+  background-color: rgb(159 203 183);
+}
+
+html[data-bs-theme="dark"] #zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > td.table-warning {
+  background-color: rgb(255 225 128);
+}
+
+html[data-bs-theme="dark"] #zone-table tbody > tr:nth-child(odd of .zone-table-content-row:not(.d-none)) > td.table-danger {
+  background-color: rgb(237 151 158);
+}
+
+/* stylelint-enable max-line-length */

@@ -173,6 +173,7 @@ hideall "--sync--"
 670.3 "Memory's End (enrage)" Ability { id: "9D6C", source: "Oracle of Darkness" }
 
 # Phase Four
+679.3 "--targetable--"
 684.7 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 10,10
 687.4 "Materialization" Ability { id: "9D36", source: "Usurper of Frost" } window 10,0
 698.6 "Drachen Armor" Ability { id: "9CFA", source: "Usurper of Frost" }

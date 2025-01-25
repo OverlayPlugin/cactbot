@@ -108,6 +108,7 @@ const data = {
   'AzysLla': 402,
   'BaelsarsWall': 1114,
   'BaelsarsWall62': 615,
+  'BarThePassage': 1246,
   'BardamsMettle': 1143,
   'BardamsMettle63': 623,
   'BasicTrainingEnemyParties': 214,

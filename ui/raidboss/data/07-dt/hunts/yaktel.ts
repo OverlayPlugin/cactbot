@@ -16,7 +16,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'YakTel',
   zoneId: ZoneId.YakTel,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   initData: () => ({
     rraxTriplicateSafe: [],
