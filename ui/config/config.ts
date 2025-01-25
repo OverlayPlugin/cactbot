@@ -138,7 +138,7 @@ export const kPrefixToCategory = {
 };
 
 // Translating data subfolders to encounter type.
-const kDirectoryToCategory = {
+export const kDirectoryToCategory = {
   alliance: {
     en: 'Alliance Raid',
     de: 'Allianz-Raid',

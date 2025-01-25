@@ -131,10 +131,8 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheBowlOfEmbers,
   ZoneId.TheNavel,
   ZoneId.TheHowlingEye,
-  ZoneId.CapeWestwind, // changed to solo duty in 6.1
   ZoneId.ThePortaDecumana,
   ZoneId.TheChrysalis,
-  ZoneId.TheStepsOfFaith, // changed to solo duty in 6.2
   ZoneId.ARelicRebornTheChimera,
   ZoneId.ARelicRebornTheHydra,
   ZoneId.BattleOnTheBigBridge,

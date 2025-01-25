@@ -1,5 +1,6 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import {
   DirectionOutput8,
@@ -163,7 +164,9 @@ export interface Data extends RaidbossData {
   p3RelativityMyDirStr: string;
   p3ApocDebuffCount: number;
   p3ApocDebuffs: ApocDebuffMap;
-  p3MyApocDebuff?: ApocDebuffLength;
+  p3ApocMyDebuff?: ApocDebuffLength;
+  p3ApocInitialSide?: 'east' | 'west';
+  p3ApocGroupSwap?: boolean;
   p3ApocFirstDirNum?: number;
   p3ApocRotationDir?: 1 | -1; // 1 = clockwise, -1 = counterclockwise
 }
@@ -1221,8 +1224,11 @@ const triggerSet: TriggerSet<Data> = {
         if (debuff === undefined)
           return;
 
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps!() : output.iceSupport!();
           return output[debuff]!();
+        }
 
         const dirStr = data.p3RelativityMyDirStr;
 
@@ -1299,8 +1305,11 @@ const triggerSet: TriggerSet<Data> = {
         if (debuff === undefined)
           return;
 
-        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast')
+        if (data.triggerSetConfig.ultimateRel !== 'yNorthDPSEast') {
+          if (debuff === 'ice')
+            return role === 'dps' ? output.iceDps!() : output.iceSupport!();
           return output[debuff]!();
+        }
 
         const dirStr = data.p3RelativityMyDirStr;
 
@@ -1432,6 +1441,43 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     // ***** Apocalypse *****
+    // Get the player's cardinal dir relative to the boss when the Dark Water debuffs are applied
+    // If the player takes the dark water stack on a different cardinal dir, they swapped groups
+    // and will need to stay swapped throughout the mechanic.
+    {
+      id: 'FRU P3 Apoc Dark Water Side Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: '99D', capture: false }, // Spell-in-Waiting: Dark Water III
+      condition: (data) => data.phase === 'p3-apoc',
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const combatantData = await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        });
+        const me = combatantData.combatants[0];
+        if (!me)
+          return;
+
+        data.p3ApocInitialSide = me.PosX > centerX ? 'east' : 'west';
+      },
+    },
+    {
+      id: 'FRU P3 Apoc Dark Water Swap Check',
+      type: 'Ability',
+      netRegex: { id: '9D4F' },
+      condition: (data, matches) => data.phase === 'p3-apoc' && data.me === matches.target,
+      run: (data, matches) => {
+        // this is set for the first dark water stack; don't overwrite it
+        if (data.p3ApocGroupSwap !== undefined)
+          return;
+
+        const x = parseFloat(matches.targetX);
+        const stackSide = x > centerX ? 'east' : 'west';
+        // if p3ApocInitialSide isn't set for whatever reason, assume no swap (for safety)
+        data.p3ApocGroupSwap = (data.p3ApocInitialSide ?? stackSide) !== stackSide;
+      },
+    },
     {
       id: 'FRU P3 Apoc Dark Water Debuff',
       type: 'GainsEffect',
@@ -1444,12 +1490,12 @@ const triggerSet: TriggerSet<Data> = {
         const debuffLength = dur < 11 ? 'short' : (dur < 30 ? 'medium' : 'long');
         data.p3ApocDebuffs[debuffLength].push(matches.target);
         if (data.me === matches.target)
-          data.p3MyApocDebuff = debuffLength;
+          data.p3ApocMyDebuff = debuffLength;
 
         if (data.p3ApocDebuffCount < 6)
           return;
 
-        data.p3MyApocDebuff ??= 'none';
+        data.p3ApocMyDebuff ??= 'none';
 
         // Add the two players who didn't get a debuff
         const noDebuffs = data.party.partyNames.filter((name) =>
@@ -1459,9 +1505,9 @@ const triggerSet: TriggerSet<Data> = {
         );
 
         data.p3ApocDebuffs.none = [...noDebuffs];
-        const [same] = data.p3ApocDebuffs[data.p3MyApocDebuff].filter((p) => p !== data.me);
+        const [same] = data.p3ApocDebuffs[data.p3ApocMyDebuff].filter((p) => p !== data.me);
         const player = data.party.member(same).nick;
-        return output.combo!({ debuff: output[data.p3MyApocDebuff]!(), same: player });
+        return output.combo!({ debuff: output[data.p3ApocMyDebuff]!(), same: player });
       },
       outputStrings: {
         combo: {
@@ -1650,9 +1696,18 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.phase === 'p3-apoc',
       delaySeconds: 1,
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.stacks!(),
-      outputStrings: {
-        stacks: Outputs.stacks,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stacks: Outputs.stacks,
+          stacksSwap: {
+            en: '${stacks} (Swapped)',
+          },
+        };
+        const stacksStr = output.stacks!();
+        return data.p3ApocGroupSwap
+          ? { alertText: output.stacksSwap!({ stacks: stacksStr }) }
+          : { infoText: stacksStr };
       },
     },
     {
@@ -1693,10 +1748,16 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: '9CF5', source: 'Oracle of Darkness', capture: false }, // Darkest Dance (self-targeted)
       durationSeconds: 7,
-      alertText: (_data, _matches, output) => output.kbStacks!(),
+      alertText: (data, _matches, output) => {
+        const kbStacks = output.kbStacks!();
+        return data.p3ApocGroupSwap ? output.kbStacksSwap!({ kbStacks: kbStacks }) : kbStacks;
+      },
       outputStrings: {
         kbStacks: {
           en: 'Knockback => Stacks',
+        },
+        kbStacksSwap: {
+          en: '${kbStacks} (Swapped)',
         },
       },
     },

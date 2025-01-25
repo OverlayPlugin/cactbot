@@ -11,7 +11,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'AmhAraeng',
   zoneId: ZoneId.AmhAraeng,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {

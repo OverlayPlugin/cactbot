@@ -12,7 +12,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Elpis',
   zoneId: ZoneId.Elpis,
   comments: {
-    en: 'Hunts',
+    en: 'A Rank Hunts',
   },
   triggers: [
     {

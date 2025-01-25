@@ -10375,6 +10375,20 @@ const data: ZoneInfoType = {
     'sizeFactor': 200,
     'weatherRate': 0,
   },
+  1246: {
+    'contentType': 7,
+    'exVersion': 5,
+    'name': {
+      'de': 'Kampf an Zorgor der Weiten',
+      'en': 'Bar the Passage',
+      'fr': 'Pour s\'affranchir de la tyrannie, tout s\'appelle vertu',
+      'ja': '決戦、ゾーゴー永結橋',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 100,
+    'weatherRate': 0,
+  },
   1248: {
     'contentType': 5,
     'exVersion': 5,

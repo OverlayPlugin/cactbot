@@ -9,7 +9,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Yanxia',
   zoneId: ZoneId.Yanxia,
   comments: {
-    en: 'Hunts: Angada only',
+    en: 'A Rank Hunts: Angada only',
   },
   triggers: [
     {

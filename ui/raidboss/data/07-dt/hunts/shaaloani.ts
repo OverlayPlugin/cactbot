@@ -198,7 +198,7 @@ const triggerSet: TriggerSet<Data> = {
   id: 'Shaaloani',
   zoneId: ZoneId.Shaaloani,
   comments: {
-    en: 'Hunts and Ttokrrone boss FATE',
+    en: 'A Rank Hunts and Ttokrrone boss FATE',
   },
   initData: () => ({
     yeheheTurnBuffs: [],
