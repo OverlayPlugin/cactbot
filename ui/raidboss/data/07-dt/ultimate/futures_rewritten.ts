@@ -1715,13 +1715,13 @@ const triggerSet: TriggerSet<Data> = {
         'Ice Veil': 'Immerfrost-Kristall',
         'Frozen Mirror': 'Eisspiegel',
         'Holy Light': 'heilig\\[a\\] Licht',
-        'Crystal of Darkness': '[^:\|]+', // FIXME
+        'Crystal of Darkness': '[^\|]+', // FIXME
         'Crystal of Light': 'Lichtkristall',
         'Oracle of Darkness': 'Orakel\\[p\\] der Dunkelheit',
-        'Fragment of Fate': '[^:\|]+', // FIXME
+        'Fragment of Fate': '[^\|]+', // FIXME
         'Sorrow\'s Hourglass': 'Sanduhr\\[p\\] der Sorge',
         'Drachen Wanderer': 'Seele\\[p\\] des heiligen Drachen',
-        'Pandora': '[^:\|]+', // FIXME
+        'Pandora': '[^\|]+', // FIXME
       },
       'replaceText': {
         'Blastburn': 'Brandstoß',
@@ -1851,13 +1851,13 @@ const triggerSet: TriggerSet<Data> = {
         'Ice Veil': 'bloc de glaces éternelles',
         'Frozen Mirror': 'miroir de glace',
         'Holy Light': 'lumière sacrée',
-        'Crystal of Darkness': '[^:\|]+', // FIXME
+        'Crystal of Darkness': '[^\|]+', // FIXME
         'Crystal of Light': 'cristal de Lumière',
         'Oracle of Darkness': 'prêtresse des Ténèbres',
-        'Fragment of Fate': '[^:\|]+', // FIXME
+        'Fragment of Fate': '[^\|]+', // FIXME
         'Sorrow\'s Hourglass': 'sablier de chagrin',
         'Drachen Wanderer': 'esprit du Dragon divin',
-        'Pandora': '[^:\|]+', // FIXME
+        'Pandora': '[^\|]+', // FIXME
       },
       'replaceText': {
         'Blastburn': 'Explosion brûlante',
