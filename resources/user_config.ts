@@ -56,6 +56,10 @@ export type UserFileCallback = (
   basePath: string,
 ) => void;
 export type ConfigValue = string | number | boolean;
+// Map of config ids to current value
+export type ConfigIdToValueMap = { [id: string]: ConfigValue };
+// Map of ConfigEntries to an array containing the leftDiv and inputDiv elements
+export type ConfigEntryToDivMap = Map<ConfigEntry, [HTMLElement, HTMLElement]>;
 export type ConfigEntry = {
   id: string;
   comment?: Partial<LocaleText>;
@@ -65,6 +69,10 @@ export type ConfigEntry = {
   // This must be a valid option even if there is a setterFunc, as `_getOptionLeafHelper`
   // for the config ui reads from the SavedConfig directly rather than post-setterFunc.
   default: ConfigValue | ((options: BaseOptions) => ConfigValue);
+  // If true, the leftDiv and inputDiv will be shown, but inputs in the inputDiv will be disabled.
+  disabled?: (values: ConfigIdToValueMap) => boolean;
+  // If true, both the leftDiv and the inputDiv will be hidden.
+  hidden?: (values: ConfigIdToValueMap) => boolean;
   debug?: boolean;
   debugOnly?: boolean;
   // For select.
@@ -81,8 +89,12 @@ export type ConfigEntry = {
   ) => ConfigValue | void | undefined;
 };
 
-export interface NamedConfigEntry<NameUnion> extends Omit<ConfigEntry, 'id'> {
+export type NamedConfigIdToValueMap<NameUnion extends string> = Record<NameUnion, ConfigValue>;
+export interface NamedConfigEntry<NameUnion extends string>
+  extends Omit<ConfigEntry, 'id' | 'disabled' | 'hidden'> {
   id: NameUnion;
+  disabled?: (values: NamedConfigIdToValueMap<NameUnion>) => boolean;
+  hidden?: (values: NamedConfigIdToValueMap<NameUnion>) => boolean;
 }
 
 export type OptionsTemplate = {
