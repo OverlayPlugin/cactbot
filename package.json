@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.33.5",
-  "releaseSummary": "KO 7.05, Yuweyawata Field Station, more FRU",
-  "releaseInDraft": "true",
+  "version": "0.33.6",
+  "releaseSummary": "Yuweyawata, more FRU, improved coverage report, i18n",
+  "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",

@@ -440,7 +440,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
-        'Pedestal Purge/Wheel Of Deincarnation/Bladewise': 'Purge/Wheel/Bladewise',
+        '(?<! )Pedestal Purge/Wheel Of Deincarnation/Bladewise': 'Purge/Wheel/Bladewise',
+        'Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise': 'Icon: Purge/Wheel/Blade',
       },
     },
     {

@@ -67,17 +67,17 @@ hideall "--sync--"
 # but we just account for the possibilities within a single loop body.
 236.0 "--center--" Ability { id: "8C7E", source: "Asura" }
 238.4 "--sync--" Ability { id: "8C7F", source: "Asura" } window 100,10 #Divine Awakening
-248.1 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 1" Ability { id: ["8C81", "8CB3", "8C85"], source: "Asura" }
+248.1 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 1" Ability { id: ["8C81", "8C83", "8C85"], source: "Asura" }
 254.3 "Iconic Execution (store)" Ability { id: "8CB2", source: "Asura" }
 261.4 "Pedestal Purge/Wheel Of Deincarnation/Bladewise" Ability { id: ["8C82", "8C84", "8C86"], source: "Asura Image" }
 261.4 "Iconic Execution (release)" Ability { id: "8CB1", source: "Asura" }
 
-271.5 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 2" Ability { id: ["8C81", "8CB3", "8C85"], source: "Asura" }
+271.5 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 2" Ability { id: ["8C81", "8C83", "8C85"], source: "Asura" }
 277.6 "Iconic Execution (store)" Ability { id: "8CB2", source: "Asura" }
 284.7 "Pedestal Purge/Wheel Of Deincarnation/Bladewise" Ability { id: ["8C82", "8C84", "8C86"], source: "Asura Image" }
 284.7 "Iconic Execution (release)" Ability { id: "8CB1", source: "Asura" }
 
-295.4 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 3" Ability { id: ["8C81", "8CB3", "8C85"], source: "Asura" }
+295.4 "Iconography: Pedestal Purge/Wheel Of Deincarnation/Bladewise 3" Ability { id: ["8C81", "8C83", "8C85"], source: "Asura" }
 301.5 "Iconic Execution (store)" Ability { id: "8CB2", source: "Asura" }
 308.6 "Pedestal Purge/Wheel Of Deincarnation/Bladewise" Ability { id: ["8C82", "8C84", "8C86"], source: "Asura Image" }
 308.6 "Iconic Execution (release)" Ability { id: "8CB1", source: "Asura" }
@@ -85,19 +85,13 @@ hideall "--sync--"
 313.7 "--sync--" Ability { id: "8CAA", source: "Asura Image" }
 319.7 "--center--" Ability { id: "8C7E", source: "Asura" }
 322.2 "Six-bladed Khadga (preview)" StartsUsing { id: "8C88", source: "Asura" } duration 12.7
-324.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
-326.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
-328.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
-330.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
-332.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
-334.9 "--sync--" Ability { id: ["8CAB", "8CAC", "8CAD",], source: "Asura" }
 334.9 "Six-bladed Khadga (execute)" Ability { id: "8C88", source: "Asura" }
 335.9 "Khadga 1" Ability { id: "8C89", source: "Asura" }
-337.9 "Khadga 2" Ability { id: ["8C8C", "8C8D"], source: "Asura" }
-339.9 "Khadga 3" Ability { id: ["8C8C", "8C8D"], source: "Asura" }
+337.9 "Khadga 2" Ability { id: ["8C8C", "8C8D"], source: "Asura" } window 1.5,1.5
+339.9 "Khadga 3" Ability { id: ["8C8C", "8C8D"], source: "Asura" } window 1.5,1.5
 341.9 "Khadga 4" Ability { id: "8C8A", source: "Asura" }
-343.9 "Khadga 5" Ability { id: ["8C8B", "8C8E"], source: "Asura" }
-345.9 "Khadga 6" Ability { id: ["8C8B", "8C8E"], source: "Asura" }
+343.9 "Khadga 5" Ability { id: ["8C8B", "8C8E"], source: "Asura" } window 1.5,1.5
+345.9 "Khadga 6" Ability { id: ["8C8B", "8C8E"], source: "Asura" } window 1.5,1.5
 
 # Many Faces + Myriad Aspects + Ordered Chaos.
 # The order is probably completely fixed,

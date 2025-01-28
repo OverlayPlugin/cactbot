@@ -560,7 +560,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '2B55', source: 'Garuda', capture: false },
       // Run this after the initial Garuda trigger and just piggyback off its call to `getCombatants`
       // We're just looking to pluck the four possible IDs from the array pre-emptively to avoid doing
-      // that filter on every `CombatantMemory` line
+      // that filter on every `SetActorPos` line
       delaySeconds: 25,
       run: (data) => {
         data.possibleIfritIDs = data.combatantData
@@ -570,14 +570,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'UWU Ifrit Initial Dash Collector',
-      type: 'CombatantMemory',
+      type: 'ActorSetPos',
       // Filter to only enemy actors for performance
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
       condition: (data, matches) => {
         if (!data.possibleIfritIDs.includes(matches.id))
           return false;
-        const posXVal = parseFloat(matches.pairPosX ?? '0');
-        const posYVal = parseFloat(matches.pairPosY ?? '0');
+        const posXVal = parseFloat(matches.x ?? '0');
+        const posYVal = parseFloat(matches.y ?? '0');
 
         if (posXVal === 0 || posYVal === 0)
           return false;
@@ -593,8 +593,8 @@ const triggerSet: TriggerSet<Data> = {
       },
       suppressSeconds: 9999,
       infoText: (data, matches, output) => {
-        const posXVal = parseFloat(matches.pairPosX ?? '0');
-        const posYVal = parseFloat(matches.pairPosY ?? '0');
+        const posXVal = parseFloat(matches.x ?? '0');
+        const posYVal = parseFloat(matches.y ?? '0');
 
         let ifritDir: DirectionOutputCardinal = 'unknown';
 

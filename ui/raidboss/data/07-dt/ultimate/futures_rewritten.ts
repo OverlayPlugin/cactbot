@@ -111,26 +111,32 @@ const p3UROutputStrings = {
   yNorthStrat: {
     en: '${debuff} (${dir})',
     de: '${debuff} (${dir})',
+    cn: '${debuff} (${dir})',
   },
   dirCombo: {
     en: '${inOut} + ${dir}',
     de: '${inOut} + ${dir}',
+    cn: '${inOut} + ${dir}',
   },
   fireSpread: {
     en: 'Fire - Spread',
     de: 'Feuer - verteilen',
+    cn: '火分散',
   },
   dropRewind: {
     en: 'Drop Rewind',
     de: 'Lege Rückführung ab',
+    cn: '放置回返',
   },
   baitStoplight: {
     en: 'Bait Stoplight',
     de: 'Köder Sanduhr',
+    cn: '引导激光',
   },
   avoidStoplights: {
     en: 'Avoid stoplights',
     de: 'Vermeide Sanduhren',
+    cn: '远离激光',
   },
   stack: Outputs.stackMarker,
   middle: Outputs.middle,
@@ -183,6 +189,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'Triggers: P1-3 / Timeline: P1-5',
     de: 'Triggers: P1-3 / Timeline: P1-5',
+    cn: '触发器: P1-3 / 时间轴: P1-5',
   },
   config: [
     {
@@ -214,7 +221,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ultimateRel',
       comment: {
         en:
-          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.  
+          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
           Directional output is true north (i.e., "east" means actual east,
           not wherever is east of the "Y" north spot).`,
         de:
@@ -493,25 +500,94 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'FRU P1 Fall of Faith Collector',
-      type: 'StartsUsing',
+      type: 'Tether',
       netRegex: {
-        id: ['9CC9', '9CCC'],
+        id: ['00F9', '011F'], // 00F9 = fire; 011F = lightning
         source: ['Fatebreaker', 'Fatebreaker\'s Image'],
         capture: true,
       },
-      durationSeconds: (data) => data.p1FallOfFaithTethers.length >= 3 ? 8.7 : 3,
-      infoText: (data, matches, output) => {
-        const curTether = matches.id === '9CC9' ? 'fire' : 'lightning';
+      // Only collect after Burnished Glory, since '00F9' tethers are used during TotH.
+      condition: (data) => data.phase === 'p1' && data.p1SeenBurnishedGlory,
+      durationSeconds: (data) => data.p1FallOfFaithTethers.length >= 3 ? 12.2 : 3,
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          fire: {
+            en: 'Fire',
+            de: 'Feuer',
+            ja: '炎',
+            cn: '火',
+            ko: '불',
+          },
+          lightning: {
+            en: 'Lightning',
+            de: 'Blitz',
+            ja: '雷',
+            cn: '雷',
+            ko: '번개',
+          },
+          one: {
+            en: '1',
+            de: '1',
+            ja: '1',
+            cn: '1',
+            ko: '1',
+          },
+          two: {
+            en: '2',
+            de: '2',
+            ja: '2',
+            cn: '2',
+            ko: '2',
+          },
+          three: {
+            en: '3',
+            de: '3',
+            ja: '3',
+            cn: '3',
+            ko: '3',
+          },
+          onYou: {
+            en: 'On YOU',
+          },
+          tether: {
+            en: '${num}: ${elem} (${target})',
+            de: '${num}: ${elem} (${target})',
+            ja: '${num}: ${elem} (${target})',
+            cn: '${num}: ${elem} (${target})',
+            ko: '${num}: ${elem} (${target})',
+          },
+          all: {
+            en: '${e1} => ${e2} => ${e3} => ${e4}',
+            de: '${e1} => ${e2} => ${e3} => ${e4}',
+            ja: '${e1} => ${e2} => ${e3} => ${e4}',
+            cn: '${e1} => ${e2} => ${e3} => ${e4}',
+            ko: '${e1} => ${e2} => ${e3} => ${e4}',
+          },
+        };
+
+        const curTether = matches.id === '00F9' ? 'fire' : 'lightning';
         data.p1FallOfFaithTethers.push(curTether);
 
         if (data.p1FallOfFaithTethers.length < 4) {
           const num = data.p1FallOfFaithTethers.length === 1
             ? 'one'
             : (data.p1FallOfFaithTethers.length === 2 ? 'two' : 'three');
-          return output.tether!({
-            num: output[num]!(),
-            elem: output[curTether]!(),
-          });
+          if (data.me === matches.target)
+            return {
+              alertText: output.tether!({
+                num: output[num]!(),
+                elem: output[curTether]!(),
+                target: output.onYou!(),
+              }),
+            };
+          return {
+            infoText: output.tether!({
+              num: output[num]!(),
+              elem: output[curTether]!(),
+              target: data.party.member(matches.target).nick,
+            }),
+          };
         }
 
         const [e1, e2, e3, e4] = data.p1FallOfFaithTethers;
@@ -519,63 +595,14 @@ const triggerSet: TriggerSet<Data> = {
         if (e1 === undefined || e2 === undefined || e3 === undefined || e4 === undefined)
           return;
 
-        return output.all!({
-          e1: output[e1]!(),
-          e2: output[e2]!(),
-          e3: output[e3]!(),
-          e4: output[e4]!(),
-        });
-      },
-      outputStrings: {
-        fire: {
-          en: 'Fire',
-          de: 'Feuer',
-          ja: '炎',
-          cn: '火',
-          ko: '불',
-        },
-        lightning: {
-          en: 'Lightning',
-          de: 'Blitz',
-          ja: '雷',
-          cn: '雷',
-          ko: '번개',
-        },
-        one: {
-          en: '1',
-          de: '1',
-          ja: '1',
-          cn: '1',
-          ko: '1',
-        },
-        two: {
-          en: '2',
-          de: '2',
-          ja: '2',
-          cn: '2',
-          ko: '2',
-        },
-        three: {
-          en: '3',
-          de: '3',
-          ja: '3',
-          cn: '3',
-          ko: '3',
-        },
-        tether: {
-          en: '${num}: ${elem}',
-          de: '${num}: ${elem}',
-          ja: '${num}: ${elem}',
-          cn: '${num}: ${elem}',
-          ko: '${num}: ${elem}',
-        },
-        all: {
-          en: '${e1} => ${e2} => ${e3} => ${e4}',
-          de: '${e1} => ${e2} => ${e3} => ${e4}',
-          ja: '${e1} => ${e2} => ${e3} => ${e4}',
-          cn: '${e1} => ${e2} => ${e3} => ${e4}',
-          ko: '${e1} => ${e2} => ${e3} => ${e4}',
-        },
+        return {
+          infoText: output.all!({
+            e1: output[e1]!(),
+            e2: output[e2]!(),
+            e3: output[e3]!(),
+            e4: output[e4]!(),
+          }),
+        };
       },
     },
     // ************************
@@ -705,14 +732,17 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${inOut} + ${dir} => ${mech}',
           de: '${inOut} + ${dir} => ${mech}',
+          cn: '${inOut} + ${dir} => ${mech}',
         },
         dropPuddle: {
           en: 'Drop Puddle',
           de: 'Fläche ablegen',
+          cn: '放置冰花',
         },
         baitCleave: {
           en: 'Bait',
           de: 'Ködern',
+          cn: '引导水波',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -736,6 +766,7 @@ const triggerSet: TriggerSet<Data> = {
         kbDir: {
           en: '${kb} (${dir1}/${dir2})',
           de: '${kb} (${dir1}/${dir2})',
+          cn: '${kb} (${dir1}/${dir2})',
         },
         kb: Outputs.knockback,
         ...Directions.outputStrings8Dir,
@@ -874,6 +905,7 @@ const triggerSet: TriggerSet<Data> = {
         baitCleave: {
           en: 'Bait cleave',
           de: 'Cleve ködern',
+          cn: '引导水波',
         },
       },
     },
@@ -889,6 +921,7 @@ const triggerSet: TriggerSet<Data> = {
         baitCleave: {
           en: 'Bait cleave',
           de: 'Cleve ködern',
+          cn: '引导水波',
         },
       },
     },
@@ -937,10 +970,12 @@ const triggerSet: TriggerSet<Data> = {
         puddle: {
           en: 'Puddles on you (w/ ${other})',
           de: 'Flächen auf DIR (mit ${other})',
+          cn: '放置大圈 (和 ${other})',
         },
         tether: {
           en: 'Tether on you (Puddles: ${p1}, ${p2})',
           de: 'Verbindung auf DIR (Flächen: ${p1}, ${p2})',
+          cn: '拉线踩塔 (大圈: ${p1}, ${p2})',
         },
       },
     },
@@ -956,10 +991,12 @@ const triggerSet: TriggerSet<Data> = {
           towerSoak: {
             en: 'Soak middle tower',
             de: 'Mittleren Turm nehmen',
+            cn: '踩塔',
           },
           towerAvoid: {
             en: 'Avoid middle tower',
             de: 'Vermeide mittleren Turm',
+            cn: '不去踩塔',
           },
         };
 
@@ -988,6 +1025,7 @@ const triggerSet: TriggerSet<Data> = {
         afterTower: {
           en: '${partnerSpread} (after tower)',
           de: '${partnerSpread} (nach Turm)',
+          cn: '踩塔后 + ${partnerSpread}',
         },
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
@@ -1019,6 +1057,7 @@ const triggerSet: TriggerSet<Data> = {
         targetVeil: {
           en: 'Target Ice Veil',
           de: 'Ziele auf Immerfrost-Kristall',
+          cn: '集火永久冰晶',
         },
       },
     },
@@ -1121,26 +1160,32 @@ const triggerSet: TriggerSet<Data> = {
         debuffSolo: {
           en: '${debuff}',
           de: '${debuff}',
+          cn: '${debuff}',
         },
         debuffShared: {
           en: '${debuff} (w/ ${other})',
           de: '${debuff} (mit ${other})',
+          cn: '${debuff} (和 ${other})',
         },
         shortFire: {
           en: 'Short Fire',
           de: 'Kurzes Feuer',
+          cn: '短火',
         },
         mediumFire: {
           en: 'Medium Fire',
           de: 'Mittleres Feuer',
+          cn: '中火',
         },
         longFire: {
           en: 'Long Fire',
           de: 'Langes Feuer',
+          cn: '长火',
         },
         ice: {
           en: 'Ice',
           de: 'Eis',
+          cn: '冰点名',
         },
       },
     },
@@ -1461,14 +1506,17 @@ const triggerSet: TriggerSet<Data> = {
           onYou: {
             en: 'Shared tank cleave on YOU',
             de: 'Geteilter Tank-Cleave auf DIR',
+            cn: '坦克分摊点名',
           },
           share: {
             en: 'Shared tank cleave on ${target}',
             de: 'Geteilter Tank-Cleave auf ${target}',
+            cn: '坦克分摊 (和 ${target})',
           },
           avoid: {
             en: 'Avoid tank cleave',
             de: 'Tank-Cleave vermeiden',
+            cn: '远离分摊顺劈',
           },
         };
         if (data.me === matches.target)
@@ -1551,22 +1599,27 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: 'Stack: ${debuff} (w/ ${same})',
           de: 'Sammeln: ${debuff} (mit ${same})',
+          cn: '${debuff} 分摊 (和 ${same})',
         },
         short: {
           en: 'Short',
           de: 'Kurz',
+          cn: '短',
         },
         medium: {
           en: 'Medium',
           de: 'Mittel',
+          cn: '中',
         },
         long: {
           en: 'Long',
           de: 'Lang',
+          cn: '长',
         },
         none: {
           en: 'No Debuff',
           de: 'Kein Debuff',
+          cn: '无点名',
         },
         unknown: Outputs.unknown,
       },
@@ -1631,6 +1684,7 @@ const triggerSet: TriggerSet<Data> = {
         safe: {
           en: '(Apoc safe later: ${dir1})',
           de: '(Apoc später sicher: ${dir1})',
+          cn: '${dir1} 稍后安全',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1705,6 +1759,7 @@ const triggerSet: TriggerSet<Data> = {
         safe: {
           en: 'Safe: ${dir1} (lean ${dir2})',
           de: 'Sicher: ${dir1} (halte dich ${dir2})',
+          cn: '${dir1} 偏 ${dir2} 安全',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1785,6 +1840,7 @@ const triggerSet: TriggerSet<Data> = {
         bait: {
           en: 'Bait Jump (${dirs})?',
           de: 'Sprung ködern (${dirs})?',
+          cn: '${dirs} 引导超级跳',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1803,6 +1859,7 @@ const triggerSet: TriggerSet<Data> = {
         kbStacks: {
           en: 'Knockback => Stacks',
           de: 'Rückstoß => Sammeln',
+          cn: '击退 => 四四分摊',
         },
         kbStacksSwap: {
           en: '${kbStacks} (Swapped)',
