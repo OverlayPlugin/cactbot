@@ -1887,15 +1887,16 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Axe Kick/Scythe Kick': 'Axe/Scythe Kick',
+        'Dark Fire III/Dark Blizzard III/Unholy Darkness': '(spreads/donut/stack)',
+        'Dark Fire III/Unholy Darkness': '(spreads/stack)',
+        'Shadoweye/Dark Water III/Dark Eruption': '(gazes/stack/spreads)',
         'Shining Armor + Frost Armor': 'Shining + Frost Armor',
         'Sinbound Fire III/Sinbound Thunder III': 'Sinbound Fire/Thunder',
-        'Dark Fire III/Unholy Darkness': '(spreads/stack)',
-        'Dark Fire III/Dark Blizzard III/Unholy Darkness': '(spreads/donut/stack)',
-        'Shadoweye/Dark Water III/Dark Eruption': '(gazes/stack/spreads)',
       },
     },
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {
         'Crystal of Darkness': 'Kristall der Dunkelheit',
         'Crystal of Light': 'Kristall des Lichts',
