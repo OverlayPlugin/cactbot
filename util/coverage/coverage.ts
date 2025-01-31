@@ -27,18 +27,23 @@ const emptyTotal: CoverageTotalEntry = {
 const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
   sync: {
     en: 'Sync',
+    cn: '同步',
   },
   code: {
     en: 'Code',
+    cn: '代码',
   },
   other: {
     en: 'Other',
+    cn: '其他',
   },
   replaceSection: {
     en: 'Replace Section',
+    cn: '替换部分',
   },
   text: {
     en: 'Text',
+    cn: '文本',
   },
 };
 
@@ -61,6 +66,7 @@ const exVersionToDirName: readonly exKeys[] = [
 const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
   '00-misc': {
     en: 'Misc',
+    cn: '杂项',
   },
   '02-arr': {
     en: 'ARR',
@@ -165,6 +171,7 @@ const contentTypeToLabel: {
   [ContentType.VCDungeonFinder]: {
     full: {
       en: 'Variant & Criterion Dungeon',
+      cn: '多变&异闻迷宫',
     },
     short: {
       en: 'V&C',
@@ -187,57 +194,71 @@ const contentTypeToLabel: {
   [ContentType.TheMaskedCarnivale]: {
     full: {
       en: 'The Masked Carnivale',
+      cn: '假面狂欢',
     },
     short: {
       en: 'BLU',
+      cn: '假面狂欢',
     },
   },
   [ContentType.Eureka]: {
     full: {
       en: 'Eureka',
+      cn: '优雷卡',
     },
     short: {
       en: 'Eureka',
+      cn: '优雷卡',
     },
   },
   [ContentType.SaveTheQueen]: {
     full: {
       en: 'Save The Queen',
+      cn: '天佑女王',
     },
     short: {
       en: 'Bozja',
+      cn: '博兹雅',
     },
   },
   [ContentType.DisciplesOfTheLand]: {
     full: {
       en: 'Ocean Fishing/Diadem',
+      cn: '海钓/天上福地云冠群岛',
     },
     short: {
       en: 'Diadem',
+      cn: '海钓/空岛',
     },
   },
   [ContentType.TreasureHunt]: {
     full: {
       en: 'Treasure Hunt',
+      cn: '寻宝',
     },
     short: {
       en: 'Maps',
+      cn: '寻宝',
     },
   },
   [ContentType.DeepDungeons]: {
     full: {
       en: 'Deep Dungeons',
+      cn: '深层迷宫',
     },
     short: {
       en: 'DD',
+      cn: '深宫',
     },
   },
   [ContentType.Pvp]: {
     full: {
       en: 'PvP',
+      cn: 'PvP',
     },
     short: {
       en: 'PvP',
+      cn: 'PvP',
     },
   },
 } as const;
@@ -293,9 +314,11 @@ const zoneGridHeaders = {
   },
   releaseVersion: {
     en: 'Version',
+    cn: '版本',
   },
   comments: {
     en: 'Comments',
+    cn: '备注',
   },
 } as const;
 
@@ -349,45 +372,58 @@ const miscStrings = {
   // Indicator that content is unsupported
   unsupported: {
     en: 'Unsupported',
+    cn: '尚不支持',
   },
   // Indicator that content has not had a release yet
   unreleased: {
     en: 'Unreleased',
+    cn: '尚未发布',
   },
   // Prefix for hover text of release version column
   mergeDate: {
     en: 'Merge Date: ',
+    cn: '合并日期: ',
   },
   // Prefix for hover text of release version column
   releaseDate: {
     en: 'Release Date: ',
+    cn: '发布日期: ',
   },
   raidbossTriggerCount: {
     en: 'Raidboss Trigger Count',
+    cn: 'Raidboss触发器数量',
   },
   oopsyTriggerCount: {
     en: 'Oopsy Trigger Count',
+    cn: 'Oopsy触发器数量',
   },
   none: {
     en: 'None',
+    cn: '无',
   },
   otherContentType: {
     en: 'Other Content',
+    cn: '其他内容',
   },
   changesSinceLastRelease: {
     en: 'Changes since last release',
+    cn: '自上次发布以来的更改',
   },
   timelineEntries: {
     en: 'Timeline Entries',
+    cn: '时间轴条目',
   },
   timelineDuration: {
     en: 'Timeline Duration',
+    cn: '时间轴时长',
   },
   noTranslationInformation: {
     en: 'No Translation Information',
+    cn: '无翻译信息',
   },
   linkToEntry: {
     en: 'Link to this entry',
+    cn: '此条目链接',
   },
 } as const;
 
@@ -444,9 +480,11 @@ type ThemeKey = (typeof themeKeys)[number];
 const themes: Record<ThemeKey, LocaleText> = {
   'light': {
     en: 'Light',
+    cn: '浅色',
   },
   'dark': {
     en: 'Dark',
+    cn: '深色',
   },
 } as const;
 
