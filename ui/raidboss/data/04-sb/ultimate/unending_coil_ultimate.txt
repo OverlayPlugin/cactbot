@@ -75,26 +75,25 @@ hideall "--sync--"
 240.9 "Bahamut's Claw x5" duration 2.8 #Ability { id: "26B5", source: "Nael deus Darnus" }
 249.4 "Bahamut's Favor" Ability { id: "26C2", source: "Nael deus Darnus" }
 
-257.9 "Dynamo + Beam/Chariot" duration 8
+# 257.9 "Dynamo + Beam/Chariot" duration 8
 262.4 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
-#235.1 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
-#238.3 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
+262.4 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
+265.4 "Iron Chariot/Thermionic Beam" Ability { id: ["26BB", "26BD"], source: "Nael deus Darnus" }
 266.4 "Doom x2" Ability { id: "26C9", source: "Tail Of Darkness" }
 268.4 "Fireball (1)" Ability { id: "26C5", source: "Firehorn" }
 269.4 "Wings Of Salvation x2" Ability { id: "26CA", source: "Fang Of Light" } duration 4
 276.6 "Bahamut's Claw x5" duration 2.8 #Ability { id: "26B5", source: "Nael deus Darnus" }
 283.3 "Fireball (2)" Ability { id: "26C5", source: "Firehorn" }
 
-285.3 "Thermionic + Dynamo/Chariot" duration 8
 287.3 "Chain Lightning" Ability { id: "26C8", source: "Thunderwing" }
-#262.8 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
-#265.8 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
+290.9 "Thermionic Beam" Ability { id: "26BD", source: "Nael deus Darnus" }
+293.9 "Lunar Dynamo/Iron Chariot" Ability { id: ["26BB", "26BC"], source: "Nael deus Darnus" }
 295.3 "Doom x3" Ability { id: "26C9", source: "Tail Of Darkness" }
 297.3 "Wings Of Salvation x3" Ability { id: "26CA", source: "Fang Of Light" } duration 8
 306.2 "Chain Lightning x2" Ability { id: "26C8", source: "Thunderwing" }
 309.2 "Fireball (3)" Ability { id: "26C5", source: "Firehorn" }
 
-312.0 "Bahamut's Claw x5" Ability { id: "26B5", source: "Nael deus Darnus" } duration 2.8
+312.0 "Bahamut's Claw x5" duration 2.8 #Ability { id: "26B5", source: "Nael deus Darnus" }
 317.7 "Dive + Dynamo/Chariot" duration 8
 #295.3 "Raven Dive" Ability { id: "26BE", source: "Nael deus Darnus" }
 #298.3 "Lunar Dynamo" Ability { id: "26BC", source: "Nael deus Darnus" }
@@ -134,11 +133,14 @@ hideall "--sync--"
 435.5 "Megaflare Enrage" Ability { id: "26BA", source: "Nael deus Darnus" }
 
 # Detect Nael going untargetable for phase change
-494.7 "--sync--" NameToggle { name: "Nael deus Darnus", toggle: '00' } window 250,0
+494.7 "--sync--" NameToggle { name: "Nael deus Darnus", toggle: '00' } window 250,1
+
+# Backup sync based on arena background change (this happens at the same time weather changes)
+495.9 "--sync--" ActorControl { command: "80000001", data0: "EE" } window 250,1
 
 ##### BAHAMUT #####
-500.0 "Seventh Umbral Era" Ability { id: "26D1", source: "Bahamut Prime" } window 500,0
-503.0 "Calamitous Flame x3" Ability { id: "26D2", source: "Bahamut Prime" } duration 2
+500.0 "Seventh Umbral Era" Ability { id: "26D1", source: "Bahamut Prime" } window 500,1
+503.0 "Calamitous Flame x3" Ability { id: "26D2", source: "Bahamut Prime" } duration 2 window 3,0.5
 508.0 "Calamitous Blaze" Ability { id: "26D3", source: "Bahamut Prime" }
 511.0 "--targetable--"
 517.0 "Flare Breath" Ability { id: "26D4", source: "Bahamut Prime" }

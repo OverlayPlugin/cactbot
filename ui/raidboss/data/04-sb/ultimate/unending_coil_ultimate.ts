@@ -1,18 +1,17 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
-import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
-import Util, { Directions } from '../../../../../resources/util';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { PluginCombatantState } from '../../../../../types/event';
+import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
-  // TODO: replace partyList with data.party
-  partyList: { [name: string]: boolean };
-  hpThresholds: number[];
-  monitoringHP: boolean;
+  readonly triggerSetConfig: {
+    heavensfallTowerPosition: 'disabled' | '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
+  };
+
   currentPhase: number;
   hatch?: string[];
   doomCount?: number;
@@ -34,7 +33,9 @@ export interface Data extends RaidbossData {
   naelDiveMarkerCount: number;
   trio?: 'quickmarch' | 'blackfire' | 'fellruin' | 'heavensfall' | 'tenstrike' | 'octet';
   trioSourceIds: { [name: string]: number };
-  combatantData: PluginCombatantState[];
+  combatantData: { [id: number]: NetMatches['ActorSetPos'] };
+  heavensfallNaelAngle?: number;
+  heavensfallTowerSpots: NetMatches['ActorSetPos'][];
   shakers: string[];
   megaStack: string[];
   octetMarker: string[];
@@ -48,6 +49,19 @@ const resetTrio = (data: Data, trio: Data['trio']) => {
   data.trio = trio;
   data.shakers = [];
   data.megaStack = [];
+  data.combatantData = {};
+};
+
+const posToAngle = (pos: NetMatches['ActorSetPos']): number => {
+  return xyStringToAngle(pos.x, pos.y);
+};
+
+const xyStringToAngle = (x: string, y: string): number => {
+  return xyToAngle(parseFloat(x), parseFloat(y));
+};
+
+const xyToAngle = (x: number, y: number): number => {
+  return (Math.round(180 - 180 * Math.atan2(x, y) / Math.PI) % 360);
 };
 
 const centerX = 0;
@@ -196,12 +210,37 @@ export const findDragonMarks = (
 const triggerSet: TriggerSet<Data> = {
   id: 'TheUnendingCoilOfBahamutUltimate',
   zoneId: ZoneId.TheUnendingCoilOfBahamutUltimate,
+  config: [
+    {
+      id: 'heavensfallTowerPosition',
+      comment: {
+        en:
+          `With a tower at Nael being position 1, rotating clockwise, your tower poisition. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees guide</a> is position 7.`,
+      },
+      name: {
+        en: 'P3 Heavensfall Tower Position',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Disable tower callout': 'disabled',
+          'Position 1': '0',
+          'Position 2': '1',
+          'Position 3': '2',
+          'Position 4': '3',
+          'Position 5': '4',
+          'Position 6': '5',
+          'Position 7': '6',
+          'Position 8': '7',
+        },
+      },
+      default: 'disabled',
+    },
+  ],
   timelineFile: 'unending_coil_ultimate.txt',
   initData: () => {
     return {
       partyList: {},
-      monitoringHP: false,
-      hpThresholds: [0, 0, 0.75, 0.45],
       currentPhase: 2,
       fireDebuff: false,
       iceDebuff: false,
@@ -221,7 +260,8 @@ const triggerSet: TriggerSet<Data> = {
       unsafeThirdMark: false,
       naelDiveMarkerCount: 0,
       trioSourceIds: {},
-      combatantData: [],
+      combatantData: {},
+      heavensfallTowerSpots: [],
       shakers: [],
       megaStack: [],
       octetMarker: [],
@@ -298,48 +338,43 @@ const triggerSet: TriggerSet<Data> = {
       id: 'UCU Quickmarch Phase',
       type: 'StartsUsing',
       netRegex: { id: '26E2', source: 'Bahamut Prime', capture: false },
+      delaySeconds: 1,
       run: (data) => resetTrio(data, 'quickmarch'),
     },
     {
       id: 'UCU Blackfire Phase',
       type: 'StartsUsing',
       netRegex: { id: '26E3', source: 'Bahamut Prime', capture: false },
+      delaySeconds: 1,
       run: (data) => resetTrio(data, 'blackfire'),
     },
     {
       id: 'UCU Fellruin Phase',
       type: 'StartsUsing',
       netRegex: { id: '26E4', source: 'Bahamut Prime', capture: false },
+      delaySeconds: 1,
       run: (data) => resetTrio(data, 'fellruin'),
     },
     {
       id: 'UCU Heavensfall Phase',
       type: 'StartsUsing',
       netRegex: { id: '26E5', source: 'Bahamut Prime', capture: false },
+      delaySeconds: 1,
       run: (data) => resetTrio(data, 'heavensfall'),
     },
     {
       id: 'UCU Tenstrike Phase',
       type: 'StartsUsing',
       netRegex: { id: '26E6', source: 'Bahamut Prime', capture: false },
+      delaySeconds: 1,
       run: (data) => resetTrio(data, 'tenstrike'),
     },
     {
       id: 'UCU Octet Phase',
       type: 'StartsUsing',
       netRegex: { id: '26E7', source: 'Bahamut Prime', capture: false },
+      delaySeconds: 1,
       run: (data) => resetTrio(data, 'octet'),
-    },
-    {
-      id: 'UCU Ragnarok Party Tracker',
-      type: 'Ability',
-      netRegex: { id: '26B8', source: 'Ragnarok' },
-      run: (data, matches) => {
-        // This happens once during the nael transition and again during
-        // the heavensfall trio.  This should proooobably hit all 8
-        // people by the time you get to octet.
-        data.partyList[matches.target] = true;
-      },
     },
 
     // --- Twintania ---
@@ -423,25 +458,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'UCU Twintania Phase Change Watcher',
-      type: 'StartsUsing',
-      // On Twister or Generate.
-      netRegex: { id: '26A[AE]', source: 'Twintania' },
-      condition: (data) => !data.monitoringHP && data.hpThresholds[data.currentPhase] !== undefined,
-      preRun: (data) => data.monitoringHP = true,
-      promise: (data, matches) =>
-        Util.watchCombatant({
-          ids: [parseInt(matches.sourceId, 16)],
-        }, (ret) => {
-          return ret.combatants.some((c) => {
-            const currentHPCheck = data.hpThresholds[data.currentPhase] ?? -1;
-            return c.CurrentHP / c.MaxHP <= currentHPCheck;
-          });
-        }),
+      type: 'CombatantMemory',
+      // When Neurolink spawns
+      netRegex: { id: '40[0-9A-F]{6}', pair: [{ key: 'BNpcID', value: '1E88FF' }], capture: false },
+      condition: (data) => data.currentPhase < 4,
       sound: 'Long',
       infoText: (data, _matches, output) => output.text!({ num: data.currentPhase }),
       run: (data) => {
         data.currentPhase++;
-        data.monitoringHP = false;
       },
       outputStrings: {
         text: {
@@ -1080,9 +1104,12 @@ const triggerSet: TriggerSet<Data> = {
         });
         data.wideThirdDive = result.wideThirdDive;
         data.unsafeThirdMark = result.unsafeThirdMark;
-        // In case you forget, print marks in the log.
-        // TODO: Maybe only if Options.Debug?
-        console.log(data.naelMarks.join(', ') + (data.wideThirdDive ? ' (WIDE)' : ''));
+        if (data.options.Debug) {
+          // In case you forget, print marks in the log.
+          console.log(
+            `UCU Dragon Tracker${data.naelMarks.join(', ')}${data.wideThirdDive ? ' (WIDE)' : ''}`,
+          );
+        }
       },
     },
     {
@@ -1194,7 +1221,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.octetMarker.length !== 7)
           return;
 
-        const partyList = Object.keys(data.partyList);
+        const partyList = data.party.details.map((p) => p.name);
 
         if (partyList.length !== 8) {
           console.error(`Octet error: bad party list size: ${JSON.stringify(partyList)}`);
@@ -1437,30 +1464,22 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.trio === 'quickmarch',
       run: (data, matches) => data.trioSourceIds.twin = parseInt(matches.sourceId, 16),
     },
-    // For Blackfire:
-    // After bosses jump, there's no clear log line we can trigger off of to find Nael's position
-    // until it's effectively too late.  The best way to do this seems to be to fire the trigger
-    // with a delay when Bahamut uses Blackfire Trio before all 3 bosses jump.
     {
       id: 'UCU Blackfire Party Dir',
-      type: 'Ability',
-      netRegex: { id: '26E3', source: 'Bahamut Prime', capture: false },
-      condition: (data) => data.trio === 'blackfire',
-      delaySeconds: 3.5,
-      promise: async (data) => {
-        if (data.trioSourceIds.nael === undefined)
-          return;
-        data.combatantData = [];
-        data.combatantData = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [data.trioSourceIds.nael],
-        })).combatants;
+      type: 'ActorSetPos',
+      netRegex: { capture: true },
+      condition: (data, matches) => {
+        if (data.trio !== 'blackfire')
+          return false;
+        if (parseInt(matches.id, 16) !== data.trioSourceIds.nael)
+          return false;
+
+        return true;
       },
-      alertText: (data, _matches, output) => {
-        if (data.combatantData[0] === undefined)
-          return;
-        const nael = data.combatantData[0];
-        const naelDirOutput = Directions.combatantStatePosTo8DirOutput(nael, centerX, centerY);
+      alertText: (_data, matches, output) => {
+        const posX = parseFloat(matches.x);
+        const posY = parseFloat(matches.y);
+        const naelDirOutput = Directions.xyTo8DirOutput(posX, posY, centerX, centerY);
         return output.naelPosition!({ dir: output[naelDirOutput]!() });
       },
       outputStrings: {
@@ -1597,42 +1616,44 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'UCU Heavensfall Nael Spot',
-      type: 'StartsUsing',
-      // Grab position data once Bahamut begins casting Megaflare Dive
-      netRegex: { id: '26E1', source: 'Bahamut Prime', capture: false },
-      condition: (data) => data.trio === 'heavensfall',
-      promise: async (data) => {
-        data.combatantData = [];
-        if (
-          data.trioSourceIds.nael === undefined ||
-          data.trioSourceIds.twin === undefined ||
-          data.trioSourceIds.bahamut === undefined
-        )
-          return;
-        data.combatantData = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [data.trioSourceIds.nael, data.trioSourceIds.bahamut, data.trioSourceIds.twin],
-        })).combatants;
+      type: 'ActorSetPos',
+      netRegex: { capture: true },
+      condition: (data, matches) => {
+        if (data.trio !== 'heavensfall')
+          return false;
+
+        if (!Object.values(data.trioSourceIds).includes(parseInt(matches.id, 16)))
+          return false;
+
+        return true;
+      },
+      preRun: (data, matches) => {
+        data.combatantData[parseInt(matches.id, 16)] = matches;
       },
       alertText: (data, _matches, output) => {
+        if (Object.keys(data.combatantData).length < 3)
+          return;
+
         // Bosses line up adjacent to one another, but don't necessarily have discrete directional positions (based on 8Dir scale).
         // But we can calculate their position as an angle (relative to circular arena): 0 = N, 90 = E, 180 = S, 270 = W, etc.
         let naelAngle;
         let bahamutAngle;
         let twinAngle;
         let naelPos = 'unknown';
-        for (const mob of data.combatantData) {
-          const mobAngle = (Math.round(180 - 180 * Math.atan2(mob.PosX, mob.PosY) / Math.PI) % 360);
+        for (const mob of Object.values(data.combatantData)) {
+          const mobAngle = posToAngle(mob);
+          const mobId = parseInt(mob.id, 16);
           // As OP does not return combatants in the order, they were passed, match based on sourceId.
-          if (mob.ID === data.trioSourceIds.nael)
+          if (mobId === data.trioSourceIds.nael)
             naelAngle = mobAngle;
-          else if (mob.ID === data.trioSourceIds.bahamut)
+          else if (mobId === data.trioSourceIds.bahamut)
             bahamutAngle = mobAngle;
-          else if (mob.ID === data.trioSourceIds.twin)
+          else if (mobId === data.trioSourceIds.twin)
             twinAngle = mobAngle;
         }
         if (naelAngle === undefined || bahamutAngle === undefined || twinAngle === undefined)
           return;
+        data.heavensfallNaelAngle = naelAngle;
         if (naelAngle >= 0 && bahamutAngle >= 0 && twinAngle >= 0) {
           if (isClockwise(naelAngle, bahamutAngle))
             naelPos = isClockwise(naelAngle, twinAngle) ? 'left' : 'middle';
@@ -1653,6 +1674,54 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         right: Outputs.right,
         unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'UCU Heavensfall Tower Spot',
+      type: 'StartsUsingExtra',
+      netRegex: { id: '26DF', capture: true },
+      condition: (data) => {
+        return data.triggerSetConfig.heavensfallTowerPosition !== 'disabled' &&
+          data.trio === 'heavensfall';
+      },
+      preRun: (data, matches) => {
+        data.heavensfallTowerSpots.push(matches);
+      },
+      durationSeconds: 8,
+      infoText: (data, _matches, output) => {
+        if (data.heavensfallTowerSpots.length < 8)
+          return;
+
+        const naelAngle = data.heavensfallNaelAngle;
+        if (naelAngle === undefined)
+          return;
+        const wantedIdx = parseInt(data.triggerSetConfig.heavensfallTowerPosition);
+        const towers = data.heavensfallTowerSpots.sort((l, r) => posToAngle(l) - posToAngle(r));
+
+        const towersMap = towers.map((t) =>
+          Directions.xyTo16DirNum(parseFloat(t.x), parseFloat(t.y), centerX, centerY)
+        );
+
+        let naelIdx = towers.findIndex((t) => posToAngle(t) >= naelAngle);
+
+        if (naelIdx < 0)
+          naelIdx += 8;
+
+        const towerDir = towersMap[(wantedIdx + naelIdx) % 8];
+
+        const myTowerDir = towerDir !== undefined
+          ? Directions.output16Dir[towerDir] ?? 'unknown'
+          : 'unknown';
+
+        return output.tower!({
+          dir: output[myTowerDir]!(),
+        });
+      },
+      outputStrings: {
+        tower: {
+          en: 'Tower: ${dir}',
+        },
+        ...Directions.outputStrings16Dir,
       },
     },
     {
@@ -1728,31 +1797,40 @@ const triggerSet: TriggerSet<Data> = {
     // with a delay when Bahamut uses Grand Octet before all 3 bosses jump.
     {
       id: 'UCU Grand Octet Run & Rotate',
-      type: 'Ability',
-      // Grab mob position data after dragons/bosses are positioned
-      netRegex: { id: '26E7', source: 'Bahamut Prime', capture: false },
-      delaySeconds: 4.8,
-      promise: async (data) => {
-        data.combatantData = [];
-        if (
-          data.trioSourceIds.nael === undefined ||
-          data.trioSourceIds.bahamut === undefined
-        )
-          return;
-        data.combatantData = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [data.trioSourceIds.nael, data.trioSourceIds.bahamut],
-        })).combatants;
+      type: 'ActorSetPos',
+      netRegex: { capture: true },
+      condition: (data, matches) => {
+        if (data.trio !== 'octet')
+          return false;
+
+        const id = parseInt(matches.id, 16);
+
+        if (![data.trioSourceIds.nael, data.trioSourceIds.bahamut].includes(id))
+          return false;
+
+        return true;
+      },
+      preRun: (data, matches) => {
+        data.combatantData[parseInt(matches.id, 16)] = matches;
       },
       alertText: (data, _matches, output) => {
+        if (Object.keys(data.combatantData).length < 2)
+          return false;
+
         let naelDirIdx;
         let bahaDirIdx;
 
-        for (const mob of data.combatantData) {
-          const mobDirIdx = Directions.combatantStatePosTo8Dir(mob, centerX, centerY);
-          if (mob.ID === data.trioSourceIds.nael)
+        for (const mob of Object.values(data.combatantData)) {
+          const mobId = parseInt(mob.id, 16);
+          const mobDirIdx = Directions.xyTo8DirNum(
+            parseFloat(mob.x),
+            parseFloat(mob.y),
+            centerX,
+            centerY,
+          );
+          if (mobId === data.trioSourceIds.nael)
             naelDirIdx = mobDirIdx;
-          else if (mob.ID === data.trioSourceIds.bahamut)
+          else if (mobId === data.trioSourceIds.bahamut)
             bahaDirIdx = mobDirIdx;
         }
 
@@ -2046,6 +2124,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': 'バハムート・プライム',
         'Fang Of Light': 'ライトファング',
@@ -2123,6 +2202,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': '至尊巴哈姆特',
         'Fang Of Light': '光牙',
@@ -2200,6 +2280,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': '바하무트 프라임',
         'Fang Of Light': '빛의 송곳니',
