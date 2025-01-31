@@ -80,6 +80,7 @@ Options.Triggers.push({
   zoneId: ZoneId.Zadnor,
   comments: {
     en: 'Dalriada triggers/timeline.  Some Critical Engagements.',
+    cn: '旗舰达尔里阿达号攻略战触发器/时间轴。部分CE (紧急遭遇战)。',
   },
   timelineFile: 'zadnor.txt',
   resetWhenOutOfCombat: false,

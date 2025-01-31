@@ -4,6 +4,7 @@ Options.Triggers.push({
   zoneId: ZoneId.SohmAl,
   comments: {
     en: 'pre-6.2 rework',
+    cn: '6.2改版前',
   },
   timelineFile: 'sohm_al.txt',
   timelineTriggers: [

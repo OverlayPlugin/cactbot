@@ -20,6 +20,7 @@ Options.Triggers.push({
   zoneId: ZoneId.Kozamauka,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   initData: () => ({
     nextDoReMisery: [],

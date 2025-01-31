@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.BrayfloxsLongstop,
   comments: {
     en: 'pre-6.1 rework',
+    cn: '6.1改版前',
   },
   initData: () => {
     return {

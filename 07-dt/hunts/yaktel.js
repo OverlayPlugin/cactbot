@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.YakTel,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   initData: () => ({
     rraxTriplicateSafe: [],

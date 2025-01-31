@@ -4,6 +4,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheAetherochemicalResearchFacility,
   comments: {
     en: 'pre-6.3 rework',
+    cn: '6.3改版前',
   },
   timelineFile: 'aetherochemical_research_facility.txt',
   timelineTriggers: [

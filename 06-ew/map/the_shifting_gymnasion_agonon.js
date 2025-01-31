@@ -36,6 +36,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheShiftingGymnasionAgonon,
   comments: {
     en: 'Missing several summons',
+    cn: '缺失几次召唤',
   },
   triggers: [
     // ---------------- random treasure mobs ----------------

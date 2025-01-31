@@ -11,6 +11,7 @@ Options.Triggers.push({
   zoneId: ZoneId.Thavnair,
   comments: {
     en: 'A Rank Hunts and Daivadipa boss FATE',
+    cn: 'A级狩猎怪和明灯天王特殊FATE',
   },
   resetWhenOutOfCombat: false,
   initData: () => {

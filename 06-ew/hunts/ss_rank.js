@@ -22,6 +22,7 @@ Options.Triggers.push({
   },
   comments: {
     en: 'SS Rank Hunts',
+    cn: 'SS级狩猎怪',
   },
   triggers: [
     {

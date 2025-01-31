@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheForbiddenLandEurekaPagos,
   comments: {
     en: 'Inactivity warning only',
+    cn: '只有无操作警告',
   },
   resetWhenOutOfCombat: false,
   triggers: [

@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheForbiddenLandEurekaPyros,
   comments: {
     en: 'Mostly incomplete',
+    cn: '大部分未完成',
   },
   resetWhenOutOfCombat: false,
   triggers: [

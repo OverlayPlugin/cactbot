@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.Lakeland,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   triggers: [
     {

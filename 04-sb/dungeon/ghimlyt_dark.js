@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheGhimlytDark,
   comments: {
     en: 'pre-6.5 rework',
+    cn: '6.5改版前',
   },
   timelineFile: 'ghimlyt_dark.txt',
   timelineTriggers: [

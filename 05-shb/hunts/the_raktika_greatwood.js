@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheRaktikaGreatwood,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   triggers: [
     {

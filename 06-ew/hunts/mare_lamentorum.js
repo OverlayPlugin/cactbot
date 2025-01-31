@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.MareLamentorum,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   resetWhenOutOfCombat: false,
   initData: () => {

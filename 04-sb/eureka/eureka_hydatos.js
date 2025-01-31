@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheForbiddenLandEurekaHydatos,
   comments: {
     en: 'Baldesion Arsenal triggers/timelines only',
+    cn: '只有BA (巴尔德西昂兵武塔) 触发器/时间轴',
   },
   timelineFile: 'eureka_hydatos.txt',
   resetWhenOutOfCombat: false,

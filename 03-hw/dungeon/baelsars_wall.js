@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.BaelsarsWall,
   comments: {
     en: 'pre-6.3 rework',
+    cn: '6.3改版前',
   },
   timelineFile: 'baelsars_wall.txt',
   timelineTriggers: [

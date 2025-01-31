@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.Snowcloak,
   comments: {
     en: 'pre-6.2 rework',
+    cn: '6.2 改版前',
   },
   triggers: [
     {

@@ -4,6 +4,7 @@ Options.Triggers.push({
   zoneId: ZoneId.AmhAraeng,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   triggers: [
     {
