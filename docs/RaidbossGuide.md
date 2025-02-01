@@ -80,6 +80,9 @@ By default, you should not pick a particular strategy if there are multiple.
 
 See: [P12S](../ui/raidboss/data/06-ew/raid/p12s.ts) for an example of many different tower and classical concept options.
 
+You can also use the `disabled` and/or `hidden` properties to programmatically hide or disable options based on the values of other options.
+This allows you to effectively create sub-options that will only appear or be modifiable if the "parent" option is set to a particular value.
+
 TODO: update this guide to explain the structure of the config section better
 
 ### Trigger Implementation Guidelines for Developers
@@ -130,6 +133,15 @@ export default {
       },
       type: 'checkbox',
       default: false,
+      // optional properties below
+      disabled: (values) => {
+        // code that returns true or false; if true, the input field will be disabled in the UI
+        // can access current values of other config options via values.[id of config option]
+      },
+      hidden: (values) => {
+        // code that returns true or false; if true, the config text and input will be hidden in the UI
+        // can access current values of other config options via values.[id of config option]
+      },
     },
   ],
   resetWhenOutOfCombat: true,
