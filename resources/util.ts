@@ -343,6 +343,11 @@ const xyTo4DirIntercardNum = (x: number, y: number, centerX: number, centerY: nu
   return Math.round(2 - 2 * ((Math.PI / 4) + Math.atan2(x, y)) / Math.PI) % 4;
 };
 
+const hdgTo16DirNum = (heading: number): number => {
+  // N = 0, NNE = 1, ..., NNW = 15
+  return (Math.round(8 - 8 * heading / Math.PI) % 16 + 16) % 16;
+};
+
 const hdgTo8DirNum = (heading: number): number => {
   // N = 0, NE = 1, ..., NW = 7
   return (Math.round(4 - 4 * heading / Math.PI) % 8 + 8) % 8;
@@ -377,6 +382,7 @@ export const Directions = {
   xyTo16DirNum: xyTo16DirNum,
   xyTo8DirNum: xyTo8DirNum,
   xyTo4DirNum: xyTo4DirNum,
+  hdgTo16DirNum: hdgTo16DirNum,
   hdgTo8DirNum: hdgTo8DirNum,
   hdgTo4DirNum: hdgTo4DirNum,
   outputFrom8DirNum: outputFrom8DirNum,
