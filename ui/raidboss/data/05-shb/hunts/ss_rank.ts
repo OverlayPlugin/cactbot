@@ -24,6 +24,7 @@ const triggerSet: TriggerSet<Data> = {
   },
   comments: {
     en: 'SS Rank Hunts',
+    de: 'SS Rang Hohe Jagd',
     cn: 'SS级狩猎怪',
   },
   triggers: [

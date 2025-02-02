@@ -48,6 +48,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheShiftingGymnasionAgonon,
   comments: {
     en: 'Missing several summons',
+    de: 'Einige Beschwörungen fehlen',
     cn: '缺失几次召唤',
   },
 

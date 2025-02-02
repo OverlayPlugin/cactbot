@@ -11,6 +11,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheGhimlytDark,
   comments: {
     en: 'pre-6.5 rework',
+    de: 'Vor der 6.5 Überarbeitung',
     cn: '6.5改版前',
   },
   timelineFile: 'ghimlyt_dark.txt',

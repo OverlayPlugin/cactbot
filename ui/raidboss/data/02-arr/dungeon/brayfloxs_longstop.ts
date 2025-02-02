@@ -12,6 +12,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.BrayfloxsLongstop,
   comments: {
     en: 'pre-6.1 rework',
+    de: 'Vor der 6.1 Überarbeitung',
     cn: '6.1改版前',
   },
   initData: () => {

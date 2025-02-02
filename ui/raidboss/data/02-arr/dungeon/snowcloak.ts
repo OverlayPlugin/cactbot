@@ -9,6 +9,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.Snowcloak,
   comments: {
     en: 'pre-6.2 rework',
+    de: 'Vor der 6.2 Überarbeitung',
     cn: '6.2 改版前',
   },
   triggers: [

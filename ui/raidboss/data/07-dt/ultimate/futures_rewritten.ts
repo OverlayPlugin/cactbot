@@ -549,6 +549,7 @@ const triggerSet: TriggerSet<Data> = {
           },
           onYou: {
             en: 'On YOU',
+            de: 'Auf DIR',
           },
           tether: {
             en: '${num}: ${elem} (${target})',
@@ -1896,7 +1897,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Crystal of Darkness': 'Kristall der Dunkelheit',
         'Crystal of Light': 'Kristall des Lichts',
