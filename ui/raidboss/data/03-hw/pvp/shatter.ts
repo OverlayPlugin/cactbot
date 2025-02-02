@@ -21,6 +21,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheFieldsOfGloryShatter,
   comments: {
     en: 'pre-6.4 rework',
+    cn: '6.4改版前',
   },
   triggers: [
     // https://xivapi.com/LogMessage/2652

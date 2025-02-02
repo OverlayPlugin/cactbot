@@ -25,6 +25,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheWorldOfDarkness,
   comments: {
     en: 'Mostly incomplete',
+    cn: '大部分未完成',
   },
   triggers: [
     {

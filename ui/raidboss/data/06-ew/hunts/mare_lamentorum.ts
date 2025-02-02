@@ -15,6 +15,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.MareLamentorum,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   resetWhenOutOfCombat: false,
   initData: () => {

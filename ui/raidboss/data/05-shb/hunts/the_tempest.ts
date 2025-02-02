@@ -15,6 +15,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheTempest,
   comments: {
     en: 'A Rank Hunts, missing Archaeotania boss FATE',
+    cn: 'A级狩猎怪, 缺失特殊FATE',
   },
   triggers: [
     {

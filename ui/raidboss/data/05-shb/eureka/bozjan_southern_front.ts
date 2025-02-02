@@ -145,6 +145,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheBozjanSouthernFront,
   comments: {
     en: 'Castrum Lacus Litore triggers/timeline.  Missing almost all Critical Engagements.',
+    cn: '帝国湖岸堡攻城战触发器/时间轴。几乎缺失所有CE (紧急遭遇战)。',
   },
   timelineFile: 'bozjan_southern_front.txt',
   timeline: [

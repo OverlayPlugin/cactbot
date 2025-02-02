@@ -29,10 +29,13 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.MiddleLaNoscea,
   zoneLabel: {
     en: 'Cactbot Test Triggers',
+    cn: 'Cactbot测试触发器',
   },
   comments: {
     en:
       'Testing/troubleshooting triggers (See: <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>)',
+    cn:
+      '测试/排错触发器（参见：<a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>',
   },
   config: [
     {
@@ -466,6 +469,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Trigger countdown test',
+          cn: '触发器倒计时测试',
           ko: '트리거 카운트다운 테스트',
         },
       },
@@ -600,7 +604,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       locale: 'cn',
-      missingTranslations: true,
       replaceSync: {
         'You bid farewell to the striking dummy': '.*向木人告别',
         'You bow courteously to the striking dummy': '.*恭敬地对木人行礼',
@@ -612,6 +615,7 @@ const triggerSet: TriggerSet<Data> = {
         'cactbot test config': 'cactbot测试配置',
         'cactbot test outputStrings': 'cactbot测试输出字符串',
         'cactbot test response': 'cactbot响应测试',
+        'cactbot test trigger countdown': 'cactbot测试触发器倒计时',
         'cactbot test watch': 'cactbot探测测试',
         'You clap for the striking dummy': '.*向木人送上掌声',
         'You psych yourself up alongside the striking dummy': '.*激励木人',

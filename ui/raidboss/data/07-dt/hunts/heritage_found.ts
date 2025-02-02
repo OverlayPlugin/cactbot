@@ -53,6 +53,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.HeritageFound,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   initData: () => ({
     atticusCleaves: [],

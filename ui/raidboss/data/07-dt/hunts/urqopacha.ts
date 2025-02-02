@@ -22,6 +22,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.Urqopacha,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   triggers: [
     // ****** A-RANK: Nechuciho ****** //

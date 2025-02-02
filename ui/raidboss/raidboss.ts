@@ -30,6 +30,12 @@ UserConfig.getUserConfigLocation('raidboss', defaultOptions, () => {
     options.IsRemoteRaidboss = !isLocal;
   }
 
+  const forceRemoteRaidboss = params.get('remote');
+  if (forceRemoteRaidboss !== null) {
+    options.IsRemoteRaidboss = !!parseInt(forceRemoteRaidboss);
+    console.log(`Forcing IsRemoteRaidboss=${options.IsRemoteRaidboss} via query parameter`);
+  }
+
   const playerNameParam = params.get('player');
   if (playerNameParam !== null) {
     options.PlayerNameOverride = playerNameParam;

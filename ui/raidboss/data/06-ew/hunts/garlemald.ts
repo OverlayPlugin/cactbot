@@ -12,6 +12,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.Garlemald,
   comments: {
     en: 'A Rank Hunts',
+    cn: 'A级狩猎怪',
   },
   triggers: [
     {

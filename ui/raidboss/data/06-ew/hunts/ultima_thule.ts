@@ -19,6 +19,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.UltimaThule,
   comments: {
     en: 'A Rank Hunts and Chi boss FATE',
+    cn: 'A级狩猎怪和希特殊FATE',
   },
   triggers: [
     {
