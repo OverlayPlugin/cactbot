@@ -27,22 +27,27 @@ const emptyTotal: CoverageTotalEntry = {
 const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
   sync: {
     en: 'Sync',
+    de: 'Sync',
     cn: '同步',
   },
   code: {
     en: 'Code',
+    de: 'Code',
     cn: '代码',
   },
   other: {
     en: 'Other',
+    de: 'Anderes',
     cn: '其他',
   },
   replaceSection: {
     en: 'Replace Section',
+    de: 'Ersatz-Sektion',
     cn: '替换部分',
   },
   text: {
     en: 'Text',
+    de: 'Text',
     cn: '文本',
   },
 };
@@ -66,6 +71,7 @@ const exVersionToDirName: readonly exKeys[] = [
 const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
   '00-misc': {
     en: 'Misc',
+    de: 'Diverses',
     cn: '杂项',
   },
   '02-arr': {
@@ -171,6 +177,7 @@ const contentTypeToLabel: {
   [ContentType.VCDungeonFinder]: {
     full: {
       en: 'Variant & Criterion Dungeon',
+      de: 'Gewölbesuche',
       cn: '多变&异闻迷宫',
     },
     short: {
@@ -196,70 +203,84 @@ const contentTypeToLabel: {
   [ContentType.TheMaskedCarnivale]: {
     full: {
       en: 'The Masked Carnivale',
+      de: 'Die Große Maskerade',
       cn: '假面狂欢',
     },
     short: {
       en: 'BLU',
+      de: 'BLAU',
       cn: '假面狂欢',
     },
   },
   [ContentType.Eureka]: {
     full: {
       en: 'Eureka',
+      de: 'Eureka',
       cn: '优雷卡',
     },
     short: {
       en: 'Eureka',
+      de: 'Eureka',
       cn: '优雷卡',
     },
   },
   [ContentType.SaveTheQueen]: {
     full: {
       en: 'Save The Queen',
+      de: 'Königinnenwache',
       cn: '天佑女王',
     },
     short: {
       en: 'Bozja',
+      de: 'Bozja',
       cn: '博兹雅',
     },
   },
   [ContentType.DisciplesOfTheLand]: {
     full: {
       en: 'Ocean Fishing/Diadem',
+      de: 'Auf großer Fahrt/Diadem',
       cn: '海钓/天上福地云冠群岛',
     },
     short: {
       en: 'Diadem',
+      de: 'Diadem',
       cn: '海钓/空岛',
     },
   },
   [ContentType.TreasureHunt]: {
     full: {
       en: 'Treasure Hunt',
+      de: 'Schatzsuche',
       cn: '寻宝',
     },
     short: {
       en: 'Maps',
+      de: 'Karten',
       cn: '寻宝',
     },
   },
   [ContentType.DeepDungeons]: {
     full: {
       en: 'Deep Dungeons',
+      de: 'Tiefes Gewölbe',
       cn: '深层迷宫',
     },
     short: {
       en: 'DD',
+      de: 'TG',
       cn: '深宫',
     },
   },
   [ContentType.Pvp]: {
     full: {
       en: 'PvP',
+      de: 'PvP',
       cn: 'PvP',
     },
     short: {
       en: 'PvP',
+      de: 'PvP',
       cn: 'PvP',
     },
   },
@@ -399,38 +420,47 @@ const miscStrings = {
   },
   raidbossTriggerCount: {
     en: 'Raidboss Trigger Count',
+    de: 'Raidboss Trigger Anzahl',
     cn: 'Raidboss触发器数量',
   },
   oopsyTriggerCount: {
     en: 'Oopsy Trigger Count',
+    de: 'Oopsy Trigger Anzahl',
     cn: 'Oopsy触发器数量',
   },
   none: {
     en: 'None',
+    de: 'Keine',
     cn: '无',
   },
   otherContentType: {
     en: 'Other Content',
+    de: 'Andere Inhalte',
     cn: '其他内容',
   },
   changesSinceLastRelease: {
     en: 'Changes since last release',
+    de: 'Änderungen seit letztem Release',
     cn: '自上次发布以来的更改',
   },
   timelineEntries: {
     en: 'Timeline Entries',
+    de: 'Timeline Einträge',
     cn: '时间轴条目',
   },
   timelineDuration: {
     en: 'Timeline Duration',
+    de: 'Timeline Dauer',
     cn: '时间轴时长',
   },
   noTranslationInformation: {
     en: 'No Translation Information',
+    de: 'Keine Informationen zur Übersetzung',
     cn: '无翻译信息',
   },
   linkToEntry: {
     en: 'Link to this entry',
+    de: 'Link zum Eintrag',
     cn: '此条目链接',
   },
 } as const;
@@ -488,10 +518,12 @@ type ThemeKey = (typeof themeKeys)[number];
 const themes: Record<ThemeKey, LocaleText> = {
   'light': {
     en: 'Light',
+    de: 'Hell',
     cn: '浅色',
   },
   'dark': {
     en: 'Dark',
+    de: 'Dunkel',
     cn: '深色',
   },
 } as const;
