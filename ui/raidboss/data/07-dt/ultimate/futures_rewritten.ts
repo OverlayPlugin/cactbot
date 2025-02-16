@@ -1823,6 +1823,10 @@ const triggerSet: TriggerSet<Data> = {
         'Dark Fire III/Unholy Darkness': '(spreads/stack)',
         'Dark Fire III/Dark Blizzard III/Unholy Darkness': '(spreads/donut/stack)',
         'Shadoweye/Dark Water III/Dark Eruption': '(gazes/stack/spreads)',
+        'Dark Water III + Hallowed Wings': '(cleave + stacks)',
+        'Dark Blizzard III + Dark Eruption + Dark Aero III': '(donut + spread + KBs)',
+        'The Path of Darkness + The Path of Light': '(exa-lines)',
+        'Cruel Path of Darkness + Cruel Path of Light': 'Polarizing Paths',
       },
     },
     {
