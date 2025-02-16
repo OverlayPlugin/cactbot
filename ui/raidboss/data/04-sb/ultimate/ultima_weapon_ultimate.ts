@@ -10,12 +10,30 @@ import { PluginCombatantState } from '../../../../../types/event';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// Note: without extra network data that is not exposed, it seems impossible to know where Titan
-// looks briefly before jumping for Geocrush. A getCombatants trigger on NameToggle 00 was
-// extremely inaccurate and so that is likely too late to know.
-
 const centerX = 100;
 const centerY = 100;
+
+// Using the "from" point, returns the heading (in radians) between the
+// negative (south) y-axis and the ray to the "to" point.
+const getRelativeHdg = (toX: number, toY: number, fromX: number, fromY: number): number => {
+  const deltaX = toX - fromX;
+  const deltaY = toY - fromY;
+  return Math.atan2(deltaX, deltaY);
+};
+
+// Titan will always jump to one of four cardinal spots. The opposite cardinal is safe.
+type JumpSite = {
+  jump: DirectionOutputCardinal;
+  x: number;
+  y: number;
+  safe: DirectionOutputCardinal;
+};
+const jumpSites: JumpSite[] = [
+  { jump: 'dirW', x: 86.0, y: 100.0, safe: 'dirE' },
+  { jump: 'dirE', x: 114.0, y: 100.0, safe: 'dirW' },
+  { jump: 'dirN', x: 100.0, y: 86.0, safe: 'dirS' },
+  { jump: 'dirS', x: 100.0, y: 114.0, safe: 'dirN' },
+];
 
 type BossKey = 'garuda' | 'ifrit' | 'titan' | 'ultima';
 
@@ -65,8 +83,10 @@ export interface Data extends RaidbossData {
   nailDeathLast8Dir?: number;
   nailDeathRotationDir?: 'cw' | 'ccw';
   ifritUntargetableCount: number;
+  seenTitanFirstJump: boolean;
   titanGaols: string[];
   seenTitanGaols?: boolean;
+  lastTitanMove?: NetMatches['ActorMove'];
   titanBury: NetMatches['AddedCombatant'][];
   ifritRadiantPlumeLocations: DirectionOutputCardinal[];
   possibleIfritIDs: string[];
@@ -153,6 +173,7 @@ const triggerSet: TriggerSet<Data> = {
       nailDeaths: {},
       nailDeathOrder: [],
       ifritUntargetableCount: 0,
+      seenTitanFirstJump: false,
       titanGaols: [],
       titanBury: [],
       ifritRadiantPlumeLocations: [],
@@ -1132,6 +1153,68 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     // --------- Titan ----------
+    {
+      id: 'UWU Titan Last Move Collector',
+      type: 'ActorMove',
+      netRegex: { id: '4[0-9a-fA-F]{7}', capture: true },
+      condition: (data, matches) =>
+        data.phase === 'titan' &&
+        data.bossId.titan === matches.id,
+      run: (data, matches) => {
+        data.lastTitanMove = matches;
+      },
+    },
+    {
+      id: 'UWU Titan Jump Direction',
+      type: 'NameToggle',
+      netRegex: { id: '4[0-9a-fA-F]{7}', toggle: '00', capture: true },
+      condition: (data, matches) =>
+        data.phase === 'titan' &&
+        data.bossId.titan === matches.id &&
+        data.lastTitanMove !== undefined,
+      // There is sometimes a "late" ActorMove packet that can arrive anywhere from ~45-180ms after
+      // the NameToggle packet. A delay of 0.4s should be enough for safety without a belated call.
+      delaySeconds: 0.4,
+      alertText: (data, _matches, output) => {
+        const unknownStr = output.safe!({ dir: output.unknown!() });
+        const lastMove = data.lastTitanMove;
+
+        // For the first jump, if the MT maintains precise north-facing positioning until the jump,
+        // it's possible no ActorMove packet will be sent.
+        // In that case, assume Titan is north-facing (south safe).
+        if (lastMove === undefined)
+          return data.seenTitanFirstJump ? unknownStr : output.safe!({ dir: output['dirS']!() });
+
+        const titanX = parseFloat(lastMove.x);
+        const titanY = parseFloat(lastMove.y);
+        const titanHdg = parseFloat(lastMove.heading);
+
+        // Titan's final heading will be facing one of the four cardinal jump sites.
+        // We can identify the correct site by comparing Titan's heading to the heading of the
+        // jump site (toward Titan) where the difference is +/-pi -- in other words, a
+        // 180-degree angle deviation indicative of an identical ray.
+        for (const site of jumpSites) {
+          const hdgToTitan = getRelativeHdg(titanX, titanY, site.x, site.y);
+          const ray = Math.abs(titanHdg - hdgToTitan);
+          if (ray >= 3 && ray <= 3.28) // should be pi, but allow for rounding errors etc.
+            return output.safe!({ dir: output[site.safe]!() });
+        }
+        return unknownStr;
+      },
+      run: (data) => data.seenTitanFirstJump = true,
+      outputStrings: {
+        safe: {
+          en: 'Safe: ${dir}',
+          de: 'Sicher: ${dir}',
+          fr: 'Sur : ${dir}',
+          ja: '安地: ${dir}',
+          cn: '安全区: ${dir}',
+          ko: '안전: ${dir}',
+        },
+        unknown: Outputs.unknown,
+        ...Directions.outputStringsCardinalDir,
+      },
+    },
     {
       id: 'UWU Titan Bury Direction',
       type: 'AddedCombatant',
