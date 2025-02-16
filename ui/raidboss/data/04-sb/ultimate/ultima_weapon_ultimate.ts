@@ -83,6 +83,7 @@ export interface Data extends RaidbossData {
   nailDeathLast8Dir?: number;
   nailDeathRotationDir?: 'cw' | 'ccw';
   ifritUntargetableCount: number;
+  seenTitanFirstJump: boolean;
   titanGaols: string[];
   seenTitanGaols?: boolean;
   lastTitanMove?: NetMatches['ActorMove'];
@@ -172,6 +173,7 @@ const triggerSet: TriggerSet<Data> = {
       nailDeaths: {},
       nailDeathOrder: [],
       ifritUntargetableCount: 0,
+      seenTitanFirstJump: false,
       titanGaols: [],
       titanBury: [],
       ifritRadiantPlumeLocations: [],
@@ -1174,10 +1176,14 @@ const triggerSet: TriggerSet<Data> = {
       // the NameToggle packet. A delay of 0.4s should be enough for safety without a belated call.
       delaySeconds: 0.4,
       alertText: (data, _matches, output) => {
-        let safeStr = output.safe!({ dir: output.unknown!() });
+        const unknownStr = output.safe!({ dir: output.unknown!() });
         const lastMove = data.lastTitanMove;
+
+        // For the first jump, if the MT maintains precise north-facing positioning until the jump,
+        // it's possible no ActorMove packet will be sent.
+        // In that case, assume Titan is north-facing (south safe).
         if (lastMove === undefined)
-          return safeStr;
+          return data.seenTitanFirstJump ? unknownStr : output.safe!({ dir: output['dirS']!() });
 
         const titanX = parseFloat(lastMove.x);
         const titanY = parseFloat(lastMove.y);
@@ -1191,10 +1197,11 @@ const triggerSet: TriggerSet<Data> = {
           const hdgToTitan = getRelativeHdg(titanX, titanY, site.x, site.y);
           const ray = Math.abs(titanHdg - hdgToTitan);
           if (ray >= 3 && ray <= 3.28) // should be pi, but allow for rounding errors etc.
-            safeStr = output.safe!({ dir: output[site.safe]!() });
+            return output.safe!({ dir: output[site.safe]!() });
         }
-        return safeStr;
+        return unknownStr;
       },
+      run: (data) => data.seenTitanFirstJump = true,
       outputStrings: {
         safe: {
           en: 'Safe: ${dir}',
