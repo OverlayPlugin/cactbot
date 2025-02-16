@@ -736,7 +736,7 @@ const npcYellData = {`;
     ].sort(hexSort);
 
     const xivapiNpcYells: XIVAPINpcYellResponse | undefined = await (await fetch(
-      `https://beta.xivapi.com/api/1/sheet/NpcYell?rows=${
+      `https://v2.xivapi.com/api/sheet/NpcYell?rows=${
         allYellIds.map((yell) => parseInt(yell, 16).toString()).join(',')
       }&fields=Text`,
     )).json() as XIVAPINpcYellResponse;
@@ -819,7 +819,7 @@ const battleTalk2Data = {`;
     ].sort(hexSort);
 
     const xivapiBattleTalk2s: XIVAPIBattleTalk2Response | undefined = await (await fetch(
-      `https://beta.xivapi.com/api/1/sheet/InstanceContentTextData?rows=${
+      `https://v2.xivapi.com/api/sheet/InstanceContentTextData?rows=${
         allTextIds.map((textId) => parseInt(textId, 16).toString()).join(',')
       }&fields=Text`,
     )).json() as XIVAPIBattleTalk2Response;
@@ -1012,12 +1012,12 @@ const headMarkerData = {
     ].sort(hexSort);
 
     const xivapiHeadMarkerInfo: XIVAPILockonResponse | undefined = await (await fetch(
-      `https://beta.xivapi.com/api/1/sheet/Lockon?rows=${
+      `https://v2.xivapi.com/api/sheet/Lockon?rows=${
         allHeadmarkers.map((hm) => parseInt(hm, 16).toString()).join(',')
       }&fields=Unknown0`,
     )).json() as XIVAPILockonResponse;
 
-    // https://beta.xivapi.com/api/1/sheet/Lockon?rows=79&fields=Unknown0
+    // https://v2.xivapi.com/api/sheet/Lockon?rows=79&fields=Unknown0
     for (const headmarker of allHeadmarkers) {
       const allOffsets = [
         ...new Set(
@@ -1234,7 +1234,7 @@ const generateTriggersTextFromTriggerInfo = async (
   }
 
   const xivapiAbilityInfo: XIVAPIAbilityResponse | undefined = await (await fetch(
-    `https://beta.xivapi.com/api/1/sheet/Action?rows=${
+    `https://v2.xivapi.com/api/sheet/Action?rows=${
       [...new Set(abilitiesByName.flatMap((entry) => entry.ids))].sort().map((id) =>
         parseInt(id, 16).toString()
       ).join(',')

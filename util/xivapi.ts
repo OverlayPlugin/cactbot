@@ -13,7 +13,7 @@ import fetch from 'node-fetch';
 
 import { ConsoleLogger } from './console_logger';
 
-const _XIVAPI_URL = 'https://beta.xivapi.com/api/1';
+const _XIVAPI_URL = 'https://v2.xivapi.com/api';
 
 // Max results returned per query
 // (Not officially documented for the new beta API, but testing confirms this limit.)
