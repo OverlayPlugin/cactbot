@@ -22,6 +22,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Away from falling pillar',
+          cn: '远离柱子落点',
         },
       },
     },
@@ -144,6 +145,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Away from boss',
+          cn: '远离 BOSS',
         },
       },
     },

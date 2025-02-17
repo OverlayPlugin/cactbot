@@ -505,7 +505,7 @@ Options.Triggers.push({
         killShield: {
           en: 'Kill Ark Shield',
           ja: '盾持ちを殴る',
-          cn: '击杀 Ark Shield', // FIXME: Update name while cn 7.1
+          cn: '击杀方舟之盾',
         },
       },
     },
@@ -521,7 +521,7 @@ Options.Triggers.push({
         interruptHM: {
           en: 'Interrupt HM',
           ja: 'HMへ中断',
-          cn: '打断 HM', // FIXME: Update name while cn 7.1
+          cn: '打断方舟天使HM',
         },
       },
     },
