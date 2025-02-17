@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.Shaaloani,
   comments: {
     en: 'A Rank Hunts and Ttokrrone boss FATE',
-    cn: 'A级狩猎和得酷热涅特殊FATE',
+    cn: 'A级狩猎怪和得酷热涅特殊FATE',
   },
   initData: () => ({
     yeheheTurnBuffs: [],
