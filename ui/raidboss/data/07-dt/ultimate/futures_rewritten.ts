@@ -2222,7 +2222,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'FRU P4 Spirit Taker',
+      id: 'FRU P4 Darklit Spirit Taker',
       type: 'StartsUsing',
       netRegex: { id: '9D60', source: 'Oracle of Darkness', capture: false },
       condition: (data) => data.phase === 'p4-dld',
