@@ -360,7 +360,6 @@ Options.Triggers.push({
   timelineReplace: [
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Queen Eternal': '永恒女王',
       },
