@@ -2131,23 +2131,23 @@ const triggerSet: TriggerSet<Data> = {
             en: '(stack on you later - no swap)',
           },
           dpsStackOnYouSwap: {
-            en: 'Adjust stacks: swap with Support',
+            en: 'Stacks: You swap w/ Support',
           },
           healerStackOnYouSwap: {
-            en: 'Adjust stacks: swap w/ Ranged/Flex',
+            en: 'Stacks: You swap w/ Ranged/Flex',
           },
           tankStackOnYouSwap: {
-            en: 'Adjust stacks: swap w/ Melee/Flex',
+            en: 'Stacks: You swap w/ Melee/Flex',
           },
           // stack on another (different role); may require you to swap
           dpsStackOnHealerSwap: {
-            en: 'Adjust stacks: ${healer} swap w/ Ranged/Flex',
+            en: 'Stacks: ${healer} swap w/ Ranged/Flex',
           },
           dpsStackOnTankSwap: {
-            en: 'Adjust stacks: ${tank} swap w/ Melee/Flex',
+            en: 'Stacks: ${tank} swap w/ Melee/Flex',
           },
           supportStackOnDpsSwap: {
-            en: 'Adjust stacks: ${dps} swap w/ Support',
+            en: 'Stacks: ${dps} swap w/ Support',
           },
         };
         const isHealerPlantNW = data.triggerSetConfig.darklit === 'healerPlantNW';
