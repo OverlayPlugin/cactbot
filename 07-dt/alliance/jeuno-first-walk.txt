@@ -448,7 +448,7 @@ hideall "--sync--"
 30314.4 "Cloudsplitter" Ability { id: "A076", source: "Ark Angel MR" }
 
 30325.7 label "angelLoop"
-30325.7 "--MR jump-" Ability { id: "A06A", source: "Ark Angel MR" }
+30325.7 "--MR jump--" Ability { id: "A06A", source: "Ark Angel MR" }
 30330.1 "Rampage x4 (line indicators)" duration 3 #Ability { id: "A071", source: "Ark Angel MR" }
 30334.1 "Rampage (circle indicator)" Ability { id: "A072", source: "Ark Angel MR" }
 30335.0 "--sync--" Ability { id: "A070", source: "Ark Angel MR" } # Rampage castbar
@@ -574,7 +574,7 @@ hideall "--sync--"
 40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1418" } window 40000,1
 40022.1 "Giga Slash 1" Ability { id: ["9F40", "94F2"], source: "Shadow Lord" }
 40024.1 "Giga Slash 2" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
-40028.1 "--center-" Ability { id: "9F6A", source: "Shadow Lord" }
+40028.1 "--center--" Ability { id: "9F6A", source: "Shadow Lord" }
 40034.4 "Umbra Smash" Ability { id: "9F5B", source: "Shadow Lord" } duration 12
 40055.8 "Giga Slash 1" Ability { id: ["9F40", "94F2"], source: "Shadow Lord" }
 40057.8 "Giga Slash 2" Ability { id: ["9F41", "94F3"], source: "Shadow Lord" }
