@@ -8903,7 +8903,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 4,
     'name': {
-      'cn': '未料想过的交易',
+      'cn': '一块面包的交易',
       'de': 'Der Wert einer Buuds',
       'en': 'An Unforeseen Bargain',
       'fr': 'Pour une bouchée de pain',
@@ -8982,6 +8982,7 @@ const data: ZoneInfoType = {
     'contentType': 20,
     'exVersion': 0,
     'name': {
+      'cn': '处理显示标记的攻击',
       'de': 'Achte auf Attackenmarkierungen!',
       'en': 'React to Attack Markers',
       'fr': 'Réagir à des marquages',
@@ -8996,6 +8997,7 @@ const data: ZoneInfoType = {
     'contentType': 20,
     'exVersion': 0,
     'name': {
+      'cn': '处理在地面显示预兆的攻击',
       'de': 'Achte auf Geländemarkierungen!',
       'en': 'React to Floor Markers',
       'fr': 'Réagir à des indications au sol',
@@ -9010,6 +9012,7 @@ const data: ZoneInfoType = {
     'contentType': 20,
     'exVersion': 0,
     'name': {
+      'cn': '处理各种攻击',
       'de': 'Stelle dich allerlei Angriffsmanövern!',
       'en': 'React to Advanced Visual Indicators',
       'fr': 'Réagir à des mécaniques variées',
@@ -10293,6 +10296,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '白虎幻巧战',
       'de': 'Traumprüfung - Byakko',
       'en': 'The Jade Stoa (Unreal)',
       'fr': 'La Clairière de Jade (irréel)',
@@ -10321,6 +10325,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '废弃据点玉韦亚瓦塔实验站',
       'de': 'Forschungsstation Yuweyawata',
       'en': 'Yuweyawata Field Station',
       'fr': 'Le centre de recherche de Yuweyawata',
@@ -10335,6 +10340,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '永恒女王忆想歼灭战',
       'de': 'Gok Tajaal - Ewige Königin',
       'en': 'The Minstrel\'s Ballad: Sphene\'s Burden',
       'fr': 'Interphos (extrême)',
@@ -10349,6 +10355,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '家人的温暖',
       'de': 'Ein Land, eine Familie',
       'en': 'The Warmth of Family',
       'fr': 'La famille de l\'Aurarque',
@@ -10393,6 +10400,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '朱诺：第一巡行',
       'de': 'Jeuno: Die erste Etappe',
       'en': 'Jeuno: The First Walk',
       'fr': 'Jeuno - La première perambulation',

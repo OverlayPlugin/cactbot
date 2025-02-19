@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.33.6",
-  "releaseSummary": "Yuweyawata, more FRU, improved coverage report, i18n",
+  "version": "0.33.7",
+  "releaseSummary": "cn 7.1 support, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",

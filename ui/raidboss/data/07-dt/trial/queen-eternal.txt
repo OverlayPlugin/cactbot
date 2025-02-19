@@ -94,7 +94,7 @@ hideall "--sync--"
 606.2 "Absolute Authority (flare)" Ability { id: "9A5E", source: "Queen Eternal" }
 610.3 "Absolute Authority (puddles 1)" #Ability { id: "8F0E", source: "Queen Eternal" }
 610.6 "Absolute Authority (abandonment)" Ability { id: "9A5F", source: "Queen Eternal" }
-614.5 "Authority\'s Hold" # LosesEffect { effectId: "1022" }
+614.5 "Authority's Hold" # LosesEffect { effectId: "1022" }
 614.5 "Absolute Authority (puddles 2)" #Ability { id: "8F0E", source: "Queen Eternal" }
 617.7 "Absolute Authority (gaze)" Ability { id: "8F10", source: "Queen Eternal" }
 618.9 "Absolute Authority (puddles 3)" #Ability { id: "8F0E", source: "Queen Eternal" }
