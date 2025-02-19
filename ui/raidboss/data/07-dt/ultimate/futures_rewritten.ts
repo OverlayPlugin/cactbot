@@ -2551,7 +2551,12 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: '994' }, // Return
       condition: (data, matches) => data.phase === 'p4-ct' && data.me === matches.target,
-      response: Responses.spread('alert'),
+      alertText: (_data, _matches, output) => output.spreadAvoid!(),
+      outputStrings: {
+        spreadAvoid: {
+          en: 'Spread -- Avoid crystal',
+        },
+      },
     },
     // ************************
     // P5 -- Pandora
