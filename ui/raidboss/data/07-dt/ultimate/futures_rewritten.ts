@@ -2492,13 +2492,17 @@ const triggerSet: TriggerSet<Data> = {
         if (!debuff)
           return;
 
+        const isEarlyPopS = data.triggerSetConfig.ct === 'earlyPopSouth';
         if (debuff.startsWith('blue'))
-          return output.cleanse!({ spot: output[debuff]!() });
+          return isEarlyPopS ? output.cleanseSpot!({ spot: output[debuff]!() }) : output.cleanse!();
         return output.avoidCleanse!();
       },
       outputStrings: {
-        cleanse: {
+        cleanseSpot: {
           en: 'Cleanse: ${spot}',
+        },
+        cleanse: { // if no strat
+          en: 'Cleanse',
         },
         avoidCleanse: {
           en: 'Avoid cleanse puddles',
