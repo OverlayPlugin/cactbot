@@ -2,7 +2,7 @@
 # ZoneId: 1238
 
 # -ii 9CB4 9CD8 9CD9 9CC9 9CCA 9CCC 9CCD 9CCF 9CE5 9CE6 9CE9 9CF0 9D0C 9D0E 9D13
-# -p 9CFF:215.3 9D22:500.0 9D72:940.7
+# -p 9CFF:215.3 9D22:500.0 9D72:1041.0
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -171,16 +171,16 @@ hideall "--sync--"
 652.8 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
 658.2 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
 672.0 "Memory's End (enrage)" Ability { id: "9D6C", source: "Oracle of Darkness" }
-674.6 "--untargetable--" # RECHECK THIS
+675.4 "--untargetable--"
 
 # Phase Four
-680.8 "--targetable--"  # RECHECK THIS
+680.7 "--targetable--"
 686.3 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 10,10
 689.2 "Materialization" Ability { id: "9D36", source: "Usurper of Frost" }
 700.4 "Drachen Armor" Ability { id: "9CFA", source: "Usurper of Frost" }
 702.9 "Akh Rhai" Ability { id: "9D2D", source: "Usurper of Frost" } duration 5.1
 705.4 "Edge of Oblivion 1" Ability { id: "9CEE", source: "Fragment of Fate" }
-706.5 "--Oracle targetable--"  # RECHECK THIS
+706.2 "--Oracle targetable--"
 708.6 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
 714.9 "Darklit Dragonsong" Ability { id: "9D2F", source: "Usurper of Frost" }
 726.1 "Bright Hunger" Ability { id: "9D15", source: "Usurper of Frost" }
@@ -196,8 +196,8 @@ hideall "--sync--"
 760.8 "Morn Afah" Ability { id: "9D70", source: "Oracle of Darkness" }
 765.1 "--reposition--" Ability { id: "9CB5", source: "Oracle of Darkness" }
 776.3 "Crystallize Time" Ability { id: "9D30", source: "Usurper of Frost" }
-780.2 "--Usurper untargetable--" # RECHECK THIS
-781.3 "--Oracle untargetable--" # RECHECK THIS
+779.3 "--Usurper untargetable--"
+780.3 "--Oracle untargetable--"
 782.4 "Edge of Oblivion 3" Ability { id: "9CEE", source: "Fragment of Fate" }
 788.3 "Maelstrom (fast)" Ability { id: "9D6B" }
 789.3 "Dark Water III" Ability { id: "9D4F" }
@@ -216,7 +216,7 @@ hideall "--sync--"
 819.4 "Hallowed Wings 1" Ability { id: "9D8C", source: "Usurper of Frost" }
 824.0 "Hallowed Wings 2" Ability { id: "9D8C", source: "Usurper of Frost" }
 828.1 "--center--" Ability { id: "9CB5", source: "Oracle of Darkness" }
-829.5 "--targetable--" # RECHECK THIS
+829.4 "--targetable--"
 833.3 "Akh Morn (x5)" Ability { id: "9D6E", source: "Oracle of Darkness" } duration 3.9
 841.3 "Edge of Oblivion 4" Ability { id: "9CEE", source: "Fragment of Fate" }
 843.3 "Morn Afah" Ability { id: "9D70", source: "Oracle of Darkness" }
@@ -226,8 +226,8 @@ hideall "--sync--"
 # Phase Five
 956.0 "--sync--" AddedCombatant { name: "Pandora" } window 250,0
 962.3 "(stun + cutscene)" GainsEffect { effectId: "968" }
-1030.0 "--targetable--" # RECHECK THIS
-1035.0 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 100,20
+1029.8 "--targetable--"
+1035.0 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 10,10
 1041.0 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
 1052.0 "The Path of Darkness + The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 21.9
 1067.8 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
