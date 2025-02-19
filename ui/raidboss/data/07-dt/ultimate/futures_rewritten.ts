@@ -1994,6 +1994,8 @@ const triggerSet: TriggerSet<Data> = {
           return;
         else if (baitPlayers.length !== 4 || towerPlayers.length !== 4)
           return { alertText: output[myMech]!() };
+        else if (!isHealerPlantNW)
+          return { alertText: output[myMech]!() };
 
         // Identify the tethered player with the stack marker.
         const towerStackPlayer = data.p4DarklitStacks.filter((p) => towerPlayers.includes(p))[0];
