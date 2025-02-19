@@ -13,7 +13,7 @@ import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO:
-//  - P4: Somber Dance (busters)
+//  - P4: Somber Dance (busters), Edge of Oblivion aoes?
 //  - P5: All
 
 type Phase = 'p1' | 'p2-dd' | 'p2-mm' | 'p2-lr' | 'p3-ur' | 'p3-apoc' | 'p4-dld' | 'p4-ct' | 'p5';
@@ -1912,7 +1912,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'FRU PP4 Morn Afah',
+      id: 'FRU P4 Morn Afah',
       type: 'StartsUsing',
       netRegex: { id: '9D70', source: 'Oracle of Darkness', capture: false },
       alertText: (_data, _matches, output) => output.stack!(),
@@ -1951,7 +1951,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     // The logic for tether swaps, bait swaps, and possible stack swaps is fairly concise.
-    // It's not completely comprehensive (specifically, we can't determine which DPS need to flex
+    // It's not comprehensive (specifically, we can't determine which DPS need to flex
     // and when for the cone baits), but otherwise it's accurate.  See inline comments.
     {
       id: 'FRU P4 Darklit Tower / Bait',
@@ -2123,10 +2123,10 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          // default/fallthrough
-          stackOnYou: {
+          stackOnYou: { // default/fallthrough
             en: '(stack on you later)',
           },
+          // stack is on you
           stackOnYouNoSwap: {
             en: '(stack on you later - no swap)',
           },
@@ -2139,7 +2139,7 @@ const triggerSet: TriggerSet<Data> = {
           tankStackOnYouSwap: {
             en: 'Stacks: You swap w/ Melee/Flex',
           },
-          // stack on another (different role); may require you to swap
+          // stack on someone else (not your role), so you may be required to swap
           dpsStackOnHealerSwap: {
             en: 'Stacks: ${healer} swap w/ Ranged/Flex',
           },
@@ -2166,7 +2166,7 @@ const triggerSet: TriggerSet<Data> = {
         if (stackRole === undefined)
           return defaultOutput;
 
-        // Sanity check for TankFRU, or this trigger won't work
+        // Sanity check for non-standard party comp, or this trigger won't work
         const tankCount = baitPlayers.filter((p) => data.party.member(p)?.role === 'tank').length;
         const healerCount =
           baitPlayers.filter((p) => data.party.member(p)?.role === 'healer').length;
@@ -2180,7 +2180,7 @@ const triggerSet: TriggerSet<Data> = {
         const towerStackLoc = data.p4DarklitTowerStackLoc;
 
         // if stacks are already split N/S, no swaps required
-        // TODO: Could return an infoText indicating the bait with the stack doesn't need to swap?
+        // TODO: Could return an infoText indicating the baiter with the stack doesn't need to swap?
         if (baitStackLoc !== towerStackLoc)
           return isStackOnMe
             ? { infoText: output.stackOnYouNoSwap!() }
@@ -2258,7 +2258,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // For Crystallize Time, we can determine redWind (x2), blueWater, blueUnholy, and
     // blueEruption from a single debuff. But determining redIce (x2) and blueIce requires multiple
-    // debuffs. We need to collect both redIces and redWinds to output the other player.
+    // debuffs. We need to collect both redIces and redWinds to name the other player.
     {
       id: 'FRU P4 Crystallize Time Debuff Collect',
       type: 'GainsEffect',
@@ -2284,6 +2284,7 @@ const triggerSet: TriggerSet<Data> = {
           data.p4CTMyRole = 'blueUnholy';
         else if (debuff === 'eruption')
           data.p4CTMyRole = 'blueEruption';
+        // if redIce/blueIce, data.p4CTMyRole gets set in the Debuff trigger below.
       },
     },
     // Run once after collects are done; determine redIce/blueIce.
@@ -2401,12 +2402,13 @@ const triggerSet: TriggerSet<Data> = {
           return output.blue!({ mech: mechStr, dir: dirStr });
         }
 
-        // For redIce and redWind, we can't determine swap priorities, so we can only give a
+        // For redIce and redWind, we can't determine same-role swap priorities, so we can only give a
         // single directional output if we *know* no swap is required.  Otherwise, call both dirs.
         if (debuff === 'redIce') {
           const comboDirStr = `${output['dirE']!()} / ${output['dirW']!()}`;
           const sameDebuffRole = data.p4CTPartnerRole;
           const partyStackDirStr = output.partyStack!({ dir: output[stackDir]!() });
+
           if (sameDebuffRole === undefined || role === sameDebuffRole)
             return output.redIce!({ dir: comboDirStr, followup: partyStackDirStr });
 
@@ -2422,6 +2424,7 @@ const triggerSet: TriggerSet<Data> = {
             myDirNum = 2;
 
           const myDirStr = output[Directions.output8Dir[myDirNum] ?? 'unknown']!();
+          // if the redIce player is adjacent to the eruption player, they move north after
           const followupStr = Math.abs(myDirNum - spreadDirNum) === 1
             ? output.stackNorth!()
             : output.dodgeSouth!();
@@ -2431,6 +2434,7 @@ const triggerSet: TriggerSet<Data> = {
         if (debuff === 'redWind') {
           const comboDirStr = `${output['dirSE']!()} / ${output['dirSW']!()}`;
           const sameDebuffRole = data.p4CTPartnerRole;
+
           if (sameDebuffRole === undefined || role === sameDebuffRole)
             return comboDirStr;
 
