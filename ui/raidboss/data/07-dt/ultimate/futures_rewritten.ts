@@ -1915,6 +1915,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P4 Morn Afah',
       type: 'StartsUsing',
       netRegex: { id: '9D70', source: 'Oracle of Darkness', capture: false },
+      durationSeconds: 6,
       alertText: (_data, _matches, output) => output.stack!(),
       outputStrings: {
         stack: Outputs.getTogether,
@@ -2256,6 +2257,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'FRU P4 Crystallize Time',
       type: 'StartsUsing',
       netRegex: { id: '9D6A', source: 'Oracle of Darkness', capture: false },
+      delaySeconds: 3,
+      durationSeconds: 7,
       response: Responses.bigAoe(),
     },
     // For Crystallize Time, we can determine redWind (x2), blueWater, blueUnholy, and
@@ -2296,7 +2299,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: Object.keys(ctDebuffMap), capture: false },
       condition: (data) => data.phase === 'p4-ct',
       delaySeconds: 0.4,
-      durationSeconds: 7,
+      durationSeconds: 8,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         const debuff = data.p4CTMyRole;
@@ -2376,7 +2379,7 @@ const triggerSet: TriggerSet<Data> = {
       // the NE/SW or NW/SE pair are purple (slow).  We only need the northern purple stoplight.
       netRegex: { id: '0085' },
       condition: (data) => data.phase === 'p4-ct' && data.triggerSetConfig.ct === 'earlyPopSouth',
-      durationSeconds: 10.3,
+      durationSeconds: 9,
       alertText: (data, matches, output) => {
         const id = matches.sourceId;
         const stoplight = data.p4CTStoplights[id];
