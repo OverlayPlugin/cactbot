@@ -218,6 +218,7 @@ hideall "--sync--"
 856.5 "Memory's End + Absolute Zero (enrage)" Ability { id: ["9D71","9D35"] }
 
 # Cutscene
+# TODO: Replace `ActorControlExtra` sync with dialog packet for "You endure? ..." (once available from OP)
 956.0 "--sync--" ActorControlExtra { category: "0197", param1: "1E43" } window 150,5 # limited lookbehind due to re-use
 962.0 "(stun + cutscene)" Ability { id: "9D28" } window 962,5
 
