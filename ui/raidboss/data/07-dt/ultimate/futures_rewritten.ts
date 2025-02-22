@@ -1826,7 +1826,6 @@ const triggerSet: TriggerSet<Data> = {
         'Dark Water III + Hallowed Wings': '(cleave + stacks)',
         'Dark Blizzard III + Dark Eruption + Dark Aero III': '(donut + spread + KBs)',
         'The Path of Darkness + The Path of Light': '(exa-lines)',
-        'Cruel Path of Darkness + Cruel Path of Light': 'Polarizing Paths',
       },
     },
     {

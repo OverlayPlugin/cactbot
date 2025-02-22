@@ -236,11 +236,10 @@ hideall "--sync--"
 1086.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
 1089.9 "Wings Dark and Light + Explosion" Ability { id: "9D80", source: "Pandora" }
 1093.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
-1107.4 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" }
-1108.0 "Cruel Path of Darkness + Cruel Path of Light" Ability { id: "9D7D", source: "Pandora" } duration 2.5
-1112.0 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.5
-1116.6 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.5
-1121.2 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.5
+1107.4 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" } duration 2.7
+1112.0 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1116.6 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1121.2 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
 1141.7 "Pandora's Box" Ability { id: "9D86", source: "Pandora" }
 1153.8 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
 1164.9 "The Path of Darkness + The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 20.4
@@ -250,11 +249,10 @@ hideall "--sync--"
 1203.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
 1206.9 "Wings Dark and Light + Explosion" Ability { id: "9D80", source: "Pandora" }
 1210.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
-1219.2 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" }
-1219.8 "Cruel Path of Darkness + Cruel Path of Light" Ability { id: "9D7D", source: "Pandora" } duration 2.5
-1223.8 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.5
-1228.4 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.5
-1233.0 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.5
+1219.2 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" } duration 2.7
+1223.8 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1228.4 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1233.0 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
 1244.3 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
 1255.3 "The Path of Darkness + The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 20.4
 1271.3 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
