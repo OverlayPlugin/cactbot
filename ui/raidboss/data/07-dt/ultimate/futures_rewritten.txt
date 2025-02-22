@@ -63,9 +63,9 @@ hideall "--sync--"
 # Source actors are elided on some lines where stale data can make P1 actors fill it in.
 # Ability IDs should be sufficient in those cases.
 # Sync on the map change
-200.0 "--sync--" MapEffect { flags: "00020001", location: "17" } window 200.0,0
+200.0 "--sync--" MapEffect { flags: "00020001", location: "17" } window 200,5
 204.1 "--targetable--"
-210.3 "--sync--" StartsUsing { id: "9CFF", source: "Usurper of Frost" } window 210.3,0
+210.3 "--sync--" StartsUsing { id: "9CFF", source: "Usurper of Frost" }
 215.3 "Quadruple Slap 1" Ability { id: "9CFF", source: "Usurper of Frost" }
 219.4 "Quadruple Slap 2" Ability { id: "9D00", source: "Usurper of Frost" }
 224.5 "--jump south--" Ability { id: "9CEF", source: "Usurper of Frost" }
@@ -118,7 +118,7 @@ hideall "--sync--"
 # The Heimal Storm casts from the Crystals of Light will stop once they all are killed.
 392.4 "Swelling Frost" Ability { id: "9D21", source: "Usurper of Frost" }
 411.4 "--adds targetable--"
-424.4 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
+424.4 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" } window 424.4,2.5
 425.4 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 428.6 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 429.6 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
@@ -135,8 +135,8 @@ hideall "--sync--"
 455.7 "Endless Ice Age (enrage)" Ability { id: "9D43", source: "Ice Veil" } # interrupted once <50% HP
 
 # Phase Three
-488.8 "--sync--" WasDefeated { target: 'Ice Veil' } window 488.8,10
-500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500.0,5
+488.8 "--sync--" WasDefeated { target: 'Ice Veil' } window 488.8,5
+500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500,5
 514.3 "--targetable--"
 518.3 "Hell's Judgment" Ability { id: "9D49", source: "Oracle of Darkness" }
 521.4 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
@@ -169,7 +169,7 @@ hideall "--sync--"
 
 # Phase Four
 680.8 "--targetable--"
-686.3 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 10,10
+686.3 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 686.3,5
 689.2 "Materialization" Ability { id: "9D36", source: "Usurper of Frost" }
 700.4 "Drachen Armor" Ability { id: "9CFA" }
 702.9 "Akh Rhai" Ability { id: "9D2D", source: "Usurper of Frost" } duration 5.1
@@ -217,12 +217,13 @@ hideall "--sync--"
 846.5 "--sync--" StartsUsing { id: ["9D71", "9D35"] }
 856.5 "Memory's End + Absolute Zero (enrage)" Ability { id: ["9D71","9D35"] }
 
-# Phase Five
-956.0 "--sync--" AddedCombatant { name: "Pandora" } window 250,0
-956.0 "--sync--" ActorControlExtra { category: "0197", param1: "1E43" } window 150.0,0
-962.0 "(stun + cutscene)" Ability { id: "9D28" }
+# Cutscene
+956.0 "--sync--" ActorControlExtra { category: "0197", param1: "1E43" } window 150,5 # limited lookbehind due to re-use
+962.0 "(stun + cutscene)" Ability { id: "9D28" } window 962,5
+
+# Phase 5
 1029.6 "--targetable--"
-1034.9 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 10,10
+1034.9 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 1034.9,5
 1040.9 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
 
 # Depending on where the Path of Darkness/Light starts, the duration can range from 18.3s to 22.5s
