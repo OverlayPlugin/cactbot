@@ -223,8 +223,8 @@ hideall "--sync--"
 
 # Phase 5
 1029.6 "--targetable--"
-1034.9 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 1034.9,5
-1040.9 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
+1034.8 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 1034.8,5
+1040.8 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
 
 # Depending on where the Path of Darkness/Light starts, the duration can range from 18.3s to 22.5s
 # The tail end of this is largely irrelevant since the abilities are used at the far perimeter of the arena.
