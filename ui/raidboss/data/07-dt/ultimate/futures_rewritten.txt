@@ -219,7 +219,8 @@ hideall "--sync--"
 
 # Phase Five
 956.0 "--sync--" AddedCombatant { name: "Pandora" } window 250,0
-962.0 "(stun + cutscene)" GainsEffect { effectId: "968" }
+956.0 "--sync--" ActorControlExtra { category: "0197", param1: "1E43" } window 150.0,0
+962.0 "(stun + cutscene)" Ability { id: "9D28" }
 1029.6 "--targetable--"
 1034.9 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 10,10
 1040.9 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
