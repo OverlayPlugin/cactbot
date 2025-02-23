@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.33.7",
-  "releaseSummary": "cn 7.1 support, i18n",
+  "version": "0.33.8",
+  "releaseSummary": "UCOB cleanup, FRU P4 triggers, FRU P4+P5 timeline",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",

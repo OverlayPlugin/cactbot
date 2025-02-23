@@ -87,6 +87,14 @@ export default class EmulatorCommon {
       if (Array.isArray(data)) {
         const ret = [];
         for (let i = 0; i < data.length; ++i) {
+          // Don't clone completely empty entries in the array. This avoids issues
+          // with code like the following:
+          // let z = [];
+          // z[parseInt(matches.id)] = matches;
+          // `z` now has 0x40000000 "empty" entries that would otherwise be cloned
+          if (!(i in data))
+            continue;
+
           // Cloning any. See DataType definition above for reasoning.
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           ret[i] = EmulatorCommon._cloneData(data[i]);
