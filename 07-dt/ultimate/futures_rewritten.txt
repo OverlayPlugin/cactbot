@@ -2,7 +2,7 @@
 # ZoneId: 1238
 
 # -ii 9CB4 9CD8 9CD9 9CC9 9CCA 9CCC 9CCD 9CCF 9CE5 9CE6 9CE9 9CF0 9D0C 9D0E 9D13
-# -p 9CFF:215.3 9D22:500.0 9D72:940.7
+# -p 9CFF:215.3 9D22:500.0 9D72:1041.0
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -18,7 +18,6 @@ hideall "--sync--"
 28.5 "--center--" Ability { id: "9CED", source: "Fatebreaker" }
 35.2 "Utopian Sky" Ability { id: ["9CDA", "9CDB"], source: "Fatebreaker" }
 35.2 "--untargetable--"
-
 
 40.6 "Burn Mark" Ability { id: "9CE9", source: "Fatebreaker" }
 49.5 "--sync--" Ability { id: "9CDD", source: "Fatebreaker's Image" } # Blasting Zone castbar
@@ -64,9 +63,9 @@ hideall "--sync--"
 # Source actors are elided on some lines where stale data can make P1 actors fill it in.
 # Ability IDs should be sufficient in those cases.
 # Sync on the map change
-200.0 "--sync--" MapEffect { flags: "00020001", location: "17" } window 200.0,0
+200.0 "--sync--" MapEffect { flags: "00020001", location: "17" } window 200,5
 204.1 "--targetable--"
-210.3 "--sync--" StartsUsing { id: "9CFF", source: "Usurper of Frost" } window 210.3,0
+210.3 "--sync--" StartsUsing { id: "9CFF", source: "Usurper of Frost" }
 215.3 "Quadruple Slap 1" Ability { id: "9CFF", source: "Usurper of Frost" }
 219.4 "Quadruple Slap 2" Ability { id: "9D00", source: "Usurper of Frost" }
 224.5 "--jump south--" Ability { id: "9CEF", source: "Usurper of Frost" }
@@ -115,22 +114,17 @@ hideall "--sync--"
 376.2 "--center--" Ability { id: "9CEF", source: "Usurper of Frost" }
 390.1 "Absolute Zero (enrage)" Ability { id: "9D8D", source: "Usurper of Frost" }
 
-# Timeline entries below here are from FFLogs reports and should be re-generated with valid
-# network log files when they're available. Notably, mechanics with variations
-# (Twin Stillness/Twin Silence, for example) do not have both IDs included.
-# Additionally, like all FFLogs-generated timelines, the actual entries can vary significantly over time.
-
 # Adds Phase
 # The Heimal Storm casts from the Crystals of Light will stop once they all are killed.
 392.4 "Swelling Frost" Ability { id: "9D21", source: "Usurper of Frost" }
 411.4 "--adds targetable--"
-424.4 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
+424.4 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" } window 424.4,2.5
 425.4 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 428.6 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 429.6 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
 431.8 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
 434.7 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
-434.9 "Hiemal Storm" Ability { id: "9D40", source: "Crystal of Light" }
+434.9 "Hiemal Storm?" Ability { id: "9D40", source: "Crystal of Light" }
 438.1 "Hiemal Storm?" Ability { id: "9D40", source: "Crystal of Light" }
 439.9 "Sinbound Blizzard III" Ability { id: "9D42", source: "Crystal of Darkness" }
 441.3 "Hiemal Storm?" Ability { id: "9D40", source: "Crystal of Light" }
@@ -141,145 +135,130 @@ hideall "--sync--"
 455.7 "Endless Ice Age (enrage)" Ability { id: "9D43", source: "Ice Veil" } # interrupted once <50% HP
 
 # Phase Three
-488.8 "--sync--" WasDefeated { target: 'Ice Veil' } window 488.8,10
-500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500.0,5
+488.8 "--sync--" WasDefeated { target: 'Ice Veil' } window 488.8,5
+500.0 "Junction" Ability { id: "9D22", source: "Usurper of Frost" } window 500,5
 514.3 "--targetable--"
 518.3 "Hell's Judgment" Ability { id: "9D49", source: "Oracle of Darkness" }
 521.4 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
 532.4 "Ultimate Relativity" Ability { id: "9D4A", source: "Oracle of Darkness" }
-544.2 "Dark Fire III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
-549.3 "Sinbound Meltdown 1 (x10)" Ability { id: "9D2B" } duration 10.2
-554.0 "Dark Fire III/Dark Blizzard III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
-558.8 "Sinbound Meltdown 2 (x10)" Ability { id: "9D2B" } duration 10.2
-563.6 "Dark Fire III/Unholy Darkness" Ability { id: "9D54", source: "Oracle of Darkness" }
-569.3 "Sinbound Meltdown 3 (x10)" Ability { id: "9D2B" } duration 10.2
-572.5 "Stun + Rewind"
-575.0 "Shadoweye/Dark Water III/Dark Eruption" Ability { id: "9D56", source: "Oracle of Darkness" }
-578.6 "Shell Crusher" Ability { id: "9D5E", source: "Oracle of Darkness" }
-587.1 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
-595.5 "Black Halo" Ability { id: "9D62", source: "Oracle of Darkness" }
-604.6 "Spell-in-Waiting Refrain" Ability { id: "9D4D", source: "Oracle of Darkness" }
-619.7 "Apocalypse" Ability { id: "9D68", source: "Oracle of Darkness" }
-623.1 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
-624.8 "Spirit Taker" Ability { id: "9D60", source: "Oracle of Darkness" }
-628.0 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
-633.7 "Apocalypse (x6)" duration 10.0
-636.5 "Dark Eruption" Ability { id: "9D52", source: "Oracle of Darkness" }
-642.1 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
-644.4 "Darkest Dance (jump)" Ability { id: "9CF6", source: "Oracle of Darkness" }
-647.3 "Darkest Dance (knockback)" Ability { id: "9CF7", source: "Oracle of Darkness" }
-651.2 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
-656.6 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
-670.3 "Memory's End (enrage)" Ability { id: "9D6C", source: "Oracle of Darkness" }
+544.2 "Dark Fire III/Unholy Darkness" Ability { id: "9D54" }
+549.4 "Sinbound Meltdown 1 (x10)" Ability { id: "9D2B" } duration 10.2
+554.3 "Dark Fire III/Dark Blizzard III/Unholy Darkness" Ability { id: "9D54" }
+559.4 "Sinbound Meltdown 2 (x10)" Ability { id: "9D2B" } duration 10.2
+564.3 "Dark Fire III/Unholy Darkness" Ability { id: "9D54" }
+570.4 "Sinbound Meltdown 3 (x10)" Ability { id: "9D2B" } duration 10.2
+573.2 "(stun + rewind)" GainsEffect { effectId: "1043" }
+576.2 "Shadoweye/Dark Water III/Dark Eruption" Ability { id: "9D56" }
+580.1 "Shell Crusher" Ability { id: "9D5E", source: "Oracle of Darkness" }
+588.5 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
+596.8 "Black Halo" Ability { id: "9D62", source: "Oracle of Darkness" }
+605.9 "Spell-in-Waiting Refrain" Ability { id: "9D4D", source: "Oracle of Darkness" }
+621.2 "Apocalypse" Ability { id: "9D68", source: "Oracle of Darkness" }
+624.8 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
+626.3 "Spirit Taker" Ability { id: "9D60", source: "Oracle of Darkness" }
+629.5 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
+635.2 "Apocalypse (x6)" duration 10.0
+637.9 "Dark Eruption" Ability { id: "9D52", source: "Oracle of Darkness" }
+643.7 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
+646.0 "Darkest Dance (jump)" Ability { id: "9CF6", source: "Oracle of Darkness" }
+648.9 "Darkest Dance (knockback)" Ability { id: "9CF7", source: "Oracle of Darkness" }
+652.8 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
+658.2 "Shockwave Pulsar" Ability { id: "9D5A", source: "Oracle of Darkness" }
+672.0 "Memory's End (enrage)" Ability { id: "9D6C", source: "Oracle of Darkness" }
+675.4 "--untargetable--"
 
 # Phase Four
-679.3 "--targetable--"
-684.7 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 10,10
-687.4 "Materialization" Ability { id: "9D36", source: "Usurper of Frost" } window 10,0
-698.6 "Drachen Armor" Ability { id: "9CFA", source: "Usurper of Frost" }
-701.0 "Akh Rhai" Ability { id: "9D2D", source: "Usurper of Frost" } duration 5.1
-703.3 "Edge of Oblivion" Ability { id: "9CEE", source: "Fragment of Fate" }
-706.5 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
-706.5 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
-712.7 "Darklit Dragonsong" Ability { id: "9D2F", source: "Usurper of Frost" }
-723.8 "The Path of Light" Ability { id: "9CFB", source: "Usurper of Frost" }
-723.8 "Bright Hunger" Ability { id: "9D15", source: "Usurper of Frost" }
-724.7 "The Path of Light" Ability { id: "9CFE", source: "Usurper of Frost" }
-726.8 "Spirit Taker" Ability { id: "9D60", source: "Oracle of Darkness" }
-727.2 "Spirit Taker" Ability { id: "9D61", source: "Oracle of Darkness" }
-731.8 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
-731.8 "Hallowed Wings" Ability { id: "9D24", source: "Usurper of Frost" }
-734.9 "Somber Dance" Ability { id: "9D5B", source: "Oracle of Darkness" }
-735.1 "Somber Dance" Ability { id: "9D5C", source: "Oracle of Darkness" }
-738.3 "Somber Dance" Ability { id: "9D5D", source: "Oracle of Darkness" }
-741.7 "Edge of Oblivion" Ability { id: "9CEE", source: "Fragment of Fate" }
-742.8 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
-742.8 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
-748.0 "Akh Morn (x5)" Ability { id: "9D6E", source: "Oracle of Darkness" } duration 3.9
-757.9 "Morn Afah" Ability { id: "9D70", source: "Oracle of Darkness" }
-762.2 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
-762.2 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
-773.4 "Crystallize Time" Ability { id: "9D30", source: "Usurper of Frost" }
-779.4 "Edge of Oblivion" Ability { id: "9CEE", source: "Fragment of Fate" }
-783.1 "Speed/Quicken/Slow" Ability { id: "9D65", source: "Oracle of Darkness" }
-785.2 "Maelstrom" Ability { id: "9D6B", source: "Sorrow's Hourglass" }
-786.2 "Dark Water III" Ability { id: "9D4F", source: "Oracle of Darkness" }
-787.6 "Longing of the Lost" #Ability { id: "9D31", source: "Drachen Wanderer" }
-788.0 "Dark Aero III" Ability { id: "9D58", source: "Oracle of Darkness" }
-788.0 "Dark Eruption" Ability { id: "9D52", source: "Oracle of Darkness" }
-788.0 "Dark Blizzard III" Ability { id: "9D57", source: "Oracle of Darkness" }
-790.1 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
-790.5 "Maelstrom" Ability { id: "9D6B", source: "Sorrow's Hourglass" }
-790.9 "Unholy Darkness" Ability { id: "9D55", source: "Oracle of Darkness" }
-792.9 "Longing of the Lost" #Ability { id: "9D31", source: "Drachen Wanderer" }
-794.2 "Tidal Light (x4)" Ability { id: "9D3B", source: "Usurper of Frost" } duration 6
-795.2 "Maelstrom" Ability { id: "9D6B", source: "Sorrow's Hourglass" }
-796.2 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
-800.3 "Tidal Light" Ability { id: "9D3B", source: "Usurper of Frost" } duration 6
-804.3 "Quietus" Ability { id: "9D59", source: "Oracle of Darkness" }
-807.6 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
-809.6 "Spirit Taker" Ability { id: "9D60", source: "Oracle of Darkness" }
-810.0 "Spirit Taker" Ability { id: "9D61", source: "Oracle of Darkness" }
-813.8 "Hallowed Wings (cast)" Ability { id: "9D25", source: "Usurper of Frost" }
-815.8 "Hallowed Wings (damage)" Ability { id: "9D8C", source: "Usurper of Frost" }
-818.4 "Hallowed Wings (cast)" Ability { id: "9D26", source: "Usurper of Frost" }
-820.4 "Hallowed Wings (damage)" Ability { id: "9D8C", source: "Usurper of Frost" }
-824.4 "--sync--" Ability { id: "9CB5", source: "Oracle of Darkness" }
-824.4 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
-829.7 "Akh Morn (x5)" Ability { id: "9D6E", source: "Oracle of Darkness" } duration 3.9
-837.5 "Edge of Oblivion" Ability { id: "9CEE", source: "Fragment of Fate" }
-839.6 "Morn Afah" Ability { id: "9D70", source: "Oracle of Darkness" }
-851.5 "--sync--" Ability { id: "9D27", source: "Usurper of Frost" }
-852.4 "--sync--" Ability { id: "9D28", source: "Usurper of Frost" }
+680.8 "--targetable--"
+686.3 "--sync--" StartsUsing { id: "9D36", source: "Usurper of Frost" } window 686.3,5
+689.2 "Materialization" Ability { id: "9D36", source: "Usurper of Frost" }
+700.4 "Drachen Armor" Ability { id: "9CFA" }
+702.9 "Akh Rhai" Ability { id: "9D2D", source: "Usurper of Frost" } duration 5.1
+705.4 "Edge of Oblivion 1" Ability { id: "9CEE", source: "Fragment of Fate" }
+706.2 "--Oracle targetable--"
+708.6 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
+714.9 "Darklit Dragonsong" Ability { id: "9D2F", source: "Usurper of Frost" }
+726.1 "Bright Hunger" Ability { id: "9D15", source: "Usurper of Frost" }
+727.0 "The Path of Light" Ability { id: "9CFE", source: "Usurper of Frost" }
+729.1 "Spirit Taker (jump)" Ability { id: "9D60", source: "Oracle of Darkness" }
+729.5 "Spirit Taker (damage)" Ability { id: "9D61", source: "Oracle of Darkness" }
+734.1 "Dark Water III + Hallowed Wings" Ability { id: "9D4F" }
+737.7 "Somber Dance (far)" Ability { id: "9D5C", source: "Oracle of Darkness" }
+741.0 "Somber Dance (close)" Ability { id: "9D5D", source: "Oracle of Darkness" }
+744.4 "Edge of Oblivion 2" Ability { id: "9CEE", source: "Fragment of Fate" }
+745.4 "--Oracle center--" Ability { id: "9CB5", source: "Oracle of Darkness" }
+750.7 "Akh Morn (x5)" Ability { id: "9D6E", source: "Oracle of Darkness" } duration 3.9
+760.8 "Morn Afah" Ability { id: "9D70", source: "Oracle of Darkness" }
+765.1 "--reposition--" Ability { id: "9CB5", source: "Oracle of Darkness" }
+776.3 "Crystallize Time" Ability { id: "9D30", source: "Usurper of Frost" }
+779.3 "--Usurper untargetable--"
+780.3 "--Oracle untargetable--"
+782.4 "Edge of Oblivion 3" Ability { id: "9CEE", source: "Fragment of Fate" }
+788.3 "Maelstrom (fast)" Ability { id: "9D6B" }
+789.3 "Dark Water III" Ability { id: "9D4F" }
+791.3 "Dark Blizzard III + Dark Eruption + Dark Aero III" Ability { id: "9D57" }
+793.4 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
+793.9 "Maelstrom (normal)" Ability { id: "9D6B" }
+794.3 "Unholy Darkness" Ability { id: "9D55" }
+797.7 "Tidal Light (x4)" Ability { id: "9D3B" } duration 6
+798.8 "Maelstrom (slow)" Ability { id: "9D6B" }
+799.8 "--sync--" Ability { id: "9CEF", source: "Usurper of Frost" }
+804.0 "Tidal Light (x4)" Ability { id: "9D3B" } duration 6
+808.2 "Quietus" Ability { id: "9D59", source: "Oracle of Darkness" }
+810.2 "(rewind drop)"
+813.8 "Spirit Taker" Ability { id: "9D61", source: "Oracle of Darkness" }
+817.2 "(stun + rewind)"
+819.4 "Hallowed Wings 1" Ability { id: "9D8C", source: "Usurper of Frost" }
+824.0 "Hallowed Wings 2" Ability { id: "9D8C", source: "Usurper of Frost" }
+828.1 "--center--" Ability { id: "9CB5", source: "Oracle of Darkness" }
+829.4 "--targetable--"
+833.3 "Akh Morn (x5)" Ability { id: "9D6E", source: "Oracle of Darkness" } duration 3.9
+841.3 "Edge of Oblivion 4" Ability { id: "9CEE", source: "Fragment of Fate" }
+843.3 "Morn Afah" Ability { id: "9D70", source: "Oracle of Darkness" }
+846.5 "--sync--" StartsUsing { id: ["9D71", "9D35"] }
+856.5 "Memory's End + Absolute Zero (enrage)" Ability { id: ["9D71","9D35"] }
 
-# Phase five
-930.0 "--targetable--"
-935.0 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 935.0,0
-940.7 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
-951.8 "The Path of Darkness/The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 21.9
-967.2 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
-967.2 "Akh Morn" Ability { id: "9D77", source: "Pandora" }
-967.2 "Akh Morn" Ability { id: "9D78", source: "Pandora" }
-975.4 "Paradise Regained" Ability { id: "9D7F", source: "Pandora" }
-985.4 "Wings Dark and Light" Ability { id: "9D79", source: "Pandora" }
-985.7 "Wings Dark and Light" Ability { id: "9D7A", source: "Pandora" }
-985.7 "Explosion" Ability { id: "9D80", source: "Pandora" }
-986.5 "Wings Dark and Light" Ability { id: "9BC7", source: "Pandora" }
-989.3 "Explosion" Ability { id: "9D80", source: "Pandora" }
-989.3 "Wings Dark and Light" Ability { id: "9D7B", source: "Pandora" }
-990.2 "Wings Dark and Light" Ability { id: "9BC8", source: "Pandora" }
-992.8 "Explosion" Ability { id: "9D80", source: "Pandora" }
-1006.9 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" }
-1007.5 "Cruel Path of Darkness/Cruel Path of Light" Ability { id: "9D7D", source: "Pandora" } duration 15.9
-1011.5 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" }
-1016.1 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" }
-1020.7 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" }
-1040.9 "Pandora's Box" Ability { id: "9D86", source: "Pandora" }
-1053.0 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
-1064.1 "The Path of Darkness/The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 19.7
-1079.3 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
-1079.3 "Akh Morn" Ability { id: "9D77", source: "Pandora" }
-1079.3 "Akh Morn" Ability { id: "9D78", source: "Pandora" }
-1091.5 "Paradise Regained" Ability { id: "9D7F", source: "Pandora" }
-1101.5 "Wings Dark and Light" Ability { id: "9D29", source: "Pandora" }
-1101.8 "Explosion" Ability { id: "9D80", source: "Pandora" }
-1101.8 "Wings Dark and Light" Ability { id: "9D7B", source: "Pandora" }
-1102.7 "Wings Dark and Light" Ability { id: "9BC8", source: "Pandora" }
-1105.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
-1105.6 "Wings Dark and Light" Ability { id: "9D7A", source: "Pandora" }
-1106.5 "Wings Dark and Light" Ability { id: "9BC7", source: "Pandora" }
-1108.9 "Explosion" Ability { id: "9D80", source: "Pandora" }
-1117.8 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" }
-1118.4 "Cruel Path of Darkness/Cruel Path of Light" Ability { id: "9D7D", source: "Pandora" } duration 16.2
-1122.5 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" }
-1127.2 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" }
-1131.9 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" }
-1143.1 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
-1154.2 "The Path of Darkness/The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 17.7
-1169.4 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
-1169.4 "Akh Morn" Ability { id: "9D77", source: "Pandora" }
-1169.4 "Akh Morn" Ability { id: "9D78", source: "Pandora" }
-1189.6 "Paradise Lost" Ability { id: "9D87", source: "Pandora" }
+# Cutscene
+# TODO: Replace `ActorControlExtra` sync with dialog packet for "You endure? ..." (once available from OP)
+956.0 "--sync--" ActorControlExtra { category: "0197", param1: "1E43" } window 150,5 # limited lookbehind due to re-use
+962.0 "(stun + cutscene)" Ability { id: "9D28" } window 962,5
+
+# Phase 5
+1029.6 "--targetable--"
+1034.8 "--sync--" StartsUsing { id: "9D72", source: "Pandora" } window 1034.8,5
+1040.8 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
+
+# Depending on where the Path of Darkness/Light starts, the duration can range from 18.3s to 22.5s
+# The tail end of this is largely irrelevant since the abilities are used at the far perimeter of the arena.
+# But to simplify, use a duration of 20.4 (the midpoint).
+1052.0 "The Path of Darkness + The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 20.4
+1067.8 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
+1076.0 "Paradise Regained" Ability { id: "9D7F", source: "Pandora" }
+1086.0 "Wings Dark and Light" Ability { id: ["9D29", "9D79"], source: "Pandora" }
+1086.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
+1089.9 "Wings Dark and Light + Explosion" Ability { id: "9D80", source: "Pandora" }
+1093.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
+1107.4 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" } duration 2.7
+1112.0 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1116.6 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1121.2 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1141.7 "Pandora's Box" Ability { id: "9D86", source: "Pandora" }
+1153.8 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
+1164.9 "The Path of Darkness + The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 20.4
+1180.7 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
+1193.0 "Paradise Regained" Ability { id: "9D7F", source: "Pandora" }
+1203.0 "Wings Dark and Light" Ability { id: ["9D29", "9D79"], source: "Pandora" }
+1203.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
+1206.9 "Wings Dark and Light + Explosion" Ability { id: "9D80", source: "Pandora" }
+1210.4 "Explosion" Ability { id: "9D80", source: "Pandora" }
+1219.2 "Polarizing Strikes" Ability { id: "9D7C", source: "Pandora" } duration 2.7
+1223.8 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1228.4 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1233.0 "Polarizing Paths" Ability { id: "9D2A", source: "Pandora" } duration 2.7
+1244.3 "Fulgent Blade" Ability { id: "9D72", source: "Pandora" }
+1255.3 "The Path of Darkness + The Path of Light" Ability { id: "9CB6", source: "Pandora" } duration 20.4
+1271.3 "Akh Morn" Ability { id: "9D76", source: "Pandora" }
+1279.8 "--sync--" StartsUsing { id: "9D88", source: "Pandora" }
+1301.3 "Paradise Lost (enrage)" Ability { id: "9D88", source: "Pandora" }
 
 # IGNORED ABILITIES
 # Fatebreaker
