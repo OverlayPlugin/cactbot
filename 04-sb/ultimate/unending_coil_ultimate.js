@@ -149,9 +149,12 @@ Options.Triggers.push({
       comment: {
         en:
           `With a tower at Nael being position 1, rotating clockwise, your tower position. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> is position 7.`,
+        ko:
+          `넬 밑의 기둥을 위치 1이라 했을 때, 시계 방향으로 세었을 때 당신의 위치. 즉, <a href="https://clees.me/guides/ucob/" target="_blank">Clees 가이드</a>에서 H1의 위치는 7.`,
       },
       name: {
         en: 'P3 Heavensfall Tower Position',
+        ko: '3페이즈 천지붕괴 기둥 위치',
       },
       type: 'select',
       options: {
@@ -165,6 +168,17 @@ Options.Triggers.push({
           'Position 6': '5',
           'Position 7': '6',
           'Position 8': '7',
+        },
+        ko: {
+          '비활성화': 'disabled',
+          '위치 1': '0',
+          '위치 2': '1',
+          '위치 3': '2',
+          '위치 4': '3',
+          '위치 5': '4',
+          '위치 6': '5',
+          '위치 7': '6',
+          '위치 8': '7',
         },
       },
       default: 'disabled',
@@ -1257,9 +1271,11 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         twinOnPlayer: {
           en: '${player} Bait Twin (${dir})',
+          ko: '${player} 트윈타니아 유도 (${dir})',
         },
         twinOnUnknown: {
           en: '${unknown} Bait Twin (${dir})',
+          ko: '${unknown} 트윈타니아 유도 (${dir})',
         },
       },
     },
@@ -1595,6 +1611,7 @@ Options.Triggers.push({
       outputStrings: {
         tower: {
           en: 'Tower: ${dir}',
+          ko: '기둥: ${dir}',
         },
         ...Directions.outputStrings16Dir,
       },
@@ -1838,9 +1855,11 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         text: {
           en: 'Exaflares ${dir1} -> ${dir2}',
+          ko: '엑사플레어 ${dir1} -> ${dir2}',
         },
         tts: {
           en: 'Exaflares ${dir1} towards ${dir2}',
+          ko: '엑사플레어 ${dir1}에서 ${dir2}',
         },
       },
     },
@@ -1852,6 +1871,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Spread (Enrage)',
+          ko: '산개 (전멸기)',
         },
       },
     },
@@ -2176,7 +2196,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': '바하무트 프라임',
         'Fang Of Light': '빛의 송곳니',
@@ -2220,8 +2239,10 @@ Options.Triggers.push({
         'Heavensfall Trio': '천지의 3중주',
         'Heavensfall(?! )': '천지붕괴(?! )',
         'Hypernova': '초신성',
+        'Iron Chariot': '강철 전차',
         'Liquid Hell': '지옥의 늪',
         'Lunar Dive': '달 강하',
+        'Lunar Dynamo': '달의 원동력',
         '(?<! )Marker(?!\\w)': '징',
         'Megaflare(?! Dive)': '메가플레어',
         'Megaflare Dive': '메가플레어 다이브',
@@ -2233,6 +2254,7 @@ Options.Triggers.push({
         'Plummet(?!\/)': '곤두박질',
         'Quickmarch Trio': '진군의 3중주',
         'Random Combo Attack': '랜덤 콤보 공격',
+        'Raven(\'s)? Dive': '흉조의 강하',
         '(?<!\/)Ravensbeak': '흉조의 부리',
         'Seventh Umbral Era': '제7재해',
         'Spread': '산개',
