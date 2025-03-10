@@ -10282,6 +10282,7 @@ const data: ZoneInfoType = {
     'contentType': 28,
     'exVersion': 5,
     'name': {
+      'cn': '光暗未来绝境战',
       'de': 'Eine zweite Zukunft (fatal)',
       'en': 'Futures Rewritten (Ultimate)',
       'fr': 'Avenirs réécrits (fatal)',
