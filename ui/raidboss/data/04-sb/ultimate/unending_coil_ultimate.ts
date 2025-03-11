@@ -218,7 +218,7 @@ const triggerSet: TriggerSet<Data> = {
         en:
           `With a tower at Nael being position 1, rotating clockwise, your tower position. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> is position 7.`,
         cn:
-          `以奈尔所在的塔为 1 号位时, 顺时针找塔。  例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 号位。`,
+          `以奈尔所在的塔为 1 号位时, 顺时针找塔。例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 号位。`,
         ko:
           `넬 밑의 기둥을 위치 1이라 했을 때, 시계 방향으로 세었을 때 당신의 위치. 즉, <a href="https://clees.me/guides/ucob/" target="_blank">Clees 가이드</a>에서 H1의 위치는 7.`,
       },
@@ -2300,8 +2300,10 @@ const triggerSet: TriggerSet<Data> = {
         'Heavensfall Trio': '天地的三重奏',
         'Heavensfall(?! )': '天崩地裂',
         'Hypernova': '超新星',
+        'Iron Chariot': '钢铁战车',
         'Liquid Hell': '液体地狱',
         'Lunar Dive': '月流冲',
+        'Lunar Dynamo': '月流电圈',
         '(?<! )Marker(?!\\w)': '标记',
         'Megaflare(?! Dive)': '百万核爆',
         'Megaflare Dive': '百万核爆冲',
@@ -2313,6 +2315,7 @@ const triggerSet: TriggerSet<Data> = {
         'Plummet(?!\/)': '垂直下落',
         'Quickmarch Trio': '进军的三重奏',
         'Random Combo Attack': '随机连招',
+        'Raven(\'s)? Dive': '凶鸟冲',
         '(?<!\/)Ravensbeak': '凶鸟尖喙',
         'Seventh Umbral Era': '第七灵灾',
         'Spread': '分散',

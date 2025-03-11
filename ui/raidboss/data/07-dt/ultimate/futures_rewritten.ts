@@ -3224,7 +3224,7 @@ const triggerSet: TriggerSet<Data> = {
         'Black Halo': '黑色光环',
         'Speed': '限速',
         'Quicken': '神速',
-        'Slow': '减速',
+        '(?<!\\()Slow(?<!\\))': '减速',
         'Apocalypse': '启示',
         'Maelstrom': '巨漩涡',
         'Memory\'s End': '记忆终结',
