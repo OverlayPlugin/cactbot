@@ -127,15 +127,21 @@ Options.Triggers.push({
       comment: {
         en:
           `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        cn: `总是远离,·180°·顺时针:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin<a>`,
       },
       name: {
         en: 'P2 Diamond Dust / Sinbound Holy',
+        cn: 'P2 钻石星尘 / 罪神圣',
       },
       type: 'select',
       options: {
         en: {
           'Always Away, Cursed Clockwise': 'aacc',
           'Call Add Position Only': 'addposonly',
+        },
+        cn: {
+          '总是远离, 180° 顺时针': 'aacc',
+          '仅播报分身位置': 'addposonly',
         },
       },
       default: 'aacc', // `addposonly` is not super helpful, and 'aacc' seems to be predominant
@@ -147,15 +153,23 @@ Options.Triggers.push({
           `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
           Directional output is true north (i.e., "east" means actual east,
           not wherever is east of the "Y" north spot).`,
+        cn:
+          `Y 北, DPS 东-西南, T奶 西-东北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
+          方向输出为真北 (即 “东”表示实际的东, 而不是相对于 “Y” 北的东)。`,
       },
       name: {
         en: 'P3 Ultimate Relativity',
+        cn: 'P3 时间压缩·绝',
       },
       type: 'select',
       options: {
         en: {
           'Y North, DPS E-SW, Supp W-NE': 'yNorthDPSEast',
           'Call Debuffs w/ No Positions': 'none',
+        },
+        cn: {
+          'Y 北, DPS 东-西南, T奶 西-东北': 'yNorthDPSEast',
+          '仅播报 Debuff, 不播报方位': 'none',
         },
       },
       default: 'yNorthDPSEast',
@@ -165,15 +179,22 @@ Options.Triggers.push({
       comment: {
         en:
           `DPS NE->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        cn:
+          `DPS 东北->南, T奶 西南->北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
       },
       name: {
         en: 'P3 Apocalypse',
+        cn: 'P3 启示',
       },
       type: 'select',
       options: {
         en: {
           'DPS NE->S, Support SW->N': 'dpsNE-CW',
           'Call All Safe': 'none',
+        },
+        cn: {
+          'DPS 东北->南, T奶 西南->北': 'dpsNE-CW',
+          '播报所有安全区': 'none',
         },
       },
       default: 'dpsNE-CW',
@@ -183,15 +204,21 @@ Options.Triggers.push({
       comment: {
         en:
           `Role Quadrants, Healer Plant NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        cn: `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin<a>`,
       },
       name: {
         en: 'P4 Darklit Dragonsong',
+        cn: 'P4 光与暗的龙诗',
       },
       type: 'select',
       options: {
         en: {
           'Role Quads, Healer Plant NW': 'healerPlantNW',
           'Call Tower/Cone Only': 'none',
+        },
+        cn: {
+          '按职能四分组, 奶妈在西北': 'healerPlantNW',
+          '仅播报塔/扇形': 'none',
         },
       },
       default: 'healerPlantNW',
@@ -201,15 +228,21 @@ Options.Triggers.push({
       comment: {
         en:
           `Early Pop, Winds South: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        cn: `龙头早撞, 风南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
       },
       name: {
         en: 'P4 Crystallize Time',
+        cn: 'P4 时间结晶',
       },
       type: 'select',
       options: {
         en: {
           'Early Pop, Winds South': 'earlyPopSouth',
           'Call Initial Debuffs Only': 'none',
+        },
+        cn: {
+          '龙头早撞, 风南': 'earlyPopSouth',
+          '仅播报初始 Debuff': 'none',
         },
       },
       default: 'earlyPopSouth',
@@ -500,6 +533,7 @@ Options.Triggers.push({
           },
           onYou: {
             en: 'On YOU',
+            cn: '点名',
           },
           tether: {
             en: '${num}: ${elem} (${target})',
@@ -587,6 +621,7 @@ Options.Triggers.push({
           onTarget: Outputs.tankBusterOnPlayer,
           busterCleanse: {
             en: '${buster} (Cleanse?)',
+            cn: '${buster} (驱散?)',
           },
         };
         const onTarget = output.onTarget({ player: data.party.member(matches.target) });
@@ -752,20 +787,25 @@ Options.Triggers.push({
       outputStrings: {
         aaccCursed: {
           en: 'Cursed - Fast Clockwise',
+          cn: '180° - 快速顺时针',
         },
         aaccRotateCCW: Outputs.counterclockwise,
         aaccRotateCW: Outputs.clockwise,
         same: {
           en: 'Cursed - Add on knockback',
+          cn: '180° - 分身在脚下',
         },
         opposite: {
           en: 'Cursed - Add opposite you',
+          cn: '180° - 分身在对面',
         },
         clockwise: {
           en: 'Add is clockwise',
+          cn: '分身在顺时针',
         },
         counterclockwise: {
           en: 'Add is counterclockwise',
+          cn: '分身在逆时针',
         },
       },
     },
@@ -790,6 +830,7 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           aaccSilence: {
             en: '(stay in front)',
+            cn: '(待在正面)',
           },
           silence: Outputs.front,
           stillness: Outputs.back,
@@ -1659,6 +1700,7 @@ Options.Triggers.push({
           stacks: Outputs.stacks,
           stacksSwap: {
             en: '${stacks} (Swapped)',
+            cn: '${stacks} (换位后)',
           },
         };
         const stacksStr = output.stacks();
@@ -1715,6 +1757,7 @@ Options.Triggers.push({
         },
         kbStacksSwap: {
           en: '${kbStacks} (Swapped)',
+          cn: '${kbStacks} (换位后)',
         },
       },
     },
@@ -1801,21 +1844,27 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           towerNoSwap: {
             en: 'Tower (no swaps)',
+            cn: '塔 (无换位)',
           },
           towerOtherSwap: {
             en: 'Tower (${p1} + ${p2} swap)',
+            cn: '塔 (${p1} + ${p2} 换位)',
           },
           towerYouSwap: {
             en: 'Tower (swap w/${player})',
+            cn: '塔 (与 ${player} 换位)',
           },
           tower: {
             en: 'Tower',
+            cn: '塔',
           },
           bait: {
             en: 'Bait Cone',
+            cn: '诱导扇形',
           },
           baitDPS: {
             en: 'Bait Cone (w/ ${otherDps})',
+            cn: '诱导扇形 (与 ${otherDps})',
           },
         };
         const isHealerPlantNW = data.triggerSetConfig.darklit === 'healerPlantNW';
@@ -1950,29 +1999,37 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           stackOnYou: {
             en: '(stack on you later)',
+            cn: '(稍后分摊点名)',
           },
           // stack is on you
           stackOnYouNoSwap: {
             en: '(stack on you later - no swap)',
+            cn: '(稍后分摊点名 - 不换位)',
           },
           dpsStackOnYouSwap: {
             en: 'Stacks: You swap w/ Support',
+            cn: '分摊: 与T/奶换位',
           },
           healerStackOnYouSwap: {
             en: 'Stacks: You swap w/ Ranged/Flex',
+            cn: '分摊: 与远程/灵活位换位',
           },
           tankStackOnYouSwap: {
             en: 'Stacks: You swap w/ Melee/Flex',
+            cn: '分摊: 与近战/灵活位换位',
           },
           // stack on someone else (not your role), so you may be required to swap
           dpsStackOnHealerSwap: {
             en: 'Stacks: ${healer} swap w/ Ranged/Flex',
+            cn: '分摊: ${healer} 与远程/灵活位换位',
           },
           dpsStackOnTankSwap: {
             en: 'Stacks: ${tank} swap w/ Melee/Flex',
+            cn: '分摊: ${tank} 与近战/灵活位换位',
           },
           supportStackOnDpsSwap: {
             en: 'Stacks: ${dps} swap w/ Support',
+            cn: '分摊: ${dps} 与T/奶换位',
           },
         };
         const isHealerPlantNW = data.triggerSetConfig.darklit === 'healerPlantNW';
@@ -2060,6 +2117,7 @@ Options.Triggers.push({
       outputStrings: {
         combo: {
           en: '${dir} => ${stacks}',
+          cn: '${dir} => ${stacks}',
         },
         east: Outputs.east,
         west: Outputs.west,
@@ -2145,27 +2203,35 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${debuff} on You',
+          cn: '${debuff} 点名',
         },
         comboText: {
           en: '${debuff} (w/ ${player})',
+          cn: '${debuff} (与 ${player})',
         },
         redIce: {
           en: 'Red Ice',
+          cn: '短红',
         },
         redWind: {
           en: 'Wind/Aero',
+          cn: '长红',
         },
         blueIce: {
           en: 'Blue Ice',
+          cn: '蓝冰',
         },
         blueWater: {
           en: 'Water (stack)',
+          cn: '水 (分摊)',
         },
         blueUnholy: {
           en: 'Unholy (stack)',
+          cn: '圣 (分摊)',
         },
         blueEruption: {
           en: 'Eruption (spread)',
+          cn: '暗 (分散)',
         },
         unknown: Outputs.unknown,
       },
@@ -2253,19 +2319,24 @@ Options.Triggers.push({
       outputStrings: {
         blue: {
           en: '${mech} (${dir})',
+          cn: '${mech} (${dir})',
         },
         redIce: {
           en: '${dir} ${followup}',
+          cn: '${dir} ${followup}',
         },
         dodgeSouth: {
           en: '(dodge S after)',
+          cn: '(稍后避开下)',
         },
         stackNorth: {
           en: '(stack N after)',
+          cn: '(稍后去上分摊)',
         },
         // used if there is a role-flex and we don't know whether they are E or W.
         partyStack: {
           en: '(party stack is ${dir})',
+          cn: '(在 ${dir} 全员分摊)',
         },
         spread: Outputs.spread,
         stack: Outputs.getTogether,
@@ -2293,12 +2364,15 @@ Options.Triggers.push({
       outputStrings: {
         cleanseSpot: {
           en: 'Cleanse: ${spot}',
+          cn: '净化: ${spot}',
         },
         cleanse: {
           en: 'Cleanse',
+          cn: '净化',
         },
         avoidCleanse: {
           en: 'Avoid cleanse puddles',
+          cn: '避开净化圈',
         },
         blueWater: Directions.outputStrings8Dir.dirSE,
         blueUnholy: Directions.outputStrings8Dir.dirE,
@@ -2341,6 +2415,7 @@ Options.Triggers.push({
       outputStrings: {
         rewind: {
           en: 'Drop Rewind: ${spot}',
+          cn: '放置回返: ${spot}',
         },
         unknown: Outputs.unknown,
         ...Directions.outputStringsIntercardDir,
@@ -2355,6 +2430,7 @@ Options.Triggers.push({
       outputStrings: {
         spreadAvoid: {
           en: 'Spread -- Avoid crystal',
+          cn: '分摊 -- 避开水晶',
         },
       },
     },
@@ -2782,6 +2858,166 @@ Options.Triggers.push({
         'Twin Poles': '光と闇の双剣技',
         'Pandora\'s Box': 'パンドラの櫃',
         'Cyckonic Break': 'サイクロニックブレイク',
+        'Fated Burn Mark': '死爆印',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Fatebreaker(?!\')': '绝命战士',
+        'Fatebreaker\'s Image': '绝命战士的幻影',
+        'Usurper of Frost': '希瓦·米特隆',
+        'Oracle\'s Reflection': '巫女的镜像',
+        'Ice Veil': '永久冰晶',
+        'Frozen Mirror': '冰面镜',
+        'Holy Light': '圣光',
+        'Crystal of Darkness': '暗水晶',
+        'Crystal of Light': '光水晶',
+        'Oracle of Darkness': '暗之巫女',
+        'Fragment of Fate': '未来的碎片',
+        'Sorrow\'s Hourglass': '悲伤的沙漏',
+        'Drachen Wanderer': '圣龙气息',
+        'Pandora': '潘多拉·米特隆',
+      },
+      'replaceText': {
+        '\\(cast\\)': '(咏唱)',
+        '\\(close\\)': '(近)',
+        '\\(damage\\)': '(伤害)',
+        '\\(far\\)': '(远)',
+        '\\(fast\\)': '(快)',
+        '\\(fire\\)': '(火)',
+        '\\(follow-up\\)': '(后续)',
+        '\\(group tower\\)': '(小队塔)',
+        '\\(jump\\)': '(跳)',
+        '\\(knockback\\)': '(击退)',
+        '\\(lightning\\)': '(雷)',
+        '\\(normal\\)': '(正常)',
+        '\\(puddles\\)': '(圈)',
+        '\\(rewind drop\\)': '(放置回返)',
+        '\\(slow\\)': '(慢)',
+        '\\(solo towers\\)': '(单人塔)',
+        '\\(stun \\+ cutscene\\)': '(眩晕 + 动画)',
+        '\\(stun \\+ rewind\\)': '(眩晕 + 回返)',
+        '\\(targeted\\)': '(定向)',
+        '--jump south--': '--跳南--',
+        '--Oracle center--': '--巫女中央--',
+        '--Oracle targetable--': '--巫女可选中--',
+        '--Oracle untargetable--': '--巫女不可选中--',
+        '--reposition--': '--归位--',
+        '--Usurper untargetable--': '--希瓦·米特隆不可选中--',
+        'Blastburn': '火燃爆',
+        'Blasting Zone': '爆破领域',
+        'Burn Mark': '爆印',
+        'Burnished Glory': '光焰圆光',
+        'Burnout': '雷燃爆',
+        'Burnt Strike': '燃烧击',
+        'Cyclonic Break': '暴风破',
+        'Explosion': '爆炸',
+        'Fall Of Faith': '罪壤断',
+        'Floating Fetters': '浮游拘束',
+        'Powder Mark Trail': '连锁爆印铭刻',
+        'Sinblaze': '罪冰焰',
+        'Sinbound Fire III': '罪爆炎',
+        'Sinbound Thunder III': '罪暴雷',
+        'Sinsmite': '罪雷',
+        'Sinsmoke': '罪炎',
+        'Turn Of The Heavens': '光轮召唤',
+        'Utopian Sky': '乐园绝技',
+        'the Path of Darkness': '暗之波动',
+        'Cruel Path of Light': '光之波涛',
+        'Cruel Path of Darkness': '暗之波涛',
+        'Icecrusher': '碎冰击',
+        'Unmitigated Explosion': '大爆炸',
+        'Solemn Charge': '急冲刺',
+        'Bow Shock': '弓形冲波',
+        'Brightfire': '光炎',
+        'Bound of Faith': '罪壤刺',
+        'Edge of Oblivion': '忘却的此岸',
+        'Mirror, Mirror': '镜中奇遇',
+        'Mirror Image': '镜中显影',
+        'Darkest Dance': '暗夜舞蹈',
+        'Frost Armor': '冰霜护甲',
+        'Shining Armor': '闪光护甲',
+        'Drachen Armor': '圣龙护甲',
+        'the Path of Light': '光之波动',
+        'the House of Light': '光之海啸',
+        'Quadruple Slap': '四剑斩',
+        'Twin Stillness': '静寂的双剑技',
+        'Twin Silence': '闲寂的双剑技',
+        'Diamond Dust': '钻石星尘',
+        'Icicle Impact': '冰柱冲击',
+        'Frigid Stone': '冰石',
+        'Frigid Needle': '冰针',
+        'Axe Kick': '阔斧回旋踢',
+        '(?<!Reflected )Scythe Kick': '镰形回旋踢',
+        'Reflected Scythe Kick': '连锁反射：镰形回旋踢',
+        'Heavenly Strike': '天降一击',
+        'Sinbound Holy': '罪神圣',
+        'Hallowed Ray': '神圣射线',
+        'Light Rampant': '光之失控',
+        'Bright Hunger': '侵蚀光',
+        'Inescapable Illumination': '曝露光',
+        'Refulgent Fate': '光之束缚',
+        'Lightsteep': '过量光',
+        'Powerful Light': '光爆',
+        'Luminous Hammer': '光流侵蚀',
+        'Burst': '爆炸',
+        'Banish III(?! )': '强放逐',
+        'Banish III Divided': '分裂强放逐',
+        'Absolute Zero': '绝对零度',
+        'Swelling Frost': '寒波',
+        'Junction': '融合',
+        'Hallowed Wings': '神圣之翼',
+        'Wings Dark and Light': '光与暗的孤翼',
+        'Polarizing Paths': '星灵之剑',
+        'Sinbound Meltdown': '罪熔毁',
+        'Sinbound Fire(?! )': '罪火炎',
+        'Akh Rhai': '天光轮回',
+        'Darklit Dragonsong': '光与暗的龙诗',
+        'Crystallize Time': '时间结晶',
+        'Longing of the Lost': '圣龙气息',
+        'Joyless Dragonsong': '绝望龙诗',
+        'Materialization': '赋形',
+        'Akh Morn': '死亡轮回',
+        'Morn Afah': '无尽顿悟',
+        'Tidal Light': '光之巨浪',
+        'Hiemal Storm': '严冬风暴',
+        'Hiemal Ray': '严冬射线',
+        'Sinbound Blizzard III': '罪冰封',
+        'Endless Ice Age': '光之泛滥',
+        'Depths of Oblivion': '忘却的彼岸',
+        'Memory Paradox': '记忆悖论',
+        'Paradise Lost': '失乐园',
+        'Hell\'s Judgment': '地狱审判',
+        'Ultimate Relativity': '时间压缩·绝',
+        'Return': '回返',
+        'Return IV': '强回返',
+        'Spell-in-Waiting Refrain': '延迟咏唱·递进',
+        'Dark Water III': '黑暗狂水',
+        'Dark Eruption': '暗炎喷发',
+        'Dark Fire III': '黑暗爆炎',
+        'Unholy Darkness': '黑暗神圣',
+        'Shadoweye': '暗影之眼',
+        'Dark Blizzard III': '黑暗冰封',
+        'Dark Aero III': '黑暗暴风',
+        'Quietus': '寂灭',
+        'Shockwave Pulsar': '脉冲星震波',
+        'Somber Dance': '真夜舞蹈',
+        'Shell Crusher': '破盾一击',
+        'Spirit Taker': '碎灵一击',
+        'Black Halo': '黑色光环',
+        'Speed': '限速',
+        'Quicken': '神速',
+        '(?<!\\()Slow(?<!\\))': '减速',
+        'Apocalypse': '启示',
+        'Maelstrom': '巨漩涡',
+        'Memory\'s End': '记忆终结',
+        'Fulgent Blade': '光尘之剑',
+        'Polarizing Strikes': '星灵之剑',
+        'Paradise Regained': '复乐园',
+        'Twin Poles': '光与暗的双剑技',
+        'Pandora\'s Box': '潘多拉魔盒',
+        'Cyckonic Break': '暴风破',
         'Fated Burn Mark': '死爆印',
       },
     },
