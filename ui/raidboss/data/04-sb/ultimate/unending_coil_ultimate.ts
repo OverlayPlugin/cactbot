@@ -217,11 +217,14 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en:
           `With a tower at Nael being position 1, rotating clockwise, your tower position. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> is position 7.`,
+        cn:
+          `以奈尔所在的塔为 1 号位时, 顺时针找塔。  例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 号位。`,
         ko:
           `넬 밑의 기둥을 위치 1이라 했을 때, 시계 방향으로 세었을 때 당신의 위치. 즉, <a href="https://clees.me/guides/ucob/" target="_blank">Clees 가이드</a>에서 H1의 위치는 7.`,
       },
       name: {
         en: 'P3 Heavensfall Tower Position',
+        cn: 'P3 天地塔位置',
         ko: '3페이즈 천지붕괴 기둥 위치',
       },
       type: 'select',
@@ -236,6 +239,17 @@ const triggerSet: TriggerSet<Data> = {
           'Position 6': '5',
           'Position 7': '6',
           'Position 8': '7',
+        },
+        cn: {
+          '禁用塔播报': 'disabled',
+          '1号位': '0',
+          '2号位': '1',
+          '3号位': '2',
+          '4号位': '3',
+          '5号位': '4',
+          '6号位': '5',
+          '7号位': '6',
+          '8号位': '7',
         },
         ko: {
           '비활성화': 'disabled',
@@ -1357,10 +1371,12 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         twinOnPlayer: {
           en: '${player} Bait Twin (${dir})',
+          cn: '${player} 诱导双塔尼亚 (${dir})',
           ko: '${player} 트윈타니아 유도 (${dir})',
         },
         twinOnUnknown: {
           en: '${unknown} Bait Twin (${dir})',
+          cn: '${unknown} 诱导双塔尼亚 (${dir})',
           ko: '${unknown} 트윈타니아 유도 (${dir})',
         },
       },
@@ -1715,6 +1731,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tower: {
           en: 'Tower: ${dir}',
+          cn: '塔: ${dir}',
           ko: '기둥: ${dir}',
         },
         ...Directions.outputStrings16Dir,
@@ -1974,10 +1991,12 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         text: {
           en: 'Exaflares ${dir1} -> ${dir2}',
+          cn: '百京核爆 ${dir1} -> ${dir2}',
           ko: '엑사플레어 ${dir1} -> ${dir2}',
         },
         tts: {
           en: 'Exaflares ${dir1} towards ${dir2}',
+          cn: '百京核爆 从 ${dir1} 到 ${dir2}',
           ko: '엑사플레어 ${dir1}에서 ${dir2}',
         },
       },
@@ -1990,6 +2009,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread (Enrage)',
+          cn: '分散 (狂暴)',
           ko: '산개 (전멸기)',
         },
       },
@@ -2237,7 +2257,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': '至尊巴哈姆特',
         'Fang Of Light': '光牙',
