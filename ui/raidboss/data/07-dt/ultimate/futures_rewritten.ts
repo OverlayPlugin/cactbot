@@ -671,7 +671,7 @@ const triggerSet: TriggerSet<Data> = {
             infoText: output.tether!({
               num: output[num]!(),
               elem: output[curTether]!(),
-              target: data.party.member(matches.target).nick,
+              target: data.party.member(matches.target),
             }),
           };
         }
@@ -1588,7 +1588,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.me === matches.target)
           return { alertText: output.onYou!() };
         else if (data.role === 'tank')
-          return { alertText: output.share!({ target: data.party.member(matches.target).nick }) };
+          return { alertText: output.share!({ target: data.party.member(matches.target) }) };
         return { infoText: output.avoid!() };
       },
     },
@@ -1658,7 +1658,7 @@ const triggerSet: TriggerSet<Data> = {
 
         data.p3ApocDebuffs.none = [...noDebuffs];
         const [same] = data.p3ApocDebuffs[data.p3ApocMyDebuff].filter((p) => p !== data.me);
-        const player = data.party.member(same).nick;
+        const player = data.party.member(same);
         return output.combo!({ debuff: output[data.p3ApocMyDebuff]!(), same: player });
       },
       outputStrings: {
