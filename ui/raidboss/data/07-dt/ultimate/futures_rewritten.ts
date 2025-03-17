@@ -230,7 +230,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'sinboundRotate',
       comment: {
         en:
-          `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+          `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
         cn: `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko: `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
@@ -296,7 +296,7 @@ const triggerSet: TriggerSet<Data> = {
         en:
           `DPS NE->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn:
-          `DPS 东北->南, T奶 西南->北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+          `DPS 东北->南, T奶 西南->北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
         ko:
           `딜러 북동->남, 탱힐 남서->북: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
@@ -326,8 +326,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'darklit',
       comment: {
         en:
-          `Role Quadrants, Healer Plant NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        cn: `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin</a>`,
+          `Role Quadrants, Healer Plant NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        cn: `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin<a>`,
         ko: `역할군별 사분면, 힐러는 북서쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
@@ -355,8 +355,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ct',
       comment: {
         en:
-          `Early Pop, Winds South: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
-        cn: `龙头早撞, 风南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+          `Early Pop, Winds South: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        cn: `龙头早撞, 风南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
         ko: `빨리 터뜨리기, 바람은 남쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
