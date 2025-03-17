@@ -231,8 +231,8 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en:
           `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
-        cn: `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
-        ko: `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+        cn: `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        ko: `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P2 Diamond Dust / Sinbound Holy',
