@@ -28,22 +28,27 @@ const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
   sync: {
     en: 'Sync',
     cn: '同步',
+    ko: '동기화',
   },
   code: {
     en: 'Code',
     cn: '代码',
+    ko: '코드',
   },
   other: {
     en: 'Other',
     cn: '其他',
+    ko: '기타',
   },
   replaceSection: {
     en: 'Replace Section',
     cn: '替换部分',
+    ko: '타임라인 대체',
   },
   text: {
     en: 'Text',
     cn: '文本',
+    ko: '텍스트',
   },
 };
 
@@ -67,6 +72,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
   '00-misc': {
     en: 'Misc',
     cn: '杂项',
+    ko: '기타',
   },
   '02-arr': {
     en: 'ARR',
@@ -172,6 +178,7 @@ const contentTypeToLabel: {
     full: {
       en: 'Variant & Criterion Dungeon',
       cn: '多变&异闻迷宫',
+      ko: '변형&파생던전',
     },
     short: {
       en: 'V&C',
@@ -185,80 +192,96 @@ const contentTypeToLabel: {
   [ContentType.ChaoticAllianceRaid]: {
     full: {
       en: 'Chaotic Alliance Raid',
+      ko: '멸 연합 레이드',
     },
     short: {
       en: 'Chaotic',
       fr: 'Chaotique',
+      ko: '멸',
     },
   },
   [ContentType.TheMaskedCarnivale]: {
     full: {
       en: 'The Masked Carnivale',
       cn: '假面狂欢',
+      ko: '가면 무투회',
     },
     short: {
       en: 'BLU',
       cn: '假面狂欢',
+      ko: '청마',
     },
   },
   [ContentType.Eureka]: {
     full: {
       en: 'Eureka',
       cn: '优雷卡',
+      ko: '에우레카',
     },
     short: {
       en: 'Eureka',
       cn: '优雷卡',
+      ko: '에우레카',
     },
   },
   [ContentType.SaveTheQueen]: {
     full: {
       en: 'Save The Queen',
       cn: '天佑女王',
+      ko: '세이브 더 퀸',
     },
     short: {
       en: 'Bozja',
       cn: '博兹雅',
+      ko: '보즈야',
     },
   },
   [ContentType.DisciplesOfTheLand]: {
     full: {
       en: 'Ocean Fishing/Diadem',
       cn: '海钓/天上福地云冠群岛',
+      ko: '먼바다 낚시/디아뎀',
     },
     short: {
       en: 'Diadem',
       cn: '海钓/空岛',
+      ko: '디아뎀',
     },
   },
   [ContentType.TreasureHunt]: {
     full: {
       en: 'Treasure Hunt',
       cn: '寻宝',
+      ko: '보물찾기',
     },
     short: {
       en: 'Maps',
       cn: '寻宝',
+      ko: '지도',
     },
   },
   [ContentType.DeepDungeons]: {
     full: {
       en: 'Deep Dungeons',
       cn: '深层迷宫',
+      ko: '딥 던전',
     },
     short: {
       en: 'DD',
       cn: '深宫',
+      ko: '딥 던전',
     },
   },
   [ContentType.Pvp]: {
     full: {
       en: 'PvP',
       cn: 'PvP',
+      ko: 'PvP',
     },
     short: {
       en: 'PvP',
       cn: 'PvP',
+      ko: 'PvP',
     },
   },
 } as const;
@@ -315,10 +338,12 @@ const zoneGridHeaders = {
   releaseVersion: {
     en: 'Version',
     cn: '版本',
+    ko: '버전',
   },
   comments: {
     en: 'Comments',
     cn: '备注',
+    ko: '참고',
   },
 } as const;
 
@@ -373,57 +398,70 @@ const miscStrings = {
   unsupported: {
     en: 'Unsupported',
     cn: '尚不支持',
+    ko: '지원하지 않음',
   },
   // Indicator that content has not had a release yet
   unreleased: {
     en: 'Unreleased',
     cn: '尚未发布',
+    ko: '미배포',
   },
   // Prefix for hover text of release version column
   mergeDate: {
     en: 'Merge Date: ',
     cn: '合并日期: ',
+    ko: '병합 날짜: ',
   },
   // Prefix for hover text of release version column
   releaseDate: {
     en: 'Release Date: ',
     cn: '发布日期: ',
+    ko: '배포 날짜: ',
   },
   raidbossTriggerCount: {
     en: 'Raidboss Trigger Count',
     cn: 'Raidboss触发器数量',
+    ko: '레이드보스 트리거 수',
   },
   oopsyTriggerCount: {
     en: 'Oopsy Trigger Count',
     cn: 'Oopsy触发器数量',
+    ko: 'Oopsy 트리거 수',
   },
   none: {
     en: 'None',
     cn: '无',
+    ko: '없음',
   },
   otherContentType: {
     en: 'Other Content',
     cn: '其他内容',
+    ko: '기타 컨텐츠',
   },
   changesSinceLastRelease: {
     en: 'Changes since last release',
     cn: '自上次发布以来的更改',
+    ko: '마지막 배포 이후 변경 사항',
   },
   timelineEntries: {
     en: 'Timeline Entries',
     cn: '时间轴条目',
+    ko: '타임라인 항목 수',
   },
   timelineDuration: {
     en: 'Timeline Duration',
     cn: '时间轴时长',
+    ko: '타임라인 길이',
   },
   noTranslationInformation: {
     en: 'No Translation Information',
     cn: '无翻译信息',
+    ko: '번역 정보 없음',
   },
   linkToEntry: {
     en: 'Link to this entry',
     cn: '此条目链接',
+    ko: '이 항목으로의 링크',
   },
 } as const;
 
@@ -481,10 +519,12 @@ const themes: Record<ThemeKey, LocaleText> = {
   'light': {
     en: 'Light',
     cn: '浅色',
+    ko: '라이트',
   },
   'dark': {
     en: 'Dark',
     cn: '深色',
+    ko: '다크',
   },
 } as const;
 

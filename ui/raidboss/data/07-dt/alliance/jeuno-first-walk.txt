@@ -616,7 +616,7 @@ hideall "--sync--"
 40327.6 "Echoes of Agony x7" Ability { id: "A3AB", source: "Shadow Lord" } duration 7
 40341.7 "--Binding Indicator 1--" #Ability { id: "A229", source: "Shadow Lord" }
 40344.1 "--Binding Indicator 2--" #Ability { id: "A229", source: "Shadow Lord" }
-40346.5 "--Binding Indicator 1--" #Ability { id: "A229", source: "Shadow Lord" }
+40346.5 "--Binding Indicator 3--" #Ability { id: "A229", source: "Shadow Lord" }
 40349.6 "Binding Sigil (castbar)" Ability { id: "9F55", source: "Shadow Lord" }
 40351.7 "Soul Binding 1" #Ability { id: "A22A", source: "Shadow Lord" }
 40354.1 "Soul Binding 2" #Ability { id: "A22A", source: "Shadow Lord" }
