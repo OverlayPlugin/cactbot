@@ -1230,7 +1230,7 @@ const triggerSet: TriggerSet<Data> = {
         else
           debuff = 'longFire';
 
-        const rawRole = data.party.member(matches.target).role;
+        const rawRole = data.party.nameToRole_[matches.target];
         let role: 'dps' | 'support';
         if (rawRole === 'tank' || rawRole === 'healer')
           role = 'support';
@@ -2140,7 +2140,7 @@ const triggerSet: TriggerSet<Data> = {
         let towerHealer = '';
         const towerDps: string[] = [];
         for (const player of towerPlayers) {
-          const role = data.party.member(player).role;
+          const role = data.party.nameToRole_[player];
           if (role === 'tank')
             towerTank = player;
           else if (role === 'healer')
@@ -2157,7 +2157,7 @@ const triggerSet: TriggerSet<Data> = {
         let baitHealer = '';
         const baitDps: string[] = [];
         for (const player of baitPlayers) {
-          const role = data.party.member(player).role;
+          const role = data.party.nameToRole_[player];
           if (role === 'tank')
             baitTank = player;
           else if (role === 'healer')
@@ -2312,15 +2312,15 @@ const triggerSet: TriggerSet<Data> = {
         const isStackOnMe = data.me === baitStackPlayer;
         const defaultOutput = isStackOnMe ? { infoText: output.stackOnYou!() } : {};
         const myRole = data.role;
-        const stackRole = data.party.member(baitStackPlayer).role;
+        const stackRole = data.party.nameToRole_[baitStackPlayer];
         if (stackRole === undefined)
           return defaultOutput;
 
         // Sanity check for non-standard party comp, or this trigger won't work
-        const tankCount = baitPlayers.filter((p) => data.party.member(p)?.role === 'tank').length;
+        const tankCount = baitPlayers.filter((p) => data.party.nameToRole_[p] === 'tank').length;
         const healerCount =
-          baitPlayers.filter((p) => data.party.member(p)?.role === 'healer').length;
-        const dpsCount = baitPlayers.filter((p) => data.party.member(p)?.role === 'dps').length;
+          baitPlayers.filter((p) => data.party.nameToRole_[p] === 'healer').length;
+        const dpsCount = baitPlayers.filter((p) => data.party.nameToRole_[p] === 'dps').length;
         if (tankCount !== 1 || healerCount !== 1 || dpsCount !== 2)
           return defaultOutput;
 
@@ -2454,9 +2454,12 @@ const triggerSet: TriggerSet<Data> = {
         const debuff = data.p4CTMyRole;
 
         if (debuff === 'redWind') {
-          const partner = data.party.member(data.p4CTDebuffs.wind.filter((p) => p !== data.me)[0]);
-          data.p4CTPartnerRole = partner.role;
-          return output.comboText!({ debuff: output.redWind!(), player: partner.toString() });
+          const partner = data.p4CTDebuffs.wind.find((p) => p !== data.me)!;
+          data.p4CTPartnerRole = data.party.nameToRole_[partner];
+          return output.comboText!({
+            debuff: output.redWind!(),
+            player: data.party.member(partner),
+          });
         }
 
         // if debuff is undefined, player has redIce or blueIce, and we need to determine which.
@@ -2471,13 +2474,14 @@ const triggerSet: TriggerSet<Data> = {
 
           if (data.p4CTDebuffs.red.includes(data.me)) {
             data.p4CTMyRole = 'redIce';
-            const partner = data.party.member(
-              data.p4CTDebuffs.ice
-                .filter((p) => p !== data.me)
-                .filter((p) => data.p4CTDebuffs.red.includes(p))[0],
-            );
-            data.p4CTPartnerRole = partner.role;
-            return output.comboText!({ debuff: output.redIce!(), player: partner.toString() });
+            const partner = data.p4CTDebuffs.ice.find((p) =>
+              p !== data.me && data.p4CTDebuffs.red.includes(p)
+            )!;
+            data.p4CTPartnerRole = data.party.nameToRole_[partner]!;
+            return output.comboText!({
+              debuff: output.redIce!(),
+              player: data.party.member(partner),
+            });
           }
 
           // Fallthrough, should never happen.
