@@ -133,31 +133,37 @@ const p3UROutputStrings = {
     en: '${debuff} (${dir})',
     de: '${debuff} (${dir})',
     cn: '${debuff} (${dir})',
+    ko: '${debuff} (${dir})',
   },
   dirCombo: {
     en: '${inOut} + ${dir}',
     de: '${inOut} + ${dir}',
     cn: '${inOut} + ${dir}',
+    ko: '${inOut} + ${dir}',
   },
   fireSpread: {
     en: 'Fire - Spread',
     de: 'Feuer - verteilen',
     cn: '火分散',
+    ko: '불 - 산개',
   },
   dropRewind: {
     en: 'Drop Rewind',
     de: 'Lege Rückführung ab',
     cn: '放置回返',
+    ko: '리턴 설치',
   },
   baitStoplight: {
     en: 'Bait Stoplight',
     de: 'Köder Sanduhr',
     cn: '引导激光',
+    ko: '모래시계 유도',
   },
   avoidStoplights: {
     en: 'Avoid stoplights',
     de: 'Vermeide Sanduhren',
     cn: '远离激光',
+    ko: '모래시계 피하기',
   },
   stack: Outputs.stackMarker,
   middle: Outputs.middle,
@@ -224,19 +230,23 @@ const triggerSet: TriggerSet<Data> = {
     en: 'Triggers: P1-3 / Timeline: P1-5',
     de: 'Triggers: P1-3 / Timeline: P1-5',
     cn: '触发器: P1-3 / 时间轴: P1-5',
+    ko: '트리거: P1-3 / 타임라인: P1-5',
   },
   config: [
     {
       id: 'sinboundRotate',
       comment: {
         en:
-          `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `Always Away, Cursed Clockwise: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
-          `Immer Weg, Verflucht im Uhrzeigersinn: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `Immer Weg, Verflucht im Uhrzeigersinn: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        cn: `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        ko: `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P2 Diamond Dust / Sinbound Holy',
         de: 'P2 Diamantenstaub / Sünden-Sanctus',
+        cn: 'P2 钻石星尘 / 罪神圣',
       },
       type: 'select',
       options: {
@@ -248,6 +258,14 @@ const triggerSet: TriggerSet<Data> = {
           'Immer Weg, Verflucht im Uhrzeigersinn': 'aacc',
           'Nenne nur die Add Positionen': 'addposonly',
         },
+        cn: {
+          '总是远离, 180° 顺时针': 'aacc',
+          '仅播报分身位置': 'addposonly',
+        },
+        ko: {
+          '항상 멀리, 180도 시계방향': 'aacc',
+          '분신 위치만 호출': 'addposonly',
+        },
       },
       default: 'aacc', // `addposonly` is not super helpful, and 'aacc' seems to be predominant
     },
@@ -255,13 +273,19 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ultimateRel',
       comment: {
         en:
-          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
+          `Y North, DPS E-SW, Supp W-NE: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
           Directional output is true north (i.e., "east" means actual east,
           not wherever is east of the "Y" north spot).`,
         de:
-          `Y Norden, DPS O-SW, Supp W-NO: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>.
+          `Y Norden, DPS O-SW, Supp W-NO: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
           Die Richtungsansage ist wahrer Norden (d. h., "Osten" bedeutet tatsächlich Osten,
           nicht an der Stelle, die östlich des nördlichen "Y" liegt).`,
+        cn:
+          `Y 北, DPS 东-西南, T奶 西-东北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
+          方向输出为真北 (即 “东”表示实际的东, 而不是相对于 “Y” 北的东)。`,
+        ko:
+          `Y가 북쪽, 딜러 동-남서쪽, 탱힐 서-북동쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>.
+          방향 알림은 실제 북쪽입니다. (즉, "동쪽"은 실제 동쪽을 의미하며, "Y" 모양의 동쪽이 아닙니다.)`,
       },
       name: {
         en: 'P3 Ultimate Relativity',
@@ -277,6 +301,14 @@ const triggerSet: TriggerSet<Data> = {
           'Y Norden, DPS O-SW, Supp W-NO': 'yNorthDPSEast',
           'Debuff ohne Positionen nennen': 'none',
         },
+        cn: {
+          'Y 北, DPS 东-西南, T奶 西-东北': 'yNorthDPSEast',
+          '仅播报 Debuff, 不播报方位': 'none',
+        },
+        ko: {
+          'Y가 북쪽, 딜러 동-남서쪽, 탱힐 서-북동쪽': 'yNorthDPSEast',
+          '디버프만 호출': 'none',
+        },
       },
       default: 'yNorthDPSEast',
     },
@@ -284,13 +316,19 @@ const triggerSet: TriggerSet<Data> = {
       id: 'apoc',
       comment: {
         en:
-          `DPS NE->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `DPS NE->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         de:
-          `DPS NO->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `DPS NO->S, Support SW->N: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        cn:
+          `DPS 东北->南, T奶 西南->北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        ko:
+          `딜러 북동->남, 탱힐 남서->북: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P3 Apocalypse',
         de: 'P3 Apokalypse',
+        cn: 'P3 启示',
+        ko: 'P3 대재앙',
       },
       type: 'select',
       options: {
@@ -302,6 +340,14 @@ const triggerSet: TriggerSet<Data> = {
           'DPS NO->S, Support SW->N': 'dpsNE-CW',
           'Sage alle sicheren an': 'none',
         },
+        cn: {
+          'DPS 东北->南, T奶 西南->北': 'dpsNE-CW',
+          '播报所有安全区': 'none',
+        },
+        ko: {
+          '딜러 북동->남, 탱힐 남서->북': 'dpsNE-CW',
+          '모든 안전지대 알림': 'none',
+        },
       },
       default: 'dpsNE-CW',
     },
@@ -309,16 +355,27 @@ const triggerSet: TriggerSet<Data> = {
       id: 'darklit',
       comment: {
         en:
-          `Role Quadrants, Healer Plant NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `Role Quadrants, Healer Plant NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        cn: `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin</a>`,
+        ko: `역할군별 사분면, 힐러는 북서쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P4 Darklit Dragonsong',
+        cn: 'P4 光与暗的龙诗',
       },
       type: 'select',
       options: {
         en: {
           'Role Quads, Healer Plant NW': 'healerPlantNW',
           'Call Tower/Cone Only': 'none',
+        },
+        cn: {
+          '按职能四分组, 奶妈在西北': 'healerPlantNW',
+          '仅播报塔/扇形': 'none',
+        },
+        ko: {
+          '역할군별 사분면, 힐러는 북서쪽': 'healerPlantNW',
+          '탑/부채꼴만 알림': 'none',
         },
       },
       default: 'healerPlantNW',
@@ -327,16 +384,27 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ct',
       comment: {
         en:
-          `Early Pop, Winds South: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin<a>`,
+          `Early Pop, Winds South: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        cn: `龙头早撞, 风南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        ko: `빨리 터뜨리기, 바람은 남쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
         en: 'P4 Crystallize Time',
+        cn: 'P4 时间结晶',
       },
       type: 'select',
       options: {
         en: {
           'Early Pop, Winds South': 'earlyPopSouth',
           'Call Initial Debuffs Only': 'none',
+        },
+        cn: {
+          '龙头早撞, 风南': 'earlyPopSouth',
+          '仅播报初始 Debuff': 'none',
+        },
+        ko: {
+          '빨리 터뜨리기, 바람은 남쪽': 'earlyPopSouth',
+          '초기 디버프만 알림': 'none',
         },
       },
       default: 'earlyPopSouth',
@@ -632,6 +700,8 @@ const triggerSet: TriggerSet<Data> = {
           onYou: {
             en: 'On YOU',
             de: 'Auf DIR',
+            cn: '点名',
+            ko: '대상자',
           },
           tether: {
             en: '${num}: ${elem} (${target})',
@@ -668,7 +738,7 @@ const triggerSet: TriggerSet<Data> = {
             infoText: output.tether!({
               num: output[num]!(),
               elem: output[curTether]!(),
-              target: data.party.member(matches.target).nick,
+              target: data.party.member(matches.target),
             }),
           };
         }
@@ -725,6 +795,8 @@ const triggerSet: TriggerSet<Data> = {
           busterCleanse: {
             en: '${buster} (Cleanse?)',
             de: '${buster} (Reinigen?)',
+            cn: '${buster} (驱散?)',
+            ko: '${buster} (에스나?)',
           },
         };
 
@@ -816,16 +888,19 @@ const triggerSet: TriggerSet<Data> = {
           en: '${inOut} + ${dir} => ${mech}',
           de: '${inOut} + ${dir} => ${mech}',
           cn: '${inOut} + ${dir} => ${mech}',
+          ko: '${inOut} + ${dir} => ${mech}',
         },
         dropPuddle: {
           en: 'Drop Puddle',
           de: 'Fläche ablegen',
           cn: '放置冰花',
+          ko: '장판 놓기',
         },
         baitCleave: {
           en: 'Bait',
           de: 'Ködern',
           cn: '引导水波',
+          ko: '유도',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -850,6 +925,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${kb} (${dir1}/${dir2})',
           de: '${kb} (${dir1}/${dir2})',
           cn: '${kb} (${dir1}/${dir2})',
+          ko: '${kb} (${dir1}/${dir2})',
         },
         kb: Outputs.knockback,
         ...Directions.outputStrings8Dir,
@@ -904,24 +980,34 @@ const triggerSet: TriggerSet<Data> = {
         aaccCursed: {
           en: 'Cursed - Fast Clockwise',
           de: 'Verflucht - Schnell im Uhrzeigersinn',
+          cn: '180° - 快速顺时针',
+          ko: '180도 - 빠른 시계방향',
         },
         aaccRotateCCW: Outputs.counterclockwise,
         aaccRotateCW: Outputs.clockwise,
         same: {
           en: 'Cursed - Add on knockback',
           de: 'Verflucht - Add beim Rückstoß',
+          cn: '180° - 分身在脚下',
+          ko: '180도 - 넉백된 곳에 분신',
         },
         opposite: {
           en: 'Cursed - Add opposite you',
           de: 'Verflucht - Add gegenüber von DIR',
+          cn: '180° - 分身在对面',
+          ko: '180도 - 반대편에 분신',
         },
         clockwise: {
           en: 'Add is clockwise',
           de: 'Add ist im Uhrzeigersinn',
+          cn: '分身在顺时针',
+          ko: '분신 시계방향',
         },
         counterclockwise: {
           en: 'Add is counterclockwise',
           de: 'Add ist gegen den Uhrzeigersinn',
+          cn: '分身在逆时针',
+          ko: '분신 반시계방향',
         },
       },
     },
@@ -947,6 +1033,8 @@ const triggerSet: TriggerSet<Data> = {
           aaccSilence: {
             en: '(stay in front)',
             de: '(steh vorne)',
+            cn: '(待在正面)',
+            ko: '(보스 앞 그대로)',
           },
           silence: Outputs.front,
           stillness: Outputs.back,
@@ -989,6 +1077,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bait cleave',
           de: 'Cleve ködern',
           cn: '引导水波',
+          ko: '장판 유도',
         },
       },
     },
@@ -1005,6 +1094,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bait cleave',
           de: 'Cleve ködern',
           cn: '引导水波',
+          ko: '장판 유도',
         },
       },
     },
@@ -1054,11 +1144,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Puddles on you (w/ ${other})',
           de: 'Flächen auf DIR (mit ${other})',
           cn: '放置大圈 (和 ${other})',
+          ko: '장판 대상자 (+ ${other})',
         },
         tether: {
           en: 'Tether on you (Puddles: ${p1}, ${p2})',
           de: 'Verbindung auf DIR (Flächen: ${p1}, ${p2})',
           cn: '拉线踩塔 (大圈: ${p1}, ${p2})',
+          ko: '사슬 대상자 (장판: ${p1}, ${p2})',
         },
       },
     },
@@ -1075,11 +1167,13 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Soak middle tower',
             de: 'Mittleren Turm nehmen',
             cn: '踩塔',
+            ko: '중앙 탑 밟기',
           },
           towerAvoid: {
             en: 'Avoid middle tower',
             de: 'Vermeide mittleren Turm',
             cn: '不去踩塔',
+            ko: '중앙 탑 피하기',
           },
         };
 
@@ -1109,6 +1203,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${partnerSpread} (after tower)',
           de: '${partnerSpread} (nach Turm)',
           cn: '踩塔后 + ${partnerSpread}',
+          ko: '${partnerSpread} (탑 이후)',
         },
         partners: Outputs.stackPartner,
         spread: Outputs.spread,
@@ -1141,6 +1236,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Target Ice Veil',
           de: 'Ziele auf Immerfrost-Kristall',
           cn: '集火永久冰晶',
+          ko: '영구빙정 공격',
         },
       },
     },
@@ -1244,31 +1340,37 @@ const triggerSet: TriggerSet<Data> = {
           en: '${debuff}',
           de: '${debuff}',
           cn: '${debuff}',
+          ko: '${debuff}',
         },
         debuffShared: {
           en: '${debuff} (w/ ${other})',
           de: '${debuff} (mit ${other})',
           cn: '${debuff} (和 ${other})',
+          ko: '${debuff} (+ ${other})',
         },
         shortFire: {
           en: 'Short Fire',
           de: 'Kurzes Feuer',
           cn: '短火',
+          ko: '짧은 불',
         },
         mediumFire: {
           en: 'Medium Fire',
           de: 'Mittleres Feuer',
           cn: '中火',
+          ko: '중간 불',
         },
         longFire: {
           en: 'Long Fire',
           de: 'Langes Feuer',
           cn: '长火',
+          ko: '긴 불',
         },
         ice: {
           en: 'Ice',
           de: 'Eis',
           cn: '冰点名',
+          ko: '얼음',
         },
       },
     },
@@ -1591,22 +1693,25 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Shared tank cleave on YOU',
             de: 'Geteilter Tank-Cleave auf DIR',
             cn: '坦克分摊点名',
+            ko: '쉐어 탱버 대상자',
           },
           share: {
             en: 'Shared tank cleave on ${target}',
             de: 'Geteilter Tank-Cleave auf ${target}',
             cn: '坦克分摊 (和 ${target})',
+            ko: '쉐어 탱버 (${target})',
           },
           avoid: {
             en: 'Avoid tank cleave',
             de: 'Tank-Cleave vermeiden',
             cn: '远离分摊顺劈',
+            ko: '탱버 피하기',
           },
         };
         if (data.me === matches.target)
           return { alertText: output.onYou!() };
         else if (data.role === 'tank')
-          return { alertText: output.share!({ target: data.party.member(matches.target).nick }) };
+          return { alertText: output.share!({ target: data.party.member(matches.target) }) };
         return { infoText: output.avoid!() };
       },
     },
@@ -1676,7 +1781,7 @@ const triggerSet: TriggerSet<Data> = {
 
         data.p3ApocDebuffs.none = [...noDebuffs];
         const [same] = data.p3ApocDebuffs[data.p3ApocMyDebuff].filter((p) => p !== data.me);
-        const player = data.party.member(same).nick;
+        const player = data.party.member(same);
         return output.combo!({ debuff: output[data.p3ApocMyDebuff]!(), same: player });
       },
       outputStrings: {
@@ -1684,26 +1789,31 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stack: ${debuff} (w/ ${same})',
           de: 'Sammeln: ${debuff} (mit ${same})',
           cn: '${debuff} 分摊 (和 ${same})',
+          ko: '쉐어: ${debuff} (+ ${same})',
         },
         short: {
           en: 'Short',
           de: 'Kurz',
           cn: '短',
+          ko: '짧은',
         },
         medium: {
           en: 'Medium',
           de: 'Mittel',
           cn: '中',
+          ko: '중간',
         },
         long: {
           en: 'Long',
           de: 'Lang',
           cn: '长',
+          ko: '긴',
         },
         none: {
           en: 'No Debuff',
           de: 'Kein Debuff',
           cn: '无点名',
+          ko: '디버프 없음',
         },
         unknown: Outputs.unknown,
       },
@@ -1769,6 +1879,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '(Apoc safe later: ${dir1})',
           de: '(Apoc später sicher: ${dir1})',
           cn: '${dir1} 稍后安全',
+          ko: '(대재앙 안전지대: ${dir1})',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1844,6 +1955,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Safe: ${dir1} (lean ${dir2})',
           de: 'Sicher: ${dir1} (halte dich ${dir2})',
           cn: '${dir1} 偏 ${dir2} 安全',
+          ko: '안전: ${dir1} (${dir2} 쪽으로 살짝)',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1887,6 +1999,8 @@ const triggerSet: TriggerSet<Data> = {
           stacksSwap: {
             en: '${stacks} (Swapped)',
             de: '${stacks} (Getauscht)',
+            cn: '${stacks} (换位后)',
+            ko: '${stacks} (교대)',
           },
         };
         const stacksStr = output.stacks!();
@@ -1925,6 +2039,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bait Jump (${dirs})?',
           de: 'Sprung ködern (${dirs})?',
           cn: '${dirs} 引导超级跳',
+          ko: '${dirs} 점프 유도?',
         },
         ...Directions.outputStrings8Dir,
         or: Outputs.or,
@@ -1944,10 +2059,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Knockback => Stacks',
           de: 'Rückstoß => Sammeln',
           cn: '击退 => 四四分摊',
+          ko: '넉백 => 쉐어',
         },
         kbStacksSwap: {
           en: '${kbStacks} (Swapped)',
           de: '${kbStacks} (Getauscht)',
+          cn: '${kbStacks} (换位后)',
+          ko: '${kbStacks} (교대)',
         },
       },
     },
@@ -2035,21 +2153,33 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           towerNoSwap: {
             en: 'Tower (no swaps)',
+            cn: '塔 (无换位)',
+            ko: '탑 (교대 없음)',
           },
           towerOtherSwap: {
             en: 'Tower (${p1} + ${p2} swap)',
+            cn: '塔 (${p1} + ${p2} 换位)',
+            ko: '탑 (${p1} + ${p2} 교대)',
           },
           towerYouSwap: {
             en: 'Tower (swap w/${player})',
+            cn: '塔 (与 ${player} 换位)',
+            ko: '탑 (${player}와 교대)',
           },
           tower: { // if no strat set, or cannot determine
             en: 'Tower',
+            cn: '塔',
+            ko: '탑',
           },
           bait: { // for supports in healerPlantNW, or no strat
             en: 'Bait Cone',
+            cn: '诱导扇形',
+            ko: '부채꼴 유도',
           },
           baitDPS: { // for DPS in healerPlantNW
             en: 'Bait Cone (w/ ${otherDps})',
+            cn: '诱导扇形 (与 ${otherDps})',
+            ko: '부채꼴 유도 (+ ${otherDps})',
           },
         };
 
@@ -2198,29 +2328,45 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           stackOnYou: { // default/fallthrough
             en: '(stack on you later)',
+            cn: '(稍后分摊点名)',
+            ko: '(쉐어 대상자)',
           },
           // stack is on you
           stackOnYouNoSwap: {
             en: '(stack on you later - no swap)',
+            cn: '(稍后分摊点名 - 不换位)',
+            ko: '(쉐어 대상자 - 교대 없음)',
           },
           dpsStackOnYouSwap: {
             en: 'Stacks: You swap w/ Support',
+            cn: '分摊: 与T/奶换位',
+            ko: '쉐어: 탱힐과 교대',
           },
           healerStackOnYouSwap: {
             en: 'Stacks: You swap w/ Ranged/Flex',
+            cn: '分摊: 与远程/灵活位换位',
+            ko: '쉐어: 원딜과 교대/상황 판단',
           },
           tankStackOnYouSwap: {
             en: 'Stacks: You swap w/ Melee/Flex',
+            cn: '分摊: 与近战/灵活位换位',
+            ko: '쉐어: 근딜과 교대/상황 판단',
           },
           // stack on someone else (not your role), so you may be required to swap
           dpsStackOnHealerSwap: {
             en: 'Stacks: ${healer} swap w/ Ranged/Flex',
+            cn: '分摊: ${healer} 与远程/灵活位换位',
+            ko: '쉐어: ${healer} 원딜과 교대/상황 판단',
           },
           dpsStackOnTankSwap: {
             en: 'Stacks: ${tank} swap w/ Melee/Flex',
+            cn: '分摊: ${tank} 与近战/灵活位换位',
+            ko: '쉐어: ${tank} 근딜과 교대/상황 판단',
           },
           supportStackOnDpsSwap: {
             en: 'Stacks: ${dps} swap w/ Support',
+            cn: '分摊: ${dps} 与T/奶换位',
+            ko: '쉐어: ${dps} 탱힐과 교대',
           },
         };
         const isHealerPlantNW = data.triggerSetConfig.darklit === 'healerPlantNW';
@@ -2316,6 +2462,8 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${dir} => ${stacks}',
+          cn: '${dir} => ${stacks}',
+          ko: '${dir} => ${stacks}',
         },
         east: Outputs.east,
         west: Outputs.west,
@@ -2410,27 +2558,43 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${debuff} on You',
+          cn: '${debuff} 点名',
+          ko: '${debuff} 대상자',
         },
         comboText: {
           en: '${debuff} (w/ ${player})',
+          cn: '${debuff} (与 ${player})',
+          ko: '${debuff} (+ ${player})',
         },
         redIce: {
           en: 'Red Ice',
+          cn: '短红',
+          ko: '빨간색 얼음',
         },
         redWind: {
           en: 'Wind/Aero',
+          cn: '长红',
+          ko: '바람',
         },
         blueIce: {
           en: 'Blue Ice',
+          cn: '蓝冰',
+          ko: '파란색 얼음',
         },
         blueWater: {
           en: 'Water (stack)',
+          cn: '水 (分摊)',
+          ko: '물 (쉐어)',
         },
         blueUnholy: {
           en: 'Unholy (stack)',
+          cn: '圣 (分摊)',
+          ko: '다크 홀리 (쉐어)',
         },
         blueEruption: {
           en: 'Eruption (spread)',
+          cn: '暗 (分散)',
+          ko: '어둠의 불기둥 (산개)',
         },
         unknown: Outputs.unknown,
       },
@@ -2532,19 +2696,29 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         blue: {
           en: '${mech} (${dir})',
+          cn: '${mech} (${dir})',
+          ko: '${mech} (${dir})',
         },
         redIce: {
           en: '${dir} ${followup}',
+          cn: '${dir} ${followup}',
+          ko: '${dir} ${followup}',
         },
         dodgeSouth: {
           en: '(dodge S after)',
+          cn: '(稍后避开下)',
+          ko: '(이후 남쪽으로 회피)',
         },
         stackNorth: {
           en: '(stack N after)',
+          cn: '(稍后去上分摊)',
+          ko: '(이후 북쪽으로 쉐어)',
         },
         // used if there is a role-flex and we don't know whether they are E or W.
         partyStack: {
           en: '(party stack is ${dir})',
+          cn: '(在 ${dir} 全员分摊)',
+          ko: '(본대 쉐어 ${dir})',
         },
         spread: Outputs.spread,
         stack: Outputs.getTogether,
@@ -2573,12 +2747,18 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanseSpot: {
           en: 'Cleanse: ${spot}',
+          cn: '净化: ${spot}',
+          ko: '정화: ${spot}',
         },
         cleanse: { // if no strat
           en: 'Cleanse',
+          cn: '净化',
+          ko: '정화',
         },
         avoidCleanse: {
           en: 'Avoid cleanse puddles',
+          cn: '避开净化圈',
+          ko: '정화 장판 피하기',
         },
         blueWater: Directions.outputStrings8Dir.dirSE!,
         blueUnholy: Directions.outputStrings8Dir.dirE!,
@@ -2624,6 +2804,8 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rewind: {
           en: 'Drop Rewind: ${spot}',
+          cn: '放置回返: ${spot}',
+          ko: '리턴 설치: ${spot}',
         },
         unknown: Outputs.unknown,
         ...Directions.outputStringsIntercardDir,
@@ -2638,6 +2820,8 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadAvoid: {
           en: 'Spread -- Avoid crystal',
+          cn: '分摊 -- 避开水晶',
+          ko: '산개 -- 크리스탈 피하기',
         },
       },
     },
@@ -3037,6 +3221,166 @@ const triggerSet: TriggerSet<Data> = {
         'Unholy Darkness': 'ダークホーリー',
         'Utopian Sky': '楽園絶技',
         'Wings Dark and Light': '光と闇の片翼',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Fatebreaker(?!\')': '绝命战士',
+        'Fatebreaker\'s Image': '绝命战士的幻影',
+        'Usurper of Frost': '希瓦·米特隆',
+        'Oracle\'s Reflection': '巫女的镜像',
+        'Ice Veil': '永久冰晶',
+        'Frozen Mirror': '冰面镜',
+        'Holy Light': '圣光',
+        'Crystal of Darkness': '暗水晶',
+        'Crystal of Light': '光水晶',
+        'Oracle of Darkness': '暗之巫女',
+        'Fragment of Fate': '未来的碎片',
+        'Sorrow\'s Hourglass': '悲伤的沙漏',
+        'Drachen Wanderer': '圣龙气息',
+        'Pandora': '潘多拉·米特隆',
+      },
+      'replaceText': {
+        '\\(cast\\)': '(咏唱)',
+        '\\(close\\)': '(近)',
+        '\\(damage\\)': '(伤害)',
+        '\\(far\\)': '(远)',
+        '\\(fast\\)': '(快)',
+        '\\(fire\\)': '(火)',
+        '\\(follow-up\\)': '(后续)',
+        '\\(group tower\\)': '(小队塔)',
+        '\\(jump\\)': '(跳)',
+        '\\(knockback\\)': '(击退)',
+        '\\(lightning\\)': '(雷)',
+        '\\(normal\\)': '(正常)',
+        '\\(puddles\\)': '(圈)',
+        '\\(rewind drop\\)': '(放置回返)',
+        '\\(slow\\)': '(慢)',
+        '\\(solo towers\\)': '(单人塔)',
+        '\\(stun \\+ cutscene\\)': '(眩晕 + 动画)',
+        '\\(stun \\+ rewind\\)': '(眩晕 + 回返)',
+        '\\(targeted\\)': '(定向)',
+        '--jump south--': '--跳南--',
+        '--Oracle center--': '--巫女中央--',
+        '--Oracle targetable--': '--巫女可选中--',
+        '--Oracle untargetable--': '--巫女不可选中--',
+        '--reposition--': '--归位--',
+        '--Usurper untargetable--': '--希瓦·米特隆不可选中--',
+        'Blastburn': '火燃爆',
+        'Blasting Zone': '爆破领域',
+        'Burn Mark': '爆印',
+        'Burnished Glory': '光焰圆光',
+        'Burnout': '雷燃爆',
+        'Burnt Strike': '燃烧击',
+        'Cyclonic Break': '暴风破',
+        'Explosion': '爆炸',
+        'Fall Of Faith': '罪壤断',
+        'Floating Fetters': '浮游拘束',
+        'Powder Mark Trail': '连锁爆印铭刻',
+        'Sinblaze': '罪冰焰',
+        'Sinbound Fire III': '罪爆炎',
+        'Sinbound Thunder III': '罪暴雷',
+        'Sinsmite': '罪雷',
+        'Sinsmoke': '罪炎',
+        'Turn Of The Heavens': '光轮召唤',
+        'Utopian Sky': '乐园绝技',
+        'the Path of Darkness': '暗之波动',
+        'Cruel Path of Light': '光之波涛',
+        'Cruel Path of Darkness': '暗之波涛',
+        'Icecrusher': '碎冰击',
+        'Unmitigated Explosion': '大爆炸',
+        'Solemn Charge': '急冲刺',
+        'Bow Shock': '弓形冲波',
+        'Brightfire': '光炎',
+        'Bound of Faith': '罪壤刺',
+        'Edge of Oblivion': '忘却的此岸',
+        'Mirror, Mirror': '镜中奇遇',
+        'Mirror Image': '镜中显影',
+        'Darkest Dance': '暗夜舞蹈',
+        'Frost Armor': '冰霜护甲',
+        'Shining Armor': '闪光护甲',
+        'Drachen Armor': '圣龙护甲',
+        'the Path of Light': '光之波动',
+        'the House of Light': '光之海啸',
+        'Quadruple Slap': '四剑斩',
+        'Twin Stillness': '静寂的双剑技',
+        'Twin Silence': '闲寂的双剑技',
+        'Diamond Dust': '钻石星尘',
+        'Icicle Impact': '冰柱冲击',
+        'Frigid Stone': '冰石',
+        'Frigid Needle': '冰针',
+        'Axe Kick': '阔斧回旋踢',
+        '(?<!Reflected )Scythe Kick': '镰形回旋踢',
+        'Reflected Scythe Kick': '连锁反射：镰形回旋踢',
+        'Heavenly Strike': '天降一击',
+        'Sinbound Holy': '罪神圣',
+        'Hallowed Ray': '神圣射线',
+        'Light Rampant': '光之失控',
+        'Bright Hunger': '侵蚀光',
+        'Inescapable Illumination': '曝露光',
+        'Refulgent Fate': '光之束缚',
+        'Lightsteep': '过量光',
+        'Powerful Light': '光爆',
+        'Luminous Hammer': '光流侵蚀',
+        'Burst': '爆炸',
+        'Banish III(?! )': '强放逐',
+        'Banish III Divided': '分裂强放逐',
+        'Absolute Zero': '绝对零度',
+        'Swelling Frost': '寒波',
+        'Junction': '融合',
+        'Hallowed Wings': '神圣之翼',
+        'Wings Dark and Light': '光与暗的孤翼',
+        'Polarizing Paths': '星灵之剑',
+        'Sinbound Meltdown': '罪熔毁',
+        'Sinbound Fire(?! )': '罪火炎',
+        'Akh Rhai': '天光轮回',
+        'Darklit Dragonsong': '光与暗的龙诗',
+        'Crystallize Time': '时间结晶',
+        'Longing of the Lost': '圣龙气息',
+        'Joyless Dragonsong': '绝望龙诗',
+        'Materialization': '赋形',
+        'Akh Morn': '死亡轮回',
+        'Morn Afah': '无尽顿悟',
+        'Tidal Light': '光之巨浪',
+        'Hiemal Storm': '严冬风暴',
+        'Hiemal Ray': '严冬射线',
+        'Sinbound Blizzard III': '罪冰封',
+        'Endless Ice Age': '光之泛滥',
+        'Depths of Oblivion': '忘却的彼岸',
+        'Memory Paradox': '记忆悖论',
+        'Paradise Lost': '失乐园',
+        'Hell\'s Judgment': '地狱审判',
+        'Ultimate Relativity': '时间压缩·绝',
+        'Return': '回返',
+        'Return IV': '强回返',
+        'Spell-in-Waiting Refrain': '延迟咏唱·递进',
+        'Dark Water III': '黑暗狂水',
+        'Dark Eruption': '暗炎喷发',
+        'Dark Fire III': '黑暗爆炎',
+        'Unholy Darkness': '黑暗神圣',
+        'Shadoweye': '暗影之眼',
+        'Dark Blizzard III': '黑暗冰封',
+        'Dark Aero III': '黑暗暴风',
+        'Quietus': '寂灭',
+        'Shockwave Pulsar': '脉冲星震波',
+        'Somber Dance': '真夜舞蹈',
+        'Shell Crusher': '破盾一击',
+        'Spirit Taker': '碎灵一击',
+        'Black Halo': '黑色光环',
+        'Speed': '限速',
+        'Quicken': '神速',
+        '(?<!\\()Slow(?<!\\))': '减速',
+        'Apocalypse': '启示',
+        'Maelstrom': '巨漩涡',
+        'Memory\'s End': '记忆终结',
+        'Fulgent Blade': '光尘之剑',
+        'Polarizing Strikes': '星灵之剑',
+        'Paradise Regained': '复乐园',
+        'Twin Poles': '光与暗的双剑技',
+        'Pandora\'s Box': '潘多拉魔盒',
+        'Cyckonic Break': '暴风破',
+        'Fated Burn Mark': '死爆印',
       },
     },
   ],
