@@ -1,12 +1,9 @@
 Options.Triggers.push({
-  id: 'TheSunkenTempleOfQarn',
-  zoneId: ZoneId.TheSunkenTempleOfQarn,
-  comments: {
-    en: 'pre-7.2 rework',
-  },
+  id: 'TheSunkenTempleOfQarn71',
+  zoneId: ZoneId.TheSunkenTempleOfQarn71,
   triggers: [
     {
-      id: 'Sunken Quarn Doom',
+      id: 'Sunken Quarn71 Doom',
       type: 'GainsEffect',
       netRegex: { effectId: 'D2' },
       condition: Conditions.targetIsYou(),
