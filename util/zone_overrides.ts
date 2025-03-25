@@ -59,6 +59,7 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   'ContainmentBayP1T6Unreal': 1121,
   'ContainmentBayZ1T9Unreal': 1157,
   'TheSingularityReactorUnreal': 1175,
+  'TheJadeStoaUnreal': 1239,
   // rename to something friendly/useful
   'TheMaskedCarnivale': 796,
   // 6.2 revamp
@@ -88,6 +89,9 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   'TheGhimlytDark64': 793,
   // 7.1 revamp
   'Halatali70': 162,
+  // 7.2 revamp
+  'TheSunkenTempleOfQarn71': 163,
+  'TheBorderlandRuinsSecure71': 376,
 };
 
 // This will override the data-soourced ContentType with our own value.
@@ -249,6 +253,22 @@ const _SYNTHETIC_ZONE_INFO: ZoneInfoType = {
     'offsetY': 0,
     'sizeFactor': 400,
     'weatherRate': 56,
+  },
+  1239: {
+    'contentType': 4,
+    'exVersion': 5,
+    'name': {
+      'cn': '白虎幻巧战',
+      'de': 'Traumprüfung - Byakko',
+      'en': 'The Jade Stoa (Unreal)',
+      'fr': 'La Clairière de Jade (irréel)',
+      'ja': '幻白虎征魂戦',
+      'ko': '환 백호 토벌전',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 400,
+    'weatherRate': 93,
   },
 
   // 6.2 updates - content removed/reworked
@@ -609,6 +629,39 @@ const _SYNTHETIC_ZONE_INFO: ZoneInfoType = {
     'offsetX': 0,
     'offsetY': 0,
     'sizeFactor': 200,
+    'weatherRate': 0,
+  },
+  // 7.2 updates - content removed/reworked
+  163: {
+    'contentType': 2,
+    'exVersion': 0,
+    'name': {
+      'cn': '(7.1)古代遗迹喀恩埋没圣堂',
+      'de': '(7.1)Versunkener Tempel von Qarn',
+      'en': '(7.1)The Sunken Temple of Qarn',
+      'fr': '(7.1)Le Temple enseveli de Qarn',
+      'ja': '(7.1)遺跡探索 カルン埋没寺院',
+      'ko': '(7.1)카른의 무너진 사원',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 200,
+    'weatherRate': 0,
+  },
+  376: {
+    'contentType': 6,
+    'exVersion': 0,
+    'name': {
+      'cn': '(7.1)周边遗迹群（阵地战）',
+      'de': '(7.1)Äußere Ruinen (Sicherung)',
+      'en': '(7.1)The Borderland Ruins (Secure)',
+      'fr': '(7.1)Les Ruines frontalières (annexion)',
+      'ja': '(7.1)外縁遺跡群 (制圧戦)',
+      'ko': '(7.1)외곽 유적지대(제압전)',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 100,
     'weatherRate': 0,
   },
 };

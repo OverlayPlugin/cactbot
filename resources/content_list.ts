@@ -126,6 +126,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TenderValley,
   ZoneId.TheStrayboroughDeadwalk,
   ZoneId.YuweyawataFieldStation,
+  ZoneId.TheUnderkeep,
 
   // Trials (A Realm Reborn)
   ZoneId.TheBowlOfEmbers,
@@ -246,12 +247,15 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.WorqorLarDor,
   ZoneId.Everkeep,
   ZoneId.TheInterphos,
+  ZoneId.Recollection,
 
   // High-end Trials (Dawntrail)
   ZoneId.WorqorLarDorExtreme,
   ZoneId.EverkeepExtreme,
   ZoneId.TheMinstrelsBalladSphenesBurden,
+  ZoneId.RecollectionExtreme,
   ZoneId.TheJadeStoaUnreal,
+  ZoneId.HellsKierUnreal,
 
   // Alliance Raids (A Realm Reborn)
   ZoneId.TheLabyrinthOfTheAncients,
@@ -419,12 +423,20 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.AacLightHeavyweightM2,
   ZoneId.AacLightHeavyweightM3,
   ZoneId.AacLightHeavyweightM4,
+  ZoneId.AacCruiserweightM1,
+  ZoneId.AacCruiserweightM2,
+  ZoneId.AacCruiserweightM3,
+  ZoneId.AacCruiserweightM4,
 
   // Savage Raids (Dawntrail)
   ZoneId.AacLightHeavyweightM1Savage,
   ZoneId.AacLightHeavyweightM2Savage,
   ZoneId.AacLightHeavyweightM3Savage,
   ZoneId.AacLightHeavyweightM4Savage,
+  ZoneId.AacCruiserweightM1Savage,
+  ZoneId.AacCruiserweightM2Savage,
+  ZoneId.AacCruiserweightM3Savage,
+  ZoneId.AacCruiserweightM4Savage,
 
   // Variant & Criterion Dungeons
   ZoneId.TheSildihnSubterrane,
