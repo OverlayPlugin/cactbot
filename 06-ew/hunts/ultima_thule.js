@@ -11,6 +11,7 @@ Options.Triggers.push({
   zoneId: ZoneId.UltimaThule,
   comments: {
     en: 'A Rank Hunts and Chi boss FATE',
+    de: 'A Rang Hohe Jagd und Chi Boss FATE',
     cn: 'A级狩猎怪和希特殊FATE',
   },
   triggers: [

@@ -11,6 +11,7 @@ Options.Triggers.push({
   },
   comments: {
     en: 'BLU Masked Carnivale Stages 1-32',
+    de: 'BLU Große Maskerade Stufe 1-32',
     cn: '青魔法师假面狂欢关卡 1-32',
   },
   triggers: [

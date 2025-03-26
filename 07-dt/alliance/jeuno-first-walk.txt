@@ -490,7 +490,7 @@ hideall "--sync--"
 30538.4 "Dragonfall 3 (stack)" #Ability { id: "A07F", source: "Ark Angel GK" }
 30558.8 "Arrogance Incarnate" Ability { id: "A087", source: "Ark Angel EV" }
 
-30577.6 "--MR Jump--" Ability { id: "A06A", source: "Ark Angel MR" } forcejump "angelLoop"
+30577.6 "--MR jump--" Ability { id: "A06A", source: "Ark Angel MR" } forcejump "angelLoop"
 
 
 # IGNORED ABILITIES

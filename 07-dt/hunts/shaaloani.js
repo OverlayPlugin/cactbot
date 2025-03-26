@@ -167,6 +167,7 @@ Options.Triggers.push({
   zoneId: ZoneId.Shaaloani,
   comments: {
     en: 'A Rank Hunts and Ttokrrone boss FATE',
+    de: 'A Rang Hohe Jagd und Ttokrrone Boss FATE',
     cn: 'A级狩猎怪和得酷热涅特殊FATE',
   },
   initData: () => ({

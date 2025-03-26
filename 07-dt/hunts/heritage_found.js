@@ -37,6 +37,7 @@ Options.Triggers.push({
   zoneId: ZoneId.HeritageFound,
   comments: {
     en: 'A Rank Hunts',
+    de: 'A Rang Hohe Jagd',
     cn: 'A级狩猎怪',
   },
   initData: () => ({

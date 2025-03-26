@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheLimitlessBlueExtreme,
   comments: {
     en: 'Mostly incomplete',
+    de: 'Größtenteils unvollständig',
     cn: '大部分未完成',
   },
   triggers: [

@@ -4,6 +4,7 @@ Options.Triggers.push({
   zoneId: ZoneId.Xelphatol,
   comments: {
     en: 'pre-6.3 rework',
+    de: 'Vor der 6.3 Überarbeitung',
     cn: '6.3改版前',
   },
   timelineFile: 'xelphatol.txt',
