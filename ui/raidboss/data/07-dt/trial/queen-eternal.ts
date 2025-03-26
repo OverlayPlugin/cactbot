@@ -395,7 +395,7 @@ const triggerSet: TriggerSet<Data> = {
         'Queen Eternal': 'Ewig(?:e|er|es|en) Königin',
       },
       'replaceText': {
-        '\\(abandonment\\)': '()',
+        '\\(abandonment\\)': '(Rote Dreiecke sammeln)',
         '\\(all\\)': '(alle)',
         '\\(cast\\)': '(wirken)',
         '\\(cones\\)': '(Kegel)',
