@@ -218,7 +218,7 @@ const triggerSet: TriggerSet<Data> = {
         en:
           `With a tower at Nael being position 1, rotating clockwise, your tower position. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> is position 7.`,
         de:
-          `Der Turm bei Nael ist Position 1, im Uhrzeigersinn rotierend wäre deine Turm-Position. z.B. H1 in &lt;a href="https://clees.me/guides/ucob/" target="_blank"&gt;Clees' guide&lt;/a&gt; bei Position 7.`,
+          `Der Turm bei Nael ist Position 1, im Uhrzeigersinn rotierend wäre deine Turm-Position. z.B. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> bei Position 7.`,
         cn:
           `以奈尔所在的塔为 1 号位时, 顺时针找塔。例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 号位。`,
         ko:
@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
           'Position 8': '7',
         },
         de: {
-          'Disable tower callout': 'disabled',
+          'Turm Ansage deaktivieren': 'disabled',
           'Position 1': '0',
           'Position 2': '1',
           'Position 3': '2',
