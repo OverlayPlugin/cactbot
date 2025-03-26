@@ -7,6 +7,8 @@ import { triggerOutputFunctions } from '../../resources/responses';
 import { translateRegex, translateRegexBuildParam } from '../../resources/translations';
 import UserConfig, {
   ConfigEntry,
+  ConfigEntryToDivMap,
+  ConfigIdToValueMap,
   ConfigValue,
   OptionsTemplate,
   UserFileCallback,
@@ -665,14 +667,35 @@ class RaidbossConfigurator {
           ],
         );
 
+        // Track the values of and html elements associated with each config entry,
+        // to be used for updating visibility/enablement of config entries.
+        // These are reset for each trigger set.
+        const values: ConfigIdToValueMap = {};
+        const elements: ConfigEntryToDivMap = new Map();
+
         for (const opt of info.triggerSet.config ?? []) {
           if (!this.base.developerOptions && opt.debugOnly)
             continue;
-          this.base.buildConfigEntry(userOptions, triggerSetConfig, opt, 'raidboss', [
-            kOptionKeys.triggerSetConfig,
-            info.triggerSet.id,
-          ]);
+          const ret = this.base.buildConfigEntry(
+            userOptions,
+            triggerSetConfig,
+            opt,
+            'raidboss',
+            [
+              kOptionKeys.triggerSetConfig,
+              info.triggerSet.id,
+            ],
+            elements,
+            values,
+          );
+
+          if (!ret)
+            continue;
+          elements.set(opt, ret.elements);
+          values[opt.id] = ret.value;
         }
+        // Once the group is fully created, process visibility settings.
+        this.base.updateVisibility(elements, values);
       }
 
       // Timeline editing is tied to a single, specific zoneId per file for now.

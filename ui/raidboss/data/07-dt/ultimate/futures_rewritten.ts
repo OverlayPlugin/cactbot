@@ -227,10 +227,10 @@ const triggerSet: TriggerSet<Data> = {
   id: 'FuturesRewrittenUltimate',
   zoneId: ZoneId.FuturesRewrittenUltimate,
   comments: {
-    en: 'Triggers: P1-3 / Timeline: P1-5',
-    de: 'Triggers: P1-3 / Timeline: P1-5',
-    cn: '触发器: P1-3 / 时间轴: P1-5',
-    ko: '트리거: P1-3 / 타임라인: P1-5',
+    en: 'Triggers: P1-4 / Timeline: P1-5',
+    de: 'Triggers: P1-4 / Timeline: P1-5',
+    cn: '触发器: P1-4 / 时间轴: P1-5',
+    ko: '트리거: P1-4 / 타임라인: P1-5',
   },
   config: [
     {
@@ -290,6 +290,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'P3 Ultimate Relativity',
         de: 'P3 Fatale Relativität',
+        cn: 'P3 时间压缩·绝',
       },
       type: 'select',
       options: {

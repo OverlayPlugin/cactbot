@@ -3,7 +3,13 @@ import { Lang } from '../../resources/languages';
 import { UnreachableCode } from '../../resources/not_reached';
 import { callOverlayHandler } from '../../resources/overlay_plugin_api';
 import Regexes from '../../resources/regexes';
-import UserConfig, { ConfigEntry, ConfigValue, OptionsTemplate } from '../../resources/user_config';
+import UserConfig, {
+  ConfigEntry,
+  ConfigEntryToDivMap,
+  ConfigIdToValueMap,
+  ConfigValue,
+  OptionsTemplate,
+} from '../../resources/user_config';
 import ZoneInfo from '../../resources/zone_info';
 import { BaseOptions } from '../../types/data';
 import { SavedConfig, SavedConfigEntry } from '../../types/event';
@@ -242,6 +248,25 @@ const getOptDefault = (opt: ConfigEntry, options: BaseOptions): ConfigValue => {
   if (typeof opt.default === 'function')
     return opt.default(options);
   return opt.default;
+};
+
+const getOptDisabled = (opt: ConfigEntry, values: ConfigIdToValueMap): boolean => {
+  if (typeof opt.disabled === 'function')
+    return opt.disabled(values);
+  return opt.disabled ?? false;
+};
+
+const getOptHidden = (opt: ConfigEntry, values: ConfigIdToValueMap): boolean => {
+  if (typeof opt.hidden === 'function')
+    return opt.hidden(values);
+  return opt.hidden ?? false;
+};
+
+// Returned by the various methods that create each config option.
+// `elements` are the [leftDiv, inputDiv] that correspond to that config option.
+type ConfigState = {
+  elements: [HTMLElement, HTMLElement];
+  value: ConfigValue;
 };
 
 // Annotations by userFileHandler (processRaidbossFiles) on triggers.
@@ -527,35 +552,40 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     group: string,
     path?: string[],
-  ): void {
+    elements?: ConfigEntryToDivMap,
+    values?: ConfigIdToValueMap,
+  ): ConfigState | null {
     // Note: `derivedOptions` here is the `RaidbossOptions` or `JobsOptions`
     // and may be different than `this.configOptions`.
+    let ret: ConfigState | null = null;
     switch (opt.type) {
       case 'checkbox':
-        this.buildCheckbox(derivedOptions, groupDiv, opt, group, path);
+        ret = this.buildCheckbox(derivedOptions, groupDiv, opt, group, path, elements, values);
         break;
       case 'html':
-        this.buildHtml(derivedOptions, groupDiv, opt, group, path);
+        // no need to pass `elements` or `values`, since there are no onchange() handlers
+        ret = this.buildHtml(derivedOptions, groupDiv, opt, group, path);
         break;
       case 'select':
-        this.buildSelect(derivedOptions, groupDiv, opt, group, path);
+        ret = this.buildSelect(derivedOptions, groupDiv, opt, group, path, elements, values);
         break;
       case 'float':
-        this.buildFloat(derivedOptions, groupDiv, opt, group, path);
+        ret = this.buildFloat(derivedOptions, groupDiv, opt, group, path, elements, values);
         break;
       case 'integer':
-        this.buildInteger(derivedOptions, groupDiv, opt, group, path);
+        ret = this.buildInteger(derivedOptions, groupDiv, opt, group, path, elements, values);
         break;
       case 'string':
-        this.buildString(derivedOptions, groupDiv, opt, group, path);
+        ret = this.buildString(derivedOptions, groupDiv, opt, group, path, elements, values);
         break;
       case 'directory':
-        this.buildDirectory(derivedOptions, groupDiv, opt, group, path);
+        ret = this.buildDirectory(derivedOptions, groupDiv, opt, group, path, elements, values);
         break;
       default:
         console.error(`unknown type: ${JSON.stringify(opt)}`);
         break;
     }
+    return ret;
   }
 
   // Top level UI builder, builds everything.
@@ -569,18 +599,41 @@ export class CactbotConfigurator {
       // Then iterate through all of its options and build ui for those options.
       // Give each options template a chance to build special ui.
       const groupDiv = this.buildOverlayGroup(container, group);
+
+      // Track the values of and html elements associated with each config entry,
+      // to be used for updating visibility/enablement of config entries.
+      // These are reset for each config group.
+      const values: ConfigIdToValueMap = {};
+      const elements: ConfigEntryToDivMap = new Map();
+
       for (const template of content) {
         const options = template.options ?? [];
         for (const opt of options) {
           if (!this.developerOptions && opt.debugOnly)
             continue;
-          this.buildConfigEntry(this.configOptions, groupDiv, opt, group);
+
+          const ret = this.buildConfigEntry(
+            this.configOptions,
+            groupDiv,
+            opt,
+            group,
+            undefined,
+            elements,
+            values,
+          );
+
+          if (!ret)
+            continue;
+          elements.set(opt, ret.elements);
+          values[opt.id] = ret.value;
         }
 
         const builder = template.buildExtraUI;
         if (builder)
           builder(this, groupDiv);
       }
+      // Once the group is fully created, process visibility settings immediately.
+      this.updateVisibility(elements, values);
     }
   }
 
@@ -639,12 +692,14 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     group: string,
     path?: string[],
-  ): void {
-    const div = document.createElement('div');
-    div.classList.add('option-input-container');
+    elements?: ConfigEntryToDivMap,
+    values?: ConfigIdToValueMap,
+  ): ConfigState {
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('option-input-container');
 
     const input = document.createElement('input');
-    div.appendChild(input);
+    inputDiv.appendChild(input);
     input.type = 'checkbox';
 
     const optDefault = getOptDefault(opt, options);
@@ -652,11 +707,19 @@ export class CactbotConfigurator {
     const optIdPath = [...path ?? [], opt.id];
     if (typeof optDefault !== 'boolean')
       console.error(`Invalid non-boolean default: ${group} ${optIdPath.join(' ')}`);
-    input.checked = this.getBooleanOption(group, optIdPath, defaultValue);
-    input.onchange = () => this.setOption(group, optIdPath, input.checked);
 
-    parent.appendChild(this.buildLeftDiv(opt));
-    parent.appendChild(div);
+    input.checked = this.getBooleanOption(group, optIdPath, defaultValue);
+    input.onchange = () => {
+      this.setOption(group, optIdPath, input.checked);
+      (values ??= {})[opt.id] = input.checked;
+      if (elements !== undefined)
+        this.updateVisibility(elements, values);
+    };
+
+    const leftDiv = this.buildLeftDiv(opt);
+    parent.appendChild(leftDiv);
+    parent.appendChild(inputDiv);
+    return { elements: [leftDiv, inputDiv], value: input.checked };
   }
 
   buildHtml(
@@ -665,14 +728,21 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     _group: string,
     _path?: string[],
-  ): void {
-    const div = document.createElement('div');
-    div.classList.add('option-input-container');
+    _elements?: ConfigEntryToDivMap,
+    _values?: ConfigIdToValueMap,
+  ): ConfigState {
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('option-input-container');
     if (opt.html)
-      div.innerHTML = this.translate(opt.html);
+      inputDiv.innerHTML = this.translate(opt.html);
 
-    parent.appendChild(this.buildLeftDiv(opt));
-    parent.appendChild(div);
+    const leftDiv = this.buildLeftDiv(opt);
+    parent.appendChild(leftDiv);
+    parent.appendChild(inputDiv);
+    // Return the elements so they can be tracked for visibility updates,
+    // but the value can just be 'html' since it's not an input field that
+    // can change or affect other configs.
+    return { elements: [leftDiv, inputDiv], value: 'html' };
   }
 
   buildDirectory(
@@ -681,20 +751,22 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     group: string,
     path?: string[],
-  ): void {
-    const div = document.createElement('div');
-    div.classList.add('option-input-container');
-    div.classList.add('input-dir-container');
+    elements?: ConfigEntryToDivMap,
+    values?: ConfigIdToValueMap,
+  ): ConfigState {
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('option-input-container');
+    inputDiv.classList.add('input-dir-container');
 
     const input = document.createElement('input');
     input.type = 'submit';
     input.value = this.translate(kDirectoryChooseButtonText);
     input.classList.add('input-dir-submit');
-    div.appendChild(input);
+    inputDiv.appendChild(input);
 
     const label = document.createElement('div');
     label.classList.add('input-dir-label');
-    div.appendChild(label);
+    inputDiv.appendChild(label);
 
     const setLabel = (str: string) => {
       if (str)
@@ -706,9 +778,11 @@ export class CactbotConfigurator {
     const optDefault = getOptDefault(opt, options);
     setLabel(this.getStringOption(group, optIdPath, optDefault.toString()));
 
-    parent.appendChild(this.buildLeftDiv(opt));
-    parent.appendChild(div);
+    const leftDiv = this.buildLeftDiv(opt);
+    parent.appendChild(leftDiv);
+    parent.appendChild(inputDiv);
 
+    let dir = '';
     input.onclick = async () => {
       // Prevent repeated clicks on the folder chooser.
       // callOverlayHandler is not synchronous.
@@ -724,14 +798,19 @@ export class CactbotConfigurator {
 
       input.disabled = false;
       if (result !== undefined) {
-        const dir = result.data ?? '';
-        if (dir !== prevValue)
+        dir = result.data ?? '';
+        if (dir !== prevValue) {
           this.setOption(group, optIdPath, dir);
+          (values ??= {})[opt.id] = dir;
+          if (elements !== undefined)
+            this.updateVisibility(elements, values);
+        }
         setLabel(dir);
       } else {
         console.error('cactbotChooseDirectory returned undefined');
       }
     };
+    return { elements: [leftDiv, inputDiv], value: dir };
   }
 
   buildSelect(
@@ -740,17 +819,24 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     group: string,
     path?: string[],
-  ): void {
-    const div = document.createElement('div');
-    div.classList.add('option-input-container');
+    elements?: ConfigEntryToDivMap,
+    values?: ConfigIdToValueMap,
+  ): ConfigState {
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('option-input-container');
 
     const input = document.createElement('select');
-    div.appendChild(input);
+    inputDiv.appendChild(input);
 
     const optIdPath = [...path ?? [], opt.id];
     const optDefault = getOptDefault(opt, options);
     const defaultValue = this.getOption(group, optIdPath, optDefault);
-    input.onchange = () => this.setOption(group, optIdPath, input.value);
+    input.onchange = () => {
+      this.setOption(group, optIdPath, input.value);
+      (values ??= {})[opt.id] = input.value;
+      if (elements !== undefined)
+        this.updateVisibility(elements, values);
+    };
 
     if (opt.options) {
       const innerOptions = this.translate(opt.options);
@@ -763,9 +849,10 @@ export class CactbotConfigurator {
         input.appendChild(elem);
       }
     }
-
-    parent.appendChild(this.buildLeftDiv(opt));
-    parent.appendChild(div);
+    const leftDiv = this.buildLeftDiv(opt);
+    parent.appendChild(leftDiv);
+    parent.appendChild(inputDiv);
+    return { elements: [leftDiv, inputDiv], value: input.value };
   }
 
   // FIXME: this could use some data validation if a user inputs non-floats.
@@ -775,12 +862,14 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     group: string,
     path?: string[],
-  ): void {
-    const div = document.createElement('div');
-    div.classList.add('option-input-container');
+    elements?: ConfigEntryToDivMap,
+    values?: ConfigIdToValueMap,
+  ): ConfigState {
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('option-input-container');
 
     const input = document.createElement('input');
-    div.appendChild(input);
+    inputDiv.appendChild(input);
     input.type = 'text';
     input.step = 'any';
     const optDefault = getOptDefault(opt, options);
@@ -791,12 +880,19 @@ export class CactbotConfigurator {
       optIdPath,
       parseFloat(optDefault.toString()),
     ).toString();
-    const setFunc = () => this.setOption(group, optIdPath, input.value);
-    input.onchange = setFunc;
-    input.oninput = setFunc;
+    const setAndUpdateFunc = () => {
+      this.setOption(group, optIdPath, input.value);
+      (values ??= {})[opt.id] = input.value;
+      if (elements !== undefined)
+        this.updateVisibility(elements, values);
+    };
+    input.onchange = setAndUpdateFunc;
+    input.oninput = setAndUpdateFunc;
 
-    parent.appendChild(this.buildLeftDiv(opt));
-    parent.appendChild(div);
+    const leftDiv = this.buildLeftDiv(opt);
+    parent.appendChild(leftDiv);
+    parent.appendChild(inputDiv);
+    return { elements: [leftDiv, inputDiv], value: input.value };
   }
 
   // FIXME: this could use some data validation if a user inputs non-integers.
@@ -806,12 +902,14 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     group: string,
     path?: string[],
-  ): void {
-    const div = document.createElement('div');
-    div.classList.add('option-input-container');
+    elements?: ConfigEntryToDivMap,
+    values?: ConfigIdToValueMap,
+  ): ConfigState {
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('option-input-container');
 
     const input = document.createElement('input');
-    div.appendChild(input);
+    inputDiv.appendChild(input);
     input.type = 'text';
     input.step = '1';
     const optDefault = getOptDefault(opt, options);
@@ -819,12 +917,19 @@ export class CactbotConfigurator {
     const optIdPath = [...path ?? [], opt.id];
     input.value = this.getNumberOption(group, optIdPath, parseInt(optDefault.toString()))
       .toString();
-    const setFunc = () => this.setOption(group, optIdPath, input.value);
-    input.onchange = setFunc;
-    input.oninput = setFunc;
+    const setAndUpdateFunc = () => {
+      this.setOption(group, optIdPath, input.value);
+      (values ??= {})[opt.id] = input.value;
+      if (elements !== undefined)
+        this.updateVisibility(elements, values);
+    };
+    input.onchange = setAndUpdateFunc;
+    input.oninput = setAndUpdateFunc;
 
-    parent.appendChild(this.buildLeftDiv(opt));
-    parent.appendChild(div);
+    const leftDiv = this.buildLeftDiv(opt);
+    parent.appendChild(leftDiv);
+    parent.appendChild(inputDiv);
+    return { elements: [leftDiv, inputDiv], value: input.value };
   }
 
   buildString(
@@ -833,13 +938,15 @@ export class CactbotConfigurator {
     opt: ConfigEntry,
     group: string,
     path?: string[],
-  ): void {
-    const div = document.createElement('div');
-    div.classList.add('option-input-container');
+    elements?: ConfigEntryToDivMap,
+    values?: ConfigIdToValueMap,
+  ): ConfigState {
+    const inputDiv = document.createElement('div');
+    inputDiv.classList.add('option-input-container');
 
     const input = document.createElement('input');
     input.classList.add('input-string-field');
-    div.appendChild(input);
+    inputDiv.appendChild(input);
 
     const optIdPath = [...path ?? [], opt.id];
     input.type = 'text';
@@ -850,12 +957,41 @@ export class CactbotConfigurator {
       optIdPath,
       optDefault.toString(),
     ).toString();
-    const setFunc = () => this.setOption(group, optIdPath, input.value);
-    input.onchange = setFunc;
-    input.oninput = setFunc;
+    const setAndUpdateFunc = () => {
+      this.setOption(group, optIdPath, input.value);
+      (values ??= {})[opt.id] = input.value;
+      if (elements !== undefined)
+        this.updateVisibility(elements, values);
+    };
+    input.onchange = setAndUpdateFunc;
+    input.oninput = setAndUpdateFunc;
 
-    parent.appendChild(this.buildLeftDiv(opt));
-    parent.appendChild(div);
+    const leftDiv = this.buildLeftDiv(opt);
+    parent.appendChild(leftDiv);
+    parent.appendChild(inputDiv);
+    return { elements: [leftDiv, inputDiv], value: input.value };
+  }
+
+  // Called once after each option-group's entries are created, and whenever any is changed.
+  // It will reprocess visibility settings for all options in that group.
+  updateVisibility(elements: ConfigEntryToDivMap, values: ConfigIdToValueMap): void {
+    for (const [entry, [leftDiv, inputDiv]] of elements.entries()) {
+      const isDisabled = getOptDisabled(entry, values);
+      const isHidden = getOptHidden(entry, values);
+
+      const inputs = inputDiv.querySelectorAll('input');
+      inputs.forEach((input) => input.disabled = isDisabled);
+      const selects = inputDiv.querySelectorAll('select');
+      selects.forEach((select) => select.disabled = isDisabled);
+
+      if (isHidden) {
+        leftDiv.style.display = 'none';
+        inputDiv.style.display = 'none';
+      } else {
+        leftDiv.style.display = 'grid';
+        inputDiv.style.display = 'grid';
+      }
+    }
   }
 
   processFiles<T extends ConfigLooseTriggerSet | ConfigLooseOopsyTriggerSet>(

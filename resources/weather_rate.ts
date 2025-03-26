@@ -2168,8 +2168,30 @@ const data: WeatherRateType = {
     ],
   },
   168: {
-    'rates': [],
-    'weathers': [],
+    'rates': [
+      10,
+      55,
+      70,
+      80,
+    ],
+    'weathers': [
+      'Clear Skies',
+      'Fair Skies',
+      'Clouds',
+      'Rain',
+    ],
+  },
+  169: {
+    'rates': [
+      15,
+      85,
+      100,
+    ],
+    'weathers': [
+      'Moon Dust',
+      'Fair Skies',
+      'Umbral Wind',
+    ],
   },
 };
 
