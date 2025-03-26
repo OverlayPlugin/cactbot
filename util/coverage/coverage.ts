@@ -28,30 +28,35 @@ const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
   sync: {
     en: 'Sync',
     de: 'Sync',
+    fr: 'Sync',
     cn: '同步',
     ko: '동기화',
   },
   code: {
     en: 'Code',
     de: 'Code',
+    fr: 'Code',
     cn: '代码',
     ko: '코드',
   },
   other: {
     en: 'Other',
     de: 'Anderes',
+    fr: 'Autre',
     cn: '其他',
     ko: '기타',
   },
   replaceSection: {
     en: 'Replace Section',
     de: 'Ersatz-Sektion',
+    fr: 'Remplacement de section',
     cn: '替换部分',
     ko: '타임라인 대체',
   },
   text: {
     en: 'Text',
     de: 'Text',
+    fr: 'Texte',
     cn: '文本',
     ko: '텍스트',
   },
@@ -77,6 +82,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
   '00-misc': {
     en: 'Misc',
     de: 'Diverses',
+    fr: 'Divers',
     cn: '杂项',
     ko: '기타',
   },
@@ -184,6 +190,7 @@ const contentTypeToLabel: {
     full: {
       en: 'Variant & Criterion Dungeon',
       de: 'Gewölbesuche',
+      fr: 'Donjons Variants et Critérions',
       cn: '多变&异闻迷宫',
       ko: '변형&파생던전',
     },
@@ -200,6 +207,7 @@ const contentTypeToLabel: {
     full: {
       en: 'Chaotic Alliance Raid',
       de: 'Chaotischer Allianz Raid',
+      fr: 'Raid Alliance Chaotique',
       ko: '멸 연합 레이드',
     },
     short: {
@@ -213,12 +221,14 @@ const contentTypeToLabel: {
     full: {
       en: 'The Masked Carnivale',
       de: 'Die Große Maskerade',
+      fr: 'Le carnaval masqué',
       cn: '假面狂欢',
       ko: '가면 무투회',
     },
     short: {
       en: 'BLU',
       de: 'BLAU',
+      fr: 'MBU',
       cn: '假面狂欢',
       ko: '청마',
     },
@@ -227,12 +237,14 @@ const contentTypeToLabel: {
     full: {
       en: 'Eureka',
       de: 'Eureka',
+      fr: 'Eureka',
       cn: '优雷卡',
       ko: '에우레카',
     },
     short: {
       en: 'Eureka',
       de: 'Eureka',
+      fr: 'Eureka',
       cn: '优雷卡',
       ko: '에우레카',
     },
@@ -241,6 +253,7 @@ const contentTypeToLabel: {
     full: {
       en: 'Save The Queen',
       de: 'Königinnenwache',
+      fr: 'Garde de la Reine',
       cn: '天佑女王',
       ko: '세이브 더 퀸',
     },
@@ -255,12 +268,14 @@ const contentTypeToLabel: {
     full: {
       en: 'Ocean Fishing/Diadem',
       de: 'Auf großer Fahrt/Diadem',
+      fr: 'Pèche océanique/Diadème',
       cn: '海钓/天上福地云冠群岛',
       ko: '먼바다 낚시/디아뎀',
     },
     short: {
       en: 'Diadem',
       de: 'Diadem',
+      fr: 'Diadème',
       cn: '海钓/空岛',
       ko: '디아뎀',
     },
@@ -269,12 +284,14 @@ const contentTypeToLabel: {
     full: {
       en: 'Treasure Hunt',
       de: 'Schatzsuche',
+      fr: 'Chasse au trésor',
       cn: '寻宝',
       ko: '보물찾기',
     },
     short: {
       en: 'Maps',
       de: 'Karten',
+      fr: 'Cartes',
       cn: '寻宝',
       ko: '지도',
     },
@@ -283,12 +300,14 @@ const contentTypeToLabel: {
     full: {
       en: 'Deep Dungeons',
       de: 'Tiefes Gewölbe',
+      fr: 'Donjons sans fond',
       cn: '深层迷宫',
       ko: '딥 던전',
     },
     short: {
       en: 'DD',
       de: 'TG',
+      fr: 'DSF',
       cn: '深宫',
       ko: '딥 던전',
     },
@@ -297,12 +316,14 @@ const contentTypeToLabel: {
     full: {
       en: 'PvP',
       de: 'PvP',
+      fr: 'PvP',
       cn: 'PvP',
       ko: 'PvP',
     },
     short: {
       en: 'PvP',
       de: 'PvP',
+      fr: 'PvP',
       cn: 'PvP',
       ko: 'PvP',
     },
@@ -361,12 +382,14 @@ const zoneGridHeaders = {
   releaseVersion: {
     en: 'Version',
     de: 'Version',
+    fr: 'Version',
     cn: '版本',
     ko: '버전',
   },
   comments: {
     en: 'Comments',
     de: 'Kommentare',
+    fr: 'Commentaires',
     cn: '备注',
     ko: '참고',
   },
@@ -423,6 +446,7 @@ const miscStrings = {
   unsupported: {
     en: 'Unsupported',
     de: 'Nicht unterstützt',
+    fr: 'Non supporté',
     cn: '尚不支持',
     ko: '지원하지 않음',
   },
@@ -430,6 +454,7 @@ const miscStrings = {
   unreleased: {
     en: 'Unreleased',
     de: 'Unveröffentlicht',
+    fr: 'Non publié',
     cn: '尚未发布',
     ko: '미배포',
   },
@@ -437,6 +462,7 @@ const miscStrings = {
   mergeDate: {
     en: 'Merge Date: ',
     de: 'Merge Datum: ',
+    fr: 'Date du merge :',
     cn: '合并日期: ',
     ko: '병합 날짜: ',
   },
@@ -444,60 +470,70 @@ const miscStrings = {
   releaseDate: {
     en: 'Release Date: ',
     de: 'Veröffentlichungs-Datum: ',
+    fr: 'Date de publication :',
     cn: '发布日期: ',
     ko: '배포 날짜: ',
   },
   raidbossTriggerCount: {
     en: 'Raidboss Trigger Count',
     de: 'Raidboss Trigger Anzahl',
+    fr: 'Total trigger Raidboss',
     cn: 'Raidboss触发器数量',
     ko: '레이드보스 트리거 수',
   },
   oopsyTriggerCount: {
     en: 'Oopsy Trigger Count',
     de: 'Oopsy Trigger Anzahl',
+    fr: 'Total trigger Oopsy',
     cn: 'Oopsy触发器数量',
     ko: 'Oopsy 트리거 수',
   },
   none: {
     en: 'None',
     de: 'Keine',
+    fr: 'Aucun',
     cn: '无',
     ko: '없음',
   },
   otherContentType: {
     en: 'Other Content',
     de: 'Andere Inhalte',
+    fr: 'Autre contenu',
     cn: '其他内容',
     ko: '기타 컨텐츠',
   },
   changesSinceLastRelease: {
     en: 'Changes since last release',
     de: 'Änderungen seit letztem Release',
+    fr: 'Modifications depuis la dernière release',
     cn: '自上次发布以来的更改',
     ko: '마지막 배포 이후 변경 사항',
   },
   timelineEntries: {
     en: 'Timeline Entries',
     de: 'Timeline Einträge',
+    fr: 'Entrées de la Timeline',
     cn: '时间轴条目',
     ko: '타임라인 항목 수',
   },
   timelineDuration: {
     en: 'Timeline Duration',
     de: 'Timeline Dauer',
+    fr: 'Durée de la Timeline',
     cn: '时间轴时长',
     ko: '타임라인 길이',
   },
   noTranslationInformation: {
     en: 'No Translation Information',
     de: 'Keine Informationen zur Übersetzung',
+    fr: 'Pas d\'informations de traduction',
     cn: '无翻译信息',
     ko: '번역 정보 없음',
   },
   linkToEntry: {
     en: 'Link to this entry',
     de: 'Link zum Eintrag',
+    fr: 'Lien vers cette entrée',
     cn: '此条目链接',
     ko: '이 항목으로의 링크',
   },
@@ -557,12 +593,14 @@ const themes: Record<ThemeKey, LocaleText> = {
   'light': {
     en: 'Light',
     de: 'Hell',
+    fr: 'Clair',
     cn: '浅色',
     ko: '라이트',
   },
   'dark': {
     en: 'Dark',
     de: 'Dunkel',
+    fr: 'Sombre',
     cn: '深色',
     ko: '다크',
   },
