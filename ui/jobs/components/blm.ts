@@ -9,9 +9,8 @@ import { BaseComponent, ComponentInterface } from './base';
 
 export class BLMComponent extends BaseComponent {
   thunderDot: TimerBox;
-  thunderProc: TimerBox;
-  fireProc: TimerBox;
   manafont: TimerBox;
+  amplifier: TimerBox;
   xenoStacks: HTMLElement[];
   heartStacks: HTMLElement[];
   astralSoulStacks: HTMLElement[];
@@ -27,20 +26,6 @@ export class BLMComponent extends BaseComponent {
     this.maxpoly = 0;
     this.umbralStacks = 0;
 
-    this.fireProc = this.bars.addProcBox({
-      id: 'blm-procs-fire',
-      fgColor: 'blm-color-fire',
-      threshold: 1000,
-    });
-    this.fireProc.bigatzero = false;
-
-    this.thunderProc = this.bars.addProcBox({
-      id: 'blm-procs-thunder',
-      fgColor: 'blm-color-thunder',
-      threshold: 1000,
-    });
-    this.thunderProc.bigatzero = false;
-
     this.thunderDot = this.bars.addProcBox({
       id: 'blm-dot-thunder',
       fgColor: 'blm-color-dot',
@@ -50,6 +35,11 @@ export class BLMComponent extends BaseComponent {
     this.manafont = this.bars.addProcBox({
       id: 'blm-cd-manafont',
       fgColor: 'blm-color-manafont',
+    });
+
+    this.amplifier = this.bars.addProcBox({
+      id: 'blm-cd-amplifier',
+      fgColor: 'blm-color-amplifier',
     });
 
     // It'd be super nice to use grid here.
@@ -122,17 +112,15 @@ export class BLMComponent extends BaseComponent {
         break;
       case kAbility.Manafont:
         this.manafont.duration = this.player.level >= 84 ? 100 : 120;
+        break;
+      case kAbility.Amplifier:
+        this.amplifier.duration = 120;
+        break;
     }
   }
 
-  override onYouGainEffect(id: string, matches: PartialFieldMatches<'GainsEffect'>): void {
+  override onYouGainEffect(id: string): void {
     switch (id) {
-      case EffectId.Thunderhead:
-        this.thunderProc.duration = parseFloat(matches.duration ?? '0') - 0.5;
-        break;
-      case EffectId.Firestarter:
-        this.fireProc.duration = parseFloat(matches.duration ?? '0');
-        break;
       case EffectId.CircleOfPower:
         this.player.speedBuffs.circleOfPower = true;
         break;
@@ -141,12 +129,6 @@ export class BLMComponent extends BaseComponent {
 
   override onYouLoseEffect(id: string): void {
     switch (id) {
-      case EffectId.Thunderhead:
-        this.thunderProc.duration = 0;
-        break;
-      case EffectId.Firestarter:
-        this.fireProc.duration = 0;
-        break;
       case EffectId.CircleOfPower:
         this.player.speedBuffs.circleOfPower = false;
         break;
@@ -183,18 +165,17 @@ export class BLMComponent extends BaseComponent {
     }
 
     const stacks = jobDetail.umbralStacks;
-    const seconds = Math.ceil(jobDetail.umbralMilliseconds / 1000.0).toString();
     const p = this.umbralTimer.parentNode;
     if (!stacks) {
       this.umbralTimer.innerText = '';
       p.classList.remove('fire');
       p.classList.remove('ice');
     } else if (stacks > 0) {
-      this.umbralTimer.innerText = seconds;
+      this.umbralTimer.innerText = stacks.toString();
       p.classList.add('fire');
       p.classList.remove('ice');
     } else {
-      this.umbralTimer.innerText = seconds;
+      this.umbralTimer.innerText = stacks.toString();
       p.classList.remove('fire');
       p.classList.add('ice');
     }
@@ -242,9 +223,8 @@ export class BLMComponent extends BaseComponent {
 
   override reset(): void {
     this.thunderDot.duration = 0;
-    this.thunderProc.duration = 0;
-    this.fireProc.duration = 0;
     this.manafont.duration = 0;
+    this.amplifier.duration = 0;
 
     this.umbralStacks = 0;
   }
