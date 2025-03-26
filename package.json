@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.33.9",
-  "releaseSummary": "cn 7.11, ko 7.1, i18n, FRU fixes.",
+  "version": "0.34.0",
+  "releaseSummary": "7.2 support",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
