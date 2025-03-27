@@ -27,7 +27,7 @@ import WidgetList from '../../resources/widget_list';
 import { NetMatches } from '../../types/net_matches';
 
 import { kAbility } from './constants';
-// import { FfxivVersion } from './jobs';
+import { FfxivVersion } from './jobs';
 import { JobsOptions } from './jobs_options';
 import { makeAuraTimerIcon } from './utils';
 
@@ -273,7 +273,7 @@ export class BuffTracker {
     private leftBuffDiv: WidgetList,
     private rightBuffDiv: WidgetList,
     private partyTracker: PartyTracker,
-    // private ffxivVersion: FfxivVersion,
+    private ffxivVersion: FfxivVersion,
   ) {
     this.options = options;
     this.playerName = playerName;
@@ -566,23 +566,14 @@ export class BuffTracker {
       },
     };
 
-    // const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
-    //   balance: {
-    //     // 6% damage bonus for melee
-    //     gainEffect: [EffectId.TheBalance_75A],
-    //     loseEffect: [EffectId.TheBalance_75A],
-    //     useEffectDuration: true,
-    //     icon: balanceImage,
-    //     // Orange.
-    //     borderColor: '#ff9900',
-    //     sortKey: 3,
-    //   },
-    // };
+    const old: { [s: string]: Omit<BuffInfo, 'name'> } = {
+      // overwrite old raidbuff here
+    };
 
-    // if (this.ffxivVersion < 700) {
-    //   for (const [key, entry] of Object.entries(v650))
-    //     this.buffInfo[key] = entry;
-    // }
+    if (this.ffxivVersion < 700) {
+      for (const [key, entry] of Object.entries(old))
+        this.buffInfo[key] = entry;
+    }
 
     this.gainEffectMap = {};
     this.loseEffectMap = {};
