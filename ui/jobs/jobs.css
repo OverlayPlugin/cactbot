@@ -261,6 +261,7 @@ div.justbuffs div#procs-container {
 .brd #right-side-icons,
 .mch #right-side-icons,
 .dnc #right-side-icons,
+.blm #right-side-icons,
 .smn #right-side-icons,
 .rdm #right-side-icons,
 .pct #right-side-icons {
@@ -498,6 +499,18 @@ div.justbuffs div#procs-container {
 
 #blm-stacks-astral-souls > div.active {
   background-color: rgb(255 40 0);
+}
+
+#blm-stacks-firestarter.active {
+  background-color: rgb(217 51 0);
+}
+
+#blm-stacks-thunderhead.active {
+  background-color: rgb(64 65 163);
+}
+
+#blm-stacks-paradox.active {
+  background-color: linear-gradient(rgb(229 56 53) 0%, white 50%, rgb(30 80 245) 100%);
 }
 
 #smn-stacks-ruin4 > div.active {
@@ -1355,6 +1368,14 @@ div.justbuffs div#procs-container {
 .blm-xeno-timer.pulse {
   box-shadow: 0 0 0 0 rgb(200 50 200 / 100%);
   animation: pulse 1s infinite;
+}
+
+.blm-astral-souls {
+  background-color: rgb(255 40 0 0.4);
+}
+
+.blm-astral-souls.max {
+  background-color: rgb(255 40 0);
 }
 
 /* SMN */
