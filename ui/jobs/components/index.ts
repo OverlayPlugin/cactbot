@@ -243,7 +243,7 @@ export class ComponentManager {
           this.bars.o.leftBuffsList,
           this.bars.o.rightBuffsList,
           this.partyTracker,
-          // this.ffxivVersion,
+          this.ffxivVersion,
         );
       }
 
