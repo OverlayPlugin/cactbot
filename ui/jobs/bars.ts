@@ -8,11 +8,7 @@ import WidgetList, { Toward } from '../../resources/widget_list';
 import { Job } from '../../types/job';
 
 import { ShouldShow } from './components/base';
-import {
-  kMPCombatRate,
-  kMPNormalRate,
-  kMPTickInterval,
-} from './constants';
+import { kMPCombatRate, kMPNormalRate, kMPTickInterval } from './constants';
 import { JobsEventEmitter } from './event_emitter';
 import { FfxivVersion } from './jobs';
 import './jobs_config';
