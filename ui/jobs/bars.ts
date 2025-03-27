@@ -12,9 +12,6 @@ import {
   kMPCombatRate,
   kMPNormalRate,
   kMPTickInterval,
-  kMPUI1Rate,
-  kMPUI2Rate,
-  kMPUI3Rate,
 } from './constants';
 import { JobsEventEmitter } from './event_emitter';
 import { FfxivVersion } from './jobs';
@@ -599,18 +596,9 @@ export class Bars {
     this.o.mpTicker.stylefill = 'fill';
 
     const baseTick = data.inCombat ? kMPCombatRate : kMPNormalRate;
-    let umbralTick = 0;
     data.umbralStacks ??= 0;
-    if (data.umbralStacks === -1)
-      umbralTick = kMPUI1Rate;
-    if (data.umbralStacks === -2)
-      umbralTick = kMPUI2Rate;
-    if (data.umbralStacks === -3)
-      umbralTick = kMPUI3Rate;
 
-    const mpTick = data.ffxivVersion < 700
-      ? Math.floor(data.maxMp * baseTick) + Math.floor(data.maxMp * umbralTick)
-      : data.maxMp * baseTick;
+    const mpTick = data.maxMp * baseTick;
     if (delta === mpTick && data.umbralStacks <= 0) // MP ticks disabled in AF
       this.o.mpTicker.duration = kMPTickInterval;
 
