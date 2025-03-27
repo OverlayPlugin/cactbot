@@ -29,11 +29,14 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.MiddleLaNoscea,
   zoneLabel: {
     en: 'Cactbot Test Triggers',
+    de: 'Cactbot Test Trigger',
     cn: 'Cactbot测试触发器',
   },
   comments: {
     en:
       'Testing/troubleshooting triggers (See: <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>)',
+    de:
+      'Testen/Fehlerbehebung der Tigger (Siehe: <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Sommerfurt-Höfe Raidboss Test</a>)',
     cn:
       '测试/排错触发器（参见：<a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>',
   },
@@ -469,6 +472,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Trigger countdown test',
+          de: 'Trigger countdown test',
           cn: '触发器倒计时测试',
           ko: '트리거 카운트다운 테스트',
         },

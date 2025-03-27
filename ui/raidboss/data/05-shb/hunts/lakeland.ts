@@ -13,6 +13,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.Lakeland,
   comments: {
     en: 'A Rank Hunts',
+    de: 'A Rang Hohe Jagd',
     cn: 'A级狩猎怪',
   },
   triggers: [

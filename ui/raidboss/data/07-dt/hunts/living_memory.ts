@@ -136,6 +136,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.LivingMemory,
   comments: {
     en: 'A Rank Hunts and Mica the Magical Mu boss FATE',
+    de: 'A Rang Hohe Jagd und Mica das Magische Mu Boss FATE',
     cn: 'A级狩猎怪和亩鼠米卡特殊FATE',
   },
   initData: () => ({

@@ -10,6 +10,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheForbiddenLandEurekaPyros,
   comments: {
     en: 'Mostly incomplete',
+    de: 'Größtenteils unvollständig',
     cn: '大部分未完成',
   },
   resetWhenOutOfCombat: false,

@@ -217,6 +217,8 @@ const triggerSet: TriggerSet<Data> = {
       comment: {
         en:
           `With a tower at Nael being position 1, rotating clockwise, your tower position. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> is position 7.`,
+        de:
+          `Der Turm bei Nael ist Position 1, im Uhrzeigersinn rotierend wäre deine Turm-Position. z.B. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> bei Position 7.`,
         cn:
           `以奈尔所在的塔为 1 号位时, 顺时针找塔。例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 号位。`,
         ko:
@@ -224,6 +226,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       name: {
         en: 'P3 Heavensfall Tower Position',
+        de: 'P3 Himmelssturz Turm Position',
         cn: 'P3 天地塔位置',
         ko: '3페이즈 천지붕괴 기둥 위치',
       },
@@ -231,6 +234,17 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'Disable tower callout': 'disabled',
+          'Position 1': '0',
+          'Position 2': '1',
+          'Position 3': '2',
+          'Position 4': '3',
+          'Position 5': '4',
+          'Position 6': '5',
+          'Position 7': '6',
+          'Position 8': '7',
+        },
+        de: {
+          'Turm Ansage deaktivieren': 'disabled',
           'Position 1': '0',
           'Position 2': '1',
           'Position 3': '2',
@@ -1371,11 +1385,13 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         twinOnPlayer: {
           en: '${player} Bait Twin (${dir})',
+          de: '${player} Köder Twintania (${dir})',
           cn: '${player} 诱导双塔尼亚 (${dir})',
           ko: '${player} 트윈타니아 유도 (${dir})',
         },
         twinOnUnknown: {
           en: '${unknown} Bait Twin (${dir})',
+          de: '${unknown} Köder Twintania (${dir})',
           cn: '${unknown} 诱导双塔尼亚 (${dir})',
           ko: '${unknown} 트윈타니아 유도 (${dir})',
         },
@@ -1731,6 +1747,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tower: {
           en: 'Tower: ${dir}',
+          de: 'Turm: ${dir}',
           cn: '塔: ${dir}',
           ko: '기둥: ${dir}',
         },
@@ -1991,11 +2008,13 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         text: {
           en: 'Exaflares ${dir1} -> ${dir2}',
+          de: 'Exaflares ${dir1} -> ${dir2}',
           cn: '百京核爆 ${dir1} -> ${dir2}',
           ko: '엑사플레어 ${dir1} -> ${dir2}',
         },
         tts: {
           en: 'Exaflares ${dir1} towards ${dir2}',
+          de: 'Exaflares ${dir1} nach ${dir2}',
           cn: '百京核爆 从 ${dir1} 到 ${dir2}',
           ko: '엑사플레어 ${dir1}에서 ${dir2}',
         },
@@ -2009,6 +2028,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread (Enrage)',
+          de: 'Verteilen (Finalangriff)',
           cn: '分散 (狂暴)',
           ko: '산개 (전멸기)',
         },

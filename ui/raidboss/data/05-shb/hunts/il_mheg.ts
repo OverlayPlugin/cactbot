@@ -10,6 +10,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.IlMheg,
   comments: {
     en: 'A Rank Hunts',
+    de: 'A Rang Hohe Jagd',
     cn: 'A级狩猎怪',
   },
   triggers: [

@@ -14,6 +14,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.MatchAll,
   comments: {
     en: 'General triggers for all occasions and zones',
+    de: 'Allgemeine Trigger für alle Anlässe und Zonen',
     cn: '适用于所有场合和区域的通用触发器',
   },
   triggers: [
