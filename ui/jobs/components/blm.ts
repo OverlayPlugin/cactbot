@@ -203,7 +203,7 @@ export class BLMComponent extends BaseComponent {
       p.classList.add('fire');
       p.classList.remove('ice');
     } else {
-      this.umbralTimer.innerText = stacks.toString();
+      this.umbralTimer.innerText = Math.abs(stacks).toString();
       p.classList.remove('fire');
       p.classList.add('ice');
     }
