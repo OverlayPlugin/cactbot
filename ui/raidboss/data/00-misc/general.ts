@@ -15,6 +15,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'General triggers for all occasions and zones',
     de: 'Allgemeine Trigger für alle Anlässe und Zonen',
+    fr: 'Triggers généraux pour toutes les occasions et zones',
     cn: '适用于所有场合和区域的通用触发器',
   },
   triggers: [
@@ -37,7 +38,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Provoke: ${player}',
           de: 'Herausforderung: ${player}',
-          fr: 'Provocation: ${player}',
+          fr: 'Provocation : ${player}',
           ja: '挑発: ${player}',
           cn: '挑衅: ${player}',
           ko: '도발: ${player}',
@@ -66,7 +67,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Provoke: ${player}',
           de: 'Herausforderung: ${player}',
-          fr: 'Provocation: ${player}',
+          fr: 'Provocation : ${player}',
           ja: '挑発: ${player}',
           cn: '挑衅: ${player}',
           ko: '도발: ${player}',
@@ -74,7 +75,7 @@ const triggerSet: TriggerSet<Data> = {
         noTarget: {
           en: 'Provoke: ${player} (missed)',
           de: 'Herausforderung: ${player} (verfehlt)',
-          fr: 'Provocation: ${player} (manquée)',
+          fr: 'Provocation : ${player} (manquée)',
           ja: '挑発: ${player} (タゲなし)',
           cn: '挑衅: ${player} (无目标)',
           ko: '도발: ${player} (빗나감)',
@@ -99,7 +100,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Shirk: ${player}',
           de: 'Geteiltes Leid: ${player}',
-          fr: 'Dérobade: ${player}',
+          fr: 'Dérobade : ${player}',
           ja: 'シャーク: ${player}',
           cn: '退避: ${player}',
           ko: '기피: ${player}',
@@ -124,7 +125,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Holmgang: ${player}',
           de: 'Holmgang: ${player}',
-          fr: 'Holmgang: ${player}',
+          fr: 'Holmgang : ${player}',
           ja: 'ホルムギャング: ${player}',
           cn: '死斗: ${player}',
           ko: '일대일 결투: ${player}',
@@ -149,7 +150,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Hallowed: ${player}',
           de: 'Heiliger Boden: ${player}',
-          fr: 'Invincible: ${player}',
+          fr: 'Invincible : ${player}',
           ja: 'インビンシブル: ${player}',
           cn: '神圣领域: ${player}',
           ko: '천하무적: ${player}',
@@ -174,7 +175,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bolide: ${player}',
           de: 'Meteoritenfall: ${player}',
-          fr: 'Bolide: ${player}',
+          fr: 'Bolide : ${player}',
           ja: 'ボーライド: ${player}',
           cn: '超火流星: ${player}',
           ko: '폭발 유성: ${player}',
@@ -199,7 +200,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Living: ${player}',
           de: 'Totenerweckung: ${player}',
-          fr: 'Mort-vivant: ${player}',
+          fr: 'Mort-vivant : ${player}',
           ja: 'リビングデッド: ${player}',
           cn: '行尸走肉: ${player}',
           ko: '산송장: ${player}',
@@ -224,7 +225,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Walking: ${player}',
           de: 'Erweckter: ${player}',
-          fr: 'Marcheur des limbes: ${player}',
+          fr: 'Marcheur des limbes : ${player}',
           ja: 'ウォーキングデッド: ${player}',
           cn: '死而不僵: ${player}',
           ko: '움직이는 시체: ${player}',

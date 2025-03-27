@@ -12,6 +12,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'pre-6.5 rework',
     de: 'Vor der 6.5 Überarbeitung',
+    fr: 'Avant le remaniement 6.5',
     cn: '6.5改版前',
   },
   timelineFile: 'drowned_city_of_skalla.txt',
