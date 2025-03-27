@@ -12,6 +12,7 @@ Options.Triggers.push({
   zoneLabel: {
     en: 'Cactbot Test Triggers',
     de: 'Cactbot Test Trigger',
+    fr: 'Test des triggers Cactbot',
     cn: 'Cactbot测试触发器',
   },
   comments: {
@@ -19,6 +20,8 @@ Options.Triggers.push({
       'Testing/troubleshooting triggers (See: <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>)',
     de:
       'Testen/Fehlerbehebung der Tigger (Siehe: <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Sommerfurt-Höfe Raidboss Test</a>)',
+    fr:
+      'Test/Dépannage des triggers (voir : <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Vergers d\'Estival Raidboss Test</a>)',
     cn:
       '测试/排错触发器（参见：<a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>',
   },
@@ -455,6 +458,7 @@ Options.Triggers.push({
         text: {
           en: 'Trigger countdown test',
           de: 'Trigger countdown test',
+          fr: 'Test de décompte des triggers',
           cn: '触发器倒计时测试',
           ko: '트리거 카운트다운 테스트',
         },
@@ -511,7 +515,7 @@ Options.Triggers.push({
         'cactbot test response': 'cactbot test de réponse',
         'cactbot test watch': 'cactbot test d\'observation',
         'cactbot test config': 'test de configuration de cactbot',
-        'cactbot test combatant cast': 'test d\'incantation d\'un combatant',
+        'cactbot test combatant cast': 'test d\'incantation d\'un combattant',
         'cactbot test outputStrings': 'cactbot test outputStrings',
         'testNetRegexTimeline': 'testNetRegexTimeline',
         'You bid farewell to the striking dummy':

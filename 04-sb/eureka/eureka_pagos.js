@@ -4,6 +4,7 @@ Options.Triggers.push({
   comments: {
     en: 'Inactivity warning only',
     de: 'Nur Inaktivitätswarnung',
+    fr: 'Avertissement d\'inactivité uniquement',
     cn: '只有无操作警告',
   },
   resetWhenOutOfCombat: false,

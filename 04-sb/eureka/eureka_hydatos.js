@@ -4,6 +4,7 @@ Options.Triggers.push({
   comments: {
     en: 'Baldesion Arsenal triggers/timelines only',
     de: 'Nur Baldesion Arsenal Trigger/Timeline ',
+    fr: 'Triggers/Timeline pour l\'Arsenal de Baldesion uniquement',
     cn: '只有BA (巴尔德西昂兵武塔) 触发器/时间轴',
   },
   timelineFile: 'eureka_hydatos.txt',

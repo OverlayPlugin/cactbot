@@ -12,6 +12,7 @@ Options.Triggers.push({
   comments: {
     en: 'pre-6.4 rework',
     de: 'Vor der 6.4 Überarbeitung',
+    fr: 'Avant le remaniement 6.4',
     cn: '6.4改版前',
   },
   triggers: [

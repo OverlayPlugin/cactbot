@@ -3,6 +3,7 @@ Options.Triggers.push({
   zoneId: ZoneId.TheSunkenTempleOfQarn,
   comments: {
     en: 'pre-7.2 rework',
+    fr: 'Avant le remaniement 7.2',
   },
   triggers: [
     {

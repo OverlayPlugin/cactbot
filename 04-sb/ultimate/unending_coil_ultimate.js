@@ -151,6 +151,8 @@ Options.Triggers.push({
           `With a tower at Nael being position 1, rotating clockwise, your tower position. e.g. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> is position 7.`,
         de:
           `Der Turm bei Nael ist Position 1, im Uhrzeigersinn rotierend wäre deine Turm-Position. z.B. H1 in <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> bei Position 7.`,
+        fr:
+          `Avec la tour de Nael en position 1, en tournant dans le sens horaire, la position de votre tour est la suivante. Ex : H1 dans <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> est à la position 7.`,
         cn:
           `以奈尔所在的塔为 1 号位时, 顺时针找塔。例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 号位。`,
         ko:
@@ -159,6 +161,7 @@ Options.Triggers.push({
       name: {
         en: 'P3 Heavensfall Tower Position',
         de: 'P3 Himmelssturz Turm Position',
+        fr: 'Position tour P3 Destruction Universelle',
         cn: 'P3 天地塔位置',
         ko: '3페이즈 천지붕괴 기둥 위치',
       },
@@ -1300,12 +1303,14 @@ Options.Triggers.push({
         twinOnPlayer: {
           en: '${player} Bait Twin (${dir})',
           de: '${player} Köder Twintania (${dir})',
+          fr: '${player} attire Twintania (${dir})',
           cn: '${player} 诱导双塔尼亚 (${dir})',
           ko: '${player} 트윈타니아 유도 (${dir})',
         },
         twinOnUnknown: {
           en: '${unknown} Bait Twin (${dir})',
           de: '${unknown} Köder Twintania (${dir})',
+          fr: '${unknown} attire Twintania (${dir})',
           cn: '${unknown} 诱导双塔尼亚 (${dir})',
           ko: '${unknown} 트윈타니아 유도 (${dir})',
         },
@@ -1644,6 +1649,7 @@ Options.Triggers.push({
         tower: {
           en: 'Tower: ${dir}',
           de: 'Turm: ${dir}',
+          fr: 'Tour : ${dir}',
           cn: '塔: ${dir}',
           ko: '기둥: ${dir}',
         },
@@ -1890,12 +1896,14 @@ Options.Triggers.push({
         text: {
           en: 'Exaflares ${dir1} -> ${dir2}',
           de: 'Exaflares ${dir1} -> ${dir2}',
+          fr: 'Brasiers ${dir1} -> ${dir2}',
           cn: '百京核爆 ${dir1} -> ${dir2}',
           ko: '엑사플레어 ${dir1} -> ${dir2}',
         },
         tts: {
           en: 'Exaflares ${dir1} towards ${dir2}',
           de: 'Exaflares ${dir1} nach ${dir2}',
+          fr: 'Brasiers ${dir1} vers ${dir2}',
           cn: '百京核爆 从 ${dir1} 到 ${dir2}',
           ko: '엑사플레어 ${dir1}에서 ${dir2}',
         },
@@ -1910,6 +1918,7 @@ Options.Triggers.push({
         text: {
           en: 'Spread (Enrage)',
           de: 'Verteilen (Finalangriff)',
+          fr: 'Dispersion (Enrage)',
           cn: '分散 (狂暴)',
           ko: '산개 (전멸기)',
         },
