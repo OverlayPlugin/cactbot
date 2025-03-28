@@ -135,18 +135,12 @@ export class BRDComponent extends BaseComponent {
       this.repertoireBox.innerText = '';
       this.repertoireBox.parentNode.classList.add('ballad');
       this.songBox.fg = computeBackgroundColorFrom(this.songBox, 'brd-color-song.ballad');
-      if (this.ffxivVersion < 700)
-        this.songBox.threshold = 14;
-      else
-        this.songBox.threshold = 5;
+      this.songBox.threshold = 5;
     } else if (jobDetail.songName === 'Paeon') {
       this.repertoireBox.innerText = jobDetail.songProcs.toString();
       this.repertoireBox.parentNode.classList.add('paeon');
       this.songBox.fg = computeBackgroundColorFrom(this.songBox, 'brd-color-song.paeon');
-      if (this.ffxivVersion < 700)
-        this.songBox.threshold = 3;
-      else
-        this.songBox.threshold = 15;
+      this.songBox.threshold = 15;
     }
 
     if (this.songBox.duration === null)
@@ -192,8 +186,6 @@ export class BRDComponent extends BaseComponent {
         this.hawkeyeselapsed = 0;
         break;
       case EffectId.Barrage_80: {
-        if (this.ffxivVersion < 700)
-          break;
         if (this.hawkeyeselapsed !== 31)
           this.hawkeyeselapsed = this.straightShotProc.elapsed;
         this.straightShotProc.duration = 10;
@@ -226,8 +218,6 @@ export class BRDComponent extends BaseComponent {
         this.hawkeyeselapsed = 31;
         break;
       case EffectId.Barrage_80:
-        if (this.ffxivVersion < 700)
-          break;
         this.straightShotProc.duration = 31 - this.hawkeyeselapsed - this.straightShotProc.elapsed;
         break;
       case EffectId.ArmysMuse:

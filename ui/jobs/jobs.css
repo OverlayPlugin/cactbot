@@ -248,12 +248,12 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for no resource box */
+.ast #right-side-icons,
 .blu #right-side-icons {
   left: 204px;
 }
 
 /* Space for 2 resource boxes */
-.drg #right-side-icons,
 .nin #right-side-icons,
 .sam #right-side-icons,
 .rpr #right-side-icons,
@@ -268,6 +268,7 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 1 big resource box */
+.pld #right-side-icons,
 .drk #right-side-icons,
 .whm #right-side-icons,
 .sge #right-side-icons {
@@ -275,9 +276,7 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 2 big resource box */
-.pld #right-side-icons,
-.sch #right-side-icons,
-.ast #right-side-icons {
+.sch #right-side-icons {
   left: 288px;
 }
 
@@ -1097,7 +1096,7 @@ div.justbuffs div#procs-container {
   background-color: rgb(10 40 160);
 }
 
-.sam-color-tsubamegaeshi {
+.sam-color-ikishoten {
   background-color: rgb(150 100 230);
 }
 
