@@ -287,6 +287,7 @@ export const kAbility = {
   Manafont: '9E',
   HighThunder1: '907A',
   HighThunder2: '907B',
+  Amplifier: '64C4',
   // SMN
   EnergyDrain: '407C',
   EnergySiphon: '407E',

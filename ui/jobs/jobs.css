@@ -248,12 +248,12 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for no resource box */
+.ast #right-side-icons,
 .blu #right-side-icons {
   left: 204px;
 }
 
 /* Space for 2 resource boxes */
-.drg #right-side-icons,
 .nin #right-side-icons,
 .sam #right-side-icons,
 .rpr #right-side-icons,
@@ -261,6 +261,7 @@ div.justbuffs div#procs-container {
 .brd #right-side-icons,
 .mch #right-side-icons,
 .dnc #right-side-icons,
+.blm #right-side-icons,
 .smn #right-side-icons,
 .rdm #right-side-icons,
 .pct #right-side-icons {
@@ -268,6 +269,7 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 1 big resource box */
+.pld #right-side-icons,
 .drk #right-side-icons,
 .whm #right-side-icons,
 .sge #right-side-icons {
@@ -275,9 +277,7 @@ div.justbuffs div#procs-container {
 }
 
 /* Space for 2 big resource box */
-.pld #right-side-icons,
-.sch #right-side-icons,
-.ast #right-side-icons {
+.sch #right-side-icons {
   left: 288px;
 }
 
@@ -493,12 +493,28 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 50 200);
 }
 
+#blm-stacks-proc {
+  margin-top: 2px;
+}
+
 #blm-stacks-astral-souls {
   margin-top: 2px;
 }
 
 #blm-stacks-astral-souls > div.active {
   background-color: rgb(255 40 0);
+}
+
+#blm-stacks-firestarter.active {
+  background-color: rgb(217 51 0);
+}
+
+#blm-stacks-thunderhead.active {
+  background-color: rgb(64 65 163);
+}
+
+#blm-stacks-paradox.active {
+  background: linear-gradient(90deg, rgb(229 56 53) 0%, white 50%, rgb(30 80 245) 100%);
 }
 
 #smn-stacks-ruin4 > div.active {
@@ -1097,7 +1113,7 @@ div.justbuffs div#procs-container {
   background-color: rgb(10 40 160);
 }
 
-.sam-color-tsubamegaeshi {
+.sam-color-ikishoten {
   background-color: rgb(150 100 230);
 }
 
@@ -1304,11 +1320,15 @@ div.justbuffs div#procs-container {
 }
 
 .blm-color-dot {
-  background-color: rgb(200 110 245);
+  background-color: #924dfe;
 }
 
 .blm-color-manafont {
   background-color: rgb(110 186 245);
+}
+
+.blm-color-amplifier {
+  background-color: #e050b5;
 }
 
 .blm-color-fire {
@@ -1352,6 +1372,14 @@ div.justbuffs div#procs-container {
 .blm-xeno-timer.pulse {
   box-shadow: 0 0 0 0 rgb(200 50 200 / 100%);
   animation: pulse 1s infinite;
+}
+
+.blm-astral-souls {
+  background-color: rgb(255 40 0 / 40%);
+}
+
+.blm-astral-souls.max {
+  background-color: rgb(255 40 0);
 }
 
 /* SMN */

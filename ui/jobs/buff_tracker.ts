@@ -1,19 +1,15 @@
 import EffectId from '../../resources/effect_id';
 import arcaneCircleImage from '../../resources/ffxiv/status/arcane-circle.png';
-import arrowImage from '../../resources/ffxiv/status/arrow.png';
 import astralImage from '../../resources/ffxiv/status/astral.png';
 import balanceImage from '../../resources/ffxiv/status/balance.png';
 import battleLitanyImage from '../../resources/ffxiv/status/battle-litany.png';
 import battleVoiceImage from '../../resources/ffxiv/status/battlevoice.png';
-import boleImage from '../../resources/ffxiv/status/bole.png';
 import brotherhoodImage from '../../resources/ffxiv/status/brotherhood.png';
 import chainStratagemImage from '../../resources/ffxiv/status/chain-stratagem.png';
 import devilmentImage from '../../resources/ffxiv/status/devilment.png';
 import divinationImage from '../../resources/ffxiv/status/divination.png';
 import dokumoriImage from '../../resources/ffxiv/status/dokumori.png';
-import dragonSightImage from '../../resources/ffxiv/status/dragon-sight.png';
 import emboldenImage from '../../resources/ffxiv/status/embolden.png';
-import ewerImage from '../../resources/ffxiv/status/ewer.png';
 import mugImage from '../../resources/ffxiv/status/mug.png';
 import offguardImage from '../../resources/ffxiv/status/offguard.png';
 import peculiarLightImage from '../../resources/ffxiv/status/peculiar-light.png';
@@ -22,7 +18,6 @@ import potionImage from '../../resources/ffxiv/status/potion.png';
 import finaleImage from '../../resources/ffxiv/status/radiant-finale.png';
 import searingLightImage from '../../resources/ffxiv/status/searing-light.png';
 import spearImage from '../../resources/ffxiv/status/spear.png';
-import spireImage from '../../resources/ffxiv/status/spire.png';
 import standardFinishImage from '../../resources/ffxiv/status/standard-finish.png';
 import starryMuseImage from '../../resources/ffxiv/status/starry-muse.png';
 import technicalFinishImage from '../../resources/ffxiv/status/technical-finish.png';
@@ -571,85 +566,12 @@ export class BuffTracker {
       },
     };
 
-    // Abilities that are different in 6.5 version.
-    // TODO: following raidbuff has been removed in 7.0
-    // Remove them when CN and KO reach 7.0.
-    const v650: { [s: string]: Omit<BuffInfo, 'name'> } = {
-      balance: {
-        // 6% damage bonus for melee
-        gainEffect: [EffectId.TheBalance_75A],
-        loseEffect: [EffectId.TheBalance_75A],
-        useEffectDuration: true,
-        icon: balanceImage,
-        // Orange.
-        borderColor: '#ff9900',
-        sortKey: 3,
-      },
-      spear: {
-        // 6% damage bonus for melee
-        gainEffect: [EffectId.TheSpear_75D],
-        loseEffect: [EffectId.TheSpear_75D],
-        useEffectDuration: true,
-        icon: spearImage,
-        // Dark Blue.
-        borderColor: '#4477dd',
-        sortKey: 3,
-      },
-      arrow: {
-        // 6% damage bonus for melee
-        gainEffect: [EffectId.TheArrow_75C],
-        loseEffect: [EffectId.TheArrow_75C],
-        useEffectDuration: true,
-        icon: arrowImage,
-        // Light Blue.
-        borderColor: '#37ccee',
-        sortKey: 3,
-      },
-      bole: {
-        // 6% damage bonus for ranged
-        gainEffect: [EffectId.TheBole_75B],
-        loseEffect: [EffectId.TheBole_75B],
-        useEffectDuration: true,
-        icon: boleImage,
-        // Green.
-        borderColor: '#22dd77',
-        sortKey: 3,
-      },
-      ewer: {
-        // 6% damage bonus for ranged
-        gainEffect: [EffectId.TheEwer_75E],
-        loseEffect: [EffectId.TheEwer_75E],
-        useEffectDuration: true,
-        icon: ewerImage,
-        // Light Blue.
-        borderColor: '#66ccdd',
-        sortKey: 3,
-      },
-      spire: {
-        // 6% damage bonus for ranged
-        gainEffect: [EffectId.TheSpire_75F],
-        loseEffect: [EffectId.TheSpire_75F],
-        useEffectDuration: true,
-        icon: spireImage,
-        // Yellow.
-        borderColor: '#ddd044',
-        sortKey: 3,
-      },
-      lefteye: {
-        // 5% damage bonus
-        gainEffect: [EffectId.LeftEye_5AE],
-        loseEffect: [EffectId.LeftEye_5AE],
-        useEffectDuration: true,
-        icon: dragonSightImage,
-        // Orange.
-        borderColor: '#FA8737',
-        sortKey: 5,
-        cooldown: 120,
-      },
+    const old: { [s: string]: Omit<BuffInfo, 'name'> } = {
+      // overwrite old raidbuff here
     };
 
     if (this.ffxivVersion < 700) {
-      for (const [key, entry] of Object.entries(v650))
+      for (const [key, entry] of Object.entries(old))
         this.buffInfo[key] = entry;
     }
 

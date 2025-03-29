@@ -97,7 +97,7 @@ type PlayerLike = {
 export const calcGCDFromStat = (
   player: PlayerLike,
   stat: number,
-  ffxivVersion: FfxivVersion,
+  _ffxivVersion: FfxivVersion,
   actionDelay = 2500,
 ): number => {
   let type1Buffs = 0;
@@ -119,10 +119,7 @@ export const calcGCDFromStat = (
   }
 
   if (player.job === 'NIN') {
-    if (ffxivVersion < 700)
-      type2Buffs += player.speedBuffs.huton ? 15 : 0;
-    else
-      type2Buffs += player.level >= 45 ? 15 : 0;
+    type2Buffs += player.level >= 45 ? 15 : 0;
   } else if (player.job === 'MNK') {
     type2Buffs += 5 * getLightningStacksByLevel(player.level);
   } else if (player.job === 'BRD') {
