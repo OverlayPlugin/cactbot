@@ -779,6 +779,53 @@ const zoneReplace: ZoneReplace[] = [
       '2A2A': '9C22', // [Phase 3 opener]
     },
   },
+  { // Suzaku Unreal
+    fileMap: {
+      'ui/raidboss/data/04-sb/trial/suzaku-ex.ts': 'ui/raidboss/data/07-dt/trial/suzaku-un.ts',
+      'ui/raidboss/data/04-sb/trial/suzaku-ex.txt': 'ui/raidboss/data/07-dt/trial/suzaku-un.txt',
+      'ui/oopsyraidsy/data/04-sb/trial/suzaku-ex.ts':
+        'ui/oopsyraidsy/data/07-dt/trial/suzaku-un.ts',
+    },
+    prefix: { 'SuzakuEx': 'SuzakuUn' },
+    other: {
+      'HellsKierExtreme': 'HellsKierUnreal',
+      'Suzaku Extreme': 'Suzaku Unreal',
+      'suzaku-ex.txt': 'suzaku-un.txt',
+    },
+    id: {
+      '32D2': 'A7FC', // Screams of the Damned
+      '32F0': 'A813', // Rout
+      '32E0': 'A808', // Rekindle
+      '32D3': 'A7FD', // Fleeting Summer
+      '32D0': 'A7FA', // Ashes to Ashes
+      '32D1': 'A7FB', // Cremate
+      '3224': 'A7F0', // Phoenix Down
+      '32D4': 'A7FE', // Wing and a Prayer
+      '3244': 'A76E', // Wing and a Prayer
+      '3222': 'A7EF', // Eternal Flame
+      '3226': 'A7F1', // unknown intermission ability
+      '3485': 'A814', // unknown intermission ability
+      '3486': 'A815', // unknown intermission ability
+      '32D9': 'A801', // Scarlet Fever
+      '32DF': 'A807', // Southron Star
+      '322E': 'A7F2', // --center--
+      '32DA': 'A802', // Mesmerizing Melody
+      '32E1': 'A809', // Well of Flame
+      '3243': 'A7F8', // Scathing Net
+      '32DC': 'A804', // Phantom Flurry cast
+      '32DD': 'A805', // Phantom Flurry buster
+      '32DE': 'A806', // Phantom Flurry half-cleave
+      '3237': 'A7F3', // Scarlet Hymn
+      '32E2': 'A80A', // Hotspot
+      '323A': 'A7F5', // bird retrieval animation?
+      '32DB': 'A803', // Ruthless Refrain
+      '32E4': 'A80B', // Close-Quarter Crescendo
+      '32E5': 'A80F', // Pay the Piper
+      '323C': 'A7F6', // Incandescent Interlude
+      '32E6': 'A80D', // Immolate
+      '32ED': 'A817', // Hotspot enrage
+    },
+  },
 ];
 
 const processFile = (filename: string, zone: ZoneReplace, inputText: string): string => {
