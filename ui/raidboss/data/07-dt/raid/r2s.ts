@@ -623,18 +623,17 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 10,
       alertText: (data, _matches, output) => {
-        let partner = output.unknown!();
+        const unknown = output.unknown!();
         const myType = data.beelovedType;
         if (myType === undefined)
-          return output.merge!({ player: partner });
+          return output.merge!({ player: unknown });
 
         const orderIdx = data.beelovedDebuffs[myType].indexOf(data.me);
         if (orderIdx === -1)
-          return output.merge!({ player: partner });
+          return output.merge!({ player: unknown });
 
         const partnerType = myType === 'alpha' ? 'beta' : 'alpha';
-        partner = data.party.member(data.beelovedDebuffs[partnerType][orderIdx]).nick ??
-          output.unknown!();
+        const partner = data.party.member(data.beelovedDebuffs[partnerType][orderIdx]) ?? unknown;
         return output.merge!({ player: partner });
       },
       outputStrings: {
@@ -668,8 +667,8 @@ const triggerSet: TriggerSet<Data> = {
         if (alpha === data.me || beta === data.me)
           return;
 
-        const alphaShort = data.party.member(alpha).nick ?? output.unknown!();
-        const betaShort = data.party.member(beta).nick ?? output.unknown!();
+        const alphaShort = data.party.member(alpha) ?? output.unknown!();
+        const betaShort = data.party.member(beta) ?? output.unknown!();
         return output.merge!({ alpha: alphaShort, beta: betaShort });
       },
       outputStrings: {
