@@ -136,10 +136,10 @@ export class BLMComponent extends BaseComponent {
   override onYouGainEffect(id: string): void {
     switch (id) {
       case EffectId.Thunderhead:
-        this.firestarter.classList.add('active');
+        this.thunderhead.classList.add('active');
         break;
       case EffectId.Firestarter:
-        this.thunderhead.classList.add('active');
+        this.firestarter.classList.add('active');
         break;
       case EffectId.CircleOfPower:
         this.player.speedBuffs.circleOfPower = true;
@@ -150,10 +150,10 @@ export class BLMComponent extends BaseComponent {
   override onYouLoseEffect(id: string): void {
     switch (id) {
       case EffectId.Thunderhead:
-        this.firestarter.classList.remove('active');
+        this.thunderhead.classList.remove('active');
         break;
       case EffectId.Firestarter:
-        this.thunderhead.classList.remove('active');
+        this.firestarter.classList.remove('active');
         break;
       case EffectId.CircleOfPower:
         this.player.speedBuffs.circleOfPower = false;
@@ -162,7 +162,6 @@ export class BLMComponent extends BaseComponent {
   }
 
   override onJobDetailUpdate(jobDetail: JobDetail['BLM']): void {
-    // FIXME: make it able to use after refactoring
     if (this.umbralStacks !== jobDetail.umbralStacks) {
       this.umbralStacks = jobDetail.umbralStacks;
       this.bars._updateMPTicker({

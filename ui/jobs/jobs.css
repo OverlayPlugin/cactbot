@@ -493,6 +493,10 @@ div.justbuffs div#procs-container {
   background-color: rgb(200 50 200);
 }
 
+#blm-stacks-proc {
+  margin-top: 2px;
+}
+
 #blm-stacks-astral-souls {
   margin-top: 2px;
 }
@@ -510,7 +514,7 @@ div.justbuffs div#procs-container {
 }
 
 #blm-stacks-paradox.active {
-  background-color: linear-gradient(rgb(229 56 53) 0%, white 50%, rgb(30 80 245) 100%);
+  background: linear-gradient(90deg, rgb(229 56 53) 0%, white 50%, rgb(30 80 245) 100%);
 }
 
 #smn-stacks-ruin4 > div.active {
@@ -1371,7 +1375,7 @@ div.justbuffs div#procs-container {
 }
 
 .blm-astral-souls {
-  background-color: rgb(255 40 0 0.4);
+  background-color: rgb(255 40 0 / 40%);
 }
 
 .blm-astral-souls.max {
