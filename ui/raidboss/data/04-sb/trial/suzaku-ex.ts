@@ -1,8 +1,14 @@
+import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
+
+// TODO: Remind user to bait exactly one bird with Rekindle.
+// TODO: MapEffect out the Hotspot patterns
+// TODO: Figure out Close-Quarter Crescendo
+// TODO: Call Incandescent Interlude towers
 
 export type Data = RaidbossData;
 
@@ -13,13 +19,32 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'suzaku-ex.txt',
   triggers: [
     {
-      id: 'SuzEx Cremate',
+      id: 'SuzakuEx Screams Of The Damned',
       type: 'StartsUsing',
-      netRegex: { id: '32D1', source: 'Suzaku' },
+      netRegex: { id: '32D2', source: 'Suzaku', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'SuzakuEx Rekindle',
+      type: 'HeadMarker',
+      netRegex: { id: '008B', capture: true },
+      condition: Conditions.targetIsYou(),
+      response: Responses.spread(),
+    },
+    {
+      id: 'SuzakuEx Cremate',
+      type: 'StartsUsing',
+      netRegex: { id: '32D1', source: 'Suzaku', capture: true },
       response: Responses.tankBuster(),
     },
     {
-      id: 'SuzEx Phantom Flurry',
+      id: 'SuzakuEx Southron Star',
+      type: 'StartsUsing',
+      netRegex: { id: '32DF', source: 'Suzaku', capture: false },
+      response: Responses.aoe(),
+    },
+    { // Non-capturing because her initial castbar is self-targeted.
+      id: 'SuzakuEx Phantom Flurry Buster',
       type: 'StartsUsing',
       netRegex: { id: '32DC', source: 'Suzaku', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
@@ -28,36 +53,28 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'SuzEx Mesmerizing Melody',
-      type: 'StartsUsing',
-      netRegex: { id: '32DA', source: 'Suzaku', capture: false },
-      alertText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Get Out',
-          de: 'Raus da',
-          fr: 'Allez au bord extérieur',
-          ja: '誘引',
-          cn: '远离',
-          ko: '밖으로',
-        },
-      },
+      id: 'SuzakuEx Phantom Flurry Behind',
+      type: 'Ability',
+      netRegex: { id: '32DC', source: 'Suzaku', capture: false },
+      response: Responses.getBehind(),
     },
     {
-      id: 'SuzEx Ruthless Refrain',
+      id: 'SuzakuEx Scathing Net',
+      type: 'HeadMarker',
+      netRegex: { id: '00A1', capture: true },
+      response: Responses.stackMarkerOn(),
+    },
+    {
+      id: 'SuzakuEx Mesmerizing Melody',
+      type: 'StartsUsing',
+      netRegex: { id: '32DA', source: 'Suzaku', capture: false },
+      response: Responses.getOut(),
+    },
+    {
+      id: 'SuzakuEx Ruthless Refrain',
       type: 'StartsUsing',
       netRegex: { id: '32DB', source: 'Suzaku', capture: false },
-      alertText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Get In',
-          de: 'Rein da',
-          fr: 'Allez au bord intérieur',
-          ja: '拒絶',
-          cn: '靠近',
-          ko: '안으로',
-        },
-      },
+      response: Responses.getIn(),
     },
   ],
   timelineReplace: [
