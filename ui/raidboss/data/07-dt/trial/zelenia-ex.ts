@@ -319,15 +319,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         near: {
           en: 'Near',
+          de: 'Nah',
         },
         far: {
           en: 'Far',
+          de: 'Fern',
         },
         swapAfterFirst: {
           en: '${first} bait first, Swap after first+third',
+          de: '${first} zuerst ködern, wechsel nach dem ersten + dritten',
         },
         swapAfterSecond: {
           en: '${first} bait first, Swap after second',
+          de: '${first} zuerst ködern, wechsel nach dem zweiten',
         },
       },
     },
@@ -347,6 +351,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tower: {
           en: 'Donut on you, get tower',
+          de: 'Donut auf DIR, steh im Turm',
         },
       },
     },
@@ -373,6 +378,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stacks: {
           en: 'Support/DPS stacks',
+          de: 'Support/DPS sammeln',
         },
       },
     },
@@ -438,6 +444,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Supports west, DPS east',
+          de: 'Supports Westen, DPS Osten',
         },
       },
     },
@@ -450,6 +457,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Point sword cleave out',
+          de: 'Schwert-Cleves nach draußen zeigen',
         },
       },
     },
@@ -517,6 +525,7 @@ const triggerSet: TriggerSet<Data> = {
         counterclockwise: Outputs.counterclockwise,
         text: {
           en: 'Start ${dir}, rotate ${rotate}',
+          de: 'Starte ${dir}, rotiere ${rotate}',
         },
       },
     },
@@ -544,15 +553,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         inWest: {
           en: 'In WSW => Out WNW => Out WSW',
+          de: 'Rein WSW => Raus WNW => Raus WSW',
         },
         inEast: {
           en: 'In ESE => Out ESE => Out ENE',
+          de: 'Rein OSO => Raus OSO => Raus ONO',
         },
         outWest: {
           en: 'Out WSW => In WNW => In WSW',
+          de: 'Raus WSW => Rein WNW => Rein WSW',
         },
         outEast: {
           en: 'Out ESE => In ESE => In ENE',
+          de: 'Raus OSO => Rein OSO => Rein ONO',
         },
       },
     },
@@ -573,9 +586,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rose: {
           en: 'Rose Marker on YOU',
+          de: 'Rosen-Marker auf DIR',
         },
         spread: {
           en: 'Spread Marker on YOU',
+          de: 'Verteilen-Marker auf DIR',
         },
       },
     },
@@ -603,9 +618,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         north: {
           en: 'Roses north, spreads south',
+          de: 'Rosen Norden, Verteilen Süden',
         },
         south: {
           en: 'Roses south, spreads north',
+          de: 'Rosen Süden, Verteilen Norden',
         },
       },
     },
@@ -638,9 +655,11 @@ const triggerSet: TriggerSet<Data> = {
         south: Outputs.south,
         rose: {
           en: 'Rose Marker on YOU, spread ${northSouth}',
+          de: 'Rosen-Marker auf DIR, verteile ${northSouth}',
         },
         spread: {
           en: 'Spread Marker on YOU, spread ${northSouth}',
+          de: 'Verteilen-Marker auf DIR, verteile ${northSouth}',
         },
       },
     },
@@ -652,6 +671,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         thorns: {
           en: 'Stack for thorns => break tethers => stack in red tiles',
+          de: 'Sammeln für Dornen => Verbindung brechen => steh auf dem roten Feld',
         },
       },
     },
@@ -708,6 +728,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         start: {
           en: 'Start ${startDir}',
+          de: 'Start ${startDir}',
         },
       },
     },
@@ -734,6 +755,7 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         text: {
           en: '${inOutFirst} ${dirFirst} Clockwise => ${inOutSecond} ${dirSecond}',
+          de: '${inOutFirst} ${dirFirst} Im Uhrzeigersinn => ${inOutSecond} ${dirSecond}',
         },
       },
     },
@@ -756,9 +778,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rose: {
           en: 'Rose Marker on YOU',
+          de: 'Rosen-Marker auf DIR',
         },
         tower: {
           en: 'Tower Soaks Later',
+          de: 'Nehme Turm später',
         },
       },
     },
@@ -789,10 +813,147 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         rose: {
           en: 'Place rose ${inOut} => dodge cleaves',
+          de: 'Plaziere Rose ${inOut} => weiche dem Cleve aus',
         },
         tower: {
           en: 'Dodge cleaves => soak tower',
+          de: 'Weiche dem Cleave aus => steh im Turm',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Briar Thorn': 'Atomisator',
+        'Zelenia(?!\')': 'Zelenia',
+        'Zelenia\'s Shade': 'Phantom-Zelenia',
+      },
+      'replaceText': {
+        '\\(cast\\)': '(wirken)',
+        '\\(chakrams\\)': '(Chakrams)',
+        '\\(enrage\\?\\)': '(Finalangriff?)',
+        '\\(enrage\\)': '(Finalangriff)',
+        '\\(markers\\)': '(Marker)',
+        '\\(resolves\\)': '(Auflösen)',
+        '\\(snapshot\\)': '(Snapshot)',
+        'Alexandrian Banish II(?!I)': 'Ritterliches Verbannra',
+        'Alexandrian Banish III': 'Ritterliches Verbannga',
+        'Alexandrian Holy': 'Ritterliches Sanctus',
+        'Alexandrian Thunder II(?!I)': 'Ritterliches Blitzra',
+        'Alexandrian Thunder III': 'Ritterliches Blitzga',
+        'Alexandrian Thunder IV': 'Ritterliches Blitzka',
+        'Blessed Barricade': 'Heilige Mauer',
+        'Bud of Valor': 'Lug und Trug',
+        'Emblazon': 'Mahnendes Siegel',
+        'Encircling Thorns': 'Rosendorn',
+        'Escelons\' Fall': 'Aufsteigendes Kreuz',
+        'Explosion': 'Explosion',
+        'Holy Hazard': 'Heilige Gefahr',
+        'Perfumed Quietus': 'Quietus-Rose',
+        'Power Break': 'Schockbolzen',
+        'Queen\'s Crusade': 'Heiliges Schlachtfeld',
+        'Rose Red': 'Rosenfinale',
+        'Roseblood Bloom': 'Arkane Enthüllung',
+        'Roseblood Withering': 'Arkane Enthüllung: Nullform',
+        'Roseblood: 2nd Bloom': 'Arkane Enthüllung: Zweite Form',
+        'Roseblood: 3rd Bloom': 'Arkane Enthüllung: Dritte Form',
+        'Roseblood: 4th Bloom': 'Arkane Enthüllung: Vierte Form',
+        'Roseblood: 5th Bloom': 'Arkane Enthüllung: Fünfte Form',
+        'Roseblood: 6th Bloom': 'Arkane Enthüllung: Sechste Form',
+        'Shock': 'Schock',
+        'Spearpoint Push': 'Sturzflug',
+        'Specter of the Lost': 'Spektralschlag',
+        'Stock Break': 'Exekutionsschlag',
+        'Thorned Catharsis': 'Rosenkatharsis',
+        'Thunder Slash': 'Donnerhieb',
+        'Valorous Ascension': 'Atomisator',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Briar Thorn': 'Mortimer',
+        'Zelenia(?!\')': 'Zelenia',
+        'Zelenia\'s Shade': 'double de Zelenia',
+      },
+      'replaceText': {
+        'Alexandrian Banish II(?!I)': 'Extra Bannissement chevaleresque',
+        'Alexandrian Banish III': 'Méga Bannissement chevaleresque',
+        'Alexandrian Holy': 'Miracle chevaleresque',
+        'Alexandrian Thunder II(?!I)': 'Méga Foudre chevaleresque',
+        'Alexandrian Thunder III': 'Méga Foudre chevaleresque',
+        'Alexandrian Thunder IV': 'Giga Foudre chevaleresque',
+        'Blessed Barricade': 'Mur sacré',
+        'Bud of Valor': 'Dupligenèse',
+        'Emblazon': 'Cercle d\'exhortation',
+        'Encircling Thorns': 'Épine de rose',
+        'Escelons\' Fall': 'Péril cruciforme',
+        'Explosion': 'Explosion',
+        'Holy Hazard': 'Péril miraculeux',
+        'Perfumed Quietus': 'Quietus de la rose',
+        'Power Break': 'Fente puissante',
+        'Queen\'s Crusade': 'Domaine sacré',
+        'Rose Red': 'Rose finale',
+        'Roseblood Bloom': 'Déploiement arcanique',
+        'Roseblood Withering': 'Déploiement arcanique : annihilation',
+        'Roseblood: 2nd Bloom': 'Déploiement arcanique : seconde forme',
+        'Roseblood: 3rd Bloom': 'Déploiement arcanique : troisième forme',
+        'Roseblood: 4th Bloom': 'Déploiement arcanique : quatrième forme',
+        'Roseblood: 5th Bloom': 'Déploiement arcanique : cinquième forme',
+        'Roseblood: 6th Bloom': 'Déploiement arcanique : sixième forme',
+        'Shock': 'Choc',
+        'Spearpoint Push': 'Ruée fulgurante',
+        'Specter of the Lost': 'Fente spectrale',
+        'Stock Break': 'Fente',
+        'Thorned Catharsis': 'Roses cathartiques',
+        'Thunder Slash': 'Foudrolle',
+        'Valorous Ascension': 'Mortimer',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Briar Thorn': 'クライムハザード',
+        'Zelenia(?!\')': 'ゼレニア',
+        'Zelenia\'s Shade': 'ゼレニアの幻影',
+      },
+      'replaceText': {
+        'Alexandrian Banish II(?!I)': 'キングダム・バニシュラ',
+        'Alexandrian Banish III': 'キングダム・バニシュガ',
+        'Alexandrian Holy': 'キングダム・ホーリー',
+        'Alexandrian Thunder II(?!I)': 'キングダム・サンダラ',
+        'Alexandrian Thunder III': 'キングダム・サンダガ',
+        'Alexandrian Thunder IV': 'キングダム・サンダジャ',
+        'Blessed Barricade': '聖護壁',
+        'Bud of Valor': '幻影生成',
+        'Emblazon': '活性紋',
+        'Encircling Thorns': 'ローズソーン',
+        'Escelons\' Fall': 'クライムクロス',
+        'Explosion': '爆発',
+        'Holy Hazard': 'ホーリーハザード',
+        'Perfumed Quietus': 'クワイタスローズ',
+        'Power Break': 'パワーブレイク',
+        'Queen\'s Crusade': '聖戦領域',
+        'Rose Red': 'ローズ・オブ・フィナーレ',
+        'Roseblood Bloom': '魔法陣展開',
+        'Roseblood Withering': '魔法陣展開・零式',
+        'Roseblood: 2nd Bloom': '魔法陣展開・二式',
+        'Roseblood: 3rd Bloom': '魔法陣展開・三式',
+        'Roseblood: 4th Bloom': '魔法陣展開・四式',
+        'Roseblood: 5th Bloom': '魔法陣展開・五式',
+        'Roseblood: 6th Bloom': '魔法陣展開・六式',
+        'Shock': 'ショック',
+        'Spearpoint Push': '突撃',
+        'Specter of the Lost': 'スペクトルブレイク',
+        'Stock Break': 'ストックブレイク',
+        'Thorned Catharsis': 'ローズ・カタルシス',
+        'Thunder Slash': '雷鳴剣',
+        'Valorous Ascension': 'クライムハザード',
       },
     },
   ],
