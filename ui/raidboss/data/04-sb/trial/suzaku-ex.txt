@@ -5,125 +5,125 @@ hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-11.5 "Screams Of The Damned" Ability { id: "32D2", source: "Suzaku" } window 12,20
-18.9 "--untargetable--"
-24.5 "Rout" Ability { id: "32F0", source: "Suzaku" }
-26.2 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
-29.0 "--targetable--"
-35.3 "Fleeting Summer" Ability { id: "32D3", source: "Suzaku" }
-42.8 "Cremate" Ability { id: "32D1", source: "Suzaku" }
-54.3 "Phoenix Down" Ability { id: "3224", source: "Suzaku" }
-67.4 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
-78.5 "Cremate" Ability { id: "32D1", source: "Suzaku" }
-79.6 "Wing And A Prayer" Ability { id: "32D4", source: "Scarlet Tail Feather" }
-92.2 "Screams Of The Damned" Ability { id: "32D2", source: "Suzaku" }
-109.2 "Eternal Flame" Ability { id: "3222", source: "Suzaku" } # drift 0.023
-111.3 "--untargetable--"
+9.5 "Screams Of The Damned" Ability { id: "32D2", source: "Suzaku" } window 12,20
+16.9 "--untargetable--"
+22.5 "Rout" Ability { id: "32F0", source: "Suzaku" }
+24.4 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
+27.2 "--targetable--"
+33.5 "Fleeting Summer" Ability { id: "32D3", source: "Suzaku" }
+41.0 "Cremate" Ability { id: "32D1", source: "Suzaku" }
+52.5 "Phoenix Down" Ability { id: "3224", source: "Suzaku" }
+66.0 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
+77.1 "Cremate" Ability { id: "32D1", source: "Suzaku" }
+78.2 "Wing And A Prayer" Ability { id: "32D4", source: "Scarlet Tail Feather" }
+90.8 "Screams Of The Damned" Ability { id: "32D2", source: "Suzaku" }
+107.8 "Eternal Flame" Ability { id: "3222", source: "Suzaku" } # drift 0.023
+109.9 "--untargetable--"
 
 # DDR phase
-126.5 "--sync--" Ability { id: "3226", source: "Suzaku" }
-132.7 "--sync--" Ability { id: "3485", source: "Suzaku" }
-137.8 "Scarlet Hymn"
-138.9 "Scarlet Hymn"
-140.0 "Scarlet Hymn"
-144.6 "--sync--" Ability { id: "3486", source: "Suzaku" }
-147.7 "Scarlet Hymn"
-149.8 "Scarlet Hymn"
-150.9 "Scarlet Hymn"
-152.0 "Scarlet Hymn"
-154.2 "Scarlet Hymn"
-156.3 "Scarlet Hymn"
-157.5 "Scarlet Hymn"
-174.7 "Scarlet Fever" Ability { id: "32D9", source: "Suzaku" } window 165,20
+125.1 "--sync--" Ability { id: "3226", source: "Suzaku" }
+131.3 "--sync--" Ability { id: "3485", source: "Suzaku" }
+136.4 "Scarlet Hymn"
+137.5 "Scarlet Hymn"
+138.6 "Scarlet Hymn"
+143.2 "--sync--" Ability { id: "3486", source: "Suzaku" }
+146.3 "Scarlet Hymn"
+148.4 "Scarlet Hymn"
+149.5 "Scarlet Hymn"
+150.6 "Scarlet Hymn"
+152.8 "Scarlet Hymn"
+154.9 "Scarlet Hymn"
+156.1 "Scarlet Hymn"
+173.0 "Scarlet Fever" Ability { id: "32D9", source: "Suzaku" } window 165,20
 
 # Main phase
-179.9 "--targetable--"
-189.4 "Southron Star" Ability { id: "32DF", source: "Suzaku" } window 20,20
-195.0 "--sync--" Ability { id: "322E", source: "Suzaku" }
-200.1 "Mesmerizing Melody" Ability { id: "32DA", source: "Suzaku" }
-208.1 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
-208.8 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
-215.2 "Scathing Net" Ability { id: "3243", source: "Suzaku" }
-220.2 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" } # drift 0.035
-226.3 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
+178.2 "--targetable--"
+187.7 "Southron Star" Ability { id: "32DF", source: "Suzaku" } window 20,20
+193.3 "--sync--" Ability { id: "322E", source: "Suzaku" }
+198.8 "Mesmerizing Melody" Ability { id: "32DA", source: "Suzaku" }
+206.2 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
+206.9 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
+213.3 "Scathing Net" Ability { id: "3243", source: "Suzaku" }
+218.3 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" } # drift 0.035
+224.4 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
 
 # Simon says 1 (8+8)
-231.0 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
-252.1 "Hotspot x8" duration 7.7
-269.9 "Hotspot x8" duration 7.7
+229.1 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
+250.2 "Hotspot x8" duration 7.7
+268.0 "Hotspot x8" duration 7.7
 
 # Back to center
-286.7 "--sync--" Ability { id: "323A", source: "Suzaku" } window 20,20
-288.8 "--sync--" Ability { id: "322E", source: "Suzaku" }
-294.2 "Ruthless/Mesmerizing" Ability { id: "32D(A|B)", source: "Suzaku" }
-305.3 "Close-Quarter Crescendo" Ability { id: "32E4", source: "Suzaku" }
-317.4 "Pay The Piper"
-321.1 "--sync--" Ability { id: "322E", source: "Suzaku" }
-327.0 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
-327.6 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
-334.1 "Scathing Net" Ability { id: "3243", source: "Suzaku" }
-338.2 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
-344.4 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
+284.8 "--sync--" Ability { id: "323A", source: "Suzaku" } window 20,20
+286.9 "--sync--" Ability { id: "322E", source: "Suzaku" }
+292.3 "Ruthless/Mesmerizing" Ability { id: "(32DA|32DB)", source: "Suzaku" }
+303.4 "Close-Quarter Crescendo" Ability { id: "32E4", source: "Suzaku" }
+315.5 "Pay The Piper"
+319.2 "--sync--" Ability { id: "322E", source: "Suzaku" }
+325.1 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
+325.9 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
+332.4 "Scathing Net" Ability { id: "3243", source: "Suzaku" }
+336.5 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
+342.7 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
 
 # Simon Says 2 (8+8 with aoe)
-350.7 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
-360.2 "--sync--" Ability { id: "322E", source: "Suzaku" }
-365.3 "Ruthless/Mesmerizing" Ability { id: "32D(A|B)", source: "Suzaku" }
-370.4 "Hotspot x8" duration 7.7
-385.9 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
-391.0 "Hotspot x8" duration 7.7
+348.4 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
+358.1 "--sync--" Ability { id: "322E", source: "Suzaku" }
+363.6 "Ruthless/Mesmerizing" Ability { id: "(32DA|32DB)", source: "Suzaku" }
+368.7 "Hotspot x8" duration 7.7
+383.7 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
+388.8 "Hotspot x8" duration 7.7
 
 # Back to center
-407.5 "--sync--" Ability { id: "323A", source: "Suzaku" }
-413.6 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
-419.7 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
-430.4 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
-442.0 "Incandescent Interlude" Ability { id: "323C", source: "Suzaku" }
-446.1 "--sync--" Ability { id: "322E", source: "Suzaku" }
-452.1 "Ruthless Refrain" Ability { id: "32DB", source: "Suzaku" }
-454.6 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
-459.5 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
+405.3 "--sync--" Ability { id: "323A", source: "Suzaku" }
+411.4 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
+417.5 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
+428.2 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
+439.8 "Incandescent Interlude" Ability { id: "323C", source: "Suzaku" }
+444.4 "--sync--" Ability { id: "322E", source: "Suzaku" }
+449.9 "Ruthless Refrain" Ability { id: "32DB", source: "Suzaku" }
+452.4 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
+457.3 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
 
 # Simon Says 2 (4+4+4+4 with forced march, knock/draw, phantom half)
-466.7 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
-483.6 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
-484.3 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
-489.4 "Hotspot x4" duration 3.3
-496.6 "Close-Quarter Crescendo" Ability { id: "32E4", source: "Suzaku" }
-508.7 "Pay the Piper"
-508.8 "Hotspot x4" duration 3.3
-517.9 "--sync--" Ability { id: "322E", source: "Suzaku" }
-523.4 "Ruthless/Mesmerizing" Ability { id: "32D(A|B)", source: "Suzaku" }
-528.5 "Hotspot x4" duration 3.3
-539.6 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
-545.8 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
-547.9 "Hotspot x4" duration 3.3
+464.5 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
+481.4 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
+482.1 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
+487.2 "Hotspot x4" duration 3.3
+494.4 "Close-Quarter Crescendo" Ability { id: "32E4", source: "Suzaku" }
+506.5 "Pay the Piper"
+506.6 "Hotspot x4" duration 3.3
+515.7 "--sync--" Ability { id: "322E", source: "Suzaku" }
+521.2 "Ruthless/Mesmerizing" Ability { id: "(32DA|32DB)", source: "Suzaku" }
+526.3 "Hotspot x4" duration 3.3
+537.4 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
+543.6 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
+545.7 "Hotspot x4" duration 3.3
 
 # Back to center
-562.4 "--sync--" Ability { id: "323A", source: "Suzaku" }
-572.5 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
-580.0 "--sync--" Ability { id: "322E", source: "Suzaku" }
-585.5 "Ruthless/Mesmerizing" Ability { id: "32D(A|B)", source: "Suzaku" }
-597.9 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
-598.5 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
-605.1 "Scathing Net" Ability { id: "3243", source: "Suzaku" }
-610.2 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
-616.4 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
-626.5 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
-633.6 "--sync--" Ability { id: "322E", source: "Suzaku" }
-639.0 "Ruthless/Mesmerizing" Ability { id: "32D(A|B)", source: "Suzaku" }
-652.0 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
-658.4 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
-664.5 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
-674.1 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
-683.6 "--sync--" Ability { id: "322E", source: "Suzaku" }
-689.0 "Ruthless/Mesmerizing" Ability { id: "32D(A|B)", source: "Suzaku" }
-695.0 "Hotspot x8" duration 7.7
-708.8 "Southron Star" Ability { id: "32DF", source: "Suzaku" } # drift -0.047
-714.2 "Hotspot x8" duration 7.7
-730.1 "--sync--" Ability { id: "323A", source: "Suzaku" }
-736.1 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
-742.2 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
-743.8 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
-755.3 "--sync--" Ability { id: "322E", source: "Suzaku" }
-766.7 "Hotspot Enrage"
+560.2 "--sync--" Ability { id: "323A", source: "Suzaku" }
+570.3 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
+577.8 "--sync--" Ability { id: "322E", source: "Suzaku" }
+583.3 "Ruthless/Mesmerizing" Ability { id: "(32DA|32DB)", source: "Suzaku" }
+595.7 "Well Of Flame" Ability { id: "32E1", source: "Suzaku" }
+596.5 "Rekindle" Ability { id: "32E0", source: "Suzaku" }
+602.9 "Scathing Net" Ability { id: "3243", source: "Suzaku" }
+608.0 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
+614.2 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
+624.8 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
+632.4 "--sync--" Ability { id: "322E", source: "Suzaku" }
+637.8 "Ruthless/Mesmerizing" Ability { id: "(32DA|32DB)", source: "Suzaku" }
+650.8 "Southron Star" Ability { id: "32DF", source: "Suzaku" }
+657.2 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
+663.3 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
+672.9 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
+682.4 "--sync--" Ability { id: "322E", source: "Suzaku" }
+687.8 "Ruthless/Mesmerizing" Ability { id: "(32DA|32DB)", source: "Suzaku" }
+693.8 "Hotspot x8" duration 7.7
+707.6 "Southron Star" Ability { id: "32DF", source: "Suzaku" } # drift -0.047
+713.0 "Hotspot x8" duration 7.7
+728.9 "--sync--" Ability { id: "323A", source: "Suzaku" }
+734.9 "Phantom Flurry" Ability { id: "32DD", source: "Suzaku" }
+741.0 "Phantom Half" Ability { id: "32DE", source: "Suzaku" }
+742.6 "Scarlet Hymn" Ability { id: "3237", source: "Suzaku" }
+754.1 "--sync--" Ability { id: "322E", source: "Suzaku" }
+765.5 "Hotspot Enrage"
