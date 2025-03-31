@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     type: 'suggestion',
     docs: {
-      description: 'no use of data.party.member().nick or .toString() in raidboss triggers',
+      description: 'no use of data.party.member() properties',
       category: 'Best Practices',
       recommended: true,
       url:
@@ -17,8 +17,8 @@ module.exports = {
       'Property[key.name=/(timelineTriggers|triggers)/] > ArrayExpression > ObjectExpression': (
         node,
       ) => {
-        // Look for any use of data.party.member().nick or .toString within a trigger,
-        const matchRegex = /data\.party\.member\(([^)]+)\)\.(nick|toString\(\))/;
+        // Look for any use of data.party.member().[property],
+        const matchRegex = /data\.party\.member\(([^)]+)\)\.\w+/;
 
         const trigger = context.getSourceCode().getText(node);
         const lines = trigger.split('\n').map((l) => l.trim());
@@ -28,7 +28,7 @@ module.exports = {
             context.report({
               node,
               message: `"${line}"
-              Use data.party.member(); do not add .nick or .toString().`,
+              Use data.party.member(); do not directly access its properties in triggers.`,
             });
           }
         });
