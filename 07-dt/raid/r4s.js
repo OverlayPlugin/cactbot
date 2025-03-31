@@ -1081,12 +1081,8 @@ Options.Triggers.push({
       netRegex: { effectId: 'F9F', capture: true },
       condition: Conditions.targetIsNotYou(),
       run: (data, matches) => {
-        data.condenserTimer = parseFloat(matches.duration) > 30 ? 'long' : 'short';
-        const shortName = data.party.member(matches.target).nick;
-        if (data.condenserTimer === 'long')
-          data.condenserMap.long.push(shortName);
-        else
-          data.condenserMap.short.push(shortName);
+        const condenserTimer = parseFloat(matches.duration) > 30 ? 'long' : 'short';
+        data.condenserMap[condenserTimer].push(matches.target);
       },
     },
     {
@@ -1102,7 +1098,9 @@ Options.Triggers.push({
         if (data.condenserTimer === 'long')
           data.witchgleamSelfCount++;
         // Some strats use long/short debuff assignments to do position swaps for EE2.
-        const same = data.condenserMap[data.condenserTimer].join(', ');
+        const same = data.condenserMap[data.condenserTimer]
+          .map((p) => data.party.member(p))
+          .join(', ');
         // Note: Taking unexpected lightning damage from Four/Eight Star, Sparks, or Sidewise Spark
         // will cause the stack count to increase. We could try to try to track that, but it makes
         // the final mechanic resolvable only under certain conditions (which still cause deaths),
@@ -1525,7 +1523,7 @@ Options.Triggers.push({
             !data.kindlingCauldronTargets.includes(m) &&
             !data.mustardBombTargets.includes(m)
           );
-          const toStr = safePlayers.map((m) => data.party.member(m).nick).join(', ');
+          const toStr = safePlayers.map((m) => data.party.member(m)).join(', ');
           return output.passDebuff({ to: toStr });
         } else if (!data.kindlingCauldronTargets.includes(data.me)) {
           return output.getDebuff();

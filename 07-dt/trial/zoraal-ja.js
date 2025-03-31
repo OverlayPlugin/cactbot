@@ -271,7 +271,7 @@ Options.Triggers.push({
       infoText: (data, _matches, output) => {
         if (data.bitterReapingTargets.includes(data.me))
           return output.busterOnYou();
-        const players = data.bitterReapingTargets.map((x) => data.party.member(x).nick).join(
+        const players = data.bitterReapingTargets.map((x) => data.party.member(x)).join(
           output.and(),
         );
         return output.busters({ player: players });
