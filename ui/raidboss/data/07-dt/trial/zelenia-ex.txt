@@ -34,7 +34,7 @@ hideall "--sync--"
 68.2 "Escelons' Fall 2" #Ability { id: "A8AF", source: "Zelenia" }
 71.2 "Escelons' Fall 3" #Ability { id: "A8AF", source: "Zelenia" }
 74.2 "Escelons' Fall 4" #Ability { id: "A8AF", source: "Zelenia" }
-83.4 "Stock Break x5" Ability { id: "A8D5", source: "Zelenia" } duration 4
+83.4 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
 89.4 "--middle--" Ability { id: "A82E", source: "Zelenia" }
 93.5 "Blessed Barricade" Ability { id: "A8B5", source: "Zelenia" }
 
@@ -97,7 +97,7 @@ hideall "--sync--"
 323.8 "Escelons' Fall 2" #Ability { id: "A8AF", source: "Zelenia" }
 326.8 "Escelons' Fall 3" #Ability { id: "A8AF", source: "Zelenia" }
 329.8 "Escelons' Fall 4" #Ability { id: "A8AF", source: "Zelenia" }
-339.0 "Stock Break x5" Ability { id: "A8D5", source: "Zelenia" } duration 4
+339.0 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
 347.3 "--middle--" Ability { id: "A82E", source: "Zelenia" }
 
 ## Bloom 4
@@ -121,7 +121,7 @@ hideall "--sync--"
 424.5 "Escelons' Fall 3" #Ability { id: "A8AF", source: "Zelenia" }
 427.5 "Escelons' Fall 4" #Ability { id: "A8AF", source: "Zelenia" }
 429.5 "Power Break" Ability { id: ["A8B0", "A8B1"], source: "Zelenia's Shade" }
-436.9 "Stock Break" Ability { id: "A8D5", source: "Zelenia" }
+436.9 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" }
 447.1 "--middle--" Ability { id: "A82E", source: "Zelenia" }
 
 ## Bloom 5
@@ -167,9 +167,9 @@ hideall "--sync--"
 586.2 "--middle--" Ability { id: "A82E", source: "Zelenia" }
 
 # Soft enrage
-594.3 "Stock Break x5" Ability { id: "A8D5", source: "Zelenia" } duration 4
-607.4 "Stock Break x5" Ability { id: "A8D5", source: "Zelenia" } duration 4
-620.5 "Stock Break x5" Ability { id: "A8D5", source: "Zelenia" } duration 4
+594.3 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
+607.4 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
+620.5 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
 629.3 "Roseblood Withering" Ability { id: "AA19", source: "Zelenia" }
 630.3 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
 642.7 "Rose Red (enrage)" Ability { id: "A8C5", source: "Zelenia" }
