@@ -1,9 +1,129 @@
-### Arcadion (R6N): AAC Cruiserweight M2
+### AAC CRUISERWEIGHT (M2)
+# ZoneId: 1258
 
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
+# Blank canvas
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+6.7 "--sync--" StartsUsing { id: "A66F", source: "Sugar Riot" } window 6.7,2
+11.4 "Mousse Mural" Ability { id: "A66F", source: "Sugar Riot" }
+22.8 "--north--" Ability { id: "A673", source: "Sugar Riot" }
+30.9 "Single Style" Ability { id: "A654", source: "Sugar Riot" }
+35.6 "Burst" Ability { id: "A655", source: "Paint Bomb" }
+48.2 "Single Style" Ability { id: "A656", source: "Sugar Riot" }
+52.9 "Burst" Ability { id: "A657", source: "Heaven Bomb" }
+63.5 "Single Style" Ability { id: "A658", source: "Sugar Riot" }
+68.2 "Rush" #Ability { id: "A659", source: "Sweet Shot" }
+74.8 "Single Style" Ability { id: "A65A", source: "Sugar Riot" }
+88.9 "Single Style" Ability { id: "A658", source: "Sugar Riot" }
+94.6 "Rush" Ability { id: "A659", source: "Sweet Shot" }
+99.2 "Pudding Party" Ability { id: "A66D", source: "Sugar Riot" }
+100.2 "Pudding Party x5" duration 4 #Ability { id: "A66E", source: "Sugar Riot" }
+110.1 "Color Riot" Ability { id: "A670", source: "Sugar Riot" }
+112.1 "Warm Bomb/Cool Bomb" Ability { id: ["A671", "A672"], source: "Sugar Riot" }
 
+# Desert phase
+121.3 "--north--" Ability { id: "A673", source: "Sugar Riot" }
+122.8 label "desert"
+123.5 "Sugarscape" Ability { id: "A668", source: "Sugar Riot" }
+143.9 "Layer" Ability { id: "A669", source: "Sugar Riot" }
+161.3 "Layer" Ability { id: "A66A", source: "Sugar Riot" }
+175.5 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+178.5 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+181.5 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+184.5 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+187.5 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+190.5 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+196.5 "Layer" Ability { id: "A66C", source: "Sugar Riot" }
+220.7 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+222.7 "Mousse Touch-up (cast)" Ability { id: "A674", source: "Sugar Riot" }
+223.7 "Spray Pain" Ability { id: "A66B", source: "Sugar Riot" }
+228.7 "Mousse Touch-up (spread)" Ability { id: "A675", source: "Sugar Riot" }
+237.8 "Mousse Mural" Ability { id: "A66F", source: "Sugar Riot" }
+
+# Blank canvas
+244.9 "Color Riot" Ability { id: "A670", source: "Sugar Riot" }
+246.9 "Warm Bomb/Cool Bomb" Ability { id: ["A671", "A672"], source: "Sugar Riot" }
+255.3 "--north--" Ability { id: "A673", source: "Sugar Riot" }
+264.4 "Double Style" Ability { id: ["A65F", "A660", "A661", "A662"], source: "Sugar Riot" }
+269.1 "Rush/Burst"
+279.7 "Double Style" Ability { id: ["A65F", "A660", "A661", "A662"], source: "Sugar Riot" }
+284.4 "Rush/Burst"
+292.0 "Pudding Party" Ability { id: "A66D", source: "Sugar Riot" }
+293.0 "Pudding Party x6" duration 5
+
+# River phase
+305.9 "--north--" Ability { id: "A673", source: "Sugar Riot" }
+308.1 label "river"
+308.1 "Sugarscape" Ability { id: "A663", source: "Sugar Riot" }
+330.2 "Taste of Fire/Taste of Thunder (cast)" Ability { id: ["A65B", "A65D"], source: "Sugar Riot" }
+331.3 "Taste of Fire/Taste of Thunder (snapshot)" Ability { id: ["A65C", "A65E"], source: "Sugar Riot" }
+343.3 "Taste of Fire/Taste of Thunder (cast)" Ability { id: ["A65B", "A65D"], source: "Sugar Riot" }
+344.4 "Taste of Fire/Taste of Thunder (snapshot)" Ability { id: ["A65C", "A65E"], source: "Sugar Riot" }
+351.4 "Mousse Mural" Ability { id: "A66F", source: "Sugar Riot" }
+359.8 "Layer" Ability { id: "A664", source: "Sugar Riot" }
+370.9 "Lightning Bolt" duration 49.5 #Ability { id: "A665", source: "Sugar Riot" }
+384.2 "Layer" Ability { id: "A666", source: "Sugar Riot" }
+397.9 "Highlightning" Ability { id: "A667", source: "Tempest Piece" }
+408.0 "Highlightning" Ability { id: "A667", source: "Tempest Piece" }
+418.0 "Highlightning" Ability { id: "A667", source: "Tempest Piece" }
+425.4 "Mousse Mural" Ability { id: "A66F", source: "Sugar Riot" }
+
+# Blank canvas
+431.5 "Color Riot" Ability { id: "A670", source: "Sugar Riot" }
+433.5 "Warm Bomb/Cool Bomb" Ability { id: ["A671", "A672"], source: "Sugar Riot" }
+441.9 "--north--" Ability { id: "A673", source: "Sugar Riot" }
+451.0 "Double Style" Ability { id: ["A65F", "A660", "A661", "A662"], source: "Sugar Riot" }
+455.7 "Rush/Burst"
+466.3 "Double Style" Ability { id: ["A65F", "A660", "A661", "A662"], source: "Sugar Riot" }
+471.0 "Rush/Burst"
+478.6 "Pudding Party" Ability { id: "A66D", source: "Sugar Riot" }
+479.6 "Pudding Party x6" duration 5
+488.3 "--north--" Ability { id: "A673", source: "Sugar Riot" }
+
+# Doesn't ever seem to repeat desert phase from what I've seen, but just in case, add a sync/jump back to that early here
+489.8 "--sync--" StartsUsing { id: "A668", source: "Sugar Riot" } jump "desert"
+490.5 "Sugarscape" Ability { id: "A663", source: "Sugar Riot" } forcejump "river"
+
+# IGNORED ABILITIES
+# A7B3 --sync--
+
+# ALL ENCOUNTER ABILITIES
+# A654 Single Style
+# A655 Burst
+# A656 Single Style
+# A657 Burst
+# A658 Single Style
+# A659 Rush
+# A65A Single Style
+# A65B Taste of Fire
+# A65C Taste of Fire
+# A65D Taste of Thunder
+# A65E Taste of Thunder
+# A65F Double Style
+# A660 Double Style
+# A661 Double Style
+# A662 Double Style
+# A663 Sugarscape
+# A664 Layer
+# A665 Lightning Bolt
+# A666 Layer
+# A667 Highlightning
+# A668 Sugarscape
+# A669 Layer
+# A66A Layer
+# A66B Spray Pain
+# A66C Layer
+# A66D Pudding Party
+# A66E Pudding Party
+# A66F Mousse Mural
+# A670 Color Riot
+# A671 Warm Bomb
+# A672 Cool Bomb
+# A673 --sync--
+# A674 Mousse Touch-up
+# A675 Mousse Touch-up
+# A7B3 --sync--
