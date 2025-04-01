@@ -251,15 +251,19 @@ Options.Triggers.push({
       outputStrings: {
         near: {
           en: 'Near',
+          cn: '近',
         },
         far: {
           en: 'Far',
+          cn: '远',
         },
         swapAfterFirst: {
           en: '${first} bait first, Swap after first+third',
+          cn: '先 ${first} 引导, 1、3刀后交换',
         },
         swapAfterSecond: {
           en: '${first} bait first, Swap after second',
+          cn: '先 ${first} 引导, 2刀后交换',
         },
       },
     },
@@ -279,6 +283,7 @@ Options.Triggers.push({
       outputStrings: {
         tower: {
           en: 'Donut on you, get tower',
+          cn: '月环点名, 踩塔',
         },
       },
     },
@@ -305,6 +310,7 @@ Options.Triggers.push({
       outputStrings: {
         stacks: {
           en: 'Support/DPS stacks',
+          cn: '红地板分摊',
         },
       },
     },
@@ -368,6 +374,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Supports west, DPS east',
+          cn: 'T奶 左, DPS 右',
         },
       },
     },
@@ -380,6 +387,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Point sword cleave out',
+          cn: '引导半场刀',
         },
       },
     },
@@ -443,6 +451,7 @@ Options.Triggers.push({
         counterclockwise: Outputs.counterclockwise,
         text: {
           en: 'Start ${dir}, rotate ${rotate}',
+          cn: '从 ${dir} 开始, ${rotate}',
         },
       },
     },
@@ -469,15 +478,19 @@ Options.Triggers.push({
       outputStrings: {
         inWest: {
           en: 'In WSW => Out WNW => Out WSW',
+          cn: '内左偏下 => 外左偏上 => 外左偏下',
         },
         inEast: {
           en: 'In ESE => Out ESE => Out ENE',
+          cn: '内右偏下 => 外右偏下 => 外右偏上',
         },
         outWest: {
           en: 'Out WSW => In WNW => In WSW',
+          cn: '外左偏下 => 内左偏上 => 内左偏下',
         },
         outEast: {
           en: 'Out ESE => In ESE => In ENE',
+          cn: '外右偏下 => 内右偏下 => 内右偏上',
         },
       },
     },
@@ -497,9 +510,11 @@ Options.Triggers.push({
       outputStrings: {
         rose: {
           en: 'Rose Marker on YOU',
+          cn: '蔷薇点名',
         },
         tower: {
           en: 'Soak Tower',
+          cn: '踩塔',
         },
       },
     },
@@ -525,9 +540,11 @@ Options.Triggers.push({
       outputStrings: {
         north: {
           en: 'Roses north, spreads south',
+          cn: '蔷薇上, 分散下',
         },
         south: {
           en: 'Roses south, spreads north',
+          cn: '蔷薇下, 分散上',
         },
       },
     },
@@ -555,9 +572,11 @@ Options.Triggers.push({
         south: Outputs.south,
         rose: {
           en: 'Rose Marker on YOU, spread ${northSouth}',
+          cn: '蔷薇点名, ${northSouth} 分散',
         },
         spread: {
           en: 'Spread Marker on YOU, spread ${northSouth}',
+          cn: '分散点名, ${northSouth} 分散',
         },
       },
     },
@@ -569,6 +588,7 @@ Options.Triggers.push({
       outputStrings: {
         thorns: {
           en: 'Stack for thorns => break tethers => stack in red tiles',
+          cn: '集合连线 => 拉断连线 => 红地板分摊',
         },
       },
     },
@@ -617,6 +637,7 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         start: {
           en: 'Start ${startDir}',
+          cn: '从 ${startDir} 开始',
         },
       },
     },
@@ -642,6 +663,7 @@ Options.Triggers.push({
         out: Outputs.out,
         text: {
           en: '${inOutFirst} ${dirFirst} Clockwise => ${inOutSecond} ${dirSecond}',
+          cn: '${inOutFirst} ${dirFirst} 顺时针 => ${inOutSecond} ${dirSecond}',
         },
       },
     },
@@ -662,9 +684,11 @@ Options.Triggers.push({
       outputStrings: {
         rose: {
           en: 'Rose Marker on YOU',
+          cn: '蔷薇点名',
         },
         tower: {
           en: 'Tower Soaks Later',
+          cn: '稍后踩塔',
         },
       },
     },
@@ -692,9 +716,11 @@ Options.Triggers.push({
         out: Outputs.out,
         rose: {
           en: 'Place rose ${inOut} => dodge cleaves',
+          cn: '${inOut} 放置蔷薇 => 躲避扇形',
         },
         tower: {
           en: 'Dodge cleaves => soak tower',
+          cn: '躲避扇形 => 踩塔',
         },
       },
     },
