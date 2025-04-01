@@ -1,4 +1,9 @@
-### Arcadion (R5N): AAC Cruiserweight M1
+### AAC CRUISERWEIGHT (M1)
+# ZoneId: 1256
+
+# @TODO: There are definitely more IDs for 2-snap and 4-snap twist, see:
+# https://v2.xivapi.com/api/search?sheets=Action&fields=Name,Cast100ms&query=Name=%222-snap%20Twist%22
+# https://v2.xivapi.com/api/search?sheets=Action&fields=Name,Cast100ms&query=Name=%224-snap%20Twist%22
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -6,4 +11,228 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+7.9 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+10.4 "--sync--" StartsUsing { id: ["A6C9", "A6CA"], source: "Dancing Green" } window 10.6,2
+15.3 "Do the Hustle" Ability { id: ["A6C9", "A6CA"], source: "Dancing Green" }
+21.4 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+28.5 "2-snap Twist" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" }
+30.1 "2-snap Twist" Ability { id: "A6D1", source: "Dancing Green" }
+32.1 "2-snap Twist (opposite)" Ability { id: "A6D2", source: "Dancing Green" }
+39.7 "4-snap Twist" Ability { id: ["A6DC", "A6DE", "A6E1"], source: "Dancing Green" }
+40.7 "4-snap Twist" Ability { id: "A6E2", source: "Dancing Green" }
+41.1 "4-snap Twist" Ability { id: "A6E3", source: "Dancing Green" }
+41.5 "4-snap Twist" Ability { id: "A6E4", source: "Dancing Green" }
+43.1 "4-snap Twist (opposite)" Ability { id: "A6E5", source: "Dancing Green" }
+50.4 "Deep Cut" Ability { id: "A6C7", source: "Dancing Green" }
+56.0 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+61.3 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+65.3 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+69.3 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+73.3 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+74.3 "Full Beat" Ability { id: "A6FF", source: "Dancing Green" }
+76.4 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+77.4 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+82.5 "Disco Infernal" Ability { id: "A6F9", source: "Dancing Green" }
+99.6 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+108.8 "Do the Hustle" Ability { id: ["A6C9", "A6CA"], source: "Dancing Green" }
+128.0 "Celebrate Good Times" Ability { id: "A6C8", source: "Dancing Green" }
+137.7 "Ride the Waves" Ability { id: "A6F7", source: "Dancing Green" } duration 34.3
+157.6 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+164.8 "2-snap Twist" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" }
+166.3 "2-snap Twist" Ability { id: "A6D1", source: "Dancing Green" }
+168.4 "2-snap Twist (opposite)" Ability { id: "A6D2", source: "Dancing Green" }
+174.0 "Celebrate Good Times" Ability { id: "A6C8", source: "Dancing Green" }
+180.2 "--north--" Ability { id: "A6C5", source: "Dancing Green" }
+185.5 "Ensemble Assemble" Ability { id: "9A30", source: "Dancing Green" }
+192.4 "Arcady Night Fever" Ability { id: "A705", source: "Dancing Green" }
+203.8 "Stone" Ability { id: "98B4", source: "Dancing Green" }
+212.7 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+214.7 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+216.6 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+218.5 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+220.4 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+222.3 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+224.2 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+226.1 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+233.3 "Let's Pose!" Ability { id: "A719", source: "Dancing Green" }
+247.5 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+252.8 "Frogtourage" Ability { id: "A704", source: "Dancing Green" }
+267.4 "Moonburn" Ability { id: "A720", source: "Dancing Green" }
+269.4 "Eighth Beats" Ability { id: "A703", source: "Dancing Green" }
+277.7 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+281.7 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+284.7 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+285.7 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+289.7 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+291.8 "4-snap Twist" Ability { id: ["A6DC", "A6DE", "A6E1"], source: "Dancing Green" }
+292.8 "4-snap Twist" Ability { id: "A6E2", source: "Dancing Green" }
+293.2 "4-snap Twist" Ability { id: "A6E3", source: "Dancing Green" }
+293.5 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+293.5 "4-snap Twist" Ability { id: "A6E4", source: "Dancing Green" }
+295.1 "4-snap Twist (opposite)" Ability { id: "A6E5", source: "Dancing Green" }
+297.5 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+303.6 "Celebrate Good Times" Ability { id: "A6C8", source: "Dancing Green" }
+309.7 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+315.8 "Disco Infernal" Ability { id: "A6F9", source: "Dancing Green" }
+320.9 "Frogtourage" Ability { id: "A704", source: "Dancing Green" }
+335.2 "4-snap Twist" Ability { id: ["A6DC", "A6DE", "A6E1"], source: "Dancing Green" }
+335.4 "Moonburn" Ability { id: ["A71F", "A720"], source: "Dancing Green" }
+336.3 "4-snap Twist" Ability { id: "A6E2", source: "Dancing Green" }
+336.7 "4-snap Twist" Ability { id: "A6E3", source: "Dancing Green" }
+337.1 "4-snap Twist" Ability { id: "A6E4", source: "Dancing Green" }
+338.7 "4-snap Twist (opposite)" Ability { id: "A6E5", source: "Dancing Green" }
+348.5 "2-snap Twist" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" } window 5,5
+350.1 "2-snap Twist" Ability { id: "A6D1", source: "Dancing Green" }
+352.1 "2-snap Twist (opposite)" Ability { id: "A6D2", source: "Dancing Green" }
+359.1 "Moonburn" Ability { id: ["A71F", "A720"], source: "Dancing Green" }
+368.8 "2-snap Twist" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" }
+370.4 "2-snap Twist" Ability { id: "A6D1", source: "Dancing Green" }
+372.4 "2-snap Twist (opposite)" Ability { id: "A6D2", source: "Dancing Green" }
+378.7 "Deep Cut" Ability { id: "A6C7", source: "Dancing Green" }
 
+384.3 label "loop"
+384.3 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+389.6 "Ensemble Assemble" Ability { id: "9A30", source: "Dancing Green" }
+396.6 "Arcady Night Fever" Ability { id: "A705", source: "Dancing Green" }
+408.1 "Stone" Ability { id: "98B4", source: "Dancing Green" }
+417.1 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+419.1 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+421.0 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+422.9 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+424.8 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+426.7 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+428.6 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+430.5 "Let's Dance!" #Ability { id: "9BDC", source: "Dancing Green" }
+437.7 "Let's Pose!" Ability { id: "A71A", source: "Dancing Green" }
+455.5 "Ride the Waves" Ability { id: "A6F7", source: "Dancing Green" } duration 34.3
+475.4 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+482.6 "2-snap Twist" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" }
+484.2 "2-snap Twist" Ability { id: "A6D1", source: "Dancing Green" }
+486.2 "2-snap Twist (opposite)" Ability { id: "A6D2", source: "Dancing Green" }
+491.8 "Celebrate Good Times" Ability { id: "A6C8", source: "Dancing Green" }
+497.9 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+504.0 "Disco Infernal" Ability { id: "A6F9", source: "Dancing Green" }
+509.1 "Frogtourage" Ability { id: "A704", source: "Dancing Green" }
+523.3 "4-snap Twist" Ability { id: ["A6DC", "A6DE", "A6E1"], source: "Dancing Green" }
+523.7 "Moonburn" Ability { id: ["A71F", "A720"], source: "Dancing Green" }
+524.4 "4-snap Twist" Ability { id: "A6E2", source: "Dancing Green" }
+524.8 "4-snap Twist" Ability { id: "A6E3", source: "Dancing Green" }
+525.2 "4-snap Twist" Ability { id: "A6E4", source: "Dancing Green" }
+526.8 "4-snap Twist (opposite)" Ability { id: "A6E5", source: "Dancing Green" }
+536.6 "2-snap Twist" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" }
+538.2 "2-snap Twist" Ability { id: "A6D1", source: "Dancing Green" }
+540.2 "2-snap Twist (opposite)" Ability { id: "A6D2", source: "Dancing Green" }
+547.2 "Moonburn" Ability { id: ["A71F", "A720"], source: "Dancing Green" }
+554.8 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+558.8 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+561.8 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+562.8 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+566.8 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+
+568.9 "2-snap Twist/4-snap Twist"
+568.9 "--sync--" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" } jump "2snap"
+568.9 "--sync--" Ability { id: ["A6DC", "A6DE", "A6E1"], source: "Dancing Green" } jump "4snap"
+
+650.0 label "2snap"
+650.0 "2-snap Twist" Ability { id: ["A4D5", "A6CC", "A6CD", "A6D0"], source: "Dancing Green" }
+651.6 "2-snap Twist" Ability { id: "A6D1", source: "Dancing Green" }
+652.0 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+653.7 "2-snap Twist (opposite)" Ability { id: "A6D2", source: "Dancing Green" }
+656.1 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+663.2 "Celebrate Good Times" Ability { id: "A6C8", source: "Dancing Green" }
+671.0 "Deep Cut" Ability { id: "A6C7", source: "Dancing Green" }
+676.6 "--sync--" Ability { id: "A6C5", source: "Dancing Green" } forcejump "loop"
+
+750.0 label "4snap"
+750.0 "4-snap Twist" Ability { id: ["A6DC", "A6DE", "A6E1"], source: "Dancing Green" }
+751.0 "4-snap Twist" Ability { id: "A6E2", source: "Dancing Green" }
+751.4 "4-snap Twist" Ability { id: "A6E3", source: "Dancing Green" }
+751.7 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+751.8 "4-snap Twist" Ability { id: "A6E4", source: "Dancing Green" }
+753.4 "4-snap Twist (opposite)" Ability { id: "A6E5", source: "Dancing Green" }
+755.8 "Funky Floor" Ability { id: "A6F6", source: "Dancing Green" }
+762.9 "Celebrate Good Times" Ability { id: "A6C8", source: "Dancing Green" }
+770.7 "Deep Cut" Ability { id: "A6C7", source: "Dancing Green" }
+776.3 "--sync--" Ability { id: "A6C5", source: "Dancing Green" } forcejump "loop"
+
+# IGNORED ABILITIES
+# A6F8 Ride the Waves - Followup hits
+# A6C6 Deep Cut - castbar
+# A6F5 Funky Floor - castbar
+# A6FE Full Beat - castbar
+# A6FB Shame - Mechanic failure
+# A706 --sync-- - Arcady Night Fever/Let's Dance, initial animation?
+# 93C0 --sync-- - Arcady Night Fever/Let's Dance, initial animation?
+# 93C1 --sync-- - Arcady Night Fever/Let's Dance, boss pointing?
+# A70C --sync-- - Arcady Night Fever/Let's Dance, unknown
+# A70D --sync-- - Arcady Night Fever/Let's Dance, unknown
+# 9409 --sync-- - Arcady Night Fever/Let's Dance, unknown
+# 9415 --sync-- - Arcady Night Fever/Let's Dance, unknown
+# 942A --sync-- - Arcady Night Fever/Let's Dance, unknown
+# 93CB --sync-- - Arcady Night Fever/Let's Dance, unknown
+# 93CC --sync-- - Arcady Night Fever/Let's Dance, unknown
+# A717 Let's Dance! - Arcady Night Fever/Let's Dance, animations
+# A718 Let's Dance! - Arcady Night Fever/Let's Dance, animations
+# A714 Let's Dance! - Let's Dance castbar
+# 93D3 --sync-- - Let's Dance animations
+# 93D4 --sync-- - Let's Dance animations
+# A71D --sync-- - Frogtourage clones appear
+# A71E --sync-- - Frogtourage clone animation
+# A702 Eighth Beats - castbar
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# 93C0 --sync--
+# 93C1 --sync--
+# 93CB --sync--
+# 93CC --sync--
+# 93D3 --sync--
+# 93D4 --sync--
+# 9409 --sync--
+# 9415 --sync--
+# 942A --sync--
+# 98B4 Stone
+# 9A30 Ensemble Assemble
+# 9BDC Let's Dance!
+# A4D5 2-snap Twist
+# A6C5 --sync--
+# A6C6 Deep Cut
+# A6C7 Deep Cut
+# A6C8 Celebrate Good Times
+# A6C9 Do the Hustle
+# A6CA Do the Hustle
+# A6CC 2-snap Twist
+# A6CD 2-snap Twist
+# A6D0 2-snap Twist
+# A6D1 2-snap Twist
+# A6D2 2-snap Twist
+# A6DC 4-snap Twist
+# A6DE 4-snap Twist
+# A6E2 4-snap Twist
+# A6E3 4-snap Twist
+# A6E4 4-snap Twist
+# A6E5 4-snap Twist
+# A6F5 Funky Floor
+# A6F6 Funky Floor
+# A6F7 Ride the Waves
+# A6F8 Ride the Waves
+# A6F9 Disco Infernal
+# A6FB Shame
+# A6FE Full Beat
+# A6FF Full Beat
+# A702 Eighth Beats
+# A703 Eighth Beats
+# A704 Frogtourage
+# A705 Arcady Night Fever
+# A706 --sync--
+# A70C --sync--
+# A70D --sync--
+# A714 Let's Dance!
+# A717 Let's Dance!
+# A718 Let's Dance!
+# A719 Let's Pose!
+# A71A Let's Pose!
+# A71D --sync--
+# A71E --sync--
+# A71F Moonburn
+# A720 Moonburn
