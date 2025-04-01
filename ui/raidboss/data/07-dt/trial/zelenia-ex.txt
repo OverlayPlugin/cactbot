@@ -1,8 +1,276 @@
-### Recollection (Extreme)
+### RECOLLECTION (EXTREME)
+# ZoneId: 1271
+
+# -ii A8A2 A8A3 A8A4 A8A5 A8A6 A8A7 A8A8 A8A9 A8AA A8AB A8EA
+# -ii A8AE
+# -ii A8D6 A8D7 A8D8 A8D9
+# -ii A8B7
+# -ii A8BF A838
+# -ii A8E4
+# -ii A9B8
+
+# -ii A9B9
+# -ii A89F
+# -ii A8C2
 
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
+## Phase 1
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+11.4 "Thorned Catharsis" Ability { id: "A89E", source: "Zelenia" } window 11.4,2
+17.6 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+21.7 "Shock" Ability { id: "A8A1", source: "Zelenia" } duration 13.9
+27.8 "Alexandrian Holy" Ability { id: "A8C0", source: "Zelenia" }
+31.8 "Explosion" #Ability { id: "A8DA", source: "Zelenia" }
+44.7 "Specter of the Lost" Ability { id: "A8A0", source: "Zelenia" }
+
+# Escelon 1
+50.1 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+64.2 "Escelons' Fall" Ability { id: "A8AD", source: "Zelenia" }
+65.1 "Escelons' Fall 1" #Ability { id: "A8AF", source: "Zelenia" }
+68.2 "Escelons' Fall 2" #Ability { id: "A8AF", source: "Zelenia" }
+71.2 "Escelons' Fall 3" #Ability { id: "A8AF", source: "Zelenia" }
+74.2 "Escelons' Fall 4" #Ability { id: "A8AF", source: "Zelenia" }
+83.4 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
+89.4 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+93.5 "Blessed Barricade" Ability { id: "A8B5", source: "Zelenia" }
+
+## Adds
+105.4 "Spearpoint Push" Ability { id: "A8B4", source: "Zelenia's Shade" }
+105.7 "Explosion" #Ability { id: "A83C", source: "Zelenia" }
+117.6 "Spearpoint Push" #Ability { id: "A8B4", source: "Zelenia's Shade" }
+117.7 "Explosion" #Ability { id: "A83C", source: "Zelenia" }
+129.6 "Spearpoint Push" #Ability { id: "A8B4", source: "Zelenia's Shade" }
+129.7 "Explosion" #Ability { id: "A83C", source: "Zelenia" }
+141.6 "Spearpoint Push" #Ability { id: "A8B3", source: "Zelenia's Shade" }
+155.9 "Perfumed Quietus (enrage?)" Ability { id: "A8CD", source: "Zelenia" } window 155.9,5
+
+## Phase 2
+166.9 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+## Bloom 1
+170.7 "Roseblood Bloom" Ability { id: "A8B9", source: "Zelenia" }
+171.7 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+179.1 "Alexandrian Thunder II" Ability { id: "A8BE", source: "Zelenia" } duration 14.8
+193.2 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+198.9 "Alexandrian Thunder III" Ability { id: "A8E3", source: "Zelenia" }
+
+207.0 "Thorned Catharsis" Ability { id: "A89E", source: "Zelenia" }
+213.2 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+## Bloom 2
+217.0 "Roseblood: 2nd Bloom" Ability { id: "AA14", source: "Zelenia" }
+218.0 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+227.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+227.2 "Alexandrian Thunder IV" Ability { id: ["A9BA", "A9BB"], source: "Zelenia" }
+228.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+229.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+230.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+230.2 "Alexandrian Thunder IV" Ability { id: ["A9BA", "A9BB"], source: "Zelenia" }
+231.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+232.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+
+242.3 "Specter of the Lost" Ability { id: "A8A0", source: "Zelenia" }
+247.7 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+## Bloom 3
+251.6 "Roseblood: 3rd Bloom" Ability { id: "AA15", source: "Zelenia" }
+252.7 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+258.1 "Bud of Valor" Ability { id: "A8B2", source: "Zelenia" }
+264.1 "Alexandrian Holy" Ability { id: "A8C0", source: "Zelenia's Shade" }
+266.1 "Emblazon (markers)" Ability { id: "A8BB", source: "Zelenia" }
+273.7 "Emblazon (resolves)" Ability { id: "A820", source: "Zelenia" }
+278.0 "Explosion" Ability { id: "A8C1", source: "Zelenia" }
+
+# Escelon 2
+286.2 "Thorned Catharsis" Ability { id: "A89E", source: "Zelenia" }
+293.4 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+297.7 "Bud of Valor" Ability { id: "A8B2", source: "Zelenia" }
+304.8 "Shock" Ability { id: "A8A1", source: "Zelenia's Shade" } duration 13.9
+313.9 "Alexandrian Banish II" Ability { id: "A8D1", source: "Zelenia's Shade" }
+314.7 "Alexandrian Banish II" Ability { id: "A8D2", source: "Zelenia" }
+319.8 "Escelons' Fall" Ability { id: "A8AD", source: "Zelenia" }
+320.7 "Escelons' Fall 1" #Ability { id: "A8AF", source: "Zelenia" }
+323.8 "Escelons' Fall 2" #Ability { id: "A8AF", source: "Zelenia" }
+326.8 "Escelons' Fall 3" #Ability { id: "A8AF", source: "Zelenia" }
+329.8 "Escelons' Fall 4" #Ability { id: "A8AF", source: "Zelenia" }
+339.0 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
+347.3 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+## Bloom 4
+351.1 "Roseblood: 4th Bloom" Ability { id: "AA16", source: "Zelenia" }
+352.1 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+357.5 "Emblazon (markers)" Ability { id: "A8BB", source: "Zelenia" }
+365.1 "Emblazon (resolves)" Ability { id: "A820", source: "Zelenia" }
+365.8 "Alexandrian Thunder III" Ability { id: "A8E6", source: "Zelenia" }
+369.8 "Encircling Thorns" Ability { id: "A8C3", source: "Zelenia" }
+377.9 "Alexandrian Banish III" Ability { id: "A8E8", source: "Zelenia" }
+378.8 "Alexandrian Banish III" Ability { id: "A8E9", source: "Zelenia" }
+
+# Escelon 3
+390.1 "Thorned Catharsis" Ability { id: "A89E", source: "Zelenia" }
+397.3 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+401.5 "Bud of Valor" Ability { id: "A8B2", source: "Zelenia" }
+414.5 "Power Break" Ability { id: ["A8B0", "A8B1"], source: "Zelenia's Shade" }
+417.5 "Escelons' Fall" Ability { id: "A8AD", source: "Zelenia" }
+418.4 "Escelons' Fall 1" #Ability { id: "A8AF", source: "Zelenia" }
+421.5 "Escelons' Fall 2" #Ability { id: "A8AF", source: "Zelenia" }
+424.5 "Escelons' Fall 3" #Ability { id: "A8AF", source: "Zelenia" }
+427.5 "Escelons' Fall 4" #Ability { id: "A8AF", source: "Zelenia" }
+429.5 "Power Break" Ability { id: ["A8B0", "A8B1"], source: "Zelenia's Shade" }
+436.9 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" }
+447.1 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+## Bloom 5
+450.9 "Roseblood: 5th Bloom" Ability { id: "AA17", source: "Zelenia" }
+452.0 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+457.4 "Valorous Ascension x3" Ability { id: "A8C6", source: "Zelenia" } duration 2.5
+469.0 "Valorous Ascension (chakrams)" #Ability { id: "A8CA", source: "Briar Thorn" }
+469.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+469.2 "Alexandrian Thunder IV" Ability { id: ["A9BA", "A9BB"], source: "Zelenia" }
+470.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+471.2 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+472.1 "Valorous Ascension (chakrams)" #Ability { id: "A8CA", source: "Briar Thorn" }
+472.3 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+472.3 "Alexandrian Thunder IV" Ability { id: ["A9BA", "A9BB"], source: "Zelenia" }
+473.3 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+474.3 "Thunder Slash" #Ability { id: "A8D0", source: "Zelenia" }
+
+484.4 "Specter of the Lost" Ability { id: "A8A0", source: "Zelenia" }
+491.8 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+## Bloom 6
+495.6 "Roseblood: 6th Bloom" Ability { id: "AA18", source: "Zelenia" }
+496.6 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+502.0 "Bud of Valor" Ability { id: "A8B2", source: "Zelenia" }
+508.1 "Alexandrian Holy" Ability { id: "A8C0", source: "Zelenia's Shade" }
+508.1 "Emblazon (markers)" Ability { id: "A8BB", source: "Zelenia" }
+515.7 "Emblazon (resolves)" Ability { id: "A820", source: "Zelenia" }
+518.3 "Holy Hazard (cast)" Ability { id: "A8DF", source: "Zelenia" }
+519.1 "Holy Hazard (snapshot)" Ability { id: "A8E2", source: "Zelenia" }
+522.1 "Holy Hazard (snapshot)" Ability { id: "A8E2", source: "Zelenia" }
+522.1 "Explosion" Ability { id: "A8C1", source: "Zelenia" }
+529.6 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+## Bloom 1 repeat
+533.5 "Roseblood Bloom" Ability { id: "A8B9", source: "Zelenia" }
+534.6 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+542.0 "Alexandrian Thunder II" Ability { id: "A8BE", source: "Zelenia" } duration 14.8
+556.1 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+561.8 "Alexandrian Thunder III" Ability { id: "A8E3", source: "Zelenia" }
+
+569.9 "Thorned Catharsis" Ability { id: "A89E", source: "Zelenia" }
+580.8 "Specter of the Lost" Ability { id: "A8A0", source: "Zelenia" }
+586.2 "--middle--" Ability { id: "A82E", source: "Zelenia" }
+
+# Soft enrage
+594.3 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
+607.4 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
+620.5 "Stock Break x4" Ability { id: "A8D5", source: "Zelenia" } duration 4
+629.3 "Roseblood Withering" Ability { id: "AA19", source: "Zelenia" }
+630.3 "Queen's Crusade" Ability { id: "A8BA", source: "Zelenia" }
+642.7 "Rose Red (enrage)" Ability { id: "A8C5", source: "Zelenia" }
+
+# IGNORED ABILITIES
+# A838 Alexandrian Thunder II
+# A89F Specter of the Lost - castbar
+# A8A2 Shock - followup hits
+# A8A3 Shock - followup hits
+# A8A4 Shock - followup hits
+# A8A5 Shock - followup hits
+# A8A6 Shock - followup hits
+# A8A7 Shock - followup hits
+# A8A8 Shock - followup hits
+# A8A9 Shock - followup hits
+# A8AA Shock - followup hits
+# A8AB Shock - followup hits
+# A8AE Escelons' Fall - invisible cast for baits
+# A8B7 Perfumed Quietus - castbar
+# A8BF Alexandrian Thunder II
+# A8C2 Unmitigated Explosion
+# A8D6 Stock Break - followup hits
+# A8D7 Stock Break - followup hits
+# A8D8 Stock Break - followup hits
+# A8D9 Stock Break - followup hits
+# A8E4 Alexandrian Thunder III - castbar
+# A8EA --sync-- - autoattack
+# A9B8 Thunder Slash - castbar
+# A9B9 Thunder Slash - castbar
+
+# ALL ENCOUNTER ABILITIES
+# A820 Emblazon
+# A82E --sync-- - jump to mid
+# A838 Alexandrian Thunder II
+# A839 Holy Hazard
+# A83C Explosion
+# A89E Thorned Catharsis
+# A89F Specter of the Lost
+# A8A0 Specter of the Lost
+# A8A1 Shock
+# A8A2 Shock
+# A8A3 Shock
+# A8A4 Shock
+# A8A5 Shock
+# A8A6 Shock
+# A8A7 Shock
+# A8A8 Shock
+# A8A9 Shock
+# A8AA Shock
+# A8AB Shock
+# A8AD Escelons' Fall
+# A8AE Escelons' Fall
+# A8AF Escelons' Fall
+# A8B0 Power Break
+# A8B1 Power Break
+# A8B2 Bud of Valor
+# A8B3 Spearpoint Push
+# A8B4 Spearpoint Push
+# A8B5 Blessed Barricade
+# A8B7 Perfumed Quietus
+# A8B9 Roseblood Bloom
+# A8BA Queen's Crusade
+# A8BB Emblazon
+# A8BE Alexandrian Thunder II
+# A8BF Alexandrian Thunder II
+# A8C0 Alexandrian Holy
+# A8C1 Explosion
+# A8C2 Unmitigated Explosion
+# A8C3 Encircling Thorns
+# A8C4 Encircling Thorns
+# A8C5 Rose Red
+# A8C6 Valorous Ascension
+# A8C7 Valorous Ascension
+# A8C8 Valorous Ascension
+# A8C9 Valorous Ascension
+# A8CA Valorous Ascension
+# A8CD Perfumed Quietus
+# A8D0 Thunder Slash
+# A8D1 Alexandrian Banish II
+# A8D2 Alexandrian Banish II
+# A8D5 Stock Break
+# A8D6 Stock Break
+# A8D7 Stock Break
+# A8D8 Stock Break
+# A8D9 Stock Break
+# A8DA Explosion
+# A8DF Holy Hazard
+# A8E2 Holy Hazard
+# A8E3 Alexandrian Thunder III
+# A8E4 Alexandrian Thunder III
+# A8E6 Alexandrian Thunder III
+# A8E8 Alexandrian Banish III
+# A8E9 Alexandrian Banish III
+# A8EA --sync--
+# A9B8 Thunder Slash
+# A9B9 Thunder Slash
+# A9BA Alexandrian Thunder IV
+# A9BB Alexandrian Thunder IV
+# AA14 Roseblood: 2nd Bloom
+# AA15 Roseblood: 3rd Bloom
+# AA16 Roseblood: 4th Bloom
+# AA17 Roseblood: 5th Bloom
+# AA18 Roseblood: 6th Bloom
+# AA19 Roseblood Withering

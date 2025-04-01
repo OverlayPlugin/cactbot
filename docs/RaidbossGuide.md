@@ -513,6 +513,8 @@ Then it returns the replaced string for `alarmText` to use.
 
 Instead of passing a name into any trigger, always use `data.party.member` to pass a player object instead.
 This allows the "use job names instead of player names" option to work.
+Do not directly access properties of `data.party.member()` in triggers;
+always use `data.party.member()` so output will reflect user config preferences.
 You can always pass any array (of strings or of player objects) as a parameter
 and the result will be a list with commas, e.g. `['a', 'b', 'c']` => `'a, b, c'`.
 
