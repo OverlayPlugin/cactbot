@@ -300,6 +300,7 @@ const overrides = [
   {
     'files': ['**/raidboss/data/**/*'],
     'rules': {
+      'rulesdir/cactbot-party-member-property-access': 'error',
       'rulesdir/cactbot-trigger-property-order': ['warn', { 'module': 'raidboss' }],
       'rulesdir/cactbot-triggerset-property-order': ['warn', { 'module': 'raidboss' }],
     },
