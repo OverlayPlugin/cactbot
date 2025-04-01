@@ -348,7 +348,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R5N Deep Cut',
       type: 'StartsUsing',
       netRegex: { id: 'A6C6', source: 'Dancing Green', capture: true },
-      response: Responses.tankBuster(),
+      response: Responses.tankCleave(),
     },
     {
       id: 'R5N Full Beat',
