@@ -1,7 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { Directions, DirectionOutputCardinal } from '../../../../../resources/util';
+import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -305,8 +305,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R5S Arcady Night Fever + Encore Collect',
       type: 'StartsUsing',
       netRegex: { id: Object.keys(feverIdMap), source: 'Frogtourage' },
-      run: (data, matches) =>
-        data.feverSafeDirs.push(feverIdMap[matches.id] ?? 'unknown'),
+      run: (data, matches) => data.feverSafeDirs.push(feverIdMap[matches.id] ?? 'unknown'),
     },
     {
       id: 'R5S Let\'s Dance!',
