@@ -285,7 +285,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R5S Quarter Beats',
       type: 'StartsUsing',
-      netRegex: { id: 'A700', source: 'Dancing Green', capture: false },
+      netRegex: { id: 'A75B', source: 'Dancing Green', capture: false },
       infoText: (_data, _matches, output) => output.quarterBeats!(),
       outputStrings: {
         quarterBeats: Outputs.stackPartner,
@@ -294,7 +294,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R5S Eighth Beats',
       type: 'StartsUsing',
-      netRegex: { id: 'A702', source: 'Dancing Green', capture: false },
+      netRegex: { id: 'A75D', source: 'Dancing Green', capture: false },
       infoText: (_data, _matches, output) => output.eighthBeats!(),
       outputStrings: {
         eighthBeats: Outputs.spread,
@@ -326,6 +326,12 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsCardinalDir,
         next: Outputs.next,
       },
+    },
+    {
+      id: 'R5S Let\'s Pose',
+      type: 'StartsUsing',
+      netRegex: { id: 'A770', source: 'Dancing Green', capture: false },
+      response: Responses.bigAoe(),
     },
   ],
 };
