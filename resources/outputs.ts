@@ -232,6 +232,14 @@ export default {
     cn: '双奶分组分摊',
     ko: '힐러 그룹 쉐어',
   },
+  rolePositions: {
+    en: 'Role positions',
+    de: 'Rollenposition',
+    fr: 'Positions par rôle',
+    ja: 'ロール散会',
+    cn: '职能三刀站位',
+    ko: '직업군별 위치로',
+  },
   stackOnYou: {
     en: 'Stack on YOU',
     de: 'Auf DIR sammeln',

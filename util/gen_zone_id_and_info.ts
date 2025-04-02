@@ -130,7 +130,7 @@ type ResultTerritoryType = {
       };
     };
     TerritoryIntendedUse?: RowIdOnly;
-    WeatherRate?: number;
+    WeatherRate?: RowIdOnly;
   };
 };
 
@@ -564,7 +564,7 @@ const generateZoneInfoMap = async (
       continue;
     }
 
-    const weatherRate = ttZoneData.fields.WeatherRate;
+    const weatherRate = ttZoneData.fields.WeatherRate?.row_id;
     if (weatherRate === undefined) {
       log.alert(`No weather rate data found for territory ID ${ttId}. Resolve before merge.`);
       continue;

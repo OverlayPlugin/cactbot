@@ -320,18 +320,22 @@ const triggerSet: TriggerSet<Data> = {
         near: {
           en: 'Near',
           de: 'Nah',
+          cn: '近',
         },
         far: {
           en: 'Far',
           de: 'Fern',
+          cn: '远',
         },
         swapAfterFirst: {
           en: '${first} bait first, Swap after first+third',
           de: '${first} zuerst ködern, wechsel nach dem ersten + dritten',
+          cn: '先 ${first} 引导, 1、3刀后交换',
         },
         swapAfterSecond: {
           en: '${first} bait first, Swap after second',
           de: '${first} zuerst ködern, wechsel nach dem zweiten',
+          cn: '先 ${first} 引导, 2刀后交换',
         },
       },
     },
@@ -352,6 +356,7 @@ const triggerSet: TriggerSet<Data> = {
         tower: {
           en: 'Donut on you, get tower',
           de: 'Donut auf DIR, steh im Turm',
+          cn: '月环点名, 踩塔',
         },
       },
     },
@@ -379,6 +384,7 @@ const triggerSet: TriggerSet<Data> = {
         stacks: {
           en: 'Support/DPS stacks',
           de: 'Support/DPS sammeln',
+          cn: '红地板分摊',
         },
       },
     },
@@ -445,6 +451,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Supports west, DPS east',
           de: 'Supports Westen, DPS Osten',
+          cn: 'T奶 左, DPS 右',
         },
       },
     },
@@ -458,6 +465,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Point sword cleave out',
           de: 'Schwert-Cleves nach draußen zeigen',
+          cn: '引导半场刀',
         },
       },
     },
@@ -526,6 +534,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Start ${dir}, rotate ${rotate}',
           de: 'Starte ${dir}, rotiere ${rotate}',
+          cn: '从 ${dir} 开始, ${rotate}',
         },
       },
     },
@@ -554,18 +563,22 @@ const triggerSet: TriggerSet<Data> = {
         inWest: {
           en: 'In WSW => Out WNW => Out WSW',
           de: 'Rein WSW => Raus WNW => Raus WSW',
+          cn: '内左偏下 => 外左偏上 => 外左偏下',
         },
         inEast: {
           en: 'In ESE => Out ESE => Out ENE',
           de: 'Rein OSO => Raus OSO => Raus ONO',
+          cn: '内右偏下 => 外右偏下 => 外右偏上',
         },
         outWest: {
           en: 'Out WSW => In WNW => In WSW',
           de: 'Raus WSW => Rein WNW => Rein WSW',
+          cn: '外左偏下 => 内左偏上 => 内左偏下',
         },
         outEast: {
           en: 'Out ESE => In ESE => In ENE',
           de: 'Raus OSO => Rein OSO => Rein ONO',
+          cn: '外右偏下 => 内右偏下 => 内右偏上',
         },
       },
     },
@@ -587,10 +600,12 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Rose Marker on YOU',
           de: 'Rosen-Marker auf DIR',
+          cn: '蔷薇点名',
         },
         tower: {
           en: 'Soak Tower',
           de: 'Im Turm stehen',
+          cn: '踩塔',
         },
       },
     },
@@ -619,10 +634,12 @@ const triggerSet: TriggerSet<Data> = {
         north: {
           en: 'Roses north, spreads south',
           de: 'Rosen Norden, Verteilen Süden',
+          cn: '蔷薇上, 分散下',
         },
         south: {
           en: 'Roses south, spreads north',
           de: 'Rosen Süden, Verteilen Norden',
+          cn: '蔷薇下, 分散上',
         },
       },
     },
@@ -656,10 +673,12 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Rose Marker on YOU, spread ${northSouth}',
           de: 'Rosen-Marker auf DIR, verteile ${northSouth}',
+          cn: '蔷薇点名, ${northSouth} 分散',
         },
         spread: {
           en: 'Spread Marker on YOU, spread ${northSouth}',
           de: 'Verteilen-Marker auf DIR, verteile ${northSouth}',
+          cn: '分散点名, ${northSouth} 分散',
         },
       },
     },
@@ -672,6 +691,7 @@ const triggerSet: TriggerSet<Data> = {
         thorns: {
           en: 'Stack for thorns => break tethers => stack in red tiles',
           de: 'Sammeln für Dornen => Verbindung brechen => steh auf dem roten Feld',
+          cn: '集合连线 => 拉断连线 => 红地板分摊',
         },
       },
     },
@@ -729,6 +749,7 @@ const triggerSet: TriggerSet<Data> = {
         start: {
           en: 'Start ${startDir}',
           de: 'Start ${startDir}',
+          cn: '从 ${startDir} 开始',
         },
       },
     },
@@ -756,6 +777,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${inOutFirst} ${dirFirst} Clockwise => ${inOutSecond} ${dirSecond}',
           de: '${inOutFirst} ${dirFirst} Im Uhrzeigersinn => ${inOutSecond} ${dirSecond}',
+          cn: '${inOutFirst} ${dirFirst} 顺时针 => ${inOutSecond} ${dirSecond}',
         },
       },
     },
@@ -779,10 +801,12 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Rose Marker on YOU',
           de: 'Rosen-Marker auf DIR',
+          cn: '蔷薇点名',
         },
         tower: {
           en: 'Tower Soaks Later',
           de: 'Nehme Turm später',
+          cn: '稍后踩塔',
         },
       },
     },
@@ -814,10 +838,12 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Place rose ${inOut} => dodge cleaves',
           de: 'Plaziere Rose ${inOut} => weiche dem Cleve aus',
+          cn: '${inOut} 放置蔷薇 => 躲避扇形',
         },
         tower: {
           en: 'Dodge cleaves => soak tower',
           de: 'Weiche dem Cleave aus => steh im Turm',
+          cn: '躲避扇形 => 踩塔',
         },
       },
     },
