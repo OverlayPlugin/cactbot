@@ -336,25 +336,25 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Springhis Khan',
+        'Frogtourage': 'Schenkelschwinger',
       },
       'replaceText': {},
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Dancing Green',
+        'Frogtourage': 'danceur batracien',
       },
       'replaceText': {},
     },
     {
       'locale': 'ja',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'ダンシング・グリーン',
+        'Frogtourage': 'フロッグダンサー',
       },
       'replaceText': {},
     },
