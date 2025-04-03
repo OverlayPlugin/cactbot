@@ -291,6 +291,32 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'Springhis Khan',
+      },
+      'replaceText': {},
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'Dancing Green',
+      },
+      'replaceText': {},
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'ダンシング・グリーン',
+      },
+      'replaceText': {},
+    },
+  ],
 };
 
 export default triggerSet;
