@@ -52,7 +52,6 @@ export interface Data extends RaidbossData {
   deepCutTargets: string[];
   storedABSideMech?: 'lightParty' | 'roleGroup';
   discoInfernalCount: number;
-  seenFunkyFloor: boolean;
   feverSafeDirs: DirectionOutputCardinal[];
 }
 
@@ -63,7 +62,6 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     deepCutTargets: [],
     discoInfernalCount: 0,
-    seenFunkyFloor: false,
     feverSafeDirs: [],
   }),
   triggers: [
@@ -91,16 +89,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // For the initial sequence, collect only without an alert
-      // as the X-Snap twist immediately follows.
       id: 'R5S Flip to AB Side',
       type: 'StartsUsing',
       netRegex: { id: ['A780', 'A781'], source: 'Dancing Green' },
       infoText: (data, matches, output) => {
         // A780 = Flip to A-side, A781 = Flip to B-side
         data.storedABSideMech = matches.id === 'A780' ? 'roleGroup' : 'lightParty';
-        if (data.seenFunkyFloor)
-          return output.stored!({ mech: output[data.storedABSideMech]!() });
+        return output.stored!({ mech: output[data.storedABSideMech]!() });
       },
       outputStrings: {
         stored: {
@@ -152,12 +147,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'A756', source: 'Dancing Green', capture: false },
       response: Responses.bigAoe(),
       run: (data) => data.discoInfernalCount++,
-    },
-    {
-      id: 'R5S Funky Floor Tracker',
-      type: 'Ability',
-      netRegex: { id: 'A752', source: 'Dancing Green', capture: false },
-      run: (data) => data.seenFunkyFloor = true,
     },
     {
       id: 'R5S Burn Baby Burn 1 Early',
