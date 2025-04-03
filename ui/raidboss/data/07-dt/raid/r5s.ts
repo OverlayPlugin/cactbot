@@ -1,15 +1,14 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODOs:
-// - Arcady Night Fever/Get Down - dodge call
-// - Let's Dance - E/W swaps
-// - Frogtourage - E+W or N+S safe
-// - Let's Dance Remix - E/W/N/S swaps
+// - Arcady Night Fever/Get Down - dodge followup cleave call
+// - Frogtourage 1 - E+W or N+S safe
 // - Frogtourage 2 - safe wedges + boss e/w cleave
 // - Frogtourage 3 - inside/outside + baits
 
@@ -41,11 +40,20 @@ const snapTwistIdMap: { [id: string]: [SnapCount, EastWest] } = {
   'A73E': ['four', 'east'],
 };
 
+// map of Frogtourage cast ids to safe dirs
+const feverIdMap: { [id: string]: DirectionOutputCardinal } = {
+  'A70A': 'dirN', // south cleave
+  'A70B': 'dirS', // north cleave
+  'A70C': 'dirW', // east cleave
+  'A70D': 'dirE', // west cleave
+};
+
 export interface Data extends RaidbossData {
   deepCutTargets: string[];
   storedABSideMech?: 'lightParty' | 'roleGroup';
   discoInfernalCount: number;
   seenFunkyFloor: boolean;
+  feverSafeDirs: DirectionOutputCardinal[];
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -56,6 +64,7 @@ const triggerSet: TriggerSet<Data> = {
     deepCutTargets: [],
     discoInfernalCount: 0,
     seenFunkyFloor: false,
+    feverSafeDirs: [],
   }),
   triggers: [
     {
@@ -157,6 +166,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) =>
         data.discoInfernalCount === 1 &&
         data.me === matches.target,
+      durationSeconds: 7,
       infoText: (_data, matches, output) => {
         // During Disco 1, debuffs are by role: 23.5s or 31.5s
         if (parseFloat(matches.duration) < 25)
@@ -275,7 +285,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R5S Quarter Beats',
       type: 'StartsUsing',
-      netRegex: { id: 'A700', source: 'Dancing Green', capture: false },
+      netRegex: { id: 'A75B', source: 'Dancing Green', capture: false },
       infoText: (_data, _matches, output) => output.quarterBeats!(),
       outputStrings: {
         quarterBeats: Outputs.stackPartner,
@@ -284,11 +294,43 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R5S Eighth Beats',
       type: 'StartsUsing',
-      netRegex: { id: 'A702', source: 'Dancing Green', capture: false },
+      netRegex: { id: 'A75D', source: 'Dancing Green', capture: false },
       infoText: (_data, _matches, output) => output.eighthBeats!(),
       outputStrings: {
         eighthBeats: Outputs.spread,
       },
+    },
+    {
+      // cast order of the 8 adds is always W->E, same as firing order
+      id: 'R5S Arcady Night Fever + Encore Collect',
+      type: 'StartsUsing',
+      netRegex: { id: Object.keys(feverIdMap), source: 'Frogtourage' },
+      run: (data, matches) => data.feverSafeDirs.push(feverIdMap[matches.id] ?? 'unknown'),
+    },
+    {
+      id: 'R5S Let\'s Dance!',
+      type: 'StartsUsing',
+      // A76A - Let's Dance!; A390 - Let's Dance! Remix
+      // Remix is faster, so use a shorter duration
+      netRegex: { id: ['A76A', 'A390'], source: 'Dancing Green' },
+      durationSeconds: (_data, matches) => matches.id === 'A76A' ? 23 : 18,
+      infoText: (data, _matches, output) => {
+        if (data.feverSafeDirs.length < 8)
+          return output['unknown']!();
+        const dirStr = data.feverSafeDirs.map((dir) => output[dir]!()).join(output.next!());
+        return dirStr;
+      },
+      run: (data) => data.feverSafeDirs = [],
+      outputStrings: {
+        ...Directions.outputStringsCardinalDir,
+        next: Outputs.next,
+      },
+    },
+    {
+      id: 'R5S Let\'s Pose',
+      type: 'StartsUsing',
+      netRegex: { id: 'A770', source: 'Dancing Green', capture: false },
+      response: Responses.bigAoe(),
     },
   ],
   timelineReplace: [
