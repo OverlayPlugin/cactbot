@@ -308,6 +308,7 @@ Options.Triggers.push({
       outputStrings: {
         stacks: {
           en: 'Healer Groups (in water)',
+          cn: '治疗分组分摊 (站在水里)',
         },
       },
     },
@@ -320,6 +321,7 @@ Options.Triggers.push({
       outputStrings: {
         spread: {
           en: 'Spread (not in water)',
+          cn: '分散 (站在岸上)',
         },
       },
     },
