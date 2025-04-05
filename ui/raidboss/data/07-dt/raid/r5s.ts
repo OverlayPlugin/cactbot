@@ -53,6 +53,10 @@ export interface Data extends RaidbossData {
   storedABSideMech?: 'lightParty' | 'roleGroup';
   discoInfernalCount: number;
   feverSafeDirs: DirectionOutputCardinal[];
+  wavelengthCount: {
+    alpha: number;
+    beta: number;
+  };
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -63,6 +67,10 @@ const triggerSet: TriggerSet<Data> = {
     deepCutTargets: [],
     discoInfernalCount: 0,
     feverSafeDirs: [],
+    wavelengthCount: {
+      alpha: 0,
+      beta: 0,
+    },
   }),
   triggers: [
     {
@@ -270,7 +278,72 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R5S Wavelength',
+      // Wavelength α debuff timers are applied with 40.5, 25.5, 25.5, 30.5 or
+      //  38.0, 23.0, 23.0, 28.0 durations depending on which group gets hit first
+      //
+      // Wavelength β debuff timers are applied with 45.5, 30.5, 20.5, 25.5 or
+      //  43.0, 28.0, 18.0, 23.0 durations depending on which group gets hit first
+      id: 'R5S Wavelength Merge Order',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['116E', '116F'] },
+      preRun: (data, matches) => {
+        matches.effectId === '116E' ? data.wavelengthCount.alpha++ : data.wavelengthCount.beta++;
+      },
+      durationSeconds: (_data, matches) => parseFloat(matches.duration),
+      infoText: (data, matches, output) => {
+        if (matches.target === data.me) {
+          if (matches.effectId === '116E') {
+            const count = data.wavelengthCount.alpha;
+            switch (count) {
+              case 1:
+                return output.merge!({ order: output.third!() });
+              case 2:
+                return output.merge!({ order: output.first!() });
+              case 3:
+                return output.merge!({ order: output.second!() });
+              case 4:
+                return output.merge!({ order: output.fourth!() });
+              default:
+                return output.merge!({ order: output.unknown!() });
+            }
+          } else {
+            const count = data.wavelengthCount.beta;
+            switch (count) {
+              case 1:
+                return output.merge!({ order: output.fourth!() });
+              case 2:
+                return output.merge!({ order: output.second!() });
+              case 3:
+                return output.merge!({ order: output.first!() });
+              case 4:
+                return output.merge!({ order: output.third!() });
+              default:
+                return output.merge!({ order: output.unknown!() });
+            }
+          }
+        }
+      },
+      outputStrings: {
+        merge: {
+          en: '${order} merge',
+        },
+        first: {
+          en: 'First',
+        },
+        second: {
+          en: 'Second',
+        },
+        third: {
+          en: 'Third',
+        },
+        fourth: {
+          en: 'Fourth',
+        },
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'R5S Wavelength Merge Reminder',
       type: 'GainsEffect',
       netRegex: { effectId: ['116E', '116F'] },
       condition: Conditions.targetIsYou(),
