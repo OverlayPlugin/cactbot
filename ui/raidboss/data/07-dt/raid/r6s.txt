@@ -1,9 +1,198 @@
-### Arcadion (R6S): AAC Cruiserweight M2 Savage
+### AAC CRUISERWEIGHT M2 (SAVAGE)
+# ZoneId: 1259
+
+# -ii 93C7 941F 9420 9A37 A6AB A6AD A6AF A6B0 A6B1 A6B2 A7B4
+# -it "Feather Ray" "Yan" "Mu" "Jabberwock" "Gimme Cat"
 
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
+# Blank canvas
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+11.3 "Mousse Mural" Ability { id: "A6BC", source: "Sugar Riot" }
+22.4 "Color Riot" Ability { id: ["A691", "A692"], source: "Sugar Riot" }
+24.5 "Cool Bomb/Warm Bomb" #Ability { id: "A693", source: "Sugar Riot" }
+29.7 "--middle--" Ability { id: "A673", source: "Sugar Riot" }
+35.1 "Wingmark" Ability { id: "A676", source: "Sugar Riot" }
+41.2 "Color Clash" Ability { id: ["A68B", "A68D"], source: "Sugar Riot" }
+57.6 "Double Style" Ability { id: ["93CA", "9408", "A67D", "A67E", "A67F", "A680", "A681", "A682"], source: "Sugar Riot" }
+61.7 "Bad Breath/Dark Mist/Burst" #Ability { id: "A684", source: "Mouthwatering Morbol" }
+62.1 "Color Clash" Ability { id: ["A68F", "A690"], source: "Sugar Riot" }
+69.7 "Sticky Mousse (cast)" Ability { id: "A695", source: "Sugar Riot" }
+70.6 "Sticky Mousse (snapshot)" #Ability { id: "A696", source: "Sugar Riot" }
+76.6 "Burst" Ability { id: "A697", source: "Sugar Riot" }
+81.9 "Color Riot" Ability { id: ["A691", "A692"], source: "Sugar Riot" }
+83.9 "Cool Bomb/Warm Bomb" #Ability { id: "A693", source: "Sugar Riot" }
+89.1 "--north--" Ability { id: "A673", source: "Sugar Riot" }
 
+# Desert phase
+91.3 "Sugarscape" Ability { id: "A668", source: "Sugar Riot" }
+107.5 "Layer" Ability { id: "A66A", source: "Sugar Riot" }
+121.7 "Spray Pain" Ability { id: "A6A1", source: "Sugar Riot" } duration 15
+141.1 "Brûlée/Crowd Brûlée" Ability { id: ["A6A2", "9A2D"], source: "Sugar Riot" }
+142.4 "--middle--" Ability { id: "A673", source: "Sugar Riot" }
+148.8 "Sticky Mousse (cast)" Ability { id: "A695", source: "Sugar Riot" }
+149.7 "Sticky Mousse (snapshot)" Ability { id: "A696", source: "Sugar Riot" }
+155.7 "Burst" Ability { id: "A697", source: "Sugar Riot" }
+157.3 "Layer" Ability { id: "A66C", source: "Sugar Riot" }
+172.3 "Brûlée" Ability { id: "A6A2", source: "Sugar Riot" }
+173.1 "Spray Pain" Ability { id: "9A2C", source: "Sugar Riot" }
+176.7 "Pudding Graf" Ability { id: "A6B5", source: "Sugar Riot" }
+179.8 "--middle--" Ability { id: "A673", source: "Sugar Riot" }
+189.0 "Double Style" Ability { id: "A683", source: "Sugar Riot" }
+190.0 "Pudding Graf" Ability { id: "A6B6", source: "Sugar Riot" }
+199.0 "Mousse Mural" Ability { id: "A6BC", source: "Sugar Riot" }
+
+# Blank canvas
+207.1 "Color Riot" Ability { id: ["A691", "A692"], source: "Sugar Riot" }
+209.1 "Cool Bomb/Warm Bomb" #Ability { id: "A693", source: "Sugar Riot" }
+
+# Adds phase
+217.2 "Soul Sugar" Ability { id: "A6A5", source: "Sugar Riot" }
+224.3 "Live Painting" Ability { id: "A6A6", source: "Sugar Riot" }
+227.4 "--Yan targetable--"
+227.4 "--2x Mu targetable--"
+229.4 "--Gimme Cat targetable--"
+253.4 "Live Painting" Ability { id: "A6A7", source: "Sugar Riot" }
+256.5 "--2x Feather Ray targetable--"
+256.5 "--2x Mu targetable--"
+275.5 "Live Painting" Ability { id: "A6A8", source: "Sugar Riot" }
+278.6 "--Yan targetable--"
+280.6 "--Gimme Cat targetable--"
+286.6 "--Jabberwock targetable--"
+305.5 "Ready Ore Not" Ability { id: "A6AA", source: "Sugar Riot" }
+314.6 "Live Painting" Ability { id: "A6A9", source: "Sugar Riot" }
+317.7 "--Yan targetable--"
+317.7 "--2x Feather Ray targetable--"
+317.7 "--2x Mu targetable--"
+319.7 "--Gimme Cat targetable--"
+325.7 "--Jabberwock targetable--"
+388.7 "Ready Ore Not" Ability { id: "A6AA", source: "Sugar Riot" }
+
+397.8 "Single Style" Ability { id: "9A3D", source: "Sugar Riot" }
+401.9 "Rush" Ability { id: "A686", source: "Sweet Shot" }
+410.9 "Color Riot" Ability { id: ["A691", "A692"], source: "Sugar Riot" }
+412.9 "Cool Bomb/Warm Bomb" #Ability { id: "A693", source: "Sugar Riot" }
+418.9 "Mousse Mural" Ability { id: "A6BC", source: "Sugar Riot" }
+426.1 "--north--" Ability { id: "A673", source: "Sugar Riot" }
+
+# @TODO: Cleanup beyond this point, pulled from FFLogs reports
+
+# River phase
+428.3 "Sugarscape" Ability { id: "A663", source: "Sugar Riot" }
+448.4 "Double Style" Ability { id: "A689", source: "Sugar Riot" }
+452.5 "Rush+Taste of Thunder/Taste of Fire" #Ability { id: "A686", source: "Sweet Shot" }
+454.5 "Layer" Ability { id: "A698", source: "Sugar Riot" }
+466.6 "Taste of Thunder" #Ability { id: "A69D", source: "Sugar Riot" }
+473.0 "Lightning Bolt" Ability { id: "A69A", source: "Sugar Riot" } duration 34.4
+479.0 "Lightning Storm (cast)" Ability { id: "A69E", source: "Sugar Riot" }
+479.7 "Levin Drop (snapshot)" Ability { id: "A69F", source: "Sugar Riot" }
+489.6 "Lightning Storm (cast)" Ability { id: "A69E", source: "Sugar Riot" }
+490.3 "Levin Drop (snapshot)" Ability { id: "A69F", source: "Sugar Riot" }
+500.2 "Lightning Storm (cast)" Ability { id: "A69E", source: "Sugar Riot" }
+500.9 "Levin Drop (snapshot)" Ability { id: "A69F", source: "Sugar Riot" }
+510.8 "Lightning Storm (cast)" Ability { id: "A69E", source: "Sugar Riot" }
+511.5 "Levin Drop (snapshot)" Ability { id: "A69F", source: "Sugar Riot" }
+515.9 "Pudding Party x5" Ability { id: "A66D", source: "Sugar Riot" } duration 5
+529.9 "Layer" Ability { id: "A699", source: "Sugar Riot" }
+546.0 "Mousse Drip" Ability { id: "A6B7", source: "Sugar Riot" }
+551.0 "Mousse Drip" #Ability { id: "A6B8", source: "Sugar Riot" }
+553.0 "Mousse Drip" #Ability { id: "A6B8", source: "Sugar Riot" }
+555.0 "Mousse Drip" #Ability { id: "A6B8", source: "Sugar Riot" }
+556.0 "Moussacre (cast)" Ability { id: "A6BA", source: "Sugar Riot" }
+556.9 "Moussacre (snapshot)" Ability { id: "A6BB", source: "Sugar Riot" }
+557.1 "Mousse Drip" #Ability { id: "A6B8", source: "Sugar Riot" }
+563.1 "Taste of Thunder" #Ability { id: "A69D", source: "Sugar Riot" }
+564.9 "Explosion" Ability { id: "A6A3", source: "Sugar Riot" }
+569.1 "Wingmark" Ability { id: "A676", source: "Sugar Riot" }
+589.3 "Taste of Thunder" Ability { id: "A69D", source: "Sugar Riot" }
+591.3 "Explosion" Ability { id: "A6A3", source: "Sugar Riot" }
+596.3 "Mousse Mural" Ability { id: "A6BC", source: "Sugar Riot" }
+
+# Blank canvas
+606.4 "Sticky Mousse (cast)" Ability { id: "A695", source: "Sugar Riot" }
+607.3 "Sticky Mousse (snapshot)" Ability { id: "A696", source: "Sugar Riot" }
+613.3 "Burst" Ability { id: "A697", source: "Sugar Riot" }
+618.6 "Color Riot" Ability { id: ["A691", "A692"], source: "Sugar Riot" }
+620.6 "Cool Bomb/Warm Bomb" #Ability { id: "A693", source: "Sugar Riot" }
+625.8 "--middle--" Ability { id: "A673", source: "Sugar Riot" }
+631.0 "Wingmark" Ability { id: "A676", source: "Sugar Riot" }
+637.1 "Color Clash" Ability { id: ["A68B", "A68D"], source: "Sugar Riot" }
+653.2 "Double Style" Ability { id: ["93CA", "9408", "A67D", "A67E", "A67F", "A680", "A681", "A682"], source: "Sugar Riot" }
+657.3 "Bad Breath/Dark Mist/Burst" #Ability { id: "A684", source: "Mouthwatering Morbol" }
+658.1 "Color Clash" Ability { id: ["A68F", "A690"], source: "Sugar Riot" }
+665.3 "--jump?--" Ability { id: "A673", source: "Sugar Riot" }
+674.6 "Artistic Anarchy" Ability { id: "A6BD", source: "Sugar Riot" }
+680.7 "Enrage"
+
+# IGNORED ABILITIES
+# 93C7 Water III
+# 941F --sync--
+# 9420 --sync--
+# 9A37 Unlimited Craving
+# A67C --sync--
+# A68C --sync--
+# A69C --sync--
+# A68E --sync--
+# A6A4 Unmitigated Explosion
+# A6AB Rallying Cheer
+# A6AD Manxome Windersnatch
+# A6AF Water III
+# A6B0 --sync--
+# A6B1 I Crave Violence
+# A6B2 Hangry Hiss
+# A7B4 --sync--
+
+# ALL ENCOUNTER ABILITIES
+# 93C7 Water III
+# 93CA Double Style
+# 9408 Double Style
+# 941F --sync--
+# 9420 --sync--
+# 9A2C Spray Pain
+# 9A2D Crowd Brûlée
+# 9A37 Unlimited Craving
+# A668 Sugarscape
+# A66A Layer
+# A66C Layer
+# A673 --sync--
+# A676 Wingmark
+# A67C --sync--
+# A67D Double Style
+# A67E Double Style
+# A67F Double Style
+# A680 Double Style
+# A681 Double Style
+# A682 Double Style
+# A683 Double Style
+# A684 Bad Breath
+# A68D Color Clash
+# A68E --sync--
+# A68F Color Clash
+# A691 Color Riot
+# A692 Color Riot
+# A693 Cool Bomb
+# A694 Warm Bomb
+# A695 Sticky Mousse
+# A696 Sticky Mousse
+# A697 Burst
+# A6A1 Spray Pain
+# A6A2 Brûlée
+# A6A5 Soul Sugar
+# A6A6 Live Painting
+# A6A7 Live Painting
+# A6A8 Live Painting
+# A6A9 Live Painting
+# A6AA Ready Ore Not
+# A6AB Rallying Cheer
+# A6AD Manxome Windersnatch
+# A6AF Water III
+# A6B0 --sync--
+# A6B1 I Crave Violence
+# A6B2 Hangry Hiss
+# A6B5 Pudding Graf
+# A6B6 Pudding Graf
+# A6BC Mousse Mural
+# A7B4 --sync--
