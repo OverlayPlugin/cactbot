@@ -73,6 +73,7 @@ Options.Triggers.push({
       outputStrings: {
         stored: {
           en: '(${mech} later)',
+          cn: '(稍后 ${mech})',
         },
         lightParty: Outputs.healerGroups,
         roleGroup: Outputs.rolePositions,
@@ -96,6 +97,7 @@ Options.Triggers.push({
       outputStrings: {
         combo: {
           en: 'Start ${dir} (${num} hits) => ${mech}',
+          cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
         },
         lightParty: Outputs.healerGroups,
         roleGroup: Outputs.rolePositions,
@@ -137,9 +139,11 @@ Options.Triggers.push({
       outputStrings: {
         shortBurn: {
           en: '(short cleanse)',
+          cn: '(短舞点名)',
         },
         longBurn: {
           en: '(long cleanse)',
+          cn: '(长舞点名)',
         },
       },
     },
@@ -156,6 +160,7 @@ Options.Triggers.push({
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          cn: '灯下跳舞',
         },
       },
     },
@@ -176,9 +181,11 @@ Options.Triggers.push({
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          cn: '灯下跳舞',
         },
         bait: {
           en: 'Bait Frog',
+          cn: '引导青蛙',
         },
       },
     },
@@ -200,9 +207,11 @@ Options.Triggers.push({
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          cn: '灯下跳舞',
         },
         bait: {
           en: 'Bait Frog',
+          cn: '引导青蛙',
         },
       },
     },
@@ -215,6 +224,7 @@ Options.Triggers.push({
       outputStrings: {
         insideOut: {
           en: 'Max Melee => Under',
+          cn: '钢铁 => 月环',
         },
       },
     },
@@ -227,6 +237,7 @@ Options.Triggers.push({
       outputStrings: {
         outsideIn: {
           en: 'Under => Max Melee',
+          cn: '月环 => 钢铁',
         },
       },
     },
@@ -240,6 +251,7 @@ Options.Triggers.push({
       outputStrings: {
         merge: {
           en: 'Merge debuff',
+          cn: '撞毒',
         },
       },
     },
