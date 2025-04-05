@@ -4,8 +4,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-export type Data = RaidbossData;
-
 const mapEffectData = {
   // Deathwall turning off after clear?
   '00': {
@@ -321,10 +319,17 @@ const headMarkerData = {
 } as const;
 console.assert(headMarkerData);
 
+export interface Data extends RaidbossData {
+  deepCutTargets: string[];
+}
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM1',
   zoneId: ZoneId.AacCruiserweightM1,
   timelineFile: 'r5n.txt',
+  initData: () => ({
+    deepCutTargets: [],
+  }),
   triggers: [
     {
       id: 'R5N Do the Hustle West Safe',
@@ -349,7 +354,23 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R5N Deep Cut',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.tankLaser, capture: true },
-      response: Responses.tankCleave(),
+      infoText: (data, matches, output) => {
+        data.deepCutTargets.push(matches.target);
+        if (data.deepCutTargets.length < 2)
+          return;
+
+        if (data.deepCutTargets.includes(data.me))
+          return output.cleaveOnYou!();
+        return output.avoidCleave!();
+      },
+      run: (data) => {
+        if (data.deepCutTargets.length >= 2)
+          data.deepCutTargets = [];
+      },
+      outputStrings: {
+        cleaveOnYou: Outputs.tankCleaveOnYou,
+        avoidCleave: Outputs.avoidTankCleave,
+      },
     },
     {
       id: 'R5N Full Beat',
