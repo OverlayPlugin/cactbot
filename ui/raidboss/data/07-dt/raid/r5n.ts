@@ -345,10 +345,11 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      // cast is self-targeted on boss
       id: 'R5N Deep Cut',
-      type: 'StartsUsing',
-      netRegex: { id: 'A6C6', source: 'Dancing Green', capture: true },
-      response: Responses.tankBuster(),
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.tankLaser, capture: true },
+      response: Responses.tankCleave(),
     },
     {
       id: 'R5N Full Beat',

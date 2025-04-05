@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.34.1",
-  "releaseSummary": "Zelenia EX, Suzaku Unreal, i18n",
-  "releaseInDraft": "true",
+  "version": "0.34.2",
+  "releaseSummary": "initial M5N, M6N, M5S, 7.2 jobs module changes, i18n",
+  "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",
