@@ -35,7 +35,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R6S Sticky Mousse',
       type: 'StartsUsing',
       netRegex: { id: 'A695', source: 'Sugar Riot', capture: false },
-      response: Responses.protean(),
+      response: Responses.spread(),
     },
   ],
 };
