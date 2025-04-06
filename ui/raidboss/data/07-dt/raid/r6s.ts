@@ -1,3 +1,4 @@
+import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import {
@@ -9,6 +10,16 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
+
+// TODOs:
+// - Color Riot - tankbuster in/out call depending on boss stance and mt/ot current debuff
+// - Brûlée 1 - defamations on tank/dps
+// - Crowd Brûlée - party stack (non-defamations)
+// - Brûlée 2 - defamations on both healers
+// - Pudding Graf - bomb/winged bomb call
+// - Live Painting - add wave call
+// - Ore-rigato - Mu enrage
+// - Single Style - checkerboard aoes
 
 export interface Data extends RaidbossData {
   actorSetPosTracker: { [id: string]: NetMatches['ActorSetPos'] };
@@ -46,6 +57,11 @@ const dirToSameCorners = (dir: DirectionOutput8): DirectionOutput8[] => {
   }
   return [];
 };
+
+const headMarkerData = {
+  // Jabberwock bind/death target
+  'bindMarker': '0017',
+} as const;
 
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM2Savage',
@@ -203,6 +219,24 @@ const triggerSet: TriggerSet<Data> = {
           ko: '${dir1}에서 ${dir2}으로 발사되기',
         },
       },
+    },
+    {
+      id: 'R6S Jabberwock Bind Marker',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.bindMarker, capture: true },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Jabberwock target on you',
+        },
+      },
+    },
+    {
+      id: 'R6S Ready Ore Not',
+      type: 'StartsUsing',
+      netRegex: { id: 'A6AA', source: 'Sugar Riot', capture: false },
+      response: Responses.aoe(),
     },
   ],
   timelineReplace: [
