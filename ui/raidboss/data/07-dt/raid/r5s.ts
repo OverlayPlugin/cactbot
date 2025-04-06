@@ -113,6 +113,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stored: {
           en: '(${mech} later)',
+          de: '(${mech} später)',
           cn: '(稍后 ${mech})',
         },
         lightParty: Outputs.healerGroups,
@@ -138,6 +139,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Start ${dir} (${num} hits) => ${mech}',
+          de: 'Start ${dir} (${num} Treffer) => ${mech}',
           cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
         },
         lightParty: Outputs.healerGroups,
@@ -186,10 +188,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         shortBurn: {
           en: '(short cleanse)',
+          de: '(kurze Reinigung)',
           cn: '(短舞点名)',
         },
         longBurn: {
           en: '(long cleanse)',
+          de: '(lange Reinigung)',
           cn: '(长舞点名)',
         },
       },
@@ -207,6 +211,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           cn: '灯下跳舞',
         },
       },
@@ -228,10 +233,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           cn: '灯下跳舞',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
           cn: '引导青蛙',
         },
       },
@@ -254,10 +261,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           cn: '灯下跳舞',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
           cn: '引导青蛙',
         },
       },
@@ -271,6 +280,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         insideOut: {
           en: 'Max Melee => Under',
+          de: 'Max Nahkampf => Unter ihn',
           cn: '钢铁 => 月环',
         },
       },
@@ -284,6 +294,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         outsideIn: {
           en: 'Under => Max Melee',
+          de: 'Unter ihn => Max Nahkampf',
           cn: '月环 => 钢铁',
         },
       },
@@ -337,18 +348,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: '${order} merge',
+          de: '${order} berühren',
         },
         first: {
           en: 'First',
+          de: 'Erstes',
         },
         second: {
           en: 'Second',
+          de: 'Zweites',
         },
         third: {
           en: 'Third',
+          de: 'Drittes',
         },
         fourth: {
           en: 'Fourth',
+          de: 'Viertes',
         },
         unknown: Outputs.unknown,
       },
@@ -363,6 +379,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: 'Merge debuff',
+          de: 'Debuff berühren',
           cn: '撞毒',
         },
       },
