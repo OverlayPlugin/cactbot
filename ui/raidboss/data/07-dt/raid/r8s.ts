@@ -128,7 +128,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R8S Breath of Decay Rotation',
       type: 'StartsUsing',
-      netRegex: { id: 'A3B4', source: 'Wolf of Wind' },
+      netRegex: { id: 'A3B4', source: 'Wolf of Wind', capture: true },
       durationSeconds: 6,
       infoText: (data, matches, output) => {
         // 1st add always spawns N or S, and 2nd add always spawns intercardinal
