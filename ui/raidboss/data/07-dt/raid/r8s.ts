@@ -10,7 +10,6 @@ const eminentReign2 = 'A912'; // S=>N, NW=>SE, NE=>SW
 const revolutionaryReign1 = 'A913'; // N=>S, SW=>NE, SE=>NW
 const revolutionaryReign2 = 'A914'; // S=>N, NW=>SE, NE=>SW
 
-
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM4Savage',
   zoneId: ZoneId.AacCruiserweightM4Savage,
