@@ -1,10 +1,16 @@
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-export type Data = RaidbossData;
+export interface Data extends RaidbossData {
+  // Phase 1
+  decayAddCount: number;
+}
 
+const centerX = 100;
+const centerY = 100;
 const eminentReign1 = 'A911'; // N=>S, SW=>NE, SE=>NW
 const eminentReign2 = 'A912'; // S=>N, NW=>SE, NE=>SW
 const revolutionaryReign1 = 'A913'; // N=>S, SW=>NE, SE=>NW
@@ -14,6 +20,9 @@ const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM4Savage',
   zoneId: ZoneId.AacCruiserweightM4Savage,
   timelineFile: 'r8s.txt',
+  initData: () => ({
+    decayAddCount: 0,
+  }),
   triggers: [
     {
       id: 'R8S Extraplanar Pursuit',
@@ -115,6 +124,35 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
       response: Responses.aoe(),
+    },
+    {
+      id: 'R8S Breath of Decay Rotation',
+      type: 'StartsUsing',
+      netRegex: { id: 'A3B4', source: 'Wolf of Wind' },
+      durationSeconds: 6,
+      infoText: (data, matches, output) => {
+        // 1st add always spawns N or S, and 2nd add always spawns intercardinal
+        // we only need the position of the 2nd add to determine rotation
+        data.decayAddCount++;
+        if (data.decayAddCount !== 2)
+          return;
+
+        const addX = parseFloat(matches.x);
+        const addY = parseFloat(matches.y);
+        const addDir = Directions.xyTo8DirNum(addX, addY, centerX, centerY);
+        if (addDir === 1 || addDir === 5)
+          return output.clockwise!();
+        else if (addDir === 3 || addDir === 7)
+          return output.counterclockwise!();
+      },
+      outputStrings: {
+        clockwise: {
+          en: '<== Clockwise',
+        },
+        counterclockwise: {
+          en: 'Counterclockwise ==>',
+        },
+      },
     },
   ],
 };
