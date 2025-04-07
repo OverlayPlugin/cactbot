@@ -99,14 +99,16 @@ const triggerSet: TriggerSet<Data> = {
         })).combatants;
         const actor = actors[0];
         if (actors.length !== 1 || actor === undefined) {
-          console.error(`R8S Eminent/Revolutionary Reign Direction: Wrong actor count ${actors.length}`);
+          console.error(
+            `R8S Eminent/Revolutionary Reign Direction: Wrong actor count ${actors.length}`
+          );
           return;
         }
 
         switch (matches.id) {
           case eminentReign1:
           case eminentReign2:
-            data.reignDir = (Directions.hdgTo8DirNum(actor.Heading) + 4) % 8
+            data.reignDir = (Directions.hdgTo8DirNum(actor.Heading) + 4) % 8;
             break;
           case revolutionaryReign1:
           case revolutionaryReign2:
@@ -116,8 +118,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (data, matches, output) => {
         const dir = output[Directions.outputFrom8DirNum(data.reignDir ?? -1)]!();
-        console.error(`Received ${dir} dir`);
-        switch(matches.id) {
+        switch (matches.id) {
           case eminentReign1:
           case eminentReign2:
             return output.inDir!({ dir: dir });
