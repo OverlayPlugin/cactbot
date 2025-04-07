@@ -110,6 +110,12 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'R8S Titanic Pursuit',
+      type: 'StartsUsing',
+      netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
+      response: Responses.aoe(),
+    },
   ],
 };
 
