@@ -1,4 +1,3 @@
-import { UnreachableCode } from '../../../../../resources/not_reached';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import { Directions } from '../../../../../resources/util';
