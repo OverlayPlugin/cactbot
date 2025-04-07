@@ -64,7 +64,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['A911', 'A912', 'A913', 'A914'], source: 'Howling Blade', capture: true },
       infoText: (_data, matches, output) => {
-        switch(matches.id) {
+        switch (matches.id) {
           case eminentReign1:
           case eminentReign2:
             return output.inLater!();
