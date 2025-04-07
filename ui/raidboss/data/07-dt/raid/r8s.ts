@@ -87,7 +87,7 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-{
+    {
       id: 'R8S Eminent/Revolutionary Reign Direction',
       type: 'StartsUsing',
       netRegex: { id: ['A911', 'A912', 'A913', 'A914'], source: 'Howling Blade', capture: true },
@@ -100,7 +100,7 @@ const triggerSet: TriggerSet<Data> = {
         const actor = actors[0];
         if (actors.length !== 1 || actor === undefined) {
           console.error(
-            `R8S Eminent/Revolutionary Reign Direction: Wrong actor count ${actors.length}`
+            `R8S Eminent/Revolutionary Reign Direction: Wrong actor count ${actors.length}`,
           );
           return;
         }
