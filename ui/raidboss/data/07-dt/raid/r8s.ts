@@ -3,8 +3,7 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-export interface Data extends RaidbossData {
-}
+export interface Data extends RaidbossData;
 
 const eminentReign1 = 'A911'; // N=>S, SW=>NE, SE=>NW
 const eminentReign2 = 'A912'; // S=>N, NW=>SE, NE=>SW
