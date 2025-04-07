@@ -1,9 +1,16 @@
+import { UnreachableCode } from '../../../../../resources/not_reached';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-export type Data = RaidbossData;
+export interface Data extends RaidbossData {
+  // Phase 1
+  reignDir?: number;
+  // Phase 2
+}
 
 const eminentReign1 = 'A911'; // N=>S, SW=>NE, SE=>NW
 const eminentReign2 = 'A912'; // S=>N, NW=>SE, NE=>SW
@@ -78,6 +85,58 @@ const triggerSet: TriggerSet<Data> = {
         },
         outLater: {
           en: '(Out Later)',
+        },
+      },
+    },
+{
+      id: 'R8S Eminent/Revolutionary Reign Direction',
+      type: 'StartsUsing',
+      netRegex: { id: ['A911', 'A912', 'A913', 'A914'], source: 'Howling Blade', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) + 1.2,
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(`R8S Eminent/Revolutionary Reign Direction: Wrong actor count ${actors.length}`);
+          return;
+        }
+
+        switch (matches.id) {
+          case eminentReign1:
+          case eminentReign2:
+            data.reignDir = (Directions.hdgTo8DirNum(actor.Heading) + 4) % 8
+            break;
+          case revolutionaryReign1:
+          case revolutionaryReign2:
+            data.reignDir = Directions.hdgTo8DirNum(actor.Heading);
+            break;
+        }
+      },
+      infoText: (data, matches, output) => {
+        const dir = output[Directions.outputFrom8DirNum(data.reignDir ?? -1)]!();
+        console.error(`Received ${dir} dir`);
+        switch(matches.id) {
+          case eminentReign1:
+          case eminentReign2:
+            return output.inDir!({ dir: dir });
+          case revolutionaryReign1:
+          case revolutionaryReign2:
+            return output.outDir!({ dir: dir });
+        }
+      },
+      run: (data) => {
+        data.reignDir = undefined;
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        inDir: {
+          en: 'In ${dir}',
+        },
+        outDir: {
+          en: 'Out ${dir}',
         },
       },
     },
