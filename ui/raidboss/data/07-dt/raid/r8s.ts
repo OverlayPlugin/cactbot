@@ -6,7 +6,7 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-type Phase = 'one' | 'adds' | 'rage' ;
+type Phase = 'one' | 'adds' | 'rage';
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -276,9 +276,20 @@ const triggerSet: TriggerSet<Data> = {
           data.stoneWindCallGroup = 3;
         }
 
-        if (data.stoneWindCallGroup === 1)
-          return { alarmText: output.stoneWindNum!({ debuff: data.stoneWindDebuff, num: data.stoneWindCallGroup }) };
-        return { infoText: output.stoneWindNum!({ debuff: data.stoneWindDebuff, num: data.stoneWindCallGroup }) };
+        if (data.stoneWindCallGroup === 1) {
+          return {
+            alarmText: output.stoneWindNum!({
+              debuff: data.stoneWindDebuff,
+              num: data.stoneWindCallGroup,
+            }),
+          };
+        }
+        return {
+          infoText: output.stoneWindNum!({
+            debuff: data.stoneWindDebuff,
+            num: data.stoneWindCallGroup,
+          }),
+        };
       },
     },
     {
@@ -296,7 +307,10 @@ const triggerSet: TriggerSet<Data> = {
           data.stoneWindCallGroup === 2 && data.stoneWindTracker === 2 ||
           data.stoneWindCallGroup === 3 && data.stoneWindTracker === 3
         )
-          return output.stoneWindNum!({ debuff: data.stoneWindDebuff, num: data.stoneWindCallGroup });
+          return output.stoneWindNum!({
+            debuff: data.stoneWindDebuff,
+            num: data.stoneWindCallGroup,
+          });
       },
       run: (data) => {
         // Clear once 6 debuffs have been cleansed
