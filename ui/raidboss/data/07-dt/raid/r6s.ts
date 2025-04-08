@@ -198,7 +198,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Start ${dir1}, launch towards ${dir2}',
           cn: '从 ${dir1} 飞向 ${dir2}',
-          ko: '${dir1}에서 ${dir2}으로',
+          ko: '${dir1}에서 ${dir2}으로 발사되기',
         },
       },
     },
