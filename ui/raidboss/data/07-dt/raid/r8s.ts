@@ -15,7 +15,7 @@ export interface Data extends RaidbossData {
   reignDir?: number;
   decayAddCount: number;
   stoneWindCallGroup?: number;
-  stoneWindDebuff?: 'Stone' | 'Wind';
+  stoneWindDebuff?: 'stone' | 'wind';
   stoneWindTracker?: number;
   // Phase 2
 }
@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
         // 1127 = Stone (Yellow Cube) Debuff
         // 1128 = Wind (Green Sphere) Debuff
         const cubeDebuffId = '1127';
-        data.stoneWindDebuff = matches.effectId === cubeDebuffId ? 'Stone' : 'Wind';
+        data.stoneWindDebuff = matches.effectId === cubeDebuffId ? 'stone' : 'wind';
 
         if (parseFloat(matches.duration) < 22) {
           data.stoneWindCallGroup = 1;
