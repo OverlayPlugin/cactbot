@@ -35,14 +35,6 @@ const stoneWindOutputStrings = {
   stoneWindNum: {
     en: '${debuff} ${num}',
   },
-  group: {
-    en: 'Group ${num}',
-    de: 'Group ${num}',
-    fr: 'Groupe ${num}',
-    ja: '${num} 組',
-    cn: '${num} 组',
-    ko: '그룹: ${num}',
-  },
 };
 
 const triggerSet: TriggerSet<Data> = {
