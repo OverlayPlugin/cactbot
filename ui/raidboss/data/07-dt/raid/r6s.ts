@@ -206,13 +206,14 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Mouthwatering Morbol': 'Zucker-Morbol',
         'Sugar Riot': 'Zuckerschock',
         'Sweet Shot': 'Zuckerpfeil',
       },
       'replaceText': {
+        '\\(cast\\)': '(wirken)',
+        '\\(snapshot\\)': '(Speichern)',
         'Artistic Anarchy': 'Artistische Anarchie',
         'Bad Breath': 'Schlechter Atem',
         'Brûlée': 'Wärmeentladung',

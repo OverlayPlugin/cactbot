@@ -2899,7 +2899,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Crystal of Darkness': 'Kristall der Dunkelheit',
         'Crystal of Light': 'Kristall des Lichts',
@@ -2920,6 +2919,9 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         ' drop\\)': ' abgelegt)',
         '--Oracle center--': '--Orakel mitte--',
+        '--Oracle targetable--': '--Orakel anvisierbar--',
+        '--Oracle untargetable--': '--Orakel nicht anvisierbar--',
+        '--Usurper untargetable--': '--Usurper nicht anvisierbar--',
         '--jump south--': '--Sprung Süden--',
         '--reposition--': '--Repositionierung--',
         'Absolute Zero': 'Absoluter Nullpunkt',

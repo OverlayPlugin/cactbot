@@ -21,23 +21,29 @@ const snapTwistIdMap: { [id: string]: [SnapCount, EastWest] } = {
   'A728': ['two', 'west'],
   'A729': ['two', 'west'],
   'A72A': ['two', 'west'],
+  'A4DB': ['two', 'west'],
   'A72B': ['two', 'east'],
   'A72C': ['two', 'east'],
   'A72D': ['two', 'east'],
+  'A4DC': ['two', 'east'],
   // 3-snap Twist & Drop the Needle
   'A730': ['three', 'west'],
   'A731': ['three', 'west'],
   'A732': ['three', 'west'],
+  'A4DD': ['three', 'west'],
   'A733': ['three', 'east'],
   'A734': ['three', 'east'],
   'A735': ['three', 'east'],
+  'A4DE': ['three', 'east'],
   // 4-snap Twist & Drop the Needle
   'A739': ['four', 'west'],
   'A73A': ['four', 'west'],
   'A73B': ['four', 'west'],
+  'A4DF': ['four', 'west'],
   'A73C': ['four', 'east'],
   'A73D': ['four', 'east'],
   'A73E': ['four', 'east'],
+  'A4E0': ['four', 'east'],
 };
 
 // map of Frogtourage cast ids to safe dirs
@@ -52,7 +58,6 @@ export interface Data extends RaidbossData {
   deepCutTargets: string[];
   storedABSideMech?: 'lightParty' | 'roleGroup';
   discoInfernalCount: number;
-  seenFunkyFloor: boolean;
   feverSafeDirs: DirectionOutputCardinal[];
   wavelengthCount: {
     alpha: number;
@@ -67,7 +72,6 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     deepCutTargets: [],
     discoInfernalCount: 0,
-    seenFunkyFloor: false,
     feverSafeDirs: [],
     wavelengthCount: {
       alpha: 0,
@@ -99,16 +103,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // For the initial sequence, collect only without an alert
-      // as the X-Snap twist immediately follows.
       id: 'R5S Flip to AB Side',
       type: 'StartsUsing',
       netRegex: { id: ['A780', 'A781'], source: 'Dancing Green' },
       infoText: (data, matches, output) => {
         // A780 = Flip to A-side, A781 = Flip to B-side
         data.storedABSideMech = matches.id === 'A780' ? 'roleGroup' : 'lightParty';
-        if (data.seenFunkyFloor)
-          return output.stored!({ mech: output[data.storedABSideMech]!() });
+        return output.stored!({ mech: output[data.storedABSideMech]!() });
       },
       outputStrings: {
         stored: {
@@ -164,12 +165,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'A756', source: 'Dancing Green', capture: false },
       response: Responses.bigAoe(),
       run: (data) => data.discoInfernalCount++,
-    },
-    {
-      id: 'R5S Funky Floor Tracker',
-      type: 'Ability',
-      netRegex: { id: 'A752', source: 'Dancing Green', capture: false },
-      run: (data) => data.seenFunkyFloor = true,
     },
     {
       id: 'R5S Burn Baby Burn 1 Early',
@@ -349,22 +344,27 @@ const triggerSet: TriggerSet<Data> = {
         merge: {
           en: '${order} merge',
           de: '${order} berühren',
+          cn: '${order} 撞毒',
         },
         first: {
           en: 'First',
           de: 'Erstes',
+          cn: '第1组',
         },
         second: {
           en: 'Second',
           de: 'Zweites',
+          cn: '第2组',
         },
         third: {
           en: 'Third',
           de: 'Drittes',
+          cn: '第3组',
         },
         fourth: {
           en: 'Fourth',
           de: 'Viertes',
+          cn: '第4组',
         },
         unknown: Outputs.unknown,
       },
@@ -456,9 +456,40 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ja',
       'replaceSync': {
         'Dancing Green': 'ダンシング・グリーン',
-        'Frogtourage': 'フロッグダンサー',
+        'Frogtourage': 'カモン！ フロッグダンサー',
       },
-      'replaceText': {},
+      'replaceText': {
+        'Deep Cut': 'ディープカット',
+        'Flip to A-side': 'ジングル予約A',
+        'Flip to B-side': 'ジングル予約B',
+        '2-snap Twist & Drop the Needle': '2ポイント、ポーズ&ジングル',
+        '3-snap Twist & Drop the Needle': '3ポイント、ポーズ&ジングル',
+        '4-snap Twist & Drop the Needle': '4ポイント、ポーズ&ジングル',
+        'Play A-side': 'ラウドジングルA',
+        'Play B-side': 'ラウドジングルB',
+        'Celebrate Good Times': 'セレブレート・グッドタイムズ',
+        'Disco Infernal': 'ディスコインファーナル',
+        'Funky Floor': 'ダンシングフィールド',
+        'Inside Out': 'インサイドアウト',
+        'Outside In': 'アウトサイドイン',
+        'Ensemble Assemble': 'ダンサーズ・アッセンブル',
+        'Arcady Night Fever': 'アルカディア・ナイトフィーバー',
+        'Get Down!': 'ゲットダウン！',
+        'Let\'s Dance': 'レッツダンス！',
+        'Freak Out': '静音爆発',
+        'Let\'s Pose': 'レッツポーズ！',
+        'Ride the Waves': 'ウェーブ・オン・ウェーブ',
+        'Quarter Beats': '4ビート',
+        'Eighth Beats': '8ビート',
+        'Frogtourage': 'カモン！ フロッグダンサー',
+        'Moonburn': 'ムーンバーン',
+        'Back-up Dance': 'ダンシングウェーブ',
+        'Arcady Night Encore Starts': 'ナイトフィーバー・アンコール',
+        'Let\'s Dance! Remix': 'レッツダンス・ダンス・ダンス！',
+        'Do the Hustle': 'ドゥ・ザ・ハッスル',
+        'Frogtourage Finale': 'ファイナル・アッセンブル',
+        'Hi-NRG Fever': 'ハイエナジー・ナイトフィーバー',
+      },
     },
   ],
 };
