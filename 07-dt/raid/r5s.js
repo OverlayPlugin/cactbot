@@ -294,18 +294,23 @@ Options.Triggers.push({
       outputStrings: {
         merge: {
           en: '${order} merge',
+          cn: '${order} 撞毒',
         },
         first: {
           en: 'First',
+          cn: '第1组',
         },
         second: {
           en: 'Second',
+          cn: '第2组',
         },
         third: {
           en: 'Third',
+          cn: '第3组',
         },
         fourth: {
           en: 'Fourth',
+          cn: '第4组',
         },
         unknown: Outputs.unknown,
       },
