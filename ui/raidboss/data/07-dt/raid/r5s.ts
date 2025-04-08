@@ -270,7 +270,7 @@ const triggerSet: TriggerSet<Data> = {
         insideOut: {
           en: 'Max Melee => Under',
           cn: '钢铁 => 月环',
-          ko: '밖으로 => 안으로',
+          ko: '칼끝딜 => 안으로',
         },
       },
     },
