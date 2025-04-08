@@ -1,5 +1,6 @@
 import { UnreachableCode } from '../../../../../resources/not_reached';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
@@ -35,6 +36,13 @@ const stoneWindOutputStrings = {
   stoneWindNum: {
     en: '${debuff} ${num}',
   },
+  stone: {
+    en: 'Stone',
+  },
+  wind: {
+    en: 'Wind',
+  },
+  unknown: Outputs.unknown,
 };
 
 const triggerSet: TriggerSet<Data> = {
@@ -271,14 +279,14 @@ const triggerSet: TriggerSet<Data> = {
         if (data.stoneWindCallGroup === 1) {
           return {
             alarmText: output.stoneWindNum!({
-              debuff: data.stoneWindDebuff,
+              debuff: output[data.stoneWindDebuff]!(),
               num: data.stoneWindCallGroup,
             }),
           };
         }
         return {
           infoText: output.stoneWindNum!({
-            debuff: data.stoneWindDebuff,
+            debuff: output[data.stoneWindDebuff]!(),
             num: data.stoneWindCallGroup,
           }),
         };
@@ -300,7 +308,7 @@ const triggerSet: TriggerSet<Data> = {
           data.stoneWindCallGroup === 3 && data.stoneWindTracker === 3
         )
           return output.stoneWindNum!({
-            debuff: data.stoneWindDebuff,
+            debuff: output[data.stoneWindDebuff ?? 'unknown']!(),
             num: data.stoneWindCallGroup,
           });
       },
