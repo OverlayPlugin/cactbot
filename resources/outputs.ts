@@ -237,7 +237,7 @@ export default {
     de: 'Rollenposition',
     fr: 'Positions par rôle',
     ja: 'ロール散会',
-    cn: '职能三刀站位',
+    cn: '职能分散站位',
     ko: '직업군별 위치로',
   },
   stackOnYou: {

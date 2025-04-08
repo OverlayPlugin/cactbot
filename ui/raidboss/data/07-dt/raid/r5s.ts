@@ -99,16 +99,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      // For the initial sequence, collect only without an alert
-      // as the X-Snap twist immediately follows.
       id: 'R5S Flip to AB Side',
       type: 'StartsUsing',
       netRegex: { id: ['A780', 'A781'], source: 'Dancing Green' },
       infoText: (data, matches, output) => {
         // A780 = Flip to A-side, A781 = Flip to B-side
         data.storedABSideMech = matches.id === 'A780' ? 'roleGroup' : 'lightParty';
-        if (data.seenFunkyFloor)
-          return output.stored!({ mech: output[data.storedABSideMech]!() });
+        return output.stored!({ mech: output[data.storedABSideMech]!() });
       },
       outputStrings: {
         stored: {
@@ -164,12 +161,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'A756', source: 'Dancing Green', capture: false },
       response: Responses.bigAoe(),
       run: (data) => data.discoInfernalCount++,
-    },
-    {
-      id: 'R5S Funky Floor Tracker',
-      type: 'Ability',
-      netRegex: { id: 'A752', source: 'Dancing Green', capture: false },
-      run: (data) => data.seenFunkyFloor = true,
     },
     {
       id: 'R5S Burn Baby Burn 1 Early',
@@ -349,22 +340,27 @@ const triggerSet: TriggerSet<Data> = {
         merge: {
           en: '${order} merge',
           de: '${order} berühren',
+          cn: '${order} 撞毒',
         },
         first: {
           en: 'First',
           de: 'Erstes',
+          cn: '第1组',
         },
         second: {
           en: 'Second',
           de: 'Zweites',
+          cn: '第2组',
         },
         third: {
           en: 'Third',
           de: 'Drittes',
+          cn: '第3组',
         },
         fourth: {
           en: 'Fourth',
           de: 'Viertes',
+          cn: '第4组',
         },
         unknown: Outputs.unknown,
       },
