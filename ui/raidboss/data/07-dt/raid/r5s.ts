@@ -135,7 +135,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: 'Start ${dir} (${num} hits) => ${mech}',
           cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
-          ko: '${dir}으로 (${num}번 공격) => ${mech}',
+          ko: '${dir} 시작 (${num}번 공격) => ${mech}',
         },
         lightParty: Outputs.healerGroups,
         roleGroup: Outputs.rolePositions,
