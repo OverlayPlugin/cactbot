@@ -1,12 +1,22 @@
+import { UnreachableCode } from '../../../../../resources/not_reached';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
+type Phase = 'one' | 'adds' | 'rage' ;
+
 export interface Data extends RaidbossData {
+  phase: Phase;
   // Phase 1
+  reignDir?: number;
   decayAddCount: number;
+  stoneWindCallGroup?: number;
+  stoneWindDebuff?: 'Stone' | 'Wind';
+  stoneWindTracker?: number;
+  // Phase 2
 }
 
 const centerX = 100;
@@ -16,14 +26,47 @@ const eminentReign2 = 'A912'; // S=>N, NW=>SE, NE=>SW
 const revolutionaryReign1 = 'A913'; // N=>S, SW=>NE, SE=>NW
 const revolutionaryReign2 = 'A914'; // S=>N, NW=>SE, NE=>SW
 
+const phaseMap: { [id: string]: Phase } = {
+  'A3C8': 'adds', // Tactical Pack
+  'A3BE': 'rage', // Terrestrial Rage
+};
+
+const stoneWindOutputStrings = {
+  stoneWindNum: {
+    en: '${debuff} ${num}',
+  },
+  group: {
+    en: 'Group ${num}',
+    de: 'Group ${num}',
+    fr: 'Groupe ${num}',
+    ja: '${num} 組',
+    cn: '${num} 组',
+    ko: '그룹: ${num}',
+  },
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM4Savage',
   zoneId: ZoneId.AacCruiserweightM4Savage,
   timelineFile: 'r8s.txt',
   initData: () => ({
+    phase: 'one',
     decayAddCount: 0,
   }),
   triggers: [
+    {
+      id: 'R8S Phase Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: Object.keys(phaseMap), source: 'Howling Blade' },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        const phase = phaseMap[matches.id];
+        if (phase === undefined)
+          throw new UnreachableCode();
+
+        data.phase = phase;
+      },
+    },
     {
       id: 'R8S Extraplanar Pursuit',
       type: 'StartsUsing',
@@ -91,6 +134,59 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R8S Eminent/Revolutionary Reign Direction',
+      type: 'StartsUsing',
+      netRegex: { id: ['A911', 'A912', 'A913', 'A914'], source: 'Howling Blade', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) + 1.2,
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Eminent/Revolutionary Reign Direction: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        switch (matches.id) {
+          case eminentReign1:
+          case eminentReign2:
+            data.reignDir = (Directions.hdgTo8DirNum(actor.Heading) + 4) % 8;
+            break;
+          case revolutionaryReign1:
+          case revolutionaryReign2:
+            data.reignDir = Directions.hdgTo8DirNum(actor.Heading);
+            break;
+        }
+      },
+      infoText: (data, matches, output) => {
+        const dir = output[Directions.outputFrom8DirNum(data.reignDir ?? -1)]!();
+        switch (matches.id) {
+          case eminentReign1:
+          case eminentReign2:
+            return output.inDir!({ dir: dir });
+          case revolutionaryReign1:
+          case revolutionaryReign2:
+            return output.outDir!({ dir: dir });
+        }
+      },
+      run: (data) => {
+        data.reignDir = undefined;
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        inDir: {
+          en: 'In ${dir}',
+        },
+        outDir: {
+          en: 'Out ${dir}',
+        },
+      },
+    },
+    {
       id: 'R8S Millenial Decay',
       type: 'StartsUsing',
       netRegex: { id: 'A3B2', source: 'Howling Blade', capture: false },
@@ -101,6 +197,12 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A3B7', source: 'Howling Blade', capture: false },
       response: Responses.knockback(),
+    },
+    {
+      id: 'R8S Titanic Pursuit',
+      type: 'StartsUsing',
+      netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
+      response: Responses.aoe(),
     },
     {
       id: 'R8S Tracking Tremors',
@@ -118,12 +220,6 @@ const triggerSet: TriggerSet<Data> = {
           ko: '쉐어 8번',
         },
       },
-    },
-    {
-      id: 'R8S Titanic Pursuit',
-      type: 'StartsUsing',
-      netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
-      response: Responses.aoe(),
     },
     {
       id: 'R8S Breath of Decay Rotation',
@@ -153,6 +249,63 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Counterclockwise ==>',
         },
       },
+    },
+    {
+      id: 'R8S Tactical Pack Debuffs',
+      // Durations could be 21s, 37s, or 54s
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1127', '1128'], capture: true },
+      condition: (data, matches) => {
+        return data.me === matches.target && data.phase === 'adds';
+      },
+      delaySeconds: 9.7, // Duration until after first tether
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = stoneWindOutputStrings;
+
+        // 1127 = Stone (Yellow Cube) Debuff
+        // 1128 = Wind (Green Sphere) Debuff
+        const cubeDebuffId = '1127';
+        data.stoneWindDebuff = matches.effectId === cubeDebuffId ? 'Stone' : 'Wind';
+
+        if (parseFloat(matches.duration) < 22) {
+          data.stoneWindCallGroup = 1;
+        } else if (parseFloat(matches.duration) < 38) {
+          data.stoneWindCallGroup = 2;
+        } else {
+          data.stoneWindCallGroup = 3;
+        }
+
+        if (data.stoneWindCallGroup === 1)
+          return { alarmText: output.stoneWindNum!({ debuff: data.stoneWindDebuff, num: data.stoneWindCallGroup }) };
+        return { infoText: output.stoneWindNum!({ debuff: data.stoneWindDebuff, num: data.stoneWindCallGroup }) };
+      },
+    },
+    {
+      id: 'R8S Tactical Pack Reminders',
+      // Alarms for the other groups by tracking the magic vuln from cleanse
+      // Tether could come out same time, so realistically this should track tether?
+      type: 'GainsEffect',
+      netRegex: { effectId: 'B7D', capture: true },
+      condition: (data, matches) => data.phase === 'adds' && parseFloat(matches.duration) > 3,
+      preRun: (data) => data.stoneWindTracker = (data.stoneWindTracker ?? 0) + 1,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (
+          data.stoneWindCallGroup === 2 && data.stoneWindTracker === 2 ||
+          data.stoneWindCallGroup === 3 && data.stoneWindTracker === 3
+        )
+          return output.stoneWindNum!({ debuff: data.stoneWindDebuff, num: data.stoneWindCallGroup });
+      },
+      run: (data) => {
+        // Clear once 6 debuffs have been cleansed
+        if (data.stoneWindTracker === 8) {
+          data.stoneWindTracker = 0;
+          data.stoneWindCallGroup = 0;
+        }
+      },
+      outputStrings: stoneWindOutputStrings,
     },
   ],
 };
