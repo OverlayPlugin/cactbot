@@ -284,7 +284,7 @@ const triggerSet: TriggerSet<Data> = {
         outsideIn: {
           en: 'Under => Max Melee',
           cn: '月环 => 钢铁',
-          ko: '안으로 => 밖으로',
+          ko: '안으로 => 칼끝딜',
         },
       },
     },
