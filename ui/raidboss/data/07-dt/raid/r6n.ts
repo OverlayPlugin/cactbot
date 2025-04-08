@@ -371,7 +371,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Heaven Bomb': 'geflügelt(?:e|er|es|en) Bombe',
         'Paint Bomb': 'Graffiti-Bombe',
@@ -380,6 +379,9 @@ const triggerSet: TriggerSet<Data> = {
         'Tempest Piece': 'Cumulonimbus-Wolke',
       },
       'replaceText': {
+        '\\(cast\\)': '(wirken)',
+        '\\(snapshot\\)': '(Speichern)',
+        '\\(spread\\)': '(verteilen)',
         'Burst': 'Explosion',
         'Color Riot': 'Farbenschock',
         'Cool Bomb': 'Kalte Farbbombe',

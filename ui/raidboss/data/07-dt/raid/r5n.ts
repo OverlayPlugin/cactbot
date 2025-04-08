@@ -401,11 +401,11 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Springhis Khan',
       },
       'replaceText': {
+        '\\(opposite\\)': '(gegenüber)',
         '2-snap Twist': 'Zweifachzeig, Pose',
         '4-snap Twist': 'Vierfachzeig, Pose',
         'Arcady Night Fever': 'Arkadion-Tanzfieber',
