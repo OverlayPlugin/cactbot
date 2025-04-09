@@ -327,6 +327,7 @@ Options.Triggers.push({
         stacks: {
           en: 'Healer Groups (in water)',
           cn: '治疗分组分摊 (站在水里)',
+          ko: '물에서 힐러 그룹 쉐어',
         },
       },
     },
@@ -340,6 +341,7 @@ Options.Triggers.push({
         spread: {
           en: 'Spread (not in water)',
           cn: '分散 (站在岸上)',
+          ko: '땅에서 산개',
         },
       },
     },
