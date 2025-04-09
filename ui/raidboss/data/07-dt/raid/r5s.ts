@@ -58,7 +58,6 @@ export interface Data extends RaidbossData {
   deepCutTargets: string[];
   storedABSideMech?: 'lightParty' | 'roleGroup';
   discoInfernalCount: number;
-  seenFunkyFloor: boolean;
   feverSafeDirs: DirectionOutputCardinal[];
   wavelengthCount: {
     alpha: number;
@@ -73,7 +72,6 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     deepCutTargets: [],
     discoInfernalCount: 0,
-    seenFunkyFloor: false,
     feverSafeDirs: [],
     wavelengthCount: {
       alpha: 0,
@@ -458,9 +456,40 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ja',
       'replaceSync': {
         'Dancing Green': 'ダンシング・グリーン',
-        'Frogtourage': 'フロッグダンサー',
+        'Frogtourage': 'カモン！ フロッグダンサー',
       },
-      'replaceText': {},
+      'replaceText': {
+        'Deep Cut': 'ディープカット',
+        'Flip to A-side': 'ジングル予約A',
+        'Flip to B-side': 'ジングル予約B',
+        '2-snap Twist & Drop the Needle': '2ポイント、ポーズ&ジングル',
+        '3-snap Twist & Drop the Needle': '3ポイント、ポーズ&ジングル',
+        '4-snap Twist & Drop the Needle': '4ポイント、ポーズ&ジングル',
+        'Play A-side': 'ラウドジングルA',
+        'Play B-side': 'ラウドジングルB',
+        'Celebrate Good Times': 'セレブレート・グッドタイムズ',
+        'Disco Infernal': 'ディスコインファーナル',
+        'Funky Floor': 'ダンシングフィールド',
+        'Inside Out': 'インサイドアウト',
+        'Outside In': 'アウトサイドイン',
+        'Ensemble Assemble': 'ダンサーズ・アッセンブル',
+        'Arcady Night Fever': 'アルカディア・ナイトフィーバー',
+        'Get Down!': 'ゲットダウン！',
+        'Let\'s Dance': 'レッツダンス！',
+        'Freak Out': '静音爆発',
+        'Let\'s Pose': 'レッツポーズ！',
+        'Ride the Waves': 'ウェーブ・オン・ウェーブ',
+        'Quarter Beats': '4ビート',
+        'Eighth Beats': '8ビート',
+        'Frogtourage': 'カモン！ フロッグダンサー',
+        'Moonburn': 'ムーンバーン',
+        'Back-up Dance': 'ダンシングウェーブ',
+        'Arcady Night Encore Starts': 'ナイトフィーバー・アンコール',
+        'Let\'s Dance! Remix': 'レッツダンス・ダンス・ダンス！',
+        'Do the Hustle': 'ドゥ・ザ・ハッスル',
+        'Frogtourage Finale': 'ファイナル・アッセンブル',
+        'Hi-NRG Fever': 'ハイエナジー・ナイトフィーバー',
+      },
     },
   ],
 };
