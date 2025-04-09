@@ -17,6 +17,7 @@ export interface Data extends RaidbossData {
   stoneWindCallGroup?: number;
   stoneWindDebuff?: 'stone' | 'wind';
   stoneWindTracker?: number;
+  shadowchase?: number;
   // Phase 2
 }
 
@@ -320,6 +321,65 @@ const triggerSet: TriggerSet<Data> = {
         }
       },
       outputStrings: stoneWindOutputStrings,
+    },
+    {
+      id: 'R8S Shadowchase',
+      // Only need one of the 5 actors to determine pattern
+      // Ids are sequential, starting 2 less than the boss
+      // Two patterns (in order of IDs):
+      // S, WSW, NW, NE, ESE
+      // N, ENE, SE, SW, WNW
+      // TODO: Split the call for if have stack/spread
+      type: 'StartsUsing',
+      netRegex: { id: 'A3BC', source: 'Howling Blade', capture: true },
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16) - 3],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Shadowchase Direction: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        data.shadowchase = Directions.xyTo16DirNum(actor.PosX, actor.PosY, centerX, centerY);
+      },
+      infoText: (data, matches, output) => {
+        if (data.shadowchase === 0)
+          return output.orientN!();
+        if (data.shadowchase === 8)
+          return output.orientNE!();
+      },
+      run: (data) => {
+        data.shadowchase = undefined;
+      },
+      outputStrings: {
+        orientN: {
+          en: 'Orient N, Behind Clone',
+        },
+        orientNE: {
+          en: 'Orient NE, Behind Clone',
+        },
+      },
+    },
+    {
+      id: 'R8S Shadowchase Rotate',
+      // Call to move behind Dragon Head after clones dash
+      type: 'StartsUsing',
+      netRegex: { id: 'A3BD', source: 'Howling Blade', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => {
+        return output.rotate!();
+      },
+      outputStrings: {
+        rotate: {
+          en: 'Rotate',
+        },
+      },
     },
   ],
 };
