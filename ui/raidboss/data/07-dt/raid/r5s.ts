@@ -21,23 +21,29 @@ const snapTwistIdMap: { [id: string]: [SnapCount, EastWest] } = {
   'A728': ['two', 'west'],
   'A729': ['two', 'west'],
   'A72A': ['two', 'west'],
+  'A4DB': ['two', 'west'],
   'A72B': ['two', 'east'],
   'A72C': ['two', 'east'],
   'A72D': ['two', 'east'],
+  'A4DC': ['two', 'east'],
   // 3-snap Twist & Drop the Needle
   'A730': ['three', 'west'],
   'A731': ['three', 'west'],
   'A732': ['three', 'west'],
+  'A4DD': ['three', 'west'],
   'A733': ['three', 'east'],
   'A734': ['three', 'east'],
   'A735': ['three', 'east'],
+  'A4DE': ['three', 'east'],
   // 4-snap Twist & Drop the Needle
   'A739': ['four', 'west'],
   'A73A': ['four', 'west'],
   'A73B': ['four', 'west'],
+  'A4DF': ['four', 'west'],
   'A73C': ['four', 'east'],
   'A73D': ['four', 'east'],
   'A73E': ['four', 'east'],
+  'A4E0': ['four', 'east'],
 };
 
 // map of Frogtourage cast ids to safe dirs
