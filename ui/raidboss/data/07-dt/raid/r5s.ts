@@ -114,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stored: {
           en: '(${mech} later)',
+          de: '(${mech} später)',
           cn: '(稍后 ${mech})',
         },
         lightParty: Outputs.healerGroups,
@@ -139,6 +140,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Start ${dir} (${num} hits) => ${mech}',
+          de: 'Start ${dir} (${num} Treffer) => ${mech}',
           cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
         },
         lightParty: Outputs.healerGroups,
@@ -181,10 +183,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         shortBurn: {
           en: '(short cleanse)',
+          de: '(kurze Reinigung)',
           cn: '(短舞点名)',
         },
         longBurn: {
           en: '(long cleanse)',
+          de: '(lange Reinigung)',
           cn: '(长舞点名)',
         },
       },
@@ -202,6 +206,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           cn: '灯下跳舞',
         },
       },
@@ -223,10 +228,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           cn: '灯下跳舞',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
           cn: '引导青蛙',
         },
       },
@@ -249,10 +256,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           cn: '灯下跳舞',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
           cn: '引导青蛙',
         },
       },
@@ -266,6 +275,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         insideOut: {
           en: 'Max Melee => Under',
+          de: 'Max Nahkampf => Unter ihn',
           cn: '钢铁 => 月环',
         },
       },
@@ -279,6 +289,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         outsideIn: {
           en: 'Under => Max Melee',
+          de: 'Unter ihn => Max Nahkampf',
           cn: '月环 => 钢铁',
         },
       },
@@ -332,22 +343,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: '${order} merge',
+          de: '${order} berühren',
           cn: '${order} 撞毒',
         },
         first: {
           en: 'First',
+          de: 'Erstes',
           cn: '第1组',
         },
         second: {
           en: 'Second',
+          de: 'Zweites',
           cn: '第2组',
         },
         third: {
           en: 'Third',
+          de: 'Drittes',
           cn: '第3组',
         },
         fourth: {
           en: 'Fourth',
+          de: 'Viertes',
           cn: '第4组',
         },
         unknown: Outputs.unknown,
@@ -363,6 +379,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: 'Merge debuff',
+          de: 'Debuff berühren',
           cn: '撞毒',
         },
       },
@@ -420,12 +437,28 @@ const triggerSet: TriggerSet<Data> = {
   ],
   timelineReplace: [
     {
-      locale: 'ja',
-      replaceSync: {
+      'locale': 'de',
+      'replaceSync': {
+        'Dancing Green': 'Springhis Khan',
+        'Frogtourage': 'Schenkelschwinger',
+      },
+      'replaceText': {},
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Dancing Green': 'Dancing Green',
+        'Frogtourage': 'danceur batracien',
+      },
+      'replaceText': {},
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
         'Dancing Green': 'ダンシング・グリーン',
         'Frogtourage': 'カモン！ フロッグダンサー',
       },
-      replaceText: {
+      'replaceText': {
         'Deep Cut': 'ディープカット',
         'Flip to A-side': 'ジングル予約A',
         'Flip to B-side': 'ジングル予約B',
