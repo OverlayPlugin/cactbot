@@ -13,11 +13,11 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 // TODOs:
 // - Color Riot - tankbuster in/out call depending on boss stance and mt/ot current debuff
-// - Brûlée 1 - defamations on tank/dps
-// - Crowd Brûlée - party stack (non-defamations)
-// - Brûlée 2 - defamations on both healers
+// - Sticky Mousse - call out stacks?
+// - Crowd Brûlée - party stack (non-defamations)?
+// - safe corners for quicksand?
 // - Pudding Graf - bomb/winged bomb call
-// - Live Painting - add wave call
+// - Live Painting - add wave spawning call?
 // - Ore-rigato - Mu enrage
 // - Single Style - checkerboard aoes
 
@@ -218,6 +218,30 @@ const triggerSet: TriggerSet<Data> = {
           cn: '从 ${dir1} 飞向 ${dir2}',
           ko: '${dir1}에서 ${dir2}으로 발사되기',
         },
+      },
+    },
+    {
+      id: 'R6S Heating Up Early Warning',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1166', capture: true },
+      condition: (data, matches) => data.me === matches.target && data.role !== 'healer', // TODO: fix this for BLU
+      infoText: (_data, _matches, output) => output.defamationLater!(),
+      outputStrings: {
+        defamationLater: {
+          en: 'Defamation on YOU (for later)',
+        },
+      },
+    },
+    {
+      id: 'R6S Heating Up',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1166', capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5,
+      countdownSeconds: 5,
+      alertText: (_data, _matches, output) => output.defamation!(),
+      outputStrings: {
+        defamation: Outputs.defamationOnYou,
       },
     },
     {
