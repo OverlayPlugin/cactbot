@@ -228,7 +228,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Jabberwock target on you',
+          en: 'Jabberwock on YOU',
         },
       },
     },
