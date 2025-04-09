@@ -206,6 +206,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {
         'Mouthwatering Morbol': 'Zucker-Morbol',
         'Sugar Riot': 'Zuckerschock',
@@ -214,6 +215,11 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         '\\(cast\\)': '(wirken)',
         '\\(snapshot\\)': '(Speichern)',
+        '--Yan targetable--': '--Putschi anvisierbar--',
+        '--2x Mu targetable--': '--2x Mu anvisierbar--',
+        '--Gimme Cat targetable--': '--Bettelcat anvisierbar--',
+        '--2x Feather Ray targetable--': '--2x Federrochen anvisierbar--',
+        '--Jabberwock targetable--': '--Brabbelback anvisierbar--',
         'Artistic Anarchy': 'Artistische Anarchie',
         'Bad Breath': 'Schlechter Atem',
         'Brûlée': 'Wärmeentladung',
