@@ -332,7 +332,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Split the call for if have stack/spread
       type: 'StartsUsing',
       netRegex: { id: 'A3BC', source: 'Howling Blade', capture: true },
-      delaySeconds: (_data, matches) =>  parseFloat(matches.castTime),
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
