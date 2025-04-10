@@ -382,6 +382,37 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'R8S Weal of Stone',
+      // Calls direction that the heads are firing from
+      type: 'StartsUsing',
+      netRegex: { id: 'A78E', source: 'Wolf of Stone', capture: true },
+      suppressSeconds: 1,
+      infoText: (_data, matches, output) => {
+        const hdg = parseFloat(matches.heading);
+        const dirOut = Directions.outputFrom8DirNum((Directions.hdgTo8DirNum(hdg) + 4) % 8);
+        return output.linesFromDir!({ dir: output[dirOut]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        linesFromDir: {
+          en: 'Lines from ${dir}',
+        },
+      },
+    },
+    {
+      id: 'R8S Weal of Stone Cardinals',
+      // This appears to always be cardinals safe
+      type: 'StartsUsing',
+      netRegex: { id: 'A792', source: 'Wolf of Stone', capture: false },
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => {
+        return output.cardinals!();
+      },
+      outputStrings: {
+        cardinals: Outputs.cardinals,
+      },
+    },
   ],
 };
 
