@@ -12,6 +12,7 @@ import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODOs:
+// - clean up timeline
 // - Crowd Brûlée - party stack (non-defamations)?
 // - safe corners for quicksand?
 // - Live Painting - add wave # spawn call?
