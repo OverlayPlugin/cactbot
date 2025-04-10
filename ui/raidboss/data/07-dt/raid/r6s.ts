@@ -96,12 +96,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'A695', source: 'Sugar Riot', capture: false },
       response: Responses.spreadThenStack(),
     },
-    // {
-    //   id: 'R6S Color Riot',
-    //   type: 'StartsUsing',
-    //   netRegex: { id: ['A691', 'A692'], source: 'Sugar Riot', capture: false },
-    //   response: Responses.tankCleave(),
-    // },
     {
       id: 'R6S Color Riot Debuff Tracker',
       type: 'GainsEffect',
@@ -347,12 +341,12 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, matches, output) =>
         matches.id === 'A687' ? output.fire!() : output.thunder!(),
       outputStrings: {
-        fire: Outputs.stacks,
+        fire: Outputs.healerGroups,
         thunder: Outputs.spread,
       },
     },
     {
-      id: 'R6S Taste of Thunder (Stepped Leader)',
+      id: 'R6S Taste of Thunder (Twister/Stepped Leader)',
       type: 'StartsUsing',
       netRegex: { id: 'A69D', source: 'Sugar Riot', capture: false },
       suppressSeconds: 1,
