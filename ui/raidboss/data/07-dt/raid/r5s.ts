@@ -114,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stored: {
           en: '(${mech} later)',
+          de: '(${mech} später)',
           ja: '(あとで ${mech})',
           cn: '(稍后 ${mech})',
           ko: '(나중에 ${mech})',
@@ -141,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Start ${dir} (${num} hits) => ${mech}',
+          de: 'Start ${dir} (${num} Treffer) => ${mech}',
           ja: '${dir} 開始 (${num} ポイント) からの ${mech}',
           cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
           ko: '${dir} 시작 (${num}번 공격) => ${mech}',
@@ -185,12 +187,14 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         shortBurn: {
           en: '(short cleanse)',
+          de: '(kurze Reinigung)',
           ja: '(先にスポットライト)',
           cn: '(短舞点名)',
           ko: '(짧은 디버프)',
         },
         longBurn: {
           en: '(long cleanse)',
+          de: '(lange Reinigung)',
           ja: '(あとでスポットライト)',
           cn: '(长舞点名)',
           ko: '(긴 디버프)',
@@ -210,6 +214,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
@@ -233,12 +238,14 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
           ja: 'カエル誘導',
           cn: '引导青蛙',
           ko: '개구리 유도',
@@ -263,12 +270,14 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
           ja: 'カエル誘導',
           cn: '引导青蛙',
           ko: '개구리 유도',
@@ -284,6 +293,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         insideOut: {
           en: 'Max Melee => Under',
+          de: 'Max Nahkampf => Unter ihn',
           ja: '外からボス下に',
           cn: '钢铁 => 月环',
           ko: '칼끝딜 => 안으로',
@@ -299,6 +309,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         outsideIn: {
           en: 'Under => Max Melee',
+          de: 'Unter ihn => Max Nahkampf',
           ja: 'ボス下から外に',
           cn: '月环 => 钢铁',
           ko: '안으로 => 칼끝딜',
@@ -354,30 +365,35 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: '${order} merge',
+          de: '${order} berühren',
           ja: '${order} にペア割り',
           cn: '${order} 撞毒',
           ko: '${order} 융합',
         },
         first: {
           en: 'First',
+          de: 'Erstes',
           ja: '最初',
           cn: '第1组',
           ko: '첫번째',
         },
         second: {
           en: 'Second',
+          de: 'Zweites',
           ja: '2番目',
           cn: '第2组',
           ko: '두번째',
         },
         third: {
           en: 'Third',
+          de: 'Drittes',
           ja: '3番目',
           cn: '第3组',
           ko: '세번째',
         },
         fourth: {
           en: 'Fourth',
+          de: 'Viertes',
           ja: '4番目',
           cn: '第4组',
           ko: '네번째',
@@ -395,6 +411,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: 'Merge debuff',
+          de: 'Debuff berühren',
           ja: 'ペア割り',
           cn: '撞毒',
           ko: '융합하기',
@@ -454,12 +471,28 @@ const triggerSet: TriggerSet<Data> = {
   ],
   timelineReplace: [
     {
-      locale: 'ja',
-      replaceSync: {
+      'locale': 'de',
+      'replaceSync': {
+        'Dancing Green': 'Springhis Khan',
+        'Frogtourage': 'Schenkelschwinger',
+      },
+      'replaceText': {},
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Dancing Green': 'Dancing Green',
+        'Frogtourage': 'danceur batracien',
+      },
+      'replaceText': {},
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
         'Dancing Green': 'ダンシング・グリーン',
         'Frogtourage': 'カモン！ フロッグダンサー',
       },
-      replaceText: {
+      'replaceText': {
         'Deep Cut': 'ディープカット',
         'Flip to A-side': 'ジングル予約A',
         'Flip to B-side': 'ジングル予約B',

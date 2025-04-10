@@ -10,6 +10,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheSunkenTempleOfQarn,
   comments: {
     en: 'pre-7.2 rework',
+    de: 'Vor der 7.2 Überarbeitung',
     fr: 'Avant le remaniement 7.2',
   },
   triggers: [
