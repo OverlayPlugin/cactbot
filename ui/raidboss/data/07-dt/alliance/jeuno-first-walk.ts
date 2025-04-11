@@ -879,7 +879,7 @@ const triggerSet: TriggerSet<Data> = {
         lineSingleKnockback: {
           en: 'Knockback from line',
           de: 'Rückstoß von der Linie',
-          de: 'Poussée depuis la ligne',
+          fr: 'Poussée depuis la ligne',
           ja: '線からノックバック',
           cn: '从直线击退',
           ko: '선에서 넉백',
