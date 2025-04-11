@@ -1,9 +1,274 @@
-### Arcadion (R7N): AAC Cruiserweight M3
+### AAC CRUISERWEIGHT (M3)
+# ZoneId: 1260
+
+# -ii A517
 
 hideall "--Reset--"
 hideall "--sync--"
 
+# First arena
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
-
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+10.6 "Brutal Impact x3" Ability { id: "A518", source: "Brute Abombinator" } duration 2.2
+18.9 "Stoneringer: The Bludgeoning" Ability { id: "A51A", source: "Brute Abombinator" }
+28.8 "Brutish Swing (cast)" Ability { id: ["A51C", "A51D"], source: "Brute Abombinator" }
+29.8 "Brutish Swing (in/out)" Ability { id: ["A51E", "A51F"], source: "Brute Abombinator" }
+30.8 "Brutal Smash" Ability { id: "A520", source: "Brute Abombinator" }
+38.9 "Spore Sac (cast)" Ability { id: "A529", source: "Brute Abombinator" }
+44.0 "Spore Sac (circles)" Ability { id: "A52A", source: "Brute Abombinator" }
+50.1 "Pollen" Ability { id: "A52B", source: "Brute Abombinator" }
+53.4 "Pulp Smash" Ability { id: "A526", source: "Brute Abombinator" }
+56.4 "The Unpotted" Ability { id: "A528", source: "Brute Abombinator" }
+56.4 "It Came from the Dirt" Ability { id: "A527", source: "Brute Abombinator" }
+71.3 "Crossing Crosswinds" Ability { id: "A90C", source: "Blooming Abomination" }
+71.3 "Winding Wildwinds" Ability { id: "A90B", source: "Blooming Abomination" }
+80.7 "Quarry Swamp" Ability { id: "A52D", source: "Brute Abombinator" }
+92.7 "Explosion" Ability { id: "A52E", source: "Brute Abombinator" }
+95.3 "Explosion" #Ability { id: "A52E", source: "Brute Abombinator" }
+97.7 "Explosion" #Ability { id: "A52E", source: "Brute Abombinator" }
+97.7 "Stoneringer: The Stabbing" Ability { id: "A51B", source: "Brute Abombinator" }
+107.6 "Brutish Swing" Ability { id: "A51D", source: "Brute Abombinator" }
+108.6 "Brutish Swing" Ability { id: "A51F", source: "Brute Abombinator" }
+109.6 "Brutal Smash" Ability { id: "A521", source: "Brute Abombinator" }
+114.7 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+124.8 "Neo Bombarian Special" Ability { id: "A52F", source: "Brute Abombinator" }
 
+# Second arena
+135.2 "Grappling Ivy" Ability { id: "A530", source: "Brute Abombinator" }
+140.2 "--sync--" Ability { id: "A893", source: "Brute Abombinator" }
+143.2 "--sync--" Ability { id: "A893", source: "Brute Abombinator" }
+147.2 "Stoneringer: The Bludgeoning" Ability { id: "A532", source: "Brute Abombinator" }
+156.1 "Brutish Swing" Ability { id: "A534", source: "Brute Abombinator" }
+157.1 "Brutish Swing" Ability { id: "A535", source: "Brute Abombinator" }
+158.1 "--sync--" Ability { id: "A893", source: "Brute Abombinator" }
+163.1 "Stoneringer: The Stabbing" Ability { id: "A533", source: "Brute Abombinator" }
+173.0 "Brutish Swing" Ability { id: "A539", source: "Brute Abombinator" }
+175.9 "Brutish Swing" Ability { id: "A541", source: "Brute Abombinator" }
+177.1 "Brutish Swing" Ability { id: "A53F", source: "Brute Abombinator" }
+181.7 "Glower Power" Ability { id: "A546", source: "Brute Abombinator" }
+182.9 "Glower Power" Ability { id: "A94B", source: "Brute Abombinator" }
+183.0 "Electrogenetic Force" Ability { id: "A547", source: "Brute Abombinator" }
+190.0 "Abominable Blink" Ability { id: "A542", source: "Brute Abombinator" }
+191.0 "Abominable Blink" Ability { id: "A892", source: "Brute Abombinator" }
+192.0 "--sync--" Ability { id: "A893", source: "Brute Abombinator" }
+199.0 "Revenge of the Vines" Ability { id: "A543", source: "Brute Abombinator" }
+201.0 "--sync--" Ability { id: "A893", source: "Brute Abombinator" }
+206.0 "Stoneringer: The Stabbing" Ability { id: "A533", source: "Brute Abombinator" }
+216.9 "Sporesplosion" Ability { id: "A544", source: "Brute Abombinator" }
+223.0 "Sporesplosion" #Ability { id: "A545", source: "Brute Abombinator" }
+225.0 "Sporesplosion" #Ability { id: "A545", source: "Brute Abombinator" }
+225.4 "Brutish Swing" Ability { id: "A53D", source: "Brute Abombinator" }
+227.0 "Sporesplosion" #Ability { id: "A545", source: "Brute Abombinator" }
+228.3 "Brutish Swing" Ability { id: "A541", source: "Brute Abombinator" }
+229.5 "Brutish Swing" Ability { id: "A53F", source: "Brute Abombinator" }
+234.1 "Glower Power" Ability { id: "A546", source: "Brute Abombinator" }
+235.3 "Glower Power" Ability { id: "A94B", source: "Brute Abombinator" }
+235.4 "Electrogenetic Force" Ability { id: "A547", source: "Brute Abombinator" }
+239.1 "--sync--" Ability { id: "A893", source: "Brute Abombinator" }
+242.1 "--sync--" Ability { id: "A893", source: "Brute Abombinator" }
+248.2 "Powerslam" Ability { id: "A548", source: "Brute Abombinator" }
+
+# Third arena
+269.8 "Stoneringer 2: Stoneringers" Ability { id: "A54A", source: "Brute Abombinator" }
+278.7 "Spore Sac" Ability { id: "A529", source: "Brute Abombinator" }
+280.8 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+283.8 "Spore Sac" Ability { id: "A52A", source: "Brute Abombinator" }
+286.4 "Brutish Swing" Ability { id: "A54C", source: "Brute Abombinator" }
+289.2 "Brutish Swing" Ability { id: "A550", source: "Brute Abombinator" }
+290.2 "Brutish Swing" Ability { id: "A54F", source: "Brute Abombinator" }
+291.3 "Revenge of the Vines" Ability { id: "A638", source: "Brute Abombinator" }
+295.1 "Pollen" Ability { id: "A52B", source: "Brute Abombinator" }
+298.3 "Lashing Lariat" Ability { id: "A553", source: "Brute Abombinator" }
+298.7 "Lashing Lariat" Ability { id: "A554", source: "Brute Abombinator" }
+303.4 "Brutish Swing" Ability { id: "A555", source: "Brute Abombinator" }
+306.2 "Brutish Swing" Ability { id: "A54E", source: "Brute Abombinator" }
+307.2 "Brutish Swing" Ability { id: "A54D", source: "Brute Abombinator" }
+312.2 "Slaminator" Ability { id: "A557", source: "Brute Abombinator" }
+313.2 "Slaminator" Ability { id: "A558", source: "Brute Abombinator" }
+323.3 "Quarry Swamp" Ability { id: "A52D", source: "Brute Abombinator" }
+333.4 "Brutal Impact" Ability { id: "A518", source: "Brute Abombinator" }
+333.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+334.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+335.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+336.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+337.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+338.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+346.7 "Stoneringer: The Bludgeoning" Ability { id: "A51A", source: "Brute Abombinator" }
+356.6 "Brutish Swing" Ability { id: "A51C", source: "Brute Abombinator" }
+357.6 "Brutish Swing" Ability { id: "A51E", source: "Brute Abombinator" }
+358.6 "Brutal Smash" Ability { id: "A520", source: "Brute Abombinator" }
+365.9 "Pulp Smash" Ability { id: "A526", source: "Brute Abombinator" }
+368.9 "The Unpotted" Ability { id: "A528", source: "Brute Abombinator" }
+368.9 "It Came from the Dirt" Ability { id: "A527", source: "Brute Abombinator" }
+375.2 "Stoneringer 2: Stoneringers" Ability { id: "A54B", source: "Brute Abombinator" }
+381.1 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+386.5 "Brutish Swing" Ability { id: "A54C", source: "Brute Abombinator" }
+389.3 "Brutish Swing" Ability { id: "A63B", source: "Brute Abombinator" }
+390.3 "Brutish Swing" Ability { id: "A54F", source: "Brute Abombinator" }
+395.2 "Glower Power" Ability { id: "A546", source: "Brute Abombinator" }
+396.4 "Glower Power" Ability { id: "A94B", source: "Brute Abombinator" }
+396.5 "Electrogenetic Force" Ability { id: "A547", source: "Brute Abombinator" }
+402.3 "Lashing Lariat" Ability { id: "A551", source: "Brute Abombinator" }
+402.7 "Lashing Lariat" Ability { id: "A552", source: "Brute Abombinator" }
+407.4 "Brutish Swing" Ability { id: "A555", source: "Brute Abombinator" }
+410.2 "Brutish Swing" Ability { id: "A63A", source: "Brute Abombinator" }
+411.2 "Brutish Swing" Ability { id: "A54D", source: "Brute Abombinator" }
+412.3 "Revenge of the Vines" Ability { id: "A638", source: "Brute Abombinator" }
+418.3 "Slaminator" Ability { id: "A557", source: "Brute Abombinator" }
+419.3 "Slaminator" Ability { id: "A558", source: "Brute Abombinator" }
+431.4 "Brutal Impact" Ability { id: "A518", source: "Brute Abombinator" }
+431.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+432.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+433.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+434.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+435.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+436.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+437.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+438.6 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+441.6 "Stoneringer: The Bludgeoning" Ability { id: "A51A", source: "Brute Abombinator" }
+451.5 "Brutish Swing" Ability { id: "A51C", source: "Brute Abombinator" }
+452.5 "Brutish Swing" Ability { id: "A51E", source: "Brute Abombinator" }
+453.5 "Brutal Smash" Ability { id: "A520", source: "Brute Abombinator" }
+465.6 "Stoneringer 2: Stoneringers" Ability { id: "A54B", source: "Brute Abombinator" }
+474.5 "Spore Sac" Ability { id: "A529", source: "Brute Abombinator" }
+476.6 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+479.6 "Spore Sac" Ability { id: "A52A", source: "Brute Abombinator" }
+481.9 "Brutish Swing" Ability { id: "A54C", source: "Brute Abombinator" }
+484.7 "Brutish Swing" Ability { id: "A63B", source: "Brute Abombinator" }
+485.7 "Brutish Swing" Ability { id: "A54F", source: "Brute Abombinator" }
+486.8 "Revenge of the Vines" Ability { id: "A638", source: "Brute Abombinator" }
+490.8 "Pollen" Ability { id: "A52B", source: "Brute Abombinator" }
+493.8 "Lashing Lariat" Ability { id: "A551", source: "Brute Abombinator" }
+494.2 "Lashing Lariat" Ability { id: "A552", source: "Brute Abombinator" }
+498.9 "Brutish Swing" Ability { id: "A556", source: "Brute Abombinator" }
+501.7 "Brutish Swing" Ability { id: "A63A", source: "Brute Abombinator" }
+502.7 "Brutish Swing" Ability { id: "A54D", source: "Brute Abombinator" }
+507.7 "Slaminator" Ability { id: "A557", source: "Brute Abombinator" }
+508.7 "Slaminator" Ability { id: "A558", source: "Brute Abombinator" }
+518.8 "Quarry Swamp" Ability { id: "A52D", source: "Brute Abombinator" }
+528.9 "Brutal Impact" Ability { id: "A518", source: "Brute Abombinator" }
+529.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+530.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+531.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+532.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+533.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+534.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+535.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+536.1 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+541.2 "Stoneringer: The Stabbing" Ability { id: "A51B", source: "Brute Abombinator" }
+551.1 "Brutish Swing" Ability { id: "A51D", source: "Brute Abombinator" }
+552.1 "Brutish Swing" Ability { id: "A51F", source: "Brute Abombinator" }
+553.1 "Brutal Smash" Ability { id: "A521", source: "Brute Abombinator" }
+560.4 "Pulp Smash" Ability { id: "A526", source: "Brute Abombinator" }
+563.4 "The Unpotted" Ability { id: "A528", source: "Brute Abombinator" }
+563.4 "It Came from the Dirt" Ability { id: "A527", source: "Brute Abombinator" }
+563.4 "The Unpotted" Ability { id: "A528", source: "Brute Abombinator" }
+569.7 "Stoneringer 2: Stoneringers" Ability { id: "A54B", source: "Brute Abombinator" }
+575.6 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+581.4 "Brutish Swing" Ability { id: "A54C", source: "Brute Abombinator" }
+584.2 "Brutish Swing" Ability { id: "A63B", source: "Brute Abombinator" }
+585.2 "Brutish Swing" Ability { id: "A54F", source: "Brute Abombinator" }
+590.1 "Glower Power" Ability { id: "A546", source: "Brute Abombinator" }
+591.3 "Glower Power" Ability { id: "A94B", source: "Brute Abombinator" }
+591.4 "Electrogenetic Force" Ability { id: "A547", source: "Brute Abombinator" }
+597.1 "Lashing Lariat" Ability { id: "A551", source: "Brute Abombinator" }
+597.5 "Lashing Lariat" Ability { id: "A552", source: "Brute Abombinator" }
+602.2 "Brutish Swing" Ability { id: "A555", source: "Brute Abombinator" }
+605.0 "Brutish Swing" Ability { id: "A63A", source: "Brute Abombinator" }
+606.0 "Brutish Swing" Ability { id: "A54D", source: "Brute Abombinator" }
+607.1 "Revenge of the Vines" Ability { id: "A638", source: "Brute Abombinator" }
+613.1 "Slaminator" Ability { id: "A557", source: "Brute Abombinator" }
+614.1 "Slaminator" Ability { id: "A558", source: "Brute Abombinator" }
+626.2 "Brutal Impact" Ability { id: "A518", source: "Brute Abombinator" }
+626.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+627.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+628.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+629.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+630.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+631.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+632.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+633.4 "Brutal Impact" #Ability { id: "A519", source: "Brute Abombinator" }
+636.4 "Stoneringer: The Bludgeoning" Ability { id: "A51A", source: "Brute Abombinator" }
+646.3 "Brutish Swing" Ability { id: "A51C", source: "Brute Abombinator" }
+647.3 "Brutish Swing" Ability { id: "A51E", source: "Brute Abombinator" }
+648.3 "Brutal Smash" Ability { id: "A520", source: "Brute Abombinator" }
+660.4 "Stoneringer 2: Stoneringers" Ability { id: "A54A", source: "Brute Abombinator" }
+669.4 "Spore Sac" Ability { id: "A529", source: "Brute Abombinator" }
+671.5 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+674.5 "Spore Sac" Ability { id: "A52A", source: "Brute Abombinator" }
+677.4 "Brutish Swing" Ability { id: "A54C", source: "Brute Abombinator" }
+680.2 "Brutish Swing" Ability { id: "A54E", source: "Brute Abombinator" }
+681.2 "Brutish Swing" Ability { id: "A54D", source: "Brute Abombinator" }
+682.3 "Revenge of the Vines" Ability { id: "A638", source: "Brute Abombinator" }
+
+
+# IGNORED ABILITIES
+# A517 --sync-- - autoattacks
+# A519 Brutal Impact - followup hits
+# A524 Pulp Smash - castbar
+# A525 Pulp Smash - animation
+
+# ALL ENCOUNTER ABILITIES
+# 368 attack
+# A516 --sync--
+# A517 --sync--
+# A518 Brutal Impact
+# A519 Brutal Impact
+# A51A Stoneringer: The Bludgeoning
+# A51B Stoneringer: The Stabbing
+# A51C Brutish Swing
+# A51D Brutish Swing
+# A51E Brutish Swing
+# A51F Brutish Swing
+# A520 Brutal Smash
+# A521 Brutal Smash
+# A524 Pulp Smash
+# A525 Pulp Smash
+# A526 Pulp Smash
+# A527 It Came from the Dirt
+# A528 The Unpotted
+# A529 Spore Sac
+# A52A Spore Sac
+# A52B Pollen
+# A52D Quarry Swamp
+# A52E Explosion
+# A52F Neo Bombarian Special
+# A530 Grappling Ivy
+# A532 Stoneringer: The Bludgeoning
+# A533 Stoneringer: The Stabbing
+# A534 Brutish Swing
+# A535 Brutish Swing
+# A539 Brutish Swing
+# A53D Brutish Swing
+# A53F Brutish Swing
+# A541 Brutish Swing
+# A542 Abominable Blink
+# A543 Revenge of the Vines
+# A544 Sporesplosion
+# A545 Sporesplosion
+# A546 Glower Power
+# A547 Electrogenetic Force
+# A548 Powerslam
+# A54A Stoneringer 2: Stoneringers
+# A54B Stoneringer 2: Stoneringers
+# A54C Brutish Swing
+# A54D Brutish Swing
+# A54E Brutish Swing
+# A54F Brutish Swing
+# A550 Brutish Swing
+# A551 Lashing Lariat
+# A552 Lashing Lariat
+# A553 Lashing Lariat
+# A554 Lashing Lariat
+# A555 Brutish Swing
+# A556 Brutish Swing
+# A557 Slaminator
+# A558 Slaminator
+# A638 Revenge of the Vines
+# A63A Brutish Swing
+# A63B Brutish Swing
+# A892 Abominable Blink
+# A893 --sync--
+# A90B Winding Wildwinds
+# A90C Crossing Crosswinds
+# A94B Glower Power
