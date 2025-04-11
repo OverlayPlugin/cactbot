@@ -36,7 +36,7 @@ const revolutionaryReign2 = 'A914'; // S=>N, NW=>SE, NE=>SW
 const phaseMap: { [id: string]: Phase } = {
   'A3C8': 'adds', // Tactical Pack
   'A3CB': 'rage', // Ravenous Saber
-  'A3C1': 'moonlight' // Beckon Moonlight
+  'A3C1': 'moonlight', // Beckon Moonlight
 };
 
 const headMarkerData = {
@@ -446,7 +446,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.stackOnPlayer === data.me)
           return output.stackOnYou!();
 
-        if (data.stackOnPlayer){
+        if (data.stackOnPlayer) {
           const name = data.party.member(data.stackOnPlayer);
           return output.stackThenSpread!({
             stack: output.stackOnPlayer!({ player: name }),
@@ -460,7 +460,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadThenStack: Outputs.spreadThenStack,
         stackThenSpread: {
-          en: '${stack} => Spread'
+          en: '${stack} => Spread',
         },
         spread: Outputs.spread,
         stackOnPlayer: Outputs.stackOnPlayer,
@@ -559,7 +559,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.stackOnPlayer === data.me)
           return output.stackOnYou!();
 
-        if (data.stackOnPlayer){
+        if (data.stackOnPlayer) {
           const name = data.party.member(data.stackOnPlayer);
           return output.stackThenSpread!({
             stack: output.stackOnPlayer!({ player: name }),
@@ -573,7 +573,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadThenStack: Outputs.spreadThenStack,
         stackThenSpread: {
-          en: '${stack} => Spread'
+          en: '${stack} => Spread',
         },
         spread: Outputs.spread,
         stackOnPlayer: Outputs.stackOnPlayer,
