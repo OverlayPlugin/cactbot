@@ -8,7 +8,7 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-type Phase = 'one' | 'adds' | 'rage';
+type Phase = 'one' | 'adds' | 'rage' | 'moonlight';
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -20,6 +20,8 @@ export interface Data extends RaidbossData {
   packPredationTracker: number;
   packPredationTargets: string[];
   stoneWindDebuff?: 'stone' | 'wind';
+  hasSpread?: boolean;
+  stackOnPlayer?: string;
   shadowchase?: number;
   // Phase 2
 }
@@ -33,8 +35,26 @@ const revolutionaryReign2 = 'A914'; // S=>N, NW=>SE, NE=>SW
 
 const phaseMap: { [id: string]: Phase } = {
   'A3C8': 'adds', // Tactical Pack
-  'A3BE': 'rage', // Terrestrial Rage
+  'A3CB': 'rage', // Ravenous Saber
+  'A3C1': 'moonlight' // Beckon Moonlight
 };
+
+const headMarkerData = {
+  // Shared tankbuster marker
+  'tankbuster': '0256',
+  // Adds red headmarker showing you will be targeted by Predation
+  'predation': '0017',
+  // Stony tether from Wolf of Stone
+  'stoneTether': '0017',
+  // Windy Tether from Wolf of Wind
+  'windTether': '005D',
+  // Big, pulsing, 4-arrow stack marker
+  'eightHitStack': '013C',
+  // Spread marker used in Terrestial Rage and Beckon Moonlight
+  'spread': '008B',
+  // Stack marker used in Terrestial Rage and Beckon Moonlight
+  'stack': '005D',
+} as const;
 
 const stoneWindOutputStrings = {
   stoneWindNum: {
@@ -260,13 +280,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R8S Tactical Pack Tethers',
       // TODO: Call East/West instead of add?
-      // 014F is Wolf of Stone tether
-      // 0150 is Wolf of Wind tether
       type: 'Tether',
-      netRegex: { id: ['014F', '0150'], capture: true },
+      netRegex: { id: [headMarkerData.stoneTether, headMarkerData.windTether], capture: true },
       condition: (data, matches) => data.me === matches.source,
       infoText: (_data, matches, output) => {
-        if (matches.id === '014F')
+        if (matches.id === headMarkerData.stoneTether)
           return output.side!({ wolf: output.wolfOfWind!() });
         return output.side!({ wolf: output.wolfOfStone!() });
       },
@@ -324,7 +342,7 @@ const triggerSet: TriggerSet<Data> = {
       // A3E2 (Alpha Wind) from Wolf of Stone
       id: 'R8S Pack Predation',
       type: 'HeadMarker',
-      netRegex: { id: '0017' },
+      netRegex: { id: headMarkerData.predation },
       infoText: (data, matches, output) => {
         data.packPredationTargets.push(matches.target);
         if (data.packPredationTargets.length < 2)
@@ -402,6 +420,54 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: stoneWindOutputStrings,
     },
     {
+      id: 'R8S Spread/Stack Collect',
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.stack, headMarkerData.spread] },
+      run: (data, matches) => {
+        const id = matches.id;
+        const target = matches.target;
+        if (headMarkerData.stack === id)
+          data.stackOnPlayer = target;
+        if (headMarkerData.spread === id && target === data.me)
+          data.hasSpread = true;
+      },
+    },
+    {
+      id: 'R8S Terrestrial Rage Spread/Stack',
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.stack, headMarkerData.spread], capture: false },
+      condition: (data) => data.phase === 'rage',
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (data.hasSpread)
+          return output.spreadThenStack!();
+
+        if (data.stackOnPlayer === data.me)
+          return output.stackOnYou!();
+
+        if (data.stackOnPlayer){
+          const name = data.party.member(data.stackOnPlayer);
+          return output.stackThenSpread!({
+            stack: output.stackOnPlayer!({ player: name }),
+          });
+        }
+      },
+      run: (data) => {
+        data.stackOnPlayer = undefined;
+        data.hasSpread = undefined;
+      },
+      outputStrings: {
+        spreadThenStack: Outputs.spreadThenStack,
+        stackThenSpread: {
+          en: '${stack} => Spread'
+        },
+        spread: Outputs.spread,
+        stackOnPlayer: Outputs.stackOnPlayer,
+        stackOnYou: Outputs.stackOnYou,
+      },
+    },
+    {
       id: 'R8S Shadowchase',
       // Only need one of the 5 actors to determine pattern
       // Ids are sequential, starting 2 less than the boss
@@ -477,6 +543,41 @@ const triggerSet: TriggerSet<Data> = {
         linesFromDir: {
           en: 'Lines from ${dir}',
         },
+      },
+    },
+    {
+      id: 'R8S Beckon Moonlight Spread/Stack',
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.stack, headMarkerData.spread], capture: false },
+      condition: (data) => data.phase === 'moonlight',
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (data.hasSpread)
+          return output.spreadThenStack!();
+
+        if (data.stackOnPlayer === data.me)
+          return output.stackOnYou!();
+
+        if (data.stackOnPlayer){
+          const name = data.party.member(data.stackOnPlayer);
+          return output.stackThenSpread!({
+            stack: output.stackOnPlayer!({ player: name }),
+          });
+        }
+      },
+      run: (data) => {
+        data.stackOnPlayer = undefined;
+        data.hasSpread = undefined;
+      },
+      outputStrings: {
+        spreadThenStack: Outputs.spreadThenStack,
+        stackThenSpread: {
+          en: '${stack} => Spread'
+        },
+        spread: Outputs.spread,
+        stackOnPlayer: Outputs.stackOnPlayer,
+        stackOnYou: Outputs.stackOnYou,
       },
     },
     {
