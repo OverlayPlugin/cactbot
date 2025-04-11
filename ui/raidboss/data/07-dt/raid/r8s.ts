@@ -260,25 +260,25 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R8S Tactical Pack Tethers',
       // TODO: Call East/West instead of add?
-      // 014F is Wolf of Wind tether
-      // 0150 is Wolf of Stone tether
+      // 014F is Wolf of Stone tether
+      // 0150 is Wolf of Wind tether
       type: 'Tether',
       netRegex: { id: ['014F', '0150'], capture: true },
       condition: (data, matches) => data.me === matches.source,
       infoText: (_data, matches, output) => {
         if (matches.id === '014F')
-          return output.tether!({ wolf: output.wolfOfWind!() });
-        return output.tether!({ wolf: output.wolfOfStone!() });
+          return output.side!({ wolf: output.wolfOfWind!() });
+        return output.side!({ wolf: output.wolfOfStone!() });
       },
       outputStrings: {
-        wolfOfStone: {
-          en: 'Yellow',
-        },
         wolfOfWind: {
           en: 'Green',
         },
-        tether: {
-          en: 'Tethered to ${wolf}',
+        wolfOfStone: {
+          en: 'Yellow',
+        },
+        side: {
+          en: '${wolf} Side',
         },
       },
     },
@@ -376,21 +376,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['1127', '1128'], capture: true },
       condition: Conditions.targetIsYou(),
       run: (data) => data.stoneWindCallGroup = undefined,
-    },
-    {
-      id: 'R8S Tactical Pack Swap Sides',
-      // Could merge this with above, but user disabling trigger could cause issue
-      type: 'LosesEffect',
-      netRegex: { effectId: ['1127', '1128'], capture: true },
-      condition: Conditions.targetIsYou(),
-      infoText: (_data, _matches, output) => {
-        return output.swap!();
-      },
-      outputStrings: {
-        swap: {
-          en: 'Swap Sides',
-        },
-      },
     },
     {
       id: 'R8S Tactical Pack Second Pop',
