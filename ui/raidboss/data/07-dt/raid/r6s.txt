@@ -82,7 +82,7 @@ hideall "--sync--"
 
 # River phase
 428.3 "Sugarscape" Ability { id: "A663", source: "Sugar Riot" }
-448.4 "Double Style" Ability { id: "A689", source: "Sugar Riot" }
+448.4 "Double Style" Ability { id: ["A687", "A689"], source: "Sugar Riot" }
 452.5 "Rush+Taste of Thunder/Taste of Fire" #Ability { id: "A686", source: "Sweet Shot" }
 454.5 "Layer" Ability { id: "A698", source: "Sugar Riot" }
 466.6 "Taste of Thunder" #Ability { id: "A69D", source: "Sugar Riot" }
