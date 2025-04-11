@@ -446,7 +446,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.stackOnPlayer === data.me)
           return output.stackOnYou!();
 
-        if (data.stackOnPlayer) {
+        if (data.stackOnPlayer !== undefined) {
           const name = data.party.member(data.stackOnPlayer);
           return output.stackThenSpread!({
             stack: output.stackOnPlayer!({ player: name }),
@@ -559,7 +559,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.stackOnPlayer === data.me)
           return output.stackOnYou!();
 
-        if (data.stackOnPlayer) {
+        if (data.stackOnPlayer !== undefined) {
           const name = data.party.member(data.stackOnPlayer);
           return output.stackThenSpread!({
             stack: output.stackOnPlayer!({ player: name }),
