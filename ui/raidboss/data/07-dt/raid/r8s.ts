@@ -1,5 +1,5 @@
-import { UnreachableCode } from '../../../../../resources/not_reached';
 import Conditions from '../../../../../resources/conditions';
+import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
@@ -361,10 +361,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if ( data.stoneWindCallGroup === 1 && data.packPredationTracker === 1 ||
-             data.stoneWindCallGroup === 2 && data.packPredationTracker === 2 ||
-             data.stoneWindCallGroup === 3 && data.packPredationTracker === 3
-        ) {
+        if (data.stoneWindCallGroup === data.packPredationTracker) {
           return output.stoneWindNum!({
             debuff: output[data.stoneWindDebuff ?? 'unknown']!(),
             num: data.stoneWindCallGroup,
@@ -407,15 +404,14 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
       suppressSeconds: 1,
       alarmText: (data, _matches, output) => {
-        if (
-          data.stoneWindCallGroup === 1 && data.packPredationTracker === 1 && data.surgeTracker === 1 ||
-          data.stoneWindCallGroup === 2 && data.packPredationTracker === 2 && data.surgeTracker === 3 ||
-          data.stoneWindCallGroup === 3 && data.packPredationTracker === 3 && data.surgeTracker === 5
-        ) {
-          return output.stoneWindNum!({
-            debuff: output[data.stoneWindDebuff ?? 'unknown']!(),
-            num: data.stoneWindCallGroup,
-          });
+        const surge = data.surgeTracker;
+        if (data.stoneWindCallGroup === data.packPredationTracker) {
+          if (surge === 1 || surge === 3 || surge === 5) {
+            return output.stoneWindNum!({
+              debuff: output[data.stoneWindDebuff ?? 'unknown']!(),
+              num: data.stoneWindCallGroup,
+            });
+          }
         }
       },
       outputStrings: stoneWindOutputStrings,
