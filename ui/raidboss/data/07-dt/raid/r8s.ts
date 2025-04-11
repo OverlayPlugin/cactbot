@@ -15,8 +15,10 @@ export interface Data extends RaidbossData {
   reignDir?: number;
   decayAddCount: number;
   stoneWindCallGroup?: number;
+  surgeTracker: number;
+  packPredationTracker: number;
+  packPredationTargets: string[];
   stoneWindDebuff?: 'stone' | 'wind';
-  stoneWindTracker?: number;
   shadowchase?: number;
   // Phase 2
 }
@@ -53,6 +55,9 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     phase: 'one',
     decayAddCount: 0,
+    packPredationTracker: 0,
+    packPredationTargets: [],
+    surgeTracker: 0,
   }),
   triggers: [
     {
@@ -252,6 +257,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R8S Tactical Pack Tethers',
+      // TODO: Call East/West instead of add?
+      // 014F is Wolf of Wind tether
+      // 0150 is Wolf of Stone tether
+      type: 'Tether',
+      netRegex: { id: ['014F', '0150'], capture: true },
+      condition: (data, matches) => data.me === matches.source,
+      infoText: (_data, matches, output) => {
+        if (matches.id === '014F')
+          return output.tether!({ wolf: output.wolfOfWind!() });
+        return output.tether!({ wolf: output.wolfOfStone!() });
+      },
+      outputStrings: {
+        wolfOfStone: {
+          en: 'Yellow',
+        },
+        wolfOfWind: {
+          en: 'Green',
+        },
+        tether: {
+          en: 'Tethered to ${wolf}',
+        },
+      },
+    },
+    {
       id: 'R8S Tactical Pack Debuffs',
       // Durations could be 21s, 37s, or 54s
       type: 'GainsEffect',
@@ -259,7 +289,6 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) => {
         return data.me === matches.target && data.phase === 'adds';
       },
-      delaySeconds: 9.7, // Duration until after first tether
       response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = stoneWindOutputStrings;
@@ -277,14 +306,6 @@ const triggerSet: TriggerSet<Data> = {
           data.stoneWindCallGroup = 3;
         }
 
-        if (data.stoneWindCallGroup === 1) {
-          return {
-            alarmText: output.stoneWindNum!({
-              debuff: output[data.stoneWindDebuff]!(),
-              num: data.stoneWindCallGroup,
-            }),
-          };
-        }
         return {
           infoText: output.stoneWindNum!({
             debuff: output[data.stoneWindDebuff]!(),
@@ -294,30 +315,106 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Tactical Pack Reminders',
-      // Alarms for the other groups by tracking the magic vuln from cleanse
-      // Tether could come out same time, so realistically this should track tether?
+      // headmarkers with casts:
+      // A3CF (Pack Predation) from Wolf of Wind
+      // A3E4 (Pack Predation) from Wolf of Stone
+      // Simultaneously highest aggro gets cleaved:
+      // A3CD (Alpha Wind) from Wolf of Wind
+      // A3E2 (Alpha Wind) from Wolf of Stone
+      id: 'R8S Pack Predation',
+      type: 'HeadMarker',
+      netRegex: { id: '0017' },
+      infoText: (data, matches, output) => {
+        data.packPredationTargets.push(matches.target);
+        if (data.packPredationTargets.length < 2)
+          return;
+
+        // Increment count for group tracking
+        data.packPredationTracker = data.packPredationTracker + 1;
+
+        const name1 = data.party.member(data.packPredationTargets[0]);
+        const name2 = data.party.member(data.packPredationTargets[1]);
+
+        return output.predationOnPlayers!({ player1: name1, player2: name2 });
+      },
+      run: (data) => {
+        if (data.packPredationTargets.length >= 2)
+          data.packPredationTargets = [];
+      },
+      outputStrings: {
+        predationOnPlayers: {
+          en: 'Predation on ${player1} and ${player2}',
+        },
+      },
+    },
+    {
+      id: 'R8S Tactical Pack First Pop',
+      // infoText as we do not know who should pop first
+      // These will trigger the following spells on cleanse
+      // A3EE (Sand Surge) from Font of Earth Aether
+      // A3ED (Wind Surge) from Font of Wind Aether
       type: 'GainsEffect',
       netRegex: { effectId: 'B7D', capture: true },
-      condition: (data, matches) => data.phase === 'adds' && parseFloat(matches.duration) > 3,
-      preRun: (data) => data.stoneWindTracker = (data.stoneWindTracker ?? 0) + 1,
+      condition: (data, matches) => data.phase === 'adds' && parseFloat(matches.duration) < 2,
+      // Magic Vulnerabilities from Pack Predation and Alpha Wind are 0.96s
       delaySeconds: (_data, matches) => parseFloat(matches.duration),
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if (
-          data.stoneWindCallGroup === 2 && data.stoneWindTracker === 2 ||
-          data.stoneWindCallGroup === 3 && data.stoneWindTracker === 3
-        )
+        if ( data.stoneWindCallGroup === 1 && data.packPredationTracker === 1 ||
+             data.stoneWindCallGroup === 2 && data.packPredationTracker === 2 ||
+             data.stoneWindCallGroup === 3 && data.packPredationTracker === 3
+        ) {
           return output.stoneWindNum!({
             debuff: output[data.stoneWindDebuff ?? 'unknown']!(),
             num: data.stoneWindCallGroup,
           });
+        }
       },
-      run: (data) => {
-        // Clear once 6 debuffs have been cleansed
-        if (data.stoneWindTracker === 8) {
-          data.stoneWindTracker = 0;
-          data.stoneWindCallGroup = 0;
+      outputStrings: stoneWindOutputStrings,
+    },
+    {
+      id: 'R8S Tactical Pack Cleanup',
+      type: 'LosesEffect',
+      netRegex: { effectId: ['1127', '1128'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.stoneWindCallGroup = undefined,
+    },
+    {
+      id: 'R8S Tactical Pack Swap Sides',
+      // Could merge this with above, but user disabling trigger could cause issue
+      type: 'LosesEffect',
+      netRegex: { effectId: ['1127', '1128'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, _matches, output) => {
+        return output.swap!();
+      },
+      outputStrings: {
+        swap: {
+          en: 'Swap Sides',
+        },
+      },
+    },
+    {
+      id: 'R8S Tactical Pack Second Pop',
+      // Timing based on Tether and Magic Vulnerability (3.96s)
+      type: 'GainsEffect',
+      netRegex: { effectId: 'B7D', capture: true },
+      condition: (data, matches) => {
+        return data.phase === 'adds' && parseFloat(matches.duration) > 2;
+      },
+      preRun: (data) => data.surgeTracker = data.surgeTracker + 1,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration),
+      suppressSeconds: 1,
+      alarmText: (data, _matches, output) => {
+        if (
+          data.stoneWindCallGroup === 1 && data.packPredationTracker === 1 && data.surgeTracker === 1 ||
+          data.stoneWindCallGroup === 2 && data.packPredationTracker === 2 && data.surgeTracker === 3 ||
+          data.stoneWindCallGroup === 3 && data.packPredationTracker === 3 && data.surgeTracker === 5
+        ) {
+          return output.stoneWindNum!({
+            debuff: output[data.stoneWindDebuff ?? 'unknown']!(),
+            num: data.stoneWindCallGroup,
+          });
         }
       },
       outputStrings: stoneWindOutputStrings,
