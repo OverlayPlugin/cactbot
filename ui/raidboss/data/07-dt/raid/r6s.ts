@@ -18,6 +18,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 // - Live Painting - add wave # spawn call?
 // - Ore-rigato - Mu enrage
 // - Hangry Hiss - Gimme Cat enrage
+// - thunderstorm movement for rotate cw/ccw call?
 // - Mousse Drip - ranged baits into 4x pair stacks/puddle drops
 // - Moussacre - melee bait proteans
 // - tower soaks
@@ -124,7 +125,9 @@ const triggerSet: TriggerSet<Data> = {
         }
       },
       outputStrings: {
-        avoidCleave: Outputs.avoidTankCleaves,
+        avoidCleave: {
+          en: 'Be on boss hitbox (avoid tank cleaves)',
+        },
         warmCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Red)',
         },
@@ -320,7 +323,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R6S Ready Ore Not',
       type: 'StartsUsing',
       netRegex: { id: 'A6AA', source: 'Sugar Riot', capture: false },
-      response: Responses.aoe(),
+      response: Responses.bigAoe(),
     },
     {
       id: 'R6S Single Style',
