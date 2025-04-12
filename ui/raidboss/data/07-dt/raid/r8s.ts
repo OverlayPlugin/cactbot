@@ -446,15 +446,19 @@ const triggerSet: TriggerSet<Data> = {
           return data.isFirstRage ? output.spreadThenStack!() : output.spread!();
 
         if (data.stackOnPlayer === data.me)
-          return data.isFirstRage ? output.stackThenSpread!({
-            stack: output.stackOnYou!(),
-          }) : output.stackOnYou!();
+          return data.isFirstRage
+            ? output.stackThenSpread!({
+              stack: output.stackOnYou!(),
+            })
+            : output.stackOnYou!();
 
         if (data.stackOnPlayer !== undefined) {
           const name = data.party.member(data.stackOnPlayer);
-          return data.isFirstRage ? output.stackThenSpread!({
-            stack: output.stackOnPlayer!({ player: name }),
-          }) : output.stackOnPlayer!({ player: name });
+          return data.isFirstRage
+            ? output.stackThenSpread!({
+              stack: output.stackOnPlayer!({ player: name }),
+            })
+            : output.stackOnPlayer!({ player: name });
         }
       },
       run: (data) => {
@@ -562,15 +566,19 @@ const triggerSet: TriggerSet<Data> = {
           return data.isFirstRage ? output.spreadThenStack!() : output.spread!();
 
         if (data.stackOnPlayer === data.me)
-          return data.isFirstRage ? output.stackThenSpread!({
-            stack: output.stackOnYou!(),
-          }) : output.stackOnYou!();
+          return data.isFirstRage
+            ? output.stackThenSpread!({
+              stack: output.stackOnYou!(),
+            })
+            : output.stackOnYou!();
 
         if (data.stackOnPlayer !== undefined) {
           const name = data.party.member(data.stackOnPlayer);
-          return data.isFirstRage ? output.stackThenSpread!({
-            stack: output.stackOnPlayer!({ player: name }),
-          }) : output.stackOnPlayer!({ player: name });
+          return data.isFirstRage
+            ? output.stackThenSpread!({
+              stack: output.stackOnPlayer!({ player: name }),
+            })
+            : output.stackOnPlayer!({ player: name });
         }
       },
       run: (data) => {
