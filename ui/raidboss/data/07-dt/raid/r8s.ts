@@ -20,6 +20,7 @@ export interface Data extends RaidbossData {
   packPredationTracker: number;
   packPredationTargets: string[];
   stoneWindDebuff?: 'stone' | 'wind';
+  isFirstRage: boolean;
   hasSpread?: boolean;
   stackOnPlayer?: string;
   shadowchase?: number;
@@ -79,6 +80,7 @@ const triggerSet: TriggerSet<Data> = {
     packPredationTracker: 0,
     packPredationTargets: [],
     surgeTracker: 0,
+    isFirstRage: true,
   }),
   triggers: [
     {
@@ -441,22 +443,19 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         if (data.hasSpread)
-          return output.spreadThenStack!();
+          return data.isFirstRage ? output.spreadThenStack!() : output.spread!();
 
         if (data.stackOnPlayer === data.me)
-          return output.stackOnYou!();
+          return data.isFirstRage ? output.stackThenSpread!({
+            stack: output.stackOnYou!(),
+          }) : output.stackOnYou!();
 
         if (data.stackOnPlayer !== undefined) {
           const name = data.party.member(data.stackOnPlayer);
-          return output.stackThenSpread!({
+          return data.isFirstRage ? output.stackThenSpread!({
             stack: output.stackOnPlayer!({ player: name }),
-          });
+          }) : output.stackOnPlayer!({ player: name });
         }
-      },
-      run: (data) => {
-        data.stackOnPlayer = undefined;
-        data.hasSpread = undefined;
-      },
       outputStrings: {
         spreadThenStack: Outputs.spreadThenStack,
         stackThenSpread: {
@@ -554,21 +553,24 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         if (data.hasSpread)
-          return output.spreadThenStack!();
+          return data.isFirstRage ? output.spreadThenStack!() : output.spread!();
 
         if (data.stackOnPlayer === data.me)
-          return output.stackOnYou!();
+          return data.isFirstRage ? output.stackThenSpread!({
+            stack: output.stackOnYou!(),
+          }) : output.stackOnYou!();
 
         if (data.stackOnPlayer !== undefined) {
           const name = data.party.member(data.stackOnPlayer);
-          return output.stackThenSpread!({
+          return data.isFirstRage ? output.stackThenSpread!({
             stack: output.stackOnPlayer!({ player: name }),
-          });
+          }) : output.stackOnPlayer!({ player: name });
         }
       },
       run: (data) => {
         data.stackOnPlayer = undefined;
         data.hasSpread = undefined;
+        data.isFirstRage = false;
       },
       outputStrings: {
         spreadThenStack: Outputs.spreadThenStack,
