@@ -1,3 +1,4 @@
+import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import {
@@ -10,10 +11,23 @@ import { RaidbossData } from '../../../../../types/data';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODOs:
+// - clean up timeline
+// - Crowd Brûlée - party stack (non-defamations)?
+// - safe corners for quicksand?
+// - Live Painting - add wave # spawn call?
+// - Ore-rigato - Mu enrage
+// - Hangry Hiss - Gimme Cat enrage
+// - thunderstorm movement for rotate cw/ccw call?
+// - Mousse Drip - ranged baits into 4x pair stacks/puddle drops
+// - Moussacre - melee bait proteans
+// - tower soaks
+
 export interface Data extends RaidbossData {
   actorSetPosTracker: { [id: string]: NetMatches['ActorSetPos'] };
   lastDoubleStyle?: DoubleStyleEntry;
   tetherTracker: { [id: string]: NetMatches['Tether'] };
+  colorRiotTint?: 'warm' | 'cool';
 }
 
 type DoubleStyleActors = 'bomb' | 'wing' | 'succ' | 'marl';
@@ -47,6 +61,15 @@ const dirToSameCorners = (dir: DirectionOutput8): DirectionOutput8[] => {
   return [];
 };
 
+const headMarkerData = {
+  // Jabberwock bind/death target
+  'bindMarker': '0017',
+  // Lightning Storm target
+  'lightningStormMarker': '025A',
+  // Pudding Party x5 stack
+  'puddingPartyMarker': '0131',
+} as const;
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM2Savage',
   zoneId: ZoneId.AacCruiserweightM2Savage,
@@ -72,13 +95,49 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R6S Sticky Mousse',
       type: 'StartsUsing',
       netRegex: { id: 'A695', source: 'Sugar Riot', capture: false },
-      response: Responses.spread(),
+      response: Responses.spreadThenStack(),
+    },
+    {
+      id: 'R6S Color Riot Debuff Tracker',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1163', '1164'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => data.colorRiotTint = matches.effectId === '1163' ? 'warm' : 'cool',
     },
     {
       id: 'R6S Color Riot',
       type: 'StartsUsing',
-      netRegex: { id: ['A691', 'A692'], source: 'Sugar Riot' },
-      response: Responses.tankCleave(),
+      netRegex: { id: ['A691', 'A692'], source: 'Sugar Riot', capture: true },
+      alertText: (data, matches, output) => {
+        if (data.role !== 'tank')
+          return output.avoidCleave!();
+
+        const coolInOut = matches.id === 'A691' ? output.in!() : output.out!();
+        const warmInOut = matches.id === 'A692' ? output.in!() : output.out!();
+
+        switch (data.colorRiotTint) {
+          case 'warm':
+            return output.coolCleave!({ dir: coolInOut });
+          case 'cool':
+            return output.warmCleave!({ dir: warmInOut });
+          default:
+            return output.tankCleave!();
+        }
+      },
+      outputStrings: {
+        avoidCleave: {
+          en: 'Be on boss hitbox (avoid tank cleaves)',
+        },
+        warmCleave: {
+          en: 'Tank cleave on YOU (${dir} => get hit by Red)',
+        },
+        coolCleave: {
+          en: 'Tank cleave on YOU (${dir} => get hit by Blue)',
+        },
+        tankCleave: Outputs.tankCleaveOnYou,
+        in: Outputs.in,
+        out: Outputs.out,
+      },
     },
     {
       id: 'R6S Color Clash',
@@ -104,7 +163,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['A68B', 'A68D'], source: 'Sugar Riot', capture: true },
       delaySeconds: 18,
-      infoText: (_data, matches, output) => {
+      alertText: (_data, matches, output) => {
         const mech = matches.id === 'A68B' ? 'healerStacks' : 'partners';
         return output[mech]!();
       },
@@ -201,6 +260,123 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Start ${dir1}, Rückstoß nach ${dir2}',
           cn: '从 ${dir1} 飞向 ${dir2}',
           ko: '${dir1}에서 ${dir2}으로 발사되기',
+        },
+      },
+    },
+    {
+      id: 'R6S Heating Up Early Warning',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1166', capture: true },
+      condition: (data, matches) => data.me === matches.target && data.role !== 'healer',
+      infoText: (_data, _matches, output) => output.defamationLater!(),
+      outputStrings: {
+        defamationLater: {
+          en: 'Defamation on YOU (for later)',
+        },
+      },
+    },
+    {
+      id: 'R6S Heating Up',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1166', capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5,
+      countdownSeconds: 5,
+      alertText: (_data, _matches, output) => output.defamation!(),
+      outputStrings: {
+        defamation: Outputs.defamationOnYou,
+      },
+    },
+    {
+      // tether source is from the player to the boss
+      id: 'R6S Pudding Graf',
+      type: 'Tether',
+      netRegex: { id: ['013F', '0140'], capture: true },
+      condition: (data, matches) => data.me === matches.source,
+      infoText: (_data, matches, output) => {
+        if (matches.id === '013F')
+          return output.wingedBomb!();
+        return output.bomb!();
+      },
+      outputStrings: {
+        bomb: {
+          en: 'Drop bomb in quicksand',
+        },
+        wingedBomb: {
+          en: 'Aim bomb towards quicksand',
+        },
+      },
+    },
+    {
+      id: 'R6S Jabberwock Bind Marker',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.bindMarker, capture: true },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Jabberwock on YOU',
+        },
+      },
+    },
+    {
+      id: 'R6S Ready Ore Not',
+      type: 'StartsUsing',
+      netRegex: { id: 'A6AA', source: 'Sugar Riot', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'R6S Single Style',
+      type: 'StartsUsing',
+      netRegex: { id: '9A3D', source: 'Sugar Riot', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Avoid arrow lines',
+        },
+      },
+    },
+    {
+      id: 'R6S Double Style Taste of Fire/Thunder',
+      type: 'StartsUsing',
+      netRegex: { id: ['A687', 'A689'], source: 'Sugar Riot', capture: true },
+      suppressSeconds: 1,
+      infoText: (_data, matches, output) =>
+        matches.id === 'A687' ? output.fire!() : output.thunder!(),
+      outputStrings: {
+        fire: Outputs.healerGroups,
+        thunder: Outputs.spread,
+      },
+    },
+    {
+      id: 'R6S Taste of Thunder (Twister/Stepped Leader)',
+      type: 'StartsUsing',
+      netRegex: { id: 'A69D', source: 'Sugar Riot', capture: false },
+      suppressSeconds: 1,
+      response: Responses.moveAway(),
+    },
+    {
+      id: 'R6S Lightning Storm',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.lightningStormMarker, capture: true },
+      condition: Conditions.targetIsYou(),
+      response: Responses.spread('alert'),
+    },
+    {
+      id: 'R6S Pudding Party',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.puddingPartyMarker, capture: true },
+      infoText: (data, matches, output) => {
+        if (data.me === matches.target)
+          return output.stackOnYou!();
+        return output.stackOn!({ target: matches.target });
+      },
+      outputStrings: {
+        stackOnYou: {
+          en: 'Stack on YOU x5',
+        },
+        stackOn: {
+          en: 'Stack on ${target} x5',
         },
       },
     },
