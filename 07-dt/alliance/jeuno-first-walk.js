@@ -60,6 +60,7 @@ Options.Triggers.push({
         smallCircle: {
           en: 'Outside small circle => in',
           de: 'Außen kleiner Kreis => Rein',
+          fr: 'Hors du petit cercle => Dessous',
           ja: '円内側 外から中',
           cn: '内环外 => 进',
           ko: '안쪽 원 바깥 => 안으로',
@@ -67,6 +68,7 @@ Options.Triggers.push({
         midCircle: {
           en: 'Outside mid circle => in',
           de: 'Außen mittlerer Kreis => Rein',
+          fr: 'Hors du cercle moyen => Dessous',
           ja: '円真ん中 外から中',
           cn: '中环外 => 进',
           ko: '중간 원 바깥 => 안으로',
@@ -74,6 +76,7 @@ Options.Triggers.push({
         bigCircle: {
           en: 'Outside big circle => in',
           de: 'Außen großer Kreis => Rein',
+          fr: 'Hors du gros cercle => Dessous',
           ja: '円外側 外から中',
           cn: '外环外 => 进',
           ko: '바깥쪽 원 바깥 => 안으로',
@@ -96,6 +99,7 @@ Options.Triggers.push({
         avoidCircles: {
           en: 'Avoid radiating circles',
           de: 'Strahlende Kreise vermeiden',
+          fr: 'Évitez les cercles rayonnants',
           ja: '放射矢印をよける',
           cn: '躲避步进圆圈',
           ko: '화살표 방향으로 퍼지는 원 피하기',
@@ -146,6 +150,7 @@ Options.Triggers.push({
         shortKnockback: {
           en: 'Knockback (short)',
           de: 'Rückstoß (kurz)',
+          fr: 'Poussée (courte)',
           ja: '近い ノックバック',
           cn: '击退 (短距离)',
           ko: '넉백 (가까이)',
@@ -153,6 +158,7 @@ Options.Triggers.push({
         midKnockback: {
           en: 'Knockback (mid)',
           de: 'Rückstoß (mittel)',
+          fr: 'Poussée (moyenne)',
           ja: '真ん中 ノックバック',
           cn: '击退 (中距离)',
           ko: '넉백 (중간)',
@@ -160,6 +166,7 @@ Options.Triggers.push({
         bigKnockback: {
           en: 'Knockback (big)',
           de: 'Rückstoß (groß)',
+          fr: 'Poussée (grosse)',
           ja: '遠い ノックバック',
           cn: '击退 (长距离)',
           ko: '넉백 (멀리)',
@@ -184,6 +191,7 @@ Options.Triggers.push({
         avoidOrbs: {
           en: 'Avoid exploding orbs',
           de: 'Explodierende Orbs vermeiden',
+          fr: 'Éviter l\'explosion des orbes',
           ja: '爆発する玉をよける',
           cn: '躲开即将爆炸的球',
           ko: '폭발하는 구슬 피하기',
@@ -254,6 +262,7 @@ Options.Triggers.push({
         outAtDirection: {
           en: 'Get out toward ${safeDir}',
           de: 'Geh raus nach ${safeDir}',
+          fr: 'Sortez direction ${safeDir}',
           ja: '${safeDir} 安置',
           cn: '去 ${safeDir} 远离',
           ko: '${safeDir} 바깥으로',
@@ -336,6 +345,7 @@ Options.Triggers.push({
         outerFirst: {
           en: 'AoE x10',
           de: 'AoE x10',
+          fr: 'AoE x10',
           ja: 'AoE 10回',
           cn: 'AoE (10次)',
           ko: '전체공격 x10',
@@ -352,6 +362,7 @@ Options.Triggers.push({
         outerFirst: {
           en: 'Rings out to in',
           de: 'Ringe außen nach innen',
+          fr: 'Anneaux : extérieur vers intérieur',
           ja: 'ドーナツへ駆け込む',
           cn: '步进月环 (由外到内)',
           ko: '밖에서 안으로 도넛장판',
@@ -368,6 +379,7 @@ Options.Triggers.push({
         outerFirst: {
           en: 'Rings in to out',
           de: 'Ringe innen nach außen',
+          fr: 'Anneaux : intérieur vers extérieur',
           ja: 'ドーナツの外へ',
           cn: '步进月环 (由内到外)',
           ko: '안에서 밖으로 도넛장판',
@@ -413,6 +425,7 @@ Options.Triggers.push({
         attackAngel: {
           en: 'Attack ${angel}',
           de: 'Greife ${angel} an',
+          fr: 'Attaquez ${angel}',
           ja: '${angel} を殴る',
           cn: '攻击 ${angel}',
           ko: '${angel} 공격하기',
@@ -420,6 +433,7 @@ Options.Triggers.push({
         unknownAngel: {
           en: 'Attack angel with matching buff',
           de: 'Greife Engel mit apssendem Buff an',
+          fr: 'Attaquez l\'ange correspondant au buff',
           ja: 'バフのついた敵を殴る',
           cn: '攻击对应Buff的Boss',
           ko: '버프와 일치하는 보스 공격하기',
@@ -533,6 +547,7 @@ Options.Triggers.push({
         killShield: {
           en: 'Kill Ark Shield',
           de: 'Besiege Erzengel-Schild',
+          fr: 'Détruisez le bouclier',
           ja: '盾持ちを殴る',
           cn: '击杀方舟之盾',
           ko: '방패 부수기',
@@ -551,6 +566,7 @@ Options.Triggers.push({
         interruptHM: {
           en: 'Interrupt HM',
           de: 'HM unterbrechen',
+          fr: 'Interrompez HM',
           ja: 'HMへ中断',
           cn: '打断方舟天使HM',
           ko: 'HM 중단시키기',
@@ -569,6 +585,7 @@ Options.Triggers.push({
         runFromTether: {
           en: 'Chasing tether -- run away!',
           de: 'Verfolgende Verbindung -- renn weg!',
+          fr: 'Lié -- Fuyez !',
           ja: '線が付いた敵から逃げる',
           cn: '追踪连线 -- 快跑!',
           ko: '추적 선 -- 도망가세요!',
@@ -613,6 +630,7 @@ Options.Triggers.push({
         leftThenRightShadow: {
           en: 'Left => right of shadow',
           de: 'Links => Rechts vom Schatten',
+          fr: 'Gauche => À droite de l\'ombre',
           ja: '分身 左 => 右',
           cn: '分身 左 => 右',
           ko: '분신 왼쪽 => 오른쪽',
@@ -620,6 +638,7 @@ Options.Triggers.push({
         rightThenLeftShadow: {
           en: 'Right => left of shadow',
           de: 'Rechts => Links vom Schatten',
+          fr: 'Droite => À gauche de l\'ombre',
           ja: '分身 右 => 左',
           cn: '分身 右 => 左',
           ko: '분신 오른쪽 => 왼쪽',
@@ -636,6 +655,7 @@ Options.Triggers.push({
         avoidRadiatingLines: {
           en: 'Avoid Radiating Lines',
           de: 'Strahlende Linien vermeiden',
+          fr: 'Évitez les lignes rayonnantes',
           ja: '移動する直線をよける',
           cn: '躲避步进直线',
           ko: '퍼져나가는 직선장판 피하기',
@@ -689,6 +709,7 @@ Options.Triggers.push({
         getInCircles: {
           en: 'Get in circles',
           de: 'Geh in Kreise',
+          fr: 'Allez dans les cercles',
           ja: '円の内側',
           cn: '去圆圈内',
           ko: '원 안으로',
@@ -696,6 +717,7 @@ Options.Triggers.push({
         moatWithBattlements: {
           en: 'In circles + Close to boss',
           de: 'In Kreise + Nah am Boss',
+          fr: 'Dans les cercles + Près du boss',
           ja: '円の内側 + ボスの近く',
           cn: '圆圈内 + 靠近Boss',
           ko: '원 안으로 + 보스 가까이',
@@ -703,6 +725,7 @@ Options.Triggers.push({
         moatWithKeep: {
           en: 'In circles + Away from boss',
           de: 'In Kreise + Weg vom Boss',
+          fr: 'Dans les cercles + Loin du boss',
           ja: '円の内側 + ボスから離れて',
           cn: '圆圈内 + 远离Boss',
           ko: '원 안으로 + 보스 멀리',
@@ -727,6 +750,7 @@ Options.Triggers.push({
         outOfCircles: {
           en: 'Out of circles',
           de: 'Raus aus Kreisen',
+          fr: 'Hors des cercles',
           ja: '円の外側',
           cn: '去圆圈外',
           ko: '원 바깥으로',
@@ -734,6 +758,7 @@ Options.Triggers.push({
         courtWithBattlements: {
           en: 'Out of circles + close to boss',
           de: 'Raus aus Kreisen + Nah am Boss',
+          fr: 'Hors des cerlces + Près du boss',
           ja: '円の外側 + ボスの近く',
           cn: '圆圈外 + 靠近Boss',
           ko: '원 바깥으로 + 보스 가까이',
@@ -741,6 +766,7 @@ Options.Triggers.push({
         courtWithKeep: {
           en: 'Out of circles + away from boss',
           de: 'Raus aus Kreisen + Weg vom Boss',
+          fr: 'Hors des cercles + Loin du boss',
           ja: '円の外側 + ボスから離れて',
           cn: '圆圈外 + 远离Boss',
           ko: '원 바깥으로 + 보스 멀리',
@@ -761,6 +787,7 @@ Options.Triggers.push({
         leftAndOut: {
           en: 'Go left + get out',
           de: 'Geh Links + geh raus',
+          fr: 'À gauche + extérieur',
           ja: '離れて 左',
           cn: '左 + 远离',
           ko: '왼쪽 + 밖으로',
@@ -768,6 +795,7 @@ Options.Triggers.push({
         rightAndOut: {
           en: 'Go right + get out',
           de: 'Geh Rechts + geh raus',
+          fr: 'À droite + extérieur',
           ja: '離れて 右',
           cn: '右 + 远离',
           ko: '오른쪽 + 밖으로',
@@ -789,6 +817,7 @@ Options.Triggers.push({
         leftAndOut: {
           en: 'Left of shadow + get out',
           de: 'Links vom Schatten + geh raus',
+          fr: 'À gauche de l\'ombre + extérieur',
           ja: '分身 離れて 左',
           cn: '分身 左 + 远离',
           ko: '분신 왼쪽 + 밖으로',
@@ -796,6 +825,7 @@ Options.Triggers.push({
         rightAndOut: {
           en: 'Right of shadow + get out',
           de: 'Rechts vom Schatten + geh raus',
+          fr: 'À droite de l\'ombre + extérieur',
           ja: '分身 離れて 右',
           cn: '分身 右 + 远离',
           ko: '분신 오른쪽 + 밖으로',
@@ -816,6 +846,7 @@ Options.Triggers.push({
         lineMultiKnockback: {
           en: '4x knockback from lines',
           de: '4x Rückstoß von den Linien',
+          fr: '4x poussée depuis les lignes',
           ja: '4連 線からノックバック',
           cn: '4x 直线击退',
           ko: '4연속 선에서 넉백',
@@ -823,6 +854,7 @@ Options.Triggers.push({
         lineSingleKnockback: {
           en: 'Knockback from line',
           de: 'Rückstoß von der Linie',
+          fr: 'Poussée depuis la ligne',
           ja: '線からノックバック',
           cn: '从直线击退',
           ko: '선에서 넉백',
@@ -884,6 +916,7 @@ Options.Triggers.push({
         sigilDodge: {
           en: 'Dodge puddles 3 to 1',
           de: 'Weiche Flächen von 3 nach 1 aus',
+          fr: 'Esquivez les puddles de 3 vers 1',
           ja: '最初の予兆へ駆け込む',
           cn: '三穿一躲避圆圈',
           ko: '3번에서 1번으로 피하기',
@@ -918,6 +951,7 @@ Options.Triggers.push({
         rightLeftBack: {
           en: 'Start right => left => back',
           de: 'Starte Rechts => Links => Hinter',
+          fr: 'Droite => Gauche => Derrière',
           ja: '右 => 左 => 後ろ',
           cn: '右 => 左 => 后',
           ko: '오른쪽 => 왼쪽 => 뒤',
@@ -925,6 +959,7 @@ Options.Triggers.push({
         rightLeftFront: {
           en: 'Start right => left => front',
           de: 'Starte Rechts => Links => Vorne',
+          fr: 'Droite => Gauche => Devant',
           ja: '右 => 左 => 前',
           cn: '右 => 左 => 前',
           ko: '오른쪽 => 왼쪽 => 앞',
@@ -932,6 +967,7 @@ Options.Triggers.push({
         leftRightBack: {
           en: 'Start left => right => back',
           de: 'Starte Links => Rechts => Hinter',
+          fr: 'Gauche => Droite => Derrière',
           ja: '左 => 右 => 後ろ',
           cn: '左 => 右 => 后',
           ko: '왼쪽 => 오른쪽 => 뒤',
@@ -939,6 +975,7 @@ Options.Triggers.push({
         leftRightFront: {
           en: 'Start left => right => front',
           de: 'Starte Links => Rechts => Vorne',
+          fr: 'Gauche => Droite => Devant',
           ja: '左 => 右 => 前',
           cn: '左 => 右 => 前',
           ko: '왼쪽 => 오른쪽 => 앞',
@@ -955,6 +992,7 @@ Options.Triggers.push({
         smashDodge: {
           en: 'Dodge Exalines, out => in',
           de: 'Weiche Exalines aus, Raus => Rein',
+          fr: 'Esquivez les Exalines, Extérieur => Intérieur',
           ja: '線を避ける 外から中へ',
           cn: '躲避步进直线, 远离 => 靠近',
           ko: '퍼져나가는 직선장판 피하기, 밖 => 안',

@@ -110,6 +110,7 @@ Options.Triggers.push({
         stored: {
           en: 'Stored ${mech} for later',
           de: '${mech} gespeichert für später',
+          fr: '${mech} sauvegardé pour après',
           cn: '稍后 ${mech}',
           ko: '나중에 ${mech}',
         },
@@ -204,6 +205,7 @@ Options.Triggers.push({
         text: {
           en: 'Start ${dir1}, launch towards ${dir2}',
           de: 'Start ${dir1}, Rückstoß nach ${dir2}',
+          fr: 'Commencez ${dir1}, lancez vers ${dir2}',
           cn: '从 ${dir1} 飞向 ${dir2}',
           ko: '${dir1}에서 ${dir2}으로 발사되기',
         },
@@ -381,9 +383,9 @@ Options.Triggers.push({
       'locale': 'fr',
       'missingTranslations': true,
       'replaceSync': {
-        'Mouthwatering Morbol': 'morbol mielleux',
+        'Mouthwatering Morbol': 'Morbol mielleux',
         'Sugar Riot': 'Sugar Riot',
-        'Sweet Shot': 'flèche sirupeuse',
+        'Sweet Shot': 'Flèche sirupeuse',
       },
       'replaceText': {
         'Artistic Anarchy': 'Anarchie artistique',
