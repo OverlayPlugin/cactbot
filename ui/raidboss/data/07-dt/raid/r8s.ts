@@ -45,9 +45,9 @@ const headMarkerData = {
   // Adds red headmarker showing you will be targeted by Predation
   'predation': '0017',
   // Stony tether from Wolf of Stone
-  'stoneTether': '0017',
+  'stoneTether': '014F',
   // Windy Tether from Wolf of Wind
-  'windTether': '005D',
+  'windTether': '0150',
   // Big, pulsing, 4-arrow stack marker
   'eightHitStack': '013C',
   // Spread marker used in Terrestial Rage and Beckon Moonlight
