@@ -329,7 +329,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Look for arrows',
+          en: 'Avoid arrow lines',
         },
       },
     },
