@@ -188,14 +188,14 @@ const triggerSet: TriggerSet<Data> = {
         shortBurn: {
           en: '(short cleanse)',
           de: '(kurze Reinigung)',
-          fr: '(compteur long)',
+          fr: '(compteur court)',
           cn: '(短舞点名)',
           ko: '(짧은 디버프)',
         },
         longBurn: {
           en: '(long cleanse)',
           de: '(lange Reinigung)',
-          fr: '(compteur court)',
+          fr: '(compteur long)',
           cn: '(长舞点名)',
           ko: '(긴 디버프)',
         },
