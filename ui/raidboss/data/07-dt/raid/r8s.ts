@@ -456,7 +456,7 @@ const triggerSet: TriggerSet<Data> = {
             stack: output.stackOnPlayer!({ player: name }),
           }) : output.stackOnPlayer!({ player: name });
         }
-     },
+      },
       run: (data) => {
         data.stackOnPlayer = undefined;
         data.hasSpread = undefined;
