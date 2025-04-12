@@ -127,12 +127,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidCleave: {
           en: 'Be on boss hitbox (avoid tank cleaves)',
+          ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
         },
         warmCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Red)',
+          ko: '광역 탱버 대상자 (${dir} => 빨간색 맞기)',
         },
         coolCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Blue)',
+          ko: '광역 탱버 대상자 (${dir} => 파란색 맞기)',
         },
         tankCleave: Outputs.tankCleaveOnYou,
         in: Outputs.in,
@@ -274,6 +277,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         defamationLater: {
           en: 'Defamation on YOU (for later)',
+          ko: '광역징 대상자 (나중에)',
         },
       },
     },
@@ -303,9 +307,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bomb: {
           en: 'Drop bomb in quicksand',
+          ko: '늪에 폭탄 놓기',
         },
         wingedBomb: {
           en: 'Aim bomb towards quicksand',
+          ko: '늪 쪽을 향해 폭탄 놓기',
         },
       },
     },
@@ -318,6 +324,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Jabberwock on YOU',
+          ko: '재버워크 대상자',
         },
       },
     },
@@ -335,6 +342,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid arrow lines',
+          ko: '화살 직선 장판 피하기',
         },
       },
     },
@@ -376,9 +384,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackOnYou: {
           en: 'Stack on YOU x5',
+          ko: '쉐어 x5 대상자',
         },
         stackOn: {
           en: 'Stack on ${target} x5',
+          ko: '쉐어 x5 ${target}',
         },
       },
     },
