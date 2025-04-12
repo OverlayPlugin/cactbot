@@ -115,6 +115,7 @@ const triggerSet: TriggerSet<Data> = {
         stored: {
           en: '(${mech} later)',
           de: '(${mech} später)',
+          fr: '(${mech} après)',
           cn: '(稍后 ${mech})',
           ko: '(나중에 ${mech})',
         },
@@ -142,6 +143,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: 'Start ${dir} (${num} hits) => ${mech}',
           de: 'Start ${dir} (${num} Treffer) => ${mech}',
+          fr: 'Commencez ${dir} (${num} coups) => ${mech}',
           cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
           ko: '${dir} 시작 (${num}번 공격) => ${mech}',
         },
@@ -186,12 +188,14 @@ const triggerSet: TriggerSet<Data> = {
         shortBurn: {
           en: '(short cleanse)',
           de: '(kurze Reinigung)',
+          fr: '(compteur court)',
           cn: '(短舞点名)',
           ko: '(짧은 디버프)',
         },
         longBurn: {
           en: '(long cleanse)',
           de: '(lange Reinigung)',
+          fr: '(compteur long)',
           cn: '(长舞点名)',
           ko: '(긴 디버프)',
         },
@@ -211,6 +215,7 @@ const triggerSet: TriggerSet<Data> = {
         cleanse: {
           en: 'Cleanse in spotlight',
           de: 'Reinige im Scheinwerfer',
+          fr: 'Purifiez sous le spot',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
         },
@@ -234,12 +239,14 @@ const triggerSet: TriggerSet<Data> = {
         cleanse: {
           en: 'Cleanse in spotlight',
           de: 'Reinige im Scheinwerfer',
+          fr: 'Purifiez sous le spot',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
         },
         bait: {
           en: 'Bait Frog',
           de: 'Frosch ködern',
+          fr: 'Prenez la grenouille',
           cn: '引导青蛙',
           ko: '개구리 유도',
         },
@@ -264,12 +271,14 @@ const triggerSet: TriggerSet<Data> = {
         cleanse: {
           en: 'Cleanse in spotlight',
           de: 'Reinige im Scheinwerfer',
+          fr: 'Purifiez sous le spot',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
         },
         bait: {
           en: 'Bait Frog',
           de: 'Frosch ködern',
+          fr: 'Prenez la grenouille',
           cn: '引导青蛙',
           ko: '개구리 유도',
         },
@@ -285,6 +294,7 @@ const triggerSet: TriggerSet<Data> = {
         insideOut: {
           en: 'Max Melee => Under',
           de: 'Max Nahkampf => Unter ihn',
+          fr: 'Max mêlée => Dessous',
           cn: '钢铁 => 月环',
           ko: '칼끝딜 => 안으로',
         },
@@ -300,6 +310,7 @@ const triggerSet: TriggerSet<Data> = {
         outsideIn: {
           en: 'Under => Max Melee',
           de: 'Unter ihn => Max Nahkampf',
+          fr: 'Dessous => Max mêlée',
           cn: '月环 => 钢铁',
           ko: '안으로 => 칼끝딜',
         },
@@ -355,30 +366,35 @@ const triggerSet: TriggerSet<Data> = {
         merge: {
           en: '${order} merge',
           de: '${order} berühren',
+          fr: '${order} fusion',
           cn: '${order} 撞毒',
           ko: '${order} 융합',
         },
         first: {
           en: 'First',
           de: 'Erstes',
+          fr: 'Première',
           cn: '第1组',
           ko: '첫번째',
         },
         second: {
           en: 'Second',
           de: 'Zweites',
+          fr: 'Seconde',
           cn: '第2组',
           ko: '두번째',
         },
         third: {
           en: 'Third',
           de: 'Drittes',
+          fr: 'Troisième',
           cn: '第3组',
           ko: '세번째',
         },
         fourth: {
           en: 'Fourth',
           de: 'Viertes',
+          fr: 'Quatrième',
           cn: '第4组',
           ko: '네번째',
         },
@@ -396,6 +412,7 @@ const triggerSet: TriggerSet<Data> = {
         merge: {
           en: 'Merge debuff',
           de: 'Debuff berühren',
+          fr: 'Fusionner le debuff',
           cn: '撞毒',
           ko: '융합하기',
         },
@@ -465,7 +482,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'fr',
       'replaceSync': {
         'Dancing Green': 'Dancing Green',
-        'Frogtourage': 'danceur batracien',
+        'Frogtourage': 'Danceur batracien',
       },
       'replaceText': {},
     },
