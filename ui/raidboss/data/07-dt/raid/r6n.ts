@@ -349,6 +349,7 @@ const triggerSet: TriggerSet<Data> = {
         stacks: {
           en: 'Healer Groups (in water)',
           de: 'Heiler Grußßen (ins Wasser)',
+          fr: 'Pack sur les heals (dans l\'eau)',
           cn: '治疗分组分摊 (站在水里)',
           ko: '물에서 힐러 그룹 쉐어',
         },
@@ -364,6 +365,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: {
           en: 'Spread (not in water)',
           de: 'Verteilen (nicht ins Wasser)',
+          fr: 'Dispersion (hors de l\'eau)',
           cn: '分散 (站在岸上)',
           ko: '땅에서 산개',
         },
@@ -405,15 +407,17 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Heaven Bomb': 'bombe ailée',
-        'Paint Bomb': 'bombe de peinture',
+        'Heaven Bomb': 'Bombe ailée',
+        'Paint Bomb': 'Bombe de peinture',
         'Sugar Riot': 'Sugar Riot',
-        'Sweet Shot': 'flèche sirupeuse',
-        'Tempest Piece': 'cumulonimbus',
+        'Sweet Shot': 'Flèche sirupeuse',
+        'Tempest Piece': 'Cumulonimbus',
       },
       'replaceText': {
+        '\\(cast\\)': '(incante)',
+        '\\(snapshot\\)': '(retouche)',
+        '\\(spread\\)': '(dispertion)',
         'Burst': 'Explosion',
         'Color Riot': 'Révolte chromatique',
         'Cool Bomb': 'Bombe de couleurs froides',
