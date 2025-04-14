@@ -180,9 +180,10 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => data.lastDoubleStyle = doubleStyleMap[matches.id],
     },
     {
+      // tether source is from the actor to the boss
       id: 'R6S Double Style Tether Tracker',
       type: 'Tether',
-      netRegex: { targetId: '4[0-9A-Fa-f]{7}', id: ['013F', '0140'], capture: true },
+      netRegex: { sourceId: '4[0-9A-Fa-f]{7}', id: ['013F', '0140'], capture: true },
       condition: (data) => data.lastDoubleStyle !== undefined,
       preRun: (data, matches) => data.tetherTracker[matches.sourceId] = matches,
       infoText: (data, _matches, output) => {
@@ -208,13 +209,18 @@ const triggerSet: TriggerSet<Data> = {
           'unknown': 'unknown',
         } as const;
 
+        // clean-up so we don't trigger on other tether mechanics
+        delete data.lastDoubleStyle;
+
         const tethers = Object.entries(data.tetherTracker);
         data.tetherTracker = {};
 
         for (const [id, tether] of tethers) {
           const actorSetPosData = data.actorSetPosTracker[id];
-          if (actorSetPosData === undefined)
+          if (actorSetPosData === undefined) {
+            console.log(`R6S Double Style Tether Tracker - Missing actor position data!`);
             return;
+          }
 
           const actorType = doubleStyle[tether.id === '013F' ? 'red' : 'blue'];
           const x = parseFloat(actorSetPosData.x);
@@ -243,7 +249,7 @@ const triggerSet: TriggerSet<Data> = {
         const [dir] = safeDirs;
 
         if (safeDirs.length !== 1 || dir === undefined) {
-          console.log(`R6S Double Style Tether Tracker - Invalid data!`);
+          console.log(`R6S Double Style Tether Tracker - Missing direction data!`);
           return;
         }
 
@@ -343,11 +349,15 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['A687', 'A689'], source: 'Sugar Riot', capture: true },
       suppressSeconds: 1,
-      infoText: (_data, matches, output) =>
+      alertText: (_data, matches, output) =>
         matches.id === 'A687' ? output.fire!() : output.thunder!(),
       outputStrings: {
-        fire: Outputs.healerGroups,
-        thunder: Outputs.spread,
+        fire: {
+          en: 'Healer groups in water, avoid arrow lines',
+        },
+        thunder: {
+          en: 'Spread out of water, avoid arrow lines',
+        },
       },
     },
     {
