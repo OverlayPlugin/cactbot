@@ -24,6 +24,7 @@ export interface Data extends RaidbossData {
   hasSpread?: boolean;
   stackOnPlayer?: string;
   shadowchase?: number;
+  moonbeamBites: number[];
   // Phase 2
 }
 
@@ -81,6 +82,7 @@ const triggerSet: TriggerSet<Data> = {
     packPredationTargets: [],
     surgeTracker: 0,
     isFirstRage: true,
+    moonbeamBites: [],
   }),
   triggers: [
     {
@@ -94,6 +96,7 @@ const triggerSet: TriggerSet<Data> = {
           throw new UnreachableCode();
 
         data.phase = phase;
+        data.isFirstRage = true;
       },
     },
     {
@@ -551,6 +554,157 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         linesFromDir: {
           en: 'Lines from ${dir}',
+        },
+      },
+    },
+    {
+      id: 'R8S Beckon Moonlight Quadrants',
+      type: 'Ability',
+      // A3E0 => Right cleave self-cast
+      // A3E1 => Left cleave self-cast
+      netRegex: { id: [ 'A3E0', 'A3E1' ], source: 'Moonlit Shadow', capture: true },
+      durationSeconds: 10,
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Beckon Moonlight Quadrants: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, centerX, centerY);
+        // Moonbeam's Bite (A3C2 Left / A3C3 Right) half-room cleaves
+        // Defining the cleaved side
+        if (matches.id === 'A3E0') {
+          const counterclock = dirNum === 0 ? 6 : dirNum - 2;
+          data.moonbeamBites.push(counterclock);
+
+        }
+        if (matches.id === 'A3E1') {
+          const clockwise = (dirNum + 2) % 8;
+          data.moonbeamBites.push(clockwise);
+        }
+      },
+      delaySeconds: 0.1,
+      infoText: (data, matches, output) => {
+        if (data.moonbeamBites.length !== 4)
+          return;
+
+        const moonbeam1 = data.moonbeamBites[0] ?? -1;
+        const moonbeam2 = data.moonbeamBites[1] ?? -1;
+        const moonbeam3 = data.moonbeamBites[2] ?? -1;
+        const moonbeam4 = data.moonbeamBites[3] ?? -1;
+
+        const quadrants = [1, 3, 5, 7];
+        let safeQuads1 = quadrants.filter((quadrant) => {
+          return quadrant !== moonbeam1 + 1;
+        });
+        safeQuads1 = safeQuads1.filter((quadrant) => {
+          return quadrant !== moonbeam1 - 1;
+        });
+        safeQuads1 = safeQuads1.filter((quadrant) => {
+          return quadrant !== moonbeam2 + 1;
+        });
+        safeQuads1 = safeQuads1.filter((quadrant) => {
+          return quadrant !== moonbeam2 - 1;
+        });
+
+        let safeQuads2 = quadrants.filter((quadrant) => {
+          return quadrant !== moonbeam3 + 1;
+        });
+        safeQuads2 = safeQuads2.filter((quadrant) => {
+          return quadrant !== moonbeam3 - 1;
+        });
+        safeQuads2 = safeQuads2.filter((quadrant) => {
+          return quadrant !== moonbeam4 + 1;
+        });
+        safeQuads2 = safeQuads2.filter((quadrant) => {
+          return quadrant !== moonbeam4 - 1;
+        });
+
+        if (safeQuads1[0] === undefined || safeQuads2[0] === undefined) {
+          console.error(
+            `R8S Beckon Moonlight Quadrants: First safeQuads missing`,
+          );
+          return;
+        }
+
+        // When there are multiple safe spots, output cardinal
+        const intersToCard = (dirNum1: number, dirNum2: number) => {
+          // Northeast and Northwest
+          if (dirNum1 === 1 && dirNum2 === 7 || dirNum2 === 7 && dirNum1 === 1)
+            return 0;
+          // Northeast and Southeast
+          if (dirNum1 === 1 && dirNum2 === 3 || dirNum1 === 3 && dirNum2 === 1)
+            return 2;
+          // Southeast and Southwest
+          if (dirNum1 === 3 && dirNum2 === 5 || dirNum1 === 5 && dirNum2 === 3)
+            return 4;
+          // Southwest and Northwest
+          if (dirNum1 === 5 && dirNum2 === 7 || dirNum1 === 7 && dirNum2 === 5)
+            return 6;
+        }
+
+        if (safeQuads1.length === 2 && safeQuads2.length === 2) {
+          if (safeQuads1[1] === undefined || safeQuads2[1] === undefined) {
+            console.error(
+              `R8S Beckon Moonlight Quadrants: Second safeQuads missing.`,
+            ); 
+            return;
+          }
+          const dirNum1 = intersToCard(safeQuads1[0], safeQuads1[1]);
+          const dirNum2 = intersToCard(safeQuads2[0], safeQuads2[1]);
+          const half1 = output[Directions.outputFrom8DirNum(dirNum1 ?? -1)]!();
+          const half2 = output[Directions.outputFrom8DirNum(dirNum2 ?? -1)]!();
+          return output.safeHalves!({ half1: half1, half2: half2});
+        }
+        if (safeQuads1.length === 2) {
+          if (safeQuads1[1] === undefined) {
+            console.error(
+              `R8S Beckon Moonlight Quadrants: First safeQuad missing.`,
+            );
+            return;
+          }
+          const dirNum = intersToCard(safeQuads1[0], safeQuads1[1]);
+          const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
+          const quad = output[Directions.outputFrom8DirNum(safeQuads2[1] ?? -1)]!();
+          return output.safeHalfFirst!({ half: half, quad: quad });
+        }
+        if (safeQuads2.length === 2) {
+          if (safeQuads2[1] === undefined) {
+            console.error(
+              `R8S Beckon Moonlight Quadrants: Second safeQuad missing.`,
+            );
+            return;
+          }
+          const dirNum = intersToCard(safeQuads2[0], safeQuads2[1]);
+          const quad = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
+          const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
+          return output.safeHalfSecond!({ quad: quad, half: half });
+        }
+
+        const quad1 = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
+        const quad2 = output[Directions.outputFrom8DirNum(safeQuads2[0] ?? -1)]!();
+        return output.safeQuadrants!({ quad1: quad1, quad2: quad2 });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        safeQuadrants: {
+          en: '${quad1} => ${quad2}',
+        },
+        safeHalfFirst: {
+          en: '${half} => ${quad}',
+        },
+        safeHalfSecond: {
+          en: '${quad} => ${half}',
+        },
+        safeHalves: {
+          en: '${half1} => ${half2}',
         },
       },
     },
