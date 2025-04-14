@@ -554,7 +554,6 @@ const triggerSet: TriggerSet<Data> = {
         if (matches.id === 'A3E0') {
           const counterclock = dirNum === 0 ? 6 : dirNum - 2;
           data.moonbeamBites.push(counterclock);
-
         }
         if (matches.id === 'A3E1') {
           const clockwise = (dirNum + 2) % 8;
