@@ -438,6 +438,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Terrestrial Rage Spread/Stack',
+      // For Shadowchase (A3BC), actors available roughly 2.9s after cast
+      // Only need one of the 5 actors to determine pattern
+      // Ids are sequential, starting 2 less than the boss
+      // Two patterns (in order of IDs):
+      // S, WSW, NW, NE, ESE
+      // N, ENE, SE, SW, WNW
+      // TODO: Add orientation call?
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.stack, headMarkerData.spread], capture: false },
       condition: (data) => data.phase === 'rage',
@@ -445,14 +452,14 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         if (data.hasSpread)
-          return data.isFirstRage ? output.spreadThenStack!() : output.spread!();
+          return data.isFirstRage ? output.spreadThenStack!() : output.spreadBehindClones!();
 
         if (data.stackOnPlayer === data.me)
           return data.isFirstRage
             ? output.stackThenSpread!({
               stack: output.stackOnYou!(),
             })
-            : output.stackOnYou!();
+            : output.stackOnYouBehindClones!();
 
         if (data.stackOnPlayer !== undefined) {
           const name = data.party.member(data.stackOnPlayer);
@@ -460,7 +467,7 @@ const triggerSet: TriggerSet<Data> = {
             ? output.stackThenSpread!({
               stack: output.stackOnPlayer!({ player: name }),
             })
-            : output.stackOnPlayer!({ player: name });
+            : output.stackOnPlayerBehindClones!({ player: name });
         }
       },
       run: (data) => {
@@ -473,52 +480,16 @@ const triggerSet: TriggerSet<Data> = {
         stackThenSpread: {
           en: '${stack} => Spread',
         },
-        spread: Outputs.spread,
-        stackOnPlayer: Outputs.stackOnPlayer,
-        stackOnYou: Outputs.stackOnYou,
-      },
-    },
-    {
-      id: 'R8S Shadowchase',
-      // Only need one of the 5 actors to determine pattern
-      // Ids are sequential, starting 2 less than the boss
-      // Two patterns (in order of IDs):
-      // S, WSW, NW, NE, ESE
-      // N, ENE, SE, SW, WNW
-      // TODO: Split the call for if have stack/spread
-      type: 'StartsUsing',
-      netRegex: { id: 'A3BC', source: 'Howling Blade', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) + 2.9,
-      promise: async (data, matches) => {
-        const actors = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [parseInt(matches.sourceId, 16) - 2],
-        })).combatants;
-        const actor = actors[0];
-        if (actors.length !== 1 || actor === undefined) {
-          console.error(
-            `R8S Shadowchase Direction: Wrong actor count ${actors.length}`,
-          );
-          return;
-        }
-
-        data.shadowchase = Directions.xyTo16DirNum(actor.PosX, actor.PosY, centerX, centerY);
-      },
-      infoText: (data, _matches, output) => {
-        if (data.shadowchase === 0)
-          return output.orientN!();
-        if (data.shadowchase === 8)
-          return output.orientNE!();
-      },
-      run: (data) => {
-        data.shadowchase = undefined;
-      },
-      outputStrings: {
-        orientN: {
-          en: 'Orient N, Behind Clone',
+        spreadBehindClones: {
+          en: 'Spread (Behind Clones)',
         },
-        orientNE: {
-          en: 'Orient NE, Behind Clone',
+        stackOnPlayer: Outputs.stackOnPlayer,
+        stackOnPlayerBehindClones: {
+          en: 'Stack on ${player} (Behind Clones)',
+        },
+        stackOnYou: Outputs.stackOnYou,
+        stackOnYouBehindClones: {
+          en: 'Stack on YOU (Behind Clones)',
         },
       },
     },
