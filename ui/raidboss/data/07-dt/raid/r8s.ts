@@ -23,7 +23,6 @@ export interface Data extends RaidbossData {
   isFirstRage: boolean;
   hasSpread?: boolean;
   stackOnPlayer?: string;
-  shadowchase?: number;
   moonbeamBites: number[];
   // Phase 2
 }
@@ -563,6 +562,7 @@ const triggerSet: TriggerSet<Data> = {
       // A3E0 => Right cleave self-cast
       // A3E1 => Left cleave self-cast
       netRegex: { id: ['A3E0', 'A3E1'], source: 'Moonlit Shadow', capture: true },
+      delaySeconds: 0.1,
       durationSeconds: 10,
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
@@ -590,7 +590,6 @@ const triggerSet: TriggerSet<Data> = {
           data.moonbeamBites.push(clockwise);
         }
       },
-      delaySeconds: 0.1,
       infoText: (data, matches, output) => {
         if (data.moonbeamBites.length !== 4)
           return;
@@ -654,7 +653,7 @@ const triggerSet: TriggerSet<Data> = {
           if (safeQuads1[1] === undefined || safeQuads2[1] === undefined) {
             console.error(
               `R8S Beckon Moonlight Quadrants: Second safeQuads missing.`,
-            ); 
+            );
             return;
           }
           const dirNum1 = intersToCard(safeQuads1[0], safeQuads1[1]);
