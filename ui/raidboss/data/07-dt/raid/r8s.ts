@@ -185,16 +185,16 @@ const triggerSet: TriggerSet<Data> = {
         switch (matches.id) {
           case eminentReign1:
           case eminentReign2:
-            data.reignDir = (Directions.hdgTo8DirNum(actor.Heading) + 4) % 8;
+            data.reignDir = (Directions.hdgTo16DirNum(actor.Heading) + 8) % 16;
             break;
           case revolutionaryReign1:
           case revolutionaryReign2:
-            data.reignDir = Directions.hdgTo8DirNum(actor.Heading);
+            data.reignDir = Directions.hdgTo16DirNum(actor.Heading);
             break;
         }
       },
       infoText: (data, matches, output) => {
-        const dir = output[Directions.outputFrom8DirNum(data.reignDir ?? -1)]!();
+        const dir = output[Directions.output16Dir[data.reignDir ?? -1] ?? 'unknown']!();
         switch (matches.id) {
           case eminentReign1:
           case eminentReign2:
@@ -208,7 +208,7 @@ const triggerSet: TriggerSet<Data> = {
         data.reignDir = undefined;
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
+        ...Directions.outputStrings16Dir,
         inDir: {
           en: 'In ${dir}',
         },
