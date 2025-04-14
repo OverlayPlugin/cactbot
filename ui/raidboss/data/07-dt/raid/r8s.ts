@@ -562,7 +562,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       // A3E0 => Right cleave self-cast
       // A3E1 => Left cleave self-cast
-      netRegex: { id: [ 'A3E0', 'A3E1' ], source: 'Moonlit Shadow', capture: true },
+      netRegex: { id: ['A3E0', 'A3E1'], source: 'Moonlit Shadow', capture: true },
       durationSeconds: 10,
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
@@ -648,7 +648,7 @@ const triggerSet: TriggerSet<Data> = {
           // Southwest and Northwest
           if (dirNum1 === 5 && dirNum2 === 7 || dirNum1 === 7 && dirNum2 === 5)
             return 6;
-        }
+        };
 
         if (safeQuads1.length === 2 && safeQuads2.length === 2) {
           if (safeQuads1[1] === undefined || safeQuads2[1] === undefined) {
@@ -661,7 +661,7 @@ const triggerSet: TriggerSet<Data> = {
           const dirNum2 = intersToCard(safeQuads2[0], safeQuads2[1]);
           const half1 = output[Directions.outputFrom8DirNum(dirNum1 ?? -1)]!();
           const half2 = output[Directions.outputFrom8DirNum(dirNum2 ?? -1)]!();
-          return output.safeHalves!({ half1: half1, half2: half2});
+          return output.safeHalves!({ half1: half1, half2: half2 });
         }
         if (safeQuads1.length === 2) {
           if (safeQuads1[1] === undefined) {
