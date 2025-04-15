@@ -104,7 +104,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'A82D', source: 'Howling Blade' },
       suppressSeconds: 1,
-      run: (data, matches) => data.phase = 'two',
+      run: (data) => data.phase = 'two',
     },
     {
       id: 'R8S Extraplanar Pursuit',
