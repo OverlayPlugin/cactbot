@@ -180,6 +180,15 @@ const triggerSet: TriggerSet<Data> = {
       // Note: this headmarker *could* be skipped, so we will change this later.
       run: (data) => data.firstUnknownHeadmarker = headmarker.mercifulArc,
     },
+    // https://xivapi.com/LogMessage/916
+    // en: 7 minutes have elapsed since your last activity. [...]
+    // There is no network packet for these log lines; so have to use GameLog.
+    {
+      id: 'DelubrumSav Falling Asleep',
+      type: 'GameLog',
+      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
+      response: Responses.wakeUp(),
+    },
     {
       id: 'DelubrumSav Seeker Verdant Tempest',
       type: 'StartsUsing',
