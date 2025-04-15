@@ -527,7 +527,7 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-     {
+    {
       id: 'R8S Beckon Moonlight Quadrants',
       type: 'Ability',
       // A3E0 => Right cleave self-cast
