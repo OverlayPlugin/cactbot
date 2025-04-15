@@ -25,7 +25,7 @@ export interface Data extends RaidbossData {
   stackOnPlayer?: string;
   moonbeamBites: number[];
   // Phase 2
-  mooncleaverTargets: string[];
+  purgeTargets: string[];
 }
 
 const centerX = 100;
@@ -44,7 +44,8 @@ const phaseMap: { [id: string]: Phase } = {
 const headMarkerData = {
   // Shared tankbuster marker
   'tankbuster': '0256',
-  // Adds red headmarker showing you will be targeted by Predation or Mooncleaver
+  // Adds red headmarker showing you will be targeted by Pack Predation
+  // Also used for Elemental Purge in Phase 2
   'predation': '0017',
   // Stony tether from Wolf of Stone
   'stoneTether': '014F',
@@ -85,7 +86,7 @@ const triggerSet: TriggerSet<Data> = {
     isFirstRage: true,
     moonbeamBites: [],
     // Phase 2
-    mooncleaverTargets: [],
+    purgeTargets: [],
   }),
   triggers: [
     {
@@ -790,29 +791,30 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // headmarkers with casts:
-      // A465 (Mooncleaver) 3.7s cast
-      // A466 (Mooncleaver) 4.7s cast
-      id: 'R8S Mooncleaver Targets',
+      // A467 (Elemental Purge)
+      // A468 (Aerotemporal Blast) on one random non-tank
+      // A469 (Geotemporal Blast) on one Tank
+      id: 'R8S Elemental Purge Targets',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.predation },
       condition: (data) => data.phase === 'two',
       infoText: (data, matches, output) => {
-        data.mooncleaverTargets.push(matches.target);
-        if (data.mooncleaverTargets.length < 2)
+        data.purgeTargets.push(matches.target);
+        if (data.purgeTargets.length < 2)
           return;
 
-        const name1 = data.party.member(data.mooncleaverTargets[0]);
-        const name2 = data.party.member(data.mooncleaverTargets[1]);
+        const name1 = data.party.member(data.purgeTargets[0]);
+        const name2 = data.party.member(data.purgeTargets[1]);
 
-        return output.mooncleaverOnPlayers!({ player1: name1, player2: name2 });
+        return output.purgeOnPlayers!({ player1: name1, player2: name2 });
       },
       run: (data) => {
-        if (data.mooncleaverTargets.length >= 2)
-          data.mooncleaverTargets = [];
+        if (data.purgeTargets.length >= 2)
+          data.purgeTargets = [];
       },
       outputStrings: {
-        mooncleaverOnPlayers: {
-          en: 'Mooncleaver on ${player1} and ${player2}',
+        purgeOnPlayers: {
+          en: 'Elemental Purge on ${player1} and ${player2}',
         },
       },
     },
