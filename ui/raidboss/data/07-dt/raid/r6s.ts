@@ -127,14 +127,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidCleave: {
           en: 'Be on boss hitbox (avoid tank cleaves)',
+          ja: 'ボスの足元へ（タンク攻撃を避ける）',
           ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
         },
         warmCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Red)',
+          ja: 'タンク攻撃 (${dir} => 赤に当たる)',
           ko: '광역 탱버 대상자 (${dir} => 빨간색 맞기)',
         },
         coolCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Blue)',
+          ja: 'タンク攻撃 (${dir} => 青に当たる)',
           ko: '광역 탱버 대상자 (${dir} => 파란색 맞기)',
         },
         tankCleave: Outputs.tankCleaveOnYou,
@@ -157,6 +160,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stored ${mech} for later',
           de: '${mech} gespeichert für später',
           fr: '${mech} sauvegardé pour après',
+          ja: 'あとで ${mech}',
           cn: '稍后 ${mech}',
           ko: '나중에 ${mech}',
         },
@@ -269,6 +273,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Start ${dir1}, launch towards ${dir2}',
           de: 'Start ${dir1}, Rückstoß nach ${dir2}',
           fr: 'Commencez ${dir1}, lancez vers ${dir2}',
+          ja: '${dir1} から ${dir2} に飛ぶ',
           cn: '从 ${dir1} 飞向 ${dir2}',
           ko: '${dir1}에서 ${dir2}으로 발사되기',
         },
@@ -283,6 +288,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         defamationLater: {
           en: 'Defamation on YOU (for later)',
+          ja: 'あとで巨大な爆発',
           ko: '광역징 대상자 (나중에)',
         },
       },
@@ -313,10 +319,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bomb: {
           en: 'Drop bomb in quicksand',
+          ja: '爆弾を流砂に捨てる',
           ko: '늪에 폭탄 놓기',
         },
         wingedBomb: {
           en: 'Aim bomb towards quicksand',
+          ja: '爆弾を流砂に向ける',
           ko: '늪 쪽을 향해 폭탄 놓기',
         },
       },
@@ -330,6 +338,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Jabberwock on YOU',
+          ja: 'ジャバウォック処理',
           ko: '재버워크 대상자',
         },
       },
@@ -348,6 +357,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid arrow lines',
+          ja: '矢印線を避ける',
           ko: '화살 직선 장판 피하기',
         },
       },
@@ -362,9 +372,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         fire: {
           en: 'Healer groups in water, avoid arrow lines',
+          ja: 'ヒラ組で水へ、矢印線を避ける',
         },
         thunder: {
           en: 'Spread out of water, avoid arrow lines',
+          ja: '水を避けて散開、矢印線を避ける',
         },
       },
     },
@@ -394,10 +406,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackOnYou: {
           en: 'Stack on YOU x5',
+          ja: '5回連続頭割り',
           ko: '쉐어 x5 대상자',
         },
         stackOn: {
           en: 'Stack on ${target} x5',
+          ja: '${target} に 5回 連続頭割り',
           ko: '쉐어 x5 ${target}',
         },
       },
