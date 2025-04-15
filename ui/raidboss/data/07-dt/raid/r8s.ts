@@ -785,7 +785,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R8S Twinbite',
       type: 'StartsUsing',
-      netRegex: { id: 'A4CD', source: 'Howling Blade', capture: false },
+      netRegex: { id: 'A4CD', source: 'Howling Blade', capture: true },
       response: Responses.tankBuster(),
     },
     {
