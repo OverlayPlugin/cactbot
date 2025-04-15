@@ -8,7 +8,7 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-type Phase = 'one' | 'adds' | 'rage' | 'moonlight';
+type Phase = 'one' | 'adds' | 'rage' | 'moonlight' | 'two';
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -97,6 +97,14 @@ const triggerSet: TriggerSet<Data> = {
         data.phase = phase;
         data.isFirstRage = true;
       },
+    },
+    {
+      id: 'R8S Phase Two Tracker',
+      // unknown_a82d, causes Down for the Count (968)
+      type: 'Ability',
+      netRegex: { id: 'A82D', source: 'Howling Blade' },
+      suppressSeconds: 1,
+      run: (data, matches) => data.phase = 'two',
     },
     {
       id: 'R8S Extraplanar Pursuit',
