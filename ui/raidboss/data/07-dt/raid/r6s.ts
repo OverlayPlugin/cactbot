@@ -127,12 +127,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidCleave: {
           en: 'Be on boss hitbox (avoid tank cleaves)',
+          ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
         },
         warmCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Red)',
+          ko: '광역 탱버 대상자 (${dir} => 빨간색 맞기)',
         },
         coolCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Blue)',
+          ko: '광역 탱버 대상자 (${dir} => 파란색 맞기)',
         },
         tankCleave: Outputs.tankCleaveOnYou,
         in: Outputs.in,
@@ -180,9 +183,10 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => data.lastDoubleStyle = doubleStyleMap[matches.id],
     },
     {
+      // tether source is from the actor to the boss
       id: 'R6S Double Style Tether Tracker',
       type: 'Tether',
-      netRegex: { targetId: '4[0-9A-Fa-f]{7}', id: ['013F', '0140'], capture: true },
+      netRegex: { sourceId: '4[0-9A-Fa-f]{7}', id: ['013F', '0140'], capture: true },
       condition: (data) => data.lastDoubleStyle !== undefined,
       preRun: (data, matches) => data.tetherTracker[matches.sourceId] = matches,
       infoText: (data, _matches, output) => {
@@ -208,13 +212,18 @@ const triggerSet: TriggerSet<Data> = {
           'unknown': 'unknown',
         } as const;
 
+        // clean-up so we don't trigger on other tether mechanics
+        delete data.lastDoubleStyle;
+
         const tethers = Object.entries(data.tetherTracker);
         data.tetherTracker = {};
 
         for (const [id, tether] of tethers) {
           const actorSetPosData = data.actorSetPosTracker[id];
-          if (actorSetPosData === undefined)
+          if (actorSetPosData === undefined) {
+            console.log(`R6S Double Style Tether Tracker - Missing actor position data!`);
             return;
+          }
 
           const actorType = doubleStyle[tether.id === '013F' ? 'red' : 'blue'];
           const x = parseFloat(actorSetPosData.x);
@@ -243,7 +252,7 @@ const triggerSet: TriggerSet<Data> = {
         const [dir] = safeDirs;
 
         if (safeDirs.length !== 1 || dir === undefined) {
-          console.log(`R6S Double Style Tether Tracker - Invalid data!`);
+          console.log(`R6S Double Style Tether Tracker - Missing direction data!`);
           return;
         }
 
@@ -274,6 +283,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         defamationLater: {
           en: 'Defamation on YOU (for later)',
+          ko: '광역징 대상자 (나중에)',
         },
       },
     },
@@ -303,9 +313,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bomb: {
           en: 'Drop bomb in quicksand',
+          ko: '늪에 폭탄 놓기',
         },
         wingedBomb: {
           en: 'Aim bomb towards quicksand',
+          ko: '늪 쪽을 향해 폭탄 놓기',
         },
       },
     },
@@ -318,6 +330,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Jabberwock on YOU',
+          ko: '재버워크 대상자',
         },
       },
     },
@@ -335,6 +348,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid arrow lines',
+          ko: '화살 직선 장판 피하기',
         },
       },
     },
@@ -343,11 +357,15 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['A687', 'A689'], source: 'Sugar Riot', capture: true },
       suppressSeconds: 1,
-      infoText: (_data, matches, output) =>
+      alertText: (_data, matches, output) =>
         matches.id === 'A687' ? output.fire!() : output.thunder!(),
       outputStrings: {
-        fire: Outputs.healerGroups,
-        thunder: Outputs.spread,
+        fire: {
+          en: 'Healer groups in water, avoid arrow lines',
+        },
+        thunder: {
+          en: 'Spread out of water, avoid arrow lines',
+        },
       },
     },
     {
@@ -376,9 +394,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackOnYou: {
           en: 'Stack on YOU x5',
+          ko: '쉐어 x5 대상자',
         },
         stackOn: {
           en: 'Stack on ${target} x5',
+          ko: '쉐어 x5 ${target}',
         },
       },
     },
