@@ -247,6 +247,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'P2 Diamond Dust / Sinbound Holy',
         de: 'P2 Diamantenstaub / Sünden-Sanctus',
         cn: 'P2 钻石星尘 / 罪神圣',
+        ko: 'P2 다이아몬드 더스트 / 죄의 홀리',
       },
       type: 'select',
       options: {
@@ -291,6 +292,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'P3 Ultimate Relativity',
         de: 'P3 Fatale Relativität',
         cn: 'P3 时间压缩·绝',
+        ko: 'P3 시간 압축: 절',
       },
       type: 'select',
       options: {
@@ -366,6 +368,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'P4 Darklit Dragonsong',
         de: 'P4 Drachenlied Von Licht Und Schatten',
         cn: 'P4 光与暗的龙诗',
+        ko: 'P4 빛과 어둠의 용시',
       },
       type: 'select',
       options: {
@@ -402,6 +405,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'P4 Crystallize Time',
         de: 'P4 Chronokristall',
         cn: 'P4 时间结晶',
+        ko: 'P4 시간의 결정체',
       },
       type: 'select',
       options: {
