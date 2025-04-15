@@ -527,7 +527,7 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-    {
+     {
       id: 'R8S Beckon Moonlight Quadrants',
       type: 'Ability',
       // A3E0 => Right cleave self-cast
@@ -560,16 +560,29 @@ const triggerSet: TriggerSet<Data> = {
           data.moonbeamBites.push(clockwise);
         }
       },
-      infoText: (data, _matches, output) => {
-        if (data.moonbeamBites.length !== 4)
+      infoText: (data, matches, output) => {
+        if (data.moonbeamBites.length === 1 || data.moonbeamBites.length === 3)
           return;
+
+        const quadrants = [1, 3, 5, 7];
+        // When there are multiple safe spots, output cardinal
+        const intersToCard = (dirNum1: number, dirNum2: number) => {
+          // Northeast and Northwest
+          if (dirNum1 === 1 && dirNum2 === 7 || dirNum2 === 7 && dirNum1 === 1)
+            return 0;
+          // Northeast and Southeast
+          if (dirNum1 === 1 && dirNum2 === 3 || dirNum1 === 3 && dirNum2 === 1)
+            return 2;
+          // Southeast and Southwest
+          if (dirNum1 === 3 && dirNum2 === 5 || dirNum1 === 5 && dirNum2 === 3)
+            return 4;
+          // Southwest and Northwest
+          if (dirNum1 === 5 && dirNum2 === 7 || dirNum1 === 7 && dirNum2 === 5)
+            return 6;
+        };
 
         const moonbeam1 = data.moonbeamBites[0] ?? -1;
         const moonbeam2 = data.moonbeamBites[1] ?? -1;
-        const moonbeam3 = data.moonbeamBites[2] ?? -1;
-        const moonbeam4 = data.moonbeamBites[3] ?? -1;
-
-        const quadrants = [1, 3, 5, 7];
         let safeQuads1 = quadrants.filter((quadrant) => {
           return quadrant !== moonbeam1 + 1;
         });
@@ -583,6 +596,31 @@ const triggerSet: TriggerSet<Data> = {
           return quadrant !== moonbeam2 - 1;
         });
 
+       // Early output for first two
+       if (data.moonbeamBites.length === 2) {
+         if (safeQuads1.length === 2) {
+           if (safeQuads1[0] === undefined || safeQuads1[1] === undefined) {
+            console.error(
+              `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
+            );
+            return;
+           }
+           const dirNum = intersToCard(safeQuads1[0], safeQuads1[1]);
+           const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
+           return output.safeHalf!({ half: half });
+         }
+         if (safeQuads1.length === 1) {
+           const quad = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
+           return output.safeQuad!({ quad: quad });
+         }
+         console.error(
+           `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
+         );
+         return;
+       }
+
+        const moonbeam3 = data.moonbeamBites[2] ?? -1;
+        const moonbeam4 = data.moonbeamBites[3] ?? -1;
         let safeQuads2 = quadrants.filter((quadrant) => {
           return quadrant !== moonbeam3 + 1;
         });
@@ -602,22 +640,6 @@ const triggerSet: TriggerSet<Data> = {
           );
           return;
         }
-
-        // When there are multiple safe spots, output cardinal
-        const intersToCard = (dirNum1: number, dirNum2: number) => {
-          // Northeast and Northwest
-          if (dirNum1 === 1 && dirNum2 === 7 || dirNum2 === 7 && dirNum1 === 1)
-            return 0;
-          // Northeast and Southeast
-          if (dirNum1 === 1 && dirNum2 === 3 || dirNum1 === 3 && dirNum2 === 1)
-            return 2;
-          // Southeast and Southwest
-          if (dirNum1 === 3 && dirNum2 === 5 || dirNum1 === 5 && dirNum2 === 3)
-            return 4;
-          // Southwest and Northwest
-          if (dirNum1 === 5 && dirNum2 === 7 || dirNum1 === 7 && dirNum2 === 5)
-            return 6;
-        };
 
         if (safeQuads1.length === 2 && safeQuads2.length === 2) {
           if (safeQuads1[1] === undefined || safeQuads2[1] === undefined) {
@@ -663,8 +685,14 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
+        safeQuad: {
+          en: '${quad}',
+        },
         safeQuadrants: {
           en: '${quad1} => ${quad2}',
+        },
+        safeHalf: {
+          en: '${half}',
         },
         safeHalfFirst: {
           en: '${half} => ${quad}',
