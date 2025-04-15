@@ -102,7 +102,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R8S Phase Two Tracker',
       // unknown_a82d, causes Down for the Count (968)
       type: 'Ability',
-      netRegex: { id: 'A82D', source: 'Howling Blade' },
+      netRegex: { id: 'A82D', source: 'Howling Blade', capture: false },
       suppressSeconds: 1,
       run: (data) => data.phase = 'two',
     },
