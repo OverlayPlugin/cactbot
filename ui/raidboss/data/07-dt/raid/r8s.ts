@@ -663,7 +663,7 @@ const triggerSet: TriggerSet<Data> = {
           }
           const dirNum = intersToCard(safeQuads1[0], safeQuads1[1]);
           const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
-          const quad = output[Directions.outputFrom8DirNum(safeQuads2[1] ?? -1)]!();
+          const quad = output[Directions.outputFrom8DirNum(safeQuads2[0] ?? -1)]!();
           return output.safeHalfFirst!({ half: half, quad: quad });
         }
         if (safeQuads2.length === 2) {
