@@ -596,28 +596,28 @@ const triggerSet: TriggerSet<Data> = {
           return quadrant !== moonbeam2 - 1;
         });
 
-       // Early output for first two
-       if (data.moonbeamBites.length === 2) {
-         if (safeQuads1.length === 2) {
-           if (safeQuads1[0] === undefined || safeQuads1[1] === undefined) {
-            console.error(
-              `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
-            );
-            return;
-           }
-           const dirNum = intersToCard(safeQuads1[0], safeQuads1[1]);
-           const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
-           return output.safeHalf!({ half: half });
-         }
-         if (safeQuads1.length === 1) {
-           const quad = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
-           return output.safeQuad!({ quad: quad });
-         }
-         console.error(
-           `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
-         );
-         return;
-       }
+        // Early output for first two
+        if (data.moonbeamBites.length === 2) {
+          if (safeQuads1.length === 2) {
+            if (safeQuads1[0] === undefined || safeQuads1[1] === undefined) {
+              console.error(
+                `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
+              );
+              return;
+            }
+            const dirNum = intersToCard(safeQuads1[0], safeQuads1[1]);
+            const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
+            return output.safeHalf!({ half: half });
+          }
+          if (safeQuads1.length === 1) {
+            const quad = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
+            return output.safeQuad!({ quad: quad });
+          }
+          console.error(
+            `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
+          );
+          return;
+        }
 
         const moonbeam3 = data.moonbeamBites[2] ?? -1;
         const moonbeam4 = data.moonbeamBites[3] ?? -1;
