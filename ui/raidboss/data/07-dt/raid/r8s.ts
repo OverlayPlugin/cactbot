@@ -560,7 +560,7 @@ const triggerSet: TriggerSet<Data> = {
           data.moonbeamBites.push(clockwise);
         }
       },
-      infoText: (data, matches, output) => {
+      infoText: (data, _matches, output) => {
         if (data.moonbeamBites.length === 1 || data.moonbeamBites.length === 3)
           return;
 
