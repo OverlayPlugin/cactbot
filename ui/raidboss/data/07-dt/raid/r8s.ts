@@ -25,6 +25,7 @@ export interface Data extends RaidbossData {
   stackOnPlayer?: string;
   moonbeamBites: number[];
   // Phase 2
+  mooncleaverTargets: string[];
 }
 
 const centerX = 100;
@@ -43,7 +44,7 @@ const phaseMap: { [id: string]: Phase } = {
 const headMarkerData = {
   // Shared tankbuster marker
   'tankbuster': '0256',
-  // Adds red headmarker showing you will be targeted by Predation
+  // Adds red headmarker showing you will be targeted by Predation or Mooncleaver
   'predation': '0017',
   // Stony tether from Wolf of Stone
   'stoneTether': '014F',
@@ -76,12 +77,15 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r8s.txt',
   initData: () => ({
     phase: 'one',
+    // Phase 1
     decayAddCount: 0,
     packPredationTracker: 0,
     packPredationTargets: [],
     surgeTracker: 0,
     isFirstRage: true,
     moonbeamBites: [],
+    // Phase 2
+    mooncleaverTargets: [],
   }),
   triggers: [
     {
@@ -324,8 +328,8 @@ const triggerSet: TriggerSet<Data> = {
         // cactbot-builtin-response
         output.responseOutputStrings = stoneWindOutputStrings;
 
-        // 1127 = Stone (Yellow Cube) Debuff
-        // 1128 = Wind (Green Sphere) Debuff
+        // 1127 = Earthborne End (Yellow Cube) Debuff
+        // 1128 = Windborne End (Green Sphere) Debuff
         const cubeDebuffId = '1127';
         data.stoneWindDebuff = matches.effectId === cubeDebuffId ? 'stone' : 'wind';
 
@@ -355,6 +359,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R8S Pack Predation',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.predation },
+      condition: (data) => data.phase === 'adds',
       infoText: (data, matches, output) => {
         data.packPredationTargets.push(matches.target);
         if (data.packPredationTargets.length < 2)
@@ -766,6 +771,49 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         cardinals: Outputs.cardinals,
+      },
+    },
+    // Phase 2
+    // TODO: Timeline based callout for light parties for Quake III
+    // TODO: Timeline base callout for mooncleaver bait
+    {
+      id: 'R8S Quake III',
+      type: 'StartsUsing',
+      netRegex: { id: 'A45A', source: 'Howling Blade', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'R8S Twinbite',
+      type: 'StartsUsing',
+      netRegex: { id: 'A4CD', source: 'Howling Blade', capture: false },
+      response: Responses.tankBuster(),
+    },
+    {
+      // headmarkers with casts:
+      // A465 (Mooncleaver) 3.7s cast
+      // A466 (Mooncleaver) 4.7s cast
+      id: 'R8S Mooncleaver Targets',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.predation },
+      condition: (data) => data.phase === 'two',
+      infoText: (data, matches, output) => {
+        data.mooncleaverTargets.push(matches.target);
+        if (data.mooncleaverTargets.length < 2)
+          return;
+
+        const name1 = data.party.member(data.mooncleaverTargets[0]);
+        const name2 = data.party.member(data.mooncleaverTargets[1]);
+
+        return output.mooncleaverOnPlayers!({ player1: name1, player2: name2 });
+      },
+      run: (data) => {
+        if (data.mooncleaverTargets.length >= 2)
+          data.mooncleaverTargets = [];
+      },
+      outputStrings: {
+        mooncleaverOnPlayers: {
+          en: 'Mooncleaver on ${player1} and ${player2}',
+        },
       },
     },
   ],
