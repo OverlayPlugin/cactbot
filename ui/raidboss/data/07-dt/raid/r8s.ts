@@ -24,6 +24,8 @@ export interface Data extends RaidbossData {
   hasSpread?: boolean;
   stackOnPlayer?: string;
   moonbeamBites: number[];
+  moonbeamBitesTracker: number;
+  moonlightQuadrant2?: string;
   // Phase 2
   purgeTargets: string[];
 }
@@ -72,6 +74,16 @@ const stoneWindOutputStrings = {
   unknown: Outputs.unknown,
 };
 
+const moonlightOutputStrings = {
+  ...Directions.outputStrings8Dir,
+  safeQuad: {
+    en: '${quad}',
+  },
+  safeQuadrants: {
+    en: '${quad1} => ${quad2}',
+  },
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM4Savage',
   zoneId: ZoneId.AacCruiserweightM4Savage,
@@ -85,6 +97,7 @@ const triggerSet: TriggerSet<Data> = {
     surgeTracker: 0,
     isFirstRage: true,
     moonbeamBites: [],
+    moonbeamBitesTracker: 0,
     // Phase 2
     purgeTargets: [],
   }),
@@ -640,19 +653,13 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
+        // Store quadrant for move call
+        data.moonlightQuadrant2 = output[Directions.outputFrom8DirNum(safeQuads2[0] ?? -1)]!();
+
         const quad1 = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
-        const quad2 = output[Directions.outputFrom8DirNum(safeQuads2[0] ?? -1)]!();
-        return output.safeQuadrants!({ quad1: quad1, quad2: quad2 });
+        return output.safeQuadrants!({ quad1: quad1, quad2: data.moonlightQuadrant2 });
       },
-      outputStrings: {
-        ...Directions.outputStrings8Dir,
-        safeQuad: {
-          en: '${quad}',
-        },
-        safeQuadrants: {
-          en: '${quad1} => ${quad2}',
-        },
-      },
+      outputStrings: moonlightOutputStrings,
     },
     {
       id: 'R8S Beckon Moonlight Spread/Stack',
@@ -695,6 +702,22 @@ const triggerSet: TriggerSet<Data> = {
         stackOnPlayer: Outputs.stackOnPlayer,
         stackOnYou: Outputs.stackOnYou,
       },
+    },
+    {
+      id: 'R8S Beckon Moonlight Quadrant Two',
+      type: 'StartsUsing',
+      // A3C2 => Moonbeam's Bite dash with Left cleave
+      // A3C3 => Moonbeam's Bite dash with Right cleave
+      netRegex: { id: ['A3C2', 'A3C3'], source: 'Moonlit Shadow', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      infoText: (data, _matches, output) => {
+        data.moonbeamBitesTracker = data.moonbeamBitesTracker + 1;
+        if (data.moonbeamBitesTracker !== 2) {
+          return;
+        }
+        return output.safeQuad!({ quad: data.moonlightQuadrant2 });
+      },
+      outputStrings: moonlightOutputStrings,
     },
     {
       id: 'R8S Weal of Stone Cardinals',
