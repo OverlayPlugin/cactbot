@@ -585,13 +585,13 @@ const triggerSet: TriggerSet<Data> = {
           return quadrant !== moonbeam1 + 1;
         });
         safeQuads1 = safeQuads1.filter((quadrant) => {
-          return quadrant !== (moonbeam1 === 0 ? 7: moonbeam1 - 1);;
+          return quadrant !== (moonbeam1 === 0 ? 7 : moonbeam1 - 1);
         });
         safeQuads1 = safeQuads1.filter((quadrant) => {
           return quadrant !== moonbeam2 + 1;
         });
         safeQuads1 = safeQuads1.filter((quadrant) => {
-          return quadrant !== (moonbeam2 === 0 ? 7: moonbeam2 - 1);;
+          return quadrant !== (moonbeam2 === 0 ? 7 : moonbeam2 - 1);
         });
 
         // Early output for first two
@@ -612,13 +612,13 @@ const triggerSet: TriggerSet<Data> = {
           return quadrant !== moonbeam3 + 1;
         });
         safeQuads2 = safeQuads2.filter((quadrant) => {
-          return quadrant !== (moonbeam3 === 0 ? 7: moonbeam3 - 1);
+          return quadrant !== (moonbeam3 === 0 ? 7 : moonbeam3 - 1);
         });
         safeQuads2 = safeQuads2.filter((quadrant) => {
           return quadrant !== moonbeam4 + 1;
         });
         safeQuads2 = safeQuads2.filter((quadrant) => {
-          return quadrant !== (moonbeam4 === 0 ? 7: moonbeam4 - 1);
+          return quadrant !== (moonbeam4 === 0 ? 7 : moonbeam4 - 1);
         });
 
         if (safeQuads1[0] === undefined || safeQuads2[0] === undefined) {
