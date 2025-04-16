@@ -579,58 +579,31 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         const quadrants = [1, 3, 5, 7];
-        // When there are multiple safe spots, output cardinal
-        const intersToCard = (dirNum1: number, dirNum2: number) => {
-          // Northeast and Northwest
-          if (dirNum1 === 1 && dirNum2 === 7 || dirNum2 === 7 && dirNum1 === 1)
-            return 0;
-          // Northeast and Southeast
-          if (dirNum1 === 1 && dirNum2 === 3 || dirNum1 === 3 && dirNum2 === 1)
-            return 2;
-          // Southeast and Southwest
-          if (dirNum1 === 3 && dirNum2 === 5 || dirNum1 === 5 && dirNum2 === 3)
-            return 4;
-          // Southwest and Northwest
-          if (dirNum1 === 5 && dirNum2 === 7 || dirNum1 === 7 && dirNum2 === 5)
-            return 6;
-        };
-
         const moonbeam1 = data.moonbeamBites[0] ?? -1;
         const moonbeam2 = data.moonbeamBites[1] ?? -1;
         let safeQuads1 = quadrants.filter((quadrant) => {
           return quadrant !== moonbeam1 + 1;
         });
         safeQuads1 = safeQuads1.filter((quadrant) => {
-          return quadrant !== moonbeam1 - 1;
+          return quadrant !== (moonbeam1 === 0 ? 7: moonbeam1 - 1);;
         });
         safeQuads1 = safeQuads1.filter((quadrant) => {
           return quadrant !== moonbeam2 + 1;
         });
         safeQuads1 = safeQuads1.filter((quadrant) => {
-          return quadrant !== moonbeam2 - 1;
+          return quadrant !== (moonbeam2 === 0 ? 7: moonbeam2 - 1);;
         });
 
         // Early output for first two
         if (data.moonbeamBites.length === 2) {
-          if (safeQuads1.length === 2) {
-            if (safeQuads1[0] === undefined || safeQuads1[1] === undefined) {
-              console.error(
-                `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
-              );
-              return;
-            }
-            const dirNum = intersToCard(safeQuads1[0], safeQuads1[1]);
-            const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
-            return output.safeHalf!({ half: half });
+          if (safeQuads1.length !== 1 || safeQuads1[0] === undefined) {
+            console.error(
+              `R8S Beckon Moonlight Quadrants: Invalid safeQuads1, length of ${safeQuads1.length}.`,
+            );
+            return;
           }
-          if (safeQuads1.length === 1) {
-            const quad = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
-            return output.safeQuad!({ quad: quad });
-          }
-          console.error(
-            `R8S Beckon Moonlight Quadrants: Early safeQuad missing.`,
-          );
-          return;
+          const quad = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
+          return output.safeQuad!({ quad: quad });
         }
 
         const moonbeam3 = data.moonbeamBites[2] ?? -1;
@@ -639,13 +612,13 @@ const triggerSet: TriggerSet<Data> = {
           return quadrant !== moonbeam3 + 1;
         });
         safeQuads2 = safeQuads2.filter((quadrant) => {
-          return quadrant !== moonbeam3 - 1;
+          return quadrant !== (moonbeam3 === 0 ? 7: moonbeam3 - 1);
         });
         safeQuads2 = safeQuads2.filter((quadrant) => {
           return quadrant !== moonbeam4 + 1;
         });
         safeQuads2 = safeQuads2.filter((quadrant) => {
-          return quadrant !== moonbeam4 - 1;
+          return quadrant !== (moonbeam4 === 0 ? 7: moonbeam4 - 1);
         });
 
         if (safeQuads1[0] === undefined || safeQuads2[0] === undefined) {
@@ -654,43 +627,17 @@ const triggerSet: TriggerSet<Data> = {
           );
           return;
         }
-
-        if (safeQuads1.length === 2 && safeQuads2.length === 2) {
-          if (safeQuads1[1] === undefined || safeQuads2[1] === undefined) {
-            console.error(
-              `R8S Beckon Moonlight Quadrants: Second safeQuads missing.`,
-            );
-            return;
-          }
-          const dirNum1 = intersToCard(safeQuads1[0], safeQuads1[1]);
-          const dirNum2 = intersToCard(safeQuads2[0], safeQuads2[1]);
-          const half1 = output[Directions.outputFrom8DirNum(dirNum1 ?? -1)]!();
-          const half2 = output[Directions.outputFrom8DirNum(dirNum2 ?? -1)]!();
-          return output.safeHalves!({ half1: half1, half2: half2 });
+        if (safeQuads1.length !== 1) {
+          console.error(
+            `R8S Beckon Moonlight Quadrants: Invalid safeQuads1, length of ${safeQuads1.length}`,
+          );
+          return;
         }
-        if (safeQuads1.length === 2) {
-          if (safeQuads1[1] === undefined) {
-            console.error(
-              `R8S Beckon Moonlight Quadrants: First safeQuad missing.`,
-            );
-            return;
-          }
-          const dirNum = intersToCard(safeQuads1[0], safeQuads1[1]);
-          const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
-          const quad = output[Directions.outputFrom8DirNum(safeQuads2[0] ?? -1)]!();
-          return output.safeHalfFirst!({ half: half, quad: quad });
-        }
-        if (safeQuads2.length === 2) {
-          if (safeQuads2[1] === undefined) {
-            console.error(
-              `R8S Beckon Moonlight Quadrants: Second safeQuad missing.`,
-            );
-            return;
-          }
-          const dirNum = intersToCard(safeQuads2[0], safeQuads2[1]);
-          const quad = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
-          const half = output[Directions.outputFrom8DirNum(dirNum ?? -1)]!();
-          return output.safeHalfSecond!({ quad: quad, half: half });
+        if (safeQuads2.length !== 1) {
+          console.error(
+            `R8S Beckon Moonlight Quadrants: Invalid safeQuads2, length of ${safeQuads2.length}`,
+          );
+          return;
         }
 
         const quad1 = output[Directions.outputFrom8DirNum(safeQuads1[0] ?? -1)]!();
@@ -704,18 +651,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         safeQuadrants: {
           en: '${quad1} => ${quad2}',
-        },
-        safeHalf: {
-          en: '${half}',
-        },
-        safeHalfFirst: {
-          en: '${half} => ${quad}',
-        },
-        safeHalfSecond: {
-          en: '${quad} => ${half}',
-        },
-        safeHalves: {
-          en: '${half1} => ${half2}',
         },
       },
     },
