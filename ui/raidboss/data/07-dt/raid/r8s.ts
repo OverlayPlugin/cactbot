@@ -709,12 +709,14 @@ const triggerSet: TriggerSet<Data> = {
       // A3C2 => Moonbeam's Bite dash with Left cleave
       // A3C3 => Moonbeam's Bite dash with Right cleave
       netRegex: { id: ['A3C2', 'A3C3'], source: 'Moonlit Shadow', capture: true },
+      condition: (data) => {
+        data.moonbeamBitesTracker = data.moonbeamBitesTracker + 1;
+        if (data.moonbeamBitesTracker === 2)
+          return true;
+        return false;
+      },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime),
       infoText: (data, _matches, output) => {
-        data.moonbeamBitesTracker = data.moonbeamBitesTracker + 1;
-        if (data.moonbeamBitesTracker !== 2) {
-          return;
-        }
         return output.safeQuad!({ quad: data.moonlightQuadrant2 });
       },
       outputStrings: moonlightOutputStrings,
