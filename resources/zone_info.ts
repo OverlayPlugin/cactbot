@@ -10290,6 +10290,7 @@ const data: ZoneInfoType = {
       'en': 'Futures Rewritten (Ultimate)',
       'fr': 'Avenirs réécrits (fatal)',
       'ja': '絶もうひとつの未来',
+      'ko': '절 또 하나의 미래',
     },
     'offsetX': -100,
     'offsetY': -100,
