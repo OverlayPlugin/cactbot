@@ -619,6 +619,15 @@ export default class NetRegexes {
   }
 
   /**
+   * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-262-0x106-rsvdata
+   */
+  static rsvData(
+    params?: NetParams['RSVData'],
+  ): CactbotBaseRegExp<'RSVData'> {
+    return buildRegex('RSVData', params);
+  }
+
+  /**
    * matches: https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-263-0x107-startsusingextra
    */
   static startsUsingExtra(
