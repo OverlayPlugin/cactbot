@@ -48,6 +48,8 @@ const phaseMap: { [id: string]: Phase } = {
 const headMarkerData = {
   // Shared tankbuster marker
   'tankbuster': '0256',
+  // Prowling Gale Tether from Wolf of Wind
+  'galeTether': '0039',
   // Adds red headmarker showing you will be targeted by Pack Predation
   // Also used for Elemental Purge in Phase 2
   'predation': '0017',
