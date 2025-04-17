@@ -1,9 +1,356 @@
-### Arcadion (R5S): AAC Cruiserweight M1 Savage
+### AAC CRUISERWEIGHT M1 (SAVAGE)
+# ZoneId: 1257
+
+# -ii 93C1 93C2 93C3 93C8 93C9 A327 A70A A70B A70C A70D A77A
+
+# The X-snap twist syncs are ugly, sorry
 
 hideall "--Reset--"
 hideall "--sync--"
 
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
+# Intro
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+9.6 "--sync--" StartsUsing { id: "A721", source: "Dancing Green" } window 9.6,2
+15.3 "Deep Cut" Ability { id: "A722", source: "Dancing Green" }
+20.9 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+27.0 "Flip to A-side/Flip to B-side" Ability { id: ["A780", "A781"], source: "Dancing Green" }
+34.1 "2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle" Ability { id: ["A728", "A729", "A72A", "A4DB", "A72B", "A72C", "A72D", "A4DC", "A730", "A731", "A732", "A4DD", "A733", "A734", "A735", "A4DE", "A739", "A73A", "A73B", "A4DF", "A73C", "A73D", "A73E", "A4E0"], source: "Dancing Green" } duration 2
+37.8 "Drop the Needle" #Ability { id: "A738", source: "Dancing Green" }
+39.6 "Play A-side/Play B-side" Ability { id: ["A783", "A784"], source: "Dancing Green" }
+46.5 "Flip to B-side/Flip to A-side" Ability { id: ["A780", "A781"], source: "Dancing Green" }
+53.6 "2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle" Ability { id: ["A728", "A729", "A72A", "A4DB", "A72B", "A72C", "A72D", "A4DC", "A730", "A731", "A732", "A4DD", "A733", "A734", "A735", "A4DE", "A739", "A73A", "A73B", "A4DF", "A73C", "A73D", "A73E", "A4E0"], source: "Dancing Green" } duration 2
+57.2 "Drop the Needle" #Ability { id: "A738", source: "Dancing Green" }
+59.0 "Play B-side/Play A-side" Ability { id: ["A783", "A784"], source: "Dancing Green" }
+65.0 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
 
+# Disco Floor 1
+71.1 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+77.2 "Disco Infernal" Ability { id: "A756", source: "Dancing Green" }
+82.5 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+86.5 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+90.5 "Inside Out/Outside In" Ability { id: ["A77C", "A77E"], source: "Dancing Green" }
+90.5 "Funky Floor" #Ability { id: "A753", source: "Dancing Green" }
+92.9 "Inside Out/Outside In" Ability { id: ["A77D", "A77F"], source: "Dancing Green" }
+94.6 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+98.6 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+99.5 "Flip to A-side/Flip to B-side" Ability { id: ["A780", "A781"], source: "Dancing Green" }
+102.7 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+106.7 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+110.7 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+114.7 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+116.8 "2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle" Ability { id: ["A728", "A729", "A72A", "A4DB", "A72B", "A72C", "A72D", "A4DC", "A730", "A731", "A732", "A4DD", "A733", "A734", "A735", "A4DE", "A739", "A73A", "A73B", "A4DF", "A73C", "A73D", "A73E", "A4E0"], source: "Dancing Green" } duration 2
+118.7 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+120.4 "Drop the Needle" #Ability { id: "A738", source: "Dancing Green" }
+122.2 "Play A-side/Play B-side" Ability { id: ["A783", "A784"], source: "Dancing Green" }
+128.2 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
+136.0 "Deep Cut" Ability { id: "A722", source: "Dancing Green" }
+
+# Ensemble 1
+141.6 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+146.9 "Ensemble Assemble" Ability { id: "9A32", source: "Dancing Green" }
+154.9 "Arcady Night Fever" Ability { id: "A760", source: "Dancing Green" }
+# Set 1
+155.2 "Get Down! (Out+Protean) 1" Ability { id: "9BE4", source: "Dancing Green" }
+# Set 2
+157.9 "Get Down! (In+Protean+Echo) 2" Ability { id: "A763", source: "Dancing Green" }
+# Set 3
+160.3 "Get Down! (Out+Protean+Echo) 3" Ability { id: "A762", source: "Dancing Green" }
+# Set 4
+162.6 "Get Down! (In+Protean+Echo) 4" Ability { id: "A763", source: "Dancing Green" }
+# Set 5
+165.0 "Get Down! (Out+Protean+Echo) 5" Ability { id: "A762", source: "Dancing Green" }
+# Set 6
+167.4 "Get Down! (In+Protean+Echo) 6" Ability { id: "A763", source: "Dancing Green" }
+# Set 7
+169.8 "Get Down! (Out+Protean+Echo) 7" Ability { id: "A762", source: "Dancing Green" }
+# Set 8
+172.2 "Get Down! (In+Protean+Echo) 8" Ability { id: "A763", source: "Dancing Green" }
+
+174.2 "Fire" Ability { id: "98B5", source: "Dancing Green" }
+174.8 "Get Down! (Echo)" #Ability { id: "A765", source: "Dancing Green" }
+
+# Debuff and Dodge Dance
+182.2 "Let's Dance! (Cleave) 1" Ability { id: ["A76D", "A76E"], source: "Dancing Green" }
+184.8 "Let's Dance! (Cleave) 2" #Ability { id: "A76D", source: "Dancing Green" }
+185.7 "Debuffs 1"
+187.4 "Let's Dance! (Cleave) 3" #Ability { id: "A76E", source: "Dancing Green" }
+189.9 "Let's Dance! (Cleave) 4" #Ability { id: "A76E", source: "Dancing Green" }
+190.8 "Debuffs 2"
+192.4 "Let's Dance! (Cleave) 5" #Ability { id: "A76D", source: "Dancing Green" }
+194.9 "Let's Dance! (Cleave) 6" #Ability { id: "A76E", source: "Dancing Green" }
+195.9 "Debuffs 3"
+197.2 "Let's Dance! (Cleave) 7" #Ability { id: "A76E", source: "Dancing Green" }
+199.7 "Let's Dance! (Cleave) 8" #Ability { id: "A76D", source: "Dancing Green" }
+200.8 "Debuffs 4"
+208.7 "Let's Pose!" Ability { id: "A76F", source: "Dancing Green" }
+
+# Exafloors
+226.9 "Flip to A-side/Flip to B-side" Ability { id: ["A780", "A781"], source: "Dancing Green" }
+232.6 "Ride the Waves" Ability { id: "A754", source: "Dancing Green" } duration 39.8
+242.6 "Quarter Beats/Eighth Beats" Ability { id: ["A75B", "A75D"], source: "Dancing Green" }
+250.6 "Eighth Beats/Quarter Beats" Ability { id: ["A75B", "A75D"], source: "Dancing Green" }
+253.6 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+260.7 "Inside Out/Outside In" Ability { id: ["A77C", "A77E"], source: "Dancing Green" }
+263.3 "Inside Out/Outside In" Ability { id: ["A77D", "A77F"], source: "Dancing Green" }
+270.7 "2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle" Ability { id: ["A728", "A729", "A72A", "A4DB", "A72B", "A72C", "A72D", "A4DC", "A730", "A731", "A732", "A4DD", "A733", "A734", "A735", "A4DE", "A739", "A73A", "A73B", "A4DF", "A73C", "A73D", "A73E", "A4E0"], source: "Dancing Green" } duration 2
+274.1 "Drop the Needle" #Ability { id: "A738", source: "Dancing Green" }
+275.9 "Play A-side/Play B-side" Ability { id: ["A783", "A784"], source: "Dancing Green" }
+283.6 "Deep Cut" Ability { id: "A722", source: "Dancing Green" }
+290.2 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
+
+# Frogtourage 1
+296.3 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+301.4 "Frogtourage" Ability { id: "A75F", source: "Dancing Green" }
+315.5 "Quarter Beats/Eighth Beats" Ability { id: ["A75B", "A75D"], source: "Dancing Green" }
+316.0 "Moonburn" # 4 casts simultaneously, A773 and A774 IDs
+323.6 "Disco Infernal" Ability { id: "A756", source: "Dancing Green" }
+335.2 "Back-up Dance" Ability { id: "A778", source: "Dancing Green" }
+344.6 "Flip to A-side/Flip to B-side" Ability { id: ["A780", "A781"], source: "Dancing Green" }
+345.1 "Back-up Dance" Ability { id: "A778", source: "Dancing Green" }
+351.5 "2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle" Ability { id: ["A728", "A729", "A72A", "A4DB", "A72B", "A72C", "A72D", "A4DC", "A730", "A731", "A732", "A4DD", "A733", "A734", "A735", "A4DE", "A739", "A73A", "A73B", "A4DF", "A73C", "A73D", "A73E", "A4E0"], source: "Dancing Green" } duration 2
+355.1 "Drop the Needle" #Ability { id: "A738", source: "Dancing Green" }
+356.9 "Play A-side/Play B-side" Ability { id: ["A783", "A784"], source: "Dancing Green" }
+362.9 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
+
+# Ensemble 2
+369.0 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+374.3 "Ensemble Assemble" Ability { id: "9A32", source: "Dancing Green" }
+382.3 "Arcady Night Encore" Ability { id: "A370", source: "Dancing Green" }
+# Set 1
+382.6 "Get Down! (Out+Protean) 1" Ability { id: "9BE4", source: "Dancing Green" }
+# Set 2
+385.3 "Get Down! (In+Protean+Echo) 2" Ability { id: "A763", source: "Dancing Green" }
+# Set 3
+387.6 "Get Down! (Out+Protean+Echo) 3" Ability { id: "A762", source: "Dancing Green" }
+# Set 4
+390.0 "Get Down! (In+Protean+Echo) 4" Ability { id: "A763", source: "Dancing Green" }
+# Set 5
+392.4 "Get Down! (Out+Protean+Echo) 5" Ability { id: "A762", source: "Dancing Green" }
+# Set 6
+394.8 "Get Down! (In+Protean+Echo) 6" Ability { id: "A763", source: "Dancing Green" }
+# Set 7
+397.2 "Get Down! (Out+Protean+Echo) 7" Ability { id: "A762", source: "Dancing Green" }
+# Set 8
+399.6 "Get Down! (In+Protean+Echo) 8" Ability { id: "A763", source: "Dancing Green" }
+
+401.6 "Fire" Ability { id: "98B5", source: "Dancing Green" }
+402.2 "Get Down! (Echo)" #Ability { id: "A765", source: "Dancing Green" }
+
+# Dodge Dance
+409.6 "Let's Dance! Remix 1" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+411.2 "Let's Dance! Remix 2" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+412.7 "Let's Dance! Remix 3" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+414.2 "Let's Dance! Remix 4" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+415.7 "Let's Dance! Remix 5" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+417.2 "Let's Dance! Remix 6" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+418.7 "Let's Dance! Remix 7" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+420.2 "Let's Dance! Remix 8" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
+428.2 "Let's Pose!" Ability { id: "A770", source: "Dancing Green" }
+
+# Frogtourage 2
+442.4 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+447.5 "Frogtourage" Ability { id: "A75F", source: "Dancing Green" }
+454.6 "Do the Hustle (dancers)" Ability { id: ["A775", "A776"], source: "Frogtourage" }
+458.7 "Do the Hustle (dancers)" Ability { id: ["A775", "A776"], source: "Frogtourage" }
+462.7 "Do the Hustle (boss)" Ability { id: ["A724", "A725"], source: "Dancing Green" }
+479.3 "Moonburn"
+479.4 "Back-up Dance" Ability { id: "A778", source: "Dancing Green" }
+495.1 "Moonburn"
+495.2 "Back-up Dance" Ability { id: "A778", source: "Dancing Green" }
+504.5 "Do the Hustle (all)" Ability { id: ["A724", "A725"], source: "Dancing Green" }
+512.3 "Deep Cut" Ability { id: "A722", source: "Dancing Green" }
+
+# Disco Floor 2
+517.9 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+523.2 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+527.2 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+530.8 "Quarter Beats/Eighth Beats" Ability { id: ["A75B", "A75D"], source: "Dancing Green" }
+531.2 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+535.2 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+538.9 "Inside Out/Outside In" Ability { id: ["A77C", "A77E"], source: "Dancing Green" }
+539.2 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+541.2 "Inside Out/Outside In" Ability { id: ["A77D", "A77F"], source: "Dancing Green" }
+543.2 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+547.2 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+550.6 "Eighth Beats/Quarter Beats" Ability { id: ["A75B", "A75D"], source: "Dancing Green" }
+551.3 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
+
+# Soft Enrage
+557.9 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
+568.0 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
+583.0 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
+588.3 "Frogtourage Finale" Ability { id: "A4E1", source: "Dancing Green" }
+603.4 "Hi-NRG Fever (enrage)" Ability { id: "A779", source: "Dancing Green" }
+603.4 "--sync--" Ability { id: "A77B", source: "Frogtourage" }
+
+
+# IGNORED ABILITIES
+# 93C1 --sync--
+# 93C2 Inside Out
+# 93C3 Inside Out
+# 93C4 Outside In
+# 93C5 Outside In
+# 93C6 --sync--
+# 93C8 Play A-side
+# 93C9 Play B-side
+# 9640 --sync--
+# 9641 --sync--
+# 98B3 --sync--
+# 93D3 --sync--
+# 93D4 --sync--
+# 9BDD Let's Dance!
+# 9BE0 --sync--
+# 9BE1 --sync--
+# 9BE2 --sync--
+# 9BE3 --sync--
+# A327 --sync--
+# A36C --sync--
+# A36D --sync--
+# A36E --sync--
+# A36F --sync--
+# A390 Let's Dance! Remix
+# A395 Let's Dance! Remix
+# A70A --sync--
+# A70B --sync--
+# A70C --sync--
+# A70D --sync--
+# A71D --sync--
+# A71E --sync--
+# A721 Deep Cut
+# A752 Funky Floor
+# A755 Ride the Waves
+# A758 Shame
+# A75C Quarter Beats
+# A75E Eighth Beats
+# A76A Let's Dance!
+# A777 Back-up Dance
+# A77A --sync--
+
+# ALL ENCOUNTER ABILITIES
+# 93C1 --sync--
+# 93C2 Inside Out
+# 93C3 Inside Out
+# 93C4 Outside In
+# 93C5 Outside In
+# 93C6 --sync--
+# 93C8 Play A-side
+# 93C9 Play B-side
+# 93D3 --sync--
+# 93D4 --sync--
+# 9640 --sync--
+# 9641 --sync--
+# 98B3 --sync--
+# 98B5 Fire
+# 9A32 Ensemble Assemble
+# 9A33 Minor Freak Out
+# 9A34 Minor Freak Out
+# 9A36 Minor Freak Out
+# 9BDD Let's Dance!
+# 9BE0 --sync--
+# 9BE1 --sync--
+# 9BE2 --sync--
+# 9BE3 --sync--
+# 9BE4 Get Down!
+# A327 --sync--
+# A36C --sync--
+# A36D --sync--
+# A36E --sync--
+# A36F --sync--
+# A370 Arcady Night Encore
+# A390 Let's Dance! Remix
+# A391 Let's Dance! Remix
+# A392 Let's Dance! Remix
+# A393 Let's Dance! Remix
+# A394 Let's Dance! Remix
+# A395 Let's Dance! Remix
+# A4DB 2-snap Twist & Drop the Needle
+# A4DC 2-snap Twist & Drop the Needle
+# A4DD 3-snap Twist & Drop the Needle
+# A4DE 3-snap Twist & Drop the Needle
+# A4DF 4-snap Twist & Drop the Needle
+# A4E0 4-snap Twist & Drop the Needle
+# A4E1 Frogtourage Finale
+# A6C5 --sync--
+# A70A --sync--
+# A70B --sync--
+# A70C --sync--
+# A70D --sync--
+# A71D --sync--
+# A71E --sync--
+# A721 Deep Cut
+# A722 Deep Cut
+# A723 Celebrate Good Times
+# A724 Do the Hustle
+# A725 Do the Hustle
+# A728 2-snap Twist & Drop the Needle
+# A729 2-snap Twist & Drop the Needle
+# A72A 2-snap Twist & Drop the Needle
+# A72B 2-snap Twist & Drop the Needle
+# A72C 2-snap Twist & Drop the Needle
+# A72D 2-snap Twist & Drop the Needle
+# A72E 2-snap Twist & Drop the Needle
+# A72F 2-snap Twist & Drop the Needle
+# A730 3-snap Twist & Drop the Needle
+# A731 3-snap Twist & Drop the Needle
+# A732 3-snap Twist & Drop the Needle
+# A733 3-snap Twist & Drop the Needle
+# A734 3-snap Twist & Drop the Needle
+# A735 3-snap Twist & Drop the Needle
+# A736 3-snap Twist & Drop the Needle
+# A737 3-snap Twist & Drop the Needle
+# A738 3-snap Twist & Drop the Needle
+# A739 4-snap Twist & Drop the Needle
+# A73A 4-snap Twist & Drop the Needle
+# A73B 4-snap Twist & Drop the Needle
+# A73C 4-snap Twist & Drop the Needle
+# A73D 4-snap Twist & Drop the Needle
+# A73E 4-snap Twist & Drop the Needle
+# A73F 4-snap Twist & Drop the Needle
+# A740 4-snap Twist & Drop the Needle
+# A741 4-snap Twist & Drop the Needle
+# A742 4-snap Twist & Drop the Needle
+# A752 Funky Floor
+# A753 Funky Floor
+# A754 Ride the Waves
+# A755 Ride the Waves
+# A756 Disco Infernal
+# A758 Shame
+# A75B Quarter Beats
+# A75C Quarter Beats
+# A75D Eighth Beats
+# A75E Eighth Beats
+# A75F Frogtourage
+# A760 Arcady Night Fever
+# A761 --sync--
+# A762 Get Down!
+# A763 Get Down!
+# A764 Get Down!
+# A765 Get Down!
+# A766 Freak Out
+# A767 Freak Out
+# A768 Minor Freak Out
+# A769 Major Freak Out
+# A76A Let's Dance!
+# A76D Let's Dance!
+# A76E Let's Dance!
+# A76F Let's Pose!
+# A770 Let's Pose!
+# A773 Moonburn
+# A774 Moonburn
+# A775 Do the Hustle
+# A776 Do the Hustle
+# A777 Back-up Dance
+# A778 Back-up Dance
+# A779 Hi-NRG Fever
+# A77A --sync--
+# A77B --sync--
+# A77C Inside Out
+# A77D Inside Out
+# A77E Outside In
+# A77F Outside In
+# A780 Flip to A-side
+# A781 Flip to B-side
+# A783 Play A-side
+# A784 Play B-side
