@@ -64,7 +64,7 @@ const headMarkerData = {
   // Stack marker used in Terrestial Rage and Beckon Moonlight
   'stack': '005D',
   // Blue circle marker with spikes used for Ultraviolent Ray target in Phase 2
-  'ultraviolent':  '000E',
+  'ultraviolent': '000E',
 } as const;
 
 const stoneWindOutputStrings = {
