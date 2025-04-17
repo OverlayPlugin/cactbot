@@ -63,6 +63,8 @@ const headMarkerData = {
   'spread': '008B',
   // Stack marker used in Terrestial Rage and Beckon Moonlight
   'stack': '005D',
+  // Blue circle marker with spikes used for Ultraviolent Ray target in Phase 2
+  'ultraviolent':  '000E',
 } as const;
 
 const stoneWindOutputStrings = {
@@ -792,6 +794,23 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A45A', source: 'Howling Blade', capture: false },
       response: Responses.bigAoe(),
+    },
+    {
+      // headmarkers with casts:
+      // A45D (Ultraviolent Ray)
+      // TODO: Determine platform to move to based on player positions/role?
+      id: 'R8S Ultraviolent Ray Target',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData.ultraviolent },
+      condition: Conditions.targetIsYou(),
+      infoText: (data, matches, output) => {
+        return output.uvRayOnYou!();
+      },
+      outputStrings: {
+        uvRayOnYou: {
+          en: 'UV Ray on YOU',
+        },
+      },
     },
     {
       id: 'R8S Twinbite',
