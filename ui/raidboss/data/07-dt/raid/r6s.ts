@@ -373,10 +373,12 @@ const triggerSet: TriggerSet<Data> = {
         fire: {
           en: 'Healer groups in water, avoid arrow lines',
           ja: 'ヒラ組で水へ、矢印線を避ける',
+          ko: '물에서 힐러 그룹, 화살 직선 장판 피하기',
         },
         thunder: {
           en: 'Spread out of water, avoid arrow lines',
           ja: '水を避けて散開、矢印線を避ける',
+          ko: '물 밖에서 산개, 화살 직선 장판 피하기',
         },
       },
     },

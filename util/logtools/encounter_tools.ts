@@ -12,6 +12,8 @@ import { commonReplacement, syncKeys } from '../../ui/raidboss/common_replacemen
 // TODO: add some error checking that a zone has been found before a fight.
 // This can happen on partial logs.
 
+export type RsvData = { [rsv: string]: string };
+
 type ZoneEncInfo = {
   zoneName?: string;
   zoneId?: number;
@@ -92,6 +94,7 @@ export class EncounterFinder {
 
   haveWon = false;
   haveSeenSeals = false;
+  rsvData: RsvData = {};
 
   regex: {
     changeZone: CactbotBaseRegExp<'ChangeZone'>;
@@ -104,6 +107,7 @@ export class EncounterFinder {
     inCombat: CactbotBaseRegExp<'InCombat'>;
     playerAttackingMob: CactbotBaseRegExp<'Ability'>;
     mobAttackingPlayer: CactbotBaseRegExp<'Ability'>;
+    rsv: CactbotBaseRegExp<'RSVData'>;
   };
 
   sealRegexes: Array<CactbotBaseRegExp<'GameLog'>> = [];
@@ -130,6 +134,7 @@ export class EncounterFinder {
       inCombat: NetRegexes.inCombat({ inGameCombat: '1', isGameChanged: '1' }),
       playerAttackingMob: NetRegexes.ability({ sourceId: '1.{7}', targetId: '4.{7}' }),
       mobAttackingPlayer: NetRegexes.ability({ sourceId: '4.{7}', targetId: '1.{7}' }),
+      rsv: NetRegexes.rsvData({}),
     };
 
     const sealReplace = commonReplacement.replaceSync[syncKeys.seal];
@@ -188,6 +193,12 @@ export class EncounterFinder {
     // This allows us to save a pass when making timelines.
     if (store && this.currentFight.startTime !== undefined)
       (this.currentFight.logLines ??= []).push(line);
+
+    // Always track/store RSV line data
+    const mRsv = this.regex.rsv.exec(line);
+    if (mRsv?.groups) {
+      this.rsvData[mRsv.groups?.key] = mRsv.groups?.value;
+    }
 
     const cZ = this.regex.changeZone.exec(line)?.groups;
     if (cZ) {
@@ -445,11 +456,8 @@ class TLFuncs {
   }
   static timeFromDate(date?: Date): string {
     if (date) {
-      const wholeTime = date.toLocaleTimeString('en-US', { hourCycle: 'h23' });
-      const milliseconds = date.getMilliseconds();
-      // If milliseconds is under 100, the leading zeroes will be truncated.
-      // We don't want that, so we pad it inside the formatter.
-      return `${wholeTime}.${milliseconds.toString().padStart(3, '0')}`;
+      const fullString = date.toISOString();
+      return fullString.slice(0, -1);
     }
     return 'Unknown_Time';
   }
