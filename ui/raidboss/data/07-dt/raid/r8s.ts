@@ -29,6 +29,7 @@ export interface Data extends RaidbossData {
   moonbeamBitesTracker: number;
   moonlightQuadrant2?: string;
   // Phase 2
+  herosBlowInOut?: 'in' | 'out';
   purgeTargets: string[];
 }
 
@@ -803,7 +804,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: headMarkerData.ultraviolent },
       condition: Conditions.targetIsYou(),
-      infoText: (data, matches, output) => {
+      infoText: (_data, _matches, output) => {
         return output.uvRayOnYou!();
       },
       outputStrings: {
@@ -817,6 +818,42 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A4CD', source: 'Howling Blade', capture: true },
       response: Responses.tankBuster(),
+    },
+    {
+      id: 'R8S Fanged Maw/Perimeter Collect',
+      // A463 Fanged Maw (In cleave)
+      // A464 Fanged Perimeter (Out cleave)
+      type: 'StartsUsing',
+      netRegex: { id: ['A463', 'A464'], source: 'Gleaming Fang', capture: true },
+      run: (data, matches) => {
+        data.herosBlowInOut = matches.id === 'A463' ? 'out' : 'in';
+      },
+    },
+    {
+      id: 'R8S Hero\'s Blow',
+      // Has two casts
+      // A45F for Hero's Blow Left cleave
+      // A460 for Hero's Blow Left cleave damage
+      // A461 Hero's Blow Right cleave
+      // A462 Hero's Blow Right cleave damage
+      type: 'StartsUsing',
+      netRegex: { id: ['A45F', 'A461'], source: 'Howling Blade', capture: true },
+      delaySeconds: 0.1,
+      infoText: (data, matches, output) => {
+        const dir = matches.id === 'A45F' ? output.right!() : output.left!();
+        const inout = output[data.herosBlowInOut ?? 'unknown']!();
+        return output.text!({ inout: inout, dir: dir });
+      },
+      outputStrings: {
+        in: Outputs.in,
+        out: Outputs.out,
+        left: Outputs.left,
+        right: Outputs.right,
+        text: {
+          en: '${inout} + ${dir}',
+        },
+        unknown: Outputs.unknown,
+      },
     },
     {
       // headmarkers with casts:
