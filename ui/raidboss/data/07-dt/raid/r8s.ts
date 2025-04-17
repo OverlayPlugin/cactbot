@@ -15,6 +15,8 @@ export interface Data extends RaidbossData {
   // Phase 1
   reignDir?: number;
   decayAddCount: number;
+  galeTetherDirNum?: number;
+  galeTetherCount: number;
   stoneWindCallGroup?: number;
   surgeTracker: number;
   packPredationTracker: number;
@@ -92,6 +94,7 @@ const triggerSet: TriggerSet<Data> = {
     phase: 'one',
     // Phase 1
     decayAddCount: 0,
+    galeTetherCount: 0,
     packPredationTracker: 0,
     packPredationTargets: [],
     surgeTracker: 0,
@@ -304,6 +307,51 @@ const triggerSet: TriggerSet<Data> = {
         },
         counterclockwise: {
           en: 'Counterclockwise ==>',
+        },
+      },
+    },
+    {
+      id: 'R8S Prowling Gale Tower/Tether',
+      // Calls each tether or get towers
+      // TODO: Support getting a tower and tether?
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.galeTether], capture: true },
+      preRun: (data) => data.galeTetherCount = data.galeTetherCount + 1,
+      promise: async (data, matches) => {
+        if (data.me !== matches.target)
+          return;
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Prowling Gale Tethers: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, centerX, centerY);
+        data.galeTetherDirNum = (dirNum + 4) % 8;
+      },
+      infoText: (data, matches, output) => {
+        if (
+          data.galeTetherDirNum !== undefined && data.me === matches.target
+        ) {
+          // This will trigger for each tether a player has
+          const dir = output[Directions.outputFrom8DirNum(data.galeTetherDirNum)]!();
+          return output.stretchTetherDir!({ dir: dir });
+        }
+
+        if (data.galeTetherDirNum === undefined && data.galeTetherCount === 4)
+          return output.getTowers!();
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        getTowers: Outputs.getTowers,
+        stretchTetherDir: {
+          en: 'Stretch tether: ${dir}',
         },
       },
     },
