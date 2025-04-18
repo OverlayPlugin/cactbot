@@ -884,6 +884,23 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'R8S Howling Eight',
+      type: 'StartsUsing',
+      netRegex: { id: 'A494', source: 'Howling Blade', capture: false },
+      durationSeconds: 15,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Stack x8',
+          de: 'Sammeln x8',
+          fr: 'Package x8',
+          ja: '頭割り x8',
+          cn: '8次分摊',
+          ko: '쉐어 8번',
+        },
+      },
+    },
   ],
 };
 
