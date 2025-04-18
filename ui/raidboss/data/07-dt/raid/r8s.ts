@@ -31,6 +31,7 @@ export interface Data extends RaidbossData {
   // Phase 2
   herosBlowInOut?: 'in' | 'out';
   purgeTargets: string[];
+  platforms: number;
 }
 
 const centerX = 100;
@@ -108,6 +109,7 @@ const triggerSet: TriggerSet<Data> = {
     moonbeamBitesTracker: 0,
     // Phase 2
     purgeTargets: [],
+    platforms: 5,
   }),
   triggers: [
     {
@@ -898,6 +900,23 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り x8',
           cn: '8次分摊',
           ko: '쉐어 8번',
+        },
+      },
+    },
+    {
+      id: 'R8S Mooncleaver Platform',
+      // Trigger on last hit of Howling Eight (AA0A for first set, A494 others)
+      type: 'Ability',
+      netRegex: { id: ['A494', 'AA0A'], source: 'Howling Blade', capture: false },
+      condition: (data) => {
+        // Tracking how many platforms will remain
+        data.platforms = data.platforms - 1;
+        return data.platforms;
+      },
+      infoText: (_data, _matches, output) => output.changePlatform!(),
+      outputStrings: {
+        changePlatform: {
+          en: 'Change Platform',
         },
       },
     },
