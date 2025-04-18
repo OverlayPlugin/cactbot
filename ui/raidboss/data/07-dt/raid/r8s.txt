@@ -91,7 +91,7 @@ hideall "--sync--"
 247.5 "Forlorn Wind (Enrage)" Ability { id: "A3D2", source: "Wolf of Wind" }
 
 # Terrestrial Rage
-252.6 "Ravenous Saber 1" Ability { id: "A749", source: "Howling Blade" } window 30,10
+252.6 "Ravenous Saber 1" Ability { id: "A749", source: "Howling Blade" }
 252.7 "Ravenous Saber 2" Ability { id: "A74A", source: "Howling Blade" }
 253.0 "Ravenous Saber 3" Ability { id: "A74B", source: "Howling Blade" }
 255.0 "Ravenous Saber 4" Ability { id: "A9FE", source: "Howling Blade" }
