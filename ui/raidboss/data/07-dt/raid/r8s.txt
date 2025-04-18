@@ -1,7 +1,7 @@
 ### Arcadion (R8S): AAC Cruiserweight M4 Savage
 
 # -ii A921 A922 A39B A39C A39F A3A0 A3B0 A3B1 A3DB A3DD A74F A751 A881 A882 A45D A4CE A92D A92E
-# -ii A3B8 A3C5 A45F A461 A463 A464 A472 A473 A45B A46C
+# -ii A3B8 A3C5 A45F A461 A463 A464 A472 A473 A45B A46C A891
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -174,102 +174,14 @@ hideall "--sync--"
 
 # Twofold Tempest
 566.2 "Twofold Tempest" Ability { id: "A471", source: "Howling Blade" }
-569.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-570.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-571.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-571.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-572.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-572.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
+569.8 "Wind Surge" duration 11.7 Ability { id: "A891", source: "Howling Blade" }
 573.4 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
-573.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-574.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-574.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-575.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-575.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-576.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-577.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-577.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-577.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-577.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-578.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-578.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-578.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-578.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-578.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-578.9 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-579.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-579.3 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-579.7 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
+577.0 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
 579.8 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
-579.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-580.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-580.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-580.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-580.7 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-581.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-581.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-581.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-581.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-582.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-582.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-582.9 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-583.3 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-583.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-583.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-583.9 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-584.3 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-584.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-584.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-584.9 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-585.3 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-585.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-585.7 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
+583.4 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
 585.8 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
-585.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-586.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-586.3 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-586.7 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-586.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-587.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-587.3 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-587.7 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-587.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-588.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-589.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-589.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-589.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-589.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-590.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-590.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-590.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-590.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-591.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-591.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-591.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-591.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-592.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-592.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-592.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-592.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-593.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-593.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-593.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-593.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-594.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-594.1 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-594.7 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-595.3 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-595.9 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-596.5 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
+589.5 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
 596.8 "Bare Fangs" Ability { id: "A475", source: "Howling Blade" }
-597.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-597.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-598.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-598.8 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-599.4 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-600.0 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-600.6 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
-601.2 "Wind Surge" #Ability { id: "A891", source: "Howling Blade" }
 
 # Champion's Circuit
 608.4 "Champion's Circuit" Ability { id: "A477", source: "Howling Blade" }
@@ -411,3 +323,4 @@ hideall "--sync--"
 # A46C Hunter's Harvest
 # A472 Twofold Tempest
 # A473 Twofold Tempest
+# A891 Wind Surge
