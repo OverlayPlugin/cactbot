@@ -174,7 +174,7 @@ hideall "--sync--"
 
 # Twofold Tempest
 566.2 "Twofold Tempest" Ability { id: "A471", source: "Howling Blade" }
-569.8 "Wind Surge" duration 11.7 Ability { id: "A891", source: "Howling Blade" }
+569.8 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
 573.4 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
 577.0 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
 579.8 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
