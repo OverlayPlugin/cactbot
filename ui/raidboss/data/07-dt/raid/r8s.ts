@@ -260,35 +260,6 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe(),
     },
     {
-      id: 'R8S Aero III',
-      type: 'StartsUsing',
-      netRegex: { id: 'A3B7', source: 'Howling Blade', capture: false },
-      response: Responses.knockback(),
-    },
-    {
-      id: 'R8S Titanic Pursuit',
-      type: 'StartsUsing',
-      netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
-      response: Responses.aoe(),
-    },
-    {
-      id: 'R8S Tracking Tremors',
-      type: 'StartsUsing',
-      netRegex: { id: 'A3B9', source: 'Howling Blade', capture: false },
-      durationSeconds: 9,
-      infoText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Stack x8',
-          de: 'Sammeln x8',
-          fr: 'Package x8',
-          ja: '頭割り x8',
-          cn: '8次分摊',
-          ko: '쉐어 8번',
-        },
-      },
-    },
-    {
       id: 'R8S Breath of Decay Rotation',
       type: 'StartsUsing',
       netRegex: { id: 'A3B4', source: 'Wolf of Wind', capture: true },
@@ -316,6 +287,12 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Counterclockwise ==>',
         },
       },
+    },
+    {
+      id: 'R8S Aero III',
+      type: 'StartsUsing',
+      netRegex: { id: 'A3B7', source: 'Howling Blade', capture: false },
+      response: Responses.knockback(),
     },
     {
       id: 'R8S Prowling Gale Tower/Tether',
@@ -361,6 +338,35 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stretch tether: ${dir}',
         },
       },
+    },
+    {
+      id: 'R8S Titanic Pursuit',
+      type: 'StartsUsing',
+      netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'R8S Tracking Tremors',
+      type: 'StartsUsing',
+      netRegex: { id: 'A3B9', source: 'Howling Blade', capture: false },
+      durationSeconds: 9,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Stack x8',
+          de: 'Sammeln x8',
+          fr: 'Package x8',
+          ja: '頭割り x8',
+          cn: '8次分摊',
+          ko: '쉐어 8번',
+        },
+      },
+    },
+    {
+      id: 'R8S Great Divide',
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.tankbuster], capture: true },
+      response: Responses.sharedTankBuster(),
     },
     {
       id: 'R8S Tactical Pack Tethers',
