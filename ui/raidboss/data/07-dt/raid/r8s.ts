@@ -911,7 +911,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         // Tracking how many platforms will remain
         data.platforms = data.platforms - 1;
-        return data.platforms;
+        return data.platforms !== 0;
       },
       infoText: (_data, _matches, output) => output.changePlatform!(),
       outputStrings: {
