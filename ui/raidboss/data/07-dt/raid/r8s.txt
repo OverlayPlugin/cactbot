@@ -11,7 +11,7 @@ hideall "--sync--"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 
-8.8 "Extraplanar Pursuit" Ability { id: "A3DA", source: "Howling Blade" }
+8.8 "Extraplanar Pursuit" Ability { id: "A3DA", source: "Howling Blade" } window 10,10
 17.0 "--sync--" Ability { id: "A38F", source: "Howling Blade" }
 26.0 "Stonefang/Windfang" Ability { id: ["A39E", "A39D", "A3A1", "A3A2"], source: "Howling Blade" }
 36.1 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
