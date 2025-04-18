@@ -79,16 +79,16 @@ hideall "--sync--"
 222.0 "Alpha Wind" Ability { id: "A3CD", source: "Wolf of Wind" }
 222.0 "Stalking Stone" Ability { id: "A3E4", source: "Wolf of Stone" }
 222.0 "Alpha Stone" Ability { id: "A3E2", source: "Wolf of Stone" }
-245.3 "Forlorn Stone (Enrage)" Ability { id: "A3D3", source: "Wolf of Stone" }
-245.3 "Forlorn Wind (Enrage)" Ability { id: "A3D0", source: "Wolf of Wind" }
+245.3 "Forlorn Stone (Enrage)?" Ability { id: "A3D3", source: "Wolf of Stone" }
+245.3 "Forlorn Wind (Enrage)?" Ability { id: "A3D0", source: "Wolf of Wind" }
 
 # The following enrage casts happen on repeat
-245.4 "Forlorn Stone (Enrage)" Ability { id: "A3D5", source: "Wolf of Stone" }
-245.4 "Forlorn Wind (Enrage)" Ability { id: "A3D2", source: "Wolf of Wind" }
-247.4 "Forlorn Stone (Enrage)" Ability { id: "A3D4", source: "Wolf of Stone" }
-247.4 "Forlorn Wind (Enrage)" Ability { id: "A3D1", source: "Wolf of Wind" }
-247.5 "Forlorn Stone (Enrage)" Ability { id: "A3D5", source: "Wolf of Stone" }
-247.5 "Forlorn Wind (Enrage)" Ability { id: "A3D2", source: "Wolf of Wind" }
+245.4 "Forlorn Stone (Enrage)?" Ability { id: "A3D5", source: "Wolf of Stone" }
+245.4 "Forlorn Wind (Enrage)?" Ability { id: "A3D2", source: "Wolf of Wind" }
+247.4 "Forlorn Stone (Enrage)?" Ability { id: "A3D4", source: "Wolf of Stone" }
+247.4 "Forlorn Wind (Enrage)?" Ability { id: "A3D1", source: "Wolf of Wind" }
+247.5 "Forlorn Stone (Enrage)?" Ability { id: "A3D5", source: "Wolf of Stone" }
+247.5 "Forlorn Wind (Enrage)?" Ability { id: "A3D2", source: "Wolf of Wind" }
 
 # Terrestrial Rage
 252.6 "Ravenous Saber 1" Ability { id: "A749", source: "Howling Blade" }
