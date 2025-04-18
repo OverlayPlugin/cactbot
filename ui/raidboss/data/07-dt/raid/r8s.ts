@@ -802,7 +802,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R8S Quake III',
       type: 'StartsUsing',
       netRegex: { id: 'A45A', source: 'Howling Blade', capture: false },
-      response: Responses.bigAoe(),
+      alertText: (_data, _matches, output) => output.healerGroups!(),
+      outputStrings: {
+        healerGroups: Outputs.healerGroups,
+      },
     },
     {
       // headmarkers with casts:
