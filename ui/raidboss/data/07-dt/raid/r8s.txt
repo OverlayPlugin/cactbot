@@ -1,7 +1,8 @@
 ### Arcadion (R8S): AAC Cruiserweight M4 Savage
 
 # -ii A921 A922 A39B A39C A39F A3A0 A3B0 A3B1 A3DB A3DD A74F A751 A881 A882 A45D A4CE A92D A92E
-# -ii A3B8 A3C5 A45F A461 A463 A464 A472 A473 A45B A46C A891
+# -ii A3B8 A3C5 A45F A461 A463 A464 A472 A473 A45B A46C A891 A479 A47A A47B A47C A47E A47F A480
+# -ii A481
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -187,38 +188,14 @@ hideall "--sync--"
 608.4 "Champion's Circuit" Ability { id: "A477", source: "Howling Blade" }
 608.4 "Gleaming Barrage" Ability { id: "A476", source: "Gleaming Fang" }
 609.1 "Champion's Circuit" Ability { id: "A47D", source: "Howling Blade" }
-609.1 "Champion's Circuit" Ability { id: "A47C", source: "Howling Blade" }
-609.1 "Champion's Circuit" Ability { id: "A47B", source: "Howling Blade" }
-609.1 "Champion's Circuit" Ability { id: "A47A", source: "Howling Blade" }
-609.1 "Champion's Circuit" Ability { id: "A479", source: "Howling Blade" }
-612.8 "Champion's Circuit" Ability { id: "A4A1", source: "Howling Blade" }
 612.8 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
 613.4 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
-613.4 "Champion's Circuit" Ability { id: "A481", source: "Howling Blade" }
-613.4 "Champion's Circuit" Ability { id: "A480", source: "Howling Blade" }
-613.4 "Champion's Circuit" Ability { id: "A47F", source: "Howling Blade" }
-613.4 "Champion's Circuit" Ability { id: "A47E", source: "Howling Blade" }
-617.1 "Champion's Circuit" Ability { id: "A4A1", source: "Howling Blade" }
 617.2 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
 617.6 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
-617.6 "Champion's Circuit" Ability { id: "A481", source: "Howling Blade" }
-617.6 "Champion's Circuit" Ability { id: "A480", source: "Howling Blade" }
-617.6 "Champion's Circuit" Ability { id: "A47F", source: "Howling Blade" }
-617.6 "Champion's Circuit" Ability { id: "A47E", source: "Howling Blade" }
-621.3 "Champion's Circuit" Ability { id: "A4A1", source: "Howling Blade" }
 621.5 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
 621.9 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
-621.9 "Champion's Circuit" Ability { id: "A481", source: "Howling Blade" }
-621.9 "Champion's Circuit" Ability { id: "A480", source: "Howling Blade" }
-621.9 "Champion's Circuit" Ability { id: "A47F", source: "Howling Blade" }
-621.9 "Champion's Circuit" Ability { id: "A47E", source: "Howling Blade" }
-625.6 "Champion's Circuit" Ability { id: "A4A1", source: "Howling Blade" }
 625.9 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
 626.2 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
-626.2 "Champion's Circuit" Ability { id: "A481", source: "Howling Blade" }
-626.2 "Champion's Circuit" Ability { id: "A480", source: "Howling Blade" }
-626.2 "Champion's Circuit" Ability { id: "A47F", source: "Howling Blade" }
-626.2 "Champion's Circuit" Ability { id: "A47E", source: "Howling Blade" }
 636.0 "Quake III" Ability { id: "A45A", source: "Howling Blade" }
 650.0 "Ultraviolent Ray" Ability { id: "A45C", source: "Howling Blade" }
 650.0 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
@@ -324,3 +301,11 @@ hideall "--sync--"
 # A472 Twofold Tempest
 # A473 Twofold Tempest
 # A891 Wind Surge
+# A479 Champion's Circuit
+# A47A Champion's Circuit
+# A47B Champion's Circuit
+# A47C Champion's Circuit
+# A47E Champion's Circuit
+# A47F Champion's Circuit
+# A480 Champion's Circuit
+# A481 Champion's Circuit
