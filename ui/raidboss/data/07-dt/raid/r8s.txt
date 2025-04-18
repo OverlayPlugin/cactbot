@@ -84,12 +84,10 @@ hideall "--sync--"
 245.3 "Forlorn Wind (Enrage)?" Ability { id: "A3D0", source: "Wolf of Wind" }
 
 # The following enrage casts happen on repeat
-245.4 "Forlorn Stone (Enrage)?" Ability { id: "A3D5", source: "Wolf of Stone" }
-245.4 "Forlorn Wind (Enrage)?" Ability { id: "A3D2", source: "Wolf of Wind" }
-247.4 "Forlorn Stone (Enrage)?" Ability { id: "A3D4", source: "Wolf of Stone" }
-247.4 "Forlorn Wind (Enrage)?" Ability { id: "A3D1", source: "Wolf of Wind" }
-247.5 "Forlorn Stone (Enrage)?" Ability { id: "A3D5", source: "Wolf of Stone" }
-247.5 "Forlorn Wind (Enrage)?" Ability { id: "A3D2", source: "Wolf of Wind" }
+# 245.4 "Forlorn Stone (Enrage)" Ability { id: "A3D5", source: "Wolf of Stone" }
+# 245.4 "Forlorn Wind (Enrage)" Ability { id: "A3D2", source: "Wolf of Wind" }
+# 247.4 "Forlorn Stone (Enrage)" Ability { id: "A3D4", source: "Wolf of Stone" }
+# 247.4 "Forlorn Wind (Enrage)" Ability { id: "A3D1", source: "Wolf of Wind" }
 
 # Terrestrial Rage
 252.6 "Ravenous Saber 1" Ability { id: "A749", source: "Howling Blade" }
