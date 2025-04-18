@@ -87,7 +87,7 @@ hideall "--sync--"
 245.4 "Forlorn Wind (Enrage)" Ability { id: "A3D2", source: "Wolf of Wind" }
 247.4 "Forlorn Stone (Enrage)" Ability { id: "A3D4", source: "Wolf of Stone" }
 247.4 "Forlorn Wind (Enrage)" Ability { id: "A3D1", source: "Wolf of Wind" }
-247.5 "Forlorn Stone (Enrage)" Ability { id: "A3D5", source: "Wolf of Stone" } jump 245.4
+247.5 "Forlorn Stone (Enrage)" Ability { id: "A3D5", source: "Wolf of Stone" }
 247.5 "Forlorn Wind (Enrage)" Ability { id: "A3D2", source: "Wolf of Wind" }
 
 # Terrestrial Rage
