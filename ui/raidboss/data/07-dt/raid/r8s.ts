@@ -340,6 +340,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R8S Ravenous Saber',
+      type: 'StartsUsing',
+      netRegex: { id: 'A749', source: 'Howling Blade', capture: false },
+      durationSeconds: 7,
+      response: Responses.bigAoe(),
+    },
+    {
       id: 'R8S Titanic Pursuit',
       type: 'StartsUsing',
       netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
