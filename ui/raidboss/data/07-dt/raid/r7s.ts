@@ -11,7 +11,9 @@ import { TriggerSet } from '../../../../../types/trigger';
 // - Sinister Seeds - callout who has puddles?
 // - Roots of Evil - dodge callout?
 // - adds interrupt callouts?
-// - Demolition Deathmatch - strat-specific tether callouts?
+// - Demolition Deathmatch:
+//   - strat-specific tether callouts?
+//   - Strange Seeds counter?
 
 const headMarkerData = {
   // Sinster Seeds marker
@@ -160,11 +162,13 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R7S Explosion',
       type: 'StartsUsing',
-      netRegex: { id: 'A576', source: 'Brute Abombinator', capture: false },
-      infoText: (_data, _matches, output) => output.text!(),
+      netRegex: { id: 'A576', source: 'Brute Abombinator', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 5,
+      suppressSeconds: 10,
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Rotate away from proximity marker',
+          en: 'Rotate away from proximity markers',
         },
       },
     },
@@ -289,7 +293,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Away from Flare',
         },
         flare: {
-          en: 'Flare on YOU, Away from party',
+          en: 'Flare + buster on YOU, Away from party',
         },
       },
     },
@@ -413,6 +417,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Smash Here/Smash There': 'Smash Here/There',
+        'Winding Wildwinds/Crossing Crosswinds': 'Wildwinds/Crosswinds',
       },
     },
   ],

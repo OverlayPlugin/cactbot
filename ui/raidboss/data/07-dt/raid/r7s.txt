@@ -1,7 +1,7 @@
 ### AAC CRUISERWEIGHT M3 (SAVAGE)
 # ZoneId: 1261
 
-# -ii A563 A564 A574 A577 A578 A585 A589 A58C A58D A58F A591 A594 A595 A5A2 A5A4 A5A6 A5A7 A5A9 A5AB A5AC A5AD A5B2 A63C A63D A94A
+# -ii A55A A563 A564 A574 A577 A578 A57A A585 A589 A58C A58D A58F A591 A594 A595 A5A2 A5A4 A5A6 A5A7 A5A9 A5AB A5AC A5AD A5B2 A63C A63D A895 A94A
 # -it "Blooming Abomination" "Brute Abombinator"
 
 hideall "--Reset--"
@@ -10,202 +10,144 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-3.4 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
 10.5 "Brutal Impact x6" Ability { id: "A55B", source: "Brute Abombinator" } duration 5.2
-18.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
 23.1 "Stoneringer" Ability { id: ["A55D", "A55E"], source: "Brute Abombinator" }
 32.0 "Smash Here/Smash There" Ability { id: ["A55F", "A560"], source: "Brute Abombinator" }
 33.0 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
 34.1 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
-36.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-39.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-43.1 "Spore Sac (cast)" Ability { id: "A569", source: "Brute Abombinator" }
-46.2 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
-48.2 "Spore Sac" Ability { id: "A56A", source: "Brute Abombinator" }
-52.6 "Sinister Seeds (cast)" Ability { id: "A56D", source: "Brute Abombinator" }
-53.7 "Pollen" Ability { id: "A56B", source: "Brute Abombinator" }
-55.8 "--adds targetable--"
-56.6 "Sinister Seeds (puddles 1)" #Ability { id: "A571", source: "Brute Abombinator" }
-58.6 "Sinister Seeds (puddles 2)" #Ability { id: "A571", source: "Brute Abombinator" }
-60.6 "Sinister Seeds (seeds drop)" Ability { id: "A56E", source: "Brute Abombinator" }
-60.6 "Sinister Seeds (puddles 3)" #Ability { id: "A571", source: "Brute Abombinator" }
-62.6 "Sinister Seeds (puddles 4)" #Ability { id: "A571", source: "Brute Abombinator" }
-65.2 "Impact" Ability { id: "A573", source: "Brute Abombinator" }
-65.2 "Tendrils of Terror" Ability { id: ["A56F", "A570"], source: "Brute Abombinator" }
-70.5 "Roots of Evil" Ability { id: "A572", source: "Brute Abombinator" }
-75.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-78.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-78.2 "Winding Wildwinds (adds)" #Ability { id: "A90D", source: "Blooming Abomination" }
-78.2 "Crossing Crosswinds (adds)" #Ability { id: "A90E", source: "Blooming Abomination" }
-81.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-84.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-87.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-90.0 "Hurricane Force (adds enrage)" #Ability { id: "A56C", source: "Blooming Abomination" }
-93.2 "Quarry Swamp" Ability { id: "A575", source: "Brute Abombinator" }
-94.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-97.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-100.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-103.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-105.2 "Explosion 1" Ability { id: "A576", source: "Brute Abombinator" }
-107.8 "Explosion 2" #Ability { id: "A576", source: "Brute Abombinator" }
-108.4 "Stoneringer" Ability { id: ["A55D", "A55E"], source: "Brute Abombinator" }
-110.4 "Explosion 3" #Ability { id: "A576", source: "Brute Abombinator" }
-117.3 "Smash Here/Smash There" Ability { id: ["A55F", "A560"], source: "Brute Abombinator" }
-118.3 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
-119.4 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
-121.4 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-127.1 "Pulp Smash" Ability { id: "A579", source: "Brute Abombinator" }
-129.1 "It Came from the Dirt" Ability { id: "A57A", source: "Brute Abombinator" }
-129.1 "The Unpotted" #Ability { id: "A57B", source: "Brute Abombinator" }
-130.3 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-133.3 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-136.3 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-137.4 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
-147.8 "Neo Bombarian Special" Ability { id: "A57C", source: "Brute Abombinator" }
-147.8 "--untargetable--"
-158.4 "Grappling Ivy" Ability { id: "A57D", source: "Brute Abombinator" }
-163.1 "--targetable--"
-163.1 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-166.1 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-170.2 "Stoneringer" Ability { id: ["A57F", "A580"], source: "Brute Abombinator" }
-184.2 "Brutish Swing" Ability { id: ["A592", "A593"], source: "Brute Abombinator" }
-189.0 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
-189.1 "Glower Power" Ability { id: "A94C", source: "Brute Abombinator" }
-195.0 "Revenge of the Vines" Ability { id: "A587", source: "Brute Abombinator" }
-197.0 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-200.0 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-206.1 "Thorny Deathmatch" Ability { id: "A588", source: "Brute Abombinator" }
-210.2 "Stoneringer" Ability { id: ["A57F", "A580"], source: "Brute Abombinator" }
-222.3 "Abominable Blink" Ability { id: "A894", source: "Brute Abombinator" }
-223.3 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-226.3 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-231.4 "Sporesplosion (cast)" Ability { id: "A58A", source: "Brute Abombinator" }
-236.4 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-237.4 "Sporesplosion 1" #Ability { id: "A58B", source: "Brute Abombinator" }
-239.4 "Sporesplosion 2" #Ability { id: "A58B", source: "Brute Abombinator" }
-241.4 "Sporesplosion 3" #Ability { id: "A58B", source: "Brute Abombinator" }
-246.4 "Brutish Swing" Ability { id: ["A592", "A593"], source: "Brute Abombinator" }
-251.2 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
-251.3 "Glower Power" Ability { id: "A94C", source: "Brute Abombinator" }
-257.2 "Revenge of the Vines" Ability { id: "A587", source: "Brute Abombinator" }
-259.2 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-262.2 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-266.3 "Demolition Deathmatch" Ability { id: "A596", source: "Brute Abombinator" }
-268.3 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-271.3 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-280.7 "Abominable Blink" Ability { id: "A894", source: "Brute Abombinator" }
-281.7 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-287.7 "Strange Seeds (cast)" Ability { id: "A597", source: "Brute Abombinator" }
-293.8 "Strange Seeds 1" Ability { id: "A598", source: "Brute Abombinator" }
-294.8 "Stoneringer" Ability { id: ["A57F", "A580"], source: "Brute Abombinator" }
-298.5 "Tendrils of Terror 1" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
-298.8 "Strange Seeds 2" Ability { id: "A598", source: "Brute Abombinator" }
-303.5 "Tendrils of Terror 2" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
-303.8 "Strange Seeds 3" Ability { id: "A598", source: "Brute Abombinator" }
-308.5 "Tendrils of Terror 3" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
-308.8 "Strange Seeds 4" Ability { id: "A598", source: "Brute Abombinator" }
-313.5 "Tendrils of Terror 4" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
-318.7 "Killer Seeds" Ability { id: "A59B", source: "Brute Abombinator" }
-323.4 "Tendrils of Terror 5" Ability { id: ["A59C", "A59D"], source: "Brute Abombinator" }
-328.8 "Brutish Swing" Ability { id: ["A592", "A593"], source: "Brute Abombinator" }
-333.6 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
-333.7 "Glower Power" Ability { id: "A94C", source: "Brute Abombinator" }
-339.6 "Revenge of the Vines" Ability { id: "A587", source: "Brute Abombinator" }
-341.6 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-344.6 "--sync--" Ability { id: "A895", source: "Brute Abombinator" }
-351.7 "Powerslam" Ability { id: "A59E", source: "Brute Abombinator" }
-351.7 "--untargetable--"
-369.1 "--targetable--"
-369.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-372.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-375.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-381.1 "Brutal Impact x7" Ability { id: "A55B", source: "Brute Abombinator" } duration 6.2
-389.8 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-390.9 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
-394.9 "Stoneringer 2: Stoneringers" Ability { id: ["A5A0", "A5A1"], source: "Brute Abombinator" }
-407.5 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
-408.6 "Revenge of the Vines" Ability { id: "A639", source: "Brute Abombinator" }
-414.6 "Lashing Lariat" Ability { id: ["A5A8", "A5AA"], source: "Brute Abombinator" }
-422.9 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
-425.9 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
-426.0 "Glower Power" Ability { id: "A95E", source: "Brute Abombinator" }
-431.9 "Slaminator" Ability { id: "A5AE", source: "Brute Abombinator" }
-434.5 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-441.1 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
-453.9 "Stoneringer" Ability { id: ["A55D", "A55E"], source: "Brute Abombinator" }
-462.8 "Smash Here/Smash There" Ability { id: ["A55F", "A560"], source: "Brute Abombinator" }
-463.8 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
-464.9 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
-466.9 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-469.9 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-475.9 "Debris Deathmatch" Ability { id: "A5B0", source: "Brute Abombinator" }
-481.0 "Spore Sac (cast)" Ability { id: "A569", source: "Brute Abombinator" }
-483.1 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
-485.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-486.1 "Spore Sac" Ability { id: "A56A", source: "Brute Abombinator" }
-488.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-491.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-491.7 "Pollen" Ability { id: "A56B", source: "Brute Abombinator" }
-493.8 "--adds targetable--"
-494.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-495.1 "Killer Seeds" Ability { id: "A59B", source: "Brute Abombinator" }
-497.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-499.8 "Tendrils of Terror" Ability { id: ["A59C", "A59D"], source: "Brute Abombinator" }
-500.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-503.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-506.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-512.1 "Quarry Swamp" Ability { id: "A575", source: "Brute Abombinator" }
-523.2 "Sinister Seeds (cast)" Ability { id: "A56D", source: "Brute Abombinator" }
-525.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-527.2 "Sinister Seeds (puddles 1)" #Ability { id: "A571", source: "Brute Abombinator" }
-528.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-529.2 "Sinister Seeds (puddles 2)" #Ability { id: "A571", source: "Brute Abombinator" }
-531.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-531.2 "Sinister Seeds (seeds drop)" Ability { id: "A56E", source: "Brute Abombinator" }
-531.2 "Sinister Seeds (puddles 3)" #Ability { id: "A571", source: "Brute Abombinator" }
-533.2 "Sinister Seeds (puddles 4)" #Ability { id: "A571", source: "Brute Abombinator" }
-534.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-537.8 "Tendrils of Terror" Ability { id: ["A56F", "A570"], source: "Brute Abombinator" }
-537.9 "Roots of Evil" Ability { id: "A572", source: "Brute Abombinator" }
-541.1 "Pulp Smash" Ability { id: "A579", source: "Brute Abombinator" }
-543.1 "It Came from the Dirt" Ability { id: "A57A", source: "Brute Abombinator" }
-543.1 "The Unpotted" #Ability { id: "A57B", source: "Brute Abombinator" }
-549.4 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
-559.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-562.1 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-567.1 "Stoneringer 2: Stoneringers" Ability { id: ["A5A0", "A5A1"], source: "Brute Abombinator" }
-573.0 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
-579.0 "Strange Seeds (cast)" Ability { id: "A90A", source: "Brute Abombinator" }
-585.1 "Strange Seeds (seeds drop)" Ability { id: "A598", source: "Brute Abombinator" }
-589.8 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
-590.2 "Tendrils of Terror" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
-594.8 "Lashing Lariat" Ability { id: ["A5A8", "A5AA"], source: "Brute Abombinator" }
-599.2 "Strange Seeds (seeds drop)" Ability { id: "A598", source: "Brute Abombinator" }
-604.1 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
-604.3 "Tendrils of Terror" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
-610.6 "Slaminator" Ability { id: "A5AE", source: "Brute Abombinator" }
-613.2 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-616.8 "Stoneringer" Ability { id: ["A55D", "A55E"], source: "Brute Abombinator" }
-625.7 "Smash Here/Smash There" Ability { id: ["A55F", "A560"], source: "Brute Abombinator" }
-626.7 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
-627.8 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
-629.8 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-636.8 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
-646.6 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-649.6 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-652.6 "--sync--" Ability { id: "A55A", source: "Brute Abombinator" }
-652.7 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
-665.0 "Special Bombarian Special (enrage cast)" Ability { id: "A5B1", source: "Brute Abombinator" }
-665.0 "--untargetable--"
-668.9 "Special Bombarian Special (enrage)" Ability { id: "A5B3", source: "Brute Abombinator" }
+43.3 "Spore Sac (cast)" Ability { id: "A569", source: "Brute Abombinator" }
+46.4 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+48.4 "Spore Sac" Ability { id: "A56A", source: "Brute Abombinator" }
+52.8 "Sinister Seeds (cast)" Ability { id: "A56D", source: "Brute Abombinator" }
+53.9 "Pollen" Ability { id: "A56B", source: "Brute Abombinator" }
+56.0 "--adds targetable--"
+56.8 "Sinister Seeds (puddles 1)" #Ability { id: "A571", source: "Brute Abombinator" }
+58.8 "Sinister Seeds (puddles 2)" #Ability { id: "A571", source: "Brute Abombinator" }
+60.8 "Sinister Seeds (seeds drop)" Ability { id: "A56E", source: "Brute Abombinator" }
+60.8 "Sinister Seeds (puddles 3)" #Ability { id: "A571", source: "Brute Abombinator" }
+62.8 "Sinister Seeds (puddles 4)" #Ability { id: "A571", source: "Brute Abombinator" }
+65.4 "Impact" Ability { id: "A573", source: "Brute Abombinator" }
+65.4 "Tendrils of Terror" Ability { id: ["A56F", "A570"], source: "Brute Abombinator" }
+70.7 "Roots of Evil" Ability { id: "A572", source: "Brute Abombinator" }
+78.4 "Winding Wildwinds/Crossing Crosswinds (adds)" #Ability { id: ["A90D", "A90E"], source: "Blooming Abomination" }
+90.2 "Hurricane Force (adds enrage)" #Ability { id: "A56C", source: "Blooming Abomination" }
+93.4 "Quarry Swamp" Ability { id: "A575", source: "Brute Abombinator" }
+105.4 "Explosion 1" Ability { id: "A576", source: "Brute Abombinator" }
+108.0 "Explosion 2" #Ability { id: "A576", source: "Brute Abombinator" }
+108.6 "Stoneringer" Ability { id: ["A55D", "A55E"], source: "Brute Abombinator" }
+110.6 "Explosion 3" #Ability { id: "A576", source: "Brute Abombinator" }
+117.5 "Smash Here/Smash There" Ability { id: ["A55F", "A560"], source: "Brute Abombinator" }
+118.5 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
+119.6 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
+127.3 "Pulp Smash" Ability { id: "A579", source: "Brute Abombinator" }
+129.3 "The Unpotted" Ability { id: "A57B", source: "Brute Abombinator" }
+137.6 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+148.0 "Neo Bombarian Special" Ability { id: "A57C", source: "Brute Abombinator" }
+148.0 "--untargetable--"
+158.6 "Grappling Ivy" Ability { id: "A57D", source: "Brute Abombinator" }
+163.3 "--targetable--"
+170.4 "Stoneringer" Ability { id: ["A57F", "A580"], source: "Brute Abombinator" }
+184.4 "Brutish Swing" Ability { id: ["A592", "A593"], source: "Brute Abombinator" }
+189.2 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
+189.3 "Glower Power" Ability { id: "A94C", source: "Brute Abombinator" }
+195.2 "Revenge of the Vines" Ability { id: "A587", source: "Brute Abombinator" }
+206.3 "Thorny Deathmatch" Ability { id: "A588", source: "Brute Abombinator" }
+210.4 "Stoneringer" Ability { id: ["A57F", "A580"], source: "Brute Abombinator" }
+222.5 "Abominable Blink" Ability { id: "A894", source: "Brute Abombinator" }
+231.6 "Sporesplosion (cast)" Ability { id: "A58A", source: "Brute Abombinator" }
+237.6 "Sporesplosion 1" #Ability { id: "A58B", source: "Brute Abombinator" }
+239.6 "Sporesplosion 2" #Ability { id: "A58B", source: "Brute Abombinator" }
+241.6 "Sporesplosion 3" #Ability { id: "A58B", source: "Brute Abombinator" }
+246.8 "Brutish Swing" Ability { id: ["A592", "A593"], source: "Brute Abombinator" }
+251.6 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
+251.7 "Glower Power" Ability { id: "A94C", source: "Brute Abombinator" }
+257.6 "Revenge of the Vines" Ability { id: "A587", source: "Brute Abombinator" }
+266.7 "Demolition Deathmatch" Ability { id: "A596", source: "Brute Abombinator" }
+281.1 "Abominable Blink" Ability { id: "A894", source: "Brute Abombinator" }
+288.1 "Strange Seeds (cast)" Ability { id: "A597", source: "Brute Abombinator" }
+294.2 "Strange Seeds 1" Ability { id: "A598", source: "Brute Abombinator" }
+295.2 "Stoneringer" Ability { id: ["A57F", "A580"], source: "Brute Abombinator" }
+298.9 "Tendrils of Terror 1" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
+299.2 "Strange Seeds 2" Ability { id: "A598", source: "Brute Abombinator" }
+303.9 "Tendrils of Terror 2" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
+304.2 "Strange Seeds 3" Ability { id: "A598", source: "Brute Abombinator" }
+308.9 "Tendrils of Terror 3" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
+309.2 "Strange Seeds 4" Ability { id: "A598", source: "Brute Abombinator" }
+313.9 "Tendrils of Terror 4" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
+319.1 "Killer Seeds" Ability { id: "A59B", source: "Brute Abombinator" }
+323.8 "Tendrils of Terror 5" Ability { id: ["A59C", "A59D"], source: "Brute Abombinator" }
+329.2 "Brutish Swing" Ability { id: ["A592", "A593"], source: "Brute Abombinator" }
+334.0 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
+334.1 "Glower Power" Ability { id: "A94C", source: "Brute Abombinator" }
+340.0 "Revenge of the Vines" Ability { id: "A587", source: "Brute Abombinator" }
+352.1 "Powerslam" Ability { id: "A59E", source: "Brute Abombinator" }
+352.1 "--untargetable--"
+369.5 "--targetable--"
+381.5 "Brutal Impact x7" Ability { id: "A55B", source: "Brute Abombinator" } duration 6.2
+391.3 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+395.3 "Stoneringer 2: Stoneringers" Ability { id: ["A5A0", "A5A1"], source: "Brute Abombinator" }
+407.9 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
+409.0 "Revenge of the Vines" Ability { id: "A639", source: "Brute Abombinator" }
+415.0 "Lashing Lariat" Ability { id: ["A5A8", "A5AA"], source: "Brute Abombinator" }
+423.3 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
+426.3 "Electrogenetic Force" Ability { id: "A586", source: "Brute Abombinator" }
+426.4 "Glower Power" Ability { id: "A95E", source: "Brute Abombinator" }
+432.3 "Slaminator" Ability { id: "A5AE", source: "Brute Abombinator" }
+441.5 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
+454.3 "Stoneringer" Ability { id: ["A55D", "A55E"], source: "Brute Abombinator" }
+463.2 "Smash Here/Smash There" Ability { id: ["A55F", "A560"], source: "Brute Abombinator" }
+464.2 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
+465.3 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
+476.5 "Debris Deathmatch" Ability { id: "A5B0", source: "Brute Abombinator" }
+481.6 "Spore Sac (cast)" Ability { id: "A569", source: "Brute Abombinator" }
+483.7 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+486.7 "Spore Sac" Ability { id: "A56A", source: "Brute Abombinator" }
+492.3 "Pollen" Ability { id: "A56B", source: "Brute Abombinator" }
+494.4 "--adds targetable--"
+495.7 "Killer Seeds" Ability { id: "A59B", source: "Brute Abombinator" }
+500.4 "Tendrils of Terror" Ability { id: ["A59C", "A59D"], source: "Brute Abombinator" }
+512.7 "Quarry Swamp" Ability { id: "A575", source: "Brute Abombinator" }
+523.8 "Sinister Seeds (cast)" Ability { id: "A56D", source: "Brute Abombinator" }
+527.8 "Sinister Seeds (puddles 1)" #Ability { id: "A571", source: "Brute Abombinator" }
+529.8 "Sinister Seeds (puddles 2)" #Ability { id: "A571", source: "Brute Abombinator" }
+531.8 "Sinister Seeds (seeds drop)" Ability { id: "A56E", source: "Brute Abombinator" }
+531.8 "Sinister Seeds (puddles 3)" #Ability { id: "A571", source: "Brute Abombinator" }
+533.8 "Sinister Seeds (puddles 4)" #Ability { id: "A571", source: "Brute Abombinator" }
+538.4 "Tendrils of Terror" Ability { id: ["A56F", "A570"], source: "Brute Abombinator" }
+538.5 "Roots of Evil" Ability { id: "A572", source: "Brute Abombinator" }
+541.7 "Pulp Smash" Ability { id: "A579", source: "Brute Abombinator" }
+543.7 "The Unpotted" Ability { id: "A57B", source: "Brute Abombinator" }
+550.0 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
+567.7 "Stoneringer 2: Stoneringers" Ability { id: ["A5A0", "A5A1"], source: "Brute Abombinator" }
+573.6 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+579.6 "Strange Seeds (cast)" Ability { id: "A90A", source: "Brute Abombinator" }
+585.7 "Strange Seeds (seeds drop)" Ability { id: "A598", source: "Brute Abombinator" }
+590.4 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
+590.8 "Tendrils of Terror" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
+595.4 "Lashing Lariat" Ability { id: ["A5A8", "A5AA"], source: "Brute Abombinator" }
+599.8 "Strange Seeds (seeds drop)" Ability { id: "A598", source: "Brute Abombinator" }
+604.7 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
+604.9 "Tendrils of Terror" Ability { id: ["A599", "A59A"], source: "Brute Abombinator" }
+611.2 "Slaminator" Ability { id: "A5AE", source: "Brute Abombinator" }
+617.4 "Stoneringer" Ability { id: ["A55D", "A55E"], source: "Brute Abombinator" }
+626.3 "Smash Here/Smash There" Ability { id: ["A55F", "A560"], source: "Brute Abombinator" }
+627.3 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
+628.4 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
+637.4 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
+653.3 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+665.6 "Special Bombarian Special (enrage cast)" Ability { id: "A5B1", source: "Brute Abombinator" }
+665.6 "--untargetable--"
+669.5 "Special Bombarian Special (enrage)" Ability { id: "A5B3", source: "Brute Abombinator" }
 
 
 # IGNORED ABILITIES
+# A55A --sync--
 # A563 Brutish Swing
 # A564 Brutish Swing
 # A574 Impact
 # A577 Pulp Smash
 # A578 Pulp Smash
+# A57A It Came from the Dirt
 # A585 Glower Power
 # A589 Abominable Blink
 # A58C Brutish Swing
@@ -225,6 +167,7 @@ hideall "--sync--"
 # A5B2 Special Bombarian Special
 # A63C Brutish Swing
 # A63D Brutish Swing
+# A895 --sync--
 # A94A Glower Power
 
 # ALL ENCOUNTER ABILITIES
