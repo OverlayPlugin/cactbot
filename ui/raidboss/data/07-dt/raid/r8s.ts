@@ -344,13 +344,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Ravenous Saber',
-      type: 'StartsUsing',
-      netRegex: { id: 'A749', source: 'Howling Blade', capture: false },
-      durationSeconds: 7,
-      response: Responses.bigAoe(),
-    },
-    {
       id: 'R8S Titanic Pursuit',
       type: 'StartsUsing',
       netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
@@ -378,6 +371,15 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.tankbuster], capture: true },
       response: Responses.sharedTankBuster(),
+    },
+    {
+      id: 'R8S Howling Havoc',
+      // There are two additional casts, but only the Wolf Of Stone cast one (A3DD) does damage
+      // A3DC Howling Havoc from Wolf of Stone self-cast
+      // A3DB Howling Havoc from Wolf of Wind self-cast
+      type: 'StartsUsing',
+      netRegex: { id: 'A3DD', source: 'Wolf Of Stone', capture: false },
+      response: Responses.bigAoe(),
     },
     {
       id: 'R8S Tactical Pack Tethers',
@@ -521,6 +523,13 @@ const triggerSet: TriggerSet<Data> = {
         }
       },
       outputStrings: stoneWindOutputStrings,
+    },
+    {
+      id: 'R8S Ravenous Saber',
+      type: 'StartsUsing',
+      netRegex: { id: 'A749', source: 'Howling Blade', capture: false },
+      durationSeconds: 7,
+      response: Responses.bigAoe(),
     },
     {
       id: 'R8S Spread/Stack Collect',
