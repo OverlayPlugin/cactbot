@@ -290,8 +290,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Aero III',
+      // Happens twice, but Prowling Gale occurs simultaneously on the second one
       type: 'StartsUsing',
       netRegex: { id: 'A3B7', source: 'Howling Blade', capture: false },
+      suppressSeconds: 6,
       response: Responses.knockback(),
     },
     {
