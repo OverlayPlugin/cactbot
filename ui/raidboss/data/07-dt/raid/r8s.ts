@@ -31,6 +31,7 @@ export interface Data extends RaidbossData {
   // Phase 2
   herosBlowInOut?: 'in' | 'out';
   purgeTargets: string[];
+  hasTwofoldTether: boolean;
   platforms: number;
 }
 
@@ -111,6 +112,7 @@ const triggerSet: TriggerSet<Data> = {
     moonbeamBitesTracker: 0,
     // Phase 2
     purgeTargets: [],
+    hasTwofoldTether: false,
     platforms: 5,
   }),
   triggers: [
@@ -929,8 +931,11 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: [headMarkerData.twofoldTether], capture: true },
       infoText: (data, matches, output) => {
-        if (matches.target === data.me)
+        if (matches.target === data.me) {
+          data.hasTwofoldTether = true;
           return output.tetherOnYou!();
+        }
+        data.hasTwofoldTether = false;
         const player = data.party.member(matches.target);
         return output.tetherOnPlayer!({ player: player });
       },
@@ -940,6 +945,24 @@ const triggerSet: TriggerSet<Data> = {
         },
         tetherOnPlayer: {
           en: 'Twinfold Tether on ${player}',
+        },
+      },
+    },
+    {
+      id: 'R8S Twofold Tempest Tether Pass',
+      // Call pass after the puddle has been dropped
+      type: 'Ability',
+      netRegex: { id: 'A472', source: 'Howling Blade', capture: false },
+      suppressSeconds: 1,
+      condition: (data) => {
+        if (data.hasTwofoldTether)
+          return true;
+        return false;
+      },
+      infoText: (_data, _matches, output) => output.passTether!(),
+      outputStrings: {
+        passTether: {
+          en: 'Pass Tether',
         },
       },
     },
