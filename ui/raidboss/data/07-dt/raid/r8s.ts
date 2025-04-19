@@ -293,7 +293,7 @@ const triggerSet: TriggerSet<Data> = {
       // Happens twice, but Prowling Gale occurs simultaneously on the second one
       type: 'StartsUsing',
       netRegex: { id: 'A3B7', source: 'Howling Blade', capture: false },
-      suppressSeconds: 6,
+      suppressSeconds: 16,
       response: Responses.knockback(),
     },
     {
@@ -379,7 +379,8 @@ const triggerSet: TriggerSet<Data> = {
       // A3DB Howling Havoc from Wolf of Wind self-cast
       type: 'StartsUsing',
       netRegex: { id: 'A3DD', source: 'Wolf Of Stone', capture: false },
-      response: Responses.bigAoe(),
+      delaySeconds: 2,
+      response: Responses.aoe(),
     },
     {
       id: 'R8S Tactical Pack Tethers',
