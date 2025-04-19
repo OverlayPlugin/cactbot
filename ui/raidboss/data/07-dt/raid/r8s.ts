@@ -67,6 +67,8 @@ const headMarkerData = {
   'stack': '005D',
   // Blue circle marker with spikes used for Ultraviolent Ray target in Phase 2
   'ultraviolent': '000E',
+  // Passable tether used for Twofold Tempest in Phase 2
+  'twofoldTether': '0054',
 } as const;
 
 const stoneWindOutputStrings = {
@@ -383,8 +385,9 @@ const triggerSet: TriggerSet<Data> = {
       // A3DC Howling Havoc from Wolf of Stone self-cast
       // A3DB Howling Havoc from Wolf of Wind self-cast
       type: 'StartsUsing',
-      netRegex: { id: 'A3DD', source: 'Wolf Of Stone', capture: false },
-      delaySeconds: 2,
+      netRegex: { id: 'A3DD', source: 'Wolf Of Stone', capture: true },
+      // 4.7s castTime
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 2,
       response: Responses.aoe(),
     },
     {
@@ -918,6 +921,25 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         purgeOnPlayers: {
           en: 'Elemental Purge on ${player1} and ${player2}',
+        },
+      },
+    },
+    {
+      id: 'R8S Twofold Tempest Tether',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.twofoldTether], capture: true },
+      infoText: (data, matches, output) => {
+        if (matches.target === data.me)
+          return output.tetherOnYou!();
+        const player = data.party.member(matches.target);
+      return output.tetherOnPlayer!({ player: player });
+      },
+      outputStrings: {
+        tetherOnYou: {
+          en: 'Twinfold Tether on YOU',
+        },
+        tetherOnPlayer: {
+          en: 'Twinfold Tether on ${player}',
         },
       },
     },
