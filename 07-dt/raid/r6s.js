@@ -29,6 +29,25 @@ const headMarkerData = {
   // Pudding Party x5 stack
   'puddingPartyMarker': '0131',
 };
+// Unique positions for cacti in first set for each pattern
+const cactusSpamPatterns = [
+  { id: '1', x: 100.009, y: 89.999 },
+  { id: '2', x: 116.001, y: 116.001 },
+  { id: '3', x: 100.009, y: 100.009 },
+  { id: '4', x: 110.996, y: 116.001 },
+];
+// Positions for cacti corresponding to danger corner
+const cactusQuicksandPatterns = [
+  { id: 'dirNE', x: 116.001, y: 83.987 },
+  { id: 'dirSE', x: 116.001, y: 116.001 },
+  { id: 'dirSW', x: 83.987, y: 116.001 },
+  { id: 'dirNW', x: 83.987, y: 83.987 },
+];
+const findCactus = (patterns, x, y) => {
+  return patterns.find((coords) => {
+    return Math.abs(coords.x - x) < 0.005 && Math.abs(coords.y - y) < 0.005;
+  });
+};
 Options.Triggers.push({
   id: 'AacCruiserweightM2Savage',
   zoneId: ZoneId.AacCruiserweightM2Savage,
@@ -346,6 +365,85 @@ Options.Triggers.push({
         stackOn: {
           en: 'Stack on ${target} x5',
           ko: '쉐어 x5 ${target}',
+        },
+      },
+    },
+    {
+      id: 'R6S Cactus Spam Pattern Identifier',
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A6A1' },
+      condition: (_data, matches) => {
+        const matchX = parseFloat(matches.x);
+        const matchY = parseFloat(matches.y);
+        const cactus = findCactus(cactusSpamPatterns, matchX, matchY);
+        return cactus !== undefined;
+      },
+      suppressSeconds: 9999,
+      infoText: (_data, matches, output) => {
+        const matchX = parseFloat(matches.x);
+        const matchY = parseFloat(matches.y);
+        const cactus = findCactus(cactusSpamPatterns, matchX, matchY);
+        if (cactus === undefined)
+          return;
+        switch (cactus.id) {
+          case '1':
+            return output.pattern1();
+          case '2':
+            return output.pattern2();
+          case '3':
+            return output.pattern3();
+          case '4':
+            return output.pattern4();
+        }
+        return output.unknown();
+      },
+      outputStrings: {
+        unknown: Outputs.unknown,
+        pattern1: {
+          en: 'Cactus Pattern 1',
+        },
+        pattern2: {
+          en: 'Cactus Pattern 2 (bad)',
+        },
+        pattern3: {
+          en: 'Cactus Pattern 3',
+        },
+        pattern4: {
+          en: 'Cactus Pattern 4',
+        },
+      },
+    },
+    {
+      id: 'R6S Cactus Quicksand Pattern Identifier',
+      type: 'StartsUsingExtra',
+      netRegex: { id: '9A2C' },
+      condition: (_data, matches) => {
+        const matchX = parseFloat(matches.x);
+        const matchY = parseFloat(matches.y);
+        const cactus = findCactus(cactusQuicksandPatterns, matchX, matchY);
+        return cactus !== undefined;
+      },
+      suppressSeconds: 9999,
+      infoText: (_data, matches, output) => {
+        const matchX = parseFloat(matches.x);
+        const matchY = parseFloat(matches.y);
+        const cactus = findCactus(cactusQuicksandPatterns, matchX, matchY);
+        if (cactus === undefined)
+          return;
+        switch (cactus.id) {
+          case 'dirNE':
+          case 'dirSE':
+          case 'dirSW':
+          case 'dirNW':
+            return output.cactus({ dir: output[cactus.id]() });
+        }
+        return output.unknown();
+      },
+      outputStrings: {
+        unknown: Outputs.unknown,
+        ...Directions.outputStrings8Dir,
+        cactus: {
+          en: 'Danger Cactus ${dir}',
         },
       },
     },
