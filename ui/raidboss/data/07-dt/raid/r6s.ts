@@ -159,7 +159,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidCleave: {
           en: 'Be on boss hitbox (avoid tank cleaves)',
-          ja: 'ボスの足元へ（タンク攻撃を避ける）',
+          ja: 'ボス背面のサークル上に',
           ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
         },
         warmCleave: {
