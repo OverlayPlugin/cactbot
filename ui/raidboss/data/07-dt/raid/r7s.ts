@@ -8,10 +8,10 @@ import { Job } from '../../../../../types/job';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // @TODO:
-// - Sinister Seeds - call who has puddles
-// - Roots of Evil - dodge call?
-// - adds interrupt calls?
-// - Demolition Deathmatch - strat-specific tether callouts
+// - Sinister Seeds - callout who has puddles?
+// - Roots of Evil - dodge callout?
+// - adds interrupt callouts?
+// - Demolition Deathmatch - strat-specific tether callouts?
 
 const headMarkerData = {
   // Sinster Seeds marker
@@ -44,21 +44,6 @@ const triggerSet: TriggerSet<Data> = {
   }),
   triggers: [
     {
-      // @TODO: remove later
-      id: 'R7S Headmarker Debug',
-      type: 'HeadMarker',
-      netRegex: { id: '005D', capture: true },
-      durationSeconds: 10,
-      suppressSeconds: 1,
-      infoText: (_data, matches, output) =>
-        output.text!({ id: matches.id, target: matches.target }),
-      outputStrings: {
-        text: {
-          en: 'Headmarker ${id} on ${target}',
-        },
-      },
-    },
-    {
       id: 'R7S Brutal Impact',
       type: 'StartsUsing',
       netRegex: { id: 'A55B', source: 'Brute Abombinator', capture: false },
@@ -73,18 +58,42 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R7S Stoneringer',
       type: 'StartsUsing',
-      netRegex: { id: ['A55D', 'A55E'], source: 'Brute Abombinator', capture: true },
+      netRegex: {
+        id: ['A55D', 'A55E', 'A57F', 'A580'],
+        source: 'Brute Abombinator',
+        capture: true,
+      },
       durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 10,
       infoText: (data, matches, output) => {
-        data.storedStoneringer = matches.id === 'A55D' ? 'out' : 'in';
-        return output[data.storedStoneringer]!();
+        const id = matches.id;
+        switch (id) {
+          case 'A55D':
+            data.storedStoneringer = 'out';
+            return output.out!();
+          case 'A55E':
+            data.storedStoneringer = 'in';
+            return output.in!();
+          case 'A57F':
+            data.storedStoneringer = 'out';
+            return output.outLater!();
+          case 'A580':
+            data.storedStoneringer = 'in';
+            return output.inLater!();
+        }
       },
       outputStrings: {
+        inLater: {
+          en: 'In (for later)',
+        },
+        outLater: {
+          en: 'Out (for later)',
+        },
         in: Outputs.in,
         out: Outputs.out,
       },
     },
     {
+      // tanks may choose to invuln this, but that is strat specific
       id: 'R7S Smash Here/There',
       type: 'StartsUsing',
       netRegex: { id: ['A55F', 'A560'], source: 'Brute Abombinator', capture: true },
@@ -130,6 +139,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R7S Impact',
       type: 'Ability',
       netRegex: { id: 'A56E', source: 'Brute Abombinator', capture: false },
+      condition: (data) => data.brutalImpactCount < 8,
       suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -186,37 +196,32 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R7S Brutish Swing',
       type: 'StartsUsing',
       netRegex: {
-        id: ['A58C', 'A58D', 'A58F', 'A591', 'A5A3', 'A5A5'],
+        id: ['A592', 'A593', 'A5A3', 'A5A5'],
         source: 'Brute Abombinator',
         capture: true,
       },
-      infoText: (data, matches, output) => {
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 10,
+      alertText: (data, matches, output) => {
         const id = matches.id;
         switch (id) {
-          case 'A58C':
-            return output.in!({ id: matches.id });
-          case 'A58D':
-            return output.out!({ id: matches.id });
-          case 'A58F':
-            return output.in!({ id: matches.id });
-          case 'A591':
-            return output.out!({ id: matches.id });
+          case 'A592':
+            return output.out!();
+          case 'A593':
+            return output.in!();
           case 'A5A3': {
             if (data.brutalImpactCount > 7)
-              return output.in!({ id: matches.id });
+              return output.out!();
 
             const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
-            return output.inFollowup!({ followup: followup, id: matches.id });
+            return output.outFollowup!({ followup: followup });
           }
           case 'A5A5': {
             if (data.brutalImpactCount > 7)
-              return output.out!({ id: matches.id });
+              return output.in!();
 
             const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
-            return output.outFollowup!({ followup: followup, id: matches.id });
+            return output.inFollowup!({ followup: followup });
           }
-          default:
-            return output.unknown!({ id: matches.id });
         }
       },
       run: (data) => {
@@ -225,28 +230,27 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         in: {
-          en: 'In at tethered wall ${id}',
+          en: 'In at tethered wall',
         },
         out: {
-          en: 'Out from tethered wall ${id}',
+          en: 'Out from tethered wall',
         },
         inFollowup: {
-          en: 'In at tethered wall + ${followup} ${id}',
+          en: 'In at tethered wall + ${followup}',
         },
         outFollowup: {
-          en: 'Out from tethered wall + ${followup} ${id}',
+          en: 'Out from tethered wall + ${followup}',
         },
         awayFromFront: {
           en: 'Spread, Away from front',
         },
         bigAoe: Outputs.bigAoe,
-        unknown: Outputs.unknown,
       },
     },
     {
       id: 'R7S Glower Power',
       type: 'StartsUsing',
-      netRegex: { id: 'A585', source: 'Brute Abombinator', capture: false },
+      netRegex: { id: 'A94C', source: 'Brute Abombinator', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -258,7 +262,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R7S Revenge of the Vines',
       type: 'StartsUsing',
       netRegex: { id: 'A587', source: 'Brute Abombinator', capture: false },
-      response: Responses.aoe(),
+      response: Responses.bigAoe(),
     },
     {
       id: 'R7S Thorny Deathmatch',
@@ -285,7 +289,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Away from Flare',
         },
         flare: {
-          en: 'Flare on YOU',
+          en: 'Flare on YOU, Away from party',
         },
       },
     },
@@ -298,7 +302,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Get Tethers',
+          en: 'Get tethers',
         },
       },
     },
@@ -306,17 +310,26 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R7S Strange Seeds',
       type: 'StartsUsing',
       netRegex: { id: 'A598', source: 'Brute Abombinator', capture: true },
-      suppressSeconds: 1,
-      alertText: (data, matches, output) => {
-        if (data.me === matches.target)
-          return output.dropSeed!();
-        return output.avoidSeed!();
-      },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        dropSeed: {
-          en: 'Drop seed => Avoid line AoEs',
+        text: {
+          en: 'Drop seed',
         },
-        avoidSeed: {
+      },
+    },
+    {
+      id: 'R7S Tendrils of Terror',
+      type: 'StartsUsing',
+      netRegex: {
+        id: ['A599', 'A59A', 'A59C', 'A59D'],
+        source: 'Brute Abombinator',
+        capture: false,
+      },
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
           en: 'Avoid line AoEs',
         },
       },
@@ -334,7 +347,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R7S Powerslam',
       type: 'StartsUsing',
       netRegex: { id: 'A59E', source: 'Brute Abombinator', capture: false },
-      response: Responses.bigAoe(),
+      response: Responses.bigAoe('alert'),
     },
     {
       id: 'R7S Stoneringer 2: Stoneringers',
@@ -347,29 +360,38 @@ const triggerSet: TriggerSet<Data> = {
         return output[data.storedStoneringer]!();
       },
       outputStrings: {
-        in: Outputs.in,
-        out: Outputs.out,
+        in: {
+          en: 'In (for later)',
+        },
+        out: {
+          en: 'Out (for later)',
+        },
       },
     },
     {
       id: 'R7S Lashing Lariat',
       type: 'StartsUsing',
       netRegex: { id: ['A5A8', 'A5AA'], source: 'Brute Abombinator', capture: true },
-      infoText: (_data, matches, output) =>
+      alertText: (_data, matches, output) =>
         matches.id === 'A5A8' ? output.right!() : output.left!(),
       outputStrings: {
-        left: Outputs.left,
-        right: Outputs.right,
+        left: {
+          en: '<== Get Left',
+        },
+        right: {
+          en: 'Get Right ==>',
+        },
       },
     },
     {
+      // tanks may choose to invuln this, but that is strat specific
       id: 'R7S Slaminator',
       type: 'StartsUsing',
-      netRegex: { id: 'A5AD', source: 'Brute Abombinator', capture: false },
+      netRegex: { id: 'A5AE', source: 'Brute Abombinator', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Get Tower',
+          en: 'Get tower',
         },
       },
     },
@@ -381,7 +403,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Get Tethers',
+          en: 'Get tethers',
         },
       },
     },
