@@ -327,17 +327,19 @@ const triggerSet: TriggerSet<Data> = {
         ) {
           // This will trigger for each tether a player has
           const dir = output[Directions.outputFrom8DirNum(data.galeTetherDirNum)]!();
-          return output.stretchTetherDir!({ dir: dir });
+          return output.knockbackTetherDir!({ dir: dir });
         }
 
         if (data.galeTetherDirNum === undefined && data.galeTetherCount === 4)
-          return output.getTowers!();
+          return output.knockbackTowers!();
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
-        getTowers: Outputs.getTowers,
-        stretchTetherDir: {
-          en: 'Stretch tether: ${dir}',
+        knockbackTetherDir: {
+          en: 'Knockback tether: ${dir}',
+        },
+        knockbackTowers: {
+          en: 'Knockback Towers',
         },
       },
     },
