@@ -302,7 +302,12 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Support getting a tower and tether?
       type: 'Tether',
       netRegex: { id: [headMarkerData.galeTether], capture: true },
-      preRun: (data) => data.galeTetherCount = data.galeTetherCount + 1,
+      preRun: (data, matches) => {
+        // Set galeTetherDirNum to avoid triggering tower call
+        if (data.me === matches.target)
+          data.galeTetherDirNum = -1;
+        data.galeTetherCount = data.galeTetherCount + 1;
+      },
       promise: async (data, matches) => {
         if (data.me !== matches.target)
           return;
