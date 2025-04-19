@@ -932,7 +932,7 @@ const triggerSet: TriggerSet<Data> = {
         if (matches.target === data.me)
           return output.tetherOnYou!();
         const player = data.party.member(matches.target);
-      return output.tetherOnPlayer!({ player: player });
+        return output.tetherOnPlayer!({ player: player });
       },
       outputStrings: {
         tetherOnYou: {
