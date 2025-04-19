@@ -953,12 +953,12 @@ const triggerSet: TriggerSet<Data> = {
       // Call pass after the puddle has been dropped
       type: 'Ability',
       netRegex: { id: 'A472', source: 'Howling Blade', capture: false },
-      suppressSeconds: 1,
       condition: (data) => {
         if (data.hasTwofoldTether)
           return true;
         return false;
       },
+      suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.passTether!(),
       outputStrings: {
         passTether: {
