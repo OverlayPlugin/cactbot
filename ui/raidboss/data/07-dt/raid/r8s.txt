@@ -2,7 +2,7 @@
 
 # -ii A921 A922 A39B A39C A39F A3A0 A3B0 A3B1 A3DB A3DD A74F A751 A881 A882 A45D A4CE A92D A92E
 # -ii A3B8 A3C5 A45F A461 A463 A464 A472 A473 A45B A46C A891 A479 A47A A47B A47C A47E A47F A480
-# -ii A481 A486 A488
+# -ii A481 A486 A488 A4A1 A4A2
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -183,7 +183,7 @@ hideall "--sync--"
 596.8 "Bare Fangs" Ability { id: "A475", source: "Howling Blade" }
 
 # Champion's Circuit
-608.4 "Champion's Circuit" Ability { id: "A477", source: "Howling Blade" }
+608.4 "Champion's Circuit" Ability { id: ["A477", "A478"], source: "Howling Blade" }
 608.4 "Gleaming Barrage" Ability { id: "A476", source: "Gleaming Fang" }
 609.1 "Champion's Circuit" Ability { id: "A47D", source: "Howling Blade" }
 612.8 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
@@ -304,5 +304,7 @@ hideall "--sync--"
 # A47F Champion's Circuit
 # A480 Champion's Circuit
 # A481 Champion's Circuit
+# A4A1 Champion's Circuit (boss instant cast) clockwise rotation
+# A4A2 Champion's Circuit (boss instant cast) counterclockwise rotation
 # A486 Prowling Gale (1-Person Tower)
 # A488 Prowling Gale (3-Person Tower)
