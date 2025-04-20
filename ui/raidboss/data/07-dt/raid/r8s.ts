@@ -1189,10 +1189,6 @@ const triggerSet: TriggerSet<Data> = {
             newOrder = order1;
         }
 
-        console.error(
-            `R8S Twofold Tempest Tether: Wrong actor count ${data.championDonutStart} ${newOrder}`,
-        );
-
         // Failed to get clock or matching x coords
         if (
           newOrder === undefined || newOrder[0] === undefined ||
