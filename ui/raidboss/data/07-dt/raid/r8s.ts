@@ -1084,7 +1084,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Champion\'s Circuit Safe Spots',
+      id: 'R8S Champion\'s Circuit Mechanic Order',
       // First Casts:
       // A479 Champion's Circuit Sides safe (middle cleave)
       // A47A Champion's Circuit Donut
@@ -1104,7 +1104,8 @@ const triggerSet: TriggerSet<Data> = {
       // 119.28, 85.84  Center of NE platform
       // 116.64, 105.41 Center of SE platform
       type: 'StartsUsing',
-      netRegex: { id: "A47A", source: 'Howling Blade', capture: true },
+      netRegex: { id: 'A47A', source: 'Howling Blade', capture: true },
+      // Combined duration of all the mechanics
       durationSeconds: 26,
       infoText: (data, matches, output) => {
         if (data.championClock === undefined)
@@ -1140,7 +1141,7 @@ const triggerSet: TriggerSet<Data> = {
             newOrder = order3;
           else if (data.championClock === 'counterclockwise')
             newOrder = order2;
-        } else if (x > 115 && x < 118)  {
+        } else if (x > 115 && x < 118) {
           // SE Platform
           if (data.championClock === 'clockwise')
             newOrder = order4;
@@ -1182,8 +1183,9 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Gleaming Barrage Collect',
-      // Gleaming Fang is at 96, 126.5 or 104, 126.5
+      id: 'R8S Champion\'s Circuit Safe Spot',
+      // Gleaming Fang for the South Platform is at 96, 126.5 or 104, 126.5
+      // A476 Gleaming Barrage
       type: 'StartsUsing',
       netRegex: { id: 'A476', source: 'Gleaming Fang', capture: true },
       condition: (_data, matches) => {
