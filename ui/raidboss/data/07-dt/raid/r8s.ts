@@ -1102,7 +1102,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Close Tether on YOU',
         },
         farTetherOnYou: {
-          en: 'Close Tether on YOU',
+          en: 'Far Tether on YOU',
         },
       },
     },
