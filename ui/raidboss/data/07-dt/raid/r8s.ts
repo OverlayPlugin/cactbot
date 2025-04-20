@@ -108,6 +108,31 @@ const moonlightOutputStrings = {
   },
 };
 
+const championOutputStrings = {
+  clockwise: Outputs.clockwise,
+  counterclock: Outputs.counterclockwise,
+  in: Outputs.in,
+  out: Outputs.out,
+  donut: {
+    en: 'Donut',
+  },
+  sides: Outputs.sides,
+  mechanics: {
+    en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+  },
+  left: Outputs.left,
+  right: Outputs.right,
+  leftSide: {
+    en: 'Left Side',
+  },
+  rightSide: {
+    en: 'Right Side',
+  },
+  dirMechanic: {
+    en: '${dir} ${mech}',
+  },
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM4Savage',
   zoneId: ZoneId.AacCruiserweightM4Savage,
@@ -1168,19 +1193,7 @@ const triggerSet: TriggerSet<Data> = {
           mech5: output[newOrder[4]]!(),
         });
       },
-      outputStrings: {
-        clockwise: Outputs.clockwise,
-        counterclock: Outputs.counterclockwise,
-        in: Outputs.in,
-        out: Outputs.out,
-        donut: {
-          en: 'Donut',
-        },
-        sides: Outputs.sides,
-        mechanics: {
-          en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
-        },
-      },
+      outputStrings: championOutputStrings,
     },
     {
       id: 'R8S Champion\'s Circuit Safe Spot',
@@ -1203,16 +1216,17 @@ const triggerSet: TriggerSet<Data> = {
           data.championOrder[data.championTracker] === undefined
         )
           return;
-        return output.dirMechanic!({ dir: dir, mech: data.championOrder[data.championTracker] });
+
+        if (data.championOrder[data.championTracker] === 'sides')
+          return x < 100 ? output.leftSide!() : output.rightSide!();
+
+        const mech = data.championOrder[data.championTracker];
+        if (mech === undefined)
+          return;
+        return output.dirMechanic!({ dir: dir, mech: output[mech]!() });
       },
       run: (data) => data.championTracker = data.championTracker + 1,
-      outputStrings: {
-        left: Outputs.left,
-        right: Outputs.right,
-        dirMechanic: {
-          en: '${dir} ${mech}',
-        },
-      },
+      outputStrings: championOutputStrings,
     },
     {
       id: 'R8S Lone Wolf\'s Lament Tethers',
