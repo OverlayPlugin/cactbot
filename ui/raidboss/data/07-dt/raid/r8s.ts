@@ -34,6 +34,9 @@ export interface Data extends RaidbossData {
   hasTwofoldTether: boolean;
   twofoldInitialDir?: string;
   twofoldTracker: number;
+  championClock?: 'clockwise' | 'counterclockwise';
+  championOrder?: string[];
+  championTracker: number;
   platforms: number;
 }
 
@@ -124,6 +127,7 @@ const triggerSet: TriggerSet<Data> = {
     purgeTargets: [],
     hasTwofoldTether: false,
     twofoldTracker: 0,
+    championTracker: 0,
     platforms: 5,
   }),
   triggers: [
@@ -1069,18 +1073,143 @@ const triggerSet: TriggerSet<Data> = {
       // Followed by instant cast turns:
       // A4A1 Champion's Circuit (clockwise)
       // A4A2 Champion's Circuit (counterclockwise)
-      // TODO: Have starting direction?
-      id: 'R8S Champion\'s Circuit Direction',
+      id: 'R8S Champion\'s Circuit Direction Collect',
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.clockwise, headMarkerData.counterclockwise] },
-      infoText: (_data, matches, output) => {
+      run: (data, matches) => {
         if (matches.id === headMarkerData.clockwise)
-          return output.clockwise!();
-        return output.counterclock!();
+          data.championClock = 'clockwise';
+        else
+          data.championClock = 'counterclockwise';
+      },
+    },
+    {
+      id: 'R8S Champion\'s Circuit Safe Spots',
+      // First Casts:
+      // A479 Champion's Circuit Sides safe (middle cleave)
+      // A47A Champion's Circuit Donut
+      // A47B Champion's Circuit In safe (halfmoon cleave)
+      // A47C Champion's Circuit Out safe (in circle)
+      // A47D Champion's Circuit In safe (halfmoon cleave)
+      // Subsequent Casts:
+      // A47E Champion's Circuit Sides (middle cleave)
+      // A47F Champion's Circuit Donut
+      // A480 Champion's Circuit In safe (halfmoon cleave)
+      // A481 Champion's Circuit Out safe (in circle)
+      // A482 Champion's Circuit In safe (halfmoon cleave)
+      // Actor casting the donut is trackable to center of its platform
+      // 100,    117.5  Center of S platform
+      // 83.36,  105.41 Center of SW platform
+      // 89.71,  85.84  Center of NW platform
+      // 119.28, 85.84  Center of NE platform
+      // 116.64, 105.41 Center of SE platform
+      type: 'StartsUsing',
+      netRegex: { id: "A47A", source: 'Howling Blade', capture: true },
+      durationSeconds: 26,
+      infoText: (data, matches, output) => {
+        if (data.championClock === undefined)
+          return;
+        const x = parseFloat(matches.x);
+
+        // Easier to read static orders
+        const order = ['donut', 'in', 'out', 'in', 'sides'];
+        const order1 = ['in', 'out', 'in', 'sides', 'donut'];
+        const order2 = ['out', 'in', 'sides', 'donut', 'in'];
+        const order3 = ['in', 'sides', 'donut', 'in', 'out'];
+        const order4 = ['sides', 'donut', 'in', 'out', 'in'];
+
+        let newOrder;
+        if (x > 99 && x < 101) {
+          // S Platform
+          newOrder = order;
+        } else if (x > 82 && x < 85) {
+          // SW Platform
+          if (data.championClock === 'clockwise')
+            newOrder = order1;
+          else if (data.championClock === 'counterclockwise')
+            newOrder = order4;
+        } else if (x > 88 && x < 91) {
+          // NW Platform
+          if (data.championClock === 'clockwise')
+            newOrder = order2;
+          else if (data.championClock === 'counterclockwise')
+            newOrder = order3;
+        } else if (x > 118 && x < 121) {
+          // NE Platform
+          if (data.championClock === 'clockwise')
+            newOrder = order3;
+          else if (data.championClock === 'counterclockwise')
+            newOrder = order2;
+        } else if (x > 115 && x < 118)  {
+          // SE Platform
+          if (data.championClock === 'clockwise')
+            newOrder = order4;
+          else if (data.championClock === 'counterclockwise')
+            newOrder = order1;
+        }
+
+        // Failed to get clock or matching x coords
+        if (
+          newOrder === undefined || newOrder[0] === undefined ||
+          newOrder[1] === undefined || newOrder[2] === undefined ||
+          newOrder[3] === undefined || newOrder[4] === undefined
+        )
+          return;
+
+        data.championOrder = newOrder;
+
+        return output.mechanics!({
+          dir: output[data.championClock]!(),
+          mech1: output[newOrder[0]]!(),
+          mech2: output[newOrder[1]]!(),
+          mech3: output[newOrder[2]]!(),
+          mech4: output[newOrder[3]]!(),
+          mech5: output[newOrder[4]]!(),
+        });
       },
       outputStrings: {
         clockwise: Outputs.clockwise,
         counterclock: Outputs.counterclockwise,
+        in: Outputs.in,
+        out: Outputs.out,
+        donut: {
+          en: 'Donut',
+        },
+        sides: Outputs.sides,
+        mechanics: {
+          en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+        },
+      },
+    },
+    {
+      id: 'R8S Gleaming Barrage Collect',
+      // Gleaming Fang is at 96, 126.5 or 104, 126.5
+      type: 'StartsUsing',
+      netRegex: { id: 'A476', source: 'Gleaming Fang', capture: true },
+      condition: (_data, matches) => {
+        const y = parseFloat(matches.y);
+        if (y > 120)
+          return true;
+        return false;
+      },
+      infoText: (data, matches, output) => {
+        const x = parseFloat(matches.x);
+        const dir = x < 100 ? output.left!() : output.right!();
+        
+        if (
+          data.championOrder === undefined ||
+          data.championOrder[data.championTracker] === undefined
+        )
+          return;
+        return output.dirMechanic!({ dir: dir, mech: data.championOrder[data.championTracker] });
+      },
+      run: (data) => data.championTracker = data.championTracker + 1,
+      outputStrings: {
+        left: Outputs.left,
+        right: Outputs.right,
+        dirMechanic: {
+          en: '${dir} ${mech}',
+        },
       },
     },
     {
