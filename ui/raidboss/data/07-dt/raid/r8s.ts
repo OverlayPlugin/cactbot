@@ -72,6 +72,10 @@ const headMarkerData = {
   'ultraviolent': '000E',
   // Passable tether used for Twofold Tempest in Phase 2
   'twofoldTether': '0054',
+  // Blue arrows going counterclock on the boss
+  'counterclockwise': '01F6',
+  // Orange arrows going clockwise on the boss
+  'clockwise': '01F5',
 } as const;
 
 const stoneWindOutputStrings = {
@@ -1055,6 +1059,23 @@ const triggerSet: TriggerSet<Data> = {
         tetherOnDir: {
           en: 'Tether On ${dir}',
         },
+      },
+    },
+    {
+      // headmarker on boss with casts:
+      // 7D67 Champion's Circuit
+      // TODO: Have starting direction?
+      id: 'R8S Champion\'s Circuit Direction',
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.clockwise, headMarkerData.counterclockwise] },
+      infoText: (_data, matches, output) => {
+        if (matches.id === headMarkerData.clockwise)
+          return output.clockwise!();
+        return output.counterclock!();
+      },
+      outputStrings: {
+        clockwise: Outputs.clockwise,
+        counterclock: Outputs.counterclockwise,
       },
     },
     {
