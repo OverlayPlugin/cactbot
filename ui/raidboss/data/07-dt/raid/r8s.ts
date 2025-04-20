@@ -1209,7 +1209,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (data, matches, output) => {
         const x = parseFloat(matches.x);
-        const dir = x < 100 ? output.left!() : output.right!();
+        const dir = x < 100 ? output.right!() : output.left!();
 
         if (
           data.championOrder === undefined ||
