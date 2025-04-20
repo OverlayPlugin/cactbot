@@ -977,12 +977,12 @@ const triggerSet: TriggerSet<Data> = {
             if (data.hasTwofoldTether === true)
               return output.passTetherDir!({ dir: output[startingDir1]!() });
              return output.tetherOnDir!({ dir: output[startingDir1]!() });
-           case 'dirNW':
+          case 'dirNW':
             if (data.hasTwofoldTether === true)
               return output.passTetherDir!({ dir: output[startingDir2]!() });
             return output.tetherOnDir!({ dir: output[startingDir2]!() });
-            case 'unknown':
-              return output.tetherOnDir!({ dir: output.unknown!() });
+          case 'unknown':
+            return output.tetherOnDir!({ dir: output.unknown!() });
         }
       },
       run: (data) => {
