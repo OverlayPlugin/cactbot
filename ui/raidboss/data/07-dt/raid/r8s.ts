@@ -1163,7 +1163,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.championDonutStart === 4) {
           // S Platform
           newOrder = order;
-        } else if (data.championDonutStart == 5) {
+        } else if (data.championDonutStart === 5) {
           // SW Platform
           if (data.championClock === 'clockwise')
             newOrder = order1;
@@ -1233,7 +1233,7 @@ const triggerSet: TriggerSet<Data> = {
         if (dirNum === 4)
           data.championFangX = actor.PosX;
       },
-      infoText: (data, matches, output) => {
+      infoText: (data, _matches, output) => {
         // Have not found the south fang yet
         if (data.championFangX === undefined)
           return;
