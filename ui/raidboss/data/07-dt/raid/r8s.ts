@@ -110,7 +110,7 @@ const moonlightOutputStrings = {
 
 const championOutputStrings = {
   clockwise: Outputs.clockwise,
-  counterclock: Outputs.counterclockwise,
+  counterclockwise: Outputs.counterclockwise,
   in: Outputs.in,
   out: Outputs.out,
   donut: {
