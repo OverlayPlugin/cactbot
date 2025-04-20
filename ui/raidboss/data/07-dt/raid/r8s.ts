@@ -76,6 +76,10 @@ const headMarkerData = {
   'counterclockwise': '01F6',
   // Orange arrows going clockwise on the boss
   'clockwise': '01F5',
+  // Blue far tether in Lone Wolf's Lament in Phase 2
+  'farTether': '013E',
+  // Green close tether in Lone Wolf's Lament in Phase 2
+  'closeTether': '013D',
 } as const;
 
 const stoneWindOutputStrings = {
@@ -964,7 +968,7 @@ const triggerSet: TriggerSet<Data> = {
         else if (dirNS === 'N' && dirEW === 'W')
           data.twofoldInitialDir = 'dirNW';
       },
-      infoText: (data, matches, output) => {
+      infoText: (data, _matches, output) => {
         // Default starting tether locations
         const startingDir1 = 'dirSE';
         const startingDir2 = 'dirSW';
@@ -1021,31 +1025,31 @@ const triggerSet: TriggerSet<Data> = {
           if (data.twofoldInitialDir === 'unknown')
             return output.passTether!();
           if (data.twofoldTracker === 1) {
-            const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNE!() : output.dirNW!();
-            return output.passTetherDir!({ dir: passDir });
+            const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirNE' : 'dirNW';
+            return output.passTetherDir!({ dir: output[passDir]!() });
           }
           if (data.twofoldTracker === 2) {
-            const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNW!() : output.dirNE!();
-            return output.passTetherDir!({ dir: passDir });
+            const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirNW' : 'dirNE';
+            return output.passTetherDir!({ dir: output[passDir]!() });
           }
           if (data.twofoldTracker === 3) {
-            const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirSW!() : output.dirSE!();
-            return output.passTetherDir!({ dir: passDir });
+            const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirSW' : 'dirSE';
+            return output.passTetherDir!({ dir: output[passDir]!() });
           }
         }
         if (data.twofoldInitialDir === 'unknown')
           return output.tetherOnDir!({ dir: Outputs.unknown });
         if (data.twofoldTracker === 1) {
-          const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNE!() : output.dirNW!();
-          return output.tetherOnDir!({ dir: passDir });
+          const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirNE' : 'dirNW';
+          return output.tetherOnDir!({ dir: output[passDir]!() });
         }
         if (data.twofoldTracker === 2) {
-          const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNW!() : output.dirNE!();
-          return output.tetherOnDir!({ dir: passDir });
+          const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirNW' : 'dirNE';
+          return output.tetherOnDir!({ dir: output[passDir]!() });
         }
         if (data.twofoldTracker === 3) {
-          const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirSW!() : output.dirSE!();
-          return output.tetherOnDir!({ dir: passDir });
+          const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirSW' : 'dirSE';
+          return output.tetherOnDir!({ dir: output[passDir]!() });
         }
       },
       outputStrings: {
@@ -1076,6 +1080,29 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         clockwise: Outputs.clockwise,
         counterclock: Outputs.counterclockwise,
+      },
+    },
+    {
+      id: 'R8S Lone Wolf\'s Lament Tethers',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.farTether, headMarkerData.closeTether] },
+      condition: (data, matches) => {
+        if (data.me === matches.target || data.me === matches.source)
+          return true;
+        return false;
+      },
+      infoText: (_data, matches, output) => {
+        if (matches.id === headMarkerData.farTether)
+          return output.farTether!();
+        return output.closeTehter!();
+      },
+      outputStrings: {
+        closeTether: {
+          en: 'Close Tether',
+        },
+        farTether: {
+          en: 'Close Tether',
+        },
       },
     },
     {
