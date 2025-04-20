@@ -34,6 +34,7 @@ const isHealerOrRanged = (x: Job) =>
 export interface Data extends RaidbossData {
   brutalImpactCount: number;
   storedStoneringer?: 'in' | 'out';
+  stoneringer2Count: number;
   stoneringer2Followup?: boolean;
 }
 
@@ -43,6 +44,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r7s.txt',
   initData: () => ({
     brutalImpactCount: 6,
+    stoneringer2Count: 0,
   }),
   triggers: [
     {
@@ -204,7 +206,6 @@ const triggerSet: TriggerSet<Data> = {
         source: 'Brute Abombinator',
         capture: true,
       },
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 10,
       alertText: (data, matches, output) => {
         const id = matches.id;
         switch (id) {
@@ -212,25 +213,20 @@ const triggerSet: TriggerSet<Data> = {
             return output.out!();
           case 'A593':
             return output.in!();
-          case 'A5A3': {
-            if (data.brutalImpactCount > 7)
-              return output.out!();
-
-            const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
-            return output.outFollowup!({ followup: followup });
-          }
-          case 'A5A5': {
-            if (data.brutalImpactCount > 7)
-              return output.in!();
-
-            const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
-            return output.inFollowup!({ followup: followup });
-          }
         }
-      },
-      run: (data) => {
-        delete data.storedStoneringer;
+
+        const stoneringer = data.storedStoneringer;
+        data.storedStoneringer = stoneringer === 'out' ? 'in' : 'out';
+
+        if (data.stoneringer2Count > 1)
+          return output[stoneringer ?? 'unknown']!();
+
+        const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
         delete data.stoneringer2Followup;
+
+        if (stoneringer === 'out')
+          return output.outFollowup!({ followup: followup });
+        return output.inFollowup!({ followup: followup });
       },
       outputStrings: {
         in: {
@@ -249,6 +245,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Spread, Away from front',
         },
         bigAoe: Outputs.bigAoe,
+        unknown: Outputs.unknown,
       },
     },
     {
@@ -342,6 +339,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R7S Killer Seeds',
       type: 'StartsUsing',
       netRegex: { id: 'A59B', source: 'Brute Abombinator', capture: false },
+      suppressSeconds: 1,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: Outputs.stackPartner,
@@ -360,8 +358,11 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 10,
       infoText: (data, matches, output) => {
         data.storedStoneringer = matches.id === 'A5A0' ? 'out' : 'in';
-        data.stoneringer2Followup = true;
         return output[data.storedStoneringer]!();
+      },
+      run: (data) => {
+        data.stoneringer2Followup = true;
+        data.stoneringer2Count++;
       },
       outputStrings: {
         in: {
