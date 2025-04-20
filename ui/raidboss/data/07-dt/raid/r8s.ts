@@ -35,6 +35,8 @@ export interface Data extends RaidbossData {
   twofoldInitialDir?: string;
   twofoldTracker: number;
   championClock?: 'clockwise' | 'counterclockwise';
+  championDonutStart?: number;
+  championFangX?: number;
   championOrder?: string[];
   championTracker: number;
   platforms: number;
@@ -153,7 +155,7 @@ const triggerSet: TriggerSet<Data> = {
     hasTwofoldTether: false,
     twofoldTracker: 0,
     championTracker: 0,
-    platforms: 5,
+    platforms: 4,
   }),
   triggers: [
     {
@@ -1130,13 +1132,26 @@ const triggerSet: TriggerSet<Data> = {
       // 116.64, 105.41 Center of SE platform
       type: 'StartsUsing',
       netRegex: { id: 'A47A', source: 'Howling Blade', capture: true },
-      // Combined duration of all the mechanics
       durationSeconds: 26,
-      infoText: (data, matches, output) => {
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Champion\'s Circuit Mechanic Order: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, centerX, centerY);
+        data.championDonutStart = dirNum;
+      },
+      infoText: (data, _matches, output) => {
         if (data.championClock === undefined)
           return;
-        const x = parseFloat(matches.x);
-
         // Easier to read static orders
         const order = ['donut', 'in', 'out', 'in', 'sides'];
         const order1 = ['in', 'out', 'in', 'sides', 'donut'];
@@ -1145,34 +1160,38 @@ const triggerSet: TriggerSet<Data> = {
         const order4 = ['sides', 'donut', 'in', 'out', 'in'];
 
         let newOrder;
-        if (x > 99 && x < 101) {
+        if (data.championDonutStart === 4) {
           // S Platform
           newOrder = order;
-        } else if (x > 82 && x < 85) {
+        } else if (data.championDonutStart == 5) {
           // SW Platform
           if (data.championClock === 'clockwise')
             newOrder = order1;
           else if (data.championClock === 'counterclockwise')
             newOrder = order4;
-        } else if (x > 88 && x < 91) {
+        } else if (data.championDonutStart === 7) {
           // NW Platform
           if (data.championClock === 'clockwise')
             newOrder = order2;
           else if (data.championClock === 'counterclockwise')
             newOrder = order3;
-        } else if (x > 118 && x < 121) {
+        } else if (data.championDonutStart === 1) {
           // NE Platform
           if (data.championClock === 'clockwise')
             newOrder = order3;
           else if (data.championClock === 'counterclockwise')
             newOrder = order2;
-        } else if (x > 115 && x < 118) {
+        } else if (data.championDonutStart === 3) {
           // SE Platform
           if (data.championClock === 'clockwise')
             newOrder = order4;
           else if (data.championClock === 'counterclockwise')
             newOrder = order1;
         }
+
+        console.error(
+            `R8S Twofold Tempest Tether: Wrong actor count ${data.championDonutStart} ${newOrder}`,
+        );
 
         // Failed to get clock or matching x coords
         if (
@@ -1201,15 +1220,28 @@ const triggerSet: TriggerSet<Data> = {
       // A476 Gleaming Barrage
       type: 'StartsUsing',
       netRegex: { id: 'A476', source: 'Gleaming Fang', capture: true },
-      condition: (_data, matches) => {
-        const y = parseFloat(matches.y);
-        if (y > 120)
-          return true;
-        return false;
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Champion\'s Circuit Safe Spot: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, centerX, centerY);
+        if (dirNum === 4)
+          data.championFangX = actor.PosX;
       },
       infoText: (data, matches, output) => {
-        const x = parseFloat(matches.x);
-        const dir = x < 100 ? output.right!() : output.left!();
+        // Have not found the south fang yet
+        if (data.championFangX === undefined)
+          return;
+        const dir = data.championFangX < 100 ? output.right!() : output.left!();
 
         if (
           data.championOrder === undefined ||
@@ -1218,14 +1250,19 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         if (data.championOrder[data.championTracker] === 'sides')
-          return x < 100 ? output.leftSide!() : output.rightSide!();
+          return data.championFangX < 100 ? output.rightSide!() : output.leftSide!();
 
         const mech = data.championOrder[data.championTracker];
         if (mech === undefined)
           return;
         return output.dirMechanic!({ dir: dir, mech: output[mech]!() });
       },
-      run: (data) => data.championTracker = data.championTracker + 1,
+      run: (data) => {
+        if (data.championFangX !== undefined) {
+          data.championTracker = data.championTracker + 1;
+          data.championFangX = undefined;
+        }
+      },
       outputStrings: championOutputStrings,
     },
     {
