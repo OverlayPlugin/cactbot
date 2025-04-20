@@ -32,6 +32,8 @@ export interface Data extends RaidbossData {
   herosBlowInOut?: 'in' | 'out';
   purgeTargets: string[];
   hasTwofoldTether: boolean;
+  twofoldInitialDir?: string;
+  twofoldTracker: number;
   platforms: number;
 }
 
@@ -113,6 +115,7 @@ const triggerSet: TriggerSet<Data> = {
     // Phase 2
     purgeTargets: [],
     hasTwofoldTether: false,
+    twofoldTracker: 0,
     platforms: 5,
   }),
   triggers: [
@@ -927,24 +930,78 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Twofold Tempest Tether',
+      id: 'R8S Twofold Tempest Initial Tether',
       type: 'Tether',
       netRegex: { id: [headMarkerData.twofoldTether], capture: true },
-      infoText: (data, matches, output) => {
-        if (matches.target === data.me) {
-          data.hasTwofoldTether = true;
-          return output.tetherOnYou!();
+      suppressSeconds: 50, // Duration of mechanic
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Twofold Tempest Tether: Wrong actor count ${actors.length}`,
+          );
+          return;
         }
-        data.hasTwofoldTether = false;
-        const player = data.party.member(matches.target);
-        return output.tetherOnPlayer!({ player: player });
+
+        const northTwoPlatforms = 94;
+        const dirNS = actor.PosY < northTwoPlatforms ? 'N' : 'S';
+        const dirEW = actor.PosX > centerX ? 'E' : 'W';
+
+        if (dirNS === 'N' && dirEW === 'E')
+          data.twofoldInitialDir = 'dirNE';
+        else if (dirNS === 'S' && dirEW === 'E')
+          data.twofoldInitialDir = 'dirSE';
+        else if (dirNS === 'S' && dirEW === 'W')
+          data.twofoldInitialDir = 'dirSW';
+        else if (dirNS === 'N' && dirEW === 'W')
+          data.twofoldInitialDir = 'dirNW';
+      },
+      infoText: (data, matches, output) => {
+        // Default starting tether locations
+        const startingDir1 = 'dirSE';
+        const startingDir2 = 'dirSW';
+
+        const initialDir = data.twofoldInitialDir ?? 'unknown';
+
+        switch (initialDir) {
+          case startingDir1:
+          case startingDir2:
+            if (data.hasTwofoldTether === true)
+              return output.tetherOnYou!();
+            return output.tetherOnDir!({ dir: output[initialDir]!() });
+          case 'dirNE':
+            if (data.hasTwofoldTether === true)
+              return output.passTetherDir!({ dir: output[startingDir1]!() });
+             return output.tetherOnDir!({ dir: output[startingDir1]!() });
+           case 'dirNW':
+            if (data.hasTwofoldTether === true)
+              return output.passTetherDir!({ dir: output[startingDir2]!() });
+            return output.tetherOnDir!({ dir: output[startingDir2]!() });
+            case 'unknown':
+              return output.tetherOnDir!({ dir: output.unknown!() });
+        }
+      },
+      run: (data) => {
+        // Set initialDir if pass was needed
+        if (data.twofoldInitialDir === 'dirNE')
+          data.twofoldInitialDir = 'dirSE';
+        if (data.twofoldInitialDir === 'dirNW')
+          data.twofoldInitialDir = 'dirSW';
       },
       outputStrings: {
-        tetherOnYou: {
-          en: 'Twinfold Tether on YOU',
+        ...Directions.outputStringsIntercardDir,
+        passTetherDir: {
+          en: 'Pass Tether to ${dir}',
         },
-        tetherOnPlayer: {
-          en: 'Twinfold Tether on ${player}',
+        tetherOnYou: {
+          en: 'Tether on YOU',
+        },
+        tetherOnDir: {
+          en: 'Tether on ${dir}',
         },
       },
     },
@@ -953,16 +1010,50 @@ const triggerSet: TriggerSet<Data> = {
       // Call pass after the puddle has been dropped
       type: 'Ability',
       netRegex: { id: 'A472', source: 'Howling Blade', capture: false },
-      condition: (data) => {
-        if (data.hasTwofoldTether)
-          return true;
-        return false;
-      },
+      preRun: (data) => data.twofoldTracker = data.twofoldTracker + 1,
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.passTether!(),
+      infoText: (data, _matches, output) => {
+        if (data.hasTwofoldTether) {
+          if (data.twofoldInitialDir === 'unknown')
+            return output.passTether!();
+          if (data.twofoldTracker === 1) {
+            const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNE!() : output.dirNW!();
+            return output.passTetherDir!({ dir: passDir });
+          }
+          if (data.twofoldTracker === 2) {
+            const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNW!() : output.dirNE!();
+            return output.passTetherDir!({ dir: passDir });
+          }
+          if (data.twofoldTracker === 3) {
+            const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirSW!() : output.dirSE!();
+            return output.passTetherDir!({ dir: passDir });
+          }
+        }
+        if (data.twofoldInitialDir === 'unknown')
+          return output.tetherOnDir!({ dir: Outputs.unknown });
+        if (data.twofoldTracker === 1) {
+          const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNE!() : output.dirNW!();
+          return output.tetherOnDir!({ dir: passDir });
+        }
+        if (data.twofoldTracker === 2) {
+          const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirNW!() : output.dirNE!();
+          return output.tetherOnDir!({ dir: passDir });
+        }
+        if (data.twofoldTracker === 3) {
+          const passDir = data.twofoldInitialDir === 'dirSE' ? output.dirSW!() : output.dirSE!();
+          return output.tetherOnDir!({ dir: passDir });
+        }
+      },
       outputStrings: {
+        ...Directions.outputStringsIntercardDir,
         passTether: {
           en: 'Pass Tether',
+        },
+        passTetherDir: {
+          en: 'Pass Tether ${dir}',
+        },
+        tetherOnDir: {
+          en: 'Tether On ${dir}',
         },
       },
     },
