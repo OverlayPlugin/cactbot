@@ -641,19 +641,16 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Weal of Stone',
-      // Calls direction that the heads are firing from
+      // TODO: Call direction that the heads are firing from, needs OverlayPlugin
       type: 'StartsUsing',
-      netRegex: { id: 'A78E', source: 'Wolf of Stone', capture: true },
+      netRegex: { id: 'A78E', source: 'Wolf of Stone', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, matches, output) => {
-        const hdg = parseFloat(matches.heading);
-        const dirOut = Directions.outputFrom8DirNum((Directions.hdgTo8DirNum(hdg) + 4) % 8);
-        return output.linesFromDir!({ dir: output[dirOut]!() });
+      infoText: (_data, _matches, output) => {
+        return output.lines!();
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
-        linesFromDir: {
-          en: 'Lines from ${dir}',
+        lines: {
+          en: 'Lines',
         },
       },
     },
@@ -1067,7 +1064,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // headmarker on boss with casts:
-      // 7D67 Champion's Circuit
+      // A477 Champion's Circuit (clockwise)
+      // A478 Champion's Circuit (counterclockwise)
+      // Followed by instant cast turns:
+      // A4A1 Champion's Circuit (clockwise)
+      // A4A2 Champion's Circuit (counterclockwise)
       // TODO: Have starting direction?
       id: 'R8S Champion\'s Circuit Direction',
       type: 'HeadMarker',
