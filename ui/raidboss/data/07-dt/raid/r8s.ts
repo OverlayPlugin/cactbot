@@ -1197,7 +1197,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, matches, output) => {
         const x = parseFloat(matches.x);
         const dir = x < 100 ? output.left!() : output.right!();
-        
+
         if (
           data.championOrder === undefined ||
           data.championOrder[data.championTracker] === undefined
