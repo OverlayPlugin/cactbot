@@ -990,7 +990,7 @@ const triggerSet: TriggerSet<Data> = {
               return output.passTetherDir!({ dir: output[startingDir2]!() });
             return output.tetherOnDir!({ dir: output[startingDir2]!() });
           case 'unknown':
-            return output.tetherOnDir!({ dir: output.unknown!() });
+            return output.tetherOnDir!({ dir: output['unknown']!() });
         }
       },
       run: (data) => {
@@ -1093,15 +1093,15 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (_data, matches, output) => {
         if (matches.id === headMarkerData.farTether)
-          return output.farTether!();
-        return output.closeTehter!();
+          return output.farTetherOnYou!();
+        return output.closeTetherOnYou!();
       },
       outputStrings: {
-        closeTether: {
-          en: 'Close Tether',
+        closeTetherOnYou: {
+          en: 'Close Tether on YOU',
         },
-        farTether: {
-          en: 'Close Tether',
+        farTetherOnYou: {
+          en: 'Close Tether on YOU',
         },
       },
     },
