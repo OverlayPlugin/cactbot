@@ -320,24 +320,28 @@ const triggerSet: TriggerSet<Data> = {
         near: {
           en: 'Near',
           de: 'Nah',
+          ja: '近',
           cn: '近',
           ko: '가까이',
         },
         far: {
           en: 'Far',
           de: 'Fern',
+          ja: '遠',
           cn: '远',
           ko: '멀리',
         },
         swapAfterFirst: {
           en: '${first} bait first, Swap after first+third',
           de: '${first} zuerst ködern, wechsel nach dem ersten + dritten',
+          ja: '${first} を先に誘導 → 1・3回目後に交代',
           cn: '先 ${first} 引导, 1、3刀后交换',
           ko: '처음 ${first} 유도, 1, 3번째 교대',
         },
         swapAfterSecond: {
           en: '${first} bait first, Swap after second',
           de: '${first} zuerst ködern, wechsel nach dem zweiten',
+          ja: '${first} を先に誘導 → 2回目後に交代',
           cn: '先 ${first} 引导, 2刀后交换',
           ko: '처음 ${first} 유도, 2번째 교대',
         },
@@ -360,6 +364,7 @@ const triggerSet: TriggerSet<Data> = {
         tower: {
           en: 'Donut on you, get tower',
           de: 'Donut auf DIR, steh im Turm',
+          ja: 'ドーナツ対象 → 塔踏み',
           cn: '月环点名, 踩塔',
           ko: '도넛 대상자, 기둥 들어가기',
         },
@@ -389,6 +394,7 @@ const triggerSet: TriggerSet<Data> = {
         stacks: {
           en: 'Support/DPS stacks',
           de: 'Support/DPS sammeln',
+          ja: 'タンクヒラ/DPS 頭割り',
           cn: '红地板分摊',
           ko: '탱힐/딜러 쉐어',
         },
@@ -457,6 +463,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Supports west, DPS east',
           de: 'Supports Westen, DPS Osten',
+          ja: 'タンクヒラ西 / DPS東',
           cn: 'T奶 左, DPS 右',
           ko: '탱힐 왼쪽, 딜러 오른쪽',
         },
@@ -472,6 +479,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Point sword cleave out',
           de: 'Schwert-Cleves nach draußen zeigen',
+          ja: '剣を外に向ける',
           cn: '引导半场刀',
           ko: '바깥으로 유도',
         },
@@ -542,6 +550,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Start ${dir}, rotate ${rotate}',
           de: 'Starte ${dir}, rotiere ${rotate}',
+          ja: '${dir} から開始, ${rotate}',
           cn: '从 ${dir} 开始, ${rotate}',
           ko: '${dir} 시작, ${rotate}으로 회전',
         },
@@ -572,24 +581,28 @@ const triggerSet: TriggerSet<Data> = {
         inWest: {
           en: 'In WSW => Out WNW => Out WSW',
           de: 'Rein WSW => Raus WNW => Raus WSW',
+          ja: '内8時 ⇒ 外10時 ⇒ 外8時',
           cn: '内左偏下 => 外左偏上 => 外左偏下',
           ko: '안 8시 => 바깥 10시 => 바깥 8시',
         },
         inEast: {
           en: 'In ESE => Out ESE => Out ENE',
           de: 'Rein OSO => Raus OSO => Raus ONO',
+          ja: '内4時 ⇒ 外4時 ⇒ 外2時',
           cn: '内右偏下 => 外右偏下 => 外右偏上',
           ko: '안 4시 => 바깥 4시 => 바깥 2시',
         },
         outWest: {
           en: 'Out WSW => In WNW => In WSW',
           de: 'Raus WSW => Rein WNW => Rein WSW',
+          ja: '外8時 ⇒ 内10時 ⇒ 内8時',
           cn: '外左偏下 => 内左偏上 => 内左偏下',
           ko: '바깥 8시 => 안 10시 => 안 8시',
         },
         outEast: {
           en: 'Out ESE => In ESE => In ENE',
           de: 'Raus OSO => Rein OSO => Rein ONO',
+          ja: '外4時 ⇒ 内4時 ⇒ 内2時',
           cn: '外右偏下 => 内右偏下 => 内右偏上',
           ko: '바깥 4시 => 안 4시 => 안 2시',
         },
@@ -613,12 +626,14 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Rose Marker on YOU',
           de: 'Rosen-Marker auf DIR',
+          ja: 'バラ対象',
           cn: '蔷薇点名',
           ko: '장미징 대상자',
         },
         tower: {
           en: 'Soak Tower',
           de: 'Im Turm stehen',
+          ja: '塔踏み',
           cn: '踩塔',
           ko: '기둥 들어가기',
         },
@@ -649,12 +664,14 @@ const triggerSet: TriggerSet<Data> = {
         north: {
           en: 'Roses north, spreads south',
           de: 'Rosen Norden, Verteilen Süden',
+          ja: 'バラ北, さんかい南',
           cn: '蔷薇上, 分散下',
           ko: '장미 북쪽, 산개 남쪽',
         },
         south: {
           en: 'Roses south, spreads north',
           de: 'Rosen Süden, Verteilen Norden',
+          ja: 'バラ南, さんかい北',
           cn: '蔷薇下, 分散上',
           ko: '장미 남쪽, 산개 북쪽',
         },
@@ -690,12 +707,14 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Rose Marker on YOU, spread ${northSouth}',
           de: 'Rosen-Marker auf DIR, verteile ${northSouth}',
+          ja: 'バラ対象, ${northSouth} さんかい',
           cn: '蔷薇点名, ${northSouth} 分散',
           ko: '장미징 대상자, ${northSouth}에서 산개',
         },
         spread: {
           en: 'Spread Marker on YOU, spread ${northSouth}',
           de: 'Verteilen-Marker auf DIR, verteile ${northSouth}',
+          ja: 'さんかい対象, ${northSouth} さんかい',
           cn: '分散点名, ${northSouth} 分散',
           ko: '산개징 대상자, ${northSouth}에서 산개',
         },
@@ -710,6 +729,7 @@ const triggerSet: TriggerSet<Data> = {
         thorns: {
           en: 'Stack for thorns => break tethers => stack in red tiles',
           de: 'Sammeln für Dornen => Verbindung brechen => steh auf dem roten Feld',
+          ja: '茨集合 => 線切り => 赤床頭割り',
           cn: '集合连线 => 拉断连线 => 红地板分摊',
           ko: '모이기 => 선 끊기 => 장미장판위에 서기',
         },
@@ -769,6 +789,7 @@ const triggerSet: TriggerSet<Data> = {
         start: {
           en: 'Start ${startDir}',
           de: 'Start ${startDir}',
+          ja: '${startDir} 開始',
           cn: '从 ${startDir} 开始',
           ko: '${startDir} 시작',
         },
@@ -798,6 +819,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${inOutFirst} ${dirFirst} Clockwise => ${inOutSecond} ${dirSecond}',
           de: '${inOutFirst} ${dirFirst} Im Uhrzeigersinn => ${inOutSecond} ${dirSecond}',
+          ja: '${inOutFirst} ${dirFirst} 時計回り => ${inOutSecond} ${dirSecond}',
           cn: '${inOutFirst} ${dirFirst} 顺时针 => ${inOutSecond} ${dirSecond}',
           ko: '${dirFirst} ${inOutFirst} => ${dirSecond} ${inOutSecond}',
         },
@@ -823,12 +845,14 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Rose Marker on YOU',
           de: 'Rosen-Marker auf DIR',
+          ja: 'バラ対象',
           cn: '蔷薇点名',
           ko: '장미징 대상자',
         },
         tower: {
           en: 'Tower Soaks Later',
           de: 'Nehme Turm später',
+          ja: 'あとで塔踏み',
           cn: '稍后踩塔',
           ko: '나중에 기둥 들어가기',
         },
@@ -862,12 +886,14 @@ const triggerSet: TriggerSet<Data> = {
         rose: {
           en: 'Place rose ${inOut} => dodge cleaves',
           de: 'Plaziere Rose ${inOut} => weiche dem Cleve aus',
+          ja: '${inOut} にバラ置き => 扇回避',
           cn: '${inOut} 放置蔷薇 => 躲避扇形',
           ko: '${inOut} 장미 놓기 => 장판 피하기',
         },
         tower: {
           en: 'Dodge cleaves => soak tower',
           de: 'Weiche dem Cleave aus => steh im Turm',
+          ja: '扇回避 => 塔踏み',
           cn: '躲避扇形 => 踩塔',
           ko: '장판 피하기 => 기둥 들어가기',
         },
