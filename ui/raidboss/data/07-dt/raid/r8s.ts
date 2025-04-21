@@ -30,6 +30,7 @@ export interface Data extends RaidbossData {
   moonlightQuadrant2?: string;
   // Phase 2
   herosBlowInOut?: 'in' | 'out';
+  herosBlowSafeDir?: number;
   purgeTargets: string[];
   hasTwofoldTether: boolean;
   twofoldInitialDir?: string;
@@ -917,15 +918,43 @@ const triggerSet: TriggerSet<Data> = {
       // A460 for Hero's Blow Left cleave damage
       // A461 Hero's Blow Right cleave
       // A462 Hero's Blow Right cleave damage
+      // Hero's Blow targets a player, the player could be anywhere
+      // Call relative to boss facing
       type: 'StartsUsing',
       netRegex: { id: ['A45F', 'A461'], source: 'Howling Blade', capture: true },
       delaySeconds: 0.1,
-      infoText: (data, matches, output) => {
-        const dir = matches.id === 'A45F' ? output.right!() : output.left!();
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Hero's Blow: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        switch (matches.id) {
+          case 'A45F':
+            data.herosBlowSafeDir = Math.abs(Directions.hdgTo16DirNum(actor.Heading) - 4) % 16;
+            break;
+          case 'A461':
+            data.herosBlowSafeDir = (Directions.hdgTo16DirNum(actor.Heading) + 4) % 16;
+            break;
+        }
+      },
+      infoText: (data, m_atches, output) => {
         const inout = output[data.herosBlowInOut ?? 'unknown']!();
+        const dir = output[Directions.output16Dir[data.herosBlowSafeDir ?? -1] ?? 'unknown']!();
         return output.text!({ inout: inout, dir: dir });
       },
+      run: (data) => {
+        data.herosBlowSafeDir = undefined;
+      },
       outputStrings: {
+        ...Directions.outputStrings16Dir,
         in: Outputs.in,
         out: Outputs.out,
         left: Outputs.left,
