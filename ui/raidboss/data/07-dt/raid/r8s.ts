@@ -158,6 +158,41 @@ const triggerSet: TriggerSet<Data> = {
     championTracker: 0,
     platforms: 4,
   }),
+  timelineTriggers: [
+    {
+      id: 'R8S Light Party Platform',
+      regex: /Quake III/,
+      beforeSeconds: 7,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Light Party Platform',
+        },
+      },
+    },
+    {
+      id: 'R8S Ultraviolent Positions',
+      regex: /Ultraviolent Ray [123]/,
+      beforeSeconds: 8,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'UV Positions',
+        },
+      },
+    },
+    {
+      id: 'R8S Ultraviolent 4 Positions',
+      regex: /Ultraviolent Ray 4/,
+      beforeSeconds: 8,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'UV Positions',
+        },
+      },
+    },
+  ],
   triggers: [
     {
       id: 'R8S Phase Tracker',
