@@ -49,11 +49,17 @@ console.assert(effect0x808Data);
 const isHealerOrRanged = (x: Job) =>
   Util.isHealerJob(x) || Util.isRangedDpsJob(x) || Util.isCasterDpsJob(x);
 
+type LeftRight = 'left' | 'right';
+
 export interface Data extends RaidbossData {
   brutalImpactCount: number;
   storedStoneringer?: 'in' | 'out';
   stoneringer2Count: number;
   stoneringer2Followup?: boolean;
+  stoneringer2Weapons?: {
+    sword: LeftRight;
+    club: LeftRight;
+  };
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -232,17 +238,31 @@ const triggerSet: TriggerSet<Data> = {
           case 'A593':
             return output.in!();
           case 'A5A3': {
-            if (data.stoneringer2Count > 1)
+            const lariat = output[data.stoneringer2Weapons?.club ?? 'unknown']!();
+
+            if (data.stoneringer2Count > 1) {
+              if (data.stoneringer2Followup)
+                return output.outLariat!({ lariat: lariat });
               return output.out!();
+            }
 
             const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
+            if (data.stoneringer2Followup)
+              return output.outFollowupLariat!({ followup: followup, lariat: lariat });
             return output.outFollowup!({ followup: followup });
           }
           case 'A5A5': {
-            if (data.stoneringer2Count > 1)
+            const lariat = output[data.stoneringer2Weapons?.sword ?? 'unknown']!();
+
+            if (data.stoneringer2Count > 1) {
+              if (data.stoneringer2Followup)
+                return output.inLariat!({ lariat: lariat });
               return output.in!();
+            }
 
             const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
+            if (data.stoneringer2Followup)
+              return output.inFollowupLariat!({ followup: followup, lariat: lariat });
             return output.inFollowup!({ followup: followup });
           }
         }
@@ -250,6 +270,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         delete data.storedStoneringer;
         delete data.stoneringer2Followup;
+        delete data.stoneringer2Weapons;
       },
       outputStrings: {
         in: {
@@ -258,16 +279,35 @@ const triggerSet: TriggerSet<Data> = {
         out: {
           en: 'Out from tethered wall',
         },
+        inFollowupLariat: {
+          en: 'In at tethered wall + ${followup} => ${lariat}',
+        },
+        outFollowupLariat: {
+          en: 'Out from tethered wall + ${followup} => ${lariat}',
+        },
         inFollowup: {
           en: 'In at tethered wall + ${followup}',
         },
         outFollowup: {
           en: 'Out from tethered wall + ${followup}',
         },
+        inLariat: {
+          en: 'In at tethered wall => ${lariat}',
+        },
+        outLariat: {
+          en: 'Out from tethered wall => ${lariat}',
+        },
+        left: {
+          en: 'Get Left',
+        },
+        right: {
+          en: 'Get Right',
+        },
         awayFromFront: {
           en: 'Spread, Away from front',
         },
         bigAoe: Outputs.bigAoe,
+        unknown: Outputs.unknown,
       },
     },
     {
@@ -378,10 +418,20 @@ const triggerSet: TriggerSet<Data> = {
       // A5A1 = club left, sword right
       id: 'R7S Stoneringer 2: Stoneringers',
       type: 'StartsUsing',
-      netRegex: { id: ['A5A0', 'A5A1'], source: 'Brute Abombinator', capture: false },
-      run: (data) => {
+      netRegex: { id: ['A5A0', 'A5A1'], source: 'Brute Abombinator', capture: true },
+      run: (data, matches) => {
         data.stoneringer2Followup = true;
         data.stoneringer2Count++;
+
+        const id = matches.id;
+        switch (id) {
+          case 'A5A0':
+            data.stoneringer2Weapons = { sword: 'left', club: 'right' };
+            break;
+          case 'A5A1':
+            data.stoneringer2Weapons = { sword: 'right', club: 'left' };
+            break;
+        }
       },
     },
     {
