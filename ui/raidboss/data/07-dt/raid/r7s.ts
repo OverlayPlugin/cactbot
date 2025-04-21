@@ -14,7 +14,6 @@ import { TriggerSet } from '../../../../../types/trigger';
 // - Demolition Deathmatch:
 //   - strat-specific tether callouts?
 //   - Strange Seeds counter?
-// - Stoneringer 2: Stoneringers - fix in/out logic
 
 const headMarkerData = {
   // Sinster Seeds marker
@@ -29,14 +28,32 @@ const headMarkerData = {
   'killerSeedMarker': '005D',
 } as const;
 
+const effect0x808Data = {
+  // Lashing Lariat, right-hand weapon (left side looking at wall) unsafe
+  // applies as the cast starts, not useful for an earlier call
+  'lashingLariatRight': '377',
+  // Lashing Lariat, left-hand weapon (right side looking at wall) unsafe
+  // applies as the cast starts, not useful for an earlier call
+  'lashingLariatLeft': '378',
+  // right-hand club glowing
+  'clubRight': '388',
+  // left-hand club glowing
+  'clubLeft': '389',
+  // right-hand sword glowing
+  'swordRight': '38A',
+  // left-hand sword glowing
+  'swordLeft': '38B',
+} as const;
+console.assert(effect0x808Data);
+
 const isHealerOrRanged = (x: Job) =>
   Util.isHealerJob(x) || Util.isRangedDpsJob(x) || Util.isCasterDpsJob(x);
 
 export interface Data extends RaidbossData {
   brutalImpactCount: number;
   storedStoneringer?: 'in' | 'out';
-  // stoneringer2Count: number;
-  // stoneringer2Followup?: boolean;
+  stoneringer2Count: number;
+  stoneringer2Followup?: boolean;
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -207,27 +224,32 @@ const triggerSet: TriggerSet<Data> = {
         source: 'Brute Abombinator',
         capture: true,
       },
-      alertText: (_data, matches, output) => {
+      alertText: (data, matches, output) => {
         const id = matches.id;
         switch (id) {
           case 'A592':
             return output.out!();
           case 'A593':
             return output.in!();
+          case 'A5A3': {
+            if (data.stoneringer2Count > 1)
+              return output.out!();
+
+            const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
+            return output.outFollowup!({ followup: followup });
+          }
+          case 'A5A5': {
+            if (data.stoneringer2Count > 1)
+              return output.in!();
+
+            const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
+            return output.inFollowup!({ followup: followup });
+          }
         }
-
-        // const stoneringer = data.storedStoneringer;
-        // data.storedStoneringer = stoneringer === 'out' ? 'in' : 'out';
-
-        // if (data.stoneringer2Count > 1)
-        //   return output[stoneringer ?? 'unknown']!();
-
-        // const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
-        // delete data.stoneringer2Followup;
-
-        // if (stoneringer === 'out')
-        //   return output.outFollowup!({ followup: followup });
-        // return output.inFollowup!({ followup: followup });
+      },
+      run: (data) => {
+        delete data.storedStoneringer;
+        delete data.stoneringer2Followup;
       },
       outputStrings: {
         in: {
@@ -246,7 +268,6 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Spread, Away from front',
         },
         bigAoe: Outputs.bigAoe,
-        unknown: Outputs.unknown,
       },
     },
     {
@@ -352,28 +373,17 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'A59E', source: 'Brute Abombinator', capture: false },
       response: Responses.bigAoe('alert'),
     },
-    // {
-    //   id: 'R7S Stoneringer 2: Stoneringers',
-    //   type: 'StartsUsing',
-    //   netRegex: { id: ['A5A0', 'A5A1'], source: 'Brute Abombinator', capture: true },
-    //   durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 10,
-    //   infoText: (data, matches, output) => {
-    //     data.storedStoneringer = matches.id === 'A5A0' ? 'out' : 'in';
-    //     return output[data.storedStoneringer]!();
-    //   },
-    //   run: (data) => {
-    //     data.stoneringer2Followup = true;
-    //     data.stoneringer2Count++;
-    //   },
-    //   outputStrings: {
-    //     in: {
-    //       en: 'In (for later)',
-    //     },
-    //     out: {
-    //       en: 'Out (for later)',
-    //     },
-    //   },
-    // },
+    {
+      // A5A0 = sword left, club right
+      // A5A1 = club left, sword right
+      id: 'R7S Stoneringer 2: Stoneringers',
+      type: 'StartsUsing',
+      netRegex: { id: ['A5A0', 'A5A1'], source: 'Brute Abombinator', capture: false },
+      run: (data) => {
+        data.stoneringer2Followup = true;
+        data.stoneringer2Count++;
+      },
+    },
     {
       id: 'R7S Lashing Lariat',
       type: 'StartsUsing',
