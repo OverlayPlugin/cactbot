@@ -35,7 +35,7 @@ export interface Data extends RaidbossData {
   twofoldInitialDir?: string;
   twofoldTracker: number;
   championClock?: 'clockwise' | 'counterclockwise';
-  championDonutStart?: number;
+  championDonutStartX?: number;
   championFangX?: number;
   championOrder?: string[];
   championTracker: number;
@@ -1146,47 +1146,56 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
-        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, centerX, centerY);
-        data.championDonutStart = dirNum;
+        data.championDonutStartX = actor.PosX;
       },
       infoText: (data, _matches, output) => {
-        if (data.championClock === undefined)
+        if (data.championClock === undefined || data.championDonutStartX === undefined)
           return;
-        // Easier to read static orders
+
+        // Static orders
         const order = ['donut', 'in', 'out', 'in', 'sides'];
+        const counterorder = ['donut', 'sides', 'in', 'out', 'in'];
         const order1 = ['in', 'out', 'in', 'sides', 'donut'];
+        const counterorder1 = ['sides', 'in', 'out', 'in', 'donut'];
         const order2 = ['out', 'in', 'sides', 'donut', 'in'];
+        const counterorder2 = ['in', 'out', 'in', 'donut', 'sides'];
         const order3 = ['in', 'sides', 'donut', 'in', 'out'];
+        const counterorder3 = ['out', 'in', 'donut', 'sides', 'in'];
         const order4 = ['sides', 'donut', 'in', 'out', 'in'];
+        const counterorder4 = ['in', 'donut', 'sides', 'in', 'out'];
 
         let newOrder;
-        if (data.championDonutStart === 4) {
+        const x = data.championDonutStartX;
+        if (x > 99 && x < 101) {
           // S Platform
-          newOrder = order;
-        } else if (data.championDonutStart === 5) {
+          if (data.championClock === 'clockwise')
+            newOrder = order;
+          else if (data.championClock === 'counterclockwise')
+            newOrder = counterorder;
+        } else if (x > 82 && x < 85) {
           // SW Platform
           if (data.championClock === 'clockwise')
             newOrder = order1;
           else if (data.championClock === 'counterclockwise')
-            newOrder = order4;
-        } else if (data.championDonutStart === 7) {
+            newOrder = counterorder1;
+        } else if (x > 88 && x < 91) {
           // NW Platform
           if (data.championClock === 'clockwise')
             newOrder = order2;
           else if (data.championClock === 'counterclockwise')
-            newOrder = order3;
-        } else if (data.championDonutStart === 1) {
+            newOrder = counterorder2;
+        } else if (x > 118 && x < 121) {
           // NE Platform
           if (data.championClock === 'clockwise')
             newOrder = order3;
           else if (data.championClock === 'counterclockwise')
-            newOrder = order2;
-        } else if (data.championDonutStart === 3) {
+            newOrder = counterorder3;
+        } else if (x > 115 && x < 118) {
           // SE Platform
           if (data.championClock === 'clockwise')
             newOrder = order4;
           else if (data.championClock === 'counterclockwise')
-            newOrder = order1;
+            newOrder = counterorder4;
         }
 
         // Failed to get clock or matching x coords
