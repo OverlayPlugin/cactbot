@@ -429,7 +429,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Smash Here/Smash There': 'Smash Here/There',
-        'Winding Wildwinds/Crossing Crosswinds (adds)': 'Wildwinds/Crosswinds (adds)',
+        'Winding Wildwinds/Crossing Crosswinds': 'Wildwinds/Crosswinds',
       },
     },
   ],
