@@ -293,7 +293,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${inOut} + ${followup} => ${lariat}',
         },
         inOutFollowup: {
-          en: '${inOut} + ${followup}',
+          en: '${inOut} => ${followup}',
         },
         inOutLariat: {
           en: '${inOut} => ${lariat}',
