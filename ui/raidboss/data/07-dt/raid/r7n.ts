@@ -178,6 +178,24 @@ const headMarkerData = {
 } as const;
 console.assert(headMarkerData);
 
+const effect0x808Data = {
+  // Lashing Lariat, right-hand weapon (left side looking at wall) unsafe
+  // applies as the cast starts, not useful for an earlier call
+  'lashingLariatRight': '377',
+  // Lashing Lariat, left-hand weapon (right side looking at wall) unsafe
+  // applies as the cast starts, not useful for an earlier call
+  'lashingLariatLeft': '378',
+  // right-hand club glowing
+  'clubRight': '388',
+  // left-hand club glowing
+  'clubLeft': '389',
+  // right-hand sword glowing
+  'swordRight': '38A',
+  // left-hand sword glowing
+  'swordLeft': '38B',
+} as const;
+console.assert(effect0x808Data);
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM3',
   zoneId: ZoneId.AacCruiserweightM3,
