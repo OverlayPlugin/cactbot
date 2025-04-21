@@ -922,7 +922,7 @@ const triggerSet: TriggerSet<Data> = {
       // Call relative to boss facing
       type: 'StartsUsing',
       netRegex: { id: ['A45F', 'A461'], source: 'Howling Blade', capture: true },
-      delaySeconds: 0.1,
+      delaySeconds: 0.3,
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
@@ -1157,11 +1157,12 @@ const triggerSet: TriggerSet<Data> = {
       // 100,    117.5  Center of S platform
       // 83.36,  105.41 Center of SW platform
       // 89.71,  85.84  Center of NW platform
-      // 119.28, 85.84  Center of NE platform
+      // 110.29, 85.84  Center of NE platform
       // 116.64, 105.41 Center of SE platform
       type: 'StartsUsing',
       netRegex: { id: 'A47A', source: 'Howling Blade', capture: true },
       durationSeconds: 26,
+      delaySeconds: 0.3,
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
@@ -1213,7 +1214,7 @@ const triggerSet: TriggerSet<Data> = {
             newOrder = order2;
           else if (data.championClock === 'counterclockwise')
             newOrder = counterorder2;
-        } else if (x > 118 && x < 121) {
+        } else if (x > 109 && x < 112) {
           // NE Platform
           if (data.championClock === 'clockwise')
             newOrder = order3;
