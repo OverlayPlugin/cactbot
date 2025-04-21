@@ -1312,14 +1312,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Mooncleaver Platform',
-      // Trigger on last hit of Howling Eight (AA0A for first set, A494 others)
+      // Trigger on last hit of Howling Eight (AA0A for first set, A49C others)
       type: 'Ability',
-      netRegex: { id: ['A494', 'AA0A'], source: 'Howling Blade', capture: false },
+      netRegex: { id: ['AA0A', 'A49C'], source: 'Howling Blade', capture: false },
       condition: (data) => {
         // Tracking how many platforms will remain
         data.platforms = data.platforms - 1;
         return data.platforms !== 0;
       },
+      suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.changePlatform!(),
       outputStrings: {
         changePlatform: {
