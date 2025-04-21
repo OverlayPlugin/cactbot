@@ -16,7 +16,7 @@ hideall "--sync--"
 33.0 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
 34.1 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
 43.3 "Spore Sac (cast)" Ability { id: "A569", source: "Brute Abombinator" }
-46.4 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+46.4 "--middile--" Ability { id: "A516", source: "Brute Abombinator" }
 48.4 "Spore Sac" Ability { id: "A56A", source: "Brute Abombinator" }
 52.8 "Sinister Seeds (cast)" Ability { id: "A56D", source: "Brute Abombinator" }
 53.9 "Pollen" Ability { id: "A56B", source: "Brute Abombinator" }
@@ -41,7 +41,7 @@ hideall "--sync--"
 119.6 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
 127.3 "Pulp Smash" Ability { id: "A579", source: "Brute Abombinator" }
 129.3 "The Unpotted" Ability { id: "A57B", source: "Brute Abombinator" }
-137.6 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+137.6 "--middle--" Ability { id: "A516", source: "Brute Abombinator" }
 148.0 "Neo Bombarian Special" Ability { id: "A57C", source: "Brute Abombinator" }
 148.0 "--untargetable--"
 158.6 "Grappling Ivy" Ability { id: "A57D", source: "Brute Abombinator" }
@@ -84,7 +84,7 @@ hideall "--sync--"
 352.1 "--untargetable--"
 369.5 "--targetable--"
 381.5 "Brutal Impact x7" Ability { id: "A55B", source: "Brute Abombinator" } duration 6.2
-391.3 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+391.3 "--middle--" Ability { id: "A516", source: "Brute Abombinator" }
 395.3 "Stoneringer 2: Stoneringers" Ability { id: ["A5A0", "A5A1"], source: "Brute Abombinator" }
 407.9 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
 409.0 "Revenge of the Vines" Ability { id: "A639", source: "Brute Abombinator" }
@@ -100,7 +100,7 @@ hideall "--sync--"
 465.3 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
 476.5 "Debris Deathmatch" Ability { id: "A5B0", source: "Brute Abombinator" }
 481.6 "Spore Sac (cast)" Ability { id: "A569", source: "Brute Abombinator" }
-483.7 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+483.7 "--middle--" Ability { id: "A516", source: "Brute Abombinator" }
 486.7 "Spore Sac" Ability { id: "A56A", source: "Brute Abombinator" }
 492.3 "Pollen" Ability { id: "A56B", source: "Brute Abombinator" }
 494.4 "--adds targetable--"
@@ -119,7 +119,7 @@ hideall "--sync--"
 543.7 "The Unpotted" Ability { id: "A57B", source: "Brute Abombinator" }
 550.0 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
 567.7 "Stoneringer 2: Stoneringers" Ability { id: ["A5A0", "A5A1"], source: "Brute Abombinator" }
-573.6 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+573.6 "--middle--" Ability { id: "A516", source: "Brute Abombinator" }
 579.6 "Strange Seeds (cast)" Ability { id: "A90A", source: "Brute Abombinator" }
 585.7 "Strange Seeds (seeds drop)" Ability { id: "A598", source: "Brute Abombinator" }
 590.4 "Brutish Swing" Ability { id: ["A5A3", "A5A5"], source: "Brute Abombinator" }
@@ -134,7 +134,7 @@ hideall "--sync--"
 627.3 "Brutish Swing" Ability { id: ["A561", "A562"], source: "Brute Abombinator" }
 628.4 "Brutal Smash" Ability { id: ["A565", "A566"], source: "Brute Abombinator" }
 637.4 "Brutal Impact x8" Ability { id: "A55B", source: "Brute Abombinator" } duration 7.2
-653.3 "--sync--" Ability { id: "A516", source: "Brute Abombinator" }
+653.3 "--middle--" Ability { id: "A516", source: "Brute Abombinator" }
 665.6 "Special Bombarian Special (enrage cast)" Ability { id: "A5B1", source: "Brute Abombinator" }
 665.6 "--untargetable--"
 669.5 "Special Bombarian Special (enrage)" Ability { id: "A5B3", source: "Brute Abombinator" }
@@ -172,7 +172,7 @@ hideall "--sync--"
 
 # ALL ENCOUNTER ABILITIES
 # 368 attack
-# A516 --sync--
+# A516 --middle--
 # A55A --sync--
 # A55B Brutal Impact
 # A55C Brutal Impact

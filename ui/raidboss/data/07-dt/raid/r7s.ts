@@ -14,6 +14,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 // - Demolition Deathmatch:
 //   - strat-specific tether callouts?
 //   - Strange Seeds counter?
+// - Stoneringer 2: Stoneringers - fix in/out logic
 
 const headMarkerData = {
   // Sinster Seeds marker
@@ -34,8 +35,8 @@ const isHealerOrRanged = (x: Job) =>
 export interface Data extends RaidbossData {
   brutalImpactCount: number;
   storedStoneringer?: 'in' | 'out';
-  stoneringer2Count: number;
-  stoneringer2Followup?: boolean;
+  // stoneringer2Count: number;
+  // stoneringer2Followup?: boolean;
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -206,7 +207,7 @@ const triggerSet: TriggerSet<Data> = {
         source: 'Brute Abombinator',
         capture: true,
       },
-      alertText: (data, matches, output) => {
+      alertText: (_data, matches, output) => {
         const id = matches.id;
         switch (id) {
           case 'A592':
@@ -215,18 +216,18 @@ const triggerSet: TriggerSet<Data> = {
             return output.in!();
         }
 
-        const stoneringer = data.storedStoneringer;
-        data.storedStoneringer = stoneringer === 'out' ? 'in' : 'out';
+        // const stoneringer = data.storedStoneringer;
+        // data.storedStoneringer = stoneringer === 'out' ? 'in' : 'out';
 
-        if (data.stoneringer2Count > 1)
-          return output[stoneringer ?? 'unknown']!();
+        // if (data.stoneringer2Count > 1)
+        //   return output[stoneringer ?? 'unknown']!();
 
-        const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
-        delete data.stoneringer2Followup;
+        // const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
+        // delete data.stoneringer2Followup;
 
-        if (stoneringer === 'out')
-          return output.outFollowup!({ followup: followup });
-        return output.inFollowup!({ followup: followup });
+        // if (stoneringer === 'out')
+        //   return output.outFollowup!({ followup: followup });
+        // return output.inFollowup!({ followup: followup });
       },
       outputStrings: {
         in: {
@@ -351,28 +352,28 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'A59E', source: 'Brute Abombinator', capture: false },
       response: Responses.bigAoe('alert'),
     },
-    {
-      id: 'R7S Stoneringer 2: Stoneringers',
-      type: 'StartsUsing',
-      netRegex: { id: ['A5A0', 'A5A1'], source: 'Brute Abombinator', capture: true },
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 10,
-      infoText: (data, matches, output) => {
-        data.storedStoneringer = matches.id === 'A5A0' ? 'out' : 'in';
-        return output[data.storedStoneringer]!();
-      },
-      run: (data) => {
-        data.stoneringer2Followup = true;
-        data.stoneringer2Count++;
-      },
-      outputStrings: {
-        in: {
-          en: 'In (for later)',
-        },
-        out: {
-          en: 'Out (for later)',
-        },
-      },
-    },
+    // {
+    //   id: 'R7S Stoneringer 2: Stoneringers',
+    //   type: 'StartsUsing',
+    //   netRegex: { id: ['A5A0', 'A5A1'], source: 'Brute Abombinator', capture: true },
+    //   durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 10,
+    //   infoText: (data, matches, output) => {
+    //     data.storedStoneringer = matches.id === 'A5A0' ? 'out' : 'in';
+    //     return output[data.storedStoneringer]!();
+    //   },
+    //   run: (data) => {
+    //     data.stoneringer2Followup = true;
+    //     data.stoneringer2Count++;
+    //   },
+    //   outputStrings: {
+    //     in: {
+    //       en: 'In (for later)',
+    //     },
+    //     out: {
+    //       en: 'Out (for later)',
+    //     },
+    //   },
+    // },
     {
       id: 'R7S Lashing Lariat',
       type: 'StartsUsing',
@@ -418,7 +419,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Smash Here/Smash There': 'Smash Here/There',
-        'Winding Wildwinds/Crossing Crosswinds': 'Wildwinds/Crosswinds',
+        'Winding Wildwinds/Crossing Crosswinds (adds)': 'Wildwinds/Crosswinds (adds)',
       },
     },
   ],
