@@ -1161,8 +1161,8 @@ const triggerSet: TriggerSet<Data> = {
       // 116.64, 105.41 Center of SE platform
       type: 'StartsUsing',
       netRegex: { id: 'A47A', source: 'Howling Blade', capture: true },
-      durationSeconds: 26,
       delaySeconds: 0.3,
+      durationSeconds: 26,
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
@@ -1184,48 +1184,28 @@ const triggerSet: TriggerSet<Data> = {
 
         // Static orders
         const order = ['donut', 'in', 'out', 'in', 'sides'];
-        const counterorder = ['donut', 'sides', 'in', 'out', 'in'];
         const order1 = ['in', 'out', 'in', 'sides', 'donut'];
-        const counterorder1 = ['sides', 'in', 'out', 'in', 'donut'];
         const order2 = ['out', 'in', 'sides', 'donut', 'in'];
-        const counterorder2 = ['in', 'out', 'in', 'donut', 'sides'];
         const order3 = ['in', 'sides', 'donut', 'in', 'out'];
-        const counterorder3 = ['out', 'in', 'donut', 'sides', 'in'];
         const order4 = ['sides', 'donut', 'in', 'out', 'in'];
-        const counterorder4 = ['in', 'donut', 'sides', 'in', 'out'];
 
         let newOrder;
         const x = data.championDonutStartX;
         if (x > 99 && x < 101) {
           // S Platform
-          if (data.championClock === 'clockwise')
-            newOrder = order;
-          else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder;
+          newOrder = order;
         } else if (x > 82 && x < 85) {
           // SW Platform
-          if (data.championClock === 'clockwise')
-            newOrder = order1;
-          else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder1;
+          newOrder = order1;
         } else if (x > 88 && x < 91) {
           // NW Platform
-          if (data.championClock === 'clockwise')
-            newOrder = order2;
-          else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder2;
+          newOrder = order2;
         } else if (x > 109 && x < 112) {
           // NE Platform
-          if (data.championClock === 'clockwise')
-            newOrder = order3;
-          else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder3;
+          newOrder = order3;
         } else if (x > 115 && x < 118) {
           // SE Platform
-          if (data.championClock === 'clockwise')
-            newOrder = order4;
-          else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder4;
+          newOrder = order4;
         }
 
         // Failed to get clock or matching x coords
