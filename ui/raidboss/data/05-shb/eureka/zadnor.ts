@@ -111,15 +111,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'zadnor.txt',
   resetWhenOutOfCombat: false,
   triggers: [
-    // https://xivapi.com/LogMessage/916
-    // en: 7 minutes have elapsed since your last activity. [...]
-    // There is no network packet for these log lines; so have to use GameLog.
-    {
-      id: 'Zadnor Falling Asleep',
-      type: 'GameLog',
-      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
-      response: Responses.wakeUp(),
-    },
     {
       id: 'Zadnor Critical Engagement',
       type: 'ActorControl',
@@ -1688,8 +1679,6 @@ const triggerSet: TriggerSet<Data> = {
         '4Th-Make Cuchulainn': 'Cuchulainn der IV\\. Legion',
         '4th-Make Hashmal': 'Hashmallim der IV\\. Legion',
         '4th-Make Shemhazai': 'Shemhazai der IV\\. Legion',
-        '7 minutes have elapsed since your last activity.':
-          'Seit deiner letzten Aktivität sind 7 Minuten vergangen.',
         '(?<!4Th Legion )Blackburn': 'Schwarzbrand',
         'Clibanarius': 'Clibanarius',
         'Dawon The Younger': 'Dawon junior',
@@ -1818,8 +1807,6 @@ const triggerSet: TriggerSet<Data> = {
         '4Th-Make Cuchulainn': 'cúchulainn de la 4e légion',
         '4th-Make Hashmal': 'Hashmal de la 4e légion',
         '4th-Make Shemhazai': 'Shemhazai de la 4e légion',
-        '7 minutes have elapsed since your last activity..*?':
-          'Votre personnage est inactif depuis 7 minutes',
         '(?<!4Th Legion )Blackburn': 'Escarre',
         'Clibanarius': 'Clibanarius',
         'Dawon The Younger': 'Dawon junior',
@@ -1970,7 +1957,6 @@ const triggerSet: TriggerSet<Data> = {
         'Vermilion Flame': '赤熱火',
         'Vortical Orb': '魔嵐球',
         'Waveborne Zirnitra': 'ウェイブ・ジルニトラ',
-        '7 minutes have elapsed since your last activity..*?': '操作がない状態になってから7分が経過しました。',
         'Hedetet': 'ヘデテト',
         'Clibanarius': 'クリバナリウス',
         'Hanbi': 'ハンビ',
@@ -2072,7 +2058,6 @@ const triggerSet: TriggerSet<Data> = {
         '4Th-Make Cuchulainn': '第四军团丘库雷因',
         '4th-Make Hashmal': '第四军团哈修马利姆',
         '4th-Make Shemhazai': '第四军团谢米哈扎',
-        '7 minutes have elapsed since your last activity.': '已经7分钟没有进行任何操作',
         '(?<!Tamed )Alkonost': '阿尔科诺斯特',
         'Ayida': '阿依达',
         '(?<!4Th Legion )Blackburn': '黑色燃焰',
@@ -2201,7 +2186,6 @@ const triggerSet: TriggerSet<Data> = {
         '4Th-Make Cuchulainn': 'IV군단 쿠훌린',
         '4th-Make Hashmal': 'IV군단 하쉬말림',
         '4th-Make Shemhazai': 'IV군단 셰미하자',
-        '7 minutes have elapsed since your last activity.': '7분 동안 아무 조작을 하지 않았습니다.',
         '(?<!Tamed )Alkonost': '알코노스트',
         'Ayida': '아이다',
         '(?<!4Th Legion )Blackburn': '블랙번',

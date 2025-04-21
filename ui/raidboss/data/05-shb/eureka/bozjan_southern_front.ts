@@ -174,15 +174,6 @@ const triggerSet: TriggerSet<Data> = {
     },
   ],
   triggers: [
-    // https://xivapi.com/LogMessage/916
-    // en: 7 minutes have elapsed since your last activity. [...]
-    // There is no network packet for these log lines; so have to use GameLog.
-    {
-      id: 'Bozja South Falling Asleep',
-      type: 'GameLog',
-      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
-      response: Responses.wakeUp(),
-    },
     {
       id: 'Bozja South Critical Engagement',
       type: 'ActorControl',
@@ -712,8 +703,6 @@ const triggerSet: TriggerSet<Data> = {
         'Albeleo\'s Monstrosity': 'Albeleos Biest',
         'Albeleo\'s Hrodvitnir': 'Hrodvitnir',
         'Electric Charge': 'Blitz',
-        '7 minutes have elapsed since your last activity..*?':
-          'Seit deiner letzten Aktivität sind 7 Minuten vergangen.',
         '4Th Legion Helldiver': 'Höllentaucher der IV\\. Legion',
         'Adrammelech': 'Adrammelech',
         'Bladesmeet': 'Hauptplatz der Wachen',
@@ -801,8 +790,6 @@ const triggerSet: TriggerSet<Data> = {
         'Albeleo\'s Monstrosity': 'Bête D\'Albeleo',
         'Albeleo\'s Hrodvitnir': 'Hródvitnir',
         'Electric Charge': 'Boule D\'Énergie',
-        '7 minutes have elapsed since your last activity..*?':
-          'Votre personnage est inactif depuis 7 minutes',
         '4Th Legion Helldiver': 'plongeur infernal de la 4e légion',
         'Adrammelech': 'Adrammelech',
         'Bladesmeet': 'Hall des Lames',
@@ -889,7 +876,6 @@ const triggerSet: TriggerSet<Data> = {
         'Albeleo\'s Monstrosity': 'アルビレオズ・ビースト',
         'Albeleo\'s Hrodvitnir': 'アルビレオズ・フローズヴィトニル',
         'Electric Charge': '雷気',
-        '7 minutes have elapsed since your last activity.': '操作がない状態になってから7分が経過しました。',
         '4Th Legion Helldiver': 'IVレギオン・ヘルダイバー',
         'Adrammelech': 'アドラメレク',
         'Bladesmeet': '剣たちの大広間',
@@ -976,7 +962,6 @@ const triggerSet: TriggerSet<Data> = {
         'Albeleo\'s Monstrosity': '阿尔贝雷欧的巨兽',
         'Albeleo\'s Hrodvitnir': '阿尔贝雷欧的恶狼',
         'Electric Charge': '雷气',
-        '7 minutes have elapsed since your last activity..*?': '已经7分钟没有进行任何操作',
         '4Th Legion Helldiver': '第四军团地狱潜者',
         'Adrammelech': '阿德拉梅里克',
         'Bladesmeet': '群刃大厅',
@@ -1063,7 +1048,6 @@ const triggerSet: TriggerSet<Data> = {
         'Albeleo\'s Monstrosity': '알비레오의 야수',
         'Albeleo\'s Hrodvitnir': '알비레오의 흐로드비트니르',
         'Electric Charge': '번개기운',
-        '7 minutes have elapsed since your last activity..*?': '7분 동안 아무 조작을 하지 않았습니다',
         '4Th Legion Helldiver': 'IV군단 헬다이버',
         'Adrammelech': '아드람멜렉',
         'Bladesmeet': '검들의 대광장',

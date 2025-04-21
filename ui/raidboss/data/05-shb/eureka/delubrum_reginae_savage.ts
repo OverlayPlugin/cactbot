@@ -180,15 +180,6 @@ const triggerSet: TriggerSet<Data> = {
       // Note: this headmarker *could* be skipped, so we will change this later.
       run: (data) => data.firstUnknownHeadmarker = headmarker.mercifulArc,
     },
-    // https://xivapi.com/LogMessage/916
-    // en: 7 minutes have elapsed since your last activity. [...]
-    // There is no network packet for these log lines; so have to use GameLog.
-    {
-      id: 'DelubrumSav Falling Asleep',
-      type: 'GameLog',
-      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
-      response: Responses.wakeUp(),
-    },
     {
       id: 'DelubrumSav Seeker Verdant Tempest',
       type: 'StartsUsing',
@@ -2626,8 +2617,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'de',
       'replaceSync': {
         '(?<!Crowned )Marchosias': 'Marchosias',
-        '7 minutes have elapsed since your last activity.':
-          'Seit deiner letzten Aktivität sind 7 Minuten vergangen.',
         'Aetherial Bolt': 'Magiegeschoss',
         'Aetherial Burst': 'Magiebombe',
         'Aetherial Orb': 'Magiekugel',
@@ -2849,8 +2838,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'fr',
       'replaceSync': {
         '(?<!Crowned )Marchosias': 'marchosias',
-        '7 minutes have elapsed since your last activity..*?':
-          'Votre personnage est inactif depuis 7 minutes',
         'Aetherial Bolt': 'petite bombe',
         'Aetherial Burst': 'énorme bombe',
         'Aetherial Orb': 'amas d\'éther élémentaire',
@@ -3074,7 +3061,6 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         '(?<!Crowned )Marchosias': 'マルコシアス',
-        '7 minutes have elapsed since your last activity..*?': '操作がない状態になってから7分が経過しました。',
         'Aetherial Bolt': '魔弾',
         'Aetherial Burst': '大魔弾',
         'Aetherial Orb': '魔力塊',
@@ -3288,7 +3274,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         '(?<!Crowned )Marchosias': '马可西亚斯',
-        '7 minutes have elapsed since your last activity.': '已经7分钟没有进行任何操作',
         'Aetherial Bolt': '魔弹',
         'Aetherial Burst': '大魔弹',
         'Aetherial Orb': '魔力块',
@@ -3509,7 +3494,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ko',
       'replaceSync': {
         '(?<!Crowned )Marchosias': '마르코시아스',
-        '7 minutes have elapsed since your last activity.': '7분 동안 아무 조작을 하지 않았습니다.',
         'Aetherial Bolt': '마탄',
         'Aetherial Burst': '대마탄',
         'Aetherial Orb': '마력 덩어리',

@@ -1,4 +1,3 @@
-import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -9,21 +8,10 @@ const triggerSet: TriggerSet<Data> = {
   id: 'TheDiadem',
   zoneId: ZoneId.TheDiadem,
   comments: {
-    en: 'Inactivity warning and timed node spawn alert',
-    de: 'Inaktivitätswarnung und Hinweis für zeitlich begrenzte Abbaustellen',
-    cn: '无操作警告和限时采集点刷新提醒',
+    en: 'Timed node spawn alert',
   },
   resetWhenOutOfCombat: false,
   triggers: [
-    // https://xivapi.com/LogMessage/916
-    // en: 7 minutes have elapsed since your last activity. [...]
-    // There is no network packet for these log lines; so have to use GameLog.
-    {
-      id: 'Diadem Falling Asleep',
-      type: 'GameLog',
-      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
-      response: Responses.wakeUp(),
-    },
     // There is presumably a network packet to, at a minimum, spawn the legendary node.
     // But currently no associated log line other than GameLog (code: 003B).
     {
@@ -69,8 +57,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'de',
       'missingTranslations': true,
       'replaceSync': {
-        '7 minutes have elapsed since your last activity..*?':
-          'Seit deiner letzten Aktivität sind 7 Minuten vergangen.',
         'The Diadem': 'Das Diadem',
       },
     },
@@ -78,8 +64,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'fr',
       'missingTranslations': true,
       'replaceSync': {
-        '7 minutes have elapsed since your last activity.':
-          'Votre personnage est inactif depuis 7 minutes',
         'The Diadem': 'Le Diadème',
       },
     },
@@ -87,7 +71,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ja',
       'missingTranslations': true,
       'replaceSync': {
-        '7 minutes have elapsed since your last activity.': '操作がない状態になってから7分が経過しました。',
         'The Diadem': 'ディアデム諸島',
       },
     },
@@ -95,7 +78,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'missingTranslations': true,
       'replaceSync': {
-        '7 minutes have elapsed since your last activity..*?': '已经7分钟没有进行任何操作',
         'The Diadem': '云冠群岛',
       },
     },
@@ -103,7 +85,6 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ko',
       'missingTranslations': true,
       'replaceSync': {
-        '7 minutes have elapsed since your last activity..*?': '7분 동안 아무 조작을 하지 않았습니다',
         'The Diadem': '디아뎀 제도',
       },
     },
