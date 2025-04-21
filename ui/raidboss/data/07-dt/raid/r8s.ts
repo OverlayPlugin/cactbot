@@ -945,7 +945,7 @@ const triggerSet: TriggerSet<Data> = {
             break;
         }
       },
-      infoText: (data, m_atches, output) => {
+      infoText: (data, _matches, output) => {
         const inout = output[data.herosBlowInOut ?? 'unknown']!();
         const dir = output[Directions.output16Dir[data.herosBlowSafeDir ?? -1] ?? 'unknown']!();
         return output.text!({ inout: inout, dir: dir });
