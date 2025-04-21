@@ -154,11 +154,11 @@ hideall "--sync--"
 # Phase 2
 402.8 "--sync--" Ability { id: "A82D", source: "Howling Blade" } window 500,30
 459.4 "Quake III" Ability { id: "A45A", source: "Howling Blade" }
-471.4 "Ultraviolent Ray" Ability { id: "A45C", source: "Howling Blade" }
+471.4 "Ultraviolent Ray 1" Ability { id: "A45C", source: "Howling Blade" }
 471.4 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
 482.4 "Twinbite" Ability { id: "A4CD", source: "Howling Blade" }
 494.5 "Hero's Blow" Ability { id: ["A460", "A462"], source: "Howling Blade" }
-504.6 "Ultraviolent Ray" Ability { id: "A45C", source: "Howling Blade" }
+504.6 "Ultraviolent Ray 2" Ability { id: "A45C", source: "Howling Blade" }
 504.6 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
 515.6 "Quake III" Ability { id: "A45A", source: "Howling Blade" }
 527.7 "Mooncleaver" Ability { id: "A465", source: "Howling Blade" }
@@ -195,7 +195,7 @@ hideall "--sync--"
 625.9 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
 626.2 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
 636.0 "Quake III" Ability { id: "A45A", source: "Howling Blade" }
-650.0 "Ultraviolent Ray" Ability { id: "A45C", source: "Howling Blade" }
+650.0 "Ultraviolent Ray 3" Ability { id: "A45C", source: "Howling Blade" }
 650.0 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
 661.0 "Twinbite" Ability { id: "A4CD", source: "Howling Blade" }
 676.1 "Rise of the Hunter's Blade" Ability { id: "A82C", source: "Howling Blade" }
@@ -205,7 +205,7 @@ hideall "--sync--"
 691.3 "Prowling Gale" Ability { id: "A485", source: "Howling Blade" }
 700.1 "Prowling Gale (Towers)" Ability { id: "A487", source: "Howling Blade" }
 709.5 "Hero's Blow" Ability { id: ["A460", "A462"], source: "Howling Blade" }
-721.6 "Ultraviolent Ray" Ability { id: "A45C", source: "Howling Blade" }
+721.6 "Ultraviolent Ray 4" Ability { id: "A45C", source: "Howling Blade" }
 721.6 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
 736.6 "Howling Eight" Ability { id: "AA02", source: "Howling Blade" }
 737.7 "Howling Eight 1" Ability { id: "AA03", source: "Howling Blade" }
@@ -216,7 +216,7 @@ hideall "--sync--"
 741.5 "Howling Eight 6" Ability { id: "AA08", source: "Howling Blade" }
 741.8 "Howling Eight 7" Ability { id: "AA09", source: "Howling Blade" }
 743.7 "Howling Eight 8" Ability { id: "AA0A", source: "Howling Blade" }
-747.0 "Mooncleaver" Ability { id: "A74C", source: "Howling Blade" }
+747.0 "Mooncleaver 1" Ability { id: "A74C", source: "Howling Blade" }
 748.0 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
 756.1 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
 757.2 "Howling Eight 1" Ability { id: "A495", source: "Howling Blade" }
@@ -227,7 +227,7 @@ hideall "--sync--"
 761.0 "Howling Eight 6" Ability { id: "A49A", source: "Howling Blade" }
 761.4 "Howling Eight 7" Ability { id: "A49B", source: "Howling Blade" }
 763.3 "Howling Eight 8" Ability { id: "A49C", source: "Howling Blade" }
-766.5 "Mooncleaver" Ability { id: "A74C", source: "Howling Blade" }
+766.5 "Mooncleaver 2" Ability { id: "A74C", source: "Howling Blade" }
 767.5 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
 775.6 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
 776.7 "Howling Eight 1" Ability { id: "A495", source: "Howling Blade" }
@@ -238,7 +238,7 @@ hideall "--sync--"
 780.6 "Howling Eight 6" Ability { id: "A49A", source: "Howling Blade" }
 781.0 "Howling Eight 7" Ability { id: "A49B", source: "Howling Blade" }
 782.8 "Howling Eight 8" Ability { id: "A49C", source: "Howling Blade" }
-786.1 "Mooncleaver" Ability { id: "A74C", source: "Howling Blade" }
+786.1 "Mooncleaver 3" Ability { id: "A74C", source: "Howling Blade" }
 787.1 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
 795.3 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
 796.3 "Howling Eight 1" Ability { id: "A495", source: "Howling Blade" }
@@ -249,7 +249,7 @@ hideall "--sync--"
 800.1 "Howling Eight 6" Ability { id: "A49A", source: "Howling Blade" }
 800.5 "Howling Eight 7" Ability { id: "A49B", source: "Howling Blade" }
 802.4 "Howling Eight 8" Ability { id: "A49C", source: "Howling Blade" }
-805.7 "Mooncleaver" Ability { id: "A74C", source: "Howling Blade" }
+805.7 "Mooncleaver 4" Ability { id: "A74C", source: "Howling Blade" }
 806.7 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
 814.9 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
 815.9 "Howling Eight 1" Ability { id: "A495", source: "Howling Blade" }
