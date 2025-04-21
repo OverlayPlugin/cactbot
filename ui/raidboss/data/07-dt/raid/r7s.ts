@@ -238,32 +238,42 @@ const triggerSet: TriggerSet<Data> = {
           case 'A593':
             return output.in!();
           case 'A5A3': {
+            const inOut = output.out!();
             const lariat = output[data.stoneringer2Weapons?.club ?? 'unknown']!();
 
             if (data.stoneringer2Count > 1) {
               if (data.stoneringer2Followup)
-                return output.outLariat!({ lariat: lariat });
-              return output.out!();
+                return output.inOutLariat!({ inOut: inOut, lariat: lariat });
+              return inOut;
             }
 
             const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
             if (data.stoneringer2Followup)
-              return output.outFollowupLariat!({ followup: followup, lariat: lariat });
-            return output.outFollowup!({ followup: followup });
+              return output.inOutFollowupLariat!({
+                inOut: inOut,
+                followup: followup,
+                lariat: lariat,
+              });
+            return output.inOutFollowup!({ inOut: inOut, followup: followup });
           }
           case 'A5A5': {
+            const inOut = output.in!();
             const lariat = output[data.stoneringer2Weapons?.sword ?? 'unknown']!();
 
             if (data.stoneringer2Count > 1) {
               if (data.stoneringer2Followup)
-                return output.inLariat!({ lariat: lariat });
-              return output.in!();
+                return output.inOutLariat!({ inOut: inOut, lariat: lariat });
+              return inOut;
             }
 
             const followup = data.stoneringer2Followup ? output.bigAoe!() : output.awayFromFront!();
             if (data.stoneringer2Followup)
-              return output.inFollowupLariat!({ followup: followup, lariat: lariat });
-            return output.inFollowup!({ followup: followup });
+              return output.inOutFollowupLariat!({
+                inOut: inOut,
+                followup: followup,
+                lariat: lariat,
+              });
+            return output.inOutFollowup!({ inOut: inOut, followup: followup });
           }
         }
       },
@@ -279,23 +289,14 @@ const triggerSet: TriggerSet<Data> = {
         out: {
           en: 'Out from tethered wall',
         },
-        inFollowupLariat: {
-          en: 'In at tethered wall + ${followup} => ${lariat}',
+        inOutFollowupLariat: {
+          en: '${inOut} + ${followup} => ${lariat}',
         },
-        outFollowupLariat: {
-          en: 'Out from tethered wall + ${followup} => ${lariat}',
+        inOutFollowup: {
+          en: '${inOut} + ${followup}',
         },
-        inFollowup: {
-          en: 'In at tethered wall + ${followup}',
-        },
-        outFollowup: {
-          en: 'Out from tethered wall + ${followup}',
-        },
-        inLariat: {
-          en: 'In at tethered wall => ${lariat}',
-        },
-        outLariat: {
-          en: 'Out from tethered wall => ${lariat}',
+        inOutLariat: {
+          en: '${inOut} => ${lariat}',
         },
         left: {
           en: 'Get Left',
