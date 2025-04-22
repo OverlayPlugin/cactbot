@@ -507,7 +507,7 @@ const triggerSet: TriggerSet<Data> = {
         'Brutal Crown': '王权残暴',
         'Castellation': '护城墙',
         'Coronation': '终端发射',
-        'Divide And Conquer': '分治法',
+        'Divide and Conquer': '分治法',
         'Downburst': '下行突风',
         'Dynastic Diadem': '王冠之力',
         'Legitimate Force': '合法武力',
