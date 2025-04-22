@@ -243,6 +243,15 @@ Options.Triggers.push({
       sound: '../../resources/sounds/Overwatch/D.Va_-_Game_on.webm',
       soundVolume: 0.6,
     },
+    {
+      // https://xivapi.com/LogMessage/916
+      // en: 7 minutes have elapsed since your last activity. [...]
+      // There is no network packet for these log lines; so have to use GameLog.
+      id: 'General Falling Asleep',
+      type: 'GameLog',
+      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
+      response: Responses.wakeUp(),
+    },
   ],
   timelineReplace: [
     {
@@ -255,6 +264,8 @@ Options.Triggers.push({
           'Du willst wahren Kampfgeist in der Trainingspuppe entfachen',
         'You burst out laughing at the striking dummy': 'Du lachst herzlich mit der Trainingspuppe',
         'You clap for the striking dummy': 'Du klatschst begeistert Beifall für die Trainingspuppe',
+        '7 minutes have elapsed since your last activity..*?':
+          'Seit deiner letzten Aktivität sind 7 Minuten vergangen.',
       },
     },
     {
@@ -269,6 +280,8 @@ Options.Triggers.push({
         'You burst out laughing at the striking dummy':
           'Vous vous esclaffez devant le mannequin d\'entraînement',
         'You clap for the striking dummy': 'Vous applaudissez le mannequin d\'entraînement',
+        '7 minutes have elapsed since your last activity.':
+          'Votre personnage est inactif depuis 7 minutes',
       },
     },
     {
@@ -280,6 +293,7 @@ Options.Triggers.push({
         'You psych yourself up alongside the striking dummy': '.*は木人に活を入れた',
         'You burst out laughing at the striking dummy': '.*は木人のことを大笑いした',
         'You clap for the striking dummy': '.*は木人に拍手した',
+        '7 minutes have elapsed since your last activity.': '操作がない状態になってから7分が経過しました。',
       },
     },
     {
@@ -291,6 +305,7 @@ Options.Triggers.push({
         'You psych yourself up alongside the striking dummy': '.*激励木人',
         'You burst out laughing at the striking dummy': '.*看着木人高声大笑',
         'You clap for the striking dummy': '.*向木人送上掌声',
+        '7 minutes have elapsed since your last activity.': '已经7分钟没有进行任何操作',
       },
     },
     {
@@ -302,6 +317,7 @@ Options.Triggers.push({
         'You psych yourself up alongside the striking dummy': '.*나무인형에게 힘을 불어넣습니다',
         'You burst out laughing at the striking dummy': '.*나무인형을 보고 폭소를 터뜨립니다',
         'You clap for the striking dummy': '.*나무인형에게 박수를 보냅니다',
+        '7 minutes have elapsed since your last activity..*?': '7분 동안 아무 조작을 하지 않았습니다',
       },
     },
   ],
