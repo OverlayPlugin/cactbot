@@ -623,8 +623,8 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'de',
       'replaceSync': {
         'Demi-Gukumatz': 'Demi-Gukumatz',
-        'Fatebreaker\'s image': 'Abbild des fusionierten Ascians',
-        'Fatebreaker(?!\'s image)': 'fusioniert(?:e|er|es|en) Ascian',
+        'Fatebreaker\'s Image': 'Abbild des Banns der Hoffnung',
+        'Fatebreaker(?!\')': 'Bann der Hoffnung',
         'Halo of Flame': 'Halo der Flamme',
       },
       'replaceText': {
