@@ -27,7 +27,7 @@ hideall "--sync--"
 
 # Disco Floor 1
 71.1 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
-77.2 "Disco Infernal" Ability { id: "A756", source: "Dancing Green" }
+77.2 "Disco Infernal" Ability { id: "A756", source: "Dancing Green" } window 77.2,30
 82.5 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
 86.5 "Funky Floor" Ability { id: "A753", source: "Dancing Green" }
 90.5 "Inside Out/Outside In" Ability { id: ["A77C", "A77E"], source: "Dancing Green" }
@@ -72,7 +72,7 @@ hideall "--sync--"
 174.8 "Get Down! (Echo)" #Ability { id: "A765", source: "Dancing Green" }
 
 # Debuff and Dodge Dance
-182.2 "Let's Dance! (Cleave) 1" Ability { id: ["A76D", "A76E"], source: "Dancing Green" }
+182.2 "Let's Dance! (Cleave) 1" # Ability { id: ["A76D", "A76E"], source: "Dancing Green" }
 184.8 "Let's Dance! (Cleave) 2" #Ability { id: "A76D", source: "Dancing Green" }
 185.7 "Debuffs 1"
 187.4 "Let's Dance! (Cleave) 3" #Ability { id: "A76E", source: "Dancing Green" }
@@ -84,7 +84,7 @@ hideall "--sync--"
 197.2 "Let's Dance! (Cleave) 7" #Ability { id: "A76E", source: "Dancing Green" }
 199.7 "Let's Dance! (Cleave) 8" #Ability { id: "A76D", source: "Dancing Green" }
 200.8 "Debuffs 4"
-208.7 "Let's Pose!" Ability { id: "A76F", source: "Dancing Green" }
+208.7 "Let's Pose!" Ability { id: "A76F", source: "Dancing Green" } window 30,30
 
 # Exafloors
 226.9 "Flip to A-side/Flip to B-side" Ability { id: ["A780", "A781"], source: "Dancing Green" }
@@ -98,7 +98,7 @@ hideall "--sync--"
 274.1 "Drop the Needle" #Ability { id: "A738", source: "Dancing Green" }
 275.9 "Play A-side/Play B-side" Ability { id: ["A783", "A784"], source: "Dancing Green" }
 283.6 "Deep Cut" Ability { id: "A722", source: "Dancing Green" }
-290.2 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
+290.2 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" } window 30,30
 
 # Frogtourage 1
 296.3 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
@@ -112,7 +112,7 @@ hideall "--sync--"
 351.5 "2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle" Ability { id: ["A728", "A729", "A72A", "A4DB", "A72B", "A72C", "A72D", "A4DC", "A730", "A731", "A732", "A4DD", "A733", "A734", "A735", "A4DE", "A739", "A73A", "A73B", "A4DF", "A73C", "A73D", "A73E", "A4E0"], source: "Dancing Green" } duration 2
 355.1 "Drop the Needle" #Ability { id: "A738", source: "Dancing Green" }
 356.9 "Play A-side/Play B-side" Ability { id: ["A783", "A784"], source: "Dancing Green" }
-362.9 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" }
+362.9 "Celebrate Good Times" Ability { id: "A723", source: "Dancing Green" } window 30,30
 
 # Ensemble 2
 369.0 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
@@ -147,7 +147,7 @@ hideall "--sync--"
 417.2 "Let's Dance! Remix 6" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
 418.7 "Let's Dance! Remix 7" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
 420.2 "Let's Dance! Remix 8" #Ability { id: ["A391", "A392", "A393", "A394"], source: "Dancing Green" }
-428.2 "Let's Pose!" Ability { id: "A770", source: "Dancing Green" }
+428.2 "Let's Pose!" Ability { id: "A770", source: "Dancing Green" } window 30,30
 
 # Frogtourage 2
 442.4 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
@@ -160,7 +160,7 @@ hideall "--sync--"
 495.1 "Moonburn"
 495.2 "Back-up Dance" Ability { id: "A778", source: "Dancing Green" }
 504.5 "Do the Hustle (all)" Ability { id: ["A724", "A725"], source: "Dancing Green" }
-512.3 "Deep Cut" Ability { id: "A722", source: "Dancing Green" }
+512.3 "Deep Cut" Ability { id: "A722", source: "Dancing Green" } window 30,30
 
 # Disco Floor 2
 517.9 "--middle--" Ability { id: "A6C5", source: "Dancing Green" }
