@@ -1256,9 +1256,9 @@ const triggerSet: TriggerSet<Data> = {
 
         let newOrder;
         if (data.championClock === 'clockwise') {
-          newOrder = [...order.splice(platform,5), ...order.splice(0,platform)];
+          newOrder = [...order.splice(platform, 5), ...order.splice(0, platform)];
         } else if (data.championClock === 'counterclockwise')
-          newOrder = [...counterorder.splice(platform,5), ...counterorder.splice(0,platform)];
+          newOrder = [...counterorder.splice(platform, 5), ...counterorder.splice(0, platform)];
 
         // Failed to get clock or matching x coords
         if (
