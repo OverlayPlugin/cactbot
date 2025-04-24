@@ -1227,60 +1227,38 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         // Static orders
-        // Static orders
         // Starting Platform S, Donut S
         const order = ['donut', 'in', 'out', 'in', 'sides'];
         const counterorder = ['donut', 'sides', 'in', 'out', 'in'];
 
-        // Starting Platform S, Donut SW
-        const order1 = ['in', 'out', 'in', 'sides', 'donut'];
-        const counterorder1 = ['in', 'donut', 'sides', 'in', 'out'];
-
-        // Starting Platform S, Donut NW
-        const order2 = ['out', 'in', 'sides', 'donut', 'in'];
-        const counterorder2 = ['out', 'in', 'donut', 'sides', 'in'];
-
-        // Starting Platform S, Donut NE
-        const order3 = ['in', 'sides', 'donut', 'in', 'out'];
-        const counterorder3 = ['in', 'out', 'in', 'donut', 'sides'];
-
-        // Starting Platform S, Donut SE
-        const order4 = ['sides', 'donut', 'in', 'out', 'in'];
-        const counterorder4 = ['sides', 'in', 'out', 'in', 'donut'];
-
-        let newOrder;
+        let platform;
         const x = data.championDonutStartX;
         if (x > 99 && x < 101) {
           // S Platform
-          if (data.championClock === 'clockwise') {
-            newOrder = order;
-          } else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder;
+          platform = 0;
         } else if (x > 82 && x < 85) {
           // SW Platform
-          if (data.championClock === 'clockwise') {
-            newOrder = order1;
-          } else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder1;
+          platform = 1;
         } else if (x > 88 && x < 91) {
           // NW Platform
-          if (data.championClock === 'clockwise') {
-            newOrder = order2;
-          } else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder2;
+          platform = 2;
         } else if (x > 109 && x < 112) {
           // NE Platform
-          if (data.championClock === 'clockwise') {
-            newOrder = order3;
-          } else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder3;
+          platform = 3;
         } else if (x > 115 && x < 118) {
           // SE Platform
-          if (data.championClock === 'clockwise') {
-            newOrder = order4;
-          } else if (data.championClock === 'counterclockwise')
-            newOrder = counterorder4;
+          platform = 4;
         }
+
+        // Unknown Platform
+        if (platform === undefined)
+          return;
+
+        let newOrder;
+        if (data.championClock === 'clockwise') {
+          newOrder = [...order.splice(platform,5), ...order.splice(0,platform)];
+        } else if (data.championClock === 'counterclockwise')
+          newOrder = [...counterorder.splice(platform,5), ...counterorder.splice(0,platform)];
 
         // Failed to get clock or matching x coords
         if (
