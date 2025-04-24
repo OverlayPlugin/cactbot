@@ -890,10 +890,19 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Weal of Stone Cardinals',
-      // This appears to always be cardinals safe
+      // There are two casts and cardinals is always safe:
+      // A791 Weal of Stone
+      // A792 Weal of Stone
+      // Due to timing of this impacting Windfang/Stonefang, call earlier
+      // Using Moonbeam Bites +1s for spread (A3BF) and stack (A3C0) abilities to complete
       type: 'StartsUsing',
-      netRegex: { id: 'A792', source: 'Wolf of Stone', capture: false },
-      suppressSeconds: 1,
+      netRegex: { id: ['A3C2', 'A3C3'], source: 'Moonlit Shadow', capture: true },
+      condition: (data) => {
+        if (data.moonbeamBitesTracker === 4)
+          return true;
+        return false;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) + 1,
       infoText: (_data, _matches, output) => {
         return output.cardinals!();
       },
