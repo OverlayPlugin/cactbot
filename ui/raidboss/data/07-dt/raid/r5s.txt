@@ -72,7 +72,7 @@ hideall "--sync--"
 174.8 "Get Down! (Echo)" #Ability { id: "A765", source: "Dancing Green" }
 
 # Debuff and Dodge Dance
-182.2 "Let's Dance! (Cleave) 1" Ability { id: ["A76D", "A76E"], source: "Dancing Green" } window 10,1.5
+182.2 "Let's Dance! (Cleave) 1" # Ability { id: ["A76D", "A76E"], source: "Dancing Green" }
 184.8 "Let's Dance! (Cleave) 2" #Ability { id: "A76D", source: "Dancing Green" }
 185.7 "Debuffs 1"
 187.4 "Let's Dance! (Cleave) 3" #Ability { id: "A76E", source: "Dancing Green" }
