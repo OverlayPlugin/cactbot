@@ -213,7 +213,7 @@ Options.Triggers.push({
         cleanse: {
           en: 'Cleanse in spotlight',
           de: 'Reinige im Scheinwerfer',
-          fr: 'Purifiez sous le spot',
+          fr: 'Purifiez sous le projecteur',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
@@ -238,7 +238,7 @@ Options.Triggers.push({
         cleanse: {
           en: 'Cleanse in spotlight',
           de: 'Reinige im Scheinwerfer',
-          fr: 'Purifiez sous le spot',
+          fr: 'Purifiez sous le projecteur',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',
@@ -272,7 +272,7 @@ Options.Triggers.push({
         cleanse: {
           en: 'Cleanse in spotlight',
           de: 'Reinige im Scheinwerfer',
-          fr: 'Purifiez sous le spot',
+          fr: 'Purifiez sous le projecteur',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
           ko: '스포트라이트에 서기',

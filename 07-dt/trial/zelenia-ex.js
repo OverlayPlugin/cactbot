@@ -252,6 +252,7 @@ Options.Triggers.push({
         near: {
           en: 'Near',
           de: 'Nah',
+          fr: 'proche',
           ja: '近',
           cn: '近',
           ko: '가까이',
@@ -259,6 +260,7 @@ Options.Triggers.push({
         far: {
           en: 'Far',
           de: 'Fern',
+          fr: 'loin',
           ja: '遠',
           cn: '远',
           ko: '멀리',
@@ -266,6 +268,7 @@ Options.Triggers.push({
         swapAfterFirst: {
           en: '${first} bait first, Swap after first+third',
           de: '${first} zuerst ködern, wechsel nach dem ersten + dritten',
+          fr: 'Bait ${first} d\'abord, échangez après le 1er et 3ème',
           ja: '${first} を先に誘導 → 1・3回目後に交代',
           cn: '先 ${first} 引导, 1、3刀后交换',
           ko: '처음 ${first} 유도, 1, 3번째 교대',
@@ -273,6 +276,7 @@ Options.Triggers.push({
         swapAfterSecond: {
           en: '${first} bait first, Swap after second',
           de: '${first} zuerst ködern, wechsel nach dem zweiten',
+          fr: 'Bait ${first} d\'abord, échangez après le 2ème',
           ja: '${first} を先に誘導 → 2回目後に交代',
           cn: '先 ${first} 引导, 2刀后交换',
           ko: '처음 ${first} 유도, 2번째 교대',
@@ -296,6 +300,7 @@ Options.Triggers.push({
         tower: {
           en: 'Donut on you, get tower',
           de: 'Donut auf DIR, steh im Turm',
+          fr: 'Donut sur VOUS, prenez une tour',
           ja: 'ドーナツ対象 → 塔踏み',
           cn: '月环点名, 踩塔',
           ko: '도넛 대상자, 기둥 들어가기',
@@ -326,6 +331,7 @@ Options.Triggers.push({
         stacks: {
           en: 'Support/DPS stacks',
           de: 'Support/DPS sammeln',
+          fr: 'Support/DPS package',
           ja: 'タンクヒラ/DPS 頭割り',
           cn: '红地板分摊',
           ko: '탱힐/딜러 쉐어',
@@ -393,6 +399,7 @@ Options.Triggers.push({
         text: {
           en: 'Supports west, DPS east',
           de: 'Supports Westen, DPS Osten',
+          fr: 'Supports Ouest, DPS Est',
           ja: 'タンクヒラ西 / DPS東',
           cn: 'T奶 左, DPS 右',
           ko: '탱힐 왼쪽, 딜러 오른쪽',
@@ -409,6 +416,7 @@ Options.Triggers.push({
         text: {
           en: 'Point sword cleave out',
           de: 'Schwert-Cleves nach draußen zeigen',
+          fr: 'Dirigez l\'épée vers l\'extérieur',
           ja: '剣を外に向ける',
           cn: '引导半场刀',
           ko: '바깥으로 유도',
@@ -476,6 +484,7 @@ Options.Triggers.push({
         text: {
           en: 'Start ${dir}, rotate ${rotate}',
           de: 'Starte ${dir}, rotiere ${rotate}',
+          fr: 'Commencez ${dir}, tournez ${rotate}',
           ja: '${dir} から開始, ${rotate}',
           cn: '从 ${dir} 开始, ${rotate}',
           ko: '${dir} 시작, ${rotate}으로 회전',
@@ -506,6 +515,7 @@ Options.Triggers.push({
         inWest: {
           en: 'In WSW => Out WNW => Out WSW',
           de: 'Rein WSW => Raus WNW => Raus WSW',
+          fr: 'Intérieur OSO => Extérieur ONO => Extérieur OSO',
           ja: '内8時 ⇒ 外10時 ⇒ 外8時',
           cn: '内左偏下 => 外左偏上 => 外左偏下',
           ko: '안 8시 => 바깥 10시 => 바깥 8시',
@@ -513,6 +523,7 @@ Options.Triggers.push({
         inEast: {
           en: 'In ESE => Out ESE => Out ENE',
           de: 'Rein OSO => Raus OSO => Raus ONO',
+          fr: 'Intérieur ESE => Extérieur ESE => Intérieur ENE',
           ja: '内4時 ⇒ 外4時 ⇒ 外2時',
           cn: '内右偏下 => 外右偏下 => 外右偏上',
           ko: '안 4시 => 바깥 4시 => 바깥 2시',
@@ -520,6 +531,7 @@ Options.Triggers.push({
         outWest: {
           en: 'Out WSW => In WNW => In WSW',
           de: 'Raus WSW => Rein WNW => Rein WSW',
+          fr: 'Extérieur OSO => Intérieur ONO => Intérieur OSO',
           ja: '外8時 ⇒ 内10時 ⇒ 内8時',
           cn: '外左偏下 => 内左偏上 => 内左偏下',
           ko: '바깥 8시 => 안 10시 => 안 8시',
@@ -527,6 +539,7 @@ Options.Triggers.push({
         outEast: {
           en: 'Out ESE => In ESE => In ENE',
           de: 'Raus OSO => Rein OSO => Rein ONO',
+          fr: 'Extérieur ESE => Intérieur ESE => Intérieur ENE',
           ja: '外4時 ⇒ 内4時 ⇒ 内2時',
           cn: '外右偏下 => 内右偏下 => 内右偏上',
           ko: '바깥 4시 => 안 4시 => 안 2시',
@@ -550,6 +563,7 @@ Options.Triggers.push({
         rose: {
           en: 'Rose Marker on YOU',
           de: 'Rosen-Marker auf DIR',
+          fr: 'Marqueur de Rose sur VOUS',
           ja: 'バラ対象',
           cn: '蔷薇点名',
           ko: '장미징 대상자',
@@ -557,6 +571,7 @@ Options.Triggers.push({
         tower: {
           en: 'Soak Tower',
           de: 'Im Turm stehen',
+          fr: 'Prenez une tour',
           ja: '塔踏み',
           cn: '踩塔',
           ko: '기둥 들어가기',
@@ -586,6 +601,7 @@ Options.Triggers.push({
         north: {
           en: 'Roses north, spreads south',
           de: 'Rosen Norden, Verteilen Süden',
+          fr: 'Roses au Nord, dispersion au Sud',
           ja: 'バラ北, さんかい南',
           cn: '蔷薇上, 分散下',
           ko: '장미 북쪽, 산개 남쪽',
@@ -593,6 +609,7 @@ Options.Triggers.push({
         south: {
           en: 'Roses south, spreads north',
           de: 'Rosen Süden, Verteilen Norden',
+          fr: 'Roses au Sud, dispersion au Nord',
           ja: 'バラ南, さんかい北',
           cn: '蔷薇下, 分散上',
           ko: '장미 남쪽, 산개 북쪽',
@@ -624,6 +641,7 @@ Options.Triggers.push({
         rose: {
           en: 'Rose Marker on YOU, spread ${northSouth}',
           de: 'Rosen-Marker auf DIR, verteile ${northSouth}',
+          fr: 'Marqueur de Rose sur VOUS, dispersion ${northSouth}',
           ja: 'バラ対象, ${northSouth} さんかい',
           cn: '蔷薇点名, ${northSouth} 分散',
           ko: '장미징 대상자, ${northSouth}에서 산개',
@@ -631,6 +649,7 @@ Options.Triggers.push({
         spread: {
           en: 'Spread Marker on YOU, spread ${northSouth}',
           de: 'Verteilen-Marker auf DIR, verteile ${northSouth}',
+          fr: 'Marqueur de dispersion sur VOUS, dispersion ${northSouth}',
           ja: 'さんかい対象, ${northSouth} さんかい',
           cn: '分散点名, ${northSouth} 分散',
           ko: '산개징 대상자, ${northSouth}에서 산개',
@@ -646,6 +665,7 @@ Options.Triggers.push({
         thorns: {
           en: 'Stack for thorns => break tethers => stack in red tiles',
           de: 'Sammeln für Dornen => Verbindung brechen => steh auf dem roten Feld',
+          fr: 'Packages pour les ronces => Cassez les liens => Packages dans les tuiles rouges',
           ja: '茨集合 => 線切り => 赤床頭割り',
           cn: '集合连线 => 拉断连线 => 红地板分摊',
           ko: '모이기 => 선 끊기 => 장미장판위에 서기',
@@ -698,6 +718,7 @@ Options.Triggers.push({
         start: {
           en: 'Start ${startDir}',
           de: 'Start ${startDir}',
+          fr: 'Commencez ${startDir}',
           ja: '${startDir} 開始',
           cn: '从 ${startDir} 开始',
           ko: '${startDir} 시작',
@@ -727,6 +748,7 @@ Options.Triggers.push({
         text: {
           en: '${inOutFirst} ${dirFirst} Clockwise => ${inOutSecond} ${dirSecond}',
           de: '${inOutFirst} ${dirFirst} Im Uhrzeigersinn => ${inOutSecond} ${dirSecond}',
+          fr: '${inOutFirst} ${dirFirst} sens horaire => ${inOutSecond} ${dirSecond}',
           ja: '${inOutFirst} ${dirFirst} 時計回り => ${inOutSecond} ${dirSecond}',
           cn: '${inOutFirst} ${dirFirst} 顺时针 => ${inOutSecond} ${dirSecond}',
           ko: '${dirFirst} ${inOutFirst} => ${dirSecond} ${inOutSecond}',
@@ -751,6 +773,7 @@ Options.Triggers.push({
         rose: {
           en: 'Rose Marker on YOU',
           de: 'Rosen-Marker auf DIR',
+          fr: 'Marqueur de Rose sur VOUS',
           ja: 'バラ対象',
           cn: '蔷薇点名',
           ko: '장미징 대상자',
@@ -758,6 +781,7 @@ Options.Triggers.push({
         tower: {
           en: 'Tower Soaks Later',
           de: 'Nehme Turm später',
+          fr: 'Prenez une tour après',
           ja: 'あとで塔踏み',
           cn: '稍后踩塔',
           ko: '나중에 기둥 들어가기',
@@ -789,6 +813,7 @@ Options.Triggers.push({
         rose: {
           en: 'Place rose ${inOut} => dodge cleaves',
           de: 'Plaziere Rose ${inOut} => weiche dem Cleve aus',
+          fr: 'Placez la rose ${inOut} => esquivez les cleaves',
           ja: '${inOut} にバラ置き => 扇回避',
           cn: '${inOut} 放置蔷薇 => 躲避扇形',
           ko: '${inOut} 장미 놓기 => 장판 피하기',
@@ -796,6 +821,7 @@ Options.Triggers.push({
         tower: {
           en: 'Dodge cleaves => soak tower',
           de: 'Weiche dem Cleave aus => steh im Turm',
+          fr: 'Esquivez les cleaves => prenez une tour',
           ja: '扇回避 => 塔踏み',
           cn: '躲避扇形 => 踩塔',
           ko: '장판 피하기 => 기둥 들어가기',
