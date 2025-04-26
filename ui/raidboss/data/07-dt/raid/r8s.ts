@@ -596,7 +596,9 @@ const triggerSet: TriggerSet<Data> = {
         return false;
       },
       infoText: (data, matches, output) => {
-        if (matches.x === undefined || matches.y === undefined || data.towerfallSafeDirs === undefined)
+        if (
+          matches.x === undefined || matches.y === undefined || data.towerfallSafeDirs === undefined
+        )
           return;
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
