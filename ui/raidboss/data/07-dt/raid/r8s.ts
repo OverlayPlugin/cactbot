@@ -1529,7 +1529,7 @@ const triggerSet: TriggerSet<Data> = {
         ): PluginCombatantState | undefined => {
           for (const actor of actors) {
             const actorPlatform = getFangPlatform(actor);
- 
+
             if (platform === actorPlatform)
               return actor;
           }
