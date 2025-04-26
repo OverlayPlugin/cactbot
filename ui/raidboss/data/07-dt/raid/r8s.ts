@@ -530,14 +530,16 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Terrestrial Titans Towerfall Directions',
+      id: 'R8S Terrestrial Titans Towerfall Safe Spots',
+      // A3C5 Terrestrial Titans
+      // A3C6 Towerfall
+      // East/West Towers are (93, 100) and (107, 100)
+      // North/South Towers are (100, 93) and (100, 107)
       type: 'StartsUsingExtra',
       netRegex: { id: 'A3C5', capture: true },
       durationSeconds: 15,
       suppressSeconds: 1,
       infoText: (data, matches, output) => {
-        if (matches.heading === undefined)
-          return;
         const getTowerfallSafeDir = (
           hdg: number,
         ): 'SENW' | 'NESW' | undefined => {
@@ -552,11 +554,15 @@ const triggerSet: TriggerSet<Data> = {
           return undefined;
         };
         const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
         const hdg = Directions.hdgTo8DirNum(parseFloat(matches.heading));
 
-        // East/West Towers are (93, 100) and (107, 100)
-        // North/South Towers are (100, 93) and (100, 107)
-        data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
+        // towerDirs will be undefined if we receive bad coords
+        if ((x >= 92 && x <= 94) || (x >= 106 && x <= 108))
+          data.towerDirs = 'EW';
+        else if ((y >= 92 && y <= 94) || (y >= 106 && y <= 108))
+          data.towerDirs = 'NS';
+
         data.towerfallSafeDirs = getTowerfallSafeDir(hdg);
 
         if (data.towerfallSafeDirs === undefined)
@@ -586,6 +592,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Terrestrial Titans Safe Spot',
+      // Gleaming Fangs are at:
+      // NS Towers: (108, 100) E, (92, 100) W
+      // EW Towers: (100, 92) N, (100, 108) S
       type: 'StatusEffect',
       netRegex: { data3: '036D0808', target: 'Gleaming Fang', capture: true },
       condition: (_data, matches) => {
@@ -597,7 +606,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (data, matches, output) => {
         if (
-          matches.x === undefined || matches.y === undefined || data.towerfallSafeDirs === undefined
+          data.towerfallSafeDirs === undefined || data.towerDirs === undefined
         )
           return;
         const x = parseFloat(matches.x);
@@ -607,7 +616,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if (
           towerfallSafeDirs === 'SENW' &&
-          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
+          ((towerDirs === 'EW' && y < 100) || (y  && x < 100))
         )
           return output['dirNW']!();
         else if (
