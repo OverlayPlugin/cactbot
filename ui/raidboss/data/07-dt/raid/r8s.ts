@@ -558,8 +558,8 @@ const triggerSet: TriggerSet<Data> = {
         // North/South Towers are (100, 93) and (100, 107)
         data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
         data.towerfallDirs = towerfallDir(hdg);
-        const safeDir1 = data.towerfallDirs === 'SENW' ? output.dirNE!() : output.dirNW!();
-        const safeDir2 = data.towerfallDirs === 'SENW' ? output.dirSW!() : output.dirSE!();
+        const safeDir1 = data.towerfallDirs === 'SENW' ? output['dirNE']!() : output['dirNW']!();
+        const safeDir2 = data.towerfallDirs === 'SENW' ? output['dirSW']!() : output['dirSE']!();
 
         return output.dirs!({ dir1: safeDir1, dir2: safeDir2 });
       },
@@ -599,22 +599,22 @@ const triggerSet: TriggerSet<Data> = {
           towerfallDirs === 'SENW' &&
           ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
         )
-          return output.dirNE!();
+          return output['dirNE']!();
         else if (
           towerfallDirs === 'SENW' &&
           ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
         )
-          return output.dirSW!();
+          return output['dirSW']!();
         if (
           towerfallDirs === 'NESW' &&
           ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
         )
-          return output.dirNW!();
+          return output['dirNW']!();
         else if (
           towerfallDirs === 'NESW' &&
           ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
         )
-          return output.dirSE!();
+          return output['dirSE']!();
       },
       outputStrings: Directions.outputStringsIntercardDir,
     },
@@ -1489,7 +1489,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A476', source: 'Gleaming Fang', capture: true },
       preRun: (data, matches) => data.gleamingBarrageIds.push(parseInt(matches.sourceId, 16)),
-      promise: async (data, matches) => {
+      promise: async (data) => {
         // Wait for all 5
         if (data.gleamingBarrageIds.length !== 5)
           return;
