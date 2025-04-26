@@ -559,9 +559,11 @@ const triggerSet: TriggerSet<Data> = {
         data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
         data.towerfallSafeDirs = getTowerfallSafeDir(hdg);
         const safeDir1 = data.towerfallSafeDirs === 'SENW' ?
-          output['dirSE']!() : output['dirNE']!();
+          output['dirSE']!()
+          : output['dirNE']!();
         const safeDir2 = data.towerfallSafeDirs === 'SENW' ?
-          output['dirNW']!() : output['dirSW']!();
+          output['dirNW']!()
+          : output['dirSW']!();
 
         return output.dirs!({ dir1: safeDir1, dir2: safeDir2 });
       },
