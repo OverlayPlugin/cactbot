@@ -19,7 +19,7 @@ export interface Data extends RaidbossData {
   galeTetherDirNum?: number;
   galeTetherCount: number;
   towerDirs?: 'EW' | 'NS';
-  towerfallDirs?: 'NESW' | 'SENW';
+  towerfallSafeDirs?: 'NESW' | 'SENW';
   stoneWindCallGroup?: number;
   surgeTracker: number;
   packPredationTracker: number;
@@ -538,7 +538,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, matches, output) => {
         if (matches.heading === undefined)
           return;
-        const towerfallDir = (
+        const getTowerfallSafeDir = (
           hdg: number,
         ): 'SENW' | 'NESW' | undefined => {
           switch (hdg) {
@@ -557,9 +557,9 @@ const triggerSet: TriggerSet<Data> = {
         // East/West Towers are (93, 100) and (107, 100)
         // North/South Towers are (100, 93) and (100, 107)
         data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
-        data.towerfallDirs = towerfallDir(hdg);
-        const safeDir1 = data.towerfallDirs === 'SENW' ? output['dirNE']!() : output['dirNW']!();
-        const safeDir2 = data.towerfallDirs === 'SENW' ? output['dirSW']!() : output['dirSE']!();
+        data.towerfallSafeDirs = getTowerfallSafeDir(hdg);
+        const safeDir1 = data.towerfallSafeDirs === 'SENW' ? output['dirSE']!() : output['dirNE']!();
+        const safeDir2 = data.towerfallSafeDirs === 'SENW' ? output['dirNW']!() : output['dirSW']!();
 
         return output.dirs!({ dir1: safeDir1, dir2: safeDir2 });
       },
@@ -592,29 +592,29 @@ const triggerSet: TriggerSet<Data> = {
           return;
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
-        const towerfallDirs = data.towerfallDirs;
+        const towerfallSafeDirs = data.towerfallSafeDirs;
         const towerDirs = data.towerDirs;
 
         if (
-          towerfallDirs === 'SENW' &&
+          towerfallSafeDirs === 'SENW' &&
           ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
-        )
-          return output['dirNE']!();
-        else if (
-          towerfallDirs === 'SENW' &&
-          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
-        )
-          return output['dirSW']!();
-        if (
-          towerfallDirs === 'NESW' &&
-          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
         )
           return output['dirNW']!();
         else if (
-          towerfallDirs === 'NESW' &&
-          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
+          towerfallSafeDirs === 'SENW' &&
+          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
         )
           return output['dirSE']!();
+        if (
+          towerfallSafeDirs === 'NESW' &&
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
+        )
+          return output['dirNE']!();
+        else if (
+          towerfallSafeDirs === 'NESW' &&
+          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
+        )
+          return output['dirSW']!();
       },
       outputStrings: Directions.outputStringsIntercardDir,
     },
