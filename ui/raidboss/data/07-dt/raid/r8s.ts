@@ -607,7 +607,8 @@ const triggerSet: TriggerSet<Data> = {
           return output.dirSW!();
         if (
           towerfallDirs === 'NESW' &&
-          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100)))
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
+        )
           return output.dirNW!();
         else if (
           towerfallDirs === 'NESW' &&
@@ -1551,7 +1552,7 @@ const triggerSet: TriggerSet<Data> = {
         if (
           data.championOrder === undefined ||
           data.championOrder[data.championTracker] === undefined
-        ) 
+        )
           return;
 
         // Adjust to where we are if we moved
