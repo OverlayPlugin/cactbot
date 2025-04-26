@@ -612,15 +612,15 @@ const triggerSet: TriggerSet<Data> = {
         const towerfallSafeDirs = data.towerfallSafeDirs;
 
         // Assume towerDirs from Fang if received bad coords for towers
-        let towerDirs = data.towerDirs ?? undefined;
-        if (towerDirs === undefined) {
+        if (data.towerDirs === undefined) {
           if (y > 99 && y < 100)
-            towerDirs === 'NS';
+            data.towerDirs === 'NS';
           else if (x > 99 && x < 101)
-            towerDirs === 'EW';
+            data.towerDirs === 'EW';
           else
             return;
         }
+        const towerDirs = data.towerDirs;
 
         if (
           towerfallSafeDirs === 'SENW' &&
