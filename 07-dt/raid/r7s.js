@@ -54,6 +54,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'AoE x${count}',
+          cn: 'AoE x${count}',
         },
       },
     },
@@ -86,9 +87,11 @@ Options.Triggers.push({
       outputStrings: {
         inLater: {
           en: 'In (for later)',
+          cn: '(稍后靠近)',
         },
         outLater: {
           en: 'Out (for later)',
+          cn: '(稍后远离)',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -113,9 +116,11 @@ Options.Triggers.push({
       outputStrings: {
         sharedBuster: {
           en: '${stoneringer} => Tanks ${inOut}, Shared tankbuster',
+          cn: '${stoneringer} => 坦克 ${inOut}, 引导死刑',
         },
         avoidBuster: {
           en: '${stoneringer} => Party ${inOut}, Avoid tankbuster',
+          cn: '${stoneringer} => 小队 ${inOut}, 远离坦克死刑',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -131,6 +136,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Drop seed',
+          cn: '放置冰花',
         },
       },
     },
@@ -154,6 +160,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Line of Sight boss with adds',
+          cn: '躲在小怪身后',
         },
       },
     },
@@ -167,6 +174,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Rotate away from proximity markers',
+          cn: '远离距离衰减 AoE 落点',
         },
       },
     },
@@ -178,6 +186,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stack on ${target} => Out + Protean',
+          cn: '${target} 分摊 => 远离 + 八方分散',
         },
       },
     },
@@ -191,6 +200,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Go North, big AoE + Launch',
+          cn: '去北方准备 AoE + 击飞',
         },
       },
     },
@@ -253,9 +263,11 @@ Options.Triggers.push({
       outputStrings: {
         in: {
           en: 'In at tethered wall',
+          cn: '连线墙月环',
         },
         out: {
           en: 'Out from tethered wall',
+          cn: '连线墙钢铁',
         },
         inOutFollowupLariat: {
           en: '${inOut} + ${followup} => ${lariat}',
@@ -268,12 +280,15 @@ Options.Triggers.push({
         },
         left: {
           en: 'Get Left',
+          cn: '去左边',
         },
         right: {
           en: 'Get Right',
+          cn: '去右边',
         },
         awayFromFront: {
           en: 'Spread, Away from front',
+          cn: '分散, 远离 BOSS 正面',
         },
         bigAoe: Outputs.bigAoe,
         unknown: Outputs.unknown,
@@ -287,6 +302,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Spread, Away from front',
+          cn: '分散, 远离 BOSS 正面',
         },
       },
     },
@@ -304,6 +320,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Tank tether on ${target}',
+          cn: '坦克连线 ${target}',
         },
       },
     },
@@ -319,9 +336,11 @@ Options.Triggers.push({
       outputStrings: {
         avoidFlare: {
           en: 'Away from Flare',
+          cn: '远离核爆',
         },
         flare: {
           en: 'Flare + buster on YOU, Away from party',
+          cn: '核爆死刑点名, 远离人群',
         },
       },
     },
@@ -335,6 +354,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get tethers',
+          cn: '获取连线',
         },
       },
     },
@@ -347,6 +367,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Drop seed',
+          cn: '放置冰花',
         },
       },
     },
@@ -363,6 +384,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Avoid line AoEs',
+          cn: '远离直线 AoE',
         },
       },
     },
@@ -410,9 +432,11 @@ Options.Triggers.push({
       outputStrings: {
         left: {
           en: '<== Get Left',
+          cn: '<== 左左左',
         },
         right: {
           en: 'Get Right ==>',
+          cn: '右右右 ==>',
         },
       },
     },
@@ -425,6 +449,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get tower',
+          cn: '踩塔',
         },
       },
     },
@@ -437,6 +462,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get tethers',
+          cn: '接线',
         },
       },
     },
