@@ -176,7 +176,7 @@ const getPlatformNum = (
   return -1;
 };
 
-const getFangPlatform  = (
+const getFangPlatform = (
   combatant: PluginCombatantState,
 ): number => {
   const x = combatant.PosX;
@@ -554,8 +554,8 @@ const triggerSet: TriggerSet<Data> = {
         const x = parseFloat(matches.x);
         const hdg = Directions.hdgTo8DirNum(parseFloat(matches.heading));
 
-        // East/West Towers are (93, 100) and (107, 100) 
-        // North/South Towers are (100, 93) and (100, 107) 
+        // East/West Towers are (93, 100) and (107, 100)
+        // North/South Towers are (100, 93) and (100, 107)
         data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
         data.towerfallDirs = towerfallDir(hdg);
         const safeDir1 = data.towerfallDirs === 'SENW' ? output.dirNE!() : output.dirNW!();
@@ -595,14 +595,25 @@ const triggerSet: TriggerSet<Data> = {
         const towerfallDirs = data.towerfallDirs;
         const towerDirs = data.towerDirs;
 
-        if (towerfallDirs === 'SENW' && ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100)))
+        if (
+          towerfallDirs === 'SENW' &&
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
+        )
           return output.dirNE!();
-        else if (towerfallDirs === 'SENW' && ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100)))
+        else if (
+          towerfallDirs === 'SENW' &&
+          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
+        )
           return output.dirSW!();
-        if (towerfallDirs === 'NESW' && ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100)))
+        if (
+          towerfallDirs === 'NESW' &&
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100)))
           return output.dirNW!();
-        else if (towerfallDirs === 'NESW' && ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100)))
-           return output.dirSE!();
+        else if (
+          towerfallDirs === 'NESW' &&
+          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
+        )
+          return output.dirSE!();
       },
       outputStrings: Directions.outputStringsIntercardDir,
     },
@@ -1443,8 +1454,12 @@ const triggerSet: TriggerSet<Data> = {
         let newOrder;
         if (data.championClock === 'clockwise') {
           newOrder = [...order.splice(relPlatform, 5), ...order.splice(0, relPlatform)];
-        } else if (data.championClock === 'counterclockwise')
-          newOrder = [...counterorder.splice(relPlatform, 5), ...counterorder.splice(0, relPlatform)];
+        } else if (data.championClock === 'counterclockwise') {
+          newOrder = [
+            ...counterorder.splice(relPlatform, 5),
+            ...counterorder.splice(0, relPlatform),
+          ];
+        }
 
         // Failed to get clock or matching x coords
         if (
@@ -1557,7 +1572,10 @@ const triggerSet: TriggerSet<Data> = {
           // Default to previous order if undefined
           if (relPlatform === undefined)
             relPlatform = 0;
-          latestOrder = [...data.championOrder.splice(relPlatform, 5), ...data.championOrder.splice(0, relPlatform)];
+          latestOrder = [
+            ...data.championOrder.splice(relPlatform, 5),
+            ...data.championOrder.splice(0, relPlatform),
+          ];
         }
 
         // Switch the order to use
@@ -1580,7 +1598,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.unknownSide!();
         }
 
-        return output.dirMechanic!({ dir: output[dir ?? 'unknown' ]!(), mech: output[mech]!() });
+        return output.dirMechanic!({ dir: output[dir ?? 'unknown']!(), mech: output[mech]!() });
       },
       run: (data) => {
         if (data.championFangSide !== undefined) {
