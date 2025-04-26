@@ -558,8 +558,10 @@ const triggerSet: TriggerSet<Data> = {
         // North/South Towers are (100, 93) and (100, 107)
         data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
         data.towerfallSafeDirs = getTowerfallSafeDir(hdg);
-        const safeDir1 = data.towerfallSafeDirs === 'SENW' ? output['dirSE']!() : output['dirNE']!();
-        const safeDir2 = data.towerfallSafeDirs === 'SENW' ? output['dirNW']!() : output['dirSW']!();
+        const safeDir1 = data.towerfallSafeDirs === 'SENW' ?
+          output['dirSE']!() : output['dirNE']!();
+        const safeDir2 = data.towerfallSafeDirs === 'SENW' ?
+          output['dirNW']!() : output['dirSW']!();
 
         return output.dirs!({ dir1: safeDir1, dir2: safeDir2 });
       },
@@ -597,22 +599,22 @@ const triggerSet: TriggerSet<Data> = {
 
         if (
           towerfallSafeDirs === 'SENW' &&
-          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
         )
           return output['dirNW']!();
         else if (
           towerfallSafeDirs === 'SENW' &&
-          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
+          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
         )
           return output['dirSE']!();
         if (
           towerfallSafeDirs === 'NESW' &&
-          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
         )
           return output['dirNE']!();
         else if (
           towerfallSafeDirs === 'NESW' &&
-          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
+          ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
         )
           return output['dirSW']!();
       },
