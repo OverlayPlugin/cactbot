@@ -624,7 +624,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if (
           towerfallSafeDirs === 'SENW' &&
-          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS'  && x < 100))
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
         )
           return output['dirNW']!();
         else if (
