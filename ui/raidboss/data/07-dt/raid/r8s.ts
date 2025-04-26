@@ -558,11 +558,15 @@ const triggerSet: TriggerSet<Data> = {
         // North/South Towers are (100, 93) and (100, 107)
         data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
         data.towerfallSafeDirs = getTowerfallSafeDir(hdg);
-        const safeDir1 = data.towerfallSafeDirs === 'SENW' ?
-          output['dirSE']!()
+
+        if (data.towerfallSafeDirs === undefined)
+          return;
+
+        const safeDir1 = data.towerfallSafeDirs === 'SENW'
+          ? output['dirSE']!()
           : output['dirNE']!();
-        const safeDir2 = data.towerfallSafeDirs === 'SENW' ?
-          output['dirNW']!()
+        const safeDir2 = data.towerfallSafeDirs === 'SENW'
+          ? output['dirNW']!()
           : output['dirSW']!();
 
         return output.dirs!({ dir1: safeDir1, dir2: safeDir2 });
@@ -592,7 +596,7 @@ const triggerSet: TriggerSet<Data> = {
         return false;
       },
       infoText: (data, matches, output) => {
-        if (matches.x === undefined || matches.y === undefined)
+        if (matches.x === undefined || matches.y === undefined || data.towerfallSafeDirs === undefined)
           return;
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
