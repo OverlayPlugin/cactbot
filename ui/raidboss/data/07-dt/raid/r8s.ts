@@ -605,18 +605,26 @@ const triggerSet: TriggerSet<Data> = {
         return false;
       },
       infoText: (data, matches, output) => {
-        if (
-          data.towerfallSafeDirs === undefined || data.towerDirs === undefined
-        )
+        if (data.towerfallSafeDirs === undefined)
           return;
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
         const towerfallSafeDirs = data.towerfallSafeDirs;
-        const towerDirs = data.towerDirs;
+
+        // Assume towerDirs from Fang if received bad coords for towers
+        let towerDirs = data.towerDirs;
+        if (towerDirs === undefined) {
+          if (y > 99 && y < 100)
+            towerDirs === 'NS';
+          else if (x > 99 && x < 101)
+            towerDirs === 'EW';
+          else
+            return;
+        }
 
         if (
           towerfallSafeDirs === 'SENW' &&
-          ((towerDirs === 'EW' && y < 100) || (y  && x < 100))
+          ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS'  && x < 100))
         )
           return output['dirNW']!();
         else if (
