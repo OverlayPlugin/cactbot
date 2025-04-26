@@ -18,6 +18,8 @@ export interface Data extends RaidbossData {
   decayAddCount: number;
   galeTetherDirNum?: number;
   galeTetherCount: number;
+  towerDirs?: 'EW' | 'NS';
+  towerfallDirs?: 'NESW' | 'SENW';
   stoneWindCallGroup?: number;
   surgeTracker: number;
   packPredationTracker: number;
@@ -528,10 +530,81 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R8S Terrestrial Titans Towerfall Directions',
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A3C5', capture: true },
+      durationSeconds: 15,
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
+        if (matches.heading === undefined)
+          return;
+        const towerfallDir = (
+          hdg: number,
+        ): 'SENW' | 'NESW' | undefined => {
+          switch (hdg) {
+            case 1:
+            case 5:
+              return 'SENW';
+            case 3:
+            case 7:
+              return 'NESW';
+          }
+          return undefined;
+        };
+        const x = parseFloat(matches.x);
+        const hdg = Directions.hdgTo8DirNum(parseFloat(matches.heading));
+
+        // East/West Towers are (93, 100) and (107, 100) 
+        // North/South Towers are (100, 93) and (100, 107) 
+        data.towerDirs = (x >= 92 && x <= 94) || (x >= 106 && x <= 108) ? 'EW' : 'NS';
+        data.towerfallDirs = towerfallDir(hdg);
+        const safeDir1 = data.towerfallDirs === 'SENW' ? output.dirNE!() : output.dirNW!();
+        const safeDir2 = data.towerfallDirs === 'SENW' ? output.dirSW!() : output.dirSE!();
+
+        return output.dirs!({ dir1: safeDir1, dir2: safeDir2 });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        dirs: {
+          en: '${dir1} or ${dir2}',
+        },
+      },
+    },
+    {
       id: 'R8S Titanic Pursuit',
       type: 'StartsUsing',
       netRegex: { id: 'A3C7', source: 'Howling Blade', capture: false },
       response: Responses.aoe(),
+    },
+    {
+      id: 'R8S Terrestrial Titans Safe Spot',
+      type: 'StatusEffect',
+      netRegex: { data3: '036D0808', target: 'Gleaming Fang', capture: true },
+      condition: (_data, matches) => {
+        const hdg = Directions.hdgTo8DirNum(parseFloat(matches.heading));
+        // Only trigger on the actor targetting intercards
+        if (hdg === 1 || hdg === 3 || hdg === 5 || hdg === 7)
+          return true;
+        return false;
+      },
+      infoText: (data, matches, output) => {
+        if (matches.x === undefined || matches.y === undefined)
+          return;
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const towerfallDirs = data.towerfallDirs;
+        const towerDirs = data.towerDirs;
+
+        if (towerfallDirs === 'SENW' && ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100)))
+          return output.dirNE!();
+        else if (towerfallDirs === 'SENW' && ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100)))
+          return output.dirSW!();
+        if (towerfallDirs === 'NESW' && ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100)))
+          return output.dirNW!();
+        else if (towerfallDirs === 'NESW' && ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100)))
+           return output.dirSE!();
+      },
+      outputStrings: Directions.outputStringsIntercardDir,
     },
     {
       id: 'R8S Tracking Tremors',
