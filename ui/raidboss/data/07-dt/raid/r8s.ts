@@ -1773,7 +1773,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R8S Mooncleaver (Enrage Sequence)',
       // Mooncleaver (474C) used during enrage targets a player about 0.45s after
       // last hit of Howling Eight (AA0A for first set, A49C others)
-      type: 'Ability',
+      type: 'StartsUsing',
       netRegex: { id: 'A74C', source: 'Howling Blade', capture: false },
       condition: (data) => {
         // Tracking how many platforms will remain
