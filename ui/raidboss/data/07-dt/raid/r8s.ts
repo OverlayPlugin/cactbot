@@ -255,7 +255,7 @@ const triggerSet: TriggerSet<Data> = {
     twofoldTracker: 0,
     gleamingBarrageIds: [],
     championTracker: 0,
-    platforms: 4,
+    platforms: 5,
   }),
   timelineTriggers: [
     {
@@ -288,6 +288,16 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'UV Positions',
+        },
+      },
+    },
+    {
+      id: 'R8S Howling Eight Initial Position',
+      regex: /Ultraviolent Ray 4/,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Howling Eight Position',
         },
       },
     },
@@ -1665,12 +1675,60 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Howling Eight',
+      // AA02 Howling Eight, first cast
+      // A494 Howling Eight, subsequent first casts
+      // Suggested Party => Tank Immune => Tank Share => Tank Immune => Party
       type: 'StartsUsing',
-      netRegex: { id: 'A494', source: 'Howling Blade', capture: false },
+      netRegex: { id: ['AA02', 'A494'], source: 'Howling Blade', capture: false },
       durationSeconds: 15,
-      infoText: (_data, _matches, output) => output.text!(),
+      infoText: (data, _matches, output) => {
+        switch (data.platforms) {
+          case 5:
+           return output.howlingEight1!();
+          case 4:
+           return output.howlingEight2!();
+          case 3:
+            return output.howlingEight3!();
+          case 2:
+            return output.howlingEight4!();
+          case 1:
+            return output.howlingEight5!();
+        };
+      },
       outputStrings: {
-        text: {
+        howlingEight1: {
+          en: 'Stack x8',
+          de: 'Sammeln x8',
+          fr: 'Package x8',
+          ja: '頭割り x8',
+          cn: '8次分摊',
+          ko: '쉐어 8번',
+        },
+        howlingEight2: {
+          en: 'Stack x8',
+          de: 'Sammeln x8',
+          fr: 'Package x8',
+          ja: '頭割り x8',
+          cn: '8次分摊',
+          ko: '쉐어 8번',
+        },
+        howlingEight3: {
+          en: 'Stack x8',
+          de: 'Sammeln x8',
+          fr: 'Package x8',
+          ja: '頭割り x8',
+          cn: '8次分摊',
+          ko: '쉐어 8번',
+        },
+        howlingEight4: {
+          en: 'Stack x8',
+          de: 'Sammeln x8',
+          fr: 'Package x8',
+          ja: '頭割り x8',
+          cn: '8次分摊',
+          ko: '쉐어 8번',
+        },
+        howlingEight5: {
           en: 'Stack x8',
           de: 'Sammeln x8',
           fr: 'Package x8',
@@ -1682,19 +1740,40 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Mooncleaver Platform',
-      // Trigger on last hit of Howling Eight (AA0A for first set, A49C others)
+      // Mooncleaver (474C) used during enrage targets a player about 0.45s after
+      // last hit of Howling Eight (AA0A for first set, A49C others)
       type: 'Ability',
-      netRegex: { id: ['AA0A', 'A49C'], source: 'Howling Blade', capture: false },
+      netRegex: { id: 'A74C', source: 'Howling Blade', capture: false },
       condition: (data) => {
         // Tracking how many platforms will remain
         data.platforms = data.platforms - 1;
         return data.platforms !== 0;
       },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.changePlatform!(),
+      infoText: (data, _matches, output) => {
+        switch (data.platforms) {
+          case 4:
+           return output.changePlatform1!();
+          case 3:
+            return output.changePlatform2!();
+          case 2:
+            return output.changePlatform3!();
+          case 1:
+            return output.finalPlatform!();
+        };
+      },
       outputStrings: {
-        changePlatform: {
-          en: 'Change Platform',
+        changePlatform1: {
+          en: 'Change Platform 1',
+        },
+        changePlatform2: {
+          en: 'Change Platform 2',
+        },
+        changePlatform3: {
+          en: 'Change Platform 3',
+        },
+        finalPlatform: {
+          en: 'Change Platform (Final)',
         },
       },
     },
