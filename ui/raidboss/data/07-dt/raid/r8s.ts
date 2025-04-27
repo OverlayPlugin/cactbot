@@ -291,6 +291,27 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+      id: 'R8S Mooncleaver Bait',
+      regex: /Mooncleaver$/,
+      beforeSeconds: 8,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Bait Mooncleaver',
+        },
+      },
+    },
+    {
+      id: 'R8S Mooncleaver Wait',
+      regex: /Mooncleaver [1-4]$/,
+      beforeSeconds: 3,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Wait for Mooncleaver',
+        },
+      },
+    },
     {
       id: 'R8S Howling Eight Initial Position',
       regex: /Ultraviolent Ray 4/,
@@ -1130,8 +1151,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     // Phase 2
-    // TODO: Timeline based callout for light parties for Quake III
-    // TODO: Timeline base callout for mooncleaver bait
     {
       id: 'R8S Quake III',
       type: 'StartsUsing',
@@ -1226,6 +1245,17 @@ const triggerSet: TriggerSet<Data> = {
           en: '${inout} + ${dir}',
         },
         unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'R8S Mooncleaver',
+      type: 'StartsUsing',
+      netRegex: { id: 'A465', source: 'Howling Blade', capture: false },
+      infoText: (_data, _matches, output) => output.changePlatform!(),
+      outputStrings: {
+        changePlatform: {
+          en: 'Change Platform',
+        },
       },
     },
     {
@@ -1739,7 +1769,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Mooncleaver Platform',
+      id: 'R8S Mooncleaver (Enrage Sequence)',
       // Mooncleaver (474C) used during enrage targets a player about 0.45s after
       // last hit of Howling Eight (AA0A for first set, A49C others)
       type: 'Ability',
