@@ -1684,16 +1684,16 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         switch (data.platforms) {
           case 5:
-           return output.howlingEight1!();
+            return output.howlingEight1!();
           case 4:
-           return output.howlingEight2!();
+            return output.howlingEight2!();
           case 3:
             return output.howlingEight3!();
           case 2:
             return output.howlingEight4!();
           case 1:
             return output.howlingEight5!();
-        };
+        }
       },
       outputStrings: {
         howlingEight1: {
@@ -1749,18 +1749,17 @@ const triggerSet: TriggerSet<Data> = {
         data.platforms = data.platforms - 1;
         return data.platforms !== 0;
       },
-      suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         switch (data.platforms) {
           case 4:
-           return output.changePlatform1!();
+            return output.changePlatform1!();
           case 3:
             return output.changePlatform2!();
           case 2:
             return output.changePlatform3!();
           case 1:
             return output.finalPlatform!();
-        };
+        }
       },
       outputStrings: {
         changePlatform1: {
