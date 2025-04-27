@@ -291,7 +291,7 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-    }
+    {
       id: 'R8S Mooncleaver Bait',
       regex: /Mooncleaver$/,
       beforeSeconds: 8,
