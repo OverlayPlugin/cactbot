@@ -509,6 +509,13 @@ const triggerSet: TriggerSet<Data> = {
         'Winding Wildwinds/Crossing Crosswinds': 'Wildwinds/Crosswinds',
       },
     },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Brute Abombinator': 'Brute Bombinator',
+      },
+    },
   ],
 };
 
