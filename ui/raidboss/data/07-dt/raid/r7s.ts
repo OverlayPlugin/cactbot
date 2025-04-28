@@ -518,7 +518,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '\\(adds': '(Adds',
-        'cast\\)': '(Wirken)',
+        'cast\\)': 'Wirken)',
         '\\(enrage\\)': '(Finalangriff)',
         '\\(puddles\\)': '(Flächen)',
         '\\(seeds drop\\)': '(Saaten ablegen)',

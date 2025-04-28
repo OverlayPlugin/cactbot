@@ -159,7 +159,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidCleave: {
           en: 'Be on boss hitbox (avoid tank cleaves)',
-          de: 'Geh auf den Kreis vom Boss (vermeide Tank-Cleaves)',
+          de: 'Geh auf den Kreis vom Boss (vermeide Tank Cleaves)',
           fr: 'Sur la hitbox (évitez les tanks cleaves)',
           ja: 'ボス背面のサークル上に',
           cn: '站在目标圈上 (远离坦克死刑)',
@@ -167,7 +167,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         warmCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Red)',
-          de: 'Tank-Cleave auf DIR (${dir} => von Rot treffen lassen)',
+          de: 'Tank Cleave auf DIR (${dir} => von Rot treffen lassen)',
           fr: 'Tank cleave sur VOUS (${dir} => prenez le Rouge)',
           ja: 'タンク攻撃 (${dir} => 赤に当たる)',
           cn: '坦克死刑 (${dir} => 吃红色)',
@@ -175,7 +175,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         coolCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Blue)',
-          de: 'Tank-Cleave auf DIR (${dir} => von Blau treffen lassen)',
+          de: 'Tank Cleave auf DIR (${dir} => von Blau treffen lassen)',
           fr: 'Tank cleave sur VOUS (${dir} => prenez le Bleu)',
           ja: 'タンク攻撃 (${dir} => 青に当たる)',
           cn: '坦克死刑 (${dir} => 吃蓝色)',

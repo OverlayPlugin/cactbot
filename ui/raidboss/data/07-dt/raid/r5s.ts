@@ -634,9 +634,9 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         '\\(Cleave\\)': '(Cleave)',
         '\\(Echo\\)': '(Echo)',
-        '\\(In+Protean+Echo\\)': '(Rein+Himmelsrichtungen+Echo)',
-        '\\(Out+Protean+Echo\\)': '(Raus+Himmelsrichtungen+Echo)',
-        '\\(Out+Protean\\)': '(Raus+Himmelsrichtungen)',
+        '\\(In\\+Protean\\+Echo\\)': '(Rein+Himmelsrichtungen+Echo)',
+        '\\(Out\\+Protean\\+Echo\\)': '(Raus+Himmelsrichtungen+Echo)',
+        '\\(Out\\+Protean\\)': '(Raus+Himmelsrichtungen)',
         '\\(all\\)': '(Alle)',
         '\\(boss\\)': '(Boss)',
         '\\(dancers\\)': '(Tänzer)',
