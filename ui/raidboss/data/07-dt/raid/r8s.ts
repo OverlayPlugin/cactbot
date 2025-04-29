@@ -43,7 +43,7 @@ export interface Data extends RaidbossData {
   myLastPlatformNum?: number;
   myPlatformNum?: number;
   gleamingBarrageIds: number[];
-  championFangSide?: 'left' | 'right' | 'unknown';
+  championFangSafeSide?: 'left' | 'right' | 'unknown';
   championOrder?: string[];
   championTracker: number;
   platforms: number;
@@ -210,7 +210,7 @@ const getFangPlatform = (
   return -1;
 };
 
-const getFangSide = (
+const getFangSafeSide = (
   x: number,
   platform: number,
 ): 'left' | 'right' | 'unknown' => {
@@ -221,7 +221,7 @@ const getFangSide = (
     (platform === 3 && x > 115) ||
     (platform === 4 && x < 125)
   )
-    return 'left';
+    return 'right';
   if (
     (platform === 0 && x > 100) ||
     (platform === 1 && x > 75) ||
@@ -229,7 +229,7 @@ const getFangSide = (
     (platform === 3 && x < 115) ||
     (platform === 4 && x > 125)
   )
-    return 'right';
+    return 'left';
 
   return 'unknown';
 };
@@ -1622,7 +1622,7 @@ const triggerSet: TriggerSet<Data> = {
         if (fang === undefined)
           return;
 
-        data.championFangSide = getFangSide(fang.PosX, data.myPlatformNum);
+        data.championFangSafeSide = getFangSafeSide(fang.PosX, data.myPlatformNum);
       },
       infoText: (data, _matches, output) => {
         if (data.gleamingBarrageIds.length !== 5)
@@ -1668,7 +1668,7 @@ const triggerSet: TriggerSet<Data> = {
         if (mech === undefined)
           return;
 
-        const dir = data.championFangSide;
+        const dir = data.championFangSafeSide;
 
         if (mech === 'sides') {
           if (dir === 'left')
@@ -1681,12 +1681,12 @@ const triggerSet: TriggerSet<Data> = {
         return output.dirMechanic!({ dir: output[dir ?? 'unknown']!(), mech: output[mech]!() });
       },
       run: (data) => {
-        if (data.championFangSide !== undefined) {
+        if (data.championFangSafeSide !== undefined) {
           data.championTracker = data.championTracker + 1;
           // Shift platform history
           data.myLastPlatformNum = data.myPlatformNum;
           data.myPlatformNum === undefined;
-          data.championFangSide = undefined;
+          data.championFangSafeSide = undefined;
           data.gleamingBarrageIds = [];
         }
       },
