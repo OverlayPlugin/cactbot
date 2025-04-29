@@ -475,5 +475,12 @@ Options.Triggers.push({
         'Winding Wildwinds/Crossing Crosswinds': 'Wildwinds/Crosswinds',
       },
     },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Brute Abombinator': 'Brute Bombinator',
+      },
+    },
   ],
 });
