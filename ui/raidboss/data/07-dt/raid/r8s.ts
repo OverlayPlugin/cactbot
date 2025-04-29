@@ -1294,9 +1294,9 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: [headMarkerData.twofoldTether], capture: true },
       run: (data, matches) => {
         if (matches.target === data.me)
-            data.hasTwofoldTether = true;
-         else
-           data.hasTwofoldTether = false;
+          data.hasTwofoldTether = true;
+        else
+          data.hasTwofoldTether = false;
       },
     },
     {
