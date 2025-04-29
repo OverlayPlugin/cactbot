@@ -1671,9 +1671,9 @@ const triggerSet: TriggerSet<Data> = {
         const dir = data.championFangSafeSide;
 
         if (mech === 'sides') {
-          if (dir === 'left')
-            return output.rightSide!();
           if (dir === 'right')
+            return output.rightSide!();
+          if (dir === 'left')
             return output.leftSide!();
           return output.unknownSide!();
         }
