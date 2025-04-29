@@ -1289,6 +1289,17 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R8S Twofold Tempest Tether Tracker',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.twofoldTether], capture: true },
+      run: (data, matches) => {
+        if (matches.target === data.me)
+            data.hasTwofoldTether = true;
+         else
+           data.hasTwofoldTether = false;
+      },
+    },
+    {
       id: 'R8S Twofold Tempest Initial Tether',
       type: 'Tether',
       netRegex: { id: [headMarkerData.twofoldTether], capture: true },
