@@ -303,17 +303,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R8S Mooncleaver Wait',
-      regex: /Mooncleaver [1-4]$/,
-      beforeSeconds: 7, // 2.7s castTime
-      infoText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Wait for Mooncleaver',
-        },
-      },
-    },
-    {
       id: 'R8S Howling Eight Initial Position',
       regex: /Ultraviolent Ray 4/,
       infoText: (_data, _matches, output) => output.text!(),
@@ -1782,15 +1771,17 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Mooncleaver (Enrage Sequence)',
-      // Mooncleaver (474C) used during enrage targets a player about 0.45s after
-      // last hit of Howling Eight (AA0A for first set, A49C others)
+      // Mooncleaver (474C) used during enrage targets Howling Eight platform
+      // ~0.45s aftet last hit of Howling Eight (AA0A for first set, A49C others)
       type: 'StartsUsing',
-      netRegex: { id: 'A74C', source: 'Howling Blade', capture: false },
+      netRegex: { id: ['AA0A', 'A49C'], source: 'Howling Blade', capture: true },
       condition: (data) => {
         // Tracking how many platforms will remain
         data.platforms = data.platforms - 1;
         return data.platforms !== 0;
       },
+      // 14.8s on AA0A 11.8s on A49C
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
       infoText: (data, _matches, output) => {
         switch (data.platforms) {
           case 4:
