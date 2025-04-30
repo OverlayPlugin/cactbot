@@ -139,6 +139,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidCleave: {
           en: 'Be on boss hitbox (avoid tank cleaves)',
+          de: 'Geh auf den Kreis vom Boss (vermeide Tank Cleaves)',
           fr: 'Sur la hitbox (évitez les tanks cleaves)',
           ja: 'ボス背面のサークル上に',
           cn: '站在目标圈上 (远离坦克死刑)',
@@ -146,6 +147,7 @@ Options.Triggers.push({
         },
         warmCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Red)',
+          de: 'Tank Cleave auf DIR (${dir} => von Rot treffen lassen)',
           fr: 'Tank cleave sur VOUS (${dir} => prenez le Rouge)',
           ja: 'タンク攻撃 (${dir} => 赤に当たる)',
           cn: '坦克死刑 (${dir} => 吃红色)',
@@ -153,6 +155,7 @@ Options.Triggers.push({
         },
         coolCleave: {
           en: 'Tank cleave on YOU (${dir} => get hit by Blue)',
+          de: 'Tank Cleave auf DIR (${dir} => von Blau treffen lassen)',
           fr: 'Tank cleave sur VOUS (${dir} => prenez le Bleu)',
           ja: 'タンク攻撃 (${dir} => 青に当たる)',
           cn: '坦克死刑 (${dir} => 吃蓝色)',
@@ -294,6 +297,7 @@ Options.Triggers.push({
       outputStrings: {
         defamationLater: {
           en: 'Defamation on YOU (for later)',
+          de: 'Große AoE auf DIR (für später)',
           fr: 'Diffamation sur VOUS (pour après)',
           ja: 'あとで巨大な爆発',
           cn: '稍后放大圈',
@@ -327,6 +331,7 @@ Options.Triggers.push({
       outputStrings: {
         bomb: {
           en: 'Drop bomb in quicksand',
+          de: 'Lege Bombe im Treibsand',
           fr: 'Déposez la bombe dans le sable mouvant',
           ja: '爆弾を流砂に捨てる',
           cn: '流沙里放置炸弹',
@@ -334,6 +339,7 @@ Options.Triggers.push({
         },
         wingedBomb: {
           en: 'Aim bomb towards quicksand',
+          de: 'Ziele mit der Bombe auf den Treibsand',
           fr: 'Dirigez la bombe vers le sable mouvant',
           ja: '爆弾を流砂に向ける',
           cn: '面向流沙放置飞弹',
@@ -350,6 +356,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Jabberwock on YOU',
+          de: 'Brabbelback auf DIR',
           ja: 'ジャバウォック処理',
           cn: '马止步点名',
           ko: '재버워크 대상자',
@@ -370,6 +377,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Avoid arrow lines',
+          de: 'Vermeide Pfeil-Linien',
           fr: 'Évitez les lignes de flèches',
           ja: '矢印線を避ける',
           cn: '躲避场边箭直线',
@@ -387,6 +395,7 @@ Options.Triggers.push({
       outputStrings: {
         fire: {
           en: 'Healer groups in water, avoid arrow lines',
+          de: 'Heiler Gruppen im Wasser, vermeide Pfeil-Linien',
           fr: 'Groupes sur les heals dans l\'eau, évitez les lignes de flèches',
           ja: 'ヒラ組で水へ、矢印線を避ける',
           cn: '水中双奶分组分摊 + 躲避场边箭直线',
@@ -394,6 +403,7 @@ Options.Triggers.push({
         },
         thunder: {
           en: 'Spread out of water, avoid arrow lines',
+          de: 'Außerhalb des Wassers verteilen, vermeide Pfeil-Linien',
           fr: 'Dipersion hors de l\'eau, évitez les lignes de flèches',
           ja: '水を避けて散開、矢印線を避ける',
           cn: '陆地分散 + 躲避场边箭直线',
@@ -427,6 +437,7 @@ Options.Triggers.push({
       outputStrings: {
         stackOnYou: {
           en: 'Stack on YOU x5',
+          de: 'Sammeln auf DIR x5',
           fr: 'Package sur VOUS x5',
           ja: '5回連続頭割り',
           cn: '分摊五连点名',
@@ -434,6 +445,7 @@ Options.Triggers.push({
         },
         stackOn: {
           en: 'Stack on ${target} x5',
+          de: 'Sammeln auf ${target} x5',
           fr: 'Package sur ${target} x5',
           ja: '${target} に 5回 連続頭割り',
           cn: '分摊五连点 ${target} ',
@@ -721,11 +733,11 @@ Options.Triggers.push({
       'replaceText': {
         '\\(cast\\)': '(wirken)',
         '\\(snapshot\\)': '(Speichern)',
-        '--Yan targetable--': '--Putschi anvisierbar--',
+        '--2x Feather Ray targetable--': '--2x Federrochen anvisierbar--',
         '--2x Mu targetable--': '--2x Mu anvisierbar--',
         '--Gimme Cat targetable--': '--Bettelcat anvisierbar--',
-        '--2x Feather Ray targetable--': '--2x Federrochen anvisierbar--',
         '--Jabberwock targetable--': '--Brabbelback anvisierbar--',
+        '--Yan targetable--': '--Putschi anvisierbar--',
         'Artistic Anarchy': 'Artistische Anarchie',
         'Bad Breath': 'Schlechter Atem',
         'Brûlée': 'Wärmeentladung',
