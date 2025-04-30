@@ -1,4 +1,5 @@
 import Conditions from '../../../../../resources/conditions';
+import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import {
@@ -18,17 +19,57 @@ import { TriggerSet } from '../../../../../types/trigger';
 // - Live Painting - add wave # spawn call?
 // - Ore-rigato - Mu enrage
 // - Hangry Hiss - Gimme Cat enrage
-// - thunderstorm movement for rotate cw/ccw call?
 // - Mousse Drip - ranged baits into 4x pair stacks/puddle drops
 // - Moussacre - melee bait proteans
-// - tower soaks
 
 export interface Data extends RaidbossData {
   actorSetPosTracker: { [id: string]: NetMatches['ActorSetPos'] };
   lastDoubleStyle?: DoubleStyleEntry;
   tetherTracker: { [id: string]: NetMatches['Tether'] };
   colorRiotTint?: 'warm' | 'cool';
+  cloudId?: string;
+  cloudPos?: 'dirNE' | 'dirNW' | 'dirS';
+  cloudLastAngle?: number;
+  cloudNewAngle?: number;
+  cloudExplosionCount: number;
+  firstTowersGone: boolean;
+  secondTowers: { [dir in DirectionOutput8]?: number };
 }
+
+// I lack the footage to confirm these, but they should be correct.
+// There are second set of 24 locations immediately before this which correspond to
+// the "meteor falling" animation
+const towerMapEffectMapping: { [loc: string]: DirectionOutput8 } = {
+  '49': 'dirNW',
+  '4A': 'dirNW',
+  '4B': 'dirNW',
+  '4C': 'dirNW',
+  '4D': 'dirNW',
+  '4E': 'dirNW',
+  '4F': 'dirNW',
+  '50': 'dirNW',
+  '51': 'dirNE',
+  '52': 'dirNE',
+  '53': 'dirNE',
+  '54': 'dirNE',
+  '55': 'dirNE',
+  '56': 'dirNE',
+  '57': 'dirNE',
+  '58': 'dirNE',
+  '59': 'dirS',
+  '5A': 'dirS',
+  '5B': 'dirS',
+  '5C': 'dirS',
+  '5D': 'dirS',
+  '5E': 'dirS',
+  '5F': 'dirS',
+  '60': 'dirS',
+};
+
+const towerFlags = {
+  show: '00020001',
+  hide: '00080004',
+} as const;
 
 type DoubleStyleActors = 'bomb' | 'wing' | 'succ' | 'marl';
 type DoubleStyleEntry = {
@@ -109,6 +150,9 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     actorSetPosTracker: {},
     tetherTracker: {},
+    cloudExplosionCount: 0,
+    firstTowersGone: false,
+    secondTowers: {},
   }),
   triggers: [
     {
@@ -575,6 +619,186 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Danger Cactus ${dir}',
           fr: 'Cactus dangereux ${dir}',
           cn: '危险仙人掌 ${dir}',
+        },
+      },
+    },
+    {
+      id: 'R6S Tempest Piece Spawn Collector',
+      type: 'AddedCombatant',
+      netRegex: { npcNameId: '13827', capture: true },
+      condition: (data) => data.cloudId === undefined,
+      preRun: (data, matches) => {
+        data.cloudId = matches.id;
+        const cloudDir =
+          Directions.output8Dir[Directions.addedCombatantPosTo8Dir(matches, 100, 100)];
+        switch (cloudDir) {
+          case 'dirNE':
+          case 'dirNW':
+          case 'dirS':
+            data.cloudPos = cloudDir;
+            break;
+          default:
+            console.log(
+              `R6S Tempest Piece Spawn Collector - Invalid cloud spawn direction ${cloudDir}`,
+            );
+            return;
+        }
+        const cloudX = parseFloat(matches.x);
+        const cloudY = parseFloat(matches.y);
+        data.cloudLastAngle = Math.atan2(cloudX - 100, cloudY - 100);
+        // For the initial spawn, the actor moves in place which causes a false positive firing
+        // of the detection trigger. Avoid it by setting new angle to last angle
+        data.cloudNewAngle = data.cloudLastAngle;
+      },
+      infoText: (data, _matches, output) =>
+        output.spawn!({ dir: output[data.cloudPos ?? 'unknown']!() }),
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        spawn: {
+          en: 'Cloud spawning ${dir}',
+        },
+      },
+    },
+    {
+      id: 'R6S Tempest Piece Rotation Detector',
+      type: 'ActorMove',
+      netRegex: { capture: true },
+      condition: (data, matches) => {
+        if (matches.id !== data.cloudId)
+          return false;
+        return data.cloudId !== undefined && data.cloudLastAngle !== undefined &&
+          data.cloudNewAngle === undefined && data.cloudExplosionCount < 5;
+      },
+      preRun: (data, matches) => {
+        const cloudX = parseFloat(matches.x);
+        const cloudY = parseFloat(matches.y);
+        data.cloudNewAngle = Math.atan2(cloudX - 100, cloudY - 100);
+      },
+      infoText: (data, _matches, output) => {
+        const lastAngle = data.cloudLastAngle;
+        const newAngle = data.cloudNewAngle;
+        if (lastAngle === undefined || newAngle === undefined)
+          throw new UnreachableCode();
+        const cwRotation = (Math.PI + newAngle) < (Math.PI + lastAngle);
+        if (data.cloudPos === 'dirNE') {
+          data.cloudPos = cwRotation ? 'dirS' : 'dirNW';
+        } else if (data.cloudPos === 'dirNW') {
+          data.cloudPos = cwRotation ? 'dirNE' : 'dirS';
+        } else {
+          data.cloudPos = cwRotation ? 'dirNW' : 'dirNE';
+        }
+        return output.text!({
+          rot: output[cwRotation ? 'cw' : 'ccw']!(),
+          dir: output[data.cloudPos ?? 'unknown']!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cw: Outputs.clockwise,
+        ccw: Outputs.counterclockwise,
+        text: {
+          en: 'Cloud rotating ${rot} towards ${dir}',
+        },
+      },
+    },
+    {
+      id: 'R6S Tempest Piece Cleanup 1',
+      type: 'StartsUsing',
+      netRegex: { id: 'A69B', capture: true },
+      condition: (data) => {
+        return data.cloudId !== undefined && data.cloudLastAngle !== undefined &&
+          data.cloudNewAngle !== undefined;
+      },
+      run: (data, matches) => {
+        const cloudX = parseFloat(matches.x);
+        const cloudY = parseFloat(matches.y);
+        data.cloudLastAngle = Math.atan2(cloudX - 100, cloudY - 100);
+        delete data.cloudNewAngle;
+        data.cloudExplosionCount++;
+      },
+    },
+    {
+      id: 'R6S Tempest Piece Cleanup 2',
+      type: 'RemovedCombatant',
+      netRegex: { npcNameId: '13827', capture: true },
+      condition: (data, matches) => {
+        if (data.cloudId === undefined)
+          return false;
+        if (data.cloudId !== matches.id)
+          return false;
+
+        return true;
+      },
+      run: (data) => {
+        delete data.cloudId;
+        delete data.cloudPos;
+        delete data.cloudLastAngle;
+        delete data.cloudNewAngle;
+      },
+    },
+    {
+      id: 'R6S First Towers Detector',
+      type: 'MapEffect',
+      netRegex: {
+        location: Object.keys(towerMapEffectMapping),
+        flags: towerFlags.hide,
+        capture: false,
+      },
+      condition: (data) => data.firstTowersGone === false,
+      run: (data) => data.firstTowersGone = true,
+    },
+    {
+      id: 'R6S Second Towers Collector',
+      type: 'MapEffect',
+      netRegex: {
+        location: Object.keys(towerMapEffectMapping),
+        flags: towerFlags.show,
+        capture: true,
+      },
+      condition: (data) => data.firstTowersGone === true,
+      preRun: (data, matches) => {
+        const dir = towerMapEffectMapping[matches.location];
+        if (dir === undefined) {
+          console.log(
+            `R6S Second Towers Collector - Invalid location somehow, ${matches.location}`,
+          );
+          return;
+        }
+        if (dir !== 'dirNW' && dir !== 'dirNE' && dir !== 'dirS') {
+          console.log(
+            `R6S Second Towers Collector - Invalid location mapping somehow, ${matches.location}`,
+          );
+          return;
+        }
+        data.secondTowers[dir] = (data.secondTowers[dir] ?? 0) + 1;
+      },
+      infoText: (data, _matches, output) => {
+        const nwCount = data.secondTowers.dirNW ?? 0;
+        const neCount = data.secondTowers.dirNE ?? 0;
+        const sCount = data.secondTowers.dirS ?? 0;
+        if (nwCount + neCount + sCount < 8)
+          return;
+
+        if (sCount === 8)
+          return output.eightSouth!();
+        if (nwCount === 4)
+          return output.fourNW!();
+        if (neCount === 4)
+          return output.fourNE!();
+        return output.unknown!();
+      },
+      outputStrings: {
+        unknown: Outputs.unknown,
+        // These outputStrings values are written this way to allow users to replace them
+        // with "all south", "clockwise", "counterclockwise" to match the common strat
+        eightSouth: {
+          en: '8 Towers S',
+        },
+        fourNW: {
+          en: '4 Towers NW',
+        },
+        fourNE: {
+          en: '4 Towers NE',
         },
       },
     },
