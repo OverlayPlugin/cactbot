@@ -1217,15 +1217,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R8S Gleaming Beam',
       type: 'ActorControlExtra',
       netRegex: { category: '0197', param1: '11D3', capture: true },
-      preRun: (data, matches) => {
-        if (data.phase !== 'twofold')
-          data.gleamingBeamIds.push(parseInt(matches.id, 16));
-      },
       condition: (data) => {
         if (data.phase !== 'twofold')
           return true;
         return false;
       },
+      preRun: (data, matches) => data.gleamingBeamIds.push(parseInt(matches.id, 16)),
       delaySeconds: (data) => {
         // Return later if player has UV Ray to allow for platform change
         if (data.hasUVRay === true)
