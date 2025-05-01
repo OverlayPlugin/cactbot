@@ -23,6 +23,7 @@ export interface Data extends RaidbossData {
   galeTetherCount: number;
   towerDirs?: 'EW' | 'NS';
   towerfallSafeDirs?: 'NESW' | 'SENW';
+  towerfallSafeDir?: 'dirNE' | 'dirSE' | 'dirSW' | 'dirNW' | 'unknown'; 
   stoneWindCallGroup?: number;
   surgeTracker: number;
   packPredationTracker: number;
@@ -654,24 +655,43 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'R8S Terrestrial Titans Safe Spot',
-      // Gleaming Fangs are at:
+      // Gleaming Fang's cast Fanged Crossing (A3D7) 2.1s after ActorControlExtra
+      // This ActorControlExtra is in Terrestrial Titans and Terrestrial Rage
+      // Gleaming Fangs in Terrestrial Titans are at:
       // NS Towers: (108, 100) E, (92, 100) W
       // EW Towers: (100, 92) N, (100, 108) S
-      type: 'StatusEffect',
-      netRegex: { data3: '036D0808', target: 'Gleaming Fang', capture: true },
-      condition: (_data, matches) => {
-        const hdg = Directions.hdgTo8DirNum(parseFloat(matches.heading));
-        // Only trigger on the actor targetting intercards
-        if (hdg === 1 || hdg === 3 || hdg === 5 || hdg === 7)
+      // 2 spawn in Terrestrial Titans, 5 in Terrestrial Rage
+      id: 'R8S Terrestrial Titans Safe Spot',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: '11D1', capture: true },
+      condition: (data) => {
+        if (data.phase === 'one')
           return true;
         return false;
       },
-      infoText: (data, matches, output) => {
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.id, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R8S Terrestrial Titans Safe Spot: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const hdg = Directions.hdgTo8DirNum(actor.Heading);
+        // Only trigger on the actor targetting intercards
+        if (hdg === 1 || hdg === 3 || hdg === 5 || hdg === 7)
+          return;
+
         if (data.towerfallSafeDirs === undefined)
           return;
-        const x = parseFloat(matches.x);
-        const y = parseFloat(matches.y);
+
+        const x = actor.PosX;
+        const y = actor.PosY;
         const towerfallSafeDirs = data.towerfallSafeDirs;
 
         // Assume towerDirs from Fang if received bad coords for towers
@@ -689,22 +709,29 @@ const triggerSet: TriggerSet<Data> = {
           towerfallSafeDirs === 'SENW' &&
           ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x < 100))
         )
-          return output['dirNW']!();
+          data.towerfallSafeDir = 'dirNW';
         else if (
           towerfallSafeDirs === 'SENW' &&
           ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
         )
-          return output['dirSE']!();
+         data.towerfallSafeDir = 'dirSE';
         if (
           towerfallSafeDirs === 'NESW' &&
           ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
         )
-          return output['dirNE']!();
+         data.towerfallSafeDir = 'dirNE';
         else if (
           towerfallSafeDirs === 'NESW' &&
           ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
         )
-          return output['dirSW']!();
+          data.towerfallSafeDir = 'dirSW';
+        else
+          data.towerfallSafeDir = 'unknown';
+      },
+      infoText: (data, _matches, output) => {
+        if (data.towerfallSafeDir === undefined)
+          return;
+        return output[data.towerfallSafeDir]!();
       },
       outputStrings: Directions.outputStringsIntercardDir,
     },
