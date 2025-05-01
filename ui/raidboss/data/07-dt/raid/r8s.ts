@@ -1226,6 +1226,12 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
+      delaySeconds: (data) => {
+        // Return later if player has UV Ray to allow for platform change
+        if (data.hasUVRay === true)
+          return 3; // A45E has 4s castTime, 6.1s - 3s = 3.1s before beam
+        return 0;
+      },
       promise: async (data) => {
         // Wait for all 5
         if (data.gleamingBeamIds.length !== 5)
