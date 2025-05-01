@@ -10,6 +10,9 @@ import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
 type Phase = 'one' | 'adds' | 'rage' | 'moonlight' | 'two';
+type ChampionOrders = {
+  [key: number]: string[];
+};
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -44,7 +47,7 @@ export interface Data extends RaidbossData {
   myPlatformNum?: number;
   gleamingBarrageIds: number[];
   championFangSafeSide?: 'left' | 'right' | 'unknown';
-  championOrder?: string[];
+  championOrders?: ChampionOrders;
   championTracker: number;
   platforms: number;
 }
@@ -145,14 +148,28 @@ const championOutputStrings = {
   },
 };
 
-// Return the combatant's platform by number
+// Platform, Mechs
 // S = 0, SW = 1, NW = 2, NE = 3, SE = 4
-const getPlatformNum = (
-  combatant: PluginCombatantState,
-): number => {
-  const x = combatant.PosX;
-  const y = combatant.PosY;
+const championClockOrders : ChampionOrders = {
+  0: ['donut', 'in', 'out', 'in', 'sides'],
+  1: ['sides', 'donut', 'in', 'out', 'in'],
+  2: ['in', 'sides', 'donut', 'in', 'out'],
+  3: ['out', 'in', 'sides', 'donut', 'in'],
+  4: ['in', 'out', 'in', 'sides', 'donut'],
+};
+const championCounterOrders : ChampionOrders = {
+  0: ['donut', 'sides', 'in', 'out', 'in'],
+  1: ['sides', 'in', 'out', 'in', 'donut'],
+  2: ['in', 'out', 'in', 'donut', 'sides'],
+  3: ['out', 'in', 'donut', 'sides', 'in'],
+  4: ['in', 'donut', 'sides', 'in', 'out'],
+};
 
+// Return the combatant's platform by number
+const getPlatformNum = (
+  x: number,
+  y: number,
+): number => {
   // S Platform
   if (x > 90 && x < 108 && y > 107)
     return 0;
@@ -208,6 +225,23 @@ const getFangPlatform = (
     return 4;
 
   return -1;
+};
+
+// Find the actor on the platform we want
+const findFang = (
+  actors: PluginCombatantState[],
+  platform: number,
+): PluginCombatantState | undefined => {
+  for (const actor of actors) {
+    const actorPlatform = getFangPlatform(actor);
+
+    if (platform === actorPlatform) {
+      return actor;
+    }
+  }
+
+  // Did not find actor on the platform
+  return undefined;
 };
 
 const getFangSafeSide = (
@@ -1453,24 +1487,9 @@ const triggerSet: TriggerSet<Data> = {
       // 89.71,  85.84  Center of NW platform
       // 110.29, 85.84  Center of NE platform
       // 116.64, 105.41 Center of SE platform
-      type: 'StartsUsing',
-      netRegex: { id: 'A47A', source: 'Howling Blade', capture: true },
-      delaySeconds: 0.3,
-      promise: async (data, matches) => {
-        const actors = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [parseInt(matches.sourceId, 16)],
-        })).combatants;
-        const actor = actors[0];
-        if (actors.length !== 1 || actor === undefined) {
-          console.error(
-            `R8S Champion\'s Circuit Mechanic Order: Wrong actor count ${actors.length}`,
-          );
-          return;
-        }
-
-        data.championDonutStart = getPlatformNum(actor);
-
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A47A', capture: true },
+      promise: async (data) => {
         const combatants = (await callOverlayHandler({
           call: 'getCombatants',
           names: [data.me],
@@ -1483,70 +1502,48 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
-        data.myLastPlatformNum = getPlatformNum(me);
+        data.myLastPlatformNum = getPlatformNum(me.PosX, me.PosY);
       },
-      infoText: (data, _matches, output) => {
-        if (data.championClock === undefined || data.championDonutStart === undefined)
-          return;
-
-        // Static orders
-        // Starting Platform S, Donut S
-        const order = ['donut', 'in', 'out', 'in', 'sides'];
-        const counterorder = ['donut', 'sides', 'in', 'out', 'in'];
-
-        // Calculate pattern based on where we are in relation to the donut
-        let relPlatform;
-        const platform = data.championDonutStart;
-
-        if (data.myLastPlatformNum === undefined || data.myLastPlatformNum === -1) {
-          // Unknown Player platform, default to South
-          relPlatform = 0;
-        } else if (platform === data.myLastPlatformNum) {
-          // Donut is on us, treat as if south
-          relPlatform = 0;
-        } else if (platform > data.myLastPlatformNum) {
-          if (data.championClock === 'clockwise') {
-            relPlatform = platform - data.myLastPlatformNum;
-          } else if (data.championClock === 'counterclockwise')
-            relPlatform = data.myLastPlatformNum - platform + 5;
-        } else if (platform < data.myLastPlatformNum) {
-          if (data.championClock === 'clockwise') {
-            relPlatform = platform - data.myLastPlatformNum + 5;
-          } else if (data.championClock === 'counterclockwise')
-            relPlatform = Math.abs(platform - data.myLastPlatformNum);
-        }
-
-        // Default to south platform, south donut
-        if (relPlatform === undefined)
-          relPlatform = 0;
-
-        let newOrder;
-        if (data.championClock === 'clockwise') {
-          newOrder = [...order.splice(relPlatform, 5), ...order.splice(0, relPlatform)];
-        } else if (data.championClock === 'counterclockwise') {
-          newOrder = [
-            ...counterorder.splice(relPlatform, 5),
-            ...counterorder.splice(0, relPlatform),
-          ];
-        }
-
-        // Failed to get clock or matching x coords
+      infoText: (data, matches, output) => {
         if (
-          newOrder === undefined || newOrder[0] === undefined ||
-          newOrder[1] === undefined || newOrder[2] === undefined ||
-          newOrder[3] === undefined || newOrder[4] === undefined
+          data.championClock === undefined ||
+          data.myLastPlatformNum === undefined
         )
           return;
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        data.championDonutStart = getPlatformNum(x, y);
 
-        data.championOrder = newOrder;
+        const clock = data.championClock;
+        const donutPlatform = data.championDonutStart;
+        const myPlatform = data.myLastPlatformNum;
+
+        // Determine which patterns to search for Champion's Circuit
+        const orders : ChampionOrders = clock === 'clockwise'
+          ? championClockOrders
+          : championCounterOrders;
+
+        data.championOrders = orders;
+
+        // Retrieve the mech based on our platform and donut platform
+        const getMech = (
+          playerPlatform: number,
+          donutPlatform: number,
+          mechs: ChampionOrders,
+          count: number,
+        ): string => {
+          const mechIndex = (donutPlatform + count) % 5;
+
+          return mechs[playerPlatform]?.[mechIndex] ?? 'unknown';
+        };
 
         return output.mechanics!({
-          dir: output[data.championClock]!(),
-          mech1: output[newOrder[0]]!(),
-          mech2: output[newOrder[1]]!(),
-          mech3: output[newOrder[2]]!(),
-          mech4: output[newOrder[3]]!(),
-          mech5: output[newOrder[4]]!(),
+          dir: output[clock]!(),
+          mech1: getMech(myPlatform, donutPlatform, orders, 0),
+          mech2: output[getMech(myPlatform, donutPlatform, orders, 1)]!(),
+          mech3: output[getMech(myPlatform, donutPlatform, orders, 2)]!(),
+          mech4: output[getMech(myPlatform, donutPlatform, orders, 3)]!(),
+          mech5: output[getMech(myPlatform, donutPlatform, orders, 4)]!(),
         });
       },
       outputStrings: championOutputStrings,
@@ -1574,7 +1571,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
-        data.myPlatformNum = getPlatformNum(me);
+        data.myPlatformNum = getPlatformNum(me.PosX, me.PosY);
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
           ids: [...data.gleamingBarrageIds],
@@ -1590,22 +1587,6 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
-        // Find the actor on the platform we want
-        const findFang = (
-          actors: PluginCombatantState[],
-          platform: number,
-        ): PluginCombatantState | undefined => {
-          for (const actor of actors) {
-            const actorPlatform = getFangPlatform(actor);
-
-            if (platform === actorPlatform)
-              return actor;
-          }
-
-          // Did not find actor on the platform
-          return undefined;
-        };
-
         const fang = findFang(actors, data.myPlatformNum);
 
         if (fang === undefined)
@@ -1617,45 +1598,23 @@ const triggerSet: TriggerSet<Data> = {
         if (data.gleamingBarrageIds.length !== 5)
           return;
 
-        if (
-          data.championOrder === undefined ||
-          data.championOrder[data.championTracker] === undefined
+        const donutPlatform = data.championDonutStart;
+        const myPlatform = data.myLastPlatformNum;
+        const orders = data.championOrders;
+
+        // Calculate next mech index with wrap around
+        const mechIndex = donutPlatform === undefined
+          ? undefined
+          : (donutPlatform + data.championTracker) % 5;
+
+        // Retrieve the mech based on our platform, donut platform, and mech index
+        const mech = (
+            myPlatform === undefined ||
+            mechIndex === undefined ||
+            orders === undefined
         )
-          return;
-
-        // Adjust to where we are if we moved
-        let latestOrder;
-        let relPlatform;
-        if (
-          data.myLastPlatformNum !== data.myPlatformNum &&
-          data.myLastPlatformNum !== undefined &&
-          data.myPlatformNum !== undefined && data.myPlatformNum !== -1
-        ) {
-          // Calculate pattern based on where we are in relation to where we were
-          if (data.myPlatformNum > data.myLastPlatformNum) {
-            relPlatform = data.myLastPlatformNum - data.myPlatformNum + 5;
-          } else {
-            relPlatform = data.myPlatformNum - data.myLastPlatformNum + 5;
-          }
-
-          // Default to previous order if undefined
-          if (relPlatform === undefined)
-            relPlatform = 0;
-          latestOrder = [
-            ...data.championOrder.splice(relPlatform, 5),
-            ...data.championOrder.splice(0, relPlatform),
-          ];
-        }
-
-        // Switch the order to use
-        if (latestOrder === undefined)
-          latestOrder = data.championOrder;
-        else
-          data.championOrder = latestOrder;
-
-        const mech = latestOrder[data.championTracker];
-        if (mech === undefined)
-          return;
+          ? 'unknown'
+          : orders[myPlatform]?.[mechIndex] ?? 'unknown';
 
         const dir = data.championFangSafeSide;
 
