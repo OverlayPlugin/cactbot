@@ -23,7 +23,7 @@ export interface Data extends RaidbossData {
   galeTetherCount: number;
   towerDirs?: 'EW' | 'NS';
   towerfallSafeDirs?: 'NESW' | 'SENW';
-  towerfallSafeDir?: 'dirNE' | 'dirSE' | 'dirSW' | 'dirNW' | 'unknown'; 
+  towerfallSafeDir?: 'dirNE' | 'dirSE' | 'dirSW' | 'dirNW' | 'unknown';
   stoneWindCallGroup?: number;
   surgeTracker: number;
   packPredationTracker: number;
@@ -714,12 +714,12 @@ const triggerSet: TriggerSet<Data> = {
           towerfallSafeDirs === 'SENW' &&
           ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
         )
-         data.towerfallSafeDir = 'dirSE';
+          data.towerfallSafeDir = 'dirSE';
         if (
           towerfallSafeDirs === 'NESW' &&
           ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
         )
-         data.towerfallSafeDir = 'dirNE';
+          data.towerfallSafeDir = 'dirNE';
         else if (
           towerfallSafeDirs === 'NESW' &&
           ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x < 100))
