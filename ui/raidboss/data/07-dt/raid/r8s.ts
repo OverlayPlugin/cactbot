@@ -35,6 +35,9 @@ export interface Data extends RaidbossData {
   moonbeamBitesTracker: number;
   moonlightQuadrant2?: string;
   // Phase 2
+  hasUVRay: boolean;
+  uvFangSafeSide?: 'left' | 'right' | 'unknown';
+  gleamingBeamIds: number[];
   herosBlowInOut?: 'in' | 'out';
   herosBlowSafeDir?: number;
   purgeTargets: string[];
@@ -284,6 +287,8 @@ const triggerSet: TriggerSet<Data> = {
     moonbeamBites: [],
     moonbeamBitesTracker: 0,
     // Phase 2
+    hasUVRay: false,
+    gleamingBeamIds: [],
     purgeTargets: [],
     hasTwofoldTether: false,
     twofoldTracker: 0,
@@ -1195,10 +1200,84 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => {
         return output.uvRayOnYou!();
       },
+      run: (data) => data.hasUVRay = true,
       outputStrings: {
         uvRayOnYou: {
           en: 'UV Ray on YOU',
         },
+      },
+    },
+    {
+      id: 'R8S Gleaming Beam',
+      type: 'StartsUsing',
+      netRegex: { id: 'A45E', source: 'Gleaming Fang', capture: true },
+      preRun: (data, matches) => data.gleamingBeamIds.push(parseInt(matches.sourceId, 16)),
+      delaySeconds: (data, matches) => {
+        // Return 1s later if player has UV Ray for adjustment
+        if (data.hasUVRay === true)
+          return parseFloat(matches.castTime) - 3; // 4s castTime
+        return 0;
+      },
+      promise: async (data) => {
+        // Wait for all 5
+        if (data.gleamingBeamIds.length !== 5)
+          return;
+
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R8S Gleaming Beam: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        data.myPlatformNum = getPlatformNum(me.PosX, me.PosY);
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [...data.gleamingBeamIds],
+        })).combatants;
+        if (
+          actors.length !== 5 || actors[0] === undefined ||
+          actors[1] === undefined || actors[2] === undefined ||
+          actors[3] === undefined || actors[4] === undefined
+        ) {
+          console.error(
+            `R8S Gleaming Beam: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const fang = findFang(actors, data.myPlatformNum);
+
+        if (fang === undefined)
+          return;
+
+        data.uvFangSafeSide = getFangSafeSide(fang.PosX, data.myPlatformNum);
+      },
+      infoText: (data, _matches, output) => {
+        if (data.gleamingBeamIds.length !== 5)
+          return;
+        // Prevent firing again if delay changes
+        data.gleamingBeamIds = [];
+
+        const dir = data.uvFangSafeSide;
+        return output[dir ?? 'unknown']!();
+      },
+      run: (data) => {
+        if (data.uvFangSafeSide !== undefined) {
+          data.myPlatformNum === undefined;
+          data.uvFangSafeSide = undefined;
+          data.hasUVRay = false;
+        }
+      },
+      outputStrings: {
+        left: Outputs.left,
+        right: Outputs.right,
+        unknown: Outputs.unknown,
       },
     },
     {
@@ -1597,6 +1676,8 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         if (data.gleamingBarrageIds.length !== 5)
           return;
+        // Prevent firing again if delay changes
+        data.gleamingBarrageIds = [];
 
         const donutPlatform = data.championDonutStart;
         const myPlatform = data.myLastPlatformNum;
@@ -1635,7 +1716,6 @@ const triggerSet: TriggerSet<Data> = {
           data.myLastPlatformNum = data.myPlatformNum;
           data.myPlatformNum === undefined;
           data.championFangSafeSide = undefined;
-          data.gleamingBarrageIds = [];
         }
       },
       outputStrings: championOutputStrings,
