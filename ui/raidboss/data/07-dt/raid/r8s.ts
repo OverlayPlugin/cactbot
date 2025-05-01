@@ -150,14 +150,14 @@ const championOutputStrings = {
 
 // Platform, Mechs
 // S = 0, SW = 1, NW = 2, NE = 3, SE = 4
-const championClockOrders : ChampionOrders = {
+const championClockOrders: ChampionOrders = {
   0: ['donut', 'in', 'out', 'in', 'sides'],
   1: ['sides', 'donut', 'in', 'out', 'in'],
   2: ['in', 'sides', 'donut', 'in', 'out'],
   3: ['out', 'in', 'sides', 'donut', 'in'],
   4: ['in', 'out', 'in', 'sides', 'donut'],
 };
-const championCounterOrders : ChampionOrders = {
+const championCounterOrders: ChampionOrders = {
   0: ['donut', 'sides', 'in', 'out', 'in'],
   1: ['sides', 'in', 'out', 'in', 'donut'],
   2: ['in', 'out', 'in', 'donut', 'sides'],
@@ -1519,7 +1519,7 @@ const triggerSet: TriggerSet<Data> = {
         const myPlatform = data.myLastPlatformNum;
 
         // Determine which patterns to search for Champion's Circuit
-        const orders : ChampionOrders = clock === 'clockwise'
+        const orders: ChampionOrders = clock === 'clockwise'
           ? championClockOrders
           : championCounterOrders;
 
@@ -1539,7 +1539,7 @@ const triggerSet: TriggerSet<Data> = {
 
         return output.mechanics!({
           dir: output[clock]!(),
-          mech1: getMech(myPlatform, donutPlatform, orders, 0),
+          mech1: output[getMech(myPlatform, donutPlatform, orders, 0)]!(),
           mech2: output[getMech(myPlatform, donutPlatform, orders, 1)]!(),
           mech3: output[getMech(myPlatform, donutPlatform, orders, 2)]!(),
           mech4: output[getMech(myPlatform, donutPlatform, orders, 3)]!(),
@@ -1612,7 +1612,7 @@ const triggerSet: TriggerSet<Data> = {
             myPlatform === undefined ||
             mechIndex === undefined ||
             orders === undefined
-        )
+          )
           ? 'unknown'
           : orders[myPlatform]?.[mechIndex] ?? 'unknown';
 
