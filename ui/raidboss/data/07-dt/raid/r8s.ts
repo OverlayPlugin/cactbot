@@ -9,7 +9,7 @@ import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
-type Phase = 'one' | 'adds' | 'rage' | 'moonlight' | 'two';
+type Phase = 'one' | 'adds' | 'rage' | 'moonlight' | 'two' | 'twofold' | 'champion';
 type ChampionOrders = {
   [key: number]: string[];
 };
@@ -66,6 +66,9 @@ const phaseMap: { [id: string]: Phase } = {
   'A3C8': 'adds', // Tactical Pack
   'A3CB': 'rage', // Ravenous Saber
   'A3C1': 'moonlight', // Beckon Moonlight
+  'A471': 'twofold', // Twofold Tempest
+  'A477': 'champion', // Champion's Circuit (clockwise)
+  'A478': 'champion', // Chanpion's Circuit (counterclockwise)
 };
 
 const headMarkerData = {
@@ -1208,15 +1211,20 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      // Gleaming Fang's cast Gleaming Beam (A45E) 2.1s after ActorControlExtra
+      // This ActorControlExtra is unique to the Ultraviolent Ray and Champion's Circuit
+      // Five spawn for Ultraviolent Ray, 10 spawn for Champion's Circuit
       id: 'R8S Gleaming Beam',
-      type: 'StartsUsing',
-      netRegex: { id: 'A45E', source: 'Gleaming Fang', capture: true },
-      preRun: (data, matches) => data.gleamingBeamIds.push(parseInt(matches.sourceId, 16)),
-      delaySeconds: (data, matches) => {
-        // Return 1s later if player has UV Ray for adjustment
-        if (data.hasUVRay === true)
-          return parseFloat(matches.castTime) - 3; // 4s castTime
-        return 0;
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: '11D3', capture: true },
+      preRun: (data, matches) => {
+        if (data.phase !== 'twofold')
+          data.gleamingBeamIds.push(parseInt(matches.id, 16));
+      },
+      condition: (data) => {
+        if (data.phase !== 'twofold')
+          return true;
+        return false;
       },
       promise: async (data) => {
         // Wait for all 5
