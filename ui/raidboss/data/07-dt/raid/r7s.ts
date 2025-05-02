@@ -80,6 +80,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE x${count}',
+          cn: 'AoE x${count}',
         },
       },
     },
@@ -112,9 +113,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         inLater: {
           en: 'In (for later)',
+          cn: '(稍后靠近)',
         },
         outLater: {
           en: 'Out (for later)',
+          cn: '(稍后远离)',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -141,9 +144,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         sharedBuster: {
           en: '${stoneringer} => Tanks ${inOut}, Shared tankbuster',
+          cn: '${stoneringer} => 坦克 ${inOut}, 引导死刑',
         },
         avoidBuster: {
           en: '${stoneringer} => Party ${inOut}, Avoid tankbuster',
+          cn: '${stoneringer} => 小队 ${inOut}, 远离坦克死刑',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -159,6 +164,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Drop seed',
+          cn: '放置冰花',
         },
       },
     },
@@ -182,6 +188,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Line of Sight boss with adds',
+          cn: '躲在小怪身后',
         },
       },
     },
@@ -195,6 +202,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Rotate away from proximity markers',
+          cn: '远离距离衰减 AoE 落点',
         },
       },
     },
@@ -206,6 +214,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack on ${target} => Out + Protean',
+          cn: '${target} 分摊 => 远离 + 八方分散',
         },
       },
     },
@@ -219,6 +228,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go North, big AoE + Launch',
+          cn: '去北方准备 AoE + 击飞',
         },
       },
     },
@@ -285,9 +295,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         in: {
           en: 'In at tethered wall',
+          cn: '连线墙月环',
         },
         out: {
           en: 'Out from tethered wall',
+          cn: '连线墙钢铁',
         },
         inOutFollowupLariat: {
           en: '${inOut} + ${followup} => ${lariat}',
@@ -300,12 +312,15 @@ const triggerSet: TriggerSet<Data> = {
         },
         left: {
           en: 'Get Left',
+          cn: '去左边',
         },
         right: {
           en: 'Get Right',
+          cn: '去右边',
         },
         awayFromFront: {
           en: 'Spread, Away from front',
+          cn: '分散, 远离 BOSS 正面',
         },
         bigAoe: Outputs.bigAoe,
         unknown: Outputs.unknown,
@@ -319,6 +334,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread, Away from front',
+          cn: '分散, 远离 BOSS 正面',
         },
       },
     },
@@ -336,6 +352,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Tank tether on ${target}',
+          cn: '坦克连线 ${target}',
         },
       },
     },
@@ -351,9 +368,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidFlare: {
           en: 'Away from Flare',
+          cn: '远离核爆',
         },
         flare: {
           en: 'Flare + buster on YOU, Away from party',
+          cn: '核爆死刑点名, 远离人群',
         },
       },
     },
@@ -367,6 +386,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get tethers',
+          cn: '获取连线',
         },
       },
     },
@@ -379,6 +399,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Drop seed',
+          cn: '放置冰花',
         },
       },
     },
@@ -395,6 +416,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid line AoEs',
+          cn: '远离直线 AoE',
         },
       },
     },
@@ -444,9 +466,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         left: {
           en: '<== Get Left',
+          cn: '<== 左左左',
         },
         right: {
           en: 'Get Right ==>',
+          cn: '右右右 ==>',
         },
       },
     },
@@ -459,6 +483,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get tower',
+          cn: '踩塔',
         },
       },
     },
@@ -471,6 +496,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get tethers',
+          cn: '接线',
         },
       },
     },
@@ -481,6 +507,149 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Smash Here/Smash There': 'Smash Here/There',
         'Winding Wildwinds/Crossing Crosswinds': 'Wildwinds/Crosswinds',
+      },
+    },
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Blooming Abomination': 'Biestinator-Spross',
+        'Brute Abombinator': 'Brutalo Biestinator',
+      },
+      'replaceText': {
+        '\\(adds': '(Adds',
+        'cast\\)': 'Wirken)',
+        '\\(enrage\\)': '(Finalangriff)',
+        '\\(puddles\\)': '(Flächen)',
+        '\\(seeds drop\\)': '(Saaten ablegen)',
+        'Abominable Blink': 'Brutalo-Funken',
+        'Brutal Impact': 'Knallender Impakt',
+        'Brutal Smash': 'Brutalo-Schlag',
+        'Brutish Swing': 'Brutalo-Schwung',
+        'Crossing Crosswinds': 'Kreuzwind',
+        'Debris Deathmatch': 'Dornenwand-Todeskampf',
+        'Demolition Deathmatch': 'Dornengebäude-Todeskampf',
+        'Electrogenetic Force': 'Blitzschlag',
+        'Explosion': 'Explosion',
+        'Glower Power': 'Brutalo-Blick',
+        'Grappling Ivy': 'Efeuhaken',
+        'Hurricane Force': 'Sturmgewalt',
+        '(?<! )Impact': 'Impakt',
+        'Killer Seeds': 'Schwerer Samen',
+        'Lashing Lariat': 'Efeu-Lariat',
+        'Neo Bombarian Special': 'Neo-Brutalo-Spezial',
+        'Pollen': 'Pollen',
+        'Powerslam': 'Bombensturz',
+        'Pulp Smash': 'Dornenschlag',
+        'Quarry Swamp': 'Versteinernde Welle',
+        'Revenge of the Vines': 'Welt der Dornen',
+        'Roots of Evil': 'Dornenglühen',
+        'Sinister Seeds': 'Streusamen',
+        'Slaminator': 'Brutalo-Sturz',
+        'Smash Here': 'Naher Schlag',
+        'Smash There': 'Ferner Schlag',
+        'Special Bombarian Special': 'Ultimativer Brutalo-Spezial',
+        'Spore Sac': 'Sporensack',
+        'Sporesplosion': 'Sporenwolke',
+        'Stoneringer(?![s ])': 'Steinwaffe',
+        'Stoneringer 2: Stoneringers': 'Steinwaffen-Kombo',
+        'Strange Seeds': 'Verwehte Samen',
+        'Tendrils of Terror': 'Dornenzaun',
+        'The Unpotted': 'Dornenwelle',
+        'Thorny Deathmatch': 'Dornen-Todeskampf',
+        'Winding Wildwinds': 'Kreiswind',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Blooming Abomination': 'germe de Bombinator',
+        'Brute Abombinator': 'Brute Bombinator',
+      },
+      'replaceText': {
+        'Abominable Blink': 'Étincelle brutale',
+        'Brutal Impact': 'Impact brutal',
+        'Brutal Smash': 'Impact brutal',
+        'Brutish Swing': 'Swing brutal',
+        'Crossing Crosswinds': 'Bourrasque croisée',
+        'Debris Deathmatch': 'Mise à mort épineuse emprisonnée',
+        'Demolition Deathmatch': 'Mise à mort épineuse gigantesque',
+        'Electrogenetic Force': 'Doigt filiforme',
+        'Explosion': 'Explosion',
+        'Glower Power': 'Regard brutal',
+        'Grappling Ivy': 'Projection spinescente',
+        'Hurricane Force': 'Grande tempête de vent',
+        '(?<! )Impact(?! )': 'Ensevelissement',
+        'Killer Seeds': 'Grosse graine',
+        'Lashing Lariat': 'Lariat épineux',
+        'Neo Bombarian Special': 'Néo-spéciale brutale',
+        'Pollen': 'Pollen',
+        'Powerslam': 'Explongeon',
+        'Pulp Smash': 'Impact épineux',
+        'Quarry Swamp': 'Vague de pétrification',
+        'Revenge of the Vines': 'Règne des épines',
+        'Roots of Evil': 'Poussée d\'épines',
+        'Sinister Seeds': 'Éparpillement des graines',
+        'Slaminator': 'Plongeon brutal',
+        'Smash Here': 'Balayage proche',
+        'Smash There': 'Balayage éloigné',
+        'Special Bombarian Special': 'Spéciale brutale ultime',
+        'Spore Sac': 'Sac de spores',
+        'Sporesplosion': 'Nuage de spores',
+        'Stoneringer(?![s ])': 'Arme de pierre',
+        'Stoneringer 2: Stoneringers': 'Armes de pierre jumelles',
+        'Strange Seeds': 'Dissémination de graines',
+        'Tendrils of Terror': 'Grille épineuse',
+        'The Unpotted': 'Onde épineuse',
+        'Thorny Deathmatch': 'Mise à mort épineuse',
+        'Winding Wildwinds': 'Bourrasque circulaire',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Blooming Abomination': 'アボミネータースプラウト',
+        'Brute Abombinator': 'ブルートアボミネーター',
+      },
+      'replaceText': {
+        'Abominable Blink': 'ブルートスパーク',
+        'Brutal Impact': 'スマッシュインパクト',
+        'Brutal Smash': 'ブルートスマッシュ',
+        'Brutish Swing': 'ブルートスイング',
+        'Crossing Crosswinds': 'クロッシングゲイル',
+        'Debris Deathmatch': 'ソーンデスマッチ・ウォール',
+        'Demolition Deathmatch': 'ソーンデスマッチ・ビルディング',
+        'Electrogenetic Force': '雷撃',
+        'Explosion': '爆発',
+        'Glower Power': 'ブルートグラワー',
+        'Grappling Ivy': 'アイビーグラップル',
+        'Hurricane Force': '大暴風',
+        '(?<! )Impact': '衝撃',
+        'Killer Seeds': 'ヘビーシード',
+        'Lashing Lariat': 'アイビーラリアット',
+        'Neo Bombarian Special': 'ネオ・ボンバリアンスペシャル',
+        'Pollen': '花粉',
+        'Powerslam': 'パワーダイブ',
+        'Pulp Smash': 'ソーンスマッシュ',
+        'Quarry Swamp': '石化の波動',
+        'Revenge of the Vines': 'ソーンワールド',
+        'Roots of Evil': 'ソーングロウ',
+        'Sinister Seeds': 'スキャッターシード',
+        'Slaminator': 'ブルートダイブ',
+        'Smash Here': 'ニア・スマッシュ',
+        'Smash There': 'ファー・スマッシュ',
+        'Special Bombarian Special': 'アルティメット・ボンバリアンスペシャル',
+        'Spore Sac': 'スポアサック',
+        'Sporesplosion': 'スポアクラウド',
+        'Stoneringer(?![s ])': 'ストーンウェポン',
+        'Stoneringer 2: Stoneringers': 'ストーンウェポン：ツイン',
+        'Strange Seeds': 'ブロウシード',
+        'Tendrils of Terror': 'ソーンフェンス',
+        'The Unpotted': 'ソーンウェーブ',
+        'Thorny Deathmatch': 'ソーンデスマッチ',
+        'Winding Wildwinds': 'リングゲイル',
       },
     },
   ],
