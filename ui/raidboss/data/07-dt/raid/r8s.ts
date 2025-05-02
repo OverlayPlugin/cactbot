@@ -715,7 +715,7 @@ const triggerSet: TriggerSet<Data> = {
           ((towerDirs === 'EW' && y > 100) || (towerDirs === 'NS' && x > 100))
         )
           data.towerfallSafeDir = 'dirSE';
-        if (
+        else if (
           towerfallSafeDirs === 'NESW' &&
           ((towerDirs === 'EW' && y < 100) || (towerDirs === 'NS' && x > 100))
         )
