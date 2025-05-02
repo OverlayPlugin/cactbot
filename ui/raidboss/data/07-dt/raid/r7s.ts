@@ -80,7 +80,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE x${count}',
-          ja: '全体攻撃 ${count} 回目',
+          ja: '全体攻撃 ${count} 回',
           cn: 'AoE x${count}',
         },
       },
