@@ -684,7 +684,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const hdg = Directions.hdgTo8DirNum(actor.Heading);
         // Only trigger on the actor targetting intercards
-        if (hdg === 1 || hdg === 3 || hdg === 5 || hdg === 7)
+        if (hdg === 0 || hdg === 2 || hdg === 4 || hdg === 6)
           return;
 
         if (data.towerfallSafeDirs === undefined)
