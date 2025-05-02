@@ -22,6 +22,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Nur Baldesion Arsenal Trigger/Timeline ',
     fr: 'Triggers/Timeline pour l\'Arsenal de Baldesion uniquement',
     cn: '只有BA (巴尔德西昂兵武塔) 触发器/时间轴',
+    ko: '발데시온 무기고 트리거/타임라인만',
   },
   timelineFile: 'eureka_hydatos.txt',
   resetWhenOutOfCombat: false,

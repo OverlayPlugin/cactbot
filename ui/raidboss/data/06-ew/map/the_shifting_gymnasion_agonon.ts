@@ -50,6 +50,7 @@ const triggerSet: TriggerSet<Data> = {
     en: 'Missing several summons',
     de: 'Einige Beschwörungen fehlen',
     cn: '缺失几次召唤',
+    ko: '몇몇 소환 누락',
   },
 
   triggers: [

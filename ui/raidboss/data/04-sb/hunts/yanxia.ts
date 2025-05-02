@@ -13,6 +13,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'A Rang Hohe Jagd: Nur Angada',
     fr: 'Chasse Rang A : Angada uniquement',
     cn: '只有A级狩猎怪: 安迦达',
+    ko: 'A급 마물: 앙가다만',
   },
   triggers: [
     {

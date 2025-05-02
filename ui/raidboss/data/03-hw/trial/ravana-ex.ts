@@ -12,6 +12,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Nur Timeline, keine Trigger',
     fr: 'Timeline seulement, aucun trigger',
     cn: '只有时间轴，没有触发器',
+    ko: '타임라인만, 트리거 없음',
   },
   timelineFile: 'ravana-ex.txt',
   triggers: [],
