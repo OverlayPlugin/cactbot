@@ -33,6 +33,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Tidal Light 2': '9D3D', // P4 Crystallize Time exaflare
     'FRU Path of Light': '9D74', // P5 Fulgent Blade exaflare
     'FRU Path of Darkness': '9D75', // P5 Fulgent Blade exaflare
+    'FRU Cruel Path of Light': '9CB7', // P5 Polarizing Paths follow-up
+    'FRU Cruel Path of Darkness': '9CB8', // P5 Polarizing Paths follow-up
   },
   damageFail: {
     'FRU Holy Light Explosion': '9D1B', // P2 Explosion from Holy Light
