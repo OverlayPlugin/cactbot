@@ -12,12 +12,17 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Cyclonic Break': '9CD2', // P1 Cyclonic Break follow-up
     'FRU Burnt Strike': '9CE1', // P1 Burnt Strike
     'FRU Blastburn': '9CE2', // P1 Blastburn
+    'FRU Blasting Zone': '9CDD', // P1 Blasting Zone
     'FRU Brightfire 1': '9CD8', // P1 Brightfire
     'FRU Brightfire 2': '9CD9', // P1 Brightfire
     'FRU Icicle Impact': '9D06', // P2 Icicle Impact
     'FRU Axe Kick': '9D0A', // P2 Axe Kick
     'FRU Scythe Kick': '9D0B', // P2 Scythe Kick
     'FRU Frigid Needle': '9D09', // P2 Frigid Needle
+    'FRU Twin Stillness 1': '9D01', // P2 Twin Stillness 1st
+    'FRU Twin Stillness 2': '9D04', // P2 Twin Stillness 2nd
+    'FRU Twin Silence 1': '9D02', // P2 Twin Silence 1st
+    'FRU Twin Silence 2': '9D03', // P2 Twin Silence 2nd
     'FRU Reflected Scythe Kick 1': '9D0C', // P2 Reflected Scythe Kick
     'FRU Reflected Scythe Kick 2': '9D0D', // P2 Reflected Scythe Kick
     'FRU Hiemal Storm': '9D3F', // P2.5 Crystal of Light puddle
@@ -37,7 +42,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Cruel Path of Darkness': '9CB8', // P5 Polarizing Paths follow-up
   },
   damageFail: {
-    'FRU Holy Light Explosion': '9D1B', // P2 Explosion from Holy Light
+    'FRU Explosion': '9D1B', // P2 Explosion from Holy Light
+    'FRU Refulgent Fate': '9D17', // P2, P4 Tether break
     'FRU Lightsteep': '9D18', // P2, P4 debuff 5 stacks
   },
   gainsEffectFail: {
@@ -55,7 +61,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Dark Fire III': '9D54', // P3 Dark Fire III
     'FRU Dark Eruption': '9D52', // P3, P4 Dark Eruption
     'FRU Spirit Taker': '9D61', // P3, P4 Spirit Taker
-    'FRU Longing of the Lost': '9D31', // P4 dragon explosion
+    'FRU Longing of the Lost': '9D31', // P4 Crystallize Time dragon explosion
   },
   shareFail: {
     'FRU House of Light 2': '9CFC', // P2 House of Light after Light Rampant, P4 House of Light
@@ -69,16 +75,16 @@ const triggerSet: OopsyTriggerSet<Data> = {
   },
   soloWarn: {
     'FRU Sinsmoke': '9CD3', // P1 stack during Cyclonic Break
-    'FRU Banish III': '9D1E', // P2 Banish III
+    'FRU Banish III': '9D1E', // P2 Banish III (stack)
   },
   triggers: [
     {
       id: 'FRU Stack Mistakes',
       type: 'Ability',
-      // 9CDF = P1 Sinbound Fire III
-      // 9CE7 = P1 Sinsmoke (during Utopian Sky)
+      // 9CDF = P1 Sinbound Fire III (stack during Utopian Sky)
+      // 9CE7 = P1 Sinsmoke (stack with Floating Fetters after Utopian Sky)
       // 9CDC = P1 Sinblaze (tethered fire)
-      // 9D19 = P2 Powerful Light
+      // 9D19 = P2 Powerful Light (stack during Light Rampant)
       // 9D55 = P3, P4 Unholy Darkness
       // 9D4F = P3, P4 Dark Water III
       netRegex: NetRegexes.ability({
