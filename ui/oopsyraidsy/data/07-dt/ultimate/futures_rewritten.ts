@@ -25,6 +25,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Twin Silence 2': '9D03', // P2 Twin Silence 2nd
     'FRU Reflected Scythe Kick 1': '9D0C', // P2 Reflected Scythe Kick
     'FRU Reflected Scythe Kick 2': '9D0D', // P2 Reflected Scythe Kick
+    'FRU Explosion': '9D1B', // P2 Explosion from Holy Light
     'FRU Hiemal Storm': '9D3F', // P2.5 Crystal of Light puddle
     'FRU Sinbound Blizzard III': '9D42', // P2.5 Crystal of Darkness cone
     'FRU Dark Blizzard III': '9D57', // P3, P4 Dark Blizzard III
@@ -42,8 +43,9 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Cruel Path of Darkness': '9CB8', // P5 Polarizing Paths follow-up
   },
   damageFail: {
-    'FRU Explosion': '9D1B', // P2 Explosion from Holy Light
-    'FRU Refulgent Fate': '9D17', // P2, P4 Tether break
+    'FRU Unmitigated Explosion 1': '9CC8', // P1 tower fail
+    'FRU Unmitigated Explosion 2': '9D81', // P5 tower fail
+    'FRU Refulgent Fate': '9D17', // P2, P4 tether break
     'FRU Lightsteep': '9D18', // P2, P4 debuff 5 stacks
   },
   gainsEffectFail: {
