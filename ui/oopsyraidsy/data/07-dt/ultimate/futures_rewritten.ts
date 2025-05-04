@@ -95,7 +95,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
       mistake: (_data, matches) => {
         const expected = matches.id === '9D55' ? 5 : 4; // Unholy Darkness = 5, others = 4
         const actual = parseFloat(matches.targetCount);
-        if (actual >= expected) {
+        if (actual >= expected || actual === 0) {
           return;
         }
         const ability = matches.ability;
