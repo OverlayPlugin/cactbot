@@ -43,7 +43,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Cruel Path of Darkness': '9CB8', // P5 Polarizing Paths follow-up
   },
   damageFail: {
-    'FRU Unmitigated Explosion 1': '9CC8', // P1 tower fail
+    'FRU Unmitigated Explosion 1': '9CC4', // P1 tower fail
     'FRU Unmitigated Explosion 2': '9D81', // P5 tower fail
     'FRU Refulgent Fate': '9D17', // P2, P4 tether break
     'FRU Lightsteep': '9D18', // P2, P4 debuff 5 stacks
