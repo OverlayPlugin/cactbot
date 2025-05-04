@@ -52,6 +52,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Damage Down': 'B5F',
     'FRU Mark of Mortality': '1114', // stack fail debuff
     'FRU Doom': '9D4',
+    //  There are 3 bleeding debuffs. B87 (Fatebreaker 15sec), C05 (9999sec) C06 (30sec).
+    'FRU Bleeding': 'C05', // standing in the puddle.
   },
   shareWarn: {
     'FRU Sinsmite': '9CD5', // P1 spread during Cyclonic Break
