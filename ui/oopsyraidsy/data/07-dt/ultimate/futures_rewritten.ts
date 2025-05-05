@@ -26,7 +26,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Reflected Scythe Kick 1': '9D0C', // P2 Reflected Scythe Kick
     'FRU Reflected Scythe Kick 2': '9D0D', // P2 Reflected Scythe Kick
     'FRU Explosion': '9D1B', // P2 Explosion from Holy Light
-    'FRU Hiemal Storm': '9D3F', // P2.5 Crystal of Light puddle
+    'FRU Hiemal Storm': '9D40', // P2.5 Crystal of Light puddle
     'FRU Sinbound Blizzard III': '9D42', // P2.5 Crystal of Darkness cone
     'FRU Dark Blizzard III': '9D57', // P3, P4 Dark Blizzard III
     'FRU Sinbound Meltdown 1': '9D64', // P3 Hourglass beam (after 1st hit)
