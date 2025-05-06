@@ -10,8 +10,12 @@ const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.FuturesRewrittenUltimate,
   damageWarn: {
     'FRU Cyclonic Break': '9CD2', // P1 Cyclonic Break follow-up
-    'FRU Burnt Strike': '9CE1', // P1 Burnt Strike
-    'FRU Blastburn': '9CE2', // P1 Blastburn
+    'FRU Burnt Strike 1': '9CC1', // P1 Burnt Strike (fire, by Fatebreaker)
+    'FRU Burnt Strike 2': '9CC5', // P1 Burnt Strike (thunder, by Fatebreaker)
+    'FRU Burnt Strike 3': '9CE1', // P1 Burnt Strike (fire, by Fatebreaker's Image)
+    'FRU Burnt Strike 4': '9CE3', // P1 Burnt Strike (thunder, by Fatebreaker's Image)
+    'FRU Burnout 1': '9CC6', // P1 Burnt Strike thunder follow-up (by Fatebreaker)
+    'FRU Burnout 2': '9CE4', // P1 Burnt Strike thunder follow-up (by Fatebreaker's Image)
     'FRU Blasting Zone': '9CDD', // P1 Blasting Zone
     'FRU Brightfire 1': '9CD8', // P1 Brightfire
     'FRU Brightfire 2': '9CD9', // P1 Brightfire
@@ -82,6 +86,28 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Banish III': '9D1E', // P2 Banish III (stack)
   },
   triggers: [
+    {
+      id: 'FRU Knockback',
+      type: 'Ability',
+      // 9CC2 = P1 Blastburn (by Fatebreaker)
+      // 9CE2 = P1 Blastburn (by Fatebreaker's Image)
+      // 9D0F = P2 Heavenly Strike
+      netRegex: NetRegexes.ability({ id: ['9CC2', '9CE2', '9D0F'] }),
+      deathReason: (_data, matches) => {
+        return {
+          id: matches.targetId,
+          name: matches.target,
+          text: {
+            en: 'Pushed into wall',
+            de: 'Rückstoß in die Wand',
+            fr: 'Poussé(e) dans le mur',
+            ja: '壁へノックバック',
+            cn: '击退至墙',
+            ko: '벽으로 넉백',
+          },
+        };
+      },
+    },
     {
       id: 'FRU Stack Mistakes',
       type: 'Ability',
