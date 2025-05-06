@@ -54,6 +54,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'AoE x${count}',
+          ja: '全体攻撃 ${count} 回',
           cn: 'AoE x${count}',
         },
       },
@@ -87,10 +88,12 @@ Options.Triggers.push({
       outputStrings: {
         inLater: {
           en: 'In (for later)',
+          ja: 'あとで中に',
           cn: '(稍后靠近)',
         },
         outLater: {
           en: 'Out (for later)',
+          ja: 'あとで外に',
           cn: '(稍后远离)',
         },
         in: Outputs.in,
@@ -116,10 +119,12 @@ Options.Triggers.push({
       outputStrings: {
         sharedBuster: {
           en: '${stoneringer} => Tanks ${inOut}, Shared tankbuster',
+          ja: '${stoneringer} => タンク ${inOut}, タンク頭割り',
           cn: '${stoneringer} => 坦克 ${inOut}, 引导死刑',
         },
         avoidBuster: {
           en: '${stoneringer} => Party ${inOut}, Avoid tankbuster',
+          ja: '${stoneringer} => パーティ ${inOut}, タンク頭割りを避ける',
           cn: '${stoneringer} => 小队 ${inOut}, 远离坦克死刑',
         },
         in: Outputs.in,
@@ -136,6 +141,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Drop seed',
+          ja: '種捨て',
           cn: '放置冰花',
         },
       },
@@ -160,6 +166,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Line of Sight boss with adds',
+          ja: '雑魚で視線を切る',
           cn: '躲在小怪身后',
         },
       },
@@ -174,6 +181,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Rotate away from proximity markers',
+          ja: '距離減衰マーカー 3発目から1発目に避ける',
           cn: '远离距离衰减 AoE 落点',
         },
       },
@@ -186,6 +194,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stack on ${target} => Out + Protean',
+          ja: '${target} 頭割り => 外へ + 八方向さんかい',
           cn: '${target} 分摊 => 远离 + 八方分散',
         },
       },
@@ -200,6 +209,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Go North, big AoE + Launch',
+          ja: '北集合、全体攻撃 + ノックバック',
           cn: '去北方准备 AoE + 击飞',
         },
       },
@@ -263,31 +273,42 @@ Options.Triggers.push({
       outputStrings: {
         in: {
           en: 'In at tethered wall',
+          ja: '線のある壁に近づく',
           cn: '连线墙月环',
         },
         out: {
           en: 'Out from tethered wall',
+          ja: '線のある壁から離れる',
           cn: '连线墙钢铁',
         },
         inOutFollowupLariat: {
           en: '${inOut} + ${followup} => ${lariat}',
+          ja: '${inOut} + ${followup} => ${lariat}',
+          cn: '${inOut} + ${followup} => ${lariat}',
         },
         inOutFollowup: {
           en: '${inOut} => ${followup}',
+          ja: '${inOut} => ${followup}',
+          cn: '${inOut} => ${followup}',
         },
         inOutLariat: {
           en: '${inOut} => ${lariat}',
+          ja: '${inOut} => ${lariat}',
+          cn: '${inOut} => ${lariat}',
         },
         left: {
           en: 'Get Left',
+          ja: '左へ',
           cn: '去左边',
         },
         right: {
           en: 'Get Right',
+          ja: '右へ',
           cn: '去右边',
         },
         awayFromFront: {
           en: 'Spread, Away from front',
+          ja: 'さんかい、ボス前から離れる',
           cn: '分散, 远离 BOSS 正面',
         },
         bigAoe: Outputs.bigAoe,
@@ -302,6 +323,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Spread, Away from front',
+          ja: 'さんかい、ボス前から離れる',
           cn: '分散, 远离 BOSS 正面',
         },
       },
@@ -320,6 +342,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Tank tether on ${target}',
+          ja: '${target} にタンク線',
           cn: '坦克连线 ${target}',
         },
       },
@@ -336,10 +359,12 @@ Options.Triggers.push({
       outputStrings: {
         avoidFlare: {
           en: 'Away from Flare',
+          ja: 'フレアマーカーから離れる',
           cn: '远离核爆',
         },
         flare: {
           en: 'Flare + buster on YOU, Away from party',
+          ja: '自分にフレア、パーティから離れる',
           cn: '核爆死刑点名, 远离人群',
         },
       },
@@ -354,6 +379,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get tethers',
+          ja: '線取り',
           cn: '获取连线',
         },
       },
@@ -367,6 +393,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Drop seed',
+          ja: '種捨て',
           cn: '放置冰花',
         },
       },
@@ -384,6 +411,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Avoid line AoEs',
+          ja: '直線 AoE を避ける',
           cn: '远离直线 AoE',
         },
       },
@@ -432,10 +460,12 @@ Options.Triggers.push({
       outputStrings: {
         left: {
           en: '<== Get Left',
+          ja: '<== 左へ',
           cn: '<== 左左左',
         },
         right: {
           en: 'Get Right ==>',
+          ja: '右へ ==>',
           cn: '右右右 ==>',
         },
       },
@@ -449,6 +479,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get tower',
+          ja: '塔踏み',
           cn: '踩塔',
         },
       },
@@ -462,6 +493,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get tethers',
+          ja: '線取り',
           cn: '接线',
         },
       },
