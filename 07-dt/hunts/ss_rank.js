@@ -21,6 +21,7 @@ Options.Triggers.push({
     en: 'SS Rank Hunts',
     de: 'SS Rang Hohe Jagd',
     cn: 'SS级狩猎怪',
+    ko: 'SS급 마물',
   },
   triggers: [
     {

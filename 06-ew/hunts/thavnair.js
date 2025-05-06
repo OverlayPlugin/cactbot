@@ -13,6 +13,7 @@ Options.Triggers.push({
     en: 'A Rank Hunts and Daivadipa boss FATE',
     de: 'A Rang Hohe Jagd und Daivadipa Boss FATE',
     cn: 'A级狩猎怪和明灯天王特殊FATE',
+    ko: 'A급 마물, 다이바디파 특수돌발',
   },
   resetWhenOutOfCombat: false,
   initData: () => {

@@ -7,6 +7,7 @@ Options.Triggers.push({
     de: 'Vor der 6.3 Überarbeitung',
     fr: 'Avant le remaniement 6.3',
     cn: '6.3改版前',
+    ko: '6.3 개편 전',
   },
   timelineFile: 'aetherochemical_research_facility.txt',
   timelineTriggers: [

@@ -6,6 +6,7 @@ Options.Triggers.push({
     de: 'Vor der 6.5 Überarbeitung',
     fr: 'Avant le remaniement 6.5',
     cn: '6.5改版前',
+    ko: '6.5 개편 전',
   },
   timelineFile: 'ghimlyt_dark.txt',
   timelineTriggers: [

@@ -14,6 +14,7 @@ Options.Triggers.push({
     de: 'BLU Große Maskerade Stufe 1-32',
     fr: 'MBU Carnival masqué Niveau 1-32',
     cn: '青魔法师假面狂欢关卡 1-32',
+    ko: '청마도사 가면 무투회 스테이지 1-32',
   },
   triggers: [
     // ================ Stage 01 Act 1 ================

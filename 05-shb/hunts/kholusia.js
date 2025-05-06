@@ -5,6 +5,7 @@ Options.Triggers.push({
     en: 'A Rank Hunts, missing Formidable boss FATE',
     de: 'A Rang Hohe Jagd, Ein formidabler Kampf Boss FATE fehlt',
     cn: 'A级狩猎怪, 缺失特殊FATE',
+    ko: 'A급 마물, 특수돌발 누락.',
   },
   triggers: [
     {

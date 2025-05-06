@@ -14,6 +14,7 @@ Options.Triggers.push({
     de: 'Cactbot Test Trigger',
     fr: 'Test des triggers Cactbot',
     cn: 'Cactbot测试触发器',
+    ko: 'Cactbot 테스트 트리거',
   },
   comments: {
     en:
@@ -24,6 +25,8 @@ Options.Triggers.push({
       'Test/Dépannage des triggers (voir : <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Vergers d\'Estival Raidboss Test</a>)',
     cn:
       '测试/排错触发器（参见：<a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">Summerford Farms Raidboss Test</a>',
+    ko:
+      '테스트/문제확인 트리거 (참고: <a href="https://github.com/OverlayPlugin/cactbot/blob/main/docs/FAQ-Troubleshooting.md#summerford-farms-raidboss-test">여름여울 농장 Raidboss 테스트</a>)',
   },
   config: [
     {

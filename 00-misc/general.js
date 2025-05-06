@@ -11,12 +11,14 @@ Options.Triggers.push({
     fr: 'Triggers généraux pour toutes les occasions et zones',
     ja: '全ての状況、全てのエリアに共通するトリガー',
     cn: '适用于所有场合和区域的通用触发器',
+    ko: '모든 상황과 지역을 위한 범용 트리거',
   },
   triggers: [
     {
       id: 'General Provoke',
       comment: {
         cn: '仅在自身或团队成员释放“挑衅”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 도발을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '1D6D' },
@@ -43,6 +45,7 @@ Options.Triggers.push({
       id: 'General Frog Legs',
       comment: {
         cn: '仅在自身或团队成员释放“蛙腿”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 개구리 다리를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '4783' },
@@ -80,6 +83,7 @@ Options.Triggers.push({
       id: 'General Shirk',
       comment: {
         cn: '仅在自身或团队成员释放“退避”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 기피를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '1D71' },
@@ -105,6 +109,7 @@ Options.Triggers.push({
       id: 'General Holmgang',
       comment: {
         cn: '仅在自身或团队成员释放“死斗”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 일대일 결투를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '2B' },
@@ -130,6 +135,7 @@ Options.Triggers.push({
       id: 'General Hallowed',
       comment: {
         cn: '仅在自身或团队成员释放“神圣领域”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 천하무적을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '1E' },
@@ -155,6 +161,7 @@ Options.Triggers.push({
       id: 'General Superbolide',
       comment: {
         cn: '仅在自身或团队成员释放“超火流星”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 폭발 유성을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '3F18' },
@@ -180,6 +187,7 @@ Options.Triggers.push({
       id: 'General Living',
       comment: {
         cn: '仅在自身或团队成员释放“行尸走肉”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 산송장을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: 'E36' },
@@ -205,6 +213,7 @@ Options.Triggers.push({
       id: 'General Walking',
       comment: {
         cn: '仅在自身或团队成员获得“死而不僵”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 움직이는 시체 상태가 되었고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'GainsEffect',
       netRegex: { effectId: '32B' },
@@ -233,6 +242,7 @@ Options.Triggers.push({
       id: 'General Ready Check',
       comment: {
         cn: '在队友发起准备确认时，播放D.Va的“Game on”音效(^-^)V',
+        ko: '파티원이 준비 확인을 사용하면, D.Va의 "Game on" 사운드를 재생합니다.',
       },
       type: 'GameLog',
       netRegex: {
