@@ -668,8 +668,8 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { category: '0197', param1: '11D1', capture: true },
       condition: (data, matches) => {
         if (data.phase === 'one') {
-           data.fangedCrossingIds.push(parseInt(matches.id, 16));
-           if (data.fangedCrossingIds.length === 2)
+          data.fangedCrossingIds.push(parseInt(matches.id, 16));
+          if (data.fangedCrossingIds.length === 2)
             return true;
         }
         return false;
