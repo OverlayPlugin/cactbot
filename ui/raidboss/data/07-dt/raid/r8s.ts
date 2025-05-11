@@ -669,6 +669,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
+      suppressSeconds: 1,
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
