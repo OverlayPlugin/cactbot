@@ -10290,6 +10290,7 @@ const data: ZoneInfoType = {
       'en': 'Futures Rewritten (Ultimate)',
       'fr': 'Avenirs réécrits (fatal)',
       'ja': '絶もうひとつの未来',
+      'ko': '절 또 하나의 미래',
     },
     'offsetX': -100,
     'offsetY': -100,
@@ -10316,6 +10317,7 @@ const data: ZoneInfoType = {
     'contentType': 37,
     'exVersion': 5,
     'name': {
+      'cn': '暗黑之云诛灭战',
       'de': 'Die Wolke der Dunkelheit (chaotisch)',
       'en': 'The Cloud of Darkness (Chaotic)',
       'fr': 'La Tour de Ténèbres (chaotique)',
@@ -10394,6 +10396,7 @@ const data: ZoneInfoType = {
     'contentType': 7,
     'exVersion': 5,
     'name': {
+      'cn': '决战！佐戈永结桥',
       'de': 'Kampf an Zorgor der Weiten',
       'en': 'Bar the Passage',
       'fr': 'Pour s\'affranchir de la tyrannie, tout s\'appelle vertu',

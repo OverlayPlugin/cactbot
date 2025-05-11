@@ -1,3 +1,4 @@
+import { Responses } from '../../../../resources/responses';
 import ZoneId from '../../../../resources/zone_id';
 import { RaidbossData } from '../../../../types/data';
 import { TriggerSet } from '../../../../types/trigger';
@@ -16,13 +17,16 @@ const triggerSet: TriggerSet<Data> = {
     en: 'General triggers for all occasions and zones',
     de: 'Allgemeine Trigger für alle Anlässe und Zonen',
     fr: 'Triggers généraux pour toutes les occasions et zones',
+    ja: '全ての状況、全てのエリアに共通するトリガー',
     cn: '适用于所有场合和区域的通用触发器',
+    ko: '모든 상황과 지역을 위한 범용 트리거',
   },
   triggers: [
     {
       id: 'General Provoke',
       comment: {
         cn: '仅在自身或团队成员释放“挑衅”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 도발을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '1D6D' },
@@ -49,6 +53,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Frog Legs',
       comment: {
         cn: '仅在自身或团队成员释放“蛙腿”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 개구리 다리를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '4783' },
@@ -86,6 +91,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Shirk',
       comment: {
         cn: '仅在自身或团队成员释放“退避”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 기피를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '1D71' },
@@ -111,6 +117,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Holmgang',
       comment: {
         cn: '仅在自身或团队成员释放“死斗”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 일대일 결투를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '2B' },
@@ -136,6 +143,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Hallowed',
       comment: {
         cn: '仅在自身或团队成员释放“神圣领域”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 천하무적을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '1E' },
@@ -161,6 +169,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Superbolide',
       comment: {
         cn: '仅在自身或团队成员释放“超火流星”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 폭발 유성을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: '3F18' },
@@ -186,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Living',
       comment: {
         cn: '仅在自身或团队成员释放“行尸走肉”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 산송장을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
       netRegex: { id: 'E36' },
@@ -211,6 +221,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Walking',
       comment: {
         cn: '仅在自身或团队成员获得“死而不僵”且自身为坦克/治疗/青魔法师时触发。',
+        ko: '본인 또는 파티원이 움직이는 시체 상태가 되었고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'GainsEffect',
       netRegex: { effectId: '32B' },
@@ -239,6 +250,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'General Ready Check',
       comment: {
         cn: '在队友发起准备确认时，播放D.Va的“Game on”音效(^-^)V',
+        ko: '파티원이 준비 확인을 사용하면, D.Va의 "Game on" 사운드를 재생합니다.',
       },
       type: 'GameLog',
       netRegex: {
@@ -248,6 +260,15 @@ const triggerSet: TriggerSet<Data> = {
       },
       sound: '../../resources/sounds/Overwatch/D.Va_-_Game_on.webm',
       soundVolume: 0.6,
+    },
+    {
+      // https://xivapi.com/LogMessage/916
+      // en: 7 minutes have elapsed since your last activity. [...]
+      // There is no network packet for these log lines; so have to use GameLog.
+      id: 'General Falling Asleep',
+      type: 'GameLog',
+      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
+      response: Responses.wakeUp(),
     },
   ],
   timelineReplace: [
@@ -261,6 +282,8 @@ const triggerSet: TriggerSet<Data> = {
           'Du willst wahren Kampfgeist in der Trainingspuppe entfachen',
         'You burst out laughing at the striking dummy': 'Du lachst herzlich mit der Trainingspuppe',
         'You clap for the striking dummy': 'Du klatschst begeistert Beifall für die Trainingspuppe',
+        '7 minutes have elapsed since your last activity..*?':
+          'Seit deiner letzten Aktivität sind 7 Minuten vergangen.',
       },
     },
     {
@@ -275,6 +298,8 @@ const triggerSet: TriggerSet<Data> = {
         'You burst out laughing at the striking dummy':
           'Vous vous esclaffez devant le mannequin d\'entraînement',
         'You clap for the striking dummy': 'Vous applaudissez le mannequin d\'entraînement',
+        '7 minutes have elapsed since your last activity.':
+          'Votre personnage est inactif depuis 7 minutes',
       },
     },
     {
@@ -286,6 +311,7 @@ const triggerSet: TriggerSet<Data> = {
         'You psych yourself up alongside the striking dummy': '.*は木人に活を入れた',
         'You burst out laughing at the striking dummy': '.*は木人のことを大笑いした',
         'You clap for the striking dummy': '.*は木人に拍手した',
+        '7 minutes have elapsed since your last activity.': '操作がない状態になってから7分が経過しました。',
       },
     },
     {
@@ -297,6 +323,7 @@ const triggerSet: TriggerSet<Data> = {
         'You psych yourself up alongside the striking dummy': '.*激励木人',
         'You burst out laughing at the striking dummy': '.*看着木人高声大笑',
         'You clap for the striking dummy': '.*向木人送上掌声',
+        '7 minutes have elapsed since your last activity.': '已经7分钟没有进行任何操作',
       },
     },
     {
@@ -308,6 +335,7 @@ const triggerSet: TriggerSet<Data> = {
         'You psych yourself up alongside the striking dummy': '.*나무인형에게 힘을 불어넣습니다',
         'You burst out laughing at the striking dummy': '.*나무인형을 보고 폭소를 터뜨립니다',
         'You clap for the striking dummy': '.*나무인형에게 박수를 보냅니다',
+        '7 minutes have elapsed since your last activity..*?': '7분 동안 아무 조작을 하지 않았습니다',
       },
     },
   ],

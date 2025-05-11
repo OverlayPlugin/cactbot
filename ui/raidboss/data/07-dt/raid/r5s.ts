@@ -1,15 +1,19 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
+import {
+  DirectionOutput16,
+  DirectionOutputCardinal,
+  Directions,
+} from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
+import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODOs:
 // - Arcady Night Fever/Get Down - dodge followup cleave call
 // - Frogtourage 1 - E+W or N+S safe
-// - Frogtourage 2 - safe wedges + boss e/w cleave
 // - Frogtourage 3 - inside/outside + baits
 
 type EastWest = 'east' | 'west';
@@ -21,23 +25,29 @@ const snapTwistIdMap: { [id: string]: [SnapCount, EastWest] } = {
   'A728': ['two', 'west'],
   'A729': ['two', 'west'],
   'A72A': ['two', 'west'],
+  'A4DB': ['two', 'west'],
   'A72B': ['two', 'east'],
   'A72C': ['two', 'east'],
   'A72D': ['two', 'east'],
+  'A4DC': ['two', 'east'],
   // 3-snap Twist & Drop the Needle
   'A730': ['three', 'west'],
   'A731': ['three', 'west'],
   'A732': ['three', 'west'],
+  'A4DD': ['three', 'west'],
   'A733': ['three', 'east'],
   'A734': ['three', 'east'],
   'A735': ['three', 'east'],
+  'A4DE': ['three', 'east'],
   // 4-snap Twist & Drop the Needle
   'A739': ['four', 'west'],
   'A73A': ['four', 'west'],
   'A73B': ['four', 'west'],
+  'A4DF': ['four', 'west'],
   'A73C': ['four', 'east'],
   'A73D': ['four', 'east'],
   'A73E': ['four', 'east'],
+  'A4E0': ['four', 'east'],
 };
 
 // map of Frogtourage cast ids to safe dirs
@@ -46,6 +56,15 @@ const feverIdMap: { [id: string]: DirectionOutputCardinal } = {
   'A70B': 'dirS', // north cleave
   'A70C': 'dirW', // east cleave
   'A70D': 'dirE', // west cleave
+};
+
+const hustleMap: { [id: string]: 'left' | 'right' } = {
+  // Frogtourage clones:
+  'A775': 'right',
+  'A776': 'left',
+  // Boss:
+  'A724': 'right',
+  'A725': 'left',
 };
 
 export interface Data extends RaidbossData {
@@ -57,7 +76,31 @@ export interface Data extends RaidbossData {
     alpha: number;
     beta: number;
   };
+  storedHustleCleaves: NetMatches['StartsUsing'][];
+  hustleCleaveCount: number;
 }
+
+const getSafeDirsForCloneCleave = (
+  matches: NetMatches['StartsUsing'],
+): DirectionOutputCardinal[] => {
+  const isLeftCleave = hustleMap[matches.id] === 'left';
+
+  // Snap the frog to the nearest cardinal in the direction of their cleave
+  const headingAdjust = isLeftCleave ? -(Math.PI / 8) : (Math.PI / 8);
+  let snappedHeading = (parseFloat(matches.heading) + headingAdjust) % Math.PI;
+  if (snappedHeading < -Math.PI)
+    snappedHeading = Math.PI - snappedHeading;
+  snappedHeading = snappedHeading % Math.PI;
+
+  // Frog's snapped heading and the next one CW or CCW depending on cleave direction are safe
+  const snappedFrogDir = Directions.hdgTo4DirNum(snappedHeading);
+  const otherSafeDir = ((snappedFrogDir + 4) + (isLeftCleave ? 1 : -1)) % 4;
+
+  return [
+    Directions.outputCardinalDir[snappedFrogDir] ?? 'unknown',
+    Directions.outputCardinalDir[otherSafeDir] ?? 'unknown',
+  ];
+};
 
 const triggerSet: TriggerSet<Data> = {
   id: 'AacCruiserweightM1Savage',
@@ -71,6 +114,8 @@ const triggerSet: TriggerSet<Data> = {
       alpha: 0,
       beta: 0,
     },
+    storedHustleCleaves: [],
+    hustleCleaveCount: 0,
   }),
   triggers: [
     {
@@ -108,7 +153,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stored: {
           en: '(${mech} later)',
+          de: '(${mech} später)',
+          fr: '(${mech} après)',
+          ja: '(あとで ${mech})',
           cn: '(稍后 ${mech})',
+          ko: '(나중에 ${mech})',
         },
         lightParty: Outputs.healerGroups,
         roleGroup: Outputs.rolePositions,
@@ -133,7 +182,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: 'Start ${dir} (${num} hits) => ${mech}',
+          de: 'Start ${dir} (${num} Treffer) => ${mech}',
+          fr: 'Commencez ${dir} (${num} coups) => ${mech}',
+          ja: '${dir} 開始 (${num} ポイント) からの ${mech}',
           cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
+          ko: '${dir} 시작 (${num}번 공격) => ${mech}',
         },
         lightParty: Outputs.healerGroups,
         roleGroup: Outputs.rolePositions,
@@ -175,11 +228,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         shortBurn: {
           en: '(short cleanse)',
+          de: '(kurze Reinigung)',
+          fr: '(compteur court)',
+          ja: '(先にスポットライト)',
           cn: '(短舞点名)',
+          ko: '(짧은 디버프)',
         },
         longBurn: {
           en: '(long cleanse)',
+          de: '(lange Reinigung)',
+          fr: '(compteur long)',
+          ja: '(あとでスポットライト)',
           cn: '(长舞点名)',
+          ko: '(긴 디버프)',
         },
       },
     },
@@ -196,7 +257,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
+          fr: 'Purifiez sous le projecteur',
+          ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
+          ko: '스포트라이트에 서기',
         },
       },
     },
@@ -217,11 +282,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
+          fr: 'Purifiez sous le projecteur',
+          ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
+          ko: '스포트라이트에 서기',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
+          fr: 'Prenez la grenouille',
+          ja: 'カエル誘導',
           cn: '引导青蛙',
+          ko: '개구리 유도',
         },
       },
     },
@@ -243,11 +316,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse in spotlight',
+          de: 'Reinige im Scheinwerfer',
+          fr: 'Purifiez sous le projecteur',
+          ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
+          ko: '스포트라이트에 서기',
         },
         bait: {
           en: 'Bait Frog',
+          de: 'Frosch ködern',
+          fr: 'Prenez la grenouille',
+          ja: 'カエル誘導',
           cn: '引导青蛙',
+          ko: '개구리 유도',
         },
       },
     },
@@ -260,7 +341,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         insideOut: {
           en: 'Max Melee => Under',
+          de: 'Max Nahkampf => Unter ihn',
+          fr: 'Max mêlée => Dessous',
+          ja: '外からボス下に',
           cn: '钢铁 => 月环',
+          ko: '칼끝딜 => 안으로',
         },
       },
     },
@@ -273,7 +358,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         outsideIn: {
           en: 'Under => Max Melee',
+          de: 'Unter ihn => Max Nahkampf',
+          fr: 'Dessous => Max mêlée',
+          ja: 'ボス下から外に',
           cn: '月环 => 钢铁',
+          ko: '안으로 => 칼끝딜',
         },
       },
     },
@@ -326,18 +415,43 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: '${order} merge',
+          de: '${order} berühren',
+          fr: '${order} fusion',
+          ja: '${order} にペア割り',
+          cn: '${order} 撞毒',
+          ko: '${order} 융합',
         },
         first: {
           en: 'First',
+          de: 'Erstes',
+          fr: 'Première',
+          ja: '最初',
+          cn: '第1组',
+          ko: '첫번째',
         },
         second: {
           en: 'Second',
+          de: 'Zweites',
+          fr: 'Seconde',
+          ja: '2番目',
+          cn: '第2组',
+          ko: '두번째',
         },
         third: {
           en: 'Third',
+          de: 'Drittes',
+          fr: 'Troisième',
+          ja: '3番目',
+          cn: '第3组',
+          ko: '세번째',
         },
         fourth: {
           en: 'Fourth',
+          de: 'Viertes',
+          fr: 'Quatrième',
+          ja: '4番目',
+          cn: '第4组',
+          ko: '네번째',
         },
         unknown: Outputs.unknown,
       },
@@ -352,7 +466,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         merge: {
           en: 'Merge debuff',
+          de: 'Debuff berühren',
+          fr: 'Fusionner le debuff',
+          ja: 'ペア割り',
           cn: '撞毒',
+          ko: '융합하기',
         },
       },
     },
@@ -405,6 +523,236 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A770', source: 'Dancing Green', capture: false },
       response: Responses.bigAoe(),
+    },
+    {
+      id: 'R5S Do the Hustle',
+      type: 'StartsUsing',
+      netRegex: { id: Object.keys(hustleMap) },
+      preRun: (data, matches) => data.storedHustleCleaves.push(matches),
+      infoText: (data, _matches, outputs) => {
+        // Order is double cleave, double cleave, single cleave, triple cleave
+        const expectedCountMap = [
+          2,
+          2,
+          1,
+          3,
+        ];
+        if (
+          data.storedHustleCleaves.length <
+            (expectedCountMap[data.hustleCleaveCount] ?? 0)
+        )
+          return;
+
+        const cleaves = data.storedHustleCleaves;
+        const currentCleaveCount = data.hustleCleaveCount;
+        data.storedHustleCleaves = [];
+        ++data.hustleCleaveCount;
+
+        // Double cleaves from clones
+        if (currentCleaveCount === 0 || currentCleaveCount === 1) {
+          const [cleave1, cleave2] = cleaves;
+          if (cleave1 === undefined || cleave2 === undefined)
+            return;
+
+          const safeDirs1 = getSafeDirsForCloneCleave(cleave1);
+          const safeDirs2 = getSafeDirsForCloneCleave(cleave2);
+          for (const dir of safeDirs1) {
+            if (safeDirs2.includes(dir)) {
+              return outputs[dir]!();
+            }
+          }
+          return outputs['unknown']!();
+        }
+
+        // Single boss cleave
+        if (currentCleaveCount === 2) {
+          const [cleave1] = cleaves;
+          if (cleave1 === undefined)
+            return;
+
+          return hustleMap[cleave1.id] === 'left' ? outputs['dirE']!() : outputs['dirW']!();
+        }
+
+        // Double cleaves from clones plus boss cleave
+        if (currentCleaveCount === 3) {
+          const cleave3 = cleaves.find((cleave) => ['A724', 'A725'].includes(cleave.id));
+          const [cleave1, cleave2] = cleaves.filter((c) => c !== cleave3);
+          if (cleave1 === undefined || cleave2 === undefined || cleave3 === undefined)
+            return;
+
+          const safeDirs1 = getSafeDirsForCloneCleave(cleave1);
+          const safeDirs2 = getSafeDirsForCloneCleave(cleave2);
+
+          let safeDir: DirectionOutput16 = 'unknown';
+
+          for (const dir of safeDirs1) {
+            if (safeDirs2.includes(dir)) {
+              safeDir = dir;
+            }
+          }
+
+          const isBossLeftCleave = hustleMap[cleave3.id] === 'left';
+
+          // safeDir should be either 'dirN' or 'dirS' at this point, adjust with boss left/right
+          if (safeDir === 'dirN') {
+            if (isBossLeftCleave)
+              return outputs['dirNNE']!();
+            return outputs['dirNNW']!();
+          }
+          if (safeDir === 'dirS') {
+            if (isBossLeftCleave)
+              return outputs['dirSSE']!();
+            return outputs['dirSSW']!();
+          }
+
+          return outputs['unknown']!();
+        }
+        return outputs['unknown']!();
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'en',
+      'replaceText': {
+        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle':
+          '2/3/4-snap Twist',
+        'Flip to A-side/Flip to B-side': 'Flip to A/B-side',
+        'Play A-side/Play B-side': 'Play A/B-side',
+      },
+    },
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'Springhis Khan',
+        'Frogtourage': 'Schenkelschwinger',
+      },
+      'replaceText': {
+        '\\(Cleave\\)': '(Cleave)',
+        '\\(Echo\\)': '(Echo)',
+        '\\(In\\+Protean\\+Echo\\)': '(Rein+Himmelsrichtungen+Echo)',
+        '\\(Out\\+Protean\\+Echo\\)': '(Raus+Himmelsrichtungen+Echo)',
+        '\\(Out\\+Protean\\)': '(Raus+Himmelsrichtungen)',
+        '\\(all\\)': '(Alle)',
+        '\\(boss\\)': '(Boss)',
+        '\\(dancers\\)': '(Tänzer)',
+        '\\(enrage\\)': '(Finalangriff)',
+        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle':
+          '2/3/4-fachzeig, Pose, Musik ab!',
+        'Arcady Night Encore': 'Tanzfieber-Zugabe',
+        'Arcady Night Encore Starts': 'Tanzfieber-Zugabe startet',
+        'Arcady Night Fever': 'Arkadion-Tanzfieber',
+        'Back-up Dance': 'Wilde Welle',
+        'Celebrate Good Times': 'Völlig losgelöst',
+        'Deep Cut': 'Tiefschnitt',
+        'Disco Infernal': 'Disco Pogo',
+        'Do the Hustle': 'Schüttel deinen Speck',
+        'Eighth Beats': 'Achteltakt',
+        'Ensemble Assemble': 'Gruppen-Groove',
+        'Flip to A-side': 'A-Seite auflegen',
+        'Flip to B-side': 'B-Seite auflegen',
+        'Freak Out': 'Schallexplosion',
+        'Frogtourage Finale': 'Finaler Groove',
+        'Frogtourage(?! )': 'Schenkelschwinger',
+        'Funky Floor': 'Tanzflächen-Tango',
+        'Get Down!': 'Hoch die Hände!',
+        'Hi-NRG Fever': 'Totales Tanzfieber',
+        'Inside Out': 'Innerer Rhythmus',
+        'Let\'s Dance!(?! )': 'Fühl\' dich Disco!',
+        'Let\'s Dance! Remix': 'Fühl\' dich Disco, Disco, Disco!',
+        'Let\'s Pose!': 'Perfekte Pose',
+        'Moonburn': 'Mondglühen',
+        'Outside In': 'Äußerer Rhythmus',
+        'Play A-side': 'Spiele A-Seite',
+        'Play B-side': 'Spiele B-Seite',
+        'Quarter Beats': 'Vierteltakt',
+        'Ride the Waves': 'Perfekte Welle',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'Dancing Green',
+        'Frogtourage': 'danceur batracien',
+      },
+      'replaceText': {
+        '2-snap Twist & Drop the Needle': 'Doublé pointé, pose & NUIT DE FOLIE !',
+        '3-snap Twist & Drop the Needle': 'Triple pointé, pose & NUIT DE FOLIE !',
+        '4-snap Twist & Drop the Needle': 'Quadruple pointé, pose & NUIT DE FOLIE !',
+        'Arcady Night Encore': 'Fièvre de l\'Arcadion : rappel',
+        'Arcady Night Fever': 'Fièvre de l\'Arcadion',
+        'Back-up Dance': 'Vague dansante',
+        'Celebrate Good Times': 'Lève les bras, balance-toi !',
+        'Deep Cut': 'Entaille profonde',
+        'Disco Infernal': 'Enfer du disco',
+        'Do the Hustle': 'Danse le Mia !',
+        'Eighth Beats': 'Tempo octuple',
+        'Ensemble Assemble': 'Rassemblement des danseurs',
+        'Flip to A-side': 'Programmation : face A',
+        'Flip to B-side': 'Programmation : face B',
+        'Freak Out': 'Déflagration acoustique',
+        'Frogtourage Finale': 'Rassemblement final',
+        'Frogtourage(?! )': 'danceur batracien',
+        'Funky Floor': 'Terrain de danse',
+        'Get Down!': 'Bouge de là !',
+        'Hi-NRG Fever': 'Fièvre de la nuit survoltée',
+        'Inside Out': 'Pas extérieur',
+        'Let\'s Dance!(?! )': 'Alors on danse !',
+        'Let\'s Dance! Remix': 'Alors on danse, danse, danse !',
+        'Let\'s Pose!': 'Prends la pose !',
+        'Moonburn': 'Flambée lunaire',
+        'Outside In': 'Pas intérieur',
+        'Play A-side': 'Jingle fracassant A',
+        'Play B-side': 'Jingle fracassant B',
+        'Quarter Beats': 'Tempo quadruple',
+        'Ride the Waves': 'Roulement de vagues',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'ダンシング・グリーン',
+        'Frogtourage': 'フロッグダンサー',
+      },
+      'replaceText': {
+        '2-snap Twist & Drop the Needle': '2ポイント、ポーズ＆ジングル',
+        '3-snap Twist & Drop the Needle': '3ポイント、ポーズ＆ジングル',
+        '4-snap Twist & Drop the Needle': '4ポイント、ポーズ＆ジングル',
+        'Arcady Night Encore': 'ナイトフィーバー・アンコール',
+        'Arcady Night Encore Starts': 'ナイトフィーバー・アンコール',
+        'Arcady Night Fever': 'アルカディア・ナイトフィーバー',
+        'Back-up Dance': 'ダンシングウェーブ',
+        'Celebrate Good Times': 'セレブレート・グッドタイムズ',
+        'Deep Cut': 'ディープカット',
+        'Disco Infernal': 'ディスコインファーナル',
+        'Do the Hustle': 'ドゥ・ザ・ハッスル',
+        'Eighth Beats': '8ビート',
+        'Ensemble Assemble': 'ダンサーズ・アッセンブル',
+        'Flip to A-side': 'ジングル予約A',
+        'Flip to B-side': 'ジングル予約B',
+        'Freak Out': '音響爆発',
+        'Frogtourage Finale': 'ファイナル・アッセンブル',
+        'Frogtourage(?! )': 'フロッグダンサー',
+        'Funky Floor': 'ダンシングフィールド',
+        'Get Down!': 'ゲットダウン！',
+        'Hi-NRG Fever': 'ハイエナジー・ナイトフィーバー',
+        'Inside Out': 'インサイドアウト',
+        'Let\'s Dance!(?! )': 'レッツダンス！',
+        'Let\'s Dance! Remix': 'レッツダンス・ダンス・ダンス！',
+        'Let\'s Pose!': 'レッツポーズ！',
+        'Moonburn': 'ムーンバーン',
+        'Outside In': 'アウトサイドイン',
+        'Play A-side': 'ラウドジングルA',
+        'Play B-side': 'ラウドジングルB',
+        'Quarter Beats': '4ビート',
+        'Ride the Waves': 'ウェーブ・オン・ウェーブ',
+      },
     },
   ],
 };

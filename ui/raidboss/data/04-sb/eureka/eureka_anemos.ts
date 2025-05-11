@@ -179,22 +179,11 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { name: 'Pazuzu', capture: false },
       run: (data) => data.wraithCount = 0,
     },
-    // https://xivapi.com/LogMessage/916
-    // en: 7 minutes have elapsed since your last activity. [...]
-    // There is no network packet for these log lines; so have to use GameLog.
-    {
-      id: 'Eureka Falling Asleep',
-      type: 'GameLog',
-      netRegex: { line: '7 minutes have elapsed since your last activity..*?', capture: false },
-      response: Responses.wakeUp(),
-    },
   ],
   timelineReplace: [
     {
       'locale': 'de',
       'replaceSync': {
-        '7 minutes have elapsed since your last activity..*?':
-          'Seit deiner letzten Aktivität sind 7 Minuten vergangen.',
         'Caym': 'Caym',
         'Fafnir': 'Fafnir',
         'Pazuzu': 'Pazuzu',
@@ -208,8 +197,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'fr',
       'replaceSync': {
-        '7 minutes have elapsed since your last activity.':
-          'Votre personnage est inactif depuis 7 minutes',
         'Caym': 'Caym',
         'Fafnir': 'Fafnir',
         'Pazuzu': 'Pazuzu',
@@ -223,7 +210,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ja',
       'replaceSync': {
-        '7 minutes have elapsed since your last activity.': '操作がない状態になってから7分が経過しました。',
         'Caym': 'カイム',
         'Fafnir': 'ファヴニル',
         'Pazuzu': 'パズズ',
@@ -237,7 +223,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'cn',
       'replaceSync': {
-        '7 minutes have elapsed since your last activity.': '已经7分钟没有进行任何操作',
         'Caym': '盖因',
         'Fafnir': '法夫纳',
         'Pazuzu': '帕祖祖',
@@ -251,7 +236,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ko',
       'replaceSync': {
-        '7 minutes have elapsed since your last activity..*?': '7분 동안 아무 조작을 하지 않았습니다',
         'Caym': '카임',
         'Fafnir': '파프니르',
         'Pazuzu': '파주주',

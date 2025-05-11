@@ -22,7 +22,7 @@ const numberToOutputString = function(n: number): FullLocaleText {
 // * the value of each property should be a single object with localized keys
 export default {
   aoe: {
-    en: 'aoe',
+    en: 'AoE',
     de: 'AoE',
     fr: 'AoE',
     ja: '全体攻撃',
@@ -30,7 +30,7 @@ export default {
     ko: '전체 공격',
   },
   bigAoe: {
-    en: 'big aoe!',
+    en: 'big AoE!',
     de: 'Große AoE!',
     fr: 'Grosse AoE !',
     ja: '強力な全体攻撃',
@@ -103,7 +103,7 @@ export default {
     ko: '탱커 선 피하기',
   },
   tankCleave: {
-    en: 'Tank cleave',
+    en: 'Tank Cleave',
     de: 'Tank Cleave',
     fr: 'Tank cleave',
     ja: 'タンク範囲攻撃',
@@ -127,7 +127,7 @@ export default {
     ko: '광역 탱버 대상자',
   },
   avoidTankCleave: {
-    en: 'Avoid tank cleave',
+    en: 'Avoid Tank Cleave',
     de: 'Tank Cleave ausweichen',
     fr: 'Évitez le tank cleave',
     ja: 'タンク範囲攻撃を避ける',
@@ -143,7 +143,7 @@ export default {
     ko: '광역 탱버 피하기',
   },
   tankCleaveOnYou: {
-    en: 'Tank cleave on YOU',
+    en: 'Tank Cleave on YOU',
     de: 'Tank Cleave aud DIR',
     fr: 'Tank cleave sur VOUS',
     ja: '自分に範囲攻撃',
@@ -186,7 +186,7 @@ export default {
     en: 'Spread',
     de: 'Verteilen',
     fr: 'Dispersez-vous',
-    ja: '散開',
+    ja: 'さんかい',
     cn: '分散',
     ko: '산개',
   },
@@ -202,7 +202,7 @@ export default {
     en: 'Protean',
     de: 'Himmelsrichtungen',
     fr: 'Positions',
-    ja: '基本散会',
+    ja: '基本さんかい',
     cn: '八方分散',
     ko: '8방향 산개',
   },
@@ -233,11 +233,11 @@ export default {
     ko: '힐러 그룹 쉐어',
   },
   rolePositions: {
-    en: 'Role positions',
+    en: 'Role Positions',
     de: 'Rollenposition',
     fr: 'Positions par rôle',
-    ja: 'ロール散会',
-    cn: '职能三刀站位',
+    ja: 'ロールさんかい',
+    cn: '职能分散站位',
     ko: '직업군별 위치로',
   },
   stackOnYou: {
@@ -265,7 +265,7 @@ export default {
     ko: '파트너와 쉐어',
   },
   stackMiddle: {
-    en: 'Stack in middle',
+    en: 'Stack in Middle',
     de: 'In der Mitte sammeln',
     fr: 'Packez-vous au milieu',
     ja: '中央で頭割り',
@@ -273,7 +273,7 @@ export default {
     ko: '중앙에서 쉐어',
   },
   baitPuddles: {
-    en: 'Bait puddles',
+    en: 'Bait Puddles',
     de: 'Flächen Ködern',
     fr: 'Attirez les flaques',
     ja: 'AOE誘導',
@@ -301,7 +301,7 @@ export default {
     en: 'Spread => Stack',
     de: 'Verteilen => Sammeln',
     fr: 'Dispersion => Package',
-    ja: '散開 => 頭割り',
+    ja: 'さんかい => 頭割り',
     cn: '分散 => 集合',
     ko: '산개 => 집합',
   },
@@ -309,7 +309,7 @@ export default {
     en: 'Stack => Spread',
     de: 'Sammeln => Verteilen',
     fr: 'Package => Dispersion',
-    ja: '頭割り => 散開',
+    ja: '頭割り => さんかい',
     cn: '集合 => 分散',
     ko: '집합 => 산개',
   },
@@ -430,7 +430,7 @@ export default {
     ko: '밖으로',
   },
   outOfMelee: {
-    en: 'Out of melee',
+    en: 'Out of Melee',
     de: 'Raus aus Nahkampf',
     fr: 'Sortez de la mêlée',
     ja: '近接の範囲から離れる',
@@ -439,14 +439,15 @@ export default {
   },
   // be just outside the boss's target circle
   outOfHitbox: {
-    en: 'Out of hitbox',
+    en: 'Out of Hitbox',
     de: 'Raus aus der Hitbox',
     fr: 'Extérieur de la hitbox',
+    ja: 'ボスから少し離れる',
     cn: '离开目标圈',
     ko: '히트박스 밖으로',
   },
   inThenOut: {
-    en: 'In => out',
+    en: 'In => Out',
     de: 'Rein, dann raus',
     fr: 'Intérieur, puis extérieur',
     ja: '中 => 外',
@@ -454,7 +455,7 @@ export default {
     ko: '안으로 => 밖으로',
   },
   outThenIn: {
-    en: 'Out => in',
+    en: 'Out => In',
     de: 'Raus, dann rein',
     fr: 'Extérieur, puis intérieur',
     ja: '外 => 中',
@@ -577,21 +578,21 @@ export default {
     en: 'Clockwise',
     de: 'Im Uhrzeigersinn',
     fr: 'Sens horaire',
-    ja: '時針回り',
+    ja: '時計回り',
     cn: '顺时针',
     ko: '시계방향',
   },
   counterclockwise: {
-    en: 'Counter-clock',
+    en: 'Counter-Clockwise',
     de: 'Gegen den Uhrzeigersinn',
     fr: 'Anti-horaire',
-    ja: '反時針回り',
+    ja: '反時計回り',
     cn: '逆时针',
     ko: '반시계방향',
   },
   // killAdds is used for adds that will always be available
   killAdds: {
-    en: 'Kill adds',
+    en: 'Kill Adds',
     de: 'Adds besiegen',
     fr: 'Tuez les adds',
     ja: '雑魚から倒して',
@@ -632,7 +633,7 @@ export default {
     ko: '${name}기절',
   },
   interruptTarget: {
-    en: 'interrupt ${name}',
+    en: 'Interrupt ${name}',
     de: 'unterbreche ${name}',
     fr: 'Interrompez ${name}',
     ja: '${name} に沈黙',
@@ -714,7 +715,7 @@ export default {
     ko: '움직이기!',
   },
   breakChains: {
-    en: 'Break chains',
+    en: 'Break Chains',
     de: 'Kette zerbrechen',
     fr: 'Brisez les chaines',
     ja: '線を切る',
@@ -722,7 +723,7 @@ export default {
     ko: '선 끊기',
   },
   moveChainsTogether: {
-    en: 'Move chains together',
+    en: 'Move Chains Together',
     de: 'Ketten zusammen bewegen',
     fr: 'Bougez les chaines ensemble',
     ja: '線同士で一緒に移動',
@@ -1023,6 +1024,7 @@ export default {
     en: ' + ',
     de: ' + ',
     fr: ' + ',
+    ja: ' + ',
     cn: ' + ',
     ko: ' + ',
   },
@@ -1031,6 +1033,7 @@ export default {
     en: ' / ',
     de: ' / ',
     fr: ' / ',
+    ja: ' / ',
     cn: ' / ',
     ko: ' / ',
   },
