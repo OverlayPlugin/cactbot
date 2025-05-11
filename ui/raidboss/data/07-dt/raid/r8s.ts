@@ -24,6 +24,7 @@ export interface Data extends RaidbossData {
   towerDirs?: 'EW' | 'NS';
   towerfallSafeDirs?: 'NESW' | 'SENW';
   towerfallSafeDir?: 'dirNE' | 'dirSE' | 'dirSW' | 'dirNW' | 'unknown';
+  fangedCrossingIds: number[];
   stoneWindCallGroup?: number;
   surgeTracker: number;
   packPredationTracker: number;
@@ -284,6 +285,7 @@ const triggerSet: TriggerSet<Data> = {
     // Phase 1
     decayAddCount: 0,
     galeTetherCount: 0,
+    fangedCrossingIds: [],
     packPredationTracker: 0,
     packPredationTargets: [],
     surgeTracker: 0,
@@ -664,29 +666,39 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R8S Terrestrial Titans Safe Spot',
       type: 'ActorControlExtra',
       netRegex: { category: '0197', param1: '11D1', capture: true },
-      condition: (data) => {
-        if (data.phase === 'one')
-          return true;
+      condition: (data, matches) => {
+        if (data.phase === 'one') {
+           data.fangedCrossingIds.push(parseInt(matches.id, 16));
+           if (data.fangedCrossingIds.length === 2)
+            return true;
+        }
         return false;
       },
-      suppressSeconds: 1,
-      promise: async (data, matches) => {
+      promise: async (data) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
-          ids: [parseInt(matches.id, 16)],
+          ids: [...data.fangedCrossingIds],
         })).combatants;
-        const actor = actors[0];
-        if (actors.length !== 1 || actor === undefined) {
+        if (actors.length !== 2 || actors[0] === undefined || actors[1] === undefined) {
           console.error(
             `R8S Terrestrial Titans Safe Spot: Wrong actor count ${actors.length}`,
           );
           return;
         }
 
-        const hdg = Directions.hdgTo8DirNum(actor.Heading);
+        const hdg1 = Directions.hdgTo8DirNum(actors[0].Heading);
+        const hdg2 = Directions.hdgTo8DirNum(actors[1].Heading);
+
         // Only trigger on the actor targetting intercards
-        if (hdg === 0 || hdg === 2 || hdg === 4 || hdg === 6)
+        const isFang1Plus = (hdg1 === 0 || hdg1 === 2 || hdg1 === 4 || hdg1 === 6);
+        const isFang2Plus = (hdg2 === 0 || hdg2 === 2 || hdg2 === 4 || hdg2 === 6);
+        if ((isFang1Plus && isFang2Plus) || (!isFang1Plus && !isFang2Plus)) {
+          console.error(
+            `R8S Terrestrial Titans Safe Spot: Both fangs detected facing same way.`,
+          );
           return;
+        }
+        const actor = isFang1Plus ? actors[1] : actors[0];
 
         if (data.towerfallSafeDirs === undefined)
           return;
@@ -732,6 +744,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         if (data.towerfallSafeDir === undefined)
           return;
+
         return output[data.towerfallSafeDir]!();
       },
       outputStrings: Directions.outputStringsIntercardDir,
