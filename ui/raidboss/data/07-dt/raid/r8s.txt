@@ -135,10 +135,10 @@ hideall "--sync--"
 343.7 "Terrestrial Rage" Ability { id: "A3BE", source: "Howling Blade" }
 349.3 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
 349.3 "Suspended Stone" Ability { id: "A3BF", source: "Howling Blade" }
-350.7 "Moonbeam's Bite 1" Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
-352.7 "Moonbeam's Bite 2" Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
-354.7 "Moonbeam's Bite 3" Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
-356.7 "Moonbeam's Bite 4" Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+350.7 "Moonbeam's Bite 1" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+352.7 "Moonbeam's Bite 2" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+354.7 "Moonbeam's Bite 3" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+356.7 "Moonbeam's Bite 4" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
 357.7 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
 357.7 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
 357.7 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
