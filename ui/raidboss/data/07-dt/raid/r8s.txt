@@ -83,7 +83,7 @@ hideall "--sync--"
 224.8 "Alpha Wind" Ability { id: "A3CD", source: "Wolf of Wind" }
 224.8 "Stalking Stone" Ability { id: "A3E4", source: "Wolf of Stone" }
 224.8 "Alpha Stone" Ability { id: "A3E2", source: "Wolf of Stone" }
-240.1 "--sync--" StartsUsing { id: ["A3D0", "A3D3" } window 10,10
+240.1 "--sync--" StartsUsing { id: ["A3D0", "A3D3"] } window 10,10
 248.1 "Forlorn Stone (Enrage)" Ability { id: "A3D3", source: "Wolf of Stone" }
 248.1 "Forlorn Wind (Enrage)" Ability { id: "A3D0", source: "Wolf of Wind" }
 
