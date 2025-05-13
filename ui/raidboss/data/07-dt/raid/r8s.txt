@@ -95,7 +95,6 @@ hideall "--sync--"
 # 250.2 "Forlorn Wind (Enrage)" Ability { id: "A3D1", source: "Wolf of Wind" }
 
 # Terrestrial Rage
-243.8 "--targetable--"
 256.8 "Ravenous Saber 1" Ability { id: "A749", source: "Howling Blade" } window 300,10
 256.9 "Ravenous Saber 2" Ability { id: "A74A", source: "Howling Blade" }
 257.2 "Ravenous Saber 3" Ability { id: "A74B", source: "Howling Blade" }
@@ -129,10 +128,10 @@ hideall "--sync--"
 
 # Beckon Moonlight
 336.7 "Beckon Moonlight" Ability { id: "A3C1", source: "Howling Blade" }
-338.7 "--sync--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
-339.7 "--sync--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
-340.7 "--sync--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
-341.7 "--sync--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+338.7 "--shadow 1--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+339.7 "--shadow 2--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+340.7 "--shadow 3--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+341.7 "--shadow 4--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
 343.7 "Terrestrial Rage" Ability { id: "A3BE", source: "Howling Blade" }
 349.3 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
 349.3 "Suspended Stone" Ability { id: "A3BF", source: "Howling Blade" }
