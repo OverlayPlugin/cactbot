@@ -105,12 +105,12 @@ hideall "--sync--"
 277.9 "Terrestrial Rage" Ability { id: "A3BE", source: "Howling Blade" }
 284.9 "Fanged Charge" #Ability { id: "A3D6", source: "Gleaming Fang" }
 286.2 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
-286.2 "Suspended Stone" Ability { id: "A3BF", source: "Howling Blade" }
+286.2 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
 287.0 "Shadowchase" Ability { id: "A3BC", source: "Howling Blade" }
 287.4 "Fanged Charge" #Ability { id: "A3D6", source: "Gleaming Fang" }
 288.3 "--untargetable--"
 293.0 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
-293.0 "Suspended Stone" Ability { id: "A3BF", source: "Howling Blade" }
+293.0 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
 295.2 "--targetable--"
 297.9 "Roaring Wind" Ability { id: "A78A", source: "Wolf of Wind" }
 302.5 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
@@ -134,7 +134,7 @@ hideall "--sync--"
 341.7 "--shadow 4--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
 343.7 "Terrestrial Rage" Ability { id: "A3BE", source: "Howling Blade" }
 349.3 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
-349.3 "Suspended Stone" Ability { id: "A3BF", source: "Howling Blade" }
+349.3 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
 350.7 "Moonbeam's Bite 1" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
 352.7 "Moonbeam's Bite 2" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
 354.7 "Moonbeam's Bite 3" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
