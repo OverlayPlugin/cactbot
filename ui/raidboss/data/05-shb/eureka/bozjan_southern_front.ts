@@ -147,6 +147,7 @@ const triggerSet: TriggerSet<Data> = {
     en: 'Castrum Lacus Litore triggers/timeline.  Missing almost all Critical Engagements.',
     de: 'Castrum Lacus Litore Trigger/Timeline.  Es fehlen fast alle Kritische Gefechte.',
     cn: '帝国湖岸堡攻城战触发器/时间轴。几乎缺失所有CE (紧急遭遇战)。',
+    ko: '카스트룸 라쿠스리토레 트리거/타임라인. 거의 모든 비상 교전 누락.',
   },
   timelineFile: 'bozjan_southern_front.txt',
   timeline: [
