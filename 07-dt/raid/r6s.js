@@ -488,21 +488,25 @@ Options.Triggers.push({
           en: 'Cactus Pattern 1',
           fr: 'Cactus Pattern 1',
           cn: '仙人掌类型 1',
+          ko: '선인장 패턴 1',
         },
         pattern2: {
           en: 'Cactus Pattern 2 (bad)',
           fr: 'Cactus Pattern 2 (mauvais)',
           cn: '仙人掌类型 2 (差)',
+          ko: '선인장 패턴 2 (어려움)',
         },
         pattern3: {
           en: 'Cactus Pattern 3',
           fr: 'Cactus Pattern 3',
           cn: '仙人掌类型 3',
+          ko: '선인장 패턴 3',
         },
         pattern4: {
           en: 'Cactus Pattern 4',
           fr: 'Cactus Pattern 4',
           cn: '仙人掌类型 4',
+          ko: '선인장 패턴 4',
         },
       },
     },
@@ -539,6 +543,7 @@ Options.Triggers.push({
           en: 'Danger Cactus ${dir}',
           fr: 'Cactus dangereux ${dir}',
           cn: '危险仙人掌 ${dir}',
+          ko: '위험한 선인장 ${dir}',
         },
       },
     },
@@ -576,6 +581,7 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         spawn: {
           en: 'Cloud spawning ${dir}',
+          ko: '${dir}에 구름 소환',
         },
       },
     },
@@ -618,6 +624,7 @@ Options.Triggers.push({
         ccw: Outputs.counterclockwise,
         text: {
           en: 'Cloud rotating ${rot} towards ${dir}',
+          ko: '구름이 ${dir}쪽으로 ${rot} 회전',
         },
       },
     },
@@ -711,12 +718,15 @@ Options.Triggers.push({
         // with "all south", "clockwise", "counterclockwise" to match the common strat
         eightSouth: {
           en: '8 Towers S',
+          ko: '남쪽 탑 8개',
         },
         fourNW: {
           en: '4 Towers NW',
+          ko: '북서쪽 탑 4개',
         },
         fourNE: {
           en: '4 Towers NE',
+          ko: '북동쪽 탑 4개',
         },
       },
     },
