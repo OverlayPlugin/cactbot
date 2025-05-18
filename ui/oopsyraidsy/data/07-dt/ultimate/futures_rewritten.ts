@@ -35,7 +35,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Dark Blizzard III': '9D57', // P3, P4 Dark Blizzard III
     'FRU Sinbound Meltdown 1': '9D64', // P3 Hourglass beam (after 1st hit)
     'FRU Apocalypse': '9D69', // P3 Apocalypse
-    'FRU Akh Rhai': '9D2D', // P4 Akh Rhai
+    'FRU Akh Rhai': '9D2E', // P4 Akh Rhai
     'FRU Hallowed Wings 1': '9D23', // P4 Dragonsong Hallowed Wings
     'FRU Hallowed Wings 2': '9D24', // P4 Dragonsong Hallowed Wings
     'FRU Maelstrom': '9D6B', // P4 Crystallize Time hourglass
