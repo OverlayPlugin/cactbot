@@ -50,14 +50,14 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'FRU Unmitigated Explosion 1': '9CC4', // P1 tower fail
     'FRU Unmitigated Explosion 2': '9D81', // P5 tower fail
     'FRU Refulgent Fate': '9D17', // P2, P4 tether break
-    'FRU Lightsteep': '9D18', // P2, P4 debuff 5 stacks
+  },
+  gainsEffectWarn: {
+    'FRU Damage Down': 'B5F',
+    'FRU Bleeding': 'C05', // standing in the puddle.
+    'FRU Doom': '9D4',
   },
   gainsEffectFail: {
-    'FRU Damage Down': 'B5F',
     'FRU Mark of Mortality': '1114', // stack fail debuff
-    'FRU Doom': '9D4',
-    //  There are 3 bleeding debuffs. B87 (Fatebreaker 15sec), C05 (9999sec) C06 (30sec).
-    'FRU Bleeding': 'C05', // standing in the puddle.
   },
   shareWarn: {
     'FRU Sinsmite': '9CD5', // P1 spread during Cyclonic Break
@@ -131,6 +131,19 @@ const triggerSet: OopsyTriggerSet<Data> = {
           ? GetSoloMistakeText(ability)
           : GetShareMistakeText(ability, actual);
         return { type: 'fail', blame: matches.target, text: text };
+      },
+    },
+    {
+      id: 'FRU Lightsteeped Count',
+      type: 'GainsEffect',
+      netRegex: NetRegexes.gainsEffect({ effectId: '8D1', count: '05' }),
+      mistake: (_data, matches) => {
+        return {
+          type: 'fail',
+          blame: matches.target,
+          reportId: matches.targetId,
+          text: matches.effect,
+        };
       },
     },
   ],
