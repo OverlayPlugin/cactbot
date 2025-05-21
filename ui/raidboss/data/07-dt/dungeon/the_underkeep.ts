@@ -10,11 +10,14 @@ import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
+type MoveAfter = 'laser' | 'orb';
+
 export interface Data extends RaidbossData {
   turretLocations: string[];
   tetherMap: { [id: string]: string };
   lastClone?: PluginCombatantState;
   orbLocations: string[];
+  marchMove?: MoveAfter;
 }
 
 const soldierLaserLocations: { [loc: string]: string } = {
@@ -51,6 +54,7 @@ const triggerSet: TriggerSet<Data> = {
       tetherMap: {},
       lastClone: undefined,
       orbLocations: [],
+      marchMove: undefined,
     };
   },
   triggers: [
@@ -118,9 +122,6 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.5,
       alertText: (data, _matches, output) => {
         const lasers = data.turretLocations.map((i) => soldierLaserLocations[i]);
-        // -W-E-
-        // N
-        // S
         let quad = output.unknown!();
         if (lasers.includes('N') && lasers.includes('E')) {
           quad = output.dirSW!();
@@ -203,14 +204,6 @@ const triggerSet: TriggerSet<Data> = {
           en: '${dir} half safe',
         },
       },
-    },
-    // adds before final boss
-    {
-      id: 'Underkeep Roadripper Run Amok',
-      type: 'StartsUsing',
-      netRegex: { id: 'A7AC', source: 'Bygone Roadripper', capture: true },
-      suppressSeconds: 5.0,
-      response: Responses.stunIfPossible(),
     },
     // Valia Pira
     {
@@ -334,24 +327,28 @@ const triggerSet: TriggerSet<Data> = {
         } else if (_.isEqual(['13', '15'], bitLocations)) {
           return output.dodge!({ first: output.SW!(), second: output.NW!(), move: '' });
         } else if (_.isEqual(['0E', '10', '19'], bitLocations)) {
+          data.marchMove = 'laser';
           return output.dodge!({
             first: output.SE!(),
             second: output.NE!(),
             move: output.moveAfterLaser!(),
           });
         } else if (_.isEqual(['11', '16', '18'], bitLocations)) {
+          data.marchMove = 'orb';
           return output.dodge!({
             first: output.NE!(),
             second: output.SE!(),
             move: output.moveAfterBit!(),
           });
         } else if (_.isEqual(['12', '14', '15'], bitLocations)) {
+          data.marchMove = 'orb';
           return output.dodge!({
             first: output.SE!(),
             second: output.NE!(),
             move: output.moveAfterBit!(),
           });
         } else if (_.isEqual(['0D', '1A', '1C'], bitLocations)) {
+          data.marchMove = 'laser';
           return output.dodge!({
             first: output.NE!(),
             second: output.SE!(),
@@ -381,6 +378,24 @@ const triggerSet: TriggerSet<Data> = {
           en: '(after orb explosion)',
         },
       },
+    },
+    // wall turret laser
+    {
+      id: 'Underkeep Valia Pira Electray Move',
+      type: 'Ability',
+      netRegex: { id: 'A87A', source: 'Coordinate Turret', capture: false },
+      condition: (data) => data.marchMove === 'laser',
+      response: Responses.moveAway(),
+      run: (data) => data.marchMove = undefined,
+    },
+    // pink orb/bit + explosion
+    {
+      id: 'Underkeep Valia Pira Enforcement Ray Move',
+      type: 'Ability',
+      netRegex: { id: 'A6F1', source: 'Coordinate Bit', capture: false },
+      condition: (data) => data.marchMove === 'orb',
+      response: Responses.moveAway(),
+      run: (data) => data.marchMove = undefined,
     },
   ],
 };

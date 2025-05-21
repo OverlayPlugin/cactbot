@@ -71,7 +71,6 @@ hideall "--sync--"
 #~~~~~~~~~~~~#
 
 # the receiving room will be sealed off
-
 2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1435" } window 2000,1
 2005.2 "--sync--" StartsUsing { id: "A653", source: "Soldier S0" }
 2010.1 "Field of Scorn" Ability { id: "A653", source: "Soldier S0" }
@@ -124,6 +123,7 @@ hideall "--sync--"
 # Valia Pira #
 #~~~~~~~~~~~~#
 
+# the Chamber of Patience will be sealed off
 3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1436" } window 3000,1
 3006.2 "--sync--" StartsUsing { id: "A61D", source: "Valia Pira" }
 3011.1 "Entropic Sphere" Ability { id: "A61D", source: "Valia Pira" }
