@@ -17,12 +17,12 @@ hideall "--sync--"
 20.5 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
 29.5 "Stonefang/Windfang" Ability { id: ["A39E", "A39D", "A3A1", "A3A2"], source: "Howling Blade" }
 39.6 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
-40.9 "Wolves' Reign" Ability { id: "A92C", source: "Howling Blade" }
-41.0 "Eminent/Revolutionary Reign" Ability { id: ["A930", "A931"], source: "Howling Blade" }
-43.0 "Wolves' Reign" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }
-43.4 "Wolves' Reign" Ability { id: ["A969", "A96A"], source: "Howling Blade" }
-46.0 "Wolves' Reign" Ability { id: ["A399", "A39A"], source: "Howling Blade" }
-46.4 "Wolves' Reign" Ability { id: ["A7B1", "A7B2"], source: "Howling Blade" }
+40.9 "--sync--" Ability { id: "A92C", source: "Howling Blade" }
+41.0 "--sync--" Ability { id: ["A930", "A931"], source: "Howling Blade" }
+43.0 "Wolves' Reign (circles)" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }
+43.4 "--sync--" Ability { id: ["A969", "A96A"], source: "Howling Blade" }
+46.0 "Wolves' Reign (cones)" Ability { id: ["A399", "A39A"], source: "Howling Blade" }
+46.4 "--sync--" Ability { id: ["A7B1", "A7B2"], source: "Howling Blade" }
 52.5 "Extraplanar Pursuit" Ability { id: "A74F", source: "Howling Blade" }
 58.3 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
 66.0 "Millennial Decay" Ability { id: "A3B2", source: "Howling Blade" }
