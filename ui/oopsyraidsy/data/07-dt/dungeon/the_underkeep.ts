@@ -17,7 +17,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'Underkeep Gargant Almighty Racket': 'A632',
     'Underkeep Gargant Aerial Ambush': 'A62F', // dash
     'Underkeep Gargant Foundational Debris': 'A899',
-    'Underkeep Gargant Earthsong': 'A630',
     'Underkeep Gargant Sphere Shatter 1': 'A631',
     'Underkeep Gargant Sphere Shatter 2': 'A87F',
 
