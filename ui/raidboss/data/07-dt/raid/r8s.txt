@@ -197,7 +197,7 @@ hideall "--sync--"
 # Champion's Circuit
 711.0 "Champion's Circuit" Ability { id: ["A477", "A478"], source: "Howling Blade" }
 711.0 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
-711.7 "Champion's Circuit" Ability { id: "A47D", source: "Howling Blade" }
+711.7 "--sync--" Ability { id: "A47D", source: "Howling Blade" }
 715.4 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
 716.1 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
 719.8 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
