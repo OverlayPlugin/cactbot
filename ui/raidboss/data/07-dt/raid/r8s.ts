@@ -588,7 +588,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ...Directions.outputStrings8Dir,
         knockbackTetherDir: {
-          en: 'Knockback tether: ${dir}',
+          en: 'Tether: Knockback to ${dir}',
         },
         knockbackTowers: {
           en: 'Knockback Towers',
