@@ -70,8 +70,11 @@ hideall "--sync--"
 186.8 "Howling Havoc" Ability { id: "A3DC", source: "Wolf of Stone" }
 188.8 "--adds-targetable--"
 196.9 "Pack Predation" Ability { id: "A3CC", source: "Wolf of Stone" }
+169.9 "--tank/line aoes--"
 210.8 "Pack Predation" Ability { id: "A3CC", source: "Wolf of Stone" }
+210.8 "--tank/line aoes--"
 224.8 "Pack Predation" Ability { id: "A3CC", source: "Wolf of Stone" }
+224.8 "--tank/line aoes--"
 240.1 "--sync--" StartsUsing { id: ["A3D0", "A3D3"] } window 10,10
 248.1 "Forlorn Stone (Enrage)" Ability { id: "A3D3", source: "Wolf of Stone" }
 248.1 "Forlorn Wind (Enrage)" Ability { id: "A3D0", source: "Wolf of Wind" }
