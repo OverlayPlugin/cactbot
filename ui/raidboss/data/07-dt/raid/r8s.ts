@@ -167,10 +167,10 @@ const championClockOrders: ChampionOrders = {
 };
 const championCounterOrders: ChampionOrders = {
   0: ['donut', 'sides', 'in', 'out', 'in'],
-  1: ['sides', 'in', 'out', 'in', 'donut'],
-  2: ['in', 'out', 'in', 'donut', 'sides'],
-  3: ['out', 'in', 'donut', 'sides', 'in'],
-  4: ['in', 'donut', 'sides', 'in', 'out'],
+  1: ['in', 'donut', 'sides', 'in', 'out'],
+  2: ['out', 'in', 'donut', 'sides', 'in'],
+  3: ['in', 'out', 'in', 'donut', 'sides'],
+  4: ['sides', 'in', 'out', 'in', 'donut'],
 };
 
 // Return the combatant's platform by number
