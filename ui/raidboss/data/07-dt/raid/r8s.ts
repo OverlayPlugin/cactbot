@@ -1620,6 +1620,7 @@ const triggerSet: TriggerSet<Data> = {
       // 116.64, 105.41 Center of SE platform
       type: 'StartsUsingExtra',
       netRegex: { id: 'A47A', capture: true },
+      delaySeconds: 0.1, // Necessary for Headmarkerdata to be guaranteed before
       promise: async (data) => {
         const combatants = (await callOverlayHandler({
           call: 'getCombatants',
