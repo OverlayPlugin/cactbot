@@ -339,7 +339,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R8S Mooncleaver Bait',
       regex: /Mooncleaver$/,
-      beforeSeconds: 11, // 3.7s castTime
+      beforeSeconds: 7, // 3.7s castTime
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
