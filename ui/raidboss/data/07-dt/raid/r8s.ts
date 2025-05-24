@@ -546,7 +546,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R8S Prowling Gale Tower/Tether',
       // Calls each tether or get towers
-      // TODO: Support getting a tower and tether?
       type: 'Tether',
       netRegex: { id: [headMarkerData.galeTether], capture: true },
       preRun: (data, matches) => {
@@ -876,6 +875,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R8S Tactical Pack First Pop',
       // infoText as we do not know who should pop first
+      // TODO: Add config for selecting wind/earth first
       // These will trigger the following spells on cleanse
       // A3EE (Sand Surge) from Font of Earth Aether
       // A3ED (Wind Surge) from Font of Wind Aether
@@ -954,7 +954,7 @@ const triggerSet: TriggerSet<Data> = {
       // Two patterns (in order of IDs):
       // S, WSW, NW, NE, ESE
       // N, ENE, SE, SW, WNW
-      // TODO: Add orientation call?
+      // TODO: Add call for pattern to aid in determining spread spots and stack spot
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.stack, headMarkerData.spread], capture: false },
       condition: (data) => data.phase === 'rage',
@@ -1021,7 +1021,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R8S Weal of Stone',
-      // TODO: Call direction that the heads are firing from, needs OverlayPlugin
+      // TODO: Add direction such as Avoid lines from ${dir}
       type: 'StartsUsing',
       netRegex: { id: 'A78E', source: 'Wolf of Stone', capture: false },
       suppressSeconds: 1,
@@ -1030,7 +1030,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         lines: {
-          en: 'Lines',
+          en: 'Avoid Lines',
         },
       },
     },
@@ -1253,7 +1253,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // Gleaming Fang's cast Gleaming Beam (A45E) 2.1s after ActorControlExtra
-      // This ActorControlExtra is unique to the Ultraviolent Ray and Champion's Circuit
+      // PlayActionTimeline param1 of '11D3' is unique to the Ultraviolent Ray and Champion's Circuit
       // Five spawn for Ultraviolent Ray, 10 spawn for Champion's Circuit
       id: 'R8S Gleaming Beam',
       type: 'ActorControlExtra',
