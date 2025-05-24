@@ -351,7 +351,6 @@ Options.Triggers.push({
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Springhis Khan',
       },
@@ -373,6 +372,7 @@ Options.Triggers.push({
         'Let\'s Pose!': 'Perfekte Pose',
         'Moonburn': 'Mondglühen',
         'Ride the Waves': 'Perfekte Welle',
+        'Stone': '',
       },
     },
     {
