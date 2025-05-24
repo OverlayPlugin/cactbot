@@ -108,12 +108,15 @@ const headMarkerData = {
 const stoneWindOutputStrings = {
   stoneWindNum: {
     en: '${debuff} ${num}',
+    de: '${debuff} ${num}',
   },
   stone: {
     en: 'Stone',
+    de: 'Erde',
   },
   wind: {
     en: 'Wind',
+    de: 'Wind',
   },
   unknown: Outputs.unknown,
 };
@@ -122,9 +125,11 @@ const moonlightOutputStrings = {
   ...Directions.outputStrings8Dir,
   safeQuad: {
     en: '${quad}',
+    de: '${quad}',
   },
   safeQuadrants: {
     en: '${quad1} => ${quad2}',
+    de: '${quad1} => ${quad2}',
   },
 };
 
@@ -135,24 +140,30 @@ const championOutputStrings = {
   out: Outputs.out,
   donut: {
     en: 'Donut',
+    de: 'Donut',
   },
   sides: Outputs.sides,
   mechanics: {
     en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+    de: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
   },
   left: Outputs.left,
   right: Outputs.right,
   leftSide: {
     en: 'Left Side',
+    de: 'Linke Seite',
   },
   rightSide: {
     en: 'Right Side',
+    de: 'Rechte Seite',
   },
   unknownSide: {
     en: '??? Side',
+    de: '??? Seite',
   },
   dirMechanic: {
     en: '${dir} ${mech}',
+    de: '${dir} ${mech}',
   },
 };
 
@@ -311,6 +322,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Light Party Platform',
+          de: 'Leichter Trupp Platform',
         },
       },
     },
@@ -322,6 +334,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'UV Positions',
+          de: 'Ätherlicht Positionen',
         },
       },
     },
@@ -333,6 +346,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'UV Positions',
+          de: 'Ätherlicht Positionen',
         },
       },
     },
@@ -344,6 +358,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait Mooncleaver',
+          de: 'Ködere Klingensturz',
         },
       },
     },
@@ -354,6 +369,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Howling Eight Position',
+          de: 'Achtfache Lichtkugel Position',
         },
       },
     },
@@ -412,15 +428,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         inCardsPartners: {
           en: 'In + Cards + Partners',
+          de: 'Rein + Kardinal + Partner',
         },
         inInterCardsPartners: {
           en: 'In + Intercards + Partners',
+          de: 'Rein + Interkardinal + Partner',
         },
         outCardsProtean: {
           en: 'Out + Cards + Protean',
+          de: 'Raus + Kardinal + Himmelsrichtungen',
         },
         outInterCardsProtean: {
           en: 'Out + InterCards + Protean',
+          de: 'Raus + Interkardinal + Himmelsrichtungen',
         },
       },
     },
@@ -441,9 +461,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         inLater: {
           en: '(In Later)',
+          de: '(später Rein)',
         },
         outLater: {
           en: '(Out Later)',
+          de: '(später Raus)',
         },
       },
     },
@@ -494,9 +516,11 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         inDir: {
           en: 'In ${dir}',
+          de: 'Rein ${dir}',
         },
         outDir: {
           en: 'Out ${dir}',
+          de: 'Raus ${dir}',
         },
       },
     },
@@ -529,9 +553,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         clockwise: {
           en: '<== Clockwise',
+          de: '<== Im Uhrzeigersinn',
         },
         counterclockwise: {
           en: 'Counterclockwise ==>',
+          de: 'Gegen den Uhrzeigersinn ==>',
         },
       },
     },
@@ -588,9 +614,11 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         knockbackTetherDir: {
           en: 'Tether: Knockback to ${dir}',
+          de: 'Verbindung: Rückstoß nach ${dir}',
         },
         knockbackTowers: {
           en: 'Knockback Towers',
+          de: 'Rückstoß-Türme',
         },
       },
     },
@@ -646,6 +674,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir,
         dirs: {
           en: '${dir1} or ${dir2}',
+          de: '${dir1} oder ${dir2}',
         },
       },
     },
@@ -796,12 +825,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         wolfOfWind: {
           en: 'Green',
+          de: 'Grün',
         },
         wolfOfStone: {
           en: 'Yellow',
+          de: 'Gelb',
         },
         side: {
           en: '${wolf} Side',
+          de: '${wolf} Seite',
         },
       },
     },
@@ -869,6 +901,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         predationOnPlayers: {
           en: 'Predation on ${player1} and ${player2}',
+          de: 'Lichtwolfszirkel auf ${player1} und ${player2}',
         },
       },
     },
@@ -989,17 +1022,21 @@ const triggerSet: TriggerSet<Data> = {
         spreadThenStack: Outputs.spreadThenStack,
         stackThenSpread: {
           en: '${stack} => Spread',
+          de: '${stack} => Verteilen',
         },
         spreadBehindClones: {
           en: 'Spread (Behind Clones)',
+          de: 'Verteilen (hinter Klone)',
         },
         stackOnPlayer: Outputs.stackOnPlayer,
         stackOnPlayerBehindClones: {
           en: 'Stack on ${player} (Behind Clones)',
+          de: 'Sammeln auf ${player} (hinter Klone)',
         },
         stackOnYou: Outputs.stackOnYou,
         stackOnYouBehindClones: {
           en: 'Stack on YOU (Behind Clones)',
+          de: 'Sammeln auf DIR (hinter Klone)',
         },
       },
     },
@@ -1016,6 +1053,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         rotate: {
           en: 'Rotate',
+          de: 'Rotieren',
         },
       },
     },
@@ -1031,6 +1069,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lines: {
           en: 'Avoid Lines',
+          de: 'Vermeide Linien',
         },
       },
     },
@@ -1177,6 +1216,7 @@ const triggerSet: TriggerSet<Data> = {
         spreadThenStack: Outputs.spreadThenStack,
         stackThenSpread: {
           en: '${stack} => Spread',
+          de: '${stack} => Verteilen',
         },
         spread: Outputs.spread,
         stackOnPlayer: Outputs.stackOnPlayer,
@@ -1248,6 +1288,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         uvRayOnYou: {
           en: 'UV Ray on YOU',
+          de: 'Ätherlicht auf DIR',
         },
       },
     },
@@ -1398,6 +1439,7 @@ const triggerSet: TriggerSet<Data> = {
         right: Outputs.right,
         text: {
           en: '${inout} + ${dir}',
+          de: '${inout} + ${dir}',
         },
         unknown: Outputs.unknown,
       },
@@ -1410,6 +1452,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         changePlatform: {
           en: 'Change Platform',
+          de: 'Platform wechseln',
         },
       },
     },
@@ -1439,6 +1482,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         purgeOnPlayers: {
           en: 'Elemental Purge on ${player1} and ${player2}',
+          de: 'Siegel des Windes auf ${player1} und ${player2}',
         },
       },
     },
@@ -1520,12 +1564,15 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir,
         passTetherDir: {
           en: 'Pass Tether to ${dir}',
+          de: 'Übergebe Verbindung nach ${dir}',
         },
         tetherOnYou: {
           en: 'Tether on YOU',
+          de: 'Verbindung auf DIR',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
+          de: 'Verbindung auf ${dir}',
         },
       },
     },
@@ -1572,12 +1619,15 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir,
         passTether: {
           en: 'Pass Tether',
+          de: 'Verbindung übergeben',
         },
         passTetherDir: {
           en: 'Pass Tether ${dir}',
+          de: 'Verbindung übergeben ${dir}',
         },
         tetherOnDir: {
-          en: 'Tether On ${dir}',
+          en: 'Tether on ${dir}',
+          de: 'Verbindung auf ${dir}',
         },
       },
     },
@@ -1790,9 +1840,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         closeTetherOnYou: {
           en: 'Close Tether on YOU',
+          de: 'Nahe Verbindung auf DIR',
         },
         farTetherOnYou: {
           en: 'Far Tether on YOU',
+          de: 'Entfernte Verbindung auf DIR',
         },
       },
     },
@@ -1889,16 +1941,235 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         changePlatform1: {
           en: 'Change Platform 1',
+          de: 'Wechsel Platform 1',
         },
         changePlatform2: {
           en: 'Change Platform 2',
+          de: 'Wechsel Platform 2',
         },
         changePlatform3: {
           en: 'Change Platform 3',
+          de: 'Wechsel Platform 3',
         },
         finalPlatform: {
           en: 'Change Platform (Final)',
+          de: 'Wechsel Platform (Finale)',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gleaming Fang': 'Lichtreißer',
+        'Howling Blade': 'Heulende Klinge',
+        'Moonlit Shadow': 'heulend(?:e|er|es|en) Phantom',
+        'Wolf Of Stone': 'Wolf der Erde',
+        'Wolf of Stone': 'Wolf der Erde',
+        'Wolf of Wind': 'Wolf des Windes',
+      },
+      'replaceText': {
+        '--adds-targetable--': '--Adds-anvisierbar--',
+        '--shadow ': '--Schatten ',
+        '--tank/line aoes--': '--Tank/Linien AoEs--',
+        'Aero III': 'Windga',
+        'Aerotemporal Blast': 'Temporärer Wind',
+        'Alpha Stone': 'Erde des Lichtwolfs',
+        'Alpha Wind': 'Wind des Lichtwolfs',
+        'Bare Fangs': 'Lichtreißer-Beschwörung',
+        'Beckon Moonlight': 'Phantomwolf-Beschwörung',
+        'Breath of Decay': 'Milleniumssäuseln',
+        'Champion\'s Circuit': 'Himmelsreigen',
+        'Elemental Purge': 'Siegel des Windes',
+        'Extraplanar Feast': 'Radikaler Raumspalter',
+        'Extraplanar Pursuit': 'Raumspalter',
+        'Fanged Charge': 'Lichtreißersturm',
+        'Forlorn Stone': 'Heulende Erde',
+        'Forlorn Wind': 'Heulender Wind',
+        'Geotemporal Blast': 'Temporäres Beben',
+        'Gleaming Barrage': 'Multiblitzkanone',
+        'Gleaming Beam': 'Blitzartillerie',
+        'Great Divide': 'Lichtspalter',
+        'Gust': 'Böe',
+        'Heavensearth': 'Großes Beben',
+        'Hero\'s Blow': 'Leichte Beute',
+        'Howling Eight': 'Achtfache Lichtkugel',
+        'Howling Havoc': 'Ruf des Sturms',
+        'Hunter\'s Harvest': 'Gierige Wolfsklinge',
+        'Lone Wolf\'s Lament': 'Fluch des Wolfes',
+        'Millennial Decay': 'Milleniumsverwitterung',
+        'Moonbeam\'s Bite': 'Phantomwolfsklinge',
+        'Mooncleaver': 'Klingensturz',
+        'Pack Predation': 'Lichtwolfszirkel',
+        'Prowling Gale': 'Windwolfszirkel',
+        'Quake III': 'Seisga',
+        'Ravenous Saber': 'Wirbellichtklinge',
+        'Revolutionary Reign': 'Kreisendes Wolfsrudel',
+        'Rise of the Howling Wind': 'Dämonenwolf: Himmelsturm',
+        'Rise of the Hunter\'s Blade': 'Dämonenwolf: Klingenfluch',
+        'Roaring Wind': 'Jaulender Wind',
+        'Shadowchase': 'Echoklinge',
+        'Stalking Stone': 'Leuchtende Erde',
+        'Stalking Wind': 'Leuchtender Wind',
+        'Starcleaver': 'Finaler Klingensturz',
+        'Stonefang': 'Kunst der Erde',
+        'Suspended Stone': 'Felsen',
+        'Tactical Pack': 'Lichtwolf-Beschwörung',
+        'Terrestrial Rage': 'Gaias Zorn',
+        'Terrestrial Titans': 'Ruf der Erde',
+        'Titanic Pursuit': 'Himmelschneider',
+        'Towerfall': 'Turmsturz',
+        'Tracking Tremors': 'Multi-Beben',
+        'Twinbite': 'Doppelreißer',
+        'Twofold Tempest': 'Orkanreißer',
+        'Ultraviolent Ray': 'Ätherlicht',
+        'Weal of Stone': 'Erdspalter',
+        'Wind Surge': 'Windbombe',
+        'Windfang': 'Kunst des Windes',
+        'Winds of Decay': 'Milleniumstaifun',
+        'Wolves\' Reign': 'Wolfsrudel',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gleaming Fang': 'croc de lumière',
+        'Howling Blade': 'Howling Blade',
+        'Moonlit Shadow': 'double de Howling Blade',
+        'Wolf Of Stone': 'loup de la terre',
+        'Wolf of Stone': 'loup de la terre',
+        'Wolf of Wind': 'loup du vent',
+      },
+      'replaceText': {
+        'Aero III': 'Méga Vent',
+        'Aerotemporal Blast': 'Assaut tempétueux à retardement',
+        'Alpha Stone': 'Terre du loup radieux',
+        'Alpha Wind': 'Souffle du loup radieux',
+        'Bare Fangs': 'Invocation des crocs radieux',
+        'Beckon Moonlight': 'Invocation du loup spectral',
+        'Breath of Decay': 'Souffle millénaire',
+        'Champion\'s Circuit': 'Secousse cosmique',
+        'Elemental Purge': 'Sceau du vent et de la terre',
+        'Extraplanar Feast': 'Tranchage funeste du vide',
+        'Extraplanar Pursuit': 'Tranchage du vide',
+        'Fanged Charge': 'Assaut des crocs radieux',
+        'Forlorn Stone': 'Hurlement de la terre',
+        'Forlorn Wind': 'Hurlement du vent',
+        'Geotemporal Blast': 'Assaut tellurique à retardement',
+        'Gleaming Barrage': 'Rafale d\'artillerie éclair',
+        'Gleaming Beam': 'Artillerie éclair',
+        'Great Divide': 'Tranchage net',
+        'Gust': 'Bourrasque',
+        'Heavensearth': 'Secousse ciblée',
+        'Hero\'s Blow': 'Frappe du manche',
+        'Howling Eight': 'Octorayon',
+        'Howling Havoc': 'Hurlement tempétueux',
+        'Hunter\'s Harvest': 'Lame du loup vorace',
+        'Lone Wolf\'s Lament': 'Malédiction du loup solitaire',
+        'Millennial Decay': 'Érosion millénaire',
+        'Moonbeam\'s Bite': 'Lame du loup spectral',
+        'Mooncleaver': 'Tranchage éclair',
+        'Pack Predation': 'Meute du loup radieux',
+        'Prowling Gale': 'Meute des loups du vent',
+        'Quake III': 'Méga Séisme',
+        'Ravenous Saber': 'Rafale du loup radieux',
+        'Revolutionary Reign': 'Lame de la meute tourbillonnante',
+        'Rise of the Howling Wind': 'Tempête divine du loup mystique',
+        'Rise of the Hunter\'s Blade': 'Lame maudite du loup mystique',
+        'Roaring Wind': 'Déferlante du loup tempétueux',
+        'Shadowchase': 'Tranchage mirage',
+        'Stalking Stone': 'Onde du loup radieux',
+        'Stalking Wind': 'Autan du loup radieux',
+        'Starcleaver': 'Tranchage éclair final',
+        'Stonefang': 'Magie tellurique',
+        'Suspended Stone': 'Piliers rocheux',
+        'Tactical Pack': 'Invocation du loup radieux',
+        'Terrestrial Rage': 'Fureur tellurique',
+        'Terrestrial Titans': 'Invocation tellurique',
+        'Titanic Pursuit': 'Tranchage du loup spectral',
+        'Towerfall': 'Écroulement',
+        'Tracking Tremors': 'Secousses en cascade',
+        'Twinbite': 'Frappe des crocs jumeaux',
+        'Twofold Tempest': 'Tempête de crocs',
+        'Ultraviolent Ray': 'Rayon mystique',
+        'Weal of Stone': 'Fracas terrestre',
+        'Wind Surge': 'Déflagration aérienne',
+        'Windfang': 'Magie des tempêtes',
+        'Winds of Decay': 'Tempête millénaire',
+        'Wolves\' Reign': 'Lame de la meute',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gleaming Fang': '光の牙',
+        'Howling Blade': 'ハウリングブレード',
+        'Moonlit Shadow': 'ハウリングブレードの幻影',
+        'Wolf Of Stone': '土の狼頭',
+        'Wolf of Stone': '土の狼頭',
+        'Wolf of Wind': '風の狼頭',
+      },
+      'replaceText': {
+        'Aero III': 'エアロガ',
+        'Aerotemporal Blast': '時限風撃',
+        'Alpha Stone': '光狼の土',
+        'Alpha Wind': '光狼の風',
+        'Bare Fangs': '光牙招来',
+        'Beckon Moonlight': '幻狼招来',
+        'Breath of Decay': '千年の風声',
+        'Champion\'s Circuit': '廻天動地',
+        'Elemental Purge': '風震の魔印',
+        'Extraplanar Feast': '空間斬り・滅',
+        'Extraplanar Pursuit': '空間斬り',
+        'Fanged Charge': '突進光牙',
+        'Forlorn Stone': '土の狼吼',
+        'Forlorn Wind': '風の狼吼',
+        'Geotemporal Blast': '時限震撃',
+        'Gleaming Barrage': '連撃閃光砲',
+        'Gleaming Beam': '閃光砲',
+        'Great Divide': '一刀両断',
+        'Gust': '旋風',
+        'Heavensearth': '大震撃',
+        'Hero\'s Blow': '鎧袖一触',
+        'Howling Eight': '八連光弾',
+        'Howling Havoc': '風塵の咆哮',
+        'Hunter\'s Harvest': '貪狼の剣',
+        'Lone Wolf\'s Lament': '孤狼の呪い',
+        'Millennial Decay': '千年の風化',
+        'Moonbeam\'s Bite': '幻狼剣',
+        'Mooncleaver': '剛刃一閃',
+        'Pack Predation': '光狼陣',
+        'Prowling Gale': '風狼陣',
+        'Quake III': 'クエイガ',
+        'Ravenous Saber': '風塵光狼斬',
+        'Revolutionary Reign': '廻の群狼剣',
+        'Rise of the Howling Wind': '魔狼戦型・天嵐の相',
+        'Rise of the Hunter\'s Blade': '魔狼戦型・呪刃の相',
+        'Roaring Wind': '風狼豪波',
+        'Shadowchase': '残影剣',
+        'Stalking Stone': '光狼地烈波',
+        'Stalking Wind': '光狼風烈波',
+        'Starcleaver': '剛刃一閃・終',
+        'Stonefang': '土の魔技',
+        'Suspended Stone': '大岩石',
+        'Tactical Pack': '光狼招来',
+        'Terrestrial Rage': '大地の怒り',
+        'Terrestrial Titans': '大地の呼び声',
+        'Titanic Pursuit': '斬空剣',
+        'Towerfall': '倒壊',
+        'Tracking Tremors': '連震撃',
+        'Twinbite': '双牙撃',
+        'Twofold Tempest': '双牙暴風撃',
+        'Ultraviolent Ray': '魔光',
+        'Weal of Stone': '地烈波',
+        'Wind Surge': '風爆',
+        'Windfang': '風の魔技',
+        'Winds of Decay': '千年の大風',
+        'Wolves\' Reign': '群狼剣',
       },
     },
   ],
