@@ -564,23 +564,31 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         pattern1: {
           en: 'Cactus Pattern 1',
+          de: 'Kaktus-Muster 1',
           fr: 'Cactus Pattern 1',
           cn: '仙人掌类型 1',
+          ko: '선인장 패턴 1',
         },
         pattern2: {
           en: 'Cactus Pattern 2 (bad)',
+          de: 'Kaktus-Muster 2 (schlecht)',
           fr: 'Cactus Pattern 2 (mauvais)',
           cn: '仙人掌类型 2 (差)',
+          ko: '선인장 패턴 2 (어려움)',
         },
         pattern3: {
           en: 'Cactus Pattern 3',
+          de: 'Kaktus-Muster 3',
           fr: 'Cactus Pattern 3',
           cn: '仙人掌类型 3',
+          ko: '선인장 패턴 3',
         },
         pattern4: {
           en: 'Cactus Pattern 4',
+          de: 'Kaktus-Muster 4',
           fr: 'Cactus Pattern 4',
           cn: '仙人掌类型 4',
+          ko: '선인장 패턴 4',
         },
       },
     },
@@ -617,8 +625,10 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         cactus: {
           en: 'Danger Cactus ${dir}',
+          de: 'Gefährlicher Kaktus ${dir}',
           fr: 'Cactus dangereux ${dir}',
           cn: '危险仙人掌 ${dir}',
+          ko: '위험한 선인장 ${dir}',
         },
       },
     },
@@ -656,6 +666,8 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         spawn: {
           en: 'Cloud spawning ${dir}',
+          de: 'Wolke erscheint ${dir}',
+          ko: '${dir}에 구름 소환',
         },
       },
     },
@@ -698,6 +710,8 @@ const triggerSet: TriggerSet<Data> = {
         ccw: Outputs.counterclockwise,
         text: {
           en: 'Cloud rotating ${rot} towards ${dir}',
+          de: 'Wolke rotiert ${rot} Richtung ${dir}',
+          ko: '구름이 ${dir}쪽으로 ${rot} 회전',
         },
       },
     },
@@ -793,12 +807,18 @@ const triggerSet: TriggerSet<Data> = {
         // with "all south", "clockwise", "counterclockwise" to match the common strat
         eightSouth: {
           en: '8 Towers S',
+          de: '8 Türme S',
+          ko: '남쪽 탑 8개',
         },
         fourNW: {
           en: '4 Towers NW',
+          de: '4 Türme NW',
+          ko: '북서쪽 탑 4개',
         },
         fourNE: {
           en: '4 Towers NE',
+          de: '4 Türme NO',
+          ko: '북동쪽 탑 4개',
         },
       },
     },
@@ -806,7 +826,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Mouthwatering Morbol': 'Zucker-Morbol',
         'Sugar Riot': 'Zuckerschock',
@@ -820,6 +839,7 @@ const triggerSet: TriggerSet<Data> = {
         '--Gimme Cat targetable--': '--Bettelcat anvisierbar--',
         '--Jabberwock targetable--': '--Brabbelback anvisierbar--',
         '--Yan targetable--': '--Putschi anvisierbar--',
+        '--jump\\?--': '--Sprung?--',
         'Artistic Anarchy': 'Artistische Anarchie',
         'Bad Breath': 'Schlechter Atem',
         'Brûlée': 'Wärmeentladung',
@@ -830,6 +850,7 @@ const triggerSet: TriggerSet<Data> = {
         'Crowd Brûlée': 'Hitzeentladung',
         'Dark Mist': 'Schattenhauch',
         'Double Style': 'Doppel-Graffiti',
+        'Explosion': 'Explosion',
         'Layer': 'Feinschliff',
         'Levin Drop': 'Stromfluss',
         'Lightning Bolt': 'Blitzschlag',
