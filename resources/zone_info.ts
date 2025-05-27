@@ -10425,6 +10425,20 @@ const data: ZoneInfoType = {
     'sizeFactor': 200,
     'weatherRate': 150,
   },
+  1252: {
+    'contentType': 38,
+    'exVersion': 5,
+    'name': {
+      'de': 'Das südliche Kreszentia',
+      'en': 'The Occult Crescent: South Horn',
+      'fr': 'Île de Lunule méridionale',
+      'ja': '蜃気楼の島 クレセントアイル：南征編',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 100,
+    'weatherRate': 168,
+  },
   1256: {
     'contentType': 5,
     'exVersion': 5,

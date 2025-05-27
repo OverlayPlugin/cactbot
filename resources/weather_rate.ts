@@ -2173,12 +2173,16 @@ const data: WeatherRateType = {
       55,
       70,
       80,
+      95,
+      100,
     ],
     'weathers': [
       'Clear Skies',
       'Fair Skies',
       'Clouds',
       'Rain',
+      'Atmospheric Phantasms',
+      'Illusory Disturbances',
     ],
   },
   169: {
