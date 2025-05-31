@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
@@ -10,7 +8,7 @@ import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
-type MoveAfter = 'laser' | 'orb';
+type MoveAfter = 'moveAfterLaser' | 'moveAfterOrb';
 
 export interface Data extends RaidbossData {
   turretLocations: string[];
@@ -43,6 +41,23 @@ const coordinateBitMapEffects = [
   '1A',
   '1C',
 ];
+
+type MarchOutputDirs = 'NE' | 'NW' | 'SE' | 'SW';
+type MarchOutput = {
+  first: MarchOutputDirs;
+  second: MarchOutputDirs;
+  move: MoveAfter | '';
+};
+const marchPatterns: { [locs: string]: MarchOutput } = {
+  '16,1A': { first: 'SE', second: 'NE', move: '' },
+  '0E,17': { first: 'NW', second: 'NE', move: '' },
+  '15,16': { first: 'NW', second: 'NE', move: '' },
+  '13,15': { first: 'SW', second: 'NW', move: '' },
+  '0E,10,19': { first: 'SE', second: 'NE', move: 'moveAfterLaser' },
+  '11,16,18': { first: 'NE', second: 'SE', move: 'moveAfterOrb' },
+  '12,14,15': { first: 'SE', second: 'NE', move: 'moveAfterOrb' },
+  '0D,1A,1C': { first: 'NE', second: 'SE', move: 'moveAfterLaser' },
+};
 
 const triggerSet: TriggerSet<Data> = {
   id: 'TheUnderkeep',
@@ -164,7 +179,7 @@ const triggerSet: TriggerSet<Data> = {
       promise: async (data, matches) => {
         const lastClone = data.tetherMap[matches.sourceId];
         if (lastClone === undefined) {
-          console.error('could not get last clone');
+          console.error('Soldier Sector Bisector: could not get last clone');
           return;
         }
         const combatants = (await callOverlayHandler({
@@ -219,6 +234,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Underkeep Valia Pira Electray',
       type: 'StartsUsing',
       netRegex: { id: 'A87A', source: 'Coordinate Turret', capture: false },
+      condition: (data) => data.marchMove === undefined,
       suppressSeconds: 2,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -234,7 +250,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Spread (all AoEs expand!)',
+          en: 'Spread (all cones expand!)',
         },
       },
     },
@@ -314,50 +330,25 @@ const triggerSet: TriggerSet<Data> = {
          */
         const bitLocations = data.orbLocations.sort();
         if (!(bitLocations.length === 2 || bitLocations.length === 3)) {
-          console.error('unexpected amount of bits found', bitLocations);
+          console.error(
+            'Valia Pira CoordinateMarch: unexpected amount of bits found',
+            bitLocations,
+          );
           return;
         }
 
-        if (_.isEqual(['16', '1A'], bitLocations)) {
-          return output.dodge!({ first: output.SE!(), second: output.NE!(), move: '' });
-        } else if (_.isEqual(['0E', '17'], bitLocations)) {
-          return output.dodge!({ first: output.NW!(), second: output.NE!(), move: '' });
-        } else if (_.isEqual(['15', '16'], bitLocations)) {
-          return output.dodge!({ first: output.NW!(), second: output.NE!(), move: '' });
-        } else if (_.isEqual(['13', '15'], bitLocations)) {
-          return output.dodge!({ first: output.SW!(), second: output.NW!(), move: '' });
-        } else if (_.isEqual(['0E', '10', '19'], bitLocations)) {
-          data.marchMove = 'laser';
-          return output.dodge!({
-            first: output.SE!(),
-            second: output.NE!(),
-            move: output.moveAfterLaser!(),
-          });
-        } else if (_.isEqual(['11', '16', '18'], bitLocations)) {
-          data.marchMove = 'orb';
-          return output.dodge!({
-            first: output.NE!(),
-            second: output.SE!(),
-            move: output.moveAfterBit!(),
-          });
-        } else if (_.isEqual(['12', '14', '15'], bitLocations)) {
-          data.marchMove = 'orb';
-          return output.dodge!({
-            first: output.SE!(),
-            second: output.NE!(),
-            move: output.moveAfterBit!(),
-          });
-        } else if (_.isEqual(['0D', '1A', '1C'], bitLocations)) {
-          data.marchMove = 'laser';
-          return output.dodge!({
-            first: output.NE!(),
-            second: output.SE!(),
-            move: output.moveAfterLaser!(),
-          });
+        const pattern = marchPatterns[bitLocations.join()];
+        if (pattern === undefined) {
+          console.error('Valia Pira CoordinateMarch: unknown pattern!', bitLocations);
+          return output.unknown!();
         }
-        console.warn('pattern not matched!', bitLocations);
 
-        return output.unknown!();
+        data.marchMove = pattern.move !== '' ? pattern.move : undefined;
+        return output.dodge!({
+          first: output[pattern.first]!(),
+          second: output[pattern.second]!(),
+          move: pattern.move !== '' ? output[pattern.move]!() : '',
+        });
       },
       run: (data) => {
         data.orbLocations = [];
@@ -374,7 +365,7 @@ const triggerSet: TriggerSet<Data> = {
         moveAfterLaser: {
           en: '(after wall laser)',
         },
-        moveAfterBit: {
+        moveAfterOrb: {
           en: '(after orb explosion)',
         },
       },
@@ -384,16 +375,16 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Underkeep Valia Pira Electray Move',
       type: 'Ability',
       netRegex: { id: 'A87A', source: 'Coordinate Turret', capture: false },
-      condition: (data) => data.marchMove === 'laser',
+      condition: (data) => data.marchMove === 'moveAfterLaser',
       response: Responses.moveAway(),
       run: (data) => data.marchMove = undefined,
     },
-    // pink orb/bit + explosion
+    // pink orb/bit explosion
     {
       id: 'Underkeep Valia Pira Enforcement Ray Move',
       type: 'Ability',
       netRegex: { id: 'A6F1', source: 'Coordinate Bit', capture: false },
-      condition: (data) => data.marchMove === 'orb',
+      condition: (data) => data.marchMove === 'moveAfterOrb',
       response: Responses.moveAway(),
       run: (data) => data.marchMove = undefined,
     },
