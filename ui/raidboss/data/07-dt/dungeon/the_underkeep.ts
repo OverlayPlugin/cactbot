@@ -8,6 +8,9 @@ import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// Todo:
+// Could call the exact safe spot during Aerial Ambush
+
 type MoveAfter = 'moveAfterLaser' | 'moveAfterOrb';
 
 export interface Data extends RaidbossData {
