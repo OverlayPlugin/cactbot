@@ -1,4 +1,11 @@
-### Arcadion (R8S): AAC Cruiserweight M4 Savage
+### AAC CRUISERWEIGHT M4 (SAVAGE)
+# ZoneId: 1263
+
+# -ii A921 A922 A39B A39C A39F A3A0 A3B0 A3B1 A3DB A3DD A3DA A3C7 A881 A882 A45D A4CE A92D A92E
+# -ii A3B8 A3C5 A45F A461 A463 A464 A472 A473 A45B A46C A891 A479 A47A A47B A47C A47E A47F A480
+# -ii A481 A486 A488 A4A1 A4A2 A4EE A4F1 A4F2 A4F3 A4F4 A3CF A3CD A3E4 A3E2
+# -p A749:356.8 A82D:606.0
+# -it "Howling Blade" "Wolf of Wind" "Wolf of Stone"
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -6,4 +13,312 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+14.7 "Extraplanar Pursuit" Ability { id: "A74F", source: "Howling Blade" } window 10,10
+20.5 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
+29.5 "Stonefang/Windfang" Ability { id: ["A39E", "A39D", "A3A1", "A3A2"], source: "Howling Blade" }
+39.6 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
+40.9 "--sync--" Ability { id: "A92C", source: "Howling Blade" }
+41.0 "--sync--" Ability { id: ["A930", "A931"], source: "Howling Blade" }
+43.0 "Wolves' Reign (circles)" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }
+43.4 "--sync--" Ability { id: ["A969", "A96A"], source: "Howling Blade" }
+46.0 "Wolves' Reign (cones)" Ability { id: ["A399", "A39A"], source: "Howling Blade" }
+46.4 "--sync--" Ability { id: ["A7B1", "A7B2"], source: "Howling Blade" }
+52.5 "Extraplanar Pursuit" Ability { id: "A74F", source: "Howling Blade" }
+58.3 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
+66.0 "Millennial Decay" Ability { id: "A3B2", source: "Howling Blade" }
+76.8 "Aero III" Ability { id: "A3B7", source: "Howling Blade" }
+78.2 "Breath of Decay 1" #Ability { id: "A3B4", source: "Wolf of Wind" }
+78.6 "Gust 1" Ability { id: "A3B3", source: "Howling Blade" }
+80.1 "Breath of Decay 2" #Ability { id: "A3B4", source: "Wolf of Wind" }
+82.1 "Breath of Decay 3" #Ability { id: "A3B4", source: "Wolf of Wind" }
+83.7 "Gust 2" Ability { id: "A3B3", source: "Howling Blade" }
+84.3 "Breath of Decay 4" #Ability { id: "A3B4", source: "Wolf of Wind" }
+86.3 "Breath of Decay 5" #Ability { id: "A3B4", source: "Wolf of Wind" }
+92.4 "Aero III" Ability { id: "A3B7", source: "Howling Blade" }
+94.5 "Prowling Gale (Towers)" Ability { id: "A3B6", source: "Howling Blade" }
+94.6 "Winds of Decay" Ability { id: "A3B5", source: "Wolf of Wind" }
+100.4 "Tracking Tremors" Ability { id: "A3B9", source: "Howling Blade" }
+101.3 "Tracking Tremors 1" #Ability { id: "A3BB", source: "Howling Blade" }
+102.3 "Tracking Tremors 2" #Ability { id: "A3BB", source: "Howling Blade" }
+103.3 "Tracking Tremors 3" #Ability { id: "A3BB", source: "Howling Blade" }
+104.3 "Tracking Tremors 4" #Ability { id: "A3BB", source: "Howling Blade" }
+105.3 "Tracking Tremors 5" #Ability { id: "A3BB", source: "Howling Blade" }
+106.4 "Tracking Tremors 6" #Ability { id: "A3BB", source: "Howling Blade" }
+107.4 "Tracking Tremors 7" #Ability { id: "A3BB", source: "Howling Blade" }
+108.4 "Tracking Tremors 8" #Ability { id: "A3BB", source: "Howling Blade" }
+114.3 "Extraplanar Pursuit" Ability { id: "A74F", source: "Howling Blade" }
+123.2 "Great Divide" Ability { id: "A3D8", source: "Howling Blade" }
+131.3 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
+137.9 "Terrestrial Titans" Ability { id: "A3C4", source: "Howling Blade" }
+145.1 "Titanic Pursuit" Ability { id: "A751", source: "Howling Blade" }
+145.9 "Bare Fangs" Ability { id: "A4CC", source: "Howling Blade" }
+152.9 "Towerfall" Ability { id: "A3C6", source: "Howling Blade" }
+158.8 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
+160.1 "--sync--" Ability { id: "A92C", source: "Howling Blade" }
+160.2 "--sync--" Ability { id: ["A930", "A931"], source: "Howling Blade" }
+162.2 "Wolves' Reign (circles)" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }
+162.6 "--sync--" Ability { id: ["A969", "A96A"], source: "Howling Blade" }
+165.2 "Wolves' Reign (cones)" Ability { id: ["A399", "A39A"], source: "Howling Blade" }
+165.6 "--sync--" Ability { id: ["A7B1", "A7B2"], source: "Howling Blade" }
+167.7 "--sync--" Ability { id: "A786", source: "Howling Blade" }
+172.4 "--north--" Ability { id: "A38F", source: "Howling Blade" }
 
+# Adds
+177.7 "Tactical Pack" Ability { id: "A3C8", source: "Howling Blade" }
+179.7 "--untargetable--"
+179.7 "--sync--" Ability { id: "A3C9", source: "Howling Blade" }
+186.8 "Howling Havoc" Ability { id: "A3DC", source: "Wolf of Stone" }
+188.8 "--adds-targetable--"
+196.9 "Pack Predation" Ability { id: "A3CC", source: "Wolf of Stone" }
+196.9 "--tank/line aoes--"
+210.8 "Pack Predation" Ability { id: "A3CC", source: "Wolf of Stone" }
+210.8 "--tank/line aoes--"
+224.8 "Pack Predation" Ability { id: "A3CC", source: "Wolf of Stone" }
+224.8 "--tank/line aoes--"
+240.1 "--sync--" StartsUsing { id: ["A3D0", "A3D3"] } window 10,10
+248.1 "Forlorn Stone (Enrage)" Ability { id: "A3D3", source: "Wolf of Stone" }
+248.1 "Forlorn Wind (Enrage)" Ability { id: "A3D0", source: "Wolf of Wind" }
+
+
+# The following enrage casts happen on repeat
+# 248.2 "Forlorn Stone (Enrage)" Ability { id: "A3D5", source: "Wolf of Stone" }
+# 248.2 "Forlorn Wind (Enrage)" Ability { id: "A3D2", source: "Wolf of Wind" }
+# 250.2 "Forlorn Stone (Enrage)" Ability { id: "A3D4", source: "Wolf of Stone" }
+# 250.2 "Forlorn Wind (Enrage)" Ability { id: "A3D1", source: "Wolf of Wind" }
+
+# Terrestrial Rage
+# Boss is targetable on MapEffect
+343.8 "--sync--" MapEffect { flags: "00080004", location: "01" } window 400,10
+356.8 "Ravenous Saber 1" Ability { id: "A749", source: "Howling Blade" } window 400,10
+356.9 "Ravenous Saber 2" Ability { id: "A74A", source: "Howling Blade" }
+357.2 "Ravenous Saber 3" Ability { id: "A74B", source: "Howling Blade" }
+359.2 "Ravenous Saber 4" Ability { id: "A9FE", source: "Howling Blade" }
+360.4 "Ravenous Saber 5" Ability { id: "A3CB", source: "Howling Blade" }
+370.2 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
+372.9 "Bare Fangs" Ability { id: "A4CB", source: "Howling Blade" }
+377.9 "Terrestrial Rage" Ability { id: "A3BE", source: "Howling Blade" }
+384.9 "Fanged Charge" #Ability { id: "A3D6", source: "Gleaming Fang" }
+386.2 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
+386.2 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
+387.0 "Shadowchase" Ability { id: "A3BC", source: "Howling Blade" }
+387.4 "Fanged Charge" #Ability { id: "A3D6", source: "Gleaming Fang" }
+388.3 "--untargetable--"
+393.0 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
+393.0 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
+395.2 "--targetable--"
+397.9 "Roaring Wind" Ability { id: "A78A", source: "Wolf of Wind" }
+402.5 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
+403.8 "--sync--" Ability { id: "A92C", source: "Howling Blade" }
+403.8 "--sync--" Ability { id: ["A930", "A931"], source: "Howling Blade" }
+405.8 "Wolves' Reign (circles)" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }
+406.2 "--sync--" Ability { id: ["A969", "A96A"], source: "Howling Blade" }
+408.8 "Wolves' Reign (cones)" Ability { id: ["A399", "A39A"], source: "Howling Blade" }
+409.2 "--sync--" Ability { id: ["A7B1", "A7B2"], source: "Howling Blade" }
+411.3 "--sync--" Ability { id: "A786", source: "Howling Blade" }
+412.1 "Weal of Stone" Ability { id: "A78E", source: "Wolf of Stone" }
+422.5 "Great Divide" Ability { id: "A3D8", source: "Howling Blade" }
+430.6 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
+
+# Beckon Moonlight
+436.7 "Beckon Moonlight" Ability { id: "A3C1", source: "Howling Blade" }
+438.7 "--shadow 1--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+439.7 "--shadow 2--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+440.7 "--shadow 3--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+441.7 "--shadow 4--" #Ability { id: ["A3E0", "A3E1"], source: "Moonlit Shadow" }
+443.7 "Terrestrial Rage" Ability { id: "A3BE", source: "Howling Blade" }
+449.3 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
+449.3 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
+450.7 "Moonbeam's Bite 1" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+452.7 "Moonbeam's Bite 2" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+454.7 "Moonbeam's Bite 3" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+456.7 "Moonbeam's Bite 4" #Ability { id: ["A3C2", "A3C3"], source: "Moonlit Shadow" }
+457.7 "Heavensearth" Ability { id: "A3C0", source: "Howling Blade" }
+457.7 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
+457.7 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
+461.9 "Weal of Stone" Ability { id: "A792", source: "Wolf of Stone" }
+466.8 "Stonefang/Windfang" Ability { id: ["A39E", "A39D", "A3A1", "A3A2"], source: "Howling Blade" }
+475.8 "Tracking Tremors" Ability { id: "A3B9", source: "Howling Blade" }
+476.7 "Tracking Tremors 1" #Ability { id: "A3BB", source: "Howling Blade" }
+477.7 "Tracking Tremors 2" #Ability { id: "A3BB", source: "Howling Blade" }
+478.7 "Tracking Tremors 3" #Ability { id: "A3BB", source: "Howling Blade" }
+479.7 "Tracking Tremors 4" #Ability { id: "A3BB", source: "Howling Blade" }
+480.7 "Tracking Tremors 5" #Ability { id: "A3BB", source: "Howling Blade" }
+481.8 "Tracking Tremors 6" #Ability { id: "A3BB", source: "Howling Blade" }
+482.8 "Tracking Tremors 7" #Ability { id: "A3BB", source: "Howling Blade" }
+483.8 "Tracking Tremors 8" #Ability { id: "A3BB", source: "Howling Blade" }
+489.7 "Extraplanar Pursuit" Ability { id: "A74F", source: "Howling Blade" }
+504.5 "Extraplanar Pursuit" Ability { id: "A74F", source: "Howling Blade" }
+505.2 "--middle--" #Ability { id: "A38F", source: "Howling Blade" }
+505.2 "--untargetable--"
+505.5 "--sync--" StartsUsing { id: "A3F1", source: "Howling Blade" } window 10,10
+509.2 "Extraplanar Feast (Enrage)" Ability { id: "A3F1", source: "Howling Blade" }
+
+# Phase 2
+605.0 "--middle--" Ability { id: "A38F", source: "Howling Blade" } window 140,0
+606.0 "--sync--" Ability { id: "A82D", source: "Howling Blade" } window 610,0
+650.3 "--targetable--"
+662.3 "Quake III" Ability { id: "A45A", source: "Howling Blade" }
+674.3 "Ultraviolent Ray 1" Ability { id: "A45C", source: "Howling Blade" }
+674.3 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
+685.3 "Twinbite" Ability { id: "A4CD", source: "Howling Blade" }
+697.4 "Hero's Blow" Ability { id: ["A460", "A462"], source: "Howling Blade" }
+707.4 "Ultraviolent Ray 2" Ability { id: "A45C", source: "Howling Blade" }
+707.4 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
+718.4 "Quake III" Ability { id: "A45A", source: "Howling Blade" }
+726.6 "Mooncleaver" StartsUsing { id: "A465", source: "Howling Blade" } duration 3.7
+731.6 "Mooncleaver (Platform)" Ability { id: "A466", source: "Howling Blade" }
+738.6 "Elemental Purge" Ability { id: "A467", source: "Howling Blade" }
+743.7 "Geotemporal Blast" #Ability { id: "A469", source: "Howling Blade" }
+743.7 "Aerotemporal Blast" #Ability { id: "A468", source: "Howling Blade" }
+743.7 "Hunter's Harvest" #Ability { id: "A46D", source: "Howling Blade" }
+748.7 "Prowling Gale" Ability { id: "A46E", source: "Howling Blade" }
+757.5 "Prowling Gale (Towers)" Ability { id: "A46F", source: "Howling Blade" }
+759.8 "Rise of the Howling Wind" Ability { id: "A82A", source: "Howling Blade" }
+
+# Twofold Tempest
+768.9 "Twofold Tempest" Ability { id: "A471", source: "Howling Blade" }
+772.6 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
+776.1 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
+779.8 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
+782.7 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
+786.4 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
+788.6 "Twofold Tempest" Ability { id: "A474", source: "Howling Blade" }
+792.3 "Wind Surge" duration 11.7 #Ability { id: "A891", source: "Howling Blade" }
+799.4 "Bare Fangs" Ability { id: "A475", source: "Howling Blade" }
+
+# Champion's Circuit
+811.0 "Champion's Circuit" Ability { id: ["A477", "A478"], source: "Howling Blade" }
+811.0 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
+811.7 "--sync--" Ability { id: "A47D", source: "Howling Blade" }
+815.4 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
+816.1 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
+819.8 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
+820.4 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
+824.1 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
+824.7 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
+828.5 "Gleaming Barrage" #Ability { id: "A476", source: "Gleaming Fang" }
+828.9 "Champion's Circuit" Ability { id: "A482", source: "Howling Blade" }
+838.7 "Quake III" Ability { id: "A45A", source: "Howling Blade" }
+852.7 "Ultraviolent Ray 3" Ability { id: "A45C", source: "Howling Blade" }
+852.7 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
+863.7 "Twinbite" Ability { id: "A4CD", source: "Howling Blade" }
+878.9 "Rise of the Hunter's Blade" Ability { id: "A82C", source: "Howling Blade" }
+
+# Lone Wolf
+884.1 "Lone Wolf's Lament" Ability { id: "A483", source: "Howling Blade" }
+894.2 "Prowling Gale" Ability { id: "A485", source: "Howling Blade" }
+902.8 "Prowling Gale (Towers)" Ability { id: "A487", source: "Howling Blade" }
+912.4 "Hero's Blow" Ability { id: ["A460", "A462"], source: "Howling Blade" }
+924.6 "Ultraviolent Ray 4" Ability { id: "A45C", source: "Howling Blade" }
+924.6 "Gleaming Beam" Ability { id: "A45E", source: "Gleaming Fang" }
+939.4 "Howling Eight" Ability { id: "AA02", source: "Howling Blade" }
+940.5 "Howling Eight 1" #Ability { id: "AA03", source: "Howling Blade" }
+941.5 "Howling Eight 2" #Ability { id: "AA04", source: "Howling Blade" }
+942.4 "Howling Eight 3" #Ability { id: "AA05", source: "Howling Blade" }
+943.3 "Howling Eight 4" #Ability { id: "AA06", source: "Howling Blade" }
+944.0 "Howling Eight 5" #Ability { id: "AA07", source: "Howling Blade" }
+944.4 "Howling Eight 6" #Ability { id: "AA08", source: "Howling Blade" }
+944.8 "Howling Eight 7" #Ability { id: "AA09", source: "Howling Blade" }
+946.6 "Howling Eight 8" #Ability { id: "AA0A", source: "Howling Blade" }
+946.9 "Mooncleaver 1" StartsUsing { id: "A74C", source: "Howling Blade" } duration 2.7
+950.9 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
+959.1 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
+960.1 "Howling Eight 1" Ability { id: "A495", source: "Howling Blade" }
+961.1 "Howling Eight 2" #Ability { id: "A496", source: "Howling Blade" }
+962.0 "Howling Eight 3" #Ability { id: "A497", source: "Howling Blade" }
+962.9 "Howling Eight 4" #Ability { id: "A498", source: "Howling Blade" }
+963.5 "Howling Eight 5" #Ability { id: "A499", source: "Howling Blade" }
+964.1 "Howling Eight 6" #Ability { id: "A49A", source: "Howling Blade" }
+964.4 "Howling Eight 7" #Ability { id: "A49B", source: "Howling Blade" }
+966.2 "Howling Eight 8" #Ability { id: "A49C", source: "Howling Blade" }
+966.4 "Mooncleaver 2" StartsUsing { id: "A74C", source: "Howling Blade" } duration 2.7
+970.5 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
+978.6 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
+979.6 "Howling Eight 1" #Ability { id: "A495", source: "Howling Blade" }
+980.6 "Howling Eight 2" #Ability { id: "A496", source: "Howling Blade" }
+981.5 "Howling Eight 3" #Ability { id: "A497", source: "Howling Blade" }
+982.4 "Howling Eight 4" #Ability { id: "A498", source: "Howling Blade" }
+983.0 "Howling Eight 5" #Ability { id: "A499", source: "Howling Blade" }
+983.6 "Howling Eight 6" #Ability { id: "A49A", source: "Howling Blade" }
+984.0 "Howling Eight 7" #Ability { id: "A49B", source: "Howling Blade" }
+985.8 "Howling Eight 8" #Ability { id: "A49C", source: "Howling Blade" }
+986.1 "Mooncleaver 3" StartsUsing { id: "A74C", source: "Howling Blade" } duration 2.7
+990.1 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
+998.2 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
+999.2 "Howling Eight 1" #Ability { id: "A495", source: "Howling Blade" }
+1000.2 "Howling Eight 2" #Ability { id: "A496", source: "Howling Blade" }
+1001.1 "Howling Eight 3" #Ability { id: "A497", source: "Howling Blade" }
+1002.0 "Howling Eight 4" #Ability { id: "A498", source: "Howling Blade" }
+1002.7 "Howling Eight 5" #Ability { id: "A499", source: "Howling Blade" }
+1003.1 "Howling Eight 6" #Ability { id: "A49A", source: "Howling Blade" }
+1003.5 "Howling Eight 7" #Ability { id: "A49B", source: "Howling Blade" }
+1005.3 "Howling Eight 8" #Ability { id: "A49C", source: "Howling Blade" }
+1005.7 "Mooncleaver 4" StartsUsing { id: "A74C", source: "Howling Blade" } duration 2.7
+1009.6 "Mooncleaver (Platform)" Ability { id: "A74D", source: "Howling Blade" }
+1017.8 "Howling Eight" Ability { id: "A494", source: "Howling Blade" }
+1018.8 "Howling Eight 1" #Ability { id: "A495", source: "Howling Blade" }
+1019.8 "Howling Eight 2" #Ability { id: "A496", source: "Howling Blade" }
+1020.7 "Howling Eight 3" #Ability { id: "A497", source: "Howling Blade" }
+1021.6 "Howling Eight 4" #Ability { id: "A498", source: "Howling Blade" }
+1022.3 "Howling Eight 5" #Ability { id: "A499", source: "Howling Blade" }
+1022.7 "Howling Eight 6" #Ability { id: "A49A", source: "Howling Blade" }
+1023.1 "Howling Eight 7" #Ability { id: "A49B", source: "Howling Blade" }
+1024.9 "Howling Eight 8" #Ability { id: "A49C", source: "Howling Blade" }
+1025.2 "Starcleaver" StartsUsing { id: "A49D", source: "Howling Blade" } duration 10
+1035.2 "--untargetable--"
+1036.2 "Starcleaver (Enrage)" Ability { id: "A49E", source: "Howling Blade" }
+
+# IGNORED ABILITIES
+# Phase 1
+# A4EE Attack (Howling Blade)
+# A3DA Extraplanar Pursuit (self-cast)
+# A39F Windfang
+# A3A0 Windfang
+# A3B0 Stonefang
+# A3B1 Stonefang
+# A921 Eminent Reign
+# A922 Revolutionary Reign
+# A92D Wolves' Reign
+# A92E Wolves' Reign
+# A39B Reign (Tank target)
+# A39C Reign (Healer target)
+# A3B8 Aero III
+# A3C5 Terrestrial Titans
+# A7C7 Titanic Pursuit (self-cast)
+# A3DB Howling Havoc (Wolf of Wind)
+# A3DD Howling Havoc (Wolf of Stone)
+# A4F1 Attack (Wolf of Wind)
+# A4F2 Attack (Wolf of Stone)
+# A3CF Stalking Wind
+# A3CD Alpha Wind
+# A3E4 Stalking Stone
+# A3E2 Alpha Stone
+# A881 Wind Surge
+# A882 Sand Surge
+
+# Phase 2
+# A4F3 unknown_a4f3 Related to A4F4, used on primary target of Howling Blade's Attack
+# A4F4 Attack
+# A45B Quake III
+# A45D Ultraviolent Ray
+# A4CE Twinbite
+# A45F Hero's Blow (Left)
+# A461 Hero's Blow (Right)
+# A463 Fanged Maw
+# A464 Fanged Permiter
+# A46C Hunter's Harvest
+# A472 Twofold Tempest
+# A473 Twofold Tempest
+# A891 Wind Surge
+# A479 Champion's Circuit
+# A47A Champion's Circuit
+# A47B Champion's Circuit
+# A47C Champion's Circuit
+# A47E Champion's Circuit
+# A47F Champion's Circuit
+# A480 Champion's Circuit
+# A481 Champion's Circuit
+# A4A1 Champion's Circuit (boss instant cast) clockwise rotation
+# A4A2 Champion's Circuit (boss instant cast) counterclockwise rotation
+# A486 Prowling Gale (1-Person Tower)
+# A488 Prowling Gale (3-Person Tower)

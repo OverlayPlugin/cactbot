@@ -170,6 +170,7 @@ export class EncounterFinder {
       ContentType.DeepDungeons,
       ContentType.Dungeons,
       ContentType.Eureka,
+      ContentType.OccultCrescent,
       ContentType.Raids,
       ContentType.SaveTheQueen,
       ContentType.TheMaskedCarnivale,

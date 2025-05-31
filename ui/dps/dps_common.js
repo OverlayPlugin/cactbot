@@ -10,6 +10,7 @@ export const defaultOptions = {
     ContentType.Pvp,
     ContentType.Eureka,
     ContentType.SaveTheQueen,
+    ContentType.OccultCrescent,
   ],
 };
 

@@ -19,6 +19,7 @@ const data = {
   'Guildhests': 3,
   'IslandSanctuary': 36,
   'Levequests': 10,
+  'OccultCrescent': 38,
   'OceanFishing': 31,
   'OverallCompletion': 14,
   'PlayerCommendation': 15,
