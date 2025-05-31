@@ -1,0 +1,186 @@
+### THE UNDERKEEP
+# ZoneId: 1266
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+
+#~~~~~~~~~#
+# Gargant #
+#~~~~~~~~~#
+
+# the access hatch will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1433" } window 1000,1
+1005.1 "--sync--" StartsUsing { id: "A633", source: "Gargant" }
+1010.1 "Chilling Chirp" Ability { id: "A633", source: "Gargant" }
+1019.6 "Almighty Racket" Ability { id: "A632", source: "Gargant" }
+1028.6 "--untargetable--"
+1038.3 "Aerial Ambush" Ability { id: "A62E", source: "Gargant" }
+1039.3 "--targetable--"
+1050.4 "Chilling Chirp" Ability { id: "A633", source: "Gargant" }
+1058.3 "Almighty Racket" Ability { id: "A632", source: "Gargant" }
+1064.4 "Sedimentary Debris" Ability { id: "A898", source: "Gargant" }
+1075.1 "Earthsong" Ability { id: "A630", source: "Gargant" }
+1080.6 "--untargetable--"
+1084.3 "Sphere Shatter" Ability { id: "A631", source: "Sand Sphere" }
+1088.3 "Sphere Shatter" Ability { id: "A87F", source: "Sand Sphere" }
+1093.5 "Aerial Ambush" Ability { id: "A62E", source: "Gargant" }
+1094.5 "--targetable--"
+1100.0 "Almighty Racket" Ability { id: "A632", source: "Gargant" }
+1106.1 "Sedimentary Debris" Ability { id: "A898", source: "Gargant" }
+1115.3 "Trap Jaws" Ability { id: "A634", source: "Gargant" }
+
+1128.6 "Chilling Chirp" Ability { id: "A633", source: "Gargant" }
+1136.0 "Almighty Racket" Ability { id: "A632", source: "Gargant" }
+1142.1 "Sedimentary Debris" Ability { id: "A898", source: "Gargant" }
+1152.7 "Earthsong" Ability { id: "A630", source: "Gargant" }
+1162.0 "Sphere Shatter" Ability { id: "A631", source: "Sand Sphere" }
+1166.0 "Sphere Shatter" Ability { id: "A87F", source: "Sand Sphere" }
+1167.7 "Almighty Racket" Ability { id: "A632", source: "Gargant" }
+1173.7 "Sedimentary Debris" Ability { id: "A898", source: "Gargant" }
+
+1183.0 label "gargant-loop"
+1183.0 "Trap Jaws" Ability { id: "A634", source: "Gargant" }
+1195.2 "Chilling Chirp" Ability { id: "A633", source: "Gargant" }
+1202.7 "Almighty Racket" Ability { id: "A632", source: "Gargant" }
+1208.7 "Sedimentary Debris" Ability { id: "A898", source: "Gargant" }
+1219.4 "Earthsong" Ability { id: "A630", source: "Gargant" }
+1228.6 "Sphere Shatter" Ability { id: "A631", source: "Sand Sphere" }
+1232.6 "Sphere Shatter" Ability { id: "A87F", source: "Sand Sphere" }
+1233.7 "Almighty Racket" Ability { id: "A632", source: "Gargant" }
+1239.7 "Sedimentary Debris" Ability { id: "A898", source: "Gargant" }
+1248.9 "Trap Jaws" Ability { id: "A634", source: "Gargant" } forcejump "gargant-loop"
+
+
+# A633 Chilling Chirp [Gargant] 20
+# A632 Almighty Racket [Gargant] 8
+# A62E Aerial Ambush [Gargant] 2
+# A62F Aerial Ambush [Gargant] 2 --damage
+# A899 Foundational Debris [Gargant] 20 -- floor aoes,ignore
+# A898 Sedimentary Debris [Gargant] 28
+# A630 Earthsong [Gargant] 12 --cast
+# A631 Sphere Shatter [Sand Sphere] 21
+# A87F Sphere Shatter [Sand Sphere] 18
+# A634 Trap Jaws [Gargant] 3
+
+#~~~~~~~~~~~~#
+# Soldier S0 #
+#~~~~~~~~~~~~#
+
+# the receiving room will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1435" } window 2000,1
+2005.2 "--sync--" StartsUsing { id: "A653", source: "Soldier S0" }
+2010.1 "Field of Scorn" Ability { id: "A653", source: "Soldier S0" }
+2019.3 "Thunderous Slash" Ability { id: "A880", source: "Soldier S0" }
+2025.5 "--north--" Ability { id: "A650", source: "Soldier S0" }
+2032.4 "Sector Bisector (cast)" Ability { id: ["A642", "A643"], source: "Soldier S0" }
+2040.4 "Sector Bisector" Ability { id: ["A644", "A645"], source: "Soldier S0" }
+2044.6 "--north--" Ability { id: "A650", source: "Soldier S0" }
+2050.8 "Sector Bisector (cast)" Ability { id: ["A642", "A643"], source: "Soldier S0" }
+2058.8 "Sector Bisector" Ability { id: ["A644", "A645"], source: "Soldier S0" }
+2064.0 "--middle--" Ability { id: "A650", source: "Soldier S0" }
+2067.5 "Ordered Fire" Ability { id: "A64C", source: "Soldier S0" }
+2074.6 "Static Force" Ability { id: "A64E", source: "Soldier S0" }
+2082.8 "Thunderous Slash" Ability { id: "A880", source: "Soldier S0" }
+2088.0 "--north--" Ability { id: "A650", source: "Soldier S0" }
+
+2088.0 label "soldier-loop"
+2094.9 "Sector Bisector (cast)" Ability { id: ["A642", "A643"], source: "Soldier S0" }
+2104.7 "Sector Bisector" Ability { id: ["A644", "A645"], source: "Soldier S0" }
+2106.0 "Electric Excess" Ability { id: "A64A", source: "Soldier S0" }
+2117.7 "Field of Scorn" Ability { id: "A653", source: "Soldier S0" }
+2124.9 "--middle--" Ability { id: "A650", source: "Soldier S0" }
+2128.3 "Ordered Fire" Ability { id: "A64C", source: "Soldier S0" }
+2135.4 "Static Force" Ability { id: "A64E", source: "Soldier S0" }
+2143.6 "Thunderous Slash" Ability { id: "A880", source: "Soldier S0" }
+2151.7 "Field of Scorn" Ability { id: "A653", source: "Soldier S0" }
+2158.9 "--north--" Ability { id: "A650", source: "Soldier S0" } forcejump "soldier-loop"
+
+# A653 Field of Scorn [Soldier S0] 24
+# A880 Thunderous Slash [Soldier S0] 4
+# A648 unknown_a648 [Soldier S0] 14 --clone appear
+# A649 unknown_a649 [Soldier S0] 22 --clone appear
+# A650 unknown_a650 [Soldier S0] 9 --jump
+# A89B unknown_a89b [Soldier S0] 12 --clone leave, L
+# A89C unknown_a89c [Soldier S0] 19 --clone leave, R
+# A642 Sector Bisector [Soldier S0] 2 --cast, L
+# A643 Sector Bisector [Soldier S0] 3 --cast, R
+# A644 Sector Bisector [Soldier S0] 2 --clone cast, L
+# A645 Sector Bisector [Soldier S0] 3 --clone cast, R
+# A646 Sector Bisector [Soldier S0] 2 --damage L
+# A647 Sector Bisector [Soldier S0] 3 --damage R
+# A64C Ordered Fire [Soldier S0] 4
+# A64D Ordered Fire [Add Block] 16 --damage
+# A64E Static Force [Soldier S0] 4
+# A64F Static Force [Soldier S0] 16 --damage
+# A64A Electric Excess [Soldier S0] 3
+# A883 Electric Excess [Soldier S0] 12 --damage
+
+#~~~~~~~~~~~~#
+# Valia Pira #
+#~~~~~~~~~~~~#
+
+# the Chamber of Patience will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1436" } window 3000,1
+3006.2 "--sync--" StartsUsing { id: "A61D", source: "Valia Pira" }
+3011.1 "Entropic Sphere" Ability { id: "A61D", source: "Valia Pira" }
+3021.3 "Coordinate March" Ability { id: "A611", source: "Valia Pira" }
+3031.0 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3034.0 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3041.0 "Ordered Fire" Ability { id: "A60C", source: "Valia Pira" }
+3050.1 "Electray" Ability { id: "A87A", source: "Coordinate Turret" }
+3063.1 "Electric Field" Ability { id: "A617", source: "Valia Pira" }
+3073.3 "Neutralize Front Lines" Ability { id: "A6F2", source: "Valia Pira" }
+3075.3 "Hypercharged Light" Ability { id: "A61C", source: "Valia Pira" }
+3083.5 "Coordinate March" Ability { id: "A611", source: "Valia Pira" }
+3093.4 "Bloodmarch" Ability { id: "A6F3", source: "Valia Pira" }
+3096.2 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3101.3 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3107.7 "Deterrent Pulse" Ability { id: "A62C", source: "Valia Pira" }
+3117.8 "Entropic Sphere" Ability { id: "A61D", source: "Valia Pira" }
+
+3128.0 "Coordinate March" Ability { id: "A611", source: "Valia Pira" }
+3132.1 "Ordered Fire" Ability { id: "A60C", source: "Valia Pira" }
+3136.6 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3141.0 "Bloodmarch" Ability { id: "A6F3", source: "Valia Pira" }
+3141.1 "Electray" Ability { id: "A87A", source: "Coordinate Turret" }
+3143.8 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3150.3 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3155.3 "Neutralize Front Lines" Ability { id: "A6F2", source: "Valia Pira" }
+3157.3 "Hypercharged Light" Ability { id: "A61C", source: "Valia Pira" }
+3168.7 "Deterrent Pulse" Ability { id: "A62C", source: "Valia Pira" }
+3181.4 "Electric Field" Ability { id: "A617", source: "Valia Pira" }
+3193.3 "Entropic Sphere" Ability { id: "A61D", source: "Valia Pira" }
+
+3193.3 label "valia-loop"
+3205.5 "Coordinate March" Ability { id: "A611", source: "Valia Pira" }
+3209.5 "Ordered Fire" Ability { id: "A60C", source: "Valia Pira" }
+3214.1 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3218.5 "Bloodmarch" Ability { id: "A6F3", source: "Valia Pira" }
+3218.6 "Electray" Ability { id: "A87A", source: "Coordinate Turret" }
+3221.3 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3227.8 "Enforcement Ray" Ability { id: "A6F1", source: "Coordinate Bit" }
+3232.7 "Neutralize Front Lines" Ability { id: "A6F2", source: "Valia Pira" }
+3234.8 "Hypercharged Light" Ability { id: "A61C", source: "Valia Pira" }
+3246.1 "Deterrent Pulse" Ability { id: "A62C", source: "Valia Pira" }
+3258.8 "Electric Field" Ability { id: "A617", source: "Valia Pira" }
+3270.7 "Entropic Sphere" Ability { id: "A61D", source: "Valia Pira" } forcejump "valia-loop"
+
+# A61E unknown_a61e [Valia Pira] 173 --auto
+# A61D Entropic Sphere [Valia Pira] 52
+# A611 Coordinate March [Valia Pira] 16 --spawns orbs/bits
+# A612 unknown_a612 [] 54 -- animation to trigger?
+# A6F1 Enforcement Ray [Coordinate Bit] 41 -- plus aoe when orb is hit
+# A60C Ordered Fire [Valia Pira] 13 -- spawn wall turrets
+# A60D unknown_a60d [Valia Pira] 26 --animation
+# A87A Electray [Coordinate Turret] 26 --turret line aoe
+# A617 Electric Field [Valia Pira] 10 --cast
+# A619 Concurrent Field [Valia Pira] 60 --ground aoes
+# A8FD Electric Field [Valia Pira] 48 --damage
+# A6F2 Neutralize Front Lines [Valia Pira] 12 --get behind
+# A61C Hypercharged Light [Valia Pira] 48 --spread
+# A6F3 Bloodmarch [Valia Pira] 13 --swaps orb spot
+# A62C Deterrent Pulse [Valia Pira] 39 --line stack
