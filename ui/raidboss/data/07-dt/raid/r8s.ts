@@ -109,14 +109,17 @@ const stoneWindOutputStrings = {
   stoneWindNum: {
     en: '${debuff} ${num}',
     de: '${debuff} ${num}',
+    ko: '${debuff} ${num}',
   },
   stone: {
     en: 'Stone',
     de: 'Erde',
+    ko: '땅',
   },
   wind: {
     en: 'Wind',
     de: 'Wind',
+    ko: '바람',
   },
   unknown: Outputs.unknown,
 };
@@ -126,10 +129,12 @@ const moonlightOutputStrings = {
   safeQuad: {
     en: '${quad}',
     de: '${quad}',
+    ko: '${quad}',
   },
   safeQuadrants: {
     en: '${quad1} => ${quad2}',
     de: '${quad1} => ${quad2}',
+    ko: '${quad1} => ${quad2}',
   },
 };
 
@@ -141,11 +146,13 @@ const championOutputStrings = {
   donut: {
     en: 'Donut',
     de: 'Donut',
+    ko: '도넛',
   },
   sides: Outputs.sides,
   mechanics: {
     en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     de: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+    ko: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
   },
   left: Outputs.left,
   right: Outputs.right,
@@ -429,18 +436,22 @@ const triggerSet: TriggerSet<Data> = {
         inCardsPartners: {
           en: 'In + Cards + Partners',
           de: 'Rein + Kardinal + Partner',
+          ko: '안 + 십자방향 + 쉐어',
         },
         inInterCardsPartners: {
           en: 'In + Intercards + Partners',
           de: 'Rein + Interkardinal + Partner',
+          ko: '안 + 대각선 + 쉐어',
         },
         outCardsProtean: {
           en: 'Out + Cards + Protean',
           de: 'Raus + Kardinal + Himmelsrichtungen',
+          ko: '밖 + 십자방향 + 산개',
         },
         outInterCardsProtean: {
           en: 'Out + InterCards + Protean',
           de: 'Raus + Interkardinal + Himmelsrichtungen',
+          ko: '밖 + 대각선 + 산개',
         },
       },
     },
@@ -462,10 +473,12 @@ const triggerSet: TriggerSet<Data> = {
         inLater: {
           en: '(In Later)',
           de: '(später Rein)',
+          ko: '(나중에 안)',
         },
         outLater: {
           en: '(Out Later)',
           de: '(später Raus)',
+          ko: '(나중에 밖)',
         },
       },
     },
@@ -517,10 +530,12 @@ const triggerSet: TriggerSet<Data> = {
         inDir: {
           en: 'In ${dir}',
           de: 'Rein ${dir}',
+          ko: '${dir} 안',
         },
         outDir: {
           en: 'Out ${dir}',
           de: 'Raus ${dir}',
+          ko: '${dir} 밖',
         },
       },
     },
@@ -554,10 +569,12 @@ const triggerSet: TriggerSet<Data> = {
         clockwise: {
           en: '<== Clockwise',
           de: '<== Im Uhrzeigersinn',
+          ko: '<== 시계방향',
         },
         counterclockwise: {
           en: 'Counterclockwise ==>',
           de: 'Gegen den Uhrzeigersinn ==>',
+          ko: '반시계방향 ==>',
         },
       },
     },
@@ -615,10 +632,12 @@ const triggerSet: TriggerSet<Data> = {
         knockbackTetherDir: {
           en: 'Tether: Knockback to ${dir}',
           de: 'Verbindung: Rückstoß nach ${dir}',
+          ko: '선: ${dir}로 넉백',
         },
         knockbackTowers: {
           en: 'Knockback Towers',
           de: 'Rückstoß-Türme',
+          ko: '넉백 탑',
         },
       },
     },
@@ -675,6 +694,7 @@ const triggerSet: TriggerSet<Data> = {
         dirs: {
           en: '${dir1} or ${dir2}',
           de: '${dir1} oder ${dir2}',
+          ko: '${dir1} 또는 ${dir2}',
         },
       },
     },
@@ -826,14 +846,17 @@ const triggerSet: TriggerSet<Data> = {
         wolfOfWind: {
           en: 'Green',
           de: 'Grün',
+          ko: '초록',
         },
         wolfOfStone: {
           en: 'Yellow',
           de: 'Gelb',
+          ko: '노랑',
         },
         side: {
           en: '${wolf} Side',
           de: '${wolf} Seite',
+          ko: '${wolf} 쪽',
         },
       },
     },
@@ -902,6 +925,7 @@ const triggerSet: TriggerSet<Data> = {
         predationOnPlayers: {
           en: 'Predation on ${player1} and ${player2}',
           de: 'Lichtwolfszirkel auf ${player1} und ${player2}',
+          ko: '${player1} + ${player2} 징 대상자',
         },
       },
     },
@@ -1023,20 +1047,24 @@ const triggerSet: TriggerSet<Data> = {
         stackThenSpread: {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
+          ko: '${stack} => 산개',
         },
         spreadBehindClones: {
           en: 'Spread (Behind Clones)',
           de: 'Verteilen (hinter Klone)',
+          ko: '산개 (분신 뒤)',
         },
         stackOnPlayer: Outputs.stackOnPlayer,
         stackOnPlayerBehindClones: {
           en: 'Stack on ${player} (Behind Clones)',
           de: 'Sammeln auf ${player} (hinter Klone)',
+          ko: '${player}에게 모이기 (분신 뒤)',
         },
         stackOnYou: Outputs.stackOnYou,
         stackOnYouBehindClones: {
           en: 'Stack on YOU (Behind Clones)',
           de: 'Sammeln auf DIR (hinter Klone)',
+          ko: '쉐어징 대상자 (분신 뒤)',
         },
       },
     },
@@ -1054,6 +1082,7 @@ const triggerSet: TriggerSet<Data> = {
         rotate: {
           en: 'Rotate',
           de: 'Rotieren',
+          ko: '회전',
         },
       },
     },
@@ -1070,6 +1099,7 @@ const triggerSet: TriggerSet<Data> = {
         lines: {
           en: 'Avoid Lines',
           de: 'Vermeide Linien',
+          ko: '직선장판 피하기',
         },
       },
     },
@@ -1217,6 +1247,7 @@ const triggerSet: TriggerSet<Data> = {
         stackThenSpread: {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
+          ko: '${stack} => 산개',
         },
         spread: Outputs.spread,
         stackOnPlayer: Outputs.stackOnPlayer,
@@ -1289,6 +1320,7 @@ const triggerSet: TriggerSet<Data> = {
         uvRayOnYou: {
           en: 'UV Ray on YOU',
           de: 'Ätherlicht auf DIR',
+          ko: '파란징 대상자',
         },
       },
     },
@@ -1440,6 +1472,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${inout} + ${dir}',
           de: '${inout} + ${dir}',
+          ko: '${inout} + ${dir}',
         },
         unknown: Outputs.unknown,
       },
@@ -1453,6 +1486,7 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform: {
           en: 'Change Platform',
           de: 'Platform wechseln',
+          ko: '플랫폼 변경',
         },
       },
     },
@@ -1565,14 +1599,17 @@ const triggerSet: TriggerSet<Data> = {
         passTetherDir: {
           en: 'Pass Tether to ${dir}',
           de: 'Übergebe Verbindung nach ${dir}',
+          ko: '${dir}로 선 넘기기',
         },
         tetherOnYou: {
           en: 'Tether on YOU',
           de: 'Verbindung auf DIR',
+          ko: '선 대상자',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
+          ko: '${dir}쪽에 선',
         },
       },
     },
@@ -1620,14 +1657,17 @@ const triggerSet: TriggerSet<Data> = {
         passTether: {
           en: 'Pass Tether',
           de: 'Verbindung übergeben',
+          ko: '선 넘기기',
         },
         passTetherDir: {
           en: 'Pass Tether ${dir}',
           de: 'Verbindung übergeben ${dir}',
+          ko: '${dir}쪽에 선 넘기기',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
+          ko: '${dir}쪽에 선',
         },
       },
     },
@@ -1841,10 +1881,12 @@ const triggerSet: TriggerSet<Data> = {
         closeTetherOnYou: {
           en: 'Close Tether on YOU',
           de: 'Nahe Verbindung auf DIR',
+          ko: '가까이 선 대상자',
         },
         farTetherOnYou: {
           en: 'Far Tether on YOU',
           de: 'Entfernte Verbindung auf DIR',
+          ko: '멀리 선 대상자',
         },
       },
     },
@@ -1942,18 +1984,22 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform1: {
           en: 'Change Platform 1',
           de: 'Wechsel Platform 1',
+          ko: '플랫폼 변경 1',
         },
         changePlatform2: {
           en: 'Change Platform 2',
           de: 'Wechsel Platform 2',
+          ko: '플랫폼 변경 2',
         },
         changePlatform3: {
           en: 'Change Platform 3',
           de: 'Wechsel Platform 3',
+          ko: '플랫폼 변경 3',
         },
         finalPlatform: {
           en: 'Change Platform (Final)',
           de: 'Wechsel Platform (Finale)',
+          ko: '플랫폼 변경 (마지막)',
         },
       },
     },
