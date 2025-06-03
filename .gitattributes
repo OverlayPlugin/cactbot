@@ -7,6 +7,7 @@
 *.wav binary
 *.webm binary
 *.gif binary
+*.webp binary
 
 # Set the language for these files to jsonc to ensure GitHub doesn't show the comments as errors
 .vscode/*.json         linguist-language=jsonc
