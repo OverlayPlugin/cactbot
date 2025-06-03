@@ -630,7 +630,7 @@ export default {
     fr: 'Étourdissez ${name}',
     ja: '${name} にスタン',
     cn: '眩晕 ${name}',
-    ko: '${name}기절',
+    ko: '${name} 기절',
   },
   interruptTarget: {
     en: 'Interrupt ${name}',
@@ -638,7 +638,7 @@ export default {
     fr: 'Interrompez ${name}',
     ja: '${name} に沈黙',
     cn: '打断${name}',
-    ko: '${name}기술 시전 끊기',
+    ko: '${name} 시전 끊기',
   },
   preyOnYou: {
     en: 'Prey on YOU',
