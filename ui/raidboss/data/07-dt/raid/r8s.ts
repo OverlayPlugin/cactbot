@@ -445,22 +445,22 @@ const triggerSet: TriggerSet<Data> = {
         inCardsPartners: {
           en: 'In + Cards + Partners',
           de: 'Rein + Kardinal + Partner',
-          ja: '内側＋十字＋ペア',
+          ja: '内側 + 十字 + ペア',
         },
         inInterCardsPartners: {
           en: 'In + Intercards + Partners',
           de: 'Rein + Interkardinal + Partner',
-          ja: '内側＋斜め＋ペア',
+          ja: '内側 + 斜め + ペア',
         },
         outCardsProtean: {
           en: 'Out + Cards + Protean',
           de: 'Raus + Kardinal + Himmelsrichtungen',
-          ja: '外側＋十字＋散開',
+          ja: '外側 + 十字 + 散開',
         },
         outInterCardsProtean: {
           en: 'Out + InterCards + Protean',
           de: 'Raus + Interkardinal + Himmelsrichtungen',
-          ja: '外側＋斜め＋散開',
+          ja: '外側 + 斜め + 散開',
         },
       },
     },
@@ -860,7 +860,7 @@ const triggerSet: TriggerSet<Data> = {
         wolfOfStone: {
           en: 'Yellow',
           de: 'Gelb',
-          ja: '黄色',
+          ja: '黄',
         },
         side: {
           en: '${wolf} Side',
