@@ -196,12 +196,13 @@ const championCounterOrders: ChampionOrders = {
 };
 
 // Map donutPlatform to mechIndex for Counterclockwise
-const championCounterIndex =
-  [[0, 1, 2, 3, 4],
-  [4, 0, 1, 2, 3],
-  [3, 4, 0, 1, 2],
-  [2, 3, 4, 0, 1],
-  [1, 2, 3, 4, 0]];
+const championCounterIndex = [[0, 1, 2, 3, 4], [4, 0, 1, 2, 3],  [3, 4, 0, 1, 2], [2, 3, 4, 0, 1], [
+  1,
+  2,
+  3,
+  4,
+  0,
+]];
 
 // Return the combatant's platform by number
 const getPlatformNum = (
@@ -1854,8 +1855,8 @@ const triggerSet: TriggerSet<Data> = {
         const mechIndex = donutPlatform === undefined
           ? undefined
           : clock === 'clockwise'
-            ? (donutPlatform + count) % 5
-            : championCounterIndex[donutPlatform]?.[count];
+          ? (donutPlatform + count) % 5
+          : championCounterIndex[donutPlatform]?.[count];
 
         // Retrieve the mech based on our platform, donut platform, and mech index
         const mech = (
