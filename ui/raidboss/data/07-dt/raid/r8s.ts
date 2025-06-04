@@ -196,7 +196,7 @@ const championCounterOrders: ChampionOrders = {
 };
 
 // Map donutPlatform to mechIndex for Counterclockwise
-const championCounterIndex = [[0, 1, 2, 3, 4], [4, 0, 1, 2, 3],  [3, 4, 0, 1, 2], [2, 3, 4, 0, 1], [
+const championCounterIndex = [[0, 1, 2, 3, 4], [4, 0, 1, 2, 3], [3, 4, 0, 1, 2], [2, 3, 4, 0, 1], [
   1,
   2,
   3,
