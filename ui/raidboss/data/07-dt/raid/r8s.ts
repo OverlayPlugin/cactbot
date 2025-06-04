@@ -109,16 +109,19 @@ const stoneWindOutputStrings = {
   stoneWindNum: {
     en: '${debuff} ${num}',
     de: '${debuff} ${num}',
+    ja: '${debuff} ${num}',
     ko: '${debuff} ${num}',
   },
   stone: {
     en: 'Stone',
     de: 'Erde',
+    ja: '土',
     ko: '땅',
   },
   wind: {
     en: 'Wind',
     de: 'Wind',
+    ja: '風',
     ko: '바람',
   },
   unknown: Outputs.unknown,
@@ -129,11 +132,13 @@ const moonlightOutputStrings = {
   safeQuad: {
     en: '${quad}',
     de: '${quad}',
+    ja: '${quad}',
     ko: '${quad}',
   },
   safeQuadrants: {
     en: '${quad1} => ${quad2}',
     de: '${quad1} => ${quad2}',
+    ja: '${quad1} => ${quad2}',
     ko: '${quad1} => ${quad2}',
   },
 };
@@ -146,12 +151,14 @@ const championOutputStrings = {
   donut: {
     en: 'Donut',
     de: 'Donut',
+    ja: 'ドーナツ',
     ko: '도넛',
   },
   sides: Outputs.sides,
   mechanics: {
     en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     de: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+    ja: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     ko: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
   },
   left: Outputs.left,
@@ -159,18 +166,22 @@ const championOutputStrings = {
   leftSide: {
     en: 'Left Side',
     de: 'Linke Seite',
+    ja: '左側',
   },
   rightSide: {
     en: 'Right Side',
     de: 'Rechte Seite',
+    ja: '右側',
   },
   unknownSide: {
     en: '??? Side',
     de: '??? Seite',
+    ja: '??? 側',
   },
   dirMechanic: {
     en: '${dir} ${mech}',
     de: '${dir} ${mech}',
+    ja: '${dir} ${mech}',
   },
 };
 
@@ -330,6 +341,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Light Party Platform',
           de: 'Leichter Trupp Platform',
+          ja: '東西の島で 4：4 頭割り',
         },
       },
     },
@@ -342,6 +354,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'UV Positions',
           de: 'Ätherlicht Positionen',
+          ja: '魔光位置へ',
         },
       },
     },
@@ -354,6 +367,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'UV Positions',
           de: 'Ätherlicht Positionen',
+          ja: '魔光位置へ',
         },
       },
     },
@@ -366,6 +380,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait Mooncleaver',
           de: 'Ködere Klingensturz',
+          ja: '剛刃一閃を誘導',
         },
       },
     },
@@ -377,6 +392,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Howling Eight Position',
           de: 'Achtfache Lichtkugel Position',
+          ja: '八連光弾の位置へ',
         },
       },
     },
@@ -436,21 +452,25 @@ const triggerSet: TriggerSet<Data> = {
         inCardsPartners: {
           en: 'In + Cards + Partners',
           de: 'Rein + Kardinal + Partner',
+          ja: '内側 + 十字 + ペア',
           ko: '안 + 십자방향 + 쉐어',
         },
         inInterCardsPartners: {
           en: 'In + Intercards + Partners',
           de: 'Rein + Interkardinal + Partner',
+          ja: '内側 + 斜め + ペア',
           ko: '안 + 대각선 + 쉐어',
         },
         outCardsProtean: {
           en: 'Out + Cards + Protean',
           de: 'Raus + Kardinal + Himmelsrichtungen',
+          ja: '外側 + 十字 + 散開',
           ko: '밖 + 십자방향 + 산개',
         },
         outInterCardsProtean: {
           en: 'Out + InterCards + Protean',
           de: 'Raus + Interkardinal + Himmelsrichtungen',
+          ja: '外側 + 斜め + 散開',
           ko: '밖 + 대각선 + 산개',
         },
       },
@@ -473,11 +493,13 @@ const triggerSet: TriggerSet<Data> = {
         inLater: {
           en: '(In Later)',
           de: '(später Rein)',
+          ja: '(あとで内側)',
           ko: '(나중에 안)',
         },
         outLater: {
           en: '(Out Later)',
           de: '(später Raus)',
+          ja: '(あとで外側)',
           ko: '(나중에 밖)',
         },
       },
@@ -530,11 +552,13 @@ const triggerSet: TriggerSet<Data> = {
         inDir: {
           en: 'In ${dir}',
           de: 'Rein ${dir}',
+          ja: '内側 ${dir}',
           ko: '${dir} 안',
         },
         outDir: {
           en: 'Out ${dir}',
           de: 'Raus ${dir}',
+          ja: '外側 ${dir}',
           ko: '${dir} 밖',
         },
       },
@@ -569,11 +593,13 @@ const triggerSet: TriggerSet<Data> = {
         clockwise: {
           en: '<== Clockwise',
           de: '<== Im Uhrzeigersinn',
+          ja: '<== 時計回り',
           ko: '<== 시계방향',
         },
         counterclockwise: {
           en: 'Counterclockwise ==>',
           de: 'Gegen den Uhrzeigersinn ==>',
+          ja: '反時計回り ==>',
           ko: '반시계방향 ==>',
         },
       },
@@ -632,11 +658,13 @@ const triggerSet: TriggerSet<Data> = {
         knockbackTetherDir: {
           en: 'Tether: Knockback to ${dir}',
           de: 'Verbindung: Rückstoß nach ${dir}',
+          ja: '線: ${dir}へノックバック',
           ko: '선: ${dir}로 넉백',
         },
         knockbackTowers: {
           en: 'Knockback Towers',
           de: 'Rückstoß-Türme',
+          ja: 'ノックバック塔踏み',
           ko: '넉백 탑',
         },
       },
@@ -694,6 +722,7 @@ const triggerSet: TriggerSet<Data> = {
         dirs: {
           en: '${dir1} or ${dir2}',
           de: '${dir1} oder ${dir2}',
+          ja: '${dir1} か ${dir2}',
           ko: '${dir1} 또는 ${dir2}',
         },
       },
@@ -846,16 +875,19 @@ const triggerSet: TriggerSet<Data> = {
         wolfOfWind: {
           en: 'Green',
           de: 'Grün',
+          ja: '緑',
           ko: '초록',
         },
         wolfOfStone: {
           en: 'Yellow',
           de: 'Gelb',
+          ja: '黄',
           ko: '노랑',
         },
         side: {
           en: '${wolf} Side',
           de: '${wolf} Seite',
+          ja: '${wolf} 側',
           ko: '${wolf} 쪽',
         },
       },
@@ -925,6 +957,7 @@ const triggerSet: TriggerSet<Data> = {
         predationOnPlayers: {
           en: 'Predation on ${player1} and ${player2}',
           de: 'Lichtwolfszirkel auf ${player1} und ${player2}',
+          ja: '${player1} と ${player2} に直線攻撃',
           ko: '${player1} + ${player2} 징 대상자',
         },
       },
@@ -1047,23 +1080,27 @@ const triggerSet: TriggerSet<Data> = {
         stackThenSpread: {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
+          ja: '${stack} => 散開',
           ko: '${stack} => 산개',
         },
         spreadBehindClones: {
           en: 'Spread (Behind Clones)',
           de: 'Verteilen (hinter Klone)',
+          ja: '散開 (分身の後ろ)',
           ko: '산개 (분신 뒤)',
         },
         stackOnPlayer: Outputs.stackOnPlayer,
         stackOnPlayerBehindClones: {
           en: 'Stack on ${player} (Behind Clones)',
           de: 'Sammeln auf ${player} (hinter Klone)',
+          ja: '${player} に頭割り (分身の後ろ)',
           ko: '${player}에게 모이기 (분신 뒤)',
         },
         stackOnYou: Outputs.stackOnYou,
         stackOnYouBehindClones: {
           en: 'Stack on YOU (Behind Clones)',
           de: 'Sammeln auf DIR (hinter Klone)',
+          ja: '自分に頭割り (分身の後ろ)',
           ko: '쉐어징 대상자 (분신 뒤)',
         },
       },
@@ -1082,6 +1119,7 @@ const triggerSet: TriggerSet<Data> = {
         rotate: {
           en: 'Rotate',
           de: 'Rotieren',
+          ja: '回転',
           ko: '회전',
         },
       },
@@ -1099,6 +1137,7 @@ const triggerSet: TriggerSet<Data> = {
         lines: {
           en: 'Avoid Lines',
           de: 'Vermeide Linien',
+          ja: '直線攻撃を避ける',
           ko: '직선장판 피하기',
         },
       },
@@ -1247,6 +1286,7 @@ const triggerSet: TriggerSet<Data> = {
         stackThenSpread: {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
+          ja: '${stack} => 散開',
           ko: '${stack} => 산개',
         },
         spread: Outputs.spread,
@@ -1320,6 +1360,7 @@ const triggerSet: TriggerSet<Data> = {
         uvRayOnYou: {
           en: 'UV Ray on YOU',
           de: 'Ätherlicht auf DIR',
+          ja: '自分に魔光',
           ko: '파란징 대상자',
         },
       },
@@ -1472,6 +1513,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${inout} + ${dir}',
           de: '${inout} + ${dir}',
+          ja: '${inout} + ${dir}',
           ko: '${inout} + ${dir}',
         },
         unknown: Outputs.unknown,
@@ -1486,6 +1528,7 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform: {
           en: 'Change Platform',
           de: 'Platform wechseln',
+          ja: '次の島へ',
           ko: '플랫폼 변경',
         },
       },
@@ -1517,6 +1560,7 @@ const triggerSet: TriggerSet<Data> = {
         purgeOnPlayers: {
           en: 'Elemental Purge on ${player1} and ${player2}',
           de: 'Siegel des Windes auf ${player1} und ${player2}',
+          ja: '魔印: ${player1} と ${player2}',
         },
       },
     },
@@ -1599,16 +1643,19 @@ const triggerSet: TriggerSet<Data> = {
         passTetherDir: {
           en: 'Pass Tether to ${dir}',
           de: 'Übergebe Verbindung nach ${dir}',
+          ja: '${dir} に線を渡す',
           ko: '${dir}로 선 넘기기',
         },
         tetherOnYou: {
           en: 'Tether on YOU',
           de: 'Verbindung auf DIR',
+          ja: '自分に線',
           ko: '선 대상자',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
+          ja: '${dir} に線',
           ko: '${dir}쪽에 선',
         },
       },
@@ -1657,16 +1704,19 @@ const triggerSet: TriggerSet<Data> = {
         passTether: {
           en: 'Pass Tether',
           de: 'Verbindung übergeben',
+          ja: '線を渡す',
           ko: '선 넘기기',
         },
         passTetherDir: {
           en: 'Pass Tether ${dir}',
           de: 'Verbindung übergeben ${dir}',
+          ja: '${dir} に線を渡す',
           ko: '${dir}쪽에 선 넘기기',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
+          ja: '${dir} に線',
           ko: '${dir}쪽에 선',
         },
       },
@@ -1881,11 +1931,13 @@ const triggerSet: TriggerSet<Data> = {
         closeTetherOnYou: {
           en: 'Close Tether on YOU',
           de: 'Nahe Verbindung auf DIR',
+          ja: '自分に近づく線',
           ko: '가까이 선 대상자',
         },
         farTetherOnYou: {
           en: 'Far Tether on YOU',
           de: 'Entfernte Verbindung auf DIR',
+          ja: '自分に離れる線',
           ko: '멀리 선 대상자',
         },
       },
@@ -1984,21 +2036,25 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform1: {
           en: 'Change Platform 1',
           de: 'Wechsel Platform 1',
+          ja: '次の島へ1',
           ko: '플랫폼 변경 1',
         },
         changePlatform2: {
           en: 'Change Platform 2',
           de: 'Wechsel Platform 2',
+          ja: '次の島へ2',
           ko: '플랫폼 변경 2',
         },
         changePlatform3: {
           en: 'Change Platform 3',
           de: 'Wechsel Platform 3',
+          ja: '次の島へ3',
           ko: '플랫폼 변경 3',
         },
         finalPlatform: {
           en: 'Change Platform (Final)',
           de: 'Wechsel Platform (Finale)',
+          ja: '次の島へ (最終)',
           ko: '플랫폼 변경 (마지막)',
         },
       },
