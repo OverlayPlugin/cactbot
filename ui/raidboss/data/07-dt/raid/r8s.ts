@@ -13,6 +13,9 @@ type Phase = 'one' | 'adds' | 'rage' | 'moonlight' | 'two' | 'twofold' | 'champi
 type ChampionOrders = {
   [key: number]: string[];
 };
+type ChampionCounterMap = {
+  [key: number]: number[];
+};
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -196,13 +199,13 @@ const championCounterOrders: ChampionOrders = {
 };
 
 // Map donutPlatform to mechIndex for Counterclockwise
-const championCounterIndex = [[0, 1, 2, 3, 4], [4, 0, 1, 2, 3], [3, 4, 0, 1, 2], [2, 3, 4, 0, 1], [
-  1,
-  2,
-  3,
-  4,
-  0,
-]];
+const championCounterIndex: ChampionCounterMap = {
+  0: [0, 1, 2, 3, 4],
+  1: [4, 0, 1, 2, 3],
+  2: [3, 4, 0, 1, 2],
+  3: [2, 3, 4, 0, 1],
+  4: [1, 2, 3, 4, 0],
+};
 
 // Return the combatant's platform by number
 const getPlatformNum = (
