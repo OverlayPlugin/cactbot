@@ -1,3 +1,4 @@
+import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -43,7 +44,7 @@ const triggerSet: TriggerSet<Data> = {
   resetWhenOutOfCombat: false,
   triggers: [
     {
-      id: 'South Horn Critical Encounter',
+      id: 'Occult Crescent Critical Encounter',
       type: 'ActorControl',
       netRegex: { command: '80000014' },
       run: (data, matches) => {
@@ -72,6 +73,91 @@ const triggerSet: TriggerSet<Data> = {
         if (data.options.Debug)
           console.log(`Start CE: ??? (${ceId})`);
       },
+    },
+    {
+      id: 'Occult Crescent Berserker Scathing Sweep',
+      type: 'StartsUsing',
+      netRegex: { source: 'Crescent Berserker', id: 'A6C3', capture: false },
+      response: Responses.getBehind(),
+    },
+    {
+      id: 'Occult Crescent Hinkypunk Dread Dive',
+      type: 'StartsUsing',
+      netRegex: { source: 'Hinkypunk', id: 'A1A4', capture: true },
+      response: Responses.tankBuster(),
+    },
+    {
+      id: 'Occult Crescent Hinkypunk Shades Nest',
+      type: 'StartsUsing',
+      // TODO: Some of these are from boss, some are not.
+      netRegex: { source: 'Hinkypunk', id: ['A19C', 'A19D', 'A430', 'A431'], capture: true },
+      suppressSeconds: 1,
+      response: Responses.getIn(),
+      run: (_data, matches) => console.log(`Shades Nest: ${matches.id}`),
+    },
+    {
+      id: 'Occult Crescent Hinkypunk Shades Crossing',
+      type: 'StartsUsing',
+      // TODO: Some of these are from boss, some are not.
+      netRegex: { source: 'Hinkypunk', id: ['A19F', 'A1A0', 'A432', 'A433'], capture: true },
+      suppressSeconds: 1,
+      response: Responses.getIntercards(),
+      run: (_data, matches) => console.log(`Shades Nest: ${matches.id}`),
+    },
+    {
+      id: 'Occult Crescent Hinkypunk Lamplight',
+      type: 'StartsUsing',
+      netRegex: { source: 'Hinkypunk', id: ['A1A5', 'A310'], capture: false },
+      suppressSeconds: 1,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Black Star Choco Windstorm',
+      type: 'StartsUsing',
+      netRegex: { source: 'Black Star', id: 'A0BB', capture: false },
+      response: Responses.getOut(),
+    },
+    {
+      id: 'Occult Crescent Black Star Choco Cyclone',
+      type: 'StartsUsing',
+      netRegex: { source: 'Black Star', id: 'A0BC', capture: false },
+      response: Responses.getIn(),
+    },
+    {
+      id: 'Occult Crescent Neo Garula Squash',
+      type: 'StartsUsing',
+      netRegex: { source: 'Neo Garula', id: 'A0E5', capture: true },
+      response: Responses.tankBuster(),
+    },
+    {
+      id: 'Occult Crescent Lion Rampant Fearsome Glint',
+      type: 'StartsUsing',
+      netRegex: { source: 'Lion Rampant', id: 'A1C3', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Death Claw Dirty Nails',
+      type: 'StartsUsing',
+      netRegex: { source: 'Death Claw', id: 'A174', capture: true },
+      response: Responses.tankBuster(),
+    },
+    {
+      id: 'Occult Crescent Death Claw Grip of Poison',
+      type: 'StartsUsing',
+      netRegex: { source: 'Death Claw', id: 'A175', capture: false },
+      response: Responses.bleedAoe(),
+    },
+    {
+      id: 'Occult Crescent Death Claw Vertical Crosshatch',
+      type: 'StartsUsing',
+      netRegex: { source: 'Death Claw', id: ['A16B', 'A172'], capture: false },
+      response: Responses.getSidesThenFrontBack('alert'),
+    },
+    {
+      id: 'Occult Crescent Death Claw Horizontal Crosshatch',
+      type: 'StartsUsing',
+      netRegex: { source: 'Death Claw', id: ['A16C', 'A173'], capture: false },
+      response: Responses.getFrontBackThenSides('alert'),
     },
   ],
   timelineReplace: [],

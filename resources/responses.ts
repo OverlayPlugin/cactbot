@@ -438,9 +438,14 @@ export const Responses = {
   getOut: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.out),
   outOfMelee: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.outOfMelee),
   getInThenOut: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.inThenOut),
+  getIntercards: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.intercards),
   getOutThenIn: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.outThenIn),
   getBackThenFront: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.backThenFront),
   getFrontThenBack: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.frontThenBack),
+  getSidesThenFrontBack: (sev?: Severity) =>
+    staticResponse(defaultInfoText(sev), Outputs.sidesThenFrontBack),
+  getFrontBackThenSides: (sev?: Severity) =>
+    staticResponse(defaultInfoText(sev), Outputs.frontBackThenSides),
   goFront: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.goFront),
   goMiddle: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.goIntoMiddle),
   goRight: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.right),
