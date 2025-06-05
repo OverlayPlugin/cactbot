@@ -1983,6 +1983,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {
         '4Th Legion Augur': 'IVレギオン・アウグル',
         '4Th Legion Blackburn': 'IVレギオン・ブラックバーン',
