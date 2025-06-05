@@ -266,6 +266,14 @@ const contentTypeToLabel: {
       ko: '보즈야',
     },
   },
+  [ContentType.OccultCrescent]: {
+    full: {
+      en: 'Occult Crescent',
+    },
+    short: {
+      en: 'Occult',
+    },
+  },
   [ContentType.DisciplesOfTheLand]: {
     full: {
       en: 'Ocean Fishing/Diadem',
@@ -1077,6 +1085,7 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
     ContentType.TheMaskedCarnivale,
     ContentType.Eureka,
     ContentType.SaveTheQueen,
+    ContentType.OccultCrescent,
     ContentType.DisciplesOfTheLand,
     ContentType.TreasureHunt,
     ContentType.DeepDungeons,
