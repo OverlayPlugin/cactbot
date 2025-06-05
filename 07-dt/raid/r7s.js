@@ -1,6 +1,5 @@
 // @TODO:
 // - Sinister Seeds - callout who has puddles?
-// - Roots of Evil - dodge callout?
 // - adds interrupt callouts?
 // - Demolition Deathmatch:
 //   - strat-specific tether callouts?
@@ -36,6 +35,23 @@ const effect0x808Data = {
 console.assert(effect0x808Data);
 const isHealerOrRanged = (x) =>
   Util.isHealerJob(x) || Util.isRangedDpsJob(x) || Util.isCasterDpsJob(x);
+const patternMap = {
+  // In order, 'outer west', 'outer east', 'inner west', 'inner east'
+  'outerNW': ['dirNW', 'dirSE', 'dirSW', 'dirNE'],
+  'outerNE': ['dirSW', 'dirNE', 'dirNW', 'dirSE'],
+};
+const pollenFlagMap = {
+  // Platform 1:
+  '05': patternMap.outerNE,
+  '09': patternMap.outerNE,
+  '0D': patternMap.outerNW,
+  '11': patternMap.outerNW,
+  // Platform 3:
+  '15': patternMap.outerNE,
+  '19': patternMap.outerNE,
+  '1D': patternMap.outerNW,
+  '21': patternMap.outerNW, // 21, 22, 23, 24
+};
 Options.Triggers.push({
   id: 'AacCruiserweightM3Savage',
   zoneId: ZoneId.AacCruiserweightM3Savage,
@@ -140,6 +156,42 @@ Options.Triggers.push({
         in: Outputs.in,
         out: Outputs.out,
         unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'R7S Pollen',
+      type: 'MapEffect',
+      netRegex: { location: Object.keys(pollenFlagMap), flags: '00020001', capture: true },
+      infoText: (_data, matches, output) => {
+        const safeSpots = pollenFlagMap[matches.location];
+        if (safeSpots === undefined)
+          return;
+        const [outerSafe1, outerSafe2, innerSafe1, innerSafe2] = safeSpots;
+        return output.combo({
+          outer: output.outer({
+            dir1: output[outerSafe1](),
+            dir2: output[outerSafe2](),
+          }),
+          inner: output.inner({
+            dir1: output[innerSafe1](),
+            dir2: output[innerSafe2](),
+          }),
+        });
+      },
+      outputStrings: {
+        combo: {
+          en: '${outer}, ${inner}',
+        },
+        outer: {
+          en: 'Outer ${dir1}/${dir2}',
+        },
+        inner: {
+          en: 'Inner ${dir1}/${dir2}',
+        },
+        dirNW: Outputs.dirNW,
+        dirNE: Outputs.dirNE,
+        dirSW: Outputs.dirSW,
+        dirSE: Outputs.dirSE,
       },
     },
     {
