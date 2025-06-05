@@ -1250,7 +1250,7 @@ Options.Triggers.push({
       },
       run: (data) => {
         if (data.uvFangSafeSide !== undefined) {
-          data.myPlatformNum === undefined;
+          data.myPlatformNum = undefined;
           data.uvFangSafeSide = undefined;
           data.hasUVRay = false;
         }
@@ -1676,7 +1676,7 @@ Options.Triggers.push({
           data.championTracker = data.championTracker + 1;
           // Shift platform history
           data.myLastPlatformNum = data.myPlatformNum;
-          data.myPlatformNum === undefined;
+          data.myPlatformNum = undefined;
           data.championFangSafeSide = undefined;
         }
       },
