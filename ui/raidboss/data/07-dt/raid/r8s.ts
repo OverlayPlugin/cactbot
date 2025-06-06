@@ -13,6 +13,9 @@ type Phase = 'one' | 'adds' | 'rage' | 'moonlight' | 'two' | 'twofold' | 'champi
 type ChampionOrders = {
   [key: number]: string[];
 };
+type ChampionCounterMap = {
+  [key: number]: number[];
+};
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -200,6 +203,15 @@ const championCounterOrders: ChampionOrders = {
   2: ['out', 'in', 'donut', 'sides', 'in'],
   3: ['in', 'out', 'in', 'donut', 'sides'],
   4: ['sides', 'in', 'out', 'in', 'donut'],
+};
+
+// Map donutPlatform to mechIndex for Counterclockwise
+const championCounterIndex: ChampionCounterMap = {
+  0: [0, 1, 2, 3, 4],
+  1: [4, 0, 1, 2, 3],
+  2: [3, 4, 0, 1, 2],
+  3: [2, 3, 4, 0, 1],
+  4: [1, 2, 3, 4, 0],
 };
 
 // Return the combatant's platform by number
@@ -1804,8 +1816,12 @@ const triggerSet: TriggerSet<Data> = {
           mechs: ChampionOrders,
           count: number,
         ): string => {
-          const mechIndex = (donutPlatform + count) % 5;
+          const mechIndex = clock === 'clockwise'
+            ? (donutPlatform + count) % 5
+            : championCounterIndex[donutPlatform]?.[count];
 
+          if (mechIndex === undefined)
+            return 'unknown';
           return mechs[playerPlatform]?.[mechIndex] ?? 'unknown';
         };
 
@@ -1875,17 +1891,22 @@ const triggerSet: TriggerSet<Data> = {
         const donutPlatform = data.championDonutStart;
         const myPlatform = data.myLastPlatformNum;
         const orders = data.championOrders;
+        const clock = data.championClock;
+        const count = data.championTracker;
 
         // Calculate next mech index with wrap around
         const mechIndex = donutPlatform === undefined
           ? undefined
-          : (donutPlatform + data.championTracker) % 5;
+          : clock === 'clockwise'
+          ? (donutPlatform + count) % 5
+          : championCounterIndex[donutPlatform]?.[count];
 
         // Retrieve the mech based on our platform, donut platform, and mech index
         const mech = (
             myPlatform === undefined ||
             mechIndex === undefined ||
-            orders === undefined
+            orders === undefined ||
+            clock === undefined
           )
           ? 'unknown'
           : orders[myPlatform]?.[mechIndex] ?? 'unknown';
