@@ -2060,6 +2060,7 @@ const triggerSet: TriggerSet<Data> = {
         'Light Pseudopillar': '魔科学式リヒト・ゾイレ',
         'Magitek Bit': 'ビット射出',
         'Magitek Crossray/Magitek Halo': '魔導クロスレーザー/魔導バーニングサークル',
+        'Magitek Halo/Magitek Crossray': '魔導バーニングサークル/魔導クロスレーザー',
         'Mannatheihwon Flame': 'マントヴァフレイム',
         'Might Of Malice': '重蹴撃',
         'Missile Command': 'ミサイル全弾発射',
