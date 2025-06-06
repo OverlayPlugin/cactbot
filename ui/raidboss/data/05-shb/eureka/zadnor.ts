@@ -2023,6 +2023,8 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!Tamed )Alkonost': 'アルコノスト',
       },
       'replaceText': {
+        '--lasers--': '--レーザー--',
+        '--line stack--': '--直線頭割り--',
         '74 Degrees': 'ウォーターショット',
         'Advanced Death IV': '強化デスジャ',
         'Advanced Death Ray': '強化デスレイ',
