@@ -40,7 +40,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'Occult Crescent South Horn critical encounter triggers/timeline.',
   },
-  // timelineFile: 'occult_crescent_south_horn.txt',
+  timelineFile: 'occult_crescent_south_horn.txt',
   resetWhenOutOfCombat: false,
   triggers: [
     {
