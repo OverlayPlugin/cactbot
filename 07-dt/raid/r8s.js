@@ -136,6 +136,14 @@ const championCounterOrders = {
   3: ['in', 'out', 'in', 'donut', 'sides'],
   4: ['sides', 'in', 'out', 'in', 'donut'],
 };
+// Map donutPlatform to mechIndex for Counterclockwise
+const championCounterIndex = {
+  0: [0, 1, 2, 3, 4],
+  1: [4, 0, 1, 2, 3],
+  2: [3, 4, 0, 1, 2],
+  3: [2, 3, 4, 0, 1],
+  4: [1, 2, 3, 4, 0],
+};
 // Return the combatant's platform by number
 const getPlatformNum = (x, y) => {
   // S Platform
@@ -1630,7 +1638,11 @@ Options.Triggers.push({
         data.championOrders = orders;
         // Retrieve the mech based on our platform and donut platform
         const getMech = (playerPlatform, donutPlatform, mechs, count) => {
-          const mechIndex = (donutPlatform + count) % 5;
+          const mechIndex = clock === 'clockwise'
+            ? (donutPlatform + count) % 5
+            : championCounterIndex[donutPlatform]?.[count];
+          if (mechIndex === undefined)
+            return 'unknown';
           return mechs[playerPlatform]?.[mechIndex] ?? 'unknown';
         };
         return output.mechanics({
@@ -1691,14 +1703,19 @@ Options.Triggers.push({
         const donutPlatform = data.championDonutStart;
         const myPlatform = data.myLastPlatformNum;
         const orders = data.championOrders;
+        const clock = data.championClock;
+        const count = data.championTracker;
         // Calculate next mech index with wrap around
         const mechIndex = donutPlatform === undefined
           ? undefined
-          : (donutPlatform + data.championTracker) % 5;
+          : clock === 'clockwise'
+          ? (donutPlatform + count) % 5
+          : championCounterIndex[donutPlatform]?.[count];
         // Retrieve the mech based on our platform, donut platform, and mech index
         const mech = (myPlatform === undefined ||
             mechIndex === undefined ||
-            orders === undefined)
+            orders === undefined ||
+            clock === undefined)
           ? 'unknown'
           : orders[myPlatform]?.[mechIndex] ?? 'unknown';
         const dir = data.championFangSafeSide;
