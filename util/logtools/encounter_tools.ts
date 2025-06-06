@@ -1,9 +1,15 @@
+import {
+  BozjanSouthernFrontCEs,
+  OccultCrescentSouthHornCEs,
+  ZadnorCEs,
+} from '../../resources/ce_info';
 import ContentType from '../../resources/content_type';
 import DTFuncs from '../../resources/datetime';
 import NetRegexes, { commonNetRegex } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
 import PetData from '../../resources/pet_names';
 import StringFuncs from '../../resources/stringhandlers';
+import ZoneId from '../../resources/zone_id';
 import ZoneInfo from '../../resources/zone_info';
 import { NetAnyMatches, NetMatches } from '../../types/net_matches';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
@@ -90,6 +96,7 @@ export class EncounterFinder {
   currentZone: ZoneEncInfo = {};
   currentFight: FightEncInfo = {};
   currentSeal?: string;
+  currentCE?: string;
   zoneInfo?: typeof ZoneInfo[number];
 
   haveWon = false;
@@ -112,6 +119,7 @@ export class EncounterFinder {
 
   sealRegexes: Array<CactbotBaseRegExp<'GameLog'>> = [];
   unsealRegexes: Array<CactbotBaseRegExp<'GameLog'>> = [];
+  ceRegex: CactbotBaseRegExp<'ActorControl'>;
 
   initializeZone(): void {
     this.currentZone = {};
@@ -152,6 +160,8 @@ export class EncounterFinder {
       const line = `.*?${lang}.*?`;
       this.unsealRegexes.push(NetRegexes.message({ line: line }));
     }
+
+    this.ceRegex = NetRegexes.network6d({ command: '80000014' });
   }
 
   skipZone(): boolean {
@@ -324,6 +334,12 @@ export class EncounterFinder {
         return;
       }
     }
+
+    const ce = this.ceRegex.exec(line)?.groups;
+
+    if (ce) {
+      this.onCE(line, ce);
+    }
   }
 
   // start/endZone always bracket all fights and seals.
@@ -340,7 +356,7 @@ export class EncounterFinder {
   }
   onStartFight(
     line: string,
-    matches: NetMatches['Ability' | 'GameLog' | 'SystemLogMessage' | 'InCombat'],
+    matches: NetMatches['Ability' | 'ActorControl' | 'GameLog' | 'SystemLogMessage' | 'InCombat'],
     fightName?: string,
     sealId?: string,
   ): void {
@@ -379,6 +395,34 @@ export class EncounterFinder {
   onUnseal(line: string, matches: NetMatches['GameLog' | 'SystemLogMessage']): void {
     this.onEndFight(line, matches, 'Unseal');
     this.currentSeal = undefined;
+  }
+
+  onCE(line: string, matches: NetMatches['ActorControl']): void {
+    let validCEs = undefined;
+    if (this.currentZone.zoneId === ZoneId.TheBozjanSouthernFront) {
+      validCEs = BozjanSouthernFrontCEs;
+    } else if (this.currentZone.zoneId === ZoneId.Zadnor) {
+      validCEs = ZadnorCEs;
+    } else if (this.currentZone.zoneId === ZoneId.TheOccultCrescentSouthHorn) {
+      validCEs = OccultCrescentSouthHornCEs;
+    } else {
+      return;
+    }
+
+    if (matches.data0 === '00') {
+      this.onEndFight(line, matches, 'CE End');
+      this.currentCE = undefined;
+    } else {
+      const id = matches.data0;
+      const ceName = validCEs[id];
+
+      if (ceName === undefined) {
+        return;
+      }
+
+      this.currentCE = id;
+      this.onStartFight(line, matches, ceName);
+    }
   }
 }
 
