@@ -587,6 +587,7 @@ Options.Triggers.push({
         spawn: {
           en: 'Cloud spawning ${dir}',
           de: 'Wolke erscheint ${dir}',
+          cn: '雷云生成在 ${dir}',
           ko: '${dir}에 구름 소환',
         },
       },
@@ -631,6 +632,7 @@ Options.Triggers.push({
         text: {
           en: 'Cloud rotating ${rot} towards ${dir}',
           de: 'Wolke rotiert ${rot} Richtung ${dir}',
+          cn: '雷云旋转 ${rot} 朝 ${dir}',
           ko: '구름이 ${dir}쪽으로 ${rot} 회전',
         },
       },
@@ -726,16 +728,19 @@ Options.Triggers.push({
         eightSouth: {
           en: '8 Towers S',
           de: '8 Türme S',
+          cn: '南方八塔',
           ko: '남쪽 탑 8개',
         },
         fourNW: {
           en: '4 Towers NW',
           de: '4 Türme NW',
+          cn: '西北四塔',
           ko: '북서쪽 탑 4개',
         },
         fourNE: {
           en: '4 Towers NE',
           de: '4 Türme NO',
+          cn: '东北四塔',
           ko: '북동쪽 탑 4개',
         },
       },
