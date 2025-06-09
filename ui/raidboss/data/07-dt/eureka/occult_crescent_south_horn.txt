@@ -116,78 +116,6 @@ hideall "--sync--"
 # * Figure out which timeline entries are superfluous
 2000.0 "--sync--" ActorControl { command: "80000014", data0: "343" } window 100000,0
 2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
-# Backup sync on first cast bar
-2142.8 "--sync--" StartsUsing { id: "A359", source: "Occult Knight" } window 42.8,2
-2142.8 "Line of Fire" Ability { id: "A359", source: "Occult Knight" }
-2144.8 "Line of Fire" Ability { id: "A359", source: "Occult Knight" }
-2146.9 "Line of Fire" Ability { id: "A35A", source: "Occult Knight" }
-2148.9 "Line of Fire" Ability { id: "A35A", source: "Occult Knight" }
-2160.2 "Knuckle Crusher" Ability { id: "A35B", source: "Occult Knight" }
-2161.1 "Knuckle Crusher" Ability { id: "A35B", source: "Occult Knight" }
-2162.1 "Knuckle Crusher" Ability { id: "A35B", source: "Occult Knight" }
-2163.1 "Knuckle Crusher" Ability { id: "A35B", source: "Occult Knight" }
-2164.0 "Knuckle Crusher" Ability { id: "A35B", source: "Occult Knight" }
-2168.6 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2169.1 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2169.8 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2170.4 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2171.0 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2171.7 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2172.3 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2173.0 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2210.9 "Spinning Siege" Ability { id: "A35F", source: "Occult Knight" }
-2212.7 "Spinning Siege" Ability { id: "A360", source: "Occult Knight" }
-2214.5 "Spinning Siege" Ability { id: "A360", source: "Occult Knight" }
-2216.1 "Spinning Siege" Ability { id: "A360", source: "Occult Knight" }
-2217.7 "Spinning Siege" Ability { id: "A360", source: "Occult Knight" }
-2219.3 "Spinning Siege" Ability { id: "A360", source: "Occult Knight" }
-2225.9 "Blast Knuckles" Ability { id: "A362", source: "Occult Knight" }
-2226.8 "Blast Knuckles" Ability { id: "A3A3", source: "Occult Knight" }
-2227.8 "Cage of Fire" Ability { id: "A361", source: "Occult Knight" }
-2229.7 "Cage of Fire" Ability { id: "A361", source: "Occult Knight" }
-2232.7 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2233.3 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2233.3 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2233.9 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2234.6 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2235.3 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2235.9 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2236.4 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2237.1 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2273.7 "Moatmaker" Ability { id: "A363", source: "Occult Knight" }
-2275.6 "Dualfist Flurry" Ability { id: "A364", source: "Occult Knight" }
-2276.4 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2276.5 "Dualfist Flurry" Ability { id: "A365", source: "Occult Knight" }
-2277.4 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2278.2 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2278.3 "Moatmaker" Ability { id: "A363", source: "Occult Knight" }
-2278.3 "Dualfist Flurry" Ability { id: "A365", source: "Occult Knight" }
-2279.1 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2279.2 "Dualfist Flurry" Ability { id: "A365", source: "Occult Knight" }
-2279.8 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2279.9 "Dualfist Flurry" Ability { id: "A365", source: "Occult Knight" }
-2280.5 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2281.2 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2281.4 "Dualfist Flurry" Ability { id: "A365", source: "Occult Knight" }
-2282.2 "Dualfist Flurry" Ability { id: "A365", source: "Occult Knight" }
-2282.2 "Moatmaker" Ability { id: "A363", source: "Occult Knight" }
-2282.9 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2283.0 "Dualfist Flurry" Ability { id: "A365", source: "Occult Knight" }
-2283.9 "Dualfist Flurry" Ability { id: "A890", source: "Occult Knight" }
-2286.9 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2287.0 "Moatmaker" Ability { id: "A363", source: "Occult Knight" }
-2287.3 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2287.8 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2288.4 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2289.1 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2289.6 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2289.6 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2290.1 "Knuckle Down" Ability { id: "A35C", source: "Occult Knight" }
-2290.7 "Knuckle Down" Ability { id: "A35D", source: "Occult Knight" }
-2334.8 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
-2345.6 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
-2356.4 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
-2367.3 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
 
 ### Crawling Death
 # ALL ENCOUNTER ABILITIES
@@ -231,7 +159,7 @@ hideall "--sync--"
 3131.1 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
 3135.2 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
 
-# Crosshatch Tutorial
+# Crosshatch tutorial
 3146.6 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
 3148.6 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" } window 0,2
 3158.7 "Skulking Orders" Ability { id: "A16E", source: "Death Claw" }
@@ -288,6 +216,10 @@ hideall "--sync--"
 # A9BC What're You Buying?
 #
 # IGNORED ABILITIES
+# A22B Part of the same ability or a variant?
+# A9BC Duplicat with another ability?
+# 368 Probable auto attack
+# A238 Part of Earthquake, always happens first
 #
 # TODO
 # * Document abilities
@@ -296,37 +228,6 @@ hideall "--sync--"
 # * Determine loop
 4000.0 "--sync--" ActorControl { command: "80000014", data0: "32B" } window 100000,0
 4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
-# Backup sync on first cast bar
-4128.7 "--sync--" Ability { id: "A22E", source: "Trade Tortoise" } window 28.7,0
-4131.4 "Ill-gotten Goods" Ability { id: "A22E", source: "Trade Tortoise" }
-4138.1 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
-4151.4 "Ill-gotten Goods" Ability { id: "A22E", source: "Trade Tortoise" }
-4158.2 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
-4171.4 "Ill-gotten Goods" Ability { id: "A22E", source: "Trade Tortoise" }
-4178.3 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
-4193.4 "Earthquake" Ability { id: "A239", source: "Trade Tortoise" }
-4203.2 "Recommended for You" Ability { id: "A409", source: "Trade Tortoise" }
-4229.5 "What're You Buying?" Ability { id: "A22C", source: "Trade Tortoise" }
-4236.3 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
-4259.0 "Cost of Living" Ability { id: "A232", source: "Trade Tortoise" }
-4270.6 "Recommended for You" Ability { id: "A409", source: "Trade Tortoise" }
-4297.0 "What're You Buying?" Ability { id: "A9BC", source: "Trade Tortoise" }
-4297.0 "What're You Buying?" Ability { id: "A22C", source: "Trade Tortoise" }
-4308.5 "Waterspout" Ability { id: "A236", source: "Trade Tortoise" }
-4314.2 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
-4318.2 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4319.0 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4319.9 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4320.8 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4321.7 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4322.6 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4323.6 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4324.5 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4325.4 "Waterspout" #Ability { id: "A237", source: "Trade Tortoise" }
-4338.8 "Cost of Living" Ability { id: "A232", source: "Trade Tortoise" }
-4340.6 "Hoard Wealth" Ability { id: "A96C", source: "Trade Tortoise" }
-4343.5 "Hoard Wealth" Ability { id: "A96C", source: "Trade Tortoise" }
-4356.4 "Earthquake" Ability { id: "A239", source: "Trade Tortoise" }
 
 ### Eternal Watch
 5000.0 "--sync--" ActorControl { command: "80000014", data0: "329" } window 100000,0
@@ -398,18 +299,18 @@ hideall "--sync--"
 # Backup sync on first cast bar
 13105.1 "--sync--" StartsUsing { id: "7845", source: "Crescent Berserker" } window 17.4,2
 
-# Scathing Sweep Tutorial
+# Scathing Sweep tutorial
 13111.1 "Boil Over" Ability { id: "7845", source: "Crescent Berserker" }
 13124.0 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
 13133.4 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
 
-# Rage Tutorial
+# Rage tutorial
 13145.1 "Channeled Rage" Ability { id: "7847", source: "Crescent Berserker" }
 13158.3 "Hopping Mad" Ability { id: "91BA", source: "Crescent Berserker" }
 13159.3 "Hopping Mad" Ability { id: "91CB", source: "Crescent Berserker" }
 13161.3 "Bedrock Uplift" Ability { id: "93AF", source: "Crescent Berserker" }
 
-# Heightened Rage Tutorial
+# Heightened Rage tutorial
 13171.4 "Heightened Rage" Ability { id: "93B7", source: "Crescent Berserker" }
 13185.5 "Hopping Mad" Ability { id: "7848", source: "Crescent Berserker" }
 13186.5 "Hopping Mad" Ability { id: "7898", source: "Crescent Berserker" }
