@@ -1,0 +1,314 @@
+### Occult Crescent: South Horn
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# Use zone-unseal and 0x21 Reset lines
+# Trigger set contains 'resetWhenOutOfCombat: false'
+
+0.0 "--Reset--" ActorControl { command: "80000014", data0: "00" } window 0,100000 jump 0
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+# Unlike with Bozja, you do not teleport into critical encounters from afar.
+# Instead players must run to the encounter spot. This makes the "entry"
+# into the critical encounter happen much later.
+
+### Calamity Bound
+# ALL ENCOUNTER ABILITIES
+# 9087 Exodus
+# A178 Sunderseal Roar
+# A179 Sunderseal Roar
+# A17A --sync--
+# A18A Great Ball of Fire
+# A18B Blazing Flare
+# A18C Flare
+# A18D Explosion
+# A18E Void Thunder III
+# A18F Karmic Drain
+# A190 Tidal Breath
+# A191 Gigaflare
+# A192 Gigaflare
+# A193 Fell Forces
+#
+# IGNORED ABILITIES
+# 9087 Exodus - This doesn't seem to do anything/be anything and doesn't always happen
+# A179 Sunderseal Roar - castbar or vfx
+# A18C Flare - rolled into duration for Blazing Flare
+# A191 Gigaflare - castbar or vfx
+# A193 Fell Forces - Autoattack
+#
+# TODO
+# * Verify loop
+1000.0 "--sync--" ActorControl { command: "80000014", data0: "32F" } window 100000,0
+1100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+# Sunderseal 1
+# Backup sync on first castbar
+1117.3 "--sync--" StartsUsing { id: "A178", source: "Cloister Demon" } window 117.3,2
+1122.0 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
+1124.2 "Seal Asunder" StartsUsing { id: "A17B", source: "Cloister Demon" } duration 32.7
+1137.2 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
+1140.8 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
+1144.4 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
+1147.8 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
+1156.9 "--sync--" Ability { id: "A17A", source: "Cloister Demon" } window 32.7,10
+1170.6 "Great Ball of Fire" Ability { id: "A18A", source: "Cloister Demon" }
+1182.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1187.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1195.7 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
+1205.0 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
+
+# Sunderseal 2
+1222.1 label "sunderseal-loop"
+1222.1 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
+1224.3 "Seal Asunder" StartsUsing { id: "A17C", source: "Cloister Demon" } duration 32.7
+1234.2 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1237.8 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1257.0 "--sync--" Ability { id: "A17A", source: "Cloister Demon" } window 32.7,10
+1268.7 "Blazing Flare" Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
+1280.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1292.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1297.5 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
+1309.5 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
+
+# Sunderseal 3
+1325.7 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
+1327.9 "Seal Asunder" StartsUsing { id: "A17D", source: "Cloister Demon" } duration 32.7
+1342.9 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1346.5 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1360.6 "--sync--" Ability { id: "A17A", source: "Cloister Demon" } window 32.7,10
+1376.2 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
+1387.5 "Blazing Flare" Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
+1399.2 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1411.2 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1416.3 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
+1444.5 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" } window 40,40 forcejump "sunderseal-loop"
+
+### Company Of Stone
+2000.0 "--sync--" ActorControl { command: "80000014", data0: "343" } window 100000,0
+2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Crawling Death
+# ALL ENCOUNTER ABILITIES
+# 367 attack
+# A15C --sync--
+# A15D Clawmarks
+# A15E Threefold Marks
+# A15F Manifold Marks
+# A160 --sync--
+# A163 Lethal Nails
+# A164 Lethal Nails
+# A165 Lethal Nails
+# A16B Vertical Crosshatch
+# A16C Horizontal Crosshatch
+# A16D Raking Scratch
+# A16E Skulking Orders
+# A16F Clawing Shadow
+# A170 --sync--
+# A171 Skulking Orders
+# A172 Vertical Crosshatch
+# A173 Horizontal Crosshatch
+# A174 Dirty Nails
+# A175 The Grip of Poison
+# A176 The Grip of Poison
+#
+# IGNORED ABILITIES
+# A160 Probably an auto attack
+#
+# TODO
+# * Figure out which timeline entries are superfluous
+3000.0 "--sync--" ActorControl { command: "80000014", data0: "330" } window 100000,0
+3100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+# Backup sync on first cast bar
+3105.1 "--sync--" StartsUsing { id: "A174", source: "Death Claw" } window 5.2,2
+3110.2 "Dirty Nails" Ability { id: "A174", source: "Death Claw" }
+
+# Clawmarks tutorial
+3122.6 "Clawmarks" Ability { id: "A15D", source: "Death Claw" }
+3131.1 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
+3135.2 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
+
+# Crosshatch tutorial
+3146.6 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
+3146.7 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3148.7 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3158.8 "Skulking Orders" Ability { id: "A16E", source: "Death Claw" }
+3161.9 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
+3169.9 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+
+# Threefold Marks
+3179.8 label "crosshatch-loop"
+3179.8 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" }
+3188.3 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
+3192.4 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
+3196.4 "Lethal Nails" Ability { id: "A165", source: "Clawmarks" }
+3205.5 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
+3205.6 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3207.6 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3221.6 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+
+# Crosshatch & Skulking Orders
+3236.1 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
+3236.2 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3238.2 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3248.3 "Skulking Orders" Ability { id: "A171", source: "Death Claw" }
+3251.4 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
+3256.9 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
+3273.4 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+
+# Manifold Marks
+3286.5 "Manifold Marks" Ability { id: "A15F", source: "Death Claw" }
+3295.0 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
+3299.1 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
+3304.9 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
+3305.0 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3307.0 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3321.1 "Dirty Nails" Ability { id: "A174", source: "Death Claw" }
+3332.2 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+
+# Loop
+3344.5 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" } forcejump "crosshatch-loop"
+
+### Cursed Concern
+4000.0 "--sync--" ActorControl { command: "80000014", data0: "32B" } window 100000,0
+4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Eternal Watch
+5000.0 "--sync--" ActorControl { command: "80000014", data0: "329" } window 100000,0
+5100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Flame Of Dusk
+6000.0 "--sync--" ActorControl { command: "80000014", data0: "32A" } window 100000,0
+6100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### From Times Bygone
+7000.0 "--sync--" ActorControl { command: "80000014", data0: "323" } window 100000,0
+7100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Noise Complaint
+8000.0 "--sync--" ActorControl { command: "80000014", data0: "327" } window 100000,0
+8100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### On The Hunt
+9000.0 "--sync--" ActorControl { command: "80000014", data0: "338" } window 100000,0
+9100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Scourge Of The Mind
+10000.0 "--sync--" ActorControl { command: "80000014", data0: "320" } window 100000,0
+10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### Shark Attack
+11000.0 "--sync--" ActorControl { command: "80000014", data0: "32E" } window 100000,0
+11100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### The Black Regiment
+12000.0 "--sync--" ActorControl { command: "80000014", data0: "322" } window 100000,0
+12100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### The Unbridled
+# ALL ENCOUNTER ABILITIES
+# 366 attack
+# 7844 Boil Over
+# 7845 Boil Over
+# 7846 Channeled Rage
+# 7847 Channeled Rage
+# 7848 Hopping Mad
+# 7896 Hopping Mad
+# 7897 Hopping Mad
+# 7898 Hopping Mad
+# 7899 Hopping Mad
+# 90B1 Hopping Mad
+# 91BA Hopping Mad
+# 91CB Hopping Mad
+# 93A8 White-hot Rage
+# 93AC Heated Outburst
+# 93AD Bedrock Uplift
+# 93AE Bedrock Uplift
+# 93AF Bedrock Uplift
+# 93B0 Torch
+# 93B1 Heightened Rage
+# 93B7 Heightened Rage
+# A6C3 Scathing Sweep
+#
+# IGNORED ABILITIES
+# 366 This is an auto attack
+# 7844 Boil Over always has two abilities, this one comes earlier.
+#
+# TODO
+# * Verify Loop
+# * Trim superfluous entries
+# * Check for duplicate/alternate abilities?
+13000.0 "--sync--" ActorControl { command: "80000014", data0: "348" } window 100000,0
+13100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+# Backup sync on first cast bar
+13105.1 "--sync--" StartsUsing { id: "7845", source: "Crescent Berserker" } window 17.4,2
+
+# Scathing Sweep tutorial
+13111.1 "Boil Over" Ability { id: "7845", source: "Crescent Berserker" }
+13124.0 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
+13133.4 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
+
+# Rage tutorial
+13145.1 "Channeled Rage" Ability { id: "7847", source: "Crescent Berserker" }
+13158.3 "Hopping Mad (jump)" Ability { id: "91BA", source: "Crescent Berserker" }
+13159.3 "Hopping Mad (out)" Ability { id: "91CB", source: "Crescent Berserker" }
+13161.3 "Bedrock Uplift (in)" Ability { id: "93AF", source: "Crescent Berserker" }
+
+# Heightened Rage tutorial
+13171.4 "Heightened Rage" Ability { id: "93B7", source: "Crescent Berserker" }
+13185.5 "Hopping Mad (jump)" Ability { id: "7848", source: "Crescent Berserker" }
+13186.5 "Hopping Mad (out)" Ability { id: "7898", source: "Crescent Berserker" }
+13188.5 "Bedrock Uplift (in)" Ability { id: "93AD", source: "Crescent Berserker" }
+13192.0 "Hopping Mad (jump)" Ability { id: "7896", source: "Crescent Berserker" }
+13192.9 "Hopping Mad (out)" Ability { id: "7899", source: "Crescent Berserker" }
+13194.9 "Bedrock Uplift (in)" Ability { id: "93AE", source: "Crescent Berserker" }
+13198.9 "Hopping Mad (jump)" Ability { id: "7897", source: "Crescent Berserker" }
+13199.7 "Hopping Mad (out)" Ability { id: "90B1", source: "Crescent Berserker" }
+13201.7 "Bedrock Uplift (in)" Ability { id: "93AF", source: "Crescent Berserker" }
+
+# Scathing Sweep + White-hot Rage
+13214.4 label "scathing-sweep-loop"
+13214.4 "White-hot Rage" Ability { id: "93A8", source: "Crescent Berserker" }
+13222.4 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13223.7 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
+13226.3 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13233.4 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13235.1 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
+13237.4 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13244.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13246.5 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
+13248.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+
+# Heightened Rage + White-hot Rage
+13258.2 "Heightened Rage" Ability { id: "93B7", source: "Crescent Berserker" }
+13268.4 "White-hot Rage" Ability { id: "93A8", source: "Crescent Berserker" }
+13277.4 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13281.4 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13281.4 "Hopping Mad (jump)" Ability { id: "7848", source: "Crescent Berserker" }
+13282.4 "Hopping Mad (out)" Ability { id: "7898", source: "Crescent Berserker" }
+13284.4 "Bedrock Uplift (in)" Ability { id: "93AD", source: "Crescent Berserker" }
+13287.2 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13287.7 "Hopping Mad (jump)" Ability { id: "7896", source: "Crescent Berserker" }
+13288.6 "Hopping Mad (out)" Ability { id: "7899", source: "Crescent Berserker" }
+13290.6 "Bedrock Uplift (in)" Ability { id: "93AE", source: "Crescent Berserker" }
+13293.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13294.6 "Hopping Mad (jump)" Ability { id: "7897", source: "Crescent Berserker" }
+13295.4 "Hopping Mad (out)" Ability { id: "90B1", source: "Crescent Berserker" }
+13297.5 "Bedrock Uplift (in)" Ability { id: "93AF", source: "Crescent Berserker" }
+13304.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13309.6 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
+13311.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
+13322.7 "Boil Over" Ability { id: "7845", source: "Crescent Berserker" }
+
+# Loop back to Scathing Sweep
+13332.9 "White-hot Rage" Ability { id: "93A8", source: "Crescent Berserker" } forcejump "scathing-sweep-loop"
+
+### Trial By Claw
+14000.0 "--sync--" ActorControl { command: "80000014", data0: "349" } window 100000,0
+14100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
+### With Extreme Predjudice
+15000.0 "--sync--" ActorControl { command: "80000014", data0: "339" } window 100000,0
+15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+
