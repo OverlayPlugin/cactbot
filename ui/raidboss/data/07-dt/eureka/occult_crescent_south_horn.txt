@@ -130,40 +130,44 @@ hideall "--sync--"
 
 # Crosshatch tutorial
 3146.6 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
-3148.6 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" } window 0,2
-3158.7 "Skulking Orders" Ability { id: "A16E", source: "Death Claw" }
-3161.8 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
-3169.8 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+3146.7 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3148.7 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3158.8 "Skulking Orders" Ability { id: "A16E", source: "Death Claw" }
+3161.9 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
+3169.9 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
 
 # Threefold Marks
-3179.7 label "crosshatch-loop"
-3179.7 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" }
-3188.2 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
-3192.3 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
-3196.3 "Lethal Nails" Ability { id: "A165", source: "Clawmarks" }
-3205.4 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
-3207.4 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" } window 0,2
-3221.4 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+3179.8 label "crosshatch-loop"
+3179.8 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" }
+3188.3 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
+3192.4 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
+3196.4 "Lethal Nails" Ability { id: "A165", source: "Clawmarks" }
+3205.5 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
+3205.6 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3207.6 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3221.6 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
 
 # Crosshatch & Skulking Orders
-3235.9 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
-3237.9 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" } window 0,2
-3248.0 "Skulking Orders" Ability { id: "A171", source: "Death Claw" }
-3251.1 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
-3256.6 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
-3273.1 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+3236.1 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
+3236.2 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3238.2 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3248.3 "Skulking Orders" Ability { id: "A171", source: "Death Claw" }
+3251.4 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
+3256.9 "Clawing Shadow" Ability { id: "A16F", source: "Phantom Claw" }
+3273.4 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
 
 # Manifold Marks
-3286.2 "Manifold Marks" Ability { id: "A15F", source: "Death Claw" }
-3294.7 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
-3298.8 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
-3304.6 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
-3306.6 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" } window 0,2
-3320.7 "Dirty Nails" Ability { id: "A174", source: "Death Claw" }
-3331.8 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
+3286.5 "Manifold Marks" Ability { id: "A15F", source: "Death Claw" }
+3295.0 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
+3299.1 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
+3304.9 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
+3305.0 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
+3307.0 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
+3321.1 "Dirty Nails" Ability { id: "A174", source: "Death Claw" }
+3332.2 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
 
 # Loop
-3344.1 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" } forcejump "crosshatch-loop"
+3344.5 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" } forcejump "crosshatch-loop"
 
 ### Cursed Concern
 4000.0 "--sync--" ActorControl { command: "80000014", data0: "32B" } window 100000,0
