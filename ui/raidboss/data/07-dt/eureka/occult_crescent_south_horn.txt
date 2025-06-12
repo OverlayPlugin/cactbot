@@ -250,21 +250,21 @@ hideall "--sync--"
 
 # Rage tutorial
 13145.1 "Channeled Rage" Ability { id: "7847", source: "Crescent Berserker" }
-13158.3 "Hopping Mad" Ability { id: "91BA", source: "Crescent Berserker" }
-13159.3 "Hopping Mad" Ability { id: "91CB", source: "Crescent Berserker" }
-13161.3 "Bedrock Uplift" Ability { id: "93AF", source: "Crescent Berserker" }
+13158.3 "Hopping Mad (jump)" Ability { id: "91BA", source: "Crescent Berserker" }
+13159.3 "Hopping Mad (out)" Ability { id: "91CB", source: "Crescent Berserker" }
+13161.3 "Bedrock Uplift (in)" Ability { id: "93AF", source: "Crescent Berserker" }
 
 # Heightened Rage tutorial
 13171.4 "Heightened Rage" Ability { id: "93B7", source: "Crescent Berserker" }
-13185.5 "Hopping Mad" Ability { id: "7848", source: "Crescent Berserker" }
-13186.5 "Hopping Mad" Ability { id: "7898", source: "Crescent Berserker" }
-13188.5 "Bedrock Uplift" Ability { id: "93AD", source: "Crescent Berserker" }
-13192.0 "Hopping Mad" Ability { id: "7896", source: "Crescent Berserker" }
-13192.9 "Hopping Mad" Ability { id: "7899", source: "Crescent Berserker" }
-13194.9 "Bedrock Uplift" Ability { id: "93AE", source: "Crescent Berserker" }
-13198.9 "Hopping Mad" Ability { id: "7897", source: "Crescent Berserker" }
-13199.7 "Hopping Mad" Ability { id: "90B1", source: "Crescent Berserker" }
-13201.7 "Bedrock Uplift" Ability { id: "93AF", source: "Crescent Berserker" }
+13185.5 "Hopping Mad (jump)" Ability { id: "7848", source: "Crescent Berserker" }
+13186.5 "Hopping Mad (out)" Ability { id: "7898", source: "Crescent Berserker" }
+13188.5 "Bedrock Uplift (in)" Ability { id: "93AD", source: "Crescent Berserker" }
+13192.0 "Hopping Mad (jump)" Ability { id: "7896", source: "Crescent Berserker" }
+13192.9 "Hopping Mad (out)" Ability { id: "7899", source: "Crescent Berserker" }
+13194.9 "Bedrock Uplift (in)" Ability { id: "93AE", source: "Crescent Berserker" }
+13198.9 "Hopping Mad (jump)" Ability { id: "7897", source: "Crescent Berserker" }
+13199.7 "Hopping Mad (out)" Ability { id: "90B1", source: "Crescent Berserker" }
+13201.7 "Bedrock Uplift (in)" Ability { id: "93AF", source: "Crescent Berserker" }
 
 # Scathing Sweep + White-hot Rage
 13214.4 label "scathing-sweep-loop"
@@ -284,17 +284,17 @@ hideall "--sync--"
 13268.4 "White-hot Rage" Ability { id: "93A8", source: "Crescent Berserker" }
 13277.4 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
 13281.4 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
-13281.4 "Hopping Mad" Ability { id: "7848", source: "Crescent Berserker" }
-13282.4 "Hopping Mad" Ability { id: "7898", source: "Crescent Berserker" }
-13284.4 "Bedrock Uplift" Ability { id: "93AD", source: "Crescent Berserker" }
+13281.4 "Hopping Mad (jump)" Ability { id: "7848", source: "Crescent Berserker" }
+13282.4 "Hopping Mad (out)" Ability { id: "7898", source: "Crescent Berserker" }
+13284.4 "Bedrock Uplift (in)" Ability { id: "93AD", source: "Crescent Berserker" }
 13287.2 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
-13287.7 "Hopping Mad" Ability { id: "7896", source: "Crescent Berserker" }
-13288.6 "Hopping Mad" Ability { id: "7899", source: "Crescent Berserker" }
-13290.6 "Bedrock Uplift" Ability { id: "93AE", source: "Crescent Berserker" }
+13287.7 "Hopping Mad (jump)" Ability { id: "7896", source: "Crescent Berserker" }
+13288.6 "Hopping Mad (out)" Ability { id: "7899", source: "Crescent Berserker" }
+13290.6 "Bedrock Uplift (in)" Ability { id: "93AE", source: "Crescent Berserker" }
 13293.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
-13294.6 "Hopping Mad" Ability { id: "7897", source: "Crescent Berserker" }
-13295.4 "Hopping Mad" Ability { id: "90B1", source: "Crescent Berserker" }
-13297.5 "Bedrock Uplift" Ability { id: "93AF", source: "Crescent Berserker" }
+13294.6 "Hopping Mad (jump)" Ability { id: "7897", source: "Crescent Berserker" }
+13295.4 "Hopping Mad (out)" Ability { id: "90B1", source: "Crescent Berserker" }
+13297.5 "Bedrock Uplift (in)" Ability { id: "93AF", source: "Crescent Berserker" }
 13304.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
 13309.6 "Scathing Sweep" Ability { id: "A6C3", source: "Crescent Berserker" }
 13311.9 "Heated Outburst" Ability { id: "93AC", source: "Crescent Berserker" }
