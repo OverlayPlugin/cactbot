@@ -116,6 +116,7 @@ hideall "--sync--"
 # IGNORED ABILITIES
 # A160 Probably an auto attack
 #
+# TODO
 # * Figure out which timeline entries are superfluous
 3000.0 "--sync--" ActorControl { command: "80000014", data0: "330" } window 100000,0
 3100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
