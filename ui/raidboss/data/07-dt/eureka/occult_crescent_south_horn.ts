@@ -75,6 +75,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Cloister Demon Tidal Breath',
+      type: 'StartsUsing',
+      netRegex: { source: 'Cloister Demon', id: 'A190', capture: false },
+      response: Responses.getBehind(),
+    },
+    {
       id: 'Occult Crescent Berserker Scathing Sweep',
       type: 'StartsUsing',
       netRegex: { source: 'Crescent Berserker', id: 'A6C3', capture: false },
