@@ -86,34 +86,6 @@ hideall "--sync--"
 1444.5 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" } window 40,40 forcejump "sunderseal-loop"
 
 ### Company Of Stone
-# ALL ENCOUNTER ABILITIES
-# A359 Line of Fire
-# A35A Line of Fire
-# A35B Knuckle Crusher
-# A35C Knuckle Down
-# A35D Knuckle Down
-# A35E Spinning Siege
-# A35F Spinning Siege
-# A360 Spinning Siege
-# A361 Cage of Fire
-# A362 Blast Knuckles
-# A363 Moatmaker
-# A364 Dualfist Flurry
-# A365 Dualfist Flurry
-# A36A Spirit Sling
-# A3A3 Blast Knuckles
-# A3AD --sync--
-# A640 --sync--
-# A890 Dualfist Flurry
-#
-# IGNORED ABILITIES
-# A3AD Seems to be an auto attack from the trash
-# A640 Seems to be an auto attack from the trash
-#
-# TODO
-# * Document abilities
-# * Figure out ability timing/sync for enrage cast
-# * Figure out which timeline entries are superfluous
 2000.0 "--sync--" ActorControl { command: "80000014", data0: "343" } window 100000,0
 2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
@@ -144,9 +116,6 @@ hideall "--sync--"
 # IGNORED ABILITIES
 # A160 Probably an auto attack
 #
-# TODO
-# * Can timeline entries automatically update name?
-#    i.e. update the name with a sync entry once StartsUsing?
 # * Figure out which timeline entries are superfluous
 3000.0 "--sync--" ActorControl { command: "80000014", data0: "330" } window 100000,0
 3100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
@@ -197,35 +166,6 @@ hideall "--sync--"
 3344.1 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" } forcejump "crosshatch-loop"
 
 ### Cursed Concern
-# ALL ENCOUNTER ABILITIES
-# 368 attack
-# A22B What're You Buying?
-# A22C What're You Buying?
-# A22D Material World
-# A22E Ill-gotten Goods
-# A230 Fourpenny Inflation
-# A232 Cost of Living
-# A236 Waterspout
-# A237 Waterspout
-# A238 Earthquake
-# A239 Earthquake
-# A23F --sync--
-# A409 Recommended for You
-# A915 Twopenny Inflation
-# A96C Hoard Wealth
-# A9BC What're You Buying?
-#
-# IGNORED ABILITIES
-# A22B Part of the same ability or a variant?
-# A9BC Duplicat with another ability?
-# 368 Probable auto attack
-# A238 Part of Earthquake, always happens first
-#
-# TODO
-# * Document abilities
-# * Handle duplicate/alternatives?
-# * Update names based on action (fire/ice/wind?)
-# * Determine loop
 4000.0 "--sync--" ActorControl { command: "80000014", data0: "32B" } window 100000,0
 4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
@@ -287,7 +227,7 @@ hideall "--sync--"
 # A6C3 Scathing Sweep
 #
 # IGNORED ABILITIES
-# 366 This is likely an auto attack
+# 366 This is an auto attack
 # 7844 Boil Over always has two abilities, this one comes earlier.
 #
 # TODO
