@@ -196,12 +196,21 @@ export default data;`;
 
     // There's only one result from lintText, as per documentation.
     const lintResult = results[0];
+    if (lintResult === undefined) {
+      this.log.fatalError(`eslint lint result undefined - file not written.`);
+      return; // unnecessary, but Typescript doesn't know that
+    }
+
     if (
-      lintResult === undefined ||
       lintResult.errorCount > 0 ||
       lintResult.warningCount > 0
     ) {
-      this.log.fatalError(`eslint failed - automatic fixes not possible, and file not written.`);
+      for (const lintMessage of lintResult.messages) {
+        this.log.info(`${lintMessage.message}`);
+      }
+      this.log.fatalError(
+        `eslint failed with ${lintResult.errorCount} errors and ${lintResult.warningCount} warnings - automatic fixes not possible, and file not written.`,
+      );
       return; // unnecessary, but Typescript doesn't know that
     }
 
