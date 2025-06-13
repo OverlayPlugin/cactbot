@@ -8,7 +8,6 @@ import { Job } from '../../../../../types/job';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // @TODO:
-// - Sinister Seeds - callout who has puddles?
 // - adds interrupt callouts?
 // - Demolition Deathmatch:
 //   - strat-specific tether callouts?
@@ -71,6 +70,7 @@ const pollenFlagMap: { [location: string]: PatternMapValues } = {
 
 export interface Data extends RaidbossData {
   brutalImpactCount: number;
+  sinisterSeedTargets: string[];
   storedStoneringer?: 'in' | 'out';
   stoneringer2Count: number;
   stoneringer2Followup?: boolean;
@@ -86,6 +86,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r7s.txt',
   initData: () => ({
     brutalImpactCount: 6,
+    sinisterSeedTargets: [],
     stoneringer2Count: 0,
   }),
   triggers: [
@@ -229,16 +230,32 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R7S Sinister Seeds',
       type: 'StartsUsing',
       netRegex: { id: 'A56E', source: 'Brute Abombinator', capture: true },
-      condition: Conditions.targetIsYou(),
-      alertText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Drop seed',
-          de: 'Saaten ablegen',
-          ja: '種捨て',
-          cn: '放置冰花',
-          ko: '씨앗 놓기',
-        },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          seed: {
+            en: 'Drop seed',
+            de: 'Saaten ablegen',
+            ja: '種捨て',
+            cn: '放置冰花',
+            ko: '씨앗 놓기',
+          },
+          puddle: {
+            en: 'Bait Puddles',
+          },
+        };
+
+        data.sinisterSeedTargets.push(matches.target);
+        if (data.me === matches.target)
+          return { infoText: output.seed!() };
+        if (data.sinisterSeedTargets.length < 4)
+          return;
+        if (!data.sinisterSeedTargets.includes(data.me))
+          return { alertText: output.puddle!() };
+      },
+      run: (data) => {
+        if (data.sinisterSeedTargets.length >= 4)
+          data.sinisterSeedTargets = [];
       },
     },
     {
