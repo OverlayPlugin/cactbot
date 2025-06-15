@@ -16,6 +16,9 @@ type PlatformBaitMap = {
 type ChampionOrders = {
   [key: number]: string[];
 };
+type ChampionCounterMap = {
+  [key: number]: number[];
+};
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -113,16 +116,22 @@ const stoneWindOutputStrings = {
     en: '${debuff} ${num}',
     de: '${debuff} ${num}',
     ja: '${debuff} ${num}',
+    cn: '${debuff} ${num}',
+    ko: '${debuff} ${num}',
   },
   stone: {
     en: 'Stone',
     de: 'Erde',
     ja: '土',
+    cn: '土',
+    ko: '땅',
   },
   wind: {
     en: 'Wind',
     de: 'Wind',
     ja: '風',
+    cn: '风',
+    ko: '바람',
   },
   unknown: Outputs.unknown,
 };
@@ -133,11 +142,15 @@ const moonlightOutputStrings = {
     en: '${quad}',
     de: '${quad}',
     ja: '${quad}',
+    cn: '${quad}',
+    ko: '${quad}',
   },
   safeQuadrants: {
     en: '${quad1} => ${quad2}',
     de: '${quad1} => ${quad2}',
     ja: '${quad1} => ${quad2}',
+    cn: '${quad1} => ${quad2}',
+    ko: '${quad1} => ${quad2}',
   },
 };
 
@@ -150,12 +163,16 @@ const championOutputStrings = {
     en: 'Donut',
     de: 'Donut',
     ja: 'ドーナツ',
+    cn: '月环',
+    ko: '도넛',
   },
   sides: Outputs.sides,
   mechanics: {
     en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     de: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     ja: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+    cn: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+    ko: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
   },
   left: Outputs.left,
   right: Outputs.right,
@@ -163,21 +180,25 @@ const championOutputStrings = {
     en: 'Left Side',
     de: 'Linke Seite',
     ja: '左側',
+    ca: '左侧',
   },
   rightSide: {
     en: 'Right Side',
     de: 'Rechte Seite',
     ja: '右側',
+    cn: '右侧',
   },
   unknownSide: {
     en: '??? Side',
     de: '??? Seite',
     ja: '??? 側',
+    cn: '??? 侧',
   },
   dirMechanic: {
     en: '${dir} ${mech}',
     de: '${dir} ${mech}',
     ja: '${dir} ${mech}',
+    cn: '${dir} ${mech}',
   },
 };
 
@@ -196,6 +217,15 @@ const championCounterOrders: ChampionOrders = {
   2: ['out', 'in', 'donut', 'sides', 'in'],
   3: ['in', 'out', 'in', 'donut', 'sides'],
   4: ['sides', 'in', 'out', 'in', 'donut'],
+};
+
+// Map donutPlatform to mechIndex for Counterclockwise
+const championCounterIndex: ChampionCounterMap = {
+  0: [0, 1, 2, 3, 4],
+  1: [4, 0, 1, 2, 3],
+  2: [3, 4, 0, 1, 2],
+  3: [2, 3, 4, 0, 1],
+  4: [1, 2, 3, 4, 0],
 };
 
 // Twofold Tempest Platform to Bait Mapping
@@ -347,6 +377,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Light Party Platform',
           de: 'Leichter Trupp Platform',
           ja: '東西の島で 4：4 頭割り',
+          cn: '东西岛治疗组分摊站位',
         },
       },
     },
@@ -360,6 +391,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'UV Positions',
           de: 'Ätherlicht Positionen',
           ja: '魔光位置へ',
+          cn: '魔光站位',
         },
       },
     },
@@ -373,6 +405,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'UV Positions',
           de: 'Ätherlicht Positionen',
           ja: '魔光位置へ',
+          cn: '魔光站位',
         },
       },
     },
@@ -386,6 +419,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bait Mooncleaver',
           de: 'Ködere Klingensturz',
           ja: '剛刃一閃を誘導',
+          cn: '引导碎地板',
         },
       },
     },
@@ -398,6 +432,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Howling Eight Position',
           de: 'Achtfache Lichtkugel Position',
           ja: '八連光弾の位置へ',
+          cn: '八连光弹集合',
         },
       },
     },
@@ -458,21 +493,29 @@ const triggerSet: TriggerSet<Data> = {
           en: 'In + Cards + Partners',
           de: 'Rein + Kardinal + Partner',
           ja: '内側 + 十字 + ペア',
+          cn: '内侧 + 十字 + 分摊',
+          ko: '안 + 십자방향 + 쉐어',
         },
         inInterCardsPartners: {
           en: 'In + Intercards + Partners',
           de: 'Rein + Interkardinal + Partner',
           ja: '内側 + 斜め + ペア',
+          cn: '内侧 + 斜角 + 分摊',
+          ko: '안 + 대각선 + 쉐어',
         },
         outCardsProtean: {
           en: 'Out + Cards + Protean',
           de: 'Raus + Kardinal + Himmelsrichtungen',
           ja: '外側 + 十字 + 散開',
+          cn: '外侧 + 十字 + 分散',
+          ko: '밖 + 십자방향 + 산개',
         },
         outInterCardsProtean: {
           en: 'Out + InterCards + Protean',
           de: 'Raus + Interkardinal + Himmelsrichtungen',
           ja: '外側 + 斜め + 散開',
+          cn: '外侧 + 斜角 + 分散',
+          ko: '밖 + 대각선 + 산개',
         },
       },
     },
@@ -495,11 +538,15 @@ const triggerSet: TriggerSet<Data> = {
           en: '(In Later)',
           de: '(später Rein)',
           ja: '(あとで内側)',
+          cn: '(稍后内侧)',
+          ko: '(나중에 안)',
         },
         outLater: {
           en: '(Out Later)',
           de: '(später Raus)',
           ja: '(あとで外側)',
+          cn: '(稍后外侧)',
+          ko: '(나중에 밖)',
         },
       },
     },
@@ -552,11 +599,15 @@ const triggerSet: TriggerSet<Data> = {
           en: 'In ${dir}',
           de: 'Rein ${dir}',
           ja: '内側 ${dir}',
+          cn: '内侧 ${dir}',
+          ko: '${dir} 안',
         },
         outDir: {
           en: 'Out ${dir}',
           de: 'Raus ${dir}',
           ja: '外側 ${dir}',
+          cn: '外侧 ${dir}',
+          ko: '${dir} 밖',
         },
       },
     },
@@ -591,11 +642,15 @@ const triggerSet: TriggerSet<Data> = {
           en: '<== Clockwise',
           de: '<== Im Uhrzeigersinn',
           ja: '<== 時計回り',
+          cn: '<== 顺时针',
+          ko: '<== 시계방향',
         },
         counterclockwise: {
           en: 'Counterclockwise ==>',
           de: 'Gegen den Uhrzeigersinn ==>',
           ja: '反時計回り ==>',
+          cn: '逆时针 ==>',
+          ko: '반시계방향 ==>',
         },
       },
     },
@@ -654,11 +709,15 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Tether: Knockback to ${dir}',
           de: 'Verbindung: Rückstoß nach ${dir}',
           ja: '線: ${dir}へノックバック',
+          cn: '击退拉线: ${dir}',
+          ko: '선: ${dir}로 넉백',
         },
         knockbackTowers: {
           en: 'Knockback Towers',
           de: 'Rückstoß-Türme',
           ja: 'ノックバック塔踏み',
+          cn: '击退踩塔',
+          ko: '넉백 탑',
         },
       },
     },
@@ -716,6 +775,8 @@ const triggerSet: TriggerSet<Data> = {
           en: '${dir1} or ${dir2}',
           de: '${dir1} oder ${dir2}',
           ja: '${dir1} か ${dir2}',
+          cn: '${dir1} 或 ${dir2}',
+          ko: '${dir1} 또는 ${dir2}',
         },
       },
     },
@@ -868,16 +929,22 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Green',
           de: 'Grün',
           ja: '緑',
+          cn: '绿',
+          ko: '초록',
         },
         wolfOfStone: {
           en: 'Yellow',
           de: 'Gelb',
           ja: '黄',
+          cn: '黄',
+          ko: '노랑',
         },
         side: {
           en: '${wolf} Side',
           de: '${wolf} Seite',
           ja: '${wolf} 側',
+          cn: '${wolf} 侧',
+          ko: '${wolf} 쪽',
         },
       },
     },
@@ -947,6 +1014,8 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Predation on ${player1} and ${player2}',
           de: 'Lichtwolfszirkel auf ${player1} und ${player2}',
           ja: '${player1} と ${player2} に直線攻撃',
+          cn: '${player1} 与 ${player2} 引导直线',
+          ko: '${player1} + ${player2} 징 대상자',
         },
       },
     },
@@ -1069,23 +1138,31 @@ const triggerSet: TriggerSet<Data> = {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
           ja: '${stack} => 散開',
+          cn: '${stack} => 散开',
+          ko: '${stack} => 산개',
         },
         spreadBehindClones: {
           en: 'Spread (Behind Clones)',
           de: 'Verteilen (hinter Klone)',
           ja: '散開 (分身の後ろ)',
+          cn: '分散 (躲在分身后)',
+          ko: '산개 (분신 뒤)',
         },
         stackOnPlayer: Outputs.stackOnPlayer,
         stackOnPlayerBehindClones: {
           en: 'Stack on ${player} (Behind Clones)',
           de: 'Sammeln auf ${player} (hinter Klone)',
           ja: '${player} に頭割り (分身の後ろ)',
+          cn: '${player} 分摊 (躲在分身后)',
+          ko: '${player}에게 모이기 (분신 뒤)',
         },
         stackOnYou: Outputs.stackOnYou,
         stackOnYouBehindClones: {
           en: 'Stack on YOU (Behind Clones)',
           de: 'Sammeln auf DIR (hinter Klone)',
           ja: '自分に頭割り (分身の後ろ)',
+          cn: '分摊点名 (躲在分身后)',
+          ko: '쉐어징 대상자 (분신 뒤)',
         },
       },
     },
@@ -1104,6 +1181,8 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Rotate',
           de: 'Rotieren',
           ja: '回転',
+          cn: '旋转',
+          ko: '회전',
         },
       },
     },
@@ -1121,6 +1200,8 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid Lines',
           de: 'Vermeide Linien',
           ja: '直線攻撃を避ける',
+          cn: '躲避直线 AoE',
+          ko: '직선장판 피하기',
         },
       },
     },
@@ -1269,6 +1350,8 @@ const triggerSet: TriggerSet<Data> = {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
           ja: '${stack} => 散開',
+          cn: '${stack} => 分散',
+          ko: '${stack} => 산개',
         },
         spread: Outputs.spread,
         stackOnPlayer: Outputs.stackOnPlayer,
@@ -1342,6 +1425,8 @@ const triggerSet: TriggerSet<Data> = {
           en: 'UV Ray on YOU',
           de: 'Ätherlicht auf DIR',
           ja: '自分に魔光',
+          cn: '魔光点名',
+          ko: '파란징 대상자',
         },
       },
     },
@@ -1415,7 +1500,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       run: (data) => {
         if (data.uvFangSafeSide !== undefined) {
-          data.myPlatformNum === undefined;
+          data.myPlatformNum = undefined;
           data.uvFangSafeSide = undefined;
           data.hasUVRay = false;
         }
@@ -1494,6 +1579,8 @@ const triggerSet: TriggerSet<Data> = {
           en: '${inout} + ${dir}',
           de: '${inout} + ${dir}',
           ja: '${inout} + ${dir}',
+          cn: '${inout} + ${dir}',
+          ko: '${inout} + ${dir}',
         },
         unknown: Outputs.unknown,
       },
@@ -1508,6 +1595,8 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Change Platform',
           de: 'Platform wechseln',
           ja: '次の島へ',
+          cn: '换平台',
+          ko: '플랫폼 변경',
         },
       },
     },
@@ -1539,6 +1628,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Elemental Purge on ${player1} and ${player2}',
           de: 'Siegel des Windes auf ${player1} und ${player2}',
           ja: '魔印: ${player1} と ${player2}',
+          cn: '魔印点名: ${player1} 和 ${player2}',
         },
       },
     },
@@ -1644,16 +1734,22 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Pass Tether to ${dir}',
           de: 'Übergebe Verbindung nach ${dir}',
           ja: '${dir} に線を渡す',
+          cn: '送线给 ${dir}',
+          ko: '${dir}로 선 넘기기',
         },
         tetherOnYou: {
           en: 'Tether on YOU',
           de: 'Verbindung auf DIR',
           ja: '自分に線',
+          cn: '连线点名',
+          ko: '선 대상자',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
           ja: '${dir} に線',
+          cn: '连线在 ${dir}',
+          ko: '${dir}쪽에 선',
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
@@ -1728,16 +1824,22 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Pass Tether',
           de: 'Verbindung übergeben',
           ja: '線を渡す',
+          cn: '送线',
+          ko: '선 넘기기',
         },
         passTetherDir: {
           en: 'Pass Tether ${dir}',
           de: 'Verbindung übergeben ${dir}',
           ja: '${dir} に線を渡す',
+          cn: '送线给 ${dir}',
+          ko: '${dir}쪽에 선 넘기기',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
           ja: '${dir} に線',
+          cn: '连线在 ${dir}',
+          ko: '${dir}쪽에 선',
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
@@ -1827,8 +1929,12 @@ const triggerSet: TriggerSet<Data> = {
           mechs: ChampionOrders,
           count: number,
         ): string => {
-          const mechIndex = (donutPlatform + count) % 5;
+          const mechIndex = clock === 'clockwise'
+            ? (donutPlatform + count) % 5
+            : championCounterIndex[donutPlatform]?.[count];
 
+          if (mechIndex === undefined)
+            return 'unknown';
           return mechs[playerPlatform]?.[mechIndex] ?? 'unknown';
         };
 
@@ -1898,17 +2004,22 @@ const triggerSet: TriggerSet<Data> = {
         const donutPlatform = data.championDonutStart;
         const myPlatform = data.myLastPlatformNum;
         const orders = data.championOrders;
+        const clock = data.championClock;
+        const count = data.championTracker;
 
         // Calculate next mech index with wrap around
         const mechIndex = donutPlatform === undefined
           ? undefined
-          : (donutPlatform + data.championTracker) % 5;
+          : clock === 'clockwise'
+          ? (donutPlatform + count) % 5
+          : championCounterIndex[donutPlatform]?.[count];
 
         // Retrieve the mech based on our platform, donut platform, and mech index
         const mech = (
             myPlatform === undefined ||
             mechIndex === undefined ||
-            orders === undefined
+            orders === undefined ||
+            clock === undefined
           )
           ? 'unknown'
           : orders[myPlatform]?.[mechIndex] ?? 'unknown';
@@ -1930,7 +2041,7 @@ const triggerSet: TriggerSet<Data> = {
           data.championTracker = data.championTracker + 1;
           // Shift platform history
           data.myLastPlatformNum = data.myPlatformNum;
-          data.myPlatformNum === undefined;
+          data.myPlatformNum = undefined;
           data.championFangSafeSide = undefined;
         }
       },
@@ -1955,11 +2066,15 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Close Tether on YOU',
           de: 'Nahe Verbindung auf DIR',
           ja: '自分に近づく線',
+          cn: '近线点名',
+          ko: '가까이 선 대상자',
         },
         farTetherOnYou: {
           en: 'Far Tether on YOU',
           de: 'Entfernte Verbindung auf DIR',
           ja: '自分に離れる線',
+          cn: '远线点名',
+          ko: '멀리 선 대상자',
         },
       },
     },
@@ -2058,21 +2173,29 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Change Platform 1',
           de: 'Wechsel Platform 1',
           ja: '次の島へ1',
+          cn: '换平台 1',
+          ko: '플랫폼 변경 1',
         },
         changePlatform2: {
           en: 'Change Platform 2',
           de: 'Wechsel Platform 2',
           ja: '次の島へ2',
+          cn: '换平台 2',
+          ko: '플랫폼 변경 2',
         },
         changePlatform3: {
           en: 'Change Platform 3',
           de: 'Wechsel Platform 3',
           ja: '次の島へ3',
+          cn: '换平台 3',
+          ko: '플랫폼 변경 3',
         },
         finalPlatform: {
           en: 'Change Platform (Final)',
           de: 'Wechsel Platform (Finale)',
           ja: '次の島へ (最終)',
+          cn: '换平台 (最终平台)',
+          ko: '플랫폼 변경 (마지막)',
         },
       },
     },

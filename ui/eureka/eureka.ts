@@ -26,6 +26,7 @@ import { zoneInfoBozjaSouthern } from './zone_bozja_southern';
 import { zoneInfoHydatos } from './zone_hydatos';
 import { zoneInfoPagos } from './zone_pagos';
 import { zoneInfoPyros } from './zone_pyros';
+import { zoneInfoSouthHorn } from './zone_south_horn';
 import { zoneInfoZadnor } from './zone_zadnor';
 
 import './eureka_config';
@@ -34,6 +35,16 @@ import './eureka.css';
 
 // TODO: get all of the elements required up front in the constructor
 // TODO: split NMInfo from some new InitializedNMInfo, which includes required element/timeElement
+
+// TODO: Pull the area names from PlaceName (not currently cached locally)
+// (will require expanding the `ZoneInfo` type or adding a new resource file)
+// Should pull as LocaleText, then automatically translate the regexes with it.
+const areaNames = [
+  'Eureka (?:Anemos|Pagos|Pyros|Hydatos)',
+  'Bozjan Southern Front',
+  'Zadnor',
+  'South Horn',
+].join('|');
 
 const numWeatherElem = 5;
 
@@ -151,7 +162,7 @@ const defaultOptions: EurekaOptions = {
       flagRegex: NetRegexes.gameLog({
         code: '00..',
         line:
-          '(?<before>.*)\ue0bb(?:Eureka (?:Anemos|Pagos|Pyros|Hydatos)|Bozjan Southern Front|Zadnor) \\( (?<x>\\y{Float})\\s*, (?<y>\\y{Float}) \\)(?<after>.*?)',
+          `(?<before>.*)\ue0bb(?:${areaNames}) \\( (?<x>\\y{Float})\\s*, (?<y>\\y{Float}) \\)(?<after>.*?)`,
       }),
       trackerRegex: NetRegexes.gameLog(
         { line: '.*?(?:https://)?ffxiv-eureka\\.com/(?<id>[_\\w-]{6}).*?' },
@@ -193,6 +204,7 @@ const defaultOptions: EurekaOptions = {
     [ZoneId.TheForbiddenLandEurekaHydatos]: zoneInfoHydatos,
     [ZoneId.TheBozjanSouthernFront]: zoneInfoBozjaSouthern,
     [ZoneId.Zadnor]: zoneInfoZadnor,
+    [ZoneId.TheOccultCrescentSouthHorn]: zoneInfoSouthHorn,
   },
 };
 
@@ -204,13 +216,17 @@ const gWeatherIcons: { [weather: string]: string } = {
   'Heat Waves': '&#x2600;',
   'Umbral Wind': '&#x1F300;',
   'Fair Skies': '&#x26C5;',
+  'Clear Skies': '&#x2600;&#xFE0F;',
   'Snow': '&#x26C4;',
   'Thunderstorms': '&#x26A1;',
   'Showers': '&#x2614;',
   'Gloom': '&#x2639;',
   'Rain': '&#x1F4A6;',
   'Wind': '&#x1F32A;',
+  'Clouds': '&#9729;',
   'Dust Storms': '&#x1F4A8;',
+  'Illusory Disturbances': '&#x1F9E9;', // &#x1F7E2; Maybe use these instead?
+  'Atmospheric Phantasms': '&#x1FAE7;', // &#x26AA;
 } as const;
 const gNightIcon = '&#x1F319;';
 const gDayIcon = '&#x263C;';

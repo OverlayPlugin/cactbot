@@ -953,6 +953,10 @@ const triggerSet: TriggerSet<Data> = {
         'Stygian Shadow': '어둠에서 나타난 자',
       },
       'replaceText': {
+        '\\(cast\\)': '(시전)',
+        '\\(damage\\)': '(피해)',
+        '\\(brambles drop\\)': '(장판 떨어짐)',
+        '\\(chasing AoEs\\)': '(추적 장판)',
         '--adds untargetable--': '--쫄 타겟불가능--',
         'Active-pivot Particle Beam': '선회식 파동포',
         '(?<!En)Aero IV': '에어로쟈',
