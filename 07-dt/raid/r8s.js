@@ -155,6 +155,14 @@ const championCounterIndex = {
   3: [2, 3, 4, 0, 1],
   4: [1, 2, 3, 4, 0],
 };
+// Twofold Tempest Platform to Bait Mapping
+const twofoldPlatformNumToBaitDir = {
+  0: 'unknown',
+  1: 'dirNE',
+  2: 'dirSE',
+  3: 'dirSW',
+  4: 'dirNW',
+};
 // Return the combatant's platform by number
 const getPlatformNum = (x, y) => {
   // S Platform
@@ -1470,7 +1478,7 @@ Options.Triggers.push({
       },
     },
     {
-      id: 'R8S Twofold Tempest Initial Tether',
+      id: 'R8S Twofold Tempest Initial Tether/Bait',
       type: 'Tether',
       netRegex: { id: [headMarkerData.twofoldTether], capture: true },
       suppressSeconds: 50,
@@ -1481,7 +1489,9 @@ Options.Triggers.push({
         })).combatants;
         const actor = actors[0];
         if (actors.length !== 1 || actor === undefined) {
-          console.error(`R8S Twofold Tempest Tether: Wrong actor count ${actors.length}`);
+          console.error(
+            `R8S Twofold Tempest Initial Tether/Bait: Wrong actor count ${actors.length}`,
+          );
           return;
         }
         const northTwoPlatforms = 94;
@@ -1495,25 +1505,45 @@ Options.Triggers.push({
           data.twofoldInitialDir = 'dirSW';
         else if (dirNS === 'N' && dirEW === 'W')
           data.twofoldInitialDir = 'dirNW';
+        // Check player position for bait call
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R8S Twofold Tempest Initial Tether/Bait: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        data.myPlatformNum = getPlatformNum(me.PosX, me.PosY);
       },
       infoText: (data, _matches, output) => {
         // Default starting tether locations
         const startingDir1 = 'dirSE';
         const startingDir2 = 'dirSW';
         const initialDir = data.twofoldInitialDir ?? 'unknown';
+        const baitDir = twofoldPlatformNumToBaitDir[data.myPlatformNum ?? 0];
         switch (initialDir) {
           case startingDir1:
           case startingDir2:
             if (data.hasTwofoldTether === true)
               return output.tetherOnYou();
+            if (baitDir === initialDir)
+              return output.baitNearTetherDir({ dir: output[initialDir]() });
             return output.tetherOnDir({ dir: output[initialDir]() });
           case 'dirNE':
             if (data.hasTwofoldTether === true)
               return output.passTetherDir({ dir: output[startingDir1]() });
+            if (baitDir === startingDir1)
+              return output.baitNearTetherDir({ dir: output[startingDir1]() });
             return output.tetherOnDir({ dir: output[startingDir1]() });
           case 'dirNW':
             if (data.hasTwofoldTether === true)
               return output.passTetherDir({ dir: output[startingDir2]() });
+            if (baitDir === startingDir2)
+              return output.baitNearTetherDir({ dir: output[startingDir2]() });
             return output.tetherOnDir({ dir: output[startingDir2]() });
           case 'unknown':
             return output.tetherOnDir({ dir: output['unknown']() });
@@ -1549,15 +1579,33 @@ Options.Triggers.push({
           cn: '连线在 ${dir}',
           ko: '${dir}쪽에 선',
         },
+        baitNearTetherDir: {
+          en: 'Bait Near (Tether on ${dir})',
+        },
       },
     },
     {
-      id: 'R8S Twofold Tempest Tether Pass',
+      id: 'R8S Twofold Tempest Tether Pass/Bait',
       // Call pass after the puddle has been dropped
       type: 'Ability',
       netRegex: { id: 'A472', source: 'Howling Blade', capture: false },
       preRun: (data) => data.twofoldTracker = data.twofoldTracker + 1,
       suppressSeconds: 1,
+      promise: async (data) => {
+        // Check player position for bait call
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R8S Twofold Tempest Tether Pass/Bait: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        data.myPlatformNum = getPlatformNum(me.PosX, me.PosY);
+      },
       infoText: (data, _matches, output) => {
         if (data.hasTwofoldTether) {
           if (data.twofoldInitialDir === 'unknown')
@@ -1577,16 +1625,23 @@ Options.Triggers.push({
         }
         if (data.twofoldInitialDir === 'unknown')
           return output.tetherOnDir({ dir: Outputs.unknown });
+        const baitDir = twofoldPlatformNumToBaitDir[data.myPlatformNum ?? 0];
         if (data.twofoldTracker === 1) {
           const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirNE' : 'dirNW';
+          if (baitDir === passDir)
+            return output.baitNearTetherDir({ dir: output[passDir]() });
           return output.tetherOnDir({ dir: output[passDir]() });
         }
         if (data.twofoldTracker === 2) {
           const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirNW' : 'dirNE';
+          if (baitDir === passDir)
+            return output.baitNearTetherDir({ dir: output[passDir]() });
           return output.tetherOnDir({ dir: output[passDir]() });
         }
         if (data.twofoldTracker === 3) {
           const passDir = data.twofoldInitialDir === 'dirSE' ? 'dirSW' : 'dirSE';
+          if (baitDir === passDir)
+            return output.baitNearTetherDir({ dir: output[passDir]() });
           return output.tetherOnDir({ dir: output[passDir]() });
         }
       },
@@ -1612,6 +1667,9 @@ Options.Triggers.push({
           ja: '${dir} に線',
           cn: '连线在 ${dir}',
           ko: '${dir}쪽에 선',
+        },
+        baitNearTetherDir: {
+          en: 'Bait Near (Tether on ${dir})',
         },
       },
     },
