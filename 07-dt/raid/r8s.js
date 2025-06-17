@@ -1485,7 +1485,7 @@ Options.Triggers.push({
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
-          ids: [parseInt(matches.sourceId, 16)],
+          ids: [parseInt(matches.targetId, 16)],
         })).combatants;
         const actor = actors[0];
         if (actors.length !== 1 || actor === undefined) {
