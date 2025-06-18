@@ -222,7 +222,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         cleave: {
           en: '${dir} half safe',
-          fr: '${dir} moitiée sûre',
+          fr: '${dir} moitié sûre',
         },
       },
     },
@@ -258,7 +258,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread (all cones expand!)',
-          fr: 'Écartez-vous (les cônes s\'aggrandissent',
+          fr: 'Écartez-vous (les cônes s\'agrandissent)',
         },
       },
     },
