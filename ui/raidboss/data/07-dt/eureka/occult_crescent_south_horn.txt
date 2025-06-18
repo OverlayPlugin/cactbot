@@ -305,8 +305,121 @@ hideall "--sync--"
 13332.9 "White-hot Rage" Ability { id: "93A8", source: "Crescent Berserker" } forcejump "scathing-sweep-loop"
 
 ### Trial By Claw
+# 368 attack
+# A314 Crystal Call
+# A315 Fearsome Facet
+# A316 Prismatic Wing
+# A317 Prismatic Wing
+# A318 Made Magic
+# A319 Made Magic
+# A31A Crystal Mirror
+# A31B Crystallized Chaos
+# A31C Crystallized Chaos
+# A31D Crystallized Chaos
+# A31E Crystallized Energy
+# A31F Crystallized Chaos
+# A320 Crystallized Chaos
+# A321 Crystallized Chaos
+# A322 Primal Roar
+# A323 Primal Roar
+# A6E8 Crystallized Energy
+# A6E9 Crystallized Chaos
+# A6EA Crystallized Chaos
+# A6EC Crystallized Energy
+# A6ED Crystallized Chaos
+# A6EE Crystallized Chaos
+# A6EF Crystallized Chaos
+# A70E Prismatic Wing - Lightning
+# A70F Prismatic Wing - Wind
+# A710 Made Magic - Lightning
+# A711 Made Magic - Wind
+#
+# IGNORED ABILITIES
+# A322 Primal Roar - Always comes just before A323
+# A316 Prismatic Wing - Prep for A70E
+# A317 Prismatic Wing - Prep for A70F
+# A318 Made Magic - Prep for A710
+# A319 Made Magic - Prep for A711
+# ???? Crystallized Chaos - Appear to be explosions from crystals, all happen at once
+#                           Appears with Crystallized Energy consistently
+#
+# NOTES
+# A31B Crystallized Chaos - Tutorial version
+# A31C Crystallized Chaos - Loop Version
+# A6E8 - Seems to happen only during pre-loop tutorial
+# A31E - Seems to always be the 2nd and 3rd hits
+# A6EC - Seems to be first during loop
+#
+# TODO:
+# * Verify loop (if possible..)
 14000.0 "--sync--" ActorControl { command: "80000014", data0: "349" } window 100000,0
 14100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+14105.1 "--sync--" StartsUsing { id: "A323", source: "Crystal Dragon" } window 5,2
+14110.1 "Primal Roar" Ability { id: "A323", source: "Crystal Dragon" }
+# Prismatic Wing Lightning Tutorial
+14116.3 "--sync--" StartsUsing { id: "A315", source: "Crystal Dragon" }
+14119.3 "Fearsome Facet" Ability { id: "A315", source: "Crystal Dragon" }
+14129.4 "Prismatic Wing (Lightning)" Ability { id: "A70E", source: "Draconic Double" }
+14134.3 "Made Magic (Lightning)" Ability { id: "A710", source: "Draconic Double" }
+# Prismatic Wing Wind Tutorial
+14142.4 "--sync--" StartsUsing { id: "A315", source: "Crystal Dragon" }
+14145.4 "Fearsome Facet" Ability { id: "A315", source: "Crystal Dragon" }
+14155.5 "Prismatic Wing (Wind)" Ability { id: "A70F", source: "Draconic Double" }
+14160.1 "Made Magic (Wind)" Ability { id: "A711", source: "Draconic Double" }
+# Crystal Mirror Tutorial
+14172.2 "--sync--" StartsUsing { id: "A315", source: "Crystal Dragon" }
+14175.2 "Fearsome Facet" Ability { id: "A315", source: "Crystal Dragon" }
+14185.5 "Prismatic Wing" Ability { id: "A70[EF]", source: "Draconic Double" }
+14187.5 "Crystal Mirror" Ability { id: "A31A", source: "Crystal Dragon" }
+14190.3 "Made Magic" Ability { id: "A71[01]", source: "Draconic Double" }
+# Crystallized Chaos Tutorial
+14200.1 "Crystal Call" Ability { id: "A314", source: "Crystal Dragon" }
+14204.3 "--sync--" StartsUsing { id: "A31B", source: "Crystal Dragon" }
+14211.2 "Crystallized Energy (1)" Ability { id: "A6E8", source: "Crystal Dragon" }
+14215.2 "Crystallized Energy (2)" Ability { id: "A31E", source: "Crystal Dragon" }
+14228.3 "Primal Roar" Ability { id: "A323", source: "Crystal Dragon" }
+14240.8 "Crystal Call" Ability { id: "A314", source: "Crystal Dragon" }
+# From here, the main skills loop pretty much forever, but the timing is
+# inconsistent. This timeline currently includes 3 copies with the ability
+# times adjusted to hopefully account for this.
+# Crystallized Chaos x3 - Loop pt. 1
+14244.0 label "crystallized-chaos-loop"
+14244.0 "--sync--" StartsUsing { id: "A31C", source: "Crystal Dragon" } window 5,5
+14254.0 "Crystallized Energy (1)" Ability { id: "A6EC", source: "Crystal Dragon" }
+14258.0 "Crystallized Energy (2)" Ability { id: "A31E", source: "Crystal Dragon" }
+14262.0 "Crystallized Energy (3)" Ability { id: "A31E", source: "Crystal Dragon" }
+14275.1 "Primal Roar" Ability { id: "A323", source: "Crystal Dragon" } window 5,5
+# Prismatic Wing - Loop pt. 1
+14287.6 "--sync--" StartsUsing { id: "A315", source: "Crystal Dragon" } window 5,5
+14290.7 "Fearsome Facet" Ability { id: "A315", source: "Crystal Dragon" }
+14300.8 "Prismatic Wing" Ability { id: "A70[EF]", source: "Draconic Double" }
+14302.8 "Crystal Mirror" Ability { id: "A31A", source: "Crystal Dragon" }
+14305.6 "Made Magic" Ability { id: "A71[01]", source: "Draconic Double" }
+# Crystallized Chaos - Loop pt. 2
+14307.4 "--sync--" StartsUsing { id: "A31C", source: "Crystal Dragon" } window 5,5
+14317.4 "Crystallized Energy (1)" Ability { id: "A6EC", source: "Crystal Dragon" }
+14321.4 "Crystallized Energy (2)" Ability { id: "A31E", source: "Crystal Dragon" }
+14325.4 "Crystallized Energy (3)" Ability { id: "A31E", source: "Crystal Dragon" }
+14341.5 "Primal Roar" Ability { id: "A323", source: "Crystal Dragon" } window 5,5
+# Prismatic Wing - Loop pt. 2
+14354.9 "--sync--" StartsUsing { id: "A315", source: "Crystal Dragon" }
+14358 "Fearsome Facet" Ability { id: "A315", source: "Crystal Dragon" }
+14368.1 "Prismatic Wing" Ability { id: "A70[EF]", source: "Draconic Double" }
+14370.1 "Crystal Mirror" Ability { id: "A31A", source: "Crystal Dragon" }
+14372.7 "Made Magic" Ability { id: "A71[01]", source: "Draconic Double" }
+# Crystallized Chaos - Loop pt. 3
+14374.8 "--sync--" StartsUsing { id: "A31C", source: "Crystal Dragon" } window 5,5
+14384.8 "Crystallized Energy (1)" Ability { id: "A6EC", source: "Crystal Dragon" }
+14388.8 "Crystallized Energy (2)" Ability { id: "A31E", source: "Crystal Dragon" }
+14392.8 "Crystallized Energy (3)" Ability { id: "A31E", source: "Crystal Dragon" }
+14408.9 "Primal Roar" Ability { id: "A323", source: "Crystal Dragon" } window 5,5
+# Prismatic Wing - Loop pt. 3
+14424.2 "--sync--" StartsUsing { id: "A315", source: "Crystal Dragon" }
+14427.3 "Fearsome Facet" Ability { id: "A315", source: "Crystal Dragon" }
+14437.4 "Prismatic Wing" Ability { id: "A70[EF]", source: "Draconic Double" }
+14439.4 "Crystal Mirror" Ability { id: "A31A", source: "Crystal Dragon" }
+14442 "Made Magic" Ability { id: "A71[01]", source: "Draconic Double" }
+14443.9 "--sync--" StartsUsing { id: "A31C", source: "Crystal Dragon" } forcejump "crystallized-chaos-loop"
 
 ### With Extreme Predjudice
 15000.0 "--sync--" ActorControl { command: "80000014", data0: "339" } window 100000,0
