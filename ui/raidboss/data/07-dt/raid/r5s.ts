@@ -677,7 +677,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-	  'missingTranslations': true,
+      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Dancing Green',
         'Frogtourage': 'Danceur batracien',
