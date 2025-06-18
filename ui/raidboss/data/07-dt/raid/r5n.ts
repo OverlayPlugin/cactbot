@@ -427,11 +427,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Dancing Green',
       },
       'replaceText': {
+        '\\(opposite\\)': '(Opposé)',
         '2-snap Twist': 'Double pointé & pose',
         '4-snap Twist': 'Quadruple pointé & pose',
         'Arcady Night Fever': 'Fièvre de l\'Arcadion',
@@ -441,13 +441,14 @@ const triggerSet: TriggerSet<Data> = {
         'Do the Hustle': 'Danse le Mia !',
         'Eighth Beats': 'Tempo octuple',
         'Ensemble Assemble': 'Rassemblement des danseurs',
-        'Frogtourage': 'danceur batracien',
+        'Frogtourage': 'Danceur batracien',
         'Full Beat': 'Tempo simple',
         'Funky Floor': 'Terrain de danse',
         'Let\'s Dance!': 'Alors on danse !',
         'Let\'s Pose!': 'Prends la pose !',
         'Moonburn': 'Flambée lunaire',
         'Ride the Waves': 'Roulement de vagues',
+        'Stone': '',
       },
     },
     {

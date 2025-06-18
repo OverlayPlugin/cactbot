@@ -98,6 +98,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Watch boss for dash',
+          fr: 'Regardez la position du boss pour la ruée',
         },
       },
     },
@@ -156,6 +157,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spread: {
           en: 'Spread in ${quad} quadrant',
+          fr: 'Écartez-vous dans le quandrant ${quad}',
         },
         dirNE: Outputs.dirNE,
         dirSE: Outputs.dirSE,
@@ -220,6 +222,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         cleave: {
           en: '${dir} half safe',
+          fr: '${dir} moitiée sûre',
         },
       },
     },
@@ -243,6 +246,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge wall turrets',
+          fr: 'Esquivez les tourelles murales',
         },
       },
     },
@@ -254,6 +258,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread (all cones expand!)',
+          fr: 'Écartez-vous (les cônes s\'aggrandissent',
         },
       },
     },
@@ -265,6 +270,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get behind + Spread',
+          fr: 'Allez derrière + Dispersion',
         },
       },
     },
@@ -364,12 +370,15 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         dodge: {
           en: 'Inner ${first} => Inner ${second} ${move}',
+          fr: 'Intérieur ${first} => Intérieur ${second} ${move}',
         },
         moveAfterLaser: {
           en: '(after wall laser)',
+          fr: '(après les lasers)',
         },
         moveAfterOrb: {
           en: '(after orb explosion)',
+          fr: '(après les explosions des orbes)',
         },
       },
     },
