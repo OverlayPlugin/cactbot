@@ -171,6 +171,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Repaired Lion', id: 'A155', capture: true },
       response: Responses.tankBuster(),
     },
+    {
+      id: 'Occult Crescent Nymian Petalodus Hydrocleave',
+      type: 'StartsUsing',
+      netRegex: { source: 'Nymian Petalodus', id: 'A88D', capture: false },
+      response: Responses.awayFromFront(),
+    },
   ],
   timelineReplace: [],
 };
