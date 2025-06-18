@@ -159,6 +159,18 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Death Claw', id: ['A16C', 'A173'], capture: false },
       response: Responses.getFrontBackThenSides('alert'),
     },
+    {
+      id: 'Occult Crescent Repaired Lion Holy Blaze',
+      type: 'StartsUsing',
+      netRegex: { source: 'Repaired Lion', id: 'A151', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Repaired Lion Scratch',
+      type: 'StartsUsing',
+      netRegex: { source: 'Repaired Lion', id: 'A155', capture: true },
+      response: Responses.tankBuster(),
+    },
   ],
   timelineReplace: [],
 };
