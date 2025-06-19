@@ -71,6 +71,7 @@ Options.Triggers.push({
         text: {
           en: 'AoE x${count}',
           de: 'AoE x${count}',
+          fr: 'AoE x${count}',
           ja: '全体攻撃 ${count} 回',
           cn: 'AoE x${count}',
           ko: '전체 공격 x${count}',
@@ -107,6 +108,7 @@ Options.Triggers.push({
         inLater: {
           en: 'In (for later)',
           de: 'Rein (für später)',
+          fr: 'Intérieur (pour après)',
           ja: 'あとで中に',
           cn: '(稍后靠近)',
           ko: '안으로 (나중에)',
@@ -114,6 +116,7 @@ Options.Triggers.push({
         outLater: {
           en: 'Out (for later)',
           de: 'Raus (für später)',
+          fr: 'Extérieur (pour après)',
           ja: 'あとで外に',
           cn: '(稍后远离)',
           ko: '밖으로 (나중에)',
@@ -142,6 +145,7 @@ Options.Triggers.push({
         sharedBuster: {
           en: '${stoneringer} => Tanks ${inOut}, Shared tankbuster',
           de: '${stoneringer} => Tanks ${inOut}, geteilter Tankbuster',
+          fr: '${stoneringer} => Tanks ${inOut}, Tankbuster partagé',
           ja: '${stoneringer} => タンク ${inOut}, タンク頭割り',
           cn: '${stoneringer} => 坦克 ${inOut}, 引导死刑',
           ko: '${stoneringer} => 탱커 ${inOut}, 쉐어 탱버',
@@ -149,6 +153,7 @@ Options.Triggers.push({
         avoidBuster: {
           en: '${stoneringer} => Party ${inOut}, Avoid tankbuster',
           de: '${stoneringer} => Party ${inOut}, vermeide Tankbuster',
+          fr: '${stoneringer} => Party ${inOut}, Évitez le tankbuster',
           ja: '${stoneringer} => パーティ ${inOut}, タンク頭割りを避ける',
           cn: '${stoneringer} => 小队 ${inOut}, 远离坦克死刑',
           ko: '${stoneringer} => 본대 ${inOut}, 탱버 피하기',
@@ -204,12 +209,14 @@ Options.Triggers.push({
           seed: {
             en: 'Drop seed',
             de: 'Saaten ablegen',
+            fr: 'Déposez les graines',
             ja: '種捨て',
             cn: '放置冰花',
             ko: '씨앗 놓기',
           },
           puddle: {
             en: 'Bait Puddles',
+            fr: 'Posez les puddles',
           },
         };
         data.sinisterSeedTargets.push(matches.target);
@@ -246,6 +253,7 @@ Options.Triggers.push({
         text: {
           en: 'Line of Sight boss with adds',
           de: 'Sichtlinie Boss verhindern mit Adds',
+          fr: 'Cachez vous derrière un add',
           ja: '雑魚で視線を切る',
           cn: '躲在小怪身后',
           ko: '쫄 뒤에 숨어서 시선 피하기',
@@ -263,6 +271,7 @@ Options.Triggers.push({
         text: {
           en: 'Rotate away from proximity markers',
           de: 'Weg rotieren von den Distanzmarkierungen',
+          fr: 'Tournez loin des marqueurs de proximité',
           ja: '距離減衰マーカー 3発目から1発目に避ける',
           cn: '远离距离衰减 AoE 落点',
           ko: '회전하면서 거리감쇠 징 피하기',
@@ -278,6 +287,7 @@ Options.Triggers.push({
         text: {
           en: 'Stack on ${target} => Out + Protean',
           de: 'Stack on ${target} => Raus + Himmelsrichtungen',
+          fr: 'Package sur ${target} =>  Extérieur + Positions',
           ja: '${target} 頭割り => 外へ + 八方向さんかい',
           cn: '${target} 分摊 => 远离 + 八方分散',
           ko: '${target} 쉐어 => 바깥 + 8방향 산개',
@@ -295,6 +305,7 @@ Options.Triggers.push({
         text: {
           en: 'Go North, big AoE + Launch',
           de: 'Geh nach Norden, große AoE + Katapult',
+          fr: 'Allez au Nord, grosse AoE + Projection',
           ja: '北集合、全体攻撃 + ノックバック',
           cn: '去北方准备 AoE + 击飞',
           ko: '북쪽으로, 아픈 광역 + 날아감',
@@ -361,6 +372,7 @@ Options.Triggers.push({
         in: {
           en: 'In at tethered wall',
           de: 'Rein zu der verbundenen Wand',
+          fr: 'À l\intérieur du mur lié',
           ja: '線のある壁に近づく',
           cn: '连线墙月环',
           ko: '선 연결된 벽 안으로',
@@ -368,6 +380,7 @@ Options.Triggers.push({
         out: {
           en: 'Out from tethered wall',
           de: 'Raus von der verbundenen Wand',
+          fr: 'À l\extérieur du mur lié',
           ja: '線のある壁から離れる',
           cn: '连线墙钢铁',
           ko: '선 연결된 벽 밖으로',
@@ -375,6 +388,7 @@ Options.Triggers.push({
         inOutFollowupLariat: {
           en: '${inOut} + ${followup} => ${lariat}',
           de: '${inOut} + ${followup} => ${lariat}',
+          fr: '${inOut} + ${followup} => ${lariat}',
           ja: '${inOut} + ${followup} => ${lariat}',
           cn: '${inOut} + ${followup} => ${lariat}',
           ko: '${inOut} + ${followup} => ${lariat}',
@@ -382,6 +396,7 @@ Options.Triggers.push({
         inOutFollowup: {
           en: '${inOut} => ${followup}',
           de: '${inOut} => ${followup}',
+          fr: '${inOut} => ${followup}',
           ja: '${inOut} => ${followup}',
           cn: '${inOut} => ${followup}',
           ko: '${inOut} => ${followup}',
@@ -389,6 +404,7 @@ Options.Triggers.push({
         inOutLariat: {
           en: '${inOut} => ${lariat}',
           de: '${inOut} => ${lariat}',
+          fr: '${inOut} => ${lariat}',
           ja: '${inOut} => ${lariat}',
           cn: '${inOut} => ${lariat}',
           ko: '${inOut} => ${lariat}',
@@ -396,6 +412,7 @@ Options.Triggers.push({
         left: {
           en: 'Get Left',
           de: 'Geh Links',
+          fr: 'Allez à gauche',
           ja: '左へ',
           cn: '去左边',
           ko: '왼쪽으로',
@@ -403,6 +420,7 @@ Options.Triggers.push({
         right: {
           en: 'Get Right',
           de: 'Geh Rechts',
+          fr: 'Allez à droite',
           ja: '右へ',
           cn: '去右边',
           ko: '오른쪽으로',
@@ -410,6 +428,7 @@ Options.Triggers.push({
         awayFromFront: {
           en: 'Spread, Away from front',
           de: 'Verteilen, weg von Vorne',
+          fr: 'Dispertion, loin du devant',
           ja: 'さんかい、ボス前から離れる',
           cn: '分散, 远离 BOSS 正面',
           ko: '산개, 보스 앞 피하기',
@@ -427,6 +446,7 @@ Options.Triggers.push({
         text: {
           en: 'Spread, Away from front',
           de: 'Verteilen, weg von Vorne',
+          fr: 'Dispertion, loin du devant',
           ja: 'さんかい、ボス前から離れる',
           cn: '分散, 远离 BOSS 正面',
           ko: '산개, 보스 앞 피하기',
@@ -448,6 +468,7 @@ Options.Triggers.push({
         text: {
           en: 'Tank tether on ${target}',
           de: 'Tank-Verbindung auf ${target}',
+          fr: 'Lien tank sur ${target}',
           ja: '${target} にタンク線',
           cn: '坦克连线 ${target}',
           ko: '${target} 탱커 선 대상자',
@@ -467,6 +488,7 @@ Options.Triggers.push({
         avoidFlare: {
           en: 'Away from Flare',
           de: 'Weg von dem Flare',
+          fr: 'Loin du Brasier',
           ja: 'フレアマーカーから離れる',
           cn: '远离核爆',
           ko: '플레어 피하기',
@@ -474,6 +496,7 @@ Options.Triggers.push({
         flare: {
           en: 'Flare + buster on YOU, Away from party',
           de: 'Flare + Tankbuster auf DIR, Weg von der Gruppe',
+          fr: 'Brasier + Tankbuster sur VOUS, Loin du groupe',
           ja: '自分にフレア、パーティから離れる',
           cn: '核爆死刑点名, 远离人群',
           ko: '플레어 + 탱버 대상자, 본대에서 멀어지기',
@@ -491,6 +514,7 @@ Options.Triggers.push({
         text: {
           en: 'Get tethers',
           de: 'Nimm Verbindungen',
+          fr: 'Prenez les liens',
           ja: '線取り',
           cn: '获取连线',
           ko: '선 가져오기',
@@ -507,6 +531,7 @@ Options.Triggers.push({
         text: {
           en: 'Drop seed',
           de: 'Saaten ablegen',
+          fr: 'Déposez les graines',
           ja: '種捨て',
           cn: '放置冰花',
           ko: '씨앗 놓기',
@@ -527,6 +552,7 @@ Options.Triggers.push({
         text: {
           en: 'Avoid line AoEs',
           de: 'Vermeide Linien AoEs',
+          fr: 'Évitez les lignes d\'AoE',
           ja: '直線 AoE を避ける',
           cn: '远离直线 AoE',
           ko: '직선 장판 피하기',
@@ -578,6 +604,7 @@ Options.Triggers.push({
         left: {
           en: '<== Get Left',
           de: '<== Geh Links',
+          fr: '<== Allez à gauche',
           ja: '<== 左へ',
           cn: '<== 左左左',
           ko: '<== 왼쪽으로',
@@ -585,6 +612,7 @@ Options.Triggers.push({
         right: {
           en: 'Get Right ==>',
           de: 'Geh Rechts ==>',
+          fr: 'Allez à droite ==>',
           ja: '右へ ==>',
           cn: '右右右 ==>',
           ko: '오른쪽으로 ==>',
@@ -601,6 +629,7 @@ Options.Triggers.push({
         text: {
           en: 'Get tower',
           de: 'Nimm Turm',
+          fr: 'Prenez une tour',
           ja: '塔踏み',
           cn: '踩塔',
           ko: '탑 밟기',
@@ -617,6 +646,7 @@ Options.Triggers.push({
         text: {
           en: 'Get tethers',
           de: 'Nimm Verbindung',
+          fr: 'Prenez les liens',
           ja: '線取り',
           cn: '接线',
           ko: '선 가져오기',
@@ -685,12 +715,17 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Blooming Abomination': 'germe de Bombinator',
+        'Blooming Abomination': 'Germe de Bombinator',
         'Brute Abombinator': 'Brute Bombinator',
       },
       'replaceText': {
+        '--middile--': '-- Millieu --',
+        '\\(adds': '(Adds',
+        'cast\\)': 'incantation)',
+        '\\(enrage\\)': '(Enrage)',
+        '\\(puddles\\)': '(Puddles)',
+        '\\(seeds drop\\)': '(Dépose des graines)',
         'Abominable Blink': 'Étincelle brutale',
         'Brutal Impact': 'Impact brutal',
         'Brutal Smash': 'Impact brutal',
