@@ -1,4 +1,9 @@
-# -p A04B:1000.0 -ii A008 A009 A00D A00E A00F A010 A011 A018 A026 A027 A02F A030 A053 A054 A056
+### THE MINSTREL'S BALLAD: SPHENE'S BURDEN
+# ZoneId: 1243
+
+# -ii A008 A009 A00D A00E A00F A010 A011 A018 A026 A027 A02F A030 A053 A054 A056
+# -it "Queen Eternal"
+# -p A04B:1000.0
 
 # Phase one pulled from -r XwHyk2NAKnbzZLf7 -rf 3
 # Phase two pulled from -r GBaArv7yzHnXck8D -rf 17
@@ -99,6 +104,7 @@ hideall "--sync--"
 # Phase two
 1000.0 "Authority Eternal" Ability { id: "A04B", source: "Queen Eternal" } window 1000.0,0
 1009.8 "--sync--" Ability { id: "A04D", source: "Queen Eternal" }
+1024.8 "--targetable--"
 
 # Radical Shift 1
 1039.8 "Radical Shift (rotate)" Ability { id: "A04F", source: "Queen Eternal" }
