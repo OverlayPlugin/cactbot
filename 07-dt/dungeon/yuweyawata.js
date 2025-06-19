@@ -224,7 +224,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Lindblum Zaghnal': 'zaghnal de Lindblum',
         'Lunipyati': 'Lunipyati',
@@ -232,6 +231,13 @@ Options.Triggers.push({
         'Preserved Soul': 'âme préservée',
       },
       'replaceText': {
+        '\\(arcs\\)': '(Arcs)',
+        '\\(big\\)': '(Gros)',
+        '\\(multiple\\)': '(Multiple)',
+        '\\(spiral\\)': '(Spirale)',
+        '--adds 1 targetable--': '--Adds 1 ciblable--',
+        '--adds 2 targetable--': '--Adds 2 ciblable--',
+        '--adds 3 targetable--': '--Adds 3 ciblable--',
         'Beastly Roar': 'Rugissement bestial',
         'Bloodburst': 'Explosion sanguine',
         'Boulder Dance': 'Danse du roc',

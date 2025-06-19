@@ -357,6 +357,7 @@ Options.Triggers.push({
         text: {
           en: 'Jabberwock on YOU',
           de: 'Brabbelback auf DIR',
+          fr: 'Jabberwocky sur VOUS',
           ja: 'ジャバウォック処理',
           cn: '马止步点名',
           ko: '재버워크 대상자',
@@ -587,6 +588,7 @@ Options.Triggers.push({
         spawn: {
           en: 'Cloud spawning ${dir}',
           de: 'Wolke erscheint ${dir}',
+          fr: 'Apparition du nuage ${dir}',
           cn: '雷云生成在 ${dir}',
           ko: '${dir}에 구름 소환',
         },
@@ -632,6 +634,7 @@ Options.Triggers.push({
         text: {
           en: 'Cloud rotating ${rot} towards ${dir}',
           de: 'Wolke rotiert ${rot} Richtung ${dir}',
+          fr: 'Rotation du nuage ${rot} vers ${dir}',
           cn: '雷云旋转 ${rot} 朝 ${dir}',
           ko: '구름이 ${dir}쪽으로 ${rot} 회전',
         },
@@ -728,18 +731,21 @@ Options.Triggers.push({
         eightSouth: {
           en: '8 Towers S',
           de: '8 Türme S',
+          fr: '8 Tours S',
           cn: '南方八塔',
           ko: '남쪽 탑 8개',
         },
         fourNW: {
           en: '4 Towers NW',
           de: '4 Türme NW',
+          fr: '4 Tours NO',
           cn: '西北四塔',
           ko: '북서쪽 탑 4개',
         },
         fourNE: {
           en: '4 Towers NE',
           de: '4 Türme NO',
+          fr: '4 Tours NE',
           cn: '东北四塔',
           ko: '북동쪽 탑 4개',
         },
@@ -799,13 +805,20 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Mouthwatering Morbol': 'Morbol mielleux',
         'Sugar Riot': 'Sugar Riot',
         'Sweet Shot': 'Flèche sirupeuse',
       },
       'replaceText': {
+        '\\(cast\\)': '(Incantation)',
+        '\\(snapshot\\)': '(Enregistré)',
+        '--2x Feather Ray targetable--': '-- 2x Manta ciblable--',
+        '--2x Mu targetable--': '-- 2x Mu ciblable --',
+        '--Gimme Cat targetable--': '-- Chat-pardeur ciblable --',
+        '--Jabberwock targetable--': '-- Jabberwocky ciblable --',
+        '--Yan targetable--': '-- Belhamel ciblable --',
+        '--jump\\?--': '-- Saut --',
         'Artistic Anarchy': 'Anarchie artistique',
         'Bad Breath': 'Mauvaise haleine',
         'Brûlée': 'Dissipation thermique',
@@ -816,6 +829,7 @@ Options.Triggers.push({
         'Crowd Brûlée': 'Dissipation enflammée',
         'Dark Mist': 'Brume funèbre',
         'Double Style': 'Double graffiti',
+        'Explosion': 'Explosion',
         'Layer': 'Retouche',
         'Levin Drop': 'Courant électrique',
         'Lightning Bolt': 'Fulguration',

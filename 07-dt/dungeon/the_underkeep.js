@@ -66,6 +66,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Watch boss for dash',
+          fr: 'Regardez la position du boss pour la ruée',
         },
       },
     },
@@ -124,6 +125,7 @@ Options.Triggers.push({
       outputStrings: {
         spread: {
           en: 'Spread in ${quad} quadrant',
+          fr: 'Écartez-vous dans le quandrant ${quad}',
         },
         dirNE: Outputs.dirNE,
         dirSE: Outputs.dirSE,
@@ -188,6 +190,7 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         cleave: {
           en: '${dir} half safe',
+          fr: '${dir} moitié sûre',
         },
       },
     },
@@ -211,6 +214,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Dodge wall turrets',
+          fr: 'Esquivez les tourelles murales',
         },
       },
     },
@@ -222,6 +226,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Spread (all cones expand!)',
+          fr: 'Écartez-vous (les cônes s\'agrandissent)',
         },
       },
     },
@@ -233,6 +238,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get behind + Spread',
+          fr: 'Allez derrière + Dispersion',
         },
       },
     },
@@ -330,12 +336,15 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         dodge: {
           en: 'Inner ${first} => Inner ${second} ${move}',
+          fr: 'Intérieur ${first} => Intérieur ${second} ${move}',
         },
         moveAfterLaser: {
           en: '(after wall laser)',
+          fr: '(après les lasers)',
         },
         moveAfterOrb: {
           en: '(after orb explosion)',
+          fr: '(après les explosions des orbes)',
         },
       },
     },

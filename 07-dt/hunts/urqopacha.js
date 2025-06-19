@@ -10,6 +10,7 @@ Options.Triggers.push({
   comments: {
     en: 'A Rank Hunts',
     de: 'A Rang Hohe Jagd',
+    fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
     ko: 'A급 마물',
   },
