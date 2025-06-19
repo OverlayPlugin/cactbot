@@ -757,22 +757,54 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankBuster(),
     },
     {
-      id: 'Occult Crescent Hinkypunk Shades Nest',
+      id: 'Occult Crescent Hinkypunk Shades Nest (Clone)',
       type: 'StartsUsing',
-      // TODO: Some of these are from boss, some are not.
-      netRegex: { source: 'Hinkypunk', id: ['A19C', 'A19D', 'A430', 'A431'], capture: true },
+      netRegex: { source: 'Hinkypunk', id: 'A431', capture: false },
       suppressSeconds: 1,
-      response: Responses.getIn(),
-      run: (_data, matches) => console.log(`Shades Nest: ${matches.id}`),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'In at Clone',
+        },
+      },
     },
     {
-      id: 'Occult Crescent Hinkypunk Shades Crossing',
+      id: 'Occult Crescent Hinkypunk Shades Nest (Boss)',
       type: 'StartsUsing',
-      // TODO: Some of these are from boss, some are not.
-      netRegex: { source: 'Hinkypunk', id: ['A19F', 'A1A0', 'A432', 'A433'], capture: true },
+      netRegex: { source: 'Hinkypunk', id: 'A430', capture: false },
+      suppressSeconds: 1,
+      response: Responses.getIn(),
+    },
+    {
+      id: 'Occult Crescent Hinkypunk Shades Crossing (Clone)',
+      type: 'StartsUsing',
+      netRegex: { source: 'Hinkypunk', id: 'A433', capture: false },
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Intercards of Clone',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Hinkypunk Shades Crossing (Boss)',
+      type: 'StartsUsing',
+      netRegex: { source: 'Hinkypunk', id: 'A432', capture: false },
       suppressSeconds: 1,
       response: Responses.getIntercards(),
-      run: (_data, matches) => console.log(`Shades Nest: ${matches.id}`),
+    },
+    {
+      id: 'Occult Crescent Hinkypunk Blowout (Clone)',
+      type: 'StartsUsing',
+      netRegex: { source: 'Hinkypunk', id: ['A1A2', 'A1B5'], capture: false },
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Knockback from Clone',
+        },
+      },
     },
     {
       id: 'Occult Crescent Hinkypunk Lamplight',
