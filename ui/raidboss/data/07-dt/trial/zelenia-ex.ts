@@ -1059,7 +1059,7 @@ const triggerSet: TriggerSet<Data> = {
         'Valorous Ascension': 'クライムハザード',
       },
     },
-        {
+    {
       'locale': 'cn',
       'replaceSync': {
         'Briar Thorn': '凌空破',

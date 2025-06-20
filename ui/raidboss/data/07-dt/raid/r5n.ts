@@ -476,7 +476,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ride the Waves': 'ウェーブ・オン・ウェーブ',
       },
     },
-        {
+    {
       'locale': 'cn',
       'replaceSync': {
         'Dancing Green': '热舞绿光',

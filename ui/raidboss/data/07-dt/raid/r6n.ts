@@ -467,7 +467,7 @@ const triggerSet: TriggerSet<Data> = {
         'Warm Bomb': 'ウォームペイントボム',
       },
     },
-        {
+    {
       'locale': 'cn',
       'replaceSync': {
         'Heaven Bomb': '翅膀爆弹怪',
