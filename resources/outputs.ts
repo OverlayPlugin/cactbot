@@ -480,9 +480,11 @@ export default {
   },
   sidesThenFrontBack: {
     en: 'Sides => Front/Back',
+    cn: '两侧 => 前/后',
   },
   frontBackThenSides: {
     en: 'Front/Back => Sides',
+    cn: '前/后 => 两侧',
   },
   goIntoMiddle: {
     en: 'Get Middle',
