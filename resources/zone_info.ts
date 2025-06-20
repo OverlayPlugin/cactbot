@@ -10443,6 +10443,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 中量级1',
       'de': 'Arkadion - Schwergewicht R1',
       'en': 'AAC Cruiserweight M1',
       'fr': 'Poids lourds-légers CCA - match 1',
@@ -10457,6 +10458,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 中量级1',
       'de': 'Arkadion - Schwergewicht R1 (episch)',
       'en': 'AAC Cruiserweight M1 (Savage)',
       'fr': 'Poids lourds-légers CCA - match 1 (sadique)',
@@ -10471,6 +10473,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 中量级2',
       'de': 'Arkadion - Schwergewicht R2',
       'en': 'AAC Cruiserweight M2',
       'fr': 'Poids lourds-légers CCA - match 2',
@@ -10485,6 +10488,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 中量级2',
       'de': 'Arkadion - Schwergewicht R2 (episch)',
       'en': 'AAC Cruiserweight M2 (Savage)',
       'fr': 'Poids lourds-légers CCA - match 2 (sadique)',
@@ -10499,6 +10503,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 中量级3',
       'de': 'Arkadion - Schwergewicht R3',
       'en': 'AAC Cruiserweight M3',
       'fr': 'Poids lourds-légers CCA - match 3',
@@ -10513,6 +10518,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 中量级3',
       'de': 'Arkadion - Schwergewicht R3 (episch)',
       'en': 'AAC Cruiserweight M3 (Savage)',
       'fr': 'Poids lourds-légers CCA - match 3 (sadique)',
@@ -10527,6 +10533,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚登天斗技场 中量级4',
       'de': 'Arkadion - Schwergewicht R4',
       'en': 'AAC Cruiserweight M4',
       'fr': 'Poids lourds-légers CCA - match 4',
@@ -10541,6 +10548,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '阿卡狄亚零式登天斗技场 中量级4',
       'de': 'Arkadion - Schwergewicht R4 (episch)',
       'en': 'AAC Cruiserweight M4 (Savage)',
       'fr': 'Poids lourds-légers CCA - match 4 (sadique)',
@@ -10555,6 +10563,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '王城古迹永护塔底',
       'de': 'Unterfried-Ruinen',
       'en': 'The Underkeep',
       'fr': 'La Gardienne de l\'Immémorial',
@@ -10585,6 +10594,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '泽莲尼娅歼灭战',
       'de': 'Zel Tajaal - Zelenia',
       'en': 'Recollection',
       'fr': 'Le Sanctuaire du Serment',
@@ -10599,6 +10609,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '泽莲尼娅歼殛战',
       'de': 'Gok Tajaal - Zelenia',
       'en': 'Recollection (Extreme)',
       'fr': 'Le Sanctuaire du Serment (extrême)',
@@ -10613,6 +10624,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '朱雀幻巧战',
       'de': 'Traumprüfung - Suzaku',
       'en': 'Hells\' Kier (Unreal)',
       'fr': 'Le Nid des Lamentations (irréel)',
