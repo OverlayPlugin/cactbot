@@ -4,6 +4,7 @@ import inquirer from 'inquirer';
 import { UnreachableCode } from '../resources/not_reached';
 
 import { ConsoleLogger, LogLevelKey, LogLevelLabel, logLevels } from './console_logger';
+import { default as generateCeInfoAndMaps } from './gen_ce_info_and_maps';
 import { default as generateEffectIds } from './gen_effect_id';
 import { default as generateHunt } from './gen_hunt_data';
 import { default as generatePetNames } from './gen_pet_names';
@@ -14,6 +15,7 @@ import { default as generateZoneIdandZoneInfo } from './gen_zone_id_and_info';
 import { ActionChoiceType } from '.';
 
 const fileKeys = [
+  'ce_info_and_maps',
   'effect_id',
   'hunt_data',
   'pet_names',
@@ -28,6 +30,7 @@ const allLabel = '* Generate All Data Files';
 type FileKey = typeof fileKeys[number];
 
 const fileKeyToFunc: { [K in FileKey]: (logLevel: LogLevelKey) => Promise<void> } = {
+  'ce_info_and_maps': generateCeInfoAndMaps,
   'effect_id': generateEffectIds,
   'hunt_data': generateHunt,
   'pet_names': generatePetNames,
