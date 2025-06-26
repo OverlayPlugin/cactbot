@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.34.6",
-  "releaseSummary": "more Cruiserweight, 7.15 ko resources, 7.25 intl resources, i18n",
-  "releaseInDraft": "true",
+  "version": "0.34.7",
+  "releaseSummary": "more Cruiserweight, south horn support, 7.2 cn resources, i18n",
+  "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",
