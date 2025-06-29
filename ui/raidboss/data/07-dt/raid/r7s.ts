@@ -218,12 +218,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         combo: {
           en: '${outer}, ${inner}',
+          ko: '${outer}, ${inner}',
         },
         outer: {
           en: 'Outer ${dir1}/${dir2}',
+          ko: '바깥쪽 ${dir1}/${dir2}',
         },
         inner: {
           en: 'Inner ${dir1}/${dir2}',
+          ko: '안쪽 ${dir1}/${dir2}',
         },
         dirNW: Outputs.dirNW,
         dirNE: Outputs.dirNE,
@@ -249,6 +252,7 @@ const triggerSet: TriggerSet<Data> = {
           puddle: {
             en: 'Bait Puddles',
             fr: 'Posez les puddles',
+            ko: '장판 유도',
           },
         };
 
