@@ -502,6 +502,32 @@ const triggerSet: TriggerSet<Data> = {
         'Stone': '',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Dancing Green': '댄싱 그린',
+      },
+      'replaceText': {
+        '\\(opposite\\)': '(반대)',
+        '2-snap Twist': '두 번 흔들고 포즈',
+        '4-snap Twist': '네 번 흔들고 포즈',
+        'Arcady Night Fever': '아르카디아의 밤의 열기',
+        'Celebrate Good Times': '이 순간을 즐기자',
+        'Deep Cut': '숨은 명곡',
+        'Disco Infernal': '디스코 지옥',
+        'Do the Hustle': '신나게 춤추자',
+        'Eighth Beats': '8비트',
+        'Ensemble Assemble': '댄서 집합',
+        'Frogtourage': '컴 온! 개구리 댄서',
+        'Full Beat': '1비트',
+        'Funky Floor': '댄싱 필드',
+        'Let\'s Dance!': '레츠 댄스!',
+        'Let\'s Pose!': '레츠 포즈!',
+        'Moonburn': '달볕 걸음',
+        'Ride the Waves': '박자 타기',
+        'Stone': '',
+      },
+    },
   ],
 };
 
