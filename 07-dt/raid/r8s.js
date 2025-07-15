@@ -111,24 +111,28 @@ const championOutputStrings = {
     de: 'Linke Seite',
     ja: '左側',
     cn: '左侧',
+    ko: '왼쪽',
   },
   rightSide: {
     en: 'Right Side',
     de: 'Rechte Seite',
     ja: '右側',
     cn: '右侧',
+    ko: '오른쪽',
   },
   unknownSide: {
     en: '??? Side',
     de: '??? Seite',
     ja: '??? 側',
     cn: '??? 侧',
+    ko: '??? 쪽',
   },
   dirMechanic: {
     en: '${dir} ${mech}',
     de: '${dir} ${mech}',
     ja: '${dir} ${mech}',
     cn: '${dir} ${mech}',
+    ko: '${dir} ${mech}',
   },
 };
 // Platform, Mechs
@@ -275,6 +279,7 @@ Options.Triggers.push({
           de: 'Leichter Trupp Platform',
           ja: '東西の島で 4：4 頭割り',
           cn: '东西岛治疗组分摊站位',
+          ko: '4:4 그룹별 플랫폼',
         },
       },
     },
@@ -1582,6 +1587,7 @@ Options.Triggers.push({
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
+          ko: '근접 유도 (선 대상자 ${dir})',
         },
       },
     },
@@ -1672,6 +1678,7 @@ Options.Triggers.push({
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
+          ko: '근접 유도 (선 대상자 ${dir})',
         },
       },
     },

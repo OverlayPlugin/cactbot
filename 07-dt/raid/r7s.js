@@ -187,14 +187,17 @@ Options.Triggers.push({
         combo: {
           en: '${outer}, ${inner}',
           cn: '${outer}, ${inner}',
+          ko: '${outer}, ${inner}',
         },
         outer: {
           en: 'Outer ${dir1}/${dir2}',
           cn: '外 ${dir1}/${dir2}',
+          ko: '바깥쪽 ${dir1}/${dir2}',
         },
         inner: {
           en: 'Inner ${dir1}/${dir2}',
           cn: '内 ${dir1}/${dir2}',
+          ko: '안쪽 ${dir1}/${dir2}',
         },
         dirNW: Outputs.dirNW,
         dirNE: Outputs.dirNE,
@@ -221,6 +224,7 @@ Options.Triggers.push({
             en: 'Bait Puddles',
             fr: 'Posez les puddles',
             cn: '诱导黄圈',
+            ko: '장판 유도',
           },
         };
         data.sinisterSeedTargets.push(matches.target);
