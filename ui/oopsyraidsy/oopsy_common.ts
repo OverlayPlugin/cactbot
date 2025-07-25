@@ -168,3 +168,20 @@ export const GetShareMistakeText = (
     ko: `${localeText['ko'] ?? localeText['en']} (같이 맞음: ${numTargets}명)`,
   };
 };
+
+export const GetMissedMistakeText = (ability: string | LocaleText): LocaleText => {
+  const localeText: LocaleText = typeof ability === 'string' ? { en: ability } : ability;
+  return {
+    en: `missed ${localeText['en']}`,
+  };
+};
+
+export const GetMultipleMistakeText = (
+  ability: string | LocaleText,
+  numHits: number,
+): LocaleText => {
+  const localeText: LocaleText = typeof ability === 'string' ? { en: ability } : ability;
+  return {
+    en: `${localeText['en']} (hit x${numHits})`,
+  };
+};
