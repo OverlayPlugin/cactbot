@@ -1201,7 +1201,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A78E', source: 'Wolf of Stone', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => {
+      alertText: (_data, _matches, output) => {
         return output.lines!();
       },
       outputStrings: {
@@ -1400,7 +1400,7 @@ const triggerSet: TriggerSet<Data> = {
         return false;
       },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) + 1,
-      infoText: (_data, _matches, output) => {
+      alertText: (_data, _matches, output) => {
         return output.cardinals!();
       },
       outputStrings: {
