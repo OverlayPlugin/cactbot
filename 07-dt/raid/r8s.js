@@ -1063,7 +1063,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: 'A78E', source: 'Wolf of Stone', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => {
+      alertText: (_data, _matches, output) => {
         return output.lines();
       },
       outputStrings: {
@@ -1249,7 +1249,7 @@ Options.Triggers.push({
         return false;
       },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) + 1,
-      infoText: (_data, _matches, output) => {
+      alertText: (_data, _matches, output) => {
         return output.cardinals();
       },
       outputStrings: {
