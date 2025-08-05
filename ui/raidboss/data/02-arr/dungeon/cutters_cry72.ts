@@ -6,20 +6,17 @@ import { TriggerSet } from '../../../../../types/trigger';
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
-  id: 'CuttersCry',
-  zoneId: ZoneId.CuttersCry,
-  comments: {
-    en: 'pre-7.3 rework',
-  },
+  id: 'CuttersCry72',
+  zoneId: ZoneId.CuttersCry72,
   triggers: [
     {
-      id: 'Cutters Chimera Ram Voice',
+      id: 'Cutters72 Chimera Ram Voice',
       type: 'StartsUsing',
       netRegex: { id: '450', source: 'Chimera', capture: false },
       response: Responses.outOfMelee(),
     },
     {
-      id: 'Cutters Chimera Dragon Voice',
+      id: 'Cutters72 Chimera Dragon Voice',
       type: 'StartsUsing',
       netRegex: { id: '5A2', source: 'Chimera', capture: false },
       response: Responses.getIn(),

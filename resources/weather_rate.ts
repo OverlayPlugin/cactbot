@@ -2197,6 +2197,26 @@ const data: WeatherRateType = {
       'Umbral Wind',
     ],
   },
+  170: {
+    'rates': [
+      100,
+    ],
+    'weathers': [
+      'Dying Breath',
+    ],
+  },
+  171: {
+    'rates': [
+      60,
+      80,
+      100,
+    ],
+    'weathers': [
+      'Fair Skies',
+      'Clouds',
+      'Rain',
+    ],
+  },
 };
 
 export default data;
