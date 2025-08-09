@@ -1,0 +1,249 @@
+hideall "--Reset--"
+hideall "--sync--"
+
+# Base timeline pulled from FFLogs enrage pull
+# TODO: Clean up, test, fix any issues, document other IDs, etc
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+13.1 "Blue Shockwave" Ability { id: "AE30", source: "Necron" }
+14.2 "Blue Shockwave" Ability { id: "AE31", source: "Necron" }
+17.2 "Blue Shockwave" Ability { id: "AE32", source: "Necron" }
+18.3 "Blue Shockwave" Ability { id: "AE31", source: "Necron" }
+28.3 "Fear of Death" Ability { id: "AE06", source: "Necron" }
+31.3 "Fear of Death" Ability { id: "AE07", source: "Necron" }
+34.1 "Choking Grasp" Ability { id: "AE08", source: "Icy Hands" }
+38.4 "Cold Grip" Ability { id: "AE0A", source: "Necron" }
+39.4 "Cold Grip" Ability { id: "AE44", source: "Necron" }
+41.1 "Existential Dread" Ability { id: "AE0B", source: "Necron" }
+51.8 "Memento Mori" Ability { id: "AE16", source: "Necron" }
+58.0 "Choking Grasp" Ability { id: "AE17", source: "Icy Hands" }
+58.9 "Smite of Gloom" Ability { id: "AE39", source: "Necron" }
+58.9 "Smite of Gloom" Ability { id: "AE3A", source: "Necron" }
+69.0 "Soul Reaping" Ability { id: "AE0C", source: "Necron" }
+77.1 "Fourfold Blight" Ability { id: "AE0E", source: "Necron" }
+77.3 "Aetherblight" Ability { id: "AE3F", source: "Necron" }
+78.3 "Aetherblight" Ability { id: "AE40", source: "Necron" }
+78.4 "Shockwave" #Ability { id: "AE10", source: "Necron" }
+78.4 "Shockwave" #Ability { id: "AE10", source: "Necron" }
+84.1 "Soul Reaping" Ability { id: "AE0C", source: "Necron" }
+92.2 "Fear of Death" Ability { id: "AE06", source: "Necron" }
+95.2 "Fear of Death" Ability { id: "AE07", source: "Necron" }
+98.1 "Choking Grasp" Ability { id: "AE08", source: "Icy Hands" }
+102.3 "The End's Embrace" Ability { id: "AE35", source: "Necron" }
+102.3 "The End's Embrace" #Ability { id: "AE36", source: "Necron" }
+102.3 "The End's Embrace" #Ability { id: "AE36", source: "Necron" }
+108.4 "Choking Grasp" #Ability { id: "AE17", source: "Icy Hands" }
+108.5 "Choking Grasp" #Ability { id: "AE17", source: "Icy Hands" }
+112.3 "Blue Shockwave" Ability { id: "AE30", source: "Necron" }
+113.4 "Blue Shockwave" Ability { id: "AE31", source: "Necron" }
+116.4 "Blue Shockwave" Ability { id: "AE32", source: "Necron" }
+117.5 "Blue Shockwave" Ability { id: "AE31", source: "Necron" }
+123.5 "Fourfold Blight" Ability { id: "AE0E", source: "Necron" }
+123.7 "Aetherblight" Ability { id: "AE13", source: "Necron" }
+124.7 "Aetherblight" Ability { id: "B081", source: "Necron" }
+124.8 "Shockwave" Ability { id: "AE10", source: "Necron" }
+139.6 "Grand Cross" Ability { id: "AE18", source: "Necron" }
+139.6 "--sync--" Ability { id: "AE3C", source: "Necron" }
+147.7 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+149.7 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+150.1 "Grand Cross" #Ability { id: "AE19", source: "Azure Aether" }
+152.1 "Grand Cross" #Ability { id: "AE19", source: "Azure Aether" }
+153.7 "Shock" Ability { id: "AE1D", source: "Necron" }
+153.7 "Grand Cross" Ability { id: "AE1C", source: "Necron" }
+155.7 "Electrify" Ability { id: "AE1E", source: "Necron" }
+156.7 "Grand Cross" Ability { id: "AE19", source: "Azure Aether" }
+160.7 "Grand Cross" Ability { id: "AE19", source: "Azure Aether" }
+163.4 "Grand Cross" Ability { id: "AE19", source: "Azure Aether" }
+164.6 "Shock" Ability { id: "AE1D", source: "Necron" }
+164.6 "Grand Cross" Ability { id: "AE1C", source: "Necron" }
+171.6 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+173.3 "Grand Cross" Ability { id: "AE1A", source: "Azure Aether" }
+173.6 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+183.5 "Neutron Ring" Ability { id: "AE1F", source: "Necron" }
+186.2 "Neutron Ring" Ability { id: "AE20", source: "Necron" }
+198.9 "Fear of Death" Ability { id: "AE21", source: "Necron" }
+206.0 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+206.0 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+206.8 "Fear of Death" Ability { id: "AE21", source: "Necron" }
+210.1 "Muted Struggle" Ability { id: "AE22", source: "Beckoning Hands" }
+214.0 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+214.1 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+214.9 "Fear of Death" Ability { id: "AE21", source: "Necron" }
+220.6 "Muted Struggle" Ability { id: "AE22", source: "Beckoning Hands" }
+222.2 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+224.3 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+224.4 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+232.3 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+234.4 "Choking Grasp" #Ability { id: "AE23", source: "Icy Hands" }
+250.2 "Darkness of Eternity" Ability { id: "AE24", source: "Necron" }
+256.6 "Darkness of Eternity" Ability { id: "AE25", source: "Necron" }
+260.3 "Inevitability" Ability { id: "AE27", source: "Necron" }
+278.4 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+283.5 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+288.7 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+320.4 "Specter of Death" Ability { id: "AE3E", source: "Necron" }
+328.5 "The End's Embrace" Ability { id: "AE35", source: "Necron" }
+328.5 "The End's Embrace" Ability { id: "AE36", source: "Necron" }
+334.6 "Choking Grasp" #Ability { id: "AE17", source: "Icy Hands" }
+334.6 "Choking Grasp" #Ability { id: "AE17", source: "Icy Hands" }
+334.7 "Choking Grasp" #Ability { id: "AE17", source: "Icy Hands" }
+335.5 "Cold Grip" Ability { id: "AE09", source: "Necron" }
+336.5 "Cold Grip" Ability { id: "AE44", source: "Necron" }
+338.2 "Existential Dread" Ability { id: "AE0B", source: "Necron" }
+359.9 "Relentless Reaping" Ability { id: "AE14", source: "Necron" }
+366.0 "Crop Rotation" Ability { id: "AE42", source: "Necron" }
+377.1 "The Fourth Season" Ability { id: "B070", source: "Necron" }
+377.3 "Aetherblight" Ability { id: "AE12", source: "Necron" }
+378.3 "Aetherblight" Ability { id: "B080", source: "Necron" }
+380.2 "Aetherblight" Ability { id: "AE11", source: "Necron" }
+381.2 "Aetherblight" Ability { id: "B07F", source: "Necron" }
+383.1 "Aetherblight" Ability { id: "AE3F", source: "Necron" }
+384.1 "Aetherblight" Ability { id: "AE40", source: "Necron" }
+386.0 "Aetherblight" Ability { id: "AE13", source: "Necron" }
+387.0 "Aetherblight" Ability { id: "B081", source: "Necron" }
+387.1 "Shockwave" Ability { id: "AE10", source: "Necron" }
+397.9 "Circle of Lives" Ability { id: "AE37", source: "Necron" }
+408.0 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+408.6 "Specter of Death" Ability { id: "AE3E", source: "Necron" }
+413.0 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+418.0 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+419.2 "Soul Reaping" Ability { id: "AE0C", source: "Necron" }
+423.1 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+428.1 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+433.4 "Fourfold Blight" Ability { id: "AE0E", source: "Necron" }
+433.6 "Aetherblight" Ability { id: "AE3F", source: "Necron" }
+434.6 "Aetherblight" Ability { id: "AE40", source: "Necron" }
+434.7 "Shockwave" Ability { id: "AE10", source: "Necron" }
+446.5 "Mass Macabre" Ability { id: "AE33", source: "Necron" }
+448.9 "Macabre Mark" Ability { id: "AF13", source: "Necron" }
+453.6 "Memento Mori" Ability { id: "AE15", source: "Necron" }
+454.8 "Macabre Mark" #Ability { id: "AF13", source: "Necron" }
+455.1 "Macabre Mark" #Ability { id: "AF13", source: "Necron" }
+455.4 "Macabre Mark" #Ability { id: "AF13", source: "Necron" }
+459.7 "Choking Grasp" Ability { id: "AE17", source: "Icy Hands" }
+464.0 "Macabre Mark" #Ability { id: "AF13", source: "Necron" }
+464.0 "Blue Shockwave" Ability { id: "AE30", source: "Necron" }
+464.6 "Macabre Mark" #Ability { id: "AF13", source: "Necron" }
+465.2 "Blue Shockwave" Ability { id: "AE31", source: "Necron" }
+468.2 "Blue Shockwave" Ability { id: "AE32", source: "Necron" }
+469.3 "Blue Shockwave" Ability { id: "AE31", source: "Necron" }
+470.0 "Macabre Mark" Ability { id: "AF13", source: "Necron" }
+472.7 "Spreading Fear" Ability { id: "AE34", source: "Icy Hands" }
+475.4 "Cold Grip" Ability { id: "AE09", source: "Necron" }
+476.4 "Cold Grip" Ability { id: "AE44", source: "Necron" }
+478.1 "Existential Dread" Ability { id: "AE0B", source: "Necron" }
+498.7 "Relentless Reaping" Ability { id: "AE14", source: "Necron" }
+504.8 "Crop Rotation" Ability { id: "AE42", source: "Necron" }
+515.9 "The Second Season" Ability { id: "B06F", source: "Necron" }
+516.1 "Aetherblight" Ability { id: "AE13", source: "Necron" }
+517.1 "Aetherblight" Ability { id: "B081", source: "Necron" }
+519.0 "Aetherblight" Ability { id: "AE11", source: "Necron" }
+520.0 "Aetherblight" Ability { id: "B07F", source: "Necron" }
+521.9 "Aetherblight" Ability { id: "AE12", source: "Necron" }
+522.9 "Aetherblight" Ability { id: "B080", source: "Necron" }
+524.8 "Aetherblight" Ability { id: "AE3F", source: "Necron" }
+525.8 "Aetherblight" Ability { id: "AE40", source: "Necron" }
+525.9 "Shockwave" Ability { id: "AE0F", source: "Necron" }
+532.6 "Fear of Death" Ability { id: "AE06", source: "Necron" }
+535.6 "Fear of Death" Ability { id: "AE07", source: "Necron" }
+538.4 "Choking Grasp" #Ability { id: "AE08", source: "Icy Hands" }
+538.4 "Choking Grasp" #Ability { id: "AE08", source: "Icy Hands" }
+543.6 "Circle of Lives" Ability { id: "AE37", source: "Necron" }
+551.7 "Specter of Death" Ability { id: "AE3E", source: "Necron" }
+553.7 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+558.7 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+561.5 "Specter of Death" Ability { id: "AE3E", source: "Necron" }
+563.7 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+568.7 "Circle of Lives" Ability { id: "AE38", source: "Azure Aether" }
+576.0 "Memento Mori" Ability { id: "AE16", source: "Necron" }
+582.2 "Choking Grasp" Ability { id: "AE17", source: "Icy Hands" }
+583.1 "Smite of Gloom" Ability { id: "AE39", source: "Necron" }
+583.1 "Smite of Gloom" Ability { id: "AE3A", source: "Necron" }
+590.2 "Cold Grip" Ability { id: "AE0A", source: "Necron" }
+591.2 "Cold Grip" Ability { id: "AE44", source: "Necron" }
+592.9 "Existential Dread" Ability { id: "AE0B", source: "Necron" }
+604.6 "Grand Cross" Ability { id: "AE18", source: "Necron" }
+604.6 "--sync--" Ability { id: "AE3C", source: "Necron" }
+612.7 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+614.7 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+615.1 "Grand Cross" #Ability { id: "AE19", source: "Azure Aether" }
+617.1 "Grand Cross" #Ability { id: "AE19", source: "Azure Aether" }
+618.7 "Shock" Ability { id: "AE1D", source: "Necron" }
+618.7 "Grand Cross" Ability { id: "AE1C", source: "Necron" }
+621.8 "Grand Cross" Ability { id: "AE19", source: "Azure Aether" }
+625.8 "Grand Cross" Ability { id: "AE19", source: "Azure Aether" }
+628.6 "Grand Cross" Ability { id: "AE19", source: "Azure Aether" }
+629.8 "Shock" Ability { id: "AE1D", source: "Necron" }
+629.8 "Grand Cross" Ability { id: "AE1C", source: "Necron" }
+629.8 "Shock" Ability { id: "AE1D", source: "Necron" }
+629.8 "Grand Cross" Ability { id: "AE1C", source: "Necron" }
+631.8 "Electrify" Ability { id: "AE1E", source: "Necron" }
+636.8 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+638.5 "Grand Cross" Ability { id: "AE1A", source: "Azure Aether" }
+638.8 "Grand Cross" #Ability { id: "AE1B", source: "Necron" }
+648.7 "Neutron Ring" Ability { id: "AE1F", source: "Necron" }
+651.4 "Neutron Ring" Ability { id: "AE20", source: "Necron" }
+671.0 "Darkness of Eternity" Ability { id: "AE45", source: "Necron" }
+
+
+# ALL ENCOUNTER ABILITIES
+# AE06 Fear of Death
+# AE07 Fear of Death
+# AE08 Choking Grasp
+# AE09 Cold Grip
+# AE0A Cold Grip
+# AE0B Existential Dread
+# AE0C Soul Reaping
+# AE0E Fourfold Blight
+# AE0F Shockwave
+# AE10 Shockwave
+# AE11 Aetherblight
+# AE12 Aetherblight
+# AE13 Aetherblight
+# AE14 Relentless Reaping
+# AE15 Memento Mori
+# AE16 Memento Mori
+# AE17 Choking Grasp
+# AE18 Grand Cross
+# AE19 Grand Cross
+# AE1A Grand Cross
+# AE1B Grand Cross
+# AE1C Grand Cross
+# AE1D Shock
+# AE1E Electrify
+# AE1F Neutron Ring
+# AE20 Neutron Ring
+# AE21 Fear of Death
+# AE22 Muted Struggle
+# AE23 Choking Grasp
+# AE24 Darkness of Eternity
+# AE25 Darkness of Eternity
+# AE27 Inevitability
+# AE28 Choking Grasp
+# AE30 Blue Shockwave
+# AE31 Blue Shockwave
+# AE32 Blue Shockwave
+# AE33 Mass Macabre
+# AE34 Spreading Fear
+# AE35 The End's Embrace
+# AE36 The End's Embrace
+# AE37 Circle of Lives
+# AE38 Circle of Lives
+# AE39 Smite of Gloom
+# AE3A Smite of Gloom
+# AE3C --sync--
+# AE3E Specter of Death
+# AE3F Aetherblight
+# AE40 Aetherblight
+# AE42 Crop Rotation
+# AE44 Cold Grip
+# AE45 Darkness of Eternity
+# AE47 Attack
+# AF13 Macabre Mark
+# B06F The Second Season
+# B070 The Fourth Season
+# B07F Aetherblight
+# B080 Aetherblight
+# B081 Aetherblight
