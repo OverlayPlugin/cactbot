@@ -349,12 +349,15 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': 'Aka no Shiki',
         'Ao-no-shiki': 'Ao no Shiki',
+        'Blue Orochi': 'blau[a] Orochi',
         'Iwa-no-shiki': 'Iwa no Shiki',
         'Numa-no-shiki': 'Numa no Shiki',
         'Seiryu': 'Seiryu',
+        'Ten-no-shiki': 'Ten no Shiki',
         'Yama-no-shiki': 'Yama no Shiki',
       },
       'replaceText': {
@@ -379,16 +382,20 @@ const triggerSet: TriggerSet<Data> = {
         'Serpent\'s Fang': 'Schlangengiftzahn',
         'Strength of Spirit': 'Stärke des Geistes',
         'Summon Shiki': 'Shiki-Beschwörung ',
+        'Yama-kagura': 'Yamakagura'
       },
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': 'shiki écarlate',
         'Ao-no-shiki': 'shiki céruléen',
+        'Blue Orochi': '"orochi azur',
         'Iwa-no-shiki': 'shiki rocailleux',
         'Numa-no-shiki': 'shiki uligineux',
         'Seiryu': 'Seiryû',
+        'Ten-no-shiki': 'shiki céleste',
         'Yama-no-shiki': 'shiki montagneux',
       },
       'replaceText': {
@@ -413,16 +420,20 @@ const triggerSet: TriggerSet<Data> = {
         'Serpent\'s Fang': 'Dent de serpent',
         'Strength of Spirit': 'Chakra',
         'Summon Shiki': 'Invocation de shiki',
+        'Yama-kagura': 'Yama-kagura',
       },
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': '紅の式鬼',
         'Ao-no-shiki': '蒼の式鬼',
+        'Blue Orochi': '青のオロチ',
         'Iwa-no-shiki': '岩の式鬼',
         'Numa-no-shiki': '沼の式鬼',
         'Seiryu': '青龍',
+        'Ten-no-shiki': '天の式鬼',
         'Yama-no-shiki': '山の式鬼',
       },
       'replaceText': {
@@ -447,10 +458,12 @@ const triggerSet: TriggerSet<Data> = {
         'Serpent\'s Fang': '蛇牙',
         'Strength of Spirit': '霊気',
         'Summon Shiki': '式鬼召喚',
+        'Yama-kagura': '山神楽',
       },
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': '红之式鬼',
         'Ao-no-shiki': '苍之式鬼',
@@ -485,12 +498,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': '붉은 사역귀',
         'Ao-no-shiki': '푸른 사역귀',
+        'Blue Orochi': '푸른 이무기',
         'Iwa-no-shiki': '바위 사역귀',
         'Numa-no-shiki': '늪 사역귀',
         'Seiryu': '청룡',
+        'Ten-no-shiki': '하늘 사역귀',
         'Yama-no-shiki': '산 사역귀',
       },
       'replaceText': {
@@ -515,6 +531,7 @@ const triggerSet: TriggerSet<Data> = {
         'Serpent\'s Fang': '뱀송곳니',
         'Strength of Spirit': '영기',
         'Summon Shiki': '사역귀 소환',
+        'Yama-kagura': '산타령',
       },
     },
   ],
