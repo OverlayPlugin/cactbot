@@ -25,8 +25,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'SeiryuEx Great Typhoon 2': '37F9', // outside ring of water during Coursing River
     'SeiryuEx Great Typhoon 3': '37FA', // outside ring of water during Coursing River
     'SeiryuEx Great Typhoon 4': '37FB', // outside ring of water during Coursing River
-    'SeiryuEx Yama-No-Shiki Handprint 1': '3707', // half arena cleave
-    'SeiryuEx Yama-No-Shiki Handprint 2': '3708', // half arena cleave
+    'SeiryuEx Yama-No-Shiki Handprint 1': '37E7', // half arena cleave
+    'SeiryuEx Yama-No-Shiki Handprint 2': '37E8', // half arena cleave
     'SeiryuEx Force Of Nature': '37EA', // standing in the middle circle during knockback (380A)
     'SeiryuEx Serpent Descending Circle': '37DE', // baited circles with towers
     'SeiryuEx Serpent\'s Jaws': '37E0', // failing towers
