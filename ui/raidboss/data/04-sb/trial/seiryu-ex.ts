@@ -382,7 +382,7 @@ const triggerSet: TriggerSet<Data> = {
         'Serpent\'s Fang': 'Schlangengiftzahn',
         'Strength of Spirit': 'Stärke des Geistes',
         'Summon Shiki': 'Shiki-Beschwörung ',
-        'Yama-kagura': 'Yamakagura'
+        'Yama-kagura': 'Yamakagura',
       },
     },
     {
