@@ -269,9 +269,11 @@ const contentTypeToLabel: {
   [ContentType.OccultCrescent]: {
     full: {
       en: 'Occult Crescent',
+      cn: '蜃景幻界新月岛',
     },
     short: {
       en: 'Occult',
+      cn: '新月岛',
     },
   },
   [ContentType.DisciplesOfTheLand]: {
