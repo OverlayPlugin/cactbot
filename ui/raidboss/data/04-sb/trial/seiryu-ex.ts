@@ -231,7 +231,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'SeiryuEx Find Sneks',
       type: 'StartsUsing',
-      netRegex: { id: '37F7', source: 'Seiryu', capture: false },
+      netRegex: { id: '37F7', capture: false },
       alarmText: (data, _matches, output) => {
         if (data.withForce === undefined)
           return output.goToSnakes!();
