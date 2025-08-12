@@ -826,7 +826,7 @@ const zoneReplace: ZoneReplace[] = [
       '32ED': 'A817', // Hotspot enrage
     },
   },
-   { // Seiryu Unreal
+  { // Seiryu Unreal
     fileMap: {
       'ui/raidboss/data/04-sb/trial/seiryu-ex.ts': 'ui/raidboss/data/07-dt/trial/seiryu-un.ts',
       'ui/raidboss/data/04-sb/trial/seiryu-ex.txt': 'ui/raidboss/data/07-dt/trial/seiryu-un.txt',
