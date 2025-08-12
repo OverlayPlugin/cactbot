@@ -10429,6 +10429,7 @@ const data: ZoneInfoType = {
     'contentType': 38,
     'exVersion': 5,
     'name': {
+      'cn': '蜃景幻界新月岛 南征之章',
       'de': 'Das südliche Kreszentia',
       'en': 'The Occult Crescent: South Horn',
       'fr': 'Île de Lunule méridionale',
