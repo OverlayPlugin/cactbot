@@ -130,7 +130,7 @@ hideall "--sync--"
 3135.2 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
 
 # Crosshatch tutorial
-3146.6 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
+3146.6 "Vertical Crosshatch/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
 3146.7 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
 3148.7 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
 3158.8 "Skulking Orders" Ability { id: "A16E", source: "Death Claw" }
@@ -143,13 +143,13 @@ hideall "--sync--"
 3188.3 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
 3192.4 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
 3196.4 "Lethal Nails" Ability { id: "A165", source: "Clawmarks" }
-3205.5 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
+3205.5 "Vertical Crosshatch/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
 3205.6 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
 3207.6 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
 3221.6 "The Grip of Poison" Ability { id: "A176", source: "Death Claw" }
 
 # Crosshatch & Skulking Orders
-3236.1 "Vertical/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
+3236.1 "Vertical Crosshatch/Horizontal Crosshatch" Ability { id: "A16[BC]", source: "Death Claw" }
 3236.2 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
 3238.2 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
 3248.3 "Skulking Orders" Ability { id: "A171", source: "Death Claw" }
@@ -161,7 +161,7 @@ hideall "--sync--"
 3286.5 "Manifold Marks" Ability { id: "A15F", source: "Death Claw" }
 3295.0 "Lethal Nails" Ability { id: "A163", source: "Clawmarks" }
 3299.1 "Lethal Nails" Ability { id: "A164", source: "Clawmarks" }
-3304.9 "Vertical/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
+3304.9 "Vertical Crosshatch/Horizontal Crosshatch" Ability { id: "A17[23]", source: "Death Claw" }
 3305.0 "--sync--" Ability { id: "A16D", source: "Death Claw" } window 1,1
 3307.0 "Raking Scratch" Ability { id: "A16D", source: "Death Claw" }
 3321.1 "Dirty Nails" Ability { id: "A174", source: "Death Claw" }
