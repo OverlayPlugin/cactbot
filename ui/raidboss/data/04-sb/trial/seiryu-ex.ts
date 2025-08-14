@@ -1,9 +1,9 @@
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
-
 export interface Data extends RaidbossData {
   blazing?: boolean;
   markers?: string[];
@@ -73,6 +73,12 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '37E4', source: 'Seiryu', capture: false },
       run: (data) => data.blazing = true,
+    },
+    {
+      id: 'SeiryuEx Fifth Element',
+      type: 'StartsUsing',
+      netRegex: { id: '37C3', source: 'Seiryu', capture: false },
+      response: Responses.aoe(),
     },
     {
       id: 'SeiryuEx Cursekeeper',
@@ -231,30 +237,27 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'SeiryuEx Find Sneks',
       type: 'StartsUsing',
-      netRegex: { id: '37F7', capture: false },
-      alarmText: (data, _matches, output) => {
+      netRegex: { id: '37F7', capture: true },
+      alarmText: (data, matches, output) => {
+        // Blue Orochi spawn east or west with heading of either -1.57 or 1.57.
+        // Invert their spawn heading to find the safe location.
+        // No source because sometimes the name field is stale.
+        const safeDir4Num = (Directions.hdgTo4DirNum(parseFloat(matches.heading)) + 2) % 4;
+        const safeDir = Directions.outputFromCardinalNum(safeDir4Num);
         if (data.withForce === undefined)
-          return output.goToSnakes!();
+          return output.goToSnakes!({ dir: output[safeDir]!() });
 
-        return output.outOfMiddleTowardSnakes!();
+        return output.outOfMiddleTowardSnakes!({ dir: output[safeDir]!() });
       },
       run: (data) => data.withForce = true,
       outputStrings: {
+        dirE: Outputs.east,
+        dirW: Outputs.west,
         goToSnakes: {
-          en: 'Go To Snakes',
-          de: 'Zu den Schlangen',
-          fr: 'Allez vers les serpents',
-          ja: '蛇側へ',
-          cn: '靠近蛇蛇',
-          ko: '뱀쪽으로 이동',
+          en: 'Go ${dir} Toward Snakes',
         },
         outOfMiddleTowardSnakes: {
-          en: 'Out of Middle, Toward Snakes',
-          de: 'Raus aus der Mitte, Zu den Schlangen',
-          fr: 'Sortez du milieu, vers les serpents',
-          ja: '真ん中からずれて蛇に向く',
-          cn: '靠近中间，击退向蛇蛇',
-          ko: '중앙 피하고 뱀쪽으로 밀리기',
+          en: 'Out of Middle, Knockback To ${dir}',
         },
       },
     },
