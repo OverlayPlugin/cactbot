@@ -826,6 +826,89 @@ const zoneReplace: ZoneReplace[] = [
       '32ED': 'A817', // Hotspot enrage
     },
   },
+  { // Seiryu Unreal
+    fileMap: {
+      'ui/raidboss/data/04-sb/trial/seiryu-ex.ts': 'ui/raidboss/data/07-dt/trial/seiryu-un.ts',
+      'ui/raidboss/data/04-sb/trial/seiryu-ex.txt': 'ui/raidboss/data/07-dt/trial/seiryu-un.txt',
+      'ui/oopsyraidsy/data/04-sb/trial/seiryu-ex.ts':
+        'ui/oopsyraidsy/data/07-dt/trial/seiryu-un.ts',
+    },
+    prefix: { 'SeiryuEx': 'SeiryuUn' },
+    other: {
+      'TheWreathOfSnakesExtreme': 'TheWreathOfSnakesUnreal',
+      'Seiryu Extreme': 'Seiryu Unreal',
+      'seiryu-ex.txt': 'seiryu-un.txt',
+    },
+    // Primary offset 73F7
+    id: {
+      '37C3': 'ABBA', // Fifth Element
+      '37DC': 'ABD3', // Serpent Ascending
+      '37C4': 'ABBB', // --rotate--
+      '37E1': 'ABD8', // Kuji-kiri
+      '37DD': 'ABD4', // Serpent Descending
+      '37D5': 'ABCC', // --jump--
+      '37E2': 'ABD9', // Fortune-blade Sigil
+      '37D6': 'ABCD', // Onmyo Sigil
+      '3A01': 'ABF8', // Onmyo Sigil
+      '37D2': 'ABC9', // Cursekeeper
+      '37D3': 'ABCA', // Karmic Curse
+      '37D4': 'ABCB', // Infirm Soul
+      '37CE': 'ABC5', // Summon Shiki
+      '37EF': 'ABE6', // --sync--; possibly moving north?
+      '37EC': 'ABE3', // --sync--
+      '37F0': 'ABE7', // Blue Bolt
+      '37F1': 'ABE8', // Red Rush
+      '37ED': 'ABE4', // 100-tonze Swing
+      '3C21': 'ABFE', // Yama-kagura
+      '3814': 'ABF4', // Kanabo
+      '37EE': 'ABE5', // Kanabo
+      '37F2': 'ABE9', // Explosion (Doro-no-shiki)
+      '37F3': 'ABEA', // Explosion (Numa-no-shiki)
+      '37F4': 'ABEB', // Stoneskin
+      '37C9': 'ABC0', // Strength of Spirit
+      '37CA': 'ABC1', // Dragon's Wake
+      '37CB': 'ABC2', // Dragon's Wake
+      '37D0': 'ABC7', // Summon Shiki
+      '37F8': 'ABEF', // Great Typhoon
+      '37F9': 'ABF0', // Great Typhoon
+      '37FA': 'ABF1', // Great Typhoon
+      '37FB': 'ABF2', // Great Typhoon
+      '3922': 'ABF6', // Coursing River
+      '3923': 'ABF7', // Coursing River
+      '37F5': 'ABEC', // Coursing River
+      '37F6': 'ABED', // Coursing River
+      '37F7': 'ABEE', // Coursing River
+      '37CF': 'ABC6', // Summon Shiki
+      '37E5': 'ABDC', // Handprint
+      '37E6': 'ABDD', // Handprint
+      '37E7': 'ABDE', // Handprint
+      '37E8': 'ABDF', // Handprint
+      '37E9': 'ABE0', // Force of Nature
+      '37EA': 'ABE1', // Force of Nature
+      '37EB': 'ABE2', // Force of Nature
+      '37C5': 'ABBC', // Forbidden Arts (hidden castbar)
+      '37C7': 'ABBE', // Forbidden Arts (no debuff)
+      '37C8': 'ABBF', // Forbidden Arts (no debuff)
+      '37E4': 'ABDB', // Blazing Aramitama
+      '37D8': 'ABCF', // Onmyo Sigil
+      '37DB': 'ABD2', // Onmyo Sigil
+      '3A03': 'ABFA', // Onmyo Sigil
+      '3A06': 'ABFD', // Onmyo Sigil
+      '37D9': 'ABD0', // Serpent-eye Sigil
+      '37DA': 'ABD1', // Serpent-eye Sigil
+      '3A04': 'ABFB', // Serpent-eye Sigil
+      '3A05': 'ABFC', // Serpent-eye Sigil
+      '37E3': 'ABDA', // Fortune-blade Sigil
+      '3C25': 'AC02', // Serpent Ascending
+      '37DE': 'ABD5', // Serpent Descending
+      '37DF': 'ABD6', // Serpent's Fang
+      '37E0': 'ABD7', // Serpent's Jaws
+      '3C22': 'ABFF', // Forbidden Arts (debuff)
+      '3C23': 'AC00', // Forbidden Arts (debuff)
+      '37CD': 'ABC4', // Summon Shiki
+      '3CA9': 'AC03', // Fifth Element (enrage)
+    },
+  },
 ];
 
 const processFile = (filename: string, zone: ZoneReplace, inputText: string): string => {
