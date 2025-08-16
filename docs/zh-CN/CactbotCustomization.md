@@ -304,13 +304,19 @@ Options.PlayerNicks = {
 };
 ```
 
-你也可以通过 `Options.TransformTts` 函数全局替换 TTS 的文本，如：
+你也可以通过 `Options.TransformText` 函数全局替换提示文本，或通过 `Options.TransformTts` 函数全局替换 TTS 的文本：
 
 ```javascript
+Options.TransformText = (text) => {
+  return text.replace('a', 'b');
+};
+
 Options.TransformTts = (text) => {
   return text.replace('a', 'b');
 };
 ```
+
+**注意**：`TransformText` 会先处理文本，然后 `TransformTts` 则在此基础上进一步处理 TTS 文本。
 
 **警告**：用户文件夹中的文件会静默覆盖cactbot配置窗口的同名选项。 该行为可能会造成一些困惑，因此你应当直接通过配置窗口设置这些变量，当且仅当配置窗口不提供设置方法时可以采用此方式覆盖默认行为。
 

@@ -59,6 +59,8 @@ type RaidbossNonConfigOptions = {
   Triggers: LooseTriggerSet[];
   PlayerNameOverride?: string;
   IsRemoteRaidboss: boolean;
+  // Transforms text before passing it to text popups (also affects TTS).
+  TransformText: (text: string) => string;
   // Transforms text before passing it to TTS.
   TransformTts: (text: string) => string;
 };
@@ -87,6 +89,7 @@ const defaultRaidbossNonConfigOptions: RaidbossNonConfigOptions = {
 
   IsRemoteRaidboss: false,
 
+  TransformText: (t) => t,
   TransformTts: (t) => t,
 };
 
