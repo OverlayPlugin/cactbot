@@ -27,14 +27,7 @@ const triggerSet: TriggerSet<Data> = {
       beforeSeconds: 4,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        text: {
-          en: 'stack with your group',
-          de: 'mit der Gruppe stacken',
-          fr: 'Packez avec votre groupe',
-          ja: 'グループ別にスタック',
-          cn: '分组分摊',
-          ko: '쉐어징',
-        },
+        text: Outputs.healerGroups,
       },
     },
     {
@@ -44,14 +37,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 10,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        text: {
-          en: 'line stack',
-          de: 'Linien-Stack',
-          fr: 'Packez-vous en ligne',
-          ja: 'スタック',
-          cn: '直线分摊',
-          ko: '직선 쉐어',
-        },
+        text: Outputs.stackMarker,
       },
     },
     {
