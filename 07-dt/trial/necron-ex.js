@@ -75,6 +75,7 @@ Options.Triggers.push({
       outputStrings: {
         baitHand: {
           en: 'Bait Hand',
+          cn: '引导手',
         },
       },
     },
@@ -93,6 +94,7 @@ Options.Triggers.push({
         west: Outputs.west,
         text: {
           en: '${mid} => ${side}',
+          cn: '${mid} => ${side}',
         },
       },
     },
@@ -109,9 +111,11 @@ Options.Triggers.push({
       outputStrings: {
         lightWest: {
           en: 'Light West => Spread',
+          cn: '光左 => 分散',
         },
         lightEast: {
           en: 'Light East => Spread',
+          cn: '光右 => 分散',
         },
       },
     },
@@ -153,6 +157,7 @@ Options.Triggers.push({
         mid: Outputs.middle,
         stored: {
           en: 'Stored ${dir}',
+          cn: '储存 ${dir}',
         },
       },
     },
@@ -181,6 +186,7 @@ Options.Triggers.push({
         partners: Outputs.stackPartner,
         text: {
           en: '${dir} + ${mech}',
+          cn: '${dir} + ${mech}',
         },
       },
     },
@@ -193,6 +199,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Drop hand => Bait hand',
+          cn: '放手 => 引导手',
         },
       },
     },
@@ -211,6 +218,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Bait puddles',
+          cn: '引导黄圈',
         },
       },
     },
@@ -224,6 +232,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Bait puddles => Intercardinals',
+          cn: '引导黄圈 => 叉字',
         },
       },
     },
@@ -243,6 +252,7 @@ Options.Triggers.push({
         spread: Outputs.spread,
         tower: {
           en: 'Tower',
+          cn: '踩塔',
         },
       },
     },
@@ -265,7 +275,10 @@ Options.Triggers.push({
       condition: Conditions.targetIsYou(),
       infoText: (_data, _matches, output) => output.cleanse(),
       outputStrings: {
-        cleanse: 'Cleanse Slow',
+        cleanse: {
+          en: 'Cleanse Slow',
+          cn: '康复减速',
+        },
       },
     },
     {
@@ -323,15 +336,19 @@ Options.Triggers.push({
         spread: Outputs.spread,
         middle: {
           en: 'Middle Row',
+          cn: '中间行',
         },
         north: {
           en: 'North Row',
+          cn: '第一行',
         },
         south: {
           en: 'South Row',
+          cn: '第三行',
         },
         text: {
           en: '${row} + ${spread}',
+          cn: '${row} + ${spread}',
         },
       },
     },
@@ -344,6 +361,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Bait Hand => Dodge',
+          cn: '引导手 => 躲开',
         },
       },
     },
@@ -426,6 +444,7 @@ Options.Triggers.push({
         partners: Outputs.stackPartner,
         text: {
           en: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
+          cn: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
         },
       },
     },
@@ -496,12 +515,15 @@ Options.Triggers.push({
         middle: Outputs.middle,
         delay: {
           en: 'Wait for hand => ${dir}',
+          cn: '等手 => ${dir}',
         },
         lean: {
           en: '${dir}, lean ${to}',
+          cn: '${dir}, 靠 ${to}',
         },
         dodge: {
           en: '${dir} => Dodge Hand',
+          cn: '${dir} => 躲手',
         },
       },
     },
@@ -513,6 +535,7 @@ Options.Triggers.push({
       outputStrings: {
         towerPos: {
           en: 'Preposition for LP towers',
+          cn: '多人塔预站位',
         },
       },
     },
@@ -540,6 +563,7 @@ Options.Triggers.push({
       outputStrings: {
         soakNext: {
           en: 'Soak Next Tower',
+          cn: '踩下一个塔',
         },
         tankBuster: Outputs.tankBuster,
       },
