@@ -107,6 +107,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitHand: {
           en: 'Bait Hand',
+          ja: '手の誘導',
           cn: '引导手',
         },
       },
@@ -126,6 +127,7 @@ const triggerSet: TriggerSet<Data> = {
         west: Outputs.west,
         text: {
           en: '${mid} => ${side}',
+          ja: '${mid} => ${side}',
           cn: '${mid} => ${side}',
         },
       },
@@ -143,10 +145,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lightWest: {
           en: 'Light West => Spread',
+          ja: '光 左 => 散開',
           cn: '光左 => 分散',
         },
         lightEast: {
           en: 'Light East => Spread',
+          ja: '光 右 => 散開',
           cn: '光右 => 分散',
         },
       },
@@ -192,6 +196,7 @@ const triggerSet: TriggerSet<Data> = {
         mid: Outputs.middle,
         stored: {
           en: 'Stored ${dir}',
+          ja: '次は ${dir}',
           cn: '储存 ${dir}',
         },
       },
@@ -222,6 +227,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: Outputs.stackPartner,
         text: {
           en: '${dir} + ${mech}',
+          ja: '${dir} + ${mech}',
           cn: '${dir} + ${mech}',
         },
       },
@@ -235,6 +241,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Drop hand => Bait hand',
+          ja: '手を外に捨てる => 次の手を誘導',
           cn: '放手 => 引导手',
         },
       },
@@ -250,12 +257,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'AE18', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.bait!(),
+      infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        bait: {
-          en: 'Bait puddles',
-          cn: '引导黄圈',
-        },
+        text: Outputs.baitPuddles,
       },
     },
     {
@@ -268,6 +272,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Bait puddles => Intercardinals',
+          ja: '中央 => ×字散開',
           cn: '引导黄圈 => 叉字',
         },
       },
@@ -287,10 +292,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         spread: Outputs.spread,
-        tower: {
-          en: 'Tower',
-          cn: '踩塔',
-        },
+        tower: Outputs.getTowers,
       },
     },
     {
@@ -314,6 +316,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse Slow',
+          ja: 'スロウを解除',
           cn: '康复减速',
         },
       },
@@ -379,18 +382,22 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
         middle: {
           en: 'Middle Row',
+          ja: '中央列',
           cn: '中间行',
         },
         north: {
           en: 'North Row',
+          ja: '北列（上）',
           cn: '第一行',
         },
         south: {
           en: 'South Row',
+          ja: '南列（下）',
           cn: '第三行',
         },
         text: {
           en: '${row} + ${spread}',
+          ja: '${row} + ${spread}',
           cn: '${row} + ${spread}',
         },
       },
@@ -404,6 +411,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Bait Hand => Dodge',
+          ja: '手を誘導 => 回避',
           cn: '引导手 => 躲开',
         },
       },
@@ -503,6 +511,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: Outputs.stackPartner,
         text: {
           en: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
+          ja: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           cn: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
         },
       },
@@ -587,14 +596,17 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         delay: {
           en: 'Wait for hand => ${dir}',
+          ja: '手を待つ => ${dir}',
           cn: '等手 => ${dir}',
         },
         lean: {
           en: '${dir}, lean ${to}',
+          ja: '${dir}, ${to}に寄る',
           cn: '${dir}, 靠 ${to}',
         },
         dodge: {
           en: '${dir} => Dodge Hand',
+          ja: '${dir} => 手を避ける',
           cn: '${dir} => 躲手',
         },
       },
@@ -607,6 +619,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         towerPos: {
           en: 'Preposition for LP towers',
+          ja: '最初の塔踏み位置へ移動',
           cn: '多人塔预站位',
         },
       },
@@ -635,6 +648,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         soakNext: {
           en: 'Soak Next Tower',
+          ja: '次の塔を踏む',
           cn: '踩下一个塔',
         },
         tankBuster: Outputs.tankBuster,
