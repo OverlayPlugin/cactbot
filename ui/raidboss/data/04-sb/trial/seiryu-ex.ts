@@ -39,17 +39,16 @@ const triggerSet: TriggerSet<Data> = {
       id: 'SeiryuEx Tether',
       regex: /Kanabo/,
       beforeSeconds: 7,
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
-      alertText: (_data, _matches, output) => output.text!(),
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank' || data.job === 'BLU')
+          return output.grabTether!();
+        return output.avoidTether!();
+      },
       outputStrings: {
-        text: {
-          en: 'Grab Tether, Point Away',
-          de: 'Verbindung nehmen und wegdrehen',
-          fr: 'Prenez le lien, pointez vers l\'extérieur',
-          ja: '線を取って外に向ける',
-          cn: '接线引导向场外',
-          ko: '선 가로채고 구석으로 유도하기',
+        grabTether: {
+          en: 'Grab Tank Tether, Point Cleave Away',
         },
+        avoidTether: Outputs.avoidTankCleaves,
       },
     },
   ],
@@ -124,14 +123,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 1,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        text: {
-          en: 'Stack for Puddle AOEs',
-          de: 'Stacken (Pfützen)',
-          fr: 'Packez-vous pour l\'AoE',
-          ja: 'スタック',
-          cn: '集合放置AOE',
-          ko: '중앙에 모이기',
-        },
+        text: Outputs.baitPuddles,
       },
     },
     {
@@ -222,17 +214,21 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'SeiryuEx Find Sneks',
-      type: 'StartsUsing',
+      type: 'StartsUsingExtra',
       netRegex: { id: '37F7', capture: true },
       alarmText: (data, matches, output) => {
         // Blue Orochi spawn east or west with heading of either -1.57 or 1.57.
         // Invert their spawn heading to find the safe location.
         // No source because sometimes the name field is stale.
         const safeDir4Num = (Directions.hdgTo4DirNum(parseFloat(matches.heading)) + 2) % 4;
+        if (safeDir4Num !== 1 && safeDir4Num !== 3) {
+          if (data.withForce === undefined)
+            return output.goToUnknownSnakes!();
+          return output.outOfMiddleUnknownSnakes!();
+        }
         const safeDir = Directions.outputFromCardinalNum(safeDir4Num);
         if (data.withForce === undefined)
           return output.goToSnakes!({ dir: output[safeDir]!() });
-
         return output.outOfMiddleTowardSnakes!({ dir: output[safeDir]!() });
       },
       run: (data) => data.withForce = true,
@@ -242,8 +238,14 @@ const triggerSet: TriggerSet<Data> = {
         goToSnakes: {
           en: 'Go ${dir} Toward Snakes',
         },
+        goToUnknownSnakes: {
+          en: 'Go Toward Snakes',
+        },
         outOfMiddleTowardSnakes: {
-          en: 'Out of Middle, Knockback To ${dir}',
+          en: 'Out Of Middle, Knockback To ${dir}',
+        },
+        outOfMiddleUnknownSnakes: {
+          en: 'Out Of Middle, Knockback Toward Snakes',
         },
       },
     },
@@ -320,7 +322,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'SeiryuEx Swim Lessons',
       type: 'StartsUsing',
-      netRegex: { id: '37CB', source: 'Seiryu', capture: false },
+      netRegex: { id: '37CB', capture: false },
       delaySeconds: 28,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
