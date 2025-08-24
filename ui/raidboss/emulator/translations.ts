@@ -352,6 +352,7 @@ const emulatorLabels: Translation = {
   ' label[for=hideGeneral]': {
     en: 'Hide General',
     de: 'Allgemein Ausblenden',
+    fr: 'Masquer tout',
     cn: '隐藏通用触发器',
   },
 } as const;
@@ -374,6 +375,7 @@ const emulatorTooltips: Translation = {
   '.triggerHideGeneral': {
     en: 'Hide triggers that are not for a specific zone',
     de: 'Trigger ausblenden, die sich nicht auf eine bestimmte Zone beziehen',
+    fr: 'Masque les triggers qui ne sont pas dans une zone spécifique',
     cn: '隐藏非特定区域的触发器',
   },
   '.connectedIndicator': {
