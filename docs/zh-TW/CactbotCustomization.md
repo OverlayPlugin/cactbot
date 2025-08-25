@@ -283,6 +283,20 @@ Options.PlayerNicks = {
 };
 ```
 
+你也可以透過 `Options.TransformText` 函式全域性替換提示文字，或透過 `Options.TransformTts` 函式全域性替換 TTS 的文字：
+
+```javascript
+Options.TransformText = (text) => {
+  return text.replace('a', 'b');
+};
+
+Options.TransformTts = (text) => {
+  return text.replace('a', 'b');
+};
+```
+
+**注意**：`TransformText` 會先處理文字，然後 `TransformTts` 則在此基礎上進一步處理 TTS 文字。
+
 **警告**：使用者資料夾中的檔案會靜默覆蓋cactbot使用者介面的同名選項。 該行為可能會造成一些困惑，因此您應當直接通過使用者介面設置這些變量， 僅當使用者介面不提供設置方法時採用此方式覆蓋預設行為。
 
 ## 使用者檔案的除錯

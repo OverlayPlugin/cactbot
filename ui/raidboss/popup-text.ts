@@ -1663,6 +1663,7 @@ export class PopupText {
     if (text === '')
       return;
 
+    text = this.options.TransformText(text) ?? text;
     triggerHelper.defaultTTSText = triggerHelper.defaultTTSText ?? text;
     if (text && typeof text === 'string' && triggerHelper.textAlertsEnabled) {
       // per-trigger option > trigger field > option duration by text type

@@ -382,6 +382,20 @@ Options.PlayerNicks = {
 };
 ```
 
+`Options.TransformText`를 통해 전체 텍스트 팝업을, `Options.TransformTts`를 통해 전체 TTS 호출을 전역으로 교체할 수 있습니다:
+
+```javascript
+Options.TransformText = (text) => {
+  return text.replace('a', 'b');
+};
+
+Options.TransformTts = (text) => {
+  return text.replace('a', 'b');
+};
+```
+
+**주의**: `TransformText` 는 텍스트를 먼저 처리하며, `TransformTts` 는 이 기반 위에서 TTS 텍스트를 추가로 처리합니다.
+
 **주의**: user 디렉토리에 있는 파일들은 cactbot 설정 UI에서 설정한 값들을
 조용히 덮어씌울 것입니다.
 이 부분이 헷갈릴 수 있는데,
