@@ -16,7 +16,7 @@ hideall "--sync--"
 14.7 "Extraplanar Pursuit" Ability { id: "A74F", source: "Howling Blade" } window 10,10
 20.5 "--middle--" Ability { id: "A38F", source: "Howling Blade" }
 29.5 "Stonefang/Windfang" Ability { id: ["A39E", "A39D", "A3A1", "A3A2"], source: "Howling Blade" }
-39.6 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
+39.6 "Eminent Reign/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
 40.9 "--sync--" Ability { id: "A92C", source: "Howling Blade" }
 41.0 "--sync--" Ability { id: ["A930", "A931"], source: "Howling Blade" }
 43.0 "Wolves' Reign (circles)" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }
@@ -53,7 +53,7 @@ hideall "--sync--"
 145.1 "Titanic Pursuit" Ability { id: "A751", source: "Howling Blade" }
 145.9 "Bare Fangs" Ability { id: "A4CC", source: "Howling Blade" }
 152.9 "Towerfall" Ability { id: "A3C6", source: "Howling Blade" }
-158.8 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
+158.8 "Eminent Reign/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
 160.1 "--sync--" Ability { id: "A92C", source: "Howling Blade" }
 160.2 "--sync--" Ability { id: ["A930", "A931"], source: "Howling Blade" }
 162.2 "Wolves' Reign (circles)" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }
@@ -107,7 +107,7 @@ hideall "--sync--"
 393.0 "Suspended Stone" #Ability { id: "A3BF", source: "Howling Blade" }
 395.2 "--targetable--"
 397.9 "Roaring Wind" Ability { id: "A78A", source: "Wolf of Wind" }
-402.5 "Eminent/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
+402.5 "Eminent Reign/Revolutionary Reign" Ability { id: ["A911", "A912", "A913", "A914"], source: "Howling Blade" }
 403.8 "--sync--" Ability { id: "A92C", source: "Howling Blade" }
 403.8 "--sync--" Ability { id: ["A930", "A931"], source: "Howling Blade" }
 405.8 "Wolves' Reign (circles)" Ability { id: ["A398", "A7AF"], source: "Howling Blade" }

@@ -60,6 +60,7 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   'ContainmentBayZ1T9Unreal': 1157,
   'TheSingularityReactorUnreal': 1175,
   'TheJadeStoaUnreal': 1239,
+  'HellsKierUnreal': 1272,
   // rename to something friendly/useful
   'TheMaskedCarnivale': 796,
   // 6.2 revamp
@@ -92,6 +93,8 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   // 7.2 revamp
   'TheSunkenTempleOfQarn71': 163,
   'TheBorderlandRuinsSecure71': 376,
+  // 7.3 revamp
+  'CuttersCry72': 170,
 };
 
 // This will override the data-soourced ContentType with our own value.
@@ -269,6 +272,22 @@ const _SYNTHETIC_ZONE_INFO: ZoneInfoType = {
     'offsetY': 0,
     'sizeFactor': 400,
     'weatherRate': 93,
+  },
+  1272: {
+    'contentType': 4,
+    'exVersion': 5,
+    'name': {
+      'cn': '朱雀幻巧战',
+      'de': 'Traumprüfung - Suzaku',
+      'en': 'Hells\' Kier (Unreal)',
+      'fr': 'Le Nid des Lamentations (irréel)',
+      'ja': '幻朱雀征魂戦',
+      'ko': '환 주작 토벌전',
+    },
+    'offsetX': -100,
+    'offsetY': -100,
+    'sizeFactor': 400,
+    'weatherRate': 98,
   },
 
   // 6.2 updates - content removed/reworked
@@ -662,6 +681,23 @@ const _SYNTHETIC_ZONE_INFO: ZoneInfoType = {
     'offsetX': 0,
     'offsetY': 0,
     'sizeFactor': 100,
+    'weatherRate': 0,
+  },
+  // 7.3 updates - content removed/reworked
+  170: {
+    'contentType': 2,
+    'exVersion': 0,
+    'name': {
+      'cn': '(7.2)流沙迷宫樵鸣洞',
+      'de': '(7.2)Sägerschrei',
+      'en': '(7.2)Cutter\'s Cry',
+      'fr': '(7.2)Le Gouffre hurlant',
+      'ja': '(7.2)流砂迷宮 カッターズクライ',
+      'ko': '(7.2)나무꾼의 비명',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 200,
     'weatherRate': 0,
   },
 };

@@ -127,6 +127,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheStrayboroughDeadwalk,
   ZoneId.YuweyawataFieldStation,
   ZoneId.TheUnderkeep,
+  ZoneId.TheMesoTerminal,
 
   // Trials (A Realm Reborn)
   ZoneId.TheBowlOfEmbers,
@@ -248,14 +249,17 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.Everkeep,
   ZoneId.TheInterphos,
   ZoneId.Recollection,
+  ZoneId.TheAgelessNecropolis,
 
   // High-end Trials (Dawntrail)
   ZoneId.WorqorLarDorExtreme,
   ZoneId.EverkeepExtreme,
   ZoneId.TheMinstrelsBalladSphenesBurden,
   ZoneId.RecollectionExtreme,
+  ZoneId.TheMinstrelsBalladNecronsEmbrace,
   ZoneId.TheJadeStoaUnreal,
   ZoneId.HellsKierUnreal,
+  ZoneId.TheWreathOfSnakesUnreal,
 
   // Alliance Raids (A Realm Reborn)
   ZoneId.TheLabyrinthOfTheAncients,
@@ -417,6 +421,7 @@ const contentList: (ZoneIdType)[] = [
 
   // Alliance Raids (Dawntrail)
   ZoneId.JeunoTheFirstWalk,
+  ZoneId.SanDoriaTheSecondWalk,
 
   // Normal Raids (Dawntrail)
   ZoneId.AacLightHeavyweightM1,

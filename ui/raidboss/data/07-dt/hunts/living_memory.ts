@@ -137,6 +137,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'A Rank Hunts and Mica the Magical Mu boss FATE',
     de: 'A Rang Hohe Jagd und Mica das Magische Mu Boss FATE',
+    fr: 'Chasse de rang A et ALÉA Mica le boss Mu Magique',
     cn: 'A级狩猎怪和亩鼠米卡特殊FATE',
     ko: 'A급 마물, 마술다람쥐 마이카 특수돌발',
   },
