@@ -182,6 +182,7 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '火球',
         'Black Star': '黑色天星',
