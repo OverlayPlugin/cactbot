@@ -451,11 +451,11 @@ hideall "--sync--"
 20006.1 "Demonic Dark II" Ability { id: "A306", source: "Demon Tablet" }
 20022.2 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
 20022.6 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
-20022.6 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20022.6 "Landing" #Ability { id: "A354", source: "Demon Tablet" }
 20035.3 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
 20035.7 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
-20035.7 "Landing" Ability { id: "A354", source: "Demon Tablet" }
-20049.8 "Occult Chisel" Ability { id: ["A307", "A308"] source: "Demon Tablet" }
+20035.7 "Landing" #Ability { id: "A354", source: "Demon Tablet" }
+20049.8 "Occult Chisel" Ability { id: ["A307", "A308"], source: "Demon Tablet" }
 20065.9 "Demonograph of Dangers Near / Demonograph of Expulsion Afar" Ability { id: ["A2F6", "A2F7"], source: "Demon Tablet" }
 20066.3 "Landing" Ability { id: "A354", source: "Demon Tablet" }
 20070.7 "Explosion" Ability { id: "A2F8", source: "Demon Tablet" }
@@ -479,7 +479,7 @@ hideall "--sync--"
 20248.0 "Gravity of Dangers Near / Gravity of Expulsion Afar" Ability { id: ["A2EA", "AA01"], source: "Demon Tablet" }
 20248.4 "Landing" Ability { id: "A354", source: "Demon Tablet" }
 20252.0 "Erase Gravity" #Ability { id: "A2EB", source: "Demon Tablet" }
-20257.8 "Explosion" Ability { id: ["A2F1", "A2EF"] source: "Demon Tablet" }
+20257.8 "Explosion" Ability { id: ["A2F1", "A2EF"], source: "Demon Tablet" }
 20262.1 "Restore Gravity" Ability { id: "A2EC", source: "Demon Tablet" }
 20264.1 "Landing" Ability { id: "A2ED", source: "Demon Tablet" }
 20278.6 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
@@ -493,8 +493,8 @@ hideall "--sync--"
 20328.8 "Portentous Cometeor" Ability { id: "A2E6", source: "Demon Tablet" }
 20344.4 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
 20344.8 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
-20344.8 "Landing" Ability { id: "A354", source: "Demon Tablet" }
-20358.9 "Occult Chisel" Ability { id: ["A307", "A308"] source: "Demon Tablet" }
+20344.8 "Landing" #Ability { id: "A354", source: "Demon Tablet" }
+20358.9 "Occult Chisel" Ability { id: ["A307", "A308"], source: "Demon Tablet" }
 20370.0 "Demonic Dark II" Ability { id: "A306", source: "Demon Tablet" }
 20392.0 "End of History (Enrage)" Ability { id: "A30B", source: "Demon Tablet" }
 20392.9 "End of History (Enrage)" Ability { id: "A355", source: "Demon Tablet" }
@@ -639,7 +639,7 @@ hideall "--sync--"
 30319.0 "--sync--" Ability { id: "A5BC", source: "Phobos" } window 100,0
 30321.0 "--sync--" Ability { id: "A5B4", source: "Phobos" }
 30328.8 "Vengeful Bio III" Ability { id: "A5BF", source: "Phobos" }
-30328.8 "Vengeful Blizzard III" Ability { id: "A5BE", source: "Nereid" }
+30328.8 "Vengeful Blizzard III" #Ability { id: "A5BE", source: "Nereid" }
 30329.2 "--sync--" Ability { id: "A5BA", source: "Triton" }
 30333.4 "Excruciating Equilibrium" Ability { id: "A5F8", source: "Phobos" }
 30335.5 "--sync--" Ability { id: "A5B4", source: "Phobos" }
