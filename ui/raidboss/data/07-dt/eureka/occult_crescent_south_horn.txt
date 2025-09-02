@@ -425,3 +425,260 @@ hideall "--sync--"
 15000.0 "--sync--" ActorControl { command: "80000014", data0: "339" } window 100000,0
 15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
+### The Forked Tower: Blood
+#16000.0 "--sync--" ActorControl { command: "80000014", data0: "33B" } window 100000,0
+
+### Demon Tablet
+# -ii A30A A3AF A2EB A2F1 A2EF A303 A304 A308 A354 A2FE A2E6 A2E7 A91D A91E AB12 A2FD
+# -p A306:20006.1
+#
+# IGNORED ABILITIES
+# A2E6 - Portentous Cometeor
+# A2E7 - Portentous Comet
+# A2FD - Lacunate Stream
+# A2FE - Lacunate Stream
+# A303 - Rotation
+# A304 - Rotation
+# A308 - Occult Chisel
+# A30A - Auto-attack from boss
+# AB12 - Landing
+# A91D - Landing player hit
+# A91E - Landing
+# The Palaeography Room will be sealed off
+20000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1450" } window 100000,0
+20000.8 "--sync--" Ability { id: "A30A", source: "Demon Tablet" }
+20001.1 "--sync--" StartsUsing { id: "A306", source: "Demon Tablet" } window 100,50
+20006.1 "Demonic Dark II" Ability { id: "A306", source: "Demon Tablet" }
+20022.2 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
+20022.6 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
+20022.6 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20035.3 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
+20035.7 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
+20035.7 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20049.8 "Occult Chisel" Ability { id: ["A307", "A308"] source: "Demon Tablet" }
+20065.9 "Demonograph of Dangers Near / Demonograph of Expulsion Afar" Ability { id: ["A2F6", "A2F7"], source: "Demon Tablet" }
+20066.3 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20070.7 "Explosion" Ability { id: "A2F8", source: "Demon Tablet" }
+20083.8 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20084.7 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20096.0 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20096.9 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20100.2 "Lacunate Stream" Ability { id: "A300", source: "Demon Tablet" }
+20120.0 "Cometeor of Dangers Near / Cometeor of Expulsion Afar" Ability { id: ["A2E4", "A2E5"], source: "Demon Tablet" }
+20120.4 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20127.0 "Portentous Comet" Ability { id: ["A2E8", "A2E7"], source: "Demon Tablet" }
+20134.0 "Portentous Cometeor" Ability { id: "A2E6", source: "Demon Tablet" }
+20147.6 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20148.4 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20159.7 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20160.6 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20163.9 "Lacunate Stream" Ability { id: "A300", source: "Demon Tablet" }
+20183.8 "Summon" Ability { id: "A30D", source: "Demon Tablet" }
+20230.0 "Summon" Ability { id: "A2E9", source: "Demon Tablet" }
+20236.0 "Demonography" Ability { id: "A2EE", source: "Demon Tablet" }
+20248.0 "Gravity of Dangers Near / Gravity of Expulsion Afar" Ability { id: ["A2EA", "AA01"], source: "Demon Tablet" }
+20248.4 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20252.0 "Erase Gravity" #Ability { id: "A2EB", source: "Demon Tablet" }
+20257.8 "Explosion" Ability { id: ["A2F1", "A2EF"] source: "Demon Tablet" }
+20262.1 "Restore Gravity" Ability { id: "A2EC", source: "Demon Tablet" }
+20264.1 "Landing" Ability { id: "A2ED", source: "Demon Tablet" }
+20278.6 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20279.5 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20290.8 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20291.7 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20295.0 "Lacunate Stream" Ability { id: "A300", source: "Demon Tablet" }
+20314.8 "Cometeor of Dangers Near / Cometeor of Expulsion Afar" Ability { id: ["A2E4", "A2E5"], source: "Demon Tablet" }
+20315.2 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20321.8 "Portentous Comet" Ability { id: ["A2E8", "A2E7"], source: "Demon Tablet" }
+20328.8 "Portentous Cometeor" Ability { id: "A2E6", source: "Demon Tablet" }
+20344.4 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
+20344.8 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
+20344.8 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20358.9 "Occult Chisel" Ability { id: ["A307", "A308"] source: "Demon Tablet" }
+20370.0 "Demonic Dark II" Ability { id: "A306", source: "Demon Tablet" }
+20392.0 "End of History (Enrage)" Ability { id: "A30B", source: "Demon Tablet" }
+20392.9 "End of History (Enrage)" Ability { id: "A355", source: "Demon Tablet" }
+
+### Dead Stars
+# -ii A5FA A5FB A608 A602 A5FF A600 A63E A63F A5B9 A5DC A5DF A5DB A5E3 A5E4 A5DE A5E5 A5F9 A606
+# -ii A5D1 A5D2 A5CC A5CD A5E8 A5E9 A5EA A5EB A5EC A5EE A5EF A5F1 A5F3
+# -p A5FC:30013.5
+#
+# IGNORED ABILITIES
+# A5B9 - Three-Body Problem from Triton
+# A5CC - Flamethrower (Targeted Players)
+# A5CD - Flamethrower (Damage)
+# A5DB - Liquified Triton / Liquified Nereid Jump
+# A5DE - Frozen Fallout from Phobos
+# A5E3 - Frozen Fallout from Liquified Triton
+# A5E4 - Frozen Fallout from Liquified Nereid
+# A5E5 - Noxious Nova self-cast on Phobos
+# A5EA - Bodied (bosses colliding with each other)
+# A5D1 - Avalaunch (Tether Player Target)
+# A5D2 - Avalaunch (Stack Damage)
+# A5DC - Primordial Chaos Damage
+# A5DF - Frozen Fallout tell from Phobos
+# A5E8 - Six-Handed Fistfight (self-cast) from Dead Stars
+# A5E9 - Six-Handed Fistfight (damage) from Dead Stars
+# A5EB - Enrage Sequence related animation
+# A5EC - Enrage Sequence related animation
+# A5EE - Collateral Heat Jet
+# A5EF - Collateral Cold Jet
+# A5F1 - Collateral Fireball
+# A5F3 - Collateral Bioball
+# A5F9 - Excruciating Equilibrium from Phobos
+# A5FA - Decisive Battle
+# A5FB - Decisive Battle
+# A5FF - Delta Attack from Triton
+# A600 - Delta Attack from Triton
+# A63E - Delta Attack 1 Damage from Triton
+# A63F - Delta Attack 2/3 Damage from Nereid and Phobos
+# A606 - Firestrike Damage
+# A602 - Slice 'n' Dice (tankbuster related)
+# A608 - Auto-attack from boss
+# The Astronomy Room will be sealed off
+30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1451" } window 100000,0
+30005.2 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30007.5 "--sync--" StartsUsing { id: "A5FC", source: "Phobos" } window 100,50
+30013.5 "Decisive Battle" Ability { id: "A5FC", source: "Phobos" }
+30023.7 "Slice 'n' Dice" Ability { id: "A601", source: "Phobos" }
+30028.9 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Slimes
+30036.6 "Three-Body Probl─" Ability { id: "A5B5", source: "Phobos" }
+30037.8 "Three-Body Problem" Ability { id: "A9BD", source: "Nereid" }
+30038.2 "Noisome Nuisance" Ability { id: "A637", source: "Phobos" }
+30050.5 "Primordial Chaos" Ability { id: "A5D9", source: "Phobos" }
+30055.5 "Frozen Fallout" StartsUsing { id: "A5DD", source: "Phobos" } duration 10
+30058.1 "Frozen Fallout Tell 1" Ability { id: "A5E0", source: "Phobos" }
+30060.7 "Frozen Fallout Tell 2" Ability { id: "A5E0", source: "Triton" }
+30063.1 "Frozen Fallout Tell 3" Ability { id: "A5E0", source: "Phobos" }
+30065.5 "Frozen Fallout Tell 4" Ability { id: "A5E0", source: "Triton" }
+30067.1 "Frozen Fallout 1" Ability { id: "A5E3", source: "Liquified Triton" }
+30072.6 "Frozen Fallout 2" Ability { id: "A5E3", source: "Liquified Triton" }
+30078.1 "Frozen Fallout 3" Ability { id: "A5E3", source: "Liquified Triton" }
+30083.6 "Frozen Fallout 4" Ability { id: "A5E3", source: "Liquified Triton" }
+30093.6 "Noxious Nova" Ability { id: "A5E6", source: "Phobos" }
+30093.7 "--sync--" Ability { id: "A5BB", source: "Nereid" }
+30097.9 "--sync--" Ability { id: "A5BC", source: "Nereid" }
+30099.9 "--sync--" Ability { id: "A5B4", source: "Nereid" }
+30107.8 "Vengeful Blizzard III" Ability { id: "A5BE", source: "Nereid" }
+30107.8 "Vengeful Fire III" #Ability { id: "A5BD", source: "Triton" }
+30108.2 "--sync--" Ability { id: "A5BA", source: "Phobos" }
+30112.4 "Excruciating Equilibrium" Ability { id: "A5F8", source: "Phobos" }
+30117.5 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30124.8 "Delta Attack 1" Ability { id: "A5FD", source: "Phobos" }
+30125.9 "Delta Attack 2" Ability { id: "A5FE", source: "Phobos" }
+30127.0 "Delta Attack 3" Ability { id: "A5FE", source: "Phobos" }
+30132.1 "Firestrike (marker)" Ability { id: "A604", source: "Phobos" }
+30137.1 "Firestrike" Ability { id: "A603", source: "Phobos" }
+30142.4 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Snowballs
+30149.8 "Three-Body Probl─" Ability { id: "A5B5", source: "Nereid" }
+30151.0 "Three-Body Problem" Ability { id: "A5B8", source: "Phobos" }
+30151.6 "Icebound Buffoon" Ability { id: "A636", source: "Nereid" }
+30165.9 "Snowball Flight" Ability { id: "A5CE", source: "Nereid" }
+30165.9 "Snow Boulder 1" #Ability { id: "A5D0", source: "Frozen Phobos" }
+30168.5 "Snow Boulder 2" Ability { id: "A5D0", source: "Frozen Phobos" }
+30171.1 "Snow Boulder 3" Ability { id: "A5D0", source: "Frozen Phobos" }
+30176.1 "Chilling Collision" Ability { id: "A5B6", source: "Nereid" }
+30177.2 "Chilling Collision (knockback)" Ability { id: "A5D4", source: "Nereid" }
+30178.8 "Avalaunch" Ability { id: "A89A", source: "Frozen Phobos" }
+30193.7 "--sync--" #Ability { id: "A5BB", source: "Triton" }
+30194.1 "--sync--" #Ability { id: "A5BB", source: "Phobos" }
+30197.1 "To the Winds" Ability { id: "A5D5", source: "Nereid" }
+30197.1 "Self-destruct (Enrage)" #Ability { id: "A5D6", source: "Frozen Triton" }
+30197.7 "Self-destruct (Enrage)" #Ability { id: "A5D8", source: "Frozen Triton" }
+
+30201.4 "--sync--" Ability { id: "A5BC", source: "Phobos" } window 100,0
+30203.4 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30211.2 "Vengeful Bio III" Ability { id: "A5BF", source: "Phobos" }
+30211.2 "Vengeful Fire III" #Ability { id: "A5BD", source: "Triton" }
+30211.6 "--sync--" Ability { id: "A5BA", source: "Nereid" }
+30215.8 "Excruciating Equilibrium" Ability { id: "A5F8", source: "Phobos" }
+30220.9 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30228.2 "Delta Attack 1" Ability { id: "A5FD", source: "Phobos" }
+30229.3 "Delta Attack 2" Ability { id: "A5FE", source: "Phobos" }
+30230.4 "Delta Attack 3" Ability { id: "A5FE", source: "Phobos" }
+30235.5 "Firestrike (marker)" Ability { id: "A607", source: "Phobos" }
+30240.5 "Slice 'n' Strike" Ability { id: "A605", source: "Phobos" }
+30241.7 "Firestrike" Ability { id: "A606", source: "Phobos" }
+30247.9 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Fireballs
+30255.3 "Three-Body Probl─" Ability { id: "A5B5", source: "Triton" }
+30256.5 "Three-Body Problem" Ability { id: "A5B7", source: "Phobos" }
+30257.1 "Blazing Belligerent" Ability { id: "A635", source: "Triton" }
+30271.1 "Elemental Impact 1" Ability { id: "A5C0", source: "Gaseous Phobos" }
+30271.5 "Fire Spread 1" Ability { id: "A908", source: "Triton" }
+30275.2 "Elemental Impact 2" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30275.6 "Fire Spread 2" Ability { id: "A908", source: "Triton" }
+30279.3 "Elemental Impact 3" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30279.7 "Fire Spread 3" #Ability { id: "A908", source: "Triton" }
+30284.3 "Geothermal Rupture" Ability { id: "A5C9", source: "Triton" }
+30286.4 "Flame Thrower" Ability { id: "A5CC", source: "Triton" }
+30287.4 "Geothermal Rupture 1" Ability { id: "A5CA", source: "Triton" }
+30289.4 "Geothermal Rupture 2" Ability { id: "A5CA", source: "Triton" }
+30291.4 "Geothermal Rupture 3" Ability { id: "A5CA", source: "Triton" }
+30291.4 "Flame Thrower" Ability { id: "A5CB", source: "Triton" }
+30296.4 "Elemental Impact 1" Ability { id: "A5C2", source: "Gaseous Phobos" }
+30296.8 "Fire Spread 1" Ability { id: "A908", source: "Triton" }
+30300.5 "Elemental Impact 2" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30300.9 "Fire Spread 2" #Ability { id: "A908", source: "Triton" }
+30303.9 "--sync--" Ability { id: "A5BB", source: "Phobos" }
+30304.6 "Elemental Impact 3" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30305.0 "Fire Spread 3" Ability { id: "A908", source: "Triton" }
+30316.8 "To the Winds" Ability { id: "A5C5", source: "Triton" }
+30316.8 "Self-Destruct" #Ability { id: "A5C6", source: "Gaseous Phobos" }
+30316.8 "Self-Destruct" #Ability { id: "A5C6", source: "Gaseous Nereid" }
+30316.8 "--sync--" Ability { id: "A5BB", source: "Nereid" }
+30316.8 "Self-Destruct (Enrage)" #Ability { id: "A5C7", source: "Gaseous Nereid" }
+30317.5 "Self-Destruct (Enrage)" #Ability { id: "A5C8", source: "Triton" }
+
+30319.0 "--sync--" Ability { id: "A5BC", source: "Phobos" } window 100,0
+30321.0 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30328.8 "Vengeful Bio III" Ability { id: "A5BF", source: "Phobos" }
+30328.8 "Vengeful Blizzard III" Ability { id: "A5BE", source: "Nereid" }
+30329.2 "--sync--" Ability { id: "A5BA", source: "Triton" }
+30333.4 "Excruciating Equilibrium" Ability { id: "A5F8", source: "Phobos" }
+30335.5 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Enrage Sequence
+# A5F0 - Collateral Gas Jet is used to track all three
+# A5F2 - Collateral Iceball is used to track all three
+30352.4 "Six-Handed Fistfight" Ability { id: "A5E7", source: "Phobos" }
+30364.7 "Collateral Damage" Ability { id: "A5ED", source: "Dead Stars" } duration 11.5
+30364.7 "Collateral Jets 1" #Ability { id: "A5F0", source: "Dead Stars" }
+30366.3 "Collateral Jets 2" #Ability { id: "A5F0", source: "Dead Stars" }
+30371.2 "Collateral Balls 1 x8" #Ability { id: "A5F2", source: "Triton" }
+30372.2 "Collateral Balls 2 x8" #Ability { id: "A5F2", source: "Triton" }
+30373.1 "Collateral Balls 3 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30374.0 "Collateral Balls 4 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30374.9 "Collateral Balls 5 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30375.9 "Collateral Balls 6 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+
+30385.5 "Collateral Damage" Ability { id: "A5ED", source: "Dead Stars" } duration 11.5
+30385.5 "Collateral Jets 1" #Ability { id: "A5F0", source: "Dead Stars" }
+30387.5 "Collateral Jets 2" #Ability { id: "A5F0", source: "Dead Stars" }
+30392.3 "Collateral Balls 1 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30393.3 "Collateral Balls 2 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30394.2 "Collateral Balls 3 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30395.1 "Collateral Balls 4 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30396.1 "Collateral Balls 5 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30397.0 "Collateral Balls 6 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30411.1 "Fusion Burst (Enrage)" Ability { id: "A5F4", source: "Dead Stars" }
+30411.1 "Fusion Burst (Enrage)" #Ability { id: "A5F5", source: "Dead Stars" }
+
+# Loop enrage
+30416.1 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" }
+30420.8 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" } jump 30416.1
+
+
+### Marble Dragon
+# ??? will be sealed off
+40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1452" } window 100000,0
+
+### Magitaur
+# ??? will be sealed off
+50000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1453" } window 100000,0
