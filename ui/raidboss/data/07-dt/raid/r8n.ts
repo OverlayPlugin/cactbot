@@ -298,7 +298,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe(),
     },
     {
-      id: 'R8S Weal of Stone',
+      id: 'R8N Weal of Stone',
       // TODO: Add direction such as Avoid lines from ${dir}
       // There are two casts: A989 and A988
       type: 'StartsUsing',
