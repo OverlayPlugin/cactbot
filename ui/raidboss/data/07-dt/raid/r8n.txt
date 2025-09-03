@@ -138,7 +138,7 @@ hideall "--sync--"
 479.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
 
 # Loop Block
-487.7 "Wolves' Reign" Ability { id: ["A90F", "A910"], source: "Howling Blade" } jump 281.7}
+487.7 "Wolves' Reign" Ability { id: ["A90F", "A910"], source: "Howling Blade" } jump 281.7
 489.1 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
 491.1 "--sync--" Ability { id: "A371", source: "Howling Blade" }
 491.7 "Wolves' Reign (line)" Ability { id: "A968", source: "Howling Blade" }
