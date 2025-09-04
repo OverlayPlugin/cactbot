@@ -511,6 +511,7 @@ hideall "--sync--"
 # -ii A5FA A5FB A608 A602 A5FF A600 A63E A63F A5B9 A5DC A5DF A5DB A5E3 A5E4 A5DE A5E5 A5F9 A606
 # -ii A5D1 A5D2 A5CC A5CD A5E8 A5E9 A5EA A5EB A5EC A5EE A5EF A5F1 A5F3
 # -p A5FC:30013.5
+# -it "Phobos" "Nereid" "Triton" "Frozen Triton" "Frozen Phobos"
 #
 # IGNORED ABILITIES
 # A5B9 Three-Body Problem from Triton
@@ -556,6 +557,8 @@ hideall "--sync--"
 30036.6 "Three-Body Probl─" Ability { id: "A5B5", source: "Phobos" }
 30037.8 "Three-Body Problem" Ability { id: "A9BD", source: "Nereid" }
 30038.2 "Noisome Nuisance" Ability { id: "A637", source: "Phobos" }
+30038.5 "--Nereid untargetablle--"
+30038.5 "--Triton untargetablle--"
 30050.5 "Primordial Chaos" Ability { id: "A5D9", source: "Phobos" }
 30055.5 "Frozen Fallout" StartsUsing { id: "A5DD", source: "Phobos" } duration 10
 30058.1 "Frozen Fallout Tell 1" Ability { id: "A5E0", source: "Phobos" }
@@ -568,6 +571,8 @@ hideall "--sync--"
 30083.6 "Frozen Fallout 4" Ability { id: "A5E3", source: "Liquified Triton" }
 30093.6 "Noxious Nova" Ability { id: "A5E6", source: "Phobos" }
 30093.7 "--sync--" Ability { id: "A5BB", source: "Nereid" }
+30097.7 "--Nereid targetable--"
+30097.7 "--Triton targetable--"
 30097.9 "--sync--" Ability { id: "A5BC", source: "Nereid" }
 30099.9 "--sync--" Ability { id: "A5B4", source: "Nereid" }
 30107.8 "Vengeful Blizzard III" Ability { id: "A5BE", source: "Nereid" }
@@ -586,6 +591,9 @@ hideall "--sync--"
 30149.8 "Three-Body Probl─" Ability { id: "A5B5", source: "Nereid" }
 30151.0 "Three-Body Problem" Ability { id: "A5B8", source: "Phobos" }
 30151.6 "Icebound Buffoon" Ability { id: "A636", source: "Nereid" }
+30151.9 "--Phobos untargetable--"
+30151.9 "--Triton untargetable--"
+30151.9 "--Snowballs targetable--"
 30165.9 "Snowball Flight" Ability { id: "A5CE", source: "Nereid" }
 30165.9 "Snow Boulder 1" #Ability { id: "A5D0", source: "Frozen Phobos" }
 30168.5 "Snow Boulder 2" Ability { id: "A5D0", source: "Frozen Phobos" }
@@ -596,9 +604,12 @@ hideall "--sync--"
 30193.7 "--sync--" #Ability { id: "A5BB", source: "Triton" }
 30194.1 "--sync--" #Ability { id: "A5BB", source: "Phobos" }
 30197.1 "To the Winds" Ability { id: "A5D5", source: "Nereid" }
+30197.1 "--Snowballs untargetable--"
 30197.1 "Self-destruct (Enrage)" #Ability { id: "A5D6", source: "Frozen Triton" }
 30197.7 "Self-destruct (Enrage)" #Ability { id: "A5D8", source: "Frozen Triton" }
 
+30201.0 "--Phobos targetable--"
+30201.0 "--Triton targetable--"
 30201.4 "--sync--" Ability { id: "A5BC", source: "Phobos" } window 100,0
 30203.4 "--sync--" Ability { id: "A5B4", source: "Phobos" }
 30211.2 "Vengeful Bio III" Ability { id: "A5BF", source: "Phobos" }
