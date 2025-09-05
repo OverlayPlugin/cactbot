@@ -60,7 +60,7 @@ hideall "--sync--"
 189.2 "Heavensearth/Gust" Ability { id: ["A383", "A382"], source: "Howling Blade" }
 190.2 "Weal of Stone" Ability { id: "A3A6", source: "Wolf of Stone" }
 190.2 "Growling Wind" #Ability { id: "A3A4", source: "Wolf of Wind" }
-205.4 "Heavensearth" Ability { id: "A383", source: "Howling Blade" }
+205.4 "Gust/Heavensearth" Ability { id: [ "A382", "A383"], source: "Howling Blade" }
 206.4 "Weal of Stone" Ability { id: "A3A6", source: "Wolf of Stone" }
 206.4 "Growling Wind" #Ability { id: "A3A4", source: "Wolf of Wind" }
 226.3 "Ravenous Saber 1 (Enrage)" Ability { id: "A746", source: "Howling Blade" }
