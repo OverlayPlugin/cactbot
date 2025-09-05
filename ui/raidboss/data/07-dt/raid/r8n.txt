@@ -20,7 +20,7 @@ hideall "--sync--"
 40.9 "--sync--" Ability { id: "A979", source: "Howling Blade" }
 41.5 "Wolves' Reign (cone)" Ability { id: "A97A", source: "Howling Blade" }
 43.6 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
-51.7 "Wolves' Reign" Ability { id: "A96E", source: "Howling Blade" }
+51.7 "Wolves' Reign (castbar)" Ability { id: "A96E", source: "Howling Blade" }
 53.1 "Wolves' Reign (circles)" Ability { id: "A976", source: "Howling Blade" }
 56.2 "--sync--" Ability { id: "A977", source: "Howling Blade" }
 56.8 "Wolves' Reign (line)" Ability { id: "A978", source: "Howling Blade" }
@@ -78,7 +78,7 @@ hideall "--sync--"
 260.4 "Ravenous Saber 5" Ability { id: "A37F", source: "Howling Blade" }
 266.8 "--targetable--"
 273.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
-281.7 "Wolves' Reign" Ability { id: ["A90F", "A910"], source: "Howling Blade" }
+281.7 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" }
 283.1 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
 285.1 "--sync--" Ability { id: "A371", source: "Howling Blade" }
 285.7 "Wolves' Reign (line)" Ability { id: "A968", source: "Howling Blade" }
@@ -101,7 +101,7 @@ hideall "--sync--"
 352.1 "Bare Fangs" Ability { id: "A384", source: "Howling Blade" }
 359.2 "Fanged Charge 1" #Ability { id: "A385", source: "Gleaming Fang" }
 361.6 "Fanged Charge 2" #Ability { id: "A385", source: "Gleaming Fang" }
-362.3 "Wolves' Reign" Ability { id: ["A90F", "A910"], source: "Howling Blade" }
+362.3 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" }
 363.7 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
 365.7 "--sync--" Ability { id: "A371", source: "Howling Blade" }
 366.3 "Wolves' Reign (line)" Ability { id: "A968", source: "Howling Blade" }
@@ -146,7 +146,7 @@ hideall "--sync--"
 479.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
 
 # Loop Block
-487.7 "Wolves' Reign" Ability { id: ["A90F", "A910"], source: "Howling Blade" } jump 281.7
+487.7 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" } jump 281.7
 489.1 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
 491.1 "--sync--" Ability { id: "A371", source: "Howling Blade" }
 491.7 "Wolves' Reign (line)" Ability { id: "A968", source: "Howling Blade" }
