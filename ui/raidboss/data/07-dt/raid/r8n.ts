@@ -26,7 +26,7 @@ const headMarkerData = {
   'stackAdds': '005D',
   // Spread marker used for Gust in Tactical Pack
   'spread': '0178',
-  // Big, pulsing, 4-arrow stack marker
+  // Big, pulsing, 4-arrow stack marker for Tracking Tremors
   'eightHitStack': '013C',
 } as const;
 
