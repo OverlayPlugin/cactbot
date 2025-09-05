@@ -54,10 +54,10 @@ hideall "--sync--"
 158.1 "--sync--" Ability { id: "A37D", source: "Howling Blade" }
 160.1 "--untargetable--"
 160.1 "--adds targetable--"
-173.1 "Heavensearth" Ability { id: "A383", source: "Howling Blade" }
+173.1 "Gust/Heavensearth" Ability { id: [ "A382", "A383"], source: "Howling Blade" }
 174.1 "Weal of Stone" Ability { id: "A3A6", source: "Wolf of Stone" }
 174.1 "Growling Wind" #Ability { id: "A3A4", source: "Wolf of Wind" }
-189.2 "Gust" Ability { id: "A382", source: "Howling Blade" }
+189.2 "Heavensearth/Gust" Ability { id: ["A383", "A382"], source: "Howling Blade" }
 190.2 "Weal of Stone" Ability { id: "A3A6", source: "Wolf of Stone" }
 190.2 "Growling Wind" #Ability { id: "A3A4", source: "Wolf of Wind" }
 205.4 "Heavensearth" Ability { id: "A383", source: "Howling Blade" }
