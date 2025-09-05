@@ -13,7 +13,7 @@ hideall "--sync--"
 11.6 "Extraplanar Pursuit" Ability { id: "A74E", source: "Howling Blade" } window 10,10
 19.5 "Great Divide" Ability { id: "A38D", source: "Howling Blade" }
 23.6 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
-31.8 "Wolves' Reign" Ability { id: "A96D", source: "Howling Blade" }
+31.8 "Wolves' Reign (castbar)" Ability { id: "A96D", source: "Howling Blade" }
 33.2 "Wolves' Reign (circles)" Ability { id: "A976", source: "Howling Blade" }
 36.3 "--sync--" Ability { id: "A977", source: "Howling Blade" }
 36.9 "Wolves' Reign (line)" Ability { id: "A978", source: "Howling Blade" }
