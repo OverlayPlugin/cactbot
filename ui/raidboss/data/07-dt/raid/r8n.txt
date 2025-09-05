@@ -78,6 +78,9 @@ hideall "--sync--"
 260.4 "Ravenous Saber 5" Ability { id: "A37F", source: "Howling Blade" }
 266.8 "--targetable--"
 273.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+
+# Start Loop Block
+281.7 label "r8n-p2-loop"
 281.7 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" }
 283.1 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
 285.1 "--sync--" Ability { id: "A371", source: "Howling Blade" }
@@ -145,17 +148,8 @@ hideall "--sync--"
 468.8 "Great Divide" Ability { id: "A38D", source: "Howling Blade" }
 479.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
 
-# Loop Block
-487.7 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" } jump 281.7
-489.1 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
-491.1 "--sync--" Ability { id: "A371", source: "Howling Blade" }
-491.7 "Wolves' Reign (line)" Ability { id: "A968", source: "Howling Blade" }
-494.7 "--sync--" Ability { id: "A372", source: "Howling Blade" }
-495.3 "Wolves' Reign (cone)" Ability { id: "A7B0", source: "Howling Blade" }
-497.2 "Weal of Stone" Ability { id: "A989", source: "Wolf of Stone" }
-497.5 "--middle--" #Ability { id: "A36B", source: "Howling Blade" }
-502.7 "Terrestrial Titans" Ability { id: "A935", source: "Howling Blade" }
-508.1 "Titanic Pursuit" Ability { id: "A750", source: "Howling Blade" }
+# Loop
+487.7 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" } forcejump "r8n-p2-loop"
 
 # IGNORED ABILITIES
 # A38E Extraplanar Pursuit (self-cast)
