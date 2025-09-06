@@ -39,6 +39,7 @@ Options.Triggers.push({
       outputStrings: {
         grabTether: {
           en: 'Grab Tank Tether, Point Cleave Away',
+          cn: '接走坦克连线，引导扇形远离人群',
         },
         avoidTether: Outputs.avoidTankCleaves,
       },
@@ -226,15 +227,19 @@ Options.Triggers.push({
         dirW: Outputs.west,
         goToSnakes: {
           en: 'Go ${dir} Toward Snakes',
+          cn: '向 ${dir} 蛇走',
         },
         goToUnknownSnakes: {
           en: 'Go Toward Snakes',
+          cn: '向蛇走',
         },
         outOfMiddleTowardSnakes: {
           en: 'Out Of Middle, Knockback To ${dir}',
+          cn: '离开中间，击退到 ${dir}',
         },
         outOfMiddleUnknownSnakes: {
           en: 'Out Of Middle, Knockback Toward Snakes',
+          cn: '离开中间，向蛇击退',
         },
       },
     },
@@ -442,16 +447,19 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': '红之式鬼',
         'Ao-no-shiki': '苍之式鬼',
+        'Blue Orochi': '青之大蛇',
         'Iwa-no-shiki': '岩之式鬼',
         'Numa-no-shiki': '沼之式鬼',
         'Seiryu': '青龙',
+        'Ten-no-shiki': '天之式鬼',
         'Yama-no-shiki': '山之式鬼',
       },
       'replaceText': {
+        '--small adds spawn--': '--小小怪生成--',
+        '--large add spawns--': '--大小怪生成--',
         '100-tonze Swing': '百吨回转',
         'Blazing Aramitama': '荒魂燃烧',
         'Blue Bolt': '青突进',
@@ -473,6 +481,7 @@ Options.Triggers.push({
         'Serpent\'s Fang': '蛇牙',
         'Strength of Spirit': '灵气',
         'Summon Shiki': '式鬼召唤',
+        'Yama-kagura': '山神乐',
       },
     },
     {
