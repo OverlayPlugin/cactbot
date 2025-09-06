@@ -191,7 +191,7 @@ const triggerSet: TriggerSet<Data> = {
       // A2F4 Ray of Expulsion Afar
       type: 'StartsUsing',
       netRegex: { source: 'Demon Tablet', id: ['A2F3', 'A2F4'], capture: true },
-      alertText: (data, matches, output) => {
+      alertText: (_data, matches, output) => {
         if (matches.id === 'A2F3')
           return output.out!();
         return output.inKnockback!();
@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
       // A2F7 Demonograph of Expulsion Afar
       type: 'StartsUsing',
       netRegex: { source: 'Demon Tablet', id: ['A2F6', 'A2F7'], capture: true },
-      alertText: (data, matches, output) => {
+      alertText: (_data, matches, output) => {
         if (matches.id === 'A2F6')
           return output.out!();
         return output.inKnockback!();
