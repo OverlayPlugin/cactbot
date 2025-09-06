@@ -668,7 +668,7 @@ hideall "--sync--"
 # A5F2 - Collateral Iceball is used to track all three
 # Collaterall Balls targets each player randomly once
 # Dead Stars targetable based on log of earliest hit
-30357.9 "Six-Handed Fistfight" Ability { id: "A5E7", source: "Phobos" } 6:00.490
+30357.9 "Six-Handed Fistfight" Ability { id: "A5E7", source: "Phobos" }
 30357.9 "--Bosses untargetable--"
 30359.4 "--Dead Stars targetable--"
 30370.4 "Collateral Damage" Ability { id: "A5ED", source: "Dead Stars" } duration 11.5
