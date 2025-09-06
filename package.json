@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.35.1",
-  "releaseSummary": "EX5 Raidboss; 7.25 CN I8n",
+  "version": "0.35.2",
+  "releaseSummary": "Seiryu Unreal, more OC, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",

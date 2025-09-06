@@ -1,4 +1,7 @@
 ### Arcadion (R8N): AAC Cruiserweight M4
+# -ii A4ED A38E A4EF A4F0 A988 A98C A97F A97E A38A A3DE A3DF A3A5 A3A7 A96F A970 A971 A972 A973 A974 A975 A920 A923 A924 A925 A926 A927 A92F A985 A37B
+# -p A743:256.8
+# -it "Howling Blade" "Wolf of Stone" "Wolf of Wind"
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -6,4 +9,175 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+11.6 "Extraplanar Pursuit" Ability { id: "A74E", source: "Howling Blade" } window 10,10
+19.5 "Great Divide" Ability { id: "A38D", source: "Howling Blade" }
+23.6 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+31.8 "Wolves' Reign (castbar)" Ability { id: "A96D", source: "Howling Blade" }
+33.2 "Wolves' Reign (circles)" Ability { id: "A976", source: "Howling Blade" }
+36.3 "--sync--" Ability { id: "A977", source: "Howling Blade" }
+36.9 "Wolves' Reign (line)" Ability { id: "A978", source: "Howling Blade" }
+40.9 "--sync--" Ability { id: "A979", source: "Howling Blade" }
+41.5 "Wolves' Reign (cone)" Ability { id: "A97A", source: "Howling Blade" }
+43.6 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+51.7 "Wolves' Reign (castbar)" Ability { id: "A96E", source: "Howling Blade" }
+53.1 "Wolves' Reign (circles)" Ability { id: "A976", source: "Howling Blade" }
+56.2 "--sync--" Ability { id: "A977", source: "Howling Blade" }
+56.8 "Wolves' Reign (line)" Ability { id: "A978", source: "Howling Blade" }
+60.8 "--sync--" Ability { id: "A979", source: "Howling Blade" }
+61.4 "Wolves' Reign (cone)" Ability { id: "A97A", source: "Howling Blade" }
+64.1 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+71.2 "Heavensearth" Ability { id: "A389", source: "Howling Blade" }
+78.4 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+84.5 "Beckon Moonlight" Ability { id: "A97B", source: "Howling Blade" }
+93.9 "Moonbeam's Bite 1" #Ability { id: "A97D", source: "Moonlit Shadow" }
+95.9 "Moonbeam's Bite 2" #Ability { id: "A97C", source: "Moonlit Shadow" }
+97.9 "Moonbeam's Bite 3" #Ability { id: "A97D", source: "Moonlit Shadow" }
+99.9 "Moonbeam's Bite 4" #Ability { id: "A97C", source: "Moonlit Shadow" }
+106.7 "Shadowchase" Ability { id: "A980", source: "Howling Blade" }
+107.9 "--untargetable--"
+113.9 "Shadowchase" Ability { id: "A981", source: "Howling Blade" }
+115.0 "--targetable--"
+122.2 "Bare Fangs" Ability { id: "A384", source: "Howling Blade" }
+128.3 "Terrestrial Rage" Ability { id: "A386", source: "Howling Blade" }
+129.3 "Fanged Charge 1" #Ability { id: "A385", source: "Gleaming Fang" }
+131.7 "Fanged Charge 2" #Ability { id: "A385", source: "Gleaming Fang" }
+132.4 "--sync--" Ability { id: "A785", source: "Howling Blade" }
+134.3 "Targeted Quake 1" #Ability { id: "A388", source: "Howling Blade" }
+136.3 "Targeted Quake 2" #Ability { id: "A388", source: "Howling Blade" }
+138.3 "Targeted Quake 3" #Ability { id: "A388", source: "Howling Blade" }
+142.5 "Heavensearth" Ability { id: "A389", source: "Howling Blade" }
+150.7 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
 
+# Adds
+156.0 "Tactical Pack" Ability { id: "A37C", source: "Howling Blade" }
+158.1 "--sync--" Ability { id: "A37D", source: "Howling Blade" }
+160.1 "--untargetable--"
+160.1 "--adds targetable--"
+173.1 "Gust/Heavensearth" Ability { id: [ "A382", "A383"], source: "Howling Blade" }
+174.1 "Weal of Stone" Ability { id: "A3A6", source: "Wolf of Stone" }
+174.1 "Growling Wind" #Ability { id: "A3A4", source: "Wolf of Wind" }
+189.2 "Heavensearth/Gust" Ability { id: ["A383", "A382"], source: "Howling Blade" }
+190.2 "Weal of Stone" Ability { id: "A3A6", source: "Wolf of Stone" }
+190.2 "Growling Wind" #Ability { id: "A3A4", source: "Wolf of Wind" }
+205.4 "Gust/Heavensearth" Ability { id: [ "A382", "A383"], source: "Howling Blade" }
+206.4 "Weal of Stone" Ability { id: "A3A6", source: "Wolf of Stone" }
+206.4 "Growling Wind" #Ability { id: "A3A4", source: "Wolf of Wind" }
+226.3 "Ravenous Saber 1 (Enrage)" Ability { id: "A746", source: "Howling Blade" }
+226.4 "Ravenous Saber 2 (Enrage)" Ability { id: "A747", source: "Howling Blade" }
+226.7 "Ravenous Saber 3 (Enrage)" Ability { id: "A748", source: "Howling Blade" }
+228.8 "Ravenous Saber 4 (Enrage)" Ability { id: "A9FD", source: "Howling Blade" }
+230.0 "Ravenous Saber 5 (Enrage)" Ability { id: "A380", source: "Howling Blade" }
+
+# Adds cleared
+253.4 "--sync--" StartsUsing { id: "A743", source: "Howling Blade" } window 300,10
+256.8 "Ravenous Saber 1" Ability { id: "A743", source: "Howling Blade" }
+256.9 "Ravenous Saber 2" Ability { id: "A744", source: "Howling Blade" }
+257.2 "Ravenous Saber 3" Ability { id: "A745", source: "Howling Blade" }
+259.2 "Ravenous Saber 4" Ability { id: "A9FC", source: "Howling Blade" }
+260.4 "Ravenous Saber 5" Ability { id: "A37F", source: "Howling Blade" }
+266.8 "--targetable--"
+273.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+
+# Start Loop Block
+281.7 label "r8n-p2-loop"
+281.7 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" }
+283.1 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
+285.1 "--sync--" Ability { id: "A371", source: "Howling Blade" }
+285.7 "Wolves' Reign (line)" Ability { id: "A968", source: "Howling Blade" }
+288.7 "--sync--" Ability { id: "A372", source: "Howling Blade" }
+289.3 "Wolves' Reign (cone)" Ability { id: "A7B0", source: "Howling Blade" }
+291.2 "Weal of Stone" Ability { id: "A989", source: "Wolf of Stone" }
+291.5 "--middle--" #Ability { id: "A36B", source: "Howling Blade" }
+296.6 "Terrestrial Titans" Ability { id: "A935", source: "Howling Blade" }
+302.0 "Titanic Pursuit" Ability { id: "A750", source: "Howling Blade" }
+306.0 "Towerfall" Ability { id: "A933", source: "Howling Blade" }
+307.4 "Terrestrial Titans" Ability { id: "A935", source: "Howling Blade" }
+310.3 "Titanic Pursuit" Ability { id: "A750", source: "Howling Blade" }
+314.3 "Towerfall" Ability { id: "A933", source: "Howling Blade" }
+315.7 "Terrestrial Titans" Ability { id: "A935", source: "Howling Blade" }
+318.6 "Titanic Pursuit" Ability { id: "A750", source: "Howling Blade" }
+322.6 "Towerfall" Ability { id: "A933", source: "Howling Blade" }
+332.8 "Extraplanar Pursuit" Ability { id: "A74E", source: "Howling Blade" }
+339.8 "Great Divide" Ability { id: "A38D", source: "Howling Blade" }
+346.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+352.1 "Bare Fangs" Ability { id: "A384", source: "Howling Blade" }
+359.2 "Fanged Charge 1" #Ability { id: "A385", source: "Gleaming Fang" }
+361.6 "Fanged Charge 2" #Ability { id: "A385", source: "Gleaming Fang" }
+362.3 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" }
+363.7 "Wolves' Reign (circles)" Ability { id: "A928", source: "Howling Blade" }
+365.7 "--sync--" Ability { id: "A371", source: "Howling Blade" }
+366.3 "Wolves' Reign (line)" Ability { id: "A968", source: "Howling Blade" }
+369.3 "--sync--" Ability { id: "A372", source: "Howling Blade" }
+369.9 "Wolves' Reign (cone)" Ability { id: "A7B0", source: "Howling Blade" }
+371.8 "Weal of Stone" Ability { id: "A989", source: "Wolf of Stone" }
+380.7 "Shadowchase" Ability { id: "A373", source: "Howling Blade" }
+381.8 "Fanged Charge 1" #Ability { id: "A385", source: "Gleaming Fang" }
+381.9 "--untargetable--"
+384.2 "Fanged Charge 2" #Ability { id: "A385", source: "Gleaming Fang" }
+386.9 "Shadowchase" Ability { id: "A374", source: "Howling Blade" }
+388.8 "--targetable--"
+390.9 "--sync--" Ability { id: "A785", source: "Howling Blade" }
+391.7 "Roaring Wind" Ability { id: "A984", source: "Wolf of Wind" }
+398.5 "Extraplanar Pursuit" Ability { id: "A74E", source: "Howling Blade" }
+404.3 "Tracking Tremors" Ability { id: "A4E2", source: "Howling Blade" }
+405.2 "Tracking Tremors 1" #Ability { id: "A4E3", source: "Howling Blade" }
+406.2 "Tracking Tremors 2" #Ability { id: "A4E3", source: "Howling Blade" }
+407.2 "Tracking Tremors 3" #Ability { id: "A4E3", source: "Howling Blade" }
+408.2 "Tracking Tremors 4" #Ability { id: "A4E3", source: "Howling Blade" }
+409.2 "Tracking Tremors 5" #Ability { id: "A4E3", source: "Howling Blade" }
+417.2 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+
+422.3 "Beckon Moonlight" Ability { id: "A375", source: "Howling Blade" }
+430.9 "Moonbeam's Bite 1" #Ability { id: ["A376", "A377"], source: "Moonlit Shadow" }
+432.5 "Moonbeam's Bite 2" #Ability { id: ["A376", "A377"], source: "Moonlit Shadow" }
+433.9 "Moonbeam's Bite 3" #Ability { id: ["A376", "A377"], source: "Moonlit Shadow" }
+435.5 "Moonbeam's Bite 4" #Ability { id: ["A376", "A377"], source: "Moonlit Shadow" }
+438.7 "Terrestrial Rage" Ability { id: "A386", source: "Howling Blade" }
+440.3 "Weal of Stone" Ability { id: "A98D", source: "Wolf of Stone" }
+443.3 "Targeted Quake 1" #Ability { id: "A388", source: "Howling Blade" }
+445.3 "Targeted Quake 2" #Ability { id: "A388", source: "Howling Blade" }
+447.3 "Targeted Quake 3" #Ability { id: "A388", source: "Howling Blade" }
+451.0 "Extraplanar Pursuit" Ability { id: "A74E", source: "Howling Blade" }
+456.8 "Tracking Tremors" Ability { id: "A4E2", source: "Howling Blade" }
+457.7 "Tracking Tremors 1" #Ability { id: "A4E3", source: "Howling Blade" }
+458.7 "Tracking Tremors 2" #Ability { id: "A4E3", source: "Howling Blade" }
+459.7 "Tracking Tremors 3" #Ability { id: "A4E3", source: "Howling Blade" }
+460.7 "Tracking Tremors 4" #Ability { id: "A4E3", source: "Howling Blade" }
+461.7 "Tracking Tremors 5" #Ability { id: "A4E3", source: "Howling Blade" }
+468.8 "Great Divide" Ability { id: "A38D", source: "Howling Blade" }
+479.9 "--middle--" Ability { id: "A36B", source: "Howling Blade" }
+
+# Loop
+487.7 "Wolves' Reign (castbar)" Ability { id: ["A90F", "A910"], source: "Howling Blade" } forcejump "r8n-p2-loop"
+
+# IGNORED ABILITIES
+# A38E Extraplanar Pursuit (self-cast)
+# A38A Heavensearth (player targeted)
+# A3A5 Growling Wind (Wind of Wind)
+# A3A7 Weal of Stone (Wolf of Stone)
+# A37B Titanic Pursuit (self-cast)
+# A4ED Attack (Howling Blade)
+# A4EF Attack (Wolf of Wind)
+# A4F0 Attack (Wolf of Stone)
+# A920 Wolves' Reign boss jumping to wall? (after adds)
+# A923 Wolves' Reign actor moving to circle (after adds)
+# A924 Wolves' Reign actor moving to circle (after adds)
+# A925 Wolves' Reign actor moving to circle (after adds)
+# A926 Wolves' Reign circle (after adds)
+# A927 Wolves' Reign circle (after adds)
+# A92F Wolves' Reign (after adds)
+# A934 Terrestrial Titans
+# A96F Wolves' Reign boss jumping to wall?
+# A970 Wolves' Reign actor moving to circle
+# A971 Wolves' Reign actor moving to circle
+# A972 Wolves' Reign actor moving to circle
+# A973 Wolves' Reign
+# A974 Wolves' Reign circle
+# A975 Wolves' Reign circle
+# A97E unknown related to Moonbeam's Bite Right-cleave (self-cast)
+# A97F unknown related to Moonbeam's Bite Left-cleave (self-cast)
+# A3DE unknown related to Moonbeam's Bite Right-cleave (self-cast)
+# A3DF unknown related to Moonbeam's Bite Left-cleave (self-cast)
+# A985 Roaring Wind
+# A988 Weal of Stone
+# A98C Weal of Stone (intercadinals)
