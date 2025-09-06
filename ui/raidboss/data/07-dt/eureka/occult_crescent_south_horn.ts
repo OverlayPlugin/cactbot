@@ -1,3 +1,4 @@
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -184,6 +185,42 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Nymian Petalodus', id: 'A88D', capture: false },
       response: Responses.awayFromFront(),
     },
+    {
+      id: 'Occult Crescent Demon Tablet Ray of Dangers Near/Expulsion Afar',
+      // A2F3 Ray of Dangers Near
+      // A2F4 Ray of Expulsion Afar
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A2F3', 'A2F4'], capture: true },
+      alertText: (data, matches, output) => {
+        if (matches.id === 'A2F3')
+          return output.out!();
+        return output.inKnockback!();
+      },
+      outputStrings: {
+        out: Outputs.out,
+        inKnockback: {
+          en: 'In (Knockback)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Demonograph of Dangears Near/Expulsion Afar',
+      // A2F6 Demonograph of Dangers Near
+      // A2F7 Demonograph of Expulsion Afar
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A2F6', 'A2F7'], capture: true },
+      alertText: (data, matches, output) => {
+        if (matches.id === 'A2F6')
+          return output.out!();
+        return output.inKnockback!();
+      },
+      outputStrings: {
+        out: Outputs.out,
+        inKnockback: {
+          en: 'In (Knockback)',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
@@ -194,6 +231,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '火球',
         'Black Star': '黑色天星',
