@@ -262,9 +262,8 @@ const triggerSet: TriggerSet<Data> = {
         const frozenPhobosName = deadStarsFrozenPhobosLocaleNames[data.parserLang];
         const frozenTritonName = deadStarsFrozenTritonLocaleNames[data.parserLang];
         if (
-          data.me === matches.target && 
-          (matches.source !== frozenPhobosName &&
-          matches.source !== frozenTritonName)
+          data.me === matches.target &&
+          (matches.source !== frozenPhobosName && matches.source !== frozenTritonName)
         )
           return true;
         return false;
@@ -309,11 +308,19 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
-        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, deadStarsCenterX, deadStarsCenterY);
+        const dirNum = Directions.xyTo8DirNum(
+          actor.PosX,
+          actor.PosY,
+          deadStarsCenterX,
+          deadStarsCenterY,
+        );
         data.deadStarsSnowballTetherDirNum = (dirNum + 4) % 8;
       },
       infoText: (data, matches, output) => {
-        if (data.deadStarsSnowballTetherDirNum !== undefined && data.me === matches.target) {
+        if (
+          data.deadStarsSnowballTetherDirNum !== undefined &&
+          data.me === matches.target
+        ) {
           // This will trigger for each tether a player has
           const dir = output[Directions.outputFrom8DirNum(data.deadStarsSnowballTetherDirNum)]!();
           return output.knockbackTetherDir!({ dir: dir });
@@ -350,24 +357,34 @@ const triggerSet: TriggerSet<Data> = {
         'Clawmarks': '抓痕',
         'Cloister Demon': '回廊恶魔',
         'Crescent Berserker': '新月狂战士',
+        'Crystal Dragon': '水晶龙',
         'Death Claw': '死亡爪',
+        'Draconic Double': '水晶龙的幻影',
         'Hinkypunk': '鬼火苗',
         'Lion Rampant': '跃立狮',
         'Neo Garula': '进化加鲁拉',
+        'Nymian Petalodus': '尼姆瓣齿鲨',
         'Phantom Claw': '死亡爪的幻影',
+        'Repaired Lion': '复原狮像',
       },
       'replaceText': {
         '\\(in\\)': '(内)',
         '\\(jump\\)': '(跳)',
+        '\\(Lightning\\)': '(雷)',
         '\\(out\\)': '(外)',
+        '\\(Wind\\)': '(风)',
         'Bedrock Uplift': '地面隆起',
         'Blazing Flare': '炽热核爆',
         'Boil Over': '发怒',
         'Channeled Rage': '燥怒',
         'Clawing Shadow': '雾霾爪',
         'Clawmarks': '抓痕',
+        'Crystal Call': '生成晶石',
+        'Crystal Mirror': '转移晶石',
+        'Crystallized Energy': '水晶波动',
         'Dirty Nails': '腐坏爪',
         'Explosion': '爆炸',
+        'Fearsome Facet': '幻影晶石',
         'Gigaflare': '十亿核爆',
         'Great Ball of Fire': '火球',
         'Heated Outburst': '气焰',
@@ -376,7 +393,10 @@ const triggerSet: TriggerSet<Data> = {
         'Horizontal Crosshatch': '横向双重抓',
         'Karmic Drain': '生命侵蚀',
         'Lethal Nails': '死亡甲',
+        'Made Magic': '释放魔力',
         'Manifold Marks': '多重抓痕',
+        'Primal Roar': '大咆哮',
+        'Prismatic Wing': '水晶之翼',
         'Raking Scratch': '尖甲疾袭',
         'Scathing Sweep': '横砍',
         'Seal Asunder': '封印破坏',
