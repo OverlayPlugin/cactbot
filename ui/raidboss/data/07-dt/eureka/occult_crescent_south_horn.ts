@@ -327,7 +327,10 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         // A player who has a tether should have a defined direction, but if they don't they'll get two calls
-        if (data.deadStarsSnowballTetherDirNum === undefined && data.deadStarsSnowballTetherCount === 2)
+        if (
+          data.deadStarsSnowballTetherDirNum === undefined &&
+          data.deadStarsSnowballTetherCount === 2
+        )
           return output.knockbackToSnowball!();
       },
       outputStrings: {
