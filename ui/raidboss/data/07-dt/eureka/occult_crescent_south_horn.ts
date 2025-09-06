@@ -268,7 +268,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      infoText: (data, matches, output) => {
+      infoText: (_data, matches, output) => {
         return output.boss!({ boss: matches.target });
       },
       outputStrings: {
@@ -289,7 +289,7 @@ const triggerSet: TriggerSet<Data> = {
         if (matches.source === frozenPhobosName || matches.source === frozenTritonName)
           return true;
       },
-      preRun: (data, matches) => {
+      preRun: (data) => {
         data.deadStarsSnowballTetherCount = data.deadStarsSnowballTetherCount + 1;
       },
       promise: async (data, matches) => {
