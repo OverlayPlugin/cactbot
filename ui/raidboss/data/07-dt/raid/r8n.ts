@@ -373,7 +373,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
-    timelineReplace: [
+  timelineReplace: [
     {
       'locale': 'cn',
       'replaceSync': {
