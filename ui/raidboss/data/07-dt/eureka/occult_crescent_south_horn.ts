@@ -440,7 +440,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       durationSeconds: 28, // Mechanic is about 28.4s long
       infoText: (data, matches, output) => {
-        if (data.deadStarsLiquifiedTriton.length !== 4 && data.deadStarsLiquifiedNereid.length !== 4)
+        if (
+          data.deadStarsLiquifiedTriton.length !== 4 &&
+          data.deadStarsLiquifiedNereid.length !== 4
+        )
           return;
 
         const dirNums = matches.id === 'A5DF'
