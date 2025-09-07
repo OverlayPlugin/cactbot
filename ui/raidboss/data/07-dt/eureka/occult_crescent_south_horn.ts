@@ -349,7 +349,7 @@ const triggerSet: TriggerSet<Data> = {
             player1: data.party.member(target1),
             player2: data.party.member(target2),
             player3: data.party.member(target3),
-          })
+          }),
         };
       },
       run: (data) => {
@@ -453,7 +453,7 @@ const triggerSet: TriggerSet<Data> = {
             player1: data.party.member(target1),
             player2: data.party.member(target2),
             player3: data.party.member(target3),
-          })
+          }),
         };
       },
       run: (data) => {
@@ -606,7 +606,7 @@ const triggerSet: TriggerSet<Data> = {
             player1: data.party.member(strikeTarget1),
             player2: data.party.member(strikeTarget2),
             player3: data.party.member(strikeTarget3),
-          })
+          }),
         };
       },
       run: (data) => {
