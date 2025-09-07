@@ -380,7 +380,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Phobos', id: 'A5D9', capture: false },
       response: Responses.aoe(),
-    },
+    },/*
     {
       id: 'Occult Crescent Dead Stars Nova/Ice Ooze Initial',
       // This won't work until FFXIVACT Plugin captures StatusEffectListForay3
@@ -414,7 +414,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get hit by blue ${num}x',
         },
       },
-    },
+    },*/
     {
       id: 'Occult Crescent Dead Stars Frozen Fallout Locations',
       // This will currently output both ooze tells
@@ -424,7 +424,8 @@ const triggerSet: TriggerSet<Data> = {
       // Liquified Triton (Red) tells are the A5DF casts
       // Liquified Nereid (Blue) tells are the A5E0 casts
       // Invisible entities are centered in the circle aoes that they tell
-      type: 'StartsUsing',
+      // StartsUsing can have inaccurate location, Ability seems to be correct
+      type: 'Ability',
       netRegex: { source: ['Phobos', 'Triton'], id: ['A5DF', 'A5E0'], capture: true },
       preRun: (data, matches) => {
         const dirNum = Directions.xyTo8DirNum(
@@ -438,7 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         if (matches.id === 'A5E0')
           data.deadStarsLiquifiedNereid.push(dirNum);
       },
-      durationSeconds: 28, // Mechanic is about 28.4s long
+      durationSeconds: 18, // Time from last tell to end of mechanic is ~18.3s
       infoText: (data, matches, output) => {
         if (
           data.deadStarsLiquifiedTriton.length !== 4 &&
