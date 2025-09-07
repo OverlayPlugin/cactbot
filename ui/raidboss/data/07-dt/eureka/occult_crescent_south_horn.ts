@@ -8,11 +8,15 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   ce?: string;
+  deadStarsIsSlice2: boolean;
   deadStarsSliceTargets: string[];
   deadStarsFirestrikeTargets: string[];
+  deadStarsCount: number;
+  deadStarsPhobos: number[];
+  deadStarsNereid: number[];
+  deadStarsTriton: number[];
   deadStarsSnowballTetherDirNum?: number;
   deadStarsSnowballTetherCount: number;
-  deadStarsIsSlice2: boolean;
 }
 
 // List of events:
@@ -87,10 +91,14 @@ const triggerSet: TriggerSet<Data> = {
   },
   timelineFile: 'occult_crescent_south_horn.txt',
   initData: () => ({
+    deadStarsIsSlice2: false,
     deadStarsSliceTargets: [],
     deadStarsFirestrikeTargets: [],
+    deadStarsCount: 0,
+    deadStarsPhobos: [],
+    deadStarsNereid: [],
+    deadStarsTriton: [],
     deadStarsSnowballTetherCount: 0,
-    deadStarsIsSlice2: false,
   }),
   resetWhenOutOfCombat: false,
   triggers: [
@@ -409,6 +417,88 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Phobos', id: 'A5E5', capture: false },
       response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Dead Stars Vengeful Direction',
+      // Bosses cast A5BC unique to the vengeful casts, but this doesn't have their location at cast
+      // Bosses jump with A5B4 ~2s after A5BC prior to starting Vengeful casts
+      // AbilityExtra lines of A5B4 include target location of where they will cast
+      // Post A5E6 Noxious Nova (A637 Noisome Nuisance)
+      // A5BD Vengeful Fire III (Triton)
+      // A5BE Vengeful Blizzard III (Nereid)
+      //
+      // Post A5D5 To the Winds (A636 Icebound Buffoon)
+      // A5BD Vengeful Fire III (Triton)
+      // A5BF Vengeful Bio III (Phobos)
+      //
+      // Post A5C5 To the Winds (A635 Blazing Belligerent)
+      // A5BE Vengeful Blizzard III (Nereid)
+      // A5BF Vengeful Bio III (Phobos)
+      type: 'Ability',
+      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A5BC', capture: true },
+      delaySeconds: 2.6, // Above 2s needed due to latency
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Dead Stars Vengeful Direction: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        if (matches.source === 'Phobos')
+          data.deadStarsPhobos = [actor.PosX, actor.PosY];
+        if (matches.source === 'Nereid')
+          data.deadStarsNereid = [actor.PosX, actor.PosY];
+        if (matches.source === 'Triton')
+          data.deadStarsTriton = [actor.PosX, actor.PosY];
+        data.deadStarsCount = data.deadStarsCount + 1;
+      },
+      infoText: (data, matches, output) => {
+        if (
+          data.deadStarsCount !== 2 &&
+          data.deadStarsCount !== 4 &&
+          data.deadStarsCount !== 6
+        )
+          return;
+
+        // First and Second Use Triton, Last use Nereid
+        const boss1 = (data.deadStarsCount === 2 || data.deadStarsCount === 4)?
+          data.deadStarsTriton:
+          data.deadStarsNereid;
+        // First use Nereid, otherwise Phobos
+        const boss2 = data.deadStarsCount === 2?
+          data.deadStarsNereid:
+          data.deadStarsPhobos;
+
+        // Reset results
+        data.deadStarsTriton = [];
+        data.deadStarsNereid = [];
+        data.deadStarsPhobos = [];
+
+        // Calculate mid point (safe spot) and output result
+        if (
+          boss1[0] === undefined || boss1[1] === undefined ||
+          boss2[0] === undefined || boss2[1] === undefined
+        )
+          return;
+        const x = (boss1[0] + boss2[0]) / 2;
+        const y = (boss1[1] + boss2[1]) / 2;
+        const dirNum = Directions.xyTo8DirNum(
+          x,
+          y,
+          deadStarsCenterX,
+          deadStarsCenterY,
+        );
+        return output[Directions.outputFrom8DirNum(dirNum)]!();
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+      },
     },
     {
       id: 'Occult Crescent Dead Stars Delta Attack',
