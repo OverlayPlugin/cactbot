@@ -15,6 +15,8 @@ export interface Data extends RaidbossData {
   deadStarsPhobos: number[];
   deadStarsNereid: number[];
   deadStarsTriton: number[];
+  deadStarsLiquifiedNereid: number[];
+  deadStarsLiquifiedTriton: number[];
   deadStarsSnowballTetherDirNum?: number;
   deadStarsSnowballTetherCount: number;
 }
@@ -98,6 +100,8 @@ const triggerSet: TriggerSet<Data> = {
     deadStarsPhobos: [],
     deadStarsNereid: [],
     deadStarsTriton: [],
+    deadStarsLiquifiedNereid: [],
+    deadStarsLiquifiedTriton: [],
     deadStarsSnowballTetherCount: 0,
   }),
   resetWhenOutOfCombat: false,
@@ -408,6 +412,67 @@ const triggerSet: TriggerSet<Data> = {
         },
         blue: {
           en: 'Get hit by blue ${num}x',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Frozen Fallout Locations',
+      // This will currently output both ooze tells
+      // TBD: Change to just what player needs once status effect is logged
+      // TBD: Add additional triggers to tell where to go after each cast
+      // Boss casts A45DD (Frozen Fallout) and A5DF + A5E0 tells
+      // Liquified Triton (Red) tells are the A5DF casts
+      // Liquified Nereid (Blue) tells are the A5E0 casts
+      // Invisible entities are centered in the circle aoes that they tell
+      type: 'StartsUsing',
+      netRegex: { source: ['Phobos', 'Triton'], id: ['A5DF', 'A5E0'], capture: true },
+      preRun: (data, matches) => {
+        const dirNum = Directions.xyTo8DirNum(
+          parseFloat(matches.x),
+          parseFloat(matches.y),
+          deadStarsCenterX,
+          deadStarsCenterY,
+        );
+        if (matches.id === 'A5DF')
+          data.deadStarsLiquifiedTriton.push(dirNum);
+        if (matches.id === 'A5E0')
+          data.deadStarsLiquifiedNereid.push(dirNum);
+      },
+      durationSeconds: 28, // Mechanic is about 28.4s long
+      infoText: (data, matches, output) => {
+        if (data.deadStarsLiquifiedTriton.length !== 4 && data.deadStarsLiquifiedNereid.length !== 4)
+          return;
+
+        const dirNums = matches.id === 'A5DF'
+          ? data.deadStarsLiquifiedTriton
+          : data.deadStarsLiquifiedNereid;
+
+        if (
+          dirNums[0] === undefined || dirNums[1] === undefined ||
+          dirNums[2] === undefined || dirNums[3] === undefined
+        )
+          return;
+
+        const dirs = [
+          output[Directions.outputFrom8DirNum(dirNums[0])]!(),
+          output[Directions.outputFrom8DirNum(dirNums[1])]!(),
+          output[Directions.outputFrom8DirNum(dirNums[2])]!(),
+          output[Directions.outputFrom8DirNum(dirNums[3])]!(),
+        ];
+
+        if (matches.id === 'A5DF')
+          return output.red!({ dirs: dirs });
+        if (matches.id === 'A5E0')
+          return output.blue!({ dirs: dirs });
+      },
+      tts: null, // TBD: Remove when filtered for status effect
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        red: {
+          en: 'Red: ${dirs}',
+        },
+        blue: {
+          en: 'Blue: ${dirs}',
         },
       },
     },
