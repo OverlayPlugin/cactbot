@@ -8,8 +8,11 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   ce?: string;
+  deadStarsSliceTargets: string[];
+  deadStarsFirestrikeTargets: string[];
   deadStarsSnowballTetherDirNum?: number;
   deadStarsSnowballTetherCount: number;
+  deadStarsIsSlice2: boolean;
 }
 
 // List of events:
@@ -44,15 +47,36 @@ const headMarkerData = {
   'deadStarsTether': '0136',
   // Dead Stars boss tethers
   'deadStarsBossTether': '00F9',
-  // Dead Stars Snowball tethers
+  // Dead Stars Slice 'n' Dice tankbuster cleave
+  'deadStarsTankbuster': '01D7',
+  // Dead Stars Avalaunch Proximity Stack
+  'deadStarsAvalaunchStack': '0064',
+  // Dead Stars snowball spike tether
   'deadStarsSnowballTether': '00F6',
-  // Dead Stars distance-based tether
+  // Dead Stars snowball tether
   'deadStarsSnowballTether2': '0001',
 } as const;
 
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
+
+const deadStarsOutputStrings = {
+  lineStacksOnPlayers: {
+    en: 'Line Stacks on ${player1}, ${player2}, ${player3}',
+  },
+  lineStackOnYouTankCleave: {
+    en: 'Line Stack on YOU, Avoid Tank Cleave',
+  },
+  lineStackOnYou: {
+    en: 'Line Stack on YOU',
+    de: 'Linien Stack auf DIR',
+    fr: 'Package en ligne sur VOUS',
+    ja: '直線頭割り',
+    cn: '直线分摊点名',
+    ko: '직선 쉐어 대상자',
+  },
+};
 
 const triggerSet: TriggerSet<Data> = {
   id: 'TheOccultCrescentSouthHorn',
@@ -63,7 +87,10 @@ const triggerSet: TriggerSet<Data> = {
   },
   timelineFile: 'occult_crescent_south_horn.txt',
   initData: () => ({
+    deadStarsSliceTargets: [],
+    deadStarsFirestrikeTargets: [],
     deadStarsSnowballTetherCount: 0,
+    deadStarsIsSlice2: false,
   }),
   resetWhenOutOfCombat: false,
   triggers: [
@@ -250,7 +277,21 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Dead Stars Decisive Battle',
+      // Each boss targets ground, avoid getting hit by more than one aoe
+      // A5FA Decisive Battle from Triton
+      // A5FB Decisive Battle from Nereid
+      // A5FC Decisive Battle from Phobos
+      type: 'StartsUsing',
+      netRegex: { source: 'Phobos', id: 'A5FC', capture: false },
+      response: Responses.aoe(),
+    },
+    {
       id: 'Occult Crescent Dead Stars Boss Tether',
+      // Status effects on players applied without NetworkBuff log lines
+      // 1156 Tritonic Gravity (Purple Beta)
+      // 1157 Nereidic Gravity (Red Alpha)
+      // 1158 Phobosic Gravity (Green Gamma)
       type: 'Tether',
       netRegex: { id: [headMarkerData.deadStarsBossTether], capture: true },
       condition: (data, matches) => {
@@ -269,11 +310,202 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Dead Stars Slice \'n\' Dice',
+      // Each boss uses tankbuster cleave on main target deadStarsSliceBuster
+      // A601 Slice 'n' Dice castbar
+      // A602 Slice 'n' Dice cast that does damage
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.deadStarsTankbuster], capture: true },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tankCleavesOnPlayers: {
+            en: 'Tank Cleaves on ${player1}, ${player2}, ${player3}',
+          },
+          tankCleaveOnYou: Outputs.tankCleaveOnYou,
+          tankCleaveOnYouLineStack: {
+            en: 'Tank Cleave on YOU, Avoid Line Stack',
+          },
+        };
+        data.deadStarsSliceTargets.push(matches.target);
+        if (data.deadStarsSliceTargets.length < 3)
+          return;
+
+        const target1 = data.deadStarsSliceTargets[0];
+        const target2 = data.deadStarsSliceTargets[1];
+        const target3 = data.deadStarsSliceTargets[2];
+        if (data.me === target1 || data.me === target2 || data.me === target3) {
+          if (!data.deadStarsIsSlice2)
+            return { alertText: output.tankCleaveOnYou!() };
+          return { alertText: output.tankCleaveOnYouLineStack!() };
+        }
+
+        // Do not call out with Firestrike 2
+        if (data.deadStarsIsSlice2)
+          return;
+
+        return {
+          infoText: output.tankCleavesOnPlayers!({
+            player1: data.party.member(target1),
+            player2: data.party.member(target2),
+            player3: data.party.member(target3),
+          })
+        };
+      },
+      run: (data) => {
+        // Do not clear data for Firestrike 2 to use
+        if (data.deadStarsSliceTargets.length === 3 && !data.deadStarsIsSlice2) {
+          data.deadStarsSliceTargets = [];
+          data.deadStarsIsSlice2 = true;
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Primordial Chaos',
+      // Each boss targets ground, avoid getting hit by more than one aoe
+      // A5D9 Primordial Chaos castbar
+      // A5DC Primordial Chaos damage cast for each alliance
+      type: 'StartsUsing',
+      netRegex: { source: 'Phobos', id: 'A5D9', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze Initial',
+      // This won't work until FFXIVACT Plugin captures StatusEffectListForay3
+      // Applied with Primordial Chaos
+      // Comes in stacks of 1, 2, or 3
+      // 1159 Nova Ooze (Red)
+      // 115A Ice Ooze (Blue)
+      // Players need to get hit by opposite color Ooze to decrease count
+      // Hits by same color Oooze will increase count
+      // Four opportunities to increase/decrease stack, meaning those with lower counts can afford mistakes
+      // Any stacks remaining before Noxious Nova (A5E5) result in lethal damage
+      type: 'GainsEffect',
+      netRegex: { effectId: ['1159', '115A'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target)
+          return true;
+        return false;
+      },
+      suppressSeconds: 60, // Ignore during mechanic
+      infoText: (_data, matches, output) => {
+        const num = matches.count;
+        if (matches.effectId === '1159')
+          return output.blue!({ num: num });
+        return output.red!({ num: num });
+      },
+      outputStrings: {
+        red: {
+          en: 'Get hit by red ${num}x',
+        },
+        blue: {
+          en: 'Get hit by blue ${num}x',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Noxious Nova',
+      // Any stack of Nova Ooze (1159), or Ice Ooze (115A) results in lethal damage
+      type: 'StartsUsing',
+      netRegex: { source: 'Phobos', id: 'A5E5', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Dead Stars Delta Attack',
+      // There are a multitude of spells in this sequence:
+      // All three cast A5FD, Triton also casts A5FF and A63E (damage)
+      // All three cast A5FE, Triton also casts A600
+      // Nereid casts A63F (damage)
+      // All three cast A5FE, Triton also casts A600
+      // Phobos casts A63F (damage)
+      // In total, three hits happen:
+      // Triton hits at ~5.5s
+      // Nereid hits at ~6.65s
+      // Phobos hits at ~7.76s
+      type: 'StartsUsing',
+      netRegex: { source: 'Phobos', id: 'A5FD', capture: false },
+      durationSeconds: 7,
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'Occult Crescent Dead Stars Firestrike',
+      // This has a line stack headmarker, but does not appear in the logs
+      // Each boss starts a 4.7s A603 cast on themselves which comes with A604 on a targeted player
+      // ~0.13s after A603, each boss casts A606 that does the line aoe damage
+      type: 'Ability',
+      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A604', capture: true },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = deadStarsOutputStrings;
+        data.deadStarsFirestrikeTargets.push(matches.target);
+        if (data.deadStarsFirestrikeTargets.length < 3)
+          return;
+
+        const target1 = data.deadStarsFirestrikeTargets[0];
+        const target2 = data.deadStarsFirestrikeTargets[1];
+        const target3 = data.deadStarsFirestrikeTargets[2];
+
+        if (data.me === target1 || data.me === target2 || data.me === target3)
+          return { alertText: output.lineStackOnYou!() };
+
+        return {
+          infoText: output.lineStacksOnPlayers!({
+            player1: data.party.member(target1),
+            player2: data.party.member(target2),
+            player3: data.party.member(target3),
+          })
+        };
+      },
+      run: (data) => {
+        if (data.deadStarsFirestrikeTargets.length === 3)
+          data.deadStarsFirestrikeTargets = [];
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Snowball Flight Positions',
+      // These are each 6.7s casts, covering 9.6s
+      // Snowball Flight (A5CE)
+      // Snow Boulder (A5CF) is cast 3 times, 2.5s apart
+      // Snow Boulder (A5D0) Wild Charge damage is applied when hit
+      // Knockback timing will vary based on charge order
+      // Minimum of 4 players needed in each charge, with front person taking major damage
+      // 3 pairs of soaks, knockback immune recommended to avoid getting hit more than once
+      type: 'StartsUsing',
+      netRegex: { source: 'Nereid', id: 'A5CE', capture: false },
+      infoText: (_data, _matches, output) => {
+        return output.chargePositions!();
+      },
+      outputStrings: {
+        chargePositions: {
+          en: 'Wild Charge Positions',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Snowball Flight Knockback',
+      // CastTime is 6.7s
+      // Set 1 Knockback at 7s
+      // Set 2 Knocbkack at 9.6s
+      // Set 3 Knockback at 12.2s
+      // This will call out at 6s, covering all three knockbacks
+      // TODO: Add configurator to select knockback timing
+      type: 'StartsUsing',
+      netRegex: { source: 'Nereid', id: 'A5CE', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 0.7,
+      response: Responses.knockback(),
+    },
+    {
       id: 'Occult Crescent Dead Stars Snowball Tether/Knockback',
       // Three things happen here
       // 1 - Two players get marked with a Proximity Tether + Stack Marker
       // 2 - Knockback from center of room
       // 3 - Players in stack take proximity damage as if they had their own tether
+      // Related Spell Ids:
+      // - Players tethered are targeted by Avalaunch (A5D1)
+      // - Knockback is caused by Chilling Collision (A5D4)
+      // - Additional Chilling Collision casts from A5B6 Nereid and A5D3 from Frozen Triton
+      // - Proximity stack damage is from Avalaunch (A5D2)
+      // - Snowballs jump using Avalaunch (A89A)
       type: 'Tether',
       netRegex: { id: [headMarkerData.deadStarsSnowballTether], capture: true },
       preRun: (data) => {
@@ -330,6 +562,104 @@ const triggerSet: TriggerSet<Data> = {
           data.deadStarsSnowballTetherCount === 2
         )
           return { alertText: output.knockbackToSnowball!() };
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Firestrike 2',
+      // This has a line stack headmarker, but does not appear in the logs
+      // Each boss starts a 4.7s A605 (Slice 'n' Dice) cast on themselves which comes with a607 on a targeted player
+      // ~0.13s after A605, each boss casts A606 that does the line aoe damage
+      // Meanwhile, boss targets main target with tankbuster cleave A602 Slice 'n' Dice
+      type: 'Ability',
+      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A607', capture: true },
+      delaySeconds: 0.1, // Delay for Tankbuster target accummulation
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = deadStarsOutputStrings;
+        data.deadStarsFirestrikeTargets.push(matches.target);
+        if (data.deadStarsFirestrikeTargets.length < 3)
+          return;
+
+        const strikeTarget1 = data.deadStarsFirestrikeTargets[0];
+        const strikeTarget2 = data.deadStarsFirestrikeTargets[1];
+        const strikeTarget3 = data.deadStarsFirestrikeTargets[2];
+        if (
+          data.me === strikeTarget1 ||
+          data.me === strikeTarget2 ||
+          data.me === strikeTarget3
+        )
+          return { alertText: output.lineStackOnYouTankCleave!() };
+
+        // Do not call out to Slice 'n' Dice targets
+        const sliceTarget1 = data.deadStarsSliceTargets[0];
+        const sliceTarget2 = data.deadStarsSliceTargets[1];
+        const sliceTarget3 = data.deadStarsSliceTargets[2];
+        if (
+          data.me === sliceTarget1 ||
+          data.me === sliceTarget2 ||
+          data.me === sliceTarget3
+        )
+          return;
+
+        return {
+          infoText: output.lineStacksOnPlayers!({
+            player1: data.party.member(strikeTarget1),
+            player2: data.party.member(strikeTarget2),
+            player3: data.party.member(strikeTarget3),
+          })
+        };
+      },
+      run: (data) => {
+        if (data.deadStarsFirestrikeTargets.length === 3) {
+          data.deadStarsFirestrikeTargets = [];
+          data.deadStarsSliceTargets = [];
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Six-handed Fistfight',
+      // Start of enrage sequence
+      // All three bosses cast a 9.1s Six-handed Fistfight (A5E7)
+      // They become "Dead Stars", which also casts the spell under A5E9 (10.2s) and A5E8 (9.7s)
+      // Middle will be taken over/blocked by bosses bodying each other (A5EA Bodied)
+      type: 'StartsUsing',
+      netRegex: { source: 'Phobos', id: 'A5E7', capture: false },
+      infoText: (_data, _matches, output) => output.outOfMiddleGroups!(),
+      outputStrings: {
+        outOfMiddleGroups: {
+          en: 'Out of Middle, Group Positions',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Six-handed Fistfight AoE',
+      // 10.2s cast, delay until 5s before end
+      type: 'StartsUsing',
+      netRegex: { source: 'Dead Stars', id: 'A5E9', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5.2,
+      suppressSeconds: 1,
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'Occult Crescent Dead Stars Collateral Damage',
+      type: 'StartsUsing',
+      netRegex: { source: 'Dead Stars', id: 'A5ED', capture: false },
+      infoText: (_data, _matches, output) => output.jetsThenSpread!(),
+      outputStrings: {
+        jetsThenSpread: {
+          en: 'Dodge Two Jets => Spread',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Collateral Damage Spread',
+      // 5s to spread after last jet happens, 2s after Collateral Damage cast
+      type: 'StartsUsing',
+      netRegex: { source: 'Dead Stars', id: 'A5ED', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) + 2,
+      alertText: (_data, _matches, output) => output.spread!(),
+      outputStrings: {
+        spread: Outputs.spread,
       },
     },
   ],
