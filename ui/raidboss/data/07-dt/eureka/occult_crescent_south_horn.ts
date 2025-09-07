@@ -380,7 +380,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Phobos', id: 'A5D9', capture: false },
       response: Responses.aoe(),
-    },/*
+    }, /*
     {
       id: 'Occult Crescent Dead Stars Nova/Ice Ooze Initial',
       // This won't work until FFXIVACT Plugin captures StatusEffectListForay3
