@@ -458,7 +458,7 @@ const triggerSet: TriggerSet<Data> = {
           data.deadStarsTriton = [actor.PosX, actor.PosY];
         data.deadStarsCount = data.deadStarsCount + 1;
       },
-      infoText: (data, matches, output) => {
+      infoText: (data, _matches, output) => {
         if (
           data.deadStarsCount !== 2 &&
           data.deadStarsCount !== 4 &&
@@ -467,13 +467,13 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         // First and Second Use Triton, Last use Nereid
-        const boss1 = (data.deadStarsCount === 2 || data.deadStarsCount === 4)?
-          data.deadStarsTriton:
-          data.deadStarsNereid;
+        const boss1 = (data.deadStarsCount === 2 || data.deadStarsCount === 4)
+          ? data.deadStarsTriton
+          : data.deadStarsNereid;
         // First use Nereid, otherwise Phobos
-        const boss2 = data.deadStarsCount === 2?
-          data.deadStarsNereid:
-          data.deadStarsPhobos;
+        const boss2 = data.deadStarsCount === 2
+          ? data.deadStarsNereid
+          : data.deadStarsPhobos;
 
         // Reset results
         data.deadStarsTriton = [];
