@@ -270,7 +270,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Dead Stars Snowball Tether/Knockback',
-      // Two things happen here
+      // Three things happen here
       // 1 - Two players get marked with a Proximity Tether + Stack Marker
       // 2 - Knockback from center of room
       // 3 - Players in stack take proximity damage as if they had their own tether
