@@ -4,7 +4,7 @@ import { Responses } from '../../../../../resources/responses';
 import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { LocaleText, TriggerSet } from '../../../../../types/trigger';
+import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   ce?: string;
@@ -40,21 +40,17 @@ const ceIds: { [ce: string]: string } = {
 };
 
 const headMarkerData = {
-  // Dead Stars boss tethers
-  'deadStarsBossTether': '00F9',
   // Dead Stars boss tethers to each other
   'deadStarsTether': '0136',
+  // Dead Stars boss tethers
+  'deadStarsBossTether': '00F9',
+  // Dead Stars Snowball tethers
+  'deadStarsSnowballTether': '00F6',
   // Dead Stars distance-based tether
-  'deadStarsDistanceTether': '0001',
+  'deadStarsSnowballTether2': '0001',
 } as const;
 
 // Occult Crescent Forked Tower: Blood Dead Stars consts
-const deadStarsFrozenPhobosLocaleNames: LocaleText = {
-  en: 'Frozen Phobos',
-};
-const deadStarsFrozenTritonLocaleNames: LocaleText = {
-  en: 'Frozen Triton',
-};
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
 
@@ -258,13 +254,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: [headMarkerData.deadStarsBossTether], capture: true },
       condition: (data, matches) => {
-        // Do not execute in snowball phase
-        const frozenPhobosName = deadStarsFrozenPhobosLocaleNames[data.parserLang];
-        const frozenTritonName = deadStarsFrozenTritonLocaleNames[data.parserLang];
-        if (
-          data.me === matches.target &&
-          (matches.source !== frozenPhobosName && matches.source !== frozenTritonName)
-        )
+        // Tethers come from player
+        if (data.me === matches.source)
           return true;
         return false;
       },
@@ -278,17 +269,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Dead Stars Snowball Tether',
-      // Calls each tether or get towers
+      id: 'Occult Crescent Dead Stars Snowball Tether/Knockback',
+      // Two things happen here
+      // 1 - Two players get marked with a Proximity Tether + Stack Marker
+      // 2 - Knockback from center of room
+      // 3 - Players in stack take proximity damage as if they had their own tether
       type: 'Tether',
-      netRegex: { id: [headMarkerData.deadStarsBossTether], capture: true },
-      condition: (data, matches) => {
-        // Only execute in snowball phase
-        const frozenPhobosName = deadStarsFrozenPhobosLocaleNames[data.parserLang];
-        const frozenTritonName = deadStarsFrozenTritonLocaleNames[data.parserLang];
-        if (matches.source === frozenPhobosName || matches.source === frozenTritonName)
-          return true;
-      },
+      netRegex: { id: [headMarkerData.deadStarsSnowballTether], capture: true },
       preRun: (data) => {
         data.deadStarsSnowballTetherCount = data.deadStarsSnowballTetherCount + 1;
       },
@@ -316,14 +303,25 @@ const triggerSet: TriggerSet<Data> = {
         );
         data.deadStarsSnowballTetherDirNum = (dirNum + 4) % 8;
       },
-      infoText: (data, matches, output) => {
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          ...Directions.outputStrings8Dir,
+          knockbackTetherDir: {
+            en: 'Tether: Knockback to ${dir} => Stack at Wall',
+          },
+          knockbackToSnowball: {
+            en: 'Knockback to Snowball => Stack at Wall',
+          },
+        };
+
         if (
           data.deadStarsSnowballTetherDirNum !== undefined &&
           data.me === matches.target
         ) {
           // This will trigger for each tether a player has
           const dir = output[Directions.outputFrom8DirNum(data.deadStarsSnowballTetherDirNum)]!();
-          return output.knockbackTetherDir!({ dir: dir });
+          return { alarmText: output.knockbackTetherDir!({ dir: dir }) };
         }
 
         // A player who has a tether should have a defined direction, but if they don't they'll get two calls
@@ -331,16 +329,7 @@ const triggerSet: TriggerSet<Data> = {
           data.deadStarsSnowballTetherDirNum === undefined &&
           data.deadStarsSnowballTetherCount === 2
         )
-          return output.knockbackToSnowball!();
-      },
-      outputStrings: {
-        ...Directions.outputStrings8Dir,
-        knockbackTetherDir: {
-          en: 'Tether: Knockback to ${dir} => To Wall',
-        },
-        knockbackToSnowball: {
-          en: 'Knockback to Snowball => To Wall',
-        },
+          return { alertText: output.knockbackToSnowball!() };
       },
     },
   ],
