@@ -524,7 +524,13 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Tell who to launch with?
       // Note: Reset of target collectors happens in Cometeor trigger
       type: 'HeadMarker',
-      netRegex: { id: [headMarkerData.demonTabletLaunchSouthStack, headMarkerData.demonTabletLaunchNorthStack], capture: true },
+      netRegex: {
+        id: [
+          headMarkerData.demonTabletLaunchSouthStack,
+          headMarkerData.demonTabletLaunchNorthStack,
+        ],
+        capture: true
+      },
       condition: (data, matches) => {
         // Gather data for four players before continuing
         if (matches.id === headMarkerData.demonTabletLaunchSouthStack)
@@ -534,7 +540,7 @@ const triggerSet: TriggerSet<Data> = {
         if (
           data.demonTabletCometNorthTargets.length === 2 &&
           data.demonTabletCometSouthTargets.length === 2
-         )
+        )
           return true;
         return false;
       },
@@ -625,6 +631,36 @@ const triggerSet: TriggerSet<Data> = {
         goTowerSideIn: {
           en: 'Go Towers Side and In (Knockback)',
         },
+      },
+    },
+    {
+      id: 'Occult Crescent Tower Manticore Left/Right Hammer',
+      // Needs to be slowed by slowed by Time Mage or it is 4.2s into a 0.7s followup
+      // Can be out-ranged as well
+      // A7BF Left Hammer (7.8s with Slow)
+      // A7C0 Right Hammer (7.8s with Slow)
+      // A7E6 Left Hammer (1.5s followup with Slow)
+      // A7E7 Right Hammer (1.5s followup with Slow)
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0', 'A7E6', 'A7E7'], capture: true },
+      response: (_data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          left: Outputs.left,
+          leftThenRight: Outputs.leftThenRight,
+          right: Outputs.right,
+          rightThenLeft: Outputs.rightThenLeft,
+        };
+        switch (matches.id) {
+          case 'A7BF':
+            return { infoText: output.rightThenLeft!() };
+          case 'A7C0':
+            return { infoText: output.leftThenRight!() };
+          case 'A7E6':
+            return { alertText: output.right!() };
+          case 'A7E7':
+            return { alertText: output.left!() };
+        }
       },
     },
     {
