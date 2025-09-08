@@ -698,15 +698,7 @@ hideall "--sync--"
 30422.3 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" }
 30427.0 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" } jump 30422.3
 
-### Marble Dragon
-# -ii 756B 7842
-# -p 77F1:40008.1
-# -it "Marble Dragon" "Ice Golem" "Ice Sprite"
-#
-# IGNORED ABILITIES
-# 756B Attack
-# 7842 unknown_7842 from Tower Idol
-# The Glaciology Forum will be sealed off
+
 ### Marble Dragon
 # -ii 756B 7842 77E5 77F1 7797 76CF
 # -p 77F1:40008.1
