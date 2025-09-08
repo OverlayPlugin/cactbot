@@ -8,6 +8,12 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   ce?: string;
+  demonTabletChiselTargets: string[];
+  demonTabletRotationCounter: number;
+  demonTabletIsFrontSide: boolean;
+  demonTabletCometeor?: 'near' | 'afar';
+  demonTabletCometSouthTargets: string[];
+  demonTabletCometNorthTargets: string[];
   deadStarsIsSlice2: boolean;
   deadStarsSliceTargets: string[];
   deadStarsFirestrikeTargets: string[];
@@ -49,6 +55,12 @@ const ceIds: { [ce: string]: string } = {
 };
 
 const headMarkerData = {
+  // Demon Tablet Occult Chisel tankbuster aoe marker
+  'demonTabletTankbuster': '01F1',
+  // Demon Tablet Portentous Comet Stack + Launch North marker
+  'demonTabletLaunchNorthStack': '023E',
+  // Demon Tablet Portentous Comet Stack + Launch South marker
+  'demonTabletLaunchSouthStack': '023F',
   // Dead Stars boss tethers to each other
   'deadStarsTether': '0136',
   // Dead Stars boss tethers
@@ -62,6 +74,10 @@ const headMarkerData = {
   // Dead Stars snowball tether
   'deadStarsSnowballTether2': '0001',
 } as const;
+
+// Occult Crescent Forked Tower: Blood Demon Tablet consts
+// const demonTabletCenterX = 700;
+const demonTabletCenterY = 379;
 
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
@@ -91,8 +107,29 @@ const triggerSet: TriggerSet<Data> = {
     en: 'Occult Crescent South Horn critical encounter triggers/timeline.',
     cn: '蜃景幻界新月岛 南征之章 紧急遭遇战 触发器/时间轴。',
   },
+  config: [
+    {
+      id: 'demonTabletRotation',
+      name: {
+        en: 'Forked Tower: Blood Demon Tablet Rotation Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Less movement by calling direction to go around instead of get behind.': 'optimization',
+          'Early movement with get behind calls.': 'none',
+        },
+      },
+      default: 'none',
+    },
+  ],
   timelineFile: 'occult_crescent_south_horn.txt',
   initData: () => ({
+    demonTabletChiselTargets: [],
+    demonTabletRotationCounter: 0,
+    demonTabletIsFrontSide: true,
+    demonTabletCometSouthTargets: [],
+    demonTabletCometNorthTargets: [],
     deadStarsIsSlice2: false,
     deadStarsSliceTargets: [],
     deadStarsFirestrikeTargets: [],
@@ -271,6 +308,43 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Demon Tablet Occult Chisel',
+      // Boss' top three targets targeted with A308 Occult Chisel aoe tankbuster
+      // A307 Occult Chisel castbar associated
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.demonTabletTankbuster], capture: true },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tankbustersOnPlayers: {
+            en: 'Tankbusters on ${player1}, ${player2}, ${player3}',
+          },
+          tankBusterOnYou: Outputs.tankBusterOnYou,
+        };
+        data.demonTabletChiselTargets.push(matches.target);
+        if (data.demonTabletChiselTargets.length < 3)
+          return;
+
+        const target1 = data.demonTabletChiselTargets[0];
+        const target2 = data.demonTabletChiselTargets[1];
+        const target3 = data.demonTabletChiselTargets[2];
+        if (data.me === target1 || data.me === target2 || data.me === target3)
+          return { alertText: output.tankBusterOnYou!() };
+
+        return {
+          infoText: output.tankbustersOnPlayers!({
+            player1: data.party.member(target1),
+            player2: data.party.member(target2),
+            player3: data.party.member(target3),
+          }),
+        };
+      },
+      run: (data) => {
+        if (data.demonTabletChiselTargets.length === 3)
+          data.demonTabletChiselTargets = [];
+      },
+    },
+    {
       id: 'Occult Crescent Demon Tablet Demonograph of Dangears Near/Expulsion Afar',
       // A2F6 Demonograph of Dangers Near
       // A2F7 Demonograph of Expulsion Afar
@@ -285,6 +359,271 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         inKnockback: {
           en: 'In (Knockback)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Rotate Left/Right',
+      // A302 Rotate Left
+      // A301 Rotate Right
+      // Configurable to use an optimization callout, skipping get behind calls
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A302', 'A301'], capture: true },
+      promise: async (data, matches) => {
+        // Only check if in front/behind for first rotation
+        if (data.demonTabletRotationCounter % 2)
+          return;
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Rotate Left/Right: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Rotate Left/Right: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        const bossDirNum = Directions.hdgTo4DirNum(actor.Heading);
+        const getSide = (
+          x: number,
+        ): number => {
+          // First Rotation is always N or S
+          // N Platform
+          if (x < demonTabletCenterY)
+            return 0;
+          // S Platform
+          if (x > demonTabletCenterY)
+            return 2;
+
+          return -1;
+        };
+        const playerDirNum = getSide(me.PosX);
+        if (playerDirNum === bossDirNum)
+          data.demonTabletIsFrontSide = true;
+        if (playerDirNum !== bossDirNum)
+          data.demonTabletIsFrontSide = false;
+      },
+      alertText: (data, matches, output) => {
+        // First Rotation
+        if (!(data.demonTabletRotationCounter % 2)) {
+          if (
+            data.demonTabletIsFrontSide &&
+            data.triggerSetConfig.demonTabletRotation !== 'optimization'
+          ) {
+            if (matches.id === 'A301')
+              return output.leftThenGetBehind!();
+            return output.rightThenGetBehind!();
+          }
+          if (matches.id === 'A301')
+            return output.left!();
+          return output.right!();
+        }
+
+        // Second Rotation
+        if (
+          data.demonTabletIsFrontSide &&
+          data.triggerSetConfig.demonTabletRotation === 'optimization'
+        ) {
+          // Optimization callout since it is faster to go with boss direction
+          if (matches.id === 'A301')
+            return output.goRightAround!();
+          return output.goLeftAround!();
+        }
+        // Reminders to be behind
+        if (matches.id === 'A301')
+          return output.leftBehind!();
+        return output.rightBehind!();
+      },
+      run: (data) => {
+        data.demonTabletRotationCounter = data.demonTabletRotationCounter + 1;
+      },
+      outputStrings: {
+        left: Outputs.left,
+        right: Outputs.right,
+        leftBehind: {
+          en: 'Left (Behind Boss)',
+        },
+        rightBehind: {
+          en: 'Right (Behind Boss)',
+        },
+        leftThenGetBehind: {
+          en: 'Left => Get Behind',
+        },
+        rightThenGetBehind: {
+          en: 'Right => Get Behind',
+        },
+        goRightAround: {
+          en: 'Go Right and Around',
+        },
+        goLeftAround: {
+          en: 'Go Left and Around',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Cometeor of Dangers Near/Expulsion Afar',
+      // A2E4 Cometeor of Dangers Near
+      // A2E5 Cometeor of Expulsion Afar
+      // TODO: Handle meteor players separately
+      // This cast happens about 0.1s before players are marked with comets
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A2E4', 'A2E5'], capture: true },
+      preRun: (data, matches) => {
+        data.demonTabletCometeor = matches.id === 'A2E4' ? 'near' : 'afar';
+      },
+      delaySeconds: 0.2, // Delayed to retreive comet data
+      alertText: (data, matches, output) => {
+        // Do not call for those with comets
+        const north1 = data.demonTabletCometNorthTargets[0];
+        const north2 = data.demonTabletCometNorthTargets[1];
+        const south1 = data.demonTabletCometSouthTargets[0];
+        const south2 = data.demonTabletCometSouthTargets[1];
+        if (
+          data.me === north1 || data.me === north2 ||
+          data.me === south1 || data.me === south2
+        )
+          return;
+
+        if (matches.id === 'A2E4')
+          return output.out!();
+        return output.inKnockback!();
+      },
+      run: (data) => {
+        // Clear comet targets for Cometeor 2
+        if (
+          data.demonTabletCometNorthTargets.length === 2 &&
+          data.demonTabletCometSouthTargets.length === 2
+        ) {
+          data.demonTabletCometNorthTargets = [];
+          data.demonTabletCometSouthTargets = [];
+        }
+      },
+      outputStrings: {
+        out: Outputs.out,
+        inKnockback: {
+          en: 'In (Knockback)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Portentous Comet',
+      // Headmarkers associated with casts A2E8 Portentous Comet
+      // TODO: Find meteor location, to tell to launch over boss or to boss
+      // TODO: Tell who to launch with?
+      // Note: Reset of target collectors happens in Cometeor trigger
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.demonTabletLaunchSouthStack, headMarkerData.demonTabletLaunchNorthStack], capture: true },
+      condition: (data, matches) => {
+        // Gather data for four players before continuing
+        if (matches.id === headMarkerData.demonTabletLaunchSouthStack)
+          data.demonTabletCometSouthTargets.push(matches.target);
+        if (matches.id === headMarkerData.demonTabletLaunchNorthStack)
+          data.demonTabletCometNorthTargets.push(matches.target);
+        if (
+          data.demonTabletCometNorthTargets.length === 2 &&
+          data.demonTabletCometSouthTargets.length === 2
+         )
+          return true;
+        return false;
+      },
+      delaySeconds: (data) => {
+        // Delay for those without stack markers to avoid conflict with meteor/cross calls
+        const north1 = data.demonTabletCometNorthTargets[0];
+        const north2 = data.demonTabletCometNorthTargets[1];
+        const south1 = data.demonTabletCometSouthTargets[0];
+        const south2 = data.demonTabletCometSouthTargets[1];
+        if (
+          data.me === north1 || data.me === north2 ||
+          data.me === south1 || data.me === south2
+        )
+          return 0;
+
+        // castTime of Cometeor of Dangers Near / Expulsion Afar
+        // Boss lands at this time, locking in the stack players to their perspective sides
+        return 9.7;
+      },
+      durationSeconds: (data) => {
+        // Additional duration for those who received call early
+        const north1 = data.demonTabletCometNorthTargets[0];
+        const north2 = data.demonTabletCometNorthTargets[1];
+        const south1 = data.demonTabletCometSouthTargets[0];
+        const south2 = data.demonTabletCometSouthTargets[1];
+        if (
+          data.me === north1 || data.me === north2 ||
+          data.me === south1 || data.me === south2
+        )
+          return 16.7; // castTime of Portentous Comet
+        return 7; // Time between Cometeor cast end and Portentous Comet end
+      },
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stackLaunchTowardsBoss: {
+            en: 'Stack, Launch towards Boss',
+          },
+          goNorthOutStackOnYou: {
+            en: 'Go North Out => Stack Launch Marker on You',
+          },
+          goNorthInStackOnYou: {
+            en: 'Go North In (Knockback) => Stack Launch Marker on You',
+          },
+          goSouthOutStackOnYou: {
+            en: 'Go South Out => Stack Launch Marker on You',
+          },
+          goSouthInStackOnYou: {
+            en: 'Go South In (Knockback) => Stack Launch Marker on You',
+          },
+        };
+
+        const north1 = data.demonTabletCometNorthTargets[0];
+        const north2 = data.demonTabletCometNorthTargets[1];
+        const south1 = data.demonTabletCometSouthTargets[0];
+        const south2 = data.demonTabletCometSouthTargets[1];
+        if (data.me === north1 || data.me === north2) {
+          if (data.demonTabletCometeor === 'near')
+            return { alertText: output.goSouthOutStackOnYou!() };
+          return { alertText: output.goSouthInStackOnYou!() };
+        }
+        if (data.me === south1 || data.me === south2) {
+          if (data.demonTabletCometeor === 'near')
+            return { alertText: output.goNorthOutStackOnYou!() };
+          return { alertText: output.goNorthInStackOnYou!() };
+        }
+
+        // TODO: Upgrade to alert if meteor player
+        return { infoText: output.stackLaunchTowardsBoss!() };
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar',
+      // A2F6 Gravity of Dangers Near
+      // A2F7 Gravity of Expulsion Afar
+      // TODO: Get side that has towers
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'A2EA')
+          return output.goTowerSideOut!();
+        return output.goTowerSideIn!();
+      },
+      outputStrings: {
+        goTowerSideOut: {
+          en: 'Go Towers Side and Out',
+        },
+        goTowerSideIn: {
+          en: 'Go Towers Side and In (Knockback)',
         },
       },
     },
@@ -418,8 +757,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Dead Stars Frozen Fallout Locations',
       // This will currently output both ooze tells
-      // TBD: Change to just what player needs once status effect is logged
-      // TBD: Add additional triggers to tell where to go after each cast
+      // TODO: Change to just what player needs once status effect is logged
+      // TODO: Add additional triggers to tell where to go after each cast
       // Boss casts A45DD (Frozen Fallout) and A5DF + A5E0 tells
       // Liquified Triton (Red) tells are the A5DF casts
       // Liquified Nereid (Blue) tells are the A5E0 casts
@@ -469,7 +808,7 @@ const triggerSet: TriggerSet<Data> = {
         if (matches.id === 'A5E0')
           return output.blue!({ dirs: dirs });
       },
-      tts: null, // TBD: Remove when filtered for status effect
+      tts: null, // TODO: Remove when filtered for status effect
       outputStrings: {
         ...Directions.outputStrings8Dir,
         red: {
