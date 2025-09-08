@@ -529,7 +529,7 @@ const triggerSet: TriggerSet<Data> = {
           headMarkerData.demonTabletLaunchSouthStack,
           headMarkerData.demonTabletLaunchNorthStack,
         ],
-        capture: true
+        capture: true,
       },
       condition: (data, matches) => {
         // Gather data for four players before continuing
