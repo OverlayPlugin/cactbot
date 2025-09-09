@@ -613,6 +613,17 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Demon Tablet Summon',
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: 'A30D', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Add Positions and Out',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar',
       // A2F6 Gravity of Dangers Near
       // A2F7 Gravity of Expulsion Afar
@@ -645,7 +656,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0'], capture: true },
       infoText: (_data, matches, output) => {
         if (matches.id === 'A7BF')
-            return output.rightThenLeft!();
+          return output.rightThenLeft!();
         return output.leftThenRight!();
       },
       outputStrings: {
