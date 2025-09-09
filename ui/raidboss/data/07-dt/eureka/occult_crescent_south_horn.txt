@@ -723,7 +723,7 @@ hideall "--sync--"
 40043.0 "--sync--" Ability { id: "A43F", source: "Trap" } # TODO: Get real timer?
 
 # Encounter 2: Tower Abyss
-40242.3 "--sync--" StarsUsing { id: "A3A8", source: "Tower Abyss" } window 200,0
+40242.3 "--sync--" StartsUsing { id: "A3A8", source: "Tower Abyss" } window 200,0
 40244.8 "Dense Darkness" #Ability { id: "A3A8", source: "Tower Abyss" }
 40251.2 "Arcane Spear" Ability { id: "A441", source: "Trap" }
 40254.8 "Diffuse Darkness" #Ability { id: "A3A9", source: "Tower Abyss" }
