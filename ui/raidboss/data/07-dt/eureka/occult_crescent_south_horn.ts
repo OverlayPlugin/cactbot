@@ -642,25 +642,31 @@ const triggerSet: TriggerSet<Data> = {
       // A7E6 Left Hammer (1.5s followup with Slow)
       // A7E7 Right Hammer (1.5s followup with Slow)
       type: 'StartsUsing',
-      netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0', 'A7E6', 'A7E7'], capture: true },
-      response: (_data, matches, output) => {
-        // cactbot-builtin-response
-        output.responseOutputStrings = {
-          left: Outputs.left,
-          leftThenRight: Outputs.leftThenRight,
-          right: Outputs.right,
-          rightThenLeft: Outputs.rightThenLeft,
-        };
-        switch (matches.id) {
-          case 'A7BF':
-            return { infoText: output.rightThenLeft!() };
-          case 'A7C0':
-            return { infoText: output.leftThenRight!() };
-          case 'A7E6':
-            return { alertText: output.right!() };
-          case 'A7E7':
-            return { alertText: output.left!() };
-        }
+      netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0'], capture: true },
+      infoText: (_data, matches, output) => {
+        if (matches.id === 'A7BF')
+            return output.rightThenLeft!();
+        return output.leftThenRight!();
+      },
+      outputStrings: {
+        leftThenRight: Outputs.leftThenRight,
+        rightThenLeft: Outputs.rightThenLeft,
+      },
+    },
+    {
+      id: 'Occult Crescent Tower Manticore Left/Right Hammer Followup',
+      // Cast bar can be interrupted leading to extra calls if using castTime
+      type: 'Ability',
+      netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0'], capture: true },
+      suppressSeconds: 1,
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'A7BF')
+          return output.left!();
+        return output.right!();
+      },
+      outputStrings: {
+        left: Outputs.left,
+        right: Outputs.right,
       },
     },
     {
