@@ -698,10 +698,82 @@ hideall "--sync--"
 30422.3 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" }
 30427.0 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" } jump 30422.3
 
+### Pronged Passage (Bridges)
+# Note: Raid splits into two and battles across their own bridge in 3 sections
+# If one group is faster than the other, the other's section starts to burn
+# If either group is too slow in a section, the ground starts to Burn as a soft enrage
+#
+# -ii A43B A43D A442 A443 46D1 64F1
+# -p A441:40013.4 A620:40656.1 46D1:40386.5 A3A8:40244.8
+# -it "Tower Bhoot" "Tower Bogy" "Tower Abyss" "Tower Idol" "Tower Progenitrix" "Tower Progenitor" "Lava Bomb" "Aetherial Ward"
+#
+# IGNORED ABILITIES
+# A43B unknown_a43b (Trap) (Trap's proximity checker?)
+# A43D unknown_a43d (Trap) (Massive Trap's proximity checker?)
+# A43F unknown_a43f (Trap) Floor starts to apply 1197 Burns when a section is completed or times out
+# A442 Burst (Trap) exploding a Trap
+# A443 Massive Explosion (Trap) exploding a massive Trap
+# 46D1 Attack (Tower Idol) (Tower Abyss)
+# 64F1 Radiant Aegis (bug in log? had no source)
+# The pronged passage will be sealed off
+40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1454" } window 100000,0
+
+# Encounter 1: Two Tower Bogy and 1 Tower Bhoot
+40013.4 "Arcane Spear" Ability { id: "A441", source: "Trap" } window 20,5
+40043.0 "--sync--" Ability { id: "A43F", source: "Trap" } # TODO: Get real timer?
+
+# Encounter 2: Tower Abyss
+40242.3 "--sync--" StarsUsing { id: "A3A8", source: "Tower Abyss" } window 200,0
+40244.8 "Dense Darkness" #Ability { id: "A3A8", source: "Tower Abyss" }
+40251.2 "Arcane Spear" Ability { id: "A441", source: "Trap" }
+40254.8 "Diffuse Darkness" #Ability { id: "A3A9", source: "Tower Abyss" }
+40257.7 "Arcane Spear" Ability { id: "A441", source: "Trap" }
+40279.9 "--sync--" Ability { id: "A43F", source: "Trap" } # TODO: Get real timer?
+
+# Encounter 3: 6 Tower Idols (Phantom Bard + Geomancer section)
+40386.5 "--sync--" Ability { id: "46D1", source: "Tower Idol" } window 200,0
+40414.2 "--sync--" Ability { id: "A43F", source: "Trap" } # TODO: Get real timer?
+
+# Encounter 4: Tower Bhoot + two Tower Bogy
+40435.2 "--sync--" Ability { id: "A43F", source: "Trap" } # TODO: Get real timer?
+
+# Encounter 5: Tower Progenitrix and Tower Progenitor
+40653.1 "--sync--" StartsUsing { id: "A620", source: "Tower Progenitrix" } window 200,0
+40656.1 "Close Call to Detonate / Far Cry to Detonate" Ability { id: ["A620", "A623"], source: "Tower Progenitrix" }
+40656.1 "Close Call to Detonate / Far Cry to Detonate" Ability { id: ["A621", "A622"], source: "Tower Progenitor" }
+40665.1 "--sync--" Ability { id: "A43F", source: "Trap" }
+40673.1 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40677.1 "Bombshell Drop" Ability { id: "A626", source: "Tower Progenitrix" }
+40677.1 "Bombshell Drop" Ability { id: "A627", source: "Tower Progenitor" }
+40677.1 "--adds--"
+40701.3 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40701.3 "Close Call to Detonate / Far Cry to Detonate" Ability { id: ["A620", "A623"], source: "Tower Progenitor" }
+40701.3 "Close Call to Detonate / Far Cry to Detonate" Ability { id: ["A620", "A623"], source: "Tower Progenitrix" }
+40706.4 "Nexus of Flame" #Ability { id: "A62A", source: "Tower Progenitrix" }
+40708.4 "Nexus of Flame" #Ability { id: "A62A", source: "Tower Progenitrix" }
+40710.4 "Nexus of Flame" #Ability { id: "A62A", source: "Tower Progenitrix" }
+40715.4 "Punishing Pounce" Ability { id: "A629", source: "Tower Progenitor" }
+40715.4 "Punishing Pounce" Ability { id: "A628", source: "Tower Progenitrix" }
+40730.5 "Arcane Spear" #Ability { id: "A6F4", source: "Trap" }
+40731.5 "Bombshell Drop" Ability { id: "A627", source: "Tower Progenitor" }
+40731.5 "Bombshell Drop" Ability { id: "A626", source: "Tower Progenitrix" }
+40731.5 "--adds--"
+40759.7 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40759.7 "Close Call to Detonate / Far Cry to Detonate" Ability { id: ["A620", "A623"], source: "Tower Progenitor" }
+40759.7 "Close Call to Detonate / Far Cry to Detonate" Ability { id: ["A620", "A623"], source: "Tower Progenitrix" }
+40773.8 "Punishing Pounce" Ability { id: "A628", source: "Tower Progenitrix" }
+40773.9 "Punishing Pounce" Ability { id: "A629", source: "Tower Progenitor" }
+
+# Soft enrage
+40781.7 "--sync--" Ability { id: "A43F", source: "Trap" }
+40788.9 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40789.9 "Bombshell Drop" Ability { id: "A626", source: "Tower Progenitrix" }
+40790.0 "Bombshell Drop" Ability { id: "A627", source: "Tower Progenitor" }
+40790.0 "--adds--"
 
 ### Marble Dragon
 # -ii 756B 7842 77E5 77F1 7797 76CF
-# -p 77F1:40008.1
+# -p 77F1:50008.1
 # -it "Marble Dragon" "Ice Golem" "Ice Sprite"
 #
 # IGNORED ABILITIES
@@ -714,123 +786,121 @@ hideall "--sync--"
 # 77E6 Draconiform Motion (Damage from Tail?), 0.7-0.9s after cast
 # 77F0 Dread Deluge (Damage), 2s after castbar
 # The Glaciology Forum will be sealed off
-40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1452" } window 100000,0
-40003.1 "--sync--" StartsUsing { id: "77F1", source: "Marble Dragon" } window 100,50
-40008.1 "Imitation Star (castbar)" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
-40022.7 "Draconiform Motion (castbar)" Ability { id: "77C1", source: "Marble Dragon" }
-40027.9 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
-40029.9 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
-40035.0 "Imitation Icicle" Ability { id: "756F", source: "Marble Dragon" }
-40043.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
-40043.7 "--Icicle Puddles--" Ability { id: "75E4", source: "Marble Dragon" }
-40044.9 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
-40045.9 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
-40046.9 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
-40047.9 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
-40048.3 "Imitation Blizzard 1 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
-40049.3 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7602", source: "Marble Dragon" }
-40050.3 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
-40051.3 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
-40062.3 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
-40064.3 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
-40069.5 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1452" } window 100000,0
+50003.1 "--sync--" StartsUsing { id: "77F1", source: "Marble Dragon" } window 100,50
+50008.1 "Imitation Star (castbar)" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
+50022.7 "Draconiform Motion (castbar)" Ability { id: "77C1", source: "Marble Dragon" }
+50027.9 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50029.9 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50035.0 "Imitation Icicle" Ability { id: "756F", source: "Marble Dragon" }
+50043.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50043.7 "--Icicle Puddles--" Ability { id: "75E4", source: "Marble Dragon" }
+50044.9 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
+50045.9 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
+50046.9 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
+50047.9 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
+50048.3 "Imitation Blizzard 1 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50049.3 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7602", source: "Marble Dragon" }
+50050.3 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50051.3 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50062.3 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
+50064.3 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50069.5 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
 
 # Pattern 1
-40075.5 "Frigid Twister" Ability { id: "7638", source: "Marble Dragon" }
-40077.6 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
-40080.4 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
-40083.6 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
-40084.5 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40087.8 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" }
-40088.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40091.5 "Imitation Blizzard (circle)" Ability { id: "7602", source: "Marble Dragon" }
-40091.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40095.1 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" }
-40099.7 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
-40101.4 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
-40103.4 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
-40110.6 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50075.5 "Frigid Twister" Ability { id: "7638", source: "Marble Dragon" }
+50077.6 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50080.4 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
+50083.6 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50084.5 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50087.8 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" }
+50088.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50091.5 "Imitation Blizzard (circle)" Ability { id: "7602", source: "Marble Dragon" }
+50091.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50095.1 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" }
+50099.7 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
+50101.4 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
+50103.4 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50110.6 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
 
 # Add phase
-40117.9 "Withering Eternity" Ability { id: "76D3", source: "Marble Dragon" }
-40119.9 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
-40122.7 "--sync--" Ability { id: "7795", source: "Marble Dragon" }
-40131.9 "Frigid Dive" Ability { id: "7796", source: "Marble Dragon" }
-40132.8 "Frigid Dive" Ability { id: "93BB", source: "Marble Dragon" }
-40133.5 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
-40133.5 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40137.1 "Imitation Blizzard (circles + cross)" Ability { id: "7615", source: "Marble Dragon" }
-40137.5 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
-40141.1 "Imitation Blizzard" Ability { id: "7615", source: "Marble Dragon" }
-40143.1 "Imitation Blizzard" Ability { id: "7616", source: "Marble Dragon" }
-40143.8 "Imitation Blizzard" Ability { id: "76D1", source: "Marble Dragon" }
-40145.0 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
-40147.0 "--sync--" Ability { id: "7795", source: "Marble Dragon" }
-40156.2 "Frigid Dive" Ability { id: "7796", source: "Marble Dragon" }
-40157.0 "Frigid Dive" Ability { id: "93BB", source: "Marble Dragon" }
-40157.7 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
-40157.7 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40161.3 "Imitation Blizzard (circles + cross)" Ability { id: "7615", source: "Marble Dragon" }
-40161.7 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
-40165.3 "Imitation Blizzard (circles)" #Ability { id: "7615", source: "Marble Dragon" }
-40168.1 "Frozen Heart" Ability { id: "93BF", source: "Ice Golem" }
-40169.3 "--sync--" Ability { id: "76D0", source: "Marble Dragon" }
-40207.3 "Lifeless Legacy" Ability { id: "7798", source: "Marble Dragon" }
-40209.2 "Lifeless Legacy" #Ability { id: "93BA", source: "Marble Dragon" }
+50117.9 "Withering Eternity" Ability { id: "76D3", source: "Marble Dragon" }
+50119.9 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50122.7 "--sync--" Ability { id: "7795", source: "Marble Dragon" }
+50131.9 "Frigid Dive" Ability { id: "7796", source: "Marble Dragon" }
+50132.8 "Frigid Dive" Ability { id: "93BB", source: "Marble Dragon" }
+50133.5 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
+50133.5 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50137.1 "Imitation Blizzard (circles + cross)" Ability { id: "7615", source: "Marble Dragon" }
+50137.5 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
+50141.1 "Imitation Blizzard" Ability { id: "7615", source: "Marble Dragon" }
+50143.1 "Imitation Blizzard" Ability { id: "7616", source: "Marble Dragon" }
+50143.8 "Imitation Blizzard" Ability { id: "76D1", source: "Marble Dragon" }
+50145.0 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50147.0 "--sync--" Ability { id: "7795", source: "Marble Dragon" }
+50156.2 "Frigid Dive" Ability { id: "7796", source: "Marble Dragon" }
+50157.0 "Frigid Dive" Ability { id: "93BB", source: "Marble Dragon" }
+50157.7 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
+50157.7 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50161.3 "Imitation Blizzard (circles + cross)" Ability { id: "7615", source: "Marble Dragon" }
+50161.7 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
+50165.3 "Imitation Blizzard (circles)" #Ability { id: "7615", source: "Marble Dragon" }
+50168.1 "Frozen Heart" Ability { id: "93BF", source: "Ice Golem" }
+50169.3 "--sync--" Ability { id: "76D0", source: "Marble Dragon" }
+50207.3 "Lifeless Legacy" Ability { id: "7798", source: "Marble Dragon" }
+50209.2 "Lifeless Legacy" #Ability { id: "93BA", source: "Marble Dragon" }
 
-# Possible enrage here from adds?
+# Possible soft enrage here from adds?
+# 7799 Recharge cast by Ice sprites adds permanent Damage Up buffs to boss
 
-40221.5 "Wicked Water" Ability { id: "77E7", source: "Marble Dragon" }
-40223.6 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" } duration 0.7
-40225.6 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
-40230.7 "Imitation Icicle" Ability { id: "756F", source: "Marble Dragon" }
-40239.0 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
-40239.4 "--Icicle Puddles--" #Ability { id: "75E4", source: "Marble Dragon" }
-40240.5 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
-40241.5 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
-40242.5 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
-40243.5 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
-40243.9 "Imitation Blizzard 1 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
-40244.9 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7602", source: "Marble Dragon" }
-40245.9 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
-40246.9 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
-40262.9 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
-40276.1 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50221.5 "Wicked Water" Ability { id: "77E7", source: "Marble Dragon" }
+50223.6 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" } duration 0.7
+50225.6 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50230.7 "Imitation Icicle" Ability { id: "756F", source: "Marble Dragon" }
+50239.0 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50239.4 "--Icicle Puddles--" #Ability { id: "75E4", source: "Marble Dragon" }
+50240.5 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
+50241.5 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
+50242.5 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
+50243.5 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
+50243.9 "Imitation Blizzard 1 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50244.9 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7602", source: "Marble Dragon" }
+50245.9 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50246.9 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50262.9 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
+50276.1 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
 
 # Pattern 2
-40282.1 "Frigid Twister" Ability { id: "7638", source: "Marble Dragon" }
-40284.2 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
-40287.0 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
-40290.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
-40291.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40294.5 "Imitation Blizzard (circle)" Ability { id: "7602", source: "Marble Dragon" }
-40294.9 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
-40298.2 "Imitation Blizzard" Ability { id: "7615", source: "Marble Dragon" }
-40300.4 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40303.7 "Imitation Blizzard (crosses)" #Ability { id: "7614", source: "Marble Dragon" }
-40305.1 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
-40305.1 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
-40309.9 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40310.8 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
-40313.0 "Imitation Blizzard" Ability { id: "7614", source: "Marble Dragon" }
-40313.4 "Ball of Ice" #Ability { id: "A716", source: "Marble Dragon" }
-40316.7 "Imitation Blizzard" Ability { id: "7615", source: "Marble Dragon" }
-40318.6 "Imitation Blizzard" Ability { id: "7616", source: "Marble Dragon" }
-40318.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-40319.0 "Imitation Blizzard" #Ability { id: "76D1", source: "Marble Dragon" }
-40322.0 "Imitation Blizzard  (circles)" #Ability { id: "7602", source: "Marble Dragon" }
-40326.8 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
+50282.1 "Frigid Twister" Ability { id: "7638", source: "Marble Dragon" }
+50284.2 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50287.0 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
+50290.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50291.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50294.5 "Imitation Blizzard (circle)" Ability { id: "7602", source: "Marble Dragon" }
+50294.9 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
+50298.2 "Imitation Blizzard" Ability { id: "7615", source: "Marble Dragon" }
+50300.4 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50303.7 "Imitation Blizzard (crosses)" #Ability { id: "7614", source: "Marble Dragon" }
+50305.1 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50305.1 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50309.9 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50310.8 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50313.0 "Imitation Blizzard" Ability { id: "7614", source: "Marble Dragon" }
+50313.4 "Ball of Ice" #Ability { id: "A716", source: "Marble Dragon" }
+50316.7 "Imitation Blizzard" Ability { id: "7615", source: "Marble Dragon" }
+50318.6 "Imitation Blizzard" Ability { id: "7616", source: "Marble Dragon" }
+50318.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50319.0 "Imitation Blizzard" #Ability { id: "76D1", source: "Marble Dragon" }
+50322.0 "Imitation Blizzard  (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50326.8 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
 
-40334.6 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
-40345.8 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
-40347.8 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
-40379.9 "Lifeless Legacy (Enrage)" Ability { id: "756D", source: "Marble Dragon" }
-40381.8 "Lifeless Legacy (Enrage)" Ability { id: "9ECD", source: "Marble Dragon" }
-
-### Pronged Passage (Bridges)
-# The pronged passage will be sealed off
-#50000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1453" } window 100000,0
+50334.6 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
+50345.8 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
+50347.8 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50379.9 "Lifeless Legacy (Enrage)" Ability { id: "756D", source: "Marble Dragon" }
+50381.8 "Lifeless Legacy (Enrage)" Ability { id: "9ECD", source: "Marble Dragon" }
 
 ### Magitaur
 # The Haematology Room will be sealed off
-#60000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1454" } window 100000,0
+#60000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1453" } window 100000,0
+
