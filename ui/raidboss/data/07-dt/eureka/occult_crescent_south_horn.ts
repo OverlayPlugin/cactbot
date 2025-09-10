@@ -1359,8 +1359,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Pronged Passage Dense Darkness',
       // TODO: Check for Phantom Time Mage Buff?
+      // NOTE: will trigger for both north/south bridge by default
       type: 'StartsUsing',
-      netRegex: { source: 'Tower Abyss', id: 'A3A8', capture: false },
+      netRegex: { source: 'Tower Abyss', id: 'A3A8', capture: true },
       promise: async (data, matches) => {
         const combatants = (await callOverlayHandler({
           call: 'getCombatants',
@@ -1395,7 +1396,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, matches, output) => {
         if (data.prongedPassageActLoc[matches.sourceId] === 'north')
           return output.northAoEDispel!();
-        if (data.prongedPassageActLoc[matches.sourceId] === 'north')
+        if (data.prongedPassageActLoc[matches.sourceId] === 'south')
           return output.southAoEDispel!();
       },
       outputStrings: {
