@@ -25,6 +25,9 @@ export interface Data extends RaidbossData {
   deadStarsLiquifiedTriton: number[];
   deadStarsSnowballTetherDirNum?: number;
   deadStarsSnowballTetherCount: number;
+  prongedPassageActLoc: { [id: string]: string };
+  prongedPassageIdolCastCount: { [id: string]: number };
+  marbleDragonDelugeTargets: string[];
 }
 
 // List of events:
@@ -73,6 +76,10 @@ const headMarkerData = {
   'deadStarsSnowballTether': '00F6',
   // Dead Stars snowball tether
   'deadStarsSnowballTether2': '0001',
+  // Tower Progenitor and Tower Progenitrix Punishing Pounce Stack
+  'prongedPassageStack': '0064',
+  // Marble Dragon tankbuster from Dread Deluge
+  'marbleDragonTankbuster': '00DA',
 } as const;
 
 // Occult Crescent Forked Tower: Blood Demon Tablet consts
@@ -82,6 +89,9 @@ const demonTabletCenterY = 379;
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
+
+// Occult Crescent Forked Tower: Pronged Passage consts
+const prongedPassageCenterY = 315;
 
 const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
@@ -140,8 +150,24 @@ const triggerSet: TriggerSet<Data> = {
     deadStarsLiquifiedNereid: [],
     deadStarsLiquifiedTriton: [],
     deadStarsSnowballTetherCount: 0,
+    prongedPassageActLoc: {},
+    prongedPassageIdolCastCount: {
+      'north': 0,
+      'south': 0,
+    },
+    marbleDragonDelugeTargets: [],
   }),
   resetWhenOutOfCombat: false,
+  timelineTriggers: [
+    {
+      id: 'Occult Crescent Marble Dragon Draconiform Motion Bait',
+      regex: /Draconiform Motion/,
+      beforeSeconds: 5,
+      alertText: {
+        en: 'Bait Cleave',
+      },
+    },
+  ],
   triggers: [
     {
       id: 'Occult Crescent Critical Encounter',
@@ -410,10 +436,9 @@ const triggerSet: TriggerSet<Data> = {
           return -1;
         };
         const playerDirNum = getSide(me.PosX);
-        if (playerDirNum === bossDirNum)
-          data.demonTabletIsFrontSide = true;
-        if (playerDirNum !== bossDirNum)
-          data.demonTabletIsFrontSide = false;
+        data.demonTabletIsFrontSide = (playerDirNum === bossDirNum)
+          ? true
+          : false;
       },
       alertText: (data, matches, output) => {
         // First Rotation
@@ -1213,12 +1238,455 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
       },
     },
+   {
+      id: 'Occult Crescent Pronged Passage Paralyze III',
+      // Triggers for both bridges on physical ranged dps
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Bhoot', id: 'A903', capture: false },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Paralyze III: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Paralyze III: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'south';
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          interruptBhoot: {
+            en: 'Interrupt Bhoot',
+          },
+          northInterrupt: {
+            en: 'North: Interrupt Bhoot',
+          },
+          southInterrupt: {
+            en: 'South: Interrupt Bhoot',
+          },
+        };
+        // Tanks have 3y interrupt, only call about actor on their platform
+        if (data.CanSilence() && data.role === 'tank') {
+          if (data.prongedPassageActLoc[matches.sourceId] === data.prongedPassageActLoc[data.me])
+            return { alarmText: output.interruptBhoot!() };
+        }
+
+        // Physical Ranged DPS can reach both platforms
+        if (data.CanSilence() && data.role !== 'tank') {
+          if (data.prongedPassageActLoc[matches.sourceId] === 'north')
+            return { infoText: output.northInterrupt!() };
+          if (data.prongedPassageActLoc[matches.sourceId] === 'south')
+            return { infoText: output.southInterrupt!() };
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Arcane Spear',
+      // Floating spears appear and light up 4 rows on each bridge
+      // Tanks need to be in front
+      // Phantom Samurai with Shirahadori can also block
+      // A441 in first two sections, A6F4 in last section
+      // A441 affects north/south bridge at different times
+      type: 'StartsUsing',
+      netRegex: { source: 'Trap', id: 'A441', capture: true },
+      suppressSeconds: 1,
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Arcane Spear: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Arcane Spear: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'south';
+      },
+      alertText: (data, matches, output) => {
+        if (data.prongedPassageActLoc[matches.sourceId] === data.prongedPassageActLoc[data.me])
+          return output.wildChargeEast!();
+      },
+      outputStrings: {
+        wildChargeEast: {
+          en: 'Wild Charge (East), Stack in a Row',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Dense Darkness',
+      // TODO: Check for Phantom Time Mage Buff?
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Abyss', id: 'A3A8', capture: false },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Dense Darkness: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Dense Darkness: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'south';
+      },
+      infoText: (data, matches, output) => {
+        if (data.prongedPassageActLoc[matches.sourceId] === 'north')
+          return output.northAoEDispel!();
+        if (data.prongedPassageActLoc[matches.sourceId] === 'north')
+          return output.southAoEDispel!();
+      },
+      outputStrings: {
+        northAoEDispel: {
+          en: 'North: AoE (Dispel if Possible)',
+        },
+        southAoEDispel: {
+          en: 'South: AoE (Dispel if Possible)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Ancient Aero III',
+      // TODO: Check for Phantom Bard Buff?
+      // 6 Tower Idols cast Ancient Aero III at different times
+      // Must interrupt with Romeo's Ballad all 6 at same time
+      // This will count until all 12 have started casting
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Idol', id: 'A61F', capture: true },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Ancient Aero III: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Ancient Aero III: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        const bridge = (actor.PosY < prongedPassageCenterY) ? 'north' : 'south';
+        // Ignore actors on other bridge as it's not realistic to stop them
+        if (data.prongedPassageActLoc[data.me] !== bridge)
+          return;
+        data.prongedPassageIdolCastCount[bridge] = (data.prongedPassageIdolCastCount[bridge] ?? 0) + 1;
+      },
+      infoText: (data, _matches, output) => {
+        const myBridge = data.prongedPassageActLoc[data.me];
+        if (myBridge !== undefined && data.prongedPassageIdolCastCount[myBridge] === 6) {
+          // Clear data to prevent second firing
+          data.prongedPassageIdolCastCount = {};
+          return output.romeo!();
+        }
+      },
+      outputStrings: {
+        romeo: {
+            en: 'Romeo\'s Ballad (if possible)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Close Call to Detonate / Far Cry to Detonate',
+      // Tower Progenitrix casts A620 / A622
+      // Tower Progenitor casts A621 / A623
+      // Both adds also get a tether and a buff describing the ability
+      // Only need to capture one as it requires both adds to cast
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Progenitrix', id: ['A620', 'A622'], capture: true },
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Close Call to Detonate / Far Cry to Detonat: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          topApart: {
+            en: 'Top row (bosses apart)',
+          },
+          bottomApart: {
+            en: 'Bottom row (bosses apart)',
+          },
+          bossesApart: {
+            en: 'Move bosses apart',
+          },
+          topTogether: {
+            en: 'Top row (bosses together)',
+          },
+          bottomTogether: {
+            en: 'Bottom row (bosses together)',
+          },
+          bossesTogether: {
+            en: 'Move bosses together',
+          },
+        };
+        const myBridge = data.prongedPassageActLoc[data.me];
+
+        // Close to Detonate => Bosses Apart
+        if (matches.id === 'A620') {
+          if (myBridge === 'north') {
+            if (data.role === 'tank')
+              return { alertText: output.topApart!() };
+            return { infoText: output.topApart!() };
+          }
+          if (myBridge === 'south') {
+            if (data.role === 'tank')
+              return { alertText: output.bottomApart!() };
+            return { infoText: output.bottomApart!() };
+          }
+          return { infoText: output.bossesApart!() };
+        }
+
+        // Far to Detonate => Bosses Together
+        if (myBridge === 'north') {
+          if (data.role === 'tank')
+            return { alertText: output.bottomTogether!() };
+          return { infoText: output.bottomTogether!() };
+        }
+        if (myBridge === 'south') {
+          if (data.role === 'tank')
+            return { alertText: output.topTogether!() };
+          return { infoText: output.topTogether!() };
+        }
+        return { infoText: output.bossesTogether!() };
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Arcane Spear 2',
+      // Floating spears appear and light up 4 rows on each bridge
+      // Tanks need to be in front
+      // Phantom Samurai with Shirahadori can also block
+      // A441 in first two sections, A6F4 in last section
+      // A6F4 affects north/south bridge at same times
+      type: 'StartsUsing',
+      netRegex: { source: 'Trap', id: 'A6F4', capture: false },
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.wildChargeEast!(),
+      outputStrings: {
+        wildChargeEast: {
+          en: 'Wild Charge (East), Stack in a Row',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Bombshell Drop',
+      type: 'StartsUsing',
+      netRegex: { source: ['Tower Progenitrix', 'Tower Progenitor'], id: ['A626', 'A627'], capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.pullBossAway!();
+        return output.killBombs!();
+      },
+      outputStrings: {
+        pullBossAway: {
+          en: 'Pull boss away from bombs,'
+        },
+        killBombs: {
+          en: 'Kill Bombs',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Punishing Pounce',
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.prongedPassageStack], capture: true },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Punishing Pounce: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [matches.target],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Punishing Pounce: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.target] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.target] = 'south';
+      },
+      infoText: (data, matches, output) => {
+        if (data.prongedPassageActLoc[matches.target] === data.prongedPassageActLoc[data.me])
+          return output.stackOnPlayer!({ player: data.party.member(matches.target) });
+      },
+      outputStrings: {
+        stackOnPlayer: Outputs.stackOnPlayer,
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Star',
+      // A5E9 Imitation Star is a 4.7s cast
+      // 9ECC Imitation Star damage casts happen 1.8 to 2.9s after
+      // This cast also applies a 15s bleed called Bleeding (828)
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: 'A5E9', capture: false },
+      response: Responses.bleedAoe(),
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Draconiform Motion',
+      // Boss turns to face random player and casts 77C1 Draconiform Motion
+      // This is a 3.7s that coincides with these 4.5s casts:
+      // 77E6 Draconiform Motion (knockback cleave fromm tail)
+      // 77E5 Draconiform Motion (knockback cleave from head)
+      // Getting hit also applies D96 Thrice-come Ruin debuff
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '77C1', capture: false },
+      response: Responses.goSides(),
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Dread Deluge',
+      // Tankbuster targets one tank in each alliance party, 6 tanks total
+      // Applies a heavy bleed to target
+      // TODO: Determine if they are in player's party to call just that name
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.marbleDragonTankbuster], capture: true },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tankBusterBleeds: {
+            en: 'Tankbuster Bleeds',
+          },
+          tankBusterBleedOnYou: {
+            en: 'Tankbuster bleed on YOU',
+          },
+        };
+        data.marbleDragonDelugeTargets.push(matches.target);
+        if (data.marbleDragonDelugeTargets.length < 6)
+          return;
+
+        const target1 = data.marbleDragonDelugeTargets[0];
+        const target2 = data.marbleDragonDelugeTargets[1];
+        const target3 = data.marbleDragonDelugeTargets[2];
+        const target4 = data.marbleDragonDelugeTargets[3];
+        const target5 = data.marbleDragonDelugeTargets[4];
+        const target6 = data.marbleDragonDelugeTargets[6];
+        if (
+          data.me === target1 || data.me === target2 || data.me === target3 ||
+          data.me === target4 || data.me === target5 || data.me === target6
+        )
+          return { alertText: output.tankBusterBleedOnYou!() };
+        if (data.role === 'tank' || data.role === 'healer')
+          return { alertText: output.tankBusterBleeds!() };
+        return { infoText: output.tankBusterBleeds!() };
+      },
+      run: (data) => {
+        if (data.marbleDragonDelugeTargets.length === 6)
+          data.marbleDragonDelugeTargets = [];
+      },
+    },
   ],
   timelineReplace: [
     {
       'locale': 'en',
       'replaceText': {
         'Vertical Crosshatch/Horizontal Crosshatch': 'Vertical/Horizontal Crosshatch',
+        'Ray of Dangers Near / Ray of Expulsion Afar': 'Ray Near/Far',
+        'Demonograph of Dangers Near / Demonograph of Expulsion Afar': 'Deomograph Near/Far',
+        'Rotate Right / Rotate Left': 'Rotate Left/Right',
+        'Cometeor of Dangers Near / Cometeor of Expulsion Afar': 'Cometeor Near/Far',
+        'Gravity of Dangers Near / Gravity of Expulsion Afar': 'Gravity Near/Far',
+        'Close Call to Detonate / Far Cry to Detonate': 'Close/Far to Detonate',
       },
     },
     {
