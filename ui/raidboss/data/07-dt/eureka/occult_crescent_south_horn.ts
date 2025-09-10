@@ -163,8 +163,11 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Marble Dragon Draconiform Motion Bait',
       regex: /Draconiform Motion/,
       beforeSeconds: 5,
-      alertText: {
-        en: 'Bait Cleave',
+      alertText: (_data, _matches, output) => output.baitCleave!(),
+      outputStrings: {
+        baitCleave: {
+          en: 'Bait Cleave',
+        },
       },
     },
   ],
@@ -1238,11 +1241,11 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
       },
     },
-   {
+    {
       id: 'Occult Crescent Pronged Passage Paralyze III',
       // Triggers for both bridges on physical ranged dps
       type: 'StartsUsing',
-      netRegex: { source: 'Tower Bhoot', id: 'A903', capture: false },
+      netRegex: { source: 'Tower Bhoot', id: 'A903', capture: true },
       promise: async (data, matches) => {
         const combatants = (await callOverlayHandler({
           call: 'getCombatants',
@@ -1442,7 +1445,8 @@ const triggerSet: TriggerSet<Data> = {
         // Ignore actors on other bridge as it's not realistic to stop them
         if (data.prongedPassageActLoc[data.me] !== bridge)
           return;
-        data.prongedPassageIdolCastCount[bridge] = (data.prongedPassageIdolCastCount[bridge] ?? 0) + 1;
+        data.prongedPassageIdolCastCount[bridge] = (data.prongedPassageIdolCastCount[bridge] ?? 0) +
+          1;
       },
       infoText: (data, _matches, output) => {
         const myBridge = data.prongedPassageActLoc[data.me];
@@ -1454,7 +1458,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         romeo: {
-            en: 'Romeo\'s Ballad (if possible)',
+          en: 'Romeo\'s Ballad (if possible)',
         },
       },
     },
@@ -1555,7 +1559,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Pronged Passage Bombshell Drop',
       type: 'StartsUsing',
-      netRegex: { source: ['Tower Progenitrix', 'Tower Progenitor'], id: ['A626', 'A627'], capture: false },
+      netRegex: {
+        source: ['Tower Progenitrix', 'Tower Progenitor'],
+        id: ['A626', 'A627'],
+        capture: false
+      },
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
         if (data.role === 'tank')
@@ -1564,7 +1572,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         pullBossAway: {
-          en: 'Pull boss away from bombs,'
+          en: 'Pull boss away from bombs',
         },
         killBombs: {
           en: 'Kill Bombs',
