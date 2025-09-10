@@ -1562,7 +1562,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: {
         source: ['Tower Progenitrix', 'Tower Progenitor'],
         id: ['A626', 'A627'],
-        capture: false
+        capture: false,
       },
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
