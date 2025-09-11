@@ -28,6 +28,8 @@ export interface Data extends RaidbossData {
   prongedPassageActLoc: { [id: string]: string };
   prongedPassageIdolCastCount: { [id: string]: number };
   marbleDragonDelugeTargets: string[];
+  bossDir?: number;
+  playerDir?: number;
 }
 
 // List of events:
@@ -1682,6 +1684,111 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         if (data.marbleDragonDelugeTargets.length === 6)
           data.marbleDragonDelugeTargets = [];
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Unsealed Aura',
+      // A264 Unsealed Aura cast
+      // 9BE7 Unsealed Aura damage
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A264', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Magitaur Unseal Tank Autos',
+      // 3x near/far tank autos starts 5s after Unseal
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A264', capture: false },
+      infoText: (_data, _matches, output) => output.tankAutos!(),
+      outputStrings: {
+        tankAutos: {
+          en: 'Tank autos soon (3 Near/Far)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow',
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: true },
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'A247')
+          return output.out!();
+        return output.in!();
+      },
+      outputStrings: {
+        out: Outputs.out,
+        in: Outputs.in,
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Forked Fury',
+      // Hits 3 nearest and 3 furthest players with tankbuster
+      // TODO: Determine close/far autos from boss buff?
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A265', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.nearFarTankCleave!();
+        return output.avoidCleave!();
+      },
+      outputStrings: {
+        avoidCleave: {
+          en: 'Be on boss hitbox (avoid tank cleaves)',
+          de: 'Geh auf den Kreis vom Boss (vermeide Tank Cleaves)',
+          fr: 'Sur la hitbox (évitez les tanks cleaves)',
+          ja: 'ボス背面のサークル上に',
+          cn: '站在目标圈上 (远离坦克死刑)',
+          ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
+        },
+        nearFarTankCleave: {
+          en: 'Near and far tank cleave => 2 tank autos',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Aura Burst / Holy Canisters',
+      // A25A Aura Burst (Yellow) cast or A25B Holy (Blue) cast
+      // Tell for which canisters to focus
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: ['A25A', 'A25B'], capture: false },
+      infoText: (_data, matches, output) => {
+        if (matches.id === 'A25A')
+          return output.yellowCanisters!();
+        return output.blueCanisters!();
+      },
+      outputStrings: {
+        blueCanisters: {
+          en: 'Attack Blue Canisters (Lance)',
+        },
+        yellowCanisters: {
+          en: 'Attack Yellow Canisters (Axe)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Aura Burst / Holy',
+      // This is a long 18.7s cast + 1s damage
+      // A25A Aura Burst (Yellow) cast or A25B Holy (Blue) cast
+      // 9BE5 Aura Burst damage or 9BE6 Holy damage
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: ['A25A', 'A25B'], capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Magitaur Sage\'s Staff',
+      // Boss spawns three staves that will fire an untelegraphed line at nearest target
+      // A25F Mana Expulsion is the untelegraphed line stack damage 14.4s after
+      // There is an In/Out dodge before Mana Expulsion
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A25E', capture: false },
+      delaySeconds: 8.5,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.lineStackStaff!(),
+      outputStrings: {
+        lineStackStaff: {
+          en: 'Line stack at staff',
+        },
       },
     },
   ],
