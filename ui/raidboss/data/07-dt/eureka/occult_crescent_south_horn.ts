@@ -1750,7 +1750,7 @@ const triggerSet: TriggerSet<Data> = {
       // A25A Aura Burst (Yellow) cast or A25B Holy (Blue) cast
       // Tell for which canisters to focus
       type: 'StartsUsing',
-      netRegex: { source: 'Magitaur', id: ['A25A', 'A25B'], capture: false },
+      netRegex: { source: 'Magitaur', id: ['A25A', 'A25B'], capture: true },
       infoText: (_data, matches, output) => {
         if (matches.id === 'A25A')
           return output.yellowCanisters!();
@@ -1803,6 +1803,7 @@ const triggerSet: TriggerSet<Data> = {
         'Cometeor of Dangers Near / Cometeor of Expulsion Afar': 'Cometeor Near/Far',
         'Gravity of Dangers Near / Gravity of Expulsion Afar': 'Gravity Near/Far',
         'Close Call to Detonate / Far Cry to Detonate': 'Close/Far to Detonate',
+        'Critical Axeblow / Critical Lanceblow': 'Critical Axe/Lanceblow',
       },
     },
     {
