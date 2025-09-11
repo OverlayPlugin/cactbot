@@ -927,7 +927,7 @@ hideall "--sync--"
 # The Haematology Room will be sealed off
 #60000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1453" } window 100000,0
 60007.1 "--sync--" StartsUsing { id: "A264", source: "Magitaur" } window 100000,0
-60011.3 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1.0
+60011.3 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
 60027.4 "Unseal" Ability { id: "A241", source: "Magitaur" }
 60042.0 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
 60048.1 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
@@ -953,7 +953,7 @@ hideall "--sync--"
 60106.0 "Arcane Reaction" Ability { id: "A25D", source: "Universal Empowerment Conduit" }
 60107.0 "Arcane Recoil" #Ability { id: "A25C", source: "Magitaur" }
 60107.8 "Arcane Recoil" #Ability { id: "A25C", source: "Axe Empowerment Conduit" }
-60112.2 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1.0
+60112.2 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
 60126.4 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
 60133.0 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
 60141.4 "Critical Axeblow / Critical Lanceblow" Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
@@ -962,7 +962,7 @@ hideall "--sync--"
 60150.4 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
 60158.6 "Critical Axeblow / Critical Lanceblow" Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
 60164.8 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
-60168.8 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1.0
+60168.8 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
 60182.9 "Unseal" Ability { id: "A241", source: "Magitaur" }
 60195.5 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
 60202.1 "Rune Axe" Ability { id: "A24F", source: "Magitaur" }
@@ -987,7 +987,7 @@ hideall "--sync--"
 60255.8 "Arcane Recoil" #Ability { id: "A25C", source: "Axe Empowerment Conduit" }
 60257.5 "Arcane Recoil" #Ability { id: "A25C", source: "Axe Empowerment Conduit" }
 60258.2 "Arcane Reaction" Ability { id: "A25D", source: "Universal Empowerment Conduit" }
-60266.1 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1.0
+60266.1 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
 60276.0 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
 60276.3 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
 60278.3 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
@@ -1025,7 +1025,7 @@ hideall "--sync--"
 60361.9 "Lancelight 11" #Ability { id: "A259", source: "Luminous Lance" }
 60363.9 "Lancelight 12" #Ability { id: "A258", source: "Luminous Lance" }
 60365.3 "Critical Axeblow / Critical Lanceblow" Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
-60374.6 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1.0
+60374.6 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
 60384.2 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
 
 60394.1 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
@@ -1033,7 +1033,7 @@ hideall "--sync--"
 60407.1 "Arcane Reaction" Ability { id: "A25D", source: "Magitaur" }
 60413.1 "Arcane Recoil" #Ability { id: "A25C", source: "Lance Empowerment Conduit" }
 60414.1 "Arcane Recoil" #Ability { id: "A25C", source: "Magitaur" }
-60414.5 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1.0
+60414.5 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
 60424.4 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
 60424.7 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
 60426.7 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
