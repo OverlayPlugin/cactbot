@@ -426,19 +426,19 @@ const triggerSet: TriggerSet<Data> = {
         }
         const bossDirNum = Directions.hdgTo4DirNum(actor.Heading);
         const getSide = (
-          x: number,
+          y: number,
         ): number => {
           // First Rotation is always N or S
           // N Platform
-          if (x < demonTabletCenterY)
+          if (y < demonTabletCenterY)
             return 0;
           // S Platform
-          if (x > demonTabletCenterY)
+          if (y > demonTabletCenterY)
             return 2;
 
           return -1;
         };
-        const playerDirNum = getSide(me.PosX);
+        const playerDirNum = getSide(me.PosY);
         data.demonTabletIsFrontSide = (playerDirNum === bossDirNum)
           ? true
           : false;
