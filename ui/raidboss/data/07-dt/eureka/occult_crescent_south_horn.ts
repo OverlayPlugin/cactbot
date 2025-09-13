@@ -1743,7 +1743,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.getHitByIceExplosion!(),
       outputStrings: {
         getHitByIceExplosion: {
-          en: 'Get hit by ice cxplosion',
+          en: 'Get hit by ice explosion',
         },
       },
     },
