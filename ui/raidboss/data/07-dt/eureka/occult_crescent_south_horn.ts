@@ -1151,8 +1151,9 @@ const triggerSet: TriggerSet<Data> = {
       // Each boss starts a 4.7s A605 (Slice 'n' Dice) cast on themselves which comes with a607 on a targeted player
       // ~0.13s after A605, each boss casts A606 that does the line aoe damage
       // Meanwhile, boss targets main target with tankbuster cleave A602 Slice 'n' Dice
+      // NOTE: Logs seem to use wrong source names occasionally such as Frozen Phobos
       type: 'Ability',
-      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A607', capture: true },
+      netRegex: { source: ['Phobos', 'Nereid', 'Triton', 'Frozen Phobos'], id: 'A607', capture: true },
       delaySeconds: 0.1, // Delay for Tankbuster target accummulation
       response: (data, matches, output) => {
         // cactbot-builtin-response
