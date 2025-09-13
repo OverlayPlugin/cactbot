@@ -795,6 +795,20 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Dead Stars Three-Body Problem',
+      // Each boss casts this, logs show A5B5 as 'Three-Body Probl─'
+      // Only 'Three-Body Problem' text is visible in castbars
+      // Primordial Chaos: A5B5 by Phobos into A9BD from Nereid + A5B9 Triton
+      // Icebound Buffoon: A5B5 by Nereid into A5B8 from Phobos
+      // Blazing Belligerent: A5B5 by Triton into A5B7 from Phobos
+      type: 'StartsUsing',
+      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A5B5', capture: false },
+      infoText: (_data, _matches, output) => output.outOfHitbox!(),
+      outputStrings: {
+        outOfHitbox: Outputs.outOfHitbox,
+      },
+    },
+    {
       id: 'Occult Crescent Dead Stars Primordial Chaos',
       // Each boss targets ground, avoid getting hit by more than one aoe
       // A5D9 Primordial Chaos castbar
