@@ -164,7 +164,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Marble Dragon Draconiform Motion Bait',
       regex: /Draconiform Motion/,
-      beforeSeconds: 5,
+      beforeSeconds: 7,
       alertText: (_data, _matches, output) => output.baitCleave!(),
       outputStrings: {
         baitCleave: {
@@ -1627,11 +1627,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Marble Dragon Imitation Star',
-      // A5E9 Imitation Star is a 4.7s cast
+      // 77F1 Imitation Star is a 4.7s cast
       // 9ECC Imitation Star damage casts happen 1.8 to 2.9s after
       // This cast also applies a 15s bleed called Bleeding (828)
       type: 'StartsUsing',
-      netRegex: { source: 'Marble Dragon', id: 'A5E9', capture: false },
+      netRegex: { source: 'Marble Dragon', id: '77F1', capture: false },
       response: Responses.bleedAoe(),
     },
     {
