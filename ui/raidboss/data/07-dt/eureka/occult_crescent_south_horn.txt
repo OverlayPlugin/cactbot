@@ -769,7 +769,7 @@ hideall "--sync--"
 40197.0 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
 40197.7 "Bombshell Drop" #Ability { id: "A627", source: "Tower Progenitor" }
 40197.7 "Bombshell Drop" Ability { id: "A626", source: "Tower Progenitrix" }
-40731.5 "--adds--"
+40197.7 "--adds--"
 40217.1 "Arcane Spear" #Ability { id: "A6F4", source: "Trap" }
 40217.1 "Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623"], source: "Tower Progenitor" }
 40217.1 "Close Call to Detonate / Far Cry to Detonate" Ability { id: ["A620", "A622"], source: "Tower Progenitrix" }
@@ -854,7 +854,7 @@ hideall "--sync--"
 
 # Add phase (clockwise or counterclockwise pattern, start timing varies by ~2s)
 # TODO: Get Tower spawn times, debuffs and damage from missed tower currently not logged
-50320.2 "Withering Eternity" Ability { id: "76D3", source: "Marble Dragon" } window 120,5
+50320.2 "Withering Eternity" Ability { id: "76D3", source: "Marble Dragon" } window 320,5
 50322.2 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
 50322.2 "--untargetable--"
 50322.2 "--ice golems--"
