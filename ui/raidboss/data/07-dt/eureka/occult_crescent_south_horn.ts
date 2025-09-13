@@ -1,3 +1,4 @@
+import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
@@ -28,6 +29,7 @@ export interface Data extends RaidbossData {
   prongedPassageActLoc: { [id: string]: string };
   prongedPassageIdolCastCount: { [id: string]: number };
   marbleDragonDelugeTargets: string[];
+  marbleDragonHasWickedWater: boolean;
   bossDir?: number;
   playerDir?: number;
 }
@@ -82,6 +84,8 @@ const headMarkerData = {
   'prongedPassageStack': '0064',
   // Marble Dragon tankbuster from Dread Deluge
   'marbleDragonTankbuster': '00DA',
+  // Marble Dragon red pinwheel markers from Wicked Water
+  'marbleDragonWickedWater': '0017',
 } as const;
 
 // Occult Crescent Forked Tower: Blood Demon Tablet consts
@@ -158,6 +162,7 @@ const triggerSet: TriggerSet<Data> = {
       'south': 0,
     },
     marbleDragonDelugeTargets: [],
+    marbleDragonHasWickedWater: false,
   }),
   resetWhenOutOfCombat: false,
   timelineTriggers: [
@@ -1165,7 +1170,6 @@ const triggerSet: TriggerSet<Data> = {
       // Each boss starts a 4.7s A605 (Slice 'n' Dice) cast on themselves which comes with a607 on a targeted player
       // ~0.13s after A605, each boss casts A606 that does the line aoe damage
       // Meanwhile, boss targets main target with tankbuster cleave A602 Slice 'n' Dice
-      // NOTE: Logs seem to use wrong source names occasionally such as Frozen Phobos
       type: 'Ability',
       netRegex: {
         source: ['Phobos', 'Nereid', 'Triton', 'Frozen Phobos'],
@@ -1703,6 +1707,63 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         if (data.marbleDragonDelugeTargets.length === 6)
           data.marbleDragonDelugeTargets = [];
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Wicked Water',
+      // Boss casts 77E7 Wicked Water, several players get marked
+      // After cast end, marked players affected the following:
+      // 3AA Throttle (46s)
+      // 10EE Wicked Water (46s)
+      // An Imitation Blizzard hit changes Wicked Water into 10EF Gelid Gaol
+      // Players must be broken out of the gaol to clear the Throttle debuff
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.marbleDragonWickedWater], capture: true },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: 20, // Time until reminder
+      infoText: (_data, _matches, output) => output.wickedWaterOnYou!(),
+      run: (data) => data.marbleDragonHasWickedWater = true,
+      outputStrings: {
+        wickedWaterOnYou: {
+          en: 'Wicked Water on YOU',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Wicked Water Reminder',
+      // Need to avoid getting hit by multiple Imitation Blizzards
+      // Cross Imitation Blizzards should be avoided
+      // Cross Imitation Blizzards resolve at ~23s remaining on the debuff
+      // Needs some delay to not conflict with Draconiform Motion callouts
+      // 20s is ~2s after Draconiform Motion and gives ~3s to get hit
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.marbleDragonWickedWater], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 20,
+      alertText: (_data, _matches, output) => output.getHitByIceExplosion!(),
+      outputStrings: {
+        getHitByIceExplosion: {
+          en: 'Get hit by ice cxplosion',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Gelid Gaol',
+      // If capture someone in Gaol, trigger break Gaols
+      type: 'GainsEffect',
+      netRegex: { effectId: '10EF', capture: false },
+      condition: (data) => {
+        // Only output for those that do not have Wicked Water
+        if (data.marbleDragonHasWickedWater)
+          return false;
+        return true;
+      },
+      suppressSeconds: 47, // Duration of Wicked Water + 1s
+      alertText: (_data, _matches, output) => output.breakGaol!(),
+      outputStrings: {
+        breakGaol: {
+          en: 'Break Gaols',
+        },
       },
     },
     {
