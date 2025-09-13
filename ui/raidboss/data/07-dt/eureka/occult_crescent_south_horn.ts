@@ -1153,7 +1153,11 @@ const triggerSet: TriggerSet<Data> = {
       // Meanwhile, boss targets main target with tankbuster cleave A602 Slice 'n' Dice
       // NOTE: Logs seem to use wrong source names occasionally such as Frozen Phobos
       type: 'Ability',
-      netRegex: { source: ['Phobos', 'Nereid', 'Triton', 'Frozen Phobos'], id: 'A607', capture: true },
+      netRegex: {
+        source: ['Phobos', 'Nereid', 'Triton', 'Frozen Phobos'],
+        id: 'A607',
+        capture: true,
+      },
       delaySeconds: 0.1, // Delay for Tankbuster target accummulation
       response: (data, matches, output) => {
         // cactbot-builtin-response
