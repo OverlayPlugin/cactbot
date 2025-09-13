@@ -835,7 +835,7 @@ hideall "--sync--"
 50090.4 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" }
 50090.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
 50094.0 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
-50094.3 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50094.3 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
 50097.5 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" } forcejump "oc-md-p1-end"
 
 # Pattern 1 - circles first
@@ -843,7 +843,7 @@ hideall "--sync--"
 50190.4 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
 50190.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
 50194.0 "Imitation Blizzard (circles + cross)" Ability { id: "7614", source: "Marble Dragon" }
-50193.3 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50194.3 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
 50197.5 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
 
 50197.5 label "oc-md-p1-end"
@@ -921,7 +921,7 @@ hideall "--sync--"
 50604.1 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
 50604.1 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
 50609.3 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-50610.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }	
+50610.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
 50612.8 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
 50613.3 "Ball of Ice" Ability { id: "A716", source: "Marble Dragon" }
 50616.5 "Imitation Blizzard" #Ability { id: "7615", source: "Marble Dragon" } # 5 of these
