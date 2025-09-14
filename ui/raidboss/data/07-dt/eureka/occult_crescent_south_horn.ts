@@ -83,6 +83,7 @@ const headMarkerData = {
   // Tower Progenitor and Tower Progenitrix Punishing Pounce Stack
   'prongedPassageStack': '0064',
   // Marble Dragon tankbuster from Dread Deluge
+  // Neo Garula tankbuster from Squash in Noise Complaint CE
   'marbleDragonTankbuster': '00DA',
   // Marble Dragon red pinwheel markers from Wicked Water
   'marbleDragonWickedWater': '0017',
@@ -1675,6 +1676,12 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Determine if they are in player's party to call just that name
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.marbleDragonTankbuster], capture: true },
+      condition: (data) => {
+        // Prevent triggering in CEs such as Noise Complaint
+        if (data.ce !== undefined)
+          return false;
+        return true;
+      },
       response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
@@ -1759,9 +1766,9 @@ const triggerSet: TriggerSet<Data> = {
         return true;
       },
       suppressSeconds: 47, // Duration of Wicked Water + 1s
-      alertText: (_data, _matches, output) => output.breakGaol!(),
+      alertText: (_data, _matches, output) => output.breakGaols!(),
       outputStrings: {
-        breakGaol: {
+        breakGaols: {
           en: 'Break Gaols',
         },
       },
