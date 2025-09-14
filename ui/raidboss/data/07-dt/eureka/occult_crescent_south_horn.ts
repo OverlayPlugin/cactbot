@@ -28,6 +28,7 @@ export interface Data extends RaidbossData {
   deadStarsSnowballTetherCount: number;
   prongedPassageActLoc: { [id: string]: string };
   prongedPassageIdolCastCount: { [id: string]: number };
+  marbleDragonTankbusterFilter: boolean;
   marbleDragonDelugeTargets: string[];
   marbleDragonHasWickedWater: boolean;
   bossDir?: number;
@@ -84,6 +85,7 @@ const headMarkerData = {
   'prongedPassageStack': '0064',
   // Marble Dragon tankbuster from Dread Deluge
   // Neo Garula tankbuster from Squash in Noise Complaint CE
+  // Hinkypunk tankbuster from Dread Dive in Flame of Dusk CE
   'marbleDragonTankbuster': '00DA',
   // Marble Dragon red pinwheel markers from Wicked Water
   'marbleDragonWickedWater': '0017',
@@ -162,6 +164,7 @@ const triggerSet: TriggerSet<Data> = {
       'north': 0,
       'south': 0,
     },
+    marbleDragonTankbusterFilter: false,
     marbleDragonDelugeTargets: [],
     marbleDragonHasWickedWater: false,
   }),
@@ -1650,6 +1653,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Marble Dragon Tankbuster Filter',
+      // Used to tracker encounter for filtering
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '77F1', capture: false },
+      run: (data) => data.marbleDragonTankbusterFilter = true,
+    },
+    {
       id: 'Occult Crescent Marble Dragon Imitation Star',
       // 77F1 Imitation Star is a 4.7s cast
       // 9ECC Imitation Star damage casts happen 1.8 to 2.9s after
@@ -1677,10 +1687,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.marbleDragonTankbuster], capture: true },
       condition: (data) => {
-        // Prevent triggering in CEs such as Noise Complaint
-        if (data.ce !== undefined)
-          return false;
-        return true;
+        // Prevent triggering in CEs such as Noise Complaint and Flame of Dusk
+        // This also triggers by certain mobs when out of combat
+        return data.marbleDragonTankbusterFilter;
       },
       response: (data, matches, output) => {
         // cactbot-builtin-response
