@@ -1,3 +1,4 @@
+import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
@@ -25,6 +26,13 @@ export interface Data extends RaidbossData {
   deadStarsLiquifiedTriton: number[];
   deadStarsSnowballTetherDirNum?: number;
   deadStarsSnowballTetherCount: number;
+  prongedPassageActLoc: { [id: string]: string };
+  prongedPassageIdolCastCount: { [id: string]: number };
+  marbleDragonTankbusterFilter: boolean;
+  marbleDragonDelugeTargets: string[];
+  marbleDragonHasWickedWater: boolean;
+  bossDir?: number;
+  playerDir?: number;
 }
 
 // List of events:
@@ -73,6 +81,17 @@ const headMarkerData = {
   'deadStarsSnowballTether': '00F6',
   // Dead Stars snowball tether
   'deadStarsSnowballTether2': '0001',
+  // Tower Progenitor and Tower Progenitrix Punishing Pounce Stack
+  'prongedPassageStack': '0064',
+  // Marble Dragon tankbuster from Dread Deluge
+  // Neo Garula tankbuster from Squash in Noise Complaint CE
+  // Hinkypunk tankbuster from Dread Dive in Flame of Dusk CE
+  // Death Claw tankbuster from Dirty Nails in Crawling Death CE
+  // Repaired Lion tankbuster from Scratch in Eternal Watch CE
+  // Crescent Inkstain tankbuster from Amorphic Flail
+  'marbleDragonTankbuster': '00DA',
+  // Marble Dragon red pinwheel markers from Wicked Water
+  'marbleDragonWickedWater': '0017',
 } as const;
 
 // Occult Crescent Forked Tower: Blood Demon Tablet consts
@@ -82,6 +101,9 @@ const demonTabletCenterY = 379;
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
+
+// Occult Crescent Forked Tower: Pronged Passage consts
+const prongedPassageCenterY = 315;
 
 const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
@@ -140,8 +162,29 @@ const triggerSet: TriggerSet<Data> = {
     deadStarsLiquifiedNereid: [],
     deadStarsLiquifiedTriton: [],
     deadStarsSnowballTetherCount: 0,
+    prongedPassageActLoc: {},
+    prongedPassageIdolCastCount: {
+      'north': 0,
+      'south': 0,
+    },
+    marbleDragonTankbusterFilter: false,
+    marbleDragonDelugeTargets: [],
+    marbleDragonHasWickedWater: false,
   }),
   resetWhenOutOfCombat: false,
+  timelineTriggers: [
+    {
+      id: 'Occult Crescent Marble Dragon Draconiform Motion Bait',
+      regex: /Draconiform Motion/,
+      beforeSeconds: 7,
+      alertText: (_data, _matches, output) => output.baitCleave!(),
+      outputStrings: {
+        baitCleave: {
+          en: 'Bait Cleave',
+        },
+      },
+    },
+  ],
   triggers: [
     {
       id: 'Occult Crescent Critical Encounter',
@@ -397,23 +440,22 @@ const triggerSet: TriggerSet<Data> = {
         }
         const bossDirNum = Directions.hdgTo4DirNum(actor.Heading);
         const getSide = (
-          x: number,
+          y: number,
         ): number => {
           // First Rotation is always N or S
           // N Platform
-          if (x < demonTabletCenterY)
+          if (y < demonTabletCenterY)
             return 0;
           // S Platform
-          if (x > demonTabletCenterY)
+          if (y > demonTabletCenterY)
             return 2;
 
           return -1;
         };
-        const playerDirNum = getSide(me.PosX);
-        if (playerDirNum === bossDirNum)
-          data.demonTabletIsFrontSide = true;
-        if (playerDirNum !== bossDirNum)
-          data.demonTabletIsFrontSide = false;
+        const playerDirNum = getSide(me.PosY);
+        data.demonTabletIsFrontSide = (playerDirNum === bossDirNum)
+          ? true
+          : false;
       },
       alertText: (data, matches, output) => {
         // First Rotation
@@ -613,6 +655,17 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Demon Tablet Summon',
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: 'A30D', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Add Positions and Out',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar',
       // A2F6 Gravity of Dangers Near
       // A2F7 Gravity of Expulsion Afar
@@ -642,25 +695,31 @@ const triggerSet: TriggerSet<Data> = {
       // A7E6 Left Hammer (1.5s followup with Slow)
       // A7E7 Right Hammer (1.5s followup with Slow)
       type: 'StartsUsing',
-      netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0', 'A7E6', 'A7E7'], capture: true },
-      response: (_data, matches, output) => {
-        // cactbot-builtin-response
-        output.responseOutputStrings = {
-          left: Outputs.left,
-          leftThenRight: Outputs.leftThenRight,
-          right: Outputs.right,
-          rightThenLeft: Outputs.rightThenLeft,
-        };
-        switch (matches.id) {
-          case 'A7BF':
-            return { infoText: output.rightThenLeft!() };
-          case 'A7C0':
-            return { infoText: output.leftThenRight!() };
-          case 'A7E6':
-            return { alertText: output.right!() };
-          case 'A7E7':
-            return { alertText: output.left!() };
-        }
+      netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0'], capture: true },
+      infoText: (_data, matches, output) => {
+        if (matches.id === 'A7BF')
+          return output.rightThenLeft!();
+        return output.leftThenRight!();
+      },
+      outputStrings: {
+        leftThenRight: Outputs.leftThenRight,
+        rightThenLeft: Outputs.rightThenLeft,
+      },
+    },
+    {
+      id: 'Occult Crescent Tower Manticore Left/Right Hammer Followup',
+      // Cast bar can be interrupted leading to extra calls if using castTime
+      type: 'Ability',
+      netRegex: { source: 'Tower Manticore', id: ['A7BF', 'A7C0'], capture: true },
+      suppressSeconds: 1,
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'A7BF')
+          return output.left!();
+        return output.right!();
+      },
+      outputStrings: {
+        left: Outputs.left,
+        right: Outputs.right,
       },
     },
     {
@@ -745,6 +804,20 @@ const triggerSet: TriggerSet<Data> = {
           data.deadStarsSliceTargets = [];
           data.deadStarsIsSlice2 = true;
         }
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Three-Body Problem',
+      // Each boss casts this, logs show A5B5 as 'Three-Body Probl─'
+      // Only 'Three-Body Problem' text is visible in castbars
+      // Primordial Chaos: A5B5 by Phobos into A9BD from Nereid + A5B9 Triton
+      // Icebound Buffoon: A5B5 by Nereid into A5B8 from Phobos
+      // Blazing Belligerent: A5B5 by Triton into A5B7 from Phobos
+      type: 'StartsUsing',
+      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A5B5', capture: false },
+      infoText: (_data, _matches, output) => output.outOfHitbox!(),
+      outputStrings: {
+        outOfHitbox: Outputs.outOfHitbox,
       },
     },
     {
@@ -1105,7 +1178,11 @@ const triggerSet: TriggerSet<Data> = {
       // ~0.13s after A605, each boss casts A606 that does the line aoe damage
       // Meanwhile, boss targets main target with tankbuster cleave A602 Slice 'n' Dice
       type: 'Ability',
-      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A607', capture: true },
+      netRegex: {
+        source: ['Phobos', 'Nereid', 'Triton', 'Frozen Phobos'],
+        id: 'A607',
+        capture: true,
+      },
       delaySeconds: 0.1, // Delay for Tankbuster target accummulation
       response: (data, matches, output) => {
         // cactbot-builtin-response
@@ -1196,12 +1273,636 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
       },
     },
+    {
+      id: 'Occult Crescent Pronged Passage Paralyze III',
+      // Triggers for both bridges on physical ranged dps
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Bhoot', id: 'A903', capture: true },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Paralyze III: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Paralyze III: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'south';
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          interruptBhoot: {
+            en: 'Interrupt Bhoot',
+          },
+          northInterrupt: {
+            en: 'North: Interrupt Bhoot',
+          },
+          southInterrupt: {
+            en: 'South: Interrupt Bhoot',
+          },
+        };
+        // Tanks have 3y interrupt, only call about actor on their platform
+        if (data.CanSilence() && data.role === 'tank') {
+          if (data.prongedPassageActLoc[matches.sourceId] === data.prongedPassageActLoc[data.me])
+            return { alarmText: output.interruptBhoot!() };
+        }
+
+        // Physical Ranged DPS can reach both platforms
+        if (data.CanSilence() && data.role !== 'tank') {
+          if (data.prongedPassageActLoc[matches.sourceId] === 'north')
+            return { infoText: output.northInterrupt!() };
+          if (data.prongedPassageActLoc[matches.sourceId] === 'south')
+            return { infoText: output.southInterrupt!() };
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Arcane Spear',
+      // Floating spears appear and light up 4 rows on each bridge
+      // Tanks need to be in front
+      // Phantom Samurai with Shirahadori can also block
+      // A441 in first two sections, A6F4 in last section
+      // A441 affects north/south bridge at different times
+      type: 'StartsUsing',
+      netRegex: { source: 'Trap', id: 'A441', capture: true },
+      suppressSeconds: 1,
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Arcane Spear: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Arcane Spear: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'south';
+      },
+      alertText: (data, matches, output) => {
+        if (data.prongedPassageActLoc[matches.sourceId] === data.prongedPassageActLoc[data.me])
+          return output.wildChargeEast!();
+      },
+      outputStrings: {
+        wildChargeEast: {
+          en: 'Wild Charge (East), Stack in a Row',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Dense Darkness',
+      // TODO: Check for Phantom Time Mage Buff?
+      // NOTE: will trigger for both north/south bridge by default
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Abyss', id: 'A3A8', capture: true },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Dense Darkness: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Dense Darkness: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.sourceId] = 'south';
+      },
+      infoText: (data, matches, output) => {
+        if (data.prongedPassageActLoc[matches.sourceId] === 'north')
+          return output.northAoEDispel!();
+        if (data.prongedPassageActLoc[matches.sourceId] === 'south')
+          return output.southAoEDispel!();
+      },
+      outputStrings: {
+        northAoEDispel: {
+          en: 'North: AoE (Dispel if Possible)',
+        },
+        southAoEDispel: {
+          en: 'South: AoE (Dispel if Possible)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Ancient Aero III',
+      // TODO: Check for Phantom Bard Buff?
+      // 6 Tower Idols cast Ancient Aero III at different times
+      // Must interrupt with Romeo's Ballad all 6 at same time
+      // This will count until all 12 have started casting
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Idol', id: 'A61F', capture: true },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Ancient Aero III: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Ancient Aero III: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        const bridge = (actor.PosY < prongedPassageCenterY) ? 'north' : 'south';
+        // Ignore actors on other bridge as it's not realistic to stop them
+        if (data.prongedPassageActLoc[data.me] !== bridge)
+          return;
+        data.prongedPassageIdolCastCount[bridge] = (data.prongedPassageIdolCastCount[bridge] ?? 0) +
+          1;
+      },
+      infoText: (data, _matches, output) => {
+        const myBridge = data.prongedPassageActLoc[data.me];
+        if (myBridge !== undefined && data.prongedPassageIdolCastCount[myBridge] === 6) {
+          // Clear data to prevent second firing
+          data.prongedPassageIdolCastCount = {};
+          return output.romeo!();
+        }
+      },
+      outputStrings: {
+        romeo: {
+          en: 'Romeo\'s Ballad (if possible)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Close Call to Detonate / Far Cry to Detonate',
+      // Tower Progenitrix casts A620 / A622
+      // Tower Progenitor casts A621 / A623
+      // Both adds also get a tether and a buff describing the ability
+      // Only need to capture one as it requires both adds to cast
+      type: 'StartsUsing',
+      netRegex: { source: 'Tower Progenitrix', id: ['A620', 'A622'], capture: true },
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Close Call to Detonate / Far Cry to Detonat: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          topApart: {
+            en: 'Top row (bosses apart)',
+          },
+          bottomApart: {
+            en: 'Bottom row (bosses apart)',
+          },
+          bossesApart: {
+            en: 'Move bosses apart',
+          },
+          topTogether: {
+            en: 'Top row (bosses together)',
+          },
+          bottomTogether: {
+            en: 'Bottom row (bosses together)',
+          },
+          bossesTogether: {
+            en: 'Move bosses together',
+          },
+        };
+        const myBridge = data.prongedPassageActLoc[data.me];
+
+        // Close to Detonate => Bosses Apart
+        if (matches.id === 'A620') {
+          if (myBridge === 'north') {
+            if (data.role === 'tank')
+              return { alertText: output.topApart!() };
+            return { infoText: output.topApart!() };
+          }
+          if (myBridge === 'south') {
+            if (data.role === 'tank')
+              return { alertText: output.bottomApart!() };
+            return { infoText: output.bottomApart!() };
+          }
+          return { infoText: output.bossesApart!() };
+        }
+
+        // Far to Detonate => Bosses Together
+        if (myBridge === 'north') {
+          if (data.role === 'tank')
+            return { alertText: output.bottomTogether!() };
+          return { infoText: output.bottomTogether!() };
+        }
+        if (myBridge === 'south') {
+          if (data.role === 'tank')
+            return { alertText: output.topTogether!() };
+          return { infoText: output.topTogether!() };
+        }
+        return { infoText: output.bossesTogether!() };
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Arcane Spear 2',
+      // Floating spears appear and light up 4 rows on each bridge
+      // Tanks need to be in front
+      // Phantom Samurai with Shirahadori can also block
+      // A441 in first two sections, A6F4 in last section
+      // A6F4 affects north/south bridge at same times
+      type: 'StartsUsing',
+      netRegex: { source: 'Trap', id: 'A6F4', capture: false },
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.wildChargeEast!(),
+      outputStrings: {
+        wildChargeEast: {
+          en: 'Wild Charge (East), Stack in a Row',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Bombshell Drop',
+      type: 'StartsUsing',
+      netRegex: {
+        source: ['Tower Progenitrix', 'Tower Progenitor'],
+        id: ['A626', 'A627'],
+        capture: false,
+      },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.pullBossAway!();
+        return output.killBombs!();
+      },
+      outputStrings: {
+        pullBossAway: {
+          en: 'Pull boss away from bombs',
+        },
+        killBombs: {
+          en: 'Kill Bombs',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Pronged Passage Punishing Pounce',
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.prongedPassageStack], capture: true },
+      promise: async (data, matches) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Punishing Pounce: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [matches.target],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Pronged Passage Punishing Pounce: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.prongedPassageActLoc[data.me] = me.PosY < prongedPassageCenterY
+          ? 'north'
+          : 'south';
+        if (actor.PosY < prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.target] = 'north';
+        if (actor.PosY > prongedPassageCenterY)
+          data.prongedPassageActLoc[matches.target] = 'south';
+      },
+      infoText: (data, matches, output) => {
+        if (data.prongedPassageActLoc[matches.target] === data.prongedPassageActLoc[data.me])
+          return output.stackOnPlayer!({ player: data.party.member(matches.target) });
+      },
+      outputStrings: {
+        stackOnPlayer: Outputs.stackOnPlayer,
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Tankbuster Filter',
+      // Used to tracker encounter for filtering
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '77F1', capture: false },
+      run: (data) => data.marbleDragonTankbusterFilter = true,
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Star',
+      // 77F1 Imitation Star is a 4.7s cast
+      // 9ECC Imitation Star damage casts happen 1.8 to 2.9s after
+      // This cast also applies a 15s bleed called Bleeding (828)
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '77F1', capture: false },
+      response: Responses.bleedAoe(),
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Draconiform Motion',
+      // Boss turns to face random player and casts 77C1 Draconiform Motion
+      // This is a 3.7s that coincides with these 4.5s casts:
+      // 77E6 Draconiform Motion (knockback cleave fromm tail)
+      // 77E5 Draconiform Motion (knockback cleave from head)
+      // Getting hit also applies D96 Thrice-come Ruin debuff
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '77C1', capture: false },
+      response: Responses.goSides(),
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Dread Deluge',
+      // Tankbuster targets one tank in each alliance party, 6 tanks total
+      // Applies a heavy bleed to target
+      // TODO: Determine if they are in player's party to call just that name
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.marbleDragonTankbuster], capture: true },
+      condition: (data) => {
+        // Prevent triggering in CEs such as Noise Complaint and Flame of Dusk
+        // This also triggers by certain mobs when out of combat
+        return data.marbleDragonTankbusterFilter;
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tankBusterBleeds: {
+            en: 'Tankbuster Bleeds',
+          },
+          tankBusterBleedOnYou: {
+            en: 'Tankbuster bleed on YOU',
+          },
+        };
+        data.marbleDragonDelugeTargets.push(matches.target);
+        if (data.marbleDragonDelugeTargets.length < 6)
+          return;
+
+        const target1 = data.marbleDragonDelugeTargets[0];
+        const target2 = data.marbleDragonDelugeTargets[1];
+        const target3 = data.marbleDragonDelugeTargets[2];
+        const target4 = data.marbleDragonDelugeTargets[3];
+        const target5 = data.marbleDragonDelugeTargets[4];
+        const target6 = data.marbleDragonDelugeTargets[6];
+        if (
+          data.me === target1 || data.me === target2 || data.me === target3 ||
+          data.me === target4 || data.me === target5 || data.me === target6
+        )
+          return { alertText: output.tankBusterBleedOnYou!() };
+        if (data.role === 'tank' || data.role === 'healer')
+          return { alertText: output.tankBusterBleeds!() };
+        return { infoText: output.tankBusterBleeds!() };
+      },
+      run: (data) => {
+        if (data.marbleDragonDelugeTargets.length === 6)
+          data.marbleDragonDelugeTargets = [];
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Wicked Water',
+      // Boss casts 77E7 Wicked Water, several players get marked
+      // After cast end, marked players affected the following:
+      // 3AA Throttle (46s)
+      // 10EE Wicked Water (46s)
+      // An Imitation Blizzard hit changes Wicked Water into 10EF Gelid Gaol
+      // Players must be broken out of the gaol to clear the Throttle debuff
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.marbleDragonWickedWater], capture: true },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: 20, // Time until reminder
+      infoText: (_data, _matches, output) => output.wickedWaterOnYou!(),
+      run: (data) => data.marbleDragonHasWickedWater = true,
+      outputStrings: {
+        wickedWaterOnYou: {
+          en: 'Wicked Water on YOU',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Wicked Water Reminder',
+      // Need to avoid getting hit by multiple Imitation Blizzards
+      // Cross Imitation Blizzards should be avoided
+      // Cross Imitation Blizzards resolve at ~23s remaining on the debuff
+      // Needs some delay to not conflict with Draconiform Motion callouts
+      // 20s is ~2s after Draconiform Motion and gives ~3s to get hit
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.marbleDragonWickedWater], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 20,
+      alertText: (_data, _matches, output) => output.getHitByIceExplosion!(),
+      outputStrings: {
+        getHitByIceExplosion: {
+          en: 'Get hit by ice explosion',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Gelid Gaol',
+      // If capture someone in Gaol, trigger break Gaols
+      type: 'GainsEffect',
+      netRegex: { effectId: '10EF', capture: false },
+      condition: (data) => {
+        // Only output for those that do not have Wicked Water
+        if (data.marbleDragonHasWickedWater)
+          return false;
+        return true;
+      },
+      suppressSeconds: 47, // Duration of Wicked Water + 1s
+      alertText: (_data, _matches, output) => output.breakGaols!(),
+      outputStrings: {
+        breakGaols: {
+          en: 'Break Gaols',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Unsealed Aura',
+      // A264 Unsealed Aura cast
+      // 9BE7 Unsealed Aura damage
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A264', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Magitaur Unseal Tank Autos',
+      // 3x near/far tank autos starts 5s after Unseal
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A264', capture: false },
+      infoText: (_data, _matches, output) => output.tankAutos!(),
+      outputStrings: {
+        tankAutos: {
+          en: 'Tank autos soon (3 Near/Far)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow',
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: true },
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'A247')
+          return output.out!();
+        return output.in!();
+      },
+      outputStrings: {
+        out: Outputs.out,
+        in: Outputs.in,
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Forked Fury',
+      // Hits 3 nearest and 3 furthest players with tankbuster
+      // TODO: Determine close/far autos from boss buff?
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A265', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.nearFarTankCleave!();
+        return output.avoidCleave!();
+      },
+      outputStrings: {
+        avoidCleave: {
+          en: 'Be on boss hitbox (avoid tank cleaves)',
+          de: 'Geh auf den Kreis vom Boss (vermeide Tank Cleaves)',
+          fr: 'Sur la hitbox (évitez les tanks cleaves)',
+          ja: 'ボス背面のサークル上に',
+          cn: '站在目标圈上 (远离坦克死刑)',
+          ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
+        },
+        nearFarTankCleave: {
+          en: 'Near and far tank cleave => 2 tank autos',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Aura Burst / Holy Canisters',
+      // A25A Aura Burst (Yellow) cast or A25B Holy (Blue) cast
+      // Tell for which canisters to focus
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: ['A25A', 'A25B'], capture: true },
+      infoText: (_data, matches, output) => {
+        if (matches.id === 'A25A')
+          return output.yellowCanisters!();
+        return output.blueCanisters!();
+      },
+      outputStrings: {
+        blueCanisters: {
+          en: 'Attack Blue Canisters (Lance)',
+        },
+        yellowCanisters: {
+          en: 'Attack Yellow Canisters (Axe)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Aura Burst / Holy',
+      // This is a long 18.7s cast + 1s damage
+      // A25A Aura Burst (Yellow) cast or A25B Holy (Blue) cast
+      // 9BE5 Aura Burst damage or 9BE6 Holy damage
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: ['A25A', 'A25B'], capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Magitaur Sage\'s Staff',
+      // Boss spawns three staves that will fire an untelegraphed line at nearest target
+      // A25F Mana Expulsion is the untelegraphed line stack damage 14.4s after
+      // There is an In/Out dodge before Mana Expulsion
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A25E', capture: false },
+      delaySeconds: 8.5,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.lineStackStaff!(),
+      outputStrings: {
+        lineStackStaff: {
+          en: 'Line stack at staff',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
       'locale': 'en',
       'replaceText': {
         'Vertical Crosshatch/Horizontal Crosshatch': 'Vertical/Horizontal Crosshatch',
+        'Ray of Dangers Near / Ray of Expulsion Afar': 'Ray Near/Far',
+        'Demonograph of Dangers Near / Demonograph of Expulsion Afar': 'Deomograph Near/Far',
+        'Rotate Right / Rotate Left': 'Rotate Left/Right',
+        'Cometeor of Dangers Near / Cometeor of Expulsion Afar': 'Cometeor Near/Far',
+        'Gravity of Dangers Near / Gravity of Expulsion Afar': 'Gravity Near/Far',
+        'Close Call to Detonate / Far Cry to Detonate': 'Close/Far to Detonate',
+        'Critical Axeblow / Critical Lanceblow': 'Critical Axe/Lanceblow',
       },
     },
     {
