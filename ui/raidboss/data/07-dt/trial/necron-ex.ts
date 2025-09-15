@@ -742,7 +742,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'sphère d\'énergie bleue',
         'Beckoning Hands': 'grand attrape-mort',
@@ -750,6 +749,15 @@ const triggerSet: TriggerSet<Data> = {
         'Necron': 'Darkness',
       },
       'replaceText': {
+        '\\(cast\\)': '(Incante)',
+        '\\(damage\\)': '(Dommages)',
+        '\\(intercards\\)': '(Intercardinaux)',
+        '\\(line\\)': '(Ligne)',
+        '\\(lines\\)': '(Lignes)',
+        '\\(puddle\\)': '(Puddle)',
+        '\\(puddles\\)': '(Puddles)',
+        '\\(spread\\)': '(Dispersion)',
+        '\\(tower\\)': '(Tour)',
         'Aetherblight': 'Voie bleue',
         'Blue Shockwave': 'Onde bleue',
         'Choking Grasp': 'Pression écrasante',
