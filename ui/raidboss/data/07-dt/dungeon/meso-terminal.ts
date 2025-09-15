@@ -8,7 +8,6 @@ import { RaidbossData } from '../../../../../types/data';
 import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
-
 export interface Data extends RaidbossData {
   chirurgeonSpots: chirurgeonCoords[];
   playerExecutionerId?: string;
@@ -21,7 +20,7 @@ export interface Data extends RaidbossData {
 type chirurgeonCoords = {
   x: number;
   y: number;
-}
+};
 
 // List out the dangerous intercardinals for each Keraunograhpy.
 const diagPositive: DirectionOutputIntercard[] = ['dirSW', 'dirNE'];
@@ -69,7 +68,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Chirurgeon Medicine Field',
       type: 'StartsUsing',
-      netRegex: { id: 'AB16', source: 'Chirurgeon General', capture: false, },
+      netRegex: { id: 'AB16', source: 'Chirurgeon General', capture: false },
       response: Responses.aoe(),
     },
     {
@@ -79,7 +78,7 @@ const triggerSet: TriggerSet<Data> = {
       // (270,22), (280,12), (270,2),(260,12)
       id: 'Meso Terminal Chirurgeon Pungent Aerosol',
       type: 'StartsUsingExtra',
-      netRegex: { id: 'AB1F', capture: true, },
+      netRegex: { id: 'AB1F', capture: true },
       infoText: (_data, matches, output) => {
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
@@ -96,26 +95,26 @@ const triggerSet: TriggerSet<Data> = {
         dirS: Outputs.south,
         dirW: Outputs.west,
         unknown: Outputs.unknown,
-      }
+      },
     },
     {
       // AB1E is the big Sterile Sphere
       // AB1D is small
       id: 'Meso Terminal Chirurgeon Sterile Sphere Collect',
       type: 'StartsUsingExtra',
-      netRegex: { id: 'AB1D', capture: true, },
+      netRegex: { id: 'AB1D', capture: true },
       run: (data, matches) => {
         const location = {
           x: Math.round(parseFloat(matches.x)),
           y: Math.round(parseFloat(matches.y)),
         };
         data.chirurgeonSpots.push(location);
-      }
+      },
     },
     {
       id: 'Meso Terminal Chirurgeon Sterile Sphere Call',
       type: 'StartsUsing',
-      netRegex: { id: 'AB1D', source: 'Chirurgeon General', capture: false, },
+      netRegex: { id: 'AB1D', source: 'Chirurgeon General', capture: false },
       delaySeconds: 1,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
@@ -147,45 +146,45 @@ const triggerSet: TriggerSet<Data> = {
         goSouth: Outputs.south,
         goWest: Outputs.west,
         unknown: Outputs.unknown,
-      }
+      },
     },
     {
       id: 'Meso Terminal Chirurgeon Concentrated Dose',
       type: 'StartsUsing',
-      netRegex: { id: 'AB17', source: 'Chirurgeon General', capture: true, },
+      netRegex: { id: 'AB17', source: 'Chirurgeon General', capture: true },
       response: Responses.tankBuster(),
     },
     {
       id: 'Meso Terminal Executioners Shackles Of Fate Tracking',
       type: 'StartsUsing',
-      netRegex: { id: 'AA3D', capture: true, },
+      netRegex: { id: 'AA3D', capture: true },
       condition: Conditions.targetIsYou(),
       run: (data, matches) => data.playerExecutionerId = matches.sourceId,
     },
     {
       id: 'Meso Terminal Executioners Head-Splitting Roar',
       type: 'StartsUsing',
-      netRegex: { id: 'AA3B', source: 'Hooded Headsman', capture: false, },
+      netRegex: { id: 'AA3B', source: 'Hooded Headsman', capture: false },
       response: Responses.aoe(),
     },
     {
       id: 'Meso Terminal Executioners Chopping Block',
       type: 'StartsUsing',
-      netRegex: { id: 'AA4B', capture: true, },
+      netRegex: { id: 'AA4B', capture: true },
       condition: (data, matches) => data.playerExecutionerId === matches.sourceId,
       response: Responses.getOut(),
     },
     {
       id: 'Meso Terminal Executioners Execution Wheel',
       type: 'StartsUsing',
-      netRegex: { id: 'AA4C', capture: true, },
+      netRegex: { id: 'AA4C', capture: true },
       condition: (data, matches) => data.playerExecutionerId === matches.sourceId,
       response: Responses.getIn(),
     },
     {
       id: 'Meso Terminal Executioners Flaying Flail',
       type: 'StartsUsing',
-      netRegex: { id: 'AA48', capture: false, },
+      netRegex: { id: 'AA48', capture: false },
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.avoidFlails!(),
       outputStrings: {
@@ -197,7 +196,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Executioners Hellmaker Adds',
       type: 'AddedCombatant',
-      netRegex: { npcBaseId: '48D2', capture: false, },
+      netRegex: { npcBaseId: '48D2', capture: false },
       condition: (data) => data.role === 'dps',
       suppressSeconds: 1,
       response: Responses.killAdds(),
@@ -217,32 +216,32 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Immortal Remains Recollection',
       type: 'StartsUsing',
-      netRegex: { id: 'AB31', source: 'Immortal Remains', capture: false, },
+      netRegex: { id: 'AB31', source: 'Immortal Remains', capture: false },
       response: Responses.aoe(),
     },
     {
       id: 'Meso Terminal Immortal Remains Memory Of The Storm',
       type: 'StartsUsing',
-      netRegex: { id: 'AB2D', source: 'Immortal Remains', capture: false, },
+      netRegex: { id: 'AB2D', source: 'Immortal Remains', capture: false },
       response: Responses.stackMarker(),
       run: (data) => data.seenFirstStorm = true,
     },
     {
       id: 'Meso Terminal Immortal Remains Memory Of The Pyre',
       type: 'StartsUsing',
-      netRegex: { id: 'AB30', source: 'Immortal Remains', capture: true, },
+      netRegex: { id: 'AB30', source: 'Immortal Remains', capture: true },
       response: Responses.tankBuster(),
     },
     {
       id: 'Meso Terminal Immortal Remains Turmoil Left',
       type: 'Ability',
-      netRegex: { id: 'AB26', source: 'Immortal Remains', capture: false, },
+      netRegex: { id: 'AB26', source: 'Immortal Remains', capture: false },
       response: Responses.goEast(),
     },
     {
       id: 'Meso Terminal Immortal Remains Turmoil Right',
       type: 'Ability',
-      netRegex: { id: 'AB27', source: 'Immortal Remains', capture: false, },
+      netRegex: { id: 'AB27', source: 'Immortal Remains', capture: false },
       response: Responses.goWest(),
     },
 
@@ -278,7 +277,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
         const terrors = callData.combatants.filter((actor) => actor.BNpcID === 18624);
         data.safeTerror = findNorthTerror(terrors);
-      }
+      },
     },
     {
       id: 'Meso Terminal Immortal Remains Bombardment No Knockback',
@@ -338,7 +337,7 @@ const triggerSet: TriggerSet<Data> = {
         northwest: Outputs.northwest,
         northeast: Outputs.northeast,
         unknown: Outputs.unknown,
-      }
+      },
     },
     {
       // One Keraunography laser is always diagonal,
@@ -374,7 +373,7 @@ const triggerSet: TriggerSet<Data> = {
           const unsafeHorizontalSpots = isNorth ? horizNorth : horizSouth;
           data.kerauUnsafe.push(...unsafeHorizontalSpots);
         }
-      }
+      },
     },
     {
       id: 'Meso Terminal Immortal Remains Keraunography Call',
@@ -397,11 +396,10 @@ const triggerSet: TriggerSet<Data> = {
         dirSW: Outputs.southwest,
         dirSE: Outputs.southeast,
         unknown: Outputs.unknown,
-      }
-    }
+      },
+    },
   ],
-  timelineReplace: [
-  ]
+  timelineReplace: [],
 };
 
 export default triggerSet;
