@@ -742,7 +742,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'sphère d\'énergie bleue',
         'Beckoning Hands': 'grand attrape-mort',

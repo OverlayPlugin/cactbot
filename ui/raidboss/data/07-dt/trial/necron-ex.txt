@@ -15,7 +15,7 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-8.0 "--sync" StartsUsing { id: "AE30", source: "Necron" }
+8.0 "--sync--" StartsUsing { id: "AE30", source: "Necron" }
 14.8 "Blue Shockwave 1" Ability { id: "AE31", source: "Necron" }
 18.9 "Blue Shockwave 2" Ability { id: "AE31", source: "Necron" }
 
