@@ -87,6 +87,7 @@ const headMarkerData = {
   // Neo Garula tankbuster from Squash in Noise Complaint CE
   // Hinkypunk tankbuster from Dread Dive in Flame of Dusk CE
   // Death Claw tankbuster from Dirty Nails in Crawling Death CE
+  // Crescent Inkstain tankbuster from Amorphic Flail
   'marbleDragonTankbuster': '00DA',
   // Marble Dragon red pinwheel markers from Wicked Water
   'marbleDragonWickedWater': '0017',
