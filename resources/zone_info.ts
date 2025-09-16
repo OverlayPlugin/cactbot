@@ -10669,6 +10669,7 @@ const data: ZoneInfoType = {
     'contentType': 9,
     'exVersion': 5,
     'name': {
+      'cn': '巡梦金库',
       'de': 'Tresor Oneiron',
       'en': 'Vault Oneiron',
       'fr': 'Le coffre d\'Oneiron',
@@ -10683,6 +10684,7 @@ const data: ZoneInfoType = {
     'contentType': 2,
     'exVersion': 5,
     'name': {
+      'cn': '永久幽界中央终端',
       'de': 'Das Meso-System',
       'en': 'The Meso Terminal',
       'fr': 'Le Mésoterminal',
@@ -10697,6 +10699,7 @@ const data: ZoneInfoType = {
     'contentType': 6,
     'exVersion': 0,
     'name': {
+      'cn': '海岸斗场',
       'de': 'Der Küstenkampf',
       'en': 'The Bayside Battleground',
       'fr': 'Le Rivage redoutable',
@@ -10711,6 +10714,7 @@ const data: ZoneInfoType = {
     'contentType': 6,
     'exVersion': 0,
     'name': {
+      'cn': '水晶冲突（海岸斗场：自定赛）',
       'de': 'Crystalline Conflict: Der Küstenkampf (Schaukampf)',
       'en': 'Crystalline Conflict (Custom Match - The Bayside Battleground)',
       'fr': 'Crys. Conflict (partie perso. - Le Rivage redoutable)',
@@ -10725,6 +10729,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '永远之暗歼灭战',
       'de': 'Zel Tajaal - Das Ewige Dunkel',
       'en': 'The Ageless Necropolis',
       'fr': 'La Nécropole intemporelle',
@@ -10739,6 +10744,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '永远之暗悲惶歼灭战',
       'de': 'Gok Tajaal - Das Ewige Dunkel',
       'en': 'The Minstrel\'s Ballad: Necron\'s Embrace',
       'fr': 'La Nécropole intemporelle (extrême)',
@@ -10753,6 +10759,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '青龙幻巧战',
       'de': 'Traumprüfung - Seiryu',
       'en': 'The Wreath of Snakes (Unreal)',
       'fr': 'L\'Îlot des Amertumes (irréel)',
@@ -10783,6 +10790,7 @@ const data: ZoneInfoType = {
     'contentType': 5,
     'exVersion': 5,
     'name': {
+      'cn': '桑多利亚：第二巡行',
       'de': 'San d\'Oria: Die zweite Etappe',
       'en': 'San d\'Oria: The Second Walk',
       'fr': 'San d\'Oria - La deuxième perambulation',
