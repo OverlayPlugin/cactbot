@@ -115,6 +115,7 @@ const stoneWindOutputStrings = {
   stoneWindNum: {
     en: '${debuff} ${num}',
     de: '${debuff} ${num}',
+    fr: '${debuff} ${num}',
     ja: '${debuff} ${num}',
     cn: '${debuff} ${num}',
     ko: '${debuff} ${num}',
@@ -122,6 +123,7 @@ const stoneWindOutputStrings = {
   stone: {
     en: 'Stone',
     de: 'Erde',
+    fr: 'Pierre',
     ja: '土',
     cn: '土',
     ko: '땅',
@@ -129,6 +131,7 @@ const stoneWindOutputStrings = {
   wind: {
     en: 'Wind',
     de: 'Wind',
+    fr: 'Vent',
     ja: '風',
     cn: '风',
     ko: '바람',
@@ -141,6 +144,7 @@ const moonlightOutputStrings = {
   safeQuad: {
     en: '${quad}',
     de: '${quad}',
+    fr: '${quad}',
     ja: '${quad}',
     cn: '${quad}',
     ko: '${quad}',
@@ -148,6 +152,7 @@ const moonlightOutputStrings = {
   safeQuadrants: {
     en: '${quad1} => ${quad2}',
     de: '${quad1} => ${quad2}',
+    fr: '${quad1} => ${quad2}',
     ja: '${quad1} => ${quad2}',
     cn: '${quad1} => ${quad2}',
     ko: '${quad1} => ${quad2}',
@@ -162,6 +167,7 @@ const championOutputStrings = {
   donut: {
     en: 'Donut',
     de: 'Donut',
+    fr: 'Donut',
     ja: 'ドーナツ',
     cn: '月环',
     ko: '도넛',
@@ -170,6 +176,7 @@ const championOutputStrings = {
   mechanics: {
     en: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     de: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+    fr: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     ja: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     cn: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     ko: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
@@ -179,6 +186,7 @@ const championOutputStrings = {
   leftSide: {
     en: 'Left Side',
     de: 'Linke Seite',
+    fr: 'Côté gauche',
     ja: '左側',
     cn: '左侧',
     ko: '왼쪽',
@@ -186,6 +194,7 @@ const championOutputStrings = {
   rightSide: {
     en: 'Right Side',
     de: 'Rechte Seite',
+    fr: 'Côté droit',
     ja: '右側',
     cn: '右侧',
     ko: '오른쪽',
@@ -193,6 +202,7 @@ const championOutputStrings = {
   unknownSide: {
     en: '??? Side',
     de: '??? Seite',
+    fr: 'Côté ???',
     ja: '??? 側',
     cn: '??? 侧',
     ko: '??? 쪽',
@@ -200,6 +210,7 @@ const championOutputStrings = {
   dirMechanic: {
     en: '${dir} ${mech}',
     de: '${dir} ${mech}',
+    fr: '${dir} ${mech}',
     ja: '${dir} ${mech}',
     cn: '${dir} ${mech}',
     ko: '${dir} ${mech}',
@@ -380,6 +391,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Light Party Platform',
           de: 'Leichter Trupp Platform',
+          fr: 'Plateforme light party',
           ja: '東西の島で 4：4 頭割り',
           cn: '东西岛治疗组分摊站位',
           ko: '4:4 그룹별 플랫폼',
@@ -395,6 +407,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'UV Positions',
           de: 'Ätherlicht Positionen',
+          fr: 'Positions pour Rayon mystique',
           ja: '魔光位置へ',
           cn: '魔光站位',
           ko: '마광 산개',
@@ -410,6 +423,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'UV Positions',
           de: 'Ätherlicht Positionen',
+          fr: 'Positions pour Rayon mystique',
           ja: '魔光位置へ',
           cn: '魔光站位',
           ko: '마광 산개',
@@ -425,6 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait Mooncleaver',
           de: 'Ködere Klingensturz',
+          fr: 'Prenez le Tranchage éclair',
           ja: '剛刃一閃を誘導',
           cn: '引导碎地板',
           ko: '강인일섬 유도',
@@ -439,6 +454,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Howling Eight Position',
           de: 'Achtfache Lichtkugel Position',
+          fr: 'Position pour Octorayon',
           ja: '八連光弾の位置へ',
           cn: '八连光弹集合',
           ko: '8연속 빛 폭탄 위치로',
@@ -501,6 +517,7 @@ const triggerSet: TriggerSet<Data> = {
         inCardsPartners: {
           en: 'In + Cards + Partners',
           de: 'Rein + Kardinal + Partner',
+          fr: 'Intérieur + Cardinaux + Partenaires',
           ja: '内側 + 十字 + ペア',
           cn: '内侧 + 十字 + 分摊',
           ko: '안 + 십자방향 + 쉐어',
@@ -508,6 +525,7 @@ const triggerSet: TriggerSet<Data> = {
         inInterCardsPartners: {
           en: 'In + Intercards + Partners',
           de: 'Rein + Interkardinal + Partner',
+          fr: 'Intérieur + Intercardinaux + Partenaires',
           ja: '内側 + 斜め + ペア',
           cn: '内侧 + 斜角 + 分摊',
           ko: '안 + 대각선 + 쉐어',
@@ -515,6 +533,7 @@ const triggerSet: TriggerSet<Data> = {
         outCardsProtean: {
           en: 'Out + Cards + Protean',
           de: 'Raus + Kardinal + Himmelsrichtungen',
+          fr: 'Extérieur + Cardinaux + Positions',
           ja: '外側 + 十字 + 散開',
           cn: '外侧 + 十字 + 分散',
           ko: '밖 + 십자방향 + 산개',
@@ -522,6 +541,7 @@ const triggerSet: TriggerSet<Data> = {
         outInterCardsProtean: {
           en: 'Out + InterCards + Protean',
           de: 'Raus + Interkardinal + Himmelsrichtungen',
+          fr: 'Extérieur + Intercardinaux + Positions',
           ja: '外側 + 斜め + 散開',
           cn: '外侧 + 斜角 + 分散',
           ko: '밖 + 대각선 + 산개',
@@ -546,6 +566,7 @@ const triggerSet: TriggerSet<Data> = {
         inLater: {
           en: '(In Later)',
           de: '(später Rein)',
+          fr: '(Intérieur, plus tard)',
           ja: '(あとで内側)',
           cn: '(稍后内侧)',
           ko: '(나중에 안)',
@@ -553,6 +574,7 @@ const triggerSet: TriggerSet<Data> = {
         outLater: {
           en: '(Out Later)',
           de: '(später Raus)',
+          fr: '(Extérieur, plus tard)',
           ja: '(あとで外側)',
           cn: '(稍后外侧)',
           ko: '(나중에 밖)',
@@ -607,6 +629,7 @@ const triggerSet: TriggerSet<Data> = {
         inDir: {
           en: 'In ${dir}',
           de: 'Rein ${dir}',
+          fr: 'Intérieur ${dir}',
           ja: '内側 ${dir}',
           cn: '内侧 ${dir}',
           ko: '${dir} 안',
@@ -614,6 +637,7 @@ const triggerSet: TriggerSet<Data> = {
         outDir: {
           en: 'Out ${dir}',
           de: 'Raus ${dir}',
+          fr: 'Extérieur ${dir}',
           ja: '外側 ${dir}',
           cn: '外侧 ${dir}',
           ko: '${dir} 밖',
@@ -650,6 +674,7 @@ const triggerSet: TriggerSet<Data> = {
         clockwise: {
           en: '<== Clockwise',
           de: '<== Im Uhrzeigersinn',
+          fr: '<== Sens horaire',
           ja: '<== 時計回り',
           cn: '<== 顺时针',
           ko: '<== 시계방향',
@@ -657,6 +682,7 @@ const triggerSet: TriggerSet<Data> = {
         counterclockwise: {
           en: 'Counterclockwise ==>',
           de: 'Gegen den Uhrzeigersinn ==>',
+          fr: 'Sens anti-horaire ==>',
           ja: '反時計回り ==>',
           cn: '逆时针 ==>',
           ko: '반시계방향 ==>',
@@ -717,6 +743,7 @@ const triggerSet: TriggerSet<Data> = {
         knockbackTetherDir: {
           en: 'Tether: Knockback to ${dir}',
           de: 'Verbindung: Rückstoß nach ${dir}',
+          fr: 'Lien : Poussée vers ${dir}',
           ja: '線: ${dir}へノックバック',
           cn: '击退拉线: ${dir}',
           ko: '선: ${dir}로 넉백',
@@ -724,6 +751,7 @@ const triggerSet: TriggerSet<Data> = {
         knockbackTowers: {
           en: 'Knockback Towers',
           de: 'Rückstoß-Türme',
+          fr: 'Poussée Tours',
           ja: 'ノックバック塔踏み',
           cn: '击退踩塔',
           ko: '넉백 탑',
@@ -783,6 +811,7 @@ const triggerSet: TriggerSet<Data> = {
         dirs: {
           en: '${dir1} or ${dir2}',
           de: '${dir1} oder ${dir2}',
+          fr: '${dir1} ou ${dir2}',
           ja: '${dir1} か ${dir2}',
           cn: '${dir1} 或 ${dir2}',
           ko: '${dir1} 또는 ${dir2}',
@@ -937,6 +966,7 @@ const triggerSet: TriggerSet<Data> = {
         wolfOfWind: {
           en: 'Green',
           de: 'Grün',
+          fr: 'Vert',
           ja: '緑',
           cn: '绿',
           ko: '초록',
@@ -944,6 +974,7 @@ const triggerSet: TriggerSet<Data> = {
         wolfOfStone: {
           en: 'Yellow',
           de: 'Gelb',
+          fr: 'Jaune',
           ja: '黄',
           cn: '黄',
           ko: '노랑',
@@ -951,6 +982,7 @@ const triggerSet: TriggerSet<Data> = {
         side: {
           en: '${wolf} Side',
           de: '${wolf} Seite',
+          fr: 'Côté ${wolf}',
           ja: '${wolf} 側',
           cn: '${wolf} 侧',
           ko: '${wolf} 쪽',
@@ -1022,6 +1054,7 @@ const triggerSet: TriggerSet<Data> = {
         predationOnPlayers: {
           en: 'Predation on ${player1} and ${player2}',
           de: 'Lichtwolfszirkel auf ${player1} und ${player2}',
+          fr: 'Prédation sur ${player1} et ${player2}',
           ja: '${player1} と ${player2} に直線攻撃',
           cn: '${player1} 与 ${player2} 引导直线',
           ko: '${player1} + ${player2} 징 대상자',
@@ -1146,6 +1179,7 @@ const triggerSet: TriggerSet<Data> = {
         stackThenSpread: {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
+          fr: '${stack} => Dispersion',
           ja: '${stack} => 散開',
           cn: '${stack} => 散开',
           ko: '${stack} => 산개',
@@ -1153,6 +1187,7 @@ const triggerSet: TriggerSet<Data> = {
         spreadBehindClones: {
           en: 'Spread (Behind Clones)',
           de: 'Verteilen (hinter Klone)',
+          fr: 'Dispersion (Derrière les clones)',
           ja: '散開 (分身の後ろ)',
           cn: '分散 (躲在分身后)',
           ko: '산개 (분신 뒤)',
@@ -1161,6 +1196,7 @@ const triggerSet: TriggerSet<Data> = {
         stackOnPlayerBehindClones: {
           en: 'Stack on ${player} (Behind Clones)',
           de: 'Sammeln auf ${player} (hinter Klone)',
+          fr: 'Package sur ${player} (Derrière les clones)',
           ja: '${player} に頭割り (分身の後ろ)',
           cn: '${player} 分摊 (躲在分身后)',
           ko: '${player}에게 모이기 (분신 뒤)',
@@ -1169,6 +1205,7 @@ const triggerSet: TriggerSet<Data> = {
         stackOnYouBehindClones: {
           en: 'Stack on YOU (Behind Clones)',
           de: 'Sammeln auf DIR (hinter Klone)',
+          fr: 'Package sur VOUS (Derrière les clones)',
           ja: '自分に頭割り (分身の後ろ)',
           cn: '分摊点名 (躲在分身后)',
           ko: '쉐어징 대상자 (분신 뒤)',
@@ -1189,6 +1226,7 @@ const triggerSet: TriggerSet<Data> = {
         rotate: {
           en: 'Rotate',
           de: 'Rotieren',
+          fr: 'Rotation',
           ja: '回転',
           cn: '旋转',
           ko: '회전',
@@ -1208,6 +1246,7 @@ const triggerSet: TriggerSet<Data> = {
         lines: {
           en: 'Avoid Lines',
           de: 'Vermeide Linien',
+          fr: 'Évitez les lignes',
           ja: '直線攻撃を避ける',
           cn: '躲避直线 AoE',
           ko: '직선장판 피하기',
@@ -1358,6 +1397,7 @@ const triggerSet: TriggerSet<Data> = {
         stackThenSpread: {
           en: '${stack} => Spread',
           de: '${stack} => Verteilen',
+          fr: '${stack} => Dispersion',
           ja: '${stack} => 散開',
           cn: '${stack} => 分散',
           ko: '${stack} => 산개',
@@ -1433,6 +1473,7 @@ const triggerSet: TriggerSet<Data> = {
         uvRayOnYou: {
           en: 'UV Ray on YOU',
           de: 'Ätherlicht auf DIR',
+          fr: 'Rayon mythique sur VOUS',
           ja: '自分に魔光',
           cn: '魔光点名',
           ko: '파란징 대상자',
@@ -1587,6 +1628,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${inout} + ${dir}',
           de: '${inout} + ${dir}',
+          fr: '${inout} + ${dir}',
           ja: '${inout} + ${dir}',
           cn: '${inout} + ${dir}',
           ko: '${inout} + ${dir}',
@@ -1603,6 +1645,7 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform: {
           en: 'Change Platform',
           de: 'Platform wechseln',
+          fr: 'Changez de plateforme',
           ja: '次の島へ',
           cn: '换平台',
           ko: '플랫폼 변경',
@@ -1636,6 +1679,7 @@ const triggerSet: TriggerSet<Data> = {
         purgeOnPlayers: {
           en: 'Elemental Purge on ${player1} and ${player2}',
           de: 'Siegel des Windes auf ${player1} und ${player2}',
+          fr: 'Sceau du vent et de la terre sur ${player1} et ${player2}',
           ja: '魔印: ${player1} と ${player2}',
           cn: '魔印点名: ${player1} 和 ${player2}',
           ko: '바람지진 각인: ${player1} + ${player2}',
@@ -1743,6 +1787,7 @@ const triggerSet: TriggerSet<Data> = {
         passTetherDir: {
           en: 'Pass Tether to ${dir}',
           de: 'Übergebe Verbindung nach ${dir}',
+          fr: 'Passez le lien vers ${dir}',
           ja: '${dir} に線を渡す',
           cn: '送线给 ${dir}',
           ko: '${dir}로 선 넘기기',
@@ -1750,6 +1795,7 @@ const triggerSet: TriggerSet<Data> = {
         tetherOnYou: {
           en: 'Tether on YOU',
           de: 'Verbindung auf DIR',
+          fr: 'Lien sur VOUS',
           ja: '自分に線',
           cn: '连线点名',
           ko: '선 대상자',
@@ -1757,12 +1803,14 @@ const triggerSet: TriggerSet<Data> = {
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
+          fr: 'Lien vers ${dir}',
           ja: '${dir} に線',
           cn: '连线在 ${dir}',
           ko: '${dir}쪽에 선',
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
+          fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
         },
@@ -1835,6 +1883,7 @@ const triggerSet: TriggerSet<Data> = {
         passTether: {
           en: 'Pass Tether',
           de: 'Verbindung übergeben',
+          fr: 'Passez le lien',
           ja: '線を渡す',
           cn: '送线',
           ko: '선 넘기기',
@@ -1842,6 +1891,7 @@ const triggerSet: TriggerSet<Data> = {
         passTetherDir: {
           en: 'Pass Tether ${dir}',
           de: 'Verbindung übergeben ${dir}',
+          fr: 'Passez le lien ${dir}',
           ja: '${dir} に線を渡す',
           cn: '送线给 ${dir}',
           ko: '${dir}쪽에 선 넘기기',
@@ -1849,12 +1899,14 @@ const triggerSet: TriggerSet<Data> = {
         tetherOnDir: {
           en: 'Tether on ${dir}',
           de: 'Verbindung auf ${dir}',
+          fr: 'Lien vers ${dir}',
           ja: '${dir} に線',
           cn: '连线在 ${dir}',
           ko: '${dir}쪽에 선',
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
+          fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
         },
@@ -2079,6 +2131,7 @@ const triggerSet: TriggerSet<Data> = {
         closeTetherOnYou: {
           en: 'Close Tether on YOU',
           de: 'Nahe Verbindung auf DIR',
+          fr: 'Lien proche sur VOUS',
           ja: '自分に近づく線',
           cn: '近线点名',
           ko: '가까이 선 대상자',
@@ -2086,6 +2139,7 @@ const triggerSet: TriggerSet<Data> = {
         farTetherOnYou: {
           en: 'Far Tether on YOU',
           de: 'Entfernte Verbindung auf DIR',
+          fr: 'Lien éloigné sur VOUS',
           ja: '自分に離れる線',
           cn: '远线点名',
           ko: '멀리 선 대상자',
@@ -2186,6 +2240,7 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform1: {
           en: 'Change Platform 1',
           de: 'Wechsel Platform 1',
+          fr: 'Changez plateforme 1',
           ja: '次の島へ1',
           cn: '换平台 1',
           ko: '플랫폼 변경 1',
@@ -2193,6 +2248,7 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform2: {
           en: 'Change Platform 2',
           de: 'Wechsel Platform 2',
+          fr: 'Changez plateforme 2',
           ja: '次の島へ2',
           cn: '换平台 2',
           ko: '플랫폼 변경 2',
@@ -2200,6 +2256,7 @@ const triggerSet: TriggerSet<Data> = {
         changePlatform3: {
           en: 'Change Platform 3',
           de: 'Wechsel Platform 3',
+          fr: 'Changez plateforme 3',
           ja: '次の島へ3',
           cn: '换平台 3',
           ko: '플랫폼 변경 3',
@@ -2207,6 +2264,7 @@ const triggerSet: TriggerSet<Data> = {
         finalPlatform: {
           en: 'Change Platform (Final)',
           de: 'Wechsel Platform (Finale)',
+          fr: 'Changez plateforme (Finale)',
           ja: '次の島へ (最終)',
           cn: '换平台 (最终平台)',
           ko: '플랫폼 변경 (마지막)',
@@ -2296,7 +2354,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Gleaming Fang': 'croc de lumière',
         'Howling Blade': 'Howling Blade',
@@ -2306,6 +2363,14 @@ const triggerSet: TriggerSet<Data> = {
         'Wolf of Wind': 'loup du vent',
       },
       'replaceText': {
+        '--adds-targetable--': '--Adds ciblables--',
+        '--shadow ': '--Ombre ',
+        '--tank/line aoes--': '--AOE Tank/En ligne--',
+        '\\(circles\\)': '(Cercles)',
+        '\\(cones\\)': '(Cônes)',
+        '\\(enrage\\)': '(Enrage)',
+        '\\(Platform\\)': '(Plateforme)',
+        '\\(Towers\\)': '(Tours)',
         'Aero III': 'Méga Vent',
         'Aerotemporal Blast': 'Assaut tempétueux à retardement',
         'Alpha Stone': 'Terre du loup radieux',

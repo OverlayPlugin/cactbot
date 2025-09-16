@@ -122,6 +122,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse Doom',
           de: 'Verhängnis Reinigenm',
+          fr: 'Guérissez Glas',
           ja: '死の宣告にエスナ',
           cn: '驱散死宣',
           ko: '죽음의 선고 해제',
@@ -167,6 +168,7 @@ const triggerSet: TriggerSet<Data> = {
         combo: {
           en: '${mech} => ${followup}',
           de: '${mech} => ${followup}',
+          fr: '${mech} => ${followup}',
           ja: '${mech} => ${followup}',
           cn: '${mech} => ${followup}',
           ko: '${mech} => ${followup}',
@@ -174,6 +176,7 @@ const triggerSet: TriggerSet<Data> = {
         left: {
           en: 'Left, under hand',
           de: 'Links, unter die Hand',
+          fr: 'Gauche, sous la main',
           ja: '左 手の下へ',
           cn: '左边脚下',
           ko: '왼쪽, 손 아래로',
@@ -181,6 +184,7 @@ const triggerSet: TriggerSet<Data> = {
         right: {
           en: 'Right, under hand',
           de: 'Rechts, unter die Hand',
+          fr: 'Droite, sous la main',
           ja: '右 手の下へ',
           cn: '右边脚下',
           ko: '오른쪽, 손 아래로',
@@ -188,6 +192,7 @@ const triggerSet: TriggerSet<Data> = {
         aero: {
           en: 'Knockback',
           de: 'Rückstoß',
+          fr: 'Poussée',
           ja: 'ノックバック',
           cn: '击退',
           ko: '넉백',
@@ -224,6 +229,7 @@ const triggerSet: TriggerSet<Data> = {
         back: {
           en: 'Bait hand, dodge backwards',
           de: 'Hand ködern, nach Hinten ausweichen',
+          fr: 'Attirez la main, esquivez vers l\'arrière',
           ja: '手を避ける くるっとターン',
           cn: '面朝场外放手',
           ko: '손 유도, 뒤로 피하기',
@@ -231,6 +237,7 @@ const triggerSet: TriggerSet<Data> = {
         front: {
           en: 'Bait hand, dodge forwards',
           de: 'Hand ködern, nach Vorne ausweichen',
+          fr: 'Attirez la main, esquivez vers l\'avant',
           ja: '手を避ける 前に進む',
           cn: '面朝场内放手',
           ko: '손 유도, 앞으로 피하기',
@@ -247,6 +254,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Wild Charge (alliances)',
           de: 'Wilde Rage (Allianzen)',
+          fr: 'Ruée sauvage (alliances)',
           ja: '頭割り アラ単位集合',
           cn: '分队挡枪分摊',
           ko: '쉐어 (연합파티)',
@@ -272,6 +280,7 @@ const triggerSet: TriggerSet<Data> = {
         flare: {
           en: 'Flare on you',
           de: 'Flare auf DIR',
+          fr: 'Brasier sur VOUS',
           ja: '自分にフレア 捨てる',
           cn: '核爆点名',
           ko: '플레어 대상자',
@@ -309,6 +318,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Far away => in',
           de: 'Weit weg => Rein',
+          fr: 'Loin => Intérieur',
           ja: '離れて 吸い込み後 中へ',
           cn: '远离 => 中间',
           ko: '멀리 떨어지기 => 안으로',
@@ -427,6 +437,7 @@ const triggerSet: TriggerSet<Data> = {
         corners: {
           en: 'Corners',
           de: 'Ecken',
+          fr: 'Coins',
           ja: '角へ',
           cn: '去四角',
           ko: '구석으로',
@@ -470,6 +481,7 @@ const triggerSet: TriggerSet<Data> = {
         rotate: {
           en: 'Rotate ${rotateStr}',
           de: 'Rotiere ${rotateStr}',
+          fr: 'Tournez ${rotateStr}',
           ja: '回転ビーム ${rotateStr}',
           cn: '${rotateStr} 旋转',
           ko: '${rotateStr} 회전',
@@ -527,6 +539,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Sides => middle',
           de: 'Seiten => Mitte',
+          fr: 'Côtés => Milieu',
           ja: 'サイド => 真ん中',
           cn: '两侧 => 中间',
           ko: '양 옆 => 중앙',
@@ -546,6 +559,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Middle => sides',
           de: 'Mitte => Seiten',
+          fr: 'Milieu => Côtés',
           ja: '真ん中 => サイド',
           cn: '中间 => 两侧',
           ko: '중앙 => 양 옆',
@@ -645,6 +659,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Start ${first}',
           de: 'Start ${first}',
+          fr: 'Commencez ${first}',
           ja: '最初は ${first} から',
           cn: '先 ${first}',
           ko: '${first} 시작',
@@ -722,6 +737,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'AoE + player swaps',
           de: 'AoE + Spieler-Wechsel',
+          fr: 'AoE + swaps joueurs',
           ja: 'AoE + プレイヤーシャッフル',
           cn: 'AoE + 换位',
           ko: '전체 공격 + 자리 교체',
@@ -813,13 +829,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Cloud of Darkness': 'Nuage de Ténèbres',
         'Cloudlet of Darkness': 'stratus de Ténèbres',
         'Stygian Shadow': 'suppôt de Ténèbres',
       },
       'replaceText': {
+        '--adds untargetable--': '--Adds non ciblables--',
         'Active-pivot Particle Beam': 'Canon plasma rotatif',
         '(?<!En)Aero IV': 'Giga Vent',
         'Blade of Darkness': 'Ténèbres acérées',

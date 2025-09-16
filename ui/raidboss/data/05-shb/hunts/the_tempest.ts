@@ -16,6 +16,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'A Rank Hunts, missing Archaeotania boss FATE',
     de: 'A Rang Hohe Jagd, Archaeotania Boss FATE fehlt',
+    fr: 'Chasse de rang A, boss ALÉA Archaeotania manquant',
     cn: 'A级狩猎怪, 缺失特殊FATE',
     ko: 'A급 마물, 특수돌발 누락.',
   },
