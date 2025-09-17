@@ -620,7 +620,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Dancing Green',
         'Frogtourage': 'Danceur batracien',
@@ -642,6 +641,7 @@ Options.Triggers.push({
         'Arcady Night Fever': 'Fièvre de l\'Arcadion',
         'Back-up Dance': 'Vague dansante',
         'Celebrate Good Times': 'Lève les bras, balance-toi !',
+        'Debuffs': 'Debuffs',
         'Deep Cut': 'Entaille profonde',
         'Disco Infernal': 'Enfer du disco',
         'Do the Hustle': 'Danse le Mia !',

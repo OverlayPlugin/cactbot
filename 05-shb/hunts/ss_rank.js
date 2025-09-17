@@ -18,6 +18,7 @@ Options.Triggers.push({
   comments: {
     en: 'SS Rank Hunts',
     de: 'SS Rang Hohe Jagd',
+    fr: 'Chasse de rang SS',
     cn: 'SS级狩猎怪',
     ko: 'SS급 마물',
   },

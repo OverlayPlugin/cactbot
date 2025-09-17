@@ -35,6 +35,7 @@ Options.Triggers.push({
       outputStrings: {
         grabTether: {
           en: 'Grab Tank Tether, Point Cleave Away',
+          fr: 'Prenez le lien Tank, visez l\'extérieur',
           cn: '接走坦克连线，引导扇形远离人群',
         },
         avoidTether: Outputs.avoidTankCleaves,
@@ -223,18 +224,22 @@ Options.Triggers.push({
         dirW: Outputs.west,
         goToSnakes: {
           en: 'Go ${dir} Toward Snakes',
+          fr: 'Allez ${dir} vers les serpents',
           cn: '向 ${dir} 蛇走',
         },
         goToUnknownSnakes: {
           en: 'Go Toward Snakes',
+          fr: 'Allez vers les serpents',
           cn: '向蛇走',
         },
         outOfMiddleTowardSnakes: {
           en: 'Out Of Middle, Knockback To ${dir}',
+          fr: 'Loin du centre, Poussée vers ${dir}',
           cn: '离开中间，击退到 ${dir}',
         },
         outOfMiddleUnknownSnakes: {
           en: 'Out Of Middle, Knockback Toward Snakes',
+          fr: 'Loin du centre, Poussée vers les serpents',
           cn: '离开中间，向蛇击退',
         },
       },
@@ -367,7 +372,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': 'shiki écarlate',
         'Ao-no-shiki': 'shiki céruléen',
@@ -379,6 +383,8 @@ Options.Triggers.push({
         'Yama-no-shiki': 'shiki montagneux',
       },
       'replaceText': {
+        '--small adds spawn--': '--Apparition des petits adds--',
+        '--large add spawns--': '--Apparition des grands adds--',
         '100-tonze Swing': 'Swing de 100 tonz',
         'Blazing Aramitama': 'Aramitama incandescent',
         'Blue Bolt': 'Percée bleue',
