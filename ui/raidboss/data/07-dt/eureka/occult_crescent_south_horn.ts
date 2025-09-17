@@ -31,6 +31,7 @@ export interface Data extends RaidbossData {
   marbleDragonTankbusterFilter: boolean;
   marbleDragonDelugeTargets: string[];
   marbleDragonDiveDirNum?: number;
+  marbleDragonIsFrigidDive: boolean;
   marbleDragonHasWickedWater: boolean;
   magitaurRuneTargets: string[];
   magitaurIsRuinousRune2: boolean;
@@ -234,6 +235,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     marbleDragonTankbusterFilter: false,
     marbleDragonDelugeTargets: [],
+    marbleDragonIsFrigidDive: false,
     marbleDragonHasWickedWater: false,
     magitaurRuneTargets: [],
     magitaurIsRuinousRune2: false,
@@ -1811,25 +1813,116 @@ const triggerSet: TriggerSet<Data> = {
           );
           return;
         }
-        data.marbleDragonDiveDirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, marbleDragonCenterX, marbleDragonCenterY);
+        data.marbleDragonDiveDirNum = Directions.xyTo8DirNum(
+          actor.PosX,
+          actor.PosY,
+          marbleDragonCenterX,
+          marbleDragonCenterY,
+        );
       },
       alertText: (data, _matches, output) => {
         if (data.marbleDragonDiveDirNum === undefined) {
-          return output.avoidBossDive!();
+          return output.bossDiveThenTowers!();
         }
         const dir1 = output[Directions.outputFrom8DirNum(data.marbleDragonDiveDirNum)]!();
         const dir2 = output[Directions.outputFrom8DirNum((data.marbleDragonDiveDirNum + 4) % 8)]!();
-        return output.avoidDiveDirs!({ dir1: dir1, dir2: dir2 });
+        return output.diveDirsThenTowers!({ dir1: dir1, dir2: dir2 });
       },
-      run: (data) => data.marbleDragonDiveDirNum = undefined,
+      run: (data) => {
+        data.marbleDragonIsFrigidDive = true;
+      },
       outputStrings: {
         ...Directions.outputStrings8Dir,
-        avoidDiveDirs: {
-          en: 'Avoid ${dir1}/${dir2} Dive',
+        diveDirsThenTowers: {
+          en: '${dir1}/${dir2} Dive => Towers',
         },
-        avoidBossDive: {
-          en: 'Avoid Boss Dive',
+        bossDiveThenTowers: {
+          en: 'Boss Dive => Towers',
         },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Towers 1',
+      // Frigid Dive (7796) triggers the center cross puddle to go off
+      // Using Frigid Dive (93BB) damage 7.7s cast to trigger call
+      // Players can modify cardinals/intercards to an assigned tower direction
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '93BB', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonDiveDirNum === undefined) {
+          return output.towersUnknownDir!();
+        }
+        const dir1 = output[Directions.outputFrom8DirNum(data.marbleDragonDiveDirNum)]!();
+        const dir2 = output[Directions.outputFrom8DirNum((data.marbleDragonDiveDirNum + 4) % 8)]!();
+        // `marbleDragonDiveDirNum % 2 === 0` = this is aimed at a cardinal, so intercard towers are second
+        if (data.marbleDragonDiveDirNum % 2 === 0)
+          return output.towerDirsThenIntercardTowers!({ dir1: dir1, dir2: dir2 });
+        return output.towerDirsThenCardinalTowers!({ dir1: dir1, dir2: dir2 });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        towersUnknownDir: {
+          en: 'Towers => Cardinal/Intercard Towers',
+        },
+        towerDirsThenCardinalTowers: {
+          en: '${dir1}/${dir2} Towers => Cardinal Towers',
+        },
+        towerDirsThenIntercardTowers: {
+          en: '${dir1}/${dir2} Towers => Intercard Towers',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Towers 2',
+      // Once Immitation Blizzard (7615) 3.7s cast has gone off, towers appear in ~0.4s
+      // These tower casts occur after Wicked Water as well
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '7615', capture: true },
+      condition: (data) => {
+        // Only execute during Frigid Dive Towers
+        return data.marbleDragonIsFrigidDive;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonDiveDirNum === undefined) {
+          return output.unknownTowers!();
+        }
+
+        // `marbleDragonDiveDirNum % 2 === 0` = this is aimed at a cardinal, so intercard towers are second
+        if (data.marbleDragonDiveDirNum % 2 === 0)
+          return output.intercardTowers!();
+        return output.cardinalTowers!();
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        unknownTowers: {
+          en: 'Cardinal/Intercard Towers',
+        },
+        cardinalTowers: {
+          en: 'Cardinal Towers',
+        },
+        intercardTowers: {
+          en: 'Intercardinal Towers',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Frigid Dive Cleanup',
+      // Ability conflicts in timing with towers 2, this trigger fires before in emulator
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7615', capture: false },
+      condition: (data) => {
+        // Only execute during Frigid Dive Towers
+        return data.marbleDragonIsFrigidDive;
+      },
+      delaySeconds: 1,
+      suppressSeconds: 1,
+      run: (data) => {
+        // Clear data for subsequent Frigid Dive/Towers
+        data.marbleDragonIsFrigidDive = false;
+        data.marbleDragonDiveDirNum = undefined;
       },
     },
     {
@@ -1894,6 +1987,55 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         breakGaols: {
           en: 'Break Gaols',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Towers 3 and 4',
+      // Ball of Ice A716 spawns the towers
+      // Towers are either vertical (2 columns of 3) or horizontal (2 rows of 3)
+      // The StartsUsing 20 log lines can be wrong, but the StartsUsingExtra 263 lines seem to be correct
+      // There are six Marble Dragon actors that cast Immitation Blizzard 7615 which signifies end of towers
+      // If StartsUsingExtra lines are wrong, may need to change to OverlayPlugin
+      // Horizontal:
+      // (-346.019, 151.006) (-337.016, 151.006) (-328.013, 151.006)
+      // (-346.019, 162.999) (-337.016, 162.999) (-328.013, 162.999)
+      // Vertical:
+      // (-331.004, 148.015) (-342.998, 148.015)
+      // (-331.004, 157.018) (-342.998, 157.018)
+      // (-331.004, 165.990) (-342.998, 165.990)
+      // Since the coords are unique between patterns, only need to check one tower's x or y coord
+      // TODO: Additionall call earlier with infoText?
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A716', capture: true },
+      condition: (data) => {
+        // Only execute outside Frigid Dive Towers
+        return !data.marbleDragonIsFrigidDive;
+      },
+      suppressSeconds: 1,
+      alertText: (_data, matches, output) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+
+        if ((x > -332 && x < -330) || (x > -344 && x < -342))
+          return output.getVerticalTowers!();
+
+        if ((y > 150 && y < 152) || (y > 162 && y < 164))
+          return output.getHorizontalTowers!();
+
+        // Unrecognized coordinates
+        console.error(
+          `Occult Crescent Marble Dragon Towers 3 and 4: Unrecognized coordinates (${x}, ${y})`,
+        );
+        return output.getTowers!();
+      },
+      outputStrings: {
+        getTowers: Outputs.getTowers,
+        getVerticalTowers: {
+          en: 'Get Vertical Towers',
+        },
+        getHorizontalTowers: {
+          en: 'Get Horizontal Towers'
         },
       },
     },
