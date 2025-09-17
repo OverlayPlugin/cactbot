@@ -30,7 +30,12 @@ export interface Data extends RaidbossData {
   prongedPassageIdolCastCount: { [id: string]: number };
   marbleDragonTankbusterFilter: boolean;
   marbleDragonDelugeTargets: string[];
+  marbleDragonDiveDirNum?: number;
   marbleDragonHasWickedWater: boolean;
+  magitaurRuneTargets: string[];
+  magitaurIsRuinousRune2: boolean;
+  magitaurRune2Targets: string[];
+  magitaurBigRune2Target?: string;
   bossDir?: number;
   playerDir?: number;
 }
@@ -87,11 +92,16 @@ const headMarkerData = {
   // Neo Garula tankbuster from Squash in Noise Complaint CE
   // Hinkypunk tankbuster from Dread Dive in Flame of Dusk CE
   // Death Claw tankbuster from Dirty Nails in Crawling Death CE
-  // Repaired Lion tankbuster from Scratch in Eternal Watch CE
   // Crescent Inkstain tankbuster from Amorphic Flail
+  // Repaired Lion tankbuster from Scratch in Eternal Watch CE
+  // Mysterious Mindflayer tankbuster from Void Thunder III in Scourge of the Mind CE
   'marbleDragonTankbuster': '00DA',
   // Marble Dragon red pinwheel markers from Wicked Water
   'marbleDragonWickedWater': '0017',
+  // Magitaur big red pinwheel marker from Ruinous Rune (A251)
+  'magitaurBigRuinousRune': '023D',
+  // Magiatur small red pinwheel markers from Ruinous Rune (A250)
+  'magitaurSmallRuinousRune': '0159',
 } as const;
 
 // Occult Crescent Forked Tower: Blood Demon Tablet consts
@@ -101,10 +111,6 @@ const demonTabletCenterY = 379;
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
-
-// Occult Crescent Forked Tower: Pronged Passage consts
-const prongedPassageCenterY = 315;
-
 const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
     en: 'Line Stacks on ${player1}, ${player2}, ${player3}',
@@ -119,6 +125,65 @@ const deadStarsOutputStrings = {
     ja: '直線頭割り',
     cn: '直线分摊点名',
     ko: '직선 쉐어 대상자',
+  },
+};
+
+// Occult Crescent Forked Tower: Pronged Passage consts
+const prongedPassageCenterY = 315;
+
+// Occult Crescent Forked Tower: Marble Dragon consts
+const marbleDragonCenterX = -337;
+const marbleDragonCenterY = 157;
+
+// Occult Crescent Forked Tower: Magitaur consts
+const magitaurOutputStrings = {
+  rune1BigAoeOnYou: {
+    en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+  },
+  rune1SmallAoeOnYou: {
+    en: 'Small aoe on YOU, Stay Square => Between Squares',
+  },
+  rune1BigAoeOnPlayer: {
+    en: 'Big AOE on ${player}, Be on Square',
+  },
+  rune1SmallAoesOnPlayers: {
+    en: 'Small aoes on ${player1}, ${player2}, ${player3}',
+  },
+  rune1SmallAoEStayThenIn: {
+    en: 'Stay for AOE => In, Between Squares',
+  },
+  rune2BigAoeOnYou: {
+    en: 'Big AOE on YOU',
+  },
+  rune2SmallAoeOnYou: {
+    en: 'Small aoe on YOU',
+  },
+  rune2InBigAoeOnYou: {
+    en: 'In, Between Squares => To Wall',
+  },
+  rune2InSmallAoeOnYou: {
+    en: 'In, Between Squares => Solo Square',
+  },
+  rune2AoesOnPlayers: {
+    en: 'AOEs on ${player1}, ${player2}, ${player3}',
+  },
+  rune2AvoidPlayers: {
+    en: 'On Square, Avoid ${player1} & ${player2}',
+  },
+  rune2SmallAoeOnYouReminder: {
+    en: 'Small aoe on YOU, Be on Square (Solo)',
+  },
+  rune2BigAoeOnYouReminder: {
+    en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+  },
+  inThenOnSquare: {
+    en: 'In, between Squares => On Square',
+  },
+  out: {
+    en: 'Out, Square Corner',
+  },
+  in: {
+    en: 'In, between Squares',
   },
 };
 
@@ -170,6 +235,9 @@ const triggerSet: TriggerSet<Data> = {
     marbleDragonTankbusterFilter: false,
     marbleDragonDelugeTargets: [],
     marbleDragonHasWickedWater: false,
+    magitaurRuneTargets: [],
+    magitaurIsRuinousRune2: false,
+    magitaurRune2Targets: [],
   }),
   resetWhenOutOfCombat: false,
   timelineTriggers: [
@@ -1601,15 +1669,13 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         if (data.role === 'tank')
           return output.pullBossAway!();
-        return output.killBombs!();
+        return output.killAdds!();
       },
       outputStrings: {
         pullBossAway: {
           en: 'Pull boss away from bombs',
         },
-        killBombs: {
-          en: 'Kill Bombs',
-        },
+        killAdds: Outputs.killAdds,
       },
     },
     {
@@ -1729,6 +1795,52 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Marble Dragon Frigid Dive Direction',
+      // Prior to Frigid Dive (7796), boss casts unknown_7795 which is it moving to the dive position
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7795', capture: true },
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Frigid Dive Direction: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.marbleDragonDiveDirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, marbleDragonCenterX, marbleDragonCenterY);
+      },
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonDiveDirNum === undefined) {
+          return output.avoidBossDive!();
+        }
+        const dir1 = output[Directions.outputFrom8DirNum(data.marbleDragonDiveDirNum)]!();
+        const dir2 = output[Directions.outputFrom8DirNum((data.marbleDragonDiveDirNum + 4) % 8)]!();
+        return output.avoidDiveDirs!({ dir1: dir1, dir2: dir2 });
+      },
+      run: (data) => data.marbleDragonDiveDirNum = undefined,
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        avoidDiveDirs: {
+          en: 'Avoid ${dir1}/${dir2} Dive',
+        },
+        avoidBossDive: {
+          en: 'Avoid Boss Dive',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Lifeless Legacy',
+      // castTime is 35s
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '7798', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 7,
+      response: Responses.bigAoe(),
+    },
+    {
       id: 'Occult Crescent Marble Dragon Wicked Water',
       // Boss casts 77E7 Wicked Water, several players get marked
       // After cast end, marked players affected the following:
@@ -1807,17 +1919,18 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow',
+      // Do not trigger for the Lanceblow during Rune Axe
       type: 'StartsUsing',
       netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: true },
+      condition: (data) => {
+        return !data.magitaurIsRuinousRune2;
+      },
       alertText: (_data, matches, output) => {
         if (matches.id === 'A247')
           return output.out!();
         return output.in!();
       },
-      outputStrings: {
-        out: Outputs.out,
-        in: Outputs.in,
-      },
+      outputStrings: magitaurOutputStrings,
     },
     {
       id: 'Occult Crescent Magitaur Forked Fury',
@@ -1879,6 +1992,7 @@ const triggerSet: TriggerSet<Data> = {
       // Boss spawns three staves that will fire an untelegraphed line at nearest target
       // A25F Mana Expulsion is the untelegraphed line stack damage 14.4s after
       // There is an In/Out dodge before Mana Expulsion
+      // These can be focused into a single stack, but some parties split into groups
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A25E', capture: false },
       delaySeconds: 8.5,
@@ -1888,6 +2002,210 @@ const triggerSet: TriggerSet<Data> = {
         lineStackStaff: {
           en: 'Line stack at staff',
         },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Big Ruinous Rune 1 Target',
+      // This can be placed N, SE, or SW at the wall by Universal Cylinders (purple circles)
+      // Explosion must avoid square tiles
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.magitaurBigRuinousRune], capture: true },
+      condition: (data) => {
+        return !data.magitaurIsRuinousRune2;
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        const target = matches.target;
+        if (data.me === target)
+          return { alarmText: output.rune1BigAoeOnYou!() };
+
+        return {
+          infoText: output.rune1BigAoeOnPlayer!({
+            player: data.party.member(target),
+          }),
+        };
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Small Ruinous Rune 1 Targets',
+      // These must be placed on separate squares
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.magitaurSmallRuinousRune], capture: true },
+      condition: (data) => {
+        return !data.magitaurIsRuinousRune2;
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        data.magitaurRuneTargets.push(matches.target);
+        if (data.magitaurRuneTargets.length < 3)
+          return;
+
+        const target1 = data.magitaurRuneTargets[0];
+        const target2 = data.magitaurRuneTargets[1];
+        const target3 = data.magitaurRuneTargets[2];
+
+        if (data.me === target1 || data.me === target2 || data.me === target3)
+          return { infoText: output.rune1SmallAoeOnYou!() };
+
+        return {
+          infoText: output.rune1SmallAoesOnPlayers!({
+            player1: data.party.member(target1),
+            player2: data.party.member(target2),
+            player3: data.party.member(target3),
+          }),
+        };
+      },
+      run: (data) => {
+        // StartsUsing of A24B coincides with the Big Ruinous Rune Ability
+        if (data.magitaurRuneTargets.length === 3)
+          data.magitaurIsRuinousRune2 = true;
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow',
+      // Trigger once the big Ruinous Rune (A251) has gone off
+      // Players with first set of small Ruinous Runes (A250) stay on square
+      // Rest of players must get off
+      // This occurs with a Lanceblow almost immediately after, so pre-call that
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A251', capture: false },
+      condition: (data) => {
+        // On second set of A251, this value has been reset to default (false)
+        return data.magitaurIsRuinousRune2;
+      },
+      alertText: (data, _matches, output) => {
+        const target1 = data.magitaurRuneTargets[0];
+        const target2 = data.magitaurRuneTargets[1];
+        const target3 = data.magitaurRuneTargets[2];
+
+        if (data.me === target1 || data.me === target2 || data.me === target3)
+          return output.rune1SmallAoEStayThenIn!();
+        return output.in!();
+      },
+      outputStrings: magitaurOutputStrings,
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune 2 Collect',
+      // Second set has a big and two smalls resolve simultaneously
+      // These markers come out about 0.1~0.3s before set one smalls expire
+      // There is some trigger overlap to handle for unlucky players who get both sets
+      // Big resolves like usual
+      // Players with small will be on their own square with party on 3rd square
+      type: 'HeadMarker',
+      netRegex: {
+        id: [headMarkerData.magitaurBigRuinousRune, headMarkerData.magitaurSmallRuinousRune],
+        capture: true,
+      },
+      condition: (data) => {
+        return data.magitaurIsRuinousRune2;
+      },
+      preRun: (data, matches) => {
+        if (matches.id === headMarkerData.magitaurBigRuinousRune)
+          data.magitaurBigRune2Target = matches.target;
+        else if (matches.id === headMarkerData.magitaurSmallRuinousRune)
+          data.magitaurRune2Targets.push(matches.target);
+      },
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        if (data.magitaurBigRune2Target === undefined || data.magitaurRune2Targets.length < 2)
+          return;
+
+        const big = data.magitaurBigRune2Target;
+        const small1 = data.magitaurRune2Targets[0];
+        const small2 = data.magitaurRune2Targets[1];
+
+        if (data.me === big || data.me === small1 || data.me === small2) {
+          // Players who had small rune first need later call to prevent overlap
+          const target1 = data.magitaurRuneTargets[0];
+          const target2 = data.magitaurRuneTargets[1];
+          const target3 = data.magitaurRuneTargets[2];
+          if (data.me === target1 || data.me === target2 || data.me === target3)
+            return;
+          if (data.me === big)
+            return { infoText: output.rune2BigAoeOnYou!() };
+          if (data.me === small1 || data.me === small2)
+            return { infoText: output.rune2SmallAoeOnYou!() };
+        }
+
+        return {
+          infoText: output.rune2AoesOnPlayers!({
+            player1: data.party.member(big),
+            player2: data.party.member(small1),
+            player3: data.party.member(small2),
+          }),
+        };
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow Reminder',
+      // Players have ~2.1s to move based on damage cast timing of Critical Lanceblow
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A250', capture: true },
+      condition: (data, matches) => {
+        // magitaurIsRuinousRune2 is true at this time for first set
+        // This could be altered to not call for players without markers, but
+        // calling for player that got hit with the aoe could also save a life
+        if (matches.target === data.me && data.magitaurIsRuinousRune2)
+          return true;
+
+        // Players that get hit and are not targeted do not get an output
+        return false;
+      },
+      alertText: (data, _matches, output) => {
+        // Check if player has a marker again
+        const big = data.magitaurBigRune2Target;
+        const small1 = data.magitaurRune2Targets[0];
+        const small2 = data.magitaurRune2Targets[1];
+        if (data.me === big)
+          return output.rune2InBigAoeOnYou!();
+        if (data.me === small1 || data.me === small2)
+          return output.rune2InSmallAoeOnYou!();
+        return output.inThenOnSquare!();
+      },
+      outputStrings: magitaurOutputStrings,
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune 2 Reminder',
+      // Capture either alliance's Critical Lanceblow damage cast
+      // Using castTime of A24B is unreliable since damage cast comes later
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: ['A24E', 'A24D'], capture: false },
+      condition: (data) => {
+        return data.magitaurIsRuinousRune2;
+      },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const big = data.magitaurBigRune2Target;
+        const small1 = data.magitaurRune2Targets[0];
+        const small2 = data.magitaurRune2Targets[1];
+
+        if (data.me === big)
+          return output.rune2BigAoeOnYouReminder!();
+        if (data.me === small1 || data.me === small2)
+          return output.rune2SmallAoeOnYouReminder!();
+
+        return output.rune2AvoidPlayers!({
+          player1: data.party.member(small1),
+          player2: data.party.member(small2),
+        });
+      },
+      outputStrings: magitaurOutputStrings,
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune 2 Flag Unset',
+      // Clear condition on Critical Lanceblow
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: ['A24E', 'A24D'], capture: false },
+      condition: (data) => {
+        return data.magitaurIsRuinousRune2;
+      },
+      suppressSeconds: 1,
+      run: (data) => {
+        // Re-enable normal Axeblow / Lanceblow trigger and re-triggering Rune Lanceblow trigger
+        data.magitaurIsRuinousRune2 = false;
       },
     },
   ],
