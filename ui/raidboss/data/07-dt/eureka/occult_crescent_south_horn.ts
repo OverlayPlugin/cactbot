@@ -1842,7 +1842,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Towers 1',
+      id: 'Occult Crescent Marble Dragon Towers 1 and 3',
       // Frigid Dive (7796) triggers the center cross puddle to go off
       // Using Frigid Dive (93BB) damage 7.7s cast to trigger call
       // Players can modify cardinals/intercards to an assigned tower direction
@@ -1874,11 +1874,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Towers 2',
-      // Once Immitation Blizzard (7615) 3.7s cast has gone off, towers appear in ~0.4s
+      id: 'Occult Crescent Marble Dragon Towers 2 and 4',
+      // Once Immitation Blizzard 7614, 0.7s and 7615, 3.7s casts have gone off, towers appear in ~0.4s
       // These tower casts occur after Wicked Water as well
+      // Using the cross (7614) Immitation Blizzard as it only occurs once per dive versus the 7615 (towers)
       type: 'StartsUsing',
-      netRegex: { source: 'Marble Dragon', id: '7615', capture: true },
+      netRegex: { source: 'Marble Dragon', id: '7614', capture: true },
       condition: (data) => {
         // Only execute during Frigid Dive Towers
         return data.marbleDragonIsFrigidDive;
@@ -1991,7 +1992,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Towers 3 and 4',
+      id: 'Occult Crescent Marble Dragon Towers 5 and 6',
       // Ball of Ice A716 spawns the towers
       // Towers are either vertical (2 columns of 3) or horizontal (2 rows of 3)
       // The StartsUsing 20 log lines can be wrong, but the StartsUsingExtra 263 lines seem to be correct
