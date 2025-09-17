@@ -760,7 +760,7 @@ hideall "--sync--"
 
 # Begin Loop
 40391.4 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
-40391.4 Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] }
+40391.4 "Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] }
 40405.5 "Punishing Pounce" Ability { id: ["A628", "A629], source: ["Tower Progenitrix", "Tower Progenitor"] }
 40420.5 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
 40421.5 "Bombshell Drop" Ability { id: ["A626", "A627"], source: ["Tower Progenitrix", "Tower Progenitor"] }
