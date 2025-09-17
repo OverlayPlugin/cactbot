@@ -20,6 +20,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'A Rank Hunts and Chi boss FATE',
     de: 'A Rang Hohe Jagd und Chi Boss FATE',
+    fr: 'Chasse de rang A et boss d\'ALÉA Chi',
     cn: 'A级狩猎怪和希特殊FATE',
     ko: 'A급 마물, 키 특수돌발',
   },

@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.35.2",
-  "releaseSummary": "Seiryu Unreal, more OC, i18n",
+  "version": "0.35.3",
+  "releaseSummary": "CN 7.30+7.31, KO 7.25, M8N, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",

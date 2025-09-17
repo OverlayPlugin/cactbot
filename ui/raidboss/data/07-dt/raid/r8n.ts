@@ -35,6 +35,7 @@ const moonlightOutputStrings = {
   safeQuad: {
     en: '${quad}',
     de: '${quad}',
+    fr: '${quad}',
     ja: '${quad}',
     cn: '${quad}',
     ko: '${quad}',
@@ -42,6 +43,7 @@ const moonlightOutputStrings = {
   safeQuadrants: {
     en: '${quad1} => ${quad2}',
     de: '${quad1} => ${quad2}',
+    fr: '${quad1} => ${quad2}',
     ja: '${quad1} => ${quad2}',
     cn: '${quad1} => ${quad2}',
     ko: '${quad1} => ${quad2}',
@@ -83,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
         inLater: {
           en: '(In Later)',
           de: '(später Rein)',
+          fr: '(Intérieur, plus tard)',
           ja: '(あとで内側)',
           cn: '(稍后内侧)',
           ko: '(나중에 안)',
@@ -121,6 +124,7 @@ const triggerSet: TriggerSet<Data> = {
         inDir: {
           en: 'In ${dir}',
           de: 'Rein ${dir}',
+          fr: 'Intérieur ${dir}',
           ja: '内側 ${dir}',
           cn: '内侧 ${dir}',
           ko: '${dir} 안',
@@ -280,6 +284,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         behindClones: {
           en: 'Behind Clones',
+          fr: 'Derrière les clones',
           cn: '去分身后',
         },
       },
@@ -312,6 +317,7 @@ const triggerSet: TriggerSet<Data> = {
         lines: {
           en: 'Avoid Lines',
           de: 'Vermeide Linien',
+          fr: 'Évitez les lignes',
           ja: '直線攻撃を避ける',
           cn: '躲避直线 AoE',
           ko: '직선장판 피하기',
@@ -334,6 +340,7 @@ const triggerSet: TriggerSet<Data> = {
         rotate: {
           en: 'Rotate',
           de: 'Rotieren',
+          fr: 'Tournez',
           ja: '回転',
           cn: '旋转',
           ko: '회전',
