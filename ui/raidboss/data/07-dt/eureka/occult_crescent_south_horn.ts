@@ -2035,7 +2035,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get Vertical Towers',
         },
         getHorizontalTowers: {
-          en: 'Get Horizontal Towers'
+          en: 'Get Horizontal Towers',
         },
       },
     },
