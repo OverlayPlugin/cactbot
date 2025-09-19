@@ -2453,6 +2453,8 @@ const triggerSet: TriggerSet<Data> = {
           case 9:
             return { infoText: output.northwestOff!() };
           case 12:
+            // Re-enable normal Axeblow / Lanceblow trigger
+            data.magitaurIsHolyLance = false;
             return { alertText: output.out!() };
         }
       },
