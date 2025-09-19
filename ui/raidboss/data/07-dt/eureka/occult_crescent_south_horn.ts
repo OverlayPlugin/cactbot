@@ -37,6 +37,8 @@ export interface Data extends RaidbossData {
   magitaurIsRuinousRune2: boolean;
   magitaurRune2Targets: string[];
   magitaurBigRune2Target?: string;
+  magitaurIsHolyLance: boolean;
+  magitaurLancelightCount: number;
   bossDir?: number;
   playerDir?: number;
 }
@@ -180,6 +182,21 @@ const magitaurOutputStrings = {
   inThenOnSquare: {
     en: 'In, between Squares => On Square',
   },
+  northeastOff: {
+    en: 'Northeast Off',
+  },
+  northeastOn: {
+    en: 'Northeast On',
+  },
+  southOff: {
+    en: 'South Off',
+  },
+  southOn: {
+    en: 'South On',
+  },
+  northwestOff: {
+    en: 'Northwest Off',
+  },
   out: {
     en: 'Out, Square Corner',
   },
@@ -240,6 +257,8 @@ const triggerSet: TriggerSet<Data> = {
     magitaurRuneTargets: [],
     magitaurIsRuinousRune2: false,
     magitaurRune2Targets: [],
+    magitaurIsHolyLance: false,
+    magitaurLancelightCount: 0,
   }),
   resetWhenOutOfCombat: false,
   timelineTriggers: [
@@ -2062,11 +2081,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow',
-      // Do not trigger for the Lanceblow during Rune Axe
+      // Do not trigger for the Lanceblow during Rune Axe or during Holy Lance
       type: 'StartsUsing',
       netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: true },
       condition: (data) => {
-        return !data.magitaurIsRuinousRune2;
+        return !data.magitaurIsRuinousRune2 && !data.magitaurIsHolyLance;
       },
       alertText: (_data, matches, output) => {
         if (matches.id === 'A247')
@@ -2146,11 +2165,55 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Line stack at staff',
         },
       },
-    },
+    }, /*
+    {
+      id: 'Occult Crescent Magitaur Rune Axe Debuffs',
+      // This won't work until FFXIVACT Plugin captures StatusEffectListForay3
+      // Applied with Rune Axe (A24F)
+      // Prey: Greater Axebit (10F1) 9s
+      // Prey: Lesser Axebit (10F0) 14s
+      // Prey: Greater Axebit (10F1) 21s
+      // Prey: Lesser Axebit (10F0) 21s
+      // TODO: Add the ${player1} ${player2}... for the small rune calls
+      type: 'GainsEffect',
+      netRegex: { effectId: ['10F0', '11F1'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target)
+          return true;
+        return false;
+      },
+      infoText: (_data, matches, output) => {
+        const duration = parseFloat(matches.duration);
+        if (duration < 15) {
+          if (matches.effectId === '10F1')
+            return output.shortBigRune!();
+          return output.shortSmallRune!();
+        }
+        if (matches.effectId === '10F1')
+          return output.longBigRune!();
+        return output.longSmallRune!();
+      },
+      outputStrings: {
+        shortBigRune: {
+          en: 'Big AOE on YOU (First)',
+        },
+        shortSmallRune: {
+          en: 'Small aoe on YOU (Second)',
+        },
+        longBigRune: {
+          en: 'Big AOE on YOU (Third)',
+        },
+        longSmallRune: {
+          en: 'Small aoe on YOU (Third)',
+        },
+      },
+    },*/
     {
       id: 'Occult Crescent Magitaur Big Ruinous Rune 1 Target',
       // This can be placed N, SE, or SW at the wall by Universal Cylinders (purple circles)
       // Explosion must avoid square tiles
+      // Earlier, players were given debuff at end of Rune Axe (A24F) cast
+      // Prey: Greater Axebit (10F1) 9s
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurBigRuinousRune], capture: true },
       condition: (data) => {
@@ -2173,6 +2236,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Magitaur Small Ruinous Rune 1 Targets',
       // These must be placed on separate squares
+      // Players are also given a debuff:
+      // Prey: Lesser Axebit (10F0) 14s
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurSmallRuinousRune], capture: true },
       condition: (data) => {
@@ -2236,6 +2301,9 @@ const triggerSet: TriggerSet<Data> = {
       // There is some trigger overlap to handle for unlucky players who get both sets
       // Big resolves like usual
       // Players with small will be on their own square with party on 3rd square
+      // Players are also given a debuff:
+      // Prey: Greater Axebit (10F1) 21s
+      // Prey: Lesser Axebit (10F0) 21s
       type: 'HeadMarker',
       netRegex: {
         id: [headMarkerData.magitaurBigRuinousRune, headMarkerData.magitaurSmallRuinousRune],
@@ -2350,6 +2418,57 @@ const triggerSet: TriggerSet<Data> = {
         // Re-enable normal Axeblow / Lanceblow trigger and re-triggering Rune Lanceblow trigger
         data.magitaurIsRuinousRune2 = false;
       },
+    },
+    {
+      id: 'Occult Crescent Magitaur Holy Lance Filter',
+      // Lanceblow and Axeblow here need to be handled separately
+      // Lanceblow would have an overlap with stack call, whereas Axeblow overlaps with Holy IV resolution
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A255', capture: false },
+      run: (data) => {
+        data.magitaurIsHolyLance = true;
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Lancelight On/Off Square',
+      // TODO: Get player position for an alertText and filter?
+      // Players can manually blank the outputString for the other squares in configuration
+      // Holy IV first and second targets need to avoid overlapping outside square
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: ['A259', 'A258'], capture: false },
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        data.magitaurLancelightCount = data.magitaurLancelightCount + 1;
+        switch (data.magitaurLancelightCount) {
+          case 1:
+            return { infoText: output.northeastOff!() };
+          case 4:
+            return { infoText: output.northeastOn!() };
+          case 5:
+            return { infoText: output.southOff!() };
+          case 8:
+            return { infoText: output.southOn!() };
+          case 9:
+            return { infoText: output.northwestOff!() };
+          case 12:
+            return { alertText: output.out!() };
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Holy Lance Critical Lanceblow',
+      // TODO: Merge Lanceblow Stack trigger here?
+      // Stack headmarkers come out at this time
+      // Related debuff for headmarkers is Prey: Lancepoint (10F2)
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A24B', capture: false },
+      condition: (data) => {
+        return data.magitaurIsHolyLance;
+      },
+      alertText: (_data, _matches, output) => output.in!(),
+      outputStrings: magitaurOutputStrings,
     },
   ],
   timelineReplace: [
