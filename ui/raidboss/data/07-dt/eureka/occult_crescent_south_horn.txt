@@ -1095,8 +1095,8 @@ hideall "--sync--"
 60384.2 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
 
 60394.1 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
-60406.8 "Arcane Recoil" Ability { id: "A25C", source: "Magitaur" }
-60407.1 "Arcane Reaction" Ability { id: "A25D", source: "Magitaur" }
+60406.8 "Arcane Recoil" #Ability { id: "A25C", source: "Magitaur" }
+60407.1 "Arcane Reaction" #Ability { id: "A25D", source: "Magitaur" }
 60413.1 "Arcane Recoil" #Ability { id: "A25C", source: "Lance Empowerment Conduit" }
 60414.1 "Arcane Recoil" #Ability { id: "A25C", source: "Magitaur" }
 60414.5 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
