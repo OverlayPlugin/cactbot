@@ -837,7 +837,9 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         const corner = data.demonTabletIsFrontRight === undefined
           ? output.safeCorner!()
-          : data.demonTabletIsFrontRight ? output.frontRight!() : output.backLeft!();
+          : data.demonTabletIsFrontRight
+          ? output.frontRight!()
+          : output.backLeft!();
 
         return output.towersThenSafeSpot!({ towers: output.getTowers!(), corner: corner });
       },
