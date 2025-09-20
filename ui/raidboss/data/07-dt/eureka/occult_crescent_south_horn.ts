@@ -2090,7 +2090,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         recuperation: {
           en: 'Recuperation (if possible)',
-        }
+        },
       },
     },
     {
