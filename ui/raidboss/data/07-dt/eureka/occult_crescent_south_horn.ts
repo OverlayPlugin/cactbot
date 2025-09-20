@@ -15,6 +15,7 @@ export interface Data extends RaidbossData {
   demonTabletCometeor?: 'near' | 'afar';
   demonTabletCometSouthTargets: string[];
   demonTabletCometNorthTargets: string[];
+  demonTabletIsFrontRight?: boolean;
   deadStarsIsSlice2: boolean;
   deadStarsSliceTargets: string[];
   deadStarsFirestrikeTargets: string[];
@@ -773,6 +774,132 @@ const triggerSet: TriggerSet<Data> = {
         },
         goTowerSideIn: {
           en: 'Go Towers Side and In (Knockback)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Erase Gravity Collect',
+      // Statues cast Erase Gravity, which sends them and anyone near up in the air
+      // Boss casts Restore Gravity which will cause the statues and players to fall back down
+      // Statues falling down trigger aoes
+      // Players could be on either side, dependent on where the towers were
+      // Pattern 1: (Front right safe)
+      // (688, 352)
+      //            (712, 362.5)
+      //
+      // ----- Boss -----
+      //
+      // (688, 395.5)
+      //            (712, 406)
+      // Pattern 2: (Back left safe)
+      //
+      // (688, 362.5)
+      //             (712, 370)
+      // ----- Boss -----
+      // (688, 388)
+      //             (712, 395.5)
+      //
+      // Data from StartsUsing is inaccurate, but the Extra lines are close enough
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A2EB', capture: true },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        // Only need to examine one statue
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+
+        if (x > 687 && x < 689) {
+          if ((y > 351 && y < 353) || (y > 394.5 && y < 396.5))
+            data.demonTabletIsFrontRight = true;
+          if ((y > 361.5 && y < 363.5) || (y > 387 && y < 389))
+            data.demonTabletIsFrontRight = false;
+        } else if (x > 711 && x < 713) {
+          if ((y > 361.5 && y < 363.5) || (y > 405 && y < 407))
+            data.demonTabletIsFrontRight = true;
+          if ((y > 369 && y < 371) || (y > 394.5 && y < 396.5))
+            data.demonTabletIsFrontRight = false;
+        }
+
+        // Log error for unrecognized coordinates
+        if (data.demonTabletIsFrontRight === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Erase Gravity Collect: Unrecognized coordinates (${x}, ${y})`,
+          );
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Gravity/Ground Towers',
+      // Some players need to go to statues for levitate at this point
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      infoText: (data, _matches, output) => {
+        const corner = data.demonTabletIsFrontRight === undefined
+          ? output.safeCorner!()
+          : data.demonTabletIsFrontRight ? output.frontRight!() : output.backLeft!();
+
+        return output.towersThenSafeSpot!({ towers: output.getTowers!(), corner: corner });
+      },
+      outputStrings: {
+        towersThenSafeSpot: {
+          en: '${towers} => ${corner}',
+        },
+        getTowers: Outputs.getTowers,
+        frontRight: {
+          en: 'Front Right',
+          de: 'Vorne Rechts',
+          fr: 'Avant Droit',
+          ja: '前右',
+          cn: '右前',
+          ko: '앞 오른쪽',
+        },
+        backLeft: {
+          en: 'Back Left',
+          de: 'Hinten Links',
+          fr: 'Arrière Gauche',
+          ja: '後左',
+          cn: '左后',
+          ko: '뒤 왼쪽',
+        },
+        safeCorner: {
+          en: 'Safe Corner',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Gravity/Ground Tower Explosion',
+      // This could also capture the Unmitigated Explosion that happens 2.1s later, however
+      // if there aren't any towers resolved it's probably a wipe
+      type: 'Ability',
+      netRegex: { source: 'Demon Tablet', id: ['A2F1', 'A2EF'], capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.demonTabletIsFrontRight === undefined)
+          return output.avoidFallingStatues!();
+        if (data.demonTabletIsFrontRight)
+          return output.frontRight!();
+        return output.backLeft!();
+      },
+      outputStrings: {
+        avoidFallingStatues: {
+          en: 'Avoid Falling Statues',
+        },
+        frontRight: {
+          en: 'Front Right',
+          de: 'Vorne Rechts',
+          fr: 'Avant Droit',
+          ja: '前右',
+          cn: '右前',
+          ko: '앞 오른쪽',
+        },
+        backLeft: {
+          en: 'Back Left',
+          de: 'Hinten Links',
+          fr: 'Arrière Gauche',
+          ja: '後左',
+          cn: '左后',
+          ko: '뒤 왼쪽',
         },
       },
     },
