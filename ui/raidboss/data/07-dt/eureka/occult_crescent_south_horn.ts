@@ -90,6 +90,7 @@ const headMarkerData = {
   // Dead Stars snowball tether
   'deadStarsSnowballTether2': '0001',
   // Tower Progenitor and Tower Progenitrix Punishing Pounce Stack
+  // Magitaur Holy IV Stack
   'prongedPassageStack': '0064',
   // Marble Dragon tankbuster from Dread Deluge
   // Neo Garula tankbuster from Squash in Noise Complaint CE
@@ -1703,6 +1704,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Pronged Passage Punishing Pounce',
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.prongedPassageStack], capture: true },
+      condition: (data) => {
+        // Do not trigger during Magitaur Holy Lance
+        return !data.magitaurIsHolyLance;
+      },
       promise: async (data, matches) => {
         const combatants = (await callOverlayHandler({
           call: 'getCombatants',
