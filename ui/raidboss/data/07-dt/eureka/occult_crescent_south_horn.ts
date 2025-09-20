@@ -2065,6 +2065,79 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Guardian Wraith Scream',
+      // 10.5s castTime
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Wraith', id: 'A7CE', capture: false },
+      response: Responses.getOut(),
+    },
+    {
+      id: 'Occult Crescent Guardian Golem Toxic Minerals',
+      // Guardian Golem casts Toxic Minerals (A352), nearby players get affected by 25s Toxic Minerals (115C)
+      // Phantom Oracle must use Recuperation to cleanse subsequent Doom from players
+      // A 21s Doom is applied after the 25s Toxic Minerals effect ends
+      // Recuperation adds a 20s buff to players and on expiration will cleanse the Doom
+      // The Doom can also be cleansed with Esuna
+      // TODO: Filter for Phantom Oracle
+      // TODO: Cleanse call for Doom, but it is not yet logged, it's probably 11CE?
+      type: 'GainsEffect',
+      netRegex: { effectId: '115C', capture: true },
+      condition: Conditions.targetIsYou(),
+      // 25s - 20s, plus some delay for buff/debuff propagation
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 20 + 0.5,
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.recuperation!(),
+      outputStrings: {
+        recuperation: {
+          en: 'Recuperation (if possible)',
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Guardian Knight Buster Knuckles',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: false },
+      response: Responses.getOutThenIn(),
+    },
+    {
+      id: 'Occult Crescent Guardian Knight Earthquake',
+      // Using Buster Knuckles (A7D5) delayed until 8.7s castTime as trigger for Earthquake (A7ED)
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      response: Responses.getIn(),
+    },
+    {
+      id: 'Occult Crescent Guardian Knight Line of Fire',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Guardian Weapon Whirl of Rage',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Weapon', id: 'A708', capture: false },
+      response: Responses.outOfMelee(),
+    },
+    {
+      id: 'Occult Crescent Guardian Weapon Smite of Rage',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Weapon', id: 'A707', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Master Lockward',
+      // Players must not intertupt Cunning Keywork (A7E4) 5.7s cast from Master Lockward
+      type: 'AddedCombatant',
+      netRegex: { name: 'Master Lockward', capture: false },
+      infoText: (_data, _matches, output) => output.spawned!(),
+      outputStrings: {
+        spawned: {
+          en: 'Master Lockward spawned',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Magitaur Unsealed Aura',
       // A264 Unsealed Aura cast
       // 9BE7 Unsealed Aura damage
