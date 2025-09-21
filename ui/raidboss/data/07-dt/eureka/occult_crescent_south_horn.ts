@@ -15,6 +15,7 @@ export interface Data extends RaidbossData {
   demonTabletCometeor?: 'near' | 'afar';
   demonTabletCometSouthTargets: string[];
   demonTabletCometNorthTargets: string[];
+  demonTabletIsFrontRight?: boolean;
   deadStarsIsSlice2: boolean;
   deadStarsSliceTargets: string[];
   deadStarsFirestrikeTargets: string[];
@@ -30,7 +31,15 @@ export interface Data extends RaidbossData {
   prongedPassageIdolCastCount: { [id: string]: number };
   marbleDragonTankbusterFilter: boolean;
   marbleDragonDelugeTargets: string[];
+  marbleDragonDiveDirNum?: number;
+  marbleDragonIsFrigidDive: boolean;
   marbleDragonHasWickedWater: boolean;
+  magitaurRuneTargets: string[];
+  magitaurIsRuinousRune2: boolean;
+  magitaurRune2Targets: string[];
+  magitaurBigRune2Target?: string;
+  magitaurIsHolyLance: boolean;
+  magitaurLancelightCount: number;
   bossDir?: number;
   playerDir?: number;
 }
@@ -82,16 +91,22 @@ const headMarkerData = {
   // Dead Stars snowball tether
   'deadStarsSnowballTether2': '0001',
   // Tower Progenitor and Tower Progenitrix Punishing Pounce Stack
+  // Magitaur Holy IV Stack
   'prongedPassageStack': '0064',
   // Marble Dragon tankbuster from Dread Deluge
   // Neo Garula tankbuster from Squash in Noise Complaint CE
   // Hinkypunk tankbuster from Dread Dive in Flame of Dusk CE
   // Death Claw tankbuster from Dirty Nails in Crawling Death CE
-  // Repaired Lion tankbuster from Scratch in Eternal Watch CE
   // Crescent Inkstain tankbuster from Amorphic Flail
+  // Repaired Lion tankbuster from Scratch in Eternal Watch CE
+  // Mysterious Mindflayer tankbuster from Void Thunder III in Scourge of the Mind CE
   'marbleDragonTankbuster': '00DA',
   // Marble Dragon red pinwheel markers from Wicked Water
   'marbleDragonWickedWater': '0017',
+  // Magitaur big red pinwheel marker from Ruinous Rune (A251)
+  'magitaurBigRuinousRune': '023D',
+  // Magiatur small red pinwheel markers from Ruinous Rune (A250)
+  'magitaurSmallRuinousRune': '0159',
 } as const;
 
 // Occult Crescent Forked Tower: Blood Demon Tablet consts
@@ -101,10 +116,6 @@ const demonTabletCenterY = 379;
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
-
-// Occult Crescent Forked Tower: Pronged Passage consts
-const prongedPassageCenterY = 315;
-
 const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
     en: 'Line Stacks on ${player1}, ${player2}, ${player3}',
@@ -119,6 +130,80 @@ const deadStarsOutputStrings = {
     ja: '直線頭割り',
     cn: '直线分摊点名',
     ko: '직선 쉐어 대상자',
+  },
+};
+
+// Occult Crescent Forked Tower: Pronged Passage consts
+const prongedPassageCenterY = 315;
+
+// Occult Crescent Forked Tower: Marble Dragon consts
+const marbleDragonCenterX = -337;
+const marbleDragonCenterY = 157;
+
+// Occult Crescent Forked Tower: Magitaur consts
+const magitaurOutputStrings = {
+  rune1BigAoeOnYou: {
+    en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+  },
+  rune1SmallAoeOnYou: {
+    en: 'Small aoe on YOU, Stay Square => Between Squares',
+  },
+  rune1BigAoeOnPlayer: {
+    en: 'Big AOE on ${player}, Be on Square',
+  },
+  rune1SmallAoesOnPlayers: {
+    en: 'Small aoes on ${player1}, ${player2}, ${player3}',
+  },
+  rune1SmallAoEStayThenIn: {
+    en: 'Stay for AOE => In, Between Squares',
+  },
+  rune2BigAoeOnYou: {
+    en: 'Big AOE on YOU',
+  },
+  rune2SmallAoeOnYou: {
+    en: 'Small aoe on YOU',
+  },
+  rune2InBigAoeOnYou: {
+    en: 'In, Between Squares => To Wall',
+  },
+  rune2InSmallAoeOnYou: {
+    en: 'In, Between Squares => Solo Square',
+  },
+  rune2AoesOnPlayers: {
+    en: 'AOEs on ${player1}, ${player2}, ${player3}',
+  },
+  rune2AvoidPlayers: {
+    en: 'On Square, Avoid ${player1} & ${player2}',
+  },
+  rune2SmallAoeOnYouReminder: {
+    en: 'Small aoe on YOU, Be on Square (Solo)',
+  },
+  rune2BigAoeOnYouReminder: {
+    en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+  },
+  inThenOnSquare: {
+    en: 'In, between Squares => On Square',
+  },
+  northeastOff: {
+    en: 'Northeast Off',
+  },
+  northeastOn: {
+    en: 'Northeast On',
+  },
+  southOff: {
+    en: 'South Off',
+  },
+  southOn: {
+    en: 'South On',
+  },
+  northwestOff: {
+    en: 'Northwest Off',
+  },
+  out: {
+    en: 'Out, Square Corner',
+  },
+  in: {
+    en: 'In, between Squares',
   },
 };
 
@@ -169,7 +254,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     marbleDragonTankbusterFilter: false,
     marbleDragonDelugeTargets: [],
+    marbleDragonIsFrigidDive: false,
     marbleDragonHasWickedWater: false,
+    magitaurRuneTargets: [],
+    magitaurIsRuinousRune2: false,
+    magitaurRune2Targets: [],
+    magitaurIsHolyLance: false,
+    magitaurLancelightCount: 0,
   }),
   resetWhenOutOfCombat: false,
   timelineTriggers: [
@@ -683,6 +774,134 @@ const triggerSet: TriggerSet<Data> = {
         },
         goTowerSideIn: {
           en: 'Go Towers Side and In (Knockback)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Erase Gravity Collect',
+      // Statues cast Erase Gravity, which sends them and anyone near up in the air
+      // Boss casts Restore Gravity which will cause the statues and players to fall back down
+      // Statues falling down trigger aoes
+      // Players could be on either side, dependent on where the towers were
+      // Pattern 1: (Front right safe)
+      // (688, 352)
+      //            (712, 362.5)
+      //
+      // ----- Boss -----
+      //
+      // (688, 395.5)
+      //            (712, 406)
+      // Pattern 2: (Back left safe)
+      //
+      // (688, 362.5)
+      //             (712, 370)
+      // ----- Boss -----
+      // (688, 388)
+      //             (712, 395.5)
+      //
+      // Data from StartsUsing is inaccurate, but the Extra lines are close enough
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A2EB', capture: true },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        // Only need to examine one statue
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+
+        if (x > 687 && x < 689) {
+          if ((y > 351 && y < 353) || (y > 394.5 && y < 396.5))
+            data.demonTabletIsFrontRight = true;
+          if ((y > 361.5 && y < 363.5) || (y > 387 && y < 389))
+            data.demonTabletIsFrontRight = false;
+        } else if (x > 711 && x < 713) {
+          if ((y > 361.5 && y < 363.5) || (y > 405 && y < 407))
+            data.demonTabletIsFrontRight = true;
+          if ((y > 369 && y < 371) || (y > 394.5 && y < 396.5))
+            data.demonTabletIsFrontRight = false;
+        }
+
+        // Log error for unrecognized coordinates
+        if (data.demonTabletIsFrontRight === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Erase Gravity Collect: Unrecognized coordinates (${x}, ${y})`,
+          );
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Gravity/Ground Towers',
+      // Some players need to go to statues for levitate at this point
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      infoText: (data, _matches, output) => {
+        const corner = data.demonTabletIsFrontRight === undefined
+          ? output.safeCorner!()
+          : data.demonTabletIsFrontRight
+          ? output.frontRight!()
+          : output.backLeft!();
+
+        return output.towersThenSafeSpot!({ towers: output.getTowers!(), corner: corner });
+      },
+      outputStrings: {
+        towersThenSafeSpot: {
+          en: '${towers} => ${corner}',
+        },
+        getTowers: Outputs.getTowers,
+        frontRight: {
+          en: 'Front Right',
+          de: 'Vorne Rechts',
+          fr: 'Avant Droit',
+          ja: '前右',
+          cn: '右前',
+          ko: '앞 오른쪽',
+        },
+        backLeft: {
+          en: 'Back Left',
+          de: 'Hinten Links',
+          fr: 'Arrière Gauche',
+          ja: '後左',
+          cn: '左后',
+          ko: '뒤 왼쪽',
+        },
+        safeCorner: {
+          en: 'Safe Corner',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Gravity/Ground Tower Explosion',
+      // This could also capture the Unmitigated Explosion that happens 2.1s later, however
+      // if there aren't any towers resolved it's probably a wipe
+      type: 'Ability',
+      netRegex: { source: 'Demon Tablet', id: ['A2F1', 'A2EF'], capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.demonTabletIsFrontRight === undefined)
+          return output.avoidFallingStatues!();
+        if (data.demonTabletIsFrontRight)
+          return output.frontRight!();
+        return output.backLeft!();
+      },
+      outputStrings: {
+        avoidFallingStatues: {
+          en: 'Avoid Falling Statues',
+        },
+        frontRight: {
+          en: 'Front Right',
+          de: 'Vorne Rechts',
+          fr: 'Avant Droit',
+          ja: '前右',
+          cn: '右前',
+          ko: '앞 오른쪽',
+        },
+        backLeft: {
+          en: 'Back Left',
+          de: 'Hinten Links',
+          fr: 'Arrière Gauche',
+          ja: '後左',
+          cn: '左后',
+          ko: '뒤 왼쪽',
         },
       },
     },
@@ -1601,21 +1820,23 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         if (data.role === 'tank')
           return output.pullBossAway!();
-        return output.killBombs!();
+        return output.killAdds!();
       },
       outputStrings: {
         pullBossAway: {
           en: 'Pull boss away from bombs',
         },
-        killBombs: {
-          en: 'Kill Bombs',
-        },
+        killAdds: Outputs.killAdds,
       },
     },
     {
       id: 'Occult Crescent Pronged Passage Punishing Pounce',
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.prongedPassageStack], capture: true },
+      condition: (data) => {
+        // Do not trigger during Magitaur Holy Lance
+        return !data.magitaurIsHolyLance;
+      },
       promise: async (data, matches) => {
         const combatants = (await callOverlayHandler({
           call: 'getCombatants',
@@ -1729,6 +1950,144 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Marble Dragon Frigid Dive Direction',
+      // Prior to Frigid Dive (7796), boss casts unknown_7795 which is it moving to the dive position
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7795', capture: true },
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Frigid Dive Direction: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        data.marbleDragonDiveDirNum = Directions.xyTo8DirNum(
+          actor.PosX,
+          actor.PosY,
+          marbleDragonCenterX,
+          marbleDragonCenterY,
+        );
+      },
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonDiveDirNum === undefined) {
+          return output.bossDiveThenTowers!();
+        }
+        const dir1 = output[Directions.outputFrom8DirNum(data.marbleDragonDiveDirNum)]!();
+        const dir2 = output[Directions.outputFrom8DirNum((data.marbleDragonDiveDirNum + 4) % 8)]!();
+        return output.diveDirsThenTowers!({ dir1: dir1, dir2: dir2 });
+      },
+      run: (data) => {
+        data.marbleDragonIsFrigidDive = true;
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        diveDirsThenTowers: {
+          en: '${dir1}/${dir2} Dive => Towers',
+        },
+        bossDiveThenTowers: {
+          en: 'Boss Dive => Towers',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Towers 1 and 3',
+      // Frigid Dive (7796) triggers the center cross puddle to go off
+      // Using Frigid Dive (93BB) damage 7.7s cast to trigger call
+      // Players can modify cardinals/intercards to an assigned tower direction
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '93BB', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonDiveDirNum === undefined) {
+          return output.towersUnknownDir!();
+        }
+        const dir1 = output[Directions.outputFrom8DirNum(data.marbleDragonDiveDirNum)]!();
+        const dir2 = output[Directions.outputFrom8DirNum((data.marbleDragonDiveDirNum + 4) % 8)]!();
+        // `marbleDragonDiveDirNum % 2 === 0` = this is aimed at a cardinal, so intercard towers are second
+        if (data.marbleDragonDiveDirNum % 2 === 0)
+          return output.towerDirsThenIntercardTowers!({ dir1: dir1, dir2: dir2 });
+        return output.towerDirsThenCardinalTowers!({ dir1: dir1, dir2: dir2 });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        towersUnknownDir: {
+          en: 'Towers => Cardinal/Intercard Towers',
+        },
+        towerDirsThenCardinalTowers: {
+          en: '${dir1}/${dir2} Towers => Cardinal Towers',
+        },
+        towerDirsThenIntercardTowers: {
+          en: '${dir1}/${dir2} Towers => Intercard Towers',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Towers 2 and 4',
+      // Once Immitation Blizzard 7614, 0.7s and 7615, 3.7s casts have gone off, towers appear in ~0.4s
+      // These tower casts occur after Wicked Water as well
+      // Using the cross (7614) Immitation Blizzard as it only occurs once per dive versus the 7615 (towers)
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '7614', capture: true },
+      condition: (data) => {
+        // Only execute during Frigid Dive Towers
+        return data.marbleDragonIsFrigidDive;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonDiveDirNum === undefined) {
+          return output.unknownTowers!();
+        }
+
+        // `marbleDragonDiveDirNum % 2 === 0` = this is aimed at a cardinal, so intercard towers are second
+        if (data.marbleDragonDiveDirNum % 2 === 0)
+          return output.intercardTowers!();
+        return output.cardinalTowers!();
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        unknownTowers: {
+          en: 'Cardinal/Intercard Towers',
+        },
+        cardinalTowers: {
+          en: 'Cardinal Towers',
+        },
+        intercardTowers: {
+          en: 'Intercardinal Towers',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Frigid Dive Cleanup',
+      // Ability conflicts in timing with towers 2, this trigger fires before in emulator
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7615', capture: false },
+      condition: (data) => {
+        // Only execute during Frigid Dive Towers
+        return data.marbleDragonIsFrigidDive;
+      },
+      delaySeconds: 1,
+      suppressSeconds: 1,
+      run: (data) => {
+        // Clear data for subsequent Frigid Dive/Towers
+        data.marbleDragonIsFrigidDive = false;
+        data.marbleDragonDiveDirNum = undefined;
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Lifeless Legacy',
+      // castTime is 35s
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '7798', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 7,
+      response: Responses.bigAoe(),
+    },
+    {
       id: 'Occult Crescent Marble Dragon Wicked Water',
       // Boss casts 77E7 Wicked Water, several players get marked
       // After cast end, marked players affected the following:
@@ -1786,6 +2145,128 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Marble Dragon Towers 5 and 6',
+      // Ball of Ice A716 spawns the towers
+      // Towers are either vertical (2 columns of 3) or horizontal (2 rows of 3)
+      // The StartsUsing 20 log lines can be wrong, but the StartsUsingExtra 263 lines seem to be correct
+      // There are six Marble Dragon actors that cast Immitation Blizzard 7615 which signifies end of towers
+      // If StartsUsingExtra lines are wrong, may need to change to OverlayPlugin
+      // Horizontal:
+      // (-346.019, 151.006) (-337.016, 151.006) (-328.013, 151.006)
+      // (-346.019, 162.999) (-337.016, 162.999) (-328.013, 162.999)
+      // Vertical:
+      // (-331.004, 148.015) (-342.998, 148.015)
+      // (-331.004, 157.018) (-342.998, 157.018)
+      // (-331.004, 165.990) (-342.998, 165.990)
+      // Since the coords are unique between patterns, only need to check one tower's x or y coord
+      // TODO: Additionall call earlier with infoText?
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A716', capture: true },
+      condition: (data) => {
+        // Only execute outside Frigid Dive Towers
+        return !data.marbleDragonIsFrigidDive;
+      },
+      suppressSeconds: 1,
+      alertText: (_data, matches, output) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+
+        if ((x > -332 && x < -330) || (x > -344 && x < -342))
+          return output.getVerticalTowers!();
+
+        if ((y > 150 && y < 152) || (y > 162 && y < 164))
+          return output.getHorizontalTowers!();
+
+        // Unrecognized coordinates
+        console.error(
+          `Occult Crescent Marble Dragon Towers 3 and 4: Unrecognized coordinates (${x}, ${y})`,
+        );
+        return output.getTowers!();
+      },
+      outputStrings: {
+        getTowers: Outputs.getTowers,
+        getVerticalTowers: {
+          en: 'Get Vertical Towers',
+        },
+        getHorizontalTowers: {
+          en: 'Get Horizontal Towers',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Guardian Wraith Scream',
+      // 10.5s castTime
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Wraith', id: 'A7CE', capture: false },
+      response: Responses.getOut(),
+    },
+    {
+      id: 'Occult Crescent Guardian Golem Toxic Minerals',
+      // Guardian Golem casts Toxic Minerals (A352), nearby players get affected by 25s Toxic Minerals (115C)
+      // Phantom Oracle must use Recuperation to cleanse subsequent Doom from players
+      // A 21s Doom is applied after the 25s Toxic Minerals effect ends
+      // Recuperation adds a 20s buff to players and on expiration will cleanse the Doom
+      // The Doom can also be cleansed with Esuna
+      // TODO: Filter for Phantom Oracle
+      // TODO: Cleanse call for Doom, but it is not yet logged, it's probably 11CE?
+      type: 'GainsEffect',
+      netRegex: { effectId: '115C', capture: true },
+      condition: Conditions.targetIsYou(),
+      // 25s - 20s, plus some delay for buff/debuff propagation
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 20 + 0.5,
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.recuperation!(),
+      outputStrings: {
+        recuperation: {
+          en: 'Recuperation (if possible)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Guardian Knight Buster Knuckles',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: false },
+      response: Responses.getOutThenIn(),
+    },
+    {
+      id: 'Occult Crescent Guardian Knight Earthquake',
+      // Using Buster Knuckles (A7D5) delayed until 8.7s castTime as trigger for Earthquake (A7ED)
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      response: Responses.getIn(),
+    },
+    {
+      id: 'Occult Crescent Guardian Knight Line of Fire',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Guardian Weapon Whirl of Rage',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Weapon', id: 'A708', capture: false },
+      response: Responses.outOfMelee(),
+    },
+    {
+      id: 'Occult Crescent Guardian Weapon Smite of Rage',
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Weapon', id: 'A707', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Master Lockward',
+      // Players must not intertupt Cunning Keywork (A7E4) 5.7s cast from Master Lockward
+      type: 'AddedCombatant',
+      netRegex: { name: 'Master Lockward', capture: false },
+      infoText: (_data, _matches, output) => output.spawned!(),
+      outputStrings: {
+        spawned: {
+          en: 'Master Lockward spawned',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Magitaur Unsealed Aura',
       // A264 Unsealed Aura cast
       // 9BE7 Unsealed Aura damage
@@ -1807,17 +2288,18 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow',
+      // Do not trigger for the Lanceblow during Rune Axe or during Holy Lance
       type: 'StartsUsing',
       netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: true },
+      condition: (data) => {
+        return !data.magitaurIsRuinousRune2 && !data.magitaurIsHolyLance;
+      },
       alertText: (_data, matches, output) => {
         if (matches.id === 'A247')
           return output.out!();
         return output.in!();
       },
-      outputStrings: {
-        out: Outputs.out,
-        in: Outputs.in,
-      },
+      outputStrings: magitaurOutputStrings,
     },
     {
       id: 'Occult Crescent Magitaur Forked Fury',
@@ -1879,6 +2361,7 @@ const triggerSet: TriggerSet<Data> = {
       // Boss spawns three staves that will fire an untelegraphed line at nearest target
       // A25F Mana Expulsion is the untelegraphed line stack damage 14.4s after
       // There is an In/Out dodge before Mana Expulsion
+      // These can be focused into a single stack, but some parties split into groups
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A25E', capture: false },
       delaySeconds: 8.5,
@@ -1889,6 +2372,312 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Line stack at staff',
         },
       },
+    }, /*
+    {
+      id: 'Occult Crescent Magitaur Rune Axe Debuffs',
+      // This won't work until FFXIVACT Plugin captures StatusEffectListForay3
+      // Applied with Rune Axe (A24F)
+      // Prey: Greater Axebit (10F1) 9s
+      // Prey: Lesser Axebit (10F0) 14s
+      // Prey: Greater Axebit (10F1) 21s
+      // Prey: Lesser Axebit (10F0) 21s
+      // TODO: Add the ${player1} ${player2}... for the small rune calls
+      type: 'GainsEffect',
+      netRegex: { effectId: ['10F0', '11F1'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target)
+          return true;
+        return false;
+      },
+      infoText: (_data, matches, output) => {
+        const duration = parseFloat(matches.duration);
+        if (duration < 15) {
+          if (matches.effectId === '10F1')
+            return output.shortBigRune!();
+          return output.shortSmallRune!();
+        }
+        if (matches.effectId === '10F1')
+          return output.longBigRune!();
+        return output.longSmallRune!();
+      },
+      outputStrings: {
+        shortBigRune: {
+          en: 'Big AOE on YOU (First)',
+        },
+        shortSmallRune: {
+          en: 'Small aoe on YOU (Second)',
+        },
+        longBigRune: {
+          en: 'Big AOE on YOU (Third)',
+        },
+        longSmallRune: {
+          en: 'Small aoe on YOU (Third)',
+        },
+      },
+    },*/
+    {
+      id: 'Occult Crescent Magitaur Big Ruinous Rune 1 Target',
+      // This can be placed N, SE, or SW at the wall by Universal Cylinders (purple circles)
+      // Explosion must avoid square tiles
+      // Earlier, players were given debuff at end of Rune Axe (A24F) cast
+      // Prey: Greater Axebit (10F1) 9s
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.magitaurBigRuinousRune], capture: true },
+      condition: (data) => {
+        return !data.magitaurIsRuinousRune2;
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        const target = matches.target;
+        if (data.me === target)
+          return { alarmText: output.rune1BigAoeOnYou!() };
+
+        return {
+          infoText: output.rune1BigAoeOnPlayer!({
+            player: data.party.member(target),
+          }),
+        };
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Small Ruinous Rune 1 Targets',
+      // These must be placed on separate squares
+      // Players are also given a debuff:
+      // Prey: Lesser Axebit (10F0) 14s
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.magitaurSmallRuinousRune], capture: true },
+      condition: (data) => {
+        return !data.magitaurIsRuinousRune2;
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        data.magitaurRuneTargets.push(matches.target);
+        if (data.magitaurRuneTargets.length < 3)
+          return;
+
+        const target1 = data.magitaurRuneTargets[0];
+        const target2 = data.magitaurRuneTargets[1];
+        const target3 = data.magitaurRuneTargets[2];
+
+        if (data.me === target1 || data.me === target2 || data.me === target3)
+          return { infoText: output.rune1SmallAoeOnYou!() };
+
+        return {
+          infoText: output.rune1SmallAoesOnPlayers!({
+            player1: data.party.member(target1),
+            player2: data.party.member(target2),
+            player3: data.party.member(target3),
+          }),
+        };
+      },
+      run: (data) => {
+        // StartsUsing of A24B coincides with the Big Ruinous Rune Ability
+        if (data.magitaurRuneTargets.length === 3)
+          data.magitaurIsRuinousRune2 = true;
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow',
+      // Trigger once the big Ruinous Rune (A251) has gone off
+      // Players with first set of small Ruinous Runes (A250) stay on square
+      // Rest of players must get off
+      // This occurs with a Lanceblow almost immediately after, so pre-call that
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A251', capture: false },
+      condition: (data) => {
+        // On second set of A251, this value has been reset to default (false)
+        return data.magitaurIsRuinousRune2;
+      },
+      alertText: (data, _matches, output) => {
+        const target1 = data.magitaurRuneTargets[0];
+        const target2 = data.magitaurRuneTargets[1];
+        const target3 = data.magitaurRuneTargets[2];
+
+        if (data.me === target1 || data.me === target2 || data.me === target3)
+          return output.rune1SmallAoEStayThenIn!();
+        return output.in!();
+      },
+      outputStrings: magitaurOutputStrings,
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune 2 Collect',
+      // Second set has a big and two smalls resolve simultaneously
+      // These markers come out about 0.1~0.3s before set one smalls expire
+      // There is some trigger overlap to handle for unlucky players who get both sets
+      // Big resolves like usual
+      // Players with small will be on their own square with party on 3rd square
+      // Players are also given a debuff:
+      // Prey: Greater Axebit (10F1) 21s
+      // Prey: Lesser Axebit (10F0) 21s
+      type: 'HeadMarker',
+      netRegex: {
+        id: [headMarkerData.magitaurBigRuinousRune, headMarkerData.magitaurSmallRuinousRune],
+        capture: true,
+      },
+      condition: (data) => {
+        return data.magitaurIsRuinousRune2;
+      },
+      preRun: (data, matches) => {
+        if (matches.id === headMarkerData.magitaurBigRuinousRune)
+          data.magitaurBigRune2Target = matches.target;
+        else if (matches.id === headMarkerData.magitaurSmallRuinousRune)
+          data.magitaurRune2Targets.push(matches.target);
+      },
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        if (data.magitaurBigRune2Target === undefined || data.magitaurRune2Targets.length < 2)
+          return;
+
+        const big = data.magitaurBigRune2Target;
+        const small1 = data.magitaurRune2Targets[0];
+        const small2 = data.magitaurRune2Targets[1];
+
+        if (data.me === big || data.me === small1 || data.me === small2) {
+          // Players who had small rune first need later call to prevent overlap
+          const target1 = data.magitaurRuneTargets[0];
+          const target2 = data.magitaurRuneTargets[1];
+          const target3 = data.magitaurRuneTargets[2];
+          if (data.me === target1 || data.me === target2 || data.me === target3)
+            return;
+          if (data.me === big)
+            return { infoText: output.rune2BigAoeOnYou!() };
+          if (data.me === small1 || data.me === small2)
+            return { infoText: output.rune2SmallAoeOnYou!() };
+        }
+
+        return {
+          infoText: output.rune2AoesOnPlayers!({
+            player1: data.party.member(big),
+            player2: data.party.member(small1),
+            player3: data.party.member(small2),
+          }),
+        };
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow Reminder',
+      // Players have ~2.1s to move based on damage cast timing of Critical Lanceblow
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A250', capture: true },
+      condition: (data, matches) => {
+        // magitaurIsRuinousRune2 is true at this time for first set
+        // This could be altered to not call for players without markers, but
+        // calling for player that got hit with the aoe could also save a life
+        if (matches.target === data.me && data.magitaurIsRuinousRune2)
+          return true;
+
+        // Players that get hit and are not targeted do not get an output
+        return false;
+      },
+      alertText: (data, _matches, output) => {
+        // Check if player has a marker again
+        const big = data.magitaurBigRune2Target;
+        const small1 = data.magitaurRune2Targets[0];
+        const small2 = data.magitaurRune2Targets[1];
+        if (data.me === big)
+          return output.rune2InBigAoeOnYou!();
+        if (data.me === small1 || data.me === small2)
+          return output.rune2InSmallAoeOnYou!();
+        return output.inThenOnSquare!();
+      },
+      outputStrings: magitaurOutputStrings,
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune 2 Reminder',
+      // Capture either alliance's Critical Lanceblow damage cast
+      // Using castTime of A24B is unreliable since damage cast comes later
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: ['A24E', 'A24D'], capture: false },
+      condition: (data) => {
+        return data.magitaurIsRuinousRune2;
+      },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const big = data.magitaurBigRune2Target;
+        const small1 = data.magitaurRune2Targets[0];
+        const small2 = data.magitaurRune2Targets[1];
+
+        if (data.me === big)
+          return output.rune2BigAoeOnYouReminder!();
+        if (data.me === small1 || data.me === small2)
+          return output.rune2SmallAoeOnYouReminder!();
+
+        return output.rune2AvoidPlayers!({
+          player1: data.party.member(small1),
+          player2: data.party.member(small2),
+        });
+      },
+      outputStrings: magitaurOutputStrings,
+    },
+    {
+      id: 'Occult Crescent Magitaur Ruinous Rune 2 Flag Unset',
+      // Clear condition on Critical Lanceblow
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: ['A24E', 'A24D'], capture: false },
+      condition: (data) => {
+        return data.magitaurIsRuinousRune2;
+      },
+      suppressSeconds: 1,
+      run: (data) => {
+        // Re-enable normal Axeblow / Lanceblow trigger and re-triggering Rune Lanceblow trigger
+        data.magitaurIsRuinousRune2 = false;
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Holy Lance Filter',
+      // Lanceblow and Axeblow here need to be handled separately
+      // Lanceblow would have an overlap with stack call, whereas Axeblow overlaps with Holy IV resolution
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A255', capture: false },
+      run: (data) => {
+        data.magitaurIsHolyLance = true;
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Lancelight On/Off Square',
+      // TODO: Get player position for an alertText and filter?
+      // Players can manually blank the outputString for the other squares in configuration
+      // Holy IV first and second targets need to avoid overlapping outside square
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: ['A259', 'A258'], capture: false },
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+        data.magitaurLancelightCount = data.magitaurLancelightCount + 1;
+        switch (data.magitaurLancelightCount) {
+          case 1:
+            return { infoText: output.northeastOff!() };
+          case 4:
+            return { infoText: output.northeastOn!() };
+          case 5:
+            return { infoText: output.southOff!() };
+          case 8:
+            return { infoText: output.southOn!() };
+          case 9:
+            return { infoText: output.northwestOff!() };
+          case 12:
+            // Re-enable normal Axeblow / Lanceblow trigger
+            data.magitaurIsHolyLance = false;
+            return { alertText: output.out!() };
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Holy Lance Critical Lanceblow',
+      // TODO: Merge Lanceblow Stack trigger here?
+      // Stack headmarkers come out at this time
+      // Related debuff for headmarkers is Prey: Lancepoint (10F2)
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: 'A24B', capture: false },
+      condition: (data) => {
+        return data.magitaurIsHolyLance;
+      },
+      alertText: (_data, _matches, output) => output.in!(),
+      outputStrings: magitaurOutputStrings,
     },
   ],
   timelineReplace: [
