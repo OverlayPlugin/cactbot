@@ -39,12 +39,18 @@ const filterDirs = (
 
 const findNorthTerror = (terrors: PluginCombatantState[]): PluginCombatantState | undefined => {
   return terrors.filter((terror) => {
+    // For all Bombardments, one of the north corners will have a single add present,
+    // at one of (-10, -13) (10, -13) (-17, -12) (17, -12).
+    // The corresponding -X point will have five adds surrounding it.
+    // We can consistently identify a north safespot by finding this single add.
+
+    // Only X gets run through abs(), since we are only calling north safe.
     const terX = Math.round(Math.abs(terror.PosX));
-    const terY = Math.round(Math.abs(terror.PosY));
+    const terY = Math.round(terror.PosY);
     const x1 = 10;
-    const y1 = 13;
+    const y1 = -13;
     const x2 = 17;
-    const y2 = 12;
+    const y2 = -12;
     return (terX === x1 && terY === y1) || (terX === x2 && terY === y2);
   })[0];
 };
