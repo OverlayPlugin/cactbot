@@ -515,7 +515,91 @@ hideall "--sync--"
 14442 "Made Magic" Ability { id: "A71[01]", source: "Draconic Double" }
 14443.9 "--sync--" StartsUsing { id: "A31C", source: "Crystal Dragon" } forcejump "crystallized-chaos-loop"
 
-### With Extreme Predjudice
+### With Extreme Prejudice
+# -ii 93BD A1D1 A86C
+# -p A1C8:15120.0
+# -it "Command Urn" "Vassal Vessel"
+# IGNORED ABILITIES
+# 93BD Attack
+# A1D1 Aetheric Burst (Secondary cast)
+# A86C --sync--
+#
+# ALL ENCOUNTER ABILITIES
+# 9A2E Stone Swell
+# 9A2F Rockslide
+# A1C8 Summon
+# A1C9 Assail
+# A1CC Stone Swell
+# A1CD Rockslide
+# A1CE Destruct
+# A1D0 Aetheric Burst
+#
 15000.0 "--sync--" ActorControl { command: "80000014", data0: "339" } window 100000,0
 15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+15117.0 "--sync--" StartsUsing { id: "A1C8", source: "Command Urn" } window 20,5
+15120.0 "Summon" Ability { id: "A1C8", source: "Command Urn" }
+# Stone Swell Tutorial
+15126.1 "Assail" Ability { id: "A1C9", source: "Command Urn" }
+15133.0 "Stone Swell" Ability { id: "A1CC", source: "Vassal Vessel" }
+15141.1 "Stone Swell" Ability { id: "A1CC", source: "Vassal Vessel" }
+15149.2 "Stone Swell" Ability { id: "A1CC", source: "Vassal Vessel" }
+# Rockslide Tutorial
+15149.2 "Assail" Ability { id: "A1C9", source: "Command Urn" }
+15156.1 "Rockslide" Ability { id: "A1CD", source: "Vassal Vessel" }
+15164.2 "Rockslide" Ability { id: "A1CD", source: "Vassal Vessel" }
+15172.3 "Rockslide" Ability { id: "A1CD", source: "Vassal Vessel" }
+15176.3 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
+15192.5 "Summon" Ability { id: "A1C8", source: "Command Urn" }
+15197.7 "Assail" Ability { id: "A1C9", source: "Command Urn" }
+15204.5 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
+15206.1 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
+15207.5 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
+15209.1 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
+15210.7 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
+15212.3 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
+
+# Adds
+15215.2 "Destruct" Ability { id: "A1CE", source: "Command Urn" }
+15215.2 "--adds-targetable--"
+# TODO: Add enrage timings (there are 2 sets?)
+15257.3 "Summon" Ability { id: "A1C8", source: "Command Urn" }
+
+# Loop Begins
+15262.4 label "oc-extreme-prejudice-loop"
+15262.4 "Assail" Ability { id: "A1C9", source: "Command Urn" }
+15269.3 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
+15269.3 "--sync--" Ability { id: "9A2F", source: "Vassal Vessel" } forcejump "oc-extreme-prejudice-rockslide"
+15269.3 "--sync--" Ability { id: "9A2E", source: "Vassal Vessel" } forcejump "oc-extreme-prejudice-stoneswell"
+
+# Pattern 1 - Rockslide first
+15269.3 label "oc-extreme-prejudice-rockslide"
+15269.3 "Rockslide" #Ability { id: "9A2F", source: "Vassal Vessel" }
+15274.3 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15279.4 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15284.4 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15289.5 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15294.5 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15299.6 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15304.6 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15309.7 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15314.7 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15321.4 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
+15337.5 "Assail" Ability { id: "A1C9", source: "Command Urn" } forcejump "oc-extreme-prejudice-loop"
+15344.4 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
+
+# Pattern 2 - Stone Well first
+15494.6 label "oc-extreme-prejudice-stoneswell"
+15494.6 "Stone Swell" #Ability { id: "9A2E", source: "Vassal Vessel" }
+15499.6 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15504.7 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15509.7 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15514.8 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15519.8 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15524.9 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15529.9 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15535.0 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15540.0 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15546.7 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
+15562.8 "Assail" Ability { id: "A1C9", source: "Command Urn" } forcejump "oc-extreme-prejudice-loop"
+15569.1 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
 
