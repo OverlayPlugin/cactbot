@@ -245,7 +245,7 @@ hideall "--sync--"
 12402.6 "Choco Maelfeather" Ability { id: "A0CC", source: "Black Chocobo" }
 12414.8 "Choco Maelfeather" #Ability { id: "A0CC", source: "Black Chocobo" } forcejump "black-regiment-malefeather-loop"
 12427.0 "Choco Maelfeather" #Ability { id: "A0CC", source: "Black Chocobo" }
-12439.2 "Choco Maelfeather" #Ability { id: "A0CC", source: "Black Chocobo" } 
+12439.2 "Choco Maelfeather" #Ability { id: "A0CC", source: "Black Chocobo" }
 
 # Boss + Windstorm and Cyclone Tutorial
 12544.0 "--sync--" AddedCombatant { name: "Black Star" } window 445,2
