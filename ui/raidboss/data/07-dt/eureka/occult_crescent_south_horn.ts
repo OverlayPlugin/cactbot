@@ -2760,6 +2760,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '화염 구체',
         'Black Star': '검은 죽음의 운성',
