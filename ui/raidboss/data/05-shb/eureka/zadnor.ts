@@ -106,6 +106,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'Dalriada triggers/timeline.  Some Critical Engagements.',
     de: 'Dalriada Trigger/Timeline.  Einige Kritische Gefechte vorhanden.',
+    fr: 'Dalriada Trigger/Timeline. Quelques engagements critiques.',
     ja: '旗艦ダルリアータ攻略戦のトリガー/タイムライン。いくつかのCE対応。',
     cn: '旗舰达尔里阿达号攻略战触发器/时间轴。部分CE (紧急遭遇战)。',
     ko: '기함 달리아다 트리거/타임라인. 몇몇 비상 교전 트리거.',

@@ -10,7 +10,9 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.CuttersCry,
   comments: {
     en: 'pre-7.3 rework',
+    fr: 'Avant le remaniement 7.3',
     cn: '7.3改版前',
+    ko: '7.3 개편 전',
   },
   triggers: [
     {

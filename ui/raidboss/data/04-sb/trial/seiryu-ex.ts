@@ -47,7 +47,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         grabTether: {
           en: 'Grab Tank Tether, Point Cleave Away',
+          fr: 'Prenez le lien Tank, visez l\'extérieur',
           cn: '接走坦克连线，引导扇形远离人群',
+          ko: '탱커 선 가져오기, 탱버 밖으로 향하게 하기',
         },
         avoidTether: Outputs.avoidTankCleaves,
       },
@@ -238,19 +240,27 @@ const triggerSet: TriggerSet<Data> = {
         dirW: Outputs.west,
         goToSnakes: {
           en: 'Go ${dir} Toward Snakes',
+          fr: 'Allez ${dir} vers les serpents',
           cn: '向 ${dir} 蛇走',
+          ko: '${dir} 뱀 쪽으로 가기',
         },
         goToUnknownSnakes: {
           en: 'Go Toward Snakes',
+          fr: 'Allez vers les serpents',
           cn: '向蛇走',
+          ko: '뱀 쪽으로 가기',
         },
         outOfMiddleTowardSnakes: {
           en: 'Out Of Middle, Knockback To ${dir}',
+          fr: 'Loin du centre, Poussée vers ${dir}',
           cn: '离开中间，击退到 ${dir}',
+          ko: '중앙 피하기, ${dir}으로 넉백',
         },
         outOfMiddleUnknownSnakes: {
           en: 'Out Of Middle, Knockback Toward Snakes',
+          fr: 'Loin du centre, Poussée vers les serpents',
           cn: '离开中间，向蛇击退',
+          ko: '중앙 피하기, 뱀 쪽으로 넉백',
         },
       },
     },
@@ -383,7 +393,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': 'shiki écarlate',
         'Ao-no-shiki': 'shiki céruléen',
@@ -395,6 +404,8 @@ const triggerSet: TriggerSet<Data> = {
         'Yama-no-shiki': 'shiki montagneux',
       },
       'replaceText': {
+        '--small adds spawn--': '--Apparition des petits adds--',
+        '--large add spawns--': '--Apparition des grands adds--',
         '100-tonze Swing': 'Swing de 100 tonz',
         'Blazing Aramitama': 'Aramitama incandescent',
         'Blue Bolt': 'Percée bleue',
@@ -498,7 +509,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': '붉은 사역귀',
         'Ao-no-shiki': '푸른 사역귀',
@@ -510,6 +520,8 @@ const triggerSet: TriggerSet<Data> = {
         'Yama-no-shiki': '산 사역귀',
       },
       'replaceText': {
+        '--small adds spawn--': '--작은 쫄 등장--',
+        '--large add spawns--': '--큰 쫄 등장--',
         '100-tonze Swing': '100톤즈 휘두르기',
         'Blazing Aramitama': '아라미타마 연소',
         'Blue Bolt': '푸른 돌진',
