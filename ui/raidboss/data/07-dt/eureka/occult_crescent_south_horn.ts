@@ -2225,16 +2225,23 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Guardian Bersker Raging Slice',
+      // Untelegraphed long line cleave that goes through walls
+      type: 'StartsUsing',
+      netRegex: { source: 'Guardian Berserker', id: 'A7CF', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
       id: 'Occult Crescent Guardian Knight Buster Knuckles',
       type: 'StartsUsing',
-      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: false },
+      netRegex: { source: 'Guardian Knight', id: 'A7D4', capture: false },
       response: Responses.getOutThenIn(),
     },
     {
       id: 'Occult Crescent Guardian Knight Earthquake',
       // Using Buster Knuckles (A7D5) delayed until 8.7s castTime as trigger for Earthquake (A7ED)
       type: 'StartsUsing',
-      netRegex: { source: 'Guardian Knight', id: 'A7D5', capture: true },
+      netRegex: { source: 'Guardian Knight', id: 'A7D4', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime),
       response: Responses.getIn(),
     },
