@@ -952,8 +952,8 @@ hideall "--sync--"
 
 # Enrage loop
 # Note: Time between the loop casts is an estimated guess
-50883.5 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" }
-50888.2 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump 50883.5
+50886.7 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" }
+50810.9 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump 50886.7
 
 ### Magitaur
 # -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3
