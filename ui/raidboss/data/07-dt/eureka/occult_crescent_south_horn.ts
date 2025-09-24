@@ -2255,7 +2255,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Guardian Weapon Whirl of Rage',
       type: 'StartsUsing',
       netRegex: { source: 'Guardian Weapon', id: 'A708', capture: false },
-      response: Responses.outOfHitbox(),
+      infoText: (_data, _matches, output) => output.outOfHitbox!(),
+      outputStrings: {
+        outOfHitbox: Outputs.outOfHitbox,
+      },
     },
     {
       id: 'Occult Crescent Guardian Weapon Smite of Rage',
