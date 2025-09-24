@@ -2780,7 +2780,7 @@ const triggerSet: TriggerSet<Data> = {
         'White-hot Rage': '气焰怒涛',
       },
     },
-   {
+    {
       'locale': 'ko',
       'missingTranslations': true,
       'replaceSync': {
