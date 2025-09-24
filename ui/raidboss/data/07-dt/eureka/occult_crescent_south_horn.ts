@@ -2553,6 +2553,18 @@ const triggerSet: TriggerSet<Data> = {
         if (data.magitaurBigRune2Target === undefined || data.magitaurRune2Targets.length < 2)
           return;
 
+        // Lanceblow call happens here for the player with small aoe from round 1
+        // Do not output for them to avoid duplicate
+        const rune1Small1 = data.magitaurRuneTargets[0];
+        const rune1Small2 = data.magitaurRuneTargets[1];
+        const rune1Small3 = data.magitaurRuneTargets[2];
+        if (
+          data.me === rune1Small1 ||
+          data.me === rune1Small2 ||
+          data.me === rune1Small3
+        )
+          return;
+
         const big = data.magitaurBigRune2Target;
         const small1 = data.magitaurRune2Targets[0];
         const small2 = data.magitaurRune2Targets[1];
