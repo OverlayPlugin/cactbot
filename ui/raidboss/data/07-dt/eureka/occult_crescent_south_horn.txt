@@ -1022,7 +1022,7 @@ hideall "--sync--"
 60294.7 "--middle--" #Ability { id: "A1B7", source: "Magitaur" }
 
 # Pattern 1 - Lanceblow first
-60259.1 label "oc-magitaur-daggers-lanceblow"
+60259.1 label "oc-magitaur-daggers-lance"
 60259.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
 60261.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 60263.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
