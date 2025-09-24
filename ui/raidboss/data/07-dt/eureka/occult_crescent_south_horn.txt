@@ -1137,12 +1137,12 @@ hideall "--sync--"
 60745.9 "Lance 1" #Ability { id: "A256", source: "Luminous Lance" }
 60747.9 "Lance 2" #Ability { id: "A256", source: "Luminous Lance" }
 60749.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
-60749.9 "Lance 3" #Ability { id: "A256", source: "Magitaur" }
-60751.9 "Lance 4" #Ability { id: "A256", source: "Magitaur" }
+60749.9 "Lance 3" #Ability { id: "A256", source: "Luminous Lance" }
+60751.9 "Lance 4" #Ability { id: "A256", source: "Luminous Lance" }
 60753.9 "Lance 5" #Ability { id: "A256", source: "Luminous Lance" }
 60755.9 "Lance 6" #Ability { id: "A256", source: "Luminous Lance" }
 60757.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
-60757.9 "Lance 7" #Ability { id: "A256", source: "Magitaur" }
+60757.9 "Lance 7" #Ability { id: "A256", source: "Luminous Lance" }
 60759.9 "Lance 8" #Ability { id: "A256", source: "Luminous Lance" }
 60761.9 "Lance 9" #Ability { id: "A256", source: "Luminous Lance" }
 60763.9 "Lance 10" #Ability { id: "A256", source: "Luminous Lance" }
