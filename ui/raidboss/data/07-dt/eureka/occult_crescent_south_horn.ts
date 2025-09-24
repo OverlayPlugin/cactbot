@@ -2284,14 +2284,25 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'Occult Crescent Magitaur Unseal Tank Autos',
-      // 3x near/far tank autos starts 5s after Unseal
+      id: 'Occult Crescent Magitaur Unseal Tank Autos Near/Far',
+      // A241 Attacks will go to closest players
+      // A242 Attacks will go to furthest players
+      // Boss also gains an effect and weapon the specific weapon glows
+      // Yellow Axe = 2 closest players
+      // Blue Lance = 2 furthest players
       type: 'Ability',
-      netRegex: { source: 'Magitaur', id: 'A264', capture: false },
-      infoText: (_data, _matches, output) => output.tankAutos!(),
+      netRegex: { source: 'Magitaur', id: ['A241', 'A242'], capture: true },
+      alertText: (_data, matches, output) => {
+        if (matches.id === 'A241')
+          return output.tanksNear!();
+        return output.tanksFar!();
+      },
       outputStrings: {
-        tankAutos: {
-          en: 'Tank autos soon (3 Near/Far)',
+        tanksFar: {
+          en: 'Tanks Far (Party Close) x2',
+        },
+        tanksNear: {
+          en: 'Tanks Close (Party Far) x2',
         },
       },
     },
