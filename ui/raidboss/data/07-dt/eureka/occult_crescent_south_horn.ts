@@ -2495,11 +2495,6 @@ const triggerSet: TriggerSet<Data> = {
           }),
         };
       },
-      run: (data) => {
-        // StartsUsing of A24B coincides with the Big Ruinous Rune Ability
-        if (data.magitaurRuneTargets.length === 3)
-          data.magitaurIsRuinousRune2 = true;
-      },
     },
     {
       id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow',
@@ -2510,7 +2505,11 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A251', capture: false },
       condition: (data) => {
-        // On second set of A251, this value has been reset to default (false)
+        // Don't execute for the first big Ruinous Rune, but set boolean for second set
+        if (!data.magitaurIsRuinousRune2) {
+          data.magitaurIsRuinousRune2 = true;
+          return false;
+        }
         return data.magitaurIsRuinousRune2;
       },
       alertText: (data, _matches, output) => {
