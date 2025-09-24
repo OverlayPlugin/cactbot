@@ -995,13 +995,13 @@ hideall "--sync--"
 60059.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
 60061.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 60063.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
-60064.1 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" }
+60064.1 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
 60065.4 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 60067.4 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
 60069.4 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 60071.4 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
 60073.4 "Assassin's Dagger 6 Returns" #Ability { id: "A263", source: "Assassin's Dagger" }
-60074.4 "Critical Lanceblow / Critical Axeblow?" #Ability { id: ["A24B", "A247"], source: "Magitaur" }
+60074.4 "Critical Lanceblow / Critical Axeblow?" #Ability { id: ["A24B", "A247"], source: "Magitaur" } duration 1.1
 
 # Pattern 1 - Axeblow first
 60159.1 label "oc-magitaur-daggers-axe"
