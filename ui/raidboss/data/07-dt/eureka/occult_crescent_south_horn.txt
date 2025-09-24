@@ -1018,8 +1018,8 @@ hideall "--sync--"
 60174.4 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
 60174.4 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
 
-60285.0 "Forked Fury" #Ability { id: "A265", source: "Magitaur" }
-60294.7 "--middle--" #Ability { id: "A1B7", source: "Magitaur" }
+60185.0 "Forked Fury" #Ability { id: "A265", source: "Magitaur" }
+60195.0 "--middle--" #Ability { id: "A1B7", source: "Magitaur" }
 
 # Pattern 1 - Lanceblow first
 60259.1 label "oc-magitaur-daggers-lance"
