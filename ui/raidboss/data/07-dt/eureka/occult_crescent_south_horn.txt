@@ -956,8 +956,8 @@ hideall "--sync--"
 50891.4 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump 50886.7
 
 ### Magitaur
-# -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3
-# -p A264:60014.2
+# -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3 A25C A25D A258 A259
+# -p A264:60014.3
 # -it "Magitaur" "Lance Empowerment Conduit" "Axe Empowerment Conduit" "Universal Empowerment Conduit"
 #
 # IGNORED ABILITIES
@@ -965,6 +965,10 @@ hideall "--sync--"
 # A249 Critical Axeblow damage
 # A24E Critical Lanceblow damage
 # A24D Critical Lanceblow damage
+# A258 Lancelight damage
+# A259 Lancelight damage
+# A25C Arcane Recoil tankbuster when Axe Empowerment Conduit or Lance Empowerment Conduit dies
+# A25D Arcane Reaction tankbuster when Universal Empowerment Conduit dies
 # A266 Forked Fury damage
 # A325 Attack
 # ADC2 Aura Burst enrage damage
@@ -974,153 +978,206 @@ hideall "--sync--"
 # 9BE7 Unsealed Aura damage
 # The Haematology Room will be sealed off
 60000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1453" } window 100000,0
-60008.0 "--sync--" StartsUsing { id: "A264", source: "Magitaur" } window 100,50
-60014.2 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
-60030.3 "Unseal" Ability { id: "A241", source: "Magitaur" }
+60010.1 "--sync--" StartsUsing { id: "A264", source: "Magitaur" } window 100,50
+60014.3 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
+60030.3 "Unseal" Ability { id: ["A241", "A242"], source: "Magitaur" }
 60044.9 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
 
 # Assassin's Dagger 1
-# TODO: Critical Axeblow / Critical Lanceblow predictor as these are pairs here
-60051.2 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
-60051.5 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
-60053.5 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60055.5 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
-60057.5 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60059.5 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
-60061.5 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60063.5 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
-60064.2 "Critical Axeblow / Critical Lanceblow" Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
-60064.2 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60051.1 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
+60051.4 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
+60053.4 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60055.4 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
+60057.4 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+
+60059.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } forcejump "oc-magitaur-daggers-axe"
+60059.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-daggers-lance"
+60059.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60061.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60063.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60064.1 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" }
 60065.4 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 60067.4 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
 60069.4 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 60071.4 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
-60073.4 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
-60074.4 "Critical Axeblow / Critical Lanceblow" Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
-60074.4 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
-60084.8 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
+60073.4 "Assassin's Dagger 6 Returns" #Ability { id: "A263", source: "Assassin's Dagger" }
+60074.4 "Critical Lanceblow / Critical Axeblow?" #Ability { id: ["A24B", "A247"], source: "Magitaur" }
 
-60094.7 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
-60109.8 "Arcane Reaction" #Ability { id: "A25D", source: "Universal Empowerment Conduit" }
-60111.5 "Arcane Recoil" #Ability { id: "A25C", source: "Magitaur" }
-60114.1 "Arcane Recoil" #Ability { id: "A25C", source: "Axe Empowerment Conduit" }
-60115.1 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
-60129.2 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+# Pattern 1 - Axeblow first
+60159.1 label "oc-magitaur-daggers-axe"
+60159.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60161.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60163.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60164.1 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60164.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60165.4 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60167.4 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60169.4 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60171.4 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60173.4 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60174.4 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60174.4 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+
+60285.0 "Forked Fury" #Ability { id: "A265", source: "Magitaur" }
+60294.7 "--middle--" #Ability { id: "A1B7", source: "Magitaur" }
+
+# Pattern 1 - Lanceblow first
+60259.1 label "oc-magitaur-daggers-lanceblow"
+60259.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60261.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60263.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60264.1 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60264.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60265.4 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60267.4 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60269.4 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60271.4 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60273.4 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60274.4 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+
+60285.0 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6 window 300,5
+60295.0 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+60315.4 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
+60329.5 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
 
 # Sage Staff
-# TODO: Critical Axeblow / Critical Lanceblow predictor as these are pairs here
-60135.6 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
-60144.1 "Critical Axeblow / Critical Lanceblow" Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
-60144.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
-60150.2 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
-60153.2 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
-60161.3 "Critical Axeblow / " Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
-60161.3 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
-60167.3 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
-60171.4 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
-60185.4 "Unseal" Ability { id: "A241", source: "Magitaur" }
-60198.0 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+60336.2 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
+
+60339.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } forcejump "oc-magitaur-staff-axe"
+60339.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-staff-lance"
+60344.6 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
+60344.6 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60350.6 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
+60353.6 "Sage's Staff" #Ability { id: "A25E", source: "Magitaur" }
+60361.8 "Critical Lanceblow / Critical Axeblow?" #Ability { id: ["A24B", "A247"], source: "Magitaur" } duration 1.1
+60361.8 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60368.0 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
+60372.0 "Unsealed Aura" #Ability { id: "A264", source: "Magitaur" } duration 1
+60386.0 "Unseal" #Ability { id: "A241", source: "Magitaur" }
+
+# Pattern 2 - Axeblow first
+60439.1 label "oc-magitaur-staff-axe"
+60444.6 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60450.6 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
+60453.6 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
+60461.8 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1 forcejump "oc-magitaur-staff-end"
+60461.8 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60468.0 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
+60472.0 "Unsealed Aura" #Ability { id: "A264", source: "Magitaur" } duration 1
+60486.0 "Unseal" #Ability { id: "A241", source: "Magitaur" }
+60498.6 "--middle--" #Ability { id: "A1B7", source: "Magitaur" }
+
+# Pattern 2 - Lanceblow first
+60539.1 label "oc-magitaur-staff-lance"
+60544.6 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60544.6 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60550.6 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
+60553.6 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
+60561.8 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+
+60561.8 label "oc-magitaur-staff-end"
+60568.0 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
+60572.0 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
+60586.0 "Unseal" Ability { id: "A241", source: "Magitaur" }
+60598.6 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
 
 # Rune Axe
 # NOTE: This section only has Critical Lanceblow
-60204.4 "Rune Axe" Ability { id: "A24F", source: "Magitaur" }
-60206.5 "--Big Rune Marker--" HeadMarker { id: "023D" }
-60210.5 "--Small Rune Markers x3--" #HeadMarker { id: "0159" }
-60214.5 "Big Ruinous Rune" #Ability { id: "A251", source: "Magitaur" }
-60214.5 "Axeglow" Ability { id: "A254", source: "Magitaur" }
-60218.3 "--Big Rune Marker--" HeadMarker { id: "023D" }
-60218.3 "--Small Rune Markers x2--" #HeadMarker { id: "0159" }
-60218.5 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
-60218.5 "Small Ruinous Rune x3" #Ability { id: "A250", source: "Magitaur" }
-60218.5 "Axeglow" Ability { id: "A253", source: "Magitaur" }
-60219.7 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" }
-60219.7 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
-60220.4 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
-60222.3 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
-60224.3 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
-60226.3 "Big Ruinous Rune" #Ability { id: "A251", source: "Magitaur" }
-60226.3 "Small Ruinous Rune x2" #Ability { id: "A250", source: "Magitaur" }
-60226.3 "Axeglow" Ability { id: "A253", source: "Magitaur" }
-60226.3 "Axeglow" #Ability { id: "A254", source: "Magitaur" }
-60238.2 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
+60605.0 "Rune Axe" Ability { id: "A24F", source: "Magitaur" }
+60607.1 "--Big Rune Marker--" HeadMarker { id: "023D" }
+60611.0 "--Small Rune Markers x3--" #HeadMarker { id: "0159" }
+60615.1 "Big Ruinous Rune" #Ability { id: "A251", source: "Magitaur" }
+60615.1 "Axeglow" Ability { id: "A254", source: "Magitaur" }
+60618.9 "--Big Rune Marker--" HeadMarker { id: "023D" }
+60618.9 "--Small Rune Markers x2--" #HeadMarker { id: "0159" }
+60619.0 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60619.0 "Small Ruinous Rune x3" #Ability { id: "A250", source: "Magitaur" }
+60619.0 "Axeglow" Ability { id: "A253", source: "Magitaur" }
+60620.2 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" }
+60620.2 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60620.9 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60622.9 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60624.9 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60626.9 "Big Ruinous Rune" #Ability { id: "A251", source: "Magitaur" }
+60626.9 "Small Ruinous Rune x2" #Ability { id: "A250", source: "Magitaur" }
+60626.9 "Axeglow" Ability { id: "A253", source: "Magitaur" }
+60626.9 "Axeglow" #Ability { id: "A254", source: "Magitaur" }
+60638.8 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
 
-60248.1 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
-60255.7 "Arcane Recoil" #Ability { id: "A25C", source: "Axe Empowerment Conduit" }
-60255.8 "Arcane Recoil" #Ability { id: "A25C", source: "Axe Empowerment Conduit" }
-60257.5 "Arcane Recoil" #Ability { id: "A25C", source: "Axe Empowerment Conduit" }
-60258.2 "Arcane Reaction" #Ability { id: "A25D", source: "Universal Empowerment Conduit" }
-60268.4 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
+60648.8 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+60669.2 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
 
 # Assassin's Dagger 2
 # NOTE: Critical Lanceblow seems to always be first and Axeblow second
-# TODO: Resync below to network log
-60276.0 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22 window 10,5
-60276.3 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
-60278.3 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60280.3 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
-60282.3 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60284.3 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
-60286.3 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60288.3 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
-60288.7 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
-60288.7 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
-60289.9 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60291.9 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
-60293.9 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60295.9 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
-60297.9 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
-60298.9 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
-60309.0 "Unseal" Ability { id: "A242", source: "Magitaur" }
-60321.6 "--mddle--" Ability { id: "A1B7", source: "Magitaur" }
+60679.1 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22 window 10,5
+60679.4 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
+60681.4 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60683.4 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
+60685.4 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60687.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60689.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60691.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60692.1 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60692.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60693.3 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60695.3 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60697.3 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60699.3 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60701.3 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60702.3 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60712.5 "Unseal" Ability { id: ["A241", "A242"], source: "Magitaur" }
+60725.1 "--mddle--" Ability { id: "A1B7", source: "Magitaur" }
 
 # Holy Lance
-# NOTE: Critical Lanceblow seems to always be first and Axeblow second
-60328.0 "Holy Lance" Ability { id: "A255", source: "Magitaur" }
-60337.3 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
-60337.3 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
-60341.9 "Lancelight 1" #Ability { id: "A259", source: "Luminous Lance" }
-60343.9 "Lancelight 2" #Ability { id: "A258", source: "Luminous Lance" }
-60345.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
-60345.9 "Lancelight 3" #Ability { id: "A259", source: "Magitaur" }
-60347.9 "Lancelight 4" #Ability { id: "A258", source: "Magitaur" }
-60349.9 "Lancelight 5" #Ability { id: "A259", source: "Luminous Lance" }
-60351.9 "Lancelight 6" #Ability { id: "A258", source: "Luminous Lance" }
-60353.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
-60353.9 "Lancelight 7" #Ability { id: "A259", source: "Magitaur" }
-60355.9 "Lancelight 8" #Ability { id: "A258", source: "Luminous Lance" }
-60357.9 "Lancelight 9" #Ability { id: "A259", source: "Luminous Lance" }
-60359.9 "Lancelight 10" #Ability { id: "A258", source: "Luminous Lance" }
-60361.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
-60361.9 "Lancelight 11" #Ability { id: "A259", source: "Luminous Lance" }
-60363.9 "Lancelight 12" #Ability { id: "A258", source: "Luminous Lance" }
-60365.3 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
-60374.6 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
-60384.2 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
+# NOTE: Critical Lanceblow is always first and Axeblow second
+# NOTE2: Logs may have wrong source such as Luminous Lance or Magitaur
+60731.8 "Holy Lance" Ability { id: "A255", source: "Magitaur" }
+60741.2 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60741.2 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60745.9 "Lance 1" #Ability { id: "A256", source: "Luminous Lance" }
+60747.9 "Lance 2" #Ability { id: "A256", source: "Luminous Lance" }
+60749.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
+60749.9 "Lance 3" #Ability { id: "A256", source: "Magitaur" }
+60751.9 "Lance 4" #Ability { id: "A256", source: "Magitaur" }
+60753.9 "Lance 5" #Ability { id: "A256", source: "Luminous Lance" }
+60755.9 "Lance 6" #Ability { id: "A256", source: "Luminous Lance" }
+60757.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
+60757.9 "Lance 7" #Ability { id: "A256", source: "Magitaur" }
+60759.9 "Lance 8" #Ability { id: "A256", source: "Luminous Lance" }
+60761.9 "Lance 9" #Ability { id: "A256", source: "Luminous Lance" }
+60763.9 "Lance 10" #Ability { id: "A256", source: "Luminous Lance" }
+60765.9 "Holy IV" Ability { id: "A257", source: ["Magitaur", "Luminous Lance"] }
+60765.9 "Lance 11" #Ability { id: "A256", source: "Luminous Lance" }
+60767.9 "Lance 12" #Ability { id: "A256", source: "Luminous Lance" }
+60769.7 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60779.0 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
+60788.4 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
 
-60394.1 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
-60406.8 "Arcane Recoil" #Ability { id: "A25C", source: "Magitaur" }
-60407.1 "Arcane Reaction" #Ability { id: "A25D", source: "Magitaur" }
-60413.1 "Arcane Recoil" #Ability { id: "A25C", source: "Lance Empowerment Conduit" }
-60414.1 "Arcane Recoil" #Ability { id: "A25C", source: "Magitaur" }
-60414.5 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
+60798.4 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+60819.0 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
 
 # Assassin's Dagge 3
 # NOTE: Critical Lanceblow seems to always be first and Axeblow second
-60424.4 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
-60424.7 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
-60426.7 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60428.7 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
-60430.7 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60432.7 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
-60434.7 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60436.7 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
-60437.1 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
-60437.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
-60438.3 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60440.3 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
-60442.3 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
-60444.3 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
-60446.3 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
-60447.3 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
-60474.6 "Unsealed Aura (Enrage)" Ability { id: "A267", source: "Magitaur" }
-60475.5 "Unsealed Aura (Enrage)" Ability { id: "9BE8", source: "Magitaur" }
+60828.8 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
+60829.1 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
+60831.1 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60833.1 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
+60835.1 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60837.1 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60839.1 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60841.1 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60841.8 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60841.8 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60843.0 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60845.0 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60847.0 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60849.0 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60851.0 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60852.0 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60879.4 "Unsealed Aura (Enrage)" Ability { id: "A267", source: "Magitaur" }
+60880.3 "Unsealed Aura (Enrage)" Ability { id: "9BE8", source: "Magitaur" }
+
+# Enrage Loop
+# Note: Time between the loop casts is an estimated guess
+60883.4 "Unsealed Aura" Ability { id: "A268", source: "Magitaur" }
+60887.8 "Unsealed Aura" Ability { id: "A268", source: "Magitaur" } jump 60883.4
