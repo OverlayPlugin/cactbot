@@ -2712,6 +2712,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gravity of Dangers Near / Gravity of Expulsion Afar': 'Gravity Near/Far',
         'Close Call to Detonate / Far Cry to Detonate': 'Close/Far to Detonate',
         'Critical Axeblow / Critical Lanceblow': 'Critical Axe/Lanceblow',
+        'Critical Lanceblow / Critical Axeblow': 'CriticalLanceblow/Axeblow',
       },
     },
     {
