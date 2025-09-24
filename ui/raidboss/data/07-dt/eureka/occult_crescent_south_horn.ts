@@ -35,7 +35,7 @@ export interface Data extends RaidbossData {
   marbleDragonIsFrigidDive: boolean;
   marbleDragonHasWickedWater: boolean;
   magitaurRuneTargets: string[];
-  magitaurIsRuinousRune2: boolean;
+  magitaurRuinousRuneCount: number;
   magitaurRune2Targets: string[];
   magitaurBigRune2Target?: string;
   magitaurIsHolyLance: boolean;
@@ -214,7 +214,6 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'Occult Crescent South Horn critical encounter triggers/timeline.',
     cn: '蜃景幻界新月岛 南征之章 紧急遭遇战 触发器/时间轴。',
-    ko: '초승달 섬: 남부편 비상 조우 트리거/타임라인',
   },
   config: [
     {
@@ -259,7 +258,7 @@ const triggerSet: TriggerSet<Data> = {
     marbleDragonIsFrigidDive: false,
     marbleDragonHasWickedWater: false,
     magitaurRuneTargets: [],
-    magitaurIsRuinousRune2: false,
+    magitaurRuinousRuneCount: 0,
     magitaurRune2Targets: [],
     magitaurIsHolyLance: false,
     magitaurLancelightCount: 0,
@@ -2315,7 +2314,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: true },
       condition: (data) => {
-        return !data.magitaurIsRuinousRune2 && !data.magitaurIsHolyLance;
+        return data.magitaurRuinousRuneCount !== 1 && !data.magitaurIsHolyLance;
       },
       alertText: (_data, matches, output) => {
         if (matches.id === 'A247')
@@ -2447,7 +2446,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurBigRuinousRune], capture: true },
       condition: (data) => {
-        return !data.magitaurIsRuinousRune2;
+        return data.magitaurRuinousRuneCount !== 1;
       },
       response: (data, matches, output) => {
         // cactbot-builtin-response
@@ -2471,7 +2470,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurSmallRuinousRune], capture: true },
       condition: (data) => {
-        return !data.magitaurIsRuinousRune2;
+        return data.magitaurRuinousRuneCount !== 1;
       },
       response: (data, matches, output) => {
         // cactbot-builtin-response
@@ -2506,11 +2505,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Magitaur', id: 'A251', capture: false },
       condition: (data) => {
         // Don't execute for the first big Ruinous Rune, but set boolean for second set
-        if (!data.magitaurIsRuinousRune2) {
-          data.magitaurIsRuinousRune2 = true;
+        if (data.magitaurRuinousRuneCount === 0) {
+          data.magitaurRuinousRuneCount = 1;
           return false;
         }
-        return data.magitaurIsRuinousRune2;
+        data.magitaurRuinousRuneCount = 2;
+        return true;
       },
       alertText: (data, _matches, output) => {
         const target1 = data.magitaurRuneTargets[0];
@@ -2539,7 +2539,7 @@ const triggerSet: TriggerSet<Data> = {
         capture: true,
       },
       condition: (data) => {
-        return data.magitaurIsRuinousRune2;
+        return data.magitaurRuinousRuneCount === 1;
       },
       preRun: (data, matches) => {
         if (matches.id === headMarkerData.magitaurBigRuinousRune)
@@ -2597,10 +2597,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A250', capture: true },
       condition: (data, matches) => {
-        // magitaurIsRuinousRune2 is true at this time for first set
+        // magitaurRuinousRuneCount is 1 at this time for first set
         // This could be altered to not call for players without markers, but
         // calling for player that got hit with the aoe could also save a life
-        if (matches.target === data.me && data.magitaurIsRuinousRune2)
+        if (matches.target === data.me && data.magitaurRuinousRuneCount === 1)
           return true;
 
         // Players that get hit and are not targeted do not get an output
@@ -2626,7 +2626,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: ['A24E', 'A24D'], capture: false },
       condition: (data) => {
-        return data.magitaurIsRuinousRune2;
+        return data.magitaurRuinousRuneCount === 1;
       },
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
@@ -2647,20 +2647,6 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: magitaurOutputStrings,
     },
     {
-      id: 'Occult Crescent Magitaur Ruinous Rune 2 Flag Unset',
-      // Clear condition on Critical Lanceblow
-      type: 'Ability',
-      netRegex: { source: 'Magitaur', id: ['A24E', 'A24D'], capture: false },
-      condition: (data) => {
-        return data.magitaurIsRuinousRune2;
-      },
-      suppressSeconds: 1,
-      run: (data) => {
-        // Re-enable normal Axeblow / Lanceblow trigger and re-triggering Rune Lanceblow trigger
-        data.magitaurIsRuinousRune2 = false;
-      },
-    },
-    {
       id: 'Occult Crescent Magitaur Holy Lance Filter',
       // Lanceblow and Axeblow here need to be handled separately
       // Lanceblow would have an overlap with stack call, whereas Axeblow overlaps with Holy IV resolution
@@ -2672,11 +2658,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Magitaur Lancelight On/Off Square',
+      // Tracking A256 which seems to be related to the Lance aninmations when
+      // Lancelight A258 or A259 goes off
       // TODO: Get player position for an alertText and filter?
       // Players can manually blank the outputString for the other squares in configuration
       // Holy IV first and second targets need to avoid overlapping outside square
       type: 'Ability',
-      netRegex: { source: 'Magitaur', id: ['A259', 'A258'], capture: false },
+      netRegex: { source: 'Luminous Lance', id: 'A256', capture: false },
       suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -2789,67 +2777,6 @@ const triggerSet: TriggerSet<Data> = {
         'Vertical Crosshatch': '纵向双重抓',
         'Void Thunder III': '虚空暴雷',
         'White-hot Rage': '气焰怒涛',
-      },
-    },
-    {
-      'locale': 'ko',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Ball of Fire': '화염 구체',
-        'Black Star': '검은 죽음의 운성',
-        'Clawmarks': '손톱자국',
-        'Cloister Demon': '회랑 악마',
-        'Crescent Berserker': '초승달 광전사',
-        'Crystal Dragon': '수정룡',
-        'Death Claw': '죽음손아귀',
-        'Draconic Double': '수정룡의 환영',
-        'Hinkypunk': '힝키펑크',
-        'Lion Rampant': '직립 사자',
-        'Neo Garula': '네오 가루라',
-        'Nymian Petalodus': '니므 페탈로두스',
-        'Phantom Claw': '죽음손아귀의 환영',
-        'Repaired Lion': '복원된 사자',
-      },
-      'replaceText': {
-        '\\(in\\)': '(안)',
-        '\\(jump\\)': '(점프)',
-        '\\(Lightning\\)': '(번개)',
-        '\\(out\\)': '(밖)',
-        '\\(Wind\\)': '(바람)',
-        'Bedrock Uplift': '지반 융기',
-        'Blazing Flare': '플레어 작열',
-        'Boil Over': '노발',
-        'Channeled Rage': '진노',
-        'Clawing Shadow': '안개 발톱',
-        'Clawmarks': '손톱자국',
-        'Crystal Call': '수정석 생성',
-        'Crystal Mirror': '수정석 이동',
-        'Crystallized Energy': '수정 파동',
-        'Dirty Nails': '더러운 발톱',
-        'Explosion': '폭발',
-        'Fearsome Facet': '환영 수정석',
-        'Gigaflare': '기가플레어',
-        'Great Ball of Fire': '불덩이',
-        'Heated Outburst': '기염',
-        'Heightened Rage': '대진노',
-        'Hopping Mad': '노도의 도끼질',
-        'Karmic Drain': '생명 부식',
-        'Lethal Nails': '죽음의 손톱',
-        'Made Magic': '마력 방출',
-        'Manifold Marks': '다중 손톱자국',
-        'Primal Roar': '대포효',
-        'Prismatic Wing': '수정 날개',
-        'Raking Scratch': '연속 손톱',
-        'Scathing Sweep': '가로 후리기',
-        'Seal Asunder': '봉인 파괴',
-        'Skulking Orders': '처벌 지시',
-        'Sunderseal Roar': '해방의 포효',
-        'The Grip of Poison': '사악한 공명',
-        'Threefold Marks': '삼중 손톱자국',
-        'Tidal Breath': '해일 숨결',
-        'Vertical Crosshatch/Horizontal Crosshatch': '세로/가로 이중 손톱',
-        'Void Thunder III': '보이드 선더가',
-        'White-hot Rage': '노도의 기염',
       },
     },
   ],
