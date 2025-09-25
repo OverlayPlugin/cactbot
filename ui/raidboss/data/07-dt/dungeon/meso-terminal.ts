@@ -78,6 +78,12 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
+      id: 'Meso Terminal Chirurgeon Biochemical Front',
+      type: 'StartsUsing',
+      netRegex: { id: 'AB1S', source: 'Chirurgeon General', capture: false },
+      response: Responses.getBehind(),
+    },
+    {
       // The origin for the Chirurgeon is (270,12).
       // Aerosol can be cast at four cardinal points,
       // each ten units along an axis from the origin.
@@ -190,8 +196,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Executioners Flaying Flail',
       type: 'StartsUsing',
-      netRegex: { id: 'AA48', capture: false },
-      suppressSeconds: 1,
+      netRegex: { id: 'AA48', capture: true },
+      condition: (data, matches) => data.playerExecutionerId === matches.sourceId,
       infoText: (_data, _matches, output) => output.avoidFlails!(),
       outputStrings: {
         avoidFlails: {
