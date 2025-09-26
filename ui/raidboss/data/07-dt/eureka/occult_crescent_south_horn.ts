@@ -195,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '火球',
         'Black Star': '黑色天星',
@@ -256,6 +257,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '화염 구체',
         'Black Star': '검은 죽음의 운성',
