@@ -32,6 +32,7 @@ const ceIds: { [ce: string]: string } = {
   theUnbridled: '348',
   trialByClaw: '349',
   withExtremePredjudice: '339',
+  theForkedTowerBlood: '33B',
 };
 
 const triggerSet: TriggerSet<Data> = {
