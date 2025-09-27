@@ -1999,7 +1999,7 @@ const triggerSet: TriggerSet<Data> = {
           data.marbleDragonIcicle = 'west';
         } else {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Icicle: Unknown Icicle Position (${x}, ${y})`
+            `Occult Crescent Marble Dragon Imitation Icicle: Unknown Icicle Position (${x}, ${y})`,
           );
         }
       },
