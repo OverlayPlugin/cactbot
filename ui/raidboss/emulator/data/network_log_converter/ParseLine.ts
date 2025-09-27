@@ -6,6 +6,15 @@ import { LineEvent03 } from './LineEvent0x03';
 import { LineEvent04 } from './LineEvent0x04';
 import { LineEvent12 } from './LineEvent0x0C';
 import { LineEvent261 } from './LineEvent0x105';
+import { LineEvent263 } from './LineEvent0x107';
+import { LineEvent264 } from './LineEvent0x108';
+import { LineEvent266 } from './LineEvent0x10A';
+import { LineEvent267 } from './LineEvent0x10B';
+import { LineEvent270 } from './LineEvent0x10E';
+import { LineEvent271 } from './LineEvent0x10F';
+import { LineEvent272 } from './LineEvent0x110';
+import { LineEvent273 } from './LineEvent0x111';
+import { LineEvent274 } from './LineEvent0x112';
 import { LineEvent20 } from './LineEvent0x14';
 import { LineEvent21 } from './LineEvent0x15';
 import { LineEvent22 } from './LineEvent0x16';
@@ -121,6 +130,41 @@ export default class ParseLine {
         break;
       case 'LineEvent261':
         ret = new LineEvent261(repo, line, parts);
+        break;
+      case 'LineEvent263':
+        ret = new LineEvent263(repo, line, parts);
+        break;
+
+      case 'LineEvent274':
+        ret = new LineEvent274(repo, line, parts);
+        break;
+
+      case 'LineEvent264':
+        ret = new LineEvent264(repo, line, parts);
+        break;
+
+      case 'LineEvent266':
+        ret = new LineEvent266(repo, line, parts);
+        break;
+
+      case 'LineEvent267':
+        ret = new LineEvent267(repo, line, parts);
+        break;
+
+      case 'LineEvent270':
+        ret = new LineEvent270(repo, line, parts);
+        break;
+
+      case 'LineEvent271':
+        ret = new LineEvent271(repo, line, parts);
+        break;
+
+      case 'LineEvent272':
+        ret = new LineEvent272(repo, line, parts);
+        break;
+
+      case 'LineEvent273':
+        ret = new LineEvent273(repo, line, parts);
         break;
       default:
         ret = new LineEvent(repo, line, parts);

@@ -27,7 +27,7 @@ const isValidTimestamp = (timestamp: number) => {
 };
 
 export default class Encounter {
-  private static readonly encounterVersion = 2;
+  private static readonly encounterVersion = 3;
   public id?: number;
   version: number;
   initialOffset = Number.MAX_SAFE_INTEGER;
