@@ -69,6 +69,13 @@ const ceIds: { [ce: string]: string } = {
   theUnbridled: '348',
   trialByClaw: '349',
   withExtremePredjudice: '339',
+  demonTablet: '33B',
+  centralGallery: '33F',
+  deadStars: '33C',
+  upperExterior: '340',
+  marbleDragon: '33D',
+  bindingLock: '341',
+  infamyOfBloodMagitaur: '33E',
 };
 
 const headMarkerData = {
