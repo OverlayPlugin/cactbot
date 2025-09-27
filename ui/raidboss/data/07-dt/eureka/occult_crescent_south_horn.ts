@@ -34,11 +34,11 @@ export interface Data extends RaidbossData {
   marbleDragonDiveDirNum?: number;
   marbleDragonIsFrigidDive: boolean;
   marbleDragonHasWickedWater: boolean;
+  magitaurCriticalBlowCount: number;
   magitaurRuneTargets: string[];
   magitaurRuinousRuneCount: number;
   magitaurRune2Targets: string[];
   magitaurBigRune2Target?: string;
-  magitaurIsHolyLance: boolean;
   magitaurLancelightCount: number;
   bossDir?: number;
   playerDir?: number;
@@ -265,10 +265,10 @@ const triggerSet: TriggerSet<Data> = {
     marbleDragonDelugeTargets: [],
     marbleDragonIsFrigidDive: false,
     marbleDragonHasWickedWater: false,
+    magitaurCriticalBlowCount: 0,
     magitaurRuneTargets: [],
     magitaurRuinousRuneCount: 0,
     magitaurRune2Targets: [],
-    magitaurIsHolyLance: false,
     magitaurLancelightCount: 0,
   }),
   resetWhenOutOfCombat: false,
@@ -354,10 +354,10 @@ const triggerSet: TriggerSet<Data> = {
         data.marbleDragonDelugeTargets = [];
         data.marbleDragonIsFrigidDive = false;
         data.marbleDragonHasWickedWater = false;
+        data.magitaurCriticalBlowCount = 0;
         data.magitaurRuneTargets = [];
         data.magitaurRuinousRuneCount = 0;
         data.magitaurRune2Targets = [];
-        data.magitaurIsHolyLance = false;
         data.magitaurLancelightCount = 0;
       },
     },
@@ -1887,8 +1887,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.prongedPassageStack], capture: true },
       condition: (data) => {
-        // Do not trigger during Magitaur Holy Lance
-        return !data.magitaurIsHolyLance;
+        // Prevents trigger during Magitaur
+        return data.magitaurCriticalBlowCount === 0;
       },
       promise: async (data, matches) => {
         const combatants = (await callOverlayHandler({
@@ -2361,12 +2361,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow Counter',
+      // For tracking which part in the encounter the cast is
+      // 1 = Assassin's Dagger Cast
+      // 2 = Assassin's Dagger Opposite Cast
+      // 3 = Sage's Blow Cast
+      // 4 = Sage's Blow Opposite Cast
+      // 5 = Rune Axe Lanceblow
+      // 6 = Rune Axe Axeblow
+      // 7 = Assassin's Dagger Lanceblow
+      // 8 = Assassin's Dagger Axeblow
+      // 9 = Holy Lance Lanceblow
+      // 10 = Holy Lance Axeblow
+      // 11 = Assassin's Dagger Lanceblow
+      // 12 = Assassin's Dagger Axeblow
+      type: 'StartsUsing',
+      netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: false },
+      run: (data) => {
+        data.magitaurCriticalBlowCount = data.magitaurCriticalBlowCount + 1;
+      },
+    },
+    {
       id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow',
       // Do not trigger for the Lanceblow during Rune Axe or during Holy Lance
       type: 'StartsUsing',
       netRegex: { source: 'Magitaur', id: ['A247', 'A24B'], capture: true },
       condition: (data) => {
-        return data.magitaurRuinousRuneCount !== 1 && !data.magitaurIsHolyLance;
+        return data.magitaurCriticalBlowCount !== 5 && data.magitaurCriticalBlowCount !== 9;
       },
       alertText: (_data, matches, output) => {
         if (matches.id === 'A247')
@@ -2553,6 +2574,7 @@ const triggerSet: TriggerSet<Data> = {
       // Players with first set of small Ruinous Runes (A250) stay on square
       // Rest of players must get off
       // This occurs with a Lanceblow almost immediately after, so pre-call that
+      // NOTE: This is for magitaurCriticalBlowCount === 5
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A251', capture: false },
       condition: (data) => {
@@ -2646,6 +2668,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow Reminder',
       // Players have ~2.1s to move based on damage cast timing of Critical Lanceblow
+      // NOTE: This occurs for magitaurCriticalBlowCount === 5
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A250', capture: true },
       condition: (data, matches) => {
@@ -2699,16 +2722,6 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: magitaurOutputStrings,
     },
     {
-      id: 'Occult Crescent Magitaur Holy Lance Filter',
-      // Lanceblow and Axeblow here need to be handled separately
-      // Lanceblow would have an overlap with stack call, whereas Axeblow overlaps with Holy IV resolution
-      type: 'StartsUsing',
-      netRegex: { source: 'Magitaur', id: 'A255', capture: false },
-      run: (data) => {
-        data.magitaurIsHolyLance = true;
-      },
-    },
-    {
       id: 'Occult Crescent Magitaur Lancelight On/Off Square',
       // Tracking A256 which seems to be related to the Lance aninmations when
       // Lancelight A258 or A259 goes off
@@ -2734,8 +2747,6 @@ const triggerSet: TriggerSet<Data> = {
           case 9:
             return { infoText: output.northwestOff!() };
           case 12:
-            // Re-enable normal Axeblow / Lanceblow trigger
-            data.magitaurIsHolyLance = false;
             return { alertText: output.out!() };
         }
       },
@@ -2748,7 +2759,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Magitaur', id: 'A24B', capture: false },
       condition: (data) => {
-        return data.magitaurIsHolyLance;
+        return data.magitaurCriticalBlowCount === 9;
       },
       alertText: (_data, _matches, output) => output.in!(),
       outputStrings: magitaurOutputStrings,
