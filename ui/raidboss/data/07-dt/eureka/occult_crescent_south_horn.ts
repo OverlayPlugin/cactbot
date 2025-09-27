@@ -29,6 +29,7 @@ export interface Data extends RaidbossData {
   deadStarsSnowballTetherCount: number;
   prongedPassageActLoc: { [id: string]: string };
   prongedPassageIdolCastCount: { [id: string]: number };
+  marbleDragonIcicle?: 'east' | 'west';
   marbleDragonTankbusterFilter: boolean;
   marbleDragonDelugeTargets: string[];
   marbleDragonDiveDirNum?: number;
@@ -277,10 +278,22 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Marble Dragon Draconiform Motion Bait',
       regex: /Draconiform Motion/,
       beforeSeconds: 7,
-      alertText: (_data, _matches, output) => output.baitCleave!(),
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonIcicle !== undefined) {
+          if (data.marbleDragonIcicle === 'east')
+            return output.baitCleaveThenDir!({ dir: output.east!() });
+          return output.baitCleaveThenDir!({ dir: output.west!() });
+        }
+        return output.baitCleave!();
+      },
       outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
         baitCleave: {
           en: 'Bait Cleave',
+        },
+        baitCleaveThenDir: {
+          en: 'Bait Cleave => ${dir}',
         },
       },
     },
@@ -326,6 +339,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.demonTabletCometeor;
         delete data.demonTabletIsFrontRight;
         delete data.deadStarsSnowballTetherDirNum;
+        delete data.marbleDragonIcicle;
         delete data.marbleDragonDiveDirNum;
         delete data.magitaurBigRune2Target;
         delete data.bossDir;
@@ -1946,6 +1960,66 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bleedAoe(),
     },
     {
+      id: 'Occult Crescent Marble Dragon Imitation Icicle',
+      // Boss spawns two ice puddles that will freeze water puddles
+      // The entities that cast the 75E4 from these locations are +23 and +24 source ids higher than 756F
+      // Go East Pattern:
+      // (-343, 153)
+      //             (-319, 161)
+      // Go West Pattern:
+      //             (-343, 161)
+      // (-319, 153)
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '756F', capture: true },
+      promise: async (data, matches) => {
+        // Grabbing both icicles to check for expected two actors
+        const puddle1 = parseInt(matches.sourceId, 16) + 23;
+        const puddle2 = parseInt(matches.sourceId, 16) + 24;
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [puddle1, puddle2],
+        })).combatants;
+        if (actors.length !== 2) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Icicle: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        if (actors[0] === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Icicle: Invalid actor`,
+          );
+          return;
+        }
+        const x = actors[0].PosX;
+        const y = actors[0].PosY;
+        if ((x === -319 && y === 161) || (x === -343 && y === 153)) {
+          data.marbleDragonIcicle = 'east';
+        } else if ((x === -319 && y === 153) || (x === -343 && y === 161)) {
+          data.marbleDragonIcicle = 'west';
+        } else {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Icicle: Unknown Icicle Position (${x}, ${y})`
+          );
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.marbleDragonIcicle === undefined)
+          return;
+        if (data.marbleDragonIcicle === 'east')
+          return output.eastLater!();
+        return output.westLater!();
+      },
+      outputStrings: {
+        eastLater: {
+          en: '(East Later)',
+        },
+        westLater: {
+          en: '(West Later)',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Marble Dragon Draconiform Motion',
       // Boss turns to face random player and casts 77C1 Draconiform Motion
       // This is a 3.7s that coincides with these 4.5s casts:
@@ -1954,7 +2028,23 @@ const triggerSet: TriggerSet<Data> = {
       // Getting hit also applies D96 Thrice-come Ruin debuff
       type: 'StartsUsing',
       netRegex: { source: 'Marble Dragon', id: '77C1', capture: false },
-      response: Responses.goSides(),
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonIcicle !== undefined) {
+          if (data.marbleDragonIcicle === 'east')
+            return output.east!();
+          return output.west!();
+        }
+        return output.sides!();
+      },
+      run: (data) => {
+        if (data.marbleDragonIcicle !== undefined)
+          delete data.marbleDragonIcicle;
+      },
+      outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        sides: Outputs.sides,
+      },
     },
     {
       id: 'Occult Crescent Marble Dragon Dread Deluge',
