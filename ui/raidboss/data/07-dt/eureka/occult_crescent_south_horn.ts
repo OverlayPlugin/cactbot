@@ -318,6 +318,50 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Forked Tower: Blood Clear Data',
+      type: 'SystemLogMessage',
+      // "is no longer sealed"
+      netRegex: { id: '7DE', capture: false },
+      run: (data) => {
+        delete data.demonTabletCometeor;
+        delete data.demonTabletIsFrontRight;
+        delete data.deadStarsSnowballTetherDirNum;
+        delete data.marbleDragonDiveDirNum;
+        delete data.magitaurBigRune2Target;
+        delete data.bossDir;
+        delete data.playerDir;
+        data.demonTabletChiselTargets = [];
+        data.demonTabletRotationCounter = 0;
+        data.demonTabletIsFrontSide = true;
+        data.demonTabletCometSouthTargets = [];
+        data.demonTabletCometNorthTargets = [];
+        data.deadStarsIsSlice2 = false;
+        data.deadStarsSliceTargets = [];
+        data.deadStarsFirestrikeTargets = [];
+        data.deadStarsCount = 0,
+        data.deadStarsPhobos = [];
+        data.deadStarsNereid = [];
+        data.deadStarsTriton = [];
+        data.deadStarsLiquifiedNereid = [];
+        data.deadStarsLiquifiedTriton = [];
+        data.deadStarsSnowballTetherCount = 0;
+        data.prongedPassageActLoc = {};
+        data.prongedPassageIdolCastCount = {
+          'north': 0,
+          'south': 0,
+        };
+        data.marbleDragonTankbusterFilter = false;
+        data.marbleDragonDelugeTargets = [];
+        data.marbleDragonIsFrigidDive = false;
+        data.marbleDragonHasWickedWater = false;
+        data.magitaurRuneTargets = [];
+        data.magitaurRuinousRuneCount = 0;
+        data.magitaurRune2Targets = [];
+        data.magitaurIsHolyLance = false;
+        data.magitaurLancelightCount = 0;
+      },
+    },
+    {
       id: 'Occult Crescent Cloister Demon Tidal Breath',
       type: 'StartsUsing',
       netRegex: { source: 'Cloister Demon', id: 'A190', capture: false },
