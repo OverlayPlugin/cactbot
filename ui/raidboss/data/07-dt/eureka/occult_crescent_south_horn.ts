@@ -927,7 +927,11 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
       alertText: (data, matches, output) => {
-        const towers = (data.demonTabletGravityTowers === 'north') ? output.north!() : (data.demonTabletGravityTowers === 'south') ? output.south!() : undefined;
+        const towers = (data.demonTabletGravityTowers === 'north')
+          ? output.north!()
+          : (data.demonTabletGravityTowers === 'south')
+          ? output.south!()
+          : undefined;
         if (matches.id === 'A2EA') {
           if (towers !== undefined)
             return output.dirOutThenTowers!({ dir: towers });
