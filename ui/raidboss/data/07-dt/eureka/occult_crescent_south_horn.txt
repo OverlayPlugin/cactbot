@@ -210,7 +210,7 @@ hideall "--sync--"
 4267.1 "Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation" Ability { id: ["A915", "A231", "A230"], source: "Trade Tortoise" }
 4267.1 "Cost of Living" Ability { id: "A232", source: "Trade Tortoise" }
 
-# Loop Begins
+# Loop Block
 4275.4 label "oc-cursed-concern-loop"
 4279.4 "Recommended for You" Ability { id: "A409", source: "Trade Tortoise" }
 4307.5 "What're You Buying?" Ability { id: "A9BC", source: "Trade Tortoise" }
@@ -231,6 +231,7 @@ hideall "--sync--"
 4356.1 "Hoard Wealth 2" Ability { id: "A96C", source: "Trade Tortoise" }
 4368.8 "Earthquake" Ability { id: "A238", source: "Trade Tortoise" } duration 1
 
+# Loop
 4379.2 "--sync--" StartsUsing { id: "A409", source: "Trade Tortoise" } forcejump "oc-cursed-concern-loop"
 4383.2 "Recommended for You" #Ability { id: "A409", source: "Trade Tortoise" }
 4411.3 "What're You Buying?" #Ability { id: "A9BC", source: "Trade Tortoise" }
