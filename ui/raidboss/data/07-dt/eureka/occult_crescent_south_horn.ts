@@ -191,7 +191,8 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Vertical Crosshatch/Horizontal Crosshatch': 'Vertical/Horizontal Crosshatch',
-        'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation': 'Penny Inflation (knockback)',
+        'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation':
+          'Penny Inflation (knockback)',
       },
     },
     {
