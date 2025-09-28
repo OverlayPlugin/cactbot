@@ -171,8 +171,69 @@ hideall "--sync--"
 3344.5 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" } forcejump "crosshatch-loop"
 
 ### Cursed Concern
+# -ii 368 A2EF A239 A2CC
+# -p A22E:4131.8
+# -it "Trade Tortoise"
+# IGNORED ABILITIES
+# 368 attack
+# A23F --sync--
+# A239 Earthquake (damage)
+# A22C What're You Buying?
+#
+# ALL ENCOUNTER ABILITIES
+# A22B What're You Buying?
+# A22D Material World
+# A22E Ill-gotten Goods
+# A230 Fourpenny Inflation
+# A231 Onepenny Inflation
+# A232 Cost of Living
+# A236 Waterspout
+# A237 Waterspout
+# A238 Earthquake
+# A409 Recommended for You
+# A915 Twopenny Inflation
+# A96C Hoard Wealth
+# A9BC What're You Buying?
 4000.0 "--sync--" ActorControl { command: "80000014", data0: "32B" } window 100000,0
 4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+4128.8 "--sync--" StartsUsing { id: "A22E", source: "Trade Tortoise" } window 30,5
+4131.8 "Ill-gotten Goods (Red)" Ability { id: "A22E", source: "Trade Tortoise" }
+4138.9 "Material World (Stop)" Ability { id: "A22D", source: "Trade Tortoise" }
+4153.0 "Ill-gotten Goods (Blue)" Ability { id: "A22E", source: "Trade Tortoise" }
+4160.1 "Material World (Move)" Ability { id: "A22D", source: "Trade Tortoise" }
+4174.2 "Ill-gotten Goods (Green)" Ability { id: "A22E", source: "Trade Tortoise" }
+4181.3 "Material World (Forced Move)" Ability { id: "A22D", source: "Trade Tortoise" }
+4196.4 "Earthquake" Ability { id: "A238", source: "Trade Tortoise" } duration 1
+4207.7 "Recommended for You" Ability { id: "A409", source: "Trade Tortoise" }
+4235.8 "What're You Buying?" Ability { id: "A22B", source: "Trade Tortoise" }
+4242.8 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
+4267.1 "Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation" Ability { id: ["A915", "A231", "A230"], source: "Trade Tortoise" }
+4267.1 "Cost of Living" Ability { id: "A232", source: "Trade Tortoise" }
+
+# Loop Begins
+4275.4 label "oc-cursed-concern-loop"
+4279.4 "Recommended for You" Ability { id: "A409", source: "Trade Tortoise" }
+4307.5 "What're You Buying?" Ability { id: "A9BC", source: "Trade Tortoise" }
+4319.6 "Waterspout" Ability { id: "A236", source: "Trade Tortoise" } duration 10
+4325.7 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
+4329.9 "Waterspout 1" #Ability { id: "A237", source: "Trade Tortoise" }
+4330.9 "Waterspout 2" #Ability { id: "A237", source: "Trade Tortoise" }
+4331.8 "Waterspout 3" #Ability { id: "A237", source: "Trade Tortoise" }
+4332.7 "Waterspout 4" #Ability { id: "A237", source: "Trade Tortoise" }
+4333.6 "Waterspout 5" #Ability { id: "A237", source: "Trade Tortoise" }
+4334.6 "Waterspout 6" #Ability { id: "A237", source: "Trade Tortoise" }
+4335.5 "Waterspout 7" #Ability { id: "A237", source: "Trade Tortoise" }
+4336.4 "Waterspout 8" #Ability { id: "A237", source: "Trade Tortoise" }
+4337.3 "Waterspout (middle)" #Ability { id: "A237", source: "Trade Tortoise" }
+4351.1 "Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation" Ability { id: ["A915", "A231", "A230"], source: "Trade Tortoise" }
+4351.1 "Cost of Living" Ability { id: "A232", source: "Trade Tortoise" }
+4353.1 "Hoard Wealth 1" Ability { id: "A96C", source: "Trade Tortoise" }
+4356.1 "Hoard Wealth 2" Ability { id: "A96C", source: "Trade Tortoise" }
+4368.8 "Earthquake" Ability { id: "A238", source: "Trade Tortoise" } duration 1
+
+4379.2 "--sync--" StartsUsing { id: "A409", source: "Trade Tortoise" } forcejump "oc-cursed-concern-loop"
+4383.2 "Recommended for You" #Ability { id: "A409", source: "Trade Tortoise" }
+4411.3 "What're You Buying?" #Ability { id: "A9BC", source: "Trade Tortoise" }
 
 ### Eternal Watch
 5000.0 "--sync--" ActorControl { command: "80000014", data0: "329" } window 100000,0
