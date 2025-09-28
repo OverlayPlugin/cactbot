@@ -5,6 +5,7 @@ import { Responses } from '../../../../../resources/responses';
 import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
+import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
@@ -15,7 +16,9 @@ export interface Data extends RaidbossData {
   demonTabletCometeor?: 'near' | 'afar';
   demonTabletCometSouthTargets: string[];
   demonTabletCometNorthTargets: string[];
+  demonTabletGargoyle?: PluginCombatantState;
   demonTabletIsFrontRight?: boolean;
+  demonTabletGravityTowers?: 'north' | 'south';
   deadStarsIsSlice2: boolean;
   deadStarsSliceTargets: string[];
   deadStarsFirestrikeTargets: string[];
@@ -338,6 +341,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         delete data.demonTabletCometeor;
         delete data.demonTabletIsFrontRight;
+        delete data.demonTabletGravityTowers;
         delete data.deadStarsSnowballTetherDirNum;
         delete data.marbleDragonIcicle;
         delete data.marbleDragonDiveDirNum;
@@ -824,20 +828,128 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Demon Tablet Summon 2',
+      // Statues cast Erase Gravity, which sends them and anyone near up in the air
+      // Boss casts Restore Gravity which will cause the statues and players to fall back down
+      // Statues falling down trigger aoes
+      // Players could be on either side, dependent on where the towers were
+      // Pattern 1: (Front right safe)
+      // (688, 352)
+      //            (712, 362.5)
+      //
+      // ----- Boss -----
+      //
+      // (688, 395.5)
+      //            (712, 406)
+      // Pattern 2: (Back left safe)
+      //
+      // (688, 362.5)
+      //             (712, 370)
+      // ----- Boss -----
+      // (688, 388)
+      //             (712, 395.5)
+      // Gargoyle Statues are +15, +16, +17, and +18 above the boss' source id
+      type: 'Ability',
+      netRegex: { source: 'Demon Tablet', id: 'A2E9', capture: true },
+      promise: async (data, matches) => {
+        const gargoyle1 = parseInt(matches.sourceId, 16) + 15;
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [gargoyle1],
+        })).combatants;
+        if (actors.length !== 1) {
+          console.error(
+            `Occult Crescent Demon Tablet Summon 2: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+        if (actors[0] === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Summon 2: Invalid actor`,
+          );
+          return;
+        }
+        const actor = actors[0];
+        const x = actor.PosX;
+        const y = actor.PosY;
+
+        if (x > 687 && x < 689) {
+          if ((y > 351 && y < 353) || (y > 394.5 && y < 396.5))
+            data.demonTabletIsFrontRight = true;
+          if ((y > 361.5 && y < 363.5) || (y > 387 && y < 389))
+            data.demonTabletIsFrontRight = false;
+        } else if (x > 711 && x < 713) {
+          if ((y > 361.5 && y < 363.5) || (y > 405 && y < 407))
+            data.demonTabletIsFrontRight = true;
+          if ((y > 369 && y < 371) || (y > 394.5 && y < 396.5))
+            data.demonTabletIsFrontRight = false;
+        }
+        if (data.demonTabletIsFrontRight === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Summon 2: Unrecognized coordinates (${x}, ${y})`,
+          );
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.demonTabletIsFrontRight === undefined)
+          return;
+
+        if (data.demonTabletIsFrontRight)
+          return output.frontRightLater!();
+        return output.backLeftLater!();
+      },
+      outputStrings: {
+        backLeftLater: {
+          en: '(Back Left Later)',
+        },
+        frontRightLater: {
+          en: '(Front Right Later)',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Gravity Towers Collect',
+      // Only need to collect Explosion A2F1 or A2EF
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: 'A2F1', capture: true },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        const y = parseFloat(matches.y);
+        if (y < demonTabletCenterY) {
+          data.demonTabletGravityTowers = 'north';
+          return;
+        }
+        data.demonTabletGravityTowers = 'south';
+      },
+    },
+    {
       id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar',
       // A2F6 Gravity of Dangers Near
       // A2F7 Gravity of Expulsion Afar
-      // TODO: Get side that has towers
       type: 'StartsUsing',
       netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
-      alertText: (_data, matches, output) => {
-        if (matches.id === 'A2EA')
+      alertText: (data, matches, output) => {
+        const towers = (data.demonTabletGravityTowers === 'north') ? output.north!() : (data.demonTabletGravityTowers === 'south') ? output.south!() : undefined;
+        if (matches.id === 'A2EA') {
+          if (towers !== undefined)
+            return output.dirOutThenTowers!({ dir: towers });
           return output.goTowerSideOut!();
-        return output.goTowerSideIn!();
+        }
+        if (towers !== undefined)
+          return output.dirInThenTowers!({ dir: towers });
+        return output.goTowerSideOut!();
       },
       outputStrings: {
+        north: Outputs.north,
+        south: Outputs.south,
+        dirOutThenTowers: {
+          en: '${dir} Out => Towers',
+        },
         goTowerSideOut: {
           en: 'Go Towers Side and Out',
+        },
+        dirInThenTowers: {
+          en: '${dir} In (Knockback) => Towers',
         },
         goTowerSideIn: {
           en: 'Go Towers Side and In (Knockback)',
@@ -1969,17 +2081,15 @@ const triggerSet: TriggerSet<Data> = {
       // Go West Pattern:
       //             (-343, 161)
       // (-319, 153)
-      type: 'StartsUsing',
+      type: 'Ability',
       netRegex: { source: 'Marble Dragon', id: '756F', capture: true },
       promise: async (data, matches) => {
-        // Grabbing both icicles to check for expected two actors
         const puddle1 = parseInt(matches.sourceId, 16) + 23;
-        const puddle2 = parseInt(matches.sourceId, 16) + 24;
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
-          ids: [puddle1, puddle2],
+          ids: [puddle1],
         })).combatants;
-        if (actors.length !== 2) {
+        if (actors.length !== 1) {
           console.error(
             `Occult Crescent Marble Dragon Imitation Icicle: Wrong actor count ${actors.length}`,
           );
