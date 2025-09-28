@@ -171,7 +171,7 @@ hideall "--sync--"
 3344.5 "Threefold Marks" Ability { id: "A15E", source: "Death Claw" } forcejump "crosshatch-loop"
 
 ### Cursed Concern
-# -ii 368 A2EF A239 A2CC
+# -ii 368 A23F A239 A2CC
 # -p A22E:4131.8
 # -it "Trade Tortoise"
 # IGNORED ABILITIES
@@ -208,7 +208,7 @@ hideall "--sync--"
 4235.8 "What're You Buying?" Ability { id: "A22B", source: "Trade Tortoise" }
 4242.8 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
 4267.1 "Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation" Ability { id: ["A915", "A231", "A230"], source: "Trade Tortoise" }
-4267.1 "Cost of Living" Ability { id: "A232", source: "Trade Tortoise" }
+4267.1 "Cost of Living" #Ability { id: "A232", source: "Trade Tortoise" }
 
 # Loop Block
 4275.4 label "oc-cursed-concern-loop"
@@ -226,7 +226,7 @@ hideall "--sync--"
 4336.4 "Waterspout 8" #Ability { id: "A237", source: "Trade Tortoise" }
 4337.3 "Waterspout (middle)" #Ability { id: "A237", source: "Trade Tortoise" }
 4351.1 "Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation" Ability { id: ["A915", "A231", "A230"], source: "Trade Tortoise" }
-4351.1 "Cost of Living" Ability { id: "A232", source: "Trade Tortoise" }
+4351.1 "Cost of Living" #Ability { id: "A232", source: "Trade Tortoise" }
 4353.1 "Hoard Wealth 1" Ability { id: "A96C", source: "Trade Tortoise" }
 4356.1 "Hoard Wealth 2" Ability { id: "A96C", source: "Trade Tortoise" }
 4368.8 "Earthquake" Ability { id: "A238", source: "Trade Tortoise" } duration 1
