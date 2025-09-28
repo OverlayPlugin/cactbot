@@ -2074,7 +2074,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bleedAoe(),
     },
     {
-      id: 'Occult Crescent Marble Dragon Imitation Icicle',
+      id: 'Occult Crescent Marble Dragon Imitation Icicle Collect',
       // Boss spawns two ice puddles that will freeze water puddles
       // The entities that cast the 75E4 from these locations are +23 and +24 source ids higher than 756F
       // Go East Pattern:
@@ -2114,21 +2114,6 @@ const triggerSet: TriggerSet<Data> = {
             `Occult Crescent Marble Dragon Imitation Icicle: Unknown Icicle Position (${x}, ${y})`,
           );
         }
-      },
-      infoText: (data, _matches, output) => {
-        if (data.marbleDragonIcicle === undefined)
-          return;
-        if (data.marbleDragonIcicle === 'east')
-          return output.eastLater!();
-        return output.westLater!();
-      },
-      outputStrings: {
-        eastLater: {
-          en: '(East Later)',
-        },
-        westLater: {
-          en: '(West Later)',
-        },
       },
     },
     {
