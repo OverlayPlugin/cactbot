@@ -5,7 +5,6 @@ import { Responses } from '../../../../../resources/responses';
 import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
-import { PluginCombatantState } from '../../../../../types/event';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
@@ -16,7 +15,6 @@ export interface Data extends RaidbossData {
   demonTabletCometeor?: 'near' | 'afar';
   demonTabletCometSouthTargets: string[];
   demonTabletCometNorthTargets: string[];
-  demonTabletGargoyle?: PluginCombatantState;
   demonTabletIsFrontRight?: boolean;
   demonTabletGravityTowers?: 'north' | 'south';
   deadStarsIsSlice2: boolean;
