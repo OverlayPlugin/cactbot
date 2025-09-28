@@ -237,8 +237,138 @@ hideall "--sync--"
 4411.3 "What're You Buying?" #Ability { id: "A9BC", source: "Trade Tortoise" }
 
 ### Eternal Watch
+# -ii 366 A181 413C A141 A149 A147 A1B3 A144
+# -p A13F:5122.2
+# -it "Repaired Lion"
+# IGNORED ABILITIES
+# 366 attack
+# A181 Radiant Wave (damage)
+# A13C Aetherial Exchange (Sand Holy Sphere Spawn)
+# A141 Aetherial Exchange (Wind Holy Sphere Spawn)
+# A147 Ancient Aero III (damage)
+# A149 Ancient Stone III (damage)
+# A1B3 Ancient Holy (damage)
+# A144 Ancient Holy (damage)
+#
+# ALL ENCOUNTER ABILITIES
+# A13F Radiant Wave
+# A140 Aetherial Exchange
+# A142 Ancient Holy (spawns evenly in centers)
+# A143 Ancient Holy (Tutorial - spawns more to one side)
+# A146 Ancient Aero III
+# A148 Ancient Stone III
+# A14A Double Cast
+# A14B Double Cast
+# A14C Ancient Aero III
+# A14D Ancient Stone III
+# A14E Light Surge
+# A14F Wind Surge
+# A150 Sand Surge
+# A151 Holy Blaze
+# A155 Scratch
 5000.0 "--sync--" ActorControl { command: "80000014", data0: "329" } window 100000,0
 5100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+5117.2 "--sync--" StartsUsing { id: "A13F", source: "Repaired Lion" } window 20,5
+5122.2 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
+
+# Ancient Stone and Ancient Aero Tutorial
+5128.3 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
+5129.3 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
+5129.3 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
+5134.3 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
+5138.0 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
+5141.4 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
+5145.0 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5149.8 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5158.7 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+
+# Ancient Holy Tutorial
+5170.8 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
+5172.9 "Ancient Holy" Ability { id: "A143", source: "Repaired Lion" }
+5183.9 "--holy spheres x4--" #Ability { id: ["A1B3", "A144"], source: "Repaired Lion" }
+5186.4 "Light Surge" #Ability { id: "A14E", source: "Holy Sphere" }
+5188.2 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5197.0 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+
+# Loop Block
+5206.1 label "oc-eternal-watch-loop"
+5211.1 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
+5216.2 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
+5217.2 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
+5217.2 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
+
+# There is a Pattern here with Double Cast, but currently not displaying text differently
+# Double cast will be A14A or A14B and the subsequent will be opposite
+5229.8 "Double Cast" Ability { id: ["A14B", "A14A"], source: "Repaired Lion" }
+5230.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5230.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5232.8 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5232.8 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5234.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5234.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5236.8 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5236.8 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5238.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5238.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5240.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5240.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5252.9 "Double Cast" Ability { id: ["A14A", "A14B"], source: "Repaired Lion" }
+5253.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5253.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5255.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5255.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5257.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5257.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5259.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5259.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5261.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5261.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5263.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5263.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+
+5268.8 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5278.6 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+5291.5 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" }
+5293.6 "Ancient Holy" Ability { id: "A142", source: "Repaired Lion" }
+5298.6 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
+5299.6 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
+5299.6 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
+5304.5 "--holy spheres x4--" #Ability { id: ["A1B3", "A144"], source: "Repaired Lion" }
+5306.8 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } forcejump "oc-eternal-watch-stone"
+5306.8 "--sync--" StartsUsing { id: "A146", source: "Repaired Lion" } forcejump "oc-eternal-watch-aero"
+5307.8 "Light Surge" #Ability { id: "A14E", source: "Holy Sphere" }
+5310.8 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" } 
+
+# Pattern 2 - Stone First
+5406.8 label "oc-eternal-watch-stone"
+5407.8 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
+5410.8 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
+5414.4 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
+5418.0 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
+5421.7 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5422.4 "--sync--" StartsUsing { id: "A151", source: "Repaired Lion" } forcejump "oc-eternal-watch-p1-end"
+5426.4 "Holy Blaze" #Ability { id: "A151", source: "Repaired Lion" }
+
+# Pattern 2 - Aero First
+5505.9 label "oc-eternal-watch-aero"
+5507.1 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
+5509.9 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
+5513.5 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5517.1 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
+5520.8 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
+
+5521.4 label "oc-eternal-watch-p1-end"
+5525.4 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5535.2 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+
+# Loop
+5542.5 "--sync--" StartsUsing { id: "A13F", source: "Repaired Lion" } forcejump "oc-eternal-watch-loop"
+5547.5 "Radiant Wave" #Ability { id: "A13F", source: "Repaired Lion" }
+5552.6 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
+5553.6 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
+5566.2 "Double Cast" #Ability { id: "A14B", source: "Repaired Lion" }
+5566.6 "Ancient Stone III" #Ability { id: "A14D", source: "Repaired Lion" }
+5566.6 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
 
 ### Flame Of Dusk
 6000.0 "--sync--" ActorControl { command: "80000014", data0: "32A" } window 100000,0
