@@ -337,7 +337,7 @@ hideall "--sync--"
 5306.8 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } forcejump "oc-eternal-watch-stone"
 5306.8 "--sync--" StartsUsing { id: "A146", source: "Repaired Lion" } forcejump "oc-eternal-watch-aero"
 5307.8 "Light Surge" #Ability { id: "A14E", source: "Holy Sphere" }
-5310.8 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" } 
+5310.8 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" }
 
 # Pattern 2 - Stone First
 5406.8 label "oc-eternal-watch-stone"
