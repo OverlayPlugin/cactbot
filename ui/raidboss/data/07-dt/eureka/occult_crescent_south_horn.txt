@@ -477,7 +477,6 @@ hideall "--sync--"
 
 # Pattern 1 - Steelstrike + Death Ray first
 7345.4 label "oc-from-times-bygone-death1"
-7343.8 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 7349.7 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7350.4 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 7353.4 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
@@ -534,6 +533,7 @@ hideall "--sync--"
 
 # Pattern 1 - Steelstrike + Big Burst first
 7632.6 label "oc-from-times-bygone-burst1"
+7636.9 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7637.6 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 7640.6 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
 7640.6 "Big Burst" #Ability { id: "A0AA", source: "Mythic Mirror" }
