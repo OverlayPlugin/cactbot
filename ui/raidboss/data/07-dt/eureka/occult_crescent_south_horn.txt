@@ -375,8 +375,258 @@ hideall "--sync--"
 6100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
 ### From Times Bygone
+# -ii A240 A0AC A0B6 A324
+# -p A0B1:7123.6
+# -it "Mythic Idol"
+# IGNORED ABILITIES
+# A240 --sync-- Attack
+# A0AC Steelstrike Cast by Mythic Iodl coincides with Steelstrike A0AB, intercards
+# A0B6 Arcane Light damage 0.9s after A0B5 cast
+# A324 Lots Cast damage 0.8s after A0B2 cast
+#
+# ALL ENCOUNTER ABILITIES
+# A0A6 Shifting Shape, Boss will go middle about 0.5s before this cast start
+# A0A7 --sync--
+# A0A8 --sync--
+# A0A9 --sync-- Spawn of a Mythic Mirror
+# A0AA Big Burst
+# A0AB Steelstrike cast by Mythic Mirror with A0AC, cardinals
+# A0AD Death Ray
+# A0AE Arcane Design, Boss will go middle about 0.5s before this cast start
+# A0AF --sync-- Tells for Arcane Orb A0B0
+# A0B0 Arcane Orb
+# A0B1 Mystic Heat
+# A0B2 Lots Cast
+# A0B3 Lots Cast tankbuster aoes
+# A0B4 Lots Cast spread aoes
+# A0B5 Arcane Light
 7000.0 "--sync--" ActorControl { command: "80000014", data0: "323" } window 100000,0
 7100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+7118.6 "--sync--" StartsUsing { id: "A0B1", source: "Mythic Idol" } window 20,5
+7123.6 "Mystic Heat" Ability { id: "A0B1", source: "Mythic Idol" }
+7129.5 "--middle--"
+7133.4 "Shifting Shape" Ability { id: "A0A6", source: "Mythic Idol" }
+7135.5 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7136.5 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" }
+
+# Bomb Mirror - Big Burst Tutorial
+7139.6 "--Bomb Mirror--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7145.6 "Shifting Shape" Ability { id: "A0A6", source: "Mythic Idol" }
+7147.8 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7148.8 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" }
+7149.1 "Big Burst" Ability { id: "A0AA", source: "Mythic Mirror" }
+
+# Demon Mirror - Death Ray Tutorial
+7151.9 "--Demon Mirror--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7157.9 "Shifting Shape" Ability { id: "A0A6", source: "Mythic Idol" }
+7160.0 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7161.0 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" }
+7161.4 "Death Ray" Ability { id: "A0AD", source: "Mythic Mirror" }
+
+# Swords Mirror - Steelstrike Tutorial
+7164.2 "--Swords Mirror--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7173.8 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
+
+# Arcane Design Tutorial: 8 Spirals, each with 6 aoes
+7179.9 "--middle--"
+7183.4 "Arcane Design" Ability { id: "A0AE", source: "Mythic Idol" }
+7186.3 "--1--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7186.7 "--2--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7187.1 "--3--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7187.5 "--4--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7187.9 "--5--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7188.3 "--6--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7188.7 "--7--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7189.1 "--8--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7192.3 "Arcane Orb Spiral 1" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7192.7 "Arcane Orb Spiral 2" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7193.1 "Arcane Orb Spiral 3" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7193.5 "Arcane Orb Spiral 4" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7193.9 "Arcane Orb Spiral 5" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7194.3 "Arcane Orb Spiral 6" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7194.7 "Arcane Orb Spiral 7" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7195.1 "Arcane Orb Spiral 8" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+
+# There can be late syncs here, adding window fixes it
+7197.6 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" } window 5,5
+7204.6 "Lots Cast" Ability { id: "A0B2", source: "Mythic Idol" } duration 0.8
+7210.4 "Lots Cast (tankbusters)" Ability { id: "A0B3", source: "Mythic Idol" }
+7211.4 "Lots Cast (spreads)" Ability { id: "A0B4", source: "Mythic Idol" }
+7215.0 "Mystic Heat" Ability { id: "A0B1", source: "Mythic Idol" }
+7218.1 "--middle--"
+
+# Loop Block
+7218.6 label "oc-from-times-bygone-loop"
+7221.6 "Shifting Shape" Ability { id: "A0A6", source: "Mythic Idol" }
+7223.7 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7230.3 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7231.0 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+
+7232.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-burst1"
+7232.6 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death1"
+7236.9 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7237.6 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+7240.6 "Steelstrike" #Ability { id: "A0AB", source: "Mythic Mirror" }
+7240.6 "Big Burst/Death Ray?" #Ability { id: ["A0AA", "A0AD"], source: "Mythic Mirror" }
+
+# The Mystic Mirrors don't spawn double Steelstrike
+# 1: Streelstrike + Death Ray or Steelstrike + Big Burst
+# 2: Big Burst + Death Ray, Death Ray x2, or Big Burst x2
+# 3: Streelstrike + Death Ray or Steelstrike + Big Burst
+# 4: Big Burst + Death Ray, Death Ray x2, or Big Burst x2
+
+# Pattern 1 - Steelstrike + Death Ray first
+7345.4 label "oc-from-times-bygone-death1"
+7343.8 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7349.7 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7350.4 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7353.4 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
+7353.4 "Death Ray" #Ability { id: "A0AD", source: "Mythic Mirror" }
+7356.3 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7357.0 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+
+7358.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-burst2"
+7358.6 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death2"
+7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7362.9 "--sync--" #Ability { id: "A0A8", source: "Mythic Idol" }
+7363.6 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+7366.6 "Steelstrike" #Ability { id: "A0AB", source: "Mythic Mirror" }
+7366.6 "Big Burst/Death Ray?" #Ability { id: ["A0AA", "A0AD"], source: "Mythic Mirror" }
+7373.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7373.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+
+# Pattern 1 - Steelstrike + Death Ray third
+7458.6 label "oc-from-times-bygone-death2"
+7460.0 "Death Ray/Big Burst" Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7460.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7462.9 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" }
+7463.6 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7466.6 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
+7466.6 "Death Ray" #Ability { id: "A0AD", source: "Mythic Mirror" }
+7473.2 "Death Ray/Big Burst" Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7473.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+
+7474.1 "--sync--" StartsUsing { id: "A0B2", source: "Mythic Idol" } forcejump "oc-from-times-bygone-p1-end"
+7479.1 "Lots Cast" #Ability { id: "A0B2", source: "Mythic Idol" } duration 0.8
+7484.9 "Lots Cast (tankbusters)" #Ability { id: "A0B3", source: "Mythic Idol" }
+7485.9 "Lots Cast (spreads)" #Ability { id: "A0B4", source: "Mythic Idol" }
+7489.6 "Mystic Heat" #Ability { id: "A0B1", source: "Mythic Idol" }
+7496.7 "Arcane Light" #Ability { id: "A0B5", source: "Mythic Idol" } duration 0.9
+
+# Pattern 1 - Steelstrike + Big Burst third
+7558.6 label "oc-from-times-bygone-burst2"
+7560.0 "Death Ray/Big Burst" Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7560.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7562.9 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" }
+7563.6 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7566.6 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
+7566.6 "Big Burst" #Ability { id: "A0AA", source: "Mythic Mirror" }
+7573.2 "Death Ray/Big Burst" Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7573.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+
+7574.1 "--sync--" StartsUsing { id: "A0B2", source: "Mythic Idol" } forcejump "oc-from-times-bygone-p1-end"
+7579.1 "Lots Cast" #Ability { id: "A0B2", source: "Mythic Idol" } duration 0.8
+7584.9 "Lots Cast (tankbusters)" #Ability { id: "A0B3", source: "Mythic Idol" }
+7585.9 "Lots Cast (spreads)" #Ability { id: "A0B4", source: "Mythic Idol" }
+7589.6 "Mystic Heat" #Ability { id: "A0B1", source: "Mythic Idol" }
+7596.7 "Arcane Light" #Ability { id: "A0B5", source: "Mythic Idol" } duration 0.9
+
+# Pattern 1 - Steelstrike + Big Burst first
+7632.6 label "oc-from-times-bygone-burst1"
+7637.6 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7640.6 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
+7640.6 "Big Burst" #Ability { id: "A0AA", source: "Mythic Mirror" }
+7643.5 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7644.2 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+
+7645.8 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-burst2"
+7645.8 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death2"
+7647.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7647.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7650.1 "--sync--" #Ability { id: "A0A8", source: "Mythic Idol" }
+7650.8 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+7653.8 "Death Ray/Big Burst?" #Ability { id: ["A0AA", "A0AD"], source: "Mythic Mirror" }
+7653.8 "Steelstrike" #Ability { id: "A0AB", source: "Mythic Mirror" }
+7660.4 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7660.4 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+
+7661.3 label "oc-from-times-bygone-p1-end"
+7666.3 "Lots Cast" Ability { id: "A0B2", source: "Mythic Idol" } duration 0.8
+7672.1 "Lots Cast (tankbusters)" Ability { id: "A0B3", source: "Mythic Idol" }
+7673.1 "Lots Cast (spreads)" Ability { id: "A0B4", source: "Mythic Idol" }
+7676.8 "Mystic Heat" Ability { id: "A0B1", source: "Mythic Idol" }
+7683.9 "Arcane Light" Ability { id: "A0B5", source: "Mythic Idol" } duration 0.9
+
+7693.7 "--middle--"
+7697.2 "Arcane Design" Ability { id: "A0AE", source: "Mythic Idol" }
+7700.1 "--1--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7700.5 "--2--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7700.9 "--3--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7701.3 "--4--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7701.7 "--5--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7702.1 "--6--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7702.5 "--7--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7702.9 "--8--" #Ability { id: "A0AF", source: "Mythic Idol" } duration 0.5
+7705.7 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
+7706.0 "Arcane Orb Spiral 1" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7706.4 "Arcane Orb Spiral 2" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7706.8 "Arcane Orb Spiral 3" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7707.2 "Arcane Orb Spiral 4" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7707.6 "Arcane Orb Spiral 5" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7708.0 "Arcane Orb Spiral 6" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7708.2 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
+7708.3 "Arcane Orb Spiral 7" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+7708.7 "Arcane Orb Spiral 8" #Ability { id: "A0B0", source: "Mythic Idol" } duration 0.5
+
+# Check for Steelstrike, else assume Death Ray + Big Burst
+# This can be Steelstrike + Death Ray, Steelstrike + Big Burst, or Big Burst + Death Ray
+7708.9 "--sync--" StartsUsing { id: "A0AB", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-steelstrike"
+7709.2 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" } forcejump "oc-from-times-bygone-no-steelstrike"
+7716.9 "Death Ray + Big Burst?" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7716.9 "Steelstrike + Death Ray?" #Ability { id: "A0AB", source: "Mythic Mirror" }
+7716.9 "Steelstrike + Big Burst?" #Ability { id: "A0AB", source: "Mythic Mirror" }
+7725.3 "Arcane Light" #Ability { id: "A0B5", source: "Mythic Idol" } duration 0.9
+7730.9 "--middle--"
+7734.4 "Shifting Shape" #Ability { id: "A0A6", source: "Mythic Idol" }
+7736.5 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7743.1 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7743.8 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+
+7809.2 label "oc-from-times-bygone-no-steelstrike"
+7816.9 "Death Ray/Big Burst" Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7816.9 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7820.3 "--sync--" StartsUsing { id: "A0B5", source: "Mythic Idol" } forcejump "oc-from-times-bygone-pre-loop"
+7825.3 "Arcane Light" #Ability { id: "A0B5", source: "Mythic Idol" } duration 0.9
+7830.9 "--middle--"
+7834.4 "Shifting Shape" #Ability { id: "A0A6", source: "Mythic Idol" }
+7836.5 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7843.1 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7843.8 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+
+7908.9 label "oc-from-times-bygone-steelstrike"
+7909.2 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" }
+7916.9 "Steelstrike" Ability { id: "A0AB", source: "Mythic Mirror" }
+7916.9 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+
+7920.3 label "oc-from-times-bygone-pre-loop"
+7925.3 "Arcane Light" Ability { id: "A0B5", source: "Mythic Idol" } duration 0.9
+7930.9 "--middle--"
+
+# Loop
+7931.4 "--sync--" StartsUsing { id: "A0A6", source: "Mythic Idol" } forcejump "oc-from-times-bygone-loop"
+7934.4 "Shifting Shape" #Ability { id: "A0A6", source: "Mythic Idol" }
+7936.5 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7943.1 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7943.8 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+7949.7 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7950.4 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+7953.4 "Steelstrike" #Ability { id: "A0AB", source: "Mythic Mirror" }
+7953.4 "Death Ray/Big Burst?" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7956.3 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
+7957.0 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
+7960.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
+7960.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 
 ### Noise Complaint
 8000.0 "--sync--" ActorControl { command: "80000014", data0: "327" } window 100000,0
