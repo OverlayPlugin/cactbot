@@ -98,6 +98,7 @@ const headMarkerData = {
   'deadStarsSnowballTether': '00F6',
   // Dead Stars snowball tether
   'deadStarsSnowballTether2': '0001',
+  // Dead Stars Avalaunch Stack
   // Tower Progenitor and Tower Progenitrix Punishing Pounce Stack
   // Magitaur Holy IV Stack
   'prongedPassageStack': '0064',
@@ -1921,8 +1922,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.prongedPassageStack], capture: true },
       condition: (data) => {
-        // Prevents trigger during Magitaur
-        return data.magitaurCriticalBlowCount === 0;
+        // Prevents trigger during Magitaur and Dead Stars
+        return data.prongedPassageActLoc[data.me] !== undefined;
       },
       promise: async (data, matches) => {
         const combatants = (await callOverlayHandler({
