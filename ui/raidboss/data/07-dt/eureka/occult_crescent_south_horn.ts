@@ -2549,6 +2549,22 @@ const triggerSet: TriggerSet<Data> = {
       },
     },*/
     {
+      id: 'Occult Crescent Magitaur Ruinous Rune Counter',
+      // 1: Big Ruinous Rune
+      // 2: Small Ruinous Rune x3
+      // 3: Big Ruinous Rune, Small Ruinous Rune x2
+      // 4: This happens on #2 ability to prevent Lanceblow reminder from retriggering
+      type: 'HeadMarker',
+      netRegex: {
+        id: [headMarkerData.magitaurBigRuinousRune, headMarkerData.magitaurSmallRuinousRune],
+        capture: false,
+      },
+      suppressSeconds: 1,
+      run: (data) => {
+        data.magitaurRuinousRuneCount = data.magitaurRuinousRuneCount + 1;
+      },
+    },
+    {
       id: 'Occult Crescent Magitaur Big Ruinous Rune 1 Target',
       // This can be placed N, SE, or SW at the wall by Universal Cylinders (purple circles)
       // Explosion must avoid square tiles
@@ -2557,7 +2573,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurBigRuinousRune], capture: true },
       condition: (data) => {
-        return data.magitaurRuinousRuneCount !== 1;
+        return data.magitaurRuinousRuneCount === 1;
       },
       response: (data, matches, output) => {
         // cactbot-builtin-response
@@ -2581,7 +2597,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurSmallRuinousRune], capture: true },
       condition: (data) => {
-        return data.magitaurRuinousRuneCount !== 1;
+        return data.magitaurRuinousRuneCount === 2;
       },
       response: (data, matches, output) => {
         // cactbot-builtin-response
@@ -2607,23 +2623,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow',
+      id: 'Occult Crescent Magitaur Rune Axe Lanceblow',
       // Trigger once the big Ruinous Rune (A251) has gone off
       // Players with first set of small Ruinous Runes (A250) stay on square
       // Rest of players must get off
-      // This occurs with a Lanceblow almost immediately after, so pre-call that
+      // The A251 aoe occurs with a Lanceblow almost immediately after, so pre-call that
       // NOTE: This is for magitaurCriticalBlowCount === 5
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A251', capture: false },
       condition: (data) => {
-        // Don't execute for the first big Ruinous Rune, but set boolean for second set
-        if (data.magitaurRuinousRuneCount === 0) {
-          data.magitaurRuinousRuneCount = 1;
-          return false;
-        }
-        data.magitaurRuinousRuneCount = 2;
-        return true;
+        // Only execute on the first Big Ruinous Rune ability
+        return data.magitaurRuinousRuneCount === 2;
       },
+      suppressSeconds: 1, // In case of aoes hitting other players
       alertText: (data, _matches, output) => {
         const target1 = data.magitaurRuneTargets[0];
         const target2 = data.magitaurRuneTargets[1];
@@ -2636,7 +2648,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: magitaurOutputStrings,
     },
     {
-      id: 'Occult Crescent Magitaur Ruinous Rune 2 Collect',
+      id: 'Occult Crescent Magitaur Ruinous Rune 2 Targets',
       // Second set has a big and two smalls resolve simultaneously
       // These markers come out about 0.1~0.3s before set one smalls expire
       // There is some trigger overlap to handle for unlucky players who get both sets
@@ -2651,7 +2663,8 @@ const triggerSet: TriggerSet<Data> = {
         capture: true,
       },
       condition: (data) => {
-        return data.magitaurRuinousRuneCount === 1;
+        // Big Ruinous Rune = 1, 3x Small Ruinous Runes = 2
+        return data.magitaurRuinousRuneCount === 3;
       },
       preRun: (data, matches) => {
         if (matches.id === headMarkerData.magitaurBigRuinousRune)
@@ -2704,16 +2717,16 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Magitaur Ruinous Rune Lanceblow Reminder',
+      id: 'Occult Crescent Magitaur Small Ruinous Rune Lanceblow Reminder',
+      // Trigger on Small Ruinous Rune (A250) aoe
       // Players have ~2.1s to move based on damage cast timing of Critical Lanceblow
       // NOTE: This occurs for magitaurCriticalBlowCount === 5
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: 'A250', capture: true },
       condition: (data, matches) => {
-        // magitaurRuinousRuneCount is 1 at this time for first set
         // This could be altered to not call for players without markers, but
         // calling for player that got hit with the aoe could also save a life
-        if (matches.target === data.me && data.magitaurRuinousRuneCount === 1)
+        if (matches.target === data.me && data.magitaurRuinousRuneCount === 3)
           return true;
 
         // Players that get hit and are not targeted do not get an output
@@ -2733,13 +2746,28 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: magitaurOutputStrings,
     },
     {
+      id: 'Occult Crescent Magitaur Small Ruinous Rune 1 Ability Tracker',
+      // Trigger on Small Ruinous Rune (A250) aoe
+      // Prevents trigger of Lanceblow Reminder on second set
+      type: 'Ability',
+      netRegex: { source: 'Magitaur', id: 'A250', capture: false },
+      condition: (data) => {
+        return data.magitaurRuinousRuneCount === 3;
+      },
+      delaySeconds: 1, // Delay time for first set of small Ruinous Runes aoes to propogate
+      suppressSeconds: 1,
+      run: (data) => {
+        data.magitaurRuinousRuneCount = 4;
+      },
+    },
+    {
       id: 'Occult Crescent Magitaur Ruinous Rune 2 Reminder',
       // Capture either alliance's Critical Lanceblow damage cast
       // Using castTime of A24B is unreliable since damage cast comes later
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: ['A24E', 'A24D'], capture: false },
       condition: (data) => {
-        return data.magitaurRuinousRuneCount === 1;
+        return data.magitaurRuinousRuneCount === 4;
       },
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
