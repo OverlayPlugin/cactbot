@@ -275,103 +275,127 @@ hideall "--sync--"
 5122.2 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
 
 # Ancient Stone and Ancient Aero Tutorial
-5128.3 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
-5129.3 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
-5129.3 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
-5134.3 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
-5138.0 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
-5141.4 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
-5145.0 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5149.8 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
-5158.7 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+5127.9 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
+5128.9 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
+5128.9 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
+5129.9 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } jump 5330.3
+5129.9 "--sync--" StartsUsing { id: "A146", source: "Repaired Lion" } forcejump "oc-eternal-watch-aero-tutorial"
+5133.9 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" } duration 1
+5137.6 "Sand Surge/Wind Surge?" #Ability { id: ["A150", "A14F"], source: "Holy Sphere" }
+5141.2 "Ancient Aero III/Ancient Stone III?" #Ability { id: ["A146", "A148"], source: "Repaired Lion" } duration 1
+5144.9 "Wind Surge/Sand Surge?" #Ability { id: ["A14F", "A150"], source: "Holy Sphere" }
+5149.6 "Holy Blaze" #Ability { id: "A151", source: "Repaired Lion" }
+5158.4 "Scratch" #Ability { id: "A155", source: "Repaired Lion" }
+
+# Pattern 1 - Ancient Aero III First
+5229.9 label "oc-eternal-watch-aero-tutorial"
+5233.9 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
+5237.6 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5241.2 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
+5244.9 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
+5245.8 "--sync--" StartsUsing { id: "A151", source: "Repaired Lion" } forcejump "oc-eternal-watch-stone-aero-tutorial-end"
+5249.8 "Holy Blaze" #Ability { id: "A151", source: "Repaired Lion" }
+5258.7 "Scratch" #Ability { id: "A155", source: "Repaired Lion" }
+5270.8 "Radiant Wave" #Ability { id: "A13F", source: "Repaired Lion" } duration 1
+
+# Pattern 1 - Ancient Stone III First
+5330.3 label "oc-eternal-watch-stone-tutorial"
+5334.3 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
+5338.0 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
+5341.4 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
+5345.0 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+
+5345.6 label "oc-eternal-watch-stone-aero-tutorial-end"
+5349.6 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5358.4 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
 
 # Ancient Holy Tutorial
-5170.8 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
-5172.9 "Ancient Holy" Ability { id: "A143", source: "Repaired Lion" }
-5183.9 "--holy spheres x4--" #Ability { id: ["A1B3", "A144"], source: "Repaired Lion" }
-5186.4 "Light Surge" #Ability { id: "A14E", source: "Holy Sphere" }
-5188.2 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
-5197.0 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+5370.8 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
+5372.9 "Ancient Holy" Ability { id: "A143", source: "Repaired Lion" }
+5383.9 "--holy spheres x4--" #Ability { id: ["A1B3", "A144"], source: "Repaired Lion" }
+5386.4 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
+5388.2 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5397.0 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
 
 # Loop Block
-5206.1 label "oc-eternal-watch-loop"
-5211.1 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
-5216.2 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
-5217.2 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
-5217.2 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
+5406.1 label "oc-eternal-watch-loop"
+5411.1 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
+5416.2 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
+5417.2 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
+5417.2 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
 
 # There is a Pattern here with Double Cast, but currently not displaying text differently
 # Double cast will be A14A or A14B and the subsequent will be opposite
-5229.8 "Double Cast" Ability { id: ["A14B", "A14A"], source: "Repaired Lion" }
-5230.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
-5230.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
-5232.8 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5232.8 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
-5234.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
-5234.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
-5236.8 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5236.8 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
-5238.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
-5238.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
-5240.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5240.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
-5252.9 "Double Cast" Ability { id: ["A14A", "A14B"], source: "Repaired Lion" }
-5253.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
-5253.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
-5255.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5255.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
-5257.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
-5257.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
-5259.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5259.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
-5261.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
-5261.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
-5263.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5263.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5429.8 "Double Cast" Ability { id: ["A14B", "A14A"], source: "Repaired Lion" }
+5430.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5430.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5432.8 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5432.8 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5434.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5434.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5436.8 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5436.8 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5438.2 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5438.2 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5440.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5440.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5452.9 "Double Cast" Ability { id: ["A14A", "A14B"], source: "Repaired Lion" }
+5453.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5453.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5455.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5455.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5457.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5457.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5459.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5459.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
+5461.3 "Ancient Stone III" Ability { id: "A14D", source: "Repaired Lion" }
+5461.3 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5463.9 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5463.9 "Sand Surge" #Ability { id: "A150", source: "Holy Sphere" }
 
-5268.8 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
-5278.6 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
-5291.5 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" }
-5293.6 "Ancient Holy" Ability { id: "A142", source: "Repaired Lion" }
-5298.6 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
-5299.6 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
-5299.6 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
-5304.5 "--holy spheres x4--" #Ability { id: ["A1B3", "A144"], source: "Repaired Lion" }
-5306.8 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } forcejump "oc-eternal-watch-stone"
-5306.8 "--sync--" StartsUsing { id: "A146", source: "Repaired Lion" } forcejump "oc-eternal-watch-aero"
-5307.8 "Light Surge" #Ability { id: "A14E", source: "Holy Sphere" }
-5310.8 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" }
+5468.8 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5478.6 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+5491.5 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" }
+5493.6 "Ancient Holy" Ability { id: "A142", source: "Repaired Lion" }
+5498.6 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
+5499.6 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
+5499.6 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
+5504.5 "--holy spheres x4--" #Ability { id: ["A1B3", "A144"], source: "Repaired Lion" }
+5506.8 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } jump 5606.8
+5506.8 "--sync--" StartsUsing { id: "A146", source: "Repaired Lion" } forcejump "oc-eternal-watch-aero"
+5507.8 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
+5510.8 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" }
 
-# Pattern 2 - Stone First
-5406.8 label "oc-eternal-watch-stone"
-5407.8 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
-5410.8 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
-5414.4 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
-5418.0 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
-5421.7 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5422.4 "--sync--" StartsUsing { id: "A151", source: "Repaired Lion" } forcejump "oc-eternal-watch-p1-end"
-5426.4 "Holy Blaze" #Ability { id: "A151", source: "Repaired Lion" }
+# Pattern 3 - Stone First
+5606.8 label "oc-eternal-watch-stone"
+5607.8 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
+5610.8 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
+5614.4 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
+5618.0 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
+5621.7 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5622.4 "--sync--" StartsUsing { id: "A151", source: "Repaired Lion" } forcejump "oc-eternal-watch-p1-end"
+5626.4 "Holy Blaze" #Ability { id: "A151", source: "Repaired Lion" }
 
-# Pattern 2 - Aero First
-5505.9 label "oc-eternal-watch-aero"
-5507.1 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
-5509.9 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
-5513.5 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
-5517.1 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
-5520.8 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
+# Pattern 3 - Aero First
+5705.9 label "oc-eternal-watch-aero"
+5707.1 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
+5709.9 "Ancient Aero III" Ability { id: "A146", source: "Repaired Lion" } duration 1
+5713.5 "Wind Surge" Ability { id: "A14F", source: "Holy Sphere" }
+5717.1 "Ancient Stone III" Ability { id: "A148", source: "Repaired Lion" } duration 1
+5720.8 "Sand Surge" Ability { id: "A150", source: "Holy Sphere" }
 
-5521.4 label "oc-eternal-watch-p1-end"
-5525.4 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
-5535.2 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
+5721.4 label "oc-eternal-watch-p1-end"
+5725.4 "Holy Blaze" Ability { id: "A151", source: "Repaired Lion" }
+5735.2 "Scratch" Ability { id: "A155", source: "Repaired Lion" }
 
 # Loop
-5542.5 "--sync--" StartsUsing { id: "A13F", source: "Repaired Lion" } forcejump "oc-eternal-watch-loop"
-5547.5 "Radiant Wave" #Ability { id: "A13F", source: "Repaired Lion" }
-5552.6 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
-5553.6 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
-5566.2 "Double Cast" #Ability { id: "A14B", source: "Repaired Lion" }
-5566.6 "Ancient Stone III" #Ability { id: "A14D", source: "Repaired Lion" }
-5566.6 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
+5742.5 "--sync--" StartsUsing { id: "A13F", source: "Repaired Lion" } forcejump "oc-eternal-watch-loop"
+5747.5 "Radiant Wave" #Ability { id: "A13F", source: "Repaired Lion" }
+5752.6 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
+5753.6 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
+5766.2 "Double Cast" #Ability { id: "A14B", source: "Repaired Lion" }
+5766.6 "Ancient Stone III" #Ability { id: "A14D", source: "Repaired Lion" }
+5766.6 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
 
 ### Flame Of Dusk
 6000.0 "--sync--" ActorControl { command: "80000014", data0: "32A" } window 100000,0
@@ -465,7 +489,7 @@ hideall "--sync--"
 7230.3 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7231.0 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 
-7232.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-burst1"
+7232.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump 7632.6
 7232.6 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death1"
 7236.9 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
 7237.6 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
@@ -487,7 +511,7 @@ hideall "--sync--"
 7356.3 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7357.0 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 
-7358.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-burst2"
+7358.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump 7558.6
 7358.6 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death2"
 7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
@@ -543,7 +567,7 @@ hideall "--sync--"
 7643.5 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7644.2 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 
-7645.8 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-burst2"
+7645.8 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump 7558.6
 7645.8 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death2"
 7647.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 7647.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
@@ -584,7 +608,7 @@ hideall "--sync--"
 
 # Check for Steelstrike, else assume Death Ray + Big Burst
 # This can be Steelstrike + Death Ray, Steelstrike + Big Burst, or Big Burst + Death Ray
-7708.9 "--sync--" StartsUsing { id: "A0AB", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-steelstrike"
+7708.9 "--sync--" StartsUsing { id: "A0AB", source: "Mythic Mirror" } jump 7908.9
 7709.2 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" } forcejump "oc-from-times-bygone-no-steelstrike"
 7716.9 "Death Ray + Big Burst?" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 7716.9 "Steelstrike + Death Ray?" #Ability { id: "A0AB", source: "Mythic Mirror" }
@@ -1013,38 +1037,44 @@ hideall "--sync--"
 15262.4 label "oc-extreme-prejudice-loop"
 15262.4 "Assail" Ability { id: "A1C9", source: "Command Urn" }
 15269.3 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
-15269.3 "--sync--" Ability { id: "9A2F", source: "Vassal Vessel" } forcejump "oc-extreme-prejudice-rockslide"
+15269.3 "--sync--" Ability { id: "9A2F", source: "Vassal Vessel" } jump 15269.3
 15269.3 "--sync--" Ability { id: "9A2E", source: "Vassal Vessel" } forcejump "oc-extreme-prejudice-stoneswell"
+15269.3 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "92AE"], source: "Vassal Vessel" }
+15274.3 "Stone Swell/Rockslide?" #Ability { id: ["9A2E", "9A2F"], source: "Vassal Vessel" }
+15279.4 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "92AE"], source: "Vassal Vessel" }
+15284.4 "Stone Swell/Rockslide?" #Ability { id: ["9A2E", "9A2F"], source: "Vassal Vessel" }
+15289.5 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "92AE"], source: "Vassal Vessel" }
+15294.5 "Stone Swell/Rockslide?" #Ability { id: ["9A2E", "9A2F"], source: "Vassal Vessel" }
 
 # Pattern 1 - Rockslide first
-15269.3 label "oc-extreme-prejudice-rockslide"
-15269.3 "Rockslide" #Ability { id: "9A2F", source: "Vassal Vessel" }
-15274.3 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15279.4 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15284.4 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15289.5 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15294.5 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15299.6 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15304.6 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15309.7 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15314.7 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15321.4 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
-15337.5 "Assail" Ability { id: "A1C9", source: "Command Urn" } forcejump "oc-extreme-prejudice-loop"
-15344.4 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
+15369.3 label "oc-extreme-prejudice-rockslide"
+15369.3 "Rockslide" #Ability { id: "9A2F", source: "Vassal Vessel" }
+15374.3 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15379.4 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15384.4 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15389.5 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15394.5 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15399.6 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15404.6 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15409.7 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15414.7 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15421.4 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
+15437.5 "Assail" Ability { id: "A1C9", source: "Command Urn" } forcejump "oc-extreme-prejudice-loop"
+15444.4 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
 
 # Pattern 2 - Stone Well first
-15494.6 label "oc-extreme-prejudice-stoneswell"
-15494.6 "Stone Swell" #Ability { id: "9A2E", source: "Vassal Vessel" }
-15499.6 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15504.7 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15509.7 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15514.8 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15519.8 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15524.9 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15529.9 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15535.0 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
-15540.0 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
-15546.7 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
-15562.8 "Assail" Ability { id: "A1C9", source: "Command Urn" } forcejump "oc-extreme-prejudice-loop"
-15569.1 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
+15594.6 label "oc-extreme-prejudice-stoneswell"
+15594.6 "Stone Swell" #Ability { id: "9A2E", source: "Vassal Vessel" }
+15599.6 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15604.7 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15609.7 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15614.8 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15619.8 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15624.9 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15629.9 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15635.0 "Stone Swell" Ability { id: "9A2E", source: "Vassal Vessel" }
+15640.0 "Rockslide" Ability { id: "9A2F", source: "Vassal Vessel" }
+15646.7 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
+15662.8 "Assail" Ability { id: "A1C9", source: "Command Urn" } forcejump "oc-extreme-prejudice-loop"
+15669.1 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
 
