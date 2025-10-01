@@ -80,7 +80,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Chirurgeon Biochemical Front',
       type: 'StartsUsing',
-      netRegex: { id: 'AB1S', source: 'Chirurgeon General', capture: false },
+      netRegex: { id: 'AB1A', source: 'Chirurgeon General', capture: false },
       response: Responses.getBehind(),
     },
     {
@@ -196,7 +196,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Executioners Flaying Flail',
       type: 'StartsUsing',
-      netRegex: { id: 'AA48', capture: true },
+      netRegex: { id: 'AA47', capture: true },
       condition: (data, matches) => data.playerExecutionerId === matches.sourceId,
       infoText: (_data, _matches, output) => output.avoidFlails!(),
       outputStrings: {
