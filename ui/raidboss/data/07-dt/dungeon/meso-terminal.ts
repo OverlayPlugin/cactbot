@@ -22,7 +22,7 @@ type chirurgeonCoords = {
   y: number;
 };
 
-// List out the dangerous intercardinals for each Keraunograhpy.
+// List out the dangerous intercardinals for each Keraunography.
 const diagPositive: DirectionOutputIntercard[] = ['dirSW', 'dirNE'];
 const diagNegative: DirectionOutputIntercard[] = ['dirNW', 'dirSE'];
 const horizNorth: DirectionOutputIntercard[] = ['dirNW', 'dirNE'];
@@ -195,9 +195,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Meso Terminal Executioners Flaying Flail',
-      type: 'StartsUsing',
+      type: 'Ability',
       netRegex: { id: 'AA47', capture: true },
       condition: (data, matches) => data.playerExecutionerId === matches.sourceId,
+      delaySeconds: 1, // Wait for visuals
       infoText: (_data, _matches, output) => output.avoidFlails!(),
       outputStrings: {
         avoidFlails: {
@@ -212,6 +213,20 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.role === 'dps',
       suppressSeconds: 1,
       response: Responses.killAdds(),
+    },
+    {
+      id: 'Meso Terminal Executioners Will Breaker',
+      type: 'StartsUsing',
+      netRegex: { id: 'AF38', capture: true },
+      condition: (data, matches) => data.playerExecutionerId === matches.sourceId,
+      response: Responses.interruptIfPossible(),
+    },
+    {
+      id: 'Meso Terminal Executioners Relentless Torment',
+      type: 'StartsUsing',
+      netRegex: { id: 'AA45', capture: true },
+      condition: (data, matches) => data.playerExecutionerId === matches.sourceId,
+      response: Responses.tankBuster(),
     },
     {
       id: 'Meso Terminal Executioners Death Penalty',
