@@ -819,7 +819,7 @@ hideall "--sync--"
 50083.0 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
 50086.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
 50087.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-50089.5 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } forcejump "oc-md-p1+"
+50089.5 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump 50189.4
 50089.5 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } forcejump "oc-md-p1o"
 50090.5 "Imitation Blizzard (circles/cross?)" #Ability { id: ["7602", "7614"], source: "Marble Dragon" }
 
@@ -899,7 +899,7 @@ hideall "--sync--"
 50489.2 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
 50492.5 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
 50493.7 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-50496.3 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } forcejump "oc-md-p2o"
+50496.3 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } jump 50795.7
 50496.3 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } forcejump "oc-md-p2+"
 50497.3 "Imitation Blizzard (circles/crosses?)" #Ability { id: "7602", source: "Marble Dragon" }
 
@@ -990,7 +990,7 @@ hideall "--sync--"
 60055.4 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
 60057.4 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 
-60059.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } forcejump "oc-magitaur-daggers-axe"
+60059.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump 60159.1
 60059.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-daggers-lance"
 60059.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
 60061.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
@@ -1043,7 +1043,7 @@ hideall "--sync--"
 # Sage Staff
 60336.2 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
 
-60339.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } forcejump "oc-magitaur-staff-axe"
+60339.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump 60439.1
 60339.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-staff-lance"
 60344.6 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
 60344.6 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
