@@ -198,11 +198,14 @@ hideall "--sync--"
 4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 4128.8 "--sync--" StartsUsing { id: "A22E", source: "Trade Tortoise" } window 30,5
 4131.8 "Ill-gotten Goods (Red)" Ability { id: "A22E", source: "Trade Tortoise" }
-4138.9 "Material World (Stop)" Ability { id: "A22D", source: "Trade Tortoise" }
+4138.9 "Material World " Ability { id: "A22D", source: "Trade Tortoise" }
+4146.8 "Ruby Blaze (Stop)" #Ability { id: "A23D" }
 4153.0 "Ill-gotten Goods (Blue)" Ability { id: "A22E", source: "Trade Tortoise" }
-4160.1 "Material World (Move)" Ability { id: "A22D", source: "Trade Tortoise" }
+4160.1 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
+4168.0 "Deep Freeze (Move)"
 4174.2 "Ill-gotten Goods (Green)" Ability { id: "A22E", source: "Trade Tortoise" }
-4181.3 "Material World (Forced Move)" Ability { id: "A22D", source: "Trade Tortoise" }
+4181.3 "Material World" Ability { id: "A22D", source: "Trade Tortoise" }
+4189.6 "--forced move--"
 4196.4 "Earthquake" Ability { id: "A238", source: "Trade Tortoise" } duration 1
 4207.7 "Recommended for You" Ability { id: "A409", source: "Trade Tortoise" }
 4235.8 "What're You Buying?" Ability { id: "A22B", source: "Trade Tortoise" }
