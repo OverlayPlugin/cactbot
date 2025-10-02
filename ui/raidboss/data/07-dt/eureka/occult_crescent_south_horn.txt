@@ -511,7 +511,7 @@ hideall "--sync--"
 7356.3 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7357.0 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 
-7358.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } forcejump 7558.6
+7358.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump 7558.6
 7358.6 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death2"
 7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
