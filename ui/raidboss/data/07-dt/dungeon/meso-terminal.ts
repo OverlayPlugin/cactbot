@@ -167,6 +167,18 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankBuster(),
     },
     {
+      id: 'Meso Terminal Chirurgeon Poison',
+      type: 'GainsEffect',
+      netRegex: { effectId: '838', source: 'Chirurgeon General', capture: true },
+      condition: (data) => data.CanCleanse(),
+      infoText: (_data, matches, output) => output.cleanse!({ target: matches.target }),
+      outputStrings: {
+        cleanse: {
+          en: 'Cleanse ${target}',
+        },
+      },
+    },
+    {
       id: 'Meso Terminal Executioners Shackles Of Fate Tracking',
       type: 'StartsUsing',
       netRegex: { id: 'AA3D', capture: true },
