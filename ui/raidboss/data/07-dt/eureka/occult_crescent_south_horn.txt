@@ -1037,7 +1037,7 @@ hideall "--sync--"
 15262.4 label "oc-extreme-prejudice-loop"
 15262.4 "Assail" Ability { id: "A1C9", source: "Command Urn" }
 15269.3 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
-15269.3 "--sync--" Ability { id: "9A2F", source: "Vassal Vessel" } jump 15269.3
+15269.3 "--sync--" Ability { id: "9A2F", source: "Vassal Vessel" } jump 15369.3
 15269.3 "--sync--" Ability { id: "9A2E", source: "Vassal Vessel" } forcejump "oc-extreme-prejudice-stoneswell"
 15269.3 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "92AE"], source: "Vassal Vessel" }
 15274.3 "Stone Swell/Rockslide?" #Ability { id: ["9A2E", "9A2F"], source: "Vassal Vessel" }
