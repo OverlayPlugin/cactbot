@@ -507,7 +507,13 @@ hideall "--sync--"
 20395.4 "End of History (Enrage)" Ability { id: "A30B", source: "Demon Tablet" }
 20396.3 "End of History (Enrage)" Ability { id: "A355", source: "Demon Tablet" }
 
-# TODO: Enrage Loop
+# Enrage Loop
+# NOTE: A355 does damage, not sure on A30C
+20397.6 "End of History (Enrage)" Ability { id: "A30C", source: "Demon Tablet" }
+20397.6 label "oc-demon-tablet-enrage-loop"
+20398.4 "End of History (Enrage)" Ability { id: "A355", source: "Demon Tablet" }
+20399.6 "End of History (Enrage)" Ability { id: "A30C", source: "Demon Tablet" } jump "oc-demon-tablet-enrage-loop"
+20400.4 "End of History (Enrage)" #Ability { id: "A355", source: "Demon Tablet" }
 
 ### Dead Stars
 # -ii A5FA A5FB A608 A602 A5FF A600 A63E A63F A5B9 A5DC A5DF A5DB A5E3 A5E4 A5DE A5E5 A5F9 A606
@@ -957,8 +963,8 @@ hideall "--sync--"
 # Enrage loop
 # Note: Time between the loop casts is an estimated guess
 50886.7 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" }
-50886.7 labal "oc-marble-dragon-enrage"
-50891.4 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump "oc-marble-dragon-enrage"
+50886.7 label "oc-marble-dragon-enrage-loop"
+50891.4 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump "oc-marble-dragon-enrage-loop"
 
 ### Magitaur
 # -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3 A25C A25D A258 A259
