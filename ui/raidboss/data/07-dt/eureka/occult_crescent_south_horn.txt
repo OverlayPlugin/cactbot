@@ -278,7 +278,7 @@ hideall "--sync--"
 5127.9 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
 5128.9 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
 5128.9 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
-5129.9 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } jump 5330.3
+5129.9 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } jump "oc-eternal-watch-stone-tutorial"
 5129.9 "--sync--" StartsUsing { id: "A146", source: "Repaired Lion" } forcejump "oc-eternal-watch-aero-tutorial"
 5133.9 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" } duration 1
 5137.6 "Sand Surge/Wind Surge?" #Ability { id: ["A150", "A14F"], source: "Holy Sphere" }
@@ -361,7 +361,7 @@ hideall "--sync--"
 5499.6 "--wind spheres x2--" #Ability { id: "A13C", source: "Repaired Lion" }
 5499.6 "--sand spheres x2--" #Ability { id: "A141", source: "Repaired Lion" }
 5504.5 "--holy spheres x4--" #Ability { id: ["A1B3", "A144"], source: "Repaired Lion" }
-5506.8 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } jump 5606.8
+5506.8 "--sync--" StartsUsing { id: "A148", source: "Repaired Lion" } jump "oc-eternal-watch-stone"
 5506.8 "--sync--" StartsUsing { id: "A146", source: "Repaired Lion" } forcejump "oc-eternal-watch-aero"
 5507.8 "Light Surge" Ability { id: "A14E", source: "Holy Sphere" }
 5510.8 "Ancient Stone III/Ancient Aero III?" #Ability { id: ["A148", "A146"], source: "Repaired Lion" }
@@ -489,7 +489,7 @@ hideall "--sync--"
 7230.3 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7231.0 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 
-7232.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump 7632.6
+7232.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump "oc-from-times-bygone-burst1"
 7232.6 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death1"
 7236.9 "--sync--" #Ability { id: "A0A7", source: "Mythic Idol" }
 7237.6 "--Mythic Mirror x2--" #Ability { id: "A0A9", source: "Mythic Mirror" }
@@ -511,7 +511,7 @@ hideall "--sync--"
 7356.3 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7357.0 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 
-7358.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump 7558.6
+7358.6 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump "oc-from-times-bygone-burst2"
 7358.6 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death2"
 7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 7360.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
@@ -567,7 +567,7 @@ hideall "--sync--"
 7643.5 "--sync--" Ability { id: "A0A7", source: "Mythic Idol" }
 7644.2 "--Mythic Mirror x2--" Ability { id: "A0A9", source: "Mythic Mirror" }
 
-7645.8 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump 7558.6
+7645.8 "--sync--" StartsUsing { id: "A0AA", source: "Mythic Mirror" } jump "oc-from-times-bygone-burst2"
 7645.8 "--sync--" StartsUsing { id: "A0AD", source: "Mythic Mirror" } forcejump "oc-from-times-bygone-death2"
 7647.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 7647.2 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
@@ -608,7 +608,7 @@ hideall "--sync--"
 
 # Check for Steelstrike, else assume Death Ray + Big Burst
 # This can be Steelstrike + Death Ray, Steelstrike + Big Burst, or Big Burst + Death Ray
-7708.9 "--sync--" StartsUsing { id: "A0AB", source: "Mythic Mirror" } jump 7908.9
+7708.9 "--sync--" StartsUsing { id: "A0AB", source: "Mythic Mirror" } jump "oc-from-times-bygone-no-steelstrike"
 7709.2 "--sync--" Ability { id: "A0A8", source: "Mythic Idol" } forcejump "oc-from-times-bygone-no-steelstrike"
 7716.9 "Death Ray + Big Burst?" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 7716.9 "Steelstrike + Death Ray?" #Ability { id: "A0AB", source: "Mythic Mirror" }
@@ -656,8 +656,145 @@ hideall "--sync--"
 7960.0 "Death Ray/Big Burst" #Ability { id: ["A0AD", "A0AA"], source: "Mythic Mirror" }
 
 ### Noise Complaint
+# -ii 368 A12B A0E6 A0E0
+# -p A0E5:8122.4
+# -it "Neo Garula"
+# IGNORED ABILITIES
+# 368 attack
+# A12B --sync--
+# A0E6 Agitated Groan (damage)
+# A0E0 Lightning Crossing (damage)
+#
+# ALL ENCOUNTER ABILITIES
+# A0D7 Rushing Rumble
+# A0D8 Birdserk Rush
+# A0D9 Rushing Rumble Rampage
+# A0DA Rush
+# A0DB Rumble
+# A0DC Heave
+# A0DD --sync--
+# A0DE Lightning Crossing (Intercards)
+# A0DF Lightning Crossing (Cardinals)
+# A0E1 Lightning Charge
+# A0E2 Epicenter Shock
+# A0E3 Mammoth Bolt
+# A0E4 Agitated Groan
+# A0E5 Squash
+# A7E8 Lightning Crossing (charge towards ! bird)
+# A8FE Heave
 8000.0 "--sync--" ActorControl { command: "80000014", data0: "327" } window 100000,0
 8100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+# Tutorial
+8117.4 "--sync--" StartsUsing { id: "A0E5", source: "Neo Garula" } window 20,5
+8122.4 "Squash" Ability { id: "A0E5", source: "Neo Garula" }
+8128.7 "--middle--"
+
+# NOTE: Pulling boss away from middle at start can cause delay
+8128.7 "--sync--" StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing1-cards" window 5,5
+8128.8 "--sync--" StartsUsing { id: "A0DE", source: "Neo Garula" } jump "oc-noise-complaint-crossing1-intercards" window 5,5
+8132.2 "Lightning Crossing (Cards/Intercards?)" #Ability { id: ["A0DF", "A0DE"], source: "Neo Garula" }
+8141.5 "Heave" #Ability { id: "A8FE", source: "Neo Garula" }
+8150.9 "Heave" #Ability { id: "A8FE", source: "Neo Garula" }
+8156.0 "--middle--" #StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
+8161.0 "Agitated Groan" #Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8177.1 "Rushing Rumble" #Ability { id: "A0D7", source: "Neo Garula" }
+
+8228.7 label "oc-noise-complaint-crossing1-cards"
+8232.2 "Lightning Crossing (Cards)" Ability { id: "A0DF", source: "Neo Garula" }
+8237.5 "--sync--" StartsUsing { id: "A8FE", source: "Neo Garula" } jump "oc-noise-compliant-crossingl-end"
+8241.5 "Heave" #Ability { id: "A8FE", source: "Neo Garula" }
+8250.9 "Heave" #Ability { id: "A8FE", source: "Neo Garula" }
+8256.0 "--middle--" #StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
+8261.0 "Agitated Groan" #Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8277.1 "Rushing Rumble" #Ability { id: "A0D7", source: "Neo Garula" }
+
+8328.7 label "oc-noise-complaint-crossing1-intercards"
+8332.2 "Lightning Crossing (Intercards)" Ability { id: "A0DE", source: "Neo Garula" }
+
+8337.5 label "oc-noise-compliant-crossingl-end"
+8341.5 "Heave" Ability { id: "A8FE", source: "Neo Garula" }
+8350.9 "Heave" Ability { id: "A8FE", source: "Neo Garula" }
+8356.0 "--middle--" StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
+8361.0 "Agitated Groan" Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8377.1 "Rushing Rumble" Ability { id: "A0D7", source: "Neo Garula" }
+8377.3 "Rush" #Ability { id: "A0DA", source: "Neo Garula" }
+8378.0 "--sync--" Ability { id: "A0DD", source: "Chatterbird" }
+8380.4 "Rumble" Ability { id: "A0DB", source: "Neo Garula" }
+8381.5 "Lightning Crossing" Ability { id: "A7E8", source: "Neo Garula" }
+
+# Loop Begins
+8397.5 label "oc-noise-complaint-loop"
+8397.5 "--middle--"
+8402.5 "Agitated Groan" Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8410.6 "Birdserk Rush" Ability { id: "A0D8", source: "Neo Garula" }
+8410.8 "Rush" #Ability { id: "A0DA", source: "Neo Garula" }
+8415.0 "Heave" Ability { id: "A0DC", source: "Neo Garula" }
+8426.6 "Squash" Ability { id: "A0E5", source: "Neo Garula" }
+8441.3 "--middle--"
+8441.3 "Lightning Charge" Ability { id: "A0E1", source: "Neo Garula" } window 5,5
+8443.5 "--sync--" StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing2-cards"
+8443.6 "--sync--" StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing2-intercards"
+8447.0 "Lightning Crossing (Cards/Intercards?)" #Ability { id: ["A0DF", "A0DE"], source: "Neo Garula" }
+8447.2 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
+8451.2 "Epicenter Shock 2" #Ability { id: "A0E2", source: "Neo Garula" }
+8452.4 "Mammoth Bolt" #Ability { id: "A0E3", source: "Neo Garula" }
+8455.1 "Lightning Crossing (Cards/Intercards?)" #Ability { id: "["A0DF", "A0DE"], source: "Neo Garula" }
+8469.4 "--middle--" #StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
+
+# NOTE: Third Lightning Crossing Ability conflicts with startsUsing of Epicenter Shock so the branch is longer
+8543.5 label "oc-noise-complaint-crossing2-cards"
+8547.0 "Lightning Crossing (Cards)" Ability { id: "A0DF", source: "Neo Garula" }
+8547.2 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
+8551.2 "Epicenter Shock 2" Ability { id: "A0E2", source: "Neo Garula" }
+8551.6 "--sync--" StartsUsing StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing3-cards"
+8551.7 "--sync--" StartsUsing StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing3-intercards"
+8552.4 "Mammoth Bolt" #Ability { id: "A0E3", source: "Neo Garula" }
+8555.1 "Lightning Crossing (Cards/Intercards?)" #Ability { id: ["A0DF", "A0DE"], source: "Neo Garula" }
+8569.4 "--middle--" #StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
+
+8643.5 label "oc-noise-complaint-crossing2-intercards"
+8647.0 "Lightning Crossing (Intercards)" Ability { id: "A0DE", source: "Neo Garula" }
+8647.2 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
+8651.2 "Epicenter Shock 2" Ability { id: "A0E2", source: "Neo Garula" }
+8651.6 "--sync--" StartsUsing StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing3-cards"
+8651.7 "--sync--" StartsUsing StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing3-intercards"
+8652.4 "Mammoth Bolt" #Ability { id: "A0E3", source: "Neo Garula" }
+8655.1 "Lightning Crossing (Cards/Intercards?)" #Ability { id: ["A0DF", "A0DE"], source: "Neo Garula" }
+8669.4 "--middle--" #StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
+8674.4 "Agitated Groan" #Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8683.5 "Rushing Rumble Rampage" #Ability { id: "A0D9", source: "Neo Garula" }
+
+8751.6 label "oc-noise-complaint-crossing3-cards"
+8752.4 "Mammoth Bolt" Ability { id: "A0E3", source: "Neo Garula" }
+8755.1 "Lightning Crossing (Cards)" Ability { id: "A0DF", source: "Neo Garula" }
+8769.4 "--middle--" StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5 forcejump "oc-noise-complaint-crossing3-end"
+8774.4 "Agitated Groan" #Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8783.5 "Rushing Rumble Rampage" #Ability { id: "A0D9", source: "Neo Garula" }
+8783.7 "Rush" #Ability { id: "A0DA", source: "Neo Garula" }
+8784.4 "--sync--" #Ability { id: "A0DD", source: "Chatterbird" }
+8786.8 "Rumble" #Ability { id: "A0DB", source: "Neo Garula" }
+
+8851.6 label "oc-noise-complaint-crossing3-intercards"
+8852.4 "Mammoth Bolt" Ability { id: "A0E3", source: "Neo Garula" }
+8855.1 "Lightning Crossing (Intercards)" Ability { id: "A0DE", source: "Neo Garula" }
+8869.4 "--middle--" StartsUsing { id: "A0E4", source: "Neo Garula" }
+
+8869.4 label "oc-noise-complaint-crossing3-end"
+8874.4 "Agitated Groan" Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8883.5 "Rushing Rumble Rampage" Ability { id: "A0D9", source: "Neo Garula" }
+8883.7 "Rush" #Ability { id: "A0DA", source: "Neo Garula" }
+8884.4 "--sync--" Ability { id: "A0DD", source: "Chatterbird" }
+8886.8 "Rumble" Ability { id: "A0DB", source: "Neo Garula" }
+8887.9 "Lightning Crossing" Ability { id: "A7E8", source: "Neo Garula" }
+8890.9 "Rush" Ability { id: "A0DA", source: "Neo Garula" }
+8891.6 "--sync--" Ability { id: "A0DD", source: "Chatterbird" }
+8894.0 "Rumble" Ability { id: "A0DB", source: "Neo Garula" }
+8895.1 "Lightning Crossing" Ability { id: "A7E8", source: "Neo Garula" }
+8898.1 "Rush" Ability { id: "A0DA", source: "Neo Garula" }
+8898.8 "--sync--" Ability { id: "A0DD", source: "Chatterbird" }
+8901.2 "Rumble" Ability { id: "A0DB", source: "Neo Garula" }
+8902.3 "Lightning Crossing" Ability { id: "A7E8", source: "Neo Garula" }
+8915.6 "Squash" Ability { id: "A0E5", source: "Neo Garula" }
 
 ### On The Hunt
 9000.0 "--sync--" ActorControl { command: "80000014", data0: "338" } window 100000,0
@@ -1037,7 +1174,7 @@ hideall "--sync--"
 15262.4 label "oc-extreme-prejudice-loop"
 15262.4 "Assail" Ability { id: "A1C9", source: "Command Urn" }
 15269.3 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
-15269.3 "--sync--" Ability { id: "9A2F", source: "Vassal Vessel" } jump 15369.3
+15269.3 "--sync--" Ability { id: "9A2F", source: "Vassal Vessel" } jump "oc-extreme-prejudice-rockslide"
 15269.3 "--sync--" Ability { id: "9A2E", source: "Vassal Vessel" } forcejump "oc-extreme-prejudice-stoneswell"
 15269.3 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "92AE"], source: "Vassal Vessel" }
 15274.3 "Stone Swell/Rockslide?" #Ability { id: ["9A2E", "9A2F"], source: "Vassal Vessel" }
