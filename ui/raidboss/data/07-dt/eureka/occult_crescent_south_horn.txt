@@ -507,6 +507,8 @@ hideall "--sync--"
 20395.4 "End of History (Enrage)" Ability { id: "A30B", source: "Demon Tablet" }
 20396.3 "End of History (Enrage)" Ability { id: "A355", source: "Demon Tablet" }
 
+# TODO: Enrage Loop
+
 ### Dead Stars
 # -ii A5FA A5FB A608 A602 A5FF A600 A63E A63F A5B9 A5DC A5DF A5DB A5E3 A5E4 A5DE A5E5 A5F9 A606
 # -ii A5D1 A5D2 A5CC A5CD A5E8 A5E9 A5EA A5EB A5EC A5EE A5EF A5F1 A5F3 A5BB
@@ -696,9 +698,10 @@ hideall "--sync--"
 30417.4 "Fusion Burst (Enrage)" #Ability { id: "A5F5", source: "Dead Stars" }
 30417.4 "--untargetable--"
 
-# Loop enrage
+# Enrage Loop
 30422.3 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" }
-30427.0 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" } jump 30422.3
+30422.3 label "oc-dead-stars-enrage-loop"
+30427.0 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" } jump "oc-dead-stars-enrage-loop"
 
 ### Pronged Passage (Bridges)
 # Note: Raid splits into two and battles across their own bridge in 3 sections
@@ -760,13 +763,14 @@ hideall "--sync--"
 
 # Begin Loop
 40391.4 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40391.4 label "oc-pronged-bridge-loop"
 40391.4 "Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] }
 40405.5 "Punishing Pounce" Ability { id: ["A628", "A629"], source: ["Tower Progenitrix", "Tower Progenitor"] }
 40420.5 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
 40421.5 "Bombshell Drop" Ability { id: ["A626", "A627"], source: ["Tower Progenitrix", "Tower Progenitor"] }
 40421.5 "--adds--"
 
-40449.7 "Arcane Spear" Ability { id: "A6F4", source: "Trap" } jump 40391.4
+40449.7 "Arcane Spear" Ability { id: "A6F4", source: "Trap" } jump "oc-pronged-bridge-loop"
 40449.7 "Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] }
 40463.9 "Punishing Pounce" #Ability { id: ["A628", "A629"], source: ["Tower Progenitrix", "Tower Progenitor"] }
 40478.9 "Arcane Spear" #Ability { id: "A6F4", source: "Trap" }
@@ -819,7 +823,7 @@ hideall "--sync--"
 50083.0 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
 50086.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
 50087.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-50089.5 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump 50189.4
+50089.5 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p1+"
 50089.5 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } forcejump "oc-md-p1o"
 50090.5 "Imitation Blizzard (circles/cross?)" #Ability { id: ["7602", "7614"], source: "Marble Dragon" }
 
@@ -899,7 +903,7 @@ hideall "--sync--"
 50489.2 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
 50492.5 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
 50493.7 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
-50496.3 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } jump 50795.7
+50496.3 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } jump "oc-md-p2o"
 50496.3 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } forcejump "oc-md-p2+"
 50497.3 "Imitation Blizzard (circles/crosses?)" #Ability { id: "7602", source: "Marble Dragon" }
 
@@ -953,7 +957,8 @@ hideall "--sync--"
 # Enrage loop
 # Note: Time between the loop casts is an estimated guess
 50886.7 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" }
-50891.4 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump 50886.7
+50886.7 labal "oc-marble-dragon-enrage"
+50891.4 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump "oc-marble-dragon-enrage"
 
 ### Magitaur
 # -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3 A25C A25D A258 A259
@@ -990,7 +995,7 @@ hideall "--sync--"
 60055.4 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
 60057.4 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 
-60059.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump 60159.1
+60059.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump "oc-magitaur-daggers-axe"
 60059.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-daggers-lance"
 60059.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
 60061.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
@@ -1043,7 +1048,7 @@ hideall "--sync--"
 # Sage Staff
 60336.2 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
 
-60339.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump 60439.1
+60339.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump "oc-magitaur-staff-axe"
 60339.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-staff-lance"
 60344.6 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
 60344.6 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
@@ -1180,4 +1185,5 @@ hideall "--sync--"
 # Enrage Loop
 # Note: Time between the loop casts is an estimated guess
 60883.4 "Unsealed Aura" Ability { id: "A268", source: "Magitaur" }
-60887.8 "Unsealed Aura" Ability { id: "A268", source: "Magitaur" } jump 60883.4
+60883.4 label "oc-magitaur-enrage-loop"
+60887.8 "Unsealed Aura" Ability { id: "A268", source: "Magitaur" } jump "oc-magitaur-enrage-loop"
