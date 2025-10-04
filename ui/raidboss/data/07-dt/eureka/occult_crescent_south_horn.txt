@@ -1160,13 +1160,14 @@ hideall "--sync--"
 15126.1 "Assail" Ability { id: "A1C9", source: "Command Urn" }
 15133.0 "Stone Swell" Ability { id: "A1CC", source: "Vassal Vessel" }
 15141.1 "Stone Swell" Ability { id: "A1CC", source: "Vassal Vessel" }
-15149.2 "Stone Swell" Ability { id: "A1CC", source: "Vassal Vessel" }
+15149.2 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
 # Rockslide Tutorial
 15149.2 "Assail" Ability { id: "A1C9", source: "Command Urn" }
 15156.1 "Rockslide" Ability { id: "A1CD", source: "Vassal Vessel" }
 15164.2 "Rockslide" Ability { id: "A1CD", source: "Vassal Vessel" }
 15172.3 "Rockslide" Ability { id: "A1CD", source: "Vassal Vessel" }
 15176.3 "Aetheric Burst" Ability { id: "A1D0", source: "Command Urn" }
+15177.7 "--adds-targetable--"
 15192.5 "Summon" Ability { id: "A1C8", source: "Command Urn" }
 15197.7 "Assail" Ability { id: "A1C9", source: "Command Urn" }
 15204.5 "Stone Swell" #Ability { id: "A1CC", source: "Vassal Vessel" }
