@@ -65,35 +65,35 @@ hideall "--sync--"
 2034.3 "Dismemberment 1" Ability { id: "AA43" }
 2036.7 "Peal of Judgment (castbar)" Ability { id: "AA49" }
 2037.4 "Dismemberment 2" Ability { id: "AA43" }
-2039.8 "Peal of Judgment (active)" duration 7 #Ability { id: "AA4A" }
-2042.8 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
-2047.7 "Flaying Flail (castbar)" Ability { id: "AA47" }
-2053.6 "Flaying Flail" Ability { id: "AA48", source: "Bloody Headsman" }
-2055.5 "--sync--" StartsUsing { id: "AF38", source: "Pale Headsman" } # Will Breaker
-2058.0 "Peal of Judgment" Ability { id: "AA49", source: "Pestilent Headsman" }
-2060.0 "Death Penalty" Ability { id: "AA44", source: "Bloody Headsman" }
-2060.0 "--hellmaker adds--"
-2060.9 "Peal of Judgment (active)" duration 7 #Ability { id: "AA4A" }
-2062.0 "Will Breaker?" #Ability { id: "AF38", source: "Pale Headsman" }
-2064.2 "Flaying Flail (castbar)" Ability { id: "AA47", source: "Pestilent Headsman" }
-2066.0 "Relentless Torment" Ability { id: "AA45", source: "Pale Headsman" }
-2068.8 "Flaying Flail" Ability { id: "AA48", source: "Ravenous Headsman" }
+2042.8 "Peal of Judgment (active)" duration 7 #Ability { id: "AA4A" }
+2045.8 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
+2050.7 "Flaying Flail (castbar)" Ability { id: "AA47" }
+2056.6 "Flaying Flail" Ability { id: "AA48" }
+2058.5 "--sync--" StartsUsing { id: "AF38", source: "Pale Headsman" } # Will Breaker
+2061.0 "Peal of Judgment" Ability { id: "AA49" }
+2063.0 "Death Penalty" Ability { id: "AA44" }
+2063.0 "--hellmaker adds--"
+2063.9 "Peal of Judgment (active)" duration 7 #Ability { id: "AA4A" }
+2065.0 "Will Breaker?" #Ability { id: "AF38", source: "Pale Headsman" }
+2067.2 "Flaying Flail (castbar)" Ability { id: "AA47" }
+2069.0 "Relentless Torment" Ability { id: "AA45" }
+2071.8 "Flaying Flail" Ability { id: "AA48" }
 
-2078.8 label "executionerLoop"
-2078.8 "Serial Torture" #Ability { id: "AA4D", source: "Pestilent Headsman" }
-2085.6 "Dismemberment" #Ability { id: "AA43", source: "Bloody Headsman" }
-2087.6 "Flaying Flail" #Ability { id: "AA48", source: "Bloody Headsman" }
-2089.6 "Dismemberment" #Ability { id: "AA43", source: "Bloody Headsman" }
-2091.3 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
-2101.8 "Head-splitting Roar" Ability { id: "AA3B", source: "Hooded Headsman" }
-2111.5 "Peal of Judgment" #Ability { id: "AA49", source: "Pestilent Headsman" }
-2117.6 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
-2118.3 "--hellmaker adds--"
-2119.2 "Peal of Judgment (active)" #Ability { id: "AA4A", source: "Bloody Headsman" }
-2121.2 "Will Breaker?" #Ability { id: "AF38", source: "Pale Headsman" }
-2128.2 "Death Penalty" Ability { id: "AA44", source: "Bloody Headsman" }
+2081.8 label "executionerLoop"
+2081.8 "Serial Torture" #Ability { id: "AA4D", source: "Pestilent Headsman" }
+2088.6 "Dismemberment" #Ability { id: "AA43", source: "Bloody Headsman" }
+2090.6 "Flaying Flail" #Ability { id: "AA48", source: "Bloody Headsman" }
+2092.6 "Dismemberment" #Ability { id: "AA43", source: "Bloody Headsman" }
+2094.3 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
+2104.8 "Head-splitting Roar" Ability { id: "AA3B", source: "Hooded Headsman" }
+2114.5 "Peal of Judgment" #Ability { id: "AA49", source: "Pestilent Headsman" }
+2120.6 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
+2121.3 "--hellmaker adds--"
+2122.2 "Peal of Judgment (active)" #Ability { id: "AA4A", source: "Bloody Headsman" }
+2124.2 "Will Breaker?" #Ability { id: "AF38", source: "Pale Headsman" }
+2131.2 "Death Penalty" Ability { id: "AA44", source: "Bloody Headsman" }
 
-2140.0 "Serial Torture" Ability { id: "AA4D", source: "Ravenous Headsman" } forcejump "executionerLoop"
+2143.0 "Serial Torture" Ability { id: "AA4D", source: "Ravenous Headsman" } forcejump "executionerLoop"
 
 
 
