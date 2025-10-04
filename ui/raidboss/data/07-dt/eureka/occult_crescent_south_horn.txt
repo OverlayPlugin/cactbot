@@ -690,8 +690,8 @@ hideall "--sync--"
 8128.7 "--middle--"
 
 # NOTE: Pulling boss away from middle at start can cause delay
-8128.7 "--sync--" StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing1-cards" window 5,5
-8128.8 "--sync--" StartsUsing { id: "A0DE", source: "Neo Garula" } jump "oc-noise-complaint-crossing1-intercards" window 5,5
+8128.7 "--sync--" StartsUsing { id: "A0DF", source: "Neo Garula" } window 5,5 jump "oc-noise-complaint-crossing1-cards"
+8128.8 "--sync--" StartsUsing { id: "A0DE", source: "Neo Garula" } window 5,5 jump "oc-noise-complaint-crossing1-intercards"
 8132.2 "Lightning Crossing (Cards/Intercards?)" #Ability { id: ["A0DF", "A0DE"], source: "Neo Garula" }
 8141.5 "Heave" #Ability { id: "A8FE", source: "Neo Garula" }
 8150.9 "Heave" #Ability { id: "A8FE", source: "Neo Garula" }
@@ -746,8 +746,8 @@ hideall "--sync--"
 8547.0 "Lightning Crossing (Cards)" Ability { id: "A0DF", source: "Neo Garula" }
 8547.2 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
 8551.2 "Epicenter Shock 2" Ability { id: "A0E2", source: "Neo Garula" }
-8551.6 "--sync--" StartsUsing StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing3-cards"
-8551.7 "--sync--" StartsUsing StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing3-intercards"
+8551.6 "--sync--" StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing3-cards"
+8551.7 "--sync--" StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing3-intercards"
 8552.4 "Mammoth Bolt" #Ability { id: "A0E3", source: "Neo Garula" }
 8555.1 "Lightning Crossing (Cards/Intercards?)" #Ability { id: ["A0DF", "A0DE"], source: "Neo Garula" }
 8569.4 "--middle--" #StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
@@ -756,8 +756,8 @@ hideall "--sync--"
 8647.0 "Lightning Crossing (Intercards)" Ability { id: "A0DE", source: "Neo Garula" }
 8647.2 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
 8651.2 "Epicenter Shock 2" Ability { id: "A0E2", source: "Neo Garula" }
-8651.6 "--sync--" StartsUsing StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing3-cards"
-8651.7 "--sync--" StartsUsing StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing3-intercards"
+8651.6 "--sync--" StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing3-cards"
+8651.7 "--sync--" StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing3-intercards"
 8652.4 "Mammoth Bolt" #Ability { id: "A0E3", source: "Neo Garula" }
 8655.1 "Lightning Crossing (Cards/Intercards?)" #Ability { id: ["A0DF", "A0DE"], source: "Neo Garula" }
 8669.4 "--middle--" #StartsUsing { id: "A0E4", source: "Neo Garula" } window 5,5
@@ -795,6 +795,18 @@ hideall "--sync--"
 8901.2 "Rumble" Ability { id: "A0DB", source: "Neo Garula" }
 8902.3 "Lightning Crossing" Ability { id: "A7E8", source: "Neo Garula" }
 8915.6 "Squash" Ability { id: "A0E5", source: "Neo Garula" }
+
+# Loop
+8931.8 "--middle--" StartsUsing { id: "A0E4", source: "Neo Garula" } forcejump "oc-noise-complaint-loop"
+8936.8 "Agitated Groan" #Ability { id: "A0E4", source: "Neo Garula" } duration 0.9
+8944.9 "Birdserk Rush" #Ability { id: "A0D8", source: "Neo Garula" }
+8945.1 "Rush" #Ability { id: "A0DA", source: "Neo Garula" }
+8949.3 "Heave" #Ability { id: "A0DC", source: "Neo Garula" }
+8960.7 "Squash" #Ability { id: "A0E5", source: "Neo Garula" }
+8974.6 "--middle--"
+8974.6 "Lightning Charge" #Ability { id: "A0E1", source: "Neo Garula" }
+8980.3 "Lightning Crossing (Intercards)" #Ability { id: "A0DE", source: "Neo Garula" }
+8980.5 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
 
 ### On The Hunt
 9000.0 "--sync--" ActorControl { command: "80000014", data0: "338" } window 100000,0
