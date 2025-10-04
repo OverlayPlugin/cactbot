@@ -2554,6 +2554,7 @@ const triggerSet: TriggerSet<Data> = {
       // 2: Small Ruinous Rune x3
       // 3: Big Ruinous Rune, Small Ruinous Rune x2
       // 4: This happens on #2 ability to prevent Lanceblow reminder from retriggering
+      // 5: Happens in Ruinous Rune 2 Reminder prevent future Critical Lanceblows from retriggering
       type: 'HeadMarker',
       netRegex: {
         id: [headMarkerData.magitaurBigRuinousRune, headMarkerData.magitaurSmallRuinousRune],
@@ -2784,6 +2785,10 @@ const triggerSet: TriggerSet<Data> = {
           player1: data.party.member(small1),
           player2: data.party.member(small2),
         });
+      },
+      run: (data) => {
+        // Prevent trigger from firing after
+        data.magitaurRuinousRuneCount = 5;
       },
       outputStrings: magitaurOutputStrings,
     },
