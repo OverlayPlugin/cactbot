@@ -59,7 +59,6 @@ hideall "--sync--"
 2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1497" } window 2000,1
 2003.2 "Lawless Pursuit" Ability { id: "AA39" }
 2011.8 "Head-splitting Roar" Ability { id: "AA3B", source: "Hooded Headsman" }
-2014.9 "--sync--" Ability { id: "AA3C" }
 2022.5 "Shackles of Fate" #Ability { id: "AA3E" }
 2027.4 "Dismemberment (cast)" Ability { id: "AA42" }
 2034.3 "Dismemberment 1" Ability { id: "AA43" }
