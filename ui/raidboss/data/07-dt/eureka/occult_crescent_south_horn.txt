@@ -809,8 +809,91 @@ hideall "--sync--"
 9100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
 ### Scourge Of The Mind
+# -it A0D5 A0CE A0D6 A125 A124
+# -p A0D2:10123.1
+# -it "Mysterious Mindflayer"
+# IGNORED ABILITIES
+# A0D5 --sync-- Attack
+# A0CE Mind Blast (damage)
+# A0D6 Arcane Blast (damage)
+# A125 Surprise Attack (self-cast ability after slide)
+# A124 Surprise Attack (13.7s self-cast)
+#
+# ALL ENCOUNTER ABILITIES
+# A0CF Mind Blast
+# A0D0 Summon
+# A0D1 Recharge
+# A0D2 Dark II
+# A0D3 Arcane Blast
+# A0D4 Void Thunder III
+# A122 Fire Trap
+# A123 Blizzard Trap
+# A126 Surprise Attack (Jesting Jackanapes line aoe)
+# A127 --sync-- Tentacles spawn
+# A128 Wallop (Small?)
+# A129 Wallop (Big?)
+# A162 Wallop
+# TODO: Determine which Wallop is Big, which is Small
+# TODO: Retime forced move once debuff is logged
 10000.0 "--sync--" ActorControl { command: "80000014", data0: "320" } window 100000,0
 10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+10117.1 "--sync--" StartsUsing { id: "A0D2", source: "Mysterious Mindflayer" } window 20,5
+10123.1 "Dark II" Ability { id: "A0D2", source: "Mysterious Mindflayer" }
+
+# Mind Blast Tutorial
+10132.5 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10138.6 "Mind Blast" Ability { id: "A0CF", source: "Mysterious Mindflayer" } duration 1
+10148.7 "--forced move--" duration 6
+10153.7 "Fire Trap" Ability { id: "A122", source: "Jesting Jackanapes" }
+10153.7 "Blizzard Trap" #Ability { id: "A123", source: "Jesting Jackanapes" }
+
+# Tentacle Tutorial
+10159.1 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10160.0 "--tentacles x6--" Ability { id: "A127", source: "Tentacle" }
+10165.1 "Recharge" Ability { id: "A0D1", source: "Mysterious Mindflayer" }
+10173.0 "Wallop x3 (Big)" Ability { id: "A129", source: "Tentacle" }
+10173.0 "Wallop x3 (Small)" #Ability { id: "A128", source: "Tentacle" }
+10178.2 "Void Thunder III" Ability { id: "A0D4", source: "Mysterious Mindflayer" }
+
+# Loop Begins
+# NOTE: Void Thunder III to Summon is shorter duration before loop
+10181.8 label "oc-scourge-of-the-mind-loop"
+10184.8 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10190.9 "Mind Blast" Ability { id: "A0CF", source: "Mysterious Mindflayer" } duration 1
+10207.0 "Surprise Attack x4 (Long)" Ability { id: "A126", source: "Jesting Jackanapes" }
+10210.0 "Surprise Attack x4 (Short)" Ability { id: "A126", source: "Jesting Jackanapes" }
+10211.0 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10211.5 "--forced move--" duration 6
+10211.9 "--tentacles x6--" Ability { id: "A127", source: "Tentacle" }
+10217.1 "Recharge" Ability { id: "A0D1", source: "Mysterious Mindflayer" }
+10217.5 "Fire Trap x2" Ability { id: "A122", source: "Jesting Jackanapes" }
+10217.5 "Blizzard Trap x2" #Ability { id: "A123", source: "Jesting Jackanapes" }
+10224.9 "Wallop x3 (Big)" Ability { id: "A129", source: "Tentacle" }
+10224.9 "Wallop x3 (Small)" #Ability { id: "A128", source: "Tentacle" }
+10238.2 "Arcane Blast" Ability { id: "A0D3", source: "Mysterious Mindflayer" } duration 1
+10249.5 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10250.4 "--tentacles x6--" Ability { id: "A127", source: "Tentacle" }
+10255.5 "Recharge" Ability { id: "A0D1", source: "Mysterious Mindflayer" }
+10263.4 "Wallop x3 (Big)" Ability { id: "A129", source: "Tentacle" }
+10263.4 "Wallop x3 (Small)" #Ability { id: "A128", source: "Tentacle" }
+10263.7 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10264.6 "--tentacles x6--" Ability { id: "A127", source: "Tentacle" }
+10273.6 "Wallop x5 (Small)" Ability { id: "A162", source: "Tentacle" }
+10284.9 "Dark II" Ability { id: "A0D2", source: "Mysterious Mindflayer" }
+10292.1 "Void Thunder III" Ability { id: "A0D4", source: "Mysterious Mindflayer" }
+
+# Loop
+10298.4 "--sync--" StartsUsing { id: "A0D0", source: "Mysterious Mindflayer" } forcejump "oc-scourge-of-the-mind-loop"
+10301.4 "Summon" #Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10307.5 "Mind Blast" #Ability { id: "A0CF", source: "Mysterious Mindflayer" } duration 1
+10323.6 "Surprise Attack x4 (Long)" #Ability { id: "A126", source: "Jesting Jackanapes" }
+10326.6 "Surprise Attack x4 (Short)" #Ability { id: "A126", source: "Jesting Jackanapes" }
+10327.6 "Summon" #Ability { id: "A0D0", source: "Mysterious Mindflayer" }
+10328.0 "--forced move--" duration 6
+10328.5 "--tentacles x6--" #Ability { id: "A127", source: "Tentacle" }
+10333.7 "Recharge" #Ability { id: "A0D1", source: "Mysterious Mindflayer" }
+10334.0 "Fire Trap x2" #Ability { id: "A122", source: "Jesting Jackanapes" }
+10334.0 "Blizzard Trap x2" #Ability { id: "A123", source: "Jesting Jackanapes" }
 
 ### Shark Attack
 # -ii 368 A2DB A2D8 A88F A2D7 A3F2 A2FB A2FA
