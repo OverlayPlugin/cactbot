@@ -14,7 +14,9 @@ export interface Data extends RaidbossData {
   seenFirstStorm: boolean;
   seenFirstBombardment: boolean;
   safeTerror?: PluginCombatantState;
-  kerauUnsafe: DirectionOutputIntercard[];
+  orthoKerauNorth?: boolean;
+  orthoKerauSouth?: boolean;
+  kerauDiagSafe: DirectionOutputIntercard[];
 }
 
 type chirurgeonCoords = {
@@ -22,20 +24,9 @@ type chirurgeonCoords = {
   y: number;
 };
 
-// List out the dangerous intercardinals for each Keraunography.
+// List out the safe spots for diagonals.
 const diagPositive: DirectionOutputIntercard[] = ['dirSW', 'dirNE'];
 const diagNegative: DirectionOutputIntercard[] = ['dirNW', 'dirSE'];
-const horizNorth: DirectionOutputIntercard[] = ['dirNW', 'dirNE'];
-const horizSouth: DirectionOutputIntercard[] = ['dirSW', 'dirSE'];
-const vertWest: DirectionOutputIntercard[] = ['dirNW', 'dirSW'];
-const vertEast: DirectionOutputIntercard[] = ['dirNE', 'dirSE'];
-
-const filterDirs = (
-  possSafe: DirectionOutputIntercard[],
-  knownUnsafe: DirectionOutputIntercard[],
-): DirectionOutputIntercard[] => {
-  return possSafe.filter((dir) => !knownUnsafe.includes(dir));
-};
 
 const findNorthTerror = (terrors: PluginCombatantState[]): PluginCombatantState | undefined => {
   return terrors.filter((terror) => {
@@ -67,7 +58,9 @@ const triggerSet: TriggerSet<Data> = {
       seenFirstBombardment: false,
       impressionActive: false,
       safeTerror: undefined,
-      kerauUnsafe: [],
+      orthoKerauNorth: undefined,
+      orthoKerauSouth: undefined,
+      kerauDiagSafe: [],
     };
   },
   triggers: [
@@ -381,12 +374,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       // One Keraunography laser is always diagonal,
       // one is always orthogonal.
-      // There are technically smaller safespots available
-      // outside the main intercardinal locations,
-      // but that's difficult to account for programmatically.
-      // The data.kerauUnsafe array will end up with a duplicated direction value,
-      // but since we only care about whether or not a value is present in the array,
-      // it doesn't make a difference.
+      // In all cases but front horizontal,
+      // orthogonal lasers leave at least a small uptime safespot.
       id: 'Meso Terminal Immortal Remains Keraunography Collect',
       type: 'StartsUsingExtra',
       netRegex: { id: 'AB25', capture: true },
@@ -399,18 +388,18 @@ const triggerSet: TriggerSet<Data> = {
           // In practice, only 5 and 3 will ever be seen,
           // since the diagonals always originate from the north end of the arena.
           const diagIsPositive = (headingNum + 4) % 4 === 1;
-          const unsafeDiagonalSpots = diagIsPositive ? diagPositive : diagNegative;
-          data.kerauUnsafe.push(...unsafeDiagonalSpots);
+          const safeDiagonalSpots = diagIsPositive ? diagNegative : diagPositive;
+          data.kerauDiagSafe = safeDiagonalSpots;
         } else if (headingNum % 4 === 0) { // Vertical
           // As with the diagonals, in practice we will only ever see a 0 heading number.
-          const isWest = parseFloat(matches.x) < 0;
-          const unsafeVerticalSpots = isWest ? vertWest : vertEast;
-          data.kerauUnsafe.push(...unsafeVerticalSpots);
+          data.orthoKerauNorth = false;
+          data.orthoKerauSouth = false;
         } else { // Horizontal
-          // It is possible to see both 2 and 6 in practice.
+          // It is possible to see both 2 and 6 in practice,
+          // but it doesn't matter much.
           const isNorth = parseFloat(matches.y) < 0;
-          const unsafeHorizontalSpots = isNorth ? horizNorth : horizSouth;
-          data.kerauUnsafe.push(...unsafeHorizontalSpots);
+          data.orthoKerauNorth = isNorth;
+          data.orthoKerauSouth = !isNorth;
         }
       },
     },
@@ -421,15 +410,46 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        const kerauSafespots: DirectionOutputIntercard[] = ['dirNE', 'dirNW', 'dirSE', 'dirSW'];
-        const safeDirs = filterDirs(kerauSafespots, data.kerauUnsafe);
-        if (safeDirs.length !== 1 || safeDirs[0] === undefined)
+        if (data.orthoKerauNorth === undefined || data.orthoKerauSouth === undefined)
+          return;
+        if (data.orthoKerauNorth) {
+          // If the orthogonal laser is horizontal north,
+          // the only safespots are outside the hitbox,
+          // but still close enough to be handled with a GCD roll.
+          const safeDir = data.kerauDiagSafe.filter((dir) => dir === 'dirSW' || dir === 'dirSE')[0];
+          if (safeDir !== undefined)
+            return output[safeDir]!();
           return output.unknown!();
-        const safeDir = safeDirs[0];
-        return output[safeDir]!();
+        } else if (data.orthoKerauSouth) {
+          // If the orthogonal laser is horizontal south,
+          // the safespot is completely free in front.
+          const safeDir = data.kerauDiagSafe.filter((dir) => dir === 'dirNW' || dir === 'dirNE')[0];
+          if (safeDir !== undefined)
+            return output[safeDir]!();
+          return output.unknown!();
+        }
+
+        // If the orthogonal laser is vertical,
+        // there is a tiny safespot in front,
+        // as well as a large one diagonally opposite,
+        // just outside melee range.
+        const safeNW = data.kerauDiagSafe.includes('dirNW');
+        if (safeNW)
+          return output.leanLeft!();
+        return output.leanRight!();
       },
-      run: (data) => data.kerauUnsafe = [],
+      run: (data) => {
+        data.kerauDiagSafe = [];
+        data.orthoKerauNorth = undefined;
+        data.orthoKerauSouth = undefined;
+      },
       outputStrings: {
+        leanLeft: {
+          en: 'Front + Lean Left/Southwest',
+        },
+        leanRight: {
+          en: 'Front + Lean Right/Southeast',
+        },
         dirNW: Outputs.northwest,
         dirNE: Outputs.northeast,
         dirSW: Outputs.southwest,
