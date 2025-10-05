@@ -321,8 +321,8 @@ hideall "--sync--"
 5406.1 label "oc-eternal-watch-loop"
 5411.1 "Radiant Wave" Ability { id: "A13F", source: "Repaired Lion" } duration 1
 5416.2 "Aetherial Exchange" Ability { id: "A140", source: "Repaired Lion" }
-5417.2 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
-5417.2 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
+5417.2 "--wind spheres x6--" #Ability { id: "A13C", source: "Repaired Lion" }
+5417.2 "--sand spheres x6--" #Ability { id: "A141", source: "Repaired Lion" }
 
 # There is a Pattern here with Double Cast, but currently not displaying text differently
 # Double cast will be A14A or A14B and the subsequent will be opposite
@@ -391,8 +391,8 @@ hideall "--sync--"
 # Loop
 5742.5 "--sync--" StartsUsing { id: "A13F", source: "Repaired Lion" } forcejump "oc-eternal-watch-loop"
 5747.5 "Radiant Wave" #Ability { id: "A13F", source: "Repaired Lion" }
-5752.6 "--wind spheres x4--" #Ability { id: "A13C", source: "Repaired Lion" }
-5753.6 "--sand spheres x4--" #Ability { id: "A141", source: "Repaired Lion" }
+5752.6 "--wind spheres x6--" #Ability { id: "A13C", source: "Repaired Lion" }
+5753.6 "--sand spheres x6--" #Ability { id: "A141", source: "Repaired Lion" }
 5766.2 "Double Cast" #Ability { id: "A14B", source: "Repaired Lion" }
 5766.6 "Ancient Stone III" #Ability { id: "A14D", source: "Repaired Lion" }
 5766.6 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
