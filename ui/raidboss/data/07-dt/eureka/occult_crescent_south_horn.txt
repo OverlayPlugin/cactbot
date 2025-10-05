@@ -859,6 +859,7 @@ hideall "--sync--"
 11163.6 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
 11163.9 "Pelagic Cleaver 8" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
 11166.7 "--sync--" Ability { id: "A2DD", source: "Petalodus Progeny" }
+11178.9 "--north--"
 11179.4 "Dive" Ability { id: "A2CC", source: "Nymian Petalodus" }
 11179.4 "--untargetable--"
 11183.4 "--sync--" Ability { id: "A2D3", source: "Petalodus Progeny" }
