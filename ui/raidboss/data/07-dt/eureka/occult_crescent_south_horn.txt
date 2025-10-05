@@ -426,7 +426,7 @@ hideall "--sync--"
 15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
 ### The Forked Tower: Blood
-#16000.0 "--sync--" ActorControl { command: "80000014", data0: "33B" } window 100000,0
+#18000.0 "--sync--" ActorControl { command: "80000014", data0: "33B" } window 100000,0
 
 ### Demon Tablet
 # -ii A30A A309 A3AF A2EB A2F1 A2EF A303 A304 A308 A354 A2FE A2E6 A2E7 A91D A91E AB12 A2FD
