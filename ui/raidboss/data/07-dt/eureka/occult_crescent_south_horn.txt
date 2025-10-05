@@ -397,10 +397,6 @@ hideall "--sync--"
 5766.6 "Ancient Stone III" #Ability { id: "A14D", source: "Repaired Lion" }
 5766.6 "Ancient Aero III" #Ability { id: "A14C", source: "Repaired Lion" }
 
-### Flame Of Dusk
-6000.0 "--sync--" ActorControl { command: "80000014", data0: "32A" } window 100000,0
-6100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
-
 ### From Times Bygone
 # -ii A240 A0AC A0B6 A324
 # -p A0B1:7123.6
@@ -1228,3 +1224,329 @@ hideall "--sync--"
 15662.8 "Assail" Ability { id: "A1C9", source: "Command Urn" } forcejump "oc-extreme-prejudice-loop"
 15669.1 "Rockslide/Stone Swell?" #Ability { id: ["9A2F", "9A2E"], source: "Vassal Vessel" }
 
+### Flame Of Dusk
+# -ii 366 A1A6 A310 A430 A431 A432 A433
+# -p A1A5:16124.1
+# -it "Hinkypunk"
+# IGNORED ABILITIES
+# 366 attack
+# A1A6 --sync--
+# A310 Lamplight (damage)
+# A433 Shades' Crossing (damage)
+# A430 Shades' Nest (Boss only cast, damage)
+# A431 Shades' Nest (damage)
+# A432 Shades' Crossing (Boss only cast, damage)
+#
+# ALL ENCOUNTER ABILITIES
+# A198 Molt
+# A199 Molt
+# A19A Flock of Souls
+# A19B --sync-- (Combatent transfers to statue)
+# A19C Shades' Nest (Cast by boss only, Intercards)
+# A19D Shades' Nest
+# A19F Shades' Crossing (Cast by boss only, Intercards)
+# A1A0 Shades' Crossing
+# A1A2 Blowout
+# A1A3 --sync-- (Tell for Blowout A1A2, Knocback)
+# A1A1 --sync-- (Tell for Shade's Crossing A1A0, Intercards)
+# A19E --sync-- (Tell for Shade's Nest A19D, In)
+# A1A4 Dread Dive
+# A1A5 Lamplight
+# A1B4 --sync-- (end of fight sync)
+# A1B5 Blowout (damage + knockback)
+16000.0 "--sync--" ActorControl { command: "80000014", data0: "32A" } window 100000,0
+16100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+16119.1 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } window 20,5
+16124.1 "Lamplight" Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+16137.4 "Dread Dive" Ability { id: "A1A4", source: "Hinkypunk" }
+16144.8 "--Tell 1 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+16145.1 "--sync--" StartsUsing { id: "A1A1", source: "Hinkypunk" } jump "oc-flame-of-dusk-tutorial-crossing"
+16145.2 "--sync--" StartsUsing { id: "A19E", source: "Hinkypunk" } forcejump "oc-flame-of-dusk-tutorial-nest"
+16147.6 "--Tell 2 (Shades' Crossing/Shades' Nest?)--" #Ability { id: ["A1A1", "A19E"], source: "Hinkypunk" }
+16150.4 "--Tell 3 (Blowout)--" #Ability { id: "A1A3", source: "Hinkypunk" }
+16153.2 "--Tell 4 (Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A19E", "A1A1"], source: "Hinkypunk" }
+16154.4 "Molt" #Ability { id: "A198", source: "Hinkypunk" }
+16155.4 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16160.4 "Blowout" #Ability { id: "A1A2", source: "Hinkypunk" }
+16161.3 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16161.6 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16165.6 "Shades' Crossing/Shades' Nest?" #Ability { id: ["A1A0", "A19D"], source: "Hinkypunk" } duration 0.9
+16166.8 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16170.8 "Blowout" #Ability { id: "A1A2", source: "Hinkypunk" }
+16171.7 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16172.0 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16176.0 "Shades' Nest/Shades' Crossing?" #Ability { id: ["A19D", "A1A0"], source: "Hinkypunk" } duration 0.9
+
+# Tutorial - Shades' Crossing First
+16245.1 label "oc-flame-of-dusk-tutorial-crossing"
+16247.6 "--Tell 2 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
+16250.4 "--Tell 3 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+16253.2 "--Tell 4 (Shades' Nest)--" Ability { id: "A19E", source: "Hinkypunk" }
+16254.4 "Molt" Ability { id: "A198", source: "Hinkypunk" }
+16255.4 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16260.4 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+16261.3 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16261.6 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16265.6 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+16266.8 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16270.8 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+16271.7 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16272.0 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16276.0 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
+16277.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16281.6 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-loop"
+16286.6 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+16294.9 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+16307.7 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+16308.7 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16316.8 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+16319.6 "--Tell 2 (Shades' Nest/Shades' Crossing/Blowout?)--" #Ability { id: ["A19E", "A1A1", "A1A3"], source: "Hinkypunk" }
+16322.4 "--Tell 3 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+16325.2 "--Tell 4 (Shades' Nest/Shades' Crossing/Blowout?)--" #Ability { id: ["A19E", "A1A1", "A1A3"], source: "Hinkypunk" }
+
+# Tutorial - Shades' Nest First
+16445.1 label "oc-flame-of-dusk-tutorial-nest"
+16447.6 "--Tell 2 (Shades' Nest)--" Ability { id: "A19E", source: "Hinkypunk" }
+16450.4 "--Tell 3 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+16453.2 "--Tell 4 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
+16454.4 "Molt" Ability { id: "A198", source: "Hinkypunk" }
+16455.4 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16460.4 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+16461.3 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16461.6 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16465.6 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
+16466.8 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16470.8 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+16471.7 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16472.0 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16476.0 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+16477.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+
+# Loop Begins
+16481.6 label "oc-flame-of-dusk-loop"
+16486.6 "Lamplight" Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+16494.9 "Dread Dive" Ability { id: "A1A4", source: "Hinkypunk" }
+16507.7 "Flock of Souls" Ability { id: "A19A", source: "Hinkypunk" }
+16508.7 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+
+# There appear to be 6 possible patterns here, if anyone has a log of others this will need updating
+# Blowout => Shades' Nest => Boss Shades' Nest => Shades' Crossing => Blowout => Boss Shades' Crossing
+# Blowout => Shades' Nest => Boss Shades' Nest => Shades' Crossing => Blowout => Boss Shades' Nest
+# Shades' Crossing => Blowout => Boss Shades' Nest => Blowout => Shades' Nest => Boss Shades' Nest
+# Shades' Crossing => Blowout => Boss Shades' Nest => Blowout => Shades' Nest => Boss Shades' Crossing
+# Shades' Crossing => Blowout => Boss Shades' Nest => Shades' Nest => Shades' Crossing => Boss Shades' Nest
+# Shades' Crossing => Blowout => Boss Shades' Nest => Shades' Nest => Shades' Crossing => Boss Shades' Crossing
+# Shades' Nest => Shades' Crossing => Boss Shades' Nest => Shades' Crossing => Blowout => Boss Shades' Crossing
+
+16514.3 "--sync--" StartsUsing { id: "A1A3", source: "Hinkypunk" } jump "oc-flame-of-dusk-blowout1"
+16514.3 "--sync--" StartsUsing { id: "A19E", source: "Hinkypunk" } jump "oc-flame-of-dusk-nest1"
+16514.4 "--sync--" StartsUsing { id: "A1A1", source: "Hinkypunk" } forcejump "oc-flame-of-dusk-crossing1"
+16516.8 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+16519.6 "--Tell 2 (Shades' Nest/Shades' Crossing/Blowout?)--" #Ability { id: ["A19E", "A1A1", "A1A3"], source: "Hinkypunk" }
+16522.4 "--Tell 3 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+16525.2 "--Tell 4 (Shades' Nest/Shades' Crossing/Blowout?)--" #Ability { id: ["A19E", "A1A1", "A1A3"], source: "Hinkypunk" }
+16526.3 "Molt" #Ability { id: "A199", source: "Hinkypunk" }
+16527.3 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16531.1 "Blowout/Shades' Nest/Shades' Crossing?" #Ability { id: ["A1A2", "A19D", "A1A0"], source: "Hinkypunk" } duration 0.9
+16532.0 "--knockback?--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16534.2 "Shades' Nest/Shades' Crossing/Blowout?" #Ability { id: ["A19D", "A1A0", "A1A2"], source: "Hinkypunk" } duration 0.9
+16537.2 "Shades' Nest (middle)" #Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+
+# Blowout First
+# TODO: Determine if this only leads to a future Shades' Crossing => Blowout
+16614.3 label "oc-flame-of-dusk-blowout1"
+16616.8 "--Tell 1 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+16619.6 "--Tell 2 (Shades' Nest)--" Ability { id: "A19E", source: "Hinkypunk" }
+16622.4 "--Tell 3 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
+16625.2 "--Tell 4 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+16626.3 "Molt" Ability { id: "A199", source: "Hinkypunk" }
+16627.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16631.1 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+16632.0 "--knockback--" Ability { id: "A1B5", source: "Hinkypunk" }
+16634.2 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
+16637.2 "Shades' Nest (middle)" Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+16640.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16644.0 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+16645.6 "--sync--" StartsUsing { id: "A19F", source: "Hinkypunk" } jump "oc-flame-of-dusk-blowout-crossing"
+16645.7 "--sync--" StartsUsing { id: "A19C", source: "Hinkypunk" } forcejump "oc-flame-of-dusk-blowout-nest"
+16647.1 "Blowout" #Ability { id: "A1A2", source: "Hinkypunk" }
+16648.0 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16648.3 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16650.6 "Shades' Crossing (Intercards)/Shades' Nest (middle)?" #Ability { id: ["A19F", "A19C"], source: "Hinkypunk" } duration 0.9
+16659.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+
+# Shades' Nest First
+# TODO: Determine if this only leads to a future Shades' Crossing => Blowout
+# NOTE: This is assuming there could be a possible Shades' Nest from Boss, but no log seen of it yet
+16714.3 label "oc-flame-of-dusk-nest1"
+16716.8 "--Tell 1 (Shades' Nest)--" Ability { id: "A19E", source: "Hinkypunk" }
+16719.6 "--Tell 2 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
+16722.4 "--Tell 3 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
+16725.2 "--Tell 4 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+16726.3 "Molt" Ability { id: "A199", source: "Hinkypunk" }
+16727.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16731.1 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" }
+16734.2 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+16737.2 "Shades' Nest (middle)" Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+16740.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16744.0 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" }
+16745.6 "--sync--" StartsUsing { id: "A19F", source: "Hinkypunk" } jump "oc-flame-of-dusk-blowout-crossing"
+16745.7 "--sync--" StartsUsing { id: "A19C", source: "Hinkypunk" } forcejump "oc-flame-of-dusk-blowout-nest"
+16747.1 "Blowout" #Ability { id: "A1A2", source: "Hinkypunk" }
+16748.0 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16748.3 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16750.6 "Shades' Crossing (Intercards)/Shades' Nest (middle)?" #Ability { id: ["A19F", "A19C"], source: "Hinkypunk" } duration 0.9
+16759.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+
+# Shades' Crossing First
+# TODO: Determine if this only leads to a future Blowout => Shades' Nest or Shades' Nest => Shades' Crossing
+16814.3 label "oc-flame-of-dusk-crossing1"
+16816.8 "--Tell 1 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
+16819.6 "--Tell 2 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+
+16819.9 "--sync--" StartsUsing { id: "A1A3", source: "Hinkypunk" } jump "oc-flame-of-dusk-crossing1-blowout"
+16820.0 "--sync--" StartsUsing { id: "A19E", source: "Hinkypunk" } forcejump "oc-flame-of-dusk-crossing1-nest"
+16822.4 "--Tell 3 (Blowout/Shades' Nest?)--" #Ability { id: ["A1A3", "A19E"], source: "Hinkypunk" }
+16825.2 "--Tell 4 (Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A19E", "A1A1"], source: "Hinkypunk" }
+16826.3 "Molt" #Ability { id: "A199", source: "Hinkypunk" }
+16827.3 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16831.1 "Shades' Crossing" #Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+16834.2 "Blowout" #Ability { id: "A1A2", source: "Hinkypunk" }
+16835.1 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16837.2 "Shades' Nest (middle)" #Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+16840.2 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16844.0 "Blowout/Shades' Nest?" #Ability { id: ["A1A2", "A19D"], source: "Hinkypunk" } duration 0.9
+16844.9 "--knockback?--" #Ability { id: "A1B5", source: "Hinkypunk" }
+16847.1 "Shades' Nest/Shades' Crossing?" #Ability { id: ["A19D", "A1A0"], source: "Hinkypunk" } duration 0.9
+16848.3 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+
+# Shades' Crossing => Blowout First to Blowout => Shades' Nest
+16919.9 label "oc-flame-of-dusk-crossing1-blowout"
+16922.4 "--Tell 3 (Blowout)--" Ability { id: "A1A3", source: "Hinkypunk" }
+16925.2 "--Tell 4 (Shades' Nest)--" Ability { id: "A19E", source: "Hinkypunk" }
+16926.3 "Molt" Ability { id: "A199", source: "Hinkypunk" }
+16927.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16931.1 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+16934.2 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+16935.1 "--knockback--" Ability { id: "A1B5", source: "Hinkypunk" }
+16937.2 "Shades' Nest (middle)" Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+16940.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16944.0 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+16944.9 "--knockback--" Ability { id: "A1B5", source: "Hinkypunk" }
+16945.6 "--sync--" StartsUsing { id: "A19F", source: "Hinkypunk" } jump "oc-flame-of-dusk-nest-crossing"
+16945.7 "--sync--" StartsUsing { id: "A19C", source: "Hinkypunk" } forcejump "oc-flame-of-dusk-nest-nest"
+16947.1 "Shades' Nest" #Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
+16948.3 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16950.6 "Shades' Crossing (Intercards)/Shades' Nest (middle)?" #Ability { id: ["A19F", "A19C"], source: "Hinkypunk" } duration 0.9
+16959.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+
+# Shades' Crossing => Blowout First to Shades' Nest => Shades' Crossing
+17019.9 label "oc-flame-of-dusk-crossing1-nest"
+17022.4 "--Tell 3 (Shades' Nest)--" Ability { id: "A19E", source: "Hinkypunk" }
+17025.2 "--Tell 4 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
+17026.3 "Molt" Ability { id: "A199", source: "Hinkypunk" }
+17027.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17031.1 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+17034.2 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+17035.1 "--knockback--" Ability { id: "A1B5", source: "Hinkypunk" }
+17037.2 "Shades' Nest (middle)" Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+17040.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17044.0 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
+17045.6 "--sync--" StartsUsing { id: "A19F", source: "Hinkypunk" } jump "oc-flame-of-dusk-crossing-crossing"
+17045.7 "--sync--" StartsUsing { id: "A19C", source: "Hinkypunk" } forcejump "oc-flame-of-dusk-crossing-nest"
+17047.1 "Shades' Crossing" #Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+17048.3 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17050.6 "Shades' Crossing (Intercards)/Shades' Nest (middle)?" #Ability { id: ["A19F", "A19C"], source: "Hinkypunk" } duration 0.9
+17059.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+
+# Branch from Blowout to Shades' Nest
+17145.6 label "oc-flame-of-dusk-blowout-nest"
+17147.1 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+17148.0 "--knockback--" Ability { id: "A1B5", source: "Hinkypunk" }
+17148.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17150.6 "Shades' Nest (middle)" Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+17154.7 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-end"
+17159.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17167.9 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17176.2 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+17188.5 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+17189.5 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17197.6 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+
+# Branch from Shades' Nest to Shades' Nest
+17245.6 label "oc-flame-of-dusk-nest-nest"
+17247.1 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
+17248.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17250.6 "Shades' Nest (middle)" Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+17254.7 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-end"
+17259.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17267.9 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17276.2 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+17288.5 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+17289.5 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17297.6 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+
+# Branch from Shades' Crossing to Shades' Nest
+17345.6 label "oc-flame-of-dusk-crossing-nest"
+17347.1 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+17348.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17350.6 "Shades' Nest (middle)" Ability { id: "A19C", source: "Hinkypunk" } duration 0.9
+17354.7 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-end"
+17359.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17367.9 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17376.2 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+17388.5 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+17389.5 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17397.6 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+
+# Branch from Blowout to Shades' Crossing
+17445.6 label "oc-flame-of-dusk-blowout-crossing"
+17447.1 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
+17448.0 "--knockback--" Ability { id: "A1B5", source: "Hinkypunk" }
+17448.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17450.6 "Shades' Crossing (Intercards)" Ability { id: "A19F", source: "Hinkypunk" } duration 0.9
+17454.7 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-end"
+17459.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17467.9 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17476.2 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+17488.5 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+17489.5 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17497.6 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+
+# Branch from Shades' Nest to Shades' Crossing
+17545.6 label "oc-flame-of-dusk-nest-crossing"
+17547.1 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
+17548.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17550.6 "Shades' Crossing (Intercards)" Ability { id: "A19F", source: "Hinkypunk" } duration 0.9
+17554.7 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-end"
+17559.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17567.9 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17576.2 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+17588.5 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+17589.5 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17597.6 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+
+# Branch from Shades' Crossing to Shades' Crossing
+17645.6 label "oc-flame-of-dusk-crossing-crossing"
+17647.1 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
+17648.3 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+17650.6 "Shades' Crossing (Intercards)" Ability { id: "A19F", source: "Hinkypunk" } duration 0.9
+17654.7 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-end"
+17659.7 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17667.9 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17676.2 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+17688.5 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+17689.5 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17697.6 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+
+# Loop
+17754.7 label "oc-flame-of-dusk-end"
+17759.7 "Lamplight" Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17762.9 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } window 5,5 forcejump "oc-flame-of-dusk-loop"
+17767.9 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+17776.2 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
+17788.5 "Flock of Souls" #Ability { id: "A19A", source: "Hinkypunk" }
+17789.5 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+17797.6 "--Tell 1 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
+17800.4 "--Tell 2 (Shades' Nest/Shades' Crossing/Blowout?)--" #Ability { id: ["A19E", "A1A1", "A1A3"], source: "Hinkypunk" }
+17803.2 "--Tell 3 (Blowout/Shades' Nest/Shades' Crossing?)--" #Ability { id: ["A1A3", "A19E", "A1A1"], source: "Hinkypunk" }
