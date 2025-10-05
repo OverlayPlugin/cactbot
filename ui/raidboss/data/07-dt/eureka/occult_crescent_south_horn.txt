@@ -806,8 +806,116 @@ hideall "--sync--"
 8980.5 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
 
 ### On The Hunt
+# -ii 366 A1B8 A1C5 7843
+# -p A1C3:9125
+# -it "Lion Rampant"
+# IGNORED ABILITIES
+# 366 attack
+# A1B8 --sync--
+# A1C5 Shockwave (self-cast ability, 1.2s before damage ability)
+# 7843 Flatten (4.7s self-cast, This is the only cast in fflogs)
+# 
+# ALL ENCOUNTER ABILITIES
+# A1B9 Augmentation of Beacons
+# A1BA Aetherial Ray
+# A1BB Bright Pulse
+# A1BC Augmentation of Roundels
+# A1BD Augmentation of Stones
+# A1BE Flatten (Shared with A1C0, stone covering a crystal)
+# A1C0 Flatten (Shared with A1BE, stone not covering a crystal)
+# A1BF Decompress
+# A1C1 Falling Rock
+# A1C2 Falling Rock
+# A1C3 Fearsome Glint
+# A1C4 Shockwave (4.7s self-cast, damaage ability comes 0.9s after)
+# A1C6 Shockwave (damage)
 9000.0 "--sync--" ActorControl { command: "80000014", data0: "338" } window 100000,0
 9100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+9119.0 "--sync--" StartsUsing { id: "A1C3", source: "Lion Rampant" } window 20,5
+9125.0 "Fearsome Glint" Ability { id: "A1C3", source: "Lion Rampant" }
+
+# Beacon Tutorial
+9135.2 "Augmentation of Beacons" Ability { id: "A1B9", source: "Lion Rampant" }
+9153.0 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
+9166.0 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
+9170.6 "Fearsome Glint" Ability { id: "A1C3", source: "Lion Rampant" }
+9178.7 "Shockwave (cast)" Ability { id: "A1C4", source: "Lion Rampant" }
+9179.6 "Shockwave 1" #Ability { id: "A1C6", source: "Lion Rampant" }
+9180.8 "Shockwave 2" #Ability { id: "A1C6", source: "Lion Rampant" }
+9181.9 "Shockwave 3" #Ability { id: "A1C6", source: "Lion Rampant" }
+9183.0 "Shockwave 4" #Ability { id: "A1C6", source: "Lion Rampant" }
+
+# Loop Begins
+# NOTE: Shockwave is 13.3s before on loops, 7.3s after tutorial
+9187.3 label "oc-on-the-hunt-loop"
+9190.3 "Augmentation of Roundels" Ability { id: "A1BC", source: "Lion Rampant" }
+9196.4 "Augmentation of Stones" Ability { id: "A1BD", source: "Lion Rampant" }
+9202.5 "Augmentation of Beacons" Ability { id: "A1B9", source: "Lion Rampant" }
+9211.6 "Falling Rock (cast)" Ability { id: "A1C1", source: "Lion Rampant" }
+9216.5 "Falling Rock 1" #Ability { id: "A1C2", source: "Lion Rampant" }
+9218.5 "Falling Rock 2" #Ability { id: "A1C2", source: "Lion Rampant" }
+9220.5 "Falling Rock 3" #Ability { id: "A1C2", source: "Lion Rampant" }
+9223.2 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
+9225.9 "Flatten x4 (No Crystal)" Ability { id: "A1C0", source: "Ochre Stone" }
+9225.9 "Flatten x5 (Crystal)" #Ability { id: "A1BE", source: "Ochre Stone" }
+9225.9 "Decompress x5" #Ability { id: "A1BF", source: "Ochre Stone" }
+
+# NOTE: There are two patterns here, and syncing on damage is iffy (14.1s to 17.1s from A1B9)
+# TODO: Logline for the enemy headmarkers or similar to know which is first ahead of ability?
+9236.0 "Augmentation of Beacons" Ability { id: "A1B9", source: "Lion Rampant" }
+9248.3 "--Aetherial Ray x4?--" Ability { id: "A1BA", source: "Lion Rampant" } window 2,5 jump "oc-on-the-hunt-p1-ray"
+9248.3 "--Bright Pulse x4?--" Ability { id: "A1BB", source: "Lion Rampant" } window 2,5 jump "oc-on-the-hunt-p1-pulse"
+9251.3 "Bright Pulse x4/Aetherial Ray x4?" #Ability { id: ["A1BB", "A1BA"], source: "Lion Rampant" }
+9261.2 "Aetherial Ray x4/Bright Pulse x4?" #Ability { id: ["A1BA", "A1BB"], source: "Lion Rampant" }
+9264.2 "Bright Pulse x4/Aetherial Ray x4?" #Ability { id: ["A1BB", "A1BA"], source: "Lion Rampant" }
+9270.5 "Fearsome Glint" #Ability { id: "A1C3", source: "Lion Rampant" }
+9278.6 "Shockwave (cast)" #Ability { id: "A1C4", source: "Lion Rampant" }
+9279.5 "Shockwave 1" #Ability { id: "A1C6", source: "Lion Rampant" }
+9280.6 "Shockwave 2" #Ability { id: "A1C6", source: "Lion Rampant" }
+9281.7 "Shockwave 3" #Ability { id: "A1C6", source: "Lion Rampant" }
+9282.8 "Shockwave 4" #Ability { id: "A1C6", source: "Lion Rampant" }
+
+# Aetherial Ray First
+9348.3 label "oc-on-the-hunt-p1-ray"
+9351.3 "Bright Pulse x4" Ability { id: "A1BB", source: "Lion Rampant" }
+9361.2 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
+9364.2 "Bright Pulse x4" Ability { id: "A1BB", source: "Lion Rampant" }
+9370.5 "Fearsome Glint" Ability { id: "A1C3", source: "Lion Rampant" }
+9378.6 "Shockwave (cast)" Ability { id: "A1C4", source: "Lion Rampant" }
+9379.5 "Shockwave 1" #Ability { id: "A1C6", source: "Lion Rampant" }
+9380.6 "Shockwave 2" #Ability { id: "A1C6", source: "Lion Rampant" }
+9381.7 "Shockwave 3" #Ability { id: "A1C6", source: "Lion Rampant" }
+9382.8 "Shockwave 4" #Ability { id: "A1C6", source: "Lion Rampant" }
+9393.1 "--sync--" StartsUsing { id: "A1BC", source: "Lion Rampant" } forcejump "oc-on-the-hunt-loop"
+9396.1 "Augmentation of Roundels" #Ability { id: "A1BC", source: "Lion Rampant" }
+9402.2 "Augmentation of Stones" #Ability { id: "A1BD", source: "Lion Rampant" }
+9408.3 "Augmentation of Beacons" #Ability { id: "A1B9", source: "Lion Rampant" }
+9417.4 "Falling Rock (cast)" #Ability { id: "A1C1", source: "Lion Rampant" }
+9422.3 "Falling Rock 1" #Ability { id: "A1C2", source: "Lion Rampant" }
+9424.3 "Falling Rock 2" #Ability { id: "A1C2", source: "Lion Rampant" }
+9426.3 "Falling Rock 3" #Ability { id: "A1C2", source: "Lion Rampant" }
+9429.0 "Aetherial Ray x4" #Ability { id: "A1BA", source: "Lion Rampant" }
+
+# Bright Pulse First
+9553.0 label "oc-on-the-hunt-p1-pulse"
+9556.0 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
+9568.9 "Bright Pulse x4" Ability { id: "A1BB", source: "Lion Rampant" }
+9571.9 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
+9578.3 "Fearsome Glint" Ability { id: "A1C3", source: "Lion Rampant" }
+9586.4 "Shockwave (cast)" Ability { id: "A1C4", source: "Lion Rampant" }
+9587.3 "Shockwave 1" #Ability { id: "A1C6", source: "Lion Rampant" }
+9588.4 "Shockwave 2" #Ability { id: "A1C6", source: "Lion Rampant" }
+9589.5 "Shockwave 3" #Ability { id: "A1C6", source: "Lion Rampant" }
+9590.6 "Shockwave 4" #Ability { id: "A1C6", source: "Lion Rampant" }
+9600.9 "--sync--" StartsUsing { id: "A1BC", source: "Lion Rampant" } forcejump "oc-on-the-hunt-loop"
+9603.9 "Augmentation of Roundels" #Ability { id: "A1BC", source: "Lion Rampant" }
+9610.0 "Augmentation of Stones" #Ability { id: "A1BD", source: "Lion Rampant" }
+9616.1 "Augmentation of Beacons" #Ability { id: "A1B9", source: "Lion Rampant" }
+9624.2 "Falling Rock (cast)" #Ability { id: "A1C1", source: "Lion Rampant" }
+9629.1 "Falling Rock 1" #Ability { id: "A1C2", source: "Lion Rampant" }
+9631.1 "Falling Rock 2" #Ability { id: "A1C2", source: "Lion Rampant" }
+9633.1 "Falling Rock 3" #Ability { id: "A1C2", source: "Lion Rampant" }
+9635.9 "Aetherial Ray x4" #Ability { id: "A1BA", source: "Lion Rampant" }
 
 ### Scourge Of The Mind
 # -it A0D5 A0CE A0D6 A125 A124
