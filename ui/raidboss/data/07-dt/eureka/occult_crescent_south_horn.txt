@@ -907,7 +907,7 @@ hideall "--sync--"
 11370.9 "Marine Mayhem" Ability { id: "A2D9", source: "Nymian Petalodus" }
 
 # Loop
-11379.0 "--sync--" StartsUsing Ability { id: "A2D6", source: "Nymian Petalodus" } forcejump "oc-shark-attack-loop"
+11379.0 "--sync--" StartsUsing { id: "A2D6", source: "Nymian Petalodus" } forcejump "oc-shark-attack-loop"
 11384.0 "Open Water" #Ability { id: "A2D6", source: "Nymian Petalodus" } duration 41.3
 11400.7 "Pelagic Cleaver 1" #Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
 11403.5 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
