@@ -813,8 +813,111 @@ hideall "--sync--"
 10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
 ### Shark Attack
+# -ii 368 A2DB A2D8 A88F A2D7 A3F2 A2FB A2FA
+# -p A2D9:11122.2
+# -it "Nymian Petalodus" "Petalodus Progeny"
+# IGNORED ABILITIES
+# 368 attack
+# A2DB Marine Mayhem (Damage)
+# A2D7 Open Water (Waters Spawn)
+# A2D8 Open Water (Non-damaging ability, it can target players but it is not the ability that does damage)
+# A88F Open Water (Damage)
+# A3F2 Pelagic Cleaver (Damage)
+# A2FB Tidal Guillotine (7.6s damaging cast from a water-based jump)
+# A2FA Tidal Guillotine (0.9s cast, Damage from a land-based jump)
+#
+# ALL ENCOUNTER ABILITIES
+# A2CC Dive
+# A2CD Tidal Guillotine (Boss jump from water to land, with A2FB damage)
+# A2CF Tidal Guillotine (Boss jump from land into water, with A2FA damage)
+# A88C Tidal Guillotine (shark jump from land to land, with A2FA damage)
+# A2CE Tidal Guillotine (red shark jumps from water to land, with A2FB damage)
+# A2D0 Tidal Guillotine (red shark jumps from land to water, with A2FA damage)
+# A2D3 --sync--
+# A2D5 Pelagic Cleaver
+# A2D6 Open Water (Boss self-cast, coinciding with A2D7)
+# A2D9 Marine Mayhem (AOE + 10s Bleed)
+# A2DD --sync--
+# A88D Hydrocleave
 11000.0 "--sync--" ActorControl { command: "80000014", data0: "32E" } window 100000,0
 11100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+11117.2 "--sync--" StartsUsing { id: "A2D9", source: "Nymian Petalodus" } window 20,5
+11122.2 "Marine Mayhem" Ability { id: "A2D9", source: "Nymian Petalodus" }
+11141.9 "Pelagic Cleaver 1" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11144.7 "--sync--" Ability { id: "A2DD", source: "Petalodus Progeny" }
+11145.1 "Pelagic Cleaver 2" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11147.9 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11148.2 "Pelagic Cleaver 3" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11151.0 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11151.3 "Pelagic Cleaver 4" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11154.2 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11154.5 "Pelagic Cleaver 5" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11157.3 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11157.6 "Pelagic Cleaver 6" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11160.5 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11160.8 "Pelagic Cleaver 7" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11163.6 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11163.9 "Pelagic Cleaver 8" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11166.7 "--sync--" Ability { id: "A2DD", source: "Petalodus Progeny" }
+11179.4 "Dive" Ability { id: "A2CC", source: "Nymian Petalodus" }
+11179.4 "--untargetable--"
+11183.4 "--sync--" Ability { id: "A2D3", source: "Petalodus Progeny" }
+11185.4 "--adds-targetable--"
+11194.0 "Tidal Guillotine 1 (resurface)" Ability { id: "A2CD", source: "Nymian Petalodus" } duration 1
+11196.7 "Tidal Guillotine 2 (across land)" Ability { id: "A88C", source: "Nymian Petalodus" } duration 0.8
+11199.5 "Tidal Guillotine 3 (submerge)" Ability { id: "A2CF", source: "Nymian Petalodus" } duration 0.8
+11211.4 "Tidal Guillotine 1 (resurface)" Ability { id: "A2CD", source: "Nymian Petalodus" } duration 1
+11214.1 "Tidal Guillotine 2 (across land)" Ability { id: "A88C", source: "Nymian Petalodus" } duration 0.8
+11216.9 "Tidal Guillotine 3 (submerge)" Ability { id: "A2CF", source: "Nymian Petalodus" } duration 0.8
+11228.8 "Tidal Guillotine (resurface)" Ability { id: "A2CD", source: "Nymian Petalodus" } duration 1
+11230.9 "--targetable--"
+
+# Loop Begins
+11237.0 label "oc-shark-attack-loop"
+11242.0 "Open Water" Ability { id: "A2D6", source: "Nymian Petalodus" } duration 41.3
+11258.8 "Pelagic Cleaver 1" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11261.6 "--sync--" Ability { id: "A2DD", source: "Petalodus Progeny" }
+11262.0 "Pelagic Cleaver 2" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11264.8 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11265.1 "Pelagic Cleaver 3" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11267.9 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11268.2 "Pelagic Cleaver 4" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11271.0 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11271.3 "Pelagic Cleaver 5" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11274.1 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11274.4 "Pelagic Cleaver 6" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11277.2 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11277.5 "Pelagic Cleaver 7" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11280.3 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11280.6 "Pelagic Cleaver 8" Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11283.5 "--sync--" Ability { id: "A2DD", source: "Petalodus Progeny" }
+11293.8 "Hydrocleave" Ability { id: "A88D", source: "Nymian Petalodus" }
+11312.1 "Tidal Guillotine 1 (resurface)" Ability { id: "A2CE", source: "Petalodus Progeny" } duration 1
+11314.8 "Tidal Guillotine 2 (across land)" Ability { id: "A88C", source: "Petalodus Progeny" } duration 0.8
+11317.6 "Tidal Guillotine 3 (submerge)" Ability { id: "A2D0", source: "Petalodus Progeny" } duration 0.8
+11321.4 "Hydrocleave" Ability { id: "A88D", source: "Nymian Petalodus" }
+11329.5 "Tidal Guillotine 1 (resurface)" Ability { id: "A2CE", source: "Petalodus Progeny" } duration 1
+11332.2 "Tidal Guillotine 2 (across land)" Ability { id: "A88C", source: "Petalodus Progeny" } duration 0.8
+11334.9 "Tidal Guillotine 3 (submerge)" Ability { id: "A2D0", source: "Petalodus Progeny" } duration 0.8
+11340.0 "Hydrocleave" Ability { id: "A88D", source: "Nymian Petalodus" }
+11346.9 "Tidal Guillotine 1 (resurface)" Ability { id: "A2CE", source: "Petalodus Progeny" } duration 1
+11349.6 "Tidal Guillotine 2 (across land)" Ability { id: "A88C", source: "Petalodus Progeny" } duration 0.8
+11352.4 "Tidal Guillotine 3 (submerge)" Ability { id: "A2D0", source: "Petalodus Progeny" } duration 0.8
+11358.8 "Hydrocleave" Ability { id: "A88D", source: "Nymian Petalodus" }
+11370.9 "Marine Mayhem" Ability { id: "A2D9", source: "Nymian Petalodus" }
+
+# Loop
+11379.0 "--sync--" StartsUsing Ability { id: "A2D6", source: "Nymian Petalodus" } forcejump "oc-shark-attack-loop"
+11384.0 "Open Water" #Ability { id: "A2D6", source: "Nymian Petalodus" } duration 41.3
+11400.7 "Pelagic Cleaver 1" #Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11403.5 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11403.9 "Pelagic Cleaver 2" #Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11406.7 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11407.0 "Pelagic Cleaver 3" #Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11409.9 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11410.2 "Pelagic Cleaver 4" #Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
+11413.0 "--sync--" #Ability { id: "A2DD", source: "Petalodus Progeny" }
+11413.3 "Pelagic Cleaver 5" #Ability { id: "A2D5", source: "Petalodus Progeny" } duration 0.8
 
 ### The Black Regiment
 # -ii A818 A8FC A1B2 A0CD A0CB
