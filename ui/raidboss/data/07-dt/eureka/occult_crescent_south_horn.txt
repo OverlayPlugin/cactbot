@@ -850,7 +850,7 @@ hideall "--sync--"
 8410.8 "Rush" #Ability { id: "A0DA", source: "Neo Garula" }
 8415.0 "Heave" Ability { id: "A0DC", source: "Neo Garula" }
 8426.6 "Squash" Ability { id: "A0E5", source: "Neo Garula" }
-8441.3 "--middle--"
+8436.3 "--middle--"
 8441.3 "Lightning Charge" Ability { id: "A0E1", source: "Neo Garula" } window 5,5
 8443.5 "--sync--" StartsUsing { id: "A0DF", source: "Neo Garula" } jump "oc-noise-complaint-crossing2-cards"
 8443.6 "--sync--" StartsUsing { id: "A0DE", source: "Neo Garula" } forcejump "oc-noise-complaint-crossing2-intercards"
@@ -923,7 +923,7 @@ hideall "--sync--"
 8945.1 "Rush" #Ability { id: "A0DA", source: "Neo Garula" }
 8949.3 "Heave" #Ability { id: "A0DC", source: "Neo Garula" }
 8960.7 "Squash" #Ability { id: "A0E5", source: "Neo Garula" }
-8974.6 "--middle--"
+8969.6 "--middle--"
 8974.6 "Lightning Charge" #Ability { id: "A0E1", source: "Neo Garula" }
 8980.3 "Lightning Crossing (Intercards)" #Ability { id: "A0DE", source: "Neo Garula" }
 8980.5 "Epicenter Shock 1" #Ability { id: "A0E2", source: "Neo Garula" }
