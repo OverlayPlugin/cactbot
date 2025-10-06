@@ -85,9 +85,132 @@ hideall "--sync--"
 1416.3 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
 1444.5 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" } window 40,40 forcejump "sunderseal-loop"
 
-### Company Of Stone
+### Company of Stone
+# -ii A3AD A640 A35D A35E A890
+# -p A359:2250.3 A35F:2434.5 A363:2611.4
+# -it "Megaloknight" "Occult Knight"
+# IGNORED ABILITIES
+# A3AD --sync--
+# A640 --sync--
+# A35D Knuckle Down (Damage)
+# A35E Spinning Siege (clockwise?, damage)
+# A890 Dualfist Flurry (damage)
+#
+# ALL ENCOUNTER ABILITIES
+# A359 Line of Fire
+# A35A Line of Fire
+# A35B Knuckle Crusher
+# A35C Knuckle Down (3.7s self-cast)
+# A35F Spinning Siege (counterclockwise?, damage)
+# A360 Spinning Siege (subsequent casts, damage)
+# A361 Cage of Fire
+# A362 Blast Knuckles
+# A363 Moatmaker
+# A364 Dualfist Flurry (self-cast)
+# A365 Dualfist Flurry (self-cast)
+# A36A Spirit Sling
+# A3A3 Blast Knuckles (damage, knockback)
+# A366 Barefised Death (Enrage)
+# A367 Barefisted Death (Enrage, instant self-cast, occurs ~2.1s after A366)
+# TODO: Determine clockwise/counterclockwise of A35F/A35E
 2000.0 "--sync--" ActorControl { command: "80000014", data0: "343" } window 100000,0
 2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
+# Wave 1 - 12 Knights
+# NOTE: Nothing to sync to here but auto attacks and A640
+
+# Downtime 1
+# NOTE: This starts once all knights in Wave 1 have been killed
+2245.3 "--sync--" StartsUsing { id: "A359", source: "Occult Knight" } window 250,2
+2250.3 "Line of Fire 1 (middle)" Ability { id: "A359", source: "Occult Knight" }
+2252.3 "Line of Fire 2 (H Pattern)" #Ability { id: "A35A", source: "Occult Knight" } # This coincides with another A359
+2254.3 "Line of Fire 3 (inner)" #Ability { id: "A35A", source: "Occult Knight" }
+2256.3 "Line of Fire 4 (outer)" #Ability { id: "A35A", source: "Occult Knight" }
+2267.3 "Knuckle Crusher 1 (middle)" #Ability { id: "A35B", source: "Occult Knight" }
+2268.3 "Knuckle Crusher 2" #Ability { id: "A35B", source: "Occult Knight" }
+2269.3 "Knuckle Crusher 3" #Ability { id: "A35B", source: "Occult Knight" }
+2270.3 "Knuckle Crusher 4" #Ability { id: "A35B", source: "Occult Knight" }
+2271.3 "Knuckle Crusher 5" #Ability { id: "A35B", source: "Occult Knight" }
+2271.3 "--adds-targetable--"
+
+# Wave 2 - 12 Knights + Knuckle Down AoEs
+2273.3 "--adds-targetable--"
+2276.3 "Knuckle Down 1" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2278.0 "Knuckle Down 2" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2279.6 "Knuckle Down 3" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2281.2 "Knuckle Down 4" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2282.9 "--adds-targetable--"
+
+# Downtime 2
+# NOTE: This starts once all knights in Wave 2 have been killed
+2426.5 "--sync--" StartsUsing { id: "A35F", source: "Occult Knight" } window 440,100
+2434.5 "Spinning Siege 1" Ability { id: "A35F", source: "Occult Knight" }
+2436.2 "Spinning Siege 2" #Ability { id: "A360", source: "Occult Knight" }
+2437.9 "Spinning Siege 3" #Ability { id: "A360", source: "Occult Knight" }
+2439.6 "Spinning Siege 4" #Ability { id: "A360", source: "Occult Knight" }
+2441.3 "Spinning Siege 5" #Ability { id: "A360", source: "Occult Knight" }
+2443.0 "Spinning Siege 6" #Ability { id: "A360", source: "Occult Knight" }
+2449.4 "Blast Knuckles" Ability { id: "A362", source: "Occult Knight" }
+2450.4 "--knockback--" Ability { id: "A3A3", source: "Occult Knight" }
+2451.4 "Cage of Fire 1" #Ability { id: "A361", source: "Occult Knight" }
+2453.4 "Cage of Fire 2" #Ability { id: "A361", source: "Occult Knight" }
+
+# Wave 3 - 12 Knights + Knuckle Down AoEs
+2455.4 "--adds-targetable--"
+2456.4 "Knuckle Down 1" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2458.1 "Knuckle Down 2" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2459.8 "Knuckle Down 3" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2461.5 "Knuckle Down 4" #Ability { id: "A35C", source: "Occult Knight" } duration 0.8
+2463.2 "--adds-targetable--"
+
+# Downtime 3
+# NOTE: This starts once all knights in Wave 3 have been killed
+2608.4 "--sync--" StartsUsing { id: "A363", source: "Occult Knight" } window 620,4
+2611.4 "Moatmaker 1" Ability { id: "A363", source: "Occult Knight" }
+2613.4 "Dualfist Flurry 1" Ability { id: "A364", source: "Occult Knight" } duration 0.9
+2614.5 "Dualfist Flurry 2" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2615.5 "Dualfist Flurry 3" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2616.5 "Moatmaker 2" #Ability { id: "A363", source: "Occult Knight" }
+2616.5 "Dualfist Flurry 4" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2617.4 "Dualfist Flurry 1" Ability { id: "A364", source: "Occult Knight" } duration 0.9
+2617.5 "Dualfist Flurry 5" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2618.4 "Dualfist Flurry 2" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2618.4 "Dualfist Flurry 6" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2619.3 "Dualfist Flurry 3" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2620.4 "Dualfist Flurry 4" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2621.3 "Dualfist Flurry 5" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2621.3 "Moatmaker 3" #Ability { id: "A363", source: "Occult Knight" }
+2622.3 "Dualfist Flurry 6" #Ability { id: "A365", source: "Occult Knight" } duration 0.9
+2624.3 "--adds-targetable--"
+2626.2 "Knuckle Down" #Ability { id: "A35C", source: "Occult Knight" }
+2626.5 "Moatmaker 4" #Ability { id: "A363", source: "Occult Knight" }
+
+# Wave 4 - 12 Knights + Knuckle Down AoEs
+2626.9 "Knuckle Down 1" #Ability { id: "A35D", source: "Occult Knight" } duration 0.8
+2628.5 "Knuckle Down 2" #Ability { id: "A35D", source: "Occult Knight" } duration 0.8
+2628.5 "--adds-targetable--"
+2630.1 "Knuckle Down 3" #Ability { id: "A35D", source: "Occult Knight" } duration 0.8
+2631.7 "Knuckle Down 4" #Ability { id: "A35D", source: "Occult Knight" } duration 0.8
+2632.5 "--adds-targetable--"
+
+# Megaloknight
+# NOTE: This starts once all knights in Wave 4 have been killed
+2783.2 "--sync--" AddedCombatant { name: "Megaloknight" } window 800,100
+2790.6 "--adds-targetable--"
+2790.5 "--sync--" StartsUsing { id: "A366", source: "Megaloknight" }
+2799.0 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+2809.6 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+2820.3 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+2830.9 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+2841.5 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+2852.1 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+2862.7 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+2873.3 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
+
+# Enrage
+# TODO: There is probably a loop here
+2880.5 "Barefisted Death (Enrage) Ability { id: "A366", source: "Megaloknight" }
+2882.6 "Barefisted Death (Enrage) Ability { id: "A367", source: "Megaloknight" }
+2883.9 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
 
 ### Crawling Death
 # ALL ENCOUNTER ABILITIES
