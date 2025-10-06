@@ -208,8 +208,8 @@ hideall "--sync--"
 
 # Enrage
 # TODO: There is probably a loop here
-2880.5 "Barefisted Death (Enrage) Ability { id: "A366", source: "Megaloknight" }
-2882.6 "Barefisted Death (Enrage) Ability { id: "A367", source: "Megaloknight" }
+2880.5 "Barefisted Death (Enrage)" Ability { id: "A366", source: "Megaloknight" }
+2882.6 "Barefisted Death (Enrage)" Ability { id: "A367", source: "Megaloknight" }
 2883.9 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
 
 ### Crawling Death
