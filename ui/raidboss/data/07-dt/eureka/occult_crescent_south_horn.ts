@@ -193,6 +193,8 @@ const triggerSet: TriggerSet<Data> = {
         'Vertical Crosshatch/Horizontal Crosshatch': 'Vertical/Horizontal Crosshatch',
         'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation':
           'Penny Inflation (knockback)',
+        'Shades\' Nest/Shade\'s Crossing': 'Shades\' Nest/Crossing',
+        'Shades\' Crossing/Shades\' Nest': 'Shades\' Crossing/Nest',
       },
     },
     {
