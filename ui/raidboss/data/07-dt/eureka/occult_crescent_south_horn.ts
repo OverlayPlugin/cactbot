@@ -110,6 +110,7 @@ const headMarkerData = {
   // Mysterious Mindflayer tankbuster from Void Thunder III in Scourge of the Mind CE
   // Crescent Inkstain tankbuster from Amorphic Flail
   // Crescent Karlabos tankbuster from Wild Claw
+  // Crescent Fan tankbuster from Tight Tornado
   'marbleDragonTankbuster': '00DA',
   // Marble Dragon red pinwheel markers from Wicked Water
   'marbleDragonWickedWater': '0017',
