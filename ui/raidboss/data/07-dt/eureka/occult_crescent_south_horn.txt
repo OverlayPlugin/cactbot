@@ -93,7 +93,7 @@ hideall "--sync--"
 # A3AD --sync--
 # A640 --sync--
 # A35D Knuckle Down (Damage)
-# A35E Spinning Siege (clockwise?, damage)
+# A35E Spinning Siege (clockwise, damage)
 # A890 Dualfist Flurry (damage)
 #
 # ALL ENCOUNTER ABILITIES
@@ -101,7 +101,7 @@ hideall "--sync--"
 # A35A Line of Fire
 # A35B Knuckle Crusher
 # A35C Knuckle Down (3.7s self-cast)
-# A35F Spinning Siege (counterclockwise?, damage)
+# A35F Spinning Siege (counterclockwise, damage)
 # A360 Spinning Siege (subsequent casts, damage)
 # A361 Cage of Fire
 # A362 Blast Knuckles
@@ -112,7 +112,6 @@ hideall "--sync--"
 # A3A3 Blast Knuckles (damage, knockback)
 # A366 Barefised Death (Enrage)
 # A367 Barefisted Death (Enrage, instant self-cast, occurs ~2.1s after A366)
-# TODO: Determine clockwise/counterclockwise of A35F/A35E
 2000.0 "--sync--" ActorControl { command: "80000014", data0: "343" } window 100000,0
 2100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 # Wave 1 - 12 Knights
@@ -317,7 +316,6 @@ hideall "--sync--"
 # A915 Twopenny Inflation
 # A96C Hoard Wealth
 # A9BC What're You Buying?
-# TODO: Adjust timing of duration for forced move?
 4000.0 "--sync--" ActorControl { command: "80000014", data0: "32B" } window 100000,0
 4100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 4128.8 "--sync--" StartsUsing { id: "A22E", source: "Trade Tortoise" } window 30,5
@@ -1062,10 +1060,9 @@ hideall "--sync--"
 # A123 Blizzard Trap
 # A126 Surprise Attack (Jesting Jackanapes line aoe)
 # A127 --sync-- Tentacles spawn
-# A128 Wallop (Small?)
-# A129 Wallop (Big?)
+# A128 Wallop (Small)
+# A129 Wallop (Big)
 # A162 Wallop
-# TODO: Determine which Wallop is Big, which is Small
 # TODO: Retime forced move once debuff is logged
 10000.0 "--sync--" ActorControl { command: "80000014", data0: "320" } window 100000,0
 10100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
