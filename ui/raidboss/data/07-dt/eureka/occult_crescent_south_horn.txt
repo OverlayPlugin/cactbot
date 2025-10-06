@@ -195,8 +195,8 @@ hideall "--sync--"
 # Megaloknight
 # NOTE: This starts once all knights in Wave 4 have been killed
 2783.2 "--sync--" AddedCombatant { name: "Megaloknight" } window 800,100
-2790.6 "--adds-targetable--"
 2790.5 "--sync--" StartsUsing { id: "A366", source: "Megaloknight" }
+2790.6 "--adds-targetable--"
 2799.0 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
 2809.6 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
 2820.3 "Spirit Sling" Ability { id: "A36A", source: "Occult Knight" }
