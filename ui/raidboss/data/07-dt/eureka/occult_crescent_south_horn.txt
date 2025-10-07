@@ -15,11 +15,13 @@ hideall "--sync--"
 # into the critical encounter happen much later.
 
 ### Calamity Bound
+# -ii A179 A18C A191 A193 A161
+# -p A178:1122
+# -it "Cloister Demon" "Cloister Torch"
 # ALL ENCOUNTER ABILITIES
-# 9087 Exodus
 # A178 Sunderseal Roar
 # A179 Sunderseal Roar
-# A17A --sync--
+# A17A --sync-- (Sealing boss animation)
 # A18A Great Ball of Fire
 # A18B Blazing Flare
 # A18C Flare
@@ -30,16 +32,16 @@ hideall "--sync--"
 # A191 Gigaflare
 # A192 Gigaflare
 # A193 Fell Forces
+# A161 Self-destruct
+# A187 Void Death III (Enrage cast when boss is unsealed)
+# A17D Seal Asunder (adds Unknown_808 buff to boss, if boss isn't sealed within 6.1s it will cast A187 enrage and wipe the players, buff is removed within 21.1s on seal)
 #
 # IGNORED ABILITIES
-# 9087 Exodus - This doesn't seem to do anything/be anything and doesn't always happen
 # A179 Sunderseal Roar - castbar or vfx
 # A18C Flare - rolled into duration for Blazing Flare
 # A191 Gigaflare - castbar or vfx
 # A193 Fell Forces - Autoattack
-#
-# TODO
-# * Verify loop
+# A161 Self-destruct (Cloister Torch reaches boss)
 1000.0 "--sync--" ActorControl { command: "80000014", data0: "32F" } window 100000,0
 1100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
@@ -47,43 +49,94 @@ hideall "--sync--"
 # Backup sync on first castbar
 1117.3 "--sync--" StartsUsing { id: "A178", source: "Cloister Demon" } window 117.3,2
 1122.0 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
-1124.2 "Seal Asunder" StartsUsing { id: "A17B", source: "Cloister Demon" } duration 32.7
+1124.2 "Seal Asunder" StartsUsing { id: "A17B", source: "Cloister Demon" } duration 33
 1137.2 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
 1140.8 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
 1144.4 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
 1147.8 "Void Thunder III" Ability { id: "A18E", source: "Cloister Demon" }
-1156.9 "--sync--" Ability { id: "A17A", source: "Cloister Demon" } window 32.7,10
-1170.6 "Great Ball of Fire" Ability { id: "A18A", source: "Cloister Demon" }
-1182.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
-1187.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
-1195.7 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
-1205.0 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
+1157.2 "--reseal?--" Ability { id: "A17A", source: "Cloister Demon" } window 33,2 jump "oc-calamity-bound-seal-1"
+1157.2 "Seal Asunder?" Ability { id: "A17B", source: "Cloister Demon" } jump "oc-calamity-bound-enrage-1"
+1170.6 "Great Ball of Fire?" #Ability { id: "A18A", source: "Cloister Demon" }
+1182.3 "Explosion?" #Ability { id: "A18D", source: "Ball of Fire" }
+1187.3 "Explosion?" #Ability { id: "A18D", source: "Ball of Fire" }
+1195.7 "Gigaflare?" #Ability { id: "A192", source: "Cloister Demon" }
+1105.0 "Tidal Breath?" #Ability { id: "A190", source: "Cloister Demon" }
+
+# Boss has been resealed
+1256.9 label "oc-calamity-bound-seal-1"
+1270.6 "Great Ball of Fire" Ability { id: "A18A", source: "Cloister Demon" }
+1282.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1287.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1295.7 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
+1305.0 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
 
 # Sunderseal 2
-1222.1 label "sunderseal-loop"
-1222.1 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
-1224.3 "Seal Asunder" StartsUsing { id: "A17C", source: "Cloister Demon" } duration 32.7
-1234.2 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
-1237.8 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
-1257.0 "--sync--" Ability { id: "A17A", source: "Cloister Demon" } window 32.7,10
-1268.7 "Blazing Flare" Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
-1280.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
-1292.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
-1297.5 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
-1309.5 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
+1322.1 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
+1324.3 "Seal Asunder" StartsUsing { id: "A17C", source: "Cloister Demon" } duration 40
+1334.2 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1337.8 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1364.3 "--reseal?--" Ability { id: "A17A", source: "Cloister Demon" } window 40,2 jump "oc-calamity-bound-seal-2"
+1364.3 "Seal Asunder?" Ability { id: "A17C", source: "Cloister Demon" } jump "oc-calamity-bound-enrage-2"
+1368.7 "Blazing Flare?" #Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
+1380.3 "Explosion?" #Ability { id: "A18D", source: "Ball of Fire" }
+1392.3 "Explosion?" #Ability { id: "A18D", source: "Ball of Fire" }
+1397.5 "Tidal Breath?" #Ability { id: "A190", source: "Cloister Demon" }
+1409.5 "Gigaflare?" #Ability { id: "A192", source: "Cloister Demon" }
+
+# Boss has been resealed
+1457.0 label "oc-calamity-bound-seal-2"
+1468.7 "Blazing Flare" Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
+1480.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1492.3 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1497.5 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
+1509.5 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
 
 # Sunderseal 3
-1325.7 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
-1327.9 "Seal Asunder" StartsUsing { id: "A17D", source: "Cloister Demon" } duration 32.7
-1342.9 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
-1346.5 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
-1360.6 "--sync--" Ability { id: "A17A", source: "Cloister Demon" } window 32.7,10
-1376.2 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
-1387.5 "Blazing Flare" Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
-1399.2 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
-1411.2 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
-1416.3 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
-1444.5 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" } window 40,40 forcejump "sunderseal-loop"
+1520.7 label "oc-calamity-bound-loop"
+1525.7 "Sunderseal Roar" Ability { id: "A178", source: "Cloister Demon" }
+1527.9 "Seal Asunder" StartsUsing { id: "A17D", source: "Cloister Demon" } duration 46
+1533.9 "--adds-targetable--"
+1542.9 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1546.5 "Karmic Drain" Ability { id: "A18F", source: "Cloister Demon" }
+1557.9 "--adds-targetable--"
+1573.9 "--reseal?--" Ability { id: "A17A", source: "Cloister Demon" } window 46,2 jump "oc-calamity-bound-seal-3"
+1573.9 "Seal Asunder?" Ability { id: "A17D", source: "Cloister Demon" } jump "oc-calamity-bound-enrage-3"
+1576.2 "Gigaflare" #Ability { id: "A192", source: "Cloister Demon" }
+1587.5 "Blazing Flare" #Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
+1599.2 "Explosion" #Ability { id: "A18D", source: "Ball of Fire" }
+1611.2 "Explosion" #Ability { id: "A18D", source: "Ball of Fire" }
+1616.3 "Tidal Breath" #Ability { id: "A190", source: "Cloister Demon" }
+
+# Boss has been resealed
+1660.6 label "oc-calamity-bound-seal-3"
+1676.2 "Gigaflare" Ability { id: "A192", source: "Cloister Demon" }
+1687.5 "Blazing Flare" Ability { id: "A18B", source: "Cloister Demon" } duration 28.6
+1699.2 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1711.2 "Explosion" Ability { id: "A18D", source: "Ball of Fire" }
+1716.3 "Tidal Breath" Ability { id: "A190", source: "Cloister Demon" }
+1739.5 "--sync--" StartsUsing { id: "A178", source: "Cloister Demon" } forcejump "oc-calamity-bound-loop"
+1744.5 "Sunderseal Roar" #Ability { id: "A178", source: "Cloister Demon" }
+1761.7 "Karmic Drain" #Ability { id: "A18F", source: "Cloister Demon" }
+1765.3 "Karmic Drain" #Ability { id: "A18F", source: "Cloister Demon" }
+1776.8 "Void Thunder III" #Ability { id: "A18E", source: "Cloister Demon" }
+1784.0 "Void Thunder III" #Ability { id: "A18E", source: "Cloister Demon" }
+1787.6 "Void Thunder III" #Ability { id: "A18E", source: "Cloister Demon" }
+1791.2 "Void Thunder III" #Ability { id: "A18E", source: "Cloister Demon" }
+
+# Enrage Sequence A17B
+1794.6 label "oc-calamity-bound-enrage-1"
+1803.5 "--reseal?--" Ability { id: "A17A", source: "Cloister Demon" } window 9,2 jump "oc-calamity-bound-seal-1"
+1803.6 "Void Death IV (Enrage)" Ability { id: "A187", source: "Cloister Demon" }
+
+# Enrage Sequence A17C
+1854.6 label "oc-calamity-bound-enrage-2"
+1863.5 "--reseal?--" Ability { id: "A17A", source: "Cloister Demon" } window 9,2 jump "oc-calamity-bound-seal-2"
+1863.6 "Void Death IV (Enrage)" Ability { id: "A187", source: "Cloister Demon" }
+
+# Enrage Sequence A17D
+1954.6 label "oc-calamity-bound-enrage-3"
+1963.5 "--reseal?--" Ability { id: "A17A", source: "Cloister Demon" } window 9,2 jump "oc-calamity-bound-seal-3"
+1963.6 "Void Death IV (Enrage)" Ability { id: "A187", source: "Cloister Demon" }
 
 ### Company of Stone
 # -ii A3AD A640 A35D A35E A890
