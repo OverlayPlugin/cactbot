@@ -60,7 +60,7 @@ hideall "--sync--"
 1182.3 "Explosion?" #Ability { id: "A18D", source: "Ball of Fire" }
 1187.3 "Explosion?" #Ability { id: "A18D", source: "Ball of Fire" }
 1195.7 "Gigaflare?" #Ability { id: "A192", source: "Cloister Demon" }
-1105.0 "Tidal Breath?" #Ability { id: "A190", source: "Cloister Demon" }
+1205.0 "Tidal Breath?" #Ability { id: "A190", source: "Cloister Demon" }
 
 # Boss has been resealed
 1256.9 label "oc-calamity-bound-seal-1"
