@@ -1,3 +1,4 @@
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -73,7 +74,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Pomanders ----------------
     {
       id: 'PotD General Pomander Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/7222?pretty=true
+      // duplicate pomander message: https://xivapi.com/LogMessage/7222?pretty=true
       // en: You return the pomander of ${pomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -111,12 +112,8 @@ const triggerSet: TriggerSet<Data> = {
             return output.duplicate!({ pomander: output.raising!() });
           case 16:
             return output.duplicate!({ pomander: output.resolution!() });
-          case 17:
-            return output.duplicate!({ pomander: output.frailty!() });
-          case 18:
-            return output.duplicate!({ pomander: output.concealment!() });
-          case 19:
-            return output.duplicate!({ pomander: output.petrification!() });
+          default:
+            return output.duplicate!({ pomander: output.unknown!() });
         }
       },
       outputStrings: {
@@ -257,30 +254,7 @@ const triggerSet: TriggerSet<Data> = {
           cn: '基路伯化',
           ko: '쿠리부 변신',
         },
-        frailty: {
-          en: 'Frailty',
-          de: 'Feindschwächung',
-          fr: 'Incapacité',
-          ja: '敵弱体',
-          cn: '弱化敌人',
-          ko: '적 약화',
-        },
-        concealment: {
-          en: 'Concealment',
-          de: 'Verschwindens',
-          fr: 'Invisibilité',
-          ja: 'バニシュ',
-          cn: '隐形',
-          ko: '배니시',
-        },
-        petrification: {
-          en: 'Petrification',
-          de: 'Feindversteinerung',
-          fr: 'Pétrification',
-          ja: '敵石化',
-          cn: '石化敌人',
-          ko: '적 석화',
-        },
+        unknown: Outputs.unknown,
       },
     },
     // ---------------- Floor Notifications ----------------

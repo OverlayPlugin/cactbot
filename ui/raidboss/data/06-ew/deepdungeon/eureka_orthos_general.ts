@@ -1,3 +1,4 @@
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -63,7 +64,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Protomanders and Demiclones ----------------
     {
       id: 'EO General Protomander Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/7222?pretty=true
+      // duplicate protomander message: https://xivapi.com/LogMessage/7222?pretty=true
       // en: You return the protomander of ${protomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -101,6 +102,8 @@ const triggerSet: TriggerSet<Data> = {
             return output.duplicate!({ protomander: output.intuition!() });
           case 35:
             return output.duplicate!({ protomander: output.raising!() });
+          default:
+            return output.duplicate!({ protomander: output.unknown!() });
         }
       },
       outputStrings: {
@@ -241,11 +244,12 @@ const triggerSet: TriggerSet<Data> = {
           cn: '重生',
           ko: '리레이즈',
         },
+        unknown: Outputs.unknown,
       },
     },
     {
       id: 'EO General Demiclone Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/10287?pretty=true
+      // duplicate demiclone message: https://xivapi.com/LogMessage/10287?pretty=true
       // en: You return the ${demiclone} demiclone to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '282F' },
@@ -257,6 +261,8 @@ const triggerSet: TriggerSet<Data> = {
             return output.duplicate!({ demiclone: output.doga!() });
           case 3:
             return output.duplicate!({ demiclone: output.onion!() });
+          default:
+            return output.duplicate!({ demiclone: output.unknown!() });
         }
       },
       outputStrings: {
@@ -293,6 +299,7 @@ const triggerSet: TriggerSet<Data> = {
           cn: '洋葱剑士',
           ko: '양파 기사',
         },
+        unknown: Outputs.unknown,
       },
     },
     // ---------------- Floor Notifications ----------------
