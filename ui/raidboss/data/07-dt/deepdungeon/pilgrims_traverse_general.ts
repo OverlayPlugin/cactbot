@@ -229,29 +229,40 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'PT General Incense Duplicate',
-      // duplicate incense message: https://v2.xivapi.com/api/sheet/LogMessage/10287 (new API)
+      // two different SystemLogMessage depending on which incense
+      // duplicate incense message 1: https://v2.xivapi.com/api/sheet/LogMessage/9208 (new API)
+      // duplicate incense message 2: https://v2.xivapi.com/api/sheet/LogMessage/10287 (new API)
       // en: You return the piece of ${incense} incense to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
-      netRegex: { id: '282F' },
+      netRegex: { id: ['23F8', '282F'] },
       infoText: (_data, matches, output) => {
-        switch (parseInt(matches.param1, 16)) {
-          case 4: // DeepDungeonDemiclone
-            return output.duplicate!({ incense: output.mazeroot!() });
-          case 5: // DeepDungeonDemiclone
-            return output.duplicate!({ incense: output.barkbalm!() });
-          case 6: // also 5, DeepDungeonMagicStone
-            return output.duplicate!({ incense: output.poisonfruit!() });
-          default:
-            return output.duplicate!({ incense: output.unknown!() });
+        const id = matches.id;
+        const param1 = parseInt(matches.param1, 16);
+
+        // incense items are in two different tables: DeepDungeonDemiclone and DeepDungeonMagicStone
+        // https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone (new API)
+        // https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone (new API)
+        if (id === '23F8' && param1 === 5) {
+          // incense is from DeepDungeonMagicStone
+          return output.duplicate!({ incense: output.poisonfruit!() });
         }
+
+        if (id === '282F') {
+          // incense is from DeepDungeonDemiclone
+          switch (param1) {
+            case 4:
+              return output.duplicate!({ incense: output.mazeroot!() });
+            case 5:
+              return output.duplicate!({ incense: output.barkbalm!() });
+          }
+        }
+
+        return output.duplicate!({ incense: output.unknown!() });
       },
       outputStrings: {
         duplicate: {
           en: '${incense} duplicate',
         },
-        // incense are in two different tables: DeepDungeonDemiclone and DeepDungeonMagicStone
-        // https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone (new API)
-        // https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone (new API)
         mazeroot: {
           en: 'Mazeroot',
         },
