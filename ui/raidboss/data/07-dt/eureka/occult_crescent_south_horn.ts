@@ -137,18 +137,13 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       run: (data, matches) => {
         data.phantomJob = matches.effectId;
-        const jobData = matches.data0;
+        const jobData = matches.data0?.padStart(4, '0');
 
         // Assuming this isn't possible given the filter on statuses
         if (jobData === undefined)
           return;
 
-        // Get Phantom Job Level
-        // Freelancer has a length 2 data0, whereas the others have length 3
-        // Remove first element in the data0 string for other jobs
-        data.phantomJobLevel = (data.phantomJob === phantomJobData.freelancer)
-          ? parseInt(jobData, 16)
-          : parseInt(jobData.slice(1), 16);
+        data.phantomJobLevel = parseInt(jobData.slice(2), 16);
       },
     },
     {
