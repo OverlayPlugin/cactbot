@@ -830,7 +830,7 @@ hideall "--sync--"
 50086.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
 50087.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
 50089.5 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p1+"
-50089.5 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } forcejump "oc-md-p1o"
+50089.5 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } jump "oc-md-p1o"
 50090.5 "Imitation Blizzard (circles/cross?)" #Ability { id: ["7602", "7614"], source: "Marble Dragon" }
 
 # Pattern 1 - cross first
@@ -840,7 +840,7 @@ hideall "--sync--"
 50190.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
 50194.1 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
 50194.4 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
-50197.7 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" } forcejump "oc-md-p1-end"
+50197.7 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" } jump "oc-md-p1-end"
 
 # Pattern 1 - circles first
 50289.5 label "oc-md-p1o"
@@ -910,7 +910,7 @@ hideall "--sync--"
 50492.5 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
 50493.7 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
 50496.3 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } jump "oc-md-p2o"
-50496.3 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } forcejump "oc-md-p2+"
+50496.3 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p2+"
 50497.3 "Imitation Blizzard (circles/crosses?)" #Ability { id: "7602", source: "Marble Dragon" }
 
 # Pattern 2 - Cross First
@@ -1002,7 +1002,7 @@ hideall "--sync--"
 60057.4 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 
 60059.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump "oc-magitaur-daggers-axe"
-60059.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-daggers-lance"
+60059.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } jump "oc-magitaur-daggers-lance"
 60059.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
 60061.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
 60063.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
@@ -1055,7 +1055,7 @@ hideall "--sync--"
 60336.2 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
 
 60339.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump "oc-magitaur-staff-axe"
-60339.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } forcejump "oc-magitaur-staff-lance"
+60339.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } jump "oc-magitaur-staff-lance"
 60344.6 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
 60344.6 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
 60350.6 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
@@ -1071,7 +1071,7 @@ hideall "--sync--"
 60444.6 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
 60450.6 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
 60453.6 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
-60461.8 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1 forcejump "oc-magitaur-staff-end"
+60461.8 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1 jump "oc-magitaur-staff-end"
 60461.8 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
 60468.0 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
 60472.0 "Unsealed Aura" #Ability { id: "A264", source: "Magitaur" } duration 1
