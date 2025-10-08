@@ -1202,7 +1202,7 @@ hideall "--sync--"
 # A2D5 Pelagic Cleaver
 # A2D6 Open Water (Boss self-cast, coinciding with A2D7)
 # A2D9 Marine Mayhem (AOE + 10s Bleed)
-# A2DD --sync--
+# A2DD --sync--  (Red sharks going under water, syncable, but could cause desyncs)
 # A88D Hydrocleave
 11000.0 "--sync--" ActorControl { command: "80000014", data0: "32E" } window 100000,0
 11100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
@@ -1736,15 +1736,10 @@ hideall "--sync--"
 16153.2 "--Tell 4--" #Ability { id: ["A19E", "A1A1"], source: "Hinkypunk" }
 16154.4 "Molt" #Ability { id: "A198", source: "Hinkypunk" }
 16155.4 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
+16155.4 "--untargetable--"
+16157.2 "--targetable--"
 16160.4 "Blowout" #Ability { id: "A1A2", source: "Hinkypunk" }
 16161.3 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
-16161.6 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
-16165.6 "Shades' Crossing/Shades' Nest?" #Ability { id: ["A1A0", "A19D"], source: "Hinkypunk" } duration 0.9
-16166.8 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
-16170.8 "Blowout" #Ability { id: "A1A2", source: "Hinkypunk" }
-16171.7 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
-16172.0 "--sync--" #Ability { id: "A19B", source: "Hinkypunk" }
-16176.0 "Shades' Nest/Shades' Crossing?" #Ability { id: ["A19D", "A1A0"], source: "Hinkypunk" } duration 0.9
 
 # Tutorial - Shades' Crossing First
 16245.1 label "oc-flame-of-dusk-tutorial-crossing"
@@ -1753,16 +1748,26 @@ hideall "--sync--"
 16253.2 "--Tell 4 (Shades' Nest)--" Ability { id: "A19E", source: "Hinkypunk" }
 16254.4 "Molt" Ability { id: "A198", source: "Hinkypunk" }
 16255.4 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16255.4 "--untargetable--"
+16257.2 "--targetable--"
 16260.4 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
 16261.3 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
 16261.6 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16261.6 "--untargetable--"
+16263.5 "--targetable--"
 16265.6 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
 16266.8 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16266.8 "--untargetable--"
+16268.7 "--targetable--"
 16270.8 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
 16271.7 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
 16272.0 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16272.0 "--untargetable--"
+16273.9 "--targetable--"
 16276.0 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
 16277.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16277.2 "--untargetable--"
+16279.1 "--targetable--"
 16281.6 "--sync--" StartsUsing { id: "A1A5", source: "Hinkypunk" } jump "oc-flame-of-dusk-loop"
 16286.6 "Lamplight" #Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
 16294.9 "Dread Dive" #Ability { id: "A1A4", source: "Hinkypunk" }
@@ -1780,23 +1785,26 @@ hideall "--sync--"
 16453.2 "--Tell 4 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
 16454.4 "Molt" Ability { id: "A198", source: "Hinkypunk" }
 16455.4 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16255.4 "--untargetable--"
+16257.2 "--targetable--"
 16460.4 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
 16461.3 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
 16461.6 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16461.6 "--untargetable--"
+16463.5 "--targetable--"
 16465.6 "Shades' Nest" Ability { id: "A19D", source: "Hinkypunk" } duration 0.9
 16466.8 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16466.8 "--untargetable--"
+16468.7 "--targetable--"
 16470.8 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
 16471.7 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
 16472.0 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16472.0 "--untargetable--"
+16473.9 "--targetable--"
 16476.0 "Shades' Crossing" Ability { id: "A1A0", source: "Hinkypunk" } duration 0.9
 16477.2 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
-
-# Loop Begins
-16481.6 label "oc-flame-of-dusk-loop"
-16486.6 "Lamplight" Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
-16494.9 "Dread Dive" Ability { id: "A1A4", source: "Hinkypunk" }
-16507.7 "Flock of Souls" Ability { id: "A19A", source: "Hinkypunk" }
-16508.7 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+16477.2 "--untargetable--"
+16479.1 "--targetable--"
 
 # There appear to be 6 possible patterns here, if anyone has a log of others this will need updating
 # Blowout => Shades' Nest => Boss Shades' Nest => Shades' Crossing => Blowout => Boss Shades' Crossing
