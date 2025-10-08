@@ -38,7 +38,6 @@ const ceIds: { [ce: string]: string } = {
 };
 
 // Used to filter the GainsEffect
-
 const phantomJobEffectIds = [
   '1092', // Freelancer
   '1106', // Knight
