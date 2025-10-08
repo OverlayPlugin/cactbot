@@ -38,6 +38,7 @@ const ceIds: { [ce: string]: string } = {
 };
 
 // Used to filter the GainsEffect
+
 const phantomJobEffectIds = [
   '1092', // Freelancer
   '1106', // Knight
@@ -55,6 +56,7 @@ const phantomJobEffectIds = [
 ];
 
 // Useful for matching on job name in condition trigger
+/*
 const phantomJobData = {
   'freelancer': '1092',
   'knight': '1106',
@@ -70,6 +72,7 @@ const phantomJobData = {
   'cannoneer': '110E',
   'chemist': '110F',
 } as const;
+*/
 
 const triggerSet: TriggerSet<Data> = {
   id: 'TheOccultCrescentSouthHorn',
