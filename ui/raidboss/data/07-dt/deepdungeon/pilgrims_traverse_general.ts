@@ -30,13 +30,12 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Mimics ----------------
     {
       id: 'PT General Mimic Spawn',
-      // 2566 = Mimic (appears to be same npcNameId all floors)
-      // floor 1-30 bronze chests, can stun or interrupt
-      // floor 31-60 silver chests, can stun or interrupt
-      // floor 61+ gold chests, can interrupt, immune to stun
+      // 14264 = Quivering Coffer (floor 1-30 bronze chests, can stun or interrupt)
+      // 14265 = Quivering Coffer (floor 31-60 silver chests, can stun or interrupt)
+      // 14266 = Quivering Coffer (floor 61+ gold chests, can interrupt, immune to stun)
       // TODO: some Mimics may spawn after transference between floors and get called early before being found
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '2566', capture: false },
+      netRegex: { npcNameId: '1426[4-6]', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -50,10 +49,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'PT General Mimic Infatuation',
+      id: 'PT General Mimic Malice',
       // inflicts Accursed Pox (43F) if not interrupted
       type: 'StartsUsing',
-      netRegex: { id: '801E', source: 'Mimic' },
+      netRegex: { id: 'AF34', source: 'Mimic' },
       response: Responses.interruptIfPossible(),
     },
     // ---------------- Pomanders and Juniper Incense ----------------
