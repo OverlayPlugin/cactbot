@@ -1806,6 +1806,13 @@ hideall "--sync--"
 16477.2 "--untargetable--"
 16479.1 "--targetable--"
 
+# Loop Begins
+16481.6 label "oc-flame-of-dusk-loop"
+16486.6 "Lamplight" Ability { id: "A1A5", source: "Hinkypunk" } duration 0.9
+16494.9 "Dread Dive" Ability { id: "A1A4", source: "Hinkypunk" }
+16507.7 "Flock of Souls" Ability { id: "A19A", source: "Hinkypunk" }
+16508.7 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
+
 # There appear to be 6 possible patterns here, if anyone has a log of others this will need updating
 # Blowout => Shades' Nest => Boss Shades' Nest => Shades' Crossing => Blowout => Boss Shades' Crossing
 # Blowout => Shades' Nest => Boss Shades' Nest => Shades' Crossing => Blowout => Boss Shades' Nest
