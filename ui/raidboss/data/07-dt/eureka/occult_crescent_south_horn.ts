@@ -134,7 +134,7 @@ const triggerSet: TriggerSet<Data> = {
       // Freelancer level is accumulation of maxed jobs and seems like only 3 more jobs, ending at F
       type: 'GainsEffect',
       netRegex: { effectId: [...phantomJobEffectIds], capture: true },
-      condition: Conditions.targetIsYou!(),
+      condition: Conditions.targetIsYou(),
       run: (data, matches) => {
         data.phantomJob = matches.effectId;
         const jobData = matches.data0;
@@ -148,7 +148,7 @@ const triggerSet: TriggerSet<Data> = {
         // Remove first element in the data0 string for other jobs
         data.phantomJobLevel = (data.phantomJob === phantomJobData.freelancer)
           ? parseInt(jobData, 16)
-          : parseInt(jobData.substring(1), 16);
+          : parseInt(jobData.slice(1), 16);
       },
     },
     {
