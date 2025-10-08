@@ -117,8 +117,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Phantom Job Tracker',
-      // data0 also contains a Phantom Job id and level
-      // Seems to follow this pattern XYZ, where X is Job #, Y is always 0, and Z is the level
+      // data0 also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
+      // Expecting first two bytes to be the Phantom Job id, and the later two to be the level
       // First digit is the job:
       // Thief = C
       // Oracle = B
