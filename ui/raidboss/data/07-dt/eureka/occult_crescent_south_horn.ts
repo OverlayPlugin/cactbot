@@ -139,7 +139,7 @@ const triggerSet: TriggerSet<Data> = {
         data.phantomJob = matches.effectId;
         const jobData = matches.data0;
 
-        // Assuming this isn't possible given the filter on statuses 
+        // Assuming this isn't possible given the filter on statuses
         if (jobData === undefined)
           return;
 
