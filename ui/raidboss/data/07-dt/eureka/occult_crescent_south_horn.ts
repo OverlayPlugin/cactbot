@@ -1,3 +1,4 @@
+import Conditions from '../../../../../resources/conditions';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -54,8 +55,6 @@ const phantomJobEffectIds = [
 ];
 
 // Useful for matching on job name in condition trigger
-// Commented out until trigger added later for it
-/*
 const phantomJobData = {
   'freelancer': '1092',
   'knight': '1106',
@@ -71,7 +70,6 @@ const phantomJobData = {
   'cannoneer': '110E',
   'chemist': '110F',
 } as const;
-*/
 
 const triggerSet: TriggerSet<Data> = {
   id: 'TheOccultCrescentSouthHorn',
@@ -139,14 +137,14 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou!(),
       run: (data, matches) => {
         data.phantomJob = matches.effectId;
-        // Pop the first element in the string
         const jobData = matches.data0;
 
         // Assuming this isn't possible given the filter on statuses 
         if (jobData === undefined)
           return;
 
-        // Freelancer has a lenght 2 data0, whereas the others have length 3
+        // Get Phantom Job Level
+        // Freelancer has a length 2 data0, whereas the others have length 3
         // Remove first element in the data0 string for other jobs
         data.phantomJobLevel = (data.phantomJob === phantomJobData.freelancer)
           ? parseInt(jobData, 16)
