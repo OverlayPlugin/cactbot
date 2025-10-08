@@ -58,7 +58,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Pomanders and Juniper Incense ----------------
     {
       id: 'PT General Pomander Duplicate',
-      // duplicate item message: https://v2.xivapi.com/api/sheet/LogMessage/7222 (new API)
+      // duplicate item message: https://v2.xivapi.com/api/sheet/LogMessage/7222
       // en: You return the pomander of ${pomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -109,7 +109,7 @@ const triggerSet: TriggerSet<Data> = {
           cn: '${pomander} 重复',
           ko: '${pomander} 중복',
         },
-        // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem (new API)
+        // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         safety: {
           en: 'Safety',
           de: 'Siegelbruchs',
@@ -229,8 +229,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'PT General Incense Duplicate',
       // two different SystemLogMessage depending on which incense
-      // duplicate incense message 1: https://v2.xivapi.com/api/sheet/LogMessage/9208 (new API)
-      // duplicate incense message 2: https://v2.xivapi.com/api/sheet/LogMessage/10287 (new API)
+      // duplicate incense message 1: https://v2.xivapi.com/api/sheet/LogMessage/9208
+      // duplicate incense message 2: https://v2.xivapi.com/api/sheet/LogMessage/10287
       // en: You return the piece of ${incense} incense to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: ['23F8', '282F'] },
@@ -239,8 +239,8 @@ const triggerSet: TriggerSet<Data> = {
         const param1 = parseInt(matches.param1, 16);
 
         // incense items are in two different tables: DeepDungeonDemiclone and DeepDungeonMagicStone
-        // https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone (new API)
-        // https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone (new API)
+        // https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone
+        // https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone
         if (id === '23F8' && param1 === 5) {
           // incense is from DeepDungeonMagicStone
           return output.duplicate!({ incense: output.poisonfruit!() });
@@ -278,7 +278,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'PT General Pylon of Passage',
       // portal to transfer between floors
-      // Pylon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245 (new API)
+      // Pylon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245
       // en: The Pylon of Passage is activated!
       type: 'SystemLogMessage',
       netRegex: { id: '1C4D', capture: false },

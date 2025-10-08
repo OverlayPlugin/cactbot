@@ -64,7 +64,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Pomanders and Magicite ----------------
     {
       id: 'HoH General Pomander Duplicate',
-      // duplicate pomander message: https://xivapi.com/LogMessage/7222?pretty=true
+      // duplicate pomander message: https://v2.xivapi.com/api/sheet/LogMessage/7222
       // en: You return the pomander of ${pomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -115,7 +115,7 @@ const triggerSet: TriggerSet<Data> = {
           cn: '${pomander} 重复',
           ko: '${pomander} 중복',
         },
-        // pomanders: https://xivapi.com/deepdungeonItem?pretty=true
+        // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         safety: {
           en: 'Safety',
           de: 'Siegelbruchs',
@@ -249,7 +249,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'HoH General Magicite Duplicate',
-      // duplicate magicite message: https://xivapi.com/LogMessage/9208?pretty=true
+      // duplicate magicite message: https://v2.xivapi.com/api/sheet/LogMessage/9208
       // en: You return the splinter of ${magicite} magicite to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '23F8' },
@@ -276,7 +276,7 @@ const triggerSet: TriggerSet<Data> = {
           cn: '${magicite} 重复',
           ko: '${magicite} 중복',
         },
-        // magicite: https://xivapi.com/DeepDungeonMagicStone?pretty=true
+        // magicite: https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone
         inferno: {
           en: 'Inferno',
           de: 'Ifrit',
@@ -316,7 +316,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'HoH General Beacon of Passage',
       // portal to transfer between floors
-      // Beacon of Passage activation message: https://xivapi.com/LogMessage/7245?pretty=true
+      // Beacon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245
       // en: The Beacon of Passage is activated!
       type: 'SystemLogMessage',
       netRegex: { id: '1C4D', capture: false },
