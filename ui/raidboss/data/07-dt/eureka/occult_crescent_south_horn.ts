@@ -5,6 +5,8 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   ce?: string;
+  phantomJob?: string;
+  phantomJobLevel?: number;
 }
 
 // List of events:
@@ -33,6 +35,43 @@ const ceIds: { [ce: string]: string } = {
   trialByClaw: '349',
   withExtremePredjudice: '339',
 };
+
+// Used to filter the GainsEffect
+const phantomJobEffectIds = [
+  '1092', // Freelancer
+  '1106', // Knight
+  '1107', // Berserker
+  '1108', // Monk
+  '1109', // Ranger
+  '1110', // Oracle
+  '1111', // Thief
+  '110A', // Samurai
+  '110B', // Bard
+  '110C', // Geomancer
+  '110D', // Time Mage
+  '110E', // Cannonneer
+  '110F', // Chemist
+];
+
+// Useful for matching on job name in condition trigger
+// Commented out until trigger added later for it
+/*
+const phantomJobData = {
+  'freelancer': '1092',
+  'knight': '1106',
+  'berserker': '1107',
+  'monk': '1108',
+  'ranger': '1109',
+  'oracle': '1110',
+  'thief': '1111',
+  'samurai': '110A',
+  'bard': '110B',
+  'geomancer': '110C',
+  'timeMage': '110D',
+  'cannoneer': '110E',
+  'chemist': '110F',
+} as const;
+*/
 
 const triggerSet: TriggerSet<Data> = {
   id: 'TheOccultCrescentSouthHorn',
@@ -74,6 +113,44 @@ const triggerSet: TriggerSet<Data> = {
 
         if (data.options.Debug)
           console.log(`Start CE: ??? (${ceId})`);
+      },
+    },
+    {
+      id: 'Occult Crescent Phantom Job Tracker',
+      // data0 also contains a Phantom Job id and level
+      // Seems to follow this pattern XYZ, where X is Job #, Y is always 0, and Z is the level
+      // First digit is the job:
+      // Thief = C
+      // Oracle = B
+      // Chemist = A
+      // Cannoneer = 9
+      // Time Mage = 8
+      // Geomancer = 7
+      // Bard = 6
+      // Samurai = 5
+      // Ranger = 4
+      // Monk = 3
+      // Berserker = 2
+      // Knight = 1
+      // Freelancer = null
+      // Freelancer level is accumulation of maxed jobs and seems like only 3 more jobs, ending at F
+      type: 'GainsEffect',
+      netRegex: { effectId: [...phantomJobEffectIds], capture: true },
+      condition: Conditions.targetIsYou!(),
+      run: (data, matches) => {
+        data.phantomJob = matches.effectId;
+        // Pop the first element in the string
+        const jobData = matches.data0;
+
+        // Assuming this isn't possible given the filter on statuses 
+        if (jobData === undefined)
+          return;
+
+        // Freelancer has a lenght 2 data0, whereas the others have length 3
+        // Remove first element in the data0 string for other jobs
+        data.phantomJobLevel = (data.phantomJob === phantomJobData.freelancer)
+          ? parseInt(jobData, 16)
+          : parseInt(jobData.substring(1), 16);
       },
     },
     {
