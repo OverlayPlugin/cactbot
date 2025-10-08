@@ -1785,8 +1785,8 @@ hideall "--sync--"
 16453.2 "--Tell 4 (Shades' Crossing)--" Ability { id: "A1A1", source: "Hinkypunk" }
 16454.4 "Molt" Ability { id: "A198", source: "Hinkypunk" }
 16455.4 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
-16255.4 "--untargetable--"
-16257.2 "--targetable--"
+16455.4 "--untargetable--"
+16457.2 "--targetable--"
 16460.4 "Blowout" Ability { id: "A1A2", source: "Hinkypunk" }
 16461.3 "--knockback--" #Ability { id: "A1B5", source: "Hinkypunk" }
 16461.6 "--sync--" Ability { id: "A19B", source: "Hinkypunk" }
