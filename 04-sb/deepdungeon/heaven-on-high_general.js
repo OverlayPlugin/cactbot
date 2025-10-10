@@ -53,7 +53,7 @@ Options.Triggers.push({
     // ---------------- Pomanders and Magicite ----------------
     {
       id: 'HoH General Pomander Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/7222?pretty=true
+      // duplicate pomander message: https://v2.xivapi.com/api/sheet/LogMessage/7222
       // en: You return the pomander of ${pomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -81,22 +81,18 @@ Options.Triggers.push({
             return output.duplicate({ pomander: output.witching() });
           case 11:
             return output.duplicate({ pomander: output.serenity() });
-          case 12:
-            return output.duplicate({ pomander: output.rage() });
-          case 13:
-            return output.duplicate({ pomander: output.lust() });
           case 14:
             return output.duplicate({ pomander: output.intuition() });
           case 15:
             return output.duplicate({ pomander: output.raising() });
-          case 16:
-            return output.duplicate({ pomander: output.resolution() });
           case 17:
             return output.duplicate({ pomander: output.frailty() });
           case 18:
             return output.duplicate({ pomander: output.concealment() });
           case 19:
             return output.duplicate({ pomander: output.petrification() });
+          default:
+            return output.duplicate({ pomander: output.unknown() });
         }
       },
       outputStrings: {
@@ -108,7 +104,7 @@ Options.Triggers.push({
           cn: '${pomander} 重复',
           ko: '${pomander} 중복',
         },
-        // pomanders: https://xivapi.com/deepdungeonItem?pretty=true
+        // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         safety: {
           en: 'Safety',
           de: 'Siegelbruchs',
@@ -197,22 +193,6 @@ Options.Triggers.push({
           cn: '魔法效果解除',
           ko: '마법 효과 해제',
         },
-        rage: {
-          en: 'Rage',
-          de: 'Manticoren',
-          fr: 'Manticore',
-          ja: 'マンティコア化',
-          cn: '曼提克化',
-          ko: '만티코어 변신',
-        },
-        lust: {
-          en: 'Lust',
-          de: 'Sukkuben',
-          fr: 'Succube',
-          ja: 'サキュバス化',
-          cn: '梦魔化',
-          ko: '서큐버스 변신',
-        },
         intuition: {
           en: 'Intuition',
           de: 'Finders',
@@ -228,14 +208,6 @@ Options.Triggers.push({
           ja: 'リレイズ',
           cn: '重生',
           ko: '리레이즈',
-        },
-        resolution: {
-          en: 'Resolution',
-          de: 'Kuribu',
-          fr: 'Kuribu',
-          ja: 'クリブ化',
-          cn: '基路伯化',
-          ko: '쿠리부 변신',
         },
         frailty: {
           en: 'Frailty',
@@ -261,11 +233,12 @@ Options.Triggers.push({
           cn: '石化敌人',
           ko: '적 석화',
         },
+        unknown: Outputs.unknown,
       },
     },
     {
       id: 'HoH General Magicite Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/9208?pretty=true
+      // duplicate magicite message: https://v2.xivapi.com/api/sheet/LogMessage/9208
       // en: You return the splinter of ${magicite} magicite to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '23F8' },
@@ -279,6 +252,8 @@ Options.Triggers.push({
             return output.duplicate({ magicite: output.vortex() });
           case 4:
             return output.duplicate({ magicite: output.elder() });
+          default:
+            return output.duplicate({ magicite: output.unknown() });
         }
       },
       outputStrings: {
@@ -290,7 +265,7 @@ Options.Triggers.push({
           cn: '${magicite} 重复',
           ko: '${magicite} 중복',
         },
-        // magicite: https://xivapi.com/DeepDungeonMagicStone?pretty=true
+        // magicite: https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone
         inferno: {
           en: 'Inferno',
           de: 'Ifrit',
@@ -323,13 +298,14 @@ Options.Triggers.push({
           cn: '奥丁',
           ko: '오딘',
         },
+        unknown: Outputs.unknown,
       },
     },
     // ---------------- Floor Notifications ----------------
     {
       id: 'HoH General Beacon of Passage',
       // portal to transfer between floors
-      // Beacon of Passage activation message: https://xivapi.com/LogMessage/7245?pretty=true
+      // Beacon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245
       // en: The Beacon of Passage is activated!
       type: 'SystemLogMessage',
       netRegex: { id: '1C4D', capture: false },

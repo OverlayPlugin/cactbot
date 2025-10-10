@@ -53,7 +53,7 @@ Options.Triggers.push({
     // ---------------- Protomanders and Demiclones ----------------
     {
       id: 'EO General Protomander Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/7222?pretty=true
+      // duplicate protomander message: https://v2.xivapi.com/api/sheet/LogMessage/7222
       // en: You return the protomander of ${protomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -91,6 +91,8 @@ Options.Triggers.push({
             return output.duplicate({ protomander: output.intuition() });
           case 35:
             return output.duplicate({ protomander: output.raising() });
+          default:
+            return output.duplicate({ protomander: output.unknown() });
         }
       },
       outputStrings: {
@@ -102,7 +104,7 @@ Options.Triggers.push({
           cn: '${protomander} 重复',
           ko: '${protomander} 중복',
         },
-        // protomanders: https://xivapi.com/deepdungeonItem?pretty=true
+        // protomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         lethargy: {
           en: 'Lethargy',
           de: 'Trägheit',
@@ -231,11 +233,12 @@ Options.Triggers.push({
           cn: '重生',
           ko: '리레이즈',
         },
+        unknown: Outputs.unknown,
       },
     },
     {
       id: 'EO General Demiclone Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/10287?pretty=true
+      // duplicate demiclone message: https://v2.xivapi.com/api/sheet/LogMessage/10287
       // en: You return the ${demiclone} demiclone to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '282F' },
@@ -247,6 +250,8 @@ Options.Triggers.push({
             return output.duplicate({ demiclone: output.doga() });
           case 3:
             return output.duplicate({ demiclone: output.onion() });
+          default:
+            return output.duplicate({ demiclone: output.unknown() });
         }
       },
       outputStrings: {
@@ -258,7 +263,7 @@ Options.Triggers.push({
           cn: '${demiclone} 重复',
           ko: '${demiclone} 중복',
         },
-        // demiclones: https://xivapi.com/DeepDungeonDemiclone?pretty=true
+        // demiclones: https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone
         unei: {
           en: 'Unei',
           de: 'Unei',
@@ -283,13 +288,14 @@ Options.Triggers.push({
           cn: '洋葱剑士',
           ko: '양파 기사',
         },
+        unknown: Outputs.unknown,
       },
     },
     // ---------------- Floor Notifications ----------------
     {
       id: 'EO General Pylon of Passage',
       // portal to transfer between floors
-      // Pylon of Passage activation message: https://xivapi.com/LogMessage/7245?pretty=true
+      // Pylon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245
       // en: The Pylon of Passage is activated!
       type: 'SystemLogMessage',
       netRegex: { id: '1C4D', capture: false },
