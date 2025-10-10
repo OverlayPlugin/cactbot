@@ -4,67 +4,61 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// Triggers applicable to all Heaven-on-High floors.
+// Triggers applicable to all Pilgrim's Traverse floors.
 
 export type Data = RaidbossData;
 
 const triggerSet: TriggerSet<Data> = {
-  id: 'HeavenOnHighGeneral',
+  id: 'PilgrimsTraverseGeneral',
   zoneId: [
-    ZoneId.HeavenOnHighFloors1_10,
-    ZoneId.HeavenOnHighFloors11_20,
-    ZoneId.HeavenOnHighFloors21_30,
-    ZoneId.HeavenOnHighFloors31_40,
-    ZoneId.HeavenOnHighFloors41_50,
-    ZoneId.HeavenOnHighFloors51_60,
-    ZoneId.HeavenOnHighFloors61_70,
-    ZoneId.HeavenOnHighFloors71_80,
-    ZoneId.HeavenOnHighFloors81_90,
-    ZoneId.HeavenOnHighFloors91_100,
+    ZoneId.PilgrimsTraverseStones1_10,
+    ZoneId.PilgrimsTraverseStones11_20,
+    ZoneId.PilgrimsTraverseStones21_30,
+    ZoneId.PilgrimsTraverseStones31_40,
+    ZoneId.PilgrimsTraverseStones41_50,
+    ZoneId.PilgrimsTraverseStones51_60,
+    ZoneId.PilgrimsTraverseStones61_70,
+    ZoneId.PilgrimsTraverseStones71_80,
+    ZoneId.PilgrimsTraverseStones81_90,
+    ZoneId.PilgrimsTraverseStones91_100,
   ],
   zoneLabel: {
-    en: 'Heaven-on-High (All Floors)',
-    de: 'Himmelssäule (Alle Ebenen)',
-    fr: 'Pilier des cieux (Tous niveaux)',
-    ja: 'アメノミハシラ (全階層)',
-    cn: '天之御柱 (全楼层)',
-    ko: '천궁탑 (전체 층)',
+    en: 'Pilgrim\'s Traverse (All Stones)',
   },
 
   triggers: [
-    // ---------------- Quivering Coffers ----------------
+    // ---------------- Mimics ----------------
     {
-      id: 'HoH General Quivering Coffer Spawn',
-      // 7392 = Quivering Coffer (floor 1-30 bronze chests, can stun or interrupt)
-      // 7393 = Quivering Coffer (floor 31-60 silver chests, can stun or interrupt)
-      // 7394 = Quivering Coffer (floor 61+ gold chests, can interrupt, immune to stun)
-      // TODO: some Quivering Coffers may spawn after transference between floors and get called early before being found
+      id: 'PT General Mimic Spawn',
+      // 14264 = Mimic (floor 1-30 bronze chests, can stun or interrupt)
+      // 14265 = Mimic (floor 31-60 silver chests, can stun or interrupt)
+      // 14266 = Mimic (floor 61+ gold chests, can interrupt, immune to stun)
+      // TODO: some Mimics may spawn after transference between floors and get called early before being found
       type: 'AddedCombatant',
-      netRegex: { npcNameId: '739[2-4]', capture: false },
+      netRegex: { npcNameId: ['14264', '14265', '142646'], capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Quivering Coffer spawned!',
-          de: 'zuckende Schnapptruhe ist erschienen',
-          fr: 'Coffre gigotant apparaît !',
+          en: 'Mimic spawned!',
+          de: 'Mimik ist erschienen!',
+          fr: 'Un mimic apparait !',
           ja: 'ミミック！',
-          cn: '已生成 抖动的宝箱!',
-          ko: '꿈틀거리는 보물상자 등장!',
+          cn: '已生成 拟态怪!',
+          ko: '미믹 등장!',
         },
       },
     },
     {
-      id: 'HoH General Quivering Coffer Malice',
-      // same id regardless of which "type" of Quivering Coffer
+      id: 'PT General Mimic Malice',
       // inflicts Accursed Pox (43F) if not interrupted
       type: 'StartsUsing',
-      netRegex: { id: '3019', source: 'Quivering Coffer' },
+      netRegex: { id: 'AF34', source: 'Mimic' },
       response: Responses.interruptIfPossible(),
     },
-    // ---------------- Pomanders and Magicite ----------------
+    // ---------------- Pomanders and Juniper Incense ----------------
     {
-      id: 'HoH General Pomander Duplicate',
-      // duplicate pomander message: https://v2.xivapi.com/api/sheet/LogMessage/7222
+      id: 'PT General Pomander Duplicate',
+      // duplicate item message: https://v2.xivapi.com/api/sheet/LogMessage/7222
       // en: You return the pomander of ${pomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -96,12 +90,12 @@ const triggerSet: TriggerSet<Data> = {
             return output.duplicate!({ pomander: output.intuition!() });
           case 15:
             return output.duplicate!({ pomander: output.raising!() });
-          case 17:
-            return output.duplicate!({ pomander: output.frailty!() });
-          case 18:
-            return output.duplicate!({ pomander: output.concealment!() });
-          case 19:
-            return output.duplicate!({ pomander: output.petrification!() });
+          case 36:
+            return output.duplicate!({ pomander: output.haste!() });
+          case 37:
+            return output.duplicate!({ pomander: output.purification!() });
+          case 38:
+            return output.duplicate!({ pomander: output.devotion!() });
           default:
             return output.duplicate!({ pomander: output.unknown!() });
         }
@@ -110,7 +104,7 @@ const triggerSet: TriggerSet<Data> = {
         duplicate: {
           en: '${pomander} duplicate',
           de: 'Doppelter ${pomander}',
-          fr: '${pomander} dupliquée',
+          fr: '${pomander} dupliqué(e)',
           ja: '${pomander} 被り',
           cn: '${pomander} 重复',
           ko: '${pomander} 중복',
@@ -220,148 +214,84 @@ const triggerSet: TriggerSet<Data> = {
           cn: '重生',
           ko: '리레이즈',
         },
-        frailty: {
-          en: 'Frailty',
-          de: 'Feindschwächung',
-          fr: 'Incapacité',
-          ja: '敵弱体',
-          cn: '弱化敌人',
-          ko: '적 약화',
+        haste: {
+          en: 'Haste',
         },
-        concealment: {
-          en: 'Concealment',
-          de: 'Verschwindens',
-          fr: 'Invisibilité',
-          ja: 'バニシュ',
-          cn: '隐形',
-          ko: '배니시',
+        purification: {
+          en: 'Purification',
         },
-        petrification: {
-          en: 'Petrification',
-          de: 'Feindversteinerung',
-          fr: 'Pétrification',
-          ja: '敵石化',
-          cn: '石化敌人',
-          ko: '적 석화',
+        devotion: {
+          en: 'Devotion',
         },
         unknown: Outputs.unknown,
       },
     },
     {
-      id: 'HoH General Magicite Duplicate',
-      // duplicate magicite message: https://v2.xivapi.com/api/sheet/LogMessage/9208
-      // en: You return the splinter of ${magicite} magicite to the coffer. You cannot carry any more of that item.
+      id: 'PT General Incense Duplicate',
+      // two different SystemLogMessage depending on which incense
+      // duplicate incense message 1: https://v2.xivapi.com/api/sheet/LogMessage/9208
+      // duplicate incense message 2: https://v2.xivapi.com/api/sheet/LogMessage/10287
+      // en: You return the piece of ${incense} incense to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
-      netRegex: { id: '23F8' },
+      netRegex: { id: ['23F8', '282F'] },
       infoText: (_data, matches, output) => {
-        switch (parseInt(matches.param1, 16)) {
-          case 1:
-            return output.duplicate!({ magicite: output.inferno!() });
-          case 2:
-            return output.duplicate!({ magicite: output.crag!() });
-          case 3:
-            return output.duplicate!({ magicite: output.vortex!() });
-          case 4:
-            return output.duplicate!({ magicite: output.elder!() });
-          default:
-            return output.duplicate!({ magicite: output.unknown!() });
+        const id = matches.id;
+        const param1 = parseInt(matches.param1, 16);
+
+        // incense items are in two different tables: DeepDungeonDemiclone and DeepDungeonMagicStone
+        // https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone
+        // https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone
+        if (id === '23F8' && param1 === 5) {
+          // incense is from DeepDungeonMagicStone
+          return output.duplicate!({ incense: output.poisonfruit!() });
         }
+
+        if (id === '282F') {
+          // incense is from DeepDungeonDemiclone
+          switch (param1) {
+            case 4:
+              return output.duplicate!({ incense: output.mazeroot!() });
+            case 5:
+              return output.duplicate!({ incense: output.barkbalm!() });
+          }
+        }
+
+        return output.duplicate!({ incense: output.unknown!() });
       },
       outputStrings: {
         duplicate: {
-          en: '${magicite} duplicate',
-          de: 'Doppelter ${magicite} Stein',
-          fr: '${magicite} dupliquée',
-          ja: '${magicite} 被り',
-          cn: '${magicite} 重复',
-          ko: '${magicite} 중복',
+          en: '${incense} duplicate',
         },
-        // magicite: https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone
-        inferno: {
-          en: 'Inferno',
-          de: 'Ifrit',
-          fr: 'Ifrit',
-          ja: 'イフリート',
-          cn: '伊弗利特',
-          ko: '이프리트',
+        mazeroot: {
+          en: 'Mazeroot',
         },
-        crag: {
-          en: 'Crag',
-          de: 'Titan',
-          fr: 'Titan',
-          ja: 'タイタン',
-          cn: '泰坦',
-          ko: '타이탄',
+        barkbalm: {
+          en: 'Barkbalm',
         },
-        vortex: {
-          en: 'Vortex',
-          de: 'Garuda',
-          fr: 'Garuda',
-          ja: 'ガルーダ',
-          cn: '迦楼罗',
-          ko: '가루다',
-        },
-        elder: {
-          en: 'Elder',
-          de: 'Odin',
-          fr: 'Odin',
-          ja: 'オーディン',
-          cn: '奥丁',
-          ko: '오딘',
+        poisonfruit: {
+          en: 'Poisonfruit',
         },
         unknown: Outputs.unknown,
       },
     },
     // ---------------- Floor Notifications ----------------
     {
-      id: 'HoH General Beacon of Passage',
+      id: 'PT General Pylon of Passage',
       // portal to transfer between floors
-      // Beacon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245
-      // en: The Beacon of Passage is activated!
+      // Pylon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245
+      // en: The Pylon of Passage is activated!
       type: 'SystemLogMessage',
       netRegex: { id: '1C4D', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Beacon of Passage activated',
-          de: 'Weglaterne aktiviert',
-          fr: 'La lanterne de téléportation s\'est activée !',
+          en: 'Pylon of Passage activated',
+          de: 'Translokator aktiviert',
+          fr: 'Pylone de téléportation activé',
           ja: '転移が出来ます',
-          cn: '转移灯笼已启动',
-          ko: '전송 등불 활성화',
+          cn: '传送装置已启动',
+          ko: '전송장치 활성화',
         },
-      },
-    },
-  ],
-  timelineReplace: [
-    {
-      'locale': 'de',
-      'replaceSync': {
-        'Quivering Coffer': 'zuckend(?:e|er|es|en) Schnapptruhe',
-      },
-    },
-    {
-      'locale': 'fr',
-      'replaceSync': {
-        'Quivering Coffer': 'Coffre gigotant',
-      },
-    },
-    {
-      'locale': 'ja',
-      'replaceSync': {
-        'Quivering Coffer': 'うごめく宝箱',
-      },
-    },
-    {
-      'locale': 'cn',
-      'replaceSync': {
-        'Quivering Coffer': '抖动的宝箱',
-      },
-    },
-    {
-      'locale': 'ko',
-      'replaceSync': {
-        'Quivering Coffer': '꿈틀거리는 보물상자',
       },
     },
   ],
