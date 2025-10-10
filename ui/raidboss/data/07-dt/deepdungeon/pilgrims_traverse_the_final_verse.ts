@@ -26,7 +26,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'PT 99 Devoured Eater Blade of First Light',
       type: 'StartsUsing',
-      netRegex: { id: 'AC2[1278]', source: 'Devoured Eater', capture: true },
+      netRegex: { id: ['AC21', 'AC22', 'AC27', 'AC28'], source: 'Devoured Eater', capture: true },
       alertText: (_data, matches, outputs) => {
         const id = matches.id;
         if (id === 'AC21' || id === 'AC27')
@@ -48,7 +48,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 99 Eminent Grief Chains of Condemnation',
       // raidwide + applies 11D2 Chains of Condemnation for 3s; heavy damage if moving
       type: 'StartsUsing',
-      netRegex: { id: 'AC2[06]', source: 'Eminent Grief', capture: true },
+      netRegex: { id: ['AC20', 'AC26'], source: 'Eminent Grief', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
       durationSeconds: 6,
       alarmText: (_data, _matches, outputs) => outputs.text!(),
@@ -101,7 +101,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 99 Eminent Grief Drain Aether',
       // AC3[BD] = failstate casts?
       type: 'StartsUsing',
-      netRegex: { id: 'AC3[89]', source: 'Eminent Grief', capture: true },
+      netRegex: { id: ['AC38', 'AC39'], source: 'Eminent Grief', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
       alertText: (_data, _matches, outputs) => outputs.text!(),
       outputStrings: {
@@ -113,7 +113,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'PT 99 Devoured Eater Drain Aether',
       type: 'StartsUsing',
-      netRegex: { id: 'AC3[AC]', source: 'Devoured Eater', capture: true },
+      netRegex: { id: ['AC3A', 'AC3C'], source: 'Devoured Eater', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
       alertText: (_data, _matches, outputs) => outputs.text!(),
       outputStrings: {
@@ -131,7 +131,7 @@ const triggerSet: TriggerSet<Data> = {
       // AC2F = diamonds glow, exaflares start at end of cast
       // AC30 = instant, exaflare explosion/damage
       type: 'Ability',
-      netRegex: { id: 'AC2[A-D]', source: 'Eminent Grief', capture: true },
+      netRegex: { id: ['AC2A', 'AC2B', 'AC2C', 'AC2D'], source: 'Eminent Grief', capture: true },
       durationSeconds: 10,
       infoText: (_data, matches, outputs) => {
         const id = matches.id;
