@@ -30,9 +30,9 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Mimics ----------------
     {
       id: 'PT General Mimic Spawn',
-      // 14264 = Quivering Coffer (floor 1-30 bronze chests, can stun or interrupt)
-      // 14265 = Quivering Coffer (floor 31-60 silver chests, can stun or interrupt)
-      // 14266 = Quivering Coffer (floor 61+ gold chests, can interrupt, immune to stun)
+      // 14264 = Mimic (floor 1-30 bronze chests, can stun or interrupt)
+      // 14265 = Mimic (floor 31-60 silver chests, can stun or interrupt)
+      // 14266 = Mimic (floor 61+ gold chests, can interrupt, immune to stun)
       // TODO: some Mimics may spawn after transference between floors and get called early before being found
       type: 'AddedCombatant',
       netRegex: { npcNameId: '1426[4-6]', capture: false },
