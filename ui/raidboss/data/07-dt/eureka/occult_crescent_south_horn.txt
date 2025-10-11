@@ -1016,7 +1016,7 @@ hideall "--sync--"
 # Aetherial Ray First
 9348.3 label "oc-on-the-hunt-p1-ray"
 9351.3 "Bright Pulse x4" Ability { id: "A1BB", source: "Lion Rampant" }
-9361.2 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
+9361.2 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" } window 2,4
 9364.2 "Bright Pulse x4" Ability { id: "A1BB", source: "Lion Rampant" }
 9370.5 "Fearsome Glint" Ability { id: "A1C3", source: "Lion Rampant" }
 9378.6 "Shockwave (cast)" Ability { id: "A1C4", source: "Lion Rampant" }
@@ -1029,7 +1029,7 @@ hideall "--sync--"
 # Bright Pulse First
 9553.0 label "oc-on-the-hunt-p1-pulse"
 9556.0 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
-9568.9 "Bright Pulse x4" Ability { id: "A1BB", source: "Lion Rampant" }
+9568.9 "Bright Pulse x4" Ability { id: "A1BB", source: "Lion Rampant" } window 2,4
 9571.9 "Aetherial Ray x4" Ability { id: "A1BA", source: "Lion Rampant" }
 9578.3 "Fearsome Glint" Ability { id: "A1C3", source: "Lion Rampant" }
 9586.4 "Shockwave (cast)" Ability { id: "A1C4", source: "Lion Rampant" }
@@ -1090,8 +1090,8 @@ hideall "--sync--"
 10181.8 label "oc-scourge-of-the-mind-loop"
 10184.8 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
 10190.9 "Mind Blast" Ability { id: "A0CF", source: "Mysterious Mindflayer" } duration 1
-10207.0 "Surprise Attack x4 (Long)" Ability { id: "A126", source: "Jesting Jackanapes" }
-10210.0 "Surprise Attack x4 (Short)" Ability { id: "A126", source: "Jesting Jackanapes" }
+10207.0 "Surprise Attack 1 x4" Ability { id: "A126", source: "Jesting Jackanapes" }
+10210.0 "Surprise Attack 2 x4" Ability { id: "A126", source: "Jesting Jackanapes" }
 10211.0 "Summon" Ability { id: "A0D0", source: "Mysterious Mindflayer" }
 10211.5 "--forced move--" duration 6
 10211.9 "--tentacles x6--" Ability { id: "A127", source: "Tentacle" }
