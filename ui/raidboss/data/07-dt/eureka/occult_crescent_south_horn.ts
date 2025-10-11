@@ -133,7 +133,7 @@ const triggerSet: TriggerSet<Data> = {
       // Berserker = 2
       // Knight = 1
       // Freelancer = null
-      // Freelancer level is accumulation of maxed jobs +1 and seems like only 3 more jobs, ending at F
+      // Freelancer level is accumulation of maxed jobs +1
       type: 'GainsEffect',
       netRegex: { effectId: [...phantomJobEffectIds], capture: true },
       condition: Conditions.targetIsYou(),
