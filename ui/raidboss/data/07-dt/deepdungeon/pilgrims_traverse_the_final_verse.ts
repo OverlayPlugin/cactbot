@@ -27,11 +27,11 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 99 Devoured Eater Blade of First Light',
       type: 'StartsUsing',
       netRegex: { id: ['AC21', 'AC22', 'AC27', 'AC28'], source: 'Devoured Eater', capture: true },
-      alertText: (_data, matches, outputs) => {
+      alertText: (_data, matches, output) => {
         const id = matches.id;
         if (id === 'AC21' || id === 'AC27')
-          return outputs.sides!();
-        return outputs.middle!();
+          return output.sides!();
+        return output.middle!();
       },
       outputStrings: {
         sides: Outputs.sides,
@@ -51,7 +51,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['AC20', 'AC26'], source: 'Eminent Grief', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
       durationSeconds: 6,
-      alarmText: (_data, _matches, outputs) => outputs.text!(),
+      alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'AoE + Stop Moving!',
@@ -72,7 +72,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: '00EA', capture: true },
       condition: Conditions.targetIsYou(),
-      alertText: (_data, _matches, outputs) => outputs.text!(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Laser on YOU',
@@ -83,7 +83,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 99 Eminent Grief Spinelash',
       type: 'StartsUsing',
       netRegex: { id: 'B03E', source: 'Eminent Grief', capture: false },
-      infoText: (_data, _matches, outputs) => outputs.text!(),
+      infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Avoid laser',
@@ -103,7 +103,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['AC38', 'AC39'], source: 'Eminent Grief', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
-      alertText: (_data, _matches, outputs) => outputs.text!(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Get Light debuff',
@@ -115,7 +115,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['AC3A', 'AC3C'], source: 'Devoured Eater', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
-      alertText: (_data, _matches, outputs) => outputs.text!(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Get Dark debuff',
@@ -133,17 +133,17 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: ['AC2A', 'AC2B', 'AC2C', 'AC2D'], source: 'Eminent Grief', capture: true },
       durationSeconds: 10,
-      infoText: (_data, matches, outputs) => {
+      infoText: (_data, matches, output) => {
         const id = matches.id;
         switch (id) {
           case 'AC2A':
-            return outputs.text!({ safe: 'Front safe' });
+            return output.text!({ safe: 'Front safe' });
           case 'AC2B':
-            return outputs.text!({ safe: 'Check safe side' });
+            return output.text!({ safe: 'Check safe side' });
           case 'AC2C':
-            return outputs.text!({ safe: 'Back safe' });
+            return output.text!({ safe: 'Back safe' });
           case 'AC2D':
-            return outputs.text!({ safe: 'Check safe side' });
+            return output.text!({ safe: 'Check safe side' });
         }
       },
       outputStrings: {
@@ -157,7 +157,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'AC2F', source: 'Eminent Grief', capture: false },
       suppressSeconds: 1,
-      alarmText: (_data, _matches, outputs) => outputs.text!(),
+      alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Avoid Exaflares',

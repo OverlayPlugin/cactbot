@@ -62,7 +62,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: '00C5' },
       condition: Conditions.targetIsYou(),
-      alertText: (_data, _matches, outputs) => outputs.text!(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: '5x chasing puddles on you!',
