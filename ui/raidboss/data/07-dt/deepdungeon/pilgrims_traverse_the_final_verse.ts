@@ -6,6 +6,7 @@ import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // Pilgrim's Traverse Stone 99/The Final Verse
+// TODO: Bounds of Sin dodge direction
 // TODO: Abysal Blaze left/right safe spots
 // TODO: timeline
 
@@ -50,6 +51,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['AC20', 'AC26'], source: 'Eminent Grief', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
+      countdownSeconds: 3,
       durationSeconds: 6,
       alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -61,6 +63,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'PT 99 Devoured Eater Bounds of Sin',
       // applies 119E Bind for 3s
+      // AC33 = sequential damage cast, may have good position data for dodge direction
       type: 'Ability',
       netRegex: { id: 'AC32', source: 'Devoured Eater', capture: false },
       delaySeconds: 3,
@@ -99,10 +102,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'PT 99 Eminent Grief Drain Aether',
-      // AC3[BD] = failstate casts?
+      // AC38 = short cast
+      // AC39 = long cast
+      // [AC3B, AC3D] = failstate casts?
       type: 'StartsUsing',
       netRegex: { id: ['AC38', 'AC39'], source: 'Eminent Grief', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
+      delaySeconds: (_data, matches) =>
+        matches.id === 'AC38' ? 0 : parseFloat(matches.castTime) - 5,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -112,9 +118,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'PT 99 Devoured Eater Drain Aether',
+      // AC3A = short cast
+      // AC3C = long cast
       type: 'StartsUsing',
       netRegex: { id: ['AC3A', 'AC3C'], source: 'Devoured Eater', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
+      delaySeconds: (_data, matches) =>
+        matches.id === 'AC3A' ? 0 : parseFloat(matches.castTime) - 4,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -128,6 +137,7 @@ const triggerSet: TriggerSet<Data> = {
       // AC2B = first cast, vertical exaflares, left or right safe
       // AC2C = second instant cast, horizontal exaflares, back safe
       // AC2D = second instant cast, vertical exaflares, left or right safe
+      // AC2E = used approximately 7s after each horizontal/vertical indicator, may have good data for starting positions
       // AC2F = diamonds glow, exaflares start at end of cast
       // AC30 = instant, exaflare explosion/damage
       type: 'Ability',
