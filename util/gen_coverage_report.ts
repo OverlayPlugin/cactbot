@@ -358,6 +358,8 @@ const buildTotals = (coverage: Coverage, missingTranslations: MissingTranslation
       [ContentType.VCDungeonFinder]: ContentType.Dungeons,
       // lump chaotic alliance raids with raids for now.
       [ContentType.ChaoticAllianceRaid]: ContentType.Raids,
+      // lump Deep Dungeon bonus fights (e.g., The Final Verse) with Deep Dungeons.
+      [ContentType.DeepDungeonExtras]: ContentType.DeepDungeons,
     };
     const contentType = contentTypeRemap[origContentType] ?? origContentType;
 

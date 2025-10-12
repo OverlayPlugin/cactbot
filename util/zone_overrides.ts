@@ -97,9 +97,12 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   'CuttersCry72': 170,
 };
 
-// This will override the data-soourced ContentType with our own value.
+// This will override the data-sourced ContentType with our own value.
 const _SYNTHETIC_CONTENT_TYPE: NameKeyToTerritoryId = {
-  // empty since 7.1
+  'HallOfTheNovice': 20,
+  'SeasonalEvents': 22,
+  'TheDiadem': 23,
+  'DeepDungeonExtras': 39,
 };
 
 // Certain collisions will always happen and we don't care because we're not
