@@ -35,7 +35,7 @@ const triggerSet: TriggerSet<Data> = {
       // 14266 = Mimic (floor 61+ gold chests, can interrupt, immune to stun)
       // TODO: some Mimics may spawn after transference between floors and get called early before being found
       type: 'AddedCombatant',
-      netRegex: { npcNameId: ['14264', '14265', '142646'], capture: false },
+      netRegex: { npcNameId: ['14264', '14265', '14266'], capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
