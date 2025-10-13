@@ -117,7 +117,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Phantom Job Tracker',
-      // data0 also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
+      // count also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
       // Expecting first two characters to be part of Phantom Job id, and the later two to be the level
       // First digit is the job:
       // Thief = C
@@ -139,7 +139,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       run: (data, matches) => {
         data.phantomJob = matches.effectId;
-        const jobData = matches.data0?.padStart(4, '0');
+        const jobData = matches.count?.padStart(4, '0');
 
         // Assuming this isn't possible given the filter on statuses
         if (jobData === undefined)
