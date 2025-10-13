@@ -2693,6 +2693,10 @@ const triggerSet: TriggerSet<Data> = {
         'Ray of Dangers Near / Ray of Expulsion Afar': 'Ray Near/Far',
         'Rotate Right / Rotate Left': 'Rotate Left/Right',
         'Vertical Crosshatch/Horizontal Crosshatch': 'Vertical/Horizontal Crosshatch',
+        'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation':
+          'Penny Inflation (knockback)',
+        'Shades\' Nest/Shade\'s Crossing': 'Shades\' Nest/Crossing',
+        'Shades\' Crossing/Shades\' Nest': 'Shades\' Crossing/Nest',
       },
     },
     {
@@ -3278,6 +3282,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '화염 구체',
         'Black Star': '검은 죽음의 운성',
