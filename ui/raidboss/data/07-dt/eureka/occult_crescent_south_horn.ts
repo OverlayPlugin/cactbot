@@ -16,6 +16,8 @@ export interface Data extends RaidbossData {
   demonTabletCometeor?: 'near' | 'afar';
   demonTabletCometSouthTargets: string[];
   demonTabletCometNorthTargets: string[];
+  demonTabletHasMeteor: boolean;
+  demonTabletMeteor?: 'north' | 'south';
   demonTabletIsFrontRight?: boolean;
   demonTabletGravityTowers?: 'north' | 'south';
   deadStarsIsSlice2: boolean;
@@ -298,6 +300,7 @@ const triggerSet: TriggerSet<Data> = {
     demonTabletIsFrontSide: true,
     demonTabletCometSouthTargets: [],
     demonTabletCometNorthTargets: [],
+    demonTabletHasMeteor: false;
     deadStarsIsSlice2: false,
     deadStarsSliceTargets: [],
     deadStarsFirestrikeTargets: [],
@@ -378,8 +381,9 @@ const triggerSet: TriggerSet<Data> = {
       // "is no longer sealed"
       netRegex: { id: '7DE', capture: false },
       run: (data) => {
-        delete data.demonTabletCometeor;
         delete data.demonTabletIsFrontRight;
+        delete data.demonTabletCometeor;
+        delete data.demonTabletMeteor;
         delete data.demonTabletGravityTowers;
         delete data.deadStarsOoze;
         delete data.deadStarsSnowballTetherDirNum;
@@ -392,6 +396,7 @@ const triggerSet: TriggerSet<Data> = {
         data.demonTabletIsFrontSide = true;
         data.demonTabletCometSouthTargets = [];
         data.demonTabletCometNorthTargets = [];
+        data.demonTabletHasMeteor = false;
         data.deadStarsIsSlice2 = false;
         data.deadStarsSliceTargets = [];
         data.deadStarsFirestrikeTargets = [];
@@ -722,14 +727,35 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Demon Tablet Cometeor of Dangers Near/Expulsion Afar',
       // A2E4 Cometeor of Dangers Near
       // A2E5 Cometeor of Expulsion Afar
-      // TODO: Handle meteor players separately
       // This cast happens about 0.1s before players are marked with comets
+      // Around the time of the cast, there is a 261 log line for a combatant added in memory
+      // BNpcID 2014582 combatant is responsible for the meteor ground marker
+      // Two possible locations:
+      // (700, 349) => North
+      // (700, 409) => South
       type: 'StartsUsing',
       netRegex: { source: 'Demon Tablet', id: ['A2E4', 'A2E5'], capture: true },
       preRun: (data, matches) => {
         data.demonTabletCometeor = matches.id === 'A2E4' ? 'near' : 'afar';
       },
-      delaySeconds: 0.2, // Delayed to retreive comet data
+      delaySeconds: 0.2, // Delayed to retreive comet data and meteor data
+      promise: async (data) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+        const meteors = actors.filter((c) => c.BNpcID === 2014582);
+        const meteor = meteors[0];
+        if (meteor === undefined || meteors.length !== 1) {
+          console.error(
+            `Occult Crescent Demon Tablet Cometeor of Dangers Near/Expulsion Afar: Wrong meteor count ${meteors.length}`,
+          );
+          return;
+        }
+        if (meteor.PosY === 349) {
+          data.demonTabletMeteor = 'north';
+        } else if (meteor.PosY === 409)
+          data.demonTabletMeteor = 'south';
+      },
       alertText: (data, matches, output) => {
         // Do not call for those with comets
         const north1 = data.demonTabletCometNorthTargets[0];
@@ -742,9 +768,33 @@ const triggerSet: TriggerSet<Data> = {
         )
           return;
 
-        if (matches.id === 'A2E4')
-          return output.out!();
-        return output.inKnockback!();
+        const mech = matches.id === 'A2E4' ? 'out' : 'inKnockback';
+        const getDir = (
+          hasMeteor: boolean,
+          meteorDir?: 'north' | 'south',
+        ): string => {
+          if (meteorDir !== undefined)
+            if (hasMeteor)
+              return meteorDir;
+            if (meteorDir === 'north')
+              return 'south';
+            if (meteorDir === 'south')
+              return 'north';
+          return 'unknown';
+        };
+
+        // Flip direction if we don't have meteor
+        const dir = getDir(data.demonTabletHasMeteor, data.demonTabletMeteor);
+
+        if (dir === 'unknown') {
+          if (data.demonTabletHasMeteor)
+            return output.hasMeteorMech!({ mech: output[mech]!() });
+          return output[mech]!();
+        }
+
+        if (data.demonTabletHasMeteor)
+         return output.hasMeteorDirMech!({ dir: output[dir]!(), mech: output[mech]!() });
+        return output.dirMech!({ dir: output[dir]!(), mech: output[mech]!() });
       },
       run: (data) => {
         // Clear comet targets for Cometeor 2
@@ -757,17 +807,49 @@ const triggerSet: TriggerSet<Data> = {
         }
       },
       outputStrings: {
+        north: Outputs.north,
+        south: Outputs.south,
         out: Outputs.out,
         inKnockback: {
           en: 'In (Knockback)',
         },
+        dirMech: {
+          en: '${dir} & ${mech}',
+        },
+        hasMeteorMech: {
+          en: 'Meteor on YOU, ${mech}',
+        },
+        hasMeteorDirMech: {
+          en: 'Meteor on YOU, Go ${dir} & ${mech}',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Crater Later Gains Effect',
+      // Players targeted by meteor get an unlogged headmarker and Crater Later (1102) 12s debuff
+      // These apply about 0.1s after Cometeor cast
+      type: 'GainsEffect',
+      netRegex: { effectId: '1102', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => {
+        data.demonTabletHasMeteor = true;
+      },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Crater Later Loses Effect',
+      // Clear state for second set
+      type: 'LosesEffect',
+      netRegex: { effectId: '1102', capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 6, // Time until Portentous Comet (stack launcher) completed
+      run: (data) => {
+        data.demonTabletHasMeteor = false;
       },
     },
     {
       id: 'Occult Crescent Demon Tablet Portentous Comet',
       // Headmarkers associated with casts A2E8 Portentous Comet
-      // TODO: Find meteor location, to tell to launch over boss or to boss
-      // TODO: Tell who to launch with?
+      // TODO: Reminder call for stack markers to move away or towards boss?
       // Note: Reset of target collectors happens in Cometeor trigger
       type: 'HeadMarker',
       netRegex: {
@@ -825,6 +907,9 @@ const triggerSet: TriggerSet<Data> = {
           stackLaunchTowardsBoss: {
             en: 'Stack, Launch towards Boss',
           },
+          stackLaunchOverBoss: {
+            en: 'Stack, Launch over Boss',
+          },
           goNorthOutStackOnYou: {
             en: 'Go North Out => Stack Launch Marker on You',
           },
@@ -854,7 +939,8 @@ const triggerSet: TriggerSet<Data> = {
           return { alertText: output.goNorthInStackOnYou!() };
         }
 
-        // TODO: Upgrade to alert if meteor player
+        if (data.demonTabletHasMeteor)
+          return { alertText: output.stackLaunchOverBoss!() };
         return { infoText: output.stackLaunchTowardsBoss!() };
       },
     },
