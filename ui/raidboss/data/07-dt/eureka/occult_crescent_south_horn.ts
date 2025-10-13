@@ -773,13 +773,14 @@ const triggerSet: TriggerSet<Data> = {
           hasMeteor: boolean,
           meteorDir?: 'north' | 'south',
         ): string => {
-          if (meteorDir !== undefined)
+          if (meteorDir !== undefined) {
             if (hasMeteor)
               return meteorDir;
             if (meteorDir === 'north')
               return 'south';
             if (meteorDir === 'south')
               return 'north';
+          }
           return 'unknown';
         };
 
@@ -793,7 +794,7 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         if (data.demonTabletHasMeteor)
-         return output.hasMeteorDirMech!({ dir: output[dir]!(), mech: output[mech]!() });
+          return output.hasMeteorDirMech!({ dir: output[dir]!(), mech: output[mech]!() });
         return output.dirMech!({ dir: output[dir]!(), mech: output[mech]!() });
       },
       run: (data) => {
