@@ -162,7 +162,7 @@ const deadStarsFindSafeSpot = (
   const safeDirNums = [1, 3, 5, 7].filter(
     (dirNum) => {
       return dirNum !== ooze1 && dirNum !== ooze2;
-    }
+    },
   );
   const safe1 = safeDirNums[0];
   const safe2 = safeDirNums[1];
@@ -1308,19 +1308,19 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         if (data.deadStarsOoze === undefined) {
-            const dirNums = matches.id === 'A5DF' ? redOoze : blueOoze;
+          const dirNums = matches.id === 'A5DF' ? redOoze : blueOoze;
 
-            if (
-              dirNums[0] === undefined || dirNums[1] === undefined ||
-              dirNums[2] === undefined || dirNums[3] === undefined
-            )
-              return;
-            const dirs = [
-              output[Directions.outputFrom8DirNum(dirNums[0])]!(),
-              output[Directions.outputFrom8DirNum(dirNums[1])]!(),
-              output[Directions.outputFrom8DirNum(dirNums[2])]!(),
-              output[Directions.outputFrom8DirNum(dirNums[3])]!(),
-            ];
+          if (
+            dirNums[0] === undefined || dirNums[1] === undefined ||
+            dirNums[2] === undefined || dirNums[3] === undefined
+          )
+            return;
+          const dirs = [
+            output[Directions.outputFrom8DirNum(dirNums[0])]!(),
+            output[Directions.outputFrom8DirNum(dirNums[1])]!(),
+            output[Directions.outputFrom8DirNum(dirNums[2])]!(),
+            output[Directions.outputFrom8DirNum(dirNums[3])]!(),
+          ];
 
           // Output both if failed to get deadStarsOooze matches
           if (matches.id === 'A5DF')
@@ -1562,7 +1562,7 @@ const triggerSet: TriggerSet<Data> = {
             ? count
             : count + predict(data.deadStarsOoze.effectId, matches.id);
 
-         // If we need to still get hit
+          // Check if player will still need to get hit
           if (predictedCount !== 0) {
             if (dirNums[data.deadStarsOozeCount] === 1)
               return output.getHit!({ dir: output.northeast!() });
