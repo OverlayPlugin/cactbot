@@ -300,7 +300,7 @@ const triggerSet: TriggerSet<Data> = {
     demonTabletIsFrontSide: true,
     demonTabletCometSouthTargets: [],
     demonTabletCometNorthTargets: [],
-    demonTabletHasMeteor: false;
+    demonTabletHasMeteor: false,
     deadStarsIsSlice2: false,
     deadStarsSliceTargets: [],
     deadStarsFirestrikeTargets: [],
