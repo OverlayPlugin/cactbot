@@ -250,6 +250,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheInterphos,
   ZoneId.Recollection,
   ZoneId.TheAgelessNecropolis,
+  ZoneId.TheWindwardWilds,
 
   // High-end Trials (Dawntrail)
   ZoneId.WorqorLarDorExtreme,
@@ -260,6 +261,7 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.TheJadeStoaUnreal,
   ZoneId.HellsKierUnreal,
   ZoneId.TheWreathOfSnakesUnreal,
+  ZoneId.TheWindwardWildsExtreme,
 
   // Alliance Raids (A Realm Reborn)
   ZoneId.TheLabyrinthOfTheAncients,

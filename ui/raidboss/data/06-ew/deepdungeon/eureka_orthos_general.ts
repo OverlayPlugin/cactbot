@@ -1,3 +1,4 @@
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -63,7 +64,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Protomanders and Demiclones ----------------
     {
       id: 'EO General Protomander Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/7222?pretty=true
+      // duplicate protomander message: https://v2.xivapi.com/api/sheet/LogMessage/7222
       // en: You return the protomander of ${protomander} to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '1C36' },
@@ -101,6 +102,8 @@ const triggerSet: TriggerSet<Data> = {
             return output.duplicate!({ protomander: output.intuition!() });
           case 35:
             return output.duplicate!({ protomander: output.raising!() });
+          default:
+            return output.duplicate!({ protomander: output.unknown!() });
         }
       },
       outputStrings: {
@@ -112,7 +115,7 @@ const triggerSet: TriggerSet<Data> = {
           cn: '${protomander} 重复',
           ko: '${protomander} 중복',
         },
-        // protomanders: https://xivapi.com/deepdungeonItem?pretty=true
+        // protomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         lethargy: {
           en: 'Lethargy',
           de: 'Trägheit',
@@ -241,11 +244,12 @@ const triggerSet: TriggerSet<Data> = {
           cn: '重生',
           ko: '리레이즈',
         },
+        unknown: Outputs.unknown,
       },
     },
     {
       id: 'EO General Demiclone Duplicate',
-      // duplicate item message: https://xivapi.com/LogMessage/10287?pretty=true
+      // duplicate demiclone message: https://v2.xivapi.com/api/sheet/LogMessage/10287
       // en: You return the ${demiclone} demiclone to the coffer. You cannot carry any more of that item.
       type: 'SystemLogMessage',
       netRegex: { id: '282F' },
@@ -257,6 +261,8 @@ const triggerSet: TriggerSet<Data> = {
             return output.duplicate!({ demiclone: output.doga!() });
           case 3:
             return output.duplicate!({ demiclone: output.onion!() });
+          default:
+            return output.duplicate!({ demiclone: output.unknown!() });
         }
       },
       outputStrings: {
@@ -268,7 +274,7 @@ const triggerSet: TriggerSet<Data> = {
           cn: '${demiclone} 重复',
           ko: '${demiclone} 중복',
         },
-        // demiclones: https://xivapi.com/DeepDungeonDemiclone?pretty=true
+        // demiclones: https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone
         unei: {
           en: 'Unei',
           de: 'Unei',
@@ -293,13 +299,14 @@ const triggerSet: TriggerSet<Data> = {
           cn: '洋葱剑士',
           ko: '양파 기사',
         },
+        unknown: Outputs.unknown,
       },
     },
     // ---------------- Floor Notifications ----------------
     {
       id: 'EO General Pylon of Passage',
       // portal to transfer between floors
-      // Pylon of Passage activation message: https://xivapi.com/LogMessage/7245?pretty=true
+      // Pylon of Passage activation message: https://v2.xivapi.com/api/sheet/LogMessage/7245
       // en: The Pylon of Passage is activated!
       type: 'SystemLogMessage',
       netRegex: { id: '1C4D', capture: false },

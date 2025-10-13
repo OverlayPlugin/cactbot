@@ -5,6 +5,15 @@ import { Job } from '../../../../../types/job';
 
 import { LineEvent0x03 } from './LineEvent0x03';
 import { LineEvent0x105 } from './LineEvent0x105';
+import { LineEvent0x107 } from './LineEvent0x107';
+import { LineEvent0x108 } from './LineEvent0x108';
+import { LineEvent0x10A } from './LineEvent0x10A';
+import { LineEvent0x10B } from './LineEvent0x10B';
+import { LineEvent0x10E } from './LineEvent0x10E';
+import { LineEvent0x10F } from './LineEvent0x10F';
+import { LineEvent0x110 } from './LineEvent0x110';
+import { LineEvent0x111 } from './LineEvent0x111';
+import { LineEvent0x112 } from './LineEvent0x112';
 import LogRepository from './LogRepository';
 
 const fields = {
@@ -153,4 +162,40 @@ export const isLineEvent0x03 = (line: LineEvent): line is LineEvent0x03 => {
 
 export const isLineEvent0x105 = (event: LineEvent): event is LineEvent0x105 => {
   return event.decEvent === 261;
+};
+
+export const isLineEvent0x107 = (event: LineEvent): event is LineEvent0x107 => {
+  return event.decEvent === 0x107;
+};
+
+export const isLineEvent0x108 = (event: LineEvent): event is LineEvent0x108 => {
+  return event.decEvent === 0x108;
+};
+
+export const isLineEvent0x10A = (event: LineEvent): event is LineEvent0x10A => {
+  return event.decEvent === 0x10A;
+};
+
+export const isLineEvent0x10B = (event: LineEvent): event is LineEvent0x10B => {
+  return event.decEvent === 0x10B;
+};
+
+export const isLineEvent0x10E = (event: LineEvent): event is LineEvent0x10E => {
+  return event.decEvent === 0x10E;
+};
+
+export const isLineEvent0x10F = (event: LineEvent): event is LineEvent0x10F => {
+  return event.decEvent === 0x10F;
+};
+
+export const isLineEvent0x110 = (event: LineEvent): event is LineEvent0x110 => {
+  return event.decEvent === 0x110;
+};
+
+export const isLineEvent0x111 = (event: LineEvent): event is LineEvent0x111 => {
+  return event.decEvent === 0x111;
+};
+
+export const isLineEvent0x112 = (event: LineEvent): event is LineEvent0x112 => {
+  return event.decEvent === 0x112;
 };
