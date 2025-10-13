@@ -1410,11 +1410,7 @@ const triggerSet: TriggerSet<Data> = {
           }
         }
       },
-      tts: (data) => {
-        // No TTS if outputting both
-        if (data.deadStarsOoze === undefined)
-          return null;
-      },
+      tts: null, // Trigger happens 1 sec before individual call and would overlap
       outputStrings: {
         ...Directions.outputStrings8Dir,
         red: {
