@@ -5,6 +5,7 @@ import { Responses } from '../../../../../resources/responses';
 import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
+import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
@@ -24,6 +25,10 @@ export interface Data extends RaidbossData {
   deadStarsPhobos: number[];
   deadStarsNereid: number[];
   deadStarsTriton: number[];
+  deadStarsOozeCount: number;
+  deadStarsOoze?: NetMatches['GainsEffect'];
+  deadStarsWasHitByOoze: boolean;
+  deadStarsWasVennDiagramed: boolean;
   deadStarsLiquifiedNereid: number[];
   deadStarsLiquifiedTriton: number[];
   deadStarsSnowballTetherDirNum?: number;
@@ -123,10 +128,13 @@ const headMarkerData = {
 // Occult Crescent Forked Tower: Blood Demon Tablet consts
 // const demonTabletCenterX = 700;
 const demonTabletCenterY = 379;
-
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
+const deadStarsRedEffectId = '1159';
+const deadStarsBlueEffectId = '115A';
+const deadStarsRedHitId = 'A5E3';
+const deadStarsBlueHitId = 'A5E4';
 const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
     en: 'Line Stacks on ${player1}, ${player2}, ${player3}',
@@ -143,6 +151,47 @@ const deadStarsOutputStrings = {
     ko: '직선 쉐어 대상자',
   },
 };
+
+// Function to find a safe spot in Primordial Chaos
+// Expected inpus are the dirNums of two oozes
+const deadStarsFindSafeSpot = (
+  ooze1: number,
+  ooze2: number,
+): number => {
+  // Filter from map of valid ooze locations where oozes are
+  const safeDirNums = [1, 3, 5, 7].filter(
+    (dirNum) => {
+      return dirNum !== ooze1 && dirNum !== ooze2;
+    }
+  );
+  const safe1 = safeDirNums[0];
+  const safe2 = safeDirNums[1];
+  if ((safe1 === 7 && safe2 === 1) || (safe2 === 1 && safe1 === 7))
+    return 0; // North
+  if ((safe1 === 1 && safe2 === 3) || (safe2 === 1 && safe1 === 3))
+    return 2; // East
+  if ((safe1 === 3 && safe2 === 5) || (safe2 === 5 && safe1 === 3))
+    return 4; // South
+  if ((safe1 === 5 && safe2 === 7) || (safe2 === 7 && safe1 === 5))
+    return 6; // West
+  if ((safe1 === 3 && safe2 === 7) || (safe2 === 7 && safe1 === 3))
+    return 1; // Also southwest
+  if ((safe1 === 1 && safe2 === 5) || (safe2 === 5 && safe1 === 1))
+    return 3; // Also northwest
+  return -1;
+};
+// Used with deadStarsFindSafeSpot to map to longform direction
+const deadStarsMapOutput = [
+  'north',
+  'northeast',
+  'east',
+  'southeast',
+  'south',
+  'southwest',
+  'west',
+  'northwest',
+  'unknown',
+];
 
 // Occult Crescent Forked Tower: Pronged Passage consts
 const prongedPassageCenterY = 315;
@@ -256,6 +305,9 @@ const triggerSet: TriggerSet<Data> = {
     deadStarsPhobos: [],
     deadStarsNereid: [],
     deadStarsTriton: [],
+    deadStarsOozeCount: 0,
+    deadStarsWasHitByOoze: false,
+    deadStarsWasVennDiagramed: false,
     deadStarsLiquifiedNereid: [],
     deadStarsLiquifiedTriton: [],
     deadStarsSnowballTetherCount: 0,
@@ -329,6 +381,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.demonTabletCometeor;
         delete data.demonTabletIsFrontRight;
         delete data.demonTabletGravityTowers;
+        delete data.deadStarsOoze;
         delete data.deadStarsSnowballTetherDirNum;
         delete data.marbleDragonDiveDirNum;
         delete data.magitaurBigRune2Target;
@@ -346,6 +399,9 @@ const triggerSet: TriggerSet<Data> = {
         data.deadStarsPhobos = [];
         data.deadStarsNereid = [];
         data.deadStarsTriton = [];
+        data.deadStarsOozeCount = 0;
+        data.deadStarsWasHitByOoze = false;
+        data.deadStarsWasVennDiagramed = false;
         data.deadStarsLiquifiedNereid = [];
         data.deadStarsLiquifiedTriton = [];
         data.deadStarsSnowballTetherCount = 0;
@@ -1136,10 +1192,29 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Phobos', id: 'A5D9', capture: false },
       response: Responses.aoe(),
-    }, /*
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze Gains Effect',
+      // Track latest effect on player
+      type: 'GainsEffect',
+      netRegex: { effectId: [deadStarsRedEffectId, deadStarsBlueEffectId], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        data.deadStarsOoze = matches;
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze Loses Effect',
+      // There isn't a debuff at 0 count, track the loses effect log line
+      type: 'LosesEffect',
+      netRegex: { effectId: [deadStarsRedEffectId, deadStarsBlueEffectId], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => {
+        delete data.deadStarsOoze;
+      },
+    },
     {
       id: 'Occult Crescent Dead Stars Nova/Ice Ooze Initial',
-      // This won't work until FFXIVACT Plugin captures StatusEffectListForay3
       // Applied with Primordial Chaos
       // Comes in stacks of 1, 2, or 3
       // 1159 Nova Ooze (Red)
@@ -1149,33 +1224,58 @@ const triggerSet: TriggerSet<Data> = {
       // Four opportunities to increase/decrease stack, meaning those with lower counts can afford mistakes
       // Any stacks remaining before Noxious Nova (A5E5) result in lethal damage
       type: 'GainsEffect',
-      netRegex: { effectId: ['1159', '115A'], capture: true },
+      netRegex: { effectId: [deadStarsRedEffectId, deadStarsBlueEffectId], capture: true },
       condition: (data, matches) => {
-        if (data.me === matches.target)
+        if (data.me === matches.target && data.deadStarsOozeCount === 0)
           return true;
         return false;
       },
-      suppressSeconds: 60, // Ignore during mechanic
       infoText: (_data, matches, output) => {
-        const num = matches.count;
-        if (matches.effectId === '1159')
-          return output.blue!({ num: num });
-        return output.red!({ num: num });
+        const num = parseInt(matches.count, 16);
+        if (matches.effectId === deadStarsBlueEffectId) {
+          switch (num) {
+            case 1:
+              return output.blue!();
+            case 2:
+              return output.blueTwo!();
+            case 3:
+              return output.blueThree!();
+          }
+        }
+        switch (num) {
+          case 1:
+            return output.red!();
+          case 2:
+            return output.redTwo!();
+          case 3:
+            return output.redThree!();
+        }
       },
       outputStrings: {
-        red: {
-          en: 'Get hit by red ${num}x',
-        },
         blue: {
-          en: 'Get hit by blue ${num}x',
+          en: '+1 Blue',
+        },
+        blueTwo: {
+          en: '+2 Blue',
+        },
+        blueThree: {
+          en: '+3 Blue',
+        },
+        red: {
+          en: '+1 Red',
+        },
+        redTwo: {
+          en: '+2 Red',
+        },
+        redThree: {
+          en: '+3 Red',
         },
       },
-    },*/
+    },
     {
       id: 'Occult Crescent Dead Stars Frozen Fallout Locations',
-      // This will currently output both ooze tells
-      // TODO: Change to just what player needs once status effect is logged
-      // TODO: Add additional triggers to tell where to go after each cast
+      // This will output both ooze tells if missing debuff data
+      // This calls one of two safespots if intercard is safe
       // Boss casts A45DD (Frozen Fallout) and A5DF + A5E0 tells
       // Liquified Triton (Red) tells are the A5DF casts
       // Liquified Nereid (Blue) tells are the A5E0 casts
@@ -1195,7 +1295,6 @@ const triggerSet: TriggerSet<Data> = {
         if (matches.id === 'A5E0')
           data.deadStarsLiquifiedNereid.push(dirNum);
       },
-      durationSeconds: 18, // Time from last tell to end of mechanic is ~18.3s
       infoText: (data, matches, output) => {
         if (
           data.deadStarsLiquifiedTriton.length !== 4 &&
@@ -1203,29 +1302,119 @@ const triggerSet: TriggerSet<Data> = {
         )
           return;
 
-        const dirNums = matches.id === 'A5DF'
-          ? data.deadStarsLiquifiedTriton
-          : data.deadStarsLiquifiedNereid;
-
-        if (
-          dirNums[0] === undefined || dirNums[1] === undefined ||
-          dirNums[2] === undefined || dirNums[3] === undefined
-        )
+        const redOoze = data.deadStarsLiquifiedTriton;
+        const blueOoze = data.deadStarsLiquifiedNereid;
+        if (redOoze === undefined || blueOoze === undefined)
           return;
 
-        const dirs = [
-          output[Directions.outputFrom8DirNum(dirNums[0])]!(),
-          output[Directions.outputFrom8DirNum(dirNums[1])]!(),
-          output[Directions.outputFrom8DirNum(dirNums[2])]!(),
-          output[Directions.outputFrom8DirNum(dirNums[3])]!(),
-        ];
+        if (data.deadStarsOoze === undefined) {
+            const dirNums = matches.id === 'A5DF' ? redOoze : blueOoze;
 
-        if (matches.id === 'A5DF')
-          return output.red!({ dirs: dirs });
-        if (matches.id === 'A5E0')
-          return output.blue!({ dirs: dirs });
+            if (
+              dirNums[0] === undefined || dirNums[1] === undefined ||
+              dirNums[2] === undefined || dirNums[3] === undefined
+            )
+              return;
+            const dirs = [
+              output[Directions.outputFrom8DirNum(dirNums[0])]!(),
+              output[Directions.outputFrom8DirNum(dirNums[1])]!(),
+              output[Directions.outputFrom8DirNum(dirNums[2])]!(),
+              output[Directions.outputFrom8DirNum(dirNums[3])]!(),
+            ];
+
+          // Output both if failed to get deadStarsOooze matches
+          if (matches.id === 'A5DF')
+            return output.red!({ dirs: dirs });
+          if (matches.id === 'A5E0')
+            return output.blue!({ dirs: dirs });
+
+          return;
+        }
+
+        // Matching only one id to call once
+        if (matches.id === 'A5DF') {
+          // Determine which slime locations to use for hits
+          const dirNums = data.deadStarsOoze.effectId === deadStarsBlueEffectId
+            ? redOoze
+            : blueOoze;
+
+          if (
+            dirNums[0] === undefined || dirNums[1] === undefined ||
+            dirNums[2] === undefined || dirNums[3] === undefined ||
+            redOoze[1] === undefined || blueOoze[1] === undefined ||
+            redOoze[2] === undefined || blueOoze[2] === undefined ||
+            redOoze[3] === undefined || blueOoze[3] === undefined
+          )
+            return;
+
+          const hitSpots = [
+            output[Directions.outputFrom8DirNum(dirNums[0])]!(),
+            output[Directions.outputFrom8DirNum(dirNums[1])]!(),
+            output[Directions.outputFrom8DirNum(dirNums[2])]!(),
+          ];
+          // Ignoring initial safe spot
+          const safeSpots = [
+            output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[1], redOoze[1]))]!(),
+            output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[2], redOoze[2]))]!(),
+            output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[3], redOoze[3]))]!(),
+          ];
+
+          const count = parseInt(data.deadStarsOoze.count, 16);
+          if (count === 1) {
+            if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
+              return output.red1!({
+                hit1: hitSpots[0],
+                safe1: safeSpots[0],
+                safe2: safeSpots[1],
+                safe3: safeSpots[2],
+              });
+            if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
+              return output.blue1!({
+                hit1: hitSpots[0],
+                safe1: safeSpots[0],
+                safe2: safeSpots[1],
+                safe3: safeSpots[2],
+              });
+          }
+          if (count === 2) {
+            if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
+              return output.red2!({
+                hit1: hitSpots[0],
+                hit2: hitSpots[1],
+                safe1: safeSpots[1],
+                safe2: safeSpots[2],
+              });
+            if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
+              return output.blue2!({
+                hit1: hitSpots[0],
+                hit2: hitSpots[1],
+                safe1: safeSpots[1],
+                safe2: safeSpots[2],
+              });
+          }
+          if (count === 3) {
+            if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
+              return output.blue3!({
+                hit1: hitSpots[0],
+                hit2: hitSpots[1],
+                hit3: hitSpots[2],
+                safe1: safeSpots[2],
+              });
+            if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
+              return output.blue3!({
+                hit1: hitSpots[0],
+                hit2: hitSpots[1],
+                hit3: hitSpots[2],
+                safe1: safeSpots[2],
+              });
+          }
+        }
       },
-      tts: null, // TODO: Remove when filtered for status effect
+      tts: (data) => {
+        // No TTS if outputting both
+        if (data.deadStarsOoze === undefined)
+          return null;
+      },
       outputStrings: {
         ...Directions.outputStrings8Dir,
         red: {
@@ -1233,6 +1422,299 @@ const triggerSet: TriggerSet<Data> = {
         },
         blue: {
           en: 'Blue: ${dirs}',
+        },
+        red1: {
+          en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+        },
+        blue1: {
+          en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+        },
+        red2: {
+          en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+        },
+        blue2: {
+          en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+        },
+        red3: {
+          en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+        },
+        blue3: {
+          en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze 1',
+      // This could call safe spot for those without buff
+      type: 'Ability',
+      netRegex: { source: ['Phobos', 'Triton'], id: ['A5DF', 'A5E0'], capture: false },
+      condition: (data) => {
+        if (
+          data.deadStarsLiquifiedTriton.length === 1 &&
+          data.deadStarsLiquifiedNereid.length === 1
+        )
+          return true;
+        return false;
+      },
+      infoText: (data, _matches, output) => {
+        const redOoze = data.deadStarsLiquifiedTriton;
+        const blueOoze = data.deadStarsLiquifiedNereid;
+        if (
+          redOoze === undefined || blueOoze === undefined ||
+          redOoze[0] === undefined || blueOoze[0] === undefined
+        )
+          return;
+
+        const red = output[deadStarsMapOutput[redOoze[0]] ?? 'unknown']!();
+        const blue = output[deadStarsMapOutput[blueOoze[0]] ?? 'unknown']!();
+
+        if (data.deadStarsOoze === undefined) {
+          return output.getHitBothOoze!({ red: red, blue: blue });
+        }
+
+        if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
+          return output.getHitRedOoze!({ hit: red });
+        return output.getHitBlueOoze!({ hit: blue });
+      },
+      outputStrings: {
+        northeast: Outputs.northeast,
+        southeast: Outputs.southeast,
+        southwest: Outputs.southwest,
+        northwest: Outputs.northwest,
+        unknown: Outputs.unknown,
+        getHitRedOoze: {
+          en: '${hit} for Ooze',
+        },
+        getHitBlueOoze: {
+          en: '${hit} for Ooze',
+        },
+        getHitBothOoze: {
+          en: 'Red: ${red}, Blue: ${blue}',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze Counter',
+      // Count number of jumps
+      // Source is unreliable, coming from Triton, Phobos, Liquified Triton, Liquified Nereid
+      type: 'StartsUsing',
+      netRegex: { id: [deadStarsRedHitId, deadStarsBlueHitId], capture: false },
+      suppressSeconds: 1,
+      run: (data) => {
+        data.deadStarsOozeCount = data.deadStarsOozeCount + 1;
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze Hit Tracker',
+      // Debuffs update about 0.3s after the hit, predict debuff based on ability id and last known debuff
+      // A5E3 => Liquified Triton, decrease blue count, increase red count
+      // A5E4 => Liquified Nereid, decrease red count, increase blue count
+      // These abilities apply a 2s Magic Vulnerability Up (B7D)
+      // Players can be hit by both, so this is separated from hit trigger call
+      type: 'Ability',
+      netRegex: { id: [deadStarsRedHitId, deadStarsBlueHitId], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => {
+        if (data.deadStarsWasHitByOoze)
+          data.deadStarsWasVennDiagramed = true;
+        data.deadStarsWasHitByOoze = true;
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze 2-4 (Hit by Ooze)',
+      type: 'Ability',
+      netRegex: { id: [deadStarsRedHitId, deadStarsBlueHitId], capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 0.1, // Only needed to detect player hit by both
+      suppressSeconds: 1,
+      alertText: (data, matches, output) => {
+        // Get list of Ooze jumps based on player's current debuff color
+        if (data.deadStarsOoze !== undefined) {
+          const dirNums = data.deadStarsOoze.effectId === deadStarsBlueEffectId
+            ? data.deadStarsLiquifiedTriton
+            : data.deadStarsLiquifiedNereid;
+          if (
+            dirNums[0] === undefined || dirNums[1] === undefined ||
+            dirNums[2] === undefined || dirNums[3] === undefined
+          )
+            return;
+
+          const count = parseInt(data.deadStarsOoze.count, 16);
+          const predict = (
+            effectId: string,
+            id: string,
+          ): number => {
+            if (
+              (effectId === deadStarsBlueEffectId && id === deadStarsRedHitId) ||
+              (effectId === deadStarsRedEffectId && id === deadStarsBlueHitId)
+            )
+              return -1;
+            if (
+              (effectId === deadStarsBlueEffectId && id === deadStarsBlueHitId) ||
+              (effectId === deadStarsRedEffectId && id === deadStarsRedHitId)
+            )
+              return 1;
+            return 0;
+          };
+
+          // Take last known count if hit by both
+          const predictedCount = data.deadStarsWasVennDiagramed
+            ? count
+            : count + predict(data.deadStarsOoze.effectId, matches.id);
+
+         // If we need to still get hit
+          if (predictedCount !== 0) {
+            if (dirNums[data.deadStarsOozeCount] === 1)
+              return output.getHit!({ dir: output.northeast!() });
+            if (dirNums[data.deadStarsOozeCount] === 3)
+              return output.getHit!({ dir: output.southeast!() });
+            if (dirNums[data.deadStarsOozeCount] === 5)
+              return output.getHit!({ dir: output.southwest!() });
+            if (dirNums[data.deadStarsOozeCount] === 7)
+              return output.getHit!({ dir: output.northwest!() });
+          }
+        } else {
+          // If player hit by both, the net effect is they will not have a debuff
+          if (!data.deadStarsWasVennDiagramed) {
+            // Player either has no debuff, they should be gaining a debuff
+            const dirNums = matches.id === deadStarsBlueHitId
+              ? data.deadStarsLiquifiedTriton
+              : data.deadStarsLiquifiedNereid;
+            if (dirNums[data.deadStarsOozeCount] === 1)
+              return output.getHit!({ dir: output.northeast!() });
+            if (dirNums[data.deadStarsOozeCount] === 3)
+              return output.getHit!({ dir: output.southeast!() });
+            if (dirNums[data.deadStarsOozeCount] === 5)
+              return output.getHit!({ dir: output.southwest!() });
+            if (dirNums[data.deadStarsOozeCount] === 7)
+              return output.getHit!({ dir: output.northwest!() });
+          }
+        }
+
+        // Player will have no ooze, calculate where ooze are not jumping to
+        const blueOoze = data.deadStarsLiquifiedNereid[data.deadStarsOozeCount];
+        const redOoze = data.deadStarsLiquifiedTriton[data.deadStarsOozeCount];
+        if (blueOoze === undefined || redOoze === undefined)
+          return;
+
+        // Using longer direction call for single/double direction
+        const safeSpot = deadStarsFindSafeSpot(blueOoze, redOoze);
+
+        // 1 = Northeast, 3 = Southeast
+        if (safeSpot !== 1 && safeSpot !== 3)
+          return output[deadStarsMapOutput[safeSpot] ?? 'unknown']!();
+
+        // Call both Intercards
+        const dir1 = output[deadStarsMapOutput[safeSpot] ?? 'unknown']!();
+        const dir2 = safeSpot === 1 ? output['southwest']!() : output['northwest']!();
+        return output.safeSpots!({ dir1: dir1, dir2: dir2 });
+      },
+      run: (data) => {
+        if (data.deadStarsWasVennDiagramed)
+          data.deadStarsWasVennDiagramed = false;
+      },
+      outputStrings: {
+        north: Outputs.north,
+        northeast: Outputs.northeast,
+        east: Outputs.east,
+        southeast: Outputs.southeast,
+        south: Outputs.south,
+        southwest: Outputs.southwest,
+        west: Outputs.west,
+        northwest: Outputs.northwest,
+        unknown: Outputs.unknown,
+        getHit: {
+          en: '${dir} for Ooze',
+        },
+        safeSpot: {
+          en: '${dir} Safe Spot',
+          de: 'Sichere Stelle ${dir}',
+          fr: '${dir} Zone safe',
+          ja: '${dir}に安置',
+          cn: '去${dir}方安全点',
+          ko: '${dir} 안전 지대',
+        },
+        safeSpots: {
+          en: '${dir1} / ${dir2} Safe Spots',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dead Stars Nova/Ice Ooze 2-4 (Dodged Ooze)',
+      type: 'Ability',
+      netRegex: { id: [deadStarsRedHitId, deadStarsBlueHitId], capture: false },
+      delaySeconds: 0.1, // Delay to detect if player was hit
+      suppressSeconds: 1, // Suppress as it hits multiple players
+      alertText: (data, _matches, output) => {
+        if (data.deadStarsWasHitByOoze)
+          return;
+        // Get list of Ooze jumps based on player's current debuff color
+        if (data.deadStarsOoze !== undefined) {
+          const dirNums = data.deadStarsOoze.effectId === deadStarsBlueEffectId
+            ? data.deadStarsLiquifiedTriton
+            : data.deadStarsLiquifiedNereid;
+
+          if (
+            dirNums[0] === undefined || dirNums[1] === undefined ||
+            dirNums[2] === undefined || dirNums[3] === undefined
+          )
+            return;
+
+          if (dirNums[data.deadStarsOozeCount] === 1)
+            return output.getHit!({ dir: output.northeast!() });
+          if (dirNums[data.deadStarsOozeCount] === 3)
+            return output.getHit!({ dir: output.southeast!() });
+          if (dirNums[data.deadStarsOozeCount] === 5)
+            return output.getHit!({ dir: output.southwest!() });
+          if (dirNums[data.deadStarsOozeCount] === 7)
+            return output.getHit!({ dir: output.northwest!() });
+        }
+
+        // Player has no ooze, calculate where ooze are not jumping to
+        const blueOoze = data.deadStarsLiquifiedNereid[data.deadStarsOozeCount];
+        const redOoze = data.deadStarsLiquifiedTriton[data.deadStarsOozeCount];
+        if (blueOoze === undefined || redOoze === undefined)
+          return;
+
+        // Using longer direction call for single/double direction
+        const safeSpot = deadStarsFindSafeSpot(blueOoze, redOoze);
+
+        // 1 = Northeast, 3 = Southeast
+        if (safeSpot !== 1 && safeSpot !== 3)
+          return output[deadStarsMapOutput[safeSpot] ?? 'unknown']!();
+
+        // Call both Intercards
+        const dir1 = output[deadStarsMapOutput[safeSpot] ?? 'unknown']!();
+        const dir2 = safeSpot === 1 ? output['southwest']!() : output['northwest']!();
+        return output.safeSpots!({ dir1: dir1, dir2: dir2 });
+      },
+      run: (data) => {
+        // Reset to false for next jump
+        data.deadStarsWasHitByOoze = false;
+      },
+      outputStrings: {
+        north: Outputs.north,
+        northeast: Outputs.northeast,
+        east: Outputs.east,
+        southeast: Outputs.southeast,
+        south: Outputs.south,
+        southwest: Outputs.southwest,
+        west: Outputs.west,
+        northwest: Outputs.northwest,
+        unknown: Outputs.unknown,
+        getHit: {
+          en: '${dir} for Ooze',
+        },
+        safeSpot: {
+          en: '${dir} Safe Spot',
+          de: 'Sichere Stelle ${dir}',
+          fr: '${dir} Zone safe',
+          ja: '${dir}に安置',
+          cn: '去${dir}方安全点',
+          ko: '${dir} 안전 지대',
+        },
+        safeSpots: {
+          en: '${dir1} / ${dir2} Safe Spots',
         },
       },
     },
