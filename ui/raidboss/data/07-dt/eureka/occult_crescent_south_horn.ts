@@ -3369,7 +3369,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.shortStackOnYOU!();
         if (duration < 26)
           return output.mediumStackOnYOU!();
-        return output.longStatckOnYOU!();
+        return output.longStackOnYOU!();
       },
       outputStrings: {
         shortStackOnYOU: {
