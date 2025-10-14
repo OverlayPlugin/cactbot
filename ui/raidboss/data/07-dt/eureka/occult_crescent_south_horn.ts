@@ -3366,19 +3366,19 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, matches, output) => {
         const duration = parseFloat(matches.duration);
         if (duration < 18)
-          return output.shortStackOnYOU!();
+          return output.shortStackOnYou!();
         if (duration < 26)
-          return output.mediumStackOnYOU!();
-        return output.longStackOnYOU!();
+          return output.mediumStackOnYou!();
+        return output.longStackOnYou!();
       },
       outputStrings: {
-        shortStackOnYOU: {
+        shortStackOnYou: {
           en: 'Short Stack on YOU (17)',
         },
-        mediumStackOnYOU: {
+        mediumStackOnYou: {
           en: 'Medium Stack on YOU (25)',
         },
-        longStackOnYOU: {
+        longStackOnYou: {
           en: 'Long Stack on YOU (33)',
         },
       },
