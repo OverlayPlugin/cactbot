@@ -43,6 +43,7 @@ export interface Data extends RaidbossData {
   marbleDragonIsFrigidDive: boolean;
   marbleDragonHasWickedWater: boolean;
   magitaurCriticalBlowCount: number;
+  magitaurRuneAxeDebuff?: 'big1' | 'big2' | 'small1' | 'small2';
   magitaurRuneTargets: string[];
   magitaurRuinousRuneCount: number;
   magitaurRune2Targets: string[];
@@ -219,11 +220,11 @@ const magitaurOutputStrings = {
   rune1SmallAoEStayThenIn: {
     en: 'Stay for AOE => In, Between Squares',
   },
-  rune2BigAoeOnYou: {
-    en: 'Big AOE on YOU',
+  rune2BigAoeOnYouLater: {
+    en: 'Big AOE on YOU (Later)',
   },
-  rune2SmallAoeOnYou: {
-    en: 'Small aoe on YOU',
+  rune2SmallAoeOnYouLater: {
+    en: 'Small aoe on YOU (Later)',
   },
   rune2InBigAoeOnYou: {
     en: 'In, Between Squares => To Wall',
@@ -388,6 +389,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.deadStarsOoze;
         delete data.deadStarsSnowballTetherDirNum;
         delete data.marbleDragonDiveDirNum;
+        delete data.magitaurRuneAxeDebuff;
         delete data.magitaurBigRune2Target;
         delete data.bossDir;
         delete data.playerDir;
@@ -3074,49 +3076,40 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Line stack at staff',
         },
       },
-    }, /*
+    },
     {
       id: 'Occult Crescent Magitaur Rune Axe Debuffs',
-      // This won't work until FFXIVACT Plugin captures StatusEffectListForay3
-      // Applied with Rune Axe (A24F)
+      // Applied 1s after Rune Axe (A24F) cast and 1s before first headmarkers
       // Prey: Greater Axebit (10F1) 9s
-      // Prey: Lesser Axebit (10F0) 14s
+      // Prey: Lesser Axebit (10F0) 13s
       // Prey: Greater Axebit (10F1) 21s
       // Prey: Lesser Axebit (10F0) 21s
-      // TODO: Add the ${player1} ${player2}... for the small rune calls
+      // TODO: Fires multiple times for players with more than one debuff
       type: 'GainsEffect',
-      netRegex: { effectId: ['10F0', '11F1'], capture: true },
-      condition: (data, matches) => {
-        if (data.me === matches.target)
-          return true;
-        return false;
-      },
-      infoText: (_data, matches, output) => {
+      netRegex: { effectId: ['10F0', '10F1'], capture: true },
+      condition: Conditions.targetIsYou(),
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = magitaurOutputStrings;
+
         const duration = parseFloat(matches.duration);
         if (duration < 15) {
-          if (matches.effectId === '10F1')
-            return output.shortBigRune!();
-          return output.shortSmallRune!();
+          if (matches.effectId === '10F1') {
+            data.magitaurRuneAxeDebuff = 'big1';
+            return { alarmText: output.rune1BigAoeOnYou!() };
+          }
+          data.magitaurRuneAxeDebuff = 'small1';
+          return { infoText: output.rune1SmallAoeOnYou!() };
         }
-        if (matches.effectId === '10F1')
-          return output.longBigRune!();
-        return output.longSmallRune!();
+
+        if (matches.effectId === '10F1') {
+          data.magitaurRuneAxeDebuff = 'big2';
+          return { infoText: output.rune2BigAoeOnYouLater!() };
+        }
+        data.magitaurRuneAxeDebuff = 'small2';
+        return { infoText: output.rune2SmallAoeOnYouLater!() };
       },
-      outputStrings: {
-        shortBigRune: {
-          en: 'Big AOE on YOU (First)',
-        },
-        shortSmallRune: {
-          en: 'Small aoe on YOU (Second)',
-        },
-        longBigRune: {
-          en: 'Big AOE on YOU (Third)',
-        },
-        longSmallRune: {
-          en: 'Small aoe on YOU (Third)',
-        },
-      },
-    },*/
+    },
     {
       id: 'Occult Crescent Magitaur Ruinous Rune Counter',
       // 1: Big Ruinous Rune
@@ -3143,14 +3136,18 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurBigRuinousRune], capture: true },
       condition: (data) => {
-        return data.magitaurRuinousRuneCount === 1;
+        // Don't trigger for players with debuff as they received trigger 1s prior
+        if (
+          data.magitaurRuinousRuneCount === 1 &&
+          data.magitaurRuneAxeDebuff === undefined
+        )
+          return true;
+        return false;
       },
       response: (data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = magitaurOutputStrings;
         const target = matches.target;
-        if (data.me === target)
-          return { alarmText: output.rune1BigAoeOnYou!() };
 
         return {
           infoText: output.rune1BigAoeOnPlayer!({
@@ -3163,7 +3160,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Magitaur Small Ruinous Rune 1 Targets',
       // These must be placed on separate squares
       // Players are also given a debuff:
-      // Prey: Lesser Axebit (10F0) 14s
+      // Prey: Lesser Axebit (10F0) 13s
       type: 'HeadMarker',
       netRegex: { id: [headMarkerData.magitaurSmallRuinousRune], capture: true },
       condition: (data) => {
@@ -3176,12 +3173,13 @@ const triggerSet: TriggerSet<Data> = {
         if (data.magitaurRuneTargets.length < 3)
           return;
 
+        // Don't repeat for small aoe players or call for players with debuffs
+        if (data.magitaurRuneAxeDebuff !== undefined)
+          return;
+
         const target1 = data.magitaurRuneTargets[0];
         const target2 = data.magitaurRuneTargets[1];
         const target3 = data.magitaurRuneTargets[2];
-
-        if (data.me === target1 || data.me === target2 || data.me === target3)
-          return { infoText: output.rune1SmallAoeOnYou!() };
 
         return {
           infoText: output.rune1SmallAoesOnPlayers!({
@@ -3264,18 +3262,9 @@ const triggerSet: TriggerSet<Data> = {
         const small1 = data.magitaurRune2Targets[0];
         const small2 = data.magitaurRune2Targets[1];
 
-        if (data.me === big || data.me === small1 || data.me === small2) {
-          // Players who had small rune first need later call to prevent overlap
-          const target1 = data.magitaurRuneTargets[0];
-          const target2 = data.magitaurRuneTargets[1];
-          const target3 = data.magitaurRuneTargets[2];
-          if (data.me === target1 || data.me === target2 || data.me === target3)
-            return;
-          if (data.me === big)
-            return { infoText: output.rune2BigAoeOnYou!() };
-          if (data.me === small1 || data.me === small2)
-            return { infoText: output.rune2SmallAoeOnYou!() };
-        }
+        // These three players receive alert trigger in ~3s with the info
+        if (data.me === big || data.me === small1 || data.me === small2)
+          return;
 
         return {
           infoText: output.rune2AoesOnPlayers!({
