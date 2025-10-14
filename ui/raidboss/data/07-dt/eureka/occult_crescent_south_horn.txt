@@ -426,14 +426,12 @@ hideall "--sync--"
 15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
 ### The Forked Tower: Blood
-#18000.0 "--sync--" ActorControl { command: "80000014", data0: "33B" } window 100000,0
+#19000.0 "--sync--" ActorControl { command: "80000014", data0: "33B" } window 100000,0
 
 ### Demon Tablet
-# -ii A30A A309 A3AF A2EB A2F1 A2EF A303 A304 A308 A354 A2FE A2E6 A2E7 A91D A91E AB12 A2FD
-# -ii A2F2 A81A A353
+# -ii A30A A309 A3AF A303 A304 A308 A2FE A2E6 A2E7 A91D A91E AB12 A2FD A2F2 A81A A353
 # -p A306:20009.1
 # -it "Demon Tablet" "Summoned Arch Demon" "Summoned Demon"
-#
 # IGNORED ABILITIES
 # A2F2 Unmitigated Explosion (2.1s after Explosion if mechanic failed)
 # A81A Unmitigated Explosion (2.1s after Explosion if mechanic failed)
@@ -447,9 +445,37 @@ hideall "--sync--"
 # A30A Auto-attack from boss
 # A309 Auto-attack from boss (non-damaging)
 # A353 Auto-attack from Summoned Arch Demon
+# A3AF Demonic Dark II
 # AB12 Landing
 # A91D Landing player hit
 # A91E Landing
+#
+# ALL ENCOUNTER ABILITIES
+# A2E4 Cometeor of Dangers Near
+# A2E8 Portentous Comet
+# A2E9 Summon
+# A2EA Gravity of Dangers Near
+# A2EB Erase Gravity
+# A2EC Restore Gravity
+# A2ED Landing
+# A2EE Demonography
+# A2EF Explosion (Ground Tower Soak Damage)
+# A2F1 Explosion (Floating Tower Soak Damage)
+# A2F3 Ray of Dangers Near
+# A2F5 Ray of Ignorance
+# A2F6 Demonograph of Dangers Near
+# A2F8 Explosion (Tower Soak Damage)
+# A300 Lacunate Stream
+# A301 Rotate Right
+# A302 Rotate Left
+# A305 Rotation
+# A306 Demonic Dark II
+# A307 Occult Chisel
+# A30D Summon
+# A354 Landing
+# A30B End of History (Enrage cast)
+# A355 End of History (Enrage damage)
+# A30C End of History (Post-Enrage cast)
 # The Palaeography Room will be sealed off
 20000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1450" } window 100000,0
 20003.0 "--sync--" Ability { id: "A309", source: "Demon Tablet" }
@@ -486,7 +512,7 @@ hideall "--sync--"
 20239.7 "Demonography" Ability { id: "A2EE", source: "Demon Tablet" }
 20251.7 "Gravity of Dangers Near / Gravity of Expulsion Afar" Ability { id: ["A2EA", "AA01"], source: "Demon Tablet" }
 20252.1 "Landing" Ability { id: "A354", source: "Demon Tablet" }
-20255.7 "Erase Gravity" #Ability { id: "A2EB", source: "Demon Tablet" }
+20255.7 "Erase Gravity" Ability { id: "A2EB", source: "Demon Tablet" }
 20261.4 "Explosion" Ability { id: ["A2F1", "A2EF"], source: "Demon Tablet" }
 20265.7 "Restore Gravity" Ability { id: "A2EC", source: "Demon Tablet" }
 20267.7 "Landing" Ability { id: "A2ED", source: "Demon Tablet" }
@@ -516,19 +542,17 @@ hideall "--sync--"
 20400.4 "End of History (Enrage)" #Ability { id: "A355", source: "Demon Tablet" }
 
 ### Dead Stars
-# -ii A5FA A5FB A608 A602 A5FF A600 A63E A63F A5B9 A5DC A5DF A5DB A5E3 A5E4 A5DE A5E5 A5F9 A606
-# -ii A5D1 A5D2 A5CC A5CD A5E8 A5E9 A5EA A5EB A5EC A5EE A5EF A5F1 A5F3 A5BB
+# -ii 366 A5FA A5FB A608 A602 A5FF A600 A63E A63F A5B9 A5DC A5DF A5DB A5E4 A5DE A5E5 A5F9 A606 A5D1 A5D2 A5CC A5CD A5E8 A5E9 A5EA A5EB A5EC A5EE A5EF A5F1 A5F3 A5BB
 # -p A5FC:30016.5
 # -it "Phobos" "Nereid" "Triton" "Frozen Triton" "Gaseous Nereid" "Dead Stars"
-#
 # IGNORED ABILITIES
+# 366 attack
 # A5B9 Three-Body Problem from Triton
 # A5CC Flamethrower (Targeted Players)
 # A5CD Flamethrower (Damage)
 # A5BB unknown_a5bb Transformation, only syncable for slimes
 # A5DB Liquified Triton / Liquified Nereid Jump
 # A5DE Frozen Fallout from Phobos
-# A5E3 Frozen Fallout from Liquified Triton
 # A5E4 Frozen Fallout from Liquified Nereid
 # A5E5 Noxious Nova self-cast on Phobos
 # A5EA Bodied (bosses colliding with each other)
@@ -554,6 +578,62 @@ hideall "--sync--"
 # A606 Firestrike Damage
 # A602 Slice 'n' Dice (tankbuster related)
 # A608 Auto-attack from boss
+#
+# ALL ENCOUNTER ABILITIES
+# A5B4 --sync--
+# A5B5 Three-body Probl─
+# A5B6 Chilling Collision
+# A5B7 Three-body Problem
+# A5B8 Three-body Problem
+# A5BA --sync--
+# A5BC --sync--
+# A5BD Vengeful Fire III
+# A5BE Vengeful Blizzard III
+# A5BF Vengeful Bio III
+# A5C0 Elemental Impact
+# A5C1 Elemental Impact
+# A5C2 Elemental Impact
+# A5C9 Geothermal Rupture
+# A5CA Geothermal Rupture
+# A5CB Flame Thrower
+# A5CE Snowball Flight
+# A5CF Snow Boulder
+# A5D0 Snow Boulder
+# A5D3 Chilling Collision
+# A5D4 Chilling Collision
+# A5D5 To the Winds
+# A5D9 Primordial Chaos
+# A5DA Primordial Chaos
+# A5DD Frozen Fallout
+# A5E0 Frozen Fallout tells from Phobos and Triton
+# A5E1 Frozen Fallout
+# A5E2 Frozen Fallout
+# A5E3 Frozen Fallout from Liquified Triton
+# A5E6 Noxious Nova
+# A5E7 Six-handed Fistfight
+# A5ED Collateral Damage
+# A5F0 Collateral Gas Jet
+# A5F2 Collateral Iceball
+# A5F4 Fusion Burst (Enrage)
+# A5F5 Fusion Burst (Enrage)
+# A5F6 --sync--
+# A5F7 Return Phobos and Triton cast this at end of fight
+# A5F8 Excruciating Equilibrium
+# A5FC Decisive Battle
+# A5FD Delta Attack
+# A5FE Delta Attack
+# A601 Slice 'n' Dice
+# A603 Firestrike
+# A604 Firestrike
+# A605 Slice 'n' Strike
+# A607 Firestrike
+# A635 Blazing Belligerent
+# A636 Icebound Buffoon
+# A637 Noisome Nuisance
+# A641 Fusion Burst (Post-Enrage)
+# A89A Avalaunch
+# A908 Fire Spread
+# A9BD Three-body Problem
 # The Astronomy Room will be sealed off
 30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1451" } window 100000,0
 30008.2 "--sync--" Ability { id: "A5B4", source: "Phobos" }
@@ -709,17 +789,22 @@ hideall "--sync--"
 30422.3 label "oc-dead-stars-enrage-loop"
 30427.0 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" } jump "oc-dead-stars-enrage-loop"
 
+# Early Clear
+30600.0 "--sync--" StartsUsing { id: "A5F7", source: "Phobos" } window 600,2
+30606.0 "Return (Clear)" Ability { id: "A5F7", source: "Phobos" }
+
 ### Pronged Passage (Bridges)
 # Note: Raid splits into two and battles across their own bridge in 3 sections
 # If one group is faster than the other, the other's section starts to burn
 # If either group is too slow in a section, the ground starts to Burn as a soft enrage
 # Unsure if these timings can be reliably predicted
 #
-# -ii A3A8 A3A9 A43B A43D A442 A443 46D1 64F1 A903 A62A A62B A624 A625 A61F
+# -ii 368 A3A8 A3A9 A43B A43D A442 A443 46D1 64F1 A903 A62A A62B A624 A625 A61F
 # -p A441:40011.3 A620:40346.0
 # -it "Tower Bhoot" "Tower Bogy" "Tower Abyss" "Tower Idol" "Tower Progenitrix" "Tower Progenitor" "Lava Bomb" "Aetherial Ward"
 #
 # IGNORED ABILITIES
+# 368 attack
 # A3A8 Dense Darkness (Tower Abyss)
 # A3A9 Diffuse Darkness (Tower Abyss)
 # A43B unknown_a43b (Trap) (Trap's proximity checker?)
@@ -729,11 +814,24 @@ hideall "--sync--"
 # A61F Ancient Aero III (Tower Idol)
 # A624 Massive Explosion (Tower Progenitrix) starts enrage cast if Tower Progenitor dies
 # A625 Massive Explosion (Tower Progenitor) starts enrage cast if Tower Progenitrix dies 
-# A62A Nexus of Flame (Tower Progenitrix) Pulsing aoe from adds being too close/far?
-# A62B Massive Explosion (Tower Progenitrix/Tower Progenitor)
+# A62A Nexus of Flame (Tower Progenitrix) Pulsing aoe (1.9s) from being too close/far from Tower Progenitor during A620/A622
+# A62B Massive Explosion (Lava Bomb) Lava Bomb add reaching Tower Progenitor/Tower Progenitrix
 # 46D1 Attack (Tower Idol) (Tower Abyss)
 # A903 Paralyze III
 # 64F1 Radiant Aegis (bug in log? had no source)
+#
+# ALL ENCOUNTER ABILITIES
+# A43F --sync-- Burns trap
+# A441 Arcane Spear
+# A620 Close Call to Detonate (Tower Progenitrix)
+# A621 Close Call to Detonate (Tower Progenitor)
+# A622 Far Cry to Detonate (Tower Progenitrix)
+# A623 Far Cry to Detonate (Tower Progenitor)
+# A626 Bombshell Drop (Tower Progenitrix)
+# A627 Bombshell Drop (Tower Progenitor)
+# A628 Punishing Pounce (Tower Progenitrix)
+# A629 Punishing Pounce (Tower Progenitor)
+# A6F4 Arcane Spear
 # The pronged passage will be sealed off
 40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1454" } window 100000,0
 
@@ -784,24 +882,48 @@ hideall "--sync--"
 40479.9 "--adds--"
 
 ### Marble Dragon
-# -ii 756B 7842 9ECC 77E5 77E6 7797 76CF 9A26 93BB 76D1 7616
+# -ii 756B 7842 9ECC 77E5 77E6 7797 76CF 9A26 93BB 76D1 7616 93BA
 # -p 77F1:50011.0 76D3:50320.3
 # -it "Marble Dragon" "Ice Golem" "Ice Sprite"
-#
 # IGNORED ABILITIES
 # 756B Attack
 # 76CF Frigid Twister (puddle movement?)
 # 7616 Immitation Blizzard tower (7615) without at least 4 players in it
 # 76D1 Immitation Blizzard aoe damage from 7616 Immitation Blizzard cast
-# 9ECC Draconiform Motion (Damage), ~2.9s after cast
+# 9ECC Imitation Star (Damage), 1.9s to 2.9s after cast
 # 7842 unknown_7842 from Tower Idol
 # 7797 Imitation Raid (Damage), 0.5-0.7s after cast
 # 77E5 Draconiform Motion (Damage from Head), 0.7-0.9s after cast
 # 77E6 Draconiform Motion (Damage from Tail?), 0.7-0.9s after cast
+# 93BA Lifeless Legacy (damage), 1.9s after cast
 # 93BB Frigid Dive (Damage)
 # 9A26 Attack (Ice Golem)
 #
-# NOTE: 77F0 Dread Deluge (Damage), 2s after castbar
+# ALL ENCOUNTER ABILITIES
+# 756C --sync--
+# 756D Lifeless Legacy (Enrage)
+# 756E Lifeless Legacy (Post-Enrage)
+# 756F Imitation Icicle
+# 75E4 Imitation Icicle
+# 7602 Imitation Blizzard (circle aoe)
+# 7614 Imitation Blizzard (cross aoe)
+# 7615 Imitation Blizzard (Tower soak damage)
+# 7638 Frigid Twister
+# 7687 Imitation Rain
+# 76D0 --sync--
+# 76D3 Withering Eternity
+# 7795 --sync--
+# 7796 Frigid Dive
+# 7798 Lifeless Legacy (cast)
+# 77C1 Draconiform Motion
+# 77E7 Wicked Water
+# 77E8 Dread Deluge cast
+# 77F0 Dread Deluge (Damage), 2s after castbar
+# 77F1 Imitation Star
+# 93BF Frozen Heart
+# 9ECD Lifeless Legacy (Enrage)
+# A715 Ball of Ice
+# A716 Ball of Ice
 # The Glaciology Forum will be sealed off
 50000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1452" } window 100000,0
 50006.0 "--sync--" StartsUsing { id: "77F1", source: "Marble Dragon" } window 100,50
@@ -881,8 +1003,7 @@ hideall "--sync--"
 50371.5 "--sync--" Ability { id: "76D0", source: "Marble Dragon" }
 50373.5 "--targetable--"
 50374.1 "--ice sprites--"
-50409.5 "Lifeless Legacy" Ability { id: "7798", source: "Marble Dragon" }
-50411.4 "Lifeless Legacy" #Ability { id: "93BA", source: "Marble Dragon" }
+50409.5 "Lifeless Legacy" Ability { id: "7798", source: "Marble Dragon" } duration 1.9
 
 # Possible soft enrage here from adds?
 # 93BF Frozen Heart cast by Ice Golems adds premanent Damage Up buff to the Ice Golem
@@ -967,11 +1088,14 @@ hideall "--sync--"
 50891.4 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump "oc-marble-dragon-enrage-loop"
 
 ### Magitaur
-# -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3 A25C A25D A258 A259
+# -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3 A25C A25D A258 A259 A243 A244 A245 A246
 # -p A264:60014.3
 # -it "Magitaur" "Lance Empowerment Conduit" "Axe Empowerment Conduit" "Universal Empowerment Conduit"
-#
 # IGNORED ABILITIES
+# A243 Attack
+# A244 Attack
+# A245 Attack
+# A246 Attack
 # A248 Critical Axeblow damage
 # A249 Critical Axeblow damage
 # A24E Critical Lanceblow damage
@@ -979,7 +1103,7 @@ hideall "--sync--"
 # A258 Lancelight damage
 # A259 Lancelight damage
 # A25C Arcane Recoil tankbuster when Axe Empowerment Conduit or Lance Empowerment Conduit dies
-# A25D Arcane Reaction tankbuster when Universal Empowerment Conduit dies
+# A25D Arcane Reaction tankbuster when Universal Empowerment Conduit dies, causes Hysteria (1047) 60s, needs to be killed by Phantom Berserker
 # A266 Forked Fury damage
 # A325 Attack
 # ADC2 Aura Burst enrage damage
@@ -987,6 +1111,36 @@ hideall "--sync--"
 # 9BE5 Aura Burst damage
 # 9BE6 Holy damage
 # 9BE7 Unsealed Aura damage
+#
+# ALL ENCOUNTER ABILITIES
+# A1B7 --sync--
+# A241 Unseal
+# A242 Unseal
+# A247 Critical Axeblow
+# A24B Critical Lanceblow
+# A24C --sync--
+# A24F Rune Axe
+# A250 Ruinous Rune
+# A251 Ruinous Rune
+# A252 Carving Rune
+# A253 Axeglow
+# A254 Axeglow
+# A255 Holy Lance
+# A256 --sync--
+# A257 Holy IV
+# A25A Aura Burst
+# A25B Holy
+# A25E Sage's Staff
+# A25F Mana Expulsion
+# A260 Assassin's Dagger
+# A261 Assassin's Dagger
+# A262 Assassin's Dagger
+# A263 Assassin's Dagger
+# A264 Unsealed Aura
+# A265 Forked Fury
+# A267 Unsealed Aura (Enrage cast)
+# A268 Unsealed Aura (Post-Enrage cast)
+# 9BE8 Unsealed Aura (Enrage damage)
 # The Haematology Room will be sealed off
 60000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1453" } window 100000,0
 60010.1 "--sync--" StartsUsing { id: "A264", source: "Magitaur" } window 100,50
