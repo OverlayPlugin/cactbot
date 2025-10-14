@@ -3351,6 +3351,39 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: magitaurOutputStrings,
     },
     {
+      id: 'Occult Crescent Magitaur Lancepoint Debuffs Initial',
+      // Prey: Lancepoint (10F2) is applied ~1s after Holy Lance (A255)
+      // Comes up to three players in a set marked with these durations: 33s, 25s, and 17s
+      // Presumably these would have gone out 1 of each time to each square if players pre-positioned
+      // Can be buggy and have a refresh log
+      // This might not be solvable without knowing the player's square as
+      // to if they should be told to stand in middle of their square/avoid overlap
+      type: 'GainsEffect',
+      netRegex: { effectId: '10F2', capture: true },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: (_data, matches) => parseFloat(matches.duration),
+      suppressSeconds: 34, // Duration of the debuffs +1s
+      infoText: (_data, matches, output) => {
+        const duration = parseFloat(matches.duration);
+        if (duration < 18)
+          return output.shortStackOnYOU!();
+        if (duration < 26)
+          return output.mediumStackOnYOU!();
+        return output.longStatckOnYOU!();
+      },
+      outputStrings: {
+        shortStackOnYOU: {
+          en: 'Short Stack on YOU (17)',
+        },
+        mediumStackOnYOU: {
+          en: 'Medium Stack on YOU (25)',
+        },
+        longStackOnYOU: {
+          en: 'Long Stack on YOU (33)',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Magitaur Lancelight On/Off Square',
       // Tracking A256 which seems to be related to the Lance aninmations when
       // Lancelight A258 or A259 goes off
@@ -3365,17 +3398,17 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = magitaurOutputStrings;
         data.magitaurLancelightCount = data.magitaurLancelightCount + 1;
         switch (data.magitaurLancelightCount) {
-          case 1:
+          case 1: // ~13s after debuffs
             return { infoText: output.northeastOff!() };
-          case 4:
+          case 4: // ~19s after debuffs (stack 1 goes off ~2s prior)
             return { infoText: output.northeastOn!() };
-          case 5:
+          case 5: // ~21s after debuffs
             return { infoText: output.southOff!() };
-          case 8:
+          case 8: // ~27s after debuffs, (stack 2 goes off ~2s prior)
             return { infoText: output.southOn!() };
-          case 9:
+          case 9: // ~29s after debuffs
             return { infoText: output.northwestOff!() };
-          case 12:
+          case 12: // ~35s after debuffs (stack 3 goes off ~2s prior)
             return { alertText: output.out!() };
         }
       },
