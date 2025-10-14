@@ -2950,7 +2950,7 @@ const triggerSet: TriggerSet<Data> = {
       // Blue Lance = 2 furthest players
       // Applies Unsealed to the boss (10F3):
       // A242 applies it with count of '353' => Tanks Far, Party Close
-      // A241 applies it with count of '354' => Tanks Close, Party Far 
+      // A241 applies it with count of '354' => Tanks Close, Party Far
       type: 'Ability',
       netRegex: { source: 'Magitaur', id: ['A241', 'A242'], capture: true },
       alertText: (_data, matches, output) => {
