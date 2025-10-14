@@ -343,6 +343,30 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'Occult Crescent Magitaur Rune Axe Square Position',
+      // Debuffs are based on proximity to squares
+      regex: /Rune Axe/,
+      beforeSeconds: 7,
+      alertText: (_data, _matches, output) => output.squarePosition!(),
+      outputStrings: {
+        squarePosition: {
+          en: 'Rune Axe Square Position',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Holy Lance Square Position',
+      // Debuffs are based on proximity to squares
+      regex: /Holy Lance/,
+      beforeSeconds: 7,
+      alertText: (_data, _matches, output) => output.squarePosition!(),
+      outputStrings: {
+        squarePosition: {
+          en: 'Holy Lance Square Position',
+        },
+      },
+    },
   ],
   triggers: [
     {
