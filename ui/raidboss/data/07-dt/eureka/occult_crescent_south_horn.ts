@@ -3389,7 +3389,7 @@ const triggerSet: TriggerSet<Data> = {
       // Lancelight A258 or A259 goes off
       // TODO: Get player position for an alertText and filter?
       // Players can manually blank the outputString for the other squares in configuration
-      // Holy IV first and second targets need to avoid overlapping outside square
+      // Holy IV targets need to avoid overlapping outside square if it isn't their turn to go out
       type: 'Ability',
       netRegex: { source: 'Luminous Lance', id: 'A256', capture: false },
       suppressSeconds: 1,
