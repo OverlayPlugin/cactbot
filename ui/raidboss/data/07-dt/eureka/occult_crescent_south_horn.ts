@@ -3058,10 +3058,10 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Start on Numbers',
         },
         pattern1: {
-          en: 'Dagger Pattern 1',
+          en: 'N/SE/SW Daggers',
         },
         pattern2: {
-          en: 'Dagger Pattern 2',
+          en: 'S/NE/NW Daggers',
         },
       },
     },
