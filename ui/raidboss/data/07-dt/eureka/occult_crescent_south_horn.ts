@@ -293,6 +293,20 @@ const triggerSet: TriggerSet<Data> = {
       },
       default: 'none',
     },
+    {
+      id: 'magitaurDaggers',
+      name: {
+        en: 'Forked Tower: Blood Magitaur Dagger Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'BAP Daggers (Number and Letter Floor Markers)': 'bap',
+          'No pattern naming.': 'none',
+        },
+      },
+      default: 'none',
+    },
   ],
   timelineFile: 'occult_crescent_south_horn.txt',
   initData: () => ({
@@ -2990,6 +3004,64 @@ const triggerSet: TriggerSet<Data> = {
         },
         tanksNear: {
           en: 'Tanks Close (Party Far) x2',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Magitaur Assassin\'s Dagger Pattern',
+      // A261 StartsUsingExtra lines contain different y values between patterns
+      // Pattern 1 (Letters in BAP Daggers)
+      // (672.384, -689.963)
+      // (727.622, -689.963)
+      // (700.003, -642.110)
+      // Pattern 2 (Numbers in BAP Daggers)
+      // (672.384, -658.071)
+      // (727.622, -658.071)
+      // (700.003, -705.435)
+      // BAP Daggers:
+      // See https://www.youtube.com/playlist?list=PL7RVNORIbhth-I3mFGEqRknCpSlP7EWDc youtube playlist for explainer videos
+      // Supposedly created by a group named "BAP", in theory a group formed during Baldesion Arsenal on Primal DC
+      // 1. Start on letter or number on their square for 5 hits, then dodge axeblow/lanceblow
+      // 2. After dodge, party waits for 1 hit and then waits on D marker until lanceblow/axeblow cast
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A261', capture: true },
+      suppressSeconds: 1, // There are three daggers, only capture one
+      infoText: (data, matches, output) => {
+        // Only need to examine one dagger
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+
+        // Pattern 1
+        if ((y > -691 && y < -688) || (y > -640 && y < -643)) {
+          if (data.triggerSetConfig.demonTabletRotation === 'bap')
+            return output.startOnLetters!();
+          return output.pattern1!();
+        }
+
+        // Pattern 2
+        if ((y > -660 && y < -657) || (y > -707 && y < -704)) {
+          if (data.triggerSetConfig.demonTabletRotation === 'bap')
+            return output.startOnNumbers!();
+          return output.pattern2!();
+        }
+
+        // Log error for unrecognized coordinates
+        console.error(
+          `Occult Crescent Magitaur Assassin\'s Dagger Pattern: Unrecognized coordinates (${x}, ${y})`,
+        );
+      },
+      outputStrings: {
+        startOnLetters: {
+          en: 'Start on Letters',
+        },
+        startOnNumbers: {
+          en: 'Start on Numbers',
+        },
+        pattern1: {
+          en: 'Dagger Pattern 1',
+        },
+        pattern2: {
+          en: 'Dagger Pattern 2',
         },
       },
     },
