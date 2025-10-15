@@ -302,7 +302,7 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'BAP Daggers (Number and Letter Floor Markers)': 'bap',
-          'No pattern naming.': 'none',
+          'No strategy, call starting directions.': 'none',
         },
       },
       default: 'none',
