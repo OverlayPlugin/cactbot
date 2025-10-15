@@ -216,12 +216,21 @@ const triggerSet: TriggerSet<Data> = {
         },
         haste: {
           en: 'Haste',
+          de: 'Hast',
+          fr: 'Hâte',
+          ja: 'ヘイスト',
         },
         purification: {
           en: 'Purification',
+          de: 'Reinigung',
+          fr: 'Purification',
+          ja: '浄化の守り',
         },
         devotion: {
           en: 'Devotion',
+          de: 'Weisung',
+          fr: 'Dévotion',
+          ja: '巡礼の導き',
         },
         unknown: Outputs.unknown,
       },
@@ -261,15 +270,29 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         duplicate: {
           en: '${incense} duplicate',
+          de: 'Doppelter ${incense}',
+          fr: '${incense} dupliqué(e)',
+          ja: '${incense} 被り',
+          cn: '${incense} 重复',
+          ko: '${incense} 중복',
         },
         mazeroot: {
           en: 'Mazeroot',
+          de: 'Wandelwurz',
+          fr: 'Sagacité',
+          ja: '明敏',
         },
         barkbalm: {
           en: 'Barkbalm',
+          de: 'Sakralharz',
+          fr: 'Quiétude',
+          ja: '安寧',
         },
         poisonfruit: {
           en: 'Poisonfruit',
+          de: 'Todesbeeren',
+          fr: 'Fatalité',
+          ja: '宿命',
         },
         unknown: Outputs.unknown,
       },
@@ -292,6 +315,38 @@ const triggerSet: TriggerSet<Data> = {
           cn: '传送装置已启动',
           ko: '전송장치 활성화',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Mimic': 'Mimik',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Mimic': 'Mimic',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Mimic': 'ミミック',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Mimic': '拟态怪',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Mimic': '미믹',
       },
     },
   ],
