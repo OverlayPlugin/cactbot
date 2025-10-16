@@ -322,7 +322,7 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'BAP Daggers (Number and Letter Floor Markers)': 'bap',
-          'No strategy, call starting directions.': 'none',
+          'No strategy (Y-Pattern and ⅄-Pattern)': 'none',
         },
       },
       default: 'none',
@@ -3097,14 +3097,14 @@ const triggerSet: TriggerSet<Data> = {
 
         // Pattern 1
         if ((y > -691 && y < -688) || (y > -640 && y < -643)) {
-          if (data.triggerSetConfig.demonTabletRotation === 'bap')
+          if (data.triggerSetConfig.magitaurDaggers === 'bap')
             return output.startOnLetters!();
           return output.pattern1!();
         }
 
         // Pattern 2
         if ((y > -660 && y < -657) || (y > -707 && y < -704)) {
-          if (data.triggerSetConfig.demonTabletRotation === 'bap')
+          if (data.triggerSetConfig.magitaurDaggers === 'bap')
             return output.startOnNumbers!();
           return output.pattern2!();
         }
@@ -3114,6 +3114,15 @@ const triggerSet: TriggerSet<Data> = {
           `Occult Crescent Magitaur Assassin\'s Dagger Pattern: Unrecognized coordinates (${x}, ${y})`,
         );
       },
+      tts: (data, matches, output) => {
+        const y = parseFloat(matches.y);
+
+        // Pattern 1
+        if ((y > -691 && y < -688) || (y > -640 && y < -643)) {
+          if (data.triggerSetConfig.magitaurDaggers === 'none')
+            return output.pattern1TtsText!();
+        }
+      },
       outputStrings: {
         startOnLetters: {
           en: 'Start on Letters',
@@ -3122,12 +3131,16 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Start on Numbers',
         },
         pattern1: {
-          en: 'N/SE/SW Daggers',
+          en: '⅄ Daggers', // Displays an upside down Y
+        },
+        pattern1TtsText: {
+          en: 'Flipped Y Daggers',
         },
         pattern2: {
-          en: 'S/NE/NW Daggers',
+          en: 'Y Daggers',
         },
       },
+    },
     },
     {
       id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow Counter',
