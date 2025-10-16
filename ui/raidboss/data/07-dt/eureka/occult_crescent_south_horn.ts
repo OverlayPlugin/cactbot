@@ -137,17 +137,17 @@ const demonTabletFindGravityCorner = (
   x: number,
   y: number,
 ): boolean | undefined => {
-        if (x > 687 && x < 689) {
-          if ((y > 351 && y < 353) || (y > 394.5 && y < 396.5))
-            return true;
-          if ((y > 361.5 && y < 363.5) || (y > 387 && y < 389))
-            return false;
-        } else if (x > 711 && x < 713) {
-          if ((y > 361.5 && y < 363.5) || (y > 405 && y < 407))
-            return true;
-          if ((y > 369 && y < 371) || (y > 394.5 && y < 396.5))
-            return false;
-        }
+  if (x > 687 && x < 689) {
+    if ((y > 351 && y < 353) || (y > 394.5 && y < 396.5))
+      return true;
+    if ((y > 361.5 && y < 363.5) || (y > 387 && y < 389))
+      return false;
+  } else if (x > 711 && x < 713) {
+    if ((y > 361.5 && y < 363.5) || (y > 405 && y < 407))
+      return true;
+    if ((y > 369 && y < 371) || (y > 394.5 && y < 396.5))
+      return false;
+  }
   return undefined;
 };
 
