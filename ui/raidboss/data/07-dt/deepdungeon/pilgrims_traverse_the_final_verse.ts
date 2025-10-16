@@ -176,7 +176,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         side: {
           en: 'Check safe side',
-          ko: '안전한 쪽 확인',
+          ko: '양 옆 중 안전한 곳 확인',
         },
       },
     },
