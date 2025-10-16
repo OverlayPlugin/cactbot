@@ -131,6 +131,26 @@ const headMarkerData = {
 // Occult Crescent Forked Tower: Blood Demon Tablet consts
 // const demonTabletCenterX = 700;
 const demonTabletCenterY = 379;
+
+// Function to find safe spot for summoned statues
+const demonTabletFindGravityCorner = (
+  x: number,
+  y: number,
+): boolean | undefined => {
+        if (x > 687 && x < 689) {
+          if ((y > 351 && y < 353) || (y > 394.5 && y < 396.5))
+            return true;
+          if ((y > 361.5 && y < 363.5) || (y > 387 && y < 389))
+            return false;
+        } else if (x > 711 && x < 713) {
+          if ((y > 361.5 && y < 363.5) || (y > 405 && y < 407))
+            return true;
+          if ((y > 369 && y < 371) || (y > 394.5 && y < 396.5))
+            return false;
+        }
+  return undefined;
+};
+
 // Occult Crescent Forked Tower: Blood Dead Stars consts
 const deadStarsCenterX = -800;
 const deadStarsCenterY = 360;
@@ -156,7 +176,7 @@ const deadStarsOutputStrings = {
 };
 
 // Function to find a safe spot in Primordial Chaos
-// Expected inpus are the dirNums of two oozes
+// Expected inputs are the dirNums of two oozes
 const deadStarsFindSafeSpot = (
   ooze1: number,
   ooze2: number,
@@ -1050,7 +1070,61 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Demon Tablet Erase Gravity Safe Corner (Early)',
+      // The statues are added ~0.1s before Summon (A2E9) cast
+      // BNpcID 2014581 combatants are responsible for the statues
+      // The combatants are still invisible for ~5s when the data is available
+      type: 'StartsUsing',
+      netRegex: { id: 'A2E9', capture: false },
+      durationSeconds: 21, // Time until tower => safe corner call
+      promise: async (data) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+        const statues = actors.filter((c) => c.BNpcID === 2014581);
+        if (statues === undefined || statues.length !== 4) {
+          console.error(
+            `Occult Crescent Demon Tablet Summon Statue Locations: Wrong statue count ${statues.length}`,
+          );
+          return;
+        }
+        if (statues[0] === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Summon Statue Locations: Invalid statue data.`,
+          );
+          return;
+        }
+        // Only need to examine one statue
+        const statue = statues[0];
+        const x = statue.PosX;
+        const y = statue.PosY;
+
+        data.demonTabletIsFrontRight = demonTabletFindGravityCorner(x, y);
+        if (data.demonTabletIsFrontRight === undefined) {
+          console.error(
+            `Occult Crescent Demon Tablet Statue Locations: Unrecognized coordinates (${x}, ${y})`,
+          );
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.demonTabletIsFrontRight === undefined)
+          return;
+        return data.demonTabletIsFrontRight
+          ? output.frontRightLater!()
+          : output.backLeftLater!();
+      },
+      outputStrings: {
+        frontRightLater: {
+          en: 'Front Right (Later)',
+        },
+        backLeftLater: {
+          en: 'Back Left (Later)',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Demon Tablet Erase Gravity Collect',
+      // This re-updates the values and is a backup in case the early call fails
       // Statues cast Erase Gravity, which sends them and anyone near up in the air
       // Boss casts Restore Gravity which will cause the statues and players to fall back down
       // Statues falling down trigger aoes
@@ -1080,17 +1154,7 @@ const triggerSet: TriggerSet<Data> = {
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
 
-        if (x > 687 && x < 689) {
-          if ((y > 351 && y < 353) || (y > 394.5 && y < 396.5))
-            data.demonTabletIsFrontRight = true;
-          if ((y > 361.5 && y < 363.5) || (y > 387 && y < 389))
-            data.demonTabletIsFrontRight = false;
-        } else if (x > 711 && x < 713) {
-          if ((y > 361.5 && y < 363.5) || (y > 405 && y < 407))
-            data.demonTabletIsFrontRight = true;
-          if ((y > 369 && y < 371) || (y > 394.5 && y < 396.5))
-            data.demonTabletIsFrontRight = false;
-        }
+        data.demonTabletIsFrontRight = demonTabletFindGravityCorner(x, y);
 
         // Log error for unrecognized coordinates
         if (data.demonTabletIsFrontRight === undefined) {
