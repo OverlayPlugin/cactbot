@@ -3141,7 +3141,6 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-    },
     {
       id: 'Occult Crescent Magitaur Critical Axeblow/Lanceblow Counter',
       // For tracking which part in the encounter the cast is
