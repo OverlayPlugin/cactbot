@@ -2721,7 +2721,7 @@ const triggerSet: TriggerSet<Data> = {
         const crosses = actors.filter((c) => c.BNpcID === 2014547);
         if (crosses.length !== 2 || crosses[0] === undefined) {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain Puddles: Wrong actor count ${crosses.length}`,
+            `Occult Crescent Marble Dragon Imitation Rain 1 Direction: Wrong actor count ${crosses.length}`,
           );
           return;
         }
@@ -2741,7 +2741,7 @@ const triggerSet: TriggerSet<Data> = {
           data.marbleDragonImitationRainDir = 'west';
         } else {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain Puddles: Unexpected coordinates (${x}, ${y})`,
+            `Occult Crescent Marble Dragon Imitation Rain 1 Direction: Unexpected coordinates (${x}, ${y})`,
           );
         }
       },
