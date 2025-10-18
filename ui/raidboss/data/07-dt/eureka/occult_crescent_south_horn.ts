@@ -37,6 +37,8 @@ export interface Data extends RaidbossData {
   deadStarsSnowballTetherCount: number;
   prongedPassageActLoc: { [id: string]: string };
   prongedPassageIdolCastCount: { [id: string]: number };
+  marbleDragonImitationRainCount: number;
+  marbleDragonImitationRainDir?: 'east' | 'west';
   marbleDragonTankbusterFilter: boolean;
   marbleDragonDelugeTargets: string[];
   marbleDragonDiveDirNum?: number;
@@ -354,6 +356,7 @@ const triggerSet: TriggerSet<Data> = {
       'north': 0,
       'south': 0,
     },
+    marbleDragonImitationRainCount: 0,
     marbleDragonTankbusterFilter: false,
     marbleDragonDelugeTargets: [],
     marbleDragonIsFrigidDive: false,
@@ -370,10 +373,21 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Marble Dragon Draconiform Motion Bait',
       regex: /Draconiform Motion/,
       beforeSeconds: 7,
-      alertText: (_data, _matches, output) => output.baitCleave!(),
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonImitationRainDir !== undefined)
+          return output.baitCleaveThenDir!({
+            dir: output[data.marbleDragonImitationRainDir]!(),
+          });
+        return output.baitCleave!();
+      },
       outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
         baitCleave: {
           en: 'Bait Cleave',
+        },
+        baitCleaveThenDir: {
+          en: 'Bait Cleave => ${dir}',
         },
       },
     },
@@ -446,6 +460,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.demonTabletGravityTowers;
         delete data.deadStarsOoze;
         delete data.deadStarsSnowballTetherDirNum;
+        delete data.marbleDragonImitationRainDir;
         delete data.marbleDragonDiveDirNum;
         delete data.magitaurRuneAxeDebuff;
         delete data.magitaurBigRune2Target;
@@ -475,6 +490,7 @@ const triggerSet: TriggerSet<Data> = {
           'north': 0,
           'south': 0,
         };
+        data.marbleDragonImitationRainCount = 0;
         data.marbleDragonTankbusterFilter = false;
         data.marbleDragonDelugeTargets = [];
         data.marbleDragonIsFrigidDive = false;
@@ -2659,9 +2675,88 @@ const triggerSet: TriggerSet<Data> = {
       // Getting hit also applies D96 Thrice-come Ruin debuff
       type: 'StartsUsing',
       netRegex: { source: 'Marble Dragon', id: '77C1', capture: false },
-      alertText: (_data, _matches, output) => output.sides!(),
+      alertText: (data, _matches, output) => {
+        if (data.marbleDragonImitationRainDir !== undefined)
+          return output[data.marbleDragonImitationRainDir]!();
+        return output.sides!();
+      },
+      run: (data) => {
+        delete data.marbleDragonImitationRainDir;
+      },
       outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
         sides: Outputs.sides,
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain Counter',
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7687', capture: false },
+      run: (data) => {
+        data.marbleDragonImitationRainCount = data.marbleDragonImitationRainCount + 1;
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 1 Direction',
+      // North Puddles
+      // (-355, 141) (-343, 141) (-331, 141) (-319, 141)
+      // South Puddles
+      // (-355, 173) (-343, 173) (-331, 173) (-319, 173)
+      // BNpcID 2014547 combatant is responsible for the cross puddles, accessible right before Imitation Rain (7797) NetworkAOEAbility
+      // If (-331, 173) or (-343, 141) is cross, then go East.
+      // If (-343, 173) or (-331, 141) is cross, then go West.
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7797', capture: false },
+      condition: (data) => {
+        if (data.marbleDragonImitationRainCount === 1)
+          return true;
+        return false;
+      },
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+        const crosses = actors.filter((c) => c.BNpcID === 2014547);
+        if (crosses.length !== 2 || crosses[0] === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain Puddles: Wrong actor count ${crosses.length}`,
+          );
+          return;
+        }
+        // Only need to check one of the two crosses
+        const x = crosses[0].PosX;
+        const y = crosses[0].PosY;
+
+        if (
+          ((x > -332 && x < -330) && (y > 172 && y < 174)) ||
+          ((x > -344 && x < -342) && (y > 140 && y < 142))
+        ) {
+          data.marbleDragonImitationRainDir = 'east';
+        } else if (
+          ((x > -344 && x < -342) && (y > 172 && y < 174)) ||
+          ((x > -332 && x < -330) && (y > 140 && y < 142))
+        ) {
+          data.marbleDragonImitationRainDir = 'west';
+        } else {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain Puddles: Unexpected coordinates (${x}, ${y})`,
+          );
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.marbleDragonImitationRainDir === undefined)
+          return;
+        return output[data.marbleDragonImitationRainDir]!();
+      },
+      outputStrings: {
+        east: {
+          en: 'East (Later)',
+        },
+        west: {
+          en: 'West (Later)',
+        },
       },
     },
     {
