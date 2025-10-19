@@ -2865,7 +2865,7 @@ const triggerSet: TriggerSet<Data> = {
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
-          ids: [parseInt(matches.id, 16)]
+          ids: [parseInt(matches.id, 16)],
         })).combatants;
         const actor = actors[0];
         if (actors.length !== 1 || actor === undefined) {
@@ -2897,7 +2897,7 @@ const triggerSet: TriggerSet<Data> = {
           (side === 'west' && (facing >= 5 && facing <= 8)) || // ESE to S
           (side === 'east' && ((facing >= 13 && facing <= 15) || facing === 0)) // WNW to N
         )
-         data.marbleDragonTwisterClock = 'counterclockwise';
+          data.marbleDragonTwisterClock = 'counterclockwise';
       },
       infoText: (data, _matches, output) => {
         if (data.marbleDragonTwisterClock === undefined)
@@ -2909,20 +2909,20 @@ const triggerSet: TriggerSet<Data> = {
           return output[clock]!();
         if (
           (clock === 'clockwise' &&
-          ((crosses[0] === 'NE' || crosses[0] === 'SW') ||
-          (crosses[1] === 'NE' || crosses[1] === 'SW'))) ||
+            ((crosses[0] === 'NE' || crosses[0] === 'SW') ||
+              (crosses[1] === 'NE' || crosses[1] === 'SW'))) ||
           (clock === 'counterclockwise' &&
-          ((crosses[0] === 'NW' || crosses[0] === 'SE') ||
-          (crosses[1] === 'NW' || crosses[1] === 'SE')))
+            ((crosses[0] === 'NW' || crosses[0] === 'SE') ||
+              (crosses[1] === 'NW' || crosses[1] === 'SE')))
         )
           return output.circlesFirst!({ clock: output[clock]!() });
         if (
           (clock === 'clockwise' &&
-          ((crosses[0] === 'NW' || crosses[0] === 'SE') ||
-          (crosses[1] === 'NW' || crosses[1] === 'SE'))) ||
+            ((crosses[0] === 'NW' || crosses[0] === 'SE') ||
+              (crosses[1] === 'NW' || crosses[1] === 'SE'))) ||
           (clock === 'counterclockwise' &&
-          ((crosses[0] === 'NE' || crosses[0] === 'SW') ||
-          (crosses[1] === 'NE' || crosses[1] === 'SW')))
+            ((crosses[0] === 'NE' || crosses[0] === 'SW') ||
+              (crosses[1] === 'NE' || crosses[1] === 'SW')))
         )
           return output.crossesFirst!({ clock: output[clock]!() });
         return output[clock]!();
