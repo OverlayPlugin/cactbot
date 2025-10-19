@@ -820,7 +820,7 @@ const triggerSet: TriggerSet<Data> = {
       preRun: (data, matches) => {
         data.demonTabletCometeor = matches.id === 'A2E4' ? 'near' : 'afar';
       },
-      delaySeconds: 0.2, // Delayed to retreive comet data and meteor data
+      delaySeconds: 0.5, // Delayed to retreive comet data and meteor data
       promise: async (data) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
@@ -1098,6 +1098,7 @@ const triggerSet: TriggerSet<Data> = {
       // The combatants are still invisible for ~5s when the data is available
       type: 'StartsUsing',
       netRegex: { id: 'A2E9', capture: false },
+      delaySeconds: 0.5, // Need some delay for latency
       durationSeconds: 21, // Time until tower => safe corner call
       promise: async (data) => {
         const actors = (await callOverlayHandler({
@@ -2719,6 +2720,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
+      delaySeconds: 0.5, // Need to delay for latency
       suppressSeconds: 1,
       promise: async (data) => {
         const actors = (await callOverlayHandler({
@@ -2782,7 +2784,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      delaySeconds: 0.2, // NPC Add available before or slightly after the cast
+      delaySeconds: 0.5, // NPC Add available before or slightly after the cast
       suppressSeconds: 1,
       promise: async (data) => {
         const actors = (await callOverlayHandler({
