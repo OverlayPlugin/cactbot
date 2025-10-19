@@ -2813,15 +2813,17 @@ const triggerSet: TriggerSet<Data> = {
           const y = combatant.PosY;
           if (x > -338 && x < -336)
             return 'center';
+          // East side puddles
           if (x > -322 && x < -319) {
             if (y > 140 && y < 142)
-              return 'NW';
+              return 'NE';
             if (y > 172 && y < 174)
               return 'SE';
           }
+          // West side puddles
           if (x > -354 && x < -352) {
             if (y > 140 && y < 142)
-              return 'NE';
+              return 'NW';
             if (y > 172 && y < 174)
               return 'SW';
           }
