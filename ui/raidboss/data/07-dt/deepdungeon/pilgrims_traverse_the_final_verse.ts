@@ -57,6 +57,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + Stop Moving!',
+          ko: '전체 공격 + 이동 멈추기!',
         },
       },
     },
@@ -79,6 +80,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Laser on YOU',
+          ko: '레이저 대상자',
         },
       },
     },
@@ -90,6 +92,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid laser',
+          ko: '레이저 피하기',
         },
       },
     },
@@ -113,6 +116,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Light debuff',
+          ko: '빛 디버프 받기',
         },
       },
     },
@@ -128,6 +132,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark debuff',
+          ko: '어둠 디버프 받기',
         },
       },
     },
@@ -147,18 +152,31 @@ const triggerSet: TriggerSet<Data> = {
         const id = matches.id;
         switch (id) {
           case 'AC2A':
-            return output.text!({ safe: 'Front safe' });
+            return output.text!({ safe: output.front!() });
           case 'AC2B':
-            return output.text!({ safe: 'Check safe side' });
+            return output.text!({ safe: output.side!() });
           case 'AC2C':
-            return output.text!({ safe: 'Back safe' });
+            return output.text!({ safe: output.back!() });
           case 'AC2D':
-            return output.text!({ safe: 'Check safe side' });
+            return output.text!({ safe: output.side!() });
         }
       },
       outputStrings: {
         text: {
           en: '${safe}, for later',
+          ko: '${safe}, 나중 대비',
+        },
+        front: {
+          en: 'Front safe',
+          ko: '앞쪽 안전',
+        },
+        back: {
+          en: 'Back safe',
+          ko: '뒤쪽 안전',
+        },
+        side: {
+          en: 'Check safe side',
+          ko: '양 옆 중 안전한 곳 확인',
         },
       },
     },
@@ -171,7 +189,31 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid Exaflares',
+          ko: '엑사플레어 피하기',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Devoured Eater': 'erodiert(?:e|er|es|en) Sündenvertilger',
+        'Eminent Grief': 'Eminent(?:e|er|es|en) Trauer',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Devoured Eater': 'purgateur dévoré',
+        'Eminent Grief': 'Pontife du Chagrin',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Devoured Eater': '侵蝕された罪喰い',
+        'Eminent Grief': 'エミネントグリーフ',
       },
     },
   ],
