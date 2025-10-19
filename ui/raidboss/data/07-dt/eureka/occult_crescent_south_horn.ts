@@ -194,17 +194,17 @@ const deadStarsFindSafeSpot = (
   );
   const safe1 = safeDirNums[0];
   const safe2 = safeDirNums[1];
-  if ((safe1 === 7 && safe2 === 1) || (safe2 === 1 && safe1 === 7))
+  if ((safe1 === 7 && safe2 === 1) || (safe1 === 1 && safe2 === 7))
     return 0; // North
-  if ((safe1 === 1 && safe2 === 3) || (safe2 === 1 && safe1 === 3))
+  if ((safe1 === 1 && safe2 === 3) || (safe1 === 3 && safe2 === 1))
     return 2; // East
-  if ((safe1 === 3 && safe2 === 5) || (safe2 === 5 && safe1 === 3))
+  if ((safe1 === 3 && safe2 === 5) || (safe1 === 5 && safe2 === 3))
     return 4; // South
-  if ((safe1 === 5 && safe2 === 7) || (safe2 === 7 && safe1 === 5))
+  if ((safe1 === 5 && safe2 === 7) || (safe1 === 7 && safe2 === 5))
     return 6; // West
-  if ((safe1 === 3 && safe2 === 7) || (safe2 === 7 && safe1 === 3))
+  if ((safe1 === 3 && safe2 === 7) || (safe1 === 7 && safe2 === 3))
     return 1; // Also southwest
-  if ((safe1 === 1 && safe2 === 5) || (safe2 === 5 && safe1 === 1))
+  if ((safe1 === 1 && safe2 === 5) || (safe1 === 5 && safe2 === 1))
     return 3; // Also northwest
   return -1;
 };
