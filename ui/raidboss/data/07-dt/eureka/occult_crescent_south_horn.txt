@@ -963,6 +963,10 @@ hideall "--sync--"
 50194.1 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
 50194.4 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
 50197.7 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" } jump "oc-md-p1-end"
+50202.4 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
+50204.2 "Dread Deluge (castbar)" #Ability { id: "77E8", source: "Marble Dragon" }
+50206.2 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50213.4 "--middle--" #Ability { id: "756C", source: "Marble Dragon" }
 
 # Pattern 1 - circles first
 50289.5 label "oc-md-p1o"
