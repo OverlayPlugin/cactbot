@@ -39,6 +39,8 @@ export interface Data extends RaidbossData {
   prongedPassageIdolCastCount: { [id: string]: number };
   marbleDragonImitationRainCount: number;
   marbleDragonImitationRainDir?: 'east' | 'west';
+  marbleDragonTwisterClock?: 'clockwise' | 'counterclockwise';
+  marbleDragonImitationRainCrosses: string[];
   marbleDragonTankbusterFilter: boolean;
   marbleDragonDelugeTargets: string[];
   marbleDragonDiveDirNum?: number;
@@ -461,6 +463,7 @@ const triggerSet: TriggerSet<Data> = {
         delete data.deadStarsOoze;
         delete data.deadStarsSnowballTetherDirNum;
         delete data.marbleDragonImitationRainDir;
+        delete data.marbleDragonTwisterClock;
         delete data.marbleDragonDiveDirNum;
         delete data.magitaurRuneAxeDebuff;
         delete data.magitaurBigRune2Target;
@@ -491,6 +494,7 @@ const triggerSet: TriggerSet<Data> = {
           'south': 0,
         };
         data.marbleDragonImitationRainCount = 0;
+        data.marbleDragonImitationRainCrosses = [];
         data.marbleDragonTankbusterFilter = false;
         data.marbleDragonDelugeTargets = [];
         data.marbleDragonIsFrigidDive = false;
@@ -2757,6 +2761,179 @@ const triggerSet: TriggerSet<Data> = {
         west: {
           en: 'West (Later)',
         },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Cross Collect',
+      // Twisters will rotate CW or CCW
+      // The center is always a cross, the other two form a diagonal with the center
+      //             (-337, 133)
+      // (-353, 141)             (-321, 141)
+      //             (-337, 157)
+      // (-353, 173)             (-321, 173)
+      //             (-337, 181)
+      // BNpcID 2014547 combatant is responsible for the cross puddles, accessible around Imitation Rain (7797) NetworkAOEAbility
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7797', capture: false },
+      condition: (data) => {
+        if (data.marbleDragonImitationRainCount === 2)
+          return true;
+        return false;
+      },
+      delaySeconds: 0.2, // NPC Add available before or slightly after the cast
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+        const crosses = actors.filter((c) => c.BNpcID === 2014547);
+        if (crosses.length !== 3 || crosses === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain 2 Collect: Wrong actor count ${crosses.length}`,
+          );
+          return;
+        }
+
+        const cross1 = crosses[0];
+        const cross2 = crosses[1];
+        const cross3 = crosses[2];
+        if (cross1 === undefined || cross2 === undefined || cross3 === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Collect: Invalid actors.`,
+          );
+          return;
+        }
+
+        const getCrossLocation = (
+          combatant: PluginCombatantState,
+        ): 'NE' | 'SE' | 'SW' | 'NW' | 'center' | undefined => {
+          const x = combatant.PosX;
+          const y = combatant.PosY;
+          if (x > -338 && x < -336)
+            return 'center';
+          if (x > -322 && x < -319) {
+            if (y > 140 && y < 142)
+              return 'NW';
+            if (y > 172 && y < 174)
+              return 'SE';
+          }
+          if (x > -354 && x < -352) {
+            if (y > 140 && y < 142)
+              return 'NE';
+            if (y > 172 && y < 174)
+              return 'SW';
+          }
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Collect: Unexpected puddle location (${x}, ${y})`,
+          );
+          return undefined;
+        };
+
+        // Get Locations of cross puddles
+        const cross1Location = getCrossLocation(cross1);
+        const cross2Location = getCrossLocation(cross2);
+        const cross3Location = getCrossLocation(cross3);
+
+        // Ignoring the center puddle, net result should be length 2
+        if (cross1Location !== 'center' && cross1Location !== undefined)
+          data.marbleDragonImitationRainCrosses.push(cross1Location);
+        if (cross2Location !== 'center' && cross2Location !== undefined)
+          data.marbleDragonImitationRainCrosses.push(cross2Location);
+        if (cross3Location !== 'center' && cross3Location !== undefined)
+          data.marbleDragonImitationRainCrosses.push(cross3Location);
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2',
+      // Twisters will rotate CW or CCW and start moving 1s before end of Draconiform Motion (77C1)
+      // They spawn at (-362, 157) and (-312, 157) as combatant "Icewind" about ~1.6s after Frigid Twister (7638)
+      // About 3.2s later, they start using Frigid Twister (76CF) abilities
+      // At Spawn headings are ~2.00 for left side, ~-2.00 for right
+      // They start turning ~0.5s after AddedCombatant, but these turns seem random
+      // Heading appears to snap into expected place once they start moving, but timing for each can vary slightly
+      type: 'AddedCombatant',
+      netRegex: { name: 'Icewind', capture: true },
+      condition: (data) => {
+        if (data.marbleDragonImitationRainCount === 2)
+          return true;
+        return false;
+      },
+      delaySeconds: 5.7, // Before the move, the actor seems to just spin randomly in place
+      suppressSeconds: 1, // Only need one of the combatants
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.id, 16)]
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Frigid Twisters Direction: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const x = actor.PosX;
+        const facing = Directions.hdgTo16DirNum(actor.Heading);
+        const getTwisterSide = (
+          x: number,
+        ): 'west' | 'east' | undefined => {
+          if (x > -363 && x < -361)
+            return 'west';
+          if (x > -313 && x < -311)
+            return 'east';
+          return undefined;
+        };
+
+        const side = getTwisterSide(x);
+        if (
+          (side === 'west' && (facing >= 0 && facing <= 3)) || // N to ENE
+          (side === 'east' && (facing >= 8 && facing <= 11)) // S to WSW
+        )
+          data.marbleDragonTwisterClock = 'clockwise';
+        else if (
+          (side === 'west' && (facing >= 5 && facing <= 8)) || // ESE to S
+          (side === 'east' && ((facing >= 13 && facing <= 15) || facing === 0)) // WNW to N
+        )
+         data.marbleDragonTwisterClock = 'counterclockwise';
+      },
+      infoText: (data, _matches, output) => {
+        if (data.marbleDragonTwisterClock === undefined)
+          return;
+        const clock = data.marbleDragonTwisterClock;
+        const crosses = data.marbleDragonImitationRainCrosses;
+        // Only need one cross puddle
+        if (crosses === undefined || (crosses[0] === undefined && crosses[1] === undefined))
+          return output[clock]!();
+        if (
+          (clock === 'clockwise' &&
+          ((crosses[0] === 'NE' || crosses[0] === 'SW') ||
+          (crosses[1] === 'NE' || crosses[1] === 'SW'))) ||
+          (clock === 'counterclockwise' &&
+          ((crosses[0] === 'NW' || crosses[0] === 'SE') ||
+          (crosses[1] === 'NW' || crosses[1] === 'SE')))
+        )
+          return output.circlesFirst!({ clock: output[clock]!() });
+        if (
+          (clock === 'clockwise' &&
+          ((crosses[0] === 'NW' || crosses[0] === 'SE') ||
+          (crosses[1] === 'NW' || crosses[1] === 'SE'))) ||
+          (clock === 'counterclockwise' &&
+          ((crosses[0] === 'NE' || crosses[0] === 'SW') ||
+          (crosses[1] === 'NE' || crosses[1] === 'SW')))
+        )
+          return output.crossesFirst!({ clock: output[clock]!() });
+        return output[clock]!();
+      },
+      outputStrings: {
+        crossesFirst: {
+          en: 'Crosses First + ${clock}',
+        },
+        circlesFirst: {
+          en: 'Circles First + ${clock}',
+        },
+        clockwise: Outputs.clockwise,
+        counterclockwise: Outputs.counterclockwise,
       },
     },
     {
