@@ -359,6 +359,7 @@ const triggerSet: TriggerSet<Data> = {
       'south': 0,
     },
     marbleDragonImitationRainCount: 0,
+    marbleDragonImitationRainCrosses: [],
     marbleDragonTankbusterFilter: false,
     marbleDragonDelugeTargets: [],
     marbleDragonIsFrigidDive: false,
