@@ -1545,83 +1545,80 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
 
-        // Matching only one id to call once
-        if (matches.id === 'A5DF') {
-          // Determine which slime locations to use for hits
-          const dirNums = data.deadStarsOoze.effectId === deadStarsBlueEffectId
-            ? redOoze
-            : blueOoze;
+        // Determine which slime locations to use for hits
+        const dirNums = data.deadStarsOoze.effectId === deadStarsBlueEffectId
+          ? redOoze
+          : blueOoze;
 
-          if (
-            dirNums[0] === undefined || dirNums[1] === undefined ||
-            dirNums[2] === undefined || dirNums[3] === undefined ||
-            redOoze[1] === undefined || blueOoze[1] === undefined ||
-            redOoze[2] === undefined || blueOoze[2] === undefined ||
-            redOoze[3] === undefined || blueOoze[3] === undefined
-          )
-            return;
+        if (
+          dirNums[0] === undefined || dirNums[1] === undefined ||
+          dirNums[2] === undefined || dirNums[3] === undefined ||
+          redOoze[1] === undefined || blueOoze[1] === undefined ||
+          redOoze[2] === undefined || blueOoze[2] === undefined ||
+          redOoze[3] === undefined || blueOoze[3] === undefined
+        )
+          return;
 
-          const hitSpots = [
-            output[Directions.outputFrom8DirNum(dirNums[0])]!(),
-            output[Directions.outputFrom8DirNum(dirNums[1])]!(),
-            output[Directions.outputFrom8DirNum(dirNums[2])]!(),
-          ];
-          // Ignoring initial safe spot
-          const safeSpots = [
-            output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[1], redOoze[1]))]!(),
-            output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[2], redOoze[2]))]!(),
-            output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[3], redOoze[3]))]!(),
-          ];
+        const hitSpots = [
+          output[Directions.outputFrom8DirNum(dirNums[0])]!(),
+          output[Directions.outputFrom8DirNum(dirNums[1])]!(),
+          output[Directions.outputFrom8DirNum(dirNums[2])]!(),
+        ];
+        // Ignoring initial safe spot
+        const safeSpots = [
+          output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[1], redOoze[1]))]!(),
+          output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[2], redOoze[2]))]!(),
+          output[Directions.outputFrom8DirNum(deadStarsFindSafeSpot(blueOoze[3], redOoze[3]))]!(),
+        ];
 
-          const count = parseInt(data.deadStarsOoze.count, 16);
-          if (count === 1) {
-            if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
-              return output.red1!({
-                hit1: hitSpots[0],
-                safe1: safeSpots[0],
-                safe2: safeSpots[1],
-                safe3: safeSpots[2],
-              });
-            if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
-              return output.blue1!({
-                hit1: hitSpots[0],
-                safe1: safeSpots[0],
-                safe2: safeSpots[1],
-                safe3: safeSpots[2],
-              });
-          }
-          if (count === 2) {
-            if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
-              return output.red2!({
-                hit1: hitSpots[0],
-                hit2: hitSpots[1],
-                safe1: safeSpots[1],
-                safe2: safeSpots[2],
-              });
-            if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
-              return output.blue2!({
-                hit1: hitSpots[0],
-                hit2: hitSpots[1],
-                safe1: safeSpots[1],
-                safe2: safeSpots[2],
-              });
-          }
-          if (count === 3) {
-            if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
-              return output.blue3!({
-                hit1: hitSpots[0],
-                hit2: hitSpots[1],
-                hit3: hitSpots[2],
-                safe1: safeSpots[2],
-              });
-            if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
-              return output.blue3!({
-                hit1: hitSpots[0],
-                hit2: hitSpots[1],
-                hit3: hitSpots[2],
-                safe1: safeSpots[2],
-              });
-          }
+        const count = parseInt(data.deadStarsOoze.count, 16);
+        if (count === 1) {
+          if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
+            return output.red1!({
+              hit1: hitSpots[0],
+              safe1: safeSpots[0],
+              safe2: safeSpots[1],
+              safe3: safeSpots[2],
+            });
+          if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
+            return output.blue1!({
+              hit1: hitSpots[0],
+              safe1: safeSpots[0],
+              safe2: safeSpots[1],
+              safe3: safeSpots[2],
+            });
+        }
+        if (count === 2) {
+          if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
+            return output.red2!({
+              hit1: hitSpots[0],
+              hit2: hitSpots[1],
+              safe1: safeSpots[1],
+              safe2: safeSpots[2],
+            });
+          if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
+            return output.blue2!({
+              hit1: hitSpots[0],
+              hit2: hitSpots[1],
+              safe1: safeSpots[1],
+              safe2: safeSpots[2],
+            });
+        }
+        if (count === 3) {
+          if (data.deadStarsOoze.effectId === deadStarsBlueEffectId)
+            return output.blue3!({
+              hit1: hitSpots[0],
+              hit2: hitSpots[1],
+              hit3: hitSpots[2],
+              safe1: safeSpots[2],
+            });
+          if (data.deadStarsOoze.effectId === deadStarsRedEffectId)
+            return output.blue3!({
+              hit1: hitSpots[0],
+              hit2: hitSpots[1],
+              hit3: hitSpots[2],
+              safe1: safeSpots[2],
+            });
         }
       },
       tts: null, // Trigger happens 1 sec before individual call and would overlap
