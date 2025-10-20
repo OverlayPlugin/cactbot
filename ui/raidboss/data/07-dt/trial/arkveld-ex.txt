@@ -135,13 +135,14 @@ hideall "--sync--"
 #
 # AB96 Wyvern's Vengeance
 # AB97 Wyvern's Vengeance
-#  Skills used during exflares, but their timing doesn't line up with actual
-#  aoes on the ground.
+#  Appears to line up with exaflare hits, but there are so many its hard to
+#  use as a timeline sync. Ideally we want to sync specific hits for the
+#  central exaflares. For now, these are excluded from the timeline.
 #
 # ABB0 Wyvern's Vengeance
 # ABB1 Wyvern's Vengeance
-#  Skills used during sideways exaflares, but doesn't line up well with
-#  actual exaflare damage.
+#  These likely line up to the side coming exaflares, but finding good
+#  timeline entries for these is difficult.
 #
 # AB9C Wild Energy
 #  Appears to be the skill which triggers the aoe explosions on players
@@ -271,10 +272,10 @@ hideall "--sync--"
 199.1 "Wild Energy (aoes)" Ability { id: "AB9C", source: "Guardian Arkveld" }
 207.1 "Wild Energy (aoes)" Ability { id: "AB9C", source: "Guardian Arkveld" }
 # Power up + big raid wide
-215.1 "--sync--" Ability { id: "AB9E", source: "Guardian Arkveld" }
+215.1 "Forged Fury" Ability { id: "AB9E", source: "Guardian Arkveld" } duration 5.2
 217.1 "--sync--" Ability { id: "AB9F", source: "Guardian Arkveld" }
 218.0 "--sync--" Ability { id: "AEF8", source: "Guardian Arkveld" }
-220.4 "Forged Fury (Power up)" Ability { id: "AEF9", source: "Guardian Arkveld" }
+220.4 "--sync--" Ability { id: "AEF9", source: "Guardian Arkveld" }
 # Leap to edge
 229.2 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" } window 5,5
 # Raidwide
@@ -458,7 +459,7 @@ hideall "--sync--"
 679.1 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Likely enrage sequence
 682.9 "--sync--" Ability { id: "AB53", source: "Guardian Arkveld" }
-692.0 "--sync--" Ability { id: "ABB2", source: "Guardian Arkveld" }
+692.0 "Forged Fury" Ability { id: "ABB2", source: "Guardian Arkveld" } duration 5.2
 694.0 "--sync--" Ability { id: "AB9F", source: "Guardian Arkveld" }
 694.9 "--sync--" Ability { id: "AEF8", source: "Guardian Arkveld" }
-697.2 "Forged Fury (enrage)" Ability { id: "AF4E", source: "Guardian Arkveld" }
+697.2 "(enrage)" Ability { id: "AF4E", source: "Guardian Arkveld" }

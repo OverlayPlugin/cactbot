@@ -70,8 +70,9 @@ hideall "--sync--"
 #
 # AB3C Guardian Resonance
 # B00E Guardian Resonance
-#  Unsure what this is. Perhaps a raidwide? Only triggers #  with white
-#  lines, and not the red lines.
+#  Lines up with the expanded lines (in or out), but only the white lines
+#  has this ability. It lines up with the red lines damage, but the timeline
+#  generator doesn't fill in the red lines ability.
 #
 # AB4D Guardian Resonance
 # AB4E Guardian Resonance
@@ -91,8 +92,9 @@ hideall "--sync--"
 #
 # AB54 Wyvern's Vengeance
 # AB55 Wyvern's Vengeance
-#  Skills used during exaflares? Autoattack? Too many to be useful in
-#  timeline, especially since they don't line up with exaflares.
+#  Does seem to be the actual exaflare hits, but we need to identify which
+#  ones make good log syncs, as there are too many in the generated
+#  timeline.
 #
 # AB5A Wild Energy
 #  Player aoe puddles?
@@ -146,14 +148,14 @@ hideall "--sync--"
 39.2 "Siegeflight (dash)" Ability { id: "(AB3A|AB3D)", source: "Guardian Arkveld" }
 40.8 "--sync--" Ability { id: "(AB3B|AB3E)", source: "Guardian Arkveld" }
 41.5 "--sync--" Ability { id: "(B014|B043)", source: "Guardian Arkveld" }
-44.3 "Guardian Resonance?" Ability { id: "AB3C", source: "Guardian Arkveld" }
+44.3 "Guardian Resonance" Ability { id: "AB3C", source: "Guardian Arkveld" }
 # Rolling line + puddles
 44.8 "Wyvern's Rattle" Ability { id: "AB64", source: "Guardian Arkveld" }
 # Dash + lines
 60.2 "Siegeflight (dash)" Ability { id: "(AB3A|AB3D)", source: "Guardian Arkveld" }
 61.6 "--sync--" Ability { id: "(AB3B|AB3E)", source: "Guardian Arkveld" }
 62.4 "--sync--" Ability { id: "(B014|B043)", source: "Guardian Arkveld" }
-65.3 "Guardian Resonance?" Ability { id: "AB3C", source: "Guardian Arkveld" }
+65.3 "Guardian Resonance" Ability { id: "AB3C", source: "Guardian Arkveld" }
 # Chainblade Blow
 71.3 "--sync--" Ability { id: "(AB34|AB35)", source: "Guardian Arkveld" }
 72.5 "Chainblade Blow" Ability { id: "(AB36|AFFA)", source: "Guardian Arkveld" }
@@ -187,10 +189,10 @@ hideall "--sync--"
 175.6 "Wild Energy (aoes)" Ability { id: "AB5A", source: "Guardian Arkveld" }
 183.8 "Wild Energy (aoes)" Ability { id: "AB5A", source: "Guardian Arkveld" }
 # Big raid wide + power up)
-192.1 "--sync--" Ability { id: "AB5D", source: "Guardian Arkveld" }
+192.1 "Forged Fury" Ability { id: "AB5D", source: "Guardian Arkveld" } duration 5.2
 194.1 "--sync--" Ability { id: "AB5E", source: "Guardian Arkveld" }
 195.0 "--sync--" Ability { id: "AEF6", source: "Guardian Arkveld" }
-197.3 "Forged Fury (Power up)" Ability { id: "AEF7", source: "Guardian Arkveld" }
+197.3 "--sync--" Ability { id: "AEF7", source: "Guardian Arkveld" }
 206.1 "(edge)" Ability { id: "B077", source: "Guardian Arkveld" }
 # Persistant line cleave
 213.4 "Roar (raidwide)" Ability { id: "B091", source: "Guardian Arkveld" }
@@ -202,7 +204,7 @@ hideall "--sync--"
 245.3 "Siegeflight (dash)" Ability { id: "(B00B|B00C)", source: "Guardian Arkveld" }
 246.9 "--sync--" Ability { id: "(B00D|B00F)", source: "Guardian Arkveld" }
 247.7 "--sync--" Ability { id: "(B012|B044)", source: "Guardian Arkveld" }
-250.5 "Guardian Resonance?" Ability { id: "B00E", source: "Guardian Arkveld" }
+250.5 "Guardian Resonance" Ability { id: "B00E", source: "Guardian Arkveld" }
 # Chainblade Blow
 255.5 "--sync--" Ability { id: "(AFFC|AFFD)", source: "Guardian Arkveld" }
 256.7 "Chainblade Blow" Ability { id: "(AFFE|B001)", source: "Guardian Arkveld" }
@@ -211,7 +213,7 @@ hideall "--sync--"
 263.5 "Siegeflight (dash)" Ability { id: "(B00B|B00C)", source: "Guardian Arkveld" }
 265.1 "--sync--" Ability { id: "(B00D|B00F)", source: "Guardian Arkveld" }
 265.9 "--sync--" Ability { id: "(B012|B044)", source: "Guardian Arkveld" }
-268.5 "Guardian Resonance?" Ability { id: "B00E", source: "Guardian Arkveld" }
+268.5 "Guardian Resonance" Ability { id: "B00E", source: "Guardian Arkveld" }
 # Chainblade Blow
 273.8 "--sync--" Ability { id: "(AFFC|AFFD)", source: "Guardian Arkveld" }
 275.0 "Chainblade Blow" Ability { id: "(AFFE|B001)", source: "Guardian Arkveld" }
@@ -259,7 +261,7 @@ hideall "--sync--"
 412.2 "Siegeflight (dash)" Ability { id: "(B00B|B00C)", source: "Guardian Arkveld" }
 413.6 "--sync--" Ability { id: "(B00D|B00F)", source: "Guardian Arkveld" }
 414.1 "--sync--" Ability { id: "(B012|B044)", source: "Guardian Arkveld" }
-417.1 "Guardian Resonance?" Ability { id: "B00E", source: "Guardian Arkveld" }
+417.1 "Guardian Resonance" Ability { id: "B00E", source: "Guardian Arkveld" }
 # Chainblade Blow
 422.0 "--sync--" Ability { id: "(AFFC|AFFD)", source: "Guardian Arkveld" }
 423.2 "Chainblade Blow" Ability { id: "(AFFE|B001)", source: "Guardian Arkveld" }
@@ -268,7 +270,7 @@ hideall "--sync--"
 430.0 "Siegeflight (dash)" Ability { id: "(B00B|B00C)", source: "Guardian Arkveld" }
 431.6 "--sync--" Ability { id: "(B00D|B00F)", source: "Guardian Arkveld" }
 432.4 "--sync--" Ability { id: "(B012|B044)", source: "Guardian Arkveld" }
-435.3 "Guardian Resonance?" Ability { id: "B00E", source: "Guardian Arkveld" }
+435.3 "Guardian Resonance" Ability { id: "B00E", source: "Guardian Arkveld" }
 # Chainblade Blow
 440.3 "--sync--" Ability { id: "(AFFC|AFFD)", source: "Guardian Arkveld" }
 441.5 "Chainblade Blow" Ability { id: "(AFFE|B001)", source: "Guardian Arkveld" }
