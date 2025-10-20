@@ -1,13 +1,34 @@
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // Pilgrim's Traverse Stones 61-70
-// TODO: Forgiven Zeal Octuple Swipe (unknown number of swipe patterns)
 
-export type Data = RaidbossData;
+type DirectionOutputCardinalRelative =
+  | 'front'
+  | 'right'
+  | 'back'
+  | 'left'
+  | 'unknown';
+
+const outputCardinalRelativeDir: DirectionOutputCardinalRelative[] = [
+  'front',
+  'right',
+  'back',
+  'left',
+];
+
+const outputRelativeFrom4DirNum = (dirNum: number): DirectionOutputCardinalRelative => {
+  return outputCardinalRelativeDir[dirNum] ?? 'unknown';
+};
+
+export interface Data extends RaidbossData {
+  octupleSwipes?: number[];
+  calledOctupleSwipes?: boolean;
+}
 
 const triggerSet: TriggerSet<Data> = {
   id: 'PilgrimsTraverseStones61_70',
@@ -219,16 +240,77 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getOut(),
     },
     {
+      id: 'PT 61-70 Forgiven Zeal Octuple Swipe Cleanup',
+      type: 'Ability',
+      netRegex: { id: 'A9A9', source: 'Forgiven Zeal', capture: false },
+      run: (data) => {
+        delete data.octupleSwipes;
+        delete data.calledOctupleSwipes;
+      },
+    },
+    {
       id: 'PT 61-70 Forgiven Zeal Octuple Swipe',
-      type: 'StartsUsing',
-      netRegex: { id: 'A9A8', source: 'Forgiven Zeal', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 4,
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A9AD', capture: true },
+      condition: (data) => !data.calledOctupleSwipes,
       durationSeconds: 18,
-      alertText: (_data, _matches, output) => output.text!(),
+      alertText: (data, matches, output) => {
+        const heading = Directions.hdgTo4DirNum(parseFloat(matches.heading));
+        data.octupleSwipes ??= [];
+        data.octupleSwipes.push(heading);
+
+        if (data.octupleSwipes.length < 8)
+          return;
+
+        data.calledOctupleSwipes = true;
+        const [swipe1, swipe4, swipe5, swipe8] = [
+          data.octupleSwipes[0],
+          data.octupleSwipes[3],
+          data.octupleSwipes[4],
+          data.octupleSwipes[7],
+        ];
+
+        if (
+          swipe1 === undefined ||
+          swipe4 === undefined ||
+          swipe5 === undefined ||
+          swipe8 === undefined
+        )
+          return output.avoid!();
+
+        const dir1 = outputRelativeFrom4DirNum(swipe1);
+        const dir4 = outputRelativeFrom4DirNum(swipe4);
+        const dir5 = outputRelativeFrom4DirNum(swipe5);
+        const dir8 = outputRelativeFrom4DirNum(swipe8);
+
+        if (swipe1 === swipe8)
+          // swipe order is 1 > 2 > 3 > 4 > 5 > 6 > 7 > 1
+          // dodge order is 4 > 1 > 1 > 1 > 1 > 1 > 1 > 4
+          return output.rewind!({ dir4: output[dir4]!(), dir1: output[dir1]!() });
+
+        // swipe order is 1 > 2 > 3 > 4 > 5 > 6 > 7 > 8
+        // dodge order is 4 > 1 > 1 > 1 > 8 > 5 > 5 > 5
+        return output.repeat!({
+          dir1: output[dir1]!(),
+          dir4: output[dir4]!(),
+          dir5: output[dir5]!(),
+          dir8: output[dir8]!(),
+        });
+      },
       outputStrings: {
-        text: {
+        repeat: {
+          en: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
+        },
+        rewind: {
+          en: '${dir4} => ${dir1} x6 => ${dir4}',
+        },
+        avoid: {
           en: 'Avoid swipes x8',
         },
+        left: Outputs.left,
+        right: Outputs.right,
+        front: Outputs.front,
+        back: Outputs.back,
       },
     },
   ],
