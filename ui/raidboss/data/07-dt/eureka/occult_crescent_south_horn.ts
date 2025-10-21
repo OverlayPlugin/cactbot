@@ -2702,7 +2702,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Imitation Rain 1 Direction',
+      id: 'Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction',
       // North Puddles
       // (-355, 141) (-343, 141) (-331, 141) (-319, 141)
       // South Puddles
@@ -2713,7 +2713,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { source: 'Marble Dragon', id: '7797', capture: false },
       condition: (data) => {
-        if (data.marbleDragonImitationRainCount === 1)
+        if (
+          data.marbleDragonImitationRainCount === 1 ||
+          data.marbleDragonImitationRainCount === 5
+        )
           return true;
         return false;
       },
@@ -2726,7 +2729,7 @@ const triggerSet: TriggerSet<Data> = {
         const crosses = actors.filter((c) => c.BNpcID === 2014547);
         if (crosses.length !== 2 || crosses[0] === undefined) {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 1 Direction: Wrong actor count ${crosses.length}`,
+            `Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction: Wrong actor count ${crosses.length}`,
           );
           return;
         }
@@ -2746,7 +2749,7 @@ const triggerSet: TriggerSet<Data> = {
           data.marbleDragonImitationRainDir = 'west';
         } else {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 1 Direction: Unexpected coordinates (${x}, ${y})`,
+            `Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction: Unexpected coordinates (${x}, ${y})`,
           );
         }
       },
