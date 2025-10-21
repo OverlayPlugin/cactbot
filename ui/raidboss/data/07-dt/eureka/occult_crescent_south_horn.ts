@@ -39,6 +39,7 @@ export interface Data extends RaidbossData {
   prongedPassageActLoc: { [id: string]: string };
   prongedPassageIdolCastCount: { [id: string]: number };
   marbleDragonImitationRainCount: number;
+  marbleDragonImitationBlizzardCount: number;
   marbleDragonImitationRainDir?: 'east' | 'west';
   marbleDragonTwisterClock?: 'clockwise' | 'counterclockwise';
   marbleDragonImitationRainCrosses: string[];
@@ -228,6 +229,30 @@ const prongedPassageCenterY = 315;
 const marbleDragonCenterX = -337;
 const marbleDragonCenterY = 157;
 
+// Function to find and validate a puddle location during Immitation Rain 2
+const getPuddleLocation = (
+  x: number,
+  y: number,
+): 'NE' | 'SE' | 'SW' | 'NW' | 'center' | undefined => {
+  if (x > -338 && x < -336)
+    return 'center';
+  // East side puddles
+  if (x > -322 && x < -319) {
+    if (y > 140 && y < 142)
+      return 'NE';
+    if (y > 172 && y < 174)
+      return 'SE';
+  }
+  // West side puddles
+  if (x > -354 && x < -352) {
+    if (y > 140 && y < 142)
+      return 'NW';
+    if (y > 172 && y < 174)
+      return 'SW';
+  }
+  return undefined;
+};
+
 // Occult Crescent Forked Tower: Magitaur consts
 const magitaurOutputStrings = {
   rune1BigAoeOnYou: {
@@ -360,6 +385,7 @@ const triggerSet: TriggerSet<Data> = {
       'south': 0,
     },
     marbleDragonImitationRainCount: 0,
+    marbleDragonImitationBlizzardCount: 0,
     marbleDragonImitationRainCrosses: [],
     marbleDragonTankbusterFilter: false,
     marbleDragonDelugeTargets: [],
@@ -496,6 +522,7 @@ const triggerSet: TriggerSet<Data> = {
           'south': 0,
         };
         data.marbleDragonImitationRainCount = 0;
+        data.marbleDragonImitationBlizzardCount = 0;
         data.marbleDragonImitationRainCrosses = [];
         data.marbleDragonTankbusterFilter = false;
         data.marbleDragonDelugeTargets = [];
@@ -2699,6 +2726,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Marble Dragon', id: '7687', capture: false },
       run: (data) => {
         data.marbleDragonImitationRainCount = data.marbleDragonImitationRainCount + 1;
+        data.marbleDragonImitationBlizzardCount = 0;
       },
     },
     {
@@ -2768,6 +2796,64 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Marble Dragon Imitation Blizzard Counter',
+      // Used to track explosions and make calls on where to move next
+      // Imitation Blizzard (Cross) (7614)
+      // Imitation Blizzard (Circle) (7602)
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: ['7614', '7602'], capture: false },
+      suppressSeconds: 1,
+      run: (data) => {
+        data.marbleDragonImitationBlizzardCount = data.marbleDragonImitationBlizzardCount + 1;
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Dread Deluge',
+      // Tankbuster targets one tank in each alliance party, 6 tanks total
+      // Applies a heavy bleed to target
+      // TODO: Determine if they are in player's party to call just that name
+      type: 'HeadMarker',
+      netRegex: { id: [headMarkerData.marbleDragonTankbuster], capture: true },
+      condition: (data) => {
+        // Prevent triggering in CEs such as Noise Complaint and Flame of Dusk
+        // This also triggers by certain mobs when out of combat
+        return data.marbleDragonTankbusterFilter;
+      },
+      response: (data, matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tankBusterBleeds: {
+            en: 'Tankbuster Bleeds',
+          },
+          tankBusterBleedOnYou: {
+            en: 'Tankbuster bleed on YOU',
+          },
+        };
+        data.marbleDragonDelugeTargets.push(matches.target);
+        if (data.marbleDragonDelugeTargets.length < 6)
+          return;
+
+        const target1 = data.marbleDragonDelugeTargets[0];
+        const target2 = data.marbleDragonDelugeTargets[1];
+        const target3 = data.marbleDragonDelugeTargets[2];
+        const target4 = data.marbleDragonDelugeTargets[3];
+        const target5 = data.marbleDragonDelugeTargets[4];
+        const target6 = data.marbleDragonDelugeTargets[6];
+        if (
+          data.me === target1 || data.me === target2 || data.me === target3 ||
+          data.me === target4 || data.me === target5 || data.me === target6
+        )
+          return { alertText: output.tankBusterBleedOnYou!() };
+        if (data.role === 'tank' || data.role === 'healer')
+          return { alertText: output.tankBusterBleeds!() };
+        return { infoText: output.tankBusterBleeds!() };
+      },
+      run: (data) => {
+        if (data.marbleDragonDelugeTargets.length === 6)
+          data.marbleDragonDelugeTargets = [];
+      },
+    },
+    {
       id: 'Occult Crescent Marble Dragon Imitation Rain 2 Direction',
       // Call East/West later for movement after Draconiform Motion and use data collected here for later calls
       // Twisters will rotate CW or CCW
@@ -2814,26 +2900,11 @@ const triggerSet: TriggerSet<Data> = {
         ): 'NE' | 'SE' | 'SW' | 'NW' | 'center' | undefined => {
           const x = combatant.PosX;
           const y = combatant.PosY;
-          if (x > -338 && x < -336)
-            return 'center';
-          // East side puddles
-          if (x > -322 && x < -319) {
-            if (y > 140 && y < 142)
-              return 'NE';
-            if (y > 172 && y < 174)
-              return 'SE';
-          }
-          // West side puddles
-          if (x > -354 && x < -352) {
-            if (y > 140 && y < 142)
-              return 'NW';
-            if (y > 172 && y < 174)
-              return 'SW';
-          }
+          const result = getPuddleLocation(x, y);
           console.error(
             `Occult Crescent Marble Dragon Imitation Rain 2 Direction: Unexpected puddle location (${x}, ${y})`,
           );
-          return undefined;
+          return result;
         };
 
         // Get Locations of cross puddles
@@ -2966,49 +3037,124 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Dread Deluge',
-      // Tankbuster targets one tank in each alliance party, 6 tanks total
-      // Applies a heavy bleed to target
-      // TODO: Determine if they are in player's party to call just that name
-      type: 'HeadMarker',
-      netRegex: { id: [headMarkerData.marbleDragonTankbuster], capture: true },
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Dodge 1',
+      // Imitation Blizzard (Cross) (7614)
+      // Imitation Blizzard (Circle) (7602)
+      // First cast is always 2 circles or 2 crosses
+      // Assuming player followed south cross priority call
+      // Cross has more time to get to the called direction than circle
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: ['7614', '7602'], capture: true },
       condition: (data) => {
-        // Prevent triggering in CEs such as Noise Complaint and Flame of Dusk
-        // This also triggers by certain mobs when out of combat
-        return data.marbleDragonTankbusterFilter;
+        if (
+          data.marbleDragonImitationRainCount === 2 &&
+          data.marbleDragonImitationBlizzardCount === 1
+        )
+          return true;
+        return false;
       },
-      response: (data, matches, output) => {
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      response: (_data, matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          tankBusterBleeds: {
-            en: 'Tankbuster Bleeds',
+          dirESE: Outputs.dirESE,
+          dirWSW: Outputs.dirWSW,
+          cross1Dodge: {
+            en: '${dir}',
           },
-          tankBusterBleedOnYou: {
-            en: 'Tankbuster bleed on YOU',
+          circles1Dodge: {
+            en: '${dir}',
           },
         };
-        data.marbleDragonDelugeTargets.push(matches.target);
-        if (data.marbleDragonDelugeTargets.length < 6)
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const loc = getPuddleLocation(x, y);
+        if (loc === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain 2 Dodge 1: Unexpected puddle location (${x}, ${y})`,
+          );
           return;
+        }
 
-        const target1 = data.marbleDragonDelugeTargets[0];
-        const target2 = data.marbleDragonDelugeTargets[1];
-        const target3 = data.marbleDragonDelugeTargets[2];
-        const target4 = data.marbleDragonDelugeTargets[3];
-        const target5 = data.marbleDragonDelugeTargets[4];
-        const target6 = data.marbleDragonDelugeTargets[6];
-        if (
-          data.me === target1 || data.me === target2 || data.me === target3 ||
-          data.me === target4 || data.me === target5 || data.me === target6
-        )
-          return { alertText: output.tankBusterBleedOnYou!() };
-        if (data.role === 'tank' || data.role === 'healer')
-          return { alertText: output.tankBusterBleeds!() };
-        return { infoText: output.tankBusterBleeds!() };
+        // Crosses
+        if (matches.id === '7614') {
+          if (loc === 'NW' || loc === 'SE')
+            return { infoText: output.cross1Dodge!({ dir: output.dirESE!() }) };
+          if (loc === 'NE' || loc === 'SW')
+            return { infoText: output.cross1Dodge!({ dir: output.dirWSW!() }) };
+        }
+        // Circles may be able to stay where they were or move slightly to avoid center Cross
+        // South Cross priority = SW, so WSW is the direction to go
+        if (loc === 'NW' || loc === 'SE')
+          return { alertText: output.circles1Dodge!({ dir: output.dirWSW!() }) };
+        // South Cross priority = SE, so ESE is the direction to go
+        if (loc === 'NE' || loc === 'SW')
+          return { alertText: output.circles1Dodge!({ dir: output.dirESE!() }) };
       },
-      run: (data) => {
-        if (data.marbleDragonDelugeTargets.length === 6)
-          data.marbleDragonDelugeTargets = [];
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Dodge 2',
+      // Imitation Blizzard (Cross) (7614)
+      // Cross first = player already directed to a safe spot previously
+      // Circles pattern has a cross here that is unique to it
+      // Assuming player followed south cross priority call
+      // Calling East/West as those are the easy spots to get to, center is safe as well
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '7614', capture: false },
+      condition: (data) => {
+        if (
+          data.marbleDragonImitationRainCount === 2 &&
+          data.marbleDragonImitationBlizzardCount === 2
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const crosses = data.marbleDragonImitationRainCrosses;
+        if ( crosses === undefined || crosses[0] === undefined )
+          return output.twoDirs!({ dir1: output.east!(), dir2: output.west!() });
+
+        // Check where a cross spawned at earlier
+        if (crosses[0] === 'NE' || crosses[0] === 'SW')
+          return output.west!();
+        if (crosses[0] === 'NW' || crosses[0] === 'SE')
+          return output.east!();
+
+        // Invalid data on the cross, output both dirs
+        return output.twoDirs!({ dir1: output.east!(), dir2: output.west!() });
+      },
+      outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        twoDirs: {
+          en: '${dir1}/${dir2}',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Frigid Twister Reminder',
+      // Frigid Twister continues for ~5s after Imitation Blizzard
+      // Call to Avoid Twister
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: ['7614', '7602'], capture: false },
+      condition: (data) => {
+        if (
+          data.marbleDragonImitationRainCount === 2 &&
+          data.marbleDragonImitationBlizzardCount === 3
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.avoidTwister!(),
+      outputStrings: {
+        avoidTwister: {
+          en: 'Avoid Twister',
+        },
       },
     },
     {
