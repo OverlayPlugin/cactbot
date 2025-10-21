@@ -58,6 +58,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + Stop Moving!',
+          ja: '全体攻撃 + 止まれ!',
           ko: '전체 공격 + 이동 멈추기!',
         },
       },
@@ -81,6 +82,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Laser on YOU',
+          ja: '自分にレーザー',
           ko: '레이저 대상자',
         },
       },
@@ -93,6 +95,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid laser',
+          ja: 'レーザーを避ける',
           ko: '레이저 피하기',
         },
       },
@@ -117,6 +120,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Light debuff',
+          ja: '光デバフを受ける',
           ko: '빛 디버프 받기',
         },
       },
@@ -133,6 +137,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark debuff',
+          ja: '闇デバフを受ける',
           ko: '어둠 디버프 받기',
         },
       },
@@ -165,18 +170,22 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${safe}, for later',
+          ja: '${safe}、あとで',
           ko: '${safe}, 나중 대비',
         },
         front: {
           en: 'Front safe',
+          ja: '前方が安置',
           ko: '앞쪽 안전',
         },
         back: {
           en: 'Back safe',
+          ja: '後方が安置',
           ko: '뒤쪽 안전',
         },
         side: {
           en: 'Check safe side',
+          ja: '横の安置を確認',
           ko: '양 옆 중 안전한 곳 확인',
         },
       },
@@ -190,6 +199,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid Exaflares',
+          ja: 'エクサフレアを避ける',
           ko: '엑사플레어 피하기',
         },
       },
