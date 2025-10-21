@@ -2765,7 +2765,8 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Cross Collect',
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Cross Direction',
+      // Call East/West later for movement after Draconiform Motion and use data collected here for later calls
       // Twisters will rotate CW or CCW
       // The center is always a cross, the other two form a diagonal with the center
       //             (-337, 133)
@@ -2790,7 +2791,7 @@ const triggerSet: TriggerSet<Data> = {
         const crosses = actors.filter((c) => c.BNpcID === 2014547);
         if (crosses.length !== 3 || crosses === undefined) {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Collect: Wrong actor count ${crosses.length}`,
+            `Occult Crescent Marble Dragon Imitation Rain 2 Direction: Wrong actor count ${crosses.length}`,
           );
           return;
         }
@@ -2800,7 +2801,7 @@ const triggerSet: TriggerSet<Data> = {
         const cross3 = crosses[2];
         if (cross1 === undefined || cross2 === undefined || cross3 === undefined) {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Collect: Invalid actors.`,
+            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Direction: Invalid actors.`,
           );
           return;
         }
@@ -2827,7 +2828,7 @@ const triggerSet: TriggerSet<Data> = {
               return 'SW';
           }
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Collect: Unexpected puddle location (${x}, ${y})`,
+            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Direction: Unexpected puddle location (${x}, ${y})`,
           );
           return undefined;
         };
@@ -2844,10 +2845,32 @@ const triggerSet: TriggerSet<Data> = {
           data.marbleDragonImitationRainCrosses.push(cross2Location);
         if (cross3Location !== 'center' && cross3Location !== undefined)
           data.marbleDragonImitationRainCrosses.push(cross3Location);
+
+        // East/West call based on south puddle location
+        if (data.marbleDragonImitationRainCrosses !== undefined) {
+          const dir = data.marbleDragonImitationRainCrosses[0];
+          if (dir === 'NE' || dir === 'SW')
+            data.marbleDragonImitationRainDir = 'west';
+          if (dir === 'NW' || dir === 'SE')
+            data.marbleDragonImitationRainDir = 'east';
+        }
+      },
+      infoText: (data, _matches, output) => {
+        if (data.marbleDragonImitationRainDir === undefined)
+          return;
+        return output[data.marbleDragonImitationRainDir]!();
+      },
+      outputStrings: {
+        east: {
+          en: 'East (Later)',
+        },
+        west: {
+          en: 'West (Later)',
+        },
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Imitation Rain 2',
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Pattern',
       // Twisters will rotate CW or CCW and start moving 1s before end of Draconiform Motion (77C1)
       // They spawn at (-362, 157) and (-312, 157) as combatant "Icewind" about ~1.6s after Frigid Twister (7638)
       // About 3.2s later, they start using Frigid Twister (76CF) abilities
@@ -2871,7 +2894,7 @@ const triggerSet: TriggerSet<Data> = {
         const actor = actors[0];
         if (actors.length !== 1 || actor === undefined) {
           console.error(
-            `Occult Crescent Marble Dragon Frigid Twisters Direction: Wrong actor count ${actors.length}`,
+            `Occult Crescent Marble Dragon Imitation Rain 2 Pattern: Wrong actor count ${actors.length}`,
           );
           return;
         }
