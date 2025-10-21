@@ -3087,9 +3087,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Marble Dragon Towers 2 and 4',
-      // Once Immitation Blizzard 7614, 0.7s and 7615, 3.7s casts have gone off, towers appear in ~0.4s
+      // Once Imitation Blizzard 7614, 0.7s and 7615, 3.7s casts have gone off, towers appear in ~0.4s
       // These tower casts occur after Wicked Water as well
-      // Using the cross (7614) Immitation Blizzard as it only occurs once per dive versus the 7615 (towers)
+      // Using the cross (7614) Imitation Blizzard as it only occurs once per dive versus the 7615 (towers)
       type: 'StartsUsing',
       netRegex: { source: 'Marble Dragon', id: '7614', capture: true },
       condition: (data) => {
@@ -3208,7 +3208,7 @@ const triggerSet: TriggerSet<Data> = {
       // Ball of Ice A716 spawns the towers
       // Towers are either vertical (2 columns of 3) or horizontal (2 rows of 3)
       // The StartsUsing 20 log lines can be wrong, but the StartsUsingExtra 263 lines seem to be correct
-      // There are six Marble Dragon actors that cast Immitation Blizzard 7615 which signifies end of towers
+      // There are six Marble Dragon actors that cast Imitation Blizzard 7615 which signifies end of towers
       // If StartsUsingExtra lines are wrong, may need to change to OverlayPlugin
       // Horizontal:
       // (-346.019, 151.006) (-337.016, 151.006) (-328.013, 151.006)
