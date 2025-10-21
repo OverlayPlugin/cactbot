@@ -942,7 +942,7 @@ hideall "--sync--"
 50051.0 "Imitation Blizzard 1 (circles + cross?)" Ability { id: "7602", source: "Marble Dragon" } jump "oc-md-p1o"
 50052.0 "Imitation Blizzard 2 (circles + cross?)" #Ability { id: "7602", source: "Marble Dragon" }
 50053.0 "Imitation Blizzard 3 (circles + cross?)" #Ability { id: "7614", source: "Marble Dragon" }
-50054.0 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50054.0 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
 50065.0 "Dread Deluge (castbar)" #Ability { id: "77E8", source: "Marble Dragon" }
 50067.0 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
 50072.1 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
@@ -953,7 +953,7 @@ hideall "--sync--"
 50151.0 "Imitation Blizzard 1 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50152.0 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50153.0 "Imitation Blizzard 3 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
-50154.0 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50154.0 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
 50162.0 "--sync--" StartsUsing { id: "77E8", source: "Marble Dragon" } jump "oc-md-p1-end"
 50165.0 "Dread Deluge (castbar)" #Ability { id: "77E8", source: "Marble Dragon" }
 50167.0 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
@@ -966,7 +966,7 @@ hideall "--sync--"
 50251.0 label "oc-md-p1o"
 50252.0 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50253.0 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
-50254.0 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50254.0 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
 
 50262.0 label "oc-md-p1-end"
 50265.0 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
@@ -1053,7 +1053,7 @@ hideall "--sync--"
 50746.1 "Imitation Blizzard 1 (circles + cross?)" Ability { id: "7602", source: "Marble Dragon" } jump "oc-md-p3o"
 50747.1 "Imitation Blizzard 2 (circles + cross?)" #Ability { id: "7602", source: "Marble Dragon" }
 50748.1 "Imitation Blizzard 3 (circles + cross?)" #Ability { id: "7614", source: "Marble Dragon" }
-50749.1 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50749.1 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
 50765.1 "Imitation Star" #Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
 50778.3 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
 
@@ -1063,7 +1063,7 @@ hideall "--sync--"
 50846.1 "Imitation Blizzard 1 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50847.1 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50848.1 "Imitation Blizzard 3 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
-50849.1 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50849.1 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
 50860.1 "--sync--" StartsUsing { id: "77F1", source: "Marble Dragon" } jump "oc-md-p3-end"
 50865.1 "Imitation Star" #Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
 50878.3 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
@@ -1076,7 +1076,7 @@ hideall "--sync--"
 50946.1 label "oc-md-p3o"
 50947.1 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50948.1 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
-50949.1 "Imitation Blizzard 4 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50949.1 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
 
 50960.1 label "oc-md-p3-end"
 50965.1 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
