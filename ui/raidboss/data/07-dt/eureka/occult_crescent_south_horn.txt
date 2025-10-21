@@ -937,8 +937,8 @@ hideall "--sync--"
 50047.6 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
 50048.6 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
 50049.6 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
-50050.6 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
 50050.0 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p1+"
+50050.6 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
 50051.0 "Imitation Blizzard 1 (circles + cross?)" Ability { id: "7602", source: "Marble Dragon" } jump "oc-md-p1o"
 50052.0 "Imitation Blizzard 2 (circles + cross?)" #Ability { id: "7602", source: "Marble Dragon" }
 50053.0 "Imitation Blizzard 3 (circles + cross?)" #Ability { id: "7614", source: "Marble Dragon" }
@@ -949,6 +949,7 @@ hideall "--sync--"
 
 # Pattern 1 - Cross First
 50150.0 label "oc-md-p1+"
+50150.6 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
 50151.0 "Imitation Blizzard 1 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50152.0 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50153.0 "Imitation Blizzard 3 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
@@ -1047,8 +1048,8 @@ hideall "--sync--"
 50742.7 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
 50743.7 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
 50744.7 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
-50745.7 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
 50745.1 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p3+"
+50745.7 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
 50746.1 "Imitation Blizzard 1 (circles + cross?)" Ability { id: "7602", source: "Marble Dragon" } jump "oc-md-p3o"
 50747.1 "Imitation Blizzard 2 (circles + cross?)" #Ability { id: "7602", source: "Marble Dragon" }
 50748.1 "Imitation Blizzard 3 (circles + cross?)" #Ability { id: "7614", source: "Marble Dragon" }
@@ -1058,6 +1059,7 @@ hideall "--sync--"
 
 # Patern 3 - Cross First
 50845.1 label "oc-md-p3+"
+50845.7 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
 50846.1 "Imitation Blizzard 1 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50847.1 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
 50848.1 "Imitation Blizzard 3 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
