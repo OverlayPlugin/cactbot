@@ -3101,7 +3101,7 @@ const triggerSet: TriggerSet<Data> = {
       // Assuming player followed south cross priority call
       // Calling East/West as those are the easy spots to get to, center is safe as well
       type: 'StartsUsing',
-      netRegex: { source: 'Marble Dragon', id: '7614', capture: false },
+      netRegex: { source: 'Marble Dragon', id: '7614', capture: true },
       condition: (data) => {
         if (
           data.marbleDragonImitationRainCount === 2 &&
@@ -3139,7 +3139,7 @@ const triggerSet: TriggerSet<Data> = {
       // Frigid Twister continues for ~5s after Imitation Blizzard
       // Call to Avoid Twister
       type: 'StartsUsing',
-      netRegex: { source: 'Marble Dragon', id: ['7614', '7602'], capture: false },
+      netRegex: { source: 'Marble Dragon', id: ['7614', '7602'], capture: true },
       condition: (data) => {
         if (
           data.marbleDragonImitationRainCount === 2 &&
