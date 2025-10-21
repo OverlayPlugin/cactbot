@@ -2765,7 +2765,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Cross Direction',
+      id: 'Occult Crescent Marble Dragon Imitation Rain 2 Direction',
       // Call East/West later for movement after Draconiform Motion and use data collected here for later calls
       // Twisters will rotate CW or CCW
       // The center is always a cross, the other two form a diagonal with the center
@@ -2801,7 +2801,7 @@ const triggerSet: TriggerSet<Data> = {
         const cross3 = crosses[2];
         if (cross1 === undefined || cross2 === undefined || cross3 === undefined) {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Direction: Invalid actors.`,
+            `Occult Crescent Marble Dragon Imitation Rain 2 Direction: Invalid actors.`,
           );
           return;
         }
@@ -2828,7 +2828,7 @@ const triggerSet: TriggerSet<Data> = {
               return 'SW';
           }
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Cross Direction: Unexpected puddle location (${x}, ${y})`,
+            `Occult Crescent Marble Dragon Imitation Rain 2 Direction: Unexpected puddle location (${x}, ${y})`,
           );
           return undefined;
         };
