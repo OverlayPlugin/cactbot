@@ -3114,7 +3114,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
         const crosses = data.marbleDragonImitationRainCrosses;
-        if ( crosses === undefined || crosses[0] === undefined )
+        if (crosses === undefined || crosses[0] === undefined)
           return output.twoDirs!({ dir1: output.east!(), dir2: output.west!() });
 
         // Check where a cross spawned at earlier
