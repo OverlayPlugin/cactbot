@@ -2850,7 +2850,7 @@ const triggerSet: TriggerSet<Data> = {
       // South Puddle by East Wall
       // (-343, 153)
       //            (-319, 161)
-      // This is available ~2.4s before bait call
+      // This is available ~2.4s before Draconiform Motion (77C1) startsUsing
       // 271 log line slightly earlier could be grabbed with OverlayPlugin, but timing could vary
       // Output conflicts with Draconiform Motion Bait trigger, so this just collects
       type: 'StartsUsingExtra',
