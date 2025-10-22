@@ -229,7 +229,7 @@ const prongedPassageCenterY = 315;
 const marbleDragonCenterX = -337;
 const marbleDragonCenterY = 157;
 
-// Function to find and validate a puddle location during Immitation Rain 2
+// Function to find and validate a puddle location during Imitation Rain 2
 const getPuddleLocation = (
   x: number,
   y: number,
@@ -344,6 +344,20 @@ const triggerSet: TriggerSet<Data> = {
       default: 'none',
     },
     {
+      id: 'marbleDragonImitationRainStrategy',
+      name: {
+        en: 'Forked Tower: Blood Marble Dragon Imitation Rain 1 and 5 Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Cross-based: Calls based on southern cross puddle.': 'cross',
+          'Ice-based: Calls based on Ice Puddle nearest to wall.': 'ice',
+        },
+      },
+      default: 'cross',
+    },
+    {
       id: 'magitaurDaggers',
       name: {
         en: 'Forked Tower: Blood Magitaur Dagger Strategy',
@@ -401,8 +415,10 @@ const triggerSet: TriggerSet<Data> = {
   timelineTriggers: [
     {
       id: 'Occult Crescent Marble Dragon Draconiform Motion Bait',
+      // Usually we would use a 7s beforeSeconds value, however 6.3s avoids needing to create a second trigger to delay bait calls for an ice-based strategy
+      // and maintains consistency between the Draconiform Motion baits throughout the fight and strategy selection
       regex: /Draconiform Motion/,
-      beforeSeconds: 7,
+      beforeSeconds: 6.3,
       alertText: (data, _matches, output) => {
         if (data.marbleDragonImitationRainDir !== undefined)
           return output.baitCleaveThenDir!({
@@ -2730,7 +2746,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction',
+      id: 'Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction (Cross-based)',
       // North Puddles
       // (-355, 141) (-343, 141) (-331, 141) (-319, 141)
       // South Puddles
@@ -2742,8 +2758,9 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Marble Dragon', id: '7797', capture: false },
       condition: (data) => {
         if (
-          data.marbleDragonImitationRainCount === 1 ||
-          data.marbleDragonImitationRainCount === 5
+          (data.marbleDragonImitationRainCount === 1 ||
+          data.marbleDragonImitationRainCount === 5) &&
+          data.triggerSetConfig.marbleDragonImitationRainStrategy === 'cross'
         )
           return true;
         return false;
@@ -2757,7 +2774,7 @@ const triggerSet: TriggerSet<Data> = {
         const crosses = actors.filter((c) => c.BNpcID === 2014547);
         if (crosses.length !== 2 || crosses[0] === undefined) {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction: Wrong actor count ${crosses.length}`,
+            `Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction (Cross Strategy): Wrong actor count ${crosses.length}`,
           );
           return;
         }
@@ -2777,22 +2794,121 @@ const triggerSet: TriggerSet<Data> = {
           data.marbleDragonImitationRainDir = 'west';
         } else {
           console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction: Unexpected coordinates (${x}, ${y})`,
+            `Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction (Cross Strategy): Unexpected coordinates (${x}, ${y})`,
           );
         }
       },
       infoText: (data, _matches, output) => {
         if (data.marbleDragonImitationRainDir === undefined)
           return;
-        return output[data.marbleDragonImitationRainDir]!();
+        const dir = data.marbleDragonImitationRainDir;
+        const dir1 = output[dir]!();
+
+        // Second direction is either north or south, but not known yet
+        if (data.marbleDragonHasWickedWater) {
+          const dir2 = output.wickedWater!({ dir: dir1 });
+          return dir === 'east'
+            ? output.eastThenWickedWater!({ dir1: dir1, dir2: dir2 })
+            : output.westThenWickedWater!({ dir1: dir1, dir2: dir2 });
+        }
+        return dir === 'east' ? output.eastLater!({ dir: dir1 }) : output.westLater!({ dir: dir1 });
       },
       outputStrings: {
-        east: {
-          en: 'East (Later)',
+        east: Outputs.east,
+        west: Outputs.west,
+        eastLater: {
+          en: '(${dir} Later)',
         },
-        west: {
-          en: 'West (Later)',
+        westLater: {
+          en: '(${dir} Later)',
         },
+        eastThenWickedWater: {
+          en: '(${dir1} Later => ${dir2})',
+        },
+        westThenWickedWater: {
+          en: '(${dir1} Later => ${dir2})',
+        },
+        wickedWater: {
+          en: 'Get Hit ${dir}',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 1 and 5 Collect (Ice-based)',
+      // Alternate Strategy using the Imitation Icicle closest to Wall for inital East/West call
+      // Imitation Icicle location data is in the StartsUsingExtra lines of Imitation Icicle (75E4)
+      // Four possible locations for Imitation Icicles
+      // North Puddle by West wall
+      // (-353, 153)
+      //            (-331, 161)
+      // South Puddle by West wall
+      //            (-331, 153)
+      // (-355, 161) This seems like a bug?
+      // North Puddle by East Wall
+      //            (-319, 153)
+      // (-343, 161)
+      // South Puddle by East Wall
+      // (-343, 153)
+      //            (-319, 161)
+      // This is available ~2.4s before bait call
+      // 271 log line slightly earlier could be grabbed with OverlayPlugin, but timing could vary
+      // Output conflicts with Draconiform Motion Bait trigger, so this just collects
+      type: 'StartsUsingExtra',
+      netRegex: { id: '75E4', capture: true },
+      condition: (data) => {
+        if (
+          (data.marbleDragonImitationRainCount === 1 ||
+          data.marbleDragonImitationRainCount === 5) &&
+          data.triggerSetConfig.marbleDragonImitationRainStrategy === 'ice'
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 1,
+      run: (data, matches, _output) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+
+        // Could have either north or south puddle in the pattern
+        // North Puddle by East Wall
+        if (
+          ((x > -320 && x < -318) && (y < marbleDragonCenterY)) ||
+          ((x > -345 && x < -342) && (y > marbleDragonCenterY))
+        ) {
+          data.marbleDragonImitationRainDir = 'east';
+          // Then north
+          return;
+        }
+        // South Puddle by East Wall
+        if (
+          ((x > -345 && x < -342) && (y < marbleDragonCenterY)) ||
+          ((x > -320 && x < -318) && (y > marbleDragonCenterY))
+        ) {
+          data.marbleDragonImitationRainDir = 'east';
+          // Then south
+        }
+        // North Puddle by West Wall
+        if (
+          ((x > -355 && x < -352) && (y < marbleDragonCenterY)) ||
+          ((x > -332 && x < -330) && (y > marbleDragonCenterY))
+        ) {
+          data.marbleDragonImitationRainDir = 'west';
+          // Then north
+          return;
+        }
+        // South Puddle by West Wall
+        // NOTE: South check expanded to -352 incase it is fixed later
+        if (
+          ((x > -332 && x < -330) && (y < marbleDragonCenterY)) ||
+          ((x > -356 && x < -352) && (y > marbleDragonCenterY))
+        ) {
+          data.marbleDragonImitationRainDir = 'west';
+          // Then south
+          return;
+        }
+        console.error(
+          `Occult Crescent Marble Dragon Imitation Rain 1 and 5 Collect (Ice-based): Unexpected coordinates (${x}, ${y})`,
+        );
       },
     },
     {
@@ -2936,10 +3052,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         east: {
-          en: 'East (Later)',
+          en: '(East Later)',
         },
         west: {
-          en: 'West (Later)',
+          en: '(West Later)',
         },
       },
     },
