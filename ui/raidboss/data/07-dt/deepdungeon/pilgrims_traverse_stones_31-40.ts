@@ -76,6 +76,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'A180', source: 'Forgiven Plague', capture: false },
       response: Responses.goSides(),
     },
+    {
+      id: 'PT 31-40 Forgiven Prejudice Petrifying Light',
+      type: 'StartsUsing',
+      netRegex: { id: 'AE8F', source: 'Forgiven Prejudice', capture: true },
+      response: Responses.lookAwayFromSource(),
+    },
     // ---------------- Stone 40 Boss: Forgiven Naivety ----------------
     {
       id: 'PT 31-40 Forgiven Naivety Blown Blessing',
