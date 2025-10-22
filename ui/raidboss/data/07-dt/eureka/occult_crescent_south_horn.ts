@@ -2759,7 +2759,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         if (
           (data.marbleDragonImitationRainCount === 1 ||
-          data.marbleDragonImitationRainCount === 5) &&
+            data.marbleDragonImitationRainCount === 5) &&
           data.triggerSetConfig.marbleDragonImitationRainStrategy === 'cross'
         )
           return true;
@@ -2858,7 +2858,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         if (
           (data.marbleDragonImitationRainCount === 1 ||
-          data.marbleDragonImitationRainCount === 5) &&
+            data.marbleDragonImitationRainCount === 5) &&
           data.triggerSetConfig.marbleDragonImitationRainStrategy === 'ice'
         )
           return true;
