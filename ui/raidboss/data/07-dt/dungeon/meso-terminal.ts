@@ -25,8 +25,8 @@ type chirurgeonCoords = {
 };
 
 // List out the safe spots for diagonals.
-const diagPositive: DirectionOutputIntercard[] = ['dirSW', 'dirNE'];
-const diagNegative: DirectionOutputIntercard[] = ['dirNW', 'dirSE'];
+const diagPositiveSafe: DirectionOutputIntercard[] = ['dirNW', 'dirSE'];
+const diagNegativeSafe: DirectionOutputIntercard[] = ['dirSW', 'dirNE'];
 
 const findNorthTerror = (terrors: PluginCombatantState[]): PluginCombatantState | undefined => {
   return terrors.filter((terror) => {
@@ -388,7 +388,7 @@ const triggerSet: TriggerSet<Data> = {
           // In practice, only 5 and 3 will ever be seen,
           // since the diagonals always originate from the north end of the arena.
           const diagIsPositive = (headingNum + 4) % 4 === 1;
-          const safeDiagonalSpots = diagIsPositive ? diagNegative : diagPositive;
+          const safeDiagonalSpots = diagIsPositive ? diagPositiveSafe : diagNegativeSafe;
           data.kerauDiagSafe = safeDiagonalSpots;
         } else if (headingNum % 4 === 0) { // Vertical
           // As with the diagonals, in practice we will only ever see a 0 heading number.
@@ -431,9 +431,9 @@ const triggerSet: TriggerSet<Data> = {
 
         // If the orthogonal laser is vertical,
         // there is a tiny safespot in front,
-        // as well as a large one diagonally opposite,
+        // as well as a large one on the same side south of the diagonal,
         // just outside melee range.
-        const safeNW = data.kerauDiagSafe.includes('dirNW');
+        const safeNW = data.kerauDiagSafe.includes('dirSW');
         if (safeNW)
           return output.leanLeft!();
         return output.leanRight!();
@@ -445,10 +445,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         leanLeft: {
-          en: 'Front + Lean Left/Southwest',
+          en: 'Front + Lean Left; or Southwest',
         },
         leanRight: {
-          en: 'Front + Lean Right/Southeast',
+          en: 'Front + Lean Right; or Southeast',
         },
         dirNW: Outputs.northwest,
         dirNE: Outputs.northeast,
