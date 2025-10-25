@@ -158,3 +158,23 @@ hideall "--sync--"
 3216.2 "Recollection" Ability { id: "AB31", source: "Immortal Remains" }
 
 3234.0 "Keraunography" Ability { id: "B078", source: "Immortal Remains" } forcejump "remainsLoop"
+
+# ALL ENCOUNTER ABILITIES
+# AB21 Memento: Setup cast for Electray/Bombardment/Keraunography
+# AB22 Electray: Cross laser AoEs
+# AB23 Bombardment: Small red circle AoE
+# AB24 Bombardment: Large red circle AoE
+# AB25 Keraunography: Castbar for purple lasers
+# AB26 Turmoil: Half-arena cleave, left side castbar
+# AB27 Turmoil: Half-arena cleave, right side castbar
+# AB28 Turmoil: Half-arena cleave, both sides
+# AB29 Impression: Blue knockback circle display
+# AB2A Impression: Blue knockback circle failure (standing inside)
+# AB2B Impression: Blue knockback circle resolve
+# AB2D Memory of the Storm: Stack laser self-cast
+# AB2E Memory of the Storm: Stack laser (instant)
+# AB2F Memory of the Pyre: Tank buster self-cast
+# AB30 Memory of the Pyre: Tank buster
+# AB31 Recollection: Raidwide
+# AB32 --sync--: Auto-attack
+# B078 Keraunography: Large purple lasers
