@@ -329,6 +329,14 @@ const contentTypeToLabel: {
       ko: '딥 던전',
     },
   },
+  [ContentType.DeepDungeonExtras]: {
+    full: {
+      en: 'Deep Dungeon Extra Content',
+    },
+    short: {
+      en: 'DD+',
+    },
+  },
   [ContentType.Pvp]: {
     full: {
       en: 'PvP',
