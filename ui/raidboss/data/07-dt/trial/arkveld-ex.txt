@@ -10,18 +10,18 @@ hideall "--sync--"
 #
 # Chainblade Blow
 #  Early Phase:
-#  First cleave raises arm with AB6F or AB70
+#  First cleave brings arm down with AB6F or AB70
 #  First hit is AB71 or B015
 #  Follow-up is AB72 or B016
-#  Second cleave raises arm with AB75 or AB76
+#  Second cleave brings arm down with AB75 or AB76
 #  First hit is AB77 or B017
 #  Follow-up is AB78 or B018
 #
 #  Post powerup:
-#  First cleave raises arm with B019 or B01A
+#  First cleave brings arm down with B019 or B01A
 #  First hit is B01B or B01E
 #  Follow-up is B01C or B01F
-#  Second cleave raises arm with B021 or B022
+#  Second cleave brings arm down with B021 or B022
 #  First hit is B023 or B026
 #  Follow-up is B024 or B027
 #
@@ -108,8 +108,7 @@ hideall "--sync--"
 # AB92 Greater Resonance
 # B02C Guardian Resonance
 # AB8F Aetheric Resonance
-#  Skills used during tower spawns, unsure which does what, or if there are
-#  other skills or log lines we could sync to.
+#  Skills used during tower spawns. AB90 appears to be when towers hit.
 #
 # AB84 --sync--
 # B036 --sync--
@@ -119,10 +118,12 @@ hideall "--sync--"
 # AB85 Rush
 # AB86 Rush
 #  Appear to be the actual dashes, with AB85 being the first dash and AB86
-#  being both follow-up dashes.
+#  being both follow-up dashes. Haven't found a good sync for the expanding
+#  rings.
 #
 # Wyvern's Ouroblade
-#  The giant halfroom cleave along with spread aoes.
+#  The giant halfroom cleave along with spread aoes. Only the first hit
+#  shows in the timeline.
 #
 #  Early phase:
 #  AB8B and AB8D are the first hit, each being a different half
@@ -134,14 +135,14 @@ hideall "--sync--"
 #
 # AB96 Wyvern's Vengeance
 # AB97 Wyvern's Vengeance
-#  Something used during  the first exaflares after towers
-#  Unclear if this is an autoattack or something relating to the flares
-#  themselves.
+#  Appears to line up with exaflare hits, but there are so many its hard to
+#  use as a timeline sync. Ideally we want to sync specific hits for the
+#  central exaflares. For now, these are excluded from the timeline.
 #
 # ABB0 Wyvern's Vengeance
 # ABB1 Wyvern's Vengeance
-#  Something used during side exaflares. Unclear if this is an auto attack
-#  or if its something else relating to the flares themselves.
+#  These likely line up to the side coming exaflares, but finding good
+#  timeline entries for these is difficult.
 #
 # AB9C Wild Energy
 #  Appears to be the skill which triggers the aoe explosions on players
@@ -151,7 +152,7 @@ hideall "--sync--"
 # AB9F Forged Fury
 # AEF8 Forged Fury
 # AEF9 Forged Fury
-#  Something used at the end of exaflares, not sure what.
+#  Power up skill, plus raid wide.
 #
 # ABA3 Wyvern's Rattle
 #  Single rolling line aoe, appears along side baited aoes
@@ -162,13 +163,14 @@ hideall "--sync--"
 # ABAB Chainblade Charge
 # ABAC Chainblade Charge
 # AF0C Chainblade Charge
-#  Party stack mechanic
+#  Party stack mechanic. First two abilities are wind-up, third is the hit.
 #
 # ABAD Steeltail Thrust
 # AF05 Steeltail Thrust
 # AF06 Steeltail Thrust
 # B035 Steeltail Thrust
 #  Tail thrust. One might be the animation while one is thie hit, not sure.
+#  It looks like damage is on the second skill.
 #
 # ABAE Roar
 # ABAF Roar
@@ -190,40 +192,40 @@ hideall "--sync--"
 #
 # ABB2 Forged Fury
 # AF4E Forged Fury
-#  Enrage?
+#  Power up used during enrage.
 #
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 # Opening Raidwide
-5.0 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+5.0 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # First Chainblade
-13.8 "Chainblade Blow (Arm Raised)" Ability { id: "(AB6F|AB70)", source: "Guardian Arkveld" }
-15.0 "Chainblade Blow (First Hit)" Ability { id: "(AB71|B015)", source: "Guardian Arkveld" }
-15.4 "Chainblade Blow (Follow-up)" Ability { id: "(AB72|B016)", source: "Guardian Arkveld" }
-18.0 "Chainblade Blow (Arm Raised)" Ability { id: "(AB75|AB76)", source: "Guardian Arkveld" }
-19.1 "Chainblade Blow (First Hit)" Ability { id: "(AB77|B017)", source: "Guardian Arkveld" }
-19.5 "Chainblade Blow (Follow-up)" Ability { id: "(AB78|B018)", source: "Guardian Arkveld" }
+13.8 "--sync--" Ability { id: "(AB6F|AB70)", source: "Guardian Arkveld" }
+15.0 "Chainblade Blow (1)" Ability { id: "(AB71|B015)", source: "Guardian Arkveld" }
+15.4 "--sync--" Ability { id: "(AB72|B016)", source: "Guardian Arkveld" }
+18.0 "--sync--" Ability { id: "(AB75|AB76)", source: "Guardian Arkveld" }
+19.1 "Chainblade Blow (2)" Ability { id: "(AB77|B017)", source: "Guardian Arkveld" }
+19.5 "--sync--" Ability { id: "(AB78|B018)", source: "Guardian Arkveld" }
 # Dash + line + party stacks
 21.9 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" }
-30.1 "Siegeflight (telegraph)" Ability { id: "(AB7B|AB7E)", source: "Guardian Arkveld" }
-31.7 "Siegeflight (dash)" Ability { id: "(AB7C|AB7F)", source: "Guardian Arkveld" }
+30.1 "Siegeflight (dash)" Ability { id: "(AB7B|AB7E)", source: "Guardian Arkveld" }
+31.7 "--sync--" Ability { id: "(AB7C|AB7F)", source: "Guardian Arkveld" }
 32.5 "--sync--" Ability { id: "(B037|B045)", source: "Guardian Arkveld" }
 35.3 "Dragonspark/White Flash" Ability { id: "(AB82|AB83)", source: "Guardian Arkveld" }
 # Baited AOEs + lines
 36.3 "Wyvern's Rattle" Ability { id: "ABA3", source: "Guardian Arkveld" }
 # Dash + line + party stacks
-48.2 "Siegeflight (telegraph)" Ability { id: "(AB7B|AB7E)", source: "Guardian Arkveld" }
-49.6 "Siegeflight (dash)" Ability { id: "(AB7C|AB7F)", source: "Guardian Arkveld" }
+48.2 "Siegeflight (dash)" Ability { id: "(AB7B|AB7E)", source: "Guardian Arkveld" }
+49.6 "--sync--" Ability { id: "(AB7C|AB7F)", source: "Guardian Arkveld" }
 50.4 "--sync--" Ability { id: "(B037|B045)", source: "Guardian Arkveld" }
 53.2 "Dragonspark/White Flash" Ability { id: "(AB82|AB83)", source: "Guardian Arkveld" }
 # Second Chainblade
-60.0 "Chainblade Blow (Arm Raised)" Ability { id: "(AB6F|AB70)", source: "Guardian Arkveld" }
-61.2 "Chainblade Blow (First Hit)" Ability { id: "(AB71|B015)", source: "Guardian Arkveld" }
-61.6 "Chainblade Blow (Follow-up)" Ability { id: "(AB72|B016)", source: "Guardian Arkveld" }
-64.2 "Chainblade Blow (Arm Raised)" Ability { id: "(AB75|AB76)", source: "Guardian Arkveld" }
-65.3 "Chainblade Blow (First Hit)" Ability { id: "(AB77|B017)", source: "Guardian Arkveld" }
-65.7 "Chainblade Blow (Follow-up)" Ability { id: "(AB78|B018)", source: "Guardian Arkveld" }
+60.0 "--sync--" Ability { id: "(AB6F|AB70)", source: "Guardian Arkveld" }
+61.2 "Chainblade Blow (1)" Ability { id: "(AB71|B015)", source: "Guardian Arkveld" }
+61.6 "--sync--" Ability { id: "(AB72|B016)", source: "Guardian Arkveld" }
+64.2 "--sync--" Ability { id: "(AB75|AB76)", source: "Guardian Arkveld" }
+65.3 "Chainblade Blow (2)" Ability { id: "(AB77|B017)", source: "Guardian Arkveld" }
+65.7 "--sync--" Ability { id: "(AB78|B018)", source: "Guardian Arkveld" }
 # Raidewide
-73.0 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+73.0 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Jump to edge
 82.8 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" } window 5,5
 # Rush (line dashes + expanding rings)
@@ -231,70 +233,53 @@ hideall "--sync--"
 88.6 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
 89.6 "--sync--" #Ability { id: "AB84", source: "Guardian Arkveld" }
 90.6 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
-91.0 "Rush" Ability { id: "AB85", source: "Guardian Arkveld" }
+91.0 "Rush (1)" Ability { id: "AB85", source: "Guardian Arkveld" }
 91.6 "--sync--" #Ability { id: "AB84", source: "Guardian Arkveld" }
 92.6 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
-93.2 "Rush" #Ability { id: "AB86", source: "Guardian Arkveld" }
-95.2 "Rush" #Ability { id: "AB86", source: "Guardian Arkveld" }
+93.2 "Rush (2)" #Ability { id: "AB86", source: "Guardian Arkveld" }
+95.2 "Rush (3)" #Ability { id: "AB86", source: "Guardian Arkveld" }
 # Jump to center?
 101.5 "(center)" Ability { id: "AB33", source: "Guardian Arkveld" } window 5,5
 # Half room + aoes
 108.7 "Wyvern's Ouroblade" Ability { id: "(AB8B|AB8D)", source: "Guardian Arkveld" }
-109.7 "Wyvern's Ouroblade (Follow-up)" Ability { id: "(AB8C|AB8E)", source: "Guardian Arkveld" }
+109.7 "--sync--" Ability { id: "(AB8C|AB8E)", source: "Guardian Arkveld" }
 109.9 "Wild Energy (aoes)" #Ability { id: "AB9C", source: "Guardian Arkveld" }
 # Tail thrust
-116.9 "Steeltail Thrust" Ability { id: "ABAD", source: "Guardian Arkveld" }
+116.9 "--sync--" Ability { id: "ABAD", source: "Guardian Arkveld" }
 117.5 "Steeltail Thrust" Ability { id: "AF05", source: "Guardian Arkveld" }
 # Party Raid stack?
-125.6 "Chainblade Charge" Ability { id: "ABAB", source: "Guardian Arkveld" }
-125.8 "Chainblade Charge" Ability { id: "ABAC", source: "Guardian Arkveld" }
+125.6 "--sync--" Ability { id: "ABAB", source: "Guardian Arkveld" }
+125.8 "--sync--" Ability { id: "ABAC", source: "Guardian Arkveld" }
 127.9 "Chainblade Charge" Ability { id: "AF0C", source: "Guardian Arkveld" }
 # Third Chainblade
-135.6 "Chainblade Blow (Arm Raised)" Ability { id: "(AB6F|AB70)", source: "Guardian Arkveld" }
-136.8 "Chainblade Blow (First Hit)" Ability { id: "(AB71|B015)", source: "Guardian Arkveld" }
-137.2 "Chainblade Blow (Follow-up)" Ability { id: "(AB72|B016)", source: "Guardian Arkveld" }
-139.8 "Chainblade Blow (Arm Raised)" Ability { id: "(AB75|AB76)", source: "Guardian Arkveld" }
-140.9 "Chainblade Blow (First Hit)" Ability { id: "(AB77|B017)", source: "Guardian Arkveld" }
-141.3 "Chainblade Blow (Follow-up)" Ability { id: "(AB78|B018)", source: "Guardian Arkveld" }
+135.6 "--sync--" Ability { id: "(AB6F|AB70)", source: "Guardian Arkveld" }
+136.8 "Chainblade Blow (1)" Ability { id: "(AB71|B015)", source: "Guardian Arkveld" }
+137.2 "--sync--" Ability { id: "(AB72|B016)", source: "Guardian Arkveld" }
+139.8 "--sync--" Ability { id: "(AB75|AB76)", source: "Guardian Arkveld" }
+140.9 "Chainblade Blow (2)" Ability { id: "(AB77|B017)", source: "Guardian Arkveld" }
+141.3 "--sync--" Ability { id: "(AB78|B018)", source: "Guardian Arkveld" }
 # Raidwide
-148.6 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+148.6 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Jump to middle
 158.4 "(center)" Ability { id: "AB33", source: "Guardian Arkveld" } window 5,5
 # Tower spawn -> bait -> towers
-169.4 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
-169.4 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
-172.0 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
+169.4 "--sync--" Ability { id: "AB93", source: "Guardian Arkveld" }
 173.1 "Aetheric Resonance" Ability { id: "AB8F", source: "Guardian Arkveld" }
 174.4 "Guardian Resonance" Ability { id: "AB90", source: "Guardian Arkveld" }
-174.4 "Guardian Resonance" Ability { id: "AB91", source: "Guardian Arkveld" }
-174.4 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
 # Exaflares + Aoes?
 # Probably can't sync to the Wyvern's Vengeance due to inconsistency
 176.4 "--sync--" Ability { id: "AB53", source: "Guardian Arkveld" }
-184.4 "Wyvern's Vengeance" #Ability { id: "AB96", source: "Guardian Arkveld" }
-185.5 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
-186.5 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
-191.1 "Wyvern's Vengeance" #Ability { id: "AB96", source: "Guardian Arkveld" }
-192.2 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
-193.2 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
 199.1 "Wild Energy (aoes)" Ability { id: "AB9C", source: "Guardian Arkveld" }
-199.1 "Wyvern's Vengeance" #Ability { id: "AB96", source: "Guardian Arkveld" }
-200.2 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
-201.2 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
 207.1 "Wild Energy (aoes)" Ability { id: "AB9C", source: "Guardian Arkveld" }
-207.1 "Wyvern's Vengeance" #Ability { id: "AB96", source: "Guardian Arkveld" }
-208.2 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
-209.2 "Wyvern's Vengeance" #Ability { id: "AB97", source: "Guardian Arkveld" }
-215.1 "Forged Fury" Ability { id: "AB9E", source: "Guardian Arkveld" }
-217.1 "Forged Fury" Ability { id: "AB9F", source: "Guardian Arkveld" }
-218.0 "Forged Fury" Ability { id: "AEF8", source: "Guardian Arkveld" }
-220.4 "Forged Fury" Ability { id: "AEF9", source: "Guardian Arkveld" }
-# Big Raid wide + Leap to edge?
-# Need to figure out what the raidwide is and why its not in the generated
-# timeline.
+# Power up + big raid wide
+215.1 "Forged Fury" Ability { id: "AB9E", source: "Guardian Arkveld" } duration 5.2
+217.1 "--sync--" Ability { id: "AB9F", source: "Guardian Arkveld" }
+218.0 "--sync--" Ability { id: "AEF8", source: "Guardian Arkveld" }
+220.4 "--sync--" Ability { id: "AEF9", source: "Guardian Arkveld" }
+# Leap to edge
 229.2 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" } window 5,5
 # Raidwide
-236.5 "Roar (aoe)" Ability { id: "B092", source: "Guardian Arkveld" }
+236.5 "Roar (raidwide)" Ability { id: "B092", source: "Guardian Arkveld" }
 # Limit Cut
 248.2 "--sync--" Ability { id: "(ABB3|ABB6)", source: "Guardian Arkveld" }
 248.4 "Clamorous Chase (1)" Ability { id: "(ABB4|ABB7)", source: "Guardian Arkveld" }
@@ -314,19 +299,13 @@ hideall "--sync--"
 269.4 "Clamorous Chase (8)" Ability { id: "(ABB4|ABB7)", source: "Guardian Arkveld" }
 271.4 "Clamorous Chase (wing)" Ability { id: "(ABB5|ABB8)", source: "Guardian Arkveld" }
 # Raid wide
-277.4 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+277.4 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Jump to center
 286.2 "(center)" Ability { id: "AB33", source: "Guardian Arkveld" } window 5,5
 # Towers appear -> Baits -> Towers
-297.1 "Guardian Resonance" Ability { id: "AB93", source: "Guardian Arkveld" }
-299.7 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
-299.7 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
+297.1 "--sync--" Ability { id: "AB93", source: "Guardian Arkveld" }
 300.8 "Aetheric Resonance" Ability { id: "AB8F", source: "Guardian Arkveld" }
-302.0 "Guardian Resonance" #Ability { id: "AB90", source: "Guardian Arkveld" }
-302.0 "Guardian Resonance" #Ability { id: "AB90", source: "Guardian Arkveld" }
-302.0 "Guardian Resonance" Ability { id: "AB91", source: "Guardian Arkveld" }
-302.0 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
-302.0 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
+302.0 "Guardian Resonance" Ability { id: "AB90", source: "Guardian Arkveld" }
 # Some logs don't have this?
 303.0 "Greater Resonance" Ability { id: "AB92", source: "Guardian Arkveld" }
 # Jump to edge?
@@ -345,20 +324,20 @@ hideall "--sync--"
 345.7 "Wild Energy (aoes)" Ability { id: "AB9C", source: "Guardian Arkveld" }
 # Autos for a bit
 # Raid Wide
-358.0 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" } window 5,5
+358.0 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" } window 5,5
 # Jump to edge
 361.8 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" } window 5,5
 # Exalines x2
 365.0 "Wrathful Rattle" Ability { id: "ABA7", source: "Guardian Arkveld" }
 # Chainblade
-375.8 "Chainblade Blow (Arm Raised)" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
-376.9 "Chainblade Blow (First Hit)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
-377.3 "Chainblade Blow (Follow-up)" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
-379.8 "Chainblade Blow (Arm Raised)" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
-381.1 "Chainblade Blow (First Hit)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
-381.5 "Chainblade Blow (Follow-up)" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
+375.8 "--sync--" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
+376.9 "Chainblade Blow (1)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
+377.3 "--sync--" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
+379.8 "--sync--" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
+381.1 "Chainblade Blow (2)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
+381.5 "--sync--" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
 # Raid wide
-388.8 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+388.8 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Jump to edge
 398.5 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" } window 5,5
 # Dashes + expanding rings
@@ -366,101 +345,80 @@ hideall "--sync--"
 404.1 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
 405.1 "--sync--" #Ability { id: "AB84", source: "Guardian Arkveld" }
 406.1 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
-406.5 "Rush" Ability { id: "AB85", source: "Guardian Arkveld" }
+406.5 "Rush (1)" Ability { id: "AB85", source: "Guardian Arkveld" }
 407.1 "--sync--" #Ability { id: "AB84", source: "Guardian Arkveld" }
 408.1 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
-408.7 "Rush" #Ability { id: "AB86", source: "Guardian Arkveld" }
-410.7 "Rush" #Ability { id: "AB86", source: "Guardian Arkveld" }
+408.7 "Rush (2)" #Ability { id: "AB86", source: "Guardian Arkveld" }
+410.7 "Rush (3)" #Ability { id: "AB86", source: "Guardian Arkveld" }
 # Jump to center
 417.4 "(center)" Ability { id: "AB33", source: "Guardian Arkveld" } window 5,5
 # Half room cleave + Aoes
 423.8 "Wyvern's Ouroblade" Ability { id: "(B031|B032)", source: "Guardian Arkveld" }
-424.8 "Wyvern's Ouroblade (Follow-up)" Ability { id: "(B033|B034)", source: "Guardian Arkveld" }
+424.8 "--sync--" Ability { id: "(B033|B034)", source: "Guardian Arkveld" }
 425.0 "Wild Energy (aoes)" Ability { id: "AB9C", source: "Guardian Arkveld" }
 # Tail thrust
-431.0 "Steeltail Thrust" Ability { id: "B035", source: "Guardian Arkveld" }
+431.0 "--sync--" Ability { id: "B035", source: "Guardian Arkveld" }
 431.6 "Steeltail Thrust" Ability { id: "AF06", source: "Guardian Arkveld" }
 # Party Stack
-439.8 "Chainblade Charge" Ability { id: "ABAB", source: "Guardian Arkveld" }
-440.0 "Chainblade Charge" Ability { id: "ABAC", source: "Guardian Arkveld" }
+439.8 "--sync--" Ability { id: "ABAB", source: "Guardian Arkveld" }
+440.0 "--sync--" Ability { id: "ABAC", source: "Guardian Arkveld" }
 442.1 "Chainblade Charge" Ability { id: "AF0C", source: "Guardian Arkveld" }
 # Chainblade
-450.0 "Chainblade Blow (Arm Raised)" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
-451.2 "Chainblade Blow (First Hit)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
-451.6 "Chainblade Blow (Follow-up)" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
-454.2 "Chainblade Blow (Arm Raised)" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
-455.3 "Chainblade Blow (First Hit)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
-455.7 "Chainblade Blow (Follow-up)" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
+450.0 "--sync--" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
+451.2 "Chainblade Blow (1)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
+451.6 "--sync--" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
+454.2 "--sync--" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
+455.3 "Chainblade Blow (2)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
+455.7 "--sync--" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
 # Raidwide
-463.1 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+463.1 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Jump to center
 472.9 "(center)" Ability { id: "AB33", source: "Guardian Arkveld" } window 5,5
 # Towers spawn -> baits -> Towers
-483.9 "Guardian Resonance" Ability { id: "AB93", source: "Guardian Arkveld" }
-486.5 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
+483.9 "--sync--" Ability { id: "AB93", source: "Guardian Arkveld" }
 487.6 "Aetheric Resonance" Ability { id: "AB8F", source: "Guardian Arkveld" }
 488.8 "Guardian Resonance" Ability { id: "AB90", source: "Guardian Arkveld" }
-488.8 "Guardian Resonance" Ability { id: "AB91", source: "Guardian Arkveld" }
-488.8 "Guardian Resonance" #Ability { id: "AB93", source: "Guardian Arkveld" }
 # Raidwide
-495.8 "Roar (aoe)" Ability { id: "ABAF", source: "Guardian Arkveld" }
+495.8 "Roar (raidwide)" Ability { id: "ABAF", source: "Guardian Arkveld" }
 # Exaflares from side
 # Not sure what to sync here, perhaps abilities don't have Arkveld as the
 # source? The Wyvern's Vengeance might be an auto attack or else its timing
 # is inconsistent. Perhaps it is related to the tower explosions but the
 # timing is off depending on what order the exaflares come?
-500.8 "Wyvern's Vengeance" #Ability { id: "ABB0", source: "Guardian Arkveld" }
-501.9 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-502.9 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-503.6 "Wyvern's Vengeance" #Ability { id: "ABB0", source: "Guardian Arkveld" }
-503.8 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-504.4 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-504.5 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-505.2 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-505.3 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-505.8 "Wyvern's Vengeance" #Ability { id: "ABB0", source: "Guardian Arkveld" }
-506.0 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-506.9 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-507.1 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-508.0 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-508.2 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-508.9 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-509.8 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
-510.8 "Wyvern's Vengeance" #Ability { id: "ABB1", source: "Guardian Arkveld" }
 # Party Stack
-515.4 "Chainblade Charge" Ability { id: "ABAB", source: "Guardian Arkveld" }
-515.6 "Chainblade Charge" Ability { id: "ABAC", source: "Guardian Arkveld" }
+515.4 "--sync--" Ability { id: "ABAB", source: "Guardian Arkveld" } window 10,10
+515.6 "--sync--" Ability { id: "ABAC", source: "Guardian Arkveld" }
 517.7 "Chainblade Charge" Ability { id: "AF0C", source: "Guardian Arkveld" }
 # Chainblade
-525.6 "Chainblade Blow (Arm Raised)" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
-526.8 "Chainblade Blow (First Hit)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
-527.2 "Chainblade Blow (Follow-up)" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
-529.8 "Chainblade Blow (Arm Raised)" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
-530.9 "Chainblade Blow (First Hit)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
-531.2 "Chainblade Blow (Follow-up)" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
+525.6 "--sync--" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
+526.8 "Chainblade Blow (1)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
+527.2 "--sync--" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
+529.8 "--sync--" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
+530.9 "Chainblade Blow (2)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
+531.2 "--sync--" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
 # Jump to edge
 539.8 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" } window 5,5
 # dash + line + party stacks
-547.0 "Siegeflight (telegraph)" Ability { id: "(B029|B02A)", source: "Guardian Arkveld" }
-548.6 "Siegeflight (dash)" Ability { id: "(B02B|B02D)", source: "Guardian Arkveld" }
+547.0 "Siegeflight (dash)" Ability { id: "(B029|B02A)", source: "Guardian Arkveld" }
+548.6 "--sync--" Ability { id: "(B02B|B02D)", source: "Guardian Arkveld" }
 549.4 "--sync--" Ability { id: "(B030|B046)", source: "Guardian Arkveld" }
 552.2 "Dragonspark/White Flash" Ability { id: "(AB82|AB83)", source: "Guardian Arkveld" }
 # rolling lines + baited aoes
 553.2 "Wyvern's Rattle" Ability { id: "ABA3", source: "Guardian Arkveld" }
 # Dash + line + party stacks
-563.9 "Siegeflight (telegraph)" Ability { id: "(B029|B02A)", source: "Guardian Arkveld" }
-565.5 "Siegeflight (dash)" Ability { id: "(B02B|B02D)", source: "Guardian Arkveld" }
+563.9 "Siegeflight (dash)" Ability { id: "(B029|B02A)", source: "Guardian Arkveld" }
+565.5 "--sync--" Ability { id: "(B02B|B02D)", source: "Guardian Arkveld" }
 566.2 "--sync--" Ability { id: "(B030|B046)", source: "Guardian Arkveld" }
 569.0 "Dragonspark/White Flash" Ability { id: "(AB82|AB83)", source: "Guardian Arkveld" }
 # Chainblade
-574.7 "Chainblade Blow (Arm Raised)" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
-575.9 "Chainblade Blow (First Hit)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
-576.3 "Chainblade Blow (Follow-up)" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
-578.9 "Chainblade Blow (Arm Raised)" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
-580.0 "Chainblade Blow (First Hit)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
-580.4 "Chainblade Blow (Follow-up)" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
+574.7 "--sync--" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
+575.9 "Chainblade Blow (1)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
+576.3 "--sync--" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
+578.9 "--sync--" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
+580.0 "Chainblade Blow (2)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
+580.4 "--sync--" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
 # Raid wide
-587.7 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+587.7 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Jump to edge
 597.4 "--sync--" Ability { id: "B077", source: "Guardian Arkveld" } window 5,5
 # Dashes + expanding rings
@@ -468,40 +426,40 @@ hideall "--sync--"
 603.3 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
 604.3 "--sync--" #Ability { id: "AB84", source: "Guardian Arkveld" }
 605.3 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
-605.7 "Rush" Ability { id: "AB85", source: "Guardian Arkveld" }
+605.7 "Rush (1)" Ability { id: "AB85", source: "Guardian Arkveld" }
 606.3 "--sync--" #Ability { id: "AB84", source: "Guardian Arkveld" }
 607.3 "--sync--" #Ability { id: "B036", source: "Guardian Arkveld" }
-607.9 "Rush" #Ability { id: "AB86", source: "Guardian Arkveld" }
-609.8 "Rush" #Ability { id: "AB86", source: "Guardian Arkveld" }
+607.9 "Rush (2)" #Ability { id: "AB86", source: "Guardian Arkveld" }
+609.8 "Rush (3)" #Ability { id: "AB86", source: "Guardian Arkveld" }
 # Jump to center
 616.5 "(center)" Ability { id: "AB33", source: "Guardian Arkveld" } window 5,5
 # Half room + aoes
 622.8 "Wyvern's Ouroblade" Ability { id: "(B031|B032)", source: "Guardian Arkveld" }
-623.8 "Wyvern's Ouroblade (Follow-up)" Ability { id: "(B033|B034)", source: "Guardian Arkveld" }
+623.8 "--sync--" Ability { id: "(B033|B034)", source: "Guardian Arkveld" }
 624.0 "Wild Energy (aoes)" Ability { id: "AB9C", source: "Guardian Arkveld" }
 # Tail thrust
-630.0 "Steeltail Thrust" Ability { id: "B035", source: "Guardian Arkveld" }
+630.0 "--sync--" Ability { id: "B035", source: "Guardian Arkveld" }
 630.6 "Steeltail Thrust" Ability { id: "AF06", source: "Guardian Arkveld" }
 # Party stack
-638.8 "Chainblade Charge" Ability { id: "ABAB", source: "Guardian Arkveld" }
-639.0 "Chainblade Charge" Ability { id: "ABAC", source: "Guardian Arkveld" }
+638.8 "--sync--" Ability { id: "ABAB", source: "Guardian Arkveld" }
+639.0 "--sync--" Ability { id: "ABAC", source: "Guardian Arkveld" }
 641.1 "Chainblade Charge" Ability { id: "AF0C", source: "Guardian Arkveld" }
 # Chainblade
-649.0 "Chainblade Blow (Arm Raised)" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
-650.2 "Chainblade Blow (First Hit)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
-650.6 "Chainblade Blow (Follow-up)" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
-653.2 "Chainblade Blow (Arm Raised)" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
-654.3 "Chainblade Blow (First Hit)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
-654.7 "Chainblade Blow (Follow-up)" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
+649.0 "--sync--" Ability { id: "(B019|B01A)", source: "Guardian Arkveld" }
+650.2 "Chainblade Blow (1)" Ability { id: "(B01B|B01E)", source: "Guardian Arkveld" }
+650.6 "--sync--" Ability { id: "(B01C|B01F)", source: "Guardian Arkveld" }
+653.2 "--sync--" Ability { id: "(B021|B022)", source: "Guardian Arkveld" }
+654.3 "Chainblade Blow (2)" Ability { id: "(B023|B026)", source: "Guardian Arkveld" }
+654.7 "--sync--" Ability { id: "(B024|B027)", source: "Guardian Arkveld" }
 # Raidwide
-662.1 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+662.1 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Jump center
 672.7 "(center)" Ability { id: "AB33", source: "Guardian Arkveld" }
 # Raidwide
-679.1 "Roar (aoe)" Ability { id: "ABAE", source: "Guardian Arkveld" }
+679.1 "Roar (raidwide)" Ability { id: "ABAE", source: "Guardian Arkveld" }
 # Likely enrage sequence
 682.9 "--sync--" Ability { id: "AB53", source: "Guardian Arkveld" }
-692.0 "Forged Fury" Ability { id: "ABB2", source: "Guardian Arkveld" }
-694.0 "Forged Fury" Ability { id: "AB9F", source: "Guardian Arkveld" }
-694.9 "Forged Fury" Ability { id: "AEF8", source: "Guardian Arkveld" }
-697.2 "Forged Fury (enrage)" Ability { id: "AF4E", source: "Guardian Arkveld" }
+692.0 "Forged Fury" Ability { id: "ABB2", source: "Guardian Arkveld" } duration 5.2
+694.0 "--sync--" Ability { id: "AB9F", source: "Guardian Arkveld" }
+694.9 "--sync--" Ability { id: "AEF8", source: "Guardian Arkveld" }
+697.2 "(enrage)" Ability { id: "AF4E", source: "Guardian Arkveld" }
