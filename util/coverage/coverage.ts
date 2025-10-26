@@ -1096,6 +1096,7 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
     ContentType.DisciplesOfTheLand,
     ContentType.TreasureHunt,
     ContentType.DeepDungeons,
+    ContentType.DeepDungeonExtras,
     ContentType.Pvp,
 
     undefined, // catchall for the rest
