@@ -8,6 +8,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 // Pilgrim's Traverse Stone 99/The Final Verse
 // TODO: Bounds of Sin dodge direction
 // TODO: Abysal Blaze left/right safe spots
+// TODO: Light/Dark Vengeance debuff expiration warning?
 // TODO: timeline
 
 export type Data = RaidbossData;
@@ -50,9 +51,9 @@ const triggerSet: TriggerSet<Data> = {
       // raidwide + applies 11D2 Chains of Condemnation for 3s; heavy damage if moving
       type: 'StartsUsing',
       netRegex: { id: ['AC20', 'AC26'], source: 'Eminent Grief', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
-      countdownSeconds: 3,
-      durationSeconds: 6,
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
+      countdownSeconds: 5,
+      durationSeconds: 8,
       alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
