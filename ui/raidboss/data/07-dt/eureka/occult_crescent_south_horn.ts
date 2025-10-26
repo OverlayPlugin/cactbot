@@ -2746,19 +2746,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Marble Dragon Imitation Blizzard Counter',
-      // Imitation Blizzard (Cross) (7614)
-      // Imitation Blizzard (Circle) (7602)
-      // Not currently tracking the Imitation Blizzard (Tower) (7615)
-      // Used to track puddle explosions during Imitation Rains for calls on where to dodge to
-      type: 'StartsUsing',
-      netRegex: { source: 'Marble Dragon', id: ['7614', '7602'], capture: false },
-      suppressSeconds: 1,
-      run: (data) => {
-        data.marbleDragonImitationBlizzardCount = data.marbleDragonImitationBlizzardCount + 1;
-      },
-    },
-    {
       id: 'Occult Crescent Marble Dragon Imitation Rain 1 and 5 Direction (Cross-based)',
       // North Puddles
       // (-355, 141) (-343, 141) (-331, 141) (-319, 141)
@@ -2926,9 +2913,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Marble Dragon Imitation Blizzard Counter',
-      // Used to track explosions and make calls on where to move next
       // Imitation Blizzard (Cross) (7614)
       // Imitation Blizzard (Circle) (7602)
+      // Not currently tracking the Imitation Blizzard (Tower) (7615)
+      // Used to track puddle explosions during Imitation Rains for calls on where to dodge to
       type: 'StartsUsing',
       netRegex: { source: 'Marble Dragon', id: ['7614', '7602'], capture: false },
       suppressSeconds: 1,
