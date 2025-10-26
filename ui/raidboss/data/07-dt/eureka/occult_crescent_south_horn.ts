@@ -3017,9 +3017,11 @@ const triggerSet: TriggerSet<Data> = {
           const x = combatant.PosX;
           const y = combatant.PosY;
           const result = getPuddleLocation(x, y);
-          console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Direction: Unexpected puddle location (${x}, ${y})`,
-          );
+          if (result === undefined) {
+            console.error(
+              `Occult Crescent Marble Dragon Imitation Rain 2 Direction: Unexpected puddle location (${x}, ${y})`,
+            );
+          }
           return result;
         };
 
