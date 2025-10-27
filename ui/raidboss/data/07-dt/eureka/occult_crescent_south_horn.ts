@@ -752,6 +752,7 @@ const triggerSet: TriggerSet<Data> = {
       // 10s castTime
       type: 'StartsUsing',
       netRegex: { source: 'Demon Tablet', id: 'A2F7', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
       response: Responses.knockback(),
     },
     {
@@ -1158,10 +1159,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar',
+      id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar Knockback',
       // 10s castTime
       type: 'StartsUsing',
-      netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
+      netRegex: { source: 'Demon Tablet', id: 'AA01', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
       response: Responses.knockback(),
     },
