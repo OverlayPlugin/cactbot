@@ -680,9 +680,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         out: Outputs.out,
         inKnockback: {
-          en: 'In (Knockback)',
+          en: 'In => Knockback',
         },
       },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Ray of Expulsion Afar Knockback',
+      // 10s castTime
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: 'A2F4', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      response: Responses.knockback(),
     },
     {
       id: 'Occult Crescent Demon Tablet Occult Chisel',
@@ -735,9 +743,16 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         out: Outputs.out,
         inKnockback: {
-          en: 'In (Knockback)',
+          en: 'In => Knockback',
         },
       },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Demonograph of Expulsion Afar Knockback',
+      // 10s castTime
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: 'A2F7', capture: true },
+      response: Responses.knockback(),
     },
     {
       id: 'Occult Crescent Demon Tablet Rotate Left/Right',
@@ -937,7 +952,7 @@ const triggerSet: TriggerSet<Data> = {
         south: Outputs.south,
         out: Outputs.out,
         inKnockback: {
-          en: 'In (Knockback)',
+          en: 'In => Knockback',
         },
         dirMech: {
           en: '${dir} & ${mech}',
@@ -949,6 +964,14 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Meteor on YOU, Go ${dir} & ${mech}',
         },
       },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Cometeor of Dangers Near/Expulsion Afar Knockback',
+      // 10s castTime
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: 'A2E5', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      response: Responses.knockback(),
     },
     {
       id: 'Occult Crescent Demon Tablet Crater Later Gains Effect',
@@ -1098,8 +1121,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar',
-      // A2F6 Gravity of Dangers Near
-      // A2F7 Gravity of Expulsion Afar
+      // A2EA Gravity of Dangers Near
+      // AA01 Gravity of Expulsion Afar
       type: 'StartsUsing',
       netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
       alertText: (data, matches, output) => {
@@ -1127,12 +1150,20 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Go Towers Side and Out',
         },
         dirInThenTowers: {
-          en: '${dir} In (Knockback) => Towers',
+          en: '${dir} In => Knockback => Towers',
         },
         goTowerSideIn: {
-          en: 'Go Towers Side and In (Knockback)',
+          en: 'Go Towers Side and In => Knockback',
         },
       },
+    },
+    {
+      id: 'Occult Crescent Demon Tablet Gravity of Dangears Near/Expulsion Afar',
+      // 10s castTime
+      type: 'StartsUsing',
+      netRegex: { source: 'Demon Tablet', id: ['A2EA', 'AA01'], capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      response: Responses.knockback(),
     },
     {
       id: 'Occult Crescent Demon Tablet Erase Gravity Safe Corner (Early)',
