@@ -204,9 +204,9 @@ const deadStarsFindSafeSpot = (
   if ((safe1 === 5 && safe2 === 7) || (safe1 === 7 && safe2 === 5))
     return 6; // West
   if ((safe1 === 3 && safe2 === 7) || (safe1 === 7 && safe2 === 3))
-    return 1; // Also southwest
-  if ((safe1 === 1 && safe2 === 5) || (safe1 === 5 && safe2 === 1))
     return 3; // Also northwest
+  if ((safe1 === 1 && safe2 === 5) || (safe1 === 5 && safe2 === 1))
+    return 1; // Also southwest
   return -1;
 };
 // Used with deadStarsFindSafeSpot to map to longform direction
