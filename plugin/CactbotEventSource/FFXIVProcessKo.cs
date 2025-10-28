@@ -8,7 +8,7 @@ using RainbowMage.OverlayPlugin;
 
 namespace Cactbot {
   public class FFXIVProcessKo : FFXIVProcess {
-    // Last updated for FFXIV 7.2
+    // Last updated for FFXIV 7.3
     // Per aers/FFXIVClientStructs, what we call EntityMemory is actually:
     // Client::Game::Character::Character (0x22E0)
     //   Client::Game::Object::GameObject (0x190)
@@ -25,28 +25,28 @@ namespace Cactbot {
       [FieldOffset(0x30)]
       public fixed byte Name[nameBytes];
 
-      [FieldOffset(0x74)]
+      [FieldOffset(0x78)]
       public uint id;
 
-      [FieldOffset(0x8C)]
+      [FieldOffset(0x90)]
       public EntityType type;
 
-      [FieldOffset(0x92)]
+      [FieldOffset(0x96)]
       public ushort distance;
 
-      [FieldOffset(0xA0)]
+      [FieldOffset(0xB0)]
       public Single pos_x;
 
-      [FieldOffset(0xA4)]
+      [FieldOffset(0xB4)]
       public Single pos_z;
 
-      [FieldOffset(0xA8)]
+      [FieldOffset(0xB8)]
       public Single pos_y;
 
-      [FieldOffset(0xB0)]
+      [FieldOffset(0xC0)]
       public Single rotation;
 
-      [FieldOffset(0x190)]
+      [FieldOffset(0x1A0)]
       public CharacterDetails charDetails;
     }
 
@@ -106,7 +106,8 @@ namespace Cactbot {
     // In combat boolean.
     // This address is written to by "mov [rax+rcx],bl" and has three readers.
     // This reader is "cmp byte ptr [ffxiv_dx11.exe+????????],00 { (0),0 }"
-    private static String kInCombatSignature = "803D??????????74??488B03488BCBFF50";
+    // Updated in 7.3, signature was no longer unique, include the preceeding "jz LAB_?????????"
+    private static String kInCombatSignature = "74??803D??????????74??488B03488BCBFF50";
     private static int kInCombatSignatureOffset = -15;
     private static bool kInCombatSignatureRIP = true;
     // Because this line is a cmp byte line, the signature is not at the end of the line.
