@@ -65,6 +65,7 @@ Options.Triggers.push({
       outputStrings: {
         knockbackFrom: {
           en: 'Knockback from ${dir}',
+          cn: '从 ${dir} 击退',
           ko: '${dir}에서 넉백',
         },
         dirN: Outputs.north,
@@ -140,6 +141,7 @@ Options.Triggers.push({
       outputStrings: {
         cleanse: {
           en: 'Cleanse ${target}',
+          cn: '康复 ${target}',
           ko: '${target} 에스나',
         },
       },
@@ -181,6 +183,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidFlails: {
           en: 'Away from flails',
+          cn: '远离铁球',
           ko: '철퇴 피하기',
         },
       },
@@ -216,6 +219,7 @@ Options.Triggers.push({
       outputStrings: {
         cleanseDoom: {
           en: 'Cleanse ${target}',
+          cn: '康复 ${target}',
           ko: '${target} 에스나',
         },
       },
@@ -305,6 +309,7 @@ Options.Triggers.push({
       outputStrings: {
         staticBombardment: {
           en: 'Go ${safe}; Avoid small AoE',
+          cn: '前往 ${safe}; 避开小范围 AoE',
           ko: '${safe}로 이동; 작은 장판 피하기',
         },
         west: Outputs.west,
@@ -340,6 +345,7 @@ Options.Triggers.push({
       outputStrings: {
         knockbackBombardment: {
           en: 'Knockback to ${safe}; Avoid AoE',
+          cn: '击退到 ${safe}; 避开 AoE',
           ko: '${safe}로 넉백; 장판 피하기',
         },
         northwest: Outputs.northwest,
@@ -421,10 +427,12 @@ Options.Triggers.push({
       outputStrings: {
         leanLeft: {
           en: 'Front + Lean Left; or Southwest',
+          cn: '前方 + 偏左; 或左下',
           ko: '앞 + 약간 왼쪽; 또는 남서',
         },
         leanRight: {
           en: 'Front + Lean Right; or Southeast',
+          cn: '前方 + 偏右; 或右下',
           ko: '앞 + 약간 오른쪽; 또는 남동',
         },
         dirNW: Outputs.northwest,
@@ -567,7 +575,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Bloody Headsman': '某个绯红处刑人的记忆',
         'Bygone Aerostat': '旧日航空机',
@@ -578,6 +585,10 @@ Options.Triggers.push({
         'Pestilent Headsman': '某个翠绿处刑人的记忆',
       },
       'replaceText': {
+        '--hellmaker adds--': '--焦热刑具出现--',
+        '\\(active\\)': '(生效)',
+        '\\(cast\\)': '(咏唱)',
+        '\\(castbar\\)': '(读条)',
         'Biochemical Front': '正面喷雾',
         'Bombardment': '轰炸',
         'Chopping Block': '圆月断',
