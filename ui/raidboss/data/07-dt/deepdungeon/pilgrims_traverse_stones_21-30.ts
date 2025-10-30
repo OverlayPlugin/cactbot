@@ -85,21 +85,24 @@ const triggerSet: TriggerSet<Data> = {
         const id = matches.id;
         switch (id) {
           case '9ADA':
-            return output.middle!();
+            return output.middleOrOuter!();
           case '9ADB':
-            return output.inner!();
+            return output.innerOrOuter!();
           case '9AFA':
-            return output.inner!();
+            return output.innerOrMiddle!();
           case '9B3F':
-            return output.middle!();
+            return output.innerOrMiddle!();
         }
       },
       outputStrings: {
-        inner: {
-          en: 'Inner ring',
+        middleOrOuter: {
+          en: 'Get Middle or Outer ring',
         },
-        middle: {
-          en: 'Middle ring',
+        innerOrOuter: {
+          en: 'Get Inner or Outer ring',
+        },
+        innerOrMiddle: {
+          en: 'Get Inner or Middle ring',
         },
       },
     },
