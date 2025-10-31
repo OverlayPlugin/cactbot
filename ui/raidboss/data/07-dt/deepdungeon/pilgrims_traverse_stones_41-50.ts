@@ -96,9 +96,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 41-50 Ogbunabali Biting Wind',
       type: 'StartsUsing',
       netRegex: { id: 'AA12', source: 'Ogbunabali', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
-      countdownSeconds: 5,
-      response: Responses.knockback(),
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
+      countdownSeconds: 3,
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Stand in quicksand',
+        },
+      },
     },
   ],
 };
