@@ -25,6 +25,7 @@ Options.Triggers.push({
       // TODO: some Mimics may spawn after transference between floors and get called early before being found
       type: 'AddedCombatant',
       netRegex: { npcNameId: ['14264', '14265', '14266'], capture: false },
+      suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text(),
       outputStrings: {
         text: {

@@ -30,6 +30,7 @@ Options.Triggers.push({
       // TODO: some Quivering Coffers may spawn after transference between floors and get called early before being found
       type: 'AddedCombatant',
       netRegex: { npcNameId: '739[2-4]', capture: false },
+      suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.text(),
       outputStrings: {
         text: {
