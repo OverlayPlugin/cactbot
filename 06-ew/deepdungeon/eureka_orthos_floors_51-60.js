@@ -104,7 +104,7 @@ Options.Triggers.push({
     },
     {
       id: 'EO 51-60 Servomechanical Minotaur 16 Octuple Swipe Cleanup',
-      type: 'StartsUsing',
+      type: 'Ability',
       netRegex: { id: '7C80', source: 'Servomechanical Minotaur 16', capture: false },
       run: (data) => {
         delete data.octupleSwipes;
@@ -113,49 +113,41 @@ Options.Triggers.push({
     },
     {
       id: 'EO 51-60 Servomechanical Minotaur 16 Octuple Swipe',
-      type: 'Ability',
-      netRegex: { id: '7C7B', source: 'Servomechanical Minotaur 16' },
+      type: 'StartsUsingExtra',
+      netRegex: { id: '7C7B', capture: true },
       condition: (data) => !data.calledOctupleSwipes,
-      durationSeconds: 10,
+      durationSeconds: 18,
       alertText: (data, matches, output) => {
-        // convert the heading into 0=N, 1=E, 2=S, 3=W
-        const heading = Math.round(2 - 2 * parseFloat(matches.heading) / Math.PI) % 4;
+        const heading = Directions.hdgTo4DirNum(parseFloat(matches.heading));
         data.octupleSwipes ??= [];
         data.octupleSwipes.push(heading);
-        if (data.octupleSwipes.length <= 4)
+        if (data.octupleSwipes.length < 5)
           return;
         data.calledOctupleSwipes = true;
         if (data.octupleSwipes[0] === data.octupleSwipes[4])
           // swipe order is Front > Back > Right > Left > Front > Back > Right > Left
-          return output.text({
-            dir1: output.left(),
-            dir2: output.front(),
-            dir3: output.left(),
-            dir4: output.front(),
-          });
+          // dodge order is Left > Front > Front > Front > Left > Front > Front > Front
+          return output.repeat({ left: output.left(), front: output.front() });
         if (data.octupleSwipes[3] === data.octupleSwipes[4])
           // swipe order is Front > Back > Right > Left > Left > Right > Back > Front
-          return output.text({
-            dir1: output.left(),
-            dir2: output.front(),
-            dir3: output.front(),
-            dir4: output.left(),
-          });
+          // dodge order is Left > Front > Front > Front > Front > Front > Front > Left
+          return output.rewind({ left: output.left(), front: output.front() });
         // something went wrong
         data.calledOctupleSwipes = false;
-        return;
+        return output.avoid();
       },
       outputStrings: {
-        front: Outputs.front,
-        left: Outputs.left,
-        text: {
-          en: '${dir1} > ${dir2} > ${dir3} > ${dir4}',
-          de: '${dir1} > ${dir2} > ${dir3} > ${dir4}',
-          fr: '${dir1} > ${dir2} > ${dir3} > ${dir4}',
-          ja: '${dir1} > ${dir2} > ${dir3} > ${dir4}',
-          cn: '${dir1} > ${dir2} > ${dir3} > ${dir4}',
-          ko: '${dir1} > ${dir2} > ${dir3} > ${dir4}',
+        repeat: {
+          en: '${left} => ${front} x3 => ${left} => ${front} x3',
         },
+        rewind: {
+          en: '${left} => ${front} x6 => ${left}',
+        },
+        avoid: {
+          en: 'Avoid swipes x8',
+        },
+        left: Outputs.left,
+        front: Outputs.front,
       },
     },
     {
