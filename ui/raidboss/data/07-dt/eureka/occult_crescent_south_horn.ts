@@ -2025,7 +2025,7 @@ const triggerSet: TriggerSet<Data> = {
       // A5BF Vengeful Bio III (Phobos)
       type: 'Ability',
       netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A5BC', capture: true },
-      delaySeconds: 2.6, // Above 2s needed due to latency
+      delaySeconds: 2.8, // 2.6s was not consistent enough
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
@@ -3662,10 +3662,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         tanksFar: {
-          en: 'Tanks Far (Party Close) x2',
+          en: 'Tanks Far (Party Close) x3',
         },
         tanksNear: {
-          en: 'Tanks Close (Party Far) x2',
+          en: 'Tanks Close (Party Far) x3',
         },
       },
     },
