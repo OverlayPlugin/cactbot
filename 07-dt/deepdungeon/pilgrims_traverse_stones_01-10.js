@@ -53,9 +53,11 @@ Options.Triggers.push({
       outputStrings: {
         safe: {
           en: 'Go ${safe} + Out',
+          cn: '去 ${safe} + 外',
         },
         unknownSafe: {
           en: 'Out + Avoid shrublet explosions',
+          cn: '外 + 避开花小人爆炸',
         },
         ...Directions.outputStrings8Dir,
       },
@@ -77,6 +79,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Away from jump x4',
+          cn: '远离跳跃 x4',
         },
       },
     },

@@ -14,6 +14,7 @@ Options.Triggers.push({
   ],
   zoneLabel: {
     en: 'Pilgrim\'s Traverse (All Stones)',
+    cn: '朝圣交错路 (全朝圣路)',
   },
   triggers: [
     // ---------------- Mimics ----------------
@@ -209,18 +210,21 @@ Options.Triggers.push({
           de: 'Hast',
           fr: 'Hâte',
           ja: 'ヘイスト',
+          cn: '加速',
         },
         purification: {
           en: 'Purification',
           de: 'Reinigung',
           fr: 'Purification',
           ja: '浄化の守り',
+          cn: '净化护符',
         },
         devotion: {
           en: 'Devotion',
           de: 'Weisung',
           fr: 'Dévotion',
           ja: '巡礼の導き',
+          cn: '朝圣的指引',
         },
         unknown: Outputs.unknown,
       },
@@ -268,18 +272,21 @@ Options.Triggers.push({
           de: 'Wandelwurz',
           fr: 'Sagacité',
           ja: '明敏',
+          cn: '敏慧',
         },
         barkbalm: {
           en: 'Barkbalm',
           de: 'Sakralharz',
           fr: 'Quiétude',
           ja: '安寧',
+          cn: '安宁',
         },
         poisonfruit: {
           en: 'Poisonfruit',
           de: 'Todesbeeren',
           fr: 'Fatalité',
           ja: '宿命',
+          cn: '宿命',
         },
         unknown: Outputs.unknown,
       },

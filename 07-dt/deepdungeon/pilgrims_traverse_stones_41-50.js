@@ -62,6 +62,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stand on a rock',
+          cn: '站在一块岩石上',
         },
       },
     },
@@ -76,7 +77,7 @@ Options.Triggers.push({
           en: '4x Chasing AoE on YOU',
           de: '4x verfolgende AoE auf DIR',
           fr: '4x AoE sur VOUS',
-          cn: '四连 AOE 点名',
+          cn: '四连追踪 AOE 点名',
           ko: '따라오는 장판 4번',
         },
       },
@@ -91,6 +92,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Stand in quicksand',
+          cn: '站在流沙里',
         },
       },
     },

@@ -47,6 +47,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${knockback} ${dir4} => ${dir1}',
+          cn: '${knockback} ${dir4} => ${dir1}',
         },
         knockback: Outputs.knockback,
         unknown: Outputs.unknown,
@@ -70,6 +71,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Seed on YOU',
+          cn: '种子点名',
         },
       },
     },

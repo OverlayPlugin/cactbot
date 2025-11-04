@@ -19,12 +19,15 @@ Options.Triggers.push({
       outputStrings: {
         enrage: {
           en: 'Parasitism',
+          cn: '捕食行动',
         },
         enrageOnYou: {
           en: 'Parasitism on YOU',
+          cn: '捕食行动点名',
         },
         enrageOnPlayer: {
           en: 'Parasitism on ${player}',
+          cn: '捕食行动点 ${player}',
         },
       },
     },
@@ -85,12 +88,15 @@ Options.Triggers.push({
       outputStrings: {
         middleOrOuter: {
           en: 'Get Middle or Outer ring',
+          cn: '去中圈或外圈',
         },
         innerOrOuter: {
           en: 'Get Inner or Outer ring',
+          cn: '去内圈或外圈',
         },
         innerOrMiddle: {
           en: 'Get Inner or Middle ring',
+          cn: '去内圈或中圈',
         },
       },
     },
@@ -127,6 +133,7 @@ Options.Triggers.push({
         right: Outputs.right,
         text: {
           en: '${dir}, Behind Hand',
+          cn: '${dir}, 去手后',
         },
       },
     },
