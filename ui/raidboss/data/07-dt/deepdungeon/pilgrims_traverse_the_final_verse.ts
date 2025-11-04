@@ -8,10 +8,41 @@ import { TriggerSet } from '../../../../../types/trigger';
 // Pilgrim's Traverse Stone 99/The Final Verse
 // TODO: Bounds of Sin dodge direction
 // TODO: Abysal Blaze left/right safe spots
-// TODO: Light/Dark Vengeance debuff expiration warning?
 // TODO: timeline
 
-export type Data = RaidbossData;
+// === Map Effect info: ===
+//
+// --- Bounds of Sin puddles ---
+//
+// locations:
+//
+//       00
+//    0B    01
+//  0A        02
+// 09          03
+//  08        04
+//    07    05
+//       06
+//
+// flags:
+//
+// 00020001 - walls appearing
+// 00080004 - walls disappearing
+//
+// --- Spinelash glass walls ---
+//
+// locations:
+//
+// 18 | 19 | 1A
+//
+// flags:
+//
+// 00020001 - glass breaking first time
+// 00200010 - glass breaking second time
+
+export interface Data extends RaidbossData {
+  myVengeanceExpiration?: number;
+}
 
 const triggerSet: TriggerSet<Data> = {
   id: 'TheFinalVerse',
@@ -26,6 +57,65 @@ const triggerSet: TriggerSet<Data> = {
 
   triggers: [
     // ---------------- Stone 99/The Final Verse Boss: Eminent Grief/Devoured Eater ----------------
+    {
+      id: 'PT 99 HP Difference Warning',
+      // 9F6 = Damage Up
+      // 105F = Rehabilitation
+      type: 'GainsEffect',
+      netRegex: { effectId: ['9F6', '105F'], capture: false },
+      suppressSeconds: 1,
+      alarmText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Check Boss HP Difference',
+        },
+      },
+    },
+    {
+      id: 'PT 99 Petrification/Hysteria',
+      // 01 = Petrification (failure from Light Vengeance expiring)
+      // 128 = Hysteria (failure from Dark Vengeance expiring)
+      type: 'GainsEffect',
+      netRegex: { effectId: ['01', '128'], capture: true },
+      infoText: (_data, matches, output) => {
+        const effect = matches.effect;
+        const target = matches.target;
+        return output.text!({ effect: effect, target: target });
+      },
+      outputStrings: {
+        text: {
+          en: '${effect} on ${target}',
+        },
+      },
+    },
+    {
+      id: 'PT 99 Light/Dark Vengeance Refresh Warning',
+      // 11CF = Dark Vengeance
+      // 11D0 = Light Vengeance
+      type: 'GainsEffect',
+      netRegex: { effectId: ['11CF', '11D0'], capture: true },
+      condition: Conditions.targetIsYou(),
+      preRun: (data, matches) => {
+        const timestamp = Date.parse(matches.timestamp);
+        const duration = parseFloat(matches.duration);
+        data.myVengeanceExpiration = timestamp + duration * 1000;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 10,
+      infoText: (data, matches, output) => {
+        const timestamp = Date.parse(matches.timestamp);
+        const duration = parseFloat(matches.duration);
+        const thisExpiration = timestamp + duration * 1000;
+        const myExpiration = data.myVengeanceExpiration;
+        if (myExpiration === undefined || myExpiration > thisExpiration)
+          return;
+        return output.text!();
+      },
+      outputStrings: {
+        text: {
+          en: 'Refresh Vengeance',
+        },
+      },
+    },
     {
       id: 'PT 99 Devoured Eater Blade of First Light',
       type: 'StartsUsing',
