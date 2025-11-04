@@ -10685,6 +10685,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第1～10朝圣路',
       'de': 'Pilgers Pfad (Ebenen 1-10)',
       'en': 'Pilgrim\'s Traverse (Stones 1-10)',
       'fr': 'Le Sanctuaire des pèlerins (zones 1-10)',
@@ -10699,6 +10700,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第11～20朝圣路',
       'de': 'Pilgers Pfad (Ebenen 11-20)',
       'en': 'Pilgrim\'s Traverse (Stones 11-20)',
       'fr': 'Le Sanctuaire des pèlerins (zones 11-20)',
@@ -10713,6 +10715,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第21～30朝圣路',
       'de': 'Pilgers Pfad (Ebenen 21-30)',
       'en': 'Pilgrim\'s Traverse (Stones 21-30)',
       'fr': 'Le Sanctuaire des pèlerins (zones 21-30)',
@@ -10727,6 +10730,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第31～40朝圣路',
       'de': 'Pilgers Pfad (Ebenen 31-40)',
       'en': 'Pilgrim\'s Traverse (Stones 31-40)',
       'fr': 'Le Sanctuaire des pèlerins (zones 31-40)',
@@ -10741,6 +10745,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第41～50朝圣路',
       'de': 'Pilgers Pfad (Ebenen 41-50)',
       'en': 'Pilgrim\'s Traverse (Stones 41-50)',
       'fr': 'Le Sanctuaire des pèlerins (zones 41-50)',
@@ -10755,6 +10760,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第51～60朝圣路',
       'de': 'Pilgers Pfad (Ebenen 51-60)',
       'en': 'Pilgrim\'s Traverse (Stones 51-60)',
       'fr': 'Le Sanctuaire des pèlerins (zones 51-60)',
@@ -10769,6 +10775,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第61～70朝圣路',
       'de': 'Pilgers Pfad (Ebenen 61-70)',
       'en': 'Pilgrim\'s Traverse (Stones 61-70)',
       'fr': 'Le Sanctuaire des pèlerins (zones 61-70)',
@@ -10783,6 +10790,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第71～80朝圣路',
       'de': 'Pilgers Pfad (Ebenen 71-80)',
       'en': 'Pilgrim\'s Traverse (Stones 71-80)',
       'fr': 'Le Sanctuaire des pèlerins (zones 71-80)',
@@ -10797,6 +10805,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第81～90朝圣路',
       'de': 'Pilgers Pfad (Ebenen 81-90)',
       'en': 'Pilgrim\'s Traverse (Stones 81-90)',
       'fr': 'Le Sanctuaire des pèlerins (zones 81-90)',
@@ -10811,6 +10820,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第91～100朝圣路',
       'de': 'Pilgers Pfad (Ebenen 91-100)',
       'en': 'Pilgrim\'s Traverse (Stones 91-100)',
       'fr': 'Le Sanctuaire des pèlerins (zones 91-100)',
@@ -10905,6 +10915,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '护锁刃龙狩猎战',
       'de': 'Jagd auf Wächter-Arkveld',
       'en': 'The Windward Wilds',
       'fr': 'Chasse à l\'Arkveld Gardien',
@@ -10967,6 +10978,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '护锁刃龙上位狩猎战',
       'de': 'Jagd auf Wächter-Arkveld (schwer)',
       'en': 'The Windward Wilds (Extreme)',
       'fr': 'Chasse à l\'Arkveld Gardien (extrême)',
@@ -10981,6 +10993,7 @@ const data: ZoneInfoType = {
     'contentType': 39,
     'exVersion': 5,
     'name': {
+      'cn': '卓异的悲寂深想战',
       'de': 'Eminente Trauer (variabel)',
       'en': 'The Final Verse (Quantum)',
       'fr': 'Le Verset final (quantique)',
@@ -10995,6 +11008,7 @@ const data: ZoneInfoType = {
     'contentType': 39,
     'exVersion': 5,
     'name': {
+      'cn': '卓异的悲寂歼灭战',
       'de': 'Eminente Trauer',
       'en': 'The Final Verse',
       'fr': 'Le Verset final',
