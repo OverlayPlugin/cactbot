@@ -87,6 +87,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away from jump => Get Under or Out',
+          cn: '远离跳跃 => 去脚下或外面',
         },
       },
     },
@@ -136,12 +137,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         sting: {
           en: 'Final Sting',
+          cn: '终极针',
         },
         stingOnYou: {
           en: 'Final Sting on YOU',
+          cn: '终极针点名',
         },
         stingOnPlayer: {
           en: 'Final Sting on ${player}',
+          cn: '终极针点${player}',
         },
       },
     },
@@ -195,12 +199,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge ${dir}',
+          cn: '${dir} 躲避',
         },
         backFront: {
           en: 'Back-to-front',
+          cn: '后到前',
         },
         frontBack: {
           en: 'Front-to-back',
+          cn: '前到后',
         },
       },
     },
@@ -222,6 +229,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge ${dir}',
+          cn: '${dir} 躲避',
         },
         clockwise: Outputs.clockwise,
         counterclockwise: Outputs.counterclockwise,
@@ -300,12 +308,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         repeat: {
           en: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
+          cn: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
         },
         rewind: {
           en: '${dir4} => ${dir1} x6 => ${dir4}',
+          cn: '${dir4} => ${dir1} x6 => ${dir4}',
         },
         avoid: {
           en: 'Avoid swipes x8',
+          cn: '避开顺劈 x8',
         },
         left: Outputs.left,
         right: Outputs.right,
