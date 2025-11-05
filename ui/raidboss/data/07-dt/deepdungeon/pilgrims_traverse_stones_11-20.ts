@@ -42,6 +42,9 @@ const triggerSet: TriggerSet<Data> = {
       // 398 = back right foot
       type: 'GainsEffect',
       netRegex: { effectId: '808', target: 'Forgiven Emulation', capture: true },
+      // rarely, there is a weird doubling of the 808 status loglines
+      // (possibly due to high latency or server load); suppress to avoid this
+      suppressSeconds: 2.5,
       infoText: (data, matches, output) => {
         const count = matches.count;
         (data.footOrder ??= []).push(count);
