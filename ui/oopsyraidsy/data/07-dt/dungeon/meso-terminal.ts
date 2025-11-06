@@ -4,7 +4,9 @@ import { OopsyData } from '../../../../../types/data';
 import { OopsyTriggerSet } from '../../../../../types/oopsy';
 import { playerDamageFields } from '../../../oopsy_common';
 
-export type Data = OopsyData;
+export interface Data extends OopsyData {
+  hasDoom?: { [name: string]: boolean };
+}
 
 const triggerSet: OopsyTriggerSet<Data> = {
   zoneId: ZoneId.TheMesoTerminal,
@@ -70,6 +72,41 @@ const triggerSet: OopsyTriggerSet<Data> = {
             cn: '击退坠落',
             ko: '넉백',
           },
+        };
+      },
+    },
+    {
+      id: 'Meso Terminal Executioners Doom Gain',
+      type: 'GainsEffect',
+      netRegex: NetRegexes.gainsEffect({ effectId: '11F2' }),
+      run: (data, matches) => {
+        data.hasDoom ??= {};
+        data.hasDoom[matches.target] = true;
+      },
+    },
+    {
+      id: 'Meso Terminal Executioners Doom Lose',
+      type: 'LosesEffect',
+      netRegex: NetRegexes.losesEffect({ effectId: '11F2' }),
+      run: (data, matches) => {
+        data.hasDoom ??= {};
+        data.hasDoom[matches.target] = false;
+      },
+    },
+    {
+      id: 'Meso Terminal Executioners Doom',
+      type: 'GainsEffect',
+      netRegex: NetRegexes.gainsEffect({ effectId: '11F2' }),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 0.5,
+      deathReason: (data, matches) => {
+        if (!data.hasDoom)
+          return;
+        if (!data.hasDoom[matches.target])
+          return;
+        return {
+          id: matches.targetId,
+          name: matches.target,
+          text: matches.effect,
         };
       },
     },
