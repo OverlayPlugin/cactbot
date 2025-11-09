@@ -332,9 +332,11 @@ const contentTypeToLabel: {
   [ContentType.DeepDungeonExtras]: {
     full: {
       en: 'Deep Dungeon Extra Content',
+      cn: '深层迷宫额外内容',
     },
     short: {
       en: 'DD+',
+      cn: '深宫+',
     },
   },
   [ContentType.Pvp]: {

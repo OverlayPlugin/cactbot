@@ -73,6 +73,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stand on a rock',
+          cn: '站在一块岩石上',
         },
       },
     },
@@ -87,7 +88,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '4x Chasing AoE on YOU',
           de: '4x verfolgende AoE auf DIR',
           fr: '4x AoE sur VOUS',
-          cn: '四连 AOE 点名',
+          cn: '四连追踪 AOE 点名',
           ko: '따라오는 장판 4번',
         },
       },
@@ -96,9 +97,15 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 41-50 Ogbunabali Biting Wind',
       type: 'StartsUsing',
       netRegex: { id: 'AA12', source: 'Ogbunabali', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 5,
-      countdownSeconds: 5,
-      response: Responses.knockback(),
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
+      countdownSeconds: 3,
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Stand in quicksand',
+          cn: '站在流沙里',
+        },
+      },
     },
   ],
 };

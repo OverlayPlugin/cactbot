@@ -50,7 +50,7 @@ hideall "--sync--"
 # Executioners #
 #~~~~~~~~~~~~~~#
 
-# -ii AA3A AA3C AA3D AA4A AA4E AA4F AA50
+# -ii AA3A AA3C AA3D AA3F AA4A AA4E AA4F AA50
 
 # The Executioner timeline is "best-effort" and will quickly
 # desync depending on player or enemy deaths.
@@ -103,11 +103,12 @@ hideall "--sync--"
 # AA3C --sync--: reposition in own circle
 # AA3D Shackles of Fate: chain castbar
 # AA3E Shackles of Fate: chain and draw player in
-# AA42 Dismemberment
-# AA43 Dismemberment
-# AA44 Death Penalty
-# AA45 Relentless Torment
-# AA46 Relentless Torment
+# AA3F Shackles of Fate: chain and draw player in when leaving the circle
+# AA42 Dismemberment: blade line AoEs castbar
+# AA43 Dismemberment blade line AoEs
+# AA44 Death Penalty: dooms target
+# AA45 Relentless Torment: tank buster headmarker
+# AA46 Relentless Torment: tank buster
 # AA47 Flaying Flail: triangle of circle AoEs castbar
 # AA48 Flaying Flail: triangle of circle AoEs
 # AA49 Peal of Judgment: lightning lines castbar

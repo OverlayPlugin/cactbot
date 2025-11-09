@@ -115,6 +115,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Sides + Rotate ${rotation}',
+          cn: '两侧 + ${rotation}旋转',
         },
         clockwise: Outputs.clockwise,
         counterclockwise: Outputs.counterclockwise,
@@ -133,12 +134,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cactuar move ${count}',
+          cn: '仙人掌移动 ${count}',
         },
         once: {
           en: 'Once',
+          cn: '一次',
         },
         twice: {
           en: 'Twice',
+          cn: '两次',
         },
       },
     },

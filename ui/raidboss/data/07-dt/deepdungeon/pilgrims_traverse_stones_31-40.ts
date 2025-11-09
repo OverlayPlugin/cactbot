@@ -61,6 +61,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid jump => Out',
+          cn: '避开跳跃 => 外',
         },
       },
     },
@@ -95,6 +96,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech} x3',
+          cn: '${mech} x3',
         },
         knockback: Outputs.knockback,
         aoe: Outputs.aoe,
