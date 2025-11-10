@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
   "version": "0.35.4",
-  "releaseSummary": "Pilgrim's Traverse, The Meso Terminal, CN 7.35, KO 7.3, i18n",
+  "releaseSummary": "initial Pilgrim's Traverse, The Meso Terminal, CN 7.35, KO 7.3, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
