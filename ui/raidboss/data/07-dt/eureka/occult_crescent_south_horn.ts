@@ -3694,7 +3694,7 @@ const triggerSet: TriggerSet<Data> = {
         const y = parseFloat(matches.y);
 
         // Pattern 1
-        if ((y > -691 && y < -688) || (y > -640 && y < -643)) {
+        if ((y > -691 && y < -688) || (y > -643 && y < -640)) {
           if (data.triggerSetConfig.magitaurDaggers === 'bap')
             return output.startOnLetters!();
           return output.pattern1!();
