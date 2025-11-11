@@ -20,6 +20,7 @@ const triggerSet: TriggerSet<Data> = {
   ],
   zoneLabel: {
     en: 'Pilgrim\'s Traverse Stone 99/The Final Verse',
+    de: 'Pilgers Pfad Stein 99/Eminente Trauer',
     cn: '朝圣交错路 第99朝圣路/卓异的悲寂歼灭战',
   },
 
@@ -58,6 +59,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + Stop Moving!',
+          de: 'AoE + Nicht Bewegen!',
           ja: '全体攻撃 + 止まれ!',
           cn: 'AOE + 停止移动!',
           ko: '전체 공격 + 이동 멈추기!',
@@ -83,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Laser on YOU',
+          de: 'Laser auf DIR',
           ja: '自分にレーザー',
           cn: '激光点名',
           ko: '레이저 대상자',
@@ -97,6 +100,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid laser',
+          de: 'Laser vermeiden',
           ja: 'レーザーを避ける',
           cn: '避开激光',
           ko: '레이저 피하기',
@@ -123,6 +127,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Light debuff',
+          de: 'Licht Debuff nehmen',
           ja: '光デバフを受ける',
           cn: '获取光debuff',
           ko: '빛 디버프 받기',
@@ -141,6 +146,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark debuff',
+          de: 'Dunkel Debuff nehmen',
           ja: '闇デバフを受ける',
           cn: '获取暗debuff',
           ko: '어둠 디버프 받기',
@@ -175,24 +181,28 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${safe}, for later',
+          de: '${safe}, für Später',
           ja: '${safe}、あとで',
           cn: '稍后 ${safe}',
           ko: '${safe}, 나중 대비',
         },
         front: {
           en: 'Front safe',
+          de: 'Vorne sicher',
           ja: '前方が安置',
           cn: '前方安全',
           ko: '앞쪽 안전',
         },
         back: {
           en: 'Back safe',
+          de: 'Hinten sicher',
           ja: '後方が安置',
           cn: '后方安全',
           ko: '뒤쪽 안전',
         },
         side: {
           en: 'Check safe side',
+          de: 'Kontrolliere sichere Seite',
           ja: '横の安置を確認',
           cn: '观察安全侧面',
           ko: '양 옆 중 안전한 곳 확인',
@@ -208,6 +218,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid Exaflares',
+          de: 'Exaflares vermeiden',
           ja: 'エクサフレアを避ける',
           cn: '躲避地火',
           ko: '엑사플레어 피하기',
