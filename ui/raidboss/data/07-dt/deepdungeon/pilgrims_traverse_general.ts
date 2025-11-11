@@ -24,6 +24,7 @@ const triggerSet: TriggerSet<Data> = {
   ],
   zoneLabel: {
     en: 'Pilgrim\'s Traverse (All Stones)',
+    de: 'Pilgers Pfad (Alle Steine)',
     cn: '朝圣交错路 (全朝圣路)',
   },
 
