@@ -626,12 +626,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'Springhis Khan',
         'Frogtourage': 'Schenkelschwinger',
       },
       'replaceText': {
+        'Debuffs': 'Debuffs',
         '\\(Cleave\\)': '(Cleave)',
         '\\(Echo\\)': '(Echo)',
         '\\(In\\+Protean\\+Echo\\)': '(Rein+Himmelsrichtungen+Echo)',

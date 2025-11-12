@@ -118,6 +118,7 @@ const outputFrom12DirNum = (dirNum: number): DirectionOutput12 => {
 const chainsOfCondemnationOutputStrings = {
   chains: {
     en: 'AoE + Stop Moving!',
+    de: 'AoE + Nicht Bewegen!',
     ja: '全体攻撃 + 止まれ!',
     cn: 'AOE + 停止移动!',
     ko: '전체 공격 + 이동 멈추기!',
@@ -143,6 +144,7 @@ const triggerSet: TriggerSet<Data> = {
   ],
   zoneLabel: {
     en: 'Pilgrim\'s Traverse Stone 99/The Final Verse',
+    de: 'Pilgers Pfad Stein 99/Eminente Trauer',
     cn: '朝圣交错路 第99朝圣路/卓异的悲寂歼灭战',
   },
 
@@ -338,6 +340,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Laser on YOU',
+          de: 'Laser auf DIR',
           ja: '自分にレーザー',
           cn: '激光点名',
           ko: '레이저 대상자',
@@ -352,6 +355,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid laser',
+          de: 'Laser vermeiden',
           ja: 'レーザーを避ける',
           cn: '避开激光',
           ko: '레이저 피하기',
@@ -378,6 +382,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Light debuff',
+          de: 'Licht Debuff nehmen',
           ja: '光デバフを受ける',
           cn: '获取光debuff',
           ko: '빛 디버프 받기',
@@ -396,6 +401,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark debuff',
+          de: 'Dunkel Debuff nehmen',
           ja: '闇デバフを受ける',
           cn: '获取暗debuff',
           ko: '어둠 디버프 받기',
