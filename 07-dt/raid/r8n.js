@@ -251,6 +251,7 @@ Options.Triggers.push({
       outputStrings: {
         behindClones: {
           en: 'Behind Clones',
+          de: 'Hinter den Klonen',
           fr: 'Derrière les clones',
           cn: '去分身后',
           ko: '분신 뒤로',

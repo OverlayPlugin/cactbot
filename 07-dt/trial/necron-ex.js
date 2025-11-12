@@ -75,6 +75,7 @@ Options.Triggers.push({
       outputStrings: {
         baitHand: {
           en: 'Bait Hand',
+          de: 'Hand ködern',
           fr: 'Prenez les mains',
           ja: '手の誘導',
           cn: '引导手',
@@ -97,6 +98,7 @@ Options.Triggers.push({
         west: Outputs.west,
         text: {
           en: '${mid} => ${side}',
+          de: '${mid} => ${side}',
           ja: '${mid} => ${side}',
           cn: '${mid} => ${side}',
           ko: '${mid} => ${side}',
@@ -116,6 +118,7 @@ Options.Triggers.push({
       outputStrings: {
         lightWest: {
           en: 'Light West => Spread',
+          de: 'Licht Westen => Verteilen',
           fr: 'Légèrement Ouest => Dispersion',
           ja: '光 左 => 散開',
           cn: '光左 => 分散',
@@ -123,6 +126,7 @@ Options.Triggers.push({
         },
         lightEast: {
           en: 'Light East => Spread',
+          de: 'Licht Osten => Verteilen',
           fr: 'Légèrement Est => Dispersion',
           ja: '光 右 => 散開',
           cn: '光右 => 分散',
@@ -168,6 +172,7 @@ Options.Triggers.push({
         mid: Outputs.middle,
         stored: {
           en: 'Stored ${dir}',
+          de: 'Gespeichert ${dir}',
           fr: '${dir} enregistré',
           ja: '次は ${dir}',
           cn: '储存 ${dir}',
@@ -200,6 +205,7 @@ Options.Triggers.push({
         partners: Outputs.stackPartner,
         text: {
           en: '${dir} + ${mech}',
+          de: '${dir} + ${mech}',
           fr: '${dir} + ${mech}',
           ja: '${dir} + ${mech}',
           cn: '${dir} + ${mech}',
@@ -216,6 +222,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Drop hand => Bait hand',
+          de: 'Hand ablegen => Hand ködern',
           fr: 'Déposez => Prenez les mains',
           ja: '手を外に捨てる => 次の手を誘導',
           cn: '放手 => 引导手',
@@ -249,6 +256,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Bait puddles => Intercardinals',
+          de: 'Flächen ködern => Interkardinal',
           fr: 'Déposez les puddles => Intercardinaux',
           ja: '中央 => ×字散開',
           cn: '引导黄圈 => 叉字',
@@ -294,6 +302,7 @@ Options.Triggers.push({
       outputStrings: {
         cleanse: {
           en: 'Cleanse Slow',
+          de: 'Gemach reinigen',
           fr: 'Guérisez la lenteur',
           ja: 'スロウを解除',
           cn: '康复减速',
@@ -356,6 +365,7 @@ Options.Triggers.push({
         spread: Outputs.spread,
         middle: {
           en: 'Middle Row',
+          de: 'Mittlere Reihe',
           fr: 'Ligne du milieu',
           ja: '中央列',
           cn: '中间行',
@@ -363,6 +373,7 @@ Options.Triggers.push({
         },
         north: {
           en: 'North Row',
+          de: 'Nördliche Reihe',
           fr: 'Ligne au Nord',
           ja: '北列（上）',
           cn: '第一行',
@@ -370,6 +381,7 @@ Options.Triggers.push({
         },
         south: {
           en: 'South Row',
+          de: 'Südliche Reihe',
           fr: 'Ligne au Sud',
           ja: '南列（下）',
           cn: '第三行',
@@ -377,6 +389,7 @@ Options.Triggers.push({
         },
         text: {
           en: '${row} + ${spread}',
+          de: '${row} + ${spread}',
           fr: '${row} + ${spread}',
           ja: '${row} + ${spread}',
           cn: '${row} + ${spread}',
@@ -393,6 +406,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Bait Hand => Dodge',
+          de: 'Hand ködern => Ausweichen',
           fr: 'Attirez la main => Évitez',
           ja: '手を誘導 => 回避',
           cn: '引导手 => 躲开',
@@ -479,6 +493,7 @@ Options.Triggers.push({
         partners: Outputs.stackPartner,
         text: {
           en: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
+          de: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           fr: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           ja: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           cn: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
@@ -553,6 +568,7 @@ Options.Triggers.push({
         middle: Outputs.middle,
         delay: {
           en: 'Wait for hand => ${dir}',
+          de: 'Warte auf die Hand => ${dir}',
           fr: 'Attendez la main => ${dir}',
           ja: '手を待つ => ${dir}',
           cn: '等手 => ${dir}',
@@ -560,6 +576,7 @@ Options.Triggers.push({
         },
         lean: {
           en: '${dir}, lean ${to}',
+          de: '${dir}, ${to} halten',
           fr: '${dir}, vers ${to}',
           ja: '${dir}, ${to}に寄る',
           cn: '${dir}, 靠 ${to}',
@@ -567,6 +584,7 @@ Options.Triggers.push({
         },
         dodge: {
           en: '${dir} => Dodge Hand',
+          de: '${dir} => Hand ausweichen',
           fr: '${dir} => Évitez la main',
           ja: '${dir} => 手を避ける',
           cn: '${dir} => 躲手',
@@ -582,6 +600,7 @@ Options.Triggers.push({
       outputStrings: {
         towerPos: {
           en: 'Preposition for LP towers',
+          de: 'Vorpositionieren für Türme',
           fr: 'Préposition pour les tours',
           ja: '最初の塔踏み位置へ移動',
           cn: '多人塔预站位',
@@ -613,6 +632,7 @@ Options.Triggers.push({
       outputStrings: {
         soakNext: {
           en: 'Soak Next Tower',
+          de: 'Nächsten Turm nehmen',
           fr: 'Prenez la prochaine tour',
           ja: '次の塔を踏む',
           cn: '踩下一个塔',
@@ -632,7 +652,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'azur(?:e|er|es|en) Äther',
         'Beckoning Hands': 'lockend(?:e|er|es|en) Hand',

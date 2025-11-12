@@ -39,6 +39,7 @@ Options.Triggers.push({
       outputStrings: {
         grabTether: {
           en: 'Grab Tank Tether, Point Cleave Away',
+          de: 'Nimm Tank-Verbindung, zeige den Cleave weg',
           fr: 'Prenez le lien Tank, visez l\'extérieur',
           cn: '接走坦克连线，引导扇形远离人群',
           ko: '탱커 선 가져오기, 탱버 밖으로 향하게 하기',
@@ -229,24 +230,28 @@ Options.Triggers.push({
         dirW: Outputs.west,
         goToSnakes: {
           en: 'Go ${dir} Toward Snakes',
+          de: 'Geh Richtung ${dir} zu den Schlangen',
           fr: 'Allez ${dir} vers les serpents',
           cn: '向 ${dir} 蛇走',
           ko: '${dir} 뱀 쪽으로 가기',
         },
         goToUnknownSnakes: {
           en: 'Go Toward Snakes',
+          de: 'Geh zu den Schlangen',
           fr: 'Allez vers les serpents',
           cn: '向蛇走',
           ko: '뱀 쪽으로 가기',
         },
         outOfMiddleTowardSnakes: {
           en: 'Out Of Middle, Knockback To ${dir}',
+          de: 'Raus aus der Mitte, Rückstoß nach ${dir}',
           fr: 'Loin du centre, Poussée vers ${dir}',
           cn: '离开中间，击退到 ${dir}',
           ko: '중앙 피하기, ${dir}으로 넉백',
         },
         outOfMiddleUnknownSnakes: {
           en: 'Out Of Middle, Knockback Toward Snakes',
+          de: 'Raus aus der Mitte, Rückstoß zu den Schlangen',
           fr: 'Loin du centre, Poussée vers les serpents',
           cn: '离开中间，向蛇击退',
           ko: '중앙 피하기, 뱀 쪽으로 넉백',
@@ -343,11 +348,10 @@ Options.Triggers.push({
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': 'Aka no Shiki',
         'Ao-no-shiki': 'Ao no Shiki',
-        'Blue Orochi': 'blau[a] Orochi',
+        'Blue Orochi': 'blau(?:e|er|es|en) Orochi',
         'Iwa-no-shiki': 'Iwa no Shiki',
         'Numa-no-shiki': 'Numa no Shiki',
         'Seiryu': 'Seiryu',
@@ -355,6 +359,8 @@ Options.Triggers.push({
         'Yama-no-shiki': 'Yama no Shiki',
       },
       'replaceText': {
+        '--large add spawns--': '--großes Add erscheint--',
+        '--small adds spawn--': '--kleine Adds erscheinen--',
         '100-tonze Swing': '100-Tonzen-Schwung',
         'Blazing Aramitama': 'Flammende Aramitama',
         'Blue Bolt': 'Blauer Blitz',
@@ -375,7 +381,7 @@ Options.Triggers.push({
         'Serpent Descending': 'Niedergang der Schlange',
         'Serpent\'s Fang': 'Schlangengiftzahn',
         'Strength of Spirit': 'Stärke des Geistes',
-        'Summon Shiki': 'Shiki-Beschwörung ',
+        'Summon Shiki': 'Shiki-Beschwörung',
         'Yama-kagura': 'Yamakagura',
       },
     },

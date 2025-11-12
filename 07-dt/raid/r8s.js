@@ -835,7 +835,7 @@ Options.Triggers.push({
       outputStrings: {
         wolfOfWind: {
           en: 'Green',
-          de: 'Grün',
+          de: 'Grüne',
           fr: 'Vert',
           ja: '緑',
           cn: '绿',
@@ -843,7 +843,7 @@ Options.Triggers.push({
         },
         wolfOfStone: {
           en: 'Yellow',
-          de: 'Gelb',
+          de: 'Gelbe',
           fr: 'Jaune',
           ja: '黄',
           cn: '黄',
@@ -1638,6 +1638,7 @@ Options.Triggers.push({
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
+          de: 'Köder Nahe (Verbindung auf ${dir})',
           fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
@@ -1733,6 +1734,7 @@ Options.Triggers.push({
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
+          de: 'Köder Nahe (Verbindung auf ${dir})',
           fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
@@ -2081,7 +2083,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Gleaming Fang': 'Lichtreißer',
         'Howling Blade': 'Heulende Klinge',
@@ -2094,6 +2095,11 @@ Options.Triggers.push({
         '--adds-targetable--': '--Adds-anvisierbar--',
         '--shadow ': '--Schatten ',
         '--tank/line aoes--': '--Tank/Linien AoEs--',
+        '\\(circles\\)': '(Kreise)',
+        '\\(cones\\)': '(Kegel)',
+        '\\(enrage\\)': '(Finalangriff)',
+        '\\(Platform\\)': '(Plattform)',
+        '\\(Towers\\)': '(Türme)',
         'Aero III': 'Windga',
         'Aerotemporal Blast': 'Temporärer Wind',
         'Alpha Stone': 'Erde des Lichtwolfs',

@@ -186,18 +186,21 @@ Options.Triggers.push({
       outputStrings: {
         combo: {
           en: '${outer}, ${inner}',
+          de: '${outer}, ${inner}',
           fr: '${outer}, ${inner}',
           cn: '${outer}, ${inner}',
           ko: '${outer}, ${inner}',
         },
         outer: {
           en: 'Outer ${dir1}/${dir2}',
+          de: 'Außen ${dir1}/${dir2}',
           fr: 'Extérieur ${dir1}/${dir2}',
           cn: '外 ${dir1}/${dir2}',
           ko: '바깥쪽 ${dir1}/${dir2}',
         },
         inner: {
           en: 'Inner ${dir1}/${dir2}',
+          de: 'Innen ${dir1}/${dir2}',
           fr: 'Intérieur ${dir1}/${dir2}',
           cn: '内 ${dir1}/${dir2}',
           ko: '안쪽 ${dir1}/${dir2}',
@@ -225,6 +228,7 @@ Options.Triggers.push({
           },
           puddle: {
             en: 'Bait Puddles',
+            de: 'Flächen ködern',
             fr: 'Posez les puddles',
             cn: '诱导黄圈',
             ko: '장판 유도',

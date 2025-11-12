@@ -19,14 +19,17 @@ Options.Triggers.push({
       outputStrings: {
         enrage: {
           en: 'Parasitism',
+          de: 'Instinkt des Räubers',
           cn: '捕食行动',
         },
         enrageOnYou: {
           en: 'Parasitism on YOU',
+          de: 'Instinkt des Räubers auf DIR',
           cn: '捕食行动点名',
         },
         enrageOnPlayer: {
           en: 'Parasitism on ${player}',
+          de: 'Instinkt des Räubers auf ${player}',
           cn: '捕食行动点 ${player}',
         },
       },
@@ -88,14 +91,17 @@ Options.Triggers.push({
       outputStrings: {
         middleOrOuter: {
           en: 'Get Middle or Outer ring',
+          de: 'Geh zum mittleren oder äußeren Ring',
           cn: '去中圈或外圈',
         },
         innerOrOuter: {
           en: 'Get Inner or Outer ring',
+          de: 'Geh zum inneren oder äußeren Ring',
           cn: '去内圈或外圈',
         },
         innerOrMiddle: {
           en: 'Get Inner or Middle ring',
+          de: 'Geh zum inneren oder mittleren Ring',
           cn: '去内圈或中圈',
         },
       },
@@ -133,6 +139,7 @@ Options.Triggers.push({
         right: Outputs.right,
         text: {
           en: '${dir}, Behind Hand',
+          de: '${dir}, hinter der Hand',
           cn: '${dir}, 去手后',
         },
       },
@@ -153,6 +160,37 @@ Options.Triggers.push({
           cn: '追踪AOE点名',
           ko: '연속장판 대상자',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Forgiven Ambition': 'geläutert(?:e|er|es|en) Begierde',
+        'Forgiven Intolerance': 'geläutert(?:e|er|es|en) Intoleranz',
+        'Forgiven Treachery': 'geläutert(?:e|er|es|en) Verrat',
+        'Traverse Clionid': 'Wallfahrt-Clionid',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Forgiven Ambition': 'ambition pardonnée',
+        'Forgiven Intolerance': 'intolérance pardonnée',
+        'Forgiven Treachery': 'traîtrise pardonnée',
+        'Traverse Clionid': 'clionide du pèlerinage',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Forgiven Ambition': 'フォーギヴン・アンビション',
+        'Forgiven Intolerance': 'フォーギヴン・イントーラランス',
+        'Forgiven Treachery': 'フォーギヴン・トレチャリー',
+        'Traverse Clionid': 'トラバース・クリオニッド',
       },
     },
   ],

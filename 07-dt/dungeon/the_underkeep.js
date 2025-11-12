@@ -66,6 +66,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Watch boss for dash',
+          de: 'Boss anschauen für Ansturm',
           fr: 'Regardez la position du boss pour la ruée',
           cn: '观察 BOSS 冲锋',
           ko: '보스 돌진 위치 확인하기',
@@ -127,6 +128,7 @@ Options.Triggers.push({
       outputStrings: {
         spread: {
           en: 'Spread in ${quad} quadrant',
+          de: 'Im ${quad} Quadranten verteilen',
           fr: 'Écartez-vous dans le quandrant ${quad}',
           cn: '在 ${quad} 象限分散',
           ko: '${quad}쪽 사분면에서 산개',
@@ -194,6 +196,7 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         cleave: {
           en: '${dir} half safe',
+          de: '${dir} Hälfte sicher',
           fr: '${dir} moitié sûre',
           cn: '${dir} 半安全',
           ko: '${dir}쪽 절반 안전',
@@ -220,6 +223,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Dodge wall turrets',
+          de: 'Wand-Geschützturm ausweichen',
           fr: 'Esquivez les tourelles murales',
           cn: '躲避墙壁炮台',
           ko: '벽 포탑 피하기',
@@ -234,6 +238,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Spread (all cones expand!)',
+          de: 'Verteilen (Alle Kegel langziehen!)',
           fr: 'Écartez-vous (les cônes s\'agrandissent)',
           cn: '分散 (所有扇形扩大!)',
           ko: '산개 (모든 부채꼴 장판 커짐!)',
@@ -248,6 +253,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get behind + Spread',
+          de: 'geh Hinter + Verteilen',
           fr: 'Allez derrière + Dispersion',
           cn: '后 + 分散',
           ko: '보스 뒤로 + 산개',
@@ -348,18 +354,21 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         dodge: {
           en: 'Inner ${first} => Inner ${second} ${move}',
+          de: 'Innen ${first} => Innen ${second} ${move}',
           fr: 'Intérieur ${first} => Intérieur ${second} ${move}',
           cn: '内 ${first} => 内 ${second} ${move}',
           ko: '안쪽 ${first} => 안쪽 ${second} ${move}',
         },
         moveAfterLaser: {
           en: '(after wall laser)',
+          de: '(nach dem Wand-Laser)',
           fr: '(après les lasers)',
           cn: '(然后墙壁激光)',
           ko: '(벽면 레이저 이후)',
         },
         moveAfterOrb: {
           en: '(after orb explosion)',
+          de: '(nach Orb-Explosion)',
           fr: '(après les explosions des orbes)',
           cn: '(然后球爆炸)',
           ko: '(구슬 폭발 이후)',
