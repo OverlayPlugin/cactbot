@@ -1413,9 +1413,15 @@ const latestLogDefinitions = {
     blankFields: [6, 7, 8],
     playerIds: {
       2: null,
+      10: null,
     },
     canAnonymize: true,
     firstOptionalField: undefined,
+    analysisOptions: {
+      include: 'filter',
+      filters: { sourceId: '4.{7}' }, // NPC casts only
+      combatantIdFields: [2, 10],
+    },
   },
   ContentFinderSettings: {
     type: '265',
