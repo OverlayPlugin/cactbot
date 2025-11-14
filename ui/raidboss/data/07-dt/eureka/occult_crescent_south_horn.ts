@@ -192,6 +192,10 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Vertical Crosshatch/Horizontal Crosshatch': 'Vertical/Horizontal Crosshatch',
+        'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation':
+          'Penny Inflation (knockback)',
+        'Shades\' Nest/Shade\'s Crossing': 'Shades\' Nest/Crossing',
+        'Shades\' Crossing/Shades\' Nest': 'Shades\' Crossing/Nest',
       },
     },
     {
@@ -372,6 +376,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '火球',
         'Black Star': '黑色天星',
@@ -433,6 +438,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': '화염 구체',
         'Black Star': '검은 죽음의 운성',
