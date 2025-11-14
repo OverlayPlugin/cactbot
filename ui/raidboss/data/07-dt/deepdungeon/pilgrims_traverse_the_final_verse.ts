@@ -7,14 +7,12 @@ import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // Pilgrim's Traverse Stone 99/The Final Verse
+
 // TODO: timeline
 
 // === Map Effect info: ===
-//
-// --- Bounds of Sin puddles ---
-//
+// --- Bounds of Sin walls ---
 // locations:
-//
 //       00
 //    0B    01
 //  0A        02
@@ -24,21 +22,18 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 //       06
 //
 // flags:
-//
 // 00020001 - walls appearing
 // 00080004 - walls disappearing
 //
 // --- Spinelash glass walls ---
-//
 // locations:
-//
 // 18 | 19 | 1A
 //
 // flags:
-//
 // 00020001 - glass breaking first time
 // 00200010 - glass breaking second time
 
+// === Abyssal Blaze (exaflares) ===
 // possible exaflare starting locations [x, y]:
 // [-582.019, -288.003]
 // [-582.019, -311.991]
@@ -133,7 +128,7 @@ export interface Data extends RaidbossData {
   abyssalSides: boolean;
   abyssalFrontBack?: 'front' | 'back';
   abyssalLeftRight?: 'left' | 'right';
-  exas?: number[];
+  exaflares?: number[];
 }
 
 const triggerSet: TriggerSet<Data> = {
@@ -159,7 +154,11 @@ const triggerSet: TriggerSet<Data> = {
       // 9F6 = Damage Up
       // 105F = Rehabilitation
       type: 'GainsEffect',
-      netRegex: { effectId: ['9F6', '105F'], capture: false },
+      netRegex: {
+        effectId: ['9F6', '105F'],
+        target: ['Eminent Grief', 'Devoured Eater'],
+        capture: false,
+      },
       suppressSeconds: 1,
       alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -457,12 +456,12 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.abyssalSides,
       preRun: (data, matches) => {
         const x = parseFloat(matches.x);
-        (data.exas ??= []).push(x);
+        (data.exaflares ??= []).push(x);
 
-        if (data.exas === undefined || data.exas.length < 4)
+        if (data.exaflares === undefined || data.exaflares.length < 4)
           return;
 
-        const exas = data.exas.sort((a, b) => a - b);
+        const exas = data.exaflares.sort((a, b) => a - b);
         const [x1, x4] = [exas[0], exas[3]];
         if (x1 === undefined || x4 === undefined)
           throw new UnreachableCode();
@@ -507,7 +506,7 @@ const triggerSet: TriggerSet<Data> = {
         data.abyssalSides = false;
         delete data.abyssalFrontBack;
         delete data.abyssalLeftRight;
-        delete data.exas;
+        delete data.exaflares;
       },
       outputStrings: {
         text: {
@@ -539,7 +538,7 @@ const triggerSet: TriggerSet<Data> = {
         if (walls === undefined || walls.length < 2)
           return;
 
-        const [wall1, wall2] = [data.walls[0], data.walls[1]];
+        const [wall1, wall2] = [walls[0], walls[1]];
         if (wall1 === undefined || wall2 === undefined)
           throw new UnreachableCode();
 

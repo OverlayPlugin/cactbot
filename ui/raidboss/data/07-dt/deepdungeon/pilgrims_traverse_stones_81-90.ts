@@ -214,13 +214,23 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 81-90 Malacoda Backhand Right',
       type: 'StartsUsing',
       netRegex: { id: 'ACDA', source: 'Malacoda', capture: false },
-      response: Responses.goLeft(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Get Behind + Left',
+        },
+      },
     },
     {
       id: 'PT 81-90 Malacoda Backhand Left',
       type: 'StartsUsing',
       netRegex: { id: 'ACDB', source: 'Malacoda', capture: false },
-      response: Responses.goRight(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Get Behind + Right',
+        },
+      },
     },
     {
       id: 'PT 81-90 Malacoda Fore-hind Folly',

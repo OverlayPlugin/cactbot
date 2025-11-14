@@ -56,13 +56,23 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 91-100 Invoked Sawtooth Honeyed Left',
       type: 'StartsUsing',
       netRegex: { id: 'AD45', source: 'Invoked Sawtooth', capture: false },
-      response: Responses.goRight(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Go Front + Right',
+        },
+      },
     },
     {
       id: 'PT 91-100 Invoked Sawtooth Honeyed Right',
       type: 'StartsUsing',
       netRegex: { id: 'AD46', source: 'Invoked Sawtooth', capture: false },
-      response: Responses.goLeft(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Go Front + Left',
+        },
+      },
     },
     {
       id: 'PT 91-100 Invoked Bachelor Arachne Web',
