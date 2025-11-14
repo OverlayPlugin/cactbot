@@ -1,3 +1,92 @@
+// Pilgrim's Traverse Stone 99/The Final Verse
+// TODO: timeline
+// === Map Effect info: ===
+// --- Bounds of Sin walls ---
+// locations:
+//       00
+//    0B    01
+//  0A        02
+// 09          03
+//  08        04
+//    07    05
+//       06
+//
+// flags:
+// 00020001 - walls appearing
+// 00080004 - walls disappearing
+//
+// --- Spinelash glass walls ---
+// locations:
+// 18 | 19 | 1A
+//
+// flags:
+// 00020001 - glass breaking first time
+// 00200010 - glass breaking second time
+// === Abyssal Blaze (exaflares) ===
+// possible exaflare starting locations [x, y]:
+// [-582.019, -288.003]
+// [-582.019, -311.991]
+// [-588.000, -294.015]
+// [-588.000, -306.009]
+// [-594.012, -299.997]
+// [-599.994, -294.015]
+// [-599.994, -306.009]
+// [-606.006, -299.997]
+// [-612.018, -294.015]
+// [-612.018, -306.009]
+// [-618.000, -288.003]
+// [-618.000, -311.991]
+const center = {
+  'x': -600,
+  'y': -300,
+};
+const output12Dir = [
+  'dirN',
+  'dirNNE',
+  'dirENE',
+  'dirE',
+  'dirESE',
+  'dirSSE',
+  'dirS',
+  'dirSSW',
+  'dirWSW',
+  'dirW',
+  'dirWNW',
+  'dirNNW',
+];
+const outputStrings12Dir = {
+  dirN: Outputs.dirN,
+  dirNNE: Outputs.dirNNE,
+  dirENE: Outputs.dirENE,
+  dirE: Outputs.dirE,
+  dirESE: Outputs.dirESE,
+  dirSSE: Outputs.dirSSE,
+  dirS: Outputs.dirS,
+  dirSSW: Outputs.dirSSW,
+  dirWSW: Outputs.dirWSW,
+  dirW: Outputs.dirW,
+  dirWNW: Outputs.dirWNW,
+  dirNNW: Outputs.dirNNW,
+  unknown: Outputs.unknown,
+};
+const xyTo12DirNum = (x, y, centerX, centerY) => {
+  // N = 0, NNE = 1, ..., NNW = 12
+  x = x - centerX;
+  y = y - centerY;
+  return Math.round(6 - 6 * Math.atan2(x, y) / Math.PI) % 12;
+};
+const outputFrom12DirNum = (dirNum) => {
+  return output12Dir[dirNum] ?? 'unknown';
+};
+const chainsOfCondemnationOutputStrings = {
+  chains: {
+    en: 'AoE + Stop Moving!',
+    de: 'AoE + Nicht Bewegen!',
+    ja: '全体攻撃 + 止まれ!',
+    cn: 'AOE + 停止移动!',
+    ko: '전체 공격 + 이동 멈추기!',
+  },
+};
 Options.Triggers.push({
   id: 'TheFinalVerse',
   zoneId: [
@@ -9,25 +98,135 @@ Options.Triggers.push({
     de: 'Pilgers Pfad Stein 99/Eminente Trauer',
     cn: '朝圣交错路 第99朝圣路/卓异的悲寂歼灭战',
   },
+  initData: () => ({
+    abyssalSides: false,
+  }),
   triggers: [
     // ---------------- Stone 99/The Final Verse Boss: Eminent Grief/Devoured Eater ----------------
+    {
+      id: 'PT 99 HP Difference Warning',
+      // 9F6 = Damage Up
+      // 105F = Rehabilitation
+      type: 'GainsEffect',
+      netRegex: {
+        effectId: ['9F6', '105F'],
+        target: ['Eminent Grief', 'Devoured Eater'],
+        capture: false,
+      },
+      suppressSeconds: 1,
+      alarmText: (_data, _matches, output) => output.text(),
+      outputStrings: {
+        text: {
+          en: 'Check Boss HP Difference',
+        },
+      },
+    },
+    {
+      id: 'PT 99 Petrification/Hysteria',
+      // 01 = Petrification (failure from Light Vengeance expiring)
+      // 128 = Hysteria (failure from Dark Vengeance expiring)
+      type: 'GainsEffect',
+      netRegex: { effectId: ['01', '128'], capture: true },
+      infoText: (_data, matches, output) => {
+        const effect = matches.effect;
+        const target = matches.target;
+        return output.text({ effect: effect, target: target });
+      },
+      outputStrings: {
+        text: {
+          en: '${effect} on ${target}',
+        },
+      },
+    },
+    {
+      id: 'PT 99 Light/Dark Vengeance Refresh Warning',
+      // 11CF = Dark Vengeance
+      // 11D0 = Light Vengeance
+      type: 'GainsEffect',
+      netRegex: { effectId: ['11CF', '11D0'], capture: true },
+      condition: Conditions.targetIsYou(),
+      preRun: (data, matches) => {
+        const timestamp = Date.parse(matches.timestamp);
+        const duration = parseFloat(matches.duration);
+        data.myVengeanceExpiration = timestamp + duration * 1000;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 10,
+      infoText: (data, matches, output) => {
+        const timestamp = Date.parse(matches.timestamp);
+        const duration = parseFloat(matches.duration);
+        const thisExpiration = timestamp + duration * 1000;
+        const myExpiration = data.myVengeanceExpiration;
+        if (myExpiration === undefined || myExpiration > thisExpiration)
+          return;
+        return output.text();
+      },
+      outputStrings: {
+        text: {
+          en: 'Refresh Vengeance',
+        },
+      },
+    },
     {
       id: 'PT 99 Devoured Eater Blade of First Light',
       type: 'StartsUsing',
       netRegex: { id: ['AC21', 'AC22', 'AC27', 'AC28'], source: 'Devoured Eater', capture: true },
-      alertText: (_data, matches, output) => {
+      preRun: (data, matches) => {
         const id = matches.id;
-        if (id === 'AC21' || id === 'AC27')
-          return output.sides();
-        return output.middle();
+        if (id === 'AC21' || id === 'AC27') {
+          data.sidesMiddle = 'sides';
+        } else {
+          data.sidesMiddle = 'middle';
+        }
+      },
+      durationSeconds: 9,
+      alertText: (data, matches, output) => {
+        const id = matches.id;
+        const ballChains = data.ballChains;
+        const sidesMiddle = data.sidesMiddle;
+        if (ballChains === undefined || sidesMiddle === undefined)
+          return;
+        if (id === 'AC21' || id === 'AC22')
+          return output.text({ mech1: output[sidesMiddle](), mech2: output[ballChains]() });
+        return output.text({ mech1: output[ballChains](), mech2: output[sidesMiddle]() });
       },
       outputStrings: {
+        text: {
+          en: '${mech1} => ${mech2}',
+        },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
+        ball: Outputs.baitPuddles,
+        ...chainsOfCondemnationOutputStrings,
       },
     },
     {
       id: 'PT 99 Eminent Grief Ball of Fire',
+      type: 'StartsUsing',
+      netRegex: { id: ['AC1D', 'AC24'], source: 'Eminent Grief', capture: true },
+      preRun: (data, _matches) => data.ballChains = 'ball',
+      durationSeconds: 9,
+      alertText: (data, matches, output) => {
+        const id = matches.id;
+        const ballChains = data.ballChains;
+        const sidesMiddle = data.sidesMiddle;
+        if (ballChains === undefined || sidesMiddle === undefined)
+          return;
+        if (id === 'AC1D')
+          return output.text({ mech1: output[ballChains](), mech2: output[sidesMiddle]() });
+        return output.text({ mech1: output[sidesMiddle](), mech2: output[ballChains]() });
+      },
+      outputStrings: {
+        text: {
+          en: '${mech1} => ${mech2}',
+        },
+        sides: Outputs.sides,
+        middle: Outputs.goIntoMiddle,
+        ball: Outputs.baitPuddles,
+        ...chainsOfCondemnationOutputStrings,
+      },
+    },
+    {
+      id: 'PT 99 Eminent Grief Ball of Fire Move',
       type: 'Ability',
       netRegex: { id: ['AC1D', 'AC24'], source: 'Eminent Grief', capture: false },
       response: Responses.moveAway('alert'),
@@ -37,24 +236,45 @@ Options.Triggers.push({
       // raidwide + applies 11D2 Chains of Condemnation for 3s; heavy damage if moving
       type: 'StartsUsing',
       netRegex: { id: ['AC20', 'AC26'], source: 'Eminent Grief', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 3,
-      countdownSeconds: 3,
-      durationSeconds: 6,
-      alarmText: (_data, _matches, output) => output.text(),
+      preRun: (data, _matches) => data.ballChains = 'chains',
+      durationSeconds: 9,
+      alertText: (data, matches, output) => {
+        const id = matches.id;
+        const ballChains = data.ballChains;
+        const sidesMiddle = data.sidesMiddle;
+        if (ballChains === undefined || sidesMiddle === undefined)
+          return;
+        if (id === 'AC20')
+          return output.text({ mech1: output[ballChains](), mech2: output[sidesMiddle]() });
+        return output.text({ mech1: output[sidesMiddle](), mech2: output[ballChains]() });
+      },
       outputStrings: {
         text: {
-          en: 'AoE + Stop Moving!',
-          de: 'AoE + Nicht Bewegen!',
-          ja: '全体攻撃 + 止まれ!',
-          cn: 'AOE + 停止移动!',
-          ko: '전체 공격 + 이동 멈추기!',
+          en: '${mech1} => ${mech2}',
         },
+        sides: Outputs.sides,
+        middle: Outputs.goIntoMiddle,
+        ball: Outputs.baitPuddles,
+        ...chainsOfCondemnationOutputStrings,
+      },
+    },
+    {
+      id: 'PT 99 Blade/Ball/Chains Cleanup',
+      type: 'Ability',
+      netRegex: {
+        id: ['AC29', 'AC24', 'AC26'],
+        source: ['Eminent Grief', 'Devoured Eater'],
+        capture: false,
+      },
+      suppressSeconds: 1,
+      run: (data, _matches) => {
+        delete data.ballChains;
+        delete data.sidesMiddle;
       },
     },
     {
       id: 'PT 99 Devoured Eater Bounds of Sin',
       // applies 119E Bind for 3s
-      // AC33 = sequential damage cast, may have good position data for dodge direction
       type: 'Ability',
       netRegex: { id: 'AC32', source: 'Devoured Eater', capture: false },
       delaySeconds: 3,
@@ -139,7 +359,7 @@ Options.Triggers.push({
       },
     },
     {
-      id: 'PT 99 Eminent Grief Abyssal Blaze Safe Spots',
+      id: 'PT 99 Eminent Grief Abyssal Blaze Front/Back Safe Spot',
       // AC2A = first cast, horizontal exaflares, front safe
       // AC2B = first cast, vertical exaflares, left or right safe
       // AC2C = second instant cast, horizontal exaflares, back safe
@@ -148,67 +368,147 @@ Options.Triggers.push({
       // AC2F = diamonds glow, exaflares start at end of cast
       // AC30 = instant, exaflare explosion/damage
       type: 'Ability',
-      netRegex: { id: ['AC2A', 'AC2B', 'AC2C', 'AC2D'], source: 'Eminent Grief', capture: true },
-      durationSeconds: 10,
-      infoText: (_data, matches, output) => {
+      netRegex: { id: ['AC2A', 'AC2C'], source: 'Eminent Grief', capture: true },
+      preRun: (data, matches) => {
         const id = matches.id;
-        switch (id) {
-          case 'AC2A':
-            return output.text({ safe: output.front() });
-          case 'AC2B':
-            return output.text({ safe: output.side() });
-          case 'AC2C':
-            return output.text({ safe: output.back() });
-          case 'AC2D':
-            return output.text({ safe: output.side() });
-        }
+        id === 'AC2A' ? data.abyssalFrontBack = 'front' : data.abyssalFrontBack = 'back';
+        data.abyssalSides = false;
+      },
+      infoText: (data, _matches, output) => {
+        const frontBack = data.abyssalFrontBack;
+        const leftRight = data.abyssalLeftRight;
+        if (frontBack === undefined || leftRight === undefined)
+          return;
+        return output.text({ frontBack: output[frontBack](), leftRight: output[leftRight]() });
       },
       outputStrings: {
         text: {
-          en: '${safe}, for later',
-          de: '${safe}, für Später',
-          ja: '${safe}、あとで',
-          cn: '稍后 ${safe}',
-          ko: '${safe}, 나중 대비',
+          en: '${frontBack}-${leftRight}, for later',
         },
-        front: {
-          en: 'Front safe',
-          de: 'Vorne sicher',
-          ja: '前方が安置',
-          cn: '前方安全',
-          ko: '앞쪽 안전',
+        front: Outputs.front,
+        back: Outputs.back,
+        left: Outputs.left,
+        right: Outputs.right,
+      },
+    },
+    {
+      id: 'PT 99 Eminent Grief Abyssal Blaze Left/Right Collector',
+      type: 'Ability',
+      netRegex: { id: ['AC2B', 'AC2D'], source: 'Eminent Grief', capture: false },
+      run: (data, _matches) => {
+        data.abyssalSides = true;
+      },
+    },
+    {
+      id: 'PT 99 Eminent Grief Abyssal Blaze Left/Right Safe Spot',
+      type: 'AbilityExtra',
+      netRegex: { id: 'AC2E', capture: true },
+      condition: (data) => data.abyssalSides,
+      preRun: (data, matches) => {
+        const x = parseFloat(matches.x);
+        (data.exaflares ??= []).push(x);
+        if (data.exaflares === undefined || data.exaflares.length < 4)
+          return;
+        const exas = data.exaflares.sort((a, b) => a - b);
+        const [x1, x4] = [exas[0], exas[3]];
+        if (x1 === undefined || x4 === undefined)
+          throw new UnreachableCode();
+        if (x1 < -615) {
+          data.abyssalLeftRight = 'right';
+        } else if (x4 > -585) {
+          data.abyssalLeftRight = 'left';
+        }
+      },
+      infoText: (data, _matches, output) => {
+        const frontBack = data.abyssalFrontBack;
+        const leftRight = data.abyssalLeftRight;
+        if (frontBack === undefined || leftRight === undefined)
+          return;
+        return output.text({ frontBack: output[frontBack](), leftRight: output[leftRight]() });
+      },
+      outputStrings: {
+        text: {
+          en: '${frontBack}-${leftRight}, for later',
         },
-        back: {
-          en: 'Back safe',
-          de: 'Hinten sicher',
-          ja: '後方が安置',
-          cn: '后方安全',
-          ko: '뒤쪽 안전',
-        },
-        side: {
-          en: 'Check safe side',
-          de: 'Kontrolliere sichere Seite',
-          ja: '横の安置を確認',
-          cn: '观察安全侧面',
-          ko: '양 옆 중 안전한 곳 확인',
-        },
+        front: Outputs.front,
+        back: Outputs.back,
+        left: Outputs.left,
+        right: Outputs.right,
       },
     },
     {
       id: 'PT 99 Eminent Grief Abyssal Blaze',
       type: 'StartsUsing',
       netRegex: { id: 'AC2F', source: 'Eminent Grief', capture: false },
+      durationSeconds: 16,
       suppressSeconds: 1,
-      alarmText: (_data, _matches, output) => output.text(),
+      alertText: (data, _matches, output) => {
+        const frontBack = data.abyssalFrontBack === undefined ? 'unknown' : data.abyssalFrontBack;
+        const leftRight = data.abyssalLeftRight === undefined ? 'unknown' : data.abyssalLeftRight;
+        return output.text({ frontBack: output[frontBack](), leftRight: output[leftRight]() });
+      },
+      run: (data) => {
+        data.abyssalSides = false;
+        delete data.abyssalFrontBack;
+        delete data.abyssalLeftRight;
+        delete data.exaflares;
+      },
       outputStrings: {
         text: {
-          en: 'Avoid Exaflares',
-          de: 'Exaflares vermeiden',
-          ja: 'エクサフレアを避ける',
-          cn: '躲避地火',
-          ko: '엑사플레어 피하기',
+          en: '${frontBack}-${leftRight}, Avoid Exaflares',
         },
+        front: Outputs.front,
+        back: Outputs.back,
+        left: Outputs.left,
+        right: Outputs.right,
+        unknown: Outputs.unknown,
       },
+    },
+    {
+      id: 'PT 99 Bounds of Sin Dodge Direction',
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'AC33', capture: true },
+      suppressSeconds: (data) => {
+        const walls = data.walls;
+        if (walls === undefined || walls.length < 1)
+          return 0;
+        return 6.5;
+      },
+      infoText: (data, matches, output) => {
+        const [x, y] = [parseFloat(matches.x), parseFloat(matches.y)];
+        const dir = xyTo12DirNum(x, y, center.x, center.y);
+        (data.walls ??= []).push(dir);
+        const walls = data.walls;
+        if (walls === undefined || walls.length < 2)
+          return;
+        const [wall1, wall2] = [walls[0], walls[1]];
+        if (wall1 === undefined || wall2 === undefined)
+          throw new UnreachableCode();
+        const isCW = wall2 - wall1 === 1 || wall1 - wall2 === 11;
+        const isCCW = wall1 - wall2 === 1 || wall2 - wall1 === 11;
+        const rotationDir = isCW ? 'cw' : isCCW ? 'ccw' : undefined;
+        if (rotationDir === undefined)
+          return output.text({ dir: output.unknown() });
+        if (rotationDir === 'cw') {
+          const dodgeDir = outputFrom12DirNum((wall2 + 10) % 12);
+          return output.text({ dir: output[dodgeDir]() });
+        }
+        const dodgeDir = outputFrom12DirNum((wall1 + 1) % 12);
+        return output.text({ dir: output[dodgeDir]() });
+      },
+      outputStrings: {
+        text: {
+          en: 'Go ${dir}',
+        },
+        unknown: Outputs.unknown,
+        ...outputStrings12Dir,
+      },
+    },
+    {
+      id: 'PT 99 Bounds of Sin Dodge Direction Cleanup',
+      type: 'Ability',
+      netRegex: { id: 'AC34', source: 'Devoured Eater', capture: false },
+      run: (data, _matches, _output) => delete data.walls,
     },
   ],
   timelineReplace: [
