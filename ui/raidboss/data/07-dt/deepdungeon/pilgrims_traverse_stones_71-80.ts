@@ -63,6 +63,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Behind x4',
+          cn: '去背后4次',
         },
       },
     },
@@ -128,6 +129,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid AoE',
+          cn: '避开AoE',
         },
       },
     },
@@ -174,6 +176,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${in} + ${backFront}',
+          cn: '${in} + ${backFront}',
         },
         back: Outputs.back,
         front: Outputs.front,
@@ -199,6 +202,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${out} + ${backFront}',
+          cn: '${out} + ${backFront}',
         },
         back: Outputs.back,
         front: Outputs.front,
@@ -214,6 +218,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid final AoE',
+          cn: '躲避终点AoE',
         },
       },
     },

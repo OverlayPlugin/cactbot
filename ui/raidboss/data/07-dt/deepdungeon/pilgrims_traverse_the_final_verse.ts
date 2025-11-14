@@ -164,6 +164,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Check Boss HP Difference',
+          cn: '检查 BOSS 血量差',
         },
       },
     },
@@ -181,6 +182,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${effect} on ${target}',
+          cn: '${effect} 点 ${target}',
         },
       },
     },
@@ -209,6 +211,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Refresh Vengeance',
+          cn: '刷新光/暗 Debuff',
         },
       },
     },
@@ -239,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -266,6 +270,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -300,6 +305,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -383,7 +389,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get Light debuff',
           de: 'Licht Debuff nehmen',
           ja: '光デバフを受ける',
-          cn: '获取光debuff',
+          cn: '获取光 Debuff',
           ko: '빛 디버프 받기',
         },
       },
@@ -402,7 +408,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get Dark debuff',
           de: 'Dunkel Debuff nehmen',
           ja: '闇デバフを受ける',
-          cn: '获取暗debuff',
+          cn: '获取暗 Debuff',
           ko: '어둠 디버프 받기',
         },
       },
@@ -434,6 +440,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          cn: '稍后去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -483,6 +490,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          cn: '稍后去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -511,6 +519,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
+          cn: '在 ${leftRight}-${frontBack} 躲避地火',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -559,6 +568,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go ${dir}',
+          cn: '去 ${dir}',
         },
         unknown: Outputs.unknown,
         ...outputStrings12Dir,
