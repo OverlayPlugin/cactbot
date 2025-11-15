@@ -31,12 +31,15 @@ Options.Triggers.push({
       outputStrings: {
         maul: {
           en: 'Maul',
+          cn: '咬杀',
         },
         maulOnYou: {
           en: 'Maul on YOU',
+          cn: '咬杀点名',
         },
         maulOnPlayer: {
           en: 'Maul on ${player}',
+          cn: '咬杀点 ${player}',
         },
       },
     },
@@ -86,12 +89,15 @@ Options.Triggers.push({
       outputStrings: {
         heat: {
           en: 'Pyretic, Avoid AoE',
+          cn: '热病, 避开AoE',
         },
         heatOnYou: {
           en: 'Pyretic on YOU, Away from Group => Stop Everything!',
+          cn: '热病点名, 远离小队成员 => 停止一切行动!',
         },
         heatOnPlayer: {
           en: 'Pyretic on ${player}, Avoid AoE',
+          cn: '热病点 ${player}, 避开AoE',
         },
       },
     },
@@ -126,6 +132,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Avoid AoE',
+          cn: '避开AoE',
         },
       },
     },
@@ -152,6 +159,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${count}x attacks => Get Behind',
+          cn: '${count}次攻击 => 靠近',
         },
       },
     },
@@ -206,6 +214,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get Behind + Left',
+          cn: '去背后 + 左侧',
         },
       },
     },
@@ -217,6 +226,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Get Behind + Right',
+          cn: '去背后 + 右侧',
         },
       },
     },

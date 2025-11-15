@@ -118,6 +118,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Check Boss HP Difference',
+          cn: '检查 BOSS 血量差',
         },
       },
     },
@@ -135,6 +136,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${effect} on ${target}',
+          cn: '${effect} 点 ${target}',
         },
       },
     },
@@ -163,6 +165,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Refresh Vengeance',
+          cn: '刷新光/暗 Debuff',
         },
       },
     },
@@ -192,6 +195,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -218,6 +222,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -251,6 +256,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -334,7 +340,7 @@ Options.Triggers.push({
           en: 'Get Light debuff',
           de: 'Licht Debuff nehmen',
           ja: '光デバフを受ける',
-          cn: '获取光debuff',
+          cn: '获取光 Debuff',
           ko: '빛 디버프 받기',
         },
       },
@@ -353,7 +359,7 @@ Options.Triggers.push({
           en: 'Get Dark debuff',
           de: 'Dunkel Debuff nehmen',
           ja: '闇デバフを受ける',
-          cn: '获取暗debuff',
+          cn: '获取暗 Debuff',
           ko: '어둠 디버프 받기',
         },
       },
@@ -384,6 +390,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          cn: '稍后去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -429,6 +436,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          cn: '稍后去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -456,6 +464,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
+          cn: '在 ${leftRight}-${frontBack} 躲避地火',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -499,6 +508,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Go ${dir}',
+          cn: '去 ${dir}',
         },
         unknown: Outputs.unknown,
         ...outputStrings12Dir,

@@ -49,6 +49,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Go Front + Right',
+          cn: '去前面 + 右侧',
         },
       },
     },
@@ -60,6 +61,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Go Front + Left',
+          cn: '去前面 + 左侧',
         },
       },
     },
@@ -91,6 +93,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${count}x attacks => Out of Melee',
+          cn: '${count}次攻击 => 离开近战范围',
         },
       },
     },
@@ -122,6 +125,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Avoid AoE',
+          cn: '避开AoE',
         },
       },
     },
