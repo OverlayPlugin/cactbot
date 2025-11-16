@@ -420,15 +420,34 @@ const triggerSet: TriggerSet<Data> = {
       regex: /Draconiform Motion/,
       beforeSeconds: 6.3,
       alertText: (data, _matches, output) => {
-        if (data.marbleDragonImitationRainDir !== undefined)
+        if (
+          data.marbleDragonImitationRainDir !== undefined && 
+          data.marbleDragonImitationRainCount < 6
+        )
           return output.baitCleaveThenDir!({
             dir: output[data.marbleDragonImitationRainDir]!(),
           });
+        if (data.marbleDragonImitationRainCount >= 6) {
+          if (data.marbleDragonTwisterClock === 'clockwise')
+            return output.baitCleaveThenDir!({
+              dir: output.northSouth!(),
+            });
+          if (data.marbleDragonTwisterClock === 'counterclockwise')
+            return output.baitCleaveThenDir!({
+              dir: output.eastWest!(),
+            });
+        }
         return output.baitCleave!();
       },
       outputStrings: {
         east: Outputs.east,
         west: Outputs.west,
+        eastWest: {
+          en: 'East/West',
+        },
+        northSouth: {
+          en: 'North/South',
+        },
         baitCleave: {
           en: 'Bait Cleave',
         },
@@ -2755,8 +2774,17 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Marble Dragon', id: '77C1', capture: false },
       alertText: (data, _matches, output) => {
-        if (data.marbleDragonImitationRainDir !== undefined)
+        if (
+          data.marbleDragonImitationRainDir !== undefined &&
+          data.marbleDragonImitationRainCount < 6
+        )
           return output[data.marbleDragonImitationRainDir]!();
+        if (data.marbleDragonImitationRainCount >= 6) {
+          if (data.marbleDragonTwisterClock === 'clockwise')
+            return output.northSouth!();
+          if (data.marbleDragonTwisterClock === 'counterclockwise')
+            return output.eastWest!();
+        }
         return output.sides!();
       },
       run: (data) => {
@@ -2765,6 +2793,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         east: Outputs.east,
         west: Outputs.west,
+        eastWest: {
+          en: 'East/West',
+        },
+        northSouth: {
+          en: 'North/South',
+        },
         sides: Outputs.sides,
       },
     },
@@ -2775,6 +2809,9 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         data.marbleDragonImitationRainCount = data.marbleDragonImitationRainCount + 1;
         data.marbleDragonImitationBlizzardCount = 0;
+        // Clear clock data for Imitation Rain 6 and 7
+        if (data.marbleDragonImitationRainCount === 5)
+          delete data.marbleDragonTwisterClock;
       },
     },
     {
@@ -3504,6 +3541,251 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 6 and 7 Puddles',
+      // Call East/West or North/South later for movement after Draconiform Motion and use data collected here for later calls
+      // Twisters will rotate CW or CCW
+      // Cross puddles are either E/W or N/S
+      //             (-337, 135)
+      // (-359, 157)             (-315, 157)
+      //             (-337, 179)
+      // BNpcID 2014547 combatant is responsible for the cross puddles, accessible around Imitation Rain (7797) NetworkAOEAbility
+      type: 'Ability',
+      netRegex: { source: 'Marble Dragon', id: '7797', capture: false },
+      condition: (data) => {
+        if (
+          data.marbleDragonImitationRainCount === 6 ||
+          data.marbleDragonImitationRainCount === 7
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: 0.5, // NPC Add available before or slightly after the cast
+      suppressSeconds: 1,
+      promise: async (data) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+        })).combatants;
+        const crosses = actors.filter((c) => c.BNpcID === 2014547);
+        if (crosses.length !== 2 || crosses === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain 6 and 7 Puddles: Wrong actor count ${crosses.length}`,
+          );
+          return;
+        }
+
+        const cross1 = crosses[0];
+        const cross2 = crosses[1];
+        if (cross1 === undefined || cross2 === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain 6 and 7 Puddles: Invalid actors.`,
+          );
+          return;
+        }
+
+        // Function to find and validate a puddle location during Imitation Rain 6
+        const getPuddleLocation = (
+          x: number,
+          y: number,
+        ): 'N' | 'E' | 'S' | 'W' | undefined => {
+          // N/S Puddles
+          if (x > -338 && x < -336) {
+            if (y > 134 && y < 136)
+              return 'N';
+            if (y > 178 && y < 180)
+              return 'S';
+          }
+          // E/W Puddles
+          if (y > 156 && y < 158) {
+            if (x > -316 && x < -314)
+              return 'E';
+            if (x > -360 && x < -358)
+              return 'W';
+          }
+          return undefined;
+        };
+        const getCrossLocation = (
+          combatant: PluginCombatantState,
+        ): 'N' | 'E' | 'S' | 'W' | undefined => {
+          const x = combatant.PosX;
+          const y = combatant.PosY;
+          const result = getPuddleLocation(x, y);
+          if (result === undefined) {
+            console.error(
+              `Occult Crescent Marble Dragon Imitation Rain 6 and 7 Puddles: Unexpected puddle location (${x}, ${y})`,
+            );
+          }
+          return result;
+        };
+
+        // Get Locations of cross puddles
+        const cross1Location = getCrossLocation(cross1);
+        const cross2Location = getCrossLocation(cross2);
+
+        // Clear data from previous Imitation Rains
+        data.marbleDragonImitationRainCrosses = [];
+
+        if (cross1Location !== undefined)
+          data.marbleDragonImitationRainCrosses.push(cross1Location);
+        if (cross2Location !== undefined)
+          data.marbleDragonImitationRainCrosses.push(cross2Location);
+
+        // East/West or North/South call based on puddle location
+        if (data.marbleDragonImitationRainCrosses !== undefined) {
+          const dir = data.marbleDragonImitationRainCrosses[0];
+          if (dir === 'N' || dir === 'S')
+            data.marbleDragonImitationRainDir = 'east';
+          if (dir === 'E' || dir === 'W')
+            data.marbleDragonImitationRainDir = 'north';
+        }
+      },
+      infoText: (data, _matches, output) => {
+        // Unable to predict on Imitation Rain 6 due to not yet knowing CW or CCW at this time
+        if (data.marbleDragonImitationRainCount !== 7)
+          return;
+
+        if (
+          data.marbleDragonImitationRainDir === undefined ||
+          data.marbleDragonTwisterClock === undefined
+        )
+          return;
+        const clock = data.marbleDragonTwisterClock;
+        const crosses = data.marbleDragonImitationRainCrosses;
+
+        // Only need one puddle needed
+        if (crosses === undefined || crosses[0] === undefined)
+          return;
+        if (
+          (clock === 'clockwise' &&
+            (crosses[0] === 'N' || crosses[0] === 'S')) ||
+          (clock === 'counterclockwise' &&
+            (crosses[0] === 'E' || crosses[0] === 'W'))
+        )
+          return output.circlesFirst!();
+        if (
+          (clock === 'clockwise' &&
+            (crosses[0] === 'E' || crosses[0] === 'W')) ||
+          (clock === 'counterclockwise' &&
+            (crosses[0] === 'N' || crosses[0] === 'S'))
+        )
+          return output.crossesFirst!();
+      },
+      outputStrings: {
+        circlesFirst: {
+          en: 'Circles First',
+        },
+        crossesFirst: {
+          en: 'Crosses First',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 6 Pattern',
+      // Twisters will rotate CW or CCW and start moving 1s before end of Draconiform Motion (77C1)
+      // They spawn at (-354.5, 174.5) and (-319.5, 139.5) as combatant "Icewind" about ~1.7s after Frigid Twister (7638)
+      // About 3.2s later, they start using Frigid Twister (76CF) abilities
+      // At Spawn headings are ~1.95 for southwest side, ~-0.57 for northeast
+      // They start turning ~0.5s after AddedCombatant, but these turns seem random
+      // Heading appears to snap into expected place once they start moving, but timing for each can vary slightly
+      type: 'AddedCombatant',
+      netRegex: { name: 'Icewind', capture: true },
+      condition: (data) => {
+        if (data.marbleDragonImitationRainCount === 6)
+          return true;
+        return false;
+      },
+      delaySeconds: 5.7, // Before the move, the actor seems to just spin randomly in place
+      suppressSeconds: 1, // Only need one of the combatants
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.id, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `Occult Crescent Marble Dragon Imitation Rain 6 Pattern: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const x = actor.PosX;
+        const facing = Directions.hdgTo16DirNum(actor.Heading);
+        const getTwisterSide = (
+          x: number,
+        ): 'southwest' | 'northeast' | undefined => {
+          if (x < marbleDragonCenterX)
+            return 'southwest';
+          if (x > marbleDragonCenterX)
+            return 'northeast';
+          return undefined;
+        };
+
+        const side = getTwisterSide(x);
+        if (
+          (side === 'southwest' && (facing >= 13 && facing <= 15)) || // WNW to NNW
+          (side === 'northeast' && (facing >= 5 && facing <= 7)) // ESE to SSW
+        )
+          data.marbleDragonTwisterClock = 'clockwise';
+        else if (
+          (side === 'southwest' && (facing >= 5 && facing <= 7)) || // ESE to SSW
+          (side === 'northeast' && (facing >= 13 && facing <= 15)) // WNW to NNW
+        )
+          data.marbleDragonTwisterClock = 'counterclockwise';
+      },
+      infoText: (data, _matches, output) => {
+        if (data.marbleDragonTwisterClock === undefined)
+          return;
+        const clock = data.marbleDragonTwisterClock;
+        const crosses = data.marbleDragonImitationRainCrosses;
+        const dir = clock === 'clockwise'
+          ? output.northSouth!()
+          : output.eastWest!();
+        // Only need one puddle needed
+        if (crosses === undefined || crosses[0] === undefined)
+          return output.dirClock!({ dir: dir, clock: output[clock]!()});
+        if (
+          (clock === 'clockwise' &&
+            (crosses[0] === 'N' || crosses[0] === 'S')) ||
+          (clock === 'counterclockwise' &&
+            (crosses[0] === 'E' || crosses[0] === 'W'))
+        )
+          return output.dirCirclesFirst!({
+            dir: dir,
+            clock: output[clock]!(),
+          });
+        if (
+          (clock === 'clockwise' &&
+            (crosses[0] === 'E' || crosses[0] === 'W')) ||
+          (clock === 'counterclockwise' &&
+            (crosses[0] === 'N' || crosses[0] === 'S'))
+        )
+          return output.dirCrossesFirst!({
+            dir: dir,
+            clock: output[clock]!(),
+          });
+        return output.dirClock!({ dir: dir, clock: output[clock]!()});
+      },
+      outputStrings: {
+        eastWest: {
+          en: 'East/West',
+        },
+        northSouth: {
+          en: 'North/South',
+        },
+        dirCrossesFirst: {
+          en: '${dir}: Crosses First + ${clock}',
+        },
+        dirCirclesFirst: {
+          en: '${dir}: Circles First + ${clock}',
+        },
+        dirClock: {
+          en: '${dir}: ${clock}',
+        },
+        clockwise: Outputs.clockwise,
+        counterclockwise: Outputs.counterclockwise,
+      },
+    },
+    {
       id: 'Occult Crescent Marble Dragon Towers 5 and 6',
       // Ball of Ice A716 spawns the towers
       // Towers are either vertical (2 columns of 3) or horizontal (2 rows of 3)
@@ -3526,29 +3808,86 @@ const triggerSet: TriggerSet<Data> = {
         return !data.marbleDragonIsFrigidDive;
       },
       suppressSeconds: 1,
-      alertText: (_data, matches, output) => {
+      alertText: (data, matches, output) => {
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
 
-        if ((x > -332 && x < -330) || (x > -344 && x < -342))
-          return output.getVerticalTowers!();
+        // Check for next safe spots, reverse of the first call
+        const clock = data.marbleDragonTwisterClock;
+        const dir = clock === 'clockwise'
+          ? output.eastWest!()
+          : output.northSouth!();
 
-        if ((y > 150 && y < 152) || (y > 162 && y < 164))
+        if ((x > -332 && x < -330) || (x > -344 && x < -342)) {
+          if (clock !== undefined)
+            return output.getVerticalTowersDir!({dir: dir});
+          return output.getVerticalTowers!();
+        }
+
+        if ((y > 150 && y < 152) || (y > 162 && y < 164)) {
+          if (clock !== undefined)
+             return output.getHorizontalTowersDir!({dir: dir});
           return output.getHorizontalTowers!();
+        }
 
         // Unrecognized coordinates
         console.error(
-          `Occult Crescent Marble Dragon Towers 3 and 4: Unrecognized coordinates (${x}, ${y})`,
+          `Occult Crescent Marble Dragon Towers 5 and 6: Unrecognized coordinates (${x}, ${y})`,
         );
+        if (clock !== undefined)
+          return output.getTowersDir!({ text: output.getTowers!(), dir: dir });
         return output.getTowers!();
       },
       outputStrings: {
+        eastWest: {
+          en: 'East/West',
+        },
+        northSouth: {
+          en: 'North/South',
+        },
         getTowers: Outputs.getTowers,
         getVerticalTowers: {
           en: 'Get Vertical Towers',
         },
         getHorizontalTowers: {
           en: 'Get Horizontal Towers',
+        },
+        getTowersDir: {
+          en: '${text} => ${dir}',
+        },
+        getVerticalTowersDir: {
+          en: 'Get Vertical Towers => ${dir}',
+        },
+        getHorizontalTowersDir: {
+          en: 'Get Horizontal Towers => ${dir}',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Marble Dragon Imitation Rain 6 and 7 Second Safe Spots',
+      // Imitation Blizzard 7615 (tower)
+      type: 'StartsUsing',
+      netRegex: { source: 'Marble Dragon', id: '7615', capture: true },
+      condition: (data) => {
+        // Only execute outside Frigid Dive Towers
+        return !data.marbleDragonIsFrigidDive;
+      },
+      suppressSeconds: 1,
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime), // After tower snapshots
+      alertText: (data, _matches, output) => {
+        // Check for next safe spots, reverse of the first call
+        const clock = data.marbleDragonTwisterClock;
+        if (clock === 'clockwise')
+          return output.eastWest!();
+        if (clock === 'counterclockwise')
+          return output.northSouth!();
+      },
+      outputStrings: {
+        eastWest: {
+          en: 'East/West',
+        },
+        northSouth: {
+          en: 'North/South',
         },
       },
     },
