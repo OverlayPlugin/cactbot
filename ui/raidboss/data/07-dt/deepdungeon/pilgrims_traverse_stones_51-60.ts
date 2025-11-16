@@ -115,6 +115,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Sides + Rotate ${rotation}',
+          de: 'Seiten + Im ${rotation} rotieren',
           cn: '两侧 + ${rotation}旋转',
         },
         clockwise: Outputs.clockwise,
@@ -134,16 +135,59 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cactuar move ${count}',
+          de: 'Kaktor Bewegung - ${count}',
           cn: '仙人掌移动 ${count}',
         },
         once: {
           en: 'Once',
+          de: 'Einmal',
           cn: '一次',
         },
         twice: {
           en: 'Twice',
+          de: 'Zweimal',
           cn: '两次',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Ancestral Maliktender': 'Malikkaktor-Ahn',
+        'Traverse Gigant': 'Wallfahrt-Gigant',
+        'Traverse Howler': 'Wallfahrt-Heuler',
+        'Traverse Monitor': 'Wallfahrt-Waran',
+        'Traverse Phorusrhacos': 'Wallfahrt-Phorusrhacos',
+        'Traverse Saichania': 'Wallfahrt-Saichania',
+        'Traverse Sand Serpent': 'Wallfahrt-Sandschlange',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ancestral Maliktender': 'Malikpampa l\'ancien',
+        'Traverse Gigant': 'géant du pèlerinage',
+        'Traverse Howler': 'hurleur du pèlerinage',
+        'Traverse Monitor': 'varan du pèlerinage',
+        'Traverse Phorusrhacos': 'phorusrhacos du pèlerinage',
+        'Traverse Saichania': 'saichania du pèlerinage',
+        'Traverse Sand Serpent': 'serpent des sables du pèlerinage',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ancestral Maliktender': '元祖マリクテンダー',
+        'Traverse Gigant': 'トラバース・ギガント',
+        'Traverse Howler': 'トラバース・ハウラー',
+        'Traverse Monitor': 'トラバース・モニター',
+        'Traverse Phorusrhacos': 'トラバース・フォルスラコス',
+        'Traverse Saichania': 'トラバース・サイカニア',
+        'Traverse Sand Serpent': 'トラバース・サンドサーペント',
       },
     },
   ],

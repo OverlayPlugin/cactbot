@@ -56,13 +56,25 @@ const triggerSet: TriggerSet<Data> = {
       id: 'PT 91-100 Invoked Sawtooth Honeyed Left',
       type: 'StartsUsing',
       netRegex: { id: 'AD45', source: 'Invoked Sawtooth', capture: false },
-      response: Responses.goRight(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Go Front + Right',
+          cn: '去前面 + 右侧',
+        },
+      },
     },
     {
       id: 'PT 91-100 Invoked Sawtooth Honeyed Right',
       type: 'StartsUsing',
       netRegex: { id: 'AD46', source: 'Invoked Sawtooth', capture: false },
-      response: Responses.goLeft(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Go Front + Left',
+          cn: '去前面 + 左侧',
+        },
+      },
     },
     {
       id: 'PT 91-100 Invoked Bachelor Arachne Web',
@@ -92,6 +104,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${count}x attacks => Out of Melee',
+          cn: '${count}次攻击 => 离开近战范围',
         },
       },
     },
@@ -123,6 +136,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid AoE',
+          cn: '避开AoE',
         },
       },
     },
