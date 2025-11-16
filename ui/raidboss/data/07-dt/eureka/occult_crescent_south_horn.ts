@@ -3827,7 +3827,7 @@ const triggerSet: TriggerSet<Data> = {
 
         if ((y > 150 && y < 152) || (y > 162 && y < 164)) {
           if (clock !== undefined)
-             return output.getHorizontalTowersDir!({ dir: dir });
+            return output.getHorizontalTowersDir!({ dir: dir });
           return output.getHorizontalTowers!();
         }
 
@@ -4554,6 +4554,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {
         'Ball of Fire': 'Feuerball',
         'Black Star': 'Schwarz(?:e|er|es|en) Stern',
