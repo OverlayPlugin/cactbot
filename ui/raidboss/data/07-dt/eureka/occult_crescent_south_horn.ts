@@ -421,7 +421,7 @@ const triggerSet: TriggerSet<Data> = {
       beforeSeconds: 6.3,
       alertText: (data, _matches, output) => {
         if (
-          data.marbleDragonImitationRainDir !== undefined && 
+          data.marbleDragonImitationRainDir !== undefined &&
           data.marbleDragonImitationRainCount < 6
         )
           return output.baitCleaveThenDir!({
@@ -3742,7 +3742,7 @@ const triggerSet: TriggerSet<Data> = {
           : output.eastWest!();
         // Only need one puddle needed
         if (crosses === undefined || crosses[0] === undefined)
-          return output.dirClock!({ dir: dir, clock: output[clock]!()});
+          return output.dirClock!({ dir: dir, clock: output[clock]!() });
         if (
           (clock === 'clockwise' &&
             (crosses[0] === 'N' || crosses[0] === 'S')) ||
@@ -3763,7 +3763,7 @@ const triggerSet: TriggerSet<Data> = {
             dir: dir,
             clock: output[clock]!(),
           });
-        return output.dirClock!({ dir: dir, clock: output[clock]!()});
+        return output.dirClock!({ dir: dir, clock: output[clock]!() });
       },
       outputStrings: {
         eastWest: {
@@ -3820,13 +3820,13 @@ const triggerSet: TriggerSet<Data> = {
 
         if ((x > -332 && x < -330) || (x > -344 && x < -342)) {
           if (clock !== undefined)
-            return output.getVerticalTowersDir!({dir: dir});
+            return output.getVerticalTowersDir!({ dir: dir });
           return output.getVerticalTowers!();
         }
 
         if ((y > 150 && y < 152) || (y > 162 && y < 164)) {
           if (clock !== undefined)
-             return output.getHorizontalTowersDir!({dir: dir});
+             return output.getHorizontalTowersDir!({ dir: dir });
           return output.getHorizontalTowers!();
         }
 
@@ -3872,8 +3872,8 @@ const triggerSet: TriggerSet<Data> = {
         // Only execute outside Frigid Dive Towers
         return !data.marbleDragonIsFrigidDive;
       },
-      suppressSeconds: 1,
       delaySeconds: (_data, matches) => parseFloat(matches.castTime), // After tower snapshots
+      suppressSeconds: 1,
       alertText: (data, _matches, output) => {
         // Check for next safe spots, reverse of the first call
         const clock = data.marbleDragonTwisterClock;
