@@ -164,6 +164,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Check Boss HP Difference',
+          de: 'Prüfe Boss HP Unterschied',
           cn: '检查 BOSS 血量差',
         },
       },
@@ -182,6 +183,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${effect} on ${target}',
+          de: '${effect} auf ${target}',
           cn: '${effect} 点 ${target}',
         },
       },
@@ -211,6 +213,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Refresh Vengeance',
+          de: 'Echo erneuern',
           cn: '刷新光/暗 Debuff',
         },
       },
@@ -242,6 +245,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          de: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
@@ -270,6 +274,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          de: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
@@ -305,6 +310,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          de: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
@@ -440,6 +446,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          de: '${frontBack}-${leftRight}, für später',
           cn: '稍后去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
@@ -490,6 +497,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          de: '${frontBack}-${leftRight}, für später',
           cn: '稍后去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
@@ -519,6 +527,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
+          de: '${frontBack}-${leftRight}, vermeide Exaflares',
           cn: '在 ${leftRight}-${frontBack} 躲避地火',
         },
         front: Outputs.front,
@@ -568,6 +577,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go ${dir}',
+          de: 'Geh nach ${dir}',
           cn: '去 ${dir}',
         },
         unknown: Outputs.unknown,
