@@ -40,7 +40,7 @@ export interface Data extends RaidbossData {
   prongedPassageIdolCastCount: { [id: string]: number };
   marbleDragonImitationRainCount: number;
   marbleDragonImitationBlizzardCount: number;
-  marbleDragonImitationRainDir?: 'east' | 'west';
+  marbleDragonImitationRainDir?: 'east' | 'west' | 'north';
   marbleDragonTwisterClock?: 'clockwise' | 'counterclockwise';
   marbleDragonImitationRainCrosses: string[];
   marbleDragonTankbusterFilter: boolean;
