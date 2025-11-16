@@ -965,7 +965,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         wolfOfWind: {
           en: 'Green',
-          de: 'Grün',
+          de: 'Grüne',
           fr: 'Vert',
           ja: '緑',
           cn: '绿',
@@ -973,7 +973,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         wolfOfStone: {
           en: 'Yellow',
-          de: 'Gelb',
+          de: 'Gelbe',
           fr: 'Jaune',
           ja: '黄',
           cn: '黄',
@@ -1810,6 +1810,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
+          de: 'Köder Nahe (Verbindung auf ${dir})',
           fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
@@ -1906,6 +1907,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
+          de: 'Köder Nahe (Verbindung auf ${dir})',
           fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
@@ -2281,7 +2283,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Gleaming Fang': 'Lichtreißer',
         'Howling Blade': 'Heulende Klinge',
@@ -2294,6 +2295,11 @@ const triggerSet: TriggerSet<Data> = {
         '--adds-targetable--': '--Adds-anvisierbar--',
         '--shadow ': '--Schatten ',
         '--tank/line aoes--': '--Tank/Linien AoEs--',
+        '\\(circles\\)': '(Kreise)',
+        '\\(cones\\)': '(Kegel)',
+        '\\(enrage\\)': '(Finalangriff)',
+        '\\(Platform\\)': '(Plattform)',
+        '\\(Towers\\)': '(Türme)',
         'Aero III': 'Windga',
         'Aerotemporal Blast': 'Temporärer Wind',
         'Alpha Stone': 'Erde des Lichtwolfs',
