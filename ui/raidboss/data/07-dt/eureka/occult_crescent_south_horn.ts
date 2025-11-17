@@ -2045,7 +2045,7 @@ const triggerSet: TriggerSet<Data> = {
       // A5BF Vengeful Bio III (Phobos)
       type: 'Ability',
       netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A5BC', capture: true },
-      delaySeconds: 2.8, // 2.6s was not consistent enough
+      delaySeconds: 2.9, // 2.6s was not consistent enough
       promise: async (data, matches) => {
         const actors = (await callOverlayHandler({
           call: 'getCombatants',
