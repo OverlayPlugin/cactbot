@@ -2061,7 +2061,8 @@ const triggerSet: TriggerSet<Data> = {
           data.deadStarsVengeful1 = [x, y];
         else if (data.deadStarsVengeful2.length !== 2)
           data.deadStarsVengeful2 = [x, y];
-      },    
+      },
+      durationSeconds: 7.5, // Vengeful casts end ~0.4s after this
       infoText: (data, _matches, output) => {
         const boss1 = data.deadStarsVengeful1;
         const boss2 = data.deadStarsVengeful2;
