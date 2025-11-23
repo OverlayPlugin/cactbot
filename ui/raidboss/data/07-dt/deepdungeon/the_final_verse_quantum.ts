@@ -7,9 +7,67 @@ import { RaidbossData } from '../../../../../types/data';
 import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 
 // Pilgrim's Traverse: The Final Verse (Quantum)
-// Q40
 
-// TODO: Q15-39
+// === Quantum mechanical changes ===
+// --- Q15 ---
+// 180s Light/Dark Vengeance
+// bosses must be within 25% HP difference
+// no Light Vengeance required to soak towers, no bleed from towers
+// 8x exaflares
+// no fire-cross/burns from Burning Chains
+// healer Shackles of Sanctity only
+// 8s Doom from Sin Bearer
+// 4x Flameborn
+//
+// --- Q20 ---
+// 180s Light/Dark Vengeance
+// bosses must be within ??% HP difference
+// no Light Vengeance required to soak towers, no bleed from towers
+// 8x exaflares
+// fire-cross/burns from Searing Chains
+// healer Shackles of Sanctity only
+// 8s Doom from Sin Bearer
+// 4x Flameborn
+//
+// --- Q25 ---
+// 120s Light/Dark Vengeance
+// bosses must be within 20% HP difference
+// no Light Vengeance required to soak towers, no bleed from towers
+// 8x exaflares
+// fire-cross/burns from Searing Chains
+// healer + dps Shackles of Sanctity
+// 6s Doom from Sin Bearer
+// 4x Flameborn
+//
+// --- Q30 ---
+// 120s Light/Dark Vengeance
+// bosses must be within ??% HP difference
+// no Light Vengeance required to soak towers, no bleed from towers
+// 12x exaflares
+// fire-cross/burns from Searing Chains
+// healer + dps Shackles of Sanctity
+// 6s Doom from Sin Bearer
+// 4x Flameborn
+//
+// --- Q35 ---
+// 120s Light/Dark Vengeance
+// bosses must be within ??% HP difference
+// Light Vengeance required to soak towers, bleed from towers
+// 12x exaflares
+// fire-cross/burns from Searing Chains
+// healer + dps Shackles of Sanctity
+// 6s Doom from Sin Bearer
+// 4x Flameborn
+//
+// --- Q40 ---
+// 60s Light/Dark Vengeance
+// bosses must be within 15% HP difference
+// Light Vengeance required to soak towers, bleed from towers
+// 12x exaflares
+// fire-cross/burns from Searing Chains
+// healer + dps Shackles of Sanctity
+// 4s Doom from Sin Bearer
+// 5x Flameborn
 
 // === Map Effect info ===
 // --- Bounds of Sin walls ---
@@ -55,7 +113,21 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 // 00020001 - glass breaking first time
 // 00200010 - glass breaking second time
 
-// === Scourging Blaze (exaflares) ===
+// === Abyssal Blaze (Q15-25 exaflares) ===
+// first 4 starting locations (same regardless of front or back safe) [x, y]:
+// --- set 1 ---
+// [-618.000, -288.003]
+// [-612.018, -294.015]
+// [-606.006, -299.997]
+// [-599.994, -306.009]
+//
+// --- set 2 ---
+// [-599.994, -306.009]
+// [-594.012, -299.997]
+// [-588.000, -294.015]
+// [-582.019, -288.003]
+
+// === Scourging Blaze (Q30-40 exaflares) ===
 // first 6 starting locations (same regardless of front or back safe) [x, y]:
 // --- set 1 ---
 // [-618.000, -288.003]
@@ -190,10 +262,21 @@ const chainsOfCondemnationOutputStrings = {
   },
 } as const;
 
+type Offerings = {
+  hpBoost: number;
+  physicalDamageUp: number;
+  fireDamageUp: number;
+  darkDamageUp: number;
+  lightDamageUp: number;
+};
+
 export interface Data extends RaidbossData {
+  offerings: Offerings;
+  quantumLevel: number;
   myVengeanceExpiration?: number;
-  scourgingFrontBack: 'front' | 'back' | 'unknown';
-  scourgingLeftRight: 'left' | 'right' | 'unknown';
+  abyssalScourging?: 'abyssal' | 'scourging';
+  exaflaresFrontBack: 'front' | 'back' | 'unknown';
+  exaflaresLeftRight: 'left' | 'right' | 'unknown';
   exaflares?: number[];
   boundsOfSin: number;
   walls?: number[];
@@ -210,12 +293,20 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheFinalVerseQuantum,
   timelineFile: 'the_final_verse_quantum.txt',
   comments: {
-    en: 'Q40',
+    en: 'Q15-40',
   },
 
   initData: () => ({
-    scourgingFrontBack: 'unknown',
-    scourgingLeftRight: 'unknown',
+    offerings: {
+      hpBoost: 0,
+      physicalDamageUp: 0,
+      fireDamageUp: 0,
+      darkDamageUp: 0,
+      lightDamageUp: 0,
+    },
+    quantumLevel: 0,
+    exaflaresFrontBack: 'unknown',
+    exaflaresLeftRight: 'unknown',
     boundsOfSin: 0,
     hellishEarth: false,
     eruptions: 0,
@@ -228,27 +319,69 @@ const triggerSet: TriggerSet<Data> = {
       // instant cast
       regex: /Abyssal Sun/,
       beforeSeconds: 16,
-      infoText: (_data, _matches, output) => output.text!(),
+      condition: (data) => data.quantumLevel >= 35,
+      infoText: (_data, _matches, output) => output.q40!(),
       outputStrings: {
-        text: {
+        q40: {
           en: 'Get Light Vengeance',
         },
       },
     },
     {
-      id: 'Final Verse Quantum Abyssal Sun Towers',
+      id: 'Final Verse Quantum Abyssal Dawn/Sun Towers',
       // instant cast
       regex: /Abyssal Sun/,
       beforeSeconds: 4,
-      alertText: (_data, _matches, output) => output.text!(),
+      alertText: (data, _matches, output) => {
+        const qLevel = data.quantumLevel;
+        if (qLevel < 35)
+          return output.q15!();
+        return output.q40!();
+      },
       outputStrings: {
-        text: {
+        q15: {
+          en: 'Get Towers => AoE',
+        },
+        q40: {
           en: 'Get Towers => AoE + Bleed',
         },
       },
     },
   ],
   triggers: [
+    {
+      id: 'Final Verse Quantum Offerings Collector',
+      type: 'GainsEffect',
+      netRegex: {
+        effectId: ['24A', '3FA', '11DA', '11DB', '11DC'],
+        target: ['Eminent Grief', 'Devoured Eater'],
+        capture: true,
+      },
+      run: (data, matches) => {
+        const id = matches.effectId;
+        const count = parseInt(matches.count, 16);
+        switch (id) {
+          case '24A':
+            data.offerings.hpBoost = count;
+            break;
+          case '3FA':
+            data.offerings.physicalDamageUp = count;
+            break;
+          case '11DA':
+            data.offerings.fireDamageUp = count;
+            break;
+          case '11DB':
+            data.offerings.darkDamageUp = count;
+            break;
+          case '11DC':
+            data.offerings.lightDamageUp = count;
+            break;
+        }
+        const offerings = data.offerings;
+        const sum = Object.values(offerings).reduce((a, b) => a + b, 0);
+        data.quantumLevel = sum;
+      },
+    },
     {
       id: 'Final Verse Quantum HP Difference Warning',
       // 9F6 = Damage Up
@@ -313,42 +446,46 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Final Verse Quantum Scourging Blaze Front/Back',
+      id: 'Final Verse Quantum Abyssal Blaze Front/Back',
       type: 'StartsUsing',
-      netRegex: { id: ['AEFD', 'AEFE'], source: 'Eminent Grief', capture: true },
+      netRegex: { id: ['AC4F', 'AC50'], source: 'Eminent Grief', capture: true },
       run: (data, matches) => {
         const id = matches.id;
-        id === 'AEFD' ? data.scourgingFrontBack = 'front' : data.scourgingFrontBack = 'back';
+        id === 'AC4F' ? data.exaflaresFrontBack = 'front' : data.exaflaresFrontBack = 'back';
+        data.abyssalScourging = 'abyssal';
       },
     },
     {
-      id: 'Final Verse Quantum Scourging Blaze Left/Right',
+      id: 'Final Verse Quantum Abyssal Blaze Left/Right',
       type: 'AbilityExtra',
       netRegex: { id: 'AC53', capture: true },
-      condition: (data) => data.exaflares === undefined || data.exaflares.length < 6,
+      condition: (data) => {
+        return data.abyssalScourging === 'abyssal' &&
+          (data.exaflares === undefined || data.exaflares.length < 4);
+      },
       infoText: (data, matches, output) => {
         const x = parseFloat(matches.x);
         (data.exaflares ??= []).push(x);
 
-        if (data.exaflares === undefined || data.exaflares.length < 6)
+        if (data.exaflares === undefined || data.exaflares.length < 4)
           return;
 
         const exas = data.exaflares.sort((a, b) => a - b);
-        const [x3, x4] = [exas[2], exas[3]];
-        if (x3 === undefined || x4 === undefined)
+        const [x1, x4] = [exas[0], exas[3]];
+        if (x1 === undefined || x4 === undefined)
           throw new UnreachableCode();
 
-        const frontBack = data.scourgingFrontBack;
+        const frontBack = data.exaflaresFrontBack;
         if (frontBack === 'unknown')
           return output.text!({ frontBack: output.unknown!(), leftRight: output.unknown!() });
 
-        if (x3 < -603) {
-          data.scourgingLeftRight = frontBack === 'front' ? 'left' : 'right';
-        } else if (x4 > -597) {
-          data.scourgingLeftRight = frontBack === 'front' ? 'right' : 'left';
+        if (x1 < -615) {
+          data.exaflaresLeftRight = frontBack === 'front' ? 'left' : 'right';
+        } else if (x4 > -585) {
+          data.exaflaresLeftRight = frontBack === 'front' ? 'right' : 'left';
         }
 
-        const leftRight = data.scourgingLeftRight;
+        const leftRight = data.exaflaresLeftRight;
         return output.text!({ frontBack: output[frontBack]!(), leftRight: output[leftRight]!() });
       },
       outputStrings: {
@@ -363,20 +500,75 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Final Verse Quantum Scourging Blaze Exaflares',
+      id: 'Final Verse Quantum Scourging Blaze Front/Back',
       type: 'StartsUsing',
-      netRegex: { id: 'AC56', source: 'Eminent Grief', capture: false },
+      netRegex: { id: ['AEFD', 'AEFE'], source: 'Eminent Grief', capture: true },
+      run: (data, matches) => {
+        const id = matches.id;
+        id === 'AEFD' ? data.exaflaresFrontBack = 'front' : data.exaflaresFrontBack = 'back';
+        data.abyssalScourging = 'scourging';
+      },
+    },
+    {
+      id: 'Final Verse Quantum Scourging Blaze Left/Right',
+      type: 'AbilityExtra',
+      netRegex: { id: 'AC53', capture: true },
+      condition: (data) => {
+        return data.abyssalScourging === 'scourging' &&
+          (data.exaflares === undefined || data.exaflares.length < 6);
+      },
+      infoText: (data, matches, output) => {
+        const x = parseFloat(matches.x);
+        (data.exaflares ??= []).push(x);
+
+        if (data.exaflares === undefined || data.exaflares.length < 6)
+          return;
+
+        const exas = data.exaflares.sort((a, b) => a - b);
+        const [x3, x4] = [exas[2], exas[3]];
+        if (x3 === undefined || x4 === undefined)
+          throw new UnreachableCode();
+
+        const frontBack = data.exaflaresFrontBack;
+        if (frontBack === 'unknown')
+          return output.text!({ frontBack: output.unknown!(), leftRight: output.unknown!() });
+
+        if (x3 < -603) {
+          data.exaflaresLeftRight = frontBack === 'front' ? 'left' : 'right';
+        } else if (x4 > -597) {
+          data.exaflaresLeftRight = frontBack === 'front' ? 'right' : 'left';
+        }
+
+        const leftRight = data.exaflaresLeftRight;
+        return output.text!({ frontBack: output[frontBack]!(), leftRight: output[leftRight]!() });
+      },
+      outputStrings: {
+        text: {
+          en: '${frontBack}-${leftRight}, for later',
+        },
+        front: Outputs.front,
+        back: Outputs.back,
+        left: Outputs.left,
+        right: Outputs.right,
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'Final Verse Quantum Abyssal/Scourging Blaze Exaflares',
+      type: 'StartsUsing',
+      netRegex: { id: ['AC54', 'AC56'], source: 'Eminent Grief', capture: false },
       durationSeconds: 14,
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        const frontBack = data.scourgingFrontBack;
-        const leftRight = data.scourgingLeftRight;
+        const frontBack = data.exaflaresFrontBack;
+        const leftRight = data.exaflaresLeftRight;
 
         return output.text!({ frontBack: output[frontBack]!(), leftRight: output[leftRight]!() });
       },
       run: (data) => {
-        data.scourgingFrontBack = 'unknown';
-        data.scourgingLeftRight = 'unknown';
+        data.exaflaresFrontBack = 'unknown';
+        data.exaflaresLeftRight = 'unknown';
+        delete data.abyssalScourging;
         delete data.exaflares;
       },
       outputStrings: {
@@ -666,14 +858,21 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Final Verse Quantum Searing Chains Break',
-      // 11D3 = Searing Chains
+      id: 'Final Verse Quantum Burning/Searing Chains Break',
+      // 301 = Burning Chains (Q15)
+      // 11D3 = Searing Chains (Q20-40)
       type: 'GainsEffect',
-      netRegex: { effectId: '11D3', capture: true },
+      netRegex: { effectId: ['301', '11D3'], capture: true },
       condition: Conditions.targetIsYou(),
-      alertText: (_data, _matches, output) => output.text!(),
+      alertText: (data, _matches, output) => {
+        const qLevel = data.quantumLevel;
+        if (qLevel < 20)
+          return output.q15!();
+        return output.q40!();
+      },
       outputStrings: {
-        text: {
+        q15: Outputs.breakChains,
+        q40: {
           en: 'Break Chains => AoE + Bleed',
         },
       },
@@ -716,9 +915,9 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Final Verse Quantum Shackles of Greater Sanctity',
+      id: 'Final Verse Quantum Shackles of (Greater) Sanctity',
       type: 'StartsUsing',
-      netRegex: { id: 'AF01', source: 'Devoured Eater', capture: false },
+      netRegex: { id: ['AC72', 'AF01'], source: 'Devoured Eater', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -978,7 +1177,12 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
+        'Abyssal Blaze/Scourging Blaze': 'Abyssal/Scourging Blaze',
+        'Abyssal Dawn/Abyssal Sun': 'Abyssal Dawn/Sun',
         'Blade of First Light/Ball of Fire/Chains of Condemnation': 'Blade/Ball/Chains',
+        'Burning Chains/Searing Chains': 'Burning/Searing Chains',
+        'Shackles of Sanctity/Shackles of Greater Sanctity': 'Shackles of (Greater) Sanctity',
+        'Visceral Flame/Fevered Flame': 'Visceral/Fevered Flame',
       },
     },
   ],
