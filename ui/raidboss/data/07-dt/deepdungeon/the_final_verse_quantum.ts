@@ -21,7 +21,7 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 //
 // --- Q20 ---
 // 180s Light/Dark Vengeance
-// bosses must be within ??% HP difference
+// bosses must be within 25% HP difference
 // no Light Vengeance required to soak towers, no bleed from towers
 // 8x exaflares
 // fire-cross/burns from Searing Chains
@@ -41,7 +41,7 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 //
 // --- Q30 ---
 // 120s Light/Dark Vengeance
-// bosses must be within ??% HP difference
+// bosses must be within 20% HP difference
 // no Light Vengeance required to soak towers, no bleed from towers
 // 12x exaflares
 // fire-cross/burns from Searing Chains
@@ -51,7 +51,7 @@ import { OutputStrings, TriggerSet } from '../../../../../types/trigger';
 //
 // --- Q35 ---
 // 120s Light/Dark Vengeance
-// bosses must be within ??% HP difference
+// bosses must be within 15% HP difference
 // Light Vengeance required to soak towers, bleed from towers
 // 12x exaflares
 // fire-cross/burns from Searing Chains
