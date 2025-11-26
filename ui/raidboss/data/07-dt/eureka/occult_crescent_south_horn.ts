@@ -1125,8 +1125,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Demon Tablet Gravity Towers Collect',
       // Only need to collect Explosion A2F1 or A2EF
-      type: 'StartsUsing',
-      netRegex: { source: 'Demon Tablet', id: 'A2F1', capture: true },
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A2F1', capture: true },
       suppressSeconds: 1,
       run: (data, matches) => {
         const y = parseFloat(matches.y);
