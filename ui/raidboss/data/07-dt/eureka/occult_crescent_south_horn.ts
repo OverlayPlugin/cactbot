@@ -24,10 +24,9 @@ export interface Data extends RaidbossData {
   deadStarsIsSlice2: boolean;
   deadStarsSliceTargets: string[];
   deadStarsFirestrikeTargets: string[];
-  deadStarsCount: number;
-  deadStarsPhobos: number[];
-  deadStarsNereid: number[];
-  deadStarsTriton: number[];
+  deadStarsIsVengeful: boolean;
+  deadStarsVengeful1: number[];
+  deadStarsVengeful2: number[];
   deadStarsOozeCount: number;
   deadStarsOoze?: NetMatches['GainsEffect'];
   deadStarsWasHitByOoze: boolean;
@@ -171,7 +170,7 @@ const deadStarsOutputStrings = {
   },
   lineStackOnYouTankCleave: {
     en: 'Line Stack on YOU, Avoid Tank Cleave',
-    de: 'In einer Linie sammeln auf dir, Vermeide Tank-Cleave',
+    de: 'In einer Linie sammeln auf DIR, Vermeide Tank-Cleave',
   },
   lineStackOnYou: {
     en: 'Line Stack on YOU',
@@ -407,10 +406,9 @@ const triggerSet: TriggerSet<Data> = {
     deadStarsIsSlice2: false,
     deadStarsSliceTargets: [],
     deadStarsFirestrikeTargets: [],
-    deadStarsCount: 0,
-    deadStarsPhobos: [],
-    deadStarsNereid: [],
-    deadStarsTriton: [],
+    deadStarsIsVengeful: false,
+    deadStarsVengeful1: [],
+    deadStarsVengeful2: [],
     deadStarsOozeCount: 0,
     deadStarsWasHitByOoze: false,
     deadStarsWasVennDiagramed: false,
@@ -571,10 +569,9 @@ const triggerSet: TriggerSet<Data> = {
         data.deadStarsIsSlice2 = false;
         data.deadStarsSliceTargets = [];
         data.deadStarsFirestrikeTargets = [];
-        data.deadStarsCount = 0;
-        data.deadStarsPhobos = [];
-        data.deadStarsNereid = [];
-        data.deadStarsTriton = [];
+        data.deadStarsIsVengeful = false;
+        data.deadStarsVengeful1 = [];
+        data.deadStarsVengeful2 = [];
         data.deadStarsOozeCount = 0;
         data.deadStarsWasHitByOoze = false;
         data.deadStarsWasVennDiagramed = false;
@@ -1176,8 +1173,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Demon Tablet Gravity Towers Collect',
       // Only need to collect Explosion A2F1 or A2EF
-      type: 'StartsUsing',
-      netRegex: { source: 'Demon Tablet', id: 'A2F1', capture: true },
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'A2F1', capture: true },
       suppressSeconds: 1,
       run: (data, matches) => {
         const y = parseFloat(matches.y);
@@ -2109,10 +2106,19 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
     {
-      id: 'Occult Crescent Dead Stars Vengeful Direction',
+      id: 'Occult Crescent Dead Stars Vengeful Tracker',
       // Bosses cast A5BC unique to the vengeful casts, but this doesn't have their location at cast
       // Bosses jump with A5B4 ~2s after A5BC prior to starting Vengeful casts
       // AbilityExtra lines of A5B4 include target location of where they will cast
+      // Since A5B4 is cast for many other things, this trigger captures when we want the A5B4 data
+      type: 'Ability',
+      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A5BC', capture: false },
+      suppressSeconds: 1,
+      run: (data) => data.deadStarsIsVengeful = true,
+    },
+    {
+      id: 'Occult Crescent Dead Stars Vengeful Direction',
+      // Additional Details on Vengeful Casts:
       // Post A5E6 Noxious Nova (A637 Noisome Nuisance)
       // A5BD Vengeful Fire III (Triton)
       // A5BE Vengeful Blizzard III (Nereid)
@@ -2124,51 +2130,23 @@ const triggerSet: TriggerSet<Data> = {
       // Post A5C5 To the Winds (A635 Blazing Belligerent)
       // A5BE Vengeful Blizzard III (Nereid)
       // A5BF Vengeful Bio III (Phobos)
-      type: 'Ability',
-      netRegex: { source: ['Phobos', 'Nereid', 'Triton'], id: 'A5BC', capture: true },
-      delaySeconds: 2.8, // 2.6s was not consistent enough
-      promise: async (data, matches) => {
-        const actors = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [parseInt(matches.sourceId, 16)],
-        })).combatants;
-        const actor = actors[0];
-        if (actors.length !== 1 || actor === undefined) {
-          console.error(
-            `Occult Crescent Dead Stars Vengeful Direction: Wrong actor count ${actors.length}`,
-          );
-          return;
-        }
-
-        if (matches.source === 'Phobos')
-          data.deadStarsPhobos = [actor.PosX, actor.PosY];
-        if (matches.source === 'Nereid')
-          data.deadStarsNereid = [actor.PosX, actor.PosY];
-        if (matches.source === 'Triton')
-          data.deadStarsTriton = [actor.PosX, actor.PosY];
-        data.deadStarsCount = data.deadStarsCount + 1;
+      type: 'AbilityExtra',
+      netRegex: { id: 'A5B4', capture: true },
+      condition: (data) => {
+        return data.deadStarsIsVengeful;
       },
+      preRun: (data, matches) => {
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        if (data.deadStarsVengeful1.length !== 2)
+          data.deadStarsVengeful1 = [x, y];
+        else if (data.deadStarsVengeful2.length !== 2)
+          data.deadStarsVengeful2 = [x, y];
+      },
+      durationSeconds: 7.5, // Vengeful casts end ~0.4s after this
       infoText: (data, _matches, output) => {
-        if (
-          data.deadStarsCount !== 2 &&
-          data.deadStarsCount !== 4 &&
-          data.deadStarsCount !== 6
-        )
-          return;
-
-        // First and Second Use Triton, Last use Nereid
-        const boss1 = (data.deadStarsCount === 2 || data.deadStarsCount === 4)
-          ? data.deadStarsTriton
-          : data.deadStarsNereid;
-        // First use Nereid, otherwise Phobos
-        const boss2 = data.deadStarsCount === 2
-          ? data.deadStarsNereid
-          : data.deadStarsPhobos;
-
-        // Reset results
-        data.deadStarsTriton = [];
-        data.deadStarsNereid = [];
-        data.deadStarsPhobos = [];
+        const boss1 = data.deadStarsVengeful1;
+        const boss2 = data.deadStarsVengeful2;
 
         // Calculate mid point (safe spot) and output result
         if (
@@ -2185,6 +2163,17 @@ const triggerSet: TriggerSet<Data> = {
           deadStarsCenterY,
         );
         return output[Directions.outputFrom8DirNum(dirNum)]!();
+      },
+      run: (data) => {
+        // Reset for next set of casts
+        if (
+          data.deadStarsVengeful1.length === 2 &&
+          data.deadStarsVengeful2.length === 2
+        ) {
+          data.deadStarsVengeful1 = [];
+          data.deadStarsVengeful2 = [];
+          data.deadStarsIsVengeful = false;
+        }
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
