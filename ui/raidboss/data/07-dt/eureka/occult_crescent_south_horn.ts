@@ -4068,7 +4068,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         recuperation: {
           en: 'Recuperation (if possible)',
-          cn: '回复 (能用就用)',
+          cn: '痊愈宣告 (能用就用)',
         },
       },
     },
