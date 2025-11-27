@@ -167,9 +167,11 @@ const deadStarsBlueHitId = 'A5E4';
 const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
     en: 'Line Stacks on ${player1}, ${player2}, ${player3}',
+    de: 'In Linien sammeln auf ${player1}, ${player2}, ${player3}',
   },
   lineStackOnYouTankCleave: {
     en: 'Line Stack on YOU, Avoid Tank Cleave',
+    de: 'In einer Linie sammeln auf dir, Vermeide Tank-Cleave',
   },
   lineStackOnYou: {
     en: 'Line Stack on YOU',
@@ -257,66 +259,87 @@ const getPuddleLocation = (
 const magitaurOutputStrings = {
   rune1BigAoeOnYou: {
     en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+    de: 'Große AoE auf DIR, Geh zur Wand bei einem lilanen Kreis',
   },
   rune1SmallAoeOnYou: {
     en: 'Small aoe on YOU, Stay Square => Between Squares',
+    de: 'Kleine AoE auf DIR, Steh im Viereck => Zwichen den Vierecken',
   },
   rune1BigAoeOnPlayer: {
     en: 'Big AOE on ${player}, Be on Square',
+    de: 'Große AoE auf ${player}, Steh im Viereck',
   },
   rune1SmallAoesOnPlayers: {
     en: 'Small aoes on ${player1}, ${player2}, ${player3}',
+    de: 'Kleine AoEs auf ${player1}, ${player2}, ${player3}',
   },
   rune1SmallAoEStayThenIn: {
     en: 'Stay for AOE => In, Between Squares',
+    de: 'Stehenbleiben für AOE => Rein, Zwichen den Vierecken',
   },
   rune2BigAoeOnYouLater: {
     en: 'Big AOE on YOU (Later)',
+    de: 'Große AOE auf DIR (Später)',
   },
   rune2SmallAoeOnYouLater: {
     en: 'Small aoe on YOU (Later)',
+    de: 'Kleine AOE auf DIR (Später)',
   },
   rune2InBigAoeOnYou: {
     en: 'In, Between Squares => To Wall',
+    de: 'Rein, Zwichen den Vierecken => Zur Wand',
   },
   rune2InSmallAoeOnYou: {
     en: 'In, Between Squares => Solo Square',
+    de: 'Rein, Zwichen den Vierecken => Einzelnes Viereck',
   },
   rune2AoesOnPlayers: {
     en: 'AOEs on ${player1}, ${player2}, ${player3}',
+    de: 'AOEs auf ${player1}, ${player2}, ${player3}',
   },
   rune2AvoidPlayers: {
     en: 'On Square, Avoid ${player1} & ${player2}',
+    de: 'Aufs Viereck, Vermeide ${player1} & ${player2}',
   },
   rune2SmallAoeOnYouReminder: {
     en: 'Small aoe on YOU, Be on Square (Solo)',
+    de: 'Kleine AoE auf DIR, Sei auf einem Viereck (Alleine)',
   },
   rune2BigAoeOnYouReminder: {
     en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+    de: 'Große AoE auf DIR, Geh zur Wand bei einem lilanen Kreis',
   },
   inThenOnSquare: {
     en: 'In, between Squares => On Square',
+    de: 'Rein, Zwichen den Vierecken => Auf ein Viereck',
   },
   northeastOff: {
     en: 'Northeast Off',
+    de: 'Nordosten aus',
   },
   northeastOn: {
     en: 'Northeast On',
+    de: 'Nordosten an',
   },
   southOff: {
     en: 'South Off',
+    de: 'Süden aus',
   },
   southOn: {
     en: 'South On',
+    de: 'Süden an',
   },
   northwestOff: {
     en: 'Northwest Off',
+    de: 'Nordwesten aus',
   },
   out: {
     en: 'Out, Square Corner',
+    de: 'Raus, Ecke des Vierecks',
   },
   in: {
     en: 'In, between Squares',
+    de: 'Rein, Zwichen den Vierecken',
   },
 };
 
@@ -445,15 +468,19 @@ const triggerSet: TriggerSet<Data> = {
         west: Outputs.west,
         eastWest: {
           en: 'East/West',
+          de: 'Osten/Westen',
         },
         northSouth: {
           en: 'North/South',
+          de: 'Norden/Süden',
         },
         baitCleave: {
           en: 'Bait Cleave',
+          de: 'Cleave ködern',
         },
         baitCleaveThenDir: {
           en: 'Bait Cleave => ${dir}',
+          de: 'Cleave ködern => ${dir}',
         },
       },
     },
@@ -466,6 +493,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         squarePosition: {
           en: 'Rune Axe Square Position',
+          de: 'Runenaxt Viereck Position',
         },
       },
     },
@@ -478,6 +506,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         squarePosition: {
           en: 'Holy Lance Square Position',
+          de: 'Heiligenspeer Viereck Position',
         },
       },
     },
@@ -701,6 +730,7 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         inKnockback: {
           en: 'In => Knockback',
+          de: 'Rein => Rückstoß',
         },
       },
     },
@@ -764,6 +794,7 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         inKnockback: {
           en: 'In => Knockback',
+          de: 'Rein => Rückstoß',
         },
       },
     },
@@ -866,21 +897,27 @@ const triggerSet: TriggerSet<Data> = {
         right: Outputs.right,
         leftBehind: {
           en: 'Left (Behind Boss)',
+          de: 'Links (Hinter den Boss)',
         },
         rightBehind: {
           en: 'Right (Behind Boss)',
+          de: 'Rechts (Hinter den Boss)',
         },
         leftThenGetBehind: {
           en: 'Left => Get Behind',
+          de: 'Links => Hinter den Boss',
         },
         rightThenGetBehind: {
           en: 'Right => Get Behind',
+          de: 'Rechts => Hinter den Boss',
         },
         goRightAround: {
           en: 'Go Right and Around',
+          de: 'Geh nach Rechts und drumherum',
         },
         goLeftAround: {
           en: 'Go Left and Around',
+          de: 'Geh nach Links und drumherum',
         },
       },
     },
@@ -974,15 +1011,19 @@ const triggerSet: TriggerSet<Data> = {
         out: Outputs.out,
         inKnockback: {
           en: 'In => Knockback',
+          de: 'Rein => Rückstoß',
         },
         dirMech: {
           en: '${dir} & ${mech}',
+          de: '${dir} & ${mech}',
         },
         hasMeteorMech: {
           en: 'Meteor on YOU, ${mech}',
+          de: 'Meteor auf DIR, ${mech}',
         },
         hasMeteorDirMech: {
           en: 'Meteor on YOU, Go ${dir} & ${mech}',
+          de: 'Meteor auf DIR, Geh nach ${dir} & ${mech}',
         },
       },
     },
@@ -1076,21 +1117,27 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           stackLaunchTowardsBoss: {
             en: 'Stack, Launch towards Boss',
+            de: 'Sammeln, Fliege zum Boss',
           },
           stackLaunchOverBoss: {
             en: 'Stack, Launch over Boss',
+            de: 'Sammeln, Fliege über den Boss',
           },
           goNorthOutStackOnYou: {
             en: 'Go North Out => Stack Launch Marker on You',
+            de: 'Geh nördlich raus => Sammel-Flug Marker auf DIR',
           },
           goNorthInStackOnYou: {
             en: 'Go North In (Knockback) => Stack Launch Marker on You',
+            de: 'Geh nördlich rein (Rückstoß) => Sammel-Flug Marker auf DIR',
           },
           goSouthOutStackOnYou: {
             en: 'Go South Out => Stack Launch Marker on You',
+            de: 'Geh südlich raus => Sammel-Flug Marker auf DIR',
           },
           goSouthInStackOnYou: {
             en: 'Go South In (Knockback) => Stack Launch Marker on You',
+            de: 'Geh südlich rein (Rückstoß) => Sammel-Flug Marker auf DIR',
           },
         };
 
@@ -1122,6 +1169,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Add Positions and Out',
+          de: 'Positioniere Add und Raus',
         },
       },
     },
@@ -1166,15 +1214,19 @@ const triggerSet: TriggerSet<Data> = {
         south: Outputs.south,
         dirOutThenTowers: {
           en: '${dir} Out => Towers',
+          de: '${dir} Raus => Türme',
         },
         goTowerSideOut: {
           en: 'Go Towers Side and Out',
+          de: 'Geh zu den Turm-Seiten und Raus',
         },
         dirInThenTowers: {
           en: '${dir} In => Knockback => Towers',
+          de: '${dir} Rein => Rückstoß => Türme',
         },
         goTowerSideIn: {
           en: 'Go Towers Side and In => Knockback',
+          de: 'Geh zu den Turm-Seiten und Rein => Rückstoß',
         },
       },
     },
@@ -1234,9 +1286,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         frontRightLater: {
           en: 'Front Right (Later)',
+          de: 'Vorne Rechts (Später)',
         },
         backLeftLater: {
           en: 'Back Left (Later)',
+          de: 'Hinten Links (Später)',
         },
       },
     },
@@ -1300,6 +1354,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         towersThenSafeSpot: {
           en: '${towers} => ${corner}',
+          de: '${towers} => ${corner}',
         },
         getTowers: Outputs.getTowers,
         frontRight: {
@@ -1320,6 +1375,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         safeCorner: {
           en: 'Safe Corner',
+          de: 'Sichere Ecken',
         },
       },
     },
@@ -1340,6 +1396,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoidFallingStatues: {
           en: 'Avoid Falling Statues',
+          de: 'Vermeide fallende Statuen',
         },
         frontRight: {
           en: 'Front Right',
@@ -1425,6 +1482,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         boss: {
           en: 'Tethered to ${boss}',
+          de: 'Verbunden zum ${boss}',
         },
       },
     },
@@ -1440,10 +1498,12 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           tankCleavesOnPlayers: {
             en: 'Tank Cleaves on ${player1}, ${player2}, ${player3}',
+            de: 'Tank-Cleaves auf ${player1}, ${player2}, ${player3}',
           },
           tankCleaveOnYou: Outputs.tankCleaveOnYou,
           tankCleaveOnYouLineStack: {
             en: 'Tank Cleave on YOU, Avoid Line Stack',
+            de: 'Tank Cleave auf DIR, Vermeide Linien-sammeln',
           },
         };
         data.deadStarsSliceTargets.push(matches.target);
@@ -1563,21 +1623,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         blue: {
           en: '+1 Blue',
+          de: '+1 Blau',
         },
         blueTwo: {
           en: '+2 Blue',
+          de: '+2 Blau',
         },
         blueThree: {
           en: '+3 Blue',
+          de: '+3 Blau',
         },
         red: {
           en: '+1 Red',
+          de: '+1 Rot',
         },
         redTwo: {
           en: '+2 Red',
+          de: '+2 Rot',
         },
         redThree: {
           en: '+3 Red',
+          de: '+3 Rot',
         },
       },
     },
@@ -1721,27 +1787,35 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings8Dir,
         red: {
           en: 'Red: ${dirs}',
+          de: 'Rot: ${dirs}',
         },
         blue: {
           en: 'Blue: ${dirs}',
+          de: 'Blau: ${dirs}',
         },
         red1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          de: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
         },
         blue1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          de: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
         },
         red2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          de: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
         },
         blue2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          de: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
         },
         red3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          de: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
         },
         blue3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          de: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
         },
       },
     },
@@ -1786,12 +1860,15 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         getHitRedOoze: {
           en: '${hit} for Ooze',
+          de: '${hit} für Schleim',
         },
         getHitBlueOoze: {
           en: '${hit} for Ooze',
+          de: '${hit} für Schleim',
         },
         getHitBothOoze: {
           en: 'Red: ${red}, Blue: ${blue}',
+          de: 'Rot: ${red}, Blau: ${blue}',
         },
       },
     },
@@ -1927,6 +2004,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         getHit: {
           en: '${dir} for Ooze',
+          de: '${dir} für Schleim',
         },
         safeSpot: {
           en: '${dir} Safe Spot',
@@ -1938,6 +2016,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
+          de: '${dir1} / ${dir2} Sichere Zonen',
         },
       },
     },
@@ -2006,6 +2085,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         getHit: {
           en: '${dir} for Ooze',
+          de: '${dir} für Schleim',
         },
         safeSpot: {
           en: '${dir} Safe Spot',
@@ -2017,6 +2097,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
+          de: '${dir1} / ${dir2} Sichere Zonen',
         },
       },
     },
@@ -2177,6 +2258,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         chargePositions: {
           en: 'Wild Charge Positions',
+          de: 'Ansturm Positionen',
         },
       },
     },
@@ -2240,9 +2322,11 @@ const triggerSet: TriggerSet<Data> = {
           ...Directions.outputStrings8Dir,
           knockbackTetherDir: {
             en: 'Tether: Knockback to ${dir} => Stack at Wall',
+            de: 'Verbindung: Rückstoß nach ${dir} => An der Wand sammeln',
           },
           knockbackToSnowball: {
             en: 'Knockback to Snowball => Stack at Wall',
+            de: 'Rückstoß zum Schneeball => An der Wand sammeln',
           },
         };
 
@@ -2331,6 +2415,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         outOfMiddleGroups: {
           en: 'Out of Middle, Group Positions',
+          de: 'Raus aus der Mitte, Gruppen Positionen',
         },
       },
     },
@@ -2351,6 +2436,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         jetsThenSpread: {
           en: 'Dodge Two Jets => Spread',
+          de: 'Weiche 2 Angriffen aus => Verteilen',
         },
       },
     },
@@ -2406,12 +2492,15 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           interruptBhoot: {
             en: 'Interrupt Bhoot',
+            de: 'Bhut unterbrechen',
           },
           northInterrupt: {
             en: 'North: Interrupt Bhoot',
+            de: 'Norden: Bhut unterbrechen',
           },
           southInterrupt: {
             en: 'South: Interrupt Bhoot',
+            de: 'Süden: Bhut unterbrechen',
           },
         };
         // Tanks have 3y interrupt, only call about actor on their platform
@@ -2477,6 +2566,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         wildChargeEast: {
           en: 'Wild Charge (East), Stack in a Row',
+          de: 'Ansturm (Osten), In einer Reihe sammeln',
         },
       },
     },
@@ -2526,9 +2616,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         northAoEDispel: {
           en: 'North: AoE (Dispel if Possible)',
+          de: 'Norden: AoE (Entfernen wenn möglich)',
         },
         southAoEDispel: {
           en: 'South: AoE (Dispel if Possible)',
+          de: 'Süden: AoE (Entfernen wenn möglich)',
         },
       },
     },
@@ -2584,6 +2676,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         romeo: {
           en: 'Romeo\'s Ballad (if possible)',
+          de: 'Liebliche Klänge (wenn möglich)',
         },
       },
     },
@@ -2616,21 +2709,27 @@ const triggerSet: TriggerSet<Data> = {
         output.responseOutputStrings = {
           topApart: {
             en: 'Top row (bosses apart)',
+            de: 'Obere Reihe (Bosse auseinander)',
           },
           bottomApart: {
             en: 'Bottom row (bosses apart)',
+            de: 'Untere Reihe (Bosse auseinander)',
           },
           bossesApart: {
             en: 'Move bosses apart',
+            de: 'Bewege Bosse auseinander',
           },
           topTogether: {
             en: 'Top row (bosses together)',
+            de: 'Obere Reihe (Bosse zusammen)',
           },
           bottomTogether: {
             en: 'Bottom row (bosses together)',
+            de: 'Untere Reihe (Bosse zusammen)',
           },
           bossesTogether: {
             en: 'Move bosses together',
+            de: 'Bewege Bosse zusammen',
           },
         };
         const myBridge = data.prongedPassageActLoc[data.me];
@@ -4572,14 +4671,20 @@ const triggerSet: TriggerSet<Data> = {
         'Frozen Triton': 'tiefgekühlt(?:e|er|es|en) Triton',
         'Gaseous Nereid': 'brennend(?:e|er|es|en) Nereid',
         'Gaseous Phobos': 'brennend(?:e|er|es|en) Phobos',
+        'Guardian Berserker': 'Wächter-Berserker',
+        'Guardian Knight': 'Wächter-Ritter',
+        'Guardian Weapon': 'Wächter-Waffe',
+        'Guardian Wraith': 'Wächter-Geist',
         'Hinkypunk': 'Irrwisch',
         'Ice Golem': 'Eisgolem',
+        'Icewind': 'Eiswind',
         'Lance Empowerment Conduit': 'magisch(?:e|er|es|en) Lanzenverstärker',
         'Lion Rampant': 'ungezügelt(?:e|er|es|en) Löwe',
         'Liquified Triton': 'geschmolzen(?:e|er|es|en) Triton',
         'Luminous Lance': 'Lichtspeer',
         'Magitaur': 'Magitaurus',
         'Marble Dragon': 'Marmordrache',
+        'Master Lockward': 'Alpha-Schlosswächter',
         'Neo Garula': 'Neo Garula',
         '(?<! )Nereid': 'Nereid',
         'Nymian Petalodus': 'nymeisch(?:e|er|es|en) Petalodus',
@@ -4590,6 +4695,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tower Abyss': 'Blut-Abyssus',
         'Tower Bhoot': 'Turm-Bhut',
         'Tower Idol': 'Blut-Götze',
+        'Tower Manticore': 'Blut-Manticore',
         'Tower Progenitor': 'Blut-Progenitor',
         'Tower Progenitrix': 'Blut-Progenitrix',
         'Trap': 'Falle',
@@ -4751,14 +4857,20 @@ const triggerSet: TriggerSet<Data> = {
         'Frozen Triton': 'Tritonien gelé',
         'Gaseous Nereid': 'Néregat enflammé',
         'Gaseous Phobos': 'Phobos enflammé',
+        'Guardian Berserker': 'berserker gardien',
+        'Guardian Knight': 'chevalier gardien',
+        'Guardian Weapon': 'arme gardienne',
+        'Guardian Wraith': 'spectre gardien',
         'Hinkypunk': 'follet folâtre',
         'Ice Golem': 'golem de glace',
+        'Icewind': 'vent glacé',
         'Lance Empowerment Conduit': 'décupleur magique de lance',
         'Lion Rampant': 'lion rampant',
         'Liquified Triton': 'Tritonien fondu',
         'Luminous Lance': 'lance de lumière',
         'Magitaur': 'magitaure',
         'Marble Dragon': 'dragon marmoréen',
+        'Master Lockward': 'maître des serrures',
         'Neo Garula': 'néo-garula',
         '(?<! )Nereid': 'Néregat',
         'Nymian Petalodus': 'petalodus de Nym',
@@ -4769,6 +4881,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tower Abyss': 'arabesque de la Tour',
         'Tower Bhoot': 'bhut de la Tour',
         'Tower Idol': 'idole de la Tour',
+        'Tower Manticore': 'manticore de la Tour',
         'Tower Progenitor': 'papa bombo de la Tour',
         'Tower Progenitrix': 'maman bombo de la Tour',
         'Trap': 'piège',
@@ -4924,14 +5037,20 @@ const triggerSet: TriggerSet<Data> = {
         'Frozen Triton': '凍ったトライトン',
         'Gaseous Nereid': '燃えたネレゲイド',
         'Gaseous Phobos': '燃えたフォーボス',
+        'Guardian Berserker': 'ガード・バーサーカー',
+        'Guardian Knight': 'ガード・ナイト',
+        'Guardian Weapon': 'ガード・ウェポン',
+        'Guardian Wraith': 'ガード・レイス',
         'Hinkypunk': 'ヒンキーパンク',
         'Ice Golem': 'アイスゴーレム',
+        'Icewind': '氷風',
         'Lance Empowerment Conduit': '魔道増幅器【ランス】',
         'Lion Rampant': 'ランパントライオン',
         'Liquified Triton': '溶けたトライトン',
         'Luminous Lance': '光の槍',
         'Magitaur': 'マギタウロス',
         'Marble Dragon': 'マーブルドラゴン',
+        'Master Lockward': 'アルファ・ロックワード',
         'Neo Garula': 'ネオガルラ',
         '(?<! )Nereid': 'ネレゲイド',
         'Nymian Petalodus': 'ニーム・ペタロドゥス',
@@ -4942,6 +5061,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tower Abyss': 'タワー・アビス',
         'Tower Bhoot': 'タワー・ブフート',
         'Tower Idol': 'タワー・アイドル',
+        'Tower Manticore': 'タワー・マンティコア',
         'Tower Progenitor': 'タワー・ファザーボム',
         'Tower Progenitrix': 'タワー・マザーボム',
         'Trap': 'トラップ',
