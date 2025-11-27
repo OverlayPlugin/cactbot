@@ -425,3 +425,982 @@ hideall "--sync--"
 15000.0 "--sync--" ActorControl { command: "80000014", data0: "339" } window 100000,0
 15100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 
+### The Forked Tower: Blood
+#19000.0 "--sync--" ActorControl { command: "80000014", data0: "33B" } window 100000,0
+
+### Demon Tablet
+# -ii A30A A309 A3AF A303 A304 A308 A2FE A2E6 A2E7 A91D A91E AB12 A2FD A2F2 A81A A353
+# -p A306:20009.1
+# -it "Demon Tablet" "Summoned Arch Demon" "Summoned Demon"
+# IGNORED ABILITIES
+# A2F2 Unmitigated Explosion (2.1s after Explosion if mechanic failed)
+# A81A Unmitigated Explosion (2.1s after Explosion if mechanic failed)
+# A2E6 Portentous Cometeor
+# A2E7 Portentous Comet
+# A2FD Lacunate Stream
+# A2FE Lacunate Stream
+# A303 Rotation
+# A304 Rotation
+# A308 Occult Chisel
+# A30A Auto-attack from boss
+# A309 Auto-attack from boss (non-damaging)
+# A353 Auto-attack from Summoned Arch Demon
+# A3AF Demonic Dark II
+# AB12 Landing
+# A91D Landing player hit
+# A91E Landing
+#
+# ALL ENCOUNTER ABILITIES
+# A2E4 Cometeor of Dangers Near
+# A2E8 Portentous Comet
+# A2E9 Summon
+# A2EA Gravity of Dangers Near
+# A2EB Erase Gravity
+# A2EC Restore Gravity
+# A2ED Landing
+# A2EE Demonography
+# A2EF Explosion (Ground Tower Soak Damage)
+# A2F1 Explosion (Floating Tower Soak Damage)
+# A2F3 Ray of Dangers Near
+# A2F5 Ray of Ignorance
+# A2F6 Demonograph of Dangers Near
+# A2F8 Explosion (Tower Soak Damage)
+# A300 Lacunate Stream
+# A301 Rotate Right
+# A302 Rotate Left
+# A305 Rotation
+# A306 Demonic Dark II
+# A307 Occult Chisel
+# A30D Summon
+# A354 Landing
+# A30B End of History (Enrage cast)
+# A355 End of History (Enrage damage)
+# A30C End of History (Post-Enrage cast)
+# The Palaeography Room will be sealed off
+20000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1450" } window 100000,0
+20003.0 "--sync--" Ability { id: "A309", source: "Demon Tablet" }
+20003.8 "--sync--" Ability { id: "A30A", source: "Demon Tablet" }
+20004.1 "--sync--" StartsUsing { id: "A306", source: "Demon Tablet" } window 100,50
+20009.1 "Demonic Dark II" Ability { id: "A306", source: "Demon Tablet" }
+20025.2 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
+20025.6 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
+20025.6 "Landing" #Ability { id: "A354", source: "Demon Tablet" }
+20038.3 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
+20038.7 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
+20038.7 "Landing" #Ability { id: "A354", source: "Demon Tablet" }
+20052.8 "Occult Chisel" Ability { id: ["A307", "A308"], source: "Demon Tablet" }
+20068.9 "Demonograph of Dangers Near / Demonograph of Expulsion Afar" Ability { id: ["A2F6", "A2F7"], source: "Demon Tablet" }
+20069.3 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20073.7 "Explosion" Ability { id: "A2F8", source: "Demon Tablet" }
+20086.8 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20087.7 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20099.0 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20099.9 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20103.2 "Lacunate Stream" Ability { id: "A300", source: "Demon Tablet" }
+20123.3 "Cometeor of Dangers Near / Cometeor of Expulsion Afar" Ability { id: ["A2E4", "A2E5"], source: "Demon Tablet" }
+20123.7 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20130.3 "Portentous Comet" Ability { id: ["A2E8", "A2E7"], source: "Demon Tablet" }
+20137.3 "Portentous Cometeor" Ability { id: "A2E6", source: "Demon Tablet" }
+20151.0 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20151.9 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20163.2 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20164.1 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20167.4 "Lacunate Stream" Ability { id: "A300", source: "Demon Tablet" }
+20187.5 "Summon" Ability { id: "A30D", source: "Demon Tablet" }
+20188.9 "--adds-targetable--"
+20233.7 "Summon" Ability { id: "A2E9", source: "Demon Tablet" }
+20239.7 "Demonography" Ability { id: "A2EE", source: "Demon Tablet" }
+20251.7 "Gravity of Dangers Near / Gravity of Expulsion Afar" Ability { id: ["A2EA", "AA01"], source: "Demon Tablet" }
+20252.1 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20255.7 "Erase Gravity" Ability { id: "A2EB", source: "Demon Tablet" }
+20261.4 "Explosion" Ability { id: ["A2F1", "A2EF"], source: "Demon Tablet" }
+20265.7 "Restore Gravity" Ability { id: "A2EC", source: "Demon Tablet" }
+20267.7 "Landing" Ability { id: "A2ED", source: "Demon Tablet" }
+20281.8 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20282.7 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20294.0 "Rotate Right / Rotate Left" Ability { id: ["A301", "A302"], source: "Demon Tablet" }
+20294.8 "Rotation" Ability { id: ["A304", "A303"], source: "Demon Tablet" }
+20298.1 "Lacunate Stream" Ability { id: "A300", source: "Demon Tablet" }
+20318.2 "Cometeor of Dangers Near / Cometeor of Expulsion Afar" Ability { id: ["A2E4", "A2E5"], source: "Demon Tablet" }
+20318.6 "Landing" Ability { id: "A354", source: "Demon Tablet" }
+20325.2 "Portentous Comet" Ability { id: ["A2E8", "A2E7"], source: "Demon Tablet" }
+20332.2 "Portentous Cometeor" Ability { id: "A2E6", source: "Demon Tablet" }
+20347.8 "Ray of Dangers Near / Ray of Expulsion Afar" Ability { id: ["A2F3", "A2F4"], source: "Demon Tablet" }
+20348.2 "Ray of Ignorance" Ability { id: "A2F5", source: "Demon Tablet" }
+20348.2 "Landing" #Ability { id: "A354", source: "Demon Tablet" }
+20362.3 "Occult Chisel" Ability { id: ["A307", "A308"], source: "Demon Tablet" }
+20373.4 "Demonic Dark II" Ability { id: "A306", source: "Demon Tablet" }
+20395.4 "End of History (Enrage)" Ability { id: "A30B", source: "Demon Tablet" }
+20396.3 "End of History (Enrage)" Ability { id: "A355", source: "Demon Tablet" }
+
+# Enrage Loop
+# NOTE: A355 does damage, not sure on A30C
+20397.6 "End of History (Enrage)" Ability { id: "A30C", source: "Demon Tablet" }
+20397.6 label "oc-demon-tablet-enrage-loop"
+20398.4 "End of History (Enrage)" Ability { id: "A355", source: "Demon Tablet" }
+20399.6 "End of History (Enrage)" Ability { id: "A30C", source: "Demon Tablet" } jump "oc-demon-tablet-enrage-loop"
+20400.4 "End of History (Enrage)" #Ability { id: "A355", source: "Demon Tablet" }
+
+### Dead Stars
+# -ii 366 A5FA A5FB A608 A602 A5FF A600 A63E A63F A5B9 A5DC A5DF A5DB A5E4 A5DE A5E5 A5F9 A606 A5D1 A5D2 A5CC A5CD A5E8 A5E9 A5EA A5EB A5EC A5EE A5EF A5F1 A5F3 A5BB
+# -p A5FC:30016.5
+# -it "Phobos" "Nereid" "Triton" "Frozen Triton" "Gaseous Nereid" "Dead Stars"
+# IGNORED ABILITIES
+# 366 attack
+# A5B9 Three-Body Problem from Triton
+# A5CC Flamethrower (Targeted Players)
+# A5CD Flamethrower (Damage)
+# A5BB unknown_a5bb Transformation, only syncable for slimes
+# A5DB Liquified Triton / Liquified Nereid Jump
+# A5DE Frozen Fallout from Phobos
+# A5E4 Frozen Fallout from Liquified Nereid
+# A5E5 Noxious Nova self-cast on Phobos
+# A5EA Bodied (bosses colliding with each other)
+# A5D1 Avalaunch (Tether Player Target)
+# A5D2 Avalaunch (Stack Damage)
+# A5DC Primordial Chaos Damage
+# A5DF Frozen Fallout tell from Phobos
+# A5E8 Six-Handed Fistfight (self-cast) from Dead Stars
+# A5E9 Six-Handed Fistfight (damage) from Dead Stars
+# A5EB Enrage Sequence related animation
+# A5EC Enrage Sequence related animation
+# A5EE Collateral Heat Jet
+# A5EF Collateral Cold Jet
+# A5F1 Collateral Fireball
+# A5F3 Collateral Bioball
+# A5F9 Excruciating Equilibrium from Phobos
+# A5FA Decisive Battle
+# A5FB Decisive Battle
+# A5FF Delta Attack from Triton
+# A600 Delta Attack from Triton
+# A63E Delta Attack 1 Damage from Triton
+# A63F Delta Attack 2/3 Damage from Nereid and Phobos
+# A606 Firestrike Damage
+# A602 Slice 'n' Dice (tankbuster related)
+# A608 Auto-attack from boss
+#
+# ALL ENCOUNTER ABILITIES
+# A5B4 --sync--
+# A5B5 Three-body Probl─
+# A5B6 Chilling Collision
+# A5B7 Three-body Problem
+# A5B8 Three-body Problem
+# A5BA --sync--
+# A5BC --sync--
+# A5BD Vengeful Fire III
+# A5BE Vengeful Blizzard III
+# A5BF Vengeful Bio III
+# A5C0 Elemental Impact
+# A5C1 Elemental Impact
+# A5C2 Elemental Impact
+# A5C9 Geothermal Rupture
+# A5CA Geothermal Rupture
+# A5CB Flame Thrower
+# A5CE Snowball Flight
+# A5CF Snow Boulder
+# A5D0 Snow Boulder
+# A5D3 Chilling Collision
+# A5D4 Chilling Collision
+# A5D5 To the Winds
+# A5D9 Primordial Chaos
+# A5DA Primordial Chaos
+# A5DD Frozen Fallout
+# A5E0 Frozen Fallout tells from Phobos and Triton
+# A5E1 Frozen Fallout
+# A5E2 Frozen Fallout
+# A5E3 Frozen Fallout from Liquified Triton
+# A5E6 Noxious Nova
+# A5E7 Six-handed Fistfight
+# A5ED Collateral Damage
+# A5F0 Collateral Gas Jet
+# A5F2 Collateral Iceball
+# A5F4 Fusion Burst (Enrage)
+# A5F5 Fusion Burst (Enrage)
+# A5F6 --sync--
+# A5F7 Return Phobos and Triton cast this at end of fight
+# A5F8 Excruciating Equilibrium
+# A5FC Decisive Battle
+# A5FD Delta Attack
+# A5FE Delta Attack
+# A601 Slice 'n' Dice
+# A603 Firestrike
+# A604 Firestrike
+# A605 Slice 'n' Strike
+# A607 Firestrike
+# A635 Blazing Belligerent
+# A636 Icebound Buffoon
+# A637 Noisome Nuisance
+# A641 Fusion Burst (Post-Enrage)
+# A89A Avalaunch
+# A908 Fire Spread
+# A9BD Three-body Problem
+# The Astronomy Room will be sealed off
+30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1451" } window 100000,0
+30008.2 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30010.5 "--sync--" StartsUsing { id: "A5FC", source: "Phobos" } window 100,50
+30016.5 "Decisive Battle" Ability { id: "A5FC", source: "Phobos" }
+30026.7 "Slice 'n' Dice" Ability { id: "A601", source: "Phobos" }
+30031.9 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Slimes
+30039.7 "Three-Body Probl─" Ability { id: "A5B5", source: "Phobos" }
+30040.8 "Three-Body Problem" Ability { id: "A9BD", source: "Nereid" }
+30041.4 "Noisome Nuisance" Ability { id: "A637", source: "Phobos" }
+30041.7 "--Nereid untargetable--"
+30041.7 "--Triton untargetable--"
+30053.7 "Primordial Chaos" Ability { id: "A5D9", source: "Phobos" }
+30058.9 "Frozen Fallout" StartsUsing { id: "A5DD", source: "Phobos" } duration 10
+30061.5 "Frozen Fallout Tell 1" Ability { id: "A5E0", source: "Phobos" }
+30064.1 "Frozen Fallout Tell 2" Ability { id: "A5E0", source: "Triton" }
+30066.5 "Frozen Fallout Tell 3" Ability { id: "A5E0", source: "Phobos" }
+30068.9 "Frozen Fallout Tell 4" Ability { id: "A5E0", source: "Triton" }
+30070.3 "Frozen Fallout 1" Ability { id: "A5E3", source: "Liquified Triton" }
+30075.7 "Frozen Fallout 2" Ability { id: "A5E3", source: "Liquified Triton" }
+30081.1 "Frozen Fallout 3" Ability { id: "A5E3", source: "Liquified Triton" }
+30086.5 "Frozen Fallout 4" Ability { id: "A5E3", source: "Liquified Triton" }
+30096.5 "Noxious Nova" Ability { id: "A5E6", source: "Phobos" }
+30096.6 "--sync--" Ability { id: "A5BB", source: "Nereid" }
+30100.7 "--Nereid targetable--"
+30100.7 "--Triton targetable--"
+30100.7 "--sync--" Ability { id: "A5BC", source: "Nereid" }
+30102.7 "--sync--" Ability { id: "A5B4", source: "Nereid" }
+30110.6 "Vengeful Blizzard III" Ability { id: "A5BE", source: "Nereid" }
+30110.6 "Vengeful Fire III" #Ability { id: "A5BD", source: "Triton" }
+30111.0 "--sync--" Ability { id: "A5BA", source: "Phobos" }
+30115.2 "Excruciating Equilibrium" Ability { id: "A5F8", source: "Phobos" }
+30120.6 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30127.6 "Delta Attack 1" Ability { id: "A5FD", source: "Phobos" }
+30128.7 "Delta Attack 2" Ability { id: "A5FE", source: "Phobos" }
+30129.9 "Delta Attack 3" Ability { id: "A5FE", source: "Phobos" }
+30135.0 "Firestrike (marker)" Ability { id: "A604", source: "Phobos" }
+30140.0 "Firestrike" Ability { id: "A603", source: "Phobos" }
+30145.2 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Snowballs
+30152.9 "Three-Body Probl─" Ability { id: "A5B5", source: "Nereid" }
+30154.1 "Three-Body Problem" Ability { id: "A5B8", source: "Phobos" }
+30154.7 "Icebound Buffoon" Ability { id: "A636", source: "Nereid" }
+30155.0 "--Phobos untargetable--"
+30155.0 "--Triton untargetable--"
+30155.0 "--Snowballs targetable--"
+30169.0 "Snowball Flight" Ability { id: "A5CE", source: "Nereid" }
+30169.0 "Snow Boulder 1" #Ability { id: "A5D0", source: "Frozen Phobos" }
+30171.5 "Snow Boulder 2" Ability { id: "A5D0", source: "Frozen Phobos" }
+30174.0 "Snow Boulder 3" Ability { id: "A5D0", source: "Frozen Phobos" }
+30179.0 "Chilling Collision" Ability { id: "A5B6", source: "Nereid" }
+30180.1 "Chilling Collision (knockback)" Ability { id: "A5D4", source: "Nereid" }
+30181.5 "Avalaunch" Ability { id: "A89A", source: "Frozen Phobos" }
+30199.8 "To the Winds" Ability { id: "A5D5", source: "Nereid" }
+30199.8 "--Snowballs untargetable--"
+30199.8 "Self-destruct (Enrage)" #Ability { id: "A5D6", source: "Frozen Triton" }
+30200.4 "Self-destruct (Enrage)" #Ability { id: "A5D8", source: "Frozen Triton" }
+
+30204.1 "--Phobos targetable--"
+30204.1 "--Triton targetable--"
+30204.1 "--sync--" Ability { id: "A5BC", source: "Phobos" } window 100,0
+30206.1 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30214.0 "Vengeful Bio III" Ability { id: "A5BF", source: "Phobos" }
+30214.0 "Vengeful Fire III" #Ability { id: "A5BD", source: "Triton" }
+30214.4 "--sync--" Ability { id: "A5BA", source: "Nereid" }
+30218.6 "Excruciating Equilibrium" Ability { id: "A5F8", source: "Phobos" }
+30223.7 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30231.0 "Delta Attack 1" Ability { id: "A5FD", source: "Phobos" }
+30232.1 "Delta Attack 2" Ability { id: "A5FE", source: "Phobos" }
+30233.2 "Delta Attack 3" Ability { id: "A5FE", source: "Phobos" }
+30238.3 "Firestrike (marker)" Ability { id: "A607", source: "Phobos" }
+30243.3 "Slice 'n' Strike" Ability { id: "A605", source: "Phobos" }
+30244.5 "Firestrike" #Ability { id: "A606", source: "Phobos" }
+30250.7 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Fireballs
+30258.2 "Three-Body Probl─" Ability { id: "A5B5", source: "Triton" }
+30259.4 "Three-Body Problem" Ability { id: "A5B7", source: "Phobos" }
+30260.0 "Blazing Belligerent" Ability { id: "A635", source: "Triton" }
+30260.2 "--Phobos untargetable--"
+30260.2 "--Nereid untargetable--"
+30274.1 "Elemental Impact 1" Ability { id: "A5C0", source: "Gaseous Phobos" }
+30274.5 "Fire Spread 1" Ability { id: "A908", source: "Triton" }
+30275.1 "--Fireballs targetable--"
+30278.1 "Elemental Impact 2" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30278.7 "Fire Spread 2" Ability { id: "A908", source: "Triton" }
+30282.3 "Elemental Impact 3" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30282.9 "Fire Spread 3" #Ability { id: "A908", source: "Triton" }
+30287.5 "Geothermal Rupture" Ability { id: "A5C9", source: "Triton" }
+30289.6 "Flame Thrower" Ability { id: "A5CC", source: "Triton" }
+30290.6 "Geothermal Rupture 1" Ability { id: "A5CA", source: "Triton" }
+30292.6 "Geothermal Rupture 2" Ability { id: "A5CA", source: "Triton" }
+30294.6 "Geothermal Rupture 3" Ability { id: "A5CA", source: "Triton" }
+30294.6 "Flame Thrower" #Ability { id: "A5CB", source: "Triton" }
+30299.6 "Elemental Impact 1" Ability { id: "A5C2", source: "Gaseous Phobos" }
+30300.0 "Fire Spread 1" Ability { id: "A908", source: "Triton" }
+30303.7 "Elemental Impact 2" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30304.1 "Fire Spread 2" #Ability { id: "A908", source: "Triton" }
+30307.8 "Elemental Impact 3" Ability { id: "A5C1", source: "Gaseous Phobos" }
+30308.2 "Fire Spread 3" Ability { id: "A908", source: "Triton" }
+30320.0 "To the Winds" Ability { id: "A5C5", source: "Triton" }
+30320.0 "Self-Destruct" #Ability { id: "A5C6", source: "Gaseous Phobos" }
+30320.0 "Self-Destruct" #Ability { id: "A5C6", source: "Gaseous Nereid" }
+30320.0 "Self-Destruct (Enrage)" #Ability { id: "A5C7", source: "Gaseous Nereid" }
+30320.7 "Self-Destruct (Enrage)" #Ability { id: "A5C8", source: "Triton" }
+
+30324.2 "--Nereid targetable--"
+30324.2 "--Phobos targetable--"
+30324.2 "--sync--" Ability { id: "A5BC", source: "Phobos" } window 100,0
+30326.2 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+30334.1 "Vengeful Bio III" Ability { id: "A5BF", source: "Phobos" }
+30334.1 "Vengeful Blizzard III" #Ability { id: "A5BE", source: "Nereid" }
+30334.5 "--sync--" Ability { id: "A5BA", source: "Triton" }
+30338.7 "Excruciating Equilibrium" Ability { id: "A5F8", source: "Phobos" }
+30340.8 "--sync--" Ability { id: "A5B4", source: "Phobos" }
+
+# Enrage Sequence
+# A5F0 - Collateral Gas Jet is used to track all three
+# A5F2 - Collateral Iceball is used to track all three
+# Collaterall Balls targets each player randomly once
+# Dead Stars targetable based on log of earliest hit
+30357.9 "Six-Handed Fistfight" Ability { id: "A5E7", source: "Phobos" }
+30357.9 "--Bosses untargetable--"
+30359.4 "--Dead Stars targetable--"
+30370.4 "Collateral Damage" Ability { id: "A5ED", source: "Dead Stars" } duration 11.5
+30370.4 "Collateral Jets 1" #Ability { id: "A5F0", source: "Dead Stars" }
+30372.3 "Collateral Jets 2" #Ability { id: "A5F0", source: "Dead Stars" }
+30377.2 "Collateral Balls 1 x8" #Ability { id: "A5F2", source: "Triton" }
+30378.0 "Collateral Balls 2 x8" #Ability { id: "A5F2", source: "Triton" }
+30378.8 "Collateral Balls 3 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30379.6 "Collateral Balls 4 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30380.4 "Collateral Balls 5 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30381.2 "Collateral Balls 6 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+
+30391.2 "Collateral Damage" Ability { id: "A5ED", source: "Dead Stars" } duration 11.5
+30391.2 "Collateral Jets 1" #Ability { id: "A5F0", source: "Dead Stars" }
+30392.9 "Collateral Jets 2" #Ability { id: "A5F0", source: "Dead Stars" }
+30398.1 "Collateral Balls 1 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30399.0 "Collateral Balls 2 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30399.8 "Collateral Balls 3 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30400.7 "Collateral Balls 4 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30401.7 "Collateral Balls 5 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30402.7 "Collateral Balls 6 x8" #Ability { id: "A5F2", source: "Dead Stars" }
+30417.4 "Fusion Burst (Enrage)" Ability { id: "A5F4", source: "Dead Stars" }
+30417.4 "Fusion Burst (Enrage)" #Ability { id: "A5F5", source: "Dead Stars" }
+30417.4 "--untargetable--"
+
+# Enrage Loop
+30422.3 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" }
+30422.3 label "oc-dead-stars-enrage-loop"
+30427.0 "Fusion Burst (Enrage)" Ability { id: "A641", source: "Dead Stars" } jump "oc-dead-stars-enrage-loop"
+
+# Early Clear
+30600.0 "--sync--" StartsUsing { id: "A5F7", source: "Phobos" } window 600,2
+30606.0 "Return (Clear)" Ability { id: "A5F7", source: "Phobos" }
+
+### Pronged Passage (Bridges)
+# Note: Raid splits into two and battles across their own bridge in 3 sections
+# If one group is faster than the other, the other's section starts to burn
+# If either group is too slow in a section, the ground starts to Burn as a soft enrage
+# Unsure if these timings can be reliably predicted
+#
+# -ii 368 A3A8 A3A9 A43B A43D A442 A443 46D1 64F1 A903 A62A A62B A624 A625 A61F
+# -p A441:40011.3 A620:40346.0
+# -it "Tower Bhoot" "Tower Bogy" "Tower Abyss" "Tower Idol" "Tower Progenitrix" "Tower Progenitor" "Lava Bomb" "Aetherial Ward"
+#
+# IGNORED ABILITIES
+# 368 attack
+# A3A8 Dense Darkness (Tower Abyss)
+# A3A9 Diffuse Darkness (Tower Abyss)
+# A43B unknown_a43b (Trap) (Trap's proximity checker?)
+# A43D unknown_a43d (Trap) (Massive Trap's proximity checker?)
+# A442 Burst (Trap) exploding a Trap
+# A443 Massive Explosion (Trap) exploding a massive Trap
+# A61F Ancient Aero III (Tower Idol)
+# A624 Massive Explosion (Tower Progenitrix) starts enrage cast if Tower Progenitor dies
+# A625 Massive Explosion (Tower Progenitor) starts enrage cast if Tower Progenitrix dies 
+# A62A Nexus of Flame (Tower Progenitrix) Pulsing aoe (1.9s) from being too close/far from Tower Progenitor during A620/A622
+# A62B Massive Explosion (Lava Bomb) Lava Bomb add reaching Tower Progenitor/Tower Progenitrix
+# 46D1 Attack (Tower Idol) (Tower Abyss)
+# A903 Paralyze III
+# 64F1 Radiant Aegis (bug in log? had no source)
+#
+# ALL ENCOUNTER ABILITIES
+# A43F --sync-- Burns trap
+# A441 Arcane Spear
+# A620 Close Call to Detonate (Tower Progenitrix)
+# A621 Close Call to Detonate (Tower Progenitor)
+# A622 Far Cry to Detonate (Tower Progenitrix)
+# A623 Far Cry to Detonate (Tower Progenitor)
+# A626 Bombshell Drop (Tower Progenitrix)
+# A627 Bombshell Drop (Tower Progenitor)
+# A628 Punishing Pounce (Tower Progenitrix)
+# A629 Punishing Pounce (Tower Progenitor)
+# A6F4 Arcane Spear
+# The pronged passage will be sealed off
+40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1454" } window 100000,0
+
+# Encounter 1: Two Tower Bogy and 1 Tower Bhoot
+40005.3 "--sync--" StartsUsing { id: "A441", source: "Trap" } window 20,5
+40011.3 "Arcane Spear (side 1)" Ability { id: "A441", source: "Trap" }
+40016.1 "Arcane Spear (side 2)" Ability { id: "A441", source: "Trap" }
+
+# Encounter 2: Tower Abyss (Time Mage and Trap section)
+# Dense Darkness A3A8 timing starts from when add is pulled
+40041.1 "Arcane Spear (side 1)" Ability { id: "A441", source: "Trap" }
+40045.8 "Arcane Spear (side 2)" Ability { id: "A441", source: "Trap" }
+40045.8 "--Burns (Section 1)--" Ability { id: "A43F", source: "Trap" }
+40082.8 "--Burns (Section 2)--" Ability { id: "A43F", source: "Trap" }
+
+# Encounter 3: 6 Tower Idols (Phantom Bard and Geomancer section)
+# Adds from section 4 could be pulled here
+40119.8 "--Burns (Section 3)--" Ability { id: "A43F", source: "Trap" }
+
+# Encounter 4: Tower Bhoot + two Tower Bogy
+40120.0 "--Burns (Section 4)--" Ability { id: "A43F", source: "Trap" }
+40142.6 "--Burns (Section 5)--" Ability { id: "A43F", source: "Trap" }
+40170.9 "--Burns (Final)--" Ability { id: "A43F", source: "Trap" }
+
+# Encounter 5: Tower Progenitrix and Tower Progenitor
+# Jumping to this section for timings
+# Players can encounter Burns here if they are too slow
+40343.0 "--sync--" StartsUsing { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] } window 350,20
+40346.0 "Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] }
+40363.2 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40367.2 "Bombshell Drop" Ability { id: ["A626", "A627"], source: ["Tower Progenitrix", "Tower Progenitor"] }
+40367.2 "--adds--"
+
+# Begin Loop
+40391.4 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40391.4 label "oc-pronged-bridge-loop"
+40391.4 "Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] }
+40405.5 "Punishing Pounce" Ability { id: ["A628", "A629"], source: ["Tower Progenitrix", "Tower Progenitor"] }
+40420.5 "Arcane Spear" Ability { id: "A6F4", source: "Trap" }
+40421.5 "Bombshell Drop" Ability { id: ["A626", "A627"], source: ["Tower Progenitrix", "Tower Progenitor"] }
+40421.5 "--adds--"
+
+40449.7 "Arcane Spear" Ability { id: "A6F4", source: "Trap" } jump "oc-pronged-bridge-loop"
+40449.7 "Close Call to Detonate / Far Cry to Detonate" #Ability { id: ["A621", "A623", "A620", "A622"], source: ["Tower Progenitor", "Tower Progenitrix"] }
+40463.9 "Punishing Pounce" #Ability { id: ["A628", "A629"], source: ["Tower Progenitrix", "Tower Progenitor"] }
+40478.9 "Arcane Spear" #Ability { id: "A6F4", source: "Trap" }
+40479.9 "Bombshell Drop" #Ability { id: ["A626", "A627"], source: ["Tower Progenitrix", "Tower Progenitor"] }
+40479.9 "--adds--"
+
+### Marble Dragon
+# -ii 756B 7842 9ECC 77E5 77E6 7797 76CF 9A26 93BB 76D1 7616 93BA
+# -p 77F1:50011.0 76D3:50320.3
+# -it "Marble Dragon" "Ice Golem" "Ice Sprite"
+# IGNORED ABILITIES
+# 756B Attack
+# 76CF Frigid Twister (puddle movement?)
+# 7616 Immitation Blizzard tower (7615) without at least 4 players in it
+# 76D1 Immitation Blizzard aoe damage from 7616 Immitation Blizzard cast
+# 9ECC Imitation Star (Damage), 1.9s to 2.9s after cast
+# 7842 unknown_7842 from Tower Idol
+# 7797 Imitation Raid (Damage), 0.5-0.7s after cast
+# 77E5 Draconiform Motion (Damage from Head), 0.7-0.9s after cast
+# 77E6 Draconiform Motion (Damage from Tail?), 0.7-0.9s after cast
+# 93BA Lifeless Legacy (damage), 1.9s after cast
+# 93BB Frigid Dive (Damage)
+# 9A26 Attack (Ice Golem)
+#
+# ALL ENCOUNTER ABILITIES
+# 756C --sync--
+# 756D Lifeless Legacy (Enrage)
+# 756E Lifeless Legacy (Post-Enrage)
+# 756F Imitation Icicle
+# 75E4 Imitation Icicle
+# 7602 Imitation Blizzard (circle aoe)
+# 7614 Imitation Blizzard (cross aoe)
+# 7615 Imitation Blizzard (Tower soak damage)
+# 7638 Frigid Twister
+# 7687 Imitation Rain
+# 76D0 --sync--
+# 76D3 Withering Eternity
+# 7795 --sync--
+# 7796 Frigid Dive
+# 7798 Lifeless Legacy (cast)
+# 77C1 Draconiform Motion
+# 77E7 Wicked Water
+# 77E8 Dread Deluge cast
+# 77F0 Dread Deluge (Damage), 2s after castbar
+# 77F1 Imitation Star
+# 93BF Frozen Heart
+# 9ECD Lifeless Legacy (Enrage)
+# A715 Ball of Ice
+# A716 Ball of Ice
+# The Glaciology Forum will be sealed off
+50000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1452" } window 100000,0
+50006.0 "--sync--" StartsUsing { id: "77F1", source: "Marble Dragon" } window 100,50
+50011.0 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 1.9
+50025.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50030.4 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50032.4 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50037.7 "Imitation Icicle" Ability { id: "756F", source: "Marble Dragon" }
+50046.0 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50046.4 "--Icicle Puddles--" Ability { id: "75E4", source: "Marble Dragon" }
+50047.6 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
+50048.6 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
+50049.6 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
+50050.0 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p1+"
+50050.6 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
+50051.0 "Imitation Blizzard 1 (circles + cross?)" Ability { id: "7602", source: "Marble Dragon" } jump "oc-md-p1o"
+50052.0 "Imitation Blizzard 2 (circles + cross?)" #Ability { id: "7602", source: "Marble Dragon" }
+50053.0 "Imitation Blizzard 3 (circles + cross?)" #Ability { id: "7614", source: "Marble Dragon" }
+50054.0 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
+50065.0 "Dread Deluge (castbar)" #Ability { id: "77E8", source: "Marble Dragon" }
+50067.0 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50072.1 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
+
+# Pattern 1 - Cross First
+50150.0 label "oc-md-p1+"
+50150.6 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
+50151.0 "Imitation Blizzard 1 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50152.0 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50153.0 "Imitation Blizzard 3 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50154.0 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
+50162.0 "--sync--" StartsUsing { id: "77E8", source: "Marble Dragon" } jump "oc-md-p1-end"
+50165.0 "Dread Deluge (castbar)" #Ability { id: "77E8", source: "Marble Dragon" }
+50167.0 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50172.1 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
+50178.1 "Frigid Twister" #Ability { id: "7638", source: "Marble Dragon" }
+50180.2 "--middle--" #Ability { id: "756C", source: "Marble Dragon" }
+50183.0 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
+
+# Pattern 1 - Circles First
+50251.0 label "oc-md-p1o"
+50252.0 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50253.0 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50254.0 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
+
+50262.0 label "oc-md-p1-end"
+50265.0 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
+50267.0 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50272.1 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50278.1 "Frigid Twister" Ability { id: "7638", source: "Marble Dragon" }
+50280.2 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50283.0 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
+50286.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50287.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50289.5 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p2+"
+50289.5 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } jump "oc-md-p2o"
+50290.5 "Imitation Blizzard (circles/cross?)" #Ability { id: ["7602", "7614"], source: "Marble Dragon" }
+
+# Pattern 2 - Cross First
+# NOTE: This pattern happens slightly sooner than circles
+50389.4 label "oc-md-p2+"
+50390.4 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" }
+50390.8 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50394.1 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
+50394.4 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
+50397.7 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" } jump "oc-md-p2-end"
+50402.4 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
+50404.2 "Dread Deluge (castbar)" #Ability { id: "77E8", source: "Marble Dragon" }
+50406.2 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50413.4 "--middle--" #Ability { id: "756C", source: "Marble Dragon" }
+
+# Pattern 2 - Circles First
+50589.5 label "oc-md-p2o"
+50590.5 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
+50590.9 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50594.2 "Imitation Blizzard (circles + cross)" Ability { id: "7614", source: "Marble Dragon" }
+50594.5 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
+50597.8 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
+
+50597.8 label "oc-md-p2-end"
+50602.4 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
+50604.2 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
+50606.2 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+50613.4 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+
+# Add phase (clockwise or counterclockwise pattern, start timing varies by ~2s)
+50620.3 "Withering Eternity" Ability { id: "76D3", source: "Marble Dragon" } window 620,5
+50622.3 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50622.3 "--untargetable--"
+50622.3 "--ice golems--"
+50625.1 "--dive spot--" Ability { id: "7795", source: "Marble Dragon" }
+50634.3 "Frigid Dive" Ability { id: "7796", source: "Marble Dragon" }
+50635.7 "--towers x2--" Ability { id: "A716", source: "Marble Dragon" }
+50635.7 "Ball of Ice (center)" #Ability { id: "A715", source: "Marble Dragon" }
+50639.3 "Imitation Blizzard (towers + cross)" Ability { id: "7615", source: "Marble Dragon" }
+50639.7 "--towers x4--" Ability { id: "A716", source: "Marble Dragon" }
+50643.3 "Imitation Blizzard (towers)" Ability { id: "7615", source: "Marble Dragon" }
+50647.3 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50649.3 "--dive spot--" Ability { id: "7795", source: "Marble Dragon" }
+50658.5 "Frigid Dive" Ability { id: "7796", source: "Marble Dragon" }
+50659.9 "--towers x2--" Ability { id: "A716", source: "Marble Dragon" }
+50659.9 "Ball of Ice (center)" #Ability { id: "A715", source: "Marble Dragon" }
+50663.5 "Imitation Blizzard (towers + cross)" Ability { id: "7615", source: "Marble Dragon" }
+50663.9 "--towers x4--" Ability { id: "A716", source: "Marble Dragon" }
+50667.5 "Imitation Blizzard (towers)" #Ability { id: "7615", source: "Marble Dragon" }
+50670.3 "Frozen Heart" Ability { id: "93BF", source: "Ice Golem" }
+50671.1 "--golems enrage--"
+50671.5 "--sync--" Ability { id: "76D0", source: "Marble Dragon" }
+50673.5 "--targetable--"
+50674.1 "--ice sprites--"
+50709.5 "Lifeless Legacy" Ability { id: "7798", source: "Marble Dragon" } duration 1.9
+
+# Possible soft enrage here from adds?
+# 93BF Frozen Heart cast by Ice Golems adds premanent Damage Up buff to the Ice Golem
+# 7799 Recharge cast by Ice Sprites adds permanent Damage Up buffs to boss
+
+50723.7 "Wicked Water" Ability { id: "77E7", source: "Marble Dragon" } window 750,5
+50725.8 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50727.5 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50732.9 "Imitation Icicle" Ability { id: "756F", source: "Marble Dragon" }
+50741.2 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50741.6 "--Icicle Puddles--" Ability { id: "75E4", source: "Marble Dragon" }
+50742.7 "Ball of Ice 1" #Ability { id: "A715", source: "Marble Dragon" }
+50743.7 "Ball of Ice 2" #Ability { id: "A715", source: "Marble Dragon" }
+50744.7 "Ball of Ice 3" #Ability { id: "A715", source: "Marble Dragon" }
+50745.1 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p3+"
+50745.7 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
+50746.1 "Imitation Blizzard 1 (circles + cross?)" Ability { id: "7602", source: "Marble Dragon" } jump "oc-md-p3o"
+50747.1 "Imitation Blizzard 2 (circles + cross?)" #Ability { id: "7602", source: "Marble Dragon" }
+50748.1 "Imitation Blizzard 3 (circles + cross?)" #Ability { id: "7614", source: "Marble Dragon" }
+50749.1 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
+50765.1 "Imitation Star" #Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
+50778.3 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
+
+# Patern 3 - Cross First
+50845.1 label "oc-md-p3+"
+50845.7 "Ball of Ice 4" #Ability { id: "A715", source: "Marble Dragon" }
+50846.1 "Imitation Blizzard 1 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50847.1 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50848.1 "Imitation Blizzard 3 (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+50849.1 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
+50860.1 "--sync--" StartsUsing { id: "77F1", source: "Marble Dragon" } jump "oc-md-p3-end"
+50865.1 "Imitation Star" #Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
+50878.3 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
+50884.3 "Frigid Twister" #Ability { id: "7638", source: "Marble Dragon" }
+50886.4 "--middle--" #Ability { id: "756C", source: "Marble Dragon" }
+50889.2 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
+50892.5 "Draconiform Motion" #Ability { id: "77C1", source: "Marble Dragon" }
+
+# Pattern 3 - Circles First
+50946.1 label "oc-md-p3o"
+50947.1 "Imitation Blizzard 2 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50948.1 "Imitation Blizzard 3 (circles + cross)" #Ability { id: "7614", source: "Marble Dragon" }
+50949.1 "Imitation Blizzard 4 (circle)" #Ability { id: "7602", source: "Marble Dragon" }
+
+50960.1 label "oc-md-p3-end"
+50965.1 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
+50978.3 "Imitation Rain" Ability { id: "7687", source: "Marble Dragon" }
+50984.3 "Frigid Twister" Ability { id: "7638", source: "Marble Dragon" }
+50986.4 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+50989.2 "--twisters start--" #Ability { id: "76CF", source: "Marble Dragon" }
+50992.5 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+50993.7 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+50996.3 "--sync--" StartsUsing { id: "7602", source: "Marble Dragon" } jump "oc-md-p4o"
+50996.3 "--sync--" StartsUsing { id: "7614", source: "Marble Dragon" } jump "oc-md-p4+"
+50997.3 "Imitation Blizzard (circles/crosses?)" #Ability { id: "7602", source: "Marble Dragon" }
+
+# Pattern 4 - Crosses First
+51096.3 label "oc-md-p4+"
+51096.7 "Imitation Blizzard (crosses)" Ability { id: "7614", source: "Marble Dragon" }
+51097.1 "--towers x6--" Ability { id: "A716", source: "Marble Dragon" }
+51100.4 "Imitation Blizzard (towers)" Ability { id: "7615", source: "Marble Dragon" }
+51102.6 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+51105.9 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
+51107.4 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+51107.4 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
+51112.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+51113.3 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+51115.4 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
+51115.8 "--towers x6--" Ability { id: "A716", source: "Marble Dragon" }
+51119.1 "Imitation Blizzard (towers)" #Ability { id: "7615", source: "Marble Dragon" }
+51121.3 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+51124.6 "Imitation Blizzard (crosses)" Ability { id: "7614", source: "Marble Dragon" }
+51129.4 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
+51132.3 "--sync--" StartsUsing { id: "77F1", source: "Marble Dragon" } jump "oc-md-p4-end"
+51137.3 "Imitation Star" #Ability { id: "77F1", source: "Marble Dragon" }
+51148.4 "Dread Deluge" #Ability { id: "77E8", source: "Marble Dragon" }
+51150.4 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+51182.5 "Lifeless Legacy (Enrage)" #Ability { id: "756D", source: "Marble Dragon" }
+
+# Pattern 4 - Circles First
+51295.7 label "oc-md-p4o"
+51296.7 "Imitation Blizzard (circles)" Ability { id: "7602", source: "Marble Dragon" }
+51297.1 "--towers x6--" Ability { id: "A716", source: "Marble Dragon" }
+51300.4 "Imitation Blizzard (towers)" Ability { id: "7615", source: "Marble Dragon" }
+51302.6 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+51305.9 "Imitation Blizzard (crosses)" #Ability { id: "7614", source: "Marble Dragon" }
+51307.3 "--middle--" Ability { id: "756C", source: "Marble Dragon" }
+51307.3 "Imitation Rain" #Ability { id: "7687", source: "Marble Dragon" }
+51312.2 "Ball of Ice" Ability { id: "A715", source: "Marble Dragon" }
+51313.0 "Draconiform Motion" Ability { id: "77C1", source: "Marble Dragon" }
+51315.4 "Imitation Blizzard (cross)" Ability { id: "7614", source: "Marble Dragon" }
+51315.8 "--towers x6--" Ability { id: "A716", source: "Marble Dragon" }
+51319.1 "Imitation Blizzard (towers)" Ability { id: "7615", source: "Marble Dragon" }
+51321.3 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
+51324.6 "Imitation Blizzard  (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+51329.4 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
+
+51331.8 label "oc-md-p4-end"
+51336.8 "Imitation Star" Ability { id: "77F1", source: "Marble Dragon" } duration 2.9
+51347.9 "Dread Deluge (castbar)" Ability { id: "77E8", source: "Marble Dragon" }
+51349.9 "Dread Deluge x6" #Ability { id: "77F0", source: "Marble Dragon" }
+51382.0 "Lifeless Legacy (Enrage)" Ability { id: "756D", source: "Marble Dragon" }
+51383.9 "Lifeless Legacy (Enrage)" Ability { id: "9ECD", source: "Marble Dragon" }
+
+# Enrage loop
+# Note: Time between the loop casts is an estimated guess
+51386.7 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" }
+51386.7 label "oc-marble-dragon-enrage-loop"
+51391.4 "Lifeless Legacy (Enrage)" Ability { id: "756E", source: "Marble Dragon" } jump "oc-marble-dragon-enrage-loop"
+
+### Magitaur
+# -ii A325 9BE7 9BE5 A248 A249 A24D A24E A266 ADC2 ADC3 A25C A25D A258 A259 A243 A244 A245 A246
+# -p A264:60014.3
+# -it "Magitaur" "Lance Empowerment Conduit" "Axe Empowerment Conduit" "Universal Empowerment Conduit"
+# IGNORED ABILITIES
+# A243 Attack
+# A244 Attack
+# A245 Attack
+# A246 Attack
+# A248 Critical Axeblow damage
+# A249 Critical Axeblow damage
+# A24E Critical Lanceblow damage
+# A24D Critical Lanceblow damage
+# A258 Lancelight damage
+# A259 Lancelight damage
+# A25C Arcane Recoil tankbuster when Axe Empowerment Conduit or Lance Empowerment Conduit dies
+# A25D Arcane Reaction tankbuster when Universal Empowerment Conduit dies, causes Hysteria (1047) 60s, needs to be killed by Phantom Berserker
+# A266 Forked Fury damage
+# A325 Attack
+# ADC2 Aura Burst enrage damage
+# ADC3 Holy enrage damage
+# 9BE5 Aura Burst damage
+# 9BE6 Holy damage
+# 9BE7 Unsealed Aura damage
+#
+# ALL ENCOUNTER ABILITIES
+# A1B7 --sync--
+# A241 Unseal
+# A242 Unseal
+# A247 Critical Axeblow
+# A24B Critical Lanceblow
+# A24C --sync--
+# A24F Rune Axe
+# A250 Ruinous Rune
+# A251 Ruinous Rune
+# A252 Carving Rune
+# A253 Axeglow
+# A254 Axeglow
+# A255 Holy Lance
+# A256 --sync--
+# A257 Holy IV
+# A25A Aura Burst
+# A25B Holy
+# A25E Sage's Staff
+# A25F Mana Expulsion
+# A260 Assassin's Dagger
+# A261 Assassin's Dagger
+# A262 Assassin's Dagger
+# A263 Assassin's Dagger
+# A264 Unsealed Aura
+# A265 Forked Fury
+# A267 Unsealed Aura (Enrage cast)
+# A268 Unsealed Aura (Post-Enrage cast)
+# 9BE8 Unsealed Aura (Enrage damage)
+# The Haematology Room will be sealed off
+60000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1453" } window 100000,0
+60010.1 "--sync--" StartsUsing { id: "A264", source: "Magitaur" } window 100,50
+60014.3 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
+60030.3 "Unseal" Ability { id: ["A241", "A242"], source: "Magitaur" }
+60044.9 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+
+# Assassin's Dagger 1
+60051.1 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
+60051.4 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
+60053.4 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60055.4 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
+60057.4 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+
+60059.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump "oc-magitaur-daggers-axe"
+60059.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } jump "oc-magitaur-daggers-lance"
+60059.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60061.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60063.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60064.1 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
+60065.4 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60067.4 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60069.4 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60071.4 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60073.4 "Assassin's Dagger 6 Returns" #Ability { id: "A263", source: "Assassin's Dagger" }
+60074.4 "Critical Lanceblow / Critical Axeblow?" #Ability { id: ["A24B", "A247"], source: "Magitaur" } duration 1.1
+
+# Pattern 1 - Axeblow first
+60159.1 label "oc-magitaur-daggers-axe"
+60159.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60161.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60163.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60164.1 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60164.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60165.4 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60167.4 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60169.4 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60171.4 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60173.4 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60174.4 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60174.4 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+
+60185.0 "Forked Fury" #Ability { id: "A265", source: "Magitaur" }
+60195.0 "--middle--" #Ability { id: "A1B7", source: "Magitaur" }
+
+# Pattern 1 - Lanceblow first
+60259.1 label "oc-magitaur-daggers-lance"
+60259.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60261.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60263.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60264.1 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60264.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60265.4 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60267.4 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60269.4 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60271.4 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60273.4 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60274.4 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+
+60285.0 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6 window 300,5
+60295.0 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+60315.4 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
+60329.5 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+
+# Sage Staff
+60336.2 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
+
+60339.1 "--sync--" StartsUsing { id: "A247", source: "Magitaur" } jump "oc-magitaur-staff-axe"
+60339.1 "--sync--" StartsUsing { id: "A24B", source: "Magitaur" } jump "oc-magitaur-staff-lance"
+60344.6 "Critical Axeblow / Critical Lanceblow?" #Ability { id: ["A247", "A24B"], source: "Magitaur" } duration 1.1
+60344.6 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60350.6 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
+60353.6 "Sage's Staff" #Ability { id: "A25E", source: "Magitaur" }
+60361.8 "Critical Lanceblow / Critical Axeblow?" #Ability { id: ["A24B", "A247"], source: "Magitaur" } duration 1.1
+60361.8 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60368.0 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
+60372.0 "Unsealed Aura" #Ability { id: "A264", source: "Magitaur" } duration 1
+60386.0 "Unseal" #Ability { id: "A241", source: "Magitaur" }
+
+# Pattern 2 - Axeblow first
+60439.1 label "oc-magitaur-staff-axe"
+60444.6 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60450.6 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
+60453.6 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
+60461.8 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1 jump "oc-magitaur-staff-end"
+60461.8 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60468.0 "Mana Expulsion" #Ability { id: "A25F", source: "Sage's Staff" }
+60472.0 "Unsealed Aura" #Ability { id: "A264", source: "Magitaur" } duration 1
+60486.0 "Unseal" #Ability { id: "A241", source: "Magitaur" }
+60498.6 "--middle--" #Ability { id: "A1B7", source: "Magitaur" }
+
+# Pattern 2 - Lanceblow first
+60539.1 label "oc-magitaur-staff-lance"
+60544.6 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60544.6 "--sync--" #Ability { id: "A24C", source: "Magitaur" } # Only after Lanceblow A24B
+60550.6 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
+60553.6 "Sage's Staff" Ability { id: "A25E", source: "Magitaur" }
+60561.8 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+
+60561.8 label "oc-magitaur-staff-end"
+60568.0 "Mana Expulsion" Ability { id: "A25F", source: "Sage's Staff" }
+60572.0 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
+60586.0 "Unseal" Ability { id: "A241", source: "Magitaur" }
+60598.6 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+
+# Rune Axe
+# NOTE: This section only has Critical Lanceblow
+60605.0 "Rune Axe" Ability { id: "A24F", source: "Magitaur" }
+60607.1 "--Big Rune Marker--" HeadMarker { id: "023D" }
+60611.0 "--Small Rune Markers x3--" #HeadMarker { id: "0159" }
+60615.1 "Big Ruinous Rune" #Ability { id: "A251", source: "Magitaur" }
+60615.1 "Axeglow" Ability { id: "A254", source: "Magitaur" }
+60618.9 "--Big Rune Marker--" HeadMarker { id: "023D" }
+60618.9 "--Small Rune Markers x2--" #HeadMarker { id: "0159" }
+60619.0 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60619.0 "Small Ruinous Rune x3" #Ability { id: "A250", source: "Magitaur" }
+60619.0 "Axeglow" Ability { id: "A253", source: "Magitaur" }
+60620.2 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" }
+60620.2 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60620.9 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60622.9 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60624.9 "Carving Rune" #Ability { id: "A252", source: "Magitaur" }
+60626.9 "Big Ruinous Rune" #Ability { id: "A251", source: "Magitaur" }
+60626.9 "Small Ruinous Rune x2" #Ability { id: "A250", source: "Magitaur" }
+60626.9 "Axeglow" Ability { id: "A253", source: "Magitaur" }
+60626.9 "Axeglow" #Ability { id: "A254", source: "Magitaur" }
+60638.8 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
+
+60648.8 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+60669.2 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
+
+# Assassin's Dagger 2
+# NOTE: Critical Lanceblow seems to always be first and Axeblow second
+60679.1 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22 window 10,5
+60679.4 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
+60681.4 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60683.4 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
+60685.4 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60687.4 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60689.4 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60691.4 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60692.1 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60692.1 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60693.3 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60695.3 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60697.3 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60699.3 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60701.3 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60702.3 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60712.5 "Unseal" Ability { id: ["A241", "A242"], source: "Magitaur" }
+60725.1 "--mddle--" Ability { id: "A1B7", source: "Magitaur" }
+
+# Holy Lance
+# NOTE: Critical Lanceblow is always first and Axeblow second
+# NOTE2: Logs may have wrong source such as Luminous Lance or Magitaur
+60731.8 "Holy Lance" Ability { id: "A255", source: "Magitaur" }
+60741.2 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60741.2 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60745.9 "Lance 1" #Ability { id: "A256", source: "Luminous Lance" }
+60747.9 "Lance 2" #Ability { id: "A256", source: "Luminous Lance" }
+60749.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
+60749.9 "Lance 3" #Ability { id: "A256", source: "Luminous Lance" }
+60751.9 "Lance 4" #Ability { id: "A256", source: "Luminous Lance" }
+60753.9 "Lance 5" #Ability { id: "A256", source: "Luminous Lance" }
+60755.9 "Lance 6" #Ability { id: "A256", source: "Luminous Lance" }
+60757.9 "Holy IV" Ability { id: "A257", source: "Magitaur" }
+60757.9 "Lance 7" #Ability { id: "A256", source: "Luminous Lance" }
+60759.9 "Lance 8" #Ability { id: "A256", source: "Luminous Lance" }
+60761.9 "Lance 9" #Ability { id: "A256", source: "Luminous Lance" }
+60763.9 "Lance 10" #Ability { id: "A256", source: "Luminous Lance" }
+60765.9 "Holy IV" Ability { id: "A257", source: ["Magitaur", "Luminous Lance"] }
+60765.9 "Lance 11" #Ability { id: "A256", source: "Luminous Lance" }
+60767.9 "Lance 12" #Ability { id: "A256", source: "Luminous Lance" }
+60769.7 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60779.0 "Unsealed Aura" Ability { id: "A264", source: "Magitaur" } duration 1
+60788.4 "Forked Fury" Ability { id: "A265", source: "Magitaur" } duration 0.6
+
+60798.4 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
+60819.0 "Aura Burst / Holy" Ability { id: ["A25A", "A25B"], source: "Magitaur" } duration 1
+
+# Assassin's Dagge 3
+# NOTE: Critical Lanceblow seems to always be first and Axeblow second
+60828.8 "Assassin's Dagger (castbar)" Ability { id: "A260", source: "Magitaur" } duration 22
+60829.1 "Assassin's Dagger 1" Ability { id: "A261", source: "Assassin's Dagger" }
+60831.1 "Assassin's Dagger 1 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60833.1 "Assassin's Dagger 2" #Ability { id: "A262", source: "Assassin's Dagger" }
+60835.1 "Assassin's Dagger 2 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60837.1 "Assassin's Dagger 3" #Ability { id: "A262", source: "Assassin's Dagger" }
+60839.1 "Assassin's Dagger 3 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60841.1 "Assassin's Dagger 4" #Ability { id: "A262", source: "Assassin's Dagger" }
+60841.8 "Critical Lanceblow" Ability { id: "A24B", source: "Magitaur" } duration 1.1
+60841.8 "--sync--" #Ability { id: "A24C", source: "Magitaur" }
+60843.0 "Assassin's Dagger 4 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60845.0 "Assassin's Dagger 5" #Ability { id: "A262", source: "Assassin's Dagger" }
+60847.0 "Assassin's Dagger 5 Returns" #Ability { id: "A262", source: "Assassin's Dagger" }
+60849.0 "Assassin's Dagger 6" #Ability { id: "A262", source: "Assassin's Dagger" }
+60851.0 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
+60852.0 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
+60879.4 "Unsealed Aura (Enrage)" Ability { id: "A267", source: "Magitaur" }
+60880.3 "Unsealed Aura (Enrage)" Ability { id: "9BE8", source: "Magitaur" }
+
+# Enrage Loop
+# Note: Time between the loop casts is an estimated guess
+60883.4 "Unsealed Aura" Ability { id: "A268", source: "Magitaur" }
+60883.4 label "oc-magitaur-enrage-loop"
+60887.8 "Unsealed Aura" Ability { id: "A268", source: "Magitaur" } jump "oc-magitaur-enrage-loop"
