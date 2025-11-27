@@ -813,7 +813,7 @@ hideall "--sync--"
 # A443 Massive Explosion (Trap) exploding a massive Trap
 # A61F Ancient Aero III (Tower Idol)
 # A624 Massive Explosion (Tower Progenitrix) starts enrage cast if Tower Progenitor dies
-# A625 Massive Explosion (Tower Progenitor) starts enrage cast if Tower Progenitrix dies 
+# A625 Massive Explosion (Tower Progenitor) starts enrage cast if Tower Progenitrix dies
 # A62A Nexus of Flame (Tower Progenitrix) Pulsing aoe (1.9s) from being too close/far from Tower Progenitor during A620/A622
 # A62B Massive Explosion (Lava Bomb) Lava Bomb add reaching Tower Progenitor/Tower Progenitrix
 # 46D1 Attack (Tower Idol) (Tower Abyss)
@@ -1348,7 +1348,7 @@ hideall "--sync--"
 60701.3 "Assassin's Dagger 6 Returns" Ability { id: "A263", source: "Assassin's Dagger" }
 60702.3 "Critical Axeblow" Ability { id: "A247", source: "Magitaur" } duration 1.1
 60712.5 "Unseal" Ability { id: ["A241", "A242"], source: "Magitaur" }
-60725.1 "--mddle--" Ability { id: "A1B7", source: "Magitaur" }
+60725.1 "--middle--" Ability { id: "A1B7", source: "Magitaur" }
 
 # Holy Lance
 # NOTE: Critical Lanceblow is always first and Axeblow second

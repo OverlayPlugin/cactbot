@@ -99,9 +99,11 @@ const deadStarsBlueHitId = 'A5E4';
 const deadStarsOutputStrings = {
   lineStacksOnPlayers: {
     en: 'Line Stacks on ${player1}, ${player2}, ${player3}',
+    cn: '直线分摊点 ${player1}, ${player2}, ${player3}',
   },
   lineStackOnYouTankCleave: {
     en: 'Line Stack on YOU, Avoid Tank Cleave',
+    cn: '直线分摊点名，躲避坦克顺劈',
   },
   lineStackOnYou: {
     en: 'Line Stack on YOU',
@@ -176,66 +178,87 @@ const getPuddleLocation = (x, y) => {
 const magitaurOutputStrings = {
   rune1BigAoeOnYou: {
     en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+    cn: '大圈点名, 去紫圈墙边',
   },
   rune1SmallAoeOnYou: {
     en: 'Small aoe on YOU, Stay Square => Between Squares',
+    cn: '小圈点名, 留在方块内 => 方块间',
   },
   rune1BigAoeOnPlayer: {
     en: 'Big AOE on ${player}, Be on Square',
+    cn: '大圈点 ${player}, 去方块内',
   },
   rune1SmallAoesOnPlayers: {
     en: 'Small aoes on ${player1}, ${player2}, ${player3}',
+    cn: '小圈点 ${player1}, ${player2}, ${player3}',
   },
   rune1SmallAoEStayThenIn: {
     en: 'Stay for AOE => In, Between Squares',
+    cn: '留在方块外 => 内, 方块间',
   },
   rune2BigAoeOnYouLater: {
     en: 'Big AOE on YOU (Later)',
+    cn: '大圈点名 (稍后)',
   },
   rune2SmallAoeOnYouLater: {
     en: 'Small aoe on YOU (Later)',
+    cn: '小圈点名 (稍后)',
   },
   rune2InBigAoeOnYou: {
     en: 'In, Between Squares => To Wall',
+    cn: '内, 方块间 => 去墙边',
   },
   rune2InSmallAoeOnYou: {
     en: 'In, Between Squares => Solo Square',
+    cn: '内, 方块间 => 单人方块',
   },
   rune2AoesOnPlayers: {
     en: 'AOEs on ${player1}, ${player2}, ${player3}',
+    cn: '圈点 ${player1}, ${player2}, ${player3}',
   },
   rune2AvoidPlayers: {
     en: 'On Square, Avoid ${player1} & ${player2}',
+    cn: '方块内, 远离 ${player1} 和 ${player2}',
   },
   rune2SmallAoeOnYouReminder: {
     en: 'Small aoe on YOU, Be on Square (Solo)',
+    cn: '小圈点名, 去方块内 (单人)',
   },
   rune2BigAoeOnYouReminder: {
     en: 'Big AOE on YOU, Go to Wall by Purple Circle',
+    cn: '大圈点名, 去紫圈墙边',
   },
   inThenOnSquare: {
     en: 'In, between Squares => On Square',
+    cn: '内, 方块间 => 方块内',
   },
   northeastOff: {
     en: 'Northeast Off',
+    cn: '右上外',
   },
   northeastOn: {
     en: 'Northeast On',
+    cn: '右上内',
   },
   southOff: {
     en: 'South Off',
+    cn: '下方外',
   },
   southOn: {
     en: 'South On',
+    cn: '下方内',
   },
   northwestOff: {
     en: 'Northwest Off',
+    cn: '左上外',
   },
   out: {
     en: 'Out, Square Corner',
+    cn: '外, 方块角落',
   },
   in: {
     en: 'In, between Squares',
+    cn: '内, 方块间',
   },
 };
 Options.Triggers.push({
@@ -252,12 +275,17 @@ Options.Triggers.push({
       id: 'demonTabletRotation',
       name: {
         en: 'Forked Tower: Blood Demon Tablet Rotation Strategy',
+        cn: '两歧塔力之塔 恶魔板 旋转策略',
       },
       type: 'select',
       options: {
         en: {
           'Less movement by calling direction to go around instead of get behind.': 'optimization',
           'Early movement with get behind calls.': 'none',
+        },
+        cn: {
+          '提示绕行方向(非绕后)，减少移动量': 'optimization',
+          '提前提示绕后，方便提早移动': 'none',
         },
       },
       default: 'none',
@@ -266,12 +294,17 @@ Options.Triggers.push({
       id: 'marbleDragonImitationRainStrategy',
       name: {
         en: 'Forked Tower: Blood Marble Dragon Imitation Rain 1 and 5 Strategy',
+        cn: '两歧塔力之塔 大理石龙 仿效雨 1和5 策略',
       },
       type: 'select',
       options: {
         en: {
           'Cross-based: Calls based on southern cross puddle.': 'cross',
           'Ice-based: Calls based on Ice Puddle nearest to wall.': 'ice',
+        },
+        cn: {
+          '十字基准: 根据十字冰圈位置提示': 'cross',
+          '冰基准: 根据离墙最近的冰圈提示': 'ice',
         },
       },
       default: 'cross',
@@ -280,12 +313,17 @@ Options.Triggers.push({
       id: 'magitaurDaggers',
       name: {
         en: 'Forked Tower: Blood Magitaur Dagger Strategy',
+        cn: '两歧塔力之塔 魔陶洛斯 暗杀短剑 策略',
       },
       type: 'select',
       options: {
         en: {
           'BAP Daggers (Number and Letter Floor Markers)': 'bap',
           'No strategy (Y-Pattern and ⅄-Pattern)': 'none',
+        },
+        cn: {
+          'BAP短剑标记(数字和字母场景标记)': 'bap',
+          '无特定策略(Y型与⅄型)': 'none',
         },
       },
       default: 'none',
@@ -362,15 +400,19 @@ Options.Triggers.push({
         west: Outputs.west,
         eastWest: {
           en: 'East/West',
+          cn: '东/西',
         },
         northSouth: {
           en: 'North/South',
+          cn: '南/北',
         },
         baitCleave: {
           en: 'Bait Cleave',
+          cn: '诱导顺劈',
         },
         baitCleaveThenDir: {
           en: 'Bait Cleave => ${dir}',
+          cn: '诱导顺劈 => ${dir}',
         },
       },
     },
@@ -383,6 +425,7 @@ Options.Triggers.push({
       outputStrings: {
         squarePosition: {
           en: 'Rune Axe Square Position',
+          cn: '符文之斧方块站位',
         },
       },
     },
@@ -395,6 +438,7 @@ Options.Triggers.push({
       outputStrings: {
         squarePosition: {
           en: 'Holy Lance Square Position',
+          cn: '圣枪方块站位',
         },
       },
     },
@@ -615,6 +659,7 @@ Options.Triggers.push({
         out: Outputs.out,
         inKnockback: {
           en: 'In => Knockback',
+          cn: '内 => 击退',
         },
       },
     },
@@ -637,6 +682,7 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           tankbustersOnPlayers: {
             en: 'Tankbusters on ${player1}, ${player2}, ${player3}',
+            cn: '坦克死刑点 ${player1}, ${player2}, ${player3}',
           },
           tankBusterOnYou: Outputs.tankBusterOnYou,
         };
@@ -676,6 +722,7 @@ Options.Triggers.push({
         out: Outputs.out,
         inKnockback: {
           en: 'In => Knockback',
+          cn: '内 => 击退',
         },
       },
     },
@@ -774,21 +821,27 @@ Options.Triggers.push({
         right: Outputs.right,
         leftBehind: {
           en: 'Left (Behind Boss)',
+          cn: '左侧 (Boss后方)',
         },
         rightBehind: {
           en: 'Right (Behind Boss)',
+          cn: '右侧 (Boss后方)',
         },
         leftThenGetBehind: {
           en: 'Left => Get Behind',
+          cn: '左侧 => 去Boss后方',
         },
         rightThenGetBehind: {
           en: 'Right => Get Behind',
+          cn: '右侧 => 去Boss后方',
         },
         goRightAround: {
           en: 'Go Right and Around',
+          cn: '右侧绕行',
         },
         goLeftAround: {
           en: 'Go Left and Around',
+          cn: '左侧绕行',
         },
       },
     },
@@ -875,15 +928,19 @@ Options.Triggers.push({
         out: Outputs.out,
         inKnockback: {
           en: 'In => Knockback',
+          cn: '内 => 击退',
         },
         dirMech: {
           en: '${dir} & ${mech}',
+          cn: '${dir} 和 ${mech}',
         },
         hasMeteorMech: {
           en: 'Meteor on YOU, ${mech}',
+          cn: '陨石点名, ${mech}',
         },
         hasMeteorDirMech: {
           en: 'Meteor on YOU, Go ${dir} & ${mech}',
+          cn: '陨石点名, 去${dir} 并 ${mech}',
         },
       },
     },
@@ -976,21 +1033,27 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           stackLaunchTowardsBoss: {
             en: 'Stack, Launch towards Boss',
+            cn: '集合, 向Boss方向击飞',
           },
           stackLaunchOverBoss: {
             en: 'Stack, Launch over Boss',
+            cn: '集合, 越过Boss击飞',
           },
           goNorthOutStackOnYou: {
             en: 'Go North Out => Stack Launch Marker on You',
+            cn: '去上方外侧 => 集合击飞点名',
           },
           goNorthInStackOnYou: {
             en: 'Go North In (Knockback) => Stack Launch Marker on You',
+            cn: '去上方内侧 (击退) => 集合击飞点名',
           },
           goSouthOutStackOnYou: {
             en: 'Go South Out => Stack Launch Marker on You',
+            cn: '去下方外侧 => 集合击飞点名',
           },
           goSouthInStackOnYou: {
             en: 'Go South In (Knockback) => Stack Launch Marker on You',
+            cn: '去下方内侧 (击退) => 集合击飞点名',
           },
         };
         const north1 = data.demonTabletCometNorthTargets[0];
@@ -1020,6 +1083,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Add Positions and Out',
+          cn: '小怪站位并远离',
         },
       },
     },
@@ -1064,15 +1128,19 @@ Options.Triggers.push({
         south: Outputs.south,
         dirOutThenTowers: {
           en: '${dir} Out => Towers',
+          cn: '${dir} 外侧 => 塔',
         },
         goTowerSideOut: {
           en: 'Go Towers Side and Out',
+          cn: '去塔侧并远离',
         },
         dirInThenTowers: {
           en: '${dir} In => Knockback => Towers',
+          cn: '${dir} 内侧 => 击退 => 塔',
         },
         goTowerSideIn: {
           en: 'Go Towers Side and In => Knockback',
+          cn: '去塔侧并内侧 => 击退',
         },
       },
     },
@@ -1131,9 +1199,11 @@ Options.Triggers.push({
       outputStrings: {
         frontRightLater: {
           en: 'Front Right (Later)',
+          cn: '右前 (稍后)',
         },
         backLeftLater: {
           en: 'Back Left (Later)',
+          cn: '左后 (稍后)',
         },
       },
     },
@@ -1194,6 +1264,7 @@ Options.Triggers.push({
       outputStrings: {
         towersThenSafeSpot: {
           en: '${towers} => ${corner}',
+          cn: '${towers} => ${corner}',
         },
         getTowers: Outputs.getTowers,
         frontRight: {
@@ -1214,6 +1285,7 @@ Options.Triggers.push({
         },
         safeCorner: {
           en: 'Safe Corner',
+          cn: '安全角落',
         },
       },
     },
@@ -1234,6 +1306,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidFallingStatues: {
           en: 'Avoid Falling Statues',
+          cn: '躲避下落雕像',
         },
         frontRight: {
           en: 'Front Right',
@@ -1319,6 +1392,7 @@ Options.Triggers.push({
       outputStrings: {
         boss: {
           en: 'Tethered to ${boss}',
+          cn: '连线 ${boss}',
         },
       },
     },
@@ -1334,10 +1408,12 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           tankCleavesOnPlayers: {
             en: 'Tank Cleaves on ${player1}, ${player2}, ${player3}',
+            cn: '坦克顺劈点 ${player1}, ${player2}, ${player3}',
           },
           tankCleaveOnYou: Outputs.tankCleaveOnYou,
           tankCleaveOnYouLineStack: {
             en: 'Tank Cleave on YOU, Avoid Line Stack',
+            cn: '坦克顺劈点名, 避开直线分摊',
           },
         };
         data.deadStarsSliceTargets.push(matches.target);
@@ -1454,21 +1530,27 @@ Options.Triggers.push({
       outputStrings: {
         blue: {
           en: '+1 Blue',
+          cn: '+1 蓝',
         },
         blueTwo: {
           en: '+2 Blue',
+          cn: '+2 蓝',
         },
         blueThree: {
           en: '+3 Blue',
+          cn: '+3 蓝',
         },
         red: {
           en: '+1 Red',
+          cn: '+1 红',
         },
         redTwo: {
           en: '+2 Red',
+          cn: '+2 红',
         },
         redThree: {
           en: '+3 Red',
+          cn: '+3 红',
         },
       },
     },
@@ -1603,27 +1685,35 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         red: {
           en: 'Red: ${dirs}',
+          cn: '红: ${dirs}',
         },
         blue: {
           en: 'Blue: ${dirs}',
+          cn: '蓝: ${dirs}',
         },
         red1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          cn: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
         },
         blue1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          cn: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
         },
         red2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          cn: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
         },
         blue2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          cn: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
         },
         red3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          cn: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
         },
         blue3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          cn: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
         },
       },
     },
@@ -1665,12 +1755,15 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         getHitRedOoze: {
           en: '${hit} for Ooze',
+          cn: '${hit} 吃软泥',
         },
         getHitBlueOoze: {
           en: '${hit} for Ooze',
+          cn: '${hit} 吃软泥',
         },
         getHitBothOoze: {
           en: 'Red: ${red}, Blue: ${blue}',
+          cn: '红: ${red}, 蓝: ${blue}',
         },
       },
     },
@@ -1796,6 +1889,7 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         getHit: {
           en: '${dir} for Ooze',
+          cn: '去${dir}吃软泥',
         },
         safeSpot: {
           en: '${dir} Safe Spot',
@@ -1807,6 +1901,7 @@ Options.Triggers.push({
         },
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
+          cn: '${dir1} / ${dir2} 安全点',
         },
       },
     },
@@ -1869,6 +1964,7 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         getHit: {
           en: '${dir} for Ooze',
+          cn: '去${dir}吃软泥',
         },
         safeSpot: {
           en: '${dir} Safe Spot',
@@ -1880,6 +1976,7 @@ Options.Triggers.push({
         },
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
+          cn: '${dir1} / ${dir2} 安全点',
         },
       },
     },
@@ -2023,6 +2120,7 @@ Options.Triggers.push({
       outputStrings: {
         chargePositions: {
           en: 'Wild Charge Positions',
+          cn: '狂野冲锋站位',
         },
       },
     },
@@ -2085,9 +2183,11 @@ Options.Triggers.push({
           ...Directions.outputStrings8Dir,
           knockbackTetherDir: {
             en: 'Tether: Knockback to ${dir} => Stack at Wall',
+            cn: '连线: 击退到${dir} => 靠墙分摊',
           },
           knockbackToSnowball: {
             en: 'Knockback to Snowball => Stack at Wall',
+            cn: '击退到雪球 => 靠墙分摊',
           },
         };
         if (
@@ -2171,6 +2271,7 @@ Options.Triggers.push({
       outputStrings: {
         outOfMiddleGroups: {
           en: 'Out of Middle, Group Positions',
+          cn: '远离中间, 分组站位',
         },
       },
     },
@@ -2191,6 +2292,7 @@ Options.Triggers.push({
       outputStrings: {
         jetsThenSpread: {
           en: 'Dodge Two Jets => Spread',
+          cn: '躲避两次X波 => 分散',
         },
       },
     },
@@ -2246,12 +2348,15 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           interruptBhoot: {
             en: 'Interrupt Bhoot',
+            cn: '打断浮灵',
           },
           northInterrupt: {
             en: 'North: Interrupt Bhoot',
+            cn: '左桥: 打断浮灵',
           },
           southInterrupt: {
             en: 'South: Interrupt Bhoot',
+            cn: '右桥: 打断浮灵',
           },
         };
         // Tanks have 3y interrupt, only call about actor on their platform
@@ -2316,6 +2421,7 @@ Options.Triggers.push({
       outputStrings: {
         wildChargeEast: {
           en: 'Wild Charge (East), Stack in a Row',
+          cn: '狂野冲锋(右), 在同一行集合',
         },
       },
     },
@@ -2365,9 +2471,11 @@ Options.Triggers.push({
       outputStrings: {
         northAoEDispel: {
           en: 'North: AoE (Dispel if Possible)',
+          cn: '左桥: AOE (能驱散就驱散)',
         },
         southAoEDispel: {
           en: 'South: AoE (Dispel if Possible)',
+          cn: '右桥: AOE (能驱散就驱散)',
         },
       },
     },
@@ -2423,6 +2531,7 @@ Options.Triggers.push({
       outputStrings: {
         romeo: {
           en: 'Romeo\'s Ballad (if possible)',
+          cn: '爱之歌 (能用就用)',
         },
       },
     },
@@ -2455,21 +2564,27 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           topApart: {
             en: 'Top row (bosses apart)',
+            cn: '上排 (BOSS远离)',
           },
           bottomApart: {
             en: 'Bottom row (bosses apart)',
+            cn: '下排 (BOSS远离)',
           },
           bossesApart: {
             en: 'Move bosses apart',
+            cn: '让BOSS远离',
           },
           topTogether: {
             en: 'Top row (bosses together)',
+            cn: '上排 (BOSS靠近)',
           },
           bottomTogether: {
             en: 'Bottom row (bosses together)',
+            cn: '下排 (BOSS靠近)',
           },
           bossesTogether: {
             en: 'Move bosses together',
+            cn: '让BOSS靠近',
           },
         };
         const myBridge = data.prongedPassageActLoc[data.me];
@@ -2515,6 +2630,7 @@ Options.Triggers.push({
       outputStrings: {
         wildChargeEast: {
           en: 'Wild Charge (East), Stack in a Row',
+          cn: '狂野冲锋(右), 在同一行集合',
         },
       },
     },
@@ -2535,6 +2651,7 @@ Options.Triggers.push({
       outputStrings: {
         pullBossAway: {
           en: 'Pull boss away from bombs',
+          cn: '将BOSS拉离炸弹',
         },
         killAdds: Outputs.killAdds,
       },
@@ -2633,9 +2750,11 @@ Options.Triggers.push({
         west: Outputs.west,
         eastWest: {
           en: 'East/West',
+          cn: '左/右',
         },
         northSouth: {
           en: 'North/South',
+          cn: '上/下',
         },
         sides: Outputs.sides,
       },
@@ -2723,18 +2842,23 @@ Options.Triggers.push({
         west: Outputs.west,
         eastLater: {
           en: '(${dir} Later)',
+          cn: '(稍后 ${dir})',
         },
         westLater: {
           en: '(${dir} Later)',
+          cn: '(稍后 ${dir})',
         },
         eastThenWickedWater: {
           en: '(${dir1} Later => ${dir2})',
+          cn: '(稍后 ${dir1} => ${dir2})',
         },
         westThenWickedWater: {
           en: '(${dir1} Later => ${dir2})',
+          cn: '(稍后 ${dir1} => ${dir2})',
         },
         wickedWater: {
           en: 'Get Hit ${dir}',
+          cn: '站在${dir}吃圈',
         },
       },
     },
@@ -2845,9 +2969,11 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           tankBusterBleeds: {
             en: 'Tankbuster Bleeds',
+            cn: '坦克流血死刑',
           },
           tankBusterBleedOnYou: {
             en: 'Tankbuster bleed on YOU',
+            cn: '坦克流血死刑点名',
           },
         };
         data.marbleDragonDelugeTargets.push(matches.target);
@@ -2952,9 +3078,11 @@ Options.Triggers.push({
       outputStrings: {
         east: {
           en: '(East Later)',
+          cn: '(稍后左)',
         },
         west: {
           en: '(West Later)',
+          cn: '(稍后右)',
         },
       },
     },
@@ -3039,9 +3167,11 @@ Options.Triggers.push({
       outputStrings: {
         crossesFirst: {
           en: 'Crosses First + ${clock}',
+          cn: '先十字 + ${clock}',
         },
         circlesFirst: {
           en: 'Circles First + ${clock}',
+          cn: '先圆圈 + ${clock}',
         },
         clockwise: Outputs.clockwise,
         counterclockwise: Outputs.counterclockwise,
@@ -3073,9 +3203,11 @@ Options.Triggers.push({
           dirWSW: Outputs.dirWSW,
           cross1Dodge: {
             en: '${dir}',
+            cn: '${dir}',
           },
           circles1Dodge: {
             en: '${dir}',
+            cn: '${dir}',
           },
         };
         const x = parseFloat(matches.x);
@@ -3139,6 +3271,7 @@ Options.Triggers.push({
         west: Outputs.west,
         twoDirs: {
           en: '${dir1}/${dir2}',
+          cn: '${dir1}/${dir2}',
         },
       },
     },
@@ -3162,6 +3295,7 @@ Options.Triggers.push({
       outputStrings: {
         avoidTwister: {
           en: 'Avoid Twister',
+          cn: '远离龙卷风',
         },
       },
     },
@@ -3204,9 +3338,11 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         diveDirsThenTowers: {
           en: '${dir1}/${dir2} Dive => Towers',
+          cn: '${dir1}/${dir2} 俯冲 => 塔',
         },
         bossDiveThenTowers: {
           en: 'Boss Dive => Towers',
+          cn: 'BOSS俯冲 => 塔',
         },
       },
     },
@@ -3233,12 +3369,15 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         towersUnknownDir: {
           en: 'Towers => Cardinal/Intercard Towers',
+          cn: '塔 => 正点/斜点塔',
         },
         towerDirsThenCardinalTowers: {
           en: '${dir1}/${dir2} Towers => Cardinal Towers',
+          cn: '${dir1}/${dir2} 塔 => 正点塔',
         },
         towerDirsThenIntercardTowers: {
           en: '${dir1}/${dir2} Towers => Intercard Towers',
+          cn: '${dir1}/${dir2} 塔 => 斜点塔',
         },
       },
     },
@@ -3268,12 +3407,15 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         unknownTowers: {
           en: 'Cardinal/Intercard Towers',
+          cn: '正点/斜点塔',
         },
         cardinalTowers: {
           en: 'Cardinal Towers',
+          cn: '正点塔',
         },
         intercardTowers: {
           en: 'Intercardinal Towers',
+          cn: '斜点塔',
         },
       },
     },
@@ -3319,6 +3461,7 @@ Options.Triggers.push({
       outputStrings: {
         wickedWaterOnYou: {
           en: 'Wicked Water on YOU',
+          cn: '水圈点名',
         },
       },
     },
@@ -3337,6 +3480,7 @@ Options.Triggers.push({
       outputStrings: {
         getHitByIceExplosion: {
           en: 'Get hit by ice explosion',
+          cn: '吃冰圈爆炸',
         },
       },
     },
@@ -3356,6 +3500,7 @@ Options.Triggers.push({
       outputStrings: {
         breakGaols: {
           en: 'Break Gaols',
+          cn: '打破冰牢',
         },
       },
     },
@@ -3478,9 +3623,11 @@ Options.Triggers.push({
       outputStrings: {
         circlesFirst: {
           en: 'Circles First',
+          cn: '先圆圈',
         },
         crossesFirst: {
           en: 'Crosses First',
+          cn: '先十字',
         },
       },
     },
@@ -3570,18 +3717,23 @@ Options.Triggers.push({
       outputStrings: {
         eastWest: {
           en: 'East/West',
+          cn: '左/右',
         },
         northSouth: {
           en: 'North/South',
+          cn: '上/下',
         },
         dirCrossesFirst: {
           en: '${dir}: Crosses First + ${clock}',
+          cn: '${dir}: 先十字 + ${clock}',
         },
         dirCirclesFirst: {
           en: '${dir}: Circles First + ${clock}',
+          cn: '${dir}: 先圆圈 + ${clock}',
         },
         dirClock: {
           en: '${dir}: ${clock}',
+          cn: '${dir}: ${clock}',
         },
         clockwise: Outputs.clockwise,
         counterclockwise: Outputs.counterclockwise,
@@ -3639,25 +3791,32 @@ Options.Triggers.push({
       outputStrings: {
         eastWest: {
           en: 'East/West',
+          cn: '左/右',
         },
         northSouth: {
           en: 'North/South',
+          cn: '上/下',
         },
         getTowers: Outputs.getTowers,
         getVerticalTowers: {
           en: 'Get Vertical Towers',
+          cn: '去竖排塔',
         },
         getHorizontalTowers: {
           en: 'Get Horizontal Towers',
+          cn: '去横排塔',
         },
         getTowersDir: {
           en: '${text} => ${dir}',
+          cn: '${text} => ${dir}',
         },
         getVerticalTowersDir: {
           en: 'Get Vertical Towers => ${dir}',
+          cn: '去竖排塔 => ${dir}',
         },
         getHorizontalTowersDir: {
           en: 'Get Horizontal Towers => ${dir}',
+          cn: '去横排塔 => ${dir}',
         },
       },
     },
@@ -3683,9 +3842,11 @@ Options.Triggers.push({
       outputStrings: {
         eastWest: {
           en: 'East/West',
+          cn: '左/右',
         },
         northSouth: {
           en: 'North/South',
+          cn: '上/下',
         },
       },
     },
@@ -3715,6 +3876,7 @@ Options.Triggers.push({
       outputStrings: {
         recuperation: {
           en: 'Recuperation (if possible)',
+          cn: '回复 (能用就用)',
         },
       },
     },
@@ -3769,6 +3931,7 @@ Options.Triggers.push({
       outputStrings: {
         spawned: {
           en: 'Master Lockward spawned',
+          cn: '首领看锁人出现',
         },
       },
     },
@@ -3800,9 +3963,11 @@ Options.Triggers.push({
       outputStrings: {
         tanksFar: {
           en: 'Tanks Far (Party Close) x3',
+          cn: '坦克远离 (人群靠近) x3',
         },
         tanksNear: {
           en: 'Tanks Close (Party Far) x3',
+          cn: '坦克靠近 (人群远离) x3',
         },
       },
     },
@@ -3857,18 +4022,23 @@ Options.Triggers.push({
       outputStrings: {
         startOnLetters: {
           en: 'Start on Letters',
+          cn: '字母点开始',
         },
         startOnNumbers: {
           en: 'Start on Numbers',
+          cn: '数字点开始',
         },
         pattern1: {
-          en: '⅄ Daggers', // Displays an upside down Y
+          en: '⅄ Daggers',
+          cn: '⅄ 形短剑',
         },
         pattern1TtsText: {
           en: 'Flipped Y Daggers',
+          cn: '倒 Y 形短剑',
         },
         pattern2: {
           en: 'Y Daggers',
+          cn: 'Y 形短剑',
         },
       },
     },
@@ -3930,6 +4100,7 @@ Options.Triggers.push({
         },
         nearFarTankCleave: {
           en: 'Near and far tank cleave => 2 tank autos',
+          cn: '近远坦克死刑 => 2次坦克普攻',
         },
       },
     },
@@ -3947,9 +4118,11 @@ Options.Triggers.push({
       outputStrings: {
         blueCanisters: {
           en: 'Attack Blue Canisters (Lance)',
+          cn: '攻击蓝色罐子 (枪)',
         },
         yellowCanisters: {
           en: 'Attack Yellow Canisters (Axe)',
+          cn: '攻击黄色罐子 (斧)',
         },
       },
     },
@@ -3977,6 +4150,7 @@ Options.Triggers.push({
       outputStrings: {
         lineStackStaff: {
           en: 'Line stack at staff',
+          cn: '直线分摊法杖伤害',
         },
       },
     },
@@ -4263,12 +4437,15 @@ Options.Triggers.push({
       outputStrings: {
         shortStackOnYou: {
           en: 'Short Stack on YOU (17)',
+          cn: '短分摊点名 (17秒)',
         },
         mediumStackOnYou: {
           en: 'Medium Stack on YOU (25)',
+          cn: '中分摊点名 (25秒)',
         },
         longStackOnYou: {
           en: 'Long Stack on YOU (33)',
+          cn: '长分摊点名 (33秒)',
         },
       },
     },
@@ -4510,64 +4687,225 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
+        'Assassin\'s Dagger': '暗杀短剑',
         'Ball of Fire': '火球',
         'Black Star': '黑色天星',
         'Clawmarks': '抓痕',
         'Cloister Demon': '回廊恶魔',
         'Crescent Berserker': '新月狂战士',
         'Crystal Dragon': '水晶龙',
+        'Dead Stars': '星头三兄弟',
         'Death Claw': '死亡爪',
+        'Demon Tablet': '恶魔板',
         'Draconic Double': '水晶龙的幻影',
+        'Frozen Phobos': '冰冻的福博斯',
+        'Gaseous Nereid': '燃烧的涅瑞伊得',
+        'Gaseous Phobos': '燃烧的福博斯',
+        'Guardian Berserker': '狂战士守卫',
+        'Guardian Knight': '骑士守卫',
+        'Guardian Weapon': '兵装守卫',
+        'Guardian Wraith': '幽灵守卫',
         'Hinkypunk': '鬼火苗',
+        'Ice Golem': '寒冰巨像',
+        'Icewind': '冰风',
         'Lion Rampant': '跃立狮',
+        'Liquified Triton': '融化的特里同',
+        'Luminous Lance': '光枪',
+        'Magitaur': '魔陶洛斯',
+        'Marble Dragon': '大理石龙',
+        'Master Lockward': '首领看锁人',
         'Neo Garula': '进化加鲁拉',
+        'Nereid': '涅瑞伊得',
         'Nymian Petalodus': '尼姆瓣齿鲨',
         'Phantom Claw': '死亡爪的幻影',
+        '(?<! )Phobos': '福博斯',
         'Repaired Lion': '复原狮像',
+        'Sage\'s Staff': '贤者之杖',
+        'Tower Abyss': '两歧塔深渊',
+        'Tower Bhoot': '两歧塔浮灵',
+        'Tower Idol': '两歧塔石偶',
+        'Tower Manticore': '两歧塔曼提克',
+        'Tower Progenitor': '两歧塔爆弹之父',
+        'Tower Progenitrix': '两歧塔爆弹之母',
+        'Trap': '陷阱',
+        '(?<! )Triton': '特里同',
       },
       'replaceText': {
+        '--adds--': '--小怪--',
+        '--adds-targetable--': '--小怪可选中--',
+        '--Big Rune Marker': '--大圈点名',
+        '--Bosses untargetable--': '--BOSS 不可选中--',
+        '--Burns': '--雷区',
+        '--Dead Stars targetable--': '--星头三兄弟可选中--',
+        '--dive spot--': '--俯冲--',
+        '--Fireballs targetable--': '--火球可选中--',
+        '--golems ': '--巨像',
+        '--ice golems--': '--寒冰巨像--',
+        '--ice sprites--': '--冰元精--',
+        '--Icicle Puddles--': '--水圈--',
+        '--Nereid targetable--': '--涅瑞伊得可选中--',
+        '--Nereid untargetable--': '--涅瑞伊得不可选中--',
+        '--Phobos targetable--': '--福博斯可选中--',
+        '--Phobos untargetable--': '--福博斯得不可选中--',
+        '--Small Rune Markers': '--小圈点名',
+        '--Snowballs targetable--': '--雪球可选中--',
+        '--Snowballs untargetable--': '--雪球不可选中--',
+        '--Triton targetable--': '--特里同可选中--',
+        '--Triton untargetable--': '--特里同不可选中--',
+        '--towers': '--塔',
+        '--twisters end--': '--龙卷结束--',
+        '--twisters start--': '--龙卷开始--',
+        '\\(castbar\\)': '(读条)',
+        '\\(circle(s)?': '(圆圈',
+        '\\(Clear\\)': '(清场)',
+        'cross(es)?\\)': '十字)',
+        'cross(es)?\\?\\)': '十字?)',
+        '\\(Final\\)': '(最终)',
         '\\(in\\)': '(内)',
         '\\(jump\\)': '(跳)',
+        '\\(knockback\\)': '(击退)',
         '\\(Lightning\\)': '(雷)',
+        '\\(marker\\)': '(点名)',
         '\\(out\\)': '(外)',
+        '\\(Section': '(区域',
+        '\\(side': '(侧',
+        '\\(towers': '(塔',
         '\\(Wind\\)': '(风)',
+        'Arcane Spear': '魔枪',
+        'Assassin\'s Dagger': '暗杀短剑',
+        'Aura Burst': '灵气爆',
+        'Avalaunch': '冲天大雪球',
+        'Axeglow': '斧灵气',
+        'Ball of Ice': '冻结',
         'Bedrock Uplift': '地面隆起',
+        'Big Ruinous Rune': '破灭符文 (大)',
+        'Blazing Belligerent': '过热火球',
         'Blazing Flare': '炽热核爆',
         'Boil Over': '发怒',
+        'Bombshell Drop': '爆爆爆弹',
+        'Carving Rune': '符文镌刻',
         'Channeled Rage': '燥怒',
+        'Chilling Collision': '凝冰冲击',
         'Clawing Shadow': '雾霾爪',
         'Clawmarks': '抓痕',
+        'Close Call to Detonate': '爆炸声明：近',
+        'Collateral Balls': '飞来X弹',
+        'Collateral Damage': '飞来横祸',
+        'Collateral Jets': '飞来X波',
+        'Cometeor of Dangers Near': '压溃式恶魔微型陨石',
+        'Cometeor of Expulsion Afar': '排斥式恶魔微型陨石',
+        'Critical Axeblow': '致命斧',
+        'Critical Lanceblow': '致命枪',
         'Crystal Call': '生成晶石',
         'Crystal Mirror': '转移晶石',
+        'Crystallized Chaos': '水晶乱流',
         'Crystallized Energy': '水晶波动',
+        'Decisive Battle': '决战',
+        'Delta Attack': '三角攻击',
+        'Demonic Dark II': '恶魔昏暗',
+        'Demonograph of Dangers Near': '压溃式恶魔录',
+        'Demonograph of Expulsion Afar': '排斥式恶魔录',
+        'Demonography': '恶魔录',
+        'Dread Deluge': '恐慌泛滥',
+        'Draconiform Motion': '龙态行动',
         'Dirty Nails': '腐坏爪',
+        'Elemental Impact': '轰击',
+        'End of History': '魔启示',
+        'Erase Gravity': '微重力',
+        'Excruciating Equilibrium': '要死一起死',
+        'Exodus': '众生离绝',
         'Explosion': '爆炸',
+        'Far Cry to Detonate': '爆炸声明：远',
         'Fearsome Facet': '幻影晶石',
+        'Flame Thrower': '火炎放射',
+        'Fire Spread': '喷火',
+        'Firestrike': '重火炮',
+        'Forked Fury': '两歧之怒',
+        'Frigid Dive': '寒霜俯冲',
+        'Frigid Twister': '寒冰龙卷',
+        'Frozen Fallout': '毒液块飞跃',
+        'Frozen Heart': '霜冻之心',
+        'Fusion Burst': '融合爆炸',
+        'Geothermal Rupture': '地热爆破',
         'Gigaflare': '十亿核爆',
+        'Gravity of Dangers Near': '压溃式微重力',
+        'Gravity of Expulsion Afar': '排斥式微重力',
         'Great Ball of Fire': '火球',
         'Heated Outburst': '气焰',
         'Heightened Rage': '狂怒',
+        'Holy(?! )': '神圣',
+        'Holy IV': '极圣',
+        'Holy Lance': '圣枪',
         'Hopping Mad': '震击怒涛',
         'Horizontal Crosshatch': '横向双重抓',
+        'Icebound Buffoon': '过冷雪球',
+        'Imitation Blizzard': '仿效冰结',
+        'Imitation Icicle': '仿效冰柱',
+        'Imitation Rain': '仿效雨',
+        'Imitation Star': '仿效星',
         'Karmic Drain': '生命侵蚀',
+        'Lacunate Stream': '魔录奔流',
+        '(?<! )Lance(?<! )': '光枪',
+        'Lancelight': '枪灵气',
+        'Landing': '落地',
         'Lethal Nails': '死亡甲',
+        'Lifeless Legacy': '无命遗产',
         'Made Magic': '释放魔力',
+        'Mana Expulsion': '魔力冲动',
         'Manifold Marks': '多重抓痕',
+        'Noisome Nuisance': '过激毒球',
+        'Noxious Nova': '毒素爆散',
+        'Occult Chisel': '魔录凿刻',
+        'Portentous Comet(?!eor)': '恶魔彗星',
+        'Portentous Cometeor': '恶魔微型陨石',
         'Primal Roar': '大咆哮',
+        'Primordial Chaos': '毒液乐园',
         'Prismatic Wing': '水晶之翼',
+        'Punishing Pounce': '怒骂猛扑',
         'Raking Scratch': '尖甲疾袭',
+        'Ray of Dangers Near': '压溃式暗黑射线',
+        'Ray of Expulsion Afar': '排斥式暗黑射线',
+        'Ray of Ignorance': '暗黑射线',
+        'Recuperation': '痊愈宣告',
+        'Restore Gravity': '重力重置',
+        'Return(?!s)': '返回',
+        'Returns': '回返',
+        'Rotate Right': '右转向',
+        'Rotate Left': '左转向',
+        'Rotation': '转向',
+        '(?<! )Ruinous Rune': '破灭符文',
+        'Rune Axe': '符文之斧',
+        'Sage\'s Staff': '贤者之杖',
         'Scathing Sweep': '横砍',
         'Seal Asunder': '封印破坏',
+        'Self-Destruct': '自爆',
+        'Six-Handed Fistfight': '窝里斗',
+        'Slice \'n\' Dice': '斩切',
+        'Slice \'n\' Strike': '斩切再开炮',
         'Skulking Orders': '处刑令',
+        'Small Ruinous Rune': '破灭符文 (小)',
+        'Snow Boulder': '大雪球',
+        'Snowball Flight': '雪球狂奔',
         'Sunderseal Roar': '破封的咆哮',
+        'Summon': '召唤',
         'The Grip of Poison': '邪气的共振',
+        'Three-Body Probl─': '三体问题？',
+        'Three-Body Problem': '三体问题',
         'Threefold Marks': '三重抓痕',
+        'To the Winds': '爆炸四散',
         'Tidal Breath': '怒潮吐息',
+        'Unseal(?!ed)': '封印解除',
+        'Unsealed Aura': '灵气释放',
         'Vertical Crosshatch': '纵向双重抓',
+        'Vengeful Bio III': '复仇剧毒菌',
+        'Vengeful Blizzard III': '复仇冰封',
+        'Vengeful Fire III': '复仇爆炎',
         'Void Thunder III': '虚空暴雷',
+        'Withering Eternity': '无终的枯朽',
         'White-hot Rage': '气焰怒涛',
+        'Wild Charge': '狂野冲锋',
+        'Wicked Water': '诅咒之水',
       },
     },
     {
