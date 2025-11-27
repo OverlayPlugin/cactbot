@@ -262,7 +262,7 @@ const magitaurOutputStrings = {
   },
   rune1SmallAoeOnYou: {
     en: 'Small aoe on YOU, Stay Square => Between Squares',
-    cn: '小圈点名, 留在方块内=>方块间',
+    cn: '小圈点名, 留在方块内 => 方块间',
   },
   rune1BigAoeOnPlayer: {
     en: 'Big AOE on ${player}, Be on Square',
@@ -274,7 +274,7 @@ const magitaurOutputStrings = {
   },
   rune1SmallAoEStayThenIn: {
     en: 'Stay for AOE => In, Between Squares',
-    cn: '留在方块外=>内, 方块间',
+    cn: '留在方块外 => 内, 方块间',
   },
   rune2BigAoeOnYouLater: {
     en: 'Big AOE on YOU (Later)',
