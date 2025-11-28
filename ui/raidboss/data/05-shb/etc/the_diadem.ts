@@ -9,6 +9,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheDiadem,
   comments: {
     en: 'Timed node spawn alert',
+    de: 'Zeitliche Sammelstellen Erscheinungsalarm',
     fr: 'Alerte de génération de nœud programmée',
     cn: '限时采集点生成警报',
     ko: '시간제 노드 출현 알림',

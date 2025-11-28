@@ -107,6 +107,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitHand: {
           en: 'Bait Hand',
+          de: 'Hand ködern',
           fr: 'Prenez les mains',
           ja: '手の誘導',
           cn: '引导手',
@@ -129,6 +130,7 @@ const triggerSet: TriggerSet<Data> = {
         west: Outputs.west,
         text: {
           en: '${mid} => ${side}',
+          de: '${mid} => ${side}',
           ja: '${mid} => ${side}',
           cn: '${mid} => ${side}',
           ko: '${mid} => ${side}',
@@ -148,6 +150,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         lightWest: {
           en: 'Light West => Spread',
+          de: 'Licht Westen => Verteilen',
           fr: 'Légèrement Ouest => Dispersion',
           ja: '光 左 => 散開',
           cn: '光左 => 分散',
@@ -155,6 +158,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         lightEast: {
           en: 'Light East => Spread',
+          de: 'Licht Osten => Verteilen',
           fr: 'Légèrement Est => Dispersion',
           ja: '光 右 => 散開',
           cn: '光右 => 分散',
@@ -203,6 +207,7 @@ const triggerSet: TriggerSet<Data> = {
         mid: Outputs.middle,
         stored: {
           en: 'Stored ${dir}',
+          de: 'Gespeichert ${dir}',
           fr: '${dir} enregistré',
           ja: '次は ${dir}',
           cn: '储存 ${dir}',
@@ -236,6 +241,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: Outputs.stackPartner,
         text: {
           en: '${dir} + ${mech}',
+          de: '${dir} + ${mech}',
           fr: '${dir} + ${mech}',
           ja: '${dir} + ${mech}',
           cn: '${dir} + ${mech}',
@@ -252,6 +258,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Drop hand => Bait hand',
+          de: 'Hand ablegen => Hand ködern',
           fr: 'Déposez => Prenez les mains',
           ja: '手を外に捨てる => 次の手を誘導',
           cn: '放手 => 引导手',
@@ -285,6 +292,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Bait puddles => Intercardinals',
+          de: 'Flächen ködern => Interkardinal',
           fr: 'Déposez les puddles => Intercardinaux',
           ja: '中央 => ×字散開',
           cn: '引导黄圈 => 叉字',
@@ -331,6 +339,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleanse: {
           en: 'Cleanse Slow',
+          de: 'Gemach reinigen',
           fr: 'Guérisez la lenteur',
           ja: 'スロウを解除',
           cn: '康复减速',
@@ -399,6 +408,7 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
         middle: {
           en: 'Middle Row',
+          de: 'Mittlere Reihe',
           fr: 'Ligne du milieu',
           ja: '中央列',
           cn: '中间行',
@@ -406,6 +416,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         north: {
           en: 'North Row',
+          de: 'Nördliche Reihe',
           fr: 'Ligne au Nord',
           ja: '北列（上）',
           cn: '第一行',
@@ -413,6 +424,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         south: {
           en: 'South Row',
+          de: 'Südliche Reihe',
           fr: 'Ligne au Sud',
           ja: '南列（下）',
           cn: '第三行',
@@ -420,6 +432,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         text: {
           en: '${row} + ${spread}',
+          de: '${row} + ${spread}',
           fr: '${row} + ${spread}',
           ja: '${row} + ${spread}',
           cn: '${row} + ${spread}',
@@ -436,6 +449,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Bait Hand => Dodge',
+          de: 'Hand ködern => Ausweichen',
           fr: 'Attirez la main => Évitez',
           ja: '手を誘導 => 回避',
           cn: '引导手 => 躲开',
@@ -538,6 +552,7 @@ const triggerSet: TriggerSet<Data> = {
         partners: Outputs.stackPartner,
         text: {
           en: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
+          de: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           fr: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           ja: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           cn: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
@@ -625,6 +640,7 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         delay: {
           en: 'Wait for hand => ${dir}',
+          de: 'Warte auf die Hand => ${dir}',
           fr: 'Attendez la main => ${dir}',
           ja: '手を待つ => ${dir}',
           cn: '等手 => ${dir}',
@@ -632,6 +648,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         lean: {
           en: '${dir}, lean ${to}',
+          de: '${dir}, ${to} halten',
           fr: '${dir}, vers ${to}',
           ja: '${dir}, ${to}に寄る',
           cn: '${dir}, 靠 ${to}',
@@ -639,6 +656,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         dodge: {
           en: '${dir} => Dodge Hand',
+          de: '${dir} => Hand ausweichen',
           fr: '${dir} => Évitez la main',
           ja: '${dir} => 手を避ける',
           cn: '${dir} => 躲手',
@@ -654,6 +672,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         towerPos: {
           en: 'Preposition for LP towers',
+          de: 'Vorpositionieren für Türme',
           fr: 'Préposition pour les tours',
           ja: '最初の塔踏み位置へ移動',
           cn: '多人塔预站位',
@@ -685,6 +704,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         soakNext: {
           en: 'Soak Next Tower',
+          de: 'Nächsten Turm nehmen',
           fr: 'Prenez la prochaine tour',
           ja: '次の塔を踏む',
           cn: '踩下一个塔',
@@ -704,7 +724,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'azur(?:e|er|es|en) Äther',
         'Beckoning Hands': 'lockend(?:e|er|es|en) Hand',
@@ -868,6 +887,50 @@ const triggerSet: TriggerSet<Data> = {
         'The Fourth Season': '四重青之波潮',
         'The Second Season': '二重青之波潮',
         'Twofold Blight': '青之二重波',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Azure Aether': '푸른 영혼 덩어리',
+        'Beckoning Hands': '죽음으로 이끄는 손',
+        'Icy Hands': '죽음을 부르는 손',
+        'Necron': '영원한 어둠',
+      },
+      'replaceText': {
+        '\\(cast\\)': '(시전)',
+        '\\(damage\\)': '(피해)',
+        '\\(intercards\\)': '(대각)',
+        '\\(lines?\\)': '(직선)',
+        '\\(puddles?\\)': '(장판)',
+        '\\(spread\\)': '(산개)',
+        '\\(tower\\)': '(탑)',
+        'Aetherblight': '푸른 파동',
+        'Blue Shockwave': '푸른 충격',
+        'Choking Grasp': '짓누르기',
+        'Circle of Lives': '푸른 고리 파동',
+        'Cold Grip': '검은 죽음의 팔',
+        'Crop Rotation': '영혼 순환',
+        'Darkness of Eternity': '영원한 어둠',
+        'Existential Dread': '어두운 기류',
+        'Fear of Death': '죽음에 대한 공포',
+        'Fourfold Blight': '푸른 사중 파동',
+        'Grand Cross': '그랜드크로스',
+        'Inevitability': '죽음의 범람',
+        'Mass Macabre': '집단 공황',
+        'Memento Mori': '메멘토 모리',
+        'Muted Struggle': '찍어누르기',
+        'Neutron Ring': '중성자 고리',
+        'Relentless Reaping': '연속 푸른 영혼',
+        'Shock(?!wave)': '방전',
+        '(?<!Blue )Shockwave': '충격파',
+        'Smite of Gloom': '어둠의 일격',
+        'Soul Reaping': '푸른 영혼',
+        'Specter of Death': '거대한 어둠의 팔',
+        'The End\'s Embrace': '인도의 날개',
+        'The Fourth Season': '푸른 파동식: 사중',
+        'The Second Season': '푸른 파동식: 이중',
+        'Twofold Blight': '푸른 이중 파동',
       },
     },
   ],

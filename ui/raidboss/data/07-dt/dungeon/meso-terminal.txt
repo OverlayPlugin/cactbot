@@ -1,0 +1,181 @@
+### THE MESO TERMINAL
+# ZoneId: 1292
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,100000 jump 0
+
+#~~~~~~~~~~~~~~~~~~~~#
+# Chirurgeon General #
+#~~~~~~~~~~~~~~~~~~~~#
+# -ii ACD6
+
+# The Triage Module will be sealed off
+1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1496" } window 1000,1
+1009.1 "Medicine Field" Ability { id: "AB16", source: "Chirurgeon General" }
+1016.5 "No Man's Land" Ability { id: "AB1C", source: "Chirurgeon General" }
+1027.1 "Pungent Aerosol" Ability { id: "AB1F", source: "Chirurgeon General" }
+1035.1 "Sterile Sphere" Ability { id: "AB1D", source: "Chirurgeon General" }
+1041.7 "Biochemical Front" Ability { id: "AB1A", source: "Chirurgeon General" }
+1043.8 "No Man's Land" Ability { id: "AB1C", source: "Chirurgeon General" }
+1051.8 "Sensory Deprivation" Ability { id: "AB15", source: "Chirurgeon General" }
+1063.2 "Pungent Aerosol" Ability { id: "AB1F", source: "Chirurgeon General" }
+1069.9 "Concentrated Dose" Ability { id: "AB17", source: "Chirurgeon General" }
+
+1072.1 label "chirurgeonLoop"
+1072.1 "No Man's Land" Ability { id: "AB1C", source: "Chirurgeon General" }
+1077.1 "Sensory Deprivation" Ability { id: "AB15", source: "Chirurgeon General" }
+1086.7 "Sterile Sphere/Pungent Aerosol" Ability { id: ["AB1D", "AB1E", "AB1F"], source: "Chirurgeon General" }
+1094.7 "Pungent Aerosol/Sterile Sphere" Ability { id: ["AB1D", "AB1E", "AB1F"], source: "Chirurgeon General" }
+1101.3 "Biochemical Front" Ability { id: "AB1A", source: "Chirurgeon General" }
+1108.3 "Medicine Field" Ability { id: "AB16", source: "Chirurgeon General" }
+1118.3 "Concentrated Dose" Ability { id: "AB17", source: "Chirurgeon General" }
+
+1123.6 "No Man's Land" Ability { id: "AB1C", source: "Chirurgeon General" } forcejump "chirurgeonLoop"
+
+# ALL ENCOUNTER ABILITIES
+# AB15 Sensory Deprivation: Cloaks mechanic indicators
+# AB16 Medicine Field: raidwide
+# AB17 Concentrated Dose: tank buster
+# AB1A Biochemical Front: 180-degree frontal cleave
+# AB1C No Man's Land: sets up sphere and aerosol mechanics
+# AB1D Sterile Sphere: small sphere explosion
+# AB1E Sterile Sphere: large sphere explosion
+# AB1F Pungent Aerosol: knockback
+# ACD6 --sync--: auto-attack
+
+#~~~~~~~~~~~~~~#
+# Executioners #
+#~~~~~~~~~~~~~~#
+
+# -ii AA3A AA3C AA3D AA3F AA4A AA4E AA4F AA50
+
+# The Executioner timeline is "best-effort" and will quickly
+# desync depending on player or enemy deaths.
+
+# The Public Forum will be sealed off
+2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1497" } window 2000,1
+2003.2 "Lawless Pursuit" Ability { id: "AA39" }
+2011.8 "Head-splitting Roar" Ability { id: "AA3B", source: "Hooded Headsman" }
+2022.5 "Shackles of Fate" #Ability { id: "AA3E" }
+2027.4 "Dismemberment (cast)" Ability { id: "AA42" }
+2034.3 "Dismemberment 1" Ability { id: "AA43" }
+2036.7 "Peal of Judgment (castbar)" Ability { id: "AA49" }
+2037.4 "Dismemberment 2" Ability { id: "AA43" }
+2042.8 "Peal of Judgment (active)" duration 7 #Ability { id: "AA4A" }
+2045.8 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
+2050.7 "Flaying Flail (castbar)" Ability { id: "AA47" }
+2056.6 "Flaying Flail" Ability { id: "AA48" }
+2058.5 "--sync--" StartsUsing { id: "AF38", source: "Pale Headsman" } # Will Breaker
+2061.0 "Peal of Judgment" Ability { id: "AA49" }
+2063.0 "Death Penalty" Ability { id: "AA44" }
+2063.0 "--hellmaker adds--"
+2063.9 "Peal of Judgment (active)" duration 7 #Ability { id: "AA4A" }
+2065.0 "Will Breaker?" #Ability { id: "AF38", source: "Pale Headsman" }
+2067.2 "Flaying Flail (castbar)" Ability { id: "AA47" } window 10,5
+2069.0 "Relentless Torment" Ability { id: "AA45" }
+2071.8 "Flaying Flail" Ability { id: "AA48" }
+
+2081.8 label "executionerLoop"
+2081.8 "Serial Torture" Ability { id: "AA4D" }
+2088.6 "Dismemberment" Ability { id: "AA43" }
+2090.6 "Flaying Flail" Ability { id: "AA48" }
+2092.6 "Dismemberment" Ability { id: "AA43" }
+2094.3 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] }
+2104.8 "Head-splitting Roar" Ability { id: "AA3B", source: "Hooded Headsman" }
+2114.5 "Peal of Judgment" #Ability { id: "AA49", source: "Pestilent Headsman" }
+2120.6 "Chopping Block/Execution Wheel" Ability { id: ["AA4B", "AA4C"] } window 10,5
+2121.3 "--hellmaker adds--"
+2122.2 "Peal of Judgment (active)" #Ability { id: "AA4A", source: "Bloody Headsman" }
+2124.2 "Will Breaker?" #Ability { id: "AF38", source: "Pale Headsman" }
+2131.2 "Death Penalty" Ability { id: "AA44", source: "Bloody Headsman" } window 30,10
+
+2143.0 "Serial Torture" Ability { id: "AA4D" } forcejump "executionerLoop"
+
+
+
+# ALL ENCOUNTER ABILITIES
+# AA39 Lawless Pursuit: Tether targeted player
+# AA3A Head-splitting Roar: raidwide castbar
+# AA3B Head-splitting Roar: raidwide (invisible add)
+# AA3C --sync--: reposition in own circle
+# AA3D Shackles of Fate: chain castbar
+# AA3E Shackles of Fate: chain and draw player in
+# AA3F Shackles of Fate: chain and draw player in when leaving the circle
+# AA42 Dismemberment: blade line AoEs castbar
+# AA43 Dismemberment blade line AoEs
+# AA44 Death Penalty: dooms target
+# AA45 Relentless Torment: tank buster headmarker
+# AA46 Relentless Torment: tank buster
+# AA47 Flaying Flail: triangle of circle AoEs castbar
+# AA48 Flaying Flail: triangle of circle AoEs
+# AA49 Peal of Judgment: lightning lines castbar
+# AA4A Peal of Judgment: lightning lines
+# AA4B Chopping Block: chariot AoE
+# AA4C Execution Wheel: dynamo AoE
+# AA4D Serial Torture
+# AA4E --sync--: auto-attack
+# AA4F --sync--: auto-attack
+# AA50 --sync--: auto-attack
+
+#~~~~~~~~~~~~~~~~~~#
+# Immortal Remains #
+#~~~~~~~~~~~~~~~~~~#
+
+# -ii AB32 AB2E AB24 AB25 AB2B AB30
+
+# Non-Volatile Memory will be sealed off
+3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1498" } window 3000,1
+3010.1 "Recollection" Ability { id: "AB31", source: "Immortal Remains" }
+3019.9 "Memento" Ability { id: "AB21", source: "Immortal Remains" }
+3039.3 "Electray 1" #Ability { id: "AB22", source: "Bygone Aerostat" }
+3042.3 "Electray 2" #Ability { id: "AB22", source: "Bygone Aerostat" }
+3047.1 "Memory of the Storm" Ability { id: "AB2D", source: "Immortal Remains" }
+3057.2 "Memento" Ability { id: "AB21", source: "Immortal Remains" }
+3073.3 "Bombardment" Ability { id: "AB23", source: "Immortal Remains" }
+3075.3 "--sync--" Ability { id: ["AB26", "AB27"], source: "Immortal Remains" } # Turmoil
+3079.7 "Turmoil" Ability { id: "AB28", source: "Immortal Remains" }
+3088.5 "--sync--" Ability { id: "AB29", source: "Immortal Remains" } # Impression tethers
+3093.5 "Impression" Ability { id: "AB2A", source: "Immortal Remains" }
+3096.5 "Bombardment" Ability { id: "AB23", source: "Immortal Remains" }
+3105.6 "Memory of the Pyre" Ability { id: "AB2F", source: "Immortal Remains" }
+3114.7 "Memento" Ability { id: "AB21", source: "Immortal Remains" }
+3126.8 "Keraunography" Ability { id: "B078", source: "Immortal Remains" }
+
+3141.8 label "remainsLoop"
+3141.8 "Keraunography" Ability { id: "B078", source: "Immortal Remains" }
+3148.0 "Electray 1" Ability { id: "AB22", source: "Bygone Aerostat" }
+3151.0 "Electray 2" Ability { id: "AB22", source: "Bygone Aerostat" }
+3153.8 "--sync--" Ability { id: ["AB26", "AB27"], source: "Immortal Remains" } # Turmoil
+3158.2 "Turmoil" Ability { id: "AB28", source: "Immortal Remains" }
+3171.9 "Keraunography" Ability { id: "B078", source: "Immortal Remains" }
+3179.9 "--sync--" Ability { id: "AB29", source: "Immortal Remains" } # Impression tethers
+3184.9 "Impression" Ability { id: "AB2A", source: "Immortal Remains" }
+3187.9 "Bombardment" Ability { id: "AB23", source: "Immortal Remains" }
+3197.0 "Memory of the Storm" Ability { id: "AB2D", source: "Immortal Remains" }
+3206.1 "Memory of the Pyre" Ability { id: "AB2F", source: "Immortal Remains" }
+3216.2 "Recollection" Ability { id: "AB31", source: "Immortal Remains" }
+
+3234.0 "Keraunography" Ability { id: "B078", source: "Immortal Remains" } forcejump "remainsLoop"
+
+# ALL ENCOUNTER ABILITIES
+# AB21 Memento: Setup cast for Electray/Bombardment/Keraunography
+# AB22 Electray: Cross laser AoEs
+# AB23 Bombardment: Small red circle AoE
+# AB24 Bombardment: Large red circle AoE
+# AB25 Keraunography: Castbar for purple lasers
+# AB26 Turmoil: Half-arena cleave, left side castbar
+# AB27 Turmoil: Half-arena cleave, right side castbar
+# AB28 Turmoil: Half-arena cleave, both sides
+# AB29 Impression: Blue knockback circle display
+# AB2A Impression: Blue knockback circle failure (standing inside)
+# AB2B Impression: Blue knockback circle resolve
+# AB2D Memory of the Storm: Stack laser self-cast
+# AB2E Memory of the Storm: Stack laser (instant)
+# AB2F Memory of the Pyre: Tank buster self-cast
+# AB30 Memory of the Pyre: Tank buster
+# AB31 Recollection: Raidwide
+# AB32 --sync--: Auto-attack
+# B078 Keraunography: Large purple lasers
