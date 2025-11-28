@@ -73,6 +73,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Go ${safe} + Out',
           de: 'Geh nach ${safe} + Raus',
           cn: '去 ${safe} + 外',
+          ko: '${safe} + 밖으로',
         },
         unknownSafe: {
           en: 'Out + Avoid shrublet explosions',
@@ -101,6 +102,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Away from jump x4',
           de: 'Weg vom Sprung x4',
           cn: '远离跳跃 x4',
+          ko: '점프에서 멀어지기 x4',
         },
       },
     },
