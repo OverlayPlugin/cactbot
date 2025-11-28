@@ -680,7 +680,7 @@ const triggerSet: TriggerSet<Data> = {
         data.magitaurRuneTargets = [];
         data.magitaurRuinousRuneCount = 0;
         data.magitaurRune2Targets = [];
-        data.magitaurLancelightCount
+        data.magitaurLancelightCount = 0;
       },
     },
     {
