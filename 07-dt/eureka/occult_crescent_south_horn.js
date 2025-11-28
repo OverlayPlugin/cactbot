@@ -4498,6 +4498,10 @@ Options.Triggers.push({
       'locale': 'en',
       'replaceText': {
         'Vertical Crosshatch/Horizontal Crosshatch': 'Vertical/Horizontal Crosshatch',
+        'Twopenny Inflation / Onepenny Inflation / Fourpenny Inflation':
+          'Penny Inflation (knockback)',
+        'Shades\' Nest/Shade\'s Crossing': 'Shades\' Nest/Crossing',
+        'Shades\' Crossing/Shades\' Nest': 'Shades\' Crossing/Nest',
         'Ray of Dangers Near / Ray of Expulsion Afar': 'Ray Near/Far',
         'Demonograph of Dangers Near / Demonograph of Expulsion Afar': 'Deomograph Near/Far',
         'Rotate Right / Rotate Left': 'Rotate Left/Right',
@@ -4687,6 +4691,7 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Assassin\'s Dagger': '暗杀短剑',
         'Ball of Fire': '火球',
