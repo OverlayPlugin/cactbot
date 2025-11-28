@@ -222,6 +222,12 @@ const generateCEList = (
       continue;
     }
 
+    const excludedCEs = Overrides.excludedCEs[zone];
+    if ((excludedCEs !== undefined) && excludedCEs.includes(keyName)) {
+      log.debug(`Skipping excluded CE ${keyName}`);
+      continue;
+    }
+
     const directorId = Overrides.directorIds[keyName] ?? '';
     if (directorId === '') {
       log.alert(

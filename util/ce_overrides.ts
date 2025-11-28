@@ -21,9 +21,14 @@ type ZoneNameToCeInfo = {
   [name: string]: CeInfoType;
 };
 
+type ZoneNameToExcludedCEs = {
+  [name: string]: [string];
+};
+
 type OverrideContainer = {
   directorIds: NameKeyToDirectorUpdateId;
   syntheticCEs: ZoneNameToCeInfo;
+  excludedCEs: ZoneNameToExcludedCEs;
 };
 
 // List of values appearing in the DirectorUpdate network log events.
@@ -136,9 +141,16 @@ const _SYNTHETIC_CE_INFO: ZoneNameToCeInfo = {
   },
 };
 
+const _EXCLUDED_CE_BY_ZONE_NAME: ZoneNameToExcludedCEs = {
+  'South Horn': [
+    'TheForkedTowerBlood',
+  ],
+};
+
 const Overrides: OverrideContainer = {
   directorIds: _DIRECTOR_UPDATE_VALUES,
   syntheticCEs: _SYNTHETIC_CE_INFO,
+  excludedCEs: _EXCLUDED_CE_BY_ZONE_NAME,
 };
 
 export default Overrides;

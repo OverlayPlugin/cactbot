@@ -148,15 +148,6 @@ const data: CeInfoType = {
       'ja': '黒の連隊',
     },
   },
-  'TheForkedTowerBlood': {
-    'directorId': '',
-    'name': {
-      'de': 'Der Turm des Blutes',
-      'en': 'The Forked Tower: Blood',
-      'fr': 'Tour fourchue de la Force',
-      'ja': 'フォークタワー：力の塔',
-    },
-  },
   'TheUnbridled': {
     'directorId': '348',
     'name': {

@@ -19,7 +19,6 @@ const data: CEMap<typeof SouthHornCEs> = {
   '343': 'CompanyOfStone',
   '348': 'TheUnbridled',
   '349': 'TrialByClaw',
-  '': 'TheForkedTowerBlood',
   '32A': 'FlameOfDusk',
   '32B': 'CursedConcern',
   '32E': 'SharkAttack',
