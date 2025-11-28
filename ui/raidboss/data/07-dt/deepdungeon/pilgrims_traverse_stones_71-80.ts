@@ -64,6 +64,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Behind x4',
           cn: '去背后4次',
+          ko: '뒤로 x4',
         },
       },
     },
@@ -130,6 +131,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid AoE',
           cn: '避开AoE',
+          ko: '장판 피하기',
         },
       },
     },
@@ -177,6 +179,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${in} + ${backFront}',
           cn: '${in} + ${backFront}',
+          ko: '${in} + ${backFront}',
         },
         back: Outputs.back,
         front: Outputs.front,
@@ -203,6 +206,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${out} + ${backFront}',
           cn: '${out} + ${backFront}',
+          ko: '${out} + ${backFront}',
         },
         back: Outputs.back,
         front: Outputs.front,
@@ -219,6 +223,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid final AoE',
           cn: '躲避终点AoE',
+          ko: '마지막 장판 피하기',
         },
       },
     },

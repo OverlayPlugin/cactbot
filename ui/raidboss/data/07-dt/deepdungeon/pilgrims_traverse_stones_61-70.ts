@@ -89,6 +89,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Away from jump => Get Under or Out',
           de: 'Weg vom Sprung => Geh Unter oder Raus',
           cn: '远离跳跃 => 去脚下或外面',
+          ko: '점프에서 멀어지기 => 안으로 또는 밖으로',
         },
       },
     },

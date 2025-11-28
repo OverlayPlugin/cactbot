@@ -44,14 +44,17 @@ const triggerSet: TriggerSet<Data> = {
         maul: {
           en: 'Maul',
           cn: '咬杀',
+          ko: '물어 죽이기',
         },
         maulOnYou: {
           en: 'Maul on YOU',
           cn: '咬杀点名',
+          ko: '물어 죽이기 대상자',
         },
         maulOnPlayer: {
           en: 'Maul on ${player}',
           cn: '咬杀点 ${player}',
+          ko: '${player} 물어 죽이기',
         },
       },
     },
@@ -102,14 +105,17 @@ const triggerSet: TriggerSet<Data> = {
         heat: {
           en: 'Pyretic, Avoid AoE',
           cn: '热病, 避开AoE',
+          ko: '열병, 장판 피하기',
         },
         heatOnYou: {
           en: 'Pyretic on YOU, Away from Group => Stop Everything!',
           cn: '热病点名, 远离小队成员 => 停止一切行动!',
+          ko: '열병 대상자, 파티에서 떨어지기 => 모든 행동 멈추기!',
         },
         heatOnPlayer: {
           en: 'Pyretic on ${player}, Avoid AoE',
           cn: '热病点 ${player}, 避开AoE',
+          ko: '${player} 열병, 장판 피하기',
         },
       },
     },
@@ -145,6 +151,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid AoE',
           cn: '避开AoE',
+          ko: '장판 피하기',
         },
       },
     },
@@ -172,6 +179,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${count}x attacks => Get Behind',
           cn: '${count}次攻击 => 靠近',
+          ko: '${count}번 공격 => 뒤로',
         },
       },
     },
@@ -227,6 +235,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Behind + Left',
           cn: '去背后 + 左侧',
+          ko: '뒤로 + 왼쪽',
         },
       },
     },
@@ -239,6 +248,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Behind + Right',
           cn: '去背后 + 右侧',
+          ko: '뒤로 + 오른쪽',
         },
       },
     },
