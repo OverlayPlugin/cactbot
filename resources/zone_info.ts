@@ -10674,6 +10674,7 @@ const data: ZoneInfoType = {
       'en': 'Vault Oneiron',
       'fr': 'Le coffre d\'Oneiron',
       'ja': '宝物庫 ボルト・オネイロン',
+      'ko': '보물고 볼트 오네이론',
     },
     'offsetX': -100,
     'offsetY': -100,
@@ -10684,6 +10685,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第1～10朝圣路',
       'de': 'Pilgers Pfad (Ebenen 1-10)',
       'en': 'Pilgrim\'s Traverse (Stones 1-10)',
       'fr': 'Le Sanctuaire des pèlerins (zones 1-10)',
@@ -10698,6 +10700,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第11～20朝圣路',
       'de': 'Pilgers Pfad (Ebenen 11-20)',
       'en': 'Pilgrim\'s Traverse (Stones 11-20)',
       'fr': 'Le Sanctuaire des pèlerins (zones 11-20)',
@@ -10712,6 +10715,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第21～30朝圣路',
       'de': 'Pilgers Pfad (Ebenen 21-30)',
       'en': 'Pilgrim\'s Traverse (Stones 21-30)',
       'fr': 'Le Sanctuaire des pèlerins (zones 21-30)',
@@ -10726,6 +10730,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第31～40朝圣路',
       'de': 'Pilgers Pfad (Ebenen 31-40)',
       'en': 'Pilgrim\'s Traverse (Stones 31-40)',
       'fr': 'Le Sanctuaire des pèlerins (zones 31-40)',
@@ -10740,6 +10745,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第41～50朝圣路',
       'de': 'Pilgers Pfad (Ebenen 41-50)',
       'en': 'Pilgrim\'s Traverse (Stones 41-50)',
       'fr': 'Le Sanctuaire des pèlerins (zones 41-50)',
@@ -10754,6 +10760,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第51～60朝圣路',
       'de': 'Pilgers Pfad (Ebenen 51-60)',
       'en': 'Pilgrim\'s Traverse (Stones 51-60)',
       'fr': 'Le Sanctuaire des pèlerins (zones 51-60)',
@@ -10768,6 +10775,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第61～70朝圣路',
       'de': 'Pilgers Pfad (Ebenen 61-70)',
       'en': 'Pilgrim\'s Traverse (Stones 61-70)',
       'fr': 'Le Sanctuaire des pèlerins (zones 61-70)',
@@ -10782,6 +10790,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第71～80朝圣路',
       'de': 'Pilgers Pfad (Ebenen 71-80)',
       'en': 'Pilgrim\'s Traverse (Stones 71-80)',
       'fr': 'Le Sanctuaire des pèlerins (zones 71-80)',
@@ -10796,6 +10805,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第81～90朝圣路',
       'de': 'Pilgers Pfad (Ebenen 81-90)',
       'en': 'Pilgrim\'s Traverse (Stones 81-90)',
       'fr': 'Le Sanctuaire des pèlerins (zones 81-90)',
@@ -10810,6 +10820,7 @@ const data: ZoneInfoType = {
     'contentType': 21,
     'exVersion': 5,
     'name': {
+      'cn': '朝圣交错路 第91～100朝圣路',
       'de': 'Pilgers Pfad (Ebenen 91-100)',
       'en': 'Pilgrim\'s Traverse (Stones 91-100)',
       'fr': 'Le Sanctuaire des pèlerins (zones 91-100)',
@@ -10829,6 +10840,7 @@ const data: ZoneInfoType = {
       'en': 'The Meso Terminal',
       'fr': 'Le Mésoterminal',
       'ja': '永久幽界 メインターミナル',
+      'ko': '메인 터미널',
     },
     'offsetX': -132,
     'offsetY': -113,
@@ -10844,6 +10856,7 @@ const data: ZoneInfoType = {
       'en': 'The Bayside Battleground',
       'fr': 'Le Rivage redoutable',
       'ja': 'ベイサイド・バトルグラウンド',
+      'ko': '바닷가 전투장',
     },
     'offsetX': -100,
     'offsetY': -100,
@@ -10859,6 +10872,7 @@ const data: ZoneInfoType = {
       'en': 'Crystalline Conflict (Custom Match - The Bayside Battleground)',
       'fr': 'Crys. Conflict (partie perso. - Le Rivage redoutable)',
       'ja': 'クリスタルコンフリクト(ベイサイド・バトルグラウンド：カスタムマッチ)',
+      'ko': '크리스탈라인 컨플릭트(바닷가 전투장: 친선 경기)',
     },
     'offsetX': -100,
     'offsetY': -100,
@@ -10874,6 +10888,7 @@ const data: ZoneInfoType = {
       'en': 'The Ageless Necropolis',
       'fr': 'La Nécropole intemporelle',
       'ja': '永遠の闇討滅戦',
+      'ko': '영원한 어둠 토벌전',
     },
     'offsetX': -100,
     'offsetY': -100,
@@ -10889,6 +10904,7 @@ const data: ZoneInfoType = {
       'en': 'The Minstrel\'s Ballad: Necron\'s Embrace',
       'fr': 'La Nécropole intemporelle (extrême)',
       'ja': '極永遠の闇討滅戦',
+      'ko': '극 영원한 어둠 토벌전',
     },
     'offsetX': -100,
     'offsetY': -100,
@@ -10899,6 +10915,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '护锁刃龙狩猎战',
       'de': 'Jagd auf Wächter-Arkveld',
       'en': 'The Windward Wilds',
       'fr': 'Chasse à l\'Arkveld Gardien',
@@ -10918,6 +10935,7 @@ const data: ZoneInfoType = {
       'en': 'The Wreath of Snakes (Unreal)',
       'fr': 'L\'Îlot des Amertumes (irréel)',
       'ja': '幻青龍征魂戦',
+      'ko': '환 청룡 토벌전',
     },
     'offsetX': -100,
     'offsetY': -100,
@@ -10949,6 +10967,7 @@ const data: ZoneInfoType = {
       'en': 'San d\'Oria: The Second Walk',
       'fr': 'San d\'Oria - La deuxième perambulation',
       'ja': 'サンドリア：ザ・セカンドウォーク',
+      'ko': '산도리아: 두 번째 반향세계',
     },
     'offsetX': -826,
     'offsetY': -871,
@@ -10959,6 +10978,7 @@ const data: ZoneInfoType = {
     'contentType': 4,
     'exVersion': 5,
     'name': {
+      'cn': '护锁刃龙上位狩猎战',
       'de': 'Jagd auf Wächter-Arkveld (schwer)',
       'en': 'The Windward Wilds (Extreme)',
       'fr': 'Chasse à l\'Arkveld Gardien (extrême)',
@@ -10973,6 +10993,7 @@ const data: ZoneInfoType = {
     'contentType': 39,
     'exVersion': 5,
     'name': {
+      'cn': '卓异的悲寂深想战',
       'de': 'Eminente Trauer (variabel)',
       'en': 'The Final Verse (Quantum)',
       'fr': 'Le Verset final (quantique)',
@@ -10987,6 +11008,7 @@ const data: ZoneInfoType = {
     'contentType': 39,
     'exVersion': 5,
     'name': {
+      'cn': '卓异的悲寂歼灭战',
       'de': 'Eminente Trauer',
       'en': 'The Final Verse',
       'fr': 'Le Verset final',

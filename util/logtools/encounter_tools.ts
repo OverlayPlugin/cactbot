@@ -167,6 +167,7 @@ export class EncounterFinder {
     // Therefore, we can't require them.
     const keepTypes: Array<number> = [
       ContentType.ChaoticAllianceRaid,
+      ContentType.DeepDungeonExtras,
       ContentType.DeepDungeons,
       ContentType.Dungeons,
       ContentType.Eureka,
