@@ -26,6 +26,7 @@ const triggerSet: TriggerSet<Data> = {
     en: 'Pilgrim\'s Traverse (All Stones)',
     de: 'Pilgers Pfad (Alle Steine)',
     cn: '朝圣交错路 (全朝圣路)',
+    ko: '노르브란트 순례길 (전 구간)',
   },
 
   triggers: [
