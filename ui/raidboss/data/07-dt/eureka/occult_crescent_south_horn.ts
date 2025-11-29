@@ -5665,7 +5665,7 @@ const triggerSet: TriggerSet<Data> = {
         'Epicenter Shock': '원형 번갯불',
         'Erase Gravity': '미세 중력',
         'Excruciating Equilibrium': '고통 분담',
-        'Explosion': '폭산',
+        'Explosion': '폭발',
         'Falling Rock': '낙석',
         'Fearsome Facet': '환영 수정석',
         'Fearsome Glint': '무시무시한 빛',
