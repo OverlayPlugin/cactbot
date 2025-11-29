@@ -50,6 +50,7 @@ Options.Triggers.push({
         text: {
           en: 'Go Front + Right',
           cn: '去前面 + 右侧',
+          ko: '앞으로 + 오른쪽',
         },
       },
     },
@@ -62,6 +63,7 @@ Options.Triggers.push({
         text: {
           en: 'Go Front + Left',
           cn: '去前面 + 左侧',
+          ko: '앞으로 + 왼쪽',
         },
       },
     },
@@ -94,6 +96,7 @@ Options.Triggers.push({
         text: {
           en: '${count}x attacks => Out of Melee',
           cn: '${count}次攻击 => 离开近战范围',
+          ko: '${count}번 공격 => 근접 범위 밖으로',
         },
       },
     },
@@ -126,6 +129,7 @@ Options.Triggers.push({
         text: {
           en: 'Avoid AoE',
           cn: '避开AoE',
+          ko: '장판 피하기',
         },
       },
     },

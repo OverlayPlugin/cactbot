@@ -119,6 +119,7 @@ Options.Triggers.push({
         text: {
           en: 'Check Boss HP Difference',
           cn: '检查 BOSS 血量差',
+          ko: '보스 체력 차이 확인',
         },
       },
     },
@@ -137,6 +138,7 @@ Options.Triggers.push({
         text: {
           en: '${effect} on ${target}',
           cn: '${effect} 点 ${target}',
+          ko: '${target}에게 ${effect}',
         },
       },
     },
@@ -166,6 +168,7 @@ Options.Triggers.push({
         text: {
           en: 'Refresh Vengeance',
           cn: '刷新光/暗 Debuff',
+          ko: '빛/어둠 디버프 갱신',
         },
       },
     },
@@ -196,6 +199,7 @@ Options.Triggers.push({
         text: {
           en: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -223,6 +227,7 @@ Options.Triggers.push({
         text: {
           en: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -257,6 +262,7 @@ Options.Triggers.push({
         text: {
           en: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -391,6 +397,7 @@ Options.Triggers.push({
         text: {
           en: '${frontBack}-${leftRight}, for later',
           cn: '稍后去 ${leftRight}-${frontBack}',
+          ko: '나중에 ${leftRight}-${frontBack} 으로',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -437,6 +444,7 @@ Options.Triggers.push({
         text: {
           en: '${frontBack}-${leftRight}, for later',
           cn: '稍后去 ${leftRight}-${frontBack}',
+          ko: '나중에 ${leftRight}-${frontBack} 으로',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -465,6 +473,7 @@ Options.Triggers.push({
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
           cn: '在 ${leftRight}-${frontBack} 躲避地火',
+          ko: '${frontBack}-${leftRight}, 엑사플레어 피하기',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -509,6 +518,7 @@ Options.Triggers.push({
         text: {
           en: 'Go ${dir}',
           cn: '去 ${dir}',
+          ko: '${dir}',
         },
         unknown: Outputs.unknown,
         ...outputStrings12Dir,
