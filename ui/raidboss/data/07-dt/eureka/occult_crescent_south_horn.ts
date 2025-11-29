@@ -404,6 +404,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Forked Tower: Blood Marble Dragon Imitation Rain 1 and 5 Strategy',
         cn: '两歧塔力之塔 大理石龙 仿效雨 1和5 策略',
+        ko: '포크타워: 대리석 드래곤 모방된 비 1, 5 전략',
       },
       type: 'select',
       options: {
@@ -415,6 +416,10 @@ const triggerSet: TriggerSet<Data> = {
           '十字基准: 根据十字冰圈位置提示': 'cross',
           '冰基准: 根据离墙最近的冰圈提示': 'ice',
         },
+        ko: {
+          '십자 기준: 남쪽 십자 장판에 따라 호출': 'cross',
+          '얼음 기준: 벽에 가장 가까운 얼음 장판에 따라 호출': 'ice',
+        },
       },
       default: 'cross',
     },
@@ -423,6 +428,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Forked Tower: Blood Magitaur Dagger Strategy',
         cn: '两歧塔力之塔 魔陶洛斯 暗杀短剑 策略',
+        ko: '포크타워: 마기타우로스 단검 전략',
       },
       type: 'select',
       options: {
@@ -433,6 +439,10 @@ const triggerSet: TriggerSet<Data> = {
         cn: {
           'BAP短剑标记(数字和字母场景标记)': 'bap',
           '无特定策略(Y型与⅄型)': 'none',
+        },
+        ko: {
+          'BAP 단검 (숫자 및 알파벳 바닥 징)': 'bap',
+          '전략 없음 (Y-패턴 및 ⅄-패턴)': 'none',
         },
       },
       default: 'none',
