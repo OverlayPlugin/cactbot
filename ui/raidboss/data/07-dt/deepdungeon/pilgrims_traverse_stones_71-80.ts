@@ -63,6 +63,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Behind x4',
+          de: 'Geh hinter x4',
           cn: '去背后4次',
           ko: '뒤로 x4',
         },
@@ -130,6 +131,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid AoE',
+          de: 'Vermeide AoE',
           cn: '避开AoE',
           ko: '장판 피하기',
         },
@@ -178,6 +180,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${in} + ${backFront}',
+          de: '${in} + ${backFront}',
           cn: '${in} + ${backFront}',
           ko: '${in} + ${backFront}',
         },
@@ -205,6 +208,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${out} + ${backFront}',
+          de: '${out} + ${backFront}',
           cn: '${out} + ${backFront}',
           ko: '${out} + ${backFront}',
         },
@@ -222,6 +226,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Avoid final AoE',
+          de: 'Vermeide finale AoE',
           cn: '躲避终点AoE',
           ko: '마지막 장판 피하기',
         },
@@ -244,6 +249,61 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       run: (data, matches) => {
         data.prowlingDeath = matches.effectId === '11A6' ? 'shadowOfDeath' : 'nowhereToRun';
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Forgiven Arrogance': 'geläutert(?:e|er|es|en) Gefallsucht',
+        'Forgiven Corruption': 'geläutert(?:e|er|es|en) Korruption',
+        'Forgiven Dissention': 'geläutert(?:e|er|es|en) Zwietracht',
+        'Forgiven Profanity': 'geläutert(?:e|er|es|en) Beschimpfung',
+        'Forgiven Slander': 'geläutert(?:e|er|es|en) Nachrede',
+        'Forgiven Spite': 'geläutert(?:e|er|es|en) Boshaftigkeit',
+        'Forgiven Unbelief': 'geläutert(?:e|er|es|en) Unglauben',
+        'Forgiven Vanity': 'geläutert(?:e|er|es|en) Eitelkeit',
+        'Traverse Amemet': 'Wallfahrt-Amemet',
+        'Traverse Huldu': 'Wallfahrt-Huldu',
+        'Traverse Scissorjaws': 'Wallfahrt-Scherenmaul',
+        'Traverse Worm': 'Wallfahrt-Wurm',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Forgiven Arrogance': 'arrogance pardonnée',
+        'Forgiven Corruption': 'corruption pardonnée',
+        'Forgiven Dissention': 'dissension pardonnée',
+        'Forgiven Profanity': 'grossièreté pardonnée',
+        'Forgiven Slander': 'calomnie pardonnée',
+        'Forgiven Spite': 'malveillance pardonnée',
+        'Forgiven Unbelief': 'incrédulité pardonnée',
+        'Forgiven Vanity': 'vanité pardonnée',
+        'Traverse Amemet': 'amemet du pèlerinage',
+        'Traverse Huldu': 'huldu du pèlerinage',
+        'Traverse Scissorjaws': 'mandicisaille du pèlerinage',
+        'Traverse Worm': 'ver du pèlerinage',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Forgiven Arrogance': 'フォーギヴン・アロガンス',
+        'Forgiven Corruption': 'フォーギヴン・コラプション',
+        'Forgiven Dissention': 'フォーギヴン・ディセンション',
+        'Forgiven Profanity': 'フォーギヴン・プロファニティー',
+        'Forgiven Slander': 'フォーギヴン・スランダー',
+        'Forgiven Spite': 'フォーギヴン・スパイト',
+        'Forgiven Unbelief': 'フォーギヴン・アンビリーフ',
+        'Forgiven Vanity': 'フォーギヴン・ヴァニティー',
+        'Traverse Amemet': 'トラバース・アメミット',
+        'Traverse Huldu': 'トラバース・フルドゥ',
+        'Traverse Scissorjaws': 'トラバース・シザージョウ',
+        'Traverse Worm': 'トラバース・ウォーム',
       },
     },
   ],

@@ -164,6 +164,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Check Boss HP Difference',
+          de: 'Prüfe Boss HP Unterschied',
           cn: '检查 BOSS 血量差',
           ko: '보스 체력 차이 확인',
         },
@@ -183,6 +184,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${effect} on ${target}',
+          de: '${effect} auf ${target}',
           cn: '${effect} 点 ${target}',
           ko: '${target}에게 ${effect}',
         },
@@ -213,6 +215,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Refresh Vengeance',
+          de: 'Echo erneuern',
           cn: '刷新光/暗 Debuff',
           ko: '빛/어둠 디버프 갱신',
         },
@@ -245,6 +248,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          de: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
@@ -274,6 +278,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          de: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
@@ -310,6 +315,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          de: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
@@ -446,6 +452,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          de: '${frontBack}-${leftRight}, für später',
           cn: '稍后去 ${leftRight}-${frontBack}',
           ko: '나중에 ${leftRight}-${frontBack} 으로',
         },
@@ -497,6 +504,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          de: '${frontBack}-${leftRight}, für später',
           cn: '稍后去 ${leftRight}-${frontBack}',
           ko: '나중에 ${leftRight}-${frontBack} 으로',
         },
@@ -527,6 +535,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
+          de: '${frontBack}-${leftRight}, vermeide Exaflares',
           cn: '在 ${leftRight}-${frontBack} 躲避地火',
           ko: '${frontBack}-${leftRight}, 엑사플레어 피하기',
         },
@@ -577,6 +586,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go ${dir}',
+          de: 'Geh nach ${dir}',
           cn: '去 ${dir}',
           ko: '${dir}',
         },
