@@ -952,7 +952,7 @@ hideall "--sync--"
 # A1B8 --sync--
 # A1C5 Shockwave (self-cast ability, 1.2s before damage ability)
 # 7843 Flatten (4.7s self-cast, This is the only cast in fflogs)
-# 
+#
 # ALL ENCOUNTER ABILITIES
 # A1B9 Augmentation of Beacons
 # A1BA Aetherial Ray
@@ -1236,7 +1236,7 @@ hideall "--sync--"
 # A0CA Choco Aero II
 # A0CB Choco Beak
 # A0CC Choco Maelfeather
-# 
+#
 12000.0 "--sync--" ActorControl { command: "80000014", data0: "322" } window 100000,0
 12100.0 "--sync--" InCombat { inGameCombat: "1" } window 100,3
 # Adds 1
@@ -2265,10 +2265,10 @@ hideall "--sync--"
 30307.8 "Elemental Impact 3" Ability { id: "A5C1", source: "Gaseous Phobos" }
 30308.2 "Fire Spread 3" Ability { id: "A908", source: "Triton" }
 30320.0 "To the Winds" Ability { id: "A5C5", source: "Triton" }
-30320.0 "Self-Destruct" #Ability { id: "A5C6", source: "Gaseous Phobos" }
-30320.0 "Self-Destruct" #Ability { id: "A5C6", source: "Gaseous Nereid" }
-30320.0 "Self-Destruct (Enrage)" #Ability { id: "A5C7", source: "Gaseous Nereid" }
-30320.7 "Self-Destruct (Enrage)" #Ability { id: "A5C8", source: "Triton" }
+30320.0 "Self-destruct" #Ability { id: "A5C6", source: "Gaseous Phobos" }
+30320.0 "Self-destruct" #Ability { id: "A5C6", source: "Gaseous Nereid" }
+30320.0 "Self-destruct (Enrage)" #Ability { id: "A5C7", source: "Gaseous Nereid" }
+30320.7 "Self-destruct (Enrage)" #Ability { id: "A5C8", source: "Triton" }
 
 30324.2 "--Nereid targetable--"
 30324.2 "--Phobos targetable--"
@@ -2655,7 +2655,7 @@ hideall "--sync--"
 51315.8 "--towers x6--" Ability { id: "A716", source: "Marble Dragon" }
 51319.1 "Imitation Blizzard (towers)" Ability { id: "7615", source: "Marble Dragon" }
 51321.3 "Ball of Ice" #Ability { id: "A715", source: "Marble Dragon" }
-51324.6 "Imitation Blizzard  (circles)" #Ability { id: "7602", source: "Marble Dragon" }
+51324.6 "Imitation Blizzard (circles)" #Ability { id: "7602", source: "Marble Dragon" }
 51329.4 "--twisters end--" #Ability { id: "76CF", source: "Marble Dragon" }
 
 51331.8 label "oc-md-p4-end"
