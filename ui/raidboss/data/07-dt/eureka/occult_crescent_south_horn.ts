@@ -1027,7 +1027,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Behind After Dash',
+          en: 'Follow Dash => Get Behind',
         },
       },
     },
