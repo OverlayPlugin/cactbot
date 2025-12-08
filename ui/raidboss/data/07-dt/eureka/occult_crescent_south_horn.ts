@@ -939,9 +939,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Sisyphus', id: 'A3FF', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.out!(),
+      infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        out: {
+        text: {
           en: 'Dodge expanding rings',
         },
       },
@@ -963,9 +963,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       // Other IDs might do different things
       netRegex: { source: 'Advanced Aevis', id: 'A41C', capture: false },
-      infoText: (_data, _matches, output) => output.out!(),
+      infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        out: {
+        text: {
           en: 'In => Out => Sides',
         },
       },
@@ -982,9 +982,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       // Other IDs might do different things
       netRegex: { source: 'Advanced Aevis', id: 'A418', capture: false },
-      infoText: (_data, _matches, output) => output.out!(),
+      infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        out: {
+        text: {
           en: 'Out => In => Sides',
         },
       },
@@ -1024,9 +1024,9 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Lifereaper Sweeping Charge',
       type: 'StartsUsing',
       netRegex: { source: 'Lifereaper', id: 'A4C[25]', capture: false },
-      infoText: (_data, _matches, output) => output.out!(),
+      infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        out: {
+        text: {
           en: 'Behind After Dash',
         },
       },
@@ -1035,9 +1035,9 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Occult Crescent Lifereaper Menacing Charge',
       type: 'StartsUsing',
       netRegex: { source: 'Lifereaper', id: 'A4C3', capture: false },
-      infoText: (_data, _matches, output) => output.out!(),
+      infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        out: {
+        text: {
           en: 'Away After Dash',
         },
       },
