@@ -56,6 +56,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tuez Tempête de mots ou mourrez',
           ja: 'ストーム・オブ・ワードを倒す',
           cn: '击杀言语风暴!',
+          tc: '擊殺言語風暴!',
           ko: '신언의 폭풍 제거',
         },
       },

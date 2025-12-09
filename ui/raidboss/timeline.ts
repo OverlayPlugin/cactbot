@@ -55,6 +55,7 @@ const activeText = {
   fr: 'Active :',
   ja: '(進行):',
   cn: '(进行中):',
+  tc: '(進行中):',
   ko: '시전중:',
 };
 

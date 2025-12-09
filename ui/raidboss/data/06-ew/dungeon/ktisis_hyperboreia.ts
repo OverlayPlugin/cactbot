@@ -99,6 +99,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez derrière et à droite',
           ja: '右後ろ',
           cn: '去右后',
+          tc: '去右後',
           ko: '오른쪽 뒤로',
         },
         backLeft: {
@@ -107,6 +108,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez derrière et à gauche',
           ja: '左後ろ',
           cn: '去左后',
+          tc: '去左後',
           ko: '왼쪽 뒤로',
         },
       },
@@ -153,6 +155,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cachez-vous derrière le météore intact',
           ja: '壊れていないメテオの後ろへ',
           cn: '躲在未破碎的陨石后',
+          tc: '躲在未破碎的隕石後',
           ko: '금이 안 간 돌 뒤에 숨기',
         },
       },

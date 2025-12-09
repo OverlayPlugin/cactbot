@@ -55,6 +55,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Vague de vide bientôt',
           ja: 'まもなく真空波',
           cn: '马上真空波',
+          tc: '馬上真空波',
           ko: '곧 진공파',
         },
       },
@@ -84,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Méga Feu',
           ja: 'ファイガ',
           cn: '散开',
+          tc: '散開',
           ko: '파이가',
         },
       },
@@ -101,6 +103,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Méga Glace',
           ja: 'ブリザガ',
           cn: '诱导2连黄圈',
+          tc: '誘導2連黃圈',
           ko: '블리자가',
         },
       },
@@ -132,6 +135,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Méga Foudre : Tank buster',
           ja: 'サンダガ: タンクバスター',
           cn: '死刑二连',
+          tc: '死刑二連',
           ko: '선더가: 탱버',
         },
         thunder: {
@@ -140,6 +144,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Méga Foudre',
           ja: 'サンダガ',
           cn: '死刑',
+          tc: '死刑',
           ko: '선더가',
         },
         thunderTTS: {
@@ -148,6 +153,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'foudre',
           ja: 'タンク大ダメージ',
           cn: '死刑',
+          tc: '死刑',
           ko: '선더가',
         },
       },
@@ -195,6 +201,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Brasier sur vous',
           ja: '自分にフレア',
           cn: '核爆点名',
+          tc: '核爆點名',
           ko: '플레어 대상자',
         },
       },
@@ -320,6 +327,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez à l\'extérieur',
           ja: '外に出る',
           cn: '去两侧',
+          tc: '去兩側',
           ko: '바깥으로',
         },
         dieOnInside: {
@@ -328,6 +336,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à l\'intérieur',
           ja: '中で死ぬ',
           cn: '去中间解死超',
+          tc: '去中間解死超',
           ko: '안쪽 레이저 맞기',
         },
         dieInInIn: {
@@ -336,6 +345,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à l\'intérieur !',
           ja: '死になさい！',
           cn: '中间死超',
+          tc: '中間死超',
           ko: '안쪽 레이저 맞기',
         },
         outOutOut: {
@@ -344,6 +354,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur !',
           ja: '出て出て！',
           cn: '去两侧',
+          tc: '去兩側',
           ko: '바깥으로',
         },
       },
@@ -374,6 +385,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez à l\'intérieur',
           ja: '中に入る',
           cn: '去中间',
+          tc: '去中間',
           ko: '안으로',
         },
         dieOnOutside: {
@@ -382,6 +394,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à l\'extérieur',
           ja: '外で死ぬ',
           cn: '去两侧解死超',
+          tc: '去兩側解死超',
           ko: '바깥 레이저 맞기',
         },
         dieOutOutOut: {
@@ -390,6 +403,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à l\'extérieur !',
           ja: '死になさい！',
           cn: '两侧死超',
+          tc: '兩側死超',
           ko: '바깥 레이저 맞기',
         },
         inInIn: {
@@ -398,6 +412,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur !',
           ja: '入れ入れ',
           cn: '去中间',
+          tc: '去中間',
           ko: '안으로',
         },
       },
@@ -437,6 +452,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À gauche sur le violet',
           ja: '左の紫色に',
           cn: '左边紫色',
+          tc: '左邊紫色',
           ko: '왼쪽 보라',
         },
         rightOnBlue: {
@@ -445,6 +461,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À droite sur le bleu',
           ja: '右の青色に',
           cn: '右边蓝色',
+          tc: '右邊藍色',
           ko: '오른쪽 파랑',
         },
         colorSides: {
@@ -453,6 +470,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Côtés de couleur',
           ja: 'デバフと異なる色へ',
           cn: 'debuff异色侧',
+          tc: 'debuff異色側',
           ko: '색깔 맞기',
         },
         dieOnRightBlue: {
@@ -461,6 +479,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à droite sur le bleu',
           ja: '右の青色で死ぬ',
           cn: '右边蓝色死超',
+          tc: '右邊藍色死超',
           ko: '오른쪽 파랑 맞기',
         },
         dieOnLeftPurple: {
@@ -469,6 +488,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à gauche sur le violet',
           ja: '左の紫色で死ぬ',
           cn: '左边紫色死超',
+          tc: '左邊紫色死超',
           ko: '왼쪽 보라 맞기',
         },
         dieOnColorSides: {
@@ -477,6 +497,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez sur les côtés de couleur',
           ja: '同じ色で死ぬ',
           cn: 'debuff同色侧死超',
+          tc: 'debuff同色側死超',
           ko: '색깔 맞기',
         },
         colors: {
@@ -485,6 +506,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Couleurs',
           ja: '色',
           cn: '看颜色',
+          tc: '看顏色',
           ko: '색깔',
         },
       },
@@ -524,6 +546,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Placez-vous à droite sur le violet',
           ja: '右の紫色に',
           cn: '右边紫色',
+          tc: '右邊紫色',
           ko: '오른쪽 보라 맞기',
         },
         beLeftOnBlue: {
@@ -532,6 +555,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Placez-vous à gauche sur le bleu',
           ja: '左の青色に',
           cn: '左边蓝色',
+          tc: '左邊藍色',
           ko: '왼쪽 파랑 맞기',
         },
         colorSides: {
@@ -540,6 +564,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Côtés de couleur',
           ja: 'デバフと異なる色へ',
           cn: 'debuff异色侧',
+          tc: 'debuff異色側',
           ko: '색깔 방향',
         },
         dieOnLeftBlue: {
@@ -548,6 +573,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à gauche sur le bleu',
           ja: '左の青色で死ぬ',
           cn: '左边蓝色死超',
+          tc: '左邊藍色死超',
           ko: '왼쪽 파랑 맞기',
         },
         dieOnRightPurple: {
@@ -556,6 +582,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez à droite sur le violet',
           ja: '右の紫色で死ぬ',
           cn: '右边紫色死超',
+          tc: '右邊紫色死超',
           ko: '오른쪽 보라 맞기',
         },
         dieOnColorSides: {
@@ -564,6 +591,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mourrez sur les côtés de couleur',
           ja: '同じ色で死ぬ',
           cn: 'debuff同色侧死超',
+          tc: 'debuff同色側死超',
           ko: '색깔 맞기',
         },
         colors: {
@@ -572,6 +600,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Couleurs',
           ja: '色',
           cn: '看颜色',
+          tc: '看顏色',
           ko: '색깔',
         },
       },
@@ -618,6 +647,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge : Placez-vous derrière l\'autre tank',
           ja: '運動会: 他のタンクの後ろに',
           cn: '站在另一个坦克后面',
+          tc: '站在另一個坦克後面',
           ko: '탱커 뒤에 있기',
         },
         chargeBeInTheVeryBack: {
@@ -626,6 +656,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge : Placez-vous tout au fond',
           ja: '運動会: 後ろの遠くへ',
           cn: '去最后',
+          tc: '去最後',
           ko: '가장 뒤에 있기',
         },
         chargeBeInFront: {
@@ -634,6 +665,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge : Placez-vous devant !',
           ja: '運動会: 前方に',
           cn: '去最前',
+          tc: '去最前',
           ko: '앞쪽으로',
         },
         chargeBeBehindTanks: {
@@ -642,6 +674,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge : Placez-vous derrière les tanks',
           ja: '運動会: タンクの後ろに',
           cn: '站在坦克后面',
+          tc: '站在坦克後面',
           ko: '탱커 뒤로',
         },
         charge: {
@@ -650,6 +683,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge',
           ja: '運動会',
           cn: '排队',
+          tc: '排隊',
           ko: '무의 범람',
         },
       },
@@ -672,6 +706,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Double attaque',
           ja: 'ダブルアタック',
           cn: '双重攻击',
+          tc: '雙重攻擊',
           ko: '이중 공격',
         },
         doubleAttackGetOut: {
@@ -680,6 +715,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Double attaque : À l\'extérieur',
           ja: 'ダブルアタック: 外へ',
           cn: '双重攻击：远离连线T',
+          tc: '雙重攻擊：遠離連線T',
           ko: '이중 공격: 밖으로',
         },
       },
@@ -697,6 +733,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Croix suprême alpha : Allez au milieu',
           ja: 'グランドクロス・アルファ: 中央に',
           cn: '前往中间集合',
+          tc: '前往中間集合',
           ko: '그랜드크로스: 알파, 중앙으로',
         },
         tts: {
@@ -705,6 +742,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez au milieu',
           ja: '中央に',
           cn: '前往中间',
+          tc: '前往中間',
           ko: '중앙으로',
         },
       },
@@ -738,6 +776,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Croix suprême delta : Placez-vous devant le boss',
           ja: 'グランドクロス・デルタ: ボスの前に',
           cn: '站在boss前面',
+          tc: '站在boss前面',
           ko: '그랜드크로스: 델타, 보스 범위 끝으로',
         },
         beOnSides: {
@@ -746,6 +785,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Croix suprême delta : Placez-vous sur les côtés du boss',
           ja: 'グランドクロス・デルタ: ボスの横に',
           cn: '站在boss侧面',
+          tc: '站在boss側面',
           ko: '그랜드크로스: 델타, 보스 옆쪽으로',
         },
         beInsideBoss: {
@@ -754,6 +794,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Croix suprême delta : À l\'intérieur du boss',
           ja: 'グランドクロス・デルタ: ボスの真ん中に',
           cn: '站在boss脚下',
+          tc: '站在boss腳下',
           ko: '그랜드크로스: 델타, 보스 안쪽으로',
         },
         beInFrontTTS: {
@@ -762,6 +803,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'delta : Placez-vous devant',
           ja: 'ボスの前に',
           cn: '去前面',
+          tc: '去前面',
           ko: '델타, 보스 범위 끝으로',
         },
         beOnSidesTTS: {
@@ -770,6 +812,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'delta : Placez-vous sur les côtés',
           ja: 'ボスの横に',
           cn: '去两侧',
+          tc: '去兩側',
           ko: '델타, 보스 옆쪽으로',
         },
         beInsideBossTTS: {
@@ -778,6 +821,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'delta : À l\'intérieur du boss',
           ja: 'ボスの真ん中に',
           cn: '去boss脚下',
+          tc: '去boss腳下',
           ko: '델타, 보스 안쪽으로',
         },
       },
@@ -815,6 +859,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Regardez ailleurs et arrêtez',
           ja: '見ない、動かない',
           cn: '看外面并静止',
+          tc: '看外面並靜止',
           ko: '바라보지 말고 멈추기',
         },
         stop: {
@@ -823,6 +868,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Arrêtez',
           ja: '動かない',
           cn: '静止',
+          tc: '靜止',
           ko: '멈추기',
         },
       },
@@ -840,6 +886,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Bombe à accélération',
           ja: '加速度爆弾',
           cn: '加速度炸弹',
+          tc: '加速度炸彈',
           ko: '가속도 폭탄',
         },
       },
@@ -858,6 +905,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cri : Allez au milieu, regardez ailleurs',
           ja: '呪詛の叫声: 中へ、外を向け',
           cn: '石化点名',
+          tc: '石化點名',
           ko: '중앙으로, 바깥보기',
         },
       },
@@ -889,6 +937,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Eau sur vous',
           ja: '自分に水属性圧縮',
           cn: '水点名',
+          tc: '水點名',
           ko: '물 대상자',
         },
         waterStackUnderNeo: {
@@ -897,6 +946,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Eau : packez-vous sous Néo',
           ja: '水属性圧縮: ボスの下で頭割り',
           cn: '去boss脚下',
+          tc: '去boss腳下',
           ko: '물: 보스 아래 모이기',
         },
       },
@@ -925,6 +975,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Packez-vous sur l\'eau',
           ja: '水持ちと頭割り',
           cn: '和水点名分摊',
+          tc: '和水點名分攤',
           ko: '물 쉐어',
         },
       },
@@ -944,6 +995,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Outre-mort',
           ja: '死の超越',
           cn: '超越死亡',
+          tc: '超越死亡',
           ko: '죽음 초월',
         },
       },
@@ -969,6 +1021,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Packez-vous sous le boss sur ${waterHealer}',
           ja: 'ボスの下で${waterHealer}と頭割り',
           cn: '去boss脚下水分摊 (${waterHealer})',
+          tc: '去boss腳下水分攤 (${waterHealer})',
           ko: '보스 아래에서 "${waterHealer}"에게 모이기',
         },
         stackOnWater: {
@@ -977,6 +1030,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Packez-vous sur l\'eau',
           ja: '水と頭割り',
           cn: '和水点名分摊',
+          tc: '和水點名分攤',
           ko: '물 쉐어',
         },
       },
@@ -1016,6 +1070,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Almageste',
           ja: 'アルマゲスト',
           cn: '大AOE',
+          tc: '大AOE',
           ko: '알마게스트',
         },
       },
@@ -1051,6 +1106,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Clair-obscur : Packez-vous',
           ja: 'ライト・アンド・ダークネス: 頭割り',
           cn: '分摊点名',
+          tc: '分攤點名',
           ko: '빛과 어둠: 모이기',
         },
         flareOnYou: {
@@ -1059,6 +1115,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Brasier sur vous',
           ja: '自分にフレア',
           cn: '核爆点名',
+          tc: '核爆點名',
           ko: '플레어 대상자',
         },
         stackTTS: {
@@ -1067,6 +1124,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'packez-vous',
           ja: '頭割り',
           cn: '分摊',
+          tc: '分攤',
           ko: '모이기',
         },
       },

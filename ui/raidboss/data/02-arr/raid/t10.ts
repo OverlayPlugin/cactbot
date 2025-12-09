@@ -41,6 +41,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge sur ${player}',
           ja: '${player}にワイルドチャージ',
           cn: '蓝球点${player}',
+          tc: '藍球點${player}',
           ko: '"${player}" 돌진 대상',
         },
         chargeOnYou: {
@@ -49,6 +50,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge sur VOUS',
           ja: '自分にワイルドチャージ',
           cn: '蓝球点名',
+          tc: '藍球點名',
           ko: '돌진 대상자',
         },
       },
@@ -78,6 +80,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Chaos cyclonique sur ${player}',
           ja: '${player}にサイクロニックカオス',
           cn: '连线点${player}',
+          tc: '連線點${player}',
           ko: '${player} 휘몰아치는 혼돈',
         },
         cyclonicOnYou: {
@@ -86,6 +89,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Chaos cyclonique sur VOUS',
           ja: '自分にサイクロニックカオス',
           cn: '连线点名',
+          tc: '連線點名',
           ko: '휘몰아치는 혼돈 대상자',
         },
       },

@@ -80,6 +80,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Frappé(e) dans le mur',
             ja: '壁へノックバック',
             cn: '击退至墙',
+            tc: '擊退至牆',
             ko: '넉백',
           },
         };

@@ -85,6 +85,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Boss trop proches',
           ja: 'ボス近すぎる',
           cn: 'BOSS靠太近了',
+          tc: 'BOSS靠太近了',
           ko: '쫄들이 너무 가까움',
         },
       },

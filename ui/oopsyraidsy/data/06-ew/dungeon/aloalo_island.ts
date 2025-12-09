@@ -187,6 +187,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Lumière ciblée',
             ja: '高精度光弾',
             cn: '高精度光弹',
+            tc: '高精度光彈',
             ko: '고정밀 광탄',
           },
         };
@@ -199,6 +200,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
       fr: 'Vol équitable',
       ja: 'フェアリーノックアップ',
       cn: '仙女击飞',
+      tc: '仙女擊飛',
       ko: '요정 비행',
     }),
   ],

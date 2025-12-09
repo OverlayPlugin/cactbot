@@ -118,6 +118,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Den Orb anschauen',
           fr: 'Pointez l\'orbe',
           cn: '面向球',
+          tc: '面向球',
           ko: '구슬쪽 보기',
         },
         orbDirBack: {
@@ -125,6 +126,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Weg vom Orb schauen',
           fr: 'Ne pointez pas l\'orbe',
           cn: '背对球',
+          tc: '背對球',
           ko: '뒷면을 구슬쪽으로',
         },
         orbDirLeft: {
@@ -132,6 +134,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zeige links auf den Orb',
           fr: 'Pointez à gauche de l\'orbe',
           cn: '左侧对准球',
+          tc: '左側對準球',
           ko: '왼쪽면을 구슬쪽으로',
         },
         orbDirRight: {
@@ -139,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zeige Rechts auf den Orb',
           fr: 'Pointez à droite de l\'orbe',
           cn: '右侧对准球',
+          tc: '右側對準球',
           ko: '오른쪽면을 구슬쪽으로',
         },
         orbGeneral: {
@@ -146,6 +150,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zeige die Öffnung auf den Orb',
           fr: 'Pointez l\'orbe',
           cn: '开口侧对准球',
+          tc: '開口側對準球',
           ko: '열린면을 수슬쪽으로',
         },
       },
@@ -165,6 +170,7 @@ const triggerSet: TriggerSet<Data> = {
             de: '3x Tankbuster auf DIR',
             fr: 'Tankbuster x3 sur VOUS',
             cn: '3x 坦克死刑点名',
+            tc: '3x 坦剋死刑點名',
             ko: '3x 탱버 대상자',
           },
           tankBusterOnPlayer: {
@@ -172,6 +178,7 @@ const triggerSet: TriggerSet<Data> = {
             de: '3x Tankbuster auf ${player}',
             fr: 'Tankbuster x3 sur ${player}',
             cn: '3x 坦克死刑点 ${player}',
+            tc: '3x 坦剋死刑點 ${player}',
             ko: '3x 탱버 ${player}',
           },
         };
@@ -320,6 +327,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Fesseln (mit ${player})',
           fr: 'Entraves (avec ${player})',
           cn: '止步 (和 ${player})',
+          tc: '止步 (和 ${player})',
           ko: '속박 (+ ${player})',
         },
         bubble: {
@@ -327,6 +335,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Blase (mit ${player})',
           fr: 'Bulles (avec ${player})',
           cn: '泡泡 (和 ${player})',
+          tc: '泡泡 (和 ${player})',
           ko: '거품 (+ ${player})',
         },
       },
@@ -483,6 +492,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${fettersBubble} + ${spreadStack}',
           fr: '${fettersBubble} + ${spreadStack}',
           cn: '${fettersBubble} + ${spreadStack}',
+          tc: '${fettersBubble} + ${spreadStack}',
           ko: '${fettersBubble} + ${spreadStack}',
         },
         bubbleNetMechPartner: {
@@ -490,6 +500,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${fettersBubble} + ${spreadStack} (mit ${player})',
           fr: '${fettersBubble} + ${spreadStack} (avec ${player})',
           cn: '${fettersBubble} + ${spreadStack} (和 ${player})',
+          tc: '${fettersBubble} + ${spreadStack} (和 ${player})',
           ko: '${fettersBubble} + ${spreadStack} (+ ${player})',
         },
         bubbleBuff: {
@@ -497,6 +508,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Blase',
           fr: 'Bulle',
           cn: '泡泡',
+          tc: '泡泡',
           ko: '거품',
         },
         fettersBuff: {
@@ -504,6 +516,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ketten',
           fr: 'Entraves',
           cn: '止步',
+          tc: '止步',
           ko: '속박',
         },
         spread: Outputs.spread,
@@ -512,6 +525,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Sammeln',
           fr: 'Package',
           cn: '分摊',
+          tc: '分攤',
           ko: '쉐어',
         },
         bubbleAnything: {
@@ -519,6 +533,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Diagonale der Vertikalen / Neben Horizontal',
           fr: 'Diagonale de la verticale / À côté de l\'horizontale',
           cn: '竖水晶对角线 / 左右相邻的横水晶',
+          tc: '豎水晶對角線 / 左右相鄰的橫水晶',
           ko: '세로 수정의 대각선 / 가로 수정의 옆',
         },
         fettersSpreadSplit: {
@@ -526,6 +541,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Diagonale der Vertikalen',
           fr: 'Diagonale de la verticale',
           cn: '竖水晶对角线',
+          tc: '豎水晶對角線',
           ko: '세로 수정의 대각선',
         },
         fettersSpreadColumn: {
@@ -533,6 +549,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Neben Vertikal',
           fr: 'À côté de la verticale',
           cn: '左右相邻的竖水晶',
+          tc: '左右相鄰的豎水晶',
           ko: '가로 수정의 옆',
         },
         fettersStackSplit: {
@@ -540,6 +557,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Auf Horizontal',
           fr: 'Sur l\'horizontale',
           cn: '横水晶上',
+          tc: '橫水晶上',
           ko: '가로 수정이 있는 곳',
         },
         fettersStackColumn: {
@@ -547,6 +565,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Diagonale der Horizontalen',
           fr: 'Diagonale de l\'horizontale',
           cn: '横水晶对角线',
+          tc: '橫水晶對角線',
           ko: '가로 수정의 대각선',
         },
       },
@@ -566,6 +585,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verteilen => Sammeln',
           fr: 'Écarté => Package',
           cn: '分散 => 分摊',
+          tc: '分散 => 分攤',
           ko: '산개 => 쉐어',
         },
         stacks: {
@@ -573,6 +593,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Sammeln => Verteilen',
           fr: 'Package => Écarté',
           cn: '分摊 => 分散',
+          tc: '分攤 => 分散',
           ko: '쉐어 => 산개',
         },
       },
@@ -599,6 +620,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Sammeln',
           fr: 'Package',
           cn: '分摊',
+          tc: '分攤',
           ko: '쉐어',
         },
         roleStacks: {
@@ -606,6 +628,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rollengruppe sammeln',
           fr: 'Package par rôle',
           cn: '职能分摊',
+          tc: '職能分攤',
           ko: '역할별 쉐어',
         },
       },
@@ -653,6 +676,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rollengruppe sammeln',
           fr: 'Package par rôle',
           cn: '职能分摊',
+          tc: '職能分攤',
           ko: '역할별 쉐어',
         },
         spreadThenRoleStacks: {
@@ -660,6 +684,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verteilen => Rollengruppe sammeln',
           fr: 'Écarté => Package par rôle',
           cn: '分散 => 职能分摊',
+          tc: '分散 => 職能分攤',
           ko: '산개 => 역할별 쉐어',
         },
         roleStacksThenSpread: {
@@ -667,6 +692,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rollengruppe sammeln => Verteilen',
           fr: 'Package par rôle => Écarté',
           cn: '职能分摊 => 分散',
+          tc: '職能分攤 => 分散',
           ko: '역할별 쉐어 => 산개',
         },
       },
@@ -687,6 +713,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus => Rein + sammeln',
           fr: 'Extérieur => Intérieur + Package',
           cn: '远离 => 靠近 + 分摊',
+          tc: '遠離 => 靠近 + 分攤',
           ko: '밖 => 안 + 쉐어',
         },
         outInRoleStacks: {
@@ -694,6 +721,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus => Rein + Rollengruppe sammeln',
           fr: 'Extérieur => Intérieur + Package par rôle',
           cn: '远离 => 靠近 + 职能分摊',
+          tc: '遠離 => 靠近 + 職能分攤',
           ko: '밖 => 안 + 역할별 쉐어',
         },
       },
@@ -714,6 +742,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein => Raus + sammeln',
           fr: 'Intérieur => Extérieur + Package',
           cn: '靠近 => 远离 + 分摊',
+          tc: '靠近 => 遠離 + 分攤',
           ko: '안 => 밖 + 쉐어',
         },
         inOutRoleStacks: {
@@ -721,6 +750,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein => Raus + Rollengruppe sammeln',
           fr: 'Intérieur => Extérieur + Package par rôle',
           cn: '靠近 => 远离 + 职能分摊',
+          tc: '靠近 => 遠離 + 職能分攤',
           ko: '안 => 밖 + 역할별 쉐어',
         },
       },
@@ -748,6 +778,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${inOut} + ${stack}',
           fr: '${inOut} + ${stack}',
           cn: '${inOut} + ${stack}',
+          tc: '${inOut} + ${stack}',
           ko: '${inOut} + ${stack}',
         },
         in: Outputs.in,
@@ -757,6 +788,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Sammeln',
           fr: 'Package',
           cn: '分摊',
+          tc: '分攤',
           ko: '쉐어',
         },
         roleStacks: {
@@ -764,6 +796,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rollengruppe sammeln',
           fr: 'Package par rôle',
           cn: '职能分摊',
+          tc: '職能分攤',
           ko: '역할별 쉐어',
         },
       },
@@ -807,6 +840,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Norden/Süden',
           fr: 'Nord/Sud',
           cn: '上/下',
+          tc: '上/下',
           ko: '북/남',
         },
         eastWestSafe: {
@@ -814,6 +848,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           fr: 'Est/Ouest',
           cn: '左/右',
+          tc: '左/右',
           ko: '동/서',
         },
         cornersSafe: {
@@ -821,6 +856,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ecken',
           fr: 'Coins',
           cn: '四角',
+          tc: '四角',
           ko: '구석',
         },
       },
@@ -842,6 +878,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rückstoß => verteilen',
           fr: 'Pousée => Écartez-vous',
           cn: '击退 => 分散',
+          tc: '擊退 => 分散',
           ko: '넉백 => 산개',
         },
         knockbackStacks: {
@@ -849,6 +886,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rückstoß => sammeln',
           fr: 'Poussée => Package',
           cn: '击退 => 分摊',
+          tc: '擊退 => 分攤',
           ko: '넉백 => 쉐어',
         },
         knockbackRoleStacks: {
@@ -856,6 +894,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rückstoß => Rollengruppe sammeln',
           fr: 'Poussée => Package par rôle',
           cn: '击退 => 职能分摊',
+          tc: '擊退 => 職能分攤',
           ko: '넉백 => 역할별 쉐어',
         },
       },
@@ -880,6 +919,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Weg von ${player}',
             fr: 'Loin de ${player}',
             cn: '远离 ${player}',
+            tc: '遠離 ${player}',
             ko: '${player}에게서 떨어지기',
           },
           tornadoOnYou: {
@@ -887,6 +927,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Tornado auf DIR',
             fr: 'Tornade sur VOUS',
             cn: '龙卷风点名',
+            tc: '龍捲風點名',
             ko: '토네이도 대상자',
           },
         };
@@ -910,6 +951,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Reinige ${player}',
           fr: 'Guérissez ${player}',
           cn: '康复 ${player}',
+          tc: '康復 ${player}',
           ko: '${player} 디버프 해제',
         },
       },
@@ -937,6 +979,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach Hinten + Raus',
           fr: 'Derrière + Extérieur',
           cn: '去背后 + 远离',
+          tc: '去背後 + 遠離',
           ko: '뒤로 + 밖으로',
         },
       },
@@ -958,6 +1001,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Wächter besiegen!',
           fr: 'Tuez le gardien !',
           cn: '击杀 阿罗阿罗守卫!',
+          tc: '擊殺 阿羅阿羅守衛!',
           ko: '섬지킴이 잡기!',
         },
       },
@@ -1107,6 +1151,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Lala anschauen',
           fr: 'Regardez Lala',
           cn: '面向拉拉鲁',
+          tc: '面向拉拉魯',
           ko: '라라 쳐다보기',
         },
         back: {
@@ -1114,6 +1159,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Von Lala weg schauen',
           fr: 'Ne regardez pas Lala',
           cn: '背对拉拉鲁',
+          tc: '背對拉拉魯',
           ko: '라라에게서 뒤돌기',
         },
         left: {
@@ -1121,6 +1167,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Linke Seite zu Lala zeigen',
           fr: 'Flanc gauche vers Lala',
           cn: '左侧朝向拉拉鲁',
+          tc: '左側朝向拉拉魯',
           ko: '왼쪽면을 라라쪽으로',
         },
         right: {
@@ -1128,6 +1175,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rechte Seite zu Lala zeigen',
           fr: 'Flanc droit vers Lala',
           cn: '右侧朝向拉拉鲁',
+          tc: '右側朝向拉拉魯',
           ko: '오른쪽면을 라라쪽으로',
         },
       },
@@ -1159,6 +1207,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Eins',
             fr: 'Un',
             cn: '1',
+            tc: '1',
             ko: '1',
           },
           bigTwo: {
@@ -1166,6 +1215,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Zwei (sammeln mit Drei)',
             fr: 'Deux (Pack avec Trois)',
             cn: '2 (和3分摊)',
+            tc: '2 (和3分攤)',
             ko: '2 (3과 쉐어)',
           },
           smallTwo: {
@@ -1173,6 +1223,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Zwei (sammeln mit Eins)',
             fr: 'Deux (Pack avec Un',
             cn: '2 (和1分摊)',
+            tc: '2 (和1分攤)',
             ko: '2 (1과 쉐어)',
           },
           eitherTwo: {
@@ -1180,6 +1231,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Eine Zwei (mit ${player})',
             fr: 'Un des deux (avec ${player})',
             cn: '2 (和 ${player})',
+            tc: '2 (和 ${player})',
             ko: '2 (+ ${player})',
           },
           three: {
@@ -1187,6 +1239,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Drei',
             fr: 'Trois',
             cn: '3',
+            tc: '3',
             ko: '3',
           },
           // This is just a raidcall so you can direct your friends.
@@ -1195,6 +1248,7 @@ const triggerSet: TriggerSet<Data> = {
             de: '(Zwei mit Eins: ${players})',
             fr: '(Deux avec Un : ${players})',
             cn: '(和1分摊的2: ${players})',
+            tc: '(和1分攤的2: ${players})',
             ko: '(2+1: ${players})',
           },
           unknownNum: {
@@ -1202,6 +1256,7 @@ const triggerSet: TriggerSet<Data> = {
             de: '${num}',
             fr: '${num}',
             cn: '${num}',
+            tc: '${num}',
             ko: '${num}',
           },
           num1: Outputs.num1,
@@ -1305,6 +1360,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Linker March',
           fr: 'Marche à gauche',
           cn: '强制移动: 左',
+          tc: '強制移動: 左',
           ko: '강제이동: 왼쪽',
         },
         right: {
@@ -1312,6 +1368,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rechter March',
           fr: 'Marche à droite',
           cn: '强制移动: 右',
+          tc: '強制移動: 右',
           ko: '강제이동: 오른쪽',
         },
       },
@@ -1335,6 +1392,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Eins (alles ausweichen)',
           fr: 'Un (Évitez tout)',
           cn: '1 (躲开全部)',
+          tc: '1 (躲開全部)',
           ko: '1 (전부 피하기)',
         },
         num2: {
@@ -1342,6 +1400,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zwei (steh in der Mitte)',
           fr: 'Deux (Restez au centre)',
           cn: '2 (待在中间)',
+          tc: '2 (待在中間)',
           ko: '2 (중앙에 머물기)',
         },
         num3: {
@@ -1349,6 +1408,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Drei (steh neben der Mitte)',
           fr: 'Trois (adjacent au centre)',
           cn: '3 (中间相邻)',
+          tc: '3 (中間相鄰)',
           ko: '3 (중앙에서 옆 칸)',
         },
         num4: {
@@ -1356,6 +1416,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vier',
           fr: 'Quatre',
           cn: '4',
+          tc: '4',
           ko: '4',
         },
       },
@@ -1406,6 +1467,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '(${num} später sicher)',
           fr: '(${num} sûr ensuite)',
           cn: '(稍后 ${num} 安全)',
+          tc: '(稍後 ${num} 安全)',
           ko: '(나중에 ${num} 안전)',
         },
         num1: Outputs.num1,
@@ -1468,6 +1530,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Dart auf DIR',
             fr: 'Dard sur VOUS',
             cn: '飞镖点名',
+            tc: '飛鏢點名',
             ko: '다트 대상자',
           },
           noDartOnYou: {
@@ -1475,6 +1538,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Kein Dart',
             fr: 'Pas de Dard',
             cn: '无飞镖',
+            tc: '無飛鏢',
             ko: '다트 없음',
           },
           flexCall: {
@@ -1482,6 +1546,7 @@ const triggerSet: TriggerSet<Data> = {
             de: '(${player} unmarkiert)',
             fr: '(${player} non-marqué)',
             cn: '(${player} 无标记)',
+            tc: '(${player} 無標記)',
             ko: '(${player} 다트 없음)',
           },
         };
@@ -1533,6 +1598,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '(${num} gleich sicher)',
           fr: '(${num} bientôt sûr',
           cn: '(稍后 ${num} 安全)',
+          tc: '(稍後 ${num} 安全)',
           ko: '(나중에 ${num} 안전)',
         },
         num1: Outputs.num1,
@@ -1564,6 +1630,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rückstoß => ${num}',
           fr: 'Poussée => ${num}',
           cn: '击退 => ${num}',
+          tc: '擊退 => ${num}',
           ko: '넉백 => ${num}',
         },
         knockback: Outputs.knockback,
@@ -1611,6 +1678,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vorwärtsmarsch => ${mech}',
           fr: 'Marche en avant => ${mech}',
           cn: '强制移动：前 => ${mech}',
+          tc: '強制移動：前 => ${mech}',
           ko: '강제이동: 앞 => ${mech}',
         },
         backward: {
@@ -1618,6 +1686,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rückwärtsmarsch => ${mech}',
           fr: 'Marche en arrière => ${mech}',
           cn: '强制移动：后 => ${mech}',
+          tc: '強制移動：後 => ${mech}',
           ko: '강제이동: 뒤 => ${mech}',
         },
         left: {
@@ -1625,6 +1694,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Marsch Links => ${mech}',
           fr: 'Marche à gauche => ${mech}',
           cn: '强制移动：左 => ${mech}',
+          tc: '強制移動：左 => ${mech}',
           ko: '강제이동: 왼쪽 => ${mech}',
         },
         right: {
@@ -1632,6 +1702,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Marsch Rechts => ${mech}',
           fr: 'Marche à droite => ${mech}',
           cn: '强制移动：右 => ${mech}',
+          tc: '強制移動：右 => ${mech}',
           ko: '강제이동: 오른쪽 => ${mech}',
         },
         spread: Outputs.spread,
@@ -1669,6 +1740,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Verbindungen ködern => Verteilen mit Raketen',
             fr: 'Attirez les liens => Écartez les missiles',
             cn: '引导拉线 => 导弹分散',
+            tc: '引導拉線 => 導彈分散',
             ko: '사슬 유도 => 미사일 산개',
           },
         };
@@ -1707,6 +1779,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zieh Klaue => Sammeln',
           fr: 'Griffe => Package',
           cn: '爪子连线 => 分摊',
+          tc: '爪子連線 => 分攤',
           ko: '손아귀 => 쉐어',
         },
       },
@@ -1745,6 +1818,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Dart (mit ${player})',
             fr: 'Dard (avec ${player})',
             cn: '飞镖 (和 ${player})',
+            tc: '飛鏢 (和 ${player})',
             ko: '다트 (+ ${player})',
           },
           noDartOnYou: {
@@ -1752,6 +1826,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Kein Dart',
             fr: 'Pas de dard',
             cn: '无飞镖',
+            tc: '無飛鏢',
             ko: '다트 없음',
           },
           blue: {
@@ -1759,6 +1834,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Vermeide Blau',
             fr: 'Évitez le bleu',
             cn: '躲避蓝色',
+            tc: '躲避藍色',
             ko: '파란색 피하기',
           },
           red: {
@@ -1766,6 +1842,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Vermeide Rot',
             fr: 'Évitez le rouge',
             cn: '躲避红色',
+            tc: '躲避紅色',
             ko: '빨간색 피하기',
           },
           yellow: {
@@ -1773,6 +1850,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Vermeide Gelb',
             fr: 'Évitez le jaune',
             cn: '躲避黄色',
+            tc: '躲避黃色',
             ko: '노란색 피하기',
           },
         };
@@ -1850,6 +1928,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verbindung mit ${player}',
           fr: 'Lien avec ${player}',
           cn: '连线 和 ${player}',
+          tc: '連線 和 ${player}',
           ko: '사슬 +${player}',
         },
         stack: {
@@ -1857,6 +1936,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Sammeln mit ${player}',
           fr: 'Package avec ${player}',
           cn: '分摊 和 ${player}',
+          tc: '分攤 和 ${player}',
           ko: '쉐어 +${player}',
         },
       },

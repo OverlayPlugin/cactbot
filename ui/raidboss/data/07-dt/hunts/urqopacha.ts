@@ -25,6 +25,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'A Rang Hohe Jagd',
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
+    tc: 'A級狩獵怪',
     ko: 'A급 마물',
   },
   triggers: [
@@ -66,6 +67,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Weiche Cleaves aus x4',
           fr: 'Esquivez les cleaves x4',
           cn: '躲避顺劈 x4',
+          tc: '躲避順劈 x4',
           ko: '장판 피하기 x4',
         },
         behind: {
@@ -73,6 +75,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Hinten + Links (für 3) => Geh nach Vorne',
           fr: 'Derrière + Gauche (pour 3) => Allez devant',
           cn: '后 + 左(3次) => 前',
+          tc: '後 + 左(3次) => 前',
           ko: '뒤 + 왼쪽 (3번) => 앞으로',
         },
         right: {
@@ -80,6 +83,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rechts (für 2) => Links => Vorne',
           fr: 'Droite (pour 2) => Gauche => Devant',
           cn: '右(2次) => 左 => 前',
+          tc: '右(2次) => 左 => 前',
           ko: '오른쪽 (2번) => 왼쪽 => 앞으로',
         },
         front: {
@@ -87,6 +91,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vorne + Links (bleib stehen)',
           fr: 'Devant + Gauche (restez)',
           cn: '前 + 左 (不动)',
+          tc: '前 + 左 (不動)',
           ko: '앞으로 + 왼쪽 (그대로)',
         },
       },
@@ -115,6 +120,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Links => Vorne',
           fr: 'Gauche => Devant',
           cn: '左 => 前',
+          tc: '左 => 前',
           ko: '왼쪽 => 앞',
         },
       },
@@ -146,6 +152,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus + Bleib drausen',
           fr: 'Extérieur + Restez',
           cn: '远离 + 保持远离',
+          tc: '遠離 + 保持遠離',
           ko: '밖으로 + 계속 밖에 있기',
         },
       },
@@ -162,6 +169,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein + Bleib drinnen',
           fr: 'Intérieur + Restez',
           cn: '靠近 + 保持靠近',
+          tc: '靠近 + 保持靠近',
           ko: '안으로 + 계속 안에 있기',
         },
       },
@@ -189,6 +197,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geistlenkung: vorwärts',
           fr: 'Marche forcée : Avant',
           cn: '强制移动: 前',
+          tc: '強制移動: 前',
           ko: '강제이동: 앞',
         },
         backward: {
@@ -196,6 +205,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geistlenkung: rückwärts',
           fr: 'Marche forcée : Arrière',
           cn: '强制移动: 后',
+          tc: '強制移動: 後',
           ko: '강제이동: 뒤',
         },
         left: {
@@ -203,6 +213,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geistlenkung: links',
           fr: 'Marche forcée : Gauche',
           cn: '强制移动: 左',
+          tc: '強制移動: 左',
           ko: '강제이동: 왼쪽',
         },
         right: {
@@ -210,6 +221,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geistlenkung: rechts',
           fr: 'Marche forcée : Droite',
           cn: '强制移动: 右',
+          tc: '強制移動: 右',
           ko: '강제이동: 오른쪽',
         },
       },

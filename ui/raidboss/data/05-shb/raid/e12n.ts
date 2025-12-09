@@ -35,6 +35,7 @@ const bombOutputStrings = {
     fr: 'Entre les bombes au Nord',
     ja: '北の岩へ',
     cn: '去正上岩石中间',
+    tc: '去正上岩石中間',
     ko: '북쪽 폭탄 사이',
   },
   'south': {
@@ -43,6 +44,7 @@ const bombOutputStrings = {
     fr: 'Entre les bombes au Sud',
     ja: '南の岩へ',
     cn: '去正下岩石中间',
+    tc: '去正一下岩石中間',
     ko: '남쪽 폭탄 사이',
   },
   'east': {
@@ -51,6 +53,7 @@ const bombOutputStrings = {
     fr: 'Entre les bombes à l\'Est',
     ja: '東の岩へ',
     cn: '去右边岩石中间',
+    tc: '去右邊岩石中間',
     ko: '동쪽 폭탄 사이',
   },
   'west': {
@@ -59,6 +62,7 @@ const bombOutputStrings = {
     fr: 'Entre les bombes à l\'Ouest',
     ja: '西の岩へ',
     cn: '去左边岩石中间',
+    tc: '去左邊岩石中間',
     ko: '서쪽 폭탄 사이',
   },
 };
@@ -70,6 +74,7 @@ const primalOutputStrings = {
     fr: '${safespot1} + ${safespot2}',
     ja: '${safespot1} + ${safespot2}',
     cn: '${safespot1} + ${safespot2}',
+    tc: '${safespot1} + ${safespot2}',
     ko: '${safespot1} + ${safespot2}',
   },
   '008E': Outputs.middle,
@@ -81,6 +86,7 @@ const primalOutputStrings = {
     fr: 'Intercardinal',
     ja: '斜め',
     cn: '四角',
+    tc: '四角',
     ko: '대각',
   },
   '008E008F': {
@@ -89,6 +95,7 @@ const primalOutputStrings = {
     fr: 'En dessous + Côtés',
     ja: '真ん中 + 横へ',
     cn: '正中间两侧',
+    tc: '正中間兩側',
     ko: '보스 아래 + 양옆',
   },
   '008E0090': {
@@ -97,6 +104,7 @@ const primalOutputStrings = {
     fr: 'Nord/Sud + Extérieur',
     ja: '北/南 + 外へ',
     cn: '上/下远离',
+    tc: '上/下遠離',
     ko: '북/남 + 바깥',
   },
   '008E0091': {
@@ -105,6 +113,7 @@ const primalOutputStrings = {
     fr: 'En dessous + Intercardinal',
     ja: '真ん中 + 斜め',
     cn: '正中间四角',
+    tc: '正中間四角',
     ko: '보스 아래 + 대각',
   },
 };
@@ -184,6 +193,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez sur la dernière explosion',
           ja: 'ついさっき爆発した岩へ',
           cn: '去刚才爆炸的区域',
+          tc: '去剛才爆炸的區域',
           ko: '마지막 폭발 위치로',
         },
       },
@@ -214,6 +224,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package sur (${players})',
           ja: '頭割り (${players})',
           cn: '分摊 (${players})',
+          tc: '分攤 (${players})',
           ko: '모이기 (${players})',
         },
         stackOnYou: Outputs.stackOnYou,

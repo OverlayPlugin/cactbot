@@ -47,6 +47,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Collision avec une bulle',
             ja: '衝突',
             cn: '相撞',
+            tc: '相撞',
             ko: '장판 겹쳐서 터짐',
           },
         };

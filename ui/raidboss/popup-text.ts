@@ -1552,6 +1552,7 @@ export class PopupText {
         fr: ' puis ',
         ja: 'や',
         cn: '然后',
+        tc: '然後',
         ko: ' 그리고 ',
       };
       triggerHelper.ttsText = triggerHelper.ttsText.replace(

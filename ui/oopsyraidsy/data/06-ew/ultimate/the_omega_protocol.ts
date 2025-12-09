@@ -109,6 +109,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Tour rouge, pas de putréfaction',
       ja: '赤塔、デバフなし',
       cn: '红塔, 无毒',
+      tc: '紅塔, 無毒',
       ko: '빨강 장판, 디버프 없음',
     },
     missing: {
@@ -117,6 +118,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Tour rouge manquée',
       ja: '赤塔失敗',
       cn: '没踩到红塔',
+      tc: '沒踩到紅塔',
       ko: '빨강 장판 놓침',
     },
     share: {
@@ -125,6 +127,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Tour rouge',
       ja: '赤塔',
       cn: '红塔',
+      tc: '紅塔',
       ko: '빨강 장판',
     },
   },
@@ -137,6 +140,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Tour bleue, pas de putréfaction',
       ja: '青塔、デバフなし',
       cn: '蓝塔, 无毒',
+      tc: '藍塔, 無毒',
       ko: '파랑 장판, 디버프 없음',
     },
     missing: {
@@ -145,6 +149,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Tour bleue manquée',
       ja: '青塔失敗',
       cn: '没踩到蓝塔',
+      tc: '沒踩到藍塔',
       ko: '파랑 장판 놓침',
     },
     share: {
@@ -153,6 +158,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Tour bleue',
       ja: '青塔',
       cn: '蓝塔',
+      tc: '藍塔',
       ko: '파랑 장판',
     },
   },
@@ -165,6 +171,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Package',
       ja: '頭割り',
       cn: '分摊',
+      tc: '分攤',
       ko: '쉐어',
     },
     missing: {
@@ -173,6 +180,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Package manqué',
       ja: '頭割り失敗',
       cn: '错过分摊',
+      tc: '錯過分攤',
       ko: '쉐어 놓침',
     },
     share: {
@@ -181,6 +189,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Package',
       ja: '頭割り',
       cn: '分摊',
+      tc: '分攤',
       ko: '쉐어',
     },
     tookTwo: {
@@ -189,6 +198,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Package x2',
       ja: '頭割り x2',
       cn: '分摊 x2',
+      tc: '分攤 x2',
       ko: '쉐어 x2',
     },
   },
@@ -201,6 +211,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Diffamation',
       ja: 'サークル',
       cn: '大圈',
+      tc: '大圈',
       ko: '광역',
     },
     missing: {
@@ -209,6 +220,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Diffamation manquée',
       ja: 'サークル失敗',
       cn: '错过大圈',
+      tc: '錯過大圈',
       ko: '광역 놓침',
     },
     share: {
@@ -217,6 +229,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Diffamation',
       ja: 'サークル',
       cn: '大圈',
+      tc: '大圈',
       ko: '광역',
     },
     tookTwo: {
@@ -225,6 +238,7 @@ const defects: LatentDefectMistake[] = [
       fr: 'Diffamation x2',
       ja: 'サークル x2',
       cn: '大圈 x2',
+      tc: '大圈 x2',
       ko: '광역 x2',
     },
   },
@@ -240,6 +254,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     fr: ' (comme diffamation)',
     ja: ' (サークル)',
     cn: ' (大圈)',
+    tc: '(大圈)',
     ko: ' (광역)',
   },
   stack: {
@@ -248,6 +263,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     fr: ' (en tant que package)',
     ja: ' (頭割り)',
     cn: ' (分摊)',
+    tc: '(分攤)',
     ko: ' (쉐어)',
   },
   redTether: {
@@ -256,6 +272,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     fr: ' (en tant que lien proche)',
     ja: ' (ニア)',
     cn: ' (近线)',
+    tc: '(近線)',
     ko: ' (가까이 선)',
   },
   blueTether: {
@@ -264,6 +281,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     fr: ' (en tant que lien éloigné)',
     ja: ' (ファー)',
     cn: ' (远线)',
+    tc: '(遠線)',
     ko: ' (멀리 선)',
   },
   // These shouldn't happen.
@@ -273,6 +291,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     fr: ' (en tant que rouge)',
     ja: ' (赤)',
     cn: ' (红毒)',
+    tc: '(紅毒)',
     ko: ' (빨강 디버프)',
   },
   blueRot: {
@@ -281,6 +300,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     fr: ' (en tant que bleu)',
     ja: ' (青)',
     cn: ' (蓝毒)',
+    tc: '(藍毒)',
     ko: ' (파랑 디버프)',
   },
 } as const;
@@ -293,6 +313,7 @@ const playerComboDesc = {
     fr: ' (en tant que diffamation rouge)',
     ja: ' (赤サークル)',
     cn: ' (红大圈)',
+    tc: '(紅大圈)',
     ko: ' (빨강 광역)',
   },
   redStack: {
@@ -301,6 +322,7 @@ const playerComboDesc = {
     fr: ' (en tant que package rouge)',
     ja: ' (赤頭割り)',
     cn: ' (红分摊)',
+    tc: '(紅分攤)',
     ko: ' (빨강 쉐어)',
   },
   blueDefamation: {
@@ -309,6 +331,7 @@ const playerComboDesc = {
     fr: ' (en tant que diffamation bleue)',
     ja: ' (青サークル)',
     cn: ' (蓝大圈)',
+    tc: '(藍大圈)',
     ko: ' (파랑 광역)',
   },
   blueStack: {
@@ -317,6 +340,7 @@ const playerComboDesc = {
     fr: ' (en tant que package bleu',
     ja: ' (青頭割り)',
     cn: ' (蓝分摊)',
+    tc: '(藍分攤)',
     ko: ' (파랑 쉐어)',
   },
 } as const;
@@ -327,6 +351,7 @@ const unknownDescriptionLocale: LocaleText = {
   fr: ' (en tant que ???)',
   ja: ' (???)',
   cn: ' (???)',
+  tc: '(???)',
   ko: ' (???)',
 };
 
@@ -780,6 +805,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: 'Putréfaction rouge inattendue',
               ja: '赤デバフもらう',
               cn: '非预期红毒',
+              tc: '非預期紅毒',
               ko: '빨강 디버프 잘못 받음',
             },
           };
@@ -795,6 +821,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: 'Putréfaction bleue inattendue',
               ja: '青デバフもらう',
               cn: '非预期蓝毒',
+              tc: '非預期藍毒',
               ko: '파랑 디버프 잘못 받음',
             },
           };
@@ -916,6 +943,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: 'Obtention de putréfaction rouge échouée',
                 ja: '赤デバフ失敗',
                 cn: '没拿到红毒',
+                tc: '沒拿到紅毒',
                 ko: '빨강 디버프 못받음',
               },
               blue: {
@@ -924,6 +952,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: 'Obtention de putréfaction bleue échouée',
                 ja: '青デバフ失敗',
                 cn: '没拿到蓝毒',
+                tc: '沒拿到藍毒',
                 ko: '파랑 디버프 못받음',
               },
             }[color];
@@ -1127,6 +1156,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Explosion de la putréfaction rouge',
           ja: '赤デバフ爆発',
           cn: '红毒爆炸',
+          tc: '紅毒爆炸',
           ko: '빨강 디버프 폭발',
         };
         const text = GetShareMistakeText(renamedText, targets);
@@ -1149,6 +1179,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Explosion de la putréfaction bleue',
           ja: '青デバフ爆発',
           cn: '蓝毒爆炸',
+          tc: '藍毒爆炸',
           ko: '파랑 디버프 폭발',
         };
         const text = GetShareMistakeText(renamedText, targets);
@@ -1189,6 +1220,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: 'Non touché par le moniteur',
               ja: '検知失敗',
               cn: '未被小电视命中',
+              tc: '未被小電視命中',
               ko: '모니터 안맞음',
             },
           });
@@ -1248,6 +1280,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         fr: 'Position pour le canon',
         ja: '散会波動砲',
         cn: '分散波动炮',
+        tc: '分散波動炮',
         ko: '산개 파동포',
       }),
     },
@@ -1267,6 +1300,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Position pour le canon répétée',
             ja: '連続散会波動砲',
             cn: '复读分散波动炮',
+            tc: '復讀分散波動炮',
             ko: '산개 파동포 장판',
           },
         };
@@ -1439,6 +1473,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'ExaBrasier',
             ja: 'エクサフレア',
             cn: '地火',
+            tc: '地火',
             ko: '엑사플레어',
           },
         };
@@ -1455,6 +1490,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         fr: 'Position pour le canon',
         ja: '散会波動砲',
         cn: '分散波动炮',
+        tc: '分散波動炮',
         ko: '산개 파동포',
       }),
     },

@@ -16,6 +16,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'A Rang Hohe Jagd',
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
+    tc: 'A級狩獵怪',
     ko: 'A급 마물',
   },
   triggers: [
@@ -54,6 +55,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Schnell raus + weg schauen',
           fr: 'Allez vous-en et regardez ailleurs',
           cn: '远离人群 + 背对',
+          tc: '遠離人群 + 背對',
           ko: '멀리 빠지기 + 뒤돌기',
         },
       },
@@ -106,6 +108,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Voll heilen',
           fr: 'Soignez au maximum',
           cn: '奶满死宣',
+          tc: '奶滿死宣',
           ko: '체력 풀피로',
         },
       },

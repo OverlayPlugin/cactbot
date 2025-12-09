@@ -21,6 +21,7 @@ export const echoesOutputStrings = {
     fr: 'Packez-vous, donut',
     ja: '頭割り',
     cn: '集合放月环',
+    tc: '集合放月環',
     ko: '도넛 장판, 쉐어',
   },
   spread: Outputs.spread,
@@ -30,6 +31,7 @@ export const echoesOutputStrings = {
     fr: 'Brasier',
     ja: 'フレア',
     cn: '核爆',
+    tc: '核爆',
     ko: '플레어',
   },
 } as const;
@@ -83,6 +85,7 @@ export const orbOutputStrings: OutputStrings = {
     fr: 'Poussée ${dir}',
     ja: '${dir} ノックバック',
     cn: '${dir} 击退',
+    tc: '${dir} 擊退',
     ko: '${dir} 넉백',
   },
   knockbackWithHead: {
@@ -91,6 +94,7 @@ export const orbOutputStrings: OutputStrings = {
     fr: 'Poussée ${dir1} -> ${dir2}',
     ja: '${dir1} ノックバック -> ${dir2}',
     cn: '${dir1} 击退 -> ${dir2}',
+    tc: '${dir1} 擊退 -> ${dir2}',
     ko: '${dir1} 넉백 -> ${dir2}',
   },
   aoeWithHead: {
@@ -99,6 +103,7 @@ export const orbOutputStrings: OutputStrings = {
     fr: 'Allez ${dir1} (côté ${dir2})',
     ja: '${dir1}方に (そっと${dir2}方へ)',
     cn: '去${dir1} (偏${dir2})',
+    tc: '去${dir1} (偏${dir2})',
     ko: '${dir1}쪽으로 (살짝 ${dir2}쪽으로)',
   },
 };
@@ -353,6 +358,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur (Côtés)',
           ja: '外 (横へ)',
           cn: '去外面 (两边)',
+          tc: '去外面 (兩邊)',
           ko: '밖으로 (양 옆)',
         },
         sidesWithTower: {
@@ -361,6 +367,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tour + Extérieur',
           ja: '塔踏み + 外側',
           cn: '踩塔 + 去外面',
+          tc: '踩塔 + 去外面',
           ko: '기둥 + 양 옆',
         },
         sidesWithStacks: {
@@ -369,6 +376,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur + Groupes sur les heals',
           ja: '外側 + ヒーラと4:4頭割り',
           cn: '去外面 + 治疗分组分摊',
+          tc: '去外面 + 治療分組分攤',
           ko: '양 옆 + 힐러 그룹',
         },
       },
@@ -394,6 +402,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur (Milieu)',
           ja: '中へ (真ん中)',
           cn: '去里面 (中间)',
+          tc: '去裡面 (中間)',
           ko: '안으로 (가운데)',
         },
         middleWithTower: {
@@ -402,6 +411,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tour + Intérieur',
           ja: '塔踏み + 内側',
           cn: '踩塔 + 去里面',
+          tc: '踩塔 + 去裡面',
           ko: '기둥 + 안으로',
         },
         middleWithStacks: {
@@ -410,6 +420,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur + Groupes sur les heals',
           ja: '内側 + ヒーラと4:4頭割り',
           cn: '去里面 + 治疗分组分摊',
+          tc: '去裡面 + 治療分組分攤',
           ko: '안으로 + 힐러 그룹',
         },
       },
@@ -491,6 +502,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Groupes sur les heals',
           ja: 'ヒラに頭割り',
           cn: '治疗分组分摊',
+          tc: '治療分組分攤',
           ko: '힐러 그룹 쉐어',
         },
       },
@@ -832,6 +844,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir1} / ${dir2}',
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
         },
       },

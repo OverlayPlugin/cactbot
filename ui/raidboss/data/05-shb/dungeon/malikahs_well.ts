@@ -34,6 +34,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée au CaC',
           ja: '近接最大距離ノックバック',
           cn: '小范围击退',
+          tc: '小範圍擊退',
           ko: '근거리 넉백',
         },
       },

@@ -99,6 +99,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Séparez les Tankbusters',
           ja: '2人同時タンク強攻撃',
           cn: '分散死刑',
+          tc: '分散死刑',
           ko: '따로맞는 탱버',
         },
       },
@@ -385,6 +386,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir1} / ${dir2}',
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
         },
         single: {
@@ -393,6 +395,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir1}',
           ja: '${dir1}',
           cn: '${dir1}',
+          tc: '${dir1}',
           ko: '${dir1}',
         },
         poly6: {
@@ -401,6 +404,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir1}: ${dir2} / ${dir3}',
           ja: '${dir1}: ${dir2} / ${dir3}',
           cn: '${dir1}: ${dir2} / ${dir3}',
+          tc: '${dir1}: ${dir2} / ${dir3}',
           ko: '${dir1}: ${dir2} / ${dir3}',
         },
         left: {
@@ -409,6 +413,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche (Côté aile)',
           ja: '左 (翼)',
           cn: '左 (翅膀侧)',
+          tc: '左 (翅膀側)',
           ko: '왼쪽 (날개쪽)',
         },
         right: {
@@ -417,6 +422,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite (Côté serpent)',
           ja: '右 (蛇)',
           cn: '右 (蛇侧)',
+          tc: '右 (蛇側)',
           ko: '오른쪽 (뱀쪽)',
         },
         insideWest: {
@@ -425,6 +431,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur Ouest',
           ja: '内側 西',
           cn: '内侧 左 ',
+          tc: '內側 左',
           ko: '안 서쪽',
         },
         insideEast: {
@@ -433,6 +440,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur Est',
           ja: '内側 東',
           cn: '内侧 右',
+          tc: '內側 右',
           ko: '안 동쪽',
         },
         outsideWest: {
@@ -441,6 +449,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur Ouest',
           ja: '外側 西',
           cn: '外侧 左 ',
+          tc: '外側 左',
           ko: '바깥 서쪽',
         },
         outsideEast: {
@@ -449,6 +458,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur Est',
           ja: '外側 東',
           cn: '外侧 右',
+          tc: '外側 右',
           ko: '바깥 동쪽',
         },
         insideNW: {
@@ -457,6 +467,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur NO',
           ja: '内側 北西',
           cn: '内侧 左上',
+          tc: '內側 左上',
           ko: '안 북서쪽',
         },
         insideNE: {
@@ -465,6 +476,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur NE',
           ja: '内側 北東',
           cn: '内侧 右上',
+          tc: '內側 右上',
           ko: '안 북동쪽',
         },
         insideSE: {
@@ -473,6 +485,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur SE',
           ja: '内側 南東',
           cn: '内侧 右下',
+          tc: '內側 右下',
           ko: '안 남동쪽',
         },
         insideSW: {
@@ -481,6 +494,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur SO',
           ja: '内側 南西',
           cn: '内侧 左下',
+          tc: '內側 左下',
           ko: '안 남서쪽',
         },
         outsideNNW: {
@@ -489,6 +503,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur NNO',
           ja: '1列 西の内側',
           cn: '外侧 上偏左',
+          tc: '外側 上偏左',
           ko: '바깥 북쪽 왼칸',
         },
         outsideNNE: {
@@ -497,6 +512,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur NNE',
           ja: '1列 東の内側',
           cn: '外侧 上偏右',
+          tc: '外側 上偏右',
           ko: '바깥 북쪽 오른칸',
         },
         outsideSSW: {
@@ -505,6 +521,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur SSO',
           ja: '4列 西の内側',
           cn: '外侧 下偏左',
+          tc: '外側 下偏左',
           ko: '바깥 남쪽 왼칸',
         },
         outsideSSE: {
@@ -513,6 +530,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur SSE',
           ja: '4列 東の内側',
           cn: '外侧 下偏右',
+          tc: '外側 下偏右',
           ko: '바깥 남쪽 오른칸',
         },
         outsideWNW: {
@@ -521,6 +539,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur ONO',
           ja: '2列 西の外側',
           cn: '外侧 左偏上',
+          tc: '外側 左偏上',
           ko: '바깥 서쪽 위칸',
         },
         outsideENE: {
@@ -529,6 +548,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur ENE',
           ja: '2列 東の外側',
           cn: '外侧 右偏上',
+          tc: '外側 右偏上',
           ko: '바깥 동쪽 위칸',
         },
         outsideWSW: {
@@ -537,6 +557,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur OSO',
           ja: '3列 西の外側',
           cn: '外侧 左偏下',
+          tc: '外側 左偏下',
           ko: '바깥 서쪽 아래칸',
         },
         outsideESE: {
@@ -545,6 +566,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur ESE',
           ja: '3列 東の外側',
           cn: '外侧 右偏下',
+          tc: '外側 右偏下',
           ko: '바깥 동쪽 아래칸',
         },
         cornerNW: {
@@ -553,6 +575,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Coin NO',
           ja: '北西 隅',
           cn: '左上角',
+          tc: '左上角',
           ko: '북서쪽 구석',
         },
         cornerNE: {
@@ -561,6 +584,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Coin NE',
           ja: '北東 隅',
           cn: '右上角',
+          tc: '右上角',
           ko: '북동쪽 구석',
         },
         cornerSE: {
@@ -569,6 +593,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Coin SE',
           ja: '南東 隅',
           cn: '右下角',
+          tc: '右下角',
           ko: '남동쪽 구석',
         },
         cornerSW: {
@@ -577,6 +602,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Coin SO',
           ja: '南西 隅',
           cn: '左下角',
+          tc: '左下角',
           ko: '남서쪽 구석',
         },
       },
@@ -631,6 +657,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez Devant/Derrière (${tile})',
           ja: '縦へ (${tile})',
           cn: '去前/后 (${tile})',
+          tc: '去前/後 (${tile})',
           ko: '앞/뒤로 (${tile})',
         },
       },
@@ -652,6 +679,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Côté (${tile})',
           ja: '横へ (${tile})',
           cn: '去两侧 (${tile})',
+          tc: '去兩側 (${tile})',
           ko: '옆으로 (${tile})',
         },
       },
@@ -703,6 +731,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '#${num}',
           ja: '自分: ${num}番',
           cn: '#${num}',
+          tc: '#${num}',
           ko: '${num}번째',
         },
       },
@@ -724,6 +753,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${num}',
           ja: '${num}番',
           cn: '${num}',
+          tc: '${num}',
           ko: '${num}',
         },
       },
@@ -761,6 +791,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Packez-vous, donut',
           ja: '頭割り',
           cn: '集合放月环',
+          tc: '集合放月環',
           ko: '도넛 장판, 쉐어',
         },
         spreadCorner: {
@@ -769,6 +800,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Écartez-vous dans le coin',
           ja: '隅で散会',
           cn: '去角落',
+          tc: '去角落',
           ko: '구석으로 산개',
         },
       },
@@ -785,6 +817,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Déposez les cercles',
           ja: 'ゆか誘導',
           cn: '诱导放圈',
+          tc: '誘導放圈',
           ko: '장판 유도',
         },
       },
@@ -845,6 +878,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir}, ${bait}',
           ja: '${dir}, ${bait}',
           cn: '${dir}, ${bait}',
+          tc: '${dir}, ${bait}',
           ko: '${dir}, ${bait}',
         },
         left: {
@@ -853,6 +887,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche (Côté Aile)',
           ja: '左 (翼)',
           cn: '左 (翅膀侧)',
+          tc: '左 (翅膀側)',
           ko: '왼쪽 (날개쪽)',
         },
         right: {
@@ -861,6 +896,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite (Côté Serpent)',
           ja: '右 (蛇)',
           cn: '右 (蛇侧)',
+          tc: '右 (蛇側)',
           ko: '오른쪽 (뱀쪽)',
         },
         firstBait: {
@@ -869,6 +905,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dépose en 1er (20s)',
           ja: '1番目 (20秒)',
           cn: '1组引导 (20秒)',
+          tc: '1組引導 (20秒)',
           ko: '유도 1번 (20초)',
         },
         secondBait: {
@@ -877,6 +914,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dépose en 2ème (8s)',
           ja: '2番目 (8秒)',
           cn: '2组引导 (8秒)',
+          tc: '2組引導 (8秒)',
           ko: '유도 2번 (8초)',
         },
         thirdBait: {
@@ -885,6 +923,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dépose en 3ème (12s)',
           ja: '3番目 (12秒)',
           cn: '3组引导 (12秒)',
+          tc: '3組引導 (12秒)',
           ko: '유도 3번 (12초)',
         },
         fourthBait: {
@@ -893,6 +932,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dépose en 4ème (16s)',
           ja: '4番目 (16秒)',
           cn: '4组引导 (16秒)',
+          tc: '4組引導 (16秒)',
           ko: '유도 4번 (16초)',
         },
       },
@@ -913,6 +953,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À l\'intérieur (1er)',
           ja: '内側へ (1番目)',
           cn: '内侧引导 (第1组)',
+          tc: '內側引導 (第1組)',
           ko: '안으로 (유도 1번)',
         },
       },
@@ -958,6 +999,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À l\'intérieur (2ème)',
           ja: '内側へ (2番目)',
           cn: '内侧引导 (第2组)',
+          tc: '內側引導 (第2組)',
           ko: '안으로 (유도 2번)',
         },
         inThirdBait: {
@@ -966,6 +1008,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À l\'intérieur (3ème)',
           ja: '内側へ (3番目)',
           cn: '内侧引导 (第3组)',
+          tc: '內側引導 (第3組)',
           ko: '안으로 (유도 3번)',
         },
         inFourthBait: {
@@ -974,6 +1017,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À l\'intérieur (4ème)',
           ja: '内側へ (4番目)',
           cn: '内侧引导 (第4组)',
+          tc: '內側引導 (第4組)',
           ko: '안으로 (유도 4번)',
         },
       },
@@ -1004,6 +1048,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche (Côté Aile)',
           ja: '左 (翼)',
           cn: '左 (翅膀侧)',
+          tc: '左 (翅膀側)',
           ko: '왼쪽 (날개쪽)',
         },
         right: {
@@ -1012,6 +1057,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite (Côté Serpent)',
           ja: '右 (蛇)',
           cn: '右 (蛇侧)',
+          tc: '右 (蛇側)',
           ko: '오른쪽 (뱀쪽)',
         },
       },
@@ -1038,6 +1084,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cleave Avant',
           ja: '口からおくび',
           cn: '前方扇形',
+          tc: '前方扇形',
           ko: '전방 부채꼴 장판',
         },
         backwardCleave: {
@@ -1046,6 +1093,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cleave Arrière',
           ja: '尻からおなら',
           cn: '背后扇形',
+          tc: '背後扇形',
           ko: '후방 부채꼴 장판',
         },
       },
@@ -1067,6 +1115,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cleave Avant, pour après',
           ja: '後で口からおくび',
           cn: '稍后 前方扇形',
+          tc: '稍後 前方扇形',
           ko: '곧 전방 부채꼴 장판',
         },
         backwardCleave: {
@@ -1075,6 +1124,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cleave Arrière, pour après',
           ja: '後で尻からおなら',
           cn: '稍后 背后扇形',
+          tc: '稍後 背後扇形',
           ko: '곧 후방 부채꼴 장판',
         },
       },
@@ -1111,6 +1161,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dispersion ${dir1}',
           ja: '散会 ${dir1}',
           cn: '分散 ${dir1}',
+          tc: '分散 ${dir1}',
           ko: '산개 ${dir1}',
         },
         stackSide: {
@@ -1119,6 +1170,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package ${dir1}',
           ja: '頭割り ${dir1}',
           cn: '分摊 ${dir1}',
+          tc: '分攤 ${dir1}',
           ko: '쉐어 ${dir1}',
         },
       },
