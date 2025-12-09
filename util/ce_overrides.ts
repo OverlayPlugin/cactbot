@@ -22,7 +22,7 @@ type ZoneNameToCeInfo = {
 };
 
 type ZoneNameToExcludedCEs = {
-  [name: string]: [string];
+  [name: string]: string[];
 };
 
 type OverrideContainer = {
@@ -91,60 +91,39 @@ const _DIRECTOR_UPDATE_VALUES: NameKeyToDirectorUpdateId = {
   'CursedConcern': '32B',
   'EternalWatch': '329',
   'FlameOfDusk': '32A',
+  'TheForkedTowerBlood': '33B',
 };
 
-// Forked Tower CEs do not get listed in the XIV API.
+// Forked Tower CE DirectorUpdates do not get listed in the XIV API.
+//
+// After each boss or area is completed, there is an associated
+// DirectorUpdate with a unique ID. However, the 4 main encounters come with
+// seal/unseal lines which are used to separate the encounters instead of
+// using these IDs. There are two "trash" encounters, the central passages
+// and the lockwards which we could theoretically track by using the
+// DirectorUpdate for the end of the previous boss, along with the
+// DirectorUpdate line at the end of that encounter. However, this is
+// problematic because some of the "unseal" messages for the previous
+// encounter happen after this DirectorUpdate, causing the encounter to be
+// listed with a duration of 0s or even sometimes as "-1".
+//
+// For completeness, all of the DirectorUpdate IDs found within the Forked
+// Tower are included here by comment, but are not added as Synthetic CEs
+// due to issues that causes with tracking the normal encounters.
+//
+// 33B => Demon Tablet
+// 33F => demon tablet defeated
+// 33C => passage to Dead Stars is opened
+// 340 => Dead Stars defeated
+// 33D => Bridges cleared
+// 341 => Marble Dragon cleared
+// 33E => Magitaur room unlocked
 const _SYNTHETIC_CE_INFO: ZoneNameToCeInfo = {
-  'South Horn': {
-    'DemonTablet': {
-      'directorId': '33B',
-      'name': {
-        'en': 'Demon Tablet',
-      },
-    },
-    'CentralGallery': {
-      'directorId': '33F',
-      'name': {
-        'en': 'Central Passages',
-      },
-    },
-    'DeadStars': {
-      'directorId': '33C',
-      'name': {
-        'en': 'Dead Stars: Nereid, Triton, and Phobos',
-      },
-    },
-    'UpperExterior': {
-      'directorId': '340',
-      'name': {
-        'en': 'Pronged Passages',
-      },
-    },
-    'MarbleDragon': {
-      'directorId': '33D',
-      'name': {
-        'en': 'Marble Dragon',
-      },
-    },
-    'BindingLock': {
-      'directorId': '341',
-      'name': {
-        'en': 'The Binding Lock',
-      },
-    },
-    'InfamyOfBloodMagitaur': {
-      'directorId': '33E',
-      'name': {
-        'en': 'Infamy Of Blood: Magitaur',
-      },
-    },
-  },
+  'South Horn': {},
 };
 
 const _EXCLUDED_CE_BY_ZONE_NAME: ZoneNameToExcludedCEs = {
-  'South Horn': [
-    'TheForkedTowerBlood',
-  ],
+  'South Horn': [],
 };
 
 const Overrides: OverrideContainer = {

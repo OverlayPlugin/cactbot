@@ -4,12 +4,6 @@
 import { CeInfoType } from '../types/ce';
 
 const data: CeInfoType = {
-  'BindingLock': {
-    'directorId': '341',
-    'name': {
-      'en': 'The Binding Lock',
-    },
-  },
   'CalamityBound': {
     'directorId': '32F',
     'name': {
@@ -17,12 +11,6 @@ const data: CeInfoType = {
       'en': 'Calamity Bound',
       'fr': 'Défi : Cloître à perpétuité',
       'ja': '封印大妖「クロイスターデーモン」',
-    },
-  },
-  'CentralGallery': {
-    'directorId': '33F',
-    'name': {
-      'en': 'Central Passages',
     },
   },
   'CompanyOfStone': {
@@ -52,18 +40,6 @@ const data: CeInfoType = {
       'ja': '呪いの商亀「コイントートス」',
     },
   },
-  'DeadStars': {
-    'directorId': '33C',
-    'name': {
-      'en': 'Dead Stars: Nereid, Triton, and Phobos',
-    },
-  },
-  'DemonTablet': {
-    'directorId': '33B',
-    'name': {
-      'en': 'Demon Tablet',
-    },
-  },
   'EternalWatch': {
     'directorId': '329',
     'name': {
@@ -89,18 +65,6 @@ const data: CeInfoType = {
       'en': 'From Times Bygone',
       'fr': 'Défi : idole surprise',
       'ja': '神秘の偶像「ミシカルアイドル」',
-    },
-  },
-  'InfamyOfBloodMagitaur': {
-    'directorId': '33E',
-    'name': {
-      'en': 'Infamy Of Blood: Magitaur',
-    },
-  },
-  'MarbleDragon': {
-    'directorId': '33D',
-    'name': {
-      'en': 'Marble Dragon',
     },
   },
   'NoiseComplaint': {
@@ -148,6 +112,15 @@ const data: CeInfoType = {
       'ja': '黒の連隊',
     },
   },
+  'TheForkedTowerBlood': {
+    'directorId': '33B',
+    'name': {
+      'de': 'Der Turm des Blutes',
+      'en': 'The Forked Tower: Blood',
+      'fr': 'Tour fourchue de la Force',
+      'ja': 'フォークタワー：力の塔',
+    },
+  },
   'TheUnbridled': {
     'directorId': '348',
     'name': {
@@ -164,12 +137,6 @@ const data: CeInfoType = {
       'en': 'Trial by Claw',
       'fr': 'Défi : écailles de cristal',
       'ja': '模造されしもの「水晶竜」',
-    },
-  },
-  'UpperExterior': {
-    'directorId': '340',
-    'name': {
-      'en': 'Pronged Passages',
     },
   },
   'WithExtremePrejudice': {

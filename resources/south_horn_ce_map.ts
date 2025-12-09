@@ -14,8 +14,6 @@ const data: CEMap<typeof SouthHornCEs> = {
   '330': 'CrawlingDeath',
   '338': 'OnTheHunt',
   '339': 'WithExtremePrejudice',
-  '340': 'UpperExterior',
-  '341': 'BindingLock',
   '343': 'CompanyOfStone',
   '348': 'TheUnbridled',
   '349': 'TrialByClaw',
@@ -23,11 +21,7 @@ const data: CEMap<typeof SouthHornCEs> = {
   '32B': 'CursedConcern',
   '32E': 'SharkAttack',
   '32F': 'CalamityBound',
-  '33B': 'DemonTablet',
-  '33C': 'DeadStars',
-  '33D': 'MarbleDragon',
-  '33E': 'InfamyOfBloodMagitaur',
-  '33F': 'CentralGallery',
+  '33B': 'TheForkedTowerBlood',
 } as const;
 
 export default data;
