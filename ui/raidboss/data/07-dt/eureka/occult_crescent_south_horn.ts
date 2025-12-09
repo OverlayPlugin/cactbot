@@ -615,6 +615,7 @@ const triggerSet: TriggerSet<Data> = {
     },
   ],
   triggers: [
+    // ---------------------- Setup --------------------------
     {
       id: 'Occult Crescent Critical Encounter',
       type: 'ActorControl',
@@ -702,7 +703,7 @@ const triggerSet: TriggerSet<Data> = {
         data.magitaurLancelightCount = 0;
       },
     },
-    // CE Triggers
+    // ---------------------- CEs --------------------------
     {
       id: 'Occult Crescent Cloister Demon Tidal Breath',
       type: 'StartsUsing',
@@ -812,7 +813,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Nymian Petalodus', id: 'A88D', capture: false },
       response: Responses.awayFromFront(),
     },
-    // FATE triggers
+    // ------------------- FATEs -----------------------
     {
       id: 'Occult Crescent Giant Bird Gale Cannon',
       type: 'StartsUsing',
@@ -1127,8 +1128,7 @@ const triggerSet: TriggerSet<Data> = {
       suppressSeconds: 1,
       response: Responses.aoe(),
     },
-
-    // Forked Tower Triggers
+    // ------------------- Forked Tower: Blood -----------------------
     {
       id: 'Occult Crescent Demon Tablet Demonic Dark II',
       type: 'StartsUsing',
