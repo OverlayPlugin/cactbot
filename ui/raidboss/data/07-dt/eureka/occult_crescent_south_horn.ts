@@ -4298,8 +4298,8 @@ const triggerSet: TriggerSet<Data> = {
         if (
           (data.me === matches.target) &&
           (data.phantomJob === undefined ||
-          data.phantomJobLevel === undefined ||
-          phantomCanCleanse(data.phantomJob, data.phantomJobLevel))
+            data.phantomJobLevel === undefined ||
+            phantomCanCleanse(data.phantomJob, data.phantomJobLevel))
         )
           return true;
         return false;
