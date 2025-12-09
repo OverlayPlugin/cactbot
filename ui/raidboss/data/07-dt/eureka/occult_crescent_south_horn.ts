@@ -966,8 +966,6 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Neo Garula Damage Up',
       // Neo Garula gains Damage Up (60s) after casting Agitated Groan
-      // Crescent Berserker gains Damage Up (20s) from Channeled Rage (7846)
-      // Crescent Berseker gains Damage Up (40s) from Heightened Rage (93B1)
       type: 'GainsEffect',
       netRegex: { effectId: '489', target: 'Neo Garula', capture: true },
       condition: (data) => {
