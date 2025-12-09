@@ -163,6 +163,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Buff nourriture perdue',
             ja: '飯効果が失った',
             cn: '失去食物BUFF',
+            tc: '失去食物BUFF',
             ko: '음식 버프 해제',
           },
         };
@@ -193,6 +194,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'lapin',
             ja: 'うさぎ',
             cn: '兔子',
+            tc: '兔子',
             ko: '토끼',
           },
         };

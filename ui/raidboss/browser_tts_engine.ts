@@ -53,6 +53,7 @@ export default class BrowserTTSEngine {
       ja: 'ja-JP',
       // TODO: maybe need to provide an option of zh-CN, zh-HK, zh-TW?
       cn: 'zh-CN',
+      tc: 'zh-CN',
       ko: 'ko-KR',
     };
 

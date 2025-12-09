@@ -35,6 +35,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Arc',
             ja: 'お辞儀',
             cn: '鞠躬',
+            tc: '鞠躬',
             ko: '인사',
           },
         };
@@ -60,6 +61,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Party Wipe',
             ja: 'ワイプ',
             cn: '团灭',
+            tc: '團滅',
             ko: '파티 전멸',
           },
         };
@@ -78,6 +80,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Mannequin d\'entraînement',
           ja: '木人',
           cn: '木人',
+          tc: '木人',
           ko: '나무인형',
         };
         const strikingDummyNames = Object.values(strikingDummyByLocale);

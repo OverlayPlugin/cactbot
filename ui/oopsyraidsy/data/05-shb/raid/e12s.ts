@@ -398,6 +398,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Grand lion du nord',
           ja: '大ライオン(北)',
           cn: '北方大狮子',
+          tc: '北方大獅子',
           ko: '북쪽 큰 사자',
         };
         const southBigLion: LocaleText = {
@@ -406,6 +407,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Grand lion du sud',
           ja: '大ライオン(南)',
           cn: '南方大狮子',
+          tc: '南方大獅子',
           ko: '남쪽 큰 사자',
         };
         const shared: LocaleText = {
@@ -414,6 +416,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Partagé(e)',
           ja: '重ねた',
           cn: '重叠',
+          tc: '重疊',
           ko: '같이 맞음',
         };
         const fireDebuff: LocaleText = {
@@ -422,6 +425,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'A eu(e) le feu',
           ja: '炎付き',
           cn: '火Debuff',
+          tc: '火Debuff',
           ko: '화염 디버프 받음',
         };
 
@@ -465,6 +469,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Renversé(e)',
             ja: 'ノックバック',
             cn: '击退坠落',
+            tc: '擊退墜落',
             ko: '넉백',
           },
         };

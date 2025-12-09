@@ -14,6 +14,7 @@ const emulatorButtons: Translation = {
     fr: 'Oui',
     ja: 'はい',
     cn: '是',
+    tc: '是',
   },
   '.noButton': {
     en: 'No',
@@ -21,6 +22,7 @@ const emulatorButtons: Translation = {
     fr: 'Non',
     ja: 'いいえ',
     cn: '否',
+    tc: '否',
   },
   '.closeButton': {
     en: 'Close',
@@ -28,6 +30,7 @@ const emulatorButtons: Translation = {
     fr: 'Fermer',
     ja: '閉じる',
     cn: '关闭',
+    tc: '關閉',
   },
   '.doneButton': {
     en: 'Done<span class="done-btn-timeout"></span>',
@@ -35,6 +38,7 @@ const emulatorButtons: Translation = {
     fr: 'Terminé<span class="done-btn-timeout"></span>',
     ja: '完了<span class="done-btn-timeout"></span>',
     cn: '完成<span class="done-btn-timeout"></span>',
+    tc: '完成<span class=\"done-btn-timeout\"></span>',
   },
   '.loadNetworkLogButton': {
     en: 'Load Network Log',
@@ -42,6 +46,7 @@ const emulatorButtons: Translation = {
     fr: 'Charger le Network Log',
     ja: 'ネットワークログを読み込む',
     cn: '加载网络日志',
+    tc: '載入網路日誌',
   },
   '.exportDBButton': {
     en: 'Export DB',
@@ -49,6 +54,7 @@ const emulatorButtons: Translation = {
     fr: 'Exporter DB',
     ja: 'DBをエクスポート',
     cn: '导出数据库',
+    tc: '導出資料庫',
   },
   '.importDBButton': {
     en: 'Import DB',
@@ -56,6 +62,7 @@ const emulatorButtons: Translation = {
     fr: 'Importer DB',
     ja: 'DBをインポート',
     cn: '导入数据库',
+    tc: '導入資料庫',
   },
   '.clearDBButton': {
     en: 'Clear DB',
@@ -63,6 +70,7 @@ const emulatorButtons: Translation = {
     fr: 'Nettoyer DB',
     ja: 'DBをクリア',
     cn: '清除数据库',
+    tc: '清除資料庫',
   },
 } as const;
 
@@ -73,6 +81,7 @@ const emulatorTitle: Translation = {
     fr: 'Cactbot Raid Emulator',
     ja: 'Cactbot・レイド・エミュレーター',
     cn: 'Cactbot Raid 模拟器',
+    tc: 'Cactbot Raid 模擬器',
   },
 } as const;
 
@@ -83,6 +92,7 @@ const emulatorImportModal: Translation = {
     fr: 'Progression de l\'importation du fichier journal',
     ja: 'ログファイルのインポート進捗',
     cn: '日志文件导入进度',
+    tc: '日誌檔案導入進度',
   },
   '.import-progress-modal .modal-body-contents': {
     en: `<h3>Latest encounter:</h3>
@@ -145,6 +155,7 @@ const emulatorDeleteModal: Translation = {
     fr: 'Effacer la base de données du combat',
     ja: 'エンカウントDBを削除',
     cn: '删除战斗数据库',
+    tc: '刪除戰鬥資料庫',
   },
   '.deleteDBModal .modal-body': {
     en: '<p>You are about to delete the encounter database. Are you sure?</p>',
@@ -152,6 +163,7 @@ const emulatorDeleteModal: Translation = {
     fr: '<p>Vous êtes sur le point de supprimer la base de données du combat. Êtes-vous sûr ?</p>',
     ja: '<p>エンカウントDBを削除します。よろしいですか？</p>',
     cn: '<p>即将删除战斗数据库。确定删除吗？</p>',
+    tc: '<p>即將刪除戰鬥資料庫。確定刪除嗎？</p>',
   },
 } as const;
 
@@ -162,6 +174,7 @@ const emulatorIntroModal: Translation = {
     fr: 'Introduction',
     ja: 'はじめに',
     cn: '简介',
+    tc: '簡介',
   },
   '.introModal .modal-body': {
     en: `<p>Welcome to the Raid Emulator.</p>
@@ -289,6 +302,7 @@ const emulatorDisconnectedModal: Translation = {
     fr: 'Actuellement déconnecté',
     ja: '切断されています',
     cn: '已断开连接',
+    tc: '已斷開連接',
   },
   '.disconnectedModal .modal-body': {
     en: `<p>Raid Emulator is currently disconnected from ACT.</p>
@@ -341,6 +355,7 @@ const emulatorLabels: Translation = {
     fr: 'Masquer les entrées sautées',
     ja: 'スキップした項目を隠す',
     cn: '隐藏已跳过项目',
+    tc: '隱藏已跳過項目',
   },
   ' label[for=hideCollector]': {
     en: 'Hide Collectors',
@@ -348,12 +363,14 @@ const emulatorLabels: Translation = {
     fr: 'Masquer les entrées collectées',
     ja: '無出力トリガーを隠す',
     cn: '隐藏收集器',
+    tc: '隱藏收集器',
   },
   ' label[for=hideGeneral]': {
     en: 'Hide General',
     de: 'Allgemein Ausblenden',
     fr: 'Masquer tout',
     cn: '隐藏通用触发器',
+    tc: '隱藏通用觸發器',
   },
 } as const;
 
@@ -364,6 +381,7 @@ const emulatorTooltips: Translation = {
     fr: 'Masquer les triggers non-executés',
     ja: '実行されなかったトリガーを隠す',
     cn: '隐藏未执行的触发器',
+    tc: '隱藏未執行的觸發器',
   },
   '.triggerHideCollector': {
     en: 'Hide triggers that had no output',
@@ -371,12 +389,14 @@ const emulatorTooltips: Translation = {
     fr: 'Masquer les triggers sans sortie',
     ja: '出力がないトリガーを隠す',
     cn: '隐藏没有输出的触发器',
+    tc: '隱藏沒有輸出的觸發器',
   },
   '.triggerHideGeneral': {
     en: 'Hide triggers that are not for a specific zone',
     de: 'Trigger ausblenden, die sich nicht auf eine bestimmte Zone beziehen',
     fr: 'Masque les triggers qui ne sont pas dans une zone spécifique',
     cn: '隐藏非特定区域的触发器',
+    tc: '隱藏非特定區域的觸發器',
   },
   '.connectedIndicator': {
     en: 'Connected to websocket',
@@ -384,6 +404,7 @@ const emulatorTooltips: Translation = {
     fr: 'Connecté au Websocket',
     ja: 'WebSocketに接続済み',
     cn: '连接到websocket',
+    tc: '連接到websocket',
   },
   '.disconnectedIndicator': {
     en: 'Disconnected from websocket',
@@ -391,6 +412,7 @@ const emulatorTooltips: Translation = {
     fr: 'Déconnecté du Websocket',
     ja: 'WebSocketに接続していません',
     cn: '与websocket断开连接',
+    tc: '與websocket斷開連接',
   },
 } as const;
 
@@ -401,6 +423,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Charger combat',
     ja: 'エンカウントを読み込む',
     cn: '加载战斗',
+    tc: '載入戰鬥',
   },
   '.encounterParse': {
     en: 'Reparse Encounter',
@@ -408,6 +431,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Reparser le combat',
     ja: 'エンカウントを再解析',
     cn: '重新解析战斗',
+    tc: '重新解析戰鬥',
   },
   '.encounterPrune': {
     en: 'Prune Encounter',
@@ -415,6 +439,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Combat vide',
     ja: 'エンカウントをカット',
     cn: '裁剪战斗',
+    tc: '裁剪戰鬥',
   },
   '.encounterDelete': {
     en: 'Delete Encounter',
@@ -422,6 +447,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Effacer combat',
     ja: 'エンカウントを削除',
     cn: '删除战斗',
+    tc: '刪除戰鬥',
   },
   '.encounterZone': {
     en: 'Zone: <span class="label"></span>',
@@ -429,6 +455,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Zone : <span class="label"></span>',
     ja: 'ゾーン: <span class="label"></span>',
     cn: '区域: <span class="label"></span>',
+    tc: '區域: <span class=\"label\"></span>',
   },
   '.encounterStart': {
     en: 'Start: <span class="label"></span>',
@@ -436,6 +463,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Début : <span class="label"></span>',
     ja: '開始: <span class="label"></span>',
     cn: '开始: <span class="label"></span>',
+    tc: '開始: <span class=\"label\"></span>',
   },
   '.encounterDuration': {
     en: 'Duration: <span class="label"></span>',
@@ -443,6 +471,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Durée : <span class="label"></span>',
     ja: '持続時間: <span class="label"></span>',
     cn: '持续时间: <span class="label"></span>',
+    tc: '持續時間: <span class=\"label\"></span>',
   },
   '.encounterName': {
     en: 'Name: <span class="label"></span>',
@@ -450,6 +479,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Nom : <span class="label"></span>',
     ja: '名前: <span class="label"></span>',
     cn: '名称: <span class="label"></span>',
+    tc: '名稱: <span class=\"label\"></span>',
   },
   '.encounterStartStatus': {
     en: 'Start Status: <span class="label"></span>',
@@ -457,6 +487,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'État du démarrage : <span class="label"></span>',
     ja: '開始状態: <span class="label"></span>',
     cn: '开始状态: <span class="label"></span>',
+    tc: '開始狀態: <span class=\"label\"></span>',
   },
   '.encounterEndStatus': {
     en: 'End Status: <span class="label"></span>',
@@ -464,6 +495,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'État de fin : <span class="label"></span>',
     ja: '終了状態: <span class="label"></span>',
     cn: '结束状态: <span class="label"></span>',
+    tc: '結束狀態: <span class=\"label\"></span>',
   },
 } as const;
 
@@ -496,6 +528,7 @@ export const emulatorStartStatuses = {
     fr: 'Inconnu',
     ja: '不明',
     cn: '未知',
+    tc: '未知',
   },
   countdown: {
     en: 'Countdown',
@@ -503,6 +536,7 @@ export const emulatorStartStatuses = {
     fr: 'Compte à rebours',
     ja: 'カウントダウン',
     cn: '倒计时',
+    tc: '倒數計時',
   },
   seal: {
     en: 'Seal',
@@ -510,6 +544,7 @@ export const emulatorStartStatuses = {
     fr: 'Fermeture',
     ja: '封鎖',
     cn: '封锁',
+    tc: '封鎖',
   },
   engage: {
     en: 'Engage',
@@ -517,6 +552,7 @@ export const emulatorStartStatuses = {
     fr: 'À l\'attaque',
     ja: '戦闘開始',
     cn: '战斗中',
+    tc: '戰鬥中',
   },
 };
 
@@ -527,6 +563,7 @@ export const emulatorEndStatuses = {
     fr: 'Inconnu',
     ja: '不明',
     cn: '未知',
+    tc: '未知',
   },
   win: {
     en: 'Win',
@@ -534,6 +571,7 @@ export const emulatorEndStatuses = {
     fr: 'Gagné',
     ja: '勝利',
     cn: '胜利',
+    tc: '勝利',
   },
   wipe: {
     en: 'Wipe',
@@ -541,6 +579,7 @@ export const emulatorEndStatuses = {
     fr: 'Wipe',
     ja: 'ワイプ',
     cn: '团灭',
+    tc: '團滅',
   },
   cactbotWipe: {
     en: 'Cactbot Wipe',
@@ -548,6 +587,7 @@ export const emulatorEndStatuses = {
     fr: 'Cactbot Wipe',
     ja: 'Cactbotによるワイプ',
     cn: 'Cactbot团灭',
+    tc: 'Cactbot團滅',
   },
   unseal: {
     en: 'Unseal',
@@ -555,6 +595,7 @@ export const emulatorEndStatuses = {
     fr: 'Ouverture',
     ja: '解除',
     cn: '解封',
+    tc: '解封',
   },
 };
 

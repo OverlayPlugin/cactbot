@@ -20,6 +20,7 @@ const storedMechanicsOutputStrings = {
     fr: 'Package en groupe',
     ja: '全員集合',
     cn: '全体分摊',
+    tc: '全體分攤',
     ko: '파티 전체 쉐어',
   },
 };
@@ -32,6 +33,7 @@ const crystallizeOutputStrings = {
     fr: 'Cristallisation : ${name}',
     ja: 'クリスタライズ: ${name}',
     cn: '水晶化: ${name}',
+    tc: '水晶化: ${name}',
     ko: '크리스탈화: ${name}',
   },
 };
@@ -44,6 +46,7 @@ const comboOutputStrings = {
     fr: '${first} => ${second}',
     ja: '${first} => ${second}',
     cn: '${first} => ${second}',
+    tc: '${first} => ${second}',
     ko: '${first} => ${second}',
   },
 };
@@ -119,6 +122,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intercardinal',
           ja: '斜めへ',
           cn: '四角',
+          tc: '四角',
           ko: '대각선 쪽으로',
         },
       },
@@ -234,6 +238,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Évitez les fins de lignes',
           ja: '線の端から離れる',
           cn: '远离线末端',
+          tc: '遠離線末端',
           ko: '선의 끝부분 피하기',
         },
       },
@@ -250,6 +255,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '5x Packages',
           ja: '頭割り５回',
           cn: '5连分摊',
+          tc: '5連分攤',
           ko: '쉐어 5번',
         },
       },

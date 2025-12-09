@@ -8,6 +8,7 @@ export const bunnyLabel: LocaleText = {
   fr: 'Lapin',
   ja: 'うさぎ',
   cn: '兔子',
+  tc: '兔子',
   ko: '토끼',
 };
 
@@ -114,6 +115,7 @@ export const timeStrings: EurekaTimeStrings = {
     fr: ' min ',
     ja: '分',
     cn: '分',
+    tc: '分',
     ko: '분',
   },
 };
