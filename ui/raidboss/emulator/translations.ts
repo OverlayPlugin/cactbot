@@ -38,7 +38,7 @@ const emulatorButtons: Translation = {
     fr: 'Terminé<span class="done-btn-timeout"></span>',
     ja: '完了<span class="done-btn-timeout"></span>',
     cn: '完成<span class="done-btn-timeout"></span>',
-    tc: '完成<span class=\"done-btn-timeout\"></span>',
+    tc: '完成<span class="done-btn-timeout"></span>',
   },
   '.loadNetworkLogButton': {
     en: 'Load Network Log',
@@ -455,7 +455,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Zone : <span class="label"></span>',
     ja: 'ゾーン: <span class="label"></span>',
     cn: '区域: <span class="label"></span>',
-    tc: '區域: <span class=\"label\"></span>',
+    tc: '區域: <span class="label"></span>',
   },
   '.encounterStart': {
     en: 'Start: <span class="label"></span>',
@@ -463,7 +463,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Début : <span class="label"></span>',
     ja: '開始: <span class="label"></span>',
     cn: '开始: <span class="label"></span>',
-    tc: '開始: <span class=\"label\"></span>',
+    tc: '開始: <span class="label"></span>',
   },
   '.encounterDuration': {
     en: 'Duration: <span class="label"></span>',
@@ -471,7 +471,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Durée : <span class="label"></span>',
     ja: '持続時間: <span class="label"></span>',
     cn: '持续时间: <span class="label"></span>',
-    tc: '持續時間: <span class=\"label\"></span>',
+    tc: '持續時間: <span class="label"></span>',
   },
   '.encounterName': {
     en: 'Name: <span class="label"></span>',
@@ -479,7 +479,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'Nom : <span class="label"></span>',
     ja: '名前: <span class="label"></span>',
     cn: '名称: <span class="label"></span>',
-    tc: '名稱: <span class=\"label\"></span>',
+    tc: '名稱: <span class="label"></span>',
   },
   '.encounterStartStatus': {
     en: 'Start Status: <span class="label"></span>',
@@ -487,7 +487,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'État du démarrage : <span class="label"></span>',
     ja: '開始状態: <span class="label"></span>',
     cn: '开始状态: <span class="label"></span>',
-    tc: '開始狀態: <span class=\"label\"></span>',
+    tc: '開始狀態: <span class="label"></span>',
   },
   '.encounterEndStatus': {
     en: 'End Status: <span class="label"></span>',
@@ -495,7 +495,7 @@ const emulatorEncounterInfo: Translation = {
     fr: 'État de fin : <span class="label"></span>',
     ja: '終了状態: <span class="label"></span>',
     cn: '结束状态: <span class="label"></span>',
-    tc: '結束狀態: <span class=\"label\"></span>',
+    tc: '結束狀態: <span class="label"></span>',
   },
 } as const;
 

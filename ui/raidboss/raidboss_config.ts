@@ -404,7 +404,7 @@ const kMiscTranslations = {
     fr: 'Écrasé(e) par "${file}"',
     ja: '"${file}"に上書きました',
     cn: '被"${file}"文件覆盖',
-    tc: '被\"${file}\"文件覆蓋',
+    tc: '被"${file}"文件覆蓋',
     ko: '"${file}" 파일에서 덮어씌움',
   },
   // Opens trigger file on Github.
