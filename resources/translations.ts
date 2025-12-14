@@ -179,6 +179,7 @@ class RegexSet {
       ja: lines.ja !== undefined ? builder(lines.ja) : regexEn,
       cn: lines.cn !== undefined ? builder(lines.cn) : regexEn,
       ko: lines.ko !== undefined ? builder(lines.ko) : regexEn,
+      tc: lines.tc !== undefined ? builder(lines.tc) : regexEn,
     };
   }
 }

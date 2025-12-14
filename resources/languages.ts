@@ -1,4 +1,4 @@
-export const languages = ['en', 'de', 'fr', 'ja', 'cn', 'ko'] as const;
+export const languages = ['en', 'de', 'fr', 'ja', 'cn', 'ko', 'tc'] as const;
 
 export type Lang = typeof languages[number];
 
@@ -12,6 +12,7 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     ja: 'Japanese',
     cn: 'Chinese',
     ko: 'Korean',
+    tc: 'Traditional Chinese',
   },
   de: {
     en: 'Englisch',
@@ -20,6 +21,7 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     ja: 'Japanisch',
     cn: 'Chinesisch',
     ko: 'Koreanisch',
+    tc: 'Traditionelles Chinesisch',
   },
   fr: {
     en: 'Anglais',
@@ -28,6 +30,7 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     ja: 'Japonais',
     cn: 'Chinois',
     ko: 'Coréen',
+    tc: 'Chinois traditionnel',
   },
   ja: {
     en: '英語',
@@ -36,6 +39,7 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     ja: '日本語',
     cn: '中国語',
     ko: '韓国語',
+    tc: '中国語（繁体字）',
   },
   cn: {
     en: '英文',
@@ -44,6 +48,7 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     ja: '日文',
     cn: '中文',
     ko: '韩文',
+    tc: '繁体中文',
   },
   ko: {
     en: '영어',
@@ -52,6 +57,16 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     ja: '일본어',
     cn: '중국어',
     ko: '한국어',
+    tc: '중국어(번체)',
+  },
+  tc: {
+    en: '英文',
+    de: '德文',
+    fr: '法文',
+    ja: '日文',
+    cn: '中文',
+    ko: '韓文',
+    tc: '繁體中文',
   },
 } as const;
 
@@ -70,6 +85,7 @@ export const langToLocale = (lang: Lang): string => {
     ja: 'ja',
     cn: 'zh-CN',
     ko: 'ko',
+    tc: 'zh-TW',
   }[lang];
 };
 

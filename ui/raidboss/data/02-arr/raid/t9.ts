@@ -279,6 +279,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: ['ファイアホーン', 'アイスクロウ', 'サンダーウィング'],
           cn: ['火角', '冰爪', '雷翼'],
           ko: ['화염뿔', '얼음발톱', '번개날개'],
+          tc: ['火角', '冰爪', '雷翼'],
         };
         const names = allNames[data.parserLang];
         const idx = names.indexOf(matches.name.toLowerCase());

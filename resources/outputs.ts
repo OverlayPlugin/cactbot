@@ -11,6 +11,7 @@ const numberToOutputString = function(n: number): FullLocaleText {
     ja: str,
     cn: str,
     ko: str,
+    tc: str,
   };
 };
 
