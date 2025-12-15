@@ -718,6 +718,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: ['Sire Adelphel', 'Sire Janlenoux'],
           ja: ['聖騎士アデルフェル', '聖騎士ジャンルヌ'],
           cn: ['圣骑士阿代尔斐尔', '圣骑士让勒努'],
+          tc: ['聖騎士阿代爾斐爾', '聖騎士讓勒努'],
           ko: ['성기사 아델펠', '성기사 장르누'],
         };
 

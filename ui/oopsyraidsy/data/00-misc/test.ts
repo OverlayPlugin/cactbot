@@ -149,6 +149,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `Trop de touches (${data.pokeCount})`,
             ja: `いっぱいつついた (${data.pokeCount})`,
             cn: `戳太多下啦 (${data.pokeCount})`,
+            tc: `戳太多下啦 (${data.pokeCount})`,
             ko: `너무 많이 찌름 (${data.pokeCount}번)`,
           },
         };

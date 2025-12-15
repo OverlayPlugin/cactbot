@@ -1972,6 +1972,7 @@ const templateOptions: OptionsTemplate = {
         fr: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=fr'),
         ja: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=ja'),
         cn: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=cn'),
+        tc: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=tc'),
         ko: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=ko'),
       },
       default: makeLink(

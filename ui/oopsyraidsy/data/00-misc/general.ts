@@ -235,6 +235,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `a écrasé la résurrection de ${originalRaiserShort}`,
               ja: `${originalRaiserShort}と重複蘇生`,
               cn: `顶掉了${originalRaiserShort}的复活`,
+              tc: `頂掉了${originalRaiserShort}的復活`,
               ko: `${originalRaiserShort}의 부활과 겹침`,
             },
           };
@@ -269,6 +270,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: `a écrasé la résurrection de ${originalRaiserShort}`,
                 ja: `${originalRaiserShort}と重複蘇生`,
                 cn: `顶掉了${originalRaiserShort}的复活`,
+                tc: `頂掉了${originalRaiserShort}的復活`,
                 ko: `${originalRaiserShort}의 부활과 겹침`,
               },
             };
@@ -322,6 +324,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: `a écrasé ${matches.ability} de ${lastSourceShort}`,
                 ja: `${lastSourceShort}の${matches.ability}を上書き`,
                 cn: `顶掉了${lastSourceShort}的${matches.ability}`,
+                tc: `頂掉了${lastSourceShort}的${matches.ability}`,
                 ko: `${lastSourceShort}의 ${matches.ability} 덮어씀`,
               },
             };
@@ -385,6 +388,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: `a écrasé ${matches.ability} de ${lastSourceShort}`,
                 ja: `${lastSourceShort}の${matches.ability}を上書き`,
                 cn: `顶掉了${lastSourceShort}的${matches.ability}`,
+                tc: `頂掉了${lastSourceShort}的${matches.ability}`,
                 ko: `${lastSourceShort}의 ${matches.ability} 덮어씀`,
               },
             };

@@ -107,6 +107,7 @@ export const timeStrings: EurekaTimeStrings = {
     fr: (dayNightMin) => ` pour ${dayNightMin} min `,
     ja: (dayNightMin) => ` ${dayNightMin}分`,
     cn: (dayNightMin) => ` ${dayNightMin}分钟`,
+    tc: (dayNightMin) => ` ${dayNightMin}分鐘`,
     ko: (dayNightMin) => ` ${dayNightMin}분 동안`,
   },
   minute: {

@@ -71,6 +71,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (pas d'orbe)`,
             ja: `${matches.ability} (雷玉無し)`,
             cn: `${matches.ability} (没吃球)`,
+            tc: `${matches.ability} (沒吃球)`,
             ko: `${matches.ability} (구슬 안먹음)`,
           },
         };
@@ -102,6 +103,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `${matches.ability} (nuages trop proches)`,
               ja: `${matches.ability} (雲近すぎ)`,
               cn: `${matches.ability} (雷云重叠)`,
+              tc: `${matches.ability} (雲太近)`,
               ko: `${matches.ability} (구름이 너무 가까움)`,
             },
           };

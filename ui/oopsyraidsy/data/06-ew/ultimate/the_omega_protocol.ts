@@ -596,6 +596,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Tour #${num} manquée`,
               ja: '塔踏み #${num}失敗',
               cn: `错过 #${num} 塔`,
+              tc: `錯過 #${num} 塔`,
               ko: `기둥 #${num} 놓침`,
             },
           });
@@ -625,6 +626,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `Tour #${num}`,
             ja: `塔#${num}`,
             cn: `塔 #${num}`,
+            tc: `塔 #${num}`,
             ko: `기둥 #${num}`,
           };
           const text = GetShareMistakeText(towerText, 2);
@@ -655,6 +657,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Tour #${num} en tant que #${playerNum}`,
               ja: `塔#${num}踏む (#${playerNum})`,
               cn: `#${num} 塔 点名 #${playerNum}`,
+              tc: `#${num} 塔 點名 #${playerNum}`,
               ko: `기둥 #${num} 들어감 (#${playerNum})`,
             },
           });
@@ -674,6 +677,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Lien #${num} manqué`,
               ja: `線#${num}取り失敗`,
               cn: `错过 #${num} 线`,
+              tc: `錯過 #${num} 線`,
               ko: `선 #${num} 놓침`,
             },
           });
@@ -694,6 +698,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${m.ability} #${num}`,
             ja: `${m.ability} #${num}`,
             cn: `${m.ability} #${num}`,
+            tc: `${m.ability} #${num}`,
             ko: `${m.ability} #${num}`,
           };
           const text = numTargets > 1 ? GetShareMistakeText(tetherText, numTargets) : tetherText;
@@ -737,6 +742,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (après Au-delà de la défense)`,
             ja: `${matches.ability} (シールドコンボS以後)`,
             cn: `${matches.ability} (盾连击S后)`,
+            tc: `${matches.ability} (盾連擊S後)`,
             ko: `${matches.ability} (방패 연격 S 이후)`,
           },
         };
@@ -1244,6 +1250,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Moniteur pris x${count} fois`,
               ja: `検知 x${count}`,
               cn: `吃小电视 x${count} 次`,
+              tc: `吃小電視 x${count} 次`,
               ko: `모니터 ${count}개 맞음`,
             },
           });
@@ -1261,6 +1268,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Moniteurs totaux: x${numMonitors}`,
               ja: `検知数: x${numMonitors}`,
               cn: `小电视总数: x${numMonitors}`,
+              tc: `小電視總數: x${numMonitors}`,
               ko: `총 모니터 수: x${numMonitors}`,
             },
           });
@@ -1342,6 +1350,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Canon manqué`,
               ja: '散会波動砲失敗',
               cn: `未被分散波动炮命中`,
+              tc: `未被分散波動炮命中`,
               ko: `산개 파동포 놓침`,
             },
           });
@@ -1372,6 +1381,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Position pour canon x${count}`,
               ja: `散会波動砲 x${count}`,
               cn: `分散波动炮 x${count}`,
+              tc: `分散波動炮 x${count}`,
               ko: `산개 파동포 x${count}`,
             },
           });
@@ -1416,6 +1426,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Package pour le canon manqué`,
               ja: `頭割り波動砲失敗`,
               cn: `未被分摊波动炮命中`,
+              tc: `未被分攤波動炮命中`,
               ko: `쉐어 파동포 놓침`,
             },
           });
@@ -1440,6 +1451,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `Package canon x${count}`,
               ja: `頭割り波動砲失敗 x${count}`,
               cn: `分摊波动炮 x${count}`,
+              tc: `分攤波動炮 x${count}`,
               ko: `쉐어 파동포 x${count}`,
             },
           });

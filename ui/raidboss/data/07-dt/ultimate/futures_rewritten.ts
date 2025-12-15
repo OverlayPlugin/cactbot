@@ -248,6 +248,7 @@ const triggerSet: TriggerSet<Data> = {
         de:
           `Immer Weg, Verflucht im Uhrzeigersinn: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn: `总是远离,·180°·顺时针:·<a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        tc: `總是遠離, 180° 順時針: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko: `항상 멀리, 180도 시계방향: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
@@ -372,6 +373,7 @@ const triggerSet: TriggerSet<Data> = {
         de:
           `Rollenquadranten, Heiler plazieren im NW: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn: `按职能四分组,·奶妈在西北:·<a·href="https://pastebin.com/ue7w9jJH"·target="_blank">LesBin</a>`,
+        tc: `按職能四分組, 補師在西北: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko: `역할군별 사분면, 힐러는 북서쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {
@@ -410,6 +412,7 @@ const triggerSet: TriggerSet<Data> = {
         de:
           `Frühes explodieren, Winde Süden: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         cn: `龙头早撞, 风南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
+        tc: `龍頭早撞, 風南: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
         ko: `빨리 터뜨리기, 바람은 남쪽: <a href="https://pastebin.com/ue7w9jJH" target="_blank">LesBin</a>`,
       },
       name: {

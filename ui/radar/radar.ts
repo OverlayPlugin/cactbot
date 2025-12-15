@@ -180,6 +180,7 @@ const PlayPullSound = (monster: Monster, options: RadarOptions) => {
       fr: `${monster.name} a été attaqué`,
       ja: `${monster.name} 開始`,
       cn: `${monster.name} 已开怪`,
+      tc: `${monster.name} 已開怪`,
       ko: `${monster.name} 풀링됨`,
     };
     void callOverlayHandler({

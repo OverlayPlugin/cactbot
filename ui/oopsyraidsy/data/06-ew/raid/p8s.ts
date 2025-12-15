@@ -53,6 +53,7 @@ const purpleMistake = (): OopsyFunc<Data, NetMatches['Ability'], OopsyMistake> =
         fr: `${matches.ability} (violet)`,
         ja: `${matches.ability} (紫)`,
         cn: `${matches.ability} (紫色)`,
+        tc: `${matches.ability} (紫色)`,
         ko: `${matches.ability} (보라)`,
       },
     };

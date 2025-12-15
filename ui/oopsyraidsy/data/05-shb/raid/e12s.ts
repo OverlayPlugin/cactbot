@@ -205,6 +205,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: `${matches.ability} (de ${ownerNick}, #${number})`,
           ja: `${matches.ability} (${ownerNick}から、#${number})`,
           cn: `${matches.ability} (来自${ownerNick}，#${number})`,
+          tc: `${matches.ability} (來自${ownerNick}，#${number})`,
           ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번)`,
         };
         if (isStatuePositionKnown && isStatueNorth) {
@@ -214,6 +215,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (de ${ownerNick}, #${number} nord)`,
             ja: `${matches.ability} (北の${ownerNick}から、#${number})`,
             cn: `${matches.ability} (来自北方${ownerNick}，#${number})`,
+            tc: `${matches.ability} (來自北方${ownerNick}，#${number})`,
             ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번 북쪽)`,
           };
         } else if (isStatuePositionKnown && !isStatueNorth) {
@@ -223,6 +225,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (de ${ownerNick}, #${number} sud)`,
             ja: `${matches.ability} (南の${ownerNick}から、#${number})`,
             cn: `${matches.ability} (来自南方${ownerNick}，#${number})`,
+            tc: `${matches.ability} (來自南方${ownerNick}，#${number})`,
             ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번 남쪽)`,
           };
         }
@@ -266,6 +269,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (de ${pillarOwner})`,
             ja: `${matches.ability} (${pillarOwner}から)`,
             cn: `${matches.ability} (来自${pillarOwner})`,
+            tc: `${matches.ability} (來自${pillarOwner})`,
             ko: `${matches.ability} (대상자 "${pillarOwner}")`,
           },
         };
@@ -359,6 +363,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `${matches.ability} (de ${ownerNick}, ${dirObj['fr']})`,
               ja: `${matches.ability} (${ownerNick}から, ${dirObj['ja']})`,
               cn: `${matches.ability} (来自${ownerNick}, ${dirObj['cn']}`,
+              tc: `${matches.ability} (來自${ownerNick}, ${dirObj['tc']})`,
               ko: `${matches.ability} (대상자 "${ownerNick}", ${dirObj['ko']})`,
             },
           };

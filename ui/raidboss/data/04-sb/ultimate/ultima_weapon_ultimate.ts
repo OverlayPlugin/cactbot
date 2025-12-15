@@ -104,6 +104,7 @@ const gaolConfig = (id: GaolKey): NamedConfigEntry<GaolKey> => {
       fr: `Ordre geôle de Titan ${numStr}`,
       ja: `ジェイルの順番 ${numStr}`,
       cn: `泰坦石牢顺序 ${numStr}`,
+      tc: `泰坦石牢順序 ${numStr}`,
       ko: `돌감옥 순서 ${numStr}`,
     },
     type: 'string',
