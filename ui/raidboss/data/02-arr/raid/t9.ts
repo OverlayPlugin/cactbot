@@ -278,8 +278,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: ['corne-de-feu', 'griffe-de-glace ', 'aile-de-foudre'],
           ja: ['ファイアホーン', 'アイスクロウ', 'サンダーウィング'],
           cn: ['火角', '冰爪', '雷翼'],
-          ko: ['화염뿔', '얼음발톱', '번개날개'],
           tc: ['火角', '冰爪', '雷翼'],
+          ko: ['화염뿔', '얼음발톱', '번개날개'],
         };
         const names = allNames[data.parserLang];
         const idx = names.indexOf(matches.name.toLowerCase());

@@ -10,8 +10,8 @@ const numberToOutputString = function(n: number): FullLocaleText {
     fr: str,
     ja: str,
     cn: str,
-    ko: str,
     tc: str,
+    ko: str,
   };
 };
 
