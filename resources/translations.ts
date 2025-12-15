@@ -12,7 +12,7 @@ import NetRegexes, { keysThatRequireTranslation } from './netregexes';
 import Regexes from './regexes';
 
 // Fill in LocaleRegex so that things like LocaleRegex.countdownStart.de is a valid regex.
-const localeLines: { [key: string]: { [lang in Lang]: string } } = {
+const localeLines = {
   countdownStart: {
     en: 'Battle commencing in (?<time>\\y{Float}) seconds! \\((?<player>.*?)\\)',
     de: 'Noch (?<time>\\y{Float}) Sekunden bis Kampfbeginn! \\((?<player>.*?)\\)',
