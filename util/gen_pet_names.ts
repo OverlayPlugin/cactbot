@@ -41,11 +41,11 @@ type ResultPet = {
 type XivApiPet = ResultPet[];
 
 type OutputPetNames = {
+  cn: string[];
   de: string[];
   en: string[];
   fr: string[];
   ja: string[];
-  cn: string[];
   tc: string[];
   ko: string[];
 };
@@ -74,11 +74,11 @@ const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
   // This isn't really a locale object, and ordering is alpha in the current file, so:
   // eslint-disable-next-line rulesdir/cactbot-locale-order
   const formattedData: OutputPetNames = {
+    cn: [],
     de: [],
     en: [],
     fr: [],
     ja: [],
-    cn: [],
     tc: [],
     ko: [],
   };
