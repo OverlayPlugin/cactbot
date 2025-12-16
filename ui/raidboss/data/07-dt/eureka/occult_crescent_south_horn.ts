@@ -11,6 +11,7 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   ce?: string;
+  sisyphusResoundingMemoryWedge?: 'intercards' | 'cardinals' | 'unknown';
   demonTabletChiselTargets: string[];
   demonTabletRotationCounter: number;
   demonTabletIsFrontSide: boolean;
@@ -614,6 +615,7 @@ const triggerSet: TriggerSet<Data> = {
     },
   ],
   triggers: [
+    // ---------------------- Setup --------------------------
     {
       id: 'Occult Crescent Critical Encounter',
       type: 'ActorControl',
@@ -701,6 +703,7 @@ const triggerSet: TriggerSet<Data> = {
         data.magitaurLancelightCount = 0;
       },
     },
+    // ---------------------- CEs --------------------------
     {
       id: 'Occult Crescent Cloister Demon Tidal Breath',
       type: 'StartsUsing',
@@ -810,6 +813,322 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Nymian Petalodus', id: 'A88D', capture: false },
       response: Responses.awayFromFront(),
     },
+    // ------------------- FATEs -----------------------
+    {
+      id: 'Occult Crescent Giant Bird Gale Cannon',
+      type: 'StartsUsing',
+      netRegex: { source: 'Giant Bird', id: 'A13A', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Sisyphus Trounce',
+      type: 'StartsUsing',
+      netRegex: { source: 'Sisyphus', id: 'A3F4', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Sisyphus Thunder IV',
+      type: 'StartsUsing',
+      // Casts both A407 and A408 nearby, but A407 comes first
+      netRegex: { source: 'Sisyphus', id: 'A407', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Sisyphus Thunderous Memory Wedge',
+      type: 'StartsUsing',
+      // A3FA signifies the wedges, and appears 4 at a time.
+      netRegex: { source: 'Sisyphus', id: 'A3FA', capture: true },
+      suppressSeconds: 1,
+      infoText: (_data, matches, output) => {
+        const intercardSafe = ['dirN', 'dirE', 'dirS', 'dirW'];
+        const cardinalSafe = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
+        const heading = parseFloat(matches.heading);
+        const dirNum = Directions.hdgTo8DirNum(heading);
+        const dir = Directions.output8Dir[dirNum];
+        if (dir === undefined)
+          return output.unknown!();
+        if (cardinalSafe.includes(dir))
+          return output.cardinals!();
+        if (intercardSafe.includes(dir))
+          return output.intercards!();
+        console.log('ID: ', matches.id, ' heading: ', matches.heading, ' unknown dir???');
+        return output.unknown!();
+      },
+      outputStrings: {
+        intercards: Outputs.intercards,
+        cardinals: Outputs.cardinals,
+        unknown: Outputs.unknown,
+      },
+    },
+    {
+      id: 'Occult Crescent Sisyphus Thunderous Memory In',
+      type: 'StartsUsing',
+      // A3F7 and A3F8 are both cast at the same time. Likely one signifies
+      // the immediate attack and one signifies storing the future
+      // follow-up.
+      netRegex: { source: 'Sisyphus', id: 'A3F[78]', capture: false },
+      suppressSeconds: 1,
+      response: Responses.getIn(),
+    },
+    {
+      id: 'Occult Crescent Sisyphus Thunderous Memory Out',
+      type: 'StartsUsing',
+      // A3F5 and A3F6 are both cast at the same time. Likely one signifies
+      // the immediate attack and one signifies storing the future
+      // follow-up.
+      netRegex: { source: 'Sisyphus', id: 'A3F[56]', capture: false },
+      suppressSeconds: 1,
+      response: Responses.getOut(),
+    },
+    {
+      id: 'Occult Crescent Sisyphus Resounding Memory Collector',
+      type: 'StartsUsing',
+      // A3FA signifies the wedges, and appears 4 times at once. Check the
+      // first one to see if its hitting intercards or cardinals, then save
+      // the opposite.
+      netRegex: { source: 'Sisyphus', id: 'A3FA', capture: true },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        const intercardSafe = ['dirN', 'dirE', 'dirS', 'dirW'];
+        const cardinalSafe = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
+        const heading = parseFloat(matches.heading);
+        const dirNum = Directions.hdgTo8DirNum(heading);
+        const dir = Directions.output8Dir[dirNum];
+        if (dir === undefined) {
+          data.sisyphusResoundingMemoryWedge = 'unknown';
+        } else if (cardinalSafe.includes(dir)) {
+          data.sisyphusResoundingMemoryWedge = 'cardinals';
+        } else if (intercardSafe.includes(dir)) {
+          data.sisyphusResoundingMemoryWedge = 'intercards';
+        } else {
+          console.log('ID: ', matches.id, ' heading: ', matches.heading, ' unknown dir???');
+          delete data.sisyphusResoundingMemoryWedge;
+        }
+      },
+    },
+    {
+      id: 'Occult Crescent Sisyphus Resounding Memory',
+      type: 'StartsUsing',
+      // A3FB, and A3FE are cast at every Resounding memory. A3FC appears to
+      // only be cast for out safe, and A3FD appears to only be cast for in
+      // safe. We determine the safe spot of cardinals vs intercards by
+      // checking the heading of the A3FA attack.
+      netRegex: { source: 'Sisyphus', id: 'A3F[CD]', capture: true },
+      delaySeconds: 0.3,
+      infoText: (data, matches, output) => {
+        const dir = matches.id === 'A3FC' ? 'out' : 'in';
+        const wedge = data.sisyphusResoundingMemoryWedge ?? 'unknown';
+        return output.combined!({
+          dir: output[dir]!(),
+          wedge: output[wedge]!(),
+        });
+      },
+      run: (data) => delete data.sisyphusResoundingMemoryWedge,
+      outputStrings: {
+        in: Outputs.in,
+        out: Outputs.out,
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
+        unknown: Outputs.unknown,
+        combined: {
+          en: '${dir} + ${wedge}',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Sisyphus Thrice Come Thunder',
+      type: 'StartsUsing',
+      netRegex: { source: 'Sisyphus', id: 'A3FF', capture: false },
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Dodge expanding rings',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Dehumidifier Fluid Swing',
+      type: 'StartsUsing',
+      netRegex: { source: 'Dehumidifier', id: '768F', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Advanced Aevis Zombie Breath',
+      type: 'StartsUsing',
+      netRegex: { source: 'Advanced Aevis', id: 'A414', capture: false },
+      response: Responses.getBehind(),
+    },
+    {
+      id: 'Occult Crescent Advanced Aevis Triple Flight',
+      type: 'StartsUsing',
+      // Other IDs might do different things
+      netRegex: { source: 'Advanced Aevis', id: 'A41C', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'In => Out => Sides',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Advanced Aevis Quarry Lake',
+      type: 'StartsUsing',
+      netRegex: { source: 'Advanced Aevis', id: 'A41[23]', capture: false },
+      suppressSeconds: 1,
+      response: Responses.lookAway(),
+    },
+    {
+      id: 'Occult Crescent Advanced Aevis Breath Wing',
+      type: 'StartsUsing',
+      // Other IDs might do different things
+      netRegex: { source: 'Advanced Aevis', id: 'A418', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Out => In => Sides',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Ropross Biting Scratch',
+      type: 'StartsUsing',
+      netRegex: { source: 'Ropross', id: 'A1AC', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Ropross Aero IV',
+      type: 'StartsUsing',
+      netRegex: { source: 'Ropross', id: 'A1AF', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Lifereaper Soul Sweep',
+      type: 'StartsUsing',
+      netRegex: { source: 'Lifereaper', id: 'A4C1', capture: false },
+      response: Responses.getBehind(),
+    },
+    {
+      id: 'Occult Crescent Lifereaper Menace',
+      type: 'StartsUsing',
+      netRegex: { source: 'Lifereaper', id: ['A4BF', 'A4C4'], capture: false },
+      response: Responses.getOut(),
+    },
+    {
+      id: 'Occult Crescent Lifereaper Dismal Roar',
+      type: 'StartsUsing',
+      // Also comes at same time as A4C8
+      netRegex: { source: 'Lifereaper', id: 'A4C9', capture: false },
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Lifereaper Sweeping Charge',
+      type: 'StartsUsing',
+      netRegex: { source: 'Lifereaper', id: 'A4C[25]', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Follow Dash => Get Behind',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Lifereaper Menacing Charge',
+      type: 'StartsUsing',
+      netRegex: { source: 'Lifereaper', id: 'A4C3', capture: false },
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Away After Dash',
+        },
+      },
+    },
+    {
+      id: 'Occult Crescent Gilded Headstone Flaring Epigraph',
+      type: 'StartsUsing',
+      // Appears along side A351
+      netRegex: { source: 'Gilded Headstone', id: 'A350', capture: false },
+      suppressSeconds: 1,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'Occult Crescent Gilded Headstone Epigraph',
+      type: 'StartsUsing',
+      netRegex: { source: 'Gilded Headstone', id: 'A33E', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Gilded Headstone Erosive Eye Look Away',
+      type: 'StartsUsing',
+      // TODO: Tune delaySeconds and/or collect multiple incoming tells and
+      // generate a combined callout?
+      netRegex: { source: 'Gilded Headstone', id: 'A34[01]', capture: false },
+      response: Responses.lookAway(),
+    },
+    {
+      id: 'Occult Crescent Gilded Headstone Erosive Eye Look Towards',
+      type: 'StartsUsing',
+      // TODO: Tune delaySeconds and/or collect multiple incoming tells and
+      // generate a combined callout?
+      netRegex: { source: 'Gilded Headstone', id: 'A34[23]', capture: false },
+      response: Responses.lookTowards(),
+    },
+    {
+      id: 'Occult Crescent Execrator Mini',
+      type: 'StartsUsing',
+      netRegex: { source: 'Execrator', id: 'A826', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Execrator Dark Mist',
+      type: 'StartsUsing',
+      netRegex: { source: 'Execrator', id: 'A828', capture: false },
+      response: Responses.getOut(),
+    },
+    {
+      id: 'Occult Crescent Observer Stare',
+      type: 'StartsUsing',
+      netRegex: { source: 'Observer', id: 'A904', capture: false },
+      response: Responses.awayFromFront(),
+    },
+    {
+      id: 'Occult Crescent Observer Oogle',
+      type: 'StartsUsing',
+      netRegex: { source: 'Observer', id: 'A823', capture: false },
+      response: Responses.lookAway(),
+    },
+    {
+      id: 'Occult Nammu Receding Twin Tides',
+      type: 'StartsUsing',
+      netRegex: { source: 'Nammu', id: 'A32D', capture: false },
+      response: Responses.getOutThenIn(),
+    },
+    {
+      id: 'Occult Nammu Encroaching Twin Tides',
+      type: 'StartsUsing',
+      netRegex: { source: 'Nammu', id: 'A330', capture: false },
+      response: Responses.getInThenOut(),
+    },
+    {
+      id: 'Occult Nammu Left Twin Tentacle',
+      type: 'StartsUsing',
+      netRegex: { source: 'Nammu', id: 'A333', capture: false },
+      response: Responses.goRightThenLeft(),
+    },
+    {
+      id: 'Occult Nammu Right Twin Tentacle',
+      type: 'StartsUsing',
+      netRegex: { source: 'Nammu', id: 'A335', capture: false },
+      response: Responses.goLeftThenRight(),
+    },
+    {
+      id: 'Occult Nammu Void Water IV',
+      type: 'StartsUsing',
+      netRegex: { source: 'Nammu', id: 'A33[9A]', capture: false },
+      suppressSeconds: 1,
+      response: Responses.aoe(),
+    },
+    // ------------------- Forked Tower: Blood -----------------------
     {
       id: 'Occult Crescent Demon Tablet Demonic Dark II',
       type: 'StartsUsing',
@@ -6026,6 +6345,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Assassin\'s Dagger': '暗杀短剑',
         'Ball of Fire': '火球',
@@ -6397,6 +6717,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Assassin\'s Dagger': '암살자의 단검',
         'Ball of Fire': '화염 구체',
