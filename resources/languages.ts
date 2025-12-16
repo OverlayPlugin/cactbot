@@ -96,4 +96,26 @@ export const browserLanguagesToLang = (languages: readonly string[]): Lang => {
     .map((l) => l === 'zh' ? 'cn' : l)
     .filter((l) => languages.includes(l))[0];
   return isLang(lang) ? lang : 'en';
+export const browserLanguagesToLang = (languagesArr: readonly string[]): Lang => {
+  // languagesArr receives only `navigator.languages` as input
+  const mapLanguage = (lang: string): string => {
+    // Handle Chinese variants
+    if (lang.startsWith('zh-')) {
+      const region = lang.slice(3).toUpperCase();
+      switch (region) {
+        case 'HK':
+        case 'MO':
+        case 'TW':
+        case 'HANT':
+          return 'tc';
+        default:
+          return 'cn';
+      }
+    }
+    return lang.slice(0, 2);
+  };
+  const lang = [...languagesArr, 'en']
+    .map(mapLanguage)
+    .filter((l) => languages.includes(l as Lang))[0];
+  return isLang(lang) ? lang : 'en';
 };
