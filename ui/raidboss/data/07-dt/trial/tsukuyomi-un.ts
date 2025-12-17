@@ -18,8 +18,8 @@ export interface Data extends RaidbossData {
 
 // Tsukuyomi Unreal
 const triggerSet: TriggerSet<Data> = {
-  id: 'TheMinstrelsBalladTsukuyomisPain',
-  zoneId: ZoneId.TheMinstrelsBalladTsukuyomisPain,
+  id: 'TsukuyomisPainUnreal',
+  zoneId: ZoneId.TsukuyomisPainUnreal,
   timelineFile: 'tsukuyomi-un.txt',
   triggers: [
     {

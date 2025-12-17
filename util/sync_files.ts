@@ -920,7 +920,7 @@ const zoneReplace: ZoneReplace[] = [
     },
     prefix: { 'TsukuyomiEx': 'TsukuyomiUn' },
     other: {
-      'TheWreathOfSnakesExtreme': 'TheWreathOfSnakesUnreal',
+      'TheMinstrelsBalladTsukuyomisPain': 'TsukuyomisPainUnreal',
       'Tsukuyomi Extreme': 'Tsukuyomi Unreal',
       'tsukuyomi-ex.txt': 'tsukuyomi-un.txt',
     },

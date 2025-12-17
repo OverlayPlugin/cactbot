@@ -14,7 +14,7 @@ export type Data = OopsyData;
 
 // Tsukuyomi Unreal
 const triggerSet: OopsyTriggerSet<Data> = {
-  zoneId: ZoneId.TheMinstrelsBalladTsukuyomisPain,
+  zoneId: ZoneId.TsukuyomisPainUnreal,
   damageWarn: {
     'TsukuyomiUn Moonlight Lunar Halo': 'B14A', // donut from orbs in final phase
     'TsukuyomiUn Moonfall': 'B145', // meteor drop big circles
