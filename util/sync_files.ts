@@ -909,6 +909,71 @@ const zoneReplace: ZoneReplace[] = [
       '3CA9': 'AC03', // Fifth Element (enrage)
     },
   },
+  { // Tsukuyomi Unreal
+    fileMap: {
+      'ui/raidboss/data/04-sb/trial/tsukuyomi-ex.ts':
+        'ui/raidboss/data/07-dt/trial/tsukuyomi-un.ts',
+      'ui/raidboss/data/04-sb/trial/tsukuyomi-ex.txt':
+        'ui/raidboss/data/07-dt/trial/tsukuyomi-un.txt',
+      'ui/oopsyraidsy/data/04-sb/trial/tsukuyomi-ex.ts':
+        'ui/oopsyraidsy/data/07-dt/trial/tsukuyomi-un.ts',
+    },
+    prefix: { 'TsukuyomiEx': 'TsukuyomiUn' },
+    other: {
+      'TheWreathOfSnakesExtreme': 'TheWreathOfSnakesUnreal',
+      'Tsukuyomi Extreme': 'Tsukuyomi Unreal',
+      'tsukuyomi-ex.txt': 'tsukuyomi-un.txt',
+    },
+    // Primary offset 8574
+    id: {
+      '2BBA': 'B12E', // Reprimand
+      '2BBB': 'B12F', // Torment unto Death
+      '2BBC': 'B130', // Nightfall
+      '2BBD': 'B131', // Nightfall
+      '2BBE': 'B132', // Lead of the Underworld
+      '2BBF': 'B133', // Steel of the Underworld
+      '2BC0': 'B134', // --sync--
+      '2BC5': 'B139', // Zashiki-asobi
+      '2BC6': 'B13A', // Tsuki-no-Maiogi
+      '2BC7': 'B13B', // Nightbloom
+      '2BC8': 'B13C', // Concentrativity
+      '2BCC': 'B140', // Dispersivity
+      '2BCE': 'B142', // Midnight Rain
+      '2BCF': 'B143', // --sync--
+      '2BD0': 'B144', // Tsuki-no-Kakera
+      '2BD1': 'B145', // Moonfall
+      '2BD3': 'B147', // Lunar Rays
+      '2BD4': 'B148', // Moonbeam
+      '2BD6': 'B14A', // Lunar Halo
+      '2BD7': 'B14B', // Perilune
+      '2BD8': 'B14C', // Antitwilight
+      '2BDA': 'B14E', // Dark Blade
+      '2BDB': 'B14F', // Bright Blade
+      '2BDC': 'B150', // Lunacy
+      '2BDD': 'B151', // Lunacy
+      '2BDE': 'B152', // Waxing Grudge
+      '2BDF': 'B153', // Waning Grudge
+      '2BE3': 'B157', // --sync--
+      '2CA8': 'B158', // Unmoving Troika
+      '2CA9': 'B159', // Unmoving Troika
+      '2CAA': 'B15A', // Unmoving Troika
+      '2CAF': 'B15C', // Nightbloom
+      '2CCF': 'B15D', // --sync--
+      '2CD0': 'B15E', // Dance of the Dead
+      '2BEC': 'B160', // Crater
+      '2BED': 'B161', // --sync--
+      '2BEE': 'B162', // --sync--
+      '2BEF': 'B163', // --sync--
+      '2BF0': 'B164', // --sync--
+      '2D1C': 'B165', // Hagetsu
+      '2D1D': 'B166', // Hagetsu
+      '2BF3': 'B167', // --sync--
+      '2BF4': 'B168', // --sync--
+      '2EB0': 'B169', // Supreme Selenomancy
+      '2EB2': 'B16A', // Torment unto Death
+      '2CD7': 'B160', // Moondust Crater
+    },
+  },
 ];
 
 const processFile = (filename: string, zone: ZoneReplace, inputText: string): string => {
