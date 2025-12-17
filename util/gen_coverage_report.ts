@@ -625,7 +625,7 @@ const extractTagsAndPulls = async (git: SimpleGit) => {
     };
   }
 
-  const octokit = new (Octokit.plugin(paginateRest))({ auth: process.env.GITHUB_TOKEN });
+  const octokit = new (Octokit.plugin(paginateRest))();
 
   const releases = await octokit.paginate('GET /repos/{owner}/{repo}/releases', {
     owner: 'OverlayPlugin',

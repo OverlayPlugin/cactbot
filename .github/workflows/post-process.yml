@@ -23,9 +23,6 @@ on:
 jobs:
   postprocess:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read
     steps:
       - uses: actions/checkout@v4
 
@@ -34,8 +31,6 @@ jobs:
       - name: npm run coverage-report
         run: |
           npm run coverage-report
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: npm run process-triggers
         run: |
