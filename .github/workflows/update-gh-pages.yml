@@ -28,7 +28,7 @@ jobs:
     needs: check-gh-pages
     if: needs.check-gh-pages.outputs.found == 'true'
     permissions:
-      contents: read
+      contents: write
       pull-requests: read
     steps:
       - name: Checkout Code
