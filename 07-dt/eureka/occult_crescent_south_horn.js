@@ -848,6 +848,7 @@ Options.Triggers.push({
         unknown: Outputs.unknown,
         combined: {
           en: '${dir} + ${wedge}',
+          cn: '${dir} + ${wedge}',
         },
       },
     },
@@ -860,6 +861,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Dodge expanding rings',
+          cn: '躲避扩散环',
         },
       },
     },
@@ -884,6 +886,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'In => Out => Sides',
+          cn: '靠近 => 远离 => 两侧',
         },
       },
     },
@@ -903,6 +906,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Out => In => Sides',
+          cn: '远离 => 靠近 => 两侧',
         },
       },
     },
@@ -945,6 +949,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Follow Dash => Get Behind',
+          cn: '跟随冲锋 => 去背后',
         },
       },
     },
@@ -956,6 +961,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Away After Dash',
+          cn: '冲锋后远离',
         },
       },
     },
@@ -6134,8 +6140,8 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
+        'Advanced Aevis': '高等魔鸟',
         'Assassin\'s Dagger': '暗杀短剑',
         'Ball of Fire': '火球',
         'Black Chocobo': '黑陆行鸟',
@@ -6148,11 +6154,15 @@ Options.Triggers.push({
         'Crystal Dragon': '水晶龙',
         'Dead Stars': '星头三兄弟',
         'Death Claw': '死亡爪',
+        'Dehumidifier': '除湿之火',
         'Demon Tablet': '恶魔板',
         'Draconic Double': '水晶龙的幻影',
+        'Execrator': '执行者',
         'Frozen Phobos': '冰冻的福博斯',
         'Gaseous Nereid': '燃烧的涅瑞伊得',
         'Gaseous Phobos': '燃烧的福博斯',
+        'Giant Bird': '巨大鸟',
+        'Gilded Headstone': '金色石碑',
         'Guardian Berserker': '狂战士守卫',
         'Guardian Knight': '骑士守卫',
         'Guardian Weapon': '兵装守卫',
@@ -6162,10 +6172,12 @@ Options.Triggers.push({
         'Ice Golem': '寒冰巨像',
         'Icewind': '冰风',
         'Jesting Jackanapes': '小妖魔',
+        'Lifereaper': '生命收割者',
         'Lion Rampant': '跃立狮',
         'Liquified Triton': '融化的特里同',
         'Luminous Lance': '光枪',
         'Magitaur': '魔陶洛斯',
+        'Nammu': '纳木',
         'Marble Dragon': '大理石龙',
         'Master Lockward': '首领看锁人',
         'Megaloknight': '巨型骑士',
@@ -6175,13 +6187,16 @@ Options.Triggers.push({
         'Neo Garula': '进化加鲁拉',
         'Nereid': '涅瑞伊得',
         'Nymian Petalodus': '尼姆瓣齿鲨',
+        'Observer': '岛屿监视者',
         'Occult Knight': '新月骑士',
         'Ochre Stone': '巨岩',
         'Petalodus Progeny': '子代瓣齿鲨',
         'Phantom Claw': '死亡爪的幻影',
         '(?<! )Phobos': '福博斯',
         'Repaired Lion': '复原狮像',
+        'Ropross': '罗普罗斯',
         'Sage\'s Staff': '贤者之杖',
+        'Sisyphus': '西西弗斯',
         'Tentacle': '触手',
         'Tower Abyss': '两歧塔深渊',
         'Tower Bhoot': '两歧塔浮灵',
