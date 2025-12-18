@@ -405,6 +405,9 @@ const phantomJobEffectIds = [
   '110D', // Time Mage
   '110E', // Cannonneer
   '110F', // Chemist
+  '12C3', // Mystic Knight
+  '12C4', // Gladiator
+  '12C5', // Dancer
 ];
 
 // Useful for matching on job name in condition trigger
@@ -422,6 +425,9 @@ const phantomJobData = {
   'timeMage': '110D',
   'cannoneer': '110E',
   'chemist': '110F',
+  'mysticKnight': '12C3',
+  'gladiator': '12C4',
+  'dancer': '12C5',
 } as const;
 
 // Return if the player has a phantom job that can dispel
@@ -795,6 +801,9 @@ const triggerSet: TriggerSet<Data> = {
       // count also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
       // Expecting first two characters to be part of Phantom Job id, and the later two to be the level
       // First digit is the job:
+      // Dancer = F
+      // Gladiator = E
+      // Mystic Knight = D
       // Thief = C
       // Oracle = B
       // Chemist = A
