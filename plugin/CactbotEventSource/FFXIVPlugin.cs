@@ -17,7 +17,7 @@ namespace Cactbot {
         if (plugin.pluginObj == null)
           continue;
         var file = plugin.pluginFile.Name;
-        if (file == "FFXIV_ACT_Plugin.dll") {
+        if (file.StartsWith("FFXIV_ACT_Plugin")) {
           if (ffxiv_plugin_ != null) {
             logger_.Log(LogLevel.Warning, Strings.MultiplePluginsLoadedErrorMessage);
           }

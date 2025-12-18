@@ -25,7 +25,7 @@ namespace Cactbot {
       foreach (var plugin in Advanced_Combat_Tracker.ActGlobals.oFormActMain.ActPlugins) {
         if (!plugin.cbEnabled.Checked)
           continue;
-        if (plugin.pluginFile.Name == pluginName)
+        if (plugin.pluginFile.Name.StartsWith(pluginName))
           return plugin;
       }
       return null;
@@ -73,7 +73,7 @@ namespace Cactbot {
     }
 
     private Advanced_Combat_Tracker.ActPluginData GetFFXIVPluginData() {
-        return GetPluginData("FFXIV_ACT_Plugin_Korean.dll") ?? GetPluginData("FFXIV_ACT_Plugin.dll");
+        return GetPluginData("FFXIV_ACT_Plugin");
     }
 
     public Version GetFFXIVPluginVersion() {
@@ -102,6 +102,7 @@ namespace Cactbot {
       International,
       Chinese,
       Korean,
+      TraditionalChinese,
     }
 
     public GameRegion GetGameRegion() {
@@ -115,6 +116,8 @@ namespace Cactbot {
             return GameRegion.Chinese;
           case "Korean":
             return GameRegion.Korean;
+          case "Tc":
+            return GameRegion.TraditionalChinese;
           default:
             return GameRegion.International;
         }

@@ -61,6 +61,7 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   'TheSingularityReactorUnreal': 1175,
   'TheJadeStoaUnreal': 1239,
   'HellsKierUnreal': 1272,
+  'TheWreathOfSnakesUnreal': 1302,
   // rename to something friendly/useful
   'TheMaskedCarnivale': 796,
   // 6.2 revamp
@@ -95,6 +96,9 @@ const _SYNTHETIC_IDS: NameKeyToTerritoryId = {
   'TheBorderlandRuinsSecure71': 376,
   // 7.3 revamp
   'CuttersCry72': 170,
+  // 7.4 revamp
+  'DzemaelDarkhold73': 171,
+  'TheAurumVale73': 172,
 };
 
 // This will override the data-sourced ContentType with our own value.
@@ -291,6 +295,22 @@ const _SYNTHETIC_ZONE_INFO: ZoneInfoType = {
     'offsetY': -100,
     'sizeFactor': 400,
     'weatherRate': 98,
+  },
+  1302: {
+    'contentType': 4,
+    'exVersion': 5,
+    'name': {
+      'cn': '青龙幻巧战',
+      'de': 'Traumprüfung - Seiryu',
+      'en': 'The Wreath of Snakes (Unreal)',
+      'fr': 'L\'Îlot des Amertumes (irréel)',
+      'ja': '幻青龍征魂戦',
+      'ko': '환 청룡 토벌전',
+    },
+    'offsetX': -100,
+    'offsetY': -100,
+    'sizeFactor': 400,
+    'weatherRate': 99,
   },
 
   // 6.2 updates - content removed/reworked
@@ -697,6 +717,39 @@ const _SYNTHETIC_ZONE_INFO: ZoneInfoType = {
       'fr': '(7.2)Le Gouffre hurlant',
       'ja': '(7.2)流砂迷宮 カッターズクライ',
       'ko': '(7.2)나무꾼의 비명',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 200,
+    'weatherRate': 0,
+  },
+  // 7.4 updates - content removed/reworked
+  171: {
+    'contentType': 2,
+    'exVersion': 0,
+    'name': {
+      'cn': '(7.3)山中战线泽梅尔要塞',
+      'de': '(7.3)Die Feste Dzemael',
+      'en': '(7.3)Dzemael Darkhold',
+      'fr': '(7.3)La Forteresse de Dzemael',
+      'ja': '(7.3)掃討作戦 ゼーメル要塞',
+      'ko': '(7.3)제멜 요새',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 200,
+    'weatherRate': 0,
+  },
+  172: {
+    'contentType': 2,
+    'exVersion': 0,
+    'name': {
+      'cn': '(7.3)毒雾洞窟黄金谷',
+      'de': '(7.3)Goldklamm',
+      'en': '(7.3)The Aurum Vale',
+      'fr': '(7.3)Le Val d\'Aurum',
+      'ja': '(7.3)霧中行軍 オーラムヴェイル',
+      'ko': '(7.3)금빛 골짜기',
     },
     'offsetX': 0,
     'offsetY': 0,
