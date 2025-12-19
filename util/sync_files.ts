@@ -925,6 +925,14 @@ const zoneReplace: ZoneReplace[] = [
       'tsukuyomi-ex.txt': 'tsukuyomi-un.txt',
     },
     // Primary offset 8574
+    //
+    // IDs confirmed unchanged:
+    // 2BCA -- Specter of Zenos spawn?
+    // 2BCB -- Specter of Gosetsu spawn?
+    // 2BFD -- --sync--
+    // 2CAE -- Yotsuyu Nightbloom
+    // 2CD6 -- Specter of Gosetsu exit?
+    // 2EDF -- --sync--
     id: {
       '2BBA': 'B12E', // Reprimand
       '2BBB': 'B12F', // Torment unto Death
