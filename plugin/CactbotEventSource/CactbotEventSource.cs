@@ -259,6 +259,10 @@ namespace Cactbot {
           ffxiv_ = new FFXIVProcessKo(this.logger);
           logger.Log(LogLevel.Info, Strings.Version, "ko");
           break;
+        case Cactbot.VersionChecker.GameRegion.TraditionalChinese:
+          ffxiv_ = new FFXIVProcessTc(this.logger);
+          logger.Log(LogLevel.Info, Strings.Version, "tc");
+          break;
         default:
           ffxiv_ = new FFXIVProcessIntl(this.logger);
           logger.Log(LogLevel.Info, Strings.Version, "intl");

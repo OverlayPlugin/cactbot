@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.35.4",
-  "releaseSummary": "initial Pilgrim's Traverse, The Meso Terminal, CN 7.35, KO 7.3, i18n",
+  "version": "0.36.0",
+  "releaseSummary": "7.4 resources, more PT, more OC, Forked Tower, Arkveld timelines, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",

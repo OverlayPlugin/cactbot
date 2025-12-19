@@ -7,8 +7,8 @@ using CactbotEventSource.loc;
 using RainbowMage.OverlayPlugin;
 
 namespace Cactbot {
-  public class FFXIVProcessCn : FFXIVProcess {
-    // Last updated for FFXIV 7.4
+  public class FFXIVProcessTc : FFXIVProcess {
+    // Last updated for FFXIV 7.2
     // Per aers/FFXIVClientStructs, what we call EntityMemory is actually:
     // Client::Game::Character::Character (0x22E0)
     //   Client::Game::Object::GameObject (0x190)
@@ -25,28 +25,28 @@ namespace Cactbot {
       [FieldOffset(0x30)]
       public fixed byte Name[nameBytes];
 
-      [FieldOffset(0x78)]
+      [FieldOffset(0x74)]
       public uint id;
 
-      [FieldOffset(0x90)]
+      [FieldOffset(0x8C)]
       public EntityType type;
 
-      [FieldOffset(0x96)]
+      [FieldOffset(0x92)]
       public ushort distance;
 
-      [FieldOffset(0xB0)]
+      [FieldOffset(0xA0)]
       public Single pos_x;
 
-      [FieldOffset(0xB4)]
+      [FieldOffset(0xA4)]
       public Single pos_z;
 
-      [FieldOffset(0xB8)]
+      [FieldOffset(0xA8)]
       public Single pos_y;
 
-      [FieldOffset(0xC0)]
+      [FieldOffset(0xB0)]
       public Single rotation;
 
-      [FieldOffset(0x1A0)]
+      [FieldOffset(0x190)]
       public CharacterDetails charDetails;
     }
 
@@ -84,7 +84,7 @@ namespace Cactbot {
       public byte shieldPercentage;
     }
 
-    public FFXIVProcessCn(ILogger logger) : base(logger) { }
+    public FFXIVProcessTc(ILogger logger) : base(logger) { }
 
     // TODO: all of this could be refactored into structures of some sort
     // instead of just being loose variables everywhere.
@@ -106,8 +106,7 @@ namespace Cactbot {
     // In combat boolean.
     // This address is written to by "mov [rax+rcx],bl" and has three readers.
     // This reader is "cmp byte ptr [ffxiv_dx11.exe+????????],00 { (0),0 }"
-    // Updated in 7.3, signature was no longer unique, include the preceeding "jz LAB_?????????"
-    private static String kInCombatSignature = "74??803D??????????74??488B03488BCBFF50";
+    private static String kInCombatSignature = "803D??????????74??488B03488BCBFF50";
     private static int kInCombatSignatureOffset = -15;
     private static bool kInCombatSignatureRIP = true;
     // Because this line is a cmp byte line, the signature is not at the end of the line.
@@ -115,8 +114,8 @@ namespace Cactbot {
 
     // A piece of code that reads the job data.
     // The pointer of interest is the first ???????? in the signature.
-    private static String kJobDataSignature = "488D0D????????0F95C2E8????????488B8D";
-    private static int kJobDataSignatureOffset = -15;
+    private static String kJobDataSignature = "488B3D????????33ED";
+    private static int kJobDataSignatureOffset = -6;
     // The signature finds a pointer in the executable code which uses RIP addressing.
     private static bool kJobDataSignatureRIP = true;
 
