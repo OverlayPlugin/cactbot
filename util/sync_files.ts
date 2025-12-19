@@ -961,14 +961,14 @@ const zoneReplace: ZoneReplace[] = [
       '2CCF': 'B15D', // --sync--
       '2CD0': 'B15E', // Dance of the Dead
       '2CD7': 'B160', // Moondust Crater
-      '2BED': 'B161', // --sync--
-      '2BEE': 'B162', // --sync--
-      '2BEF': 'B163', // --sync--
-      '2BF0': 'B164', // --sync--
+      '2D02': 'B161', // auto-attack (Tsukuyomi)
+      '2D16': 'B162', // auto-attack (Specter Of The Matriarch/Patriarch/Empire)
+      '2D17': 'B163', // auto-attack (Specter Of The Homeland, melee)
+      '2D18': 'B164', // auto-attack (Specter Of The Empire/Homeland, ranged)
       '2D1C': 'B165', // Hagetsu
       '2D1D': 'B166', // Hagetsu
-      '2BF3': 'B167', // --sync--
-      '2BF4': 'B168', // --sync--
+      '2D20': 'B167', // auto attack (Asahi)
+      '2D21': 'B168', // auto attack (meteor phase) ???
       '2EB0': 'B169', // Supreme Selenomancy
       '2EB2': 'B16A', // Torment unto Death
     },
