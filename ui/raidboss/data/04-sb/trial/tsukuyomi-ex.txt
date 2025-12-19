@@ -137,18 +137,5 @@ hideall "--Reset--"
 1461.9 "Waning Grudge/Waxing Grudge" Ability { id: ["2BDE", "2BDF"], source: "Tsukuyomi" }
 1469.9 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" }
 
-# loop
-1476.9 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" }
-1489.2 "Lunacy" Ability { id: "2BDC", source: "Tsukuyomi" } window 50,50 jump 1415.3
-1490.0 "Tsuki-No-Maiogi" #duration 4 #Ability { id: "2BC6", source: "Dancing Fan" }
-1491.3 "Lunacy x3" #Ability { id: "2BDD", source: "Tsukuyomi" }
-#1492.3 "Lunacy" Ability { id: "2BDD", source: "Tsukuyomi" }
-#1493.3 "Lunacy" Ability { id: "2BDD", source: "Tsukuyomi" }
-
-1501.3 "Bright Blade/Dark Blade" #Ability { id: ["2BDA", "2BDB"], source: "Tsukuyomi" }
-1502.3 "Waning Grudge/Waxing Grudge" #Ability { id: ["2BDE", "2BDF"], source: "Tsukuyomi" }
-1511.4 "Torment Unto Death" #Ability { id: "2EB2", source: "Tsukuyomi" }
-
-1524.6 "Hagetsu" #Ability { id: "2D1C", source: "Tsukuyomi" }
-1526.4 "Tsuki-No-Maiogi" #Ability { id: "2BC6", source: "Dancing Fan" }
-1529.4 "Tsuki-No-Maiogi" #Ability { id: "2BC6", source: "Dancing Fan" }
+# loop end
+1476.9 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" } forcejump 1403.1
