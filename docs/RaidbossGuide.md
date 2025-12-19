@@ -351,6 +351,11 @@ be matched against.
 Unsurprisingly, for `netRegex` use the `NetRegexes` helper
 and for `regex` use the `Regexes` helper.
 
+When specifying multiple ability IDs for a `netRegex`, it is preferred to
+use the array syntax with the full IDs rather than using a regular
+expression, though many older trigger files still use regexes. That is,
+prefer `id: ["A5B6", "A5B7"]` over `id: "A5B[67]"` or `id: "(A5B6|A5B7)"`.
+
 `regex` and `netRegex` lines are auto-translated using the `timelineReplace` section.
 
 **condition: function(data, matches, output)**

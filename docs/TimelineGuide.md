@@ -191,8 +191,9 @@ If you want escape a regular expression character, you need two backslashes, e.g
 `"E\\.D\\.D\\."` (i.e. matching the literal string `E.D.D.`).
 
 Additionally, if you are using [sync_files.ts](RaidbossGuide.md#sync-files) for this timeline
-you should spell out ability ids in full, e.g. `id: "(8B43|8B46)"` instead of `id: "8B4[36]"`,
-so that the script can find and replace them properly.
+you should spell out ability ids in full, e.g. `id: ["8B43", "8B46"]` instead of `id: "8B4[36]"`,
+so that the script can find and replace them properly. Use of the array syntax is preferred,
+though some older timeline files may still use `id: "(8B43|8B46)"`.
 
 With the exception of `hideall` (a command that must be on its own line with no sync time),
 the ability time must come first, followed either by an ability name or a `label` keyword.
