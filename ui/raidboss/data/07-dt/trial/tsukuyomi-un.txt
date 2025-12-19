@@ -17,7 +17,7 @@ hideall "--Reset--"
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 10.8 "--sync--" StartsUsing { id: "B12E", source: "Tsukuyomi" } window 30,30
 14.8 "Reprimand" Ability { id: "B12E", source: "Tsukuyomi" }
-25.0 "Nightfall (gun/spear)" Ability { id: "(B130|B131)", source: "Tsukuyomi" }
+25.0 "Nightfall (gun/spear)" Ability { id: ["B130", "B131"], source: "Tsukuyomi" }
 25.0 "--sync--" Ability { id: "B130", source: "Tsukuyomi" } window 30,30 jump 225
 25.0 "--sync--" Ability { id: "B131", source: "Tsukuyomi" } window 30,30 jump 525
 31.1 "Lead Of The Underworld?" Ability { id: "B132", source: "Tsukuyomi" }
@@ -86,11 +86,11 @@ hideall "--Reset--"
 1196.8 "Lunar Halo" Ability { id: "B14A", source: "Moonlight" }
 1197.2 "Crater" Ability { id: "B160", source: "Moondust" }
 1197.2 "Moonbeam" Ability { id: "B148", source: "Moondust" }
-1208.3 "Antitwilight/Perilune" Ability { id: "(B14B|B14C)", source: "Tsukuyomi" }
+1208.3 "Antitwilight/Perilune" Ability { id: ["B14B", "B14C"], source: "Tsukuyomi" }
 
 1223.4 "Reprimand" Ability { id: "B12E", source: "Tsukuyomi" }
 1230.6 "Zashiki-Asobi" Ability { id: "B139", source: "Tsukuyomi" }
-1239.8 "Nightfall (gun/spear)" Ability { id: "(B130|B131)", source: "Tsukuyomi" }
+1239.8 "Nightfall (gun/spear)" Ability { id: ["B130", "B131"], source: "Tsukuyomi" }
 1241.7 "Tsuki-No-Maiogi" Ability { id: "B13A", source: "Dancing Fan" }
 1244.7 "Tsuki-No-Maiogi" Ability { id: "B13A", source: "Dancing Fan" }
 # don't match B133 here because there's three of them, close in time.
@@ -113,14 +113,14 @@ hideall "--Reset--"
 1334.9 "Moonbeam" Ability { id: "B148", source: "Moondust" }
 1334.9 "Crater" Ability { id: "B160", source: "Moondust" }
 1335.9 "Lunar Halo" Ability { id: "B14A", source: "Moonlight" }
-1346.0 "Antitwilight/Perilune" Ability { id: "(B14B|B14C)", source: "Tsukuyomi" }
+1346.0 "Antitwilight/Perilune" Ability { id: ["B14B", "B14C"], source: "Tsukuyomi" }
 
 # 35% push
 1361.3 "Dance Of The Dead" Ability { id: "B15E", source: "Tsukuyomi" } window 1400,20
-1378.6 "Bright Blade/Dark Blade" Ability { id: "(B14E|B14F)", source: "Tsukuyomi" }
-1379.5 "Waning Grudge/Waxing Grudge" Ability { id: "(B152|B153)", source: "Tsukuyomi" }
-1392.0 "Bright Blade/Dark Blade" Ability { id: "(B14E|B14F)", source: "Tsukuyomi" }
-1393.0 "Waning Grudge/Waxing Grudge" Ability { id: "(B152|B153)", source: "Tsukuyomi" }
+1378.6 "Bright Blade/Dark Blade" Ability { id: ["B14E", "B14F"], source: "Tsukuyomi" }
+1379.5 "Waning Grudge/Waxing Grudge" Ability { id: ["B152", "B153"], source: "Tsukuyomi" }
+1392.0 "Bright Blade/Dark Blade" Ability { id: ["B14E", "B14F"], source: "Tsukuyomi" }
+1393.0 "Waning Grudge/Waxing Grudge" Ability { id: ["B152", "B153"], source: "Tsukuyomi" }
 
 # loop begins
 1403.1 "Reprimand" Ability { id: "B12E", source: "Tsukuyomi" }
@@ -130,16 +130,16 @@ hideall "--Reset--"
 #1418.4 "Lunacy" Ability { id: "B151", source: "Tsukuyomi" }
 #1419.4 "Lunacy" Ability { id: "B151", source: "Tsukuyomi" }
 
-1427.4 "Bright Blade/Dark Blade" Ability { id: "(B14E|B14F)", source: "Tsukuyomi" }
-1428.4 "Waning Grudge/Waxing Grudge" Ability { id: "(B152|B153)", source: "Tsukuyomi" }
+1427.4 "Bright Blade/Dark Blade" Ability { id: ["B14E", "B14F"], source: "Tsukuyomi" }
+1428.4 "Waning Grudge/Waxing Grudge" Ability { id: ["B152", "B153"], source: "Tsukuyomi" }
 1437.5 "Torment Unto Death" Ability { id: "B16A", source: "Tsukuyomi" }
 
 1450.7 "Hagetsu" Ability { id: "B165", source: "Tsukuyomi" }
 1452.5 "Tsuki-No-Maiogi" Ability { id: "B13A", source: "Dancing Fan" }
 1455.5 "Tsuki-No-Maiogi" Ability { id: "B13A", source: "Dancing Fan" }
 
-1460.9 "Bright Blade/Dark Blade" Ability { id: "(B14E|B14F)", source: "Tsukuyomi" }
-1461.9 "Waning Grudge/Waxing Grudge" Ability { id: "(B152|B153)", source: "Tsukuyomi" }
+1460.9 "Bright Blade/Dark Blade" Ability { id: ["B14E", "B14F"], source: "Tsukuyomi" }
+1461.9 "Waning Grudge/Waxing Grudge" Ability { id: ["B152", "B153"], source: "Tsukuyomi" }
 1469.9 "Reprimand" Ability { id: "B12E", source: "Tsukuyomi" }
 
 # loop
@@ -150,8 +150,8 @@ hideall "--Reset--"
 #1492.3 "Lunacy" Ability { id: "B151", source: "Tsukuyomi" }
 #1493.3 "Lunacy" Ability { id: "B151", source: "Tsukuyomi" }
 
-1501.3 "Bright Blade/Dark Blade" #Ability { id: "(B14E|B14F)", source: "Tsukuyomi" }
-1502.3 "Waning Grudge/Waxing Grudge" #Ability { id: "(B152|B153)", source: "Tsukuyomi" }
+1501.3 "Bright Blade/Dark Blade" #Ability { id: ["B14E", "B14F"], source: "Tsukuyomi" }
+1502.3 "Waning Grudge/Waxing Grudge" #Ability { id: ["B152", "B153"], source: "Tsukuyomi" }
 1511.4 "Torment Unto Death" #Ability { id: "B16A", source: "Tsukuyomi" }
 
 1524.6 "Hagetsu" #Ability { id: "B165", source: "Tsukuyomi" }
