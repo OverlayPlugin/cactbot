@@ -960,7 +960,7 @@ const zoneReplace: ZoneReplace[] = [
       '2CAF': 'B15C', // Nightbloom
       '2CCF': 'B15D', // --sync--
       '2CD0': 'B15E', // Dance of the Dead
-      '2BEC': 'B160', // Crater
+      '2CD7': 'B160', // Moondust Crater
       '2BED': 'B161', // --sync--
       '2BEE': 'B162', // --sync--
       '2BEF': 'B163', // --sync--
@@ -971,7 +971,6 @@ const zoneReplace: ZoneReplace[] = [
       '2BF4': 'B168', // --sync--
       '2EB0': 'B169', // Supreme Selenomancy
       '2EB2': 'B16A', // Torment unto Death
-      '2CD7': 'B160', // Moondust Crater
     },
   },
 ];
