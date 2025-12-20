@@ -1391,6 +1391,20 @@ class RaidbossConfigurator {
     // Handle 'response' first.
     if (trig.response) {
       const r = trig.response;
+      const originalConsole = {
+        log: console.log,
+        warn: console.warn,
+        error: console.error,
+        info: console.info,
+        debug: console.debug,
+        trace: console.trace,
+      };
+      console.log = () => {};
+      console.warn = () => {};
+      console.error = () => {};
+      console.info = () => {};
+      console.debug = () => {};
+      console.trace = () => {};
       for (const data of fakeDataEntries) {
         try {
           // Can't use ValueOrFunction here as r returns a non-localizable object.
@@ -1412,6 +1426,12 @@ class RaidbossConfigurator {
           continue;
         }
       }
+      console.log = originalConsole.log;
+      console.warn = originalConsole.warn;
+      console.error = originalConsole.error;
+      console.info = originalConsole.info;
+      console.debug = originalConsole.debug;
+      console.trace = originalConsole.trace;
     }
 
     // Only evaluate fields if there are not outputStrings.
