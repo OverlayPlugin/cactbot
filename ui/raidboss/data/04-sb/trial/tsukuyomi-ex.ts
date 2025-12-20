@@ -18,6 +18,12 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'tsukuyomi-ex.txt',
   triggers: [
     {
+      id: 'TsukuyomiEx Reprimand',
+      type: 'StartsUsing',
+      netRegex: { id: '2BBA', source: 'Tsukuyomi', capture: false },
+      response: Responses.aoe(),
+    },
+    {
       id: 'TsukuyomiEx Nightfall Gun',
       type: 'StartsUsing',
       netRegex: { id: '2BBC', source: 'Tsukuyomi', capture: false },
