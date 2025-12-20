@@ -302,6 +302,29 @@ const emulatorIntroModal: Translation = {
         <li>点击触发器的按钮，可以看到关于它们的详细信息</li>
       </ul>
     </p>`,
+    tc: `<p>歡迎來到Raid模擬器。</p>
+    <p>此工具可以回放戰鬥，顯示各個觸發器的觸發時機，你還可以從任意小隊成員的角度查看戰鬥。</p>
+    <p>你可以向此工具傳送<strong>OVERLAY_WS</strong>參數，以連接到同時加載了ngld的OverlayPlugin和Cactbot插件的ACT Websocket接口。</p>
+    <p>若連接成功，此工具將加載並遵循cactbot/raidboss的用戶配置文件。</p>
+    <p>你不需要創建懸浮窗。</p>
+    <p>當前WebSocket連接狀態: <span class="d-none websocketConnected text-success">已連接</span><span class="websocketDisconnected text-warning">已斷開</span>.</p>
+    <p>首先，你需要通過以下方法之一導入一場戰鬥: </p>
+    <p>
+      <ul>
+        <li>從<code>%APPDATA%/Advanced Combat Tracker/FFXIVLogs/</code>中選取一個網絡日誌文件拖放到頁面上。</li>
+        <li>點擊下方的<code>加載網絡日誌</code>按鈕，從<code>%APPDATA%/Advanced Combat Tracker/FFXIVLogs/</code>中選取一個網絡日誌文件。</li>
+      </ul>
+    </p>
+    <p>然後，在窗口底部選擇一場戰鬥。</p>
+    <p>一旦你加載了一場戰鬥，你可以: </p>
+    <p>
+      <ul>
+        <li>通過在右邊選擇一名隊員來改變當前視角</li>
+        <li>通過點擊頂部的條狀圖來尋找戰鬥中的任何一個時間點</li>
+        <li>懸停在頂欄的觸發器指示器上，可以看到它們的名稱</li>
+        <li>點擊觸發器的按鈕，可以看到關於它們的詳細信息</li>
+      </ul>
+    </p>`,
   },
 } as const;
 
@@ -354,6 +377,14 @@ const emulatorDisconnectedModal: Translation = {
       <li>默认警报提示信息输出方式: 文字显示与提示音</li>
       <li>警报提示文字的语言: <span class="discLangAlerts"></span></li>
       <li>时间轴文本的语言: <span class="discLangTimeline"></span></li>
+    </ul>`,
+    tc: `<p>Raid模擬器目前與ACT斷開了連接。</p>
+    <p>Raid模擬器將使用raidboss的默認設置。這些設置是:</p>
+    <ul>
+      <li>顯示語言: <span class="discLangDisplay"></span></li>
+      <li>默認警報提示信息輸出方式: 文字顯示與提示音</li>
+      <li>警報提示文字的語言: <span class="discLangAlerts"></span></li>
+      <li>時間軸文本的語言: <span class="discLangTimeline"></span></li>
     </ul>`,
   },
 } as const;
