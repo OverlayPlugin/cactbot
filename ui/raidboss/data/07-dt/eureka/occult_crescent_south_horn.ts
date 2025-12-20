@@ -3970,12 +3970,8 @@ const triggerSet: TriggerSet<Data> = {
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
         const loc = getPuddleLocation(x, y);
-        if (loc === undefined) {
-          console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Dodge 1: Unexpected puddle location (${x}, ${y})`,
-          );
+        if (loc === undefined)
           return;
-        }
 
         // Crosses
         if (matches.id === '7614') {
@@ -3991,6 +3987,15 @@ const triggerSet: TriggerSet<Data> = {
         // South Cross priority = SE, so ESE is the direction to go
         if (loc === 'NE' || loc === 'SW')
           return { alertText: output.circles1Dodge!({ dir: output.dirESE!() }) };
+      },
+      run: (_data, matches) => {
+        // Validate position data outside of response due to current test validation of response outputs
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const loc = getPuddleLocation(x, y);
+        if (loc === undefined) {
+          return;
+        }
       },
     },
     {
