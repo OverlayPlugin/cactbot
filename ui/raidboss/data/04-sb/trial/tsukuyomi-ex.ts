@@ -27,7 +27,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'TsukuyomiEx Nightfall Spear',
       type: 'StartsUsing',
       netRegex: { id: '2BBD', source: 'Tsukuyomi', capture: false },
-      response: Responses.spread(),
+      response: Responses.rolePositions(),
     },
     {
       id: 'TsukuyomiEx Torment',

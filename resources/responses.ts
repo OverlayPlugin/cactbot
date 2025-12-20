@@ -328,6 +328,7 @@ export const Responses = {
   bigAoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.bigAoe),
   bleedAoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.bleedAoe),
   spread: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.spread),
+  rolePositions: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.rolePositions),
   protean: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.protean),
   // for stack marker situations.
   stackMarker: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.stackMarker),
