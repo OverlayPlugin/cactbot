@@ -1,0 +1,253 @@
+### HELL ON RAILS (EXTREME)
+# ZoneId: 1308
+
+# -ii B237 B24E B251 B287 B288 B289 B258 B259 B25C B26E B271 B276 B277 B278 B27A B27B B280 B28A B28B B28D B28E B290 B294 B599 B59A
+# -it "Doomtrain" "Aether"
+# -p B24C:500
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+# Car 1
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+12.4 "Dead Man's Overdraught" Ability { id: ["B25F", "B260"], source: "Doomtrain" }
+20.4 "Dead Man's Express/Dead Man's Windpipe" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+22.4 "Plasma Beam/Dead Man's Blastpipe"
+25.5 "Plasma/Hyperexplosive Plasma"
+31.4 "Dead Man's Overdraught" Ability { id: ["B25F", "B260"], source: "Doomtrain" }
+39.4 "Dead Man's Windpipe/Dead Man's Express" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+42.4 "Dead Man's Blastpipe/Plasma Beam"
+44.4 "Hyperexplosive Plasma/Plasma"
+52.3 "Unlimited Express" Ability { id: "B270", source: "Doomtrain" }
+52.5 "--untargetable--"
+
+# Car 2
+56.4 "--sync--" Ability { id: "B249", source: "Doomtrain" }
+58.4 "--targetable--"
+64.5 "Dead Man's Overdraught" Ability { id: ["B25F", "B260"], source: "Doomtrain" }
+69.5 "Turret Crossing" Ability { id: "B23C", source: "Doomtrain" }
+78.6 "Electray" Ability { id: "B273", source: "Kinematic Turret" }
+79.5 "Dead Man's Express/Dead Man's Windpipe" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+82.5 "Plasma Beam/Dead Man's Blastpipe"
+84.5 "Plasma/Hyperexplosive Plasma"
+90.4 "Dead Man's Overdraught" Ability { id: ["B25F", "B260"], source: "Doomtrain" }
+95.2 "Electray" Ability { id: "B273", source: "Kinematic Turret" }
+98.1 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
+106.8 "Electray" Ability { id: "B273", source: "Kinematic Turret" }
+107.7 "Dead Man's Windpipe/Dead Man's Express" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+109.7 "Dead Man's Blastpipe/Plasma Beam"
+112.8 "Hyperexplosive Plasma/Plasma"
+120.7 "Unlimited Express" Ability { id: "B270", source: "Doomtrain" }
+120.9 "--untargetable--"
+
+# Car 3
+124.9 "--sync--" Ability { id: "B249", source: "Doomtrain" }
+126.9 "--targetable--"
+136.5 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
+149.2 "Runaway Train" Ability { id: "B246", source: "Doomtrain" }
+152.4 "Overdraught" Ability { id: "B247", source: "Aether" }
+152.8 "--untargetable--"
+
+# Add phase, timings are very, very loose here
+159.8 "--targetable--"
+166.7 "--sync--" HeadMarker { id: '019C' } window 12,12
+174.5 "Aetherochar/Aetherosote"
+174.6 "Aetherial Ray"
+182.8 "--sync--" HeadMarker { id: '019C' } window 12,12
+190.6 "Aetherochar/Aetherosote"
+190.7 "Aetherial Ray"
+197.7 "--sync--" HeadMarker { id: '019C' } window 12,12
+205.5 "Aetherochar/Aetherosote"
+205.6 "Aetherial Ray"
+211.1 "--sync--" HeadMarker { id: '019C' } window 12,12
+218.9 "Aetherochar/Aetherosote"
+219.0 "Aetherial Ray"
+224.1 "--sync--" HeadMarker { id: '019C' } window 12,12
+231.9 "Aetherochar/Aetherosote"
+232.0 "Aetherial Ray"
+234.8 "--untargetable--" NameToggle { name: "Aether" } window 12,12 forcejump "adds-enrage"
+
+# Sync to invisible cast that starts phase change animation
+500.0 "--sync--" Ability { id: "B24C", source: "Doomtrain" } window 500.0,0
+515.1 "Runaway Train" Ability { id: "B24D", source: "Doomtrain" }
+
+# Car 3, again
+515.4 "--targetable--"
+533.4 "Shockwave" Ability { id: "B283", source: "Doomtrain" }
+543.3 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
+550.9 "Derailment Siege x3" Ability { id: "B250", source: "Doomtrain" } duration 3.5
+559.9 "Derail" Ability { id: "B28F", source: "Doomtrain" }
+
+# Car 4
+565.0 "--sync--" Ability { id: "B257", source: "Doomtrain" }
+571.0 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
+575.0 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
+585.1 "Thunderous Breath/Headlight" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+587.5 "Headlight/Thunderous Breath" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+592.8 "Arcane Revelation" Ability { id: "B9A7", source: "Doomtrain" }
+604.5 "Hail of Thunder" Ability { id: "B291", source: "Doomtrain" }
+604.5 "Hyperconductive Plasma" #Ability { id: "B292", source: "Doomtrain" }
+618.4 "Hail of Thunder" Ability { id: "B291", source: "Doomtrain" }
+618.4 "Hyperconductive Plasma" #Ability { id: "B292", source: "Doomtrain" }
+632.4 "Hail of Thunder" Ability { id: "B291", source: "Doomtrain" }
+632.4 "Hyperconductive Plasma" #Ability { id: "B292", source: "Doomtrain" }
+645.1 "Headlight/Thunderous Breath" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+647.5 "Thunderous Breath/Headlight" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+649.8 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
+653.8 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
+662.4 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
+672.0 "Derailment Siege x4" Ability { id: "B284", source: "Doomtrain" } duration 4.9
+683.1 "Derail" Ability { id: "B28F", source: "Doomtrain" }
+
+# Car 5
+688.2 "--sync--" Ability { id: "B257", source: "Doomtrain" }
+700.2 "Psychokinesis" Ability { id: "B264", source: "Doomtrain" }
+701.2 "Plummet" #Ability { id: "B265", source: "Doomtrain" }
+702.2 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
+706.2 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
+715.3 "Psychokinesis" Ability { id: "B264", source: "Doomtrain" }
+716.3 "Plummet" #Ability { id: "B265", source: "Doomtrain" }
+722.9 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
+731.5 "Psychokinesis" Ability { id: "B264", source: "Doomtrain" }
+732.5 "Plummet" #Ability { id: "B265", source: "Doomtrain" }
+733.5 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
+737.5 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
+748.6 "Derailment Siege x5" Ability { id: "B285", source: "Doomtrain" } duration 6.5
+760.2 "Derail" Ability { id: "B28F", source: "Doomtrain" }
+
+# Car 6
+765.3 "--sync--" Ability { id: "B257", source: "Doomtrain" }
+774.3 "Dead Man's Overdraught" Ability { id: ["B25F", "B260"], source: "Doomtrain" }
+779.3 "Turret Crossing" Ability { id: "B23C", source: "Doomtrain" }
+788.4 "Electray" #Ability { id: "B273", source: "Kinematic Turret" }
+792.4 "Thunderous Breath/Headlight" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+794.8 "Headlight/Thunderous Breath" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+804.4 "Electray" #Ability { id: "B273", source: "Kinematic Turret" }
+807.3 "Psychokinesis" Ability { id: "B264", source: "Doomtrain" }
+808.3 "Plummet" #Ability { id: "B265", source: "Doomtrain" }
+809.3 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
+813.3 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
+821.5 "Electray" #Ability { id: "B272", source: "Kinematic Turret" }
+823.4 "Dead Man's Express/Dead Man's Windpipe" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+826.4 "Plasma Beam/Dead Man's Blastpipe"
+828.4 "Plasma/Hyperexplosive Plasma"
+835.9 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
+843.3 "Dead Man's Overdraught" Ability { id: ["B25F", "B260"], source: "Doomtrain" }
+847.3 "Arcane Revelation" Ability { id: "B9A7", source: "Doomtrain" }
+862.0 "Hail of Thunder" #Ability { id: "B291", source: "Doomtrain" }
+862.0 "Hyperconductive Plasma" Ability { id: "B292", source: "Doomtrain" }
+873.0 "Hail of Thunder" #Ability { id: "B291", source: "Doomtrain" }
+873.0 "Hyperconductive Plasma" Ability { id: "B292", source: "Doomtrain" }
+875.4 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
+879.4 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
+889.3 "Dead Man's Windpipe/Dead Man's Express" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+891.3 "Dead Man's Blastpipe/Plasma Beam"
+894.4 "Hyperexplosive Plasma/Plasma"
+903.5 "Headlight/Thunderous Breath" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+905.9 "Thunderous Breath/Headlight" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
+914.8 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
+916.4 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
+920.4 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
+930.4 "Derailment Siege x7" Ability { id: "B286", source: "Doomtrain" } duration 7.1
+952.6 "Derail (enrage)" Ability { id: "B28E", source: "Doomtrain" }
+
+# For sync reasons, adds enrage is after end of fight timeline
+2000.0 label "adds-enrage"
+2004.2 "--sync--" Ability { id: "B24C", source: "Doomtrain" }
+2019.3 "Runaway Train (enrage)" Ability { id: "B24D", source: "Doomtrain" }
+
+
+# IGNORED ABILITIES
+# B237 Unlimited Express: VFX
+# B24E Shockwave: VFX
+# B251 Derailment Siege: VFX
+# B287 Derailment Siege: VFX
+# B288 Derailment Siege: VFX
+# B289 Derailment Siege: VFX
+# B258 Hail of Thunder: VFX
+# B259 Hail of Thunder: VFX
+# B25C Lightning Burst: VFX
+# B26E Dead Man's Blastpipe: VFX
+# B271 Electray: Extra spam
+# B276 Electray: Extra spam
+# B277 Thunderous Breath: VFX
+# B278 Thunderous Breath: VFX
+# B27A Headlight: VFX
+# B27B Headlight: VFX
+# B280 Dead Man's Windpipe: VFX
+# B28A Derailment Siege: Followup hits for tower
+# B28B Derailment Siege: Big hit at the end
+# B28D Derail: VFX
+# B28E Derail: VFX
+# B290 Derail: VFX
+# B294 --sync--: Autoattack
+# B599 Derail: VFX
+# B59A Derail: VFX
+
+# ALL ENCOUNTER ABILITIES
+# B237 Unlimited Express
+# B23C Turret Crossing
+# B246 Runaway Train
+# B247 Overdraught
+# B249 --sync--
+# B24C Runaway Train
+# B24D Runaway Train
+# B24E Shockwave
+# B250 Derailment Siege
+# B251 Derailment Siege
+# B257 --sync--
+# B258 Hail of Thunder
+# B259 Hail of Thunder
+# B25C Lightning Burst
+# B25F Dead Man's Overdraught
+# B260 Dead Man's Overdraught
+# B261 Third Rail
+# B262 Third Rail
+# B264 Psychokinesis
+# B265 Plummet
+# B266 Dead Man's Express
+# B267 Plasma Beam
+# B268 Plasma Beam
+# B26A Plasma Beam
+# B26B Plasma
+# B26C Hyperexplosive Plasma
+# B26D Dead Man's Windpipe
+# B26E Dead Man's Blastpipe
+# B26F Dead Man's Blastpipe
+# B270 Unlimited Express
+# B271 Electray
+# B272 Electray
+# B273 Electray
+# B276 Electray
+# B277 Thunderous Breath
+# B278 Thunderous Breath
+# B279 Thunderous Breath
+# B27A Headlight
+# B27B Headlight
+# B27C Headlight
+# B27D Aetherial Ray
+# B280 Dead Man's Windpipe
+# B281 Aetherochar
+# B282 Aetherosote
+# B283 Shockwave
+# B284 Derailment Siege
+# B285 Derailment Siege
+# B286 Derailment Siege
+# B287 Derailment Siege
+# B288 Derailment Siege
+# B289 Derailment Siege
+# B28A Derailment Siege
+# B28B Derailment Siege
+# B28D Derail
+# B28E Derail
+# B28F Derail
+# B290 Derail
+# B291 Hail of Thunder
+# B292 Hyperconductive Plasma
+# B293 Lightning Burst
+# B294 --sync--
+# B599 Derail
+# B59A Derail
+# B9A7 Arcane Revelation
