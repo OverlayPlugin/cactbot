@@ -3988,18 +3988,6 @@ const triggerSet: TriggerSet<Data> = {
         if (loc === 'NE' || loc === 'SW')
           return { alertText: output.circles1Dodge!({ dir: output.dirESE!() }) };
       },
-      run: (_data, matches) => {
-        // Validate position data outside of response due to current test validation of response outputs
-        const x = parseFloat(matches.x);
-        const y = parseFloat(matches.y);
-        const loc = getPuddleLocation(x, y);
-        if (loc === undefined) {
-          console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Dodge 1: Unexpected puddle location (${x}, ${y})`,
-          );
-          return;
-        }
-      },
     },
     {
       id: 'Occult Crescent Marble Dragon Imitation Rain 2 Dodge 2',
