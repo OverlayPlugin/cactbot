@@ -1079,6 +1079,9 @@ export class CactbotConfigurator {
       if (triggerSet.zoneLabel) {
         zoneLabel = triggerSet.zoneLabel;
         title = this.translate(zoneLabel);
+        if (typeof triggerSet.zoneId === 'number') {
+          zoneId = triggerSet.zoneId;
+        }
       } else if (typeof triggerSet.zoneId === 'number') {
         zoneId = triggerSet.zoneId;
         // Use the translatable zone info name, if possible.
