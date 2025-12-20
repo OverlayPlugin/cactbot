@@ -145,6 +145,16 @@ const emulatorImportModal: Translation = {
     开始于: <span class="startedBy"></span><br />
     结束状态: <span class="endStatus"></span><br />
     行数: <span class="lineCount"></span><br />`,
+    tc: `<h3>最新的戰鬥: </h3>
+    區域: <span class="zone"></span><br />
+    戰鬥: <span class="encounter"></span><br />
+    開始: <span class="start"></span><br />
+    結束: <span class="end"></span><br />
+    持續時間: <span class="durMins"></span>m<span class="durSecs"></span>s<br />
+    嘗試時間: <span class="pullMins"></span>m<span class="pullSecs"></span>s<br />
+    開始於: <span class="startedBy"></span><br />
+    結束狀態: <span class="endStatus"></span><br />
+    行數: <span class="lineCount"></span><br />`,
   },
 } as const;
 
