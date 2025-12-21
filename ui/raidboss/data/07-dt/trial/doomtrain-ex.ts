@@ -102,6 +102,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Bait Puddles',
+          cn: '诱导雷圈',
         },
       },
     },
@@ -194,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stored ${mech}',
+          cn: '已储存 ${mech}',
         },
         pairs: Outputs.stackPartner,
         spread: Outputs.spread,
@@ -220,6 +222,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         unknown: Outputs.unknown,
         knockback: Outputs.knockback,
@@ -250,6 +253,7 @@ const triggerSet: TriggerSet<Data> = {
         west: Outputs.west,
         text: {
           en: 'LoS ${turretDir} => Tankbusters',
+          cn: '${turretDir} 箱体 => 双T死刑',
         },
       },
     },
@@ -276,12 +280,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'LoS ${turretDir} => ${mech1} => ${mech2}',
+          cn: '${turretDir} 箱体 => ${mech1} => ${mech2}',
         },
         express: {
           en: '${knockback} => Dodge Lasers',
+          cn: '${knockback} => 躲避激光',
         },
         windpipe: {
           en: '${drawIn} => Away from Front',
+          cn: '${drawIn} => 远离前方',
         },
         unknown: Outputs.unknown,
         east: Outputs.east,
@@ -355,6 +362,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         text: {
           en: 'Train cleaves from ${dir}',
+          cn: '火车从 ${dir} 攻击',
         },
       },
     },
@@ -384,6 +392,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         text: {
           en: 'Train ${dir}, ${mech}',
+          cn: '火车 ${dir}, ${mech}',
         },
       },
     },
@@ -417,6 +426,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Tower x3 => Next Platform',
+          cn: '踩塔 x3 => 下一节车厢',
         },
       },
     },
@@ -432,6 +442,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Tower x4 => Next Platform',
+          cn: '踩塔 x4 => 下一节车厢',
         },
       },
     },
@@ -444,6 +455,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Down => Up',
+          cn: '先下 => 上',
         },
       },
     },
@@ -456,6 +468,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Up => Down',
+          cn: '先上 => 下',
         },
       },
     },
@@ -551,7 +564,10 @@ const triggerSet: TriggerSet<Data> = {
         dirS: Outputs.back,
         dirW: Outputs.left,
         unknown: Outputs.unknown,
-        text: { en: '${dir} Safe + Stacks' },
+        text: {
+          en: '${dir} Safe + Stacks',
+          cn: '${dir} 安全 + 分摊',
+        },
       },
     },
     {
@@ -573,6 +589,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Tower x5 => Next Platform',
+          cn: '踩塔 x5 => 下一节车厢',
         },
       },
     },
@@ -591,9 +608,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadIntoBait: {
           en: 'Spread AoEs => Bait Puddles',
+          cn: '分散处理黄圈 => 诱导雷圈',
         },
         spreadIntoBuster: {
           en: 'Spread AoEs => Tankbusters',
+          cn: '分散处理黄圈 => 双T死刑',
         },
       },
     },
@@ -607,6 +626,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Tower x6 => Enrage',
+          cn: '踩塔 x6 => 狂暴',
         },
       },
     },
@@ -627,14 +647,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         up: {
           en: 'Up (dodge turrets)',
+          cn: '左箱体上',
         },
         down: {
           en: 'Down (dodge turrets)',
+          cn: '左箱体侧',
         },
         east: Outputs.east,
         west: Outputs.west,
         text: {
           en: 'LoS ${turretDir}',
+          cn: '${turretDir} 箱体',
         },
       },
     },
@@ -664,15 +687,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}${mech3}',
+          cn: '${mech1} => ${mech2}${mech3}',
         },
         express: {
           en: '${knockback} => Dodge Lasers',
+          cn: '${knockback} => 躲避激光',
         },
         windpipe: {
           en: '${drawIn} => Away from Front',
+          cn: '${drawIn} => 远离前方',
         },
         tbFollowup: {
           en: ' => ${mech3}',
+          cn: ' => ${mech3}',
         },
         unknown: Outputs.unknown,
         knockback: Outputs.knockback,
@@ -680,6 +707,47 @@ const triggerSet: TriggerSet<Data> = {
         pairs: Outputs.stackPartner,
         spread: Outputs.spread,
         tankbuster: Outputs.tankBuster,
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Aether': '以太晶球',
+        'Doomtrain': '格莱杨拉波尔',
+        'Kinematic Turret': '护卫炮塔',
+      },
+      'replaceText': {
+        '\\(bait\\)': '(诱导)',
+        '\\(detonate\\)': '(爆炸)',
+        'Aetherial Ray': '以太射线',
+        'Aetherochar': '以太炮',
+        'Aetherosote': '以太冲击波',
+        'Arcane Revelation': '魔法阵展开',
+        'Dead Man\'s Blastpipe': '超增压排雾',
+        'Dead Man\'s Express': '超增压急行',
+        'Dead Man\'s Overdraught': '超增压',
+        'Dead Man\'s Windpipe': '超增压抽雾',
+        'Derail(?!ment)': '脱轨',
+        'Derailment Siege': '脱轨捶打',
+        'Electray': '雷转质射线',
+        'Hail of Thunder': '雷光雨',
+        'Headlight': '前照光',
+        'Hyperconductive Plasma': '重雷',
+        'Hyperexplosive Plasma': '重爆雷',
+        'Lightning Burst': '雷电爆发',
+        '(?<! )Overdraught': '溢流',
+        '(?<! )Plasma(?! )': '爆雷',
+        'Plasma Beam': '等离子射线',
+        'Plummet': '掉落',
+        'Psychokinesis': '念动反应',
+        'Runaway Train': '无尽狂奔',
+        'Shockwave': '冲击波',
+        'Third Rail': '雷光一闪',
+        'Thunderous Breath': '雷鸣吐息',
+        'Turret Crossing': '炮塔出击',
+        'Unlimited Express': '无控急行',
       },
     },
   ],
