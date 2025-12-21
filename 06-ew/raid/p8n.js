@@ -148,6 +148,7 @@ Options.Triggers.push({
           fr: '${dir1} / ${dir2}',
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
         },
         north: Outputs.north,
@@ -249,6 +250,7 @@ Options.Triggers.push({
           fr: '${dir1} / ${dir2}',
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
         },
         outsideNorth: {
@@ -257,6 +259,7 @@ Options.Triggers.push({
           fr: 'Nord Extérieur',
           ja: '北の外側',
           cn: '上外',
+          tc: '上外',
           ko: '북쪽 바깥',
         },
         insideNorth: {
@@ -265,6 +268,7 @@ Options.Triggers.push({
           fr: 'Nord Intérieur',
           ja: '北の内側',
           cn: '上内',
+          tc: '上內',
           ko: '북쪽 안',
         },
         outsideEast: {
@@ -273,6 +277,7 @@ Options.Triggers.push({
           fr: 'Est Extérieur',
           ja: '東の外側',
           cn: '右外',
+          tc: '右外',
           ko: '동쪽 바깥',
         },
         insideEast: {
@@ -281,6 +286,7 @@ Options.Triggers.push({
           fr: 'Est Intérieur',
           ja: '東の内側',
           cn: '右内',
+          tc: '右內',
           ko: '동쪽 안',
         },
         outsideSouth: {
@@ -289,6 +295,7 @@ Options.Triggers.push({
           fr: 'Sud Extérieur',
           ja: '南の外側',
           cn: '下外',
+          tc: '下外',
           ko: '남쪽 바깥',
         },
         insideSouth: {
@@ -297,6 +304,7 @@ Options.Triggers.push({
           fr: 'Sud Intérieur',
           ja: '南の内側',
           cn: '下内',
+          tc: '下內',
           ko: '남쪽 안',
         },
         outsideWest: {
@@ -305,6 +313,7 @@ Options.Triggers.push({
           fr: 'Ouest Extérieur',
           ja: '西の外側',
           cn: '左外',
+          tc: '左外',
           ko: '서쪽 바깥',
         },
         insideWest: {
@@ -313,6 +322,7 @@ Options.Triggers.push({
           fr: 'Ouest Intérieur',
           ja: '西の内側',
           cn: '左内',
+          tc: '左內',
           ko: '서쪽 안',
         },
       },

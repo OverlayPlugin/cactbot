@@ -140,6 +140,7 @@ Options.Triggers.push({
           fr: 'Vœu sur VOUS',
           ja: '自分に滅殺',
           cn: '毒点名',
+          tc: '毒點名',
           ko: '멸살의 맹세 대상자',
         },
         vowOn: {
@@ -148,6 +149,7 @@ Options.Triggers.push({
           fr: 'Vœu sur ${player}',
           ja: '${player}に滅殺',
           cn: '毒点 ${player}',
+          tc: '毒點 ${player}',
           ko: '${player} 멸살의 맹세',
         },
         vowSoon: {
@@ -156,6 +158,7 @@ Options.Triggers.push({
           fr: 'Vœu bientôt (Écartez-vous)',
           ja: 'まもなく滅殺 (散会)',
           cn: '即将上毒 (分散)',
+          tc: '即將上毒 (分散)',
           ko: '곧 멸살의 맹세 (산개)',
         },
       },
@@ -253,6 +256,7 @@ Options.Triggers.push({
           fr: 'Intérieur + Liens tanks',
           ja: '中へ + タンク線取り',
           cn: '中间 + 坦克接线',
+          tc: '中間 + 坦克接線',
           ko: '안으로 + 탱커가 선 가로채기',
         },
         in: Outputs.in,
@@ -293,6 +297,7 @@ Options.Triggers.push({
           fr: 'Slash sur VOUS',
           ja: '自分にハイパーディメンション',
           cn: '空间斩点名',
+          tc: '空間斬點名',
           ko: '고차원 대상자',
         },
       },
@@ -363,6 +368,7 @@ Options.Triggers.push({
           fr: 'Allez ${dir} (Poussée)',
           ja: '${dir}へ (ノックバック)',
           cn: '去 ${dir} (击退)',
+          tc: '去 ${dir} (擊退)',
           ko: '${dir}으로 (넉백)',
         },
       },
@@ -390,6 +396,7 @@ Options.Triggers.push({
           fr: 'Cercle rouge',
           ja: '赤まる',
           cn: '红圆圈',
+          tc: '紅圓圈',
           ko: '빨강 동그라미',
         },
         triangle: {
@@ -398,6 +405,7 @@ Options.Triggers.push({
           fr: 'Triangle vert',
           ja: '緑さんかく',
           cn: '绿三角',
+          tc: '綠三角',
           ko: '초록 삼각',
         },
         square: {
@@ -406,6 +414,7 @@ Options.Triggers.push({
           fr: 'Carré violet',
           ja: '紫しかく',
           cn: '紫方块',
+          tc: '紫方塊',
           ko: '보라 사각',
         },
         cross: {
@@ -414,6 +423,7 @@ Options.Triggers.push({
           fr: 'Croix bleue',
           ja: '青バツ',
           cn: '蓝X',
+          tc: '藍X',
           ko: '파랑 X',
         },
       },
@@ -478,6 +488,7 @@ Options.Triggers.push({
           fr: 'Sire Vellguine',
           ja: '聖騎士ヴェルギーン',
           cn: '圣骑士韦尔吉纳',
+          tc: '聖騎士韋爾吉納',
           ko: '성기사 벨긴',
         };
         const paulecrainLocaleNames = {
@@ -486,6 +497,7 @@ Options.Triggers.push({
           fr: 'Sire Paulecrain',
           ja: '聖騎士ポールクラン',
           cn: '圣骑士波勒克兰',
+          tc: '聖騎士波勒克蘭',
           ko: '성기사 폴르크랭',
         };
         const ignasseLocaleNames = {
@@ -494,6 +506,7 @@ Options.Triggers.push({
           fr: 'Sire Ignassel',
           ja: '聖騎士イニアセル',
           cn: '圣骑士伊尼亚斯',
+          tc: '聖騎士伊尼亞斯',
           ko: '성기사 이냐스',
         };
         // Select the knights
@@ -583,6 +596,7 @@ Options.Triggers.push({
           fr: '${dir1} / ${dir2}',
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
         },
       },
@@ -603,6 +617,7 @@ Options.Triggers.push({
           fr: ['Sire Adelphel', 'Sire Janlenoux'],
           ja: ['聖騎士アデルフェル', '聖騎士ジャンルヌ'],
           cn: ['圣骑士阿代尔斐尔', '圣骑士让勒努'],
+          tc: ['聖騎士阿代爾斐爾', '聖騎士讓勒努'],
           ko: ['성기사 아델펠', '성기사 장르누'],
         };
         const combatantNames = names[data.parserLang] ?? names['en'];
@@ -670,6 +685,7 @@ Options.Triggers.push({
           fr: '${dir} Thordan',
           ja: 'トールダン ${dir}',
           cn: '骑神 ${dir}',
+          tc: '騎神 ${dir}',
           ko: '토르당 ${dir}',
         },
       },
@@ -691,6 +707,7 @@ Options.Triggers.push({
           fr: 'Saut sur VOUS',
           ja: '自分に青マーカー',
           cn: '蓝球点名',
+          tc: '藍球點名',
           ko: '광역 대상자',
         },
       },
@@ -730,6 +747,7 @@ Options.Triggers.push({
           fr: 'Sire Janlenoux',
           ja: '聖騎士ジャンルヌ',
           cn: '圣骑士让勒努',
+          tc: '聖騎士讓勒努',
           ko: '성기사 장르누',
         };
         // Select Ser Janlenoux
@@ -777,6 +795,7 @@ Options.Triggers.push({
           fr: 'Horaire',
           ja: '時計回り',
           cn: '顺时针起跑',
+          tc: '順時針起跑',
           ko: '시계방향',
         },
         counterclock: {
@@ -785,6 +804,7 @@ Options.Triggers.push({
           fr: 'Anti-horaire',
           ja: '反時計回り',
           cn: '逆时针起跑',
+          tc: '逆時針起跑',
           ko: '반시계방향',
         },
         unknown: Outputs.unknown,
@@ -809,6 +829,7 @@ Options.Triggers.push({
           fr: '1',
           ja: '1',
           cn: '1',
+          tc: '1',
           ko: '1',
         },
         sword2: {
@@ -817,6 +838,7 @@ Options.Triggers.push({
           fr: '2',
           ja: '2',
           cn: '2',
+          tc: '2',
           ko: '2',
         },
       },
@@ -850,6 +872,7 @@ Options.Triggers.push({
           fr: 'Épées : ${name1}, ${name2}',
           ja: '剣：${name1}, ${name2}',
           cn: '剑: ${name1}, ${name2}',
+          tc: '劍: ${name1}, ${name2}',
           ko: '돌진 대상자: ${name1}, ${name2}',
         },
       },
@@ -900,6 +923,7 @@ Options.Triggers.push({
           fr: 'Météores Tank/Healer (${player1}, ${player2})',
           ja: 'タンヒラ 隕石 (${player1}, ${player2})',
           cn: 'T/奶 陨石 (${player1}, ${player2})',
+          tc: 'T/奶 隕石 (${player1}, ${player2})',
           ko: '탱/힐 메테오 (${player1}, ${player2})',
         },
         dpsMeteors: {
@@ -908,6 +932,7 @@ Options.Triggers.push({
           fr: 'Météores DPS (${player1}, ${player2})',
           ja: 'DPS 隕石 (${player1}, ${player2})',
           cn: 'DPS 陨石 (${player1}, ${player2})',
+          tc: 'DPS 隕石 (${player1}, ${player2})',
           ko: '딜러 메테오 (${player1}, ${player2})',
         },
         unknownMeteors: {
@@ -916,6 +941,7 @@ Options.Triggers.push({
           fr: 'Météores ??? (${player1}, ${player2})',
           ja: '??? 隕石 (${player1}, ${player2})',
           cn: '??? 陨石 (${player1}, ${player2})',
+          tc: '??? 隕石 (${player1}, ${player2})',
           ko: '??? 메테오 (${player1}, ${player2})',
         },
       },
@@ -946,6 +972,7 @@ Options.Triggers.push({
           fr: 'Derrière => Gauche',
           ja: '後ろ => 右',
           cn: '后 => 右',
+          tc: '後 => 右',
           ko: '뒤 => 오른쪽',
         },
       },
@@ -962,6 +989,7 @@ Options.Triggers.push({
           fr: 'Derrière => Droite',
           ja: '後ろ => 左',
           cn: '后 => 左',
+          tc: '後 => 左',
           ko: '뒤 => 왼쪽',
         },
       },
@@ -997,6 +1025,7 @@ Options.Triggers.push({
           fr: '${num} (package au Nord)',
           ja: '${num} (北で頭割り)',
           cn: '${num} (上分摊)',
+          tc: '${num} (上分攤)',
           ko: '${num} (북쪽에서 쉐어)',
         },
       },
@@ -1064,6 +1093,7 @@ Options.Triggers.push({
           fr: '#${num} Tous les cercles',
           ja: '#${num} みんなハイジャンプ',
           cn: '#${num} 全圆圈',
+          tc: '#${num} 全圓圈',
           ko: '#${num} 모두 하이점프',
         },
         circleWithArrows: {
@@ -1072,6 +1102,7 @@ Options.Triggers.push({
           fr: '#${num} Cercle (avec flèches)',
           ja: '#${num} 自分のみハイジャンプ',
           cn: '#${num} 圆圈 (有箭头)',
+          tc: '#${num} 圓圈 (有箭頭)',
           ko: '#${num} 나만 하이점프',
         },
         upArrow: {
@@ -1080,6 +1111,7 @@ Options.Triggers.push({
           fr: '#${num} Flèche en haut',
           ja: '#${num} 上矢印 / スパインダイブ',
           cn: '#${num} 上箭头',
+          tc: '#${num} 上箭頭',
           ko: '#${num} 위 화살표 / 척추 강타',
         },
         downArrow: {
@@ -1088,6 +1120,7 @@ Options.Triggers.push({
           fr: '#${num} Flèche en bas',
           ja: '#${num} 下矢印 / イルーシヴジャンプ',
           cn: '#${num} 下箭头',
+          tc: '#${num} 下箭頭',
           ko: '#${num} 아래 화살표 / 교묘한 점프',
         },
       },
@@ -1163,6 +1196,7 @@ Options.Triggers.push({
           fr: 'Package => ${inout}',
           ja: '頭割り => ${inout}',
           cn: '分摊 => ${inout}',
+          tc: '分攤 => ${inout}',
           ko: '쉐어 => ${inout}',
         },
         baitStackInOut: {
@@ -1171,6 +1205,7 @@ Options.Triggers.push({
           fr: 'Attirez => Package => ${inout}',
           ja: '誘導 => 頭割り => ${inout}',
           cn: '引导 => 分摊 => ${inout}',
+          tc: '引導 => 分攤 => ${inout}',
           ko: '공격 유도 => 쉐어 => ${inout}',
         },
         circlesDive1: {
@@ -1179,6 +1214,7 @@ Options.Triggers.push({
           fr: 'Saut (tous les cercles) => ${inout}',
           ja: 'ダイブ (みんなハイジャ) => ${inout}',
           cn: '俯冲 (全圆圈) => ${inout}',
+          tc: '俯衝 (全圓圈) => ${inout}',
           ko: '다이브 (모두 하이점프) => ${inout}',
         },
         circlesDive3: {
@@ -1187,6 +1223,7 @@ Options.Triggers.push({
           fr: 'Saut (tous les cercles) => ${inout}',
           ja: 'ダイブ (みんなハイジャ) => ${inout}',
           cn: '俯冲 (全圆圈) => ${inout}',
+          tc: '俯衝 (全圓圈) => ${inout}',
           ko: '다이브 (모두 하이점프) => ${inout}',
         },
         southDive1: {
@@ -1195,6 +1232,7 @@ Options.Triggers.push({
           fr: 'Saut Sud => ${inout}',
           ja: '南ダイブ => ${inout}',
           cn: '下俯冲 => ${inout}',
+          tc: '下俯衝 => ${inout}',
           ko: '남쪽 다이브 => ${inout}',
         },
         southDive3: {
@@ -1203,6 +1241,7 @@ Options.Triggers.push({
           fr: 'Saut Sud => ${inout}',
           ja: '南ダイブ => ${inout}',
           cn: '下俯冲 => ${inout}',
+          tc: '下俯衝 => ${inout}',
           ko: '남쪽 다이브 => ${inout}',
         },
         upArrowDive1: {
@@ -1211,6 +1250,7 @@ Options.Triggers.push({
           fr: 'Saut flèche en haut => ${inout}',
           ja: '上矢印 => ${inout}',
           cn: '上箭头俯冲 => ${inout}',
+          tc: '上箭頭俯衝 => ${inout}',
           ko: '위 화살표 => ${inout}',
         },
         upArrowDive3: {
@@ -1219,6 +1259,7 @@ Options.Triggers.push({
           fr: 'Saut flèche en haut => ${inout}',
           ja: '上矢印 => ${inout}',
           cn: '上箭头俯冲 => ${inout}',
+          tc: '上箭頭俯衝 => ${inout}',
           ko: '위 화살표 => ${inout}',
         },
         downArrowDive1: {
@@ -1227,6 +1268,7 @@ Options.Triggers.push({
           fr: 'Saut flèche en bas => ${inout}',
           ja: '下矢印 => ${inout}',
           cn: '下箭头俯冲 => ${inout}',
+          tc: '下箭頭俯衝 => ${inout}',
           ko: '아래 화살표 => ${inout}',
         },
         downArrowDive3: {
@@ -1235,6 +1277,7 @@ Options.Triggers.push({
           fr: 'Saut flèche en bas => ${inout}',
           ja: '下矢印 => ${inout}',
           cn: '下箭头俯冲 => ${inout}',
+          tc: '下箭頭俯衝 => ${inout}',
           ko: '아래 화살표 => ${inout}',
         },
       },
@@ -1258,6 +1301,7 @@ Options.Triggers.push({
             fr: '${inout} + Attirez',
             ja: '${inout} + 誘導',
             cn: '${inout} + 引导',
+            tc: '${inout} + 引導',
             ko: '${inout} + 공격 유도',
           },
           circlesDive2: {
@@ -1266,6 +1310,7 @@ Options.Triggers.push({
             fr: '${inout} + Saut (tout les cercles)',
             ja: '${inout} => ダイブ (みんなハイジャ)',
             cn: '${inout} => 俯冲 (全圆圈)',
+            tc: '${inout} => 俯衝 (全圓圈)',
             ko: '${inout} => 다이브 (모두 하이점프)',
           },
           upArrowDive2: {
@@ -1274,6 +1319,7 @@ Options.Triggers.push({
             fr: '${inout} => Saut flèche en haut',
             ja: '${inout} => 上矢印',
             cn: '${inout} => 上箭头俯冲',
+            tc: '${inout} => 上箭頭俯衝',
             ko: '${inout} => 위 화살표',
           },
           downArrowDive2: {
@@ -1282,6 +1328,7 @@ Options.Triggers.push({
             fr: '${inout} => Saut flèche en bas',
             ja: '${inout} => 下矢印',
             cn: '${inout} => 下箭头俯冲',
+            tc: '${inout} => 下箭頭俯衝',
             ko: '${inout} => 아래 화살표',
           },
         };
@@ -1392,6 +1439,7 @@ Options.Triggers.push({
           fr: 'Tour (${inout})',
           ja: '塔 (${inout})',
           cn: '塔 (${inout})',
+          tc: '塔 (${inout})',
           ko: '기둥 (${inout})',
         },
         southTower1: {
@@ -1400,6 +1448,7 @@ Options.Triggers.push({
           fr: 'Tour sud (${inout})',
           ja: '南塔 (${inout})',
           cn: '下塔 (${inout})',
+          tc: '下塔 (${inout})',
           ko: '남쪽 기둥 (${inout})',
         },
         southTower3: {
@@ -1408,6 +1457,7 @@ Options.Triggers.push({
           fr: 'Tour sud (${inout})',
           ja: '南塔 (${inout})',
           cn: '下塔 (${inout})',
+          tc: '下塔 (${inout})',
           ko: '남쪽 기둥 (${inout})',
         },
         circleTowers1: {
@@ -1416,6 +1466,7 @@ Options.Triggers.push({
           fr: 'Tour (tout les cercles, ${inout})',
           ja: '塔 (みんなハイジャ、${inout})',
           cn: '塔 (全圆圈, ${inout})',
+          tc: '塔 (全圓圈, ${inout})',
           ko: '기둥 (모두 하이점프, ${inout})',
         },
         circleTowers3: {
@@ -1424,6 +1475,7 @@ Options.Triggers.push({
           fr: 'Tour (tout les cercles, ${inout})',
           ja: '塔 (みんなハイジャ、${inout})',
           cn: '塔 (全圆圈, ${inout})',
+          tc: '塔 (全圓圈, ${inout})',
           ko: '기둥 (모두 하이점프, ${inout})',
         },
         upArrowTower1: {
@@ -1432,6 +1484,7 @@ Options.Triggers.push({
           fr: 'Tour flèche en haut (${inout})',
           ja: '上矢印の塔 (${inout})',
           cn: '上箭头塔 (${inout})',
+          tc: '上箭頭塔 (${inout})',
           ko: '위 화살표 기둥 (${inout})',
         },
         downArrowTower1: {
@@ -1440,6 +1493,7 @@ Options.Triggers.push({
           fr: 'Tour flèche en bas (${inout})',
           ja: '下矢印の塔 (${inout})',
           cn: '下箭头塔 (${inout})',
+          tc: '下箭頭塔 (${inout})',
           ko: '아래 화살표 기둥 (${inout})',
         },
         upArrowTower3: {
@@ -1448,6 +1502,7 @@ Options.Triggers.push({
           fr: 'Tour flèche en haut (${inout})',
           ja: '上矢印の塔 (${inout})',
           cn: '上箭头塔 (${inout})',
+          tc: '上箭頭塔 (${inout})',
           ko: '위 화살표 기둥 (${inout})',
         },
         downArrowTower3: {
@@ -1456,6 +1511,7 @@ Options.Triggers.push({
           fr: 'Tour flèche en bas (${inout})',
           ja: '下矢印の塔 (${inout})',
           cn: '下箭头塔 (${inout})',
+          tc: '下箭頭塔 (${inout})',
           ko: '아래 화살표 기둥 (${inout})',
         },
         westTower3: {
@@ -1464,6 +1520,7 @@ Options.Triggers.push({
           fr: 'Tour ouest (${inout})',
           ja: '東塔 (${inout})',
           cn: '左塔 (${inout})',
+          tc: '左塔 (${inout})',
           ko: '서쪽 기둥 (${inout})',
         },
         eastTower3: {
@@ -1472,6 +1529,7 @@ Options.Triggers.push({
           fr: 'Tour est (${inout})',
           ja: '西塔 (${inout})',
           cn: '右塔 (${inout})',
+          tc: '右塔 (${inout})',
           ko: '동쪽 기둥 (${inout})',
         },
       },
@@ -1538,6 +1596,7 @@ Options.Triggers.push({
           fr: 'Tour',
           ja: '塔',
           cn: '塔',
+          tc: '塔',
           ko: '기둥',
         },
         northwestTower2: {
@@ -1546,6 +1605,7 @@ Options.Triggers.push({
           fr: 'Tour Nord-ouest',
           ja: '北東塔',
           cn: '(左上) 左上塔',
+          tc: '(左上) 左上塔',
           ko: '북서쪽 기둥',
         },
         northeastTower2: {
@@ -1554,6 +1614,7 @@ Options.Triggers.push({
           fr: 'Tour Nord-est',
           ja: '北西塔',
           cn: '(右上) 右上塔',
+          tc: '(右上) 右上塔',
           ko: '북동쪽 기둥',
         },
       },
@@ -1587,6 +1648,7 @@ Options.Triggers.push({
           fr: 'Attirez',
           ja: '誘導',
           cn: '引导',
+          tc: '引導',
           ko: '공격 유도',
         },
       },
@@ -1621,6 +1683,7 @@ Options.Triggers.push({
           fr: 'Package => ${inout}',
           ja: '頭割り => ${inout}',
           cn: '分摊 => ${inout}',
+          tc: '分攤 => ${inout}',
           ko: '쉐어 => ${inout}',
         },
         move: Outputs.moveAway,
@@ -1650,6 +1713,7 @@ Options.Triggers.push({
           fr: 'Bleu',
           ja: '青',
           cn: '蓝点名',
+          tc: '藍點名',
           ko: '파랑',
         },
       },
@@ -1668,6 +1732,7 @@ Options.Triggers.push({
           fr: 'Rouge',
           ja: '赤',
           cn: '红点名',
+          tc: '紅點名',
           ko: '빨강',
         },
       },
@@ -1687,6 +1752,7 @@ Options.Triggers.push({
           fr: 'Saut bientôt',
           ja: 'まもなくダイブ',
           cn: '即将幻象冲',
+          tc: '即將幻象衝',
           ko: '곧 다이브',
         },
       },
@@ -1731,6 +1797,7 @@ Options.Triggers.push({
           fr: 'Tuez l\'œil droit',
           ja: '右目を攻撃',
           cn: '击杀右眼',
+          tc: '擊殺右眼',
           ko: '오른눈 잡기',
         },
       },
@@ -1753,6 +1820,7 @@ Options.Triggers.push({
           fr: 'LB TANK !!',
           ja: 'タンクLB!!',
           cn: '坦克LB！！',
+          tc: '坦克LB！！',
           ko: '탱리밋!!',
         },
       },
@@ -1770,6 +1838,7 @@ Options.Triggers.push({
           fr: 'Tornades',
           ja: 'ツイスター',
           cn: '旋风',
+          tc: '旋風',
           ko: '회오리',
         },
       },
@@ -1787,6 +1856,7 @@ Options.Triggers.push({
           fr: 'Lien sur VOUS',
           ja: '自分に線',
           cn: '连线点名',
+          tc: '連線點名',
           ko: '선 대상자',
         },
       },
@@ -1809,6 +1879,7 @@ Options.Triggers.push({
           fr: 'Saut sur VOUS',
           ja: '自分に青マーカー',
           cn: '蓝球点名',
+          tc: '藍球點名',
           ko: '광역 대상자',
         },
       },
@@ -1834,6 +1905,7 @@ Options.Triggers.push({
           fr: 'Foudre sur VOUS',
           ja: '自分に雷',
           cn: '雷点名',
+          tc: '雷點名',
           ko: '번개 대상자',
         },
       },
@@ -1862,6 +1934,7 @@ Options.Triggers.push({
           fr: 'Foudre : ${name1}, ${name2}',
           ja: '雷: ${name1}, ${name2}',
           cn: '雷点: ${name1}, ${name2}',
+          tc: '雷點: ${name1}, ${name2}',
           ko: '번개: ${name1}, ${name2}',
         },
         unknown: Outputs.unknown,
@@ -1884,6 +1957,7 @@ Options.Triggers.push({
           fr: 'Saut (guerrier opposé)',
           ja: '自分にダイブ (杖の後ろ)',
           cn: '俯冲 (去法师场边)',
+          tc: '俯衝 (去法師場邊)',
           ko: '카탈 대상자 (도끼 든 성기사 반대편)',
         },
       },
@@ -1910,6 +1984,7 @@ Options.Triggers.push({
           fr: 'Glas sur VOUS',
           ja: '自分に死の宣告',
           cn: '死宣点名',
+          tc: '死宣點名',
           ko: '선고 대상자',
         },
         noDoom: {
@@ -1918,6 +1993,7 @@ Options.Triggers.push({
           fr: 'Pas de Glas',
           ja: '自分は無職',
           cn: '无死宣',
+          tc: '無死宣',
           ko: '선고 없음',
         },
       },
@@ -1966,6 +2042,7 @@ Options.Triggers.push({
           fr: 'Cercle rouge',
           ja: '赤まる',
           cn: '红圆圈',
+          tc: '紅圓圈',
           ko: '빨강 동그라미',
         },
         triangle: {
@@ -1974,6 +2051,7 @@ Options.Triggers.push({
           fr: 'Triangle vert',
           ja: '緑さんかく',
           cn: '绿三角',
+          tc: '綠三角',
           ko: '초록 삼각',
         },
         square: {
@@ -1982,6 +2060,7 @@ Options.Triggers.push({
           fr: 'Carré violet',
           ja: '紫しかく',
           cn: '紫方块',
+          tc: '紫方塊',
           ko: '보라 사각',
         },
         cross: {
@@ -1990,6 +2069,7 @@ Options.Triggers.push({
           fr: 'Croix bleue',
           ja: '青バツ',
           cn: '蓝X',
+          tc: '藍X',
           ko: '파랑 X',
         },
         circleWithDoom: {
@@ -1998,6 +2078,7 @@ Options.Triggers.push({
           fr: 'Cercle rouge (Glas)',
           ja: '赤まる (死の宣告)',
           cn: '红圆圈 (死宣)',
+          tc: '紅圓圈 (死宣)',
           ko: '빨강 동그라미 (선고)',
         },
         triangleWithDoom: {
@@ -2006,6 +2087,7 @@ Options.Triggers.push({
           fr: 'Triangle vers (Glas)',
           ja: '緑さんかく (死の宣告)',
           cn: '绿三角 (死宣)',
+          tc: '綠三角 (死宣)',
           ko: '초록 삼각 (선고)',
         },
         squareWithDoom: {
@@ -2014,6 +2096,7 @@ Options.Triggers.push({
           fr: 'Carré violet (Glas)',
           ja: '紫しかく (死の宣告)',
           cn: '紫方块 (死宣)',
+          tc: '紫方塊 (死宣)',
           ko: '보라 사각 (선고)',
         },
         crossWithDoom: {
@@ -2022,6 +2105,7 @@ Options.Triggers.push({
           fr: 'Croix bleue (Glas)',
           ja: '青バツ(死の宣告)',
           cn: '蓝X (死宣)',
+          tc: '藍X (死宣)',
           ko: '파랑 X (선고)',
         },
       },
@@ -2077,6 +2161,7 @@ Options.Triggers.push({
           fr: 'Cercle rouge non-marqué',
           ja: '無職で赤まる',
           cn: '无标记红圆圈',
+          tc: '無標記紅圓圈',
           ko: '무징 빨강 동그라미',
         },
         triangle: {
@@ -2085,6 +2170,7 @@ Options.Triggers.push({
           fr: 'Triangle vert non-marqué',
           ja: '無職で緑さんかく',
           cn: '无标记绿三角',
+          tc: '無標記綠三角',
           ko: '무징 초록 삼각',
         },
         square: {
@@ -2093,6 +2179,7 @@ Options.Triggers.push({
           fr: 'Carré violet non-marqué',
           ja: '無職で紫しかく',
           cn: '无标记紫方块',
+          tc: '無標記紫方塊',
           ko: '무징 보라 사각',
         },
         cross: {
@@ -2101,6 +2188,7 @@ Options.Triggers.push({
           fr: 'Croix bleue non-marquée',
           ja: '無職で青バツ',
           cn: '无标记蓝X',
+          tc: '無標記藍X',
           ko: '무징 파랑 X',
         },
         circleWithDoom: {
@@ -2109,6 +2197,7 @@ Options.Triggers.push({
           fr: 'Cercle rouge non-marqué (Glas)',
           ja: '無職で赤まる (死の宣告)',
           cn: '无标记红圆圈 (死宣)',
+          tc: '無標記紅圓圈 (死宣)',
           ko: '무징 빨강 동그라미 (선고)',
         },
         triangleWithDoom: {
@@ -2117,6 +2206,7 @@ Options.Triggers.push({
           fr: 'Triangle vert non-marqué (Glas)',
           ja: '無職で緑さんかく (死の宣告)',
           cn: '无标记绿三角 (死宣)',
+          tc: '無標記綠三角 (死宣)',
           ko: '무징 초록 삼각 (선고)',
         },
         squareWithDoom: {
@@ -2125,6 +2215,7 @@ Options.Triggers.push({
           fr: 'Carré violet non-marqué (Glas)',
           ja: '無職で紫しかく (死の宣告)',
           cn: '无标记紫方块 (死宣)',
+          tc: '無標記紫方塊 (死宣)',
           ko: '무징 보라 사각 (선고)',
         },
         crossWithDoom: {
@@ -2133,6 +2224,7 @@ Options.Triggers.push({
           fr: 'Croix bleue non-marquée (Glas)',
           ja: '無職で青バツ (死の宣告)',
           cn: '无标记蓝X (死宣)',
+          tc: '無標記藍X (死宣)',
           ko: '무징 파랑 X (선고)',
         },
       },
@@ -2189,6 +2281,7 @@ Options.Triggers.push({
           fr: 'Double Non-Glas (${player})',
           ja: '自分と相棒は死の宣告なし (${player})',
           cn: '双无死宣 (${player})',
+          tc: '雙無死宣 (${player})',
           ko: '둘 다 선고 없음 (${player})',
         },
         doubleSquare: {
@@ -2197,6 +2290,7 @@ Options.Triggers.push({
           fr: 'Double Non-Glas (${player})',
           ja: '自分と相棒は死の宣告なし (${player})',
           cn: '双无死宣 (${player})',
+          tc: '雙無死宣 (${player})',
           ko: '둘 다 선고 없음 (${player})',
         },
       },
@@ -2214,6 +2308,7 @@ Options.Triggers.push({
             fr: 'Séparation (Hrae buster)',
             ja: '離れる (フレスから攻撃)',
             cn: '分散 (圣龙死刑)',
+            tc: '分散 (聖龍死刑)',
             ko: '떨어지기 (흐레스벨그 탱버)',
           },
           hraesvelgrTankbuster: {
@@ -2222,6 +2317,7 @@ Options.Triggers.push({
             fr: 'Hrae Tankbuster',
             ja: 'フレスから攻撃',
             cn: '圣龙死刑',
+            tc: '聖龍死刑',
             ko: '흐레스벨그 탱버',
           },
         };
@@ -2249,6 +2345,7 @@ Options.Triggers.push({
             fr: 'Séparation (Nid buster)',
             ja: '離れる (ニーズから攻撃)',
             cn: '分散 (邪龙死刑)',
+            tc: '分散 (邪龍死刑)',
             ko: '떨어지기 (니드호그 탱버)',
           },
           nidTankbuster: {
@@ -2257,6 +2354,7 @@ Options.Triggers.push({
             fr: 'Nid Tankbuster',
             ja: 'ニーズから攻撃',
             cn: '邪龙死刑',
+            tc: '邪龍死刑',
             ko: '니드호그 탱버',
           },
         };
@@ -2292,6 +2390,7 @@ Options.Triggers.push({
             fr: 'Tankbuster partagé',
             ja: 'タンク二人で頭割り',
             cn: '分摊死刑',
+            tc: '分攤死刑',
             ko: '쉐어 탱버',
           },
         };
@@ -2329,6 +2428,7 @@ Options.Triggers.push({
           fr: 'Groupes sur les heals',
           ja: 'ヒラに頭割り',
           cn: '治疗分组分摊',
+          tc: '治療分組分攤',
           ko: '힐러 그룹 쉐어',
         },
       },
@@ -2412,6 +2512,7 @@ Options.Triggers.push({
           fr: 'Avant',
           ja: '前へ',
           cn: '向前',
+          tc: '向前',
           ko: '앞쪽으로',
         },
         backward: {
@@ -2420,6 +2521,7 @@ Options.Triggers.push({
           fr: 'Arrière',
           ja: '後ろへ',
           cn: '向后',
+          tc: '向後',
           ko: '뒤쪽으로',
         },
         partyNear: {
@@ -2428,6 +2530,7 @@ Options.Triggers.push({
           fr: 'Groupe proche',
           ja: 'パーティが前へ',
           cn: '人群靠近',
+          tc: '人群靠近',
           ko: '본대가 가까이',
         },
         tanksNear: {
@@ -2436,6 +2539,7 @@ Options.Triggers.push({
           fr: 'Tanks proches',
           ja: 'タンクが前へ',
           cn: '坦克靠近',
+          tc: '坦克靠近',
           ko: '탱커가 가까이',
         },
         partyFar: {
@@ -2444,6 +2548,7 @@ Options.Triggers.push({
           fr: 'Groupe au loin',
           ja: 'パーティが後ろへ',
           cn: '人群远离',
+          tc: '人群遠離',
           ko: '본대가 멀리',
         },
         tanksFar: {
@@ -2452,6 +2557,7 @@ Options.Triggers.push({
           fr: 'Tanks au loin',
           ja: 'タンクが後ろへ',
           cn: '坦克远离',
+          tc: '坦克遠離',
           ko: '탱커가 멀리',
         },
         wingsHead: {
@@ -2460,6 +2566,7 @@ Options.Triggers.push({
           fr: '${wings}, ${head}',
           ja: '${wings}, ${head}',
           cn: '${wings}, ${head}',
+          tc: '${wings}, ${head}',
           ko: '${wings}, ${head}',
         },
         wingsDiveHead: {
@@ -2468,6 +2575,7 @@ Options.Triggers.push({
           fr: '${wings} + ${dive}, ${head}',
           ja: '${wings} + ${dive}, ${head}',
           cn: '${wings} + ${dive}, ${head}',
+          tc: '${wings} + ${dive}, ${head}',
           ko: '${wings} + ${dive}, ${head}',
         },
       },
@@ -2486,6 +2594,7 @@ Options.Triggers.push({
           fr: 'Intérieur',
           ja: '内側へ',
           cn: '中间',
+          tc: '中間',
           ko: '중앙쪽으로',
         },
       },
@@ -2502,6 +2611,7 @@ Options.Triggers.push({
           fr: 'Extérieur',
           ja: '外側へ',
           cn: '两侧',
+          tc: '兩側',
           ko: '바깥쪽으로',
         },
       },
@@ -2529,6 +2639,7 @@ Options.Triggers.push({
           fr: 'Faites-vous toucher par Nidhogg',
           ja: 'ニーズヘッグに当たる',
           cn: '吃邪龙俯冲',
+          tc: '吃邪龍俯衝',
           ko: '니드호그에게 맞기',
         },
         hraesvelgr: {
@@ -2537,6 +2648,7 @@ Options.Triggers.push({
           fr: 'Faites-vous toucher par Hraesvelgr',
           ja: 'フレースヴェルグに当たる',
           cn: '吃圣龙俯冲',
+          tc: '吃聖龍俯衝',
           ko: '흐레스벨그에게 맞기',
         },
       },
@@ -2561,6 +2673,7 @@ Options.Triggers.push({
           fr: 'Stop',
           ja: '動かない',
           cn: '停停停',
+          tc: '停停停',
           ko: '멈추기',
         },
       },
@@ -2593,6 +2706,7 @@ Options.Triggers.push({
           fr: 'Écartez-vous',
           ja: '散会',
           cn: '分散',
+          tc: '分散',
           ko: '산개징 대상자',
         },
         stack: {
@@ -2601,6 +2715,7 @@ Options.Triggers.push({
           fr: 'Package',
           ja: '頭割り',
           cn: '分摊',
+          tc: '分攤',
           ko: '쉐어징 대상자',
         },
         nodebuff: {
@@ -2609,6 +2724,7 @@ Options.Triggers.push({
           fr: 'Aucun debuff (package)',
           ja: 'バフなし (頭割り)',
           cn: '无Debuff (分摊)',
+          tc: '無Debuff (分攤)',
           ko: '무징 (쉐어)',
         },
       },
@@ -2646,6 +2762,7 @@ Options.Triggers.push({
           fr: 'Restez 2ème à l\'aggro',
           ja: 'スタンスオフ',
           cn: '建立二仇',
+          tc: '建立二仇',
           ko: '적개심 2순위 잡기',
         },
       },
@@ -2672,6 +2789,7 @@ Options.Triggers.push({
           fr: 'Provoquez',
           ja: '挑発',
           cn: '挑衅',
+          tc: '挑釁',
           ko: '도발',
         },
       },
@@ -2772,6 +2890,7 @@ Options.Triggers.push({
           fr: '${start} => ${rotation}',
           ja: '${start} => ${rotation}',
           cn: '${start} => ${rotation}',
+          tc: '${start} => ${rotation}',
           ko: '${start} => ${rotation}',
         },
         backLeft: {
@@ -2780,6 +2899,7 @@ Options.Triggers.push({
           fr: 'Arrière gauche',
           ja: '左後ろ',
           cn: '左后',
+          tc: '左後',
           ko: '뒤 왼쪽',
         },
         backRight: {
@@ -2788,6 +2908,7 @@ Options.Triggers.push({
           fr: 'Arrière droit',
           ja: '右後ろ',
           cn: '右后',
+          tc: '右後',
           ko: '뒤 오른쪽',
         },
         front: {
@@ -2796,6 +2917,7 @@ Options.Triggers.push({
           fr: 'Devant',
           ja: '前',
           cn: '前',
+          tc: '前',
           ko: '앞',
         },
         unknown: Outputs.unknown,
@@ -2805,6 +2927,7 @@ Options.Triggers.push({
           fr: 'Horaire',
           ja: '時計回り',
           cn: '顺时针',
+          tc: '順時針',
           ko: '시계방향',
         },
         counterclock: {
@@ -2813,6 +2936,7 @@ Options.Triggers.push({
           fr: 'Anti-horaire',
           ja: '反時計回り',
           cn: '逆时针',
+          tc: '逆時針',
           ko: '반시계방향',
         },
       },

@@ -121,6 +121,7 @@ Options.Triggers.push({
           fr: 'Cardinaux',
           ja: '十字回避',
           cn: '去boss正方向',
+          tc: '去boss正方向',
           ko: '십자방향으로',
         },
       },
@@ -269,6 +270,7 @@ Options.Triggers.push({
           fr: 'Package ${dir1} (${dir2} sûr après)',
           ja: '${dir1}で頭割り (あとは${dir2}が安置)',
           cn: '${dir1}集合 (然后${dir2}安全)',
+          tc: '${dir1}集合 (然後${dir2}安全)',
           ko: '${dir1}쪽에서 쉐어 (이후 ${dir2}쪽이 안전)',
         },
         default: {
@@ -277,6 +279,7 @@ Options.Triggers.push({
           fr: 'Pack vers le pompon vert non safe',
           ja: '緑の下で頭割り',
           cn: '靠近危险绿球集合',
+          tc: '靠近危險綠球集合',
           ko: '초록색 구슬에서 쉐어',
         },
       },
@@ -312,6 +315,7 @@ Options.Triggers.push({
           fr: 'Derrière le pompon et le groupe',
           ja: 'たまの一番後ろへ',
           cn: '站在球和队友后',
+          tc: '站在球和隊友後',
           ko: '구슬 뒤로',
         },
         getBehindPuffs: {
@@ -320,6 +324,7 @@ Options.Triggers.push({
           fr: 'Derrière les pompons et le groupe (Est/Ouest)',
           ja: 'たまの一番後ろへ (東西)',
           cn: '站在球和队友后 (左/右)',
+          tc: '站在球和隊友後 (左/右)',
           ko: '구슬 뒤로 (동/서)',
         },
         getBehindParty: {
@@ -328,6 +333,7 @@ Options.Triggers.push({
           fr: 'Derrière le groupe',
           ja: '一番後ろへ',
           cn: '站在队友后',
+          tc: '站在隊友後',
           ko: '맨 뒤로',
         },
         getBehindPartyKnockback: {
@@ -336,6 +342,7 @@ Options.Triggers.push({
           fr: 'Derrière le groupe (Poussée)',
           ja: 'ノックバック！ 一番後ろへ',
           cn: '站在队友后 (击退)',
+          tc: '站在隊友後 (擊退)',
           ko: '맨 뒤로 (넉백)',
         },
         getInFrontOfPlayer: {
@@ -344,6 +351,7 @@ Options.Triggers.push({
           fr: 'Devant ${player}',
           ja: '${player}の前へ',
           cn: '站在 ${player} 前',
+          tc: '站在 ${player} 前',
           ko: '${player} 앞으로',
         },
         getInFrontOfPlayerKnockback: {
@@ -352,6 +360,7 @@ Options.Triggers.push({
           fr: 'Devant ${player} (Poussée)',
           ja: 'ノックバック! ${player}の前へ',
           cn: '站在 ${player} 前 (击退)',
+          tc: '站在 ${player} 前 (擊退)',
           ko: '${player} 앞으로 (넉백)',
         },
       },
@@ -386,6 +395,7 @@ Options.Triggers.push({
           fr: 'Écartez-vous en cardinal',
           ja: '十字回避 => 散会',
           cn: '十字分散',
+          tc: '十字分散',
           ko: '십자방향으로 산개',
         },
         intercards: {
@@ -394,6 +404,7 @@ Options.Triggers.push({
           fr: 'Intercardinal',
           ja: '斜め',
           cn: '四角',
+          tc: '四角',
           ko: '대각선 쪽으로',
         },
       },
@@ -414,6 +425,7 @@ Options.Triggers.push({
             fr: 'Tankbuster sur VOUS, entre les pompons Est/Ouest',
             ja: '自分に強攻撃、東西で誘導',
             cn: '死刑点名, 左/右 球下引导',
+            tc: '死刑點名, 左/右 球下引導',
             ko: '나에게 탱버, 동/서쪽 구슬 사이로',
           },
         };
@@ -458,6 +470,7 @@ Options.Triggers.push({
           fr: 'Intercardinal',
           ja: '斜めへ',
           cn: '四角',
+          tc: '四角',
           ko: '대각선 쪽으로',
         },
         underPuff: {
@@ -466,6 +479,7 @@ Options.Triggers.push({
           fr: 'Sous le pompon vert',
           ja: '緑に貼り付く',
           cn: '站在绿球下',
+          tc: '站在綠球下',
           ko: '초록색 구슬 밑으로',
         },
         avoidPuffs: {
@@ -474,6 +488,7 @@ Options.Triggers.push({
           fr: 'Évitez les AoE des pompons',
           ja: 'たまからのゆか避けて',
           cn: '躲避球AOE',
+          tc: '躲避球AOE',
           ko: '구슬 장판 피하기',
         },
       },
@@ -539,6 +554,7 @@ Options.Triggers.push({
           fr: '${boss} - ${dir} ${puff}',
           ja: '${boss} - ${dir} ${puff}',
           cn: '${boss} - ${dir} ${puff}',
+          tc: '${boss} - ${dir} ${puff}',
           ko: '${boss} - ${dir} ${puff}',
         },
         bossIce: {
@@ -547,6 +563,7 @@ Options.Triggers.push({
           fr: 'Queue bleue',
           ja: '青しっぽ',
           cn: '蓝尾巴',
+          tc: '藍尾巴',
           ko: '파란색 꼬리',
         },
         bossIcePuffsCardinalSafeLater: {
@@ -555,6 +572,7 @@ Options.Triggers.push({
           fr: 'Intercardinal sûr',
           ja: '斜め',
           cn: '四角安全',
+          tc: '四角安全',
           ko: '대각선이 안전',
         },
         bossIcePuffsIntercardSafeLater: {
@@ -563,6 +581,7 @@ Options.Triggers.push({
           fr: 'Intercardinal sûr',
           ja: '斜め',
           cn: '四角安全',
+          tc: '四角安全',
           ko: '대각선이 안전',
         },
         bossWind: {
@@ -571,6 +590,7 @@ Options.Triggers.push({
           fr: 'Queue verte',
           ja: '緑しっぽ',
           cn: '绿尾巴',
+          tc: '綠尾巴',
           ko: '초록색 꼬리',
         },
         bossWindPuffsCardinalSafeLater: {
@@ -579,6 +599,7 @@ Options.Triggers.push({
           fr: 'Milieu sûr',
           ja: '真ん中',
           cn: '中间安全',
+          tc: '中間安全',
           ko: '가운데가 안전',
         },
         bossWindPuffsIntercardSafeLater: {
@@ -587,6 +608,7 @@ Options.Triggers.push({
           fr: 'Milieu sûr',
           ja: '真ん中',
           cn: '中间安全',
+          tc: '中間安全',
           ko: '가운데가 안전',
         },
         // keep tethered puff info as separate outputStrings
@@ -597,6 +619,7 @@ Options.Triggers.push({
           fr: 'Pompon bleu',
           ja: '青たま',
           cn: '蓝球',
+          tc: '藍球',
           ko: '파란색 구슬',
         },
         bossIceBlueIntercardPuff: {
@@ -605,6 +628,7 @@ Options.Triggers.push({
           fr: 'Pompon bleu',
           ja: '青たま',
           cn: '蓝球',
+          tc: '藍球',
           ko: '파란색 구슬',
         },
         bossIceYellowCardinalPuff: {
@@ -613,6 +637,7 @@ Options.Triggers.push({
           fr: 'Pompon jaune',
           ja: '黄色たま',
           cn: '黄球',
+          tc: '黃球',
           ko: '노란색 구슬',
         },
         bossIceYellowIntercardPuff: {
@@ -621,6 +646,7 @@ Options.Triggers.push({
           fr: 'Pompon jaune',
           ja: '黄色たま',
           cn: '黄球',
+          tc: '黃球',
           ko: '노란색 구슬',
         },
         bossWindBlueCardinalPuff: {
@@ -629,6 +655,7 @@ Options.Triggers.push({
           fr: 'Pompon bleu',
           ja: '青たま',
           cn: '蓝球',
+          tc: '藍球',
           ko: '파란색 구슬',
         },
         bossWindBlueIntercardPuff: {
@@ -637,6 +664,7 @@ Options.Triggers.push({
           fr: 'Pompon bleu',
           ja: '青たま',
           cn: '蓝球',
+          tc: '藍球',
           ko: '파란색 구슬',
         },
         bossWindYellowCardinalPuff: {
@@ -645,6 +673,7 @@ Options.Triggers.push({
           fr: 'Pompon jaune',
           ja: '黄色たま',
           cn: '黄球',
+          tc: '黃球',
           ko: '노란색 구슬',
         },
         bossWindYellowIntercardPuff: {
@@ -653,6 +682,7 @@ Options.Triggers.push({
           fr: 'Pompon jaune',
           ja: '黄色たま',
           cn: '黄球',
+          tc: '黃球',
           ko: '노란색 구슬',
         },
         default: {
@@ -661,6 +691,7 @@ Options.Triggers.push({
           fr: 'Attirez le pompon',
           ja: 'たま誘導',
           cn: '诱导球',
+          tc: '誘導球',
           ko: '구슬 유도',
         },
       },
@@ -683,6 +714,7 @@ Options.Triggers.push({
           fr: '${safe}',
           ja: '${safe}',
           cn: '${safe}',
+          tc: '${safe}',
           ko: '${safe}',
         },
       },
@@ -700,6 +732,7 @@ Options.Triggers.push({
           fr: 'Évitez les aiguières',
           ja: '壺確認',
           cn: '躲避水壶',
+          tc: '躲避水壺',
           ko: '항아리 피하기',
         },
       },
@@ -754,6 +787,7 @@ Options.Triggers.push({
           fr: 'Sous le pompon vert ${dir}',
           ja: '緑のたまの下へ: ${dir}',
           cn: '去 ${dir} 绿球下',
+          tc: '去 ${dir} 綠球下',
           ko: '${dir} 초록색 구슬 밑으로',
         },
         doubleIce: {
@@ -762,6 +796,7 @@ Options.Triggers.push({
           fr: 'Intercadinal, loin des pompons',
           ja: '斜め、たまから離れる',
           cn: '去四角, 避开球',
+          tc: '去四角, 避開球',
           ko: '대각선으로, 구슬에서 떨어지기',
         },
         iceAndLightning: {
@@ -770,6 +805,7 @@ Options.Triggers.push({
           fr: 'Côté du pompon jaune ${dir}',
           ja: '緑のたまの横へ: ${dir}',
           cn: '站在 ${dir} 黄球旁',
+          tc: '站在 ${dir} 黃球旁',
           ko: '${dir} 노란색 구슬 옆으로',
         },
         doubleLightning: {
@@ -778,6 +814,7 @@ Options.Triggers.push({
           fr: 'Entre les pompons',
           ja: 'たまとたまの間',
           cn: '站在球之间',
+          tc: '站在球之間',
           ko: '구슬 사이로',
         },
         default: {
@@ -786,6 +823,7 @@ Options.Triggers.push({
           fr: 'Évitez les AoE des pompons',
           ja: 'たまのゆか回避',
           cn: '躲避球AOE',
+          tc: '躲避球AOE',
           ko: '구슬 장판 피하기',
         },
         northPuff: Outputs.north,
@@ -818,6 +856,7 @@ Options.Triggers.push({
           fr: 'Grosses attaques auto',
           ja: '自己強化',
           cn: '强化平A',
+          tc: '強化平A',
           ko: '평타 강화',
         },
       },
@@ -835,6 +874,7 @@ Options.Triggers.push({
           fr: 'HP à 1',
           ja: '体力１!',
           cn: 'HP 归 1',
+          tc: 'HP 歸 1',
           ko: 'HP 1',
         },
       },
@@ -851,6 +891,7 @@ Options.Triggers.push({
           fr: 'AoE + Intérieur',
           ja: 'ヘビィ, 足元へ',
           cn: 'AOE + 去脚下',
+          tc: 'AOE + 去腳下',
           ko: '전체공격 + 안으로',
         },
       },
@@ -914,6 +955,7 @@ Options.Triggers.push({
           fr: '3 à gauche, 2 à droite',
           ja: '左: 3, 右: 2',
           cn: '左 3, 右 2',
+          tc: '左 3, 右 2',
           ko: '왼쪽3 오른쪽2',
         },
         goLeft3Right1: {
@@ -922,6 +964,7 @@ Options.Triggers.push({
           fr: '3 à gauche (sur la ligne)',
           ja: '左: 3 (線の上)',
           cn: '左 3 (线上)',
+          tc: '左 3 (線上)',
           ko: '왼쪽3 (선 위)',
         },
         goLeft2Right1: {
@@ -930,6 +973,7 @@ Options.Triggers.push({
           fr: '2 à gauche (sur la ligne)',
           ja: '左: 2 (線の上)',
           cn: '左 2 (线上)',
+          tc: '左 2 (線上)',
           ko: '왼쪽2 (선 위)',
         },
         goRight3Left2: {
@@ -938,6 +982,7 @@ Options.Triggers.push({
           fr: '3 à droite, 2 à gauche',
           ja: '右: 3, 左: 2',
           cn: '右 3, 左 2',
+          tc: '右 3, 左 2',
           ko: '오른쪽3 왼쪽2',
         },
         goRight3Left1: {
@@ -946,6 +991,7 @@ Options.Triggers.push({
           fr: '3 à droite (sur la ligne)',
           ja: '右: 3 (線の上)',
           cn: '右 3 (线上)',
+          tc: '右 3 (線上)',
           ko: '오른쪽3 (선 위)',
         },
         goRight2Left1: {
@@ -954,6 +1000,7 @@ Options.Triggers.push({
           fr: '2 à droite (sur la ligne)',
           ja: '右: 2 (線の上)',
           cn: '右 2 (线上)',
+          tc: '右 2 (線上)',
           ko: '오른쪽2 (선 위)',
         },
       },
@@ -971,6 +1018,7 @@ Options.Triggers.push({
           fr: 'Allez à travers',
           ja: '移動',
           cn: '穿穿穿',
+          tc: '穿穿穿',
           ko: '가로지르기',
         },
       },
@@ -992,6 +1040,7 @@ Options.Triggers.push({
           fr: 'Ruée sur ${player}',
           ja: '${player}に突進',
           cn: '直线分摊点${player}',
+          tc: '直線分攤點${player}',
           ko: '"${player}" 돌진 대상',
         },
         chargeOnYou: {
@@ -1000,6 +1049,7 @@ Options.Triggers.push({
           fr: 'Ruée sur VOUS',
           ja: '自分に突進',
           cn: '直线分摊点名',
+          tc: '直線分攤點名',
           ko: '돌진 대상자',
         },
       },
@@ -1068,6 +1118,7 @@ Options.Triggers.push({
           fr: 'Package sur ${player} -> Dispersion',
           ja: '${player}に頭割り => 散会',
           cn: '${player}处分摊 => 分散',
+          tc: '${player}處分攤 => 分散',
           ko: '${player} 쉐어 => 산개',
         },
         stackOnYouThenSpread: {
@@ -1076,6 +1127,7 @@ Options.Triggers.push({
           fr: 'Package sur VOUS -> Dispersion',
           ja: '自分に頭割り => 散会',
           cn: '分摊点名 => 分散',
+          tc: '分攤點名 => 分散',
           ko: '나에게 쉐어 => 산개',
         },
         spreadThenStack: Outputs.spreadThenStack,
@@ -1085,6 +1137,7 @@ Options.Triggers.push({
           fr: 'Dispersion -> Package sur ${player}',
           ja: '散会 => ${player}に頭割り',
           cn: '分散 => ${player}处分摊',
+          tc: '分散 => ${player}處分攤',
           ko: '산개 => ${player} 쉐어',
         },
         spreadThenStackOnYou: {
@@ -1093,6 +1146,7 @@ Options.Triggers.push({
           fr: 'Dispersion -> package sur VOUS',
           ja: '散会 => 自分に頭割り',
           cn: '分散 => 分摊点名',
+          tc: '分散 => 分攤點名',
           ko: '산개 => 나에게 쉐어',
         },
         spreadThenBait: {
@@ -1101,6 +1155,7 @@ Options.Triggers.push({
           fr: 'Dispersion -> Déposez',
           ja: '散会 => AOE誘導',
           cn: '分散 => 诱导AOE',
+          tc: '分散 => 誘導AOE',
           ko: '산개 => 장판 유도',
         },
         baitThenSpread: {
@@ -1109,6 +1164,7 @@ Options.Triggers.push({
           fr: 'Déposez -> Dispersion',
           ja: 'AOE誘導 => 散会',
           cn: '诱导AOE => 分散',
+          tc: '誘導AOE => 分散',
           ko: '장판 유도 => 산개',
         },
       },
@@ -1136,6 +1192,7 @@ Options.Triggers.push({
           fr: 'À l\'extérieur de l\'anneau intérieur',
           ja: 'リングチャージ１',
           cn: '出内圈',
+          tc: '出內圈',
           ko: '안쪽 고리 바깥',
         },
         outsideMiddle: {
@@ -1144,6 +1201,7 @@ Options.Triggers.push({
           fr: 'À l\'extérieur de l\'anneau central',
           ja: 'リングチャージ２',
           cn: '出中圈',
+          tc: '出中圈',
           ko: '중간 고리 바깥',
         },
         outsideOuter: {
@@ -1152,6 +1210,7 @@ Options.Triggers.push({
           fr: 'À l\'extérieur de l\'anneau extérieur',
           ja: 'リングチャージ３',
           cn: '出外圈',
+          tc: '出外圈',
           ko: '바깥쪽 고리 바깥',
         },
       },
@@ -1179,6 +1238,7 @@ Options.Triggers.push({
           fr: 'Déposez',
           ja: 'AOE誘導',
           cn: '诱导圈圈',
+          tc: '誘導圈圈',
           ko: '장판 유도',
         },
         spread: Outputs.spread,
@@ -1316,6 +1376,7 @@ Options.Triggers.push({
           fr: 'Faites-vous toucher par l\'argent et l\'or (${loc})',
           ja: '金銀 一個ずつ (${loc})',
           cn: '吃金和银 (${loc})',
+          tc: '吃金和銀 (${loc})',
           ko: '은색 + 금색 맞기 (${loc})',
         },
         gildedFate: {
@@ -1324,6 +1385,7 @@ Options.Triggers.push({
           fr: 'Faites-vous toucher par deux argent (${loc})',
           ja: '銀 二つ (${loc})',
           cn: '吃两个银 (${loc})',
+          tc: '吃兩個銀 (${loc})',
           ko: '은색 2개 맞기 (${loc})',
         },
         silveredFate: {
@@ -1332,6 +1394,7 @@ Options.Triggers.push({
           fr: 'Faites-vous toucher par deux or (${loc})',
           ja: '金 二つ (${loc})',
           cn: '吃两个金 (${loc})',
+          tc: '吃兩個金 (${loc})',
           ko: '금색 2개 맞기 (${loc})',
         },
         neitherFate: {
@@ -1340,6 +1403,7 @@ Options.Triggers.push({
           fr: 'Évitez les lasers (${loc})',
           ja: '顔からのビーム全部回避 (${loc})',
           cn: '都不吃 (${loc})',
+          tc: '都不吃 (${loc})',
           ko: '레이저 피하기 (업타임 ${loc})',
         },
         outsideNW: {
@@ -1348,6 +1412,7 @@ Options.Triggers.push({
           fr: 'Coin NO',
           ja: '北西 隅',
           cn: '左上角',
+          tc: '左上角',
           ko: '북서쪽 구석',
         },
         outsideNNW: {
@@ -1356,6 +1421,7 @@ Options.Triggers.push({
           fr: 'Extérieur NNO',
           ja: '1列 西の内側',
           cn: '外侧 上偏左',
+          tc: '外側 上偏左',
           ko: '바깥 북쪽 왼칸',
         },
         outsideNNE: {
@@ -1364,6 +1430,7 @@ Options.Triggers.push({
           fr: 'Extérieur NNE',
           ja: '1列 東の内側',
           cn: '外侧 上偏右',
+          tc: '外側 上偏右',
           ko: '바깥 북쪽 오른칸',
         },
         outsideNE: {
@@ -1372,6 +1439,7 @@ Options.Triggers.push({
           fr: 'Coin NE',
           ja: '北東 隅',
           cn: '右上角',
+          tc: '右上角',
           ko: '북동쪽 구석',
         },
         outsideWNW: {
@@ -1380,6 +1448,7 @@ Options.Triggers.push({
           fr: 'Extérieur ONO',
           ja: '2列 西の外側',
           cn: '外侧 左偏上',
+          tc: '外側 左偏上',
           ko: '바깥 서쪽 위칸',
         },
         insideNW: {
@@ -1388,6 +1457,7 @@ Options.Triggers.push({
           fr: 'Intérieur NO',
           ja: '内側 北西',
           cn: '内侧 左上',
+          tc: '內側 左上',
           ko: '안 북서쪽',
         },
         insideNE: {
@@ -1396,6 +1466,7 @@ Options.Triggers.push({
           fr: 'Intérieur NE',
           ja: '内側 北東',
           cn: '内侧 右上',
+          tc: '內側 右上',
           ko: '안 북동쪽',
         },
         outsideENE: {
@@ -1404,6 +1475,7 @@ Options.Triggers.push({
           fr: 'Extérieur ENE',
           ja: '2列 東の外側',
           cn: '外侧 右偏上',
+          tc: '外側 右偏上',
           ko: '바깥 동쪽 위칸',
         },
         outsideWSW: {
@@ -1412,6 +1484,7 @@ Options.Triggers.push({
           fr: 'Extérieur OSO',
           ja: '3列 西の外側',
           cn: '外侧 左偏下',
+          tc: '外側 左偏下',
           ko: '바깥 서쪽 아래칸',
         },
         insideSW: {
@@ -1420,6 +1493,7 @@ Options.Triggers.push({
           fr: 'Intérieur SO',
           ja: '内側 南西',
           cn: '内侧 左下',
+          tc: '內側 左下',
           ko: '안 남서쪽',
         },
         insideSE: {
@@ -1428,6 +1502,7 @@ Options.Triggers.push({
           fr: 'Intérieur SE',
           ja: '内側 南東',
           cn: '内侧 右下',
+          tc: '內側 右下',
           ko: '안 남동쪽',
         },
         outsideESE: {
@@ -1436,6 +1511,7 @@ Options.Triggers.push({
           fr: 'Extérieur ESE',
           ja: '3列 東の外側',
           cn: '外侧 右偏下',
+          tc: '外側 右偏下',
           ko: '바깥 동쪽 아래칸',
         },
         outsideSW: {
@@ -1444,6 +1520,7 @@ Options.Triggers.push({
           fr: 'Coin SO',
           ja: '南西 隅',
           cn: '左下角',
+          tc: '左下角',
           ko: '남서쪽 구석',
         },
         outsideSSW: {
@@ -1452,6 +1529,7 @@ Options.Triggers.push({
           fr: 'Extérieur SSO',
           ja: '4列 西の内側',
           cn: '外侧 下偏左',
+          tc: '外側 下偏左',
           ko: '바깥 남쪽 왼칸',
         },
         outsideSSE: {
@@ -1460,6 +1538,7 @@ Options.Triggers.push({
           fr: 'Extérieur SSE',
           ja: '4列 東の内側',
           cn: '外侧 下偏右',
+          tc: '外側 下偏右',
           ko: '바깥 남쪽 오른칸',
         },
         outsideSE: {
@@ -1468,6 +1547,7 @@ Options.Triggers.push({
           fr: 'Coin SE',
           ja: '南東 隅',
           cn: '右下角',
+          tc: '右下角',
           ko: '남동쪽 구석',
         },
         unknown: Outputs.unknown,
@@ -1486,6 +1566,7 @@ Options.Triggers.push({
           fr: 'Allez au milieu, cercles de Shiva',
           ja: '真ん中でAOE輪っか確認',
           cn: '中间集合, 九连环',
+          tc: '中間集合, 九連環',
           ko: '중앙으로, 시바 얼음 장판',
         },
       },
@@ -1543,6 +1624,7 @@ Options.Triggers.push({
           fr: 'Prenez les tours (avec ${player})',
           ja: 'さきに塔を踏み (+${player})',
           cn: '踩 1 塔 (与${player})',
+          tc: '踩 1 塔 (與${player})',
           ko: '첫번째 기둥 밟기 (${player})',
         },
         spreadFirst: {
@@ -1551,6 +1633,7 @@ Options.Triggers.push({
           fr: 'Écartez-vous d\'abord (avec ${player})',
           ja: 'さきに散会 (+${player})',
           cn: '先分散 (与${player})',
+          tc: '先分散 (與${player})',
           ko: '산개 먼저 (${player})',
         },
         unknown: Outputs.unknown,
@@ -1575,6 +1658,7 @@ Options.Triggers.push({
           fr: 'Prenez les 2nd tours',
           ja: '塔を踏み',
           cn: '踩 2 塔',
+          tc: '踩 2 塔',
           ko: '두번째 기둥 밟기',
         },
       },
@@ -1727,6 +1811,7 @@ Options.Triggers.push({
           fr: 'Étendard bleu ${num}: coin ${corner}',
           ja: '青線${num}: ${corner}の隅',
           cn: '蓝线${num}: ${corner}角',
+          tc: '藍線${num}: ${corner}角',
           ko: '파란색 선 ${num}: ${corner} 구석',
         },
         orangeBrandNumCorner: {
@@ -1735,6 +1820,7 @@ Options.Triggers.push({
           fr: 'Étendard orange ${num}: coin ${corner}',
           ja: '赤線${num}: ${corner}の隅',
           cn: '红线${num}: ${corner}角',
+          tc: '紅線${num}: ${corner}角',
           ko: '주황색 선 ${num}: ${corner} 구석',
         },
         brandNumCorner: {
@@ -1743,6 +1829,7 @@ Options.Triggers.push({
           fr: 'Étendard ${num}: coin ${corner}',
           ja: '線${num}: ${corner}の隅',
           cn: '线${num}: ${corner}角',
+          tc: '線${num}: ${corner}角',
           ko: '선 ${num}: ${corner} 구석',
         },
         blueBrandNum: {
@@ -1751,6 +1838,7 @@ Options.Triggers.push({
           fr: 'Étendard bleu ${num}',
           ja: '青線${num}',
           cn: '蓝线${num}',
+          tc: '藍線${num}',
           ko: '파란색 선 ${num}',
         },
         orangeBrandNum: {
@@ -1759,6 +1847,7 @@ Options.Triggers.push({
           fr: 'Étendard orange ${num}',
           ja: '赤線${num}',
           cn: '红线${num}',
+          tc: '紅線${num}',
           ko: '주황색 선 ${num}',
         },
         brandNum: {
@@ -1767,6 +1856,7 @@ Options.Triggers.push({
           fr: 'Étendard ${num}',
           ja: '線${num}',
           cn: '线${num}',
+          tc: '線${num}',
           ko: '선 ${num}',
         },
         northwest: Outputs.northwest,
@@ -1806,6 +1896,7 @@ Options.Triggers.push({
           fr: 'Coupez Bleu 1',
           ja: '青線1 切る',
           cn: '撞蓝线 1',
+          tc: '撞藍線 1',
           ko: '파란색 1 끊기',
         },
         cutOrangeOne: {
@@ -1814,6 +1905,7 @@ Options.Triggers.push({
           fr: 'Coupez Orange 1',
           ja: '赤線1 切る',
           cn: '撞红线 1',
+          tc: '撞紅線 1',
           ko: '주황색 1 끊기',
         },
         firstCut: {
@@ -1822,6 +1914,7 @@ Options.Triggers.push({
           fr: 'Coupe en 1er',
           ja: '線1 切る',
           cn: '撞线 1',
+          tc: '撞線 1',
           ko: '첫번째 선 끊기',
         },
       },
@@ -1895,6 +1988,7 @@ Options.Triggers.push({
           fr: 'Coupez Orange ${num}',
           ja: '赤線${num} 切る',
           cn: '撞红线 ${num}',
+          tc: '撞紅線 ${num}',
           ko: '주황색 ${num} 끊기',
         },
         cutBlueNum: {
@@ -1903,6 +1997,7 @@ Options.Triggers.push({
           fr: 'Coupez Bleu ${num}',
           ja: '青線${num} 切る',
           cn: '撞蓝线 ${num}',
+          tc: '撞藍線 ${num}',
           ko: '파란색 ${num} 끊기',
         },
       },
@@ -1966,6 +2061,7 @@ Options.Triggers.push({
           fr: 'Téléportation du bleu à l\'Est',
           ja: '3列',
           cn: '向右传送（蓝）',
+          tc: '向右傳送（藍）',
           ko: '파란색 동쪽 텔레포트',
         },
         blueWest: {
@@ -1974,6 +2070,7 @@ Options.Triggers.push({
           fr: 'Téléportation du bleu à l\'Ouest',
           ja: '4列',
           cn: '向左传送（蓝）',
+          tc: '向左傳送（藍）',
           ko: '파란색 서쪽 텔레포트',
         },
         orangeEast: {
@@ -1982,6 +2079,7 @@ Options.Triggers.push({
           fr: 'Téléportation de l\'orange à l\'Est',
           ja: '2列',
           cn: '向右传送（橙）',
+          tc: '向右傳送（橙）',
           ko: '주황색 동쪽 텔레포트',
         },
         orangeWest: {
@@ -1990,6 +2088,7 @@ Options.Triggers.push({
           fr: 'Téléportation de l\'orange à l\'Ouest',
           ja: '1列',
           cn: '向左传送（橙）',
+          tc: '向左傳送（橙）',
           ko: '주황색 서쪽 텔레포트',
         },
       },
@@ -2012,6 +2111,7 @@ Options.Triggers.push({
           fr: 'Attirez la 1ère barrière',
           ja: '1番目の扇誘導',
           cn: '诱导第 1 次扇形',
+          tc: '誘導第 1 次扇形',
           ko: '첫번째 지팡이 유도하기',
         },
       },
@@ -2034,6 +2134,7 @@ Options.Triggers.push({
           fr: 'Attirez la 2ème barrière',
           ja: '2番目の扇誘導',
           cn: '诱导第 2 次扇形',
+          tc: '誘導第 2 次扇形',
           ko: '두번째 지팡이 유도하기',
         },
       },
@@ -2091,6 +2192,7 @@ Options.Triggers.push({
           fr: 'Étendard ${num} : Au centre',
           ja: '線${num}: 真ん中へ',
           cn: '线${num}: 去中间',
+          tc: '線${num}: 去中間',
           ko: '선 ${num}: 중앙으로',
         },
         outThenBait: {
@@ -2099,6 +2201,7 @@ Options.Triggers.push({
           fr: 'Étendard ${num} : Extérieur, Attirez la barrière',
           ja: '線${num}: 外側へ/扇誘導',
           cn: '线${num}: 诱导扇形',
+          tc: '線${num}: 誘導扇形',
           ko: '선 ${num}: 밖으로, 지팡이 유도',
         },
       },
@@ -2121,6 +2224,7 @@ Options.Triggers.push({
           fr: '1ère coupe',
           ja: '1番目の線切る',
           cn: '撞线 1',
+          tc: '撞線 1',
           ko: '첫번째 선 끊기',
         },
       },
@@ -2155,6 +2259,7 @@ Options.Triggers.push({
             fr: 'Coupez Orange ${num}',
             ja: '赤線${num} 切る',
             cn: '撞红线 ${num}',
+            tc: '撞紅線 ${num}',
             ko: '주황색 ${num} 끊기',
           },
           cutBlueNum: {
@@ -2163,6 +2268,7 @@ Options.Triggers.push({
             fr: 'Coupez Bleu ${num}',
             ja: '青線${num} 切る',
             cn: '撞蓝线 ${num}',
+            tc: '撞藍線 ${num}',
             ko: '파란색 ${num} 끊기',
           },
           moveOrange: {
@@ -2171,6 +2277,7 @@ Options.Triggers.push({
             fr: 'Bougez pour l\'orange ${num}',
             ja: 'まもなく赤線${num}',
             cn: '准备撞红线 ${num}',
+            tc: '準備撞紅線 ${num}',
             ko: '주황색 ${num} 끊을 준비',
           },
           moveBlue: {
@@ -2179,6 +2286,7 @@ Options.Triggers.push({
             fr: 'Bougez pour le bleu ${num}',
             ja: 'まもなく青線${num}',
             cn: '准备撞蓝线 ${num}',
+            tc: '準備撞藍線 ${num}',
             ko: '파란색 ${num} 끊을 준비',
           },
         };
@@ -2232,6 +2340,7 @@ Options.Triggers.push({
             fr: 'Attirez barrière 2 -> Attirez les puddles',
             ja: '扇２ => AOE誘導',
             cn: '诱导扇形 2 => 诱导圈圈',
+            tc: '誘導扇形 2 => 誘導圈圈',
             ko: '지팡이 2 유도 => 장판 유도',
           },
           baitWardThree: {
@@ -2240,6 +2349,7 @@ Options.Triggers.push({
             fr: 'Attirez barrière 3',
             ja: '扇３',
             cn: '诱导扇形 3',
+            tc: '誘導扇形 3',
             ko: '지팡이 3 유도',
           },
           baitPuddles: {
@@ -2248,6 +2358,7 @@ Options.Triggers.push({
             fr: 'Attirez les puddles',
             ja: 'AOE誘導',
             cn: '诱导圈圈',
+            tc: '誘導圈圈',
             ko: '장판 유도',
           },
           cutOrangeNum: {
@@ -2256,6 +2367,7 @@ Options.Triggers.push({
             fr: 'Coupez Orange ${num}',
             ja: '赤線${num} 切る',
             cn: '撞红线 ${num}',
+            tc: '撞紅線 ${num}',
             ko: '주황색 ${num} 끊기',
           },
           cutBlueNum: {
@@ -2264,6 +2376,7 @@ Options.Triggers.push({
             fr: 'Coupez Bleu ${num}',
             ja: '青線${num} 切る',
             cn: '撞蓝线 ${num}',
+            tc: '撞藍線 ${num}',
             ko: '파란색 ${num} 끊기',
           },
           moveOrangeNum: {
@@ -2272,6 +2385,7 @@ Options.Triggers.push({
             fr: 'Bougez pour l\'orange ${num}',
             ja: 'まもなく赤線${num}',
             cn: '准备撞红线 ${num}',
+            tc: '準備撞紅線 ${num}',
             ko: '주황색 ${num} 끊을 준비',
           },
           moveBlueNum: {
@@ -2280,6 +2394,7 @@ Options.Triggers.push({
             fr: 'Bougez pour le bleu ${num}',
             ja: 'まもなく青線${num}',
             cn: '准备撞蓝线 ${num}',
+            tc: '準備撞藍線 ${num}',
             ko: '파란색 ${num} 끊을 준비',
           },
         };

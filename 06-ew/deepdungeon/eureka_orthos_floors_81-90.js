@@ -6,6 +6,7 @@ const interceptionOutputStrings = {
     fr: 'Œuf',
     ja: 'たまご',
     cn: '蛋',
+    tc: '蛋',
     ko: '알',
   },
   cube: {
@@ -14,6 +15,7 @@ const interceptionOutputStrings = {
     fr: 'Cube',
     ja: '四角',
     cn: '方块',
+    tc: '方塊',
     ko: '큐브',
   },
   ball: {
@@ -22,6 +24,7 @@ const interceptionOutputStrings = {
     fr: 'Balle',
     ja: '円',
     cn: '球',
+    tc: '球',
     ko: '공',
   },
 };
@@ -131,6 +134,7 @@ Options.Triggers.push({
           fr: 'Allez en intercardinal du boss',
           ja: 'ボスの斜めへ',
           cn: '去Boss的斜角方向',
+          tc: '去Boss的斜角方向',
           ko: '보스의 대각선 방향으로 피하기',
         },
       },
@@ -236,6 +240,7 @@ Options.Triggers.push({
           fr: '${first} => ${second} => ${third}',
           ja: '${first} => ${second} => ${third}',
           cn: '${first} => ${second} => ${third}',
+          tc: '${first} => ${second} => ${third}',
           ko: '${first} => ${second} => ${third}',
         },
       },
@@ -317,6 +322,7 @@ Options.Triggers.push({
           fr: '${safe}, entre les œufs',
           ja: '${safe}, たまごの間',
           cn: '${safe}, 蛋中间',
+          tc: '${safe}, 蛋中間',
           ko: '${safe}, 알 사이',
         },
         safe: {
@@ -325,6 +331,7 @@ Options.Triggers.push({
           fr: '${safe}',
           ja: '${safe}',
           cn: '${safe}',
+          tc: '${safe}',
           ko: '${safe}',
         },
         northEast: Outputs.northeast,

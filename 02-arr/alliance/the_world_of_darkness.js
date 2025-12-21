@@ -16,6 +16,7 @@ Options.Triggers.push({
     de: 'Größtenteils unvollständig',
     fr: 'Majoritairement incomplet',
     cn: '大部分未完成',
+    tc: '大部分未完成',
     ko: '대부분 미완성',
   },
   triggers: [
@@ -67,6 +68,7 @@ Options.Triggers.push({
           fr: 'Passez derrière (Rouge)',
           ja: 'ボスの後ろに (赤)',
           cn: '去背后 (红色)',
+          tc: '去背後 (紅色)',
           ko: '뒤쪽으로 (빨강)',
         },
         white: {
@@ -75,6 +77,7 @@ Options.Triggers.push({
           fr: 'Allez devant (Blanc)',
           ja: 'ボスの前に (白)',
           cn: '去正面 (白色)',
+          tc: '去正面 (白色)',
           ko: '앞쪽으로 (흰색)',
         },
       },
@@ -99,6 +102,7 @@ Options.Triggers.push({
           fr: 'Allez dans un cercle de purification',
           ja: '床の光っている円範囲へ',
           cn: '快踩净化圈',
+          tc: '快踩淨化圈',
           ko: '흰색 원 밟아서 선고 해제하기',
         },
       },

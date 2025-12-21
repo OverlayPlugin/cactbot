@@ -90,6 +90,7 @@ const paradeigmaLeanOutputStrings = {
     fr: 'Oiseau ${dir} (côté ${lean})',
     ja: '${dir}の鳥 (すこし${lean})',
     cn: '${dir}鸟 (偏${lean})',
+    tc: '${dir}鳥 (偏${lean})',
     ko: '${dir}쪽 새, (약간 ${lean}쪽으로)',
   },
   dirN: Outputs.dirN,
@@ -217,6 +218,7 @@ Options.Triggers.push({
           fr: 'Sous le Quetzalcóatl NO',
           ja: '北東の鳥の下',
           cn: '站在左上鸟',
+          tc: '站在左上鳥',
           ko: '북동쪽 새 밑으로', // This is northeast. Because Korean folks go there.
         },
       },
@@ -366,6 +368,7 @@ Options.Triggers.push({
           fr: 'Nord Extérieur',
           ja: '北の外側',
           cn: '上外',
+          tc: '上外',
           ko: '북쪽 바깥',
         },
         insideNorth: {
@@ -374,6 +377,7 @@ Options.Triggers.push({
           fr: 'Nord Intérieur',
           ja: '北の内側',
           cn: '上内',
+          tc: '上內',
           ko: '북쪽 안',
         },
         outsideWest: {
@@ -382,6 +386,7 @@ Options.Triggers.push({
           fr: 'Ouest Extérieur',
           ja: '西の外側',
           cn: '左外',
+          tc: '左外',
           ko: '서쪽 바깥',
         },
         insideWest: {
@@ -390,6 +395,7 @@ Options.Triggers.push({
           fr: 'Ouest Intérieur',
           ja: '西の内側',
           cn: '左内',
+          tc: '左內',
           ko: '서쪽 안',
         },
         outsideEast: {
@@ -398,6 +404,7 @@ Options.Triggers.push({
           fr: 'Est Extérieur',
           ja: '東の外側',
           cn: '右外',
+          tc: '右外',
           ko: '동쪽 바깥',
         },
         insideEast: {
@@ -406,6 +413,7 @@ Options.Triggers.push({
           fr: 'Est Intérieur',
           ja: '東の内側',
           cn: '右内',
+          tc: '右內',
           ko: '동쪽 안',
         },
         ...paradeigmaLeanOutputStrings,
@@ -424,6 +432,7 @@ Options.Triggers.push({
           fr: 'Package x${num}',
           ja: '頭割り x${num}',
           cn: '${num}次分摊',
+          tc: '${num}次分攤',
           ko: '쉐어 ${num}번',
         },
       },
@@ -462,6 +471,7 @@ Options.Triggers.push({
           fr: 'Côtés (pour les lasers)',
           ja: '横側 (レーザー回避)',
           cn: '两边 (躲避激光)',
+          tc: '兩邊 (躲避雷射)',
           ko: '양옆 (레이저 피하기)',
         },
         middle: {
@@ -470,6 +480,7 @@ Options.Triggers.push({
           fr: 'Milieu (pour les lasers)',
           ja: '真ん中 (レーザー回避)',
           cn: '中间 (躲避激光)',
+          tc: '中間 (躲避雷射)',
           ko: '중앙 (레이저 피하기)',
         },
       },
@@ -518,6 +529,7 @@ Options.Triggers.push({
           fr: 'Cône Nord',
           ja: '北のさんかく',
           cn: '上扇形',
+          tc: '上扇形',
           ko: '북쪽 삼각형',
         },
         eastCone: {
@@ -526,6 +538,7 @@ Options.Triggers.push({
           fr: 'Cône Est',
           ja: '東のさんかく',
           cn: '右扇形',
+          tc: '右扇形',
           ko: '동쪽 삼각형',
         },
         westCone: {
@@ -534,6 +547,7 @@ Options.Triggers.push({
           fr: 'Cône Ouest',
           ja: '西のさんかく',
           cn: '左扇形',
+          tc: '左扇形',
           ko: '서쪽 삼각형',
         },
         southCone: {
@@ -542,6 +556,7 @@ Options.Triggers.push({
           fr: 'Cône Sud',
           ja: '南のさんかく',
           cn: '下扇形',
+          tc: '下扇形',
           ko: '남쪽 삼각형',
         },
       },
@@ -603,6 +618,7 @@ Options.Triggers.push({
           fr: 'Tuez les adds (arrière d\'abord)',
           ja: '雑魚から倒して (下の雑魚から)',
           cn: '击杀小怪 (先打后方的)',
+          tc: '擊殺小怪 (先打後方的)',
           ko: '쫄 잡기 (아래쪽 먼저)',
         },
       },
@@ -677,6 +693,7 @@ Options.Triggers.push({
           fr: 'Devant sur les côtés',
           ja: '前の横側',
           cn: '前方两边',
+          tc: '前方兩邊',
           ko: '앞쪽 양옆',
         },
         backmiddle: {
@@ -685,6 +702,7 @@ Options.Triggers.push({
           fr: 'Arrière centre',
           ja: '後ろの真ん中',
           cn: '后方中间',
+          tc: '後方中間',
           ko: '뒤쪽 중앙',
         },
         frontmiddle: {
@@ -693,6 +711,7 @@ Options.Triggers.push({
           fr: 'Avant centre',
           ja: '前の中央',
           cn: '前方中间',
+          tc: '前方中間',
           ko: '앞쪽 중앙',
         },
         sides: {
@@ -703,6 +722,7 @@ Options.Triggers.push({
           fr: 'Côtés (pour les lasers)',
           ja: '横側 (レーザー回避)',
           cn: '两边 (躲避激光)',
+          tc: '兩邊 (躲避雷射)',
           ko: '양옆 (레이저 피하기)',
         },
         middle: {
@@ -711,6 +731,7 @@ Options.Triggers.push({
           fr: 'Milieu (pour les lasers)',
           ja: '真ん中 (レーザー回避)',
           cn: '中间 (躲避激光)',
+          tc: '中間 (躲避雷射)',
           ko: '중앙 (레이저 피하기)',
         },
       },
@@ -773,6 +794,7 @@ Options.Triggers.push({
           fr: 'Allez ${first} / ${second}',
           ja: '${first} / ${second}',
           cn: '去 ${first} / ${second}',
+          tc: '去 ${first} / ${second}',
           ko: '${first} / ${second}',
         },
         single: {
@@ -781,6 +803,7 @@ Options.Triggers.push({
           fr: 'Allez ${dir} (légèrement ${lean})',
           ja: '${dir}の鳥 (すこし${lean})',
           cn: '去 ${dir} (偏 ${lean})',
+          tc: '去 ${dir} (偏 ${lean})',
           ko: '${dir}쪽으로, (약간 ${lean}쪽으로)',
         },
         ...paradeigmaLeanOutputStrings,
@@ -826,6 +849,7 @@ Options.Triggers.push({
           fr: 'Poings doubles (regardez les pythons)',
           ja: 'ダブルフィスト (ヘビー確認)',
           cn: '双拳 (找蛇)',
+          tc: '雙拳 (找蛇)',
           ko: '양 옆 큰 원형 장판 (뱀 위치 확인)',
         },
         adikia1OutsideNorth: {
@@ -834,6 +858,7 @@ Options.Triggers.push({
           fr: 'Poings doubles (nord extérieur)',
           ja: 'ダブルフィスト (北の外側)',
           cn: '双拳 (上外)',
+          tc: '雙拳 (上外)',
           ko: '양 옆 큰 원형 장판 (북쪽 바깥)',
         },
         adikia1InsideNorth: {
@@ -842,6 +867,7 @@ Options.Triggers.push({
           fr: 'Poings doubles (nord intérieur)',
           ja: 'ダブルフィスト (北の内側)',
           cn: '双拳 (上内)',
+          tc: '雙拳 (上內)',
           ko: '양 옆 큰 원형 장판 (북쪽 안)',
         },
         adikia2: {
@@ -850,6 +876,7 @@ Options.Triggers.push({
           fr: 'Poings doubles',
           ja: 'ダブルフィスト',
           cn: '双拳',
+          tc: '雙拳',
           ko: '양 옆 큰 원형 장판',
         },
       },
@@ -921,6 +948,7 @@ Options.Triggers.push({
           fr: '${dir1} > ${dir2} > ${dir3}',
           ja: '${dir1} > ${dir2} > ${dir3}',
           cn: '${dir1} > ${dir2} > ${dir3}',
+          tc: '${dir1} > ${dir2} > ${dir3}',
           ko: '${dir1} > ${dir2} > ${dir3}',
         },
         ...eclipseOutputStrings,

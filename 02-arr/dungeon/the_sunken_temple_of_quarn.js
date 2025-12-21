@@ -6,6 +6,7 @@ Options.Triggers.push({
     de: 'Vor der 7.2 Überarbeitung',
     fr: 'Avant le remaniement 7.2',
     cn: '7.2改版前',
+    tc: '7.2改版前',
     ko: '7.2 개편 전',
   },
   triggers: [
@@ -22,6 +23,7 @@ Options.Triggers.push({
           fr: 'Marchez sur la plaque qui brille',
           ja: '光る床に乗る',
           cn: '踩发光地板',
+          tc: '踩發光地板',
           ko: '빛나는 발판 밟기',
         },
       },

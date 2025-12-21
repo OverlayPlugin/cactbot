@@ -15,6 +15,7 @@ Options.Triggers.push({
           fr: 'Marchez sur la plaque qui brille',
           ja: '光る床に乗る',
           cn: '踩发光地板',
+          tc: '踩發光地板',
           ko: '빛나는 발판 밟기',
         },
       },

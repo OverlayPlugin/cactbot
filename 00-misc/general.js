@@ -11,6 +11,7 @@ Options.Triggers.push({
     fr: 'Triggers généraux pour toutes les occasions et zones',
     ja: '全ての状況、全てのエリアに共通するトリガー',
     cn: '适用于所有场合和区域的通用触发器',
+    tc: '適用於所有場合和區域的通用觸發器',
     ko: '모든 상황과 지역을 위한 범용 트리거',
   },
   triggers: [
@@ -18,6 +19,7 @@ Options.Triggers.push({
       id: 'General Provoke',
       comment: {
         cn: '仅在自身或团队成员释放“挑衅”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員釋放“挑釁”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 도발을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
@@ -37,6 +39,7 @@ Options.Triggers.push({
           fr: 'Provocation : ${player}',
           ja: '挑発: ${player}',
           cn: '挑衅: ${player}',
+          tc: '挑釁: ${player}',
           ko: '도발: ${player}',
         },
       },
@@ -45,6 +48,7 @@ Options.Triggers.push({
       id: 'General Frog Legs',
       comment: {
         cn: '仅在自身或团队成员释放“蛙腿”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員釋放“蛙腿”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 개구리 다리를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
@@ -67,6 +71,7 @@ Options.Triggers.push({
           fr: 'Provocation : ${player}',
           ja: '挑発: ${player}',
           cn: '挑衅: ${player}',
+          tc: '挑釁: ${player}',
           ko: '도발: ${player}',
         },
         noTarget: {
@@ -75,6 +80,7 @@ Options.Triggers.push({
           fr: 'Provocation : ${player} (manquée)',
           ja: '挑発: ${player} (タゲなし)',
           cn: '挑衅: ${player} (无目标)',
+          tc: '挑釁: ${player} (無目標)',
           ko: '도발: ${player} (빗나감)',
         },
       },
@@ -83,6 +89,7 @@ Options.Triggers.push({
       id: 'General Shirk',
       comment: {
         cn: '仅在自身或团队成员释放“退避”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員釋放“退避”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 기피를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
@@ -101,6 +108,7 @@ Options.Triggers.push({
           fr: 'Dérobade : ${player}',
           ja: 'シャーク: ${player}',
           cn: '退避: ${player}',
+          tc: '退避: ${player}',
           ko: '기피: ${player}',
         },
       },
@@ -109,6 +117,7 @@ Options.Triggers.push({
       id: 'General Holmgang',
       comment: {
         cn: '仅在自身或团队成员释放“死斗”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員釋放“死鬥”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 일대일 결투를 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
@@ -127,6 +136,7 @@ Options.Triggers.push({
           fr: 'Holmgang : ${player}',
           ja: 'ホルムギャング: ${player}',
           cn: '死斗: ${player}',
+          tc: '死鬥: ${player}',
           ko: '일대일 결투: ${player}',
         },
       },
@@ -135,6 +145,7 @@ Options.Triggers.push({
       id: 'General Hallowed',
       comment: {
         cn: '仅在自身或团队成员释放“神圣领域”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員釋放“神聖領域”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 천하무적을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
@@ -153,6 +164,7 @@ Options.Triggers.push({
           fr: 'Invincible : ${player}',
           ja: 'インビンシブル: ${player}',
           cn: '神圣领域: ${player}',
+          tc: '神聖領域: ${player}',
           ko: '천하무적: ${player}',
         },
       },
@@ -161,6 +173,7 @@ Options.Triggers.push({
       id: 'General Superbolide',
       comment: {
         cn: '仅在自身或团队成员释放“超火流星”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員釋放“超火流星”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 폭발 유성을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
@@ -179,6 +192,7 @@ Options.Triggers.push({
           fr: 'Bolide : ${player}',
           ja: 'ボーライド: ${player}',
           cn: '超火流星: ${player}',
+          tc: '超火流星: ${player}',
           ko: '폭발 유성: ${player}',
         },
       },
@@ -187,6 +201,7 @@ Options.Triggers.push({
       id: 'General Living',
       comment: {
         cn: '仅在自身或团队成员释放“行尸走肉”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員釋放“行屍走肉”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 산송장을 사용하였고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'Ability',
@@ -205,6 +220,7 @@ Options.Triggers.push({
           fr: 'Mort-vivant : ${player}',
           ja: 'リビングデッド: ${player}',
           cn: '行尸走肉: ${player}',
+          tc: '行屍走肉: ${player}',
           ko: '산송장: ${player}',
         },
       },
@@ -213,6 +229,7 @@ Options.Triggers.push({
       id: 'General Walking',
       comment: {
         cn: '仅在自身或团队成员获得“死而不僵”且自身为坦克/治疗/青魔法师时触发。',
+        tc: '僅在自身或團隊成員獲得“死而不僵”且自身為坦克/治療/青魔法師時觸發。',
         ko: '본인 또는 파티원이 움직이는 시체 상태가 되었고, 자신의 직업이 탱커/힐러/청마도사일 때 작동합니다.',
       },
       type: 'GainsEffect',
@@ -231,6 +248,7 @@ Options.Triggers.push({
           fr: 'Marcheur des limbes : ${player}',
           ja: 'ウォーキングデッド: ${player}',
           cn: '死而不僵: ${player}',
+          tc: '死而不僵: ${player}',
           ko: '움직이는 시체: ${player}',
         },
       },
@@ -242,6 +260,7 @@ Options.Triggers.push({
       id: 'General Ready Check',
       comment: {
         cn: '在队友发起准备确认时，播放D.Va的“Game on”音效(^-^)V',
+        tc: '在隊友發起準備確認時，播放D.Va的“Game on”音效(^-^)V',
         ko: '파티원이 준비 확인을 사용하면, D.Va의 "Game on" 사운드를 재생합니다.',
       },
       type: 'GameLog',

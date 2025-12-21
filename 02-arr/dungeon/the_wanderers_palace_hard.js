@@ -22,6 +22,7 @@ Options.Triggers.push({
           fr: 'Soin complet sur ${player}',
           ja: '${player} を全回復して',
           cn: '奶满${player}',
+          tc: '奶滿${player}',
           ko: '완전 회복: ${player}',
         },
       },

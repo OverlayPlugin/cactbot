@@ -6,6 +6,7 @@ Options.Triggers.push({
     de: 'A Rang Hohe Jagd',
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
+    tc: 'A級狩獵怪',
     ko: 'A급 마물',
   },
   initData: () => ({
@@ -101,6 +102,7 @@ Options.Triggers.push({
           de: 'Sammeln => Weg von Vorne',
           fr: 'Package => Loin du devant',
           cn: '集合 => 远离正面',
+          tc: '集合 => 遠離正面',
           ko: '쉐어 => 보스 전방 피하기',
         },
       },

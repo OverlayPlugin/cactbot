@@ -49,6 +49,7 @@ const nearDistantOutputStrings = {
     fr: 'Bonjour le monde : Proche',
     ja: 'ニア',
     cn: '近处世界',
+    tc: '近處世界',
     ko: '헬로 월드: 근거리',
   },
   distant: {
@@ -57,6 +58,7 @@ const nearDistantOutputStrings = {
     fr: 'Bonjour le monde : Distant',
     ja: 'ファー',
     cn: '远处世界',
+    tc: '遠處世界',
     ko: '헬로 월드: 원거리',
   },
 };
@@ -107,6 +109,8 @@ Options.Triggers.push({
           '<a href="https://github.com/quisquous/cactbot/releases/tag/v0.28.19" target="_blank">ノート参考</a>',
         cn:
           '<a href="https://github.com/quisquous/cactbot/releases/tag/v0.28.19" target="_blank">阅读笔记</a>',
+        tc:
+          '<a href="https://github.com/quisquous/cactbot/releases/tag/v0.28.19" target="_blank">閱讀筆記</a>',
         ko:
           '<a href="https://github.com/quisquous/cactbot/releases/tag/v0.28.19" target="_blank">참고</a>',
       },
@@ -116,6 +120,7 @@ Options.Triggers.push({
         fr: 'Sprint : Direction d\'esquive de l\'épée Oméga',
         ja: 'オメガの杖の回避方向',
         cn: '欧米茄运动会杖剑躲避方向',
+        tc: '歐米茄運動會杖劍躲避方向',
         ko: '코드: 오메가 지팡이 칼 회피 방향',
       },
       type: 'select',
@@ -185,6 +190,7 @@ Options.Triggers.push({
           fr: 'Autos sur le tank',
           ja: 'タンクへのオートアタック',
           cn: '坦克平A',
+          tc: '坦克平A',
           ko: '탱커 평타',
         },
       },
@@ -202,6 +208,7 @@ Options.Triggers.push({
           fr: 'Positions',
           ja: '基本散会',
           cn: '八方分散',
+          tc: '八方分散',
           ko: '기본 산개',
         },
       },
@@ -323,6 +330,7 @@ Options.Triggers.push({
           fr: '${num} (avec ${player})',
           ja: '${num} (${player})',
           cn: '${num} (与${player})',
+          tc: '${num} (與${player})',
           ko: '${num} (+ ${player})',
         },
         unknown: Outputs.unknown,
@@ -347,6 +355,7 @@ Options.Triggers.push({
             fr: 'Tour 1',
             ja: '塔1',
             cn: '塔 1',
+            tc: '塔 1',
             ko: '기둥 1',
           },
           tether: {
@@ -355,6 +364,7 @@ Options.Triggers.push({
             fr: 'Lien 1',
             ja: '線1',
             cn: '线 1',
+            tc: '線 1',
             ko: '선 1',
           },
           numNoMechanic: {
@@ -363,6 +373,7 @@ Options.Triggers.push({
             fr: '1',
             ja: '1',
             cn: '1',
+            tc: '1',
             ko: '1',
           },
         };
@@ -398,6 +409,7 @@ Options.Triggers.push({
             fr: 'Tour ${num}',
             ja: '塔 ${num}',
             cn: '塔 ${num}',
+            tc: '塔 ${num}',
             ko: '기둥 ${num}',
           },
           tether: {
@@ -406,6 +418,7 @@ Options.Triggers.push({
             fr: 'Lien ${num}',
             ja: '線 ${num}',
             cn: '线 ${num}',
+            tc: '線 ${num}',
             ko: '선 ${num}',
           },
           numNoMechanic: {
@@ -414,6 +427,7 @@ Options.Triggers.push({
             fr: '${num}',
             ja: '${num}',
             cn: '${num}',
+            tc: '${num}',
             ko: '${num}',
           },
         };
@@ -445,6 +459,7 @@ Options.Triggers.push({
             fr: '1',
             ja: '1',
             cn: '1',
+            tc: '1',
             ko: '1',
           },
           spread: {
@@ -453,6 +468,7 @@ Options.Triggers.push({
             fr: '1 Extérieur (sur VOUS)',
             ja: '1 外へ',
             cn: '1 出 (点名)',
+            tc: '1 出 (點名)',
             ko: '밖으로 1',
           },
         };
@@ -478,6 +494,7 @@ Options.Triggers.push({
             fr: '${num}',
             ja: '${num}',
             cn: '${num}',
+            tc: '${num}',
             ko: '${num}',
           },
           spread: {
@@ -486,6 +503,7 @@ Options.Triggers.push({
             fr: '${num} Extérieur (sur VOUS)',
             ja: '${num} 外へ',
             cn: '${num} 出 (点名)',
+            tc: '${num} 出 (點名)',
             ko: '밖으로 ${num}',
           },
         };
@@ -517,6 +535,7 @@ Options.Triggers.push({
           fr: 'Tank Cleaves',
           ja: 'タンク前方攻撃',
           cn: '坦克顺劈',
+          tc: '坦克順劈',
           ko: '광역 탱버',
         },
       },
@@ -538,6 +557,7 @@ Options.Triggers.push({
           fr: 'Laser sur VOUS',
           ja: '自分のレーザー',
           cn: '激光点名',
+          tc: '雷射點名',
           ko: '레이저 대상자',
         },
       },
@@ -632,6 +652,7 @@ Options.Triggers.push({
           fr: 'Extérieur Extérieur',
           ja: '外 外',
           cn: '远离男女',
+          tc: '遠離男女',
           ko: '밖 밖',
         },
         superliminalStrength: {
@@ -640,6 +661,7 @@ Options.Triggers.push({
           fr: 'Intérieur Intérieur sur M',
           ja: '内 内(男)',
           cn: '靠近男人',
+          tc: '靠近男人',
           ko: '안 안 M',
         },
         superliminalBladework: {
@@ -648,6 +670,7 @@ Options.Triggers.push({
           fr: 'Sous F',
           ja: '女の下',
           cn: '靠近女人',
+          tc: '靠近女人',
           ko: 'F 밑',
         },
         blizzardStrength: {
@@ -656,6 +679,7 @@ Options.Triggers.push({
           fr: 'Côtés de M',
           ja: '男の横',
           cn: '男人两侧',
+          tc: '男人兩側',
           ko: 'M 양옆',
         },
       },
@@ -700,6 +724,7 @@ Options.Triggers.push({
           fr: 'Milieu',
           ja: 'ミドル',
           cn: '中',
+          tc: '中',
           ko: '가까이',
         },
         remoteGlitch: {
@@ -708,6 +733,7 @@ Options.Triggers.push({
           fr: 'Loin',
           ja: 'ファー',
           cn: '远',
+          tc: '遠',
           ko: '멀리',
         },
         circle: {
@@ -716,6 +742,7 @@ Options.Triggers.push({
           fr: 'Cercle ${glitch} (avec ${player})',
           ja: '${glitch} 円 (${player})',
           cn: '${glitch} 圆圈 (与${player})',
+          tc: '${glitch} 圓圈 (與${player})',
           ko: '${glitch} 동그라미 (+ ${player})',
         },
         triangle: {
@@ -724,6 +751,7 @@ Options.Triggers.push({
           fr: 'Triangle ${glitch} (avec ${player})',
           ja: '${glitch} 三角 (${player})',
           cn: '${glitch} 三角 (与${player})',
+          tc: '${glitch} 三角 (與${player})',
           ko: '${glitch} 삼각 (+ ${player})',
         },
         square: {
@@ -732,6 +760,7 @@ Options.Triggers.push({
           fr: 'Carré ${glitch} (avec ${player})',
           ja: '${glitch} 四角 (${player})',
           cn: '${glitch} 方块 (与${player})',
+          tc: '${glitch} 方塊 (與${player})',
           ko: '${glitch} 사각 (+ ${player})',
         },
         cross: {
@@ -740,6 +769,7 @@ Options.Triggers.push({
           fr: 'X ${glitch} (avec ${player})',
           ja: '${glitch} バツ (${player})',
           cn: '${glitch} X (与${player})',
+          tc: '${glitch} X (與${player})',
           ko: '${glitch} X (+ ${player})',
         },
         unknown: Outputs.unknown,
@@ -774,6 +804,7 @@ Options.Triggers.push({
           fr: 'Œil ${dir}',
           ja: '目 ${dir}',
           cn: '眼 ${dir}',
+          tc: '眼 ${dir}',
           ko: '눈 ${dir}',
         },
         dirN: Outputs.dirN,
@@ -800,6 +831,7 @@ Options.Triggers.push({
             fr: 'Milieu',
             ja: 'ミドル',
             cn: '中',
+            tc: '中',
             ko: '가까이',
           },
           remoteGlitch: {
@@ -808,6 +840,7 @@ Options.Triggers.push({
             fr: 'Loin',
             ja: 'ファー',
             cn: '远',
+            tc: '遠',
             ko: '멀리',
           },
           stacksOn: {
@@ -816,6 +849,7 @@ Options.Triggers.push({
             fr: 'Package ${glitch} (${player1}, ${player2})',
             ja: '${glitch} 頭割り (${player1}, ${player2})',
             cn: '${glitch} 分摊 (${player1}, ${player2})',
+            tc: '${glitch} 分攤 (${player1}, ${player2})',
             ko: '${glitch} 쉐어 (${player1}, ${player2})',
           },
           // TODO: say who your tether partner is to swap??
@@ -873,6 +907,7 @@ Options.Triggers.push({
             fr: 'Ne vous packez pas !',
             ja: 'スタックするな！',
             cn: '别去分摊！',
+            tc: '別去分攤！',
             ko: '쉐어 맞지 말것',
           },
           stack: Outputs.stackMarker,
@@ -928,6 +963,7 @@ Options.Triggers.push({
             fr: 'Package (avec ${player1} ou ${player2})',
             ja: 'あたまわり (${player1}, ${player2})',
             cn: '分摊 (与${player1} 或 ${player2})',
+            tc: '分攤 (與${player1} 或 ${player2})',
             ko: '쉐어 (+ ${player1}, ${player2})',
           },
           unmarkedStack: {
@@ -936,6 +972,7 @@ Options.Triggers.push({
             fr: 'Package non-marqué (avec ${player1} ou ${player2})',
             ja: '無職のあたまわり (${player1}, ${player2})',
             cn: '无点名分摊 (与${player1} 或 ${player2})',
+            tc: '無點名分攤 (與${player1} 或 ${player2})',
             ko: '무징 쉐어 (+ ${player1}, ${player2})',
           },
           sameDebuffPartner: {
@@ -944,6 +981,7 @@ Options.Triggers.push({
             fr: '(même debuff que ${player})',
             ja: '(${player}と同じデバフ)',
             cn: '(与${player} 相同 debuff)',
+            tc: '(與${player} 相同 debuff)',
             ko: '(${player}와 같은 디버프)',
           },
           unknown: Outputs.unknown,
@@ -1053,6 +1091,7 @@ Options.Triggers.push({
           fr: 'Rouge a Diffamation',
           ja: '赤',
           cn: '红毒大圈',
+          tc: '紅毒大圈',
           ko: '빨강 광역',
         },
         blue: {
@@ -1061,6 +1100,7 @@ Options.Triggers.push({
           fr: 'Bleu a Diffamation',
           ja: '青',
           cn: '蓝毒大圈',
+          tc: '藍毒大圈',
           ko: '파랑 광역',
         },
         unknown: {
@@ -1069,6 +1109,7 @@ Options.Triggers.push({
           fr: '??? a Diffamation',
           ja: '???',
           cn: '???大圈',
+          tc: '???大圈',
           ko: '??? 광역',
         },
       },
@@ -1093,6 +1134,7 @@ Options.Triggers.push({
           fr: 'Package tour ${color}',
           ja: '${color}塔',
           cn: '${color} 塔分摊',
+          tc: '${color} 塔分攤',
           ko: '${color} 장판 쉐어',
         },
         colorTowerDefamation: {
@@ -1101,6 +1143,7 @@ Options.Triggers.push({
           fr: 'Diffamation tour ${color}',
           ja: '${color}塔',
           cn: '${color} 塔大圈',
+          tc: '${color} 塔大圈',
           ko: '${color} 장판 광역',
         },
         red: {
@@ -1109,6 +1152,7 @@ Options.Triggers.push({
           fr: 'Rouge',
           ja: '赤',
           cn: '红',
+          tc: '紅',
           ko: '빨강',
         },
         blue: {
@@ -1117,6 +1161,7 @@ Options.Triggers.push({
           fr: 'Bleue',
           ja: '青',
           cn: '蓝',
+          tc: '藍',
           ko: '파랑',
         },
       },
@@ -1151,6 +1196,7 @@ Options.Triggers.push({
             fr: 'Donnez le debuff',
             ja: '受け渡し',
             cn: '传毒',
+            tc: '傳毒',
             ko: '디버프 건네기',
           },
           getRot: {
@@ -1159,6 +1205,7 @@ Options.Triggers.push({
             fr: 'Prenez le debuff',
             ja: 'デバフもらう',
             cn: '接毒',
+            tc: '接毒',
             ko: '디버프 받기',
           },
         };
@@ -1202,6 +1249,7 @@ Options.Triggers.push({
           fr: 'Package sur tour ${color}',
           ja: '${color}の間でペア',
           cn: '在 ${color} 塔分摊',
+          tc: '在 ${color} 塔分攤',
           ko: '${color} 장판 사이에서 쉐어',
         },
         nearTether: {
@@ -1210,6 +1258,7 @@ Options.Triggers.push({
           fr: 'À l\'extérieur de la tour ${color}',
           ja: '${color}の外へ',
           cn: '站 ${color} 塔外',
+          tc: '站 ${color} 塔外',
           ko: '${color} 장판 바깥쪽으로',
         },
         finalTowerNear: {
@@ -1218,6 +1267,7 @@ Options.Triggers.push({
           fr: 'Entre les tours ${color}',
           ja: '${color}の間へ',
           cn: '站 ${color} 塔之间',
+          tc: '站 ${color} 塔之間',
           ko: '${color} 장판 사이로',
         },
         red: {
@@ -1226,6 +1276,7 @@ Options.Triggers.push({
           fr: 'Rouge(s)',
           ja: '赤',
           cn: '红',
+          tc: '紅',
           ko: '빨강',
         },
         blue: {
@@ -1234,6 +1285,7 @@ Options.Triggers.push({
           fr: 'Bleue(s)',
           ja: '青',
           cn: '蓝',
+          tc: '藍',
           ko: '파랑',
         },
       },
@@ -1274,6 +1326,7 @@ Options.Triggers.push({
           fr: 'Cassez le lien',
           ja: '線切る',
           cn: '扯断连线',
+          tc: '扯斷連線',
           ko: '선 끊기',
         },
       },
@@ -1330,6 +1383,7 @@ Options.Triggers.push({
           fr: 'Moniteurs Est',
           ja: '検知左',
           cn: '左小电视',
+          tc: '左小電視',
           ko: '오른쪽 모니터',
         },
       },
@@ -1346,6 +1400,7 @@ Options.Triggers.push({
           fr: 'Moniteurs Ouest',
           ja: '検知右',
           cn: '右小电视',
+          tc: '右小電視',
           ko: '왼쪽 모니터',
         },
       },
@@ -1368,6 +1423,7 @@ Options.Triggers.push({
             fr: 'Moniteur (avec ${player1}, ${player2})',
             ja: '検知 (${player1}, ${player2})',
             cn: '小电视点名 (与${player1}, ${player2})',
+            tc: '小電視點名 (與${player1}, ${player2})',
             ko: '모니터 (+ ${player1}, ${player2})',
           },
           unmarked: {
@@ -1376,6 +1432,7 @@ Options.Triggers.push({
             fr: 'Sans marque',
             ja: '無職',
             cn: '无点名',
+            tc: '無點名',
             ko: '무징',
           },
         };
@@ -1413,6 +1470,7 @@ Options.Triggers.push({
             fr: 'Package (${player1}, ${player2})',
             ja: 'あたまわり (${player1}, ${player2})',
             cn: '分摊 (${player1}, ${player2})',
+            tc: '分攤 (${player1}, ${player2})',
             ko: '쉐어징 (${player1}, ${player2})',
           },
           stackOnYou: {
@@ -1421,6 +1479,7 @@ Options.Triggers.push({
             fr: 'Package sur VOUS (avec ${player})',
             ja: '自分にマーカー (${player})',
             cn: '分摊点名 (与${player})',
+            tc: '分攤點名 (與${player})',
             ko: '쉐어징 대상자 (+ ${player})',
           },
         };
@@ -1465,6 +1524,7 @@ Options.Triggers.push({
           fr: 'Lien Bleu',
           ja: '青線',
           cn: '蓝线',
+          tc: '藍線',
           ko: '파란색 선',
         },
         nearTether: {
@@ -1473,6 +1533,7 @@ Options.Triggers.push({
           fr: 'Lien Vert',
           ja: '緑線',
           cn: '绿线',
+          tc: '綠線',
           ko: '초록색 선',
         },
       },
@@ -1497,6 +1558,7 @@ Options.Triggers.push({
           fr: 'Éloignez-vous de l\'Œil',
           ja: '目から離れる',
           cn: '远离眼睛',
+          tc: '遠離眼睛',
           ko: '눈에서 멀리 떨어지기',
         },
         towardsEye: {
@@ -1505,6 +1567,7 @@ Options.Triggers.push({
           fr: 'Allez vers l\'Œil',
           ja: '目に近づく',
           cn: '靠近眼睛',
+          tc: '靠近眼睛',
           ko: '눈 쪽으로',
         },
       },
@@ -1540,6 +1603,7 @@ Options.Triggers.push({
             fr: 'Bleu sans debuff',
             ja: 'デバフなしの青線',
             cn: '无点名蓝',
+            tc: '無點名藍',
             ko: '디버프 없는 파란색 선',
           },
         };
@@ -1621,6 +1685,7 @@ Options.Triggers.push({
           fr: '${dir} M',
           ja: '${dir} 男',
           cn: '${dir} 男人',
+          tc: '${dir} 男人',
           ko: '${dir} M',
         },
       },
@@ -1643,6 +1708,7 @@ Options.Triggers.push({
             fr: '(sans debuff)',
             ja: '(デバフなし)',
             cn: '(无 Debuff)',
+            tc: '(無 Debuff)',
             ko: '(디버프 없음)',
           },
         };
@@ -1691,6 +1757,7 @@ Options.Triggers.push({
           fr: 'Suivez le laser, aller dedans',
           ja: 'レーザー方面の中へ',
           cn: '跟随激光，穿进辣翅',
+          tc: '跟隨雷射，穿進辣翅',
           ko: '레이저 따라서 안으로',
         },
         optimizedBlizzard: {
@@ -1699,6 +1766,7 @@ Options.Triggers.push({
           fr: 'Attendez d\'abord',
           ja: 'まってから移動',
           cn: '先等十字',
+          tc: '先等十字',
           ko: '기다렸다가 이동',
         },
       },
@@ -1747,6 +1815,7 @@ Options.Triggers.push({
           fr: 'Attirez les liens',
           ja: '線取り',
           cn: '诱导你好世界',
+          tc: '誘導你好世界',
           ko: '선 가져가기',
         },
       },
@@ -1819,6 +1888,7 @@ Options.Triggers.push({
           fr: 'Proche ${northSouth} ou ${eastWest}',
           ja: '内 ${northSouth}/${eastWest}',
           cn: '靠近 ${northSouth} 或 ${eastWest}',
+          tc: '靠近 ${northSouth} 或 ${eastWest}',
           ko: '${northSouth}/${eastWest} 가까이',
         },
         legsShield: {
@@ -1827,6 +1897,7 @@ Options.Triggers.push({
           fr: 'Proche ${northSouth} ou ${eastWest}',
           ja: '内 ${northSouth}/${eastWest}',
           cn: '靠近 ${northSouth} 或 ${eastWest}',
+          tc: '靠近 ${northSouth} 或 ${eastWest}',
           ko: '${northSouth}/${eastWest} 가까이',
         },
         staffShield: {
@@ -1835,6 +1906,7 @@ Options.Triggers.push({
           fr: 'Intérieur ${northSouth} ou ${eastWest}',
           ja: '外 ${northSouth}/${eastWest}',
           cn: '进 ${northSouth} 或 ${eastWest}',
+          tc: '進 ${northSouth} 或 ${eastWest}',
           ko: '${northSouth}/${eastWest} 중간',
         },
         staffSwordFar: {
@@ -1843,6 +1915,7 @@ Options.Triggers.push({
           fr: 'Loin ${northSouth} ou ${eastWest}',
           ja: '遠 ${northSouth}/${eastWest}',
           cn: '远 ${northSouth} 或 ${eastWest}',
+          tc: '遠 ${northSouth} 或 ${eastWest}',
           ko: '${northSouth}/${eastWest} 멀리',
         },
         staffSwordMid: {
@@ -1851,6 +1924,7 @@ Options.Triggers.push({
           fr: 'Milieu ${northSouth} ou ${eastWest}',
           ja: '外 ${northSouth}/${eastWest}',
           cn: '中 ${northSouth} 或 ${eastWest}',
+          tc: '中 ${northSouth} 或 ${eastWest}',
           ko: '${northSouth}/${eastWest} 중간',
         },
         dirN: Outputs.dirN,
@@ -1975,6 +2049,7 @@ Options.Triggers.push({
           fr: '${first} => ${rotate} => ${second}',
           ja: '${first} => ${rotate} => ${second}',
           cn: '${first} => ${rotate} => ${second}',
+          tc: '${first} => ${rotate} => ${second}',
           ko: '${first} => ${rotate} => ${second}',
         },
         rotateRight: {
@@ -1983,6 +2058,7 @@ Options.Triggers.push({
           fr: 'Droite',
           ja: '右',
           cn: '右',
+          tc: '右',
           ko: '오른쪽',
         },
         rotateLeft: {
@@ -1991,6 +2067,7 @@ Options.Triggers.push({
           fr: 'Gauche',
           ja: '左',
           cn: '左',
+          tc: '左',
           ko: '왼쪽',
         },
         // The two legs are split in case somebody wants a "go to M" or "go to F" style call.
@@ -2000,6 +2077,7 @@ Options.Triggers.push({
           fr: 'Proche ${dir}',
           ja: '内 ${dir}',
           cn: '靠近 ${dir}',
+          tc: '靠近 ${dir}',
           ko: '${dir} 가까이',
         },
         legsShield: {
@@ -2008,6 +2086,7 @@ Options.Triggers.push({
           fr: 'Proche ${dir}',
           ja: '内 ${dir}',
           cn: '靠近 ${dir}',
+          tc: '靠近 ${dir}',
           ko: '${dir} 가까이',
         },
         staffShield: {
@@ -2016,6 +2095,7 @@ Options.Triggers.push({
           fr: 'Milieu ${dir}',
           ja: '外 ${dir}',
           cn: '中 ${dir}',
+          tc: '中 ${dir}',
           ko: '${dir} 중간',
         },
         staffSwordFar: {
@@ -2024,6 +2104,7 @@ Options.Triggers.push({
           fr: 'Loin ${dir}',
           ja: '遠 ${dir}',
           cn: '远 ${dir}',
+          tc: '遠 ${dir}',
           ko: '${dir} 멀리',
         },
         staffSwordMid: {
@@ -2032,6 +2113,7 @@ Options.Triggers.push({
           fr: 'Milieu ${dir}',
           ja: '外 ${dir}',
           cn: '中 ${dir}',
+          tc: '中 ${dir}',
           ko: '${dir} 중간',
         },
         dirN: Outputs.dirN,
@@ -2112,6 +2194,7 @@ Options.Triggers.push({
           fr: 'Droite',
           ja: '右',
           cn: '右',
+          tc: '右',
           ko: '오른쪽',
         },
         rotateLeft: {
@@ -2120,6 +2203,7 @@ Options.Triggers.push({
           fr: 'Gauche',
           ja: '左',
           cn: '左',
+          tc: '左',
           ko: '왼쪽',
         },
         legsSword: {
@@ -2128,6 +2212,7 @@ Options.Triggers.push({
           fr: '${rotate} => Proche ${dir}',
           ja: '${rotate} => 内 ${dir}',
           cn: '${rotate} => 靠近 ${dir}',
+          tc: '${rotate} => 靠近 ${dir}',
           ko: '${rotate} => ${dir} 가까이',
         },
         legsShield: {
@@ -2136,6 +2221,7 @@ Options.Triggers.push({
           fr: '${rotate} => Proche ${dir}',
           ja: '${rotate} => 内 ${dir}',
           cn: '${rotate} => 靠近 ${dir}',
+          tc: '${rotate} => 靠近 ${dir}',
           ko: '${rotate} => ${dir} 가까이',
         },
         staffShield: {
@@ -2144,6 +2230,7 @@ Options.Triggers.push({
           fr: '${rotate} => Milieu ${dir}',
           ja: '${rotate} => 外 ${dir}',
           cn: '${rotate} => 中 ${dir}',
+          tc: '${rotate} => 中 ${dir}',
           ko: '${rotate} => ${dir} 중간',
         },
         staffSwordFar: {
@@ -2152,6 +2239,7 @@ Options.Triggers.push({
           fr: '${rotate} => Loin ${dir}',
           ja: '${rotate} => 遠 ${dir}',
           cn: '${rotate} => 远 ${dir}',
+          tc: '${rotate} => 遠 ${dir}',
           ko: '${rotate} => ${dir} 멀리',
         },
         staffSwordMid: {
@@ -2160,6 +2248,7 @@ Options.Triggers.push({
           fr: '${rotate} => Milieu ${dir}',
           ja: '${rotate} => 外 ${dir}',
           cn: '${rotate} => 中 ${dir}',
+          tc: '${rotate} => 中 ${dir}',
           ko: '${rotate} => ${dir} 중간',
         },
         dirN: Outputs.dirN,
@@ -2189,6 +2278,7 @@ Options.Triggers.push({
           fr: 'LB TANK !!',
           ja: 'タンクLB!!',
           cn: '坦克LB！！',
+          tc: '坦克LB！！',
           ko: '탱리밋!!',
         },
       },
@@ -2227,6 +2317,7 @@ Options.Triggers.push({
           fr: 'Intérieur en 1er',
           ja: '内側から',
           cn: '先进',
+          tc: '先進',
           ko: '안 먼저',
         },
         outFirst: {
@@ -2235,6 +2326,7 @@ Options.Triggers.push({
           fr: 'Extérieur en 1er',
           ja: '外側から',
           cn: '先出',
+          tc: '先出',
           ko: '밖 먼저',
         },
       },
@@ -2257,6 +2349,7 @@ Options.Triggers.push({
           fr: 'Intérieur => Attendez 2',
           ja: '内 => 待機 2',
           cn: '进 => 等 2',
+          tc: '進 => 等 2',
           ko: '안 => 대기 2번',
         },
         outWait2: {
@@ -2265,6 +2358,7 @@ Options.Triggers.push({
           fr: 'Extérieur => Attendez 2',
           ja: '外 => 待機 2',
           cn: '出 => 等 2',
+          tc: '出 => 等 2',
           ko: '밖 => 대기 2번',
         },
       },
@@ -2315,6 +2409,7 @@ Options.Triggers.push({
           fr: 'Intérieur => Attendez 2',
           ja: '内 => 待機 2',
           cn: '进 => 等 2',
+          tc: '進 => 等 2',
           ko: '안 => 대기 2번',
         },
         outWait2: {
@@ -2323,6 +2418,7 @@ Options.Triggers.push({
           fr: 'Extérieur => Attendez 2',
           ja: '外 => 待機 2',
           cn: '出 => 等 2',
+          tc: '出 => 等 2',
           ko: '밖 => 대기 2번',
         },
         SidesIn: Outputs.moveAway,
@@ -2332,6 +2428,7 @@ Options.Triggers.push({
           fr: 'Côtés + Extérieur',
           ja: '横 + 外へ',
           cn: '两侧 + 出',
+          tc: '兩側 + 出',
           ko: '옆 + 밖으로',
         },
       },
@@ -2355,6 +2452,7 @@ Options.Triggers.push({
           fr: 'Tanks proche (groupe éloigné)',
           ja: 'タンク内側 (パーティー離れる)',
           cn: '坦克靠近 (人群远离)',
+          tc: '坦克靠近 (人群遠離)',
           ko: '탱커 가까이 (본대 멀리)',
         },
         cosmoDiveParty: {
@@ -2363,6 +2461,7 @@ Options.Triggers.push({
           fr: 'Groupe éloigné (Tanks proche)',
           ja: 'パーティー離れる (タンク内側)',
           cn: '人群远离 (坦克靠近)',
+          tc: '人群遠離 (坦克靠近)',
           ko: '본대 멀리 (탱커 가까이)',
         },
       },
@@ -2379,6 +2478,7 @@ Options.Triggers.push({
           fr: 'Attirez au milieu',
           ja: '真ん中',
           cn: '中间诱导',
+          tc: '中間誘導',
           ko: '중앙에 장판 유도',
         },
       },
@@ -2503,6 +2603,7 @@ Options.Triggers.push({
           fr: '${start} => ${rotation}',
           ja: '${start} => ${rotation}',
           cn: '${start} => ${rotation}',
+          tc: '${start} => ${rotation}',
           ko: '${start} => ${rotation}',
         },
         north: Outputs.north,
@@ -2520,6 +2621,7 @@ Options.Triggers.push({
           fr: 'Horaire',
           ja: '時計回り',
           cn: '顺时针',
+          tc: '順時針',
           ko: '시계방향',
         },
         counterclock: {
@@ -2528,6 +2630,7 @@ Options.Triggers.push({
           fr: 'Anti-horaire',
           ja: '反時計回り',
           cn: '逆时针',
+          tc: '逆時針',
           ko: '반시계방향',
         },
       },
@@ -2545,6 +2648,7 @@ Options.Triggers.push({
           fr: 'Ruée en ligne',
           ja: '直線あたまわり',
           cn: '直线分摊',
+          tc: '直線分攤',
           ko: '직선 쉐어',
         },
       },
@@ -2561,6 +2665,7 @@ Options.Triggers.push({
           fr: 'Attirez au milieu',
           ja: '真ん中',
           cn: '中间诱导',
+          tc: '中間誘導',
           ko: '중앙에 장판 유도',
         },
       },

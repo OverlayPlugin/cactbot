@@ -16,6 +16,7 @@ Options.Triggers.push({
           fr: 'Mangez un fruit',
           ja: '果実を食べる',
           cn: '吃果实',
+          tc: '吃果實',
           ko: '열매 먹기',
         },
       },

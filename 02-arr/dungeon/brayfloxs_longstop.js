@@ -6,6 +6,7 @@ Options.Triggers.push({
     de: 'Vor der 6.1 Überarbeitung',
     fr: 'Avant le remaniement 6.1',
     cn: '6.1改版前',
+    tc: '6.1改版前',
     ko: '6.1 개편 전',
   },
   initData: () => {
@@ -49,6 +50,7 @@ Options.Triggers.push({
           fr: 'Purifiez-vous du poison',
           ja: '自分の毒をエスナ',
           cn: '康复自己的毒',
+          tc: '康復自己的毒',
           ko: '독 에스나 하기',
         },
         esunaPoisonOn: {
@@ -57,6 +59,7 @@ Options.Triggers.push({
           fr: 'Purifiez le poison sur ${players}',
           ja: '${players}の毒をエスナ',
           cn: '康复${players}',
+          tc: '康復${players}',
           ko: '"${players}" 독 에스나',
         },
       },
@@ -111,6 +114,7 @@ Options.Triggers.push({
           fr: 'Brisez la bulle de ${player}',
           ja: '${player}の泡を破れ',
           cn: '打${player}的泡泡',
+          tc: '打${player}的泡泡',
           ko: '"${player}" 물구슬 깨기',
         },
         breakYourBubble: {
@@ -119,6 +123,7 @@ Options.Triggers.push({
           fr: 'Brisez votre bulle',
           ja: '自分の泡を破れ',
           cn: '打自己的泡泡',
+          tc: '打自己的泡泡',
           ko: '물구슬 깨기',
         },
       },
@@ -145,6 +150,7 @@ Options.Triggers.push({
           fr: 'Déplacez le boss hors des zones au sol',
           ja: 'ボスを円範囲の外に',
           cn: '把BOSS拉出圈圈',
+          tc: '把BOSS拉出圈圈',
           ko: '장판에 보스가 닿지 않게 하기',
         },
       },
@@ -168,6 +174,7 @@ Options.Triggers.push({
           fr: 'Purifiez le poison sur ${player}',
           ja: '${player}の毒をエスナ',
           cn: '康复${player}的毒',
+          tc: '康復${player}的毒',
           ko: '"${player}" 독 에스나',
         },
         esunaYourPoison: {
@@ -176,6 +183,7 @@ Options.Triggers.push({
           fr: 'Purifiez-vous du poison',
           ja: '自分の毒をエスナ',
           cn: '康复自己的毒',
+          tc: '康復自己的毒',
           ko: '독 에스나 하기',
         },
       },

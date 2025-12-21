@@ -6,6 +6,7 @@ Options.Triggers.push({
     de: 'A Rang Hohe Jagd, Ein formidabler Kampf Boss FATE fehlt',
     fr: 'Chasse de rang A, ALÉA boss Formidable manquant',
     cn: 'A级狩猎怪, 缺失特殊FATE',
+    tc: 'A級狩獵怪, 缺失特殊FATE',
     ko: 'A급 마물, 특수돌발 누락.',
   },
   triggers: [
@@ -78,6 +79,7 @@ Options.Triggers.push({
           de: 'Rein => Seiten',
           fr: 'Intérieur => Côtés',
           cn: '中间 => 两侧',
+          tc: '中間 => 兩側',
           ko: '안으로 => 옆으로',
         },
       },
@@ -94,6 +96,7 @@ Options.Triggers.push({
           de: 'Seiten => Seiten (nochmal)',
           fr: 'Côtés => Côtés (encore)',
           cn: '两侧 => 两侧 (重复)',
+          tc: '兩側 => 兩側 (重複)',
           ko: '옆으로 => 옆으로 (반복)',
         },
       },

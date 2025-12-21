@@ -44,6 +44,7 @@ Options.Triggers.push({
           fr: 'Guérison sur ${player}',
           ja: '${player} にエスナ',
           cn: '驱散: ${player}',
+          tc: '驅散: ${player}',
           ko: '${player} 에스나',
         },
       },
@@ -86,6 +87,7 @@ Options.Triggers.push({
           fr: 'Placez-vous entre les drones',
           ja: '自動殺傷兵器の間に',
           cn: '站在浮游炮间隙躲避激光',
+          tc: '站在浮游炮間隙躲避雷射',
           ko: '비트 사이에 자리잡기',
         },
       },
@@ -110,6 +112,7 @@ Options.Triggers.push({
             fr: 'Tank laser sur VOUS',
             ja: '自分に対人光線',
             cn: '坦克激光点名',
+            tc: '坦克雷射點名',
             ko: '탱커 레이저',
           },
           tankLaserOnPlayer: {
@@ -118,6 +121,7 @@ Options.Triggers.push({
             fr: 'Tank laser sur ${player}',
             ja: '${player} に対人光線',
             cn: '坦克激光点名 ${player}',
+            tc: '坦克雷射點名 ${player}',
             ko: '탱커 레이저: ${player}',
           },
           avoidLaserOnPlayer: {
@@ -126,6 +130,7 @@ Options.Triggers.push({
             fr: 'Évitez le laser sur ${player}',
             ja: '${player} への対人光線を避ける',
             cn: '远离激光点名: ${player}',
+            tc: '遠離雷射點名: ${player}',
             ko: '탱커 레이저 피하기: ${player}',
           },
         };
@@ -205,6 +210,7 @@ Options.Triggers.push({
           fr: 'Soignez ${player} complètement',
           ja: '${player} をフル回復',
           cn: '奶满 ${player}',
+          tc: '奶滿 ${player}',
           ko: '완전 회복: ${player}',
         },
       },

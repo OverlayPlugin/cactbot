@@ -27,6 +27,7 @@ const wingOutputStrings = {
     fr: 'Flanc gauche',
     ja: '左',
     cn: '左翼',
+    tc: '左翼',
     ko: '왼쪽',
   },
   rightFlank: {
@@ -35,6 +36,7 @@ const wingOutputStrings = {
     fr: 'Flanc droit',
     ja: '右',
     cn: '右翼',
+    tc: '右翼',
     ko: '오른쪽',
   },
 };
@@ -87,6 +89,7 @@ Options.Triggers.push({
           fr: '${first} => ${second} => ${third}',
           ja: '${first} => ${second} => ${third}',
           cn: '${first} => ${second} => ${third}',
+          tc: '${first} => ${second} => ${third}',
           ko: '${first} => ${second} => ${third}',
         },
       },
@@ -166,6 +169,7 @@ Options.Triggers.push({
           fr: 'Suivez le donut',
           ja: 'ドーナツへ',
           cn: '跟随月环',
+          tc: '跟隨月環',
           ko: '도넛 따라가기',
         },
         superchain2: {
@@ -174,6 +178,7 @@ Options.Triggers.push({
           fr: 'Donut court => Donut long',
           ja: '早ドーナツ => 遅ドーナツ',
           cn: '短月环 => 长月环',
+          tc: '短月環 => 長月環',
           ko: '짧은 도넛 => 긴 도넛',
         },
         superchain3: {
@@ -182,6 +187,7 @@ Options.Triggers.push({
           fr: 'Suivez le donut (évitez le cleave)',
           ja: 'ボスの横からドーナツへ',
           cn: '跟随月环（避开直线AOE）',
+          tc: '跟隨月環（避開直線AOE）',
           ko: '도넛 따라가기 (광역기 피하기)',
         },
         superchain4: {
@@ -190,6 +196,7 @@ Options.Triggers.push({
           fr: 'Évitez les sphères',
           ja: 'オブ回避',
           cn: '远离钢铁',
+          tc: '遠離鋼鐵',
           ko: '구체 피하기',
         },
       },
@@ -212,6 +219,7 @@ Options.Triggers.push({
           fr: 'Évitez les plateformes enchaînées',
           ja: '壊れそうなマス回避',
           cn: '远离连线地板',
+          tc: '遠離連線地板',
           ko: '연결된 플랫폼 피하기',
         },
       },

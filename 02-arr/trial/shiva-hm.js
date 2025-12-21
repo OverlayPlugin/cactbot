@@ -54,6 +54,7 @@ Options.Triggers.push({
           fr: 'Libérez ${player}',
           ja: '${player}を救う',
           cn: '解救${player}',
+          tc: '解救${player}',
           ko: '${player}감옥 해제',
         },
       },

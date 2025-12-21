@@ -6,6 +6,7 @@ Options.Triggers.push({
     de: 'Vor der 7.3 Überarbeitung',
     fr: 'Avant le remaniement 7.3',
     cn: '7.3改版前',
+    tc: '7.3改版前',
     ko: '7.3 개편 전',
   },
   triggers: [

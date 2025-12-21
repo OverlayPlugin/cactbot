@@ -56,6 +56,7 @@ Options.Triggers.push({
           fr: 'Tuez la sentinelle',
           ja: '守衛を倒す',
           cn: '击杀守卫',
+          tc: '擊殺守衛',
           ko: '경비원 죽이기',
         },
       },

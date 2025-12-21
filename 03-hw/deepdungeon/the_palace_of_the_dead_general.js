@@ -28,6 +28,7 @@ Options.Triggers.push({
     fr: 'Le palais des morts (Tous les étages)',
     ja: '死者の宮殿 (全階層)',
     cn: '死者宫殿 (全楼层)',
+    tc: '死者宮殿 (全樓層)',
     ko: '망자의 궁전 (전체 층)',
   },
   triggers: [
@@ -50,6 +51,7 @@ Options.Triggers.push({
           fr: 'Un mime est apparu !',
           ja: 'ミミック！',
           cn: '已生成 拟态怪!',
+          tc: '已生成 擬態怪!',
           ko: '미믹 등장!',
         },
       },
@@ -113,6 +115,7 @@ Options.Triggers.push({
           fr: '${pomander} dupliqué',
           ja: '${pomander} 被り',
           cn: '${pomander} 重复',
+          tc: '${pomander} 重複',
           ko: '${pomander} 중복',
         },
         // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
@@ -122,6 +125,7 @@ Options.Triggers.push({
           fr: 'Désamorçage',
           ja: '呪印解除',
           cn: '咒印解除',
+          tc: '咒印解除',
           ko: '함정 해제',
         },
         sight: {
@@ -130,6 +134,7 @@ Options.Triggers.push({
           fr: 'Localisation',
           ja: 'サイトロ',
           cn: '全景',
+          tc: '全景',
           ko: '사이트로',
         },
         strength: {
@@ -138,6 +143,7 @@ Options.Triggers.push({
           fr: 'Puissance',
           ja: '自己強化',
           cn: '强化自身',
+          tc: '強化自身',
           ko: '자기 강화',
         },
         steel: {
@@ -146,6 +152,7 @@ Options.Triggers.push({
           fr: 'Protection',
           ja: '防御強化',
           cn: '强化防御',
+          tc: '強化防禦',
           ko: '방어 강화',
         },
         affluence: {
@@ -154,6 +161,7 @@ Options.Triggers.push({
           fr: 'Décèlement',
           ja: '宝箱増加',
           cn: '宝箱增加',
+          tc: '寶箱增加',
           ko: '보물상자 증가',
         },
         flight: {
@@ -162,6 +170,7 @@ Options.Triggers.push({
           fr: 'Sécurisation',
           ja: '敵排除',
           cn: '减少敌人',
+          tc: '減少敵人',
           ko: '적 감소',
         },
         alteration: {
@@ -170,6 +179,7 @@ Options.Triggers.push({
           fr: 'Affaiblissement',
           ja: '敵変化',
           cn: '改变敌人',
+          tc: '改變敵人',
           ko: '적 대체',
         },
         purity: {
@@ -178,6 +188,7 @@ Options.Triggers.push({
           fr: 'Anti-maléfice',
           ja: '解呪',
           cn: '解咒',
+          tc: '解咒',
           ko: '저주 해제',
         },
         fortune: {
@@ -186,6 +197,7 @@ Options.Triggers.push({
           fr: 'Chance',
           ja: '運気上昇',
           cn: '运气上升',
+          tc: '運氣上升',
           ko: '운 상승',
         },
         witching: {
@@ -194,6 +206,7 @@ Options.Triggers.push({
           fr: 'Mutation',
           ja: '形態変化',
           cn: '形态变化',
+          tc: '形態變化',
           ko: '적 변형',
         },
         serenity: {
@@ -202,6 +215,7 @@ Options.Triggers.push({
           fr: 'Dissipation',
           ja: '魔法効果解除',
           cn: '魔法效果解除',
+          tc: '魔法效果解除',
           ko: '마법 효과 해제',
         },
         rage: {
@@ -210,6 +224,7 @@ Options.Triggers.push({
           fr: 'Manticore',
           ja: 'マンティコア化',
           cn: '曼提克化',
+          tc: '曼提克化',
           ko: '만티코어 변신',
         },
         lust: {
@@ -218,6 +233,7 @@ Options.Triggers.push({
           fr: 'Succube',
           ja: 'サキュバス化',
           cn: '梦魔化',
+          tc: '夢魔化',
           ko: '서큐버스 변신',
         },
         intuition: {
@@ -226,6 +242,7 @@ Options.Triggers.push({
           fr: 'Intuition',
           ja: '財宝感知',
           cn: '感知宝藏',
+          tc: '感知寶藏',
           ko: '보물 탐지',
         },
         raising: {
@@ -234,6 +251,7 @@ Options.Triggers.push({
           fr: 'Résurrection',
           ja: 'リレイズ',
           cn: '重生',
+          tc: '重生',
           ko: '리레이즈',
         },
         resolution: {
@@ -242,6 +260,7 @@ Options.Triggers.push({
           fr: 'Kuribu',
           ja: 'クリブ化',
           cn: '基路伯化',
+          tc: '基路伯化',
           ko: '쿠리부 변신',
         },
         unknown: Outputs.unknown,
@@ -263,6 +282,7 @@ Options.Triggers.push({
           fr: 'La pierre de téléportation s\'est activée',
           ja: '転移が出来ます',
           cn: '转移石冢已启动',
+          tc: '轉移石塚已啟動',
           ko: '전송 석탑 활성화',
         },
       },

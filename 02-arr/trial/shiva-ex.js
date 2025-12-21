@@ -34,6 +34,7 @@ Options.Triggers.push({
           fr: 'Partagez le Tank buster avec le groupe',
           ja: '頭割りタンクバスター',
           cn: '团队分摊死刑',
+          tc: '團隊分攤死刑',
           ko: '파티 쉐어 탱버',
         },
       },
@@ -61,6 +62,7 @@ Options.Triggers.push({
             fr: 'Bâton (Tank Swap)',
             ja: '杖 (スイッチ)',
             cn: '权杖（换T）',
+            tc: '權杖（換T）',
             ko: '지팡이 (탱커 교대)',
           },
           staff: {
@@ -69,6 +71,7 @@ Options.Triggers.push({
             fr: 'Bâton',
             ja: '杖',
             cn: '权杖',
+            tc: '權杖',
             ko: '지팡이',
           },
         };
@@ -93,6 +96,7 @@ Options.Triggers.push({
             fr: 'Épée (Tank Swap)',
             ja: '剣 (スイッチ)',
             cn: '剑（换T）',
+            tc: '劍（換T）',
             ko: '검 (탱커 교대)',
           },
           sword: {
@@ -101,6 +105,7 @@ Options.Triggers.push({
             fr: 'Épée',
             ja: '剣',
             cn: '剑',
+            tc: '劍',
             ko: '검',
           },
         };
@@ -198,6 +203,7 @@ Options.Triggers.push({
           fr: 'Poussée-Laser sur VOUS',
           ja: '自分にアバランチ',
           cn: '击退激光点名',
+          tc: '擊退雷射點名',
           ko: '넉백 레이저 대상자',
         },
       },
@@ -215,6 +221,7 @@ Options.Triggers.push({
           fr: 'Évitez le laser',
           ja: 'アバランチを避ける',
           cn: '躲避击退激光',
+          tc: '躲避擊退雷射',
           ko: '레이저 피하기',
         },
       },
@@ -256,6 +263,7 @@ Options.Triggers.push({
           fr: 'Libérez ${player}',
           ja: '${player}を救って',
           cn: '解救${player}',
+          tc: '解救${player}',
           ko: '${player}감옥 해제',
         },
       },

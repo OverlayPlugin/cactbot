@@ -94,6 +94,7 @@ Options.Triggers.push({
           fr: 'Au coin nord',
           ja: '北の角へ',
           cn: '去上半场角落',
+          tc: '去上半場角落',
           ko: '북쪽 모서리',
         },
         ec: {
@@ -102,6 +103,7 @@ Options.Triggers.push({
           fr: 'Au coin est',
           ja: '東の角へ',
           cn: '去右边角落',
+          tc: '去右邊角落',
           ko: '동쪽 모서리',
         },
         sc: {
@@ -110,6 +112,7 @@ Options.Triggers.push({
           fr: 'Au coin sud',
           ja: '南の角へ',
           cn: '去下半场角落',
+          tc: '去下半場角落',
           ko: '남쪽 모서리',
         },
         wc: {
@@ -118,6 +121,7 @@ Options.Triggers.push({
           fr: 'Au coin ouest',
           ja: '西の角へ',
           cn: '去左边角落',
+          tc: '去左邊角落',
           ko: '서쪽 모서리',
         },
       },
@@ -158,6 +162,7 @@ Options.Triggers.push({
           fr: 'Brasier sur VOUS',
           ja: '自分にフレア',
           cn: '核爆点名',
+          tc: '核爆點名',
           ko: '플레어 대상자',
         },
       },
@@ -177,6 +182,7 @@ Options.Triggers.push({
           fr: 'Packez-vous en ligne sur ${player}',
           ja: '${player}に直線頭割り',
           cn: '${player} 直线分摊',
+          tc: '${player} 直線分攤',
           ko: '${player} 직선 쉐어',
         },
       },

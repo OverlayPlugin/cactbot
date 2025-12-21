@@ -79,6 +79,7 @@ Options.Triggers.push({
           fr: 'Fruits de la vie',
           ja: '生命の果実',
           cn: '生命之果',
+          tc: '生命之果',
           ko: '생명의 열매',
         };
         // Select the Forbidden Fruits
@@ -117,6 +118,7 @@ Options.Triggers.push({
             fr: '${platform1} / ${platform2}',
             ja: '${platform1} / ${platform2}',
             cn: '${platform1} / ${platform2}',
+            tc: '${platform1} / ${platform2}',
             ko: '${platform1} / ${platform2}',
           },
           orientation: {
@@ -125,6 +127,7 @@ Options.Triggers.push({
             fr: 'Taureau Ligne : ${location}',
             ja: '線付き牛: ${location}',
             cn: '连线牛: ${location}',
+            tc: '連線牛: ${location}',
             ko: '줄 달린 소: ${location}',
           },
           famineOrientation: {
@@ -133,6 +136,7 @@ Options.Triggers.push({
             fr: 'Minotaure sans oiseau : ${location}',
             ja: 'ミノがある場所: ${location}',
             cn: '无鸟牛头人: ${location}',
+            tc: '無鳥牛頭人: ${location}',
             ko: '새 없는 곳: ${location}',
           },
           deathOrientation: {
@@ -141,6 +145,7 @@ Options.Triggers.push({
             fr: 'Taureau éclair : ${location}',
             ja: '線付いてない牛: ${location}',
             cn: '钢铁牛: ${location}',
+            tc: '鋼鐵牛: ${location}',
             ko: '줄 안달린 소: ${location}',
           },
           warOrientation: {
@@ -149,6 +154,7 @@ Options.Triggers.push({
             fr: 'Oiseau sans Minotaure : ${location}',
             ja: 'ミノと鳥: ${location}',
             cn: '有鸟牛头人: ${location}',
+            tc: '有鳥牛頭人: ${location}',
             ko: '새 + 미노타우로스: ${location}',
           },
         };
@@ -312,6 +318,7 @@ Options.Triggers.push({
           fr: 'Séparez des Tankbusters',
           ja: '2人同時タンク強攻撃',
           cn: '分散死刑',
+          tc: '分散死刑',
           ko: '따로맞는 탱버',
         },
       },
@@ -341,6 +348,7 @@ Options.Triggers.push({
           fr: 'Déposez sur une plateforme vide bientôt',
           ja: '果実がない空きの円盤へ移動',
           cn: '移动到空平台',
+          tc: '移動到空平台',
           ko: '빈 플랫폼에서 장판 유도 준비',
         },
       },
@@ -359,6 +367,7 @@ Options.Triggers.push({
           fr: 'Groupes heals sur les plateformes',
           ja: '円盤の内でヒーラーと頭割り',
           cn: '治疗分组平台',
+          tc: '治療分組平台',
           ko: '힐러 그룹별로 플랫폼',
         },
       },
@@ -442,6 +451,7 @@ Options.Triggers.push({
             fr: 'Lien Taureau (AoE en ligne)',
             ja: '牛から直線',
             cn: '牛连线 (直线AOE)',
+            tc: '牛連線 (直線AOE)',
             ko: '소 (직선 장판)',
           },
           deathBullTether: {
@@ -450,6 +460,7 @@ Options.Triggers.push({
             fr: 'Lien Taureau (AoE en ligne)',
             ja: '牛から直線',
             cn: '牛连线 (直线AOE)',
+            tc: '牛連線 (直線AOE)',
             ko: '소 (직선 장판)',
           },
           warBullTether: {
@@ -458,6 +469,7 @@ Options.Triggers.push({
             fr: 'Lien Taureau (AoE en ligne)',
             ja: '牛から直線',
             cn: '牛连线 (直线AOE)',
+            tc: '牛連線 (直線AOE)',
             ko: '소 (직선 장판)',
           },
           minotaurTether: {
@@ -466,6 +478,7 @@ Options.Triggers.push({
             fr: 'Lien Minotaure (Gros Cleave)',
             ja: 'ミノから扇',
             cn: '牛头人连线 (拉远扇形)',
+            tc: '牛頭人連線 (拉遠扇形)',
             ko: '미노타우로스 (부채꼴 장판)',
           },
           famineMinotaurTether: {
@@ -474,6 +487,7 @@ Options.Triggers.push({
             fr: 'Lien Minotaure en croix (Gros Cleave)',
             ja: 'ミノからの扇を交える',
             cn: '交叉牛头人连线 (拉远扇形)',
+            tc: '交叉牛頭人連線 (拉遠扇形)',
             ko: '미노타우로스 선 교차시키기 (부채꼴 장판)',
           },
           warMinotaurTether: {
@@ -482,6 +496,7 @@ Options.Triggers.push({
             fr: 'Lien Minotaure (Gros Cleave)',
             ja: 'ミノから扇',
             cn: '牛头人连线 (拉远扇形)',
+            tc: '牛頭人連線 (拉遠扇形)',
             ko: '미노타우로스 (부채꼴 장판)',
           },
           warBirdTether: {
@@ -490,6 +505,7 @@ Options.Triggers.push({
             fr: 'Lien Oiseau',
             ja: '鳥から線',
             cn: '鸟连线',
+            tc: '鳥連線',
             ko: '새',
           },
           noTether: {
@@ -498,6 +514,7 @@ Options.Triggers.push({
             fr: 'Aucun lien, encaissez le cleave du Minotaure (Milieu)',
             ja: '線なし、中央で扇を誘導',
             cn: '无连线，诱导牛头人扇形 (中间)',
+            tc: '無連線，誘導牛頭人扇形 (中間)',
             ko: '선 없음, 미노타우로스 유도 (중앙)',
           },
           famineNoTether: {
@@ -506,6 +523,7 @@ Options.Triggers.push({
             fr: 'Aucun lien, encaissez le cleave du Minotaure',
             ja: '線なし、ミノからの扇を誘導',
             cn: '无连线，诱导牛头人扇形',
+            tc: '無連線，誘導牛頭人扇形',
             ko: '선 없음, 미노타우로스 유도',
           },
         };
@@ -647,6 +665,7 @@ Options.Triggers.push({
           fr: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
           ja: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
           cn: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
+          tc: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
           ko: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
         },
         spread: Outputs.spread,
@@ -693,6 +712,7 @@ Options.Triggers.push({
           fr: 'Grosse AoE, allez au milieu',
           ja: '強力な全体攻撃、真ん中へ',
           cn: '超大伤害，去中间',
+          tc: '超大傷害，去中間',
           ko: '아픈 광뎀, 중앙으로',
         },
       },

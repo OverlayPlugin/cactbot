@@ -30,6 +30,7 @@ Options.Triggers.push({
           fr: 'Lien sur VOUS',
           ja: '線ついた',
           cn: '连线点名',
+          tc: '連線點名',
           ko: '화염조 대상자',
         },
       },

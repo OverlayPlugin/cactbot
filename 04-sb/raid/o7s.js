@@ -61,6 +61,7 @@ Options.Triggers.push({
           fr: 'Rayon Magitek',
           ja: '魔導レーザー',
           cn: '正面直线AOE',
+          tc: '正面直線AOE',
           ko: '마도 레이저',
         },
       },
@@ -84,6 +85,7 @@ Options.Triggers.push({
           fr: 'Orbe',
           ja: 'マーカー',
           cn: '放球点名',
+          tc: '放球點名',
           ko: '원자 파동 징',
         },
       },
@@ -109,6 +111,7 @@ Options.Triggers.push({
           fr: 'Marque Bleue sur ${player}',
           ja: '${player}に青玉',
           cn: '蓝球点 ${player}',
+          tc: '藍球點 ${player}',
           ko: '"${player}" 파란징',
         },
         blueMarkerOnYou: {
@@ -117,6 +120,7 @@ Options.Triggers.push({
           fr: 'Marque Bleue sur VOUS',
           ja: '自分に青玉',
           cn: '蓝球点名',
+          tc: '藍球點名',
           ko: '파란징 대상자',
         },
       },
@@ -147,6 +151,7 @@ Options.Triggers.push({
           fr: 'Isolement : restez au milieu',
           ja: '孤独: 内側へ',
           cn: '待在中间',
+          tc: '待在中間',
           ko: '고독감: 중앙에 있기',
         },
       },
@@ -168,6 +173,7 @@ Options.Triggers.push({
           fr: 'Pourriture sur VOUS',
           ja: '自分にロット',
           cn: '以太病毒点名',
+          tc: '以太病毒點名',
           ko: '에테르 대상자',
         },
         rotOn: {
@@ -176,6 +182,7 @@ Options.Triggers.push({
           fr: 'Pourriture sur ${player}',
           ja: '${player}にロット',
           cn: '以太病毒点名${player}',
+          tc: '以太病毒點名${player}',
           ko: '"${player}" 에테르',
         },
       },
@@ -226,6 +233,7 @@ Options.Triggers.push({
           fr: 'Biblio ?/Poussée ?',
           ja: 'ビブリオタフ?/ノックバック?',
           cn: '图书？/击退？',
+          tc: '圖書？/擊退？',
           ko: '비블리오?/넉백?',
         },
         biblio: {
@@ -234,6 +242,7 @@ Options.Triggers.push({
           fr: 'Biblio : Positions',
           ja: 'ビブリオタフ: 定めた位置へ',
           cn: '图书：踩塔',
+          tc: '圖書：踩塔',
           ko: '비블리오: 지정 위치로',
         },
         dada: {
@@ -242,6 +251,7 @@ Options.Triggers.push({
           fr: 'Dada : Poussée',
           ja: 'ダダルマー: ノックバック',
           cn: '达达：击退',
+          tc: '達達：擊退',
           ko: '다다루마: 넉백',
         },
         ships: {
@@ -250,6 +260,7 @@ Options.Triggers.push({
           fr: 'Vaisseaux : Sortez de la mêlée',
           ja: 'エアフォース: 離れる',
           cn: '飞机：钢铁',
+          tc: '飛機：鋼鐵',
           ko: '에어포스: 근접 범위 밖으로',
         },
         ultros: {
@@ -258,6 +269,7 @@ Options.Triggers.push({
           fr: 'Orthros : Encre, dispersez-vous',
           ja: 'オルトロス: インク 散開',
           cn: '章鱼：散开',
+          tc: '章魚：散開',
           ko: '오르트로스: 먹물 산개',
         },
         virus: {
@@ -266,6 +278,7 @@ Options.Triggers.push({
           fr: 'VIRUS',
           ja: 'ウイルス',
           cn: '病毒',
+          tc: '病毒',
           ko: '바이러스',
         },
       },
@@ -296,6 +309,7 @@ Options.Triggers.push({
           fr: 'Add Biblio',
           ja: '雑魚: ビブリオタフ',
           cn: '图书出现',
+          tc: '圖書出現',
           ko: '비블리오 등장',
         },
         dada: {
@@ -304,6 +318,7 @@ Options.Triggers.push({
           fr: 'Add Dada',
           ja: '雑魚: ダダルマー',
           cn: '达达出现',
+          tc: '達達出現',
           ko: '다다루마 등장',
         },
         ships: {
@@ -312,6 +327,7 @@ Options.Triggers.push({
           fr: 'Add Vaisseau',
           ja: '雑魚: エアフォース',
           cn: '飞机出现',
+          tc: '飛機出現',
           ko: '에어포스 등장',
         },
         ultros: {
@@ -320,6 +336,7 @@ Options.Triggers.push({
           fr: 'Add Orthros',
           ja: '雑魚: オルトロス',
           cn: '章鱼出现',
+          tc: '章魚出現',
           ko: '오르트로스 등장',
         },
       },

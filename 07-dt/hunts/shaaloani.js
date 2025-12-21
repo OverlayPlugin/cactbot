@@ -57,6 +57,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     de: 'hinten',
     fr: 'arrière',
     cn: '后',
+    tc: '後',
     ko: '후방',
   },
   rightFlank: {
@@ -64,6 +65,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     de: 'rechte Flanke',
     fr: 'flanc gauche',
     cn: '右侧',
+    tc: '右側',
     ko: '오른쪽 측면',
   },
   leftFlank: {
@@ -71,6 +73,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     de: 'linke Flanke',
     fr: 'flanc droit',
     cn: '左侧',
+    tc: '左側',
     ko: '왼쪽 측면',
   },
   triple: {
@@ -78,6 +81,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     de: '${inOut} + ${dir2} + ${dir3}',
     fr: '${inOut} + ${dir2} + ${dir3}',
     cn: '${inOut} + ${dir2} + ${dir3}',
+    tc: '${inOut} + ${dir2} + ${dir3}',
     ko: '${inOut} + ${dir2} + ${dir3}',
   },
   double: {
@@ -85,6 +89,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     de: '${inOut} + ${dir2}',
     fr: '${inOut} + ${dir2}',
     cn: '${inOut} + ${dir2}',
+    tc: '${inOut} + ${dir2}',
     ko: '${inOut} + ${dir2}',
   },
   awayFrom: {
@@ -92,6 +97,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     de: '${out} + vermeide ${dir}',
     fr: '${out} + évitez ${dir}',
     cn: '${out} + 躲避 ${dir}',
+    tc: '${out} + 躲避 ${dir}',
     ko: '${out} + ${dir} 피하기',
   },
 };
@@ -108,6 +114,7 @@ const ttokrroneDustdevilOutputStrings = {
     de: 'Raus aus der Hitbox + bleib drausen',
     fr: 'Extérieur de la hitbox + restez à l\'extérieur',
     cn: '判定圈外 + 待在外面',
+    tc: '判定圈外 + 待在外面',
     ko: '히트박스 밖으로 + 밖에 있기',
   },
   rotateFront: {
@@ -115,6 +122,7 @@ const ttokrroneDustdevilOutputStrings = {
     de: 'Rotierende Frontal-Cleaves',
     fr: 'Cleave frontal tournant',
     cn: '旋转正面顺劈',
+    tc: '旋轉正面順劈',
     ko: '전방 회전 장판',
   },
   rotateRear: {
@@ -122,6 +130,7 @@ const ttokrroneDustdevilOutputStrings = {
     de: 'Rotierende Hinten-Cleaves',
     fr: 'Cleave arrière tournant',
     cn: '旋转背后顺劈',
+    tc: '旋轉背後順劈',
     ko: '후방 회전 장판',
   },
 };
@@ -170,6 +179,7 @@ Options.Triggers.push({
     de: 'A Rang Hohe Jagd und Ttokrrone Boss FATE',
     fr: 'Chasse de rang A et ALÉA Boss Ttokrrone',
     cn: 'A级狩猎怪和得酷热涅特殊FATE',
+    tc: 'A級狩獵怪和得酷熱涅特殊FATE',
     ko: 'A급 마물, 토크로네 특수돌발',
   },
   initData: () => ({
@@ -207,6 +217,7 @@ Options.Triggers.push({
           de: 'Folge dem Ansturm (danach Rein)',
           fr: 'Suivez la ruée (intérieur ensuite)',
           cn: '跟随冲锋',
+          tc: '跟隨衝鋒',
           ko: '돌진 따라가기 (그리고 안으로)',
         },
       },
@@ -230,6 +241,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: vorwärts (später)',
           fr: 'Marche forcée : Avant (après)',
           cn: '(稍后 强制移动: 前)',
+          tc: '(稍後 強制移動: 前)',
           ko: '강제이동: 앞 (나중에)',
         },
         backward: {
@@ -237,6 +249,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: rückwärts (später)',
           fr: 'Marche forcée : Arrière (après)',
           cn: '(稍后 强制移动: 后)',
+          tc: '(稍後 強制移動: 後)',
           ko: '강제이동: 뒤 (나중에)',
         },
         left: {
@@ -244,6 +257,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: links (später)',
           fr: 'Marche forcée : Gauche (après)',
           cn: '(稍后 强制移动: 左)',
+          tc: '(稍後 強制移動: 左)',
           ko: '강제이동: 왼쪽 (나중에)',
         },
         right: {
@@ -251,6 +265,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: rechts (später)',
           fr: 'Marche forcée : Droite (après)',
           cn: '(稍后 强制移动: 右)',
+          tc: '(稍後 強制移動: 右)',
           ko: '강제이동: 오른쪽 (나중에)',
         },
       },
@@ -272,6 +287,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: vorwärts',
           fr: 'Marche forcée : Avant',
           cn: '强制移动: 前',
+          tc: '強制移動: 前',
           ko: '강제이동: 앞',
         },
         backward: {
@@ -279,6 +295,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: rückwärts',
           fr: 'Marche forcée : Arrière',
           cn: '强制移动: 后',
+          tc: '強制移動: 後',
           ko: '강제이동: 뒤',
         },
         left: {
@@ -286,6 +303,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: links',
           fr: 'Marche forcée : Gauche',
           cn: '强制移动: 左',
+          tc: '強制移動: 左',
           ko: '강제이동: 왼쪽',
         },
         right: {
@@ -293,6 +311,7 @@ Options.Triggers.push({
           de: 'Geistlenkung: rechts',
           fr: 'Marche forcée : Droite',
           cn: '强制移动: 右',
+          tc: '強制移動: 右',
           ko: '강제이동: 오른쪽',
         },
       },
@@ -455,6 +474,7 @@ Options.Triggers.push({
           de: 'Vermeide Verbundene-Kegelangriff',
           fr: 'Évitez le cleave du lien',
           cn: '躲避连线冲锋',
+          tc: '躲避連線衝鋒',
           ko: '직선 장판 피하기',
         },
       },
@@ -507,6 +527,7 @@ Options.Triggers.push({
           de: 'Rechts => Links + Rein',
           fr: 'Droite => Gauche + Intérieur',
           cn: '右 => 左 + 内',
+          tc: '右 => 左 + 內',
           ko: '오른쪽 => 왼쪽 + 안',
         },
       },
@@ -523,6 +544,7 @@ Options.Triggers.push({
           de: 'Links => Rechts + Rein',
           fr: 'Gauche => Droite + Intérieur',
           cn: '左 => 右 + 内',
+          tc: '左 => 右 + 內',
           ko: '왼쪽 => 오른쪽 + 안',
         },
       },
@@ -539,6 +561,7 @@ Options.Triggers.push({
           de: 'Rechts => Links + Raus',
           fr: 'Droite => Gauche + Extérieur',
           cn: '右 => 左 + 外',
+          tc: '右 => 左 + 外',
           ko: '오른쪽 => 왼쪽 + 바깥',
         },
       },
@@ -555,6 +578,7 @@ Options.Triggers.push({
           de: 'Links => Rechts + Raus',
           fr: 'Gauche => Droite + Extérieur',
           cn: '左 => 右 + 外',
+          tc: '左 => 右 + 外',
           ko: '왼쪽 => 오른쪽 + 바깥',
         },
       },
@@ -743,6 +767,7 @@ Options.Triggers.push({
           de: 'Gehe auf die sichere Seite des ersten Ansturms => geh danach Rein',
           fr: 'Allez du côté sûr après le 1er dash => allez à l\'intérieur ensuite',
           cn: '前往首次冲锋两侧 => 躲进去',
+          tc: '前往首次衝鋒兩側 => 躲進去',
           ko: '첫 돌진의 안전지대로 이동 => 그 후 첫 돌진 자리로',
         },
       },
@@ -762,6 +787,7 @@ Options.Triggers.push({
           de: 'Weiche explodierenden Sand-Sphären aus',
           fr: 'Évitez les sphères de sables explosives',
           cn: '躲避沙球爆炸',
+          tc: '躲避沙球爆炸',
           ko: '폭발하는 모래구체 피하기',
         },
       },

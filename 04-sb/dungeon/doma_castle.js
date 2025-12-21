@@ -33,6 +33,7 @@ Options.Triggers.push({
           fr: 'Prenez la tour',
           ja: '塔を踏む',
           cn: '踩塔',
+          tc: '踩塔',
           ko: '장판 들어가기',
         },
         getTowers: {
@@ -41,6 +42,7 @@ Options.Triggers.push({
           fr: 'Prenez les tours',
           ja: '塔を踏む',
           cn: '踩塔',
+          tc: '踩塔',
           ko: '장판 하나씩 들어가기',
         },
       },
@@ -66,6 +68,7 @@ Options.Triggers.push({
           fr: 'Déposez la charge au loin',
           ja: 'マーカーを外に捨てる',
           cn: '将标记放远',
+          tc: '將標記放遠',
           ko: '징 멀리 두고 오기',
         },
       },

@@ -86,6 +86,7 @@ Options.Triggers.push({
           fr: 'Package',
           ja: '集合',
           cn: '分组分摊',
+          tc: '分組分攤',
           ko: '쉐어',
         },
       },

@@ -6,6 +6,7 @@ Options.Triggers.push({
     de: 'Vor der 6.2 Überarbeitung',
     fr: 'Avant le remaniement 6.2',
     cn: '6.2 改版前',
+    tc: '6.2 改版前',
     ko: '6.2 개편 전',
   },
   triggers: [
@@ -21,6 +22,7 @@ Options.Triggers.push({
           fr: 'Cachez vous derrière un pilier de glace',
           ja: '氷柱の後ろに',
           cn: '躲在冰柱后',
+          tc: '躲在冰柱後',
           ko: '얼음 뒤에 숨기',
         },
       },

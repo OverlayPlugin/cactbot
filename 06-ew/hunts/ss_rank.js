@@ -18,6 +18,7 @@ Options.Triggers.push({
     fr: 'Objectifs de chasse SS',
     ja: 'SSモブ',
     cn: 'SS 级狩猎怪',
+    tc: 'SS 級狩獵怪',
     ko: 'SS급 마물',
   },
   comments: {
@@ -25,6 +26,7 @@ Options.Triggers.push({
     de: 'SS Rang Hohe Jagd',
     fr: 'Chasse de rang SS',
     cn: 'SS级狩猎怪',
+    tc: 'SS級狩獵怪',
     ko: 'SS급 마물',
   },
   triggers: [
