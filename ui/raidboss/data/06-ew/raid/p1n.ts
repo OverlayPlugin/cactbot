@@ -74,6 +74,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Faites-vous toucher par le rouge',
           ja: '炎に当たる',
           cn: '去吃火',
+          tc: '去吃火',
           ko: '빨간색 맞기',
         },
         blue: {
@@ -82,6 +83,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Faites-vous toucher par le bleu',
           ja: '氷に当たる',
           cn: '去吃冰',
+          tc: '去吃冰',
           ko: '파란색 맞기',
         },
       },
@@ -109,6 +111,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Placez-vous sur le feu',
           ja: '炎の床へ',
           cn: '站在火',
+          tc: '站在火',
           ko: '빨간색 바닥 위에 서기',
         },
         light: {
@@ -117,6 +120,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Placez-vous sur la lumière',
           ja: '光の床へ',
           cn: '站在光',
+          tc: '站在光',
           ko: '흰색 바닥 위에 서기',
         },
       },

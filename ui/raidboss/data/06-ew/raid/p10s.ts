@@ -132,6 +132,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez une tour',
           ja: '塔踏み',
           cn: '踩塔击飞',
+          tc: '踩塔擊飛',
           ko: '기둥 들어가기',
         },
         avoid: {
@@ -140,6 +141,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Évitez les tours',
           ja: '塔回避',
           cn: '远离塔',
+          tc: '遠離塔',
           ko: '기둥 피하기',
         },
       },
@@ -194,6 +196,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Orientez le lien à l\'extérieur - ${dir}',
           ja: '線伸ばし ${dir}',
           cn: '向 ${dir} 外侧引导',
+          tc: '向 ${dir} 外側引導',
           ko: '선을 ${dir}으로',
         },
         default: {
@@ -202,6 +205,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Orientez le lien à l\'extérieur',
           ja: '線伸ばし',
           cn: '向外引导',
+          tc: '向外引導',
           ko: '선을 바깥쪽으로',
         },
         west: {
@@ -210,6 +214,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche/Ouest',
           ja: '左/西へ',
           cn: '左',
+          tc: '左',
           ko: '왼쪽/서쪽',
         },
         east: {
@@ -218,6 +223,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite/Est',
           ja: '右/東へ',
           cn: '右',
+          tc: '右',
           ko: '오른쪽/동쪽',
         },
       },
@@ -236,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cassez les liens',
           ja: '線切る',
           cn: '截断丝线',
+          tc: '截斷絲線',
           ko: '선 끊기',
         },
       },
@@ -279,6 +286,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package',
           ja: 'あたまわり',
           cn: '分摊连线',
+          tc: '分攤連線',
           ko: '쉐어',
         },
       },
@@ -304,6 +312,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Superposez les toiles',
           ja: 'ウェブ重なる',
           cn: '用网搭桥',
+          tc: '用網搭橋',
           ko: '거미줄 겹치기',
         },
       },
@@ -332,6 +341,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Écartez-vous pour les toiles',
           ja: 'ウェブ散会',
           cn: '网分散',
+          tc: '網分散',
           ko: '거미줄 산개',
         },
       },
@@ -367,6 +377,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Packez-vous en ligne',
           ja: '直線あたまわり',
           cn: '直线分摊',
+          tc: '直線分攤',
           ko: '직선 쉐어',
         },
       },
@@ -428,6 +439,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(Écartez-vous => Partenaires, pour après)',
           ja: '(散会 => ペア)',
           cn: '(稍后 分散 => 分摊)',
+          tc: '(稍後 分散 => 分攤)',
           ko: '(곧 산개 => 파트너)',
         },
         partnersThenSpread: {
@@ -436,6 +448,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(Partenaires => Écartez-vous, pour après)',
           ja: '(ペア => 散会)',
           cn: '(稍后 分摊 => 分散)',
+          tc: '(稍後 分攤 => 分散)',
           ko: '(곧 파트너 => 산개)',
         },
       },
@@ -475,6 +488,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(Écartez-vous => Package par rôle (${player1}, ${player2}), pour après)',
           ja: '(散会 => 4:4あたまわり (${player1}, ${player2}))', // FIXME
           cn: '(稍后 分散 => 四人分摊 (${player1}, ${player2}))',
+          tc: '(稍後 分散 => 四人分攤 (${player1}, ${player2}))',
           ko: '(곧 산개 => 직업군별 쉐어 (${player1}, ${player2}))',
         },
         stackThenSpread: {
@@ -483,6 +497,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(Package par rôle (${player1}, ${player2}) => Écartez-vous, pour après)',
           ja: '(4:4あたまわり (${player1}, ${player2}) => 散会)', // FIXME
           cn: '(稍后 四人分摊 (${player1}, ${player2}) => 分散)',
+          tc: '(稍後 四人分攤 (${player1}, ${player2}) => 分散)',
           ko: '(곧 직업군별 쉐어 (${player1}, ${player2}) => 산개)',
         },
       },
@@ -512,6 +527,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Écartez-vous => Package par rôle (${player1}, ${player2})',
           ja: '散会 => 4:4あたまわり (${player1}, ${player2})', // FIXME
           cn: '分散 => 四人分摊 (${player1}, ${player2})',
+          tc: '分散 => 四人分攤 (${player1}, ${player2})',
           ko: '산개 => 직업군별 쉐어 (${player1}, ${player2})',
         },
         spreadThenPartners: {
@@ -520,6 +536,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Écartez-vous => Partenaires',
           ja: '散会 => ペア',
           cn: '分散 => 分摊',
+          tc: '分散 => 分攤',
           ko: '산개 => 파트너',
         },
       },
@@ -543,6 +560,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Partenaires => Écartez-vous',
           ja: 'ペア => 散会',
           cn: '分摊 => 分散',
+          tc: '分攤 => 分散',
           ko: '파트너 => 산개',
         },
       },
@@ -569,6 +587,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package par rôle (${player1}, ${player2}) => Écartez-vous',
           ja: '4:4あたまわり (${player1}, ${player2}) => 散会', // FIXME
           cn: '四人分摊 (${player1}, ${player2}) => 分散',
+          tc: '四人分攤 (${player1}, ${player2}) => 分散',
           ko: '직업군별 쉐어 (${player1}, ${player2}) => 산개',
         },
       },
@@ -602,6 +621,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Partenaires',
           ja: 'ペア',
           cn: '分摊',
+          tc: '分攤',
           ko: '파트너',
         },
         stack: {
@@ -610,6 +630,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package par rôle (${player1}, ${player2})',
           ja: '4:4あたまわり (${player1}, ${player2})', // FIXME
           cn: '四人分摊 (${player1}, ${player2})',
+          tc: '四人分攤 (${player1}, ${player2})',
           ko: '직업군별 쉐어 (${player1}, ${player2})',
         },
       },
@@ -645,6 +666,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Sur les lignes (évitez les lasers)',
           ja: 'レーザー回避(マスの境界の上)',
           cn: '站在线上（躲避激光）',
+          tc: '站在線上（躲避雷射）',
           ko: '경계선 위 (레이저 피하기)',
         },
         boxes: {
@@ -653,6 +675,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dans les carrés (évitez les lasers)',
           ja: 'レーザー回避(マスの内側)',
           cn: '站方格内（躲避激光）',
+          tc: '站方格內（躲避雷射）',
           ko: '네모칸 안 (레이저 피하기)',
         },
       },

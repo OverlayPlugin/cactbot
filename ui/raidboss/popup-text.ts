@@ -126,6 +126,14 @@ const raidbossInstructions: { [lang in Lang]: string[] } = {
     '在支持的区域中会自动加载时间轴和触发器。',
     '可在盛夏农庄使用/countdown命令测试该raidboss模块。',
   ],
+  tc: [
+    '請依照以下步驟操作：',
+    '這是用於調整浮動視窗大小的除錯用文字',
+    '當你鎖定此藍色背景的浮動視窗後',
+    '這些文字將會消失。',
+    '在支援的區域中會自動載入時間軸與觸發器。',
+    '可在盛夏農莊使用 /countdown 指令測試此 raidboss 模組。',
+  ],
   ko: [
     '<조작 설명>',
     '크기 조정을 위한 디버그 창입니다',
@@ -1552,6 +1560,7 @@ export class PopupText {
         fr: ' puis ',
         ja: 'や',
         cn: '然后',
+        tc: '然後',
         ko: ' 그리고 ',
       };
       triggerHelper.ttsText = triggerHelper.ttsText.replace(

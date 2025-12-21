@@ -1,7 +1,7 @@
 import path from 'path';
 
 import { ConsoleLogger, LogLevelKey } from './console_logger';
-import { getCnTable, getKoTable } from './csv_util';
+import { getCnTable, getKoTable, getTcTable } from './csv_util';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _PET_NAMES: OutputFileAttributes = {
@@ -46,6 +46,7 @@ type OutputPetNames = {
   en: string[];
   fr: string[];
   ja: string[];
+  tc: string[];
   ko: string[];
 };
 
@@ -57,10 +58,13 @@ const fetchLocaleCsvTables = async () => {
   log.debug(`Table: ${_LOCALE_TABLE} | Query columns: [${_LOCALE_COLUMNS.toString()}]`);
   log.debug('Fetching \'cn\' table...');
   const cnPet = await getCnTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
+  log.debug('Fetching \'tc\' table...');
+  const tcPet = await getTcTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
   log.debug('Fetching \'ko\' table...');
   const koPet = await getKoTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
   return {
     cn: cnPet,
+    tc: tcPet,
     ko: koPet,
   };
 };
@@ -75,6 +79,7 @@ const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
     en: [],
     fr: [],
     ja: [],
+    tc: [],
     ko: [],
   };
 
@@ -103,6 +108,10 @@ const assembleData = async (apiData: XivApiPet): Promise<OutputPetNames> => {
   for (const name of Object.keys(localeCsvTables.cn).filter((k) => k !== '')) {
     formattedData.cn.push(name);
     log.debug(`Collected 'cn' pet data for ${name}`);
+  }
+  for (const name of Object.keys(localeCsvTables.tc).filter((k) => k !== '')) {
+    formattedData.tc.push(name);
+    log.debug(`Collected 'tc' pet data for ${name}`);
   }
   for (const name of Object.keys(localeCsvTables.ko).filter((k) => k !== '')) {
     formattedData.ko.push(name);

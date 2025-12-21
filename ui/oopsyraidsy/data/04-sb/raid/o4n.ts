@@ -41,6 +41,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Dissipation du Glas manquée!',
             ja: '死の宣告',
             cn: '没解死宣',
+            tc: '沒解死宣',
             ko: '죽음의 선고',
           },
         };
@@ -61,6 +62,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Repoussé(e) !',
             ja: '落ちた',
             cn: '击退坠落',
+            tc: '擊退墜落',
             ko: '넉백됨',
           },
         };

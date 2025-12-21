@@ -52,6 +52,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Oiselet de feu lié',
             ja: '鳥と線',
             cn: '火灵鸟连线',
+            tc: '火靈鳥連線',
             ko: '화령조 선 연결됨',
           },
         };

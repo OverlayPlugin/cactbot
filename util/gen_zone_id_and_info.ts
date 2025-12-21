@@ -3,7 +3,7 @@ import path from 'path';
 import { LocaleText } from '../types/trigger';
 
 import { ConsoleLogger, LogLevelKey } from './console_logger';
-import { cleanName, getCnTable, getKoTable } from './csv_util';
+import { cleanName, getCnTable, getKoTable, getTcTable } from './csv_util';
 import { OutputFileAttributes, XivApi } from './xivapi';
 import Overrides from './zone_overrides';
 
@@ -100,6 +100,7 @@ type TTToCFCIDMap = {
 
 type LocaleCsvNames = {
   cn?: string | undefined;
+  tc?: string | undefined;
   ko?: string | undefined;
 };
 
@@ -217,6 +218,12 @@ const fetchLocaleCsvTables = async () => {
     _LOCALE_PN_INPUT_COLS,
     _LOCALE_PN_OUTPUT_COLS,
   );
+  log.debug(`Fetching 'tc' ${_LOCALE_PN_TABLE} table...`);
+  const tcPlaceName = await getTcTable(
+    _LOCALE_PN_TABLE,
+    _LOCALE_PN_INPUT_COLS,
+    _LOCALE_PN_OUTPUT_COLS,
+  );
   log.debug(`Fetching 'ko' ${_LOCALE_PN_TABLE} table...`);
   const koPlaceName = await getKoTable(
     _LOCALE_PN_TABLE,
@@ -232,6 +239,12 @@ const fetchLocaleCsvTables = async () => {
     _LOCALE_CFC_INPUT_COLS,
     _LOCALE_CFC_OUTPUT_COLS,
   );
+  log.debug(`Fetching 'tc' ${_LOCALE_CFC_TABLE} table...`);
+  const tcCfc = await getTcTable(
+    _LOCALE_CFC_TABLE,
+    _LOCALE_CFC_INPUT_COLS,
+    _LOCALE_CFC_OUTPUT_COLS,
+  );
   log.debug(`Fetching 'ko' ${_LOCALE_CFC_TABLE} table...`);
   const koCfc = await getKoTable(
     _LOCALE_CFC_TABLE,
@@ -240,8 +253,10 @@ const fetchLocaleCsvTables = async () => {
   );
   return {
     cnPlaceName: cnPlaceName,
+    tcPlaceName: tcPlaceName,
     koPlaceName: koPlaceName,
     cnCfc: cnCfc,
+    tcCfc: tcCfc,
     koCfc: koCfc,
   };
 };
@@ -594,12 +609,18 @@ const generateZoneInfoMap = async (
       // PlaceName data from the cn/ko csvs could be undefined or empty string.
       // In either case, we'll ignore it.
       const cnPlaceName = localeCsvTables.cnPlaceName[placeId]?.placeName ?? '';
+      const tcPlaceName = localeCsvTables.tcPlaceName[placeId]?.placeName ?? '';
       const koPlaceName = localeCsvTables.koPlaceName[placeId]?.placeName ?? '';
       const localePlaceNames: LocaleCsvNames = {};
       if (cnPlaceName !== '')
         localePlaceNames['cn'] = cnPlaceName;
       else
         log.debug(`No 'cn' name data available for ${enName}`);
+
+      if (tcPlaceName !== '')
+        localePlaceNames['tc'] = tcPlaceName;
+      else
+        log.debug(`No 'tc' name data available for ${enName}`);
 
       if (koPlaceName !== '')
         localePlaceNames['ko'] = koPlaceName;
@@ -635,12 +656,17 @@ const generateZoneInfoMap = async (
       // CFC data from the cn/ko csvs could be undefined or empty string.
       // In either case, we'll ignore it.
       const cnCfcName = localeCsvTables.cnCfc[cfcId]?.cfcName ?? '';
+      const tcCfcName = localeCsvTables.tcCfc[cfcId]?.cfcName ?? '';
       const koCfcName = localeCsvTables.koCfc[cfcId]?.cfcName ?? '';
       const localeCfcNames: LocaleCsvNames = {};
       if (cnCfcName !== '')
         localeCfcNames['cn'] = cnCfcName;
       else
         log.debug(`No 'cn' name data available for ${enName}`);
+      if (tcCfcName !== '')
+        localeCfcNames['tc'] = tcCfcName;
+      else
+        log.debug(`No 'tc' name data available for ${enName}`);
       if (koCfcName !== '')
         localeCfcNames['ko'] = koCfcName;
       else

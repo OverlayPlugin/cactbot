@@ -10,12 +10,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// @TODO:
-
-// Could get a slightly more accurate prediction for add phase train stop location
-// by adding additional rotation based on delta time between the mechanic headmarker
-// and the tank headmarkers
-
 // Train cars are 20y x 30y
 // Boss is 10y north of edge
 const arenas = {
@@ -51,6 +45,14 @@ const arenas = {
     y: 350,
   },
 } as const;
+
+const normalizeDelta = (a: number): number => {
+  const TAU = Math.PI * 2;
+  a = (a + Math.PI) % TAU;
+  if (a < 0)
+    a += TAU;
+  return a - Math.PI;
+};
 
 export interface Data extends RaidbossData {
   hailNeedMotion: boolean;
@@ -100,6 +102,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: 'Bait Puddles',
+          cn: '诱导雷圈',
         },
       },
     },
@@ -192,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stored ${mech}',
+          cn: '已储存 ${mech}',
         },
         pairs: Outputs.stackPartner,
         spread: Outputs.spread,
@@ -209,6 +213,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['B266', 'B280'], capture: true },
       condition: (data) => data.phase === 'car1',
+      durationSeconds: 11.1,
       infoText: (data, matches, output) =>
         output.text!({
           mech1: output[matches.id === 'B266' ? 'knockback' : 'drawIn']!(),
@@ -217,6 +222,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         unknown: Outputs.unknown,
         knockback: Outputs.knockback,
@@ -239,6 +245,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['B271', 'B272', 'B273', 'B276'], capture: false },
       condition: (data) => data.phase === 'car2' && data.car2MechCount === 1,
+      durationSeconds: 9.2,
       infoText: (data, _matches, output) => output.text!({ turretDir: output[data.turretDir]!() }),
       run: (data) => data.car2MechCount++,
       outputStrings: {
@@ -246,6 +253,7 @@ const triggerSet: TriggerSet<Data> = {
         west: Outputs.west,
         text: {
           en: 'LoS ${turretDir} => Tankbusters',
+          cn: '${turretDir} 箱体 => 双T死刑',
         },
       },
     },
@@ -254,6 +262,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['B266', 'B280'], capture: true },
       condition: (data) => data.phase === 'car2',
+      durationSeconds: 11.1,
       infoText: (data, matches, output) => {
         let mech1;
         if (matches.id === 'B266') {
@@ -271,12 +280,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'LoS ${turretDir} => ${mech1} => ${mech2}',
+          cn: '${turretDir} 箱体 => ${mech1} => ${mech2}',
         },
         express: {
           en: '${knockback} => Dodge Lasers',
+          cn: '${knockback} => 躲避激光',
         },
         windpipe: {
           en: '${drawIn} => Away from Front',
+          cn: '${drawIn} => 远离前方',
         },
         unknown: Outputs.unknown,
         east: Outputs.east,
@@ -350,6 +362,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         text: {
           en: 'Train cleaves from ${dir}',
+          cn: '火车从 ${dir} 攻击',
         },
       },
     },
@@ -357,6 +370,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Add Mechanics',
       type: 'HeadMarker',
       netRegex: { id: ['027D', '027E'], capture: true },
+      durationSeconds: 6.5,
       infoText: (data, matches, output) => {
         const addMech = matches.id === '027D' ? 'healerStacks' : 'spread';
         const mech = data.addCleaveOnMe ? output.cleave!() : output[addMech]!();
@@ -378,6 +392,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         text: {
           en: 'Train ${dir}, ${mech}',
+          cn: '火车 ${dir}, ${mech}',
         },
       },
     },
@@ -404,10 +419,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Derailment Siege Car3',
       type: 'StartsUsing',
       netRegex: { id: 'B250', capture: false },
+      // Technically platform destroy hits 15.1s after
+      // but if you're not in the teleporter by that point you're dead anyways.
+      durationSeconds: 15,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Tower x3 => Next Platform',
+          cn: '踩塔 x3 => 下一节车厢',
         },
       },
     },
@@ -416,11 +435,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Derailment Siege Car4',
       type: 'StartsUsing',
       netRegex: { id: 'B284', capture: false },
+      // Technically 17.2s
+      durationSeconds: 17.1,
       infoText: (_data, _matches, output) => output.text!(),
       run: (data) => data.hailActorId = '',
       outputStrings: {
         text: {
           en: 'Tower x4 => Next Platform',
+          cn: '踩塔 x4 => 下一节车厢',
         },
       },
     },
@@ -428,10 +450,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Headlight',
       type: 'StartsUsing',
       netRegex: { id: 'B27A', capture: false },
+      durationSeconds: 9.6,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Down => Up',
+          cn: '先下 => 上',
         },
       },
     },
@@ -439,10 +463,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Thunderous Breath',
       type: 'StartsUsing',
       netRegex: { id: 'B277', capture: false },
+      durationSeconds: 9.6,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Up => Down',
+          cn: '先上 => 下',
         },
       },
     },
@@ -450,7 +476,10 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Arcane Revelation',
       type: 'StartsUsing',
       netRegex: { id: 'B9A7', capture: false },
-      run: (data) => data.hailActorId = 'need',
+      run: (data) => {
+        data.hailActorId = 'need';
+        data.hailLastPos = 'dirN';
+      },
     },
     // For Hail of Thunder ground AoE, B25[89A] determine 2/3/4 movements.
     {
@@ -490,41 +519,38 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { capture: true },
       condition: (data, matches) => data.hailActorId === matches.id && data.hailNeedMotion,
       preRun: (data) => data.hailNeedMotion = false,
+      durationSeconds: (data) => {
+        if (data.hailMoveCount === 2)
+          return 7.5;
+        if (data.hailMoveCount === 3)
+          return 10.5;
+        return 13.5;
+      },
+      suppressSeconds: 14,
       infoText: (data, _matches, output) => {
         // Easy cases first
         // data.hailMoveCount === 4, no-op
         const oldIdx = Directions.outputCardinalDir.indexOf(data.hailLastPos);
+
         if (data.hailMoveCount === 2) {
           data.hailLastPos = Directions.outputCardinalDir[(oldIdx + 2) % 4] ?? 'unknown';
         } else if (data.hailMoveCount === 3) {
           // Now we determine CW or CCW
-          const actor = data.actorPositions[data.addTrainId];
-          if (actor === undefined)
+          const actor = data.actorPositions[data.hailActorId];
+          if (actor === undefined) {
+            console.error('No actor position for hail of thunder calc');
             return;
-
+          }
           const arena = data.phase === 'car4' ? 4 : 6;
 
-          const oldAngle = (Math.PI * 2) + (Math.PI - ((oldIdx / 4) * (Math.PI * 2)));
-          const newAngle = (Math.PI * 2) +
-            (Math.atan2(actor.x - arenas[arena].x, actor.y - arenas[arena].y));
+          const oldAngle = Math.PI - (oldIdx / 4) * (Math.PI * 2);
+          const newAngle = Math.atan2(actor.x - arenas[arena].x, actor.y - arenas[arena].y);
 
-          if (oldAngle < newAngle) {
-            // Probably CCW, but check for wrap around
-            if ((newAngle - oldAngle) > Math.PI) {
-              // CW instead
-              data.hailLastPos = Directions.outputCardinalDir[(oldIdx + 3) % 4] ?? 'unknown';
-            } else {
-              data.hailLastPos = Directions.outputCardinalDir[(oldIdx + 1) % 4] ?? 'unknown';
-            }
-          } else {
-            // Probably CW, but check for wrap around
-            if ((oldAngle - newAngle) > Math.PI) {
-              // CCW instead
-              data.hailLastPos = Directions.outputCardinalDir[(oldIdx + 1) % 4] ?? 'unknown';
-            } else {
-              data.hailLastPos = Directions.outputCardinalDir[(oldIdx + 3) % 4] ?? 'unknown';
-            }
-          }
+          const delta = normalizeDelta(newAngle - oldAngle);
+          if (delta > 0)
+            data.hailLastPos = Directions.outputCardinalDir[(oldIdx + 1) % 4] ?? 'unknown';
+          else
+            data.hailLastPos = Directions.outputCardinalDir[(oldIdx - 1 + 4) % 4] ?? 'unknown';
         }
 
         const idx = (Directions.outputCardinalDir.indexOf(data.hailLastPos) + 2) % 4;
@@ -533,9 +559,14 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
+        dirN: Outputs.front,
+        dirE: Outputs.right,
+        dirS: Outputs.back,
+        dirW: Outputs.left,
+        unknown: Outputs.unknown,
         text: {
-          en: '${dir} => Stacks',
+          en: '${dir} Safe + Stacks',
+          cn: '${dir} 安全 + 分摊',
         },
       },
     },
@@ -552,10 +583,13 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Derailment Siege Car5',
       type: 'StartsUsing',
       netRegex: { id: 'B285', capture: false },
+      // Technically 17.6s
+      durationSeconds: 17.5,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Tower x5 => Next Platform',
+          cn: '踩塔 x5 => 下一节车厢',
         },
       },
     },
@@ -564,6 +598,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B264', capture: false },
       preRun: (data) => data.psychokinesisCount++,
+      durationSeconds: 7,
       infoText: (data, _matches, output) => {
         if (data.psychokinesisCount !== 2) {
           return output.spreadIntoBait!();
@@ -573,9 +608,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadIntoBait: {
           en: 'Spread AoEs => Bait Puddles',
+          cn: '分散处理黄圈 => 诱导雷圈',
         },
         spreadIntoBuster: {
           en: 'Spread AoEs => Tankbusters',
+          cn: '分散处理黄圈 => 双T死刑',
         },
       },
     },
@@ -584,10 +621,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'DoomtrainEx Derailment Siege Car6',
       type: 'StartsUsing',
       netRegex: { id: 'B286', capture: false },
+      durationSeconds: 11,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Tower x6 => Enrage',
+          cn: '踩塔 x6 => 狂暴',
         },
       },
     },
@@ -596,6 +635,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['B271', 'B272', 'B273', 'B276'], capture: false },
       condition: (data) => data.phase === 'car6',
+      durationSeconds: 6.7,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         if (data.car6MechCount >= 1) {
@@ -607,14 +647,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         up: {
           en: 'Up (dodge turrets)',
+          cn: '左箱体上',
         },
         down: {
           en: 'Down (dodge turrets)',
+          cn: '左箱体侧',
         },
         east: Outputs.east,
         west: Outputs.west,
         text: {
           en: 'LoS ${turretDir}',
+          cn: '${turretDir} 箱体',
         },
       },
     },
@@ -623,6 +666,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['B266', 'B280'], capture: true },
       condition: (data) => data.phase === 'car6',
+      durationSeconds: 11.1,
       infoText: (data, matches, output) => {
         let mech1;
         if (matches.id === 'B266') {
@@ -643,15 +687,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech1} => ${mech2}${mech3}',
+          cn: '${mech1} => ${mech2}${mech3}',
         },
         express: {
           en: '${knockback} => Dodge Lasers',
+          cn: '${knockback} => 躲避激光',
         },
         windpipe: {
           en: '${drawIn} => Away from Front',
+          cn: '${drawIn} => 远离前方',
         },
         tbFollowup: {
           en: ' => ${mech3}',
+          cn: ' => ${mech3}',
         },
         unknown: Outputs.unknown,
         knockback: Outputs.knockback,
@@ -664,98 +712,42 @@ const triggerSet: TriggerSet<Data> = {
   ],
   timelineReplace: [
     {
-      'locale': 'de',
-      'missingTranslations': true,
+      'locale': 'cn',
       'replaceSync': {
-        'Aether': 'Äthersphäre',
-        'Doomtrain': 'Doomtrain',
-        'Kinematic Turret': 'Eskortgeschütz',
+        'Aether': '以太晶球',
+        'Doomtrain': '格莱杨拉波尔',
+        'Kinematic Turret': '护卫炮塔',
       },
       'replaceText': {
-        '\\(bait\\)': '(ködern)',
-        '\\(detonate\\)': '(explodieren)',
-        'Arcane Revelation': 'Ätherausstoß',
-        'Dead Man\'s Express': 'InterBlitz-Express S',
-        'Dead Man\'s Overdraught': 'Toter Übertakt',
-        'Dead Man\'s Windpipe': 'Schneller Sog',
-        'Derail': 'Entgleisung',
-        'Derailment Siege': 'Schienenbruch',
-        'Electray': 'Elektroblitz',
-        'Hail of Thunder': 'Donnerhagel',
-        'Headlight': 'Spitzensignal',
-        'Hyperconductive Plasma': 'Supraleitendes Plasma',
-        'Lightning Burst': 'Blitzknall',
-        'Overdraught': 'Überstrom',
-        'Plummet': 'Abfallen',
-        'Psychokinesis': 'Psychokinese',
-        'Runaway Train': 'Endlose Irrfahrt',
-        'Shockwave': 'Schockwelle',
-        'Third Rail': 'Stromschiene',
-        'Thunderous Breath': 'Gewitteratem',
-        'Turret Crossing': 'Kanonenkreuzung',
-        'Unlimited Express': 'Unregional-Express',
-      },
-    },
-    {
-      'locale': 'fr',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Aether': 'sphère éthérée',
-        'Doomtrain': 'Glasya-Labolas',
-        'Kinematic Turret': 'tourelle d\'escorte',
-      },
-      'replaceText': {
-        'Arcane Revelation': 'Déploiement arcanique',
-        'Dead Man\'s Express': 'Express turbo',
-        'Dead Man\'s Overdraught': 'Surcharge turbo',
-        'Dead Man\'s Windpipe': 'Aspirateur turbo',
-        'Derail': 'Déraillement',
-        'Derailment Siege': 'Déraillement violent',
-        'Electray': 'Rayon électrique',
-        'Hail of Thunder': 'Déluge électrique',
-        'Headlight': 'Regard glacial',
-        'Hyperconductive Plasma': 'Plasma hyperconducteur',
-        'Lightning Burst': 'Explosion électrique',
-        'Overdraught': 'Surcharge débordante',
-        'Plummet': 'Chute',
-        'Psychokinesis': 'Psychokinésie',
-        'Runaway Train': 'Train fou',
-        'Shockwave': 'Onde de choc',
-        'Third Rail': 'Troisième rail',
-        'Thunderous Breath': 'Souffle électrique',
-        'Turret Crossing': 'Tourelles croisées',
-        'Unlimited Express': 'Express illimité',
-      },
-    },
-    {
-      'locale': 'ja',
-      'missingTranslations': true,
-      'replaceSync': {
-        'Aether': 'エーテルスフィア',
-        'Doomtrain': 'グラシャラボラス',
-        'Kinematic Turret': 'エスコートタレット',
-      },
-      'replaceText': {
-        'Arcane Revelation': '魔法陣展開',
-        'Dead Man\'s Express': 'ブーステッド・エクスプレス',
-        'Dead Man\'s Overdraught': 'オーバーブースト',
-        'Dead Man\'s Windpipe': 'ブーステッド・バキューム',
-        'Derail': 'ディレール',
-        'Derailment Siege': 'ディレールパウンド',
-        'Electray': 'エレクトロレイ',
-        'Hail of Thunder': 'サンダーレイン',
-        'Headlight': 'ヘッドライト',
+        '\\(bait\\)': '(诱导)',
+        '\\(detonate\\)': '(爆炸)',
+        'Aetherial Ray': '以太射线',
+        'Aetherochar': '以太炮',
+        'Aetherosote': '以太冲击波',
+        'Arcane Revelation': '魔法阵展开',
+        'Dead Man\'s Blastpipe': '超增压排雾',
+        'Dead Man\'s Express': '超增压急行',
+        'Dead Man\'s Overdraught': '超增压',
+        'Dead Man\'s Windpipe': '超增压抽雾',
+        'Derail(?!ment)': '脱轨',
+        'Derailment Siege': '脱轨捶打',
+        'Electray': '雷转质射线',
+        'Hail of Thunder': '雷光雨',
+        'Headlight': '前照光',
         'Hyperconductive Plasma': '重雷',
-        'Lightning Burst': 'サンダーバースト',
-        'Overdraught': 'オーバーフロウ',
-        'Plummet': '落下',
-        'Psychokinesis': 'サイコキネシス',
-        'Runaway Train': '果てしなき暴走',
-        'Shockwave': '衝撃波',
-        'Third Rail': 'フラッシュサンダー',
-        'Thunderous Breath': 'サンダーブレス',
-        'Turret Crossing': '随伴機出撃',
-        'Unlimited Express': 'アンリミテッドエクスプレス',
+        'Hyperexplosive Plasma': '重爆雷',
+        'Lightning Burst': '雷电爆发',
+        '(?<! )Overdraught': '溢流',
+        '(?<! )Plasma(?! )': '爆雷',
+        'Plasma Beam': '等离子射线',
+        'Plummet': '掉落',
+        'Psychokinesis': '念动反应',
+        'Runaway Train': '无尽狂奔',
+        'Shockwave': '冲击波',
+        'Third Rail': '雷光一闪',
+        'Thunderous Breath': '雷鸣吐息',
+        'Turret Crossing': '炮塔出击',
+        'Unlimited Express': '无控急行',
       },
     },
   ],

@@ -6,6 +6,7 @@ import { Lang } from '../resources/languages';
 const baseGithub = 'https://raw.githubusercontent.com/';
 const intlGithub = 'xivapi/ffxiv-datamining/master/csv/';
 const cnGithub = 'thewakingsands/ffxiv-datamining-cn/master/';
+const tcGithub = 'thewakingsands/ffxiv-datamining-tc/main/';
 const koGithub = 'Ra-Workspace/ffxiv-datamining-ko/master/csv/';
 
 export type Table<RowKey extends string, SubKey extends string | number> = Record<
@@ -134,21 +135,30 @@ export const getIntlTable: GetTableFunc = async (
   return getRemoteTable(url, inputs, outputs);
 };
 
-export const getKoTable: GetTableFunc = (
-  table: string,
-  inputs: (string | number)[],
-  outputs?: string[],
-) => {
-  const url = `${baseGithub}${koGithub}${table}.csv`;
-  return getRemoteTable(url, inputs, outputs);
-};
-
 export const getCnTable: GetTableFunc = (
   table: string,
   inputs: (string | number)[],
   outputs?: string[],
 ) => {
   const url = `${baseGithub}${cnGithub}${table}.csv`;
+  return getRemoteTable(url, inputs, outputs);
+};
+
+export const getTcTable: GetTableFunc = (
+  table: string,
+  inputs: (string | number)[],
+  outputs?: string[],
+) => {
+  const url = `${baseGithub}${tcGithub}${table}.csv`;
+  return getRemoteTable(url, inputs, outputs);
+};
+
+export const getKoTable: GetTableFunc = (
+  table: string,
+  inputs: (string | number)[],
+  outputs?: string[],
+) => {
+  const url = `${baseGithub}${koGithub}${table}.csv`;
   return getRemoteTable(url, inputs, outputs);
 };
 
@@ -172,6 +182,8 @@ export const getLocaleTable: {
 ): Promise<Table<string, string | number>> => {
   if (locale === 'cn')
     return getCnTable(table, inputs, outputs);
+  else if (locale === 'tc')
+    return getTcTable(table, inputs, outputs);
   else if (locale === 'ko')
     return getKoTable(table, inputs, outputs);
   throw new Error(`Invalid locale: ${locale}`);
@@ -181,6 +193,8 @@ export const getRawCsv = async (table: string, locale: Lang): Promise<string> =>
   let url = '';
   if (locale === 'cn')
     url = `${baseGithub}${cnGithub}${table}.csv`;
+  else if (locale === 'tc')
+    url = `${baseGithub}${tcGithub}${table}.csv`;
   else if (locale === 'ko')
     url = `${baseGithub}${koGithub}${table}.csv`;
   else

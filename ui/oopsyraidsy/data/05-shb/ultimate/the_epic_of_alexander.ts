@@ -82,6 +82,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Éthéroplasma lumineux',
             ja: '光性爆雷',
             cn: '光性爆雷',
+            tc: '光性爆雷',
             ko: '빛의 폭뢰',
           },
         };
@@ -119,6 +120,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Poupée morte',
             ja: 'ドールが死んだ',
             cn: '浮士德死亡',
+            tc: '浮士德死亡',
             ko: '인형이 죽음',
           },
         };

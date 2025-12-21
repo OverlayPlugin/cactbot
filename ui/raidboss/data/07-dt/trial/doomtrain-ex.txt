@@ -17,9 +17,9 @@ hideall "--sync--"
 22.4 "Plasma Beam/Dead Man's Blastpipe"
 25.5 "Plasma/Hyperexplosive Plasma"
 31.4 "Dead Man's Overdraught" Ability { id: ["B25F", "B260"], source: "Doomtrain" }
-39.4 "Dead Man's Express/Dead Man's Windpipe" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
-42.4 "Plasma Beam/Dead Man's Blastpipe"
-44.4 "Plasma/Hyperexplosive Plasma"
+39.4 "Dead Man's Windpipe/Dead Man's Express" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+42.4 "Dead Man's Blastpipe/Plasma Beam"
+44.4 "Hyperexplosive Plasma/Plasma"
 52.3 "Unlimited Express" Ability { id: "B270", source: "Doomtrain" }
 52.5 "--untargetable--"
 
@@ -36,9 +36,9 @@ hideall "--sync--"
 95.2 "Electray" Ability { id: "B273", source: "Kinematic Turret" }
 98.1 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
 106.8 "Electray" Ability { id: "B273", source: "Kinematic Turret" }
-107.7 "Dead Man's Express/Dead Man's Windpipe" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
-109.7 "Plasma Beam/Dead Man's Blastpipe"
-112.8 "Plasma/Hyperexplosive Plasma"
+107.7 "Dead Man's Windpipe/Dead Man's Express" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+109.7 "Dead Man's Blastpipe/Plasma Beam"
+112.8 "Hyperexplosive Plasma/Plasma"
 120.7 "Unlimited Express" Ability { id: "B270", source: "Doomtrain" }
 120.9 "--untargetable--"
 
@@ -142,9 +142,9 @@ hideall "--sync--"
 873.0 "Hyperconductive Plasma" Ability { id: "B292", source: "Doomtrain" }
 875.4 "Third Rail (bait)" Ability { id: "B261", source: "Doomtrain" }
 879.4 "Third Rail (detonate)" Ability { id: "B262", source: "Doomtrain" }
-889.3 "Dead Man's Express/Dead Man's Windpipe" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
-891.3 "Plasma Beam/Dead Man's Blastpipe"
-894.4 "Plasma/Hyperexplosive Plasma"
+889.3 "Dead Man's Windpipe/Dead Man's Express" Ability { id: ["B266", "B26D"], source: "Doomtrain" }
+891.3 "Dead Man's Blastpipe/Plasma Beam"
+894.4 "Hyperexplosive Plasma/Plasma"
 903.5 "Headlight/Thunderous Breath" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
 905.9 "Thunderous Breath/Headlight" #Ability { id: ["B279", "B27C"], source: "Doomtrain" }
 914.8 "Lightning Burst" #Ability { id: "B293", source: "Doomtrain" }
