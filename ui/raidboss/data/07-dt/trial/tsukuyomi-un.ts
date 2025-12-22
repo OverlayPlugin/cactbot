@@ -248,7 +248,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) => {
         if (matches.target !== data.me)
           return false;
-        return data.moonlitCount !== undefined && data.moonlitCount >= 4;
+        return data.moonshadowedCount !== undefined && data.moonshadowedCount >= 4;
       },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
