@@ -703,21 +703,24 @@ export class PopupText {
     // User triggers must come last so that they override built-in files.
     this.triggerSets.push(...this.options.Triggers);
 
-    // Eliminate any trigger sets with duplicate ids and record a lookup by id.
-    this.triggerSets = this.triggerSets.filter((triggerSet) => {
-      if (triggerSet.id === undefined)
-        return true;
-      if (this.triggerSetsById[triggerSet.id] !== undefined) {
-        console.log(
-          `${
-            triggerSet.filename ?? '???'
-          } has duplicate triggerSet id ${triggerSet.id}, ignoring triggers`,
-        );
-        return false;
+    // Eliminate any trigger sets with duplicate ids, allowing later ones to override earlier ones.
+    const uniqueById = new Map<string, typeof this.triggerSets[number]>();
+    const noIdList: typeof this.triggerSets = [];
+    for (const triggerSet of this.triggerSets) {
+      if (triggerSet.id === undefined) {
+        noIdList.push(triggerSet);
+        continue;
       }
-      this.triggerSetsById[triggerSet.id] = triggerSet;
-      return true;
-    });
+      const existing = uniqueById.get(triggerSet.id);
+      if (existing !== undefined) {
+        console.log(
+          `Overriding trigger set id '${triggerSet.id}' from '${existing.filename}' with '${triggerSet.filename}'`,
+        );
+      }
+      uniqueById.set(triggerSet.id, triggerSet);
+    }
+    this.triggerSets = [...noIdList, ...uniqueById.values()];
+    this.triggerSetsById = Object.fromEntries(uniqueById);
   }
 
   OnChangeZone(e: EventResponses['ChangeZone']): void {
