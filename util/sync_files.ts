@@ -961,6 +961,8 @@ const zoneReplace: ZoneReplace[] = [
       '2BDD': 'B151', // Lunacy
       '2BDE': 'B152', // Waxing Grudge
       '2BDF': 'B153', // Waning Grudge
+      '2BE0': 'B154', // Lunacy Enrage begins
+      '2BE1': 'B155', // Lunacy Enrage
       '2BE3': 'B157', // --sync--
       '2CA8': 'B158', // Unmoving Troika
       '2CA9': 'B159', // Unmoving Troika
