@@ -62,6 +62,7 @@ const missingOutputFileNames = {
   fr: 'coverage/missing_translations_fr.html',
   ja: 'coverage/missing_translations_ja.html',
   cn: 'coverage/missing_translations_cn.html',
+  tc: 'coverage/missing_translations_tc.html',
   ko: 'coverage/missing_translations_ko.html',
 };
 
@@ -311,6 +312,7 @@ const buildTotals = (coverage: Coverage, missingTranslations: MissingTranslation
     fr: { ...defaultTranslationTotal },
     ja: { ...defaultTranslationTotal },
     cn: { ...defaultTranslationTotal },
+    tc: { ...defaultTranslationTotal },
     ko: { ...defaultTranslationTotal },
   };
 
@@ -625,7 +627,7 @@ const extractTagsAndPulls = async (git: SimpleGit) => {
     };
   }
 
-  const octokit = new (Octokit.plugin(paginateRest))();
+  const octokit = new (Octokit.plugin(paginateRest))({ auth: process.env.GITHUB_TOKEN });
 
   const releases = await octokit.paginate('GET /repos/{owner}/{repo}/releases', {
     owner: 'OverlayPlugin',

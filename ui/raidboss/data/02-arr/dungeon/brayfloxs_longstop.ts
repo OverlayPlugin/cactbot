@@ -15,6 +15,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Vor der 6.1 Überarbeitung',
     fr: 'Avant le remaniement 6.1',
     cn: '6.1改版前',
+    tc: '6.1改版前',
     ko: '6.1 개편 전',
   },
   initData: () => {
@@ -58,6 +59,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purifiez-vous du poison',
           ja: '自分の毒をエスナ',
           cn: '康复自己的毒',
+          tc: '康復自己的毒',
           ko: '독 에스나 하기',
         },
         esunaPoisonOn: {
@@ -66,6 +68,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purifiez le poison sur ${players}',
           ja: '${players}の毒をエスナ',
           cn: '康复${players}',
+          tc: '康復${players}',
           ko: '"${players}" 독 에스나',
         },
       },
@@ -121,6 +124,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Brisez la bulle de ${player}',
           ja: '${player}の泡を破れ',
           cn: '打${player}的泡泡',
+          tc: '打${player}的泡泡',
           ko: '"${player}" 물구슬 깨기',
         },
         breakYourBubble: {
@@ -129,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Brisez votre bulle',
           ja: '自分の泡を破れ',
           cn: '打自己的泡泡',
+          tc: '打自己的泡泡',
           ko: '물구슬 깨기',
         },
       },
@@ -155,6 +160,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Déplacez le boss hors des zones au sol',
           ja: 'ボスを円範囲の外に',
           cn: '把BOSS拉出圈圈',
+          tc: '把BOSS拉出圈圈',
           ko: '장판에 보스가 닿지 않게 하기',
         },
       },
@@ -179,6 +185,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purifiez le poison sur ${player}',
           ja: '${player}の毒をエスナ',
           cn: '康复${player}的毒',
+          tc: '康復${player}的毒',
           ko: '"${player}" 독 에스나',
         },
         esunaYourPoison: {
@@ -187,6 +194,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purifiez-vous du poison',
           ja: '自分の毒をエスナ',
           cn: '康复自己的毒',
+          tc: '康復自己的毒',
           ko: '독 에스나 하기',
         },
       },

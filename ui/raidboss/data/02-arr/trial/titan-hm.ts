@@ -53,6 +53,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Guérison sur ${player}',
           ja: '${player}にエスナ',
           cn: '康复${player}',
+          tc: '康復${player}',
           ko: '${player}에스나',
         },
       },

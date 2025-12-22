@@ -163,6 +163,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Buff nourriture perdue',
             ja: '飯効果が失った',
             cn: '失去食物BUFF',
+            tc: '失去食物BUFF',
             ko: '음식 버프 해제',
           },
         };
@@ -193,6 +194,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'lapin',
             ja: 'うさぎ',
             cn: '兔子',
+            tc: '兔子',
             ko: '토끼',
           },
         };
@@ -233,6 +235,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `a écrasé la résurrection de ${originalRaiserShort}`,
               ja: `${originalRaiserShort}と重複蘇生`,
               cn: `顶掉了${originalRaiserShort}的复活`,
+              tc: `頂掉了${originalRaiserShort}的復活`,
               ko: `${originalRaiserShort}의 부활과 겹침`,
             },
           };
@@ -267,6 +270,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: `a écrasé la résurrection de ${originalRaiserShort}`,
                 ja: `${originalRaiserShort}と重複蘇生`,
                 cn: `顶掉了${originalRaiserShort}的复活`,
+                tc: `頂掉了${originalRaiserShort}的復活`,
                 ko: `${originalRaiserShort}의 부활과 겹침`,
               },
             };
@@ -320,6 +324,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: `a écrasé ${matches.ability} de ${lastSourceShort}`,
                 ja: `${lastSourceShort}の${matches.ability}を上書き`,
                 cn: `顶掉了${lastSourceShort}的${matches.ability}`,
+                tc: `頂掉了${lastSourceShort}的${matches.ability}`,
                 ko: `${lastSourceShort}의 ${matches.ability} 덮어씀`,
               },
             };
@@ -383,6 +388,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 fr: `a écrasé ${matches.ability} de ${lastSourceShort}`,
                 ja: `${lastSourceShort}の${matches.ability}を上書き`,
                 cn: `顶掉了${lastSourceShort}的${matches.ability}`,
+                tc: `頂掉了${lastSourceShort}的${matches.ability}`,
                 ko: `${lastSourceShort}의 ${matches.ability} 덮어씀`,
               },
             };

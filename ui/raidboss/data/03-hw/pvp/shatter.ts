@@ -24,6 +24,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Vor der 6.4 Überarbeitung',
     fr: 'Avant le remaniement 6.4',
     cn: '6.4改版前',
+    tc: '6.4改版前',
     ko: '6.4 개편 전',
   },
   triggers: [
@@ -45,6 +46,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Centre',
           ja: '氷: 中央',
           cn: '大冰: 中央',
+          tc: '大冰: 中央',
           ko: '큰 얼음: 중앙',
         },
         north: {
@@ -53,6 +55,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Nord',
           ja: '氷: 北',
           cn: '大冰: 上方',
+          tc: '大冰: 上方',
           ko: '큰 얼음: 북쪽',
         },
         southeast: {
@@ -61,6 +64,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Sud-Est',
           ja: '氷: 南東',
           cn: '大冰: 右下',
+          tc: '大冰: 右下',
           ko: '큰 얼음: 남동쪽',
         },
         southwest: {
@@ -69,6 +73,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Sud-Ouest',
           ja: '氷: 西南',
           cn: '大冰: 左下',
+          tc: '大冰: 左下',
           ko: '큰 얼음: 남서쪽',
         },
       },

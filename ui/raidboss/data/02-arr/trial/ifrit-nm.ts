@@ -34,6 +34,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Détruisez le clou',
           ja: '炎獄の楔を討つ',
           cn: '击杀火狱之楔',
+          tc: '擊殺火獄之楔',
           ko: '말뚝 파괴하기',
         },
       },

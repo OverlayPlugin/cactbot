@@ -97,6 +97,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'En dessous l\'orbe ${num}',
           ja: '${num}番目の玉へ',
           cn: '靠近第${num}个球',
+          tc: '靠近第${num}個球',
           ko: '${num}번 구슬 밑으로',
         },
         bioOrb: {
@@ -105,6 +106,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez derrière l\'orbe ${num}',
           ja: '${num}番目の玉の後ろへ',
           cn: '去第${num}个球的终点方向贴边',
+          tc: '去第${num}個球的終點方向貼邊',
           ko: '${num}번 구슬 뒤로',
         },
         fireThenBio: {
@@ -113,6 +115,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'En dessous => Allez derrière l\'orbe ${num}',
           ja: 'ボスに貼り付く=> ${num}番目の玉の後ろへ',
           cn: '去脚下 => 去第${num}个球的终点方向贴边',
+          tc: '去腳下 => 去第${num}個球的終點方向貼邊',
           ko: '보스 아래로 => ${num}번 구슬 뒤로',
         },
         bioThenFire: {
@@ -121,6 +124,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Passez derrière => En dessous l\'orbe ${num}',
           ja: '背面へ => ${num}番目の玉へ',
           cn: '去背后 => 靠近第${num}个球',
+          tc: '去背後 => 靠近第${num}個球',
           ko: '보스 뒤로 => ${num}번 구슬 밑으로',
         },
         getUnder: Outputs.getUnder,
@@ -157,6 +161,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez derrière un espace vide',
           ja: '玉のない箇所へ',
           cn: '去没球球的角落贴边',
+          tc: '去沒球球的角落貼邊',
           ko: '빈 공간 끝으로',
         },
       },
@@ -173,6 +178,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez derrière le vrai clone',
           ja: '動いていないドグの後ろへ',
           cn: '去不动的boss后面贴边',
+          tc: '去不動的boss後面貼邊',
           ko: '가만히 있는 분신 뒤로',
         },
       },

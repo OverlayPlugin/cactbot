@@ -3,7 +3,7 @@ import path from 'path';
 import { LocaleObject } from '../types/trigger';
 
 import { ConsoleLogger, LogLevelKey } from './console_logger';
-import { getCnTable, getKoTable } from './csv_util';
+import { getCnTable, getKoTable, getTcTable } from './csv_util';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 const _HUNT: OutputFileAttributes = {
@@ -135,10 +135,13 @@ const fetchLocaleCsvTables = async () => {
   );
   log.debug('Fetching \'cn\' table...');
   const cnBNpcNames = await getCnTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
+  log.debug('Fetching \'tc\' table...');
+  const tcBNpcNames = await getTcTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
   log.debug('Fetching \'ko\' table...');
   const koBNpcNames = await getKoTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
   return {
     cn: cnBNpcNames,
+    tc: tcBNpcNames,
     ko: koBNpcNames,
   };
 };
@@ -194,6 +197,13 @@ const assembleData = async (apiData: XivApiNotoriousMonster): Promise<OutputHunt
       cnLocaleName = cnLocaleEntry['LocaleName'];
     if (typeof cnLocaleName === 'string' && cnLocaleName !== '')
       localeNames['cn'] = cnLocaleName;
+
+    const tcLocaleEntry = localeCsvTables.tc[nameId];
+    let tcLocaleName;
+    if (tcLocaleEntry)
+      tcLocaleName = tcLocaleEntry['LocaleName'];
+    if (typeof tcLocaleName === 'string' && tcLocaleName !== '')
+      localeNames['tc'] = tcLocaleName;
 
     const koLocaleEntry = localeCsvTables.ko[nameId];
     let koLocaleName;

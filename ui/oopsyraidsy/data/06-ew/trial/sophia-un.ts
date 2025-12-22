@@ -68,6 +68,7 @@ const triggerSet: OopsyTriggerSet<OopsyData> = {
             fr: 'Renversé(e)',
             ja: 'ノックバック',
             cn: '击退坠落',
+            tc: '擊退墜落',
             ko: '넉백',
           },
         };

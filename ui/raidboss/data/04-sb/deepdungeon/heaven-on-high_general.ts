@@ -28,6 +28,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Pilier des cieux (Tous niveaux)',
     ja: 'アメノミハシラ (全階層)',
     cn: '天之御柱 (全楼层)',
+    tc: '天之御柱 (全樓層)',
     ko: '천궁탑 (전체 층)',
   },
 
@@ -50,6 +51,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Coffre gigotant apparaît !',
           ja: 'ミミック！',
           cn: '已生成 抖动的宝箱!',
+          tc: '已生成 抖動的寶箱!',
           ko: '꿈틀거리는 보물상자 등장!',
         },
       },
@@ -114,6 +116,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${pomander} dupliquée',
           ja: '${pomander} 被り',
           cn: '${pomander} 重复',
+          tc: '${pomander} 重複',
           ko: '${pomander} 중복',
         },
         // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
@@ -123,6 +126,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Désamorçage',
           ja: '呪印解除',
           cn: '咒印解除',
+          tc: '咒印解除',
           ko: '함정 해제',
         },
         sight: {
@@ -131,6 +135,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Localisation',
           ja: 'サイトロ',
           cn: '全景',
+          tc: '全景',
           ko: '사이트로',
         },
         strength: {
@@ -139,6 +144,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Puissance',
           ja: '自己強化',
           cn: '强化自身',
+          tc: '強化自身',
           ko: '자기 강화',
         },
         steel: {
@@ -147,6 +153,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Protection',
           ja: '防御強化',
           cn: '强化防御',
+          tc: '強化防禦',
           ko: '방어 강화',
         },
         affluence: {
@@ -155,6 +162,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Décèlement',
           ja: '宝箱増加',
           cn: '宝箱增加',
+          tc: '寶箱增加',
           ko: '보물상자 증가',
         },
         flight: {
@@ -163,6 +171,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Sécurisation',
           ja: '敵排除',
           cn: '减少敌人',
+          tc: '減少敵人',
           ko: '적 감소',
         },
         alteration: {
@@ -171,6 +180,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Affaiblissement',
           ja: '敵変化',
           cn: '改变敌人',
+          tc: '改變敵人',
           ko: '적 대체',
         },
         purity: {
@@ -179,6 +189,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Anti-maléfice',
           ja: '解呪',
           cn: '解咒',
+          tc: '解咒',
           ko: '저주 해제',
         },
         fortune: {
@@ -187,6 +198,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Chance',
           ja: '運気上昇',
           cn: '运气上升',
+          tc: '運氣上升',
           ko: '운 상승',
         },
         witching: {
@@ -195,6 +207,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mutation',
           ja: '形態変化',
           cn: '形态变化',
+          tc: '形態變化',
           ko: '적 변형',
         },
         serenity: {
@@ -203,6 +216,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dissipation',
           ja: '魔法効果解除',
           cn: '魔法效果解除',
+          tc: '魔法效果解除',
           ko: '마법 효과 해제',
         },
         intuition: {
@@ -211,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intuition',
           ja: '財宝感知',
           cn: '感知宝藏',
+          tc: '感知寶藏',
           ko: '보물 탐지',
         },
         raising: {
@@ -219,6 +234,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Résurrection',
           ja: 'リレイズ',
           cn: '重生',
+          tc: '重生',
           ko: '리레이즈',
         },
         frailty: {
@@ -227,6 +243,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Incapacité',
           ja: '敵弱体',
           cn: '弱化敌人',
+          tc: '弱化敵人',
           ko: '적 약화',
         },
         concealment: {
@@ -235,6 +252,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Invisibilité',
           ja: 'バニシュ',
           cn: '隐形',
+          tc: '隱形',
           ko: '배니시',
         },
         petrification: {
@@ -243,6 +261,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Pétrification',
           ja: '敵石化',
           cn: '石化敌人',
+          tc: '石化敵人',
           ko: '적 석화',
         },
         unknown: Outputs.unknown,
@@ -275,6 +294,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${magicite} dupliquée',
           ja: '${magicite} 被り',
           cn: '${magicite} 重复',
+          tc: '${magicite} 重複',
           ko: '${magicite} 중복',
         },
         // magicite: https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone
@@ -284,6 +304,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ifrit',
           ja: 'イフリート',
           cn: '伊弗利特',
+          tc: '伊弗利特',
           ko: '이프리트',
         },
         crag: {
@@ -292,6 +313,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Titan',
           ja: 'タイタン',
           cn: '泰坦',
+          tc: '泰坦',
           ko: '타이탄',
         },
         vortex: {
@@ -300,6 +322,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Garuda',
           ja: 'ガルーダ',
           cn: '迦楼罗',
+          tc: '迦樓羅',
           ko: '가루다',
         },
         elder: {
@@ -308,6 +331,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Odin',
           ja: 'オーディン',
           cn: '奥丁',
+          tc: '奧丁',
           ko: '오딘',
         },
         unknown: Outputs.unknown,
@@ -329,6 +353,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'La lanterne de téléportation s\'est activée !',
           ja: '転移が出来ます',
           cn: '转移灯笼已启动',
+          tc: '轉移燈籠已啟動',
           ko: '전송 등불 활성화',
         },
       },
