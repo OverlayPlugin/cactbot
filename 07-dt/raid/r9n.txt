@@ -1,0 +1,226 @@
+### AAC HEAVYWEIGHT (M1)
+# ZoneId: 1320
+
+# -ii B333 B339 B33A B33E B340 B341 B344 B347 B34A B35A B35D B362 B364 B705 B706 B7C7 B9D2 BBA6 BEB7 BEB8 BEB9 BEBA
+# -it "Vamp Fatale" "Coffinmaker" "Fatal Flail"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+10.4 "Killer Voice" Ability { id: "B361", source: "Vamp Fatale" }
+20.5 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+23.9 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+34.0 "Vamp Stomp" Ability { id: "B34B", source: "Vamp Fatale" }
+34.1 "--sync--" Ability { id: "B34C", source: "Vamp Fatale" }
+38.5 "Blast Beat" Ability { id: "B34D", source: "Vampette Fatale" }
+41.9 "Blast Beat" Ability { id: "B34D", source: "Vampette Fatale" }
+45.5 "Blast Beat" Ability { id: "B34D", source: "Vampette Fatale" }
+49.9 "Hardcore" Ability { id: "B35B", source: "Vamp Fatale" }
+55.1 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+64.1 "Sadistic Screech" Ability { id: "B334", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+
+# Coffinmaker mini-phase
+# B332 (jump) manually removed from this part since boss is untargetable
+
+# Coffinmaker mini-phase duration can vary depending on kill time. The currently queued mechanics
+# always finish executing before the rest of the fight resumes.
+
+# There's no good way to handle the mix here. Just let the mini-phase play out, and use a big jump on
+# the StartsUsing of the VFX for Sadistic Screech to jump the timeline
+71.1 "--Coffinmaker targetable--"
+71.3 "--Vamp Fatale untargetable--"
+71.4 "Dead Wake" Ability { id: "B335", source: "Coffinmaker" }
+78.5 "Coffinfiller" Ability { id: "B336", source: "Coffinmaker" }
+81.5 "Coffinfiller" Ability { id: "B336", source: "Coffinmaker" }
+88.9 "Flaying Fry" #Ability { id: "B363", source: "Vamp Fatale" }
+88.9 "Dead Wake" Ability { id: "B335", source: "Coffinmaker" }
+
+96.0 "Coffinfiller" Ability { id: "B337", source: "Coffinmaker" }
+99.0 "Coffinfiller" Ability { id: "B337", source: "Coffinmaker" }
+106.1 "Dead Wake" Ability { id: "B335", source: "Coffinmaker" }
+108.1 "Penetrating Pitch" Ability { id: "B365", source: "Vamp Fatale" }
+
+110.7 label "coffinmaker-loop"
+115.2 "Coffinfiller" #Ability { id: "B338", source: "Coffinmaker" }
+115.2 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+
+118.6 "Coffinfiller" #Ability { id: "B338", source: "Coffinmaker" }
+118.6 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+121.7 "--sync--" StartsUsing { id: "B338", source: "Coffinmaker" } window 2,2 forcejump "coffinmaker-loop"
+
+# Theoretically there's an enrage here, maybe after 3-5 repeats, but I don't have any logs to get exact details for how many
+# Saw it happen in a clip compilation at some point.
+
+294.1 "--sync--" StartsUsing { id: "B333", source: "Vamp Fatale" } window 200,20
+300.0 "Sadistic Screech" Ability { id: "B334", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+
+# Back to normal arena
+305.2 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+314.3 "Crowd Kill" Ability { id: "B33F", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+324.0 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+333.3 "Finale Fatale" Ability { id: "B342", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+
+# Circular arena
+339.3 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+343.3 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+347.3 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+350.3 "Aetherletting" Ability { id: "B348", source: "Vamp Fatale" }
+351.3 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+357.8 "Aetherletting" Ability { id: "B349", source: "Vamp Fatale" }
+362.5 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+365.5 "Aetherletting" Ability { id: "B348", source: "Vamp Fatale" }
+366.5 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+372.9 "Aetherletting" Ability { id: "B349", source: "Vamp Fatale" }
+378.7 "Brutal Rain x4" duration 3
+386.5 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+390.5 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+392.6 "Insatiable Thirst" Ability { id: "B345", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+396.7 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+
+# Flail/Chakram/Buzzsaw phase
+405.7 "Sadistic Screech" Ability { id: "B334", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+418.9 "Plummet" Ability { id: "B33B", source: "Fatal Flail" }
+419.8 "--Flail targetable--"
+427.9 "Killer Voice" Ability { id: "B361", source: "Vamp Fatale" }
+437.0 "Plummet" Ability { id: "B33B", source: "Fatal Flail" }
+437.9 "--Flail targetable--"
+448.0 "Killer Voice" Ability { id: "B361", source: "Vamp Fatale" }
+463.0 "Sadistic Screech" Ability { id: "B334", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+
+# Back to default arena
+468.3 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+477.3 "Crowd Kill" Ability { id: "B33F", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+
+483.0 label "loop"
+483.0 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+491.1 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+494.5 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+501.6 "Hardcore" Ability { id: "B35C", source: "Vamp Fatale" }
+506.8 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+516.1 "Finale Fatale" Ability { id: "B343", source: "Vamp Fatale" }
+
+# Circular arena
+522.1 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+526.1 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+526.1 "Vamp Stomp" Ability { id: "B34B", source: "Vamp Fatale" }
+526.2 "--sync--" Ability { id: "B34C", source: "Vamp Fatale" }
+530.0 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+530.8 "Blast Beat" Ability { id: "B34D", source: "Vampette Fatale" }
+534.1 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+534.3 "--middle--" #Ability { id: "B332", source: "Vamp Fatale" }
+534.3 "Blast Beat" Ability { id: "B34D", source: "Vampette Fatale" }
+537.9 "Blast Beat" Ability { id: "B34D", source: "Vampette Fatale" }
+538.1 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+542.5 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+546.1 "Half Moon" Ability { id: ["B352", "B353", "B354", "B355", "B356", "B357", "B358", "B359"], source: "Vamp Fatale" }
+553.2 "Brutal Rain x5" duration 4
+562.2 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+566.2 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+568.3 "Insatiable Thirst" Ability { id: "B345", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+
+# Back to normal
+577.3 "Hardcore" Ability { id: "B35C", source: "Vamp Fatale" }
+586.4 "Penetrating Pitch" Ability { id: "B365", source: "Vamp Fatale" }
+596.5 "Killer Voice" Ability { id: "B361", source: "Vamp Fatale" }
+601.7 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+611.0 "Finale Fatale" Ability { id: "B343", source: "Vamp Fatale" }
+
+# Circular arena
+617.0 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+621.0 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+624.0 "Aetherletting" Ability { id: "B348", source: "Vamp Fatale" }
+625.0 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+631.4 "Aetherletting" Ability { id: "B349", source: "Vamp Fatale" }
+636.1 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+639.1 "Aetherletting" Ability { id: "B348", source: "Vamp Fatale" }
+640.1 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+646.5 "Aetherletting" Ability { id: "B349", source: "Vamp Fatale" }
+652.3 "Brutal Rain x5" duration 4
+661.0 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+665.0 "Pulping Pulse" Ability { id: "B346", source: "Vamp Fatale" }
+667.2 "Insatiable Thirst" Ability { id: "B345", source: ["Coffinmaker", "Vamp Fatale", "Fatal Flail"] }
+669.2 "--middle--" Ability { id: "B332", source: "Vamp Fatale" } forcejump "loop"
+
+# IGNORED ABILITIES
+# B333 Sadistic Screech: VFX
+# B339 Gravegrazer
+# B33A Gravegrazer
+# B33E Crowd Kill: VFX
+# B340 Finale Fatale: VFX
+# B341 Finale Fatale: VFX
+# B344 Insatiable Thirst: VFX
+# B347 Aetherletting: VFX
+# B34A Vamp Stomp: VFX
+# B35A Hardcore: VFX, small buster
+# B35D Brutal Rain: VFX
+# B362 Flaying Fry: VFX
+# B364 Penetrating Pitch: VFX
+# B705 Dead Wake: VFX
+# B706 Coffinfiller: VFX
+# B7C7 --sync--: Autoattacks during chakrams phase
+# B9D2 --sync--: VFX
+# BBA6 --sync--: Normal autoattacks
+# BEB7 Half Moon: VFX
+# BEB8 Half Moon: VFX
+# BEB9 Half Moon: VFX
+# BEBA Half Moon: VFX
+
+# ALL ENCOUNTER ABILITIES
+# B332 --sync--
+# B333 Sadistic Screech
+# B334 Sadistic Screech
+# B335 Dead Wake
+# B336 Coffinfiller
+# B337 Coffinfiller
+# B338 Coffinfiller
+# B339 Gravegrazer
+# B33A Gravegrazer
+# B33B Plummet
+# B33C Massive Impact
+# B33D Barbed Burst
+# B33E Crowd Kill
+# B33F Crowd Kill
+# B340 Finale Fatale
+# B341 Finale Fatale
+# B342 Finale Fatale
+# B343 Finale Fatale
+# B344 Insatiable Thirst
+# B345 Insatiable Thirst
+# B346 Pulping Pulse
+# B347 Aetherletting
+# B348 Aetherletting
+# B349 Aetherletting
+# B34A Vamp Stomp
+# B34B Vamp Stomp
+# B34C --sync--
+# B34D Blast Beat
+# B352 Half Moon
+# B353 Half Moon
+# B354 Half Moon
+# B355 Half Moon
+# B356 Half Moon
+# B357 Half Moon
+# B358 Half Moon
+# B359 Half Moon
+# B35A Hardcore
+# B35B Hardcore
+# B35C Hardcore
+# B35D Brutal Rain
+# B360 Brutal Rain
+# B361 Killer Voice
+# B362 Flaying Fry
+# B363 Flaying Fry
+# B364 Penetrating Pitch
+# B365 Penetrating Pitch
+# B705 Dead Wake
+# B706 Coffinfiller
+# B7C7 Attack
+# B9D2 --sync--
+# BBA6 Attack
+# BEB7 Half Moon
+# BEB8 Half Moon
+# BEB9 Half Moon
+# BEBA Half Moon
