@@ -312,6 +312,23 @@ const triggerSet: TriggerSet<Data> = {
         'Traverse Worm': 'トラバース・ウォーム',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Forgiven Arrogance': '면죄된 오만',
+        'Forgiven Corruption': '면죄된 부패',
+        'Forgiven Dissention': '면죄된 분쟁',
+        'Forgiven Profanity': '면죄된 모독',
+        'Forgiven Slander': '면죄된 폄훼',
+        'Forgiven Spite': '면죄된 앙심',
+        'Forgiven Unbelief': '면죄된 불신',
+        'Forgiven Vanity': '면죄된 허영심',
+        'Traverse Amemet': '순례길 아메메트',
+        'Traverse Huldu': '순례길 훌두',
+        'Traverse Scissorjaws': '순례길 가위턱',
+        'Traverse Worm': '순례길 지렁이',
+      },
+    },
   ],
 };
 

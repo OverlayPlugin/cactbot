@@ -143,6 +143,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Pilgers Pfad Stein 99/Eminente Trauer',
     cn: '朝圣交错路 第99朝圣路/卓异的悲寂歼灭战',
     tc: '朝聖交錯路 第99朝聖路/卓異的悲寂殲滅戰',
+    ko: '노르브란트 순례길 제99순례길/드높은 비애 토벌전',
   },
 
   initData: () => ({
@@ -644,6 +645,13 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Devoured Eater': '被侵蚀的食罪灵',
         'Eminent Grief': '卓异的悲寂',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Devoured Eater': '잠식된 죄식자',
+        'Eminent Grief': '드높은 비애',
       },
     },
   ],

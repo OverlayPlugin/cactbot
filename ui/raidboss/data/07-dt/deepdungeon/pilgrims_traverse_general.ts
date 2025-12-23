@@ -241,6 +241,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ヘイスト',
           cn: '加速',
           tc: '加速',
+          ko: '헤이스트',
         },
         purification: {
           en: 'Purification',
@@ -249,6 +250,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '浄化の守り',
           cn: '净化护符',
           tc: '淨化護符',
+          ko: '정화의 부적',
         },
         devotion: {
           en: 'Devotion',
@@ -257,6 +259,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '巡礼の導き',
           cn: '朝圣的指引',
           tc: '朝聖的指引',
+          ko: '순례의 인도',
         },
         unknown: Outputs.unknown,
       },
@@ -310,6 +313,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '明敏',
           cn: '敏慧',
           tc: '敏慧',
+          ko: '명민',
         },
         barkbalm: {
           en: 'Barkbalm',
@@ -318,6 +322,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '安寧',
           cn: '安宁',
           tc: '安寧',
+          ko: '평안',
         },
         poisonfruit: {
           en: 'Poisonfruit',
@@ -326,6 +331,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '宿命',
           cn: '宿命',
           tc: '宿命',
+          ko: '숙명',
         },
         unknown: Outputs.unknown,
       },

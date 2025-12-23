@@ -81,6 +81,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus + Vermeide Blumling Explosionen',
           cn: '外 + 避开花小人爆炸',
           tc: '外 + 避開花小人爆炸',
+          ko: '밖으로 + 꼬마 꽃인간 폭발 피하기',
         },
         ...Directions.outputStrings8Dir,
       },
@@ -129,6 +130,12 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Ornamental Leafman': '花人',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Ornamental Leafman': '꽃인간',
       },
     },
   ],

@@ -262,6 +262,24 @@ const triggerSet: TriggerSet<Data> = {
         'Traverse Ya-te-veo': 'トラバース・ヤテベオ',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Invoked Acheron': '부름받은 아케론',
+        'Invoked Archaeodemon': '부름받은 원시 악마',
+        'Invoked Bachelor': '부름받은 총각거미',
+        'Invoked Dahak': '부름받은 다하카',
+        'Invoked Destrudo': '부름받은 데스트루도',
+        'Invoked Dreamer': '부름받은 몽마',
+        'Invoked Gusion': '부름받은 구시온',
+        'Invoked Poppet': '부름받은 꼭두각시',
+        'Invoked Sawtooth': '부름받은 톱날이빨',
+        'Traverse Malevolence': '순례길 악의',
+        'Traverse Triffid': '순례길 트리피드',
+        'Traverse Warg': '순례길 바르그',
+        'Traverse Ya-te-veo': '순례길 야테베오',
+      },
+    },
   ],
 };
 

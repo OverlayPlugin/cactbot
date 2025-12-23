@@ -415,6 +415,24 @@ const triggerSet: TriggerSet<Data> = {
         'Traverse Talos': 'トラバース・タロース',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Forgiven Attachment': '면죄된 애착',
+        'Forgiven Contention': '면죄된 격론',
+        'Forgiven Doubt': '면죄된 의심',
+        'Forgiven Grudge': '면죄된 원한',
+        'Forgiven Imparity': '면죄된 불평등',
+        'Forgiven Riot': '면죄된 난동',
+        'Forgiven Voracity': '면죄된 식탐',
+        'Forgiven Zeal': '면죄된 열의',
+        'Traverse Cliffmole': '순례길 절벽두더지',
+        'Traverse Gnome': '순례길 노움',
+        'Traverse Ngozi': '순례길 응고지',
+        'Traverse Queen': '순례길 여왕벌',
+        'Traverse Talos': '순례길 탈로스',
+      },
+    },
   ],
 };
 

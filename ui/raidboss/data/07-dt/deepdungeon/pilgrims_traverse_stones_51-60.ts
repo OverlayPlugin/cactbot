@@ -199,6 +199,18 @@ const triggerSet: TriggerSet<Data> = {
         'Traverse Sand Serpent': 'トラバース・サンドサーペント',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Ancestral Maliktender': '선조 말리크텐더',
+        'Traverse Gigant': '순례길 거인',
+        'Traverse Howler': '순례길 절규자',
+        'Traverse Monitor': '순례길 감시도마뱀',
+        'Traverse Phorusrhacos': '순례길 포루스라코스',
+        'Traverse Saichania': '순례길 사이카니아',
+        'Traverse Sand Serpent': '순례길 모래구렁이',
+      },
+    },
   ],
 };
 

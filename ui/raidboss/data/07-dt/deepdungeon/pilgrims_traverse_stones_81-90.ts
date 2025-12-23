@@ -352,6 +352,25 @@ const triggerSet: TriggerSet<Data> = {
         'Traverse Rider': 'トラバース・ライダー',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Invoked Arch Demon': '부름받은 아크데몬',
+        'Invoked Baal': '부름받은 바엘',
+        'Invoked Caym': '부름받은 카임',
+        'Invoked Cerberus': '부름받은 케르베로스',
+        'Invoked Gremlin': '부름받은 그렘린',
+        'Invoked Humbaba': '부름받은 훔바바',
+        'Invoked Satana': '부름받은 소악마',
+        'Invoked Succubus': '부름받은 서큐버스',
+        'Invoked Troubadour': '부름받은 방랑음악가',
+        'Malacoda': '말라코다',
+        'Traverse Cama': '순례길 카마',
+        'Traverse Cubus': '순례길 컵푸딩',
+        'Traverse Gnoll': '순례길 놀',
+        'Traverse Rider': '순례길 기수',
+      },
+    },
   ],
 };
 

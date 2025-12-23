@@ -130,6 +130,12 @@ const triggerSet: TriggerSet<Data> = {
         'Forgiven Emulation': 'フォーギヴン・エミュレーション',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Forgiven Emulation': '면죄된 모방',
+      },
+    },
   ],
 };
 
