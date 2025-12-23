@@ -147,17 +147,17 @@ hideall "--Reset--"
 1476.9 "Reprimand" Ability { id: "B12E", source: "Tsukuyomi" } forcejump "phase-3-loop"
 
 # Lunacy Enrage
-2000.0 "--sync--" Ability { id: "B143", source: "Tsukuyomi" } window 2000,0
-2008.0 "Lunacy" Ability { id: "B154", source: "Tsukuyomi" }
-2010.0 label "enrage-loop"
-2010.0 "Lunacy" Ability { id: "B155", source: "Tsukuyomi" } window 0.5,0.5
-2011.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2012.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2013.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2014.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2015.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2016.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2017.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2018.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2019.0 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
-2020.0 "Lunacy" Ability { id: "B155", source: "Tsukuyomi" } window 0.5,0.5 forcejump "enrage-loop"
+2000.0 "--sync--" StartsUsing { id: "B154", source: "Tsukuyomi" } window 2000,0
+2004.7 "Lunacy" Ability { id: "B154", source: "Tsukuyomi" }
+2006.7 label "enrage-loop"
+2006.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2007.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2008.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2009.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2010.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2011.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2012.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2013.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2014.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2015.7 "Lunacy" #Ability { id: "B155", source: "Tsukuyomi" }
+2016.7 "Lunacy" Ability { id: "B155", source: "Tsukuyomi" } window 0.5,0.5 forcejump "enrage-loop"
