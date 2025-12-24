@@ -148,5 +148,17 @@ Options.Triggers.push({
         'Traverse Soldierstone': 'トラバース・ストーンソルジャー',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Forgiven Naivety': '면죄된 순진',
+        'Forgiven Petulance': '면죄된 심술',
+        'Forgiven Plague': '면죄된 역병',
+        'Forgiven Prejudice': '면죄된 편견',
+        'Traverse Inquisitor': '순례길 심문관',
+        'Traverse Pegasus': '순례길 페가수스',
+        'Traverse Soldierstone': '순례길 석병',
+      },
+    },
   ],
 });

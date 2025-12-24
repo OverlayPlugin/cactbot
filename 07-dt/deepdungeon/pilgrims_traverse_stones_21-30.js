@@ -208,5 +208,14 @@ Options.Triggers.push({
         'Traverse Clionid': 'トラバース・クリオニッド',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Forgiven Ambition': '면죄된 야망',
+        'Forgiven Intolerance': '면죄된 편협',
+        'Forgiven Treachery': '면죄된 배반',
+        'Traverse Clionid': '순례길 클리오니드',
+      },
+    },
   ],
 });

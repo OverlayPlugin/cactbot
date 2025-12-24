@@ -106,5 +106,11 @@ Options.Triggers.push({
         'Forgiven Emulation': 'フォーギヴン・エミュレーション',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Forgiven Emulation': '면죄된 모방',
+      },
+    },
   ],
 });
