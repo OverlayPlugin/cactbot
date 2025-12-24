@@ -54,7 +54,7 @@ hideall "--sync--"
 # Amdusias #
 #~~~~~~~~~~#
 
-# -ii B6F7
+# -ii B115 B117 B119 B11E B121 B125 B127 B12C B12D B6F7
 
 # IGNORED ABILITIES
 # B115 Static Charge - Auto maybe?
