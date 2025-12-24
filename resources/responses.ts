@@ -3,7 +3,7 @@
 //   id: 'Some tankbuster',
 //   regex: Regexes.startsUsing({source: 'Ye Olde Bosse', id: '666'}),
 //   condition: Conditions.caresAboutMagical(data),
-//   response: Responses.tankbuster(),
+//   response: Responses.tankBuster(),
 // },
 //
 // Note: Breaking out the condition like this lets people override it if they
