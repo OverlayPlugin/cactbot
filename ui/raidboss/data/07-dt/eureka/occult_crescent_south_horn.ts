@@ -1051,7 +1051,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Lifereaper Soul Sweep',
       type: 'StartsUsing',
-      netRegex: { source: 'Lifereaper', id: 'A4C1', capture: false },
+      netRegex: { source: 'Lifereaper', id: ['A4C1', 'A4C5'], capture: false },
       response: Responses.getBehind(),
     },
     {
@@ -1070,7 +1070,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Lifereaper Sweeping Charge',
       type: 'StartsUsing',
-      netRegex: { source: 'Lifereaper', id: 'A4C[25]', capture: false },
+      netRegex: { source: 'Lifereaper', id: 'A4C2', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
