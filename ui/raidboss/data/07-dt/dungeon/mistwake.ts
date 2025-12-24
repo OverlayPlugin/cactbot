@@ -36,7 +36,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Mistwake Treno Catoblepas Bedeviling Light',
       type: 'StartsUsing',
-      netRegex: { source: 'Treno Catoblepas', id: 'A943', capture: false },
+      netRegex: { source: 'Treno Catoblepas', id: 'A942', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
