@@ -1,3 +1,4 @@
+import Conditions from '../../../../../resources/conditions';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
@@ -50,10 +51,22 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankBuster(),
     },
     {
+      id: 'Mistwake Treno Catoblepas Ray of Lightning On You',
+      type: 'StartsUsing',
+      netRegex: { source: 'Treno Catoblepas', id: 'AF19' },
+      condition: Conditions.targetIsYou(),
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Point laser away from rocks',
+        },
+      },
+    },
+    {
       id: 'Mistwake Treno Catoblepas Ray of Lightning',
       type: 'StartsUsing',
-      // TODO: should this be custom to indicate avoiding the rocks?
       netRegex: { source: 'Treno Catoblepas', id: 'AF19' },
+      condition: Conditions.targetIsNotYou(),
       response: Responses.stackMarkerOn(),
     },
     {
