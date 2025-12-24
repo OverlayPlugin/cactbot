@@ -114,14 +114,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { source: 'Thundergust Griffin', id: 'B0F9' },
       response: Responses.tankBuster(),
     },
-    {
-      id: 'Mistwake Thundergust Griffin Fulgurous Fall',
-      type: 'StartsUsing',
-      // TODO: should we use a custom callout to inform about upcoming
-      // electrogenetic force line through center?
-      netRegex: { source: 'Thundergust Griffin', id: 'B0F5', capture: false },
-      response: Responses.knockback(),
-    },
   ],
   timelineReplace: [],
 };
