@@ -325,6 +325,36 @@ const triggerSet: TriggerSet<Data> = {
         'Viper Poison': '尾蛇毒',
       },
     },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Batsquatch': '大腳野蝠',
+        'Eros': '艾洛斯',
+        'Lozatl': '洛查特爾',
+        // 'The Song of Ox\'Gatorl': '' // FIXME '奥奇斯加托尔之祭坛'
+      },
+      'replaceText': {
+        'Confession Of Faith': '信仰宣言',
+        'Glossolalia': '靈語',
+        'Heat Up': '赤熱化',
+        'Heaving Breath': '吐息',
+        'Hound Out Of Heaven': '蓄力衝撞',
+        'Inhale': '吸引',
+        'Jump': '跳躍',
+        'Lozatl\'s Fury': '洛查特爾的憤怒',
+        'Lozatl\'s Scorn': '洛查特爾的罵聲',
+        'Rend': '撕碎',
+        'Ripper Fang': '裂肉尖牙',
+        'Ronkan Light': '隆卡之光',
+        'Soundwave': '聲波',
+        'Stonefist': '石拳',
+        'Subsonics': '亞音速',
+        'Sun Toss': '投射石塊',
+        'Towerfall': '崩塌',
+        'Viper Poison': '尾蛇毒'
+      },
+    },
   ],
 };
 
