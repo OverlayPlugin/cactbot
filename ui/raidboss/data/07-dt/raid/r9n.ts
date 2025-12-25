@@ -268,6 +268,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         dodge: {
           en: 'Dodge Lines',
+          cn: '避开直线',
         },
       },
     },
@@ -300,6 +301,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${dir1} max melee => ${dir2} max melee',
+          cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
         },
         left: Outputs.left,
         right: Outputs.right,
@@ -370,6 +372,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         away: {
           en: 'Away from bats ${dir1}/${dir2}',
+          cn: '远离蝙蝠 ${dir1}/${dir2}',
         },
       },
     },
@@ -396,6 +399,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         away: {
           en: 'Away from bats ${dir1}/${dir2}/${dir3}',
+          cn: '远离蝙蝠 ${dir1}/${dir2}/${dir3}',
         },
       },
     },
@@ -490,14 +494,50 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Flails ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+          cn: '刺锤 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
         },
         near: {
           en: 'Near',
+          cn: '近',
         },
         far: {
           en: 'Far',
+          cn: '远',
         },
         ...Directions.outputStringsIntercardDir,
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Coffinmaker': '致命刑锯',
+        'Fatal Flail': '致命刺锤',
+        'Vamp Fatale': '致命美人',
+        'Vampette Fatale': '致命蝙蝠',
+      },
+      'replaceText': {
+        '--Coffinmaker targetable--': '--致命刑锯可选中--',
+        '--Flail targetable--': '--致命刺锤可选中--',
+        '--Vamp Fatale untargetable--': '--致命美人不可选中--',
+        'Aetherletting': '以太流失',
+        'Blast Beat': '共振波',
+        'Brutal Rain': '粗暴之雨',
+        'Coffinfiller': '冲出',
+        'Crowd Kill': '全场杀伤',
+        'Dead Wake': '前进',
+        'Finale Fatale': '致命的闭幕曲',
+        'Flaying Fry': '剥蚀的低嗓',
+        'Half Moon': '月之半相',
+        'Hardcore': '硬核之声',
+        'Insatiable Thirst': '贪欲无厌',
+        'Killer Voice': '魅亡之音',
+        'Penetrating Pitch': '尖锐的音调',
+        'Plummet': '掉落',
+        'Pulping Pulse': '碎烂脉冲',
+        'Sadistic Screech': '施虐的尖啸',
+        'Vamp Stomp': '血魅的靴踏音',
       },
     },
   ],
