@@ -142,6 +142,7 @@ hideall "--sync--"
 #~~~~~~~~~~~~~~~~~~~~~#
 
 # -ii B09C B09F B0A1 B0E8 B0ED B0F0 B0F1 B0F2 B0FB B0FC B75F B760 B761
+# -it "Thundergust Griffin"
 
 # TODO: get a longer pull and confirm loop
 
@@ -160,9 +161,11 @@ hideall "--sync--"
 3056.6 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
 3063.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
 3072.8 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" }
+3072.8 "--untargetable--"
 3072.8 "Rush" Ability { id: "B0F6", source: "Thundergust Griffin" }
 3072.9 "Electrifying Flight" Ability { id: "B7AE", source: "Thundergust Griffin" }
 3076.2 "Electrogenetic Force" Ability { id: "B0F8", source: "Thundergust Griffin" }
+3076.3 "--targetable--"
 3082.8 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
 3092.5 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" }
 3098.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
@@ -178,9 +181,11 @@ hideall "--sync--"
 3152.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
 3161.9 label "thundergust-loop"
 3161.9 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" }
+3161.9 "--untargetable--"
 3161.9 "Rush" Ability { id: "B0F6", source: "Thundergust Griffin" }
 3162.0 "Electrifying Flight" Ability { id: "B7AE", source: "Thundergust Griffin" }
 3165.3 "Electrogenetic Force" Ability { id: "B0F8", source: "Thundergust Griffin" }
+3165.4 "--targetable--"
 3171.9 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
 3181.6 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" }
 3187.8 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
