@@ -13,20 +13,6 @@ hideall "--sync--"
 
 # -ii A940 A945 A946
 
-# IGNORED ABILITIES
-# A940 Thunder - Auto?
-# A945 Thunder II - Paired with A944
-# A946 Ray of Lightning - Paired with AF19
-
-# ALL ENCOUNTER ABILITIES
-# A93F Earthquake - Aoe/raidwide
-# A941 Thunder III - Tank buster
-# A942 Bedeviling Light - Petrify unless behind rock
-# A943 Thunder II - Lighting appears
-# A944 Thunder II - Lightning activates
-# AF19 Ray of Lightning - Line stack (breaks rocks)
-# A947 Petribreath - Front conal
-
 # TODO: get a longer run and confirm loop.
 
 # The Shattered Lair will be sealed off
@@ -61,37 +47,26 @@ hideall "--sync--"
 1205.5 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
 1211.6 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" } forcejump "treno-loop"
 
+# IGNORED ABILITIES
+# A940 Thunder - Auto?
+# A945 Thunder II - Paired with A944
+# A946 Ray of Lightning - Paired with AF19
+
+# ALL ENCOUNTER ABILITIES
+# A93F Earthquake - Aoe/raidwide
+# A941 Thunder III - Tank buster
+# A942 Bedeviling Light - Petrify unless behind rock
+# A943 Thunder II - Lighting appears
+# A944 Thunder II - Lightning activates
+# AF19 Ray of Lightning - Line stack (breaks rocks)
+# A947 Petribreath - Front conal
+
+
 #~~~~~~~~~~#
 # Amdusias #
 #~~~~~~~~~~#
 
 # -ii B115 B117 B119 B11E B121 B125 B127 B12C B12D B6F7
-
-# IGNORED ABILITIES
-# B115 Static Charge - Auto maybe?
-# B117 Static Charge - Auto maybe?
-# B119 Thunderclap Concerto - Paired with B118
-# B11E Thunderclap Concerto - Paired with B11D
-# B121 Bio II - Paired with B120
-# B125 Burst - ???
-# B127 Thunder IV - Paired with B126
-# B12C Shockbolt - Paired with B12B
-# B12D --sync-- ???
-# B6F7 --sync-- ???
-
-# ALL ENCOUNTER ABILITIES
-# B118 Thunderclap Concerto - Back Safe lightning attack
-# B11D Thunderclap Concerto - Front Safe lightning attack
-# B11F Thunder -  ???
-# B120 Bio II - Prepare poison explosions
-# B122 Galloping Thunder - Start dashing
-# B123 Galloping Thunder - Dashes
-# B124 --sync-- - Telegraphs for dashes
-# B126 Thunder IV - Aoe (plus explode remaining poison)
-# B128 Thunder III - Prepare triple hit
-# B129 Thunder III - Actual first hit targeting a player
-# B12A Thunder III - Follow-up hits
-# B12B Shockbolt - Tankbuster
 
 # TODO: get a longer pull and confirm loop
 
@@ -136,41 +111,37 @@ hideall "--sync--"
 2148.6 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
 2154.2 "Thunder IV" Ability { id: "B126", source: "Amdusias" } forcejump "amdusias-loop"
 
+# IGNORED ABILITIES
+# B115 Static Charge - Auto maybe?
+# B117 Static Charge - Auto maybe?
+# B119 Thunderclap Concerto - Paired with B118
+# B11E Thunderclap Concerto - Paired with B11D
+# B121 Bio II - Paired with B120
+# B125 Burst - ???
+# B127 Thunder IV - Paired with B126
+# B12C Shockbolt - Paired with B12B
+# B12D --sync-- ???
+# B6F7 --sync-- ???
+
+# ALL ENCOUNTER ABILITIES
+# B118 Thunderclap Concerto - Back Safe lightning attack
+# B11D Thunderclap Concerto - Front Safe lightning attack
+# B11F Thunder -  ???
+# B120 Bio II - Prepare poison explosions
+# B122 Galloping Thunder - Start dashing
+# B123 Galloping Thunder - Dashes
+# B124 --sync-- - Telegraphs for dashes
+# B126 Thunder IV - Aoe (plus explode remaining poison)
+# B128 Thunder III - Prepare triple hit
+# B129 Thunder III - Actual first hit targeting a player
+# B12A Thunder III - Follow-up hits
+# B12B Shockbolt - Tankbuster
+
 #~~~~~~~~~~~~~~~~~~~~~#
 # Thundergust Griffin #
 #~~~~~~~~~~~~~~~~~~~~~#
 
 # -ii B09C B09F B0A1 B0E8 B0ED B0F0 B0F1 B0F2 B0FB B0FC B75F B760 B761
-
-# IGNORED ABILITIES
-# B09C --sync--
-# B09F --sync--
-# B0A1 --sync--
-# B0E8 Mistic Ruin
-# B0ED Lightning Bolt - Paired with B708
-# B0F0 Thunderbolt
-# B0F1 Thunderbolt
-# B0F2 Thunderbolt
-# B0FB attack
-# B0FC attack
-# B75F --sync--
-# B760 --sync--
-# B761 --sync--
-
-# ALL ENCOUNTER ABILITIES
-# B0EB Thunderspark - Aoe, sets up deathwall
-# B0EC High Volts - Spread, sets up lightning orbs
-# B0EE --sync--
-# B0EF Thundering Roar - Activates lightning orbs
-# B0F3 Storm Surge - Spawn lightning cloud on edge
-# B0F4 Electrifying Flight
-# B0F5 Fulgurous Fall - Knockback out of center
-# B0F6 Rush - Related to Fulgurous Fall
-# B0F8 Electrogenetic Force - Line aoe on return
-# B0F9 Golden Talons - Tank buster
-# B704 --sync-- - ??
-# B708 Lightning Bolt - Places lightning orbs
-# B7AE Electrifying Flight - ???
 
 # TODO: get a longer pull and confirm loop
 
@@ -224,3 +195,33 @@ hideall "--sync--"
 3235.5 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
 3241.6 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
 3250.8 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" } forcejump "thundergust-loop"
+
+# IGNORED ABILITIES
+# B09C --sync--
+# B09F --sync--
+# B0A1 --sync--
+# B0E8 Mistic Ruin
+# B0ED Lightning Bolt - Paired with B708
+# B0F0 Thunderbolt
+# B0F1 Thunderbolt
+# B0F2 Thunderbolt
+# B0FB attack
+# B0FC attack
+# B75F --sync--
+# B760 --sync--
+# B761 --sync--
+
+# ALL ENCOUNTER ABILITIES
+# B0EB Thunderspark - Aoe, sets up deathwall
+# B0EC High Volts - Spread, sets up lightning orbs
+# B0EE --sync--
+# B0EF Thundering Roar - Activates lightning orbs
+# B0F3 Storm Surge - Spawn lightning cloud on edge
+# B0F4 Electrifying Flight
+# B0F5 Fulgurous Fall - Knockback out of center
+# B0F6 Rush - Related to Fulgurous Fall
+# B0F8 Electrogenetic Force - Line aoe on return
+# B0F9 Golden Talons - Tank buster
+# B704 --sync-- - ??
+# B708 Lightning Bolt - Places lightning orbs
+# B7AE Electrifying Flight - ???
