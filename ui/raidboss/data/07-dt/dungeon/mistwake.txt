@@ -153,9 +153,9 @@ hideall "--sync--"
 3016.3 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
 3022.9 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
 3023.9 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
-3027.0 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3027.0 "--jump--" Ability { id: "B0EE", source: "Thundergust Griffin" }
 3034.0 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3037.8 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3037.8 "--jump--" Ability { id: "B0EE", source: "Thundergust Griffin" }
 3044.8 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
 3056.6 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
 3063.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
@@ -170,9 +170,9 @@ hideall "--sync--"
 3105.5 "Electrifying Flight" Ability { id: "B0F4", source: "Shock Storm" }
 3112.1 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
 3113.1 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
-3116.5 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3116.5 "--jump--" Ability { id: "B0EE", source: "Thundergust Griffin" }
 3123.5 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3127.7 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3127.7 "--jump--" Ability { id: "B0EE", source: "Thundergust Griffin" }
 3134.8 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
 3146.6 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
 3152.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
@@ -188,9 +188,9 @@ hideall "--sync--"
 3194.6 "Electrifying Flight" Ability { id: "B0F4", source: "Shock Storm" }
 3201.2 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
 3202.2 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
-3205.5 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3205.5 "--jump--" Ability { id: "B0EE", source: "Thundergust Griffin" }
 3212.5 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3216.7 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3216.7 "--jump--" Ability { id: "B0EE", source: "Thundergust Griffin" }
 3223.7 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
 3235.5 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
 3241.6 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
@@ -214,7 +214,7 @@ hideall "--sync--"
 # ALL ENCOUNTER ABILITIES
 # B0EB Thunderspark - Aoe, sets up deathwall
 # B0EC High Volts - Spread, sets up lightning orbs
-# B0EE --sync--
+# B0EE --sync-- - Jump to edge
 # B0EF Thundering Roar - Activates lightning orbs
 # B0F3 Storm Surge - Spawn lightning cloud on edge
 # B0F4 Electrifying Flight
