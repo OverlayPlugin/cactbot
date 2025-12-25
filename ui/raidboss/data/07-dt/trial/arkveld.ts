@@ -106,6 +106,32 @@ const triggerSet: TriggerSet<Data> = {
         'Wyvern\'s Weal': '龙闪炮',
       },
     },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Guardian Arkveld': '수호룡 알슈베르도',
+      },
+      'replaceText': {
+        '\\(aoes\\)': '(장판)',
+        '\\(dash\\)': '(돌진)',
+        '\\(edge\\)': '(구석)',
+        '\\(raidwide\\)': '(전체공격)',
+        'Aetheric Resonance': '지맥 공명',
+        'Chainblade Blow': '사슬날 매질',
+        'Chainblade Charge': '사슬날 내리찍기',
+        'Forged Fury': '수호룡 난격',
+        'Guardian Resonance': '수호룡 공명',
+        'Roar': '포효',
+        'Rush': '돌진',
+        'Siegeflight': '사슬날 비상 돌진',
+        'Steeltail Thrust': '꼬리 내려치기',
+        'Wild Energy': '용빛 발산',
+        'Wrathful Rattle': '강화 쇄곡용섬',
+        'Wyvern\'s Ouroblade': '회전 사슬날: 용의 섬광',
+        'Wyvern\'s Rattle': '쇄곡용섬',
+        'Wyvern\'s Weal': '용섬포',
+      },
+    },
   ],
 };
 

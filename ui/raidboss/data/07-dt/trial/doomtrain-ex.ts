@@ -539,7 +539,13 @@ const triggerSet: TriggerSet<Data> = {
           return 10.5;
         return 13.5;
       },
-      suppressSeconds: 14,
+      suppressSeconds: (data) => {
+        if (data.hailMoveCount === 2)
+          return 7.5;
+        if (data.hailMoveCount === 3)
+          return 10.5;
+        return 13.5;
+      },
       infoText: (data, _matches, output) => {
         // Easy cases first
         // data.hailMoveCount === 4, no-op
