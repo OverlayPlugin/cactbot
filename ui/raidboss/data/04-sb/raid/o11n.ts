@@ -298,6 +298,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Level Checker': '等級檢測儀',
+        'Omega': '歐米茄',
+        'Rocket Punch': '火箭拳擊'
+      },
+      'replaceText': {
+        'Atomic Ray': '原子射線',
+        'Ballistic Impact': '導彈命中',
+        'Ballistic Missile': '導彈發射',
+        'Blaster': '衝擊波',
+        'Delta Attack': '三角攻擊',
+        'Electric Slide': '歐米茄滑躍',
+        'Executable': '執行程式',
+        'Flamethrower': '火炎放射',
+        'Force Quit': '強制結束',
+        'Mustard Bomb': '芥末炸彈',
+        'Peripheral Synthesis': '生成外設',
+        'Program Loop': '循環程式',
+        'Reformat': '最佳化',
+        'Reset': '初始化',
+        'Rush': '突進',
+        // 'Starboard/Larboard Cannon': '' // FIXME '右/左舷齐射·波动炮'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Engaging Delta Attack protocol': '델타 공격의 필요성을 인정합니다',
