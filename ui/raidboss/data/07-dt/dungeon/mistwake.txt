@@ -11,6 +11,8 @@ hideall "--sync--"
 # Treno Catoblepas #
 #~~~~~~~~~~~~~~~~~~#
 
+# -ii A940 A945 A946
+
 # IGNORED ABILITIES
 # A940 Thunder - Auto?
 # A945 Thunder II - Paired with A944
@@ -25,30 +27,39 @@ hideall "--sync--"
 # AF19 Ray of Lightning - Line stack (breaks rocks)
 # A947 Petribreath - Front conal
 
-# TODO: get a longer run and confirm loop
+# TODO: get a longer run and confirm loop.
 
 # The Shattered Lair will be sealed off
 1000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "14EA" } window 1000,1
-1011.0 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
-1020.0 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
-1022.0 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
-1034.0 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
-1040.0 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
-1048.0 "Thunder III" Ability { id: "A941", source: "Treno Catoblepas" }
-1056.0 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
-1058.0 label "treno-loop"
-1058.0 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
-1070.0 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
-1078.0 "Ray of Lightning" Ability { id: "AF19", source: "Treno Catoblepas" }
-1086.0 "Petribreath" Ability { id: "A947", source: "Treno Catoblepas" }
-1096.0 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
-1097.0 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
-1109.0 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
-1115.0 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
-1123.0 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
-1134.0 "Thunder III" Ability { id: "A941", source: "Treno Catoblepas" }
-1144.0 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
-1146.0 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" } forcejump "treno-loop"
+1006.4 "--sync--" StartsUsing { id: "A93F", source: "Treno Catoblepas" }
+1011.1 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
+1020.9 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
+1022.3 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
+1034.1 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
+1040.2 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
+1048.3 "Thunder III" Ability { id: "A941", source: "Treno Catoblepas" }
+1057.0 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
+1058.4 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
+1070.2 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
+1078.4 "Ray of Lightning" Ability { id: "AF19", source: "Treno Catoblepas" }
+1086.8 "Petribreath" Ability { id: "A947", source: "Treno Catoblepas" }
+1096.6 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
+1098.0 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
+1109.8 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
+1115.9 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
+1124.0 label "treno-loop"
+1124.0 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
+1135.1 "Thunder III" Ability { id: "A941", source: "Treno Catoblepas" }
+1144.8 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
+1146.2 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
+1158.0 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
+1166.1 "Ray of Lightning" Ability { id: "AF19", source: "Treno Catoblepas" }
+1174.5 "Petribreath" Ability { id: "A947", source: "Treno Catoblepas" }
+1182.6 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" }
+1192.3 "--sync--" Ability { id: "A943", source: "Treno Catoblepas" }
+1193.7 "Thunder II" Ability { id: "A944", source: "Treno Catoblepas" }
+1205.5 "Bedeviling Light" Ability { id: "A942", source: "Treno Catoblepas" }
+1211.6 "Earthquake" Ability { id: "A93F", source: "Treno Catoblepas" } forcejump "treno-loop"
 
 #~~~~~~~~~~#
 # Amdusias #
@@ -86,32 +97,44 @@ hideall "--sync--"
 
 # Overture Plaza will be sealed off
 2000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "14EB" } window 2000,1
-# Sync up with initial cast
-2008.3 "--sync--" StartsUsing { id: ["B118", "B11D"], source: "Amdusias" }
+# Sync up with first cast
+2008.0 "--sync--" StartsUsing { id: ["B118", "B11D"], source: "Amdusias" }
 2013.0 "Thunderclap Concerto" Ability { id: ["B118", "B11D"], source: "Amdusias" }
-2025.0 "Thunderclap Concerto" Ability { id: ["B118", "B11D"], source: "Amdusias" }
-2041.0 label "amdusias-loop"
-2041.0 "Bio II" Ability { id: "B120", source: "Amdusias" }
-2045.0 "--sync--" #Ability { id: "B124", source: "Amdusias" }
-2047.0 "--sync--" #Ability { id: "B124", source: "Amdusias" }
-2049.0 "--sync--" #Ability { id: "B124", source: "Amdusias" }
-2050.0 "--sync--" #Ability { id: "B124", source: "Amdusias" }
-2052.0 "--sync--" #Ability { id: "B124", source: "Amdusias" }
-2054.0 "Galloping Thunder" Ability { id: "B122", source: "Amdusias" }
-2054.0 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
-2056.0 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
-2058.0 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
-2060.0 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
-2062.0 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
-2068.0 "Thunder IV" Ability { id: "B126", source: "Amdusias" }
-2076.0 "Shockbolt" Ability { id: "B12B", source: "Amdusias" }
-2092.0 "Thunderclap Concerto" Ability { id: ["B118", "B11D"], source: "Amdusias" }
-2096.0 "--sync--" Ability { id: "B11F", source: "Amdusias" }
-2107.0 "Thunder III" Ability { id: "B128", source: "Amdusias" }
-2108.0 "Thunder III" Ability { id: "B129", source: "Amdusias" }
-2109.0 "Thunder III" #Ability { id: "B12A", source: "Amdusias" }
-2110.0 "Thunder III" #Ability { id: "B12A", source: "Amdusias" }
-2126.0 "Bio II" Ability { id: "B120", source: "Amdusias" } forcejump "amdusias-loop"
+2025.3 "Thunderclap Concerto" Ability { id: ["B118", "B11D"], source: "Amdusias" }
+2041.9 "Bio II" Ability { id: "B120", source: "Amdusias" }
+2046.1 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2047.7 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2049.3 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2050.9 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2052.3 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2054.7 "Galloping Thunder" Ability { id: "B122", source: "Amdusias" }
+2054.9 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2056.9 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2058.9 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2060.9 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2063.0 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2068.8 label "amdusias-loop"
+2068.8 "Thunder IV" Ability { id: "B126", source: "Amdusias" }
+2076.8 "Shockbolt" Ability { id: "B12B", source: "Amdusias" }
+2092.7 "Thunderclap Concerto" Ability { id: ["B118", "B11D"], source: "Amdusias" }
+2096.7 "Thunder" Ability { id: "B11F", source: "Amdusias" }
+2107.8 "--sync--" Ability { id: "B128", source: "Amdusias" }
+2108.5 "Thunder III" Ability { id: "B129", source: "Amdusias" }
+2109.6 "Thunder III" #Ability { id: "B12A", source: "Amdusias" }
+2110.6 "Thunder III" #Ability { id: "B12A", source: "Amdusias" }
+2127.2 "Bio II" Ability { id: "B120", source: "Amdusias" }
+2131.4 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2133.0 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2134.6 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2136.2 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2137.6 "--sync--" #Ability { id: "B124", source: "Amdusias" }
+2140.0 "Galloping Thunder" Ability { id: "B122", source: "Amdusias" }
+2140.2 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2142.3 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2144.4 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2146.5 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2148.6 "Galloping Thunder" #Ability { id: "B123", source: "Amdusias" }
+2154.2 "Thunder IV" Ability { id: "B126", source: "Amdusias" } forcejump "amdusias-loop"
 
 #~~~~~~~~~~~~~~~~~~~~~#
 # Thundergust Griffin #
@@ -153,39 +176,51 @@ hideall "--sync--"
 
 # The Town Round will be sealed off
 3000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "14EC" } window 3000,1
-# Sync up on first cast
-3006.3 "--sync--" StartsUsing { id: "B0EB", source: "Thundergust Griffin" }
-3011.0 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" }
-3016.0 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
-3022.0 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
-3023.0 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
+# Sync up to first cast
+3006.1 "--sync--" StartsUsing { id: "B0EB", source: "Thundergust Griffin" }
+3011.1 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" }
+3016.3 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
+3022.9 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
+3023.9 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
 3027.0 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
 3034.0 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3037.0 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
-3045.0 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3056.0 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
-3064.0 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
-3073.0 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" }
-3073.0 "--sync--" Ability { id: "B0F6", source: "Thundergust Griffin" }
-3073.0 "--sync--" Ability { id: "B7AE", source: "Thundergust Griffin" }
-3076.0 "Electrogenetic Force" Ability { id: "B0F8", source: "Thundergust Griffin" }
-3083.0 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3092.0 label "thundergust-griffin-loop"
-3092.0 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" }
-3099.0 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
-3105.0 "Storm Surge" Ability { id: "B0F3", source: "Thundergust Griffin" }
-3105.0 "Electrifying Flight" Ability { id: "B0F4", source: "Shock Storm" }
-3112.0 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
-3113.0 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
-3116.0 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
-3123.0 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3128.0 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
-3135.0 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3147.0 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
-3153.0 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
-3162.0 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" }
-3162.0 "--sync--" Ability { id: "B0F6", source: "Thundergust Griffin" }
-3162.0 "--sync--" Ability { id: "B7AE", source: "Thundergust Griffin" }
-3165.0 "Electrogenetic Force" Ability { id: "B0F8", source: "Thundergust Griffin" }
-3172.0 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
-3182.0 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" } forcejump "thundergust-griffin-loop"
+3037.8 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3044.8 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
+3056.6 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
+3063.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
+3072.8 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" }
+3072.8 "Rush" Ability { id: "B0F6", source: "Thundergust Griffin" }
+3072.9 "Electrifying Flight" Ability { id: "B7AE", source: "Thundergust Griffin" }
+3076.2 "Electrogenetic Force" Ability { id: "B0F8", source: "Thundergust Griffin" }
+3082.8 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
+3092.5 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" }
+3098.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
+3104.9 "Storm Surge" Ability { id: "B0F3", source: "Thundergust Griffin" }
+3105.5 "Electrifying Flight" Ability { id: "B0F4", source: "Shock Storm" }
+3112.1 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
+3113.1 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
+3116.5 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3123.5 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
+3127.7 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3134.8 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
+3146.6 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
+3152.7 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
+3161.9 label "thundergust-loop"
+3161.9 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" }
+3161.9 "Rush" Ability { id: "B0F6", source: "Thundergust Griffin" }
+3162.0 "Electrifying Flight" Ability { id: "B7AE", source: "Thundergust Griffin" }
+3165.3 "Electrogenetic Force" Ability { id: "B0F8", source: "Thundergust Griffin" }
+3171.9 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
+3181.6 "Thunderspark" Ability { id: "B0EB", source: "Thundergust Griffin" }
+3187.8 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
+3194.0 "Storm Surge" Ability { id: "B0F3", source: "Thundergust Griffin" }
+3194.6 "Electrifying Flight" Ability { id: "B0F4", source: "Shock Storm" }
+3201.2 "High Volts" Ability { id: "B0EC", source: "Thundergust Griffin" }
+3202.2 "Lightning Bolt" Ability { id: "B708", source: "Thundergust Griffin" }
+3205.5 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3212.5 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
+3216.7 "--sync--" Ability { id: "B0EE", source: "Thundergust Griffin" }
+3223.7 "Thundering Roar" Ability { id: "B0EF", source: "Thundergust Griffin" }
+3235.5 "Golden Talons" Ability { id: "B0F9", source: "Thundergust Griffin" }
+3241.6 "--sync--" Ability { id: "B704", source: "Thundergust Griffin" }
+3250.8 "Fulgurous Fall" Ability { id: "B0F5", source: "Thundergust Griffin" } forcejump "thundergust-loop"
