@@ -426,6 +426,8 @@ Options.Triggers.push({
         'Specter of Zenos': '芝诺斯的幻影',
       },
       'replaceText': {
+        '\\(E->W\\)': '(东->西)',
+        '\\(SW->NW\\)': '(西南->西北)',
         '\\(gun': '(枪',
         'spear\\)': '长矛)',
         'Antitwilight': '月下美人',
@@ -446,6 +448,7 @@ Options.Triggers.push({
         'Moonbeam': '月光流转',
         'Moonfall': '碎片散落',
         'Nightbloom': '月下彼岸花',
+        'Nightfall': '深宵换装',
         'Perilune': '月天心',
         'Reprimand': '责难',
         'Steel Of The Underworld': '黄泉之枪',
