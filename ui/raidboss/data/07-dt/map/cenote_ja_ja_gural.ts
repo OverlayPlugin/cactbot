@@ -138,6 +138,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bull Apollyon': '황소 아폴리온',

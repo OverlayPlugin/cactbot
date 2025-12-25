@@ -835,6 +835,56 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'ダンシング・グリーン',
+        'Frogtourage': 'フロッグダンサー'
+      },
+      'replaceText': {
+        // '\\(Cleave\\)': '', // FIXME '(半场)'
+        // '\\(Echo\\)': '', // FIXME '(重复)'
+        // '\\(In\\+Protean\\+Echo\\)': '', // FIXME '(内+八方+重复)'
+        // '\\(Out\\+Protean\\+Echo\\)': '', // FIXME '(外+八方+重复)'
+        // '\\(Out\\+Protean\\)': '', // FIXME '(外+八方)'
+        // '\\(all\\)': '', // FIXME '(全体)'
+        // '\\(boss\\)': '', // FIXME '(BOSS)'
+        // '\\(dancers\\)': '', // FIXME '(分身)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle': '_rsv_42792_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Arcady Night Encore': '_rsv_41840_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Arcady Night Fever': '在這停頓！',
+        'Back-up Dance': '_rsv_42872_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Celebrate Good Times': '歡慶美妙時光',
+        'Deep Cut': '心曲刻錄',
+        // 'Debuffs': '', // FIXME '毒'
+        'Disco Infernal': '激熱夜舞廳',
+        'Do the Hustle': '跳起哈娑舞',
+        // '(?<!& )Drop the Needle': '', // FIXME '播放'
+        'Eighth Beats': '8拍節奏',
+        'Ensemble Assemble': '伴舞團',
+        // 'Fire': '', // FIXME 
+        'Flip to A-side': '_rsv_42880_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Flip to B-side': '_rsv_42881_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Freak Out': '_rsv_42854_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Frogtourage Finale': '_rsv_42209_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Frogtourage(?! )': '青蛙舞者登場！',
+        'Funky Floor': '熱舞場地',
+        'Get Down!': '_rsv_39908_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Hi-NRG Fever': '_rsv_42873_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Inside Out': '_rsv_37826_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Let\'s Dance!(?! )': '放縱勁舞！',
+        'Let\'s Dance! Remix': '_rsv_41872_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Let\'s Pose!': '定格時刻！',
+        'Moonburn': '月灼',
+        'Outside In': '_rsv_37828_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Play A-side': '_rsv_37832_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Play B-side': '_rsv_37833_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        'Quarter Beats': '4拍節奏',
+        'Ride the Waves': '舞浪全開'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Dancing Green': '댄싱 그린',
