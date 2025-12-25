@@ -1079,7 +1079,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arcane Cylinder': '指向魔法陣',
         'Arcane Sphere': '立體魔法陣',
         'Illusory Themis': '特彌斯的幻影',
-        '(?<! )Themis': '特彌斯'
+        '(?<! )Themis': '特彌斯',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -1110,7 +1110,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ultimate Verdict': '究極調停',
         'Unlucky Lot': '魔爆',
         'Upheld Overruling': '維持否決',
-        'Upheld Ruling': '維持判決'
+        'Upheld Ruling': '維持判決',
       },
     },
     {

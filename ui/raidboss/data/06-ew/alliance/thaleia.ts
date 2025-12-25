@@ -1222,7 +1222,7 @@ const triggerSet: TriggerSet<Data> = {
         'Oschon\'s Avatar': '奧修昂的分身',
         'Perykos': '珀琉喀斯',
         'Thalaos': '撒拉奧斯',
-        'Thaliak(?!\')': '沙利亞克'
+        'Thaliak(?!\')': '沙利亞克',
       },
       'replaceText': {
         'Altitude': '高空箭雨',
@@ -1311,7 +1311,7 @@ const triggerSet: TriggerSet<Data> = {
         'Trek Shot': '撤步射擊',
         'Wandering Shot': '放浪射擊',
         'Wandering Volley': '放浪群射',
-        'Wind Rose': '狂風旋圓'
+        'Wind Rose': '狂風旋圓',
       },
     },
     {

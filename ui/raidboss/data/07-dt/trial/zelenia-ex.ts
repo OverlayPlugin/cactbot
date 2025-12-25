@@ -1140,7 +1140,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Briar Thorn': 'クライムハザード',
         'Zelenia(?!\')': 'ゼレニア',
-        'Zelenia\'s Shade': 'ゼレニアの幻影'
+        'Zelenia\'s Shade': 'ゼレニアの幻影',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -1180,7 +1180,7 @@ const triggerSet: TriggerSet<Data> = {
         'Stock Break': '破防之劍',
         'Thorned Catharsis': '玫瑰滌',
         'Thunder Slash': '雷鳴劍',
-        'Valorous Ascension': '淩空破'
+        'Valorous Ascension': '淩空破',
       },
     },
     {

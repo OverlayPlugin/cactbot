@@ -123,7 +123,7 @@ const triggerSet: TriggerSet<Data> = {
         'Deep Palace Succubus': '深宮魅魔',
         'Deep Palace Wraith': '深宮幽靈',
         'Onyx Dragon': '奧尼克斯龍',
-        'Tisiphone': '提西福涅'
+        'Tisiphone': '提西福涅',
       },
     },
     {

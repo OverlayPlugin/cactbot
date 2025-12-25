@@ -219,7 +219,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Goobbue': '正統古卜',
         'Orthos Hoarhound': '正統霜狼',
         'Orthos Kelpie': '正統凱爾派',
-        'Servomechanical Chimera 14X': '自控化奇美拉14X'
+        'Servomechanical Chimera 14X': '自控化奇美拉14X',
       },
     },
     {

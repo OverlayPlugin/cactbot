@@ -672,8 +672,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '--hellmaker adds--': '', // FIXME '--焦热刑具出现--'
         // '\\(active\\)': '', // FIXME '(生效)'
@@ -706,7 +705,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Shackles of Fate': '', // FIXME '铁链束缚'
         // 'Sterile Sphere': '', // FIXME '圆状散布'
         // 'Turmoil': '', // FIXME '慌乱'
-        // 'Will Breaker': '' // FIXME '破碎弹'
+        // 'Will Breaker': '', // FIXME '破碎弹'
       },
     },
     {

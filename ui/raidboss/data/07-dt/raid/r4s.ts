@@ -2938,8 +2938,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         '(?<! )Spark': '電火花',
         // '(?<! )Witch Hunt': '', // FIXME '魔女狩猎'
@@ -3010,7 +3009,7 @@ const triggerSet: TriggerSet<Data> = {
         // '\\(second towers/cannons resolve\\)': '', // FIXME '(第二轮塔/炮)'
         // '\\(spread \\+ tethers\\)': '', // FIXME '(分散 + 连线)'
         // '\\(third mines hit\\)': '', // FIXME '(第三轮魔方充能)'
-        // '\\(third set\\)': '' // FIXME '(第三轮充能)'
+        // '\\(third set\\)': '', // FIXME '(第三轮充能)'
       },
     },
     {

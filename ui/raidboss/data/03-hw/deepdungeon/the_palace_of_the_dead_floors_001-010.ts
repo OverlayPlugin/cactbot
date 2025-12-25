@@ -51,7 +51,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Palace Deathgaze': '地宮死亡凝視'
+        'Palace Deathgaze': '地宮死亡凝視',
       },
     },
     {

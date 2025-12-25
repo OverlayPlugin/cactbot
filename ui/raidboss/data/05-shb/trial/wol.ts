@@ -558,7 +558,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spectral Summoner': '幻光召喚士',
         'Spectral Warrior': '幻光狂戰士',
         'Warrior Of Light': '光之戰士',
-        'Wyrm Of Light': '光之真龍'
+        'Wyrm Of Light': '光之真龍',
       },
       'replaceText': {
         // '--active time event--': '', // FIXME '--XJB按--'
@@ -593,7 +593,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Bitter End': '盡滅',
         'To The Limit': '突破極限',
         'Twincast': '合力詠唱',
-        'Ultimate Crossover': '究極·交匯'
+        'Ultimate Crossover': '究極·交匯',
       },
     },
     {

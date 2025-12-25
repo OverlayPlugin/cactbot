@@ -75,7 +75,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Heavenly Amikiri': '天之切網蝦蛄',
         'Heavenly Uwabami': '天之蟒蛇',
-        'Mojabune': '亡者船'
+        'Mojabune': '亡者船',
       },
     },
     {

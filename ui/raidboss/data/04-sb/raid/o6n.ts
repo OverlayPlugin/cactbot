@@ -186,7 +186,7 @@ const triggerSet: TriggerSet<Data> = {
         'Haunt': '幻影',
         'Portrayal of Earth': '土之畫作',
         'Portrayal of Fire': '火之畫作',
-        'Portrayal of Water': '水之畫作'
+        'Portrayal of Water': '水之畫作',
       },
       'replaceText': {
         'Demonic Howl': '惡魔嘯',
@@ -202,7 +202,7 @@ const triggerSet: TriggerSet<Data> = {
         'Flash Gale': '閃光風',
         'Materialize': '實體化',
         'Possession': '附身畫像',
-        'Release': '附身解除'
+        'Release': '附身解除',
       },
     },
     {

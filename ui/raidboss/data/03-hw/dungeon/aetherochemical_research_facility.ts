@@ -346,7 +346,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lahabrea': '拉哈布雷亞',
         'Magitek Turret I(?!I)': '魔導砲塔I',
         'Magitek Turret II': '魔導砲塔II',
-        'Regula van Hydrus': '雷古拉·范·休著斯'
+        'Regula van Hydrus': '雷古拉·范·休著斯',
       },
       'replaceText': {
         'Aetherochemical Grenado': '魔導榴彈',
@@ -382,7 +382,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadow Flare': '暗影火光',
         'Steel Scales': '鋼鱗',
         'Universal Manipulation': '法則變更',
-        'Weighing of the Heart': '轉生之儀'
+        'Weighing of the Heart': '轉生之儀',
       },
     },
     {

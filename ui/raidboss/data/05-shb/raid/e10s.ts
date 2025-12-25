@@ -866,7 +866,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Shadowkeeper': '影之王',
         'Shadow Of A Hero': '英雄之影',
-        'Shadefire': '影火焰'
+        'Shadefire': '影火焰',
       },
       'replaceText': {
         'Deepshadow Nova': '深影新星',
@@ -896,7 +896,7 @@ const triggerSet: TriggerSet<Data> = {
         'Voidgate Amplifier': '擴大虛無之門',
         'Shadowy Eruption': '影之噴發',
         'Shackled Together': '束縛之鎖',
-        'Doom Arc': '毀滅之弧'
+        'Doom Arc': '毀滅之弧',
       },
     },
     {

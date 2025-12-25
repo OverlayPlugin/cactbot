@@ -468,7 +468,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Pegasus': '正統黑天馬',
         'Orthos Spartoi': '正統地生人',
         'Orthos Specter': '正統妖影',
-        'Orthos Wraith': '正統幽靈'
+        'Orthos Wraith': '正統幽靈',
       },
     },
     {

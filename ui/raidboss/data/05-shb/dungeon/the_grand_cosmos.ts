@@ -379,7 +379,7 @@ const triggerSet: TriggerSet<Data> = {
         'Enslaved Love': '被奴役的愛',
         'Leannan Sith': '涼南茜',
         'Lugus': '盧格斯',
-        'Seeker of Solitude': '宮殿的隱者'
+        'Seeker of Solitude': '宮殿的隱者',
       },
       'replaceText': {
         'Black Flame': '黑炎流',
@@ -404,7 +404,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Scorching Left/Right': '', // FIXME '左/右炎狱斩'
         'Shadowbolt': '暗影雷',
         'Storm Of Color': '春風',
-        'Tribulation': '苦難'
+        'Tribulation': '苦難',
       },
     },
     {

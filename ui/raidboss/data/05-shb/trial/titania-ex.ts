@@ -529,7 +529,7 @@ const triggerSet: TriggerSet<Data> = {
         'Titania': '緹坦妮雅',
         'Puck': '派克',
         'Peaseblossom': '豌豆花',
-        'Mustardseed': '芥子'
+        'Mustardseed': '芥子',
       },
       'replaceText': {
         'Whispering Wind': '細語微風',
@@ -560,7 +560,7 @@ const triggerSet: TriggerSet<Data> = {
         'Divination Rune': '魔之符文',
         'Chain Of Brambles': '荊棘鏈',
         'Bright Sabbath': '歡快的安息日',
-        'Being Mortal': '終有一死'
+        'Being Mortal': '終有一死',
       },
     },
     {

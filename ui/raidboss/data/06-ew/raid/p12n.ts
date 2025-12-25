@@ -378,7 +378,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Anthropos': '人',
         'Athena': '雅典娜',
-        'Thymou Idea': '激情理念'
+        'Thymou Idea': '激情理念',
       },
       'replaceText': {
         // '\\(spread\\)': '', // FIXME '(分散)'
@@ -399,7 +399,7 @@ const triggerSet: TriggerSet<Data> = {
         'Trinity of Souls': '三魂一體',
         'Ultima Blade': '究極之刃',
         'Unnatural Enchainment': '靈魂鏈',
-        'White Flame': '白火'
+        'White Flame': '白火',
       },
     },
     {

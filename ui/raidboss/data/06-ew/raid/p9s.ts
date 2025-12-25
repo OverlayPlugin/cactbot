@@ -1123,7 +1123,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ball of Levin': '雷球',
         'Comet': '隕星',
         'Kokytos(?!\')': '克邱特斯',
-        'Kokytos\'s Echo': '克邱特斯的幻影'
+        'Kokytos\'s Echo': '克邱特斯的幻影',
       },
       'replaceText': {
         // '\\(Beast': '', // FIXME '(野兽'
@@ -1174,7 +1174,7 @@ const triggerSet: TriggerSet<Data> = {
         'Thunder III': '大雷電',
         // 'Thunder(?!( |bolt))': '', // FIXME '闪雷'
         'Thunderbolt': '霹靂',
-        'Two Minds': '附魂雙擊'
+        'Two Minds': '附魂雙擊',
       },
     },
     {

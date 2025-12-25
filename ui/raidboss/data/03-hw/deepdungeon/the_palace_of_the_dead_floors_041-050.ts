@@ -120,7 +120,7 @@ const triggerSet: TriggerSet<Data> = {
         'Nightmare Bhoot': '惡夢浮靈',
         'Nightmare Manticore': '惡夢蠍尾獅',
         'Nightmare Persona': '惡夢假面',
-        'Nightmare Wraith': '惡夢幽靈'
+        'Nightmare Wraith': '惡夢幽靈',
       },
     },
     {

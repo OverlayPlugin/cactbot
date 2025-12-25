@@ -988,7 +988,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Ice Pillar': '冰柱',
         'Queen Eternal': '永恆女王',
-        'Virtual Boulder': '岩石'
+        'Virtual Boulder': '岩石',
       },
       'replaceText': {
         // '\\(Dorito Stack\\)': '', // FIXME '(红三角集合)'
@@ -1040,7 +1040,7 @@ const triggerSet: TriggerSet<Data> = {
         'World Shatter': '世界破碎',
         // 'Wind of Change': '', // FIXME '左/右风'
         // 'Right(?! )': '', // FIXME '右'
-        // 'Left(?! )': '' // FIXME '左'
+        // 'Left(?! )': '', // FIXME '左'
       },
     },
     {

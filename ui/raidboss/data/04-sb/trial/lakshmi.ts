@@ -340,7 +340,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Dreaming Kshatriya': '夢寐的剎帝利',
         'Lakshmi': '吉祥天女',
-        'Vril': '元氣'
+        'Vril': '元氣',
       },
       'replaceText': {
         // '--chanchala start--': '', // FIXME '--反复无常开始--'
@@ -368,7 +368,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Pall Of Light': '光之瀑布',
         'The Path Of Light': '光之波動',
         'The Pull Of Light': '光之奔流',
-        '(?<!-)Vril': '元氣'
+        '(?<!-)Vril': '元氣',
       },
     },
     {

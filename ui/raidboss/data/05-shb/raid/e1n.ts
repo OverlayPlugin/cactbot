@@ -220,7 +220,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Eden(?! )': '伊甸',
         'Eden Prime': '至尊伊甸',
-        'Guardian of Paradise': '伊甸守護者'
+        'Guardian of Paradise': '伊甸守護者',
       },
       'replaceText': {
         'Delta Attack': '三角攻擊',
@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
         'Unto Dust': '歸於塵土',
         'Vice and Virtue': '惡習與美德',
         'Vice of Apathy': '冷漠之惡',
-        'Vice of Vanity': '虛榮之惡'
+        'Vice of Vanity': '虛榮之惡',
       },
     },
     {

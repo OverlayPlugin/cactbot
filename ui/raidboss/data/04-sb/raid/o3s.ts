@@ -742,7 +742,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Halicarnassus': '哈利卡納蘇斯',
         'Apanda': '阿班達',
-        'Soul Reaper': '靈魂收割者'
+        'Soul Reaper': '靈魂收割者',
       },
       'replaceText': {
         // '\\(Apanda\\)': '', // FIXME '(阿班达)'
@@ -788,7 +788,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ray of White': '蒼白射擊',
         'Sword Dance': '劍舞',
         'Uplift': '隆起',
-        'White Wind': '白風'
+        'White Wind': '白風',
       },
     },
     {

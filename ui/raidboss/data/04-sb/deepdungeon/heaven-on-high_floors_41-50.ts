@@ -79,7 +79,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Gozu': '牛頭'
+        'Gozu': '牛頭',
       },
     },
     {

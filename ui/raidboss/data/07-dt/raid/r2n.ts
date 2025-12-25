@@ -206,8 +206,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // 'Alarm Pheromones': '', // FIXME '告警信息素'
         // 'Blinding Love': '', // FIXME '盲目的爱'
@@ -225,7 +224,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Love Me Tender': '', // FIXME '温柔地爱我'
         // 'Loveseeker': '', // FIXME '求爱'
         // 'Splash of Venom': '', // FIXME '毒液雨'
-        // 'Tempting Twist': '' // FIXME '甜心旋风'
+        // 'Tempting Twist': '', // FIXME '甜心旋风'
       },
     },
     {

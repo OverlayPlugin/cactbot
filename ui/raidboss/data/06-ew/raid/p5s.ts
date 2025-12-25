@@ -537,7 +537,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Lively Bait': '活餌',
-        'Proto-Carbuncle': '原型卡邦庫爾'
+        'Proto-Carbuncle': '原型卡邦庫爾',
       },
       'replaceText': {
         // '--towers--': '', // FIXME '--塔--'
@@ -567,7 +567,7 @@ const triggerSet: TriggerSet<Data> = {
         'Venom Rain': '毒液雨',
         'Venom Squall': '毒液風暴',
         'Venom Surge': '毒液噴湧',
-        'Venomous Mass': '毒液傾瀉'
+        'Venomous Mass': '毒液傾瀉',
       },
     },
     {

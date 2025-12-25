@@ -242,7 +242,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Erichthonios': '艾里克托尼奧斯'
+        'Erichthonios': '艾里克托尼奧斯',
       },
       'replaceText': {
         // '--knockback stack--': '', // FIXME '--集合击退--'
@@ -262,7 +262,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shining Cells': '光炎監獄',
         'Slam Shut': '監獄封閉',
         'True Holy': '純正神聖',
-        'Warder\'s Wrath': '魔鎖亂流'
+        'Warder\'s Wrath': '魔鎖亂流',
       },
     },
     {

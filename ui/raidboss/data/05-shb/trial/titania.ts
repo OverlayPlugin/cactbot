@@ -337,7 +337,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spirit Of Dew': '水精',
         'Spirit of Flame': '炎精',
         'Peaseblossom': '豌豆花',
-        'Mustardseed': '芥子'
+        'Mustardseed': '芥子',
       },
       'replaceText': {
         'Being Mortal': '終有一死',
@@ -362,7 +362,7 @@ const triggerSet: TriggerSet<Data> = {
         'Puck\'s Rebuke': '派克的指責',
         'Pummel': '毆打',
         'Uplift': '隆起',
-        'War And Pease': '豌豆大爆炸'
+        'War And Pease': '豌豆大爆炸',
       },
     },
     {

@@ -535,7 +535,7 @@ const triggerSet: TriggerSet<Data> = {
         'Antivirus X': '反病毒程式X',
         'Eliminator': '清除者',
         'Interferon C': '反病毒程式C',
-        'Interferon R': '反病毒程式R'
+        'Interferon R': '反病毒程式R',
       },
       'replaceText': {
         'Amalgamight': '融合威能',
@@ -571,7 +571,7 @@ const triggerSet: TriggerSet<Data> = {
         // '\\(front\\)': '', // FIXME '(前方)'
         // '\\(lasers\\)': '', // FIXME '(激光)'
         // '\\(sides\\)': '', // FIXME '(两侧)'
-        // '\\(triangle\\)': '' // FIXME '(三角)'
+        // '\\(triangle\\)': '', // FIXME '(三角)'
       },
     },
     {

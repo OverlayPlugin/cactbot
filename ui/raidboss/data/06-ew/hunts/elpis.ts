@@ -207,7 +207,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Gurangatch': '固蘭蓋奇',
         'Ophioneus': '俄菲翁尼厄斯',
-        'Petalodus': '瓣齒鯊'
+        'Petalodus': '瓣齒鯊',
       },
     },
     {

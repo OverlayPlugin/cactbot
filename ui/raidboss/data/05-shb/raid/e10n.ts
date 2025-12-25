@@ -310,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Shadowkeeper': '影之王'
+        'Shadowkeeper': '影之王',
       },
       'replaceText': {
         '(?<!/)Backward Implosion': '後向心聚爆',
@@ -333,7 +333,7 @@ const triggerSet: TriggerSet<Data> = {
         'Throne Of Shadow': '影之王權',
         'Umbra Smash': '本影爆碎',
         'Void Pulse': '虛無悸動',
-        'Voidgate': '虛無之門'
+        'Voidgate': '虛無之門',
       },
     },
     {

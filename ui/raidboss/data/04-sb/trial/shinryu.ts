@@ -397,7 +397,7 @@ const triggerSet: TriggerSet<Data> = {
         'Right Wing': '右翼',
         'Shinryu': '神龍',
         'Tail': '龍尾',
-        'Icicle': '冰柱'
+        'Icicle': '冰柱',
       },
       'replaceText': {
         'Akh Morn': '死亡輪迴',
@@ -418,7 +418,7 @@ const triggerSet: TriggerSet<Data> = {
         'Summon Icicle': '召喚冰柱',
         // 'TAP BUTTON OR ELSE': '', // FIXME 'XJB按'
         'Tail Slap': '尾部猛擊',
-        'Tidal Wave': '巨浪'
+        'Tidal Wave': '巨浪',
       },
     },
     {

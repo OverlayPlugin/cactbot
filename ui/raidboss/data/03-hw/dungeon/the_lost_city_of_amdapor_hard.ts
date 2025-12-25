@@ -435,7 +435,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Monk': '虛無鬼魚',
         'Whisper of Existence': '冒險者的幻影',
         'Winged Lion': '雙翼飛獅',
-        'light sprite': '光元精'
+        'light sprite': '光元精',
       },
       'replaceText': {
         // '--adds--': '', // FIXME '--小怪--'
@@ -454,7 +454,7 @@ const triggerSet: TriggerSet<Data> = {
         'Reverse': '逆轉',
         'Scratch': '抓擊',
         'Toxic Squama': '毒素鱗粉',
-        'Transference': '轉移'
+        'Transference': '轉移',
       },
     },
     {

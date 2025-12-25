@@ -507,7 +507,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Sugar Riot': 'シュガーライオット',
         'Sweet Shot': 'シュガーズアロー',
-        'Tempest Piece': '積乱雲'
+        'Tempest Piece': '積乱雲',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -529,7 +529,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sugarscape': '沙地繪景',
         'Taste of Fire': '糖果火焰',
         'Taste of Thunder': '糖果雷電',
-        // 'Warm Bomb': '' // FIXME '暖色爆弹怪'
+        // 'Warm Bomb': '', // FIXME '暖色爆弹怪'
       },
     },
     {

@@ -412,7 +412,7 @@ const triggerSet: TriggerSet<Data> = {
         'Peacekeeper': '和平捍衛者',
         'Perpetual War Machine': '自動殺傷兵器',
         'Ra-la': '拉啦',
-        'Weeping Miasma': '腐爛毒素'
+        'Weeping Miasma': '腐爛毒素',
       },
       'replaceText': {
         // '\\(circles\\)': '', // FIXME '(圆)'
@@ -442,7 +442,7 @@ const triggerSet: TriggerSet<Data> = {
         'Small-bore Laser': '小口徑射線',
         'Still Embrace': '安寧之翼',
         'Warm Glow': '慈光',
-        'Wave of Nausea': '疾病激流'
+        'Wave of Nausea': '疾病激流',
       },
     },
     {

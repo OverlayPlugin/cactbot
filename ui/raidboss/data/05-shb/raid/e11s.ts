@@ -805,7 +805,7 @@ const triggerSet: TriggerSet<Data> = {
         'Demi-Gukumatz': '亞靈羽蛇',
         'Fatebreaker\'s image': '絕命戰士的幻影',
         'Fatebreaker(?!\'s image)': '絕命戰士',
-        'Halo of Flame': '焰之光輪'
+        'Halo of Flame': '焰之光輪',
       },
       'replaceText': {
         'Ageless Serpent': '龍頭龍尾',
@@ -834,7 +834,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sinsmoke': '罪炎',
         'Solemn Charge': '急衝刺',
         'Sundered Sky': '墮獄絕技',
-        'Turn Of The Heavens': '光輪召喚'
+        'Turn Of The Heavens': '光輪召喚',
       },
     },
     {

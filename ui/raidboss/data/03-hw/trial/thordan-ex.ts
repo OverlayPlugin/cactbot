@@ -859,7 +859,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Noudenet': '聖騎士努德內',
         'Ser Paulecrain': '聖騎士波勒克蘭',
         'Ser Vellguine': '聖騎士韋爾吉納',
-        'Ser Zephirin': '聖騎士澤菲蘭'
+        'Ser Zephirin': '聖騎士澤菲蘭',
       },
       'replaceText': {
         // '--chains appear--': '', // FIXME '--锁链出现--'
@@ -900,7 +900,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ultimate End': '萬物終結',
         'the Dragon\'s Eye': '龍眼之光',
         'the Dragon\'s Gaze': '龍眼之邪',
-        'the Dragon\'s Rage': '邪龍魔炎'
+        'the Dragon\'s Rage': '邪龍魔炎',
       },
     },
     {

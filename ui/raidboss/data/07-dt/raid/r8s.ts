@@ -2656,7 +2656,7 @@ const triggerSet: TriggerSet<Data> = {
         'Moonlit Shadow': 'ハウリングブレードの幻影',
         'Wolf Of Stone': '土の狼頭',
         'Wolf of Stone': '土の狼頭',
-        'Wolf of Wind': '風の狼頭'
+        'Wolf of Wind': '風の狼頭',
       },
       'replaceText': {
         // '--adds-targetable--': '', // FIXME '--小怪可选中--'
@@ -2723,7 +2723,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wind Surge': '_rsv_41965_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Windfang': '_rsv_41885_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Winds of Decay': '_rsv_41909_-1_7_0_0_SE2DC5B04_EE2DC5B04',
-        'Wolves\' Reign': '群狼劍'
+        'Wolves\' Reign': '群狼劍',
       },
     },
     {

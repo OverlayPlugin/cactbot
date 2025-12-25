@@ -345,7 +345,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arkas': '阿爾卡斯',
         'Lyngbakr': '林巴克爾',
         'Mammoth Tentacle': '八足巨妖的觸手',
-        'Octomammoth': '八足巨妖'
+        'Octomammoth': '八足巨妖',
       },
       'replaceText': {
         // '\\(big\\)': '', // FIXME '(大)'
@@ -379,7 +379,7 @@ const triggerSet: TriggerSet<Data> = {
         'Upsweep': '海洋怪聲',
         'Vivid Eyes': '靈動之眼',
         'Water Drop': '水塊',
-        'Waterspout': '海龍捲'
+        'Waterspout': '海龍捲',
       },
     },
     {

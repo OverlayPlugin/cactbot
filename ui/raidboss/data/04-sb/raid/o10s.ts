@@ -361,7 +361,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Ancient Dragon': '遠古之龍',
-        'Midgardsormr': '幻龍米德加爾特'
+        'Midgardsormr': '幻龍米德加爾特',
       },
       'replaceText': {
         'ready': '準備',
@@ -390,7 +390,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tail End': '煞尾',
         'Thunderstorm': '雷暴',
         'Time Immemorial': '開天闢地',
-        'Touchdown': '空降'
+        'Touchdown': '空降',
       },
     },
     {

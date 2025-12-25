@@ -286,7 +286,7 @@ const triggerSet: TriggerSet<Data> = {
         'Specter Of The Empire': '帝國兵的幻影',
         'Specter Of The Matriarch': '養母的幻影',
         'Specter of Zenos': '芝諾斯的幻影',
-        'Tsukuyomi': '月讀'
+        'Tsukuyomi': '月讀',
       },
       'replaceText': {
         // 'Adds': '', // FIXME '小怪'
@@ -311,7 +311,7 @@ const triggerSet: TriggerSet<Data> = {
         'Torment Unto Death': '折磨',
         'Tsuki-No-Maiogi': '月下舞扇',
         'Unmoving Troika': '不動三段',
-        'Zashiki-Asobi': '宴會遊樂'
+        'Zashiki-Asobi': '宴會遊樂',
       },
     },
     {

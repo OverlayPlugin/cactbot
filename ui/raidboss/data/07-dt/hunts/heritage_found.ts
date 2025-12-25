@@ -477,7 +477,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Heshuala': '海休瓦拉',
         'Urna Variabilis': '多變裝置',
-        'Atticus the Primogenitor': '先驅勇士 阿提卡斯'
+        'Atticus the Primogenitor': '先驅勇士 阿提卡斯',
       },
     },
     {

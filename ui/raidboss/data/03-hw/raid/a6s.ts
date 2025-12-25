@@ -567,7 +567,7 @@ const triggerSet: TriggerSet<Data> = {
         'Power Plasma Alpha': '強離子體α',
         'Swindler': '欺詐者',
         'Vortexer': '環旋者',
-        'Midan Hardhelm': '彌達斯硬盔兵'
+        'Midan Hardhelm': '彌達斯硬盔兵',
       },
       'replaceText': {
         // '--unseal--': '', // FIXME '--解除封锁--'
@@ -599,7 +599,7 @@ const triggerSet: TriggerSet<Data> = {
         'Power Plasma Gamma': '強離子體γ',
         'Snipethoom': '狙擊',
         'Super Cyclone': '超級颶風',
-        'Ultra Flash': '究極閃光'
+        'Ultra Flash': '究極閃光',
       },
     },
     {

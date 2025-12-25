@@ -497,7 +497,7 @@ const triggerSet: TriggerSet<Data> = {
         'Phantom Varis': '瓦厲斯的幻影',
         'Terminus Est': '恩惠終結',
         'Varis Yae Galvus': '瓦厲斯·耶·加爾烏斯',
-        'Ventus Est': '是為疾風'
+        'Ventus Est': '是為疾風',
       },
       'replaceText': {
         // '--clones appear\\?--': '', // FIXME '--幻影出现?--'
@@ -522,7 +522,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shockwave': '衝擊波',
         'Terminus Est': '恩惠終結',
         'Ventus Est': '是為疾風',
-        'Vivere Militare Est': '生者戰也'
+        'Vivere Militare Est': '生者戰也',
       },
     },
     {

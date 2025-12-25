@@ -323,7 +323,7 @@ const triggerSet: TriggerSet<Data> = {
         'Servomechanical Minotaur': '自控化米諾陶洛斯',
         'Mithridates': '米特里達梯',
         'Levinball': '雷彈',
-        'Cladoselache': '裂口鯊'
+        'Cladoselache': '裂口鯊',
       },
       'replaceText': {
         'Thunder Beam': '電光束',
@@ -350,7 +350,7 @@ const triggerSet: TriggerSet<Data> = {
         'Artificial Gravity': '人造重力',
         'Allagan Thunder': '亞拉戈雷電',
         // '(?<! )Gravity': '', // FIXME '(?<! )重力'
-        // '(?<! )Crossray': '' // FIXME '(?<! )交叉激光'
+        // '(?<! )Crossray': '', // FIXME '(?<! )交叉激光'
       },
     },
     {

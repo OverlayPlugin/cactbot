@@ -334,7 +334,7 @@ const triggerSet: TriggerSet<Data> = {
         'Forgiven Obscenity': '得到寬恕的猥褻',
         'Forgiven Cruelty': '得到寬恕的殘忍',
         'Forgiven Whimsy': '得到寬恕的無常',
-        'Brightsphere': '光明晶球'
+        'Brightsphere': '光明晶球',
       },
       'replaceText': {
         'Lumen Infinitum': '流明無限',
@@ -358,7 +358,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gold Chaser': '戒鑽相合',
         'Sacrament Sforzando': '聖禮強化',
         'Hurricane Wing': '颶風之翼',
-        'Rake': '利爪'
+        'Rake': '利爪',
       },
     },
     {

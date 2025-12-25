@@ -396,7 +396,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gyre Spume': '游渦泡沫',
         'Wave Spume': '巨浪泡沫',
         'Wavetooth Sahagin': '波齒魚人',
-        'Wavespine Sahagin': '波棘魚人'
+        'Wavespine Sahagin': '波棘魚人',
       },
       'replaceText': {
         'Aqua Breath': '水紋吐息',
@@ -415,7 +415,7 @@ const triggerSet: TriggerSet<Data> = {
         'Waterspout': '海龍捲',
         'Wave Spume': '巨浪泡沫',
         'Wavespine Sahagin': '波棘魚人',
-        'Wavetooth Sahagin': '波齒魚人'
+        'Wavetooth Sahagin': '波齒魚人',
       },
     },
     {

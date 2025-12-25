@@ -86,7 +86,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Boogyman': '夜魔人'
+        'Boogyman': '夜魔人',
       },
     },
     {

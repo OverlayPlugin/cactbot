@@ -566,7 +566,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Coronal Wind': '冠狀氣流',
         'Sephirot': '賽菲羅特',
-        'Storm Of Words': '言語風暴'
+        'Storm Of Words': '言語風暴',
       },
       'replaceText': {
         // 'puddle(?:s)?': '', // FIXME '圈圈'
@@ -591,7 +591,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spirit': '聖靈領域',
         'Tiferet': '美麗',
         'Triple Trial': '三重強擊',
-        'Yesod': '基盤碎擊'
+        'Yesod': '基盤碎擊',
       },
     },
     {

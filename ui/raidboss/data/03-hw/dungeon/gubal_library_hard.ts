@@ -434,7 +434,7 @@ const triggerSet: TriggerSet<Data> = {
         'Meteor': '隕石',
         'Middle Shelf Tome': '平裝本',
         'Strix': '博學林鴞',
-        'Top Shelf Tome': '精裝本'
+        'Top Shelf Tome': '精裝本',
       },
       'replaceText': {
         // '\\?': '', // FIXME ' ?'
@@ -461,7 +461,7 @@ const triggerSet: TriggerSet<Data> = {
         'Seal Of Night And Day': '刻印',
         'Searing Wind': '熱風',
         'Slosh': '突進',
-        'Triclip': '三連爪'
+        'Triclip': '三連爪',
       },
     },
     {

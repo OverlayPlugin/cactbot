@@ -171,7 +171,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Aratama Force': '荒彈',
         'Byakko': '白虎',
-        'Hakutei': '白帝'
+        'Hakutei': '白帝',
       },
       'replaceText': {
         'Answer On High': '天雷',
@@ -193,7 +193,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Roar Of Thunder': '雷轟',
         'The Voice Of Thunder': '雷聲',
         'Unrelenting Anguish': '無間地獄',
-        'White Herald': '白帝衝'
+        'White Herald': '白帝衝',
       },
     },
     {

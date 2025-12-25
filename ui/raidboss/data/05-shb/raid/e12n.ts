@@ -470,7 +470,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!Titanic )Bomb Boulder': '爆破岩石',
         'Chiseled Sculpture': '被創造的男性',
         'Eden\'s Promise': '伊甸之約',
-        'Titanic Bomb Boulder': '巨型爆破岩石'
+        'Titanic Bomb Boulder': '巨型爆破岩石',
       },
       'replaceText': {
         'Cast': '釋放',
@@ -499,7 +499,7 @@ const triggerSet: TriggerSet<Data> = {
         'Release': '施放',
         'Stock': '儲存',
         'Temporary Current': '臨時洋流',
-        'Under The Weight': '大地的重壓'
+        'Under The Weight': '大地的重壓',
       },
     },
     {

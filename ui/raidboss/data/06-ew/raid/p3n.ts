@@ -370,7 +370,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Phoinix': '菲尼克斯',
         'Sparkfledged': '火靈鳥',
-        'Sunbird': '陽炎鳥'
+        'Sunbird': '陽炎鳥',
       },
       'replaceText': {
         '--fire expands--': '十字地火',
@@ -393,7 +393,7 @@ const triggerSet: TriggerSet<Data> = {
         'Right Cinderwing': '右翼焚燒',
         'Scorched Exaltation': '灰燼火焰',
         'Searing Breeze': '熱噴射',
-        'Trail of Condemnation': '獄炎之焰'
+        'Trail of Condemnation': '獄炎之焰',
       },
     },
     {

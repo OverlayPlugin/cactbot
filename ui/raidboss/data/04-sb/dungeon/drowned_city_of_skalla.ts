@@ -313,7 +313,7 @@ const triggerSet: TriggerSet<Data> = {
         'Hrodric Poisontongue': '直言不諱 赫羅德里克',
         'Hydrosphere': '水化球體',
         'Kelpie': '凱爾派',
-        'The Old One': '舊日靈偶'
+        'The Old One': '舊日靈偶',
       },
       'replaceText': {
         'Bloody Puddle': '血池',
@@ -335,7 +335,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tail Drive': '尾部打擊',
         'The Spin': '龍捲迴旋',
         'Torpedo': '魚雷',
-        'Words Of Woe': '災厄之語'
+        'Words Of Woe': '災厄之語',
       },
     },
     {

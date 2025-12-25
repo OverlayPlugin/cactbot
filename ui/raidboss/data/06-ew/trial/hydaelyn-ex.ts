@@ -600,7 +600,7 @@ const triggerSet: TriggerSet<Data> = {
         'Crystal of Light': '光之水晶',
         'Hydaelyn': '海德林',
         'Mystic Refulgence': '幻想光',
-        'Parhelion': '幻日'
+        'Parhelion': '幻日',
       },
       'replaceText': {
         // '--top-middle': '', // FIXME '--前方中间'
@@ -635,7 +635,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pure Crystal': '純淨水晶',
         'Radiant Halo': '明輝光環',
         'Shining Saber': '光芒刃',
-        'Subparhelion': '映幻日'
+        'Subparhelion': '映幻日',
       },
     },
     {

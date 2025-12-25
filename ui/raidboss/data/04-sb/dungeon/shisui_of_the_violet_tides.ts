@@ -208,7 +208,7 @@ const triggerSet: TriggerSet<Data> = {
         'Amikiri': '切網蝦蛄',
         'Naishi-No-Kami': '尚侍',
         'Ruby Princess': '紅玉公主',
-        'Shisui Yohi': '紫水妖妃'
+        'Shisui Yohi': '紫水妖妃',
       },
       'replaceText': {
         // '--add--': '', // FIXME '--小怪--'
@@ -225,7 +225,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sharp Strike': '突然襲擊',
         'Shuck': '碎殼重擊',
         'Thick Fog': '濃霧',
-        'Tornadogenesis': '旋風踢'
+        'Tornadogenesis': '旋風踢',
       },
     },
     {

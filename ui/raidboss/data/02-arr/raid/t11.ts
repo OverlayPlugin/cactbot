@@ -313,7 +313,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Electric Node': '雷擊系統',
-        'Kaliya': '卡利亞'
+        'Kaliya': '卡利亞',
       },
       'replaceText': {
         'Barofield': '氣壓領域',
@@ -326,7 +326,7 @@ const triggerSet: TriggerSet<Data> = {
         'Secondary Head': '側首',
         // 'Seed Of The Rivers/Sea': '', // FIXME '江河/海洋之种'
         // 'Seed Of The Sea/Rivers': '', // FIXME '海洋/江河之种'
-        'Stun': '眩暈'
+        'Stun': '眩暈',
       },
     },
     {

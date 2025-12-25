@@ -3675,7 +3675,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Zephirin': '聖騎士澤菲蘭',
         'Spear of the Fury': '戰女神之槍',
         'Vedrfolnir': '維茲爾弗尼爾',
-        'Ysayle': '伊塞勒'
+        'Ysayle': '伊塞勒',
       },
       'replaceText': {
         'Aetheric Burst': '乙太爆發',
@@ -3781,7 +3781,7 @@ const triggerSet: TriggerSet<Data> = {
         'Twisting Dive': '旋風衝',
         'Ultimate End': '萬物終結',
         'Wrath of the Heavens': '至天之陣：風槍',
-        'Wroth Flames': '邪念之炎'
+        'Wroth Flames': '邪念之炎',
       },
     },
     {

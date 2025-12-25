@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Deathly Vine': '靈樹藤',
-        'Exdeath': '艾克斯迪司'
+        'Exdeath': '艾克斯迪司',
       },
       'replaceText': {
         'Black Hole': '黑洞',
@@ -281,7 +281,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Decisive Battle': '決戰',
         '(?<!/)Thunder III': '大雷電',
         'Vacuum Wave': '真空波',
-        'Zombie Breath': '殭屍吐息'
+        'Zombie Breath': '殭屍吐息',
       },
     },
     {

@@ -327,7 +327,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Mimic': '模仿'
+        'Mimic': '模仿',
       },
     },
     {

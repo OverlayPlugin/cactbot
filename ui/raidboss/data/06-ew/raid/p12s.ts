@@ -4969,7 +4969,7 @@ const triggerSet: TriggerSet<Data> = {
         'Forbidden Factor': '禁忌因數',
         'Hemitheos': '半神',
         'Pallas Athena': '帕拉斯雅典娜',
-        'Thymou Idea': '激情理念'
+        'Thymou Idea': '激情理念',
       },
       'replaceText': {
         // '\\(Floor Drop\\)': '', // FIXME '(地板坠落)'
@@ -5037,7 +5037,7 @@ const triggerSet: TriggerSet<Data> = {
         'Umbral Glow': '靈極熾光',
         'Umbral Impact': '靈擊',
         'Unnatural Enchainment': '靈魂鏈',
-        'White Flame': '白火'
+        'White Flame': '白火',
       },
     },
     {

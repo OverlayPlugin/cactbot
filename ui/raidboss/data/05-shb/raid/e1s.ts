@@ -538,7 +538,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Eden Prime': '至尊伊甸',
-        'Guardian of Paradise': '伊甸守護者'
+        'Guardian of Paradise': '伊甸守護者',
       },
       'replaceText': {
         'Delta Attack': '三角攻擊',
@@ -556,7 +556,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pure Beam': '淨土射線',
         'Pure Light': '淨土之光',
         'Spear of Paradise': '樂園之槍',
-        'Vice and Virtue': '惡習與美德'
+        'Vice and Virtue': '惡習與美德',
       },
     },
     {

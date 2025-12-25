@@ -1189,7 +1189,7 @@ const triggerSet: TriggerSet<Data> = {
         'Steam Chakram': '蒸氣戰輪',
         'Steam Regulator B': '蒸氣調整者β',
         'Swindler': '欺詐者',
-        'Vortexer': '環旋者'
+        'Vortexer': '環旋者',
       },
       'replaceText': {
         // '--orbs--': '', // FIXME '--球--'
@@ -1249,7 +1249,7 @@ const triggerSet: TriggerSet<Data> = {
         'Transform': '正義合體',
         'Ultra Flash': '究極閃光',
         'Verdict': '終審開庭',
-        'Vortexer': '環旋者'
+        'Vortexer': '環旋者',
       },
     },
     {

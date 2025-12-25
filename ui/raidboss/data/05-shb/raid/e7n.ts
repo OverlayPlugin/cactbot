@@ -300,7 +300,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'The Idol Of Darkness': '暗黑心象',
         'Unforgiven Idolatry': '未被寬恕的盲崇',
-        '(?<! )Idolatry': '盲崇'
+        '(?<! )Idolatry': '盲崇',
       },
       'replaceText': {
         'Empty Wave': '虛無波動',
@@ -319,7 +319,7 @@ const triggerSet: TriggerSet<Data> = {
         'Silver Shot': '白光之矢',
         'Explosion': '爆炸',
         'Empty Flood': '虛無氾濫',
-        'Black Smoke': '黑暗之火'
+        'Black Smoke': '黑暗之火',
       },
     },
     {

@@ -543,8 +543,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '--Coffinmaker targetable--': '', // FIXME '--致命刑锯可选中--'
         // '--Flail targetable--': '', // FIXME '--致命刺锤可选中--'
@@ -565,7 +564,7 @@ const triggerSet: TriggerSet<Data> = {
         'Plummet': '掉落',
         // 'Pulping Pulse': '', // FIXME '碎烂脉冲'
         // 'Sadistic Screech': '', // FIXME '施虐的尖啸'
-        // 'Vamp Stomp': '' // FIXME '血魅的靴踏音'
+        // 'Vamp Stomp': '', // FIXME '血魅的靴踏音'
       },
     },
   ],

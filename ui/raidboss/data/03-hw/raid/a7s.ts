@@ -395,7 +395,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pyretic': '熱病',
         'Quickthinx Allthoughts': '萬事通 奎克辛克斯',
         'Shanoa': '夏諾雅',
-        'Sturm Doll': '風暴人偶'
+        'Sturm Doll': '風暴人偶',
       },
       'replaceText': {
         // 'Big Doll': '', // FIXME '大人偶'
@@ -415,7 +415,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Small Dolls': '', // FIXME '小人偶'
         // 'Stun Heart': '', // FIXME '击晕真心'
         'Uplander Doom': '齊射',
-        'Zoomdoom': '哥布火箭'
+        'Zoomdoom': '哥布火箭',
       },
     },
     {

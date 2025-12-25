@@ -198,7 +198,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthospider': '正統蜘蛛',
         'Orthotaur': '正統米諾陶洛斯',
         'Phantom Orthoray': '正統魅影射線',
-        'Twintania\'s Clone': '雙塔尼亞複製體'
+        'Twintania\'s Clone': '雙塔尼亞複製體',
       },
     },
     {

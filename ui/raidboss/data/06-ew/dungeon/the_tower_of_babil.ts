@@ -475,7 +475,7 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Chakram': '魔導輪',
         'Magitek Explosive': '魔導炸彈',
         'Mega-graviton': '百萬重力',
-        'Thunderball': '雷電球'
+        'Thunderball': '雷電球',
       },
       'replaceText': {
         'Aetherial Pull': '吸引',
@@ -507,7 +507,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shocking Force': '高壓放電',
         'Surface Missile': '對地導彈',
         'Thermal Suppression': '火力壓制',
-        'Thundercall': '招雷'
+        'Thundercall': '招雷',
       },
     },
     {

@@ -513,7 +513,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Execrated Wile': '狡詐信徒',
-        'Zurvan': '祖爾宛'
+        'Zurvan': '祖爾宛',
       },
       'replaceText': {
         // '\\(circles\\)': '', // FIXME '(圆)'
@@ -543,7 +543,7 @@ const triggerSet: TriggerSet<Data> = {
         'Twin Spirit': '多重靈身',
         'Tyrfing': '提爾鋒',
         'Wave Cannon': '波動砲',
-        'the Purge': '肅清'
+        'the Purge': '肅清',
       },
     },
     {

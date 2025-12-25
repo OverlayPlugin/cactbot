@@ -652,7 +652,7 @@ const triggerSet: TriggerSet<Data> = {
         'Airy Bubble': '水泡',
         'Feather Ray': '羽環魟',
         'Firearms': '重裝大岩兵',
-        'Maulskull': '錘顱巨兵'
+        'Maulskull': '錘顱巨兵',
       },
       'replaceText': {
         // '\\(boss\\)': '', // FIXME '(BOSS)'
@@ -688,7 +688,7 @@ const triggerSet: TriggerSet<Data> = {
         'Trouble Bubbles': '搗蛋水泡',
         'Troublesome Tail': '搗蛋尾',
         'Worrisome Wave': '搗蛋水波',
-        'Wrought Fire': '熱能昇華'
+        'Wrought Fire': '熱能昇華',
       },
     },
     {

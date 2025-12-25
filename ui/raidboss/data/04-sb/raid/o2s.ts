@@ -534,7 +534,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Catastrophe': '災變者',
-        'Fleshy Member': '觸手'
+        'Fleshy Member': '觸手',
       },
       'replaceText': {
         // '\\(T/H\\)': '', // FIXME '(T/奶)'
@@ -558,7 +558,7 @@ const triggerSet: TriggerSet<Data> = {
         'Erosion': '侵入',
         'Main Quake': '主震',
         'Maniacal Probe': '觸手亂舞',
-        'Gravitational Collapse': '重力崩壞'
+        'Gravitational Collapse': '重力崩壞',
       },
     },
     {

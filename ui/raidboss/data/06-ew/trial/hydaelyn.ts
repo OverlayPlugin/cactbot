@@ -398,7 +398,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Echo of Hydaelyn': '海德林的回聲',
         '(?<!of )Hydaelyn': '海德林',
-        'Mystic Refulgence': '幻想光'
+        'Mystic Refulgence': '幻想光',
       },
       'replaceText': {
         'Anthelion': '反假日',
@@ -421,7 +421,7 @@ const triggerSet: TriggerSet<Data> = {
         'Parhelic Circle': '幻日環',
         '(?<!Sub)Parhelion': '幻日',
         'Radiant Halo': '明輝光環',
-        'Subparhelion': '映幻日'
+        'Subparhelion': '映幻日',
       },
     },
     {

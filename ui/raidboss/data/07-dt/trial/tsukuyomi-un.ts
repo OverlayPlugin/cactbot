@@ -495,7 +495,7 @@ const triggerSet: TriggerSet<Data> = {
         'Specter Of The Patriarch': '養父的幻影',
         'Specter Of Zenos': '芝諾斯的幻影',
         'Tsukuyomi': '月讀',
-        'Specter of Zenos': '芝諾斯的幻影'
+        'Specter of Zenos': '芝諾斯的幻影',
       },
       'replaceText': {
         // '\\(E->W\\)': '', // FIXME '(东->西)'
@@ -531,7 +531,7 @@ const triggerSet: TriggerSet<Data> = {
         'Unmoving Troika': '不動三段',
         'Waning Grudge': '漆黑怨念',
         'Waxing Grudge': '純白怨念',
-        'Zashiki-Asobi': '宴會遊樂'
+        'Zashiki-Asobi': '宴會遊樂',
       },
     },
     {

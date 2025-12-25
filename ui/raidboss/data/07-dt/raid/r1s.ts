@@ -809,8 +809,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '\\(First\\)': '', // FIXME '(一)'
         // '\\(Second\\)': '', // FIXME '(二)'
@@ -845,7 +844,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shockwave': '衝擊波',
         // 'Soulshade': '', // FIXME '灵魂之影'
         // 'Splintering Nails': '', // FIXME '碎裂尖甲'
-        // 'Tempestuous Tear': '' // FIXME '暴风裂'
+        // 'Tempestuous Tear': '', // FIXME '暴风裂'
       },
     },
     {

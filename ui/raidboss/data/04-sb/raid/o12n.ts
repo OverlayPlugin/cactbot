@@ -353,7 +353,7 @@ const triggerSet: TriggerSet<Data> = {
         'Omega(?!-)': '歐米茄',
         'Omega-M': '歐米茄M',
         'Optical Unit': '視覺組',
-        // '<blip> Warning\\. Calculations indicate': '' // FIXME '警告……警告……失败的危险性上升……'
+        // '<blip> Warning\\. Calculations indicate': '', // FIXME '警告……警告……失败的危险性上升……'
       },
       'replaceText': {
         'Beyond Strength': '盾連擊G',
@@ -381,7 +381,7 @@ const triggerSet: TriggerSet<Data> = {
         'Superliminal Steel': '劍連擊B',
         'Suppression': '援護程式F',
         'Synthetic Blades': '合成劍',
-        'Synthetic Shield': '合成盾'
+        'Synthetic Shield': '合成盾',
       },
     },
     {

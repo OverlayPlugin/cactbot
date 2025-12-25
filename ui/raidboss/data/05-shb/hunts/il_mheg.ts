@@ -133,7 +133,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Aglaope': '阿格拉俄珀',
         'O Poorest Pauldia': '保爾迪雅',
-        'The Mudman': '泥人'
+        'The Mudman': '泥人',
       },
     },
     {

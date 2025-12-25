@@ -371,7 +371,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ceruleum Tank': '青磷水罐',
         'Mark III-B Magitek Colossus': '魔導巨兵三型B式',
         'Prometheus': '普羅米修士',
-        'Soranus Duo': '茱莉亞&安妮亞'
+        'Soranus Duo': '茱莉亞&安妮亞',
       },
       'replaceText': {
         // '\\(windup\\)': '', // FIXME '(发射)'
@@ -410,7 +410,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Order': '下令',
         'Tunnel': '潛航',
         'Unbreakable Cermet Drill': '超硬陶瓷合金鑽頭',
-        'Wild Fire Beam': '擴散火焰光束'
+        'Wild Fire Beam': '擴散火焰光束',
       },
     },
     {

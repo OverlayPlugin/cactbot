@@ -313,7 +313,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Agdistis': '阿格狄斯提斯',
         'Immature Io': '未成熟的伊娥',
-        'Immature Stymphalide': '未成熟的鐵爪怪鳥'
+        'Immature Stymphalide': '未成熟的鐵爪怪鳥',
       },
       'replaceText': {
         // 'left': '', // FIXME '左'
@@ -332,7 +332,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadow of Attis': '阿提斯的光露',
         'Spark of Life': '生命的光芒',
         'Static Moon': '靜電之月',
-        'Stymphalian Strike': '怪鳥強襲'
+        'Stymphalian Strike': '怪鳥強襲',
       },
     },
     {

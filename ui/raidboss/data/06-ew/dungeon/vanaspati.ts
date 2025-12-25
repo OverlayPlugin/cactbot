@@ -305,7 +305,7 @@ const triggerSet: TriggerSet<Data> = {
         'Svarbhanu': '斯伐婆奴',
         'Terminus Snatcher': '終末的搶奪',
         'Terminus Twitcher': '終末的抽搐',
-        'Terminus Wrecker': '終末的破壞'
+        'Terminus Wrecker': '終末的破壞',
       },
       'replaceText': {
         // '\\(Knockback\\)': '', // FIXME '(击退)'
@@ -331,7 +331,7 @@ const triggerSet: TriggerSet<Data> = {
         'Vitriol': '言出必行',
         'Wallow': '嗚咽',
         'What Is Left': '污穢的左手',
-        'What Is Right': '污穢的右手'
+        'What Is Right': '污穢的右手',
       },
     },
     {

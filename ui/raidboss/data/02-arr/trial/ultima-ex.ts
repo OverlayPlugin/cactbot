@@ -283,7 +283,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Ultima Weapon': '究極武器',
         'Ultima Garuda': '究極迦樓羅',
         'Ultima Ifrit': '究極伊弗利特',
-        'Ultima Titan': '究極泰坦'
+        'Ultima Titan': '究極泰坦',
       },
       'replaceText': {
         'Aetheric Boom': '乙太波動',
@@ -301,7 +301,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ultima': '最終究極',
         'Viscous Aetheroplasm': '吸附式乙太炸彈',
         'Vulcan Burst': '火神爆裂',
-        'Weight of the Land': '大地重壓'
+        'Weight of the Land': '大地重壓',
       },
     },
     {

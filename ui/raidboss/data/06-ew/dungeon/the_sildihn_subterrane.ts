@@ -1166,7 +1166,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadowcaster Zeless Gah': '鬼陰火 澤雷斯·夏',
         'Silken Puff': '羽衣精的絨球',
         'Silkie': '羽衣精',
-        'Thorne Knight': '索恩自走人偶'
+        'Thorne Knight': '索恩自走人偶',
       },
       'replaceText': {
         '--draw in--': '咒具吸炎',
@@ -1244,7 +1244,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sundered Remains': '場地隆起',
         'Total Wash': '水洗',
         'Wash Out': '沖水',
-        'Wrath of Ruin': '亡念激起'
+        'Wrath of Ruin': '亡念激起',
       },
     },
     {

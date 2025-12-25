@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
         'Greater Armadillo': '大犰狳',
         'Amphibious Talos': '水陸兩用塔羅斯',
         'Storge': '斯托爾戈',
-        'Rhapsodic Nail': '愛之樁柱'
+        'Rhapsodic Nail': '愛之樁柱',
       },
       'replaceText': {
         'Stone Flail': '落石重錘',
@@ -228,7 +228,7 @@ const triggerSet: TriggerSet<Data> = {
         'Crystal Nail': '打樁',
         'Censure': '執行',
         // 'Armadillo': '', // FIXME '犰狳'
-        // 'Pack': '' // FIXME 
+        // 'Pack': '', // FIXME
       },
     },
     {

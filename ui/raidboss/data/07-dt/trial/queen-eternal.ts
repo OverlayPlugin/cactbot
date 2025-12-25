@@ -567,7 +567,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Queen Eternal': '永恆女王'
+        'Queen Eternal': '永恆女王',
       },
       'replaceText': {
         // '\\(abandonment\\)': '', // FIXME '(孤独感)'
@@ -599,7 +599,7 @@ const triggerSet: TriggerSet<Data> = {
         'Royal Domain': '王土',
         'Ruthless Regalia': '王法無情',
         'Virtual Shift': '虛景切換',
-        'Waltz of the Regalia': '王權圓舞曲'
+        'Waltz of the Regalia': '王權圓舞曲',
       },
     },
     {

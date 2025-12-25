@@ -967,7 +967,7 @@ const triggerSet: TriggerSet<Data> = {
         'Agdistis': '阿格狄斯提斯',
         'Immature Io': '未成熟的伊娥',
         'Immature Minotaur': '未成熟的米諾陶洛斯',
-        'Immature Stymphalide': '未成熟的鐵爪怪鳥'
+        'Immature Stymphalide': '未成熟的鐵爪怪鳥',
       },
       'replaceText': {
         '--chasing aoe--': '半神閃耀',
@@ -1002,7 +1002,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spark of Life': '生命的光芒',
         'Static Path': '靜電之路',
         'Stymphalian Strike': '怪鳥強襲',
-        'War\'s Harvest': '生命繁茂之亂'
+        'War\'s Harvest': '生命繁茂之亂',
       },
     },
     {

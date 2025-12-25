@@ -274,7 +274,7 @@ const triggerSet: TriggerSet<Data> = {
         'Black Wolf\'s Image': '蓋烏斯的幻影',
         'Claw Bit': '手型浮游砲',
         'Magnetic Mine': '電磁炸雷',
-        'The Emerald Weapon': '綠寶石武器'
+        'The Emerald Weapon': '綠寶石武器',
       },
       'replaceText': {
         'Bit Plasma': '浮游砲：射出炸彈',
@@ -300,7 +300,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sidescathe': '側面掃射',
         'Split': '分離',
         'Tertius Terminus Est': '恩惠終結：三',
-        'Threefold Formation': '步兵列隊'
+        'Threefold Formation': '步兵列隊',
       },
     },
     {

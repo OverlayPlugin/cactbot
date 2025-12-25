@@ -689,7 +689,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ragnarok': '諸神黃昏',
         'The Ghost Of Meracydia': '美拉西迪亞幽龍',
         'Thunderwing': '雷翼',
-        'Umbral Debris': '靈極岩屑'
+        'Umbral Debris': '靈極岩屑',
       },
       'replaceText': {
         '(?<! )Meteor(?! Stream)': '隕石',
@@ -713,7 +713,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ravensclaw': '凶鳥利爪',
         'Stardust': '星塵',
         'Super Nova': '超新星',
-        'Thermionic Beam': '熱離子光束'
+        'Thermionic Beam': '熱離子光束',
       },
     },
     {

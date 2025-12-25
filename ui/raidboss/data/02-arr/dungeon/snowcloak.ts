@@ -62,7 +62,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Fenrir': '芬里爾'
+        'Fenrir': '芬里爾',
       },
     },
     {

@@ -447,7 +447,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ihuykatumu Flytrap': '生息陷阱草',
         'Ihuykatumu Sandworm': '生息沙蟲',
         'Prime Punutiy': '首領海牛',
-        '(?<! )Punutiy': '海牛'
+        '(?<! )Punutiy': '海牛',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -482,7 +482,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wallop': '打擊',
         'Wind Sickle': '風鐮',
         'Windwhistle': '喚風',
-        'Wing of Lightning': '扇狀放電'
+        'Wing of Lightning': '扇狀放電',
       },
     },
     {

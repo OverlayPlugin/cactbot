@@ -2443,7 +2443,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ragnarok': '諸神黃昏',
         'Tail Of Darkness': '暗尾',
         'Thunderwing': '雷翼',
-        'Twintania': '雙塔尼亞'
+        'Twintania': '雙塔尼亞',
       },
       'replaceText': {
         // '--push--': '', // FIXME '--开怪--'
@@ -2508,7 +2508,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Twin Marker': '', // FIXME '双塔标记'
         'Twister': '旋風',
         'Twisting Dive': '旋風衝',
-        'Wings Of Salvation': '救世之翼'
+        'Wings Of Salvation': '救世之翼',
       },
     },
     {

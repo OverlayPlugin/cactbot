@@ -336,7 +336,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ladon Lord': '拉冬之王',
         'Lyssa': '呂薩',
         'Meteor': '隕石',
-        'Pyric Sphere': '燃燒晶球'
+        'Pyric Sphere': '燃燒晶球',
       },
       'replaceText': {
         'Cosmic Kiss': '轟擊',
@@ -362,7 +362,7 @@ const triggerSet: TriggerSet<Data> = {
         'True Aero(?! I)': '純正勁風',
         'True Aero II': '純正・中勁風',
         'True Aero IV': '純正超勁風',
-        'True Tornado': '純正龍捲風'
+        'True Tornado': '純正龍捲風',
       },
     },
     {

@@ -58,7 +58,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Nightmare Eye': '惡夢之眼'
+        'Nightmare Eye': '惡夢之眼',
       },
     },
     {

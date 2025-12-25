@@ -309,7 +309,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Barbariccia': '巴爾巴莉希亞',
-        'Voidwalker': '虛無行者'
+        'Voidwalker': '虛無行者',
       },
       'replaceText': {
         'Blow Away': '重拳激震',
@@ -336,7 +336,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Aero III': '虛空大勁風',
         'Void Aero IV': '虛空超勁風',
         'Voidstrom': '虛無風暴',
-        'Winding Gale': '追命狂風'
+        'Winding Gale': '追命狂風',
       },
     },
     {

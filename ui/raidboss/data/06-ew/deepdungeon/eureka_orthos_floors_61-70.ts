@@ -177,7 +177,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Drake': '正統烈陽火蛟',
         'Orthos Falak': '正統法拉克',
         'Orthos Gowrow': '正統高牢怪龍',
-        'Orthos Palleon': '正統侏儒避役'
+        'Orthos Palleon': '正統侏儒避役',
       },
     },
     {

@@ -386,7 +386,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Prosperity\'s Promise': '', // FIXME '财富之间'
         'Sanduruva': '多格',
         // 'Wisdom\'S Ward': '', // FIXME '智慧之间'
-        // 'Wisdom\'s Ward': '' // FIXME '智慧之间'
+        // 'Wisdom\'s Ward': '', // FIXME '智慧之间'
       },
       'replaceText': {
         'Cinduruva': '馬格',
@@ -417,7 +417,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sanduruva': '多格',
         'Sphere Shatter': '碎裂',
         // 'Transmute Element III': '', // FIXME '魔力操纵：元素'
-        'Transmute Thunder III': '魔力操縱：大雷電'
+        'Transmute Thunder III': '魔力操縱：大雷電',
       },
     },
     {

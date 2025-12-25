@@ -377,7 +377,7 @@ const triggerSet: TriggerSet<Data> = {
         'Blaster Mirage': '爆破者幻象',
         'Brawler': '爭鬥者',
         'Swindler': '欺詐者',
-        'Vortexer': '環旋者'
+        'Vortexer': '環旋者',
       },
       'replaceText': {
         // '--unseal--': '', // FIXME '--解除封锁--'
@@ -400,7 +400,7 @@ const triggerSet: TriggerSet<Data> = {
         'Supercharge': '超突擊',
         'Single Buster': '破壞砲擊',
         'Double Buster': '雙重破壞砲擊',
-        'Rocket Drill': '火箭飛鑽'
+        'Rocket Drill': '火箭飛鑽',
       },
     },
     {

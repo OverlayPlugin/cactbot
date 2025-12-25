@@ -1209,7 +1209,7 @@ const triggerSet: TriggerSet<Data> = {
         'Omega-M': '歐米茄M',
         'Optical Unit': '視覺組',
         'Rear Power Unit': '尾部組',
-        'Right Arm Unit': '右臂組'
+        'Right Arm Unit': '右臂組',
       },
       'replaceText': {
         'Advanced Optical Laser': '光學射線S',
@@ -1261,7 +1261,7 @@ const triggerSet: TriggerSet<Data> = {
         'Synthetic Blades': '合成劍',
         'Synthetic Shield': '合成盾',
         'Target Analysis': '目標識別',
-        '(?<! )Wave Cannon': '波動砲'
+        '(?<! )Wave Cannon': '波動砲',
       },
     },
     {

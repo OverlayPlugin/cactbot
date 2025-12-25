@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Golbez': '高貝扎',
-        'Golbez\'s Shadow': '高貝扎的幻影'
+        'Golbez\'s Shadow': '高貝扎的幻影',
       },
       'replaceText': {
         // '\\(preview\\)': '', // FIXME '(预兆)'
@@ -286,7 +286,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadow Crescent': '弦月黑龍劍',
         'Terrastorm': '遲緩地暴',
         'Void Meteor': '虛空隕石',
-        'Void Stardust': '虛空隕星雨'
+        'Void Stardust': '虛空隕星雨',
       },
     },
     {

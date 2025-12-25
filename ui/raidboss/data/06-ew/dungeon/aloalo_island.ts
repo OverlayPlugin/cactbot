@@ -1303,7 +1303,7 @@ const triggerSet: TriggerSet<Data> = {
         'Surprising Staff': '驚喜杖',
         'Treasure Box': '寶寶箱',
         'Uolosapa Loqua': '烏洛薩帕·羅庫阿',
-        'Zeal-blind Zozone': '糊塗蛋 佐佐涅'
+        'Zeal-blind Zozone': '糊塗蛋 佐佐涅',
       },
       'replaceText': {
         // '--cleanse--': '', // FIXME '--解除--'
@@ -1397,7 +1397,7 @@ const triggerSet: TriggerSet<Data> = {
         'Volcanic Coordinates': '點火法',
         'Water III': '大水花',
         'Wavefoam': '氣泡波',
-        'Whoopee Cushion': '放屁坐墊'
+        'Whoopee Cushion': '放屁坐墊',
       },
     },
     {

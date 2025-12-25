@@ -583,7 +583,7 @@ const triggerSet: TriggerSet<Data> = {
         'Innocence': '無瑕靈君',
         'Nail of Condemnation': '斷罪之樁',
         'Forgiven Shame': '得到寬恕的恥辱',
-        'Forgiven Venery': '得到寬恕的情欲'
+        'Forgiven Venery': '得到寬恕的情欲',
       },
       'replaceText': {
         'Winged Rep Trident': '斷罪飛翔',
@@ -609,7 +609,7 @@ const triggerSet: TriggerSet<Data> = {
         'Duel Descent': '雙重降臨',
         'Drop Of Light': '落光',
         'Beatific Vision': '榮福直觀',
-        'Forgiven venery': '得到寬恕的情欲'
+        'Forgiven venery': '得到寬恕的情欲',
       },
     },
     {

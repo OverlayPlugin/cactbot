@@ -314,7 +314,7 @@ const triggerSet: TriggerSet<Data> = {
         'Dohnfast Fuath': '禁園水妖',
         'Dohnfast Basket': '禁園籃筐',
         'Dohnfast Etainmoth': '禁園愛蒂恩蛾',
-        'Dohnfast Kelpie': '禁園凱爾派'
+        'Dohnfast Kelpie': '禁園凱爾派',
       },
       'replaceText': {
         'Swinge': '重擊',
@@ -337,7 +337,7 @@ const triggerSet: TriggerSet<Data> = {
         'Toad Choir': '青蛙歌唱隊',
         'Changeling\'s Fantasia': '自身變異幻想曲',
         'Virtuosic Capriccio': '殘酷狂想曲',
-        'Rake': '利爪'
+        'Rake': '利爪',
       },
     },
   ],

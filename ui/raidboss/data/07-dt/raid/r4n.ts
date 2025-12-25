@@ -753,8 +753,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // 'Left Roll': '', // FIXME '左转'
         // 'Right Roll': '', // FIXME '右转'
@@ -779,7 +778,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Wicked Hypercannon': '', // FIXME '狡诡聚能加农炮'
         // 'Wicked Jolt': '', // FIXME '狡诡摇荡'
         'Witch Hunt': '獵殺女巫',
-        'Wrath of Zeus': '宙斯之怒'
+        'Wrath of Zeus': '宙斯之怒',
       },
     },
     {

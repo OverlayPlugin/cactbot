@@ -250,7 +250,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sabotender Corrido': '懸賞魔物：寇里多仙人掌',
         'Shadow Wraith': '暗影幽靈',
         'Void Garm': '虛無加姆',
-        'Voidscale': '虛無鱗龍'
+        'Voidscale': '虛無鱗龍',
       },
     },
     {

@@ -157,7 +157,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Aegeiros': '黑楊樹妖',
-        'Minerva': '密涅瓦'
+        'Minerva': '密涅瓦',
       },
     },
     {

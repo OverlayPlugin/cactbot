@@ -348,7 +348,7 @@ const triggerSet: TriggerSet<Data> = {
         'Frameworker': '框架工作員',
         'Printed Worker': '列印出的工作員',
         'Relatively Small Face': '小面像',
-        'The Big Cheese': '大笑臉'
+        'The Big Cheese': '大笑臉',
       },
       'replaceText': {
         'Circular Saw': '全體斬擊',
@@ -373,7 +373,7 @@ const triggerSet: TriggerSet<Data> = {
         'Temper\'s Flare': '熊熊火光',
         'Temper, Temper': '熊熊烈焰',
         'Upside Down': '迴旋號令',
-        'Violent Discharge': '強制放電'
+        'Violent Discharge': '強制放電',
       },
     },
     {

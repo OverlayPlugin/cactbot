@@ -335,7 +335,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Lunatender Queen': '月面仙人掌女王',
         'Mousse Princess': '慕斯公主',
-        'Ruminator': '沉思之物'
+        'Ruminator': '沉思之物',
       },
     },
     {

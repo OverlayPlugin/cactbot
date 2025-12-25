@@ -292,7 +292,7 @@ const triggerSet: TriggerSet<Data> = {
         'Kyklops': '克琉普斯',
         'Rukshs Dheem': '魯克嘶·蒂母',
         'Sinister Bubble': '怪異泡沫',
-        'Unknown': '不明物體'
+        'Unknown': '不明物體',
       },
       'replaceText': {
         'The Final Verse': '恐怖的最終章',
@@ -321,7 +321,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Hammer/Blade Mark': '', // FIXME '战锤/大剑标记'
         // 'Blade/Hammer Mark': '', // FIXME '大剑/战锤标记'
         'Pyre/Hearth': '恐怖的大火焰',
-        // 'Unknown Add': '' // FIXME '小怪出现'
+        // 'Unknown Add': '', // FIXME '小怪出现'
       },
     },
     {

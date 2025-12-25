@@ -285,7 +285,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Leightonward': '萊頓瓦德',
         'Small Spore Sac': '小型孢囊',
         '(?<!Small )Spore Sac': '孢囊',
-        'Lava Scorpion': '熔岩蠍'
+        'Lava Scorpion': '熔岩蠍',
       },
       'replaceText': {
         // '\\(Adds x2\\)': '', // FIXME '(小怪x2)'
@@ -303,7 +303,7 @@ const triggerSet: TriggerSet<Data> = {
         'Glorious Blaze': '引火',
         'Flying Press': '飛躍重壓',
         'Excretion': '黏液',
-        'Deadly Thrust': '致命尾刺'
+        'Deadly Thrust': '致命尾刺',
       },
     },
     {

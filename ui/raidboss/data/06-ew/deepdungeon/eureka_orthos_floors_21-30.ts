@@ -129,7 +129,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Brobinyak': '正統布羅賓雅克',
         'Orthos Vanara': '正統婆那羅',
         'Orthoshelled Dragon': '正統龜甲龍',
-        'Tiamat\'s Clone': '提亞馬特複製體'
+        'Tiamat\'s Clone': '提亞馬特複製體',
       },
     },
     {

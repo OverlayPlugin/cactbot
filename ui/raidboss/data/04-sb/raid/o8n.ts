@@ -333,7 +333,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Graven Image': '眾神之像',
-        'Kefka': '凱夫卡'
+        'Kefka': '凱夫卡',
       },
       'replaceText': {
         'Aero Assault': '疼颼颼大勁風',
@@ -348,7 +348,7 @@ const triggerSet: TriggerSet<Data> = {
         'Thrumming Thunder': '劈啪啪大雷電',
         'Timely Teleport': '跳蹦蹦傳送',
         'Ultima Upsurge': '撲騰騰究極',
-        'Wave Cannon': '波動砲'
+        'Wave Cannon': '波動砲',
       },
     },
     {

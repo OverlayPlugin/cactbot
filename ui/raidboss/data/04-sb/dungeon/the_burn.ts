@@ -369,7 +369,7 @@ const triggerSet: TriggerSet<Data> = {
         'Mist Dragon': '霧龍',
         'Dim Crystal': '褪色水晶',
         'Defective Drone': '次品無人機',
-        'Hedetet': '赫德提特'
+        'Hedetet': '赫德提特',
       },
       'replaceText': {
         'Vaporize': '霧散',
@@ -391,7 +391,7 @@ const triggerSet: TriggerSet<Data> = {
         'Aetherochemical Residue': '魔科學黏液',
         'Aetherochemical Flame': '魔科學烈焰',
         'Aetherochemical Coil': '魔科學車輪',
-        'Adit Driver': '削岩'
+        'Adit Driver': '削岩',
       },
     },
     {

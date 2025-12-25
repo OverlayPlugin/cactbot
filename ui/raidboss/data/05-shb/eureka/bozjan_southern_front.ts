@@ -1080,7 +1080,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lyon The Beast King(?! would)': '獸王 萊昂',
         // 'Majesty\'s Auspice': '', // FIXME '圆坛之间'
         'Shadowsphere': '暗影晶球',
-        'Verdant Plume': '濃綠之羽'
+        'Verdant Plume': '濃綠之羽',
       },
       'replaceText': {
         // '--Lyon Passage--': '', // FIXME '--兽王通道开启--'
@@ -1143,7 +1143,7 @@ const triggerSet: TriggerSet<Data> = {
         'Voltstream': '電壓流',
         'Warped Light': '閃光砲',
         'Water IV': 'ウォタジャ',
-        'Winds\' Peak': '超級烈風波'
+        'Winds\' Peak': '超級烈風波',
       },
     },
     {

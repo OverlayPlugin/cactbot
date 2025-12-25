@@ -190,7 +190,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Grassman': '格拉斯曼',
         'Ixtab': '伊休妲',
-        'Supay': '蘇帕伊'
+        'Supay': '蘇帕伊',
       },
     },
     {

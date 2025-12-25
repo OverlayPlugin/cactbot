@@ -468,7 +468,7 @@ const triggerSet: TriggerSet<Data> = {
         'Aetherial Tear': '次元裂縫',
         'Great Dragon': '巨龍',
         'Halicarnassus': '哈利卡納蘇斯',
-        'Soul Reaper': '靈魂收割者'
+        'Soul Reaper': '靈魂收割者',
       },
       'replaceText': {
         'Aetherial Pull': '吸引',
@@ -493,7 +493,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Playing Field': '遊戲面板',
         'The Queen\'s Waltz': '女王之舞',
         'Ultimum': '次元終結',
-        'Uplift': '隆起'
+        'Uplift': '隆起',
       },
     },
     {

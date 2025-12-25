@@ -132,7 +132,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Heavenly Hashiri-dokoro': '天之東莨菪',
-        'Kenko': '犬蠱'
+        'Kenko': '犬蠱',
       },
     },
     {

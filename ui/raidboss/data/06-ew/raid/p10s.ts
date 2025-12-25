@@ -830,7 +830,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Arcane Sphere': '立體魔法陣',
         // 'Pand(?:\\\\u00e6|\u00e6)moniac Pillar': '', // FIXME '万魔殿之塔'
-        // 'Pand(?:\\\\u00e6|\u00e6)monium': '' // FIXME '万魔殿'
+        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -858,7 +858,7 @@ const triggerSet: TriggerSet<Data> = {
         'Steel Web': '沉重之網',
         'Touchdown': '空降',
         'Ultima': '最終究極',
-        'Wicked Step': '尖腳'
+        'Wicked Step': '尖腳',
       },
     },
     {

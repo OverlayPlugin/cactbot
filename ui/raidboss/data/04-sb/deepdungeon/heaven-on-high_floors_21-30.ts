@@ -85,7 +85,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Heavenly Hatamoto': '天之旗本',
         'Heavenly Onibi': '天之鬼火',
-        'Hiruko': '蛭子'
+        'Hiruko': '蛭子',
       },
     },
     {

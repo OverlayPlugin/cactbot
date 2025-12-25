@@ -279,7 +279,7 @@ const triggerSet: TriggerSet<Data> = {
         'Goblin of Fortune': '傭兵戰士',
         'Gobpress R-VI': '6號哥布林壓路機',
         'Lamebrix Strikebocks': '傭兵雷姆普里克斯',
-        'Weight of the World': '大陸之重'
+        'Weight of the World': '大陸之重',
       },
       'replaceText': {
         'Bomb Toss': '投彈',
@@ -297,7 +297,7 @@ const triggerSet: TriggerSet<Data> = {
         'Laceration': '斬擊',
         'Single Charge': '單發填充',
         'Steam Roller': '蒸氣滾輪',
-        'Trap': '啟動陷阱'
+        'Trap': '啟動陷阱',
       },
     },
     {

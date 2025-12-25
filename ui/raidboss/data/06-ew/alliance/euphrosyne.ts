@@ -1325,7 +1325,7 @@ const triggerSet: TriggerSet<Data> = {
         'Halone': '哈羅妮',
         'Menphina': '梅茵菲娜',
         '(?<!& )Nophica': '諾菲卡',
-        'Nymeia': '妮美雅'
+        'Nymeia': '妮美雅',
       },
       'replaceText': {
         'Abundance': '神力花雨',
@@ -1387,7 +1387,7 @@ const triggerSet: TriggerSet<Data> = {
         'Will of the Fury': '戰女神之意',
         'Winter Halo': '月暈',
         'Winter Solstice': '寒月',
-        'Wrath of Halone': '戰女神之憤'
+        'Wrath of Halone': '戰女神之憤',
       },
     },
     {

@@ -154,7 +154,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Ama-No-Iwato': '天之岩戶',
         'Dark Cloud': '暗雲',
-        'Susano': '須佐之男'
+        'Susano': '須佐之男',
       },
       'replaceText': {
         'Ame-No-Murakumo': '天之叢雲',
@@ -169,7 +169,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Sealed Gate': '岩戶閉合',
         'Ukehi': '祈請',
         'Yasakani-No-Magatama': '八尺瓊勾玉',
-        'Yata-No-Kagami': '八咫鏡'
+        'Yata-No-Kagami': '八咫鏡',
       },
     },
     {

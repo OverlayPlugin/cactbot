@@ -483,7 +483,7 @@ const triggerSet: TriggerSet<Data> = {
         'Albion': '白雪獸',
         'Albus Griffin': '白嶺獅鷲',
         'Cagnazzo': '凱納槽',
-        'Galatea Magna': '大型伽拉忒亞人偶'
+        'Galatea Magna': '大型伽拉忒亞人偶',
       },
       'replaceText': {
         'Albion\'s Embrace': '雪獸擁抱',
@@ -517,7 +517,7 @@ const triggerSet: TriggerSet<Data> = {
         'Voidcleaver': '虛無劈砍',
         'Waning Cycle': '環割圓切',
         'Waxing Cycle': '圓切環割',
-        'Wildlife Crossing': '奔馳'
+        'Wildlife Crossing': '奔馳',
       },
     },
     {

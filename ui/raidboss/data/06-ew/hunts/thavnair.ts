@@ -530,7 +530,7 @@ const triggerSet: TriggerSet<Data> = {
         'Daivadipa': '明燈天王',
         'Sphatika': '頗胝迦',
         'Sugriva': '須羯里婆',
-        'Yilan': '尤蘭'
+        'Yilan': '尤蘭',
       },
     },
     {

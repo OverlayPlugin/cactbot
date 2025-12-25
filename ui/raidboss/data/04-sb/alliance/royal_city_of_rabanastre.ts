@@ -705,7 +705,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pennantstone Golem': '石板魔像',
         'Rofocale': '人馬王洛弗卡勒',
         'Sand Sphere': '沙球',
-        'Submission Tower': '服從之塔'
+        'Submission Tower': '服從之塔',
       },
       'replaceText': {
         // '--Shade--': '', // FIXME '--阴影--'
@@ -774,7 +774,7 @@ const triggerSet: TriggerSet<Data> = {
         'Trample': '蹂躪',
         'Trepidation': '狐雞鼠',
         'Unbind': '拘束解放',
-        'Unrelenting': '千手無雙劍'
+        'Unrelenting': '千手無雙劍',
       },
     },
     {

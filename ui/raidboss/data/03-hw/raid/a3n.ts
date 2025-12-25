@@ -317,7 +317,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Hydrate Core': '水合核心',
         'Liquid Limb': '活水之手',
-        'Living Liquid': '有生命活水'
+        'Living Liquid': '有生命活水',
       },
       'replaceText': {
         // '--Liquid Limb spawns--': '', // FIXME '--活水之手出现--'
@@ -332,7 +332,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sluice': '沖洗',
         'Splash': '濺開',
         'Valve': '水閥',
-        'Wash Away': '沖淨'
+        'Wash Away': '沖淨',
       },
     },
     {

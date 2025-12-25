@@ -349,7 +349,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Thunderbeast': '正統雷獸',
         'Orthos Toco Toco': '正統巨嘴鳥',
         'Proto-Kaliya': '原型卡利亞',
-        'Weapons Drone': '砲擊無人機'
+        'Weapons Drone': '砲擊無人機',
       },
     },
     {

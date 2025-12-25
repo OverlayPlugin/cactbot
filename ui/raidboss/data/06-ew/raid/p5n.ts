@@ -310,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Proto-Carbuncle': '原型卡邦庫爾'
+        'Proto-Carbuncle': '原型卡邦庫爾',
       },
       'replaceText': {
         '(?<!Toxic )Crunch': '重咬',
@@ -323,7 +323,7 @@ const triggerSet: TriggerSet<Data> = {
         'Toxic Crunch': '毒液重咬',
         'Venom Pool': '毒液飛濺',
         'Venom Rain': '毒液雨',
-        'Venom Squall': '毒液風暴'
+        'Venom Squall': '毒液風暴',
       },
     },
     {

@@ -404,7 +404,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Ice Soldier': '寒冰士兵',
-        'Shiva': '濕婆'
+        'Shiva': '濕婆',
       },
       'replaceText': {
         // '\\(circle\\)': '', // FIXME '(圆)'
@@ -424,7 +424,7 @@ const triggerSet: TriggerSet<Data> = {
         'Icicle Impact': '冰柱衝擊',
         'Melt': '武器融化',
         'Permafrost': '永久凍土',
-        'Whiteout': '白化視界'
+        'Whiteout': '白化視界',
       },
     },
     {

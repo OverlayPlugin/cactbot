@@ -249,7 +249,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Governor': '獄長',
         'The Groveller': '奴僕',
         'Lorelei': '羅蕾萊',
-        'Fleshless Captive': '幽靈囚徒'
+        'Fleshless Captive': '幽靈囚徒',
       },
       'replaceText': {
         'Amorphous Applause': '莫名擊掌',
@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
         'Morbid Retreat': '死亡行進：後',
         'Head Butt': '頭撞',
         'Somber Melody': '憂鬱旋律',
-        'Void Water III': '虛空大水花'
+        'Void Water III': '虛空大水花',
       },
     },
     {

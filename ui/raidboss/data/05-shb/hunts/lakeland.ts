@@ -214,7 +214,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Nariphon': '納里蓬',
         'Nuckelavee': '納克拉維',
-        'Tyger': '戾蟲'
+        'Tyger': '戾蟲',
       },
     },
     {

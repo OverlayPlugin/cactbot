@@ -51,7 +51,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Palace Diplocaulus': '地宮笠頭螈'
+        'Palace Diplocaulus': '地宮笠頭螈',
       },
     },
     {

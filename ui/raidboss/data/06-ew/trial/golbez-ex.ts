@@ -1030,7 +1030,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Gale Sphere': '風球',
         'Golbez': '高貝扎',
-        'Shadow Dragon': '黑龍'
+        'Shadow Dragon': '黑龍',
       },
       'replaceText': {
         // '\\(Enrage\\)': '', // FIXME '(狂暴)'
@@ -1074,7 +1074,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Comet': '虛空隕星',
         'Void Meteor': '虛空隕石',
         'Void Stardust': '虛空隕星雨',
-        'Void Tornado': '虛空龍捲風'
+        'Void Tornado': '虛空龍捲風',
       },
     },
     {

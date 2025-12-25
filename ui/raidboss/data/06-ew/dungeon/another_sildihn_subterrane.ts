@@ -2861,7 +2861,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sil\'dihn Armor': '希拉狄哈惡魔裝甲',
         'Sil\'dihn Dullahan': '希拉狄哈無頭騎士',
         'Silken Puff': '羽衣精的絨球',
-        'Silkie': '羽衣精'
+        'Silkie': '羽衣精',
       },
       'replaceText': {
         'Accursed Visage': '咒怨咒像',
@@ -2912,7 +2912,7 @@ const triggerSet: TriggerSet<Data> = {
         'Squeaky Clean': '擦拭',
         'Sundered Remains': '場地隆起',
         'Total Wash': '水洗',
-        'Wrath of Ruin': '亡念激起'
+        'Wrath of Ruin': '亡念激起',
       },
     },
     {

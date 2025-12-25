@@ -197,7 +197,7 @@ const triggerSet: TriggerSet<Data> = {
         'Malice': '怨念',
         'Phantom Train': '魔列車',
         'Remorse': '留戀幽靈',
-        'Wroth Ghost': '怒靈'
+        'Wroth Ghost': '怒靈',
       },
       'replaceText': {
         // ' Ghosts': '', // FIXME ' 幽灵'
@@ -214,7 +214,7 @@ const triggerSet: TriggerSet<Data> = {
         'Head On': '追尾',
         'Knockback Whistle': '魔界汽笛',
         'Saintly Beam': '聖光射線',
-        'Tether Whistle': '魔界汽笛'
+        'Tether Whistle': '魔界汽笛',
       },
     },
     {

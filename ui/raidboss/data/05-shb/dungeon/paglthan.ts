@@ -342,7 +342,7 @@ const triggerSet: TriggerSet<Data> = {
         'Amhuluk': '阿姆魯克',
         'Lunar Bahamut': '真月巴哈姆特',
         'Magitek Fortress': '魔導要塞',
-        'Magitek Core': '魔導核心'
+        'Magitek Core': '魔導核心',
       },
       'replaceText': {
         // '\\(circles\\)': '', // FIXME '(预兆)'
@@ -364,7 +364,7 @@ const triggerSet: TriggerSet<Data> = {
         'Thundercall': '招雷',
         'Twisted Scream': '異形咆哮',
         'Upburst': '頂起',
-        'Wide Blaster': '廣域衝擊波'
+        'Wide Blaster': '廣域衝擊波',
       },
     },
     {

@@ -912,8 +912,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
         // '\\(damage\\)': '', // FIXME '(伤害)'
@@ -949,7 +948,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'The End\'s Embrace': '', // FIXME '引导之翼'
         // 'The Fourth Season': '', // FIXME '四重青之波潮'
         // 'The Second Season': '', // FIXME '二重青之波潮'
-        // 'Twofold Blight': '' // FIXME '青之二重波'
+        // 'Twofold Blight': '', // FIXME '青之二重波'
       },
     },
     {

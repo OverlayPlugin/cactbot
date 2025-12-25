@@ -171,7 +171,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Ads': '自衛系統',
         'Caduceus': '神杖巨蛇',
-        'Dark Matter Slime': '黑暗物質史萊姆'
+        'Dark Matter Slime': '黑暗物質史萊姆',
       },
     },
     {

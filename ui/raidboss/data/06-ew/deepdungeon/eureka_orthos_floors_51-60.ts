@@ -250,7 +250,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Stingray': '正統刺魟',
         'Orthos Ymir': '正統尤彌爾',
         'Orthos Zaratan': '正統札拉坦',
-        'Servomechanical Minotaur 16': '自控化米諾陶洛斯16'
+        'Servomechanical Minotaur 16': '自控化米諾陶洛斯16',
       },
     },
     {

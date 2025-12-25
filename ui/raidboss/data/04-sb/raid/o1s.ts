@@ -174,7 +174,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Alte Roite': '老者',
         'Ball Of Fire': '火焰球',
-        'Wyrm Tail': '太古龍尾'
+        'Wyrm Tail': '太古龍尾',
       },
       'replaceText': {
         // '\\(safe\\)': '', // FIXME '(找安全区)'
@@ -193,7 +193,7 @@ const triggerSet: TriggerSet<Data> = {
         'Outer Fireballs': '燃燒',
         'Roar': '咆哮',
         'Twin Bolt': '雙重落雷',
-        'Wyrm Tail': '太古龍尾'
+        'Wyrm Tail': '太古龍尾',
       },
     },
     {

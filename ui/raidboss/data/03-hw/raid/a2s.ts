@@ -278,7 +278,7 @@ const triggerSet: TriggerSet<Data> = {
         'Jagd Doll': '狩獵人偶',
         'King Gobtank G-IV': '4號哥布林坦克王',
         'Magitek Gobwidow G-IX': '9號哥布林黑寡婦',
-        '(?<!Giant )Bomb(?!e)': '炸彈'
+        '(?<!Giant )Bomb(?!e)': '炸彈',
       },
       'replaceText': {
         'Blitzstrahl': '迅光',
@@ -297,7 +297,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Sniper': '', // FIXME '戈耳狄狙击手'
         // 'Soldier': '', // FIXME '戈耳狄士兵'
         // 'Wave': '', // FIXME '波'
-        // '\\(mid\\)': '' // FIXME '(中央)'
+        // '\\(mid\\)': '', // FIXME '(中央)'
       },
     },
     {

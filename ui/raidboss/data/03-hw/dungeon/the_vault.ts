@@ -349,7 +349,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Adelphel(?! )': '聖騎士阿代爾斐爾',
         'Ser Charibert': '聖騎士沙里貝爾',
         'Ser Grinnaux the Bull': '戰爭狂 格里諾',
-        'Ser Grinnaux(?! )': '聖騎士格里諾'
+        'Ser Grinnaux(?! )': '聖騎士格里諾',
       },
       'replaceText': {
         'Advent': '再臨衝擊',
@@ -376,7 +376,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sacred Flame': '聖火燃燒',
         'Shining Blade': '光芒劍',
         'Solid Ascension': '實體升天',
-        'White Knight\'s Tour': '白騎士之旅'
+        'White Knight\'s Tour': '白騎士之旅',
       },
     },
     {

@@ -386,7 +386,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Mimic': '擬態怪'
+        'Mimic': '擬態怪',
       },
     },
     {

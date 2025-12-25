@@ -974,7 +974,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spectral Egi': '幻光召喚獸',
         'Wyrm Of Light': '光之真龍',
         'Spectral Bard': '幻光吟遊詩人',
-        'Spectral White Mage': '幻光白魔道士'
+        'Spectral White Mage': '幻光白魔道士',
       },
       'replaceText': {
         'Absolute Flash': '絕對閃光',
@@ -1023,7 +1023,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Bitter End': '盡滅',
         'To The Limit': '突破極限',
         'Twincast': '合力詠唱',
-        'Ultimate Crossover': '究極·交匯'
+        'Ultimate Crossover': '究極·交匯',
       },
     },
     {

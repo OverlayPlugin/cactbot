@@ -44,7 +44,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Chudo-Yudo': '丘都尤都'
+        'Chudo-Yudo': '丘都尤都',
       },
     },
     {

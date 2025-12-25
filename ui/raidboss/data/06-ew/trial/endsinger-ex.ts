@@ -1055,7 +1055,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Azure Star': '藍色天體',
         'Fiery Star': '紅色天體',
-        'The Endsinger': '謳歌終結之物'
+        'The Endsinger': '謳歌終結之物',
       },
       'replaceText': {
         'Befoulment': '膿液彈',
@@ -1076,7 +1076,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tower Explosion': '爆炸',
         'Theological Fatalism': '神學宿命',
         'Twinsong\'s Aporrhoia': '流溢：絕望合唱',
-        'Ultimate Fate': '終極命運'
+        'Ultimate Fate': '終極命運',
       },
     },
     {

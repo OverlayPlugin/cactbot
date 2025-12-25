@@ -616,7 +616,7 @@ const triggerSet: TriggerSet<Data> = {
         'Cruise Chaser': '巡航驅逐者',
         // 'E\\\\.D\\\\.D\\\\.': '', // FIXME '护航机甲'
         'Multifield': '層積科學結界',
-        'Plasma Shield': '等離子護盾'
+        'Plasma Shield': '等離子護盾',
       },
       'replaceText': {
         // '(?<! )Sword': '', // FIXME '剑 '
@@ -654,7 +654,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spin Crusher': '迴旋碎踢',
         'Super Hawk Blaster': '超級鷹式破壞砲',
         'Transform': '變形',
-        'Whirlwind': '龍捲風'
+        'Whirlwind': '龍捲風',
       },
     },
     {

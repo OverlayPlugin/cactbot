@@ -820,7 +820,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shinryu': '神龍',
         'Tail': '龍尾',
         'The Worm\'s Heart': '神龍的核心',
-        'Hakkinryu': '白金龍'
+        'Hakkinryu': '白金龍',
       },
       'replaceText': {
         'Aerial Blast': '大氣爆發',
@@ -859,7 +859,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Tethers': '', // FIXME '连线'
         'Tidal Wave': '巨浪',
         'Touchdown': '空降',
-        'Wormwail': '神龍嘯'
+        'Wormwail': '神龍嘯',
       },
     },
     {

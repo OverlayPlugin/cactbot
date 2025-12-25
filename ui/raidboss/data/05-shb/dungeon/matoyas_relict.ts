@@ -358,7 +358,7 @@ const triggerSet: TriggerSet<Data> = {
         'Mother Porxie': '仙子豬之母',
         'Mud Bubble': '泥球',
         'Mudman': '土泥人',
-        'Nixie': '水滴精'
+        'Nixie': '水滴精',
       },
       'replaceText': {
         'Barbeque': '烤烤肉',
@@ -382,7 +382,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sea Shanty': '咕嚕咕嚕',
         'Splish-Splash': '咕嘟咕嘟',
         'Tender Loin': '松松肉',
-        'To A Crisp': '烤焦'
+        'To A Crisp': '烤焦',
       },
     },
     {

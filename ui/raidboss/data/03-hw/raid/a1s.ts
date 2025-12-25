@@ -277,7 +277,7 @@ const triggerSet: TriggerSet<Data> = {
         '3000-Tonze Missile': '超大型導彈',
         'Faust': '浮士德',
         'Oppressor(?! 0)': '壓迫者',
-        // 'Oppressor 0\\\\.5': '' // FIXME '压迫者零号'
+        // 'Oppressor 0\\\\.5': '', // FIXME '压迫者零号'
       },
       'replaceText': {
         '3000-Tonze Missile': '超大型導彈',
@@ -295,7 +295,7 @@ const triggerSet: TriggerSet<Data> = {
         'Resin Bomb': '黏著彈',
         'Royal Fount': '皇泉射線',
         'Self-Destruct': '自爆',
-        'Sturm Doll': '風暴人偶'
+        'Sturm Doll': '風暴人偶',
       },
     },
     {

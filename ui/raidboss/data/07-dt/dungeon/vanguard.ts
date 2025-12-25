@@ -357,7 +357,7 @@ const triggerSet: TriggerSet<Data> = {
         'Protector': '保護者',
         'Vanguard Commander R8': '先鋒營指揮官R8',
         'Vanguard Sentry R8': '先鋒營哨兵R8',
-        'Zander the Snakeskinner': '蟒蛇將 詹德'
+        'Zander the Snakeskinner': '蟒蛇將 詹德',
       },
       'replaceText': {
         // '\\(corners\\)': '', // FIXME '(四角)'
@@ -390,7 +390,7 @@ const triggerSet: TriggerSet<Data> = {
         'Soulbane Shock': '禍魂衝擊',
         'Syntheslean': '融魂前傾斬',
         'Syntheslither': '曲蛇融魂斬',
-        'Tracking Bolt': '追蹤式雷電'
+        'Tracking Bolt': '追蹤式雷電',
       },
     },
     {

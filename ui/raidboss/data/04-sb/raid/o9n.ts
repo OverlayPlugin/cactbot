@@ -271,7 +271,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Chaos': '卡奧斯',
-        // 'The crystal...destroyed!?': '' // FIXME '居然……把黑水晶给'
+        // 'The crystal...destroyed!?': '', // FIXME '居然……把黑水晶给'
       },
       'replaceText': {
         'Big Bang': '頂起',
@@ -288,7 +288,7 @@ const triggerSet: TriggerSet<Data> = {
         'Soul of Chaos': '混沌之魂',
         'Stray Flames': '混沌之炎',
         'Stray Spray': '混沌之水',
-        'Tsunami': '海嘯'
+        'Tsunami': '海嘯',
       },
     },
     {

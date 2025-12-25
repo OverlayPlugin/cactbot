@@ -1874,7 +1874,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tempestuous Orb': '大冰球',
         'The Queen': '天佑女王',
         'Trinity Avowed': '誓約之三位一體',
-        'Trinity Seeker': '求道之三位一體'
+        'Trinity Seeker': '求道之三位一體',
       },
       'replaceText': {
         '--explosion--': '北斗骨碎斬',
@@ -1966,7 +1966,7 @@ const triggerSet: TriggerSet<Data> = {
         'Verdant Tempest': '翠青魔風塵',
         'Vile Wave': '惡意的波動',
         'Weave Miasma': '瘴氣術',
-        'Wrath Of Bozja': '博茲雅之憤'
+        'Wrath Of Bozja': '博茲雅之憤',
       },
     },
     {

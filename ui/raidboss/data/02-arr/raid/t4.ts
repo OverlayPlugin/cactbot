@@ -146,7 +146,7 @@ const triggerSet: TriggerSet<Data> = {
         'Clockwork Dreadnaught': '恐慌裝甲',
         'Clockwork Knight': '亞拉戈發條騎士',
         'Drive Cylinder': '隔離壁',
-        'Spinner-rook': '轉盤堡'
+        'Spinner-rook': '轉盤堡',
       },
       'replaceText': {
         'Bug': '故障蟲',
@@ -154,7 +154,7 @@ const triggerSet: TriggerSet<Data> = {
         'Emergency Override': '緊急超馳控制',
         // 'Knight': '', // FIXME '亚拉戈发条骑士'
         // 'Rook': '', // FIXME '转盘堡'
-        // 'Soldier': '' // FIXME '亚拉戈发条士兵'
+        // 'Soldier': '', // FIXME '亚拉戈发条士兵'
       },
     },
     {

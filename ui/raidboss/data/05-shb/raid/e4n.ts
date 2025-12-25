@@ -211,7 +211,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Bomb Boulder': '爆破岩石',
         'Massive Boulder': '巨大岩石',
-        'Titan': '泰坦'
+        'Titan': '泰坦',
       },
       'replaceText': {
         'Bomb Boulders': '爆破岩石',
@@ -232,7 +232,7 @@ const triggerSet: TriggerSet<Data> = {
         'Seismic Wave': '地震波',
         'Stonecrusher': '崩岩',
         'Voice of the Land': '大地之吼',
-        'Weight of the Land': '大地重壓'
+        'Weight of the Land': '大地重壓',
       },
     },
     {

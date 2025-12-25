@@ -349,7 +349,7 @@ const triggerSet: TriggerSet<Data> = {
         'Nullchu': '爛泥食腐獸',
         'Silt Golem': '淤泥魔像',
         'Tokkapchi': '枯腐泥妖',
-        'Withered Belladonna': '枯萎劇毒美人'
+        'Withered Belladonna': '枯萎劇毒美人',
       },
       'replaceText': {
         'Bog Bequest': '污泥外無雙',
@@ -372,7 +372,7 @@ const triggerSet: TriggerSet<Data> = {
         'Stone II': '中巨岩',
         'Taproot': '主根',
         'Tectonics': '地殼變動',
-        'Vine Whip': '藤鞭'
+        'Vine Whip': '藤鞭',
       },
     },
     {

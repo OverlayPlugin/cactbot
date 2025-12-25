@@ -1309,7 +1309,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         '(?<! )Exdeath': '艾克斯迪司',
-        'Neo Exdeath': '新生艾克斯迪司'
+        'Neo Exdeath': '新生艾克斯迪司',
       },
       'replaceText': {
         // '\\(charge\\)': '', // FIXME '(排队)'
@@ -1346,7 +1346,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'T/H': '', // FIXME 'T/奶'
         'Vacuum Wave': '真空波',
         'White Hole': '白洞',
-        'Zombie Breath': '殭屍吐息'
+        'Zombie Breath': '殭屍吐息',
       },
     },
     {

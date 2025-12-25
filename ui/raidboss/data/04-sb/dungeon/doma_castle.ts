@@ -222,7 +222,7 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Hexadrone': '魔導六輪裝甲',
         'Magitek Rearguard': '魔導後衛',
         'Rearguard Bit': '魔導後衛浮游砲',
-        'Retuned Magitek Bit': '改良版魔導浮游砲'
+        'Retuned Magitek Bit': '改良版魔導浮游砲',
       },
       'replaceText': {
         '2-Tonze Magitek Missile': '大型魔導飛彈',
@@ -239,7 +239,7 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Missiles': '魔導飛彈',
         'Magitek Ray': '魔導雷射',
         // 'Rearguard Mines': '', // FIXME '魔导后卫炸雷'
-        'Thermobaric Charge': '氣化炸彈'
+        'Thermobaric Charge': '氣化炸彈',
       },
     },
     {

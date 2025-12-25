@@ -263,7 +263,7 @@ const triggerSet: TriggerSet<Data> = {
         'Garuda': '迦樓羅',
         'Nuzal Hueloc': '飛天槍 奴札爾·懷羅克',
         'Tozol Huatotl': '晴天霹靂 托佐爾·法托特爾',
-        'Floating Turret': '氣球砲塔'
+        'Floating Turret': '氣球砲塔',
       },
       'replaceText': {
         // '\\(buster\\)': '', // FIXME '(死刑)'
@@ -287,7 +287,7 @@ const triggerSet: TriggerSet<Data> = {
         'Summon Garuda': '召喚迦樓羅',
         'Swiftfeather': '身輕如燕',
         'Wicked Wheel': '邪輪旋風',
-        'Wind Blast': '烈風爆射'
+        'Wind Blast': '烈風爆射',
       },
     },
     {

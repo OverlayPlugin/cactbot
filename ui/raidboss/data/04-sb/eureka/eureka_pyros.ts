@@ -59,7 +59,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Skoll': '斯庫爾'
+        'Skoll': '斯庫爾',
       },
     },
     {

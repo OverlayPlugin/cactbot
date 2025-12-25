@@ -473,7 +473,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Hades': '黑迪斯'
+        'Hades': '黑迪斯',
       },
       'replaceText': {
         // 'Adds': '', // FIXME '小怪'
@@ -503,7 +503,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Dark Devours': '黑暗侵蝕',
         'Titanomachy': '諸神之戰',
         // '--fetters--': '', // FIXME '--锁链--'
-        'Wail Of The Lost': '逝者的哀嚎'
+        'Wail Of The Lost': '逝者的哀嚎',
       },
     },
     {

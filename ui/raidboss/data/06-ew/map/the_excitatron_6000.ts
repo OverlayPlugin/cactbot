@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Lucky Sphinx': '幸運斯芬克斯'
+        'Lucky Sphinx': '幸運斯芬克斯',
       },
     },
     {

@@ -224,7 +224,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'The Manipulator': '操縱者'
+        'The Manipulator': '操縱者',
       },
       'replaceText': {
         'Carnage(?! Zero)': '滅絕',
@@ -238,7 +238,7 @@ const triggerSet: TriggerSet<Data> = {
         'Perpetual Ray': '永恆射線',
         'Royal Pentacle': '蒸氣審判',
         'Seed Of The Sky': '天空之種',
-        'Straf Doll': '懲罰人偶'
+        'Straf Doll': '懲罰人偶',
       },
     },
     {

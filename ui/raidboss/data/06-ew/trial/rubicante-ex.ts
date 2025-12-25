@@ -1064,7 +1064,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!Greater )Flamesent': '炎妖',
         'Greater Flamesent': '業炎妖',
         'Rubicante(?! )': '盧比坎特',
-        'Rubicante Mirage': '盧比坎特的幻影'
+        'Rubicante Mirage': '盧比坎特的幻影',
       },
       'replaceText': {
         // '\\(aoe\\)': '', // FIXME '(AOE)'
@@ -1100,7 +1100,7 @@ const triggerSet: TriggerSet<Data> = {
         'Stinging Welt': '爆咒',
         'Sweeping Immolation': '赤滅熱波',
         'Total Immolation': '赤滅熱波：重炎',
-        'Twinfold Flame': '雙重大火焰'
+        'Twinfold Flame': '雙重大火焰',
       },
     },
     {

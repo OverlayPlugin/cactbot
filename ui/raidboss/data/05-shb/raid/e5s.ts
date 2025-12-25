@@ -449,7 +449,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Ramuh': '拉姆',
         'Will Of Ramuh': '拉姆幻影',
         'Raiden': '雷電',
-        'Will Of Ixion': '伊克西翁幻影'
+        'Will Of Ixion': '伊克西翁幻影',
       },
       'replaceText': {
         'Volt Strike': '雷電強襲',
@@ -474,7 +474,7 @@ const triggerSet: TriggerSet<Data> = {
         'Crippling Blow': '痛擊',
         'Chaos Strike': '混亂衝擊',
         'Chain Lightning': '雷光鏈',
-        'Centaur\'s Charge': '人馬衝鋒'
+        'Centaur\'s Charge': '人馬衝鋒',
       },
     },
     {

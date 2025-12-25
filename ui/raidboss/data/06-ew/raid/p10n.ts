@@ -295,7 +295,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        // 'Pand(?:\\\\u00e6|\u00e6)monium': '' // FIXME '万魔殿'
+        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
       },
       'replaceText': {
         // '\\(marked\\)': '', // FIXME '(标记)'
@@ -313,7 +313,7 @@ const triggerSet: TriggerSet<Data> = {
         'Soul Grasp': '攥魂',
         'Touchdown': '空降',
         'Ultima': '最終究極',
-        'Wicked Step': '尖腳'
+        'Wicked Step': '尖腳',
       },
     },
     {

@@ -382,7 +382,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arch-Eta': '伊塔總領',
         'Chi': '希',
         'Fan Ail': '凡·艾爾',
-        'Narrow-rift': '狹縫'
+        'Narrow-rift': '狹縫',
       },
     },
     {

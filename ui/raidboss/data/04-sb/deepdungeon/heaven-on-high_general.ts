@@ -387,7 +387,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Quivering Coffer': '抖動的寶箱'
+        'Quivering Coffer': '抖動的寶箱',
       },
     },
     {

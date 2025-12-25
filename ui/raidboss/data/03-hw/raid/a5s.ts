@@ -591,7 +591,7 @@ const triggerSet: TriggerSet<Data> = {
         'Hummelfaust': '新型浮士德',
         'Ratfinx Twinkledinks': '奇才 拉特芬克斯',
         'Smartbomb': '超高性能炸彈',
-        'Glassy-Eyed Cobra': '興奮眼鏡蛇'
+        'Glassy-Eyed Cobra': '興奮眼鏡蛇',
       },
       'replaceText': {
         // '--big--': '', // FIXME '--大--'
@@ -625,7 +625,7 @@ const triggerSet: TriggerSet<Data> = {
         'Steel Scales': '鋼鱗',
         'Tetra Burst': '四方爆炸',
         'The Lion\'s Breath': '烈焰吐息',
-        'Yorn Pig': '豚鼠'
+        'Yorn Pig': '豚鼠',
       },
     },
     {

@@ -677,7 +677,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'The Hand Of Erebos': '厄瑞玻斯的巨腕',
-        'Voidwalker': '虛無行者'
+        'Voidwalker': '虛無行者',
       },
       'replaceText': {
         'Cleaver/Slicer?': '末日虛無劈',
@@ -700,7 +700,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadowflame': '暗影炎',
         'Slicer/Guillotine': '末日虛無斷',
         'Spell-In-Waiting': '延遲詠唱',
-        'Unholy Darkness': '黑暗神聖'
+        'Unholy Darkness': '黑暗神聖',
       },
     },
     {

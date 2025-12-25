@@ -123,7 +123,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Ker': '克爾'
+        'Ker': '克爾',
       },
     },
     {

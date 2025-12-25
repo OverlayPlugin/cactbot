@@ -1554,7 +1554,7 @@ const triggerSet: TriggerSet<Data> = {
         'great wyrm': '聖龍',
         'Luminous Aether': '光乙太',
         'Mothercrystal': '母水晶',
-        'Shiva': '濕婆'
+        'Shiva': '濕婆',
       },
       'replaceText': {
         'Absolute Zero': '絕對零度',
@@ -1607,7 +1607,7 @@ const triggerSet: TriggerSet<Data> = {
         'Banish(?! )': '放逐',
         'Inescapable Illumination': '曝露光',
         'The House Of Light': '光之海嘯',
-        // 'Reflected Frost Armor \\(R\\)': '' // FIXME '连锁反冰甲(红)'
+        // 'Reflected Frost Armor \\(R\\)': '', // FIXME '连锁反冰甲(红)'
       },
     },
     {

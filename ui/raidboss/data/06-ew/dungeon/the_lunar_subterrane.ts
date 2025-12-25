@@ -655,7 +655,7 @@ const triggerSet: TriggerSet<Data> = {
         'Dark Elf': '暗黑精靈',
         'Durante': '杜蘭特',
         'Hexing Staff': '黑暗之杖',
-        'Stone Pillar': '石柱'
+        'Stone Pillar': '石柱',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -685,7 +685,7 @@ const triggerSet: TriggerSet<Data> = {
         'Staff Smite': '杖擊',
         'Towerfall': '崩塌',
         'Twilight Phase': '暮光相',
-        'Void Dark II': '虛空昏暗'
+        'Void Dark II': '虛空昏暗',
       },
     },
     {

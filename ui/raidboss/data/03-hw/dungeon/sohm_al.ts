@@ -222,7 +222,7 @@ const triggerSet: TriggerSet<Data> = {
         'Chyme Of The Mountain': '聖山之糜',
         'Myath': '邁思',
         'Raskovnik': '破鎖花王',
-        'Tioman': '刁曼'
+        'Tioman': '刁曼',
       },
       'replaceText': {
         'Abyssic Buster': '深淵破壞',
@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
         'Razor Scales': '鱗刀',
         'Spit': '吐出',
         'Sweet Scent': '香氣',
-        'Third Leg Forward': '第三腿前掃'
+        'Third Leg Forward': '第三腿前掃',
       },
     },
     {

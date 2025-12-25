@@ -313,7 +313,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Hippokampos': '馬頭魚尾怪'
+        'Hippokampos': '馬頭魚尾怪',
       },
       'replaceText': {
         // '\\(knockback\\)': '', // FIXME '(击退)'
@@ -328,7 +328,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sewage Eruption': '污水噴發',
         'Shockwave': '衝擊狂潮',
         'Spoken Cataract': '吐息飛瀑',
-        'Tainted Flood': '污染洪水'
+        'Tainted Flood': '污染洪水',
       },
     },
     {

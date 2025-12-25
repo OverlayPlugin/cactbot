@@ -2343,7 +2343,7 @@ const triggerSet: TriggerSet<Data> = {
         'Statice': '斯塔緹絲',
         'Surprising Claw': '驚喜爪',
         'Surprising Missile': '驚喜導彈',
-        'Surprising Staff': '驚喜杖'
+        'Surprising Staff': '驚喜杖',
       },
       'replaceText': {
         // '\\(buff\\)': '', // FIXME '(强化)'
@@ -2409,7 +2409,7 @@ const triggerSet: TriggerSet<Data> = {
         'Trick Reload': '花式裝填',
         'Trigger Happy': '開心扳機',
         'Uncommon Ground': '異常地面',
-        'Updraft': '上升氣流'
+        'Updraft': '上升氣流',
       },
     },
     {

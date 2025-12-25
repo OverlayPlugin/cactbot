@@ -336,7 +336,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spectral Berserker': '幻光狂戰士',
         'Spectral Necromancer': '幻光亡靈法師',
         'Spectral Thief': '幻光盜賊',
-        'Spectral White Mage': '幻光白魔道士'
+        'Spectral White Mage': '幻光白魔道士',
       },
       'replaceText': {
         'Absolute Dark II': '絕對昏暗',
@@ -361,7 +361,7 @@ const triggerSet: TriggerSet<Data> = {
         'Vacuum Blade': '真空刃',
         'Wild Anguish': '獸魂的苦痛',
         'Wild Rage': '獸魂的憤怒',
-        'Wild Rampage': '獸魂的勇猛'
+        'Wild Rampage': '獸魂的勇猛',
       },
     },
     {

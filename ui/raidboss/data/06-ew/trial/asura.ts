@@ -611,7 +611,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         '(?<! )Asura(?! )': '阿修羅',
         'Asura Image': '阿修羅的化身',
-        'Phantom Asura': '阿修羅的幻影'
+        'Phantom Asura': '阿修羅的幻影',
       },
       'replaceText': {
         // '\\(execute\\)': '', // FIXME '(执行)'
@@ -639,7 +639,7 @@ const triggerSet: TriggerSet<Data> = {
         'Six-bladed Khadga': '三頭六臂：斷',
         // 'The Face Of Delight': '', // FIXME '愉悦的神气'
         'The Face Of Wrath': '憤怒的神氣',
-        '(?<! )Wheel Of Deincarnation': '環斬'
+        '(?<! )Wheel Of Deincarnation': '環斬',
       },
     },
     {

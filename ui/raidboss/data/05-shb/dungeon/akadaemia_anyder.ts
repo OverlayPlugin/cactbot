@@ -282,7 +282,7 @@ const triggerSet: TriggerSet<Data> = {
         'Evil Armor': '惡魔裝甲',
         'Quetzalcoatl': '克察爾科亞特爾',
         'Doliodus': '原祖鯊',
-        'Cladoselache': '裂口鯊'
+        'Cladoselache': '裂口鯊',
       },
       'replaceText': {
         'Winding Current': '繞組電流',
@@ -302,7 +302,7 @@ const triggerSet: TriggerSet<Data> = {
         'Blossom': '花叢',
         'Arbor Storm': '樹木風暴',
         'Aquatic Lance': '水之槍',
-        'Carcharian Verve': '鯊之氣魄'
+        'Carcharian Verve': '鯊之氣魄',
       },
     },
     {

@@ -391,7 +391,7 @@ const triggerSet: TriggerSet<Data> = {
         'Comet': '隕星',
         'Fire Sphere': '烈火晶球',
         'Ice Sphere': '冰晶球',
-        'Kokytos': '克邱特斯'
+        'Kokytos': '克邱特斯',
       },
       'replaceText': {
         // '\\(Behemoth\\)': '', // FIXME '(野兽)'
@@ -427,7 +427,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shockwave': '衝擊波',
         'Sphere Shatter': '碎裂',
         'Swinging Kick': '旋身擊',
-        'Touchdown': '空降'
+        'Touchdown': '空降',
       },
     },
     {

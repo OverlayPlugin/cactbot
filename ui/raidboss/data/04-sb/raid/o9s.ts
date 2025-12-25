@@ -654,7 +654,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Chaos': '卡奧斯'
+        'Chaos': '卡奧斯',
       },
       'replaceText': {
         'Big Bang': '頂起',
@@ -674,7 +674,7 @@ const triggerSet: TriggerSet<Data> = {
         'Stray Spray': '混沌之水',
         'Tsunami': '海嘯',
         'Umbra Smash': '本影爆碎',
-        // '\\(ALL\\)': '' // FIXME '\\(全部\\)'
+        // '\\(ALL\\)': '', // FIXME '\\(全部\\)'
       },
     },
     {

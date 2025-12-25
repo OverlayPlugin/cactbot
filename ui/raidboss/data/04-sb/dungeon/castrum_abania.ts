@@ -293,7 +293,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Inferno': '煉獄炎魔',
         'Magna Roader': '魔導機車大魔',
-        'Mark XLIII Mini Cannon': '43式小迫擊砲'
+        'Mark XLIII Mini Cannon': '43式小迫擊砲',
       },
       'replaceText': {
         // '--adds--': '', // FIXME '--小怪--'
@@ -317,7 +317,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Towers': '', // FIXME '塔'
         'Triflame': '三炎',
         'Wheel': '車輪',
-        'Wild Speed': '猛衝'
+        'Wild Speed': '猛衝',
       },
     },
     {

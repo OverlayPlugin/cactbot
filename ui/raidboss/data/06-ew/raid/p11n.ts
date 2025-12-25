@@ -377,7 +377,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Illusory Themis': '特彌斯的幻影',
-        // '(?<!(-| ))Themis': '' // FIXME '特弥斯'
+        // '(?<!(-| ))Themis': '', // FIXME '特弥斯'
       },
       'replaceText': {
         // '\\(random\\)': '', // FIXME '(随机)'
@@ -405,7 +405,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadowed Messengers': '戒律幻奏',
         'Sigils of Discord': '失調的判紋',
         'Styx': '仇恨',
-        'Upheld Ruling': '維持判決'
+        'Upheld Ruling': '維持判決',
       },
     },
     {

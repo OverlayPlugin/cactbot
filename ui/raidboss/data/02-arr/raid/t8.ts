@@ -280,7 +280,7 @@ const triggerSet: TriggerSet<Data> = {
         'Allagan Field': '亞拉戈領域',
         'Allagan Mine': '亞拉戈機雷',
         'Clockwork Dreadnaught': '恐慌裝甲',
-        'The Avatar': '降世化身'
+        'The Avatar': '降世化身',
       },
       'replaceText': {
         'Allagan Field': '亞拉戈領域',
@@ -291,7 +291,7 @@ const triggerSet: TriggerSet<Data> = {
         'Diffusion Ray': '擴散雷射',
         'Gaseous Bomb': '氣化炸彈',
         'Homing Missile': '自控導彈',
-        'Inertia Stream': '惰性流'
+        'Inertia Stream': '惰性流',
       },
     },
     {

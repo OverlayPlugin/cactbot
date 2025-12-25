@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
         'Embodiment': '吉爾伽美什的分身',
         'Gilgamesh': '吉爾伽美什',
         'Inoshikacho': '豬鹿蝶',
-        'Yojimbo': '保鑣'
+        'Yojimbo': '保鑣',
       },
       'replaceText': {
         'A Giant Me': '月光',
@@ -221,7 +221,7 @@ const triggerSet: TriggerSet<Data> = {
         'Unveiling': '顯露原形',
         'Wakizashi': '腰刀',
         'Yukikaze': '雪風',
-        'Zanma Zanmai': '斬魔三昧'
+        'Zanma Zanmai': '斬魔三昧',
       },
     },
     {

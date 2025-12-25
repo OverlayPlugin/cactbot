@@ -566,7 +566,7 @@ const triggerSet: TriggerSet<Data> = {
         'Dadaluma': '達達魯瑪',
         'Fire Control System': '武器火控系統',
         'Guardian': '守護者',
-        'Ultros': '奧爾特羅斯'
+        'Ultros': '奧爾特羅斯',
       },
       'replaceText': {
         'Aether Rot': '乙太病毒',
@@ -604,7 +604,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tentacle Simulation': '載入腕足模擬程式',
         'Viral Weapon': '病毒兵器',
         '(?<!\\w)Virus': '病毒',
-        'Wallop': '打擊'
+        'Wallop': '打擊',
       },
     },
     {

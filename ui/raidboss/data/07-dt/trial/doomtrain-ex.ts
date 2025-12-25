@@ -900,7 +900,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Aether': '乙太晶球'
+        'Aether': '乙太晶球',
       },
       'replaceText': {
         // '\\(bait\\)': '', // FIXME '(诱导)'
@@ -931,7 +931,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Third Rail': '', // FIXME '雷光一闪'
         'Thunderous Breath': '雷鳴吐息',
         // 'Turret Crossing': '', // FIXME '炮塔出击'
-        // 'Unlimited Express': '' // FIXME '无控急行'
+        // 'Unlimited Express': '', // FIXME '无控急行'
       },
     },
   ],

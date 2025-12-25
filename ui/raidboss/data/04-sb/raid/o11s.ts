@@ -364,7 +364,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Level Checker': '等級檢測儀',
         'Omega': '歐米茄',
-        'Rocket Punch': '火箭拳擊'
+        'Rocket Punch': '火箭拳擊',
       },
       'replaceText': {
         'Afterburner': '燃燒室排熱',
@@ -399,7 +399,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Storage Violation': '清除記憶污染S',
         'Unmitigated Explosion': '大爆炸',
         'Update Program': '更新循環程式',
-        '(?<! )Wave Cannon Kyrios': '波動砲P'
+        '(?<! )Wave Cannon Kyrios': '波動砲P',
       },
     },
     {

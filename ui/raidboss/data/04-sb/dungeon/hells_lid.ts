@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
         'Genbu': '玄武',
         'Kamaitachi': '鐮鼬',
         'Otake-Maru': '大岳丸',
-        'Volcanic Debris': '噴石'
+        'Volcanic Debris': '噴石',
       },
       'replaceText': {
         '10-Tonze Slash': '十噸揮打',
@@ -288,7 +288,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Patient Blade': '鐮鼬斬',
         'Volcanic Debris': '噴石',
         'Whipping Whittret': '鞭鼬',
-        'Whisper In The Wind': '風的呼聲'
+        'Whisper In The Wind': '風的呼聲',
       },
     },
     {

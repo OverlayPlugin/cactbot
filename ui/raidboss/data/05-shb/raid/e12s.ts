@@ -2229,7 +2229,7 @@ const triggerSet: TriggerSet<Data> = {
         'Guardian Of Eden': '伊甸守衛',
         'Ice Pillar': '冰柱',
         'Oracle Of Darkness': '暗之巫女',
-        'Sorrow\'s Hourglass': '悲傷的沙漏'
+        'Sorrow\'s Hourglass': '悲傷的沙漏',
       },
       'replaceText': {
         'Advanced Relativity': '時間壓縮·轉',
@@ -2294,7 +2294,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!Junction )Titan': '泰坦',
         'Triple Apocalypse': '三重啟示',
         'Under The Weight': '大地的重壓',
-        'Weight Of The World': '大陸之重'
+        'Weight Of The World': '大陸之重',
       },
     },
     {

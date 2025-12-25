@@ -732,7 +732,7 @@ const triggerSet: TriggerSet<Data> = {
         'Fountain of Fire': '靈泉之炎',
         'Phoinix': '菲尼克斯',
         'Sparkfledged': '火靈鳥',
-        'Sunbird': '陽炎鳥'
+        'Sunbird': '陽炎鳥',
       },
       'replaceText': {
         '--fire expands--': '十字地火',
@@ -774,7 +774,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!fire)Storms of Asphodelos': '邊境風暴',
         'Sun\'s Pinion': '陽炎之翼',
         'Trail of Condemnation': '獄炎之焰',
-        'Winds of Asphodelos': '邊境之風'
+        'Winds of Asphodelos': '邊境之風',
       },
     },
     {

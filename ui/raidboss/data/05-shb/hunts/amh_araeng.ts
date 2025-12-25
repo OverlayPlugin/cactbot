@@ -144,7 +144,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Maliktender': '馬利克巨人掌',
         'Sugaar': '休格爾',
-        'Tarchia': '多智獸'
+        'Tarchia': '多智獸',
       },
     },
     {

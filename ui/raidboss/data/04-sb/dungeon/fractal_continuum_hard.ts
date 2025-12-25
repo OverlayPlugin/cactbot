@@ -496,7 +496,7 @@ const triggerSet: TriggerSet<Data> = {
         'Servomechanical Minotaur': '自控化米諾陶洛斯',
         'Servomechanical Chimera': '自控化奇美拉',
         'Proto-Chimera': '原型奇美拉',
-        'Biomanufactured Minotaur': '生化米諾陶洛斯'
+        'Biomanufactured Minotaur': '生化米諾陶洛斯',
       },
       'replaceText': {
         'Aether Bend': '乙太曲折',
@@ -520,7 +520,7 @@ const triggerSet: TriggerSet<Data> = {
         'Northern Star': '北極星',
         'Primordial Aether': '荒蠻乙太',
         'Ratzon': '意志',
-        'Southern Star': '南極星'
+        'Southern Star': '南極星',
       },
     },
     {

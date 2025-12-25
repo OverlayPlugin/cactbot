@@ -235,7 +235,7 @@ const triggerSet: TriggerSet<Data> = {
         'Minotaur': '米諾陶洛斯',
         'Phantom Ray': '魅影射線',
         'Repository Node': '收藏系統',
-        'The Curator': '博物總管'
+        'The Curator': '博物總管',
       },
       'replaceText': {
         '(?<!1)111-Tonze Swing': '百十一噸迴轉',
@@ -254,7 +254,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sanctification': '祝聖之光',
         'The Educator': '管教',
         'Unholy': '邪聖',
-        'Zoom In': '放大'
+        'Zoom In': '放大',
       },
     },
     {

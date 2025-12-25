@@ -54,7 +54,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Liavinne': '證婚人 莉亞維娜'
+        'Liavinne': '證婚人 莉亞維娜',
       },
     },
     {

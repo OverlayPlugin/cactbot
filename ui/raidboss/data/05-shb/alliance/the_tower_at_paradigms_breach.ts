@@ -1217,7 +1217,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spheroid': '球體',
         'White Lance': '白槍',
         'Xun-Zi': '荀子',
-        'Hansel & Gretel': '韓塞爾與格雷特'
+        'Hansel & Gretel': '韓塞爾與格雷特',
       },
       'replaceText': {
         // '--targetable\\?--': '', // FIXME '--可选中?--'
@@ -1295,7 +1295,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wave: White': '波動：白',
         'White Dissonance': '侵蝕：白',
         'Wipe: Black': '大爆炸：黑',
-        'Wipe: White': '大爆炸：白'
+        'Wipe: White': '大爆炸：白',
       },
     },
     {

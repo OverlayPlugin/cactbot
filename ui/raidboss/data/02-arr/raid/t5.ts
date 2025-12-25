@@ -365,7 +365,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'The Scourge Of Meracydia': '美拉西迪亞禍龍',
-        'Twintania': '雙塔尼亞'
+        'Twintania': '雙塔尼亞',
       },
       'replaceText': {
         'Aetheric Profusion': '乙太失控',
@@ -379,7 +379,7 @@ const triggerSet: TriggerSet<Data> = {
         'Liquid Hell': '液體地獄',
         'Plummet': '垂直下落',
         'Twister': '旋風',
-        'Unwoven Will': '破願'
+        'Unwoven Will': '破願',
       },
     },
     {

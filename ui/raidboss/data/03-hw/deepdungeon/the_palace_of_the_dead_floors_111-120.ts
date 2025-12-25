@@ -70,7 +70,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Deep Palace Salamander': '深宮火焰蜥蜴',
-        'Kirtimukha': '榮光魔花'
+        'Kirtimukha': '榮光魔花',
       },
     },
     {

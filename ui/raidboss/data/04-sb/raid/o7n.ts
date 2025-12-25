@@ -276,7 +276,7 @@ const triggerSet: TriggerSet<Data> = {
         'Dadaluma': '達達魯瑪',
         'Guardian': '守護者',
         'Tentacle': '腕足',
-        'Ultros': '奧爾特羅斯'
+        'Ultros': '奧爾特羅斯',
       },
       'replaceText': {
         'Arm And Hammer': '臂錘',
@@ -299,7 +299,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shockwave': '衝擊波',
         'Tentacle Simulation': '載入腕足模擬程式',
         // 'Tentacle(?! )': '', // FIXME '触手(?! )'
-        'Wallop': '打擊'
+        'Wallop': '打擊',
       },
     },
     {

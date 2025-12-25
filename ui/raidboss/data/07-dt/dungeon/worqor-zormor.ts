@@ -702,7 +702,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gurfurlur': '固伏魯',
         'Kahderyor': '卡德由夜鳥',
         'Ryoqor Terteh': '遼刻特特雪精',
-        'Snowball': '雪球'
+        'Snowball': '雪球',
       },
       'replaceText': {
         'Allfire': '猛火噴發',
@@ -732,7 +732,7 @@ const triggerSet: TriggerSet<Data> = {
         'Volcanic Drop': '火山彈',
         'Wind Shot': '風擊',
         'Wind Unbound': '無拘之風',
-        'Windswrath': '狂風呼嘯'
+        'Windswrath': '狂風呼嘯',
       },
     },
     {

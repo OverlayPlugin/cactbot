@@ -180,7 +180,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Imdugud': '伊姆都古德'
+        'Imdugud': '伊姆都古德',
       },
       'replaceText': {
         'Crackle Hiss': '雷光電閃',
@@ -193,7 +193,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Random \\+ Charge': '', // FIXME '随机+冲锋'
         // 'Son': '', // FIXME '伊姆都古德之子'
         'Spike Flail': '刃尾橫掃',
-        'Wild Charge': '狂野蓄力'
+        'Wild Charge': '狂野蓄力',
       },
     },
     {

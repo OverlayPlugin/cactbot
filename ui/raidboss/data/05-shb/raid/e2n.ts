@@ -329,7 +329,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'The Hand of Erebos': '厄瑞玻斯的巨腕',
-        'Voidwalker': '虛無行者'
+        'Voidwalker': '虛無行者',
       },
       'replaceText': {
         'Dark Fire III': '黑暗大火焰',
@@ -341,7 +341,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadoweye': '暗影之眼',
         'Shadowflame': '暗影炎',
         'Spell-in-Waiting': '延遲詠唱',
-        'Unholy Darkness': '黑暗神聖'
+        'Unholy Darkness': '黑暗神聖',
       },
     },
     {

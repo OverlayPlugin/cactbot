@@ -200,7 +200,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Arch Aethereater': '水晶化身之王'
+        'Arch Aethereater': '水晶化身之王',
       },
     },
     {

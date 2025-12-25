@@ -699,7 +699,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sophia': '索菲亞',
         'The First Demiurge': '信徒其一',
         'The Second Demiurge': '信徒其二',
-        'The Third Demiurge': '信徒其三'
+        'The Third Demiurge': '信徒其三',
       },
       'replaceText': {
         // '\\?': '', // FIXME ' ?'
@@ -725,7 +725,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Thunder II(?!(?:I|\\/))': '', // FIXME '震雷'
         'Thunder III': '大雷電',
         'Vertical Kenoma': '前後堅守',
-        'Zombification': '殭屍'
+        'Zombification': '殭屍',
       },
     },
     {

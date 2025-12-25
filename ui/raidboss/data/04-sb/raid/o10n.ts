@@ -303,7 +303,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Ancient Dragon': '遠古之龍',
-        'Midgardsormr': '幻龍米德加爾特'
+        'Midgardsormr': '幻龍米德加爾特',
       },
       'replaceText': {
         'ready': '準備',
@@ -324,7 +324,7 @@ const triggerSet: TriggerSet<Data> = {
         'Protostar': '原恆星',
         // 'Spin': '', // FIXME '横转'
         'Tail End': '煞尾',
-        'Thunderstorm': '雷暴'
+        'Thunderstorm': '雷暴',
       },
     },
     {

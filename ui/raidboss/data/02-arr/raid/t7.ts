@@ -337,7 +337,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lamia Prosector': '拉米亞解剖女王',
         'Melusine': '美瑠姬奴',
         'Proto-Chimera': '原型奇美拉',
-        'Renaud': '雷諾'
+        'Renaud': '雷諾',
       },
       'replaceText': {
         'Circle Blade': '迴旋斬',
@@ -350,7 +350,7 @@ const triggerSet: TriggerSet<Data> = {
         'Red Lotus Blade': '紅蓮',
         'Sacrifice': '獻祭',
         'Tail Slap': '尾部猛擊',
-        'Venomous Tail': '猛毒之尾'
+        'Venomous Tail': '猛毒之尾',
       },
     },
     {

@@ -541,7 +541,7 @@ const triggerSet: TriggerSet<Data> = {
         'Onslaughter': '突擊者',
         'Steam Regulator B': '蒸氣調整者β',
         'Swindler': '欺詐者',
-        'Vortexer': '環旋者'
+        'Vortexer': '環旋者',
       },
       'replaceText': {
         // '--orbs--': '', // FIXME '--球--'
@@ -576,7 +576,7 @@ const triggerSet: TriggerSet<Data> = {
         'Super Cyclone': '超級颶風',
         'Super Jump': '超級跳躍',
         'Supercharge': '超突擊',
-        'Transform': '正義合體'
+        'Transform': '正義合體',
       },
     },
     {

@@ -120,7 +120,7 @@ const triggerSet: TriggerSet<Data> = {
         'Heavenly Jinba': '天之人馬',
         'Heavenly Kyozo': '天之鏡像',
         'Heavenly Mifune': '天之三船',
-        'Heavenly Tenma': '天之馬'
+        'Heavenly Tenma': '天之馬',
       },
     },
     {

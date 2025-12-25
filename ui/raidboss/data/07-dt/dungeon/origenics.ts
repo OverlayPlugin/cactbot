@@ -794,7 +794,7 @@ const triggerSet: TriggerSet<Data> = {
         'Deceiver': '欺騙者',
         'Electrolance': '雷槍',
         'Herpekaris': '赫爾佩伽里斯',
-        'Origenics Sentry G9': '創生哨兵G9'
+        'Origenics Sentry G9': '創生哨兵G9',
       },
       'replaceText': {
         // '--mid-north--': '', // FIXME '--北边中央--'
@@ -830,7 +830,7 @@ const triggerSet: TriggerSet<Data> = {
         'Venomspill': '投毒',
         'Voltaic Slash': '電擊斬',
         'Whorl of the Mind': '念動渦旋',
-        'Writhing Riot': '囂張跋扈'
+        'Writhing Riot': '囂張跋扈',
       },
     },
     {

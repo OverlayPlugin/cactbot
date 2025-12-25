@@ -1306,7 +1306,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Hegemone': '赫革摩涅',
-        'Parasitos': '寄生生物'
+        'Parasitos': '寄生生物',
       },
       'replaceText': {
         'Aetherial Exchange': '乙太交換',
@@ -1330,7 +1330,7 @@ const triggerSet: TriggerSet<Data> = {
         'Reek Havoc': '噴氣',
         'Synergy': '協同',
         'Transmission': '寄生傳染',
-        'Unholy Darkness': '黑暗神聖'
+        'Unholy Darkness': '黑暗神聖',
       },
     },
     {

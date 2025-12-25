@@ -327,7 +327,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arbuda': '額部陀',
         'Coeurl Smriti': '凶豹所憶',
         'Coeurl Sruti': '凶豹所聞',
-        'Ivon Coeurlfist': '雙豹伊沃恩'
+        'Ivon Coeurlfist': '雙豹伊沃恩',
       },
       'replaceText': {
         // '--Smriti Appears--': '', // FIXME '--凶豹出现--'
@@ -351,7 +351,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tapas': '苦行',
         'The Rose Of Destruction': '鬥靈彈',
         'Touch of Slaughter': '靈魂秘孔拳',
-        'Wide Blaster': '廣域衝擊波'
+        'Wide Blaster': '廣域衝擊波',
       },
     },
     {

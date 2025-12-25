@@ -276,7 +276,7 @@ const triggerSet: TriggerSet<Data> = {
         'Portrayal of Fire': '火之畫作',
         'Portrayal of Water': '水之畫作',
         'Portrayal of Wind': '風之畫作',
-        'The Storm\'s Grip': '暴風領域'
+        'The Storm\'s Grip': '暴風領域',
       },
       'replaceText': {
         'Demonic Howl': '惡魔嘯',
@@ -301,7 +301,7 @@ const triggerSet: TriggerSet<Data> = {
         'Possession': '附身畫像',
         'Release': '附身解除',
         'Rock Hard': '岩石破壞者',
-        'The Price': '死亡誘惑'
+        'The Price': '死亡誘惑',
       },
     },
     {

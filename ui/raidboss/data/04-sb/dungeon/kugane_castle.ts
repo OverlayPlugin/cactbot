@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
         'Elite Onmitsu': '攘夷隱秘',
         'Kageyama': '景山',
         'Yojimbo': '保鑣',
-        'Zuiko-Maru': '瑞光丸'
+        'Zuiko-Maru': '瑞光丸',
       },
       'replaceText': {
         'Clearout': '橫掃',
@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tatami-Gaeshi': '掀地板之術',
         'Wakizashi': '腰刀',
         'Zanmato': '斬魔刀',
-        'Zeni Masshigura': '見錢眼開'
+        'Zeni Masshigura': '見錢眼開',
       },
     },
     {

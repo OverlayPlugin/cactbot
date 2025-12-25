@@ -272,7 +272,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Bennu': '貝努鳥',
         'Phoenix(?!-)': '鳳凰',
-        'Phoenix-Egi': '鳳凰 艾基'
+        'Phoenix-Egi': '鳳凰 艾基',
       },
       'replaceText': {
         '(?<! )Rebirth': '新生',
@@ -289,7 +289,7 @@ const triggerSet: TriggerSet<Data> = {
         'Revelation': '天啟',
         'Scorched Pinion': '炎之翼',
         'Summon': '召喚',
-        'Whitefire': '白熱之炎'
+        'Whitefire': '白熱之炎',
       },
     },
     {

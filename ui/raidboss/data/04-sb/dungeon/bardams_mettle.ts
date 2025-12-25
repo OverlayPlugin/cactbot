@@ -367,7 +367,7 @@ const triggerSet: TriggerSet<Data> = {
         'Corpsecleaner Eagle': '清道雄鷹',
         'Garula': '加魯拉',
         // 'Bardam\'s Hunt': '', // FIXME '战士巴儿达木的猎场'
-        // '(?<! )Bardam(?!( |s|\'))': '' // FIXME '巴儿达木巨像'
+        // '(?<! )Bardam(?!( |s|\'))': '', // FIXME '巴儿达木巨像'
       },
       'replaceText': {
         'Wingbeat': '翼喚狂風',
@@ -392,7 +392,7 @@ const triggerSet: TriggerSet<Data> = {
         'Comet Impact': '星屑衝擊',
         'Comet(?! Impact)': '隕星',
         'Charge': '刺衝',
-        'Bardam\'s Ring': '巴兒達木之環'
+        'Bardam\'s Ring': '巴兒達木之環',
       },
     },
     {

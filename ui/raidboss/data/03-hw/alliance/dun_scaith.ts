@@ -1087,7 +1087,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'The Queen\'s Graces': '', // FIXME '女王之间'
         // 'The Queen\'s Pride': '', // FIXME '女王的阅兵广场'
         'Void Sprite': '虛無元精',
-        'Wailing Atomos': '虛聲的亞特蒙斯'
+        'Wailing Atomos': '虛聲的亞特蒙斯',
       },
       'replaceText': {
         // '--deathgate spawn--': '', // FIXME '--召唤之门出现--'
@@ -1160,7 +1160,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Blizzard IV': '虛空超暴雪',
         'Void Death(?! )': '虛空致死一擊',
         'Void Death IV': '虛空極死',
-        'Wormhole': '蟲洞'
+        'Wormhole': '蟲洞',
       },
     },
     {

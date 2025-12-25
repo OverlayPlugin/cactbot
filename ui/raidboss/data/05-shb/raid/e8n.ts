@@ -475,7 +475,7 @@ const triggerSet: TriggerSet<Data> = {
         'Mothercrystal': '母水晶',
         'Earthen Aether': '土乙太',
         'Electric Aether': '雷乙太',
-        'Luminous Aether': '光乙太'
+        'Luminous Aether': '光乙太',
       },
       'replaceText': {
         'Absolute Zero': '絕對零度',
@@ -507,7 +507,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Reflected Kick/Frost': '', // FIXME '反射阔斧/镰形'
         // 'Twin Stillness/Twin Silence': '', // FIXME '静寂/闲寂的双剑技'
         // 'Embittered Dance/Spiteful Dance': '', // FIXME '严峻之舞/冷峻之舞'
-        // 'Spiteful Dance/Embittered Dance': '' // FIXME '冷峻之舞/严峻之舞'
+        // 'Spiteful Dance/Embittered Dance': '', // FIXME '冷峻之舞/严峻之舞'
       },
     },
     {

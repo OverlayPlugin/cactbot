@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Forgiven Pedantry': '得到寬恕的炫學',
         'Huracan': '烏拉坎',
-        'Li\'l Murderer': '小小殺手'
+        'Li\'l Murderer': '小小殺手',
       },
     },
     {

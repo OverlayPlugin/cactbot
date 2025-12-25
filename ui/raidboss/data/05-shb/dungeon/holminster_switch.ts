@@ -309,7 +309,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Forgiven Dissonance': '得到寬恕的失調',
         'Tesleen, the Forgiven': '得到寬恕的泰絲琳',
-        'Philia': '斐利亞'
+        'Philia': '斐利亞',
       },
       'replaceText': {
         'Aethersup': '吸取乙太',
@@ -336,7 +336,7 @@ const triggerSet: TriggerSet<Data> = {
         'Thumbscrew': '螺旋突刺',
         'Wooden Horse': '木馬',
         // 'Tank': '', // FIXME '坦克'
-        // 'Center': '' // FIXME '中心'
+        // 'Center': '', // FIXME '中心'
       },
     },
   ],

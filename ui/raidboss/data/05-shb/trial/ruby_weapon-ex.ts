@@ -871,7 +871,7 @@ const triggerSet: TriggerSet<Data> = {
         'Meteor': '隕石',
         'Comet': '隕星',
         'White Agony': '奈爾的悲嘆',
-        'White Fury': '奈爾的憤怒'
+        'White Fury': '奈爾的憤怒',
       },
       'replaceText': {
         // '--cutscene--': '', // FIXME '--过场动画--'
@@ -912,7 +912,7 @@ const triggerSet: TriggerSet<Data> = {
         'Mark II Magitek Comet': '魔導隕星II',
         // 'Tank Comets': '', // FIXME '坦克彗星'
         'Bradamante': '布拉達曼特',
-        'Outrage': '震怒'
+        'Outrage': '震怒',
       },
     },
     {

@@ -3189,7 +3189,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<!Illusory )Hephaistos': '赫淮斯托斯',
         'Gorgon': '戈爾貢',
         'Illusory Hephaistos': '赫淮斯托斯的幻影',
-        'Suneater': '炎靈蛇'
+        'Suneater': '炎靈蛇',
       },
       'replaceText': {
         // 'line': '', // FIXME '直线'
@@ -3263,7 +3263,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tyrant\'s Flare II': '暴君火光II',
         'Tyrant\'s Unholy Darkness': '暴君黑暗神聖',
         'Uplift': '隆起',
-        'Volcanic Torches': '灼炎創火'
+        'Volcanic Torches': '灼炎創火',
       },
     },
     {

@@ -361,7 +361,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Rafflesia': '大王花',
-        // 'Scar\'s Edge': '' // FIXME '破损的门前'
+        // 'Scar\'s Edge': '', // FIXME '破损的门前'
       },
       'replaceText': {
         'Acid Rain': '酸蝕雨',
@@ -375,7 +375,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spit': '吐出',
         'Swarm': '招蜂香氣',
         'Thorn Whip': '荊棘鞭',
-        'Viscid Emission': '膠質排放物'
+        'Viscid Emission': '膠質排放物',
       },
     },
     {

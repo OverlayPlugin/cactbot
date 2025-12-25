@@ -194,7 +194,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arcane Sigil': '秘紋',
         'Behemoth': '凶惡巨獸',
         'Python': '大蟒',
-        'Zodiark': '佐狄亞克'
+        'Zodiark': '佐狄亞克',
       },
       'replaceText': {
         'Adikia': '不義',
@@ -215,7 +215,7 @@ const triggerSet: TriggerSet<Data> = {
         'Phlegethon': '冥火',
         'Styx': '仇恨',
         'Trimorphos Exoterikos': '三重外紋',
-        'Triple Esoteric Ray': '三重神秘光線'
+        'Triple Esoteric Ray': '三重神秘光線',
       },
     },
     {

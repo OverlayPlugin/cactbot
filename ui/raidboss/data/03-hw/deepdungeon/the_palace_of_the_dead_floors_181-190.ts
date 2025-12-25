@@ -129,7 +129,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Deep Palace Garm': '深宮加姆'
+        'Deep Palace Garm': '深宮加姆',
       },
     },
     {

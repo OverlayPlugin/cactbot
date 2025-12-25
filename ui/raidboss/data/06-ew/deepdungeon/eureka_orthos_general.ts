@@ -411,7 +411,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Lamia Queen': '拉米亞女王',
         'Meracydian Clone': '美拉西迪亞複製體',
-        'Mimic': '擬態怪'
+        'Mimic': '擬態怪',
       },
     },
     {

@@ -551,7 +551,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tumultuous Nexus': '暴風球',
         'Ifrit': '伊弗利特',
         'Raktapaksa': '赤翼羅羯坨博叉',
-        'Twisting Blaze': '火焰旋風'
+        'Twisting Blaze': '火焰旋風',
       },
       'replaceText': {
         'Superstorm': '超級風暴',
@@ -580,7 +580,7 @@ const triggerSet: TriggerSet<Data> = {
         'Radiant Plume': '光輝炎柱',
         'Spread Of Fire': '火勢蔓延',
         'Conflag Strike': '瞬燃強襲',
-        // 'Blaze': '' // FIXME '炎爆'
+        // 'Blaze': '', // FIXME '炎爆'
       },
     },
     {

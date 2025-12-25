@@ -370,7 +370,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Hesperos': '赫斯珀洛斯'
+        'Hesperos': '赫斯珀洛斯',
       },
       'replaceText': {
         // '\\(cleave\\)': '', // FIXME '(扇形)'
@@ -389,7 +389,7 @@ const triggerSet: TriggerSet<Data> = {
         'Setting the Scene': '佈置劇場',
         'Shifting Strike': '換位強襲',
         'Well Pinax': '噴水板畫',
-        'Westerly Shift': '換位強襲·西'
+        'Westerly Shift': '換位強襲·西',
       },
     },
     {

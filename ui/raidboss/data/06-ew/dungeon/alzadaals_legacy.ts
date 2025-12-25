@@ -462,7 +462,7 @@ const triggerSet: TriggerSet<Data> = {
         'Armored Drudge': '裝甲僕從',
         'Kapikulu': '門奴',
         'Scarlet Tentacle': '猩紅觸手',
-        // 'Weaver\'S Warding': '' // FIXME '封宝之间'
+        // 'Weaver\'S Warding': '', // FIXME '封宝之间'
       },
       'replaceText': {
         'Articulated Bits': '手型浮游砲',
@@ -484,7 +484,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spin Out': '纏繞抽轉',
         'Tentacle Dig': '觸手潛行',
         'Toxin Shower': '潑灑毒液',
-        'Wild Weave': '魔布散開'
+        'Wild Weave': '魔布散開',
       },
     },
     {

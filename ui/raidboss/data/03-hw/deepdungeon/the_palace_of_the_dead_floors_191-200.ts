@@ -87,7 +87,7 @@ const triggerSet: TriggerSet<Data> = {
         'Deep Palace Fachan': '深宮幽鬼之眼',
         'Deep Palace Knight': '深宮騎士',
         'Deep Palace Wraith': '深宮幽靈',
-        'Onyx Dragon': '奧尼克斯龍'
+        'Onyx Dragon': '奧尼克斯龍',
       },
     },
     {

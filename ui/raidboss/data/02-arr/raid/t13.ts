@@ -312,7 +312,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Bahamut Prime': '至尊巴哈姆特',
-        'The Storm of Meracydia': '美拉西迪亞的怒雨'
+        'The Storm of Meracydia': '美拉西迪亞的怒雨',
       },
       'replaceText': {
         'Akh Morn': '死亡輪迴',
@@ -343,7 +343,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Storm Add': '', // FIXME '怒雨出现'
         // 'Tempest Wing Tethers': '', // FIXME '风暴之翼连线'
         'Tempest Wing(?! Tethers)': '風暴之翼',
-        'Teraflare': '億萬火光'
+        'Teraflare': '億萬火光',
       },
     },
     {

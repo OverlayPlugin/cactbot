@@ -3166,7 +3166,7 @@ const triggerSet: TriggerSet<Data> = {
         'Rear Power Unit': '尾部組',
         'Left Arm Unit': '左臂組',
         'Right Arm Unit': '右臂組',
-        'Rocket Punch': '火箭拳擊'
+        'Rocket Punch': '火箭拳擊',
       },
       'replaceText': {
         'Archive Peripheral': '手臂歸檔',
@@ -3232,7 +3232,7 @@ const triggerSet: TriggerSet<Data> = {
         'Unlimited Wave Cannon': '波動砲：限制解除',
         '(?<! )Wave Cannon(?! Kyrios)': '波動砲',
         '(?<! )Wave Cannon Kyrios': '波動砲P',
-        'Wave Repeater': '速射式波動砲'
+        'Wave Repeater': '速射式波動砲',
       },
     },
     {

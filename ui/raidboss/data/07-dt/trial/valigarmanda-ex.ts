@@ -1186,7 +1186,7 @@ const triggerSet: TriggerSet<Data> = {
         'Flame-kissed Beacon': '火之徵兆',
         'Ice Boulder': '冰塊',
         'Thunderous Beacon': '雷之徵兆',
-        'Valigarmanda': '艷翼蛇鳥'
+        'Valigarmanda': '艷翼蛇鳥',
       },
       'replaceText': {
         'Blighted Bolt': '災厄落雷',
@@ -1226,7 +1226,7 @@ const triggerSet: TriggerSet<Data> = {
         // '\\(ice or storm phase\\?\\)': '', // FIXME '(冰或风暴阶段)'
         // '\\(knockback\\)': '', // FIXME '(击退)'
         // '\\(storm phase\\)': '', // FIXME '(风暴阶段)'
-        // '\\(tower\\)': '' // FIXME '(塔)'
+        // '\\(tower\\)': '', // FIXME '(塔)'
       },
     },
     {

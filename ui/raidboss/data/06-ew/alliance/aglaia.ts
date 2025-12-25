@@ -1142,7 +1142,7 @@ const triggerSet: TriggerSet<Data> = {
         'Rhalgr\'s Emissary': '拉爾戈神使',
         'Soul Vessel': '魂器',
         'Sunstorm': '陽靈氣',
-        '(?<!\')Thal': '札爾神'
+        '(?<!\')Thal': '札爾神',
       },
       'replaceText': {
         // '--hammer--': '', // FIXME '--锤子--'
@@ -1226,7 +1226,7 @@ const triggerSet: TriggerSet<Data> = {
         'Warden\'s Prominence': '神火天陽',
         'Warden\'s Warmth': '神炎',
         'Wayward Soul': '死魂爆',
-        'Wildfire Ward': '燎原之炎'
+        'Wildfire Ward': '燎原之炎',
       },
     },
     {

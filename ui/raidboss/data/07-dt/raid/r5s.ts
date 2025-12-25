@@ -839,7 +839,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Dancing Green': 'ダンシング・グリーン',
-        'Frogtourage': 'フロッグダンサー'
+        'Frogtourage': 'フロッグダンサー',
       },
       'replaceText': {
         // '\\(Cleave\\)': '', // FIXME '(半场)'
@@ -851,7 +851,8 @@ const triggerSet: TriggerSet<Data> = {
         // '\\(boss\\)': '', // FIXME '(BOSS)'
         // '\\(dancers\\)': '', // FIXME '(分身)'
         // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle': '_rsv_42792_-1_7_0_0_SE2DC5B04_EE2DC5B04',
+        '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle':
+          '_rsv_42792_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Arcady Night Encore': '_rsv_41840_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Arcady Night Fever': '在這停頓！',
         'Back-up Dance': '_rsv_42872_-1_7_0_0_SE2DC5B04_EE2DC5B04',
@@ -863,7 +864,7 @@ const triggerSet: TriggerSet<Data> = {
         // '(?<!& )Drop the Needle': '', // FIXME '播放'
         'Eighth Beats': '8拍節奏',
         'Ensemble Assemble': '伴舞團',
-        // 'Fire': '', // FIXME 
+        // 'Fire': '', // FIXME
         'Flip to A-side': '_rsv_42880_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Flip to B-side': '_rsv_42881_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Freak Out': '_rsv_42854_-1_7_0_0_SE2DC5B04_EE2DC5B04',
@@ -881,7 +882,7 @@ const triggerSet: TriggerSet<Data> = {
         'Play A-side': '_rsv_37832_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Play B-side': '_rsv_37833_-1_7_0_0_SE2DC5B04_EE2DC5B04',
         'Quarter Beats': '4拍節奏',
-        'Ride the Waves': '舞浪全開'
+        'Ride the Waves': '舞浪全開',
       },
     },
     {

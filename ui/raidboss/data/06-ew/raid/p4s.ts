@@ -1575,7 +1575,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Hesperos': '赫斯珀洛斯'
+        'Hesperos': '赫斯珀洛斯',
       },
       'replaceText': {
         // '--debuffs--': '', // FIXME '--Debuff--'
@@ -1625,7 +1625,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ultimate Impulse': '究極脈衝',
         'Vengeful Belone': '附魔佩羅涅·復仇',
         'Well Pinax': '噴水板畫',
-        'Wreath of Thorns': '荊棘纏繞'
+        'Wreath of Thorns': '荊棘纏繞',
       },
     },
     {

@@ -248,7 +248,7 @@ const triggerSet: TriggerSet<Data> = {
         'Therion': '至大災獸',
         'Terminus Roiler': '終末的動盪',
         'Terminus Pursuer': '終末的追捕',
-        'Terminus Bellwether': '終末的指引'
+        'Terminus Bellwether': '終末的指引',
       },
       'replaceText': {
         // 'Adds': '', // FIXME '小怪'
@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
         'Cosmic Shrapnel': '飛散',
         'Cosmic Kiss': '流星墜落',
         'Burst': '爆炸',
-        'Apokalypsis': '默示錄'
+        'Apokalypsis': '默示錄',
       },
     },
     {

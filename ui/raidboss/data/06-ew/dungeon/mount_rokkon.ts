@@ -1358,7 +1358,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shishu White Baboon': '紫州狒狒',
         // 'Stone\'s Silence': '', // FIXME '怪鸣石磐座'
         'Venomous Thrall': '被迷惑的大蛇',
-        'Yozakura the Fleeting': '花遁之夜櫻'
+        'Yozakura the Fleeting': '花遁之夜櫻',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -1470,7 +1470,7 @@ const triggerSet: TriggerSet<Data> = {
         'Worldly Pursuit': '跳鼠痛擊',
         'Yama-kagura': '山神樂',
         'Yoki(?!-uzu)': '妖氣',
-        'Yoki-uzu': '妖氣渦'
+        'Yoki-uzu': '妖氣渦',
       },
     },
     {

@@ -347,7 +347,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Beatrice': '貝雅特麗齊',
         'Evil Dreamer': '夢禍',
-        'Scarmiglione': '斯卡米留尼'
+        'Scarmiglione': '斯卡米留尼',
       },
       'replaceText': {
         'Antipressure': '虛無強壓',
@@ -372,7 +372,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Gravity': '虛空重力',
         'Void Nail': '虛無釘',
         'Void Vortex': '虛無旋渦',
-        'Voidshaker': '虛無搖動'
+        'Voidshaker': '虛無搖動',
       },
     },
     {

@@ -1048,7 +1048,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Comet': '隕星',
         'Toxic Bubble': '有毒瓦斯泡',
-        'Zeromus': '澤羅姆斯'
+        'Zeromus': '澤羅姆斯',
       },
       'replaceText': {
         '--spread--': '宇宙大爆炸',
@@ -1088,7 +1088,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Meteor': '虛空隕石',
         'the Dark Beckons': '黑暗侵蝕：重擊',
         'the Dark Binds': '黑暗侵蝕：鎖鏈',
-        'the Dark Divides': '黑暗侵蝕：飛散'
+        'the Dark Divides': '黑暗侵蝕：飛散',
       },
     },
     {

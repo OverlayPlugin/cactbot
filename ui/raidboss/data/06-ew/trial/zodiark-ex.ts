@@ -1204,7 +1204,7 @@ const triggerSet: TriggerSet<Data> = {
         'Quetzalcoatl': '克察爾科亞特爾',
         'Roiling Darkness': '黑暗奔流',
         'Zodiark': '佐狄亞克',
-        'python': '大蟒'
+        'python': '大蟒',
       },
       'replaceText': {
         'Adikia': '不義',
@@ -1231,7 +1231,7 @@ const triggerSet: TriggerSet<Data> = {
         'Phobos': '恐懼',
         'Styx': '仇恨',
         'Trimorphos Exoterikos': '三重外紋',
-        'Triple Esoteric Ray': '三重神秘光線'
+        'Triple Esoteric Ray': '三重神秘光線',
       },
     },
     {

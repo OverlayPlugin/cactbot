@@ -387,7 +387,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Byakko': '白虎',
-        'Hakutei': '白帝'
+        'Hakutei': '白帝',
       },
       'replaceText': {
         // '--Hakutei Add--': '', // FIXME '--白帝出现--'
@@ -413,7 +413,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Roar Of Thunder': '雷轟',
         'The Voice Of Thunder': '雷聲',
         'Unrelenting Anguish': '無間地獄',
-        'White Herald': '白帝衝'
+        'White Herald': '白帝衝',
       },
     },
     {

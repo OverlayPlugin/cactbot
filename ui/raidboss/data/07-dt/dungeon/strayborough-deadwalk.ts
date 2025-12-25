@@ -499,7 +499,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spectral Samovar': '幻光茶壺',
         'Stray Geist': '迷途的幽靈',
         'Stray Phantagenitrix': '迷途的幽靈之母',
-        'Träumerei': '夢像'
+        'Träumerei': '夢像',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -529,7 +529,7 @@ const triggerSet: TriggerSet<Data> = {
         'Team Spirit': '合作神精',
         'Toiling Teapots': '茶壺',
         'Tricksome Treat': '搗蛋式款待',
-        'Troubling Teacups': '茶杯'
+        'Troubling Teacups': '茶杯',
       },
     },
     {

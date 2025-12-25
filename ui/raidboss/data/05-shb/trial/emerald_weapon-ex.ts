@@ -650,7 +650,7 @@ const triggerSet: TriggerSet<Data> = {
         'Black Wolf\'s Image': '蓋烏斯的幻影',
         'Imperial Image': '帝國兵的幻影',
         'Reaper Image': '魔導死神的幻影',
-        'The Emerald Weapon': '綠寶石武器'
+        'The Emerald Weapon': '綠寶石武器',
       },
       'replaceText': {
         '--cutscene--': '妨礙思念',
@@ -678,7 +678,7 @@ const triggerSet: TriggerSet<Data> = {
         'Emerald Crusher': '綠寶石碎擊',
         'Full Rank': '全軍集合',
         'Final Formation': '全軍列隊',
-        'Fatal Fire': '全軍攻擊'
+        'Fatal Fire': '全軍攻擊',
       },
     },
     {

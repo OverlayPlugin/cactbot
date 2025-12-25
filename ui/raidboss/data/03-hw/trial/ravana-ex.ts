@@ -180,7 +180,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Ravana': '羅波那'
+        'Ravana': '羅波那',
       },
       'replaceText': {
         // '\\?': '', // FIXME ' ?'
@@ -214,7 +214,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Rose Of Hate': '鬥氣砲',
         // 'The Seeing': '', // FIXME '左翼防御/右翼防御/两翼防御'
         'Warlord Flame': '武神焰',
-        'Warlord Shell': '武神甲'
+        'Warlord Shell': '武神甲',
       },
     },
     {

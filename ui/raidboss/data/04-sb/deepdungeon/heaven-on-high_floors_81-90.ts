@@ -212,7 +212,7 @@ const triggerSet: TriggerSet<Data> = {
         'Heavenly Rakshasa': '天之羅剎',
         'Heavenly Ryujin': '天之龍人',
         'Heavenly Shinzei': '天之真濟',
-        'Onra': '溫羅'
+        'Onra': '溫羅',
       },
     },
     {

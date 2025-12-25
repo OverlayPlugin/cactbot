@@ -887,8 +887,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // 'Alarm Pheromones': '', // FIXME '告警信息素'
         // 'Bee Sting': '', // FIXME '小蜂刺'
@@ -924,7 +923,7 @@ const triggerSet: TriggerSet<Data> = {
         // '\\(damage\\)': '', // FIXME '(伤害)'
         // '\\(drop\\)': '', // FIXME '(放圈)'
         // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(stun for': '' // FIXME '(眩晕'
+        // '\\(stun for': '', // FIXME '(眩晕'
       },
     },
     {

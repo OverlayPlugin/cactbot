@@ -3555,7 +3555,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ice Veil': '永久冰晶',
         'Oracle of Darkness': '暗之巫女',
         // 'Oracle\'s Reflection': '', // FIXME '巫女的镜像'
-        'Sorrow\'s Hourglass': '悲傷的沙漏'
+        'Sorrow\'s Hourglass': '悲傷的沙漏',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -3696,7 +3696,7 @@ const triggerSet: TriggerSet<Data> = {
         'Unholy Darkness': '黑暗神聖',
         'Unmitigated Explosion': '大爆炸',
         // 'Utopian Sky': '', // FIXME '乐园绝技'
-        // 'Wings Dark and Light': '' // FIXME '光与暗的孤翼'
+        // 'Wings Dark and Light': '', // FIXME '光与暗的孤翼'
       },
     },
     {

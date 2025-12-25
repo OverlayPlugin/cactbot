@@ -74,7 +74,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Chudo-Yudo': '丘都尤都',
-        'Diabolos': '迪亞布羅斯'
+        'Diabolos': '迪亞布羅斯',
       },
     },
     {

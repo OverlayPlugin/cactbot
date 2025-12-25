@@ -513,7 +513,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': '6號哥布林壓路機',
         'Lamebrix Strikebocks': '傭兵雷姆普里克斯',
         'Lameprix Strikedocks': '虛兵雷姆普里克斯',
-        'Weight Of The World': '大陸之重'
+        'Weight Of The World': '大陸之重',
       },
       'replaceText': {
         // '(?!--)mechanic': '', // FIXME '机制'
@@ -546,7 +546,7 @@ const triggerSet: TriggerSet<Data> = {
         'Stoneskin': '石膚',
         'Triple Charge': '三連填充',
         'Weight Trap': '啟動陷阱',
-        // 'Leghops\\?/Charge': '' // FIXME '哥布流后之先?/冲锋'
+        // 'Leghops\\?/Charge': '', // FIXME '哥布流后之先?/冲锋'
       },
     },
     {

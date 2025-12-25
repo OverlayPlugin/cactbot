@@ -117,7 +117,7 @@ const triggerSet: TriggerSet<Data> = {
         'Deep Palace Deepeye': '深宮深瞳',
         'Deep Palace Devilet': '深宮小惡魔',
         'Deep Palace Pot': '深宮魔力罐',
-        'Todesritter': '非生騎士'
+        'Todesritter': '非生騎士',
       },
     },
     {

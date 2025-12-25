@@ -714,7 +714,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Leviathan': '利維坦'
+        'Leviathan': '利維坦',
       },
       'replaceText': {
         'Backbreaking Wave': '返破碎波',
@@ -747,7 +747,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tidal Roar': '浪潮嘶吼',
         'Tidal Wave': '巨浪',
         '(?<! )Tsunami': '大海嘯',
-        'Undersea Quake': '海底地震'
+        'Undersea Quake': '海底地震',
       },
     },
     {

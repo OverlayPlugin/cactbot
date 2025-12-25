@@ -331,7 +331,7 @@ const triggerSet: TriggerSet<Data> = {
         'Judgment Crystal': '審判結晶',
         'The General\'s Might': '阿里達烏斯之力',
         'The General\'s Time': '阿里達烏斯之時',
-        'The General\'s Wing': '阿里達烏斯之翼'
+        'The General\'s Wing': '阿里達烏斯之翼',
       },
       'replaceText': {
         '(?<!Radiant )Sacrament': '十字聖禮',
@@ -365,7 +365,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Of Repentance': '懺悔區',
         'timegate(?!s)': '時空門',
         // 'timegates active': '', // FIXME '时空门激活'
-        // 'timestop': '' // FIXME '时停'
+        // 'timestop': '', // FIXME '时停'
       },
     },
     {

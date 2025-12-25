@@ -126,8 +126,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '\\(aoes\\)': '', // FIXME '(圆形AOE)'
         // '\\(dash\\)': '', // FIXME '(冲锋)'
@@ -152,7 +151,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Wyvern\'s Radiance': '', // FIXME '龙闪'
         // 'Wyvern\'s Rattle': '', // FIXME '锁哭龙闪'
         // 'Wyvern\'s Vengeance': '', // FIXME '波状龙闪'
-        // 'Wyvern\'s Weal': '' // FIXME '龙闪炮'
+        // 'Wyvern\'s Weal': '', // FIXME '龙闪炮'
       },
     },
     {

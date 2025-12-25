@@ -3353,7 +3353,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shishu Kotengu': '紫州小天狗',
         'Shishu Onmitsugashira': '紫州隱秘首領',
         'Shishu Raiko': '紫州雷吼',
-        'Shishu Yuki': '紫州幽鬼'
+        'Shishu Yuki': '紫州幽鬼',
       },
       'replaceText': {
         // '\\(circles\\)': '', // FIXME '(圆圈)'
@@ -3422,7 +3422,7 @@ const triggerSet: TriggerSet<Data> = {
         'Vengeful Souls': '黑赤招魂',
         'Vermilion Aura': '赤妖彈',
         'Vortex of the Thunder Eye': '渦雷連舞之環圓',
-        'Worldly Pursuit': '跳鼠痛擊'
+        'Worldly Pursuit': '跳鼠痛擊',
       },
     },
     {

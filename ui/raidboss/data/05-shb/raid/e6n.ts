@@ -310,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Garuda': '迦樓羅',
         'Ifrit': '伊弗利特',
-        'Raktapaksa': '赤翼羅羯坨博叉'
+        'Raktapaksa': '赤翼羅羯坨博叉',
       },
       'replaceText': {
         'Ferostorm': '凶猛風暴',
@@ -333,7 +333,7 @@ const triggerSet: TriggerSet<Data> = {
         'Firestorm': '火焰流',
         'Radiant Plume': '光輝炎柱',
         'Heat Burst': '熱波',
-        'Conflag Strike': '瞬燃強襲'
+        'Conflag Strike': '瞬燃強襲',
       },
     },
     {

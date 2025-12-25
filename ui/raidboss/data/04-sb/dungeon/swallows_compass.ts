@@ -419,7 +419,7 @@ const triggerSet: TriggerSet<Data> = {
         'Qitian Dasheng': '齊天大聖',
         'Shadow Of The Sage': '齊天大聖的幻影',
         'Tengu Ember': '天狗火',
-        // 'The Dragon\'s Mouth': '' // FIXME '大龙关门'
+        // 'The Dragon\'s Mouth': '', // FIXME '大龙关门'
       },
       'replaceText': {
         'Both Ends': '如意大旋風',
@@ -439,7 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Short End': '如意烈風突',
         'Tributary': '大瀑布',
         'Wile Of The Tengu': '天狗妙計',
-        'Yama-Kagura': '山神樂'
+        'Yama-Kagura': '山神樂',
       },
     },
     {

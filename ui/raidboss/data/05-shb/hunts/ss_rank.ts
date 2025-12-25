@@ -96,7 +96,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Forgiven Rebellion': '得到寬恕的叛亂'
+        'Forgiven Rebellion': '得到寬恕的叛亂',
       },
     },
     {

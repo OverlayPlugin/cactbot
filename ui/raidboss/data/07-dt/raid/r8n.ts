@@ -537,7 +537,7 @@ const triggerSet: TriggerSet<Data> = {
         'Howling Blade': 'ハウリングブレード',
         'Moonlit Shadow': 'ハウリングブレードの幻影',
         'Wolf of Stone': '土の狼頭',
-        'Wolf of Wind': '風の狼頭'
+        'Wolf of Wind': '風の狼頭',
       },
       'replaceText': {
         // '\\(castbar\\)': '', // FIXME '(咏唱栏)'
@@ -564,7 +564,7 @@ const triggerSet: TriggerSet<Data> = {
         'Towerfall': '崩塌',
         'Tracking Tremors': '連震擊',
         'Weal of Stone': '地烈波',
-        'Wolves\' Reign': '群狼劍'
+        'Wolves\' Reign': '群狼劍',
       },
     },
     {

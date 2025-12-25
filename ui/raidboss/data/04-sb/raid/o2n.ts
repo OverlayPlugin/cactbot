@@ -385,7 +385,7 @@ const triggerSet: TriggerSet<Data> = {
         'Potent Petrosphere': '石化球II',
         '(?<! )Petrosphere': '石化球I',
         'Fleshy Member': '觸手',
-        'Catastrophe': '災變者'
+        'Catastrophe': '災變者',
       },
       'replaceText': {
         'Tremblor': '地震',
@@ -404,7 +404,7 @@ const triggerSet: TriggerSet<Data> = {
         'Demon Eye': '惡魔之瞳',
         'Antilight': '暗黑光',
         '(?<!-)100 Gs': '重力100',
-        '-100 Gs': '重力-100'
+        '-100 Gs': '重力-100',
       },
     },
     {

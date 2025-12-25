@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Starcrier': '幻煌鳥',
         'Rrax Yity\'a': '血鳴鼠',
-        'Neyoozoteel': '內尤佐緹'
+        'Neyoozoteel': '內尤佐緹',
       },
     },
     {

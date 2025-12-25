@@ -987,7 +987,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Cloud Of Darkness': '黑暗之雲',
-        'Cloud of Darkness': '黑暗之雲'
+        'Cloud of Darkness': '黑暗之雲',
       },
       'replaceText': {
         // '--adds untargetable--': '', // FIXME '--小怪不可选中--'
@@ -1023,7 +1023,7 @@ const triggerSet: TriggerSet<Data> = {
         'Thorny Vine': '荊棘叢生',
         'Unholy Darkness': '黑暗神聖',
         'Vortex': '吸引',
-        'the Third Art of Darkness': '三重暗之戰技'
+        'the Third Art of Darkness': '三重暗之戰技',
       },
     },
     {

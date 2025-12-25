@@ -516,7 +516,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gorgon': '戈爾貢',
         '(?<!Illusory )Hephaistos': '赫淮斯托斯',
         'Illusory Hephaistos': '赫淮斯托斯的幻影',
-        'Suneater': '炎靈蛇'
+        'Suneater': '炎靈蛇',
       },
       'replaceText': {
         'Abyssal Fires': '火炎風暴',
@@ -539,7 +539,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sunforge': '創獸炎舞',
         'Torch Flame': '灼炎',
         'Trailblaze': '踏火尋跡',
-        'Volcanic Torches': '灼炎創火'
+        'Volcanic Torches': '灼炎創火',
       },
     },
     {

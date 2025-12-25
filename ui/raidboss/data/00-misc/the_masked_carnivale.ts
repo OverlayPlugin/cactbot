@@ -1764,7 +1764,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tikbalang': '迪克巴朗',
         'Typhon': '杜彭',
         'Ultros': '奧爾特羅斯',
-        'Zipacna': '希派克納'
+        'Zipacna': '希派克納',
       },
     },
     {

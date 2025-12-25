@@ -787,7 +787,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Barbariccia': '巴爾巴莉希亞',
-        'Stiff Breeze': '荒風'
+        'Stiff Breeze': '荒風',
       },
       'replaceText': {
         // 'ground': '', // FIXME '地面'
@@ -827,7 +827,7 @@ const triggerSet: TriggerSet<Data> = {
         'Void Aero III': '虛空大勁風',
         'Void Aero IV': '虛空超勁風',
         'Voidstrom': '虛無風暴',
-        'Winding Gale': '追命狂風'
+        'Winding Gale': '追命狂風',
       },
     },
     {

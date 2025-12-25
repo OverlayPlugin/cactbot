@@ -320,7 +320,7 @@ const triggerSet: TriggerSet<Data> = {
         'Iwa-No-Shiki': '岩之式鬼',
         'Seiryu': '青龍',
         'Ten-No-Shiki': '天之式鬼',
-        'Yama-No-Shiki': '山之式鬼'
+        'Yama-No-Shiki': '山之式鬼',
       },
       'replaceText': {
         '100-Tonze Swing': '百噸迴轉',
@@ -345,7 +345,7 @@ const triggerSet: TriggerSet<Data> = {
         'Serpent-Eye Sigil': '蛇眼之印',
         'Strength Of Spirit': '靈氣',
         'Summon Shiki': '式鬼召喚',
-        'Yama-Kagura': '山神樂'
+        'Yama-Kagura': '山神樂',
       },
     },
     {

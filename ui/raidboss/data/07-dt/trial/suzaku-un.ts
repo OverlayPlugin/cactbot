@@ -216,7 +216,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Scarlet Tail Feather': '朱雀的尾羽',
-        'Suzaku': '朱雀'
+        'Suzaku': '朱雀',
       },
       'replaceText': {
         'Close-Quarter Crescendo': '傀儡旋律',
@@ -240,7 +240,7 @@ const triggerSet: TriggerSet<Data> = {
         'Screams Of The Damned': '叫喚地獄',
         'Southron Star': '星宿波',
         'Well Of Flame': '井宿焰',
-        'Wing And A Prayer': '蘇生神通力'
+        'Wing And A Prayer': '蘇生神通力',
       },
     },
     {

@@ -583,7 +583,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Arcane Sphere': '立體魔法陣',
         'Flame-kissed Beacon': '火之徵兆',
-        'Valigarmanda': '艷翼蛇鳥'
+        'Valigarmanda': '艷翼蛇鳥',
       },
       'replaceText': {
         // '\\(AoEs\\)': '', // FIXME '(AOE)'
@@ -609,7 +609,7 @@ const triggerSet: TriggerSet<Data> = {
         'Strangling Coil': '蛇行盤繞',
         'Susurrant Breath': '蛇行吐息',
         'Thunderous Breath': '雷鳴吐息',
-        'Tulidisaster': '圖拉爾災禍'
+        'Tulidisaster': '圖拉爾災禍',
       },
     },
     {

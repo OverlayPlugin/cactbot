@@ -268,7 +268,7 @@ const triggerSet: TriggerSet<Data> = {
         'Prototype Bit': '試驗型魔導浮游砲',
         // 'Rhalgr\'s Gate': '', // FIXME '破坏神之门'
         'The Storm': '混沌波動',
-        'Zenos Yae Galvus': '芝諾斯·耶·加爾烏斯'
+        'Zenos Yae Galvus': '芝諾斯·耶·加爾烏斯',
       },
       'replaceText': {
         'Aetherochemical Grenado': '魔導榴彈',
@@ -294,7 +294,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tail Laser': '尾部射線',
         'Target Search': '尋找目標',
         'Unmoving Troika': '不動三段',
-        'Vein Splitter': '地脈斷'
+        'Vein Splitter': '地脈斷',
       },
     },
     {

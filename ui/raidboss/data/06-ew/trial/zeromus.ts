@@ -380,7 +380,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Comet': '隕星',
-        'Zeromus': '澤羅姆斯'
+        'Zeromus': '澤羅姆斯',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -410,7 +410,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Dark Divides': '黑暗侵蝕：飛散',
         'Visceral Whirl': '旋骨利爪',
         'Void Bio': '虛空毒化',
-        'Void Meteor': '虛空隕石'
+        'Void Meteor': '虛空隕石',
       },
     },
     {

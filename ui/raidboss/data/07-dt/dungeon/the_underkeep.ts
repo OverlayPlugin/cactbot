@@ -591,7 +591,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gargant': '高康特',
         'Sand Sphere': '沙球',
         'Soldier S0': 'ソルジャーS0',
-        'Valia Pira': 'ヴァリア・ピラ'
+        'Valia Pira': 'ヴァリア・ピラ',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
@@ -616,7 +616,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sphere Shatter': '碎裂',
         'Static Force': '裂斬波',
         'Thunderous Slash': '閃雷斬',
-        'Trap Jaws': '捕獵鉗'
+        'Trap Jaws': '捕獵鉗',
       },
     },
     {

@@ -2101,7 +2101,7 @@ const triggerSet: TriggerSet<Data> = {
         'Spiny Plume': '刺羽',
         'Suparna': '美翼',
         'The Ultima Weapon': '究極武器',
-        'Titan': '泰坦'
+        'Titan': '泰坦',
       },
       'replaceText': {
         'Aerial Blast': '大氣爆發',
@@ -2156,7 +2156,7 @@ const triggerSet: TriggerSet<Data> = {
         'Vulcan Burst': '火神爆裂',
         'Weight Of The Land': '大地重壓',
         'Wicked Tornado': '邪氣龍捲',
-        'Wicked Wheel': '邪輪旋風'
+        'Wicked Wheel': '邪輪旋風',
       },
     },
     {

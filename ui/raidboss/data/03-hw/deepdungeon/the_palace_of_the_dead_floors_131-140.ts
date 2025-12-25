@@ -70,7 +70,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Deep Palace Ahriman': '深宮惡精靈',
-        'Deep Palace Catoblepas': '深宮卡托佈雷帕斯'
+        'Deep Palace Catoblepas': '深宮卡托佈雷帕斯',
       },
     },
     {

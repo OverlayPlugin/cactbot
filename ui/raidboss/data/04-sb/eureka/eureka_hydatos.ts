@@ -1301,7 +1301,7 @@ const triggerSet: TriggerSet<Data> = {
         'Relative Virtue(?! gains)': '相對的美德',
         'Shadow': '奧斯瑪原型之影',
         // 'Relative Virtue gains the effect of .*?Astral Essence.*?': '', // FIXME '相对的美德附加了“光之腕”效果'
-        // 'Relative Virtue gains the effect of .*?Umbral Essence.*?': '' // FIXME '相对的美德附加了“暗之腕”效果'
+        // 'Relative Virtue gains the effect of .*?Umbral Essence.*?': '', // FIXME '相对的美德附加了“暗之腕”效果'
       },
       'replaceText': {
         'Acallam Na Senorach': '真妖槍旋',
@@ -1366,7 +1366,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ultimate Zantetsuken': '極·斬鐵劍',
         'Umbral Essence': '暗之腕',
         'Whirling Zantetsuken': '旋·斬鐵劍',
-        // 'Wyvern Explosion': '' // FIXME '飞龙爆炸'
+        // 'Wyvern Explosion': '', // FIXME '飞龙爆炸'
       },
     },
     {

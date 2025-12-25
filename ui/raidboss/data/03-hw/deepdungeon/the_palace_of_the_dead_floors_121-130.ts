@@ -93,7 +93,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Alfard': '艾爾法德',
         'Deep Palace Minotaur': '深宮米諾陶洛斯',
-        'Deep Palace Skatene': '深宮斯卡尼特'
+        'Deep Palace Skatene': '深宮斯卡尼特',
       },
     },
     {

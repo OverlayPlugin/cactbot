@@ -3257,7 +3257,7 @@ const triggerSet: TriggerSet<Data> = {
         'Liquid Rage': '活水之怒',
         'Living Liquid': '有生命活水',
         'Perfect Alexander': '完美亞歷山大',
-        'Steam Chakram': '蒸氣戰輪'
+        'Steam Chakram': '蒸氣戰輪',
       },
       'replaceText': {
         // '--Cruise Chaser Invincible--': '', // FIXME '--巡航驱逐者无敌--'
@@ -3268,7 +3268,7 @@ const triggerSet: TriggerSet<Data> = {
         // '/Stillness': '', // FIXME '/静止命令'
         // 'Individual/': '', // FIXME '单体/'
         // 'Reveal': '', // FIXME '生效'
-        // ' and': '', // FIXME 
+        // ' and': '', // FIXME
         // 'Fate: ': '', // FIXME '未来: '
         'Almighty Judgment': '神聖大審判',
         'Alpha Sword': '阿爾法之劍',
@@ -3343,7 +3343,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Water': '', // FIXME '水'
         // 'Thunder': '', // FIXME '雷'
         'Whirlwind': '龍捲風',
-        'Wormhole Formation': '次元斷絕陣列'
+        'Wormhole Formation': '次元斷絕陣列',
       },
     },
     {

@@ -117,7 +117,7 @@ const triggerSet: TriggerSet<Data> = {
         'Palace Deepeye': '地宮深瞳',
         'Palace Imp': '地宮小頑童',
         'Palace Pot': '地宮魔力罐',
-        'The Black Rider': '深黑騎士'
+        'The Black Rider': '深黑騎士',
       },
     },
     {

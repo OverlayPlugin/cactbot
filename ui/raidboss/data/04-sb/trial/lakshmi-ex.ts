@@ -431,7 +431,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Dreaming Kshatriya': '夢寐的剎帝利',
-        'Lakshmi': '吉祥天女'
+        'Lakshmi': '吉祥天女',
       },
       'replaceText': {
         // '--chanchala end--': '', // FIXME '--反复无常结束--'
@@ -456,7 +456,7 @@ const triggerSet: TriggerSet<Data> = {
         'Blissful Arrow': '聖箭',
         'Blissful Hammer': '聖錘',
         'Jagadishwari': '至上天母',
-        'Alluring Embrace': '魅惑擁抱'
+        'Alluring Embrace': '魅惑擁抱',
       },
     },
     {

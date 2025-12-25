@@ -1049,7 +1049,7 @@ const triggerSet: TriggerSet<Data> = {
         'Serial-Jointed Command Model': '多關節型：司令機',
         'Serial-Jointed Service Model': '多關節型：士兵機',
         'Small Biped': '小型二足',
-        'Small Flyer': '小型飛行體'
+        'Small Flyer': '小型飛行體',
       },
       'replaceText': {
         '360-Degree Bombing Maneuver': '攻擊：周邊導彈轟炸',
@@ -1118,7 +1118,7 @@ const triggerSet: TriggerSet<Data> = {
         'Systematic Targeting': '瞄準陣型',
         'Total Annihilation Maneuver': '攻擊：殲滅轟炸',
         'Undock': '對接解除',
-        // 'Wall Mechanic': '' // FIXME '墙机制'
+        // 'Wall Mechanic': '', // FIXME '墙机制'
       },
     },
     {

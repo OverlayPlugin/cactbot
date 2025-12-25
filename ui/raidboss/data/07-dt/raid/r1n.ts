@@ -450,8 +450,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '(?<! )Black Cat Crossing': '', // FIXME '交叉尖甲'
         // '(?<! )One-two Paw': '', // FIXME '二连尖甲'
@@ -472,7 +471,7 @@ const triggerSet: TriggerSet<Data> = {
         // '\\(damage\\)': '', // FIXME '(伤害)'
         // '\\(hits\\)': '', // FIXME '(命中)'
         // '\\(jump\\)': '', // FIXME '(跳)'
-        // '\\(telegraphs\\)': '' // FIXME '(预兆)'
+        // '\\(telegraphs\\)': '', // FIXME '(预兆)'
       },
     },
     {

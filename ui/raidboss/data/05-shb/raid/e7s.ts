@@ -716,7 +716,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Idol Of Darkness': '暗黑心象',
         'Unforgiven Idolatry': '未被寬恕的盲崇',
         'Blasphemy': '褻瀆',
-        '(?<! )Idolatry': '盲崇'
+        '(?<! )Idolatry': '盲崇',
       },
       'replaceText': {
         'Empty Wave': '虛無波動',
@@ -754,7 +754,7 @@ const triggerSet: TriggerSet<Data> = {
         'Silver Spear': '白光之槍',
         'Crusade': '群體突進',
         'Words Of Fervor': '亂舞號令',
-        'Threefold Grace': '三重光環'
+        'Threefold Grace': '三重光環',
       },
     },
     {

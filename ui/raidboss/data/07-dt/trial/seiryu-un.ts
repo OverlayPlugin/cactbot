@@ -543,7 +543,7 @@ const triggerSet: TriggerSet<Data> = {
         'Numa-no-shiki': '沼之式鬼',
         'Seiryu': '青龍',
         'Ten-no-shiki': '天之式鬼',
-        'Yama-no-shiki': '山之式鬼'
+        'Yama-no-shiki': '山之式鬼',
       },
       'replaceText': {
         // '--small adds spawn--': '', // FIXME '--小小怪生成--'
@@ -569,7 +569,7 @@ const triggerSet: TriggerSet<Data> = {
         'Serpent\'s Fang': '蛇牙',
         'Strength of Spirit': '靈氣',
         'Summon Shiki': '式鬼召喚',
-        'Yama-kagura': '山神樂'
+        'Yama-kagura': '山神樂',
       },
     },
     {

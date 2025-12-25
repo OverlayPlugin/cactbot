@@ -506,7 +506,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        'Dancing Green': 'ダンシング・グリーン'
+        'Dancing Green': 'ダンシング・グリーン',
       },
       'replaceText': {
         // '\\(opposite\\)': '', // FIXME '(对面)'
@@ -526,7 +526,7 @@ const triggerSet: TriggerSet<Data> = {
         'Let\'s Pose!': '定格時刻！',
         'Moonburn': '月灼',
         'Ride the Waves': '舞浪全開',
-        // 'Stone': '' // FIXME 
+        // 'Stone': '', // FIXME
       },
     },
     {

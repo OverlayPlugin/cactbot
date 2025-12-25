@@ -317,8 +317,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
         // '\\(cones\\)': '', // FIXME '(锥形)'
@@ -338,7 +337,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Knuckle Sandwich': '', // FIXME '拳面猛击'
         // 'Lariat Combo': '', // FIXME '碎颈臂连击'
         // 'Murderous Mist': '', // FIXME '致命毒雾'
-        'Self-destruct': '自爆'
+        'Self-destruct': '自爆',
       },
     },
     {

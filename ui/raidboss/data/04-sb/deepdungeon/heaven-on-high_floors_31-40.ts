@@ -70,7 +70,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Bhima': '怖軍',
-        'Heavenly Dogu': '天之土偶'
+        'Heavenly Dogu': '天之土偶',
       },
     },
     {

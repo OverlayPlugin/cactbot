@@ -511,7 +511,7 @@ const triggerSet: TriggerSet<Data> = {
         'Omega Frame': '歐米茄框架',
         'Proto-Omega': '歐米茄原型',
         'Proto-rocket Punch': '原型火箭拳擊',
-        'Stigma-4': '斯提格瑪四'
+        'Stigma-4': '斯提格瑪四',
       },
       'replaceText': {
         '(?<!Multi-)AI Takeover': '請求支援',
@@ -539,7 +539,7 @@ const triggerSet: TriggerSet<Data> = {
         'Touchdown': '空降',
         'Tread': '突擊機動',
         '(?<!Proto-)Wave Cannon': '波動砲',
-        'Wheel': '車輪'
+        'Wheel': '車輪',
       },
     },
     {

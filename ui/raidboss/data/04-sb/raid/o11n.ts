@@ -303,7 +303,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Level Checker': '等級檢測儀',
         'Omega': '歐米茄',
-        'Rocket Punch': '火箭拳擊'
+        'Rocket Punch': '火箭拳擊',
       },
       'replaceText': {
         'Atomic Ray': '原子射線',
@@ -321,7 +321,7 @@ const triggerSet: TriggerSet<Data> = {
         'Reformat': '最佳化',
         'Reset': '初始化',
         'Rush': '突進',
-        // 'Starboard/Larboard Cannon': '' // FIXME '右/左舷齐射·波动炮'
+        // 'Starboard/Larboard Cannon': '', // FIXME '右/左舷齐射·波动炮'
       },
     },
     {

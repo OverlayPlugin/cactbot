@@ -717,7 +717,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Bomb Boulder': '爆破岩石',
         'Titan(?! )': '泰坦',
-        'Titan Maximum': '極大泰坦'
+        'Titan Maximum': '極大泰坦',
       },
       'replaceText': {
         'Bomb Boulders': '爆破岩石',
@@ -747,7 +747,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tumult': '激震',
         'Voice of the Land': '大地之吼',
         'Weight of the Land': '大地重壓',
-        'Weight of the World': '大陸之重'
+        'Weight of the World': '大陸之重',
       },
     },
     {

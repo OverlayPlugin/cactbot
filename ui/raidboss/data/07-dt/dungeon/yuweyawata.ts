@@ -376,7 +376,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lindblum Zaghnal': '林德布魯姆扎古納魯',
         'Lunipyati': '魯尼皮亞提',
         'Overseer Kanilokka': '卡尼洛喀站長',
-        'Preserved Soul': '站員的亡魂'
+        'Preserved Soul': '站員的亡魂',
       },
       'replaceText': {
         // '\\(arcs\\)': '', // FIXME '(弧线)'
@@ -414,7 +414,7 @@ const triggerSet: TriggerSet<Data> = {
         'Soul Douse': '失魂',
         'Soulweave': '靈魂飛掠',
         'Telltale Tears': '幽魂之淚',
-        'Turali Stone IV': '圖拉爾超巨岩'
+        'Turali Stone IV': '圖拉爾超巨岩',
       },
     },
     {

@@ -392,7 +392,7 @@ const triggerSet: TriggerSet<Data> = {
         'Orthosystem α': '正統系統α',
         'Orthosystem γ': '正統系統γ',
         'Servomechanical Orthochimera': '正統自控化奇美拉',
-        'Servomechanical Orthotaur': '正統自控化米諾陶洛斯'
+        'Servomechanical Orthotaur': '正統自控化米諾陶洛斯',
       },
     },
     {

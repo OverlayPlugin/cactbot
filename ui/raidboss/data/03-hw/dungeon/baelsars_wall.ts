@@ -269,7 +269,7 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Bit': '魔導浮游砲',
         'Magitek Predator': '魔導獵手',
         'Magitek Vanguard D-1': '魔導先鋒防衛型',
-        '(?<! )The Griffin': '鐵面公卿 伊爾伯德'
+        '(?<! )The Griffin': '鐵面公卿 伊爾伯德',
       },
       'replaceText': {
         // '--teleport': '', // FIXME '--传送'
@@ -292,7 +292,7 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Missile': '魔導飛彈',
         'Magitek Ray': '魔導雷射',
         'Restraint Collar': '鎖鏈',
-        'Sanguine Blade': '嗜血刃'
+        'Sanguine Blade': '嗜血刃',
       },
     },
     {

@@ -265,7 +265,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Sword of Condemnation': '斷罪之劍',
-        'Innocence': '無瑕靈君'
+        'Innocence': '無瑕靈君',
       },
       'replaceText': {
         'Winged Reprobation': '斷罪飛翔',
@@ -288,7 +288,7 @@ const triggerSet: TriggerSet<Data> = {
         'Exalted Wing': '高貴之翼',
         'Exalted Plumes': '羽化',
         'Drop Of Light': '落光',
-        // '--add Phase--': '' // FIXME '--小怪--'
+        // '--add Phase--': '', // FIXME '--小怪--'
       },
     },
     {

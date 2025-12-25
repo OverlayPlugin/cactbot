@@ -872,8 +872,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
         // '\\(damage\\)': '', // FIXME '(伤害)'
@@ -904,7 +903,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Quadruple Lariat': '', // FIXME '四分双重碎颈臂'
         'Self-Destruct': '自爆',
         'Special Bombarian Special': '究極超豪華野蠻大亂擊',
-        // 'Tag Team': '' // FIXME '组队战'
+        // 'Tag Team': '', // FIXME '组队战'
       },
     },
     {

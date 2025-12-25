@@ -3630,7 +3630,7 @@ const triggerSet: TriggerSet<Data> = {
         'Trinity Avowed': '誓約之三位一體',
         'Trinity Seeker': '求道之三位一體',
         'Viscous Clot': '黏液凝塊',
-        // 'Why\\.\\.\\.won\'t\\.\\.\\.you\\.\\.\\.': '' // FIXME '呜哦哦哦哦…… 难道会……输掉吗……'
+        // 'Why\\.\\.\\.won\'t\\.\\.\\.you\\.\\.\\.': '', // FIXME '呜哦哦哦哦…… 难道会……输掉吗……'
       },
       'replaceText': {
         '(?<!C)Rush': '突進',
@@ -3799,7 +3799,7 @@ const triggerSet: TriggerSet<Data> = {
         'Winds Of Fate': '大烈風',
         'Winds Of Weight': '過重烈風',
         'Withering Curse': '小人詛咒',
-        'Wrath Of Bozja': '博茲雅之憤'
+        'Wrath Of Bozja': '博茲雅之憤',
       },
     },
     {

@@ -178,7 +178,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Ball Of Fire': '火焰球',
-        'Alte Roite': '老者'
+        'Alte Roite': '老者',
       },
       'replaceText': {
         'Wyrm Tail': '太古龍尾',
@@ -193,7 +193,7 @@ const triggerSet: TriggerSet<Data> = {
         'Charybdis': '大漩渦',
         'Burn': '燃燒',
         'Breath Wing': '風息之翼',
-        'Blaze': '冰焰'
+        'Blaze': '冰焰',
       },
     },
     {

@@ -463,7 +463,7 @@ const triggerSet: TriggerSet<Data> = {
         'Faust Z': '終極浮士德',
         'Full-Metal Faust': '全裝甲浮士德',
         'Refurbisher 0': '廢品翻新裝置',
-        'Scrap': '廢料拳'
+        'Scrap': '廢料拳',
       },
       'replaceText': {
         '(?<!Double )Scrapline': '廢料金臂鉤',
@@ -486,7 +486,7 @@ const triggerSet: TriggerSet<Data> = {
         'Scrap Burst': '廢料爆發',
         'Scrap Storm': '廢料風暴',
         'Scrap(?! |line)': '廢料拳',
-        'Stockpile': '吸收'
+        'Stockpile': '吸收',
       },
     },
     {

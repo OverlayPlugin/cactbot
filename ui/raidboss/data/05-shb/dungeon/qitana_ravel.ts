@@ -332,7 +332,7 @@ const triggerSet: TriggerSet<Data> = {
         'Batsquatch': '大腳野蝠',
         'Eros': '艾洛斯',
         'Lozatl': '洛查特爾',
-        // 'The Song of Ox\'Gatorl': '' // FIXME '奥奇斯加托尔之祭坛'
+        // 'The Song of Ox\'Gatorl': '', // FIXME '奥奇斯加托尔之祭坛'
       },
       'replaceText': {
         'Confession Of Faith': '信仰宣言',
@@ -352,7 +352,7 @@ const triggerSet: TriggerSet<Data> = {
         'Subsonics': '亞音速',
         'Sun Toss': '投射石塊',
         'Towerfall': '崩塌',
-        'Viper Poison': '尾蛇毒'
+        'Viper Poison': '尾蛇毒',
       },
     },
   ],

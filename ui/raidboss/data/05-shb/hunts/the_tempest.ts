@@ -173,7 +173,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Baal': '巴力',
         'Gunitt': '顧尼圖',
-        'Rusalka': '盧莎卡'
+        'Rusalka': '盧莎卡',
       },
     },
     {

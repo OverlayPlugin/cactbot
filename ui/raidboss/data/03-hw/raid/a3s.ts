@@ -455,7 +455,7 @@ const triggerSet: TriggerSet<Data> = {
         'Hydrate Core': '水合核心',
         'Liquid Limb': '活水之手',
         'Liquid Rage': '活水之怒',
-        'Living Liquid': '有生命活水'
+        'Living Liquid': '有生命活水',
       },
       'replaceText': {
         'Cascade': '傾瀉',
@@ -478,7 +478,7 @@ const triggerSet: TriggerSet<Data> = {
         'Sluice': '沖洗',
         'Splash': '濺開',
         'Throttle': '液體監獄',
-        'Wash Away': '沖淨'
+        'Wash Away': '沖淨',
       },
     },
     {

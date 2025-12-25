@@ -347,7 +347,7 @@ const triggerSet: TriggerSet<Data> = {
         'Livia the Undeterred': '迷執愛戀的莉維亞',
         'Rhitahtyn the Unshakable': '強執忠義的里塔提恩',
         'Sinking Regret': '沉淪的後悔',
-        'Ysayle\'s Spirit': '伊塞勒的靈魂'
+        'Ysayle\'s Spirit': '伊塞勒的靈魂',
       },
       'replaceText': {
         // '\\(proximity\\)': '', // FIXME '(接近)'
@@ -377,7 +377,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tartarean Impact': '冥獄衝擊',
         'Tartarean Spark': '冥獄火花',
         'Thundaga Forte': '強音大雷電',
-        'Vexillatio': '布旗'
+        'Vexillatio': '布旗',
       },
     },
     {

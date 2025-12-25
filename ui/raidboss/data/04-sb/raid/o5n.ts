@@ -201,7 +201,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Phantom Train': '魔列車',
-        'Wroth Ghost': '怒靈'
+        'Wroth Ghost': '怒靈',
       },
       'replaceText': {
         'Acid Rain': '酸雨',
@@ -217,7 +217,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Ghosts': '', // FIXME '幽灵'
         'Head On': '追尾',
         'Saintly Beam': '聖光射線',
-        'Tether Whistle': '魔界汽笛'
+        'Tether Whistle': '魔界汽笛',
       },
     },
     {

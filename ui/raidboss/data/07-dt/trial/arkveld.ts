@@ -109,8 +109,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {
-      },
+      'replaceSync': {},
       'replaceText': {
         // '\\(aoes\\)': '', // FIXME '(圆形AOE)'
         // '\\(dash\\)': '', // FIXME '(冲锋)'
@@ -129,7 +128,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Wrathful Rattle': '', // FIXME '锁哭龙闪·改'
         // 'Wyvern\'s Ouroblade': '', // FIXME '回旋锁刃【龙闪】'
         // 'Wyvern\'s Rattle': '', // FIXME '锁哭龙闪'
-        // 'Wyvern\'s Weal': '' // FIXME '龙闪炮'
+        // 'Wyvern\'s Weal': '', // FIXME '龙闪炮'
       },
     },
     {

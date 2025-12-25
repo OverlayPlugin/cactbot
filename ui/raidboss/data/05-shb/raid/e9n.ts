@@ -293,7 +293,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Cloud Of Darkness': '黑暗之雲',
-        'Stygian Arbor': '暗之大樹'
+        'Stygian Arbor': '暗之大樹',
       },
       'replaceText': {
         'Anti-air Particle Beam': '高射式波動砲',
@@ -316,7 +316,7 @@ const triggerSet: TriggerSet<Data> = {
         'Waste Away': '枯萎',
         'Wide-angle Particle Beam': '廣角式波動砲',
         'Wide-angle Phaser': '廣角式跳躍波動砲',
-        'Zero-form Particle Beam': '零式波動砲'
+        'Zero-form Particle Beam': '零式波動砲',
       },
     },
     {

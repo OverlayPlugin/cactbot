@@ -681,7 +681,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lampas Chrysine': '金光拉姆帕斯',
         'Lyssa Chrysine': '金光呂薩',
         'Narkissos': '納西索斯',
-        'Verdant Plume': '濃綠之羽'
+        'Verdant Plume': '濃綠之羽',
       },
     },
     {

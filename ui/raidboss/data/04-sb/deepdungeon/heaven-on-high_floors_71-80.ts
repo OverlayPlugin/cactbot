@@ -99,7 +99,7 @@ const triggerSet: TriggerSet<Data> = {
         'Heavenly Ichijama': '天之生邪魔',
         'Heavenly Mammoth': '天之長毛象',
         'Heavenly Tofu': '天之豆腐',
-        'Kajigakaka': '鍛冶媼'
+        'Kajigakaka': '鍛冶媼',
       },
     },
     {

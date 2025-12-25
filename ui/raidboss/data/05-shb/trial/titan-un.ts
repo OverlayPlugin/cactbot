@@ -234,7 +234,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Bomb Boulder': '爆破岩石',
         'Granite Gaoler': '花崗石衛',
-        'Titan': '泰坦'
+        'Titan': '泰坦',
       },
       'replaceText': {
         // '\\(all\\)': '', // FIXME '(全部)'
@@ -256,7 +256,7 @@ const triggerSet: TriggerSet<Data> = {
         'Rock Throw': '花崗岩牢獄',
         '(?<! )Tumult': '激震',
         'Upheaval': '大激震',
-        'Weight Of The Land': '大地重壓'
+        'Weight Of The Land': '大地重壓',
       },
     },
     {

@@ -50,7 +50,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Chimera': '奇美拉'
+        'Chimera': '奇美拉',
       },
     },
     {

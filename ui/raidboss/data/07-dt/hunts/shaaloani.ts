@@ -930,7 +930,7 @@ const triggerSet: TriggerSet<Data> = {
         'Yehehetoaua\'pyo': '艾海海陶瓦泡',
         'Sansheya': '山謝亞',
         'Ttokrrone': '德庫洛涅',
-        'Sand Sphere': '沙球'
+        'Sand Sphere': '沙球',
       },
     },
     {

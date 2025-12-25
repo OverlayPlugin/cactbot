@@ -493,7 +493,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Articulated Bit': '飛手浮游砲',
-        'The Diamond Weapon': '鑽石武器'
+        'The Diamond Weapon': '鑽石武器',
       },
       'replaceText': {
         // '\\(Jump\\)': '', // FIXME '(跳)'
@@ -515,7 +515,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'Homing Laser': '', // FIXME '自控导弹'
         'Outrage': '震怒',
         'Photon Burst': '光子爆發',
-        'Vertical Cleave': '縱劈'
+        'Vertical Cleave': '縱劈',
       },
     },
     {

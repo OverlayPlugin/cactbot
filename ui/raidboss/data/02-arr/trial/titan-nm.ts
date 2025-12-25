@@ -128,7 +128,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'replaceSync': {
         'Earthen Fury': '大地之怒',
-        'Titan': '泰坦'
+        'Titan': '泰坦',
       },
       'replaceText': {
         'Earthen Fury': '大地之怒',
@@ -137,7 +137,7 @@ const triggerSet: TriggerSet<Data> = {
         'Rock Buster': '岩石破壞者',
         'Rock Throw': '花崗岩牢獄',
         'Tumult': '激震',
-        'Weight Of The Land': '大地重壓'
+        'Weight Of The Land': '大地重壓',
       },
     },
     {

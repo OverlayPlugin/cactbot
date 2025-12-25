@@ -44,7 +44,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Vicegerent to the Warden': '審理神代言者'
+        'Vicegerent to the Warden': '審理神代言者',
       },
     },
     {

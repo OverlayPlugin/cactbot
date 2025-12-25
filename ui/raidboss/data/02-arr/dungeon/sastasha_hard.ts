@@ -81,7 +81,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        'Karlabos': '棘刺殼蝦'
+        'Karlabos': '棘刺殼蝦',
       },
     },
     {

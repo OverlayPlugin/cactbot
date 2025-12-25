@@ -369,7 +369,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ame-No-Murakumo': '天之叢雲',
         'Susano': '須佐之男',
         'Thunderhead': '雷雲',
-        'Ama-No-Iwato': '天之岩戶'
+        'Ama-No-Iwato': '天之岩戶',
       },
       'replaceText': {
         'Assail': '強擊',
@@ -390,7 +390,7 @@ const triggerSet: TriggerSet<Data> = {
         'Yata-No-Kagami': '八咫鏡',
         'Brightstorm': '晴嵐',
         'Yasakani-No-Magatama': '八尺瓊勾玉',
-        'The Parting Clouds': '雲間放電'
+        'The Parting Clouds': '雲間放電',
       },
     },
     {
