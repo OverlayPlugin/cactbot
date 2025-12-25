@@ -56,6 +56,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Chimera': '奇美拉',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Chimera': '키마이라',

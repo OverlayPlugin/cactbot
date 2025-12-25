@@ -73,6 +73,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Catoblepas': '卡托佈雷帕斯',
+        'Mumuepo the Beholden': '退位主教 穆穆艾珀',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Catoblepas': '카토블레파스',

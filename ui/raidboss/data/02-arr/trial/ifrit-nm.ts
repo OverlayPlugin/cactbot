@@ -99,6 +99,20 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Ifrit': '伊弗利特',
+      },
+      'replaceText': {
+        'Eruption': '噴發',
+        'Hellfire': '地獄之火炎',
+        'Incinerate': '烈焰焚燒',
+        'Nail Add': '火獄之楔出現',
+        'Radiant Plume': '光輝炎柱',
+        'Vulcan Burst': '火神爆裂',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ifrit': '이프리트',

@@ -67,6 +67,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Slithy Zolool Ja': '濕皮妖師 佐爾加',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Slithy Zolool Ja': '축축한 졸루쟈',

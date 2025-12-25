@@ -248,6 +248,16 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Aiatar': '阿傑特',
+        'Ashdrake': '白燼火蛟',
+        'Great Yellow Pelican': '大黃鵜鶘',
+        'Hellbender': '水棲蠑螈',
+        'Inferno Drake': '獄炎火蛟',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Aiatar': '아이아타르',
