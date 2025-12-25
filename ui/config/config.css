@@ -432,7 +432,7 @@ input[type="checkbox"] {
 
 .trigger-search-container.trigger-search-container {
   grid-column: 1 / span 2;
-  margin: 10px 0 0 0;
+  margin: 10px 0 0;
   padding: 0;
   display: block;
   position: relative;
@@ -441,7 +441,7 @@ input[type="checkbox"] {
 .trigger-search-input.trigger-search-input {
   display: block;
   width: 100%;
-  padding: 10px 40px 10px 40px;
+  padding: 10px 40px;
   font-size: 16px;
   text-align: left;
   border: 1px solid #ccc;
@@ -458,7 +458,7 @@ input[type="checkbox"] {
 .trigger-search-input.trigger-search-input:focus {
   background-color: #fff;
   border-color: #4a90e2;
-  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 2px 8px rgb(74 144 226 / 20%);
 }
 
 .trigger-search-input.trigger-search-input::placeholder {
@@ -494,4 +494,3 @@ input[type="checkbox"] {
   font-style: italic;
   font-size: 16px;
 }
-
