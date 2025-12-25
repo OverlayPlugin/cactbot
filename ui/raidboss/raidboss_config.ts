@@ -33,6 +33,7 @@ import {
   ConfigLooseTriggerSet,
   ConfigProcessedFileMap,
 } from '../config/config';
+import { ConfigSearch } from '../config/config_search';
 
 import raidbossFileData from './data/raidboss_manifest.txt';
 import { RaidbossTriggerField, RaidbossTriggerOutput } from './popup-text';
@@ -624,6 +625,8 @@ class RaidbossConfigurator {
   buildUI(container: HTMLElement, raidbossFiles: RaidbossFileData, userOptions: RaidbossOptions) {
     const fileMap = this.processRaidbossFiles(raidbossFiles, userOptions);
 
+    new ConfigSearch(this.base, container);
+
     const expansionDivs: { [expansion: string]: HTMLElement } = {};
 
     for (const [key, info] of Object.entries(fileMap)) {
@@ -657,6 +660,9 @@ class RaidbossConfigurator {
 
       const triggerContainer = document.createElement('div');
       triggerContainer.classList.add('trigger-file-container', 'collapsed');
+
+      ConfigSearch.setContainerData(triggerContainer, { title: info.title });
+
       expansionDiv.appendChild(triggerContainer);
 
       const headerDiv = document.createElement('div');
@@ -759,6 +765,8 @@ class RaidbossConfigurator {
 
         const triggerDiv = document.createElement('div');
         triggerDiv.classList.add('trigger');
+
+        ConfigSearch.setTriggerData(triggerDiv, trig);
 
         // Build the trigger label.
         const triggerId = document.createElement('div');
