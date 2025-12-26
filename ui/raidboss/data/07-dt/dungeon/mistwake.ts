@@ -30,6 +30,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread (away from rocks)',
+          cn: '分散 (避开石头)',
         },
       },
     },
@@ -41,6 +42,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Hide behind rock',
+          cn: '躲在石头后',
         },
       },
     },
@@ -59,6 +61,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Point laser away from rocks',
+          cn: '将激光指向避开石头',
         },
       },
     },
@@ -128,7 +131,41 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankBuster(),
     },
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Amdusias': '安度西亚斯',
+        'Shock Storm': '雷风',
+        'Thundergust Griffin': '雷狮鹫',
+        'Treno Catoblepas': '特雷诺卡托布莱帕斯',
+      },
+      'replaceText': {
+        'Bedeviling Light': '恶魔之光',
+        'Bio II': '猛毒菌',
+        'Earthquake': '地震',
+        'Electrifying Flight': '雷风',
+        'Electrogenetic Force': '雷击',
+        'Fulgurous Fall': '雷光坠击',
+        'Galloping Thunder': '雷电飞驰',
+        'Golden Talons': '黄金爪',
+        'High Volts': '高压电',
+        'Lightning Bolt': '落雷',
+        'Petribreath': '石化吐息',
+        'Ray of Lightning': '雷光射线',
+        'Rush': '突进',
+        'Shockbolt': '雷电震击',
+        'Storm Surge': '电暴',
+        '(?<! )Thunder(?! |clap|ing|spark)': '闪雷',
+        'Thunder II(?!I)': '震雷',
+        'Thunder III': '暴雷',
+        'Thunder IV': '霹雷',
+        'Thunderclap Concerto': '惊雷协奏曲',
+        'Thundering Roar': '雷霆咆哮',
+        'Thunderspark': '电光',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
