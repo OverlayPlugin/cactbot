@@ -745,6 +745,18 @@ class RaidbossConfigurator {
       triggerOptions.classList.add('trigger-file-options');
       triggerContainer.appendChild(triggerOptions);
 
+      // If this trigger set is overridden, show warning instead of triggers
+      if (info.triggerSet.overriddenByFile !== undefined) {
+        const warningDiv = document.createElement('div');
+        warningDiv.classList.add('trigger-set-override-warning');
+        const baseText = this.base.translate(kMiscTranslations.overriddenByFile);
+        const detailText = baseText.replace('${file}', info.triggerSet.overriddenByFile);
+        const warningText = this.base.translate(kMiscTranslations.warning);
+        warningDiv.innerHTML = `<strong>${warningText}</strong>: ${detailText}`;
+        triggerOptions.appendChild(warningDiv);
+        continue;
+      }
+
       for (const [trigId, trig] of Object.entries(info.triggers ?? {})) {
         // Don't construct triggers that won't show anything.
         let hasOutputFunc = false;
@@ -1528,6 +1540,12 @@ class RaidbossConfigurator {
     // id so that the ui can disable overriding information.
     const previousTriggerWithId: { [id: string]: ConfigLooseTrigger } = {};
 
+    // While walking through trigger sets, record any previous trigger sets with the same
+    // id so that the ui can show overriding information.
+    const previousTriggerSetWithId: {
+      [id: string]: { triggerSet: ConfigLooseTriggerSet; filename?: string };
+    } = {};
+
     for (const item of Object.values(map)) {
       // TODO: maybe each trigger set needs a zone name, and we should
       // use that instead of the filename???
@@ -1543,6 +1561,17 @@ class RaidbossConfigurator {
 
       if (!triggerSet.isUserTriggerSet && triggerSet.filename !== undefined)
         flattenTimeline(triggerSet, triggerSet.filename, timelineFiles);
+
+      // Track if this trigger set overrides any previous trigger set with the same id.
+      if (triggerSet.id !== undefined) {
+        const previous = previousTriggerSetWithId[triggerSet.id];
+        if (previous)
+          previous.triggerSet.overriddenByFile = triggerSet.filename;
+        previousTriggerSetWithId[triggerSet.id] = {
+          triggerSet: triggerSet,
+          filename: triggerSet.filename,
+        };
+      }
 
       item.triggers = {};
       for (const [key, triggerArr] of Object.entries(rawTriggers)) {
