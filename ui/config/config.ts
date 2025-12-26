@@ -79,6 +79,28 @@ const kDirectoryDefaultText = {
   ko: '(기본)',
 };
 
+// Text in the trigger search placeholder.
+export const kTriggerSearchPlaceholder = {
+  en: 'Search triggers...',
+  de: 'Trigger suchen...',
+  fr: 'Rechercher des déclencheurs...',
+  ja: 'トリガーを検索...',
+  cn: '搜索触发器...',
+  tc: '搜索觸發器...',
+  ko: '트리거 검색...',
+};
+
+// Text shown when no search hits were found.
+export const kNoSearchMatches = {
+  en: 'No matches found.',
+  de: 'Keine Treffer gefunden.',
+  fr: 'Aucun résultat trouvé.',
+  ja: '該当する結果が見つかりませんでした。',
+  cn: '未找到匹配项。',
+  tc: '未找到匹配項。',
+  ko: '일치하는 항목이 없습니다.',
+};
+
 // Translating data folders to a category name.
 export const kPrefixToCategory = {
   '00-misc': {
