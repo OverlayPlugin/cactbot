@@ -39,8 +39,8 @@ const data: Worlds = {
     'id': 21,
     'internalName': 'Ravana',
     'name': 'Ravana',
-    'region': 1,
-    'userType': 7,
+    'region': 7,
+    'userType': 1,
   },
   '22': {
     'dataCenter': {
@@ -50,8 +50,8 @@ const data: Worlds = {
     'id': 22,
     'internalName': 'Bismarck',
     'name': 'Bismarck',
-    'region': 1,
-    'userType': 7,
+    'region': 7,
+    'userType': 1,
   },
   '23': {
     'dataCenter': {
@@ -138,8 +138,8 @@ const data: Worlds = {
     'id': 33,
     'internalName': 'Twintania',
     'name': 'Twintania',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '34': {
     'dataCenter': {
@@ -149,8 +149,8 @@ const data: Worlds = {
     'id': 34,
     'internalName': 'Brynhildr',
     'name': 'Brynhildr',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '35': {
     'dataCenter': {
@@ -160,8 +160,8 @@ const data: Worlds = {
     'id': 35,
     'internalName': 'Famfrit',
     'name': 'Famfrit',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '36': {
     'dataCenter': {
@@ -171,8 +171,8 @@ const data: Worlds = {
     'id': 36,
     'internalName': 'Lich',
     'name': 'Lich',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '37': {
     'dataCenter': {
@@ -182,8 +182,8 @@ const data: Worlds = {
     'id': 37,
     'internalName': 'Mateus',
     'name': 'Mateus',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '39': {
     'dataCenter': {
@@ -193,8 +193,8 @@ const data: Worlds = {
     'id': 39,
     'internalName': 'Omega',
     'name': 'Omega',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '40': {
     'dataCenter': {
@@ -204,8 +204,8 @@ const data: Worlds = {
     'id': 40,
     'internalName': 'Jenova',
     'name': 'Jenova',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '41': {
     'dataCenter': {
@@ -215,8 +215,8 @@ const data: Worlds = {
     'id': 41,
     'internalName': 'Zalera',
     'name': 'Zalera',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '42': {
     'dataCenter': {
@@ -226,8 +226,8 @@ const data: Worlds = {
     'id': 42,
     'internalName': 'Zodiark',
     'name': 'Zodiark',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '43': {
     'dataCenter': {
@@ -347,8 +347,8 @@ const data: Worlds = {
     'id': 53,
     'internalName': 'Exodus',
     'name': 'Exodus',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '54': {
     'dataCenter': {
@@ -358,8 +358,8 @@ const data: Worlds = {
     'id': 54,
     'internalName': 'Faerie',
     'name': 'Faerie',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '55': {
     'dataCenter': {
@@ -369,8 +369,8 @@ const data: Worlds = {
     'id': 55,
     'internalName': 'Lamia',
     'name': 'Lamia',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '56': {
     'dataCenter': {
@@ -380,8 +380,8 @@ const data: Worlds = {
     'id': 56,
     'internalName': 'Phoenix',
     'name': 'Phoenix',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '57': {
     'dataCenter': {
@@ -391,8 +391,8 @@ const data: Worlds = {
     'id': 57,
     'internalName': 'Siren',
     'name': 'Siren',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '58': {
     'dataCenter': {
@@ -446,8 +446,8 @@ const data: Worlds = {
     'id': 62,
     'internalName': 'Diabolos',
     'name': 'Diabolos',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '63': {
     'dataCenter': {
@@ -457,8 +457,8 @@ const data: Worlds = {
     'id': 63,
     'internalName': 'Gilgamesh',
     'name': 'Gilgamesh',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '64': {
     'dataCenter': {
@@ -468,8 +468,8 @@ const data: Worlds = {
     'id': 64,
     'internalName': 'Leviathan',
     'name': 'Leviathan',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '65': {
     'dataCenter': {
@@ -479,8 +479,8 @@ const data: Worlds = {
     'id': 65,
     'internalName': 'Midgardsormr',
     'name': 'Midgardsormr',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '66': {
     'dataCenter': {
@@ -490,8 +490,8 @@ const data: Worlds = {
     'id': 66,
     'internalName': 'Odin',
     'name': 'Odin',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '67': {
     'dataCenter': {
@@ -501,8 +501,8 @@ const data: Worlds = {
     'id': 67,
     'internalName': 'Shiva',
     'name': 'Shiva',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '68': {
     'dataCenter': {
@@ -545,8 +545,8 @@ const data: Worlds = {
     'id': 71,
     'internalName': 'Moogle',
     'name': 'Moogle',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '72': {
     'dataCenter': {
@@ -567,8 +567,8 @@ const data: Worlds = {
     'id': 73,
     'internalName': 'Adamantoise',
     'name': 'Adamantoise',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '74': {
     'dataCenter': {
@@ -578,8 +578,8 @@ const data: Worlds = {
     'id': 74,
     'internalName': 'Coeurl',
     'name': 'Coeurl',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '75': {
     'dataCenter': {
@@ -589,8 +589,8 @@ const data: Worlds = {
     'id': 75,
     'internalName': 'Malboro',
     'name': 'Malboro',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '76': {
     'dataCenter': {
@@ -611,8 +611,8 @@ const data: Worlds = {
     'id': 77,
     'internalName': 'Ultros',
     'name': 'Ultros',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '78': {
     'dataCenter': {
@@ -622,8 +622,8 @@ const data: Worlds = {
     'id': 78,
     'internalName': 'Behemoth',
     'name': 'Behemoth',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '79': {
     'dataCenter': {
@@ -633,8 +633,8 @@ const data: Worlds = {
     'id': 79,
     'internalName': 'Cactuar',
     'name': 'Cactuar',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '80': {
     'dataCenter': {
@@ -644,8 +644,8 @@ const data: Worlds = {
     'id': 80,
     'internalName': 'Cerberus',
     'name': 'Cerberus',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '81': {
     'dataCenter': {
@@ -655,8 +655,8 @@ const data: Worlds = {
     'id': 81,
     'internalName': 'Goblin',
     'name': 'Goblin',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '82': {
     'dataCenter': {
@@ -677,8 +677,8 @@ const data: Worlds = {
     'id': 83,
     'internalName': 'Louisoix',
     'name': 'Louisoix',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '85': {
     'dataCenter': {
@@ -688,8 +688,8 @@ const data: Worlds = {
     'id': 85,
     'internalName': 'Spriggan',
     'name': 'Spriggan',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '86': {
     'dataCenter': {
@@ -699,8 +699,8 @@ const data: Worlds = {
     'id': 86,
     'internalName': 'Sephirot',
     'name': 'Sephirot',
-    'region': 1,
-    'userType': 7,
+    'region': 7,
+    'userType': 1,
   },
   '87': {
     'dataCenter': {
@@ -710,8 +710,8 @@ const data: Worlds = {
     'id': 87,
     'internalName': 'Sophia',
     'name': 'Sophia',
-    'region': 1,
-    'userType': 7,
+    'region': 7,
+    'userType': 1,
   },
   '88': {
     'dataCenter': {
@@ -721,8 +721,8 @@ const data: Worlds = {
     'id': 88,
     'internalName': 'Zurvan',
     'name': 'Zurvan',
-    'region': 1,
-    'userType': 7,
+    'region': 7,
+    'userType': 1,
   },
   '90': {
     'dataCenter': {
@@ -732,8 +732,8 @@ const data: Worlds = {
     'id': 90,
     'internalName': 'Aegis',
     'name': 'Aegis',
-    'region': 1,
-    'userType': 2,
+    'region': 2,
+    'userType': 1,
   },
   '91': {
     'dataCenter': {
@@ -743,8 +743,8 @@ const data: Worlds = {
     'id': 91,
     'internalName': 'Balmung',
     'name': 'Balmung',
-    'region': 1,
-    'userType': 4,
+    'region': 4,
+    'userType': 1,
   },
   '92': {
     'dataCenter': {
@@ -754,8 +754,8 @@ const data: Worlds = {
     'id': 92,
     'internalName': 'Durandal',
     'name': 'Durandal',
-    'region': 1,
-    'userType': 2,
+    'region': 2,
+    'userType': 1,
   },
   '93': {
     'dataCenter': {
@@ -765,8 +765,8 @@ const data: Worlds = {
     'id': 93,
     'internalName': 'Excalibur',
     'name': 'Excalibur',
-    'region': 1,
-    'userType': 4,
+    'region': 4,
+    'userType': 1,
   },
   '94': {
     'dataCenter': {
@@ -776,8 +776,8 @@ const data: Worlds = {
     'id': 94,
     'internalName': 'Gungnir',
     'name': 'Gungnir',
-    'region': 1,
-    'userType': 2,
+    'region': 2,
+    'userType': 1,
   },
   '95': {
     'dataCenter': {
@@ -787,8 +787,8 @@ const data: Worlds = {
     'id': 95,
     'internalName': 'Hyperion',
     'name': 'Hyperion',
-    'region': 1,
-    'userType': 4,
+    'region': 4,
+    'userType': 1,
   },
   '96': {
     'dataCenter': {
@@ -798,8 +798,8 @@ const data: Worlds = {
     'id': 96,
     'internalName': 'Masamune',
     'name': 'Masamune',
-    'region': 1,
-    'userType': 2,
+    'region': 2,
+    'userType': 1,
   },
   '97': {
     'dataCenter': {
@@ -809,8 +809,8 @@ const data: Worlds = {
     'id': 97,
     'internalName': 'Ragnarok',
     'name': 'Ragnarok',
-    'region': 1,
-    'userType': 6,
+    'region': 6,
+    'userType': 1,
   },
   '98': {
     'dataCenter': {
@@ -820,8 +820,8 @@ const data: Worlds = {
     'id': 98,
     'internalName': 'Ridill',
     'name': 'Ridill',
-    'region': 1,
-    'userType': 2,
+    'region': 2,
+    'userType': 1,
   },
   '99': {
     'dataCenter': {
@@ -831,8 +831,8 @@ const data: Worlds = {
     'id': 99,
     'internalName': 'Sargatanas',
     'name': 'Sargatanas',
-    'region': 1,
-    'userType': 4,
+    'region': 4,
+    'userType': 1,
   },
   '400': {
     'dataCenter': {
@@ -842,8 +842,8 @@ const data: Worlds = {
     'id': 400,
     'internalName': 'Sagittarius',
     'name': 'Sagittarius',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '401': {
     'dataCenter': {
@@ -853,8 +853,8 @@ const data: Worlds = {
     'id': 401,
     'internalName': 'Phantom',
     'name': 'Phantom',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '402': {
     'dataCenter': {
@@ -864,8 +864,8 @@ const data: Worlds = {
     'id': 402,
     'internalName': 'Alpha',
     'name': 'Alpha',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '403': {
     'dataCenter': {
@@ -875,8 +875,8 @@ const data: Worlds = {
     'id': 403,
     'internalName': 'Raiden',
     'name': 'Raiden',
-    'region': 1,
-    'userType': 5,
+    'region': 5,
+    'userType': 1,
   },
   '404': {
     'dataCenter': {
@@ -886,8 +886,8 @@ const data: Worlds = {
     'id': 404,
     'internalName': 'Marilith',
     'name': 'Marilith',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '405': {
     'dataCenter': {
@@ -897,8 +897,8 @@ const data: Worlds = {
     'id': 405,
     'internalName': 'Seraph',
     'name': 'Seraph',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '406': {
     'dataCenter': {
@@ -908,8 +908,8 @@ const data: Worlds = {
     'id': 406,
     'internalName': 'Halicarnassus',
     'name': 'Halicarnassus',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '407': {
     'dataCenter': {
@@ -919,8 +919,8 @@ const data: Worlds = {
     'id': 407,
     'internalName': 'Maduin',
     'name': 'Maduin',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '408': {
     'dataCenter': {
@@ -930,8 +930,8 @@ const data: Worlds = {
     'id': 408,
     'internalName': 'Cuchulainn',
     'name': 'Cuchulainn',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '409': {
     'dataCenter': {
@@ -941,8 +941,8 @@ const data: Worlds = {
     'id': 409,
     'internalName': 'Kraken',
     'name': 'Kraken',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '410': {
     'dataCenter': {
@@ -952,8 +952,8 @@ const data: Worlds = {
     'id': 410,
     'internalName': 'Rafflesia',
     'name': 'Rafflesia',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '411': {
     'dataCenter': {
@@ -963,8 +963,8 @@ const data: Worlds = {
     'id': 411,
     'internalName': 'Golem',
     'name': 'Golem',
-    'region': 1,
-    'userType': 3,
+    'region': 3,
+    'userType': 1,
   },
   '3000': {
     'dataCenter': {
@@ -974,8 +974,8 @@ const data: Worlds = {
     'id': 3000,
     'internalName': 'Cloudtest01',
     'name': 'Cloudtest01',
-    'region': 1,
-    'userType': 9,
+    'region': 9,
+    'userType': 1,
   },
   '3001': {
     'dataCenter': {
@@ -985,8 +985,8 @@ const data: Worlds = {
     'id': 3001,
     'internalName': 'Cloudtest02',
     'name': 'Cloudtest02',
-    'region': 1,
-    'userType': 9,
+    'region': 9,
+    'userType': 1,
   },
 } as const;
 
