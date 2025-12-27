@@ -2332,6 +2332,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Aloalo Golem': '阿羅阿羅樹木魔像',
         'Aloalo Islekeeper': '阿羅阿羅守衛',
+        // 'Aloalo Kiwakin': '', // FIXME '阿罗阿罗奇瓦金'
         'Aloalo Monk': '阿羅阿羅鬼魚',
         'Aloalo Ray': '阿羅阿羅鬼蝠魟',
         'Aloalo Snipper': '阿羅阿羅利螯陸蟹',
@@ -2349,6 +2350,9 @@ const triggerSet: TriggerSet<Data> = {
         'Surprising Claw': '驚喜爪',
         'Surprising Missile': '驚喜導彈',
         'Surprising Staff': '驚喜杖',
+        'The Dawn Trial': '曙色的試煉',
+        'The Dusk Trial': '暮色的試煉',
+        'The Midnight Trial': '夜色的試煉',
       },
       'replaceText': {
         // '\\(buff\\)': '', // FIXME '(强化)'

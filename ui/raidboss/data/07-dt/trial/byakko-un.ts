@@ -393,6 +393,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Byakko': '白虎',
         'Hakutei': '白帝',
+        // 'Twofold is my wrath, twice-cursed my foes!': '', // FIXME '半身分离，助我杀敌！向胆敢抵抗的家伙们露出你的爪牙！'
       },
       'replaceText': {
         // '--Hakutei Add--': '', // FIXME '--白帝出现--'
