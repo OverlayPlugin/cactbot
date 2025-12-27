@@ -25,7 +25,7 @@ hideall "--sync--"
 67.1 "Cometite 3" #Ability { id: "B3CA", source: "The Tyrant" }
 75.1 "Smashdown (intercards)" Ability { id: "B3BE", source: "The Tyrant" } # Always sword
 81.3 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
-86.6 "Trophy Weapons" Ability { id: "B3CC", source: "The Tyrant" }
+86.6 "Trophy Weapons" Ability { id: "B3CC", source: "The Tyrant" } window 86.6,10
 94.9 "Assault Evolved (castbar)" Ability { id: "B3CD", source: "The Tyrant" }
 97.1 "Assault Evolved 1" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
 101.2 "Assault Evolved 2" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
@@ -37,7 +37,7 @@ hideall "--sync--"
 127.1 "Assault Evolved 2" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
 131.2 "Assault Evolved 3" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
 138.4 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
-142.7 "Dance of Domination Trophy" Ability { id: "B7BA", source: "The Tyrant" }
+142.7 "Dance of Domination Trophy" Ability { id: "B7BA", source: "The Tyrant" } window 142.7,10
 153.4 "Dance of Domination x8" Ability { id: "B3D1", source: "The Tyrant" } duration 5
 164.1 "Explosion" Ability { id: "B3D3", source: "The Tyrant" }
 166.8 "Raw Steel Trophy" Ability { id: "B3D5", source: "The Tyrant" }
@@ -56,7 +56,7 @@ hideall "--sync--"
 229.1 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
 231.0 "Powerful Gust 1" #Ability { id: "B3D9", source: "The Tyrant" }
 233.0 "Powerful Gust 2" #Ability { id: "B3D9", source: "The Tyrant" }
-236.8 "Immortal Reign" Ability { id: "B3DA", source: "The Tyrant" }
+236.8 "Immortal Reign" Ability { id: "B3DA", source: "The Tyrant" } window 236.8,10
 246.9 "One and Only (castbar)" Ability { id: "B3DB", source: "The Tyrant" }
 249.9 "One and Only (damage)" Ability { id: "B3DC", source: "The Tyrant" }
 254.1 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
@@ -75,7 +75,7 @@ hideall "--sync--"
 319.9 "Shockwave 2" Ability { id: "B3E6", source: "The Tyrant" }
 320.3 "--sync--" Ability { id: "B3E7", source: "Comet" }
 321.3 "--sync--" Ability { id: "B402", source: "The Tyrant" }
-330.0 "Flatliner (castbar)" Ability { id: "B3E8", source: "The Tyrant" }
+330.0 "Flatliner (castbar)" Ability { id: "B3E8", source: "The Tyrant" } window 330,10
 332.0 "Flatliner (split)" Ability { id: "BA8F", source: "The Tyrant" }
 339.1 "Majestic Meteor (castbar)" Ability { id: "B3E9", source: "The Tyrant" }
 343.2 "Majestic Meteor 1" #Ability { id: "B3EA", source: "The Tyrant" }
@@ -92,7 +92,7 @@ hideall "--sync--"
 385.6 "Majestic Meteorain" Ability { id: "B3EB", source: "The Tyrant" }
 389.0 "Mammoth Meteor" Ability { id: "B3EC", source: "The Tyrant" }
 400.6 "Explosion" Ability { id: "B3ED", source: "The Tyrant" }
-403.2 "Arcadion Avalanche (platform fall)" Ability { id: "B3F3", source: "The Tyrant" }
+403.2 "Arcadion Avalanche (platform fall)" Ability { id: "B3F3", source: "The Tyrant" } window 403.2,10
 412.6 "Arcadion Avalanche (platform toss)" Ability { id: "B3F4", source: "The Tyrant" }
 424.3 "Crown of Arcadia" Ability { id: "B3B6", source: "The Tyrant" }
 
