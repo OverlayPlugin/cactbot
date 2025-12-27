@@ -478,7 +478,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Albion': '白雪獸',
         'Albus Griffin': '白嶺獅鷲',
@@ -487,7 +486,7 @@ const triggerSet: TriggerSet<Data> = {
         'Galatea Magna': '大型伽拉忒亞人偶',
         'The Forum Messorum': '收割廣場',
         'The Silvan Throne': '雪獸皇座',
-        // 'No more games!': '', // FIXME '我要用出全部力量！'
+        'No more games!': '我要用出全部力量！',
       },
       'replaceText': {
         'Albion\'s Embrace': '雪獸擁抱',

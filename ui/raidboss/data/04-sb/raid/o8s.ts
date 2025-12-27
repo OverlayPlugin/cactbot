@@ -816,7 +816,7 @@ const triggerSet: TriggerSet<Data> = {
         'Graven Image': '眾神之像',
         'Kefka': '凱夫卡',
         'Light Of Consecration': '祝聖之光',
-        // 'The limit gauge resets!': '', // FIXME '极限槽被清零了……'
+        'The limit gauge resets!': '極限槽被清零了……',
       },
       'replaceText': {
         'Aero Assault': '疼颼颼大勁風',
