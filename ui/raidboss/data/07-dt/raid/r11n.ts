@@ -25,6 +25,11 @@ const headMarkerData = {
   'voidStardust': '0276',
 } as const;
 
+const tetherData = {
+  'assaultTether': '00F9',
+  'foregoneTether': '0164',
+} as const;
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacHeavyweightM3',
   zoneId: ZoneId.AacHeavyweightM3,
@@ -106,7 +111,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11N Assault Evolved Weapon Tether Collect',
       type: 'Tether',
       netRegex: {
-        id: '00F9',
+        id: tetherData['assaultTether'],
         sourceId: '4[0-9A-Fa-f]{7}',
         targetId: '4[0-9A-Fa-f]{7}',
         capture: true,
@@ -213,6 +218,16 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'B3DE', source: 'Comet', capture: false },
       suppressSeconds: 1,
       response: Responses.getTowers(),
+    },
+    {
+      id: 'R11N Foregone Fatality',
+      type: 'Tether',
+      netRegex: { id: tetherData['foregoneTether'], capture: false },
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.tetherBusters!(),
+      outputStrings: {
+        tetherBusters: Outputs.tetherBusters,
+      },
     },
     {
       id: 'R11N Massive Meteor',
