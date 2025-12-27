@@ -1,15 +1,13 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
-// import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
-// import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   weaponModels: { [string: string]: 'axe' | 'scythe' | 'sword' | 'unknown' };
-  weaponOrder: string[];
+  weaponTethers: { [string: string]: string };
   trophyActive: boolean;
 }
 
@@ -33,7 +31,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r11n.txt',
   initData: () => ({
     weaponModels: {},
-    weaponOrder: [],
+    weaponTethers: {},
     trophyActive: false,
   }),
   triggers: [
@@ -88,7 +86,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['B3CC', 'B7EB'], source: 'The Tyrant', capture: false },
       run: (data) => {
         data.weaponModels = {};
-        data.weaponOrder = [];
+        data.weaponTethers = {};
       }
     },
     {
@@ -102,8 +100,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       // Across multiple logs, tethers appear exactly in execution order.
-      // If it happens that this isn't safe,
-      // we'll probably have to do some other nonsense to get the correct order.
+      // It's likely that this is safe,
+      // but just to be careful we instead use tether links
+      // to generate the call order.
       id: 'R11N Assault Evolved Weapon Tether Collect',
       type: 'Tether',
       netRegex: {
@@ -113,23 +112,25 @@ const triggerSet: TriggerSet<Data> = {
         capture: true
       },
       condition: (data) => !data.trophyActive,
-      run: (data, matches) => {
-        console.log(JSON.stringify(data.weaponModels));
-        const targetModel = data.weaponModels[matches.targetId] ?? 'unknown';
-        data.weaponOrder.push(targetModel);
-      },
+      run: (data, matches) => data.weaponTethers[matches.sourceId] = matches.targetId,
     },
     {
       id: 'R11N Assault Evolved Call',
       type: 'StartsUsing',
-      netRegex: { id: 'B3CD', source: 'The Tyrant', capture: false, },
+      netRegex: { id: 'B3CD', source: 'The Tyrant', capture: true, },
       condition: (data) => !data.trophyActive,
-      alertText: (data, _matches, output) => {
-        if (data.weaponOrder.length < 3)
+      durationSeconds: 15,
+      alertText: (data, matches, output) => {
+        if (Object.keys(data.weaponTethers).length < 3)
           return output.unknown!();
-        const first = data.weaponOrder[0] ?? 'unknown';
-        const second = data.weaponOrder[1] ?? 'unknown';
-        const third = data.weaponOrder[2] ?? 'unknown';
+        const firstTargetID = data.weaponTethers[matches.sourceId] ?? 'unknown';
+        const secondTargetID = data.weaponTethers[firstTargetID] ?? 'unknown';
+        const thirdTargetID = data.weaponTethers[secondTargetID] ?? 'unknown';
+
+        const first = data.weaponModels[firstTargetID] ?? 'unknown';
+        const second = data.weaponModels[secondTargetID] ?? 'unknown';
+        const third = data.weaponModels[thirdTargetID] ?? 'unknown';
+
         return output.comboWeapons!({
           first: output[first]!(),
           second: output[second]!(),
@@ -175,7 +176,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
       condition: (data) => data.trophyActive,
-      delaySeconds: 2.2, // Allow for executing previous call.
+      delaySeconds: 2.4, // Allow for executing previous call.
       alertText: (_data, matches, output) => {
         const nextWeapon = weaponModelIDMap[matches.param1];
         if (nextWeapon === 'axe')
