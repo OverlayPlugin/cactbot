@@ -224,7 +224,6 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11N Foregone Fatality',
       type: 'Tether',
       netRegex: { id: tetherData['foregoneTether'], capture: false },
-      condition: (data) => data.role === 'tank',
       suppressSeconds: 9, // Avoid repeated calls if tether passes multiple times
       alertText: (_data, _matches, output) => output.tetherBusters!(),
       outputStrings: {
