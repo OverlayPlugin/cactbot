@@ -753,7 +753,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Wicked Replica': '', // FIXME '狡雷的幻影'
+        // 'Wicked Thunder': '', // FIXME '狡雷'
+      },
       'replaceText': {
         // 'Left Roll': '', // FIXME '左转'
         // 'Right Roll': '', // FIXME '右转'

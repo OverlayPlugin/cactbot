@@ -343,6 +343,8 @@ const triggerSet: TriggerSet<Data> = {
         'Lunar Bahamut': '真月巴哈姆特',
         'Magitek Fortress': '魔導要塞',
         'Magitek Core': '魔導核心',
+        'Sunseat': '黃昏庭園',
+        'The Gathering Ring': '佐爾瑪刻祭場',
       },
       'replaceText': {
         // '\\(circles\\)': '', // FIXME '(预兆)'

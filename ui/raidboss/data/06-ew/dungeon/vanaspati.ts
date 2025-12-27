@@ -302,10 +302,13 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        'Devatagara': '天神寺',
+        'Insight': '村長屋前',
         'Svarbhanu': '斯伐婆奴',
         'Terminus Snatcher': '終末的搶奪',
         'Terminus Twitcher': '終末的抽搐',
         'Terminus Wrecker': '終末的破壞',
+        'Trnakiya': '森中空地',
       },
       'replaceText': {
         // '\\(Knockback\\)': '', // FIXME '(击退)'

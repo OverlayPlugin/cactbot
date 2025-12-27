@@ -901,6 +901,8 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Aether': '乙太晶球',
+        // 'Doomtrain': '', // FIXME '格莱杨拉波尔'
+        // 'Kinematic Turret': '', // FIXME '护卫炮塔'
       },
       'replaceText': {
         // '\\(bait\\)': '', // FIXME '(诱导)'

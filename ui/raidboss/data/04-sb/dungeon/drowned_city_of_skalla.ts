@@ -308,11 +308,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'A Door Unopened': '封閉的門扉',
         'Hrodric Poisontongue': '直言不諱 赫羅德里克',
         'Hydrosphere': '水化球體',
         'Kelpie': '凱爾派',
+        'The Golden Walls Of Ruin': '黃金堂',
+        'The Green Screams': '凱爾派的領地',
         'The Old One': '舊日靈偶',
       },
       'replaceText': {

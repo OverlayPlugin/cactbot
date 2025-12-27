@@ -334,6 +334,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        'Bioweapon Storage': '生體管理區',
         'Lamia Prosector': '拉米亞解剖女王',
         'Melusine': '美瑠姬奴',
         'Proto-Chimera': '原型奇美拉',

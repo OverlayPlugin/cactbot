@@ -266,7 +266,9 @@ const triggerSet: TriggerSet<Data> = {
         'Aulus Mal Asina': '奧盧斯·瑪爾·亞希納',
         'Magitek Scorpion': '守衛機蠍',
         'Prototype Bit': '試驗型魔導浮游砲',
-        // 'Rhalgr\'s Gate': '', // FIXME '破坏神之门'
+        'Rhalgr\'s Gate': '破壞神之門',
+        'The Chamber of Knowledge': '亞希納臨時實驗場',
+        'The Hall of the Griffin': '獅鷲之間',
         'The Storm': '混沌波動',
         'Zenos Yae Galvus': '芝諾斯·耶·加爾烏斯',
       },

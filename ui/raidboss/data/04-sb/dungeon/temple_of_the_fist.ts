@@ -327,7 +327,10 @@ const triggerSet: TriggerSet<Data> = {
         'Arbuda': '額部陀',
         'Coeurl Smriti': '凶豹所憶',
         'Coeurl Sruti': '凶豹所聞',
+        'Guidance': '導靈殿',
+        'Harmony': '陰陽苑',
         'Ivon Coeurlfist': '雙豹伊沃恩',
+        'Tourmaline Pond': '水苔池',
       },
       'replaceText': {
         // '--Smriti Appears--': '', // FIXME '--凶豹出现--'

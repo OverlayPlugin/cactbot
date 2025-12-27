@@ -340,7 +340,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<!Excavation )Bomb': '炸彈',
         'Excavation Bomb': '採掘炸彈',
@@ -348,7 +347,10 @@ const triggerSet: TriggerSet<Data> = {
         'Frameworker': '框架工作員',
         'Printed Worker': '列印出的工作員',
         'Relatively Small Face': '小面像',
+        'Smileport': '面帶微笑的正門',
         'The Big Cheese': '大笑臉',
+        'The Frame': '大笑臉',
+        'The Welcome Wheel': '熱烈歡迎的門廳',
       },
       'replaceText': {
         'Circular Saw': '全體斬擊',

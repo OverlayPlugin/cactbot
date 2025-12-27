@@ -513,6 +513,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': '6號哥布林壓路機',
         'Lamebrix Strikebocks': '傭兵雷姆普里克斯',
         'Lameprix Strikedocks': '虛兵雷姆普里克斯',
+        'The Excruciationator': '科學萬能處刑場',
         'Weight Of The World': '大陸之重',
       },
       'replaceText': {

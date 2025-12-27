@@ -272,6 +272,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Chaos': '卡奧斯',
         // 'The crystal...destroyed!?': '', // FIXME '居然……把黑水晶给'
+        // 'YOU DARE!': '', // FIXME '居然……把黑水晶给……'
       },
       'replaceText': {
         'Big Bang': '頂起',

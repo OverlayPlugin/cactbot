@@ -358,10 +358,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Rafflesia': '大王花',
-        // 'Scar\'s Edge': '', // FIXME '破损的门前'
+        'Scar\'s Edge': '破損的門前',
       },
       'replaceText': {
         'Acid Rain': '酸蝕雨',

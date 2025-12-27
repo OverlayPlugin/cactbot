@@ -591,6 +591,7 @@ const triggerSet: TriggerSet<Data> = {
         'Hummelfaust': '新型浮士德',
         'Ratfinx Twinkledinks': '奇才 拉特芬克斯',
         'Smartbomb': '超高性能炸彈',
+        'The Clevering': '哥布林科學研究室',
         'Glassy-Eyed Cobra': '興奮眼鏡蛇',
       },
       'replaceText': {

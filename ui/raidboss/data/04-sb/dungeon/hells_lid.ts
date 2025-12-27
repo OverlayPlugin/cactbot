@@ -261,11 +261,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'Demonsgate': '鬼之門',
+        'The Furnace': '獄之釜',
         'Genbu': '玄武',
         'Kamaitachi': '鐮鼬',
         'Otake-Maru': '大岳丸',
+        'The Polished Shell': '龜甲舞臺',
         'Volcanic Debris': '噴石',
       },
       'replaceText': {

@@ -1601,6 +1601,46 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Fang': '雙牙劍',
+        'Zoraal Ja': '佐拉加',
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(lines drop\\)': '', // FIXME '(放置直线)'
+        'Actualize': '自我實現',
+        'Aero III': '大勁風',
+        'Backward Edge': '後向斬',
+        'Bitter Whirlwind': '憤恨之風',
+        'Blade Warp': '利刃召喚',
+        'Burning Chains': '火焰鏈',
+        'Chasm Of Vollok': '無敵裂斬',
+        'Dawn Of An Age': '新曦世紀',
+        'Drum Of Vollok': '無敵之擊',
+        'Duty\'s Edge': '責任之刃',
+        'Fiery Edge': '烈火刃',
+        'Forged Track': '利刃衝',
+        'Forward Edge': '前向斬',
+        'Greater Gateway': '附魔通路',
+        'Half Circuit': '迴旋半身殘',
+        'Half Full': '半身殘',
+        'Might Of Vollok': '無敵之力',
+        'Multidirectional Divide': '多向斬',
+        'Projection Of Triumph': '情感投射：利刃',
+        'Projection Of Turmoil': '情感投射：爆發',
+        'Regicidal Rage': '弒君之怒行',
+        'Siege Of Vollok': '無敵之環',
+        'Stormy Edge': '暴風刃',
+        'Sync(?![-h])': '同步',
+        '(?<! )Vollok': '無敵刃',
+        'Walls Of Vollok': '無敵之圓',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Fang': '쌍송곳니',

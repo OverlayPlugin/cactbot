@@ -887,7 +887,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Honey B. Lovely': '', // FIXME '蜂蜂小甜心'
+        // 'Sweetheart': '', // FIXME '甜甜的心'
+      },
       'replaceText': {
         // 'Alarm Pheromones': '', // FIXME '告警信息素'
         // 'Bee Sting': '', // FIXME '小蜂刺'

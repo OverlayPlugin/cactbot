@@ -2938,7 +2938,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Electromine': '', // FIXME '雷转质矿组'
+        // 'Wicked Replica': '', // FIXME '狡雷的幻影'
+        // 'Wicked Thunder': '', // FIXME '狡雷'
+      },
       'replaceText': {
         '(?<! )Spark': '電火花',
         // '(?<! )Witch Hunt': '', // FIXME '魔女狩猎'

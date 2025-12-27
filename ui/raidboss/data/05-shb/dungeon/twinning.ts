@@ -323,6 +323,9 @@ const triggerSet: TriggerSet<Data> = {
         'Servomechanical Minotaur': '自控化米諾陶洛斯',
         'Mithridates': '米特里達梯',
         'Levinball': '雷彈',
+        'The Cornice': '時空潛行裝置中樞',
+        'Aetherial Observation': '乙太觀測台',
+        'Repurposing': '改造據點',
         'Cladoselache': '裂口鯊',
       },
       'replaceText': {

@@ -503,8 +503,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'A-4 Command': 'A4指揮部',
+        'A-4 Conquest': 'A4佔領地',
+        'A-4 Headquarters': 'A4司令部',
         'Arch-Lambda': '拉姆達總領',
         'Hybrid Dragon': '改造龍族',
         'Mark II Guided Missile': '二型制導導彈',

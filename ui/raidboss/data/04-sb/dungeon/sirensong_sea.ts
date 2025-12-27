@@ -242,12 +242,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'Spae Rock': '亡靈岩場',
         'Lugat': '盧加特',
-        // 'Warden\'s Delight': '', // FIXME '狱长的娱乐场'
+        'Warden\'s Delight': '獄長的娛樂場',
         'The Governor': '獄長',
         'The Groveller': '奴僕',
+        'Glowering Krautz': '克勞茨大燈塔',
         'Lorelei': '羅蕾萊',
         'Fleshless Captive': '幽靈囚徒',
       },

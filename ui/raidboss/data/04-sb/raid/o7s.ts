@@ -567,6 +567,7 @@ const triggerSet: TriggerSet<Data> = {
         'Fire Control System': '武器火控系統',
         'Guardian': '守護者',
         'Ultros': '奧爾特羅斯',
+        // 'WEAPON SYSTEMS ONLINE': '', // FIXME '武器火控系统启动'
       },
       'replaceText': {
         'Aether Rot': '乙太病毒',

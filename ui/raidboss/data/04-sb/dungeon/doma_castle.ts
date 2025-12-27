@@ -223,6 +223,9 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Rearguard': '魔導後衛',
         'Rearguard Bit': '魔導後衛浮游砲',
         'Retuned Magitek Bit': '改良版魔導浮游砲',
+        'The Third Armory': '第三兵器庫',
+        'The Training Grounds': '練兵場',
+        'The Hall Of The Scarlet Swallow': '赤燕之間',
       },
       'replaceText': {
         '2-Tonze Magitek Missile': '大型魔導飛彈',

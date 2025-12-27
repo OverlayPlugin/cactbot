@@ -380,13 +380,13 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Berserker Sphere': '狂暴晶球',
         'Cinduruva': '馬格',
-        // 'Ingenuity\'s Ingress': '', // FIXME '技巧之间'
+        'Ingenuity\'s Ingress': '技巧之間',
         'Minduruva': '拉格',
-        // 'Prosperity\'S Promise': '', // FIXME '财富之间'
-        // 'Prosperity\'s Promise': '', // FIXME '财富之间'
+        'Prosperity\'S Promise': '財富之間',
+        'Prosperity\'s Promise': '財富之間',
         'Sanduruva': '多格',
-        // 'Wisdom\'S Ward': '', // FIXME '智慧之间'
-        // 'Wisdom\'s Ward': '', // FIXME '智慧之间'
+        'Wisdom\'S Ward': '智慧之間',
+        'Wisdom\'s Ward': '智慧之間',
       },
       'replaceText': {
         'Cinduruva': '馬格',

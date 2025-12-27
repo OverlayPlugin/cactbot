@@ -326,7 +326,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Forgiven Revelry': '得到寬恕的放縱',
         'Forgiven Ambition': '得到寬恕的奢望',
@@ -335,6 +334,9 @@ const triggerSet: TriggerSet<Data> = {
         'Forgiven Cruelty': '得到寬恕的殘忍',
         'Forgiven Whimsy': '得到寬恕的無常',
         'Brightsphere': '光明晶球',
+        'The Winding Flare': '光芒階梯',
+        'The White Gate': '純白門',
+        'The Perished Path': '破損的山路',
       },
       'replaceText': {
         'Lumen Infinitum': '流明無限',

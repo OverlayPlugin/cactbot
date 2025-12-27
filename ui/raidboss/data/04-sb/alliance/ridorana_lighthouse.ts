@@ -747,6 +747,83 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Archaeodemon': '古惡魔',
+        'Belias, The Gigas': '魔人貝利亞斯',
+        'Construct 7': '勞動七號',
+        'Dark Rain': '暗黑雨水',
+        'Echoes from Time\'s Garden': '悠久時光庭園',
+        'Famfrit, The Darkening Cloud': '黑暗之雲法姆弗里特',
+        '(?<! )Gigas': '魔人兵',
+        'Heart of the Dragon': '鬼龍的核心',
+        'The Cleft of Profaning Wind': '吹拂異風的白色戰場',
+        'The Clockwork Coliseum': '高古鬥技場',
+        'The Spire\'s Bounds': '至頂封域',
+        'Yiazmat': '鬼龍雅茲瑪特',
+      },
+      'replaceText': {
+        // '\\(close\\)': '', // FIXME '(靠近)'
+        // '\\(cross\\)': '', // FIXME '(X)'
+        // '\\(combo\\)': '', // FIXME '(组合)'
+        // '\\(orbit\\)': '', // FIXME '(曲线)'
+        // '\\(far\\)': '', // FIXME '(远离)'
+        // '\\(single\\)': '', // FIXME '(单个)'
+        'Accelerate': '執行貫穿',
+        'Annihilation Mode': '滅絕晶片',
+        // 'Archaeodemon spawn': '', // FIXME '古恶魔出现'
+        // 'Area Lockdown': '', // FIXME '区域封锁'
+        'Briny Cannonade': '蒼砲擊',
+        'Compress': '執行壓縮',
+        'Computation Mode': '算術晶片',
+        'Crimson Cyclone': '深紅旋風',
+        '(?<! )Cyclone': '颶風',
+        'Dark Cannonade': '暗砲擊',
+        'Dark Ewer': '暗雲水瓶',
+        'Dark Rain': '暗雲雨水',
+        'Darkening Deluge': '暗雲沉澱',
+        'Darkening Rainfall': '暗雲之雨',
+        'Death Strike': '必殺',
+        'Destroy': '執行破壞',
+        'Dispose': '執行清理',
+        // 'Division': '', // FIXME '除法'
+        'Dust Storm': '塵暴',
+        '(?<![\\w| ])Eruption': '噴發',
+        'Fast Hands': '時空噴發',
+        '(?<!\\w)Fire(?! )': '火焰',
+        'Fire IV': '超火焰',
+        'Gale Gaol': '風牢',
+        // 'Gigas spawns': '', // FIXME '魔人兵出现'
+        'Growing Threat': '驚異',
+        'Gust Front': '颮風',
+        'Hellfire': '地獄之火炎',
+        'Ignite': '執行放熱',
+        'Incinerate': '執行焚燒',
+        'Karma': '生命停止',
+        'Lithobrake': '執行落地',
+        'Magnetic Genesis': '磁場生成',
+        'Magnetic Lysis': '磁場崩壞',
+        'Pulverize': '執行粉碎',
+        '(?<!\\w)Rake': '利爪',
+        'Slow Hands': '時空噴發',
+        'Solar Storm': '太陽風暴',
+        'Stone Breath': '石化吐息',
+        'Subtract': '執行減算',
+        'Summon': '召喚',
+        'Tartarus Mode': '冥獄晶片',
+        'The Hand Of Time': '異界時針',
+        'Tide Pod': '水流彈',
+        'Time Bomb': '時空炸彈',
+        'Time Eruption': '時空噴發',
+        'Tsunami': '大海嘯',
+        'Unholy Darkness': '黑暗神聖',
+        'Ventilate': '執行冷卻',
+        'Water IV': '超水花',
+        'White Breath': '蒼白吐息',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Archaeodemon': '원시 악마',

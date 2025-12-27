@@ -360,13 +360,15 @@ const triggerSet: TriggerSet<Data> = {
         'Yol(?! )': '胡鷹',
         'Yol Feather': '胡鷹的羽毛',
         'Warrior Of Bardam': '巴兒達木的戰士',
+        'Voiceless Muse': '無聲的敘事者',
         'Throwing Spear': '投槍',
         'Star Shard': '星體碎片',
+        'Rebirth Of Bardam The Brave': '勇猛巴兒達木的重生',
         'Looming Shadow': '墜落地點',
         'Hunter Of Bardam': '巴兒達木的獵人',
         'Corpsecleaner Eagle': '清道雄鷹',
         'Garula': '加魯拉',
-        // 'Bardam\'s Hunt': '', // FIXME '战士巴儿达木的猎场'
+        'Bardam\'s Hunt': '戰士巴兒達木的獵場',
         // '(?<! )Bardam(?!( |s|\'))': '', // FIXME '巴儿达木巨像'
       },
       'replaceText': {

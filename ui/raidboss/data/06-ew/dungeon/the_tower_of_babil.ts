@@ -466,14 +466,16 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Anima': '阿尼瑪',
         'Barnabas': '巴爾納伯',
         'Iron Nail': '阿尼瑪之爪',
+        'Iron Womb': '鐵腹',
         'Lugae': '盧格',
         'Magitek Chakram': '魔導輪',
         'Magitek Explosive': '魔導炸彈',
+        'Magitek Servicing': '魔導整備庫',
+        'Martial Conditioning': '武術訓練堂',
         'Mega-graviton': '百萬重力',
         'Thunderball': '雷電球',
       },

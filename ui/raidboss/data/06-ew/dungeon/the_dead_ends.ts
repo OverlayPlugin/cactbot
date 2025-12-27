@@ -412,6 +412,9 @@ const triggerSet: TriggerSet<Data> = {
         'Peacekeeper': '和平捍衛者',
         'Perpetual War Machine': '自動殺傷兵器',
         'Ra-la': '拉啦',
+        'The Deterrence Grounds': '威懾山丘',
+        'The Shell Mound': '即將消失的貝塚',
+        'The World Tree': '世界樹庭園',
         'Weeping Miasma': '腐爛毒素',
       },
       'replaceText': {

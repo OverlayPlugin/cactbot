@@ -488,10 +488,16 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        'Exhibit level VIII': '第八展示區',
         'Motherbit': '浮游砲主機板',
         'Prototype Bit': '原型浮游砲',
+        // 'Successfully mimicking the Demon Zurvan': '', // FIXME '随着对鬼神祖尔宛力量的应用，'
+        'The Genesis Engine': '啟動試驗室',
         'The Ultima Beast': '究極神獸',
         'The Ultima Warrior': '究極戰士',
+        'The reality augmentation bay': '現實增強室',
+        // 'This humanoid prototype can perfectly replicate': '', // FIXME '我们研究出了如何利用斗神力量的方法！'
+        // 'Utilizing our data on Sophia': '', // FIXME '利用斗神的力量去征服斗神！'
         'Vocal Guidance System': '語音導覽員',
         'Servomechanical Minotaur': '自控化米諾陶洛斯',
         'Servomechanical Chimera': '自控化奇美拉',

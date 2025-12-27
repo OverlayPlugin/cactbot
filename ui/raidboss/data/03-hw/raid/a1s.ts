@@ -276,6 +276,8 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         '3000-Tonze Missile': '超大型導彈',
         'Faust': '浮士德',
+        'Hangar 8': '第8大型機庫',
+        'Machinery Bay 44': '第44機工兵倉庫',
         'Oppressor(?! 0)': '壓迫者',
         // 'Oppressor 0\\\\.5': '', // FIXME '压迫者零号'
       },

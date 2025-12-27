@@ -208,7 +208,10 @@ const triggerSet: TriggerSet<Data> = {
         'Amikiri': '切網蝦蛄',
         'Naishi-No-Kami': '尚侍',
         'Ruby Princess': '紅玉公主',
+        'Shisui Gokagura': '紫水禦神樂',
         'Shisui Yohi': '紫水妖妃',
+        'The Akashio Hall': '紅潮之間',
+        'The Harutsuge Gate': '春告門前',
       },
       'replaceText': {
         // '--add--': '', // FIXME '--小怪--'

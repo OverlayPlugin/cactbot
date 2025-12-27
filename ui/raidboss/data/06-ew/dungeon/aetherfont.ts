@@ -343,9 +343,12 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Arkas': '阿爾卡斯',
+        'Cyancap Cavern': '藍簷洞中轉點',
         'Lyngbakr': '林巴克爾',
         'Mammoth Tentacle': '八足巨妖的觸手',
         'Octomammoth': '八足巨妖',
+        'The Deep Below': '乙太池',
+        'The Landfast Floe': '流冰圓庭',
       },
       'replaceText': {
         // '\\(big\\)': '', // FIXME '(大)'

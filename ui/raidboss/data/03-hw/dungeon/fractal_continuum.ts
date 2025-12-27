@@ -232,10 +232,14 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Clockwork Alarum': '', // FIXME '发条报警虫'
+        'Exhibit level III': '第三展示區',
         'Minotaur': '米諾陶洛斯',
         'Phantom Ray': '魅影射線',
         'Repository Node': '收藏系統',
         'The Curator': '博物總管',
+        'The high-level incubation bay': '特級合成獸培養室',
+        'The reality augmentation bay': '現實增強室',
       },
       'replaceText': {
         '(?<!1)111-Tonze Swing': '百十一噸迴轉',

@@ -455,14 +455,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ambujam': '阿蔔迦',
         'Armored Chariot': '裝甲戰車',
         'Armored Drudge': '裝甲僕從',
         'Kapikulu': '門奴',
         'Scarlet Tentacle': '猩紅觸手',
-        // 'Weaver\'S Warding': '', // FIXME '封宝之间'
+        'The Threshold Of Bounty': '豐饒之間',
+        'The Undersea Entrance': '塌陷的大廳',
+        'Weaver\'S Warding': '封寶之間',
       },
       'replaceText': {
         'Articulated Bits': '手型浮游砲',

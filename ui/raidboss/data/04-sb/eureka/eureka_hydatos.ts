@@ -1300,6 +1300,14 @@ const triggerSet: TriggerSet<Data> = {
         'Raiden': '萊丁',
         'Relative Virtue(?! gains)': '相對的美德',
         'Shadow': '奧斯瑪原型之影',
+        // 'Streak Lightning': '', // FIXME '强袭雷光'
+        // '5 minutes have elapsed since your last activity.': '', // FIXME '已经5分钟没有进行任何操作'
+        // 'The memories of heroes past live on again': '', // FIXME '发动了英杰的加护的效果，重新苏醒了过来'
+        // 'Munderg, turn flesh to ash': '', // FIXME '红颈妖枪，点燃一切！'
+        // 'Munderg, turn blood to ice': '', // FIXME '红颈妖枪，冻结万物！'
+        'The Lance of Virtue Containment Unit': '美德之槍封印區',
+        'The Shin-Zantetsuken Containment Unit': '真·斬鐵劍封印區',
+        'The Proto Ozma Containment Unit': '奧斯瑪原型封印區',
         // 'Relative Virtue gains the effect of .*?Astral Essence.*?': '', // FIXME '相对的美德附加了“光之腕”效果'
         // 'Relative Virtue gains the effect of .*?Umbral Essence.*?': '', // FIXME '相对的美德附加了“暗之腕”效果'
       },

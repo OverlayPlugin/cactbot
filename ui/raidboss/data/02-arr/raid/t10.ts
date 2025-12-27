@@ -181,6 +181,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Imdugud': '伊姆都古德',
+        'The Alpha Concourse': '第1信徒區間',
       },
       'replaceText': {
         'Crackle Hiss': '雷光電閃',

@@ -352,13 +352,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aeolian Cave Sprite': '洞窟風元精',
+        'The Clayclot Cauldron': '發光的挖土場',
+        'The Clearnote Cauldron': '涼爽的打水場',
         'Mother Porxie': '仙子豬之母',
         'Mud Bubble': '泥球',
         'Mudman': '土泥人',
         'Nixie': '水滴精',
+        'The Woebegone Workshop': '假裝無人的工坊',
       },
       'replaceText': {
         'Barbeque': '烤烤肉',

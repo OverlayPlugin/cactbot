@@ -809,7 +809,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Black Cat': '', // FIXME '黑猫'
+        // 'Copy Cat': '', // FIXME '模仿猫'
+        // 'Soulshade': '', // FIXME '灵魂之影'
+      },
       'replaceText': {
         // '\\(First\\)': '', // FIXME '(一)'
         // '\\(Second\\)': '', // FIXME '(二)'

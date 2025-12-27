@@ -328,7 +328,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Chicken Knife': '投擲弱雞匕首',
         'Necrobomb': '亡靈炸彈',
@@ -336,6 +335,9 @@ const triggerSet: TriggerSet<Data> = {
         'Spectral Berserker': '幻光狂戰士',
         'Spectral Necromancer': '幻光亡靈法師',
         'Spectral Thief': '幻光盜賊',
+        'The Illuminated Plaza': '大聖堂前廣場',
+        'The Mount Argai Mines': '阿爾格礦山',
+        'The Summer Ballroom': '草人的舞場',
         'Spectral White Mage': '幻光白魔道士',
       },
       'replaceText': {

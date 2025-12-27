@@ -210,6 +210,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Tenzen': '', // FIXME '典膳'
         'Scarlet Tail Feather': '朱雀的尾羽',
         'Suzaku': '朱雀',
       },

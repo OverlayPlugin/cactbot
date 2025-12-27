@@ -1341,7 +1341,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Ancient Katana': '古刀',
         'Ashigaru Kyuhei': '足輕弓兵',
-        // 'Autumn Rivers\' End': '', // FIXME '落叶川河畔'
+        'Autumn Rivers\' End': '落葉川河畔',
         'Ball of Levin': '閃電球',
         'Devilish Thrall': '被迷惑的屍鬼',
         'Enenra': '煙煙羅',
@@ -1349,6 +1349,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gorai the Uncaged': '鐵鼠豪雷',
         'Haunting Thrall': '被迷惑的屍靈',
         'Ill-come Tengu': '六根天狗',
+        'Last Glimpse': '眼根樹間地',
         'Mirrored Yozakura': '夜櫻的分身',
         'Moko the Restless': '怨靈猛虎',
         'Oni\'s Claw': '鬼腕',
@@ -1356,7 +1357,11 @@ const triggerSet: TriggerSet<Data> = {
         'Shiromaru': '忍犬白丸',
         'Shishio': '獅子王',
         'Shishu White Baboon': '紫州狒狒',
-        // 'Stone\'s Silence': '', // FIXME '怪鸣石磐座'
+        'Stone\'s Silence': '怪鳴石磐座',
+        'The Hall Of Becoming': '藏寶間',
+        'The Hall Of Temptation': '金堂',
+        'The Hall Of The Unseen': '眼根大堂',
+        'The Pond Of Spring Rain': '淨櫻湖',
         'Venomous Thrall': '被迷惑的大蛇',
         'Yozakura the Fleeting': '花遁之夜櫻',
       },

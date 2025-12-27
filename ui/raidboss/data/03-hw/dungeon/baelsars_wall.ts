@@ -269,7 +269,10 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Bit': '魔導浮游砲',
         'Magitek Predator': '魔導獵手',
         'Magitek Vanguard D-1': '魔導先鋒防衛型',
+        'The Airship Landing': '飛空戰艦著陸場',
         '(?<! )The Griffin': '鐵面公卿 伊爾伯德',
+        'The Magitek Installation': '魔導兵器倉庫',
+        'Via Praetoria': '天營路',
       },
       'replaceText': {
         // '--teleport': '', // FIXME '--传送'

@@ -1326,6 +1326,10 @@ const triggerSet: TriggerSet<Data> = {
         'Menphina': '梅茵菲娜',
         '(?<!& )Nophica': '諾菲卡',
         'Nymeia': '妮美雅',
+        'The Barbs': '戰爭神之間',
+        'The Bole': '世界樹',
+        'The Chamber Of Revolutions': '雙月之間',
+        'The Fertile Plains': '豐饒之地',
       },
       'replaceText': {
         'Abundance': '神力花雨',

@@ -350,6 +350,9 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Charibert': '聖騎士沙里貝爾',
         'Ser Grinnaux the Bull': '戰爭狂 格里諾',
         'Ser Grinnaux(?! )': '聖騎士格里諾',
+        'The Chancel': '冰天宮禮拜堂',
+        'The Quire': '聖歌隊席',
+        'The chapter house': '庭園小廳',
       },
       'replaceText': {
         'Advent': '再臨衝擊',

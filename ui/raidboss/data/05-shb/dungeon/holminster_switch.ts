@@ -307,6 +307,9 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        'The Wound': '紫黑裂痕',
+        'The Auction': '牲畜賣場',
+        'The manor house courtyard': '領主府前院',
         'Forgiven Dissonance': '得到寬恕的失調',
         'Tesleen, the Forgiven': '得到寬恕的泰絲琳',
         'Philia': '斐利亞',

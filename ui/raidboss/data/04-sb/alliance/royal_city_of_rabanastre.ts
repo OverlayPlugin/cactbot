@@ -706,6 +706,11 @@ const triggerSet: TriggerSet<Data> = {
         'Rofocale': '人馬王洛弗卡勒',
         'Sand Sphere': '沙球',
         'Submission Tower': '服從之塔',
+        'The Crumbling Bridge': '崩塌的橋',
+        'The Lesalia Garden Ruins': '勒薩利亞圓庭遺跡',
+        'The Lesalia Temple Ruins': '勒薩利亞神殿遺跡',
+        'The Palace Square': '王宮前廣場',
+        // 'The heavens tremble in my wake': '', // FIXME '我的战车驰骋天际！'
       },
       'replaceText': {
         // '--Shade--': '', // FIXME '--阴影--'

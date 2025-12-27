@@ -3546,16 +3546,21 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Crystal of Darkness': '', // FIXME '暗水晶'
+        // 'Crystal of Light': '', // FIXME '光水晶'
         'Delight\'s Hourglass': '愉快的沙漏',
         'Drachen Wanderer': '聖龍氣息',
         'Fatebreaker\'s Image': '絕命戰士的幻影',
         'Fatebreaker(?!\')': '絕命戰士',
+        // 'Fragment of Fate': '', // FIXME '未来的碎片'
         'Frozen Mirror': '冰面鏡',
         'Holy Light': '聖光',
         'Ice Veil': '永久冰晶',
         'Oracle of Darkness': '暗之巫女',
         // 'Oracle\'s Reflection': '', // FIXME '巫女的镜像'
+        // 'Pandora': '', // FIXME '潘多拉·米特隆'
         'Sorrow\'s Hourglass': '悲傷的沙漏',
+        // 'Usurper of Frost': '', // FIXME '希瓦·米特隆'
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'

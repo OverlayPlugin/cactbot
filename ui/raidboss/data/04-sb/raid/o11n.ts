@@ -301,8 +301,10 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Engaging Delta Attack protocol': '', // FIXME '认定有必要使用三角攻击。'
         'Level Checker': '等級檢測儀',
         'Omega': '歐米茄',
+        // 'Program failure detected': '', // FIXME '确认到循环程序·阿尔法启动失败……'
         'Rocket Punch': '火箭拳擊',
       },
       'replaceText': {

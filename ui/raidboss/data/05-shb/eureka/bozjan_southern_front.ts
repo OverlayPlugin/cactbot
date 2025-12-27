@@ -1074,12 +1074,16 @@ const triggerSet: TriggerSet<Data> = {
         'Electric Charge': '雷氣',
         '4Th Legion Helldiver': '第四軍團地獄潛者',
         'Adrammelech': '阿德拉梅里克',
+        'Bladesmeet': '群刃大廳',
         'Brionac': '布里歐納克',
         'Dawon': '達溫',
+        'Eaglesight': '蒼鷹廣場',
         'Lightsphere': '光耀晶球',
         'Lyon The Beast King(?! would)': '獸王 萊昂',
-        // 'Majesty\'s Auspice': '', // FIXME '圆坛之间'
+        'Majesty\'s Auspice': '圓壇之間',
         'Shadowsphere': '暗影晶球',
+        // 'The airship landing': '', // FIXME '飞空战舰着陆台'
+        'The grand gates': '城門',
         'Verdant Plume': '濃綠之羽',
       },
       'replaceText': {

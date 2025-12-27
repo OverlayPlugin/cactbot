@@ -289,7 +289,10 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Depth Grip': '海洋之手',
+        'Doxa': '信仰大堂',
+        'Katharsis': '淨化廣場',
         'Kyklops': '克琉普斯',
+        'Noesis': '概念之間',
         'Rukshs Dheem': '魯克嘶·蒂母',
         'Sinister Bubble': '怪異泡沫',
         'Unknown': '不明物體',

@@ -1131,7 +1131,7 @@ const triggerSet: TriggerSet<Data> = {
         'Azeyma\'s Heat': '阿澤瑪的幻象',
         'Byregot(?!\')': '比爾格',
         'Byregot\'s Avatar': '比爾格的分身',
-        // 'Ingenuity\'s Foothold': '', // FIXME '技巧宫'
+        'Ingenuity\'s Foothold': '技巧宮',
         'Lightning Orb': '雷獄球',
         'Lion of Aglaia': '阿格萊亞雄獅',
         'Lioness of Aglaia': '阿格萊亞雌獅',
@@ -1143,6 +1143,11 @@ const triggerSet: TriggerSet<Data> = {
         'Soul Vessel': '魂器',
         'Sunstorm': '陽靈氣',
         '(?<!\')Thal': '札爾神',
+        'The Circle Of Inquiry': '審理宮',
+        'The Endless City': '壯麗都城',
+        'The Monument To Destruction': '彗星宮',
+        'The Path': '引導步廊',
+        'The Twin Halls': '雙面宮',
       },
       'replaceText': {
         // '--hammer--': '', // FIXME '--锤子--'

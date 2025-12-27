@@ -237,12 +237,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Daigoro': '大五郎',
         'Dojun-Maru': '道順丸',
         'Elite Onmitsu': '攘夷隱秘',
         'Kageyama': '景山',
+        'The Budokan Training Grounds': '天守武道館',
+        'The Keisen Garden': '溪泉園',
+        'The Noh Theater': '天守能樂堂',
         'Yojimbo': '保鑣',
         'Zuiko-Maru': '瑞光丸',
       },

@@ -474,6 +474,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Hades': '黑迪斯',
+        // 'Shadow .f .he Ancients': '', // FIXME '古代人之影'
       },
       'replaceText': {
         // 'Adds': '', // FIXME '小怪'

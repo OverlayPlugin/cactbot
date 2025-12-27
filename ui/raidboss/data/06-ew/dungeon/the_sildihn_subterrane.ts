@@ -1154,8 +1154,9 @@ const triggerSet: TriggerSet<Data> = {
         'Antique Boulder': '岩石',
         'Arcane Font': '立體魔法陣',
         'Ball of Fire': '火球',
-        // 'Cold Arms\' Quietus': '', // FIXME '圣火兵器放置处'
+        'Cold Arms\' Quietus': '聖火兵器放置處',
         'Eastern Ewer': '倒水瓶',
+        'Eternal Ease': '勇士安睡之地',
         'Geryon the Steer': '征服者 革律翁',
         'Gladiator of Sil\'dih': '希拉狄哈劍鬥士',
         'Hateful Visage': '亡國咒像',
@@ -1166,6 +1167,11 @@ const triggerSet: TriggerSet<Data> = {
         'Shadowcaster Zeless Gah': '鬼陰火 澤雷斯·夏',
         'Silken Puff': '羽衣精的絨球',
         'Silkie': '羽衣精',
+        'The Cornice Of Favor': '御前鬥技台',
+        'The Forgotten Forecourt': '花園前庭',
+        'The Settling Basin': '污泥處理池',
+        'The Sifting Site': '濾石設施',
+        'The Silt Pump': '泥水泵',
         'Thorne Knight': '索恩自走人偶',
       },
       'replaceText': {

@@ -281,7 +281,9 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Gowrow': '高牢怪龍',
+        'The Wound': '靈傷',
         'The Scorpion\'s Tail': '尖尾蠍',
+        'The Lava Tube': '大熔岩窟',
         'The Leightonward': '萊頓瓦德',
         'Small Spore Sac': '小型孢囊',
         '(?<!Small )Spore Sac': '孢囊',

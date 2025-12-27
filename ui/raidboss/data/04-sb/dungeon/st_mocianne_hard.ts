@@ -343,12 +343,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'Kingsloam': '污泥王謁見室',
         'Lakhamu': '拉哈穆',
         'Nullchu': '爛泥食腐獸',
         'Silt Golem': '淤泥魔像',
+        'The Soil Bed': '沃土寢室',
         'Tokkapchi': '枯腐泥妖',
+        'Zymology': '腐臭庭園',
         'Withered Belladonna': '枯萎劇毒美人',
       },
       'replaceText': {

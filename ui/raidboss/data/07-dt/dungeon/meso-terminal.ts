@@ -672,7 +672,15 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Bloody Headsman': '', // FIXME '某个绯红处刑人的记忆'
+        // 'Bygone Aerostat': '', // FIXME '旧日航空机'
+        // 'Chirurgeon General': '', // FIXME '某个医师长的记忆'
+        // 'Hooded Headsman': '', // FIXME '某个处刑人的记忆'
+        // 'Immortal Remains': '', // FIXME '某些人的记忆'
+        // 'Pale Headsman': '', // FIXME '某个黄褐处刑人的记忆'
+        // 'Pestilent Headsman': '', // FIXME '某个翠绿处刑人的记忆'
+      },
       'replaceText': {
         // '--hellmaker adds--': '', // FIXME '--焦热刑具出现--'
         // '\\(active\\)': '', // FIXME '(生效)'

@@ -3349,6 +3349,9 @@ const triggerSet: TriggerSet<Data> = {
         'Shishu Onmitsugashira': '紫州隱秘首領',
         'Shishu Raiko': '紫州雷吼',
         'Shishu Yuki': '紫州幽鬼',
+        'The Trial Of Benevolence': '福德的試煉',
+        'The Trial Of Responsibility': '壽德的試煉',
+        'The Trial Of Wisdom': '智德的試煉',
       },
       'replaceText': {
         // '\\(circles\\)': '', // FIXME '(圆圈)'

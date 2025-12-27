@@ -249,6 +249,9 @@ const triggerSet: TriggerSet<Data> = {
         'Terminus Roiler': '終末的動盪',
         'Terminus Pursuer': '終末的追捕',
         'Terminus Bellwether': '終末的指引',
+        'The First Doom': '第一之災難',
+        'The Second Doom': '第二之災難',
+        'The Third Doom': '第三之災難',
       },
       'replaceText': {
         // 'Adds': '', // FIXME '小怪'

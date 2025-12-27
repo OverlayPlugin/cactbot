@@ -343,11 +343,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Beatrice': '貝雅特麗齊',
         'Evil Dreamer': '夢禍',
+        'Penitence': '責罪廣場',
         'Scarmiglione': '斯卡米留尼',
+        'The Seat Of The Foremost': '首席神官之間',
+        'The Garden Of Epopts': '姐妹之園',
       },
       'replaceText': {
         'Antipressure': '虛無強壓',

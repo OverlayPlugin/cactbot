@@ -272,6 +272,7 @@ const triggerSet: TriggerSet<Data> = {
         'Easterly': '極風',
         'Goddess Chadarnook': '神聖查達奴克',
         'Haunt': '幻影',
+        // 'I have claimed the girl in the picture!': '', // FIXME '呵哼哼……这个画作的女人就归我了'
         'Portrayal of Earth': '土之畫作',
         'Portrayal of Fire': '火之畫作',
         'Portrayal of Water': '水之畫作',

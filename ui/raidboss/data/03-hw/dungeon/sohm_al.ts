@@ -217,11 +217,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Chyme Of The Mountain': '聖山之糜',
+        'Greenlinn': '碧崖',
+        'Hess Afah': '永望頂',
         'Myath': '邁思',
         'Raskovnik': '破鎖花王',
+        'The Wound': '靈傷',
         'Tioman': '刁曼',
       },
       'replaceText': {

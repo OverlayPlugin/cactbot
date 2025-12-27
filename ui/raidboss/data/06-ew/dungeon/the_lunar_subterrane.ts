@@ -656,6 +656,9 @@ const triggerSet: TriggerSet<Data> = {
         'Durante': '杜蘭特',
         'Hexing Staff': '黑暗之杖',
         'Stone Pillar': '石柱',
+        'The Bloodied Barbican': '巴隆城正門',
+        'The Carnelian Courtyard': '巴隆城庭院',
+        'The Cloven Crystal Square': '水晶廣場',
       },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'

@@ -205,7 +205,9 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Pack Armadillo': '群落犰狳',
-        // 'Malikah\'s Gift': '', // FIXME '马利卡水源'
+        'Terminus': '軌道車站',
+        'Malikah\'s Gift': '馬利卡水源',
+        'Unquestioned Acceptance': '無償離宮',
         'Greater Armadillo': '大犰狳',
         'Amphibious Talos': '水陸兩用塔羅斯',
         'Storge': '斯托爾戈',

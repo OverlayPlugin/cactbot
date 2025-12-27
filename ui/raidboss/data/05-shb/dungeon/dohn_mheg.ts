@@ -304,8 +304,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'Teag Gye': '微睡之泉',
+        'The Atelier': '格里奧勒的睡床',
+        'The throne room': '王冠之間',
         'Aenc Thon, Lord of the Lingering Gaze': '美眼 因克·佐恩',
         'Griaule': '格里奧勒',
         'Painted Sapling': '格里奧勒花苗',

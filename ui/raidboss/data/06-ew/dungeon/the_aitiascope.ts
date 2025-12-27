@@ -347,6 +347,9 @@ const triggerSet: TriggerSet<Data> = {
         'Livia the Undeterred': '迷執愛戀的莉維亞',
         'Rhitahtyn the Unshakable': '強執忠義的里塔提恩',
         'Sinking Regret': '沉淪的後悔',
+        'The Central Observatory': '主觀測室',
+        'The Midnight Downwell': '亂流海域',
+        'The Saltcrystal Strings': '結晶海域',
         'Ysayle\'s Spirit': '伊塞勒的靈魂',
       },
       'replaceText': {

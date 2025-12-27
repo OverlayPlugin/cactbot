@@ -505,6 +505,8 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Heaven Bomb': '', // FIXME '翅膀爆弹怪'
+        // 'Paint Bomb': '', // FIXME '涂鸦爆弹怪'
         'Sugar Riot': 'シュガーライオット',
         'Sweet Shot': 'シュガーズアロー',
         'Tempest Piece': '積乱雲',

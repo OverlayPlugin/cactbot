@@ -362,9 +362,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'The Scorpion\'s Den': '', // FIXME '赫德提特的领地'
+        'The Scorpion\'s Den': '赫德提特的領地',
+        'The Gamma Segregate': '伽馬隔離區',
+        'The Aspersory': '霧碟',
         'Rock Biter': '石刃',
         'Mist Dragon': '霧龍',
         'Dim Crystal': '褪色水晶',

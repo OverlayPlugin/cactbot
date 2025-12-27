@@ -412,14 +412,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Daidarabotchi': '大太法師',
         'Otengu': '大天狗',
         'Qitian Dasheng': '齊天大聖',
+        'Serenity': '玉聖祠',
         'Shadow Of The Sage': '齊天大聖的幻影',
         'Tengu Ember': '天狗火',
-        // 'The Dragon\'s Mouth': '', // FIXME '大龙关门'
+        'The Dragon\'s Mouth': '大龍關門',
+        'The Heart Of The Dragon': '龍脈之間',
       },
       'replaceText': {
         'Both Ends': '如意大旋風',

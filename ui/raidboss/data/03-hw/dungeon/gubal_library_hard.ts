@@ -434,6 +434,9 @@ const triggerSet: TriggerSet<Data> = {
         'Meteor': '隕石',
         'Middle Shelf Tome': '平裝本',
         'Strix': '博學林鴞',
+        'The Astrology and Astromancy Camera': '占星學研究室',
+        'The Hall of Magicks': '魔書翼廊',
+        'The Rare Tomes Room': '思想珍秘書庫',
         'Top Shelf Tome': '精裝本',
       },
       'replaceText': {

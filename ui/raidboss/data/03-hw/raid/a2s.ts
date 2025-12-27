@@ -275,6 +275,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gordian Hardmind': '戈耳狄鐵心兵',
         'Gordian Sniper': '戈耳狄狙擊手',
         'Gordian Soldier': '戈耳狄士兵',
+        'Hangar 12': '第12大型機庫',
         'Jagd Doll': '狩獵人偶',
         'King Gobtank G-IV': '4號哥布林坦克王',
         'Magitek Gobwidow G-IX': '9號哥布林黑寡婦',

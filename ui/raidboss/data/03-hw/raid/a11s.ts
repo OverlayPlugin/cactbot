@@ -617,6 +617,7 @@ const triggerSet: TriggerSet<Data> = {
         // 'E\\\\.D\\\\.D\\\\.': '', // FIXME '护航机甲'
         'Multifield': '層積科學結界',
         'Plasma Shield': '等離子護盾',
+        'The Main Generators': '中樞大動力室',
       },
       'replaceText': {
         // '(?<! )Sword': '', // FIXME '剑 '

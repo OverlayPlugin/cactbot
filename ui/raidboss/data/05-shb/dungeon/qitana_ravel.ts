@@ -327,12 +327,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Batsquatch': '大腳野蝠',
         'Eros': '艾洛斯',
         'Lozatl': '洛查特爾',
-        // 'The Song of Ox\'Gatorl': '', // FIXME '奥奇斯加托尔之祭坛'
+        'The Divine Threshold': '神前石門',
+        'Shadowed Hollow': '映照神影之洞窟',
+        'The Song of Ox\'Gatorl': '奧奇斯加托爾之祭壇',
       },
       'replaceText': {
         'Confession Of Faith': '信仰宣言',

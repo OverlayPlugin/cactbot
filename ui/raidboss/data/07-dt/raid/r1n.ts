@@ -450,7 +450,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Black Cat': '', // FIXME '黑猫'
+        // 'Copy Cat': '', // FIXME '模仿猫'
+      },
       'replaceText': {
         // '(?<! )Black Cat Crossing': '', // FIXME '交叉尖甲'
         // '(?<! )One-two Paw': '', // FIXME '二连尖甲'

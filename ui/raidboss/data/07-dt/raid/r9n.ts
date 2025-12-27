@@ -543,7 +543,12 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Coffinmaker': '', // FIXME '致命刑锯'
+        // 'Fatal Flail': '', // FIXME '致命刺锤'
+        // 'Vamp Fatale': '', // FIXME '致命美人'
+        // 'Vampette Fatale': '', // FIXME '致命蝙蝠'
+      },
       'replaceText': {
         // '--Coffinmaker targetable--': '', // FIXME '--致命刑锯可选中--'
         // '--Flail targetable--': '', // FIXME '--致命刺锤可选中--'

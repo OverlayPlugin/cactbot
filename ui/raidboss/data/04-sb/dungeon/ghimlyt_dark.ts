@@ -368,10 +368,15 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Annia Quo Soranus': '', // FIXME '安妮亚・库奥・索拉努斯'
         'Ceruleum Tank': '青磷水罐',
+        // 'Julia Quo Soranus': '', // FIXME '茱莉亚・库奥・索拉努斯'
         'Mark III-B Magitek Colossus': '魔導巨兵三型B式',
         'Prometheus': '普羅米修士',
         'Soranus Duo': '茱莉亞&安妮亞',
+        'The Field Of Dust': '破亂的廣場',
+        'The Impact Crater': '大爆炸痕跡',
+        'The Provisional Imperial Landing': '帝國臨時飛艇坪',
       },
       'replaceText': {
         // '\\(windup\\)': '', // FIXME '(发射)'

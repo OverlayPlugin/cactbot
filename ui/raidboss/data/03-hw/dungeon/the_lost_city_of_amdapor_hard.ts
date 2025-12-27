@@ -432,6 +432,8 @@ const triggerSet: TriggerSet<Data> = {
         'Kuribu': '基路伯',
         'Mana Pot': '魔力罐',
         'Ranting Ranks Gremlin': '咆哮小精怪',
+        'The Protectorate': '守護聖域',
+        'The Tower Of White': '白魔道士塔',
         'Void Monk': '虛無鬼魚',
         'Whisper of Existence': '冒險者的幻影',
         'Winged Lion': '雙翼飛獅',

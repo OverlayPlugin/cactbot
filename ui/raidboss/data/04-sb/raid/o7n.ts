@@ -277,6 +277,7 @@ const triggerSet: TriggerSet<Data> = {
         'Guardian': '守護者',
         'Tentacle': '腕足',
         'Ultros': '奧爾特羅斯',
+        // 'WEAPON SYSTEMS ONLINE': '', // FIXME '武器火控系统启动'
       },
       'replaceText': {
         'Arm And Hammer': '臂錘',

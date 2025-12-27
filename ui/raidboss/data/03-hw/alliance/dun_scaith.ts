@@ -1084,8 +1084,10 @@ const triggerSet: TriggerSet<Data> = {
         'Scathach': '斯卡哈',
         'Shadow Limb': '影之手',
         'Shadowcourt Jester': '女王小丑',
-        // 'The Queen\'s Graces': '', // FIXME '女王之间'
-        // 'The Queen\'s Pride': '', // FIXME '女王的阅兵广场'
+        'The Queen\'s Graces': '女王之間',
+        'The Queen\'s Pride': '女王的閱兵廣場',
+        'The Rostrum': '小丑舞臺',
+        'The main deck': '主甲板',
         'Void Sprite': '虛無元精',
         'Wailing Atomos': '虛聲的亞特蒙斯',
       },

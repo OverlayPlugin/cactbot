@@ -380,6 +380,9 @@ const triggerSet: TriggerSet<Data> = {
         'Leannan Sith': '涼南茜',
         'Lugus': '盧格斯',
         'Seeker of Solitude': '宮殿的隱者',
+        'The Chamber of Celestial Song': '演奏之間',
+        'The Font of Quintessence': '春水湧泉',
+        'The Martial Court': '兵棋之間',
       },
       'replaceText': {
         'Black Flame': '黑炎流',

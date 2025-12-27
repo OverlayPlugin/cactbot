@@ -483,7 +483,11 @@ const triggerSet: TriggerSet<Data> = {
         'Albion': '白雪獸',
         'Albus Griffin': '白嶺獅鷲',
         'Cagnazzo': '凱納槽',
+        'Deepspine': '青炎棘刺',
         'Galatea Magna': '大型伽拉忒亞人偶',
+        'The Forum Messorum': '收割廣場',
+        'The Silvan Throne': '雪獸皇座',
+        // 'No more games!': '', // FIXME '我要用出全部力量！'
       },
       'replaceText': {
         'Albion\'s Embrace': '雪獸擁抱',

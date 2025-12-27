@@ -317,7 +317,10 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Brute Bomber': '', // FIXME '野蛮爆弹'
+        // 'Lit Fuse': '', // FIXME '引线爆弹怪'
+      },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
         // '\\(cones\\)': '', // FIXME '(锥形)'

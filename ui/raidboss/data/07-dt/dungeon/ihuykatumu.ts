@@ -445,6 +445,7 @@ const triggerSet: TriggerSet<Data> = {
         'Drowsie': '瞌睡怪',
         'Green Clot': '綠色凝塊',
         'Ihuykatumu Flytrap': '生息陷阱草',
+        // 'Ihuykatumu Ivy': '', // FIXME '生息藤蔓大口花'
         'Ihuykatumu Sandworm': '生息沙蟲',
         'Prime Punutiy': '首領海牛',
         '(?<! )Punutiy': '海牛',

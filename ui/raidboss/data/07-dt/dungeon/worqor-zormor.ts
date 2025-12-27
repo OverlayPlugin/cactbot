@@ -701,6 +701,8 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Gurfurlur': '固伏魯',
         'Kahderyor': '卡德由夜鳥',
+        // 'Qorrloh Teh': '', // FIXME '刻洛特雪精'
+        // 'Rorrloh Teh': '', // FIXME '洛洛特雪精'
         'Ryoqor Terteh': '遼刻特特雪精',
         'Snowball': '雪球',
       },

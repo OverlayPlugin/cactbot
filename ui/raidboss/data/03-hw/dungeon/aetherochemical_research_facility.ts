@@ -337,9 +337,11 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        'Analysis and Proving': '試驗機評測庫',
         'Ascian Prime': '至尊無影',
         'Blizzardsphere': '寒冰晶球',
         'Chaosphere': '混沌晶球',
+        'Evaluation and Authentication': '評測場',
         'Firesphere': '烈火晶球',
         'Harmachis': '赫魯瑪奇斯',
         'Igeyorhm': '以格約姆',

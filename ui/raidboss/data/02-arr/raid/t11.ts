@@ -314,6 +314,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Electric Node': '雷擊系統',
         'Kaliya': '卡利亞',
+        'The Core Override': '核心控制區間',
       },
       'replaceText': {
         'Barofield': '氣壓領域',

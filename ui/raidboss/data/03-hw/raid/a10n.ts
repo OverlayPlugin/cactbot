@@ -272,13 +272,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Blizzard Arrow': '冰箭發射器',
         'Buzzsaw': '旋轉鏈鋸',
         'Goblin of Fortune': '傭兵戰士',
         'Gobpress R-VI': '6號哥布林壓路機',
         'Lamebrix Strikebocks': '傭兵雷姆普里克斯',
+        'The Excruciationator': '科學萬能處刑場',
         'Weight of the World': '大陸之重',
       },
       'replaceText': {

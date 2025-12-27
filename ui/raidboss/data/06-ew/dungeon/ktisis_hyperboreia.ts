@@ -328,8 +328,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'Concept Review': '創造生物評價室',
         'Hermes': '赫密士',
         'Ice Pillar': '冰柱',
         'Karukeion': '雙蛇杖紋',
@@ -337,6 +337,8 @@ const triggerSet: TriggerSet<Data> = {
         'Lyssa': '呂薩',
         'Meteor': '隕石',
         'Pyric Sphere': '燃燒晶球',
+        'The Celestial Sphere': '天脈創造環境',
+        'The Frozen Sphere': '寒冷創造環境',
       },
       'replaceText': {
         'Cosmic Kiss': '轟擊',

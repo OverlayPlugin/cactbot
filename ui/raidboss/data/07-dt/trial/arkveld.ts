@@ -109,7 +109,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Guardian Arkveld': '', // FIXME '护锁刃龙'
+      },
       'replaceText': {
         // '\\(aoes\\)': '', // FIXME '(圆形AOE)'
         // '\\(dash\\)': '', // FIXME '(冲锋)'

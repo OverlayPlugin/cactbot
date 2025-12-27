@@ -332,6 +332,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Destroy! Destroy! Destroy! I will destroy it all!': '', // FIXME '我要破坏一切！破坏！破坏！破坏！'
         'Graven Image': '眾神之像',
         'Kefka': '凱夫卡',
       },

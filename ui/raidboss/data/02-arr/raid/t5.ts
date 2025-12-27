@@ -362,8 +362,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
+        'The Right Hand of Bahamut': '巴哈姆特的右手',
         'The Scourge Of Meracydia': '美拉西迪亞禍龍',
         'Twintania': '雙塔尼亞',
       },

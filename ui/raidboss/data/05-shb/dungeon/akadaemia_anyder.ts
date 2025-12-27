@@ -276,13 +276,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Morbol Marquis': '侯爵毛爾波爾',
         'Evil Armor': '惡魔裝甲',
         'Quetzalcoatl': '克察爾科亞特爾',
         'Doliodus': '原祖鯊',
         'Cladoselache': '裂口鯊',
+        'Ichthyology': '水生生物創造場',
+        'Phytobiology': '草木生物創造場',
+        'Phantomology': '幻想生物創造場',
       },
       'replaceText': {
         'Winding Current': '繞組電流',

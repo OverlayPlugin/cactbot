@@ -294,6 +294,10 @@ const triggerSet: TriggerSet<Data> = {
         'Inferno': '煉獄炎魔',
         'Magna Roader': '魔導機車大魔',
         'Mark XLIII Mini Cannon': '43式小迫擊砲',
+        'Project Aegis': '強化實驗室',
+        // 'Subject Number XXIV': '', // FIXME '024号'
+        'Terrestrial Weaponry': '陸戰兵器開發室',
+        'The Assessment Grounds': '性能試驗場',
       },
       'replaceText': {
         // '--adds--': '', // FIXME '--小怪--'

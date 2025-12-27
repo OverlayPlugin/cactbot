@@ -396,6 +396,7 @@ const triggerSet: TriggerSet<Data> = {
         'Quickthinx Allthoughts': '萬事通 奎克辛克斯',
         'Shanoa': '夏諾雅',
         'Sturm Doll': '風暴人偶',
+        'The electrocution gallery': '公開處刑廣場',
       },
       'replaceText': {
         // 'Big Doll': '', // FIXME '大人偶'

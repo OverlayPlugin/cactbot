@@ -462,8 +462,10 @@ const triggerSet: TriggerSet<Data> = {
         'Bomb': '炸彈',
         'Faust Z': '終極浮士德',
         'Full-Metal Faust': '全裝甲浮士德',
+        'Life Support': '再生處理室',
         'Refurbisher 0': '廢品翻新裝置',
         'Scrap': '廢料拳',
+        'The Cranial Plate': '頭部甲板',
       },
       'replaceText': {
         '(?<!Double )Scrapline': '廢料金臂鉤',

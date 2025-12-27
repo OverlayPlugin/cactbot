@@ -275,12 +275,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Allagan Field': '亞拉戈領域',
         'Allagan Mine': '亞拉戈機雷',
         'Clockwork Dreadnaught': '恐慌裝甲',
         'The Avatar': '降世化身',
+        'The central bow': '中樞艦首區',
       },
       'replaceText': {
         'Allagan Field': '亞拉戈領域',

@@ -912,7 +912,12 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        // 'Azure Aether': '', // FIXME '青之魂块'
+        // 'Beckoning Hands': '', // FIXME '邀死之手'
+        // 'Icy Hands': '', // FIXME '招死之手'
+        // 'Necron': '', // FIXME '永远之暗'
+      },
       'replaceText': {
         // '\\(cast\\)': '', // FIXME '(咏唱)'
         // '\\(damage\\)': '', // FIXME '(伤害)'

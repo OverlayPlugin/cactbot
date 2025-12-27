@@ -2862,6 +2862,9 @@ const triggerSet: TriggerSet<Data> = {
         'Sil\'dihn Dullahan': '希拉狄哈無頭騎士',
         'Silken Puff': '羽衣精的絨球',
         'Silkie': '羽衣精',
+        'The Trial of Balance': '第三試煉',
+        'The Trial of Knowledge': '第一試煉',
+        'The Trial of Might': '第二試煉',
       },
       'replaceText': {
         'Accursed Visage': '咒怨咒像',

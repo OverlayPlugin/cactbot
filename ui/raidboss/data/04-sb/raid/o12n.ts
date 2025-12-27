@@ -350,9 +350,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Calculations indicate increased probability of defeat': '', // FIXME '警告……警告……失败的危险性上升……'
         'Omega(?!-)': '歐米茄',
         'Omega-M': '歐米茄M',
         'Optical Unit': '視覺組',
+        // 'Progress to party combat': '', // FIXME '确认到单独战斗的极限'
+        // '<blip> Limits of single combatant': '', // FIXME '分析……确认到单'
         // '<blip> Warning\\. Calculations indicate': '', // FIXME '警告……警告……失败的危险性上升……'
       },
       'replaceText': {
