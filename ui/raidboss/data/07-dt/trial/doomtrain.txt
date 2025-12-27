@@ -1,0 +1,187 @@
+### HELL ON RAILS
+# ZoneId: 1307
+
+# -ii B234 B236 B237 B239 B23A B23E B23F B240 B241 B24B B24E B250 B251 B255 B258 B259 B25C B25E B9A9
+# -it "Doomtrain" "Aether"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+# Car 1, KB/pull in tutorial
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+13.9 "Lightning Burst" Ability { id: "B25D", source: "Doomtrain" }
+22.5 "Lightning Express" Ability { id: "B232", source: "Doomtrain" }
+24.5 "Plasma Beam" Ability { id: "B233", source: "Levin Signal" }
+34.5 "Windpipe" Ability { id: "B263", source: "Doomtrain" }
+36.5 "Blastpipe" Ability { id: "B23B", source: "Doomtrain" }
+46.4 "Unlimited Express" Ability { id: "B238", source: "Doomtrain" }
+46.6 "--untargetable--"
+
+# Car 2, turret tutorial
+50.5 "--sync--" Ability { id: "B249", source: "Doomtrain" }
+52.5 "--targetable--"
+59.6 "Turret Crossing" Ability { id: "B23C", source: "Doomtrain" }
+70.8 "Electray" Ability { id: "B23D", source: "Kinematic Turret" }
+79.7 "Lightning Express" Ability { id: "B232", source: "Doomtrain" }
+81.7 "Plasma Beam" Ability { id: "B233", source: "Levin Signal" }
+84.8 "Electray" Ability { id: "B23D", source: "Kinematic Turret" }
+94.7 "Windpipe" Ability { id: "B263", source: "Doomtrain" }
+96.7 "Blastpipe" Ability { id: "B23B", source: "Doomtrain" }
+98.8 "Electray" Ability { id: "B23D", source: "Kinematic Turret" }
+106.2 "Lightning Burst" Ability { id: "B25D", source: "Doomtrain" }
+115.8 "Unlimited Express" Ability { id: "B238", source: "Doomtrain" }
+116.0 "--untargetable--"
+
+# Car 3, up/down tutorial
+119.9 "--sync--" Ability { id: "B249", source: "Doomtrain" }
+121.9 "--targetable--"
+134.0 "Head-on Emission" Ability { id: "B242", source: "Doomtrain" }
+135.0 "Thunderous Breath" Ability { id: "B243", source: "Doomtrain" }
+144.0 "Head-on Emission" Ability { id: "B244", source: "Doomtrain" }
+145.0 "Headlight" Ability { id: "B245", source: "Doomtrain" }
+154.0 "Lightning Express" Ability { id: "B232", source: "Doomtrain" }
+156.0 "Plasma Beam" Ability { id: "B233", source: "Levin Signal" }
+164.6 "Lightning Burst" Ability { id: "B25D", source: "Doomtrain" }
+174.3 "Unlimited Express" Ability { id: "B238", source: "Doomtrain" }
+174.5 "--untargetable--"
+
+# Car 4, but not really
+178.5 "--sync--" Ability { id: "B249", source: "Doomtrain" }
+180.5 "--targetable--"
+189.7 "Runaway Train" Ability { id: "B246", source: "Doomtrain" }
+192.9 "Overdraught" Ability { id: "B247", source: "Aether" }
+193.3 "--untargetable--"
+
+# Intermission
+# Duration and syncing are weird here because of the random length
+# of pauses between mechanics. Seems to be up to +-3s of drift.
+200.3 "--targetable--"
+205.6 "--sync--" StartsUsing { id: "B24A", source: "Aether" } window 5,5
+211.3 "Aether Surge" Ability { id: "B24A", source: "Aether" }
+213.0 "Aetherial Ray" Ability { id: "B248", source: "Ghost Train" }
+216.2 "--sync--" StartsUsing { id: "B24A", source: "Aether" } window 5,5
+221.9 "Aether Surge" Ability { id: "B24A", source: "Aether" }
+223.6 "Aetherial Ray" Ability { id: "B248", source: "Ghost Train" }
+225.5 "--sync--" StartsUsing { id: "B24A", source: "Aether" } window 5,5
+231.2 "Aether Surge" Ability { id: "B24A", source: "Aether" }
+232.9 "Aetherial Ray" Ability { id: "B248", source: "Ghost Train" }
+238.8 "--sync--" StartsUsing { id: "B24A", source: "Aether" } window 5,5
+244.5 "Aether Surge" Ability { id: "B24A", source: "Aether" }
+246.1 "Aetherial Ray" Ability { id: "B248", source: "Ghost Train" }
+249.8 "--sync--" StartsUsing { id: "B24A", source: "Aether" } window 5,5
+255.5 "Aether Surge" Ability { id: "B24A", source: "Aether" }
+257.2 "Aetherial Ray" Ability { id: "B248", source: "Ghost Train" }
+261.0 "--untargetable--" NameToggle { name: "Aether" } window 12,12 forcejump "intermission-enrage"
+
+# Sync to invisible cast that starts phase change animation
+500.0 "--sync--" Ability { id: "B24C", source: "Doomtrain" } window 500.0,0
+515.1 "Runaway Train" Ability { id: "B24D", source: "Doomtrain" }
+
+# Back to Car 4
+515.4 "--targetable--"
+533.2 "Shockwave" Ability { id: "B24F", source: "Doomtrain" }
+540.5 "Arcane Revelation" Ability { id: "B9A7", source: "Doomtrain" }
+554.6 "Hail of Thunder" Ability { id: "B25B", source: "Doomtrain" }
+568.7 "Hail of Thunder" Ability { id: "B25B", source: "Doomtrain" }
+578.8 "Derailment Siege x3" duration 1.4 #Ability { id: "B252", source: "Doomtrain" }
+591.7 "Derail" Ability { id: "B256", source: "Doomtrain" }
+
+# Car 5
+596.8 "--sync--" Ability { id: "B257", source: "Doomtrain" }
+603.5 label "car5-loop"
+604.9 "Arcane Revelation" Ability { id: "B9A7", source: "Doomtrain" }
+# Annoyingly, the timing of the `Hail of Thunder` snapshots can vary by up to 3s each direction
+# depending on if the AoE moves 2, 3, or 4 times. The timing below is for 3 => 2 moves which
+# seems to be the most common pattern, but I have seen it inverted.
+622.0 "Hail of Thunder" Ability { id: "B25B", source: "Doomtrain" } window 5,5
+633.0 "Hail of Thunder" Ability { id: "B25B", source: "Doomtrain" } window 5,5
+640.0 "Turret Crossing" Ability { id: "B23C", source: "Doomtrain" } window 5,5
+648.0 "Head-on Emission" Ability { id: "B244", source: "Doomtrain" }
+649.0 "Headlight" Ability { id: "B245", source: "Doomtrain" }
+652.2 "Electray" Ability { id: "B23D", source: "Kinematic Turret" }
+661.1 "Head-on Emission" Ability { id: "B242", source: "Doomtrain" }
+662.1 "Thunderous Breath" Ability { id: "B243", source: "Doomtrain" }
+665.2 "Electray" Ability { id: "B23D", source: "Kinematic Turret" }
+675.1 "Windpipe/Lightning Express" Ability { id: ["B263", "B232"], source: "Doomtrain" }
+677.1 "Blastpipe/Plasma Beam" Ability { id: ["B23B", "B233"], source: ["Doomtrain", "Levin Signal"] }
+679.2 "Electray" Ability { id: "B23D", source: "Kinematic Turret" }
+691.1 "Battering Arms x3" duration 2.4 #Ability { id: "B884", source: "Doomtrain" }
+701.6 "Lightning Burst" Ability { id: "B25D", source: "Doomtrain" }
+709.4 "--sync--" StartsUsing { id: "B9A7", source: "Doomtrain" } forcejump "car5-loop"
+
+# For sync reasons, intermission enrage is after end of fight timeline
+2000.0 label "intermission-enrage"
+2004.2 "--sync--" Ability { id: "B24C", source: "Doomtrain" }
+2019.3 "Runaway Train (enrage)" Ability { id: "B24D", source: "Doomtrain" }
+
+# IGNORED ABILITIES
+# B234 Plasma Beam: Extra casts
+# B236 Plasma Beam: Extra casts
+# B237 Unlimited Express: Boss castbar, not actual mechanic snapshot
+# B239 Windpipe: Boss castbar, not actual mechanic snapshot
+# B23A Blastpipe: Boss castbar, not actual mechanic snapshot
+# B23E Electray: Extra casts
+# B23F Electray: Extra casts
+# B240 Electray: Extra casts
+# B241 Electray: Extra casts
+# B24B Aether Surge: Extra cast
+# B24E Shockwave: VFX of arms growing
+# B250 Derailment Siege: VFX
+# B251 Derailment Siege: VFX
+# B255 Derail: VFX
+# B258 Hail of Thunder: VFX
+# B259 Hail of Thunder: VFX
+# B25C Lightning Burst: Boss castbar, not actual hit/snapshot
+# B25E --sync--: Autoattack
+# B9A9 Battering Arms: VFX
+
+# ALL ENCOUNTER ABILITIES
+# B232 Lightning Express
+# B233 Plasma Beam
+# B234 Plasma Beam
+# B236 Plasma Beam
+# B237 Unlimited Express
+# B238 Unlimited Express
+# B239 Windpipe
+# B23A Blastpipe
+# B23B Blastpipe
+# B23C Turret Crossing
+# B23D Electray
+# B23E Electray
+# B23F Electray
+# B240 Electray
+# B241 Electray
+# B242 Head-on Emission
+# B243 Thunderous Breath
+# B244 Head-on Emission
+# B245 Headlight
+# B246 Runaway Train
+# B247 Overdraught
+# B248 Aetherial Ray
+# B249 --sync--
+# B24A Aether Surge
+# B24B Aether Surge
+# B24C Runaway Train
+# B24D Runaway Train
+# B24E Shockwave
+# B24F Shockwave
+# B250 Derailment Siege
+# B251 Derailment Siege
+# B252 Derailment Siege
+# B253 Derailment Siege
+# B255 Derail
+# B256 Derail
+# B257 --sync--
+# B258 Hail of Thunder
+# B259 Hail of Thunder
+# B25B Hail of Thunder
+# B25C Lightning Burst
+# B25D Lightning Burst
+# B25E --sync--
+# B263 Windpipe
+# B884 Battering Arms
+# B885 Battering Arms
+# B9A7 Arcane Revelation
+# B9A9 Battering Arms
