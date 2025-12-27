@@ -284,6 +284,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R11N Explosion Towers', // Knockback towers
+      type: 'StartsUsing',
+      netRegex: { id: 'B3ED', source: 'The Tyrant', capture: false },
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.knockbackTowers!(),
+      outputStrings: {
+        knockbackTowers: {
+          en: 'Get Knockback Towers',
+        },
+      },
+    },
+    {
       id: 'R11N Arcadion Avalanche West Safe',
       type: 'StartsUsing',
       netRegex: { id: ['B3EF', 'B3F3'], source: 'The Tyrant', capture: false },
