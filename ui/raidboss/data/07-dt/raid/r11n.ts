@@ -87,7 +87,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => {
         data.weaponModels = {};
         data.weaponTethers = {};
-      }
+      },
     },
     {
       id: 'R11N Assault Evolved Weapon Model Collect',
@@ -96,7 +96,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => !data.trophyActive,
       run: (data, matches) => {
         data.weaponModels[matches.id] = weaponModelIDMap[matches.param1] ?? 'unknown';
-      }
+      },
     },
     {
       // Across multiple logs, tethers appear exactly in execution order.
@@ -109,7 +109,7 @@ const triggerSet: TriggerSet<Data> = {
         id: '00F9',
         sourceId: '4[0-9A-Fa-f]{7}',
         targetId: '4[0-9A-Fa-f]{7}',
-        capture: true
+        capture: true,
       },
       condition: (data) => !data.trophyActive,
       run: (data, matches) => data.weaponTethers[matches.sourceId] = matches.targetId,
@@ -117,7 +117,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R11N Assault Evolved Call',
       type: 'StartsUsing',
-      netRegex: { id: 'B3CD', source: 'The Tyrant', capture: true, },
+      netRegex: { id: 'B3CD', source: 'The Tyrant', capture: true },
       condition: (data) => !data.trophyActive,
       durationSeconds: 15,
       alertText: (data, matches, output) => {
@@ -210,7 +210,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R11N Cosmic Kiss', // Meteor towers
       type: 'StartsUsing',
-      netRegex: { id: 'B3DE', source: 'Comet', capture: false, },
+      netRegex: { id: 'B3DE', source: 'Comet', capture: false },
       suppressSeconds: 1,
       response: Responses.getTowers(),
     },
@@ -244,10 +244,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-    id: 'R11N Majestic Meteor',
-    type: 'StartsUsing',
-    netRegex: { id: 'B3E9', source: 'The Tyrant', capture: false },
-    infoText: (_data, _matches, output) => output.baitPuddles!(),
+      id: 'R11N Majestic Meteor',
+      type: 'StartsUsing',
+      netRegex: { id: 'B3E9', source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.baitPuddles!(),
       outputStrings: {
         baitPuddles: {
           en: 'Bait 3x puddles',
@@ -255,11 +255,11 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-    id: 'R11N Mammoth Meteor',
-    type: 'StartsUsing',
-    netRegex: { id: 'B3EC', source: 'The Tyrant', capture: false },
-    suppressSeconds: 1,
-    infoText: (_data, _matches, output) => output.proxAOE!(),
+      id: 'R11N Mammoth Meteor',
+      type: 'StartsUsing',
+      netRegex: { id: 'B3EC', source: 'The Tyrant', capture: false },
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.proxAOE!(),
       outputStrings: {
         proxAOE: {
           en: 'Proximity AoE',
@@ -267,10 +267,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-    id: 'R11N Arcadion Avalanche West Safe',
-    type: 'StartsUsing',
-    netRegex: { id: ['B3EF', 'B3F3'], source: 'The Tyrant', capture: false },
-    infoText: (_data, _matches, output) => output.westSafe!(),
+      id: 'R11N Arcadion Avalanche West Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B3EF', 'B3F3'], source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.westSafe!(),
       outputStrings: {
         westSafe: {
           en: 'Tower Knockback to West',
@@ -278,10 +278,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-    id: 'R11N Arcadion Avalanche East Safe',
-    type: 'StartsUsing',
-    netRegex: { id: ['B3F1', 'B3F5'], source: 'The Tyrant', capture: false },
-    infoText: (_data, _matches, output) => output.eastSafe!(),
+      id: 'R11N Arcadion Avalanche East Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B3F1', 'B3F5'], source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.eastSafe!(),
       outputStrings: {
         eastSafe: {
           en: 'Tower Knockback to East',
@@ -301,8 +301,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.sharedTankBuster(),
     },
   ],
-  timelineReplace: [
-  ],
+  timelineReplace: [],
 };
 
 export default triggerSet;
