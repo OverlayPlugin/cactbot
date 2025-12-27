@@ -13,17 +13,17 @@ hideall "--sync--"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 10.4 "Crown of Arcadia" Ability { id: "B3B6", source: "The Tyrant" }
-20.5 "Draw Steel" Ability { id: ["B3B7", "B3B8"], source: "The Tyrant" }
-28.6 "Smashdown" Ability { id: ["B3BA", "B3BC"], source: "The Tyrant" }
-34.7 "Draw Steel" Ability { id: ["B3B7", "B3B8"], source: "The Tyrant" }
-42.8 "Smashdown" Ability { id: ["B3BA", "B3BC"], source: "The Tyrant" }
+20.5 "Draw Steel (axe/scythe)" Ability { id: ["B3B7", "B3B8"], source: "The Tyrant" }
+28.6 "Smashdown (in/out)" Ability { id: ["B3BA", "B3BC"], source: "The Tyrant" }
+34.7 "Draw Steel (scythe/axe)" Ability { id: ["B3B7", "B3B8"], source: "The Tyrant" }
+42.8 "Smashdown (out/in)" Ability { id: ["B3BA", "B3BC"], source: "The Tyrant" }
 53.9 "Void Stardust" Ability { id: "B3C8", source: "The Tyrant" }
 60.0 "Comet (castbar)" Ability { id: "B3C9", source: "The Tyrant" }
 62.9 "Cometite 1" #Ability { id: "B3CA", source: "The Tyrant" }
 65.0 "Cometite 2" #Ability { id: "B3CA", source: "The Tyrant" }
-67.0 "Draw Steel" Ability { id: "B3B9", source: "The Tyrant" } # Always sword
+67.0 "Draw Steel (sword)" Ability { id: "B3B9", source: "The Tyrant" } # Always sword
 67.1 "Cometite 3" #Ability { id: "B3CA", source: "The Tyrant" }
-75.1 "Smashdown" Ability { id: "B3BE", source: "The Tyrant" } # Always sword
+75.1 "Smashdown (intercards)" Ability { id: "B3BE", source: "The Tyrant" } # Always sword
 81.3 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
 86.6 "Trophy Weapons" Ability { id: "B3CC", source: "The Tyrant" }
 94.9 "Assault Evolved (castbar)" Ability { id: "B3CD", source: "The Tyrant" }
@@ -66,7 +66,7 @@ hideall "--sync--"
 281.5 "Foregone Fatality" #Ability { id: "B3E0", source: "The Tyrant" }
 291.3 "Cosmic Kiss" Ability { id: "B3DE", source: "Comet" }
 302.3 "Massive Meteor" Ability { id: "B3E3", source: "The Tyrant" }
-302.3 "Foregone Fatality" Ability { id: "B3E0", source: "The Tyrant" }
+302.3 "Foregone Fatality" #Ability { id: "B3E0", source: "The Tyrant" }
 305.5 "--sync--" Ability { id: "B3E4", source: "The Tyrant" } # Double Tyrannhilation
 315.3 "Double Tyrannhilation" Ability { id: "B3E5", source: "The Tyrant" }
 316.4 "Shockwave 1" Ability { id: "B3E6", source: "The Tyrant" }
