@@ -95,9 +95,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      // Category 0197 = PlayActionTimeline
       id: 'R11N Assault Evolved Weapon Model Collect',
       type: 'ActorControlExtra',
-      netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
+      netRegex: { category: '0197', param1: Object.keys(weaponModelIDMap), capture: true },
       condition: (data) => !data.trophyActive,
       run: (data, matches) => {
         data.weaponModels[matches.id] = weaponModelIDMap[matches.param1] ?? 'unknown';
@@ -179,7 +180,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R11N Ultimate Trophy Weapons Call',
       type: 'ActorControlExtra',
-      netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
+      netRegex: { category: '0197', param1: Object.keys(weaponModelIDMap), capture: true },
       condition: (data) => data.trophyActive,
       delaySeconds: 2.4, // Allow for executing previous call.
       alertText: (_data, matches, output) => {
