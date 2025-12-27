@@ -564,6 +564,45 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Queen Eternal': '永恆女王',
+      },
+      'replaceText': {
+        // '\\(abandonment\\)': '', // FIXME '(孤独感)'
+        // '\\(all\\)': '', // FIXME '(全体)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(cones': '', // FIXME '(锥形'
+        // '\\(flare\\)': '', // FIXME '(核爆)'
+        // '\\(gaze\\)': '', // FIXME '(石化光)'
+        // '\\(pre-cast\\)': '', // FIXME '(预咏唱)'
+        // '\\(puddles': '', // FIXME '(放圈'
+        // '\\(raidwide\\)': '', // FIXME '(全域)'
+        // '\\(single\\)': '', // FIXME '(单体)'
+        // '\\(stun\\)': '', // FIXME '(眩晕)'
+        'Absolute Authority': '絕對君權',
+        'Aethertithe': '乙太稅',
+        'Authority\'s Hold': '空間掌控：制動',
+        'Besiegement': '激突',
+        'Brutal Crown': '王權殘暴',
+        'Castellation': '護城牆',
+        'Coronation': '終端發射',
+        'Divide and Conquer': '分治法',
+        'Downburst': '下行突風',
+        'Dynastic Diadem': '王冠之力',
+        'Legitimate Force': '合法武力',
+        'Morning Stars': '黎明的群星',
+        'Powerful Gust': '強風',
+        'Prosecution Of War': '訴諸武力',
+        'Royal Banishment': '放逐射線',
+        'Royal Domain': '王土',
+        'Ruthless Regalia': '王法無情',
+        'Virtual Shift': '虛景切換',
+        'Waltz of the Regalia': '王權圓舞曲',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Queen Eternal': '이터널 퀸',

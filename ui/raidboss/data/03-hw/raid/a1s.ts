@@ -271,6 +271,36 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        '3000-Tonze Missile': '超大型導彈',
+        'Faust': '浮士德',
+        'Hangar 8': '第8大型機庫',
+        'Machinery Bay 44': '第44機工兵倉庫',
+        'Oppressor(?! 0)': '壓迫者',
+        // 'Oppressor 0\\\\.5': '', // FIXME '压迫者零号'
+      },
+      'replaceText': {
+        '3000-Tonze Missile': '超大型導彈',
+        'Distress Beacon': '請求救援',
+        'Emergency Deployment': '緊急出擊',
+        'Emergency Liftoff': '緊急上升',
+        'Gunnery Pod': '砲臺散射',
+        'Hydrothermal Missile': '蒸氣導彈',
+        'Hypercompressed Plasma': '超壓縮等離子',
+        'Kaltstrahl': '寒光',
+        'Missile Impact': '導彈攻擊',
+        'Photon Spaser': '光子照射',
+        'Pressure Increase': '蒸氣壓上升',
+        'Quick Landing': '落地',
+        'Resin Bomb': '黏著彈',
+        'Royal Fount': '皇泉射線',
+        'Self-Destruct': '自爆',
+        'Sturm Doll': '風暴人偶',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         '3000-Tonze Missile': '초대형 미사일',

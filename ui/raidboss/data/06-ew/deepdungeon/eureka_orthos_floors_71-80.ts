@@ -336,6 +336,23 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Bird of Orthos': '正統妖鳥',
+        'Orthos Coeurl': '正統夸爾',
+        'Orthos Flamebeast': '正統焰獸',
+        'Orthos Gulo Gulo': '正統狼獾',
+        'Orthos Kargas': '正統卡爾加斯',
+        'Orthos Primelephas': '正統曙象',
+        'Orthos Sasquatch': '正統雪怪',
+        'Orthos Skatene': '正統斯卡尼特',
+        'Orthos Thunderbeast': '正統雷獸',
+        'Orthos Toco Toco': '正統巨嘴鳥',
+        'Proto-Kaliya': '原型卡利亞',
+        'Weapons Drone': '砲擊無人機',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bird of Orthos': '오르토스 새',

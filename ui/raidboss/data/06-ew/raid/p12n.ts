@@ -373,6 +373,36 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Anthropos': '人',
+        'Athena': '雅典娜',
+        'Thymou Idea': '激情理念',
+      },
+      'replaceText': {
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(stack\\)': '', // FIXME '(分摊)'
+        'Clear Cut': '橫斬',
+        'Dialogos': '對話',
+        'Glaukopis': '明眸',
+        'On the Soul': '論靈魂',
+        'Palladion': '女神的護佑',
+        'Paradeigma': '範式',
+        'Parthenos': '貞女',
+        'Ray of Light': '光波',
+        'Sample': '貪食',
+        'Superchain Burst': '超鏈爆發',
+        'Superchain Coil': '超鏈回環',
+        'Superchain Theory': '超鏈理論',
+        'Theos\'s Ultima': '神之究極',
+        'Trinity of Souls': '三魂一體',
+        'Ultima Blade': '究極之刃',
+        'Unnatural Enchainment': '靈魂鏈',
+        'White Flame': '白火',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Anthropos': '안트로포스',

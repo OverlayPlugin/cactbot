@@ -321,6 +321,43 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arbuda': '額部陀',
+        'Coeurl Smriti': '凶豹所憶',
+        'Coeurl Sruti': '凶豹所聞',
+        'Guidance': '導靈殿',
+        'Harmony': '陰陽苑',
+        'Ivon Coeurlfist': '雙豹伊沃恩',
+        'Tourmaline Pond': '水苔池',
+      },
+      'replaceText': {
+        // '--Smriti Appears--': '', // FIXME '--凶豹出现--'
+        'Basic Instinct': '鬥爭本能',
+        'Cardinal Shift': '四劍大迴旋',
+        'Coeurl Whisper': '雙豹招來',
+        'Electric Burst': '電流爆裂',
+        'Fourfold Shear': '四連雙斬',
+        // 'Front/Back\\?Sides\\?': '', // FIXME '前/后?两侧?'
+        'Furious Fists': '雙豹蒼連擊',
+        'Heat Lightning': '驚電',
+        'Hellseal': '試煉刻印',
+        'Hurricane Kick': '靈魂旋風腳',
+        'Impact': '拉爾戈衝擊',
+        'Killer Instinct': '預判',
+        'Pounce': '爪襲',
+        'Radial Blaster': '放射衝擊波',
+        'Rhalgr\'s Piece': '破壞神拳',
+        'Silent Roar': '雙豹擊',
+        'Spirit Wave': '真靈波',
+        'Tapas': '苦行',
+        'The Rose Of Destruction': '鬥靈彈',
+        'Touch of Slaughter': '靈魂秘孔拳',
+        'Wide Blaster': '廣域衝擊波',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Arbuda': '아부다',

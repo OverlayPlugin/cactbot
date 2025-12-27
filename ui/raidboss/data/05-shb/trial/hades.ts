@@ -470,6 +470,44 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hades': '黑迪斯',
+        // 'Shadow .f .he Ancients': '', // FIXME '古代人之影'
+      },
+      'replaceText': {
+        // 'Adds': '', // FIXME '小怪'
+        // 'Gaol Add': '', // FIXME '监狱'
+        'Ancient Aero': '古代勁風',
+        'Ancient Dark IV': '古代冥暗',
+        'Ancient Darkness': '古代黑暗',
+        'Ancient Water III': '古代大水花',
+        'Bad Faith': '失信',
+        'Black Cauldron': '暗黑之釜',
+        'Broken Faith': '背信',
+        '(?<! )Captivity': '囚禁',
+        'Chorus Of The Lost': '逝者的合唱',
+        'Dark Eruption': '暗炎噴發',
+        'Doom': '死亡宣告',
+        'Double': '雙重',
+        'Dual Strike': '雙重強襲',
+        'Echo Of The Lost': '逝者的回聲',
+        'Hellborn Yawp': '地獄之聲',
+        'Life In Captivity': '囚禁生命',
+        'Nether Blast': '幽冥衝擊',
+        'Polydegmon\'s Purgation': '冥王淨化',
+        'Ravenous Assault': '貪婪突襲',
+        'Shadow Spread': '暗影擴散',
+        'Shadow Stream': '暗影流',
+        'Stream/Purgation?': '暗影流',
+        'The Dark Devours': '黑暗侵蝕',
+        'Titanomachy': '諸神之戰',
+        // '--fetters--': '', // FIXME '--锁链--'
+        'Wail Of The Lost': '逝者的哀嚎',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hades': '하데스',

@@ -601,6 +601,15 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Cat\'s Eye': '貓眼',
+        'The Forecaster': '天氣預報機器人',
+        'Mica the Magical Mu': '畝鼠米卡',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Cat\'s Eye': '캣츠아이',

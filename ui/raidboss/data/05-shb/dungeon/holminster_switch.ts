@@ -303,6 +303,45 @@ const triggerSet: TriggerSet<Data> = {
         'Center': '中心',
       },
     },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'The Wound': '紫黑裂痕',
+        'The Auction': '牲畜賣場',
+        'The manor house courtyard': '領主府前院',
+        'Forgiven Dissonance': '得到寬恕的失調',
+        'Tesleen, the Forgiven': '得到寬恕的泰絲琳',
+        'Philia': '斐利亞',
+      },
+      'replaceText': {
+        'Aethersup': '吸取乙太',
+        'Brazen Bull': '銅牛',
+        'Chain Down': '束縛',
+        'Exorcise': '驅魔',
+        'Fevered Flagellation': '熱情鞭笞',
+        'Fierce Beating': '激烈捶打',
+        'Gibbet Cage': '絞刑籠',
+        'Head Crusher': '裂腦',
+        'Heretic\'s Fork': '異端十字叉',
+        'Holy Water': '聖水',
+        'Into The Light': '埋沒之光',
+        // 'Left/Right Knout': '', // FIXME '左/右鞭打'
+        'Light Shot': '光線射擊',
+        'Pendulum': '鐘擺',
+        'Pillory': '頸手枷',
+        // 'Right/Left Knout': '', // FIXME '右/左鞭打'
+        'Scavenger\'s Daughter': '拾荒者之女',
+        'Scold\'s Bridle': '毒舌鉤',
+        'Taphephobia': '土埋',
+        'The Path Of Light': '光之波動',
+        'The Tickler': '抓撓',
+        'Thumbscrew': '螺旋突刺',
+        'Wooden Horse': '木馬',
+        // 'Tank': '', // FIXME '坦克'
+        // 'Center': '', // FIXME '中心'
+      },
+    },
   ],
 };
 

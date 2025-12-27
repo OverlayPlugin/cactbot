@@ -122,6 +122,17 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Lesser Orthos Dragon': '正統小龍',
+        'Orthoknight': '正統騎士',
+        'Orthos Brobinyak': '正統布羅賓雅克',
+        'Orthos Vanara': '正統婆那羅',
+        'Orthoshelled Dragon': '正統龜甲龍',
+        'Tiamat\'s Clone': '提亞馬特複製體',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Lesser Orthos Dragon': '오르토스 하급 드래곤',

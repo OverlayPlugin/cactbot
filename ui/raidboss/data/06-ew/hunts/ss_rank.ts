@@ -121,6 +121,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Ker': '克爾',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ker': '케르',

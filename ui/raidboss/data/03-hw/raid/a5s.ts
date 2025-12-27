@@ -580,6 +580,56 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        '(?<!Smart)Bomb(?!e)': '炸彈',
+        '(?<!Hummel)Faust': '浮士德',
+        'Glassy-Eyed Minotaur': '興奮米諾陶洛斯',
+        'Gobbledygawker': '哥布之眼',
+        'Gobbledygroper': '哥布林奇美拉',
+        'Hummelfaust': '新型浮士德',
+        'Ratfinx Twinkledinks': '奇才 拉特芬克斯',
+        'Smartbomb': '超高性能炸彈',
+        'The Clevering': '哥布林科學研究室',
+        'Glassy-Eyed Cobra': '興奮眼鏡蛇',
+      },
+      'replaceText': {
+        // '--big--': '', // FIXME '--大--'
+        // '--small--': '', // FIXME '--小--'
+        '10-Tonze Slash': '十噸揮打',
+        'Big Burst': '大爆炸',
+        'Bomb\'s Away': '投放炸彈',
+        'Boost': '蓄力',
+        // 'Cobra': '', // FIXME 'Cobra'
+        'Disorienting Groan': '吼叫',
+        'Feast': '饗宴',
+        'Glupgloop': '強酸劇毒藥',
+        'Gobbledygawker': '哥布之眼',
+        // 'Gobbledygroper Add': '', // FIXME '哥布林奇美拉出现'
+        // 'Gobcut/Straight': '', // FIXME '猛击上勾拳/全力重拳'
+        'Gobdash': '怒濤衝拳',
+        'Gobhook': '剛猛勾拳',
+        'Gobjab': '牽制刺拳',
+        // 'Gobstraight/Cut': '', // FIXME '全力重拳/猛击上勾拳'
+        'Gobswing': '激震拋拳',
+        'Guzzle': '一飲而盡',
+        'Kaltstrahl': '寒光',
+        'Minotaur': '米諾陶洛斯',
+        'Oogle': '石化視線',
+        'Panzer Vor': '戰車前進',
+        'Panzerschreck': '反坦克火箭筒',
+        'Regorge': '噴毒',
+        'Relaxant': '藥物失效',
+        'Shabti': '沙布提',
+        'Shock Therapy': '電氣衝擊',
+        'Steel Scales': '鋼鱗',
+        'Tetra Burst': '四方爆炸',
+        'The Lion\'s Breath': '烈焰吐息',
+        'Yorn Pig': '豚鼠',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         '(?<!Hummel)Faust': '파우스트',

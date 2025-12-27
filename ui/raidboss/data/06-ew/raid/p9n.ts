@@ -385,6 +385,52 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Comet': '隕星',
+        'Fire Sphere': '烈火晶球',
+        'Ice Sphere': '冰晶球',
+        'Kokytos': '克邱特斯',
+      },
+      'replaceText': {
+        // '\\(Behemoth\\)': '', // FIXME '(野兽)'
+        // '\\(Fighter\\)': '', // FIXME '(武术家)'
+        // '\\(Mage\\)': '', // FIXME '(魔法师)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(resolve\\)': '', // FIXME '(判定)'
+        'Archaic Demolish': '古式破碎拳',
+        'Archaic Rockbreaker': '古式地烈勁',
+        'Ascendant Fist': '穿升拳',
+        'Beastly Bile': '野獸膽汁',
+        'Beastly Roar': '殘虐咆哮',
+        'Blizzard III': '大暴雪',
+        'Burst': '飛散',
+        'Charybdis': '大漩渦',
+        'Comet': '隕星',
+        'Disgorge': '吐魂',
+        'Dualspell': '雙重詠唱',
+        'Ecliptic Meteor': '黃道隕石',
+        'Explosion': '爆炸',
+        'Fire III': '大火焰',
+        'Front Combination': '前方連轉腳',
+        'Global Spell': '全域詠唱',
+        'Gluttonous Rampage': '暴食狂怒',
+        'Gluttony\'s Augur': '暴食預兆',
+        'Iceflame Summoning': '冰火召喚',
+        'Inside Roundhouse': '內轉腳',
+        'Outside Roundhouse': '外轉腳',
+        'Pulverizing Pounce': '重爪襲',
+        'Ravening': '噬魂',
+        'Ravenous Bite': '極餓咬',
+        'Rear Combination': '後方連轉腳',
+        'Shockwave': '衝擊波',
+        'Sphere Shatter': '碎裂',
+        'Swinging Kick': '旋身擊',
+        'Touchdown': '空降',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Comet': '혜성',

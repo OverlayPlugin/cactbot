@@ -3543,6 +3543,168 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Crystal of Darkness': '', // FIXME '暗水晶'
+        // 'Crystal of Light': '', // FIXME '光水晶'
+        'Delight\'s Hourglass': '愉快的沙漏',
+        'Drachen Wanderer': '聖龍氣息',
+        'Fatebreaker\'s Image': '絕命戰士的幻影',
+        'Fatebreaker(?!\')': '絕命戰士',
+        // 'Fragment of Fate': '', // FIXME '未来的碎片'
+        'Frozen Mirror': '冰面鏡',
+        'Holy Light': '聖光',
+        'Ice Veil': '永久冰晶',
+        'Oracle of Darkness': '暗之巫女',
+        // 'Oracle\'s Reflection': '', // FIXME '巫女的镜像'
+        // 'Pandora': '', // FIXME '潘多拉·米特隆'
+        'Sorrow\'s Hourglass': '悲傷的沙漏',
+        // 'Usurper of Frost': '', // FIXME '希瓦·米特隆'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(close\\)': '', // FIXME '(近)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(far\\)': '', // FIXME '(远)'
+        // '\\(fast\\)': '', // FIXME '(快)'
+        // '\\(fire\\)': '', // FIXME '(火)'
+        // '\\(follow-up\\)': '', // FIXME '(后续)'
+        // '\\(group tower\\)': '', // FIXME '(小队塔)'
+        // '\\(jump\\)': '', // FIXME '(跳)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(lightning\\)': '', // FIXME '(雷)'
+        // '\\(normal\\)': '', // FIXME '(正常)'
+        // '\\(puddles\\)': '', // FIXME '(圈)'
+        // '\\(rewind drop\\)': '', // FIXME '(放置回返)'
+        // '\\(slow\\)': '', // FIXME '(慢)'
+        // '\\(solo towers\\)': '', // FIXME '(单人塔)'
+        // '\\(stun \\+ cutscene\\)': '', // FIXME '(眩晕 + 动画)'
+        // '\\(stun \\+ rewind\\)': '', // FIXME '(眩晕 + 回返)'
+        // '\\(targeted\\)': '', // FIXME '(定向)'
+        // '--jump south--': '', // FIXME '--跳南--'
+        // '--Oracle center--': '', // FIXME '--巫女中央--'
+        // '--Oracle targetable--': '', // FIXME '--巫女可选中--'
+        // '--Oracle untargetable--': '', // FIXME '--巫女不可选中--'
+        // '--reposition--': '', // FIXME '--归位--'
+        // '--Usurper untargetable--': '', // FIXME '--希瓦·米特隆不可选中--'
+        'Absolute Zero': '絕對零度',
+        'Akh Morn': '死亡輪迴',
+        'Akh Rhai': '天光輪迴',
+        'Apocalypse': '啟示',
+        'Axe Kick': '闊斧迴旋踢',
+        'Banish III Divided': '分裂強放逐',
+        'Banish III(?! )': '強放逐',
+        'Black Halo': '黑色光環',
+        'Blastburn': '火燃爆',
+        'Blasting Zone': '爆破領域',
+        'Bound of Faith': '罪壤刺',
+        'Bow Shock': '弓形衝波',
+        'Bright Hunger': '侵蝕光',
+        'Brightfire': '光炎',
+        'Burn Mark': '爆印',
+        'Burnished Glory': '光焰圓光',
+        'Burnout': '雷燃爆',
+        'Burnt Strike': '燃燒擊',
+        'Burst': '爆炸',
+        // 'Cruel Path of Darkness': '', // FIXME '暗之波涛'
+        // 'Cruel Path of Light': '', // FIXME '光之波涛'
+        // 'Crystallize Time': '', // FIXME '时间结晶'
+        // 'Cyckonic Break': '', // FIXME '暴风破'
+        // 'Cyclonic Break': '', // FIXME '暴风破'
+        'Dark Aero III': '黑暗大勁風',
+        'Dark Blizzard III': '黑暗大暴雪',
+        'Dark Eruption': '暗炎噴發',
+        'Dark Fire III': '黑暗大火焰',
+        'Dark Water III': '黑暗大水花',
+        'Darkest Dance': '暗夜舞蹈',
+        // 'Darklit Dragonsong': '', // FIXME '光与暗的龙诗'
+        // 'Depths of Oblivion': '', // FIXME '忘却的彼岸'
+        'Diamond Dust': '鑽石星塵',
+        'Drachen Armor': '聖龍護甲',
+        // 'Edge of Oblivion': '', // FIXME '忘却的此岸'
+        'Endless Ice Age': '光之氾濫',
+        'Explosion': '爆炸',
+        // 'Fall Of Faith': '', // FIXME '罪壤断'
+        // 'Fated Burn Mark': '', // FIXME '死爆印'
+        'Floating Fetters': '浮游拘束',
+        'Frigid Needle': '冰針',
+        'Frigid Stone': '冰石',
+        'Frost Armor': '冰霜護甲',
+        // 'Fulgent Blade': '', // FIXME '光尘之剑'
+        // 'Hallowed Ray': '', // FIXME '神圣射线'
+        'Hallowed Wings': '神聖之翼',
+        'Hell\'s Judgment': '地獄審判',
+        'Heavenly Strike': '極樂冰柱',
+        // 'Hiemal Ray': '', // FIXME '严冬射线'
+        'Hiemal Storm': '嚴冬風暴',
+        // 'Icecrusher': '', // FIXME '碎冰击'
+        'Icicle Impact': '冰柱衝擊',
+        'Inescapable Illumination': '曝露光',
+        // 'Junction': '', // FIXME '融合'
+        'Joyless Dragonsong': '絕望龍詩',
+        'Light Rampant': '光之失控',
+        'Lightsteep': '過量光',
+        'Longing of the Lost': '聖龍氣息',
+        // 'Luminous Hammer': '', // FIXME '光流侵蚀'
+        'Maelstrom': '巨漩渦',
+        // 'Materialization': '', // FIXME '赋形'
+        // 'Memory Paradox': '', // FIXME '记忆悖论'
+        'Memory\'s End': '記憶終結',
+        // 'Mirror Image': '', // FIXME '镜中显影'
+        'Mirror, Mirror': '鏡中奇遇',
+        'Morn Afah': '無盡頓悟',
+        // 'Pandora\'s Box': '', // FIXME '潘多拉魔盒'
+        'Paradise Lost': '失樂園',
+        'Paradise Regained': '複樂園',
+        // 'Polarizing Paths': '', // FIXME '星灵之剑'
+        // 'Polarizing Strikes': '', // FIXME '星灵之剑'
+        // 'Powder Mark Trail': '', // FIXME '连锁爆印铭刻'
+        'Powerful Light': '光爆',
+        // 'Quadruple Slap': '', // FIXME '四剑斩'
+        'Quicken': '神速',
+        'Quietus': '寂滅',
+        'Reflected Scythe Kick': '連鎖反射：鐮形迴旋踢',
+        '(?<!Reflected )Scythe Kick': '鐮形迴旋踢',
+        'Refulgent Fate': '光之束縛',
+        'Return IV': '強回返',
+        'Return': '回返',
+        'Shadoweye': '暗影之眼',
+        'Shell Crusher': '破盾一擊',
+        'Shining Armor': '閃光護甲',
+        'Shockwave Pulsar': '脈衝星震波',
+        // 'Sinblaze': '', // FIXME '罪冰焰'
+        // 'Sinbound Blizzard III': '', // FIXME '罪冰封'
+        // 'Sinbound Fire III': '', // FIXME '罪爆炎'
+        // 'Sinbound Fire(?! )': '', // FIXME '罪火炎'
+        // 'Sinbound Holy': '', // FIXME '罪神圣'
+        // 'Sinbound Meltdown': '', // FIXME '罪熔毁'
+        // 'Sinbound Thunder III': '', // FIXME '罪暴雷'
+        'Sinsmite': '罪雷',
+        'Sinsmoke': '罪炎',
+        // '(?<!\\()Slow(?<!\\))': '', // FIXME '减速'
+        'Solemn Charge': '急衝刺',
+        'Somber Dance': '真夜舞蹈',
+        'Speed': '限速',
+        // 'Spell-in-Waiting Refrain': '', // FIXME '延迟咏唱·递进'
+        'Spirit Taker': '碎靈一擊',
+        // 'Swelling Frost': '', // FIXME '寒波'
+        'The House of Light': '光之海嘯',
+        // 'The Path of Darkness': '', // FIXME '暗之波动'
+        'The Path of Light': '光之波動',
+        // 'Tidal Light': '', // FIXME '光之巨浪'
+        'Turn Of The Heavens': '光輪召喚',
+        // 'Twin Poles': '', // FIXME '光与暗的双剑技'
+        'Twin Silence': '閒寂的雙劍技',
+        'Twin Stillness': '寂靜的雙劍技',
+        // 'Ultimate Relativity': '', // FIXME '时间压缩·绝'
+        'Unholy Darkness': '黑暗神聖',
+        'Unmitigated Explosion': '大爆炸',
+        // 'Utopian Sky': '', // FIXME '乐园绝技'
+        // 'Wings Dark and Light': '', // FIXME '光与暗的孤翼'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Fatebreaker(?!\')': '페이트브레이커',

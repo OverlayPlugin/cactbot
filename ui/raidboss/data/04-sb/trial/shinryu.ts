@@ -389,6 +389,39 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Cocoon': '光繭',
+        'Left Wing': '左翼',
+        'Right Wing': '右翼',
+        'Shinryu': '神龍',
+        'Tail': '龍尾',
+        'Icicle': '冰柱',
+      },
+      'replaceText': {
+        'Akh Morn': '死亡輪迴',
+        // 'Elemental Attack': '', // FIXME '元素攻击'
+        'Dark Matter': '黑暗物質',
+        'Dragonfist': '龍掌',
+        'Earth Breath': '大地吐息',
+        'Gyre Charge': '螺旋衝鋒',
+        'Hellfire': '地獄之火炎',
+        'Hypernova': '超新星',
+        'Ice Storm': '吹雪',
+        'Icicle Impact': '冰柱衝擊',
+        'Judgment Bolt': '制裁之雷',
+        'Levinbolt': '閃電',
+        'Meteor Impact': '隕石衝擊',
+        'Protostar': '原恆星',
+        'Spikesicle': '冰柱突刺',
+        'Summon Icicle': '召喚冰柱',
+        // 'TAP BUTTON OR ELSE': '', // FIXME 'XJB按'
+        'Tail Slap': '尾部猛擊',
+        'Tidal Wave': '巨浪',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Cocoon': '빛의 고치',

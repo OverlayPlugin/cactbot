@@ -949,6 +949,58 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Blooming Abomination': 'アボミネータースプラウト',
+        'Brute Abombinator': 'ブルートアボミネーター',
+      },
+      'replaceText': {
+        // '--middile--': '', // FIXME '--中间--'
+        // '\\(adds': '', // FIXME '(小怪'
+        // 'cast\\)': '', // FIXME '咏唱)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(puddles': '', // FIXME '(圈'
+        // '\\(seeds drop\\)': '', // FIXME '(种子落下)'
+        'Abominable Blink': '野蠻電火花',
+        'Brutal Impact': '野蠻碎擊',
+        'Brutal Smash': '野蠻揮打',
+        'Brutish Swing': '野蠻橫掃',
+        'Crossing Crosswinds': '交叉突風',
+        'Debris Deathmatch': '荊棘生死戰·牆面',
+        'Demolition Deathmatch': '荊棘生死戰·樓體',
+        'Electrogenetic Force': '雷擊',
+        'Explosion': '爆炸',
+        'Glower Power': '野蠻怒視',
+        'Grappling Ivy': '藤蔓攀附',
+        'Hurricane Force': '颶風',
+        '(?<! )Impact': '衝擊',
+        'Killer Seeds': '種彈重擊',
+        'Lashing Lariat': '藤蔓碎頸臂',
+        'Neo Bombarian Special': '新生超豪華野蠻大亂擊',
+        'Pollen': '花粉',
+        'Powerslam': '強震衝',
+        'Pulp Smash': '荊棘揮打',
+        'Quarry Swamp': '石化波動',
+        'Revenge of the Vines': '荊棘領域',
+        'Roots of Evil': '荊棘蔓延',
+        'Sinister Seeds': '種彈播撒',
+        'Slaminator': '野蠻衝',
+        // 'Smash Here': '', // FIXME '近侧挥打'
+        // 'Smash There': '', // FIXME '远侧挥打'
+        'Special Bombarian Special': '究極超豪華野蠻大亂擊',
+        'Spore Sac': '孢囊',
+        'Sporesplosion': '孢子雲',
+        'Stoneringer(?![s ])': '石製武器',
+        'Stoneringer 2: Stoneringers': '雙持石製武器',
+        'Strange Seeds': '種彈炸裂',
+        'Tendrils of Terror': '荊棘纏縛',
+        'The Unpotted': '荊棘波',
+        'Thorny Deathmatch': '荊棘生死戰',
+        'Winding Wildwinds': '環形突風',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Blooming Abomination': '새싹 어보미네이터',

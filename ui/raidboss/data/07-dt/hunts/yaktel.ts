@@ -195,6 +195,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Starcrier': '幻煌鳥',
+        'Rrax Yity\'a': '血鳴鼠',
+        'Neyoozoteel': '內尤佐緹',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Starcrier': '환황조',

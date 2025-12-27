@@ -125,6 +125,22 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Earthen Fury': '大地之怒',
+        'Titan': '泰坦',
+      },
+      'replaceText': {
+        'Earthen Fury': '大地之怒',
+        'Geocrush': '大地撞擊',
+        'Landslide': '地裂',
+        'Rock Buster': '岩石破壞者',
+        'Rock Throw': '花崗岩牢獄',
+        'Tumult': '激震',
+        'Weight Of The Land': '大地重壓',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Earthen Fury': '대지의 분노',

@@ -210,6 +210,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Nariphon': '納里蓬',
+        'Nuckelavee': '納克拉維',
+        'Tyger': '戾蟲',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Nariphon': '나리폰',

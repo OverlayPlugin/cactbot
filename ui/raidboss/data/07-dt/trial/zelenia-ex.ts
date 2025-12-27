@@ -1135,6 +1135,55 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Briar Thorn': 'クライムハザード',
+        'Zelenia(?!\')': 'ゼレニア',
+        'Zelenia\'s Shade': 'ゼレニアの幻影',
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(chakrams\\)': '', // FIXME '(预兆)'
+        // '\\(enrage\\?\\)': '', // FIXME '(狂暴?)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(markers\\)': '', // FIXME '(标记)'
+        // '\\(resolves\\)': '', // FIXME '(判定)'
+        // '\\(snapshot\\)': '', // FIXME '(快照)'
+        'Alexandrian Banish II(?!I)': '王國中放逐',
+        'Alexandrian Banish III': '王國強放逐',
+        'Alexandrian Holy': '王國神聖',
+        'Alexandrian Thunder II(?!I)': '王國・中雷電',
+        'Alexandrian Thunder III': '王國・大雷電',
+        'Alexandrian Thunder IV': '王國・超雷電',
+        'Blessed Barricade': '聖護壁',
+        'Bud of Valor': '幻影生成',
+        'Emblazon': '活性紋',
+        'Encircling Thorns': '玫瑰荊棘',
+        'Escelons\' Fall': '淩空錯',
+        'Explosion': '爆炸',
+        'Holy Hazard': '神聖破',
+        'Perfumed Quietus': '寂滅之玫瑰',
+        'Power Break': '破勢之劍',
+        'Queen\'s Crusade': '聖戰領域',
+        'Rose Red': '終曲之玫瑰',
+        'Roseblood Bloom': '魔法陣展開',
+        'Roseblood Withering': '魔法陣展開·零式',
+        'Roseblood: 2nd Bloom': '魔法陣展開·二式',
+        'Roseblood: 3rd Bloom': '魔法陣展開·三式',
+        'Roseblood: 4th Bloom': '魔法陣展開·四式',
+        'Roseblood: 5th Bloom': '魔法陣展開·五式',
+        'Roseblood: 6th Bloom': '魔法陣展開·六式',
+        'Shock': '震驚',
+        'Spearpoint Push': '突擊',
+        'Specter of the Lost': '破靈之劍',
+        'Stock Break': '破防之劍',
+        'Thorned Catharsis': '玫瑰滌',
+        'Thunder Slash': '雷鳴劍',
+        'Valorous Ascension': '淩空破',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Briar Thorn': '가시넝쿨',

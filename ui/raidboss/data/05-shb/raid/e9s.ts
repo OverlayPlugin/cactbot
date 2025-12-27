@@ -818,6 +818,40 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Clone Of Darkness': '幻影之雲',
+        'Cloud Of Darkness': '黑暗之雲',
+      },
+      'replaceText': {
+        'The Third Art Of Darkness': '三重暗之戰技',
+        'The Second Art Of Darkness': '二重暗之戰技',
+        'The Art Of Darkness': '暗之戰技',
+        'Summon': '召喚',
+        'Rejuvenating Balm': '活性彈',
+        // 'Phaser Unlimited': '', // FIXME '跳跃波动炮'
+        'Particle Concentration': '波動球',
+        'Obscure Woods': '暗黑森林',
+        'Hypercharged Condensation': '吸引波動雲',
+        'Ground-Razing Particle Beam': '放射式波動砲',
+        'Full-Perimeter Particle Beam': '掃射式波動砲',
+        'Flood Of Obscurity': '暗之氾濫：暗黑森林',
+        'Flood Of Emptiness': '暗之氾濫：暗黑天空',
+        'Empty Plane': '暗黑天空',
+        'Devouring Dark': '暗黑侵蝕',
+        'Deluge Of Darkness': '暗之大氾濫',
+        'Dark-Energy Particle Beam': '詛咒式波動砲',
+        'Condensed Wide-Angle Particle Beam': '廣角式高輸出波動砲',
+        'Condensed Anti-Air Particle Beam': '高射式高輸出波動砲',
+        'Bad Vibrations': '強震動',
+        'Anti-Air Phaser Unlimited': '零式高射式跳躍波動砲',
+        'Anti-Air Particle Beam': '高射式波動砲',
+        'Aetherosynthesis': '吸收生命',
+        // '\\(L/R\\)': '', // FIXME '(左/右)'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Clone Of Darkness': '환영의 구름',

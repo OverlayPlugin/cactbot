@@ -560,6 +560,55 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dadaluma': '達達魯瑪',
+        'Fire Control System': '武器火控系統',
+        'Guardian': '守護者',
+        'Ultros': '奧爾特羅斯',
+        // 'WEAPON SYSTEMS ONLINE': '', // FIXME '武器火控系统启动'
+      },
+      'replaceText': {
+        'Aether Rot': '乙太病毒',
+        'Arm And Hammer': '臂錘',
+        'Atomic Ray': '原子射線',
+        'Aura Cannon': '鬥氣砲',
+        // 'Biblio': '', // FIXME '永世珍本'
+        'Bomb Deployment': '設置炸彈',
+        'Chain Cannon': '鏈式機關砲',
+        'Chakra Burst': '脈輪爆發',
+        // 'Copy(?! Program)': '', // FIXME '复制'
+        // 'Dada': '', // FIXME '达达鲁玛'
+        'Demon Simulation': '載入惡魔模擬程式',
+        'Diffractive Laser': '擴散雷射',
+        'Diffractive Plasma': '擴散離子',
+        'Ink': '墨汁',
+        // 'Interrupt Stoneskin': '', // FIXME '打断石肤'
+        'Load': '載入',
+        'Magitek Ray': '魔導雷射',
+        'Magnetism': '磁力',
+        'Main Cannon': '主加農砲',
+        'Missile Simulation': '載入導彈模擬程式',
+        // 'Paste(?! Program)': '', // FIXME '粘贴'
+        // 'Plane Laser': '', // FIXME '小飞机激光'
+        'Prey': '導彈',
+        // 'Radar': '', // FIXME '雷达'
+        'Repel': '相斥',
+        'Retrieve Air Force': '反向載入',
+        'Retrieve Ultros': '反向載入',
+        // 'Run(?! Program)': '', // FIXME '实体化'
+        'Shockwave': '衝擊波',
+        // 'Skip(?! Program)': '', // FIXME '跳过'
+        'Temporary Misdirection': '精神失常',
+        'Tentacle(?! )': '腕足',
+        'Tentacle Simulation': '載入腕足模擬程式',
+        'Viral Weapon': '病毒兵器',
+        '(?<!\\w)Virus': '病毒',
+        'Wallop': '打擊',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Dadaluma': '다다루마',

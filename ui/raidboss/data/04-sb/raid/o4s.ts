@@ -1305,6 +1305,51 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        '(?<! )Exdeath': '艾克斯迪司',
+        'Neo Exdeath': '新生艾克斯迪司',
+      },
+      'replaceText': {
+        // '\\(charge\\)': '', // FIXME '(排队)'
+        // '\\(colors': '', // FIXME '(鸳鸯锅'
+        // 'lasers\\)': '', // FIXME '激光)'
+        'Aero III': '大勁風',
+        'Almagest': '至高無上',
+        'Black Hole': '黑洞',
+        'Blizzard III': '大暴雪',
+        'Charybdis': '大漩渦',
+        'Collision': '衝擊',
+        'Delta Attack': '三角攻擊',
+        'Double Attack': '雙重攻擊',
+        // 'Tethers': '', // FIXME '连线'
+        'Dualcast': '連續魔法',
+        'Earth Shaker': '大地搖動',
+        'Emptiness': '無之失控',
+        // 'Final Battle': '', // FIXME '最终之战'
+        'Fire III': '大火焰',
+        'Flare': '火光',
+        'Flying Frenzy': '大狂亂',
+        'Flood of Naught': '無之氾濫',
+        'Frenzied Fist': '狂亂之拳',
+        'Frenzied Sphere': '狂亂領域',
+        'Grand Cross Alpha': '大十字·阿爾法',
+        'Grand Cross Delta': '大十字·德爾塔',
+        'Grand Cross Omega': '大十字·歐米茄',
+        'Holy': '神聖',
+        'Light and Darkness': '光與暗',
+        'Meteor': '隕石',
+        'Neverwhere': '規律崩壞',
+        'The Decisive Battle': '決戰',
+        'Thunder III': '大雷電',
+        // 'T/H': '', // FIXME 'T/奶'
+        'Vacuum Wave': '真空波',
+        'White Hole': '白洞',
+        'Zombie Breath': '殭屍吐息',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         '(?<! )Exdeath': '엑스데스',

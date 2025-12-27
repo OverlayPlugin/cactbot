@@ -361,6 +361,28 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'The Right Hand of Bahamut': '巴哈姆特的右手',
+        'The Scourge Of Meracydia': '美拉西迪亞禍龍',
+        'Twintania': '雙塔尼亞',
+      },
+      'replaceText': {
+        'Aetheric Profusion': '乙太失控',
+        'Asclepius': '阿斯克勒庇俄斯',
+        'Death Sentence': '死刑',
+        'Divebomb': '爆破俯衝',
+        'Fireball': '火球',
+        'Firestorm': '火焰流',
+        'Hatch': '魔力爆散',
+        'Hygieia': '許癸厄亞',
+        'Liquid Hell': '液體地獄',
+        'Plummet': '垂直下落',
+        'Twister': '旋風',
+        'Unwoven Will': '破願',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'The Right Hand of Bahamut': '바하무트의 오른손',

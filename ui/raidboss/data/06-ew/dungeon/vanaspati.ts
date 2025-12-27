@@ -299,6 +299,45 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Devatagara': '天神寺',
+        'Insight': '村長屋前',
+        'Svarbhanu': '斯伐婆奴',
+        'Terminus Snatcher': '終末的搶奪',
+        'Terminus Twitcher': '終末的抽搐',
+        'Terminus Wrecker': '終末的破壞',
+        'Trnakiya': '森中空地',
+      },
+      'replaceText': {
+        // '\\(Knockback\\)': '', // FIXME '(击退)'
+        // '\\(Spread\\)': '', // FIXME '(分散)'
+        // '--meteor': '', // FIXME '--陨石'
+        'Aether Siphon': '屬性吸收',
+        'Aether Spray': '屬性放出',
+        'Aetherial Disruption': '地脈失控',
+        'Chaotic Pulse': '地脈活性',
+        'Chaotic Undercurrent': '地脈亂流',
+        'Cosmic Kiss': '轟擊',
+        'Crumbling Sky': '召喚流星',
+        'Flames of Decay': '絕望之炎',
+        'Gnashing of Teeth': '啃咬',
+        'Last Gasp': '哀訴',
+        'Lost Hope': '恍惚的叫聲',
+        'Meaningless Destruction': '絕望中的狂亂',
+        'Mouth Off': '空口白話',
+        'Note of Despair': '絕望的叫聲',
+        'Poison Heart': '毒液塊',
+        'Total Wreck': '極盡破壞',
+        'Unholy Water': '水牢彈',
+        'Vitriol': '言出必行',
+        'Wallow': '嗚咽',
+        'What Is Left': '污穢的左手',
+        'What Is Right': '污穢的右手',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Devatagara': '데바타 사원',

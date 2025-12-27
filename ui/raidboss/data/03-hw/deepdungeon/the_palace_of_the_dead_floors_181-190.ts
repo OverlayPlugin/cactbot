@@ -127,6 +127,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Deep Palace Garm': '深宮加姆',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Deep Palace Garm': '깊은 궁전 가름',

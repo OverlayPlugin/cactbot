@@ -347,6 +347,47 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Calculations indicate increased probability of defeat': '', // FIXME '警告……警告……失败的危险性上升……'
+        'Omega(?!-)': '歐米茄',
+        'Omega-M': '歐米茄M',
+        'Optical Unit': '視覺組',
+        // 'Progress to party combat': '', // FIXME '确认到单独战斗的极限'
+        // '<blip> Limits of single combatant': '', // FIXME '分析……确认到单'
+        // '<blip> Warning\\. Calculations indicate': '', // FIXME '警告……警告……失败的危险性上升……'
+      },
+      'replaceText': {
+        'Beyond Strength': '盾連擊G',
+        'Cosmo Memory': '宇宙記憶',
+        'Discharger': '能量放出',
+        'Efficient Bladework': '劍擊',
+        'Electric Slide': '急襲',
+        'Firewall': '防禦程式',
+        'Floodlight': '泛光燈',
+        'Ground Zero': '歐米茄滑躍',
+        'Laser Shower': '雷射驟雨',
+        'Optical Laser': '光學射線F',
+        'Optimized Blade Dance': '歐米茄刀光劍舞',
+        'Optimized Blizzard III': '歐米茄大暴雪',
+        'Optimized Fire III': '歐米茄・中火焰',
+        'Optimized Meteor': '歐米茄隕石流星',
+        'Optimized Passage of Arms': '歐米茄武裝戍衛',
+        'Optimized Sagittarius Arrow': '歐米茄射手天箭',
+        'Program Alpha': '程式·阿爾法',
+        'Resonance': '共鳴',
+        'Solar Ray': '太陽射線',
+        'Spotlight': '聚光燈',
+        'Subject Simulation F': '變形F',
+        'Subject Simulation M': '變形M',
+        'Superliminal Steel': '劍連擊B',
+        'Suppression': '援護程式F',
+        'Synthetic Blades': '合成劍',
+        'Synthetic Shield': '合成盾',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Omega(?!-)': '오메가',

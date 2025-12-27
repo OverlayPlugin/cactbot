@@ -1052,6 +1052,57 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Mouthwatering Morbol': 'シュガーズモルボル',
+        'Sugar Riot': 'シュガーライオット',
+        'Sweet Shot': 'シュガーズアロー',
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(snapshot\\)': '', // FIXME '(快照)'
+        // '--2x Feather Ray targetable--': '', // FIXME '--2x 羽环鳐 可选中--'
+        // '--2x Mu targetable--': '', // FIXME '--2x 亩鼠 可选中--'
+        // '--Gimme Cat targetable--': '', // FIXME '--索取猫 可选中--'
+        // '--Jabberwock targetable--': '', // FIXME '--炸脖龙 可选中--'
+        // '--Yan targetable--': '', // FIXME '--羊 可选中--'
+        // '--jump\\?--': '', // FIXME '--跳?--'
+        'Artistic Anarchy': '藝術大亂鬥',
+        'Bad Breath': '臭氣',
+        'Brûlée': '熱耗散',
+        'Burst': '爆炸',
+        'Color Clash': '色彩衝擊',
+        'Color Riot': '色彩暴亂',
+        // 'Cool Bomb': '', // FIXME '冷色爆弹怪'
+        'Crowd Brûlée': '重熱擴散',
+        'Dark Mist': '暗黑霧',
+        'Double Style': '雙手塗鴉',
+        'Explosion': '爆炸',
+        'Layer': '添筆',
+        'Levin Drop': '雷流',
+        'Lightning Bolt': '落雷',
+        'Lightning Storm': '百雷',
+        'Live Painting': '即興繪畫',
+        'Moussacre': '慕斯怪大進軍',
+        'Mousse Drip': '啪嘰慕斯怪',
+        'Mousse Mural': '慕斯怪之雨',
+        'Pudding Graf': '咣噹布丁',
+        'Pudding Party': '布丁聚會',
+        'Ready Ore Not': '送你原石',
+        'Rush': '突進',
+        'Single Style': '單手塗鴉',
+        'Soul Sugar': '糖果之魂',
+        'Spray Pain': '飛針',
+        'Sticky Mousse': '黏黏慕斯怪',
+        'Sugarscape': '沙地繪景',
+        'Taste of Fire': '糖果火焰',
+        'Taste of Thunder': '糖果雷電',
+        // 'Warm Bomb': '', // FIXME '暖色爆弹怪'
+        'Wingmark': '翅膀標記',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Mouthwatering Morbol': '슈거 몰볼',

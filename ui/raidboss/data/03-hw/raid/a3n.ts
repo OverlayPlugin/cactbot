@@ -312,6 +312,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Condensate Demineralizer .9': '', // FIXME '第9大型冷凝器'
+        'Hydrate Core': '水合核心',
+        'Liquid Limb': '活水之手',
+        'Living Liquid': '有生命活水',
+      },
+      'replaceText': {
+        // '--Liquid Limb spawns--': '', // FIXME '--活水之手出现--'
+        'Cascade': '傾瀉',
+        'Drainage': '排水',
+        'Fluid Strike': '流體強襲',
+        'Fluid Swing': '流體擺動',
+        'Hydromorph': '水態轉換',
+        'Magnetism': '磁力',
+        'Protean Wave': '萬變水波',
+        'Repel': '相斥',
+        'Sluice': '沖洗',
+        'Splash': '濺開',
+        'Valve': '水閥',
+        'Wash Away': '沖淨',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Condensate Demineralizer .9': '제9대형복수기',

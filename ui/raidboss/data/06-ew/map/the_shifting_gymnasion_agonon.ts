@@ -665,6 +665,26 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Gymnasiou Acheloios': '育體阿刻羅俄斯',
+        'Gymnasiou Leon': '育體雄獅',
+        'Gymnasiou Mandragoras': '育體曼德拉草',
+        'Gymnasiou Megakantha': '育體巨型刺食腐獸',
+        'Gymnasiou Meganereis': '育體巨型涅瑞伊斯',
+        'Gymnasiou Pithekos': '育體猿猴',
+        'Gymnasiou Satyros': '育體薩提洛斯',
+        'Gymnasiou Sphinx': '育體斯芬克斯',
+        'Gymnasiou Styphnolobion': '育體槐龍',
+        'Gymnasiou Tigris': '育體猛虎',
+        'Gymnasiou Triton': '育體特里同',
+        'Lampas Chrysine': '金光拉姆帕斯',
+        'Lyssa Chrysine': '金光呂薩',
+        'Narkissos': '納西索斯',
+        'Verdant Plume': '濃綠之羽',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gymnasiou Acheloios': '김나시온 아켈로오스',

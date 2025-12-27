@@ -1546,6 +1546,71 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Earthen Aether': '土乙太',
+        'Frozen Mirror': '冰面鏡',
+        'great wyrm': '聖龍',
+        'Luminous Aether': '光乙太',
+        'Mothercrystal': '母水晶',
+        'Shiva': '濕婆',
+      },
+      'replaceText': {
+        'Absolute Zero': '絕對零度',
+        'Mirror, Mirror': '鏡中奇遇',
+        // 'Biting/Driving Frost': '', // FIXME '冰霜斩/刺'
+        // 'Reflected Frost \\(G\\)': '', // FIXME '连锁反斩(绿)'
+        // 'Reflected Frost \\(R\\)': '', // FIXME '连锁反斩(红)'
+        'Diamond Frost': '鑽石星塵',
+        'Frigid Stone': '冰石',
+        'Icicle Impact': '冰柱衝擊',
+        'Heavenly Strike': '極樂冰柱',
+        'Frigid Needle': '冰針',
+        'Frigid Water': '冰霜',
+        'Frigid Eruption': '極冰噴發',
+        // 'Driving/Biting Frost': '', // FIXME '冰霜刺/斩'
+        'Double Slap': '雙劍斬',
+        'Shining Armor': '閃光護甲',
+        // 'Axe/Scythe Kick': '', // FIXME '阔斧/镰形回旋踢'
+        'Light Rampant': '光之失控',
+        'Bright Hunger': '侵蝕光',
+        'The Path Of Light': '光之波動',
+        // 'Scythe/Axe Kick': '', // FIXME '镰形/阔斧回旋踢'
+        // 'Reflected Kick \\(G\\)': '', // FIXME '连锁反踢(绿)'
+        'Banish III': '強放逐',
+        'Shattered World': '世界分斷',
+        'Heart Asunder': '心碎',
+        'Rush': '蓄勢衝撞',
+        'Skyfall': '世界消亡',
+        'Akh Morn': '死亡輪迴',
+        'Morn Afah': '無盡頓悟',
+        'Hallowed Wings': '神聖之翼',
+        // 'Reflected Wings \\(B\\)': '', // FIXME '连锁反翼(蓝)'
+        // 'Reflected Wings \\(G\\)': '', // FIXME '连锁反翼(绿)'
+        // 'Reflected Wings \\(R\\)': '', // FIXME '连锁反翼(红)'
+        'Wyrm\'s Lament': '聖龍咆哮',
+        '(?<! )Frost Armor': '冰霜護甲',
+        // 'Twin Silence/Stillness': '', // FIXME '闲寂/静寂的双剑技'
+        // 'Twin Stillness/Silence': '', // FIXME '静寂/闲寂的双剑技'
+        'Drachen Armor': '聖龍護甲',
+        'Akh Rhai': '天光輪迴',
+        // 'Reflected Armor \\(B\\)': '', // FIXME '连锁反甲(蓝)'
+        // 'Reflected Armor \\(G\\)': '', // FIXME '连锁反甲(绿)'
+        // 'Reflected Armor \\(R\\)': '', // FIXME '连锁反甲(红)'
+        'Holy': '神聖',
+        // 'Embittered/Spiteful Dance': '', // FIXME '严峻/冷峻之舞'
+        // 'Spiteful/Embittered Dance': '', // FIXME '冷峻/严峻之舞'
+        'Reflected Drachen': '連鎖反射：聖龍護甲',
+        'Icelit Dragonsong': '冰與光的龍詩',
+        'Draconic Strike': '聖龍一擊',
+        'Banish(?! )': '放逐',
+        'Inescapable Illumination': '曝露光',
+        'The House Of Light': '光之海嘯',
+        // 'Reflected Frost Armor \\(R\\)': '', // FIXME '连锁反冰甲(红)'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Earthen Aether': '땅 에테르',

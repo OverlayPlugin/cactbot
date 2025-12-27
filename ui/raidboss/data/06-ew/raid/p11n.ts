@@ -373,6 +373,42 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Illusory Themis': '特彌斯的幻影',
+        // '(?<!(-| ))Themis': '', // FIXME '特弥斯'
+      },
+      'replaceText': {
+        // '\\(random\\)': '', // FIXME '(随机)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(puddle': '', // FIXME '(圈'
+        // '\\(in/out\\)': '', // FIXME '(内/外)'
+        // 'dynamo\\)': '', // FIXME '月环)'
+        // 'chariot\\)': '', // FIXME '钢铁)'
+        // '\\(cleave': '', // FIXME '(跳劈'
+        // '\\(stack': '', // FIXME '(分摊'
+        'Blinding Light': '光彈',
+        'Dark Perimeter': '黑暗回環',
+        'Dark and Light': '光與暗的調停',
+        'Dike': '正義',
+        'Dineis': '旋渦',
+        'Dismissal Ruling': '駁回判決',
+        'Divine Ruination': '光爆',
+        'Divisive Ruling': '分歧判決',
+        'Emissary\'s Will': '調停者之意',
+        'Eunomia': '秩序',
+        'Inner Light': '內光',
+        'Lightburst': '光爆破',
+        'Outer Dark': '外暗',
+        'Ripples of Gloom': '暗黑衝擊',
+        'Shadowed Messengers': '戒律幻奏',
+        'Sigils of Discord': '失調的判紋',
+        'Styx': '仇恨',
+        'Upheld Ruling': '維持判決',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Illusory Themis': '테미스의 환영',

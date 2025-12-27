@@ -169,6 +169,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Aeturna': '永恆',
+        'Orthos Basilisk': '正統石蜥蜴',
+        'Orthos Cobra': '正統眼鏡蛇',
+        'Orthos Drake': '正統烈陽火蛟',
+        'Orthos Falak': '正統法拉克',
+        'Orthos Gowrow': '正統高牢怪龍',
+        'Orthos Palleon': '正統侏儒避役',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Aeturna': '아이테르나',

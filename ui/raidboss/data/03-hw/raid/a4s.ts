@@ -222,6 +222,26 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'The Manipulator': '操縱者',
+      },
+      'replaceText': {
+        'Carnage(?! Zero)': '滅絕',
+        'Carnage Zero': '零式滅絕',
+        'Discoid': '圓盤',
+        'Emergency Quarantine': '緊急隔離',
+        'Hydrothermal Missile': '蒸氣導彈',
+        'Jagd Doll': '狩獵人偶',
+        'Judgment Nisi': '非最終審判',
+        'Mortal Revolution': '致命進化',
+        'Perpetual Ray': '永恆射線',
+        'Royal Pentacle': '蒸氣審判',
+        'Seed Of The Sky': '天空之種',
+        'Straf Doll': '懲罰人偶',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'The Manipulator': '조종자',

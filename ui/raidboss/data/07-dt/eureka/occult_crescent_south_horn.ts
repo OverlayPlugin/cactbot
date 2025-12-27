@@ -6943,6 +6943,388 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Advanced Aevis': '', // FIXME '高等魔鸟'
+        // 'Assassin\'s Dagger': '', // FIXME '暗杀短剑'
+        'Ball of Fire': '火球',
+        'Black Chocobo': '黑陸行鳥',
+        // 'Black Star': '', // FIXME '黑色天星'
+        // 'Chatterbird': '', // FIXME '叽喳鸟'
+        // 'Clawmarks': '', // FIXME '抓痕'
+        // 'Cloister Demon': '', // FIXME '回廊恶魔'
+        // 'Command Urn': '', // FIXME '指令罐'
+        // 'Crescent Berserker': '', // FIXME '新月狂战士'
+        // 'Crystal Dragon': '', // FIXME '水晶龙'
+        // 'Dead Stars': '', // FIXME '星头三兄弟'
+        // 'Death Claw': '', // FIXME '死亡爪'
+        // 'Dehumidifier': '', // FIXME '除湿之火'
+        // 'Demon Tablet': '', // FIXME '恶魔板'
+        // 'Draconic Double': '', // FIXME '水晶龙的幻影'
+        // 'Execrator': '', // FIXME '执行者'
+        // 'Frozen Phobos': '', // FIXME '冰冻的福博斯'
+        // 'Gaseous Nereid': '', // FIXME '燃烧的涅瑞伊得'
+        // 'Gaseous Phobos': '', // FIXME '燃烧的福博斯'
+        // 'Giant Bird': '', // FIXME '巨大鸟'
+        // 'Gilded Headstone': '', // FIXME '金色石碑'
+        // 'Guardian Berserker': '', // FIXME '狂战士守卫'
+        // 'Guardian Knight': '', // FIXME '骑士守卫'
+        // 'Guardian Weapon': '', // FIXME '兵装守卫'
+        // 'Guardian Wraith': '', // FIXME '幽灵守卫'
+        // 'Hinkypunk': '', // FIXME '鬼火苗'
+        // 'Holy Sphere': '', // FIXME '光球'
+        // 'Ice Golem': '', // FIXME '寒冰巨像'
+        // 'Icewind': '', // FIXME '冰风'
+        // 'Jesting Jackanapes': '', // FIXME '小妖魔'
+        // 'Lifereaper': '', // FIXME '生命收割者'
+        // 'Lion Rampant': '', // FIXME '跃立狮'
+        // 'Liquified Triton': '', // FIXME '融化的特里同'
+        // 'Luminous Lance': '', // FIXME '光枪'
+        // 'Magitaur': '', // FIXME '魔陶洛斯'
+        // 'Nammu': '', // FIXME '纳木'
+        // 'Marble Dragon': '', // FIXME '大理石龙'
+        // 'Master Lockward': '', // FIXME '首领看锁人'
+        // 'Megaloknight': '', // FIXME '巨型骑士'
+        // 'Mysterious Mindflayer': '', // FIXME '夺心魔'
+        // 'Mythic Idol': '', // FIXME '神秘土偶'
+        // 'Mythic Mirror': '', // FIXME '神秘土偶的幻影'
+        // 'Neo Garula': '', // FIXME '进化加鲁拉'
+        // 'Nereid': '', // FIXME '涅瑞伊得'
+        // 'Nymian Petalodus': '', // FIXME '尼姆瓣齿鲨'
+        // 'Observer': '', // FIXME '岛屿监视者'
+        // 'Occult Knight': '', // FIXME '新月骑士'
+        // 'Ochre Stone': '', // FIXME '巨岩'
+        // 'Petalodus Progeny': '', // FIXME '子代瓣齿鲨'
+        // 'Phantom Claw': '', // FIXME '死亡爪的幻影'
+        // '(?<! )Phobos': '', // FIXME '福博斯'
+        // 'Repaired Lion': '', // FIXME '复原狮像'
+        // 'Ropross': '', // FIXME '罗普罗斯'
+        // 'Sage\'s Staff': '', // FIXME '贤者之杖'
+        'Sisyphus': '西西弗斯',
+        'Tentacle': '觸手',
+        // 'Tower Abyss': '', // FIXME '两歧塔深渊'
+        // 'Tower Bhoot': '', // FIXME '两歧塔浮灵'
+        // 'Tower Idol': '', // FIXME '两歧塔石偶'
+        // 'Tower Manticore': '', // FIXME '两歧塔曼提克'
+        // 'Tower Progenitor': '', // FIXME '两歧塔爆弹之父'
+        // 'Tower Progenitrix': '', // FIXME '两歧塔爆弹之母'
+        // 'Trade Tortoise': '', // FIXME '金钱龟'
+        'Trap': '陷阱',
+        // '(?<! )Triton': '', // FIXME '特里同'
+        // 'Vassal Vessel': '', // FIXME '下属人偶'
+      },
+      'replaceText': {
+        // '--adds--': '', // FIXME '--小怪--'
+        // '--adds-targetable--': '', // FIXME '--小怪可选中--'
+        // '--Big Rune Marker': '', // FIXME '--大圈点名'
+        // '--Bomb Mirror--': '', // FIXME '--爆弹怪幻影--'
+        // '--Bosses untargetable--': '', // FIXME '--BOSS 不可选中--'
+        // '--Burns': '', // FIXME '--雷区'
+        // '--Dead Stars targetable--': '', // FIXME '--星头三兄弟可选中--'
+        // '--Demon Mirror--': '', // FIXME '--64页幻影--'
+        // '--dive spot--': '', // FIXME '--俯冲--'
+        // '--Fireballs targetable--': '', // FIXME '--火球可选中--'
+        // '--forced move--': '', // FIXME '--强制移动--'
+        // '--golems ': '', // FIXME '--巨像'
+        // '--holy spheres': '', // FIXME '--光球'
+        // '--ice golems--': '', // FIXME '--寒冰巨像--'
+        // '--ice sprites--': '', // FIXME '--冰元精--'
+        // '--Icicle Puddles--': '', // FIXME '--水圈--'
+        // '--knockback': '', // FIXME '--击退'
+        // '--Mythic Mirror': '', // FIXME '--神秘幻影'
+        // '--Nereid targetable--': '', // FIXME '--涅瑞伊得可选中--'
+        // '--Nereid untargetable--': '', // FIXME '--涅瑞伊得不可选中--'
+        // '--Phobos targetable--': '', // FIXME '--福博斯可选中--'
+        // '--Phobos untargetable--': '', // FIXME '--福博斯得不可选中--'
+        // '--reseal': '', // FIXME '--重封印'
+        // '--sand spheres': '', // FIXME '--土球'
+        // '--Small Rune Markers': '', // FIXME '--小圈点名'
+        // '--Snowballs targetable--': '', // FIXME '--雪球可选中--'
+        // '--Snowballs untargetable--': '', // FIXME '--雪球不可选中--'
+        // '--Swords Mirror--': '', // FIXME '--飞剑幻影--'
+        // '--tentacles': '', // FIXME '--触手'
+        // '--towers': '', // FIXME '--塔'
+        // '--Triton targetable--': '', // FIXME '--特里同可选中--'
+        // '--Triton untargetable--': '', // FIXME '--特里同不可选中--'
+        // '--twisters end--': '', // FIXME '--龙卷结束--'
+        // '--twisters start--': '', // FIXME '--龙卷开始--'
+        // '--wind spheres': '', // FIXME '--风球'
+        // '\\(across land\\)': '', // FIXME '(横穿场地)'
+        // '\\(Big\\)': '', // FIXME '(大)'
+        // '\\(Blowout\\)': '', // FIXME '(轰飞)'
+        // '\\(Blue\\)': '', // FIXME '(蓝)'
+        // '\\(Cards': '', // FIXME '(正点'
+        // '\\(cast\\)': '', // FIXME '(读条)'
+        // '\\(castbar\\)': '', // FIXME '(读条)'
+        // '\\(circle(s)?': '', // FIXME '(圆圈'
+        // '\\(Clear\\)': '', // FIXME '(清场)'
+        // 'cross(es)?\\)': '', // FIXME '十字)'
+        // 'cross(es)?\\?\\)': '', // FIXME '十字?)'
+        // '\\(Crystal\\)': '', // FIXME '(有光元精)'
+        // '\\(Final\\)': '', // FIXME '(最终)'
+        // '\\(Green\\)': '', // FIXME '(绿)'
+        // '\\(H Pattern\\)': '', // FIXME '(H 型)'
+        // '\\(in\\)': '', // FIXME '(内)'
+        // 'Intercards\\)': '', // FIXME '斜点)'
+        // 'Intercards\\?\\)': '', // FIXME '斜点?)'
+        // '\\(jump\\)': '', // FIXME '(跳)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(Lightning\\)': '', // FIXME '(雷)'
+        // '\\(marker\\)': '', // FIXME '(点名)'
+        // '\\(Move\\)': '', // FIXME '(动)'
+        // '\\(No Crystal\\)': '', // FIXME '(无光元精)'
+        // '\\(out\\)': '', // FIXME '(外)'
+        // '\\(Red\\)': '', // FIXME '(红)'
+        // '\\(resurface\\)': '', // FIXME '(上浮)'
+        // '\\(Section': '', // FIXME '(区域'
+        // '\\(Shades\' Crossing\\)': '', // FIXME '(暗影交错)'
+        // '\\(Shades\' Nest\\)': '', // FIXME '(暗影环)'
+        // '\\(side': '', // FIXME '(侧'
+        // '\\(Small\\)': '', // FIXME '(小)'
+        // '\\(spreads\\)': '', // FIXME '(分散)'
+        // '\\(Stop\\)': '', // FIXME '(停)'
+        // '\\(submerge\\)': '', // FIXME '(下潜)'
+        // '\\(tankbusters\\)': '', // FIXME '(死刑)'
+        // '\\(towers': '', // FIXME '(塔'
+        // '\\(Wind\\)': '', // FIXME '(风)'
+        'Aetherial Exchange': '乙太交換',
+        'Aetherial Ray': '乙太射線',
+        'Aetheric Burst': '乙太爆發',
+        // 'Agitated Groan': '', // FIXME '盛怒咆哮'
+        'Ancient Aero III': '古代大勁風',
+        // 'Arcane Blast': '', // FIXME '魔力冲击'
+        'Ancient Holy': '古代神聖',
+        // 'Ancient Stone III': '', // FIXME '古代垒石'
+        // 'Arcane Design': '', // FIXME '魔连弹'
+        // 'Arcane Light': '', // FIXME '魔闪光'
+        // 'Arcane Orb Spiral': '', // FIXME '魔光弹'
+        // 'Arcane Spear': '', // FIXME '魔枪'
+        'Assail': '攻擊指示',
+        // 'Assassin\'s Dagger': '', // FIXME '暗杀短剑'
+        // 'Augmentation of Beacons': '', // FIXME '召唤魔炮'
+        // 'Augmentation of Roundels': '', // FIXME '召唤光球'
+        // 'Augmentation of Stones': '', // FIXME '召唤岩石'
+        'Aura Burst': '鬥氣爆裂',
+        // 'Avalaunch': '', // FIXME '冲天大雪球'
+        // 'Axeglow': '', // FIXME '斧灵气'
+        'Ball of Ice': '凍結',
+        // 'Barefisted Death': '', // FIXME '一拳毙命'
+        'Bedrock Uplift': '地面隆起',
+        'Big Burst': '大爆炸',
+        // 'Big Ruinous Rune': '', // FIXME '破灭符文 (大)'
+        // 'Birdserk Rush': '', // FIXME '突进掀地'
+        // 'Blast Knuckles': '', // FIXME '冲击拳'
+        // 'Blazing Belligerent': '', // FIXME '过热火球'
+        // 'Blazing Flare': '', // FIXME '炽热核爆'
+        // 'Blizzard Trap': '', // FIXME '冰结陷阱'
+        // 'Blowout': '', // FIXME '轰飞'
+        // 'Boil Over': '', // FIXME '发怒'
+        'Bombshell Drop': '爆爆爆彈',
+        'Bright Pulse': '閃光',
+        // 'Cage of Fire': '', // FIXME '牢笼炮'
+        // 'Carving Rune': '', // FIXME '符文镌刻'
+        // 'Channeled Rage': '', // FIXME '燥怒'
+        // 'Chilling Collision': '', // FIXME '凝冰冲击'
+        // 'Choco Aero II': '', // FIXME '陆行鸟烈风'
+        'Choco Beak': '陸行鳥攻擊',
+        // 'Choco Blades': '', // FIXME '陆行鸟风刃'
+        // 'Choco Cyclone': '', // FIXME '陆行鸟旋风'
+        // 'Choco Doublades': '', // FIXME '双重陆行鸟风刃'
+        // 'Choco Maelfeather': '', // FIXME '尾羽'
+        // 'Choco Slaughter': '', // FIXME '陆行鸟杀戮'
+        // 'Choco Windstorm': '', // FIXME '陆行鸟风暴'
+        // 'Clawing Shadow': '', // FIXME '雾霾爪'
+        // 'Clawmarks': '', // FIXME '抓痕'
+        // 'Close Call to Detonate': '', // FIXME '爆炸声明：近'
+        // 'Collateral Balls': '', // FIXME '飞来X弹'
+        // 'Collateral Damage': '', // FIXME '飞来横祸'
+        // 'Collateral Jets': '', // FIXME '飞来X波'
+        // 'Cometeor of Dangers Near': '', // FIXME '压溃式恶魔微型陨石'
+        // 'Cometeor of Expulsion Afar': '', // FIXME '排斥式恶魔微型陨石'
+        // 'Cost of Living': '', // FIXME '古币爆风'
+        // 'Critical Axeblow': '', // FIXME '致命斧'
+        // 'Critical Lanceblow': '', // FIXME '致命枪'
+        // 'Crystal Call': '', // FIXME '生成晶石'
+        // 'Crystal Mirror': '', // FIXME '转移晶石'
+        // 'Crystallized Chaos': '', // FIXME '水晶乱流'
+        // 'Crystallized Energy': '', // FIXME '水晶波动'
+        '(?<! )Dark II': '昏暗',
+        'Death Ray': '死亡射線',
+        // 'Decisive Battle': '', // FIXME '决战'
+        // 'Decompress': '', // FIXME '压缩爆炸'
+        'Deep Freeze': '凍結',
+        'Delta Attack': '三角攻擊',
+        // 'Demonic Dark II': '', // FIXME '恶魔昏暗'
+        // 'Demonograph of Dangers Near': '', // FIXME '压溃式恶魔录'
+        // 'Demonograph of Expulsion Afar': '', // FIXME '排斥式恶魔录'
+        // 'Demonography': '', // FIXME '恶魔录'
+        // '(?<!-)Destruct': '', // FIXME '自爆指令'
+        // 'Dirty Nails': '', // FIXME '腐坏爪'
+        // '(?<! )Dive(?! )': '', // FIXME '跳入'
+        'Double Cast': '雙重詠唱',
+        // 'Dread Deluge': '', // FIXME '恐慌泛滥'
+        'Dread Dive': '落喙俯衝',
+        // 'Draconiform Motion': '', // FIXME '龙态行动'
+        // 'Dualfist Flurry': '', // FIXME '重拳崩'
+        'Earthquake': '地震',
+        'Elemental Impact': '轟擊',
+        // 'End of History': '', // FIXME '魔启示'
+        // 'Epicenter Shock': '', // FIXME '圆状放雷'
+        // 'Erase Gravity': '', // FIXME '微重力'
+        // 'Excruciating Equilibrium': '', // FIXME '要死一起死'
+        'Exodus': '眾生離絕',
+        'Explosion': '爆炸',
+        'Falling Rock': '落石',
+        // 'Far Cry to Detonate': '', // FIXME '爆炸声明：远'
+        // 'Fearsome Facet': '', // FIXME '幻影晶石'
+        // 'Fearsome Glint': '', // FIXME '裂魄惊芒爪'
+        'Flame Thrower': '火炎放射',
+        'Flatten': '壓潰',
+        // 'Flock of Souls': '', // FIXME '附魂'
+        'Fire Spread': '噴火',
+        // 'Fire Trap': '', // FIXME '火炎陷阱'
+        // 'Firestrike': '', // FIXME '重火炮'
+        // 'Forked Fury': '', // FIXME '两歧之怒'
+        // 'Fourpenny Inflation': '', // FIXME '四币咒爆风'
+        'Frigid Dive': '寒霜俯衝',
+        // 'Frigid Twister': '', // FIXME '寒冰龙卷'
+        // 'Frozen Fallout': '', // FIXME '毒液块飞跃'
+        // 'Frozen Heart': '', // FIXME '霜冻之心'
+        'Fusion Burst': '融合爆炸',
+        // 'Geothermal Rupture': '', // FIXME '地热爆破'
+        'Gigaflare': '十億火光',
+        // 'Gravity of Dangers Near': '', // FIXME '压溃式微重力'
+        // 'Gravity of Expulsion Afar': '', // FIXME '排斥式微重力'
+        'Great Ball of Fire': '火球',
+        // 'Heated Outburst': '', // FIXME '气焰'
+        'Heave': '掀地',
+        // 'Heightened Rage': '', // FIXME '狂怒'
+        // 'Hoard Wealth': '', // FIXME '价格暴跌的波动'
+        '(?<!t )Holy(?! )': '神聖',
+        // 'Holy Blaze': '', // FIXME '圣焰'
+        'Holy IV': '極聖',
+        // 'Holy Lance': '', // FIXME '圣枪'
+        // 'Hopping Mad': '', // FIXME '震击怒涛'
+        // 'Horizontal Crosshatch': '', // FIXME '横向双重抓'
+        // 'Hydrocleave': '', // FIXME '深水切割者'
+        // 'Icebound Buffoon': '', // FIXME '过冷雪球'
+        // 'Ill-gotten Goods': '', // FIXME '咒物赊卖'
+        // 'Imitation Blizzard': '', // FIXME '仿效冰结'
+        // 'Imitation Icicle': '', // FIXME '仿效冰柱'
+        // 'Imitation Rain': '', // FIXME '仿效雨'
+        // 'Imitation Star': '', // FIXME '仿效星'
+        // 'Karmic Drain': '', // FIXME '生命侵蚀'
+        // 'Knuckle Crusher': '', // FIXME '碎地拳'
+        // 'Knuckle Down': '', // FIXME '重拳冲击'
+        // 'Lacunate Stream': '', // FIXME '魔录奔流'
+        // 'Lamplight': '', // FIXME '幽魂光'
+        // '(?<! )Lance(?<! )': '', // FIXME '光枪'
+        'Landing': '落地',
+        // 'Lethal Nails': '', // FIXME '死亡甲'
+        // 'Lifeless Legacy': '', // FIXME '无命遗产'
+        // 'Light Surge': '', // FIXME '光爆'
+        // 'Lightning Charge': '', // FIXME '过雷流'
+        // 'Lightning Crossing': '', // FIXME '扇状放雷'
+        // 'Line of Fire': '', // FIXME '直线炮'
+        'Lots Cast': '魔爆炸',
+        'Made Magic': '釋放魔力',
+        // 'Mammoth Bolt': '', // FIXME '大落雷'
+        // 'Mana Expulsion': '', // FIXME '魔力冲动'
+        // 'Manifold Marks': '', // FIXME '多重抓痕'
+        'Marine Mayhem': '海之騷動',
+        // 'Material World': '', // FIXME '咒物起效'
+        'Mind Blast': '精神衝擊',
+        // 'Moatmaker': '', // FIXME '重拳波'
+        // 'Molt': '', // FIXME '附身'
+        'Mystic Heat': '魔射線',
+        // 'Noisome Nuisance': '', // FIXME '过激毒球'
+        // 'Noxious Nova': '', // FIXME '毒素爆散'
+        // 'Occult Chisel': '', // FIXME '魔录凿刻'
+        // 'Onepenny Inflation': '', // FIXME '一币咒爆风'
+        // 'Open Water': '', // FIXME '开放水域'
+        'Pelagic Cleaver': '深海切割者',
+        // 'Portentous Comet(?!eor)': '', // FIXME '恶魔彗星'
+        // 'Portentous Cometeor': '', // FIXME '恶魔微型陨石'
+        'Primal Roar': '大咆哮',
+        // 'Primordial Chaos': '', // FIXME '毒液乐园'
+        // 'Prismatic Wing': '', // FIXME '水晶之翼'
+        // 'Punishing Pounce': '', // FIXME '怒骂猛扑'
+        // 'Radiant Wave': '', // FIXME '光明噪声'
+        // 'Raking Scratch': '', // FIXME '尖甲疾袭'
+        // 'Ray of Dangers Near': '', // FIXME '压溃式暗黑射线'
+        // 'Ray of Expulsion Afar': '', // FIXME '排斥式暗黑射线'
+        // 'Ray of Ignorance': '', // FIXME '暗黑射线'
+        'Recharge': '魔力供給',
+        // 'Recommended for You': '', // FIXME '商品指定'
+        // 'Recuperation': '', // FIXME '痊愈宣告'
+        // 'Restore Gravity': '', // FIXME '重力重置'
+        'Return(?!s)': '返回',
+        // 'Returns': '', // FIXME '回返'
+        'Rockslide': '岩石崩潰',
+        // 'Rotate Right': '', // FIXME '右转向'
+        // 'Rotate Left': '', // FIXME '左转向'
+        // 'Rotation': '', // FIXME '转向'
+        // 'Ruby Blaze': '', // FIXME '炽热诅咒'
+        // '(?<! )Ruinous Rune': '', // FIXME '破灭符文'
+        // '(?<! )Rumble': '', // FIXME '跺地'
+        // 'Rune Axe': '', // FIXME '符文之斧'
+        '(?<! |C)Rush(?!ing|er)': '突進',
+        // 'Rushing Rumble(?! )': '', // FIXME '突进跺地'
+        // 'Rushing Rumble Rampage': '', // FIXME '连续突进跺地'
+        // 'Sage\'s Staff': '', // FIXME '贤者之杖'
+        // 'Sand Surge': '', // FIXME '土爆'
+        // 'Scathing Sweep': '', // FIXME '横砍'
+        '(?<! )Scratch': '抓擊',
+        // 'Seal Asunder': '', // FIXME '封印破坏'
+        'Self-destruct': '自爆',
+        // 'Shades\' Crossing': '', // FIXME '暗影交错'
+        // 'Shades\' Nest': '', // FIXME '暗影环'
+        // 'Shifting Shape': '', // FIXME '开腹'
+        'Shockwave': '衝擊波',
+        // 'Six-Handed Fistfight': '', // FIXME '窝里斗'
+        // 'Slice \'n\' Dice': '', // FIXME '斩切'
+        // 'Slice \'n\' Strike': '', // FIXME '斩切再开炮'
+        // 'Skulking Orders': '', // FIXME '处刑令'
+        // 'Small Ruinous Rune': '', // FIXME '破灭符文 (小)'
+        'Snow Boulder': '大雪球',
+        // 'Snowball Flight': '', // FIXME '雪球狂奔'
+        // 'Spinning Siege': '', // FIXME '回旋炮'
+        // 'Spirit Sling': '', // FIXME '魔力炮'
+        // 'Squash': '', // FIXME '踩扁'
+        'Steelstrike': '飛劍強襲',
+        // 'Stone Swell': '', // FIXME '岩石隆起'
+        // 'Sunderseal Roar': '', // FIXME '破封的咆哮'
+        'Summon': '召喚',
+        // 'Surprise Attack': '', // FIXME '暗袭'
+        // 'Tell': '', // FIXME '显现'
+        'The Grip of Poison': '邪氣的共振',
+        // 'Three-Body Probl─': '', // FIXME '三体问题？'
+        // 'Three-Body Problem': '', // FIXME '三体问题'
+        // 'Threefold Marks': '', // FIXME '三重抓痕'
+        'Tidal Breath': '怒潮吐息',
+        'Tidal Guillotine': '怒潮斷頭臺',
+        'To the Winds': '爆炸四散',
+        // 'Twopenny Inflation': '', // FIXME '二币咒爆风'
+        // 'Unseal(?!ed)': '', // FIXME '封印解除'
+        // 'Unsealed Aura': '', // FIXME '灵气释放'
+        // 'Vertical Crosshatch': '', // FIXME '纵向双重抓'
+        // 'Vengeful Bio III': '', // FIXME '复仇剧毒菌'
+        // 'Vengeful Blizzard III': '', // FIXME '复仇冰封'
+        // 'Vengeful Fire III': '', // FIXME '复仇爆炎'
+        'Void Death IV': '虛空極死',
+        'Void Thunder III': '虛空大雷電',
+        'Wallop': '打擊',
+        'Waterspout': '海龍捲',
+        // 'What\'re You Buying\\?': '', // FIXME '强买强卖'
+        'Wind Surge': '風爆',
+        // 'Withering Eternity': '', // FIXME '无终的枯朽'
+        // 'White-hot Rage': '', // FIXME '气焰怒涛'
+        'Wild Charge': '狂野蓄力',
+        // 'Wicked Water': '', // FIXME '诅咒之水'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Advanced Aevis': '진화한 에이비스',

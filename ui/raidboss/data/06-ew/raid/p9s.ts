@@ -1117,6 +1117,67 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ball of Levin': '雷球',
+        'Comet': '隕星',
+        'Kokytos(?!\')': '克邱特斯',
+        'Kokytos\'s Echo': '克邱特斯的幻影',
+      },
+      'replaceText': {
+        // '\\(Beast': '', // FIXME '(野兽'
+        // '\\(Chimera': '', // FIXME '(合成体'
+        // '\\(Fighter': '', // FIXME '(武术家'
+        // '\\(Final\\)': '', // FIXME '(最终)'
+        // '\\(Mage': '', // FIXME '(魔法师'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(resolve\\)': '', // FIXME '(判定)'
+        // '\\(stacks\\)': '', // FIXME '(分摊)'
+        'Aero IV': '超勁風',
+        'Archaic Demolish': '古式破碎拳',
+        'Archaic Rockbreaker': '古式地烈勁',
+        'Ascendant Fist': '穿升拳',
+        'Beastly Bile': '野獸膽汁',
+        'Beastly Fury': '野獸之怒',
+        'Blizzard III': '大暴雪',
+        'Burst': '飛散',
+        'Charybdis': '大漩渦',
+        'Chimeric Succession': '合成體連擊',
+        'Comet': '隕星',
+        'Disgorge': '吐魂',
+        'Disintegration': '崩毀',
+        'Duality of Death': '雙重死亡',
+        'Dualspell': '雙重詠唱',
+        'Ecliptic Meteor': '黃道隕石',
+        'Fire IV': '超火焰',
+        // 'Fire(?!( |m|s))': '', // FIXME '火炎'
+        'Firemeld': '炎魔衝',
+        'Front Combination': '前方連轉腳',
+        'Front Firestrikes': '前方炎連擊',
+        'Gluttony\'s Augur': '暴食預兆',
+        // 'Ice(?!meld)': '', // FIXME '冰结'
+        'Icemeld': '冰魔衝',
+        'Inside Roundhouse': '內轉腳',
+        'Levinstrike Summoning': '雷電召喚',
+        'Outside Roundhouse': '外轉腳',
+        'Pile Pyre': '烈火樁',
+        'Pyremeld': '重炎擊',
+        'Ravening': '噬魂',
+        'Rear Combination': '後方連轉腳',
+        'Rear Firestrikes': '後方炎連擊',
+        'Scrambled Succession': '混亂連擊',
+        'Shock(?!wave)': '放電',
+        'Shockwave': '衝擊波',
+        'Soul Surge': '靈魂湧動',
+        'Swinging Kick': '旋身擊',
+        'Thunder III': '大雷電',
+        // 'Thunder(?!( |bolt))': '', // FIXME '闪雷'
+        'Thunderbolt': '霹靂',
+        'Two Minds': '附魂雙擊',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ball of Levin': '번개 구체',

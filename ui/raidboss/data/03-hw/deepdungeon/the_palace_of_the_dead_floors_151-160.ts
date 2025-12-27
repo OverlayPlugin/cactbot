@@ -112,6 +112,15 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Deep Palace Deepeye': '深宮深瞳',
+        'Deep Palace Devilet': '深宮小惡魔',
+        'Deep Palace Pot': '深宮魔力罐',
+        'Todesritter': '非生騎士',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Deep Palace Deepeye': '깊은 궁전 볼록눈',

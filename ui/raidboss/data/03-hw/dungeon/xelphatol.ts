@@ -255,6 +255,45 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Abalathian Hornbill': '阿巴拉提亞犀鳥',
+        'Dotoli Ciloc': '旋風扇德托里·西羅克',
+        'Garuda': '迦樓羅',
+        'Nuzal Hueloc': '飛天槍 奴札爾·懷羅克',
+        'The Cage': '巢營門前',
+        'The Tlachtli': '塔帕索利鬥技場',
+        'The Vortex': '風神祭壇',
+        'Tozol Huatotl': '晴天霹靂 托佐爾·法托特爾',
+        'Floating Turret': '氣球砲塔',
+      },
+      'replaceText': {
+        // '\\(buster\\)': '', // FIXME '(死刑)'
+        // '\\(line\\)': '', // FIXME '(直线)'
+        // '\\(aoe\\)': '', // FIXME '(AOE)'
+        'Aerial Blast': '大氣爆發',
+        'Air Raid': '空襲',
+        'Bill': '堅喙',
+        'Dark Wings': '黑旋風',
+        'Eye Of The Storm': '颱風眼',
+        'Ingurgitate': '掠食',
+        'Ixali Aero(?! I)': '鳥人勁風',
+        'Ixali Aero II(?!I)': '鳥人中勁風',
+        'Ixali Aero III': '鳥人大勁風',
+        'Lift': '上升',
+        'Long Burst': '勁風射擊',
+        'Mistral Song': '寒風之歌',
+        'On High': '大扇風',
+        'On Low': '扇風',
+        'Short Burst': '爆裂射擊',
+        'Summon Garuda': '召喚迦樓羅',
+        'Swiftfeather': '身輕如燕',
+        'Wicked Wheel': '邪輪旋風',
+        'Wind Blast': '烈風爆射',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Abalathian Hornbill': '아발라시아 뿔부리',

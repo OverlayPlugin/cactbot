@@ -528,6 +528,53 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Amalgam': '軟性融合體',
+        'Antivirus X': '反病毒程式X',
+        'Eliminator': '清除者',
+        'Interferon C': '反病毒程式C',
+        'Interferon R': '反病毒程式R',
+      },
+      'replaceText': {
+        'Amalgamight': '融合威能',
+        'Centralized Current': '集中放電',
+        'Cytolysis': '細胞溶解',
+        'Disassembly': '解體',
+        'Disinfection': '消毒',
+        'Disruption': '崩裂',
+        'Electray': '雷轉質射線',
+        'Electrowave': '雷轉質波動',
+        'Elimination': '清除',
+        'Explosion': '爆炸',
+        'Halo of Destruction': '毀滅光環',
+        'Holo Ark': '末世方舟',
+        'Immune Response': '免疫反應',
+        'Impact': '衝擊',
+        'Light of Devotion': '獻身之光',
+        'Light of Salvation': '救贖之光',
+        'Overexposure': '多重曝光',
+        'Partition': '斷斬',
+        'Pathocircuit Purge': '環狀清除',
+        'Pathocross Purge': '十字清除',
+        'Quarantine': '檢疫',
+        'Split Current': '分裂放電',
+        'Static Spark': '靜電火花',
+        'Subroutine': '副程式',
+        'Superbolt': '超電擊',
+        'Supercell Matrix': '電流矩陣',
+        'Terminate': '終結',
+        'Ternary Charge': '三重放電',
+        'Voltburst': '電擊爆發',
+        // '\\(corners\\)': '', // FIXME '(四角)'
+        // '\\(front\\)': '', // FIXME '(前方)'
+        // '\\(lasers\\)': '', // FIXME '(激光)'
+        // '\\(sides\\)': '', // FIXME '(两侧)'
+        // '\\(triangle\\)': '', // FIXME '(三角)'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Amalgam': '아말감',

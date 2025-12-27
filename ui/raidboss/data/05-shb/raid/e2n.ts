@@ -326,6 +326,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'The Hand of Erebos': '厄瑞玻斯的巨腕',
+        'Voidwalker': '虛無行者',
+      },
+      'replaceText': {
+        'Dark Fire III': '黑暗大火焰',
+        'Doomvoid Guillotine': '末日虛無斷',
+        'Doomvoid Slicer': '末日虛無切',
+        'Empty Hate': '空無的惡意',
+        'Entropy': '熵',
+        'Punishing Ray': '懲戒之光',
+        'Shadoweye': '暗影之眼',
+        'Shadowflame': '暗影炎',
+        'Spell-in-Waiting': '延遲詠唱',
+        'Unholy Darkness': '黑暗神聖',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'The Hand of Erebos': '에레보스의 팔',

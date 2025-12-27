@@ -210,6 +210,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Cacophony': '嘈雜的噪音',
+        'Orthos Acheron': '正統阿刻戎',
+        'Orthos Bergthurs': '正統山巨怪',
+        'Orthos Gelato': '正統明膠怪',
+        'Orthos Goobbue': '正統古卜',
+        'Orthos Hoarhound': '正統霜狼',
+        'Orthos Kelpie': '正統凱爾派',
+        'Servomechanical Chimera 14X': '自控化奇美拉14X',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Cacophony': '불협화음',

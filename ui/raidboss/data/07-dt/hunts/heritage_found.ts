@@ -473,6 +473,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heshuala': '海休瓦拉',
+        'Urna Variabilis': '多變裝置',
+        'Atticus the Primogenitor': '先驅勇士 阿提卡斯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heshuala': '헤쉬왈라',

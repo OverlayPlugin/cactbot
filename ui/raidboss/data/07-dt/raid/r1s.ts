@@ -807,6 +807,51 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Black Cat': '', // FIXME '黑猫'
+        // 'Copy Cat': '', // FIXME '模仿猫'
+        // 'Soulshade': '', // FIXME '灵魂之影'
+      },
+      'replaceText': {
+        // '\\(First\\)': '', // FIXME '(一)'
+        // '\\(Second\\)': '', // FIXME '(二)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(hit\\)': '', // FIXME '(命中)'
+        // '\\(hits\\)': '', // FIXME '(命中)'
+        // '\\(jump\\)': '', // FIXME '(跳)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(stacks\\)': '', // FIXME '(分摊)'
+        // '\\(telegraphs\\)': '', // FIXME '(预兆)'
+        // '\\(tethers\\)': '', // FIXME '(连线)'
+        // 'Biscuit Maker': '', // FIXME '踩奶'
+        // 'Bloody Scratch': '', // FIXME '血腥抓挠'
+        // 'Copycat': '', // FIXME '模仿之猫'
+        // 'Double Swipe': '', // FIXME '双重利爪'
+        // 'Elevate and Eviscerate': '', // FIXME '腾身开膛'
+        // 'Grimalkin Gale': '', // FIXME '猫怪突风'
+        'Impact': '衝擊',
+        // 'Leaping One-two Paw': '', // FIXME '猫跳二连尖甲'
+        // 'Leaping Quadruple Crossing': '', // FIXME '猫跳四连尖甲'
+        // 'Mouser': '', // FIXME '捕鼠'
+        // 'Nailchipper': '', // FIXME '剪指甲'
+        // 'Nine Lives': '', // FIXME '猫生九命'
+        // '(?<! )One-two Paw': '', // FIXME '二连尖甲'
+        // 'Overshadow': '', // FIXME '超暗影'
+        // 'Predaceous Pounce': '', // FIXME '迅猫急袭'
+        // '(?<! )Quadruple Crossing': '', // FIXME '四连尖甲'
+        // 'Quadruple Swipe': '', // FIXME '四重利爪'
+        // 'Raining Cats': '', // FIXME '倾盆大猫'
+        'Shockwave': '衝擊波',
+        // 'Soulshade': '', // FIXME '灵魂之影'
+        // 'Splintering Nails': '', // FIXME '碎裂尖甲'
+        // 'Tempestuous Tear': '', // FIXME '暴风裂'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Black Cat': '블랙 캣',

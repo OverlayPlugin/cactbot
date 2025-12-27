@@ -489,6 +489,36 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Articulated Bit': '飛手浮游砲',
+        'The Diamond Weapon': '鑽石武器',
+      },
+      'replaceText': {
+        // '\\(Jump\\)': '', // FIXME '(跳)'
+        // '\\(Cleave\\)': '', // FIXME '(冲锋)'
+        'Adamant Purge': '裝甲展開',
+        'Aetherial Bullet': '乙太砲',
+        'Articulated Bits': '飛手浮游砲',
+        'Auri Arts': '敖龍技巧',
+        'Auri Cyclone': '敖龍旋風',
+        'Auri Doomstead': '敖龍厄運',
+        '(?<!Photon )Burst': '大爆炸',
+        'Claw Swipe': '利爪突進',
+        'Code Chi-Xi-Stigma': '代號666',
+        'Diamond Flash': '鑽石閃光',
+        'Diamond Rain': '鑽石雨',
+        'Diamond Shot': '鑽石射擊',
+        'Diamond Shrapnel': '鑽石爆發',
+        'Flood Ray': '泛光射線',
+        // 'Homing Laser': '', // FIXME '自控导弹'
+        'Outrage': '震怒',
+        'Photon Burst': '光子爆發',
+        'Vertical Cleave': '縱劈',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Articulated Bit': '암 비트',

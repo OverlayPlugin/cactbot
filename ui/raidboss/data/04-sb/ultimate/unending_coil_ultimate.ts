@@ -2431,6 +2431,87 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bahamut Prime': '至尊巴哈姆特',
+        'Fang Of Light': '光牙',
+        'Firehorn': '火角',
+        'Iceclaw': '冰爪',
+        'Nael Deus Darnus': '奈爾·神·達納斯',
+        'Nael Geminus': '奈爾雙生子',
+        'Ragnarok': '諸神黃昏',
+        'Tail Of Darkness': '暗尾',
+        'Thunderwing': '雷翼',
+        'Twintania': '雙塔尼亞',
+      },
+      'replaceText': {
+        // '--push--': '', // FIXME '--开怪--'
+        'Aetheric Profusion': '乙太失控',
+        'Akh Morn': '死亡輪迴',
+        // 'Bahamut Marker': '', // FIXME '巴哈标记'
+        'Bahamut\'s Claw': '巴哈姆特之爪',
+        'Bahamut\'s Favor': '龍神的加護',
+        'Blackfire Trio': '黑炎的三重奏',
+        'Calamitous Blaze': '靈災之焰',
+        'Calamitous Flame': '靈災之炎',
+        'Cauterize': '烈火燒灼',
+        'Chain Lightning': '雷光鏈',
+        'Dalamud Dive': '月華衝',
+        'Death Sentence': '死刑',
+        // 'Dive . Dynamo/Chariot': '', // FIXME '冲 + 月环/钢铁'
+        // 'Dive Dynamo Combo': '', // FIXME '冲月环连招'
+        'Doom': '死亡風暴',
+        // 'Dynamo . Beam/Chariot': '', // FIXME '月环 + 光束/钢铁'
+        'Earth Shaker': '大地搖動',
+        'Exaflare': '百京火光',
+        'Fellruin Trio': '災厄的三重奏',
+        'Fireball(?! Soak)': '火球',
+        'Flames Of Rebirth': '轉生之炎',
+        'Flare Breath': '火光吐息',
+        'Flatten': '夷為平地',
+        'Generate': '魔力煉成',
+        'Gigaflare': '十億火光',
+        'Grand Octet': '群龍的八重奏',
+        'Heavensfall Trio': '天地的三重奏',
+        'Heavensfall(?! )': '天崩地裂',
+        'Hypernova': '超新星',
+        'Iron Chariot': '鋼鐵戰車',
+        'Liquid Hell': '液體地獄',
+        'Lunar Dive': '月流衝',
+        'Lunar Dynamo': '月流電圈',
+        // '(?<! )Marker(?!\\w)': '', // FIXME '标记'
+        'Megaflare(?! Dive)': '百萬火光',
+        'Megaflare Dive': '百萬火光衝',
+        'Meteor Stream': '隕石流',
+        // 'Meteor/Dive or Dive/Beam': '', // FIXME '陨石/冲 或 冲/光束'
+        'Morn Afah': '無盡頓悟',
+        // 'Nael Marker': '', // FIXME '奈尔标记'
+        'Pepperoni': '百萬火光',
+        'Plummet(?!\/)': '垂直下落',
+        'Quickmarch Trio': '進軍的三重奏',
+        // 'Random Combo Attack': '', // FIXME '随机连招'
+        // 'Raven(\'s)? Dive': '', // FIXME '凶鸟冲'
+        '(?<!\/)Ravensbeak': '凶鳥尖喙',
+        'Seventh Umbral Era': '第七靈災',
+        'Spread': '百萬火光',
+        'Stack': '百萬火光',
+        // 'Targeted Fire': '', // FIXME '火球点名'
+        'Tempest Wing': '風暴之翼',
+        'Tenstrike Trio': '連擊的三重奏',
+        'Teraflare': '億萬火光',
+        // 'Thermionic . Dynamo/Chariot': '', // FIXME '离子 + 月环/钢铁'
+        'Thermionic Beam': '熱離子光束',
+        'Thermionic Burst': '熱離子爆發',
+        'Towers': '百萬火光',
+        // 'Triple Nael Quote': '', // FIXME '奈尔台词三连'
+        // 'Twin Marker': '', // FIXME '双塔标记'
+        'Twister': '旋風',
+        'Twisting Dive': '旋風衝',
+        'Wings Of Salvation': '救世之翼',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bahamut Prime': '바하무트 프라임',

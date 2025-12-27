@@ -277,6 +277,38 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gowrow': '高牢怪龍',
+        'The Wound': '靈傷',
+        'The Scorpion\'s Tail': '尖尾蠍',
+        'The Lava Tube': '大熔岩窟',
+        'The Leightonward': '萊頓瓦德',
+        'Small Spore Sac': '小型孢囊',
+        '(?<!Small )Spore Sac': '孢囊',
+        'Lava Scorpion': '熔岩蠍',
+      },
+      'replaceText': {
+        // '\\(Adds x2\\)': '', // FIXME '(小怪x2)'
+        // '\\(Adds x4\\)': '', // FIXME '(小怪x4)'
+        // '\\(Back\\)': '', // FIXME '(后)'
+        // '\\(Front\\)': '', // FIXME '(前)'
+        // '\\(Readies\\)': '', // FIXME '(准备)'
+        // '\\(Ring\\)': '', // FIXME '(月环)'
+        'Wild Horn': '野性利角',
+        'Spore Sac': '孢囊',
+        'Realm Shaker': '震撼領域',
+        'Molten Silk': '炎絲噴射',
+        'Inflammable Fumes': '可燃性氣體',
+        'Hiss': '呼喚',
+        'Glorious Blaze': '引火',
+        'Flying Press': '飛躍重壓',
+        'Excretion': '黏液',
+        'Deadly Thrust': '致命尾刺',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gowrow': '가우로우',

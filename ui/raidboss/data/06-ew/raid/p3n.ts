@@ -365,6 +365,38 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Phoinix': '菲尼克斯',
+        'Sparkfledged': '火靈鳥',
+        'Sunbird': '陽炎鳥',
+      },
+      'replaceText': {
+        '--fire expands--': '十字地火',
+        // '--giant fireplume\\?--': '', // FIXME '--巨大火柱?--'
+        'Ashen Eye': '暗之瞳',
+        'Blazing Rain': '炎之雨',
+        'Brightened Fire': '光之炎',
+        '(?<!\\w )Charplume': '暗之劫火焚天',
+        'Darkened Fire': '暗之炎',
+        'Dead Rebirth': '黑暗不死鳥',
+        'Devouring Brand': '十字地火',
+        'Experimental Charplume': '魔力煉成：暗之劫火焚天',
+        'Experimental Fireplume': '魔力煉成：劫火焚天',
+        'Flames of Undeath': '返魂之炎',
+        'Flare of Condemnation': '獄炎火擊',
+        'Fledgling Flight': '群鳥飛翔',
+        'Heat of Condemnation': '獄炎炎擊',
+        'Joint Pyre': '共燃',
+        'Left Cinderwing': '左翼焚燒',
+        'Right Cinderwing': '右翼焚燒',
+        'Scorched Exaltation': '灰燼火焰',
+        'Searing Breeze': '熱噴射',
+        'Trail of Condemnation': '獄炎之焰',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Phoinix': '페넥스',

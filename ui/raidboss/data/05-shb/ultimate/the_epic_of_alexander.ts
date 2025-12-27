@@ -3244,6 +3244,109 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        '(?<! )Alexander(?! )': '亞歷山大',
+        'Alexander Prime': '至尊亞歷山大',
+        'Brute Justice': '殘暴正義號',
+        'Cruise Chaser': '巡航驅逐者',
+        'Jagd Doll': '狩獵人偶',
+        'Judgment Crystal': '審判結晶',
+        'Liquid Hand': '活水之手',
+        'Liquid Rage': '活水之怒',
+        'Living Liquid': '有生命活水',
+        'Perfect Alexander': '完美亞歷山大',
+        'Steam Chakram': '蒸氣戰輪',
+      },
+      'replaceText': {
+        // '--Cruise Chaser Invincible--': '', // FIXME '--巡航驱逐者无敌--'
+        // '--alex untargetable--': '', // FIXME '--亚历山大无法选中--'
+        'True Heart': '真心',
+        // 'Waves': '', // FIXME '水波'
+        // '/Parting': '', // FIXME '/离别之手'
+        // '/Stillness': '', // FIXME '/静止命令'
+        // 'Individual/': '', // FIXME '单体/'
+        // 'Reveal': '', // FIXME '生效'
+        // ' and': '', // FIXME
+        // 'Fate: ': '', // FIXME '未来: '
+        'Almighty Judgment': '神聖大審判',
+        'Alpha Sword': '阿爾法之劍',
+        'Apocalyptic Ray': '末世宣言',
+        'Cascade': '傾瀉',
+        'Chakrams': '雷射戰輪',
+        'Chastening Heat': '神罰射線',
+        'Collective Reprobation': '群體斷罪',
+        'Divine Judgment': '神聖審判',
+        'Divine Spear': '神聖火焰',
+        'Double Rocket Punch': '雙重火箭拳擊',
+        'Down for the Count': '擊倒',
+        'Drainage': '排水',
+        'Earth Missile': '大地導彈',
+        'Embolus': '填充水壓',
+        'Enumeration': '計數',
+        'Eternal Darkness': '黑暗命運',
+        'Exhaust': '污染蒸氣',
+        // 'Fate Calibration': '', // FIXME '未来确定'
+        // 'Fate Projection': '', // FIXME '未来观测'
+        'Final Sentence': '死刑判決',
+        'Flarethrower': '大火炎放射',
+        'Fluid Strike': '流體強襲',
+        'Fluid Swing': '流體擺動',
+        'Gavel': '終審閉庭',
+        'Hand of Pain': '苦痛之手',
+        'Hand of Prayer': '祈禱之手',
+        'Hawk Blaster': '鷹式破壞砲',
+        'Hidden Minefield': '隱形地雷散佈',
+        'Inception(?! )': '時空潛行',
+        'Inception Formation': '時空潛行陣列',
+        'Incinerating Heat': '淨化射線',
+        'Irresistible Grace': '株連',
+        'J Jump': '正義之躍',
+        'J Kick': '正義飛踢',
+        'J Storm': '正義旋風',
+        'Judgment Crystal': '審判結晶',
+        'Judgment Nisi': '非最終審判',
+        'Limit Cut': '限制器減檔',
+        'Link-Up': '系統連接',
+        'Mega Holy': '百萬神聖',
+        // 'Middle Blaster': '', // FIXME '中间冲击波'
+        'Missile Command': '導彈齊發',
+        // 'Obloquy': '', // FIXME '污名神判'
+        'Optical Sight': '制導',
+        'Ordained Capital Punishment': '加重誅罰',
+        'Ordained Motion': '行動命令',
+        'Ordained Punishment': '誅罰',
+        'Photon': '光子砲',
+        // 'Players Remaining': '', // FIXME '剩余玩家'
+        'Propeller Wind': '螺旋槳強風',
+        'Protean Wave': '萬變水波',
+        // 'Rage Wave': '', // FIXME '活水之怒'
+        '(?<! )Repentance': '罪惡感',
+        // 'Radiant ': '', // FIXME '拜火'
+        'Sacrament': '十字聖禮',
+        // 'Severity': '', // FIXME '重罚神判'
+        'Sluice': '沖洗',
+        // 'Solidarity': '', // FIXME '连带神判'
+        'Spin Crusher': '迴旋碎踢',
+        'Splash': '濺開',
+        'Summon Alexander': '召喚亞歷山大',
+        'Super Blassty Charge': '超級摧毀者衝擊',
+        'Super Jump': '超級跳躍',
+        // 'Surety': '', // FIXME '誓约神判'
+        'Temporal Interference': '時空干涉',
+        'Temporal Prison': '時間牢獄',
+        'Temporal Stasis': '時間停止',
+        'The Final Word': '終審判決',
+        'Throttles': '液體監獄',
+        'Void Of Repentance': '懺悔區',
+        // 'Water': '', // FIXME '水'
+        // 'Thunder': '', // FIXME '雷'
+        'Whirlwind': '龍捲風',
+        'Wormhole Formation': '次元斷絕陣列',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         '(?<! )Alexander(?! )': '알렉산더',

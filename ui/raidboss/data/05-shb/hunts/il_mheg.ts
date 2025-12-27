@@ -129,6 +129,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Aglaope': '阿格拉俄珀',
+        'O Poorest Pauldia': '保爾迪雅',
+        'The Mudman': '泥人',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Aglaope': '아글라오페',

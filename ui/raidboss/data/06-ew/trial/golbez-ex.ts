@@ -1025,6 +1025,59 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gale Sphere': '風球',
+        'Golbez': '高貝扎',
+        'Shadow Dragon': '黑龍',
+      },
+      'replaceText': {
+        // '\\(Enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(big\\)': '', // FIXME '(大)'
+        // '\\(small\\)': '', // FIXME '(小)'
+        // '\\(light parties\\)': '', // FIXME '(四四分组)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(explode\\)': '', // FIXME '(发动)'
+        // '\\(snapshot\\)': '', // FIXME '(诱导)'
+        // '\\(back\\)': '', // FIXME '(后)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(front\\)': '', // FIXME '(前)'
+        // '\\(out\\)': '', // FIXME '(外)'
+        // '\\(record\\)': '', // FIXME '(记录)'
+        // '\\(under\\)': '', // FIXME '(靠近)'
+        // '\\(hit\\)': '', // FIXME '(命中)'
+        // '\\(preview\\)': '', // FIXME '(预兆)'
+        'Abyssal Quasar': '深淵類星體',
+        'Arctic Assault': '極寒突襲',
+        'Azdaja\'s Shadow': '黑龍劍阿珠達雅',
+        'Binding Cold': '咒縛寒氣',
+        'Black Fang': '黑牙',
+        'Burning Shade': '黑炎',
+        'Cauterize': '黑炎俯衝',
+        'Double Meteor': '雙重隕石',
+        'Dragon\'s Descent': '降龍爆火',
+        'Eventide Fall': '集束黑龍閃',
+        'Eventide Triad': '三連黑龍閃',
+        'Explosion': '爆炸',
+        'Flames of Eventide': '黑龍炎',
+        'Gale Sphere': '風晶球',
+        'Immolating Shade': '重黑炎',
+        'Lingering Spark': '遲緩電火花',
+        'Phases of the Blade': '弦月連劍',
+        'Phases of the Shadow': '弦月黑龍連劍',
+        'Rising Beacon': '升龍烽火',
+        'Rising Ring': '升龍環火',
+        'Terrastorm': '遲緩地暴',
+        'Void Aero III': '虛空大勁風',
+        'Void Blizzard III': '虛空大暴雪',
+        'Void Comet': '虛空隕星',
+        'Void Meteor': '虛空隕石',
+        'Void Stardust': '虛空隕星雨',
+        'Void Tornado': '虛空龍捲風',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gale Sphere': '바람 구체',

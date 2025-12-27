@@ -195,6 +195,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Forgiven Pedantry': '得到寬恕的炫學',
+        'Huracan': '烏拉坎',
+        'Li\'l Murderer': '小小殺手',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Forgiven Pedantry': '면죄된 현학',

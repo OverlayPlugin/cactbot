@@ -896,6 +896,46 @@ const triggerSet: TriggerSet<Data> = {
         'Unlimited Express': '无控急行',
       },
     },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aether': '乙太晶球',
+        // 'Doomtrain': '', // FIXME '格莱杨拉波尔'
+        // 'Kinematic Turret': '', // FIXME '护卫炮塔'
+      },
+      'replaceText': {
+        // '\\(bait\\)': '', // FIXME '(诱导)'
+        // '\\(detonate\\)': '', // FIXME '(爆炸)'
+        'Aetherial Ray': '乙太射線',
+        // 'Aetherochar': '', // FIXME '以太炮'
+        // 'Aetherosote': '', // FIXME '以太冲击波'
+        'Arcane Revelation': '魔法陣展開',
+        // 'Dead Man\'s Blastpipe': '', // FIXME '超增压排雾'
+        // 'Dead Man\'s Express': '', // FIXME '超增压急行'
+        // 'Dead Man\'s Overdraught': '', // FIXME '超增压'
+        // 'Dead Man\'s Windpipe': '', // FIXME '超增压抽雾'
+        // 'Derail(?!ment)': '', // FIXME '脱轨'
+        // 'Derailment Siege': '', // FIXME '脱轨捶打'
+        'Electray': '雷轉質射線',
+        // 'Hail of Thunder': '', // FIXME '雷光雨'
+        'Headlight': '前照光',
+        // 'Hyperconductive Plasma': '', // FIXME '重雷'
+        // 'Hyperexplosive Plasma': '', // FIXME '重爆雷'
+        'Lightning Burst': '雷電爆發',
+        // '(?<! )Overdraught': '', // FIXME '溢流'
+        // '(?<! )Plasma(?! )': '', // FIXME '爆雷'
+        // 'Plasma Beam': '', // FIXME '等离子射线'
+        'Plummet': '掉落',
+        'Psychokinesis': '念動反應',
+        // 'Runaway Train': '', // FIXME '无尽狂奔'
+        'Shockwave': '衝擊波',
+        // 'Third Rail': '', // FIXME '雷光一闪'
+        'Thunderous Breath': '雷鳴吐息',
+        // 'Turret Crossing': '', // FIXME '炮塔出击'
+        // 'Unlimited Express': '', // FIXME '无控急行'
+      },
+    },
   ],
 };
 

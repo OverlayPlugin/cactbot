@@ -346,6 +346,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      locale: 'tc',
+      replaceSync: {
+        ' has initiated a ready check': '發起了準備確認。',
+        'You have commenced a ready check': '發起了準備確認。',
+        'You poke the striking dummy': '.*用手指戳向木人',
+        'You psych yourself up alongside the striking dummy': '.*激勵木人',
+        'You burst out laughing at the striking dummy': '.*看著木人高聲大笑',
+        'You clap for the striking dummy': '.*向木人送上掌聲',
+        '7 minutes have elapsed since your last activity.': '已經7分鐘沒有進行任何操作',
+      },
+    },
+    {
       locale: 'ko',
       replaceSync: {
         'has initiated a ready check': '님이 준비 확인을 시작했습니다',

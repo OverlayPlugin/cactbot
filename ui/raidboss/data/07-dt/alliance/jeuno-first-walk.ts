@@ -1554,6 +1554,138 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aquarius': 'Aquarius',
+        'Ark Angel EV': 'Ark Angel EV',
+        'Ark Angel GK': 'Ark Angel GK',
+        'Ark Angel HM': 'Ark Angel HM',
+        'Ark Angel MR': 'Ark Angel MR',
+        'Ark Angel TT': 'Ark Angel TT',
+        'Despot': 'Despot',
+        'Fafnir The Forgotten': 'Fafnir',
+        'Fafnir the Forgotten': 'Fafnir',
+        'Lordly Shadow': 'Lordly Shadow',
+        'Luminous Remnant': '光流殘滓',
+        'Prishe Of The Distant Chains': '遙遠的咒縛 普利修',
+        'Prishe of the Distant Chains': '遙遠的咒縛 普利修',
+        'Shadow Lord': 'Shadow Lord',
+        'Sprinkler': 'Sprinkler',
+        // 'The Dragon\'s Aery': '', // FIXME '龙巢'
+        // 'The grand dais': '', // FIXME '斗舞台'
+        // 'The La\'loff Amphitheater': '', // FIXME '拉·洛弗剧场'
+        // 'The Throne Room': '', // FIXME '王座大殿'
+      },
+      'replaceText': {
+        // '--all untargetable--': '', // FIXME '--全体不可选中--'
+        // '--Binding Indicator': '', // FIXME '--绑定指示'
+        // '--Darters spawn--': '', // FIXME '--赤蜻生成--'
+        // '--EV \\+ HM center--': '', // FIXME '--EV + HM 中央--'
+        // '--EV \\+ HM targetable--': '', // FIXME '--EV + HM 可选中--'
+        // '--EV untargetable--': '', // FIXME '--EV 不可选中--'
+        // '--HM center--': '', // FIXME '--HM 中央--'
+        // '--MR center--': '', // FIXME '--MR 中央--'
+        // '--MR targetable--': '', // FIXME '--MR 可选中--'
+        // '--GK targetable--': '', // FIXME '--GK 可选中--'
+        // '--MR jump--': '', // FIXME '--MR 跳--'
+        // '--TT jump--': '', // FIXME '--TT 跳--'
+        // '\\(add\\)': '', // FIXME '(小怪)'
+        // '\\(big raidwide\\)': '', // FIXME '(超大全域)'
+        // '\\(boss\\)': '', // FIXME '(BOSS)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(castbar\\)': '', // FIXME '(咏唱栏)'
+        // '\\(circle\\)': '', // FIXME '(圆)'
+        // '\\(circle AoE\\)': '', // FIXME '(圆形AOE)'
+        // '\\(circle indicator\\)': '', // FIXME '(圆形指示)'
+        // '\\(exalines\\)': '', // FIXME '(扩展直线)'
+        // '\\(explode\\)': '', // FIXME '(爆炸)'
+        // '\\(gaze\\)': '', // FIXME '(石化光)'
+        // '\\(grid\\)': '', // FIXME '(网格)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(line AoE\\)': '', // FIXME '(直线AOE)'
+        // '\\(line indicators\\)': '', // FIXME '(直线指示)'
+        // '\\(puddles\\)': '', // FIXME '(圈)'
+        // '\\(raidwide\\)': '', // FIXME '(全域)'
+        // '\\(raidwides\\)': '', // FIXME '(全域)'
+        // '\\(rings\\)': '', // FIXME '(环)'
+        // '\\(single lines\\)': '', // FIXME '(单独直线)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(spreads explode\\)': '', // FIXME '(分散爆炸)'
+        // '\\(stack\\)': '', // FIXME '(集合)'
+        'Absolute Terror': '絕對恐懼',
+        'Arrogance Incarnate': '驕慢化身',
+        'Asuran Fists': '夢想阿修羅拳',
+        'Auroral Uppercut': '羅剎七星拳',
+        'Baleful Breath': '兇惡吐息',
+        // 'Banish(?!(ga| Storm))': '', // FIXME '放逐'
+        'Banish Storm': '放逐風暴',
+        'Banishga(?! )': '強放逐',
+        'Banishga IV': '強放逐IV',
+        'Binding Sigil': '束縛咒',
+        'Brittle Impact': '落地',
+        'Burning Battlements': '暗火燎堞',
+        'Burning Court': '暗火燎庭',
+        'Burning Keep': '暗火燎城',
+        'Burning Moat': '暗火燎壕',
+        'Burst': '爆炸',
+        'Cloudsplitter': '劈雲斬',
+        'Concerted Dissolution': '分解連技',
+        'Critical Reaver': '暴擊分斷',
+        'Critical Strikes': '暴擊威震',
+        'Cross Reaver': '絕雙十悶刃',
+        'Crystalline Thorns': '金剛棘',
+        'Cthonic Fury': '冥界之怒',
+        'Damning Strikes': '詛咒強襲',
+        'Dark Matter Blast': '黑暗物質衝擊',
+        'Dark Nebula': '新星爆發',
+        'Dark Nova': '黑暗新星',
+        'Divine Dominion': '方舟支配',
+        'Dominion Slash': '支配斬',
+        'Doom Arc': '毀滅之弧',
+        'Dragon Breath': '巨龍吐息',
+        'Dragonfall': '亢龍天錘落',
+        'Echoes of Agony': '慘痛的回響',
+        'Explosion': '爆炸',
+        'Flames of Hatred': '憎惡之火',
+        'Giga Slash(?!:)': '十億斬擊',
+        'Giga Slash: Nightfall': '十億斬擊·入夜',
+        'Guillotine': '斷首',
+        'Havoc Spiral': '災亂螺旋',
+        'Holy': '神聖',
+        'Horrid Roar': '恐懼咆哮',
+        'Hurricane Wing': '颶風之翼',
+        '(?<!Brittle )Impact': '衝擊',
+        'Implosion': '向心聚爆',
+        'Knuckle Sandwich': '迎面重拳',
+        'Light\'s Chain': '光連技',
+        'Meikyo Shisui': '明鏡止水',
+        'Meteor': '隕石流星',
+        'Mighty Strikes': '強力衝擊',
+        'Mijin Gakure': '隱於微塵',
+        '(?<! )Nightfall': '入夜',
+        'Nullifying Dropkick': '崑崙八象腳·改',
+        'Offensive Posture': '攻擊姿態',
+        'Proud Palisade': '極致防禦',
+        'Raiton': '雷遁之術',
+        'Rampage': '暴怒',
+        'Shadow Spawn': '影之增殖',
+        'Sharp Spike': '鋒刺',
+        'Soul Binding': '靈魂束縛',
+        'Spike Flail': '刃尾橫掃',
+        'Spiral Finish': '螺旋終結',
+        'Tachi: Gekko': '八之太刀·月光',
+        'Tachi: Kasha': '九之太刀·花車',
+        'Tachi: Yukikaze': '七之太刀·雪風',
+        'Tera Slash': '萬億斬擊',
+        'Touchdown': '空降',
+        'Umbra Smash': '本影爆碎',
+        'Unbridled Rage': '無拘暴怒',
+        'Utsusemi': '空蟬之術',
+        'Winged Terror': '恐慌之翼',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Aquarius': '아쿠아리우스',

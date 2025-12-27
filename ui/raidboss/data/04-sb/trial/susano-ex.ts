@@ -363,6 +363,37 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ame-No-Murakumo': '天之叢雲',
+        'Susano': '須佐之男',
+        'Thunderhead': '雷雲',
+        'Ama-No-Iwato': '天之岩戶',
+      },
+      'replaceText': {
+        'Assail': '強擊',
+        'Churn': '禍泡附身',
+        'Dark Levin': '紫電',
+        // 'Knockback': '', // FIXME '击退'
+        'Levinbolt': '閃電',
+        // 'Phase': '', // FIXME '阶段'
+        'Rasen Kaikyo': '螺旋海峽',
+        'Seasplitter': '斷海',
+        'Stormsplitter': '破浪斬',
+        'The Hidden Gate': '岩戶隱',
+        'The Sealed Gate': '岩戶閉合',
+        'Ukehi': '祈請',
+        // '(?<! )cloud': '', // FIXME '云'
+        'Ame-No-Murakumo(?! )': '天之叢雲',
+        'Stun': '眩暈',
+        'Yata-No-Kagami': '八咫鏡',
+        'Brightstorm': '晴嵐',
+        'Yasakani-No-Magatama': '八尺瓊勾玉',
+        'The Parting Clouds': '雲間放電',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ame-No-Murakumo(?! )': '아메노무라쿠모',

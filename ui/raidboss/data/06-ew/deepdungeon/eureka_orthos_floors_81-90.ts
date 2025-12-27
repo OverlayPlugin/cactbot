@@ -453,6 +453,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Administrator': '管理者',
+        'Interceptor α': '截擊系統α',
+        'Interceptor β': '截擊系統β',
+        'Interceptor γ': '截擊系統γ',
+        'Orthoiron Corse': '正統鐵面腐屍',
+        'Orthos Ahriman': '正統惡精靈',
+        'Orthos Catoblepas': '正統卡托佈雷帕斯',
+        'Orthos Deepeye': '正統深瞳',
+        'Orthos Gourmand': '正統貪吃鬼',
+        'Orthos Hecteyes': '正統百目妖',
+        'Orthos Pegasus': '正統黑天馬',
+        'Orthos Spartoi': '正統地生人',
+        'Orthos Specter': '正統妖影',
+        'Orthos Wraith': '正統幽靈',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Administrator': '관리자',

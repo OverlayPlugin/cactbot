@@ -810,6 +810,59 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Graven Image': '眾神之像',
+        'Kefka': '凱夫卡',
+        'Light Of Consecration': '祝聖之光',
+        'The limit gauge resets!': '極限槽被清零了……',
+      },
+      'replaceText': {
+        'Aero Assault': '疼颼颼大勁風',
+        'All Things Ending': '消滅之腳',
+        'Blizzard Blitz': '滴溜溜大暴雪',
+        // 'Blizzard\\+Thunder': '', // FIXME '冰封+暴雷'
+        'Celestriad': '三星',
+        'Fire III': '大火焰',
+        'Flagrant Fire': '呼啦啦大火焰',
+        'Forsaken': '遺棄末世',
+        'Graven Image': '眾神之像',
+        'Gravitas': '重力彈',
+        // 'Half Arena': '', // FIXME '半场'
+        'Heartless Angel': '無心天使',
+        'Heartless Archangel': '無心大天使',
+        'Hyperdrive': '超驅動',
+        'Indomitable Will': '強腕的神氣',
+        'Inexorable Will': '無情的神氣',
+        'Knockback Tethers': '波動彈',
+        'Light Of Judgment': '制裁之光',
+        'Mana Charge': '魔法儲存',
+        'Mana Release': '魔法放出',
+        'Meteor': '隕石',
+        // 'Past/Future(?! )': '', // FIXME '过去/未来破灭'
+        // 'Past/Future End': '', // FIXME '过去/未来终结'
+        'Pulse Wave': '波動彈',
+        'Revolting Ruin': '惡狠狠大毀滅',
+        'Shockwave': '衝擊波',
+        // 'Sleep/Confuse Tethers': '', // FIXME '睡眠/混乱 连线'
+        'Soak': '光之波動',
+        'Starstrafe': '妖星亂舞',
+        // 'Statue Gaze': '', // FIXME '神像视线'
+        // 'Statue Half Cleave': '', // FIXME '神像半场AOE'
+        'Thrumming Thunder': '劈啪啪大雷電',
+        'Thunder III': '大雷電',
+        'Timely Teleport': '跳蹦蹦傳送',
+        'Trine': '異三角',
+        'Ultima Upsurge': '撲騰騰究極',
+        'Ultimate Embrace': '終末雙腕',
+        'Ultima(?![ |\\w])': '最終究極',
+        'Vitrophyre': '岩石彈',
+        'Wave Cannon': '波動砲',
+        'Wings Of Destruction': '破壞之翼',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Graven Image': '신들의 상',

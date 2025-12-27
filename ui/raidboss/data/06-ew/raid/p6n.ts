@@ -262,6 +262,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hegemone': '赫革摩涅',
+        'Parasitos': '寄生生物',
+      },
+      'replaceText': {
+        // 'random': '', // FIXME '随机'
+        // 'sides': '', // FIXME '两侧'
+        // 'front': '', // FIXME '前方'
+        // 'back': '', // FIXME '后方'
+        'Aetherial Exchange': '乙太交換',
+        'Aetheric Polyominoid': '乙太方陣',
+        'Choros Ixou': '寄生之舞',
+        'Dark Ashes': '冥灰',
+        'Hemitheos\'s Dark IV': '半神冥暗',
+        'Polyominoid Sigma': '乙太方陣Σ',
+        'Polyominous Dark IV': '多連方冥暗',
+        'Reek Havoc': '噴氣',
+        'Strophe Ixou': '寄生之旋',
+        'Synergy': '協同',
+        'Transmission': '寄生傳染',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hegemone': '헤게모네',

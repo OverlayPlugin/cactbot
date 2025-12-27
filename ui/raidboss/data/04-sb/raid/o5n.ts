@@ -197,6 +197,30 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Phantom Train': '魔列車',
+        'Wroth Ghost': '怒靈',
+      },
+      'replaceText': {
+        'Acid Rain': '酸雨',
+        // 'Add Wave': '', // FIXME '一波小怪'
+        'Crossing Whistle': '魔界汽笛',
+        'Diabolic Chimney': '魔界噴煙',
+        'Diabolic Headlamp': '魔界前照燈',
+        'Diabolic Light': '魔界光',
+        'Diabolic Wind': '魔界風',
+        'Doom Strike': '魔靈擊',
+        'Encumber': '擋路',
+        'Ghost Beams': '聖光射線',
+        // 'Ghosts': '', // FIXME '幽灵'
+        'Head On': '追尾',
+        'Saintly Beam': '聖光射線',
+        'Tether Whistle': '魔界汽笛',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Phantom Train': '마열차',

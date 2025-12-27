@@ -266,6 +266,42 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Boomtype Magitek Gobwalker G-VII': '爆破型7號哥布林戰車',
+        'Giant Bomb': '最終炸彈',
+        'Gordian Hardhelm': '戈耳狄硬盔兵',
+        'Gordian Hardmind': '戈耳狄鐵心兵',
+        'Gordian Sniper': '戈耳狄狙擊手',
+        'Gordian Soldier': '戈耳狄士兵',
+        'Hangar 12': '第12大型機庫',
+        'Jagd Doll': '狩獵人偶',
+        'King Gobtank G-IV': '4號哥布林坦克王',
+        'Magitek Gobwidow G-IX': '9號哥布林黑寡婦',
+        '(?<!Giant )Bomb(?!e)': '炸彈',
+      },
+      'replaceText': {
+        'Blitzstrahl': '迅光',
+        'Bodyhurt Breakblock': '軀體防護',
+        'Boomcannon': '爆炸加農砲',
+        'Brainhurt Breakblock': '精神防護',
+        'Carpet Bomb': '地毯式轟炸',
+        '(?<!Massive )Explosion': '爆炸',
+        // 'Gobwalker': '', // FIXME '哥布林战车'
+        // 'Gobwidow': '', // FIXME '哥布林黑寡妇'
+        // 'Hardhelm': '', // FIXME '戈耳狄硬盔兵'
+        // 'Hardmind': '', // FIXME '戈耳狄铁心兵'
+        'Jagd Doll': '狩獵人偶',
+        'Kaltstrahl': '寒光',
+        'Massive Explosion': '大爆炸',
+        // 'Sniper': '', // FIXME '戈耳狄狙击手'
+        // 'Soldier': '', // FIXME '戈耳狄士兵'
+        // 'Wave': '', // FIXME '波'
+        // '\\(mid\\)': '', // FIXME '(中央)'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         '(?<!Giant )Bomb(?!e)': '폭탄',

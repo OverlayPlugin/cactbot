@@ -438,6 +438,55 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Apollyon': '亞巴頓',
+        'Drowsie': '瞌睡怪',
+        'Green Clot': '綠色凝塊',
+        'Ihuykatumu Flytrap': '生息陷阱草',
+        // 'Ihuykatumu Ivy': '', // FIXME '生息藤蔓大口花'
+        'Ihuykatumu Sandworm': '生息沙蟲',
+        'Prime Punutiy': '首領海牛',
+        '(?<! )Punutiy': '海牛',
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(inner ring\\)': '', // FIXME '(内环)'
+        // '\\(large\\)': '', // FIXME '(大)'
+        // '\\(outer ring\\)': '', // FIXME '(外环)'
+        // '\\(puddle\\)': '', // FIXME '(圈)'
+        // '\\(small\\)': '', // FIXME '(小)'
+        'Arise': '出現',
+        'Blade(?!s )': '鐮擊',
+        'Blades of Famine': '飛蝗之刃',
+        'Bury': '塌方',
+        'Cutting Wind': '風刃',
+        'Decay': '腐爛',
+        'Drowsy Dance': '瞌睡舞',
+        'High Wind': '強風',
+        'Hydrowave': '水化波動',
+        'Levinsickle': '閃電鐮',
+        'Punutiy Flop': '海牛猛躍',
+        'Punutiy Press': '海牛重壓',
+        'Razor Storm': '空氣絞割',
+        'Razor Zephyr': '空氣削割',
+        'Resurface': '重吐於世',
+        'Shore Shaker': '地動岸搖',
+        'Sneeze': '噴嚏',
+        'Song of the Punutiy': '海牛之聲',
+        'Sow': '播種',
+        'Spit': '嘔吐',
+        'Swarming Locust': '單蝗成群',
+        'Thunder III': '大雷電',
+        'Uppercut': '上擊',
+        'Wallop': '打擊',
+        'Wind Sickle': '風鐮',
+        'Windwhistle': '喚風',
+        'Wing of Lightning': '扇狀放電',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Apollyon': '아폴리온',

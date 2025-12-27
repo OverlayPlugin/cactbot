@@ -331,6 +331,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Lunatender Queen': '月面仙人掌女王',
+        'Mousse Princess': '慕斯公主',
+        'Ruminator': '沉思之物',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Lunatender Queen': '루나텐더 여왕',

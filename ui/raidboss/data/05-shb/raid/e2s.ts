@@ -673,6 +673,37 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'The Hand Of Erebos': '厄瑞玻斯的巨腕',
+        'Voidwalker': '虛無行者',
+      },
+      'replaceText': {
+        'Cleaver/Slicer?': '末日虛無劈',
+        'Cycle Of ?': '混沌連續劍',
+        'Dark Fire III': '黑暗大火焰',
+        'Doomvoid Cleaver': '末日虛無劈',
+        'Doomvoid Guillotine': '末日虛無斷',
+        'Doomvoid Slicer': '末日虛無切',
+        'Empty Hate(?!/)': '空無的惡意',
+        'Empty Hate/Rage': '空無的惡意',
+        'Empty Rage': '空無的惡念',
+        'Entropy': '熵',
+        'Flare': '火光',
+        'Guillotine/Cleaver?': '復仇連續劍',
+        'Hell Wind': '地獄之風',
+        // 'Light/Dark Circles': '', // FIXME '黑白圈'
+        'Punishing Ray': '懲戒之光',
+        'Quietus': '寂滅',
+        'Shadoweye': '暗影之眼',
+        'Shadowflame': '暗影炎',
+        'Slicer/Guillotine': '末日虛無斷',
+        'Spell-In-Waiting': '延遲詠唱',
+        'Unholy Darkness': '黑暗神聖',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'The Hand Of Erebos': '에레보스의 팔',

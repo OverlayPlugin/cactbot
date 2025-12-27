@@ -98,6 +98,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Sephirot': '賽菲羅特',
+        'Storm of Words': '言語風暴',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Sephirot': '세피로트',

@@ -983,6 +983,52 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Cloud Of Darkness': '黑暗之雲',
+        'Cloud of Darkness': '黑暗之雲',
+        // 'Cloudlet of Darkness': '', // FIXME '暗黑之破片云'
+        // 'Stygian Shadow': '', // FIXME '生于黑暗之物'
+      },
+      'replaceText': {
+        // '--adds untargetable--': '', // FIXME '--小怪不可选中--'
+        // 'Active-pivot Particle Beam': '', // FIXME '回旋式波动炮'
+        '(?<!En)Aero IV': '超勁風',
+        // 'Blade of Darkness': '', // FIXME '暗之刃'
+        // 'Break IV': '', // FIXME '超石化'
+        // 'Chaos-condensed Particle Beam': '', // FIXME '凝聚式波动炮'
+        // 'Core-lateral Phaser': '', // FIXME '正侧跳跃波动炮'
+        // 'Curse of Darkness': '', // FIXME '波动诅咒'
+        // 'Dark Dominion': '', // FIXME '深暗领域'
+        'Dark-energy Particle Beam': '詛咒式波動砲',
+        // '(?<!En)Death IV': '', // FIXME '极死'
+        'Deluge of Darkness': '暗之大氾濫',
+        // 'Diffusive-force Particle Beam': '', // FIXME '分散式波动炮'
+        // 'Enaero IV': '', // FIXME '超附风'
+        // 'Endeath IV': '', // FIXME '超附死'
+        // 'Evaporation': '', // FIXME '云散'
+        'Evil Seed': '種子彈',
+        // 'Excruciate': '', // FIXME '磔杀'
+        'Feint Particle Beam': '潛地式波動砲',
+        'Flare': '火光',
+        // 'Flood of Darkness': '', // FIXME '暗之泛滥'
+        // 'Ghastly Gloom': '', // FIXME '恐惧之云'
+        // 'Grim Embrace': '', // FIXME '阴冷拥抱'
+        // 'Lateral-core Phaser': '', // FIXME '侧正跳跃波动炮'
+        // 'Looming Chaos': '', // FIXME '混沌迫近'
+        '(?<! )Particle Beam': '波動爆炸',
+        'Particle Concentration': '波動球',
+        // '(?<! )Phaser': '', // FIXME '跳跃波动炮'
+        // 'Rapid-sequence Particle Beam': '', // FIXME '连射式波动炮'
+        // 'Razing-volley Particle Beam': '', // FIXME '齐射式波动炮'
+        'Thorny Vine': '荊棘叢生',
+        'Unholy Darkness': '黑暗神聖',
+        'Vortex': '吸引',
+        'the Third Art of Darkness': '三重暗之戰技',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Cloud Of Darkness': '어둠의 구름',

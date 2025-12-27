@@ -456,6 +456,42 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bomb': '炸彈',
+        'Faust Z': '終極浮士德',
+        'Full-Metal Faust': '全裝甲浮士德',
+        'Life Support': '再生處理室',
+        'Refurbisher 0': '廢品翻新裝置',
+        'Scrap': '廢料拳',
+        'The Cranial Plate': '頭部甲板',
+      },
+      'replaceText': {
+        '(?<!Double )Scrapline': '廢料金臂鉤',
+        // '--rocks fall--': '', // FIXME '--石头落下--'
+        'Acid Rain': '酸蝕雨',
+        // 'Alarum': '', // FIXME '警报'
+        '(?<!Scrap )Bomb': '炸彈',
+        // 'Double Scrapline': '', // FIXME '二重碎颈臂'
+        'Explosion': '爆炸',
+        // 'Full-Metal Faust Add': '', // FIXME '全装甲浮士德出现'
+        'Heat Shielding Reassembly': '裝甲再生',
+        'Kaltstrahl': '寒光',
+        // 'Lava': '', // FIXME '岩浆'
+        'Left Arm Reassembly': '左臂再生',
+        'Panzer Vor': '戰車前進',
+        'Panzerschreck': '反坦克火箭筒',
+        'Power Generator': '動力發生器',
+        'Right Arm Reassembly': '右臂再生',
+        'Scrap Bomb': '廢料炸彈',
+        'Scrap Burst': '廢料爆發',
+        'Scrap Storm': '廢料風暴',
+        'Scrap(?! |line)': '廢料拳',
+        'Stockpile': '吸收',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bomb': '폭탄',

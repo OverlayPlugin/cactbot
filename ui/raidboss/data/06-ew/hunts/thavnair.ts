@@ -525,6 +525,15 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Daivadipa': '明燈天王',
+        'Sphatika': '頗胝迦',
+        'Sugriva': '須羯里婆',
+        'Yilan': '尤蘭',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Daivadipa': '다이바디파',

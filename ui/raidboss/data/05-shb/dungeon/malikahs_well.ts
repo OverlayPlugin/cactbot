@@ -201,6 +201,39 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Pack Armadillo': '群落犰狳',
+        'Terminus': '軌道車站',
+        'Malikah\'s Gift': '馬利卡水源',
+        'Unquestioned Acceptance': '無償離宮',
+        'Greater Armadillo': '大犰狳',
+        'Amphibious Talos': '水陸兩用塔羅斯',
+        'Storge': '斯托爾戈',
+        'Rhapsodic Nail': '愛之樁柱',
+      },
+      'replaceText': {
+        'Stone Flail': '落石重錘',
+        'Head Toss': '甩尾錘',
+        'Right Round': '大迴旋',
+        'Flail Smash': '重錘碎擊',
+        'Earthshake': '地盤震動',
+        'Efface': '抹滅',
+        'Wellbore': '鑽井',
+        'Geyser Eruption': '井水噴出',
+        'High Pressure': '高壓',
+        'Swift Spill': '強制放水',
+        'Intestinal Crank': '絞腸',
+        'Heretic\'s Fork': '異端十字叉',
+        'Breaking Wheel': '碎輪',
+        'Crystal Nail': '打樁',
+        'Censure': '執行',
+        // 'Armadillo': '', // FIXME '犰狳'
+        // 'Pack': '', // FIXME
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Pack Armadillo': '무리 아르마딜로',

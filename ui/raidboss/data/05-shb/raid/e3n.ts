@@ -245,6 +245,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Leviathan': '利維坦',
+      },
+      'replaceText': {
+        'Crashing Pulse': '激烈波動',
+        'Drenching Pulse': '猛烈波動',
+        'Freak Wave': '畸形波',
+        'Killer Wave': '殺人浪',
+        'Maelstrom': '巨漩渦',
+        'Monster Wave': '瘋狗浪',
+        'Rip Current': '裂流',
+        'Smothering Tsunami': '溺沒大海嘯',
+        'Spinning Dive': '迴旋俯衝',
+        'Splashing Tsunami': '強風大海嘯',
+        'Surging Tsunami': '強壓大海嘯',
+        'Swirling Tsunami': '渦動大海嘯',
+        'Temporary Current': '臨時洋流',
+        'Tidal Roar': '浪潮嘶吼',
+        'Tidal Wave': '巨浪',
+        '(?<! )Tsunami': '大海嘯',
+        'Undersea Quake': '海底地震',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Leviathan': '리바이어선',

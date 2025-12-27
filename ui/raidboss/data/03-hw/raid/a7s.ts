@@ -385,6 +385,41 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bomb': '炸彈',
+        'Boomtype Magitek Gobwalker G-VII': '7號哥布林戰車L型',
+        'Frostbite': '凍傷',
+        'Padlock': '牢門的鎖',
+        'Pyretic': '熱病',
+        'Quickthinx Allthoughts': '萬事通 奎克辛克斯',
+        'Shanoa': '夏諾雅',
+        'Sturm Doll': '風暴人偶',
+        'The electrocution gallery': '公開處刑廣場',
+      },
+      'replaceText': {
+        // 'Big Doll': '', // FIXME '大人偶'
+        // 'Bomb(?!(s|en))': '', // FIXME '炸弹'
+        // 'Bombs': '', // FIXME '炸弹'
+        // '(?<! )Doll': '', // FIXME '人偶'
+        'Flamethrower': '火焰噴射器',
+        // 'Hammertime': '', // FIXME '惩戒'
+        // 'Jails': '', // FIXME '监狱'
+        // 'Get Prey': '', // FIXME '监狱点名'
+        // 'Get Tether': '', // FIXME '监狱连线'
+        'Kill Heart': '聲援',
+        // 'Resync': '', // FIXME '重新同步'
+        'Sizzlebeam': '哥布式波動砲',
+        'Sizzlespark': '哥布林火花',
+        // 'Small Doll(?!s)': '', // FIXME '小人偶'
+        // 'Small Dolls': '', // FIXME '小人偶'
+        // 'Stun Heart': '', // FIXME '击晕真心'
+        'Uplander Doom': '齊射',
+        'Zoomdoom': '哥布火箭',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bomb': '폭탄',

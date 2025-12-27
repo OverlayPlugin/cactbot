@@ -485,6 +485,51 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Exhibit level VIII': '第八展示區',
+        'Motherbit': '浮游砲主機板',
+        'Prototype Bit': '原型浮游砲',
+        // 'Successfully mimicking the Demon Zurvan': '', // FIXME '随着对鬼神祖尔宛力量的应用，'
+        'The Genesis Engine': '啟動試驗室',
+        'The Ultima Beast': '究極神獸',
+        'The Ultima Warrior': '究極戰士',
+        'The reality augmentation bay': '現實增強室',
+        // 'This humanoid prototype can perfectly replicate': '', // FIXME '我们研究出了如何利用斗神力量的方法！'
+        // 'Utilizing our data on Sophia': '', // FIXME '利用斗神的力量去征服斗神！'
+        'Vocal Guidance System': '語音導覽員',
+        'Servomechanical Minotaur': '自控化米諾陶洛斯',
+        'Servomechanical Chimera': '自控化奇美拉',
+        'Proto-Chimera': '原型奇美拉',
+        'Biomanufactured Minotaur': '生化米諾陶洛斯',
+      },
+      'replaceText': {
+        'Aether Bend': '乙太曲折',
+        'Aetherochemical Laser': '魔科學雷射',
+        // '(?<! )Aetheroplasm': '', // FIXME '以太爆雷'
+        'Allagan Flare': '亞拉戈火光',
+        'Allagan Gravity': '亞拉戈重力',
+        'Ceruleum Vent': '青磷放射',
+        'Citadel Buster': '攻城砲',
+        'Death Spin': '死亡迴旋',
+        'Demi Ultima': '亞究極',
+        'Diffractive Laser': '擴散雷射',
+        'Dischordant Cleansing': '不平衡之罰',
+        'Electrochemical Transfer': '雷力供給',
+        'Flare Star': '耀星',
+        'Forborn Beast': '後天野獸',
+        'Infinite Fire': '炎之刻印',
+        'Infinite Ice': '冰之刻印',
+        'Light Pillar': '光柱',
+        'Mass Aetheroplasm': '大型乙太爆雷',
+        'Northern Star': '北極星',
+        'Primordial Aether': '荒蠻乙太',
+        'Ratzon': '意志',
+        'Southern Star': '南極星',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Exhibit level VIII': '제VIII전시구역',

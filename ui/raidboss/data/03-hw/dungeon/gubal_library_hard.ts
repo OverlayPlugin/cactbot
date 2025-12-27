@@ -424,6 +424,50 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Behemoth Ward': '凶惡巨獸護衛',
+        'Demon of the Tome': '書中惡魔',
+        'Liquid Flame': '液態火焰',
+        'Mechanoscribe': '自走人偶抄寫員',
+        'Meteor': '隕石',
+        'Middle Shelf Tome': '平裝本',
+        'Strix': '博學林鴞',
+        'The Astrology and Astromancy Camera': '占星學研究室',
+        'The Hall of Magicks': '魔書翼廊',
+        'The Rare Tomes Room': '思想珍秘書庫',
+        'Top Shelf Tome': '精裝本',
+      },
+      'replaceText': {
+        // '\\?': '', // FIXME ' ?'
+        'Bibliocide': '烈火',
+        'Book Drop': '發行',
+        'Check Out': '選集',
+        'Discontinue': '停刊',
+        'Ecliptic Meteor': '黃道隕石',
+        'Folio': '再版',
+        'Form Shift': '演武',
+        'Frightful Roar': '駭人嚎叫',
+        // 'Hand/Tornado': '', // FIXME '手/龙卷'
+        'Issue': '發行',
+        // 'Magnetism/Repel': '', // FIXME '磁力/相斥'
+        'Meteor Impact': '隕石衝擊',
+        'Properties Of Darkness II': '昏暗之章',
+        // 'Properties Of Darkness(?! II)': '', // FIXME '黑暗之章'
+        'Properties Of Imps': '河童之章',
+        'Properties Of Quakes': '爆震之章',
+        'Properties Of Thunder III': '大雷電之章',
+        'Properties Of Tornados': '龍捲風之章',
+        // 'Quakes/Tornados': '', // FIXME '爆震/龙卷'
+        'Sea Of Flames': '火海',
+        'Seal Of Night And Day': '刻印',
+        'Searing Wind': '熱風',
+        'Slosh': '突進',
+        'Triclip': '三連爪',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Behemoth Ward': '고서의 베히모스',

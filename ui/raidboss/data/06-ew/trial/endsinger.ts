@@ -448,6 +448,42 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Doomed Stars': '邁向終結的星球',
+        'Kakodaimon': '惡靈魔',
+        'The Endsinger': '謳歌終結之物',
+        'oblivion': '混沌次元',
+      },
+      'replaceText': {
+        // '\\(big\\)': '', // FIXME '(大)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(small\\)': '', // FIXME '(小)'
+        'Aporrhoia': '流溢',
+        'Crash': '衝撞',
+        'Dead Star': '坍縮星',
+        'Death\'s Embrace': '死亡擁抱',
+        'Ekstasis': '恍惚',
+        'Elegeia(?! )': '哀歌',
+        'Elegeia Unforgotten': '哀歌：記錄事件',
+        'Elenchos': '反詰',
+        'Epigonoi': '後裔',
+        'Fatalism': '宿命',
+        'Galaxias': '銀河',
+        'Hubris': '傲慢',
+        'Interstellar': '星際穿越',
+        'Katastrophe': '災祟',
+        'Meteor Outburst': '隕石爆發',
+        'Meteor Radiant': '隕石輻射點',
+        'Nemesis': '復仇',
+        'Planetes': '行邁之星',
+        'Telomania': '終末狂熱',
+        'Telos': '終末',
+        'Ultimate Fate': '終極命運',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Doomed Stars': '멸망한 별',

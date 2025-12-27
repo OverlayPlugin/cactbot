@@ -213,6 +213,39 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hexadrone Bit': '魔導六輪裝甲浮游砲',
+        'Hypertuned Grynewaht': '強化格林瓦特',
+        'Magitek Chakram': '魔導戰輪',
+        'Magitek Hexadrone': '魔導六輪裝甲',
+        'Magitek Rearguard': '魔導後衛',
+        'Rearguard Bit': '魔導後衛浮游砲',
+        'Retuned Magitek Bit': '改良版魔導浮游砲',
+        'The Third Armory': '第三兵器庫',
+        'The Training Grounds': '練兵場',
+        'The Hall Of The Scarlet Swallow': '赤燕之間',
+      },
+      'replaceText': {
+        '2-Tonze Magitek Missile': '大型魔導飛彈',
+        // 'Bits Activate': '', // FIXME '浮游炮激活'
+        'Cermet Pile': '陶瓷合金樁',
+        'Chainsaw': '鏈鋸',
+        'Circle Of Death': '死亡迴旋',
+        'Clean Cut': '激突',
+        'Delay-Action Charge': '定時炸彈',
+        'Garlean Fire': '加雷馬火焰',
+        'Gunsaw': '鏈鋸槍',
+        // 'Hexadrone Bits': '', // FIXME '魔导六轮装甲浮游炮'
+        // 'Magitek Bits': '', // FIXME '魔导浮游炮'
+        'Magitek Missiles': '魔導飛彈',
+        'Magitek Ray': '魔導雷射',
+        // 'Rearguard Mines': '', // FIXME '魔导后卫炸雷'
+        'Thermobaric Charge': '氣化炸彈',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hexadrone Bit': '헥사롤러 비트',

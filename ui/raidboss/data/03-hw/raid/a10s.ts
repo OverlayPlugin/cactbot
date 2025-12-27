@@ -506,6 +506,51 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Buzzsaw': '旋轉鏈鋸',
+        'Gobpress R-VI': '6號哥布林壓路機',
+        'Lamebrix Strikebocks': '傭兵雷姆普里克斯',
+        'Lameprix Strikedocks': '虛兵雷姆普里克斯',
+        'The Excruciationator': '科學萬能處刑場',
+        'Weight Of The World': '大陸之重',
+      },
+      'replaceText': {
+        // '(?!--)mechanic': '', // FIXME '机制'
+        // '--in/out--': '', // FIXME '--内/外--'
+        // '--out/in--': '', // FIXME '--外/内--'
+        // '--spread/stack--': '', // FIXME '--分散/集合--'
+        // '--stack/spread--': '', // FIXME '--集合/分散--'
+        // '\\)\\?': '', // FIXME ') ?'
+        'Brighteyes': '目標',
+        // 'Clone Add': '', // FIXME '分身出现'
+        'Discharge': '槍擊',
+        'Double Charge': '二連填充',
+        'Floor Trap': '啟動陷阱',
+        'Frost Trap': '啟動陷阱',
+        'Frostbite': '寒冰箭',
+        // 'Gobbie Adds': '', // FIXME '哥布林出现'
+        'Goblin Rush': '哥布林衝鋒',
+        'Gobrush Rushgob': '哥布流哥布林衝鋒',
+        'Gobslash Slicetops': '哥布流真空斬',
+        'Gobslice Mooncrops': '哥布流月牙斬',
+        'Gobsnick Leghops': '哥布流後之先',
+        'Gobspin Zoomdrops': '哥布流大迴旋斬',
+        'Gobsway Rumblerocks': '哥布流大激震',
+        'Gobswish Spraymops': '哥布流斷瀑斬',
+        'Illuminati Hand Cannon': '青藍手砲',
+        'Impact': '錘擊',
+        'Laceration': '斬擊',
+        'Single Charge': '單發填充',
+        'Steam Roller': '蒸氣滾輪',
+        'Stoneskin': '石膚',
+        'Triple Charge': '三連填充',
+        'Weight Trap': '啟動陷阱',
+        // 'Leghops\\?/Charge': '', // FIXME '哥布流后之先?/冲锋'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Buzzsaw': '회전톱',

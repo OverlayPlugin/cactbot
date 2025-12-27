@@ -1033,6 +1033,101 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        '9S-operated Flight Unit': '9S：裝備飛行裝置',
+        '9S-Operated Walking Fortress': '9S：接入多腳戰車',
+        'Engels': '昂格士',
+        '(?<! )Flight Unit': '飛行裝置',
+        'Goliath Tank': '大型戰車',
+        'Hobbes': '霍布斯',
+        'Marx': '麥喀士',
+        'Medium Exploder': '中型自爆',
+        'Multi-leg Medium Model': '中型多腳',
+        'Quality assurance': '質檢場',
+        'Reverse-jointed Goliath': '大型逆關節',
+        'Serial-Jointed Command Model': '多關節型：司令機',
+        'Serial-Jointed Service Model': '多關節型：士兵機',
+        'Small Biped': '小型二足',
+        'Small Flyer': '小型飛行體',
+        'The forward deck': '前部甲板',
+        'The rear deck': '後部甲板',
+        'Warehouse A': '倉庫A',
+        'Warehouse B': '倉庫B',
+        'Warehouse C': '倉庫C',
+      },
+      'replaceText': {
+        '360-Degree Bombing Maneuver': '攻擊：周邊導彈轟炸',
+        'Anti-Personnel Missile': '導彈命中',
+        'Area Bombardment': '導彈亂射',
+        'Area Bombing Maneuver': '攻擊：追蹤導彈轟炸',
+        'Arm Laser': '腕部雷射',
+        // 'Cannons': '', // FIXME '加农'
+        'Clanging Blow': '強攻擊',
+        'Convenient Self-Destruction': '自爆攻擊',
+        // 'Crusher Adds': '', // FIXME '粉碎机小怪'
+        // 'Tank Adds': '', // FIXME '坦克小怪'
+        // 'Serial-Jointed Adds': '', // FIXME '多关节型小怪'
+        // '(?<! )Adds': '', // FIXME '小怪'
+        'Crushing Wheel': '碾輪夾擊',
+        'Demolish Structure': '地形破壞攻擊',
+        'Wide-Angle Diffuse Laser': '廣擴散雷射',
+        '(?<! )Diffuse Laser': '擴散雷射',
+        'Energy Assault': '連續能量彈',
+        'Energy Barrage': '能量彈幕',
+        'Energy Blast': '能量炸裂',
+        'Energy Bombardment': '迫擊能量彈',
+        'Energy Ring': '全方位能量彈',
+        'Engage Goliath Tank Support': '請求支援：大型戰車',
+        'Engage Marx Support': '請求支援：麥喀士',
+        // 'Exploding Tethers': '', // FIXME '爆炸连线'
+        // 'Floor': '', // FIXME '地板'
+        'Forceful Impact': '大震動',
+        'Frontal Somersault': '跳躍攻擊',
+        'Ground-To-Ground Missile': '導彈命中',
+        'Precision Guided Missile': '高性能追蹤導彈',
+        '(?<! )Guided Missile': '追蹤導彈',
+        'Hack Goliath Tank': '駭入：大型戰車',
+        'High-Caliber Laser': '大口徑雷射',
+        'High-Frequency Laser': '高周波雷射',
+        'High-Powered Laser': '高功率雷射',
+        'Incendiary Bombing': '燃燒導彈',
+        'Incendiary Saturation Bombing': '擴散燃燒導彈',
+        'Laser Saturation': '全方位雷射',
+        'Laser Sight': '雷射照射',
+        'Laser Turret': '主砲雷射',
+        'Laser-Resistance Test': '耐雷射檢測',
+        'Lightfast Blade': '光刃斬機',
+        'Marx Activation': '麥喀士啟動',
+        'Marx Crush': '麥喀士夾擊',
+        'Marx Impact': '麥喀士衝擊',
+        // 'Marx Smash L/R': '', // FIXME '麦喀士打击左/右'
+        // 'Marx Smash R/L': '', // FIXME '麦喀士打击右/左'
+        // 'Marx Smash Back': '', // FIXME '麦喀士打击后'
+        // 'Marx Smash Front': '', // FIXME '麦喀士打击前'
+        // 'Marx Smash F/B': '', // FIXME '麦喀士打击前/后'
+        // 'Marx Smash B/F': '', // FIXME '麦喀士打击后/前'
+        'Marx Smash(?! )': '麥喀士打擊',
+        'Marx Thrust': '麥喀士突擊',
+        'Neutralization': '壓制射擊',
+        'Radiate Heat': '放熱攻擊',
+        'Ring Laser': '環形雷射',
+        'Shockwave': '衝擊波',
+        'Short-Range Missile': '短途導彈',
+        'Shrapnel Impact': '殘骸墜落',
+        // 'Spin': '', // FIXME '中央/侧方旋转攻击'
+        'Surface Missile': '對地導彈',
+        'Systematic Airstrike': '空襲陣型',
+        'Systematic Siege': '包圍陣型',
+        'Systematic Suppression': '掃射陣型',
+        'Systematic Targeting': '瞄準陣型',
+        'Total Annihilation Maneuver': '攻擊：殲滅轟炸',
+        'Undock': '對接解除',
+        // 'Wall Mechanic': '', // FIXME '墙机制'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         '9S-operated Flight Unit': '9S: 비행 유닛 장비',

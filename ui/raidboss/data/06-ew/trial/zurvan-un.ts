@@ -514,6 +514,44 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Execrated Wile': '狡詐信徒',
+        'Zurvan': '祖爾宛',
+      },
+      'replaceText': {
+        // '\\(circles\\)': '', // FIXME '(圆)'
+        // '\\(explosion\\)': '', // FIXME '(爆炸)'
+        // '\\(puddle\\)': '', // FIXME '(圈)'
+        // '\\(snapshot\\)': '', // FIXME '(快照)'
+        // '\\(avoid\\)': '', // FIXME '(躲避)'
+        // '\\(stack\\)': '', // FIXME '(集合)'
+        'Ahura Mazda': '阿胡拉·馬茲達',
+        'Biting Halberd': '刺骨冰戟',
+        'Broken Seal': '冰炎之紋',
+        'Ciclicle': '旋冰射線',
+        'Cool Flame': '冷炎',
+        'Demonic Dive': '鬼神衝',
+        'Fire III': '大火焰',
+        'Flaming Halberd': '焚身炎戟',
+        'Flare Star': '耀星',
+        'Ice and Fire': '冰與火',
+        'Infinite Fire': '炎之刻印',
+        'Infinite Ice': '冰之刻印',
+        'Metal Cutter': '金屬利刃',
+        'Eidos': '變異',
+        'Soar': '飛翔',
+        'Southern Cross': '南十字星',
+        'Tail End': '煞尾',
+        'The Demon\'s Claw': '鬼神之爪',
+        'Twin Spirit': '多重靈身',
+        'Tyrfing': '提爾鋒',
+        'Wave Cannon': '波動砲',
+        'the Purge': '肅清',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Execrated Wile': '책략의 신도',

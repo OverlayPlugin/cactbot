@@ -278,6 +278,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'The Ultima Weapon': '究極武器',
+        'Ultima Garuda': '究極迦樓羅',
+        'Ultima Ifrit': '究極伊弗利特',
+        'Ultima Titan': '究極泰坦',
+      },
+      'replaceText': {
+        'Aetheric Boom': '乙太波動',
+        'Ceruleum Vent': '青磷放射',
+        'Crimson Cyclone': '深紅旋風',
+        'Diffractive Laser': '擴散雷射',
+        'Eruption': '噴發',
+        'Eye of the Storm': '颱風眼',
+        'Geocrush': '大地撞擊',
+        'Homing Lasers': '誘導射線',
+        'Magitek Ray': '魔導雷射',
+        'Mistral Song': '寒風之歌',
+        'Radiant Plume': '光輝炎柱',
+        'Tank Purge': '魔導火光',
+        'Ultima': '最終究極',
+        'Viscous Aetheroplasm': '吸附式乙太炸彈',
+        'Vulcan Burst': '火神爆裂',
+        'Weight of the Land': '大地重壓',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'The Ultima Weapon': '알테마 웨폰',

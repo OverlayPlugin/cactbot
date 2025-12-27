@@ -49,6 +49,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Palace Deathgaze': '地宮死亡凝視',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Palace Deathgaze': '궁전 저승파수꾼',

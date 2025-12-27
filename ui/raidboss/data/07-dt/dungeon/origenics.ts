@@ -787,6 +787,53 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ambrose the Undeparted': '實驗體安波羅修',
+        'Deceiver': '欺騙者',
+        'Electrolance': '雷槍',
+        'Herpekaris': '赫爾佩伽里斯',
+        'Origenics Sentry G9': '創生哨兵G9',
+      },
+      'replaceText': {
+        // '--mid-north--': '', // FIXME '--北边中央--'
+        // '\\(cages\\)': '', // FIXME '(笼子)'
+        // '\\(lance\\)': '', // FIXME '(雷枪)'
+        // '\\(puddle drop\\)': '', // FIXME '(放置毒球)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        'Bionic Thrash': '迴旋臂',
+        'Collective Agony': '念力波動',
+        'Convulsive Crush': '毆打',
+        'Electray': '雷轉質射線',
+        'Electrolance(?! )': '雷槍',
+        'Electrolance Assimilation': '雷槍收回',
+        'Electrowave': '雷轉質波動',
+        'Extrasensory Field': '念動力場',
+        'Initialize Androids': '啟動援護模組',
+        'Initialize Turrets': '啟動砲塔',
+        'Laser Lash': '雷射砲',
+        'Left Sweep': '左側橫掃',
+        'Overwhelming Charge': '壓制強攻',
+        'Pod Burst': '毒液飛散',
+        'Poison Heart': '毒液塊',
+        'Psychic Wave': '念動波',
+        'Psychokinesis': '念動反應',
+        'Psychokinetic Charge': '念動壓制',
+        'Rear Sweep': '後方橫掃',
+        'Right Sweep': '右側橫掃',
+        '(?<!\\w)Rush': '突進',
+        'Strident Shriek': '刺耳尖叫',
+        'Surge': '急進電湧',
+        'Synchroshot': '齊射',
+        'Vasoconstrictor': '毒液噴射',
+        'Venomspill': '投毒',
+        'Voltaic Slash': '電擊斬',
+        'Whorl of the Mind': '念動渦旋',
+        'Writhing Riot': '囂張跋扈',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ambrose the Undeparted': '실험체 앰브로즈',

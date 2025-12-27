@@ -71,6 +71,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Amikiri': '天之切網蝦蛄',
+        'Heavenly Uwabami': '天之蟒蛇',
+        'Mojabune': '亡者船',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heavenly Amikiri': '천궁 아미키리',

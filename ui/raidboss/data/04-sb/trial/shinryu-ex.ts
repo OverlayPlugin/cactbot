@@ -810,6 +810,59 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Cocoon': '光繭',
+        'Icicle': '冰柱',
+        'Left Wing': '左翼',
+        'Right Wing': '右翼',
+        'Shinryu': '神龍',
+        'Tail': '龍尾',
+        'The Worm\'s Heart': '神龍的核心',
+        'Hakkinryu': '白金龍',
+      },
+      'replaceText': {
+        'Aerial Blast': '大氣爆發',
+        'Akh Morn': '死亡輪迴',
+        'Akh Rhai': '天光輪迴',
+        'Atomic Ray': '原子射線',
+        'Benighting Breath': '黑暗吐息',
+        // 'Cocoon Markers': '', // FIXME '光茧点名'
+        'Dark Matter': '黑暗物質',
+        'Diamond Dust': '鑽石星塵',
+        'Dragonfist': '龍掌',
+        'Earth Breath': '大地吐息',
+        'Earthen Fury': '大地之怒',
+        // 'First Wing': '', // FIXME '第一只翅膀'
+        'Gyre Charge': '螺旋衝鋒',
+        'Hellfire': '地獄之火炎',
+        'Hypernova': '超新星',
+        'Icicle Impact': '冰柱衝擊',
+        'Ice Storm': '吹雪',
+        'Judgment Bolt': '制裁之雷',
+        'Levinbolt': '閃電',
+        'Meteor Impact': '隕石衝擊',
+        // 'Phase': '', // FIXME '阶段'
+        'Protostar': '原恆星',
+        // 'Reiryu Adds': '', // FIXME '灵龙出现'
+        // 'Second Wing': '', // FIXME '第二只翅膀'
+        'Shatter': '破碎',
+        'Spikesicle': '冰柱突刺',
+        'Summon Icicle': '召喚冰柱',
+        'Super Cyclone': '超級颶風',
+        // 'TAP BUTTON OR ELSE': '', // FIXME 'XJB按'
+        // 'Tail Marker': '', // FIXME '尾巴点名'
+        'Tail Slap': '尾部猛擊',
+        'Tail Spit': '尾部重擊',
+        'Tera Slash': '萬億斬擊',
+        // 'Tethers': '', // FIXME '连线'
+        'Tidal Wave': '巨浪',
+        'Touchdown': '空降',
+        'Wormwail': '神龍嘯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hakkinryu': '백금룡',

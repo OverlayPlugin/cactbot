@@ -427,6 +427,39 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dreaming Kshatriya': '夢寐的剎帝利',
+        'Lakshmi': '吉祥天女',
+      },
+      'replaceText': {
+        // '--chanchala end--': '', // FIXME '--反复无常结束--'
+        // '\\(mid\\)': '', // FIXME '(中)'
+        // '\\(out\\)': '', // FIXME '(外)'
+        // '/dance': '', // FIXME '/跳舞'
+        'Alluring Arm': '魅惑之臂',
+        'Blissful Spear': '聖槍',
+        '(?<!-)Chanchala': '反覆無常',
+        'Divine Denial': '完全拒絕',
+        'Divine Desire': '完全引誘',
+        'Divine Doubt': '完全惑亂',
+        'Hand Of Beauty': '優美的左手',
+        'Hand Of Grace': '優雅的右手',
+        'Inner Demons': '心魔',
+        'Stotram': '讚歌',
+        'The Pall Of Light': '光之瀑布',
+        'The Path Of Light': '光之波動',
+        'The Pull Of Light': '光之奔流',
+        'Vril': '元氣',
+        'Tail Slap': '尾部猛擊',
+        'Blissful Arrow': '聖箭',
+        'Blissful Hammer': '聖錘',
+        'Jagadishwari': '至上天母',
+        'Alluring Embrace': '魅惑擁抱',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Dreaming Kshatriya': '신도화된 크샤트리아',

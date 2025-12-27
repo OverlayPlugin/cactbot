@@ -309,6 +309,28 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Electric Node': '雷擊系統',
+        'Kaliya': '卡利亞',
+        'The Core Override': '核心控制區間',
+      },
+      'replaceText': {
+        'Barofield': '氣壓領域',
+        'Emergency Mode': '緊急模式',
+        'Main Head': '主首',
+        'Nanospore Jet': '魔科學粒子散佈',
+        'Nerve Cloud': '神經雲',
+        'Nerve Gas': '神經毒氣',
+        'Resonance': '共鳴',
+        'Secondary Head': '側首',
+        // 'Seed Of The Rivers/Sea': '', // FIXME '江河/海洋之种'
+        // 'Seed Of The Sea/Rivers': '', // FIXME '海洋/江河之种'
+        'Stun': '眩暈',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Electric Node': '뇌격 시스템',

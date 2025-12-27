@@ -783,6 +783,54 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Barbariccia': '巴爾巴莉希亞',
+        'Stiff Breeze': '荒風',
+      },
+      'replaceText': {
+        // 'ground': '', // FIXME '地面'
+        // 'line': '', // FIXME '直线'
+        // 'donut': '', // FIXME '月环'
+        // 'protean': '', // FIXME '八方'
+        'Blow Away': '重拳激震',
+        'Blustery Ruler': '天風主宰',
+        'Bold Boulder': '巨岩礫',
+        // '(?<!(Brittle|Bold) )Boulder(?! Break)': '', // FIXME '岩砾'
+        'Boulder Break': '礫岩碎',
+        'Brittle Boulder': '小岩礫',
+        'Brush with Death': '咒髮操控',
+        'Brutal Gust': '殘暴突風',
+        'Brutal Rush': '殘暴衝鋒',
+        'Catabasis': '落獄煞',
+        'Curling Iron': '咒髮武裝',
+        'Deadly Twist': '咒髮刺',
+        'Dry Blows': '拳震',
+        'Entanglement': '咒髮束縛',
+        'Fetters': '拘束',
+        'Hair Raid': '咒髮突襲',
+        'Hair Spray': '咒髮針',
+        'Impact': '衝擊',
+        'Iron Out': '咒髮卸甲',
+        'Knuckle Drum': '怒拳連震',
+        'Maelstrom': '大漩渦',
+        'Raging Storm': '憤怒風暴',
+        'Savage Barbery': '野蠻剃',
+        'Secret Breeze': '隱秘之風',
+        // '(?<!(Teasing |En))Tangle': '', // FIXME '咒发'
+        'Teasing Tangles': '咒髮拘束',
+        'Tornado Chain': '龍捲連風',
+        'Tousle': '荒風',
+        'Trample': '踩踏',
+        'Upbraid': '咒髮突',
+        'Void Aero III': '虛空大勁風',
+        'Void Aero IV': '虛空超勁風',
+        'Voidstrom': '虛無風暴',
+        'Winding Gale': '追命狂風',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Barbariccia': '바르바리차',

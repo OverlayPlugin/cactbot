@@ -383,6 +383,41 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Byakko': '白虎',
+        'Hakutei': '白帝',
+        'Twofold is my wrath, twice-cursed my foes!': '半身分離，助我殺敵！向膽敢抵抗的傢伙們露出你的爪牙！',
+      },
+      'replaceText': {
+        // '--Hakutei Add--': '', // FIXME '--白帝出现--'
+        // '--tiger targetable--': '', // FIXME '--白帝可选中--'
+        // '--tiger untargetable--': '', // FIXME '--白帝无法选中--'
+        'Answer On High': '天雷',
+        'Bombogenesis': '炸彈低氣壓',
+        'Clutch': '緊握',
+        'Dance Of The Incomplete': '半獸舞蹈',
+        'Distant Clap': '遠雷',
+        'Fell Swoop': '迅雷風烈波',
+        'Fire And Lightning': '雷火一閃',
+        'Gale Force': '暴風',
+        'Heavenly Strike': '天雷掌',
+        'Highest Stakes': '乾坤一擲',
+        'Hundredfold Havoc': '百雷繚亂',
+        'Imperial Guard': '白帝降臨',
+        'Ominous Wind': '妖風',
+        'State Of Shock': '咒縛雷',
+        'Steel Claw': '鐵爪斬',
+        'Storm Pulse': '風雷波動',
+        'Sweep The Leg': '旋體腳',
+        'The Roar Of Thunder': '雷轟',
+        'The Voice Of Thunder': '雷聲',
+        'Unrelenting Anguish': '無間地獄',
+        'White Herald': '白帝衝',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Byakko': '백호',

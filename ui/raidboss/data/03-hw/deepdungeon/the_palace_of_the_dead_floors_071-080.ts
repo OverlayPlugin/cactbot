@@ -60,6 +60,13 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Gudanna': '古丹納',
+        'Palace Cyclops': '地宮獨眼狂人',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gudanna': '구단나',

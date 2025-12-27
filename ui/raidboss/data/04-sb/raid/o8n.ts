@@ -329,6 +329,30 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Destroy! Destroy! Destroy! I will destroy it all!': '', // FIXME '我要破坏一切！破坏！破坏！破坏！'
+        'Graven Image': '眾神之像',
+        'Kefka': '凱夫卡',
+      },
+      'replaceText': {
+        'Aero Assault': '疼颼颼大勁風',
+        // 'Aero/Ruin': '', // FIXME '暴风/毁荡'
+        'Blizzard Blitz': '滴溜溜大暴雪',
+        'Flagrant Fire': '呼啦啦大火焰',
+        'Graven Image': '眾神之像',
+        'Half Arena': '撲殺的神氣',
+        'Hyperdrive': '超驅動',
+        'Shockwave': '衝擊波',
+        'Statue Gaze': '懶惰的神氣',
+        'Thrumming Thunder': '劈啪啪大雷電',
+        'Timely Teleport': '跳蹦蹦傳送',
+        'Ultima Upsurge': '撲騰騰究極',
+        'Wave Cannon': '波動砲',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Destroy! Destroy! Destroy! I will destroy it all!': '이것저것 모~두, 파괴, 파괴, 파괴!',

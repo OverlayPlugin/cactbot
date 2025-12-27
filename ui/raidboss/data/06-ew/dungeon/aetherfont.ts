@@ -339,6 +339,53 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arkas': '阿爾卡斯',
+        'Cyancap Cavern': '藍簷洞中轉點',
+        'Lyngbakr': '林巴克爾',
+        'Mammoth Tentacle': '八足巨妖的觸手',
+        'Octomammoth': '八足巨妖',
+        'The Deep Below': '乙太池',
+        'The Landfast Floe': '流冰圓庭',
+      },
+      'replaceText': {
+        // '\\(big\\)': '', // FIXME '(大)'
+        // '\\(small\\)': '', // FIXME '(小)'
+        // '\\(explosion\\)': '', // FIXME '(爆炸)'
+        // '\\(tether\\)': '', // FIXME '(连线)'
+        'Battle Cry': '戰鬥怒嚎',
+        'Body Slam': '軀體震擊',
+        'Breathstroke': '吐息重擊',
+        'Clearout': '橫掃',
+        'Electric Eruption': '驚電噴發',
+        'Electrify': '大放電',
+        'Explosive Frequency': '共振大炸裂',
+        'Floodstide': '潮水湧動',
+        'Forked Fissures': '驚電裂隙',
+        'Lightning Claw': '驚電爪',
+        'Lightning Leap': '驚電跳躍',
+        'Lightning Rampage': '驚電狂怒',
+        'Octostroke': '八足重擊',
+        'Resonant Frequency': '共振炸裂',
+        'Ripper Claw': '撕裂利爪',
+        'Saline Spit': '吐水',
+        'Shock': '放電',
+        'Sonic Bloop': '雜音波',
+        'Spinning Claw': '迴旋雷爪',
+        'Spun Lightning': '旋轉閃電',
+        'Telekinesis': '念力',
+        'Tidal Breath': '怒潮吐息',
+        'Tidal Roar': '浪潮嘶吼',
+        'Tidalspout': '潮水噴湧',
+        'Upsweep': '海洋怪聲',
+        'Vivid Eyes': '靈動之眼',
+        'Water Drop': '水塊',
+        'Waterspout': '海龍捲',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Arkas': '아르카스',

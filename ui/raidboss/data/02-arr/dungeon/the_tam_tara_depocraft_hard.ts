@@ -52,6 +52,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Liavinne': '證婚人 莉亞維娜',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Liavinne': '입회인 리아빈',

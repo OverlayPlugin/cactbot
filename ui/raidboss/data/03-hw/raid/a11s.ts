@@ -608,6 +608,57 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Armored Pauldron': '肩部裝甲',
+        'Claster': '艦載浮游砲',
+        'Cruise Chaser': '巡航驅逐者',
+        // 'E\\\\.D\\\\.D\\\\.': '', // FIXME '护航机甲'
+        'Multifield': '層積科學結界',
+        'Plasma Shield': '等離子護盾',
+        'The Main Generators': '中樞大動力室',
+      },
+      'replaceText': {
+        // '(?<! )Sword': '', // FIXME '剑 '
+        '(?<!Super )Hawk Blaster': '鷹式破壞砲',
+        // '--invincible--': '', // FIXME '--无敌--'
+        // '\\(bait\\)': '', // FIXME '(诱导)'
+        // '\\(clock/out\\)': '', // FIXME '(顺时针/外)'
+        // '\\(everyone\\)': '', // FIXME '(全员)'
+        // '\\(numbers\\)': '', // FIXME '(麻将)'
+        // '\\(orbs\\)': '', // FIXME '(球)'
+        // '\\(out/clock\\)': '', // FIXME '(外/顺时针)'
+        // '\\(shield\\)': '', // FIXME '(护盾)'
+        // '\\?': '', // FIXME ' ?'
+        'Assault Cannon': '突擊加農砲',
+        'Blassty Blaster': '摧毀者破壞砲',
+        'Blassty Charge': '摧毀者衝擊',
+        'Blastoff': '準備升空',
+        '(?<!Blassty )Charge': '刺衝',
+        // 'E\\.D\\.D\\. Add': '', // FIXME '护航机甲出现'
+        // 'E\\.D\\.D\\. Armored Pauldron': '', // FIXME '护航机甲肩部装甲'
+        'Eternal Darkness': '黑暗命運',
+        'GA-100': '百式聚能砲',
+        'Lapis Lazuli': '天青石',
+        'Laser X Sword': '交叉光劍',
+        // 'Left/Right Laser Sword': '', // FIXME '左/右光剑'
+        'Limit Cut': '限制器減檔',
+        // 'Markers': '', // FIXME '标记'
+        'Multifield': '層積科學結界',
+        'Optical Sight': '制導',
+        'Perfect Landing': '掃射著陸',
+        'Photon': '光子砲',
+        'Plasma Shield': '等離子護盾',
+        'Plasmasphere': '等離子球',
+        'Propeller Wind': '螺旋槳強風',
+        'Spin Crusher': '迴旋碎踢',
+        'Super Hawk Blaster': '超級鷹式破壞砲',
+        'Transform': '變形',
+        'Whirlwind': '龍捲風',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Armored Pauldron': '견갑부',

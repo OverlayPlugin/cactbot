@@ -292,6 +292,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
+      },
+      'replaceText': {
+        // '\\(marked\\)': '', // FIXME '(标记)'
+        // '\\(resolves\\)': '', // FIXME '(判定)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        'Cannonspawn': '擴散砲',
+        'Entangling Web': '糾纏之網',
+        'Harrowing Hell': '魔殿震擊',
+        'Imprisonment': '入獄',
+        'Pandaemoniac Meltdown': '萬魔殿熔毀',
+        'Pandaemoniac Pillars': '萬魔殿之柱',
+        // 'Pandaemoniac Ray': '', // FIXME '万魔殿射线'
+        'Parted Plumes': '分割之羽',
+        'Silkspit': '噴吐絲網',
+        'Soul Grasp': '攥魂',
+        'Touchdown': '空降',
+        'Ultima': '最終究極',
+        'Wicked Step': '尖腳',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Pand(?:\\\\u00e6|\u00e6)monium': '판데모니움',

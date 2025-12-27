@@ -490,6 +490,49 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'His Royal Headness Leonogg I': '好腦袋大王',
+        'Jack-in-the-Pot': '茶壺裡的小丑',
+        'Noble Noggin': '好腦袋',
+        'Spectral Samovar': '幻光茶壺',
+        'Stray Geist': '迷途的幽靈',
+        'Stray Phantagenitrix': '迷途的幽靈之母',
+        'Träumerei': '夢像',
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(lines\\)': '', // FIXME '(直线)'
+        // '\\(middle/sides\\)': '', // FIXME '(中间/两侧)'
+        // '\\(plonk\\)': '', // FIXME '(砸下)'
+        // '\\(sides\\)': '', // FIXME '(两侧)'
+        // '\\(solid lines\\)': '', // FIXME '(半场)'
+        'Bitter Regret': '消極回憶',
+        'Evil Scheme': '邪惡詭計',
+        'Falling Nightmare': '惡夢降臨',
+        'Fleshbuster': '戮肉',
+        'Ghostcrusher': '沉重回憶',
+        'Ghostduster': '除靈',
+        'Ill Intent': '邪念',
+        'Impact': '塌方',
+        'Last Drop': '最後一滴',
+        'Looming Nightmare': '惡夢逼近',
+        'Malicious Mist': '邪霧',
+        'Memorial March': '悼念遊行',
+        'Piping Pour': '倒茶',
+        'Poltergeist': '喧囂鬼',
+        'Scream': '尖嘯',
+        'Sordid Steam': '邪惡蒸氣',
+        'Spirited Charge': '突擊命令',
+        'Tea Awhirl': '旋轉茶杯',
+        'Team Spirit': '合作神精',
+        'Toiling Teapots': '茶壺',
+        'Tricksome Treat': '搗蛋式款待',
+        'Troubling Teacups': '茶杯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'His Royal Headness Leonogg I': '멋진 머리 노긴',

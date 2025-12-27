@@ -307,6 +307,36 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Shadowkeeper': '影之王',
+      },
+      'replaceText': {
+        '(?<!/)Backward Implosion': '後向心聚爆',
+        'Backward Shadow Implosion': '影·後向心聚爆',
+        'Barbs Of Agony': '痛苦鉤刺',
+        'Cloak Of Shadows': '影之披風',
+        'Deepshadow Nova': '深影新星',
+        'Distant Scream': '影之狂吠',
+        'Fade To Shadow': '潛影',
+        'Forward Implosion': '前向心聚爆',
+        // 'Forward/Backward Implosion': '', // FIXME '前/后向心聚爆'
+        'Forward Shadow Implosion': '影·前向心聚爆',
+        // 'Front/Back Shadow Implosion': '', // FIXME '影·前/后向心聚爆'
+        // 'Left/Right Giga Slash': '', // FIXME '左/右十亿斩击'
+        // 'Left/Right Shadow Slash': '', // FIXME '影·左/右十亿斩击'
+        'Shadow Warrior': '影武者',
+        'Shadow\'s Edge': '影之斬擊',
+        'Shadowy Eruption': '影之噴發',
+        'Spawn Shadow': '影之增殖',
+        'Throne Of Shadow': '影之王權',
+        'Umbra Smash': '本影爆碎',
+        'Void Pulse': '虛無悸動',
+        'Voidgate': '虛無之門',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Shadowkeeper': '그림자의 왕',

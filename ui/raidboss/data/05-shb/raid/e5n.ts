@@ -222,6 +222,29 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        '(?<! )Ramuh': '拉姆',
+        'Will Of Ramuh': '拉姆幻影',
+        'Will Of Ixion': '伊克西翁幻影',
+      },
+      'replaceText': {
+        'Crippling Blow': '痛擊',
+        'Stratospear Summons': '生成武具',
+        'Impact': '衝擊',
+        'Judgment Jolt': '制裁之界雷',
+        'Stormcloud Summons': '生成雷暴雲',
+        '(?<! )Judgment Volts': '制裁之熱雷',
+        'Fury\'s Bolt': '蓄雷',
+        'Divine Judgment Volts': '制裁之熱雷·天帝',
+        'Tribunal Summons': '生成幻影',
+        'Deadly Discharge': '死亡衝鋒',
+        'Gallop': '飛馳',
+        'Thunderstorm': '雷暴',
+        'Volt Strike': '雷電強襲',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         '(?<! )Ramuh': '라무',

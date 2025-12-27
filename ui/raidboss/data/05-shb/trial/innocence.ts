@@ -261,6 +261,37 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Sword of Condemnation': '斷罪之劍',
+        'Innocence': '無瑕靈君',
+      },
+      'replaceText': {
+        'Winged Reprobation': '斷罪飛翔',
+        'Soul And Body': '身心',
+        'Sinsphere': '罪惡晶球',
+        'Shadowreaver': '奪影',
+        'Rightful Reprobation': '斷罪迴旋',
+        'Righteous Bolt': '裁決之雷',
+        // '(?<! )Reprobation': '', // FIXME '(?<! )断罪飞翔'
+        'Light Pillar': '光明柱',
+        'Holy Trinity': '聖三一',
+        'Guiding Light': '指明燈',
+        'God Ray': '神光',
+        'Flaming Sword': '迴轉火焰劍',
+        'Beatific Vision': '榮福直觀',
+        'Realmrazer': '滅境',
+        'Heavenly Host': '天堂君威',
+        'Daybreak': '破曉',
+        'Enthrall': '迷魂之眼',
+        'Exalted Wing': '高貴之翼',
+        'Exalted Plumes': '羽化',
+        'Drop Of Light': '落光',
+        // '--add Phase--': '', // FIXME '--小怪--'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Sword of Condemnation': '단죄의 검',

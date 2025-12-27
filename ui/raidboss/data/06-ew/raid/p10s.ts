@@ -825,6 +825,43 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': '立體魔法陣',
+        // 'Pand(?:\\\\u00e6|\u00e6)moniac Pillar': '', // FIXME '万魔殿之塔'
+        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(cone\\)': '', // FIXME '(锥形)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(share\\)': '', // FIXME '(分摊)'
+        'Bury': '塌方',
+        // 'Circles of Pandaemonium': '', // FIXME '万魔殿之环'
+        'Dividing Wings': '分割之翼',
+        'Daemoniac Bonds': '萬魔殿牢獄',
+        'Entangling Web': '糾纏之網',
+        'Harrowing Hell': '魔殿震擊',
+        'Jade Passage': '翡翠通道',
+        'Pandaemoniac Meltdown': '萬魔殿熔毀',
+        'Pandaemoniac Pillars': '萬魔殿之柱',
+        'Pandaemoniac Ray': '萬魔殿射線',
+        'Pandaemoniac Turrets': '萬魔殿砲塔',
+        // 'Pandaemoniac Web': '', // FIXME '万魔殿之网'
+        // 'Pandaemon\'s Holy': '', // FIXME '万魔殿神圣'
+        'Parted Plumes': '分割之羽',
+        'Peal of Condemnation': '譴責衝擊波',
+        'Peal of Damnation': '詛咒衝擊波',
+        'Silkspit': '噴吐絲網',
+        'Soul Grasp': '攥魂',
+        'Steel Web': '沉重之網',
+        'Touchdown': '空降',
+        'Ultima': '最終究極',
+        'Wicked Step': '尖腳',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Arcane Sphere': '입체마법진',

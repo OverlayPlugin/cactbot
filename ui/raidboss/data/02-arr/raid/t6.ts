@@ -357,6 +357,27 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Rafflesia': '大王花',
+        'Scar\'s Edge': '破損的門前',
+      },
+      'replaceText': {
+        'Acid Rain': '酸蝕雨',
+        'Blighted Bouquet': '凋零的花香',
+        'Bloody Caress': '血腥的愛撫',
+        'Briary Growth': '荊棘叢生',
+        'Devour': '捕食',
+        'Floral Trap': '鮮花陷阱',
+        'Leafstorm': '綠葉風暴',
+        'Rotten Stench': '腐爛惡臭',
+        'Spit': '吐出',
+        'Swarm': '招蜂香氣',
+        'Thorn Whip': '荊棘鞭',
+        'Viscid Emission': '膠質排放物',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Rafflesia': '라플레시아',

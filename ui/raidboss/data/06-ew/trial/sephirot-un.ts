@@ -561,6 +561,40 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Coronal Wind': '冠狀氣流',
+        'Sephirot': '賽菲羅特',
+        'Storm Of Words': '言語風暴',
+      },
+      'replaceText': {
+        // 'puddle(?:s)?': '', // FIXME '圈圈'
+        // 'spread': '', // FIXME '散开'
+        // 'Tethers': '', // FIXME '连线'
+        // 'Adds Spawn': '', // FIXME '小怪出现'
+        'Ascension': '上升氣流',
+        'Chesed(?! Gevurah)': '仁慈',
+        'Chesed Gevurah': '嚴酷之仁慈',
+        'Da\'at': '知識',
+        'Earth Shaker': '大地搖動',
+        'Ein Sof': '無限',
+        'Fiendish Rage': '魔神之怒',
+        'Fiendish Wail': '魔神之嘆',
+        'Force Field': '力場',
+        'Impact of Hod': '榮光撞擊',
+        'Life Force': '生命領域',
+        'Malkuth': '王國',
+        'Pillar of Mercy': '慈悲之柱',
+        'Pillar of Severity': '嚴厲之柱',
+        'Ratzon': '意志',
+        'Spirit': '聖靈領域',
+        'Tiferet': '美麗',
+        'Triple Trial': '三重強擊',
+        'Yesod': '基盤碎擊',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Coronal Wind': '관상기류',

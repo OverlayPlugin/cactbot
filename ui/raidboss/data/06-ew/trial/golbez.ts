@@ -262,6 +262,34 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Golbez': '高貝扎',
+        'Golbez\'s Shadow': '高貝扎的幻影',
+      },
+      'replaceText': {
+        // '\\(preview\\)': '', // FIXME '(预兆)'
+        'Arctic Assault': '極寒突襲',
+        'Azdaja\'s Shadow': '黑龍劍阿珠達雅',
+        'Binding Cold': '咒縛寒氣',
+        'Black Fang': '黑牙',
+        'Burning Shade': '黑炎',
+        'Crescent Blade': '弦月劍',
+        'Double Meteor': '雙重隕石',
+        'Eventide Fall': '集束黑龍閃',
+        'Explosion': '爆炸',
+        'Gale Sphere': '風晶球',
+        'Immolating Shade': '重黑炎',
+        'Lingering Spark': '遲緩電火花',
+        'Rising Beacon': '升龍烽火',
+        'Shadow Crescent': '弦月黑龍劍',
+        'Terrastorm': '遲緩地暴',
+        'Void Meteor': '虛空隕石',
+        'Void Stardust': '虛空隕星雨',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Golbez': '골베자',

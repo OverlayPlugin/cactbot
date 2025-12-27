@@ -1302,6 +1302,38 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hegemone': '赫革摩涅',
+        'Parasitos': '寄生生物',
+      },
+      'replaceText': {
+        'Aetherial Exchange': '乙太交換',
+        'Aetheric Polyominoid': '乙太方陣',
+        'Aetheronecrosis': '魔活細胞',
+        'Cachexia': '惡病質',
+        'Chelic Claw': '爪擊',
+        'Choros Ixou': '寄生之舞',
+        'Dark Ashes': '冥灰',
+        'Dark Dome': '暗天頂',
+        'Dark Sphere': '黑暗球',
+        'Dual Predation': '甲軟雙擊',
+        'Exchange Of Agonies': '極苦交換',
+        'Exocleaver': '外劈',
+        'Hemitheos\'s Dark IV': '半神冥暗',
+        'Pathogenic Cells': '軟體細胞流',
+        'Polyominoid Sigma': '乙太方陣Σ',
+        'Polyominous Dark IV': '多連方冥暗',
+        // '(?<!Dual )Predation': '', // FIXME '双击'
+        'Ptera Ixou': '寄生之翼',
+        'Reek Havoc': '噴氣',
+        'Synergy': '協同',
+        'Transmission': '寄生傳染',
+        'Unholy Darkness': '黑暗神聖',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hegemone': '헤게모네',

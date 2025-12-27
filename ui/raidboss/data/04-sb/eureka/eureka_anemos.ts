@@ -241,6 +241,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Caym': '蓋因',
+        'Fafnir': '法夫納',
+        'Pazuzu': '帕祖祖',
+        'Polyphemus': '波呂斐摩斯',
+        'Sabotender Corrido': '懸賞魔物：寇里多仙人掌',
+        'Shadow Wraith': '暗影幽靈',
+        'Void Garm': '虛無加姆',
+        'Voidscale': '虛無鱗龍',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Caym': '카임',

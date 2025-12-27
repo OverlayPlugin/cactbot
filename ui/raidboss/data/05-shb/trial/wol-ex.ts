@@ -962,6 +962,71 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Spectral Ninja': '幻光忍者',
+        'Warrior Of Light': '光之戰士',
+        'Spectral Dark Knight': '幻光暗黑騎士',
+        'Spectral Warrior': '幻光狂戰士',
+        'Spectral Black Mage': '幻光黑魔道士',
+        'Spectral Summoner': '幻光召喚士',
+        'Spectral Egi': '幻光召喚獸',
+        'Wyrm Of Light': '光之真龍',
+        'Spectral Bard': '幻光吟遊詩人',
+        'Spectral White Mage': '幻光白魔道士',
+      },
+      'replaceText': {
+        'Absolute Flash': '絕對閃光',
+        'Absolute Holy': '絕對神聖',
+        'Absolute Stone III': '絕對大巨岩',
+        'Berserk': '狂暴',
+        'Blade Of Shadow': '漆黑魔劍',
+        // 'BLM/WHM': '', // FIXME '黒魔／白魔'
+        'Brimstone Earth': '獄火大地',
+        // '(?<!\\w)Cast(?= )': '', // FIXME '五连'
+        'Cauterize': '灼熱俯衝',
+        'Coruscant Saber': '光明利劍',
+        'Deep Darkside': '深度暗黑',
+        'Deluge Of Death': '死亡暴雨',
+        // 'DRK/BRD': '', // FIXME '黑骑／诗人'
+        'Elddragon Dive': '遠古龍炎衝',
+        'Fatal Cleave': '奪命飛環',
+        // '(?<! )Fire/Ice': '', // FIXME '火/冰'
+        'Flare Breath': '火光吐息',
+        '(?<! )Holy': '神聖',
+        'Imbued Coruscance': '魔法劍技·光明利劍',
+        // 'Imbued Fire/Ice': '', // FIXME '魔法剑(火／冰)'
+        'Imbued Holy': '魔法劍',
+        // 'Imbued Ice/Fire': '', // FIXME '魔法剣 (冰／火)'
+        'Imbued Stone': '魔法劍',
+        // 'Katon\\: San': '', // FIXME '叁式火遁之术'
+        // '(?<! )Limit(?! Break)': '', // FIXME '极限技'
+        'Limit Break': '極限爆發',
+        'Meteor Impact': '隕石衝擊',
+        // '(?<= )NIN': '', // FIXME '忍者'
+        'Perfect Decimation': '完美地毀人亡',
+        'Quintuplecast': '五連詠唱',
+        'Radiant Braver': '光之英勇斬擊',
+        'Radiant Desperado': '光之亡命之徒',
+        'Radiant Meteor': '光之隕石流星',
+        'Shining Wave': '光芒波動',
+        // 'SMN/WAR': '', // FIXME '召唤／战士'
+        'Solemn Confiteor': '莊嚴悔罪',
+        'Specter Of Light': '幻光召喚',
+        '(?<! )Stone(?! Earth)': '巨岩',
+        // 'Suiton\\: San': '', // FIXME '叁式水遁之术'
+        'Summon(?! Wyrm)': '召喚',
+        'Summon Wyrm': '真龍召喚',
+        'Sword Of Light': '光之劍',
+        'Terror Unleashed': '恐懼釋放',
+        'The Bitter End': '盡滅',
+        'To The Limit': '突破極限',
+        'Twincast': '合力詠唱',
+        'Ultimate Crossover': '究極·交匯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Warrior Of Light': '빛의 전사',

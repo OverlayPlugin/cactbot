@@ -467,6 +467,50 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Shiva': '濕婆',
+        'Frozen Mirror': '冰面鏡',
+        'Mothercrystal': '母水晶',
+        'Earthen Aether': '土乙太',
+        'Electric Aether': '雷乙太',
+        'Luminous Aether': '光乙太',
+      },
+      'replaceText': {
+        'Absolute Zero': '絕對零度',
+        'Redress': '換裝',
+        'Shining Armor': '閃光護甲',
+        // 'Axe Kick/Scythe Kick': '', // FIXME '阔斧/镰形回旋踢'
+        'Frost Armor': '冰霜護甲',
+        // 'Biting Frost/Driving Frost': '', // FIXME '冰霜斩/刺'
+        'Double Slap': '雙劍斬',
+        'Diamond Frost': '鑽石星塵',
+        // 'Frigid Water/Frigid Stone': '', // FIXME '冰霜/冰石'
+        'Icicle Impact': '冰柱衝擊',
+        'Frigid Eruption': '極冰噴發',
+        'Heavenly Strike': '極樂冰柱',
+        'Mirror, Mirror': '鏡中奇遇',
+        // 'Driving Frost/Biting Frost': '', // FIXME '冰霜刺/斩'
+        // 'Reflected Frost': '', // FIXME '连锁反射'
+        'Shattered World': '世界分斷',
+        'Heart Asunder': '心碎',
+        'Stoneskin': '石膚',
+        'Shock Spikes': '電棘屏障',
+        'Rush': '蓄勢衝撞',
+        'Skyfall': '世界消亡',
+        'Holy': '神聖',
+        'Light Rampant': '光之失控',
+        'The Path of Light': '光之波動',
+        'Bright Hunger': '侵蝕光',
+        // '(?<! )Kick/Frost': '', // FIXME '阔斧/镰形'
+        // 'Reflected Kick/Frost': '', // FIXME '反射阔斧/镰形'
+        // 'Twin Stillness/Twin Silence': '', // FIXME '静寂/闲寂的双剑技'
+        // 'Embittered Dance/Spiteful Dance': '', // FIXME '严峻之舞/冷峻之舞'
+        // 'Spiteful Dance/Embittered Dance': '', // FIXME '冷峻之舞/严峻之舞'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Shiva': '시바',

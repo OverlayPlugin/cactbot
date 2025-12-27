@@ -540,6 +540,38 @@ const triggerSet: TriggerSet<Data> = {
         'Vamp Stomp': '血魅的靴踏音',
       },
     },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Coffinmaker': '', // FIXME '致命刑锯'
+        // 'Fatal Flail': '', // FIXME '致命刺锤'
+        // 'Vamp Fatale': '', // FIXME '致命美人'
+        // 'Vampette Fatale': '', // FIXME '致命蝙蝠'
+      },
+      'replaceText': {
+        // '--Coffinmaker targetable--': '', // FIXME '--致命刑锯可选中--'
+        // '--Flail targetable--': '', // FIXME '--致命刺锤可选中--'
+        // '--Vamp Fatale untargetable--': '', // FIXME '--致命美人不可选中--'
+        // 'Aetherletting': '', // FIXME '以太流失'
+        // 'Blast Beat': '', // FIXME '共振波'
+        // 'Brutal Rain': '', // FIXME '粗暴之雨'
+        // 'Coffinfiller': '', // FIXME '冲出'
+        // 'Crowd Kill': '', // FIXME '全场杀伤'
+        // 'Dead Wake': '', // FIXME '前进'
+        // 'Finale Fatale': '', // FIXME '致命的闭幕曲'
+        // 'Flaying Fry': '', // FIXME '剥蚀的低嗓'
+        // 'Half Moon': '', // FIXME '月之半相'
+        // 'Hardcore': '', // FIXME '硬核之声'
+        // 'Insatiable Thirst': '', // FIXME '贪欲无厌'
+        // 'Killer Voice': '', // FIXME '魅亡之音'
+        // 'Penetrating Pitch': '', // FIXME '尖锐的音调'
+        'Plummet': '掉落',
+        // 'Pulping Pulse': '', // FIXME '碎烂脉冲'
+        // 'Sadistic Screech': '', // FIXME '施虐的尖啸'
+        // 'Vamp Stomp': '', // FIXME '血魅的靴踏音'
+      },
+    },
   ],
 };
 

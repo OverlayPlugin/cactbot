@@ -190,6 +190,34 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Agony': '苦悶幽靈',
+        'Malice': '怨念',
+        'Phantom Train': '魔列車',
+        'Remorse': '留戀幽靈',
+        'Wroth Ghost': '怒靈',
+      },
+      'replaceText': {
+        // ' Ghosts': '', // FIXME ' 幽灵'
+        'Acid Rain': '酸雨',
+        // 'Add Wave': '', // FIXME '一波小怪'
+        'All In The Mind': '念力',
+        'Crossing Whistle': '魔界汽笛',
+        'Diabolic Headlamp': '魔界前照燈',
+        'Diabolic Light': '魔界光',
+        'Diabolic Wind': '魔界風',
+        'Doom Strike': '魔靈擊',
+        'Encumber': '擋路',
+        // 'Ghosts spawn': '', // FIXME '幽灵出现'
+        'Head On': '追尾',
+        'Knockback Whistle': '魔界汽笛',
+        'Saintly Beam': '聖光射線',
+        'Tether Whistle': '魔界汽笛',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Agony': '고뇌하는 유령',

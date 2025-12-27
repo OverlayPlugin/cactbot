@@ -1283,6 +1283,101 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Absolute Virtue': '絕對的美德',
+        'Arsenal Centaur': '兵武半人馬',
+        'Art': '亞特',
+        'Ball Lightning': '雷球',
+        'Arsenal Urolith': '兵武烏洛里石',
+        'Ivory Palm': '白手',
+        'Orlasrach': '黑焰魔槍',
+        'Owain': '歐文',
+        '(?<! )Ozma(?!\\w)': '奧斯瑪',
+        'Ozmashade': '奧斯瑪之影',
+        'Proto Ozma(?! Containment)': '奧斯瑪原型',
+        'Raiden': '萊丁',
+        'Relative Virtue(?! gains)': '相對的美德',
+        'Shadow': '奧斯瑪原型之影',
+        // 'Streak Lightning': '', // FIXME '强袭雷光'
+        // '5 minutes have elapsed since your last activity.': '', // FIXME '已经5分钟没有进行任何操作'
+        // 'The memories of heroes past live on again': '', // FIXME '发动了英杰的加护的效果，重新苏醒了过来'
+        // 'Munderg, turn flesh to ash': '', // FIXME '红颈妖枪，点燃一切！'
+        // 'Munderg, turn blood to ice': '', // FIXME '红颈妖枪，冻结万物！'
+        'The Lance of Virtue Containment Unit': '美德之槍封印區',
+        'The Shin-Zantetsuken Containment Unit': '真·斬鐵劍封印區',
+        'The Proto Ozma Containment Unit': '奧斯瑪原型封印區',
+        // 'Relative Virtue gains the effect of .*?Astral Essence.*?': '', // FIXME '相对的美德附加了“光之腕”效果'
+        // 'Relative Virtue gains the effect of .*?Umbral Essence.*?': '', // FIXME '相对的美德附加了“暗之腕”效果'
+      },
+      'replaceText': {
+        'Acallam Na Senorach': '真妖槍旋',
+        'Acceleration Bomb': '加速度炸彈',
+        // 'Adds': '', // FIXME '小怪'
+        'Ame-no-Sakahoko': '天逆矛',
+        'Astral Essence': '光之腕',
+        'Auroral Wind': '極光之風',
+        'Bitter Barbs': '罪惡荊棘',
+        'Black Hole': '黑洞',
+        'Bleed Attack': '攻擊',
+        'Booming Lament': '哀痛雷鳴',
+        'Call Wyvern': '召喚飛龍',
+        // 'Carver/Spinner': '', // FIXME '靠近/远离'
+        'Cloud to Ground': '襲雷',
+        'Cube Form': '形態變化',
+        'Eidos': '變異',
+        'Elemental Magicks': '元素魔法',
+        'Elemental Shift': '元素開關',
+        'Execration': '縮小射線',
+        'Explosive Impulse': '爆炸性衝擊',
+        'Flare Star': '耀星',
+        'For Honor': '戰死擊',
+        'Holy': '神聖',
+        'Hostile Aspect': '極性波動',
+        'Impact Stream': '衝擊流',
+        'Ivory Palm': '白手',
+        'Lancing Bolt': '雷槍',
+        'Lateral Zantetsuken': '片·斬鐵劍',
+        'Legendary Geas': '妖槍亂擊',
+        'Legendary Imbas': '妖槍邪念',
+        'Legendcarver': '妖槍振',
+        'Legendspinner': '妖槍振',
+        'Levinwhorl': '渦雷',
+        'Medusa Javelin': '美杜莎投槍',
+        'Meteor': '隕石',
+        'Mourning Star': '晨星鎚',
+        'Mythcall': '幻槍招來',
+        'Orb x5': '重力地雷',
+        // 'Ozma Ability': '', // FIXME '奥兹玛技能'
+        'Piercing Dark': '暗之槍',
+        'Piercing Light': '光之槍',
+        'Pitfall': '強襲',
+        'Pyramid Form': '形態變化',
+        // 'Random Form': '', // FIXME '随机形式'
+        'Random Shade': '形態變化',
+        // 'Shade Ability': '', // FIXME '影子技能'
+        'Shingan': '真眼擊',
+        'Shooting Star': '流星',
+        'Soak Attack': '攻擊',
+        'Spear Copy': '幻槍振',
+        // 'Spear Shade': '', // FIXME '矛影子'
+        'Sphere Form': '形態變化',
+        'Spiritcull': '連裝魔',
+        'Spirits of the Fallen': '英靈魂',
+        // 'Stack': '', // FIXME '分摊'
+        'Star Form': '形態變化',
+        'Streak Lightning': '雷槍擊',
+        'Thricecull': '三連槍',
+        'Thundercall': '招雷',
+        'Turbulent Aether': '乙太亂流',
+        'Ultimate Zantetsuken': '極·斬鐵劍',
+        'Umbral Essence': '暗之腕',
+        'Whirling Zantetsuken': '旋·斬鐵劍',
+        // 'Wyvern Explosion': '', // FIXME '飞龙爆炸'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Absolute Virtue': '절대미덕',

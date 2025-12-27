@@ -59,6 +59,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Sasquatch': '雪怪',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Sasquatch': '사스콰치',

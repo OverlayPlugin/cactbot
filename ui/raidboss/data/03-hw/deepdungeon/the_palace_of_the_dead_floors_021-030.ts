@@ -89,6 +89,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Ningishzida': '甯吉茲濟達',
+        'Palace Minotaur': '地宮米諾陶洛斯',
+        'Palace Skatene': '地宮斯卡尼特',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ningishzida': '닝기시지다',

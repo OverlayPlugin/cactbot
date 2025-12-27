@@ -378,6 +378,24 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Excalibur': '鬥神 王者之劍',
+        'Orthodrone': '正統無人機',
+        'Orthonaught': '正統恐慌裝甲',
+        'Orthos Fitter': '正統整備工',
+        'Orthos Mining Drone': '正統採掘無人機',
+        'Orthos Mithridates': '正統米特里達梯',
+        'Orthos Motherbit': '正統浮游砲主機板',
+        'Orthos Sphinx': '正統斯芬克斯',
+        'Orthos Zaghnal': '正統札戈斧龍',
+        'Orthosystem α': '正統系統α',
+        'Orthosystem γ': '正統系統γ',
+        'Servomechanical Orthochimera': '正統自控化奇美拉',
+        'Servomechanical Orthotaur': '正統自控化米諾陶洛斯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Excalibur': '투신 엑스칼리버',

@@ -212,6 +212,39 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Tenzen': '', // FIXME '典膳'
+        'Scarlet Tail Feather': '朱雀的尾羽',
+        'Suzaku': '朱雀',
+      },
+      'replaceText': {
+        'Close-Quarter Crescendo': '傀儡旋律',
+        'Cremate': '赤熱擊',
+        'Eternal Flame': '蘇生大火',
+        'Fleeting Summer': '翼宿擊',
+        'Hotspot': '紅蓮炎',
+        'Incandescent Interlude': '灼熱旋律',
+        'Mesmerizing Melody': '引誘旋律',
+        'Pay The Piper': '傀儡詩',
+        'Phantom Flurry': '鬼宿腳',
+        'Phantom Half': '鬼宿腳',
+        'Phoenix Down': '蘇生之羽',
+        'Rekindle': '蘇生之炎',
+        'Rout': '猛進',
+        'Ruthless Refrain': '拒絕旋律',
+        // 'Ruthless/Mesmerizing': '', // FIXME '拒绝/引诱'
+        'Scarlet Fever': '燃燼天火',
+        'Scarlet Hymn': '朱紅旋律',
+        'Scathing Net': '張宿業火',
+        'Screams Of The Damned': '叫喚地獄',
+        'Southron Star': '星宿波',
+        'Well Of Flame': '井宿焰',
+        'Wing And A Prayer': '蘇生神通力',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Tenzen': '텐젠',

@@ -285,6 +285,49 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Depth Grip': '海洋之手',
+        'Doxa': '信仰大堂',
+        'Katharsis': '淨化廣場',
+        'Kyklops': '克琉普斯',
+        'Noesis': '概念之間',
+        'Rukshs Dheem': '魯克嘶·蒂母',
+        'Sinister Bubble': '怪異泡沫',
+        'Unknown': '不明物體',
+      },
+      'replaceText': {
+        'The Final Verse': '恐怖的最終章',
+        'Wavebreaker': '水波破',
+        // 'Terrible Hammer/Blade': '', // FIXME '恐怖的战锤/恐怖的大剑'
+        // 'Terrible Blade/Hammer': '', // FIXME '恐怖的大剑/恐怖的战锤'
+        'Swift Shift': '高速移動',
+        'Setback': '驅趕',
+        'Seabed Ceremony': '水底儀式',
+        'Scrutiny': '觀察',
+        'Rising Tide': '漲潮',
+        'Raging Glower': '暴怒注視',
+        'Plain Weirdness': '原理不明',
+        'Luminous Ray': '光流射線',
+        'Inscrutability': '意義不明',
+        'Flying Fount': '飛泉',
+        'Fetid Fang': '惡臭尖牙',
+        'Falling Water': '落水',
+        'Explosion': '爆炸',
+        'Ectoplasmic Ray': '外質射線',
+        'Depth Grip': '海洋之手',
+        'Command Current': '水花',
+        'Clearout': '橫掃',
+        'Bonebreaker': '碎骨',
+        // 'Swing/Swipe/Cyclone': '', // FIXME '钢铁/横扫/月环'
+        // 'Hammer/Blade Mark': '', // FIXME '战锤/大剑标记'
+        // 'Blade/Hammer Mark': '', // FIXME '大剑/战锤标记'
+        'Pyre/Hearth': '恐怖的大火焰',
+        // 'Unknown Add': '', // FIXME '小怪出现'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Depth Grip': '바다의 손',

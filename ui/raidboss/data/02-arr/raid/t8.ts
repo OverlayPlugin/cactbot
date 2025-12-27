@@ -274,6 +274,27 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Allagan Field': '亞拉戈領域',
+        'Allagan Mine': '亞拉戈機雷',
+        'Clockwork Dreadnaught': '恐慌裝甲',
+        'The Avatar': '降世化身',
+        'The central bow': '中樞艦首區',
+      },
+      'replaceText': {
+        'Allagan Field': '亞拉戈領域',
+        'Atomic Ray': '原子射線',
+        'Ballistic Missile': '彈道導彈',
+        'Brainjack': '洗腦',
+        'Critical Surge': '臨界突破',
+        'Diffusion Ray': '擴散雷射',
+        'Gaseous Bomb': '氣化炸彈',
+        'Homing Missile': '自控導彈',
+        'Inertia Stream': '惰性流',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Allagan Field': '알라그 필드',

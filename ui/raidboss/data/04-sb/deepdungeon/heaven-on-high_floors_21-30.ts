@@ -81,6 +81,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Hatamoto': '天之旗本',
+        'Heavenly Onibi': '天之鬼火',
+        'Hiruko': '蛭子',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heavenly Hatamoto': '천궁 직속 무사',

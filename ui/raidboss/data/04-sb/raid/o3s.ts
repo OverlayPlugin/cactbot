@@ -737,6 +737,61 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Halicarnassus': '哈利卡納蘇斯',
+        'Apanda': '阿班達',
+        'Soul Reaper': '靈魂收割者',
+      },
+      'replaceText': {
+        // '\\(Apanda\\)': '', // FIXME '(阿班达)'
+        // '\\(Books\\)': '', // FIXME '(图书)'
+        // '\\(Cave\\)': '', // FIXME '(墓地)'
+        // '\\(Clock\\)': '', // FIXME '(八方)'
+        // '\\(Crystals\\)': '', // FIXME '(水晶)'
+        // '\\(Great Dragon\\)': '', // FIXME '(巨龙)'
+        // '\\(library\\)': '', // FIXME '(图书馆)'
+        // '\\(Ninjas/Giant\\)': '', // FIXME '(忍者/巨人)'
+        // '\\(Random\\)': '', // FIXME '(随机)'
+        // '\\(Soul Reapers\\)': '', // FIXME '(死神)'
+        // '\\(Spellblade Books\\)': '', // FIXME '(魔法剑)'
+        // '\\(Thorns\\)': '', // FIXME '(荆棘)'
+        // '\\(White Flame\\)': '', // FIXME '(白焰)'
+        'Blizzard': '暴雪',
+        'Critical Hit': '暴擊',
+        'Dimensional Wave': '次元波動',
+        'Fire': '火焰',
+        'Haste': '加速',
+        'Magic Hammer': '魔法錘',
+        'Mindjack': '精神控制',
+        'Oink': '哼哼哼哼哼！',
+        'Panel Swap': '刷新面板',
+        'Place Dark Token': '召喚死形',
+        'Place Token': '召喚魔形',
+        // '(The )?Queen\'s Waltz': '', // FIXME '女王之舞'
+        'Ribbit': '呱呱呱呱呱！',
+        'Spellblade Holy': '魔法劍·神聖',
+        'Squelch': '喀喀喀喀喀！',
+        // 'Tethers': '', // FIXME '连线'
+        'The Game': '遊戲開始',
+        'The Playing Field': '遊戲面板',
+        'Thunder': '雷電',
+        // 'Cross Reaper': '', // FIXME '交叉斩击'
+        'Frost Breath': '寒霜吐息',
+        'Grand Sword': '巨劍攻擊',
+        'Gusting Gouge': '削風',
+        'Holy Blur': '神聖霧',
+        'Holy Edge': '神聖刃',
+        'Pole Shift': '磁場轉換',
+        'Pummel': '毆打',
+        'Ray of White': '蒼白射擊',
+        'Sword Dance': '劍舞',
+        'Uplift': '隆起',
+        'White Wind': '白風',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Halicarnassus': '할리카르나소스',

@@ -885,6 +885,51 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Honey B. Lovely': '', // FIXME '蜂蜂小甜心'
+        // 'Sweetheart': '', // FIXME '甜甜的心'
+      },
+      'replaceText': {
+        // 'Alarm Pheromones': '', // FIXME '告警信息素'
+        // 'Bee Sting': '', // FIXME '小蜂刺'
+        'Big Burst': '大爆炸',
+        // 'Blinding Love': '', // FIXME '盲目的爱'
+        // 'Call Me Honey': '', // FIXME '甜言蜜语'
+        // 'Centerstage Combo': '', // FIXME '环环心连心'
+        // 'Drop of Love': '', // FIXME '爱之滴'
+        'Drop of Venom': '毒液滴落',
+        'Fracture': '炸裂',
+        // 'Heart-Struck': '', // FIXME '心震'
+        // 'Heartsick': '', // FIXME '心病'
+        // 'Heartsore': '', // FIXME '心伤'
+        // 'Honey B. Finale': '', // FIXME '蜂蜂落幕曲'
+        // 'Honey B. Live: 1st Beat': '', // FIXME '蜂蜂演唱会【首演】'
+        // 'Honey B. Live: 2nd Beat': '', // FIXME '蜂蜂演唱会【再演】'
+        // 'Honey B. Live: 3rd Beat': '', // FIXME '蜂蜂演唱会【三演】'
+        // 'Honey Beeline': '', // FIXME '甜心烈风'
+        // 'Killer Sting': '', // FIXME '杀人针'
+        'Laceration': '斬擊',
+        // 'Love Me Tender': '', // FIXME '温柔地爱我'
+        // 'Loveseeker': '', // FIXME '求爱'
+        // 'Outerstage Combo': '', // FIXME '圆圆心连心'
+        // 'Poison Sting': '', // FIXME '毒针'
+        // 'Rotten Heart': '', // FIXME '黑心'
+        // 'Sheer Heart Attack': '', // FIXME '骤然心痛'
+        // 'Splash of Venom': '', // FIXME '毒液雨'
+        'Splinter': '碎裂',
+        // 'Spread Love': '', // FIXME '爱之雨'
+        // 'Stinging Slash': '', // FIXME '杀人斩'
+        // 'Tempting Twist': '', // FIXME '甜心旋风'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(drop\\)': '', // FIXME '(放圈)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(stun for': '', // FIXME '(眩晕'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Honey B. Lovely': '허니 B. 러블리',

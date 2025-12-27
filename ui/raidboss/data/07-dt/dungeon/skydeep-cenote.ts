@@ -646,6 +646,52 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Airy Bubble': '水泡',
+        'Feather Ray': '羽環魟',
+        'Firearms': '重裝大岩兵',
+        'Maulskull': '錘顱巨兵',
+      },
+      'replaceText': {
+        // '\\(boss\\)': '', // FIXME '(BOSS)'
+        // '\\(first\\)': '', // FIXME '(一)'
+        // '\\(party\\)': '', // FIXME '(玩家)'
+        // '\\(second\\)': '', // FIXME '(二)'
+        'Ancient Artillery': '火砲啟動',
+        '(?<! )Artillery': '火砲',
+        'Ashlayer': '熱能放射',
+        'Blowing Bubbles': '吹氣泡',
+        'Bubble Bomb': '水泡炸彈',
+        'Building Heat': '熱能膨脹',
+        '(?<! )Burst': '飛散',
+        'Colossal Impact': '衝擊',
+        'Deep Thunder': '錘平',
+        'Destructive Heat': '熱能破碎',
+        'Dynamic Dominance': '震盪壓制',
+        'Emergent Artillery': '火砲鋪設',
+        'Hydro Ring': '水環',
+        'Immersion': '沉浸',
+        '(?<! )Impact': '衝擊',
+        'Landing': '落地',
+        'Maulwork': '落石怒錘',
+        'Mirror Maneuver': '反射鏡啟動',
+        'Pummel': '毆打',
+        'Ringing Blows': '衝擊',
+        'Rolling Current': '急流湧動',
+        'Shatter': '破碎',
+        'Skullcrush': '堅顱頭錘',
+        'Stonecarver': '削岩拳',
+        'Thunderlight Burst': '衝擊爆發',
+        'Thunderlight Flurry': '衝擊射線',
+        'Trouble Bubbles': '搗蛋水泡',
+        'Troublesome Tail': '搗蛋尾',
+        'Worrisome Wave': '搗蛋水波',
+        'Wrought Fire': '熱能昇華',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Airy Bubble': '물거품',

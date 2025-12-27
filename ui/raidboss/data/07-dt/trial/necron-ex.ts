@@ -910,6 +910,53 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Azure Aether': '', // FIXME '青之魂块'
+        // 'Beckoning Hands': '', // FIXME '邀死之手'
+        // 'Icy Hands': '', // FIXME '招死之手'
+        // 'Necron': '', // FIXME '永远之暗'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(intercards\\)': '', // FIXME '(斜角)'
+        // '\\(line\\)': '', // FIXME '(直线)'
+        // '\\(lines\\)': '', // FIXME '(直线)'
+        // '\\(puddle\\)': '', // FIXME '(圈)'
+        // '\\(puddles\\)': '', // FIXME '(圈)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(tower\\)': '', // FIXME '(塔)'
+        // 'Aetherblight': '', // FIXME '青之波动'
+        // 'Blue Shockwave': '', // FIXME '青之冲击'
+        // 'Choking Grasp': '', // FIXME '压溃'
+        // 'Circle of Lives': '', // FIXME '青之环波'
+        // 'Cold Grip': '', // FIXME '暗之死腕'
+        // 'Crop Rotation': '', // FIXME '灵魂轮转'
+        // 'Darkness of Eternity': '', // FIXME '永远之暗'
+        'Existential Dread': '萬死的憎惡',
+        // 'Fear of Death': '', // FIXME '死之恐惧'
+        // 'Fourfold Blight': '', // FIXME '青之四重波'
+        'Grand Cross': '大十字',
+        // 'Inevitability': '', // FIXME '死之泛滥'
+        // 'Mass Macabre': '', // FIXME '群体恐慌'
+        // 'Memento Mori': '', // FIXME '死亡警告'
+        // 'Muted Struggle': '', // FIXME '击溃'
+        // 'Neutron Ring': '', // FIXME '中子环'
+        // 'Relentless Reaping': '', // FIXME '青之连魂'
+        'Shock(?!wave)': '放電',
+        // '(?<!Blue )Shockwave': '', // FIXME '青之冲击'
+        'Smite of Gloom': '黑暗一擊',
+        // 'Soul Reaping': '', // FIXME '青魂'
+        // 'Specter of Death': '', // FIXME '黑暗巨腕'
+        // 'The End\'s Embrace': '', // FIXME '引导之翼'
+        // 'The Fourth Season': '', // FIXME '四重青之波潮'
+        // 'The Second Season': '', // FIXME '二重青之波潮'
+        // 'Twofold Blight': '', // FIXME '青之二重波'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Azure Aether': '푸른 영혼 덩어리',

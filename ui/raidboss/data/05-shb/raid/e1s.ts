@@ -535,6 +535,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Eden Prime': '至尊伊甸',
+        'Guardian of Paradise': '伊甸守護者',
+      },
+      'replaceText': {
+        'Delta Attack': '三角攻擊',
+        'Dimensional Shift': '空間轉換',
+        'Eden\'s Flare': '伊甸火光',
+        'Eden\'s Gravity': '伊甸重力',
+        'Eternal Breath': '永恆吐息',
+        'Fragor Maximus': '極大爆炸',
+        'Heavensunder': '天國分斷',
+        'Mana Burst': '魔力爆發',
+        'Mana Slice': '魔力斬擊',
+        'Paradisal Dive': '樂園衝',
+        'Paradise Lost': '失樂園',
+        'Paradise Regained': '複樂園',
+        'Pure Beam': '淨土射線',
+        'Pure Light': '淨土之光',
+        'Spear of Paradise': '樂園之槍',
+        'Vice and Virtue': '惡習與美德',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Eden Prime': '에덴 프라임',

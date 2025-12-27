@@ -89,6 +89,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Alfard': '艾爾法德',
+        'Deep Palace Minotaur': '深宮米諾陶洛斯',
+        'Deep Palace Skatene': '深宮斯卡尼特',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Alfard': '알파르드',

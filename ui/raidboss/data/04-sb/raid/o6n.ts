@@ -178,6 +178,35 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Demon Chadarnook': '惡魔查達奴克',
+        'Easterly': '極風',
+        'Haunt': '幻影',
+        // 'I have claimed the girl in the picture!': '', // FIXME '呵哼哼……这个画作的女人就归我了'
+        'Portrayal of Earth': '土之畫作',
+        'Portrayal of Fire': '火之畫作',
+        'Portrayal of Water': '水之畫作',
+      },
+      'replaceText': {
+        'Demonic Howl': '惡魔嘯',
+        'Demonic Pain': '惡魔痛',
+        'Demonic Shear': '惡魔斬',
+        'Demonic Spout': '惡魔噴',
+        'Demonic Stone': '惡魔巨岩',
+        'Demonic Typhoon': '惡魔颱風',
+        'Demonic Wave': '惡魔波',
+        'Earthquake': '大地震',
+        'Featherlance': '羽槍',
+        'Flash Fire': '閃光炎',
+        'Flash Gale': '閃光風',
+        'Materialize': '實體化',
+        'Possession': '附身畫像',
+        'Release': '附身解除',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Demon Chadarnook': '차다르누크 악령',

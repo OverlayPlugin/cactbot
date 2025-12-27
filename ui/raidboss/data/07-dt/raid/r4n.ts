@@ -751,6 +751,40 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Wicked Replica': '', // FIXME '狡雷的幻影'
+        // 'Wicked Thunder': '', // FIXME '狡雷'
+      },
+      'replaceText': {
+        // 'Left Roll': '', // FIXME '左转'
+        // 'Right Roll': '', // FIXME '右转'
+        // 'west--': '', // FIXME '西--'
+        // '--east': '', // FIXME '--东'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(clone\\)': '', // FIXME '(幻影)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // 'Bewitching Flight': '', // FIXME '魔女回翔'
+        'Burst': '爆炸',
+        // 'Fivefold Blast': '', // FIXME '五重加农炮'
+        // 'Fourfold Blast': '', // FIXME '四重加农炮'
+        // 'Shadows\' Sabbath': '', // FIXME '黑色安息日'
+        // 'Sidewise Spark': '', // FIXME '侧方电火花'
+        // 'Soaring Soulpress': '', // FIXME '碎魂跃'
+        // 'Stampeding Thunder': '', // FIXME '奔雷炮'
+        // 'Threefold Blast': '', // FIXME '三重加农炮'
+        // 'Thunderslam': '', // FIXME '雷炸'
+        'Thunderstorm': '雷暴',
+        // 'Wicked Bolt': '', // FIXME '狡诡落雷'
+        // 'Wicked Cannon': '', // FIXME '狡诡加农炮'
+        // 'Wicked Hypercannon': '', // FIXME '狡诡聚能加农炮'
+        // 'Wicked Jolt': '', // FIXME '狡诡摇荡'
+        'Witch Hunt': '獵殺女巫',
+        'Wrath of Zeus': '宙斯之怒',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Wicked Replica': '위키드 선더의 환영',

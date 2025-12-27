@@ -983,6 +983,67 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ice Pillar': '冰柱',
+        'Queen Eternal': '永恆女王',
+        'Virtual Boulder': '岩石',
+      },
+      'replaceText': {
+        // '\\(Dorito Stack\\)': '', // FIXME '(红三角集合)'
+        // '\\(Flares/Stack\\)': '', // FIXME '(核爆/集合)'
+        // '\\(Knockback\\)': '', // FIXME '(击退)'
+        // '\\(big\\)': '', // FIXME '(大)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(front\\)': '', // FIXME '(前)'
+        // '\\(left tower\\)': '', // FIXME '(左塔)'
+        // '\\(motion\\)': '', // FIXME '(行动)'
+        // '\\(orb\\)': '', // FIXME '(球)'
+        // '\\(platforms\\)': '', // FIXME '(平台)'
+        // '\\(right tower\\)': '', // FIXME '(右塔)'
+        // '\\(rotate\\)': '', // FIXME '(转)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        'Absolute Authority': '絕對君權',
+        'Aeroquell': '風爆',
+        'Aethertithe': '乙太稅',
+        'Atomic Ray': '原子射線',
+        'Authority Eternal': '絕對君權',
+        'Burst': '爆炸',
+        'Coronation': '終端發射',
+        'Dimensional Distortion': '空間扭曲',
+        'Divide and Conquer': '分治法',
+        'Drear Rising': '陰郁風暴',
+        'Dying Memory': '垂死的記憶',
+        'Gravitational Empire': '重力帝國',
+        'Gravity Pillar': '重力之柱',
+        'Gravity Ray': '重力射線',
+        'Ice Dart': '冰塊',
+        'Laws of Earth': '土之律法',
+        'Laws of Ice': '冰之律法',
+        'Laws of Wind': '風之律法',
+        'Legitimate Force': '合法武力',
+        'Meteor Impact': '隕石衝擊',
+        'Preservation': '絕對保全',
+        'Prosecution of War': '訴諸武力',
+        'Radical Shift': '激進切換',
+        'Raised Tribute': '橫征暴斂',
+        'Retribute': '俱是君恩',
+        'Royal Banishment': '放逐射線',
+        'Royal Domain': '王土',
+        'Rush': '突進',
+        'Ruthless Regalia': '王法無情',
+        'Tyranny\'s Grasp': '女王之手',
+        'Virtual Shift': '虛景切換',
+        'Weighty Blow': '重力炸裂',
+        'World Shatter': '世界破碎',
+        // 'Wind of Change': '', // FIXME '左/右风'
+        // 'Right(?! )': '', // FIXME '右'
+        // 'Left(?! )': '', // FIXME '左'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ice Pillar': '고드름',

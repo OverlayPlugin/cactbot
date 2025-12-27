@@ -310,6 +310,28 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hippokampos': '馬頭魚尾怪',
+      },
+      'replaceText': {
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        'Coherence Flare': '連貫攻擊',
+        'Coherence Line': '連貫攻擊',
+        'Dissociation(?! Dive)': '分離',
+        'Dissociation Dive': '分離',
+        'Doubled Impact': '雙重衝擊',
+        'Murky Depths': '深度污濁',
+        'Predatory Sight': '活餌的刻印',
+        'Sewage Deluge': '污水氾濫',
+        'Sewage Eruption': '污水噴發',
+        'Shockwave': '衝擊狂潮',
+        'Spoken Cataract': '吐息飛瀑',
+        'Tainted Flood': '污染洪水',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hippokampos': '히포캄포스',

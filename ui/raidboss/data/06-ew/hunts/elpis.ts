@@ -203,6 +203,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Gurangatch': '固蘭蓋奇',
+        'Ophioneus': '俄菲翁尼厄斯',
+        'Petalodus': '瓣齒鯊',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gurangatch': '구랑가치',

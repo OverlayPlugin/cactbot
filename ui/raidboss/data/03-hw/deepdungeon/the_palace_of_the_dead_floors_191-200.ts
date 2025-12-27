@@ -82,6 +82,15 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Deep Palace Fachan': '深宮幽鬼之眼',
+        'Deep Palace Knight': '深宮騎士',
+        'Deep Palace Wraith': '深宮幽靈',
+        'Onyx Dragon': '奧尼克斯龍',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Deep Palace Fachan': '깊은 궁전 파한',

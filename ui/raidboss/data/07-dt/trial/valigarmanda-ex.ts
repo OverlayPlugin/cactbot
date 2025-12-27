@@ -1178,6 +1178,58 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': '立體魔法陣',
+        'Feather of Ruin': '艷羽',
+        'Flame-kissed Beacon': '火之徵兆',
+        'Ice Boulder': '冰塊',
+        'Thunderous Beacon': '雷之徵兆',
+        'Valigarmanda': '艷翼蛇鳥',
+      },
+      'replaceText': {
+        'Blighted Bolt': '災厄落雷',
+        'Calamitous Cry': '災禍之鳴',
+        'Charring Cataclysm': '火之災禍',
+        'Chilling Cataclysm': '冰之災禍',
+        'Crackling Cataclysm': '雷之災禍',
+        'Disaster Zone': '災禍領域',
+        'Freezing Dust': '結冰塵',
+        'Hail of Feathers': '驟羽',
+        'Ice Boulder': '冰塊',
+        'Ice Talon': '冰爪',
+        'Mountain Fire': '山火',
+        'Northern Cross': '北十字星',
+        'Ruin Foretold': '災禍預兆',
+        'Ruinfall': '災禍衝',
+        'Scourge of Fire': '火之災變',
+        'Scourge of Ice': '冰之災變',
+        'Scourge of Thunder': '雷之災變',
+        'Skyruin': '擁有生命的天災',
+        'Slithering Strike': '蛇行強襲',
+        'Sphere Shatter': '碎裂',
+        'Spikesicle': '冰柱突刺',
+        'Strangling Coil': '蛇行盤繞',
+        'Susurrant Breath': '蛇行吐息',
+        'Thunderous Breath': '雷鳴吐息',
+        'Triscourge': '三重災變',
+        'Tulidisaster': '圖拉爾災禍',
+        'Valigarmanda': '艷翼蛇鳥',
+        'Volcanic Drop': '火山彈',
+        'Wrath Unfurled': '怒不可遏',
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(fire phase\\)': '', // FIXME '(火阶段)'
+        // '\\(ice phase\\)': '', // FIXME '(冰阶段)'
+        // '\\(ice or storm phase\\?\\)': '', // FIXME '(冰或风暴阶段)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(storm phase\\)': '', // FIXME '(风暴阶段)'
+        // '\\(tower\\)': '', // FIXME '(塔)'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Arcane Sphere': '입체마법진',

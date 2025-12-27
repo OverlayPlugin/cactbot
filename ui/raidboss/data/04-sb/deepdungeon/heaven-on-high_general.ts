@@ -385,6 +385,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Quivering Coffer': '抖動的寶箱',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Quivering Coffer': '꿈틀거리는 보물상자',

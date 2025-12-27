@@ -202,6 +202,36 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Amikiri': '切網蝦蛄',
+        'Naishi-No-Kami': '尚侍',
+        'Ruby Princess': '紅玉公主',
+        'Shisui Gokagura': '紫水禦神樂',
+        'Shisui Yohi': '紫水妖妃',
+        'The Akashio Hall': '紅潮之間',
+        'The Harutsuge Gate': '春告門前',
+      },
+      'replaceText': {
+        // '--add--': '', // FIXME '--小怪--'
+        // '--adds--': '', // FIXME '--小怪--'
+        'Abyssal Volcano': '海底火山',
+        'Black Tide': '黑潮',
+        'Coriolis Kick': '暴風踢',
+        'Digest': '消化',
+        'Foul Nail': '巫婆魔爪',
+        'Geothermal Flatulence': '火山噴發',
+        'Mad Stare': '瘋狂視線',
+        'Mucal Glob': '黏液球',
+        'Seduce': '誘惑',
+        'Sharp Strike': '突然襲擊',
+        'Shuck': '碎殼重擊',
+        'Thick Fog': '濃霧',
+        'Tornadogenesis': '旋風踢',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Amikiri': '아미키리',

@@ -1050,6 +1050,36 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Azure Star': '藍色天體',
+        'Fiery Star': '紅色天體',
+        'The Endsinger': '謳歌終結之物',
+      },
+      'replaceText': {
+        'Befoulment': '膿液彈',
+        'Benevolence': '博愛',
+        'Despair Unforgotten': '絕望侵蝕：記錄事件',
+        'Diairesis': '分離',
+        'Eironeia': '反諷',
+        'Elegeia Unforgotten': '哀歌：記錄事件',
+        'Elenchos': '反詰',
+        'Endsong\'s Aporrhoia': '流溢：絕望輪唱',
+        'Endsong(?!\')': '絕望輪唱',
+        '(?<! )Fatalism': '宿命',
+        'Grip of Despair': '絕望的鎖鏈',
+        'Hubris': '傲慢',
+        // 'Star Collision': '', // FIXME '天体撞击'
+        'Telomania': '終末狂熱',
+        'Telos': '終末',
+        'Tower Explosion': '爆炸',
+        'Theological Fatalism': '神學宿命',
+        'Twinsong\'s Aporrhoia': '流溢：絕望合唱',
+        'Ultimate Fate': '終極命運',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Azure Star': '청색천체',

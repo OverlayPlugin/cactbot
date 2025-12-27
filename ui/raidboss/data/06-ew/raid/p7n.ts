@@ -308,6 +308,34 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Agdistis': '阿格狄斯提斯',
+        'Immature Io': '未成熟的伊娥',
+        'Immature Stymphalide': '未成熟的鐵爪怪鳥',
+      },
+      'replaceText': {
+        // 'left': '', // FIXME '左'
+        // 'right': '', // FIXME '右'
+        // 'lines': '', // FIXME '直线'
+        // 'triangle': '', // FIXME '三角'
+        'Blades of Attis': '阿提斯的葉刃',
+        'Bough of Attis': '阿提斯的巨枝',
+        'Burst': '爆炸',
+        'Forbidden Fruit': '生命之果',
+        'Hemitheos\'s Aero II': '半神・中勁風',
+        'Hemitheos\'s Aero IV': '半神超勁風',
+        'Hemitheos\'s Glare III': '半神閃灼',
+        'Hemitheos\'s Holy': '半神神聖',
+        'Immortal\'s Obol': '不滅者的導枝',
+        'Shadow of Attis': '阿提斯的光露',
+        'Spark of Life': '生命的光芒',
+        'Static Moon': '靜電之月',
+        'Stymphalian Strike': '怪鳥強襲',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Agdistis': '아그디스티스',

@@ -169,6 +169,34 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Alte Roite': '老者',
+        'Ball Of Fire': '火焰球',
+        'Wyrm Tail': '太古龍尾',
+      },
+      'replaceText': {
+        // '\\(safe\\)': '', // FIXME '(找安全区)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(stack\\)': '', // FIXME '(分摊)'
+        'Blaze': '冰焰',
+        'Breath Wing': '風息之翼',
+        'Charybdis': '大漩渦',
+        'Clamp': '壓迫',
+        // 'Classical': '', // FIXME '经典元素'
+        'Downburst': '下行突風',
+        'Flash Freeze': '閃耀凍結',
+        'Flame': '火焰',
+        'Inner Fireballs': '燃燒',
+        'Levinbolt': '閃電',
+        'Outer Fireballs': '燃燒',
+        'Roar': '咆哮',
+        'Twin Bolt': '雙重落雷',
+        'Wyrm Tail': '太古龍尾',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Alte Roite': '알테 로이테',

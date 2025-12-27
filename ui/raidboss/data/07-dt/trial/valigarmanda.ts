@@ -578,6 +578,41 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': '立體魔法陣',
+        'Flame-kissed Beacon': '火之徵兆',
+        'Valigarmanda': '艷翼蛇鳥',
+      },
+      'replaceText': {
+        // '\\(AoEs\\)': '', // FIXME '(AOE)'
+        // '\\(ice phase\\)': '', // FIXME '(冰阶段)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(storm phase\\)': '', // FIXME '(风暴阶段)'
+        // '\\(tower\\)': '', // FIXME '(塔)'
+        'Arcane Lightning': '奧秘閃電',
+        'Blighted Bolt': '災厄落雷',
+        'Calamitous Cry': '災禍之鳴',
+        'Calamitous Echo': '災禍之聲',
+        'Chilling Cataclysm': '冰之災禍',
+        'Disaster Zone': '災禍領域',
+        'Eruption': '噴發',
+        'Freezing Dust': '結冰塵',
+        'Hail of Feathers': '驟羽',
+        'Ice Talon': '冰爪',
+        'Northern Cross': '北十字星',
+        'Ruin Foretold': '災禍預兆',
+        'Ruinfall': '災禍衝',
+        'Skyruin': '擁有生命的天災',
+        'Slithering Strike': '蛇行強襲',
+        'Strangling Coil': '蛇行盤繞',
+        'Susurrant Breath': '蛇行吐息',
+        'Thunderous Breath': '雷鳴吐息',
+        'Tulidisaster': '圖拉爾災禍',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Arcane Sphere': '입체마법진',

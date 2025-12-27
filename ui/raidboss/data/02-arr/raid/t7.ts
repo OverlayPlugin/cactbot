@@ -331,6 +331,30 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bioweapon Storage': '生體管理區',
+        'Lamia Prosector': '拉米亞解剖女王',
+        'Melusine': '美瑠姬奴',
+        'Proto-Chimera': '原型奇美拉',
+        'Renaud': '雷諾',
+      },
+      'replaceText': {
+        'Circle Blade': '迴旋斬',
+        // 'Circle Of Flames': '', // FIXME '地层断裂'
+        'Cursed Shriek': '詛咒之嚎',
+        'Cursed Voice': '詛咒之聲',
+        // 'Deathdancer': '', // FIXME '死亡舞师'
+        'Frenzy': '狂熱',
+        'Petrifaction': '石化',
+        'Red Lotus Blade': '紅蓮',
+        'Sacrifice': '獻祭',
+        'Tail Slap': '尾部猛擊',
+        'Venomous Tail': '猛毒之尾',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bioweapon Storage': '생체 관리 구역',

@@ -202,6 +202,20 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Araragi': '天之紫衫',
+        'Heavenly Gozu': '天之牛頭',
+        'Heavenly Hitotsume': '天之獨眼',
+        'Heavenly Koki': '天之鋼鬼',
+        'Heavenly Mukai-inu': '天之送狼',
+        'Heavenly Rakshasa': '天之羅剎',
+        'Heavenly Ryujin': '天之龍人',
+        'Heavenly Shinzei': '天之真濟',
+        'Onra': '溫羅',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heavenly Araragi': '천궁 산달래',

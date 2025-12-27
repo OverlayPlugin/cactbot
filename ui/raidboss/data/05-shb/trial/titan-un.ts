@@ -229,6 +229,37 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bomb Boulder': '爆破岩石',
+        'Granite Gaoler': '花崗石衛',
+        'Titan': '泰坦',
+      },
+      'replaceText': {
+        // '\\(all\\)': '', // FIXME '(全部)'
+        // '\\(clock\\)': '', // FIXME '(顺时针)'
+        // '\\(one side\\)': '', // FIXME '(一侧)'
+        // '\\(row 1\\)': '', // FIXME '(第1列)'
+        // '\\(row 2\\)': '', // FIXME '(第2列)'
+        // '\\(row 3\\)': '', // FIXME '(第3列)'
+        'Burst': '大爆炸',
+        'Bury': '塌方',
+        'Earthen Fury': '大地之怒',
+        // 'Gaoler Adds': '', // FIXME '花岗石卫出现'
+        // 'Gaoler Landslide': '', // FIXME '花岗石卫地裂'
+        'Gaoler Tumult': '激震',
+        'Geocrush': '大地撞擊',
+        '(?<! )Landslide': '地裂',
+        'Mountain Buster': '山崩',
+        'Rock Buster': '岩石破壞者',
+        'Rock Throw': '花崗岩牢獄',
+        '(?<! )Tumult': '激震',
+        'Upheaval': '大激震',
+        'Weight Of The Land': '大地重壓',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bomb Boulder': '바위폭탄',

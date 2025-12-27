@@ -150,6 +150,29 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Ama-No-Iwato': '天之岩戶',
+        'Dark Cloud': '暗雲',
+        'Susano': '須佐之男',
+      },
+      'replaceText': {
+        'Ame-No-Murakumo': '天之叢雲',
+        'Assail': '強擊',
+        'Brightstorm': '晴嵐',
+        'Dark Levin': '紫電',
+        'Rasen Kaikyo': '螺旋海峽',
+        'Seasplitter': '斷海',
+        'Stormsplitter': '破浪斬',
+        'The Hidden Gate': '岩戶隱',
+        'The Parting Clouds': '雲間放電',
+        'The Sealed Gate': '岩戶閉合',
+        'Ukehi': '祈請',
+        'Yasakani-No-Magatama': '八尺瓊勾玉',
+        'Yata-No-Kagami': '八咫鏡',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ama-No-Iwato': '신의 바위',

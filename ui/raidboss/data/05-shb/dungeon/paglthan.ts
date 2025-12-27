@@ -336,6 +336,40 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Amhuluk': '阿姆魯克',
+        'Lunar Bahamut': '真月巴哈姆特',
+        'Magitek Fortress': '魔導要塞',
+        'Magitek Core': '魔導核心',
+        'Sunseat': '黃昏庭園',
+        'The Gathering Ring': '佐爾瑪刻祭場',
+      },
+      'replaceText': {
+        // '\\(circles\\)': '', // FIXME '(预兆)'
+        // '\\(explosions\\)': '', // FIXME '(爆炸)'
+        // '--Levin orbs--': '', // FIXME '--电球--'
+        'Akh Morn': '死亡輪迴',
+        'Big Burst': '大爆炸',
+        'Critical Rip': '暴擊撕裂',
+        'Electric Burst': '電流爆裂',
+        'Flatten': '夷為平地',
+        'Gigaflare': '十億火光',
+        'Kan Rhai': '天光交錯',
+        'Lightning Bolt': '落雷',
+        'Lunar Flare': '真月火光',
+        'Megaflare(?! Dive)': '百萬火光',
+        'Megaflare Dive': '百萬火光衝',
+        'Perigean Breath': '近地吐息',
+        'Spike Flail': '刃尾橫掃',
+        'Thundercall': '招雷',
+        'Twisted Scream': '異形咆哮',
+        'Upburst': '頂起',
+        'Wide Blaster': '廣域衝擊波',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Amhuluk': '아물룩',

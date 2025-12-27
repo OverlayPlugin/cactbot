@@ -54,6 +54,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Demon Wall': '惡魔牆',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Demon Wall': '악마의 벽',

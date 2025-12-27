@@ -533,6 +533,44 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Lively Bait': '活餌',
+        'Proto-Carbuncle': '原型卡邦庫爾',
+      },
+      'replaceText': {
+        // '--towers--': '', // FIXME '--塔--'
+        'Acidic Slaver': '酸性唾液',
+        'Claw to Tail': '利爪凶尾',
+        'Devour': '捕食',
+        'Double Rush': '二連衝',
+        // 'Impact': '', // FIXME '践踏冲击'
+        'Raging Claw': '暴怒連爪',
+        'Raging Tail': '暴怒掃尾',
+        'Ruby Glow': '紅寶石之光',
+        'Ruby Reflection': '紅寶石反射',
+        'Scatterbait': '碎餌',
+        'Searing Ray': '灼熱射線',
+        'Sonic Howl': '音嚎',
+        'Sonic Shatter': '音碎',
+        'Spit': '吐出',
+        'Starving Stampede': '窮凶極餓',
+        'Tail to Claw': '凶尾利爪',
+        'Topaz Cluster': '黃寶石晶簇',
+        'Topaz Ray': '黃寶石射線',
+        'Topaz Stones': '黃寶石',
+        'Toxic Crunch': '毒液重咬',
+        // 'Venom(?!( |ous))': '', // FIXME '毒液'
+        'Venom Drops': '毒液滴落',
+        'Venom Pool': '毒液飛濺',
+        'Venom Rain': '毒液雨',
+        'Venom Squall': '毒液風暴',
+        'Venom Surge': '毒液噴湧',
+        'Venomous Mass': '毒液傾瀉',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Lively Bait': '팔팔한 먹이',

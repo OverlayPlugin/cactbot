@@ -160,6 +160,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Angra Mainyu': '安格拉·曼紐',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Angra Mainyu': '앙그라 마이뉴',

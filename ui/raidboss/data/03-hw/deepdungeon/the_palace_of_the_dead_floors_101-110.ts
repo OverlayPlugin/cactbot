@@ -50,6 +50,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Alicanto': '阿利坎托',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Alicanto': '알리칸토',

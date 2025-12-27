@@ -124,6 +124,39 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Guardian Arkveld': '', // FIXME '护锁刃龙'
+      },
+      'replaceText': {
+        // '\\(aoes\\)': '', // FIXME '(圆形AOE)'
+        // '\\(dash\\)': '', // FIXME '(冲锋)'
+        // '\\(raidwide\\)': '', // FIXME '(全屏)'
+        // '\\(wing\\)': '', // FIXME '(翅膀)'
+        // 'Aetheric Resonance': '', // FIXME '地脉共振'
+        // 'Chainblade Blow': '', // FIXME '锁刃敲打'
+        // 'Chainblade Charge': '', // FIXME '锁刃下挥'
+        // 'Clamorous Chase': '', // FIXME '锁刃跃动'
+        // 'Dragonspark': '', // FIXME '龙光'
+        // 'Forged Fury': '', // FIXME '护龙乱击'
+        // 'Greater Resonance': '', // FIXME '护龙大共振'
+        // 'Guardian Resonance': '', // FIXME '护龙共振'
+        'Roar': '咆哮',
+        'Rush': '突進',
+        // 'Siegeflight': '', // FIXME '锁刃飞翔突进'
+        // 'Steeltail Thrust': '', // FIXME '龙尾突刺'
+        // 'White Flash': '', // FIXME '白光'
+        // 'Wild Energy': '', // FIXME '龙光扩散'
+        // 'Wrathful Rattle': '', // FIXME '锁哭龙闪·改'
+        // 'Wyvern\'s Ouroblade': '', // FIXME '回旋锁刃【龙闪】'
+        // 'Wyvern\'s Radiance': '', // FIXME '龙闪'
+        // 'Wyvern\'s Rattle': '', // FIXME '锁哭龙闪'
+        // 'Wyvern\'s Vengeance': '', // FIXME '波状龙闪'
+        // 'Wyvern\'s Weal': '', // FIXME '龙闪炮'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Guardian Arkveld': '수호룡 알슈베르도',

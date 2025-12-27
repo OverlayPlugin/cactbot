@@ -315,6 +315,35 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Brute Bomber': '', // FIXME '野蛮爆弹'
+        // 'Lit Fuse': '', // FIXME '引线爆弹怪'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(cones\\)': '', // FIXME '(锥形)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(long\\)': '', // FIXME '(长)'
+        // '\\(short\\)': '', // FIXME '(短)'
+        // 'Barbarous Barrage': '', // FIXME '野蛮爆炸'
+        // 'Brutal Burn': '', // FIXME '野蛮灼烧'
+        'Brutal Impact': '野蠻碎擊',
+        // 'Brutal Lariat': '', // FIXME '野蛮碎颈臂'
+        // 'Doping Draught': '', // FIXME '打药'
+        'Explosion': '爆炸',
+        // 'Explosive Rain': '', // FIXME '爆弹雨'
+        // 'Fire Spin': '', // FIXME '野蛮旋火'
+        // 'Fuses of Fury': '', // FIXME '引线爆弹'
+        // 'Infernal Spin': '', // FIXME '超华丽野蛮旋火'
+        // 'Knuckle Sandwich': '', // FIXME '拳面猛击'
+        // 'Lariat Combo': '', // FIXME '碎颈臂连击'
+        // 'Murderous Mist': '', // FIXME '致命毒雾'
+        'Self-destruct': '自爆',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Brute Bomber': '브루트 봄버',

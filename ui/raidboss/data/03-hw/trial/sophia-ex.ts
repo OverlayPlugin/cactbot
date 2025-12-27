@@ -691,6 +691,44 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aion Teleos': '移湧',
+        'Barbelo': '芭碧蘿',
+        'Sophia': '索菲亞',
+        'The First Demiurge': '信徒其一',
+        'The Second Demiurge': '信徒其二',
+        'The Third Demiurge': '信徒其三',
+      },
+      'replaceText': {
+        // '\\?': '', // FIXME ' ?'
+        // '\\(Meteor Detonate\\)': '', // FIXME '(陨石爆炸)'
+        // '\\(Snapshot\\)': '', // FIXME '(快照)'
+        // '\\(Tilt\\)': '', // FIXME '(倾斜)'
+        'Aero III': '大勁風',
+        'Arms of Wisdom': '睿智之秤',
+        'Cintamani': '如意寶珠',
+        'Cloudy Heavens': '陰雲天堂',
+        'Dischordant Cleansing': '不平衡之罰',
+        'Divine Spark': '灼熱視線',
+        'Execute': '處決',
+        'Gnosis': '靈知',
+        'Gnostic Spear': '魔槍突刺',
+        'Horizontal Kenoma': '側面堅守',
+        'Light Dew': '光露',
+        'Onrush': '突襲',
+        'Quasar': '類星體',
+        'Ring of Pain': '痛苦環刺',
+        'The Scales Of Wisdom': '睿智之天平',
+        // 'Thunder II\\/III': '', // FIXME '震雷/暴雷'
+        // 'Thunder II(?!(?:I|\\/))': '', // FIXME '震雷'
+        'Thunder III': '大雷電',
+        'Vertical Kenoma': '前後堅守',
+        'Zombification': '殭屍',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Aion Teleos': '아이온 소피아',

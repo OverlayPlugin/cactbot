@@ -288,6 +288,43 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Inferno': '煉獄炎魔',
+        'Magna Roader': '魔導機車大魔',
+        'Mark XLIII Mini Cannon': '43式小迫擊砲',
+        'Project Aegis': '強化實驗室',
+        // 'Subject Number XXIV': '', // FIXME '024号'
+        'Terrestrial Weaponry': '陸戰兵器開發室',
+        'The Assessment Grounds': '性能試驗場',
+      },
+      'replaceText': {
+        // '--adds--': '', // FIXME '--小怪--'
+        'Barrier Shift': '變換護盾',
+        'Blizzard II': '中暴雪',
+        'Elemental Overload': '元素超載',
+        '(?<!Magitek )Fire II(?!I)': '中火焰',
+        'Gale Cut': '烈風殺',
+        'Ice Grid': '冰格',
+        'Ketu & Rahu': '羅睺計都',
+        'Ketu Cut': '計都限制器減檔',
+        'Ketu Slash': '計都揮',
+        'Magitek Fire II(?!I)': '魔導中火焰',
+        'Magitek Fire III': '魔導大火焰',
+        'Rahu Blaster': '羅睺衝擊波',
+        'Rahu Cut': '羅睺限制器減檔',
+        'Sparking Current': '電流火花',
+        'Stab': '突刺',
+        'System Error': '系統錯誤',
+        'Thunder II': '中雷電',
+        // 'Towers': '', // FIXME '塔'
+        'Triflame': '三炎',
+        'Wheel': '車輪',
+        'Wild Speed': '猛衝',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Inferno': '인페르노',

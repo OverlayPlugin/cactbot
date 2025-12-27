@@ -419,6 +419,43 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Circle of Purgatory': '煉獄魔陣',
+        '(?<!Greater )Flamesent': '炎妖',
+        'Greater Flamesent': '業炎妖',
+        'Rubicante(?! )': '盧比坎特',
+        'Rubicante Mirage': '盧比坎特的幻影',
+      },
+      'replaceText': {
+        // '\\(aoe\\)': '', // FIXME '(AOE)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        'Arcane Revelation': '魔法陣展開',
+        'Arch Inferno': '烈風火焰流',
+        'Blazing Rapture': '狂炎',
+        'Conflagration': '劫火流',
+        'Dualfire': '雙炎流',
+        'Explosive Pyre': '大火焰擊',
+        'Fiery Expiation': '獄炎',
+        'Flamerake': '烈火赤滅爪',
+        'Ghastly Flame': '妖火',
+        'Ghastly Torch': '妖火炎',
+        'Ghastly Wind': '妖火風',
+        'Hope Abandon Ye': '煉獄招來',
+        'Infernal Slaughter': '火焰亂擊',
+        // '(?<!(Arch |Erz))Inferno(?! Devil)': '', // FIXME '火焰流'
+        'Inferno Devil': '火焰旋風',
+        'Ordeal of Purgation': '煉獄朱炎',
+        'Radial Flagration': '放散火流',
+        'Scalding Fleet': '滅土燒盡：迅火',
+        'Shattering Heat': '炎擊',
+        'Soulscald': '滅土燒盡',
+        'Sweeping Immolation': '赤滅熱波',
+        'Total Immolation': '赤滅熱波：重炎',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Circle of Purgatory': '연옥 마법진',

@@ -668,6 +668,41 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Erichthonios': '艾里克托尼奧斯',
+      },
+      'replaceText': {
+        'Aetherchain': '爆鎖',
+        'Aetherial Shackles': '結咒魔鎖',
+        'Chain Pain': '結咒發動',
+        'First Element': '魔力解放·火',
+        'Fourfold Shackles': '結咒四連魔鎖',
+        'Gaoler\'s Flail(?! [IO])': '懲罰抽擊',
+        // 'Gaoler\'s Flail In/Out': '', // FIXME '惩罚抽击 内/外'
+        // 'Gaoler\'s Flail Out/In': '', // FIXME '惩罚抽击 外/内'
+        'Heavy Hand': '掌摑',
+        'Inevitable Flame': '限時炎爆',
+        'Inevitable Light': '限時光爆',
+        'Intemperance': '冰火侵蝕',
+        'Intemperate Torment': '侵蝕發動',
+        'Lethe': '邊境流刑',
+        'Pitiless Flail of Grace': '懲罰連擊·聖',
+        'Pitiless Flail of Purgation': '懲罰連擊·炎',
+        'Powerful Fire': '炎爆',
+        'Powerful Light': '光爆',
+        'Second Element': '魔力解放·火',
+        'Shackles of Time': '限時魔鎖',
+        'Shining Cells': '光炎監獄',
+        'Slam Shut': '監獄封閉',
+        'Third Element': '魔力解放·火',
+        'True Flare': '純正火光',
+        'True Holy': '純正神聖',
+        'Warder\'s Wrath': '魔鎖亂流',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Erichthonios': '에리크토니오스',

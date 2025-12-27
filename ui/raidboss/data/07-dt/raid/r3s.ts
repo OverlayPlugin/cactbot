@@ -870,6 +870,47 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Brute Bomber': '', // FIXME '野蛮爆弹'
+        // 'Brute Distortion': '', // FIXME '野蛮爆弹的幻影'
+        // 'Lit Fuse': '', // FIXME '导火线爆弹怪'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // 'Barbarous Barrage': '', // FIXME '野蛮爆炸'
+        // 'Blazing Lariat': '', // FIXME '怒焰碎颈臂'
+        // 'Bombarian Flame': '', // FIXME '野蛮火焰'
+        // '(?<! )Bombarian Special': '', // FIXME '超豪华野蛮大乱击'
+        // 'Bombariboom': '', // FIXME '野蛮爆震'
+        'Brutal Impact': '野蠻碎擊',
+        // 'Chain Deathmatch': '', // FIXME '锁链生死战'
+        // 'Diveboom': '', // FIXME '强震冲'
+        // 'Doping Draught': '', // FIXME '打药'
+        'Explosion': '爆炸',
+        // 'Explosive Rain': '', // FIXME '爆弹雨'
+        // 'Final Fusedown': '', // FIXME '零式导火线爆弹'
+        // 'Fuse or Foe': '', // FIXME '设置导火线'
+        // 'Fusefield': '', // FIXME '导火线区域'
+        // 'Fuses of Fury': '', // FIXME '导火线爆弹'
+        // 'Infernal Spin': '', // FIXME '超华丽野蛮旋火'
+        // 'Knuckle Sandwich': '', // FIXME '拳面猛击'
+        // 'Lariat Combo': '', // FIXME '碎颈臂连击'
+        // 'Murderous Mist': '', // FIXME '致命毒雾'
+        // 'Octoboom Bombarian Special': '', // FIXME '八分超豪华野蛮大乱击'
+        // 'Octoboom Dive': '', // FIXME '八分强震冲'
+        // 'Octuple Lariat': '', // FIXME '八分双重碎颈臂'
+        // 'Quadroboom Dive': '', // FIXME '四分强震冲'
+        // 'Quadruple Lariat': '', // FIXME '四分双重碎颈臂'
+        'Self-Destruct': '自爆',
+        'Special Bombarian Special': '究極超豪華野蠻大亂擊',
+        // 'Tag Team': '', // FIXME '组队战'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Brute Bomber': '브루트 봄버',

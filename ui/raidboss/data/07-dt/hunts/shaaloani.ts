@@ -924,6 +924,16 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Keheniheyamewi': '凱海尼海亞麥尤伊',
+        'Yehehetoaua\'pyo': '艾海海陶瓦泡',
+        'Sansheya': '山謝亞',
+        'Ttokrrone': '德庫洛涅',
+        'Sand Sphere': '沙球',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Keheniheyamewi': '케헤니헤야메위',

@@ -482,6 +482,59 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Fan': '舞扇',
+        'Moondust': '月之碎片',
+        'Moonlight': '月光',
+        // 'No\. No\.\.\. Not yet\. Not\. Yet\.': '', // FIXME '我不能输.*我还没有.*'
+        'Specter(?! )': '妖影',
+        'Specter Of Asahi': '朝陽的幻影',
+        'Specter Of Gosetsu': '豪雪的幻影',
+        'Specter Of The Patriarch': '養父的幻影',
+        'Specter Of Zenos': '芝諾斯的幻影',
+        'Tsukuyomi': '月讀',
+        'Specter of Zenos': '芝諾斯的幻影',
+      },
+      'replaceText': {
+        // '\\(E->W\\)': '', // FIXME '(东->西)'
+        // '\\(SW->NW\\)': '', // FIXME '(西南->西北)'
+        // '\\(gun': '', // FIXME '(枪'
+        // 'spear\\)': '', // FIXME '长矛)'
+        'Antitwilight': '月下美人',
+        'Bright Blade': '月刀左斬',
+        'Concentrativity': '壓縮劍氣',
+        'Crater': '冰輪',
+        'Dance Of The Dead': '黃泉之舞',
+        'Dark Blade': '月刀右斬',
+        'Dispersivity': '劍氣波動',
+        // 'Empire adds': '', // FIXME '帝国幻影'
+        'Hagetsu': '破月',
+        // 'Homeland adds': '', // FIXME '家人幻影'
+        'Lead Of The Underworld': '黃泉之彈',
+        'Lunacy': '月下繚亂',
+        'Lunar Halo': '百月光',
+        'Lunar Rays': '殘月',
+        'Midnight Rain': '月時雨',
+        'Moonbeam': '月光流轉',
+        'Moonfall': '碎片散落',
+        'Nightbloom': '月下彼岸花',
+        'Nightfall': '深宵換裝',
+        'Perilune': '月天心',
+        'Reprimand': '責難',
+        'Steel Of The Underworld': '黃泉之槍',
+        'Supreme Selenomancy': '極月讀',
+        'Torment Unto Death': '折磨',
+        'Tsuki-No-Kakera': '月之碎片',
+        'Tsuki-No-Maiogi': '月下舞扇',
+        'Unmoving Troika': '不動三段',
+        'Waning Grudge': '漆黑怨念',
+        'Waxing Grudge': '純白怨念',
+        'Zashiki-Asobi': '宴會遊樂',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Dancing Fan': '춤추는 부채',

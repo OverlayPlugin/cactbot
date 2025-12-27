@@ -367,6 +367,32 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hesperos': '赫斯珀洛斯',
+      },
+      'replaceText': {
+        // '\\(cleave\\)': '', // FIXME '(扇形)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        'Acid Pinax': '劇毒板畫',
+        'Belone Bursts': '附魔佩羅涅·爆炸',
+        'Belone Coils': '附魔佩羅涅·場地',
+        'Bloodrake': '聚血',
+        'Burst(?!s)': '大爆炸',
+        'Decollation': '斷頭',
+        'Directional Shift': '換位強襲·北',
+        'Elegant Evisceration': '優雅除髒',
+        'Hell Skewer': '地獄穿刺',
+        'Levinstrike Pinax': '雷電板畫',
+        '(?<!\\w )Pinax': '板畫',
+        'Setting the Scene': '佈置劇場',
+        'Shifting Strike': '換位強襲',
+        'Well Pinax': '噴水板畫',
+        'Westerly Shift': '換位強襲·西',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hesperos': '헤스페로스',

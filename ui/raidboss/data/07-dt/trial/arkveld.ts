@@ -107,6 +107,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Guardian Arkveld': '', // FIXME '护锁刃龙'
+      },
+      'replaceText': {
+        // '\\(aoes\\)': '', // FIXME '(圆形AOE)'
+        // '\\(dash\\)': '', // FIXME '(冲锋)'
+        // '\\(edge\\)': '', // FIXME '(场边)'
+        // '\\(raidwide\\)': '', // FIXME '(全屏)'
+        // 'Aetheric Resonance': '', // FIXME '地脉共振'
+        // 'Chainblade Blow': '', // FIXME '锁刃敲打'
+        // 'Chainblade Charge': '', // FIXME '锁刃下挥'
+        // 'Forged Fury': '', // FIXME '护龙乱击'
+        // 'Guardian Resonance': '', // FIXME '护龙共振'
+        'Roar': '咆哮',
+        'Rush': '突進',
+        // 'Siegeflight': '', // FIXME '锁刃飞翔突进'
+        // 'Steeltail Thrust': '', // FIXME '龙尾突刺'
+        // 'Wild Energy': '', // FIXME '龙光扩散'
+        // 'Wrathful Rattle': '', // FIXME '锁哭龙闪·改'
+        // 'Wyvern\'s Ouroblade': '', // FIXME '回旋锁刃【龙闪】'
+        // 'Wyvern\'s Rattle': '', // FIXME '锁哭龙闪'
+        // 'Wyvern\'s Weal': '', // FIXME '龙闪炮'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Guardian Arkveld': '수호룡 알슈베르도',

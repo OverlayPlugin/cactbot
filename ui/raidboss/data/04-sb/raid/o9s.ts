@@ -651,6 +651,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Chaos': '卡奧斯',
+      },
+      'replaceText': {
+        'Big Bang': '頂起',
+        'Blaze': '烈焰',
+        'Bowels of Agony': '深層痛楚',
+        'Chaotic Dispersion': '散佈混沌',
+        'Cyclone': '龍捲風',
+        'Damning Edict': '詛咒敕令',
+        'Earthquake': '地震',
+        'Fiendish Orbs': '追蹤',
+        // 'Knock(?! )': '', // FIXME '轰击'
+        // 'Long/Lat Implosion': '', // FIXME '经/纬聚爆'
+        'Soul of Chaos': '混沌之魂',
+        'Stray Earth': '混沌之土',
+        'Stray Flames': '混沌之炎',
+        'Stray Gusts': '混沌之風',
+        'Stray Spray': '混沌之水',
+        'Tsunami': '海嘯',
+        'Umbra Smash': '本影爆碎',
+        // '\\(ALL\\)': '', // FIXME '\\(全部\\)'
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Chaos': '카오스',

@@ -530,6 +530,44 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gleaming Fang': '光の牙',
+        'Howling Blade': 'ハウリングブレード',
+        'Moonlit Shadow': 'ハウリングブレードの幻影',
+        'Wolf of Stone': '土の狼頭',
+        'Wolf of Wind': '風の狼頭',
+      },
+      'replaceText': {
+        // '\\(castbar\\)': '', // FIXME '(咏唱栏)'
+        // '\\(circles\\)': '', // FIXME '(圆形)'
+        // '\\(cone\\)': '', // FIXME '(扇形)'
+        // '\\(line\\)': '', // FIXME '(直线)'
+        'Bare Fangs': '光牙召喚',
+        'Beckon Moonlight': '幻狼召喚',
+        'Extraplanar Pursuit': '空間斬',
+        'Fanged Charge': '突進光牙',
+        'Great Divide': '一刀兩斷',
+        'Growling Wind': '風刃氣',
+        'Gust': '狂風',
+        'Heavensearth': '大震擊',
+        'Moonbeam\'s Bite': '幻狼劍',
+        'Ravenous Saber': '風塵光狼斬',
+        'Roaring Wind': '風狼豪波',
+        'Shadowchase': '殘影劍',
+        'Tactical Pack': '光狼召喚',
+        'Targeted Quake': '局部地震',
+        'Terrestrial Rage': '大地之怒',
+        'Terrestrial Titans': '大地之喚',
+        'Titanic Pursuit': '斬空劍',
+        'Towerfall': '崩塌',
+        'Tracking Tremors': '連震擊',
+        'Weal of Stone': '地烈波',
+        'Wolves\' Reign': '群狼劍',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gleaming Fang': '빛송곳니',

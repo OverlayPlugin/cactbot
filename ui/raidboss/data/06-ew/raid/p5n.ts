@@ -308,6 +308,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Proto-Carbuncle': '原型卡邦庫爾',
+      },
+      'replaceText': {
+        '(?<!Toxic )Crunch': '重咬',
+        'Ruby Glow': '紅寶石之光',
+        'Searing Ray': '灼熱射線',
+        'Sonic Howl': '音嚎',
+        'Starving Stampede': '窮凶極餓',
+        'Topaz Cluster': '黃寶石晶簇',
+        'Topaz Stones': '黃寶石',
+        'Toxic Crunch': '毒液重咬',
+        'Venom Pool': '毒液飛濺',
+        'Venom Rain': '毒液雨',
+        'Venom Squall': '毒液風暴',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Proto-Carbuncle': '프로토 카벙클',

@@ -296,6 +296,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'The Idol Of Darkness': '暗黑心象',
+        'Unforgiven Idolatry': '未被寬恕的盲崇',
+        '(?<! )Idolatry': '盲崇',
+      },
+      'replaceText': {
+        'Empty Wave': '虛無波動',
+        'Unshadowed Stake': '暗光釘',
+        'Words of Motion': '波狀號令',
+        'Light\'s Course': '白光奔流',
+        'Dark\'s Course': '黑暗奔流',
+        'Betwixt Worlds': '次元孔',
+        'Away with Thee': '強制傳送',
+        'False Twilight': '薄暮機動',
+        'Stygian Sword': '黑暗之劍',
+        'Silver Sledge': '白光之錘',
+        'Unjoined Aspect': '屬性變動',
+        'Words of Night': '夜襲號令',
+        'Strength in Numbers': '攻擊機動',
+        'Silver Shot': '白光之矢',
+        'Explosion': '爆炸',
+        'Empty Flood': '虛無氾濫',
+        'Black Smoke': '黑暗之火',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'The Idol Of Darkness': '어둠의 우상',

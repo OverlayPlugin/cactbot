@@ -175,6 +175,28 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Ball Of Fire': '火焰球',
+        'Alte Roite': '老者',
+      },
+      'replaceText': {
+        'Wyrm Tail': '太古龍尾',
+        'Twin Bolt': '雙重落雷',
+        'The Classical elements': '經典元素',
+        'Roar': '咆哮',
+        'Levinbolt': '雷電',
+        'Flash Freeze': '閃耀凍結',
+        'Flame': '火焰',
+        'Downburst': '下行突風',
+        'Clamp': '壓迫',
+        'Charybdis': '大漩渦',
+        'Burn': '燃燒',
+        'Breath Wing': '風息之翼',
+        'Blaze': '冰焰',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Alte Roite': '알테 로이테',

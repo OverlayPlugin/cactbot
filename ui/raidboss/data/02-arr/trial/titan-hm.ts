@@ -147,6 +147,29 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bomb Boulder': '爆破岩石',
+        'Titan': '泰坦',
+      },
+      'replaceText': {
+        // '\\(clock\\)': '', // FIXME '(顺时针)'
+        // '\\(diamond\\)': '', // FIXME '(钻石)'
+        // '\\(line\\)': '', // FIXME '(直线)'
+        'Burst': '爆炸',
+        'Bury': '塌方',
+        'Earthen Fury': '大地之怒',
+        'Geocrush': '大地撞擊',
+        'Landslide': '地裂',
+        'Mountain Buster': '山崩',
+        'Rock Buster': '岩石破壞者',
+        'Rock Throw': '花崗岩牢獄',
+        'Tumult': '激震',
+        'Weight Of The Land': '大地重壓',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bomb Boulder': '바위폭탄',
