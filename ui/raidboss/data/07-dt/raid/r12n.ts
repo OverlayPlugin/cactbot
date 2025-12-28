@@ -298,9 +298,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         moveAway: {
           en: 'Away from expanding blobs',
+          cn: '远离扩散粘液',
         },
         launchAway: {
           en: 'Launch away from expanding blobs',
+          cn: '向扩散粘液外击退',
         },
       },
     },
@@ -316,9 +318,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         forward: {
           en: 'Launching forward',
+          cn: '向前击退',
         },
         back: {
           en: 'Launching backward',
+          cn: '向后击退',
         },
       },
     },
@@ -339,6 +343,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Escape (${dir} CW)',
+          cn: '逃离 (${dir} 顺时针)',
         },
         ...Directions.outputStringsIntercardDir,
       },
@@ -368,6 +373,7 @@ const triggerSet: TriggerSet<Data> = {
         left: Outputs.left,
         text: {
           en: 'Cleaving ${dir}, point out',
+          cn: '面向场外，${dir}扇形',
         },
       },
     },
@@ -389,6 +395,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away from snakes, platform breaking',
+          cn: '远离蛇，平台破坏',
         },
       },
     },
@@ -448,18 +455,23 @@ const triggerSet: TriggerSet<Data> = {
         west: Outputs.getLeftAndWest,
         outW: {
           en: 'Out West',
+          cn: '左外',
         },
         inW: {
           en: 'In West',
+          cn: '左内',
         },
         inE: {
           en: 'In East',
+          cn: '右内',
         },
         outE: {
           en: 'Out East',
+          cn: '右外',
         },
         text: {
           en: '${dir1}/${dir2}',
+          cn: '${dir1}/${dir2}',
         },
       },
     },
@@ -476,6 +488,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge lines',
+          cn: '躲避直线',
         },
       },
     },
@@ -493,6 +506,38 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         west: Outputs.getLeftAndWest,
         east: Outputs.getRightAndEast,
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Lindwurm': '林德布鲁姆',
+      },
+      'replaceText': {
+        '\\(huge\\)': '(大)',
+        'Bloodshed': '流血',
+        'Bring Down the House': '震场',
+        '(?<! )Burst': '大爆炸',
+        'Constrictor': '巨蟒绞缠',
+        'Cruel Coil': '残暴拘束',
+        'Dramatic Lysis': '细胞爆炸',
+        'Feral Fission': '野性分裂',
+        'Fourth-Wall Fusion': '细胞轰炸',
+        'Grand Entrance': '盛大登场',
+        'Grotesquerie': '细胞附身',
+        'Hemorrhagic Projection': '指向性冲击波',
+        'Mindless Flesh': '细胞失控',
+        'Ravenous Reach': '极饿伸展',
+        'Serpentine Scourge': '灾变吐息',
+        'Shockwave': '冲击波',
+        'Skinsplitter': '蜕鳞',
+        'Splattershed': '溅血',
+        'Split Scourge': '分裂灾变',
+        'The Fixer': '补天之手',
+        'Venomous Scourge': '滴液灾变',
+        'Visceral Burst': '脏腑爆裂',
       },
     },
   ],
