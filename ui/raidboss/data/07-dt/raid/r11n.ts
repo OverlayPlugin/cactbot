@@ -1,11 +1,16 @@
 import Conditions from '../../../../../resources/conditions';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import { Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
+  domDirectionCount: {
+    vertCount: number;
+    horizCount: number;
+  };
   weaponModels: { [string: string]: 'axe' | 'scythe' | 'sword' | 'unknown' };
   weaponTethers: { [string: string]: string };
   trophyActive: boolean;
@@ -35,6 +40,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.AacHeavyweightM3,
   timelineFile: 'r11n.txt',
   initData: () => ({
+    domDirectionCount: { vertCount: 0, horizCount: 0 },
     weaponModels: {},
     weaponTethers: {},
     trophyActive: false,
@@ -156,6 +162,70 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B3D1', source: 'The Tyrant', capture: false },
       response: Responses.aoe(),
+    },
+    {
+      // The Sword Quiver follow-up to Dance of Domination
+      // is made up of six wide line AoEs arranged in a pattern like this:
+      //
+      //  _______
+      //  |\ | /|
+      //  | \|/ |
+      //  | /|\ |
+      //  |/ | \|
+      //
+      // This pattern can be rotated 90/180/270 degrees.
+
+      // There are two safespots in the east/west sections in this depiction,
+      // as well as two ranged safespots in the south section,
+      // either side of the central vertical line.
+
+      // Find the single orthogonal line, then call the melee safespots
+      // 90 degrees each side of it.
+
+      id: 'R11N Dance Of Domination Explosion Collect',
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'B7B9', capture: true, },
+      run: (data, matches) => {
+        // Determine whether the AoE is orthogonal or diagonal
+        // Discard diagonal headings, then count orthogonals.
+        const headingDirNum = Directions.hdgTo8DirNum(parseFloat(matches.heading));
+        if (headingDirNum % 2 === 0) {
+          const isVert = headingDirNum % 4 === 0;
+          const isHoriz = headingDirNum % 4 === 2;
+          if (isVert)
+            data.domDirectionCount.vertCount += 1;
+          else if (isHoriz)
+            data.domDirectionCount.horizCount += 1;
+          else {
+            console.error(`Bad Domination heading data: ${matches.heading}`);
+          }
+        }
+      }
+    },
+    {
+      id: 'R11N Dance Of Domination Explosion Call',
+      type: 'StartsUsing',
+      netRegex: { id: 'B7B9', source: 'The Tyrant', capture: false },
+      delaySeconds: 0.5,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (data.domDirectionCount.vertCount === 1)
+          return output.northSouth!();
+        else if (data.domDirectionCount.horizCount === 1)
+          return output.eastWest!();
+        return output.unknownAvoid!();
+      },
+      outputStrings: {
+        northSouth: {
+          en: 'Go N/S Mid',
+        },
+        eastWest: {
+          en: 'Go E/W Mid',
+        },
+        unknownAvoid: {
+          en: 'Avoid Exploding Lines',
+        },
+      },
     },
     {
       id: 'R11N Raw Steel Buster',
