@@ -89,6 +89,13 @@ Options.Triggers.push({
       response: Responses.aoe(),
     },
     {
+      id: 'Mistwake Treno Amdusias Bio II',
+      type: 'StartsUsing',
+      // Paired with B121, which is the actual damage hit, but no cast bar
+      netRegex: { source: 'Amdusias', id: 'B120', capture: false },
+      response: Responses.aoe(),
+    },
+    {
       id: 'Mistwake Treno Amdusias Shockbolt',
       type: 'StartsUsing',
       // Paired with B12B, which happens first, but does not target
