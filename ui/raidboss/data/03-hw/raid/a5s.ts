@@ -595,23 +595,23 @@ const triggerSet: TriggerSet<Data> = {
         'Glassy-Eyed Cobra': '興奮眼鏡蛇',
       },
       'replaceText': {
-        // '--big--': '', // FIXME '--大--'
-        // '--small--': '', // FIXME '--小--'
+        '--big--': '--大--',
+        '--small--': '--小--',
         '10-Tonze Slash': '十噸揮打',
         'Big Burst': '大爆炸',
         'Bomb\'s Away': '投放炸彈',
         'Boost': '蓄力',
-        // 'Cobra': '', // FIXME 'Cobra'
+        'Cobra': '眼鏡蛇',
         'Disorienting Groan': '吼叫',
         'Feast': '饗宴',
         'Glupgloop': '強酸劇毒藥',
         'Gobbledygawker': '哥布之眼',
-        // 'Gobbledygroper Add': '', // FIXME '哥布林奇美拉出现'
-        // 'Gobcut/Straight': '', // FIXME '猛击上勾拳/全力重拳'
+        'Gobbledygroper Add': '哥布林奇美拉出現',
+        'Gobcut/Straight': '猛擊上勾拳/全力重拳',
         'Gobdash': '怒濤衝拳',
         'Gobhook': '剛猛勾拳',
         'Gobjab': '牽制刺拳',
-        // 'Gobstraight/Cut': '', // FIXME '全力重拳/猛击上勾拳'
+        'Gobstraight/Cut': '全力重拳/猛擊上勾拳',
         'Gobswing': '激震拋拳',
         'Guzzle': '一飲而盡',
         'Kaltstrahl': '寒光',

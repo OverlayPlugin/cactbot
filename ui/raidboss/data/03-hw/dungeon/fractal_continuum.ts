@@ -232,7 +232,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        // 'Clockwork Alarum': '', // FIXME '发条报警虫'
+        'Clockwork Alarum': '發條報警蟲',
         'Exhibit level III': '第三展示區',
         'Minotaur': '米諾陶洛斯',
         'Phantom Ray': '魅影射線',

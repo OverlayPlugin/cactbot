@@ -451,7 +451,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        // 'Condensate Demineralizer \\.9': '', // FIXME '第9大型冷凝器'
+        'Condensate Demineralizer \\.9': '第9大型冷凝器',
         'Hydrate Core': '水合核心',
         'Liquid Limb': '活水之手',
         'Liquid Rage': '活水之怒',

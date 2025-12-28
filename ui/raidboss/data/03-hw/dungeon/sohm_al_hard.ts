@@ -290,12 +290,12 @@ const triggerSet: TriggerSet<Data> = {
         'Lava Scorpion': '熔岩蠍',
       },
       'replaceText': {
-        // '\\(Adds x2\\)': '', // FIXME '(小怪x2)'
-        // '\\(Adds x4\\)': '', // FIXME '(小怪x4)'
-        // '\\(Back\\)': '', // FIXME '(后)'
-        // '\\(Front\\)': '', // FIXME '(前)'
-        // '\\(Readies\\)': '', // FIXME '(准备)'
-        // '\\(Ring\\)': '', // FIXME '(月环)'
+        '\\(Adds x2\\)': '(小怪x2)',
+        '\\(Adds x4\\)': '(小怪x4)',
+        '\\(Back\\)': '(後)',
+        '\\(Front\\)': '(前)',
+        '\\(Readies\\)': '(準備)',
+        '\\(Ring\\)': '(月環)',
         'Wild Horn': '野性利角',
         'Spore Sac': '孢囊',
         'Realm Shaker': '震撼領域',

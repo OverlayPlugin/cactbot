@@ -1192,8 +1192,8 @@ const triggerSet: TriggerSet<Data> = {
         'Vortexer': '環旋者',
       },
       'replaceText': {
-        // '--orbs--': '', // FIXME '--球--'
-        '--regulator check--': '懲罰',
+        '--orbs--': '--球--',
+        '--regulator check--': '--調節器檢查--',
         '100-Megatonze Shock': '億萬噸震盪',
         'Apocalyptic Ray': '末世宣言',
         'Attachment': '配件更換',
@@ -1201,7 +1201,8 @@ const triggerSet: TriggerSet<Data> = {
         'Ballistic Missile': '導彈發射',
         'Blaster': '衝擊波',
         'Blinder': '混合導彈',
-        'Brawler': '爭鬥者',
+        'Brawler(?! Mechanic)': '爭鬥者',
+        'Brawler Mechanic': '爭鬥者變形',
         'Brute Force': '殘暴鐵拳',
         'Crashing Thunder': '衝擊雷',
         'Discoid': '圓盤',
@@ -1231,7 +1232,6 @@ const triggerSet: TriggerSet<Data> = {
         'Link-Up': '系統連接',
         'Long Needle': '大型導彈',
         'Magicked Mark': '魔力射擊',
-        // 'Mechanic': '', // FIXME '争斗者变形'
         'Mega Beam': '巨型光束砲',
         'Mind Blast': '精神衝擊',
         'Mirage': '幻影系統',

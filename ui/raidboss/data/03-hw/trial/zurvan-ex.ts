@@ -516,12 +516,12 @@ const triggerSet: TriggerSet<Data> = {
         'Zurvan': '祖爾宛',
       },
       'replaceText': {
-        // '\\(circles\\)': '', // FIXME '(圆)'
-        // '\\(explosion\\)': '', // FIXME '(爆炸)'
-        // '\\(puddle\\)': '', // FIXME '(圈)'
-        // '\\(snapshot\\)': '', // FIXME '(快照)'
-        // '\\(avoid\\)': '', // FIXME '(躲避)'
-        // '\\(stack\\)': '', // FIXME '(集合)'
+        '\\(circles\\)': '(圓)',
+        '\\(explosion\\)': '(爆炸)',
+        '\\(puddle\\)': '(圈)',
+        '\\(snapshot\\)': '(快照)',
+        '\\(avoid\\)': '(躲避)',
+        '\\(stack\\)': '(集合)',
         'Ahura Mazda': '阿胡拉·馬茲達',
         'Biting Halberd': '刺骨冰戟',
         'Broken Seal': '冰炎之紋',

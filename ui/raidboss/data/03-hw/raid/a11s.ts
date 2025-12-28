@@ -614,37 +614,37 @@ const triggerSet: TriggerSet<Data> = {
         'Armored Pauldron': '肩部裝甲',
         'Claster': '艦載浮游砲',
         'Cruise Chaser': '巡航驅逐者',
-        // 'E\\\\.D\\\\.D\\\\.': '', // FIXME '护航机甲'
+        'E\\\\.D\\\\.D\\\\.': '護航機甲',
         'Multifield': '層積科學結界',
         'Plasma Shield': '等離子護盾',
         'The Main Generators': '中樞大動力室',
       },
       'replaceText': {
-        // '(?<! )Sword': '', // FIXME '剑 '
+        '(?<! )Sword': '劍 ',
         '(?<!Super )Hawk Blaster': '鷹式破壞砲',
-        // '--invincible--': '', // FIXME '--无敌--'
-        // '\\(bait\\)': '', // FIXME '(诱导)'
-        // '\\(clock/out\\)': '', // FIXME '(顺时针/外)'
-        // '\\(everyone\\)': '', // FIXME '(全员)'
-        // '\\(numbers\\)': '', // FIXME '(麻将)'
-        // '\\(orbs\\)': '', // FIXME '(球)'
-        // '\\(out/clock\\)': '', // FIXME '(外/顺时针)'
-        // '\\(shield\\)': '', // FIXME '(护盾)'
-        // '\\?': '', // FIXME ' ?'
+        '--invincible--': '--無敵--',
+        '\\(bait\\)': '(誘導)',
+        '\\(clock/out\\)': '(順時針/外)',
+        '\\(everyone\\)': '(全員)',
+        '\\(numbers\\)': '(數字)',
+        '\\(orbs\\)': '(球)',
+        '\\(out/clock\\)': '(外/順時針)',
+        '\\(shield\\)': '(護盾)',
+        '\\?': ' ?',
         'Assault Cannon': '突擊加農砲',
         'Blassty Blaster': '摧毀者破壞砲',
         'Blassty Charge': '摧毀者衝擊',
         'Blastoff': '準備升空',
         '(?<!Blassty )Charge': '刺衝',
-        // 'E\\.D\\.D\\. Add': '', // FIXME '护航机甲出现'
-        // 'E\\.D\\.D\\. Armored Pauldron': '', // FIXME '护航机甲肩部装甲'
+        'E\\.D\\.D\\. Add': '護航機甲出現',
+        'E\\.D\\.D\\. Armored Pauldron': '護航機甲肩部裝甲',
         'Eternal Darkness': '黑暗命運',
         'GA-100': '百式聚能砲',
         'Lapis Lazuli': '天青石',
         'Laser X Sword': '交叉光劍',
-        // 'Left/Right Laser Sword': '', // FIXME '左/右光剑'
+        'Left/Right Laser Sword': '左/右光劍',
         'Limit Cut': '限制器減檔',
-        // 'Markers': '', // FIXME '标记'
+        'Markers': '標記',
         'Multifield': '層積科學結界',
         'Optical Sight': '制導',
         'Perfect Landing': '掃射著陸',

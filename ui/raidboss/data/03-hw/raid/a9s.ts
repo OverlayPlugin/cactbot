@@ -469,16 +469,16 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '(?<!Double )Scrapline': '廢料金臂鉤',
-        // '--rocks fall--': '', // FIXME '--石头落下--'
+        '--rocks fall--': '--石頭落下--',
         'Acid Rain': '酸蝕雨',
-        // 'Alarum': '', // FIXME '警报'
+        'Alarum': '警報',
         '(?<!Scrap )Bomb': '炸彈',
-        // 'Double Scrapline': '', // FIXME '二重碎颈臂'
+        'Double Scrapline': '二重金臂鉤',
         'Explosion': '爆炸',
-        // 'Full-Metal Faust Add': '', // FIXME '全装甲浮士德出现'
+        'Full-Metal Faust Add': '全裝甲浮士德出現',
         'Heat Shielding Reassembly': '裝甲再生',
         'Kaltstrahl': '寒光',
-        // 'Lava': '', // FIXME '岩浆'
+        'Lava': '岩漿',
         'Left Arm Reassembly': '左臂再生',
         'Panzer Vor': '戰車前進',
         'Panzerschreck': '反坦克火箭筒',

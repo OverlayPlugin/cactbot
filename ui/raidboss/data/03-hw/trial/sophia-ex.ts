@@ -702,10 +702,10 @@ const triggerSet: TriggerSet<Data> = {
         'The Third Demiurge': '信徒其三',
       },
       'replaceText': {
-        // '\\?': '', // FIXME ' ?'
-        // '\\(Meteor Detonate\\)': '', // FIXME '(陨石爆炸)'
-        // '\\(Snapshot\\)': '', // FIXME '(快照)'
-        // '\\(Tilt\\)': '', // FIXME '(倾斜)'
+        '\\?': ' ?',
+        '\\(Meteor Detonate\\)': '(隕石爆炸)',
+        '\\(Snapshot\\)': '(快照)',
+        '\\(Tilt\\)': '(傾斜)',
         'Aero III': '大勁風',
         'Arms of Wisdom': '睿智之秤',
         'Cintamani': '如意寶珠',
@@ -721,8 +721,8 @@ const triggerSet: TriggerSet<Data> = {
         'Quasar': '類星體',
         'Ring of Pain': '痛苦環刺',
         'The Scales Of Wisdom': '睿智之天平',
-        // 'Thunder II\\/III': '', // FIXME '震雷/暴雷'
-        // 'Thunder II(?!(?:I|\\/))': '', // FIXME '震雷'
+        'Thunder II\\/III': '中雷電/大雷電',
+        'Thunder II(?!(?:I|\\/))': '中雷電',
         'Thunder III': '大雷電',
         'Vertical Kenoma': '前後堅守',
         'Zombification': '殭屍',

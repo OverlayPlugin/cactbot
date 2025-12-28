@@ -862,8 +862,8 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Zephirin': '聖騎士澤菲蘭',
       },
       'replaceText': {
-        // '--chains appear--': '', // FIXME '--锁链出现--'
-        // '--towers spawn--': '', // FIXME '--塔生成--'
+        '--chains appear--': '--鎖鏈出現--',
+        '--towers spawn--': '--塔出現--',
         'Absolute Conviction': '絕對信仰',
         'Ancient Quaga': '古代爆震',
         'Ascalon\'s Mercy': '阿斯卡隆之仁',

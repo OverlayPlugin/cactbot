@@ -315,13 +315,13 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
-        // 'Condensate Demineralizer .9': '', // FIXME '第9大型冷凝器'
+        'Condensate Demineralizer .9': '第9大型冷凝器',
         'Hydrate Core': '水合核心',
         'Liquid Limb': '活水之手',
         'Living Liquid': '有生命活水',
       },
       'replaceText': {
-        // '--Liquid Limb spawns--': '', // FIXME '--活水之手出现--'
+        '--Liquid Limb spawns--': '--活水之手出現--',
         'Cascade': '傾瀉',
         'Drainage': '排水',
         'Fluid Strike': '流體強襲',
