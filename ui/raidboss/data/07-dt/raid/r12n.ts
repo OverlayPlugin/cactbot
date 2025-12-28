@@ -299,10 +299,12 @@ const triggerSet: TriggerSet<Data> = {
         moveAway: {
           en: 'Away from expanding blobs',
           cn: '远离扩散粘液',
+          ko: '커지는 점액에서 멀어지기',
         },
         launchAway: {
           en: 'Launch away from expanding blobs',
           cn: '向扩散粘液外击退',
+          ko: '커지는 점액에서 멀어지는 쪽으로 밀쳐지기',
         },
       },
     },
@@ -319,10 +321,12 @@ const triggerSet: TriggerSet<Data> = {
         forward: {
           en: 'Launching forward',
           cn: '向前击退',
+          ko: '앞으로 밀쳐지기',
         },
         back: {
           en: 'Launching backward',
           cn: '向后击退',
+          ko: '뒤로 밀쳐지기',
         },
       },
     },
@@ -344,6 +348,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Escape (${dir} CW)',
           cn: '逃离 (${dir} 顺时针)',
+          ko: '탈출 (${dir} 시계방향)',
         },
         ...Directions.outputStringsIntercardDir,
       },
@@ -374,6 +379,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleaving ${dir}, point out',
           cn: '面向场外，${dir}扇形',
+          ko: '${dir} 부채꼴, 바깥쪽으로 향하기',
         },
       },
     },
@@ -396,6 +402,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away from snakes, platform breaking',
           cn: '远离蛇，平台破坏',
+          ko: '뱀에서 멀어지기, 바닥 부서짐',
         },
       },
     },
@@ -456,22 +463,27 @@ const triggerSet: TriggerSet<Data> = {
         outW: {
           en: 'Out West',
           cn: '左外',
+          ko: '서쪽 바깥',
         },
         inW: {
           en: 'In West',
           cn: '左内',
+          ko: '서쪽 안',
         },
         inE: {
           en: 'In East',
           cn: '右内',
+          ko: '동쪽 안',
         },
         outE: {
           en: 'Out East',
           cn: '右外',
+          ko: '동쪽 바깥',
         },
         text: {
           en: '${dir1}/${dir2}',
           cn: '${dir1}/${dir2}',
+          ko: '${dir1}/${dir2}',
         },
       },
     },
@@ -489,6 +501,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge lines',
           cn: '躲避直线',
+          ko: '직선장판 피하기',
         },
       },
     },

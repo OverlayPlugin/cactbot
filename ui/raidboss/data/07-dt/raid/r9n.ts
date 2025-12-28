@@ -269,6 +269,7 @@ const triggerSet: TriggerSet<Data> = {
         dodge: {
           en: 'Dodge Lines',
           cn: '避开直线',
+          ko: '직선장판 피하기',
         },
       },
     },
@@ -302,6 +303,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir1} max melee => ${dir2} max melee',
           cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
+          ko: '${dir1} 칼끝딜 => ${dir2} 칼끝딜',
         },
         left: Outputs.left,
         right: Outputs.right,
@@ -373,6 +375,7 @@ const triggerSet: TriggerSet<Data> = {
         away: {
           en: 'Away from bats ${dir1}/${dir2}',
           cn: '远离蝙蝠 ${dir1}/${dir2}',
+          ko: '박쥐 피하기 ${dir1}/${dir2}',
         },
       },
     },
@@ -400,6 +403,7 @@ const triggerSet: TriggerSet<Data> = {
         away: {
           en: 'Away from bats ${dir1}/${dir2}/${dir3}',
           cn: '远离蝙蝠 ${dir1}/${dir2}/${dir3}',
+          ko: '박쥐 피하기 ${dir1}/${dir2}/${dir3}',
         },
       },
     },
@@ -495,14 +499,17 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Flails ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
           cn: '刺锤 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+          ko: '철퇴 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
         },
         near: {
           en: 'Near',
           cn: '近',
+          ko: '가까이',
         },
         far: {
           en: 'Far',
           cn: '远',
+          ko: '멀리',
         },
         ...Directions.outputStringsIntercardDir,
       },

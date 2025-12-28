@@ -306,6 +306,7 @@ export default {
   },
   stackInTower: {
     en: 'Stack in Tower',
+    ko: '탑에서 쉐어',
   },
   baitPuddles: {
     en: 'Bait Puddles',
