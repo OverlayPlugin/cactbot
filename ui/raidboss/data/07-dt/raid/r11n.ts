@@ -85,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         spreadPuddles: {
           en: 'Spread => Bait 3x Puddles',
+          cn: '分散 => 诱导3次圈圈',
           ko: '산개 => 장판 유도 3x',
         },
       },
@@ -219,14 +220,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         northSouth: {
           en: 'Go N/S Mid',
+          cn: '去上/下中间',
           ko: '남/북 중간으로',
         },
         eastWest: {
           en: 'Go E/W Mid',
+          cn: '去左/右中间',
           ko: '동/서 중간으로',
         },
         unknownAvoid: {
           en: 'Avoid Exploding Lines',
+          cn: '躲避爆炸直线',
           ko: '폭발하는 선 피하기',
         },
       },
@@ -270,14 +274,17 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         axe: {
           en: 'Out next',
+          cn: '下一波钢铁',
           ko: '다음 밖으로',
         },
         scythe: {
           en: 'In next',
+          cn: '下一波月环',
           ko: '다음 안으로',
         },
         sword: {
           en: 'Intercards next',
+          cn: '下一波X型',
           ko: '다음 대각선으로',
         },
         unknown: Outputs.unknown,
@@ -345,6 +352,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         losMeteor: {
           en: 'LoS behind 2x meteor',
+          cn: '2颗陨石后方躲避',
           ko: '뒤에 숨기 2x',
         },
       },
@@ -357,6 +365,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         flatliner: {
           en: 'Short knockback to sides',
+          cn: '向两侧短距离击退',
           ko: '양 옆으로 짧은 넉백',
         },
       },
@@ -369,6 +378,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitPuddles: {
           en: 'Bait 3x puddles',
+          cn: '诱导3次圈圈',
           ko: '장판 유도 3x',
         },
       },
@@ -396,6 +406,7 @@ const triggerSet: TriggerSet<Data> = {
         se: Outputs.southeast,
         comboDir: {
           en: 'Proximity AoE; Go ${dir1}/${dir2}',
+          cn: '距离衰减 AOE; 去${dir1}/${dir2}',
           ko: '거리감쇠 장판; ${dir1}/${dir2}으로',
         },
       },
@@ -409,6 +420,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         knockbackTowers: {
           en: 'Get Knockback Towers',
+          cn: '踩击退塔',
           ko: '넉백탑 들어가기',
         },
       },
@@ -421,6 +433,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         westSafe: {
           en: 'Tower Knockback to West',
+          cn: '被塔击飞到左侧平台',
           ko: '탑 넉백 서쪽으로',
         },
       },
@@ -433,6 +446,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         eastSafe: {
           en: 'Tower Knockback to East',
+          cn: '被塔击飞到右侧平台',
           ko: '탑 넉백 동쪽으로',
         },
       },
@@ -471,7 +485,62 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.sharedTankBuster(),
     },
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Comet': '彗星',
+        'The Tyrant': '霸王',
+      },
+      'replaceText': {
+        '\\(axe/scythe\\)': '(斧头/镰刀)',
+        '\\(castbar\\)': '(咏唱栏)',
+        '\\(damage\\)': '(伤害)',
+        '\\(in/out\\)': '(内/外)',
+        '\\(intercards\\)': '(X型)',
+        '\\(out/in\\)': '(外/内)',
+        '\\(platform fall\\)': '(平台坠落)',
+        '\\(platform toss\\)': '(平台投掷)',
+        '\\(scythe/axe\\)': '(镰刀/斧头)',
+        '\\(split\\)': '(分裂)',
+        '\\(sword\\)': '(大剑)',
+        'Arcadion Avalanche': '登天碎地',
+        'Assault Apex': '铸兵崩落',
+        'Assault Evolved': '铸兵突袭',
+        'Charybdistopia': '霸王大漩涡',
+        'Comet(?!ite)': '彗星',
+        'Cometite': '彗星风暴',
+        'Cosmic Kiss': '轰击',
+        'Crown of Arcadia': '天顶的主宰',
+        'Dance of Domination(?! Trophy)': '统治的战舞',
+        'Dance of Domination Trophy': '铸兵之令：统治',
+        'Double Tyrannhilation': '双重霸王坠击',
+        'Draw Steel': '铸兵之令',
+        'Explosion': '爆炸',
+        'Fire and Fury': '兽焰连尾击',
+        'Flatliner': '绝命分断击',
+        'Foregone Fatality': '夺命链',
+        'Great Wall of Fire': '火焰流',
+        'Heartbreak Kick': '碎心踢',
+        'Immortal Reign': '万劫不朽的统治',
+        'Impact': '冲击',
+        'Majestic Meteor(?!ain)': '王者陨石',
+        'Majestic Meteorain': '王者陨石雨',
+        'Mammoth Meteor': '遮天陨石',
+        'Massive Meteor': '重陨石',
+        '(?<! )Meteorain': '流星雨',
+        'One and Only': '举世无双的霸王',
+        'Powerful Gust': '强风',
+        'Raw Steel(?! )': '拔刀突击',
+        'Raw Steel Trophy': '铸兵之令：轰击',
+        'Shockwave': '冲击波',
+        'Smashdown': '铸兵猛攻',
+        '(?<! )Trophy Weapons': '历战之兵武',
+        'Ultimate Trophy Weapons': '历战之极武',
+        'Void Stardust': '彗星雨',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
