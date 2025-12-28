@@ -320,7 +320,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11N Heartbreak Kick',
       type: 'StartsUsing',
       netRegex: { id: 'B3FF', source: 'The Tyrant', capture: false },
-      response: Responses.stackMarker(),
+      durationSeconds: 9,
+      response: Responses.stackInTower(),
     },
     {
       id: 'R11N Great Wall Of Fire',
