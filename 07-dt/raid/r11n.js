@@ -64,6 +64,7 @@ Options.Triggers.push({
       outputStrings: {
         spreadPuddles: {
           en: 'Spread => Bait 3x Puddles',
+          ko: '산개 => 장판 유도 3x',
         },
       },
     },
@@ -192,12 +193,15 @@ Options.Triggers.push({
       outputStrings: {
         northSouth: {
           en: 'Go N/S Mid',
+          ko: '남/북 중간으로',
         },
         eastWest: {
           en: 'Go E/W Mid',
+          ko: '동/서 중간으로',
         },
         unknownAvoid: {
           en: 'Avoid Exploding Lines',
+          ko: '폭발하는 선 피하기',
         },
       },
     },
@@ -240,12 +244,15 @@ Options.Triggers.push({
       outputStrings: {
         axe: {
           en: 'Out next',
+          ko: '다음 밖으로',
         },
         scythe: {
           en: 'In next',
+          ko: '다음 안으로',
         },
         sword: {
           en: 'Intercards next',
+          ko: '다음 대각선으로',
         },
         unknown: Outputs.unknown,
       },
@@ -312,6 +319,7 @@ Options.Triggers.push({
       outputStrings: {
         losMeteor: {
           en: 'LoS behind 2x meteor',
+          ko: '뒤에 숨기 2x',
         },
       },
     },
@@ -323,6 +331,7 @@ Options.Triggers.push({
       outputStrings: {
         flatliner: {
           en: 'Short knockback to sides',
+          ko: '양 옆으로 짧은 넉백',
         },
       },
     },
@@ -334,6 +343,7 @@ Options.Triggers.push({
       outputStrings: {
         baitPuddles: {
           en: 'Bait 3x puddles',
+          ko: '장판 유도 3x',
         },
       },
     },
@@ -360,6 +370,7 @@ Options.Triggers.push({
         se: Outputs.southeast,
         comboDir: {
           en: 'Proximity AoE; Go ${dir1}/${dir2}',
+          ko: '거리감쇠 장판; ${dir1}/${dir2}으로',
         },
       },
     },
@@ -372,6 +383,7 @@ Options.Triggers.push({
       outputStrings: {
         knockbackTowers: {
           en: 'Get Knockback Towers',
+          ko: '넉백탑 들어가기',
         },
       },
     },
@@ -383,6 +395,7 @@ Options.Triggers.push({
       outputStrings: {
         westSafe: {
           en: 'Tower Knockback to West',
+          ko: '탑 넉백 서쪽으로',
         },
       },
     },
@@ -394,6 +407,7 @@ Options.Triggers.push({
       outputStrings: {
         eastSafe: {
           en: 'Tower Knockback to East',
+          ko: '탑 넉백 동쪽으로',
         },
       },
     },
