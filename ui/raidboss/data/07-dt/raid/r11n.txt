@@ -105,7 +105,7 @@ hideall "--sync--"
 455.4 "Heartbreak Kick (castbar)" Ability { id: "B3FF", source: "The Tyrant" }
 456.5 "Heartbreak Kick x5" duration 9 #Ability { id: "B400", source: "The Tyrant" }
 466.5 "--sync--" Ability { id: "B402", source: "The Tyrant" }
-477.6 "Majestic Meteor" Ability { id: "B3E9", source: "The Tyrant" }
+477.6 "Majestic Meteor (castbar)" Ability { id: "B3E9", source: "The Tyrant" }
 481.6 "Majestic Meteor 1" #Ability { id: "B3EA", source: "The Tyrant" }
 483.6 "Majestic Meteor 2" #Ability { id: "B3EA", source: "The Tyrant" }
 485.6 "Majestic Meteor 3" #Ability { id: "B3EA", source: "The Tyrant" }
