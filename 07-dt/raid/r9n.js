@@ -239,6 +239,7 @@ Options.Triggers.push({
       outputStrings: {
         dodge: {
           en: 'Dodge Lines',
+          fr: 'Esquivez les lignes',
           cn: '避开直线',
           ko: '직선장판 피하기',
         },
@@ -273,6 +274,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${dir1} max melee => ${dir2} max melee',
+          fr: '${dir1} max melée => ${dir2} max melée',
           cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
           ko: '${dir1} 칼끝딜 => ${dir2} 칼끝딜',
         },
@@ -341,6 +343,7 @@ Options.Triggers.push({
         ...Directions.outputStrings16Dir,
         away: {
           en: 'Away from bats ${dir1}/${dir2}',
+          fr: 'Loin des chauves-souris ${dir1}/${dir2}',
           cn: '远离蝙蝠 ${dir1}/${dir2}',
           ko: '박쥐 피하기 ${dir1}/${dir2}',
         },
@@ -459,16 +462,19 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Flails ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+          fr: 'Fléaux ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
           cn: '刺锤 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
           ko: '철퇴 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
         },
         near: {
           en: 'Near',
+          fr: 'Proche',
           cn: '近',
           ko: '가까이',
         },
         far: {
           en: 'Far',
+          fr: 'Loin',
           cn: '远',
           ko: '멀리',
         },
