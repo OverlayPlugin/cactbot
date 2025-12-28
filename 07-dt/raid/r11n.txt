@@ -1,0 +1,233 @@
+### AAC HEAVYWEIGHT (M3)
+# ZoneId: 1324
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# -ii B3B5 B3BB B3BD B3BF B3C1 B3CB B3D2 B3D4 B3D8 B3DF B3E1 B3E2 B3EE B3F8 B3F9 B540 B541 B542 B7B9 B7E9
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+10.4 "Crown of Arcadia" Ability { id: "B3B6", source: "The Tyrant" }
+20.5 "Draw Steel (axe/scythe)" Ability { id: ["B3B7", "B3B8"], source: "The Tyrant" }
+28.6 "Smashdown (in/out)" Ability { id: ["B3BA", "B3BC"], source: "The Tyrant" }
+34.7 "Draw Steel (scythe/axe)" Ability { id: ["B3B7", "B3B8"], source: "The Tyrant" }
+42.8 "Smashdown (out/in)" Ability { id: ["B3BA", "B3BC"], source: "The Tyrant" }
+53.9 "Void Stardust" Ability { id: "B3C8", source: "The Tyrant" }
+60.0 "Comet (castbar)" Ability { id: "B3C9", source: "The Tyrant" }
+62.9 "Cometite 1" #Ability { id: "B3CA", source: "The Tyrant" }
+65.0 "Cometite 2" #Ability { id: "B3CA", source: "The Tyrant" }
+67.0 "Draw Steel (sword)" Ability { id: "B3B9", source: "The Tyrant" } # Always sword
+67.1 "Cometite 3" #Ability { id: "B3CA", source: "The Tyrant" }
+75.1 "Smashdown (intercards)" Ability { id: "B3BE", source: "The Tyrant" } # Always sword
+81.3 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
+86.6 "Trophy Weapons" Ability { id: "B3CC", source: "The Tyrant" } window 86.6,10
+94.9 "Assault Evolved (castbar)" Ability { id: "B3CD", source: "The Tyrant" }
+97.1 "Assault Evolved 1" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+101.2 "Assault Evolved 2" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+105.3 "Assault Evolved 3" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+107.4 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
+112.4 "Trophy Weapons" Ability { id: "B3CC", source: "The Tyrant" }
+120.8 "Assault Evolved (castbar)" Ability { id: "B3CD", source: "The Tyrant" }
+123.0 "Assault Evolved 1" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+127.1 "Assault Evolved 2" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+131.2 "Assault Evolved 3" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+138.4 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
+142.7 "Dance of Domination Trophy" Ability { id: "B7BA", source: "The Tyrant" } window 142.7,10
+153.4 "Dance of Domination x8" Ability { id: "B3D1", source: "The Tyrant" } duration 5
+164.1 "Explosion" Ability { id: "B3D3", source: "The Tyrant" }
+166.8 "Raw Steel Trophy" Ability { id: "B3D5", source: "The Tyrant" }
+177.9 "Raw Steel" Ability { id: "B3C0", source: "The Tyrant" }
+179.3 "Impact" Ability { id: "B3C2", source: "The Tyrant" }
+185.3 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
+192.7 "Charybdistopia" Ability { id: "B3D7", source: "The Tyrant" }
+198.4 "Ultimate Trophy Weapons" Ability { id: "B7EB", source: "The Tyrant" }
+206.2 "Assault Apex" Ability { id: "B7EC", source: "The Tyrant" }
+208.4 "Assault Evolved 1" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+212.1 "Assault Evolved 2" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+215.8 "Assault Evolved 3" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+219.5 "Assault Evolved 4" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+223.2 "Assault Evolved 5" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+226.9 "Assault Evolved 6" Ability { id: ["B3CE", "B3CF", "B3D0"], source: "The Tyrant" }
+229.1 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
+231.0 "Powerful Gust 1" #Ability { id: "B3D9", source: "The Tyrant" }
+233.0 "Powerful Gust 2" #Ability { id: "B3D9", source: "The Tyrant" }
+236.8 "Immortal Reign" Ability { id: "B3DA", source: "The Tyrant" } window 236.8,10
+246.9 "One and Only (castbar)" Ability { id: "B3DB", source: "The Tyrant" }
+249.9 "One and Only (damage)" Ability { id: "B3DC", source: "The Tyrant" }
+254.1 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
+261.4 "Meteorain" Ability { id: "B3DD", source: "The Tyrant" }
+270.5 "Cosmic Kiss" Ability { id: "B3DE", source: "Comet" }
+281.5 "Massive Meteor" Ability { id: "B3E3", source: "The Tyrant" }
+281.5 "Foregone Fatality" #Ability { id: "B3E0", source: "The Tyrant" }
+291.3 "Cosmic Kiss" Ability { id: "B3DE", source: "Comet" }
+302.3 "Massive Meteor" Ability { id: "B3E3", source: "The Tyrant" }
+302.3 "Foregone Fatality" #Ability { id: "B3E0", source: "The Tyrant" }
+305.5 "--sync--" Ability { id: "B3E4", source: "The Tyrant" } # Double Tyrannhilation
+315.3 "Double Tyrannhilation" Ability { id: "B3E5", source: "The Tyrant" }
+316.4 "Shockwave 1" Ability { id: "B3E6", source: "The Tyrant" }
+316.8 "--sync--" Ability { id: "B3E7", source: "Comet" }
+319.8 "--sync--" Ability { id: "B487", source: "The Tyrant" }
+319.9 "Shockwave 2" Ability { id: "B3E6", source: "The Tyrant" }
+320.3 "--sync--" Ability { id: "B3E7", source: "Comet" }
+321.3 "--sync--" Ability { id: "B402", source: "The Tyrant" }
+330.0 "Flatliner (castbar)" Ability { id: "B3E8", source: "The Tyrant" } window 330,10
+332.0 "Flatliner (split)" Ability { id: "BA8F", source: "The Tyrant" }
+339.1 "Majestic Meteor (castbar)" Ability { id: "B3E9", source: "The Tyrant" }
+343.2 "Majestic Meteor 1" #Ability { id: "B3EA", source: "The Tyrant" }
+345.2 "Majestic Meteor 2" #Ability { id: "B3EA", source: "The Tyrant" }
+347.2 "Majestic Meteor 3" #Ability { id: "B3EA", source: "The Tyrant" }
+351.2 "Majestic Meteorain" Ability { id: "B3EB", source: "The Tyrant" }
+356.9 "Fire and Fury" Ability { id: "B3F7", source: "The Tyrant" }
+357.8 "Mammoth Meteor" Ability { id: "B3EC", source: "The Tyrant" }
+370.3 "Explosion" Ability { id: "B3ED", source: "The Tyrant" }
+375.5 "Majestic Meteor (castbar)" Ability { id: "B3E9", source: "The Tyrant" }
+379.6 "Majestic Meteor 1" #Ability { id: "B3EA", source: "The Tyrant" }
+381.6 "Majestic Meteor 2" #Ability { id: "B3EA", source: "The Tyrant" }
+383.6 "Majestic Meteor 3" #Ability { id: "B3EA", source: "The Tyrant" }
+385.6 "Majestic Meteorain" Ability { id: "B3EB", source: "The Tyrant" }
+389.0 "Mammoth Meteor" Ability { id: "B3EC", source: "The Tyrant" }
+400.6 "Explosion" Ability { id: "B3ED", source: "The Tyrant" }
+403.2 "Arcadion Avalanche (platform fall)" Ability { id: "B3F3", source: "The Tyrant" } window 403.2,10
+412.6 "Arcadion Avalanche (platform toss)" Ability { id: "B3F4", source: "The Tyrant" }
+424.3 "Crown of Arcadia" Ability { id: "B3B6", source: "The Tyrant" }
+
+427.5 label "r11n-loop"
+427.5 "--middle--" Ability { id: "B3B4", source: "The Tyrant" }
+429.7 "--sync--" Ability { id: "B3FE", source: "The Tyrant" }
+436.3 "Heartbreak Kick (castbar)" Ability { id: "B3FF", source: "The Tyrant" }
+437.4 "Heartbreak Kick x5" duration 9 #Ability { id: "B400", source: "The Tyrant" }
+447.4 "--sync--" Ability { id: "B401", source: "The Tyrant" }
+455.4 "Heartbreak Kick (castbar)" Ability { id: "B3FF", source: "The Tyrant" }
+456.5 "Heartbreak Kick x5" duration 9 #Ability { id: "B400", source: "The Tyrant" }
+466.5 "--sync--" Ability { id: "B402", source: "The Tyrant" }
+477.6 "Majestic Meteor (castbar)" Ability { id: "B3E9", source: "The Tyrant" }
+481.6 "Majestic Meteor 1" #Ability { id: "B3EA", source: "The Tyrant" }
+483.6 "Majestic Meteor 2" #Ability { id: "B3EA", source: "The Tyrant" }
+485.6 "Majestic Meteor 3" #Ability { id: "B3EA", source: "The Tyrant" }
+490.6 "Majestic Meteorain" Ability { id: "B3EB", source: "The Tyrant" }
+498.0 "Mammoth Meteor" Ability { id: "B3EC", source: "The Tyrant" }
+503.1 "Fire and Fury" Ability { id: "B3F7", source: "The Tyrant" }
+511.2 "Void Stardust" Ability { id: "B3C8", source: "The Tyrant" }
+517.3 "Comet" Ability { id: "B3C9", source: "The Tyrant" }
+520.2 "Cometite 1" #Ability { id: "B3CA", source: "The Tyrant" }
+522.3 "Cometite 2" #Ability { id: "B3CA", source: "The Tyrant" }
+524.3 "Cometite 3" #Ability { id: "B3CA", source: "The Tyrant" }
+530.3 "Majestic Meteorain" Ability { id: "B3EB", source: "The Tyrant" }
+537.7 "Mammoth Meteor" #Ability { id: "B3EC", source: "The Tyrant" }
+544.1 "Crown of Arcadia" Ability { id: "B3B6", source: "The Tyrant" }
+553.2 "Great Wall of Fire" Ability { id: "B3FA", source: "The Tyrant" }
+557.4 "Explosion" Ability { id: "B3FD", source: "The Tyrant" }
+561.8 "--middle--" Ability { id: "B3B4", source: "The Tyrant" } forcejump "r11n-loop"
+
+
+# IGNORED ABILITIES
+# B3B5 --sync--: auto-attack
+# B3BB Smashdown: basic chariot AoE (axe)
+# B3BD Smashdown: basic dynamo AoE (scythe)
+# B3BF Smashdown: basic cross AoE (sword)
+# B3C1 Raw Steel: shared tank cleave
+# B3CB Comet: follow-up Comet puddles
+# B3D2 Dance of Domination
+# B3D4 Dance of Domination
+# B3D8 Charybdis
+# B3DF Unmitigated Explosion: meteor tower failure
+# B3E1 Unmitigated Explosion
+# B3E2 Explosion: unknown, something to do with Shockwave mechanic
+# B3EE Unmitigated Explosion: knockback tower failure
+# B3F8 Fire and Fury: conal AoE front (Majestic Meteor)
+# B3F9 Fire and Fury: conal AoE back (Majestic Meteor)
+# B540 Assault Evolved: tether axe charge
+# B541 Assault Evolved: tether scythe charge
+# B542 Assault Evolved: tether sword charge
+# B7B9 Explosion: Sword Quiver
+# B7E9 Dance of Domination: Sword Quiver raidwide
+
+# ALL ENCOUNTER ABILITIES
+# B3B4 --sync--: re-center
+# B3B5 --sync--: auto-attack
+# B3B6 Crown of Arcadia: raidwide
+# B3B7 Draw Steel: basic axe stance
+# B3B8 Draw Steel: basic scythe stance
+# B3B9 Draw Steel: basic sword stance
+# B3BA Smashdown: basic chariot AoE castbar (axe)
+# B3BB Smashdown: basic chariot AoE (axe)
+# B3BC Smashdown: basic dynamo AoE castbar (scythe)
+# B3BD Smashdown: basic dynamo AoE (scythe)
+# B3BE Smashdown: basic cross AoE castbar (sword)
+# B3BF Smashdown: basic cross AoE (sword)
+# B3C0 Raw Steel: Impact + Raw Steel castbar
+# B3C1 Raw Steel: shared tank cleave
+# B3C2 Impact: purple spread circle
+# B3C8 Void Stardust: Comet castbar
+# B3C9 Comet: initial Comet puddle
+# B3CA Cometite: Comet puddle resolve
+# B3CB Comet: follow-up Comet puddles
+# B3CC Trophy Weapons: tether weapon summon castbar
+# B3CD Assault Evolved: tether weapon sequence castbar
+# B3CE Assault Evolved: tether chariot AoE (axe)
+# B3CF Assault Evolved: tether dynamo AoE (scythe)
+# B3D0 Assault Evolved: tether cross AoE (sword)
+# B3D1 Dance of Domination: Sword Quiver raidwide 1
+# B3D2 Dance of Domination: Sword Quiver raidwide 2
+# B3D3 Explosion: Sword Quiver telegraph
+# B3D4 Dance of Domination: Sword Quiver raidwide 3-7
+# B3D5 Raw Steel Trophy: empowered axe stance
+# B3D7 Charybdistopia: set party HP to 1
+# B3D8 Charybdis: standing in tornadoes?
+# B3D9 Powerful Gust: tornado fan AoEs
+# B3DA Immortal Reign: Behemoth form change
+# B3DB One and Only: Behemoth raidwide castbar
+# B3DC One and Only: Behemoth raidwide
+# B3DD Meteorain: meteor phase castbar
+# B3DE Cosmic Kiss: meteor tower
+# B3DF Unmitigated Explosion: meteor tower failure
+# B3E0 Foregone Fatality: tank tether
+# B3E1 Unmitigated Explosion: meteor explosion (probably tank tether failure?)
+# B3E2 Explosion: unknown, something to do with Shockwave mechanic
+# B3E3 Massive Meteor: party stack
+# B3E4 Double Tyrannhilation: Shockwave stance
+# B3E5 Double Tyrannhilation: Shockwave castbar
+# B3E6 Shockwave: LoS meteor
+# B3E7 --sync--: meteor disintigration (Shockwave)
+# B3E8 Flatliner: platform split castbar
+# B3E9 Majestic Meteor: meteor puddle castbar
+# B3EA Majestic Meteor: meteor puddles
+# B3EB Majestic Meteorain: portal meteors
+# B3EC Mammoth Meteor: proximity meteor AoE
+# B3ED Explosion: knockback towers
+# B3EE Unmitigated Explosion: knockback tower failure
+# B3EF Arcadion Avalanche: east platform destruction
+# B3F0 Arcadion Avalanche: east platform toss (north safe)
+# B3F1 Arcadion Avalanche: west platform destruction
+# B3F2 Arcadion Avalanche: west platform toss (south safe)
+# B3F3 Arcadion Avalanche: east platform destruction
+# B3F4 Arcadion Avalanche: east platform toss (south safe)
+# B3F5 Arcadion Avalanche: west platform destruction
+# B3F6 Arcadion Avalanche: west platform toss (north safe)
+# B3F7 Fire and Fury: conal AoE castbar (Majestic Meteor)
+# B3F8 Fire and Fury: conal AoE front (Majestic Meteor)
+# B3F9 Fire and Fury: conal AoE back (Majestic Meteor)
+# B3FA Great Wall of Fire: tank laser castbar
+# B3FB Great Wall of Fire: tank laser
+# B3FC Great Wall of Fire: tank laser follow-up animation
+# B3FD Explosion: tank laser follow-up
+# B3FE --sync--: Heartbreak Kick stance change
+# B3FF Heartbreak Kick: stack tower hit 1
+# B400 Heartbreak Kick: stack tower hits 2-6
+# B401 --sync--: stance change from tornado?
+# B402 --sync--: stance change to ???
+# B487 --sync--: boss tornado animation start during LoS meteors?
+# B540 Assault Evolved: tether axe charge
+# B541 Assault Evolved: tether scythe charge
+# B542 Assault Evolved: tether sword charge
+# B7B9 Explosion: Sword Quiver
+# B7BA Dance of Domination Trophy: empowered sword stance
+# B7E9 Dance of Domination: Sword Quiver raidwide
+# B7EB Ultimate Trophy Weapons: empowered tether weapon summon castbar
+# B7EC Assault Apex: empowered tether weapon sequence castbar
+# BA8F Flatliner: platform split
