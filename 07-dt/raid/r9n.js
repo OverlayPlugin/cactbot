@@ -371,6 +371,7 @@ Options.Triggers.push({
         ...Directions.outputStrings16Dir,
         away: {
           en: 'Away from bats ${dir1}/${dir2}/${dir3}',
+          fr: 'Loin des chauves-souris ${dir1}/${dir2}/${dir3}',
           cn: '远离蝙蝠 ${dir1}/${dir2}/${dir3}',
           ko: '박쥐 피하기 ${dir1}/${dir2}/${dir3}',
         },

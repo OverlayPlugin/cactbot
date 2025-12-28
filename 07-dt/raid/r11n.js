@@ -64,6 +64,7 @@ Options.Triggers.push({
       outputStrings: {
         spreadPuddles: {
           en: 'Spread => Bait 3x Puddles',
+          fr: 'Dispersion => Déposez les flaques 3x',
           cn: '分散 => 诱导3次圈圈',
           ko: '산개 => 장판 유도 3x',
         },
@@ -194,16 +195,19 @@ Options.Triggers.push({
       outputStrings: {
         northSouth: {
           en: 'Go N/S Mid',
+          fr: 'Allez N/S Milieu',
           cn: '去上/下中间',
           ko: '남/북 중간으로',
         },
         eastWest: {
           en: 'Go E/W Mid',
+          fr: 'Allez E/O Milieu',
           cn: '去左/右中间',
           ko: '동/서 중간으로',
         },
         unknownAvoid: {
           en: 'Avoid Exploding Lines',
+          fr: 'Évitez les lignes explosives',
           cn: '躲避爆炸直线',
           ko: '폭발하는 선 피하기',
         },
@@ -248,16 +252,19 @@ Options.Triggers.push({
       outputStrings: {
         axe: {
           en: 'Out next',
+          fr: 'Extérieur après',
           cn: '下一波钢铁',
           ko: '다음 밖으로',
         },
         scythe: {
           en: 'In next',
+          fr: 'Intérieur après',
           cn: '下一波月环',
           ko: '다음 안으로',
         },
         sword: {
           en: 'Intercards next',
+          fr: 'Intercardinaux après',
           cn: '下一波X型',
           ko: '다음 대각선으로',
         },
@@ -326,6 +333,7 @@ Options.Triggers.push({
       outputStrings: {
         losMeteor: {
           en: 'LoS behind 2x meteor',
+          fr: 'Derrière les 2 météores',
           cn: '2颗陨石后方躲避',
           ko: '뒤에 숨기 2x',
         },
@@ -339,6 +347,7 @@ Options.Triggers.push({
       outputStrings: {
         flatliner: {
           en: 'Short knockback to sides',
+          fr: 'Légère poussée vers les côtés',
           cn: '向两侧短距离击退',
           ko: '양 옆으로 짧은 넉백',
         },
@@ -352,6 +361,7 @@ Options.Triggers.push({
       outputStrings: {
         baitPuddles: {
           en: 'Bait 3x puddles',
+          fr: 'Déposez les flaques 3x',
           cn: '诱导3次圈圈',
           ko: '장판 유도 3x',
         },
@@ -380,6 +390,7 @@ Options.Triggers.push({
         se: Outputs.southeast,
         comboDir: {
           en: 'Proximity AoE; Go ${dir1}/${dir2}',
+          fr: 'AoE de proximité, Allez ${dir1}/${dir2}',
           cn: '距离衰减 AOE; 去${dir1}/${dir2}',
           ko: '거리감쇠 장판; ${dir1}/${dir2}으로',
         },
@@ -394,6 +405,7 @@ Options.Triggers.push({
       outputStrings: {
         knockbackTowers: {
           en: 'Get Knockback Towers',
+          fr: 'Prenez une tour (poussée)',
           cn: '踩击退塔',
           ko: '넉백탑 들어가기',
         },
@@ -407,6 +419,7 @@ Options.Triggers.push({
       outputStrings: {
         westSafe: {
           en: 'Tower Knockback to West',
+          fr: 'Prenez une tour (poussée vers l\'Ouest)',
           cn: '被塔击飞到左侧平台',
           ko: '탑 넉백 서쪽으로',
         },
@@ -420,6 +433,7 @@ Options.Triggers.push({
       outputStrings: {
         eastSafe: {
           en: 'Tower Knockback to East',
+          fr: 'Prenez une tour (poussée vers l\'Est)',
           cn: '被塔击飞到右侧平台',
           ko: '탑 넉백 동쪽으로',
         },
