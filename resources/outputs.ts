@@ -304,6 +304,9 @@ export default {
     tc: '中間集合',
     ko: '중앙에서 쉐어',
   },
+  stackInTower: {
+    en: 'Stack in Tower',
+  },
   baitPuddles: {
     en: 'Bait Puddles',
     de: 'Flächen Ködern',

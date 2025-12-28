@@ -351,6 +351,7 @@ export const Responses = {
       },
     };
   },
+  stackInTower: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.stackInTower),
   stackMiddle: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.stackMiddle),
   doritoStack: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.doritoStack),
   spreadThenStack: (sev?: Severity) => {
