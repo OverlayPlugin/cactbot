@@ -410,6 +410,26 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Arcadion Avalanche Follow Up North Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B3F0', 'B3F6'], source: 'The Tyrant', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      infoText: (_data, _matches, output) => output.goNorth!(),
+      outputStrings: {
+        goNorth: Outputs.north,
+      },
+    },
+    {
+      id: 'Arcadion Avalanche Follow Up South Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B3F2', 'B3F4'], source: 'The Tyrant', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      infoText: (_data, _matches, output) => output.goSouth!(),
+      outputStrings: {
+        goSouth: Outputs.south,
+      },
+    },
+    {
       id: 'R11N Heartbreak Kick',
       type: 'StartsUsing',
       netRegex: { id: 'B3FF', source: 'The Tyrant', capture: false },
