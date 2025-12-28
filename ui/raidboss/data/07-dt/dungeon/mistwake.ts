@@ -30,6 +30,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread (away from rocks)',
+          fr: 'Dispersez-vous (loin des rochers)',
           cn: '分散 (避开石头)',
           ko: '산개 (바위 근처에서 떨어지기)',
         },
@@ -43,6 +44,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Hide behind rock',
+          fr: 'Derrière un rocher',
           cn: '躲在石头后',
           ko: '바위 뒤에 숨기',
         },
@@ -63,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Point laser away from rocks',
+          fr: 'Pointez le laser loin des rochers',
           cn: '将激光指向避开石头',
           ko: '레이저가 바위를 향하지 않게 하기',
         },

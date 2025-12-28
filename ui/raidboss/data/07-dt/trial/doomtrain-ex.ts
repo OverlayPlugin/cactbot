@@ -103,6 +103,7 @@ const triggerSet: TriggerSet<Data> = {
         bait: {
           en: 'Bait Puddles',
           de: 'Flächen ködern',
+          fr: 'Déposez les flaques',
           cn: '诱导雷圈',
           ko: '장판 유도',
         },
@@ -198,6 +199,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stored ${mech}',
           de: 'Gespeichert ${mech}',
+          fr: 'Enregistré : ${mech}',
           cn: '已储存 ${mech}',
           ko: '${mech} 저장',
         },
@@ -227,6 +229,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${mech1} => ${mech2}',
           de: '${mech1} => ${mech2}',
+          fr: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
         },
@@ -260,6 +263,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'LoS ${turretDir} => Tankbusters',
           de: 'LoS ${turretDir} => Tank-Busters',
+          fr: 'LoS ${turretDir} => Tankbusters',
           cn: '${turretDir} 箱体 => 双T死刑',
           ko: '${turretDir} 상자 => 탱버',
         },
@@ -289,18 +293,21 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'LoS ${turretDir} => ${mech1} => ${mech2}',
           de: 'LoS ${turretDir} => ${mech1} => ${mech2}',
+          fr: 'LoS ${turretDir} => ${mech1} => ${mech2}',
           cn: '${turretDir} 箱体 => ${mech1} => ${mech2}',
           ko: '${turretDir} 상자 => ${mech1} => ${mech2}',
         },
         express: {
           en: '${knockback} => Dodge Lasers',
           de: '${knockback} => Laser ausweichen',
+          fr: '${knockback} => Esquivez les lasers',
           cn: '${knockback} => 躲避激光',
           ko: '${knockback} => 레이저 피하기',
         },
         windpipe: {
           en: '${drawIn} => Away from Front',
           de: '${drawIn} => Weg von Vorne',
+          fr: '${drawIn} => Loin de l\'avant',
           cn: '${drawIn} => 远离前方',
           ko: '${drawIn} => 맨 앞 피하기',
         },
@@ -377,6 +384,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Train cleaves from ${dir}',
           de: 'Zug Cleave ${dir}',
+          fr: 'Cleaves du train depuis ${dir}',
           cn: '火车从 ${dir} 攻击',
           ko: '${dir}에서 기차 공격',
         },
@@ -409,6 +417,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Train ${dir}, ${mech}',
           de: 'Zug ${dir}, ${mech}',
+          fr: 'Train ${dir}, ${mech}',
           cn: '火车 ${dir}, ${mech}',
           ko: '기차 ${dir}, ${mech}',
         },
@@ -445,6 +454,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Tower x3 => Next Platform',
           de: 'Turm x3 => Nächste Plattform',
+          fr: 'Tour x3 => Wagon suivant',
           cn: '踩塔 x3 => 下一节车厢',
           ko: '탑 x3 => 다음 플랫폼',
         },
@@ -463,6 +473,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Tower x4 => Next Platform',
           de: 'Turm x4 => Nächste Plattform',
+          fr: 'Tour x4 => Wagon suivant',
           cn: '踩塔 x4 => 下一节车厢',
           ko: '탑 x4 => 다음 플랫폼',
         },
@@ -478,6 +489,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Down => Up',
           de: 'Unten => Oben',
+          fr: 'En bas => En haut',
           cn: '先下 => 上',
           ko: '아래 => 위',
         },
@@ -493,6 +505,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Up => Down',
           de: 'Oben => Unten',
+          fr: 'En haut => En bas',
           cn: '先上 => 下',
           ko: '위 => 아래',
         },
@@ -599,6 +612,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir} Safe + Stacks',
           de: '${dir} Sicher + sammeln',
+          fr: '${dir} Sûre + Package',
           cn: '${dir} 安全 + 分摊',
           ko: '${dir} 안전 + 쉐어',
         },
@@ -624,6 +638,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Tower x5 => Next Platform',
           de: 'Turm x5 => Nächste Plattform',
+          fr: 'Tour x5 => Wagon suivant',
           cn: '踩塔 x5 => 下一节车厢',
           ko: '탑 x5 => 다음 플랫폼',
         },
@@ -645,6 +660,7 @@ const triggerSet: TriggerSet<Data> = {
         spreadIntoBait: {
           en: 'Spread AoEs => Bait Puddles',
           de: 'AoEs verteilen => Flächen ködern',
+          fr: 'Dispersez les AoE => Déposez les flaques',
           cn: '分散处理黄圈 => 诱导雷圈',
           ko: '산개징 => 장판 유도',
         },
@@ -667,6 +683,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Tower x6 => Enrage',
           de: 'Turm x6 => Finalangriff',
+          fr: 'Tour x6 => Enrage',
           cn: '踩塔 x6 => 狂暴',
           ko: '탑 x6 => 전멸기',
         },
@@ -690,12 +707,14 @@ const triggerSet: TriggerSet<Data> = {
         up: {
           en: 'Up (dodge turrets)',
           de: 'Oben (Geschütztürmen ausweichen)',
+          fr: 'En haut (esquivez les tourelles)',
           cn: '左箱体上',
           ko: '위 (포탑 피하기)',
         },
         down: {
           en: 'Down (dodge turrets)',
           de: 'Unten (Geschütztürmen ausweichen)',
+          fr: 'En bas (esquivez les tourelles)',
           cn: '左箱体侧',
           ko: '아래 (포탑 피하기)',
         },
@@ -704,6 +723,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'LoS ${turretDir}',
           de: 'LoS ${turretDir}',
+          fr: 'LoS ${turretDir}',
           cn: '${turretDir} 箱体',
           ko: '${turretDir} 포탑 피하기',
         },
@@ -736,24 +756,28 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${mech1} => ${mech2}${mech3}',
           de: '${mech1} => ${mech2}${mech3}',
+          fr: '${mech1} => ${mech2}${mech3}',
           cn: '${mech1} => ${mech2}${mech3}',
           ko: '${mech1} => ${mech2}${mech3}',
         },
         express: {
           en: '${knockback} => Dodge Lasers',
           de: '${knockback} => Laser ausweichen',
+          fr: '${knockback} => Esquivez les lasers',
           cn: '${knockback} => 躲避激光',
           ko: '${knockback} => 레이저 피하기',
         },
         windpipe: {
           en: '${drawIn} => Away from Front',
           de: '${drawIn} => Weg von Vorne',
+          fr: '${drawIn} => Loin de l\'avant',
           cn: '${drawIn} => 远离前方',
           ko: '${drawIn} => 맨 앞 피하기',
         },
         tbFollowup: {
           en: ' => ${mech3}',
           de: ' => ${mech3}',
+          fr: ' => ${mech3}',
           cn: ' => ${mech3}',
           ko: ' => ${mech3}',
         },
@@ -808,13 +832,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Aether': 'sphère éthérée',
+        'Aether': 'Sphère éthérée',
         'Doomtrain': 'Glasya-Labolas',
-        'Kinematic Turret': 'tourelle d\'escorte',
+        'Kinematic Turret': 'Tourelle d\'escorte',
       },
       'replaceText': {
+        '\\(bait\\)': '(déposez)',
+        '\\(detonate\\)': '(explosion)',
         'Aetherial Ray': 'Rayon éthéré',
         'Aetherochar': 'Rayon éthéré',
         'Aetherosote': 'Choc éthéré',
