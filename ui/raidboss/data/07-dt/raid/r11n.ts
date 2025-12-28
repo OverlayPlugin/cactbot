@@ -295,7 +295,17 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: tetherData['foregoneTether'], capture: false },
       suppressSeconds: 9, // Avoid repeated calls if tether passes multiple times
-      alertText: (_data, _matches, output) => output.tetherBusters!(),
+      // Avoid severity collisions with the Massive Meteor call.
+      alertText: (data, _matches, output) => {
+        if (data.role !== 'tank')
+          return;
+        return output.tetherBusters!();
+      },
+      infoText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return;
+        return output.tetherBusters!();
+      },
       outputStrings: {
         tetherBusters: Outputs.tetherBusters,
       },
@@ -304,8 +314,21 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11N Massive Meteor',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['massiveMeteor'], capture: true },
-      condition: (data) => data.role !== 'tank',
-      response: Responses.stackMarkerOn(),
+      alertText: (data, matches, output) => {
+        if (data.me === matches.target)
+          return output.stackOnYou!();
+        if (data.role !== 'tank')
+          return output.stackMarkerOn!({ player: matches.target });
+      },
+      infoText: (data, matches, output) => {
+        if (data.me === matches.target || data.role !== 'tank')
+          return;
+        return output.stackMarkerOn!({ player: matches.target });
+      },
+      outputStrings: {
+        stackOnYou: Outputs.stackOnYou,
+        stackMarkerOn: Outputs.stackOnPlayer,
+      },
     },
     {
       id: 'R11N Double Tyrannhilation',
