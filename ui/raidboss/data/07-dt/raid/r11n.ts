@@ -184,7 +184,7 @@ const triggerSet: TriggerSet<Data> = {
 
       id: 'R11N Dance Of Domination Explosion Collect',
       type: 'StartsUsingExtra',
-      netRegex: { id: 'B7B9', capture: true, },
+      netRegex: { id: 'B7B9', capture: true },
       run: (data, matches) => {
         // Determine whether the AoE is orthogonal or diagonal
         // Discard diagonal headings, then count orthogonals.
@@ -200,7 +200,7 @@ const triggerSet: TriggerSet<Data> = {
             console.error(`Bad Domination heading data: ${matches.heading}`);
           }
         }
-      }
+      },
     },
     {
       id: 'R11N Dance Of Domination Explosion Call',
