@@ -306,6 +306,7 @@ export default {
   },
   stackInTower: {
     en: 'Stack in Tower',
+    fr: 'Package dans la tour',
     cn: '塔内集合',
     ko: '탑에서 쉐어',
   },
