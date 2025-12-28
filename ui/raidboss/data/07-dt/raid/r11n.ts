@@ -365,13 +365,27 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R11N Mammoth Meteor',
-      type: 'StartsUsing',
-      netRegex: { id: 'B3EC', source: 'The Tyrant', capture: false },
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'B3EC', capture: true },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.proxAOE!(),
+      infoText: (_data, matches, output) => {
+        // Mammoth Meteor is always at two opposite intercardinals.
+        // Once we see one, we know where the safespots are
+        // without waiting on the second.
+        const meteorX = parseFloat(matches.x);
+        const meteorY = parseFloat(matches.y);
+        const meteorQuad = Directions.xyToIntercardDirOutput(meteorX, meteorY, 100, 100);
+        if (meteorQuad === 'dirNE' || meteorQuad === 'dirSW')
+          return output.comboDir!({ dir1: output.nw!(), dir2: output.se!() });
+        return output.comboDir!({ dir1: output.ne!(), dir2: output.sw!() });
+      },
       outputStrings: {
-        proxAOE: {
-          en: 'Proximity AoE',
+        nw: Outputs.northwest,
+        ne: Outputs.northeast,
+        sw: Outputs.southwest,
+        se: Outputs.southeast,
+        comboDir: {
+          en: 'Proximity AoE; Go ${dir1}/${dir2}',
         },
       },
     },
@@ -410,7 +424,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Arcadion Avalanche Follow Up North Safe',
+      id: 'R11N Arcadion Avalanche Follow Up North Safe',
       type: 'StartsUsing',
       netRegex: { id: ['B3F0', 'B3F6'], source: 'The Tyrant', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
@@ -420,7 +434,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'Arcadion Avalanche Follow Up South Safe',
+      id: 'R11N Arcadion Avalanche Follow Up South Safe',
       type: 'StartsUsing',
       netRegex: { id: ['B3F2', 'B3F4'], source: 'The Tyrant', capture: true },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
