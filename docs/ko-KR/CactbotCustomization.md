@@ -312,6 +312,7 @@ Options.Triggers.push([
   // ... 원한다면 다른 지역을 추가하세요
 ]);
 ```
+
 cactbot 트리거 작성하는 방법을 더 자세히 배우려면
 [트리거 가이드](../RaidbossGuide.md)와
 [ui/raidboss/data](../../ui/raidboss/data)에 이미 존재하는 트리거를 읽어보세요.
