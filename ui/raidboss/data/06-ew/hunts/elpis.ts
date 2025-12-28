@@ -16,8 +16,8 @@ const triggerSet: TriggerSet<Data> = {
     de: 'A Rang Hohe Jagd',
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
-    tc: 'A級狩獵怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   triggers: [
     {
@@ -76,8 +76,8 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Partez avec l\'eau',
             ja: 'ボスから離れる',
             cn: '远离人群',
-            tc: '遠離人群',
             ko: '나에게 물징 멀리 빠지기',
+            tc: '遠離人群',
           },
           waterMarker: {
             en: 'Away from water marker',
@@ -85,8 +85,8 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Éloignez-vous du marquage eau',
             ja: 'AOEから離れる',
             cn: '躲开水标记',
-            tc: '躲開水標記',
             ko: '물징에서 멀리 떨어지기',
+            tc: '躲開水標記',
           },
         };
 
@@ -144,8 +144,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Suivre le saut => Sous le boss',
           ja: 'ジャンプ近づく => 下へ',
           cn: '跟随跳跃 => 脚下',
-          tc: '跟隨跳躍 => 腳下',
           ko: '점프 따라가기 => 보스 아래로',
+          tc: '跟隨跳躍 => 腳下',
         },
       },
     },
@@ -163,8 +163,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Loin du saut',
           ja: 'ジャンプから離れる',
           cn: '远离跳跃',
-          tc: '遠離跳躍',
           ko: '점프뛴 곳에서 멀리 떨어지기',
+          tc: '遠離跳躍',
         },
       },
     },

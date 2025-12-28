@@ -50,8 +50,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Repoussé(e) !',
             ja: 'ノックバック',
             cn: '击退坠落',
-            tc: '擊退墜落',
             ko: '넉백됨!',
+            tc: '擊退墜落',
           },
         };
       },
@@ -71,8 +71,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'A glissé(e) !',
             ja: '滑った',
             cn: '滑落',
-            tc: '滑落',
             ko: '미끄러짐!',
+            tc: '滑落',
           },
         };
       },

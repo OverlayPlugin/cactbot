@@ -16,8 +16,8 @@ const wrongBuff = (str: string) => {
     fr: `${str} (mauvais buff)`,
     ja: `${str} (不適切なバフ)`,
     cn: `${str} (Buff错了)`,
-    tc: `${str} (Buff錯了)`,
     ko: `${str} (버프 틀림)`,
+    tc: `${str} (Buff錯了)`,
   };
 };
 
@@ -28,8 +28,8 @@ const noBuff = (str: string) => {
     fr: `${str} (pas de buff)`,
     ja: `${str} (バフ無し)`,
     cn: `${str} (没有Buff)`,
-    tc: `${str} (沒有Buff)`,
     ko: `${str}(버프 없음)`,
+    tc: `${str} (沒有Buff)`,
   };
 };
 

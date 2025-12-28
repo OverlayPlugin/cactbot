@@ -13,8 +13,8 @@ const triggerSet: TriggerSet<Data> = {
     de: 'A Rang Hohe Jagd',
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
-    tc: 'A級狩獵怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   triggers: [
     {
@@ -37,8 +37,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Suivez la charge',
           ja: 'ボス従う',
           cn: '跟随冲锋',
-          tc: '跟隨衝鋒',
           ko: '돌진 따라가기',
+          tc: '跟隨衝鋒',
         },
       },
     },

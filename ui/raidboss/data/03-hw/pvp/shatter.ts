@@ -24,8 +24,8 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Vor der 6.4 Überarbeitung',
     fr: 'Avant le remaniement 6.4',
     cn: '6.4改版前',
-    tc: '6.4改版前',
     ko: '6.4 개편 전',
+    tc: '6.4改版前',
   },
   triggers: [
     // https://xivapi.com/LogMessage/2652
@@ -46,8 +46,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Centre',
           ja: '氷: 中央',
           cn: '大冰: 中央',
-          tc: '大冰: 中央',
           ko: '큰 얼음: 중앙',
+          tc: '大冰: 中央',
         },
         north: {
           en: 'Big Ice: North',
@@ -55,8 +55,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Nord',
           ja: '氷: 北',
           cn: '大冰: 上方',
-          tc: '大冰: 上方',
           ko: '큰 얼음: 북쪽',
+          tc: '大冰: 上方',
         },
         southeast: {
           en: 'Big Ice: Southeast',
@@ -64,8 +64,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Sud-Est',
           ja: '氷: 南東',
           cn: '大冰: 右下',
-          tc: '大冰: 右下',
           ko: '큰 얼음: 남동쪽',
+          tc: '大冰: 右下',
         },
         southwest: {
           en: 'Big Ice: Southwest',
@@ -73,8 +73,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Grosse Glace : Sud-Ouest',
           ja: '氷: 西南',
           cn: '大冰: 左下',
-          tc: '大冰: 左下',
           ko: '큰 얼음: 남서쪽',
+          tc: '大冰: 左下',
         },
       },
     },

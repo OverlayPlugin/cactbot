@@ -13,8 +13,8 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Größtenteils unvollständig',
     fr: 'Majoritairement incomplet',
     cn: '大部分未完成',
-    tc: '大部分未完成',
     ko: '대부분 미완성',
+    tc: '大部分未完成',
   },
   resetWhenOutOfCombat: false,
   triggers: [

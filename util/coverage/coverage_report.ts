@@ -27,8 +27,8 @@ export const translationTotals: TranslationTotals = {
   fr: { ...defaultTranslations },
   ja: { ...defaultTranslations },
   cn: { ...defaultTranslations },
-  tc: { ...defaultTranslations },
   ko: { ...defaultTranslations },
+  tc: { ...defaultTranslations },
 };
 
 export const tags: Tags = {};

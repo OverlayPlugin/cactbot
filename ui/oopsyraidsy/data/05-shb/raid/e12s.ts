@@ -205,8 +205,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: `${matches.ability} (de ${ownerNick}, #${number})`,
           ja: `${matches.ability} (${ownerNick}から、#${number})`,
           cn: `${matches.ability} (来自${ownerNick}，#${number})`,
-          tc: `${matches.ability} (來自${ownerNick}，#${number})`,
           ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번)`,
+          tc: `${matches.ability} (來自${ownerNick}，#${number})`,
         };
         if (isStatuePositionKnown && isStatueNorth) {
           text = {
@@ -215,8 +215,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (de ${ownerNick}, #${number} nord)`,
             ja: `${matches.ability} (北の${ownerNick}から、#${number})`,
             cn: `${matches.ability} (来自北方${ownerNick}，#${number})`,
-            tc: `${matches.ability} (來自北方${ownerNick}，#${number})`,
             ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번 북쪽)`,
+            tc: `${matches.ability} (來自北方${ownerNick}，#${number})`,
           };
         } else if (isStatuePositionKnown && !isStatueNorth) {
           text = {
@@ -225,8 +225,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (de ${ownerNick}, #${number} sud)`,
             ja: `${matches.ability} (南の${ownerNick}から、#${number})`,
             cn: `${matches.ability} (来自南方${ownerNick}，#${number})`,
-            tc: `${matches.ability} (來自南方${ownerNick}，#${number})`,
             ko: `${matches.ability} (대상자 "${ownerNick}", ${number}번 남쪽)`,
+            tc: `${matches.ability} (來自南方${ownerNick}，#${number})`,
           };
         }
 
@@ -269,8 +269,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.ability} (de ${pillarOwner})`,
             ja: `${matches.ability} (${pillarOwner}から)`,
             cn: `${matches.ability} (来自${pillarOwner})`,
-            tc: `${matches.ability} (來自${pillarOwner})`,
             ko: `${matches.ability} (대상자 "${pillarOwner}")`,
+            tc: `${matches.ability} (來自${pillarOwner})`,
           },
         };
       },
@@ -363,8 +363,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: `${matches.ability} (de ${ownerNick}, ${dirObj['fr']})`,
               ja: `${matches.ability} (${ownerNick}から, ${dirObj['ja']})`,
               cn: `${matches.ability} (来自${ownerNick}, ${dirObj['cn']}`,
-              tc: `${matches.ability} (來自${ownerNick}, ${dirObj['tc']})`,
               ko: `${matches.ability} (대상자 "${ownerNick}", ${dirObj['ko']})`,
+              tc: `${matches.ability} (來自${ownerNick}, ${dirObj['tc']})`,
             },
           };
         }
@@ -403,8 +403,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Grand lion du nord',
           ja: '大ライオン(北)',
           cn: '北方大狮子',
-          tc: '北方大獅子',
           ko: '북쪽 큰 사자',
+          tc: '北方大獅子',
         };
         const southBigLion: LocaleText = {
           en: 'south big lion',
@@ -412,8 +412,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Grand lion du sud',
           ja: '大ライオン(南)',
           cn: '南方大狮子',
-          tc: '南方大獅子',
           ko: '남쪽 큰 사자',
+          tc: '南方大獅子',
         };
         const shared: LocaleText = {
           en: 'shared',
@@ -421,8 +421,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'Partagé(e)',
           ja: '重ねた',
           cn: '重叠',
-          tc: '重疊',
           ko: '같이 맞음',
+          tc: '重疊',
         };
         const fireDebuff: LocaleText = {
           en: 'had fire',
@@ -430,8 +430,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
           fr: 'A eu(e) le feu',
           ja: '炎付き',
           cn: '火Debuff',
-          tc: '火Debuff',
           ko: '화염 디버프 받음',
+          tc: '火Debuff',
         };
 
         const labels = [];
@@ -474,8 +474,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Renversé(e)',
             ja: 'ノックバック',
             cn: '击退坠落',
-            tc: '擊退墜落',
             ko: '넉백',
+            tc: '擊退墜落',
           },
         };
       },
