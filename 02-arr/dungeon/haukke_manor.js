@@ -102,6 +102,15 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Manor Maidservant': '莊園的女僕',
+        'Manor Claviger': '隨從女工',
+        'Lady Amandine': '阿芒迪娜女士',
+        'Manor Steward': '莊園的總管',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Manor Maidservant': '별궁의 하녀',

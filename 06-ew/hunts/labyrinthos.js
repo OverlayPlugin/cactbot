@@ -120,6 +120,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Hulder': '胡睹',
+        'Storsie': '斯圖希',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Hulder': '훌드라',

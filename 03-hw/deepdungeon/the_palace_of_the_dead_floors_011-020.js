@@ -56,6 +56,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Palace Cobra': '地宮眼鏡蛇',
+        'Spurge': '大戟花',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Palace Cobra': '궁전 코브라',

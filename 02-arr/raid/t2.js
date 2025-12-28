@@ -108,6 +108,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Allagan Rot': '亞拉戈古病毒',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Allagan Rot': '알라그 부패',

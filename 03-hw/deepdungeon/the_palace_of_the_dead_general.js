@@ -314,6 +314,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Mimic': '模仿',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Mimic': '흉내',

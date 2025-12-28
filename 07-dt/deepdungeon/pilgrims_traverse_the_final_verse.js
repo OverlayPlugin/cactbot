@@ -588,6 +588,11 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {},
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Devoured Eater': '잠식된 죄식자',

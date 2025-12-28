@@ -101,6 +101,15 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Palace Deepeye': '地宮深瞳',
+        'Palace Imp': '地宮小頑童',
+        'Palace Pot': '地宮魔力罐',
+        'The Black Rider': '深黑騎士',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Palace Deepeye': '궁전 볼록눈',

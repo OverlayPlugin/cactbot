@@ -396,6 +396,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Lamia Queen': '拉米亞女王',
+        'Meracydian Clone': '美拉西迪亞複製體',
+        'Mimic': '擬態怪',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Lamia Queen': '라미아 여왕',

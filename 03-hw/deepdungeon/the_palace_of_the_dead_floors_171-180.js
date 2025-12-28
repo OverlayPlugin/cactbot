@@ -61,6 +61,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Bird of the Deep Palace': '深宮妖鳥',
+        'Deep Palace Snowclops': '深宮獨眼雪巨人',
+        'Dendainsonne': '丹代恩索涅',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bird of the Deep Palace': '깊은 궁전 새',

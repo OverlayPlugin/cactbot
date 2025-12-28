@@ -157,6 +157,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Baal': '巴力',
+        'Gunitt': '顧尼圖',
+        'Rusalka': '盧莎卡',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Baal': '바알',

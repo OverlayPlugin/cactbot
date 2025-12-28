@@ -35,6 +35,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Chudo-Yudo': '丘都尤都',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Chudo-Yudo': '추도유도',

@@ -68,6 +68,15 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Gancanagh': '蜜言妖',
+        'Orthos Behemoth': '正統凶惡巨獸',
+        'Orthos Fachan': '正統幽鬼之眼',
+        'Orthos Grenade': '正統榴彈怪',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gancanagh': '간카나',

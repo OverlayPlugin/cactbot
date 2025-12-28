@@ -46,6 +46,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Nightmare Eye': '惡夢之眼',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Nightmare Eye': '악몽 눈알',

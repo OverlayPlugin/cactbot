@@ -117,6 +117,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Hashiri-dokoro': '天之東莨菪',
+        'Kenko': '犬蠱',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heavenly Hashiri-dokoro': '천궁 미치광이풀',

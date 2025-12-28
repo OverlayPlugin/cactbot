@@ -173,6 +173,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Rathalos': '火龍',
+        'Steppe Sheep': '草原綿羊',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Rathalos': '리오레우스',

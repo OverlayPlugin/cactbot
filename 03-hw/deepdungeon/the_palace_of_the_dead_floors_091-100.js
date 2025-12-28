@@ -51,6 +51,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Nybeth Obdilord': '死靈術士尼博斯',
+        'Palace Wraith': '地宮幽靈',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Nybeth Obdilord': '시체술사 니버스',

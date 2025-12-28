@@ -63,6 +63,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Chudo-Yudo': '丘都尤都',
+        'Diabolos': '迪亞布羅斯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Chudo-Yudo': '추도유도',

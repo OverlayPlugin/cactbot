@@ -56,6 +56,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Deep Palace Salamander': '深宮火焰蜥蜴',
+        'Kirtimukha': '榮光魔花',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Deep Palace Salamander': '깊은 궁전 불도롱뇽',

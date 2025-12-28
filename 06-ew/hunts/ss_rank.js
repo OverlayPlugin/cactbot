@@ -113,6 +113,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Ker': '克爾',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ker': '케르',

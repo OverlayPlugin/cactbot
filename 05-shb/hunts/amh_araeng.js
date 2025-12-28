@@ -132,6 +132,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Maliktender': '馬利克巨人掌',
+        'Sugaar': '休格爾',
+        'Tarchia': '多智獸',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Maliktender': '말리크텐더',

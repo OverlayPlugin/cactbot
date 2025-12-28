@@ -49,6 +49,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Beccho': '別蝶',
+        'Heavenly Otokage': '天之巨蜥',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Beccho': '벳쵸',

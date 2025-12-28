@@ -47,6 +47,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Gorynich': '格里尼奇惡龍',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gorynich': '고리니치',

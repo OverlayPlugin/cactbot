@@ -155,6 +155,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Rathalos': '火龍',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Rathalos': '리오레우스',

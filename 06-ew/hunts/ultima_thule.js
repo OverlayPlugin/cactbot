@@ -369,6 +369,15 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Arch-Eta': '伊塔總領',
+        'Chi': '希',
+        'Fan Ail': '凡·艾爾',
+        'Narrow-rift': '狹縫',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Arch-Eta': '아치 에타',

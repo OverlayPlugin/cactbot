@@ -35,6 +35,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Vicegerent to the Warden': '審理神代言者',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Vicegerent to the Warden': '아제마 교황',

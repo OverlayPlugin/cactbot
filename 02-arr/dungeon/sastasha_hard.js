@@ -72,6 +72,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Karlabos': '棘刺殼蝦',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Karlabos': '칼라보스',

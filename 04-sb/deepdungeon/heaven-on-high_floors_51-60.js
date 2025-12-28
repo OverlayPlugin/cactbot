@@ -69,6 +69,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Gowan': '天之鐵臂',
+        'Heavenly Naga': '天之那迦',
+        'Suikazura': '忍冬',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heavenly Gowan': '천궁 힘센팔이',

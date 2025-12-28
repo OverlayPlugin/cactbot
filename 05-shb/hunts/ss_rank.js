@@ -87,6 +87,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Forgiven Rebellion': '得到寬恕的叛亂',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Forgiven Rebellion': '면죄된 폭동',

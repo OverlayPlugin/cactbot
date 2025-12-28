@@ -66,6 +66,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Gozu': '牛頭',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Gozu': '소머리',

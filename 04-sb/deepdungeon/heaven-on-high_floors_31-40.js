@@ -55,6 +55,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Bhima': '怖軍',
+        'Heavenly Dogu': '天之土偶',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bhima': '비마',

@@ -194,6 +194,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Lucky Sphinx': '幸運斯芬克斯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Lucky Face': '행운의 얼굴',

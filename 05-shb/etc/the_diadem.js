@@ -83,6 +83,11 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {},
+    },
+    {
       'locale': 'ko',
       'missingTranslations': true,
       'replaceSync': {

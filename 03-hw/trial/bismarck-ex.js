@@ -43,6 +43,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Bismarck': '俾斯麥',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Bismarck': '비스마르크',

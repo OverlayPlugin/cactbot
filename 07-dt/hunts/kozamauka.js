@@ -326,6 +326,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Pkuucha': '普庫恰',
+        'The Raintriller': '驚雨蟾蜍',
+        'Ihnuxokiy': '伊努索奇',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Pkuucha': '프쿠차',

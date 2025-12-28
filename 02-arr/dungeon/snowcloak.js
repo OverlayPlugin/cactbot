@@ -54,6 +54,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Fenrir': '芬里爾',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Fenrir': '펜리르',

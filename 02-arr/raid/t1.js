@@ -156,6 +156,15 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ads': '自衛系統',
+        'Caduceus': '神杖巨蛇',
+        'Dark Matter Slime': '黑暗物質史萊姆',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Ads': '제어 시스템',

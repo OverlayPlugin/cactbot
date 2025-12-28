@@ -143,6 +143,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Aegeiros': '黑楊樹妖',
+        'Minerva': '密涅瓦',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Aegeiros': '아이게이로스',

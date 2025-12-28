@@ -39,6 +39,12 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Alicanto': '阿利坎托',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Alicanto': '알리칸토',

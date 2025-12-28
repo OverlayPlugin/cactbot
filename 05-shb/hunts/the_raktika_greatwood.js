@@ -176,6 +176,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Grassman': '格拉斯曼',
+        'Ixtab': '伊休妲',
+        'Supay': '蘇帕伊',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Grassman': '숲원인',

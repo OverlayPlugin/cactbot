@@ -57,6 +57,13 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Deep Palace Ahriman': '深宮惡精靈',
+        'Deep Palace Catoblepas': '深宮卡托佈雷帕斯',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Deep Palace Ahriman': '깊은 궁전 아리만',
