@@ -313,6 +313,11 @@ UserConfig.registerOptions('jobs', {
           '카운트 다운이 0초일 때': 'expired',
           '리필하기 적절한 때에 알려주기': 'threshold',
         },
+        tc: {
+          '禁用': 'disabled',
+          '計時器歸零時': 'expired',
+          '計時器到達提示閾值時': 'threshold',
+        },
       },
       default: 'threshold',
     },

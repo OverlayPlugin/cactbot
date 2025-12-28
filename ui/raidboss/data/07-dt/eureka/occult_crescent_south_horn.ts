@@ -452,6 +452,10 @@ const triggerSet: TriggerSet<Data> = {
           '뒤로 가라고 지시하는 대신 계속 돌라고 지시함으로써 움직임을 줄입니다.': 'optimization',
           '빠른 이동을 위해 뒤로 가라는 지시를 호출합니다.': 'none',
         },
+        tc: {
+          '提示繞行方向(非繞後)，減少移動量': 'optimization',
+          '提前提示繞後，方便提早移動': 'none',
+        },
       },
       default: 'none',
     },
@@ -482,6 +486,10 @@ const triggerSet: TriggerSet<Data> = {
           '십자 기준: 남쪽 십자 장판에 따라 호출': 'cross',
           '얼음 기준: 벽에 가장 가까운 얼음 장판에 따라 호출': 'ice',
         },
+        tc: {
+          '十字基準: 根據十字冰圈位置提示': 'cross',
+          '冰基準: 根據離牆最近的冰圈提示': 'ice',
+        },
       },
       default: 'cross',
     },
@@ -511,6 +519,10 @@ const triggerSet: TriggerSet<Data> = {
         ko: {
           'BAP 단검 (숫자 및 알파벳 바닥 징)': 'bap',
           '전략 없음 (Y-패턴 및 ⅄-패턴)': 'none',
+        },
+        tc: {
+          'BAP短劍標記(數字和字母場景標記)': 'bap',
+          '無特定策略(Y型與⅄型)': 'none',
         },
       },
       default: 'none',

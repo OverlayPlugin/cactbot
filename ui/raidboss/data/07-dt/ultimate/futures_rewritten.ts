@@ -276,6 +276,10 @@ const triggerSet: TriggerSet<Data> = {
           '항상 멀리, 180도 시계방향': 'aacc',
           '분신 위치만 호출': 'addposonly',
         },
+        tc: {
+          '總是遠離, 180° 順時針': 'aacc',
+          '僅播報分身位置': 'addposonly',
+        },
       },
       default: 'aacc', // `addposonly` is not super helpful, and 'aacc' seems to be predominant
     },
@@ -322,6 +326,10 @@ const triggerSet: TriggerSet<Data> = {
           'Y가 북쪽, 딜러 동-남서쪽, 탱힐 서-북동쪽': 'yNorthDPSEast',
           '디버프만 호출': 'none',
         },
+        tc: {
+          'Y 北, DPS 東-西南, T奶 西-東北': 'yNorthDPSEast',
+          '僅播報 Debuff, 不播報方位': 'none',
+        },
       },
       default: 'yNorthDPSEast',
     },
@@ -362,6 +370,10 @@ const triggerSet: TriggerSet<Data> = {
           '딜러 북동->남, 탱힐 남서->북': 'dpsNE-CW',
           '모든 안전지대 알림': 'none',
         },
+        tc: {
+          'DPS 東北->南, T奶 西南->北': 'dpsNE-CW',
+          '播報所有安全區': 'none',
+        },
       },
       default: 'dpsNE-CW',
     },
@@ -401,6 +413,10 @@ const triggerSet: TriggerSet<Data> = {
           '역할군별 사분면, 힐러는 북서쪽': 'healerPlantNW',
           '탑/부채꼴만 알림': 'none',
         },
+        tc: {
+          '按職能四分組, 奶媽在西北': 'healerPlantNW',
+          '僅播報塔/扇形': 'none',
+        },
       },
       default: 'healerPlantNW',
     },
@@ -439,6 +455,10 @@ const triggerSet: TriggerSet<Data> = {
         ko: {
           '빨리 터뜨리기, 바람은 남쪽': 'earlyPopSouth',
           '초기 디버프만 알림': 'none',
+        },
+        tc: {
+          '龍頭早撞, 風南': 'earlyPopSouth',
+          '僅播報初始 Debuff': 'none',
         },
       },
       default: 'earlyPopSouth',

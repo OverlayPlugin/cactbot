@@ -266,6 +266,12 @@ const triggerSet: TriggerSet<Data> = {
           '북쪽 구석': 'north',
           '남쪽 구석': 'south',
         },
+        tc: {
+          '中間': 'inside',
+          '上/下角落': 'northSouth',
+          '上半場角落': 'north',
+          '下半場角落': 'south',
+        },
       },
       default: 'inside',
     },
