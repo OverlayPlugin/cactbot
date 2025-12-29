@@ -85,7 +85,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Guérison => Debuff bombe',
           ja: 'エスナ：魔科学爆弾',
           cn: '康复魔炸弹',
-          tc: '康復魔炸彈',
+          tc: '復原 魔炸彈debuff',
           ko: '폭탄 디버프 해제',
         },
       },

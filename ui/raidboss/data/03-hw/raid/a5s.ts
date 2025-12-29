@@ -293,7 +293,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Bouclier sur ${player}',
           ja: '${player}にバリア',
           cn: '给${player}单盾',
-          tc: '給${player}單盾',
+          tc: '給 ${player} 單盾',
           ko: '"${player}" 에게 보호막',
         },
       },

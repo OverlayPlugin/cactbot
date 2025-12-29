@@ -87,7 +87,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Missile hydrothermique sur ${players}',
           ja: '${players}に蒸気ミサイル',
           cn: '导弹点${players}',
-          tc: '導彈點${players}',
+          tc: '導彈點 ${players}',
           ko: '"${players}" 증기 미사일',
         },
       },

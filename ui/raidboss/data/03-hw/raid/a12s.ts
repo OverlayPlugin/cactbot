@@ -98,7 +98,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Lumière : ${players}',
           ja: '${players}に白光の鞭',
           cn: '白光之鞭点:${players}',
-          tc: '白光之鞭點:${players}',
+          tc: '白光之鞭點: ${players}',
           ko: '성광의 채찍:${players}',
         },
       },

@@ -237,7 +237,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Infusion sur ${player}',
           ja: '${player}に猛突進',
           cn: '冲锋点${player}',
-          tc: '衝鋒點${player}',
+          tc: '衝鋒點 ${player}',
           ko: '${player} 에게 맹돌진',
         },
       },

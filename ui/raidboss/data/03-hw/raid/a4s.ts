@@ -39,7 +39,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Orbes sur ${player}',
           ja: '${player}に玉',
           cn: '球点${player}',
-          tc: '球點${player}',
+          tc: '球點 ${player}',
           ko: '"${player}" 구슬',
         },
         orbsOnYou: {
@@ -67,7 +67,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Étourdissez ${name}',
           ja: 'スタン: ${name}',
           cn: '眩晕${name}',
-          tc: '眩暈${name}',
+          tc: '眩暈 ${name}',
           ko: '${name}기절 시키기',
         },
       },

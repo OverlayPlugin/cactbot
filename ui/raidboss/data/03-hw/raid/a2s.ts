@@ -71,7 +71,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Maintenez ${player} Max PV',
           ja: '${player}のHPを満タンに保つ',
           cn: '保持${player}满血',
-          tc: '保持${player}滿血',
+          tc: '保持 ${player} 滿血',
           ko: '"${player}" 풀피 유지',
         },
       },

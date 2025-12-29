@@ -509,7 +509,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge sauvage sur VOUS',
           ja: '自分に突進',
           cn: '奶枪点名',
-          tc: '奶槍點名',
+          tc: '補槍點名',
           ko: '돌진 대상자',
         },
         spearMainTank: {
@@ -518,7 +518,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge sauvage : RESTEZ À L\'EXTÉRIEUR',
           ja: '突進: そのままヘイト取り',
           cn: '奶枪: 保持远离',
-          tc: '奶槍: 保持遠離',
+          tc: '補槍: 保持遠離',
           ko: '돌진: 밖으로',
         },
         spearOther: {
@@ -527,7 +527,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Charge sauvage : Interceptez ${spearTarget}',
           ja: '突進: ${spearTarget}のカバー',
           cn: '奶枪: 挡住 ${spearTarget}',
-          tc: '奶槍: 擋住 ${spearTarget}',
+          tc: '補槍: 擋住 ${spearTarget}',
           ko: '돌진: ${spearTarget} 앞으로',
         },
       },

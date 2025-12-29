@@ -86,7 +86,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gobrayon sur ${player}',
           ja: '${player}にゴブ式波動砲',
           cn: '波动炮点${player}',
-          tc: '波動炮點${player}',
+          tc: '波動砲點 ${player}',
           ko: '"${player}" 고블린식 파동포',
         },
         sizzlebeamOnYou: {
@@ -95,7 +95,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gobrayon sur VOUS',
           ja: '自分にゴブ式波動砲',
           cn: '波动炮点名',
-          tc: '波動炮點名',
+          tc: '波動砲點名',
           ko: '고블린식 파동포 대상자',
         },
       },

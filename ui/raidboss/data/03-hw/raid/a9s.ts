@@ -128,7 +128,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Bombes bientôt',
           ja: 'まもなく爆弾',
           cn: '炸弹马上爆炸',
-          tc: '炸彈馬上爆炸',
+          tc: '炸彈即將爆炸',
           ko: '곧 폭탄 폭발',
         },
       },

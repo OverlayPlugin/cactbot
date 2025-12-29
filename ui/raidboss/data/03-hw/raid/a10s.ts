@@ -206,7 +206,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Bouclier ${player}',
           ja: '${player}にバリア',
           cn: '单盾${player}',
-          tc: '單盾${player}',
+          tc: '單盾 ${player}',
           ko: '"${player}" 보호막',
         },
         tankSwapGetAway: {

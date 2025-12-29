@@ -73,7 +73,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Soin + bouclier ${player}',
           ja: 'すぐに${player}をヒールする',
           cn: '马上治疗${player}',
-          tc: '馬上治療${player}',
+          tc: '馬上治療 ${player}',
           ko: '${player} 강타 대상자',
         },
       },

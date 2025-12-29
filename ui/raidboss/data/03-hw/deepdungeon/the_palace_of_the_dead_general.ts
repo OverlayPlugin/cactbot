@@ -235,7 +235,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Manticore',
           ja: 'マンティコア化',
           cn: '曼提克化',
-          tc: '曼提克化',
+          tc: '蠍尾獅化',
           ko: '만티코어 변신',
         },
         lust: {
@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Succube',
           ja: 'サキュバス化',
           cn: '梦魔化',
-          tc: '夢魔化',
+          tc: '魅魔化',
           ko: '서큐버스 변신',
         },
         intuition: {
@@ -293,7 +293,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'La pierre de téléportation s\'est activée',
           ja: '転移が出来ます',
           cn: '转移石冢已启动',
-          tc: '轉移石塚已啟動',
+          tc: '傳送石塚已啟動',
           ko: '전송 석탑 활성화',
         },
       },

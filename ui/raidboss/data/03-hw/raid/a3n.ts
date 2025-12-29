@@ -189,7 +189,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Répulsion : Rapprochez-vous de ${player}',
           ja: '同じ極: ${player}に近づく',
           cn: '同极：靠近${player}',
-          tc: '同極：靠近${player}',
+          tc: '同極：靠近 ${player}',
           ko: '반발: ${player}와 가까이 붙기',
         },
         attract: {
@@ -198,7 +198,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Attraction : Éloignez-vous de ${player}',
           ja: '異なる極: ${player}から離れる',
           cn: '异极：远离${player}',
-          tc: '異極：遠離${player}',
+          tc: '異極：遠離 ${player}',
           ko: '자력: ${player}와 떨어지기',
         },
       },
