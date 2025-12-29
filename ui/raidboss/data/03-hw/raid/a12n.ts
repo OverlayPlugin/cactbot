@@ -324,7 +324,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<! )Alexander(?! )': '亞歷山大',
         'Alexander Prime': '至尊亞歷山大',

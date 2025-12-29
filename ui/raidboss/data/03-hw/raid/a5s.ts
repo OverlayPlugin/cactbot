@@ -581,7 +581,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<!Smart)Bomb(?!e)': '炸彈',
         '(?<!Hummel)Faust': '浮士德',

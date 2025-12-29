@@ -531,7 +531,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Blaster Mirage': '爆破者幻象',
         'Blaster(?! Mirage)': '爆破者',

@@ -692,7 +692,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aion Teleos': '移湧',
         'Barbelo': '芭碧蘿',

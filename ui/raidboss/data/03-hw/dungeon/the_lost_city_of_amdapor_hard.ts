@@ -425,7 +425,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Achamoth': '阿卡莫特',
         'Dark Wings': '黑旋風',

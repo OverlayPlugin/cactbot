@@ -425,7 +425,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Behemoth Ward': '凶惡巨獸護衛',
         'Demon of the Tome': '書中惡魔',

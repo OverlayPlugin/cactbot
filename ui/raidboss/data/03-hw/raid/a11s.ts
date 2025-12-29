@@ -609,7 +609,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Armored Pauldron': '肩部裝甲',
         'Claster': '艦載浮游砲',

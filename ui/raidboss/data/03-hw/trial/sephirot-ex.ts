@@ -526,7 +526,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Coronal Wind': '冠狀氣流',
         'Sephirot': '賽菲羅特',

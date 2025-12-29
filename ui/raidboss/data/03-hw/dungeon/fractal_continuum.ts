@@ -230,7 +230,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Clockwork Alarum': '發條報警蟲',
         'Exhibit level III': '第三展示區',

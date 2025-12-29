@@ -386,7 +386,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bomb': '炸彈',
         'Boomtype Magitek Gobwalker G-VII': '7號哥布林戰車L型',

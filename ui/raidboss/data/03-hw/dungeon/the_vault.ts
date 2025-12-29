@@ -339,7 +339,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aetherial Tear': '次元裂縫',
         'Dawn Knight': '拂曉騎士',

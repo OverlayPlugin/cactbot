@@ -262,7 +262,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Armored Weapon': '武裝重甲',
         'Blade Of The Griffin': '獅鷲之刃',

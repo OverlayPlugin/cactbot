@@ -457,7 +457,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bomb': '炸彈',
         'Faust Z': '終極浮士德',

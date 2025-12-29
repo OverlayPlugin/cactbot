@@ -756,7 +756,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arachne Eve': '阿剌克涅',
         'Calofisteri': '卡洛菲斯提莉',

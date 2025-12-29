@@ -1066,7 +1066,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aether(?! |ial)': '乙太晶球',
         'Aether Collector': '乙太收集器',

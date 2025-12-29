@@ -507,7 +507,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Buzzsaw': '旋轉鏈鋸',
         'Gobpress R-VI': '6號哥布林壓路機',

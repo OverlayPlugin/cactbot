@@ -278,7 +278,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Gowrow': '高牢怪龍',
         'The Wound': '靈傷',

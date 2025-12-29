@@ -510,7 +510,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Execrated Wile': '狡詐信徒',
         'Zurvan': '祖爾宛',

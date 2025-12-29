@@ -272,7 +272,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '3000-Tonze Missile': '超大型導彈',
         'Faust': '浮士德',

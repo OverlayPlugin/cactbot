@@ -843,7 +843,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Comet Circle': '星屑聖紋',
         'King Thordan': '騎神托爾丹',
