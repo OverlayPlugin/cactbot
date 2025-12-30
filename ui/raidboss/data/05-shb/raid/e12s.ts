@@ -1351,8 +1351,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Eye (w/${player})',
             de: 'Auge (mit ${player})',
             fr: 'Œil (avec ${player})',
-            ja: '自分に目 (w/${player})',
-            // FIXME
+            ja: '自分に目 (w/${player})', // FIXME
             cn: '石化眼点名 (与${player})',
             ko: '시선징 (+${player})',
             tc: '石化眼點名 (與${player})',
@@ -1369,8 +1368,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Long Fire (w/${player})',
             de: 'langes Feuer (w/${player})',
             fr: 'Feu long (avec ${player})',
-            ja: 'ファイガ(遅い) (w/${player})',
-            // FIXME
+            ja: 'ファイガ(遅い) (w/${player})', // FIXME
             cn: '长火 (与${player})',
             ko: '느린 파이가 (+${player})',
             tc: '長火 (與${player})',
@@ -1379,8 +1377,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Short Fire (w/${player})',
             de: 'kurzes Feuer (w/${player})',
             fr: 'Feu court (avec ${player})',
-            ja: 'ファイガ(早い) (w/${player})',
-            // FIXME
+            ja: 'ファイガ(早い) (w/${player})', // FIXME
             cn: '短火 (与${player})',
             ko: '빠른 파이가 (+${player})',
             tc: '短火 (與${player})',
@@ -1389,8 +1386,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Long Ice (w/${player})',
             de: 'langes Eis (w/${player})',
             fr: 'Glace longue (avec ${player})',
-            ja: 'ブリザガ(遅い) (w/${player})',
-            // FIXME
+            ja: 'ブリザガ(遅い) (w/${player})', // FIXME
             cn: '长冰 (与${player})',
             ko: '느린 블리자가 (+${player})',
             tc: '長冰 (與${player})',
@@ -1399,8 +1395,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Short Ice (w/${player})',
             de: 'kurzes Eis (w/${player})',
             fr: 'Glace courte (avec ${player})',
-            ja: 'ブリザガ(早い) (w/${player})',
-            // FIXME
+            ja: 'ブリザガ(早い) (w/${player})', // FIXME
             cn: '短冰 (与${player})',
             ko: '빠른 블리자가 (+${player})',
             tc: '短冰 (與${player})',
@@ -1856,8 +1851,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Double Aero (w/${player})',
             de: 'Doppel Windga (mit ${player})',
             fr: 'Double Vent(avec ${player})',
-            ja: '自分にエアロガ×2 (w/${player})',
-            // FIXME
+            ja: '自分にエアロガ×2 (w/${player})', // FIXME
             cn: '双风点名 (与${player})',
             ko: '더블 에어로가 (+${player})',
             tc: '雙風點名 (與${player})',
@@ -1866,8 +1860,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Spread (w/${player1}, ${player2}, ${player3})',
             de: 'Verteilen (mit ${player1}, ${player2}, ${player3})',
             fr: 'Dispersion (avec ${player1}, ${player2}, ${player3})',
-            ja: '自分に散開 (w/${player1}, ${player2}, ${player3})',
-            // FIXME
+            ja: '自分に散開 (w/${player1}, ${player2}, ${player3})', // FIXME
             cn: '分散点名 (与${player1}, ${player2}, ${player3})',
             ko: '산개징 (+${player1}, ${player2}, ${player3})',
             tc: '分散點名 (與${player1}, ${player2}, ${player3})',

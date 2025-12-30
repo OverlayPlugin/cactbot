@@ -90,8 +90,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Enable uptime knockback strat',
         de: 'Aktiviere Uptime Rückstoß Strategie',
         fr: 'Activer la strat Poussée-Uptime',
-        ja: 'エデン零式共鳴編４層：cactbot「ヘヴンリーストライク (ノックバック)」ギミック',
-        // FIXME
+        ja: 'エデン零式共鳴編４層：cactbot「ヘヴンリーストライク (ノックバック)」ギミック', // FIXME
         cn: '启用击退镜 uptime 策略',
         ko: '정확한 타이밍 넉백방지 공략 사용',
         tc: '啟用擊退鏡 uptime 策略',
@@ -407,8 +406,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Biting Next (face outward)',
           de: 'Frosthieb als nächstes (nach außen drehen)',
           fr: 'Taillade de givre (pointez vers l\'extérieur)',
-          ja: '次はフロストスラッシュ',
-          // FIXME
+          ja: '次はフロストスラッシュ', // FIXME
           cn: '即将冰霜斩 (拉背对人群)',
           ko: '서리 참격 (뒤로)',
           tc: '即將冰霜斬 (拉背對人群)',
@@ -417,8 +415,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Driving Next (face inward)',
           de: 'Froststoß als nächstes (nach innen drehen)',
           fr: 'Percée de givre (pointez vers l\'intérieur)',
-          ja: '次はフロストスラスト',
-          // FIXME
+          ja: '次はフロストスラスト', // FIXME
           cn: '即将冰霜刺 (拉面对人群)',
           ko: '서리 일격 (앞으로)',
           tc: '即將冰霜刺 (拉麵對人群)',

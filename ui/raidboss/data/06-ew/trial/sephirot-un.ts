@@ -227,8 +227,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Orange (${force})',
           de: 'Orange (${force})',
           fr: '${force} Orange',
-          ja: '自分に${force}',
-          // FIXME
+          ja: '自分に${force}', // FIXME
           cn: '橙点名 (${force})',
           ko: '노랑 (${force})',
           tc: '橙點名 (${force})',
@@ -247,8 +246,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Green (${force})',
           de: 'Grün (${force})',
           fr: '${force} Vert',
-          ja: '自分に${force}',
-          // FIXME
+          ja: '自分に${force}', // FIXME
           cn: '绿点名 (${force})',
           ko: '초록 (${force})',
           tc: '綠點名 (${force})',

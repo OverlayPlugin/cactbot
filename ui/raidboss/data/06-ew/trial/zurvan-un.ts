@@ -197,8 +197,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stay outside hitbox',
           de: 'Auserhalb der Hitbox stehen',
           fr: 'Restez à l\'extérieur de la hitbox',
-          ja: '範囲攻撃を避ける',
-          // FIXME
+          ja: '範囲攻撃を避ける', // FIXME
           cn: '站在目标圈外',
           ko: '히트박스 밖으로',
           tc: '站在目標圈外',

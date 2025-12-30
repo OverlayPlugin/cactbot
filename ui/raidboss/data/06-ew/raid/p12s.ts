@@ -2221,8 +2221,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Bait (${delay})',
             de: 'Laser Ködern (${delay})',
             fr: 'Bait (${delay})',
-            ja: 'レーザー誘導 (${delay})',
-            // FIXME
+            ja: 'レーザー誘導 (${delay})', // FIXME
             cn: '引导激光 (${delay})',
             ko: '레이저 유도 (${delay})',
             tc: '引導雷射 (${delay})',
@@ -2231,8 +2230,7 @@ const triggerSet: TriggerSet<Data> = {
             en: '(5 and 7 ${delay})',
             de: '(5 und 7 ködern ${delay})',
             fr: '(5 et 7 ${delay})',
-            ja: '(5と7誘導 ${delay})',
-            // FIXME
+            ja: '(5と7誘導 ${delay})', // FIXME
             cn: '(5 和 7 引导 ${delay})',
             ko: '(5, 7 레이저 ${delay})',
             tc: '(5 和 7 引導 ${delay})',
@@ -2271,8 +2269,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Bait (${delay})',
             de: 'Laser Ködern (${delay})',
             fr: 'Bait (${delay})',
-            ja: 'レーザー誘導 (${delay})',
-            // FIXME
+            ja: 'レーザー誘導 (${delay})', // FIXME
             cn: '引导激光 (${delay})',
             ko: '레이저 유도 (${delay})',
             tc: '引導雷射 (${delay})',
@@ -2281,8 +2278,7 @@ const triggerSet: TriggerSet<Data> = {
             en: '(6 and 8 ${delay})',
             de: '(6 und 8 ködern ${delay})',
             fr: '(6 et 8 ${delay})',
-            ja: '(6と8誘導 ${delay})',
-            // FIXME
+            ja: '(6と8誘導 ${delay})', // FIXME
             cn: '(6 和 8 引导 ${delay})',
             ko: '(6, 8 레이저 ${delay})',
             tc: '(6 和 8 引導 ${delay})',
@@ -2291,8 +2287,7 @@ const triggerSet: TriggerSet<Data> = {
             en: '(1 and 3 ${delay})',
             de: '(1 und 3 ködern ${delay})',
             fr: '(1 et 3 ${delay})',
-            ja: '(1と3誘導 ${delay})',
-            // FIXME
+            ja: '(1と3誘導 ${delay})', // FIXME
             cn: '(1 和 3 引导 ${delay})',
             ko: '(1, 3 레이저 ${delay})',
             tc: '(1 和 3 引導 ${delay})',
@@ -2301,8 +2296,7 @@ const triggerSet: TriggerSet<Data> = {
             en: '(2 and 4 ${delay})',
             de: '(2 und 6 ködern ${delay})',
             fr: '(2 et 4 ${delay})',
-            ja: '(2と4誘導 ${delay})',
-            // FIXME
+            ja: '(2と4誘導 ${delay})', // FIXME
             cn: '(2 和 4 引导 ${delay})',
             ko: '(2, 4 레이저 ${delay})',
             tc: '(2 和 4 引導 ${delay})',
@@ -4335,8 +4329,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Initial Fire (w/ ${partner})',
             de: 'Initiales Feuer (mit ${partner})',
             fr: 'Feu initial (avec ${partner})',
-            ja: '自分に初炎 (${partner})',
-            // FIXME
+            ja: '自分に初炎 (${partner})', // FIXME
             cn: '火点名 (和 ${partner})',
             ko: '첫 불 대상자 (+ ${partner})',
             tc: '火點名 (和 ${partner})',
@@ -4406,8 +4399,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Stack with Fire',
           de: 'Mit Feuer sammeln',
           fr: 'Package avec le Feu',
-          ja: '無職！炎とあたまわり',
-          // FIXME
+          ja: '無職！炎とあたまわり', // FIXME
           cn: '与火分摊',
           ko: '불 쉐어',
           tc: '與火分攤',
@@ -4456,8 +4448,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Initial Wind',
             de: 'Initial Wind',
             fr: 'Vent inital',
-            ja: '自分に初風',
-            // FIXME
+            ja: '自分に初風', // FIXME
             cn: '风点名',
             ko: '첫 바람 대상자',
             tc: '風點名',
@@ -4510,8 +4501,7 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Fire Marker',
             de: 'Feuer Markierung',
             fr: 'Marqueur de feu',
-            ja: '自分に初炎!',
-            // FIXME
+            ja: '自分に初炎!', // FIXME
             cn: '传火点名',
             ko: '불 대상자',
             tc: '傳火點名',

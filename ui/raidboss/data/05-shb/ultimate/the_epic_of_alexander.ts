@@ -378,8 +378,7 @@ const triggerSet: TriggerSet<Data> = {
           'Aktiviere Cactbot Wormhole Strategie: https://ff14.toolboxgaming.space/?id=17050133675751&preview=1',
         fr:
           'Activer cactbot pour la strat Wormhole : https://ff14.toolboxgaming.space/?id=17050133675751&preview=1',
-        ja: '絶アレキサンダー討滅戦：cactbot「次元断絶のマーチ」ギミック',
-        // FIXME
+        ja: '絶アレキサンダー討滅戦：cactbot「次元断絶のマーチ」ギミック', // FIXME
         cn: '启用 cactbot 次元断绝策略: https://ff14.toolboxgaming.space/?id=17050133675751&preview=1',
         ko: 'cactbot 웜홀 공략방식 사용: https://ff14.toolboxgaming.space/?id=17050133675751&preview=1',
         tc: '啟用 cactbot 次元斷絕策略: https://ff14.toolboxgaming.space/?id=17050133675751&preview=1',

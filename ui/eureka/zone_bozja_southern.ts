@@ -402,8 +402,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '梅內紐斯·薩斯·拉那圖斯',
       },
       shortName: {
-        en: 'Menenius',
-        // FIX-ME
+        en: 'Menenius', // FIX-ME
         de: 'Menenius',
         fr: 'Menenius',
         ja: 'メネニウス',
@@ -425,8 +424,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '米希亞·博特雅失',
       },
       shortName: {
-        en: 'Misija',
-        // FIX-ME
+        en: 'Misija', // FIX-ME
         de: 'Misija',
         fr: 'Misija',
         ja: 'ミーシィヤ',
@@ -470,8 +468,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '莉莉婭·希雅薩里斯',
       },
       shortName: {
-        en: 'Lilja Sjasaris',
-        // FIX-ME
+        en: 'Lilja Sjasaris', // FIX-ME
         de: 'Lilja',
         fr: 'Lilja',
         ja: 'リリヤ',
@@ -493,8 +490,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '布瓦基·恩澤·潘卡',
       },
       shortName: {
-        en: 'Bwagi Ennze Panca',
-        // FIX-ME
+        en: 'Bwagi Ennze Panca', // FIX-ME
         de: 'Bwagi',
         fr: 'Bwagi',
         ja: 'ブワジ',
@@ -516,8 +512,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '羅斯提克·琉芭失',
       },
       shortName: {
-        en: 'Rostik Liubasch',
-        // FIX-ME
+        en: 'Rostik Liubasch', // FIX-ME
         de: 'Rostik',
         fr: 'Rostik',
         ja: 'ロスティック',
@@ -539,8 +534,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '神庭水琴',
       },
       shortName: {
-        en: 'Mikoto Jinba',
-        // FIX-ME
+        en: 'Mikoto Jinba', // FIX-ME
         de: 'Mikoto',
         fr: 'Mikoto',
         ja: 'ミコト',
@@ -562,8 +556,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '米希亞·博特雅失',
       },
       shortName: {
-        en: 'Misija Votyasch',
-        // FIX-ME
+        en: 'Misija Votyasch', // FIX-ME
         de: 'Misija',
         fr: 'Misija',
         ja: 'ミーシィヤ',
@@ -607,8 +600,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '求道之三位一體',
       },
       shortName: {
-        en: 'Seeker',
-        // FIX-ME
+        en: 'Seeker', // FIX-ME
         de: 'Sucher',
         fr: 'Soudée',
         ja: 'シーカー',
@@ -630,8 +622,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '女王護衛',
       },
       shortName: {
-        en: 'Guard',
-        // FIX-ME
+        en: 'Guard', // FIX-ME
         de: 'Königinnenwache',
         fr: 'Garde',
         ja: 'ガード',
@@ -653,8 +644,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '誓約之三位一體',
       },
       shortName: {
-        en: 'Trinity Avowed',
-        // FIX-ME
+        en: 'Trinity Avowed', // FIX-ME
         de: 'Eingeschworene',
         fr: 'Féale',
         ja: 'アヴァウド',
@@ -676,8 +666,7 @@ export const zoneInfoBozjaSouthern: EurekaZoneInfo = {
         tc: '天佑女王',
       },
       shortName: {
-        en: 'Save the Queen',
-        // FIX-ME
+        en: 'Save the Queen', // FIX-ME
         de: 'Heilige Klinge',
         fr: 'Sauver',
         ja: 'セイブ・ザ・クイーン',
