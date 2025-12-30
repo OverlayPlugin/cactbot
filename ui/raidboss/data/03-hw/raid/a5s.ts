@@ -228,7 +228,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'NO en premier',
           ja: 'まずは北西',
           cn: '先左上',
-          tc: '先左上',
+          tc: '先西北',
           ko: '북서쪽 먼저',
         },
         northeastFirst: {
@@ -237,7 +237,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'NE en premier',
           ja: 'まずは北東',
           cn: '先右上',
-          tc: '先右上',
+          tc: '先東北',
           ko: '북동쪽 먼저',
         },
         southwestFirst: {
@@ -246,7 +246,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'SO en premier',
           ja: 'まずは南西',
           cn: '先左下',
-          tc: '先左下',
+          tc: '先西南',
           ko: '남서쪽 먼저',
         },
         southeastFirst: {
@@ -255,7 +255,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'SE en premier',
           ja: 'まずは南東',
           cn: '先右下',
-          tc: '先右下',
+          tc: '先東南',
           ko: '남동쪽 먼저',
         },
       },

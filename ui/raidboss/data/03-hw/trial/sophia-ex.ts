@@ -52,7 +52,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Est (Inclinaison forte)',
     ja: '東へ (大きい斜め)',
     cn: '去右边（大倾斜）',
-    tc: '去右邊（大傾斜）',
+    tc: '去東邊（大傾斜）',
     ko: '동쪽으로 (크게 기울어짐)',
   },
   goEastSoftTilt: {
@@ -61,7 +61,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Est (Inclinaison faible)',
     ja: '東へ (小さい斜め)',
     cn: '去右边（小倾斜）',
-    tc: '去右邊（小傾斜）',
+    tc: '去東邊（小傾斜）',
     ko: '동쪽으로 (작게 기울어짐)',
   },
   goWestHardTilt: {
@@ -70,7 +70,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Ouest (Inclinaison forte)',
     ja: '西へ (大きい斜め)',
     cn: '去左边（大倾斜）',
-    tc: '去左邊（大傾斜）',
+    tc: '去西邊（大傾斜）',
     ko: '서쪽으로 (크게 기울어짐)',
   },
   goWestSoftTilt: {
@@ -79,7 +79,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Ouest (Inclinaison faible)',
     ja: '西へ (小さい斜め)',
     cn: '去左边（小倾斜）',
-    tc: '去左邊（小傾斜）',
+    tc: '去西邊（小傾斜）',
     ko: '서쪽으로 (작게 기울어짐)',
   },
 };
