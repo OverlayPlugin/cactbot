@@ -1,4 +1,9 @@
-import { CactbotConfigurator, kNoSearchMatches, kTriggerSearchPlaceholder } from './config';
+import {
+  CactbotConfigurator,
+  kNoSearchMatches,
+  kShowHiddenTriggers,
+  kTriggerSearchPlaceholder,
+} from './config';
 
 export interface SearchTriggerData {
   id?: string;
@@ -104,12 +109,14 @@ export class ConfigSearch {
 
       if (containerMatchesTitle) {
         this.setContainerVisible(triggerContainer, true);
+        this.updateShowHiddenButton(triggerContainer, 0);
         anyVisible = true;
       } else {
         const triggersInContainer = triggerContainer.querySelectorAll<SearchTriggerElement>(
           '.trigger',
         );
         let hasVisibleTrigger = false;
+        let hiddenCount = 0;
 
         triggersInContainer.forEach((triggerElement) => {
           const triggerData = triggerElement.__triggerData;
@@ -125,9 +132,13 @@ export class ConfigSearch {
 
           if (shouldShow)
             hasVisibleTrigger = true;
+          else
+            hiddenCount++;
         });
 
         this.setContainerVisible(triggerContainer, hasVisibleTrigger, false);
+        this.updateShowHiddenButton(triggerContainer, hiddenCount);
+
         if (hasVisibleTrigger)
           anyVisible = true;
       }
@@ -163,6 +174,36 @@ export class ConfigSearch {
 
     this.updateExpansionVisibility(false, null, true);
     this.noMatchesMessage.style.display = 'none';
+
+    const allButtons = this.container.querySelectorAll('.trigger-search-show-hidden');
+    allButtons.forEach((b) => b.remove());
+  }
+
+  private updateShowHiddenButton(container: HTMLElement, count: number): void {
+    const kButtonClass = 'trigger-search-show-hidden';
+    let button = container.querySelector<HTMLInputElement>(`.${kButtonClass}`);
+
+    if (count <= 0) {
+      if (button)
+        button.remove();
+      return;
+    }
+
+    if (!button) {
+      button = document.createElement('input');
+      button.type = 'button';
+      button.classList.add(kButtonClass);
+      button.onclick = () => {
+        const triggers = container.querySelectorAll<HTMLElement>('.trigger');
+        triggers.forEach((t) => this.setTriggerVisible(t, true));
+        if (button)
+          button.remove();
+      };
+      container.appendChild(button);
+    }
+
+    const text = this.base.translate(kShowHiddenTriggers).replace('${num}', count.toString());
+    button.value = text;
   }
 
   private setTriggerVisible(triggerElement: HTMLElement, visible: boolean): void {
