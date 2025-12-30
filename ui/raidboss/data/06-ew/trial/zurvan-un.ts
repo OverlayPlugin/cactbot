@@ -60,7 +60,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Canon plasma sur VOUS',
           ja: '波動砲対象',
           cn: '波动炮点名',
-          tc: '波動炮點名',
+          tc: '波動砲點名',
           ko: '파동포 대상자',
         },
         avoidWaveCannon: {
@@ -69,7 +69,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Éloignez-vous de ${target} -- Canon plasma',
           ja: '${target} から離れる -- 波動砲',
           cn: '远离 ${target} -- 波动炮',
-          tc: '遠離 ${target} -- 波動炮',
+          tc: '遠離 ${target} -- 波動砲',
           ko: '${target} 피하기 -- 파동포',
         },
       },
@@ -335,7 +335,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tour de ${element} avec ${buddy}',
           ja: '${buddy} と ${element} の塔に入る',
           cn: '与${buddy}踩${element}塔',
-          tc: '與${buddy}踩${element}塔',
+          tc: '與 ${buddy} 踩 ${element} 塔',
           ko: '${element} 기둥 +${buddy}',
         },
         fire: {
@@ -515,18 +515,17 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Execrated Wile': '狡詐信徒',
         'Zurvan': '祖爾宛',
       },
       'replaceText': {
-        // '\\(circles\\)': '', // FIXME '(圆)'
-        // '\\(explosion\\)': '', // FIXME '(爆炸)'
-        // '\\(puddle\\)': '', // FIXME '(圈)'
-        // '\\(snapshot\\)': '', // FIXME '(快照)'
-        // '\\(avoid\\)': '', // FIXME '(躲避)'
-        // '\\(stack\\)': '', // FIXME '(集合)'
+        '\\(circles\\)': '(圓)',
+        '\\(explosion\\)': '(爆炸)',
+        '\\(puddle\\)': '(圈)',
+        '\\(snapshot\\)': '(快照)',
+        '\\(avoid\\)': '(躲避)',
+        '\\(stack\\)': '(集合)',
         'Ahura Mazda': '阿胡拉·馬茲達',
         'Biting Halberd': '刺骨冰戟',
         'Broken Seal': '冰炎之紋',

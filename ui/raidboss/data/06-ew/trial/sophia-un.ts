@@ -57,7 +57,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Est (Inclinaison forte)',
     ja: '東へ (大きい斜め)',
     cn: '去右边（大倾斜）',
-    tc: '去右邊（大傾斜）',
+    tc: '去東邊（大傾斜）',
     ko: '동쪽으로 (크게 기울어짐)',
   },
   goEastSoftTilt: {
@@ -66,7 +66,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Est (Inclinaison faible)',
     ja: '東へ (小さい斜め)',
     cn: '去右边（小倾斜）',
-    tc: '去右邊（小傾斜）',
+    tc: '去東邊（小傾斜）',
     ko: '동쪽으로 (작게 기울어짐)',
   },
   goWestHardTilt: {
@@ -75,7 +75,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Ouest (Inclinaison forte)',
     ja: '西へ (大きい斜め)',
     cn: '去左边（大倾斜）',
-    tc: '去左邊（大傾斜）',
+    tc: '去西邊（大傾斜）',
     ko: '서쪽으로 (크게 기울어짐)',
   },
   goWestSoftTilt: {
@@ -84,7 +84,7 @@ const tiltOutputStrings = {
     fr: 'Allez à l\'Ouest (Inclinaison faible)',
     ja: '西へ (小さい斜め)',
     cn: '去左边（小倾斜）',
-    tc: '去左邊（小傾斜）',
+    tc: '去西邊（小傾斜）',
     ko: '서쪽으로 (작게 기울어짐)',
   },
 };
@@ -242,7 +242,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Infusion sur ${player}',
           ja: '${player}に猛突進',
           cn: '冲锋点${player}',
-          tc: '衝鋒點${player}',
+          tc: '衝鋒點 ${player}',
           ko: '${player} 에게 맹돌진',
         },
       },
@@ -697,7 +697,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aion Teleos': '移湧',
         'Barbelo': '芭碧蘿',
@@ -707,10 +706,10 @@ const triggerSet: TriggerSet<Data> = {
         'The Third Demiurge': '信徒其三',
       },
       'replaceText': {
-        // '\\?': '', // FIXME ' ?'
-        // '\\(Meteor Detonate\\)': '', // FIXME '(陨石爆炸)'
-        // '\\(Snapshot\\)': '', // FIXME '(快照)'
-        // '\\(Tilt\\)': '', // FIXME '(倾斜)'
+        '\\?': ' ?',
+        '\\(Meteor Detonate\\)': '(隕石爆炸)',
+        '\\(Snapshot\\)': '(快照)',
+        '\\(Tilt\\)': '(傾斜)',
         'Aero III': '大勁風',
         'Arms of Wisdom': '睿智之秤',
         'Cintamani': '如意寶珠',
@@ -726,8 +725,8 @@ const triggerSet: TriggerSet<Data> = {
         'Quasar': '類星體',
         'Ring of Pain': '痛苦環刺',
         'The Scales Of Wisdom': '睿智之天平',
-        // 'Thunder II\\/III': '', // FIXME '震雷/暴雷'
-        // 'Thunder II(?!(?:I|\\/))': '', // FIXME '震雷'
+        'Thunder II\\/III': '中雷電/大雷電',
+        'Thunder II(?!(?:I|\\/))': '中雷電',
         'Thunder III': '大雷電',
         'Vertical Kenoma': '前後堅守',
         'Zombification': '殭屍',
