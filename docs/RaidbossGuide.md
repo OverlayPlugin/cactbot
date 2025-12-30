@@ -773,6 +773,7 @@ This report includes links to all of the missing translations:
 - [missing_translations_ja.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_ja.html)
 - [missing_translations_cn.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_cn.html)
 - [missing_translations_ko.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_ko.html)
+- [missing_translations_tc.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_tc.html)
 
 You can run `npm run util` and select find translations using the ui.
 You can also run `npm run util -- findTranslations -f . -l fr`
@@ -793,7 +794,7 @@ Most bits of code in cactbot use `LocaleText` for any piece of text
 that needs to be translated.
 
 This ends up looking like an object with keys for each language,
-in the order `en`, `de`, `fr`, `ja`, `cn`, `ko`.
+in the order `en`, `de`, `fr`, `ja`, `cn`, `ko`, `tc`.
 Tests will complain if you put them in a different order.
 This order is "English first", then "alphabetical for the international version",
 and finally "alphabetical for the other regional versions".
