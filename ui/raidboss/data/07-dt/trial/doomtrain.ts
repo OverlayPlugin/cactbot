@@ -153,6 +153,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${mech} + Avoid Lasers',
+          cn: '${mech} + 躲避激光',
         },
         knockback: Outputs.knockback,
       },
@@ -194,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         avoid: {
           en: 'Avoid ${dir} turrets',
+          cn: '躲避 ${dir} 炮塔',
         },
         east: Outputs.east,
         west: Outputs.west,
@@ -248,6 +250,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         text: {
           en: 'Tank cleave on YOU from ${dir}',
+          cn: '${dir} 坦克死刑',
         },
       },
     },
@@ -274,6 +277,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Down',
+          cn: '下',
         },
       },
     },
@@ -286,6 +290,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Up',
+          cn: '上',
         },
       },
     },
@@ -431,11 +436,46 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Tower x3',
+          cn: '踩塔 x3',
         },
       },
     },
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Aether': '以太晶球',
+        'Doomtrain': '格莱杨拉波尔',
+        'Ghost Train': '格莱杨拉波尔的分身',
+        'Kinematic Turret': '护卫炮塔',
+        'Levin Signal': '雷光环',
+      },
+      'replaceText': {
+        'Aetherial Ray': '以太射线',
+        'Aether Surge': '以太电涌',
+        'Arcane Revelation': '魔法阵展开',
+        'Battering Arms': '冲击臂锤',
+        'Blastpipe': '排雾',
+        'Derail(?!ment)': '脱轨',
+        'Derailment Siege': '脱轨捶打',
+        'Electray': '雷转质射线',
+        'Hail of Thunder': '雷光雨',
+        'Headlight': '前照光',
+        'Lightning Burst': '雷电爆发',
+        'Lightning Express': '雷光急行',
+        '(?<! )Overdraught': '溢流',
+        'Plasma Beam': '等离子射线',
+        'Runaway Train': '无尽狂奔',
+        'Shockwave': '冲击波',
+        'Thunderous Breath': '雷鸣吐息',
+        'Turret Crossing': '炮塔出击',
+        'Unlimited Express': '无控急行',
+        'Windpipe': '抽雾',
+        'Head-on Emission': '前方排障',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
