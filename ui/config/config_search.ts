@@ -8,6 +8,17 @@ export interface SearchContainerData {
   title?: string;
 }
 
+// Custom element types to store data and avoid repetitive casts
+interface SearchTriggerElement extends HTMLElement {
+  __triggerData?: SearchTriggerData;
+  __searchText?: string;
+}
+
+interface SearchContainerElement extends HTMLElement {
+  __containerData?: SearchContainerData;
+  __searchText?: string;
+}
+
 export class ConfigSearch {
   private searchInput: HTMLInputElement;
   private clearButton: HTMLElement;
@@ -57,13 +68,9 @@ export class ConfigSearch {
     this.showAll();
   }
 
-  private multiPartMatch(text: string, term: string): boolean {
-    const lText = text.toLowerCase();
-    const parts = term.toLowerCase().split(/\s+/).filter((p) => p !== '');
-
-    // Each part must be found within the text
+  private matchParts(text: string, parts: string[]): boolean {
     for (const part of parts) {
-      if (!lText.includes(part))
+      if (!text.includes(part))
         return false;
     }
     return true;
@@ -77,35 +84,35 @@ export class ConfigSearch {
       return;
     }
 
-    const allTriggerContainers = this.container.querySelectorAll('.trigger-file-container');
+    const searchParts = searchTerm.toLowerCase().split(/\s+/).filter((p) => p !== '');
+    const visibleExpansionContainers = new Set<HTMLElement>();
+
+    const allTriggerContainers = this.container.querySelectorAll<SearchContainerElement>(
+      '.trigger-file-container',
+    );
     let anyVisible = false;
 
-    allTriggerContainers.forEach((containerElement) => {
-      const triggerContainer = containerElement as HTMLElement & {
-        __containerData?: SearchContainerData;
-      };
-
+    allTriggerContainers.forEach((triggerContainer) => {
       let containerMatchesTitle = false;
 
-      const title = triggerContainer.__containerData?.title;
-      if (title !== undefined && title !== null) {
-        const titleText = title.replace(/<[^>]*>/g, '');
-        if (this.multiPartMatch(titleText, searchTerm))
-          containerMatchesTitle = true;
-      }
+      // Use pre-calculated __searchText
+      if (
+        triggerContainer.__searchText !== undefined &&
+        this.matchParts(triggerContainer.__searchText, searchParts)
+      )
+        containerMatchesTitle = true;
 
       if (containerMatchesTitle) {
         this.setContainerVisible(triggerContainer, true);
         anyVisible = true;
       } else {
-        const triggersInContainer = triggerContainer.querySelectorAll('.trigger');
+        const triggersInContainer = triggerContainer.querySelectorAll<SearchTriggerElement>(
+          '.trigger',
+        );
         let hasVisibleTrigger = false;
 
-        triggersInContainer.forEach((triggerDiv) => {
-          const triggerElement = triggerDiv as HTMLElement;
-          const triggerData = (triggerElement as HTMLElement & {
-            __triggerData?: SearchTriggerData;
-          }).__triggerData;
+        triggersInContainer.forEach((triggerElement) => {
+          const triggerData = triggerElement.__triggerData;
 
           if (triggerData === undefined) {
             this.setTriggerVisible(triggerElement, true);
@@ -113,41 +120,48 @@ export class ConfigSearch {
             return;
           }
 
-          const shouldShow = this.checkTriggerMatch(triggerData, searchTerm);
+          const shouldShow = this.checkTriggerMatch(triggerElement, searchParts);
           this.setTriggerVisible(triggerElement, shouldShow);
 
           if (shouldShow)
             hasVisibleTrigger = true;
         });
 
-        this.setContainerVisible(triggerContainer, hasVisibleTrigger);
+        this.setContainerVisible(triggerContainer, hasVisibleTrigger, false);
         if (hasVisibleTrigger)
           anyVisible = true;
       }
+
+      if (triggerContainer.style.display !== 'none') {
+        const expansion = triggerContainer.closest('.trigger-expansion-container');
+        if (expansion instanceof HTMLElement)
+          visibleExpansionContainers.add(expansion);
+      }
     });
 
-    this.updateExpansionVisibility(true);
+    this.updateExpansionVisibility(true, visibleExpansionContainers);
     this.noMatchesMessage.style.display = anyVisible ? 'none' : 'block';
   }
 
-  private checkTriggerMatch(data: SearchTriggerData, term: string): boolean {
-    return data.id !== undefined && this.multiPartMatch(data.id, term);
+  private checkTriggerMatch(
+    element: SearchTriggerElement,
+    searchParts: string[],
+  ): boolean {
+    const searchText = element.__searchText;
+    return searchText !== undefined && this.matchParts(searchText, searchParts);
   }
 
   private showAll(): void {
-    const allTriggerDivs = this.container.querySelectorAll('.trigger');
-    allTriggerDivs.forEach((triggerDiv) => this.setTriggerVisible(triggerDiv as HTMLElement, true));
+    const allTriggerDivs = this.container.querySelectorAll<HTMLElement>('.trigger');
+    allTriggerDivs.forEach((triggerDiv) => this.setTriggerVisible(triggerDiv, true));
 
-    const allContainers = this.container.querySelectorAll(
-      '.trigger-file-container',
-    );
-    allContainers.forEach((cont) => {
-      const containerElement = cont as HTMLElement;
+    const allContainers = this.container.querySelectorAll<HTMLElement>('.trigger-file-container');
+    allContainers.forEach((containerElement) => {
       containerElement.style.display = '';
       containerElement.classList.add('collapsed');
     });
 
-    this.updateExpansionVisibility(false, true);
+    this.updateExpansionVisibility(false, null, true);
     this.noMatchesMessage.style.display = 'none';
   }
 
@@ -155,26 +169,41 @@ export class ConfigSearch {
     const display = visible ? '' : 'none';
     triggerElement.style.display = display;
     const nextSibling = triggerElement.nextElementSibling;
-    if (nextSibling !== null && nextSibling.classList.contains('trigger-details'))
-      (nextSibling as HTMLElement).style.display = display;
+    if (nextSibling instanceof HTMLElement && nextSibling.classList.contains('trigger-details'))
+      nextSibling.style.display = display;
   }
 
-  private setContainerVisible(container: HTMLElement, visible: boolean): void {
+  private setContainerVisible(
+    container: HTMLElement,
+    visible: boolean,
+    updateChildren: boolean = true,
+  ): void {
     container.style.display = visible ? '' : 'none';
-    if (visible) {
-      const triggers = container.querySelectorAll('.trigger');
-      triggers.forEach((t) => this.setTriggerVisible(t as HTMLElement, visible));
+    if (visible && updateChildren) {
+      const triggers = container.querySelectorAll<HTMLElement>('.trigger');
+      triggers.forEach((t) => this.setTriggerVisible(t, visible));
     }
   }
 
-  private updateExpansionVisibility(searching: boolean, forceCollapse?: boolean): void {
-    const allExpansionContainers = this.container.querySelectorAll('.trigger-expansion-container');
-    allExpansionContainers.forEach((expansionElement) => {
-      const expansionContainer = expansionElement as HTMLElement;
-      const visibleFileContainers = expansionContainer.querySelectorAll(
-        '.trigger-file-container:not([style*="display: none"])',
-      );
-      const hasVisible = visibleFileContainers.length > 0;
+  private updateExpansionVisibility(
+    searching: boolean,
+    visibleSet: Set<HTMLElement> | null,
+    forceCollapse?: boolean,
+  ): void {
+    const allExpansionContainers = this.container.querySelectorAll<HTMLElement>(
+      '.trigger-expansion-container',
+    );
+    allExpansionContainers.forEach((expansionContainer) => {
+      let hasVisible = false;
+      if (visibleSet) {
+        hasVisible = visibleSet.has(expansionContainer);
+      } else {
+        const visibleFileContainers = expansionContainer.querySelectorAll(
+          '.trigger-file-container:not([style*="display: none"])',
+        );
+        hasVisible = visibleFileContainers.length > 0;
+      }
+
       expansionContainer.style.display = hasVisible ? '' : 'none';
 
       if (searching && hasVisible)
@@ -185,10 +214,16 @@ export class ConfigSearch {
   }
 
   public static setContainerData(element: HTMLElement, data: SearchContainerData): void {
-    (element as HTMLElement & { __containerData?: SearchContainerData }).__containerData = data;
+    const el = element as SearchContainerElement;
+    el.__containerData = data;
+    if (data.title !== undefined && data.title !== null)
+      el.__searchText = data.title.replace(/<[^>]*>/g, '').toLowerCase();
   }
 
   public static setTriggerData(element: HTMLElement, data: SearchTriggerData): void {
-    (element as HTMLElement & { __triggerData?: SearchTriggerData }).__triggerData = data;
+    const el = element as SearchTriggerElement;
+    el.__triggerData = data;
+    if (data.id !== undefined && data.id !== null)
+      el.__searchText = data.id.toLowerCase();
   }
 }
