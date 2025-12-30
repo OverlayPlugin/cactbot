@@ -259,6 +259,7 @@ const chainsOfCondemnationOutputStrings = {
     ja: '全体攻撃 + 止まれ!',
     cn: 'AOE + 停止移动!',
     ko: '전체 공격 + 이동 멈추기!',
+    tc: 'AOE + 停止移動!',
   },
 } as const;
 
@@ -397,6 +398,10 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Check Boss HP Difference',
+          de: 'Prüfe Boss HP Unterschied',
+          cn: '检查 BOSS 血量差',
+          ko: '보스 체력 차이 확인',
+          tc: '檢查 BOSS 血量差',
         },
       },
     },
@@ -414,6 +419,10 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${effect} on ${player}',
+          de: '${effect} auf ${player}',
+          cn: '${effect} 点 ${player}',
+          ko: '${player}에게 ${effect}',
+          tc: '${effect} 點 ${player}',
         },
       },
     },
@@ -442,6 +451,10 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Refresh Vengeance',
+          de: 'Echo erneuern',
+          cn: '刷新光/暗 Debuff',
+          ko: '빛/어둠 디버프 갱신',
+          tc: '刷新光/暗 Debuff',
         },
       },
     },
@@ -491,6 +504,10 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          de: '${frontBack}-${leftRight}, für später',
+          cn: '稍后去 ${leftRight}-${frontBack}',
+          ko: '나중에 ${leftRight}-${frontBack} 으로',
+          tc: '稍後去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -545,6 +562,10 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, for later',
+          de: '${frontBack}-${leftRight}, für später',
+          cn: '稍后去 ${leftRight}-${frontBack}',
+          ko: '나중에 ${leftRight}-${frontBack} 으로',
+          tc: '稍後去 ${leftRight}-${frontBack}',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -574,6 +595,10 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
+          de: '${frontBack}-${leftRight}, vermeide Exaflares',
+          cn: '在 ${leftRight}-${frontBack} 躲避地火',
+          ko: '${frontBack}-${leftRight}, 엑사플레어 피하기',
+          tc: '在 ${leftRight}-${frontBack} 躲避地火',
         },
         front: Outputs.front,
         back: Outputs.back,
@@ -675,6 +700,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir} + ${inOut}',
           cn: '${dir} + ${inOut}',
           ko: '${dir} + ${inOut}',
+          tc: '${dir} + ${inOut}',
         },
         double: {
           en: '${dir1}/${dir2} + ${inOut}',
@@ -683,6 +709,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir1}/${dir2} + ${inOut}',
           cn: '${dir1}/${dir2} + ${inOut}',
           ko: '${dir1}/${dir2} + ${inOut}',
+          tc: '${dir1}/${dir2} + ${inOut}',
         },
         in: Outputs.in,
         out: Outputs.out,
@@ -753,6 +780,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
+          tc: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -785,6 +813,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
+          tc: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -824,6 +853,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
+          tc: '${mech1} => ${mech2}',
         },
         sides: Outputs.sides,
         middle: Outputs.goIntoMiddle,
@@ -1184,6 +1214,51 @@ const triggerSet: TriggerSet<Data> = {
         'Shackles of Sanctity/Shackles of Greater Sanctity': 'Shackles of (Greater) Sanctity',
         'Visceral Flame/Fevered Flame': 'Visceral/Fevered Flame',
       },
+    },
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Devoured Eater': 'erodiert(?:e|er|es|en) Sündenvertilger',
+        'Eminent Grief': 'Eminent(?:e|er|es|en) Trauer',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Devoured Eater': 'purgateur dévoré',
+        'Eminent Grief': 'Pontife du Chagrin',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Devoured Eater': '侵蝕された罪喰い',
+        'Eminent Grief': 'エミネントグリーフ',
+      },
+    },
+    {
+      'locale': 'cn',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Devoured Eater': '被侵蚀的食罪灵',
+        'Eminent Grief': '卓异的悲寂',
+      },
+    },
+    {
+      'locale': 'ko',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Devoured Eater': '잠식된 죄식자',
+        'Eminent Grief': '드높은 비애',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {},
     },
   ],
 };
