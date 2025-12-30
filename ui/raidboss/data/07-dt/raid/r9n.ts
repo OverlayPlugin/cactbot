@@ -377,7 +377,7 @@ const triggerSet: TriggerSet<Data> = {
         away: {
           en: 'Away from bats ${dir1}/${dir2}',
           fr: 'Loin des chauves-souris ${dir1}/${dir2}',
-          cn: '远离蝙蝠 ${dir1}/${dir2}',
+          cn: '远离 ${dir1}、${dir2} 蝙蝠',
           ko: '박쥐 피하기 ${dir1}/${dir2}',
         },
       },
@@ -406,7 +406,7 @@ const triggerSet: TriggerSet<Data> = {
         away: {
           en: 'Away from bats ${dir1}/${dir2}/${dir3}',
           fr: 'Loin des chauves-souris ${dir1}/${dir2}/${dir3}',
-          cn: '远离蝙蝠 ${dir1}/${dir2}/${dir3}',
+          cn: '远离 ${dir1}、${dir2}、${dir3} 蝙蝠',
           ko: '박쥐 피하기 ${dir1}/${dir2}/${dir3}',
         },
       },
@@ -503,7 +503,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Flails ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
           fr: 'Fléaux ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
-          cn: '刺锤 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+          cn: '刺锤 ${flail1Dist}${flail1Dir}、${flail2Dist}${flail2Dir}',
           ko: '철퇴 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
         },
         near: {
