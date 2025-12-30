@@ -11,8 +11,8 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     fr: 'French',
     ja: 'Japanese',
     cn: 'Chinese',
-    tc: 'Traditional Chinese',
     ko: 'Korean',
+    tc: 'Traditional Chinese',
   },
   de: {
     en: 'Englisch',
@@ -20,8 +20,8 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     fr: 'Französisch',
     ja: 'Japanisch',
     cn: 'Chinesisch',
-    tc: 'Traditionelles Chinesisch',
     ko: 'Koreanisch',
+    tc: 'Traditionelles Chinesisch',
   },
   fr: {
     en: 'Anglais',
@@ -29,8 +29,8 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     fr: 'Français',
     ja: 'Japonais',
     cn: 'Chinois',
-    tc: 'Chinois traditionnel',
     ko: 'Coréen',
+    tc: 'Chinois traditionnel',
   },
   ja: {
     en: '英語',
@@ -38,8 +38,8 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     fr: 'フランス語',
     ja: '日本語',
     cn: '中国語',
-    tc: '中国語(繁体字)',
     ko: '韓国語',
+    tc: '中国語(繁体字)',
   },
   cn: {
     en: '英文',
@@ -47,17 +47,8 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     fr: '法文',
     ja: '日文',
     cn: '中文',
-    tc: '繁体中文',
     ko: '韩文',
-  },
-  tc: {
-    en: '英文',
-    de: '德文',
-    fr: '法文',
-    ja: '日文',
-    cn: '中文',
-    tc: '繁體中文',
-    ko: '韓文',
+    tc: '繁体中文',
   },
   ko: {
     en: '영어',
@@ -65,8 +56,17 @@ export const langMap: { [lang in Lang]: { [lang in Lang]: string } } = {
     fr: '프랑스어',
     ja: '일본어',
     cn: '중국어',
-    tc: '중국어(번체)',
     ko: '한국어',
+    tc: '중국어(번체)',
+  },
+  tc: {
+    en: '英文',
+    de: '德文',
+    fr: '法文',
+    ja: '日文',
+    cn: '中文',
+    ko: '韓文',
+    tc: '繁體中文',
   },
 } as const;
 
@@ -84,8 +84,8 @@ export const langToLocale = (lang: Lang): string => {
     fr: 'fr',
     ja: 'ja',
     cn: 'zh-CN',
-    tc: 'zh-TW',
     ko: 'ko',
+    tc: 'zh-TW',
   }[lang];
 };
 

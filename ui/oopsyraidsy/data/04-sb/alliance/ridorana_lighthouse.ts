@@ -82,8 +82,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `Maths`,
             ja: `算術`,
             cn: `算数`,
-            tc: `算數`,
             ko: '산수오답',
+            tc: `算數`,
           },
         };
       },

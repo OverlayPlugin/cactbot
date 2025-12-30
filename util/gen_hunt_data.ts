@@ -141,8 +141,8 @@ const fetchLocaleCsvTables = async () => {
   const koBNpcNames = await getKoTable(_LOCALE_TABLE, _LOCALE_INPUT_COLS, _LOCALE_OUTPUT_COLS);
   return {
     cn: cnBNpcNames,
-    tc: tcBNpcNames,
     ko: koBNpcNames,
+    tc: tcBNpcNames,
   };
 };
 

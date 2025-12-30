@@ -1,4 +1,4 @@
-const { generateValidList, generateValidObject } = require('./eslint-utils');
+const { generateValidList, generateValidObject, getUnknownLocales } = require('./eslint-utils');
 
 const defaultOrderList = [
   'en',
@@ -7,6 +7,7 @@ const defaultOrderList = [
   'ja',
   'cn',
   'ko',
+  'tc',
 ];
 
 let orderList = [];
@@ -41,6 +42,7 @@ const ruleModule = {
     messages: {
       sortKeys:
         'Expected locale object keys ordered like {{expectedOrder}} (\'{{beforeKey}}\' should be before \'{{nextKey}}\')',
+      unknownLocale: 'Unknown locale code \'{{locale}}\'. Valid locales are: {{validLocales}}',
     },
   },
   create: function(context) {
@@ -51,6 +53,20 @@ const ruleModule = {
     return {
       ObjectExpression(node) {
         const properties = node.properties;
+
+        const unknownLocales = getUnknownLocales(orderList, properties);
+        if (unknownLocales.length > 0) {
+          unknownLocales.forEach((unknown) => {
+            context.report({
+              node: unknown.node,
+              messageId: 'unknownLocale',
+              data: {
+                locale: unknown.locale,
+                validLocales: orderList.join(', '),
+              },
+            });
+          });
+        }
 
         const validList = generateValidList(orderList, properties);
 

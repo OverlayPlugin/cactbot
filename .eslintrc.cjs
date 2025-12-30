@@ -177,7 +177,7 @@ const rules = {
   'require-jsdoc': 'off',
   'rulesdir/cactbot-locale-order': [
     'warn',
-    ['en', 'de', 'fr', 'ja', 'cn', 'ko'],
+    ['en', 'de', 'fr', 'ja', 'cn', 'ko', 'tc'],
   ],
   'space-in-parens': [
     'warn',

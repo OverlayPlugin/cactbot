@@ -14,8 +14,8 @@ const kCopiedMessage = {
   fr: 'Copié !',
   ja: 'コピーした！',
   cn: '已复制！',
-  tc: '已複製！',
   ko: '복사 완료!',
+  tc: '已複製！',
 };
 
 const errorMessageEnableACTWS = {
@@ -24,8 +24,8 @@ const errorMessageEnableACTWS = {
   fr: 'Plugins -> OverlayPlugin WSServer -> Stream/Local Overlay -> Start',
   ja: 'Plugins -> OverlayPlugin WSServer -> Stream/Local Overlay -> Start',
   cn: 'Plugins -> OverlayPlugin WSServer -> 直播/本地悬浮窗 -> 启用',
-  tc: 'Plugins -> OverlayPlugin WSServer -> 直播/本地懸浮窗 -> 啟用',
   ko: 'Plugins -> OverlayPlugin WSServer -> Stream/Local 오버레이 -> 시작',
+  tc: 'Plugins -> OverlayPlugin WSServer -> 直播/本地懸浮窗 -> 啟用',
 };
 
 export class DeathReportLive {

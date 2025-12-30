@@ -15,8 +15,8 @@ const triggerSet: TriggerSet<Data> = {
     de: 'A Rang Hohe Jagd',
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
-    tc: 'A級狩獵怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   triggers: [
     {
@@ -34,8 +34,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Passez derrière et à l\'extérieur',
           ja: '後ろの外側へ',
           cn: '去背后远离',
-          tc: '去背後遠離',
           ko: '뒤로 그리고 밖으로',
+          tc: '去背後遠離',
         },
       },
     },
@@ -52,8 +52,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez devant',
           ja: '前へ',
           cn: '去正面',
-          tc: '去正面',
           ko: '앞으로',
+          tc: '去正面',
         },
       },
     },
@@ -71,8 +71,8 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Partez avec le marquage',
             ja: 'ボスから離れる',
             cn: '远离人群',
-            tc: '遠離人群',
             ko: '나에게 징 멀리 빠지기',
+            tc: '遠離人群',
           },
           missleMarker: {
             en: 'Away from marker',
@@ -80,8 +80,8 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Éloignez-vous du marquage',
             ja: 'マーカー付きから離れる',
             cn: '躲开标记',
-            tc: '躲開標記',
             ko: '징에서 멀리 떨어지기',
+            tc: '躲開標記',
           },
         };
 
@@ -104,8 +104,8 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'En dessous le marquage du donut',
             ja: 'ボスから離れる',
             cn: 'boss脚下放置环形标记',
-            tc: 'boss腳下放置環形標記',
             ko: '나에게 도넛 장판',
+            tc: 'boss腳下放置環形標記',
           },
           missleMarker: {
             en: 'Stack on marker',
@@ -113,8 +113,8 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Packez-vous sur les marquages',
             ja: 'マーカー付きから離れる',
             cn: '标记处集合',
-            tc: '標記處集合',
             ko: '도넛징 대상자에게 붙기',
+            tc: '標記處集合',
           },
         };
 

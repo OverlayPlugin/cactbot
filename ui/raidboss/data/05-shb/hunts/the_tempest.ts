@@ -18,8 +18,8 @@ const triggerSet: TriggerSet<Data> = {
     de: 'A Rang Hohe Jagd, Archaeotania Boss FATE fehlt',
     fr: 'Chasse de rang A, boss ALÉA Archaeotania manquant',
     cn: 'A级狩猎怪, 缺失特殊FATE',
-    tc: 'A級狩獵怪, 缺失特殊FATE',
     ko: 'A급 마물, 특수돌발 누락.',
+    tc: 'A級狩獵怪, 缺失特殊FATE',
   },
   triggers: [
     {
@@ -108,8 +108,8 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vermeide Sammeln',
           fr: 'Ne vous packez pas',
           cn: '远离分摊',
-          tc: '遠離分攤',
           ko: '쉐어징 피하기',
+          tc: '遠離分攤',
         },
       },
     },

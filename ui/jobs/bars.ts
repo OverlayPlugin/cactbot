@@ -23,8 +23,8 @@ const kPullText = {
   fr: 'Attaque',
   ja: 'タゲ取る',
   cn: '开怪',
-  tc: '開怪',
   ko: '풀링',
+  tc: '開怪',
 };
 
 type JobDomObjects = {
