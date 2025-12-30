@@ -48,7 +48,6 @@ Options.Triggers.push({
           de: 'AoEs weglocken',
           fr: 'Déposez les AoEs au loin',
           ja: '離れてAoEを置く',
-          // FIXME
           cn: '远离放置追踪AOE',
           ko: '연속장판 멀리빼기',
           tc: '遠離放置追蹤AOE',

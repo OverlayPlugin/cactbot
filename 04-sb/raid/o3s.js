@@ -325,7 +325,6 @@ Options.Triggers.push({
           de: 'Bücher (Eins pro Feld)',
           fr: 'Livres (Un par carré)',
           ja: '女王の舞い: 本',
-          // FIXME
           cn: '中间两排分格站位',
           ko: '책 (칸마다 한명)',
           tc: '中間兩排分格站位',
@@ -351,7 +350,6 @@ Options.Triggers.push({
           de: 'Himmelsrichtungen',
           fr: 'Positions',
           ja: '女王の舞い: 散開',
-          // FIXME
           cn: '八方站位',
           ko: '산개',
           tc: '八方站位',
@@ -369,7 +367,6 @@ Options.Triggers.push({
           de: 'Stehe auf einem blauem Feld',
           fr: 'Placez-vous sur un carré bleu',
           ja: '女王の舞い: 床',
-          // FIXME
           cn: '站在蓝地板',
           ko: '파란 바닥 위로',
           tc: '站在藍地板',
@@ -387,7 +384,6 @@ Options.Triggers.push({
           de: 'Dornenranken-Verbindungen',
           fr: 'Liens',
           ja: '女王の舞い: 茨',
-          // FIXME
           cn: '先集中后扯线',
           ko: '가시줄 끊기',
           tc: '先集中後扯線',

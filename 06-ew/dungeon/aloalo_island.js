@@ -522,7 +522,6 @@ Options.Triggers.push({
           de: 'Geistlenkung: Vorwärts',
           fr: 'Vers l\'avant (1 carreau)',
           ja: '強制移動 : 前',
-          // FIXME
           cn: '强制移动 : 前',
           ko: '강제이동: 앞 (1칸)',
           tc: '強制移動 : 前',
@@ -532,7 +531,6 @@ Options.Triggers.push({
           de: 'Geistlenkung: Rückwärts',
           fr: 'Vers l\'arrière (1 carreau)',
           ja: '強制移動 : 後ろ',
-          // FIXME
           cn: '强制移动 : 后',
           ko: '강제이동: 뒤 (1칸)',
           tc: '強制移動 : 後',
@@ -542,7 +540,6 @@ Options.Triggers.push({
           de: 'Geistlenkung: Links',
           fr: 'Vers la gauche (1 carreau)',
           ja: '強制移動 : 左',
-          // FIXME
           cn: '强制移动 : 左',
           ko: '강제이동: 왼쪽 (1칸)',
           tc: '強制移動 : 左',
@@ -552,7 +549,6 @@ Options.Triggers.push({
           de: 'Geistlenkung: Rechts',
           fr: 'Vers la droite (1 carreau)',
           ja: '強制移動 : 右',
-          // FIXME
           cn: '强制移动 : 右',
           ko: '강제이동: 오른쪽 (1칸)',
           tc: '強制移動 : 右',

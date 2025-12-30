@@ -64,7 +64,6 @@ Options.Triggers.push({
           de: 'Licht am Rand ablegen',
           fr: 'Déposez la marque au loin',
           ja: '魔界の光',
-          // FIXME
           cn: '远离放置光点名',
           ko: '빛장판 유도',
           tc: '遠離放置光點名',

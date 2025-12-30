@@ -147,7 +147,6 @@ Options.Triggers.push({
           de: 'Geh zum rotierten sicheren Feld',
           fr: 'Allez dans une zone sûre après rotation',
           ja: '安置へ移動',
-          // FIXME
           cn: '去旋转后的安全区',
           ko: '회전한 뒤의 안전 지대로 가기',
           tc: '去旋轉後的安全區',
@@ -617,7 +616,6 @@ Options.Triggers.push({
           de: 'Geh in den sicheren Bereich',
           fr: 'Allez dans une zone sûre après rotation',
           ja: '安置へ移動',
-          // FIXME
           cn: '去旋转后的安全区',
           ko: '회전한 뒤의 안전 지대로 가기',
           tc: '去旋轉後的安全區',

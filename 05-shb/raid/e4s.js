@@ -437,7 +437,6 @@ Options.Triggers.push({
           de: 'Links (oder Hinten)',
           fr: 'Gauche (ou Arrière)',
           ja: '右前壊れるよ',
-          // FIXME
           cn: '左 (或 后)',
           ko: '왼쪽 (또는 뒤)',
           tc: '左 (或 後)',
@@ -466,7 +465,6 @@ Options.Triggers.push({
           de: 'Links (oder Vorne)',
           fr: 'Gauche (ou Devant)',
           ja: '右後ろ壊れるよ',
-          // FIXME
           cn: '左 (或 前)',
           ko: '왼쪽 (또는 앞)',
           tc: '左 (或 前)',
@@ -495,7 +493,6 @@ Options.Triggers.push({
           de: 'Rechts (oder Vorne)',
           fr: 'Droite (ou Devant)',
           ja: '左後ろ壊れるよ',
-          // FIXME
           cn: '右 (或 前)',
           ko: '오른쪽 (또는 앞)',
           tc: '右 (或 前)',
@@ -524,7 +521,6 @@ Options.Triggers.push({
           de: 'Rechts (oder Hinten)',
           fr: 'Droite (ou Arrière)',
           ja: '左前壊れるよ',
-          // FIXME
           cn: '右 (或 后)',
           ko: '오른쪽 (또는 뒤)',
           tc: '右 (或 後)',
