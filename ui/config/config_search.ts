@@ -99,6 +99,7 @@ export class ConfigSearch {
 
     allTriggerContainers.forEach((triggerContainer) => {
       let containerMatchesTitle = false;
+      let containerVisible = false;
 
       // Use pre-calculated __searchText
       if (
@@ -111,6 +112,7 @@ export class ConfigSearch {
         this.setContainerVisible(triggerContainer, true);
         this.updateShowHiddenButton(triggerContainer, 0);
         anyVisible = true;
+        containerVisible = true;
       } else {
         const triggersInContainer = triggerContainer.querySelectorAll<SearchTriggerElement>(
           '.trigger',
@@ -139,11 +141,13 @@ export class ConfigSearch {
         this.setContainerVisible(triggerContainer, hasVisibleTrigger, false);
         this.updateShowHiddenButton(triggerContainer, hiddenCount);
 
-        if (hasVisibleTrigger)
+        if (hasVisibleTrigger) {
           anyVisible = true;
+          containerVisible = true;
+        }
       }
 
-      if (triggerContainer.style.display !== 'none') {
+      if (containerVisible) {
         const expansion = triggerContainer.closest('.trigger-expansion-container');
         if (expansion instanceof HTMLElement)
           visibleExpansionContainers.add(expansion);
@@ -208,10 +212,13 @@ export class ConfigSearch {
 
   private setTriggerVisible(triggerElement: HTMLElement, visible: boolean): void {
     const display = visible ? '' : 'none';
-    triggerElement.style.display = display;
+    if (triggerElement.style.display !== display)
+      triggerElement.style.display = display;
     const nextSibling = triggerElement.nextElementSibling;
-    if (nextSibling instanceof HTMLElement && nextSibling.classList.contains('trigger-details'))
-      nextSibling.style.display = display;
+    if (nextSibling instanceof HTMLElement && nextSibling.classList.contains('trigger-details')) {
+      if (nextSibling.style.display !== display)
+        nextSibling.style.display = display;
+    }
   }
 
   private setContainerVisible(
@@ -219,7 +226,9 @@ export class ConfigSearch {
     visible: boolean,
     updateChildren: boolean = true,
   ): void {
-    container.style.display = visible ? '' : 'none';
+    const display = visible ? '' : 'none';
+    if (container.style.display !== display)
+      container.style.display = display;
     if (visible && updateChildren) {
       const triggers = container.querySelectorAll<HTMLElement>('.trigger');
       triggers.forEach((t) => this.setTriggerVisible(t, visible));
@@ -245,7 +254,9 @@ export class ConfigSearch {
         hasVisible = visibleFileContainers.length > 0;
       }
 
-      expansionContainer.style.display = hasVisible ? '' : 'none';
+      const display = hasVisible ? '' : 'none';
+      if (expansionContainer.style.display !== display)
+        expansionContainer.style.display = display;
 
       if (searching && hasVisible)
         expansionContainer.classList.remove('collapsed');
