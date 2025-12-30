@@ -70,8 +70,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '5x zones au sol chainées sur vous !',
           ja: '5連続AOE回避',
           cn: '5连追踪AOE点名!',
-          tc: '5連追蹤AOE點名!',
           ko: '따라오는 5연속 장판 피하기!',
+          tc: '5連追蹤AOE點名!',
         },
       },
     },
@@ -119,6 +119,17 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Vanara': '正统婆那罗',
         'Orthoshelled Dragon': '正统龟甲龙',
         'Tiamat\'s Clone': '提亚马特复制体',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Lesser Orthos Dragon': '正統小龍',
+        'Orthoknight': '正統騎士',
+        'Orthos Brobinyak': '正統布羅賓雅克',
+        'Orthos Vanara': '正統婆那羅',
+        'Orthoshelled Dragon': '正統龜甲龍',
+        'Tiamat\'s Clone': '提亞馬特複製體',
       },
     },
     {

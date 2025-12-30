@@ -18,6 +18,12 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'tsukuyomi-ex.txt',
   triggers: [
     {
+      id: 'TsukuyomiEx Reprimand',
+      type: 'StartsUsing',
+      netRegex: { id: '2BBA', source: 'Tsukuyomi', capture: false },
+      response: Responses.aoe(),
+    },
+    {
       id: 'TsukuyomiEx Nightfall Gun',
       type: 'StartsUsing',
       netRegex: { id: '2BBC', source: 'Tsukuyomi', capture: false },
@@ -27,7 +33,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'TsukuyomiEx Nightfall Spear',
       type: 'StartsUsing',
       netRegex: { id: '2BBD', source: 'Tsukuyomi', capture: false },
-      response: Responses.spread(),
+      response: Responses.rolePositions(),
     },
     {
       id: 'TsukuyomiEx Torment',
@@ -59,8 +65,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Éloignez-vous de l\'avant',
           ja: '正面から離れる',
           cn: '远离正面',
-          tc: '遠離正面',
           ko: '정면 피하기',
+          tc: '遠離正面',
         },
         tankBusterOnYou: Outputs.tankBusterOnYou,
         busterOn: Outputs.tankBusterOnPlayer,
@@ -95,8 +101,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À gauche + Extérieur',
           ja: '左へ + 外へ',
           cn: '左边 + 远离',
-          tc: '左邊 + 遠離',
           ko: '왼쪽 + 밖',
+          tc: '左邊 + 遠離',
         },
         leftAndIn: {
           en: 'Left + In',
@@ -104,8 +110,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À gauche + Intérieur',
           ja: '左へ + 中へ',
           cn: '左边 + 靠近',
-          tc: '左邊 + 靠近',
           ko: '왼쪽 + 안',
+          tc: '左邊 + 靠近',
         },
       },
     },
@@ -125,8 +131,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À droite + Extérieur',
           ja: '右へ + 外へ',
           cn: '右边 + 远离',
-          tc: '右邊 + 遠離',
           ko: '오른쪽 + 밖',
+          tc: '右邊 + 遠離',
         },
         rightAndIn: {
           en: 'Right + In',
@@ -134,8 +140,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'À droite + Intérieur',
           ja: '右へ + 中へ',
           cn: '右边 + 靠近',
-          tc: '右邊 + 靠近',
           ko: '오른쪽 + 안',
+          tc: '右邊 + 靠近',
         },
       },
     },
@@ -214,8 +220,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez en zone noire !',
           ja: '新月に！',
           cn: '踩黑色！',
-          tc: '踩黑色！',
           ko: '검정색으로 이동!',
+          tc: '踩黑色！',
         },
       },
     },
@@ -243,7 +249,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) => {
         if (matches.target !== data.me)
           return false;
-        return data.moonlitCount !== undefined && data.moonlitCount >= 4;
+        return data.moonshadowedCount !== undefined && data.moonshadowedCount >= 4;
       },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -253,8 +259,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez en zone blanche !',
           ja: '満月に！',
           cn: '踩白色！',
-          tc: '踩白色！',
           ko: '흰색으로 이동!',
+          tc: '踩白色！',
         },
       },
     },
@@ -434,6 +440,8 @@ const triggerSet: TriggerSet<Data> = {
         'Specter of Zenos': '芝诺斯的幻影',
       },
       'replaceText': {
+        '\\(E->W\\)': '(东->西)',
+        '\\(SW->NW\\)': '(西南->西北)',
         '\\(gun': '(枪',
         'spear\\)': '长矛)',
         'Antitwilight': '月下美人',
@@ -454,6 +462,7 @@ const triggerSet: TriggerSet<Data> = {
         'Moonbeam': '月光流转',
         'Moonfall': '碎片散落',
         'Nightbloom': '月下彼岸花',
+        'Nightfall': '深宵换装',
         'Perilune': '月天心',
         'Reprimand': '责难',
         'Steel Of The Underworld': '黄泉之枪',
@@ -465,6 +474,59 @@ const triggerSet: TriggerSet<Data> = {
         'Waning Grudge': '漆黑怨念',
         'Waxing Grudge': '纯白怨念',
         'Zashiki-Asobi': '宴会游乐',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Fan': '舞扇',
+        'Moondust': '月之碎片',
+        'Moonlight': '月光',
+        // 'No\. No\.\.\. Not yet\. Not\. Yet\.': '', // FIXME '我不能输.*我还没有.*'
+        'Specter(?! )': '妖影',
+        'Specter Of Asahi': '朝陽的幻影',
+        'Specter Of Gosetsu': '豪雪的幻影',
+        'Specter Of The Patriarch': '養父的幻影',
+        'Specter Of Zenos': '芝諾斯的幻影',
+        'Tsukuyomi': '月讀',
+        'Specter of Zenos': '芝諾斯的幻影',
+      },
+      'replaceText': {
+        // '\\(E->W\\)': '', // FIXME '(东->西)'
+        // '\\(SW->NW\\)': '', // FIXME '(西南->西北)'
+        // '\\(gun': '', // FIXME '(枪'
+        // 'spear\\)': '', // FIXME '长矛)'
+        'Antitwilight': '月下美人',
+        'Bright Blade': '月刀左斬',
+        'Concentrativity': '壓縮劍氣',
+        'Crater': '冰輪',
+        'Dance Of The Dead': '黃泉之舞',
+        'Dark Blade': '月刀右斬',
+        'Dispersivity': '劍氣波動',
+        // 'Empire adds': '', // FIXME '帝国幻影'
+        'Hagetsu': '破月',
+        // 'Homeland adds': '', // FIXME '家人幻影'
+        'Lead Of The Underworld': '黃泉之彈',
+        'Lunacy': '月下繚亂',
+        'Lunar Halo': '百月光',
+        'Lunar Rays': '殘月',
+        'Midnight Rain': '月時雨',
+        'Moonbeam': '月光流轉',
+        'Moonfall': '碎片散落',
+        'Nightbloom': '月下彼岸花',
+        'Nightfall': '深宵換裝',
+        'Perilune': '月天心',
+        'Reprimand': '責難',
+        'Steel Of The Underworld': '黃泉之槍',
+        'Supreme Selenomancy': '極月讀',
+        'Torment Unto Death': '折磨',
+        'Tsuki-No-Kakera': '月之碎片',
+        'Tsuki-No-Maiogi': '月下舞扇',
+        'Unmoving Troika': '不動三段',
+        'Waning Grudge': '漆黑怨念',
+        'Waxing Grudge': '純白怨念',
+        'Zashiki-Asobi': '宴會遊樂',
       },
     },
     {

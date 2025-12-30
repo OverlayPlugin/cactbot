@@ -64,8 +64,8 @@ const fetchLocaleCsvTables = async () => {
   const koPet = await getKoTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
   return {
     cn: cnPet,
-    tc: tcPet,
     ko: koPet,
+    tc: tcPet,
   };
 };
 

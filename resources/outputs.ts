@@ -10,8 +10,8 @@ const numberToOutputString = function(n: number): FullLocaleText {
     fr: str,
     ja: str,
     cn: str,
-    tc: str,
     ko: str,
+    tc: str,
   };
 };
 
@@ -28,8 +28,8 @@ export default {
     fr: 'AoE',
     ja: '全体攻撃',
     cn: 'AoE',
-    tc: 'AoE',
     ko: '전체 공격',
+    tc: 'AoE',
   },
   bigAoe: {
     en: 'big AoE!',
@@ -37,8 +37,8 @@ export default {
     fr: 'Grosse AoE !',
     ja: '強力な全体攻撃',
     cn: '大AoE伤害！',
-    tc: '大AoE傷害！',
     ko: '강한 전체 공격!',
+    tc: '大AoE傷害！',
   },
   bleedAoe: {
     en: 'AoE + Bleed',
@@ -46,8 +46,8 @@ export default {
     fr: 'AoE + Saignement',
     ja: '全体攻撃 + DoT',
     cn: 'AOE + 流血',
-    tc: 'AOE + 流血',
     ko: '전체 공격 + 도트',
+    tc: 'AOE + 流血',
   },
   tankBuster: {
     en: 'Tank Buster',
@@ -55,8 +55,8 @@ export default {
     fr: 'Tank buster',
     ja: 'タンク強攻撃',
     cn: '坦克死刑',
-    tc: '坦克死刑',
     ko: '탱버',
+    tc: '坦克死刑',
   },
   miniBuster: {
     en: 'Mini Buster',
@@ -64,8 +64,8 @@ export default {
     fr: 'Mini Buster',
     ja: 'タンク攻撃',
     cn: '小死刑',
-    tc: '小死刑',
     ko: '약한 탱버',
+    tc: '小死刑',
   },
   tankBusterOnPlayer: {
     en: 'Tank Buster on ${player}',
@@ -73,8 +73,8 @@ export default {
     fr: 'Tank buster sur ${player}',
     ja: '${player}に強攻撃',
     cn: '死刑 点 ${player}',
-    tc: '死刑 點 ${player}',
     ko: '"${player}" 탱버',
+    tc: '死刑 點 ${player}',
   },
   tankBusterOnYou: {
     en: 'Tank Buster on YOU',
@@ -82,8 +82,8 @@ export default {
     fr: 'Tank buster sur VOUS',
     ja: '自分に強攻撃',
     cn: '死刑点名',
-    tc: '死刑點名',
     ko: '탱버 대상자',
+    tc: '死刑點名',
   },
   // when there are multiple tankbusters going out
   tankBusters: {
@@ -92,8 +92,8 @@ export default {
     fr: 'Tank busters',
     ja: 'タンク強攻撃',
     cn: '坦克死刑',
-    tc: '坦克死刑',
     ko: '탱버',
+    tc: '坦克死刑',
   },
   tetherBusters: {
     en: 'Tank Tethers',
@@ -101,8 +101,8 @@ export default {
     fr: 'Liens Tank',
     ja: 'タンク線取り',
     cn: '坦克截线',
-    tc: '坦克截線',
     ko: '탱커가 선 가로채기',
+    tc: '坦克截線',
   },
   avoidTetherBusters: {
     en: 'Avoid Tank Tethers',
@@ -110,8 +110,8 @@ export default {
     fr: 'Évitez les liens des Tanks',
     ja: 'タンクの線を避けて',
     cn: '远离坦克连线',
-    tc: '遠離坦克連線',
     ko: '탱커 선 피하기',
+    tc: '遠離坦克連線',
   },
   tankCleave: {
     en: 'Tank Cleave',
@@ -119,8 +119,8 @@ export default {
     fr: 'Tank cleave',
     ja: 'タンク範囲攻撃',
     cn: '范围死刑',
-    tc: '範圍死刑',
     ko: '광역 탱버',
+    tc: '範圍死刑',
   },
   tankBusterCleaves: {
     en: 'Tank Buster Cleaves',
@@ -128,8 +128,8 @@ export default {
     fr: 'Tankbuster cleaves',
     ja: 'MT・ST同時範囲攻撃',
     cn: '坦克范围死刑',
-    tc: '坦克範圍死刑',
     ko: '동시 광역 탱버',
+    tc: '坦克範圍死刑',
   },
   tankBusterCleavesOnYou: {
     en: 'Tank Cleaves on YOU',
@@ -137,8 +137,8 @@ export default {
     fr: 'Tank cleaves sur VOUS',
     ja: 'MT・ST同時範囲攻撃(自分対象)',
     cn: '坦克范围死刑点名',
-    tc: '坦克範圍死刑點名',
     ko: '광역 탱버 대상자',
+    tc: '坦克範圍死刑點名',
   },
   avoidTankCleave: {
     en: 'Avoid Tank Cleave',
@@ -146,8 +146,8 @@ export default {
     fr: 'Évitez le tank cleave',
     ja: 'タンク範囲攻撃を避ける',
     cn: '远离范围死刑',
-    tc: '遠離範圍死刑',
     ko: '광역 탱버 피하기',
+    tc: '遠離範圍死刑',
   },
   avoidTankCleaves: {
     en: 'Avoid Tank Cleaves',
@@ -155,8 +155,8 @@ export default {
     fr: 'Évitez les cleaves (tankbusters)',
     ja: '範囲攻撃を避けて',
     cn: '远离坦克范围死刑',
-    tc: '遠離坦克範圍死刑',
     ko: '광역 탱버 피하기',
+    tc: '遠離坦克範圍死刑',
   },
   tankCleaveOnYou: {
     en: 'Tank Cleave on YOU',
@@ -164,8 +164,8 @@ export default {
     fr: 'Tank cleave sur VOUS',
     ja: '自分に範囲攻撃',
     cn: '范围死刑点名',
-    tc: '範圍死刑點名',
     ko: '나에게 광역 탱버',
+    tc: '範圍死刑點名',
   },
   sharedTankbuster: {
     en: 'Shared Tank Buster',
@@ -173,8 +173,8 @@ export default {
     fr: 'Partagez le Tank buster',
     ja: 'タンク頭割り',
     cn: '分摊死刑',
-    tc: '分攤死刑',
     ko: '쉐어 탱버',
+    tc: '分攤死刑',
   },
   sharedTankbusterOnYou: {
     en: 'Shared Tank Buster on YOU',
@@ -182,8 +182,8 @@ export default {
     fr: 'Tank buster à partager sur VOUS',
     ja: '自分にタンク頭割り',
     cn: '分摊死刑点名',
-    tc: '分攤死刑點名',
     ko: '쉐어 탱버 대상자',
+    tc: '分攤死刑點名',
   },
   sharedTankbusterOnPlayer: {
     en: 'Shared Tank Buster on ${player}',
@@ -191,8 +191,8 @@ export default {
     fr: 'Tank buster à partager sur ${player}',
     ja: '${player} にタンク頭割り',
     cn: '分摊死刑点 ${player}',
-    tc: '分攤死刑點 ${player}',
     ko: '"${player}" 쉐어 탱버',
+    tc: '分攤死刑點 ${player}',
   },
   tankSwap: {
     en: 'Tank Swap!',
@@ -200,8 +200,8 @@ export default {
     fr: 'Tank swap !',
     ja: 'タンクスイッチ!',
     cn: '换T！',
-    tc: '換坦！',
     ko: '탱 교대',
+    tc: '換坦！',
   },
   spread: {
     en: 'Spread',
@@ -209,8 +209,8 @@ export default {
     fr: 'Dispersez-vous',
     ja: 'さんかい',
     cn: '分散',
-    tc: '分散',
     ko: '산개',
+    tc: '分散',
   },
   defamationOnYou: {
     en: 'Defamation on YOU',
@@ -218,8 +218,8 @@ export default {
     fr: 'Diffamation sur VOUS',
     ja: '自分に巨大な爆発',
     cn: '大圈点名',
-    tc: '大圈點名',
     ko: '광역징 대상자',
+    tc: '大圈點名',
   },
   protean: {
     en: 'Protean',
@@ -227,8 +227,8 @@ export default {
     fr: 'Positions',
     ja: '基本さんかい',
     cn: '八方分散',
-    tc: '八方分散',
     ko: '8방향 산개',
+    tc: '八方分散',
   },
   stackMarker: {
     // for stack marker situations
@@ -237,8 +237,8 @@ export default {
     fr: 'Packez-vous',
     ja: '頭割り',
     cn: '分摊',
-    tc: '分攤',
     ko: '쉐어뎀',
+    tc: '分攤',
   },
   getTogether: {
     // for getting together without stack marker
@@ -247,8 +247,8 @@ export default {
     fr: 'Packez-vous',
     ja: '集合',
     cn: '集合',
-    tc: '集合',
     ko: '모이기',
+    tc: '集合',
   },
   healerGroups: {
     en: 'Healer Groups',
@@ -256,8 +256,8 @@ export default {
     fr: 'Groupes sur les heals',
     ja: 'ヒラに頭割り',
     cn: '双奶分组分摊',
-    tc: '雙補分組分攤',
     ko: '힐러 그룹 쉐어',
+    tc: '雙補分組分攤',
   },
   rolePositions: {
     en: 'Role Positions',
@@ -265,8 +265,8 @@ export default {
     fr: 'Positions par rôle',
     ja: 'ロールさんかい',
     cn: '职能分散站位',
-    tc: '職能分散站位',
     ko: '직업군별 위치로',
+    tc: '職能分散站位',
   },
   stackOnYou: {
     en: 'Stack on YOU',
@@ -274,8 +274,8 @@ export default {
     fr: 'Package sur VOUS',
     ja: '自分に頭割り',
     cn: '分摊点名',
-    tc: '分攤點名',
     ko: '쉐어징 대상자',
+    tc: '分攤點名',
   },
   stackOnPlayer: {
     en: 'Stack on ${player}',
@@ -283,8 +283,8 @@ export default {
     fr: 'Packez-vous sur ${player}',
     ja: '${player}に頭割り',
     cn: '靠近 ${player}分摊',
-    tc: '靠近 ${player}分攤',
     ko: '"${player}" 쉐어징',
+    tc: '靠近 ${player}分攤',
   },
   stackPartner: {
     en: 'Stack With Partner',
@@ -292,8 +292,8 @@ export default {
     fr: 'Packez-vous avec votre partenaire',
     ja: 'ペア',
     cn: '与搭档分摊',
-    tc: '與搭檔分攤',
     ko: '파트너와 쉐어',
+    tc: '與搭檔分攤',
   },
   stackMiddle: {
     en: 'Stack in Middle',
@@ -301,8 +301,14 @@ export default {
     fr: 'Packez-vous au milieu',
     ja: '中央で頭割り',
     cn: '中间集合',
-    tc: '中間集合',
     ko: '중앙에서 쉐어',
+    tc: '中間集合',
+  },
+  stackInTower: {
+    en: 'Stack in Tower',
+    fr: 'Package dans la tour',
+    cn: '塔内集合',
+    ko: '탑에서 쉐어',
   },
   baitPuddles: {
     en: 'Bait Puddles',
@@ -310,8 +316,8 @@ export default {
     fr: 'Attirez les flaques',
     ja: 'AOE誘導',
     cn: '诱导放圈',
-    tc: '誘導放圈',
     ko: '장판 유도',
+    tc: '誘導放圈',
   },
   // For general more-than-one-stack-at-a-time situations
   stacks: {
@@ -320,8 +326,8 @@ export default {
     fr: 'Package',
     ja: '頭割り',
     cn: '分摊',
-    tc: '分攤',
     ko: '쉐어',
+    tc: '分攤',
   },
   doritoStack: {
     en: 'Dorito Stack',
@@ -329,8 +335,8 @@ export default {
     fr: 'Packez les marques',
     ja: 'マーカー同士で頭割り',
     cn: '点名集合',
-    tc: '點名集合',
     ko: '징끼리 모이기',
+    tc: '點名集合',
   },
   spreadThenStack: {
     en: 'Spread => Stack',
@@ -338,8 +344,8 @@ export default {
     fr: 'Dispersion => Package',
     ja: 'さんかい => 頭割り',
     cn: '分散 => 集合',
-    tc: '分散 => 集合',
     ko: '산개 => 집합',
+    tc: '分散 => 集合',
   },
   stackThenSpread: {
     en: 'Stack => Spread',
@@ -347,8 +353,8 @@ export default {
     fr: 'Package => Dispersion',
     ja: '頭割り => さんかい',
     cn: '集合 => 分散',
-    tc: '集合 => 分散',
     ko: '집합 => 산개',
+    tc: '集合 => 分散',
   },
   drawIn: {
     // Opposite of a knockback.
@@ -357,8 +363,8 @@ export default {
     fr: 'Attraction',
     ja: '吸込み',
     cn: '吸引',
-    tc: '吸引',
     ko: '끌어당김',
+    tc: '吸引',
   },
   knockback: {
     en: 'Knockback',
@@ -366,8 +372,8 @@ export default {
     fr: 'Poussée',
     ja: 'ノックバック',
     cn: '击退',
-    tc: '擊退',
     ko: '넉백',
+    tc: '擊退',
   },
   knockbackOnYou: {
     en: 'Knockback on YOU',
@@ -375,8 +381,8 @@ export default {
     fr: 'Poussée sur VOUS',
     ja: '自分にノックバック',
     cn: '击退点名',
-    tc: '擊退點名',
     ko: '넉백징 대상자',
+    tc: '擊退點名',
   },
   knockbackOnPlayer: {
     en: 'Knockback on ${player}',
@@ -384,8 +390,8 @@ export default {
     fr: 'Poussée sur ${player}',
     ja: '${player}にノックバック',
     cn: '击退点名${player}',
-    tc: '擊退點名${player}',
     ko: '"${player}" 넉백징',
+    tc: '擊退點名${player}',
   },
   lookTowardsBoss: {
     en: 'Look Towards Boss',
@@ -393,8 +399,8 @@ export default {
     fr: 'Regardez le boss',
     ja: 'ボスを見る',
     cn: '面向Boss',
-    tc: '面向Boss',
     ko: '쳐다보기',
+    tc: '面向Boss',
   },
   lookAway: {
     en: 'Look Away',
@@ -402,8 +408,8 @@ export default {
     fr: 'Regardez ailleurs',
     ja: 'ボスを見ない',
     cn: '背对Boss',
-    tc: '背對Boss',
     ko: '뒤돌기',
+    tc: '背對Boss',
   },
   lookAwayFromPlayer: {
     en: 'Look Away from ${player}',
@@ -411,8 +417,8 @@ export default {
     fr: 'Ne regardez pas ${player}',
     ja: '${player}を見ない',
     cn: '背对${player}',
-    tc: '背對${player}',
     ko: '${player}에게서 뒤돌기',
+    tc: '背對${player}',
   },
   lookAwayFromTarget: {
     en: 'Look Away from ${name}',
@@ -420,8 +426,8 @@ export default {
     fr: 'Ne regardez pas ${name}',
     ja: '${name}を見ない',
     cn: '背对${name}',
-    tc: '背對${name}',
     ko: '${name}에게서 뒤돌기',
+    tc: '背對${name}',
   },
   getBehind: {
     en: 'Get Behind',
@@ -429,8 +435,8 @@ export default {
     fr: 'Passez derrière',
     ja: '背面へ',
     cn: '去背后',
-    tc: '去背後',
     ko: '보스 뒤로',
+    tc: '去背後',
   },
   goFrontOrSides: {
     en: 'Go Front / Sides',
@@ -438,8 +444,8 @@ export default {
     fr: 'Allez Devant / Côtés',
     ja: '前／横へ',
     cn: '去前侧方',
-    tc: '去前側方',
     ko: '보스 후방 피하기',
+    tc: '去前側方',
   },
   goFront: {
     en: 'Go Front',
@@ -447,8 +453,8 @@ export default {
     fr: 'Allez Devant',
     ja: '前へ',
     cn: '去前面',
-    tc: '去前面',
     ko: '앞으로',
+    tc: '去前面',
   },
   // getUnder is used when you have to get into the bosses hitbox
   getUnder: {
@@ -457,8 +463,8 @@ export default {
     fr: 'En dessous',
     ja: 'ボスに貼り付く',
     cn: '去脚下',
-    tc: '去腳下',
     ko: '보스 아래로',
+    tc: '去腳下',
   },
   // in is more like "get close but maybe even melee range is fine"
   in: {
@@ -467,8 +473,8 @@ export default {
     fr: 'Intérieur',
     ja: '中へ',
     cn: '靠近',
-    tc: '靠近',
     ko: '안으로',
+    tc: '靠近',
   },
   // out means get far away
   out: {
@@ -477,8 +483,8 @@ export default {
     fr: 'Extérieur',
     ja: '外へ',
     cn: '远离',
-    tc: '遠離',
     ko: '밖으로',
+    tc: '遠離',
   },
   outOfMelee: {
     en: 'Out of Melee',
@@ -486,8 +492,8 @@ export default {
     fr: 'Sortez de la mêlée',
     ja: '近接の範囲から離れる',
     cn: '离开近战距离',
-    tc: '離開近戰距離',
     ko: '근접범위 밖으로',
+    tc: '離開近戰距離',
   },
   // be just outside the boss's target circle
   outOfHitbox: {
@@ -496,8 +502,8 @@ export default {
     fr: 'Extérieur de la hitbox',
     ja: 'ボスから少し離れる',
     cn: '离开目标圈',
-    tc: '離開目標圈',
     ko: '히트박스 밖으로',
+    tc: '離開目標圈',
   },
   inThenOut: {
     en: 'In => Out',
@@ -505,8 +511,8 @@ export default {
     fr: 'Intérieur, puis extérieur',
     ja: '中 => 外',
     cn: '先靠近，再远离',
-    tc: '先靠近，再遠離',
     ko: '안으로 => 밖으로',
+    tc: '先靠近，再遠離',
   },
   outThenIn: {
     en: 'Out => In',
@@ -514,8 +520,8 @@ export default {
     fr: 'Extérieur, puis intérieur',
     ja: '外 => 中',
     cn: '先远离，再靠近',
-    tc: '先遠離，再靠近',
     ko: '밖으로 => 안으로',
+    tc: '先遠離，再靠近',
   },
   backThenFront: {
     en: 'Back => Front',
@@ -523,8 +529,8 @@ export default {
     fr: 'Derrière puis devant',
     ja: '後ろ => 前',
     cn: '后 => 前',
-    tc: '後 => 前',
     ko: '뒤로 => 앞으로',
+    tc: '後 => 前',
   },
   frontThenBack: {
     en: 'Front => Back',
@@ -532,22 +538,22 @@ export default {
     fr: 'Devant puis derrière',
     ja: '前 => 後ろ',
     cn: '前 => 后',
-    tc: '前 => 後',
     ko: '앞으로 => 뒤로',
+    tc: '前 => 後',
   },
   sidesThenFrontBack: {
     en: 'Sides => Front/Back',
     fr: 'Côtés => Devant/Derrière',
     cn: '两侧 => 前/后',
-    tc: '兩側 => 前/後',
     ko: '양옆 => 앞/뒤',
+    tc: '兩側 => 前/後',
   },
   frontBackThenSides: {
     en: 'Front/Back => Sides',
     fr: 'Devant/Derrière => Côtés',
     cn: '前/后 => 两侧',
-    tc: '前/後 => 兩側',
     ko: '앞/뒤 => 양옆',
+    tc: '前/後 => 兩側',
   },
   goIntoMiddle: {
     en: 'Get Middle',
@@ -555,8 +561,8 @@ export default {
     fr: 'Allez au milieu',
     ja: '中へ',
     cn: '去中间',
-    tc: '去中間',
     ko: '중앙으로',
+    tc: '去中間',
   },
   front: {
     en: 'Front',
@@ -564,8 +570,8 @@ export default {
     fr: 'Devant',
     ja: '前',
     cn: '前',
-    tc: '前',
     ko: '앞',
+    tc: '前',
   },
   back: {
     en: 'Back',
@@ -573,8 +579,8 @@ export default {
     fr: 'Derrière',
     ja: '後ろ',
     cn: '后',
-    tc: '後',
     ko: '뒤',
+    tc: '後',
   },
   right: {
     en: 'Right',
@@ -582,8 +588,8 @@ export default {
     fr: 'À droite',
     ja: '右へ',
     cn: '右',
-    tc: '右',
     ko: '오른쪽',
+    tc: '右',
   },
   left: {
     en: 'Left',
@@ -591,8 +597,8 @@ export default {
     fr: 'À gauche',
     ja: '左へ',
     cn: '左',
-    tc: '左',
     ko: '왼쪽',
+    tc: '左',
   },
   getLeftAndWest: {
     en: '<= Get Left/West',
@@ -600,8 +606,8 @@ export default {
     fr: '<= Allez à Gauche/Ouest',
     ja: '<= 左/西へ',
     cn: '<= 去左半场',
-    tc: '<= 去左半場',
     ko: '<= 왼쪽/서쪽',
+    tc: '<= 去左半場',
   },
   getRightAndEast: {
     en: 'Get Right/East =>',
@@ -609,8 +615,8 @@ export default {
     fr: 'Allez à Droite/Est =>',
     ja: '右/東へ =>',
     cn: '去右半场 =>',
-    tc: '去右半場 =>',
     ko: '오른쪽/동쪽 =>',
+    tc: '去右半場 =>',
   },
   leftThenRight: {
     en: 'Left => Right',
@@ -618,8 +624,8 @@ export default {
     fr: 'À gauche => À droite',
     ja: '左 => 右',
     cn: '左 => 右',
-    tc: '左 => 右',
     ko: '왼쪽 => 오른쪽',
+    tc: '左 => 右',
   },
   rightThenLeft: {
     en: 'Right => Left',
@@ -627,8 +633,8 @@ export default {
     fr: 'À droite => À gauche',
     ja: '右 => 左',
     cn: '右 => 左',
-    tc: '右 => 左',
     ko: '오른쪽 => 왼쪽',
+    tc: '右 => 左',
   },
   goFrontBack: {
     en: 'Go Front/Back',
@@ -636,8 +642,8 @@ export default {
     fr: 'Allez Devant/Derrière',
     ja: '縦へ',
     cn: '去前后',
-    tc: '去前後',
     ko: '앞/뒤로',
+    tc: '去前後',
   },
   sides: {
     en: 'Sides',
@@ -645,8 +651,8 @@ export default {
     fr: 'Côtés',
     ja: '横へ',
     cn: '去两侧',
-    tc: '去兩側',
     ko: '양옆으로',
+    tc: '去兩側',
   },
   middle: {
     en: 'Middle',
@@ -654,8 +660,8 @@ export default {
     fr: 'Milieu',
     ja: '中へ',
     cn: '中间',
-    tc: '中間',
     ko: '중앙',
+    tc: '中間',
   },
   clockwise: {
     en: 'Clockwise',
@@ -663,8 +669,8 @@ export default {
     fr: 'Sens horaire',
     ja: '時計回り',
     cn: '顺时针',
-    tc: '順時針',
     ko: '시계방향',
+    tc: '順時針',
   },
   counterclockwise: {
     en: 'Counter-Clockwise',
@@ -672,8 +678,8 @@ export default {
     fr: 'Anti-horaire',
     ja: '反時計回り',
     cn: '逆时针',
-    tc: '逆時針',
     ko: '반시계방향',
+    tc: '逆時針',
   },
   // killAdds is used for adds that will always be available
   killAdds: {
@@ -682,8 +688,8 @@ export default {
     fr: 'Tuez les adds',
     ja: '雑魚から倒して',
     cn: '击杀小怪',
-    tc: '擊殺小怪',
     ko: '쫄 잡기',
+    tc: '擊殺小怪',
   },
   // killExtraAdd is used for adds that appear if a mechanic was not played correctly
   killExtraAdd: {
@@ -692,8 +698,8 @@ export default {
     fr: 'Tuez l\'add',
     ja: '雑魚から倒して',
     cn: '击杀小怪',
-    tc: '擊殺小怪',
     ko: '쫄 잡기',
+    tc: '擊殺小怪',
   },
   awayFromFront: {
     en: 'Away From Front',
@@ -701,8 +707,8 @@ export default {
     fr: 'Éloignez-vous du devant',
     ja: '前方から離れる',
     cn: '远离正面',
-    tc: '遠離正面',
     ko: '보스 전방 피하기',
+    tc: '遠離正面',
   },
   sleepTarget: {
     en: 'Sleep ${name}',
@@ -710,8 +716,8 @@ export default {
     fr: 'Sommeil sur ${name}',
     ja: '${name} にスリプル',
     cn: '催眠 ${name}',
-    tc: '催眠 ${name}',
     ko: '${name} 슬리플',
+    tc: '催眠 ${name}',
   },
   stunTarget: {
     en: 'Stun ${name}',
@@ -719,8 +725,8 @@ export default {
     fr: 'Étourdissez ${name}',
     ja: '${name} にスタン',
     cn: '眩晕 ${name}',
-    tc: '眩暈 ${name}',
     ko: '${name} 기절',
+    tc: '眩暈 ${name}',
   },
   interruptTarget: {
     en: 'Interrupt ${name}',
@@ -728,8 +734,8 @@ export default {
     fr: 'Interrompez ${name}',
     ja: '${name} に沈黙',
     cn: '打断${name}',
-    tc: '打斷${name}',
     ko: '${name} 시전 끊기',
+    tc: '打斷${name}',
   },
   preyOnYou: {
     en: 'Prey on YOU',
@@ -737,8 +743,8 @@ export default {
     fr: 'Marquage sur VOUS',
     ja: '自分にマーキング',
     cn: '猎物点名',
-    tc: '獵物點名',
     ko: '홍옥징 대상자',
+    tc: '獵物點名',
   },
   preyOnPlayer: {
     en: 'Prey on ${player}',
@@ -746,8 +752,8 @@ export default {
     fr: 'Marquage sur ${player}',
     ja: '${player}にマーキング',
     cn: '${player} 的猎物点名',
-    tc: '${player} 的獵物點名',
     ko: '"${player}" 홍옥징',
+    tc: '${player} 的獵物點名',
   },
   awayFromGroup: {
     en: 'Away from Group',
@@ -755,8 +761,8 @@ export default {
     fr: 'Éloignez-vous du groupe',
     ja: '外へ',
     cn: '远离人群',
-    tc: '遠離人群',
     ko: '다른 사람들과 떨어지기',
+    tc: '遠離人群',
   },
   awayFromPlayer: {
     en: 'Away from ${player}',
@@ -764,8 +770,8 @@ export default {
     fr: 'Éloignez-vous de ${player}',
     ja: '${player}から離れる',
     cn: '远离${player}',
-    tc: '遠離${player}',
     ko: '"${player}"에게서 멀어지기',
+    tc: '遠離${player}',
   },
   meteorOnYou: {
     en: 'Meteor on YOU',
@@ -773,8 +779,8 @@ export default {
     fr: 'Météore sur VOUS',
     ja: '自分にメテオ',
     cn: '陨石点名',
-    tc: '隕石點名',
     ko: '나에게 메테오징',
+    tc: '隕石點名',
   },
   stopMoving: {
     en: 'Stop Moving!',
@@ -782,8 +788,8 @@ export default {
     fr: 'Ne bougez pas !',
     ja: '移動禁止！',
     cn: '停止移动！',
-    tc: '停止移動！',
     ko: '이동 멈추기!',
+    tc: '停止移動！',
   },
   stopEverything: {
     en: 'Stop Everything!',
@@ -791,8 +797,8 @@ export default {
     fr: 'Arrêtez tout !',
     ja: '行動禁止！',
     cn: '停止行动！',
-    tc: '停止行動！',
     ko: '행동 멈추기!',
+    tc: '停止行動！',
   },
   moveAway: {
     // move away to dodge aoes
@@ -801,8 +807,8 @@ export default {
     fr: 'Bougez !',
     ja: '避けて！',
     cn: '离开原地！',
-    tc: '離開原地！',
     ko: '이동하기!',
+    tc: '離開原地！',
   },
   moveAround: {
     // move around (e.g. jumping) to avoid being frozen
@@ -811,8 +817,8 @@ export default {
     fr: 'Bougez !',
     ja: '動く！',
     cn: '保持运动！',
-    tc: '保持運動！',
     ko: '움직이기!',
+    tc: '保持運動！',
   },
   breakChains: {
     en: 'Break Chains',
@@ -820,8 +826,8 @@ export default {
     fr: 'Brisez les chaines',
     ja: '線を切る',
     cn: '拉断连线',
-    tc: '拉斷連線',
     ko: '선 끊기',
+    tc: '拉斷連線',
   },
   moveChainsTogether: {
     en: 'Move Chains Together',
@@ -829,8 +835,8 @@ export default {
     fr: 'Bougez les chaines ensemble',
     ja: '線同士で一緒に移動',
     cn: '连线一起移动',
-    tc: '連線一起移動',
     ko: '선 붙어서 같이 움직이기',
+    tc: '連線一起移動',
   },
   earthshakerOnYou: {
     en: 'Earth Shaker on YOU',
@@ -838,8 +844,8 @@ export default {
     fr: 'Marque de terre sur VOUS',
     ja: '自分にアースシェイカー',
     cn: '大地摇动点名',
-    tc: '大地搖動點名',
     ko: '어스징 대상자',
+    tc: '大地搖動點名',
   },
   wakeUp: {
     en: 'WAKE UP',
@@ -847,8 +853,8 @@ export default {
     fr: 'RÉVEILLE-TOI',
     ja: '目を覚まして！',
     cn: '醒醒！动一动！！',
-    tc: '醒醒！動一動！！',
     ko: '일어나세요!',
+    tc: '醒醒！動一動！！',
   },
   closeTethersWithPlayer: {
     en: 'Close Tethers (${player})',
@@ -856,8 +862,8 @@ export default {
     fr: 'Liens proches avec (${player})',
     ja: '${player}に近づく',
     cn: '近线 (${player})',
-    tc: '近線 (${player})',
     ko: '상대와 가까이 붙기 (${player})',
+    tc: '近線 (${player})',
   },
   farTethersWithPlayer: {
     en: 'Far Tethers (${player})',
@@ -865,8 +871,8 @@ export default {
     fr: 'Liens éloignés avec (${player})',
     ja: ' (${player})から離れる',
     cn: '远线 (${player})',
-    tc: '遠線 (${player})',
     ko: '상대와 떨어지기 (${player})',
+    tc: '遠線 (${player})',
   },
   getTowers: {
     en: 'Get Towers',
@@ -874,8 +880,8 @@ export default {
     fr: 'Allez dans les tours',
     ja: '塔を踏む',
     cn: '踩塔',
-    tc: '踩塔',
     ko: '기둥 들어가기',
+    tc: '踩塔',
   },
   unknown: {
     en: '???',
@@ -883,8 +889,8 @@ export default {
     fr: '???',
     ja: '???',
     cn: '???',
-    tc: '???',
     ko: '???',
+    tc: '???',
   },
   cardinals: {
     en: 'Cardinals',
@@ -892,8 +898,8 @@ export default {
     fr: 'Cardinaux',
     ja: '十字回避',
     cn: '去正点',
-    tc: '去正點',
     ko: '십자방향으로',
+    tc: '去正點',
   },
   intercards: {
     en: 'Intercards',
@@ -901,8 +907,8 @@ export default {
     fr: 'Intercardinal',
     ja: '斜めへ',
     cn: '去斜角',
-    tc: '去斜角',
     ko: '대각선 쪽으로',
+    tc: '去斜角',
   },
   north: {
     en: 'North',
@@ -910,8 +916,8 @@ export default {
     fr: 'Nord',
     ja: '北',
     cn: '上',
-    tc: '上',
     ko: '북쪽',
+    tc: '上',
   },
   south: {
     en: 'South',
@@ -919,8 +925,8 @@ export default {
     fr: 'Sud',
     ja: '南',
     cn: '下',
-    tc: '下',
     ko: '남쪽',
+    tc: '下',
   },
   east: {
     en: 'East',
@@ -928,8 +934,8 @@ export default {
     fr: 'Est',
     ja: '東',
     cn: '右',
-    tc: '右',
     ko: '동쪽',
+    tc: '右',
   },
   west: {
     en: 'West',
@@ -937,8 +943,8 @@ export default {
     fr: 'Ouest',
     ja: '西',
     cn: '左',
-    tc: '左',
     ko: '서쪽',
+    tc: '左',
   },
   northwest: {
     en: 'Northwest',
@@ -946,8 +952,8 @@ export default {
     fr: 'Nord-Ouest',
     ja: '北西',
     cn: '左上',
-    tc: '左上',
     ko: '북서쪽',
+    tc: '左上',
   },
   northeast: {
     en: 'Northeast',
@@ -955,8 +961,8 @@ export default {
     fr: 'Nord-Est',
     ja: '北東',
     cn: '右上',
-    tc: '右上',
     ko: '북동쪽',
+    tc: '右上',
   },
   southwest: {
     en: 'Southwest',
@@ -964,8 +970,8 @@ export default {
     fr: 'Sud-Ouest',
     ja: '南西',
     cn: '左下',
-    tc: '左下',
     ko: '남서쪽',
+    tc: '左下',
   },
   southeast: {
     en: 'Southeast',
@@ -973,8 +979,8 @@ export default {
     fr: 'Sud-Est',
     ja: '南東',
     cn: '右下',
-    tc: '右下',
     ko: '남동쪽',
+    tc: '右下',
   },
   dirN: {
     en: 'N',
@@ -982,8 +988,8 @@ export default {
     fr: 'N',
     ja: '北',
     cn: '上',
-    tc: '上',
     ko: '북',
+    tc: '上',
   },
   dirS: {
     en: 'S',
@@ -991,8 +997,8 @@ export default {
     fr: 'S',
     ja: '南',
     cn: '下',
-    tc: '下',
     ko: '남',
+    tc: '下',
   },
   dirE: {
     en: 'E',
@@ -1000,8 +1006,8 @@ export default {
     fr: 'E',
     ja: '東',
     cn: '右',
-    tc: '右',
     ko: '동',
+    tc: '右',
   },
   dirW: {
     en: 'W',
@@ -1009,8 +1015,8 @@ export default {
     fr: 'O',
     ja: '西',
     cn: '左',
-    tc: '左',
     ko: '서',
+    tc: '左',
   },
   dirNW: {
     en: 'NW',
@@ -1018,8 +1024,8 @@ export default {
     fr: 'NO',
     ja: '北西',
     cn: '左上',
-    tc: '左上',
     ko: '북서',
+    tc: '左上',
   },
   dirNE: {
     en: 'NE',
@@ -1027,8 +1033,8 @@ export default {
     fr: 'NE',
     ja: '北東',
     cn: '右上',
-    tc: '右上',
     ko: '북동',
+    tc: '右上',
   },
   dirSW: {
     en: 'SW',
@@ -1036,8 +1042,8 @@ export default {
     fr: 'SO',
     ja: '南西',
     cn: '左下',
-    tc: '左下',
     ko: '남서',
+    tc: '左下',
   },
   dirSE: {
     en: 'SE',
@@ -1045,8 +1051,8 @@ export default {
     fr: 'SE',
     ja: '南東',
     cn: '右下',
-    tc: '右下',
     ko: '남동',
+    tc: '右下',
   },
   dirNNE: {
     en: 'NNE',
@@ -1054,8 +1060,8 @@ export default {
     fr: 'NNE',
     ja: '北北東(1時)',
     cn: '上偏右',
-    tc: '上偏右',
     ko: '1시',
+    tc: '上偏右',
   },
   dirENE: {
     en: 'ENE',
@@ -1063,8 +1069,8 @@ export default {
     fr: 'ENE',
     ja: '東北東(2時)',
     cn: '右偏上',
-    tc: '右偏上',
     ko: '2시',
+    tc: '右偏上',
   },
   dirESE: {
     en: 'ESE',
@@ -1072,8 +1078,8 @@ export default {
     fr: 'ESE',
     ja: '東南東(4時)',
     cn: '右偏下',
-    tc: '右偏下',
     ko: '4시',
+    tc: '右偏下',
   },
   dirSSE: {
     en: 'SSE',
@@ -1081,8 +1087,8 @@ export default {
     fr: 'SSE',
     ja: '南南東(5時)',
     cn: '下偏右',
-    tc: '下偏右',
     ko: '5시',
+    tc: '下偏右',
   },
   dirSSW: {
     en: 'SSW',
@@ -1090,8 +1096,8 @@ export default {
     fr: 'SSO',
     ja: '南南西(7時)',
     cn: '下偏左',
-    tc: '下偏左',
     ko: '7시',
+    tc: '下偏左',
   },
   dirWSW: {
     en: 'WSW',
@@ -1099,8 +1105,8 @@ export default {
     fr: 'OSO',
     ja: '西南西(8時)',
     cn: '左偏下',
-    tc: '左偏下',
     ko: '8시',
+    tc: '左偏下',
   },
   dirWNW: {
     en: 'WNW',
@@ -1108,8 +1114,8 @@ export default {
     fr: 'ONO',
     ja: '西北西(10時)',
     cn: '左偏上',
-    tc: '左偏上',
     ko: '10시',
+    tc: '左偏上',
   },
   dirNNW: {
     en: 'NNW',
@@ -1117,8 +1123,8 @@ export default {
     fr: 'NNO',
     ja: '北北西(11時)',
     cn: '上偏左',
-    tc: '上偏左',
     ko: '11시',
+    tc: '上偏左',
   },
   tank: {
     en: 'Tank',
@@ -1126,8 +1132,8 @@ export default {
     fr: 'Tank',
     ja: 'タンク',
     cn: '坦克',
-    tc: '坦克',
     ko: '탱',
+    tc: '坦克',
   },
   healer: {
     en: 'Healer',
@@ -1135,8 +1141,8 @@ export default {
     fr: 'Healer',
     ja: 'ヒーラー',
     cn: '治疗',
-    tc: '治療',
     ko: '힐',
+    tc: '治療',
   },
   dps: {
     en: 'DPS',
@@ -1144,8 +1150,8 @@ export default {
     fr: 'DPS',
     ja: 'DPS',
     cn: 'DPS',
-    tc: 'DPS',
     ko: '딜러',
+    tc: 'DPS',
   },
   // for sequenced mechanics
   next: {
@@ -1154,8 +1160,8 @@ export default {
     fr: ' => ',
     ja: ' => ',
     cn: ' => ',
-    tc: ' => ',
     ko: ' => ',
+    tc: ' => ',
   },
   // for combo mechanics/names
   and: {
@@ -1164,8 +1170,8 @@ export default {
     fr: ' + ',
     ja: ' + ',
     cn: ' + ',
-    tc: ' + ',
     ko: ' + ',
+    tc: ' + ',
   },
   // for either/or directions or mechanics
   or: {
@@ -1174,8 +1180,8 @@ export default {
     fr: ' / ',
     ja: ' / ',
     cn: ' / ',
-    tc: ' / ',
     ko: ' / ',
+    tc: ' / ',
   },
   // Literal numbers.
   num0: numberToOutputString(0),

@@ -54,8 +54,8 @@ const partyWipeText = {
   fr: 'Party Wipe',
   ja: 'ワイプ',
   cn: '团灭',
-  tc: '團滅',
   ko: '파티 전멸',
+  tc: '團滅',
 };
 
 const earlyPullText = {
@@ -64,8 +64,8 @@ const earlyPullText = {
   fr: 'early pull',
   ja: 'タゲ取り早い',
   cn: '抢开',
-  tc: '搶開',
   ko: '풀링 빠름',
+  tc: '搶開',
 };
 
 const latePullText = {
@@ -74,8 +74,8 @@ const latePullText = {
   fr: 'late pull',
   ja: 'タゲ取り遅い',
   cn: '晚开',
-  tc: '晚開',
   ko: '풀링 늦음',
+  tc: '晚開',
 };
 
 // Internal trigger id for early pull

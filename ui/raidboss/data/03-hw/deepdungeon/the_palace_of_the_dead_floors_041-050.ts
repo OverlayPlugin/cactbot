@@ -114,6 +114,16 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Edda Blackbosom': '漆黑的艾坦',
+        'Nightmare Bhoot': '惡夢浮靈',
+        'Nightmare Manticore': '惡夢蠍尾獅',
+        'Nightmare Persona': '惡夢假面',
+        'Nightmare Wraith': '惡夢幽靈',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Edda Blackbosom': '칠흑의 에다',

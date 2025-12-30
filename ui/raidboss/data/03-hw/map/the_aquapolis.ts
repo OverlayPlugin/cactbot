@@ -10,8 +10,8 @@ const aquapolisOutputStrings = {
     fr: '${name} vient d\'apparaitre !',
     ja: '${name} 出現！',
     cn: '已生成 ${name}!',
-    tc: '已生成 ${name}!',
     ko: '${name} 등장!',
+    tc: '已生成 ${name}!',
   },
 } as const;
 

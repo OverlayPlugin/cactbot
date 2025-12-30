@@ -111,8 +111,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez les mains',
           ja: '手の誘導',
           cn: '引导手',
-          tc: '引導手',
           ko: '손 유도',
+          tc: '引導手',
         },
       },
     },
@@ -134,8 +134,8 @@ const triggerSet: TriggerSet<Data> = {
           de: '${mid} => ${side}',
           ja: '${mid} => ${side}',
           cn: '${mid} => ${side}',
-          tc: '${mid} => ${side}',
           ko: '${mid} => ${side}',
+          tc: '${mid} => ${side}',
         },
       },
     },
@@ -156,8 +156,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Légèrement Ouest => Dispersion',
           ja: '光 左 => 散開',
           cn: '光左 => 分散',
-          tc: '光左 => 分散',
           ko: '빛 서쪽 => 산개',
+          tc: '光左 => 分散',
         },
         lightEast: {
           en: 'Light East => Spread',
@@ -165,8 +165,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Légèrement Est => Dispersion',
           ja: '光 右 => 散開',
           cn: '光右 => 分散',
-          tc: '光右 => 分散',
           ko: '빛 동쪽 => 산개',
+          tc: '光右 => 分散',
         },
       },
     },
@@ -215,8 +215,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir} enregistré',
           ja: '次は ${dir}',
           cn: '储存 ${dir}',
-          tc: '儲存 ${dir}',
           ko: '${dir} 저장',
+          tc: '儲存 ${dir}',
         },
       },
     },
@@ -250,8 +250,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir} + ${mech}',
           ja: '${dir} + ${mech}',
           cn: '${dir} + ${mech}',
-          tc: '${dir} + ${mech}',
           ko: '${dir} + ${mech}',
+          tc: '${dir} + ${mech}',
         },
       },
     },
@@ -268,8 +268,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Déposez => Prenez les mains',
           ja: '手を外に捨てる => 次の手を誘導',
           cn: '放手 => 引导手',
-          tc: '放手 => 引導手',
           ko: '손 설치 => 손 유도',
+          tc: '放手 => 引導手',
         },
       },
     },
@@ -303,8 +303,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Déposez les puddles => Intercardinaux',
           ja: '中央 => ×字散開',
           cn: '引导黄圈 => 叉字',
-          tc: '引導黃圈 => 叉字',
           ko: '장판 유도 => X자',
+          tc: '引導黃圈 => 叉字',
         },
       },
     },
@@ -351,8 +351,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Guérisez la lenteur',
           ja: 'スロウを解除',
           cn: '康复减速',
-          tc: '康復減速',
           ko: '둔화 해제',
+          tc: '康復減速',
         },
       },
     },
@@ -421,8 +421,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne du milieu',
           ja: '中央列',
           cn: '中间行',
-          tc: '中間行',
           ko: '가운데 줄',
+          tc: '中間行',
         },
         north: {
           en: 'North Row',
@@ -430,8 +430,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne au Nord',
           ja: '北列（上）',
           cn: '第一行',
-          tc: '第一行',
           ko: '북쪽 줄',
+          tc: '第一行',
         },
         south: {
           en: 'South Row',
@@ -439,8 +439,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ligne au Sud',
           ja: '南列（下）',
           cn: '第三行',
-          tc: '第三行',
           ko: '남쪽 줄',
+          tc: '第三行',
         },
         text: {
           en: '${row} + ${spread}',
@@ -448,8 +448,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${row} + ${spread}',
           ja: '${row} + ${spread}',
           cn: '${row} + ${spread}',
-          tc: '${row} + ${spread}',
           ko: '${row} + ${spread}',
+          tc: '${row} + ${spread}',
         },
       },
     },
@@ -466,8 +466,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Attirez la main => Évitez',
           ja: '手を誘導 => 回避',
           cn: '引导手 => 躲开',
-          tc: '引導手 => 躲開',
           ko: '손 유도 => 피하기',
+          tc: '引導手 => 躲開',
         },
       },
     },
@@ -570,8 +570,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           ja: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           cn: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
-          tc: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
           ko: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
+          tc: '${dir1} => ${dir2} => ${dir3} => ${dir4} + ${mech}',
         },
       },
     },
@@ -659,8 +659,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Attendez la main => ${dir}',
           ja: '手を待つ => ${dir}',
           cn: '等手 => ${dir}',
-          tc: '等手 => ${dir}',
           ko: '손 기다리기 => ${dir}',
+          tc: '等手 => ${dir}',
         },
         lean: {
           en: '${dir}, lean ${to}',
@@ -668,8 +668,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir}, vers ${to}',
           ja: '${dir}, ${to}に寄る',
           cn: '${dir}, 靠 ${to}',
-          tc: '${dir}, 靠 ${to}',
           ko: '${dir}, ${to}쪽으로 기대기',
+          tc: '${dir}, 靠 ${to}',
         },
         dodge: {
           en: '${dir} => Dodge Hand',
@@ -677,8 +677,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir} => Évitez la main',
           ja: '${dir} => 手を避ける',
           cn: '${dir} => 躲手',
-          tc: '${dir} => 躲手',
           ko: '${dir} => 손 피하기',
+          tc: '${dir} => 躲手',
         },
       },
     },
@@ -694,8 +694,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Préposition pour les tours',
           ja: '最初の塔踏み位置へ移動',
           cn: '多人塔预站位',
-          tc: '多人塔預站位',
           ko: '다인 탑 미리 자리잡기',
+          tc: '多人塔預站位',
         },
       },
     },
@@ -727,8 +727,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez la prochaine tour',
           ja: '次の塔を踏む',
           cn: '踩下一个塔',
-          tc: '踩下一個塔',
           ko: '다음 탑 밟기',
+          tc: '踩下一個塔',
         },
         tankBuster: Outputs.tankBuster,
       },
@@ -907,6 +907,53 @@ const triggerSet: TriggerSet<Data> = {
         'The Fourth Season': '四重青之波潮',
         'The Second Season': '二重青之波潮',
         'Twofold Blight': '青之二重波',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Azure Aether': '', // FIXME '青之魂块'
+        // 'Beckoning Hands': '', // FIXME '邀死之手'
+        // 'Icy Hands': '', // FIXME '招死之手'
+        // 'Necron': '', // FIXME '永远之暗'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(intercards\\)': '', // FIXME '(斜角)'
+        // '\\(line\\)': '', // FIXME '(直线)'
+        // '\\(lines\\)': '', // FIXME '(直线)'
+        // '\\(puddle\\)': '', // FIXME '(圈)'
+        // '\\(puddles\\)': '', // FIXME '(圈)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(tower\\)': '', // FIXME '(塔)'
+        // 'Aetherblight': '', // FIXME '青之波动'
+        // 'Blue Shockwave': '', // FIXME '青之冲击'
+        // 'Choking Grasp': '', // FIXME '压溃'
+        // 'Circle of Lives': '', // FIXME '青之环波'
+        // 'Cold Grip': '', // FIXME '暗之死腕'
+        // 'Crop Rotation': '', // FIXME '灵魂轮转'
+        // 'Darkness of Eternity': '', // FIXME '永远之暗'
+        'Existential Dread': '萬死的憎惡',
+        // 'Fear of Death': '', // FIXME '死之恐惧'
+        // 'Fourfold Blight': '', // FIXME '青之四重波'
+        'Grand Cross': '大十字',
+        // 'Inevitability': '', // FIXME '死之泛滥'
+        // 'Mass Macabre': '', // FIXME '群体恐慌'
+        // 'Memento Mori': '', // FIXME '死亡警告'
+        // 'Muted Struggle': '', // FIXME '击溃'
+        // 'Neutron Ring': '', // FIXME '中子环'
+        // 'Relentless Reaping': '', // FIXME '青之连魂'
+        'Shock(?!wave)': '放電',
+        // '(?<!Blue )Shockwave': '', // FIXME '青之冲击'
+        'Smite of Gloom': '黑暗一擊',
+        // 'Soul Reaping': '', // FIXME '青魂'
+        // 'Specter of Death': '', // FIXME '黑暗巨腕'
+        // 'The End\'s Embrace': '', // FIXME '引导之翼'
+        // 'The Fourth Season': '', // FIXME '四重青之波潮'
+        // 'The Second Season': '', // FIXME '二重青之波潮'
+        // 'Twofold Blight': '', // FIXME '青之二重波'
       },
     },
     {

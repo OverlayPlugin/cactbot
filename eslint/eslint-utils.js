@@ -50,7 +50,31 @@ const generateValidObject = (orderList, properties, sourceCode) => {
   return `{\n${sortedPropertiesText},\n${' '.repeat(properties[0].loc.start.column - 2)}}`;
 };
 
+const getUnknownLocales = (orderList, properties) => {
+  const unknownLocales = [];
+
+  const hasValidLocale = properties.some((prop) => {
+    return prop.key && orderList.includes(prop.key.name);
+  });
+
+  if (!hasValidLocale) {
+    return unknownLocales;
+  }
+
+  properties.forEach((prop) => {
+    if (prop.key && !orderList.includes(prop.key.name)) {
+      unknownLocales.push({
+        locale: prop.key.name,
+        node: prop.key,
+      });
+    }
+  });
+
+  return unknownLocales;
+};
+
 module.exports = {
   generateValidList,
   generateValidObject,
+  getUnknownLocales,
 };

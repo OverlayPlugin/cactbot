@@ -489,8 +489,8 @@ outputStrings: {
     fr: 'Tank buster',
     ja: 'タンクバスター',
     cn: '坦克死刑',
-    tc: '坦克死刑',
     ko: '탱버',
+    tc: '坦克死刑',
   },
   onTarget: {
     en: 'Tank Buster on ${name}',
@@ -498,8 +498,8 @@ outputStrings: {
     fr: 'Tank buster sur ${name}',
     ja: '${name}にタンクバスター',
     cn: '死刑 点 ${name}',
-    tc: '死刑 點 ${name}',
     ko: '"${name}" 탱버',
+    tc: '死刑 點 ${name}',
   },
 },
 ```
@@ -664,8 +664,8 @@ This is far less verbose than:
     fr: 'Grosse AoE !',
     ja: '大ダメージAoE',
     cn: '大AoE伤害！',
-    tc: '大AoE傷害！',
     ko: '강한 전체 공격!',
+    tc: '大AoE傷害！',
   },
 },
 ```
@@ -719,8 +719,8 @@ A simple example using `outputStrings` and `Outputs` as below:
       fr: 'Évitez le laser',
       ja: 'レーザー注意',
       cn: '躲避击退激光',
-      tc: '躲避擊退雷射',
       ko: '레이저 피하기',
+      tc: '躲避擊退雷射',
     },
   },
 },
@@ -773,6 +773,7 @@ This report includes links to all of the missing translations:
 - [missing_translations_ja.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_ja.html)
 - [missing_translations_cn.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_cn.html)
 - [missing_translations_ko.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_ko.html)
+- [missing_translations_tc.html](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_tc.html)
 
 You can run `npm run util` and select find translations using the ui.
 You can also run `npm run util -- findTranslations -f . -l fr`
@@ -793,7 +794,7 @@ Most bits of code in cactbot use `LocaleText` for any piece of text
 that needs to be translated.
 
 This ends up looking like an object with keys for each language,
-in the order `en`, `de`, `fr`, `ja`, `cn`, `ko`.
+in the order `en`, `de`, `fr`, `ja`, `cn`, `ko`, `tc`.
 Tests will complain if you put them in a different order.
 This order is "English first", then "alphabetical for the international version",
 and finally "alphabetical for the other regional versions".
@@ -812,8 +813,8 @@ This example corresponds to [code](https://github.com/OverlayPlugin/cactbot/blob
             de: 'DD-Turm',
             fr: 'Tour DPS',
             cn: 'DPS塔',
-            tc: 'DPS塔',
             ko: '딜러 장판',
+            tc: 'DPS塔',
           },
 ```
 

@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.36.0",
-  "releaseSummary": "7.4 resources, more PT, more OC, Forked Tower, Arkveld timelines, i18n",
-  "releaseInDraft": "false",
+  "version": "0.36.1",
+  "releaseSummary": "Doomtrain EX, M9N, M11N, M12N, Tsukuyomi Unreal, Mistwake, i18n",
+  "releaseInDraft": "true",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",

@@ -64,8 +64,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             de: 'Verbindung nicht langgezogen',
             fr: 'Lien non-étiré',
             cn: '连线未拉至变色',
-            tc: '連線未拉至變色',
             ko: '충분히 멀어지지 않음',
+            tc: '連線未拉至變色',
           },
         };
       },

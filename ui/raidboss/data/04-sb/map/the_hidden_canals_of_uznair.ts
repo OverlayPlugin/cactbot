@@ -10,8 +10,8 @@ const uznairOutputStrings = {
     de: '${name} erscheint!',
     fr: '${name} apparaît !',
     cn: '已生成 ${name}!',
-    tc: '已生成 ${name}!',
     ko: '${name} 등장!',
+    tc: '已生成 ${name}!',
   },
 } as const;
 
@@ -61,8 +61,8 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Kanal-Mandragora erscheinen, in Reihenfolge besiegen!',
           fr: 'Les mandragores du canal apparaissent, tuez les dans l\'ordre',
           cn: '已生成 运河蔓德拉战队, 依次击杀!',
-          tc: '已生成 運河蔓德拉戰隊, 依次擊殺!',
           ko: '만드라즈 등장, 순서대로 잡기!',
+          tc: '已生成 運河蔓德拉戰隊, 依次擊殺!',
         },
       },
     },

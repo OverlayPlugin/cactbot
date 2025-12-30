@@ -96,8 +96,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package',
           ja: '集合',
           cn: '分组分摊',
-          tc: '分組分攤',
           ko: '쉐어',
+          tc: '分組分攤',
         },
       },
     },
@@ -201,6 +201,32 @@ const triggerSet: TriggerSet<Data> = {
         'Loveseeker': '求爱',
         'Splash of Venom': '毒液雨',
         'Tempting Twist': '甜心旋风',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Honey B. Lovely': '', // FIXME '蜂蜂小甜心'
+      },
+      'replaceText': {
+        // 'Alarm Pheromones': '', // FIXME '告警信息素'
+        // 'Blinding Love': '', // FIXME '盲目的爱'
+        // 'Blow Kiss': '', // FIXME '飞吻'
+        // 'Call Me Honey': '', // FIXME '甜言蜜语'
+        'Drop of Venom': '毒液滴落',
+        'Fracture': '炸裂',
+        // 'Heart-struck': '', // FIXME '心震'
+        // 'Heartsick': '', // FIXME '心病'
+        // 'Heartsore': '', // FIXME '心伤'
+        // 'Honey B. Finale': '', // FIXME '蜂蜂落幕曲'
+        // 'Honey B. Live': '', // FIXME '蜂蜂演唱会'
+        // 'Honey Beeline': '', // FIXME '甜心烈风'
+        // 'Honeyed Breeze': '', // FIXME '甜心突风'
+        // 'Love Me Tender': '', // FIXME '温柔地爱我'
+        // 'Loveseeker': '', // FIXME '求爱'
+        // 'Splash of Venom': '', // FIXME '毒液雨'
+        // 'Tempting Twist': '', // FIXME '甜心旋风'
       },
     },
     {

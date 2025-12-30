@@ -45,8 +45,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Packez-vous au centre pour les plongeons',
           ja: '中央待機、メガフレアダイブを待つ',
           cn: '中间集合等待俯冲',
-          tc: '中間集合等待俯衝',
           ko: '기가플레어 집합',
+          tc: '中間集合等待俯衝',
         },
       },
     },
@@ -70,8 +70,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Compression sur ${player}',
           ja: '${player}にフラッテン',
           cn: '死刑点${player}',
-          tc: '死刑點${player}',
           ko: '짓뭉개기 ${player}',
+          tc: '死刑點${player}',
         },
         flattenOnYou: {
           en: 'Flatten on YOU',
@@ -79,8 +79,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Compression sur VOUS',
           ja: '自分にフラッテン',
           cn: '死刑',
-          tc: '死刑',
           ko: '짓뭉개기',
+          tc: '死刑',
         },
       },
     },
@@ -97,8 +97,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'MégaBrasier, Packez-vous',
           ja: 'メガフレア、集合',
           cn: '百万核爆集合',
-          tc: '百萬核爆集合',
           ko: '메가플레어 쉐어',
+          tc: '百萬核爆集合',
         },
       },
     },
@@ -122,8 +122,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Liens de tempête sur VOUS',
           ja: '自分にテンペストウィング',
           cn: '风圈点名',
-          tc: '風圈點名',
           ko: '폭풍 줄 대상자',
+          tc: '風圈點名',
         },
       },
     },
@@ -146,8 +146,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Akh Morn sur ${player}',
           ja: '${player}にアク・モーン',
           cn: '死亡轮回点${player}',
-          tc: '死亡輪迴點${player}',
           ko: '"${player}" 아크몬',
+          tc: '死亡輪迴點${player}',
         },
         akhMornOnYou: {
           en: 'Akh Morn on YOU',
@@ -155,8 +155,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Akh Morn sur VOUS',
           ja: '自分にアク・モーン',
           cn: '死亡轮回点名',
-          tc: '死亡輪迴點名',
           ko: '아크몬 대상자',
+          tc: '死亡輪迴點名',
         },
       },
     },
@@ -305,6 +305,45 @@ const triggerSet: TriggerSet<Data> = {
         'Tempest Wing Tethers': '风暴之翼连线',
         'Tempest Wing(?! Tethers)': '风暴之翼',
         'Teraflare': '万亿核爆',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bahamut Prime': '至尊巴哈姆特',
+        'The Storm of Meracydia': '美拉西迪亞的怒雨',
+      },
+      'replaceText': {
+        'Akh Morn': '死亡輪迴',
+        // '(?<! )Blood Add': '', // FIXME '血仇出现'
+        // 'Blood, Pain Adds': '', // FIXME '血仇, 苦痛出现'
+        // '1x Dark Aether Orb': '', // FIXME '1x暗以太'
+        // 'Dark Aether Orbs': '', // FIXME '暗以太'
+        'Double Dive': '雙重俯衝',
+        // 'Earth Shaker Marker': '', // FIXME '大地摇动点名'
+        'Earth Shaker(?! Marker)': '大地搖動',
+        'Flare Breath': '火光吐息',
+        'Flare Star': '耀星',
+        'Flatten': '夷為平地',
+        'Gigaflare': '十億火光',
+        // '2x Gust Adds': '', // FIXME '2x悲风出现'
+        // '3x Gust Adds': '', // FIXME '3x悲风出现'
+        'MF Pepperoni': '百萬火光',
+        'MF Share': '百萬火光',
+        'MF Spread': '百萬火光',
+        'MF Tower': '百萬火光',
+        'Megaflare Dive': '百萬火光衝',
+        'Megaflare(?! Dive)': '百萬火光',
+        // '(?<! )Pain Add': '', // FIXME '苦痛出现'
+        'Rage Of Bahamut': '龍神咆哮',
+        // 'Shadow Add': '', // FIXME '怨影出现'
+        // '(?<! )Sin Add': '', // FIXME '罪恶出现'
+        // '2x Sin Adds': '', // FIXME '2x罪恶出现'
+        // 'Storm Add': '', // FIXME '怒雨出现'
+        // 'Tempest Wing Tethers': '', // FIXME '风暴之翼连线'
+        'Tempest Wing(?! Tethers)': '風暴之翼',
+        'Teraflare': '億萬火光',
       },
     },
     {

@@ -44,8 +44,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Brisez la geôle sur ${player}',
           ja: '${player}にジェイル',
           cn: '石牢点${player}',
-          tc: '石牢點${player}',
           ko: '${player} 돌감옥 해제',
+          tc: '石牢點${player}',
         },
         gaolOnYou: {
           en: 'Gaol on YOU',
@@ -53,8 +53,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Geôle sur VOUS',
           ja: '自分にジェイル',
           cn: '石牢点名',
-          tc: '石牢點名',
           ko: '돌감옥 대상자',
+          tc: '石牢點名',
         },
       },
     },
@@ -122,6 +122,22 @@ const triggerSet: TriggerSet<Data> = {
         'Rock Throw': '花岗岩牢狱',
         'Tumult': '怒震',
         'Weight Of The Land': '大地之重',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Earthen Fury': '大地之怒',
+        'Titan': '泰坦',
+      },
+      'replaceText': {
+        'Earthen Fury': '大地之怒',
+        'Geocrush': '大地撞擊',
+        'Landslide': '地裂',
+        'Rock Buster': '岩石破壞者',
+        'Rock Throw': '花崗岩牢獄',
+        'Tumult': '激震',
+        'Weight Of The Land': '大地重壓',
       },
     },
     {

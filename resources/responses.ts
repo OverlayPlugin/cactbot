@@ -3,7 +3,7 @@
 //   id: 'Some tankbuster',
 //   regex: Regexes.startsUsing({source: 'Ye Olde Bosse', id: '666'}),
 //   condition: Conditions.caresAboutMagical(data),
-//   response: Responses.tankbuster(),
+//   response: Responses.tankBuster(),
 // },
 //
 // Note: Breaking out the condition like this lets people override it if they
@@ -328,6 +328,7 @@ export const Responses = {
   bigAoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.bigAoe),
   bleedAoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.bleedAoe),
   spread: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.spread),
+  rolePositions: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.rolePositions),
   protean: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.protean),
   // for stack marker situations.
   stackMarker: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.stackMarker),
@@ -351,6 +352,7 @@ export const Responses = {
       },
     };
   },
+  stackInTower: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.stackInTower),
   stackMiddle: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.stackMiddle),
   doritoStack: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.doritoStack),
   spreadThenStack: (sev?: Severity) => {

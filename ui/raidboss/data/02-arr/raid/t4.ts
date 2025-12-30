@@ -23,8 +23,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'LOS Percée gravitationelle',
           ja: 'グラビデカノン',
           cn: '死刑',
-          tc: '死刑',
           ko: '중력포',
+          tc: '死刑',
         },
       },
     },
@@ -41,8 +41,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'LOS Vérole',
           ja: 'ポックス',
           cn: '血量上限降低',
-          tc: '血量上限降低',
           ko: '두창',
+          tc: '血量上限降低',
         },
       },
     },
@@ -59,8 +59,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Magique sur Soldat, Physique sur Chevalier',
           ja: '魔法はソルジャー、物理はナイト',
           cn: '法系打士兵，物理打骑士',
-          tc: '法系打士兵，物理打騎士',
           ko: '병사 마법공격, 기사 물리공격',
+          tc: '法系打士兵，物理打騎士',
         },
       },
     },
@@ -136,6 +136,25 @@ const triggerSet: TriggerSet<Data> = {
         'Knight': '亚拉戈发条骑士',
         'Rook': '转盘堡',
         'Soldier': '亚拉戈发条士兵',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Clockwork Bug': '亞拉戈發條蟲',
+        'Clockwork Dreadnaught': '恐慌裝甲',
+        'Clockwork Knight': '亞拉戈發條騎士',
+        'Drive Cylinder': '隔離壁',
+        'Spinner-rook': '轉盤堡',
+      },
+      'replaceText': {
+        'Bug': '故障蟲',
+        // 'Dreadnaught': '', // FIXME '恐慌装甲'
+        'Emergency Override': '緊急超馳控制',
+        // 'Knight': '', // FIXME '亚拉戈发条骑士'
+        // 'Rook': '', // FIXME '转盘堡'
+        // 'Soldier': '', // FIXME '亚拉戈发条士兵'
       },
     },
     {

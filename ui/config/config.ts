@@ -42,8 +42,8 @@ const kReloadText = {
   fr: 'Afin d\'appliquer les modifications, il faut recharger l\'overlay Cactbot.',
   ja: '設定を有効にする為、Cactbotオーバーレイを再読み込みしてください',
   cn: '要应用配置更改，请重新加载cactbot悬浮窗。',
-  tc: '要應用配置更改，請重新載入cactbot懸浮窗。',
   ko: '변경사항을 적용하려면, 오버레이를 새로고침 하십시오.',
+  tc: '要應用配置更改，請重新載入cactbot懸浮窗。',
 };
 
 // Text in the butter bar reload button.
@@ -53,8 +53,8 @@ const kReloadButtonText = {
   fr: 'Recharger',
   ja: '再読み込み',
   cn: '重新加载',
-  tc: '重新載入',
   ko: '새로고침',
+  tc: '重新載入',
 };
 
 // Text on the directory choosing button.
@@ -64,8 +64,8 @@ const kDirectoryChooseButtonText = {
   fr: 'Choix du répertoire',
   ja: 'ディレクトリを選択',
   cn: '选择目录',
-  tc: '選擇目錄',
   ko: '디렉토리 선택',
+  tc: '選擇目錄',
 };
 
 // What to show when a directory hasn't been chosen.
@@ -75,8 +75,8 @@ const kDirectoryDefaultText = {
   fr: '(Défaut)',
   ja: '(初期設定)',
   cn: '(默认)',
-  tc: '(默認)',
   ko: '(기본)',
+  tc: '(默認)',
 };
 
 // Text in the trigger search placeholder.
@@ -120,8 +120,8 @@ export const kPrefixToCategory = {
     fr: 'Général Triggers',
     ja: '汎用',
     cn: '通用触发器',
-    tc: '通用觸發器',
     ko: '공용 트리거',
+    tc: '通用觸發器',
   },
   '02-arr': {
     en: 'A Realm Reborn (ARR 2.x)',
@@ -129,8 +129,8 @@ export const kPrefixToCategory = {
     fr: 'A Realm Reborn (ARR 2.x)',
     ja: '新生エオルゼア (2.x)',
     cn: '重生之境 (2.x)',
-    tc: '新生艾奧傑亞 (2.x)',
     ko: '신생 에오르제아 (2.x)',
+    tc: '新生艾奧傑亞 (2.x)',
   },
   '03-hw': {
     en: 'Heavensward (HW 3.x)',
@@ -138,8 +138,8 @@ export const kPrefixToCategory = {
     fr: 'Heavensward (HW 3.x)',
     ja: '蒼天のイシュガルド (3.x)',
     cn: '苍穹之禁城 (3.x)',
-    tc: '蒼天伊修加爾德 (3.x)',
     ko: '창천의 이슈가르드 (3.x)',
+    tc: '蒼天伊修加爾德 (3.x)',
   },
   '04-sb': {
     en: 'Stormblood (SB 4.x)',
@@ -147,8 +147,8 @@ export const kPrefixToCategory = {
     fr: 'Stormblood (SB 4.x)',
     ja: '紅蓮のリベレーター (4.x)',
     cn: '红莲之狂潮 (4.x)',
-    tc: '紅蓮解放者 (4.x)',
     ko: '홍련의 해방자 (4.x)',
+    tc: '紅蓮解放者 (4.x)',
   },
   '05-shb': {
     en: 'Shadowbringers (ShB 5.x)',
@@ -156,8 +156,8 @@ export const kPrefixToCategory = {
     fr: 'Shadowbringers (ShB 5.x)',
     ja: '漆黒のヴィランズ (5.x)',
     cn: '暗影之逆焰 (5.x)',
-    tc: '漆黑反叛者 (5.x)',
     ko: '칠흑의 반역자 (5.x)',
+    tc: '漆黑反叛者 (5.x)',
   },
   '06-ew': {
     en: 'Endwalker (EW 6.x)',
@@ -165,8 +165,8 @@ export const kPrefixToCategory = {
     fr: 'Endwalker (EW 6.x)',
     ja: '暁月のフィナーレ (6.x)',
     cn: '晓月之终途 (6.x)',
-    tc: '曉月之終途 (6.x)',
     ko: '효월의 종언 (6.x)',
+    tc: '曉月之終途 (6.x)',
   },
   '07-dt': {
     en: 'Dawntrail (DT 7.x)',
@@ -174,8 +174,8 @@ export const kPrefixToCategory = {
     fr: 'Dawntrail (DT 7.x)',
     ja: '黄金のレガシー (7.x)',
     cn: '金曦之遗辉 (7.x)',
-    tc: '黃金遺產 (7.x)',
     ko: '황금의 유산 (7.x)',
+    tc: '黃金遺產 (7.x)',
   },
   'user': {
     en: 'User Triggers',
@@ -183,8 +183,8 @@ export const kPrefixToCategory = {
     fr: 'Triggers personnalisés',
     ja: 'ユーザートリガー',
     cn: '自定义触发器',
-    tc: '自訂觸發器',
     ko: '커스텀 트리거',
+    tc: '自訂觸發器',
   },
 };
 
@@ -196,8 +196,8 @@ export const kDirectoryToCategory = {
     fr: 'Raid en Alliance',
     ja: 'アライアンスレイド',
     cn: '团队任务',
-    tc: '團隊任務',
     ko: '연합 레이드',
+    tc: '團隊任務',
   },
   dungeon: {
     en: 'Dungeon',
@@ -205,8 +205,8 @@ export const kDirectoryToCategory = {
     fr: 'Donjon',
     ja: 'ダンジョン',
     cn: '迷宫挑战',
-    tc: '迷宮挑戰',
     ko: '던전',
+    tc: '迷宮挑戰',
   },
   eureka: {
     en: 'Adventuring Forays',
@@ -214,8 +214,8 @@ export const kDirectoryToCategory = {
     fr: 'Missions d\'exploration',
     ja: '特殊フィールド探索',
     cn: '特殊场景探索',
-    tc: '特殊場景探索',
     ko: '특수 필드 임무',
+    tc: '特殊場景探索',
   },
   raid: {
     en: 'Raid',
@@ -223,8 +223,8 @@ export const kDirectoryToCategory = {
     fr: 'Raid',
     ja: 'レイド',
     cn: '大型任务',
-    tc: '大型任務',
     ko: '레이드',
+    tc: '大型任務',
   },
   pvp: {
     en: 'PVP',
@@ -232,8 +232,8 @@ export const kDirectoryToCategory = {
     fr: 'JcJ',
     ja: 'PvP',
     cn: 'PvP',
-    tc: 'PvP',
     ko: 'PvP',
+    tc: 'PvP',
   },
   trial: {
     en: 'Trial',
@@ -241,8 +241,8 @@ export const kDirectoryToCategory = {
     fr: 'Défi',
     ja: '討伐・討滅戦',
     cn: '讨伐歼灭战',
-    tc: '討伐殲滅戰',
     ko: '토벌전',
+    tc: '討伐殲滅戰',
   },
   ultimate: {
     en: 'Ultimate',
@@ -250,8 +250,8 @@ export const kDirectoryToCategory = {
     fr: 'Raid fatal',
     ja: '絶シリーズ',
     cn: '绝境战',
-    tc: '絕境戰',
     ko: '절 난이도',
+    tc: '絕境戰',
   },
   hunts: {
     en: 'Hunts & FATEs',
@@ -259,8 +259,8 @@ export const kDirectoryToCategory = {
     fr: 'Chasse & Aléas',
     ja: 'モブハント & フェイト',
     cn: '怪物狩猎 & 危命任务',
-    tc: '怪物狩獵 & 危命任務',
     ko: '마물 & 돌발',
+    tc: '怪物狩獵 & 危命任務',
   },
   map: {
     en: 'Treasure Map',
@@ -268,8 +268,8 @@ export const kDirectoryToCategory = {
     fr: 'Cartes au trésor',
     ja: '宝箱地図',
     cn: '宝物地图',
-    tc: '寶物地圖',
     ko: '보물 지도',
+    tc: '寶物地圖',
   },
   deepdungeon: {
     en: 'Deep Dungeon',
@@ -277,8 +277,8 @@ export const kDirectoryToCategory = {
     fr: 'Donjon sans fond',
     ja: 'ディープダンジョン',
     cn: '深层迷宫',
-    tc: '深層迷宮',
     ko: '딥 던전',
+    tc: '深層迷宮',
   },
 };
 

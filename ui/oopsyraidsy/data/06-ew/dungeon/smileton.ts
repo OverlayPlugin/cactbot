@@ -57,8 +57,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: `${matches.effect} x${matches.count}`,
             ja: `${matches.effect} x${matches.count}`,
             cn: `${matches.effect} x${matches.count}`,
-            tc: `${matches.effect} x${matches.count}`,
             ko: `${matches.effect} x${matches.count}`,
+            tc: `${matches.effect} x${matches.count}`,
           },
         };
       },
