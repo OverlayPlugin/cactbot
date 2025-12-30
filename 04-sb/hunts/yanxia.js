@@ -6,8 +6,8 @@ Options.Triggers.push({
     de: 'A Rang Hohe Jagd: Nur Angada',
     fr: 'Chasse Rang A : Angada uniquement',
     cn: '只有A级狩猎怪: 安迦达',
-    tc: '只有A級狩獵怪: 安迦達',
     ko: 'A급 마물: 앙가다만',
+    tc: '只有A級狩獵怪: 安迦達',
   },
   triggers: [
     {

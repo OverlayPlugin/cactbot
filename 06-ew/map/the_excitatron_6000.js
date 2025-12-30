@@ -6,8 +6,8 @@ const excitatronOutputStrings = {
     fr: '${name} apparait !',
     ja: '${name} 現れる！',
     cn: '已生成 ${name}!',
-    tc: '已生成 ${name}!',
     ko: '${name} 등장!',
+    tc: '已生成 ${name}!',
   },
 };
 const excitingMandragorasIds = [
@@ -53,8 +53,8 @@ Options.Triggers.push({
           fr: 'Les mandragores apparaissent, tuez-les dans l\'ordre',
           ja: 'マンドラゴラ！順番に倒して！',
           cn: '已生成 惊奇蔓德拉战队, 依次击杀!',
-          tc: '已生成 驚奇蔓德拉戰隊, 依次擊殺!',
           ko: '만드라즈 등장, 순서대로 잡기',
+          tc: '已生成 驚奇蔓德拉戰隊, 依次擊殺!',
         },
       },
     },
