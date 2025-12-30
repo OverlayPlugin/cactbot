@@ -491,7 +491,7 @@ Options.Triggers.push({
           ja: '自分に突進',
           cn: '奶枪点名',
           ko: '돌진 대상자',
-          tc: '奶槍點名',
+          tc: '補槍點名',
         },
         spearMainTank: {
           en: 'Wild Charge: STAY OUT',
@@ -500,7 +500,7 @@ Options.Triggers.push({
           ja: '突進: そのままヘイト取り',
           cn: '奶枪: 保持远离',
           ko: '돌진: 밖으로',
-          tc: '奶槍: 保持遠離',
+          tc: '補槍: 保持遠離',
         },
         spearOther: {
           en: 'Wild Charge: Intercept ${spearTarget}',
@@ -509,7 +509,7 @@ Options.Triggers.push({
           ja: '突進: ${spearTarget}のカバー',
           cn: '奶枪: 挡住 ${spearTarget}',
           ko: '돌진: ${spearTarget} 앞으로',
-          tc: '奶槍: 擋住 ${spearTarget}',
+          tc: '補槍: 擋住 ${spearTarget}',
         },
       },
     },
@@ -824,7 +824,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Comet Circle': '星屑聖紋',
         'King Thordan': '騎神托爾丹',
@@ -843,8 +842,8 @@ Options.Triggers.push({
         'Ser Zephirin': '聖騎士澤菲蘭',
       },
       'replaceText': {
-        // '--chains appear--': '', // FIXME '--锁链出现--'
-        // '--towers spawn--': '', // FIXME '--塔生成--'
+        '--chains appear--': '--鎖鏈出現--',
+        '--towers spawn--': '--塔出現--',
         'Absolute Conviction': '絕對信仰',
         'Ancient Quaga': '古代爆震',
         'Ascalon\'s Mercy': '阿斯卡隆之仁',

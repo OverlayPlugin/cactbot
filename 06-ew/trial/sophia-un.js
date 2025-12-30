@@ -38,7 +38,7 @@ const tiltOutputStrings = {
     ja: '東へ (大きい斜め)',
     cn: '去右边（大倾斜）',
     ko: '동쪽으로 (크게 기울어짐)',
-    tc: '去右邊（大傾斜）',
+    tc: '去東邊（大傾斜）',
   },
   goEastSoftTilt: {
     en: 'Go East (Soft Tilt)',
@@ -47,7 +47,7 @@ const tiltOutputStrings = {
     ja: '東へ (小さい斜め)',
     cn: '去右边（小倾斜）',
     ko: '동쪽으로 (작게 기울어짐)',
-    tc: '去右邊（小傾斜）',
+    tc: '去東邊（小傾斜）',
   },
   goWestHardTilt: {
     en: 'Go West (Hard Tilt)',
@@ -56,7 +56,7 @@ const tiltOutputStrings = {
     ja: '西へ (大きい斜め)',
     cn: '去左边（大倾斜）',
     ko: '서쪽으로 (크게 기울어짐)',
-    tc: '去左邊（大傾斜）',
+    tc: '去西邊（大傾斜）',
   },
   goWestSoftTilt: {
     en: 'Go West (Soft Tilt)',
@@ -65,7 +65,7 @@ const tiltOutputStrings = {
     ja: '西へ (小さい斜め)',
     cn: '去左边（小倾斜）',
     ko: '서쪽으로 (작게 기울어짐)',
-    tc: '去左邊（小傾斜）',
+    tc: '去西邊（小傾斜）',
   },
 };
 Options.Triggers.push({
@@ -221,7 +221,7 @@ Options.Triggers.push({
           ja: '${player}に猛突進',
           cn: '冲锋点${player}',
           ko: '${player} 에게 맹돌진',
-          tc: '衝鋒點${player}',
+          tc: '衝鋒點 ${player}',
         },
       },
     },
@@ -671,7 +671,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aion Teleos': '移湧',
         'Barbelo': '芭碧蘿',
@@ -681,10 +680,10 @@ Options.Triggers.push({
         'The Third Demiurge': '信徒其三',
       },
       'replaceText': {
-        // '\\?': '', // FIXME ' ?'
-        // '\\(Meteor Detonate\\)': '', // FIXME '(陨石爆炸)'
-        // '\\(Snapshot\\)': '', // FIXME '(快照)'
-        // '\\(Tilt\\)': '', // FIXME '(倾斜)'
+        '\\?': ' ?',
+        '\\(Meteor Detonate\\)': '(隕石爆炸)',
+        '\\(Snapshot\\)': '(快照)',
+        '\\(Tilt\\)': '(傾斜)',
         'Aero III': '大勁風',
         'Arms of Wisdom': '睿智之秤',
         'Cintamani': '如意寶珠',
@@ -700,8 +699,8 @@ Options.Triggers.push({
         'Quasar': '類星體',
         'Ring of Pain': '痛苦環刺',
         'The Scales Of Wisdom': '睿智之天平',
-        // 'Thunder II\\/III': '', // FIXME '震雷/暴雷'
-        // 'Thunder II(?!(?:I|\\/))': '', // FIXME '震雷'
+        'Thunder II\\/III': '中雷電/大雷電',
+        'Thunder II(?!(?:I|\\/))': '中雷電',
         'Thunder III': '大雷電',
         'Vertical Kenoma': '前後堅守',
         'Zombification': '殭屍',

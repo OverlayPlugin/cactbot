@@ -57,7 +57,7 @@ Options.Triggers.push({
           ja: 'メガビーム～',
           cn: '巨型光束炮~',
           ko: '고출력 광선~',
-          tc: '巨型光束炮~',
+          tc: '巨型光束砲~',
         },
       },
     },
@@ -74,7 +74,7 @@ Options.Triggers.push({
           ja: 'メガビーム～',
           cn: '巨型光束炮~!',
           ko: '고출력 광선~!',
-          tc: '巨型光束炮~!',
+          tc: '巨型光束砲~!',
         },
       },
     },
@@ -252,7 +252,7 @@ Options.Triggers.push({
           ja: '${player}にスーパージャンプ',
           cn: '超级跳点${player}',
           ko: '"${player}" 슈퍼 점프',
-          tc: '超級跳點${player}',
+          tc: '超級跳點 ${player}',
         },
         superJumpOnYou: {
           en: 'Super Jump on YOU',
@@ -519,7 +519,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Blaster Mirage': '爆破者幻象',
         'Blaster(?! Mirage)': '爆破者',
@@ -532,8 +531,8 @@ Options.Triggers.push({
         'Vortexer': '環旋者',
       },
       'replaceText': {
-        // '--orbs--': '', // FIXME '--球--'
-        // '--regulator check--': '', // FIXME '--调节器检查--'
+        '--orbs--': '--球--',
+        '--regulator check--': '--調節器檢查--',
         '100-Megatonze Shock': '億萬噸震盪',
         'Apocalyptic Ray': '末世宣言',
         'Attachment': '配件更換',

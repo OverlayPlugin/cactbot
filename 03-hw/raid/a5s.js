@@ -209,7 +209,7 @@ Options.Triggers.push({
           ja: 'まずは北西',
           cn: '先左上',
           ko: '북서쪽 먼저',
-          tc: '先左上',
+          tc: '先西北',
         },
         northeastFirst: {
           en: 'NE first',
@@ -218,7 +218,7 @@ Options.Triggers.push({
           ja: 'まずは北東',
           cn: '先右上',
           ko: '북동쪽 먼저',
-          tc: '先右上',
+          tc: '先東北',
         },
         southwestFirst: {
           en: 'SW first',
@@ -227,7 +227,7 @@ Options.Triggers.push({
           ja: 'まずは南西',
           cn: '先左下',
           ko: '남서쪽 먼저',
-          tc: '先左下',
+          tc: '先西南',
         },
         southeastFirst: {
           en: 'SE first',
@@ -236,7 +236,7 @@ Options.Triggers.push({
           ja: 'まずは南東',
           cn: '先右下',
           ko: '남동쪽 먼저',
-          tc: '先右下',
+          tc: '先東南',
         },
       },
     },
@@ -274,7 +274,7 @@ Options.Triggers.push({
           ja: '${player}にバリア',
           cn: '给${player}单盾',
           ko: '"${player}" 에게 보호막',
-          tc: '給${player}單盾',
+          tc: '給 ${player} 單盾',
         },
       },
     },
@@ -561,7 +561,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<!Smart)Bomb(?!e)': '炸彈',
         '(?<!Hummel)Faust': '浮士德',
@@ -575,23 +574,23 @@ Options.Triggers.push({
         'Glassy-Eyed Cobra': '興奮眼鏡蛇',
       },
       'replaceText': {
-        // '--big--': '', // FIXME '--大--'
-        // '--small--': '', // FIXME '--小--'
+        '--big--': '--大--',
+        '--small--': '--小--',
         '10-Tonze Slash': '十噸揮打',
         'Big Burst': '大爆炸',
         'Bomb\'s Away': '投放炸彈',
         'Boost': '蓄力',
-        // 'Cobra': '', // FIXME 'Cobra'
+        'Cobra': '眼鏡蛇',
         'Disorienting Groan': '吼叫',
         'Feast': '饗宴',
         'Glupgloop': '強酸劇毒藥',
         'Gobbledygawker': '哥布之眼',
-        // 'Gobbledygroper Add': '', // FIXME '哥布林奇美拉出现'
-        // 'Gobcut/Straight': '', // FIXME '猛击上勾拳/全力重拳'
+        'Gobbledygroper Add': '哥布林奇美拉出現',
+        'Gobcut/Straight': '猛擊上勾拳/全力重拳',
         'Gobdash': '怒濤衝拳',
         'Gobhook': '剛猛勾拳',
         'Gobjab': '牽制刺拳',
-        // 'Gobstraight/Cut': '', // FIXME '全力重拳/猛击上勾拳'
+        'Gobstraight/Cut': '全力重拳/猛擊上勾拳',
         'Gobswing': '激震拋拳',
         'Guzzle': '一飲而盡',
         'Kaltstrahl': '寒光',

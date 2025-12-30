@@ -254,7 +254,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Armored Weapon': '武裝重甲',
         'Blade Of The Griffin': '獅鷲之刃',
@@ -267,7 +266,7 @@ Options.Triggers.push({
         'Via Praetoria': '天營路',
       },
       'replaceText': {
-        // '--teleport': '', // FIXME '--传送'
+        '--teleport': '--傳送',
         'Assault Cannon': '突擊加農砲',
         'Beak Of The Griffin': '獅鷲之喙',
         'Big Boot': '大靴重踹',

@@ -248,7 +248,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Abalathian Hornbill': '阿巴拉提亞犀鳥',
         'Dotoli Ciloc': '旋風扇德托里·西羅克',
@@ -261,9 +260,9 @@ Options.Triggers.push({
         'Floating Turret': '氣球砲塔',
       },
       'replaceText': {
-        // '\\(buster\\)': '', // FIXME '(死刑)'
-        // '\\(line\\)': '', // FIXME '(直线)'
-        // '\\(aoe\\)': '', // FIXME '(AOE)'
+        '\\(buster\\)': '(死刑)',
+        '\\(line\\)': '(直線)',
+        '\\(aoe\\)': '(AOE)',
         'Aerial Blast': '大氣爆發',
         'Air Raid': '空襲',
         'Bill': '堅喙',

@@ -38,7 +38,7 @@ Options.Triggers.push({
           ja: 'パワージェネレーターを北西/南東に運ぶ',
           cn: '搬运发电器到左上/右下',
           ko: '발전기 놓기: 북서/남동',
-          tc: '搬運發電器到左上/右下',
+          tc: '搬運發電器到西北/東南',
         },
         twoNW: {
           en: 'Place Generators NW',
@@ -47,7 +47,7 @@ Options.Triggers.push({
           ja: 'パワージェネレーターを北西に運ぶ',
           cn: '搬运发电器到左上',
           ko: '발전기 놓기: 북서',
-          tc: '搬運發電器到左上',
+          tc: '搬運發電器到西北',
         },
         oneNW: {
           en: 'Place Generator NW',
@@ -56,7 +56,7 @@ Options.Triggers.push({
           ja: 'パワージェネレーターを北西に運ぶ',
           cn: '搬运发电器到左上',
           ko: '발전기 놓기: 북서/남동',
-          tc: '搬運發電器到左上',
+          tc: '搬運發電器到西北',
         },
         twoSE: {
           en: 'Place Generators SE',
@@ -65,7 +65,7 @@ Options.Triggers.push({
           ja: 'パワージェネレーターを南東に運ぶ',
           cn: '搬运发电器到右下',
           ko: '발전기 놓기: 남동',
-          tc: '搬運發電器到右下',
+          tc: '搬運發電器到東南',
         },
       },
     },
@@ -91,7 +91,7 @@ Options.Triggers.push({
           ja: '南東のアラームを倒す',
           cn: '在右下击杀警报',
           ko: '남동쪽 경보기 없애기',
-          tc: '在右下擊殺警報',
+          tc: '在東南擊殺警報',
         },
         southwest: {
           // ... or anywhere not NW/SE
@@ -101,7 +101,7 @@ Options.Triggers.push({
           ja: '南西のアラームを倒す',
           cn: '在左下击杀警报',
           ko: '남서쪽 경보기 없애기',
-          tc: '在左下擊殺警報',
+          tc: '在西南擊殺警報',
         },
       },
     },
@@ -118,7 +118,7 @@ Options.Triggers.push({
           ja: 'まもなく爆弾',
           cn: '炸弹马上爆炸',
           ko: '곧 폭탄 폭발',
-          tc: '炸彈馬上爆炸',
+          tc: '炸彈即將爆炸',
         },
       },
     },
@@ -268,7 +268,7 @@ Options.Triggers.push({
           ja: '北東でパワージェネレーターを倒す',
           cn: '拉小怪到右上击杀',
           ko: '쫄을 북동쪽 용암으로',
-          tc: '拉小怪到右上擊殺',
+          tc: '拉小怪到東北擊殺',
         },
         southeast: {
           en: 'Adds to SE Lava',
@@ -277,7 +277,7 @@ Options.Triggers.push({
           ja: '南東でパワージェネレーターを倒す',
           cn: '拉小怪到右下击杀',
           ko: '쫄을 남동쪽 용암으로',
-          tc: '拉小怪到右下擊殺',
+          tc: '拉小怪到東南擊殺',
         },
         southwest: {
           en: 'Adds to SW Lava',
@@ -286,7 +286,7 @@ Options.Triggers.push({
           ja: '南西でパワージェネレーターを倒す',
           cn: '拉小怪到左下击杀',
           ko: '쫄을 남서쪽 용암으로',
-          tc: '拉小怪到左下擊殺',
+          tc: '拉小怪到西南擊殺',
         },
         northwest: {
           en: 'Adds to NW Lava',
@@ -295,7 +295,7 @@ Options.Triggers.push({
           ja: '北西でパワージェネレーターを倒す',
           cn: '拉小怪到左上击杀',
           ko: '쫄을 북서쪽 용암으로',
-          tc: '拉小怪到左上擊殺',
+          tc: '拉小怪到西北擊殺',
         },
       },
     },
@@ -445,7 +445,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bomb': '炸彈',
         'Faust Z': '終極浮士德',
@@ -457,16 +456,16 @@ Options.Triggers.push({
       },
       'replaceText': {
         '(?<!Double )Scrapline': '廢料金臂鉤',
-        // '--rocks fall--': '', // FIXME '--石头落下--'
+        '--rocks fall--': '--石頭落下--',
         'Acid Rain': '酸蝕雨',
-        // 'Alarum': '', // FIXME '警报'
+        'Alarum': '警報',
         '(?<!Scrap )Bomb': '炸彈',
-        // 'Double Scrapline': '', // FIXME '二重碎颈臂'
+        'Double Scrapline': '二重金臂鉤',
         'Explosion': '爆炸',
-        // 'Full-Metal Faust Add': '', // FIXME '全装甲浮士德出现'
+        'Full-Metal Faust Add': '全裝甲浮士德出現',
         'Heat Shielding Reassembly': '裝甲再生',
         'Kaltstrahl': '寒光',
-        // 'Lava': '', // FIXME '岩浆'
+        'Lava': '岩漿',
         'Left Arm Reassembly': '左臂再生',
         'Panzer Vor': '戰車前進',
         'Panzerschreck': '反坦克火箭筒',

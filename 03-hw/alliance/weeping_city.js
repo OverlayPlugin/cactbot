@@ -23,7 +23,7 @@ Options.Triggers.push({
           ja: 'アンキレーウェブに入る',
           cn: '站在网上',
           ko: '거미줄 위에 서기',
-          tc: '站在網路上',
+          tc: '站在網上',
         },
       },
     },
@@ -212,7 +212,7 @@ Options.Triggers.push({
           ja: 'メテオ、後ろや左に置く',
           cn: '流星点名，放在背后或左边',
           ko: '메테오 뒤/왼쪽으로 빼기',
-          tc: '流星點名，放在背後或左邊',
+          tc: '隕石點名，放在背後或左邊',
         },
       },
     },
@@ -742,7 +742,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arachne Eve': '阿剌克涅',
         'Calofisteri': '卡洛菲斯提莉',
@@ -793,7 +792,7 @@ Options.Triggers.push({
         'Mega Death': '超致死一擊',
         'Megiddo Flame': '米吉多火光',
         'Meteor(?![\\w\\s])': '隕石',
-        // 'Meteor Headmarkers': '', // FIXME '陨石点名'
+        'Meteor Headmarkers': '隕石點名',
         'Meteor Impact': '隕石衝擊',
         'Necropurge': '死靈潛質',
         'Penetration': '透耳尖嘯',
@@ -802,10 +801,10 @@ Options.Triggers.push({
         'Pyramid': '三角錐形態',
         'Shadow Burst': '暗影爆',
         'Silken Spray': '噴吐蛛絲',
-        // 'Sphere': '', // FIXME '球形态'
+        'Sphere': '球形態',
         'Split End': '髮梢分裂',
         'Sticky Wicket': '黏液彈',
-        // 'Tank Lasers': '', // FIXME '坦克激光'
+        'Tank Lasers': '坦克雷射',
         'The Widow\'s Embrace': '大蜘蛛陷阱',
         'The Widow\'s Kiss': '蜘蛛陷阱',
         'Transfiguration': '形態變化',

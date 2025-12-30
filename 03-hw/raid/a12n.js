@@ -312,7 +312,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<! )Alexander(?! )': '亞歷山大',
         'Alexander Prime': '至尊亞歷山大',
@@ -352,8 +351,8 @@ Options.Triggers.push({
         'The General\'s Wing': '阿里達烏斯之翼',
         'Void Of Repentance': '懺悔區',
         'timegate(?!s)': '時空門',
-        // 'timegates active': '', // FIXME '时空门激活'
-        // 'timestop': '', // FIXME '时停'
+        'timegates active': '時空門啟動',
+        'timestop': '時停',
       },
     },
     {

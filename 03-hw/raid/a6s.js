@@ -545,7 +545,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Blaster(?! Mirage)': '爆破者',
         'Blaster Mirage': '爆破者幻象',
@@ -561,12 +560,12 @@ Options.Triggers.push({
         'Midan Hardhelm': '彌達斯硬盔兵',
       },
       'replaceText': {
-        // '--unseal--': '', // FIXME '--解除封锁--'
+        '--unseal--': '--解除封鎖--',
         'Attachment': '配件更換',
         'Auxiliary Power': '能量支援',
         'Ballistic Missile': '導彈發射',
         'Bio-Arithmeticks': '生命計算術',
-        // 'Brawler Mechanic': '', // FIXME '争斗者技能'
+        'Brawler Mechanic': '爭鬥者技能',
         'Brute Force': '殘暴鐵拳',
         'Crashing Thunder': '衝擊雷',
         'Crashing Wave': '衝擊波',
@@ -574,7 +573,7 @@ Options.Triggers.push({
         'Elemental Jammer': '元素干擾',
         'Enumeration': '計數',
         'Fire Beam': '火焰光束',
-        // 'Gobwalker': '', // FIXME '哥布林战车'
+        'Gobwalker': '哥布林戰車',
         'Height': '高度算術',
         'Hidden Minefield': '隱形地雷散佈',
         'Ice Missile': '寒冰導彈',

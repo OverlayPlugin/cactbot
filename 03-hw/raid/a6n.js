@@ -363,7 +363,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Blaster(?! Mirage)': '爆破者',
         'Blaster Mirage': '爆破者幻象',
@@ -376,7 +375,7 @@ Options.Triggers.push({
         'Vortexer': '環旋者',
       },
       'replaceText': {
-        // '--unseal--': '', // FIXME '--解除封锁--'
+        '--unseal--': '--解除封鎖--',
         'Attachment': '配件更換',
         'Ballistic Missile': '導彈發射',
         'Bio-Arithmeticks': '生命計算術',

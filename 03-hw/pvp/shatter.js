@@ -46,7 +46,7 @@ Options.Triggers.push({
           ja: '氷: 北',
           cn: '大冰: 上方',
           ko: '큰 얼음: 북쪽',
-          tc: '大冰: 上方',
+          tc: '大冰: 北',
         },
         southeast: {
           en: 'Big Ice: Southeast',
@@ -55,7 +55,7 @@ Options.Triggers.push({
           ja: '氷: 南東',
           cn: '大冰: 右下',
           ko: '큰 얼음: 남동쪽',
-          tc: '大冰: 右下',
+          tc: '大冰: 東南',
         },
         southwest: {
           en: 'Big Ice: Southwest',
@@ -64,7 +64,7 @@ Options.Triggers.push({
           ja: '氷: 西南',
           cn: '大冰: 左下',
           ko: '큰 얼음: 남서쪽',
-          tc: '大冰: 左下',
+          tc: '大冰: 西南',
         },
       },
     },
