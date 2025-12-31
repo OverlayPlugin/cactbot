@@ -189,9 +189,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'Weeping City Hell Wind',
       type: 'StartsUsing',
       netRegex: { id: '17CB', source: 'Forgall', capture: false },
-      // Hell Wind sets HP to single digits, so mitigations don't work. Don't notify non-healers.
-      condition: (data) => data.role === 'healer' || data.job === 'BLU',
-      response: Responses.aoe(),
+      response: Responses.hpTo1Aoe(),
     },
     {
       id: 'Weeping City Mega Death',
