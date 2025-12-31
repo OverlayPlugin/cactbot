@@ -28,6 +28,7 @@ export class ConfigSearch {
   private searchInput: HTMLInputElement;
   private clearButton: HTMLElement;
   private noMatchesMessage: HTMLElement;
+  private searchTimeout?: number;
 
   constructor(
     private base: CactbotConfigurator,
@@ -49,7 +50,7 @@ export class ConfigSearch {
     this.searchInput.placeholder = this.base.translate(kTriggerSearchPlaceholder);
     this.searchInput.oninput = () => {
       this.updateClearButton();
-      this.performSearch();
+      this.debouncedSearch();
     };
     searchContainer.appendChild(this.searchInput);
 
@@ -68,9 +69,38 @@ export class ConfigSearch {
   }
 
   private clearSearch(): void {
+    if (this.searchTimeout !== undefined) {
+      window.clearTimeout(this.searchTimeout);
+      this.searchTimeout = undefined;
+    }
     this.searchInput.value = '';
     this.updateClearButton();
     this.showAll();
+  }
+
+  // Calculate debounce time based on search text length.
+  // Shorter text = longer debounce to reduce unnecessary searches.
+  // 1 char: 100ms, 2 chars: 75ms, 3 chars: 50ms, 4 chars: 25ms, 5+ chars: 0ms
+  private calculateDebounceTime(length: number): number {
+    if (length === 0)
+      return 0;
+    return Math.max(0, 100 - (length - 1) * 25);
+  }
+
+  private debouncedSearch(): void {
+    if (this.searchTimeout !== undefined)
+      window.clearTimeout(this.searchTimeout);
+
+    const length = this.searchInput.value.trim().length;
+    const debounceTime = this.calculateDebounceTime(length);
+
+    if (debounceTime > 0) {
+      this.searchTimeout = window.setTimeout(() => {
+        this.performSearch();
+      }, debounceTime);
+    } else {
+      this.performSearch();
+    }
   }
 
   private matchParts(text: string, parts: string[]): boolean {
