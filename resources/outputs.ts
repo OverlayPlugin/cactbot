@@ -49,6 +49,15 @@ export default {
     ko: '전체 공격 + 도트',
     tc: 'AOE + 流血',
   },
+  hpTo1Aoe: {
+    en: 'HP to 1',
+    de: 'HP auf 1',
+    fr: 'HP à 1',
+    ja: '体力１!',
+    cn: 'HP 归 1',
+    ko: 'HP 1',
+    tc: 'HP 歸 1',
+  },
   tankBuster: {
     en: 'Tank Buster',
     de: 'Tank buster',

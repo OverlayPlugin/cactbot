@@ -327,6 +327,7 @@ export const Responses = {
   aoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.aoe),
   bigAoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.bigAoe),
   bleedAoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.bleedAoe),
+  hpTo1Aoe: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.hpTo1Aoe),
   spread: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.spread),
   rolePositions: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.rolePositions),
   protean: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.protean),
