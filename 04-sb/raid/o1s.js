@@ -49,7 +49,7 @@ Options.Triggers.push({
       id: 'O1S Charybdis',
       type: 'StartsUsing',
       netRegex: { id: '1ED3', source: 'Alte Roite', capture: false },
-      response: Responses.aoe(),
+      response: Responses.hpTo1Aoe('alert'),
     },
   ],
   timelineReplace: [

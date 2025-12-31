@@ -60,7 +60,7 @@ Options.Triggers.push({
       netRegex: { id: '23DB', source: 'Alte Roite', capture: false },
       condition: (data) => data.role === 'healer' || data.job === 'BLU',
       // Alert rather than info, as any further raid damage is lethal if unhealed.
-      response: Responses.aoe('alert'),
+      response: Responses.hpTo1Aoe('alert'),
     },
     {
       id: 'O1N Twin Bolt',
