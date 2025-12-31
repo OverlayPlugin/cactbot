@@ -128,22 +128,28 @@ export class ConfigSearch {
     let anyVisible = false;
 
     allTriggerContainers.forEach((triggerContainer) => {
-      let containerMatchesTitle = false;
       let containerVisible = false;
 
-      // Use pre-calculated __searchText
-      if (
-        triggerContainer.__searchText !== undefined &&
-        this.matchParts(triggerContainer.__searchText, searchParts)
-      )
-        containerMatchesTitle = true;
+      // Check which search parts match the container title
+      const containerMatchedParts = new Set<string>();
+      if (triggerContainer.__searchText !== undefined) {
+        for (const part of searchParts) {
+          if (triggerContainer.__searchText.includes(part))
+            containerMatchedParts.add(part);
+        }
+      }
 
-      if (containerMatchesTitle) {
+      // Remaining parts that need to match triggers
+      const remainingParts = searchParts.filter((p) => !containerMatchedParts.has(p));
+
+      // If all parts matched the container, show all triggers
+      if (remainingParts.length === 0) {
         this.setContainerVisible(triggerContainer, true);
         this.updateShowHiddenButton(triggerContainer, 0);
         anyVisible = true;
         containerVisible = true;
       } else {
+        // Check triggers against remaining parts
         const triggersInContainer = triggerContainer.querySelectorAll<SearchTriggerElement>(
           '.trigger',
         );
@@ -154,12 +160,16 @@ export class ConfigSearch {
           const triggerData = triggerElement.__triggerData;
 
           if (triggerData === undefined) {
-            this.setTriggerVisible(triggerElement, true);
-            hasVisibleTrigger = true;
+            // Non-trigger elements (like override warnings) are shown if container
+            // partially matches
+            const shouldShow = containerMatchedParts.size > 0 || remainingParts.length === 0;
+            this.setTriggerVisible(triggerElement, shouldShow);
+            if (shouldShow)
+              hasVisibleTrigger = true;
             return;
           }
 
-          const shouldShow = this.checkTriggerMatch(triggerElement, searchParts);
+          const shouldShow = this.checkTriggerMatch(triggerElement, remainingParts);
           this.setTriggerVisible(triggerElement, shouldShow);
 
           if (shouldShow)
