@@ -150,6 +150,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${mech} => ${away}',
+          cn: '${mech} => ${away}',
         },
         drawIn: Outputs.drawIn,
         away: Outputs.awayFromFront,
