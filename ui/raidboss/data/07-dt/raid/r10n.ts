@@ -313,6 +313,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread Fire Cone',
+          cn: '火焰扇形分散',
         },
       },
     },
@@ -364,6 +365,7 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         text: {
           en: 'KB from ${dir1} + away from ${dir2}',
+          cn: '从${dir1}击退 + 远离${dir2}',
         },
         ...Directions.outputStringsCardinalDir,
       },
@@ -418,6 +420,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         unknown: {
           en: 'Cone cleave from ???',
+          cn: '扇形攻击未知来向',
         },
       },
     },
@@ -430,6 +433,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go N/S + Big AoE',
+          cn: '去上/下 + 高伤害 AOE',
         },
       },
     },
@@ -442,6 +446,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Soak Towers',
+          cn: '踩塔',
         },
       },
     },
@@ -458,6 +463,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away from exploding orbs',
+          cn: '远离爆炸球',
         },
       },
     },
@@ -471,6 +477,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge Cones x2',
+          cn: '躲避两轮扇形攻击',
         },
       },
     },
@@ -490,6 +497,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Baiting fire cones',
+          cn: '诱导火扇形',
         },
       },
     },
@@ -503,6 +511,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Baiting water cones',
+          cn: '诱导水扇形',
         },
       },
     },
@@ -549,17 +558,60 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait ${elem} cone from ${dir}',
+          cn: '诱导${elem}扇形来自${dir}',
         },
         ...Directions.outputStrings8Dir,
         water: {
           en: 'Water',
+          cn: '水',
         },
         fire: {
           en: 'Fire',
+          cn: '火',
         },
         middle: {
           en: 'Middle',
+          cn: '中间',
         },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Deep Blue': '深蓝',
+        'Red Hot': '炽红',
+        'The Xtremes': '极限兄弟',
+        'Xtreme Aether': '极限以太',
+      },
+      'replaceText': {
+        '--Blue middle--': '--深蓝场中--',
+        '--Red middle--': '--炽红场中--',
+        '\\(cone\\)': '(扇形)',
+        '\\(line\\)': '(直线)',
+        '\\(jump\\)': '(跳)',
+        'Alley-oop Inferno': '空中旋火',
+        'Alley-oop Maelstrom': '空中旋水',
+        'Alley-Oop Inferno': '空中旋火',
+        'Alley-Oop Maelstrom': '空中旋水',
+        'Blasting Snap': '火浪急转',
+        'Cutback Blaze': '火浪回切',
+        'Deep Impact': '深海冲击',
+        'Deep Varial': '浪尖转体',
+        'Divers\' Dare': '斗志昂扬',
+        'Epic Brotherhood': '兄弟同心',
+        'Firesnaking': '火蛇夺浪',
+        'Hot Aerial': '腾火踏浪',
+        'Hot Impact': '炽焰冲击',
+        'Insane Air': '狂浪腾空',
+        'Plunging Snap': '水浪急转',
+        'Pyrotation': '旋绕烈火',
+        'Sick Swell': '惊涛骇浪',
+        'Sickest Take-off': '破势乘浪',
+        'Steam Burst': '混合爆炸',
+        'Watersnaking': '水蛇夺浪',
+        'Xtreme Spectacular': '极限炫技',
       },
     },
   ],
