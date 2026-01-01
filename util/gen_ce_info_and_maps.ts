@@ -4,7 +4,7 @@ import { LocaleText } from '../types/trigger';
 
 import Overrides from './ce_overrides';
 import { ConsoleLogger, LogLevelKey } from './console_logger';
-import { cleanName } from './csv_util';
+import { cleanName, getCnTable, getKoTable, getTcTable } from './csv_util';
 import { OutputFileAttributes, XivApi } from './xivapi';
 
 // Generate data relating to the Critical Engagements of the Bozjan Southern
@@ -78,6 +78,9 @@ const _DE_FIELDS = [
   'Name@ja',
 ];
 
+const _LOCALE_TABLE = 'DynamicEvent';
+const _LOCALE_COLUMNS = ['#', 'Name'];
+
 type ResultDynamicEventSetType = {
   row_id: number;
   subrow_id: number;
@@ -98,6 +101,12 @@ type ResultDynamicEventType = {
     'Name@fr'?: string;
     'Name@ja'?: string;
   };
+};
+
+type LocaleCsvTables = {
+  cn: Record<string, Record<string, string | undefined>>;
+  tc: Record<string, Record<string, string | undefined>>;
+  ko: Record<string, Record<string, string | undefined>>;
 };
 
 type IndexedDynamicEventSetSubrow = {
@@ -134,6 +143,8 @@ const _SCRIPT_NAME = path.basename(import.meta.url);
 const log = new ConsoleLogger();
 log.setLogLevel('alert');
 
+let localeCsvTables: LocaleCsvTables;
+
 const indexDeSetData = (data: ResultDynamicEventSetType[]): IndexedDynamicEventSetRow => {
   const deSetData: IndexedDynamicEventSetRow = {};
   for (const row of data) {
@@ -153,6 +164,21 @@ const indexDeData = (data: ResultDynamicEventType[]): IndexedDynamicEventType =>
     deData[row.row_id] = row;
   }
   return deData;
+};
+
+const fetchLocaleCsvTables = async (): Promise<LocaleCsvTables> => {
+  log.debug(`Table: ${_LOCALE_TABLE} | Query columns: [${_LOCALE_COLUMNS.toString()}]`);
+  log.debug('Fetching \'cn\' table...');
+  const cnTable = await getCnTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
+  log.debug('Fetching \'ko\' table...');
+  const koTable = await getKoTable(_LOCALE_TABLE, ['#', 12]); // FIXME: SaintCoinach definitions error
+  log.debug('Fetching \'tc\' table...');
+  const tcTable = await getTcTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
+  return {
+    cn: cnTable,
+    ko: koTable,
+    tc: tcTable,
+  };
 };
 
 const generateCEList = (
@@ -210,6 +236,9 @@ const generateCEList = (
       de: capitalize(data.fields['Name@de']),
       fr: capitalize(data.fields['Name@fr']),
       ja: capitalize(data.fields['Name@ja']),
+      cn: capitalize(localeCsvTables.cn[deId]?.Name),
+      ko: capitalize(localeCsvTables.ko[deId]?.['12']), // FIXME: SaintCoinach definitions error
+      tc: capitalize(localeCsvTables.tc[deId]?.Name),
     };
 
     const ceName: LocaleText = Object.assign({}, deNames);
@@ -288,12 +317,15 @@ const generateCEMap = (
   return ceInfoMap;
 };
 
-const assembleData = (
+const assembleData = async (
   deSetRawData: ResultDynamicEventSetType[],
   deRawData: ResultDynamicEventType[],
-): OutputContainer => {
+): Promise<OutputContainer> => {
   const deSetData = indexDeSetData(deSetRawData);
   const deData = indexDeData(deRawData);
+
+  log.info('Fetching locale CSV tables...');
+  localeCsvTables = await fetchLocaleCsvTables();
 
   const bozjaSetData = deSetData[1] ?? {};
   const zadnorSetData = deSetData[2] ?? {};
@@ -336,7 +368,7 @@ export default async (logLevel: LogLevelKey): Promise<void> => {
     _DE_FIELDS,
   ) as ResultDynamicEventType[];
 
-  const outputData = assembleData(deSetRawData, deRawData);
+  const outputData = await assembleData(deSetRawData, deRawData);
 
   await api.writeFile(
     path.basename(import.meta.url),
