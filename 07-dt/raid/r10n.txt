@@ -1,0 +1,240 @@
+### AAC HEAVYWEIGHT (M2)
+# ZoneId: 1322
+
+# -ii B57B B57C B57D B57F B583 B586 B588 B58A B58B B58E B59E B5A2 B5A7 B5A8 B5AA B894 B896 BDFD BDFE
+# -it "Red Hot" "Deep Blue"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+# Red Hot
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+9.9 "--sync--" StartsUsing { id: "B580", source: "Red Hot" } window 9.9,5
+14.6 "Hot Impact" Ability { id: "B580", source: "Red Hot" }
+25.8 "Alley-oop Inferno" Ability { id: "B587", source: "Red Hot" }
+31.2 "--middle--" Ability { id: "B578", source: "Red Hot" }
+38.8 "Cutback Blaze" Ability { id: "B58F", source: "Red Hot" }
+47.0 "Divers' Dare" Ability { id: "B582", source: "Red Hot" }
+50.1 "--middle--" Ability { id: "B578", source: "Red Hot" }
+57.7 "Cutback Blaze" Ability { id: "B58F", source: "Red Hot" }
+64.1 "Alley-oop Inferno" Ability { id: "B587", source: "Red Hot" }
+73.5 "Divers' Dare" Ability { id: "B582", source: "Red Hot" }
+77.6 "--middle--" Ability { id: "B578", source: "Red Hot" }
+79.8 "--untargetable--"
+
+# Deep Blue
+81.7 "--targetable--"
+87.9 "Sick Swell" Ability { id: "B590", source: "Deep Blue" }
+96.0 "Sickest Take-off" Ability { id: "B592", source: "Deep Blue" }
+96.0 "--untargetable--"
+105.0 "Sickest Take-off" Ability { id: "B593", source: "Deep Blue" }
+105.0 "Sick Swell" Ability { id: "B591", source: "Deep Blue" }
+107.0 "--targetable--"
+109.0 "--middle--" Ability { id: "B579", source: "Deep Blue" }
+116.4 "Deep Varial (jump)" Ability { id: "B88F", source: "Deep Blue" }
+118.0 "Deep Varial (cone)" Ability { id: "B598", source: "Deep Blue" }
+121.7 "--middle--" Ability { id: "B579", source: "Deep Blue" }
+129.1 "Deep Varial (jump)" Ability { id: "B88F", source: "Deep Blue" }
+130.7 "Deep Varial (cone)" Ability { id: "B598", source: "Deep Blue" }
+139.4 "Deep Impact" Ability { id: "B581", source: "Deep Blue" }
+145.5 "--middle--" Ability { id: "B579", source: "Deep Blue" }
+
+# Red Hot joins in
+147.5 "--targetable--"
+156.8 "Xtreme Spectacular" Ability { id: "B5A1", source: "Red Hot" }
+
+# Phase transition
+157.6 "--untargetable--"
+# Split line hit out for snapshot timing purposes
+164.6 "Xtreme Spectacular (line)" Ability { id: "B5A3", source: "The Xtremes" }
+165.6 "Xtreme Spectacular x7" duration 3.9 #Ability { id: "B5DB", source: "The Xtremes" }
+# Technically there's a separate "big" hit, ID B7C9, at the end
+# But it's 0.4s after the last small hit, no point in splitting it out
+
+# Phase 2
+173.3 "--targetable--"
+178.7 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+186.8 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+188.8 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+190.8 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+191.8 "Sick Swell" Ability { id: "B590", source: "Deep Blue" }
+192.7 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+197.9 "Sickest Take-off" Ability { id: "B592", source: "Deep Blue" }
+197.9 "--untargetable--"
+199.9 "Hot Impact" Ability { id: "B580", source: "Red Hot" }
+207.0 "Sickest Take-off" Ability { id: "B593", source: "Deep Blue" }
+207.0 "Sick Swell" Ability { id: "B591", source: "Deep Blue" }
+209.0 "--targetable--"
+211.1 "Steam Burst" Ability { id: "B5AB", source: "Xtreme Aether" }
+220.0 "Pyrotation" Ability { id: "B589" }
+222.0 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+227.2 "Alley-oop Maelstrom" #Ability { id: "B59F", source: "Deep Blue" }
+229.2 "Alley-oop Maelstrom" #Ability { id: "B5A0", source: "Deep Blue" }
+231.8 "Steam Burst" Ability { id: "B5AB", source: "Xtreme Aether" }
+
+# Fire cleared from arena
+# During this mini-phase, Steam Burst can be cast randomly depending on if fire/water overlap
+# Manually edited those events out.
+238.4 "Divers' Dare" Ability { id: "B582", source: "Red Hot" }
+246.5 "--middle--" Ability { id: "B578", source: "Red Hot" }
+248.7 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+255.8 "Firesnaking/Watersnaking" Ability { id: "B57E", source: "Red Hot" }
+258.0 "--middle--" Ability { id: "B578", source: "Red Hot" }
+266.7 "Insane Air" Ability { id: ["B893", "B895"], source: "Red Hot" }
+269.7 "Blasting Snap/Plunging Snap" Ability { id: "B5A9" }
+274.0 "Insane Air" Ability { id: ["B893", "B895"], source: "Red Hot" }
+277.0 "Blasting Snap/Plunging Snap" Ability { id: "B5A9" }
+281.3 "Insane Air" Ability { id: ["B893", "B895"], source: "Red Hot" }
+284.3 "Blasting Snap/Plunging Snap" Ability { id: "B5A9" }
+288.6 "Insane Air" Ability { id: ["B893", "B895"], source: "Red Hot" }
+291.6 "Blasting Snap/Plunging Snap" Ability { id: "B5A9" }
+292.0 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
+
+# Fire cleared from arena
+300.1 "Divers' Dare" Ability { id: "B582", source: "Red Hot" }
+308.3 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+310.4 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+318.0 "Deep Varial (jump)" Ability { id: "B88F", source: "Deep Blue" }
+319.4 "Deep Varial (cone)" Ability { id: "B598", source: "Deep Blue" }
+323.4 "--Red middle--" Ability { id: "B578", source: "Red Hot" }
+330.9 "Cutback Blaze" Ability { id: "B58F", source: "Red Hot" }
+334.1 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+339.3 "Alley-oop Maelstrom" Ability { id: "B59F", source: "Deep Blue" }
+341.3 "Alley-oop Maelstrom" Ability { id: "B5A0", source: "Deep Blue" }
+343.9 "Steam Burst" #Ability { id: "B5AB", source: "Xtreme Aether" }
+343.9 "--Red middle--" Ability { id: "B578", source: "Red Hot" }
+345.9 "Steam Burst" #Ability { id: "B5AB", source: "Xtreme Aether" }
+351.5 "Cutback Blaze" Ability { id: "B58F", source: "Red Hot" }
+357.9 "Alley-oop Inferno" Ability { id: "B587", source: "Red Hot" }
+
+# Fire cleared from arena
+366.3 "Divers' Dare" Ability { id: "B582", source: "Red Hot" }
+374.5 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+382.6 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+384.6 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+386.6 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+387.7 "Sick Swell" Ability { id: "B590", source: "Deep Blue" }
+388.6 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+393.9 "Sickest Take-off" Ability { id: "B592", source: "Deep Blue" }
+393.9 "--untargetable--"
+395.9 "Hot Impact" Ability { id: "B580", source: "Red Hot" }
+403.0 "Sickest Take-off" Ability { id: "B593", source: "Deep Blue" }
+403.0 "Sick Swell" Ability { id: "B591", source: "Deep Blue" }
+405.0 "--targetable--"
+407.1 "Steam Burst" Ability { id: "B5AB", source: "Xtreme Aether" }
+413.0 "Pyrotation" Ability { id: "B589" }
+415.0 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+420.3 "Alley-oop Maelstrom" Ability { id: "B59F", source: "Deep Blue" }
+422.3 "Alley-oop Maelstrom" Ability { id: "B5A0", source: "Deep Blue" }
+424.9 "Steam Burst" Ability { id: "B5AB", source: "Xtreme Aether" }
+
+# Fire cleared from arena
+426.8 label "loop"
+431.5 "Divers' Dare" Ability { id: "B582", source: "Red Hot" }
+439.8 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+447.9 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+449.9 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+451.9 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+453.9 "Hot Aerial" #Ability { id: "B58C", source: "Red Hot" }
+455.9 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+463.3 "Deep Varial" Ability { id: "B88F", source: "Deep Blue" }
+464.7 "Deep Varial" Ability { id: "B598", source: "Deep Blue" }
+468.9 "Steam Burst" Ability { id: "B5AB", source: "Xtreme Aether" }
+474.8 "Alley-Oop Inferno" Ability { id: "B587", source: "Red Hot" }
+479.4 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+484.7 "Alley-Oop Maelstrom" Ability { id: "B59F", source: "Deep Blue" }
+486.7 "Alley-Oop Maelstrom" Ability { id: "B5A0", source: "Deep Blue" }
+489.3 "Steam Burst" Ability { id: "B5AB", source: "Xtreme Aether" }
+495.3 "Hot Impact" Ability { id: "B580", source: "Red Hot" }
+
+502.4 "Divers' Dare" Ability { id: "B582", source: "Red Hot" }
+508.6 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+510.7 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+518.1 "Deep Varial" Ability { id: "B88F", source: "Deep Blue" }
+519.7 "Deep Varial" Ability { id: "B598", source: "Deep Blue" }
+523.7 "--Red middle--" Ability { id: "B578", source: "Red Hot" }
+531.1 "Cutback Blaze" Ability { id: "B58F", source: "Red Hot" }
+534.2 "--Blue middle--" Ability { id: "B579", source: "Deep Blue" }
+539.6 "Alley-Oop Maelstrom" Ability { id: "B59F", source: "Deep Blue" }
+541.6 "Alley-Oop Maelstrom" Ability { id: "B5A0", source: "Deep Blue" }
+544.2 "Steam Burst" #Ability { id: "B5AB", source: "Xtreme Aether" }
+544.2 "--Red middle--" Ability { id: "B578", source: "Red Hot" }
+546.2 "Steam Burst" #Ability { id: "B5AB", source: "Xtreme Aether" }
+551.8 "Cutback Blaze" Ability { id: "B58F", source: "Red Hot" }
+557.8 "Deep Impact" Ability { id: "B581", source: "Deep Blue" }
+565.0 "Alley-Oop Inferno" Ability { id: "B587", source: "Red Hot" }
+574.7 "Pyrotation" Ability { id: "B589" }
+579.3 "--sync--" StartsUsing { id: "B582", source: "Red Hot" } forcejump "loop"
+
+
+# IGNORED ABILITIES
+# B57B Epic Brotherhood: HP sync ability, cast by both bosses, ignore the higher ID
+# B57C --sync--: VFX of Red Hot jumping off surfboard
+# B57D --sync--: VFX of Deep Blue jumping off surfboard
+# B57F Watersnaking: Cast at the same time as Firesnaking, ignore the higher ID and combine them
+# B583 Divers' Dare: Fire clear, cast by both bosses, ignore Blue's ID
+# B586 Alley-oop Inferno: Cast bar, not actual snapshot
+# B588 Pyrotation: Castbar, not actual snapshot
+# B58A Hot Aerial: Boss castbar
+# B58B Hot Aerial: Tower VFX
+# B58E Cutback Blaze: Cast bar, not actual snapshot
+# B59E Alley-oop Maelstrom: Cast bar, not actual cones
+# B5A2 Xtreme Spectacular: Extra phase transition castbar
+# B5A7 Blasting Snap: VFX
+# B5A8 Plunging Snap: VFX
+# B5AA Plunging Snap: Cast at the same time as B5A9, ignore the higher ID and combine them
+# B894 Insane Air: Duplicate cast from Blue, initial cast
+# B896 Insane Air: Duplicate cast from Blue, followup cast
+# BDFD --sync--: Red Hot's autoattacks
+# BDFE --sync--: Deep Blue's autoattacks
+
+# ALL ENCOUNTER ABILITIES
+# B578 --sync--
+# B579 --sync--
+# B57A Epic Brotherhood
+# B57B Epic Brotherhood
+# B57C --sync--
+# B57D --sync--
+# B57E Firesnaking
+# B57F Watersnaking
+# B580 Hot Impact
+# B581 Deep Impact
+# B582 Divers' Dare
+# B583 Divers' Dare
+# B586 Alley-oop Inferno
+# B587 Alley-oop Inferno
+# B588 Pyrotation
+# B589 Pyrotation: This cast is from an invisible actor whose name varies, so `source` field is removed in the timeline
+# B58A Hot Aerial
+# B58B Hot Aerial
+# B58C Hot Aerial
+# B58D Unmitigated Explosion: Tower Missed
+# B58E Cutback Blaze
+# B58F Cutback Blaze
+# B590 Sick Swell: Creates wave
+# B591 Sick Swell: Wave KB effect + minor damage
+# B592 Sickest Take-off: Boss jumps away/to wave
+# B593 Sickest Take-off: Boss line cleave during wave KB
+# B598 Deep Varial
+# B59E Alley-oop Maelstrom
+# B59F Alley-oop Maelstrom
+# B5A0 Alley-oop Maelstrom
+# B5A1 Xtreme Spectacular
+# B5A2 Xtreme Spectacular
+# B5A3 Xtreme Spectacular
+# B5A7 Blasting Snap
+# B5A8 Plunging Snap
+# B5A9 Blasting Snap: This cast is from an invisible actor whose name varies, so `source` field is removed in the timeline
+# B5AA Plunging Snap
+# B5AB Steam Burst
+# B5DB Xtreme Spectacular
+# B7C9 Xtreme Spectacular
+# B88F Deep Varial
+# B893 Insane Air
+# B894 Insane Air
+# B895 Insane Air
+# B896 Insane Air
+# BDFD --sync--
+# BDFE --sync--
