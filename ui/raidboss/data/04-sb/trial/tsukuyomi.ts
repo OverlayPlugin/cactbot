@@ -55,7 +55,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}に直線頭割り',
           cn: '直线分摊点${player}',
           ko: '${player} 직선 쉐어',
-          tc: '直線分攤點${player}',
+          tc: '直線分攤點 ${player}',
         },
       },
     },
@@ -278,7 +278,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Fan': '舞扇',
         'Moonlight': '月光',
@@ -289,15 +288,15 @@ const triggerSet: TriggerSet<Data> = {
         'Tsukuyomi': '月讀',
       },
       'replaceText': {
-        // 'Adds': '', // FIXME '小怪'
+        'Adds': '小怪',
         'Antitwilight': '月下美人',
         'Bright Blade': '月刀左斬',
         'Concentrativity': '壓縮劍氣',
         'Dance Of The Dead': '黃泉之舞',
         'Dark Blade': '月刀右斬',
         'Dispersivity': '劍氣波動',
-        // 'Empire': '', // FIXME '帝国'
-        // 'Homeland': '', // FIXME '家乡'
+        'Empire': '帝国幻影',
+        'Homeland': '家人幻影',
         'Lead Of The Underworld': '黃泉之彈',
         'Lunacy': '月下繚亂',
         'Lunar Halo': '百月光',

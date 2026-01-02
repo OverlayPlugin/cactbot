@@ -95,7 +95,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スイッチ後強攻撃',
           cn: '换T+死刑',
           ko: '교대 후 탱버',
-          tc: '換T+死刑',
+          tc: '換坦 + 死刑',
         },
       },
     },
@@ -310,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南でスタック',
           cn: '下半场边缘分摊',
           ko: '남쪽에서 모이기',
-          tc: '下半場邊緣分攤',
+          tc: '南半場邊緣分攤',
         },
         stackIfNoTether: {
           en: 'Stack if no tether',
@@ -534,7 +534,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aka-no-shiki': '紅之式鬼',
         'Ao-no-shiki': '蒼之式鬼',
@@ -546,8 +545,8 @@ const triggerSet: TriggerSet<Data> = {
         'Yama-no-shiki': '山之式鬼',
       },
       'replaceText': {
-        // '--small adds spawn--': '', // FIXME '--小小怪生成--'
-        // '--large add spawns--': '', // FIXME '--大小怪生成--'
+        '--small adds spawn--': '--小怪(小)出現--',
+        '--large add spawns--': '--小怪(大)出現--',
         '100-tonze Swing': '百噸迴轉',
         'Blazing Aramitama': '荒魂燃燒',
         'Blue Bolt': '青突進',
@@ -562,7 +561,7 @@ const triggerSet: TriggerSet<Data> = {
         'Kanabo': '如虎添翼',
         'Kuji-kiri': '九字切',
         'Onmyo Sigil': '陰陽之印',
-        'Out/In': '陰陽之印',
+        'Out/In': '靠近/遠離',
         'Red Rush': '赤突進',
         'Serpent Ascending': '升蛇',
         'Serpent Descending': '降蛇',

@@ -213,9 +213,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Tenzen': '', // FIXME '典膳'
+        'Tenzen': '典膳',
         'Scarlet Tail Feather': '朱雀的尾羽',
         'Suzaku': '朱雀',
       },
@@ -234,7 +233,7 @@ const triggerSet: TriggerSet<Data> = {
         'Rekindle': '蘇生之炎',
         'Rout': '猛進',
         'Ruthless Refrain': '拒絕旋律',
-        // 'Ruthless/Mesmerizing': '', // FIXME '拒绝/引诱'
+        'Ruthless/Mesmerizing': '拒絕/引誘',
         'Scarlet Fever': '燃燼天火',
         'Scarlet Hymn': '朱紅旋律',
         'Scathing Net': '張宿業火',

@@ -428,16 +428,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Dreaming Kshatriya': '夢寐的剎帝利',
         'Lakshmi': '吉祥天女',
       },
       'replaceText': {
-        // '--chanchala end--': '', // FIXME '--反复无常结束--'
-        // '\\(mid\\)': '', // FIXME '(中)'
-        // '\\(out\\)': '', // FIXME '(外)'
-        // '/dance': '', // FIXME '/跳舞'
+        '--chanchala end--': '--反覆無常結束--',
+        '\\(mid\\)': '(中)',
+        '\\(out\\)': '(外)',
+        '/dance': '/跳舞 (/dance)',
         'Alluring Arm': '魅惑之臂',
         'Blissful Spear': '聖槍',
         '(?<!-)Chanchala': '反覆無常',

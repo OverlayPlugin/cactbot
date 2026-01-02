@@ -483,12 +483,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Dancing Fan': '舞扇',
         'Moondust': '月之碎片',
         'Moonlight': '月光',
-        // 'No\. No\.\.\. Not yet\. Not\. Yet\.': '', // FIXME '我不能输.*我还没有.*'
+        'No\. No\.\.\. Not yet\. Not\. Yet\.': '我不能輸……我還沒有……',
         'Specter(?! )': '妖影',
         'Specter Of Asahi': '朝陽的幻影',
         'Specter Of Gosetsu': '豪雪的幻影',
@@ -498,10 +497,10 @@ const triggerSet: TriggerSet<Data> = {
         'Specter of Zenos': '芝諾斯的幻影',
       },
       'replaceText': {
-        // '\\(E->W\\)': '', // FIXME '(东->西)'
-        // '\\(SW->NW\\)': '', // FIXME '(西南->西北)'
-        // '\\(gun': '', // FIXME '(枪'
-        // 'spear\\)': '', // FIXME '长矛)'
+        '\\(E->W\\)': '(東->西)',
+        '\\(SW->NW\\)': '(西南->西北)',
+        '\\(gun': '(槍',
+        'spear\\)': '長矛)',
         'Antitwilight': '月下美人',
         'Bright Blade': '月刀左斬',
         'Concentrativity': '壓縮劍氣',
@@ -509,9 +508,9 @@ const triggerSet: TriggerSet<Data> = {
         'Dance Of The Dead': '黃泉之舞',
         'Dark Blade': '月刀右斬',
         'Dispersivity': '劍氣波動',
-        // 'Empire adds': '', // FIXME '帝国幻影'
+        'Empire adds': '帝國幻影',
         'Hagetsu': '破月',
-        // 'Homeland adds': '', // FIXME '家人幻影'
+        'Homeland adds': '家人幻影',
         'Lead Of The Underworld': '黃泉之彈',
         'Lunacy': '月下繚亂',
         'Lunar Halo': '百月光',

@@ -336,19 +336,18 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Dreaming Kshatriya': '夢寐的剎帝利',
         'Lakshmi': '吉祥天女',
         'Vril': '元氣',
       },
       'replaceText': {
-        // '--chanchala start--': '', // FIXME '--反复无常开始--'
-        // '--chanchala end--': '', // FIXME '--反复无常结束--'
-        // '--vril spawn--': '', // FIXME '--元气出现--'
-        // '--vril despawn--': '', // FIXME '--元气消失--'
-        // 'Adds Appear': '', // FIXME '小怪出现'
-        'Aether Drain': 'エーテル吸収',
+        '--chanchala start--': '--反覆無常開始--',
+        '--chanchala end--': '--反覆無常結束--',
+        '--vril spawn--': '--元氣出現--',
+        '--vril despawn--': '--元氣消失--',
+        'Adds Appear': '小怪出現',
+        'Aether Drain': '乙太吸收',
         'Alluring Arm': '魅惑之臂',
         'Alluring Embrace': '魅惑擁抱',
         'Blissful Arrow': '聖箭',
@@ -359,11 +358,11 @@ const triggerSet: TriggerSet<Data> = {
         'Divine Doubt': '完全惑亂',
         'Hand Of Beauty': '優美的左手',
         'Hand Of Grace': '優雅的右手',
-        // 'Hands Of Grace/Beauty': '', // FIXME '右手/左手'
+        'Hands Of Grace/Beauty': '右手/左手',
         'Inner Demons': '心魔',
         'Jagadishwari': '至上天母',
         'Stotram': '讚歌',
-        // '\/Spear': '', // FIXME '/圣枪'
+        '\/Spear': '/聖槍',
         'Tail Slap': '尾部猛擊',
         'The Pall Of Light': '光之瀑布',
         'The Path Of Light': '光之波動',

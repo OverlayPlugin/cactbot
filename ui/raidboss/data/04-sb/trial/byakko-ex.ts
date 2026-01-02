@@ -384,16 +384,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Byakko': '白虎',
         'Hakutei': '白帝',
         'Twofold is my wrath, twice-cursed my foes!': '半身分離，助我殺敵！向膽敢抵抗的傢伙們露出你的爪牙！',
       },
       'replaceText': {
-        // '--Hakutei Add--': '', // FIXME '--白帝出现--'
-        // '--tiger targetable--': '', // FIXME '--白帝可选中--'
-        // '--tiger untargetable--': '', // FIXME '--白帝无法选中--'
+        '--Hakutei Add--': '--白帝出現--',
+        '--tiger targetable--': '--白帝可選中--',
+        '--tiger untargetable--': '--白帝無法選中--',
         'Answer On High': '天雷',
         'Bombogenesis': '炸彈低氣壓',
         'Clutch': '緊握',

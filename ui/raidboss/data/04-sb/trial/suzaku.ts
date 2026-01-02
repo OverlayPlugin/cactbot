@@ -201,13 +201,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Rapturous Echo': '愛之音',
         'Scarlet Plume': '朱雀的羽毛',
         'Scarlet Tail Feather': '朱雀的尾羽',
         'Suzaku': '朱雀',
-        // 'Tenzen': '', // FIXME '典膳'
+        'Tenzen': '典膳',
       },
       'replaceText': {
         'Ashes To Ashes': '升天',
@@ -219,7 +218,7 @@ const triggerSet: TriggerSet<Data> = {
         'Immolate': '大燃燒',
         'Incandescent Interlude': '灼熱旋律',
         'Phantom Flurry': '鬼宿腳',
-        'Phantom Half': '鬼宿腳',
+        'Phantom Half': '鬼宿腳 (半場AOE)',
         'Phoenix Down': '蘇生之羽',
         'Rekindle': '蘇生之炎',
         'Ruthless Refrain': '拒絕旋律',
