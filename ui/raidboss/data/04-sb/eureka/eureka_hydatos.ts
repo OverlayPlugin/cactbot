@@ -65,7 +65,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'エウレカ回復薬',
           cn: '磕优雷卡回复药',
           ko: '에우레카 포션 먹기',
-          tc: '磕優雷卡回復藥',
+          tc: '使用優雷卡回復藥',
         },
       },
     },
@@ -177,7 +177,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '玉から離れる',
           cn: '远离点名',
           ko: '구슬 대상자에서 떨어지기',
-          tc: '遠離點名',
+          tc: '遠離球點名',
         },
         orbOnYou: {
           en: 'Orb on YOU',
@@ -186,7 +186,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に玉',
           cn: '点名',
           ko: '구슬 대상자',
-          tc: '點名',
+          tc: '球點名',
         },
       },
     },
@@ -1284,7 +1284,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Absolute Virtue': '絕對的美德',
         'Arsenal Centaur': '兵武半人馬',
@@ -1300,21 +1299,21 @@ const triggerSet: TriggerSet<Data> = {
         'Raiden': '萊丁',
         'Relative Virtue(?! gains)': '相對的美德',
         'Shadow': '奧斯瑪原型之影',
-        // 'Streak Lightning': '', // FIXME '强袭雷光'
-        // '5 minutes have elapsed since your last activity.': '', // FIXME '已经5分钟没有进行任何操作'
-        // 'The memories of heroes past live on again': '', // FIXME '发动了英杰的加护的效果，重新苏醒了过来'
-        // 'Munderg, turn flesh to ash': '', // FIXME '红颈妖枪，点燃一切！'
-        // 'Munderg, turn blood to ice': '', // FIXME '红颈妖枪，冻结万物！'
+        'Streak Lightning': '強襲雷光',
+        '5 minutes have elapsed since your last activity.': '已經5分鐘沒有進行任何操作',
+        'The memories of heroes past live on again': '發動了重生的效果，重新蘇醒了過來！',
+        'Munderg, turn flesh to ash': '白焰妖槍，點燃一切！',
+        'Munderg, turn blood to ice': '白焰妖槍，凍結萬物！',
         'The Lance of Virtue Containment Unit': '美德之槍封印區',
         'The Shin-Zantetsuken Containment Unit': '真·斬鐵劍封印區',
         'The Proto Ozma Containment Unit': '奧斯瑪原型封印區',
-        // 'Relative Virtue gains the effect of .*?Astral Essence.*?': '', // FIXME '相对的美德附加了“光之腕”效果'
-        // 'Relative Virtue gains the effect of .*?Umbral Essence.*?': '', // FIXME '相对的美德附加了“暗之腕”效果'
+        'Relative Virtue gains the effect of .*?Astral Essence.*?': '相對的美德附加了“光之腕”效果',
+        'Relative Virtue gains the effect of .*?Umbral Essence.*?': '相對的美德附加了“暗之腕”效果',
       },
       'replaceText': {
         'Acallam Na Senorach': '真妖槍旋',
         'Acceleration Bomb': '加速度炸彈',
-        // 'Adds': '', // FIXME '小怪'
+        'Adds': '小怪',
         'Ame-no-Sakahoko': '天逆矛',
         'Astral Essence': '光之腕',
         'Auroral Wind': '極光之風',
@@ -1323,9 +1322,9 @@ const triggerSet: TriggerSet<Data> = {
         'Bleed Attack': '攻擊',
         'Booming Lament': '哀痛雷鳴',
         'Call Wyvern': '召喚飛龍',
-        // 'Carver/Spinner': '', // FIXME '靠近/远离'
+        'Carver/Spinner': '靠近/遠離',
         'Cloud to Ground': '襲雷',
-        'Cube Form': '形態變化',
+        'Cube Form': '立方體形態',
         'Eidos': '變異',
         'Elemental Magicks': '元素魔法',
         'Elemental Shift': '元素開關',
@@ -1349,24 +1348,24 @@ const triggerSet: TriggerSet<Data> = {
         'Mourning Star': '晨星鎚',
         'Mythcall': '幻槍招來',
         'Orb x5': '重力地雷',
-        // 'Ozma Ability': '', // FIXME '奥兹玛技能'
+        'Ozma Ability': '奧斯瑪技能',
         'Piercing Dark': '暗之槍',
         'Piercing Light': '光之槍',
         'Pitfall': '強襲',
-        'Pyramid Form': '形態變化',
-        // 'Random Form': '', // FIXME '随机形式'
-        'Random Shade': '形態變化',
-        // 'Shade Ability': '', // FIXME '影子技能'
+        'Pyramid Form': '金字塔形態',
+        'Random Form': '隨機形態',
+        'Random Shade': '隨機影子',
+        'Shade Ability': '影子技能',
         'Shingan': '真眼擊',
         'Shooting Star': '流星',
         'Soak Attack': '攻擊',
         'Spear Copy': '幻槍振',
-        // 'Spear Shade': '', // FIXME '矛影子'
-        'Sphere Form': '形態變化',
+        'Spear Shade': '矛影子',
+        'Sphere Form': '球形態',
         'Spiritcull': '連裝魔',
         'Spirits of the Fallen': '英靈魂',
-        // 'Stack': '', // FIXME '分摊'
-        'Star Form': '形態變化',
+        'Stack': '分攤',
+        'Star Form': '星星形態',
         'Streak Lightning': '雷槍擊',
         'Thricecull': '三連槍',
         'Thundercall': '招雷',
@@ -1374,7 +1373,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ultimate Zantetsuken': '極·斬鐵劍',
         'Umbral Essence': '暗之腕',
         'Whirling Zantetsuken': '旋·斬鐵劍',
-        // 'Wyvern Explosion': '', // FIXME '飞龙爆炸'
+        'Wyvern Explosion': '飛龍爆炸',
       },
     },
     {

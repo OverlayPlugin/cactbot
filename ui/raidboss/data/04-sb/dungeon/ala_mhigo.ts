@@ -261,7 +261,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aulus Mal Asina': '奧盧斯·瑪爾·亞希納',
         'Magitek Scorpion': '守衛機蠍',
@@ -290,9 +289,9 @@ const triggerSet: TriggerSet<Data> = {
         'Order To Charge': '出擊命令',
         'Order To Fire': '攻擊命令',
         'Storm, Swell, Sword': '秘劍風雷妖',
-        // 'Storm\\?/Swell\\?(?!/Sword)': '', // FIXME '雷切?/风断?'
-        // 'Storm\\?/Swell\\?/Sword\\?': '', // FIXME '雷切?/风断?/妖刀?'
-        // 'Swell/Sword': '', // FIXME '风断/妖刀'
+        'Storm\\?/Swell\\?(?!/Sword)': '雷切?/風斷?',
+        'Storm\\?/Swell\\?/Sword\\?': '雷切?/風斷?/妖刀?',
+        'Swell/Sword': '風斷/妖刀',
         'Tail Laser': '尾部射線',
         'Target Search': '尋找目標',
         'Unmoving Troika': '不動三段',

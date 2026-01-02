@@ -203,7 +203,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Amikiri': '切網蝦蛄',
         'Naishi-No-Kami': '尚侍',
@@ -214,8 +213,8 @@ const triggerSet: TriggerSet<Data> = {
         'The Harutsuge Gate': '春告門前',
       },
       'replaceText': {
-        // '--add--': '', // FIXME '--小怪--'
-        // '--adds--': '', // FIXME '--小怪--'
+        '--add--': '--小怪--',
+        '--adds--': '--小怪--',
         'Abyssal Volcano': '海底火山',
         'Black Tide': '黑潮',
         'Coriolis Kick': '暴風踢',

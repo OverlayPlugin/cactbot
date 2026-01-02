@@ -62,7 +62,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Les mandragores du canal apparaissent, tuez les dans l\'ordre',
           cn: '已生成 运河蔓德拉战队, 依次击杀!',
           ko: '만드라즈 등장, 순서대로 잡기!',
-          tc: '已生成 運河蔓德拉戰隊, 依次擊殺!',
+          tc: '已生成 運河曼德拉戰隊, 依次擊殺!',
         },
       },
     },

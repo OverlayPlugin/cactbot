@@ -348,15 +348,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Calculations indicate increased probability of defeat': '', // FIXME '警告……警告……失败的危险性上升……'
+        'Calculations indicate increased probability of defeat': '警告……警告……失敗的危險性上升……',
         'Omega(?!-)': '歐米茄',
         'Omega-M': '歐米茄M',
         'Optical Unit': '視覺組',
-        // 'Progress to party combat': '', // FIXME '确认到单独战斗的极限'
-        // '<blip> Limits of single combatant': '', // FIXME '分析……确认到单'
-        // '<blip> Warning\\. Calculations indicate': '', // FIXME '警告……警告……失败的危险性上升……'
+        'Progress to party combat': '確認到單獨戰鬥的極限',
+        '<blip> Limits of single combatant': '分析……確認到單',
+        '<blip> Warning\\. Calculations indicate': '警告……警告……失敗的危險性上升……',
       },
       'replaceText': {
         'Beyond Strength': '盾連擊G',

@@ -56,7 +56,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} にマーカー',
           cn: '喷火点${player}',
           ko: '${player} 불징',
-          tc: '噴火點${player}',
+          tc: '噴火點 ${player}',
         },
       },
     },
@@ -358,7 +358,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ancient Dragon': '遠古之龍',
         'Midgardsormr': '幻龍米德加爾特',
@@ -369,24 +368,24 @@ const triggerSet: TriggerSet<Data> = {
         'Akh Rhai': '天光輪迴',
         'Cardinals': '紅翼之焰',
         'Cauterize': '灼熱俯衝',
-        // 'Corners': '', // FIXME '角'
+        'Corners': '角落',
         'Crimson Breath': '深紅吐息',
         'Dry Ice': '冰塵',
         'Earth Shaker': '大地搖動',
         'Exaflare': '百京火光',
         'Flame Blast': '烈焰十字爆',
-        // 'Flip': '', // FIXME '竖转'
+        'Flip': '垂直轉',
         'Frost Breath': '寒霜吐息',
         'Horrid Roar': '恐懼咆哮',
         'Hot Tail': '燃燒之尾',
-        // 'In/Out': '', // FIXME '靠近/远离'
-        // '(?<!\/)Out': '', // FIXME '远离'
+        'In/Out': '靠近/遠離',
+        '(?<!\/)Out': '遠離',
         'Northern Cross': '北十字星',
-        // 'Position': '', // FIXME '站位'
+        'Position': '站位',
         'Protostar': '原恆星',
-        // 'Shaker/Thunder': '', // FIXME '大地摇动/闪雷风暴'
-        // 'Signal': '', // FIXME '信号'
-        // 'Spin': '', // FIXME '横转'
+        'Shaker/Thunder': '大地搖動/雷暴',
+        'Signal': '信號',
+        'Spin': '橫轉',
         'Tail End': '煞尾',
         'Thunderstorm': '雷暴',
         'Time Immemorial': '開天闢地',

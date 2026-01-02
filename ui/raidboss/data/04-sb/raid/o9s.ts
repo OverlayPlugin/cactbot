@@ -422,7 +422,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'HP戻して',
           cn: '奶满全队',
           ko: '전원 체력 풀피로',
-          tc: '奶滿全隊',
+          tc: '補滿全隊',
         },
         healTankshealersToFull: {
           en: 'Heal Tanks/Healers to full',
@@ -431,7 +431,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'HP戻して',
           cn: '奶满T奶',
           ko: '탱/힐 체력 풀피로',
-          tc: '奶滿T奶',
+          tc: '補滿坦補',
         },
       },
     },
@@ -652,7 +652,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Chaos': '卡奧斯',
       },
@@ -665,8 +664,8 @@ const triggerSet: TriggerSet<Data> = {
         'Damning Edict': '詛咒敕令',
         'Earthquake': '地震',
         'Fiendish Orbs': '追蹤',
-        // 'Knock(?! )': '', // FIXME '轰击'
-        // 'Long/Lat Implosion': '', // FIXME '经/纬聚爆'
+        'Knock(?! )': '轟擊',
+        'Long/Lat Implosion': '經/緯度聚爆',
         'Soul of Chaos': '混沌之魂',
         'Stray Earth': '混沌之土',
         'Stray Flames': '混沌之炎',
@@ -674,7 +673,7 @@ const triggerSet: TriggerSet<Data> = {
         'Stray Spray': '混沌之水',
         'Tsunami': '海嘯',
         'Umbra Smash': '本影爆碎',
-        // '\\(ALL\\)': '', // FIXME '\\(全部\\)'
+        '\\(ALL\\)': '(全部)',
       },
     },
     {

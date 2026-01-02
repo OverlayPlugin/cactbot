@@ -366,11 +366,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Annia Quo Soranus': '', // FIXME '安妮亚・库奥・索拉努斯'
+        'Annia Quo Soranus': '安妮亞·庫奧·索拉努斯',
         'Ceruleum Tank': '青磷水罐',
-        // 'Julia Quo Soranus': '', // FIXME '茱莉亚・库奥・索拉努斯'
+        'Julia Quo Soranus': '茱莉亞·庫奧·索拉努斯',
         'Mark III-B Magitek Colossus': '魔導巨兵三型B式',
         'Prometheus': '普羅米修士',
         'Soranus Duo': '茱莉亞&安妮亞',
@@ -379,9 +378,9 @@ const triggerSet: TriggerSet<Data> = {
         'The Provisional Imperial Landing': '帝國臨時飛艇坪',
       },
       'replaceText': {
-        // '\\(windup\\)': '', // FIXME '(发射)'
-        // '\\(cast\\)': '', // FIXME '(判定)'
-        // 'Aglaia Bite': '', // FIXME '典雅女神枪'
+        '\\(windup\\)': '(發射)',
+        '\\(cast\\)': '(判定)',
+        'Aglaia Bite': '典雅女神槍',
         'Angry Salamander': '炎獸心火擊',
         'Artificial Boost': '魔導增幅器',
         'Artificial Plasma': '魔導離子',

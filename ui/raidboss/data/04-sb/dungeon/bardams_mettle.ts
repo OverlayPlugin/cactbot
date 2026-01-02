@@ -355,7 +355,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Yol(?! )': '胡鷹',
         'Yol Feather': '胡鷹的羽毛',
@@ -369,7 +368,7 @@ const triggerSet: TriggerSet<Data> = {
         'Corpsecleaner Eagle': '清道雄鷹',
         'Garula': '加魯拉',
         'Bardam\'s Hunt': '戰士巴兒達木的獵場',
-        // '(?<! )Bardam(?!( |s|\'))': '', // FIXME '巴儿达木巨像'
+        '(?<! )Bardam(?!( |s|\'))': '巴兒達木魔像',
       },
       'replaceText': {
         'Wingbeat': '翼喚狂風',
@@ -383,7 +382,7 @@ const triggerSet: TriggerSet<Data> = {
         'Pinion': '飛羽鏢',
         'Meteor Impact': '隕石衝擊',
         'Magnetism': '磁力',
-        // 'Heavy Strike': '', // FIXME '灵极重击'
+        'Heavy Strike': '靈極重擊',
         'Heave': '掀地',
         'Flutterfall': '羽落如雨',
         'Feathercut': '飛羽斬',

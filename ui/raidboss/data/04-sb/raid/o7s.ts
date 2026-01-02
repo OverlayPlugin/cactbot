@@ -190,7 +190,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にロット',
           cn: '以太病毒点名',
           ko: '에테르 대상자',
-          tc: '以太病毒點名',
+          tc: '乙太病毒點名',
         },
         rotOn: {
           en: 'Rot on ${player}',
@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にロット',
           cn: '以太病毒点名${player}',
           ko: '"${player}" 에테르',
-          tc: '以太病毒點名${player}',
+          tc: '乙太病毒點名 ${player}',
         },
       },
     },
@@ -561,45 +561,44 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Dadaluma': '達達魯瑪',
         'Fire Control System': '武器火控系統',
         'Guardian': '守護者',
         'Ultros': '奧爾特羅斯',
-        // 'WEAPON SYSTEMS ONLINE': '', // FIXME '武器火控系统启动'
+        'WEAPON SYSTEMS ONLINE': '武器火控系統啟動',
       },
       'replaceText': {
         'Aether Rot': '乙太病毒',
         'Arm And Hammer': '臂錘',
         'Atomic Ray': '原子射線',
         'Aura Cannon': '鬥氣砲',
-        // 'Biblio': '', // FIXME '永世珍本'
+        'Biblio': '永世珍本',
         'Bomb Deployment': '設置炸彈',
         'Chain Cannon': '鏈式機關砲',
         'Chakra Burst': '脈輪爆發',
-        // 'Copy(?! Program)': '', // FIXME '复制'
-        // 'Dada': '', // FIXME '达达鲁玛'
+        'Copy(?! Program)': '複製',
+        'Dada': '達達魯瑪',
         'Demon Simulation': '載入惡魔模擬程式',
         'Diffractive Laser': '擴散雷射',
         'Diffractive Plasma': '擴散離子',
         'Ink': '墨汁',
-        // 'Interrupt Stoneskin': '', // FIXME '打断石肤'
+        'Interrupt Stoneskin': '打斷石膚',
         'Load': '載入',
         'Magitek Ray': '魔導雷射',
         'Magnetism': '磁力',
         'Main Cannon': '主加農砲',
         'Missile Simulation': '載入導彈模擬程式',
-        // 'Paste(?! Program)': '', // FIXME '粘贴'
-        // 'Plane Laser': '', // FIXME '小飞机激光'
+        'Paste(?! Program)': '貼上',
+        'Plane Laser': '小飛機雷射',
         'Prey': '導彈',
-        // 'Radar': '', // FIXME '雷达'
+        'Radar': '雷達',
         'Repel': '相斥',
         'Retrieve Air Force': '反向載入',
         'Retrieve Ultros': '反向載入',
-        // 'Run(?! Program)': '', // FIXME '实体化'
+        'Run(?! Program)': '實體化',
         'Shockwave': '衝擊波',
-        // 'Skip(?! Program)': '', // FIXME '跳过'
+        'Skip(?! Program)': '跳過',
         'Temporary Misdirection': '精神失常',
         'Tentacle(?! )': '腕足',
         'Tentacle Simulation': '載入腕足模擬程式',

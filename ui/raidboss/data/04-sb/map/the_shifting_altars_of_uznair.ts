@@ -75,7 +75,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Les mandragores d\'Altar apparaissent, tuez les dans l\'ordre',
           cn: '已生成 神殿蔓德拉战队, 依次击杀!',
           ko: '만드라즈 등장, 순서대로 잡기!',
-          tc: '已生成 神殿蔓德拉戰隊, 依次擊殺!',
+          tc: '已生成 神殿曼德拉戰隊, 依次擊殺!',
         },
       },
     },

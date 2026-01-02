@@ -263,20 +263,19 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Deathly Vine': '靈樹藤',
         'Exdeath': '艾克斯迪司',
       },
       'replaceText': {
         'Black Hole': '黑洞',
-        // 'Blizzard/Fire III': '', // FIXME '冰封/爆炎'
+        'Blizzard/Fire III': '大暴雪/大火焰',
         'Clearout': '橫掃',
         'Collision': '衝擊',
         'Doom': '死亡宣告',
         'Flare': '火光',
         'Holy': '神聖',
-        // 'Mega Blizzard/Fire/Thunder': '', // FIXME '冰封/爆炎/暴雷（强化）'
+        'Mega Blizzard/Fire/Thunder': '大暴雪/大火焰/大雷電（強化）',
         'Meteor': '隕石',
         'The Decisive Battle': '決戰',
         '(?<!/)Thunder III': '大雷電',

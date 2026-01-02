@@ -56,7 +56,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'まもなく真空波',
           cn: '马上真空波',
           ko: '곧 진공파',
-          tc: '馬上真空波',
+          tc: '即將真空波',
         },
       },
     },
@@ -1306,15 +1306,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<! )Exdeath': '艾克斯迪司',
         'Neo Exdeath': '新生艾克斯迪司',
       },
       'replaceText': {
-        // '\\(charge\\)': '', // FIXME '(排队)'
-        // '\\(colors': '', // FIXME '(鸳鸯锅'
-        // 'lasers\\)': '', // FIXME '激光)'
+        '\\(charge\\)': '(排隊)',
+        '\\(colors': '(看顏色',
+        'lasers\\)': '雷射)',
         'Aero III': '大勁風',
         'Almagest': '至高無上',
         'Black Hole': '黑洞',
@@ -1323,11 +1322,11 @@ const triggerSet: TriggerSet<Data> = {
         'Collision': '衝擊',
         'Delta Attack': '三角攻擊',
         'Double Attack': '雙重攻擊',
-        // 'Tethers': '', // FIXME '连线'
+        'Tethers': '連線',
         'Dualcast': '連續魔法',
         'Earth Shaker': '大地搖動',
         'Emptiness': '無之失控',
-        // 'Final Battle': '', // FIXME '最终之战'
+        'Final Battle': '最終之戰',
         'Fire III': '大火焰',
         'Flare': '火光',
         'Flying Frenzy': '大狂亂',
@@ -1343,7 +1342,7 @@ const triggerSet: TriggerSet<Data> = {
         'Neverwhere': '規律崩壞',
         'The Decisive Battle': '決戰',
         'Thunder III': '大雷電',
-        // 'T/H': '', // FIXME 'T/奶'
+        'T/H': '坦/補',
         'Vacuum Wave': '真空波',
         'White Hole': '白洞',
         'Zombie Breath': '殭屍吐息',

@@ -330,15 +330,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Destroy! Destroy! Destroy! I will destroy it all!': '', // FIXME '我要破坏一切！破坏！破坏！破坏！'
+        'Destroy! Destroy! Destroy! I will destroy it all!': '我要破壞一切！破壞！破壞！破壞！',
         'Graven Image': '眾神之像',
         'Kefka': '凱夫卡',
       },
       'replaceText': {
         'Aero Assault': '疼颼颼大勁風',
-        // 'Aero/Ruin': '', // FIXME '暴风/毁荡'
+        'Aero/Ruin': '勁風/毀滅',
         'Blizzard Blitz': '滴溜溜大暴雪',
         'Flagrant Fire': '呼啦啦大火焰',
         'Graven Image': '眾神之像',

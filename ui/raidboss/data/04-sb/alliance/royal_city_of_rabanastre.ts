@@ -54,7 +54,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '呼吸困難 :${num}',
           cn: '窒息层数:${num}',
           ko: '호흡곤란: ${num}',
-          tc: '窒息層數:${num}',
+          tc: '窒息層數: ${num}',
         },
         getInBubble: {
           en: 'Get In Bubble',
@@ -688,7 +688,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aqua Sphere': '水球',
         'Archaeodemon': '古惡魔',
@@ -710,15 +709,13 @@ const triggerSet: TriggerSet<Data> = {
         'The Lesalia Garden Ruins': '勒薩利亞圓庭遺跡',
         'The Lesalia Temple Ruins': '勒薩利亞神殿遺跡',
         'The Palace Square': '王宮前廣場',
-        // 'The heavens tremble in my wake': '', // FIXME '我的战车驰骋天际！'
+        'The heavens tremble in my wake': '我的戰車馳騁天際！',
       },
       'replaceText': {
-        // '--Shade--': '', // FIXME '--阴影--'
-        // '--Shard--': '', // FIXME '--碎片--'
-        // '--enrage--': '', // FIXME '--狂暴--'
-        // '--invulnerable--': '', // FIXME '--无敌--'
-        // '--lock out--': '', // FIXME '--封锁--'
-        // 'Adds': '', // FIXME '出现'
+        '--enrage--': '--狂暴--',
+        '--invulnerable--': '--無敵--',
+        '--lock out--': '--封鎖--',
+        'Adds': '出現',
         'Aqua Sphere': '水球',
         'Archaeodemon': '古惡魔',
         'Azure Guard': '蔚藍護衛',
@@ -749,11 +746,11 @@ const triggerSet: TriggerSet<Data> = {
         'Flume Toad': '渡槽蟾蜍',
         'Frostwave': '寒冰波動',
         'Gnawing Dread': '喪失之痛',
-        // 'Golem': '', // FIXME '巨像兵'
+        'Golem': '石板魔像',
         'Hammerfall': '錘擊',
         'Heartless': '冷血劍',
         'Heavenly Subjugation': '天將霸道擊',
-        // 'Hole In One': '', // FIXME '去BOSS脚下'
+        'Hole In One': '去BOSS腳下',
         'Impact': '衝擊',
         'Jagged Edge': '岩石突擊',
         'Judgment Blade': '不動無明劍',
@@ -770,6 +767,8 @@ const triggerSet: TriggerSet<Data> = {
         'Royal Blood': '高貴血脈',
         'Sanction': '制裁之刃',
         'Sand Sphere': '沙球',
+        'Shade': '阿加斯之影',
+        'Shard': '虛無結晶',
         'Snowpierce': '冰槍突刺',
         'Soulfix': '咒槍穿刺',
         'Submission Tower': '服從之塔',

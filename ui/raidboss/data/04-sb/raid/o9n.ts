@@ -268,11 +268,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Chaos': '卡奧斯',
-        // 'The crystal...destroyed!?': '', // FIXME '居然……把黑水晶给'
-        // 'YOU DARE!': '', // FIXME '居然……把黑水晶给……'
+        'The crystal...destroyed!?': '居然……把黑水晶給',
+        'YOU DARE!': '居然……把黑水晶給……',
       },
       'replaceText': {
         'Big Bang': '頂起',
@@ -284,8 +283,8 @@ const triggerSet: TriggerSet<Data> = {
         'Damning Edict': '詛咒敕令',
         'Earthquake': '地震',
         'Fiendish Orbs': '追蹤',
-        // 'Knock(?! )': '', // FIXME '轰击'
-        // 'Long/Lat Implosion': '', // FIXME '经/纬度聚爆'
+        'Knock(?! )': '轟擊',
+        'Long/Lat Implosion': '經/緯度聚爆',
         'Soul of Chaos': '混沌之魂',
         'Stray Flames': '混沌之炎',
         'Stray Spray': '混沌之水',
