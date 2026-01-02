@@ -111,10 +111,15 @@ export default class AnalyzedEncounter extends EventBus {
   }
 
   async analyze(): Promise<void> {
-    // @TODO: Make this run in parallel sometime in the future, since it could be really slow?
     if (this.encounter.combatantTracker) {
-      for (const id of this.encounter.combatantTracker.partyMembers)
-        await this.analyzeFor(id);
+      const partyMembers = this.encounter.combatantTracker.partyMembers;
+      const batchSize = 8;
+
+      for (let i = 0; i < partyMembers.length; i += batchSize) {
+        const batch = partyMembers.slice(i, i + batchSize);
+        const tasks = batch.map((id) => this.analyzeFor(id));
+        await Promise.all(tasks);
+      }
     }
 
     // Free up this memory
