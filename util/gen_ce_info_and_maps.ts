@@ -105,8 +105,8 @@ type ResultDynamicEventType = {
 
 type LocaleCsvTables = {
   cn: Record<string, Record<string, string | undefined>>;
-  tc: Record<string, Record<string, string | undefined>>;
   ko: Record<string, Record<string, string | undefined>>;
+  tc: Record<string, Record<string, string | undefined>>;
 };
 
 type IndexedDynamicEventSetSubrow = {
