@@ -108,7 +108,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'St Mocianne Hard Landslip',
       type: 'StartsUsing',
-      netRegex: { id: '3132', source: 'Silt Golem' },
+      netRegex: { id: '3132', source: 'Lakhamu' },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
