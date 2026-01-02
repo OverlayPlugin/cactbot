@@ -223,7 +223,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'エラプション',
           cn: '诱导地火',
           ko: '용암 분출 유도',
-          tc: '誘導地火',
+          tc: '誘導噴發',
         },
       },
     },
@@ -870,7 +870,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '鎖 (相手: ${player})',
           cn: '锁链 (与 /${player})',
           ko: '사슬 (+${player})',
-          tc: '鎖鏈 (與 /${player})',
+          tc: '鎖鏈 (與 ${player})',
         },
       },
     },
@@ -930,9 +930,9 @@ const triggerSet: TriggerSet<Data> = {
         ko: `첫 번째 기둥이 남동쪽인 경우, 역방향 Z와 일반 Z 모두에 대해 남동/북서를 호출합니다.
              첫 번째 기둥이 남쪽인 경우, 역방향 Z는 남동/북서를, 일반 Z는 남서/북동를 호출합니다.
              다른 기둥 순서도 지원되며, 이는 예시일 뿐입니다.`,
-        tc: `如果第一個火神柱在右下，則反向 Z 和正常 Z 都會提示右下/左上
-             如果第一個火神柱在下, 則反向 Z 將提示右下/左上，正常 Z 將提示左下/右上。
-             這些只是舉例, 其他火神柱順序也支持。`,
+        tc: `如果第一個火神柱在東南，則反向 Z 和正常 Z 都會提示東南/西北
+             如果第一個火神柱在南面, 則反向 Z 將提示東南/西北，正常 Z 將提示西南/東北。
+             這些只是舉例, 其他火神柱順序也支援。`,
       },
       type: 'NameToggle',
       netRegex: { name: 'Ifrit', toggle: '00', capture: false },
@@ -995,8 +995,8 @@ const triggerSet: TriggerSet<Data> = {
         ko: `첫 번째 기둥이 대각선에 있으면 첫 번째 이프리트 돌진도 대각선에 있으며,
              이 알람은 첫 번째 돌진 옆으로 이동하라는 것이 됩니다.
              이미 안전하다면 이 알람은 호출되지 않습니다.`,
-        tc: `如果第一個火神柱在對角線上，那麼第一次火神沖也在對角線上。
-             這個可選提示會提示你移動到第一次火神沖附近的位置。
+        tc: `如果第一個火神柱在對角線上，那麼第一次火神衝也在對角線上。
+             這個可選提示會提示你移動到第一次火神衝附近的位置。
              如果你已在安全區，則不會輸出此提示。`,
       },
       type: 'NameToggle',
@@ -1063,9 +1063,9 @@ const triggerSet: TriggerSet<Data> = {
              본대와 힐러 모두 45도 또는 90도로 움직입니다.
              이프리트의 후속 돌진을 피하기 위해 빠르게 이동해야 하는 경우 "빠른" 이동입니다.
              시간적 여유가 있다면 "느린" 이동입니다.`,
-        tc: `這是從第一次火神沖附近開始的火神沖主要移動。
+        tc: `這是從第一次火神衝附近開始的火神衝主要移動。
              人群和奶媽都將移動 45 度或 90 度。
-             "快" 表示需要快速移動才能躲開火神沖。
+             "快" 表示需要快速移動才能躲開火神衝。
              "慢" 表示移動時間相對比較充足。`,
       },
       type: 'NameToggle',
@@ -1441,7 +1441,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${num} で (${player} が死亡)',
           cn: '所有人到 ${num} (${player}死亡)',
           ko: '전부다 ${num} 쪽으로 (${player} 죽음)',
-          tc: '所有人到 ${num} (${player}死亡)',
+          tc: '所有人到 ${num} (${player} 死亡)',
         },
       },
     },
@@ -1491,7 +1491,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ヒラLB！',
           cn: '奶妈LB!',
           ko: '힐러 리밋!',
-          tc: '奶媽LB!',
+          tc: '補師LB!',
         },
       },
     },
@@ -1740,7 +1740,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー (北)',
           cn: '上半场激光',
           ko: '북쪽 레이저',
-          tc: '上半場雷射',
+          tc: '北半場雷射',
         },
       },
     },
@@ -1757,7 +1757,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー (東)',
           cn: '右半场激光',
           ko: '동쪽 레이저',
-          tc: '右半場雷射',
+          tc: '東半場雷射',
         },
       },
     },
@@ -2100,7 +2100,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bomb Boulder': '爆破岩石',
         'Chirada': '妙翅',
@@ -2117,8 +2116,8 @@ const triggerSet: TriggerSet<Data> = {
         'Aerial Blast': '大氣爆發',
         'Aetheric Boom': '乙太波動',
         'Aetherochemical Laser': '魔科學雷射',
-        // '(?<! )Aetheroplasm': '', // FIXME '以太爆雷'
-        // 'Apply Viscous': '', // FIXME '吸附式炸弹'
+        '(?<! )Aetheroplasm': '乙太爆雷',
+        'Apply Viscous': '吸附式炸彈',
         'Blight': '毒霧',
         'Bury': '衝擊',
         'Ceruleum Vent': '青磷放射',
@@ -2147,14 +2146,14 @@ const triggerSet: TriggerSet<Data> = {
         'Mistral Shriek': '寒風之嘯',
         'Mistral Song': '寒風之歌',
         'Mountain Buster': '山崩',
-        // 'Nail Adds': '', // FIXME '火神柱'
+        'Nail Adds': '火神柱',
         'Radiant Plume': '光輝炎柱',
         'Rock Buster': '岩石破壞者',
         'Rock Throw': '花崗岩牢獄',
         'Searing Wind': '灼熱',
         'Self-detonate': '霧散爆發',
         'Slipstream': '螺旋氣流',
-        // 'Summon Random Primal': '', // FIXME '召唤随机蛮神'
+        'Summon Random Primal': '召喚隨機蠻神',
         'Tank Purge': '魔導火光',
         'Tumult': '激震',
         'Ultima(?!\\w)': '最終究極',
