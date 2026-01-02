@@ -52,6 +52,7 @@ UserConfig.registerOptions('general', {
           'French (fr)': 'fr',
           'Japanese (ja)': 'ja',
           'Korean (ko)': 'ko',
+          'Traditional Chinese (tc)': 'tc',
         },
         de: {
           'Benutze FFXIV Plugin Sprache': 'default',
@@ -61,6 +62,7 @@ UserConfig.registerOptions('general', {
           'Französisch (fr)': 'fr',
           'Japanisch (ja)': 'ja',
           'Koreanisch (ko)': 'ko',
+          'Traditionelles Chinesisch (tc)': 'tc',
         },
         fr: {
           'Utiliser la langue du Plugin FFXIV': 'default',
@@ -70,6 +72,7 @@ UserConfig.registerOptions('general', {
           'Français (fr)': 'fr',
           'Japonais (ja)': 'ja',
           'Coréen (ko)': 'ko',
+          'Chinois traditionnel (tc)': 'tc',
         },
         ja: {
           'FFXIV Pluginの言語設定': 'default',
@@ -79,6 +82,7 @@ UserConfig.registerOptions('general', {
           'フランス語 (fr)': 'fr',
           '日本語 (ja)': 'ja',
           '韓国語 (ko)': 'ko',
+          '繁体字中国語 (tc)': 'tc',
         },
         cn: {
           '使用最终幻想XIV解析插件设置的语言': 'default',
@@ -88,6 +92,7 @@ UserConfig.registerOptions('general', {
           '法文 (fr)': 'fr',
           '日文 (ja)': 'ja',
           '韩文 (ko)': 'ko',
+          '繁体中文 (tc)': 'tc',
         },
         ko: {
           'FFXIV Plugin 언어 사용': 'default',
@@ -97,6 +102,17 @@ UserConfig.registerOptions('general', {
           '프랑스어 (fr)': 'fr',
           '일본어 (ja)': 'ja',
           '한국어 (ko)': 'ko',
+          '중국어 번체 (tc)': 'tc',
+        },
+        tc: {
+          '使用最終幻想XIV解析插件設置的語言': 'default',
+          '英文 (en)': 'en',
+          '中文 (cn)': 'cn',
+          '德文 (de)': 'de',
+          '法文 (fr)': 'fr',
+          '日文 (ja)': 'ja',
+          '韓文 (ko)': 'ko',
+          '繁體中文 (tc)': 'tc',
         },
       },
       default: 'default',

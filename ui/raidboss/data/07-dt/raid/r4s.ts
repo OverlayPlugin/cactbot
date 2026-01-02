@@ -484,6 +484,10 @@ const triggerSet: TriggerSet<Data> = {
 
              없음: 디버프만 알림, 전략 없음.
              DN: <a href="https://pastebin.com/teF90QGm" target="_blank">shabin pastebin</a>기반의 고정 위치 사용.`,
+        tc: `在 離子簇 機制中處理 debuff 的策略。
+
+             無: 只播報 Debuff, 不使用策略。
+             DN: 使用基於 <a href="https://pastebin.com/teF90QGm" target="_blank">shabin pastebin</a> 的固定站位。`,
       },
       type: 'select',
       options: {
@@ -505,6 +509,10 @@ const triggerSet: TriggerSet<Data> = {
         },
         ko: {
           '없음': 'none',
+          'DN': 'DN',
+        },
+        tc: {
+          '無': 'none',
           'DN': 'DN',
         },
       },
@@ -545,6 +553,11 @@ const triggerSet: TriggerSet<Data> = {
              없음: 파티 위치와 유도 위치를 모두 알림, 특별한 전략 없음.<br>
              DN: DN 업타임 전략. 탱커가 첫 번째 근접 유도를, 힐러가 첫 번째 원거리 유도를,
              근거리 딜러가 두 번째 근접 유도를, 마지막으로 원거리 딜러가 두 번째 원거리 유도를 합니다.`,
+        tc: `誘導魔女狩獵 AOE 的策略。<br>
+             無: 同時播報小隊和誘導位置，無特定策略。<br>
+             DN: DN uptime 策略, 優先級靈活, 坦克負責第一個近誘導,
+             治療負責第一個遠誘導, 近戰 DPS 負責第二個近誘導,
+             最後遠程 DPS 負責第二個遠誘導。`,
       },
       type: 'select',
       options: {
@@ -566,6 +579,10 @@ const triggerSet: TriggerSet<Data> = {
         },
         ko: {
           '없음': 'none',
+          'DN': 'DN',
+        },
+        tc: {
+          '無': 'none',
           'DN': 'DN',
         },
       },
@@ -608,6 +625,11 @@ const triggerSet: TriggerSet<Data> = {
              탱/힐은 북서부터 반시계 방향으로 기둥이나 대포를 찾습니다.
              딜러는 북쪽부터 시계 방향으로 기둥이나 대포를 찾습니다.
         `,
+        tc: `處理黑色安息日的日出的策略。<br>
+             無: 播報 Debuff, 雙塔生成, 和匹配的塔。<br>
+             Snakes Prio: 流行於北美招募版的優先級系統。
+             T 奶玩家從西北方開始逆時針尋找塔或炮。
+             DPS 玩家從正北方開始順時針尋找塔或炮。`,
       },
       type: 'select',
       options: {
@@ -629,6 +651,10 @@ const triggerSet: TriggerSet<Data> = {
         },
         ko: {
           '없음': 'none',
+          'Snakes Prio': 'snakePrio',
+        },
+        tc: {
+          '無': 'none',
           'Snakes Prio': 'snakePrio',
         },
       },

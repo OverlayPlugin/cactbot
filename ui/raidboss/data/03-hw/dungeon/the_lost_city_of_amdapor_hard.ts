@@ -425,7 +425,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Achamoth': '阿卡莫特',
         'Dark Wings': '黑旋風',
@@ -440,7 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         'light sprite': '光元精',
       },
       'replaceText': {
-        // '--adds--': '', // FIXME '--小怪--'
+        '--adds--': '--小怪--',
         'Ancient Aero': '古代勁風',
         'Ancient Holy': '古代神聖',
         'Ancient Libra': '古代偵測',

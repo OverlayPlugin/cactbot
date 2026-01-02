@@ -88,7 +88,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${players}に蒸気ミサイル',
           cn: '导弹点${players}',
           ko: '"${players}" 증기 미사일',
-          tc: '導彈點${players}',
+          tc: '導彈點 ${players}',
         },
       },
     },
@@ -272,14 +272,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '3000-Tonze Missile': '超大型導彈',
         'Faust': '浮士德',
         'Hangar 8': '第8大型機庫',
         'Machinery Bay 44': '第44機工兵倉庫',
         'Oppressor(?! 0)': '壓迫者',
-        // 'Oppressor 0\\\\.5': '', // FIXME '压迫者零号'
+        'Oppressor 0\\\\.5': '壓迫者零號',
       },
       'replaceText': {
         '3000-Tonze Missile': '超大型導彈',

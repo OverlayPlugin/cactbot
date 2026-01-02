@@ -178,26 +178,25 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ravana': '羅波那',
       },
       'replaceText': {
-        // '\\?': '', // FIXME ' ?'
-        // '\\(1st Double Prey\\)': '', // FIXME '(第1次双红球点名)'
-        // '\\(2nd Double Prey\\)': '', // FIXME '(第2次双红球点名)'
-        // '\\(Circles\\)': '', // FIXME '(圆圈)'
-        // '\\(Flames\\)': '', // FIXME '(十字火) '
-        // '\\(Inner AoE\\)': '', // FIXME '(中间AOE)'
-        // '\\(Outer AoE\\)': '', // FIXME '(外圈AOE)'
+        '\\?': ' ?',
+        '\\(1st Double Prey\\)': '(第1次雙紅球點名)',
+        '\\(2nd Double Prey\\)': '(第2次雙紅球點名)',
+        '\\(Circles\\)': '(圓圈)',
+        '\\(Flames\\)': '(十字火) ',
+        '\\(Inner AoE\\)': '(中間AOE)',
+        '\\(Outer AoE\\)': '(外圈AOE)',
         'Atma-Linga': '武神魂',
         'Beetle Avatar': '甲殼化身',
         'Blades of Carnage and Liberation': '焰劍',
         'Blinding Blade': '武神閃',
         'Bloody Fuller': '神通力',
         'Chandrahas': '明月之笑',
-        // 'Clone Spawn': '', // FIXME '分身出现'
-        // 'Clone Dash': '', // FIXME '分身冲锋'
+        'Clone Spawn': '分身出現',
+        'Clone Dash': '分身衝鋒',
         'Dragonfly Avatar': '武毅化身',
         'Final Liberation': '光焰【滅】',
         'Laughing Rose': '月氣彈',
@@ -207,12 +206,12 @@ const triggerSet: TriggerSet<Data> = {
         'Scorpion Avatar': '光焰化身',
         'Surpanakha': '穿甲散彈',
         'Swift Liberation(?! Dash)': '光焰【急】',
-        // 'Swift Liberation Dash': '', // FIXME '光焰【急】+冲锋'
+        'Swift Liberation Dash': '光焰【急】+衝鋒',
         'Tapasya': '鬼武神',
         'The Rose Of Conquest': '鬥氣爆碎',
         'The Rose Of Conviction': '鬥氣彈',
         'The Rose Of Hate': '鬥氣砲',
-        // 'The Seeing': '', // FIXME '左翼防御/右翼防御/两翼防御'
+        'The Seeing': '左翼防御/右翼防御/兩翼防御',
         'Warlord Flame': '武神焰',
         'Warlord Shell': '武神甲',
       },

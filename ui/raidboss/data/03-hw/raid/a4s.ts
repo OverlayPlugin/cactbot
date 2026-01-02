@@ -40,7 +40,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}に玉',
           cn: '球点${player}',
           ko: '"${player}" 구슬',
-          tc: '球點${player}',
+          tc: '球點 ${player}',
         },
         orbsOnYou: {
           en: 'Orbs on YOU',
@@ -68,7 +68,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スタン: ${name}',
           cn: '眩晕${name}',
           ko: '${name}기절 시키기',
-          tc: '眩暈${name}',
+          tc: '眩暈 ${name}',
         },
       },
     },

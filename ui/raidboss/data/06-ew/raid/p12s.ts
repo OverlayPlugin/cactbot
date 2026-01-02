@@ -458,6 +458,12 @@ const triggerSet: TriggerSet<Data> = {
           '선 연결된 곳의 시계방향': 'clockwise',
           '공략 없음: 그냥 기둥 색만 알림': 'tower',
         },
+        tc: {
+          '看小怪位置(菓子)': 'tetherbase',
+          '垂直拉線 (Game8)': 'quadrant',
+          '對角拉線': 'clockwise',
+          '僅提示塔顏色': 'tower',
+        },
       },
       default: 'tower',
     },
@@ -513,6 +519,14 @@ const triggerSet: TriggerSet<Data> = {
           'Δ○X□ (TOXS)': 'tcxs',
           '모양과 디버프만 알림': 'shapeAndDebuff',
         },
+        tc: {
+          'X□○Δ (BPOG)': 'xsct',
+          '○XΔ□ (1234筆畫)': 'cxts',
+          '○Δ□X (Rocketship)': 'ctsx',
+          '○ΔX□ (彩虹)': 'ctxs',
+          'Δ○X□ (TOXS)': 'tcxs',
+          '只報形狀和debuff': 'shapeAndDebuff',
+        },
       },
       default: 'shapeAndDebuff',
     },
@@ -532,6 +546,8 @@ const triggerSet: TriggerSet<Data> = {
         cn: `直接报自己图案的最终位置，不报变换前的。例如，对于 BPOG 打法，蓝 X 会直接报第一列（西面最远）。
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
         ko: `선택한 도형 순서에 따른 최종 위치만 알립니다. 예시에서 파보빨초를 기준으로 파랑 X는 1열이 됩니다.
+            <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
+        tc: `直接報自己圖案的最終位置，不報變換前的。例如，對於 BPOG 打法，藍 X 會直接報第一列（西面最遠）。
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
       },
       name: {
@@ -580,6 +596,11 @@ const triggerSet: TriggerSet<Data> = {
         ko: {
           '교체가 필요할 때만 알림': 'agnostic',
           '0+2 (빠른 융합)': 'not',
+          '1+2 (Yuki/Rinon)': 'one',
+        },
+        tc: {
+          '只提示交換顏色': 'agnostic',
+          '0+2 (HRT)': 'not',
           '1+2 (Yuki/Rinon)': 'one',
         },
       },

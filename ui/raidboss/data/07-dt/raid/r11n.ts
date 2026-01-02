@@ -257,7 +257,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11N Charybdistopia',
       type: 'StartsUsing',
       netRegex: { id: 'B3D7', source: 'The Tyrant', capture: false },
-      response: Responses.aoe(),
+      response: Responses.hpTo1Aoe(),
     },
     {
       id: 'R11N Ultimate Trophy Weapons Call',

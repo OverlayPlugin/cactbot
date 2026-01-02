@@ -236,7 +236,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'マンティコア化',
           cn: '曼提克化',
           ko: '만티코어 변신',
-          tc: '曼提克化',
+          tc: '蠍尾獅化',
         },
         lust: {
           en: 'Lust',
@@ -245,7 +245,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サキュバス化',
           cn: '梦魔化',
           ko: '서큐버스 변신',
-          tc: '夢魔化',
+          tc: '魅魔化',
         },
         intuition: {
           en: 'Intuition',
@@ -294,7 +294,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '転移が出来ます',
           cn: '转移石冢已启动',
           ko: '전송 석탑 활성화',
-          tc: '轉移石塚已啟動',
+          tc: '傳送石塚已啟動',
         },
       },
     },

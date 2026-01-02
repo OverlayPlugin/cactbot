@@ -327,6 +327,13 @@ const templateOptions: OptionsTemplate = {
           '직업 전체 (암흑기사)': 'jobFull',
           '이름 전체 (Tini Poutini)': 'name',
         },
+        tc: {
+          '暱稱 (弗雷)': 'nick',
+          '職能 (坦克)': 'role',
+          '職業簡稱 (暗騎)': 'job',
+          '職業全稱 (暗黑騎士)': 'jobFull',
+          '全名 (弗雷)': 'name',
+        },
       },
       default: 'nick',
     },

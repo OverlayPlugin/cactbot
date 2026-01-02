@@ -526,17 +526,16 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Coronal Wind': '冠狀氣流',
         'Sephirot': '賽菲羅特',
         'Storm Of Words': '言語風暴',
       },
       'replaceText': {
-        // 'puddle(?:s)?': '', // FIXME '圈圈'
-        // 'spread': '', // FIXME '散开'
-        // 'Tethers': '', // FIXME '连线'
-        // 'Adds Spawn': '', // FIXME '小怪出现'
+        'puddle(?:s)?': '圈圈',
+        'spread': '散開',
+        'Tethers': '連線',
+        'Adds Spawn': '小怪出現',
         'Ascension': '上升氣流',
         'Chesed(?! Gevurah)': '仁慈',
         'Chesed Gevurah': '嚴酷之仁慈',

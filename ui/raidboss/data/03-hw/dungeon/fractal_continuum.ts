@@ -86,7 +86,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'エスナ：魔科学爆弾',
           cn: '康复魔炸弹',
           ko: '폭탄 디버프 해제',
-          tc: '康復魔炸彈',
+          tc: '復原 魔炸彈debuff',
         },
       },
     },
@@ -230,9 +230,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Clockwork Alarum': '', // FIXME '发条报警虫'
+        'Clockwork Alarum': '發條報警蟲',
         'Exhibit level III': '第三展示區',
         'Minotaur': '米諾陶洛斯',
         'Phantom Ray': '魅影射線',

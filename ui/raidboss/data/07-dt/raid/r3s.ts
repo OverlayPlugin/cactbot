@@ -148,6 +148,12 @@ const triggerSet: TriggerSet<Data> = {
           '1, 2번째 기둥 (권장)': 'two',
           '세 기둥 전부': 'all',
         },
+        tc: {
+          '關閉功能': 'none',
+          '第一個塔': 'first',
+          '前兩個塔 (推薦)': 'two',
+          '全部塔': 'all',
+        },
       },
       default: 'none',
     },

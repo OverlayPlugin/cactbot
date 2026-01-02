@@ -190,7 +190,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '同じ極: ${player}に近づく',
           cn: '同极：靠近${player}',
           ko: '반발: ${player}와 가까이 붙기',
-          tc: '同極：靠近${player}',
+          tc: '同極：靠近 ${player}',
         },
         attract: {
           en: 'Attract: away from ${player}',
@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '異なる極: ${player}から離れる',
           cn: '异极：远离${player}',
           ko: '자력: ${player}와 떨어지기',
-          tc: '異極：遠離${player}',
+          tc: '異極：遠離 ${player}',
         },
       },
     },
@@ -313,15 +313,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Condensate Demineralizer .9': '', // FIXME '第9大型冷凝器'
+        'Condensate Demineralizer .9': '第9大型冷凝器',
         'Hydrate Core': '水合核心',
         'Liquid Limb': '活水之手',
         'Living Liquid': '有生命活水',
       },
       'replaceText': {
-        // '--Liquid Limb spawns--': '', // FIXME '--活水之手出现--'
+        '--Liquid Limb spawns--': '--活水之手出現--',
         'Cascade': '傾瀉',
         'Drainage': '排水',
         'Fluid Strike': '流體強襲',

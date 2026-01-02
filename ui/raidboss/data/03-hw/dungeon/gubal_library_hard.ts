@@ -425,7 +425,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Behemoth Ward': '凶惡巨獸護衛',
         'Demon of the Tome': '書中惡魔',
@@ -440,7 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         'Top Shelf Tome': '精裝本',
       },
       'replaceText': {
-        // '\\?': '', // FIXME ' ?'
+        '\\?': ' ?',
         'Bibliocide': '烈火',
         'Book Drop': '發行',
         'Check Out': '選集',
@@ -449,17 +448,17 @@ const triggerSet: TriggerSet<Data> = {
         'Folio': '再版',
         'Form Shift': '演武',
         'Frightful Roar': '駭人嚎叫',
-        // 'Hand/Tornado': '', // FIXME '手/龙卷'
+        'Hand/Tornado': '手/龍捲',
         'Issue': '發行',
-        // 'Magnetism/Repel': '', // FIXME '磁力/相斥'
+        'Magnetism/Repel': '磁力/相斥',
         'Meteor Impact': '隕石衝擊',
         'Properties Of Darkness II': '昏暗之章',
-        // 'Properties Of Darkness(?! II)': '', // FIXME '黑暗之章'
+        'Properties Of Darkness(?! II)': '黑暗之章',
         'Properties Of Imps': '河童之章',
         'Properties Of Quakes': '爆震之章',
         'Properties Of Thunder III': '大雷電之章',
         'Properties Of Tornados': '龍捲風之章',
-        // 'Quakes/Tornados': '', // FIXME '爆震/龙卷'
+        'Quakes/Tornados': '爆震/龍捲風',
         'Sea Of Flames': '火海',
         'Seal Of Night And Day': '刻印',
         'Searing Wind': '熱風',

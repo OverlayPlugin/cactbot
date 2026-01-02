@@ -207,7 +207,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にバリア',
           cn: '单盾${player}',
           ko: '"${player}" 보호막',
-          tc: '單盾${player}',
+          tc: '單盾 ${player}',
         },
         tankSwapGetAway: {
           en: 'Tank Swap, Get Away',
@@ -507,7 +507,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Buzzsaw': '旋轉鏈鋸',
         'Gobpress R-VI': '6號哥布林壓路機',
@@ -517,20 +516,20 @@ const triggerSet: TriggerSet<Data> = {
         'Weight Of The World': '大陸之重',
       },
       'replaceText': {
-        // '(?!--)mechanic': '', // FIXME '机制'
-        // '--in/out--': '', // FIXME '--内/外--'
-        // '--out/in--': '', // FIXME '--外/内--'
-        // '--spread/stack--': '', // FIXME '--分散/集合--'
-        // '--stack/spread--': '', // FIXME '--集合/分散--'
-        // '\\)\\?': '', // FIXME ') ?'
+        '(?!--)mechanic': '機制',
+        '--in/out--': '--內/外--',
+        '--out/in--': '--外/內--',
+        '--spread/stack--': '--分散/集合--',
+        '--stack/spread--': '--集合/分散--',
+        '\\)\\?': ') ?',
         'Brighteyes': '目標',
-        // 'Clone Add': '', // FIXME '分身出现'
+        'Clone Add': '分身出現',
         'Discharge': '槍擊',
         'Double Charge': '二連填充',
         'Floor Trap': '啟動陷阱',
         'Frost Trap': '啟動陷阱',
         'Frostbite': '寒冰箭',
-        // 'Gobbie Adds': '', // FIXME '哥布林出现'
+        'Gobbie Adds': '哥布林出現',
         'Goblin Rush': '哥布林衝鋒',
         'Gobrush Rushgob': '哥布流哥布林衝鋒',
         'Gobslash Slicetops': '哥布流真空斬',
@@ -547,7 +546,7 @@ const triggerSet: TriggerSet<Data> = {
         'Stoneskin': '石膚',
         'Triple Charge': '三連填充',
         'Weight Trap': '啟動陷阱',
-        // 'Leghops\\?/Charge': '', // FIXME '哥布流后之先?/冲锋'
+        'Leghops\\?/Charge': '哥布流後之先?/衝鋒',
       },
     },
     {

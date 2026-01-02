@@ -228,6 +228,10 @@ const triggerSet: TriggerSet<Data> = {
           '멀리 (Omega-M)': 'far',
           '중간 (Omega-F)': 'mid',
         },
+        tc: {
+          '躲遠 (by Omega-M)': 'far',
+          '躲中 (by Omega-F)': 'mid',
+        },
       },
       default: 'far',
     },

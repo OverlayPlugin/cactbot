@@ -87,7 +87,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にゴブ式波動砲',
           cn: '波动炮点${player}',
           ko: '"${player}" 고블린식 파동포',
-          tc: '波動炮點${player}',
+          tc: '波動砲點 ${player}',
         },
         sizzlebeamOnYou: {
           en: 'Sizzlebeam on YOU',
@@ -96,7 +96,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にゴブ式波動砲',
           cn: '波动炮点名',
           ko: '고블린식 파동포 대상자',
-          tc: '波動炮點名',
+          tc: '波動砲點名',
         },
       },
     },
@@ -386,7 +386,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bomb': '炸彈',
         'Boomtype Magitek Gobwalker G-VII': '7號哥布林戰車L型',
@@ -399,22 +398,22 @@ const triggerSet: TriggerSet<Data> = {
         'The electrocution gallery': '公開處刑廣場',
       },
       'replaceText': {
-        // 'Big Doll': '', // FIXME '大人偶'
-        // 'Bomb(?!(s|en))': '', // FIXME '炸弹'
-        // 'Bombs': '', // FIXME '炸弹'
-        // '(?<! )Doll': '', // FIXME '人偶'
+        'Big Doll': '大人偶',
+        'Bomb(?!(s|en))': '炸彈',
+        'Bombs': '炸彈',
+        '(?<! )Doll': '人偶',
         'Flamethrower': '火焰噴射器',
-        // 'Hammertime': '', // FIXME '惩戒'
-        // 'Jails': '', // FIXME '监狱'
-        // 'Get Prey': '', // FIXME '监狱点名'
-        // 'Get Tether': '', // FIXME '监狱连线'
+        'Hammertime': '懲戒',
+        'Jails': '監獄',
+        'Get Prey': '監獄點名',
+        'Get Tether': '監獄連線',
         'Kill Heart': '聲援',
-        // 'Resync': '', // FIXME '重新同步'
+        'Resync': '重新同步',
         'Sizzlebeam': '哥布式波動砲',
         'Sizzlespark': '哥布林火花',
-        // 'Small Doll(?!s)': '', // FIXME '小人偶'
-        // 'Small Dolls': '', // FIXME '小人偶'
-        // 'Stun Heart': '', // FIXME '击晕真心'
+        'Small Doll(?!s)': '小人偶',
+        'Small Dolls': '小人偶',
+        'Stun Heart': '擊暈真心',
         'Uplander Doom': '齊射',
         'Zoomdoom': '哥布火箭',
       },
