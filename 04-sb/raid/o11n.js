@@ -85,7 +85,7 @@ Options.Triggers.push({
           ja: '動け (左へ)',
           cn: '穿（左边）',
           ko: '이동 (왼쪽)',
-          tc: '穿（左邊）',
+          tc: '移動（左邊）',
         },
         stayLeft: {
           en: 'Stay (Left)',
@@ -125,7 +125,7 @@ Options.Triggers.push({
           ja: '動け (右へ)',
           cn: '穿（右边）',
           ko: '이동 (오른쪽)',
-          tc: '穿（右邊）',
+          tc: '移動（右邊）',
         },
       },
     },
@@ -287,12 +287,11 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Engaging Delta Attack protocol': '', // FIXME '认定有必要使用三角攻击。'
+        'Engaging Delta Attack protocol': '認定有必要使用三角攻擊。',
         'Level Checker': '等級檢測儀',
         'Omega': '歐米茄',
-        // 'Program failure detected': '', // FIXME '确认到循环程序·阿尔法启动失败……'
+        'Program failure detected': '確認到循環程式·阿爾法啟動失敗……',
         'Rocket Punch': '火箭拳擊',
       },
       'replaceText': {
@@ -311,7 +310,7 @@ Options.Triggers.push({
         'Reformat': '最佳化',
         'Reset': '初始化',
         'Rush': '突進',
-        // 'Starboard/Larboard Cannon': '', // FIXME '右/左舷齐射·波动炮'
+        'Starboard/Larboard Cannon': '右/左舷齊射·波動砲',
       },
     },
     {

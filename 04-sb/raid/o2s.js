@@ -110,7 +110,7 @@ Options.Triggers.push({
           ja: '-100 G: 北/南へ、ボスを見ないで',
           cn: '去上/下半场边缘并背对boss',
           ko: '중력 마이너스 100: 남/북쪽에서 바깥쪽 보기',
-          tc: '去上/下半場邊緣並背對boss',
+          tc: '去北/南半場邊緣並背對boss',
         },
       },
     },
@@ -188,7 +188,7 @@ Options.Triggers.push({
           ja: 'DPS浮上 タンクヒラ降下',
           cn: 'DPS浮空，T奶落地',
           ko: '딜러 공중부양, 탱힐 강하',
-          tc: 'DPS浮空，T奶落地',
+          tc: 'DPS浮空，坦補落地',
         },
         dpsLevitate: {
           en: 'DPS: Levitate',
@@ -248,7 +248,7 @@ Options.Triggers.push({
           ja: '触手乱舞: タンク/ヒーラー',
           cn: 'T奶触手',
           ko: '촉수 난무: 탱/힐',
-          tc: 'T奶觸手',
+          tc: '觸手: 坦&補',
         },
         maniacalProbeDps: {
           en: 'Maniacal Probe: DPS',
@@ -257,7 +257,7 @@ Options.Triggers.push({
           ja: '触手乱舞: DPS',
           cn: 'DPS触手',
           ko: '촉수 난무: 딜러',
-          tc: 'DPS觸手',
+          tc: '觸手: DPS',
         },
         dpsProbe: {
           en: 'dps probe',
@@ -266,7 +266,7 @@ Options.Triggers.push({
           ja: 'dpsに触手乱舞',
           cn: 'dps触手',
           ko: '딜러 촉수 난무',
-          tc: 'dps觸手',
+          tc: 'DPS觸手',
         },
         tankHealProbe: {
           en: 'tank heal probe',
@@ -275,7 +275,7 @@ Options.Triggers.push({
           ja: 'タンクヒラに触手乱舞',
           cn: 'T奶触手',
           ko: '탱힐 촉수난무',
-          tc: 'T奶觸手',
+          tc: '坦補觸手',
         },
       },
     },
@@ -511,18 +511,17 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Catastrophe': '災變者',
         'Fleshy Member': '觸手',
       },
       'replaceText': {
-        // '\\(T/H\\)': '', // FIXME '(T/奶)'
+        '\\(T/H\\)': '(坦/補)',
         '-100 Gs': '重力-100',
         '(?<!-)100 Gs': '重力100',
         'Antilight': '暗黑光',
         'Death\'s Gaze': '死神之瞳',
-        // 'Double Stack': '', // FIXME '二连分摊'
+        'Double Stack': '二連分攤',
         'Earthquake': '大地震',
         'Epicenter': '震源製造',
         'Evilsphere': '邪球',
@@ -530,7 +529,7 @@ Options.Triggers.push({
         'Gravitational Wave': '重力波',
         'Long Drop': '自由落體',
         'Paranormal Wave': '詛咒波',
-        // 'Probes': '', // FIXME '引导'
+        'Probes': '引導',
         'Unstable Gravity': '重力爆發',
         'Tremblor': '地震',
         'Gravitational Manipulation': '重力操縱',

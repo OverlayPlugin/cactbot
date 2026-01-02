@@ -260,7 +260,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Air Force': '空軍裝甲',
         'Bibliotaph': '永世珍本',
@@ -268,13 +267,13 @@ Options.Triggers.push({
         'Guardian': '守護者',
         'Tentacle': '腕足',
         'Ultros': '奧爾特羅斯',
-        // 'WEAPON SYSTEMS ONLINE': '', // FIXME '武器火控系统启动'
+        'WEAPON SYSTEMS ONLINE': '武器火控系統啟動',
       },
       'replaceText': {
         'Arm And Hammer': '臂錘',
         'Aura Cannon': '鬥氣砲',
         'Bomb Deployment': '設置炸彈',
-        // 'Burst/Darkness': '', // FIXME '脉轮爆发/黑暗'
+        'Burst/Darkness': '魔法爆發/深暗',
         'Chain Cannon': '鏈式機關砲',
         'Chakra Burst': '脈輪爆發',
         'Demon Simulation': '載入惡魔模擬程式',
@@ -285,12 +284,12 @@ Options.Triggers.push({
         'Magitek Ray': '魔導雷射',
         'Main Cannon': '主加農砲',
         'Missile Simulation': '載入導彈模擬程式',
-        // 'Plane Laser': '', // FIXME '小飞机激光'
+        'Plane Laser': '小飛機雷射',
         'Prey': '導彈',
         'Run Program': '實體化程式',
         'Shockwave': '衝擊波',
         'Tentacle Simulation': '載入腕足模擬程式',
-        // 'Tentacle(?! )': '', // FIXME '触手(?! )'
+        'Tentacle(?! )': '腕足',
         'Wallop': '打擊',
       },
     },

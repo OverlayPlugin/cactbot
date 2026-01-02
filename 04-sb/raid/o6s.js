@@ -256,13 +256,12 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Demon Chadarnook': '惡魔查達奴克',
         'Easterly': '極風',
         'Goddess Chadarnook': '神聖查達奴克',
         'Haunt': '幻影',
-        // 'I have claimed the girl in the picture!': '', // FIXME '呵哼哼……这个画作的女人就归我了'
+        'I have claimed the girl in the picture!': '呵哼哼……這個畫作的女人就歸我了……',
         'Portrayal of Earth': '土之畫作',
         'Portrayal of Fire': '火之畫作',
         'Portrayal of Water': '水之畫作',
@@ -279,7 +278,7 @@ Options.Triggers.push({
         'Demonic Wave': '惡魔波',
         'Divine Lure': '女神的誘惑',
         'Earthquake': '大地震',
-        // 'Easterlies': '', // FIXME '极风'
+        'Easterlies': '極風',
         'Featherlance': '羽槍',
         'Flash Fire': '閃光炎',
         'Flash Flood': '閃雨',

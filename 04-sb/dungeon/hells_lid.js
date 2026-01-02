@@ -17,7 +17,7 @@ Options.Triggers.push({
           ja: '岩棍棒から離れる',
           cn: '远离棍棍和盾盾',
           ko: '검/방패에게서 멀어지기',
-          tc: '遠離棍棍和盾盾',
+          tc: '遠離棍和盾',
         },
       },
     },
@@ -58,7 +58,7 @@ Options.Triggers.push({
           ja: 'ボス追いつけるよ～早く走れ！',
           cn: 'BOSS追逐点名———快跑鸭',
           ko: '보스 추격중 --도망가세요',
-          tc: 'BOSS追逐點名———快跑鴨',
+          tc: 'BOSS追逐點名———快跑',
         },
         otherText: {
           en: 'Avoid boss',

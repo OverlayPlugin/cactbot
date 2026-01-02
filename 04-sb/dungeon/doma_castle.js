@@ -204,7 +204,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Hexadrone Bit': '魔導六輪裝甲浮游砲',
         'Hypertuned Grynewaht': '強化格林瓦特',
@@ -219,7 +218,7 @@ Options.Triggers.push({
       },
       'replaceText': {
         '2-Tonze Magitek Missile': '大型魔導飛彈',
-        // 'Bits Activate': '', // FIXME '浮游炮激活'
+        'Bits Activate': '浮游砲啟動',
         'Cermet Pile': '陶瓷合金樁',
         'Chainsaw': '鏈鋸',
         'Circle Of Death': '死亡迴旋',
@@ -227,11 +226,11 @@ Options.Triggers.push({
         'Delay-Action Charge': '定時炸彈',
         'Garlean Fire': '加雷馬火焰',
         'Gunsaw': '鏈鋸槍',
-        // 'Hexadrone Bits': '', // FIXME '魔导六轮装甲浮游炮'
-        // 'Magitek Bits': '', // FIXME '魔导浮游炮'
+        'Hexadrone Bits': '魔導六輪裝甲浮游砲',
+        'Magitek Bits': '魔導浮游砲',
         'Magitek Missiles': '魔導飛彈',
         'Magitek Ray': '魔導雷射',
-        // 'Rearguard Mines': '', // FIXME '魔导后卫炸雷'
+        'Rearguard Mines': '魔導後衛炸雷',
         'Thermobaric Charge': '氣化炸彈',
       },
     },

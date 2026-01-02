@@ -347,7 +347,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ame-No-Murakumo': '天之叢雲',
         'Susano': '須佐之男',
@@ -358,16 +357,16 @@ Options.Triggers.push({
         'Assail': '強擊',
         'Churn': '禍泡附身',
         'Dark Levin': '紫電',
-        // 'Knockback': '', // FIXME '击退'
+        'Knockback': '擊退',
         'Levinbolt': '閃電',
-        // 'Phase': '', // FIXME '阶段'
+        'Phase': '階段',
         'Rasen Kaikyo': '螺旋海峽',
         'Seasplitter': '斷海',
         'Stormsplitter': '破浪斬',
         'The Hidden Gate': '岩戶隱',
         'The Sealed Gate': '岩戶閉合',
         'Ukehi': '祈請',
-        // '(?<! )cloud': '', // FIXME '云'
+        '(?<! )cloud': '雲',
         'Ame-No-Murakumo(?! )': '天之叢雲',
         'Stun': '眩暈',
         'Yata-No-Kagami': '八咫鏡',

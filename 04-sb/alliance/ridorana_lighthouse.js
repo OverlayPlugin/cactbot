@@ -176,7 +176,7 @@ Options.Triggers.push({
           ja: '遅い時計で待機（早い方が爆発したらすぐ安置へ）',
           cn: '站慢速时钟，快速炸后穿',
           ko: '느린 시계 위로',
-          tc: '站慢速時鐘，快速炸後穿',
+          tc: '先站慢速時鐘',
         },
       },
     },
@@ -418,7 +418,7 @@ Options.Triggers.push({
           ja: '心核を討つ',
           cn: '消灭boss核心',
           ko: '심핵 처리',
-          tc: '消滅boss核心',
+          tc: '擊殺boss核心',
         },
       },
     },
@@ -727,7 +727,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Archaeodemon': '古惡魔',
         'Belias, The Gigas': '魔人貝利亞斯',
@@ -743,16 +742,16 @@ Options.Triggers.push({
         'Yiazmat': '鬼龍雅茲瑪特',
       },
       'replaceText': {
-        // '\\(close\\)': '', // FIXME '(靠近)'
-        // '\\(cross\\)': '', // FIXME '(X)'
-        // '\\(combo\\)': '', // FIXME '(组合)'
-        // '\\(orbit\\)': '', // FIXME '(曲线)'
-        // '\\(far\\)': '', // FIXME '(远离)'
-        // '\\(single\\)': '', // FIXME '(单个)'
+        '\\(close\\)': '(靠近)',
+        '\\(cross\\)': '(X)',
+        '\\(combo\\)': '(組合)',
+        '\\(orbit\\)': '(曲線)',
+        '\\(far\\)': '(遠離)',
+        '\\(single\\)': '(單個)',
         'Accelerate': '執行貫穿',
         'Annihilation Mode': '滅絕晶片',
-        // 'Archaeodemon spawn': '', // FIXME '古恶魔出现'
-        // 'Area Lockdown': '', // FIXME '区域封锁'
+        'Archaeodemon spawn': '古惡魔出現',
+        'Area Lockdown': '區域封鎖',
         'Briny Cannonade': '蒼砲擊',
         'Compress': '執行壓縮',
         'Computation Mode': '算術晶片',
@@ -766,14 +765,14 @@ Options.Triggers.push({
         'Death Strike': '必殺',
         'Destroy': '執行破壞',
         'Dispose': '執行清理',
-        // 'Division': '', // FIXME '除法'
+        'Division': '算術',
         'Dust Storm': '塵暴',
         '(?<![\\w| ])Eruption': '噴發',
         'Fast Hands': '時空噴發',
         '(?<!\\w)Fire(?! )': '火焰',
         'Fire IV': '超火焰',
         'Gale Gaol': '風牢',
-        // 'Gigas spawns': '', // FIXME '魔人兵出现'
+        'Gigas spawns': '魔人兵出現',
         'Growing Threat': '驚異',
         'Gust Front': '颮風',
         'Hellfire': '地獄之火炎',

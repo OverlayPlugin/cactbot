@@ -183,7 +183,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Agony': '苦悶幽靈',
         'Malice': '怨念',
@@ -192,9 +191,9 @@ Options.Triggers.push({
         'Wroth Ghost': '怒靈',
       },
       'replaceText': {
-        // ' Ghosts': '', // FIXME ' 幽灵'
+        ' Ghosts': '幽靈',
         'Acid Rain': '酸雨',
-        // 'Add Wave': '', // FIXME '一波小怪'
+        'Add Wave': '一波小怪',
         'All In The Mind': '念力',
         'Crossing Whistle': '魔界汽笛',
         'Diabolic Headlamp': '魔界前照燈',
@@ -202,7 +201,7 @@ Options.Triggers.push({
         'Diabolic Wind': '魔界風',
         'Doom Strike': '魔靈擊',
         'Encumber': '擋路',
-        // 'Ghosts spawn': '', // FIXME '幽灵出现'
+        'Ghosts spawn': '幽靈出現',
         'Head On': '追尾',
         'Knockback Whistle': '魔界汽笛',
         'Saintly Beam': '聖光射線',

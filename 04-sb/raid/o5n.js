@@ -190,14 +190,13 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Phantom Train': '魔列車',
         'Wroth Ghost': '怒靈',
       },
       'replaceText': {
         'Acid Rain': '酸雨',
-        // 'Add Wave': '', // FIXME '一波小怪'
+        'Add Wave': '一波小怪',
         'Crossing Whistle': '魔界汽笛',
         'Diabolic Chimney': '魔界噴煙',
         'Diabolic Headlamp': '魔界前照燈',
@@ -206,7 +205,7 @@ Options.Triggers.push({
         'Doom Strike': '魔靈擊',
         'Encumber': '擋路',
         'Ghost Beams': '聖光射線',
-        // 'Ghosts': '', // FIXME '幽灵'
+        'Ghosts': '幽靈',
         'Head On': '追尾',
         'Saintly Beam': '聖光射線',
         'Tether Whistle': '魔界汽笛',
