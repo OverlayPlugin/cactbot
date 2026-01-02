@@ -171,7 +171,7 @@ const fetchLocaleCsvTables = async (): Promise<LocaleCsvTables> => {
   log.debug('Fetching \'cn\' table...');
   const cnTable = await getCnTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
   log.debug('Fetching \'ko\' table...');
-  const koTable = await getKoTable(_LOCALE_TABLE, ['#', 12]); // FIXME: SaintCoinach definitions error
+  const koTable = await getKoTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
   log.debug('Fetching \'tc\' table...');
   const tcTable = await getTcTable(_LOCALE_TABLE, _LOCALE_COLUMNS);
   return {
@@ -237,7 +237,7 @@ const generateCEList = (
       fr: capitalize(data.fields['Name@fr']),
       ja: capitalize(data.fields['Name@ja']),
       cn: capitalize(localeCsvTables.cn[deId]?.Name),
-      ko: capitalize(localeCsvTables.ko[deId]?.['12']), // FIXME: SaintCoinach definitions error
+      ko: capitalize(localeCsvTables.ko[deId]?.Name),
       tc: capitalize(localeCsvTables.tc[deId]?.Name),
     };
 
