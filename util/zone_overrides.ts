@@ -118,6 +118,7 @@ const _KNOWN_COLLISIONS: NameKeyToTerritoryIds = {
   'LeapOfFaith': [792, 899, 1098],
   'OceanFishing': [900, 1163],
   'SleepNowInSapphire': [925, 926],
+  'AirForceOne': [832, 1335],
 };
 
 // In theory, we shouldn't include zones in our output when we cannot determine

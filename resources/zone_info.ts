@@ -6058,6 +6058,23 @@ const data: ZoneInfoType = {
     'sizeFactor': 100,
     'weatherRate': 0,
   },
+  832: {
+    'contentType': 19,
+    'exVersion': 0,
+    'name': {
+      'cn': '空军装甲驾驶员',
+      'de': 'Luftwaffe, Feuer frei!',
+      'en': 'Air Force One',
+      'fr': 'As de l\'air',
+      'ja': '出撃！ エアフォースパイロット',
+      'ko': '출격! 에어포스 조종사',
+      'tc': '空軍裝甲駕駛員',
+    },
+    'offsetX': 0,
+    'offsetY': 0,
+    'sizeFactor': 100,
+    'weatherRate': 0,
+  },
   834: {
     'contentType': 7,
     'exVersion': 0,
