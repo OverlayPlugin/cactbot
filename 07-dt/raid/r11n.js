@@ -414,7 +414,7 @@ Options.Triggers.push({
     {
       id: 'R11N Arcadion Avalanche West Safe',
       type: 'StartsUsing',
-      netRegex: { id: ['B3EF', 'B3F3'], source: 'The Tyrant', capture: false },
+      netRegex: { id: ['B3F3', 'B3F5'], source: 'The Tyrant', capture: false },
       infoText: (_data, _matches, output) => output.westSafe(),
       outputStrings: {
         westSafe: {
@@ -428,7 +428,7 @@ Options.Triggers.push({
     {
       id: 'R11N Arcadion Avalanche East Safe',
       type: 'StartsUsing',
-      netRegex: { id: ['B3F1', 'B3F5'], source: 'The Tyrant', capture: false },
+      netRegex: { id: ['B3EF', 'B3F1'], source: 'The Tyrant', capture: false },
       infoText: (_data, _matches, output) => output.eastSafe(),
       outputStrings: {
         eastSafe: {
