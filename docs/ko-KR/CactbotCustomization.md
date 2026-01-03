@@ -317,6 +317,28 @@ cactbot 트리거 작성하는 방법을 더 자세히 배우려면
 [트리거 가이드](../RaidbossGuide.md)와
 [ui/raidboss/data](../../ui/raidboss/data)에 이미 존재하는 트리거를 읽어보세요.
 
+### 트리거 세트 덮어쓰기
+
+사용자 파일에서 내장 트리거 세트와 동일한 `id`를 가진 트리거 세트를 정의하면, 전체 내장 트리거 세트가 완전히 덮어쓰여집니다.
+
+예시:
+
+```javascript
+Options.Triggers.push({
+  id: 'TheUnendingCoilOfBahamutUltimate',  // 내장 트리거 세트 ID와 동일
+  zoneId: ZoneId.TheUnendingCoilOfBahamutUltimate,
+  triggers: [
+    // 사용자 정의 트리거
+    {
+      id: 'My Custom Trigger',
+      // ... 트리거 내용
+    },
+  ],
+});
+```
+
+이 예시에서 `id`가 내장된 바하무트 절경전 트리거 세트와 동일하기 때문에, 내장 트리거는 실행되지 않고 사용자 정의 트리거만 실행됩니다. 사용자 정의 파일에서 필요한 모든 트리거 로직을 다시 구현해야 합니다.
+
 ## Raidboss 타임라인 덮어쓰기
 
 Raidboss 타임라인을 덮어쓰는 것은 [Raidboss 트리거 덮어쓰기](#raidboss-트리거-덮어쓰기)와 비슷합니다.
