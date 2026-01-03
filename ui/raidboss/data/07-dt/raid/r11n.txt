@@ -201,14 +201,14 @@ hideall "--sync--"
 # B3EC Mammoth Meteor: proximity meteor AoE
 # B3ED Explosion: knockback towers
 # B3EE Unmitigated Explosion: knockback tower failure
-# B3EF Arcadion Avalanche: east platform destruction
-# B3F0 Arcadion Avalanche: east platform toss (north safe)
+# B3EF Arcadion Avalanche: west platform destruction
+# B3F0 Arcadion Avalanche: west platform toss (north safe)
 # B3F1 Arcadion Avalanche: west platform destruction
 # B3F2 Arcadion Avalanche: west platform toss (south safe)
 # B3F3 Arcadion Avalanche: east platform destruction
 # B3F4 Arcadion Avalanche: east platform toss (south safe)
-# B3F5 Arcadion Avalanche: west platform destruction
-# B3F6 Arcadion Avalanche: west platform toss (north safe)
+# B3F5 Arcadion Avalanche: east platform destruction
+# B3F6 Arcadion Avalanche: east platform toss (north safe)
 # B3F7 Fire and Fury: conal AoE castbar (Majestic Meteor)
 # B3F8 Fire and Fury: conal AoE front (Majestic Meteor)
 # B3F9 Fire and Fury: conal AoE back (Majestic Meteor)
