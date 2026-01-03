@@ -103,9 +103,10 @@ export default class PopupTextAnalysis extends StubbedPopupText {
     options: RaidbossOptions,
     timelineLoader: TimelineLoader,
     raidbossFileData: RaidbossFileData,
+    regexCache: LineRegExpCache,
   ) {
     super(options, timelineLoader, raidbossFileData);
-    this.regexCache = new Map();
+    this.regexCache = regexCache;
     this.ttsSay = (_text: string) => {
       return;
     };
