@@ -909,6 +909,80 @@ const zoneReplace: ZoneReplace[] = [
       '3CA9': 'AC03', // Fifth Element (enrage)
     },
   },
+  { // Tsukuyomi Unreal
+    fileMap: {
+      'ui/raidboss/data/04-sb/trial/tsukuyomi-ex.ts':
+        'ui/raidboss/data/07-dt/trial/tsukuyomi-un.ts',
+      'ui/raidboss/data/04-sb/trial/tsukuyomi-ex.txt':
+        'ui/raidboss/data/07-dt/trial/tsukuyomi-un.txt',
+      'ui/oopsyraidsy/data/04-sb/trial/tsukuyomi-ex.ts':
+        'ui/oopsyraidsy/data/07-dt/trial/tsukuyomi-un.ts',
+    },
+    prefix: { 'TsukuyomiEx': 'TsukuyomiUn' },
+    other: {
+      'TheMinstrelsBalladTsukuyomisPain': 'TsukuyomisPainUnreal',
+      'Tsukuyomi Extreme': 'Tsukuyomi Unreal',
+      'tsukuyomi-ex.txt': 'tsukuyomi-un.txt',
+    },
+    // Primary offset 8574
+    //
+    // IDs confirmed unchanged:
+    // 2BCA -- Specter of Zenos spawn?
+    // 2BCB -- Specter of Gosetsu spawn?
+    // 2BFD -- --sync--
+    // 2CAE -- Yotsuyu Nightbloom
+    // 2CD6 -- Specter of Gosetsu exit?
+    // 2EDF -- --sync--
+    id: {
+      '2BBA': 'B12E', // Reprimand
+      '2BBB': 'B12F', // Torment unto Death
+      '2BBC': 'B130', // Nightfall
+      '2BBD': 'B131', // Nightfall
+      '2BBE': 'B132', // Lead of the Underworld
+      '2BBF': 'B133', // Steel of the Underworld
+      '2BC0': 'B134', // --sync--
+      '2BC5': 'B139', // Zashiki-asobi
+      '2BC6': 'B13A', // Tsuki-no-Maiogi
+      '2BC7': 'B13B', // Nightbloom
+      '2BC8': 'B13C', // Concentrativity
+      '2BCC': 'B140', // Dispersivity
+      '2BCE': 'B142', // Midnight Rain
+      '2BCF': 'B143', // --sync--
+      '2BD0': 'B144', // Tsuki-no-Kakera
+      '2BD1': 'B145', // Moonfall
+      '2BD3': 'B147', // Lunar Rays
+      '2BD4': 'B148', // Moonbeam
+      '2BD6': 'B14A', // Lunar Halo
+      '2BD7': 'B14B', // Perilune
+      '2BD8': 'B14C', // Antitwilight
+      '2BDA': 'B14E', // Dark Blade
+      '2BDB': 'B14F', // Bright Blade
+      '2BDC': 'B150', // Lunacy
+      '2BDD': 'B151', // Lunacy
+      '2BDE': 'B152', // Waxing Grudge
+      '2BDF': 'B153', // Waning Grudge
+      '2BE0': 'B154', // Lunacy Enrage begins
+      '2BE1': 'B155', // Lunacy Enrage
+      '2BE3': 'B157', // --sync--
+      '2CA8': 'B158', // Unmoving Troika
+      '2CA9': 'B159', // Unmoving Troika
+      '2CAA': 'B15A', // Unmoving Troika
+      '2CAF': 'B15C', // Nightbloom
+      '2CCF': 'B15D', // --sync--
+      '2CD0': 'B15E', // Dance of the Dead
+      '2CD7': 'B160', // Moondust Crater
+      '2D02': 'B161', // auto-attack (Tsukuyomi)
+      '2D16': 'B162', // auto-attack (Specter Of The Matriarch/Patriarch/Empire)
+      '2D17': 'B163', // auto-attack (Specter Of The Homeland, melee)
+      '2D18': 'B164', // auto-attack (Specter Of The Empire/Homeland, ranged)
+      '2D1C': 'B165', // Hagetsu
+      '2D1D': 'B166', // Hagetsu
+      '2D20': 'B167', // auto attack (Asahi)
+      '2D21': 'B168', // auto attack (meteor phase) ???
+      '2EB0': 'B169', // Supreme Selenomancy
+      '2EB2': 'B16A', // Torment unto Death
+    },
+  },
 ];
 
 const processFile = (filename: string, zone: ZoneReplace, inputText: string): string => {

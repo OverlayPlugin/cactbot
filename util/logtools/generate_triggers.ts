@@ -1400,8 +1400,8 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
           fr: 'Intercardinal',
           ja: '斜めへ',
           cn: '四角',
-          tc: '分攤',
           ko: '대각선 쪽으로',
+          tc: '四角',
         },
       },
     },`;
@@ -1465,8 +1465,8 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
           de: 'Sammeln',
           fr: 'Package',
           cn: '分摊',
-          tc: '分攤',
           ko: '쉐어',
+          tc: '分攤',
         },
       },
     },`;
@@ -1575,8 +1575,8 @@ const generateFileFromTriggerInfo = async (triggerInfo: TriggerInfo[], args: Ext
 
   return `// Auto-generated with:
 // ${processArgs}
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { Outputs } from '../../../../../resources/outputs';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';

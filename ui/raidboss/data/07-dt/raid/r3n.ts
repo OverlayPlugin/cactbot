@@ -75,8 +75,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée depuis les tours',
           ja: 'ノックバック 塔',
           cn: '击退塔',
-          tc: '擊退塔',
           ko: '넉백 기둥',
+          tc: '擊退塔',
         },
       },
     },
@@ -110,8 +110,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Long => Court',
           ja: '導火線の長い方 => 短い方',
           cn: '长引线 => 短引线',
-          tc: '長引線 => 短引線',
           ko: '도화선이 긴 쪽 => 짧은 쪽',
+          tc: '長引線 => 短引線',
         },
       },
     },
@@ -128,8 +128,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Est, puis Ouest',
           ja: '東、そして西',
           cn: '右 => 左',
-          tc: '右 => 左',
           ko: '동쪽 => 서쪽',
+          tc: '右 => 左',
         },
       },
     },
@@ -146,8 +146,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Est, restez à l\'Est',
           ja: '東にそのまま',
           cn: '右 => 待在同侧',
-          tc: '右 => 待在同側',
           ko: '동쪽 => 동쪽 그대로',
+          tc: '右 => 待在同側',
         },
       },
     },
@@ -164,8 +164,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ouest, puis Est',
           ja: '西、そして東',
           cn: '左 => 右',
-          tc: '左 => 右',
           ko: '서쪽 => 동쪽',
+          tc: '左 => 右',
         },
       },
     },
@@ -182,8 +182,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ouest, restez à l\'Ouest',
           ja: '西にそのまま',
           cn: '左 => 待在同侧',
-          tc: '左 => 待在同側',
           ko: '서쪽 => 서쪽 그대로',
+          tc: '左 => 待在同側',
         },
       },
     },
@@ -311,6 +311,35 @@ const triggerSet: TriggerSet<Data> = {
         'Knuckle Sandwich': '拳面猛击',
         'Lariat Combo': '碎颈臂连击',
         'Murderous Mist': '致命毒雾',
+        'Self-destruct': '自爆',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Brute Bomber': '', // FIXME '野蛮爆弹'
+        // 'Lit Fuse': '', // FIXME '引线爆弹怪'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(cones\\)': '', // FIXME '(锥形)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(long\\)': '', // FIXME '(长)'
+        // '\\(short\\)': '', // FIXME '(短)'
+        // 'Barbarous Barrage': '', // FIXME '野蛮爆炸'
+        // 'Brutal Burn': '', // FIXME '野蛮灼烧'
+        'Brutal Impact': '野蠻碎擊',
+        // 'Brutal Lariat': '', // FIXME '野蛮碎颈臂'
+        // 'Doping Draught': '', // FIXME '打药'
+        'Explosion': '爆炸',
+        // 'Explosive Rain': '', // FIXME '爆弹雨'
+        // 'Fire Spin': '', // FIXME '野蛮旋火'
+        // 'Fuses of Fury': '', // FIXME '引线爆弹'
+        // 'Infernal Spin': '', // FIXME '超华丽野蛮旋火'
+        // 'Knuckle Sandwich': '', // FIXME '拳面猛击'
+        // 'Lariat Combo': '', // FIXME '碎颈臂连击'
+        // 'Murderous Mist': '', // FIXME '致命毒雾'
         'Self-destruct': '自爆',
       },
     },

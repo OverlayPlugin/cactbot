@@ -143,8 +143,8 @@ const triggerSet: TriggerSet<Data> = {
           de: '${dir1} ${sep} ${dir2} (bleib Stehen)',
           fr: '${dir1} ${sep} ${dir2} (Restez)',
           cn: '${dir1} ${sep} ${dir2} (不动)',
-          tc: '${dir1} ${sep} ${dir2} (不動)',
           ko: '${dir1} ${sep} ${dir2} (그대로)',
+          tc: '${dir1} ${sep} ${dir2} (不動)',
         },
         separator: {
           en: ' => ',
@@ -152,8 +152,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: ' => ',
           ja: ' => ',
           cn: ' => ',
-          tc: '=>',
           ko: ' => ',
+          tc: '=>',
         },
         combo: {
           en: '${dirs}',
@@ -161,8 +161,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dirs}',
           ja: '${dirs}',
           cn: '${dirs}',
-          tc: '${dirs}',
           ko: '${dirs}',
+          tc: '${dirs}',
         },
       },
     },
@@ -200,8 +200,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Cardinal => Intercardinal',
           ja: '十字 => 斜め',
           cn: '十字 => 斜角',
-          tc: '十字 => 斜角',
           ko: '십자 => 대각',
+          tc: '十字 => 斜角',
         },
         intercardsCards: {
           en: 'Intercards => Cards',
@@ -209,8 +209,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intercardinal => Cardinal',
           ja: '斜め => 十字',
           cn: '斜角 => 十字',
-          tc: '斜角 => 十字',
           ko: '대각 => 십자',
+          tc: '斜角 => 十字',
         },
       },
     },
@@ -227,8 +227,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Visez une tuile non-brisée',
           ja: '割れていない床を狙う',
           cn: '瞄准完好的平台',
-          tc: '瞄準完好的平台',
           ko: '부서지지 않은 칸으로 유도',
+          tc: '瞄準完好的平台',
         },
       },
     },
@@ -269,8 +269,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ouest => Est depuis le marqueur',
           ja: 'マーカーの西 => マーカーの東',
           cn: '标记左侧 => 标记右侧',
-          tc: '標記左側 => 標記右側',
           ko: '징 기준 서쪽 => 동쪽',
+          tc: '標記左側 => 標記右側',
         },
       },
     },
@@ -287,8 +287,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Est => Ouest depuis le marqueur',
           ja: 'マーカーの東 => マーカーの西',
           cn: '标记右侧 => 标记左侧',
-          tc: '標記右側 => 標記左側',
           ko: '징 기준 동쪽 => 서쪽',
+          tc: '標記右側 => 標記左側',
         },
       },
     },
@@ -305,8 +305,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ouest => Est depuis le marqueur',
           ja: 'マーカーの西 => マーカーの東',
           cn: '标记左侧 => 标记右侧',
-          tc: '標記左側 => 標記右側',
           ko: '징 기준 서쪽 => 동쪽',
+          tc: '標記左側 => 標記右側',
         },
       },
     },
@@ -323,8 +323,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Est => Ouest depuis le marqueur',
           ja: 'マーカーの東 => マーカーの西',
           cn: '标记右侧 => 标记左侧',
-          tc: '標記右側 => 標記左側',
           ko: '징 기준 동쪽 => 서쪽',
+          tc: '標記右側 => 標記左側',
         },
       },
     },
@@ -445,6 +445,36 @@ const triggerSet: TriggerSet<Data> = {
         '\\(hits\\)': '(命中)',
         '\\(jump\\)': '(跳)',
         '\\(telegraphs\\)': '(预兆)',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Black Cat': '', // FIXME '黑猫'
+        // 'Copy Cat': '', // FIXME '模仿猫'
+      },
+      'replaceText': {
+        // '(?<! )Black Cat Crossing': '', // FIXME '交叉尖甲'
+        // '(?<! )One-two Paw': '', // FIXME '二连尖甲'
+        // 'Biscuit Maker': '', // FIXME '踩奶'
+        // 'Bloody Scratch': '', // FIXME '血腥抓挠'
+        // 'Clawful': '', // FIXME '重爪爆发'
+        // 'Copycat': '', // FIXME '模仿之猫'
+        // 'Elevate and Eviscerate': '', // FIXME '腾身开膛'
+        // 'Grimalkin Gale': '', // FIXME '猫怪突风'
+        'Impact': '衝擊',
+        // 'Leaping Black Cat Crossing': '', // FIXME '猫跳交叉尖甲'
+        // 'Leaping One-two Paw': '', // FIXME '猫跳二连尖甲'
+        // 'Mouser': '', // FIXME '捕鼠'
+        // 'Overshadow': '', // FIXME '超暗影'
+        // 'Predaceous Pounce': '', // FIXME '迅猫急袭'
+        'Shockwave': '衝擊波',
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(hits\\)': '', // FIXME '(命中)'
+        // '\\(jump\\)': '', // FIXME '(跳)'
+        // '\\(telegraphs\\)': '', // FIXME '(预兆)'
       },
     },
     {

@@ -162,8 +162,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: 'Tour manquée',
               ja: '塔踏み失敗',
               cn: '错过塔',
-              tc: '錯過塔',
               ko: '기둥 놓침',
+              tc: '錯過塔',
             },
           };
         });
@@ -206,8 +206,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
               fr: 'Apparition des tornades',
               ja: 'ツイスター',
               cn: '旋风',
-              tc: '旋風',
               ko: '회오리 밟음',
+              tc: '旋風',
             },
           };
         }
@@ -294,8 +294,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Pyretique',
             ja: '炸裂',
             cn: '热病',
-            tc: '熱病',
             ko: '열병',
+            tc: '熱病',
           },
         };
       },

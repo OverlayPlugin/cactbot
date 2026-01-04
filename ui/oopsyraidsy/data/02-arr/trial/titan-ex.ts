@@ -38,8 +38,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Repoussé(e) !',
             ja: '落ちた',
             cn: '击退坠落',
-            tc: '擊退墜落',
             ko: '넉백됨',
+            tc: '擊退墜落',
           },
         };
       },

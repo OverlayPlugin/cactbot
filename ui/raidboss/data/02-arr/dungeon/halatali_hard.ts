@@ -20,8 +20,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Utilisez l\'Orbe',
           ja: 'オーブを使う',
           cn: '使用幽暗珠',
-          tc: '使用幽暗珠',
           ko: '구슬 사용하기',
+          tc: '使用幽暗珠',
         },
       },
     },
@@ -37,8 +37,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Utilisez L\'Épine',
           ja: '釘を使う',
           cn: '使用咒具',
-          tc: '使用咒具',
           ko: '주술도구 사용하기',
+          tc: '使用咒具',
         },
       },
     },
@@ -70,6 +70,13 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Catoblepas': '卡托布莱帕斯',
         'Mumuepo the Beholden': '退位主教 穆穆埃珀',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Catoblepas': '卡托佈雷帕斯',
+        'Mumuepo the Beholden': '退位主教 穆穆艾珀',
       },
     },
     {

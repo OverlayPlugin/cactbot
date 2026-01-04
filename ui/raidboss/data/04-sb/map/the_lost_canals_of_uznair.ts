@@ -12,8 +12,8 @@ const uznairOutputStrings = {
     de: '${name} erscheint!',
     fr: '${name} apparaît !',
     cn: '已生成 ${name}!',
-    tc: '已生成 ${name}!',
     ko: '${name} 등장!',
+    tc: '已生成 ${name}!',
   },
 } as const;
 

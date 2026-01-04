@@ -72,8 +72,8 @@ const tagTeamOutputStrings = {
     fr: 'Sur : ${dirs} => ${last}',
     ja: '安地: ${dirs} => ${last}',
     cn: '安全区: ${dirs} => ${last}',
-    tc: '安全區: ${dirs} => ${last}',
     ko: '안전: ${dirs} => ${last}',
+    tc: '安全區: ${dirs} => ${last}',
   },
   separator: {
     en: '/',
@@ -81,8 +81,8 @@ const tagTeamOutputStrings = {
     fr: '/',
     ja: '/',
     cn: '/',
-    tc: '/',
     ko: '/',
+    tc: '/',
   },
 } as const;
 
@@ -98,8 +98,8 @@ const triggerSet: TriggerSet<Data> = {
         fr: 'Bombardement Brutal Anti-poussée Uptime',
         ja: 'ボンバリアンボムのアムレン/堅実 限界タイミング通知',
         cn: '击退塔uptime打法击退提示时机调整功能',
-        tc: '擊退塔uptime打法擊退提示時機調整功能',
         ko: '봄바리안 봄 업타임 넉백 설정',
+        tc: '擊退塔uptime打法擊退提示時機調整功能',
       },
       comment: {
         en: 'Select towers to dodge with knockback immunity.',
@@ -107,8 +107,8 @@ const triggerSet: TriggerSet<Data> = {
         fr: 'Sélectionnez les tours à esquiver avec l\'anti-repoussement.',
         ja: '吹き飛ばし無効で避ける塔を選択してください',
         cn: '选择防击退覆盖的塔。',
-        tc: '選擇防擊退覆蓋的塔。',
         ko: '넉백 무효기술로 처리할 기둥을 선택하세요.',
+        tc: '選擇防擊退覆蓋的塔。',
       },
       type: 'select',
       options: {
@@ -147,6 +147,12 @@ const triggerSet: TriggerSet<Data> = {
           '1번째 기둥': 'first',
           '1, 2번째 기둥 (권장)': 'two',
           '세 기둥 전부': 'all',
+        },
+        tc: {
+          '關閉功能': 'none',
+          '第一個塔': 'first',
+          '前兩個塔 (推薦)': 'two',
+          '全部塔': 'all',
         },
       },
       default: 'none',
@@ -188,8 +194,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur + Dispersion',
           ja: '外側 + 散開',
           cn: '钢铁 + 八方分散',
-          tc: '鋼鐵 + 八方分散',
           ko: '밖으로 + 산개',
+          tc: '鋼鐵 + 八方分散',
         },
       },
     },
@@ -205,8 +211,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur + Dispersion',
           ja: '内側 + 散開',
           cn: '月环 + 八方分散',
-          tc: '月環 + 八方分散',
           ko: '안으로 + 산개',
+          tc: '月環 + 八方分散',
         },
       },
     },
@@ -222,8 +228,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Loin + Dispersion',
           ja: '離れて + 散開',
           cn: '远离 + 分散',
-          tc: '遠離 + 分散',
           ko: '멀리 + 산개',
+          tc: '遠離 + 分散',
         },
       },
     },
@@ -239,8 +245,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée + Dispersion',
           ja: 'ノックバック + 散開',
           cn: '击退 + 分散',
-          tc: '擊退 + 分散',
           ko: '넉백 + 산개',
+          tc: '擊退 + 分散',
         },
       },
     },
@@ -289,8 +295,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Loin + Partenaires',
           ja: '離れて + ペア',
           cn: '远离 + 双人分摊',
-          tc: '遠離 + 雙人分攤',
           ko: '멀리 + 쉐어',
+          tc: '遠離 + 雙人分攤',
         },
       },
     },
@@ -306,8 +312,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée + Partenaires',
           ja: 'ノックバック + ペア',
           cn: '击退 + 双人分摊',
-          tc: '擊退 + 雙人分攤',
           ko: '넉백 + 쉐어',
+          tc: '擊退 + 雙人分攤',
         },
       },
     },
@@ -323,8 +329,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur + Partenaires',
           ja: '外側 + ペア',
           cn: '钢铁 + 双人分摊',
-          tc: '鋼鐵 + 雙人分攤',
           ko: '밖으로 + 쉐어',
+          tc: '鋼鐵 + 雙人分攤',
         },
       },
     },
@@ -340,8 +346,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur + Partenaires',
           ja: '内側 + ペア',
           cn: '月环 + 双人分摊',
-          tc: '月環 + 雙人分攤',
           ko: '안으로 + 쉐어',
+          tc: '月環 + 雙人分攤',
         },
       },
     },
@@ -358,8 +364,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mèche courte',
           ja: '短い導火線',
           cn: '短引线点名',
-          tc: '短引線點名',
           ko: '짧은 도화선',
+          tc: '短引線點名',
         },
       },
     },
@@ -376,8 +382,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mèche longue',
           ja: '長い導火線',
           cn: '长引线点名',
-          tc: '長引線點名',
           ko: '긴 도화선',
+          tc: '長引線點名',
         },
       },
     },
@@ -398,8 +404,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mèche courte',
           ja: '短い導火線',
           cn: '短引线点名',
-          tc: '短引線點名',
           ko: '짧은 도화선',
+          tc: '短引線點名',
         },
         long: {
           en: 'Long Fuse',
@@ -407,8 +413,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Mèche longue',
           ja: '長い導火線',
           cn: '长引线点名',
-          tc: '長引線點名',
           ko: '긴 도화선',
+          tc: '長引線點名',
         },
       },
     },
@@ -424,8 +430,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur => Intérieur => Poussée => Dispersion',
           ja: '外側 => 内側 => ノックバック => 散開',
           cn: '钢铁 => 月环 => 击退 => 分散',
-          tc: '鋼鐵 => 月環 => 擊退 => 分散',
           ko: '밖으로 => 안으로 => 넉백 => 산개',
+          tc: '鋼鐵 => 月環 => 擊退 => 分散',
         },
       },
     },
@@ -452,8 +458,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur => Intérieur => Poussée => Partenaires',
           ja: '外側 => 内側 => ノックバック => ペア',
           cn: '钢铁 => 月环 => 击退 => 双人分摊',
-          tc: '鋼鐵 => 月環 => 擊退 => 雙人分攤',
           ko: '밖으로 => 안으로 => 넉백 => 쉐어',
+          tc: '鋼鐵 => 月環 => 擊退 => 雙人分攤',
         },
       },
     },
@@ -501,8 +507,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Lié au clone ${dir}',
           ja: '${dir} の分身に繋がれた',
           cn: '连线分身: ${dir}',
-          tc: '連線分身: ${dir}',
           ko: '${dir}쪽 분신과 선 연결',
+          tc: '連線分身: ${dir}',
         },
       },
     },
@@ -695,8 +701,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée ${firstDir1}/${firstDir2} => Allez ${secondDir}',
           ja: 'ノックバック ${firstDir1}/${firstDir2} => ${secondDir} へ移動',
           cn: '击退 ${firstDir1}/${firstDir2} => 穿 ${secondDir}',
-          tc: '擊退 ${firstDir1}/${firstDir2} => 穿 ${secondDir}',
           ko: '${firstDir1}/${firstDir2} 넉백 => ${secondDir} 으로 이동',
+          tc: '擊退 ${firstDir1}/${firstDir2} => 穿 ${secondDir}',
         },
         comboStay: {
           en: 'Knockback ${firstDir1}/${firstDir2}, Stay ${secondDir}',
@@ -704,8 +710,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée ${firstDir1}/${firstDir2} => Restez ${secondDir}',
           ja: 'ノックバック ${firstDir1}/${firstDir2} => ${secondDir} で待機',
           cn: '击退 ${firstDir1}/${firstDir2}, 停 ${secondDir}',
-          tc: '擊退 ${firstDir1}/${firstDir2}, 停 ${secondDir}',
           ko: '${firstDir1}/${firstDir2} 넉백 => ${secondDir} 그대로 있기',
+          tc: '擊退 ${firstDir1}/${firstDir2}, 停 ${secondDir}',
         },
       },
     },
@@ -867,6 +873,47 @@ const triggerSet: TriggerSet<Data> = {
         'Self-Destruct': '自爆',
         'Special Bombarian Special': '究极超豪华野蛮大乱击',
         'Tag Team': '组队战',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Brute Bomber': '', // FIXME '野蛮爆弹'
+        // 'Brute Distortion': '', // FIXME '野蛮爆弹的幻影'
+        // 'Lit Fuse': '', // FIXME '导火线爆弹怪'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // 'Barbarous Barrage': '', // FIXME '野蛮爆炸'
+        // 'Blazing Lariat': '', // FIXME '怒焰碎颈臂'
+        // 'Bombarian Flame': '', // FIXME '野蛮火焰'
+        // '(?<! )Bombarian Special': '', // FIXME '超豪华野蛮大乱击'
+        // 'Bombariboom': '', // FIXME '野蛮爆震'
+        'Brutal Impact': '野蠻碎擊',
+        // 'Chain Deathmatch': '', // FIXME '锁链生死战'
+        // 'Diveboom': '', // FIXME '强震冲'
+        // 'Doping Draught': '', // FIXME '打药'
+        'Explosion': '爆炸',
+        // 'Explosive Rain': '', // FIXME '爆弹雨'
+        // 'Final Fusedown': '', // FIXME '零式导火线爆弹'
+        // 'Fuse or Foe': '', // FIXME '设置导火线'
+        // 'Fusefield': '', // FIXME '导火线区域'
+        // 'Fuses of Fury': '', // FIXME '导火线爆弹'
+        // 'Infernal Spin': '', // FIXME '超华丽野蛮旋火'
+        // 'Knuckle Sandwich': '', // FIXME '拳面猛击'
+        // 'Lariat Combo': '', // FIXME '碎颈臂连击'
+        // 'Murderous Mist': '', // FIXME '致命毒雾'
+        // 'Octoboom Bombarian Special': '', // FIXME '八分超豪华野蛮大乱击'
+        // 'Octoboom Dive': '', // FIXME '八分强震冲'
+        // 'Octuple Lariat': '', // FIXME '八分双重碎颈臂'
+        // 'Quadroboom Dive': '', // FIXME '四分强震冲'
+        // 'Quadruple Lariat': '', // FIXME '四分双重碎颈臂'
+        'Self-Destruct': '自爆',
+        'Special Bombarian Special': '究極超豪華野蠻大亂擊',
+        // 'Tag Team': '', // FIXME '组队战'
       },
     },
     {

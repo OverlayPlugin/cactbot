@@ -34,8 +34,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Détruisez le clou',
           ja: '炎獄の楔を討つ',
           cn: '击杀火狱之楔',
-          tc: '擊殺火獄之楔',
           ko: '말뚝 파괴하기',
+          tc: '擊殺火獄之楔',
         },
       },
     },
@@ -95,6 +95,21 @@ const triggerSet: TriggerSet<Data> = {
         'Incinerate': '烈焰焚烧',
         'Nail Add': '火狱之楔出现',
         'Radiant Plume': '光辉炎柱',
+        'Vulcan Burst': '火神爆裂',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ifrit': '伊弗利特',
+      },
+      'replaceText': {
+        'Eruption': '噴發',
+        'Hellfire': '地獄之火炎',
+        'Incinerate': '烈焰焚燒',
+        // 'Nail Add': '', // FIXME '火狱之楔出现'
+        'Radiant Plume': '光輝炎柱',
         'Vulcan Burst': '火神爆裂',
       },
     },

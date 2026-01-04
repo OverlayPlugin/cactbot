@@ -113,6 +113,17 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Gozu': '天之牛頭',
+        'Heavenly Jaki': '天之邪鬼',
+        'Heavenly Jinba': '天之人馬',
+        'Heavenly Kyozo': '天之鏡像',
+        'Heavenly Mifune': '天之三船',
+        'Heavenly Tenma': '天之馬',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heavenly Gozu': '천궁 소머리',

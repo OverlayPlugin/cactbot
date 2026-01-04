@@ -52,8 +52,8 @@ const triggerSet: OopsyTriggerSet<Data> = {
             fr: 'Malus de dégâts',
             ja: '雑魚に当たる',
             cn: '吃头了',
-            tc: '吃頭了',
             ko: '닉스',
+            tc: '吃頭了',
           },
         };
       },

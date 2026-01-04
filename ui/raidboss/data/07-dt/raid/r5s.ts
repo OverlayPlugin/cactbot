@@ -157,8 +157,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(${mech} après)',
           ja: '(あとで ${mech})',
           cn: '(稍后 ${mech})',
-          tc: '(稍後 ${mech})',
           ko: '(나중에 ${mech})',
+          tc: '(稍後 ${mech})',
         },
         lightParty: Outputs.healerGroups,
         roleGroup: Outputs.rolePositions,
@@ -187,8 +187,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Commencez ${dir} (${num} coups) => ${mech}',
           ja: '${dir} 開始 (${num} ポイント) からの ${mech}',
           cn: '${dir} 开始 (打 ${num} 次) => ${mech}',
-          tc: '${dir} 開始 (打 ${num} 次) => ${mech}',
           ko: '${dir} 시작 (${num}번 공격) => ${mech}',
+          tc: '${dir} 開始 (打 ${num} 次) => ${mech}',
         },
         lightParty: Outputs.healerGroups,
         roleGroup: Outputs.rolePositions,
@@ -234,8 +234,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(compteur court)',
           ja: '(先にスポットライト)',
           cn: '(短舞点名)',
-          tc: '(短舞點名)',
           ko: '(짧은 디버프)',
+          tc: '(短舞點名)',
         },
         longBurn: {
           en: '(long cleanse)',
@@ -243,8 +243,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(compteur long)',
           ja: '(あとでスポットライト)',
           cn: '(长舞点名)',
-          tc: '(長舞點名)',
           ko: '(긴 디버프)',
+          tc: '(長舞點名)',
         },
       },
     },
@@ -265,8 +265,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purifiez sous le projecteur',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
-          tc: '燈下跳舞',
           ko: '스포트라이트에 서기',
+          tc: '燈下跳舞',
         },
       },
     },
@@ -291,8 +291,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purifiez sous le projecteur',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
-          tc: '燈下跳舞',
           ko: '스포트라이트에 서기',
+          tc: '燈下跳舞',
         },
         bait: {
           en: 'Bait Frog',
@@ -300,8 +300,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez la grenouille',
           ja: 'カエル誘導',
           cn: '引导青蛙',
-          tc: '引導青蛙',
           ko: '개구리 유도',
+          tc: '引導青蛙',
         },
       },
     },
@@ -327,8 +327,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purifiez sous le projecteur',
           ja: 'スポットライトで浄化',
           cn: '灯下跳舞',
-          tc: '燈下跳舞',
           ko: '스포트라이트에 서기',
+          tc: '燈下跳舞',
         },
         bait: {
           en: 'Bait Frog',
@@ -336,8 +336,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez la grenouille',
           ja: 'カエル誘導',
           cn: '引导青蛙',
-          tc: '引導青蛙',
           ko: '개구리 유도',
+          tc: '引導青蛙',
         },
       },
     },
@@ -354,8 +354,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Max mêlée => Dessous',
           ja: '外からボス下に',
           cn: '钢铁 => 月环',
-          tc: '鋼鐵 => 月環',
           ko: '칼끝딜 => 안으로',
+          tc: '鋼鐵 => 月環',
         },
       },
     },
@@ -372,8 +372,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dessous => Max mêlée',
           ja: 'ボス下から外に',
           cn: '月环 => 钢铁',
-          tc: '月環 => 鋼鐵',
           ko: '안으로 => 칼끝딜',
+          tc: '月環 => 鋼鐵',
         },
       },
     },
@@ -430,8 +430,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${order} fusion',
           ja: '${order} にペア割り',
           cn: '${order} 撞毒',
-          tc: '${order} 撞毒',
           ko: '${order} 융합',
+          tc: '${order} 撞毒',
         },
         first: {
           en: 'First',
@@ -439,8 +439,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Première',
           ja: '最初',
           cn: '第1组',
-          tc: '第1組',
           ko: '첫번째',
+          tc: '第1組',
         },
         second: {
           en: 'Second',
@@ -448,8 +448,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Seconde',
           ja: '2番目',
           cn: '第2组',
-          tc: '第2組',
           ko: '두번째',
+          tc: '第2組',
         },
         third: {
           en: 'Third',
@@ -457,8 +457,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Troisième',
           ja: '3番目',
           cn: '第3组',
-          tc: '第3組',
           ko: '세번째',
+          tc: '第3組',
         },
         fourth: {
           en: 'Fourth',
@@ -466,8 +466,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Quatrième',
           ja: '4番目',
           cn: '第4组',
-          tc: '第4組',
           ko: '네번째',
+          tc: '第4組',
         },
         unknown: Outputs.unknown,
       },
@@ -486,8 +486,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Fusionner le debuff',
           ja: 'ペア割り',
           cn: '撞毒',
-          tc: '撞毒',
           ko: '융합하기',
+          tc: '撞毒',
         },
       },
     },
@@ -832,6 +832,56 @@ const triggerSet: TriggerSet<Data> = {
         'Play B-side': '播放B面',
         'Quarter Beats': '4拍节奏',
         'Ride the Waves': '舞浪全开',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'ダンシング・グリーン',
+        'Frogtourage': 'フロッグダンサー',
+      },
+      'replaceText': {
+        // '\\(Cleave\\)': '', // FIXME '(半场)'
+        // '\\(Echo\\)': '', // FIXME '(重复)'
+        // '\\(In\\+Protean\\+Echo\\)': '', // FIXME '(内+八方+重复)'
+        // '\\(Out\\+Protean\\+Echo\\)': '', // FIXME '(外+八方+重复)'
+        // '\\(Out\\+Protean\\)': '', // FIXME '(外+八方)'
+        // '\\(all\\)': '', // FIXME '(全体)'
+        // '\\(boss\\)': '', // FIXME '(BOSS)'
+        // '\\(dancers\\)': '', // FIXME '(分身)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '2-snap Twist & Drop the Needle/3-snap Twist & Drop the Needle/4-snap Twist & Drop the Needle': '', // FIXME '二/三/四连指向、定格＆播放' (RSV ID: 42208)
+        // 'Arcady Night Encore': '', // FIXME '返场夜狂热' (RSV ID: 41840)
+        'Arcady Night Fever': '在這停頓！',
+        // 'Back-up Dance': '', // FIXME '伴舞波动' (RSV ID: 42872)
+        'Celebrate Good Times': '歡慶美妙時光',
+        'Deep Cut': '心曲刻錄',
+        // 'Debuffs': '', // FIXME '毒'
+        'Disco Infernal': '激熱夜舞廳',
+        'Do the Hustle': '跳起哈娑舞',
+        // '(?<!& )Drop the Needle': '', // FIXME '播放'
+        'Eighth Beats': '8拍節奏',
+        'Ensemble Assemble': '伴舞團',
+        // 'Fire': '', // FIXME
+        // 'Flip to A-side': '', // FIXME '放入A面'
+        // 'Flip to B-side': '', // FIXME '放入B面'
+        // 'Freak Out': '', // FIXME '音频爆炸'
+        // 'Frogtourage Finale': '', // FIXME '舞团终演' (RSV ID: 42209)
+        'Frogtourage(?! )': '青蛙舞者登場！',
+        'Funky Floor': '熱舞場地',
+        // 'Get Down!': '', // FIXME '尽情舞蹈！'
+        // 'Hi-NRG Fever': '', // FIXME '高能夜狂热'
+        // 'Inside Out': '', // FIXME '内翻外转'
+        'Let\'s Dance!(?! )': '放縱勁舞！',
+        // 'Let\'s Dance! Remix': '', // FIXME '彻夜狂欢，放纵劲舞！'
+        'Let\'s Pose!': '定格時刻！',
+        'Moonburn': '月灼',
+        // 'Outside In': '', // FIXME '外翻内转'
+        // 'Play A-side': '', // FIXME '播放A面'
+        // 'Play B-side': '', // FIXME '播放B面'
+        'Quarter Beats': '4拍節奏',
+        'Ride the Waves': '舞浪全開',
       },
     },
     {

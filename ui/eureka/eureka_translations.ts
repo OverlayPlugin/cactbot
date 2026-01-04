@@ -8,8 +8,8 @@ export const bunnyLabel: LocaleText = {
   fr: 'Lapin',
   ja: 'うさぎ',
   cn: '兔子',
-  tc: '兔子',
   ko: '토끼',
+  tc: '兔子',
 };
 
 export const timeStrings: EurekaTimeStrings = {
@@ -107,8 +107,8 @@ export const timeStrings: EurekaTimeStrings = {
     fr: (dayNightMin) => ` pour ${dayNightMin} min `,
     ja: (dayNightMin) => ` ${dayNightMin}分`,
     cn: (dayNightMin) => ` ${dayNightMin}分钟`,
-    tc: (dayNightMin) => ` ${dayNightMin}分鐘`,
     ko: (dayNightMin) => ` ${dayNightMin}분 동안`,
+    tc: (dayNightMin) => ` ${dayNightMin}分鐘`,
   },
   minute: {
     en: 'm',
@@ -116,7 +116,7 @@ export const timeStrings: EurekaTimeStrings = {
     fr: ' min ',
     ja: '分',
     cn: '分',
-    tc: '分',
     ko: '분',
+    tc: '分',
   },
 };

@@ -513,4 +513,4 @@ class TestTimelineUI extends TimelineUI {
   }
 }
 
-void main();
+await main().catch((e) => console.log(e));
