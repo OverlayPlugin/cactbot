@@ -1400,8 +1400,8 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
           fr: 'Intercardinal',
           ja: '斜めへ',
           cn: '四角',
-          tc: '分攤',
           ko: '대각선 쪽으로',
+          tc: '四角',
         },
       },
     },`;
@@ -1465,8 +1465,8 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
           de: 'Sammeln',
           fr: 'Package',
           cn: '分摊',
-          tc: '分攤',
           ko: '쉐어',
+          tc: '分攤',
         },
       },
     },`;
