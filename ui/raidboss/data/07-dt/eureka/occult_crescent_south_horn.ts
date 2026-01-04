@@ -467,12 +467,15 @@ const phantomCanCleanse = (
 };
 
 // Return if the player has a phantom job that can freeze time
-// Phantom Bard Lv 2: Romeo's Ballad
+// Phantom Bard Lv 2: Romeo's Ballad (aoe)
+// Phantom Dancer Lv 1 may be able to use Dance with Tempting Tango proc (single-target)
 const phantomCanFreeze = (
   phantomJob: string,
   phantomJobLevel: number,
 ): boolean => {
   if (phantomJob === phantomJobData.bard && phantomJobLevel >= 2)
+    return true;
+  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 1)
     return true;
   return false;
 };
@@ -494,6 +497,10 @@ const phantomCanSuspend = (
 // Phantom Knight Lv 4: Phantom Guard + Enhanced Phantom Guard (90%)
 // Phantom Knight Lv 6: Pledge
 // Phantom Oracle Lv 6: Invulnerability
+// Phantom Dancer Lv 3: Steadfast Dance (10% MaxHP Barrier)
+// Phantom Dancer Lv 4: Mesmerize (40%)
+// Phantom Mystic Knight Lv 2: Magic Shell (20% MaxHP Barrier of caster)
+// Phantom Gladiator Lv 2: Defend (50%)
 /*
 const phantomCaresAboutTankbuster = (
   phantomJob: string,
@@ -502,6 +509,12 @@ const phantomCaresAboutTankbuster = (
   if (phantomJob === phantomJobData.knight && phantomJobLevel >= 4)
     return true;
   if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
+    return true;
+  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 3)
+    return true;
+  if (phantomJob === phantomJobData.mysticKnight && phantomJobLevel >= 2)
+    return true;
+  if (phantomJob === phantomJobData.gladiator && phantomJobLevel >= 2)
     return true;
   return false;
 };
@@ -526,6 +539,7 @@ const phantomCanBlockPhysical = (
 // Return if the player has a phantom job that helps with enemy aoes
 // Phantom Bard Lv 3: Mighty March (+20% MaxHP)
 // Phantom Ranger Lv 6: Occult Unicorn (40k AoE Shield)
+// Phantom Dancer Lv 4: Mesmerize (Require's target, 4s 40% damage reduction then 100s 10% damage reduction)
 // Phantom Geomance Lv 2 may be able to use Weather with Blessed Rain, Misty Mirage, Sunbath, or Cloudy Caress effects
 /*
 const phantomCaresAboutAOE = (
@@ -535,6 +549,8 @@ const phantomCaresAboutAOE = (
   if (phantomJob === phantomJobData.bard && phantomJobLevel >= 3)
     return true;
   if (phantomJob === phantomJobData.ranger && phantomJobLevel >= 6)
+    return true;
+  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 4)
     return true;
   return false;
 };
@@ -819,7 +835,7 @@ const triggerSet: TriggerSet<Data> = {
       // Berserker = 2
       // Knight = 1
       // Freelancer = null
-      // Freelancer level is accumulation of maxed jobs +1
+      // Freelancer level is accumulation of maxed jobs +1, can also be inferred from stacks of Phantom Mastery (1082)
       type: 'GainsEffect',
       netRegex: { effectId: [...phantomJobEffectIds], capture: true },
       condition: Conditions.targetIsYou(),
