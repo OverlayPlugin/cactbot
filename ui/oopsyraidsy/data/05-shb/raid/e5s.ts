@@ -22,6 +22,7 @@ const noOrb = (str: string) => {
     ja: `${str} (雷玉無し)`,
     cn: `${str} (没吃球)`,
     ko: `${str} (구슬 없음)`,
+    tc: `${str} (沒吃球)`,
   };
 };
 
@@ -163,6 +164,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `${matches.ability} (雲近すぎ)`,
               cn: `${matches.ability} (雷云重叠)`,
               ko: `${matches.ability} (구름이 너무 가까움)`,
+              tc: `${matches.ability} (雲太近)`,
             },
           };
         }

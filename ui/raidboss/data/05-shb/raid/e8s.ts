@@ -93,6 +93,7 @@ const triggerSet: TriggerSet<Data> = {
         ja: 'エデン零式共鳴編４層：cactbot「ヘヴンリーストライク (ノックバック)」ギミック', // FIXME
         cn: '启用击退镜 uptime 策略',
         ko: '정확한 타이밍 넉백방지 공략 사용',
+        tc: '啟用擊退鏡 uptime 策略',
       },
       comment: {
         en: `If you want cactbot to callout Mirror Mirror 4's double knockback, enable this option.
@@ -137,6 +138,14 @@ const triggerSet: TriggerSet<Data> = {
              탱커 빨강 및 초록 거울이 있는 위치에 맞춰 조정합니다.
              탱커 한 명은 파티 사이에, 다른 한 명은 초록 거울에 가장 가까운 곳에 위치해야 합니다.
              초록 거울이 발동하면 탱커는 빨강 거울에 맞춰 위치를 조정합니다.`,
+        tc: `此選項可讓 cactbot 提示第四次鏡中奇遇的雙擊退。
+             會在 BOSS 轉身期間或之後播報提示, 需要小於 1.4 秒
+             的反應時間來同時躲避綠鏡和紅鏡擊退。
+             示例: https://clips.twitch.tv/CreativeDreamyAsparagusKlappa
+             人群在 BOSS 瞬移後分成兩組, 分別站在 BOSS 身後。
+             坦克根據紅鏡和綠鏡的位置進行調整。
+             一個坦克必須在分組中間，另一個坦克最靠近綠鏡。
+             綠鏡消失後，坦克調整到紅鏡位置。`,
       },
       type: 'checkbox',
       default: (options) => {
@@ -206,6 +215,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線 ${num}',
           cn: '第 ${num} 次截线',
           ko: '선: ${num}',
+          tc: '第 ${num} 次截線',
         },
       },
     },
@@ -252,6 +262,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(sous le boss => sous les miroirs bientôt',
           cn: '(BOSS 下方 => 即将去镜子下方)',
           ko: '(보스 밑 => 이후 거울 밑)',
+          tc: '(BOSS 下方 => 即將去鏡子下方)',
         },
         axeNext: {
           en: '(out => middle soon)',
@@ -259,6 +270,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(extérieur => milieu bientôt)',
           cn: '(外 => 即将去中间)',
           ko: '(밖 => 이후 중앙)',
+          tc: '(外 => 即將去中間)',
         },
       },
     },
@@ -294,6 +306,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Derrière => SO',
           cn: '后 => 左下',
           ko: '뒤 => 남서',
+          tc: '後 => 左下',
         },
         redMirrorEast: {
           en: 'Behind => SE',
@@ -301,6 +314,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Derrière => SE',
           cn: '后 => 右下',
           ko: '뒤 => 남동',
+          tc: '後 => 右下',
         },
         getBehind: Outputs.getBehind,
       },
@@ -324,6 +338,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Devant => NO',
           cn: '前 => 左上',
           ko: '앞 => 북서',
+          tc: '前 => 左上',
         },
         redMirrorWest: {
           en: 'Front => NE',
@@ -331,6 +346,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Devant => NE',
           cn: '前 => 右上',
           ko: '앞 => 북동',
+          tc: '前 => 右上',
         },
         goFront: Outputs.goFront,
       },
@@ -349,6 +365,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '反対側へ',
           cn: '换边',
           ko: '반대로 이동',
+          tc: '換邊',
         },
       },
     },
@@ -400,6 +417,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '次はフロストスラッシュ', // FIXME
           cn: '即将冰霜斩 (拉背对人群)',
           ko: '서리 참격 (뒤로)',
+          tc: '即將冰霜斬 (拉背對人群)',
         },
         drivingFrostNext: {
           en: 'Driving Next (face inward)',
@@ -408,6 +426,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '次はフロストスラスト', // FIXME
           cn: '即将冰霜刺 (拉面对人群)',
           ko: '서리 일격 (앞으로)',
+          tc: '即將冰霜刺 (拉麵對人群)',
         },
       },
     },
@@ -441,6 +460,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Guérison : ${players}',
           cn: '驱散: ${players}',
           ko: '에스나: ${players}',
+          tc: '驅散: ${players}',
         },
       },
     },
@@ -457,6 +477,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Étoile sur VOUS',
           cn: '冰花点名',
           ko: '별 징 대상자',
+          tc: '冰花點名',
         },
       },
     },
@@ -482,6 +503,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南 / 北',
           cn: '上/下站位',
           ko: '남 / 북',
+          tc: '上/下站位',
         },
         eastWest: {
           en: 'East / West',
@@ -490,6 +512,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東 / 西',
           cn: '左/右站位',
           ko: '동 / 서',
+          tc: '左/右站位',
         },
       },
     },
@@ -516,6 +539,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南 / 北',
           cn: '上/下站位',
           ko: '남 / 북',
+          tc: '上/下站位',
         },
         eastWest: {
           en: 'East / West',
@@ -524,6 +548,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東 / 西',
           cn: '左/右站位',
           ko: '동 / 서',
+          tc: '左/右站位',
         },
       },
     },
@@ -551,6 +576,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur => Milieu',
           cn: '远离 => 中间',
           ko: '밖 => 중앙',
+          tc: '遠離 => 中間',
         },
         out: Outputs.out,
       },
@@ -577,6 +603,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dessous => Sous les miroirs cardinaux',
           cn: '脚下 => 正点镜下方',
           ko: '보스 밑 => 십자 방향 거울 밑',
+          tc: '腳下 => 正點鏡下方',
         },
         getUnderIntercards: {
           en: 'Under => Under Intercard Mirrors',
@@ -584,6 +611,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dessous => Sous les miroirs intercardinaux',
           cn: '脚下 => 斜点镜下方',
           ko: '보스 밑 => 대각선 방향 거울 밑',
+          tc: '腳下 => 斜點鏡下方',
         },
         getUnderUnknown: {
           en: 'Under Boss => Under Mirrors',
@@ -591,6 +619,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Sous le boss => Sous les miroirs',
           cn: 'BOSS 脚下 => 镜下方',
           ko: '보스 밑 => 거울 밑',
+          tc: 'BOSS 腳下 => 鏡下方',
         },
         getUnder: Outputs.getUnder,
       },
@@ -616,6 +645,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に鎖',
           cn: '连线点名',
           ko: '사슬 대상자',
+          tc: '連線點名',
         },
       },
     },
@@ -633,6 +663,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に玉',
           cn: '拉球点名',
           ko: '구슬 대상자',
+          tc: '拉球點名',
         },
       },
     },
@@ -660,6 +691,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Prenez la tour finale',
             cn: '踩最后塔',
             ko: '마지막 기둥 들어가기',
+            tc: '踩最後塔',
           },
           avoidFinalTower: {
             en: 'Avoid Final Tower',
@@ -667,6 +699,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Évitez la tour finale',
             cn: '躲最后塔',
             ko: '마지막 기둥 피하기',
+            tc: '躲最後塔',
           },
         };
 
@@ -720,6 +753,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Étourdissez l\'ether aqueux',
           cn: '眩晕水以太',
           ko: '물 에테르 기절',
+          tc: '眩暈水以太',
         },
       },
     },
@@ -753,6 +787,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '自分にアク・モーン',
             cn: '死亡轮回点名',
             ko: '아크몬 대상자',
+            tc: '死亡輪迴點名',
           },
           akhMornOn: {
             en: 'Akh Morn: ${players}',
@@ -761,6 +796,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'アク・モーン: ${players}',
             cn: '死亡轮回: ${players}',
             ko: '아크몬 : ${players}',
+            tc: '死亡輪迴: ${players}',
           },
         };
         if (data.me === matches.target) {
@@ -801,6 +837,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にモーン・アファー',
           cn: '无尽顿悟点名',
           ko: '몬아파 대상자',
+          tc: '無盡頓悟點名',
         },
         mornAfahOn: {
           en: 'Morn Afah on ${player}',
@@ -809,6 +846,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にモーン・アファー',
           cn: '无尽顿悟点 ${player}',
           ko: '"${player}" 몬 아파',
+          tc: '無盡頓悟點 ${player}',
         },
       },
     },
@@ -830,6 +868,9 @@ const triggerSet: TriggerSet<Data> = {
         ko: `빠름은 첫 번째 안전 지점에서 세 번째 안전 지점으로 바로 이동할 수 있음을 의미합니다.
              느림은 2번을 건너뛰지 않고 1번 => 2번 => 3번으로 이동해야 한다는 뜻입니다.
              많이 움직이고 싶지 않은 캐스터를 위한 옵션입니다.`,
+        tc: `“快”指你可以直接從第 1 個安全點穿到第 3 個安全點。
+             “慢”指你需要走 1 => 2 => 3, 不能跳過 2。
+             適用於不想移動太多的讀條職業。`,
       },
       type: 'StartsUsing',
       netRegex: { source: 'Shiva', id: ['4D75', '4D76'] },
@@ -893,6 +934,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir1} => ${dir2} => ${dir3} (lent)',
           cn: '${dir1} => ${dir2} => ${dir3} (慢)',
           ko: '${dir1} => ${dir2} => ${dir3} (느림)',
+          tc: '${dir1} => ${dir2} => ${dir3} (慢)',
         },
         fastText: {
           en: '${dir1} => ${dir2} => ${dir3} (fast)',
@@ -900,6 +942,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '${dir1} => ${dir2} => ${dir3} (rapide)',
           cn: '${dir1} => ${dir2} => ${dir3} (快)',
           ko: '${dir1} => ${dir2} => ${dir3} (빠름)',
+          tc: '${dir1} => ${dir2} => ${dir3} (快)',
         },
         dirNW: Outputs.dirNW,
         dirNE: Outputs.dirNE,
@@ -1038,6 +1081,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤 #${num}',
           cn: '红色 #${num}',
           ko: '빨강 ${num}번',
+          tc: '紅色 #${num}',
         },
       },
     },
@@ -1073,6 +1117,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '青 #${num}',
           cn: '蓝色 #${num}',
           ko: '파랑 ${num}번',
+          tc: '藍色 #${num}',
         },
       },
     },
@@ -1096,6 +1141,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Tête #${num}',
           cn: '撞头 #${num}',
           ko: '${num}번 머리 부딪히기',
+          tc: '撞頭 #${num}',
         },
         bluePuddle: {
           en: 'Get Puddle #${num}',
@@ -1103,6 +1149,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez le puddle #${num}',
           cn: '踩圈 #${num}',
           ko: '${num}번 장판 밟기',
+          tc: '踩圈 #${num}',
         },
       },
     },
@@ -1173,6 +1220,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'エスナ (DPSのみ)',
           cn: '驱散DPS',
           ko: '딜러만 에스나',
+          tc: '驅散DPS',
         },
         bluCleanse: {
           en: 'Exuviation',
@@ -1180,6 +1228,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Exuviation',
           cn: '蜕皮',
           ko: '허물 벗기',
+          tc: '蛻皮',
         },
       },
     },
@@ -1197,6 +1246,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンクは塔に頭割り',
           cn: '坦克塔内分摊',
           ko: '탱커 쉐어',
+          tc: '坦克塔內分攤',
         },
       },
     },
@@ -1214,6 +1264,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンクは塔に散開',
           cn: '坦克塔内分散',
           ko: '탱커 산개',
+          tc: '坦克塔內分散',
         },
       },
     },
@@ -1234,6 +1285,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Positions => Prenez la tour finale',
           cn: '八方分散 => 踩最后塔',
           ko: '8방향 산개 => 마지막 기둥 들어가기',
+          tc: '八方分散 => 踩最後塔',
         },
         proteanAvoidFinalTower: {
           en: 'Protean => Avoid Final Tower',
@@ -1241,6 +1293,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Position => Évitez la tour finale',
           cn: '八方分散 => 躲最后塔',
           ko: '8방향 산개 => 마지막 기둥 피하기',
+          tc: '八方分散 => 躲最後塔',
         },
       },
     },
@@ -1501,6 +1554,71 @@ const triggerSet: TriggerSet<Data> = {
         'Inescapable Illumination': '曝露光',
         'The House Of Light': '光之海啸',
         'Reflected Frost Armor \\(R\\)': '连锁反冰甲(红)',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Earthen Aether': '土乙太',
+        'Frozen Mirror': '冰面鏡',
+        'great wyrm': '聖龍',
+        'Luminous Aether': '光乙太',
+        'Mothercrystal': '母水晶',
+        'Shiva': '濕婆',
+      },
+      'replaceText': {
+        'Absolute Zero': '絕對零度',
+        'Mirror, Mirror': '鏡中奇遇',
+        // 'Biting/Driving Frost': '', // FIXME '冰霜斩/刺'
+        // 'Reflected Frost \\(G\\)': '', // FIXME '连锁反斩(绿)'
+        // 'Reflected Frost \\(R\\)': '', // FIXME '连锁反斩(红)'
+        'Diamond Frost': '鑽石星塵',
+        'Frigid Stone': '冰石',
+        'Icicle Impact': '冰柱衝擊',
+        'Heavenly Strike': '極樂冰柱',
+        'Frigid Needle': '冰針',
+        'Frigid Water': '冰霜',
+        'Frigid Eruption': '極冰噴發',
+        // 'Driving/Biting Frost': '', // FIXME '冰霜刺/斩'
+        'Double Slap': '雙劍斬',
+        'Shining Armor': '閃光護甲',
+        // 'Axe/Scythe Kick': '', // FIXME '阔斧/镰形回旋踢'
+        'Light Rampant': '光之失控',
+        'Bright Hunger': '侵蝕光',
+        'The Path Of Light': '光之波動',
+        // 'Scythe/Axe Kick': '', // FIXME '镰形/阔斧回旋踢'
+        // 'Reflected Kick \\(G\\)': '', // FIXME '连锁反踢(绿)'
+        'Banish III': '強放逐',
+        'Shattered World': '世界分斷',
+        'Heart Asunder': '心碎',
+        'Rush': '蓄勢衝撞',
+        'Skyfall': '世界消亡',
+        'Akh Morn': '死亡輪迴',
+        'Morn Afah': '無盡頓悟',
+        'Hallowed Wings': '神聖之翼',
+        // 'Reflected Wings \\(B\\)': '', // FIXME '连锁反翼(蓝)'
+        // 'Reflected Wings \\(G\\)': '', // FIXME '连锁反翼(绿)'
+        // 'Reflected Wings \\(R\\)': '', // FIXME '连锁反翼(红)'
+        'Wyrm\'s Lament': '聖龍咆哮',
+        '(?<! )Frost Armor': '冰霜護甲',
+        // 'Twin Silence/Stillness': '', // FIXME '闲寂/静寂的双剑技'
+        // 'Twin Stillness/Silence': '', // FIXME '静寂/闲寂的双剑技'
+        'Drachen Armor': '聖龍護甲',
+        'Akh Rhai': '天光輪迴',
+        // 'Reflected Armor \\(B\\)': '', // FIXME '连锁反甲(蓝)'
+        // 'Reflected Armor \\(G\\)': '', // FIXME '连锁反甲(绿)'
+        // 'Reflected Armor \\(R\\)': '', // FIXME '连锁反甲(红)'
+        'Holy': '神聖',
+        // 'Embittered/Spiteful Dance': '', // FIXME '严峻/冷峻之舞'
+        // 'Spiteful/Embittered Dance': '', // FIXME '冷峻/严峻之舞'
+        'Reflected Drachen': '連鎖反射：聖龍護甲',
+        'Icelit Dragonsong': '冰與光的龍詩',
+        'Draconic Strike': '聖龍一擊',
+        'Banish(?! )': '放逐',
+        'Inescapable Illumination': '曝露光',
+        'The House Of Light': '光之海嘯',
+        // 'Reflected Frost Armor \\(R\\)': '', // FIXME '连锁反冰甲(红)'
       },
     },
     {

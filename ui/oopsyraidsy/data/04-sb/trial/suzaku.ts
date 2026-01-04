@@ -38,6 +38,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '落ちた',
             cn: '击退坠落',
             ko: '낙사',
+            tc: '擊退墜落',
           },
         };
       },

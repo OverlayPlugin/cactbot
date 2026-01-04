@@ -36,6 +36,7 @@ const bombOutputStrings = {
     ja: '北の岩へ',
     cn: '去正上岩石中间',
     ko: '북쪽 폭탄 사이',
+    tc: '去正上岩石中間',
   },
   'south': {
     en: 'Between south bombs',
@@ -44,6 +45,7 @@ const bombOutputStrings = {
     ja: '南の岩へ',
     cn: '去正下岩石中间',
     ko: '남쪽 폭탄 사이',
+    tc: '去正一下岩石中間',
   },
   'east': {
     en: 'Between east bombs',
@@ -52,6 +54,7 @@ const bombOutputStrings = {
     ja: '東の岩へ',
     cn: '去右边岩石中间',
     ko: '동쪽 폭탄 사이',
+    tc: '去右邊岩石中間',
   },
   'west': {
     en: 'Between west bombs',
@@ -60,6 +63,7 @@ const bombOutputStrings = {
     ja: '西の岩へ',
     cn: '去左边岩石中间',
     ko: '서쪽 폭탄 사이',
+    tc: '去左邊岩石中間',
   },
 };
 
@@ -71,6 +75,7 @@ const primalOutputStrings = {
     ja: '${safespot1} + ${safespot2}',
     cn: '${safespot1} + ${safespot2}',
     ko: '${safespot1} + ${safespot2}',
+    tc: '${safespot1} + ${safespot2}',
   },
   '008E': Outputs.middle,
   '008F': Outputs.sides,
@@ -82,6 +87,7 @@ const primalOutputStrings = {
     ja: '斜め',
     cn: '四角',
     ko: '대각',
+    tc: '四角',
   },
   '008E008F': {
     en: 'Under + Sides',
@@ -90,6 +96,7 @@ const primalOutputStrings = {
     ja: '真ん中 + 横へ',
     cn: '正中间两侧',
     ko: '보스 아래 + 양옆',
+    tc: '正中間兩側',
   },
   '008E0090': {
     en: 'North/South + Out',
@@ -98,6 +105,7 @@ const primalOutputStrings = {
     ja: '北/南 + 外へ',
     cn: '上/下远离',
     ko: '북/남 + 바깥',
+    tc: '上/下遠離',
   },
   '008E0091': {
     en: 'Under + Intercards',
@@ -106,6 +114,7 @@ const primalOutputStrings = {
     ja: '真ん中 + 斜め',
     cn: '正中间四角',
     ko: '보스 아래 + 대각',
+    tc: '正中間四角',
   },
 };
 
@@ -185,6 +194,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ついさっき爆発した岩へ',
           cn: '去刚才爆炸的区域',
           ko: '마지막 폭발 위치로',
+          tc: '去剛才爆炸的區域',
         },
       },
     },
@@ -215,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り (${players})',
           cn: '分摊 (${players})',
           ko: '모이기 (${players})',
+          tc: '分攤 (${players})',
         },
         stackOnYou: Outputs.stackOnYou,
       },
@@ -451,6 +462,44 @@ const triggerSet: TriggerSet<Data> = {
         'Stock': '储存',
         'Temporary Current': '临时洋流',
         'Under The Weight': '大地的重压',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        '(?<!Titanic )Bomb Boulder': '爆破岩石',
+        'Chiseled Sculpture': '被創造的男性',
+        'Eden\'s Promise': '伊甸之約',
+        'Titanic Bomb Boulder': '巨型爆破岩石',
+      },
+      'replaceText': {
+        'Cast': '釋放',
+        'Classical Sculpture': '創造巨兵',
+        'Conflag Strike': '瞬燃強襲',
+        'Diamond Dust': '鑽石星塵',
+        'Earth Shaker': '大地搖動',
+        'Earthen Fury': '大地之怒',
+        'Eternal Oblivion': '永恆忘卻',
+        'Explosion': '爆炸',
+        'Ferostorm': '凶猛風暴',
+        'Formless Judgment': '天罰波動',
+        'Frigid Stone': '冰石',
+        'Ice Floe': '浮冰',
+        'Impact': '衝擊',
+        'Initialize Recall': '回想記憶',
+        'Judgment Jolt': '制裁之界雷',
+        'Junction Shiva': '融合：濕婆',
+        'Junction Titan': '融合：泰坦',
+        'Laser Eye': '激射眼',
+        'Maleficium': '邪法',
+        'Obliteration': '滅跡',
+        'Palm Of Temperance': '拒絕之手',
+        'Paradise Lost': '失樂園',
+        'Rapturous Reach': '拒絕之手',
+        'Release': '施放',
+        'Stock': '儲存',
+        'Temporary Current': '臨時洋流',
+        'Under The Weight': '大地的重壓',
       },
     },
     {

@@ -15,6 +15,7 @@ const lyheGhiahOutputStrings = {
     fr: '${name} vient d\'apparaitre !',
     cn: '已生成 ${name}!',
     ko: '${name} 등장!',
+    tc: '已生成 ${name}!',
   },
   adds: {
     en: 'Adds soon',
@@ -22,6 +23,7 @@ const lyheGhiahOutputStrings = {
     fr: 'Adds bientôt',
     cn: '小怪即将出现',
     ko: '곧 쫄 나옴',
+    tc: '小怪即將出現',
   },
 } as const;
 
@@ -72,6 +74,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'L\'équipe du donjon vient d\'apparaitre, tuez les dans l\'ordre !',
           cn: '已生成 宝库蔓德拉战队, 依次击杀!',
           ko: '만드라즈 등장, 순서대로 잡기!',
+          tc: '已生成 寶庫蔓德拉戰隊, 依次擊殺!',
         },
       },
     },
@@ -237,6 +240,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}に頭割り、見ない',
           cn: '靠近并背对${player}分摊',
           ko: '${player} 쉐어, 바라보지않기',
+          tc: '靠近並背對${player}分攤',
         },
       },
     },

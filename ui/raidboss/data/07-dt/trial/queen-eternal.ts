@@ -89,6 +89,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '連続光属性AoE',
           cn: '连续小AoE',
           ko: '지속적인 약한 전체 공격',
+          tc: '連續小AoE',
         },
       },
     },
@@ -118,6 +119,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前方の角へ',
           cn: '前面角落',
           ko: '앞쪽 구석으로',
+          tc: '前面角落',
         },
         goLeft: Outputs.left,
         goRight: Outputs.right,
@@ -144,6 +146,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー線処理',
           cn: '激光连线点名',
           ko: '레이저 선 대상자',
+          tc: '雷射連線點名',
         },
       },
     },
@@ -176,6 +179,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '重力装置 -- 浮上',
           cn: '重力 -- 上浮',
           ko: '중력 -- 상승',
+          tc: '重力 -- 上浮',
         },
       },
     },
@@ -197,6 +201,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '重力装置 -- 降下',
           cn: '重力 -- 下降',
           ko: '중력 -- 하강',
+          tc: '重力 -- 下降',
         },
       },
     },
@@ -218,6 +223,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '重力装置 -- 浮上',
           cn: '重力 -- 上浮',
           ko: '중력 -- 상승',
+          tc: '重力 -- 上浮',
         },
       },
     },
@@ -243,6 +249,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '下層の窓前へ',
           cn: '正对下层空洞',
           ko: '아래쪽 뚫린 곳',
+          tc: '正對下層空洞',
         },
         floatCastle: {
           en: 'In front of middle windows',
@@ -251,6 +258,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中層の窓前へ',
           cn: '正对上层空洞',
           ko: '가운데층 뚫린 곳',
+          tc: '正對上層空洞',
         },
       },
     },
@@ -267,6 +275,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ドローンサークルの中に',
           cn: '小月环',
           ko: '로봇 원 안으로',
+          tc: '小月環',
         },
       },
     },
@@ -299,6 +308,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'まもなく視線攻撃',
           cn: '石化眼点名',
           ko: '곧 시선징 대상자',
+          tc: '石化眼點名',
         },
       },
     },
@@ -325,6 +335,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '視線攻撃 -- ${otherTarget} を見ない',
           cn: '石化眼 -- 背对 ${otherTarget}',
           ko: '시선징 -- ${otherTarget}에게서 뒤돌기',
+          tc: '石化眼 -- 背對 ${otherTarget}',
         },
         shriekOthers: {
           en: 'Look away from ${comboTargets}',
@@ -333,6 +344,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${comboTargets} を見ない',
           cn: '背对 ${comboTargets}',
           ko: '${comboTargets}에게서 뒤돌기',
+          tc: '背對 ${comboTargets}',
         },
       },
     },
@@ -350,6 +362,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'まもなく加速度爆弾',
           cn: '稍后 加速度炸弹',
           ko: '곧 가속도 폭탄',
+          tc: '稍後 加速度炸彈',
         },
       },
     },
@@ -381,6 +394,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'フレア処理',
           cn: '核爆点名',
           ko: '플레어 대상자',
+          tc: '核爆點名',
         },
       },
     },
@@ -411,6 +425,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '5連続AoE',
           cn: 'AoE (5次)',
           ko: '전체공격 (5x)',
+          tc: 'AoE (5次)',
         },
       },
     },
@@ -546,6 +561,45 @@ const triggerSet: TriggerSet<Data> = {
         'Ruthless Regalia': '王法无情',
         'Virtual Shift': '虚景切换',
         'Waltz of the Regalia': '王权圆舞曲',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Queen Eternal': '永恆女王',
+      },
+      'replaceText': {
+        // '\\(abandonment\\)': '', // FIXME '(孤独感)'
+        // '\\(all\\)': '', // FIXME '(全体)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(cones': '', // FIXME '(锥形'
+        // '\\(flare\\)': '', // FIXME '(核爆)'
+        // '\\(gaze\\)': '', // FIXME '(石化光)'
+        // '\\(pre-cast\\)': '', // FIXME '(预咏唱)'
+        // '\\(puddles': '', // FIXME '(放圈'
+        // '\\(raidwide\\)': '', // FIXME '(全域)'
+        // '\\(single\\)': '', // FIXME '(单体)'
+        // '\\(stun\\)': '', // FIXME '(眩晕)'
+        'Absolute Authority': '絕對君權',
+        'Aethertithe': '乙太稅',
+        'Authority\'s Hold': '空間掌控：制動',
+        'Besiegement': '激突',
+        'Brutal Crown': '王權殘暴',
+        'Castellation': '護城牆',
+        'Coronation': '終端發射',
+        'Divide and Conquer': '分治法',
+        'Downburst': '下行突風',
+        'Dynastic Diadem': '王冠之力',
+        'Legitimate Force': '合法武力',
+        'Morning Stars': '黎明的群星',
+        'Powerful Gust': '強風',
+        'Prosecution Of War': '訴諸武力',
+        'Royal Banishment': '放逐射線',
+        'Royal Domain': '王土',
+        'Ruthless Regalia': '王法無情',
+        'Virtual Shift': '虛景切換',
+        'Waltz of the Regalia': '王權圓舞曲',
       },
     },
     {

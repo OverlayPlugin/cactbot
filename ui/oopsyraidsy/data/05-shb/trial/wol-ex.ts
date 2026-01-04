@@ -62,6 +62,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           ja: '塔を踏まなかった',
           cn: '没踩塔',
           ko: '장판 실수',
+          tc: '沒踩塔',
         },
       },
     },

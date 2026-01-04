@@ -51,6 +51,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ノックバック',
             cn: '击退坠落',
             ko: '넉백됨!',
+            tc: '擊退墜落',
           },
         };
       },
@@ -71,6 +72,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '滑った',
             cn: '滑落',
             ko: '미끄러짐!',
+            tc: '滑落',
           },
         };
       },

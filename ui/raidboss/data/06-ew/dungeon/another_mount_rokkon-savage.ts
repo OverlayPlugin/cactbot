@@ -64,6 +64,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '後ろ + 外',
     cn: '后 + 远离',
     ko: '뒤 + 밖',
+    tc: '後 + 遠離',
   },
   leftRedFirst: {
     en: 'Left + Out',
@@ -72,6 +73,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '左 + 外',
     cn: '左 + 远离',
     ko: '왼쪽 + 밖',
+    tc: '左 + 遠離',
   },
   frontRedFirst: {
     en: 'Front + Out',
@@ -80,6 +82,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '前 + 外',
     cn: '前 + 远离',
     ko: '앞 + 밖',
+    tc: '前 + 遠離',
   },
   rightRedFirst: {
     en: 'Right + Out',
@@ -88,6 +91,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '右 + 外',
     cn: '右 + 远离',
     ko: '오른쪽 + 밖',
+    tc: '右 + 遠離',
   },
   backBlueFirst: {
     en: 'Back + In',
@@ -96,6 +100,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '後ろ + 中',
     cn: '后 + 靠近',
     ko: '뒤 + 안',
+    tc: '後 + 靠近',
   },
   leftBlueFirst: {
     en: 'Left + In',
@@ -104,6 +109,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '左 + 中',
     cn: '左 + 靠近',
     ko: '왼쪽 + 안',
+    tc: '左 + 靠近',
   },
   frontBlueFirst: {
     en: 'Front + In',
@@ -112,6 +118,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '前 + 中',
     cn: '前 + 靠近',
     ko: '앞 + 안',
+    tc: '前 + 靠近',
   },
   rightBlueFirst: {
     en: 'Right + In',
@@ -120,6 +127,7 @@ const tripleKasumiFirstOutputStrings = {
     ja: '右 + 中',
     cn: '右 + 靠近',
     ko: '오른쪽 + 안',
+    tc: '右 + 靠近',
   },
 } as const;
 
@@ -133,6 +141,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: 'そのまま + 外',
     cn: '停 + 远离',
     ko: '그대로 + 밖',
+    tc: '停 + 遠離',
   },
   leftRed: {
     en: 'Left + Out',
@@ -141,6 +150,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: '左 + 外',
     cn: '左左左 + 远离',
     ko: '왼쪽 + 밖',
+    tc: '左左左 + 遠離',
   },
   frontRed: {
     en: 'Through + Out',
@@ -149,6 +159,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: 'またいで + 外',
     cn: '穿 + 远离',
     ko: '가로지르기 + 밖',
+    tc: '穿 + 遠離',
   },
   rightRed: {
     en: 'Right + Out',
@@ -157,6 +168,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: '右 + 外',
     cn: '右右右 + 远离',
     ko: '오른쪽 + 밖',
+    tc: '右右右 + 遠離',
   },
   backBlue: {
     en: 'Stay + In',
@@ -165,6 +177,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: 'そのまま + 中',
     cn: '停 + 靠近',
     ko: '그대로 + 안',
+    tc: '停 + 靠近',
   },
   leftBlue: {
     en: 'Left + In',
@@ -173,6 +186,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: '左 + 中',
     cn: '左左左 + 靠近',
     ko: '왼쪽 + 밖',
+    tc: '左左左 + 靠近',
   },
   frontBlue: {
     en: 'Through + In',
@@ -181,6 +195,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: 'またいで + 中',
     cn: '穿 + 靠近',
     ko: '가로지르기 + 안',
+    tc: '穿 + 靠近',
   },
   rightBlue: {
     en: 'Right + In',
@@ -189,6 +204,7 @@ const tripleKasumiFollowupOutputStrings = {
     ja: '右 + 中',
     cn: '右右右 + 靠近',
     ko: '오른쪽 + 안',
+    tc: '右右右 + 靠近',
   },
 };
 
@@ -203,6 +219,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
     ja: '近接ペア',
     cn: '近战分摊',
     ko: '근딜 쉐어',
+    tc: '近戰分攤',
   },
   role: {
     en: 'Role Stacks',
@@ -211,6 +228,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
     ja: 'ロールペア',
     cn: '职能分摊',
     ko: '역할별 쉐어',
+    tc: '職能分攤',
   },
   partner: {
     en: 'Partner Stacks',
@@ -219,6 +237,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
     ja: 'ペア',
     cn: '和搭档分摊',
     ko: '파트너 쉐어',
+    tc: '和搭檔分攤',
   },
   unknown: {
     en: 'Stacks',
@@ -227,6 +246,7 @@ const basicStackSpreadOutputStrings: Record<StackSpreadMechanic, LocaleText> = {
     ja: '頭割り',
     cn: '分摊',
     ko: '쉐어',
+    tc: '分攤',
   },
 } as const;
 
@@ -379,6 +399,7 @@ const stackSpreadResponse = (
       ja: '散会 => 近接ペア',
       cn: '分散 => 近战分摊',
       ko: '산개 => 근딜 쉐어',
+      tc: '分散 => 近戰分攤',
     },
     spreadThenRoleStack: {
       en: 'Spread => Role Stacks',
@@ -387,6 +408,7 @@ const stackSpreadResponse = (
       ja: '散会 => ロールペア',
       cn: '分散 => 职能分摊',
       ko: '산개 => 역할별 쉐어',
+      tc: '分散 => 職能分攤',
     },
     spreadThenPartnerStack: {
       en: 'Spread => Partner Stacks',
@@ -395,6 +417,7 @@ const stackSpreadResponse = (
       ja: '散会 => ペア',
       cn: '分散 => 和搭档分摊',
       ko: '산개 => 파트너 쉐어',
+      tc: '分散 => 和搭檔分攤',
     },
     meleeStackThenSpread: {
       en: 'Melees Stack => Spread',
@@ -403,6 +426,7 @@ const stackSpreadResponse = (
       ja: '近接ペア => 散会',
       cn: '近战分摊 => 分散',
       ko: '근딜 쉐어 => 산개',
+      tc: '近戰分攤 => 分散',
     },
     roleStackThenSpread: {
       en: 'Role Stacks => Spread',
@@ -411,6 +435,7 @@ const stackSpreadResponse = (
       ja: 'ロールペア => 散会',
       cn: '职能分摊 => 分散',
       ko: '역할별 쉐어 => 산개',
+      tc: '職能分攤 => 分散',
     },
     partnerStackThenSpread: {
       en: 'Partner Stacks => Spread',
@@ -419,6 +444,7 @@ const stackSpreadResponse = (
       ja: 'ペア => 散会',
       cn: '和搭档分摊 => 分散',
       ko: '파트너 쉐어 => 산개',
+      tc: '和搭檔分攤 => 分散',
     },
     spreadThenStack: Outputs.spreadThenStack,
     stackThenSpread: Outputs.stackThenSpread,
@@ -429,6 +455,7 @@ const stackSpreadResponse = (
       ja: '頭割り: ${player1}, ${player2}',
       cn: '分摊点: ${player1}, ${player2}',
       ko: '쉐어: ${player1}, ${player2}',
+      tc: '分攤點: ${player1}, ${player2}',
     },
   };
 
@@ -484,6 +511,7 @@ const towerResponse = (
       ja: '線${num1} => 青塔${num2}',
       cn: '连线 ${num1} => 蓝塔 ${num2}',
       ko: '선 ${num1} => 파랑 기둥 ${num2}',
+      tc: '連線 ${num1} => 藍塔 ${num2}',
     },
     tetherThenOrangeTower: {
       en: 'Tether ${num1} => Orange Tower ${num2}',
@@ -492,6 +520,7 @@ const towerResponse = (
       ja: '線${num1} => 赤塔${num2}',
       cn: '连线 ${num1} => 橙塔 ${num2}',
       ko: '선 ${num1} => 주황 기둥 ${num2}',
+      tc: '連線 ${num1} => 橙塔 ${num2}',
     },
     tether: {
       en: 'Tether ${num}',
@@ -500,6 +529,7 @@ const towerResponse = (
       ja: '線${num}',
       cn: '连线 ${num}',
       ko: '선 ${num}',
+      tc: '連線 ${num}',
     },
     blueTower: {
       en: 'Blue Tower ${num}',
@@ -508,6 +538,7 @@ const towerResponse = (
       ja: '青塔${num}',
       cn: '蓝塔 ${num}',
       ko: '파랑 기둥 ${num}',
+      tc: '藍塔 ${num}',
     },
     orangeTower: {
       en: 'Orange Tower ${num}',
@@ -516,6 +547,7 @@ const towerResponse = (
       ja: '赤塔${num}',
       cn: '橙塔 ${num}',
       ko: '주황 기둥 ${num}',
+      tc: '橙塔 ${num}',
     },
     num1: Outputs.num1,
     num2: Outputs.num2,
@@ -604,6 +636,12 @@ const triggerSet: TriggerSet<Data> = {
            파트너 쉐어는 탱힐+딜러와 탱힐+딜러를 의미합니다(어떤 조합도 가능).
            원딜이 두 명 또는 근딜이 두 명일 경우, 이 설정 옵션과 상관없이 "근딜"을 호출하지 않습니다.
            탱힐 둘, 딜러 둘이 아닌 파티 구성은 지원되지 않습니다.`,
+        tc: `對於所有雙人分攤，該選項指定了選擇誰與誰分攤的優先級。
+           如果你想讓近戰優先和坦克分攤, 選擇含有“近戰”的選項。
+           近戰分攤指的是 近戰+坦克 和 治療+遠程。職能分攤指的是 坦克 + 治療 和 DPS + DPS。
+           搭檔分攤指的是 坦克 + DPS 和 治療 + DPS (任意組合均可)。
+           如果隊伍中有兩名遠程 DPS 或近戰 DPS, 無論此配置選項如何, 它都不會報“近戰分攤”。
+           沒有考慮對非標準陣容隊伍 (非1T1N2DPS) 構成的支持。`,
       },
       name: {
         en: 'Stack Selection Order',
@@ -612,6 +650,7 @@ const triggerSet: TriggerSet<Data> = {
         ja: 'ペア優先順位',
         cn: '选择分摊次序',
         ko: '쉐어 우선순위',
+        tc: '選擇分攤次序',
       },
       type: 'select',
       options: {
@@ -638,6 +677,10 @@ const triggerSet: TriggerSet<Data> = {
         ko: {
           '근딜 > 역할군 > 파트너': 'meleeRolesPartners',
           '역할군 > 파트너': 'rolesPartners',
+        },
+        tc: {
+          '近戰 > 職能 > 搭檔': 'meleeRolesPartners',
+          '職能 > 搭檔': 'rolesPartners',
         },
       },
       default: 'meleeRolesPartners',
@@ -694,6 +737,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '自分に突進',
             cn: '冲锋点名',
             ko: '돌진 대상자',
+            tc: '衝鋒點名',
           },
           chargeOn: {
             en: 'Charge on ${player}',
@@ -702,6 +746,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '突進: ${player}',
             cn: '冲锋点 ${player}',
             ko: '돌진 ${player}',
+            tc: '衝鋒點 ${player}',
           },
         };
 
@@ -902,6 +947,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + 散会 => ${outIn} + 近接ペア',
             cn: '${inOut} + 分散 => ${outIn} + 近战分摊',
             ko: '${inOut} + 산개 => ${outIn} + 근딜 쉐어',
+            tc: '${inOut} + 分散 => ${outIn} + 近戰分攤',
           },
           spreadThenRoleStack: {
             en: '${inOut} + Spread => ${outIn} + Role Stacks',
@@ -910,6 +956,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + 散会 => ${outIn} + ロールペア',
             cn: '${inOut} + 分散 => ${outIn} + 职能分摊',
             ko: '${inOut} + 산개 => ${outIn} + 역할별 쉐어',
+            tc: '${inOut} + 分散 => ${outIn} + 職能分攤',
           },
           spreadThenPartnerStack: {
             en: '${inOut} + Spread => ${outIn} + Partner Stacks',
@@ -918,6 +965,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + 散会 => ${outIn} + ペア',
             cn: '${inOut} + 分散 => ${outIn} + 和搭档分摊',
             ko: '${inOut} + 산개 => ${outIn} + 파트너 쉐어',
+            tc: '${inOut} + 分散 => ${outIn} + 和搭檔分攤',
           },
           meleeStackThenSpread: {
             en: '${inOut} + Melees Stack => ${outIn} + Spread',
@@ -926,6 +974,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + 近接ペア => ${outIn} + 散会',
             cn: '${inOut} + 近战分摊 => ${outIn} + 分散',
             ko: '${inOut} + 근딜 쉐어 => ${outIn} + 산개',
+            tc: '${inOut} + 近戰分攤 => ${outIn} + 分散',
           },
           roleStackThenSpread: {
             en: '${inOut} + Role Stacks => ${outIn} + Spread',
@@ -934,6 +983,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + ロールペア => ${outIn} + 散会',
             cn: '${inOut} + 职能分摊 => ${outIn} + 分散',
             ko: '${inOut} + 역할별 쉐어 => ${outIn} + 산개',
+            tc: '${inOut} + 職能分攤 => ${outIn} + 分散',
           },
           partnerStackThenSpread: {
             en: '${inOut} + Partner Stacks => ${outIn} + Spread',
@@ -942,6 +992,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + ペア => ${outIn} + 散会',
             cn: '${inOut} + 和搭档分摊 => ${outIn} + 分散',
             ko: '${inOut} + 파트너 쉐어 => ${outIn} + 산개',
+            tc: '${inOut} + 和搭檔分攤 => ${outIn} + 分散',
           },
           spreadThenStack: {
             en: '${inOut} + Spread => ${outIn} + Stack',
@@ -950,6 +1001,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + 散会 => ${outIn} + ペア',
             cn: '${inOut} + 分散 => ${outIn} + 分摊',
             ko: '${inOut} + 산개 => ${outIn} + 쉐어',
+            tc: '${inOut} + 分散 => ${outIn} + 分攤',
           },
           stackThenSpread: {
             en: '${inOut} + Stack => ${outIn} + Spread',
@@ -958,6 +1010,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${inOut} + ペア => ${outIn} + 散会',
             cn: '${inOut} + 分摊 => ${outIn} + 分散',
             ko: '${inOut} + 쉐어 => ${outIn} + 산개',
+            tc: '${inOut} + 分攤 => ${outIn} + 分散',
           },
           stacks: {
             en: 'Stacks: ${player1}, ${player2}',
@@ -966,6 +1019,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '頭割り: ${player1}, ${player2}',
             cn: '分摊点: ${player1}, ${player2}',
             ko: '쉐어: ${player1}, ${player2}',
+            tc: '分攤點: ${player1}, ${player2}',
           },
         };
 
@@ -1044,6 +1098,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${inOut} + ${mechanic}',
           cn: '${inOut} + ${mechanic}',
           ko: '${inOut} + ${mechanic}',
+          tc: '${inOut} + ${mechanic}',
         },
         out: Outputs.out,
         in: Outputs.in,
@@ -1144,6 +1199,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北 + ${mechanic}',
           cn: '上菱形 + ${mechanic}',
           ko: '북쪽 + ${mechanic}',
+          tc: '上菱形 + ${mechanic}',
         },
         east: {
           en: 'East Diamond + ${mechanic}',
@@ -1152,6 +1208,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東 + ${mechanic}',
           cn: '右菱形 + ${mechanic}',
           ko: '동쪽 + ${mechanic}',
+          tc: '右菱形 + ${mechanic}',
         },
         south: {
           en: 'South Diamond + ${mechanic}',
@@ -1160,6 +1217,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南 + ${mechanic}',
           cn: '下菱形 + ${mechanic}',
           ko: '남쪽 + ${mechanic}',
+          tc: '下菱形 + ${mechanic}',
         },
         west: {
           en: 'West Diamond + ${mechanic}',
@@ -1168,6 +1226,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西 + ${mechanic}',
           cn: '左菱形 + ${mechanic}',
           ko: '서쪽 + ${mechanic}',
+          tc: '左菱形 + ${mechanic}',
         },
         northeast: {
           en: 'Northeast Square + ${mechanic}',
@@ -1176,6 +1235,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東 + ${mechanic}',
           cn: '右上 正方形 + ${mechanic}',
           ko: '북동쪽 + ${mechanic}',
+          tc: '右上 正方形 + ${mechanic}',
         },
         southeast: {
           en: 'Southeast Square + ${mechanic}',
@@ -1184,6 +1244,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南東 + ${mechanic}',
           cn: '右下 正方形 + ${mechanic}',
           ko: '남동쪽 + ${mechanic}',
+          tc: '右下 正方形 + ${mechanic}',
         },
         southwest: {
           en: 'Southwest Square + ${mechanic}',
@@ -1192,6 +1253,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南西 + ${mechanic}',
           cn: '左下 正方形 + ${mechanic}',
           ko: '남서쪽 + ${mechanic}',
+          tc: '左下 正方形 + ${mechanic}',
         },
         northwest: {
           en: 'Northwest Square + ${mechanic}',
@@ -1200,6 +1262,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西 + ${mechanic}',
           cn: '左上 正方形 + ${mechanic}',
           ko: '북서쪽 + ${mechanic}',
+          tc: '左上 正方形 + ${mechanic}',
         },
         ...basicStackSpreadOutputStrings,
         unknownMech: Outputs.unknown,
@@ -1229,6 +1292,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔',
           cn: '塔',
           ko: '기둥',
+          tc: '塔',
         },
         num1: Outputs.num1,
         num2: Outputs.num2,
@@ -1270,6 +1334,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔踏み (${player})',
           cn: '踩塔 (与${player})',
           ko: '기둥 들어가기 (+${player})',
+          tc: '踩塔 (與${player})',
         },
         spread: {
           en: 'Spread (w/${player})',
@@ -1278,6 +1343,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散会 (${player})',
           cn: '分散 (与${player})',
           ko: '산개 들어가기 (+${player})',
+          tc: '分散 (與${player})',
         },
         unknown: Outputs.unknown,
       },
@@ -1297,6 +1363,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '横へ (そのまま横)',
           cn: '两侧 (待在两侧)',
           ko: '양 옆 (양 옆에 있기)',
+          tc: '兩側 (待在兩側)',
         },
       },
     },
@@ -1314,6 +1381,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右 + 後ろ',
           cn: '右右右 + 去背后',
           ko: '오른쪽 + 뒤',
+          tc: '右右右 + 去背後',
         },
       },
     },
@@ -1331,6 +1399,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左 + 後ろ',
           cn: '左左左 + 去背后',
           ko: '왼쪽 + 뒤',
+          tc: '左左左 + 去背後',
         },
       },
     },
@@ -1371,6 +1440,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '4x 手裏剣',
           cn: '躲避 4 次手里剑',
           ko: '수리검 4개 피하기',
+          tc: '躲避 4 次手裏劍',
         },
       },
     },
@@ -1394,6 +1464,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'AOE回避',
           cn: '远离扩大连线',
           ko: '커지는 장판들 피하기',
+          tc: '遠離擴大連線',
         },
       },
     },
@@ -1410,6 +1481,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '石の下へ + 直線AOE',
           cn: '站在石头和线下',
           ko: '바위 밑으로 + 직선장판',
+          tc: '站在石頭和線下',
         },
       },
     },
@@ -1450,6 +1522,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '頭割り: ${player1}, ${player2}',
             cn: '分摊点: ${player1}, ${player2}',
             ko: '쉐어: ${player1}, ${player2}',
+            tc: '分攤點: ${player1}, ${player2}',
           },
         };
 
@@ -1523,6 +1596,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボス基準て散開',
           cn: '四方分散',
           ko: '산개',
+          tc: '四方分散',
         },
       },
     },
@@ -1547,6 +1621,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '玉の処理',
           cn: '缩小单独的球',
           ko: '혼자 있는 구슬 작아지게 만들기',
+          tc: '縮小單獨的球',
         },
       },
     },
@@ -1573,6 +1648,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンクの後ろ',
           cn: '站坦克后面',
           ko: '탱커 뒤에 서기',
+          tc: '站坦克後面',
         },
         blockLaser: {
           en: 'Block Laser on ${player}',
@@ -1581,6 +1657,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}の前でカバー',
           cn: '挡枪 ${player}',
           ko: '${player} 대상 레이저 앞에서 맞기',
+          tc: '擋槍 ${player}',
         },
         avoidLaser: {
           en: 'Avoid Laser',
@@ -1589,6 +1666,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レイザー回避',
           cn: '躲避激光',
           ko: '레이저 피하기',
+          tc: '躲避雷射',
         },
       },
     },
@@ -1720,6 +1798,8 @@ const triggerSet: TriggerSet<Data> = {
              “半异色” 指的是有 2 人的 3 个 buff 有 2 种颜色, 另外 2 人的 3 个 buff 全部是同一种颜色。`,
         ko: `완전 혼합은 모든 사람이 두 가지 색을 가지고 있음을 의미합니다 (한 가지 색 두 개, 다른 색 하나).
              반혼합은 두 사람이 두 가지 종류를 가지고 있고, 다른 두 사람은 모두 같은 색을 가지고 있음을 의미합니다.`,
+        tc: `“全異色” 指的是所有人的 3 個 buff 都有 2 種顏色 (2 個是一種顏色, 剩下 1 個是另一種)。
+             “半異色” 指的是有 2 人的 3 個 buff 有 2 種顏色, 另外 2 人的 3 個 buff 全部是同一種顏色。`,
       },
       type: 'GainsEffect',
       netRegex: { effectId: ['E0D', 'E0E', 'E0F', 'E11', 'E12', 'E13'], capture: false },
@@ -1737,6 +1817,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${color1} -> ${color2} -> ${color3} (${mixedType})',
             cn: '${color1} -> ${color2} -> ${color3} (${mixedType})',
             ko: '${color1} -> ${color2} -> ${color3} (${mixedType})',
+            tc: '${color1} -> ${color2} -> ${color3} (${mixedType})',
           },
           infoText: {
             en: '(first ${color} w/${player})',
@@ -1745,6 +1826,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '1番 ${color} +${player}',
             cn: '(第一个 ${color} 和 ${player})',
             ko: '1번 ${color} +${player}',
+            tc: '(第一個 ${color} 和 ${player})',
           },
           orange: {
             en: 'Orange',
@@ -1753,6 +1835,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '赤',
             cn: '橙色',
             ko: '주황',
+            tc: '橙色',
           },
           blue: {
             en: 'Blue',
@@ -1761,6 +1844,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '青',
             cn: '蓝色',
             ko: '파랑',
+            tc: '藍色',
           },
           mixedTypeFull: {
             en: 'full mixed',
@@ -1769,6 +1853,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '全混合',
             cn: '全异色',
             ko: '완전 혼합',
+            tc: '全異色',
           },
           mixedTypeHalf: {
             en: 'half mixed',
@@ -1777,6 +1862,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '半分混合',
             cn: '半异色',
             ko: '반혼합',
+            tc: '半異色',
           },
           unknown: Outputs.unknown,
         };
@@ -1853,6 +1939,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側の青塔1',
           cn: '内侧 蓝塔 1',
           ko: '안쪽 파랑 기둥1',
+          tc: '內側 藍塔 1',
         },
         orangeTower1: {
           en: 'Inside Orange Tower 1',
@@ -1861,6 +1948,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側の赤塔1',
           cn: '内侧 橙塔 1',
           ko: '안쪽 주황 기둥1',
+          tc: '內側 橙塔 1',
         },
       },
     },
@@ -1890,6 +1978,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側の青塔1',
           cn: '内侧 蓝塔 1',
           ko: '안쪽 파랑 기둥 1',
+          tc: '內側 藍塔 1',
         },
         orangeTower1: {
           en: 'Inside Orange Tower 1',
@@ -1898,6 +1987,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側の赤塔1',
           cn: '内侧 橙塔 1',
           ko: '안쪽 주황 기둥 1',
+          tc: '內側 橙塔 1',
         },
         blueTower2: {
           en: 'Corner Blue Tower 2',
@@ -1906,6 +1996,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '隅の青塔2',
           cn: '角落 蓝塔 2',
           ko: '구석 파랑 기둥 2',
+          tc: '角落 藍塔 2',
         },
         orangeTower2: {
           en: 'Corner Orange Tower 2',
@@ -1914,6 +2005,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '隅の赤塔2',
           cn: '角落 橙塔 2',
           ko: '구석 주황 기둥 2',
+          tc: '角落 橙塔 2',
         },
         blueTower3: {
           en: 'Placed Blue Tower 3',
@@ -1922,6 +2014,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '設置した青塔3',
           cn: '放置 蓝塔 3',
           ko: '설치한 파랑 기둥 3',
+          tc: '放置 藍塔 3',
         },
         orangeTower3: {
           en: 'Placed Orange Tower 3',
@@ -1930,6 +2023,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '設置した赤塔3',
           cn: '放置 橙塔 3',
           ko: '설치한 주황 기둥 3',
+          tc: '放置 橙塔 3',
         },
       },
     },
@@ -1992,6 +2086,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(${text})',
           cn: '(${text})',
           ko: '(${text})',
+          tc: '(${text})',
         },
         ...tripleKasumiFollowupOutputStrings,
       },
@@ -2020,6 +2115,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${text1} => ${text2} => ${text3}',
           cn: '${text1} => ${text2} => ${text3}',
           ko: '${text1} => ${text2} => ${text3}',
+          tc: '${text1} => ${text2} => ${text3}',
         },
         ...tripleKasumiFirstOutputStrings,
         ...tripleKasumiFollowupOutputStrings,
@@ -2060,6 +2156,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '横へ + 外 => そのまま外',
           cn: '两侧 + 远离 => 待在外面',
           ko: '양 옆 + 밖 => 밖에 있기',
+          tc: '兩側 + 遠離 => 待在外面',
         },
       },
     },
@@ -2076,6 +2173,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの下へ => 横へ + 外',
           cn: '去脚下 => 两侧 + 远离',
           ko: '안 => 양 옆 + 밖',
+          tc: '去腳下 => 兩側 + 遠離',
         },
       },
     },
@@ -2093,6 +2191,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '横へ + 外',
           cn: '两侧 + 远离',
           ko: '양 옆 + 밖',
+          tc: '兩側 + 遠離',
         },
       },
     },
@@ -2241,6 +2340,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '自分の後ろに線',
             cn: '后方连线点名!',
             ko: '선-뒤쪽 대상자',
+            tc: '後方連線點名!',
           },
           leftOnYou: {
             en: 'Left Tether on YOU',
@@ -2249,6 +2349,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '自分の左に線',
             cn: '左侧连线点名!',
             ko: '선-왼쪽 대상자',
+            tc: '左側連線點名!',
           },
           frontOnYou: {
             en: 'Front Tether on YOU',
@@ -2257,6 +2358,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '自分の前に線',
             cn: '前方连线点名!',
             ko: '선-앞쪽 대상자',
+            tc: '前方連線點名!',
           },
           rightOnYou: {
             en: 'Right Tether on YOU',
@@ -2265,6 +2367,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '自分の右に線',
             cn: '右侧连线点名!',
             ko: '선-오른쪽 대상자',
+            tc: '右側連線點名!',
           },
           backOnPlayer: {
             en: 'Back Tether on ${player}',
@@ -2273,6 +2376,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '後ろの線: ${player}',
             cn: '后方连线点 ${player}',
             ko: '선-뒤쪽 ${player}',
+            tc: '後方連線點 ${player}',
           },
           leftOnPlayer: {
             en: 'Left Tether on ${player}',
@@ -2281,6 +2385,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '左の線: ${player}',
             cn: '左侧连线点 ${player}',
             ko: '선-왼쪽 ${player}',
+            tc: '左側連線點 ${player}',
           },
           frontOnPlayer: {
             en: 'Front Tether on ${player}',
@@ -2289,6 +2394,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '前の線: ${player}',
             cn: '前方连线点 ${player}',
             ko: '선-앞쪽 ${player}',
+            tc: '前方連線點 ${player}',
           },
           rightOnPlayer: {
             en: 'Right Tether on ${player}',
@@ -2297,6 +2403,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '右の線: ${player}',
             cn: '右侧连线点 ${player}',
             ko: '선-오른쪽 ${player}',
+            tc: '右側連線點 ${player}',
           },
         };
 
@@ -2340,6 +2447,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '後ろの線 (${partners})',
             cn: '后方连线 (和 ${partners})',
             ko: '선-뒤쪽 (${partners})',
+            tc: '後方連線 (和 ${partners})',
           },
           // These are probably impossible.
           leftOnYou: {
@@ -2349,6 +2457,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '左の線 (${partners})',
             cn: '左侧连线 (和 ${partners})',
             ko: '선-왼쪽 (${partners})',
+            tc: '左側連線 (和 ${partners})',
           },
           frontOnYou: {
             en: 'Front Tether (${partners})',
@@ -2357,6 +2466,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '前の線 (${partners})',
             cn: '前方连线 (和 ${partners})',
             ko: '선-앞쪽 (${partners})',
+            tc: '前方連線 (和 ${partners})',
           },
           rightOnYou: {
             en: 'Right Tether (${partners})',
@@ -2365,6 +2475,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '右の線 (${partners})',
             cn: '右侧连线 (和 ${partners})',
             ko: '선-오른쪽 (${partners})',
+            tc: '右側連線 (和 ${partners})',
           },
           unmarked: {
             en: 'Unmarked (${partners})',
@@ -2373,6 +2484,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '線なし (${partners})',
             cn: '无点名 (和 ${partners})',
             ko: '무징 (${partners})',
+            tc: '無點名 (和 ${partners})',
           },
           melee: {
             en: 'melees together',
@@ -2381,6 +2493,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '近接ペア',
             cn: '近战同组',
             ko: '근딜끼리',
+            tc: '近戰同組',
           },
           role: {
             en: 'roles together',
@@ -2389,6 +2502,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ロールペア',
             cn: '职能分组',
             ko: '역할군끼리',
+            tc: '職能分組',
           },
           partner: {
             en: 'partners together',
@@ -2397,6 +2511,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ペア',
             cn: '搭档分组',
             ko: '파트너끼리',
+            tc: '搭檔分組',
           },
           unknown: Outputs.unknown,
         };
@@ -2472,6 +2587,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北・南',
           cn: '上/下',
           ko: '북쪽/남쪽',
+          tc: '上/下',
         },
         eastWest: {
           en: 'East/West',
@@ -2480,6 +2596,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東・西',
           cn: '左/右',
           ko: '동쪽/서쪽',
+          tc: '左/右',
         },
       },
     },
@@ -2503,6 +2620,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ニア (線ファー)',
           cn: '靠近引导 (连线远离)',
           ko: '유도 가까이 (선 멀리)',
+          tc: '靠近引導 (連線遠離)',
         },
         baitFar: {
           en: 'Bait Far (Tether Near)',
@@ -2511,6 +2629,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ファー (線ニア)',
           cn: '远离引导 (连线靠近)',
           ko: '멀리 유도 (선 가까이)',
+          tc: '遠離引導 (連線靠近)',
         },
         tetherNear: {
           en: 'Tether Near (Bait Far)',
@@ -2519,6 +2638,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線ニア (誘導ファー)',
           cn: '靠近拉线 (引导远离)',
           ko: '선 가까이 (유도 가까이)',
+          tc: '靠近拉線 (引導遠離)',
         },
         tetherFar: {
           en: 'Tether Far (Bait Near)',
@@ -2527,6 +2647,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線ファー (誘導ニア)',
           cn: '远离拉线 (引导靠近)',
           ko: '선 멀리 (유도 멀리)',
+          tc: '遠離拉線 (引導靠近)',
         },
       },
     },
@@ -2583,6 +2704,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後はそのまま)',
           cn: '(稍后 停)',
           ko: '(이후 그대로)',
+          tc: '(稍後 停)',
         },
         left: {
           en: '(then left)',
@@ -2591,6 +2713,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後は左)',
           cn: '(稍后 去左侧)',
           ko: '(이후 왼쪽)',
+          tc: '(稍後 去左側)',
         },
         front: {
           en: '(then through)',
@@ -2599,6 +2722,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後はまたいで移動)',
           cn: '(稍后 穿)',
           ko: '(이후 가로지르기)',
+          tc: '(稍後 穿)',
         },
         right: {
           en: '(then right)',
@@ -2607,6 +2731,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後は右)',
           cn: '(稍后 去右侧)',
           ko: '(이후 오른쪽)',
+          tc: '(稍後 去右側)',
         },
       },
     },
@@ -2687,6 +2812,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'そのまま',
           cn: '停',
           ko: '그대로',
+          tc: '停',
         },
         left: Outputs.left,
         front: {
@@ -2696,6 +2822,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'またいで',
           cn: '穿',
           ko: '가로지르기',
+          tc: '穿',
         },
         right: Outputs.right,
       },
@@ -2811,6 +2938,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左線 (${partners})',
           cn: '左侧连线 (${partners})',
           ko: '왼쪽 선 (${partners})',
+          tc: '左側連線 (${partners})',
         },
         right: {
           en: 'Right Tether (${partners})',
@@ -2819,6 +2947,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右線 (${partners})',
           cn: '右侧连线 (${partners})',
           ko: '오른쪽 선 (${partners})',
+          tc: '右側連線 (${partners})',
         },
         role: {
           en: 'roles together',
@@ -2827,6 +2956,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ロールペア',
           cn: '职能集合',
           ko: '역할군끼리',
+          tc: '職能集合',
         },
         partner: {
           en: 'partners together',
@@ -2835,6 +2965,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ペア',
           cn: '和搭档集合',
           ko: '파트너끼리',
+          tc: '和搭檔集合',
         },
         unknown: Outputs.unknown,
       },
@@ -3215,6 +3346,98 @@ const triggerSet: TriggerSet<Data> = {
         'Vermilion Aura': '赤妖弹',
         'Vortex of the Thunder Eye': '涡雷连舞之环圆',
         'Worldly Pursuit': '跳鼠痛击',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ashigaru Kyuhei': '足輕弓兵',
+        'Ball of Levin': '閃電球',
+        'Devilish Thrall': '被迷惑的屍鬼',
+        'Gorai the Uncaged': '鐵鼠豪雷',
+        'Moko the Restless': '怨靈猛虎',
+        'Moko\'s Shadow': '猛虎的幻影',
+        'Oni\'s Claw': '鬼腕',
+        'Shishio': '獅子王',
+        'Shishu Fuko': '紫州風吼',
+        'Shishu Furutsubaki': '紫州古椿精',
+        'Shishu Kotengu': '紫州小天狗',
+        'Shishu Onmitsugashira': '紫州隱秘首領',
+        'Shishu Raiko': '紫州雷吼',
+        'Shishu Yuki': '紫州幽鬼',
+        'The Trial Of Benevolence': '福德的試煉',
+        'The Trial Of Responsibility': '壽德的試煉',
+        'The Trial Of Wisdom': '智德的試煉',
+      },
+      'replaceText': {
+        // '\\(circles\\)': '', // FIXME '(圆圈)'
+        // '\\(lines\\)': '', // FIXME '(直线)'
+        'Azure Auspice': '青帝劍氣',
+        'Boundless Azure': '青帝空閃刃',
+        'Boundless Scarlet': '赤帝空閃刃',
+        'Brazen Ballad': '琵琶的旋律',
+        '(?<!Levin)Burst': '爆炸',
+        'Clearout': '橫掃',
+        'Cloud to Ground': '襲雷',
+        'Double Iai-giri': '二段迅步拔刀斬',
+        'Enkyo': '猿啼',
+        'Explosion': '爆炸',
+        'Eye of the Thunder Vortex': '渦雷連舞之圓環',
+        'Falling Rock': '落石',
+        'Far Edge': '遠刃擊',
+        'Fighting Spirits': '般若湯',
+        'Fire Spread': '噴火',
+        'Flame and Sulphur': '岩火招來',
+        'Fleeting Iai-giri': '迅步拔刀斬',
+        'Flickering Flame': '怪火招來',
+        'Flintlock': '火砲',
+        'Great Ball of Fire': '火球',
+        'Greater Ball of Fire': '重火球',
+        'Haunting Cry': '詭異的叫聲',
+        'Humble Hammer': '萬寶槌',
+        'Impure Purgation': '炎流',
+        'Invocation of Vengeance': '怨咒的祈請',
+        'Iron Rain': '鋼鐵箭雨',
+        'Iron Storm': '箭雨風暴',
+        'Kenki Release': '劍氣解放',
+        'Lateral Slice': '橫斬中段',
+        'Left Swipe': '左爪橫掃',
+        'Levinburst': '放雷',
+        'Malformed Prayer': '咒珠印',
+        'Malformed Reincarnation': '變見咒珠之印',
+        'Moonless Night': '暗夜斬',
+        'Near Edge': '近刃擊',
+        'Noble Pursuit': '獅子王牙',
+        'Pointed Purgation': '指向炎流',
+        'Right Swipe': '右爪橫掃',
+        'Rousing Reincarnation': '變見的詛咒',
+        'Scarlet Auspice': '赤帝劍氣',
+        'Seal of Scurrying Sparks': '亂火之印',
+        'Shadow Kasumi-giri': '幻影霞斬',
+        'Shadow-twin': '召喚幻影',
+        'Shock': '放電',
+        'Slither': '蛇尾抽擊',
+        'Smokeater': '噬霞',
+        'Soldiers of Death': '召喚陰兵',
+        'Splitting Cry': '靈鳴砲',
+        'Stormcloud Summons': '生成雷暴雲',
+        'Stygian Aura': '黑妖彈',
+        '(?<!Eye of the )Thunder Vortex': '回環渦雷',
+        'Thundercall': '招雷',
+        'Torching Torment': '煩熱',
+        'Triple Kasumi-giri': '三段霞斬',
+        'Unenlightenment': '煩惱熾盛',
+        'Unnatural Ailment': '妖擊',
+        'Unnatural Force': '重妖擊',
+        'Unnatural Wail': '詭異的咒聲',
+        'Upwell': '水流',
+        'Vengeful Flame': '怨咒之火',
+        'Vengeful Pyre': '怨咒之重火',
+        'Vengeful Souls': '黑赤招魂',
+        'Vermilion Aura': '赤妖彈',
+        'Vortex of the Thunder Eye': '渦雷連舞之環圓',
+        'Worldly Pursuit': '跳鼠痛擊',
       },
     },
     {

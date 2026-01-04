@@ -112,6 +112,7 @@ const instanceChangedRegexes = {
   ja: NetRegexes.gameLog({ code: '0039', line: 'インスタンスエリア.*?' }),
   cn: NetRegexes.gameLog({ code: '0039', line: '当前所在副本区为.*?' }),
   ko: NetRegexes.gameLog({ code: '0039', line: '인스턴스 지역.*?' }),
+  tc: NetRegexes.gameLog({ code: '0039', line: '目前所在副本區為.*?' }),
 };
 
 class Point2D {
@@ -180,6 +181,7 @@ const PlayPullSound = (monster: Monster, options: RadarOptions) => {
       ja: `${monster.name} 開始`,
       cn: `${monster.name} 已开怪`,
       ko: `${monster.name} 풀링됨`,
+      tc: `${monster.name} 已開怪`,
     };
     void callOverlayHandler({
       call: 'cactbotSay',

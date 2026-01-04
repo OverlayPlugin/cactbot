@@ -16,6 +16,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Avant le remaniement 6.1',
     cn: '6.1改版前',
     ko: '6.1 개편 전',
+    tc: '6.1改版前',
   },
   initData: () => {
     return {
@@ -59,6 +60,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分の毒をエスナ',
           cn: '康复自己的毒',
           ko: '독 에스나 하기',
+          tc: '康復自己的毒',
         },
         esunaPoisonOn: {
           en: 'Esuna Poison on ${players}',
@@ -67,6 +69,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${players}の毒をエスナ',
           cn: '康复${players}',
           ko: '"${players}" 독 에스나',
+          tc: '康復${players}',
         },
       },
     },
@@ -122,6 +125,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}の泡を破れ',
           cn: '打${player}的泡泡',
           ko: '"${player}" 물구슬 깨기',
+          tc: '打${player}的泡泡',
         },
         breakYourBubble: {
           en: 'Break Your Bubble',
@@ -130,6 +134,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分の泡を破れ',
           cn: '打自己的泡泡',
           ko: '물구슬 깨기',
+          tc: '打自己的泡泡',
         },
       },
     },
@@ -156,6 +161,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスを円範囲の外に',
           cn: '把BOSS拉出圈圈',
           ko: '장판에 보스가 닿지 않게 하기',
+          tc: '把BOSS拉出圈圈',
         },
       },
     },
@@ -180,6 +186,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}の毒をエスナ',
           cn: '康复${player}的毒',
           ko: '"${player}" 독 에스나',
+          tc: '康復${player}的毒',
         },
         esunaYourPoison: {
           en: 'Esuna Your Poison',
@@ -188,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分の毒をエスナ',
           cn: '康复自己的毒',
           ko: '독 에스나 하기',
+          tc: '康復自己的毒',
         },
       },
     },
@@ -237,6 +245,16 @@ const triggerSet: TriggerSet<Data> = {
         'Great Yellow Pelican': '大黄鹈鹕',
         'Hellbender': '水栖蝾螈',
         'Inferno Drake': '狱炎火蛟',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Aiatar': '阿傑特',
+        'Ashdrake': '白燼火蛟',
+        'Great Yellow Pelican': '大黃鵜鶘',
+        'Hellbender': '水棲蠑螈',
+        'Inferno Drake': '獄炎火蛟',
       },
     },
     {

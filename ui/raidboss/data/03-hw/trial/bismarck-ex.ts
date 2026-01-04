@@ -14,6 +14,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Majoritairement incomplet',
     cn: '大部分未完成',
     ko: '대부분 미완성',
+    tc: '大部分未完成',
   },
   triggers: [
     {
@@ -46,6 +47,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Bismarck': '俾斯麦',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Bismarck': '俾斯麥',
       },
     },
     {

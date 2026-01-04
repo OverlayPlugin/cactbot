@@ -74,6 +74,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '窒息',
             cn: '窒息',
             ko: '질식',
+            tc: '窒息',
           },
         };
       },

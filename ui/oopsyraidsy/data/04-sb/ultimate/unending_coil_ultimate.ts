@@ -41,6 +41,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ツイスター',
             cn: '旋风',
             ko: '회오리 밟음',
+            tc: '旋風',
           },
         };
       },
@@ -61,6 +62,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'サーミオニックバースト',
             cn: '天崩地裂',
             ko: '장판에 맞음',
+            tc: '天崩地裂',
           },
         };
       },
@@ -83,6 +85,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'チェインライトニング',
             cn: '雷光链',
             ko: '번개 맞음',
+            tc: '雷光鏈',
           },
         };
       },

@@ -14,6 +14,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Avant le remaniement 7.3',
     cn: '7.3改版前',
     ko: '7.3 개편 전',
+    tc: '7.3改版前',
   },
   triggers: [
     {
@@ -50,6 +51,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'replaceSync': {
+        'Chimera': '奇美拉',
+      },
+    },
+    {
+      'locale': 'tc',
       'replaceSync': {
         'Chimera': '奇美拉',
       },

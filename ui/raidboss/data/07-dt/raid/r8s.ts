@@ -119,6 +119,7 @@ const stoneWindOutputStrings = {
     ja: '${debuff} ${num}',
     cn: '${debuff} ${num}',
     ko: '${debuff} ${num}',
+    tc: '${debuff} ${num}',
   },
   stone: {
     en: 'Stone',
@@ -127,6 +128,7 @@ const stoneWindOutputStrings = {
     ja: '土',
     cn: '土',
     ko: '땅',
+    tc: '土',
   },
   wind: {
     en: 'Wind',
@@ -135,6 +137,7 @@ const stoneWindOutputStrings = {
     ja: '風',
     cn: '风',
     ko: '바람',
+    tc: '風',
   },
   unknown: Outputs.unknown,
 };
@@ -148,6 +151,7 @@ const moonlightOutputStrings = {
     ja: '${quad}',
     cn: '${quad}',
     ko: '${quad}',
+    tc: '${quad}',
   },
   safeQuadrants: {
     en: '${quad1} => ${quad2}',
@@ -156,6 +160,7 @@ const moonlightOutputStrings = {
     ja: '${quad1} => ${quad2}',
     cn: '${quad1} => ${quad2}',
     ko: '${quad1} => ${quad2}',
+    tc: '${quad1} => ${quad2}',
   },
 };
 
@@ -171,6 +176,7 @@ const championOutputStrings = {
     ja: 'ドーナツ',
     cn: '月环',
     ko: '도넛',
+    tc: '月環',
   },
   sides: Outputs.sides,
   mechanics: {
@@ -180,6 +186,7 @@ const championOutputStrings = {
     ja: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     cn: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
     ko: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
+    tc: '(${dir}) ${mech1} => ${mech2} => ${mech3} => ${mech4} => ${mech5}',
   },
   left: Outputs.left,
   right: Outputs.right,
@@ -190,6 +197,7 @@ const championOutputStrings = {
     ja: '左側',
     cn: '左侧',
     ko: '왼쪽',
+    tc: '左側',
   },
   rightSide: {
     en: 'Right Side',
@@ -198,6 +206,7 @@ const championOutputStrings = {
     ja: '右側',
     cn: '右侧',
     ko: '오른쪽',
+    tc: '右側',
   },
   unknownSide: {
     en: '??? Side',
@@ -206,6 +215,7 @@ const championOutputStrings = {
     ja: '??? 側',
     cn: '??? 侧',
     ko: '??? 쪽',
+    tc: '??? 側',
   },
   dirMechanic: {
     en: '${dir} ${mech}',
@@ -214,6 +224,7 @@ const championOutputStrings = {
     ja: '${dir} ${mech}',
     cn: '${dir} ${mech}',
     ko: '${dir} ${mech}',
+    tc: '${dir} ${mech}',
   },
 };
 
@@ -395,6 +406,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東西の島で 4：4 頭割り',
           cn: '东西岛治疗组分摊站位',
           ko: '4:4 그룹별 플랫폼',
+          tc: '東西島治療組分攤站位',
         },
       },
     },
@@ -411,6 +423,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔光位置へ',
           cn: '魔光站位',
           ko: '마광 산개',
+          tc: '魔光站位',
         },
       },
     },
@@ -427,6 +440,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔光位置へ',
           cn: '魔光站位',
           ko: '마광 산개',
+          tc: '魔光站位',
         },
       },
     },
@@ -443,6 +457,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '剛刃一閃を誘導',
           cn: '引导碎地板',
           ko: '강인일섬 유도',
+          tc: '引導碎地板',
         },
       },
     },
@@ -458,6 +473,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '八連光弾の位置へ',
           cn: '八连光弹集合',
           ko: '8연속 빛 폭탄 위치로',
+          tc: '八連光彈集合',
         },
       },
     },
@@ -521,6 +537,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 + 十字 + ペア',
           cn: '内侧 + 十字 + 分摊',
           ko: '안 + 십자방향 + 쉐어',
+          tc: '內側 + 十字 + 分攤',
         },
         inInterCardsPartners: {
           en: 'In + Intercards + Partners',
@@ -529,6 +546,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 + 斜め + ペア',
           cn: '内侧 + 斜角 + 分摊',
           ko: '안 + 대각선 + 쉐어',
+          tc: '內側 + 斜角 + 分攤',
         },
         outCardsProtean: {
           en: 'Out + Cards + Protean',
@@ -537,6 +555,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外側 + 十字 + 散開',
           cn: '外侧 + 十字 + 分散',
           ko: '밖 + 십자방향 + 산개',
+          tc: '外側 + 十字 + 分散',
         },
         outInterCardsProtean: {
           en: 'Out + InterCards + Protean',
@@ -545,6 +564,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外側 + 斜め + 散開',
           cn: '外侧 + 斜角 + 分散',
           ko: '밖 + 대각선 + 산개',
+          tc: '外側 + 斜角 + 分散',
         },
       },
     },
@@ -570,6 +590,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(あとで内側)',
           cn: '(稍后内侧)',
           ko: '(나중에 안)',
+          tc: '(稍後內側)',
         },
         outLater: {
           en: '(Out Later)',
@@ -578,6 +599,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(あとで外側)',
           cn: '(稍后外侧)',
           ko: '(나중에 밖)',
+          tc: '(稍後外側)',
         },
       },
     },
@@ -633,6 +655,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 ${dir}',
           cn: '内侧 ${dir}',
           ko: '${dir} 안',
+          tc: '內側 ${dir}',
         },
         outDir: {
           en: 'Out ${dir}',
@@ -641,6 +664,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外側 ${dir}',
           cn: '外侧 ${dir}',
           ko: '${dir} 밖',
+          tc: '外側 ${dir}',
         },
       },
     },
@@ -678,6 +702,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '<== 時計回り',
           cn: '<== 顺时针',
           ko: '<== 시계방향',
+          tc: '<== 順時針',
         },
         counterclockwise: {
           en: 'Counterclockwise ==>',
@@ -686,6 +711,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '反時計回り ==>',
           cn: '逆时针 ==>',
           ko: '반시계방향 ==>',
+          tc: '逆時針 ==>',
         },
       },
     },
@@ -747,6 +773,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線: ${dir}へノックバック',
           cn: '击退拉线: ${dir}',
           ko: '선: ${dir}로 넉백',
+          tc: '擊退拉線: ${dir}',
         },
         knockbackTowers: {
           en: 'Knockback Towers',
@@ -755,6 +782,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ノックバック塔踏み',
           cn: '击退踩塔',
           ko: '넉백 탑',
+          tc: '擊退踩塔',
         },
       },
     },
@@ -815,6 +843,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir1} か ${dir2}',
           cn: '${dir1} 或 ${dir2}',
           ko: '${dir1} 또는 ${dir2}',
+          tc: '${dir1} 或 ${dir2}',
         },
       },
     },
@@ -931,6 +960,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り x8',
           cn: '8次分摊',
           ko: '쉐어 8번',
+          tc: '8次分攤',
         },
       },
     },
@@ -970,6 +1000,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '緑',
           cn: '绿',
           ko: '초록',
+          tc: '綠',
         },
         wolfOfStone: {
           en: 'Yellow',
@@ -978,6 +1009,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '黄',
           cn: '黄',
           ko: '노랑',
+          tc: '黃',
         },
         side: {
           en: '${wolf} Side',
@@ -986,6 +1018,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${wolf} 側',
           cn: '${wolf} 侧',
           ko: '${wolf} 쪽',
+          tc: '${wolf} 側',
         },
       },
     },
@@ -1058,6 +1091,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player1} と ${player2} に直線攻撃',
           cn: '${player1} 与 ${player2} 引导直线',
           ko: '${player1} + ${player2} 징 대상자',
+          tc: '${player1} 與 ${player2} 引導直線',
         },
       },
     },
@@ -1183,6 +1217,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${stack} => 散開',
           cn: '${stack} => 散开',
           ko: '${stack} => 산개',
+          tc: '${stack} => 散開',
         },
         spreadBehindClones: {
           en: 'Spread (Behind Clones)',
@@ -1191,6 +1226,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 (分身の後ろ)',
           cn: '分散 (躲在分身后)',
           ko: '산개 (분신 뒤)',
+          tc: '分散 (躲在分身後)',
         },
         stackOnPlayer: Outputs.stackOnPlayer,
         stackOnPlayerBehindClones: {
@@ -1200,6 +1236,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} に頭割り (分身の後ろ)',
           cn: '${player} 分摊 (躲在分身后)',
           ko: '${player}에게 모이기 (분신 뒤)',
+          tc: '${player} 分攤 (躲在分身後)',
         },
         stackOnYou: Outputs.stackOnYou,
         stackOnYouBehindClones: {
@@ -1209,6 +1246,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に頭割り (分身の後ろ)',
           cn: '分摊点名 (躲在分身后)',
           ko: '쉐어징 대상자 (분신 뒤)',
+          tc: '分攤點名 (躲在分身後)',
         },
       },
     },
@@ -1230,6 +1268,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '回転',
           cn: '旋转',
           ko: '회전',
+          tc: '旋轉',
         },
       },
     },
@@ -1250,6 +1289,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線攻撃を避ける',
           cn: '躲避直线 AoE',
           ko: '직선장판 피하기',
+          tc: '躲避直線 AoE',
         },
       },
     },
@@ -1401,6 +1441,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${stack} => 散開',
           cn: '${stack} => 分散',
           ko: '${stack} => 산개',
+          tc: '${stack} => 分散',
         },
         spread: Outputs.spread,
         stackOnPlayer: Outputs.stackOnPlayer,
@@ -1477,6 +1518,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に魔光',
           cn: '魔光点名',
           ko: '파란징 대상자',
+          tc: '魔光點名',
         },
       },
     },
@@ -1632,6 +1674,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${inout} + ${dir}',
           cn: '${inout} + ${dir}',
           ko: '${inout} + ${dir}',
+          tc: '${inout} + ${dir}',
         },
         unknown: Outputs.unknown,
       },
@@ -1649,6 +1692,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '次の島へ',
           cn: '换平台',
           ko: '플랫폼 변경',
+          tc: '換平台',
         },
       },
     },
@@ -1683,6 +1727,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔印: ${player1} と ${player2}',
           cn: '魔印点名: ${player1} 和 ${player2}',
           ko: '바람지진 각인: ${player1} + ${player2}',
+          tc: '魔印點名: ${player1} 和 ${player2}',
         },
       },
     },
@@ -1791,6 +1836,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir} に線を渡す',
           cn: '送线给 ${dir}',
           ko: '${dir}로 선 넘기기',
+          tc: '送線給 ${dir}',
         },
         tetherOnYou: {
           en: 'Tether on YOU',
@@ -1799,6 +1845,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に線',
           cn: '连线点名',
           ko: '선 대상자',
+          tc: '連線點名',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
@@ -1807,6 +1854,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir} に線',
           cn: '连线在 ${dir}',
           ko: '${dir}쪽에 선',
+          tc: '連線在 ${dir}',
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
@@ -1814,6 +1862,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
+          tc: '靠近誘導 (連線在 ${dir})',
         },
       },
     },
@@ -1888,6 +1937,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線を渡す',
           cn: '送线',
           ko: '선 넘기기',
+          tc: '送線',
         },
         passTetherDir: {
           en: 'Pass Tether ${dir}',
@@ -1896,6 +1946,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir} に線を渡す',
           cn: '送线给 ${dir}',
           ko: '${dir}쪽에 선 넘기기',
+          tc: '送線給 ${dir}',
         },
         tetherOnDir: {
           en: 'Tether on ${dir}',
@@ -1904,6 +1955,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir} に線',
           cn: '连线在 ${dir}',
           ko: '${dir}쪽에 선',
+          tc: '連線在 ${dir}',
         },
         baitNearTetherDir: {
           en: 'Bait Near (Tether on ${dir})',
@@ -1911,6 +1963,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Attirez près (Lien vers ${dir})',
           cn: '靠近诱导 (连线在 ${dir})',
           ko: '근접 유도 (선 대상자 ${dir})',
+          tc: '靠近誘導 (連線在 ${dir})',
         },
       },
     },
@@ -2137,6 +2190,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に近づく線',
           cn: '近线点名',
           ko: '가까이 선 대상자',
+          tc: '近線點名',
         },
         farTetherOnYou: {
           en: 'Far Tether on YOU',
@@ -2145,6 +2199,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に離れる線',
           cn: '远线点名',
           ko: '멀리 선 대상자',
+          tc: '遠線點名',
         },
       },
     },
@@ -2178,6 +2233,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り x8',
           cn: '8次分摊',
           ko: '쉐어 8번',
+          tc: '8次分攤',
         },
         howlingEight2: {
           en: 'Stack x8',
@@ -2186,6 +2242,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り x8',
           cn: '8次分摊',
           ko: '쉐어 8번',
+          tc: '8次分攤',
         },
         howlingEight3: {
           en: 'Stack x8',
@@ -2194,6 +2251,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り x8',
           cn: '8次分摊',
           ko: '쉐어 8번',
+          tc: '8次分攤',
         },
         howlingEight4: {
           en: 'Stack x8',
@@ -2202,6 +2260,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り x8',
           cn: '8次分摊',
           ko: '쉐어 8번',
+          tc: '8次分攤',
         },
         howlingEight5: {
           en: 'Stack x8',
@@ -2210,6 +2269,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り x8',
           cn: '8次分摊',
           ko: '쉐어 8번',
+          tc: '8次分攤',
         },
       },
     },
@@ -2246,6 +2306,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '次の島へ1',
           cn: '换平台 1',
           ko: '플랫폼 변경 1',
+          tc: '換平台 1',
         },
         changePlatform2: {
           en: 'Change Platform 2',
@@ -2254,6 +2315,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '次の島へ2',
           cn: '换平台 2',
           ko: '플랫폼 변경 2',
+          tc: '換平台 2',
         },
         changePlatform3: {
           en: 'Change Platform 3',
@@ -2262,6 +2324,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '次の島へ3',
           cn: '换平台 3',
           ko: '플랫폼 변경 3',
+          tc: '換平台 3',
         },
         finalPlatform: {
           en: 'Change Platform (Final)',
@@ -2270,6 +2333,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '次の島へ (最終)',
           cn: '换平台 (最终平台)',
           ko: '플랫폼 변경 (마지막)',
+          tc: '換平台 (最終平台)',
         },
       },
     },
@@ -2581,6 +2645,85 @@ const triggerSet: TriggerSet<Data> = {
         'Windfang': '风之魔技',
         'Winds of Decay': '千年狂风',
         'Wolves\' Reign': '群狼剑',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gleaming Fang': '光の牙',
+        'Howling Blade': 'ハウリングブレード',
+        'Moonlit Shadow': 'ハウリングブレードの幻影',
+        'Wolf Of Stone': '土の狼頭',
+        'Wolf of Stone': '土の狼頭',
+        'Wolf of Wind': '風の狼頭',
+      },
+      'replaceText': {
+        // '--adds-targetable--': '', // FIXME '--小怪可选中--'
+        // '--shadow ': '', // FIXME '--幻影 '
+        // '--tank/line aoes--': '', // FIXME '--坦克/直线 AOE--'
+        // '\\(circles\\)': '', // FIXME '(圆形)'
+        // '\\(cones\\)': '', // FIXME '(扇形)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(Platform\\)': '', // FIXME '(平台)'
+        // '\\(Towers\\)': '', // FIXME '(塔)'
+        'Aero III': '大勁風',
+        // 'Aerotemporal Blast': '', // FIXME '定时风击' (RSV ID: 42088)
+        // 'Alpha Stone': '', // FIXME '光狼之土'
+        // 'Alpha Wind': '', // FIXME '光狼之风'
+        'Bare Fangs': '光牙召喚',
+        'Beckon Moonlight': '幻狼召喚',
+        // 'Breath of Decay': '', // FIXME '千年风啸'
+        // 'Champion\'s Circuit': '', // FIXME '回天动地'
+        // 'Elemental Purge': '', // FIXME '风震魔印' (RSV ID: 42087)
+        // 'Eminent Reign': '', // FIXME '扫击群狼剑'
+        // 'Extraplanar Feast': '', // FIXME '空间灭斩'
+        'Extraplanar Pursuit': '空間斬',
+        'Fanged Charge': '突進光牙',
+        // 'Forlorn Stone': '', // FIXME '土之狼吼'
+        // 'Forlorn Wind': '', // FIXME '风之狼吼'
+        // 'Geotemporal Blast': '', // FIXME '定时震击' (RSV ID: 42089)
+        // 'Gleaming Barrage': '', // FIXME '连击闪光炮' (RSV ID: 42102)
+        // 'Gleaming Beam': '', // FIXME '闪光炮' (RSV ID: 42078)
+        'Great Divide': '一刀兩斷',
+        'Gust': '狂風',
+        'Heavensearth': '大震擊',
+        // 'Hero\'s Blow': '', // FIXME '铠袖一触'
+        // 'Howling Eight': '', // FIXME '八连光弹' (RSV ID: 42132)
+        // 'Howling Havoc': '', // FIXME '风尘咆哮' (RSV ID: 41948)
+        // 'Hunter\'s Harvest': '', // FIXME '贪狼之剑'
+        // 'Lone Wolf\'s Lament': '', // FIXME '独狼的诅咒'
+        // 'Millennial Decay': '', // FIXME '千年风化' (RSV ID: 41906)
+        'Moonbeam\'s Bite': '幻狼劍',
+        // 'Mooncleaver': '', // FIXME '刚刃一闪' (RSV ID: 42085)
+        // 'Pack Predation': '', // FIXME '光狼阵' (RSV ID: 41932)
+        // 'Prowling Gale': '', // FIXME '风狼阵' (RSV ID: 42117)
+        'Quake III': '魔光',
+        'Ravenous Saber': '風塵光狼斬',
+        // 'Revolutionary Reign': '', // FIXME '旋击群狼剑'
+        // 'Rise of the Howling Wind': '', // FIXME '魔狼战形·飓风之相' (RSV ID: 43050)
+        // 'Rise of the Hunter\'s Blade': '', // FIXME '魔狼战形·咒刃之相'
+        'Roaring Wind': '風狼豪波',
+        'Shadowchase': '殘影劍',
+        // 'Stalking Stone': '', // FIXME '光狼地烈波'
+        // 'Stalking Wind': '', // FIXME '光狼风烈波'
+        // 'Starcleaver': '', // FIXME '刚刃一闪・终' (RSV ID: 42141)
+        // 'Stonefang': '', // FIXME '土之魔技'
+        'Suspended Stone': '大岩石',
+        'Tactical Pack': '光狼召喚',
+        'Terrestrial Rage': '大地之怒',
+        'Terrestrial Titans': '大地之喚',
+        'Titanic Pursuit': '斬空劍',
+        'Towerfall': '崩塌',
+        'Tracking Tremors': '連震擊',
+        // 'Twinbite': '', // FIXME '双牙击' (RSV ID: 42189)
+        // 'Twofold Tempest': '', // FIXME '双牙暴风击' (RSV ID: 42100)
+        // 'Ultraviolent Ray': '', // FIXME '魔光'
+        'Weal of Stone': '地烈波',
+        'Wind Surge': '風爆',
+        // 'Windfang': '', // FIXME '风之魔技'
+        // 'Winds of Decay': '', // FIXME '千年狂风' (RSV ID: 41909)
+        'Wolves\' Reign': '群狼劍',
       },
     },
     {

@@ -36,6 +36,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'お辞儀',
             cn: '鞠躬',
             ko: '인사',
+            tc: '鞠躬',
           },
         };
       },
@@ -61,6 +62,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ワイプ',
             cn: '团灭',
             ko: '파티 전멸',
+            tc: '團滅',
           },
         };
       },
@@ -79,6 +81,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           ja: '木人',
           cn: '木人',
           ko: '나무인형',
+          tc: '木人',
         };
         const strikingDummyNames = Object.values(strikingDummyByLocale);
         return strikingDummyNames.includes(matches.target);
@@ -147,6 +150,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: `いっぱいつついた (${data.pokeCount})`,
             cn: `戳太多下啦 (${data.pokeCount})`,
             ko: `너무 많이 찌름 (${data.pokeCount}번)`,
+            tc: `戳太多下啦 (${data.pokeCount})`,
           },
         };
       },

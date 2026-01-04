@@ -24,6 +24,7 @@ const kPullText = {
   ja: 'タゲ取る',
   cn: '开怪',
   ko: '풀링',
+  tc: '開怪',
 };
 
 type JobDomObjects = {

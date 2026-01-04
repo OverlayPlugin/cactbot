@@ -1542,7 +1542,7 @@ const latestLogDefinitions = {
       id: 2,
       heading: 3, // OP calls this 'rotation', but cactbot consistently uses 'heading'
       // unknown1: 4,
-      // unknown2: 5,
+      moveType: 5,
       x: 6,
       y: 7,
       z: 8,

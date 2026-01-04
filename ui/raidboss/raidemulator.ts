@@ -152,6 +152,8 @@ const raidEmulatorOnLoad = async () => {
   if (!websocketConnected) {
     // Find the most appropriate lang code to use based on browser language priority
     const browserLang = browserLanguagesToLang(navigator.languages);
+    applyTranslation(browserLang);
+
     options.ParserLanguage = browserLang;
     options.DisplayLanguage = browserLang;
     // Default options

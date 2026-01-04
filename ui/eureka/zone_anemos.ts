@@ -22,6 +22,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
     ja: 'アネモス・エレメンタル',
     cn: '常风元灵',
     ko: '아네모스 정령',
+    tc: '常風元靈',
   },
   nms: {
     sabo: {
@@ -32,6 +33,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'サボ',
         cn: '仙人掌',
         ko: '사보텐더',
+        tc: '仙人掌',
       },
       trackerName: {
         en: 'Sabo',
@@ -40,6 +42,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'サボテン',
         cn: '仙人掌',
         ko: '사보',
+        tc: '仙人掌',
       },
       x: 13.9,
       y: 21.9,
@@ -53,6 +56,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ロード',
         cn: '章鱼',
         ko: '문어',
+        tc: '章魚',
       },
       trackerName: {
         en: 'Lord',
@@ -61,6 +65,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ロード',
         cn: '章鱼',
         ko: '대왕',
+        tc: '章魚',
       },
       x: 29.7,
       y: 27.1,
@@ -74,6 +79,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'テレス',
         cn: '鸟',
         ko: '텔레스',
+        tc: '鳥',
       },
       trackerName: {
         en: 'Teles',
@@ -82,6 +88,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'テレス',
         cn: '鸟',
         ko: '텔레스',
+        tc: '鳥',
       },
       x: 25.6,
       y: 27.4,
@@ -95,6 +102,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'アネモス',
         cn: '蜻蜓',
         ko: '잠자리',
+        tc: '蜻蜓',
       },
       trackerName: {
         en: 'Emperor',
@@ -103,6 +111,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'エンペラ',
         cn: '蜻蜓',
         ko: '황제',
+        tc: '蜻蜓',
       },
       x: 17.2,
       y: 22.2,
@@ -116,6 +125,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'カリスト',
         cn: '熊',
         ko: '칼리스토',
+        tc: '熊',
       },
       trackerName: {
         en: 'Callisto',
@@ -124,6 +134,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'カリスト',
         cn: '熊',
         ko: '칼리스토',
+        tc: '熊',
       },
       // 25.5, 22.3 from the tracker, but collides with number
       x: 26.2,
@@ -138,6 +149,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ナンバーズ',
         cn: '群偶',
         ko: '넘버즈',
+        tc: '群偶',
       },
       trackerName: {
         en: 'Number',
@@ -146,6 +158,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ナンバ',
         cn: '群偶',
         ko: '넘버즈',
+        tc: '群偶',
       },
       // 23.5, 22.7 from the tracker, but collides with callisto
       x: 23.5,
@@ -160,6 +173,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ジャハ',
         cn: '台风',
         ko: '자하남',
+        tc: '颱風',
       },
       trackerName: {
         en: 'Jaha',
@@ -168,6 +182,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ジャハ',
         cn: '台风',
         ko: '자하남',
+        tc: '颱風',
       },
       x: 17.7,
       y: 18.6,
@@ -182,6 +197,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'アミメット',
         cn: '暴龙',
         ko: '아메메트',
+        tc: '暴龍',
       },
       trackerName: {
         en: 'Amemet',
@@ -190,6 +206,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'アミメ',
         cn: '暴龙',
         ko: '아메메트',
+        tc: '暴龍',
       },
       x: 15.0,
       y: 15.6,
@@ -203,6 +220,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'カイム',
         cn: '盖因',
         ko: '카임',
+        tc: '蓋因',
       },
       trackerName: {
         en: 'Caym',
@@ -211,6 +229,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'カイム',
         cn: '盖因',
         ko: '카임',
+        tc: '蓋因',
       },
       x: 13.8,
       y: 12.5,
@@ -224,6 +243,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ボンバ',
         cn: '举高高',
         ko: '봄바딜',
+        tc: '舉高高',
       },
       trackerName: {
         en: 'Bomba',
@@ -232,6 +252,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ボンバ',
         cn: '举高高',
         ko: '봄바',
+        tc: '舉高高',
       },
       x: 28.3,
       y: 20.4,
@@ -246,6 +267,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'セルケト',
         cn: '蝎子',
         ko: '전갈',
+        tc: '蠍子',
       },
       trackerName: {
         en: 'Serket',
@@ -254,6 +276,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'セルケト',
         cn: '蝎子',
         ko: '세르케트',
+        tc: '蠍子',
       },
       x: 24.8,
       y: 17.9,
@@ -267,6 +290,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ジュリカ',
         cn: '魔界花',
         ko: '줄리카',
+        tc: '魔界花',
       },
       trackerName: {
         en: 'Julika',
@@ -275,6 +299,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ジュリカ',
         cn: '魔界花',
         ko: '줄리카',
+        tc: '魔界花',
       },
       x: 21.9,
       y: 15.6,
@@ -288,6 +313,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ライダー',
         cn: '白骑士',
         ko: '기수',
+        tc: '白騎士',
       },
       trackerName: {
         en: 'Rider',
@@ -296,6 +322,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ライダー',
         cn: '白骑士',
         ko: '기수',
+        tc: '白騎士',
       },
       x: 20.3,
       y: 13.0,
@@ -310,6 +337,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ポリ',
         cn: '独眼',
         ko: '외눈',
+        tc: '獨眼',
       },
       trackerName: {
         en: 'Poly',
@@ -318,6 +346,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ポリュ',
         cn: '独眼',
         ko: '폴리',
+        tc: '獨眼',
       },
       x: 26.4,
       y: 14.3,
@@ -331,6 +360,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'シームルグ',
         cn: '阔步西牟鸟',
         ko: '즈',
+        tc: '闊步西牟鳥',
       },
       trackerName: {
         en: 'Strider',
@@ -339,6 +369,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'シムルグ',
         cn: '祖',
         ko: '시무르그',
+        tc: '祖',
       },
       x: 28.6,
       y: 13.0,
@@ -352,6 +383,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ハズマット',
         cn: '极其危险物质',
         ko: '하즈마트',
+        tc: '極其危險物質',
       },
       trackerName: {
         en: 'Hazmat',
@@ -360,6 +392,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ハズマ',
         cn: '爆弹',
         ko: '하즈마트',
+        tc: '爆彈',
       },
       x: 35.3,
       y: 18.3,
@@ -373,6 +406,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ファヴニル',
         cn: '法夫纳',
         ko: '파프니르',
+        tc: '法夫納',
       },
       trackerName: {
         en: 'Fafnir',
@@ -381,6 +415,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ファヴ',
         cn: '法夫纳',
         ko: '파프니르',
+        tc: '法夫納',
       },
       x: 35.5,
       y: 21.5,
@@ -395,6 +430,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'アマロック',
         cn: '阿玛洛克',
         ko: '아마록',
+        tc: '阿瑪洛克',
       },
       trackerName: {
         en: 'Amarok',
@@ -403,6 +439,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'アマロ',
         cn: '狗',
         ko: '아마록',
+        tc: '狗',
       },
       x: 7.6,
       y: 18.2,
@@ -416,6 +453,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ラマ',
         cn: '拉玛什图',
         ko: '라마슈투',
+        tc: '拉瑪什圖',
       },
       trackerName: {
         en: 'Lamashtu',
@@ -424,6 +462,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'ラマシュ',
         cn: '嫂子',
         ko: '라마슈투',
+        tc: '嫂子',
       },
       // 7.7, 23.3 from the tracker but mobs are farther south.
       x: 7.7,
@@ -439,6 +478,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'パズズ',
         cn: '帕祖祖',
         ko: '파주주',
+        tc: '帕祖祖',
       },
       trackerName: {
         en: 'Paz',
@@ -447,6 +487,7 @@ export const zoneInfoAnemos: EurekaZoneInfo = {
         ja: 'パズズ',
         cn: 'Pzz',
         ko: '파주주',
+        tc: 'Pzz',
       },
       x: 7.4,
       y: 21.7,

@@ -17,6 +17,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A, ALÉA boss Formidable manquant',
     cn: 'A级狩猎怪, 缺失特殊FATE',
     ko: 'A급 마물, 특수돌발 누락.',
+    tc: 'A級狩獵怪, 缺失特殊FATE',
   },
   triggers: [
     {
@@ -89,6 +90,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur => Côtés',
           cn: '中间 => 两侧',
           ko: '안으로 => 옆으로',
+          tc: '中間 => 兩側',
         },
       },
     },
@@ -105,6 +107,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Côtés => Côtés (encore)',
           cn: '两侧 => 两侧 (重复)',
           ko: '옆으로 => 옆으로 (반복)',
+          tc: '兩側 => 兩側 (重複)',
         },
       },
     },
@@ -189,6 +192,14 @@ const triggerSet: TriggerSet<Data> = {
         'Forgiven Pedantry': '得到宽恕的炫学',
         'Huracan': '乌拉坎',
         'Li\'l Murderer': '小小杀手',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Forgiven Pedantry': '得到寬恕的炫學',
+        'Huracan': '烏拉坎',
+        'Li\'l Murderer': '小小殺手',
       },
     },
     {

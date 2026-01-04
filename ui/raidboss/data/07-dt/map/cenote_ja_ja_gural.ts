@@ -12,6 +12,7 @@ const cenoteJaJaOutputStrings = {
     ja: '${name} 現れる！',
     cn: '已生成 ${name}!',
     ko: '${name} 등장!',
+    tc: '已生成 ${name}!',
   },
 } as const;
 
@@ -62,6 +63,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Les troupes de Tuligora sont apparues, tuez-les dans l\'ordre !',
           cn: '图拉尔蔓德拉战队 已生成，按顺序击杀！',
           ko: '만드라즈 등장, 순서대로 잡기!',
+          tc: '圖拉爾蔓德拉戰隊 已生成，按順序擊殺！',
         },
       },
     },
@@ -134,6 +136,11 @@ const triggerSet: TriggerSet<Data> = {
         'Bull Apollyon': '莽撞亚波伦',
         'Golden Molter': '黄金蜕皮蜥',
       },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {},
     },
     {
       'locale': 'ko',

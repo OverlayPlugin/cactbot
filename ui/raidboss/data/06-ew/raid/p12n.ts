@@ -38,6 +38,7 @@ const wingOutputStrings = {
     ja: '左',
     cn: '左翼',
     ko: '왼쪽',
+    tc: '左翼',
   },
   rightFlank: {
     en: 'Right Flank',
@@ -46,6 +47,7 @@ const wingOutputStrings = {
     ja: '右',
     cn: '右翼',
     ko: '오른쪽',
+    tc: '右翼',
   },
 } as const;
 
@@ -107,6 +109,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${first} => ${second} => ${third}',
           cn: '${first} => ${second} => ${third}',
           ko: '${first} => ${second} => ${third}',
+          tc: '${first} => ${second} => ${third}',
         },
       },
     },
@@ -187,6 +190,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ドーナツへ',
           cn: '跟随月环',
           ko: '도넛 따라가기',
+          tc: '跟隨月環',
         },
         superchain2: {
           en: 'Short Donut => Long Donut',
@@ -195,6 +199,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '早ドーナツ => 遅ドーナツ',
           cn: '短月环 => 长月环',
           ko: '짧은 도넛 => 긴 도넛',
+          tc: '短月環 => 長月環',
         },
         superchain3: {
           en: 'Follow Donut (avoid cleave)',
@@ -203,6 +208,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの横からドーナツへ',
           cn: '跟随月环（避开直线AOE）',
           ko: '도넛 따라가기 (광역기 피하기)',
+          tc: '跟隨月環（避開直線AOE）',
         },
         superchain4: {
           en: 'Avoid Spheres',
@@ -211,6 +217,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'オブ回避',
           cn: '远离钢铁',
           ko: '구체 피하기',
+          tc: '遠離鋼鐵',
         },
       },
     },
@@ -233,6 +240,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '壊れそうなマス回避',
           cn: '远离连线地板',
           ko: '연결된 플랫폼 피하기',
+          tc: '遠離連線地板',
         },
       },
     },
@@ -361,6 +369,36 @@ const triggerSet: TriggerSet<Data> = {
         'Trinity of Souls': '三魂一体',
         'Ultima Blade': '究极之刃',
         'Unnatural Enchainment': '灵魂链',
+        'White Flame': '白火',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Anthropos': '人',
+        'Athena': '雅典娜',
+        'Thymou Idea': '激情理念',
+      },
+      'replaceText': {
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(stack\\)': '', // FIXME '(分摊)'
+        'Clear Cut': '橫斬',
+        'Dialogos': '對話',
+        'Glaukopis': '明眸',
+        'On the Soul': '論靈魂',
+        'Palladion': '女神的護佑',
+        'Paradeigma': '範式',
+        'Parthenos': '貞女',
+        'Ray of Light': '光波',
+        'Sample': '貪食',
+        'Superchain Burst': '超鏈爆發',
+        'Superchain Coil': '超鏈回環',
+        'Superchain Theory': '超鏈理論',
+        'Theos\'s Ultima': '神之究極',
+        'Trinity of Souls': '三魂一體',
+        'Ultima Blade': '究極之刃',
+        'Unnatural Enchainment': '靈魂鏈',
         'White Flame': '白火',
       },
     },

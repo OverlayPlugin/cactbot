@@ -74,11 +74,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Geh nach ${safe} + Raus',
           cn: '去 ${safe} + 外',
           ko: '${safe} + 밖으로',
+          tc: '去 ${safe} + 外',
         },
         unknownSafe: {
           en: 'Out + Avoid shrublet explosions',
           de: 'Raus + Vermeide Blumling Explosionen',
           cn: '外 + 避开花小人爆炸',
+          ko: '밖으로 + 꼬마 꽃인간 폭발 피하기',
+          tc: '外 + 避開花小人爆炸',
         },
         ...Directions.outputStrings8Dir,
       },
@@ -103,6 +106,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Weg vom Sprung x4',
           cn: '远离跳跃 x4',
           ko: '점프에서 멀어지기 x4',
+          tc: '遠離跳躍 x4',
         },
       },
     },
@@ -126,6 +130,12 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Ornamental Leafman': '花人',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Ornamental Leafman': '꽃인간',
       },
     },
   ],

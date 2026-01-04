@@ -49,6 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散会 (柱回避)',
           cn: '分散（远离柱子）',
           ko: '산개 (기둥 피하기)',
+          tc: '分散（遠離柱子）',
         },
         onOthers: {
           en: 'Avoid marked players',
@@ -57,6 +58,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ウェブ回避',
           cn: '远离点名玩家',
           ko: '징 대상자 피하기',
+          tc: '遠離點名玩家',
         },
       },
     },
@@ -81,6 +83,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ジェイル回避',
           cn: '远离塔',
           ko: '감옥 벗어나기',
+          tc: '遠離塔',
         },
       },
     },
@@ -98,6 +101,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ジェイルの下へ',
           cn: '站在塔下（或远离）',
           ko: '감옥 아래로',
+          tc: '站在塔下（或遠離）',
         },
       },
     },
@@ -146,6 +150,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サイド島へ',
           cn: '去侧边平台',
           ko: '옆 플랫폼으로',
+          tc: '去側邊平台',
         },
       },
     },
@@ -181,6 +186,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔踏み',
           cn: '踩塔',
           ko: '기둥 들어가기',
+          tc: '踩塔',
         },
         avoid: {
           en: 'Avoid towers',
@@ -189,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔回避',
           cn: '远离塔',
           ko: '기둥 피하기',
+          tc: '遠離塔',
         },
       },
     },
@@ -282,6 +289,31 @@ const triggerSet: TriggerSet<Data> = {
         'Touchdown': '空降',
         'Ultima': '究极',
         'Wicked Step': '尖脚',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
+      },
+      'replaceText': {
+        // '\\(marked\\)': '', // FIXME '(标记)'
+        // '\\(resolves\\)': '', // FIXME '(判定)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        'Cannonspawn': '擴散砲',
+        'Entangling Web': '糾纏之網',
+        'Harrowing Hell': '魔殿震擊',
+        'Imprisonment': '入獄',
+        'Pandaemoniac Meltdown': '萬魔殿熔毀',
+        'Pandaemoniac Pillars': '萬魔殿之柱',
+        // 'Pandaemoniac Ray': '', // FIXME '万魔殿射线'
+        'Parted Plumes': '分割之羽',
+        'Silkspit': '噴吐絲網',
+        'Soul Grasp': '攥魂',
+        'Touchdown': '空降',
+        'Ultima': '最終究極',
+        'Wicked Step': '尖腳',
       },
     },
     {

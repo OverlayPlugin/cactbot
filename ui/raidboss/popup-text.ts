@@ -134,6 +134,14 @@ const raidbossInstructions: { [lang in Lang]: string[] } = {
     '지원되는 구역에서 타임라인과 트리거가 표시됩니다',
     '여름여울 농장에서 초읽기를 실행하여 테스트 해볼 수 있습니다',
   ],
+  tc: [
+    '請依照以下步驟操作：',
+    '這是用於調整浮動視窗大小的除錯用文字',
+    '當你鎖定此藍色背景的浮動視窗後',
+    '這些文字將會消失。',
+    '在支援的區域中會自動載入時間軸與觸發器。',
+    '可在盛夏農莊使用 /countdown 指令測試此 raidboss 模組。',
+  ],
 };
 
 // Because apparently people don't understand uppercase greek letters,
@@ -1553,6 +1561,7 @@ export class PopupText {
         ja: 'や',
         cn: '然后',
         ko: ' 그리고 ',
+        tc: '然後',
       };
       triggerHelper.ttsText = triggerHelper.ttsText.replace(
         /\s*(<[-=]|[=-]>)\s*/g,

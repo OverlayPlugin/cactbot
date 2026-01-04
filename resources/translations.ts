@@ -20,6 +20,7 @@ const localeLines = {
     ja: '戦闘開始まで(?<time>\\y{Float})秒！ （(?<player>.*?)）',
     cn: '距离战斗开始还有(?<time>\\y{Float})秒！ （(?<player>.*?)）',
     ko: '전투 시작 (?<time>\\y{Float})초 전! \\((?<player>.*?)\\)',
+    tc: '距離戰鬥開始還有(?<time>\\y{Float})秒！ （(?<player>.*?)）',
   },
   countdownEngage: {
     en: 'Engage!',
@@ -28,6 +29,7 @@ const localeLines = {
     ja: '戦闘開始！',
     cn: '战斗开始！',
     ko: '전투 시작!',
+    tc: '戰鬥開始！',
   },
   countdownCancel: {
     en: 'Countdown canceled by (?<player>\\y{Name})',
@@ -36,6 +38,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})により、戦闘開始カウントがキャンセルされました。',
     cn: '(?<player>\\y{Name})取消了战斗开始倒计时。',
     ko: '(?<player>\\y{Name}) 님이 초읽기를 취소했습니다\\.',
+    tc: '(?<player>\\y{Name})取消了戰鬥開始倒計時。',
   },
   areaSeal: {
     en: '(?<area>.*?) will be sealed off in (?<time>\\y{Float}) seconds!',
@@ -44,6 +47,7 @@ const localeLines = {
     ja: '(?<area>.*?)の封鎖まであと(?<time>\\y{Float})秒',
     cn: '距(?<area>.*?)被封锁还有(?<time>\\y{Float})秒',
     ko: '(?<time>\\y{Float})초 후에 (?<area>.*?)(이|가) 봉쇄됩니다\\.',
+    tc: '距(?<area>.*?)被封鎖還有(?<time>\\y{Float})秒',
   },
   areaUnseal: {
     en: '(?<area>.*?) is no longer sealed.',
@@ -52,6 +56,7 @@ const localeLines = {
     ja: '(?<area>.*?)の封鎖が解かれた……',
     cn: '(?<area>.*?)的封锁解除了',
     ko: '(?<area>.*?)의 봉쇄가 해제되었습니다\\.',
+    tc: '(?<area>.*?)的封鎖解除了……',
   },
   // Recipe name always start with \ue0bb
   // HQ icon is \ue03c
@@ -63,6 +68,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は\ue0bb(?<recipe>.*)(×(?<count>\\d+))?の製作を開始した。',
     cn: '(?<player>\\y{Name})开始制作“\ue0bb(?<recipe>.*)”(×(?<count>\\d+))?。',
     ko: '\ue0bb(?<recipe>.*)(×(?<count>\\d+)개)? 제작을 시작합니다\\.',
+    tc: '(?<player>\\y{Name})開始製作“\ue0bb(?<recipe>.*)”(×(?<count>\\d+))?。',
   },
   trialCraftingStart: {
     en: 'You begin trial synthesis of \ue0bb(?<recipe>.*)\\.',
@@ -71,6 +77,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は\ue0bb(?<recipe>.*)の製作練習を開始した。',
     cn: '(?<player>\\y{Name})开始练习制作\ue0bb(?<recipe>.*)。',
     ko: '\ue0bb(?<recipe>.*) 제작 연습을 시작합니다\\.',
+    tc: '(?<player>\\y{Name})開始練習製作\ue0bb(?<recipe>.*)。',
   },
   craftingFinish: {
     en: 'You synthesize (?<count>(an?|\\d+) )?\ue0bb(?<recipe>.*)(\ue03c)?\\.',
@@ -80,6 +87,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は\ue0bb(?<recipe>.*)(\ue03c)?(×(?<count>\\d+))?を完成させた！',
     cn: '(?<player>\\y{Name})制作“\ue0bb(?<recipe>.*)(\ue03c)?”(×(?<count>\\d+))?成功！',
     ko: '(?<player>\\y{Name}) 님이 \ue0bb(?<recipe>.*)(\ue03c)?(×(?<count>\\d+)개)?(을|를) 완성했습니다!',
+    tc: '(?<player>\\y{Name})製作“\ue0bb(?<recipe>.*)(\ue03c)?”(×(?<count>\\d+))?成功！',
   },
   trialCraftingFinish: {
     en: 'Your trial synthesis of \ue0bb(?<recipe>.*) proved a success!',
@@ -88,6 +96,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は\ue0bb(?<recipe>.*)の製作練習に成功した！',
     cn: '(?<player>\\y{Name})练习制作\ue0bb(?<recipe>.*)成功了！',
     ko: '\ue0bb(?<recipe>.*) 제작 연습에 성공했습니다!',
+    tc: '(?<player>\\y{Name})練習製作\ue0bb(?<recipe>.*)成功了！',
   },
   craftingFail: {
     en: 'Your synthesis fails!',
@@ -96,6 +105,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は製作に失敗した……',
     cn: '(?<player>\\y{Name})制作失败了……',
     ko: '제작에 실패했습니다……\\.',
+    tc: '(?<player>\\y{Name})製作失敗了……',
   },
   trialCraftingFail: {
     en: 'Your trial synthesis of \ue0bb(?<recipe>.*) failed\\.{3}',
@@ -105,6 +115,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は\ue0bb(?<recipe>.*)の製作練習に失敗した……',
     cn: '(?<player>\\y{Name})练习制作\ue0bb(?<recipe>.*)失败了……',
     ko: '\ue0bb(?<recipe>.*) 제작 연습에 실패했습니다……\\.',
+    tc: '(?<player>\\y{Name})練習製作\ue0bb(?<recipe>.*)失敗了……',
   },
   craftingCancel: {
     en: 'You cancel the synthesis\\.',
@@ -113,6 +124,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は製作を中止した。',
     cn: '(?<player>\\y{Name})中止了制作作业。',
     ko: '제작을 중지했습니다\\.',
+    tc: '(?<player>\\y{Name})中止了製作作業。',
   },
   trialCraftingCancel: {
     en: 'You abandoned trial synthesis\\.',
@@ -121,6 +133,7 @@ const localeLines = {
     ja: '(?<player>\\y{Name})は製作練習を中止した。',
     cn: '(?<player>\\y{Name})停止了练习。',
     ko: '제작 연습을 중지했습니다\\.',
+    tc: '(?<player>\\y{Name})停止了練習。',
   },
 } as const;
 
@@ -179,6 +192,7 @@ class RegexSet {
       ja: lines.ja !== undefined ? builder(lines.ja) : regexEn,
       cn: lines.cn !== undefined ? builder(lines.cn) : regexEn,
       ko: lines.ko !== undefined ? builder(lines.ko) : regexEn,
+      tc: lines.tc !== undefined ? builder(lines.tc) : regexEn,
     };
   }
 }

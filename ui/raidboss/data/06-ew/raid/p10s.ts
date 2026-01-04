@@ -133,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔踏み',
           cn: '踩塔击飞',
           ko: '기둥 들어가기',
+          tc: '踩塔擊飛',
         },
         avoid: {
           en: 'Avoid towers',
@@ -141,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔回避',
           cn: '远离塔',
           ko: '기둥 피하기',
+          tc: '遠離塔',
         },
       },
     },
@@ -195,6 +197,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線伸ばし ${dir}',
           cn: '向 ${dir} 外侧引导',
           ko: '선을 ${dir}으로',
+          tc: '向 ${dir} 外側引導',
         },
         default: {
           en: 'Point Tether Away',
@@ -203,6 +206,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線伸ばし',
           cn: '向外引导',
           ko: '선을 바깥쪽으로',
+          tc: '向外引導',
         },
         west: {
           en: 'Left/West',
@@ -211,6 +215,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左/西へ',
           cn: '左',
           ko: '왼쪽/서쪽',
+          tc: '左',
         },
         east: {
           en: 'Right/East',
@@ -219,6 +224,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右/東へ',
           cn: '右',
           ko: '오른쪽/동쪽',
+          tc: '右',
         },
       },
     },
@@ -237,6 +243,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線切る',
           cn: '截断丝线',
           ko: '선 끊기',
+          tc: '截斷絲線',
         },
       },
     },
@@ -280,6 +287,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'あたまわり',
           cn: '分摊连线',
           ko: '쉐어',
+          tc: '分攤連線',
         },
       },
     },
@@ -305,6 +313,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ウェブ重なる',
           cn: '用网搭桥',
           ko: '거미줄 겹치기',
+          tc: '用網搭橋',
         },
       },
     },
@@ -333,6 +342,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ウェブ散会',
           cn: '网分散',
           ko: '거미줄 산개',
+          tc: '網分散',
         },
       },
     },
@@ -368,6 +378,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線あたまわり',
           cn: '直线分摊',
           ko: '직선 쉐어',
+          tc: '直線分攤',
         },
       },
     },
@@ -429,6 +440,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(散会 => ペア)',
           cn: '(稍后 分散 => 分摊)',
           ko: '(곧 산개 => 파트너)',
+          tc: '(稍後 分散 => 分攤)',
         },
         partnersThenSpread: {
           en: '(partners => spread, for later)',
@@ -437,6 +449,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(ペア => 散会)',
           cn: '(稍后 分摊 => 分散)',
           ko: '(곧 파트너 => 산개)',
+          tc: '(稍後 分攤 => 分散)',
         },
       },
     },
@@ -476,6 +489,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(散会 => 4:4あたまわり (${player1}, ${player2}))', // FIXME
           cn: '(稍后 分散 => 四人分摊 (${player1}, ${player2}))',
           ko: '(곧 산개 => 직업군별 쉐어 (${player1}, ${player2}))',
+          tc: '(稍後 分散 => 四人分攤 (${player1}, ${player2}))',
         },
         stackThenSpread: {
           en: '(role stack (${player1}, ${player2}) => spread, for later)',
@@ -484,6 +498,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(4:4あたまわり (${player1}, ${player2}) => 散会)', // FIXME
           cn: '(稍后 四人分摊 (${player1}, ${player2}) => 分散)',
           ko: '(곧 직업군별 쉐어 (${player1}, ${player2}) => 산개)',
+          tc: '(稍後 四人分攤 (${player1}, ${player2}) => 分散)',
         },
       },
     },
@@ -513,6 +528,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散会 => 4:4あたまわり (${player1}, ${player2})', // FIXME
           cn: '分散 => 四人分摊 (${player1}, ${player2})',
           ko: '산개 => 직업군별 쉐어 (${player1}, ${player2})',
+          tc: '分散 => 四人分攤 (${player1}, ${player2})',
         },
         spreadThenPartners: {
           en: 'Spread => Partners',
@@ -521,6 +537,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散会 => ペア',
           cn: '分散 => 分摊',
           ko: '산개 => 파트너',
+          tc: '分散 => 分攤',
         },
       },
     },
@@ -544,6 +561,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ペア => 散会',
           cn: '分摊 => 分散',
           ko: '파트너 => 산개',
+          tc: '分攤 => 分散',
         },
       },
     },
@@ -570,6 +588,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '4:4あたまわり (${player1}, ${player2}) => 散会', // FIXME
           cn: '四人分摊 (${player1}, ${player2}) => 分散',
           ko: '직업군별 쉐어 (${player1}, ${player2}) => 산개',
+          tc: '四人分攤 (${player1}, ${player2}) => 分散',
         },
       },
     },
@@ -603,6 +622,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ペア',
           cn: '分摊',
           ko: '파트너',
+          tc: '分攤',
         },
         stack: {
           en: 'Role Stack (${player1}, ${player2})',
@@ -611,6 +631,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '4:4あたまわり (${player1}, ${player2})', // FIXME
           cn: '四人分摊 (${player1}, ${player2})',
           ko: '직업군별 쉐어 (${player1}, ${player2})',
+          tc: '四人分攤 (${player1}, ${player2})',
         },
       },
     },
@@ -646,6 +667,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー回避(マスの境界の上)',
           cn: '站在线上（躲避激光）',
           ko: '경계선 위 (레이저 피하기)',
+          tc: '站在線上（躲避雷射）',
         },
         boxes: {
           en: 'Inside Boxes (Avoid Lasers)',
@@ -654,6 +676,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー回避(マスの内側)',
           cn: '站方格内（躲避激光）',
           ko: '네모칸 안 (레이저 피하기)',
+          tc: '站方格內（躲避雷射）',
         },
       },
     },
@@ -799,6 +822,43 @@ const triggerSet: TriggerSet<Data> = {
         'Touchdown': '空降',
         'Ultima': '究极',
         'Wicked Step': '尖脚',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': '立體魔法陣',
+        // 'Pand(?:\\\\u00e6|\u00e6)moniac Pillar': '', // FIXME '万魔殿之塔'
+        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(cone\\)': '', // FIXME '(锥形)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(share\\)': '', // FIXME '(分摊)'
+        'Bury': '塌方',
+        // 'Circles of Pandaemonium': '', // FIXME '万魔殿之环'
+        'Dividing Wings': '分割之翼',
+        'Daemoniac Bonds': '萬魔殿牢獄',
+        'Entangling Web': '糾纏之網',
+        'Harrowing Hell': '魔殿震擊',
+        'Jade Passage': '翡翠通道',
+        'Pandaemoniac Meltdown': '萬魔殿熔毀',
+        'Pandaemoniac Pillars': '萬魔殿之柱',
+        'Pandaemoniac Ray': '萬魔殿射線',
+        'Pandaemoniac Turrets': '萬魔殿砲塔',
+        // 'Pandaemoniac Web': '', // FIXME '万魔殿之网'
+        // 'Pandaemon\'s Holy': '', // FIXME '万魔殿神圣'
+        'Parted Plumes': '分割之羽',
+        'Peal of Condemnation': '譴責衝擊波',
+        'Peal of Damnation': '詛咒衝擊波',
+        'Silkspit': '噴吐絲網',
+        'Soul Grasp': '攥魂',
+        'Steel Web': '沉重之網',
+        'Touchdown': '空降',
+        'Ultima': '最終究極',
+        'Wicked Step': '尖腳',
       },
     },
     {

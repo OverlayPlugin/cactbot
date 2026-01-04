@@ -50,6 +50,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割りタンクバスター',
           cn: '团队分摊死刑',
           ko: '파티 쉐어 탱버',
+          tc: '團隊分攤死刑',
         },
       },
     },
@@ -77,6 +78,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '杖 (スイッチ)',
             cn: '权杖（换T）',
             ko: '지팡이 (탱커 교대)',
+            tc: '權杖（換T）',
           },
           staff: {
             en: 'Staff',
@@ -85,6 +87,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '杖',
             cn: '权杖',
             ko: '지팡이',
+            tc: '權杖',
           },
         };
 
@@ -111,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '剣 (スイッチ)',
             cn: '剑（换T）',
             ko: '검 (탱커 교대)',
+            tc: '劍（換T）',
           },
           sword: {
             en: 'Sword',
@@ -119,6 +123,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '剣',
             cn: '剑',
             ko: '검',
+            tc: '劍',
           },
         };
         if (data.role === 'tank') {
@@ -217,6 +222,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にアバランチ',
           cn: '击退激光点名',
           ko: '넉백 레이저 대상자',
+          tc: '擊退雷射點名',
         },
       },
     },
@@ -234,6 +240,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'アバランチを避ける',
           cn: '躲避击退激光',
           ko: '레이저 피하기',
+          tc: '躲避擊退雷射',
         },
       },
     },
@@ -276,6 +283,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}を救って',
           cn: '解救${player}',
           ko: '${player}감옥 해제',
+          tc: '解救${player}',
         },
       },
     },
@@ -389,6 +397,34 @@ const triggerSet: TriggerSet<Data> = {
         'Melt': '武器融化',
         'Permafrost': '永久冻土',
         'Whiteout': '白化视界',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Ice Soldier': '寒冰士兵',
+        'Shiva': '濕婆',
+      },
+      'replaceText': {
+        // '\\(circle\\)': '', // FIXME '(圆)'
+        // '\\(cross\\)': '', // FIXME '(十字)'
+        'Absolute Zero': '絕對零度',
+        'Avalanche': '雪崩',
+        'Diamond Dust': '鑽石星塵',
+        'Dreams Of Ice': '寒冰的幻想',
+        'Frost Blade': '冰霜之劍',
+        'Frost Bow': '冰霜之弓',
+        'Frost Staff': '冰霜之杖',
+        'Glacier Bash': '冰河怒擊',
+        'Glass Dance': '冰雪亂舞',
+        'Hailstorm': '冰雹',
+        'Heavenly Strike': '極樂冰柱',
+        'Icebrand': '冰印劍',
+        'Icicle Impact': '冰柱衝擊',
+        'Melt': '武器融化',
+        'Permafrost': '永久凍土',
+        'Whiteout': '白化視界',
       },
     },
     {

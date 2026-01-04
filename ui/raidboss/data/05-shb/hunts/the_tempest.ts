@@ -19,6 +19,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A, boss ALÉA Archaeotania manquant',
     cn: 'A级狩猎怪, 缺失特殊FATE',
     ko: 'A급 마물, 특수돌발 누락.',
+    tc: 'A級狩獵怪, 缺失特殊FATE',
   },
   triggers: [
     {
@@ -108,6 +109,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Ne vous packez pas',
           cn: '远离分摊',
           ko: '쉐어징 피하기',
+          tc: '遠離分攤',
         },
       },
     },
@@ -164,6 +166,14 @@ const triggerSet: TriggerSet<Data> = {
         'Baal': '巴力',
         'Gunitt': '顾尼图',
         'Rusalka': '卢莎卡',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Baal': '巴力',
+        'Gunitt': '顧尼圖',
+        'Rusalka': '盧莎卡',
       },
     },
     {

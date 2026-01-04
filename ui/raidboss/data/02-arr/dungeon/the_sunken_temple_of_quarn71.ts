@@ -23,6 +23,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '光る床に乗る',
           cn: '踩发光地板',
           ko: '빛나는 발판 밟기',
+          tc: '踩發光地板',
         },
       },
     },

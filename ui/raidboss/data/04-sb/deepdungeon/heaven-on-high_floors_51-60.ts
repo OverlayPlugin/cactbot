@@ -29,6 +29,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '背面へ、または視線をそらす',
           cn: '去背后或背对',
           ko: '보스 뒤로 또는 뒤돌기',
+          tc: '去背後或背對',
         },
       },
     },
@@ -75,6 +76,14 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Heavenly Gowan': '天之铁臂',
+        'Heavenly Naga': '天之那迦',
+        'Suikazura': '忍冬',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Gowan': '天之鐵臂',
         'Heavenly Naga': '天之那迦',
         'Suikazura': '忍冬',
       },

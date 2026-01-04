@@ -126,6 +126,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '死の宣告にエスナ',
           cn: '驱散死宣',
           ko: '죽음의 선고 해제',
+          tc: '驅散死宣',
         },
       },
     },
@@ -172,6 +173,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${mech} => ${followup}',
           cn: '${mech} => ${followup}',
           ko: '${mech} => ${followup}',
+          tc: '${mech} => ${followup}',
         },
         left: {
           en: 'Left, under hand',
@@ -180,6 +182,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左 手の下へ',
           cn: '左边脚下',
           ko: '왼쪽, 손 아래로',
+          tc: '左邊腳下',
         },
         right: {
           en: 'Right, under hand',
@@ -188,6 +191,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右 手の下へ',
           cn: '右边脚下',
           ko: '오른쪽, 손 아래로',
+          tc: '右邊腳下',
         },
         aero: {
           en: 'Knockback',
@@ -196,6 +200,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ノックバック',
           cn: '击退',
           ko: '넉백',
+          tc: '擊退',
         },
         death: Outputs.outThenIn,
         out: Outputs.out,
@@ -233,6 +238,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '手を避ける くるっとターン',
           cn: '面朝场外放手',
           ko: '손 유도, 뒤로 피하기',
+          tc: '面朝場外放手',
         },
         front: {
           en: 'Bait hand, dodge forwards',
@@ -241,6 +247,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '手を避ける 前に進む',
           cn: '面朝场内放手',
           ko: '손 유도, 앞으로 피하기',
+          tc: '面朝場內放手',
         },
         unknown: Outputs.unknown,
       },
@@ -258,6 +265,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭割り アラ単位集合',
           cn: '分队挡枪分摊',
           ko: '쉐어 (연합파티)',
+          tc: '分隊擋槍分攤',
         },
       },
     },
@@ -284,6 +292,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にフレア 捨てる',
           cn: '核爆点名',
           ko: '플레어 대상자',
+          tc: '核爆點名',
         },
       },
     },
@@ -322,6 +331,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '離れて 吸い込み後 中へ',
           cn: '远离 => 中间',
           ko: '멀리 떨어지기 => 안으로',
+          tc: '遠離 => 中間',
         },
       },
     },
@@ -418,6 +428,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔を踏む',
           cn: '踩塔',
           ko: '기둥 들어가기',
+          tc: '踩塔',
         },
       },
     },
@@ -441,6 +452,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '角へ',
           cn: '去四角',
           ko: '구석으로',
+          tc: '去四角',
         },
         under: Outputs.getUnder,
       },
@@ -485,6 +497,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '回転ビーム ${rotateStr}',
           cn: '${rotateStr} 旋转',
           ko: '${rotateStr} 회전',
+          tc: '${rotateStr} 旋轉',
         },
         clockwise: Outputs.clockwise,
         counterClockwise: Outputs.counterclockwise,
@@ -511,6 +524,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザーを外に向ける',
           cn: '面向场外放激光',
           ko: '레이저를 바깥으로 유도하기',
+          tc: '面向場外放雷射',
         },
       },
     },
@@ -543,6 +557,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サイド => 真ん中',
           cn: '两侧 => 中间',
           ko: '양 옆 => 중앙',
+          tc: '兩側 => 中間',
         },
       },
     },
@@ -563,6 +578,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '真ん中 => サイド',
           cn: '中间 => 两侧',
           ko: '중앙 => 양 옆',
+          tc: '中間 => 兩側',
         },
       },
     },
@@ -580,6 +596,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '苗木を捨てる',
           cn: '放置荆棘',
           ko: '장판 유도하기',
+          tc: '放置荊棘',
         },
       },
     },
@@ -663,6 +680,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最初は ${first} から',
           cn: '先 ${first}',
           ko: '${first} 시작',
+          tc: '先 ${first}',
         },
         leftCleave: Outputs.right,
         rightCleave: Outputs.left,
@@ -709,6 +727,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${first} => ${second} => ${third}',
           cn: '${first} => ${second} => ${third}',
           ko: '${first} => ${second} => ${third}',
+          tc: '${first} => ${second} => ${third}',
         },
         leftCleave: Outputs.right,
         rightCleave: Outputs.left,
@@ -741,6 +760,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'AoE + プレイヤーシャッフル',
           cn: 'AoE + 换位',
           ko: '전체 공격 + 자리 교체',
+          tc: 'AoE + 換位',
         },
       },
     },
@@ -760,6 +780,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵視リセット 挑発！',
           cn: '挑衅',
           ko: '보스 도발',
+          tc: '挑釁',
         },
       },
     },
@@ -777,6 +798,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '追跡AOE',
           cn: '追踪AOE点名',
           ko: '연속장판 대상자',
+          tc: '追蹤AOE點名',
         },
       },
     },
@@ -958,6 +980,52 @@ const triggerSet: TriggerSet<Data> = {
         'Unholy Darkness': '黑暗神圣',
         'Vortex': '吸引',
         'the Third Art of Darkness': '三重暗之战技',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Cloud Of Darkness': '黑暗之雲',
+        'Cloud of Darkness': '黑暗之雲',
+        // 'Cloudlet of Darkness': '', // FIXME '暗黑之破片云'
+        // 'Stygian Shadow': '', // FIXME '生于黑暗之物'
+      },
+      'replaceText': {
+        // '--adds untargetable--': '', // FIXME '--小怪不可选中--'
+        // 'Active-pivot Particle Beam': '', // FIXME '回旋式波动炮'
+        '(?<!En)Aero IV': '超勁風',
+        // 'Blade of Darkness': '', // FIXME '暗之刃'
+        // 'Break IV': '', // FIXME '超石化'
+        // 'Chaos-condensed Particle Beam': '', // FIXME '凝聚式波动炮'
+        // 'Core-lateral Phaser': '', // FIXME '正侧跳跃波动炮'
+        // 'Curse of Darkness': '', // FIXME '波动诅咒'
+        // 'Dark Dominion': '', // FIXME '深暗领域'
+        'Dark-energy Particle Beam': '詛咒式波動砲',
+        // '(?<!En)Death IV': '', // FIXME '极死'
+        'Deluge of Darkness': '暗之大氾濫',
+        // 'Diffusive-force Particle Beam': '', // FIXME '分散式波动炮'
+        // 'Enaero IV': '', // FIXME '超附风'
+        // 'Endeath IV': '', // FIXME '超附死'
+        // 'Evaporation': '', // FIXME '云散'
+        'Evil Seed': '種子彈',
+        // 'Excruciate': '', // FIXME '磔杀'
+        'Feint Particle Beam': '潛地式波動砲',
+        'Flare': '火光',
+        // 'Flood of Darkness': '', // FIXME '暗之泛滥'
+        // 'Ghastly Gloom': '', // FIXME '恐惧之云'
+        // 'Grim Embrace': '', // FIXME '阴冷拥抱'
+        // 'Lateral-core Phaser': '', // FIXME '侧正跳跃波动炮'
+        // 'Looming Chaos': '', // FIXME '混沌迫近'
+        '(?<! )Particle Beam': '波動爆炸',
+        'Particle Concentration': '波動球',
+        // '(?<! )Phaser': '', // FIXME '跳跃波动炮'
+        // 'Rapid-sequence Particle Beam': '', // FIXME '连射式波动炮'
+        // 'Razing-volley Particle Beam': '', // FIXME '齐射式波动炮'
+        'Thorny Vine': '荊棘叢生',
+        'Unholy Darkness': '黑暗神聖',
+        'Vortex': '吸引',
+        'the Third Art of Darkness': '三重暗之戰技',
       },
     },
     {

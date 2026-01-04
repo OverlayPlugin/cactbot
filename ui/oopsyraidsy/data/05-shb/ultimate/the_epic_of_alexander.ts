@@ -83,6 +83,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '光性爆雷',
             cn: '光性爆雷',
             ko: '빛의 폭뢰',
+            tc: '光性爆雷',
           },
         };
       },
@@ -120,6 +121,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ドールが死んだ',
             cn: '浮士德死亡',
             ko: '인형이 죽음',
+            tc: '浮士德死亡',
           },
         };
       },

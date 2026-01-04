@@ -125,6 +125,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'タンクレザー',
             cn: '坦克激光',
             ko: '탱커 레이저',
+            tc: '坦克雷射',
           },
         };
       },
@@ -144,6 +145,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ノックバック',
             cn: '击退！',
             ko: '넉백됨!',
+            tc: '擊退！',
           },
         };
       },

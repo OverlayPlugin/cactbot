@@ -27,6 +27,7 @@ const triggerSet: TriggerSet<Data> = {
     ja: 'SSモブ',
     cn: 'SS 级狩猎怪',
     ko: 'SS급 마물',
+    tc: 'SS 級狩獵怪',
   },
   comments: {
     en: 'SS Rank Hunts',
@@ -34,6 +35,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang SS',
     cn: 'SS级狩猎怪',
     ko: 'SS급 마물',
+    tc: 'SS級狩獵怪',
   },
   triggers: [
     {
@@ -116,6 +118,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Ker': '克尔',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Ker': '克爾',
       },
     },
     {

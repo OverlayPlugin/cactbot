@@ -33,6 +33,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線AOE -> 内側へ',
           cn: '直线AoE -> 靠近',
           ko: '직선 장판 -> 안으로',
+          tc: '直線AoE -> 靠近',
         },
       },
     },
@@ -49,6 +50,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線AOE -> 離れる',
           cn: '直线AoE -> 远离',
           ko: '직선 장판 -> 바깥으로',
+          tc: '直線AoE -> 遠離',
         },
       },
     },
@@ -66,6 +68,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ひかりの内側へ',
           cn: '前往光区域',
           ko: '빛 장판 안으로',
+          tc: '前往光區域',
         },
       },
     },
@@ -83,6 +86,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'やみの内側へ',
           cn: '前往暗区域',
           ko: '어둠 장판 안으로',
+          tc: '前往暗區域',
         },
       },
     },
@@ -99,6 +103,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'AOE誘導 x2',
           cn: '诱导黄圈 x2',
           ko: '장판 유도 x2',
+          tc: '誘導黃圈 x2',
         },
       },
     },
@@ -115,6 +120,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ノックバック => 内側へ',
           cn: '击退 -> 去脚下',
           ko: '넉백 -> 안으로',
+          tc: '擊退 -> 去腳下',
         },
       },
     },
@@ -131,6 +137,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ノックバック => そのまま',
           cn: '击退 -> 远离',
           ko: '넉백 -> 바깥에 있기',
+          tc: '擊退 -> 遠離',
         },
       },
     },
@@ -177,6 +184,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${target}が対象 => 内側へ',
           cn: '躲开跳 ${target} -> 去脚下',
           ko: '"${target}"에게 광역기 -> 안으로',
+          tc: '躲開跳 ${target} -> 去腳下',
         },
         cleaveOnYou: {
           en: 'Cleave on YOU -> stay in',
@@ -185,6 +193,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分が対象 => 内側へ',
           cn: '引导跳劈 -> 站在脚下',
           ko: '광역기 대상자 -> 안에 있기',
+          tc: '引導跳劈 -> 站在腳下',
         },
       },
     },
@@ -203,6 +212,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${target}とあたまわり => 外側へ',
           cn: '分摊 ${target} -> 远离',
           ko: '"${target}" 쉐어 -> 밖으로',
+          tc: '分攤 ${target} -> 遠離',
         },
       },
     },
@@ -232,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線AOE -> やみ回避',
           cn: '直线AoE -> 躲进暗分身直线',
           ko: '직선 장판 -> 어두운 장판 피하기',
+          tc: '直線AoE -> 躲進暗分身直線',
         },
       },
     },
@@ -359,6 +370,42 @@ const triggerSet: TriggerSet<Data> = {
         'Sigils of Discord': '失调的判纹',
         'Styx': '仇恨',
         'Upheld Ruling': '维持判决',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Illusory Themis': '特彌斯的幻影',
+        // '(?<!(-| ))Themis': '', // FIXME '特弥斯'
+      },
+      'replaceText': {
+        // '\\(random\\)': '', // FIXME '(随机)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(puddle': '', // FIXME '(圈'
+        // '\\(in/out\\)': '', // FIXME '(内/外)'
+        // 'dynamo\\)': '', // FIXME '月环)'
+        // 'chariot\\)': '', // FIXME '钢铁)'
+        // '\\(cleave': '', // FIXME '(跳劈'
+        // '\\(stack': '', // FIXME '(分摊'
+        'Blinding Light': '光彈',
+        'Dark Perimeter': '黑暗回環',
+        'Dark and Light': '光與暗的調停',
+        'Dike': '正義',
+        'Dineis': '旋渦',
+        'Dismissal Ruling': '駁回判決',
+        'Divine Ruination': '光爆',
+        'Divisive Ruling': '分歧判決',
+        'Emissary\'s Will': '調停者之意',
+        'Eunomia': '秩序',
+        'Inner Light': '內光',
+        'Lightburst': '光爆破',
+        'Outer Dark': '外暗',
+        'Ripples of Gloom': '暗黑衝擊',
+        'Shadowed Messengers': '戒律幻奏',
+        'Sigils of Discord': '失調的判紋',
+        'Styx': '仇恨',
+        'Upheld Ruling': '維持判決',
       },
     },
     {

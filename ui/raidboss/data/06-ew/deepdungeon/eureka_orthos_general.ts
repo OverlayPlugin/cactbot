@@ -29,6 +29,7 @@ const triggerSet: TriggerSet<Data> = {
     ja: 'オルト・エウレカ (全層)',
     cn: '正统优雷卡 (全楼层)',
     ko: '에우레카 오르토스 (전체 층)',
+    tc: '正統優雷卡 (全樓層)',
   },
 
   triggers: [
@@ -52,6 +53,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ミミック！',
           cn: '已生成 拟态怪!',
           ko: '미믹 등장!',
+          tc: '已生成 擬態怪!',
         },
       },
     },
@@ -115,6 +117,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${protomander} 被り',
           cn: '${protomander} 重复',
           ko: '${protomander} 중복',
+          tc: '${protomander} 重複',
         },
         // protomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         lethargy: {
@@ -124,6 +127,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スロウガ',
           cn: '缓速',
           ko: '슬로우가',
+          tc: '緩速',
         },
         storms: {
           en: 'Storms',
@@ -132,6 +136,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ミールストーム',
           cn: '大漩涡',
           ko: '대소용돌이',
+          tc: '大漩渦',
         },
         dread: {
           en: 'Dread',
@@ -140,6 +145,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ドレッドノート化',
           cn: '恐慌装甲化',
           ko: '드레드노트 변신',
+          tc: '恐慌裝甲化',
         },
         safety: {
           en: 'Safety',
@@ -148,6 +154,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '呪印解除',
           cn: '咒印解除',
           ko: '함정 해제',
+          tc: '咒印解除',
         },
         sight: {
           en: 'Sight',
@@ -156,6 +163,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サイトロ',
           cn: '全景',
           ko: '사이트로',
+          tc: '全景',
         },
         strength: {
           en: 'Strength',
@@ -164,6 +172,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自己強化',
           cn: '强化自身',
           ko: '자기 강화',
+          tc: '強化自身',
         },
         steel: {
           en: 'Steel',
@@ -172,6 +181,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '防御強化',
           cn: '强化防御',
           ko: '방어 강화',
+          tc: '強化防禦',
         },
         affluence: {
           en: 'Affluence',
@@ -180,6 +190,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '宝箱増加',
           cn: '宝箱增加',
           ko: '보물상자 증가',
+          tc: '寶箱增加',
         },
         flight: {
           en: 'Flight',
@@ -188,6 +199,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵排除',
           cn: '减少敌人',
           ko: '적 감소',
+          tc: '減少敵人',
         },
         alteration: {
           en: 'Alteration',
@@ -196,6 +208,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵変化',
           cn: '改变敌人',
           ko: '적 대체',
+          tc: '改變敵人',
         },
         purity: {
           en: 'Purity',
@@ -204,6 +217,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '解呪',
           cn: '解咒',
           ko: '저주 해제',
+          tc: '解咒',
         },
         fortune: {
           en: 'Fortune',
@@ -212,6 +226,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '運気上昇',
           cn: '运气上升',
           ko: '운 상승',
+          tc: '運氣上升',
         },
         witching: {
           en: 'Witching',
@@ -220,6 +235,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '形態変化',
           cn: '形态变化',
           ko: '적 변형',
+          tc: '形態變化',
         },
         serenity: {
           en: 'Serenity',
@@ -228,6 +244,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔法効果解除',
           cn: '魔法效果解除',
           ko: '마법 효과 해제',
+          tc: '魔法效果解除',
         },
         intuition: {
           en: 'Intuition',
@@ -236,6 +253,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '財宝感知',
           cn: '感知宝藏',
           ko: '보물 탐지',
+          tc: '感知寶藏',
         },
         raising: {
           en: 'Raising',
@@ -244,6 +262,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'リレイズ',
           cn: '重生',
           ko: '리레이즈',
+          tc: '重生',
         },
         unknown: Outputs.unknown,
       },
@@ -274,6 +293,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${demiclone} 被り',
           cn: '${demiclone} 重复',
           ko: '${demiclone} 중복',
+          tc: '${demiclone} 重複',
         },
         // demiclones: https://v2.xivapi.com/api/sheet/DeepDungeonDemiclone
         unei: {
@@ -283,6 +303,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ウネ',
           cn: '乌内',
           ko: '우네',
+          tc: '烏內',
         },
         doga: {
           en: 'Doga',
@@ -291,6 +312,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ドーガ',
           cn: '多加',
           ko: '도가',
+          tc: '多加',
         },
         onion: {
           en: 'Onion Knight',
@@ -299,6 +321,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'オニオンナイト',
           cn: '洋葱剑士',
           ko: '양파 기사',
+          tc: '洋蔥劍士',
         },
         unknown: Outputs.unknown,
       },
@@ -320,6 +343,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '転移が出来ます',
           cn: '传送装置已启动',
           ko: '전송장치 활성화',
+          tc: '傳送裝置已啟動',
         },
       },
     },
@@ -380,6 +404,14 @@ const triggerSet: TriggerSet<Data> = {
         'Lamia Queen': '拉米亚女王',
         'Meracydian Clone': '美拉西迪亚复制体',
         'Mimic': '拟态怪',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Lamia Queen': '拉米亞女王',
+        'Meracydian Clone': '美拉西迪亞複製體',
+        'Mimic': '擬態怪',
       },
     },
     {

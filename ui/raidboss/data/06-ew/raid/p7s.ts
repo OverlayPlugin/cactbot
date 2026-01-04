@@ -113,6 +113,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '生命の果実',
           cn: '生命之果',
           ko: '생명의 열매',
+          tc: '生命之果',
         };
 
         // Select the Forbidden Fruits
@@ -154,6 +155,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${platform1} / ${platform2}',
             cn: '${platform1} / ${platform2}',
             ko: '${platform1} / ${platform2}',
+            tc: '${platform1} / ${platform2}',
           },
           orientation: {
             en: 'Line Bull: ${location}',
@@ -162,6 +164,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '線付き牛: ${location}',
             cn: '连线牛: ${location}',
             ko: '줄 달린 소: ${location}',
+            tc: '連線牛: ${location}',
           },
           famineOrientation: {
             en: 'Minotaurs without Bird: ${location}',
@@ -170,6 +173,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ミノがある場所: ${location}',
             cn: '无鸟牛头人: ${location}',
             ko: '새 없는 곳: ${location}',
+            tc: '無鳥牛頭人: ${location}',
           },
           deathOrientation: {
             en: 'Lightning Bull: ${location}',
@@ -178,6 +182,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '線付いてない牛: ${location}',
             cn: '钢铁牛: ${location}',
             ko: '줄 안달린 소: ${location}',
+            tc: '鋼鐵牛: ${location}',
           },
           warOrientation: {
             en: 'Bird with Minotaurs: ${location}',
@@ -186,6 +191,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ミノと鳥: ${location}',
             cn: '有鸟牛头人: ${location}',
             ko: '새 + 미노타우로스: ${location}',
+            tc: '有鳥牛頭人: ${location}',
           },
         };
 
@@ -365,6 +371,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '2人同時タンク強攻撃',
           cn: '分散死刑',
           ko: '따로맞는 탱버',
+          tc: '分散死刑',
         },
       },
     },
@@ -394,6 +401,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '果実がない空きの円盤へ移動',
           cn: '移动到空平台',
           ko: '빈 플랫폼에서 장판 유도 준비',
+          tc: '移動到空平台',
         },
       },
     },
@@ -412,6 +420,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '円盤の内でヒーラーと頭割り',
           cn: '治疗分组平台',
           ko: '힐러 그룹별로 플랫폼',
+          tc: '治療分組平台',
         },
       },
     },
@@ -497,6 +506,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '牛から直線',
             cn: '牛连线 (直线AOE)',
             ko: '소 (직선 장판)',
+            tc: '牛連線 (直線AOE)',
           },
           deathBullTether: {
             en: 'Bull Tether (Line AoE)',
@@ -505,6 +515,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '牛から直線',
             cn: '牛连线 (直线AOE)',
             ko: '소 (직선 장판)',
+            tc: '牛連線 (直線AOE)',
           },
           warBullTether: {
             en: 'Bull Tether (Line AoE)',
@@ -513,6 +524,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '牛から直線',
             cn: '牛连线 (直线AOE)',
             ko: '소 (직선 장판)',
+            tc: '牛連線 (直線AOE)',
           },
           minotaurTether: {
             en: 'Minotaur Tether (Big Cleave)',
@@ -521,6 +533,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ミノから扇',
             cn: '牛头人连线 (拉远扇形)',
             ko: '미노타우로스 (부채꼴 장판)',
+            tc: '牛頭人連線 (拉遠扇形)',
           },
           famineMinotaurTether: {
             en: 'Cross Minotaur Tethers (Big Cleave)',
@@ -529,6 +542,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ミノからの扇を交える',
             cn: '交叉牛头人连线 (拉远扇形)',
             ko: '미노타우로스 선 교차시키기 (부채꼴 장판)',
+            tc: '交叉牛頭人連線 (拉遠扇形)',
           },
           warMinotaurTether: {
             en: 'Minotaur Tether (Big Cleave)',
@@ -537,6 +551,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ミノから扇',
             cn: '牛头人连线 (拉远扇形)',
             ko: '미노타우로스 (부채꼴 장판)',
+            tc: '牛頭人連線 (拉遠扇形)',
           },
           warBirdTether: {
             en: 'Bird Tether',
@@ -545,6 +560,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '鳥から線',
             cn: '鸟连线',
             ko: '새',
+            tc: '鳥連線',
           },
           noTether: {
             en: 'No Tether, Bait Minotaur Cleave (Middle)',
@@ -553,6 +569,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '線なし、中央で扇を誘導',
             cn: '无连线，诱导牛头人扇形 (中间)',
             ko: '선 없음, 미노타우로스 유도 (중앙)',
+            tc: '無連線，誘導牛頭人扇形 (中間)',
           },
           famineNoTether: {
             en: 'No Tether, Bait Minotaur Cleave',
@@ -561,6 +578,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '線なし、ミノからの扇を誘導',
             cn: '无连线，诱导牛头人扇形',
             ko: '선 없음, 미노타우로스 유도',
+            tc: '無連線，誘導牛頭人扇形',
           },
         };
 
@@ -710,6 +728,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
           cn: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
           ko: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
+          tc: '${effect1} => ${effect2} => ${effect3} => ${effect4}',
         },
         spread: Outputs.spread,
         stack: Outputs.stackMarker,
@@ -757,6 +776,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '強力な全体攻撃、真ん中へ',
           cn: '超大伤害，去中间',
           ko: '아픈 광뎀, 중앙으로',
+          tc: '超大傷害，去中間',
         },
       },
     },
@@ -938,6 +958,51 @@ const triggerSet: TriggerSet<Data> = {
         'Static Path': '静电之路',
         'Stymphalian Strike': '怪鸟强袭',
         'War\'s Harvest': '生命繁茂之乱',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Agdistis': '阿格狄斯提斯',
+        'Immature Io': '未成熟的伊娥',
+        'Immature Minotaur': '未成熟的米諾陶洛斯',
+        'Immature Stymphalide': '未成熟的鐵爪怪鳥',
+      },
+      'replaceText': {
+        '--chasing aoe--': '半神閃耀',
+        '--eggs--': '生命之果',
+        // 'arrow': '', // FIXME '箭头'
+        // 'close': '', // FIXME '近'
+        // 'far': '', // FIXME '远'
+        'Blades of Attis': '阿提斯的葉刃',
+        'Bough of Attis': '阿提斯的巨枝',
+        'Bronze Bellows': '突風強襲',
+        'Bullish Slash': '牛魔猛擊',
+        'Bullish Swipe': '牛魔橫掃',
+        'Condensed Aero II': '集聚・中勁風',
+        'Death\'s Harvest': '生命繁茂之凶',
+        'Dispersed Aero II': '流散・中勁風',
+        'Famine\'s Harvest': '生命繁茂之猛',
+        'Forbidden Fruit': '生命之果',
+        'Hemitheos\'s Aero III': '半神大勁風',
+        'Hemitheos\'s Aero IV': '半神超勁風',
+        'Hemitheos\'s Glare(?! III)': '半神閃耀',
+        'Hemitheos\'s Glare III': '半神閃灼',
+        'Hemitheos\'s Holy(?! III)': '半神神聖',
+        'Hemitheos\'s Holy III': '半神豪聖',
+        'Hemitheos\'s Tornado': '半神龍捲風',
+        'Immortal\'s Obol': '不滅者的導枝',
+        'Inviolate Bonds': '創造魔印',
+        'Inviolate Purgation': '創造雙印',
+        'Light of Life': '生命的極光',
+        'Multicast': '多重施法',
+        'Roots of Attis': '阿提斯的根足',
+        'Shadow of Attis': '阿提斯的光露',
+        'Spark of Life': '生命的光芒',
+        'Static Path': '靜電之路',
+        'Stymphalian Strike': '怪鳥強襲',
+        'War\'s Harvest': '生命繁茂之亂',
       },
     },
     {

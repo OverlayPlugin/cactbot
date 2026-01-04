@@ -33,6 +33,7 @@ const directionOutputStrings = {
     fr: 'Restez',
     cn: '停',
     ko: '대기',
+    tc: '停',
   },
   num2: Outputs.num2,
   separator: {
@@ -42,6 +43,7 @@ const directionOutputStrings = {
     ja: ' => ',
     cn: ' => ',
     ko: ' => ',
+    tc: '=>',
   },
   intercardStay: {
     en: '${dir} => Stay',
@@ -49,6 +51,7 @@ const directionOutputStrings = {
     fr: '${dir} => Restez',
     cn: '${dir} => 停',
     ko: '${dir} => 대기',
+    tc: '${dir} => 停',
   },
   numHits: {
     en: '${dir} x${num}',
@@ -57,6 +60,7 @@ const directionOutputStrings = {
     ja: '${dir} x${num}',
     cn: '${dir} x${num}',
     ko: '${dir} x${num}',
+    tc: '${dir} x${num}',
   },
   combo: {
     en: '${dirs}',
@@ -65,6 +69,7 @@ const directionOutputStrings = {
     ja: '${dirs}',
     cn: '${dirs}',
     ko: '${dirs}',
+    tc: '${dirs}',
   },
 } as const;
 
@@ -456,6 +461,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最東端の床へ',
           cn: '偏右侧安全',
           ko: '동쪽 끝 안전',
+          tc: '偏右側安全',
         },
       },
     },
@@ -474,6 +480,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最南端の床へ',
           cn: '偏下侧安全',
           ko: '남쪽 끝 안전',
+          tc: '偏下側安全',
         },
       },
     },
@@ -492,6 +499,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最西端の床へ',
           cn: '偏左侧安全',
           ko: '서쪽 끝 안전',
+          tc: '偏左側安全',
         },
       },
     },
@@ -510,6 +518,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最北端の床へ',
           cn: '偏上侧安全',
           ko: '북쪽 끝 안전',
+          tc: '偏上側安全',
         },
       },
     },
@@ -592,6 +601,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir}, 外側 => 内側',
           cn: '${dir}, 远离 => 靠近',
           ko: '${dir}, 밖 => 안',
+          tc: '${dir}, 遠離 => 靠近',
         },
         inToOut: {
           en: '${dir}, In => Out',
@@ -600,6 +610,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir}, 内側 => 外側',
           cn: '${dir}, 靠近 => 远离',
           ko: '${dir}, 안 => 밖',
+          tc: '${dir}, 靠近 => 遠離',
         },
         unknown: Outputs.unknown,
         ...Directions.outputStrings8Dir,
@@ -736,6 +747,40 @@ const triggerSet: TriggerSet<Data> = {
         'Wicked Hypercannon': '狡诡聚能加农炮',
         'Wicked Jolt': '狡诡摇荡',
         'Witch Hunt': '猎杀女巫',
+        'Wrath of Zeus': '宙斯之怒',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Wicked Replica': '', // FIXME '狡雷的幻影'
+        // 'Wicked Thunder': '', // FIXME '狡雷'
+      },
+      'replaceText': {
+        // 'Left Roll': '', // FIXME '左转'
+        // 'Right Roll': '', // FIXME '右转'
+        // 'west--': '', // FIXME '西--'
+        // '--east': '', // FIXME '--东'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(clone\\)': '', // FIXME '(幻影)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // 'Bewitching Flight': '', // FIXME '魔女回翔'
+        'Burst': '爆炸',
+        // 'Fivefold Blast': '', // FIXME '五重加农炮'
+        // 'Fourfold Blast': '', // FIXME '四重加农炮'
+        // 'Shadows\' Sabbath': '', // FIXME '黑色安息日'
+        // 'Sidewise Spark': '', // FIXME '侧方电火花'
+        // 'Soaring Soulpress': '', // FIXME '碎魂跃'
+        // 'Stampeding Thunder': '', // FIXME '奔雷炮'
+        // 'Threefold Blast': '', // FIXME '三重加农炮'
+        // 'Thunderslam': '', // FIXME '雷炸'
+        'Thunderstorm': '雷暴',
+        // 'Wicked Bolt': '', // FIXME '狡诡落雷'
+        // 'Wicked Cannon': '', // FIXME '狡诡加农炮'
+        // 'Wicked Hypercannon': '', // FIXME '狡诡聚能加农炮'
+        // 'Wicked Jolt': '', // FIXME '狡诡摇荡'
+        'Witch Hunt': '獵殺女巫',
         'Wrath of Zeus': '宙斯之怒',
       },
     },

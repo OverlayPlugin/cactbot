@@ -42,6 +42,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'タンク塔',
             cn: '坦克塔',
             ko: '탱커 장판',
+            tc: '坦克塔',
           },
         };
       },
@@ -63,6 +64,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ヒーラ塔',
             cn: '治疗塔',
             ko: '힐러 장판',
+            tc: '治療塔',
           },
         };
       },
@@ -84,6 +86,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'DPS塔',
             cn: 'DPS塔',
             ko: '딜러 장판',
+            tc: 'DPS塔',
           },
         };
       },
@@ -105,6 +108,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'タンク玉',
             cn: '坦克球',
             ko: '탱커 구슬',
+            tc: '坦克球',
           },
         };
       },
@@ -126,6 +130,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ヒーラ玉',
             cn: '治疗球',
             ko: '힐러 구슬',
+            tc: '治療球',
           },
         };
       },
@@ -147,6 +152,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'DPS玉',
             cn: 'DPS球',
             ko: '딜러 구슬',
+            tc: 'DPS球',
           },
         };
       },
@@ -171,6 +177,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '壁へノックバック',
             cn: '击退至墙',
             ko: '벽으로 넉백',
+            tc: '擊退至牆',
           },
         };
       },

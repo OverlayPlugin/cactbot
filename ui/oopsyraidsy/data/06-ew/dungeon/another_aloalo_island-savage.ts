@@ -64,6 +64,7 @@ const pushedIntoWall = (
           ja: '壁へノックバック',
           cn: '击退至墙',
           ko: '넉백',
+          tc: '擊退至牆',
         },
       };
     },
@@ -176,6 +177,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
       ja: 'トルネド',
       cn: '龙卷风',
       ko: '토네이도',
+      tc: '龍捲風',
     }),
     pushedIntoWall('AAIS Angry Seas', '8AE1'),
     pushedIntoWall('AAIS Pop', '896B'),

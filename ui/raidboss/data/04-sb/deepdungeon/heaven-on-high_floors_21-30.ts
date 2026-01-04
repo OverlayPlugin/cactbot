@@ -42,6 +42,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雲の下に立つ',
           cn: '站在一朵云下',
           ko: '구름 아래에 서기',
+          tc: '站在一朵雲下',
         },
       },
     },
@@ -73,6 +74,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'replaceSync': {
+        'Heavenly Hatamoto': '天之旗本',
+        'Heavenly Onibi': '天之鬼火',
+        'Hiruko': '蛭子',
+      },
+    },
+    {
+      'locale': 'tc',
       'replaceSync': {
         'Heavenly Hatamoto': '天之旗本',
         'Heavenly Onibi': '天之鬼火',

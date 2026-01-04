@@ -226,6 +226,7 @@ export class DeathReport {
       ja: `獲得: ${effectName}`,
       cn: `获得: ${effectName}`,
       ko: `얻음: ${effectName}`,
+      tc: `獲得: ${effectName}`,
     });
     return {
       timestamp: event.timestamp,
@@ -246,6 +247,7 @@ export class DeathReport {
       ja: `失う: ${effectName}`,
       cn: `失去: ${effectName}`,
       ko: `잃음: ${effectName}`,
+      tc: `失去: ${effectName}`,
     });
     return {
       timestamp: event.timestamp,
@@ -358,6 +360,7 @@ export class DeathReport {
       ja: `${buffName}をミスした (${sourceName}から)`,
       cn: `没吃到 ${buffName} (来自${sourceName})`,
       ko: `${buffName} 놓침 (${sourceName})`,
+      tc: `沒吃到 ${buffName} (來自${sourceName})`,
     });
     return {
       timestamp: event.timestamp,

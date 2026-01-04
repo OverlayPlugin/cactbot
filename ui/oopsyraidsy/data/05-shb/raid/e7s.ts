@@ -19,6 +19,7 @@ const wrongBuff = (str: string) => {
     ja: `${str} (不適切なバフ)`,
     cn: `${str} (Buff错了)`,
     ko: `${str} (버프 틀림)`,
+    tc: `${str} (Buff錯了)`,
   };
 };
 
@@ -30,6 +31,7 @@ const noBuff = (str: string) => {
     ja: `${str} (バフ無し)`,
     cn: `${str} (没有Buff)`,
     ko: `${str} (버프 없음)`,
+    tc: `${str} (沒有Buff)`,
   };
 };
 
@@ -178,6 +180,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ノックバック',
             cn: '击退坠落',
             ko: '넉백',
+            tc: '擊退墜落',
           },
         };
       },

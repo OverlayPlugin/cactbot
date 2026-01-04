@@ -87,6 +87,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に短い寄生',
           cn: '短寄生点名',
           ko: '짧은 기생 디버프 대상자',
+          tc: '短寄生點名',
         },
         second: {
           en: 'Long parasite on YOU',
@@ -95,6 +96,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に長い寄生',
           cn: '长寄生点名',
           ko: '긴 기생 디버프 대상자',
+          tc: '長寄生點名',
         },
       },
     },
@@ -113,6 +115,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外向き：寄生',
           cn: '面向场外: 寄生',
           ko: '바깥 보기: 기생',
+          tc: '面向場外: 寄生',
         },
       },
     },
@@ -131,6 +134,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左回り',
           cn: '向左转',
           ko: '왼쪽으로 회전',
+          tc: '向左轉',
         },
         right: {
           en: 'Rotate right',
@@ -139,6 +143,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右回り',
           cn: '向右转',
           ko: '오른쪽으로 회전',
+          tc: '向右轉',
         },
       },
     },
@@ -162,6 +167,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線が繋がってる安置へ移動',
           cn: '去连线柱子对应的安全区',
           ko: '선 연결된 기둥의 안전지대로',
+          tc: '去連線柱子對應的安全區',
         },
       },
     },
@@ -253,6 +259,31 @@ const triggerSet: TriggerSet<Data> = {
         'Strophe Ixou': '寄生之旋',
         'Synergy': '协同',
         'Transmission': '寄生传染',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hegemone': '赫革摩涅',
+        'Parasitos': '寄生生物',
+      },
+      'replaceText': {
+        // 'random': '', // FIXME '随机'
+        // 'sides': '', // FIXME '两侧'
+        // 'front': '', // FIXME '前方'
+        // 'back': '', // FIXME '后方'
+        'Aetherial Exchange': '乙太交換',
+        'Aetheric Polyominoid': '乙太方陣',
+        'Choros Ixou': '寄生之舞',
+        'Dark Ashes': '冥灰',
+        'Hemitheos\'s Dark IV': '半神冥暗',
+        'Polyominoid Sigma': '乙太方陣Σ',
+        'Polyominous Dark IV': '多連方冥暗',
+        'Reek Havoc': '噴氣',
+        'Strophe Ixou': '寄生之旋',
+        'Synergy': '協同',
+        'Transmission': '寄生傳染',
       },
     },
     {

@@ -16,6 +16,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   triggers: [
     {
@@ -34,6 +35,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後ろの外側へ',
           cn: '去背后远离',
           ko: '뒤로 그리고 밖으로',
+          tc: '去背後遠離',
         },
       },
     },
@@ -51,6 +53,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前へ',
           cn: '去正面',
           ko: '앞으로',
+          tc: '去正面',
         },
       },
     },
@@ -69,6 +72,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ボスから離れる',
             cn: '远离人群',
             ko: '나에게 징 멀리 빠지기',
+            tc: '遠離人群',
           },
           missleMarker: {
             en: 'Away from marker',
@@ -77,6 +81,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'マーカー付きから離れる',
             cn: '躲开标记',
             ko: '징에서 멀리 떨어지기',
+            tc: '躲開標記',
           },
         };
 
@@ -100,6 +105,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'ボスから離れる',
             cn: 'boss脚下放置环形标记',
             ko: '나에게 도넛 장판',
+            tc: 'boss腳下放置環形標記',
           },
           missleMarker: {
             en: 'Stack on marker',
@@ -108,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'マーカー付きから離れる',
             cn: '标记处集合',
             ko: '도넛징 대상자에게 붙기',
+            tc: '標記處集合',
           },
         };
 
@@ -143,6 +150,13 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Aegeiros': '黑杨树精',
+        'Minerva': '密涅瓦',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Aegeiros': '黑楊樹妖',
         'Minerva': '密涅瓦',
       },
     },

@@ -21,6 +21,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   initData: () => ({
     rraxTriplicateSafe: [],
@@ -118,6 +119,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package => Loin du devant',
           cn: '集合 => 远离正面',
           ko: '쉐어 => 보스 전방 피하기',
+          tc: '集合 => 遠離正面',
         },
       },
     },
@@ -190,6 +192,14 @@ const triggerSet: TriggerSet<Data> = {
         'Starcrier': '幻煌鸟',
         'Rrax Yity\'a': '血鸣鼠',
         'Neyoozoteel': '内尤佐缇',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Starcrier': '幻煌鳥',
+        'Rrax Yity\'a': '血鳴鼠',
+        'Neyoozoteel': '內尤佐緹',
       },
     },
     {

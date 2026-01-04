@@ -45,6 +45,7 @@ const galeSphereOutputStrings = {
     ja: '${dir} + ${mechanic}',
     cn: '${dir} + ${mechanic}',
     ko: '${dir} + ${mechanic}',
+    tc: '${dir} + ${mechanic}',
   },
   healerGroups: Outputs.healerGroups,
   partnerStack: {
@@ -54,6 +55,7 @@ const galeSphereOutputStrings = {
     ja: 'ペア',
     cn: '2 人分摊',
     ko: '2인 쉐어',
+    tc: '2 人分攤',
   },
 } as const;
 
@@ -167,6 +169,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西 / 南東',
           cn: '左上 / 右下',
           ko: '북서 / 남동',
+          tc: '左上 / 右下',
         },
         dirNESW: {
           en: 'NE / SW',
@@ -175,6 +178,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東 / 南西',
           cn: '右上 / 左下',
           ko: '북동 / 남서',
+          tc: '右上 / 左下',
         },
       },
     },
@@ -191,6 +195,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'AOE誘導',
           cn: '集合放圈',
           ko: '장판 유도',
+          tc: '集合放圈',
         },
       },
     },
@@ -239,6 +244,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後ろ => 前 => 外側 => ペア',
           cn: '后 => 前 => 钢铁 => 分组分摊',
           ko: '뒤 => 앞 => 밖 => 쉐어',
+          tc: '後 => 前 => 鋼鐵 => 分組分攤',
         },
         backThenFrontThenSpread: {
           en: 'Back => Front => Under => Spread',
@@ -247,6 +253,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後ろ => 前 => 内側 => 散会',
           cn: '后 => 前 => 月环 => 分散',
           ko: '뒤 => 앞 => 안 => 산개',
+          tc: '後 => 前 => 月環 => 分散',
         },
       },
     },
@@ -272,6 +279,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前 => 外側 => ペア',
           cn: '前 => 钢铁 => 分组分摊',
           ko: '앞 => 밖 => 쉐어',
+          tc: '前 => 鋼鐵 => 分組分攤',
         },
         frontThenSpread: {
           en: 'Front => Under',
@@ -280,6 +288,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前 => 内側',
           cn: '前 => 月环',
           ko: '앞 => 안',
+          tc: '前 => 月環',
         },
       },
     },
@@ -297,6 +306,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散会',
           cn: '分散',
           ko: '산개',
+          tc: '分散',
         },
       },
     },
@@ -335,6 +345,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ペア',
           cn: '2 人分摊',
           ko: '2인 쉐어',
+          tc: '2 人分攤',
         },
       },
     },
@@ -351,6 +362,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ロール散会',
           cn: '职能三刀站位',
           ko: '직업군별 위치로',
+          tc: '職能三刀站位',
         },
       },
     },
@@ -378,6 +390,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(外 + 後でヒーラと4:4頭割り)',
           cn: '(稍后 钢铁 + 治疗分组分摊)',
           ko: '(밖으로 + 힐러 그룹 쉐어, 나중에)',
+          tc: '(稍後 鋼鐵 + 治療分組分攤)',
         },
       },
     },
@@ -395,6 +408,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(中 + 後で散会)',
           cn: '(稍后 月环 + 分散)',
           ko: '(안 + 산개, 나중에)',
+          tc: '(稍後 月環 + 分散)',
         },
       },
     },
@@ -475,6 +489,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '分身: ${dir1}->${dir2}->${dir3}->${dir4}',
           cn: '分身：${dir1}->${dir2}->${dir3}->${dir4}',
           ko: '분신：${dir1}->${dir2}->${dir3}->${dir4}',
+          tc: '分身：${dir1}->${dir2}->${dir3}->${dir4}',
         },
       },
     },
@@ -573,6 +588,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir1} => ${dir2} => ${dir3} => ${dir4}',
           cn: '${dir1} => ${dir2} => ${dir3} => ${dir4}',
           ko: '${dir1} => ${dir2} => ${dir3} => ${dir4}',
+          tc: '${dir1} => ${dir2} => ${dir3} => ${dir4}',
         },
         ...galeSphereOutputStrings,
       },
@@ -663,6 +679,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir} => ヒーラと4:4頭割り',
           cn: '${dir} => 治疗分组分摊',
           ko: '${dir} => 힐러 그룹 쉐어',
+          tc: '${dir} => 治療分組分攤',
         },
         northeast: Outputs.northeast,
         southeast: Outputs.southeast,
@@ -738,6 +755,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '真ん中 (すこし${dir})',
           cn: '中间 (偏 ${dir})',
           ko: '중앙 (약간 ${dir})',
+          tc: '中間 (偏 ${dir})',
         },
       },
     },
@@ -758,6 +776,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にノックバック',
           cn: '击退点名',
           ko: '넉백 대상자',
+          tc: '擊退點名',
         },
       },
     },
@@ -778,6 +797,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にフレア',
           cn: '陨石点名',
           ko: '플레어 대상자',
+          tc: '隕石點名',
         },
       },
     },
@@ -799,6 +819,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔踏み',
           cn: '踩塔',
           ko: '기둥 들어가기',
+          tc: '踩塔',
         },
       },
     },
@@ -1001,6 +1022,59 @@ const triggerSet: TriggerSet<Data> = {
         'Void Meteor': '虚空陨石',
         'Void Stardust': '虚空彗星雨',
         'Void Tornado': '虚空龙卷',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gale Sphere': '風球',
+        'Golbez': '高貝扎',
+        'Shadow Dragon': '黑龍',
+      },
+      'replaceText': {
+        // '\\(Enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(big\\)': '', // FIXME '(大)'
+        // '\\(small\\)': '', // FIXME '(小)'
+        // '\\(light parties\\)': '', // FIXME '(四四分组)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        // '\\(explode\\)': '', // FIXME '(发动)'
+        // '\\(snapshot\\)': '', // FIXME '(诱导)'
+        // '\\(back\\)': '', // FIXME '(后)'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(front\\)': '', // FIXME '(前)'
+        // '\\(out\\)': '', // FIXME '(外)'
+        // '\\(record\\)': '', // FIXME '(记录)'
+        // '\\(under\\)': '', // FIXME '(靠近)'
+        // '\\(hit\\)': '', // FIXME '(命中)'
+        // '\\(preview\\)': '', // FIXME '(预兆)'
+        'Abyssal Quasar': '深淵類星體',
+        'Arctic Assault': '極寒突襲',
+        'Azdaja\'s Shadow': '黑龍劍阿珠達雅',
+        'Binding Cold': '咒縛寒氣',
+        'Black Fang': '黑牙',
+        'Burning Shade': '黑炎',
+        'Cauterize': '黑炎俯衝',
+        'Double Meteor': '雙重隕石',
+        'Dragon\'s Descent': '降龍爆火',
+        'Eventide Fall': '集束黑龍閃',
+        'Eventide Triad': '三連黑龍閃',
+        'Explosion': '爆炸',
+        'Flames of Eventide': '黑龍炎',
+        'Gale Sphere': '風晶球',
+        'Immolating Shade': '重黑炎',
+        'Lingering Spark': '遲緩電火花',
+        'Phases of the Blade': '弦月連劍',
+        'Phases of the Shadow': '弦月黑龍連劍',
+        'Rising Beacon': '升龍烽火',
+        'Rising Ring': '升龍環火',
+        'Terrastorm': '遲緩地暴',
+        'Void Aero III': '虛空大勁風',
+        'Void Blizzard III': '虛空大暴雪',
+        'Void Comet': '虛空隕星',
+        'Void Meteor': '虛空隕石',
+        'Void Stardust': '虛空隕星雨',
+        'Void Tornado': '虛空龍捲風',
       },
     },
     {

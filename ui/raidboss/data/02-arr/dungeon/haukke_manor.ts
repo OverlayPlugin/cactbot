@@ -65,6 +65,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '守衛を倒す',
           cn: '击杀守卫',
           ko: '경비원 죽이기',
+          tc: '擊殺守衛',
         },
       },
     },
@@ -106,6 +107,15 @@ const triggerSet: TriggerSet<Data> = {
         'Manor Claviger': '随从女工',
         'Lady Amandine': '阿芒迪娜女士',
         'Manor Steward': '庄园的总管',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Manor Maidservant': '莊園的女僕',
+        'Manor Claviger': '隨從女工',
+        'Lady Amandine': '阿芒迪娜女士',
+        'Manor Steward': '莊園的總管',
       },
     },
     {

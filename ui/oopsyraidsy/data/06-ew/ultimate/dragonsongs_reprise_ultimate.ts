@@ -163,6 +163,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: '塔踏み失敗',
               cn: '错过塔',
               ko: '기둥 놓침',
+              tc: '錯過塔',
             },
           };
         });
@@ -206,6 +207,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: 'ツイスター',
               cn: '旋风',
               ko: '회오리 밟음',
+              tc: '旋風',
             },
           };
         }
@@ -293,6 +295,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '炸裂',
             cn: '热病',
             ko: '열병',
+            tc: '熱病',
           },
         };
       },

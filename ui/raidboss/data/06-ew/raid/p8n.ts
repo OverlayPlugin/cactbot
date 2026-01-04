@@ -186,6 +186,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
         },
         north: Outputs.north,
         east: Outputs.east,
@@ -295,6 +296,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
         },
         outsideNorth: {
           en: 'Outside North',
@@ -303,6 +305,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北の外側',
           cn: '上外',
           ko: '북쪽 바깥',
+          tc: '上外',
         },
         insideNorth: {
           en: 'Inside North',
@@ -311,6 +314,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北の内側',
           cn: '上内',
           ko: '북쪽 안',
+          tc: '上內',
         },
         outsideEast: {
           en: 'Outside East',
@@ -319,6 +323,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東の外側',
           cn: '右外',
           ko: '동쪽 바깥',
+          tc: '右外',
         },
         insideEast: {
           en: 'Inside East',
@@ -327,6 +332,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東の内側',
           cn: '右内',
           ko: '동쪽 안',
+          tc: '右內',
         },
         outsideSouth: {
           en: 'Outside South',
@@ -335,6 +341,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南の外側',
           cn: '下外',
           ko: '남쪽 바깥',
+          tc: '下外',
         },
         insideSouth: {
           en: 'Inside South',
@@ -343,6 +350,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南の内側',
           cn: '下内',
           ko: '남쪽 안',
+          tc: '下內',
         },
         outsideWest: {
           en: 'Outside West',
@@ -351,6 +359,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の外側',
           cn: '左外',
           ko: '서쪽 바깥',
+          tc: '左外',
         },
         insideWest: {
           en: 'Inside West',
@@ -359,6 +368,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の内側',
           cn: '左内',
           ko: '서쪽 안',
+          tc: '左內',
         },
       },
     },
@@ -497,6 +507,39 @@ const triggerSet: TriggerSet<Data> = {
         'Torch Flame': '灼炎',
         'Trailblaze': '踏火寻迹',
         'Volcanic Torches': '灼炎创火',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Gorgon': '戈爾貢',
+        '(?<!Illusory )Hephaistos': '赫淮斯托斯',
+        'Illusory Hephaistos': '赫淮斯托斯的幻影',
+        'Suneater': '炎靈蛇',
+      },
+      'replaceText': {
+        'Abyssal Fires': '火炎風暴',
+        'Blazing Footfalls': '熾熱踐踏',
+        // 'Cthonic Vent': '', // FIXME '喷炎升蛇'
+        'Ektothermos': '爆熱波動',
+        'Flameviper': '炎蛇砲',
+        'Fourfold Fires': '四重火炎風暴',
+        'Genesis of Flame': '創世真炎',
+        'Gorgospit': '戈爾貢噴吐',
+        'Hemitheos\'s Flare': '半神火光',
+        'Into the Shadows': '潛入陰影',
+        'Petrifaction': '石化',
+        'Quadrupedal Crush': '踐踏碎擊',
+        'Quadrupedal Impact': '踐踏衝擊',
+        'Rearing Rampage': '雙足狂怒',
+        'Reforged Reflection': '變異創身',
+        'Scorching Fang': '烈火牙',
+        'Sun\'s Pinion': '炎之翼',
+        'Sunforge': '創獸炎舞',
+        'Torch Flame': '灼炎',
+        'Trailblaze': '踏火尋跡',
+        'Volcanic Torches': '灼炎創火',
       },
     },
     {

@@ -49,6 +49,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'ノックバック',
             cn: '击退坠落',
             ko: '넉백',
+            tc: '擊退墜落',
           },
         };
       },
@@ -69,6 +70,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '壁へノックバック',
             cn: '击退至墙',
             ko: '넉백',
+            tc: '擊退至牆',
           },
         };
       },

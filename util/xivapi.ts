@@ -24,6 +24,7 @@ const _XIVAPI_RESULTS_LIMIT = 500;
 type XivApiRow = {
   schema?: string; // returned if a specific row is requested
   row_id: number;
+  subrow_id?: number;
   fields: { [field: string]: unknown };
 };
 
@@ -78,6 +79,7 @@ export class XivApi {
     // using the 'after' parameter, until we get an empty result set.
     let fetchAgain = true;
     let maxRow = 0;
+    let maxSubRow: number | undefined = undefined;
     let currentPage = 0;
     const specificRowRequested = sheet.includes('/');
     const output: XivApiRow[] = [];
@@ -88,8 +90,11 @@ export class XivApi {
       let url = `${_XIVAPI_URL}/sheet/${sheet}?limit=${_XIVAPI_RESULTS_LIMIT}&fields=${
         fields.join(',')
       }`;
-      if (maxRow > 0)
+      if (maxRow > 0) {
         url += `&after=${maxRow}`;
+        if (maxSubRow !== undefined)
+          url += `:${maxSubRow}`;
+      }
 
       this.log.debug(`Obtaining page ${currentPage} from API: ${sheet}`);
 
@@ -123,9 +128,11 @@ export class XivApi {
           const lastRow = jsonResult.rows[jsonResult.rows.length - 1];
           if (lastRow !== undefined) {
             maxRow = lastRow.row_id;
+            maxSubRow = lastRow.subrow_id;
             output.push(...jsonResult.rows);
-          } else
+          } else {
             this.log.fatalError('Malformed API query result: last row is undefined.');
+          }
         }
       } else { // only a single row is requested
         fetchAgain = false;
@@ -189,12 +196,21 @@ export default data;`;
 
     // There's only one result from lintText, as per documentation.
     const lintResult = results[0];
+    if (lintResult === undefined) {
+      this.log.fatalError(`eslint lint result undefined - file not written.`);
+      return; // unnecessary, but Typescript doesn't know that
+    }
+
     if (
-      lintResult === undefined ||
       lintResult.errorCount > 0 ||
       lintResult.warningCount > 0
     ) {
-      this.log.fatalError(`eslint failed - automatic fixes not possible, and file not written.`);
+      for (const lintMessage of lintResult.messages) {
+        this.log.info(`${lintMessage.message}`);
+      }
+      this.log.fatalError(
+        `eslint failed with ${lintResult.errorCount} errors and ${lintResult.warningCount} warnings - automatic fixes not possible, and file not written.`,
+      );
       return; // unnecessary, but Typescript doesn't know that
     }
 

@@ -14,6 +14,7 @@ const uznairOutputStrings = {
     fr: '${name} apparaît !',
     cn: '已生成 ${name}!',
     ko: '${name} 등장!',
+    tc: '已生成 ${name}!',
   },
   adds: {
     en: 'Adds soon',
@@ -21,6 +22,7 @@ const uznairOutputStrings = {
     fr: 'Adds bientôt',
     cn: '小怪即将出现',
     ko: '곧 쫄 나옴',
+    tc: '小怪即將出現',
   },
 } as const;
 
@@ -73,6 +75,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Les mandragores d\'Altar apparaissent, tuez les dans l\'ordre',
           cn: '已生成 神殿蔓德拉战队, 依次击杀!',
           ko: '만드라즈 등장, 순서대로 잡기!',
+          tc: '已生成 神殿曼德拉戰隊, 依次擊殺!',
         },
       },
     },
@@ -128,6 +131,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Déposez 3 flaques',
           cn: '诱导三个圈圈',
           ko: '장판 3개 유도',
+          tc: '誘導三個圈圈',
         },
       },
     },

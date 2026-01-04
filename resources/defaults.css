@@ -45,6 +45,17 @@ body {
     sans-serif;
 }
 
+:lang(ko) .text {
+  font-family:
+    "나눔바른고딕",
+    "Noto Sans KR",
+    "Noto Sans CJK KR",
+    "맑은 고딕",
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
 .hide {
   display: none !important;
 }

@@ -54,6 +54,7 @@ const purpleMistake = (): OopsyFunc<Data, NetMatches['Ability'], OopsyMistake> =
         ja: `${matches.ability} (紫)`,
         cn: `${matches.ability} (紫色)`,
         ko: `${matches.ability} (보라)`,
+        tc: `${matches.ability} (紫色)`,
       },
     };
   };
@@ -71,6 +72,7 @@ const wallDeathReason = (): OopsyFunc<Data, NetMatches['Ability'], OopsyDeathRea
         ja: '壁へノックバック',
         cn: '击退至墙',
         ko: '벽으로 넉백',
+        tc: '擊退至牆',
       },
     };
   };
@@ -232,6 +234,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         ja: '1人',
         cn: '1 重叠',
         ko: '1인징',
+        tc: '1 重疊',
       }),
     },
     {
@@ -245,6 +248,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         ja: '2人頭割り',
         cn: '2 重叠',
         ko: '2인징',
+        tc: '2 重疊',
       }),
     },
     {
@@ -258,6 +262,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         ja: '3人頭割り',
         cn: '3 重叠',
         ko: '3인징',
+        tc: '3 重疊',
       }),
     },
   ],

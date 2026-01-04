@@ -604,6 +604,7 @@ export class PlayerStateTracker {
           ja: `(${nameList}) が${collected.buffName}を受けなかった`,
           cn: `${nameList} 没受到 ${collected.buffName}`,
           ko: `${collected.buffName} ${nameList}에게 적용안됨`,
+          tc: `${nameList} 沒受到 ${collected.buffName}`,
         },
       });
       return;
@@ -622,6 +623,7 @@ export class PlayerStateTracker {
         ja: `${missedNames.length}人が${collected.buffName}を受けなかった`,
         cn: `有${missedNames.length}人没受到 ${collected.buffName}`,
         ko: `${collected.buffName} ${missedNames.length}명에게 적용안됨`,
+        tc: `有${missedNames.length}人沒受到 ${collected.buffName}`,
       },
     });
   }

@@ -33,6 +33,7 @@ const kTriggerOptions = {
       ja: '✔ 初期設定',
       cn: '✔ 默认设置',
       ko: '✔ 기본',
+      tc: '✔ 默認設置',
     },
   },
   disabled: {
@@ -43,6 +44,7 @@ const kTriggerOptions = {
       ja: '❌ 無効',
       cn: '❌ 禁用',
       ko: '❌ 비활성화',
+      tc: '❌ 禁用',
     },
   },
 };
@@ -192,6 +194,7 @@ class OopsyConfigurator {
         ja: '欠けバフ',
         cn: '遗漏Buff',
         ko: '놓친 버프 알림',
+        tc: '遺漏Buff',
       }),
       triggerSet: {
         triggers: generateBuffTriggerIds().map((id) => {
@@ -270,6 +273,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'デバッグモードを有効にする',
         cn: '启用调试模式',
         ko: '디버그 모드 활성화',
+        tc: '啟用除錯模式',
       },
       type: 'checkbox',
       debugOnly: true,
@@ -284,6 +288,7 @@ const templateOptions: OptionsTemplate = {
         ja: '基本プレイヤーラベル',
         cn: '默认玩家代称',
         ko: '플레이어를 언급하는 기본 방법',
+        tc: '默認玩家代稱',
       },
       type: 'select',
       options: {
@@ -322,6 +327,13 @@ const templateOptions: OptionsTemplate = {
           '직업 전체 (암흑기사)': 'jobFull',
           '이름 전체 (Tini Poutini)': 'name',
         },
+        tc: {
+          '暱稱 (弗雷)': 'nick',
+          '職能 (坦克)': 'role',
+          '職業簡稱 (暗騎)': 'job',
+          '職業全稱 (暗黑騎士)': 'jobFull',
+          '全名 (弗雷)': 'name',
+        },
       },
       default: 'nick',
     },
@@ -334,6 +346,7 @@ const templateOptions: OptionsTemplate = {
         ja: '戦闘中に表示するミスをした回数',
         cn: '战斗中显示的错误数量',
         ko: '전투 중 표시할 실수들의 개수',
+        tc: '戰鬥中顯示的錯誤數量',
       },
       type: 'integer',
       default: 5,
@@ -347,6 +360,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タゲ取るのが早かったら、ミスとして表示する、カウントダウンとの最短時間 (秒)',
         cn: '显示提前开怪最小时间 (秒)',
         ko: '풀링이 빠르다고 표시 할 최소 시간 (초)',
+        tc: '顯示提前開怪最小時間 (秒)',
       },
       type: 'float',
       default: 0.4,
@@ -360,6 +374,7 @@ const templateOptions: OptionsTemplate = {
         ja: '倒れた時にデスレポートを表示 (0=非表示)',
         cn: '死亡时显示死亡报告的秒数 (0=不显示)',
         ko: '죽었을 때 사망 보고서를 보여주는 시간(초) (0=비활성화)',
+        tc: '死亡時顯示死亡報告的秒數 (0=不顯示)',
       },
       type: 'float',
       default: 4,
@@ -385,6 +400,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'デスレポートの表示方法',
         cn: '死亡报告的显示方式',
         ko: '사망 보고서 표시 위치',
+        tc: '死亡報告的顯示方式',
       },
       type: 'select',
       options: {
@@ -430,6 +446,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'バフの上書き通知を表示する時間 (秒)',
         cn: '显示被顶减伤最小时间 (秒)',
         ko: '파티 생존기 덮어씀 경고를 표시할 기준 시간 (초)',
+        tc: '顯示被頂減傷最小時間 (秒)',
       },
       type: 'float',
       default: 2,

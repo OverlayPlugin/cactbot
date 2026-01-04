@@ -115,6 +115,18 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Deep Palace Bhoot': '深宮浮靈',
+        'Deep Palace Manticore': '深宮蠍尾獅',
+        'Deep Palace Persona': '深宮假面',
+        'Deep Palace Succubus': '深宮魅魔',
+        'Deep Palace Wraith': '深宮幽靈',
+        'Onyx Dragon': '奧尼克斯龍',
+        'Tisiphone': '提西福涅',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Deep Palace Bhoot': '깊은 궁전 브후트',

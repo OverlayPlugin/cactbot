@@ -68,6 +68,7 @@ const kTriggerOptions = {
       ja: '✔ 初期設定',
       cn: '✔ 默认设置',
       ko: '✔ 기본',
+      tc: '✔ 默認設置',
     },
   },
   textAndSound: {
@@ -78,6 +79,7 @@ const kTriggerOptions = {
       ja: '🆙🔊 テキストと音声',
       cn: '🆙🔊 文本显示与提示音',
       ko: '🆙🔊 텍스트와 소리',
+      tc: '🆙🔊 文本顯示與提示音',
     },
   },
   ttsAndText: {
@@ -88,6 +90,7 @@ const kTriggerOptions = {
       ja: '🆙💬 テキストとTTS',
       cn: '🆙💬 文本显示与TTS',
       ko: '🆙💬 텍스트와 TTS',
+      tc: '🆙💬 文本顯示與TTS',
     },
   },
   ttsOnly: {
@@ -98,6 +101,7 @@ const kTriggerOptions = {
       ja: '💬 TTSのみ',
       cn: '💬 只使用TTS',
       ko: '💬 TTS만',
+      tc: '💬 只使用TTS',
     },
   },
   textOnly: {
@@ -108,6 +112,7 @@ const kTriggerOptions = {
       ja: '🆙 テキストのみ',
       cn: '🆙 只使用文本显示',
       ko: '🆙 텍스트만',
+      tc: '🆙 只使用文本顯示',
     },
   },
   disabled: {
@@ -118,6 +123,7 @@ const kTriggerOptions = {
       ja: '❌ 無効',
       cn: '❌ 禁用',
       ko: '❌ 비활성화',
+      tc: '❌ 禁用',
     },
   },
 } as const;
@@ -140,6 +146,7 @@ const kDetailKeys = {
       ja: '正規表現',
       cn: '正则表达式',
       ko: '정규식',
+      tc: '正則表達式',
     },
     cls: 'regex-text',
     debugOnly: true,
@@ -152,6 +159,7 @@ const kDetailKeys = {
       ja: 'ネット正規表現',
       cn: '网络日志正则表达式',
       ko: '정규표현식',
+      tc: '網路日誌正則表達式',
     },
     cls: 'regex-text',
     debugOnly: true,
@@ -164,6 +172,7 @@ const kDetailKeys = {
       ja: 'タイムライン',
       cn: '时间轴',
       ko: '타임라인',
+      tc: '時間軸',
     },
     cls: 'regex-text',
     debugOnly: true,
@@ -176,6 +185,7 @@ const kDetailKeys = {
       ja: 'その前に (秒)',
       cn: '提前 (秒)',
       ko: '앞당김 (초)',
+      tc: '提前 (秒)',
     },
     cls: 'before-seconds-text',
     generatedManually: true,
@@ -188,6 +198,7 @@ const kDetailKeys = {
       ja: '条件',
       cn: '条件',
       ko: '조건',
+      tc: '條件',
     },
     cls: 'condition-text',
     debugOnly: true,
@@ -205,6 +216,7 @@ const kDetailKeys = {
       ja: 'DEBUGの待機調整 (秒)',
       cn: 'DEBUG 延时调整 (秒)',
       ko: '"디버그" 딜레이 조절 (초)',
+      tc: 'DEBUG 延時調整 (秒)',
     },
     cls: 'delay-adjust-text',
     generatedManually: true,
@@ -218,6 +230,7 @@ const kDetailKeys = {
       ja: '存続時間 (秒)',
       cn: '显示时长 (秒)',
       ko: '지속 시간 (초)',
+      tc: '顯示時長 (秒)',
     },
     cls: 'duration-text',
     generatedManually: true,
@@ -230,6 +243,7 @@ const kDetailKeys = {
       ja: 'プレ実行',
       cn: '预运行',
       ko: '사전 실행',
+      tc: '預運行',
     },
     cls: 'prerun-text',
     debugOnly: true,
@@ -242,6 +256,7 @@ const kDetailKeys = {
       ja: '警報',
       cn: '致命级',
       ko: '경고',
+      tc: '致命級',
     },
     cls: 'alarm-text',
   },
@@ -253,6 +268,7 @@ const kDetailKeys = {
       ja: '警告',
       cn: '严重级',
       ko: '주의',
+      tc: '嚴重級',
     },
     cls: 'alert-text',
   },
@@ -264,6 +280,7 @@ const kDetailKeys = {
       ja: '情報',
       cn: '一般级',
       ko: '안내',
+      tc: '一般級',
     },
     cls: 'info-text',
   },
@@ -275,6 +292,7 @@ const kDetailKeys = {
       ja: 'TTS',
       cn: 'TTS',
       ko: 'TTS',
+      tc: 'TTS',
     },
     cls: 'tts-text',
   },
@@ -286,6 +304,7 @@ const kDetailKeys = {
       ja: '音声',
       cn: '提示音',
       ko: '소리',
+      tc: '提示音',
     },
     cls: 'sound-text',
   },
@@ -297,6 +316,7 @@ const kDetailKeys = {
       ja: '実行',
       cn: '运行',
       ko: '실행',
+      tc: '運行',
     },
     cls: 'run-text',
     debugOnly: true,
@@ -312,6 +332,7 @@ const kTimelineTableHeaders = {
     ja: '表示',
     cn: '显示',
     ko: '표시',
+    tc: '顯示',
   },
   text: {
     en: 'Timeline Text',
@@ -320,6 +341,7 @@ const kTimelineTableHeaders = {
     ja: 'タイムラインテキスト',
     cn: '时间轴文本',
     ko: '타임라인 텍스트',
+    tc: '時間軸文本',
   },
   overrideText: {
     en: 'Rename',
@@ -328,6 +350,7 @@ const kTimelineTableHeaders = {
     ja: 'テキスト変更',
     cn: '修改文本',
     ko: '텍스트 변경',
+    tc: '修改文本',
   },
 } as const;
 
@@ -342,6 +365,7 @@ const kMiscTranslations = {
     ja: '(初期値)',
     cn: '(默认值)',
     ko: '(기본값)',
+    tc: '(預設值)',
   },
   // Shown when the UI can't decipher the output of a function.
   valueIsFunction: {
@@ -351,6 +375,7 @@ const kMiscTranslations = {
     ja: '(関数)',
     cn: '(函数)',
     ko: '(함수)',
+    tc: '(函數)',
   },
   // Warning label for triggers without ids or overridden triggers.
   warning: {
@@ -360,6 +385,7 @@ const kMiscTranslations = {
     ja: '⚠️ 警告',
     cn: '⚠️ 警告',
     ko: '⚠️ 주의',
+    tc: '⚠️ 警告',
   },
   // Shows up for triggers without ids.
   missingId: {
@@ -369,6 +395,7 @@ const kMiscTranslations = {
     ja: 'idがありません',
     cn: '缺少id属性',
     ko: 'ID 필드값 없음',
+    tc: '缺少id屬性',
   },
   // Shows up for triggers that are overridden by other triggers.
   overriddenByFile: {
@@ -378,6 +405,7 @@ const kMiscTranslations = {
     ja: '"${file}"に上書きました',
     cn: '被"${file}"文件覆盖',
     ko: '"${file}" 파일에서 덮어씌움',
+    tc: '被"${file}"文件覆蓋',
   },
   // Opens trigger file on Github.
   viewTriggerSource: {
@@ -387,6 +415,7 @@ const kMiscTranslations = {
     ja: 'トリガーのコードを表示',
     cn: '显示触发器源码',
     ko: '트리거 소스코드 보기',
+    tc: '顯示觸發器原始碼',
   },
   // The header for the editing timeline section inside a trigger file.
   editTimeline: {
@@ -396,6 +425,7 @@ const kMiscTranslations = {
     ja: 'タイムラインを編集',
     cn: '编辑时间轴',
     ko: '타임라인 편집',
+    tc: '編輯時間軸',
   },
   // The header inside the Edit Timeline section on top of the reference timeline text.
   timelineListing: {
@@ -405,6 +435,7 @@ const kMiscTranslations = {
     ja: '参考タイムライン (編集不可)',
     cn: '参考文本 (不可编辑)',
     ko: '원본 타임라인 (수정 불가능)',
+    tc: '參考文本 (不可編輯)',
   },
   // The header inside the Edit Timeline section on top of the add entries section.
   addCustomTimelineEntries: {
@@ -414,6 +445,7 @@ const kMiscTranslations = {
     ja: 'カスタマイズタイムライン追加',
     cn: '添加自定义时间轴条目',
     ko: '사용자 지정 타임라인 항목 추가',
+    tc: '添加自訂時間軸條目',
   },
   // The button text for the Edit Timeline add entries section.
   addMoreRows: {
@@ -423,6 +455,7 @@ const kMiscTranslations = {
     ja: '行追加',
     cn: '添加更多行',
     ko: '행 추가',
+    tc: '添加更多行',
   },
   customEntryTime: {
     en: 'Time',
@@ -431,6 +464,7 @@ const kMiscTranslations = {
     ja: '時間',
     cn: '时间',
     ko: '시간',
+    tc: '時間',
   },
   customEntryText: {
     en: 'Text',
@@ -439,6 +473,7 @@ const kMiscTranslations = {
     ja: 'テキスト',
     cn: '文本',
     ko: '텍스트',
+    tc: '文本',
   },
   customEntryDuration: {
     en: 'Duration (seconds)',
@@ -447,6 +482,7 @@ const kMiscTranslations = {
     ja: '持続時間 (秒)',
     cn: '显示时长 (秒)',
     ko: '지속시간 (초)',
+    tc: '顯示時長 (秒)',
   },
   customEntryRemove: {
     en: 'Remove',
@@ -455,6 +491,7 @@ const kMiscTranslations = {
     ja: '削除',
     cn: '移除',
     ko: '삭제',
+    tc: '移除',
   },
 };
 
@@ -1833,6 +1870,7 @@ const defaultAlertOutput: ConfigEntry = {
     ja: '警告情報出力既定値',
     cn: '默认触发器提示输出模式',
     ko: '기본 알람 출력 방식',
+    tc: '默認觸發器提示輸出模式',
   },
   type: 'select',
   options: {
@@ -1878,6 +1916,13 @@ const defaultAlertOutput: ConfigEntry = {
       '🆙 텍스트만': 'textOnly',
       '❌ 비활성화': 'disabled',
     },
+    tc: {
+      '🆙🔊 文本顯示與提示音': 'textAndSound',
+      '🆙💬 文本顯示與TTS': 'ttsAndText',
+      '💬 只使用TTS': 'ttsOnly',
+      '🆙 只使用文本顯示': 'textOnly',
+      '❌ 禁用': 'disabled',
+    },
   },
   default: 'textAndSound',
   setterFunc: setOptionsFromOutputValue,
@@ -1892,6 +1937,7 @@ const defaultTriggerSetAlertOutput = {
     ja: '基本トリガーセットの通知方法',
     cn: '默认触发器集合提示输出模式',
     ko: '기본 트리거 세트 알람 출력 방식',
+    tc: '默認觸發器集合提示輸出模式',
   },
 } as const;
 
@@ -1923,6 +1969,7 @@ const templateOptions: OptionsTemplate = {
         ja: '対応コンテンツ一覧 (最新バージョン)',
         cn: '支持副本一览 (含未发布更新)',
         ko: '지원하는 컨텐츠 (릴리즈버전보다 최신)',
+        tc: '支持副本一覽 (含未發布更新)',
       },
       type: 'html',
       html: {
@@ -1933,6 +1980,7 @@ const templateOptions: OptionsTemplate = {
         ja: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=ja'),
         cn: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=cn'),
         ko: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=ko'),
+        tc: makeLink('https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=tc'),
       },
       default: makeLink(
         'https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=en',
@@ -1947,6 +1995,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'デバッグモードを有効にする',
         cn: '启用调试模式',
         ko: '디버그 모드 활성화',
+        tc: '啟用除錯模式',
       },
       type: 'checkbox',
       debugOnly: true,
@@ -1962,6 +2011,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警告情報の言語',
         cn: '触发器提示语言',
         ko: '알람 언어',
+        tc: '觸發器提示語言',
       },
       type: 'select',
       options: {
@@ -1973,6 +2023,17 @@ const templateOptions: OptionsTemplate = {
           'French (fr)': 'fr',
           'Japanese (ja)': 'ja',
           'Korean (ko)': 'ko',
+          'Traditional Chinese (tc)': 'tc',
+        },
+        de: {
+          'Anzeigesprache verwenden': 'default',
+          'Englisch (en)': 'en',
+          'Chinesisch (cn)': 'cn',
+          'Deutsch (de)': 'de',
+          'Französisch (fr)': 'fr',
+          'Japanisch (ja)': 'ja',
+          'Koreanisch (ko)': 'ko',
+          'Traditionelles Chinesisch (tc)': 'tc',
         },
         fr: {
           'Utiliser la langue d\'affichage': 'default',
@@ -1982,6 +2043,7 @@ const templateOptions: OptionsTemplate = {
           'Français (fr)': 'fr',
           'Japonais (ja)': 'ja',
           'Coréen (ko)': 'ko',
+          'Chinois traditionnel (tc)': 'tc',
         },
         ja: {
           '表示言語既定値': 'default',
@@ -1991,6 +2053,7 @@ const templateOptions: OptionsTemplate = {
           'フランス語 (fr)': 'fr',
           '日本語 (ja)': 'ja',
           '韓国語 (ko)': 'ko',
+          '繁体字中国語 (tc)': 'tc',
         },
         cn: {
           '使用显示语言': 'default',
@@ -2000,6 +2063,7 @@ const templateOptions: OptionsTemplate = {
           '法文 (fr)': 'fr',
           '日文 (ja)': 'ja',
           '韩文 (ko)': 'ko',
+          '繁体中文 (tc)': 'tc',
         },
         ko: {
           '주 사용 언어 사용': 'default',
@@ -2009,6 +2073,17 @@ const templateOptions: OptionsTemplate = {
           '프랑스어 (fr)': 'fr',
           '일본어 (ja)': 'ja',
           '한국어 (ko)': 'ko',
+          '중국어 번체 (tc)': 'tc',
+        },
+        tc: {
+          '使用顯示語言': 'default',
+          '英文 (en)': 'en',
+          '中文 (cn)': 'cn',
+          '德文 (de)': 'de',
+          '法文 (fr)': 'fr',
+          '日文 (ja)': 'ja',
+          '韓文 (ko)': 'ko',
+          '繁體中文 (tc)': 'tc',
         },
       },
       default: 'default',
@@ -2030,6 +2105,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タイムラインの言語',
         cn: '时间轴文本的语言',
         ko: '타임라인 언어',
+        tc: '時間軸文本的語言',
       },
       type: 'select',
       options: {
@@ -2077,6 +2153,7 @@ const templateOptions: OptionsTemplate = {
           '法文 (fr)': 'fr',
           '日文 (ja)': 'ja',
           '韩文 (ko)': 'ko',
+          '繁体中文 (tc)': 'tc',
         },
         ko: {
           'FFXIV Plugin 언어 사용': 'default',
@@ -2086,6 +2163,16 @@ const templateOptions: OptionsTemplate = {
           '프랑스어 (fr)': 'fr',
           '일본어 (ja)': 'ja',
           '한국어 (ko)': 'ko',
+        },
+        tc: {
+          '使用最終幻想XIV解析插件設置的語言': 'default',
+          '英文 (en)': 'en',
+          '中文 (cn)': 'cn',
+          '德文 (de)': 'de',
+          '法文 (fr)': 'fr',
+          '日文 (ja)': 'ja',
+          '韓文 (ko)': 'ko',
+          '繁体中文 (tc)': 'tc',
         },
       },
       default: 'default',
@@ -2107,6 +2194,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'Raidbossのスキン',
         cn: 'Raidboss皮肤',
         ko: 'Raidboss 스킨',
+        tc: 'Raidboss皮膚',
       },
       type: 'select',
       options: {
@@ -2146,6 +2234,12 @@ const templateOptions: OptionsTemplate = {
           'jwidea': 'jwidea',
           'dorgrin': 'dorgrin',
         },
+        tc: {
+          '默認': 'default',
+          'lippe': 'lippe',
+          'jwidea': 'jwidea',
+          'dorgrin': 'dorgrin',
+        },
       },
       default: 'default',
     },
@@ -2158,6 +2252,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タイムラインを有効にする',
         cn: '启用时间轴',
         ko: '타임라인 활성화',
+        tc: '啟用時間軸',
       },
       type: 'checkbox',
       default: true,
@@ -2171,6 +2266,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警告情報を有効にする',
         cn: '启用触发器提示',
         ko: '알람 활성화',
+        tc: '啟用觸發器提示',
       },
       type: 'checkbox',
       default: true,
@@ -2184,6 +2280,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タイムラインを下から表示',
         cn: '反转时间轴顺序 (从下到上)',
         ko: '타임라인 순서 반전 (아래에서 위)',
+        tc: '反轉時間軸順序 (從下到上)',
       },
       type: 'checkbox',
       default: false,
@@ -2214,6 +2311,10 @@ const templateOptions: OptionsTemplate = {
              당신이 파티에 있지 않거나 파티 밖에 있는 플레이어에 대해서는
              기본값인 플레이어의 닉네임이 사용됩니다.
              (한국 서버에서 '이름 전체' 옵션은 '닉네임'과 같습니다.)`,
+        tc: `在觸發器輸出中指定玩家的默認方式。默認選項為輸出暱稱/名字。
+             使用此選項可將輸出方式更改為玩家的職能名或職業名。
+             若你不在小隊中或玩家離開小隊 (或出現錯誤時), 將默認輸出玩家暱稱。
+             (註：繁中服對於暱稱和全名不做區分)`,
       },
       name: {
         en: 'Default Player Label',
@@ -2222,6 +2323,7 @@ const templateOptions: OptionsTemplate = {
         ja: '基本プレイヤーラベル',
         cn: '默认玩家代称',
         ko: '플레이어를 언급하는 기본 방법',
+        tc: '默認玩家代稱',
       },
       type: 'select',
       options: {
@@ -2267,6 +2369,13 @@ const templateOptions: OptionsTemplate = {
           '직업 전체 (암흑기사)': 'jobFull',
           '이름 전체 (Tini Poutini)': 'name',
         },
+        tc: {
+          '暱稱 (弗雷)': 'nick',
+          '職能 (坦克)': 'role',
+          '職業簡稱 (暗騎)': 'job',
+          '職業全稱 (暗黑騎士)': 'jobFull',
+          '全名 (弗雷)': 'name',
+        },
       },
       default: 'nick',
     },
@@ -2279,6 +2388,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タイムバーに時間表示 (秒)',
         cn: '计时条显示时长 (秒)',
         ko: '타임라인을 표시할 기준 시간 (초 이하)',
+        tc: '計時條顯示時長 (秒)',
       },
       type: 'float',
       default: 30,
@@ -2292,6 +2402,7 @@ const templateOptions: OptionsTemplate = {
         ja: '終了したタイムバーが消えるまでの待ち時間 (秒)',
         cn: '归零计时条滞留时长 (秒)',
         ko: '만료된 타임라인이 사라지기까지의 시간 (초)',
+        tc: '歸零計時條滯留時長 (秒)',
       },
       type: 'float',
       default: 0.7,
@@ -2305,6 +2416,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タイムバーが終了前に再度色付けの残り時間 (秒)',
         cn: '倒计时小于该值时当前计时条变色 (秒)',
         ko: '타임라인의 색상을 바꿀 기준 시간 (초 이하)',
+        tc: '倒數計時小於該值時當前計時條變色 (秒)',
       },
       type: 'integer',
       default: 6,
@@ -2318,6 +2430,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タイムバーの最大数',
         cn: '计时条最大数量',
         ko: '표시할 타임라인의 최대 개수',
+        tc: '計時條最大數量',
       },
       type: 'integer',
       default: 6,
@@ -2331,6 +2444,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警報テキスト表示時間の長さ (秒)',
         cn: '致命级提示文本显示时长 (秒)',
         ko: '경고 텍스트를 표시할 시간 (초)',
+        tc: '致命級提示文本顯示時長 (秒)',
       },
       type: 'float',
       default: 3,
@@ -2344,6 +2458,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警告テキスト表示時間の長さ (秒)',
         cn: '严重级提示文本显示时长 (秒)',
         ko: '주의 텍스트를 표시할 시간 (초)',
+        tc: '嚴重級提示文本顯示時長 (秒)',
       },
       type: 'float',
       default: 3,
@@ -2357,6 +2472,7 @@ const templateOptions: OptionsTemplate = {
         ja: '情報テキスト表示時間の長さ (秒)',
         cn: '一般级提示文本显示时长 (秒)',
         ko: '안내 텍스트를 표시할 시간 (초)',
+        tc: '一般級提示文本顯示時長 (秒)',
       },
       type: 'float',
       default: 3,
@@ -2370,6 +2486,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警報音声の音量 (0-1)',
         cn: '致命级提示音量 (0-1)',
         ko: '경고 소리 크기 (0-1)',
+        tc: '致命級提示音量 (0-1)',
       },
       type: 'float',
       default: 1,
@@ -2383,6 +2500,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警告音声の音量 (0-1)',
         cn: '严重级提示音量 (0-1)',
         ko: '주의 소리 크기 (0-1)',
+        tc: '嚴重級提示音量 (0-1)',
       },
       type: 'float',
       default: 1,
@@ -2396,6 +2514,7 @@ const templateOptions: OptionsTemplate = {
         ja: '情報音声の音量 (0-1)',
         cn: '一般级提示音量 (0-1)',
         ko: '안내 소리 크기 (0-1)',
+        tc: '一般級提示音量 (0-1)',
       },
       type: 'float',
       default: 1,
@@ -2409,6 +2528,7 @@ const templateOptions: OptionsTemplate = {
         ja: '長い音声の音量 (0-1)',
         cn: '长提示音量 (0-1)',
         ko: '긴 소리 크기 (0-1)',
+        tc: '長提示音量 (0-1)',
       },
       type: 'float',
       default: 1,
@@ -2422,6 +2542,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'タゲ取る効果音の音量 (0-1)',
         cn: '开怪提示音量 (0-1)',
         ko: '풀링 소리 크기 (0-1)',
+        tc: '開怪提示音量 (0-1)',
       },
       type: 'float',
       default: 1,
@@ -2435,6 +2556,7 @@ const templateOptions: OptionsTemplate = {
         ja: 'トリガーによるゲームパッド振動を有効にする',
         cn: '触发器活动时使手柄振动',
         ko: '트리거에 대해 게임패드 진동 활성화',
+        tc: '觸發器活動時使手把振動',
       },
       type: 'checkbox',
       default: false,
@@ -2448,6 +2570,7 @@ const templateOptions: OptionsTemplate = {
         ja: '情報トリガーによる振動の長さ (ミリ秒)',
         cn: '一般级触发器振动时长 (毫秒)',
         ko: '안내 트리거의 진동 지속 시간 (밀리초)',
+        tc: '一般級觸發器振動時長 (毫秒)',
       },
       type: 'float',
       default: 400,
@@ -2461,6 +2584,7 @@ const templateOptions: OptionsTemplate = {
         ja: '情報トリガーによる振動にモーターの弱い方の強さ (0-1)',
         cn: '一般级触发器弱电机振动强度 (0-1)',
         ko: '안내 트리거의 약한 진동 세기 (0-1)',
+        tc: '一般級觸發器弱電機振動強度 (0-1)',
       },
       type: 'float',
       default: 0.5,
@@ -2474,6 +2598,7 @@ const templateOptions: OptionsTemplate = {
         ja: '情報トリガーによる振動にモーターの強い方の強さ (0-1)',
         cn: '一般级触发器强电机振动强度 (0-1)',
         ko: '안내 트리거의 강한 진동 세기 (0-1)',
+        tc: '一般級觸發器強電機振動強度 (0-1)',
       },
       type: 'float',
       default: 0,
@@ -2487,6 +2612,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警告トリガーによる振動の長さ (ミリ秒)',
         cn: '严重级触发器振动时长 (毫秒)',
         ko: '주의 트리거의 진동 지속 시간 (밀리초)',
+        tc: '嚴重級觸發器振動時長 (毫秒)',
       },
       type: 'float',
       default: 500,
@@ -2500,6 +2626,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警告トリガーによる振動にモーターの弱い方の強さ (0-1)',
         cn: '严重级触发器弱电机振动强度 (0-1)',
         ko: '주의 트리거의 약한 진동 세기 (0-1)',
+        tc: '嚴重級觸發器弱電機振動強度 (0-1)',
       },
       type: 'float',
       default: 0,
@@ -2513,6 +2640,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警告トリガーによる振動にモーターの強い方の強さ (0-1)',
         cn: '严重级触发器强电机振动强度 (0-1)',
         ko: '주의 트리거의 강한 진동 세기 (0-1)',
+        tc: '嚴重級觸發器強電機振動強度 (0-1)',
       },
       type: 'float',
       default: 0.5,
@@ -2526,6 +2654,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警報トリガーによる振動の長さ (ミリ秒)',
         cn: '致命级触发器振动时长 (毫秒)',
         ko: '경고 트리거의 진동 지속 시간 (밀리초)',
+        tc: '致命級觸發器振動時長 (毫秒)',
       },
       type: 'float',
       default: 750,
@@ -2539,6 +2668,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警報トリガーによる振動にモーターの弱い方の強さ (0-1)',
         cn: '致命级触发器弱电机振动强度 (0-1)',
         ko: '경고 트리거의 약한 진동 세기 (0-1)',
+        tc: '致命級觸發器弱電機振動強度 (0-1)',
       },
       type: 'float',
       default: 0.75,
@@ -2552,6 +2682,7 @@ const templateOptions: OptionsTemplate = {
         ja: '警報トリガーによる振動にモーターの強い方の強さ (0-1)',
         cn: '致命级触发器强电机振动强度 (0-1)',
         ko: '경고 트리거의 강한 진동 세기 (0-1)',
+        tc: '致命級觸發器強電機振動強度 (0-1)',
       },
       type: 'float',
       default: 0.75,

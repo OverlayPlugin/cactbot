@@ -46,6 +46,7 @@ const poisonOutputStrings = {
     ja: '自分に巨大な爆発',
     cn: '大圈点名',
     ko: '광역 대상자',
+    tc: '大圈點名',
   },
   in: {
     en: 'In (Avoid Defamations)',
@@ -54,6 +55,7 @@ const poisonOutputStrings = {
     ja: '中央へ (巨大な爆発を避けて)',
     cn: '去脚下 (远离大圈)',
     ko: '안으로 (광역 피하기)',
+    tc: '去腳下 (遠離大圈)',
   },
 };
 
@@ -122,6 +124,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔を踏む - 2-3個のハートに調整',
           cn: '踩塔 - 踩到2-3颗心',
           ko: '기둥 들어가기 - 하트 2-3개 유지하기',
+          tc: '踩塔 - 踩到2-3顆心',
         },
         beatTwoZeroHearts: {
           en: 'Puddles & Stacks',
@@ -130,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '集合捨てと頭割り',
           cn: '集合分摊放圈',
           ko: '장판 피하기 + 쉐어',
+          tc: '集合分攤放圈',
         },
         beatTwoOneHearts: {
           en: 'Spreads & Towers',
@@ -138,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 / 塔踏み',
           cn: '分散 / 踩塔',
           ko: '산개 / 기둥',
+          tc: '分散 / 踩塔',
         },
       },
     },
@@ -201,6 +206,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 -- 塔は避けて',
           cn: '分散 - 躲开塔',
           ko: '산개 -- 기둥 피하기',
+          tc: '分散 - 躲開塔',
         },
         towers: Outputs.getTowers,
       },
@@ -219,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外側に捨てて',
           cn: '在场边放毒圈',
           ko: '바깥쪽에 장판 놓기',
+          tc: '在場邊放毒圈',
         },
       },
     },
@@ -258,6 +265,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'あとでペア',
           cn: '存储分摊',
           ko: '나중에 쉐어',
+          tc: '儲存分攤',
         },
       },
     },
@@ -275,6 +283,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'あとで散開',
           cn: '存储分散',
           ko: '나중에 산개',
+          tc: '儲存分散',
         },
       },
     },
@@ -292,6 +301,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'あとでペア',
           cn: '存储分摊',
           ko: '나중에 쉐어',
+          tc: '儲存分攤',
         },
       },
     },
@@ -309,6 +319,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'あとで散開',
           cn: '存储分散',
           ko: '나중에 산개',
+          tc: '儲存分散',
         },
       },
     },
@@ -335,6 +346,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後で内側へ)',
           cn: '(稍后场中)',
           ko: '(나중에 중앙으로)',
+          tc: '(稍後場中)',
         },
         partners: {
           en: '(middle + partners after)',
@@ -343,6 +355,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後で内側へ + ペア)',
           cn: '(稍后场中 + 分摊)',
           ko: '(나중에 중앙으로 + 쉐어)',
+          tc: '(稍後場中 + 分攤)',
         },
         spread: {
           en: '(middle + spread after)',
@@ -351,6 +364,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後で内側へ + 散開)',
           cn: '(稍后场中 + 分散)',
           ko: '(나중에 중앙으로 + 산개)',
+          tc: '(稍後場中 + 分散)',
         },
       },
     },
@@ -374,6 +388,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開',
           cn: '分散',
           ko: '산개',
+          tc: '分散',
         },
         partners: {
           en: 'Partners',
@@ -382,6 +397,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ペア',
           cn: '分摊',
           ko: '쉐어',
+          tc: '分攤',
         },
         combo: {
           en: '${next} + ${mech}',
@@ -390,6 +406,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${next} + ${mech}',
           cn: '${next} + ${mech}',
           ko: '${next} + ${mech}',
+          tc: '${next} + ${mech}',
         },
       },
     },
@@ -416,6 +433,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後で外側へ)',
           cn: '(稍后远离)',
           ko: '(나중에 밖으로)',
+          tc: '(稍後遠離)',
         },
         partners: {
           en: '(out + partners after)',
@@ -424,6 +442,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後で外側へ + ペア)',
           cn: '(稍后远离 + 分摊)',
           ko: '(나중에 밖으로 + 쉐어)',
+          tc: '(稍後遠離 + 分攤)',
         },
         spread: {
           en: '(out + spread after)',
@@ -432,6 +451,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(後で外側へ + 散開)',
           cn: '(稍后远离 + 分散)',
           ko: '(나중에 밖으로 + 산개)',
+          tc: '(稍後遠離 + 分散)',
         },
       },
     },
@@ -455,6 +475,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開',
           cn: '分散',
           ko: '산개',
+          tc: '分散',
         },
         partners: {
           en: 'Partners',
@@ -463,6 +484,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ペア',
           cn: '分摊',
           ko: '쉐어',
+          tc: '分攤',
         },
         combo: {
           en: '${next} + ${mech}',
@@ -471,6 +493,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${next} + ${mech}',
           cn: '${next} + ${mech}',
           ko: '${next} + ${mech}',
+          tc: '${next} + ${mech}',
         },
       },
     },
@@ -512,6 +535,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '斜め内側 => 外側 => 十字',
           cn: '内斜角 => 外斜角 => 外正点',
           ko: '보스 아래 대각 => 밖으로 => 십자',
+          tc: '內斜角 => 外斜角 => 外正點',
         },
       },
     },
@@ -529,6 +553,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外十字 => 外斜め => 内側',
           cn: '外正点 => 外斜角 => 内斜角',
           ko: '칼끝딜 십자 => 밖으로 => 보스 아래 대각',
+          tc: '外正點 => 外斜角 => 內斜角',
         },
       },
     },
@@ -644,6 +669,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} と重なって',
           cn: '准备和 ${player} 撞毒',
           ko: '${player} 과 융합하기',
+          tc: '準備和 ${player} 撞毒',
         },
         unknown: Outputs.unknown,
       },
@@ -679,6 +705,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '組み合わせ: ${alpha} + ${beta}',
           cn: '撞毒: ${alpha} + ${beta}',
           ko: '융합: ${alpha} + ${beta}',
+          tc: '撞毒: ${alpha} + ${beta}',
         },
         unknown: Outputs.unknown,
       },
@@ -855,6 +882,51 @@ const triggerSet: TriggerSet<Data> = {
         '\\(drop\\)': '(放圈)',
         '\\(enrage\\)': '(狂暴)',
         '\\(stun for': '(眩晕',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Honey B. Lovely': '', // FIXME '蜂蜂小甜心'
+        // 'Sweetheart': '', // FIXME '甜甜的心'
+      },
+      'replaceText': {
+        // 'Alarm Pheromones': '', // FIXME '告警信息素'
+        // 'Bee Sting': '', // FIXME '小蜂刺'
+        'Big Burst': '大爆炸',
+        // 'Blinding Love': '', // FIXME '盲目的爱'
+        // 'Call Me Honey': '', // FIXME '甜言蜜语'
+        // 'Centerstage Combo': '', // FIXME '环环心连心'
+        // 'Drop of Love': '', // FIXME '爱之滴'
+        'Drop of Venom': '毒液滴落',
+        'Fracture': '炸裂',
+        // 'Heart-Struck': '', // FIXME '心震'
+        // 'Heartsick': '', // FIXME '心病'
+        // 'Heartsore': '', // FIXME '心伤'
+        // 'Honey B. Finale': '', // FIXME '蜂蜂落幕曲'
+        // 'Honey B. Live: 1st Beat': '', // FIXME '蜂蜂演唱会【首演】'
+        // 'Honey B. Live: 2nd Beat': '', // FIXME '蜂蜂演唱会【再演】'
+        // 'Honey B. Live: 3rd Beat': '', // FIXME '蜂蜂演唱会【三演】'
+        // 'Honey Beeline': '', // FIXME '甜心烈风'
+        // 'Killer Sting': '', // FIXME '杀人针'
+        'Laceration': '斬擊',
+        // 'Love Me Tender': '', // FIXME '温柔地爱我'
+        // 'Loveseeker': '', // FIXME '求爱'
+        // 'Outerstage Combo': '', // FIXME '圆圆心连心'
+        // 'Poison Sting': '', // FIXME '毒针'
+        // 'Rotten Heart': '', // FIXME '黑心'
+        // 'Sheer Heart Attack': '', // FIXME '骤然心痛'
+        // 'Splash of Venom': '', // FIXME '毒液雨'
+        'Splinter': '碎裂',
+        // 'Spread Love': '', // FIXME '爱之雨'
+        // 'Stinging Slash': '', // FIXME '杀人斩'
+        // 'Tempting Twist': '', // FIXME '甜心旋风'
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(drop\\)': '', // FIXME '(放圈)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(stun for': '', // FIXME '(眩晕'
       },
     },
     {

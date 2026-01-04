@@ -80,6 +80,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '壁へノックバック',
             cn: '击退至墙',
             ko: '벽으로 넉백',
+            tc: '擊退至牆',
           },
         };
       },

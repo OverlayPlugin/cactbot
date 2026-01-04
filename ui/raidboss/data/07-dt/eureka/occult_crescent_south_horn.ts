@@ -172,12 +172,14 @@ const deadStarsOutputStrings = {
     de: 'In Linien sammeln auf ${player1}, ${player2}, ${player3}',
     cn: '直线分摊点 ${player1}, ${player2}, ${player3}',
     ko: '직선 쉐어 대상자 ${player1}, ${player2}, ${player3}',
+    tc: '直線分攤點 ${player1}, ${player2}, ${player3}',
   },
   lineStackOnYouTankCleave: {
     en: 'Line Stack on YOU, Avoid Tank Cleave',
     de: 'In einer Linie sammeln auf DIR, Vermeide Tank-Cleave',
     cn: '直线分摊点名，躲避坦克顺劈',
     ko: '직선 쉐어 대상자, 광역 탱버 피하기',
+    tc: '直線分攤點名，躲避坦克順劈',
   },
   lineStackOnYou: {
     en: 'Line Stack on YOU',
@@ -186,6 +188,7 @@ const deadStarsOutputStrings = {
     ja: '直線頭割り',
     cn: '直线分摊点名',
     ko: '직선 쉐어 대상자',
+    tc: '直線分攤點名',
   },
 };
 
@@ -268,126 +271,147 @@ const magitaurOutputStrings = {
     de: 'Große AoE auf DIR, Geh zur Wand bei einem lilanen Kreis',
     cn: '大圈点名, 去紫圈墙边',
     ko: '큰 징 대상자, 보라색 원이 있는 벽 쪽으로 이동',
+    tc: '大圈點名, 去紫圈牆邊',
   },
   rune1SmallAoeOnYou: {
     en: 'Small aoe on YOU, Stay Square => Between Squares',
     de: 'Kleine AoE auf DIR, Steh im Viereck => Zwichen den Vierecken',
     cn: '小圈点名, 留在方块内 => 方块间',
     ko: '작은 징 대상자, 네모 칸 안에 있기 => 네모 칸 사이로 이동',
+    tc: '小圈點名, 留在方塊內 => 方塊間',
   },
   rune1BigAoeOnPlayer: {
     en: 'Big AOE on ${player}, Be on Square',
     de: 'Große AoE auf ${player}, Steh im Viereck',
     cn: '大圈点 ${player}, 去方块内',
     ko: '${player} 큰 징 대상자, 네모 칸 안에 있기',
+    tc: '大圈點 ${player}, 去方塊內',
   },
   rune1SmallAoesOnPlayers: {
     en: 'Small aoes on ${player1}, ${player2}, ${player3}',
     de: 'Kleine AoEs auf ${player1}, ${player2}, ${player3}',
     cn: '小圈点 ${player1}, ${player2}, ${player3}',
     ko: '${player1}, ${player2}, ${player3} 작은 징 대상자',
+    tc: '小圈點 ${player1}, ${player2}, ${player3}',
   },
   rune1SmallAoEStayThenIn: {
     en: 'Stay for AOE => In, Between Squares',
     de: 'Stehenbleiben für AOE => Rein, Zwichen den Vierecken',
     cn: '留在方块外 => 内, 方块间',
     ko: '징 대기 => 네모 칸 사이로 이동',
+    tc: '留在方塊外 => 內, 方塊間',
   },
   rune2BigAoeOnYouLater: {
     en: 'Big AOE on YOU (Later)',
     de: 'Große AOE auf DIR (Später)',
     cn: '大圈点名 (稍后)',
     ko: '큰 징 대상자 (나중에)',
+    tc: '大圈點名 (稍後)',
   },
   rune2SmallAoeOnYouLater: {
     en: 'Small aoe on YOU (Later)',
     de: 'Kleine AOE auf DIR (Später)',
     cn: '小圈点名 (稍后)',
     ko: '작은 징 대상자 (나중에)',
+    tc: '小圈點名 (稍後)',
   },
   rune2InBigAoeOnYou: {
     en: 'In, Between Squares => To Wall',
     de: 'Rein, Zwichen den Vierecken => Zur Wand',
     cn: '内, 方块间 => 去墙边',
     ko: '안, 네모 칸 사이 => 벽 쪽으로',
+    tc: '內, 方塊間 => 去牆邊',
   },
   rune2InSmallAoeOnYou: {
     en: 'In, Between Squares => Solo Square',
     de: 'Rein, Zwichen den Vierecken => Einzelnes Viereck',
     cn: '内, 方块间 => 单人方块',
     ko: '안, 네모 칸 사이 => 혼자 네모 칸 안에',
+    tc: '內, 方塊間 => 單人方塊',
   },
   rune2AoesOnPlayers: {
     en: 'AOEs on ${player1}, ${player2}, ${player3}',
     de: 'AOEs auf ${player1}, ${player2}, ${player3}',
     cn: '圈点 ${player1}, ${player2}, ${player3}',
     ko: '${player1}, ${player2}, ${player3} 징 대상자',
+    tc: '圈點 ${player1}, ${player2}, ${player3}',
   },
   rune2AvoidPlayers: {
     en: 'On Square, Avoid ${player1} & ${player2}',
     de: 'Aufs Viereck, Vermeide ${player1} & ${player2}',
     cn: '方块内, 远离 ${player1} 和 ${player2}',
     ko: '네모 칸 안에 있기, ${player1} & ${player2} 피하기',
+    tc: '方塊內, 遠離 ${player1} 和 ${player2}',
   },
   rune2SmallAoeOnYouReminder: {
     en: 'Small aoe on YOU, Be on Square (Solo)',
     de: 'Kleine AoE auf DIR, Sei auf einem Viereck (Alleine)',
     cn: '小圈点名, 去方块内 (单人)',
     ko: '작은 징 대상자, 네모 칸 안에 있기 (혼자)',
+    tc: '小圈點名, 去方塊內 (單人)',
   },
   rune2BigAoeOnYouReminder: {
     en: 'Big AOE on YOU, Go to Wall by Purple Circle',
     de: 'Große AoE auf DIR, Geh zur Wand bei einem lilanen Kreis',
     cn: '大圈点名, 去紫圈墙边',
     ko: '큰 징 대상자, 보라색 원이 있는 벽 쪽으로 이동',
+    tc: '大圈點名, 去紫圈牆邊',
   },
   inThenOnSquare: {
     en: 'In, between Squares => On Square',
     de: 'Rein, Zwichen den Vierecken => Auf ein Viereck',
     cn: '内, 方块间 => 方块内',
     ko: '안, 네모 칸 사이 => 네모 칸 안으로',
+    tc: '內, 方塊間 => 方塊內',
   },
   northeastOff: {
     en: 'Northeast Off',
     de: 'Nordosten aus',
     cn: '右上外',
     ko: '북동쪽 밖',
+    tc: '右上外',
   },
   northeastOn: {
     en: 'Northeast On',
     de: 'Nordosten an',
     cn: '右上内',
     ko: '북동쪽 안',
+    tc: '右上內',
   },
   southOff: {
     en: 'South Off',
     de: 'Süden aus',
     cn: '下方外',
     ko: '남쪽 밖',
+    tc: '下方外',
   },
   southOn: {
     en: 'South On',
     de: 'Süden an',
     cn: '下方内',
     ko: '남쪽 안',
+    tc: '下方內',
   },
   northwestOff: {
     en: 'Northwest Off',
     de: 'Nordwesten aus',
     cn: '左上外',
     ko: '북서쪽 밖',
+    tc: '左上外',
   },
   out: {
     en: 'Out, Square Corner',
     de: 'Raus, Ecke des Vierecks',
     cn: '外, 方块角落',
     ko: '밖, 네모 칸 모서리',
+    tc: '外, 方塊角落',
   },
   in: {
     en: 'In, between Squares',
     de: 'Rein, Zwichen den Vierecken',
     cn: '内, 方块间',
     ko: '안, 네모 칸 사이',
+    tc: '內, 方塊間',
   },
 };
 
@@ -564,6 +588,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Kreszentia Südexpedition kritische Begegnungen Triggers/Timeline.',
     cn: '蜃景幻界新月岛 南征之章 紧急遭遇战 触发器/时间轴。',
     ko: '초승달 섬: 남부편 비상 조우 트리거/타임라인',
+    tc: '蜃景幻界新月島 南征之章 緊急遭遇戰 觸發器/時間軸。',
   },
   config: [
     {
@@ -573,6 +598,7 @@ const triggerSet: TriggerSet<Data> = {
         de: 'Fork-Turm: Blut Dämonentafel Rotationsstrategie',
         cn: '两歧塔力之塔 恶魔板 旋转策略',
         ko: '포크타워: 악마의 석판 회전 전략',
+        tc: '兩歧塔力之塔 惡魔板 旋轉策略',
       },
       type: 'select',
       options: {
@@ -593,6 +619,10 @@ const triggerSet: TriggerSet<Data> = {
           '뒤로 가라고 지시하는 대신 계속 돌라고 지시함으로써 움직임을 줄입니다.': 'optimization',
           '빠른 이동을 위해 뒤로 가라는 지시를 호출합니다.': 'none',
         },
+        tc: {
+          '提示繞行方向(非繞後)，減少移動量': 'optimization',
+          '提前提示繞後，方便提早移動': 'none',
+        },
       },
       default: 'none',
     },
@@ -603,6 +633,7 @@ const triggerSet: TriggerSet<Data> = {
         de: 'Fork-Turm: Blut Marmordrache Falscher Regen 1 und 5 Strategie',
         cn: '两歧塔力之塔 大理石龙 仿效雨 1和5 策略',
         ko: '포크타워: 대리석 드래곤 모방된 비 1, 5 전략',
+        tc: '兩歧塔力之塔 大理石龍 仿效雨 1和5 策略',
       },
       type: 'select',
       options: {
@@ -622,6 +653,10 @@ const triggerSet: TriggerSet<Data> = {
           '십자 기준: 남쪽 십자 장판에 따라 호출': 'cross',
           '얼음 기준: 벽에 가장 가까운 얼음 장판에 따라 호출': 'ice',
         },
+        tc: {
+          '十字基準: 根據十字冰圈位置提示': 'cross',
+          '冰基準: 根據離牆最近的冰圈提示': 'ice',
+        },
       },
       default: 'cross',
     },
@@ -632,6 +667,7 @@ const triggerSet: TriggerSet<Data> = {
         de: 'Fork-Turm: Blut Magitaurus Dolchstrategie',
         cn: '两歧塔力之塔 魔陶洛斯 暗杀短剑 策略',
         ko: '포크타워: 마기타우로스 단검 전략',
+        tc: '兩歧塔力之塔 魔陶洛斯 暗殺短劍 策略',
       },
       type: 'select',
       options: {
@@ -650,6 +686,10 @@ const triggerSet: TriggerSet<Data> = {
         ko: {
           'BAP 단검 (숫자 및 알파벳 바닥 징)': 'bap',
           '전략 없음 (Y-패턴 및 ⅄-패턴)': 'none',
+        },
+        tc: {
+          'BAP短劍標記(數字和字母場景標記)': 'bap',
+          '無特定策略(Y型與⅄型)': 'none',
         },
       },
       default: 'none',
@@ -729,24 +769,28 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           cn: '东/西',
           ko: '동/서',
+          tc: '東/西',
         },
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
           cn: '南/北',
           ko: '남/북',
+          tc: '南/北',
         },
         baitCleave: {
           en: 'Bait Cleave',
           de: 'Cleave ködern',
           cn: '诱导顺劈',
           ko: '휩쓸기 유도',
+          tc: '誘導順劈',
         },
         baitCleaveThenDir: {
           en: 'Bait Cleave => ${dir}',
           de: 'Cleave ködern => ${dir}',
           cn: '诱导顺劈 => ${dir}',
           ko: '휩쓸기 유도 => ${dir}',
+          tc: '誘導順劈 => ${dir}',
         },
       },
     },
@@ -762,6 +806,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Runenaxt Viereck Position',
           cn: '符文之斧方块站位',
           ko: '룬 도끼 플랫폼 위치로',
+          tc: '符文之斧方塊站位',
         },
       },
     },
@@ -777,6 +822,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Heiligenspeer Viereck Position',
           cn: '圣枪方块站位',
           ko: '신성한 창 플랫폼 위치로',
+          tc: '聖槍方塊站位',
         },
       },
     },
@@ -1180,7 +1226,9 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         combined: {
           en: '${dir} + ${wedge}',
+          de: '${dir} + ${wedge}',
           cn: '${dir} + ${wedge}',
+          ko: '${dir} + ${wedge}',
         },
       },
     },
@@ -1193,7 +1241,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge expanding rings',
+          de: 'Weiche größer werdende Ringe aus',
           cn: '躲避扩散环',
+          ko: '퍼지는 고리 장판 피하기',
         },
       },
     },
@@ -1218,7 +1268,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'In => Out => Sides',
+          de: 'Rein => Raus => Seiten',
           cn: '靠近 => 远离 => 两侧',
+          ko: '안 => 밖 => 양 옆',
         },
       },
     },
@@ -1238,7 +1290,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Out => In => Sides',
+          de: 'Raus => Rein => Seiten',
           cn: '远离 => 靠近 => 两侧',
+          ko: '밖 => 안 => 양 옆',
         },
       },
     },
@@ -1257,7 +1311,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Lifereaper Soul Sweep',
       type: 'StartsUsing',
-      netRegex: { source: 'Lifereaper', id: 'A4C1', capture: false },
+      netRegex: { source: 'Lifereaper', id: ['A4C1', 'A4C5'], capture: false },
       response: Responses.getBehind(),
     },
     {
@@ -1276,12 +1330,14 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Occult Crescent Lifereaper Sweeping Charge',
       type: 'StartsUsing',
-      netRegex: { source: 'Lifereaper', id: 'A4C[25]', capture: false },
+      netRegex: { source: 'Lifereaper', id: 'A4C2', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Follow Dash => Get Behind',
+          de: 'Ansturm folgen => Geh hinter den Boss',
           cn: '跟随冲锋 => 去背后',
+          ko: '돌진 따라가기 => 보스 뒤로',
         },
       },
     },
@@ -1293,7 +1349,9 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away After Dash',
+          de: 'Nach dem Ansturm weggehen',
           cn: '冲锋后远离',
+          ko: '돌진 후 멀어지기',
         },
       },
     },
@@ -1407,6 +1465,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein => Rückstoß',
           cn: '内 => 击退',
           ko: '안 => 넉백',
+          tc: '內 => 擊退',
         },
       },
     },
@@ -1432,6 +1491,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Tankbusters auf ${player1}, ${player2}, ${player3}',
             cn: '坦克死刑点 ${player1}, ${player2}, ${player3}',
             ko: '탱버 대상자 ${player1}, ${player2}, ${player3}',
+            tc: '坦剋死刑點 ${player1}, ${player2}, ${player3}',
           },
           tankBusterOnYou: Outputs.tankBusterOnYou,
         };
@@ -1476,6 +1536,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein => Rückstoß',
           cn: '内 => 击退',
           ko: '안 => 넉백',
+          tc: '內 => 擊退',
         },
       },
     },
@@ -1581,36 +1642,42 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Links (Hinter den Boss)',
           cn: '左侧 (Boss后方)',
           ko: '왼쪽 (보스 뒤)',
+          tc: '左側 (Boss後方)',
         },
         rightBehind: {
           en: 'Right (Behind Boss)',
           de: 'Rechts (Hinter den Boss)',
           cn: '右侧 (Boss后方)',
           ko: '오른쪽 (보스 뒤)',
+          tc: '右側 (Boss後方)',
         },
         leftThenGetBehind: {
           en: 'Left => Get Behind',
           de: 'Links => Hinter den Boss',
           cn: '左侧 => 去Boss后方',
           ko: '왼쪽 => 보스 뒤로',
+          tc: '左側 => 去Boss後方',
         },
         rightThenGetBehind: {
           en: 'Right => Get Behind',
           de: 'Rechts => Hinter den Boss',
           cn: '右侧 => 去Boss后方',
           ko: '오른쪽 => 보스 뒤로',
+          tc: '右側 => 去Boss後方',
         },
         goRightAround: {
           en: 'Go Right and Around',
           de: 'Geh nach Rechts und drumherum',
           cn: '右侧绕行',
           ko: '오른쪽으로 돌아가기',
+          tc: '右側繞行',
         },
         goLeftAround: {
           en: 'Go Left and Around',
           de: 'Geh nach Links und drumherum',
           cn: '左侧绕行',
           ko: '왼쪽으로 돌아가기',
+          tc: '左側繞行',
         },
       },
     },
@@ -1707,24 +1774,28 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rein => Rückstoß',
           cn: '内 => 击退',
           ko: '안 => 넉백',
+          tc: '內 => 擊退',
         },
         dirMech: {
           en: '${dir} & ${mech}',
           de: '${dir} & ${mech}',
           cn: '${dir} 和 ${mech}',
           ko: '${dir} & ${mech}',
+          tc: '${dir} 和 ${mech}',
         },
         hasMeteorMech: {
           en: 'Meteor on YOU, ${mech}',
           de: 'Meteor auf DIR, ${mech}',
           cn: '陨石点名, ${mech}',
           ko: '메테오 대상자, ${mech}',
+          tc: '隕石點名, ${mech}',
         },
         hasMeteorDirMech: {
           en: 'Meteor on YOU, Go ${dir} & ${mech}',
           de: 'Meteor auf DIR, Geh nach ${dir} & ${mech}',
           cn: '陨石点名, 去${dir} 并 ${mech}',
           ko: '메테오 대상자, ${dir}으로 & ${mech}',
+          tc: '隕石點名, 去${dir} 並 ${mech}',
         },
       },
     },
@@ -1821,36 +1892,42 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Sammeln, Fliege zum Boss',
             cn: '集合, 向Boss方向击飞',
             ko: '쉐어, 보스를 향해 발사',
+            tc: '集合, 向Boss方向擊飛',
           },
           stackLaunchOverBoss: {
             en: 'Stack, Launch over Boss',
             de: 'Sammeln, Fliege über den Boss',
             cn: '集合, 越过Boss击飞',
             ko: '쉐어, 보스를 넘어 발사',
+            tc: '集合, 越過Boss擊飛',
           },
           goNorthOutStackOnYou: {
             en: 'Go North Out => Stack Launch Marker on You',
             de: 'Geh nördlich raus => Sammel-Flug Marker auf DIR',
             cn: '去上方外侧 => 集合击飞点名',
             ko: '북쪽 바깥으로 => 쉐어 발사 대상자',
+            tc: '去上方外側 => 集合擊飛點名',
           },
           goNorthInStackOnYou: {
             en: 'Go North In (Knockback) => Stack Launch Marker on You',
             de: 'Geh nördlich rein (Rückstoß) => Sammel-Flug Marker auf DIR',
             cn: '去上方内侧 (击退) => 集合击飞点名',
             ko: '북쪽 안쪽으로 (넉백) => 쉐어 발사 대상자',
+            tc: '去上方內側 (擊退) => 集合擊飛點名',
           },
           goSouthOutStackOnYou: {
             en: 'Go South Out => Stack Launch Marker on You',
             de: 'Geh südlich raus => Sammel-Flug Marker auf DIR',
             cn: '去下方外侧 => 集合击飞点名',
             ko: '남쪽 바깥으로 => 쉐어 발사 대상자',
+            tc: '去下方外側 => 集合擊飛點名',
           },
           goSouthInStackOnYou: {
             en: 'Go South In (Knockback) => Stack Launch Marker on You',
             de: 'Geh südlich rein (Rückstoß) => Sammel-Flug Marker auf DIR',
             cn: '去下方内侧 (击退) => 集合击飞点名',
             ko: '남쪽 안쪽으로 (넉백) => 쉐어 발사 대상자',
+            tc: '去下方內側 (擊退) => 集合擊飛點名',
           },
         };
 
@@ -1885,6 +1962,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Positioniere Add und Raus',
           cn: '小怪站位并远离',
           ko: '쫄 위치 및 밖으로',
+          tc: '小怪站位並遠離',
         },
       },
     },
@@ -1932,24 +2010,28 @@ const triggerSet: TriggerSet<Data> = {
           de: '${dir} Raus => Türme',
           cn: '${dir} 外侧 => 塔',
           ko: '${dir} 밖으로 => 탑',
+          tc: '${dir} 外側 => 塔',
         },
         goTowerSideOut: {
           en: 'Go Towers Side and Out',
           de: 'Geh zu den Turm-Seiten und Raus',
           cn: '去塔侧并远离',
           ko: '탑 쪽 밖으로',
+          tc: '去塔側並遠離',
         },
         dirInThenTowers: {
           en: '${dir} In => Knockback => Towers',
           de: '${dir} Rein => Rückstoß => Türme',
           cn: '${dir} 内侧 => 击退 => 塔',
           ko: '${dir} 안 => 넉백 => 탑',
+          tc: '${dir} 內側 => 擊退 => 塔',
         },
         goTowerSideIn: {
           en: 'Go Towers Side and In => Knockback',
           de: 'Geh zu den Turm-Seiten und Rein => Rückstoß',
           cn: '去塔侧并内侧 => 击退',
           ko: '탑 쪽 안으로 => 넉백',
+          tc: '去塔側並內側 => 擊退',
         },
       },
     },
@@ -2012,12 +2094,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vorne Rechts (Später)',
           cn: '右前 (稍后)',
           ko: '앞 오른쪽 (나중에)',
+          tc: '右前 (稍後)',
         },
         backLeftLater: {
           en: 'Back Left (Later)',
           de: 'Hinten Links (Später)',
           cn: '左后 (稍后)',
           ko: '뒤 왼쪽 (나중에)',
+          tc: '左後 (稍後)',
         },
       },
     },
@@ -2084,6 +2168,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${towers} => ${corner}',
           cn: '${towers} => ${corner}',
           ko: '${towers} => ${corner}',
+          tc: '${towers} => ${corner}',
         },
         getTowers: Outputs.getTowers,
         frontRight: {
@@ -2093,6 +2178,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前右',
           cn: '右前',
           ko: '앞 오른쪽',
+          tc: '右前',
         },
         backLeft: {
           en: 'Back Left',
@@ -2101,12 +2187,14 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後左',
           cn: '左后',
           ko: '뒤 왼쪽',
+          tc: '左後',
         },
         safeCorner: {
           en: 'Safe Corner',
           de: 'Sichere Ecken',
           cn: '安全角落',
           ko: '안전한 구석',
+          tc: '安全形落',
         },
       },
     },
@@ -2130,6 +2218,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vermeide fallende Statuen',
           cn: '躲避下落雕像',
           ko: '떨어지는 석상 피하기',
+          tc: '躲避下落雕像',
         },
         frontRight: {
           en: 'Front Right',
@@ -2138,6 +2227,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前右',
           cn: '右前',
           ko: '앞 오른쪽',
+          tc: '右前',
         },
         backLeft: {
           en: 'Back Left',
@@ -2146,6 +2236,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後左',
           cn: '左后',
           ko: '뒤 왼쪽',
+          tc: '左後',
         },
       },
     },
@@ -2218,6 +2309,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verbunden zum ${boss}',
           cn: '连线 ${boss}',
           ko: '${boss} 연결됨',
+          tc: '連線 ${boss}',
         },
       },
     },
@@ -2236,6 +2328,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Tank-Cleaves auf ${player1}, ${player2}, ${player3}',
             cn: '坦克顺劈点 ${player1}, ${player2}, ${player3}',
             ko: '광역 탱버 대상자 ${player1}, ${player2}, ${player3}',
+            tc: '坦克順劈點 ${player1}, ${player2}, ${player3}',
           },
           tankCleaveOnYou: Outputs.tankCleaveOnYou,
           tankCleaveOnYouLineStack: {
@@ -2243,6 +2336,7 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Tank Cleave auf DIR, Vermeide Linien-sammeln',
             cn: '坦克顺劈点名, 避开直线分摊',
             ko: '광역 탱버 대상자, 직선 쉐어 피하기',
+            tc: '坦克順劈點名, 避開直線分攤',
           },
         };
         data.deadStarsSliceTargets.push(matches.target);
@@ -2365,36 +2459,42 @@ const triggerSet: TriggerSet<Data> = {
           de: '+1 Blau',
           cn: '+1 蓝',
           ko: '+1 파랑',
+          tc: '+1 藍',
         },
         blueTwo: {
           en: '+2 Blue',
           de: '+2 Blau',
           cn: '+2 蓝',
           ko: '+2 파랑',
+          tc: '+2 藍',
         },
         blueThree: {
           en: '+3 Blue',
           de: '+3 Blau',
           cn: '+3 蓝',
           ko: '+3 파랑',
+          tc: '+3 藍',
         },
         red: {
           en: '+1 Red',
           de: '+1 Rot',
           cn: '+1 红',
           ko: '+1 빨강',
+          tc: '+1 紅',
         },
         redTwo: {
           en: '+2 Red',
           de: '+2 Rot',
           cn: '+2 红',
           ko: '+2 빨강',
+          tc: '+2 紅',
         },
         redThree: {
           en: '+3 Red',
           de: '+3 Rot',
           cn: '+3 红',
           ko: '+3 빨강',
+          tc: '+3 紅',
         },
       },
     },
@@ -2541,48 +2641,56 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Rot: ${dirs}',
           cn: '红: ${dirs}',
           ko: '빨강: ${dirs}',
+          tc: '紅: ${dirs}',
         },
         blue: {
           en: 'Blue: ${dirs}',
           de: 'Blau: ${dirs}',
           cn: '蓝: ${dirs}',
           ko: '파랑: ${dirs}',
+          tc: '藍: ${dirs}',
         },
         red1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           de: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           cn: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           ko: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          tc: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
         },
         blue1: {
           en: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           de: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           cn: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
           ko: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
+          tc: '${hit1} => ${safe1} => ${safe2} => ${safe3}',
         },
         red2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           de: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           cn: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           ko: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          tc: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
         },
         blue2: {
           en: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           de: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           cn: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
           ko: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
+          tc: '${hit1} => ${hit2} => ${safe1} => ${safe2}',
         },
         red3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           de: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           cn: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           ko: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          tc: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
         },
         blue3: {
           en: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           de: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           cn: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
           ko: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
+          tc: '${hit1} => ${hit2} => ${hit3} => ${safe1}',
         },
       },
     },
@@ -2630,18 +2738,21 @@ const triggerSet: TriggerSet<Data> = {
           de: '${hit} für Schleim',
           cn: '${hit} 吃软泥',
           ko: '${hit} 슬라임 맞기',
+          tc: '${hit} 吃軟泥',
         },
         getHitBlueOoze: {
           en: '${hit} for Ooze',
           de: '${hit} für Schleim',
           cn: '${hit} 吃软泥',
           ko: '${hit} 슬라임 맞기',
+          tc: '${hit} 吃軟泥',
         },
         getHitBothOoze: {
           en: 'Red: ${red}, Blue: ${blue}',
           de: 'Rot: ${red}, Blau: ${blue}',
           cn: '红: ${red}, 蓝: ${blue}',
           ko: '빨강: ${red}, 파랑: ${blue}',
+          tc: '紅: ${red}, 藍: ${blue}',
         },
       },
     },
@@ -2780,6 +2891,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${dir} für Schleim',
           cn: '去${dir}吃软泥',
           ko: '${dir} 슬라임 맞기',
+          tc: '去${dir}吃軟泥',
         },
         safeSpot: {
           en: '${dir} Safe Spot',
@@ -2788,12 +2900,14 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir}に安置',
           cn: '去${dir}方安全点',
           ko: '${dir} 안전 지대',
+          tc: '去${dir}方安全點',
         },
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
           de: '${dir1} / ${dir2} Sichere Zonen',
           cn: '${dir1} / ${dir2} 安全点',
           ko: '${dir1} / ${dir2} 안전 지대',
+          tc: '${dir1} / ${dir2} 安全點',
         },
       },
     },
@@ -2865,6 +2979,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${dir} für Schleim',
           cn: '去${dir}吃软泥',
           ko: '${dir} 슬라임 맞기',
+          tc: '去${dir}吃軟泥',
         },
         safeSpot: {
           en: '${dir} Safe Spot',
@@ -2873,12 +2988,14 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir}に安置',
           cn: '去${dir}方安全点',
           ko: '${dir} 안전 지대',
+          tc: '去${dir}方安全點',
         },
         safeSpots: {
           en: '${dir1} / ${dir2} Safe Spots',
           de: '${dir1} / ${dir2} Sichere Zonen',
           cn: '${dir1} / ${dir2} 安全点',
           ko: '${dir1} / ${dir2} 안전 지대',
+          tc: '${dir1} / ${dir2} 安全點',
         },
       },
     },
@@ -3034,6 +3151,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Wilde Rage Positionen',
           cn: '狂野冲锋站位',
           ko: '직선 쉐어 위치로',
+          tc: '狂野衝鋒站位',
         },
       },
     },
@@ -3100,12 +3218,14 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Verbindung: Rückstoß nach ${dir} => An der Wand sammeln',
             cn: '连线: 击退到${dir} => 靠墙分摊',
             ko: '선: ${dir}쪽으로 넉백 => 벽에서 쉐어',
+            tc: '連線: 擊退到${dir} => 靠牆分攤',
           },
           knockbackToSnowball: {
             en: 'Knockback to Snowball => Stack at Wall',
             de: 'Rückstoß zum Schneeball => An der Wand sammeln',
             cn: '击退到雪球 => 靠墙分摊',
             ko: '눈덩이 쪽으로 넉백 => 벽에서 쉐어',
+            tc: '擊退到雪球 => 靠牆分攤',
           },
         };
 
@@ -3197,6 +3317,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Raus aus der Mitte, Gruppen Positionen',
           cn: '远离中间, 分组站位',
           ko: '중앙 피하기, 그룹별 위치',
+          tc: '遠離中間, 分組站位',
         },
       },
     },
@@ -3220,6 +3341,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Weiche 2 Angriffen aus => Verteilen',
           cn: '躲避两次X波 => 分散',
           ko: '독파 두 번 피하기 => 산개',
+          tc: '躲避兩次X波 => 分散',
         },
       },
     },
@@ -3278,18 +3400,21 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Bhut unterbrechen',
             cn: '打断浮灵',
             ko: '브후트 차단',
+            tc: '打斷浮靈',
           },
           northInterrupt: {
             en: 'North: Interrupt Bhoot',
             de: 'Norden: Bhut unterbrechen',
             cn: '左桥: 打断浮灵',
             ko: '왼쪽 다리: 브후트 차단',
+            tc: '左橋: 打斷浮靈',
           },
           southInterrupt: {
             en: 'South: Interrupt Bhoot',
             de: 'Süden: Bhut unterbrechen',
             cn: '右桥: 打断浮灵',
             ko: '오른쪽 다리: 브후트 차단',
+            tc: '右橋: 打斷浮靈',
           },
         };
         // Tanks have 3y interrupt, only call about actor on their platform
@@ -3358,6 +3483,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ansturm (Osten), In einer Reihe sammeln',
           cn: '狂野冲锋(右), 在同一行集合',
           ko: '직선 쉐어 (동쪽), 한 줄로 서기',
+          tc: '狂野衝鋒(右), 在同一行集合',
         },
       },
     },
@@ -3410,12 +3536,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Norden: AoE (Kreszenter Bann wenn möglich)',
           cn: '左桥: AOE (能驱散就驱散)',
           ko: '왼쪽 다리: 전체공격 (가능하면 디스펠)',
+          tc: '左橋: AOE (能驅散就驅散)',
         },
         southAoEDispel: {
           en: 'South: AoE (Dispel if Possible)',
           de: 'Süden: AoE (Entfernen wenn möglich)',
           cn: '右桥: AOE (能驱散就驱散)',
           ko: '오른쪽 다리: 전체공격 (가능하면 디스펠)',
+          tc: '右橋: AOE (能驅散就驅散)',
         },
       },
     },
@@ -3483,6 +3611,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Liebliche Klänge (wenn möglich)',
           cn: '爱之歌 (能用就用)',
           ko: '사랑의 노래 (가능하면)',
+          tc: '愛之歌 (能用就用)',
         },
       },
     },
@@ -3518,36 +3647,42 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Obere Reihe (Bosse auseinander)',
             cn: '上排 (BOSS远离)',
             ko: '위쪽 줄 (보스 멀리)',
+            tc: '上排 (BOSS遠離)',
           },
           bottomApart: {
             en: 'Bottom row (bosses apart)',
             de: 'Untere Reihe (Bosse auseinander)',
             cn: '下排 (BOSS远离)',
             ko: '아래쪽 줄 (보스 멀리)',
+            tc: '下排 (BOSS遠離)',
           },
           bossesApart: {
             en: 'Move bosses apart',
             de: 'Bewege Bosse auseinander',
             cn: '让BOSS远离',
             ko: '보스 멀리 떨어뜨리기',
+            tc: '讓BOSS遠離',
           },
           topTogether: {
             en: 'Top row (bosses together)',
             de: 'Obere Reihe (Bosse zusammen)',
             cn: '上排 (BOSS靠近)',
             ko: '위쪽 줄 (보스 가까이)',
+            tc: '上排 (BOSS靠近)',
           },
           bottomTogether: {
             en: 'Bottom row (bosses together)',
             de: 'Untere Reihe (Bosse zusammen)',
             cn: '下排 (BOSS靠近)',
             ko: '아래쪽 줄 (보스 가까이)',
+            tc: '下排 (BOSS靠近)',
           },
           bossesTogether: {
             en: 'Move bosses together',
             de: 'Bewege Bosse zusammen',
             cn: '让BOSS靠近',
             ko: '보스 가까이 모으기',
+            tc: '讓BOSS靠近',
           },
         };
         const myBridge = data.prongedPassageActLoc[data.me];
@@ -3598,6 +3733,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Ansturm (Osten), In einer Reihe sammeln',
           cn: '狂野冲锋(右), 在同一行集合',
           ko: '직선 쉐어 (동쪽), 한 줄로 서기',
+          tc: '狂野衝鋒(右), 在同一行集合',
         },
       },
     },
@@ -3621,6 +3757,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Zieh Boss weg von den Bomben',
           cn: '将BOSS拉离炸弹',
           ko: '보스를 폭탄에서 멀리 떨어뜨리기',
+          tc: '將BOSS拉離炸彈',
         },
         killAdds: Outputs.killAdds,
       },
@@ -3722,12 +3859,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           cn: '左/右',
           ko: '동/서',
+          tc: '左/右',
         },
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
           cn: '上/下',
           ko: '남/북',
+          tc: '上/下',
         },
         sides: Outputs.sides,
       },
@@ -3820,30 +3959,35 @@ const triggerSet: TriggerSet<Data> = {
           de: '(${dir} Später)',
           cn: '(稍后 ${dir})',
           ko: '(나중에 ${dir})',
+          tc: '(稍後 ${dir})',
         },
         westLater: {
           en: '(${dir} Later)',
           de: '(${dir} Später)',
           cn: '(稍后 ${dir})',
           ko: '(나중에 ${dir})',
+          tc: '(稍後 ${dir})',
         },
         eastThenWickedWater: {
           en: '(${dir1} Later => ${dir2})',
           de: '(${dir1} Später => ${dir2})',
           cn: '(稍后 ${dir1} => ${dir2})',
           ko: '(나중에 ${dir1} => ${dir2})',
+          tc: '(稍後 ${dir1} => ${dir2})',
         },
         westThenWickedWater: {
           en: '(${dir1} Later => ${dir2})',
           de: '(${dir1} Später => ${dir2})',
           cn: '(稍后 ${dir1} => ${dir2})',
           ko: '(나중에 ${dir1} => ${dir2})',
+          tc: '(稍後 ${dir1} => ${dir2})',
         },
         wickedWater: {
           en: 'Get Hit ${dir}',
           de: 'Werde ${dir} getroffen',
           cn: '站在${dir}吃圈',
           ko: '${dir} 맞기',
+          tc: '站在${dir}吃圈',
         },
       },
     },
@@ -3958,12 +4102,14 @@ const triggerSet: TriggerSet<Data> = {
             de: 'Tankbuster Blutung',
             cn: '坦克流血死刑',
             ko: '출혈 탱버',
+            tc: '坦克流血死刑',
           },
           tankBusterBleedOnYou: {
             en: 'Tankbuster bleed on YOU',
             de: 'Tankbuster Blutung auf DIR',
             cn: '坦克流血死刑点名',
             ko: '출혈 탱버 대상자',
+            tc: '坦克流血死刑點名',
           },
         };
         data.marbleDragonDelugeTargets.push(matches.target);
@@ -4079,12 +4225,14 @@ const triggerSet: TriggerSet<Data> = {
           de: '(Osten Später)',
           cn: '(稍后左)',
           ko: '(나중에 동쪽)',
+          tc: '(稍後左)',
         },
         west: {
           en: '(West Later)',
           de: '(Westen Später)',
           cn: '(稍后右)',
           ko: '(나중에 서쪽)',
+          tc: '(稍後右)',
         },
       },
     },
@@ -4176,12 +4324,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Kreuze zuerst + ${clock}',
           cn: '先十字 + ${clock}',
           ko: '십자 먼저 + ${clock}',
+          tc: '先十字 + ${clock}',
         },
         circlesFirst: {
           en: 'Circles First + ${clock}',
           de: 'Kreise zuerst + ${clock}',
           cn: '先圆圈 + ${clock}',
           ko: '원 먼저 + ${clock}',
+          tc: '先圓圈 + ${clock}',
         },
         clockwise: Outputs.clockwise,
         counterclockwise: Outputs.counterclockwise,
@@ -4216,23 +4366,21 @@ const triggerSet: TriggerSet<Data> = {
             de: '${dir}',
             cn: '${dir}',
             ko: '${dir}',
+            tc: '${dir}',
           },
           circles1Dodge: {
             en: '${dir}',
             de: '${dir}',
             cn: '${dir}',
             ko: '${dir}',
+            tc: '${dir}',
           },
         };
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
         const loc = getPuddleLocation(x, y);
-        if (loc === undefined) {
-          console.error(
-            `Occult Crescent Marble Dragon Imitation Rain 2 Dodge 1: Unexpected puddle location (${x}, ${y})`,
-          );
+        if (loc === undefined)
           return;
-        }
 
         // Crosses
         if (matches.id === '7614') {
@@ -4291,6 +4439,7 @@ const triggerSet: TriggerSet<Data> = {
           de: '${dir1}/${dir2}',
           cn: '${dir1}/${dir2}',
           ko: '${dir1}/${dir2}',
+          tc: '${dir1}/${dir2}',
         },
       },
     },
@@ -4317,6 +4466,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Vermeide Wirbelsturm',
           cn: '远离龙卷风',
           ko: '회오리 피하기',
+          tc: '遠離龍捲風',
         },
       },
     },
@@ -4362,12 +4512,14 @@ const triggerSet: TriggerSet<Data> = {
           de: '${dir1}/${dir2} Sturz => Türme',
           cn: '${dir1}/${dir2} 俯冲 => 塔',
           ko: '${dir1}/${dir2} 강하 => 탑',
+          tc: '${dir1}/${dir2} 俯衝 => 塔',
         },
         bossDiveThenTowers: {
           en: 'Boss Dive => Towers',
           de: 'Boss Sturz => Türme',
           cn: 'BOSS俯冲 => 塔',
           ko: '보스 강하 => 탑',
+          tc: 'BOSS俯衝 => 塔',
         },
       },
     },
@@ -4397,18 +4549,21 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Türme => Kardinale/Interkardinale Türme',
           cn: '塔 => 正点/斜点塔',
           ko: '탑 => 십자/대각선 탑',
+          tc: '塔 => 正點/斜點塔',
         },
         towerDirsThenCardinalTowers: {
           en: '${dir1}/${dir2} Towers => Cardinal Towers',
           de: '${dir1}/${dir2} Türme => Kardinale Türme',
           cn: '${dir1}/${dir2} 塔 => 正点塔',
           ko: '${dir1}/${dir2} 탑 => 십자 탑',
+          tc: '${dir1}/${dir2} 塔 => 正點塔',
         },
         towerDirsThenIntercardTowers: {
           en: '${dir1}/${dir2} Towers => Intercard Towers',
           de: '${dir1}/${dir2} Türme => Interkardinale Türme',
           cn: '${dir1}/${dir2} 塔 => 斜点塔',
           ko: '${dir1}/${dir2} 탑 => 대각선 탑',
+          tc: '${dir1}/${dir2} 塔 => 斜點塔',
         },
       },
     },
@@ -4442,18 +4597,21 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Kardinale/Interkardinale Türme',
           cn: '正点/斜点塔',
           ko: '십자/대각선 탑',
+          tc: '正點/斜點塔',
         },
         cardinalTowers: {
           en: 'Cardinal Towers',
           de: 'Kardinale Türme',
           cn: '正点塔',
           ko: '십자 탑',
+          tc: '正點塔',
         },
         intercardTowers: {
           en: 'Intercardinal Towers',
           de: 'Interkardinale Türme',
           cn: '斜点塔',
           ko: '대각선 탑',
+          tc: '斜點塔',
         },
       },
     },
@@ -4502,6 +4660,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Verfluchtes Wasser auf DIR',
           cn: '水圈点名',
           ko: '저주받은 물 대상자',
+          tc: '水圈點名',
         },
       },
     },
@@ -4523,6 +4682,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Werde von der Eis-Explosion getroffen',
           cn: '吃冰圈爆炸',
           ko: '얼음 폭발 맞기',
+          tc: '吃冰圈爆炸',
         },
       },
     },
@@ -4545,6 +4705,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gefängnis zerstören',
           cn: '打破冰牢',
           ko: '감옥 부수기',
+          tc: '打破冰牢',
         },
       },
     },
@@ -4683,12 +4844,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Kreise zuerst',
           cn: '先圆圈',
           ko: '원 먼저',
+          tc: '先圓圈',
         },
         crossesFirst: {
           en: 'Crosses First',
           de: 'Kreuze zuerst',
           cn: '先十字',
           ko: '십자 먼저',
+          tc: '先十字',
         },
       },
     },
@@ -4785,30 +4948,35 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           cn: '左/右',
           ko: '동/서',
+          tc: '左/右',
         },
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
           cn: '上/下',
           ko: '남/북',
+          tc: '上/下',
         },
         dirCrossesFirst: {
           en: '${dir}: Crosses First + ${clock}',
           de: '${dir}: Kreuze zuerst + ${clock}',
           cn: '${dir}: 先十字 + ${clock}',
           ko: '${dir}: 십자 먼저 + ${clock}',
+          tc: '${dir}: 先十字 + ${clock}',
         },
         dirCirclesFirst: {
           en: '${dir}: Circles First + ${clock}',
           de: '${dir}: Kreise zuerst + ${clock}',
           cn: '${dir}: 先圆圈 + ${clock}',
           ko: '${dir}: 원 먼저 + ${clock}',
+          tc: '${dir}: 先圓圈 + ${clock}',
         },
         dirClock: {
           en: '${dir}: ${clock}',
           de: '${dir}: ${clock}',
           cn: '${dir}: ${clock}',
           ko: '${dir}: ${clock}',
+          tc: '${dir}: ${clock}',
         },
         clockwise: Outputs.clockwise,
         counterclockwise: Outputs.counterclockwise,
@@ -4873,12 +5041,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           cn: '左/右',
           ko: '동/서',
+          tc: '左/右',
         },
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
           cn: '上/下',
           ko: '남/북',
+          tc: '上/下',
         },
         getTowers: Outputs.getTowers,
         getVerticalTowers: {
@@ -4886,30 +5056,35 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Nimm vertikale Türme',
           cn: '去竖排塔',
           ko: '수직 탑 밟기',
+          tc: '去豎排塔',
         },
         getHorizontalTowers: {
           en: 'Get Horizontal Towers',
           de: 'Nimm horizontale Türme',
           cn: '去横排塔',
           ko: '수평 탑 밟기',
+          tc: '去橫排塔',
         },
         getTowersDir: {
           en: '${text} => ${dir}',
           de: '${text} => ${dir}',
           cn: '${text} => ${dir}',
           ko: '${text} => ${dir}',
+          tc: '${text} => ${dir}',
         },
         getVerticalTowersDir: {
           en: 'Get Vertical Towers => ${dir}',
           de: 'Nimm vertikale Türme => ${dir}',
           cn: '去竖排塔 => ${dir}',
           ko: '수직 탑 밟기 => ${dir}',
+          tc: '去豎排塔 => ${dir}',
         },
         getHorizontalTowersDir: {
           en: 'Get Horizontal Towers => ${dir}',
           de: 'Nimm horizontale Türme => ${dir}',
           cn: '去横排塔 => ${dir}',
           ko: '수평 탑 밟기 => ${dir}',
+          tc: '去橫排塔 => ${dir}',
         },
       },
     },
@@ -4938,12 +5113,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Osten/Westen',
           cn: '左/右',
           ko: '동/서',
+          tc: '左/右',
         },
         northSouth: {
           en: 'North/South',
           de: 'Norden/Süden',
           cn: '上/下',
           ko: '남/북',
+          tc: '上/下',
         },
       },
     },
@@ -4985,6 +5162,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Gesundung (wenn möglich)',
           cn: '痊愈宣告 (能用就用)',
           ko: '치유 선고 (가능하면)',
+          tc: '痊癒宣告 (能用就用)',
         },
       },
     },
@@ -5042,6 +5220,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Alpha-Schlosswächter ist erschienen',
           cn: '首领看锁人出现',
           ko: '대장 자물쇠지기 등장',
+          tc: '首領看鎖人出現',
         },
       },
     },
@@ -5076,12 +5255,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Tanks entfernt (Gruppe nahe) x3',
           cn: '坦克远离 (人群靠近) x3',
           ko: '탱커 멀리 (본대 가까이) x3',
+          tc: '坦克遠離 (人群靠近) x3',
         },
         tanksNear: {
           en: 'Tanks Close (Party Far) x3',
           de: 'Tanks nahe (Gruppe entfernt) x3',
           cn: '坦克靠近 (人群远离) x3',
           ko: '탱커 가까이 (본대 멀리) x3',
+          tc: '坦克靠近 (人群遠離) x3',
         },
       },
     },
@@ -5143,30 +5324,36 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Starte auf Buchstaben',
           cn: '字母点开始',
           ko: '알파벳에서 시작',
+          tc: '字母點開始',
         },
         startOnNumbers: {
           en: 'Start on Numbers',
           de: 'Starte auf Zahlen',
           cn: '数字点开始',
           ko: '숫자에서 시작',
+          tc: '數字點開始',
         },
         pattern1: {
-          en: '⅄ Daggers', // Displays an upside down Y
+          en: '⅄ Daggers',
+          // Displays an upside down Y
           de: '⅄ Dolche',
           cn: '⅄ 形短剑',
           ko: '⅄ 단검',
+          tc: '⅄ 形短劍',
         },
         pattern1TtsText: {
           en: 'Flipped Y Daggers',
           de: 'Umgedrehte Y Dolche',
           cn: '倒 Y 形短剑',
           ko: '역 Y 단검',
+          tc: '倒 Y 形短劍',
         },
         pattern2: {
           en: 'Y Daggers',
           de: 'Y Dolche',
           cn: 'Y 形短剑',
           ko: 'Y 단검',
+          tc: 'Y 形短劍',
         },
       },
     },
@@ -5225,12 +5412,14 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボス背面のサークル上に',
           cn: '站在目标圈上 (远离坦克死刑)',
           ko: '보스 히트박스 경계에 있기 (광역 탱버 피하기)',
+          tc: '站在目標圈上 (遠離坦剋死刑)',
         },
         nearFarTankCleave: {
           en: 'Near and far tank cleave => 2 tank autos',
           de: 'Nah und entfernte Tank-Cleaves => 2 Tank Autoangriffe',
           cn: '近远坦克死刑 => 2次坦克普攻',
           ko: '근거리/원거리 광역탱버 => 탱커 평타 2회',
+          tc: '近遠坦剋死刑 => 2次坦克普攻',
         },
       },
     },
@@ -5251,12 +5440,14 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Greife blaue Kanister an (Lanze)',
           cn: '攻击蓝色罐子 (枪)',
           ko: '파란색 통 공격 (창)',
+          tc: '攻擊藍色罐子 (槍)',
         },
         yellowCanisters: {
           en: 'Attack Yellow Canisters (Axe)',
           de: 'Greife gelbe Kanister an (Axt)',
           cn: '攻击黄色罐子 (斧)',
           ko: '노란색 통 공격 (도끼)',
+          tc: '攻擊黃色罐子 (斧)',
         },
       },
     },
@@ -5287,6 +5478,7 @@ const triggerSet: TriggerSet<Data> = {
           de: 'In eine rLinie sammeln beim Stab',
           cn: '直线分摊法杖伤害',
           ko: '지팡이 직선 쉐어',
+          tc: '直線分攤法杖傷害',
         },
       },
     },
@@ -5590,18 +5782,21 @@ const triggerSet: TriggerSet<Data> = {
           de: 'Kurzer Sammel-Debuff auf DIR (17)',
           cn: '短分摊点名 (17秒)',
           ko: '짧은 쉐어징 (17초)',
+          tc: '短分攤點名 (17秒)',
         },
         mediumStackOnYou: {
           en: 'Medium Stack on YOU (25)',
           de: 'Mittlerer Sammel-Debuff auf DIR (25)',
           cn: '中分摊点名 (25秒)',
           ko: '중간 쉐어징 (25초)',
+          tc: '中分攤點名 (25秒)',
         },
         longStackOnYou: {
           en: 'Long Stack on YOU (33)',
           de: 'Langer Sammel-Debuff auf DIR (33)',
           cn: '长分摊点名 (33秒)',
           ko: '긴 쉐어징 (33초)',
+          tc: '長分攤點名 (33秒)',
         },
       },
     },
@@ -5672,6 +5867,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'de',
       'missingTranslations': true,
       'replaceSync': {
+        'Advanced Aevis': 'entwickelt(?:e|er|es|en) Avis',
         'Assassin\'s Dagger': 'Assassinendolch',
         'Axe Empowerment Conduit': 'magisch(?:e|er|es|en) Axtverstärker',
         'Ball of Fire': 'Feuerball',
@@ -5685,12 +5881,16 @@ const triggerSet: TriggerSet<Data> = {
         'Crystal Dragon': 'Kristalldrache',
         'Dead Stars': 'astronomisch(?:e|er|es|en) Trio',
         'Death Claw': 'Todesklaue',
+        'Dehumidifier': 'Entfeuchter',
         'Demon Tablet': 'Dämonentafel',
         'Draconic Double': 'Kristalldrachenphantom',
+        'Execrator': 'Exekutor',
         'Frozen Phobos': 'tiefgekühlt(?:e|er|es|en) Phobos',
         'Frozen Triton': 'tiefgekühlt(?:e|er|es|en) Triton',
         'Gaseous Nereid': 'brennend(?:e|er|es|en) Nereid',
         'Gaseous Phobos': 'brennend(?:e|er|es|en) Phobos',
+        'Giant Bird': 'Roch',
+        'Gilded Headstone': 'Golden(?:e|er|es|en) Grabstein',
         'Guardian Berserker': 'Wächter-Berserker',
         'Guardian Knight': 'Wächter-Ritter',
         'Guardian Weapon': 'Wächter-Waffe',
@@ -5701,6 +5901,7 @@ const triggerSet: TriggerSet<Data> = {
         'Icewind': 'Eiswind',
         'Jesting Jackanapes': 'Garkimasera',
         'Lance Empowerment Conduit': 'magisch(?:e|er|es|en) Lanzenverstärker',
+        'Lifereaper': 'Seelensammler',
         'Lion Rampant': 'ungezügelt(?:e|er|es|en) Löwe',
         'Liquified Triton': 'geschmolzen(?:e|er|es|en) Triton',
         'Luminous Lance': 'Lichtspeer',
@@ -5711,16 +5912,20 @@ const triggerSet: TriggerSet<Data> = {
         'Mysterious Mindflayer': 'Gedankenschinder',
         'Mythic Idol': 'mystisch(?:e|er|es|en) Idol',
         'Mythic Mirror': 'mystisch(?:e|er|es|en) Idolphantom',
+        'Nammu': 'Nammu',
         'Neo Garula': 'Neo Garula',
         '(?<! )Nereid': 'Nereid',
         'Nymian Petalodus': 'nymeisch(?:e|er|es|en) Petalodus',
+        'Observer': 'Inselbeobachter',
         'Occult Knight': 'kreszent(?:e|er|es|en) Ritter',
         'Ochre Stone': 'Felsen',
         'Petalodus Progeny': 'Petalodus-Nachwuchs',
         'Phantom Claw': 'Illusions-Todesklaue',
         '(?<! )Phobos': 'Phobos',
         'Repaired Lion': 'restauriert(?:e|er|es|en) Löwe',
+        'Ropross': 'Loploth',
         'Sage\'s Staff': 'Stab des Weisen',
+        'Sisyphus': 'Sisyphos',
         'Tentacle': 'Tentakel',
         'Tower Abyss': 'Blut-Abyssus',
         'Tower Bhoot': 'Turm-Bhut',
@@ -6035,6 +6240,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'fr',
       'missingTranslations': true,
       'replaceSync': {
+        'Advanced Aevis': 'eibis évolué',
         'Assassin\'s Dagger': 'dague d\'assassin',
         'Axe Empowerment Conduit': 'décupleur magique de hache',
         'Ball of Fire': 'orbe de feu',
@@ -6048,12 +6254,16 @@ const triggerSet: TriggerSet<Data> = {
         'Crystal Dragon': 'dragon cristallin',
         'Dead Stars': 'trio de la Fosse',
         'Death Claw': 'Griffe de mort',
+        'Dehumidifier': 'déshumidificateur',
         'Demon Tablet': 'muraille démonique',
         'Draconic Double': 'double de dragon cristallin',
+        'Execrator': 'bourrelle',
         'Frozen Phobos': 'Phobos gelé',
         'Frozen Triton': 'Tritonien gelé',
         'Gaseous Nereid': 'Néregat enflammé',
         'Gaseous Phobos': 'Phobos enflammé',
+        'Giant Bird': 'oiseau géant',
+        'Gilded Headstone': 'pierre tombale dorée',
         'Guardian Berserker': 'berserker gardien',
         'Guardian Knight': 'chevalier gardien',
         'Guardian Weapon': 'arme gardienne',
@@ -6064,6 +6274,7 @@ const triggerSet: TriggerSet<Data> = {
         'Icewind': 'vent glacé',
         'Jesting Jackanapes': 'galkimasera',
         'Lance Empowerment Conduit': 'décupleur magique de lance',
+        'Lifereaper': 'collecteur de vies',
         'Lion Rampant': 'lion rampant',
         'Liquified Triton': 'Tritonien fondu',
         'Luminous Lance': 'lance de lumière',
@@ -6074,16 +6285,20 @@ const triggerSet: TriggerSet<Data> = {
         'Mysterious Mindflayer': 'ensorceleur',
         'Mythic Idol': 'idole mythique',
         'Mythic Mirror': 'double d\'idole mythique',
+        'Nammu': 'Nammu',
         'Neo Garula': 'néo-garula',
         '(?<! )Nereid': 'Néregat',
         'Nymian Petalodus': 'petalodus de Nym',
+        'Observer': 'insulobservateur',
         'Occult Knight': 'chevalier de Lunule',
         'Ochre Stone': 'rocher instable massif',
         'Petalodus Progeny': 'rejeton de petalodus',
         'Phantom Claw': 'mirage de Griffe de mort',
         '(?<! )Phobos': 'Phobos',
         'Repaired Lion': 'lion réparé',
+        'Ropross': 'Ropross',
         'Sage\'s Staff': 'bâton de sage',
+        'Sisyphus': 'Sisyphos',
         'Tentacle': 'tentacule',
         'Tower Abyss': 'arabesque de la Tour',
         'Tower Bhoot': 'bhut de la Tour',
@@ -6327,6 +6542,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ja',
       'missingTranslations': true,
       'replaceSync': {
+        'Advanced Aevis': 'アドバンスドエイビス',
         'Assassin\'s Dagger': 'アサシンダガー',
         'Axe Empowerment Conduit': '魔道増幅器【アクス】',
         'Ball of Fire': '火球',
@@ -6340,12 +6556,16 @@ const triggerSet: TriggerSet<Data> = {
         'Crystal Dragon': '水晶竜',
         'Dead Stars': '星頭の三人組',
         'Death Claw': 'デスクロー',
+        'Dehumidifier': 'ディヒューミディファイア',
         'Demon Tablet': 'デモンズ・タブレット',
         'Draconic Double': '水晶竜の幻影',
+        'Execrator': 'イグゼクレーター',
         'Frozen Phobos': '凍ったフォーボス',
         'Frozen Triton': '凍ったトライトン',
         'Gaseous Nereid': '燃えたネレゲイド',
         'Gaseous Phobos': '燃えたフォーボス',
+        'Giant Bird': '巨大鳥',
+        'Gilded Headstone': 'ゴールデンブロックス',
         'Guardian Berserker': 'ガード・バーサーカー',
         'Guardian Knight': 'ガード・ナイト',
         'Guardian Weapon': 'ガード・ウェポン',
@@ -6356,6 +6576,7 @@ const triggerSet: TriggerSet<Data> = {
         'Icewind': '氷風',
         'Jesting Jackanapes': 'ガルキマセラ',
         'Lance Empowerment Conduit': '魔道増幅器【ランス】',
+        'Lifereaper': 'ライフギャザラー',
         'Lion Rampant': 'ランパントライオン',
         'Liquified Triton': '溶けたトライトン',
         'Luminous Lance': '光の槍',
@@ -6366,16 +6587,20 @@ const triggerSet: TriggerSet<Data> = {
         'Mysterious Mindflayer': 'マインドフレイア',
         'Mythic Idol': 'ミシカルアイドル',
         'Mythic Mirror': 'ミシカルアイドルの幻影',
+        'Nammu': 'ナンム',
         'Neo Garula': 'ネオガルラ',
         '(?<! )Nereid': 'ネレゲイド',
         'Nymian Petalodus': 'ニーム・ペタロドゥス',
+        'Observer': 'アイルオブザーバー',
         'Occult Knight': 'クレセントナイト',
         'Ochre Stone': '大岩石',
         'Petalodus Progeny': 'ペタロドゥス・プロジェニー',
         'Phantom Claw': 'ミラージュ・デスクロー',
         '(?<! )Phobos': 'フォーボス',
         'Repaired Lion': 'リペアドライオン',
+        'Ropross': 'ロプロス',
         'Sage\'s Staff': '賢者の杖',
+        'Sisyphus': 'シジフォス',
         'Tentacle': '触手',
         'Tower Abyss': 'タワー・アビス',
         'Tower Bhoot': 'タワー・ブフート',
@@ -6997,9 +7222,391 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      'locale': 'ko',
+      'locale': 'tc',
       'missingTranslations': true,
       'replaceSync': {
+        // 'Advanced Aevis': '', // FIXME '高等魔鸟'
+        // 'Assassin\'s Dagger': '', // FIXME '暗杀短剑'
+        'Ball of Fire': '火球',
+        'Black Chocobo': '黑陸行鳥',
+        // 'Black Star': '', // FIXME '黑色天星'
+        // 'Chatterbird': '', // FIXME '叽喳鸟'
+        // 'Clawmarks': '', // FIXME '抓痕'
+        // 'Cloister Demon': '', // FIXME '回廊恶魔'
+        // 'Command Urn': '', // FIXME '指令罐'
+        // 'Crescent Berserker': '', // FIXME '新月狂战士'
+        // 'Crystal Dragon': '', // FIXME '水晶龙'
+        // 'Dead Stars': '', // FIXME '星头三兄弟'
+        // 'Death Claw': '', // FIXME '死亡爪'
+        // 'Dehumidifier': '', // FIXME '除湿之火'
+        // 'Demon Tablet': '', // FIXME '恶魔板'
+        // 'Draconic Double': '', // FIXME '水晶龙的幻影'
+        // 'Execrator': '', // FIXME '执行者'
+        // 'Frozen Phobos': '', // FIXME '冰冻的福博斯'
+        // 'Gaseous Nereid': '', // FIXME '燃烧的涅瑞伊得'
+        // 'Gaseous Phobos': '', // FIXME '燃烧的福博斯'
+        // 'Giant Bird': '', // FIXME '巨大鸟'
+        // 'Gilded Headstone': '', // FIXME '金色石碑'
+        // 'Guardian Berserker': '', // FIXME '狂战士守卫'
+        // 'Guardian Knight': '', // FIXME '骑士守卫'
+        // 'Guardian Weapon': '', // FIXME '兵装守卫'
+        // 'Guardian Wraith': '', // FIXME '幽灵守卫'
+        // 'Hinkypunk': '', // FIXME '鬼火苗'
+        // 'Holy Sphere': '', // FIXME '光球'
+        // 'Ice Golem': '', // FIXME '寒冰巨像'
+        // 'Icewind': '', // FIXME '冰风'
+        // 'Jesting Jackanapes': '', // FIXME '小妖魔'
+        // 'Lifereaper': '', // FIXME '生命收割者'
+        // 'Lion Rampant': '', // FIXME '跃立狮'
+        // 'Liquified Triton': '', // FIXME '融化的特里同'
+        // 'Luminous Lance': '', // FIXME '光枪'
+        // 'Magitaur': '', // FIXME '魔陶洛斯'
+        // 'Nammu': '', // FIXME '纳木'
+        // 'Marble Dragon': '', // FIXME '大理石龙'
+        // 'Master Lockward': '', // FIXME '首领看锁人'
+        // 'Megaloknight': '', // FIXME '巨型骑士'
+        // 'Mysterious Mindflayer': '', // FIXME '夺心魔'
+        // 'Mythic Idol': '', // FIXME '神秘土偶'
+        // 'Mythic Mirror': '', // FIXME '神秘土偶的幻影'
+        // 'Neo Garula': '', // FIXME '进化加鲁拉'
+        // 'Nereid': '', // FIXME '涅瑞伊得'
+        // 'Nymian Petalodus': '', // FIXME '尼姆瓣齿鲨'
+        // 'Observer': '', // FIXME '岛屿监视者'
+        // 'Occult Knight': '', // FIXME '新月骑士'
+        // 'Ochre Stone': '', // FIXME '巨岩'
+        // 'Petalodus Progeny': '', // FIXME '子代瓣齿鲨'
+        // 'Phantom Claw': '', // FIXME '死亡爪的幻影'
+        // '(?<! )Phobos': '', // FIXME '福博斯'
+        // 'Repaired Lion': '', // FIXME '复原狮像'
+        // 'Ropross': '', // FIXME '罗普罗斯'
+        // 'Sage\'s Staff': '', // FIXME '贤者之杖'
+        'Sisyphus': '西西弗斯',
+        'Tentacle': '觸手',
+        // 'Tower Abyss': '', // FIXME '两歧塔深渊'
+        // 'Tower Bhoot': '', // FIXME '两歧塔浮灵'
+        // 'Tower Idol': '', // FIXME '两歧塔石偶'
+        // 'Tower Manticore': '', // FIXME '两歧塔曼提克'
+        // 'Tower Progenitor': '', // FIXME '两歧塔爆弹之父'
+        // 'Tower Progenitrix': '', // FIXME '两歧塔爆弹之母'
+        // 'Trade Tortoise': '', // FIXME '金钱龟'
+        'Trap': '陷阱',
+        // '(?<! )Triton': '', // FIXME '特里同'
+        // 'Vassal Vessel': '', // FIXME '下属人偶'
+      },
+      'replaceText': {
+        // '--adds--': '', // FIXME '--小怪--'
+        // '--adds-targetable--': '', // FIXME '--小怪可选中--'
+        // '--Big Rune Marker': '', // FIXME '--大圈点名'
+        // '--Bomb Mirror--': '', // FIXME '--爆弹怪幻影--'
+        // '--Bosses untargetable--': '', // FIXME '--BOSS 不可选中--'
+        // '--Burns': '', // FIXME '--雷区'
+        // '--Dead Stars targetable--': '', // FIXME '--星头三兄弟可选中--'
+        // '--Demon Mirror--': '', // FIXME '--64页幻影--'
+        // '--dive spot--': '', // FIXME '--俯冲--'
+        // '--Fireballs targetable--': '', // FIXME '--火球可选中--'
+        // '--forced move--': '', // FIXME '--强制移动--'
+        // '--golems ': '', // FIXME '--巨像'
+        // '--holy spheres': '', // FIXME '--光球'
+        // '--ice golems--': '', // FIXME '--寒冰巨像--'
+        // '--ice sprites--': '', // FIXME '--冰元精--'
+        // '--Icicle Puddles--': '', // FIXME '--水圈--'
+        // '--knockback': '', // FIXME '--击退'
+        // '--Mythic Mirror': '', // FIXME '--神秘幻影'
+        // '--Nereid targetable--': '', // FIXME '--涅瑞伊得可选中--'
+        // '--Nereid untargetable--': '', // FIXME '--涅瑞伊得不可选中--'
+        // '--Phobos targetable--': '', // FIXME '--福博斯可选中--'
+        // '--Phobos untargetable--': '', // FIXME '--福博斯得不可选中--'
+        // '--reseal': '', // FIXME '--重封印'
+        // '--sand spheres': '', // FIXME '--土球'
+        // '--Small Rune Markers': '', // FIXME '--小圈点名'
+        // '--Snowballs targetable--': '', // FIXME '--雪球可选中--'
+        // '--Snowballs untargetable--': '', // FIXME '--雪球不可选中--'
+        // '--Swords Mirror--': '', // FIXME '--飞剑幻影--'
+        // '--tentacles': '', // FIXME '--触手'
+        // '--towers': '', // FIXME '--塔'
+        // '--Triton targetable--': '', // FIXME '--特里同可选中--'
+        // '--Triton untargetable--': '', // FIXME '--特里同不可选中--'
+        // '--twisters end--': '', // FIXME '--龙卷结束--'
+        // '--twisters start--': '', // FIXME '--龙卷开始--'
+        // '--wind spheres': '', // FIXME '--风球'
+        // '\\(across land\\)': '', // FIXME '(横穿场地)'
+        // '\\(Big\\)': '', // FIXME '(大)'
+        // '\\(Blowout\\)': '', // FIXME '(轰飞)'
+        // '\\(Blue\\)': '', // FIXME '(蓝)'
+        // '\\(Cards': '', // FIXME '(正点'
+        // '\\(cast\\)': '', // FIXME '(读条)'
+        // '\\(castbar\\)': '', // FIXME '(读条)'
+        // '\\(circle(s)?': '', // FIXME '(圆圈'
+        // '\\(Clear\\)': '', // FIXME '(清场)'
+        // 'cross(es)?\\)': '', // FIXME '十字)'
+        // 'cross(es)?\\?\\)': '', // FIXME '十字?)'
+        // '\\(Crystal\\)': '', // FIXME '(有光元精)'
+        // '\\(Final\\)': '', // FIXME '(最终)'
+        // '\\(Green\\)': '', // FIXME '(绿)'
+        // '\\(H Pattern\\)': '', // FIXME '(H 型)'
+        // '\\(in\\)': '', // FIXME '(内)'
+        // 'Intercards\\)': '', // FIXME '斜点)'
+        // 'Intercards\\?\\)': '', // FIXME '斜点?)'
+        // '\\(jump\\)': '', // FIXME '(跳)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(Lightning\\)': '', // FIXME '(雷)'
+        // '\\(marker\\)': '', // FIXME '(点名)'
+        // '\\(Move\\)': '', // FIXME '(动)'
+        // '\\(No Crystal\\)': '', // FIXME '(无光元精)'
+        // '\\(out\\)': '', // FIXME '(外)'
+        // '\\(Red\\)': '', // FIXME '(红)'
+        // '\\(resurface\\)': '', // FIXME '(上浮)'
+        // '\\(Section': '', // FIXME '(区域'
+        // '\\(Shades\' Crossing\\)': '', // FIXME '(暗影交错)'
+        // '\\(Shades\' Nest\\)': '', // FIXME '(暗影环)'
+        // '\\(side': '', // FIXME '(侧'
+        // '\\(Small\\)': '', // FIXME '(小)'
+        // '\\(spreads\\)': '', // FIXME '(分散)'
+        // '\\(Stop\\)': '', // FIXME '(停)'
+        // '\\(submerge\\)': '', // FIXME '(下潜)'
+        // '\\(tankbusters\\)': '', // FIXME '(死刑)'
+        // '\\(towers': '', // FIXME '(塔'
+        // '\\(Wind\\)': '', // FIXME '(风)'
+        'Aetherial Exchange': '乙太交換',
+        'Aetherial Ray': '乙太射線',
+        'Aetheric Burst': '乙太爆發',
+        // 'Agitated Groan': '', // FIXME '盛怒咆哮'
+        'Ancient Aero III': '古代大勁風',
+        // 'Arcane Blast': '', // FIXME '魔力冲击'
+        'Ancient Holy': '古代神聖',
+        // 'Ancient Stone III': '', // FIXME '古代垒石'
+        // 'Arcane Design': '', // FIXME '魔连弹'
+        // 'Arcane Light': '', // FIXME '魔闪光'
+        // 'Arcane Orb Spiral': '', // FIXME '魔光弹'
+        // 'Arcane Spear': '', // FIXME '魔枪'
+        'Assail': '攻擊指示',
+        // 'Assassin\'s Dagger': '', // FIXME '暗杀短剑'
+        // 'Augmentation of Beacons': '', // FIXME '召唤魔炮'
+        // 'Augmentation of Roundels': '', // FIXME '召唤光球'
+        // 'Augmentation of Stones': '', // FIXME '召唤岩石'
+        'Aura Burst': '鬥氣爆裂',
+        // 'Avalaunch': '', // FIXME '冲天大雪球'
+        // 'Axeglow': '', // FIXME '斧灵气'
+        'Ball of Ice': '凍結',
+        // 'Barefisted Death': '', // FIXME '一拳毙命'
+        'Bedrock Uplift': '地面隆起',
+        'Big Burst': '大爆炸',
+        // 'Big Ruinous Rune': '', // FIXME '破灭符文 (大)'
+        // 'Birdserk Rush': '', // FIXME '突进掀地'
+        // 'Blast Knuckles': '', // FIXME '冲击拳'
+        // 'Blazing Belligerent': '', // FIXME '过热火球'
+        // 'Blazing Flare': '', // FIXME '炽热核爆'
+        // 'Blizzard Trap': '', // FIXME '冰结陷阱'
+        // 'Blowout': '', // FIXME '轰飞'
+        // 'Boil Over': '', // FIXME '发怒'
+        'Bombshell Drop': '爆爆爆彈',
+        'Bright Pulse': '閃光',
+        // 'Cage of Fire': '', // FIXME '牢笼炮'
+        // 'Carving Rune': '', // FIXME '符文镌刻'
+        // 'Channeled Rage': '', // FIXME '燥怒'
+        // 'Chilling Collision': '', // FIXME '凝冰冲击'
+        // 'Choco Aero II': '', // FIXME '陆行鸟烈风'
+        'Choco Beak': '陸行鳥攻擊',
+        // 'Choco Blades': '', // FIXME '陆行鸟风刃'
+        // 'Choco Cyclone': '', // FIXME '陆行鸟旋风'
+        // 'Choco Doublades': '', // FIXME '双重陆行鸟风刃'
+        // 'Choco Maelfeather': '', // FIXME '尾羽'
+        // 'Choco Slaughter': '', // FIXME '陆行鸟杀戮'
+        // 'Choco Windstorm': '', // FIXME '陆行鸟风暴'
+        // 'Clawing Shadow': '', // FIXME '雾霾爪'
+        // 'Clawmarks': '', // FIXME '抓痕'
+        // 'Close Call to Detonate': '', // FIXME '爆炸声明：近'
+        // 'Collateral Balls': '', // FIXME '飞来X弹'
+        // 'Collateral Damage': '', // FIXME '飞来横祸'
+        // 'Collateral Jets': '', // FIXME '飞来X波'
+        // 'Cometeor of Dangers Near': '', // FIXME '压溃式恶魔微型陨石'
+        // 'Cometeor of Expulsion Afar': '', // FIXME '排斥式恶魔微型陨石'
+        // 'Cost of Living': '', // FIXME '古币爆风'
+        // 'Critical Axeblow': '', // FIXME '致命斧'
+        // 'Critical Lanceblow': '', // FIXME '致命枪'
+        // 'Crystal Call': '', // FIXME '生成晶石'
+        // 'Crystal Mirror': '', // FIXME '转移晶石'
+        // 'Crystallized Chaos': '', // FIXME '水晶乱流'
+        // 'Crystallized Energy': '', // FIXME '水晶波动'
+        '(?<! )Dark II': '昏暗',
+        'Death Ray': '死亡射線',
+        // 'Decisive Battle': '', // FIXME '决战'
+        // 'Decompress': '', // FIXME '压缩爆炸'
+        'Deep Freeze': '凍結',
+        'Delta Attack': '三角攻擊',
+        // 'Demonic Dark II': '', // FIXME '恶魔昏暗'
+        // 'Demonograph of Dangers Near': '', // FIXME '压溃式恶魔录'
+        // 'Demonograph of Expulsion Afar': '', // FIXME '排斥式恶魔录'
+        // 'Demonography': '', // FIXME '恶魔录'
+        // '(?<!-)Destruct': '', // FIXME '自爆指令'
+        // 'Dirty Nails': '', // FIXME '腐坏爪'
+        // '(?<! )Dive(?! )': '', // FIXME '跳入'
+        'Double Cast': '雙重詠唱',
+        // 'Dread Deluge': '', // FIXME '恐慌泛滥'
+        'Dread Dive': '落喙俯衝',
+        // 'Draconiform Motion': '', // FIXME '龙态行动'
+        // 'Dualfist Flurry': '', // FIXME '重拳崩'
+        'Earthquake': '地震',
+        'Elemental Impact': '轟擊',
+        // 'End of History': '', // FIXME '魔启示'
+        // 'Epicenter Shock': '', // FIXME '圆状放雷'
+        // 'Erase Gravity': '', // FIXME '微重力'
+        // 'Excruciating Equilibrium': '', // FIXME '要死一起死'
+        'Exodus': '眾生離絕',
+        'Explosion': '爆炸',
+        'Falling Rock': '落石',
+        // 'Far Cry to Detonate': '', // FIXME '爆炸声明：远'
+        // 'Fearsome Facet': '', // FIXME '幻影晶石'
+        // 'Fearsome Glint': '', // FIXME '裂魄惊芒爪'
+        'Flame Thrower': '火炎放射',
+        'Flatten': '壓潰',
+        // 'Flock of Souls': '', // FIXME '附魂'
+        'Fire Spread': '噴火',
+        // 'Fire Trap': '', // FIXME '火炎陷阱'
+        // 'Firestrike': '', // FIXME '重火炮'
+        // 'Forked Fury': '', // FIXME '两歧之怒'
+        // 'Fourpenny Inflation': '', // FIXME '四币咒爆风'
+        'Frigid Dive': '寒霜俯衝',
+        // 'Frigid Twister': '', // FIXME '寒冰龙卷'
+        // 'Frozen Fallout': '', // FIXME '毒液块飞跃'
+        // 'Frozen Heart': '', // FIXME '霜冻之心'
+        'Fusion Burst': '融合爆炸',
+        // 'Geothermal Rupture': '', // FIXME '地热爆破'
+        'Gigaflare': '十億火光',
+        // 'Gravity of Dangers Near': '', // FIXME '压溃式微重力'
+        // 'Gravity of Expulsion Afar': '', // FIXME '排斥式微重力'
+        'Great Ball of Fire': '火球',
+        // 'Heated Outburst': '', // FIXME '气焰'
+        'Heave': '掀地',
+        // 'Heightened Rage': '', // FIXME '狂怒'
+        // 'Hoard Wealth': '', // FIXME '价格暴跌的波动'
+        '(?<!t )Holy(?! )': '神聖',
+        // 'Holy Blaze': '', // FIXME '圣焰'
+        'Holy IV': '極聖',
+        // 'Holy Lance': '', // FIXME '圣枪'
+        // 'Hopping Mad': '', // FIXME '震击怒涛'
+        // 'Horizontal Crosshatch': '', // FIXME '横向双重抓'
+        // 'Hydrocleave': '', // FIXME '深水切割者'
+        // 'Icebound Buffoon': '', // FIXME '过冷雪球'
+        // 'Ill-gotten Goods': '', // FIXME '咒物赊卖'
+        // 'Imitation Blizzard': '', // FIXME '仿效冰结'
+        // 'Imitation Icicle': '', // FIXME '仿效冰柱'
+        // 'Imitation Rain': '', // FIXME '仿效雨'
+        // 'Imitation Star': '', // FIXME '仿效星'
+        // 'Karmic Drain': '', // FIXME '生命侵蚀'
+        // 'Knuckle Crusher': '', // FIXME '碎地拳'
+        // 'Knuckle Down': '', // FIXME '重拳冲击'
+        // 'Lacunate Stream': '', // FIXME '魔录奔流'
+        // 'Lamplight': '', // FIXME '幽魂光'
+        // '(?<! )Lance(?<! )': '', // FIXME '光枪'
+        'Landing': '落地',
+        // 'Lethal Nails': '', // FIXME '死亡甲'
+        // 'Lifeless Legacy': '', // FIXME '无命遗产'
+        // 'Light Surge': '', // FIXME '光爆'
+        // 'Lightning Charge': '', // FIXME '过雷流'
+        // 'Lightning Crossing': '', // FIXME '扇状放雷'
+        // 'Line of Fire': '', // FIXME '直线炮'
+        'Lots Cast': '魔爆炸',
+        'Made Magic': '釋放魔力',
+        // 'Mammoth Bolt': '', // FIXME '大落雷'
+        // 'Mana Expulsion': '', // FIXME '魔力冲动'
+        // 'Manifold Marks': '', // FIXME '多重抓痕'
+        'Marine Mayhem': '海之騷動',
+        // 'Material World': '', // FIXME '咒物起效'
+        'Mind Blast': '精神衝擊',
+        // 'Moatmaker': '', // FIXME '重拳波'
+        // 'Molt': '', // FIXME '附身'
+        'Mystic Heat': '魔射線',
+        // 'Noisome Nuisance': '', // FIXME '过激毒球'
+        // 'Noxious Nova': '', // FIXME '毒素爆散'
+        // 'Occult Chisel': '', // FIXME '魔录凿刻'
+        // 'Onepenny Inflation': '', // FIXME '一币咒爆风'
+        // 'Open Water': '', // FIXME '开放水域'
+        'Pelagic Cleaver': '深海切割者',
+        // 'Portentous Comet(?!eor)': '', // FIXME '恶魔彗星'
+        // 'Portentous Cometeor': '', // FIXME '恶魔微型陨石'
+        'Primal Roar': '大咆哮',
+        // 'Primordial Chaos': '', // FIXME '毒液乐园'
+        // 'Prismatic Wing': '', // FIXME '水晶之翼'
+        // 'Punishing Pounce': '', // FIXME '怒骂猛扑'
+        // 'Radiant Wave': '', // FIXME '光明噪声'
+        // 'Raking Scratch': '', // FIXME '尖甲疾袭'
+        // 'Ray of Dangers Near': '', // FIXME '压溃式暗黑射线'
+        // 'Ray of Expulsion Afar': '', // FIXME '排斥式暗黑射线'
+        // 'Ray of Ignorance': '', // FIXME '暗黑射线'
+        'Recharge': '魔力供給',
+        // 'Recommended for You': '', // FIXME '商品指定'
+        // 'Recuperation': '', // FIXME '痊愈宣告'
+        // 'Restore Gravity': '', // FIXME '重力重置'
+        'Return(?!s)': '返回',
+        // 'Returns': '', // FIXME '回返'
+        'Rockslide': '岩石崩潰',
+        // 'Rotate Right': '', // FIXME '右转向'
+        // 'Rotate Left': '', // FIXME '左转向'
+        // 'Rotation': '', // FIXME '转向'
+        // 'Ruby Blaze': '', // FIXME '炽热诅咒'
+        // '(?<! )Ruinous Rune': '', // FIXME '破灭符文'
+        // '(?<! )Rumble': '', // FIXME '跺地'
+        // 'Rune Axe': '', // FIXME '符文之斧'
+        '(?<! |C)Rush(?!ing|er)': '突進',
+        // 'Rushing Rumble(?! )': '', // FIXME '突进跺地'
+        // 'Rushing Rumble Rampage': '', // FIXME '连续突进跺地'
+        // 'Sage\'s Staff': '', // FIXME '贤者之杖'
+        // 'Sand Surge': '', // FIXME '土爆'
+        // 'Scathing Sweep': '', // FIXME '横砍'
+        '(?<! )Scratch': '抓擊',
+        // 'Seal Asunder': '', // FIXME '封印破坏'
+        'Self-destruct': '自爆',
+        // 'Shades\' Crossing': '', // FIXME '暗影交错'
+        // 'Shades\' Nest': '', // FIXME '暗影环'
+        // 'Shifting Shape': '', // FIXME '开腹'
+        'Shockwave': '衝擊波',
+        // 'Six-Handed Fistfight': '', // FIXME '窝里斗'
+        // 'Slice \'n\' Dice': '', // FIXME '斩切'
+        // 'Slice \'n\' Strike': '', // FIXME '斩切再开炮'
+        // 'Skulking Orders': '', // FIXME '处刑令'
+        // 'Small Ruinous Rune': '', // FIXME '破灭符文 (小)'
+        'Snow Boulder': '大雪球',
+        // 'Snowball Flight': '', // FIXME '雪球狂奔'
+        // 'Spinning Siege': '', // FIXME '回旋炮'
+        // 'Spirit Sling': '', // FIXME '魔力炮'
+        // 'Squash': '', // FIXME '踩扁'
+        'Steelstrike': '飛劍強襲',
+        // 'Stone Swell': '', // FIXME '岩石隆起'
+        // 'Sunderseal Roar': '', // FIXME '破封的咆哮'
+        'Summon': '召喚',
+        // 'Surprise Attack': '', // FIXME '暗袭'
+        // 'Tell': '', // FIXME '显现'
+        'The Grip of Poison': '邪氣的共振',
+        // 'Three-Body Probl─': '', // FIXME '三体问题？'
+        // 'Three-Body Problem': '', // FIXME '三体问题'
+        // 'Threefold Marks': '', // FIXME '三重抓痕'
+        'Tidal Breath': '怒潮吐息',
+        'Tidal Guillotine': '怒潮斷頭臺',
+        'To the Winds': '爆炸四散',
+        // 'Twopenny Inflation': '', // FIXME '二币咒爆风'
+        // 'Unseal(?!ed)': '', // FIXME '封印解除'
+        // 'Unsealed Aura': '', // FIXME '灵气释放'
+        // 'Vertical Crosshatch': '', // FIXME '纵向双重抓'
+        // 'Vengeful Bio III': '', // FIXME '复仇剧毒菌'
+        // 'Vengeful Blizzard III': '', // FIXME '复仇冰封'
+        // 'Vengeful Fire III': '', // FIXME '复仇爆炎'
+        'Void Death IV': '虛空極死',
+        'Void Thunder III': '虛空大雷電',
+        'Wallop': '打擊',
+        'Waterspout': '海龍捲',
+        // 'What\'re You Buying\\?': '', // FIXME '强买强卖'
+        'Wind Surge': '風爆',
+        // 'Withering Eternity': '', // FIXME '无终的枯朽'
+        // 'White-hot Rage': '', // FIXME '气焰怒涛'
+        'Wild Charge': '狂野蓄力',
+        // 'Wicked Water': '', // FIXME '诅咒之水'
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Advanced Aevis': '진화한 에이비스',
         'Assassin\'s Dagger': '암살자의 단검',
         'Ball of Fire': '화염 구체',
         'Black Chocobo': '검은 초코보',
@@ -7012,12 +7619,16 @@ const triggerSet: TriggerSet<Data> = {
         'Crystal Dragon': '수정룡',
         'Dead Stars': '별머리 삼인조',
         'Death Claw': '죽음손아귀',
+        'Dehumidifier': '제습마',
         'Demon Tablet': '악마의 석판',
         'Draconic Double': '수정룡의 환영',
+        'Execrator': '주술마녀',
         'Frozen Phobos': '얼어붙은 포보스',
         'Frozen Triton': '얼어붙은 트리톤',
         'Gaseous Nereid': '불타는 네레게이드',
         'Gaseous Phobos': '불타는 포보스',
+        'Giant Bird': '거대 새',
+        'Gilded Headstone': '금빛 묘비',
         'Guardian Berserker': '경비 광전사',
         'Guardian Knight': '경비 기사',
         'Guardian Weapon': '경비 무기마',
@@ -7027,6 +7638,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ice Golem': '얼음 골렘',
         'Icewind': '얼음 바람',
         'Jesting Jackanapes': '가르키마세라',
+        'Lifereaper': '생명 수확자',
         'Lion Rampant': '직립 사자',
         'Liquified Triton': '녹은 트리톤',
         'Luminous Lance': '빛나는 창',
@@ -7037,16 +7649,20 @@ const triggerSet: TriggerSet<Data> = {
         'Mysterious Mindflayer': '정신탈취자',
         'Mythic Idol': '신비로운 우상',
         'Mythic Mirror': '신비로운 우상의 환영',
+        'Nammu': '남무',
         'Neo Garula': '네오 가루라',
         'Nereid': '네레게이드',
         'Nymian Petalodus': '니므 페탈로두스',
+        'Observer': '섬 감시자',
         'Occult Knight': '초승달 기사',
         'Ochre Stone': '거대한 암석',
         'Petalodus Progeny': '어린 니므 페탈로두스',
         'Phantom Claw': '죽음손아귀의 환영',
         '(?<! )Phobos': '포보스',
         'Repaired Lion': '복원된 사자',
+        'Ropross': '로프로스',
         'Sage\'s Staff': '현자의 지팡이',
+        'Sisyphus': '시시포스',
         'Tentacle': '문어발',
         'Tower Abyss': '타워 나락영혼',
         'Tower Bhoot': '타워 브후트',

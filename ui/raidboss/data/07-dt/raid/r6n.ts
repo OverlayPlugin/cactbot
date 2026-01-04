@@ -352,6 +352,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Pack sur les heals (dans l\'eau)',
           cn: '治疗分组分摊 (站在水里)',
           ko: '물에서 힐러 그룹 쉐어',
+          tc: '治療分組分攤 (站在水裡)',
         },
       },
     },
@@ -368,6 +369,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dispersion (hors de l\'eau)',
           cn: '分散 (站在岸上)',
           ko: '땅에서 산개',
+          tc: '分散 (站在岸上)',
         },
       },
     },
@@ -497,6 +499,39 @@ const triggerSet: TriggerSet<Data> = {
         'Taste of Fire': '糖糖火炎',
         'Taste of Thunder': '糖糖闪雷',
         'Warm Bomb': '暖色爆弹怪',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        // 'Heaven Bomb': '', // FIXME '翅膀爆弹怪'
+        // 'Paint Bomb': '', // FIXME '涂鸦爆弹怪'
+        'Sugar Riot': 'シュガーライオット',
+        'Sweet Shot': 'シュガーズアロー',
+        'Tempest Piece': '積乱雲',
+      },
+      'replaceText': {
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(snapshot\\)': '', // FIXME '(快照)'
+        // '\\(spread\\)': '', // FIXME '(分散)'
+        'Burst': '爆炸',
+        'Color Riot': '色彩暴亂',
+        // 'Cool Bomb': '', // FIXME '冷色爆弹怪'
+        'Double Style': '雙手塗鴉',
+        'Highlightning': '界雷',
+        'Layer': '添筆',
+        'Lightning Bolt': '落雷',
+        'Mousse Mural': '慕斯怪之雨',
+        'Mousse Touch-up': '慕斯怪小雨',
+        'Pudding Party': '布丁聚會',
+        'Rush': '突進',
+        'Single Style': '單手塗鴉',
+        'Spray Pain': '飛針',
+        'Sugarscape': '沙地繪景',
+        'Taste of Fire': '糖果火焰',
+        'Taste of Thunder': '糖果雷電',
+        // 'Warm Bomb': '', // FIXME '暖色爆弹怪'
       },
     },
     {

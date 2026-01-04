@@ -110,6 +110,7 @@ const defects: LatentDefectMistake[] = [
       ja: '赤塔、デバフなし',
       cn: '红塔, 无毒',
       ko: '빨강 장판, 디버프 없음',
+      tc: '紅塔, 無毒',
     },
     missing: {
       en: 'Missed Red Tower',
@@ -118,6 +119,7 @@ const defects: LatentDefectMistake[] = [
       ja: '赤塔失敗',
       cn: '没踩到红塔',
       ko: '빨강 장판 놓침',
+      tc: '沒踩到紅塔',
     },
     share: {
       en: 'Red Tower',
@@ -126,6 +128,7 @@ const defects: LatentDefectMistake[] = [
       ja: '赤塔',
       cn: '红塔',
       ko: '빨강 장판',
+      tc: '紅塔',
     },
   },
   {
@@ -138,6 +141,7 @@ const defects: LatentDefectMistake[] = [
       ja: '青塔、デバフなし',
       cn: '蓝塔, 无毒',
       ko: '파랑 장판, 디버프 없음',
+      tc: '藍塔, 無毒',
     },
     missing: {
       en: 'Missed Blue Tower',
@@ -146,6 +150,7 @@ const defects: LatentDefectMistake[] = [
       ja: '青塔失敗',
       cn: '没踩到蓝塔',
       ko: '파랑 장판 놓침',
+      tc: '沒踩到藍塔',
     },
     share: {
       en: 'Blue Tower',
@@ -154,6 +159,7 @@ const defects: LatentDefectMistake[] = [
       ja: '青塔',
       cn: '蓝塔',
       ko: '파랑 장판',
+      tc: '藍塔',
     },
   },
   {
@@ -166,6 +172,7 @@ const defects: LatentDefectMistake[] = [
       ja: '頭割り',
       cn: '分摊',
       ko: '쉐어',
+      tc: '分攤',
     },
     missing: {
       en: 'Missed stack',
@@ -174,6 +181,7 @@ const defects: LatentDefectMistake[] = [
       ja: '頭割り失敗',
       cn: '错过分摊',
       ko: '쉐어 놓침',
+      tc: '錯過分攤',
     },
     share: {
       en: 'Stack',
@@ -182,6 +190,7 @@ const defects: LatentDefectMistake[] = [
       ja: '頭割り',
       cn: '分摊',
       ko: '쉐어',
+      tc: '分攤',
     },
     tookTwo: {
       en: 'Stack x2',
@@ -190,6 +199,7 @@ const defects: LatentDefectMistake[] = [
       ja: '頭割り x2',
       cn: '分摊 x2',
       ko: '쉐어 x2',
+      tc: '分攤 x2',
     },
   },
   {
@@ -202,6 +212,7 @@ const defects: LatentDefectMistake[] = [
       ja: 'サークル',
       cn: '大圈',
       ko: '광역',
+      tc: '大圈',
     },
     missing: {
       en: 'Missed defamation',
@@ -210,6 +221,7 @@ const defects: LatentDefectMistake[] = [
       ja: 'サークル失敗',
       cn: '错过大圈',
       ko: '광역 놓침',
+      tc: '錯過大圈',
     },
     share: {
       en: 'Defamation',
@@ -218,6 +230,7 @@ const defects: LatentDefectMistake[] = [
       ja: 'サークル',
       cn: '大圈',
       ko: '광역',
+      tc: '大圈',
     },
     tookTwo: {
       en: 'Defamation x2',
@@ -226,6 +239,7 @@ const defects: LatentDefectMistake[] = [
       ja: 'サークル x2',
       cn: '大圈 x2',
       ko: '광역 x2',
+      tc: '大圈 x2',
     },
   },
 ];
@@ -241,6 +255,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     ja: ' (サークル)',
     cn: ' (大圈)',
     ko: ' (광역)',
+    tc: '(大圈)',
   },
   stack: {
     en: ' (as stack)',
@@ -249,6 +264,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     ja: ' (頭割り)',
     cn: ' (分摊)',
     ko: ' (쉐어)',
+    tc: '(分攤)',
   },
   redTether: {
     en: ' (as near tether)',
@@ -257,6 +273,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     ja: ' (ニア)',
     cn: ' (近线)',
     ko: ' (가까이 선)',
+    tc: '(近線)',
   },
   blueTether: {
     en: ' (as far tether)',
@@ -265,6 +282,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     ja: ' (ファー)',
     cn: ' (远线)',
     ko: ' (멀리 선)',
+    tc: '(遠線)',
   },
   // These shouldn't happen.
   redRot: {
@@ -274,6 +292,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     ja: ' (赤)',
     cn: ' (红毒)',
     ko: ' (빨강 디버프)',
+    tc: '(紅毒)',
   },
   blueRot: {
     en: ' (as blue rot)',
@@ -282,6 +301,7 @@ const playerDescription: { [key in HelloEffect]: LocaleText } = {
     ja: ' (青)',
     cn: ' (蓝毒)',
     ko: ' (파랑 디버프)',
+    tc: '(藍毒)',
   },
 } as const;
 
@@ -294,6 +314,7 @@ const playerComboDesc = {
     ja: ' (赤サークル)',
     cn: ' (红大圈)',
     ko: ' (빨강 광역)',
+    tc: '(紅大圈)',
   },
   redStack: {
     en: ' (as red stack)',
@@ -302,6 +323,7 @@ const playerComboDesc = {
     ja: ' (赤頭割り)',
     cn: ' (红分摊)',
     ko: ' (빨강 쉐어)',
+    tc: '(紅分攤)',
   },
   blueDefamation: {
     en: ' (as blue defamation)',
@@ -310,6 +332,7 @@ const playerComboDesc = {
     ja: ' (青サークル)',
     cn: ' (蓝大圈)',
     ko: ' (파랑 광역)',
+    tc: '(藍大圈)',
   },
   blueStack: {
     en: ' (as blue stack)',
@@ -318,6 +341,7 @@ const playerComboDesc = {
     ja: ' (青頭割り)',
     cn: ' (蓝分摊)',
     ko: ' (파랑 쉐어)',
+    tc: '(藍分攤)',
   },
 } as const;
 
@@ -328,6 +352,7 @@ const unknownDescriptionLocale: LocaleText = {
   ja: ' (???)',
   cn: ' (???)',
   ko: ' (???)',
+  tc: '(???)',
 };
 
 export interface Data extends OopsyData {
@@ -572,6 +597,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: '塔踏み #${num}失敗',
               cn: `错过 #${num} 塔`,
               ko: `기둥 #${num} 놓침`,
+              tc: `錯過 #${num} 塔`,
             },
           });
         }
@@ -601,6 +627,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: `塔#${num}`,
             cn: `塔 #${num}`,
             ko: `기둥 #${num}`,
+            tc: `塔 #${num}`,
           };
           const text = GetShareMistakeText(towerText, 2);
           for (const player of towerPlayers) {
@@ -631,6 +658,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `塔#${num}踏む (#${playerNum})`,
               cn: `#${num} 塔 点名 #${playerNum}`,
               ko: `기둥 #${num} 들어감 (#${playerNum})`,
+              tc: `#${num} 塔 點名 #${playerNum}`,
             },
           });
         }
@@ -650,6 +678,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `線#${num}取り失敗`,
               cn: `错过 #${num} 线`,
               ko: `선 #${num} 놓침`,
+              tc: `錯過 #${num} 線`,
             },
           });
         }
@@ -670,6 +699,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: `${m.ability} #${num}`,
             cn: `${m.ability} #${num}`,
             ko: `${m.ability} #${num}`,
+            tc: `${m.ability} #${num}`,
           };
           const text = numTargets > 1 ? GetShareMistakeText(tetherText, numTargets) : tetherText;
 
@@ -713,6 +743,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: `${matches.ability} (シールドコンボS以後)`,
             cn: `${matches.ability} (盾连击S后)`,
             ko: `${matches.ability} (방패 연격 S 이후)`,
+            tc: `${matches.ability} (盾連擊S後)`,
           },
         };
       },
@@ -781,6 +812,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: '赤デバフもらう',
               cn: '非预期红毒',
               ko: '빨강 디버프 잘못 받음',
+              tc: '非預期紅毒',
             },
           };
         }
@@ -796,6 +828,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: '青デバフもらう',
               cn: '非预期蓝毒',
               ko: '파랑 디버프 잘못 받음',
+              tc: '非預期藍毒',
             },
           };
         }
@@ -917,6 +950,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 ja: '赤デバフ失敗',
                 cn: '没拿到红毒',
                 ko: '빨강 디버프 못받음',
+                tc: '沒拿到紅毒',
               },
               blue: {
                 en: 'Failed to get blue rot',
@@ -925,6 +959,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
                 ja: '青デバフ失敗',
                 cn: '没拿到蓝毒',
                 ko: '파랑 디버프 못받음',
+                tc: '沒拿到藍毒',
               },
             }[color];
             mistakes.push({
@@ -1128,6 +1163,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           ja: '赤デバフ爆発',
           cn: '红毒爆炸',
           ko: '빨강 디버프 폭발',
+          tc: '紅毒爆炸',
         };
         const text = GetShareMistakeText(renamedText, targets);
         const isRedRot = data.helloStateSnapshot?.[matches.target]?.has(helloEffect.redRot);
@@ -1150,6 +1186,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
           ja: '青デバフ爆発',
           cn: '蓝毒爆炸',
           ko: '파랑 디버프 폭발',
+          tc: '藍毒爆炸',
         };
         const text = GetShareMistakeText(renamedText, targets);
         const isBlueRot = data.helloStateSnapshot?.[matches.target]?.has(helloEffect.blueRot);
@@ -1190,6 +1227,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: '検知失敗',
               cn: '未被小电视命中',
               ko: '모니터 안맞음',
+              tc: '未被小電視命中',
             },
           });
         }
@@ -1213,6 +1251,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `検知 x${count}`,
               cn: `吃小电视 x${count} 次`,
               ko: `모니터 ${count}개 맞음`,
+              tc: `吃小電視 x${count} 次`,
             },
           });
         }
@@ -1230,6 +1269,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `検知数: x${numMonitors}`,
               cn: `小电视总数: x${numMonitors}`,
               ko: `총 모니터 수: x${numMonitors}`,
+              tc: `小電視總數: x${numMonitors}`,
             },
           });
         }
@@ -1249,6 +1289,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         ja: '散会波動砲',
         cn: '分散波动炮',
         ko: '산개 파동포',
+        tc: '分散波動炮',
       }),
     },
     {
@@ -1268,6 +1309,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '連続散会波動砲',
             cn: '复读分散波动炮',
             ko: '산개 파동포 장판',
+            tc: '復讀分散波動炮',
           },
         };
       },
@@ -1309,6 +1351,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: '散会波動砲失敗',
               cn: `未被分散波动炮命中`,
               ko: `산개 파동포 놓침`,
+              tc: `未被分散波動炮命中`,
             },
           });
         }
@@ -1339,6 +1382,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `散会波動砲 x${count}`,
               cn: `分散波动炮 x${count}`,
               ko: `산개 파동포 x${count}`,
+              tc: `分散波動炮 x${count}`,
             },
           });
         }
@@ -1383,6 +1427,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `頭割り波動砲失敗`,
               cn: `未被分摊波动炮命中`,
               ko: `쉐어 파동포 놓침`,
+              tc: `未被分攤波動炮命中`,
             },
           });
         }
@@ -1407,6 +1452,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
               ja: `頭割り波動砲失敗 x${count}`,
               cn: `分摊波动炮 x${count}`,
               ko: `쉐어 파동포 x${count}`,
+              tc: `分攤波動炮 x${count}`,
             },
           });
         }
@@ -1440,6 +1486,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: 'エクサフレア',
             cn: '地火',
             ko: '엑사플레어',
+            tc: '地火',
           },
         };
       },
@@ -1456,6 +1503,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
         ja: '散会波動砲',
         cn: '分散波动炮',
         ko: '산개 파동포',
+        tc: '分散波動炮',
       }),
     },
   ],

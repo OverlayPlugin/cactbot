@@ -29,6 +29,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Majoritairement incomplet',
     cn: '大部分未完成',
     ko: '대부분 미완성',
+    tc: '大部分未完成',
   },
   triggers: [
     {
@@ -80,6 +81,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの後ろに (赤)',
           cn: '去背后 (红色)',
           ko: '뒤쪽으로 (빨강)',
+          tc: '去背後 (紅色)',
         },
         white: {
           en: 'Get in Front (White)',
@@ -88,6 +90,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの前に (白)',
           cn: '去正面 (白色)',
           ko: '앞쪽으로 (흰색)',
+          tc: '去正面 (白色)',
         },
       },
     },
@@ -112,6 +115,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '床の光っている円範囲へ',
           cn: '快踩净化圈',
           ko: '흰색 원 밟아서 선고 해제하기',
+          tc: '快踩淨化圈',
         },
       },
     },
@@ -153,6 +157,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Angra Mainyu': '安哥拉·曼纽',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Angra Mainyu': '安格拉·曼紐',
       },
     },
     {

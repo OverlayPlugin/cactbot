@@ -24,6 +24,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} にエスナ',
           cn: '驱散: ${player}',
           ko: '${player} 에스나',
+          tc: '驅散: ${player}',
         },
       },
     },
@@ -47,6 +48,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} にテールスクリュー',
           cn: '螺旋尾点${player}',
           ko: '${player} 꼬리 후려치기',
+          tc: '螺旋尾點${player}',
         },
       },
     },
@@ -74,6 +76,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Karlabos': '真红龙虾',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Karlabos': '棘刺殼蝦',
       },
     },
     {

@@ -38,6 +38,7 @@ const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
     ja: '<= 左が安地',
     cn: '<= 左侧安全',
     ko: '<= 왼쪽 안전',
+    tc: '<= 左側安全',
   },
   middleWedgeSafe: {
     en: 'Middle Wedge Safe',
@@ -46,6 +47,7 @@ const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
     ja: '中央が安地',
     cn: '中间安全',
     ko: '가운데 안전',
+    tc: '中間安全',
   },
   rightWedgeSafe: {
     en: 'Right Wedge Safe =>',
@@ -54,6 +56,7 @@ const mtFireOutputStrings: { [K in WedgeSafeSpot]: LocaleText } = {
     ja: '右が安地 =>',
     cn: '右侧安全 =>',
     ko: '오른쪽 안전 =>',
+    tc: '右側安全 =>',
   },
 };
 
@@ -65,6 +68,7 @@ const bigAoeOutputStrings: OutputStrings = {
     ja: '前方の角へ',
     cn: '前面角落',
     ko: '앞쪽 구석으로',
+    tc: '前面角落',
   },
   donut: {
     en: 'Donut (In)',
@@ -73,6 +77,7 @@ const bigAoeOutputStrings: OutputStrings = {
     ja: 'ドーナツの中へ',
     cn: '中间月环',
     ko: '도넛 (중앙으로)',
+    tc: '中間月環',
   },
   out: Outputs.outOfMelee,
 };
@@ -183,6 +188,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${type} => ペアで頭割り',
           cn: '${type} => 和搭档分摊',
           ko: '${type} => 파트너 쉐어',
+          tc: '${type} => 和搭檔分攤',
         },
       },
     },
@@ -236,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンク塔 (踏む/スイッチ)',
           cn: '双T轮换踩塔',
           ko: '탱커 기둥 (밟기/교대)',
+          tc: '雙T輪換踩塔',
         },
       },
     },
@@ -292,6 +299,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雑魚を倒して + ヒラグループ ${role}',
           cn: '击杀小怪 + 治疗分组分摊 ${role}',
           ko: '쫄 잡기 + 힐러 그룹 ${role}',
+          tc: '擊殺小怪 + 治療分組分攤 ${role}',
         },
         tank: {
           en: '(be in front)',
@@ -300,6 +308,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(前へ)',
           cn: '(站在最前面)',
           ko: '(앞에 서기)',
+          tc: '(站在最前面)',
         },
         nonTank: {
           en: '(behind tank)',
@@ -308,6 +317,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(タンクの後ろへ)',
           cn: '(站坦克后面)',
           ko: '(탱커 뒤에 서기)',
+          tc: '(站坦克後面)',
         },
       },
     },
@@ -409,6 +419,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '羽を壊す => 安全な床へ',
           cn: '击杀羽毛 => 站安全格内',
           ko: '깃털 부수기 => 안전한 칸으로',
+          tc: '擊殺羽毛 => 站安全格內',
         },
       },
     },
@@ -432,6 +443,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 - 高台',
           cn: '分散 - 浮空格',
           ko: '산개 - 공중부양 칸',
+          tc: '分散 - 浮空格',
         },
         lightning: {
           en: 'Spread - ground tile',
@@ -440,6 +452,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 - 地面',
           cn: '分散 - 地面格',
           ko: '산개 - 지상 칸',
+          tc: '分散 - 地面格',
         },
       },
     },
@@ -469,6 +482,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${type} => 捨てて',
           cn: '${type} => 引导火圈',
           ko: '${type} => 장판 유도',
+          tc: '${type} => 引導火圈',
         },
       },
     },
@@ -524,6 +538,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '玉を避ける - 高台',
           cn: '躲开球 - 浮空格',
           ko: '장판 피하기 - 공중부양 칸',
+          tc: '躲開球 - 浮空格',
         },
         combo: {
           en: '${dir} - elevated tile',
@@ -532,6 +547,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir} - 高台',
           cn: '${dir} - 浮空格',
           ko: '${dir} - 공중부양 칸',
+          tc: '${dir} - 浮空格',
         },
         northFront: {
           en: 'North Row, Front Half',
@@ -540,6 +556,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北側の前方へ',
           cn: '第一行前半',
           ko: '북쪽 줄, 앞부분',
+          tc: '第一行前半',
         },
         northBack: {
           en: 'North Row, Back Half',
@@ -548,6 +565,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北側の後方へ',
           cn: '第一行后半',
           ko: '북쪽 줄, 뒷부분',
+          tc: '第一行後半',
         },
         middleFront: {
           en: 'Middle Row, Front Half',
@@ -556,6 +574,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央の前方へ',
           cn: '第二行前半',
           ko: '가운데 줄, 앞부분',
+          tc: '第二行前半',
         },
         middleBack: {
           en: 'Middle Row, Back Half',
@@ -564,6 +583,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央の後方へ',
           cn: '第二行后半',
           ko: '가운데 줄, 뒷부분',
+          tc: '第二行後半',
         },
         southFront: {
           en: 'South Row, Front Half',
@@ -572,6 +592,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南側の前方へ',
           cn: '第三行前半',
           ko: '남쪽 줄, 앞부분',
+          tc: '第三行前半',
         },
         southBack: {
           en: 'South Row, Back Half',
@@ -580,6 +601,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南側の後方へ',
           cn: '第三行后半',
           ko: '남쪽 줄, 뒷부분',
+          tc: '第三行後半',
         },
       },
     },
@@ -606,6 +628,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 - 高台',
           cn: '分散 - 浮空格',
           ko: '산개 - 공중부양 칸',
+          tc: '分散 - 浮空格',
         },
         lightning: {
           en: 'Spread - ground tile',
@@ -614,6 +637,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 - 地面',
           cn: '分散 - 地面格',
           ko: '산개 - 지상 칸',
+          tc: '分散 - 地面格',
         },
       },
     },
@@ -634,6 +658,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔を踏む',
           cn: '踩塔',
           ko: '기둥 밟기',
+          tc: '踩塔',
         },
         avoidTower: {
           en: 'Avoid Tower',
@@ -642,6 +667,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔を避ける',
           cn: '远离塔',
           ko: '기둥 피하기',
+          tc: '遠離塔',
         },
       },
     },
@@ -744,6 +770,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後ろ/左へ',
           cn: '左/后 安全',
           ko: '뒤/왼쪽으로',
+          tc: '左/後 安全',
         },
         frontRight: {
           en: 'Be Front/Right',
@@ -752,6 +779,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前/右へ',
           cn: '右/前 安全',
           ko: '앞/오른쪽으로',
+          tc: '右/前 安全',
         },
         coneNWSafe: {
           en: 'NW Safe',
@@ -760,6 +788,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左上(北西) 安地',
           cn: '左上 安全',
           ko: '왼쪽 위 안전',
+          tc: '左上 安全',
         },
         coneNESafe: {
           en: 'NE Safe',
@@ -768,6 +797,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右上(北東) 安地',
           cn: '右上 安全',
           ko: '오른쪽 위 안전',
+          tc: '右上 安全',
         },
         unknown: {
           en: 'Dodge Avalanche',
@@ -776,6 +806,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雪崩を避けて',
           cn: '躲避雪崩',
           ko: '눈사태 피하기',
+          tc: '躲避雪崩',
         },
         combo: {
           en: '${type} - ${safe}',
@@ -784,6 +815,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${type} - ${safe}',
           cn: '${type} - ${safe}',
           ko: '${type} - ${safe}',
+          tc: '${type} - ${safe}',
         },
       },
     },
@@ -837,6 +869,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '<= 左へ (雪崩を避けて)',
           cn: '<= 去左边 (躲避雪崩)',
           ko: '<= 왼쪽으로 (눈사태 피하기)',
+          tc: '<= 去左邊 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
@@ -845,6 +878,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右へ => (雪崩を避けて)',
           cn: '去右边 (躲避雪崩) =>',
           ko: '오른쪽으로 (눈사태 피하기) =>',
+          tc: '去右邊 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
@@ -853,6 +887,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雪崩を避けて',
           cn: '躲避雪崩',
           ko: '눈사태 피하기',
+          tc: '躲避雪崩',
         },
       },
     },
@@ -899,6 +934,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '<= 左へ (雪崩を避けて)',
           cn: '<= 去左边 (躲避雪崩)',
           ko: '<= 왼쪽으로 (눈사태 피하기)',
+          tc: '<= 去左邊 (躲避雪崩)',
         },
         dodgeRight: {
           en: 'Go Right (Dodge Avalanche) =>',
@@ -907,6 +943,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右へ => (雪崩を避けて)',
           cn: '去右边 (躲避雪崩) =>',
           ko: '오른쪽으로 (눈사태 피하기) =>',
+          tc: '去右邊 (躲避雪崩) =>',
         },
         unknown: {
           en: 'Dodge Avalanche',
@@ -915,6 +952,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雪崩を避けて',
           cn: '躲避雪崩',
           ko: '눈사태 피하기',
+          tc: '躲避雪崩',
         },
       },
     },
@@ -1137,6 +1175,58 @@ const triggerSet: TriggerSet<Data> = {
         '\\(knockback\\)': '(击退)',
         '\\(storm phase\\)': '(风暴阶段)',
         '\\(tower\\)': '(塔)',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Arcane Sphere': '立體魔法陣',
+        'Feather of Ruin': '艷羽',
+        'Flame-kissed Beacon': '火之徵兆',
+        'Ice Boulder': '冰塊',
+        'Thunderous Beacon': '雷之徵兆',
+        'Valigarmanda': '艷翼蛇鳥',
+      },
+      'replaceText': {
+        'Blighted Bolt': '災厄落雷',
+        'Calamitous Cry': '災禍之鳴',
+        'Charring Cataclysm': '火之災禍',
+        'Chilling Cataclysm': '冰之災禍',
+        'Crackling Cataclysm': '雷之災禍',
+        'Disaster Zone': '災禍領域',
+        'Freezing Dust': '結冰塵',
+        'Hail of Feathers': '驟羽',
+        'Ice Boulder': '冰塊',
+        'Ice Talon': '冰爪',
+        'Mountain Fire': '山火',
+        'Northern Cross': '北十字星',
+        'Ruin Foretold': '災禍預兆',
+        'Ruinfall': '災禍衝',
+        'Scourge of Fire': '火之災變',
+        'Scourge of Ice': '冰之災變',
+        'Scourge of Thunder': '雷之災變',
+        'Skyruin': '擁有生命的天災',
+        'Slithering Strike': '蛇行強襲',
+        'Sphere Shatter': '碎裂',
+        'Spikesicle': '冰柱突刺',
+        'Strangling Coil': '蛇行盤繞',
+        'Susurrant Breath': '蛇行吐息',
+        'Thunderous Breath': '雷鳴吐息',
+        'Triscourge': '三重災變',
+        'Tulidisaster': '圖拉爾災禍',
+        'Valigarmanda': '艷翼蛇鳥',
+        'Volcanic Drop': '火山彈',
+        'Wrath Unfurled': '怒不可遏',
+        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        // '\\(damage\\)': '', // FIXME '(伤害)'
+        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        // '\\(fire phase\\)': '', // FIXME '(火阶段)'
+        // '\\(ice phase\\)': '', // FIXME '(冰阶段)'
+        // '\\(ice or storm phase\\?\\)': '', // FIXME '(冰或风暴阶段)'
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(storm phase\\)': '', // FIXME '(风暴阶段)'
+        // '\\(tower\\)': '', // FIXME '(塔)'
       },
     },
     {

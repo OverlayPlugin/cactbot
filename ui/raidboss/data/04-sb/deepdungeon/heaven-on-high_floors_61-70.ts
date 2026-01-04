@@ -49,6 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '円範囲を避ける',
           cn: '躲避圈圈',
           ko: '장판 피하기',
+          tc: '躲避圈圈',
         },
       },
     },
@@ -74,6 +75,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '円範囲に入る',
           cn: '进入圈圈',
           ko: '장판 밟기',
+          tc: '進入圈圈',
         },
       },
     },
@@ -92,6 +94,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '円範囲から離れる',
           cn: '离开圈圈',
           ko: '장판 밖으로',
+          tc: '離開圈圈',
         },
       },
     },
@@ -123,6 +126,13 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Heavenly Hashiri-dokoro': '天之东莨菪',
         'Kenko': '犬蛊',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Hashiri-dokoro': '天之東莨菪',
+        'Kenko': '犬蠱',
       },
     },
     {

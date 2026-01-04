@@ -42,6 +42,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '死の宣告',
             cn: '没解死宣',
             ko: '죽음의 선고',
+            tc: '沒解死宣',
           },
         };
       },
@@ -62,6 +63,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '落ちた',
             cn: '击退坠落',
             ko: '넉백됨',
+            tc: '擊退墜落',
           },
         };
       },

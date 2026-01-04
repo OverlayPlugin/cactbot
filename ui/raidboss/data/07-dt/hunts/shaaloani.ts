@@ -73,6 +73,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     fr: 'arrière',
     cn: '后',
     ko: '후방',
+    tc: '後',
   },
   rightFlank: {
     en: 'right flank',
@@ -80,6 +81,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     fr: 'flanc gauche',
     cn: '右侧',
     ko: '오른쪽 측면',
+    tc: '右側',
   },
   leftFlank: {
     en: 'left flank',
@@ -87,6 +89,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     fr: 'flanc droit',
     cn: '左侧',
     ko: '왼쪽 측면',
+    tc: '左側',
   },
   triple: {
     en: '${inOut} + ${dir2} + ${dir3}',
@@ -94,6 +97,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     fr: '${inOut} + ${dir2} + ${dir3}',
     cn: '${inOut} + ${dir2} + ${dir3}',
     ko: '${inOut} + ${dir2} + ${dir3}',
+    tc: '${inOut} + ${dir2} + ${dir3}',
   },
   double: {
     en: '${inOut} + ${dir2}',
@@ -101,6 +105,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     fr: '${inOut} + ${dir2}',
     cn: '${inOut} + ${dir2}',
     ko: '${inOut} + ${dir2}',
+    tc: '${inOut} + ${dir2}',
   },
   awayFrom: {
     en: '${out} + avoid ${dir}',
@@ -108,6 +113,7 @@ const ttokrroneTempestSandspoutOutputStrings = {
     fr: '${out} + évitez ${dir}',
     cn: '${out} + 躲避 ${dir}',
     ko: '${out} + ${dir} 피하기',
+    tc: '${out} + 躲避 ${dir}',
   },
 } as const;
 
@@ -128,20 +134,25 @@ const ttokrroneDustdevilOutputStrings = {
     fr: 'Extérieur de la hitbox + restez à l\'extérieur',
     cn: '判定圈外 + 待在外面',
     ko: '히트박스 밖으로 + 밖에 있기',
+    tc: '判定圈外 + 待在外面',
   },
   rotateFront: {
-    en: 'Rotating frontal cleave', // ${dir}'
+    en: 'Rotating frontal cleave',
+    // ${dir}'
     de: 'Rotierende Frontal-Cleaves',
     fr: 'Cleave frontal tournant',
     cn: '旋转正面顺劈',
     ko: '전방 회전 장판',
+    tc: '旋轉正面順劈',
   },
   rotateRear: {
-    en: 'Rotating rear cleave', // ${dir}'
+    en: 'Rotating rear cleave',
+    // ${dir}'
     de: 'Rotierende Hinten-Cleaves',
     fr: 'Cleave arrière tournant',
     cn: '旋转背后顺劈',
     ko: '후방 회전 장판',
+    tc: '旋轉背後順劈',
   },
 } as const;
 
@@ -203,6 +214,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A et ALÉA Boss Ttokrrone',
     cn: 'A级狩猎怪和得酷热涅特殊FATE',
     ko: 'A급 마물, 토크로네 특수돌발',
+    tc: 'A級狩獵怪和得酷熱涅特殊FATE',
   },
   initData: () => ({
     yeheheTurnBuffs: [],
@@ -240,6 +252,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Suivez la ruée (intérieur ensuite)',
           cn: '跟随冲锋',
           ko: '돌진 따라가기 (그리고 안으로)',
+          tc: '跟隨衝鋒',
         },
       },
     },
@@ -263,6 +276,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Avant (après)',
           cn: '(稍后 强制移动: 前)',
           ko: '강제이동: 앞 (나중에)',
+          tc: '(稍後 強制移動: 前)',
         },
         backward: {
           en: 'Forced March: Backward (later)',
@@ -270,6 +284,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Arrière (après)',
           cn: '(稍后 强制移动: 后)',
           ko: '강제이동: 뒤 (나중에)',
+          tc: '(稍後 強制移動: 後)',
         },
         left: {
           en: 'Forced March: Left (later)',
@@ -277,6 +292,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Gauche (après)',
           cn: '(稍后 强制移动: 左)',
           ko: '강제이동: 왼쪽 (나중에)',
+          tc: '(稍後 強制移動: 左)',
         },
         right: {
           en: 'Forced March: Right (later)',
@@ -284,6 +300,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Droite (après)',
           cn: '(稍后 强制移动: 右)',
           ko: '강제이동: 오른쪽 (나중에)',
+          tc: '(稍後 強制移動: 右)',
         },
       },
     },
@@ -305,6 +322,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Avant',
           cn: '强制移动: 前',
           ko: '강제이동: 앞',
+          tc: '強制移動: 前',
         },
         backward: {
           en: 'Forced March: Backward',
@@ -312,6 +330,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Arrière',
           cn: '强制移动: 后',
           ko: '강제이동: 뒤',
+          tc: '強制移動: 後',
         },
         left: {
           en: 'Forced March: Left',
@@ -319,6 +338,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Gauche',
           cn: '强制移动: 左',
           ko: '강제이동: 왼쪽',
+          tc: '強制移動: 左',
         },
         right: {
           en: 'Forced March: Right',
@@ -326,6 +346,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Marche forcée : Droite',
           cn: '强制移动: 右',
           ko: '강제이동: 오른쪽',
+          tc: '強制移動: 右',
         },
       },
     },
@@ -505,6 +526,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Évitez le cleave du lien',
           cn: '躲避连线冲锋',
           ko: '직선 장판 피하기',
+          tc: '躲避連線衝鋒',
         },
       },
     },
@@ -557,6 +579,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite => Gauche + Intérieur',
           cn: '右 => 左 + 内',
           ko: '오른쪽 => 왼쪽 + 안',
+          tc: '右 => 左 + 內',
         },
       },
     },
@@ -573,6 +596,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche => Droite + Intérieur',
           cn: '左 => 右 + 内',
           ko: '왼쪽 => 오른쪽 + 안',
+          tc: '左 => 右 + 內',
         },
       },
     },
@@ -589,6 +613,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite => Gauche + Extérieur',
           cn: '右 => 左 + 外',
           ko: '오른쪽 => 왼쪽 + 바깥',
+          tc: '右 => 左 + 外',
         },
       },
     },
@@ -605,6 +630,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche => Droite + Extérieur',
           cn: '左 => 右 + 外',
           ko: '왼쪽 => 오른쪽 + 바깥',
+          tc: '左 => 右 + 外',
         },
       },
     },
@@ -804,6 +830,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez du côté sûr après le 1er dash => allez à l\'intérieur ensuite',
           cn: '前往首次冲锋两侧 => 躲进去',
           ko: '첫 돌진의 안전지대로 이동 => 그 후 첫 돌진 자리로',
+          tc: '前往首次衝鋒兩側 => 躲進去',
         },
       },
     },
@@ -823,6 +850,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Évitez les sphères de sables explosives',
           cn: '躲避沙球爆炸',
           ko: '폭발하는 모래구체 피하기',
+          tc: '躲避沙球爆炸',
         },
       },
     },
@@ -894,6 +922,16 @@ const triggerSet: TriggerSet<Data> = {
         'Yehehetoaua\'pyo': '艾海海陶瓦泡',
         'Sansheya': '山谢亚',
         'Ttokrrone': '得酷热涅',
+        'Sand Sphere': '沙球',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Keheniheyamewi': '凱海尼海亞麥尤伊',
+        'Yehehetoaua\'pyo': '艾海海陶瓦泡',
+        'Sansheya': '山謝亞',
+        'Ttokrrone': '德庫洛涅',
         'Sand Sphere': '沙球',
       },
     },

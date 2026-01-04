@@ -191,6 +191,7 @@ Options.Triggers.push({
           ja: '挑発: ${player}',
           cn: '挑衅: ${player}',
           ko: '도발: ${player}',
+          tc: '挑釁: ${player}',
         },
       },
     },

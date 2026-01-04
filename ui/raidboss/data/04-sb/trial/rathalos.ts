@@ -33,6 +33,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Flanc droit (ou extérieur)',
           cn: '右侧 (或远离)',
           ko: '오른쪽 (혹은 멀리 가기)',
+          tc: '右側 (或遠離)',
         },
       },
     },
@@ -59,6 +60,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Suivez le flanc gauche (ou extérieur)',
           cn: '左侧 (或远离)',
           ko: '왼쪽 (혹은 멀리가기)',
+          tc: '左側 (或遠離)',
         },
       },
     },
@@ -83,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Évitez la charge',
           cn: '避开冲锋',
           ko: '돌진 피하기',
+          tc: '避開衝鋒',
         },
       },
     },
@@ -108,6 +111,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Utilisez le point d\'appui',
           cn: '上龙背QTE',
           ko: '등에 올라타기',
+          tc: '上龍背QTE',
         },
       },
     },
@@ -159,6 +163,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Rathalos': '火龙',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Rathalos': '火龍',
       },
     },
     {

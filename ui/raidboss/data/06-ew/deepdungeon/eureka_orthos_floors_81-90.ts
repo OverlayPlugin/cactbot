@@ -30,6 +30,7 @@ const interceptionOutputStrings: { [label: string]: LocaleText } = {
     ja: 'たまご',
     cn: '蛋',
     ko: '알',
+    tc: '蛋',
   },
   cube: {
     en: 'cubes',
@@ -38,14 +39,17 @@ const interceptionOutputStrings: { [label: string]: LocaleText } = {
     ja: '四角',
     cn: '方块',
     ko: '큐브',
+    tc: '方塊',
   },
   ball: {
     en: 'ball',
     de: 'Ball',
     fr: 'Balle',
-    ja: '円', // 〇
+    ja: '円',
+    // 〇
     cn: '球',
     ko: '공',
+    tc: '球',
   },
 } as const;
 
@@ -157,6 +161,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの斜めへ',
           cn: '去Boss的斜角方向',
           ko: '보스의 대각선 방향으로 피하기',
+          tc: '去Boss的斜角方向',
         },
       },
     },
@@ -262,6 +267,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${first} => ${second} => ${third}',
           cn: '${first} => ${second} => ${third}',
           ko: '${first} => ${second} => ${third}',
+          tc: '${first} => ${second} => ${third}',
         },
       },
     },
@@ -352,6 +358,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${safe}, たまごの間',
           cn: '${safe}, 蛋中间',
           ko: '${safe}, 알 사이',
+          tc: '${safe}, 蛋中間',
         },
         safe: {
           en: '${safe}',
@@ -360,6 +367,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${safe}',
           cn: '${safe}',
           ko: '${safe}',
+          tc: '${safe}',
         },
         northEast: Outputs.northeast,
         southEast: Outputs.southeast,
@@ -443,6 +451,25 @@ const triggerSet: TriggerSet<Data> = {
         'Orthos Spartoi': '正统地生人',
         'Orthos Specter': '正统妖影',
         'Orthos Wraith': '正统幽灵',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Administrator': '管理者',
+        'Interceptor α': '截擊系統α',
+        'Interceptor β': '截擊系統β',
+        'Interceptor γ': '截擊系統γ',
+        'Orthoiron Corse': '正統鐵面腐屍',
+        'Orthos Ahriman': '正統惡精靈',
+        'Orthos Catoblepas': '正統卡托佈雷帕斯',
+        'Orthos Deepeye': '正統深瞳',
+        'Orthos Gourmand': '正統貪吃鬼',
+        'Orthos Hecteyes': '正統百目妖',
+        'Orthos Pegasus': '正統黑天馬',
+        'Orthos Spartoi': '正統地生人',
+        'Orthos Specter': '正統妖影',
+        'Orthos Wraith': '正統幽靈',
       },
     },
     {

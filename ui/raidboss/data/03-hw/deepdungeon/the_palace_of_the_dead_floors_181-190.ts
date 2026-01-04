@@ -32,6 +32,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外へ、または${name}に詠唱中断',
           cn: '出去或打断 ${name}',
           ko: '밖으로 또는 ${name} 시전 끊기',
+          tc: '出去或打斷 ${name}',
         },
       },
     },
@@ -54,6 +55,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中へ、または${name}に詠唱中断',
           cn: '去脚下或打断 ${name}',
           ko: '밑으로 또는 ${name} 시전 끊기',
+          tc: '去腳下或打斷 ${name}',
         },
       },
     },
@@ -73,6 +75,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${name}を倒す',
           cn: '击杀 ${name}',
           ko: '${name} 처치',
+          tc: '擊殺 ${name}',
         },
       },
     },
@@ -93,6 +96,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${name}をボスに飛ばして',
           cn: '将 ${name} 推至BOSS',
           ko: '보스쪽으로 ${name} 밀기',
+          tc: '將 ${name} 推至BOSS',
         },
       },
     },
@@ -120,6 +124,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Deep Palace Garm': '深宫加姆',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Deep Palace Garm': '深宮加姆',
       },
     },
     {

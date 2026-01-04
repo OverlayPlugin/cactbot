@@ -65,6 +65,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '突進に当たる',
             cn: '被碾了',
             ko: '돌진 맞음',
+            tc: '被碾了',
           },
         };
       },

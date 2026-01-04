@@ -29,6 +29,7 @@ const triggerSet: TriggerSet<Data> = {
     ja: 'アメノミハシラ (全階層)',
     cn: '天之御柱 (全楼层)',
     ko: '천궁탑 (전체 층)',
+    tc: '天之御柱 (全樓層)',
   },
 
   triggers: [
@@ -51,6 +52,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ミミック！',
           cn: '已生成 抖动的宝箱!',
           ko: '꿈틀거리는 보물상자 등장!',
+          tc: '已生成 抖動的寶箱!',
         },
       },
     },
@@ -115,6 +117,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${pomander} 被り',
           cn: '${pomander} 重复',
           ko: '${pomander} 중복',
+          tc: '${pomander} 重複',
         },
         // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         safety: {
@@ -124,6 +127,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '呪印解除',
           cn: '咒印解除',
           ko: '함정 해제',
+          tc: '咒印解除',
         },
         sight: {
           en: 'Sight',
@@ -132,6 +136,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サイトロ',
           cn: '全景',
           ko: '사이트로',
+          tc: '全景',
         },
         strength: {
           en: 'Strength',
@@ -140,6 +145,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自己強化',
           cn: '强化自身',
           ko: '자기 강화',
+          tc: '強化自身',
         },
         steel: {
           en: 'Steel',
@@ -148,6 +154,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '防御強化',
           cn: '强化防御',
           ko: '방어 강화',
+          tc: '強化防禦',
         },
         affluence: {
           en: 'Affluence',
@@ -156,6 +163,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '宝箱増加',
           cn: '宝箱增加',
           ko: '보물상자 증가',
+          tc: '寶箱增加',
         },
         flight: {
           en: 'Flight',
@@ -164,6 +172,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵排除',
           cn: '减少敌人',
           ko: '적 감소',
+          tc: '減少敵人',
         },
         alteration: {
           en: 'Alteration',
@@ -172,6 +181,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵変化',
           cn: '改变敌人',
           ko: '적 대체',
+          tc: '改變敵人',
         },
         purity: {
           en: 'Purity',
@@ -180,6 +190,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '解呪',
           cn: '解咒',
           ko: '저주 해제',
+          tc: '解咒',
         },
         fortune: {
           en: 'Fortune',
@@ -188,6 +199,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '運気上昇',
           cn: '运气上升',
           ko: '운 상승',
+          tc: '運氣上升',
         },
         witching: {
           en: 'Witching',
@@ -196,6 +208,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '形態変化',
           cn: '形态变化',
           ko: '적 변형',
+          tc: '形態變化',
         },
         serenity: {
           en: 'Serenity',
@@ -204,6 +217,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔法効果解除',
           cn: '魔法效果解除',
           ko: '마법 효과 해제',
+          tc: '魔法效果解除',
         },
         intuition: {
           en: 'Intuition',
@@ -212,6 +226,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '財宝感知',
           cn: '感知宝藏',
           ko: '보물 탐지',
+          tc: '感知寶藏',
         },
         raising: {
           en: 'Raising',
@@ -220,6 +235,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'リレイズ',
           cn: '重生',
           ko: '리레이즈',
+          tc: '重生',
         },
         frailty: {
           en: 'Frailty',
@@ -228,6 +244,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵弱体',
           cn: '弱化敌人',
           ko: '적 약화',
+          tc: '弱化敵人',
         },
         concealment: {
           en: 'Concealment',
@@ -236,6 +253,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'バニシュ',
           cn: '隐形',
           ko: '배니시',
+          tc: '隱形',
         },
         petrification: {
           en: 'Petrification',
@@ -244,6 +262,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵石化',
           cn: '石化敌人',
           ko: '적 석화',
+          tc: '石化敵人',
         },
         unknown: Outputs.unknown,
       },
@@ -276,6 +295,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${magicite} 被り',
           cn: '${magicite} 重复',
           ko: '${magicite} 중복',
+          tc: '${magicite} 重複',
         },
         // magicite: https://v2.xivapi.com/api/sheet/DeepDungeonMagicStone
         inferno: {
@@ -285,6 +305,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'イフリート',
           cn: '伊弗利特',
           ko: '이프리트',
+          tc: '伊弗利特',
         },
         crag: {
           en: 'Crag',
@@ -293,6 +314,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タイタン',
           cn: '泰坦',
           ko: '타이탄',
+          tc: '泰坦',
         },
         vortex: {
           en: 'Vortex',
@@ -301,6 +323,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ガルーダ',
           cn: '迦楼罗',
           ko: '가루다',
+          tc: '迦樓羅',
         },
         elder: {
           en: 'Elder',
@@ -309,6 +332,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'オーディン',
           cn: '奥丁',
           ko: '오딘',
+          tc: '奧汀',
         },
         unknown: Outputs.unknown,
       },
@@ -330,6 +354,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '転移が出来ます',
           cn: '转移灯笼已启动',
           ko: '전송 등불 활성화',
+          tc: '傳送燈籠已啟動',
         },
       },
     },
@@ -357,6 +382,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Quivering Coffer': '抖动的宝箱',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Quivering Coffer': '抖動的寶箱',
       },
     },
     {

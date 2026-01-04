@@ -43,6 +43,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雑魚: 子タイタン',
           cn: '小土豆出现',
           ko: '화강암 감옥 쫄',
+          tc: '小馬鈴薯出現',
         },
       },
     },
@@ -59,6 +60,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '大地の重み2連',
           cn: '二连流沙',
           ko: '2연속 대지의 무게',
+          tc: '二連流沙',
         },
       },
     },
@@ -86,6 +88,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にジェイル',
           cn: '石牢点名',
           ko: '돌감옥 대상자',
+          tc: '石牢點名',
         },
         jails: {
           en: 'Jails',
@@ -94,6 +97,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ジェイル',
           cn: '石牢',
           ko: '돌감옥',
+          tc: '石牢',
         },
       },
     },
@@ -220,6 +224,37 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Tumult': '怒震',
         'Upheaval': '大怒震',
         'Weight Of The Land': '大地之重',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Bomb Boulder': '爆破岩石',
+        'Granite Gaoler': '花崗石衛',
+        'Titan': '泰坦',
+      },
+      'replaceText': {
+        // '\\(all\\)': '', // FIXME '(全部)'
+        // '\\(clock\\)': '', // FIXME '(顺时针)'
+        // '\\(one side\\)': '', // FIXME '(一侧)'
+        // '\\(row 1\\)': '', // FIXME '(第1列)'
+        // '\\(row 2\\)': '', // FIXME '(第2列)'
+        // '\\(row 3\\)': '', // FIXME '(第3列)'
+        'Burst': '大爆炸',
+        'Bury': '塌方',
+        'Earthen Fury': '大地之怒',
+        // 'Gaoler Adds': '', // FIXME '花岗石卫出现'
+        // 'Gaoler Landslide': '', // FIXME '花岗石卫地裂'
+        'Gaoler Tumult': '激震',
+        'Geocrush': '大地撞擊',
+        '(?<! )Landslide': '地裂',
+        'Mountain Buster': '山崩',
+        'Rock Buster': '岩石破壞者',
+        'Rock Throw': '花崗岩牢獄',
+        '(?<! )Tumult': '激震',
+        'Upheaval': '大激震',
+        'Weight Of The Land': '大地重壓',
       },
     },
     {

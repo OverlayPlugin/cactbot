@@ -47,6 +47,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にアラガンロット',
           cn: '毒点 ${player}',
           ko: '${player} 알라그 부패',
+          tc: '毒點 ${player}',
         },
         rotOnYou: {
           en: 'Rot on YOU',
@@ -55,6 +56,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にアラガンロット',
           cn: '毒点名',
           ko: '알라그 부패 대상자',
+          tc: '毒點名',
         },
       },
     },
@@ -78,6 +80,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ロットを移す',
           cn: '传毒',
           ko: '부패 전달하기',
+          tc: '傳毒',
         },
       },
     },
@@ -112,6 +115,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Allagan Rot': '亚拉戈古病毒',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Allagan Rot': '亞拉戈古病毒',
       },
     },
     {

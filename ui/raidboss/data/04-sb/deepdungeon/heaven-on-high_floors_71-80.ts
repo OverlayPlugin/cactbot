@@ -93,6 +93,16 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Heavenly Hyoga': '天之冰牙',
+        'Heavenly Ichijama': '天之生邪魔',
+        'Heavenly Mammoth': '天之長毛象',
+        'Heavenly Tofu': '天之豆腐',
+        'Kajigakaka': '鍛冶媼',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Heavenly Hyoga': '천궁 효우가',

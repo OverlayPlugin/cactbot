@@ -76,6 +76,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にソーンウィップ',
           cn: '荆棘点名',
           ko: '가시 대상자',
+          tc: '荊棘點名',
         },
         oneTether: {
           en: 'Thorns w/ (${player})',
@@ -84,6 +85,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分と (${player}) にソーンウィップ',
           cn: '荆棘连 ${player}',
           ko: '가시 대상자 (${player})',
+          tc: '荊棘連 ${player}',
         },
         twoTethers: {
           en: 'Thorns w/ (${player1}, ${player2})',
@@ -92,6 +94,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分と (${player1}, ${player2}) にソーンウィップ',
           cn: '荆棘连 ${player1}, ${player2}',
           ko: '가시 대상자 (${player1}, ${player2})',
+          tc: '荊棘連 ${player1}, ${player2}',
         },
         threeOrMoreTethers: {
           en: 'Thorns (${num} people)',
@@ -100,6 +103,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ソーンウィップ (${num}人)',
           cn: '荆棘 (${num} 人)',
           ko: '가시 (${num}명)',
+          tc: '荊棘 (${num} 人)',
         },
       },
     },
@@ -147,6 +151,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '捕食を避ける',
           cn: '躲开捕食',
           ko: '포식 피하기',
+          tc: '躲開捕食',
         },
         jumpInNewThorns: {
           en: 'Devour: Jump In New Thorns',
@@ -155,6 +160,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '捕食: 新芽に乗る',
           cn: '去新荆棘',
           ko: '포식: 가시장판 밟기',
+          tc: '去新荊棘',
         },
         getEaten: {
           en: 'Devour: Get Eaten',
@@ -163,6 +169,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '捕食: 捕食される',
           cn: '捕食点名',
           ko: '포식: 잡아먹히기',
+          tc: '捕食點名',
         },
       },
     },
@@ -193,6 +200,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '集合、アシッドレインを誘導',
           cn: '集合引导酸雨',
           ko: '모여서 산성비 장판 유도',
+          tc: '集合引導酸雨',
         },
       },
     },
@@ -218,6 +226,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にスウォーム',
           cn: '蜂群点${player}',
           ko: '${player} 벌레',
+          tc: '蜂群點${player}',
         },
         swarmOnYou: {
           en: 'Swarm on YOU',
@@ -226,6 +235,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にスウォーム',
           cn: '蜂群点名',
           ko: '벌레 대상자',
+          tc: '蜂群點名',
         },
       },
     },
@@ -247,6 +257,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(自分に)頭割りレーザー',
           cn: '分摊激光点名',
           ko: '직선 쉐어 대상자',
+          tc: '分攤雷射點名',
         },
         shareLaserOn: {
           en: 'Share Laser (on ${player})',
@@ -255,6 +266,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '(${player})に頭割りレーザー',
           cn: '分摊激光点 ${player}',
           ko: '${player} 직선 쉐어',
+          tc: '分攤雷射點 ${player}',
         },
       },
     },
@@ -342,6 +354,27 @@ const triggerSet: TriggerSet<Data> = {
         'Swarm': '招蜂香气',
         'Thorn Whip': '荆棘鞭',
         'Viscid Emission': '胶质排放物',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Rafflesia': '大王花',
+        'Scar\'s Edge': '破損的門前',
+      },
+      'replaceText': {
+        'Acid Rain': '酸蝕雨',
+        'Blighted Bouquet': '凋零的花香',
+        'Bloody Caress': '血腥的愛撫',
+        'Briary Growth': '荊棘叢生',
+        'Devour': '捕食',
+        'Floral Trap': '鮮花陷阱',
+        'Leafstorm': '綠葉風暴',
+        'Rotten Stench': '腐爛惡臭',
+        'Spit': '吐出',
+        'Swarm': '招蜂香氣',
+        'Thorn Whip': '荊棘鞭',
+        'Viscid Emission': '膠質排放物',
       },
     },
     {

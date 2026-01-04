@@ -30,6 +30,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '像の後ろへ',
           cn: '躲在雕像后',
           ko: '조각상 뒤에 숨기',
+          tc: '躲在雕像後',
         },
       },
     },
@@ -46,6 +47,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '光球を倒してボスに近づく',
           cn: '击杀幻光球, 靠近BOSS',
           ko: '빛구슬을 잡고 보스와 가까이 붙기',
+          tc: '擊殺幻光球, 靠近BOSS',
         },
       },
     },
@@ -77,6 +79,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'replaceSync': {
+        'Boogyman': '夜魔人',
+      },
+    },
+    {
+      'locale': 'tc',
       'replaceSync': {
         'Boogyman': '夜魔人',
       },

@@ -48,6 +48,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '散開しなかった!',
             cn: '没有散开!',
             ko: '산개하지 않았음!',
+            tc: '沒有散開!',
           },
         };
       },

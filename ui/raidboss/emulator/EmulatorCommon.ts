@@ -160,6 +160,16 @@ export default class EmulatorCommon {
         language: res.groups?.language ?? undefined,
       };
     }
+    res = EmulatorCommon.doesLineMatch(line, EmulatorCommon.ceRegexes);
+    if (res) {
+      if (res.groups?.data0 !== '00') {
+        return {
+          StartIn: '0',
+          StartType: 'CE Start',
+          language: res.groups?.language ?? undefined,
+        };
+      }
+    }
     res = EmulatorCommon.doesLineMatch(line, EmulatorCommon.engageRegexes);
     if (res) {
       return {
@@ -202,12 +212,22 @@ export default class EmulatorCommon {
         language: res.groups?.language ?? undefined,
       };
     }
+    res = EmulatorCommon.doesLineMatch(line, EmulatorCommon.ceRegexes);
+    if (res) {
+      if (res.groups?.data0 === '00') {
+        return {
+          EndType: 'CE End',
+          language: res.groups?.language ?? undefined,
+        };
+      }
+    }
   }
 
   static sealRegexes = LocaleNetRegex.areaSeal;
   static engageRegexes = LocaleNetRegex.countdownEngage;
   static countdownRegexes = LocaleNetRegex.countdownStart;
   static unsealRegexes = LocaleNetRegex.areaUnseal;
+  static ceRegexes = NetRegexes.network6d({ command: '80000014' });
   static wipeRegex = commonNetRegex.wipe;
   static winRegex = NetRegexes.network6d({ command: '4000000[23]' });
   static cactbotWipeRegex = NetRegexes.echo({ line: 'cactbot wipe.*?' });

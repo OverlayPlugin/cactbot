@@ -42,6 +42,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にワイルドチャージ',
           cn: '蓝球点${player}',
           ko: '"${player}" 돌진 대상',
+          tc: '藍球點${player}',
         },
         chargeOnYou: {
           en: 'Charge on YOU',
@@ -50,6 +51,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にワイルドチャージ',
           cn: '蓝球点名',
           ko: '돌진 대상자',
+          tc: '藍球點名',
         },
       },
     },
@@ -79,6 +81,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}にサイクロニックカオス',
           cn: '连线点${player}',
           ko: '${player} 휘몰아치는 혼돈',
+          tc: '連線點${player}',
         },
         cyclonicOnYou: {
           en: 'Cyclonic on YOU',
@@ -87,6 +90,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にサイクロニックカオス',
           cn: '连线点名',
           ko: '휘몰아치는 혼돈 대상자',
+          tc: '連線點名',
         },
       },
     },
@@ -170,6 +174,27 @@ const triggerSet: TriggerSet<Data> = {
         'Son': '伊姆都古德之子',
         'Spike Flail': '刃尾横扫',
         'Wild Charge': '狂野冲锋',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Imdugud': '伊姆都古德',
+        'The Alpha Concourse': '第1信徒區間',
+      },
+      'replaceText': {
+        'Crackle Hiss': '雷光電閃',
+        'Critical Rip': '暴擊撕裂',
+        'Cyclonic Chaos': '龍捲雷暴',
+        // 'Daughter': '', // FIXME '伊姆都古德之女'
+        'Electric Burst': '電流爆裂',
+        'Electrocharge': '電氣充能',
+        'Heat Lightning': '驚電',
+        // 'Random \\+ Charge': '', // FIXME '随机+冲锋'
+        // 'Son': '', // FIXME '伊姆都古德之子'
+        'Spike Flail': '刃尾橫掃',
+        'Wild Charge': '狂野蓄力',
       },
     },
     {

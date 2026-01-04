@@ -13,6 +13,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Alerte de génération de nœud programmée',
     cn: '限时采集点生成警报',
     ko: '시간제 노드 출현 알림',
+    tc: '限時採集點生成警報',
   },
   resetWhenOutOfCombat: false,
   triggers: [
@@ -35,6 +36,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '幻の採集場探したよ！',
           cn: '梦幻采集点刷了！冲鸭！！',
           ko: '환상의 광맥/성목 발견',
+          tc: '夢幻採集點刷了！沖鴨！！',
         },
       },
     },
@@ -52,6 +54,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'チャットに座標を確認',
           cn: '检查聊天栏中的坐标',
           ko: '디아뎀 좌표 채팅 올라옴',
+          tc: '檢查聊天欄中的坐標',
         },
       },
     },
@@ -84,6 +87,11 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'The Diadem': '云冠群岛',
       },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {},
     },
     {
       'locale': 'ko',

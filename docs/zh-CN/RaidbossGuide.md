@@ -217,6 +217,7 @@ outputStrings: {
     ja: 'タンクバスター',
     cn: '坦克死刑',
     ko: '탱버',
+    tc: '坦克死刑',
   },
   onTarget: {
     en: 'Tank Buster on ${name}',
@@ -225,6 +226,7 @@ outputStrings: {
     ja: '${name}にタンクバスター',
     cn: '死刑 点 ${name}',
     ko: '"${name}" 탱버',
+    tc: '死刑 點 ${name}',
   },
 },
 ```
@@ -351,6 +353,7 @@ comment: {
     ja: '大ダメージAoE',
     cn: '大AoE伤害！',
     ko: '강한 전체 공격!',
+    tc: '大AoE傷害！',
   },
 },
 ```
@@ -397,6 +400,7 @@ comment: {
       ja: 'レーザー注意',
       cn: '躲避击退激光',
       ko: '레이저 피하기',
+      tc: '躲避擊退雷射',
     },
   },
 },
@@ -471,6 +475,7 @@ cactbot 中许多代码使用了 `LocaleText` 类型取代需要翻译的字符�
             fr: 'Tour DPS',
             cn: 'DPS塔',
             ko: '딜러 장판',
+            tc: 'DPS塔',
           },
 ```
 

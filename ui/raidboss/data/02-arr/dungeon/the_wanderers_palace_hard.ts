@@ -30,6 +30,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} を全回復して',
           cn: '奶满${player}',
           ko: '완전 회복: ${player}',
+          tc: '奶滿${player}',
         },
       },
     },
@@ -63,6 +64,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Slithy Zolool Ja': '湿皮妖师 佐尔加',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Slithy Zolool Ja': '濕皮妖師 佐爾加',
       },
     },
     {

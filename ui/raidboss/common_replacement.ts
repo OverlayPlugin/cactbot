@@ -74,6 +74,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '$1の封鎖まであと',
       cn: '距$1被封锁还有',
       ko: '15초 후에 $1[이가] 봉쇄됩니다',
+      tc: '距$1被封鎖還有',
     },
     [syncKeys.unseal]: {
       en: 'is no longer sealed',
@@ -82,6 +83,7 @@ export const commonReplacement: CommonReplacement = {
       ja: 'の封鎖が解かれた',
       cn: '的封锁解除了',
       ko: '의 봉쇄가 해제되었습니다',
+      tc: '的封鎖解除了',
     },
     [syncKeys.engage]: {
       en: 'Engage!',
@@ -90,6 +92,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '戦闘開始！',
       cn: '战斗开始！',
       ko: '전투 시작!',
+      tc: '戰鬥開始！',
     },
   },
   replaceText: {
@@ -99,6 +102,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--雑魚出現--',
       cn: '--小怪出现--',
       ko: '--쫄 소환--',
+      tc: '--小怪出現--',
     },
     '--adds targetable--': {
       de: '--Adds anvisierbar--',
@@ -106,6 +110,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--雑魚ターゲット可能--',
       cn: '--小怪可选中--',
       ko: '--쫄 타겟 가능--',
+      tc: '--小怪可選中--',
     },
     '--center--': {
       de: '--Mitte--',
@@ -113,6 +118,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--センター--',
       cn: '--中央--',
       ko: '--중앙--',
+      tc: '--中央--',
     },
     '\\(center\\)': {
       de: '(Mitte)',
@@ -120,6 +126,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(センター)',
       cn: '(中央)',
       ko: '(중앙)',
+      tc: '(中央)',
     },
     '--clones appear--': {
       de: '--Klone erscheinen--',
@@ -127,6 +134,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--幻影出現--',
       cn: '--幻影出现--',
       ko: '--분신 소환--',
+      tc: '--幻影出現--',
     },
     '--corner--': {
       de: '--Ecke--',
@@ -134,6 +142,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--コーナー--',
       cn: '--角落--',
       ko: '--구석--',
+      tc: '--角落--',
     },
     '--dps burn--': {
       de: '--DPS burn--',
@@ -141,6 +150,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--火力出せ--',
       cn: '--转火--',
       ko: '--딜 체크--',
+      tc: '--轉火--',
     },
     '--east--': {
       de: '--Osten--',
@@ -148,6 +158,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--東--',
       cn: '--东--',
       ko: '--동쪽--',
+      tc: '--東--',
     },
     '\\(east\\)': {
       de: '(Osten)',
@@ -155,6 +166,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(東)',
       cn: '(东)',
       ko: '(동쪽)',
+      tc: '(東)',
     },
     'Enrage': {
       de: 'Finalangriff',
@@ -162,6 +174,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '時間切れ',
       cn: '狂暴',
       ko: '전멸기',
+      tc: '狂暴',
     },
     '--frozen--': {
       de: '--eingefroren--',
@@ -169,6 +182,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--凍結--',
       cn: '--冻结--',
       ko: '--빙결--',
+      tc: '--凍結--',
     },
     '--in--': {
       de: '--Rein--',
@@ -176,6 +190,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--中--',
       cn: '--内--',
       ko: '--안--',
+      tc: '--內--',
     },
     '\\(In\\)': {
       de: '(Rein)',
@@ -183,6 +198,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(中)',
       cn: '(内)',
       ko: '(안)',
+      tc: '(內)',
     },
     '\\(inner\\)': {
       de: '(innen)',
@@ -190,6 +206,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(中)',
       cn: '(内)',
       ko: '(안)',
+      tc: '(內)',
     },
     '--jump--': {
       de: '--Sprung--',
@@ -197,6 +214,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--ジャンプ--',
       cn: '--跳--',
       ko: '--점프--',
+      tc: '--跳--',
     },
     '--knockback--': {
       de: '--Rückstoß--',
@@ -204,6 +222,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--ノックバック--',
       cn: '--击退--',
       ko: '--넉백--',
+      tc: '--擊退--',
     },
     '--middle--': {
       de: '--Mitte--',
@@ -211,6 +230,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--中央--',
       cn: '--中间--',
       ko: '--중앙--',
+      tc: '--中間--',
     },
     '\\(middle\\)': {
       de: '(Mitte)',
@@ -218,6 +238,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(中央)',
       cn: '(中间)',
       ko: '(중앙)',
+      tc: '(中間)',
     },
     '--north--': {
       de: '--Norden--',
@@ -225,6 +246,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--北--',
       cn: '--北--',
       ko: '--북쪽--',
+      tc: '--北--',
     },
     '\\(north\\)': {
       de: '(Norden)',
@@ -232,6 +254,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(北)',
       cn: '(北)',
       ko: '(북쪽)',
+      tc: '(北)',
     },
     '--northeast--': {
       de: '--Nordosten--',
@@ -239,6 +262,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--北東--',
       cn: '--东北--',
       ko: '--북동--',
+      tc: '--東北--',
     },
     '--northwest--': {
       de: '--Nordwesten--',
@@ -246,6 +270,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--北西--',
       cn: '--西北--',
       ko: '--북서--',
+      tc: '--西北--',
     },
     '--out--': {
       de: '--Raus--',
@@ -253,6 +278,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--外--',
       cn: '--外--',
       ko: '--밖--',
+      tc: '--外--',
     },
     '\\(Out\\)': {
       de: '(Raus)',
@@ -260,6 +286,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(外)',
       cn: '(外)',
       ko: '(밖)',
+      tc: '(外)',
     },
     '\\(outer\\)': {
       de: '(außen)',
@@ -267,6 +294,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(外)',
       cn: '(外)',
       ko: '(밖)',
+      tc: '(外)',
     },
     '\\(outside\\)': {
       de: '(Draußen)',
@@ -274,6 +302,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(外)',
       cn: '(外面)',
       ko: '(바깥)',
+      tc: '(外面)',
     },
     '--rotate--': {
       de: '--rotieren--',
@@ -281,6 +310,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--回転--',
       cn: '--旋转--',
       ko: '--회전--',
+      tc: '--旋轉--',
     },
     '--south--': {
       de: '--Süden--',
@@ -288,6 +318,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--南--',
       cn: '--南--',
       ko: '--남쪽--',
+      tc: '--南--',
     },
     '\\(south\\)': {
       de: '(Süden)',
@@ -295,6 +326,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '(南)',
       cn: '(南)',
       ko: '(남쪽)',
+      tc: '(南)',
     },
     '--southeast--': {
       de: '--Südosten--',
@@ -302,6 +334,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--南東--',
       cn: '--东南--',
       ko: '--남동--',
+      tc: '--東南--',
     },
     '--southwest--': {
       de: '--Südwesten--',
@@ -309,6 +342,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--南西--',
       cn: '--西南--',
       ko: '--남서--',
+      tc: '--西南--',
     },
     '--split--': {
       de: '--teilen--',
@@ -316,6 +350,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--分裂--',
       cn: '--分裂--',
       ko: '--분열--',
+      tc: '--分裂--',
     },
     '--stun--': {
       de: '--Betäubung--',
@@ -323,6 +358,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--スタン--',
       cn: '--击晕--',
       ko: '--기절--',
+      tc: '--擊暈--',
     },
     '--sync--': {
       de: '--synchronisation--',
@@ -330,6 +366,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--シンク--',
       cn: '--同步化--',
       ko: '--동기화--',
+      tc: '--同步化--',
     },
     '--([0-9]+x )?targetable--': {
       de: '--$1anvisierbar--',
@@ -337,6 +374,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--$1ターゲット可能--',
       cn: '--$1可选中--',
       ko: '--$1타겟 가능--',
+      tc: '--$1可選中--',
     },
     '--teleport--': {
       de: '--teleportation--',
@@ -344,6 +382,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--テレポート--',
       cn: '--传送--',
       ko: '--순간 이동--',
+      tc: '--傳送--',
     },
     '--untargetable--': {
       de: '--nich anvisierbar--',
@@ -351,6 +390,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--ターゲット不可--',
       cn: '--无法选中--',
       ko: '--타겟 불가능--',
+      tc: '--無法選中--',
     },
     '--west--': {
       de: '--Westen--',
@@ -358,6 +398,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--西--',
       cn: '--西--',
       ko: '--서쪽--',
+      tc: '--西--',
     },
     [textKeys.E]: {
       de: 'O',
@@ -365,6 +406,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '東',
       cn: '东',
       ko: '동',
+      tc: '東',
     },
     [textKeys.N]: {
       de: 'N',
@@ -372,6 +414,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '北',
       cn: '北',
       ko: '북',
+      tc: '北',
     },
     [textKeys.S]: {
       de: 'S',
@@ -379,6 +422,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '南',
       cn: '南',
       ko: '남',
+      tc: '南',
     },
     [textKeys.W]: {
       de: 'W',
@@ -386,6 +430,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '西',
       cn: '西',
       ko: '서',
+      tc: '西',
     },
     [textKeys.NE]: {
       de: 'NO',
@@ -393,6 +438,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '北東',
       cn: '东北',
       ko: '북동',
+      tc: '東北',
     },
     [textKeys.NW]: {
       de: 'NW',
@@ -400,6 +446,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '北西',
       cn: '西北',
       ko: '북서',
+      tc: '西北',
     },
     [textKeys.SE]: {
       de: 'SO',
@@ -407,6 +454,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '南東',
       cn: '东南',
       ko: '남동',
+      tc: '東南',
     },
     [textKeys.SW]: {
       de: 'SW',
@@ -414,6 +462,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '南西',
       cn: '西南',
       ko: '남서',
+      tc: '西南',
     },
     [textKeys.Tank]: {
       de: 'Tank',
@@ -421,6 +470,7 @@ export const commonReplacement: CommonReplacement = {
       ja: 'タンク',
       cn: '坦克',
       ko: '탱커',
+      tc: '坦克',
     },
     [textKeys.Healer]: {
       de: 'Heiler',
@@ -428,6 +478,7 @@ export const commonReplacement: CommonReplacement = {
       ja: 'ヒーラー',
       cn: '治疗',
       ko: '힐러',
+      tc: '治療',
     },
     [textKeys.DPS]: {
       de: 'DPS',
@@ -435,6 +486,7 @@ export const commonReplacement: CommonReplacement = {
       ja: 'DPS',
       cn: 'DPS',
       ko: '딜러',
+      tc: 'DPS',
     },
     [textKeys.Number]: {
       de: '--$1--',
@@ -442,6 +494,7 @@ export const commonReplacement: CommonReplacement = {
       ja: '--$1--',
       cn: '--$1--',
       ko: '--$1--',
+      tc: '--$1--',
     },
   },
 } as const;

@@ -22,6 +22,7 @@ export const echoesOutputStrings = {
     ja: '頭割り',
     cn: '集合放月环',
     ko: '도넛 장판, 쉐어',
+    tc: '集合放月環',
   },
   spread: Outputs.spread,
   flare: {
@@ -31,6 +32,7 @@ export const echoesOutputStrings = {
     ja: 'フレア',
     cn: '核爆',
     ko: '플레어',
+    tc: '核爆',
   },
 } as const;
 
@@ -84,6 +86,7 @@ export const orbOutputStrings: OutputStrings = {
     ja: '${dir} ノックバック',
     cn: '${dir} 击退',
     ko: '${dir} 넉백',
+    tc: '${dir} 擊退',
   },
   knockbackWithHead: {
     en: '${dir1} Knockback -> ${dir2}',
@@ -92,6 +95,7 @@ export const orbOutputStrings: OutputStrings = {
     ja: '${dir1} ノックバック -> ${dir2}',
     cn: '${dir1} 击退 -> ${dir2}',
     ko: '${dir1} 넉백 -> ${dir2}',
+    tc: '${dir1} 擊退 -> ${dir2}',
   },
   aoeWithHead: {
     en: 'Go ${dir1} (lean ${dir2})',
@@ -100,6 +104,7 @@ export const orbOutputStrings: OutputStrings = {
     ja: '${dir1}方に (そっと${dir2}方へ)',
     cn: '去${dir1} (偏${dir2})',
     ko: '${dir1}쪽으로 (살짝 ${dir2}쪽으로)',
+    tc: '去${dir1} (偏${dir2})',
   },
 };
 
@@ -354,6 +359,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外 (横へ)',
           cn: '去外面 (两边)',
           ko: '밖으로 (양 옆)',
+          tc: '去外面 (兩邊)',
         },
         sidesWithTower: {
           en: 'Tower + Outside',
@@ -362,6 +368,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔踏み + 外側',
           cn: '踩塔 + 去外面',
           ko: '기둥 + 양 옆',
+          tc: '踩塔 + 去外面',
         },
         sidesWithStacks: {
           en: 'Outside + Healer Groups',
@@ -370,6 +377,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外側 + ヒーラと4:4頭割り',
           cn: '去外面 + 治疗分组分摊',
           ko: '양 옆 + 힐러 그룹',
+          tc: '去外面 + 治療分組分攤',
         },
       },
     },
@@ -395,6 +403,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中へ (真ん中)',
           cn: '去里面 (中间)',
           ko: '안으로 (가운데)',
+          tc: '去裡面 (中間)',
         },
         middleWithTower: {
           en: 'Tower + Inside',
@@ -403,6 +412,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔踏み + 内側',
           cn: '踩塔 + 去里面',
           ko: '기둥 + 안으로',
+          tc: '踩塔 + 去裡面',
         },
         middleWithStacks: {
           en: 'Inside + Healer Groups',
@@ -411,6 +421,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 + ヒーラと4:4頭割り',
           cn: '去里面 + 治疗分组分摊',
           ko: '안으로 + 힐러 그룹',
+          tc: '去裡面 + 治療分組分攤',
         },
       },
     },
@@ -492,6 +503,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ヒラに頭割り',
           cn: '治疗分组分摊',
           ko: '힐러 그룹 쉐어',
+          tc: '治療分組分攤',
         },
       },
     },
@@ -833,6 +845,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${dir1} / ${dir2}',
           cn: '${dir1} / ${dir2}',
           ko: '${dir1} / ${dir2}',
+          tc: '${dir1} / ${dir2}',
         },
       },
     },
@@ -1034,6 +1047,36 @@ const triggerSet: TriggerSet<Data> = {
         'Theological Fatalism': '神学宿命',
         'Twinsong\'s Aporrhoia': '流溢：绝望合唱',
         'Ultimate Fate': '终极命运',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Azure Star': '藍色天體',
+        'Fiery Star': '紅色天體',
+        'The Endsinger': '謳歌終結之物',
+      },
+      'replaceText': {
+        'Befoulment': '膿液彈',
+        'Benevolence': '博愛',
+        'Despair Unforgotten': '絕望侵蝕：記錄事件',
+        'Diairesis': '分離',
+        'Eironeia': '反諷',
+        'Elegeia Unforgotten': '哀歌：記錄事件',
+        'Elenchos': '反詰',
+        'Endsong\'s Aporrhoia': '流溢：絕望輪唱',
+        'Endsong(?!\')': '絕望輪唱',
+        '(?<! )Fatalism': '宿命',
+        'Grip of Despair': '絕望的鎖鏈',
+        'Hubris': '傲慢',
+        // 'Star Collision': '', // FIXME '天体撞击'
+        'Telomania': '終末狂熱',
+        'Telos': '終末',
+        'Tower Explosion': '爆炸',
+        'Theological Fatalism': '神學宿命',
+        'Twinsong\'s Aporrhoia': '流溢：絕望合唱',
+        'Ultimate Fate': '終極命運',
       },
     },
     {

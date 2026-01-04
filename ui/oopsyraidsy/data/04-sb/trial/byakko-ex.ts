@@ -43,6 +43,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '衝突',
             cn: '相撞',
             ko: '장판 겹쳐서 터짐',
+            tc: '相撞',
           },
         };
       },

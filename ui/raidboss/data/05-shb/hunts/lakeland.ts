@@ -17,6 +17,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   triggers: [
     {
@@ -49,6 +50,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Évitez le package',
             cn: '远离分摊',
             ko: '쉐어징 피하기',
+            tc: '遠離分攤',
           },
         };
 
@@ -87,6 +89,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスから離れる',
           cn: '远离人群',
           ko: '나에게 징 멀리 빠지기',
+          tc: '遠離人群',
         },
       },
     },
@@ -103,6 +106,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Éloignez-vous du dash',
           cn: '远离冲锋地点',
           ko: '돌진한 곳 피하기',
+          tc: '遠離衝鋒地點',
         },
       },
     },
@@ -119,6 +123,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez à l\'arrière/droite',
           cn: '去背后/右侧',
           ko: '뒤/오른쪽으로',
+          tc: '去背後/右側',
         },
       },
     },
@@ -142,6 +147,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Allez à l\'arrière/gauche',
           cn: '去背后/左侧',
           ko: '뒤/왼쪽으로',
+          tc: '去背後/左側',
         },
       },
     },
@@ -201,6 +207,14 @@ const triggerSet: TriggerSet<Data> = {
         'Nariphon': '纳里蓬',
         'Nuckelavee': '纳克拉维',
         'Tyger': '戾虫',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Nariphon': '納里蓬',
+        'Nuckelavee': '納克拉維',
+        'Tyger': '戾蟲',
       },
     },
     {

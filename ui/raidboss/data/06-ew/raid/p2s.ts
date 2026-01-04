@@ -78,6 +78,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭の後ろへ',
           cn: '去头的后面',
           ko: '머리 뒤쪽으로',
+          tc: '去頭的後面',
         },
       },
     },
@@ -95,6 +96,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '頭の前へ',
           cn: '去头的前面',
           ko: '머리 앞쪽으로',
+          tc: '去頭的前面',
         },
       },
     },
@@ -130,6 +132,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'マーカー: ${player1}, ${player2}',
             cn: '大圈: ${player1}, ${player2}',
             ko: '징: ${player1}, ${player2}',
+            tc: '大圈: ${player1}, ${player2}',
           },
           avariceOnYou: {
             en: 'Avarice on YOU',
@@ -138,6 +141,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'マーカーついた',
             cn: '大圈点名',
             ko: '내가 징 대상자',
+            tc: '大圈點名',
           },
           unknown: Outputs.unknown,
         };
@@ -202,6 +206,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '突進→散開',
           cn: '先对冲',
           ko: '화살표 처리 먼저',
+          tc: '先對衝',
         },
         spreadFirst: {
           en: 'Spread First',
@@ -210,6 +215,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開→突進',
           cn: '先散开',
           ko: '산개 먼저',
+          tc: '先散開',
         },
       },
     },
@@ -254,6 +260,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'フレアの線',
           cn: '核爆连线',
           ko: '플레어 선',
+          tc: '核爆連線',
         },
       },
     },
@@ -277,6 +284,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線頭割り（タンクより後ろ）',
           cn: '直线分摊（站坦克后面）',
           ko: '직선 쉐어 (탱커 뒤로)',
+          tc: '直線分攤（站坦克後面）',
         },
         flareLineTank: {
           en: 'Line Stack (be in front)',
@@ -285,6 +293,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線頭割り（みんなの前に）',
           cn: '直线分摊（坦克站前面）',
           ko: '직선 쉐어 (맨 앞으로)',
+          tc: '直線分攤（坦克站前面）',
         },
       },
     },
@@ -312,6 +321,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '四角 #${num}：ボスの対角へ',
             cn: '连线 #${num}: 去Boss对角',
             ko: '#${num} 네모, 보스 대각 발판으로',
+            tc: '連線 #${num}: 去Boss對角',
           },
           // Trying not to confuse with boss/across
           squareBoss: {
@@ -321,6 +331,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '四角 #${num}：ボスの下へ',
             cn: '连线 #${num}: 去Boss脚下',
             ko: '#${num} 네모, 보스 발판으로',
+            tc: '連線 #${num}: 去Boss腳下',
           },
           triangle: {
             en: '#${num} Triangle',
@@ -329,6 +340,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '三角 #${num}',
             cn: '三角 #${num}',
             ko: '#${num} 세모',
+            tc: '三角 #${num}',
           },
         };
 
@@ -504,6 +516,42 @@ const triggerSet: TriggerSet<Data> = {
         'Spoken Cataract': '吐息飞瀑',
         'Tainted Flood': '污染洪水',
         'Winged Cataract': '展翅飞瀑',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Hippokampos': '馬頭魚尾怪',
+      },
+      'replaceText': {
+        // '\\(knockback\\)': '', // FIXME '(击退)'
+        // '\\(short\\)': '', // FIXME '(短)'
+        // '\\(long\\)': '', // FIXME '(长)'
+        'Channeling Flow': '溝流充溢',
+        'Channeling Overflow': '溝流溢出',
+        'Coherence(?! [FL])': '連貫攻擊',
+        'Coherence Flare': '連貫攻擊',
+        'Coherence Line': '連貫攻擊',
+        'Crash': '衝撞',
+        'Deadly Current': '激流衝',
+        'Dissociation(?! Dive)': '分離',
+        'Dissociation Dive': '分離',
+        'Doubled Impact': '雙重衝擊',
+        'Great Typhoon': '荒波',
+        'Hard Water': '重水塊',
+        'Kampeos Harma': '海怪戰車',
+        'Murky Depths': '深度污濁',
+        'Ominous Bubbling(?! Groups)': '靈水彈',
+        'Ominous Bubbling Groups': '靈水彈',
+        'Predatory Avarice': '多重刻印',
+        'Predatory Sight': '活餌的刻印',
+        'Sewage Deluge': '污水氾濫',
+        'Sewage Eruption': '污水噴發',
+        'Shockwave': '衝擊狂潮',
+        'Spoken Cataract': '吐息飛瀑',
+        'Tainted Flood': '污染洪水',
+        'Winged Cataract': '展翅飛瀑',
       },
     },
     {

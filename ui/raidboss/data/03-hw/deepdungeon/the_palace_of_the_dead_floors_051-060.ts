@@ -49,6 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${target} への攻撃を止めて',
           cn: '停止攻击 ${target}',
           ko: '${target} 공격 중지',
+          tc: '停止攻擊 ${target}',
         },
       },
     },
@@ -68,6 +69,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '安地へ飛ばされる',
           cn: '击退到安全区',
           ko: '안전지대로 넉백되기',
+          tc: '擊退到安全區',
         },
       },
     },
@@ -107,6 +109,15 @@ const triggerSet: TriggerSet<Data> = {
         'Palace Imp': '地宫小魔精',
         'Palace Pot': '地宫魔力罐',
         'The Black Rider': '深黑骑士',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Palace Deepeye': '地宮深瞳',
+        'Palace Imp': '地宮小頑童',
+        'Palace Pot': '地宮魔力罐',
+        'The Black Rider': '深黑騎士',
       },
     },
     {

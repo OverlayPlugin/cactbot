@@ -3,7 +3,7 @@
 #
 # -p 2BBA:514.8 2BC8:1000 2CD6:1100 2CD0:1355.3
 # -it "Tsukuyomi"
-# -ii 2CAE 2CAA 2CA9 2CCF 2BCF 2EDF 2E23 2BC0 2BFD 2BFE 2D1D
+# -ii 2BC0 2BCF 2BE9 2BFD 2BFE 2CA9 2CAA 2CAE 2CCF 2D02 2D16 2D17 2D18 2D1D 2D20 2E23 2EDF
 
 hideall "--sync--"
 hideall "--Reset--"
@@ -12,7 +12,7 @@ hideall "--Reset--"
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 10.8 "--sync--" StartsUsing { id: "2BBA", source: "Tsukuyomi" } window 30,30
 14.8 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" }
-25.0 "Nightfall (gun/spear)" Ability { id: "2BB[CD]", source: "Tsukuyomi" }
+25.0 "Nightfall (gun/spear)" Ability { id: ["2BBC", "2BBD"], source: "Tsukuyomi" }
 25.0 "--sync--" Ability { id: "2BBC", source: "Tsukuyomi" } window 30,30 jump 225
 25.0 "--sync--" Ability { id: "2BBD", source: "Tsukuyomi" } window 30,30 jump 525
 31.1 "Lead Of The Underworld?" Ability { id: "2BBE", source: "Tsukuyomi" }
@@ -85,7 +85,7 @@ hideall "--Reset--"
 
 1223.4 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" }
 1230.6 "Zashiki-Asobi" Ability { id: "2BC5", source: "Tsukuyomi" }
-1239.8 "Nightfall (gun/spear)" Ability { id: "2BB[CD]", source: "Tsukuyomi" }
+1239.8 "Nightfall (gun/spear)" Ability { id: ["2BBC", "2BBD"], source: "Tsukuyomi" }
 1241.7 "Tsuki-No-Maiogi" Ability { id: "2BC6", source: "Dancing Fan" }
 1244.7 "Tsuki-No-Maiogi" Ability { id: "2BC6", source: "Dancing Fan" }
 # don't match 2BBF here because there's three of them, close in time.
@@ -112,12 +112,13 @@ hideall "--Reset--"
 
 # 35% push
 1361.3 "Dance Of The Dead" Ability { id: "2CD0", source: "Tsukuyomi" } window 1400,20
-1378.6 "Bright Blade/Dark Blade" Ability { id: "2BD(A|B)", source: "Tsukuyomi" }
-1379.5 "Waning Grudge/Waxing Grudge" Ability { id: "2BD(E|F)", source: "Tsukuyomi" }
-1392.0 "Bright Blade/Dark Blade" Ability { id: "2BD(A|B)", source: "Tsukuyomi" }
-1393.0 "Waning Grudge/Waxing Grudge" Ability { id: "2BD(E|F)", source: "Tsukuyomi" }
+1378.6 "Bright Blade/Dark Blade" Ability { id: ["2BDA", "2BDB"], source: "Tsukuyomi" }
+1379.5 "Waning Grudge/Waxing Grudge" Ability { id: ["2BDE", "2BDF"], source: "Tsukuyomi" }
+1392.0 "Bright Blade/Dark Blade" Ability { id: ["2BDA", "2BDB"], source: "Tsukuyomi" }
+1393.0 "Waning Grudge/Waxing Grudge" Ability { id: ["2BDE", "2BDF"], source: "Tsukuyomi" }
 
 # loop begins
+1403.1 label "phase-3-loop"
 1403.1 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" }
 1415.3 "Lunacy" Ability { id: "2BDC", source: "Tsukuyomi" }
 1416.1 "Tsuki-No-Maiogi" duration 4 #Ability { id: "2BC6", source: "Dancing Fan" }
@@ -125,30 +126,33 @@ hideall "--Reset--"
 #1418.4 "Lunacy" Ability { id: "2BDD", source: "Tsukuyomi" }
 #1419.4 "Lunacy" Ability { id: "2BDD", source: "Tsukuyomi" }
 
-1427.4 "Bright Blade/Dark Blade" Ability { id: "2BD(A|B)", source: "Tsukuyomi" }
-1428.4 "Waning Grudge/Waxing Grudge" Ability { id: "2BD(E|F)", source: "Tsukuyomi" }
+1427.4 "Bright Blade/Dark Blade" Ability { id: ["2BDA", "2BDB"], source: "Tsukuyomi" }
+1428.4 "Waning Grudge/Waxing Grudge" Ability { id: ["2BDE", "2BDF"], source: "Tsukuyomi" }
 1437.5 "Torment Unto Death" Ability { id: "2EB2", source: "Tsukuyomi" }
 
 1450.7 "Hagetsu" Ability { id: "2D1C", source: "Tsukuyomi" }
 1452.5 "Tsuki-No-Maiogi" Ability { id: "2BC6", source: "Dancing Fan" }
 1455.5 "Tsuki-No-Maiogi" Ability { id: "2BC6", source: "Dancing Fan" }
 
-1460.9 "Bright Blade/Dark Blade" Ability { id: "2BD(A|B)", source: "Tsukuyomi" }
-1461.9 "Waning Grudge/Waxing Grudge" Ability { id: "2BD(E|F)", source: "Tsukuyomi" }
+1460.9 "Bright Blade/Dark Blade" Ability { id: ["2BDA", "2BDB"], source: "Tsukuyomi" }
+1461.9 "Waning Grudge/Waxing Grudge" Ability { id: ["2BDE", "2BDF"], source: "Tsukuyomi" }
 1469.9 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" }
 
-# loop
-1476.9 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" }
-1489.2 "Lunacy" Ability { id: "2BDC", source: "Tsukuyomi" } window 50,50 jump 1415.3
-1490.0 "Tsuki-No-Maiogi" #duration 4 #Ability { id: "2BC6", source: "Dancing Fan" }
-1491.3 "Lunacy x3" #Ability { id: "2BDD", source: "Tsukuyomi" }
-#1492.3 "Lunacy" Ability { id: "2BDD", source: "Tsukuyomi" }
-#1493.3 "Lunacy" Ability { id: "2BDD", source: "Tsukuyomi" }
+# loop end
+1476.9 "Reprimand" Ability { id: "2BBA", source: "Tsukuyomi" } forcejump "phase-3-loop"
 
-1501.3 "Bright Blade/Dark Blade" #Ability { id: "2BD(A|B)", source: "Tsukuyomi" }
-1502.3 "Waning Grudge/Waxing Grudge" #Ability { id: "2BD(E|F)", source: "Tsukuyomi" }
-1511.4 "Torment Unto Death" #Ability { id: "2EB2", source: "Tsukuyomi" }
-
-1524.6 "Hagetsu" #Ability { id: "2D1C", source: "Tsukuyomi" }
-1526.4 "Tsuki-No-Maiogi" #Ability { id: "2BC6", source: "Dancing Fan" }
-1529.4 "Tsuki-No-Maiogi" #Ability { id: "2BC6", source: "Dancing Fan" }
+# Lunacy Enrage
+2000.0 "--sync--" StartsUsing { id: "2BE0", source: "Tsukuyomi" } window 2000,0
+2004.7 "Lunacy" Ability { id: "2BE0", source: "Tsukuyomi" }
+2006.7 label "enrage-loop"
+2006.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2007.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2008.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2009.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2010.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2011.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2012.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2013.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2014.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2015.7 "Lunacy" #Ability { id: "2BE1", source: "Tsukuyomi" }
+2016.7 "Lunacy" Ability { id: "2BE1", source: "Tsukuyomi" } window 0.5,0.5 forcejump "enrage-loop"

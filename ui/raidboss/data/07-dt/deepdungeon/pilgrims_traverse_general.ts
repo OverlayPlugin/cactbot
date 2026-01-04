@@ -27,6 +27,7 @@ const triggerSet: TriggerSet<Data> = {
     de: 'Pilgers Pfad (Alle Steine)',
     cn: '朝圣交错路 (全朝圣路)',
     ko: '노르브란트 순례길 (전 구간)',
+    tc: '朝聖交錯路 (全朝聖路)',
   },
 
   triggers: [
@@ -49,6 +50,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ミミック！',
           cn: '已生成 拟态怪!',
           ko: '미믹 등장!',
+          tc: '已生成 擬態怪!',
         },
       },
     },
@@ -112,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${pomander} 被り',
           cn: '${pomander} 重复',
           ko: '${pomander} 중복',
+          tc: '${pomander} 重複',
         },
         // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         safety: {
@@ -121,6 +124,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '呪印解除',
           cn: '咒印解除',
           ko: '함정 해제',
+          tc: '咒印解除',
         },
         sight: {
           en: 'Sight',
@@ -129,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サイトロ',
           cn: '全景',
           ko: '사이트로',
+          tc: '全景',
         },
         strength: {
           en: 'Strength',
@@ -137,6 +142,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自己強化',
           cn: '强化自身',
           ko: '자기 강화',
+          tc: '強化自身',
         },
         steel: {
           en: 'Steel',
@@ -145,6 +151,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '防御強化',
           cn: '强化防御',
           ko: '방어 강화',
+          tc: '強化防禦',
         },
         affluence: {
           en: 'Affluence',
@@ -153,6 +160,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '宝箱増加',
           cn: '宝箱增加',
           ko: '보물상자 증가',
+          tc: '寶箱增加',
         },
         flight: {
           en: 'Flight',
@@ -161,6 +169,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵排除',
           cn: '减少敌人',
           ko: '적 감소',
+          tc: '減少敵人',
         },
         alteration: {
           en: 'Alteration',
@@ -169,6 +178,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵変化',
           cn: '改变敌人',
           ko: '적 대체',
+          tc: '改變敵人',
         },
         purity: {
           en: 'Purity',
@@ -177,6 +187,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '解呪',
           cn: '解咒',
           ko: '저주 해제',
+          tc: '解咒',
         },
         fortune: {
           en: 'Fortune',
@@ -185,6 +196,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '運気上昇',
           cn: '运气上升',
           ko: '운 상승',
+          tc: '運氣上升',
         },
         witching: {
           en: 'Witching',
@@ -193,6 +205,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '形態変化',
           cn: '形态变化',
           ko: '적 변형',
+          tc: '形態變化',
         },
         serenity: {
           en: 'Serenity',
@@ -201,6 +214,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔法効果解除',
           cn: '魔法效果解除',
           ko: '마법 효과 해제',
+          tc: '魔法效果解除',
         },
         intuition: {
           en: 'Intuition',
@@ -209,6 +223,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '財宝感知',
           cn: '感知宝藏',
           ko: '보물 탐지',
+          tc: '感知寶藏',
         },
         raising: {
           en: 'Raising',
@@ -217,6 +232,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'リレイズ',
           cn: '重生',
           ko: '리레이즈',
+          tc: '重生',
         },
         haste: {
           en: 'Haste',
@@ -224,6 +240,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Hâte',
           ja: 'ヘイスト',
           cn: '加速',
+          ko: '헤이스트',
+          tc: '加速',
         },
         purification: {
           en: 'Purification',
@@ -231,6 +249,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Purification',
           ja: '浄化の守り',
           cn: '净化护符',
+          ko: '정화의 부적',
+          tc: '淨化護符',
         },
         devotion: {
           en: 'Devotion',
@@ -238,6 +258,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Dévotion',
           ja: '巡礼の導き',
           cn: '朝圣的指引',
+          ko: '순례의 인도',
+          tc: '朝聖的指引',
         },
         unknown: Outputs.unknown,
       },
@@ -282,6 +304,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${incense} 被り',
           cn: '${incense} 重复',
           ko: '${incense} 중복',
+          tc: '${incense} 重複',
         },
         mazeroot: {
           en: 'Mazeroot',
@@ -289,6 +312,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Sagacité',
           ja: '明敏',
           cn: '敏慧',
+          ko: '명민',
+          tc: '敏慧',
         },
         barkbalm: {
           en: 'Barkbalm',
@@ -296,6 +321,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Quiétude',
           ja: '安寧',
           cn: '安宁',
+          ko: '평안',
+          tc: '安寧',
         },
         poisonfruit: {
           en: 'Poisonfruit',
@@ -303,6 +330,8 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Fatalité',
           ja: '宿命',
           cn: '宿命',
+          ko: '숙명',
+          tc: '宿命',
         },
         unknown: Outputs.unknown,
       },
@@ -324,6 +353,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '転移が出来ます',
           cn: '传送装置已启动',
           ko: '전송장치 활성화',
+          tc: '傳送裝置已啟動',
         },
       },
     },
@@ -351,6 +381,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Mimic': '拟态怪',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Mimic': '擬態怪',
       },
     },
     {

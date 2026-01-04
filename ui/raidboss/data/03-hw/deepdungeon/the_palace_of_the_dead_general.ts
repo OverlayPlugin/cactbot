@@ -39,6 +39,7 @@ const triggerSet: TriggerSet<Data> = {
     ja: '死者の宮殿 (全階層)',
     cn: '死者宫殿 (全楼层)',
     ko: '망자의 궁전 (전체 층)',
+    tc: '死者宮殿 (全樓層)',
   },
 
   triggers: [
@@ -62,6 +63,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ミミック！',
           cn: '已生成 拟态怪!',
           ko: '미믹 등장!',
+          tc: '已生成 擬態怪!',
         },
       },
     },
@@ -125,6 +127,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${pomander} 被り',
           cn: '${pomander} 重复',
           ko: '${pomander} 중복',
+          tc: '${pomander} 重複',
         },
         // pomanders: https://v2.xivapi.com/api/sheet/DeepDungeonItem
         safety: {
@@ -134,6 +137,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '呪印解除',
           cn: '咒印解除',
           ko: '함정 해제',
+          tc: '咒印解除',
         },
         sight: {
           en: 'Sight',
@@ -142,6 +146,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サイトロ',
           cn: '全景',
           ko: '사이트로',
+          tc: '全景',
         },
         strength: {
           en: 'Strength',
@@ -150,6 +155,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自己強化',
           cn: '强化自身',
           ko: '자기 강화',
+          tc: '強化自身',
         },
         steel: {
           en: 'Steel',
@@ -158,6 +164,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '防御強化',
           cn: '强化防御',
           ko: '방어 강화',
+          tc: '強化防禦',
         },
         affluence: {
           en: 'Affluence',
@@ -166,6 +173,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '宝箱増加',
           cn: '宝箱增加',
           ko: '보물상자 증가',
+          tc: '寶箱增加',
         },
         flight: {
           en: 'Flight',
@@ -174,6 +182,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵排除',
           cn: '减少敌人',
           ko: '적 감소',
+          tc: '減少敵人',
         },
         alteration: {
           en: 'Alteration',
@@ -182,6 +191,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '敵変化',
           cn: '改变敌人',
           ko: '적 대체',
+          tc: '改變敵人',
         },
         purity: {
           en: 'Purity',
@@ -190,6 +200,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '解呪',
           cn: '解咒',
           ko: '저주 해제',
+          tc: '解咒',
         },
         fortune: {
           en: 'Fortune',
@@ -198,6 +209,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '運気上昇',
           cn: '运气上升',
           ko: '운 상승',
+          tc: '運氣上升',
         },
         witching: {
           en: 'Witching',
@@ -206,6 +218,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '形態変化',
           cn: '形态变化',
           ko: '적 변형',
+          tc: '形態變化',
         },
         serenity: {
           en: 'Serenity',
@@ -214,6 +227,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔法効果解除',
           cn: '魔法效果解除',
           ko: '마법 효과 해제',
+          tc: '魔法效果解除',
         },
         rage: {
           en: 'Rage',
@@ -222,6 +236,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'マンティコア化',
           cn: '曼提克化',
           ko: '만티코어 변신',
+          tc: '蠍尾獅化',
         },
         lust: {
           en: 'Lust',
@@ -230,6 +245,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'サキュバス化',
           cn: '梦魔化',
           ko: '서큐버스 변신',
+          tc: '魅魔化',
         },
         intuition: {
           en: 'Intuition',
@@ -238,6 +254,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '財宝感知',
           cn: '感知宝藏',
           ko: '보물 탐지',
+          tc: '感知寶藏',
         },
         raising: {
           en: 'Raising',
@@ -246,6 +263,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'リレイズ',
           cn: '重生',
           ko: '리레이즈',
+          tc: '重生',
         },
         resolution: {
           en: 'Resolution',
@@ -254,6 +272,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'クリブ化',
           cn: '基路伯化',
           ko: '쿠리부 변신',
+          tc: '基路伯化',
         },
         unknown: Outputs.unknown,
       },
@@ -275,6 +294,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '転移が出来ます',
           cn: '转移石冢已启动',
           ko: '전송 석탑 활성화',
+          tc: '傳送石塚已啟動',
         },
       },
     },
@@ -300,6 +320,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'replaceSync': {
+        'Mimic': '模仿',
+      },
+    },
+    {
+      'locale': 'tc',
       'replaceSync': {
         'Mimic': '模仿',
       },

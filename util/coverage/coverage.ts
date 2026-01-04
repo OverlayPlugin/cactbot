@@ -31,6 +31,7 @@ const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
     fr: 'Sync',
     cn: '同步',
     ko: '동기화',
+    tc: '同步',
   },
   code: {
     en: 'Code',
@@ -38,6 +39,7 @@ const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
     fr: 'Code',
     cn: '代码',
     ko: '코드',
+    tc: '代碼',
   },
   other: {
     en: 'Other',
@@ -45,6 +47,7 @@ const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
     fr: 'Autre',
     cn: '其他',
     ko: '기타',
+    tc: '其他',
   },
   replaceSection: {
     en: 'Replace Section',
@@ -52,6 +55,7 @@ const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
     fr: 'Remplacement de section',
     cn: '替换部分',
     ko: '타임라인 대체',
+    tc: '替換部分',
   },
   text: {
     en: 'Text',
@@ -59,6 +63,7 @@ const translationKeyMap: Record<MissingTranslationErrorType, LocaleText> = {
     fr: 'Texte',
     cn: '文本',
     ko: '텍스트',
+    tc: '文本',
   },
 };
 
@@ -85,6 +90,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
     fr: 'Divers',
     cn: '杂项',
     ko: '기타',
+    tc: '雜項',
   },
   '02-arr': {
     en: 'ARR',
@@ -93,6 +99,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
     ja: '新生',
     cn: '2.X',
     ko: '신생',
+    tc: '2.X',
   },
   '03-hw': {
     en: 'HW',
@@ -101,6 +108,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
     ja: '蒼天',
     cn: '3.X',
     ko: '창천',
+    tc: '3.X',
   },
   '04-sb': {
     en: 'SB',
@@ -109,6 +117,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
     ja: '紅蓮',
     cn: '4.X',
     ko: '홍련',
+    tc: '4.X',
   },
   '05-shb': {
     en: 'ShB',
@@ -117,6 +126,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
     ja: '漆黒',
     cn: '5.X',
     ko: '칠흑',
+    tc: '5.X',
   },
   '06-ew': {
     en: 'EW',
@@ -125,6 +135,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
     ja: '暁月',
     cn: '6.X',
     ko: '효월',
+    tc: '6.X',
   },
   '07-dt': {
     en: 'DT',
@@ -133,6 +144,7 @@ const exVersionToShortName: Record<exKeys | '00-misc', LocaleText> = {
     ja: '黄金',
     cn: '7.X',
     ko: '황금',
+    tc: '7.X',
   },
 };
 
@@ -151,6 +163,7 @@ const contentTypeToLabel: {
       ja: 'レイド',
       cn: '大型',
       ko: '레이드',
+      tc: '團隊',
     },
   },
   [ContentType.Trials]: {
@@ -162,6 +175,7 @@ const contentTypeToLabel: {
       ja: '討伐戦',
       cn: '讨伐战',
       ko: '토벌전',
+      tc: '討伐戰',
     },
   },
   [ContentType.UltimateRaids]: {
@@ -173,6 +187,7 @@ const contentTypeToLabel: {
       ja: '絶',
       cn: '绝',
       ko: '절',
+      tc: '絕',
     },
   },
   [ContentType.Dungeons]: {
@@ -184,6 +199,7 @@ const contentTypeToLabel: {
       ja: 'ID',
       cn: '迷宫挑战',
       ko: '던전',
+      tc: '迷宮挑戰',
     },
   },
   [ContentType.VCDungeonFinder]: {
@@ -193,6 +209,7 @@ const contentTypeToLabel: {
       fr: 'Donjons Variants et Critérions',
       cn: '多变&异闻迷宫',
       ko: '변형&파생던전',
+      tc: '多變&異聞迷宮',
     },
     short: {
       en: 'V&C',
@@ -201,6 +218,7 @@ const contentTypeToLabel: {
       ja: 'ヴァリアント&アナザーダンジョン',
       cn: '多变&异闻迷宫',
       ko: '변형&파생던전',
+      tc: '多變&異聞迷宮',
     },
   },
   [ContentType.ChaoticAllianceRaid]: {
@@ -226,6 +244,7 @@ const contentTypeToLabel: {
       fr: 'Le carnaval masqué',
       cn: '假面狂欢',
       ko: '가면 무투회',
+      tc: '假面狂歡',
     },
     short: {
       en: 'BLU',
@@ -233,6 +252,7 @@ const contentTypeToLabel: {
       fr: 'MBU',
       cn: '假面狂欢',
       ko: '청마',
+      tc: '假面狂歡',
     },
   },
   [ContentType.Eureka]: {
@@ -242,6 +262,7 @@ const contentTypeToLabel: {
       fr: 'Eureka',
       cn: '优雷卡',
       ko: '에우레카',
+      tc: '優雷卡',
     },
     short: {
       en: 'Eureka',
@@ -249,6 +270,7 @@ const contentTypeToLabel: {
       fr: 'Eureka',
       cn: '优雷卡',
       ko: '에우레카',
+      tc: '優雷卡',
     },
   },
   [ContentType.SaveTheQueen]: {
@@ -258,6 +280,7 @@ const contentTypeToLabel: {
       fr: 'Garde de la Reine',
       cn: '天佑女王',
       ko: '세이브 더 퀸',
+      tc: '天佑女王',
     },
     short: {
       en: 'Bozja',
@@ -265,6 +288,7 @@ const contentTypeToLabel: {
       fr: 'Bozja',
       cn: '博兹雅',
       ko: '보즈야',
+      tc: '博茲雅',
     },
   },
   [ContentType.OccultCrescent]: {
@@ -288,6 +312,7 @@ const contentTypeToLabel: {
       fr: 'Pèche océanique/Diadème',
       cn: '海钓/天上福地云冠群岛',
       ko: '먼바다 낚시/디아뎀',
+      tc: '海釣/天上福地雲冠群島',
     },
     short: {
       en: 'Diadem',
@@ -295,6 +320,7 @@ const contentTypeToLabel: {
       fr: 'Diadème',
       cn: '海钓/空岛',
       ko: '디아뎀',
+      tc: '海釣/空島',
     },
   },
   [ContentType.TreasureHunt]: {
@@ -304,6 +330,7 @@ const contentTypeToLabel: {
       fr: 'Chasse au trésor',
       cn: '寻宝',
       ko: '보물찾기',
+      tc: '尋寶',
     },
     short: {
       en: 'Maps',
@@ -311,6 +338,7 @@ const contentTypeToLabel: {
       fr: 'Cartes',
       cn: '寻宝',
       ko: '지도',
+      tc: '尋寶',
     },
   },
   [ContentType.DeepDungeons]: {
@@ -320,6 +348,7 @@ const contentTypeToLabel: {
       fr: 'Donjons sans fond',
       cn: '深层迷宫',
       ko: '딥 던전',
+      tc: '深層迷宮',
     },
     short: {
       en: 'DD',
@@ -327,6 +356,7 @@ const contentTypeToLabel: {
       fr: 'DSF',
       cn: '深宫',
       ko: '딥 던전',
+      tc: '深宮',
     },
   },
   [ContentType.DeepDungeonExtras]: {
@@ -334,11 +364,13 @@ const contentTypeToLabel: {
       en: 'Deep Dungeon Extra Content',
       cn: '深层迷宫额外内容',
       ko: '딥 던전 추가 컨텐츠',
+      tc: '深層迷宮額外內容',
     },
     short: {
       en: 'DD+',
       cn: '深宫+',
       ko: '딥 던전+',
+      tc: '深宮+',
     },
   },
   [ContentType.Pvp]: {
@@ -348,6 +380,7 @@ const contentTypeToLabel: {
       fr: 'PvP',
       cn: 'PvP',
       ko: 'PvP',
+      tc: 'PvP',
     },
     short: {
       en: 'PvP',
@@ -355,6 +388,7 @@ const contentTypeToLabel: {
       fr: 'PvP',
       cn: 'PvP',
       ko: 'PvP',
+      tc: 'PvP',
     },
   },
 } as const;
@@ -375,6 +409,7 @@ const zoneGridHeaders = {
     ja: '名前',
     cn: '名称',
     ko: '이름',
+    tc: '名稱',
   },
   triggers: {
     en: 'Triggers',
@@ -383,6 +418,7 @@ const zoneGridHeaders = {
     ja: 'トリガー',
     cn: '触发器',
     ko: '트리거',
+    tc: '觸發器',
   },
   timeline: {
     en: 'Timeline',
@@ -391,6 +427,7 @@ const zoneGridHeaders = {
     ja: 'タイムライン',
     cn: '时间轴',
     ko: '타임라인',
+    tc: '時間軸',
   },
   oopsy: {
     en: 'Oopsy',
@@ -399,6 +436,7 @@ const zoneGridHeaders = {
     ja: 'Oopsy',
     cn: '犯错监控',
     ko: 'Oopsy',
+    tc: '犯錯監控',
   },
   translated: {
     en: 'Translated',
@@ -407,6 +445,7 @@ const zoneGridHeaders = {
     ja: '翻訳済',
     cn: '已翻译',
     ko: '번역됨',
+    tc: '已翻譯',
   },
   releaseVersion: {
     en: 'Version',
@@ -414,6 +453,7 @@ const zoneGridHeaders = {
     fr: 'Version',
     cn: '版本',
     ko: '버전',
+    tc: '版本',
   },
   comments: {
     en: 'Comments',
@@ -421,6 +461,7 @@ const zoneGridHeaders = {
     fr: 'Commentaires',
     cn: '备注',
     ko: '참고',
+    tc: '備註',
   },
 } as const;
 
@@ -433,6 +474,7 @@ const miscStrings = {
     ja: 'Cactbot コンテンツ完成度',
     cn: 'Cactbot 内容覆盖率',
     ko: 'Cactbot 컨텐츠 커버리지',
+    tc: 'Cactbot 內容覆蓋率',
   },
   // Overall label for the expansion table.
   overall: {
@@ -442,6 +484,7 @@ const miscStrings = {
     ja: '概要',
     cn: '总览',
     ko: '전체',
+    tc: '總覽',
   },
   // Oopsy label for the expansion table.
   oopsy: {
@@ -470,6 +513,7 @@ const miscStrings = {
     ja: 'エラー：npm run coverage-report を実行し、データを生成しよう。',
     cn: '错误：请先运行 npm run coverage-report 以生成数据。',
     ko: '에러: 데이터를 생성하려면 node npm run coverage-report를 실행하세요.',
+    tc: '錯誤：請先運行 npm run coverage-report 來產生資料。',
   },
   // Indicator that content is unsupported
   unsupported: {
@@ -478,6 +522,7 @@ const miscStrings = {
     fr: 'Non supporté',
     cn: '尚不支持',
     ko: '지원하지 않음',
+    tc: '尚不支持',
   },
   // Indicator that content has not had a release yet
   unreleased: {
@@ -486,6 +531,7 @@ const miscStrings = {
     fr: 'Non publié',
     cn: '尚未发布',
     ko: '미배포',
+    tc: '尚未發佈',
   },
   // Prefix for hover text of release version column
   mergeDate: {
@@ -494,6 +540,7 @@ const miscStrings = {
     fr: 'Date du merge :',
     cn: '合并日期: ',
     ko: '병합 날짜: ',
+    tc: '合併日期: ',
   },
   // Prefix for hover text of release version column
   releaseDate: {
@@ -502,6 +549,7 @@ const miscStrings = {
     fr: 'Date de publication :',
     cn: '发布日期: ',
     ko: '배포 날짜: ',
+    tc: '發佈日期: ',
   },
   raidbossTriggerCount: {
     en: 'Raidboss Trigger Count',
@@ -509,6 +557,7 @@ const miscStrings = {
     fr: 'Total trigger Raidboss',
     cn: 'Raidboss触发器数量',
     ko: '레이드보스 트리거 수',
+    tc: 'Raidboss觸發器數量',
   },
   oopsyTriggerCount: {
     en: 'Oopsy Trigger Count',
@@ -516,6 +565,7 @@ const miscStrings = {
     fr: 'Total trigger Oopsy',
     cn: 'Oopsy触发器数量',
     ko: 'Oopsy 트리거 수',
+    tc: 'Oopsy觸發器數量',
   },
   none: {
     en: 'None',
@@ -523,6 +573,7 @@ const miscStrings = {
     fr: 'Aucun',
     cn: '无',
     ko: '없음',
+    tc: '無',
   },
   otherContentType: {
     en: 'Other Content',
@@ -530,6 +581,7 @@ const miscStrings = {
     fr: 'Autre contenu',
     cn: '其他内容',
     ko: '기타 컨텐츠',
+    tc: '其他內容',
   },
   changesSinceLastRelease: {
     en: 'Changes since last release',
@@ -537,6 +589,7 @@ const miscStrings = {
     fr: 'Modifications depuis la dernière release',
     cn: '自上次发布以来的更改',
     ko: '마지막 배포 이후 변경 사항',
+    tc: '自上次發佈以來的更改',
   },
   timelineEntries: {
     en: 'Timeline Entries',
@@ -544,6 +597,7 @@ const miscStrings = {
     fr: 'Entrées de la Timeline',
     cn: '时间轴条目',
     ko: '타임라인 항목 수',
+    tc: '時間軸條目',
   },
   timelineDuration: {
     en: 'Timeline Duration',
@@ -551,6 +605,7 @@ const miscStrings = {
     fr: 'Durée de la Timeline',
     cn: '时间轴时长',
     ko: '타임라인 길이',
+    tc: '時間軸時長',
   },
   noTranslationInformation: {
     en: 'No Translation Information',
@@ -558,6 +613,7 @@ const miscStrings = {
     fr: 'Pas d\'informations de traduction',
     cn: '无翻译信息',
     ko: '번역 정보 없음',
+    tc: '無翻譯資訊',
   },
   linkToEntry: {
     en: 'Link to this entry',
@@ -565,6 +621,7 @@ const miscStrings = {
     fr: 'Lien vers cette entrée',
     cn: '此条目链接',
     ko: '이 항목으로의 링크',
+    tc: '此條目連結',
   },
 } as const;
 
@@ -576,6 +633,7 @@ const translationGridHeaders = {
     ja: '翻訳',
     cn: '翻译',
     ko: '번역',
+    tc: '翻譯',
   },
   coverage: {
     en: 'Coverage',
@@ -584,6 +642,7 @@ const translationGridHeaders = {
     ja: '適用範囲',
     cn: '覆盖率',
     ko: '커버리지',
+    tc: '覆蓋率',
   },
   errors: {
     en: 'Errors',
@@ -592,6 +651,7 @@ const translationGridHeaders = {
     ja: 'エラー',
     cn: '错误',
     ko: '오류',
+    tc: '錯誤',
   },
   missingFiles: {
     en: 'Missing',
@@ -600,6 +660,7 @@ const translationGridHeaders = {
     ja: '欠落',
     cn: '缺失',
     ko: '누락됨',
+    tc: '缺失',
   },
   url: {
     en: 'Link to Missing Translation List',
@@ -608,6 +669,7 @@ const translationGridHeaders = {
     ja: '欠落している翻訳のリストへのリンク',
     cn: '缺失翻译表链接',
     ko: '번역 누락 리스트 링크',
+    tc: '缺失翻譯表連結',
   },
 } as const;
 
@@ -625,6 +687,7 @@ const themes: Record<ThemeKey, LocaleText> = {
     fr: 'Clair',
     cn: '浅色',
     ko: '라이트',
+    tc: '淺色',
   },
   'dark': {
     en: 'Dark',
@@ -632,6 +695,7 @@ const themes: Record<ThemeKey, LocaleText> = {
     fr: 'Sombre',
     cn: '深色',
     ko: '다크',
+    tc: '深色',
   },
 } as const;
 

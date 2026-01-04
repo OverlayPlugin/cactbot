@@ -14,6 +14,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   triggers: [
     {
@@ -37,6 +38,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボス従う',
           cn: '跟随冲锋',
           ko: '돌진 따라가기',
+          tc: '跟隨衝鋒',
         },
       },
     },
@@ -122,6 +124,13 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Hulder': '胡睹',
         'Storsie': '斯图希',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Hulder': '胡睹',
+        'Storsie': '斯圖希',
       },
     },
     {

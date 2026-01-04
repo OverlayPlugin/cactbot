@@ -35,6 +35,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '雑魚に当たる',
             cn: '吃头了',
             ko: '닉스',
+            tc: '吃頭了',
           },
         };
       },

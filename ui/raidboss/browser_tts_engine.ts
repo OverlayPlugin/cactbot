@@ -54,6 +54,7 @@ export default class BrowserTTSEngine {
       // TODO: maybe need to provide an option of zh-CN, zh-HK, zh-TW?
       cn: 'zh-CN',
       ko: 'ko-KR',
+      tc: 'zh-CN',
     };
 
     // figure out what TTS engine type we need

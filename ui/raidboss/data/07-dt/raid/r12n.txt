@@ -1,0 +1,185 @@
+### AAC HEAVYWEIGHT (M4)
+# ZoneId: 1326
+
+# -ii B467 B468 B469 B46A B46B B46E B472 B477 B47C B491 B492 B536 B53C B768 B9BD B9C0 BBE0
+# -it "Lindwurm"
+# -p BBD5:998.2
+# The phase above won't always work, it depends on what state the boss was in when it died
+# (none|left|right|both) arms transformed, each produces a different ability to de-transform
+
+hideall "--Reset--"
+hideall "--sync--"
+
+# At the end of P1, when the boss drops below 10%, it starts a separate soft enrage
+# loop. Scattered through the timeline are extra syncs to catch an out-of-place
+# tankbuster cast, which is what denotes the start of the enrage loop.
+hideall "--p1-enrage-sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+6.7 "--sync--" StartsUsing { id: "B494", source: "Lindwurm" } window 6.7,10
+11.4 "The Fixer" Ability { id: "B494", source: "Lindwurm" }
+19.2 "Bloodshed" Ability { id: ["B465", "B466"], source: "Lindwurm" }
+27.3 "Serpentine Scourge" Ability { id: "B9BB", source: "Lindwurm" }
+41.0 "Ravenous Reach" Ability { id: "B46D", source: "Lindwurm" }
+50.0 "Burst" Ability { id: "B46F", source: "Lindwurm" }
+
+# Cruel Coil
+58.7 "Cruel Coil" Ability { id: ["B11B", "B11C"], source: "Lindwurm" }
+64.8 "Skinsplitter" Ability { id: "B473", source: "Lindwurm" }
+69.9 "Skinsplitter" Ability { id: "B473", source: "Lindwurm" }
+74.9 "Skinsplitter" Ability { id: "B473", source: "Lindwurm" }
+80.0 "Constrictor" Ability { id: ["B53D", "B53F", "BDF3", "BDF4"], source: "Lindwurm" }
+92.0 "Visceral Burst" Ability { id: "B493", source: "Lindwurm" }
+
+# Dramatic Lysis
+96.6 "Bloodshed" Ability { id: ["B465", "B466"], source: "Lindwurm" }
+104.7 "Serpentine Scourge" Ability { id: "B9BB", source: "Lindwurm" }
+109.8 "Grotesquerie" Ability { id: "B481", source: "Lindwurm" }
+124.5 "Ravenous Reach" Ability { id: "B46D", source: "Lindwurm" }
+133.5 "Burst" Ability { id: "B46F", source: "Lindwurm" }
+138.9 "Dramatic Lysis" Ability { id: "B483", source: "Lindwurm" }
+146.5 "Splattershed" Ability { id: "B9C5", source: "Lindwurm" }
+148.3 "--sync--" Ability { id: "B7C6", source: "Lindwurm" }
+
+# Feral Fission
+158.6 label "p1-loop"
+161.3 "Feral Fission" Ability { id: "B478", source: "Lindwurm" }
+162.9 "Grand Entrance x8" duration 2 #Ability { id: "B47B", source: "Lindwurm" }
+169.6 "Bring Down the House" Ability { id: "B47D", source: "Lindwurm" }
+182.8 "Split Scourge" Ability { id: "B47F", source: "Lindwurm" }
+187.8 "--sync--" Ability { id: "B479", source: "Lindwurm" }
+191.0 "Venomous Scourge" Ability { id: "B480", source: "Lindwurm" }
+194.0 "Grotesquerie" Ability { id: "B481", source: "Lindwurm" }
+202.1 "Shockwave" Ability { id: "B482", source: "Lindwurm" }
+210.7 "Ravenous Reach" Ability { id: "B46D", source: "Lindwurm" }
+211.1 "Fourth-Wall Fusion" Ability { id: "B484", source: "Lindwurm" }
+219.7 "Burst" Ability { id: "B46F", source: "Lindwurm" }
+
+226.8 "Bloodshed" Ability { id: ["B465", "B466"], source: "Lindwurm" }
+# Cone cast here (Hemorrhagic Projection) is an invisible late instant cast
+# Does not align with the visual indicator since the visual is a 0x808 status effect on players
+# not an actual cast
+227.1 "Hemorrhagic Projection" Ability { id: "B485", source: "Lindwurm" }
+235.0 "Serpentine Scourge" Ability { id: "B9BB", source: "Lindwurm" }
+242.5 "Splattershed" Ability { id: "B9C5", source: "Lindwurm" }
+244.2 "--sync--" Ability { id: "B490", source: "Lindwurm" }
+253.0 "--p1-enrage-sync--" StartsUsing { id: "B492" } window 159.0,0 jump "p1-enrage-loop"
+258.8 "Visceral Burst" Ability { id: "B493", source: "Lindwurm" }
+
+# Cruel Coil 2
+267.9 "Cruel Coil" Ability { id: ["B11B", "B11C"], source: "Lindwurm" }
+274.0 "Skinsplitter" Ability { id: "B473", source: "Lindwurm" }
+279.0 "Skinsplitter" Ability { id: "B473", source: "Lindwurm" }
+284.0 "Constrictor" Ability { id: ["B53D", "B53F", "BDF3", "BDF4"], source: "Lindwurm" }
+297.0 "Grotesquerie" Ability { id: "B481", source: "Lindwurm" }
+305.2 "Shockwave" Ability { id: "B482", source: "Lindwurm" }
+306.5 "Burst" Ability { id: "B46F", source: "Lindwurm" }
+312.2 "Dramatic Lysis" Ability { id: "B483", source: "Lindwurm" }
+313.6 "Bloodshed" Ability { id: ["B465", "B466"], source: "Lindwurm" }
+321.7 "Serpentine Scourge" Ability { id: "B9BB", source: "Lindwurm" }
+324.4 "Bloodshed" Ability { id: ["B465", "B466"], source: "Lindwurm" }
+332.5 "Serpentine Scourge" Ability { id: "B9BB", source: "Lindwurm" }
+334.3 "Burst" Ability { id: "B46F", source: "Lindwurm" }
+339.6 "The Fixer" Ability { id: "B494", source: "Lindwurm" }
+
+348.9 "--p1-enrage-sync--" StartsUsing { id: "B492" } window 87.5,0 jump "p1-enrage-loop"
+349.0 "--sync--" StartsUsing { id: "B478", source: "Lindwurm" } forcejump "p1-loop"
+
+500.0 label "p1-enrage-loop"
+504.7 "Visceral Burst" Ability { id: "B493", source: "Lindwurm" }
+517.7 "The Fixer" Ability { id: "B494", source: "Lindwurm" }
+529.8 "The Fixer" Ability { id: "B494", source: "Lindwurm" }
+540.9 "Grotesquerie" Ability { id: "B481", source: "Lindwurm" }
+548.1 "Shockwave" Ability { id: "B482", source: "Lindwurm" }
+549.3 "Burst" Ability { id: "B46F", source: "Lindwurm" }
+556.0 "Hemorrhagic Projection" Ability { id: "B485", source: "Lindwurm" }
+563.3 "--sync--" StartsUsing { id: "B492" } forcejump "p1-enrage-loop"
+
+# Phase two, this sync is the announcer "The battle is decided! Victory goes to the champion!" text
+1000.0 "--sync--" ActorControl { command: "80000027", data0: "10", data1: "02", data2: "330A" } window 1000,0
+1020.2 "--targetable--"
+1026.3 label "p2-loop"
+1026.3 "Mindless Flesh x5" Ability { id: ["BBD8", "BBD9"], source: "Lindwurm" } duration 7.2
+1032.5 "Dramatic Lysis" Ability { id: "BCF3", source: "Lindwurm" }
+1039.5 "Mindless Flesh (huge)" Ability { id: "BBDF", source: "Lindwurm" }
+1050.0 "Splattershed" Ability { id: "BBE1", source: "Lindwurm" }
+1061.0 "--sync--" Ability { id: ["BBD8", "BBD9"], source: "Lindwurm" } forcejump "p2-loop"
+
+# IGNORED ABILITIES
+# B467 Serpentine Scourge: VFX for left/right cleave, not snapshot
+# B468 Serpentine Scourge: VFX for left/right cleave, not snapshot
+# B469 Ravenous Reach: VFX
+# B46A --sync--: VFX
+# B46B --sync--: VFX
+# B46E --sync--: VFX
+# B472 --sync--: Dark circle VFX for Cruel Coil
+# B477 Constrictor: Same as Skinsplitter for this Constrictor, the other hits are actual but this one lines up better for movement snapshots
+# B47C Bring Down the House: Castbar, not tied to ground AoEs
+# B491 --sync--: Autoattack
+# B492 Visceral Burst: Cast bar, not actual hit
+# B536 Ravenous Reach: VFX
+# B53C Skinsplitter: Actual ability that hits. Technically should ignore B53C instead but this is more accurate for moving out of the coil
+# B768 Ravenous Reach: VFX
+# B9BD Splattershed: VFX
+# B9C0 Splattershed: VFX
+# BBE0 Splattershed: VFX
+
+# ALL ENCOUNTER ABILITIES
+# B11B Cruel Coil
+# B11C Cruel Coil
+# B465 Bloodshed
+# B466 Bloodshed
+# B467 Serpentine Scourge
+# B468 Serpentine Scourge
+# B469 Ravenous Reach
+# B46A --sync--
+# B46B --sync--
+# B46D Ravenous Reach
+# B46E --sync--
+# B46F Burst
+# B472 --sync--
+# B473 Skinsplitter
+# B477 Constrictor
+# B478 Feral Fission
+# B479 --sync--
+# B47B Grand Entrance
+# B47C Bring Down the House
+# B47D Bring Down the House
+# B47F Split Scourge
+# B480 Venomous Scourge
+# B481 Grotesquerie
+# B482 Shockwave
+# B483 Dramatic Lysis
+# B484 Fourth-Wall Fusion
+# B485 Hemorrhagic Projection
+# B490 --sync--
+# B491 --sync--
+# B492 Visceral Burst
+# B493 Visceral Burst
+# B494 The Fixer
+# B536 Ravenous Reach
+# B53C Skinsplitter
+# B53D Constrictor
+# B53F Constrictor
+# B768 Ravenous Reach
+# B7C6 --sync--
+# B9BB Serpentine Scourge
+# B9BD Splattershed
+# B9C0 Splattershed
+# B9C5 Splattershed
+# BBD8 Mindless Flesh
+# BBD9 Mindless Flesh
+# BBDA Mindless Flesh
+# BBDB Mindless Flesh
+# BBDC Mindless Flesh
+# BBDD Mindless Flesh
+# BBDE Mindless Flesh
+# BBDF Mindless Flesh
+# BBE0 Splattershed
+# BBE1 Splattershed
+# BCCC --sync--
+# BCF3 Dramatic Lysis
+# BDF3 Constrictor
+# BDF4 Constrictor

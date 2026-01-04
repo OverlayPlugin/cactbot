@@ -26,6 +26,7 @@ const triggerSet: TriggerSet<Data> = {
     ja: 'SSモブ',
     cn: 'SS 级狩猎怪',
     ko: 'SS급 마물',
+    tc: 'SS 級狩獵怪',
   },
   comments: {
     en: 'SS Rank Hunts',
@@ -33,6 +34,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang SS',
     cn: 'SS级狩猎怪',
     ko: 'SS급 마물',
+    tc: 'SS級狩獵怪',
   },
   triggers: [
     {
@@ -85,6 +87,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gelé bientôt',
           cn: '即将冻结',
           ko: '곧 동결',
+          tc: '即將凍結',
         },
       },
     },
@@ -113,6 +116,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite => Allez dessous',
           cn: '右 => 身下',
           ko: '오른쪽 => 보스 아래로',
+          tc: '右 => 身下',
         },
       },
     },
@@ -129,6 +133,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche => Allez dessous',
           cn: '左 => 身下',
           ko: '왼쪽 => 보스 아래로',
+          tc: '左 => 身下',
         },
       },
     },
@@ -145,6 +150,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Droite => Extérieur',
           cn: '左 => 远离',
           ko: '왼쪽 => 밖으로',
+          tc: '左 => 遠離',
         },
       },
     },
@@ -161,6 +167,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Gauche => Extérieur',
           cn: '右 => 远离',
           ko: '오른쪽 => 밖으로',
+          tc: '右 => 遠離',
         },
       },
     },
@@ -186,6 +193,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'replaceSync': {
+        'Arch Aethereater': '水晶化身之王',
+      },
+    },
+    {
+      'locale': 'tc',
       'replaceSync': {
         'Arch Aethereater': '水晶化身之王',
       },

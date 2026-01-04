@@ -53,6 +53,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
             ja: '鳥と線',
             cn: '火灵鸟连线',
             ko: '화령조 선 연결됨',
+            tc: '火靈鳥連線',
           },
         };
       },

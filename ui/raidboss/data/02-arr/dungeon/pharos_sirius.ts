@@ -36,6 +36,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開: クリスタルがすぐ爆発する',
           cn: '散开: 即将爆炸',
           ko: '산개: 곧 크리스탈 폭발',
+          tc: '散開: 即將爆炸',
         },
       },
     },
@@ -54,6 +55,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} を全回復して',
           cn: '奶满${player}',
           ko: '완전 회복: ${player}',
+          tc: '奶滿${player}',
         },
       },
     },
@@ -81,6 +83,12 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'cn',
       'replaceSync': {
         'Siren': '塞壬',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Siren': '賽蓮',
       },
     },
     {

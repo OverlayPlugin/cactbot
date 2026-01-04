@@ -503,6 +503,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Dancing Green': 'ダンシング・グリーン',
+      },
+      'replaceText': {
+        // '\\(opposite\\)': '', // FIXME '(对面)'
+        '2-snap Twist': '二連舞步＆定格',
+        '4-snap Twist': '四連舞步＆定格',
+        'Arcady Night Fever': '阿卡狄亞夜狂熱',
+        'Celebrate Good Times': '歡慶美妙時光',
+        'Deep Cut': '心曲刻錄',
+        'Disco Infernal': '激熱夜舞廳',
+        'Do the Hustle': '跳起哈娑舞',
+        'Eighth Beats': '8拍節奏',
+        'Ensemble Assemble': '伴舞團',
+        'Frogtourage': '青蛙舞者登場！',
+        'Full Beat': '1拍節奏',
+        'Funky Floor': '熱舞場地',
+        'Let\'s Dance!': '放縱勁舞！',
+        'Let\'s Pose!': '定格時刻！',
+        'Moonburn': '月灼',
+        'Ride the Waves': '舞浪全開',
+        // 'Stone': '', // FIXME
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Dancing Green': '댄싱 그린',

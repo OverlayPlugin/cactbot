@@ -33,6 +33,7 @@ const phaserOutputStrings = {
     ja: 'タンクは外に',
     cn: '坦克散开',
     ko: '탱 산개',
+    tc: '坦克散開',
   },
   tankLaser: {
     en: 'Laser on YOU',
@@ -41,6 +42,7 @@ const phaserOutputStrings = {
     ja: '自分にレーザー',
     cn: '激光点名',
     ko: '레이저 대상자',
+    tc: '雷射點名',
   },
 };
 
@@ -54,6 +56,7 @@ const artOfDarknessOutputStrings = {
     ja: '相方とスタック',
     cn: '与搭档集合分摊',
     ko: '쉐어뎀 파트너랑 모이기',
+    tc: '與搭檔集合分攤',
   },
   protean: {
     en: 'Protean',
@@ -62,6 +65,7 @@ const artOfDarknessOutputStrings = {
     ja: '散開',
     cn: '八方散开',
     ko: '산개',
+    tc: '八方散開',
   },
   unknown: Outputs.unknown,
 };
@@ -196,6 +200,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー注意',
           cn: '躲避死刑激光',
           ko: '레이저 피하기',
+          tc: '躲避死刑雷射',
         },
       },
     },
@@ -220,6 +225,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '苗木を捨てる',
           cn: '击退放置荆棘',
           ko: '장판 유도하기',
+          tc: '擊退放置荊棘',
         },
       },
     },
@@ -243,6 +249,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線が繋がれなかった方へ',
           cn: '远离连线的墙壁',
           ko: '보스 선 연결된 방향 피하기',
+          tc: '遠離連線的牆壁',
         },
       },
     },
@@ -355,6 +362,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左から',
           cn: '左侧开始',
           ko: '왼쪽에서 시작',
+          tc: '左側開始',
         },
       },
     },
@@ -379,6 +387,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右から',
           cn: '右侧开始',
           ko: '오른쪽에서 시작',
+          tc: '右側開始',
         },
       },
     },
@@ -471,6 +480,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '定めたパネルに待機',
           cn: '上自己的方块',
           ko: '바닥 자리잡기',
+          tc: '上自己的方塊',
         },
       },
     },
@@ -489,6 +499,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザーを外に向ける',
           cn: '向外引导激光',
           ko: '레이저를 바깥으로 유도하기',
+          tc: '向外引導雷射',
         },
       },
     },
@@ -565,6 +576,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左から',
           cn: '左侧开始',
           ko: '왼쪽에서 시작',
+          tc: '左側開始',
         },
       },
     },
@@ -586,6 +598,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右から',
           cn: '右侧开始',
           ko: '오른쪽에서 시작',
+          tc: '右側開始',
         },
       },
     },
@@ -604,6 +617,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '塔を踏む',
           cn: '踩塔',
           ko: '기둥 들어가기',
+          tc: '踩塔',
         },
       },
     },
@@ -626,6 +640,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '暗闇の雲',
           cn: '暗黑之云',
           ko: '어둠의 구름',
+          tc: '暗黑之雲',
         };
 
         const bossData = await callOverlayHandler({
@@ -651,6 +666,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '幻影の雲',
           cn: '幻影之云',
           ko: '환영의 구름',
+          tc: '幻影之雲',
         };
 
         const cloneData = await callOverlayHandler({
@@ -799,6 +815,40 @@ const triggerSet: TriggerSet<Data> = {
         'Anti-Air Particle Beam': '高射式波动炮',
         'Aetherosynthesis': '吸收生命',
         '\\(L/R\\)': '(左/右)',
+      },
+    },
+    {
+      'locale': 'tc',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Clone Of Darkness': '幻影之雲',
+        'Cloud Of Darkness': '黑暗之雲',
+      },
+      'replaceText': {
+        'The Third Art Of Darkness': '三重暗之戰技',
+        'The Second Art Of Darkness': '二重暗之戰技',
+        'The Art Of Darkness': '暗之戰技',
+        'Summon': '召喚',
+        'Rejuvenating Balm': '活性彈',
+        // 'Phaser Unlimited': '', // FIXME '跳跃波动炮'
+        'Particle Concentration': '波動球',
+        'Obscure Woods': '暗黑森林',
+        'Hypercharged Condensation': '吸引波動雲',
+        'Ground-Razing Particle Beam': '放射式波動砲',
+        'Full-Perimeter Particle Beam': '掃射式波動砲',
+        'Flood Of Obscurity': '暗之氾濫：暗黑森林',
+        'Flood Of Emptiness': '暗之氾濫：暗黑天空',
+        'Empty Plane': '暗黑天空',
+        'Devouring Dark': '暗黑侵蝕',
+        'Deluge Of Darkness': '暗之大氾濫',
+        'Dark-Energy Particle Beam': '詛咒式波動砲',
+        'Condensed Wide-Angle Particle Beam': '廣角式高輸出波動砲',
+        'Condensed Anti-Air Particle Beam': '高射式高輸出波動砲',
+        'Bad Vibrations': '強震動',
+        'Anti-Air Phaser Unlimited': '零式高射式跳躍波動砲',
+        'Anti-Air Particle Beam': '高射式波動砲',
+        'Aetherosynthesis': '吸收生命',
+        // '\\(L/R\\)': '', // FIXME '(左/右)'
       },
     },
     {

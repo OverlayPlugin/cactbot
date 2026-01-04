@@ -14,6 +14,7 @@ const triggerSet: TriggerSet<Data> = {
     fr: 'Chasse de rang A',
     cn: 'A级狩猎怪',
     ko: 'A급 마물',
+    tc: 'A級狩獵怪',
   },
   triggers: [
     {
@@ -124,6 +125,14 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Aglaope': '阿格拉俄珀',
         'O Poorest Pauldia': '保尔迪雅',
+        'The Mudman': '泥人',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Aglaope': '阿格拉俄珀',
+        'O Poorest Pauldia': '保爾迪雅',
         'The Mudman': '泥人',
       },
     },

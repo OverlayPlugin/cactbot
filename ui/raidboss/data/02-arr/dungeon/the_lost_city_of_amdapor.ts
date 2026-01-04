@@ -30,6 +30,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外周に捨てる',
           cn: '远离放置圈圈',
           ko: '바깥쪽으로 장판 유도하기',
+          tc: '遠離放置圈圈',
         },
       },
     },
@@ -67,6 +68,13 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Chudo-Yudo': '丘都尤都',
         'Diabolos': '迪亚波罗斯',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Chudo-Yudo': '丘都尤都',
+        'Diabolos': '迪亞布羅斯',
       },
     },
     {
