@@ -1108,6 +1108,7 @@ Offsets: ${allOffsets.sort(numberSort).join(', ')}
     },`;
           break;
         case 'Party Stacks':
+          // TODO: would Outputs.healerGroups be more appropriate here?
           headMarkerTriggers += `
     {
       id: '${args.trigger_id_prefix ?? ''} Headmarker Party Stacks ${headmarker}',
@@ -1383,8 +1384,6 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
     },`;
         break;
       case 'Plus (out intercards)':
-        // TODO: We should probably have this as a `Responses` option,
-        // but that's beyond the scope of this PR
         triggersText += `
     {
       id: '${args.trigger_id_prefix ?? ''} ${abilityName}',
@@ -1392,18 +1391,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: false },
-      infoText: (_data, _matches, output) => output.intercards!(),
-      outputStrings: {
-        intercards: {
-          en: 'Intercards',
-          de: 'Interkardinal',
-          fr: 'Intercardinal',
-          ja: '斜めへ',
-          cn: '四角',
-          ko: '대각선 쪽으로',
-          tc: '四角',
-        },
-      },
+      response: Responses.getIntercards(),
     },`;
         break;
       case 'Circle (out)':
@@ -1451,6 +1439,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
     },`;
         break;
       case 'Party Stacks':
+        // TODO: would Outputs.healerGroups be more appropriate here?
         triggersText += `
     {
       id: '${args.trigger_id_prefix ?? ''} ${abilityName}',
@@ -1460,14 +1449,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
         }', capture: false },
       infoText: (_data, _matches, output) => output.stacks!(),
       outputStrings: {
-        stacks: {
-          en: 'Stacks',
-          de: 'Sammeln',
-          fr: 'Package',
-          cn: '分摊',
-          ko: '쉐어',
-          tc: '分攤',
-        },
+        stacks: Outputs.stacks,
       },
     },`;
         break;
