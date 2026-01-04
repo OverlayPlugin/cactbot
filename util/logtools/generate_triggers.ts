@@ -1575,8 +1575,8 @@ const generateFileFromTriggerInfo = async (triggerInfo: TriggerInfo[], args: Ext
 
   return `// Auto-generated with:
 // ${processArgs}
-import { Responses } from '../../../../../resources/responses';
 import Outputs from '../../../../../resources/outputs';
+import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
