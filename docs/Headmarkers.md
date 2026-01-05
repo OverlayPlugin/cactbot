@@ -8,7 +8,7 @@ e.g. `NetRegexes.headMarker()`.
 The FFXIV parsing plugin calls them "TargetIcon",
 e.g. `[21:40:13.596] TargetIcon 1B:4002ADD7:Arcane Cylinder:0000:0000:00B5:0000:0000:0000`.
 FFXIV itself calls them "Lockon",
-e.g. <https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Lockon.csv>.
+e.g. <https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/Lockon.csv>.
 
 This guide will call them "headmarkers" from here on out.
 
@@ -119,7 +119,7 @@ See that file for how that can be solved.
 All visual effects are avfx game data files and are referenced by the `Lockon` table.
 
 You can `exd Lockon` from a local copy of [SaintCoinach](https://github.com/xivapi/SaintCoinach),
-or alternatively you can browse the Lockon table online here: <https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Lockon.csv>
+or alternatively you can browse the Lockon table online here: <https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/Lockon.csv>
 
 Headmarkers are 2 byte hex values,
 and the `key` field in the `Lockon` is the decimal representation of that hex value.
@@ -148,7 +148,7 @@ const headmarkers = {
 
 The comet marker (that appears on one of the two unbroken meteors during Charybdis in P9S) is `01B3`.
 `0x01B3` = 435 in decimal.
-In the [LockOn table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Lockon.csv#L439),
+In the [LockOn table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/Lockon.csv#L437),
 you can find that key 435 has the string `n5r9_lockon_bht_c0g`.
 
 This corresponds to the game asset `vfx/lockon/eff/n5r9_lockon_bht_c0g.avfx`.

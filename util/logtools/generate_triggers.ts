@@ -43,7 +43,8 @@ const triggerSuggestOptions = [
   'Away from Front (cone)',
   'Tankbuster',
   'Stack',
-  'Party Stacks',
+  'Healer Groups',
+  'Partner Stacks',
   'Spread',
   'Knockback',
   'Custom Separate',
@@ -54,7 +55,8 @@ const triggerSuggestOptions = [
 const headmarkerTriggerSuggestOptions = [
   'Tankbuster',
   'Stack',
-  'Party Stacks',
+  'Healer Groups',
+  'Partner Stacks',
   'Spread',
   'Knockback',
   'Custom',
@@ -1063,7 +1065,7 @@ const headMarkerData = {
           suggestedOperation = 'Spread';
           break;
         case 'm0906_share4_7s0k2':
-          suggestedOperation = 'Party Stacks';
+          suggestedOperation = 'Healer Groups';
           break;
       }
 
@@ -1107,15 +1109,27 @@ Offsets: ${allOffsets.sort(numberSort).join(', ')}
       response: Responses.stackMarkerOn(),
     },`;
           break;
-        case 'Party Stacks':
+        case 'Healer Groups':
           headMarkerTriggers += `
     {
-      id: '${args.trigger_id_prefix ?? ''} Headmarker Party Stacks ${headmarker}',
+      id: '${args.trigger_id_prefix ?? ''} Headmarker Healer Groups ${headmarker}',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['${headmarker}'], capture: false },
-      infoText: (_data, _matches, output) => output.stacks!(),
+      infoText: (_data, _matches, output) => output.healerGroups!(),
       outputStrings: {
-        stacks: Outputs.stacks,
+        healerGroups: Outputs.healerGroups,
+      },
+    },`;
+          break;
+        case 'Partner Stacks':
+          headMarkerTriggers += `
+    {
+      id: '${args.trigger_id_prefix ?? ''} Headmarker Partner Stacks ${headmarker}',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['${headmarker}'], capture: false },
+      infoText: (_data, _matches, output) => output.stackPartner!(),
+      outputStrings: {
+        stackPartner: Outputs.stackPartner,
       },
     },`;
           break;
@@ -1383,8 +1397,6 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
     },`;
         break;
       case 'Plus (out intercards)':
-        // TODO: We should probably have this as a `Responses` option,
-        // but that's beyond the scope of this PR
         triggersText += `
     {
       id: '${args.trigger_id_prefix ?? ''} ${abilityName}',
@@ -1392,18 +1404,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: false },
-      infoText: (_data, _matches, output) => output.intercards!(),
-      outputStrings: {
-        intercards: {
-          en: 'Intercards',
-          de: 'Interkardinal',
-          fr: 'Intercardinal',
-          ja: '斜めへ',
-          cn: '四角',
-          tc: '分攤',
-          ko: '대각선 쪽으로',
-        },
-      },
+      response: Responses.getIntercards(),
     },`;
         break;
       case 'Circle (out)':
@@ -1450,7 +1451,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       response: Responses.stackMarkerOn(),
     },`;
         break;
-      case 'Party Stacks':
+      case 'Healer Groups':
         triggersText += `
     {
       id: '${args.trigger_id_prefix ?? ''} ${abilityName}',
@@ -1458,16 +1459,23 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: false },
-      infoText: (_data, _matches, output) => output.stacks!(),
+      infoText: (_data, _matches, output) => output.healerGroups!(),
       outputStrings: {
-        stacks: {
-          en: 'Stacks',
-          de: 'Sammeln',
-          fr: 'Package',
-          cn: '分摊',
-          tc: '分攤',
-          ko: '쉐어',
-        },
+        healerGroups: Outputs.healerGroups,
+      },
+    },`;
+        break;
+      case 'Partner Stacks':
+        triggersText += `
+    {
+      id: '${args.trigger_id_prefix ?? ''} ${abilityName}',
+      type: 'StartsUsing',
+      netRegex: { id: ${allIdsString}, source: '${
+          mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
+        }', capture: false },
+      infoText: (_data, _matches, output) => output.stackPartner!(),
+      outputStrings: {
+        stackPartner: Outputs.stackPartner,
       },
     },`;
         break;
@@ -1575,8 +1583,8 @@ const generateFileFromTriggerInfo = async (triggerInfo: TriggerInfo[], args: Ext
 
   return `// Auto-generated with:
 // ${processArgs}
+import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { Outputs } from '../../../../../resources/outputs';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';

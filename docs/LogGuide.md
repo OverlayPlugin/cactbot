@@ -476,7 +476,7 @@ This field is a four byte field with two parts,
 The first two bytes are the update type (e.g. `8003` is the update type for instanced content,
 and `8004` is the same content but with trusts).
 The second two bytes are the `InstanceContentType`,
-from the [InstanceContent table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/InstanceContent.csv).
+from the [InstanceContent table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/InstanceContent.csv).
 
 For example, if `instance` is `80034E6C` then `0x4E6C` is the `InstanceContentType`.
 `0x4E6C` is 20076 in decimal, and corresponds to Diamond Weapon (Savage): <https://xivapi.com/InstanceContent/20076?pretty=true>.
@@ -1967,7 +1967,7 @@ This log line is for tethers between enemies or enemies and players.
 This does not appear to be used for player to player skill tethers like dragonsight or cover.
 (It can be used for enemy-inflicted player to player tethers such as burning chains in Shinryu N/EX.)
 
-The `id` parameter is an id into the [Channeling table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Channeling.csv).
+The `id` parameter is an id into the [Channeling table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/Channeling.csv).
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=Tether&lang=en-US) -->
 
@@ -2426,7 +2426,7 @@ Parsed Log Line Examples:
 
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-The `id` parameter is an id into the [LogMessage table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/LogMessage.csv).
+The `id` parameter is an id into the [LogMessage table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/LogMessage.csv).
 
 | id (hex) | Link | Shortened Message |
 | --- | --- | --- |
@@ -3161,8 +3161,8 @@ This log line is emitted whenever a NpcYell packet is received from the server,
 indicating that an NPC has yelled something (e.g. UCOB Nael quotes).
 
 `npcNameId` and `npcYellId` (both hex values) correspond to IDs
-in the [BNpcName](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcName.csv)
-and [NpcYell](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/NpcYell.csv) tables, respectively.
+in the [BNpcName](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/BNpcName.csv)
+and [NpcYell](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/NpcYell.csv) tables, respectively.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=NpcYell&lang=en-US) -->
 
@@ -3210,8 +3210,8 @@ This log line is emitted whenever a BattleTalk2 packet is received from the serv
 resulting in popup dialog being displayed during instanced content.
 
 `npcNameId` and `instanceContentTextId` (both hex values) correspond to IDs
-in the [BNpcName](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcName.csv)
-and [InstanceContentTextData](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/InstanceContentTextData.csv)
+in the [BNpcName](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/BNpcName.csv)
+and [InstanceContentTextData](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/InstanceContentTextData.csv)
 tables, respectively.
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=BattleTalk2&lang=en-US) -->
@@ -3457,11 +3457,11 @@ through other log lines.
 
 The `tetherId` field is the same as the `id` field used in
 [NetworkTether](#line-35-0x23-networktether) lines and corresponds to an id in the
-[Channeling table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/Channeling.csv).
+[Channeling table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/Channeling.csv).
 
 The `animationState` field reflects the initial animation state of the actor
 at the time it is spawned, and corresponds to the
-[BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcState.csv).
+[BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/BNpcState.csv).
 
 Note: If the actor spawns with a `tetherId` or `animationState` value, there will not be
 a corresponding [NetworkTether](#line-35-0x23-networktether)
@@ -3529,13 +3529,13 @@ given the volume of data, although more may be added in the future:
 - `SetAnimationState` - used to set the animation state of an actor.
   - `param1`, like the `animationState` field in
     [SpawnNpcExtra](#line-272-0x110-spawnnpcextra), corresponds to the
-    [BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/BNpcState.csv).
+    [BNpcState table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/BNpcState.csv).
   - `param2` appears to change how an animation of that actor is rendered in-game.
     More information is needed.
 - `DisplayPublicContentTextMessage` - Displays a message in the chat log
   - `param1` seems to always be `0x0`
   - `param2` corresponds to an entry in the
-    [PublicContentTextData table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/PublicContentTextData.csv)
+    [PublicContentTextData table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/PublicContentTextData.csv)
   - `param3` and `param4` are optional fields referenced in some messages
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=ActorControlExtra&lang=en-US) -->
@@ -3600,7 +3600,7 @@ given the volume of data, although more may be added in the future:
 - `DisplayLogMessage` - used to display a log message in the chat window.
   - `param1`, like the `id` field in
     [SystemLogMessage](#line-41-0x29-systemlogmessage), corresponds to the
-    [LogMessage table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/LogMessage.csv).
+    [LogMessage table](https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/LogMessage.csv).
   - Remaining parameters are directly read by the LogMessage entry.
 - `DisplayLogMessageParams` - used to display a log message in the chat window.
   - Very similar to `DisplayLogMessage`, except that `param2` appears to always be an actor ID.

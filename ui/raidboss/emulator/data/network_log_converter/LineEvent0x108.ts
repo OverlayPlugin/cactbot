@@ -20,7 +20,7 @@ export class LineEvent0x108 extends LineEvent {
 
     this.abilityIdHex = parts[fields.id]?.toUpperCase() ?? '';
     this.abilityId = parseInt(this.abilityIdHex, 16);
-    this.id = parts[fields.id]?.toUpperCase() ?? '';
+    this.id = parts[fields.sourceId]?.toUpperCase() ?? '';
 
     this.x = parseFloat(parts[fields.x] ?? '');
     this.y = parseFloat(parts[fields.y] ?? '');

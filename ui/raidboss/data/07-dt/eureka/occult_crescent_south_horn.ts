@@ -11,6 +11,8 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
   ce?: string;
+  phantomJob?: string;
+  phantomJobLevel?: number;
   sisyphusResoundingMemoryWedge?: 'intercards' | 'cardinals' | 'unknown';
   demonTabletChiselTargets: string[];
   demonTabletRotationCounter: number;
@@ -60,7 +62,7 @@ export interface Data extends RaidbossData {
 }
 
 // List of events:
-// https://github.com/xivapi/ffxiv-datamining/blob/master/csv/DynamicEvent.csv
+// https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/DynamicEvent.csv
 //
 // These ids are (unfortunately) gathered by hand and don't seem to correlate
 // to any particular bits of data.  However, there's a game log message when you
@@ -413,6 +415,171 @@ const magitaurOutputStrings = {
   },
 };
 
+// Used to filter the GainsEffect
+const phantomJobEffectIds = [
+  '1092', // Freelancer
+  '1106', // Knight
+  '1107', // Berserker
+  '1108', // Monk
+  '1109', // Ranger
+  '1110', // Oracle
+  '1111', // Thief
+  '110A', // Samurai
+  '110B', // Bard
+  '110C', // Geomancer
+  '110D', // Time Mage
+  '110E', // Cannonneer
+  '110F', // Chemist
+  '12C3', // Mystic Knight
+  '12C4', // Gladiator
+  '12C5', // Dancer
+];
+
+// Useful for matching on job name in condition trigger
+const phantomJobData = {
+  'freelancer': '1092',
+  'knight': '1106',
+  'berserker': '1107',
+  'monk': '1108',
+  'ranger': '1109',
+  'oracle': '1110',
+  'thief': '1111',
+  'samurai': '110A',
+  'bard': '110B',
+  'geomancer': '110C',
+  'timeMage': '110D',
+  'cannoneer': '110E',
+  'chemist': '110F',
+  'mysticKnight': '12C3',
+  'gladiator': '12C4',
+  'dancer': '12C5',
+} as const;
+
+// Return if the player has a phantom job that can dispel
+// Phantom Time Mage Lv 4: Dispel
+const phantomCanDispel = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.timeMage && phantomJobLevel >= 4)
+    return true;
+  return false;
+};
+
+// Return if the player has a phantom job that can slow
+// Phantom Time Mage Lv 1: Slowga
+/*
+const phantomCanSlow = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.timeMage && phantomJobLevel >= 1)
+    return true;
+  return false;
+};
+*/
+
+// Return if the player has a phantom job that can cleanse
+// Phantom Oracle Lv 2: Recuperation
+const phantomCanCleanse = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 2)
+    return true;
+  return false;
+};
+
+// Return if the player has a phantom job that can freeze time
+// Phantom Bard Lv 2: Romeo's Ballad (aoe)
+// Phantom Dancer Lv 1 may be able to use Dance with Tempting Tango proc (single-target)
+const phantomCanFreeze = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.bard && phantomJobLevel >= 2)
+    return true;
+  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 1)
+    return true;
+  return false;
+};
+
+// Return if the player has a phantom job that can suspend
+// Phantom Geomancer Lv 4: Suspend
+/*
+const phantomCanSuspend = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.geomancer && phantomJobLevel >= 4)
+    return true;
+  return false;
+};
+*/
+
+// Return if the player has a phantom job that can reduce tankbuster
+// Phantom Knight Lv 4: Phantom Guard + Enhanced Phantom Guard (90%)
+// Phantom Knight Lv 6: Pledge
+// Phantom Oracle Lv 6: Invulnerability
+// Phantom Dancer Lv 3: Steadfast Dance (10% MaxHP Barrier)
+// Phantom Dancer Lv 4: Mesmerize (40%)
+// Phantom Mystic Knight Lv 2: Magic Shell (20% MaxHP Barrier of caster)
+// Phantom Gladiator Lv 2: Defend (50%)
+/*
+const phantomCaresAboutTankbuster = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.knight && phantomJobLevel >= 4)
+    return true;
+  if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
+    return true;
+  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 3)
+    return true;
+  if (phantomJob === phantomJobData.mysticKnight && phantomJobLevel >= 2)
+    return true;
+  if (phantomJob === phantomJobData.gladiator && phantomJobLevel >= 2)
+    return true;
+  return false;
+};
+*/
+
+// Return if the player has a phantom job that can block physical damage
+// Phantom Samurai Lv 2: Shirahadori
+// Phantom Oracle Lv 6: Invulnerability
+/*
+const phantomCanBlockPhysical = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.samurai && phantomJobLevel >= 2)
+    return true;
+  if (phantomJob === phantomJobData.oracle && phantomJobLevel >= 6)
+    return true;
+  return false;
+};
+*/
+
+// Return if the player has a phantom job that helps with enemy aoes
+// Phantom Bard Lv 3: Mighty March (+20% MaxHP)
+// Phantom Ranger Lv 6: Occult Unicorn (40k AoE Shield)
+// Phantom Dancer Lv 4: Mesmerize (Require's target, 4s 40% damage reduction then 100s 10% damage reduction)
+// Phantom Geomance Lv 2 may be able to use Weather with Blessed Rain, Misty Mirage, Sunbath, or Cloudy Caress effects
+/*
+const phantomCaresAboutAOE = (
+  phantomJob: string,
+  phantomJobLevel: number,
+): boolean => {
+  if (phantomJob === phantomJobData.bard && phantomJobLevel >= 3)
+    return true;
+  if (phantomJob === phantomJobData.ranger && phantomJobLevel >= 6)
+    return true;
+  if (phantomJob === phantomJobData.dancer && phantomJobLevel >= 4)
+    return true;
+  return false;
+};
+*/
+
 const triggerSet: TriggerSet<Data> = {
   id: 'TheOccultCrescentSouthHorn',
   zoneId: ZoneId.TheOccultCrescentSouthHorn,
@@ -694,6 +861,42 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'Occult Crescent Phantom Job Tracker',
+      // count also contains a Phantom Job id and level, it's supposed to be two bytes but has weird padding in logs
+      // Expecting first two characters to be part of Phantom Job id, and the later two to be the level
+      // First digit is the job:
+      // Dancer = F
+      // Gladiator = E
+      // Mystic Knight = D
+      // Thief = C
+      // Oracle = B
+      // Chemist = A
+      // Cannoneer = 9
+      // Time Mage = 8
+      // Geomancer = 7
+      // Bard = 6
+      // Samurai = 5
+      // Ranger = 4
+      // Monk = 3
+      // Berserker = 2
+      // Knight = 1
+      // Freelancer = null
+      // Freelancer level is accumulation of maxed jobs +1, can also be inferred from stacks of Phantom Mastery (1082)
+      type: 'GainsEffect',
+      netRegex: { effectId: [...phantomJobEffectIds], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        data.phantomJob = matches.effectId;
+        const jobData = matches.count?.padStart(4, '0');
+
+        // Assuming this isn't possible given the filter on statuses
+        if (jobData === undefined)
+          return;
+
+        data.phantomJobLevel = parseInt(jobData.slice(2), 16);
+      },
+    },
+    {
       id: 'Occult Crescent Forked Tower: Blood Clear Data',
       type: 'SystemLogMessage',
       // "is no longer sealed"
@@ -763,6 +966,29 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getBehind(),
     },
     {
+      id: 'Occult Crescent Crescent Berserker Damage Up',
+      // Crescent Berserker gains Damage Up (20s) from Channeled Rage (7846)
+      // Crescent Berserker gains Damage Up (40s) from Heightened Rage (93B1)
+      type: 'GainsEffect',
+      netRegex: { effectId: '3D', target: 'Crescent Berserker', capture: true },
+      condition: (data) => {
+        if (data.phantomJob === undefined || data.phantomJobLevel === undefined)
+          return false;
+        return phantomCanDispel(data.phantomJob, data.phantomJobLevel);
+      },
+      infoText: (_data, matches, output) => output.dispel!({ name: matches.target }),
+      outputStrings: {
+        dispel: {
+          en: 'Dispel ${name}',
+          de: 'Entferne ${name}',
+          fr: 'Dissipez ${name}',
+          ja: '${name}にバフ解除',
+          cn: '驱散 ${name} 的BUFF',
+          ko: '${name} 버프 해제',
+        },
+      },
+    },
+    {
       id: 'Occult Crescent Hinkypunk Dread Dive',
       type: 'StartsUsing',
       netRegex: { source: 'Hinkypunk', id: 'A1A4', capture: true },
@@ -810,6 +1036,28 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Neo Garula', id: 'A0E5', capture: true },
       response: Responses.tankBuster(),
+    },
+    {
+      id: 'Occult Crescent Neo Garula Damage Up',
+      // Neo Garula gains Damage Up (60s) after casting Agitated Groan
+      type: 'GainsEffect',
+      netRegex: { effectId: '489', target: 'Neo Garula', capture: true },
+      condition: (data) => {
+        if (data.phantomJob === undefined || data.phantomJobLevel === undefined)
+          return false;
+        return phantomCanDispel(data.phantomJob, data.phantomJobLevel);
+      },
+      infoText: (_data, matches, output) => output.dispel!({ name: matches.target }),
+      outputStrings: {
+        dispel: {
+          en: 'Dispel ${name}',
+          de: 'Entferne ${name}',
+          fr: 'Dissipez ${name}',
+          ja: '${name}にバフ解除',
+          cn: '驱散 ${name} 的BUFF',
+          ko: '${name} 버프 해제',
+        },
+      },
     },
     {
       id: 'Occult Crescent Lion Rampant Fearsome Glint',
@@ -3307,6 +3555,15 @@ const triggerSet: TriggerSet<Data> = {
       // This will count until all 12 have started casting
       type: 'StartsUsing',
       netRegex: { source: 'Tower Idol', id: 'A61F', capture: true },
+      condition: (data) => {
+        if (
+          data.phantomJob === undefined ||
+          data.phantomJobLevel === undefined ||
+          phantomCanFreeze(data.phantomJob, data.phantomJobLevel)
+        )
+          return true;
+        return false;
+      },
       promise: async (data, matches) => {
         const combatants = (await callOverlayHandler({
           call: 'getCombatants',
@@ -4885,7 +5142,16 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: Cleanse call for Doom, but it is not yet logged, it's probably 11CE?
       type: 'GainsEffect',
       netRegex: { effectId: '115C', capture: true },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => {
+        if (
+          (data.me === matches.target) &&
+          (data.phantomJob === undefined ||
+            data.phantomJobLevel === undefined ||
+            phantomCanCleanse(data.phantomJob, data.phantomJobLevel))
+        )
+          return true;
+        return false;
+      },
       // 25s - 20s, plus some delay for buff/debuff propagation
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 20 + 0.5,
       suppressSeconds: 1,

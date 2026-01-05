@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import { Lang } from '../resources/languages';
 
 const baseGithub = 'https://raw.githubusercontent.com/';
-const intlGithub = 'xivapi/ffxiv-datamining/master/csv/';
+const intlGithub = 'xivapi/ffxiv-datamining/master/csv/en/';
 const cnGithub = 'thewakingsands/ffxiv-datamining-cn/master/';
 const tcGithub = 'thewakingsands/ffxiv-datamining-tc/main/';
 const koGithub = 'Ra-Workspace/ffxiv-datamining-ko/master/csv/';
