@@ -8,7 +8,7 @@
   "types": "./types",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OverlayPlugin/cactbot"
+    "url": "git+https://github.com/OverlayPlugin/cactbot.git"
   },
   "files": [
     "./ui",
