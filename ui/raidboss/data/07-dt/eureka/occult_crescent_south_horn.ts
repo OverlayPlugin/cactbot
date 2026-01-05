@@ -62,7 +62,7 @@ export interface Data extends RaidbossData {
 }
 
 // List of events:
-// https://github.com/xivapi/ffxiv-datamining/blob/master/csv/DynamicEvent.csv
+// https://github.com/xivapi/ffxiv-datamining/blob/master/csv/en/DynamicEvent.csv
 //
 // These ids are (unfortunately) gathered by hand and don't seem to correlate
 // to any particular bits of data.  However, there's a game log message when you
