@@ -642,7 +642,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A59B', source: 'Brute Abombinator', capture: false },
       suppressSeconds: 1,
-      response: Responses.partnerStack('alert'),
+      response: Responses.stackPartner('alert'),
     },
     {
       id: 'R7S Powerslam',

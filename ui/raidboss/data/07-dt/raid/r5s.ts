@@ -495,7 +495,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R5S Quarter Beats',
       type: 'StartsUsing',
       netRegex: { id: 'A75B', source: 'Dancing Green', capture: false },
-      response: Responses.partnerStack(),
+      response: Responses.stackPartner(),
     },
     {
       id: 'R5S Eighth Beats',

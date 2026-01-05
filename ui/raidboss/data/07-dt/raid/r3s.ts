@@ -469,7 +469,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '940A', source: 'Brute Bomber', capture: false },
       delaySeconds: 20,
       durationSeconds: 7,
-      response: Responses.partnerStack('alert'),
+      response: Responses.stackPartner('alert'),
     },
     {
       id: 'R3S Tag Team Tether',
