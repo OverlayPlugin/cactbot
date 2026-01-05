@@ -38,7 +38,7 @@ const oopsyFiles: string[] = [];
 const processInputs = (inputPath: string[]) => {
   inputPath.forEach((path: string) => {
     walkDirSync(path, (filepath) => {
-      if (/\/(?:raidboss|oopsy)_manifest.txt/.test(filepath)) {
+      if (/\/(?:raidboss|oopsy)_manifest.txt/.test(filepath) || /\/99-custom\//.test(filepath)) {
         return;
       }
       if (/\/raidboss\/data\/.*\.txt/.test(filepath)) {
