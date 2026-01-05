@@ -236,10 +236,7 @@ Options.Triggers.push({
       id: 'Cloud Chaotic Unholy Darkness',
       type: 'StartsUsing',
       netRegex: { id: 'A12D', source: 'Cloud of Darkness', capture: false },
-      infoText: (_data, _matches, output) => output.healerGroups(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'Cloud Chaotic Flare Marker',

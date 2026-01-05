@@ -264,10 +264,7 @@ Options.Triggers.push({
       netRegex: { id: 'A56E', source: 'Brute Abombinator', capture: false },
       condition: (data) => data.brutalImpactCount < 8,
       suppressSeconds: 1,
-      alertText: (_data, _matches, output) => output.text(),
-      outputStrings: {
-        text: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups('alert'),
     },
     {
       id: 'R7S Quarry Swamp',
@@ -608,10 +605,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: 'A59B', source: 'Brute Abombinator', capture: false },
       suppressSeconds: 1,
-      alertText: (_data, _matches, output) => output.text(),
-      outputStrings: {
-        text: Outputs.stackPartner,
-      },
+      response: Responses.stackPartner('alert'),
     },
     {
       id: 'R7S Powerslam',

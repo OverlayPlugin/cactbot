@@ -450,10 +450,7 @@ Options.Triggers.push({
       id: 'R5S Quarter Beats',
       type: 'StartsUsing',
       netRegex: { id: 'A75B', source: 'Dancing Green', capture: false },
-      infoText: (_data, _matches, output) => output.quarterBeats(),
-      outputStrings: {
-        quarterBeats: Outputs.stackPartner,
-      },
+      response: Responses.stackPartner(),
     },
     {
       id: 'R5S Eighth Beats',

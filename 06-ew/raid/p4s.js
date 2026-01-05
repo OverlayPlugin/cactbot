@@ -481,10 +481,7 @@ Options.Triggers.push({
       id: 'P4S Lava Pinax',
       type: 'StartsUsing',
       netRegex: { id: '69D5', source: 'Hesperos', capture: false },
-      infoText: (_data, _matches, output) => output.groups(),
-      outputStrings: {
-        groups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'P4S Northerly Shift Slash',

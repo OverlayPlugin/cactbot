@@ -432,10 +432,7 @@ Options.Triggers.push({
       netRegex: { id: '940A', source: 'Brute Bomber', capture: false },
       delaySeconds: 20,
       durationSeconds: 7,
-      alertText: (_data, _matches, output) => output.stack(),
-      outputStrings: {
-        stack: Outputs.stackPartner,
-      },
+      response: Responses.stackPartner('alert'),
     },
     {
       id: 'R3S Tag Team Tether',

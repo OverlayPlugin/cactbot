@@ -313,10 +313,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '8485', source: 'Golbez', capture: false },
       suppressSeconds: 3,
-      alertText: (_data, _matches, output) => output.healerGroups(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups('alert'),
     },
     {
       id: 'GolbezEx Azdaja\'s Shadow Out Tell',

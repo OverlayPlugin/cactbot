@@ -12,10 +12,7 @@ Options.Triggers.push({
       id: 'SeiryuUn Split Group',
       regex: /Forbidden Arts 1/,
       beforeSeconds: 4,
-      infoText: (_data, _matches, output) => output.text(),
-      outputStrings: {
-        text: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'SeiryuUn Line Stack',

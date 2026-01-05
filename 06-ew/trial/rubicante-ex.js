@@ -329,10 +329,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: '7D03', source: 'Rubicante', capture: false },
       suppressSeconds: 5,
-      infoText: (_data, _matches, output) => output.group(),
-      outputStrings: {
-        group: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'RubicanteEx Twinfold Flame',

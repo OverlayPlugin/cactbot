@@ -150,10 +150,7 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: 'A025', source: 'Queen Eternal', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.stacks(),
-      outputStrings: {
-        stacks: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'QueenEternal Ex Wind Phase Debuff Collector',
