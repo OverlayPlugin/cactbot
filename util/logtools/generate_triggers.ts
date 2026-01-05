@@ -43,7 +43,8 @@ const triggerSuggestOptions = [
   'Away from Front (cone)',
   'Tankbuster',
   'Stack',
-  'Party Stacks',
+  'Healer Groups',
+  'Partner Stacks',
   'Spread',
   'Knockback',
   'Custom Separate',
@@ -54,7 +55,8 @@ const triggerSuggestOptions = [
 const headmarkerTriggerSuggestOptions = [
   'Tankbuster',
   'Stack',
-  'Party Stacks',
+  'Healer Groups',
+  'Partner Stacks',
   'Spread',
   'Knockback',
   'Custom',
@@ -1063,7 +1065,7 @@ const headMarkerData = {
           suggestedOperation = 'Spread';
           break;
         case 'm0906_share4_7s0k2':
-          suggestedOperation = 'Party Stacks';
+          suggestedOperation = 'Healer Groups';
           break;
       }
 
@@ -1107,16 +1109,27 @@ Offsets: ${allOffsets.sort(numberSort).join(', ')}
       response: Responses.stackMarkerOn(),
     },`;
           break;
-        case 'Party Stacks':
-          // TODO: would Outputs.healerGroups be more appropriate here?
+        case 'Healer Groups':
           headMarkerTriggers += `
     {
-      id: '${args.trigger_id_prefix ?? ''} Headmarker Party Stacks ${headmarker}',
+      id: '${args.trigger_id_prefix ?? ''} Headmarker Healer Groups ${headmarker}',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['${headmarker}'], capture: false },
-      infoText: (_data, _matches, output) => output.stacks!(),
+      infoText: (_data, _matches, output) => output.healerGroups!(),
       outputStrings: {
-        stacks: Outputs.stacks,
+        healerGroups: Outputs.healerGroups,
+      },
+    },`;
+          break;
+        case 'Partner Stacks':
+          headMarkerTriggers += `
+    {
+      id: '${args.trigger_id_prefix ?? ''} Headmarker Partner Stacks ${headmarker}',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['${headmarker}'], capture: false },
+      infoText: (_data, _matches, output) => output.stackPartner!(),
+      outputStrings: {
+        stackPartner: Outputs.stackPartner,
       },
     },`;
           break;
@@ -1438,8 +1451,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       response: Responses.stackMarkerOn(),
     },`;
         break;
-      case 'Party Stacks':
-        // TODO: would Outputs.healerGroups be more appropriate here?
+      case 'Healer Groups':
         triggersText += `
     {
       id: '${args.trigger_id_prefix ?? ''} ${abilityName}',
@@ -1447,9 +1459,23 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: false },
-      infoText: (_data, _matches, output) => output.stacks!(),
+      infoText: (_data, _matches, output) => output.healerGroups!(),
       outputStrings: {
-        stacks: Outputs.stacks,
+        healerGroups: Outputs.healerGroups,
+      },
+    },`;
+        break;
+      case 'Partner Stacks':
+        triggersText += `
+    {
+      id: '${args.trigger_id_prefix ?? ''} ${abilityName}',
+      type: 'StartsUsing',
+      netRegex: { id: ${allIdsString}, source: '${
+          mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
+        }', capture: false },
+      infoText: (_data, _matches, output) => output.stackPartner!(),
+      outputStrings: {
+        stackPartner: Outputs.stackPartner,
       },
     },`;
         break;
