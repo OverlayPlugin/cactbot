@@ -645,10 +645,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'A59B', source: 'Brute Abombinator', capture: false },
       suppressSeconds: 1,
-      alertText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: Outputs.stackPartner,
-      },
+      response: Responses.partnerStack('alert'),
     },
     {
       id: 'R7S Powerslam',

@@ -1127,10 +1127,7 @@ Offsets: ${allOffsets.sort(numberSort).join(', ')}
       id: '${args.trigger_id_prefix ?? ''} Headmarker Partner Stacks ${headmarker}',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['${headmarker}'], capture: false },
-      infoText: (_data, _matches, output) => output.stackPartner!(),
-      outputStrings: {
-        stackPartner: Outputs.stackPartner,
-      },
+      response: Responses.partnerStack(),
     },`;
           break;
         case 'Spread':
@@ -1473,10 +1470,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: false },
-      infoText: (_data, _matches, output) => output.stackPartner!(),
-      outputStrings: {
-        stackPartner: Outputs.stackPartner,
-      },
+      response: Responses.partnerStack(),
     },`;
         break;
       case 'Spread':

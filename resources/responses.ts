@@ -356,6 +356,8 @@ export const Responses = {
   stackInTower: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.stackInTower),
   stackMiddle: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.stackMiddle),
   doritoStack: (sev?: Severity) => staticResponse(defaultAlertText(sev), Outputs.doritoStack),
+  // for mechanics where you stack with your partner
+  partnerStack: (sev?: Severity) => staticResponse(defaultInfoText(sev), Outputs.stackPartner),
   spreadThenStack: (sev?: Severity) => {
     return staticResponse(defaultAlertText(sev), Outputs.spreadThenStack);
   },
