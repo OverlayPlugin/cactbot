@@ -316,10 +316,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'P9S Archaic Demolish',
       type: 'StartsUsing',
       netRegex: { id: '816D', source: 'Kokytos', capture: false },
-      alertText: (_data, _matches, output) => output.healerGroups!(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups('alert'),
     },
     {
       // Ball of Levin combatants are added ~0.3 seconds after Kokytos finishes using Levinstrike Summoning

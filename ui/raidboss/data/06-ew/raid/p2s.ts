@@ -105,10 +105,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: '682B', source: 'Hippokampos', capture: false },
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.groups!(),
-      outputStrings: {
-        groups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'P2S Mark of the Tides Collect',

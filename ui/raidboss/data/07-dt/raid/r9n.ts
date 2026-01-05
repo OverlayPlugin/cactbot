@@ -434,10 +434,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R9N Penetrating Pitch',
       type: 'StartsUsing',
       netRegex: { id: 'B364', source: 'Vamp Fatale', capture: false },
-      infoText: (_data, _matches, output) => output.stacks!(),
-      outputStrings: {
-        stacks: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'R9N Crowd Kill',

@@ -613,11 +613,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['7869', '786B'], source: 'Hegemone', capture: false },
       condition: (data) => !data.secondExocleavers,
-      alertText: (_data, _matches, output) => output.healerGroups!(),
+      response: Responses.healerGroups('alert'),
       run: (data) => data.secondExocleavers = true,
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
     },
     {
       id: 'P6S Exocleaver Move',
@@ -635,10 +632,7 @@ const triggerSet: TriggerSet<Data> = {
       // are handled by P6S Exocleaver Healer Groups.
       condition: (data) => data.polyInstance === 3,
       suppressSeconds: 1,
-      alertText: (_data, _matches, output) => output.healerGroups!(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups('alert'),
     },
     {
       id: 'P6S Choros Ixou Front Back',

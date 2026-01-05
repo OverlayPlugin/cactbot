@@ -520,10 +520,7 @@ cactbot 中许多代码使用了 `LocaleText` 类型取代需要翻译的字符�
        type: 'StartsUsing',
 -      netRegex: { id: '816D', source: 'Kokytos', capture: false },
 +      netRegex: { id: '816D', source: 'Cocyte', capture: false },
-       alertText: (_data, _matches, output) => output.healerGroups!(),
-       outputStrings: {
-         healerGroups: Outputs.healerGroups,
-       },
+       response: Responses.healerGroups('alert'),
      },
 ```
 

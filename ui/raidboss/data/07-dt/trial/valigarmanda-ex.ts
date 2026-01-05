@@ -219,10 +219,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
       durationSeconds: 6,
       suppressSeconds: 1,
-      alertText: (_data, _matches, output) => output.healerGroups!(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups('alert'),
     },
     {
       id: 'Valigarmanda Ex Mountain Fire Tank',
@@ -379,10 +376,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 6,
       durationSeconds: 6,
       suppressSeconds: 1,
-      alertText: (_data, _matches, output) => output.healerGroups!(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups('alert'),
     },
     // 901D is the 'Hail of Feathers' cast from the first feather to drop
     // Use 'StartsUsingExtra', as 'StartsUsing' positions can be stale.

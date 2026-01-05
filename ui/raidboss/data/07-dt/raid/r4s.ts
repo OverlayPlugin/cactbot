@@ -1914,10 +1914,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: '013C', capture: false },
       condition: (data) => data.phase === 'crosstail',
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.stacks!(),
-      outputStrings: {
-        stacks: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
 
     // Twilight Sabbath

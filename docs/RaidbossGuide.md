@@ -867,10 +867,7 @@ so that timelines and triggers will work in French:
        type: 'StartsUsing',
 -      netRegex: { id: '816D', source: 'Kokytos', capture: false },
 +      netRegex: { id: '816D', source: 'Cocyte', capture: false },
-       alertText: (_data, _matches, output) => output.healerGroups!(),
-       outputStrings: {
-         healerGroups: Outputs.healerGroups,
-       },
+       response: Responses.healerGroups('alert'),
      },
 ```
 

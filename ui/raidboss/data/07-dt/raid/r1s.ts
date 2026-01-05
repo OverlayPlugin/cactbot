@@ -387,20 +387,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R1S Double Swipe',
       type: 'StartsUsing',
       netRegex: { id: '945F', source: 'Black Cat', capture: false },
-      infoText: (_data, _matches, output) => output.healerStacks!(),
-      outputStrings: {
-        healerStacks: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'R1S Delayed Double Swipe',
       type: 'StartsUsing',
       netRegex: { id: '945F', source: 'Black Cat', capture: false },
       delaySeconds: 24.4,
-      infoText: (_data, _matches, output) => output.healerStacks!(),
-      outputStrings: {
-        healerStacks: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },
     {
       id: 'R1S Overshadow',

@@ -77,10 +77,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'P9N Archaic Demolish',
       type: 'StartsUsing',
       netRegex: { id: '812F', source: 'Kokytos', capture: false },
-      alertText: (_data, _matches, output) => output.healerGroups!(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups('alert'),
     },
     {
       id: 'P9N Front Combination + Inside Roundhouse',

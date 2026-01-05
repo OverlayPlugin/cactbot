@@ -1115,10 +1115,7 @@ Offsets: ${allOffsets.sort(numberSort).join(', ')}
       id: '${args.trigger_id_prefix ?? ''} Headmarker Healer Groups ${headmarker}',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['${headmarker}'], capture: false },
-      infoText: (_data, _matches, output) => output.healerGroups!(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },`;
           break;
         case 'Partner Stacks':
@@ -1445,7 +1442,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: true },
-      response: Responses.stackMarkerOn(),
+      response: Responses.healerGroups(),
     },`;
         break;
       case 'Healer Groups':
@@ -1456,10 +1453,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: false },
-      infoText: (_data, _matches, output) => output.healerGroups!(),
-      outputStrings: {
-        healerGroups: Outputs.healerGroups,
-      },
+      response: Responses.healerGroups(),
     },`;
         break;
       case 'Partner Stacks':
