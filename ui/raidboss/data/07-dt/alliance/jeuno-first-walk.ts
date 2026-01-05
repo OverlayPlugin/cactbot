@@ -926,7 +926,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // There's no castbar for Tera Slash.
     // Activate off the "Tera Slash in 10 seconds" message.
-    // https://github.com/xivapi/ffxiv-datamining/blob/13aae911aee5a36623ab4922dcdb4e1b485682f0/csv/LogMessage.csv#L10840
+    // https://github.com/xivapi/ffxiv-datamining/blob/d3eb86dc54d9e7fa6230b34040a2778d8f817319/csv/en/LogMessage.csv#L10845
     {
       id: 'Jeuno First Walk Shadow Lord Tera Slash',
       type: 'SystemLogMessage',

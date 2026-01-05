@@ -357,6 +357,14 @@ export default class TimerBar extends HTMLElement {
         :host-context(.just-a-number) .timerbar-fg {
           display: none;
         }
+        /* Chinese better visibility CSS */
+        :lang(zh-CN) .text-container {
+          top: calc(50% - 1.4ex);
+          overflow: visible;
+        }
+        :lang(zh-CN) .timerbar-righttext {
+          top: 0.2ex;
+        }
         /* Korean better visibility CSS */
         :lang(ko) .text-container {
           top: calc(50% - 1.5ex);
