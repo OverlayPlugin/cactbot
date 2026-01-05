@@ -310,8 +310,11 @@ const triggerSet: TriggerSet<Data> = {
       // 7916 during Blazing Footfalls
       netRegex: { id: '7917', source: 'Hephaistos', capture: false },
       durationSeconds: 12,
-      response: Responses.healerGroups(),
+      infoText: (_data, _matches, output) => output.healerGroups!(),
       run: (data, _matches, output) => data.footfallsConcept = output.healerGroups!(),
+      outputStrings: {
+        healerGroups: Outputs.healerGroups,
+      },
     },
     {
       id: 'P8S Conceptual Tetraflare Quadruped',

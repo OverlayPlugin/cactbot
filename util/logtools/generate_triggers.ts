@@ -1442,7 +1442,7 @@ CastInfo Hints: ${[...castTypeFullSuggestions].join(', ')}
       netRegex: { id: ${allIdsString}, source: '${
           mapInfo.fights[0]?.instances[0]?.groups?.source ?? 'MISSING SOURCE'
         }', capture: true },
-      response: Responses.healerGroups(),
+      response: Responses.stackMarkerOn(),
     },`;
         break;
       case 'Healer Groups':
