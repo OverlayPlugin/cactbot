@@ -30,10 +30,10 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'R11N Majestic Meteor': 'B3EA', // meteor puddles
     'R11N Majestic Meteorain': 'B3EB', // portal meteor lasers
     'R11N Unmitigated Explosion Knockback Towers': 'B3EE', // knockback tower failure
-    'R11N Arcadion Avalanche East Toss South': 'B3F0', // platform toss, west platform safe, north safe
+    'R11N Arcadion Avalanche West Toss South': 'B3F0', // platform toss, east platform safe, north safe
     'R11N Arcadion Avalanche West Toss North': 'B3F2', // platform toss, east platform safe, south safe
     'R11N Arcadion Avalanche East Toss North': 'B3F4', // platform toss, west platform safe, south safe
-    'R11N Arcadion Avalanche West Toss South': 'B3F6', // platform toss, east platform safe, north safe
+    'R11N Arcadion Avalanche East Toss South': 'B3F6', // platform toss, west platform safe, north safe
     'R11N Fire And Fury Front': 'B3F8', // conal AoE, Majestic Meteor
     'R11N Fire And Fury Back': 'B3F9', // conal AoE, Majestic Meteor
     'R11N Explosion Great Wall Of Fire': 'B3FD', // tank laser follow-up
