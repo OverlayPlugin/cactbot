@@ -131,7 +131,7 @@ hideall "--sync--"
 # B3BD Smashdown: basic dynamo AoE (scythe)
 # B3BF Smashdown: basic cross AoE (sword)
 # B3C1 Raw Steel: shared tank cleave
-# B3CB Comet: follow-up Comet puddles
+# B3CB Comet: follow-up Comet spread AoE (leaves Cometite puddle)
 # B3D2 Dance of Domination
 # B3D4 Dance of Domination
 # B3D8 Charybdis
@@ -141,10 +141,10 @@ hideall "--sync--"
 # B3EE Unmitigated Explosion: knockback tower failure
 # B3F8 Fire and Fury: conal AoE front (Majestic Meteor)
 # B3F9 Fire and Fury: conal AoE back (Majestic Meteor)
-# B540 Assault Evolved: tether axe charge
-# B541 Assault Evolved: tether scythe charge
-# B542 Assault Evolved: tether sword charge
-# B7B9 Explosion: Sword Quiver
+# B540 Assault Evolved: Assault Apex axe charge
+# B541 Assault Evolved: Assault Apex scythe charge
+# B542 Assault Evolved: Assault Apex sword charge
+# B7B9 Explosion: Sword Quiver orthogonal lines
 # B7E9 Dance of Domination: Sword Quiver raidwide
 
 # ALL ENCOUNTER ABILITIES
@@ -164,9 +164,9 @@ hideall "--sync--"
 # B3C1 Raw Steel: shared tank cleave
 # B3C2 Impact: purple spread circle
 # B3C8 Void Stardust: Comet castbar
-# B3C9 Comet: initial Comet puddle
+# B3C9 Comet: initial Comet spread AoE (leaves Cometite puddle)
 # B3CA Cometite: Comet puddle resolve
-# B3CB Comet: follow-up Comet puddles
+# B3CB Comet: follow-up Comet spread AoE (leaves Cometite puddle)
 # B3CC Trophy Weapons: tether weapon summon castbar
 # B3CD Assault Evolved: tether weapon sequence castbar
 # B3CE Assault Evolved: tether chariot AoE (axe)
@@ -174,7 +174,7 @@ hideall "--sync--"
 # B3D0 Assault Evolved: tether cross AoE (sword)
 # B3D1 Dance of Domination: Sword Quiver raidwide 1
 # B3D2 Dance of Domination: Sword Quiver raidwide 2
-# B3D3 Explosion: Sword Quiver telegraph
+# B3D3 Explosion: Sword Quiver diagonal lines
 # B3D4 Dance of Domination: Sword Quiver raidwide 3-7
 # B3D5 Raw Steel Trophy: empowered axe stance
 # B3D7 Charybdistopia: set party HP to 1
@@ -222,10 +222,10 @@ hideall "--sync--"
 # B401 --sync--: stance change from tornado?
 # B402 --sync--: stance change to ???
 # B487 --sync--: boss tornado animation start during LoS meteors?
-# B540 Assault Evolved: tether axe charge
-# B541 Assault Evolved: tether scythe charge
-# B542 Assault Evolved: tether sword charge
-# B7B9 Explosion: Sword Quiver
+# B540 Assault Evolved: Assault Apex axe charge
+# B541 Assault Evolved: Assault Apex scythe charge
+# B542 Assault Evolved: Assault Apex sword charge
+# B7B9 Explosion: Sword Quiver orthogonal lines
 # B7BA Dance of Domination Trophy: empowered sword stance
 # B7E9 Dance of Domination: Sword Quiver raidwide
 # B7EB Ultimate Trophy Weapons: empowered tether weapon summon castbar
