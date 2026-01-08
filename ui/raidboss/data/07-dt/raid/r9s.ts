@@ -545,9 +545,7 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
-        stack: {
-          en: 'Stack',
-        },
+        stack: Outputs.getTogether,
         avoid: {
           en: 'Avoid',
         },
