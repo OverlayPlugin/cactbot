@@ -7,6 +7,7 @@ import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 export interface Data extends RaidbossData {
+  flailPositions: NetMatches['StartsUsingExtra'][];
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   bats: {
     inner: DirectionOutput16[];
@@ -16,6 +17,182 @@ export interface Data extends RaidbossData {
   satisfiedCount: number;
   hasHellAwaits: boolean;
 }
+
+const mapEffectData = {
+  // Makes tiles more purple during small area mechs
+  '00': {
+    'location': '00',
+    // Set at end of Sadistic Screech, when tiles fall
+    'flags0': '00020001',
+    // Set at end of smaller platform phase
+    'clear1': '00080004',
+  },
+
+  // Probably a flail
+  '01': {
+    'location': '01',
+    'flags0': '00040004',
+  },
+  // Unknown, set when flail spawns (02 and 07 set for near SE/NW)
+  '02': {
+    'location': '02',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'clear2': '00080004',
+    'flags3': '00400020',
+  },
+  // Probably a flail
+  '03': {
+    'location': '03',
+    'flags0': '00040004',
+  },
+  // Unknown, set when flail spawns (04 and 05 set for far NE/SW)
+  '04': {
+    'location': '04',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'clear2': '00080004',
+    'flags3': '00400020',
+  },
+  // Unknown, set when flail spawns (04 and 05 set for far NE/SW)
+  '05': {
+    'location': '05',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'clear2': '00080004',
+    'flags3': '00400020',
+  },
+  // Probably a flail
+  '06': {
+    'location': '06',
+    'flags0': '00040004',
+  },
+  // Unknown, set when flail spawns (02 and 07 set for near SE/NW)
+  '07': {
+    'location': '07',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'clear2': '00080004',
+    'flags3': '00400020',
+  },
+  // Probably a flail
+  '08': {
+    'location': '08',
+    'flags0': '00040004',
+  },
+
+  // 09-0C:
+  // Related to Coffinmaker
+  '09': {
+    'location': '09',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'flags2': '00200010',
+    'clear3': '00800040',
+    'flags4': '02000100',
+    'flags5': '04000010',
+    'flags6': '08000040',
+    'flags7': '10000100',
+    'flags8': '80000004',
+  },
+  '0A': {
+    'location': '0A',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'flags2': '00200010',
+    'clear3': '00800040',
+    'flags4': '02000100',
+    'flags5': '04000010',
+    'flags6': '08000040',
+    'flags7': '10000100',
+    'flags8': '80000004',
+  },
+  '0B': {
+    'location': '0B',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'flags2': '00200010',
+    'clear3': '00800040',
+    'flags4': '02000100',
+    'flags5': '04000010',
+    'flags6': '08000040',
+    'flags7': '10000100',
+    'flags8': '80000004',
+  },
+  '0C': {
+    'location': '0C',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'flags2': '00200010',
+    'clear3': '00800040',
+    'flags4': '02000100',
+    'flags5': '04000010',
+    'flags6': '08000040',
+    'flags7': '10000100',
+    'flags8': '80000004',
+  },
+
+  // 0D/0E are set during second sadistic screech, maybe the buzzsaws?
+  '0D': {
+    'location': '0D',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'clear2': '00080004',
+    'clear3': '00800040',
+    'flags4': '01000020',
+    'flags5': '02000001',
+    'flags6': '04000800',
+  },
+
+  '0E': {
+    'location': '0E',
+    'flags0': '00020001',
+    'flags1': '00040004',
+    'clear2': '00080004',
+    'clear3': '00800040',
+    'flags4': '01000020',
+    'flags5': '02000001',
+    'flags6': '04000800',
+  },
+
+  // Tied to arena animations
+  '0F': {
+    'location': '0F',
+    // Set to this at start of Sadistic Screech cast
+    'flags0': '00020001',
+    // Set to this on kill
+    'flags1': '00040004',
+    // Set to this at end of Sadistic Screech cast, when floor disappears
+    'clear2': '00080004',
+  },
+
+  // Aetherletting circle/wall floor visual
+  '10': {
+    'location': '10',
+    // Show
+    'flags0': '00020001',
+    // End of fight clear?
+    'flags1': '00040004',
+    // Hide
+    'clear2': '00080004',
+  },
+
+  // Fiery floor effect for Coffinmaker
+  '11': {
+    'location': '11',
+    // First row
+    'flags0': '00020001',
+    // Clear at end of fight?
+    'flags1': '00040004',
+    // Clear after small phase
+    'clear2': '00080004',
+    // Second row
+    'flags3': '00200010',
+    // Third row
+    'clear4': '00800040',
+  },
+} as const;
+console.assert(mapEffectData);
 
 const headMarkerData = {
   // Vfx Path: com_share4a1
@@ -39,6 +216,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.AacHeavyweightM1Savage,
   timelineFile: 'r9s.txt',
   initData: () => ({
+    flailPositions: [],
     actorPositions: {},
     bats: { inner: [], middle: [], outer: [] },
     satisfiedCount: 0,
@@ -255,6 +433,64 @@ const triggerSet: TriggerSet<Data> = {
         aetherlettingOnYou: {
           en: 'Aetherletting on YOU',
         },
+      },
+    },
+    {
+      id: 'R9S Plummet',
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'B38B', capture: true },
+      preRun: (data, matches) => {
+        data.flailPositions.push(matches);
+      },
+      infoText: (data, _matches, output) => {
+        const [flail1Match, flail2Match] = data.flailPositions;
+
+        if (flail1Match === undefined || flail2Match === undefined)
+          return;
+
+        const flail1X = parseFloat(flail1Match.x);
+        const flail1Y = parseFloat(flail1Match.y);
+        const flail2X = parseFloat(flail2Match.x);
+        const flail2Y = parseFloat(flail2Match.y);
+
+        const flail1Dir = Directions.xyToIntercardDirOutput(flail1X, flail1Y, center.x, center.y);
+        const flail2Dir = Directions.xyToIntercardDirOutput(flail2X, flail2Y, center.x, center.y);
+
+        const flail1Dist = Math.abs(flail1Y - center.y) < 10 ? 'near' : 'far';
+        const flail2Dist = Math.abs(flail1Y - center.y) < 10 ? 'near' : 'far';
+
+        return output.text!({
+          flail1Dir: output[flail1Dir]!(),
+          flail2Dir: output[flail2Dir]!(),
+          flail1Dist: output[flail1Dist]!(),
+          flail2Dist: output[flail2Dist]!(),
+        });
+      },
+      run: (data) => {
+        if (data.flailPositions.length < 2)
+          return;
+        data.flailPositions = [];
+      },
+      outputStrings: {
+        text: {
+          en: 'Flails ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+          fr: 'Fléaux ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+          cn: '刺锤 ${flail1Dist}${flail1Dir}、${flail2Dist}${flail2Dir}',
+          ko: '철퇴 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+        },
+        near: {
+          en: 'Near',
+          fr: 'Proche',
+          cn: '近',
+          ko: '가까이',
+        },
+        far: {
+          en: 'Far',
+          fr: 'Loin',
+          cn: '远',
+          ko: '멀리',
+        },
+        ...Directions.outputStringsIntercardDir,
       },
     },
     {
