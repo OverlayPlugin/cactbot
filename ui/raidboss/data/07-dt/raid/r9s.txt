@@ -261,10 +261,6 @@ hideall "--sync--"
 # B35D Brutal Rain: VFX
 # B705 Dead Wake: VFX
 # B344 Insatiable Thirst: VFX
-# B34E Half Moon: VFX for B377 => B378, Small
-# B34F Half Moon: VFX for B379 => B37A, Big
-# B350 Half Moon: VFX for B37B => B37C, Small
-# B351 Half Moon: VFX for B37D => B37E, Big
 # B706 Coffinfiller: VFX
 # B709 Electrocution
 # B36B Gravegrazer
@@ -297,10 +293,10 @@ hideall "--sync--"
 # B344 Insatiable Thirst
 # B34A Vamp Stomp
 # B34C --sync--
-# B34E Half Moon
-# B34F Half Moon
-# B350 Half Moon
-# B351 Half Moon
+# B34E Half Moon: VFX for B377 => B378, Small
+# B34F Half Moon: VFX for B379 => B37A, Big
+# B350 Half Moon: VFX for B37B => B37C, Small
+# B351 Half Moon: VFX for B37D => B37E, Big
 # B35A Hardcore
 # B35D Brutal Rain
 # B366 Sadistic Screech
@@ -347,10 +343,10 @@ hideall "--sync--"
 # B399 Blood Lash
 # B39A Blood Lash
 # B39B Blood Lash
-# B39C _rsv_45980_-1_1_0_0_SE2DC5B04_EE2DC5B04, VFX Ultrasonic Spread
-# B39D _rsv_45981_-1_1_0_0_SE2DC5B04_EE2DC5B04, VFX Ultrasonic Amp
-# B39E _rsv_45982_-1_1_0_0_SE2DC5B04_EE2DC5B04, Ultrasonic Spread (Healer and DPS targetted)
-# B39F _rsv_45983_-1_1_0_0_SE2DC5B04_EE2DC5B04, Ultrasonic Amp
+# B39C Ultrasonic Spread
+# B39D Ultrasonic Amp, VFX
+# B39E Ultrasonic Spread (Healer and DPS targetted)
+# B39F Ultrasonic Amp
 # B3A0 Undead Deathmatch
 # B3A1 Bloody Bondage
 # B3A2 Unmitigated Explosion
