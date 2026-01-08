@@ -558,12 +558,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R9S Undead Deathmatch',
       type: 'StartsUsing',
       netRegex: { id: 'B3A0', source: 'Vamp Fatale', capture: false },
-      alertText: (_data, _matches, output) => output.groupTowers!(),
-      outputStrings: {
-        groupTowers: {
-          en: 'Group Towers',
-        },
-      },
+      response: Responses.getTowers('alert'),
     },
   ],
   timelineReplace: [],
