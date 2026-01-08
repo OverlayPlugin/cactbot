@@ -14,6 +14,7 @@ export interface Data extends RaidbossData {
     outer: DirectionOutput16[];
   };
   satisfiedCount: number;
+  hasHellAwaits: boolean;
 }
 
 const headMarkerData = {
@@ -41,6 +42,7 @@ const triggerSet: TriggerSet<Data> = {
     actorPositions: {},
     bats: { inner: [], middle: [], outer: [] },
     satisfiedCount: 0,
+    hasHellAwaits: false,
   }),
   triggers: [
     {
@@ -256,23 +258,64 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R9S Hell Awaits Gain Debuff Collector',
+      type: 'GainsEffect',
+      netRegex: { effectId: '127A', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => {
+        data.hasHellAwaits = true;
+      },
+    },
+    {
+      id: 'R9S Hell Awaits Lose Debuff Collector',
+      type: 'GainsEffect',
+      netRegex: { effectId: '127A', capture: true },
+      condition: Conditions.targetIsYou(),
+      // Can't use the actual lose line, since it's after cast for 3rd spread/stack
+      delaySeconds: 13,
+      run: (data) => {
+        data.hasHellAwaits = false;
+      },
+    },
+    {
       id: 'R9S Ultrasonic Spread',
-      // TODO: Debuff tracker, filter for those that were or are in cell
-      // TODO: Include orientation relative to big gap?
       type: 'StartsUsing',
       netRegex: { id: 'B39C', source: 'Vamp Fatale', capture: false },
-      response: Responses.rolePositions(),
+      infoText: (data, _matches, outputs) => {
+        return outputs.text!({
+          avoid: data.hasHellAwaits ? `${outputs.avoid!()} ` : '',
+          mech: outputs.rolePositions!(),
+        });
+      },
+      outputStrings: {
+        rolePositions: Outputs.rolePositions,
+        avoid: {
+          en: 'Avoid',
+        },
+        text: {
+          en: '${avoid}${mech}',
+        },
+      },
     },
     {
       id: 'R9S Ultrasonic Amp',
-      // TODO: Debuff tracker, filter for those that were or are in cell
-      // TODO: Get direction of the big gap?
       type: 'StartsUsing',
       netRegex: { id: 'B39D', source: 'Vamp Fatale', capture: false },
-      alertText: (_data, _matches, output) => output.stack!(),
+      infoText: (data, _matches, outputs) => {
+        return outputs.text!({
+          avoid: data.hasHellAwaits ? `${outputs.avoid!()} ` : '',
+          mech: outputs.stack!(),
+        });
+      },
       outputStrings: {
         stack: {
-          en: 'Stack between big Gap',
+          en: 'Stack',
+        },
+        avoid: {
+          en: 'Avoid',
+        },
+        text: {
+          en: '${avoid}${mech}',
         },
       },
     },
