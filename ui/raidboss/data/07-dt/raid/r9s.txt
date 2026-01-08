@@ -29,8 +29,8 @@ hideall "--sync--"
 67.5 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
 67.7 "--coffinmaker--"
 67.9 "Dead Wake" Ability { id: "B367", source: "Coffinmaker" }
-75.1 "Coffinfiller" #Ability { id: "B368", source: "Coffinmaker" }
 74.3 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+75.1 "Coffinfiller" #Ability { id: "B368", source: "Coffinmaker" }
 75.1 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
 75.1 "Coffinfiller" #Ability { id: "B368", source: "Coffinmaker" }
 78.1 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
@@ -38,8 +38,8 @@ hideall "--sync--"
 84.9 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
 
 85.3 "Dead Wake" Ability { id: "B367", source: "Coffinmaker" }
-92.5 "Coffinfiller" #Ability { id: "B369", source: "Coffinmaker" }
 91.7 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+92.5 "Coffinfiller" #Ability { id: "B369", source: "Coffinmaker" }
 92.5 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
 92.5 "Coffinfiller" #Ability { id: "B369", source: "Coffinmaker" }
 95.5 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
@@ -47,14 +47,14 @@ hideall "--sync--"
 102.2 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
 
 102.6 "Dead Wake" Ability { id: "B367", source: "Coffinmaker" }
-109.8 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
 109.0 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+109.8 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
 109.8 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
 109.8 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
 112.8 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
 112.8 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
-119.9 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
 119.0 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+119.9 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
 119.9 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
 119.9 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
 120.1 "--targetable--"
