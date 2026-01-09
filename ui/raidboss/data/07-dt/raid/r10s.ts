@@ -331,7 +331,6 @@ const triggerSet: TriggerSet<Data> = {
         if (snaking1 === undefined || snaking2 === undefined)
           return;
 
-
         if (data.snakingCount < 5) {
           return output.text1!({
             water: output[snaking1.elem]!(),
