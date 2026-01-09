@@ -567,7 +567,15 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getTowers('alert'),
     },
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'en',
+      'replaceText': {
+        'Ultrasonic Spread/Ultrasonic Amp': 'Ultrasonic Spread/Amp',
+        'Ultrasonic Amp/Ultrasonic Spread': 'Ultrasonic Amp/Spread',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
