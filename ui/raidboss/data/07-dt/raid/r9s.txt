@@ -1,7 +1,7 @@
 ### AAC HEAVYWEIGHT (M1) (SAVAGE)
 # ZoneId: 1321
 
-# -ii BBA7 B7C8 B333 B35A B34A B376 B38F B390 B397 B3A2 B35D B38D B709 B705 B706 B36B B36C B38C B33E B340 B341 B3A3 B344 B3A4 B3A6 B399 B39A B39B B398
+# -ii BBA7 B7C8 B333 B35A B34A B376 B38F B390 B397 B3A2 B35D B38D B709 B705 B706 B36B B36C B38C B33E B340 B341 B3A3 B344 B3A4 B3A6 B399 B39A B39B B398 B393
 # -it "Vamp Fatale" "Coffinmaker" "Fatal Flail" "Deadly Doornail" "Charnel Cell"
 
 hideall "--Reset--"
@@ -73,18 +73,11 @@ hideall "--sync--"
 
 # Circular arena
 176.2 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
-190.3 "Aetherletting 1 (proteans)" #Ability { id: "B391", source: "Vamp Fatale" }
-192.3 "Aetherletting 1" #Ability { id: "B392", source: "Vamp Fatale" }
-192.3 "Aetherletting 2 (proteans)" #Ability { id: "B391", source: "Vamp Fatale" }
-194.3 "Aetherletting 3 (proteans)" #Ability { id: "B391", source: "Vamp Fatale" }
-194.3 "Aetherletting 2" #Ability { id: "B392", source: "Vamp Fatale" }
-196.3 "Aetherletting 4 (proteans)" #Ability { id: "B391", source: "Vamp Fatale" }
-196.3 "Aetherletting 3" #Ability { id: "B392", source: "Vamp Fatale" }
-198.3 "Aetherletting 4" #Ability { id: "B392", source: "Vamp Fatale" }
-206.7 "Aetherletting 1 (crosses)" #Ability { id: "B393", source: "Vamp Fatale" }
-208.7 "Aetherletting 2 (crosses)" #Ability { id: "B393", source: "Vamp Fatale" }
-210.7 "Aetherletting 3 (crosses)" #Ability { id: "B393", source: "Vamp Fatale" }
-212.7 "Aetherletting 4 (crosses)" #Ability { id: "B393", source: "Vamp Fatale" }
+190.3 "Aetherletting Proteans x4" #Ability { id: "B391", source: "Vamp Fatale" } duration 6.3
+192.3 "Aetherletting 1" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
+194.3 "Aetherletting 2" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
+196.3 "Aetherletting 3" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
+198.3 "Aetherletting 4" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
 219.7 "Hardcore" Ability { id: ["B37F", "B380"], source: "Vamp Fatale" } # Determined by Satiated Stacks
 224.7 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
 229.8 "Vamp Stomp" Ability { id: "B374", source: "Vamp Fatale" }
@@ -232,7 +225,7 @@ hideall "--sync--"
 914.0 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
 917.4 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
 921.0 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
-925.2 "Half Moon" Ability { id: "B34F", source: "Vamp Fatale" }
+925.2 "--sync--" Ability { id: "B34F", source: "Vamp Fatale" }
 926.0 "Half Moon" Ability { id: "B379", source: "Vamp Fatale" }
 929.0 "Half Moon" Ability { id: "B37A", source: "Vamp Fatale" }
 
@@ -269,6 +262,7 @@ hideall "--sync--"
 # B38D Barbed Burst: failing to kill Fatal Flail
 # B38F Aetherletting: VFX for protean casts
 # B390 Aetherletting: VFX for dropping cross aoe
+# B393 Aetherletting, cross aoe inferred by duration of B392
 # B3A2 Unmitigated Explosion: no one stands in Undead Deathmatch tower
 # B397 Unmitigated Explosion: failing to soak a tower
 # B398 Naughty Knot: Attempting to run out of the Charnel Cell
