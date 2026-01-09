@@ -89,13 +89,13 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       alertText: (data, _matches, output) => {
         if (data.satisfiedCount >= 8)
-          return output.bigTankBuster!();
-        return output.tankBuster!();
+          return output.bigTankCleave!();
+        return output.tankCleaveOnYou!();
       },
       outputStrings: {
-        tankBuster: Outputs.tankBusterOnYou,
-        bigTankBuster: {
-          en: 'Tank Buster on YOU (Big)',
+        tankCleaveOnYou: Outputs.tankCleaveOnYou,
+        bigTankCleave: {
+          en: 'Tank Cleave on YOU (Big)',
         },
       },
     },
