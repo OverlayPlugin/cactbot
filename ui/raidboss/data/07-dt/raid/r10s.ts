@@ -15,6 +15,7 @@ type SnakingFlagsType = {
 export interface Data extends RaidbossData {
   dareCount: number;
   snakings: SnakingFlagsType[string][];
+  snakingCount: number;
   snakingDebuff?: 'fire' | 'water';
 }
 
@@ -82,6 +83,7 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     dareCount: 0,
     snakings: [],
+    snakingCount: 0,
   }),
   triggers: [
     {
@@ -213,7 +215,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R10S Sickest Take-off Debuff',
       type: 'GainsEffect',
-      netRegex: { effectId: '808', count: ['3ED', '3EE', '3EF', '3F0', '435'], capture: true },
+      netRegex: {
+        effectId: '808',
+        count: ['3ED', '3EE', '3EF', '3F0', '435'],
+        capture: true,
+      },
       infoText: (_data, matches, output) => {
         let mech: 'healerGroups' | 'spread' | 'waterStack' | 'waterSpread';
         switch (matches.count) {
@@ -223,13 +229,10 @@ const triggerSet: TriggerSet<Data> = {
           case '3EE': // Spread during first takeoff (8 orbs)
             mech = 'spread';
             break;
-          case '3EF': // Stack during Insane Air 1 during Deep Varial mech (1 orb)
+          case '3EF': // Stack during Insane Air 1 during KB mech (1 orb)
             mech = 'waterStack';
             break;
           case '3F0': // Spread during Insane Air 1 during KB mech (4 orbs)
-            mech = 'waterSpread';
-            break;
-          case '435': // Spread during Insane Air 1 during Deep Varial mech (4 orbs)
             mech = 'waterSpread';
             break;
           default:
@@ -302,7 +305,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: {
         location: Object.values(snakingSlots),
         flags: Object.keys(snakingFlags),
-        capture: true
+        capture: true,
       },
       preRun: (data, matches) => {
         const slot = matches.location;
@@ -318,6 +321,9 @@ const triggerSet: TriggerSet<Data> = {
           data.snakings = [snaking, ...data.snakings];
         else
           data.snakings.push(snaking);
+
+        if (snaking.elem === 'fire' && (snaking.mech !== 'buster' || data.snakingCount < 4))
+          data.snakingCount++;
       },
       infoText: (data, _matches, output) => {
         const [snaking1, snaking2] = data.snakings;
@@ -325,11 +331,31 @@ const triggerSet: TriggerSet<Data> = {
         if (snaking1 === undefined || snaking2 === undefined)
           return;
 
-        return output.text!({
-          water: output[snaking1.elem]!(),
-          waterMech: output[snaking1.mech]!(),
-          fire: output[snaking2.elem]!(),
-          fireMech: output[snaking2.mech]!(),
+
+        if (data.snakingCount < 5) {
+          return output.text1!({
+            water: output[snaking1.elem]!(),
+            waterMech: output[snaking1.mech]!(),
+            fire: output[snaking2.elem]!(),
+            fireMech: output[snaking2.mech]!(),
+          });
+        }
+
+        let swap: 'tank' | 'healer' | 'melee' | 'ranged';
+        if (snaking1.mech === 'buster')
+          swap = 'tank';
+        else if (data.snakingCount === 5)
+          swap = 'healer';
+        else if (data.snakingCount === 6)
+          swap = 'melee';
+        else
+          swap = 'ranged';
+
+        return output.text2!({
+          mech: output[snaking1.mech]!(),
+          swap: output.swapText!({
+            role: output[swap]!(),
+          }),
         });
       },
       run: (data) => {
@@ -337,8 +363,11 @@ const triggerSet: TriggerSet<Data> = {
           data.snakings = [];
       },
       outputStrings: {
-        text: {
-          en: '${water}: ${waterMech}, ${fire}: ${fireMech}',
+        text1: {
+          en: '${water}: ${waterMech}/${fire}: ${fireMech}',
+        },
+        text2: {
+          en: '${mech} (${swap})',
         },
         fire: {
           en: 'Fire',
@@ -353,6 +382,17 @@ const triggerSet: TriggerSet<Data> = {
         // Not using Outputs.tankBuster for brevity
         buster: {
           en: 'Buster',
+        },
+        swapText: {
+          en: '${role} Swap',
+        },
+        tank: Outputs.tank,
+        healer: Outputs.healer,
+        melee: {
+          en: 'Melee',
+        },
+        ranged: {
+          en: 'Ranged',
         },
       },
     },
@@ -396,9 +436,13 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R10S Deep Varial',
       type: 'MapEffect',
-      netRegex: { instance: ['02', '04'], flags: ['00800040', '08000400'], capture: true },
+      netRegex: {
+        location: ['02', '04'],
+        flags: ['00800040', '08000400'],
+        capture: true,
+      },
       infoText: (_data, matches, output) => {
-        const dir = matches.instance === '02' ? 'north' : 'south';
+        const dir = matches.location === '02' ? 'north' : 'south';
         const mech = matches.flags === '00800040' ? 'stack' : 'spread';
         return output.text!({
           dir: output[dir]!(),
