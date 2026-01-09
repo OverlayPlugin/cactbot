@@ -56,8 +56,6 @@ cactbot provides these overlays:
 
 Install [.NET Framework](https://www.microsoft.com/net/download/framework) version 4.6.1 or above.
 
-You must have [DirectX 11](http://imgur.com/TjcnjmG) enabled for Final Fantasy XIV.
-
 Install the 64-bit version of [Advanced Combat Tracker](http://advancedcombattracker.com/), if you have not already.
 
 ### Install FFXIV ACT Plugin
@@ -78,8 +76,8 @@ and enable it in the list of plugins.
 
 Alternative FFXIV Plugin Guides:
 
-* [fflogs video guide](https://www.fflogs.com/help/start/)
-* [TomRichter guide](https://gist.github.com/TomRichter/e044a3dff5c50024cf514ffb20a201a9#installing-act--ffxiv-plugin)
+* [FFXIV ACT Setup Guide (preferred)](https://overlayplugin.github.io/docs/setup/)
+* [FFLogs' ACT Setup Guide](https://www.archon.gg/ffxiv/articles/help/act-setup-guide)
 
 ### Install OverlayPlugin
 
@@ -510,7 +508,7 @@ and can override anything from the control panel.
 However, this can also be confusing when the control panel doesn't adjust something
 properly that a `cactbot/user/` file is overriding silently.
 
-See [this documentation](docs/CactbotCustomization.md#user-folder-config-overrides)
+See [this documentation](docs/CactbotCustomization.md#user-directory-overview)
 for more details about user javascript and css files.
 
 ## Supported Languages
