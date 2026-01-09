@@ -6,7 +6,7 @@ import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 type SnakingFlagsType = {
-  [ flags: string ]: {
+  [flags: string]: {
     elem: 'water' | 'fire';
     mech: 'protean' | 'stack' | 'buster';
   };
@@ -259,7 +259,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R10S Reverse Alley-oop/Alley-oop Double-dip',
       type: 'StartsUsing',
-      netRegex: { id: ['B5E0', 'B5DD'], source: 'Deep Blue', capture: false },
+      netRegex: { id: ['B5E0', 'B5DD'], source: 'Deep Blue', capture: true },
       condition: (data) => {
         return data.snakingDebuff !== 'fire';
       },
@@ -271,12 +271,12 @@ const triggerSet: TriggerSet<Data> = {
         protean: Outputs.protean,
         move: Outputs.moveAway,
         stay: {
-            en: 'Stay',
-            de: 'Bleib stehen',
-            fr: 'Restez',
-            cn: '停',
-            ko: '대기',
-            tc: '停',
+          en: 'Stay',
+          de: 'Bleib stehen',
+          fr: 'Restez',
+          cn: '停',
+          ko: '대기',
+          tc: '停',
         },
         text: {
           en: '${protean} => ${action}',
@@ -299,7 +299,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R10S Snaking Flags Collector',
       type: 'MapEffect',
-      netRegex: { location: Object.values(snakingSlots), flags: Object.keys(snakingFlags), capture: true },
+      netRegex: {
+        location: Object.values(snakingSlots),
+        flags: Object.keys(snakingFlags),
+        capture: true
+      },
       preRun: (data, matches) => {
         const slot = matches.location;
         const flags = matches.flags;
