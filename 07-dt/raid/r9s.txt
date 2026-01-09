@@ -1,0 +1,361 @@
+### AAC HEAVYWEIGHT (M1) (SAVAGE)
+# ZoneId: 1321
+
+# -ii BBA7 B7C8 B333 B35A B34A B376 B38F B390 B397 B3A2 B35D B38D B709 B705 B706 B36B B36C B38C B33E B340 B341 B3A3 B344 B3A4 B3A6 B399 B39A B39B B398 B393
+# -it "Vamp Fatale" "Coffinmaker" "Fatal Flail" "Deadly Doornail" "Charnel Cell"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+5.4 "--sync--" StartsUsing { id: "B384", source: "Vamp Fatale" } window 10,10
+10.4 "Killer Voice" Ability { id: "B384", source: "Vamp Fatale" }
+20.5 "Hardcore" Ability { id: "B37F", source: "Vamp Fatale" }
+30.6 "Vamp Stomp" Ability { id: "B374", source: "Vamp Fatale" }
+30.7 "--sync--" Ability { id: "B34C", source: "Vamp Fatale" }
+34.7 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+38.1 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+41.7 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+46.7 "Brutal Rain x3+" #Ability { id: "B383", source: "Vamp Fatale" } duration 2
+51.7 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+60.7 "Sadistic Screech" Ability { id: "B366", source: "Vamp Fatale" }
+
+# Coffinmaker
+# NOTE: Coffinfiller and Dead Wake only occurs if Coffinmaker is alive
+# TODO: Branches for Half Moons based on ignored abilities
+67.5 "--untargetable--"
+67.5 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
+67.7 "--coffinmaker--"
+67.9 "Dead Wake" Ability { id: "B367", source: "Coffinmaker" }
+74.3 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+75.1 "Coffinfiller" #Ability { id: "B368", source: "Coffinmaker" }
+75.1 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
+75.1 "Coffinfiller" #Ability { id: "B368", source: "Coffinmaker" }
+78.1 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
+78.1 "Coffinfiller" #Ability { id: "B368", source: "Coffinmaker" }
+84.9 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
+
+85.3 "Dead Wake" Ability { id: "B367", source: "Coffinmaker" }
+91.7 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+92.5 "Coffinfiller" #Ability { id: "B369", source: "Coffinmaker" }
+92.5 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
+92.5 "Coffinfiller" #Ability { id: "B369", source: "Coffinmaker" }
+95.5 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
+95.5 "Coffinfiller" #Ability { id: "B369", source: "Coffinmaker" }
+102.2 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
+
+102.6 "Dead Wake" Ability { id: "B367", source: "Coffinmaker" }
+109.0 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+109.8 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
+109.8 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
+109.8 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
+112.8 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
+112.8 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
+119.0 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+119.9 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
+119.9 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
+119.9 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
+120.1 "--targetable--"
+122.9 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
+122.9 "Coffinfiller" #Ability { id: "B36A", source: "Coffinmaker" }
+
+125.0 "--sync--" StartsUsing { id: "B367", source: "Coffinmaker" }
+130.0 "Dead Wake (Enrage)" Ability { id: "B367", source: "Coffinmaker" }
+137.9 "Sadistic Screech" Ability { id: "B366", source: ["Coffinmaker", "Vamp Fatale"] } # Possible bug in log
+
+# Back to default arena
+143.2 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+152.3 "Crowd Kill" Ability { id: "B36D", source: "Vamp Fatale" }
+162.0 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+171.3 "Finale Fatale" Ability { id: ["B36F", "B370"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+
+# Circular arena
+176.2 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
+190.3 "Aetherletting Proteans x4" #Ability { id: "B391", source: "Vamp Fatale" } duration 6.3
+192.3 "Aetherletting 1" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
+194.3 "Aetherletting 2" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
+196.3 "Aetherletting 3" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
+198.3 "Aetherletting 4" #Ability { id: "B392", source: "Vamp Fatale" } duration 14.4
+219.7 "Hardcore" Ability { id: ["B37F", "B380"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+224.7 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
+229.8 "Vamp Stomp" Ability { id: "B374", source: "Vamp Fatale" }
+229.9 "--sync--" Ability { id: "B34C", source: "Vamp Fatale" }
+233.9 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+237.3 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+240.9 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+245.2 "--sync--" Ability { id: ["B34E", "B34F", "B350", "B351"], source: "Vamp Fatale" } # Determined by Satiated Stacks
+245.9 "Half Moon" Ability { id: ["B377", "B379", "B37B", "B37D"], source: "Vamp Fatale" }
+248.9 "Half Moon" Ability { id: ["B378", "B37A", "B37C", "B37E"], source: "Vamp Fatale" }
+256.1 "Brutal Rain x4+" #Ability { id: "B383", source: "Vamp Fatale" } duration 3
+270.1 "Insatiable Thirst" Ability { id: "B372", source: "Vamp Fatale" }
+
+# Back to normal
+274.1 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+283.1 "Sadistic Screech" Ability { id: "B366", source: "Vamp Fatale" }
+
+# Doornail/Flail/Chakram/Buzzsaw phase
+295.3 "Plummet" Ability { id: "B38B", source: "Fatal Flail" }
+295.4 "--flail x2--"
+296.3 "--nail--"
+304.3 "Killer Voice" Ability { id: "B384", source: "Vamp Fatale" }
+313.4 "Plummet" Ability { id: "B38B", source: "Fatal Flail" }
+313.5 "--flail x2--"
+314.4 "--nail--"
+322.4 "Killer Voice" Ability { id: "B384", source: "Vamp Fatale" }
+331.5 "Plummet" Ability { id: "B38B", source: "Fatal Flail" }
+331.6 "--flail x2--"
+332.5 "--nail--"
+355.5 "Sadistic Screech" Ability { id: "B366", source: ["Coffinmaker", "Vamp Fatale"] } # Possible bug in log
+
+# Back to default arena
+360.8 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
+369.9 "Crowd Kill" Ability { id: "B36D", source: "Vamp Fatale" }
+379.6 "--sync--" Ability { id: "B332", source: "Vamp Fatale" }
+388.9 "Finale Fatale" Ability { id: "B370", source: "Vamp Fatale" }
+
+# Circular arena
+393.8 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
+398.8 "Hell in a Cell" Ability { id: "B395", source: "Vamp Fatale" }
+400.0 "Bloody Bondage" #Ability { id: "B396", source: "Vamp Fatale" }
+400.0 "Bloody Bondage" #Ability { id: "B396", source: "Vamp Fatale" }
+401.6 "--cell x4--"
+
+407.1 "--sync--" Ability { id: "B39C", source: "Vamp Fatale" } jump "r9s-ultrasonic-spread-1"
+407.1 "--sync--" Ability { id: "B39D", source: "Vamp Fatale" } jump "r9s-ultrasonic-amp-1"
+407.9 "Ultrasonic Spread/Ultrasonic Amp?" #Ability { id: ["B39E", "B39F"], source: "Vamp Fatale" }
+414.2 "--sync--" #Ability { id: ["B39D", "B39C"], source: "Vamp Fatale" }
+415.0 "Ultrasonic Amp/Ultrasonic Spread?" #Ability { id: ["B39F", "B39E"], source: "Vamp Fatale" }
+421.1 "Hell in a Cell" #Ability { id: "B395", source: "Vamp Fatale" }
+422.3 "Bloody Bondage" #Ability { id: "B396", source: "Vamp Fatale" }
+423.9 "--cell x4--"
+429.4 "--sync--" #Ability { id: ["B39C", "B39D"], source: "Vamp Fatale" }
+430.2 "Ultrasonic Amp/Ultrasonic Spread?" #Ability { id: ["B39E", "B39F"], source: "Vamp Fatale" }
+436.5 "--sync--" #Ability { id: ["B39D", "B39C"], source: "Vamp Fatale" }
+437.3 "Ultrasonic Spread/Ultrasonic Amp?" #Ability { id: ["B39F", "B39E"], source: "Vamp Fatale" }
+
+507.1 label "r9s-ultrasonic-spread-1"
+507.9 "Ultrasonic Spread (Healer)" #Ability { id: "B39E", source: "Vamp Fatale" }
+507.9 "Ultrasonic Spread (DPS)" #Ability { id: "B39E", source: "Vamp Fatale" }
+507.9 "Ultrasonic Spread (Tank)" #Ability { id: "B883", source: "Vamp Fatale" }
+514.2 "--sync--" Ability { id: "B39D", source: "Vamp Fatale" }
+515.0 "Ultrasonic Amp" Ability { id: "B39F", source: "Vamp Fatale" }
+521.1 "Hell in a Cell" Ability { id: "B395", source: "Vamp Fatale" }
+522.3 "Bloody Bondage" Ability { id: "B396", source: "Vamp Fatale" }
+523.9 "--cell x4--"
+529.4 "--sync--" Ability { id: "B39C", source: "Vamp Fatale" } jump "r9s-ultrasonic-spread-2"
+529.4 "--sync--" Ability { id: "B39D", source: "Vamp Fatale" } jump "r9s-ultrasonic-amp-2"
+530.2 "Ultrasonic Amp/Ultrasonic Spread?" #Ability { id: ["B39E", "B39F"], source: "Vamp Fatale" }
+536.5 "--sync--" #Ability { id: ["B39D", "B39C"], source: "Vamp Fatale" }
+537.3 "Ultrasonic Spread/Ultrasonic Amp?" #Ability { id: ["B39F", "B39E"], source: "Vamp Fatale" }
+542.4 "Pulping Pulse" #Ability { id: "B373", source: "Vamp Fatale" }
+546.4 "Pulping Pulse" #Ability { id: "B373", source: "Vamp Fatale" }
+551.4 "Undead Deathmatch" #Ability { id: "B3A0", source: "Vamp Fatale" }
+552.6 "Bloody Bondage" #Ability { id: "B3A1", source: "Vamp Fatale" }
+559.7 "Sanguine Scratch 1" #Ability { id: "B3A5", source: "Vamp Fatale" }
+
+607.1 label "r9s-ultrasonic-amp-1"
+607.9 "Ultrasonic Amp" Ability { id: "B39F", source: "Vamp Fatale" }
+614.2 "--sync--" Ability { id: "B39C", source: "Vamp Fatale" }
+615.0 "Ultrasonic Spread (Healer)" #Ability { id: "B39E", source: "Vamp Fatale" }
+615.0 "Ultrasonic Spread (DPS)" #Ability { id: "B39E", source: "Vamp Fatale" }
+615.0 "Ultrasonic Spread (Tank)" #Ability { id: "B883", source: "Vamp Fatale" }
+621.1 "Hell in a Cell" Ability { id: "B395", source: "Vamp Fatale" }
+622.3 "Bloody Bondage" Ability { id: "B396", source: "Vamp Fatale" }
+623.9 "--cell x4--"
+629.4 "--sync--" Ability { id: "B39C", source: "Vamp Fatale" } jump "r9s-ultrasonic-spread-2"
+629.4 "--sync--" Ability { id: "B39D", source: "Vamp Fatale" } jump "r9s-ultrasonic-amp-2"
+630.2 "Ultrasonic Amp/Ultrasonic Spread?" #Ability { id: ["B39E", "B39F"], source: "Vamp Fatale" }
+636.5 "--sync--" #Ability { id: ["B39D", "B39C"], source: "Vamp Fatale" }
+637.3 "Ultrasonic Spread/Ultrasonic Amp?" #Ability { id: ["B39F", "B39E"], source: "Vamp Fatale" }
+642.4 "Pulping Pulse" #Ability { id: "B373", source: "Vamp Fatale" }
+646.4 "Pulping Pulse" #Ability { id: "B373", source: "Vamp Fatale" }
+651.4 "Undead Deathmatch" #Ability { id: "B3A0", source: "Vamp Fatale" }
+652.6 "Bloody Bondage" #Ability { id: "B3A1", source: "Vamp Fatale" }
+659.7 "Sanguine Scratch 1" #Ability { id: "B3A5", source: "Vamp Fatale" }
+
+729.4 label "r9s-ultrasonic-spread-2"
+730.2 "Ultrasonic Spread (Healer)" #Ability { id: "B39E", source: "Vamp Fatale" }
+730.2 "Ultrasonic Spread (DPS)" #Ability { id: "B39E", source: "Vamp Fatale" }
+730.2 "Ultrasonic Spread (Tank)" #Ability { id: "B883", source: "Vamp Fatale" }
+736.5 "--sync--" Ability { id: "B39D", source: "Vamp Fatale" }
+737.3 "Ultrasonic Amp" Ability { id: "B39F", source: "Vamp Fatale" }
+738.4 "--sync--" StartsUsing { id: "B373", source: "Vamp Fatale" } jump "r9s-ultrasonic-end"
+742.4 "Pulping Pulse" #Ability { id: "B373", source: "Vamp Fatale" }
+746.4 "Pulping Pulse" #Ability { id: "B373", source: "Vamp Fatale" }
+751.4 "Undead Deathmatch" #Ability { id: "B3A0", source: "Vamp Fatale" }
+752.6 "Bloody Bondage" #Ability { id: "B3A1", source: "Vamp Fatale" }
+759.7 "Sanguine Scratch 1" #Ability { id: "B3A5", source: "Vamp Fatale" }
+762.1 "Sanguine Scratch 2" #Ability { id: "B3A7", source: "Vamp Fatale" }
+764.4 "Sanguine Scratch 3" #Ability { id: "B3A7", source: "Vamp Fatale" }
+766.7 "Sanguine Scratch 4" #Ability { id: "B3A7", source: "Vamp Fatale" }
+
+829.4 label "r9s-ultrasonic-amp-2"
+830.2 "Ultrasonic Amp" Ability { id: "B39F", source: "Vamp Fatale" }
+836.5 "--sync--" Ability { id: "B39C", source: "Vamp Fatale" }
+837.3 "Ultrasonic Spread (Healer)" #Ability { id: "B39E", source: "Vamp Fatale" }
+837.3 "Ultrasonic Spread (DPS)" #Ability { id: "B39E", source: "Vamp Fatale" }
+837.3 "Ultrasonic Spread (Tank)" #Ability { id: "B883", source: "Vamp Fatale" }
+
+838.4 label "r9s-ultrasonic-end"
+842.4 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
+846.4 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
+
+# Undead Deathmatch
+851.4 "Undead Deathmatch" Ability { id: "B3A0", source: "Vamp Fatale" } window 900,3
+852.6 "Bloody Bondage" Ability { id: "B3A1", source: "Vamp Fatale" }
+859.7 "Sanguine Scratch 1" Ability { id: "B3A5", source: "Vamp Fatale" }
+862.1 "Sanguine Scratch 2" #Ability { id: "B3A7", source: "Vamp Fatale" }
+864.4 "Sanguine Scratch 3" #Ability { id: "B3A7", source: "Vamp Fatale" }
+866.7 "Sanguine Scratch 4" #Ability { id: "B3A7", source: "Vamp Fatale" }
+869.0 "Sanguine Scratch 5" #Ability { id: "B3A7", source: "Vamp Fatale" }
+871.9 "Breakdown Drop" Ability { id: "B3A8", source: "Vampette Fatale" }
+871.9 "Breakwing Beat" #Ability { id: "B3A9", source: "Vampette Fatale" }
+877.7 "Sanguine Scratch 1" Ability { id: "B3A5", source: "Vamp Fatale" }
+880.1 "Sanguine Scratch 2" #Ability { id: "B3A7", source: "Vamp Fatale" }
+882.4 "Sanguine Scratch 3" #Ability { id: "B3A7", source: "Vamp Fatale" }
+884.7 "Sanguine Scratch 4" #Ability { id: "B3A7", source: "Vamp Fatale" }
+887.0 "Sanguine Scratch 5" #Ability { id: "B3A7", source: "Vamp Fatale" }
+890.0 "Breakdown Drop" Ability { id: "B3AA", source: "Vampette Fatale" }
+890.0 "Breakwing Beat" #Ability { id: "B3AB", source: "Vampette Fatale" }
+896.9 "Brutal Rain x5+" #Ability { id: "B383", source: "Vamp Fatale" } duration 4
+909.9 "Vamp Stomp" Ability { id: "B374", source: "Vamp Fatale" }
+910.0 "--sync--" Ability { id: "B34C", source: "Vamp Fatale" }
+914.0 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+917.4 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+921.0 "Blast Beat" Ability { id: "B375", source: "Vampette Fatale" }
+925.2 "--sync--" Ability { id: "B34F", source: "Vamp Fatale" }
+926.0 "Half Moon" Ability { id: "B379", source: "Vamp Fatale" }
+929.0 "Half Moon" Ability { id: "B37A", source: "Vamp Fatale" }
+
+936.1 "Hardcore" Ability { id: "B380", source: "Vamp Fatale" }
+941.1 "Pulping Pulse" Ability { id: "B373", source: "Vamp Fatale" }
+942.2 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+948.3 "Sanguine Scratch 1" Ability { id: "B3A5", source: "Vamp Fatale" }
+950.7 "Sanguine Scratch 2" #Ability { id: "B3A7", source: "Vamp Fatale" }
+953.0 "Sanguine Scratch 3" #Ability { id: "B3A7", source: "Vamp Fatale" }
+955.3 "Sanguine Scratch 4" #Ability { id: "B3A7", source: "Vamp Fatale" }
+957.6 "Sanguine Scratch 5" #Ability { id: "B3A7", source: "Vamp Fatale" }
+968.4 "Insatiable Thirst" Ability { id: "B372", source: "Vamp Fatale" }
+
+# Back to normal
+973.4 "--middle--" Ability { id: "B332", source: "Vamp Fatale" }
+982.5 "Crowd Kill" Ability { id: "B36D", source: "Vamp Fatale" }
+991.2 "--sync--" StartsUsing { id: "B36E", source: "Vamp Fatale" } window 10,10
+1001.2 "Finale Fatale (Enrage)" Ability { id: "B36E", source: "Vamp Fatale" }
+1002.3 "Finale Fatale (Enrage)" Ability { id: "B371", source: "Vamp Fatale" }
+
+# IGNORED ABILITIES
+# B333 Sadistic Screech: VFX
+# B35A Hardcore: VFX, tankbuster
+# B34A Vamp Stomp: VFX
+# B376 Blast Beat: Curse of the Bombpyre (1279) cleansed by player
+# B35D Brutal Rain: VFX
+# B705 Dead Wake: VFX
+# B344 Insatiable Thirst: VFX
+# B706 Coffinfiller: VFX
+# B709 Electrocution
+# B36B Gravegrazer
+# B36C Gravegrazer
+# B38C Massive Impact: failing to soak Fatal Flail tower
+# B38D Barbed Burst: failing to kill Fatal Flail
+# B38F Aetherletting: VFX for protean casts
+# B390 Aetherletting: VFX for dropping cross aoe
+# B393 Aetherletting, cross aoe inferred by duration of B392
+# B3A2 Unmitigated Explosion: no one stands in Undead Deathmatch tower
+# B397 Unmitigated Explosion: failing to soak a tower
+# B398 Naughty Knot: Attempting to run out of the Charnel Cell
+# B399 Blood Lash: tank Charnel Cell autos
+# B39A Blood Lash: healer Charnel Cell autos
+# B39B Blood Lash: dps Chanel Cell autos
+# B33E Crowd Kill: VFX
+# B340 Finale Fatale: VFX for small
+# B341 Finale Fatale: VFX for big
+# B3A3 Explosion: failing to kill Deadly Doornail
+# B3A4 Sanguine Scratch: VFX
+# B3A6 Sanguine Scratch: VFX, protean
+# B7C8 --sync-- Auto-attack from boss
+# BBA7 --sync-- Auto-attack from boss
+
+# ALL ENCOUNTER ABILITIES
+# B332 --sync--
+# B333 Sadistic Screech
+# B33E Crowd Kill
+# B340 Finale Fatale (small)
+# B341 Finale Fatale (big)
+# B344 Insatiable Thirst
+# B34A Vamp Stomp
+# B34C --sync--
+# B34E Half Moon: VFX for B377 => B378, Small
+# B34F Half Moon: VFX for B379 => B37A, Big
+# B350 Half Moon: VFX for B37B => B37C, Small
+# B351 Half Moon: VFX for B37D => B37E, Big
+# B35A Hardcore
+# B35D Brutal Rain
+# B366 Sadistic Screech
+# B367 Dead Wake
+# B368 Coffinfiller
+# B369 Coffinfiller
+# B36A Coffinfiller
+# B36B Gravegrazer
+# B36C Gravegrazer
+# B36D Crowd Kill
+# B36E Finale Fatale: Enrage Cast
+# B36F Finale Fatale (small)
+# B370 Finale Fatale (big)
+# B371 Finale Fatale: Enrage Damage
+# B372 Insatiable Thirst
+# B373 Pulping Pulse
+# B374 Vamp Stomp
+# B375 Blast Beat
+# B376 Blast Beat
+# B377 Half Moon
+# B378 Half Moon
+# B379 Half Moon
+# B37A Half Moon
+# B37B Half Moon
+# B37C Half Moon
+# B37D Half Moon
+# B37E Half Moon
+# B37F Hardcore (small tankbuster)
+# B380 Hardcore (big tankbuster)
+# B383 Brutal Rain
+# B384 Killer Voice
+# B38B Plummet
+# B38C Massive Impact
+# B38D Barbed Burst
+# B38F Aetherletting
+# B390 Aetherletting
+# B391 Aetherletting
+# B392 Aetherletting, player dropping Aetherletting cross aoe
+# B393 Aetherletting, cross aoe
+# B395 Hell in a Cell
+# B396 Bloody Bondage
+# B397 Unmitigated Explosion
+# B398 Naughty Knot
+# B399 Blood Lash
+# B39A Blood Lash
+# B39B Blood Lash
+# B39C Ultrasonic Spread
+# B39D Ultrasonic Amp, VFX
+# B39E Ultrasonic Spread (Healer and DPS targetted)
+# B39F Ultrasonic Amp
+# B3A0 Undead Deathmatch
+# B3A1 Bloody Bondage
+# B3A2 Unmitigated Explosion
+# B3A3 Explosion
+# B3A4 Sanguine Scratch
+# B3A5 Sanguine Scratch
+# B3A6 Sanguine Scratch
+# B3A7 Sanguine Scratch
+# B3A8 Breakdown Drop
+# B3A9 Breakwing Beat
+# B3AA Breakdown Drop
+# B3AB Breakwing Beat
+# B705 Dead Wake
+# B706 Coffinfiller
+# B709 Electrocution
+# B7C8 --sync--
+# B883 Ultrasonic Spread (tank targetted)
+# BBA7 --sync-
