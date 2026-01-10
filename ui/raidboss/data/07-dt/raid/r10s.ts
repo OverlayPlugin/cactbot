@@ -217,7 +217,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: {
         effectId: '808',
-        count: ['3ED', '3EE', '3EF', '3F0', '435'],
+        count: ['3ED', '3EE', '3EF', '3F0'],
         capture: true,
       },
       infoText: (_data, matches, output) => {
