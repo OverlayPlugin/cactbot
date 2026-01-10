@@ -559,13 +559,19 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R10S Flame Floater Split',
       type: 'StartsUsing',
-      netRegex: { id: 'B5AE', source: 'Red Hot', capture: false },
+      netRegex: { id: 'B5D4', source: 'Red Hot', capture: false },
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Big Aoe, E/W Groups, Out of Middle',
+          en: 'E/W Groups + Out of Middle',
         },
       },
+    },
+    {
+      id: 'R10S Xtreme Firesnaking/WaterSnaking',
+      type: 'StartsUsing',
+      netRegex: { id: 'B5AE', source: 'Red Hot', capture: false },
+      response: Responses.bigAoe(),
     },
     {
       id: 'R10S Xtreme Firesnaking/WaterSnaking Debuffs',
