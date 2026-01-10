@@ -438,7 +438,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R10S Firesnaking/WaterSnaking',
       type: 'StartsUsing',
       netRegex: { id: 'B381', source: 'Red Hot', capture: false },
-      response: Responses.bigAoe!(),
+      response: Responses.bigAoe(),
     },
     {
       id: 'R10S Snaking Debuff Collect',
@@ -554,6 +554,23 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         redTether: 'Red Tether on YOU',
         blueTether: 'Blue Tether on YOU',
+      },
+    },
+    {
+      id: 'R10S Xtreme Firesnaking/WaterSnaking',
+      type: 'StartsUsing',
+      netRegex: { id: 'B5AE', source: 'Red Hot', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'R10S Flame Floater Split',
+      type: 'StartsUsing',
+      netRegex: { id: 'B5AE', source: 'Red Hot', capture: false },
+      infoText: (_data, _matches, output) => output.outOfMiddle!(),
+      outputStrings: {
+        outOfMiddle: {
+          en: 'Out of Middle, Group Sides',
+        },
       },
     },
   ],
