@@ -563,7 +563,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Big Aoe, Out of Middle, Group Sides',
+          en: 'Big Aoe, E/W Groups, Out of Middle',
         },
       },
     },
