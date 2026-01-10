@@ -374,9 +374,7 @@ const triggerSet: TriggerSet<Data> = {
         water: {
           en: 'Water',
         },
-        stack: {
-          en: 'Stack',
-        },
+        stack: Outputs.getTogether,
         protean: Outputs.protean,
         // Not using Outputs.tankBuster for brevity
         buster: {
