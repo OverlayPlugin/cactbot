@@ -118,9 +118,9 @@ hideall "--sync--"
 281.4 "--sync--" #Ability { id: "B578", source: "Red Hot" }
 288.5 "Hot Aerial" Ability { id: "B5C4", source: "Red Hot" }
 288.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
-290.0 "Hot Aerial 1" Ability { id: "B91E", source: "Deep Blue" }
+290.0 "Hot Aerial 1" #Ability { id: "B91E", source: "Deep Blue" }
 290.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
-292.0 "Hot Aerial 2" Ability { id: "B91F", source: "Red Hot" }
+292.0 "Hot Aerial 2" #Ability { id: "B91F", source: "Red Hot" }
 292.1 "Sickest Take-off" Ability { id: "B5CD", source: "Deep Blue" }
 292.1 "--untargetable--"
 292.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
@@ -132,7 +132,7 @@ hideall "--sync--"
 303.3 "--targetable--"
 303.7 "Awesome Splash/Awesome Slab" Ability { id: ["B5CF", "B5D0"], source: ["Red Hot", "Deep Blue"] }
 306.3 "Cutback Blaze" Ability { id: "B5C9", source: "Red Hot" }
-307.2 "Cutback Blaze" Ability { id: "B5CA", source: "Red Hot" }
+307.2 "Cutback Blaze" Ability { id: "B5CA", source: ["Red Hot", "Deep Blue"] } # Possible bugged log
 313.2 "Deep Impact" Ability { id: "B5B7", source: "Deep Blue" }
 313.5 "Deep Impact" Ability { id: "ADC6", source: "Deep Blue" }
 320.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
