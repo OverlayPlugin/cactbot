@@ -231,6 +231,28 @@ Options.Triggers.push([
 
 我們推薦閱讀 [觸發器指南](RaidbossGuide.md) 以瞭解如何撰寫cactbot的觸發器， 當然您也可以直接看 [ui/raidboss/data](../ui/raidboss/data) 中現有的觸發器程式碼。
 
+### 觸發器集合覆蓋
+
+當您在使用者檔案中定義了與內建觸發器集合相同 `id` 的觸發器集合時，整個內建觸發器集合將被完全覆蓋。
+
+例如：
+
+```javascript
+Options.Triggers.push({
+  id: 'TheUnendingCoilOfBahamutUltimate',  // 與內建的觸發器集合ID相同
+  zoneId: ZoneId.TheUnendingCoilOfBahamutUltimate,
+  triggers: [
+    // 您的自定義觸發器
+    {
+      id: 'My Custom Trigger',
+      // ... 觸發器內容
+    },
+  ],
+});
+```
+
+在這個例子中，由於 `id` 與內建的巴哈姆特絕境戰觸發器集合相同，內建的所有觸發器都不會執行，只會執行您自定義的觸發器。您需要在自定義檔案中重新實現所有需要的觸發器邏輯。
+
 ## Raidboss時間軸自定義
 
 自定義時間軸與 [自定義觸發器](#raidboss觸發器自定義) 差不多。

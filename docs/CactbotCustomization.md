@@ -372,6 +372,28 @@ Your best resources for learning how to write cactbot triggers
 is the [trigger guide](RaidbossGuide.md)
 and also reading through existing triggers in [ui/raidboss/data](../ui/raidboss/data).
 
+### Trigger Set Override
+
+When you define a trigger set in your user files with the same `id` as a built-in trigger set, the entire built-in trigger set will be completely overridden.
+
+For example:
+
+```javascript
+Options.Triggers.push({
+  id: 'TheUnendingCoilOfBahamutUltimate',  // Same ID as the built-in trigger set
+  zoneId: ZoneId.TheUnendingCoilOfBahamutUltimate,
+  triggers: [
+    // Your custom triggers
+    {
+      id: 'My Custom Trigger',
+      // ... trigger content
+    },
+  ],
+});
+```
+
+In this example, because the `id` matches the built-in Unending Coil of Bahamut (Ultimate) trigger set, none of the built-in triggers will execute, only your custom triggers will run. You need to re-implement all necessary trigger logic in your custom file.
+
 ## Overriding Raidboss Timelines
 
 Some customization of timelines can be done via the [cactbot config UI](#using-the-cactbot-ui).
