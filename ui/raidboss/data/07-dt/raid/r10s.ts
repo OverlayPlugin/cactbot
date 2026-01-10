@@ -557,19 +557,32 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R10S Xtreme Firesnaking/WaterSnaking',
-      type: 'StartsUsing',
-      netRegex: { id: 'B5AE', source: 'Red Hot', capture: false },
-      response: Responses.bigAoe(),
-    },
-    {
       id: 'R10S Flame Floater Split',
       type: 'StartsUsing',
       netRegex: { id: 'B5AE', source: 'Red Hot', capture: false },
-      infoText: (_data, _matches, output) => output.outOfMiddle!(),
+      alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        outOfMiddle: {
-          en: 'Out of Middle, Group Sides',
+        text: {
+          en: 'Big Aoe, Out of Middle, Group Sides',
+        },
+      },
+    },
+    {
+      id: 'R10S Xtreme Firesnaking/WaterSnaking Debuffs',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['12DB', '12DC'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        if (matches.effectId === '12DB')
+          return output.xtremeFiresnaking!();
+        return output.xtremeWatersnaking!();
+      },
+      outputStrings: {
+        xtremeFiresnaking: {
+          en: 'Red Debuff (Fire)',
+        },
+        xtremeWatersnaking: {
+          en: 'Blue Debuff (Water)',
         },
       },
     },
