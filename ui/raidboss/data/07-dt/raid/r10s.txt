@@ -117,16 +117,16 @@ hideall "--sync--"
 280.1 "Alley-oop Inferno" Ability { id: "B5C1", source: "Red Hot" }
 281.4 "--sync--" #Ability { id: "B578", source: "Red Hot" }
 288.5 "Hot Aerial" Ability { id: "B5C4", source: "Red Hot" }
-288.9 "--hot jump--" Ability { id: "B91D", source: "Red Hot" }
-290.0 "Hot Aerial 1" #Ability { id: "B91E", source: "Deep Blue" }
-290.9 "--hot jump--" Ability { id: "B91D", source: "Red Hot" }
-292.0 "Hot Aerial 2" #Ability { id: "B91F", source: "Red Hot" }
+288.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+290.0 "Hot Aerial 1" Ability { id: "B91E", source: "Deep Blue" }
+290.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+292.0 "Hot Aerial 2" Ability { id: "B91F", source: "Red Hot" }
 292.1 "Sickest Take-off" Ability { id: "B5CD", source: "Deep Blue" }
 292.1 "--untargetable--"
-292.9 "--hot jump--" Ability { id: "B91D", source: "Red Hot" }
-294.1 "Hot Aerial 3" #Ability { id: "B920", source: "Red Hot" }
-295.0 "--hot jump--" Ability { id: "B91D", source: "Red Hot" }
-296.2 "Hot Aerial 4" #Ability { id: "B921", source: "Red Hot" }
+292.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+294.1 "Hot Aerial 3" Ability { id: "B920", source: "Red Hot" }
+295.0 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+296.2 "Hot Aerial 4" Ability { id: "B921", source: "Red Hot" }
 301.3 "Sickest Take-off" Ability { id: "B5CE", source: "Deep Blue" }
 301.3 "Sick Swell" #Ability { id: "B5CC", source: "Deep Blue" }
 303.3 "--targetable--"
