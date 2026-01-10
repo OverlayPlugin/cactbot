@@ -199,10 +199,10 @@ const triggerSet: TriggerSet<Data> = {
         // Second cutback randomly targets only those with the debuff
         return data.snakingDebuff !== 'water';
       },
-      infoText: (_data, _matches, output) => output.stackTowardsFire!(),
+      infoText: (_data, _matches, output) => output.cleaveTowardsFire!(),
       outputStrings: {
-        stackTowardsFire: {
-          en: 'Stack towards Fire',
+        cleaveTowardsFire: {
+          en: 'Bait cleave towards Fire',
         },
       },
     },
@@ -220,8 +220,14 @@ const triggerSet: TriggerSet<Data> = {
         count: ['3ED', '3EE', '3EF', '3F0'],
         capture: true,
       },
-      infoText: (_data, matches, output) => {
-        let mech: 'healerGroups' | 'spread' | 'waterStack' | 'waterSpread';
+      infoText: (data, matches, output) => {
+        let mech:
+          'healerGroups' |
+          'spread' |
+          'waterStack' |
+          'waterSpread' |
+          'waterStackFireDebuff' |
+          'waterSpreadFireDebuff';
         switch (matches.count) {
           case '3ED': // Healer Stacks during first takeoff and last takeoff (2 orbs)
             mech = 'healerGroups';
@@ -230,10 +236,14 @@ const triggerSet: TriggerSet<Data> = {
             mech = 'spread';
             break;
           case '3EF': // Stack during Insane Air 1 during KB mech (1 orb)
-            mech = 'waterStack';
+            mech = data.snakingDebuff === 'fire'
+              ? 'waterStackFireDebuff' // Can be soaked by fire player
+              : 'waterStack';
             break;
           case '3F0': // Spread during Insane Air 1 during KB mech (4 orbs)
-            mech = 'waterSpread';
+            mech = data.snakingDebuff === 'fire'
+              ? 'waterSpreadFireDebuff'
+              : 'waterSpread';
             break;
           default:
             return;
@@ -246,8 +256,12 @@ const triggerSet: TriggerSet<Data> = {
         waterStack: {
           en: 'Water Stack',
         },
-        waterSpread: {
-          en: 'Water Spread',
+        waterStackFireDebuff: {
+          en: 'Water Stack',
+        },
+        waterSpread: Outputs.spread,
+        waterSpreadFireDebuff: {
+          en: 'Avoid Water Players',
         },
       },
     },
@@ -390,6 +404,27 @@ const triggerSet: TriggerSet<Data> = {
         },
         ranged: {
           en: 'Ranged',
+        },
+      },
+    },
+    {
+      id: 'R10S Deep Impact Buster',
+      type: 'StartsUsing',
+      netRegex: { id: 'B5B7', source: 'Deep Blue', capture: true },
+      condition: (data) => {
+        return data.snakingDebuff !== 'fire';
+      },
+      infoText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.baitBlueBuster!();
+        return output.beNearBlue!();
+      },
+      outputStrings: {
+        beNearBlue: {
+          en: 'Be Near Blue',
+        },
+        baitBlueBuster: {
+          en: 'Bait Blue Knockback Buster',
         },
       },
     },
