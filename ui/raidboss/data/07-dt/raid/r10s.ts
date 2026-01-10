@@ -124,11 +124,11 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, matches, output) => {
         switch (matches.effectId) {
           case 'BBC':
-            return output.bait!({ order: output.third!() });
-          case 'BBD':
             return output.bait!({ order: output.first!() });
-          case 'BBE':
+          case 'BBD':
             return output.bait!({ order: output.second!() });
+          case 'BBE':
+            return output.bait!({ order: output.third!() });
           case 'D7B':
             return output.bait!({ order: output.fourth!() });
         }
