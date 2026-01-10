@@ -222,7 +222,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (data, matches, output) => {
         let mech:
-          'healerGroups'
+          | 'healerGroups'
           | 'spread'
           | 'waterStack'
           | 'waterSpread'
