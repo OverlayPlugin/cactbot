@@ -26,6 +26,12 @@ const headMarkerData = {
   'spreadFirePuddleRed': '0294',
   // Vfx Path: m0982trg_g0c
   'partyStackFire': '029A',
+  // Vfs Path: m0982trg_c0c,
+  'blueTether': '027B',
+  // Vfs Path: m0982trg_c1c,
+  'redTether': '027C',
+  // Vfx Path: com_share_fire01s5_0c
+  'partnerStack' : '0293',
   // Tethers used in Flame Floater
   'closeTether': '017B',
   'farTether': '017A',
@@ -507,6 +513,24 @@ const triggerSet: TriggerSet<Data> = {
         baitHotAerial: {
           en: 'Bait Hot Aerial',
         },
+      },
+    },
+    {
+      id: 'R10S Xtreme Wave Tethers',
+      type: 'HeadMarker',
+      netRegex: {
+        id: [headMarkerData['redTether'], headMarkerData['blueTether']],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        if (matches.id ===  headMarkerData['redTether'])
+          return output.redTether!();
+        return output.blueTether!();
+      },
+      outputStrings: {
+        redTether: 'Red Tether on YOU',
+        blueTether: 'Blue Tether on YOU',
       },
     },
   ],
