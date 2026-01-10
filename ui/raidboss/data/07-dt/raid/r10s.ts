@@ -516,6 +516,23 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R10S Deep Aerial Tower',
+      type: 'StartsUsing',
+      netRegex: { id: 'B5E3', source: 'Deep Blue', capture: false },
+      infoText: (_data, _matches, output) => output.getTower!(),
+      outputStrings: {
+        getTower: {
+          en: 'Get Tower',
+          de: 'Turm nehmen',
+          fr: 'Prenez la tour',
+          ja: '塔を踏む',
+          cn: '踩塔',
+          ko: '장판 들어가기',
+          tc: '踩塔',
+        },
+      },
+    },
+    {
       id: 'R10S Xtreme Wave Tethers',
       type: 'HeadMarker',
       netRegex: {
