@@ -2,7 +2,7 @@
 # ZoneId: 1323
 
 # -ii BDFF BE00 B5BA B57C B5DA B5C3 B5FB
-# -it "Deep Blue" "Red Hot"
+# -it "Deep Blue" "Red Hot" "Watery Grave"
 
 hideall "--Reset--"
 hideall "--sync--"
@@ -147,6 +147,7 @@ hideall "--sync--"
 337.9 "--untargetable--"
 
 # Bubble/Deep Aerial
+337.7 "--add-targetable--"
 337.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
 337.9 "--sync--" #Ability { id: "B579", source: "Deep Blue" }
 345.7 "Xtreme Wave" Ability { id: "B5C5", source: "Red Hot" }
@@ -183,6 +184,9 @@ hideall "--sync--"
 # Arena Split
 390.6 "--targetable--"
 390.6 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
+393.2 "--add-untargetable--"
+393.4 "Impact Zone (soft enrage)" #Ability { id: "B5EC", source: "Watery Grave" }
+393.6 "Impact Zone x2 (soft enrage)" #Ability { id: "B5EB", source: "Watery Grave" }
 398.7 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
 398.7 "Divers' Dare" #Ability { id: "B5B9", source: "Deep Blue" }
 404.8 "Epic Brotherhood" Ability { id: "B57B", source: "Deep Blue" }
@@ -353,6 +357,8 @@ hideall "--sync--"
 # B5E8 Insane Air
 # B5E9 Insane Air
 # B5EA --sync--
+# B5EB Impact Zone: Failing to kill Watery Grave, this does ~1.5mil damage
+# B5EC Impact Zone: Failing to kill Watery Grave, this goes off twice <0.2s after B5EB, ~130k damage each
 # B5EF Blasting Snap
 # B5F0 Plunging Snap
 # B5F1 Blasting Snap
