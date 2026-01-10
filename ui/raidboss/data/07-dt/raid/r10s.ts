@@ -435,6 +435,12 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R10S Firesnaking/WaterSnaking',
+      type: 'StartsUsing',
+      netRegex: { id: 'B381', source: 'Red Hot', capture: false },
+      response: Responses.bigAoe!(),
+    },
+    {
       id: 'R10S Snaking Debuff Collect',
       // 136E Firesnaking
       // 136F Watersnaking
