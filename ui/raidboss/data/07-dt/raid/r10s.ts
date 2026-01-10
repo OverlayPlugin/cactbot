@@ -222,12 +222,12 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (data, matches, output) => {
         let mech:
-          'healerGroups' |
-          'spread' |
-          'waterStack' |
-          'waterSpread' |
-          'waterStackFireDebuff' |
-          'waterSpreadFireDebuff';
+          'healerGroups'
+          | 'spread'
+          | 'waterStack'
+          | 'waterSpread'
+          | 'waterStackFireDebuff'
+          | 'waterSpreadFireDebuff';
         switch (matches.count) {
           case '3ED': // Healer Stacks during first takeoff and last takeoff (2 orbs)
             mech = 'healerGroups';
@@ -410,7 +410,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R10S Deep Impact Buster',
       type: 'StartsUsing',
-      netRegex: { id: 'B5B7', source: 'Deep Blue', capture: true },
+      netRegex: { id: 'B5B7', source: 'Deep Blue', capture: false },
       condition: (data) => {
         return data.snakingDebuff !== 'fire';
       },
