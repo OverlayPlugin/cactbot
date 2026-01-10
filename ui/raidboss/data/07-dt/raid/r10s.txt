@@ -144,10 +144,10 @@ hideall "--sync--"
 334.9 "--sync--" #Ability { id: "B5EA", source: "Watery Grave" }
 334.9 "--sync--" #Ability { id: "B5EA", source: "Watery Grave" }
 335.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
-337.9 "--untargetable--"
 
 # Bubble/Deep Aerial
-337.7 "--add-targetable--"
+337.3 "--add-targetable--"
+337.9 "--untargetable--"
 337.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
 337.9 "--sync--" #Ability { id: "B579", source: "Deep Blue" }
 345.7 "Xtreme Wave" Ability { id: "B5C5", source: "Red Hot" }
@@ -180,13 +180,13 @@ hideall "--sync--"
 388.6 "Xtreme Wave" Ability { id: "B5D1", source: "Red Hot" }
 388.6 "Xtreme Wave" #Ability { id: "B5D2", source: "Deep Blue" }
 390.4 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-
-# Arena Split
 390.6 "--targetable--"
 390.6 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
-393.2 "--add-untargetable--"
-393.4 "Impact Zone (soft enrage)" #Ability { id: "B5EC", source: "Watery Grave" }
-393.6 "Impact Zone x2 (soft enrage)" #Ability { id: "B5EB", source: "Watery Grave" }
+392.8 "--add-untargetable--"
+393.0 "Impact Zone (soft enrage)" #Ability { id: "B5EC", source: "Watery Grave" }
+393.2 "Impact Zone x2 (soft enrage)" #Ability { id: "B5EB", source: "Watery Grave" }
+
+# Arena Split
 398.7 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
 398.7 "Divers' Dare" #Ability { id: "B5B9", source: "Deep Blue" }
 404.8 "Epic Brotherhood" Ability { id: "B57B", source: "Deep Blue" }
