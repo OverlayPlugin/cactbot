@@ -31,7 +31,7 @@ const headMarkerData = {
   // Vfs Path: m0982trg_c1c,
   'redTether': '027C',
   // Vfx Path: com_share_fire01s5_0c
-  'partnerStack' : '0293',
+  'partnerStack': '0293',
   // Tethers used in Flame Floater
   'closeTether': '017B',
   'farTether': '017A',
@@ -524,7 +524,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       condition: Conditions.targetIsYou(),
       infoText: (_data, matches, output) => {
-        if (matches.id ===  headMarkerData['redTether'])
+        if (matches.id === headMarkerData['redTether'])
           return output.redTether!();
         return output.blueTether!();
       },
