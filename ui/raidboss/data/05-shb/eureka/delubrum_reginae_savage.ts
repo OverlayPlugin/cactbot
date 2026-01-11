@@ -1295,7 +1295,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '切り目を (北西) ガンナーに向く',
           cn: '将缺口对准左上枪手',
           ko: '(북서쪽에 있는) 총사쪽으로 위치 맞추기',
-          tc: '將缺口對準左上槍手',
+          tc: '將缺口對準西北槍手',
         },
       },
     },
@@ -1361,7 +1361,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北へ (下にドーナツ/上に円)',
           cn: '去上半场 下环上圆列 ',
           ko: '북쪽으로 (도넛이 아래, 원이 위인 곳)',
-          tc: '去上半場 下環上圓列',
+          tc: '去北半場 (下環/上圓)',
         },
         secondWeave: {
           en: 'Stay South (square bottom/circle top)',
@@ -1370,7 +1370,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南へ（下に四角/上に円）',
           cn: '待在下半场 下方上圆列 ',
           ko: '남쪽으로 (사각형이 아래, 원이 위인 곳)',
-          tc: '待在下半場 下方上圓列',
+          tc: '待在南半場 (下方/上圓)',
         },
       },
     },
@@ -1392,7 +1392,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '南へ、光ってるドーナツへノックバック',
             cn: '去下半场 发光环形列 ',
             ko: '남쪽으로, 빛나는 도넛쪽으로 넉백',
-            tc: '去下半場 發光環形列',
+            tc: '去南半場，發光環形那一行',
           },
           goNorth: {
             en: 'Go North; Knockback from Glowing Circle',
@@ -1401,7 +1401,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '北へ、光ってる円からノックバック',
             cn: '去上半场 发光圆形列 ',
             ko: '북쪽으로, 빛나는 원에서 넉백',
-            tc: '去上半場 發光圓形列',
+            tc: '去北半場，發光圓形那一行',
           },
         };
 
@@ -1744,7 +1744,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '強制移動: ${dir} > ${arrow}',
           cn: '强制移动：${dir} > ${arrow}',
           ko: '강제이동 ${dir} > ${arrow}',
-          tc: '強制移動：${dir} > ${arrow}',
+          tc: '強制移動: ${dir} > ${arrow}',
         },
       },
     },
@@ -1880,7 +1880,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '強制移動: ${dir} > ${meteor}',
           cn: '强制移动：${dir} > ${meteor}',
           ko: '강제이동 ${dir} > ${meteor}',
-          tc: '強制移動：${dir} > ${meteor}',
+          tc: '強制移動: ${dir} > ${meteor}',
         },
       },
     },
@@ -2297,7 +2297,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ダーク床 (東/西)',
           cn: '内圈左/右暗色地板',
           ko: '어두운 타일 (맵 중앙의 왼/오른쪽)',
-          tc: '內圈左/右暗色地板',
+          tc: '內圈東/西暗色地板',
         },
         bowLight: {
           en: 'Light (diagonal from center)',
@@ -2333,7 +2333,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南北行のダーク床',
           cn: '外圈上/下暗色地板',
           ko: '맵 구석에서 북/남쪽의 어두운 타일',
-          tc: '外圈上/下暗色地板',
+          tc: '外圈北/南暗色地板',
         },
         staffInsideColOutsideRow: {
           en: 'E/W of Corner',
@@ -2342,7 +2342,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東西列のダーク床',
           cn: '外圈左/右暗色地板',
           ko: '맵 구석에서 왼/오른쪽의 어두운 타일',
-          tc: '外圈左/右暗色地板',
+          tc: '外圈東/西暗色地板',
         },
       },
     },
@@ -2507,7 +2507,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'タンクバスター + スイッチ',
             cn: '死刑 + 换T',
             ko: '탱버 + 교대',
-            tc: '死刑 + 換T',
+            tc: '死刑 + 換坦',
           },
           tankBusterOnYou: Outputs.tankBusterOnYou,
           tankBusterOnPlayer: Outputs.tankBusterOnPlayer,
@@ -2693,7 +2693,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '連続AoE',
           cn: '连续AoE',
           ko: '다중 광역공격',
-          tc: '連續AoE',
+          tc: '連續AOE',
         },
       },
     },
@@ -3590,7 +3590,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<!Crowned )Marchosias': '馬可西亞斯',
         'Aetherial Bolt': '魔彈',
@@ -3637,18 +3636,18 @@ const triggerSet: TriggerSet<Data> = {
         'Trinity Avowed': '誓約之三位一體',
         'Trinity Seeker': '求道之三位一體',
         'Viscous Clot': '黏液凝塊',
-        // 'Why\\.\\.\\.won\'t\\.\\.\\.you\\.\\.\\.': '', // FIXME '呜哦哦哦哦…… 难道会……输掉吗……'
+        'Why\\.\\.\\.won\'t\\.\\.\\.you\\.\\.\\.': '嗚哦哦哦哦…… 難道會……輸掉嗎……',
       },
       'replaceText': {
         '(?<!C)Rush': '突進',
         '(?<!Inescapable )Entrapment': '設置陷阱',
-        // '--Spite Check--': '', // FIXME '--斗气波--'
-        // '--adds--': '', // FIXME '--小怪--'
-        // '--bleed--': '', // FIXME '--出血--'
-        // '--chains--': '', // FIXME '--锁链--'
-        // '--stunned--': '', // FIXME '--眩晕--'
-        // '--tethers--': '', // FIXME '--连线--'
-        // '--unstunned--': '', // FIXME '--眩晕结束--'
+        '--Spite Check--': '--鬥氣波--',
+        '--adds--': '--小怪--',
+        '--bleed--': '--出血--',
+        '--chains--': '--鎖鏈--',
+        '--stunned--': '--眩暈--',
+        '--tethers--': '--連線--',
+        '--unstunned--': '--眩暈結束--',
         '1111-Tonze Swing': '千百十一噸迴轉',
         'Above Board': '浮游波',
         'Act Of Mercy': '破天慈刃風',

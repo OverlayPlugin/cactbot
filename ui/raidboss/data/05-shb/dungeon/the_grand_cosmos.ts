@@ -135,7 +135,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '十字を避ける',
           cn: '躲避十字AOE',
           ko: '십자 장판 피하기',
-          tc: '躲避十字AoE',
+          tc: '躲避十字AOE',
         },
       },
     },

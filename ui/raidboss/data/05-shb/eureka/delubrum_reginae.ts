@@ -1087,7 +1087,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '闇へ (東西)',
           cn: '去黑色 (左/右)',
           ko: '어두운 타일 (맵 중앙의 왼/오른쪽)',
-          tc: '去黑色 (左/右)',
+          tc: '去黑色 (東/西)',
         },
         bowLight: {
           en: 'On Light (diagonal from center)',
@@ -1165,7 +1165,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'エスナ: ${player}',
           cn: '解除死亡宣告: ${player}',
           ko: '${player} 에스나',
-          tc: '解除死亡宣告: ${player}',
+          tc: '解除死宣: ${player}',
         },
       },
     },
@@ -1850,7 +1850,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Seeker Avatar': '求道之分身',
         'Aetherial Bolt': '魔彈',
@@ -1883,9 +1882,9 @@ const triggerSet: TriggerSet<Data> = {
         'Trinity Seeker': '求道之三位一體',
       },
       'replaceText': {
-        '--explosion--': '北斗骨碎斬',
-        // '--stunned--': '', // FIXME '--眩晕--'
-        // '--unstunned--': '', // FIXME '--眩晕结束--'
+        '--explosion--': '--爆炸--',
+        '--stunned--': '--眩暈--',
+        '--unstunned--': '--眩暈結束--',
         'Above Board': '浮游波',
         'Act Of Mercy': '破天慈刃風',
         'Allegiant Arsenal': '變換武器',
