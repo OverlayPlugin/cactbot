@@ -286,7 +286,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Depth Grip': '海洋之手',
         'Doxa': '信仰大堂',
@@ -300,8 +299,8 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'The Final Verse': '恐怖的最終章',
         'Wavebreaker': '水波破',
-        // 'Terrible Hammer/Blade': '', // FIXME '恐怖的战锤/恐怖的大剑'
-        // 'Terrible Blade/Hammer': '', // FIXME '恐怖的大剑/恐怖的战锤'
+        'Terrible Hammer/Blade': '恐怖的戰錘/大劍',
+        'Terrible Blade/Hammer': '恐怖的大劍/戰錘',
         'Swift Shift': '高速移動',
         'Setback': '驅趕',
         'Seabed Ceremony': '水底儀式',
@@ -320,11 +319,11 @@ const triggerSet: TriggerSet<Data> = {
         'Command Current': '水花',
         'Clearout': '橫掃',
         'Bonebreaker': '碎骨',
-        // 'Swing/Swipe/Cyclone': '', // FIXME '钢铁/横扫/月环'
-        // 'Hammer/Blade Mark': '', // FIXME '战锤/大剑标记'
-        // 'Blade/Hammer Mark': '', // FIXME '大剑/战锤标记'
+        'Swing/Swipe/Cyclone': '鋼鐵/橫掃/月環',
+        'Hammer/Blade Mark': '戰錘/大劍標記',
+        'Blade/Hammer Mark': '大劍/戰錘標記',
         'Pyre/Hearth': '恐怖的大火焰',
-        // 'Unknown Add': '', // FIXME '小怪出现'
+        'Unknown Add': '小怪出現',
       },
     },
     {

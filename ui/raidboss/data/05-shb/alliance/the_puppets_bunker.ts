@@ -84,7 +84,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンクバスターを避ける',
           cn: '远离坦克死刑',
           ko: '탱버 피하기',
-          tc: '遠離坦剋死刑',
+          tc: '遠離坦克死刑',
         },
       },
     },
@@ -119,7 +119,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー: 外へ',
           cn: '激光点名：快出去',
           ko: '추격 레이저: 이동',
-          tc: '雷射點名：快出去',
+          tc: '雷射點名: 快出去',
         },
       },
     },
@@ -370,7 +370,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンクバスターを避ける',
           cn: '远离坦克死刑',
           ko: '탱버 피하기',
-          tc: '遠離坦剋死刑',
+          tc: '遠離坦克死刑',
         },
       },
     },
@@ -1199,11 +1199,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // '724P-Operated Superior Flight Unit \\\\\\(A-Lpha\\\\\\)': '', // FIXME '724P：强化型飞行装置[A-lpha]'
-        // '767P-Operated Superior Flight Unit \\\\\\(B-Eta\\\\\\)': '', // FIXME '767P：强化型飞行装置[B-eta]'
-        // '772P-Operated Superior Flight Unit \\\\\\(C-Hi\\\\\\)': '', // FIXME '772P：强化型飞行装置[C-hi]'
+        '724P-Operated Superior Flight Unit \\\\\\(A-Lpha\\\\\\)': '724P：強化型飛行裝置[A-lpha]',
+        '767P-Operated Superior Flight Unit \\\\\\(B-Eta\\\\\\)': '767P：強化型飛行裝置[B-eta]',
+        '772P-Operated Superior Flight Unit \\\\\\(C-Hi\\\\\\)': '772P：強化型飛行裝置[C-hi]',
         '813P-Operated Aegis Unit': '813P：裝備據點防衛裝置',
         '905P-Operated Heavy Artillery Unit': '905P：裝備重型陸戰裝置',
         'Compound 2P': '2P：融合體',
@@ -1220,7 +1219,7 @@ const triggerSet: TriggerSet<Data> = {
         'The passage': '通道',
       },
       'replaceText': {
-        // '(?<=\\(|/)Behind(?=\\))': '', // FIXME '后'
+        '(?<=\\(|/)Behind(?=\\))': '後',
         'Aerial Support: Bombardment': '航空支援：轟炸',
         'Aerial Support: Swoop': '航空支援：突擊',
         'Anti-Personnel Missile': '對人導彈',
@@ -1269,9 +1268,9 @@ const triggerSet: TriggerSet<Data> = {
         'Maneuver: Volt Array': '攻擊：擴散電壓',
         'Mechanical Contusion': '碎機光擊',
         'Mechanical Decapitation(?!/)': '斬機光擊',
-        // 'Mechanical Decapitation/Dissection': '', // FIXME '斩机光击/断机光击'
+        'Mechanical Decapitation/Dissection': '斬機光擊/斷機光擊',
         'Mechanical Dissection(?!/)': '斷機光擊',
-        // 'Mechanical Dissection/Decapitation': '', // FIXME '断机光击/斩机光击'
+        'Mechanical Dissection/Decapitation': '斷機光擊/斬機光擊',
         'Mechanical Laceration': '壓制光擊',
         'Operation: Access Self-Consciousness Data': '通信：21O自我數據',
         'Operation: Activate Laser Turret': '通信：雷射砲塔',
