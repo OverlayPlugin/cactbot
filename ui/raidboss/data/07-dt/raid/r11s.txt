@@ -33,9 +33,9 @@ hideall "--sync--"
 67.7 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 72.7 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
 79.8 "Void Stardust" Ability { id: "B412", source: "The Tyrant" }
-83.9 "Cometite" #Ability { id: "B413", source: "The Tyrant" }
-85.9 "Cometite" #Ability { id: "B413", source: "The Tyrant" }
-87.9 "Cometite" #Ability { id: "B413", source: "The Tyrant" }
+83.9 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+85.9 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+87.9 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
 89.9 "Comet/Crushing Comet" Ability { id: ["B414", "B415"], source: "The Tyrant" }
 92.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
 92.9 "--jump axe--" Ability { id: "B543", source: "The Tyrant" }
@@ -47,22 +47,22 @@ hideall "--sync--"
 103.1 "--jump scythe--" Ability { id: "B544", source: "The Tyrant" }
 105.0 "Sweeping Victory" #Ability { id: "B41C", source: "The Tyrant" }
 105.1 "Assault Evolved (scythe)" Ability { id: "B419", source: "The Tyrant" }
-110.2 "Cometite" #Ability { id: "B413", source: "The Tyrant" }
-112.2 "Cometite" #Ability { id: "B413", source: "The Tyrant" }
-114.2 "Cometite" #Ability { id: "B413", source: "The Tyrant" }
+110.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+112.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+114.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
 116.2 "Crushing Comet/Comet" Ability { id: ["B415", "B414"], source: "The Tyrant" }
 122.2 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
 
 # Dance of Domination
 130.4 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 134.6 "Dance of Domination Trophy" Ability { id: "B7BB", source: "The Tyrant" }
-141.3 "Dance of Domination" Ability { id: "B41F", source: "The Tyrant" }
-142.0 "Dance of Domination" #Ability { id: "B421", source: "The Tyrant" }
-142.6 "Dance of Domination" #Ability { id: "B421", source: "The Tyrant" }
-143.2 "Dance of Domination" #Ability { id: "B421", source: "The Tyrant" }
-143.8 "Dance of Domination" #Ability { id: "B421", source: "The Tyrant" }
-144.4 "Dance of Domination" #Ability { id: "B421", source: "The Tyrant" }
-145.5 "Dance of Domination" Ability { id: "B7EA", source: "The Tyrant" }
+141.3 "Dance of Domination 1" Ability { id: "B41F", source: "The Tyrant" }
+142.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
+142.6 "Dance of Domination 3" #Ability { id: "B421", source: "The Tyrant" }
+143.2 "Dance of Domination 4" #Ability { id: "B421", source: "The Tyrant" }
+143.8 "Dance of Domination 5" #Ability { id: "B421", source: "The Tyrant" }
+144.4 "Dance of Domination 6" #Ability { id: "B421", source: "The Tyrant" }
+145.5 "Dance of Domination 7" Ability { id: "B7EA", source: "The Tyrant" }
 150.5 "Eye of the Hurricane" Ability { id: "B424", source: "The Tyrant" }
 150.7 "Explosion" Ability { id: "B420", source: "The Tyrant" }
 151.1 "Explosion" Ability { id: "B7BC", source: "The Tyrant" }
