@@ -1,9 +1,12 @@
 import Conditions from '../../../../../resources/conditions';
+import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
+
+type Phase = 'one' | 'snaking' | 'arenaSplit' | 'xtremeSnaking';
 
 type SnakingFlagsType = {
   [flags: string]: {
@@ -13,11 +16,18 @@ type SnakingFlagsType = {
 };
 
 export interface Data extends RaidbossData {
+  phase: Phase;
   dareCount: number;
   snakings: SnakingFlagsType[string][];
   snakingCount: number;
   snakingDebuff?: 'fire' | 'water';
 }
+
+const phaseMap: { [id: string]: Phase } = {
+  'B381': 'snaking', // Firesnaking
+  'B5D4': 'arenaSplit', // Flame Floater
+  'B5AE': 'xtremeSnaking', // Xtreme Firesnaking
+};
 
 const headMarkerData = {
   // Vfx Path: m0676trg_tw_d0t1p
@@ -87,11 +97,25 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.AacHeavyweightM2Savage,
   timelineFile: 'r10s.txt',
   initData: () => ({
+    phase: 'one',
     dareCount: 0,
     snakings: [],
     snakingCount: 0,
   }),
   triggers: [
+    {
+      id: 'R10S Phase Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: Object.keys(phaseMap), source: 'Red Hot' },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        const phase = phaseMap[matches.id];
+        if (phase === undefined)
+          throw new UnreachableCode();
+
+        data.phase = phase;
+      },
+    },
     {
       id: 'R10S Divers\' Dare Collect',
       type: 'StartsUsing',
@@ -281,7 +305,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R10S Reverse Alley-oop/Alley-oop Double-dip',
-      // TODO: Handle Arena Split
+      // TODO: Handle Arena Split with boss/postion checking?
       type: 'StartsUsing',
       netRegex: { id: ['B5E0', 'B5DD'], source: 'Deep Blue', capture: true },
       condition: (data) => {
@@ -289,9 +313,13 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (data, matches, output) => {
         // During snaking it is always move since the baits are too close
-        // Ressed players may get the regular calls
-        if (data.snakingDebuff === 'water')
-          return output.move!();
+        if (data.phase === 'snaking')
+          return output.watersnakingMove!();
+        if (data.phase === 'arenaSplit') {
+          return matches.id === 'B5E0'
+            ? output.arenaSplitReverse!()
+            : output.arenaSplitDoubleDip!();
+        }
         const action = matches.id === 'B5E0' ? output.stay!() : output.move!();
         return output.text!({ protean: output.protean!(), action: action });
       },
@@ -308,6 +336,13 @@ const triggerSet: TriggerSet<Data> = {
         },
         text: {
           en: '${protean} => ${action}',
+        },
+        watersnakingMove: Outputs.moveAway,
+        arenaSplitReverse: {
+          en: 'Reverse Alley-oop',
+        },
+        arenaSplitDoubleDip: {
+          en: 'Double-Dip Protean',
         },
       },
     },
@@ -350,6 +385,7 @@ const triggerSet: TriggerSet<Data> = {
         if (snaking.elem === 'fire' && (snaking.mech !== 'buster' || data.snakingCount < 4))
           data.snakingCount++;
       },
+      durationSeconds: 6,
       infoText: (data, _matches, output) => {
         const [snaking1, snaking2] = data.snakings;
 
@@ -568,7 +604,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'E/W Groups + Out of Middle',
+          en: 'E/W Groups, Out of Middle',
         },
       },
     },
