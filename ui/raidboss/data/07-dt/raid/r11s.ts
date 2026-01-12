@@ -408,6 +408,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R11S Meteor Cleanup',
+      // Player hit by Cosmic Kiss
+      type: 'Ability',
+      netRegex: { id: 'B435', source: 'Comet', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.hasMeteor = false,
+    },
+    {
       id: 'R11S Triple Tyrannhilation',
       type: 'StartsUsing',
       netRegex: { id: 'B43C', source: 'The Tyrant', capture: false },
