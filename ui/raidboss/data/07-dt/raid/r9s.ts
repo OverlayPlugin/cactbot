@@ -226,6 +226,52 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe(),
     },
     {
+      id: 'R9S Half Moon Right Hit First',
+      // TODO: track coffinmaker aoes and figure out a good callout
+      type: 'StartsUsing',
+      netRegex: { id: 'B377', source: 'Vamp Fatale', capture: true },
+      alertText: (_data, matches, output) => {
+        const bossDirNum = Directions.hdgTo8DirNum(parseFloat(matches.heading));
+        // First hit is 90* clockwise of heading
+        const firstDirNum = (bossDirNum + 2) % 8;
+        const firstDir = Directions.outputFrom8DirNum(firstDirNum);
+        // Second hit is 90* counter clockwise (270* clockwise) of heading
+        const secondDirNum = (bossDirNum + 6) % 8;
+        const secondDir = Directions.outputFrom8DirNum(secondDirNum);
+
+        return output.text!({ first: output[firstDir]!(), second: output[secondDir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        text: {
+          en: '${first} => ${second}',
+        },
+      },
+    },
+    {
+      id: 'R9S Half Moon Left Hit First',
+      // TODO: track coffinmaker aoes and figure out a good callout
+      type: 'StartsUsing',
+      netRegex: { id: 'B37B', source: 'Vamp Fatale', capture: true },
+      alertText: (_data, matches, output) => {
+        const bossDirNum = Directions.hdgTo8DirNum(parseFloat(matches.heading));
+        // First hit is 90* counter clockwise (270* clockwise) of heading
+        const firstDirNum = (bossDirNum + 6) % 8;
+        const firstDir = Directions.outputFrom8DirNum(firstDirNum);
+        // Second hit is 90* clockwise of heading
+        const secondDirNum = (bossDirNum + 2) % 8;
+        const secondDir = Directions.outputFrom8DirNum(secondDirNum);
+
+        return output.text!({ first: output[firstDir]!(), second: output[secondDir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        text: {
+          en: '${first} => ${second}',
+        },
+      },
+    },
+    {
       id: 'R9S Crowd Kill',
       type: 'StartsUsing',
       netRegex: { id: 'B33E', source: 'Vamp Fatale', capture: false },
