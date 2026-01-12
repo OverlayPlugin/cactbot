@@ -1,8 +1,8 @@
 {
   "name": "cactbot",
-  "version": "0.36.2",
-  "releaseSummary": "Doomtrain normal, m10n, i18n",
-  "releaseInDraft": "true",
+  "version": "0.36.3",
+  "releaseSummary": "M9S, Tsukuyomi EX/Unreal improvements, i18n",
+  "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./types",
