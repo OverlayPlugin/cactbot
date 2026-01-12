@@ -281,12 +281,17 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R10S Reverse Alley-oop/Alley-oop Double-dip',
+      // TODO: Handle Arena Split
       type: 'StartsUsing',
       netRegex: { id: ['B5E0', 'B5DD'], source: 'Deep Blue', capture: true },
       condition: (data) => {
         return data.snakingDebuff !== 'fire';
       },
-      infoText: (_data, matches, output) => {
+      infoText: (data, matches, output) => {
+        // During snaking it is always move since the baits are too close
+        // Ressed players may get the regular calls
+        if (data.snakingDebuff === 'water');
+          return output.move!();
         const action = matches.id === 'B5E0' ? output.stay!() : output.move!();
         return output.text!({ protean: output.protean!(), action: action });
       },
