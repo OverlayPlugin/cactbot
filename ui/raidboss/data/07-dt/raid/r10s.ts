@@ -290,7 +290,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, matches, output) => {
         // During snaking it is always move since the baits are too close
         // Ressed players may get the regular calls
-        if (data.snakingDebuff === 'water');
+        if (data.snakingDebuff === 'water')
           return output.move!();
         const action = matches.id === 'B5E0' ? output.stay!() : output.move!();
         return output.text!({ protean: output.protean!(), action: action });
