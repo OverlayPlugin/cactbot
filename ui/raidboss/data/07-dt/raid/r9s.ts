@@ -7,8 +7,17 @@ import { RaidbossData } from '../../../../../types/data';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
+type CoffinfillerPosition =
+  | 'outerWest'
+  | 'innerWest'
+  | 'innerEast'
+  | 'outerEast'
+  | 'inside'
+  | 'outside';
+
 export interface Data extends RaidbossData {
   flailPositions: NetMatches['StartsUsingExtra'][];
+  coffinfillers: CoffinfillerPosition[];
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   bats: {
     inner: DirectionOutput16[];
@@ -42,6 +51,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r9s.txt',
   initData: () => ({
     flailPositions: [],
+    coffinfillers: [],
     actorPositions: {},
     bats: { inner: [], middle: [], outer: [] },
     satisfiedCount: 0,
@@ -226,48 +236,157 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe(),
     },
     {
-      id: 'R9S Half Moon Right Hit First',
-      // TODO: track coffinmaker aoes and figure out a good callout
-      type: 'StartsUsing',
-      netRegex: { id: 'B377', source: 'Vamp Fatale', capture: true },
-      alertText: (_data, matches, output) => {
-        const bossDirNum = Directions.hdgTo8DirNum(parseFloat(matches.heading));
-        // First hit is 90* clockwise of heading
-        const firstDirNum = (bossDirNum + 2) % 8;
-        const firstDir = Directions.outputFrom8DirNum(firstDirNum);
-        // Second hit is 90* counter clockwise (270* clockwise) of heading
-        const secondDirNum = (bossDirNum + 6) % 8;
-        const secondDir = Directions.outputFrom8DirNum(secondDirNum);
-
-        return output.text!({ first: output[firstDir]!(), second: output[secondDir]!() });
-      },
-      outputStrings: {
-        ...Directions.outputStrings8Dir,
-        text: {
-          en: '${first} => ${second}',
-        },
+      id: 'R9S Coffinfiller',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B368', 'B369', 'B36A'], capture: true },
+      suppressSeconds: (data) => data.coffinfillers.length === 0 ? 0 : 5,
+      run: (data, matches) => {
+        let danger: CoffinfillerPosition;
+        const xPos = parseFloat(matches.x);
+        if (xPos < 95)
+          danger = 'outerWest';
+        else if (xPos < 100)
+          danger = 'innerWest';
+        else if (xPos < 105)
+          danger = 'innerEast';
+        else
+          danger = 'outerEast';
+        data.coffinfillers.push(danger);
       },
     },
     {
-      id: 'R9S Half Moon Left Hit First',
-      // TODO: track coffinmaker aoes and figure out a good callout
-      type: 'StartsUsing',
-      netRegex: { id: 'B37B', source: 'Vamp Fatale', capture: true },
-      alertText: (_data, matches, output) => {
-        const bossDirNum = Directions.hdgTo8DirNum(parseFloat(matches.heading));
-        // First hit is 90* counter clockwise (270* clockwise) of heading
-        const firstDirNum = (bossDirNum + 6) % 8;
-        const firstDir = Directions.outputFrom8DirNum(firstDirNum);
-        // Second hit is 90* clockwise of heading
-        const secondDirNum = (bossDirNum + 2) % 8;
-        const secondDir = Directions.outputFrom8DirNum(secondDirNum);
+      id: 'R9S Half Moon',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B377', 'B379', 'B37B', 'B37D'], capture: true },
+      delaySeconds: 0.3,
+      alertText: (data, matches, output) => {
+        if (data.coffinfillers.length < 2) {
+          if (matches.id === 'B377')
+            return output.rightThenLeft!();
+          if (matches.id === 'B37B')
+            return output.leftThenRight!();
+          return output.bigHalfmoon!({
+            dir1: output[matches.id === 'B379' ? 'right' : 'left']!(),
+            dir2: output[matches.id === 'B379' ? 'left' : 'right']!(),
+          });
+        }
 
-        return output.text!({ first: output[firstDir]!(), second: output[secondDir]!() });
+        // TODO: this could handle the "big" halfmoon better
+        const dirNum1 = Directions.hdgTo4DirNum(parseFloat(matches.heading));
+        const dir1 = Directions.outputFromCardinalNum(dirNum1);
+        const dirNum2 = (dirNum1 + 2) % 4;
+        const dir2 = Directions.outputFromCardinalNum(dirNum2);
+
+        const insidePositions: CoffinfillerPosition[] = [
+          'innerWest',
+          'innerEast',
+        ];
+
+        const outsidePositions: CoffinfillerPosition[] = [
+          'outerWest',
+          'outerEast',
+        ];
+
+        const westPositions: CoffinfillerPosition[] = [
+          'innerWest',
+          'outerWest',
+        ];
+
+        const eastPositions: CoffinfillerPosition[] = [
+          'innerEast',
+          'outerEast',
+        ];
+
+        let coffinSafe1: CoffinfillerPosition[] = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        coffinSafe1 = coffinSafe1.filter((pos) => !data.coffinfillers.includes(pos));
+
+        let coffinSafe2: CoffinfillerPosition[] = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        // Whatever gets hit first round will be safe second round
+        coffinSafe2 = coffinSafe2.filter((pos) => data.coffinfillers.includes(pos));
+
+        data.coffinfillers = [];
+
+        if (dir1 === 'dirW')
+          coffinSafe1 = coffinSafe1.filter((pos) => !westPositions.includes(pos));
+
+        if (dir1 === 'dirE')
+          coffinSafe1 = coffinSafe1.filter((pos) => !eastPositions.includes(pos));
+
+        if (dir2 === 'dirW')
+          coffinSafe2 = coffinSafe2.filter((pos) => !westPositions.includes(pos));
+
+        if (dir2 === 'dirE')
+          coffinSafe2 = coffinSafe2.filter((pos) => !eastPositions.includes(pos));
+
+        let coffin1: CoffinfillerPosition | 'unknown';
+        let coffin2: CoffinfillerPosition | 'unknown';
+
+        if (coffinSafe1.every((pos) => insidePositions.includes(pos)))
+          coffin1 = 'inside';
+        else if (coffinSafe1.every((pos) => outsidePositions.includes(pos)))
+          coffin1 = 'outside';
+        else
+          coffin1 = coffinSafe1.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+
+        if (coffinSafe2.every((pos) => insidePositions.includes(pos)))
+          coffin2 = 'inside';
+        else if (coffinSafe2.every((pos) => outsidePositions.includes(pos)))
+          coffin2 = 'outside';
+        else
+          coffin2 = coffinSafe2.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+
+        return output.combined!({
+          coffin1: output[coffin1]!(),
+          dir1: output[dir1]!(),
+          coffin2: output[coffin2]!(),
+          dir2: output[dir2]!(),
+        });
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
+        ...Directions.outputStringsCardinalDir,
         text: {
           en: '${first} => ${second}',
+        },
+        combined: {
+          en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+        },
+        rightThenLeft: Outputs.rightThenLeft,
+        leftThenRight: Outputs.leftThenRight,
+        left: Outputs.left,
+        right: Outputs.right,
+        inside: {
+          en: 'Inside',
+        },
+        outside: {
+          en: 'Outside',
+        },
+        outerWest: {
+          en: 'Outer West',
+        },
+        innerWest: {
+          en: 'Inner West',
+        },
+        innerEast: {
+          en: 'Inner East',
+        },
+        outerEast: {
+          en: 'Outer East',
+        },
+        bigHalfmoon: {
+          en: '${dir1} max melee => ${dir2} max melee',
+          fr: '${dir1} max melée => ${dir2} max melée',
+          cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
+          ko: '${dir1} 칼끝딜 => ${dir2} 칼끝딜',
         },
       },
     },
