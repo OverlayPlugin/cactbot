@@ -377,13 +377,13 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R11S Fearsome Fireball',
       type: 'HeadMarker',
-      netRegex: { id: headMarkerData['lineStack'], capture: true },
+      netRegex: { id: headMarkerData['lineStack'], capture: false },
       condition: (data) => {
         data.fireballCount = data.fireballCount + 1;
         return !data.hasMeteor;
       },
       delaySeconds: 0.1, // Delay for meteor headmarkers
-      alertText: (data, matches, output) => {
+      alertText: (data, _matches, output) => {
         if (data.fireballCount === 1) {
           if (data.role === 'tank')
             return output.wildChargeTank!();
@@ -542,8 +542,8 @@ const triggerSet: TriggerSet<Data> = {
       // Occurs same time as Atomic Impact headmarkers
       type: 'StartsUsingExtra',
       netRegex: { id: 'B453', capture: true },
-      suppressSeconds: 1,
       delaySeconds: 0.1,
+      suppressSeconds: 1,
       infoText: (data, matches, output) => {
         // Mammoth Meteor is always at two opposite intercardinals.
         // Once we see one, we know where the safespots are
@@ -622,7 +622,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R11S Heartbreaker (Enrage Sequence)',
       type: 'StartsUsing',
-      netRegex: { id: 'B45D', source: 'The Tyrant', capture: true },
+      netRegex: { id: 'B45D', source: 'The Tyrant', capture: false },
       preRun: (data) => data.heartbreakerCount = data.heartbreakerCount + 1,
       infoText: (data, _matches, output) => {
         switch (data.heartbreakerCount) {
