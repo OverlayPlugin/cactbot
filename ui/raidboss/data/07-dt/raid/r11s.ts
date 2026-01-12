@@ -265,6 +265,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11S Dance Of Domination Trophy',
       type: 'StartsUsing',
       netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
+      durationSeconds: 10.9,
       response: Responses.bigAoe(),
     },
     {
