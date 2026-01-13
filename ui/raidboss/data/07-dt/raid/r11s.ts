@@ -625,7 +625,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, center.x, center.y);
         data.meteowrathTetherDirNum = dirNum;
       },
-      infoText: (data, matches, output) => {
+      infoText: (data, _matches, output) => {
         if (data.meteowrathTetherDirNum === undefined)
           return;
         type dirNumStretchMap = {
