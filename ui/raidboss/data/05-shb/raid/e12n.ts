@@ -36,7 +36,7 @@ const bombOutputStrings = {
     ja: '北の岩へ',
     cn: '去正上岩石中间',
     ko: '북쪽 폭탄 사이',
-    tc: '去正上岩石中間',
+    tc: '去北面岩石中間',
   },
   'south': {
     en: 'Between south bombs',
@@ -45,7 +45,7 @@ const bombOutputStrings = {
     ja: '南の岩へ',
     cn: '去正下岩石中间',
     ko: '남쪽 폭탄 사이',
-    tc: '去正一下岩石中間',
+    tc: '去南面岩石中間',
   },
   'east': {
     en: 'Between east bombs',
@@ -54,7 +54,7 @@ const bombOutputStrings = {
     ja: '東の岩へ',
     cn: '去右边岩石中间',
     ko: '동쪽 폭탄 사이',
-    tc: '去右邊岩石中間',
+    tc: '去東面岩石中間',
   },
   'west': {
     en: 'Between west bombs',
@@ -63,7 +63,7 @@ const bombOutputStrings = {
     ja: '西の岩へ',
     cn: '去左边岩石中间',
     ko: '서쪽 폭탄 사이',
-    tc: '去左邊岩石中間',
+    tc: '去西面岩石中間',
   },
 };
 
@@ -87,7 +87,7 @@ const primalOutputStrings = {
     ja: '斜め',
     cn: '四角',
     ko: '대각',
-    tc: '四角',
+    tc: '斜點',
   },
   '008E008F': {
     en: 'Under + Sides',
@@ -96,7 +96,7 @@ const primalOutputStrings = {
     ja: '真ん中 + 横へ',
     cn: '正中间两侧',
     ko: '보스 아래 + 양옆',
-    tc: '正中間兩側',
+    tc: '正中間 + 兩側',
   },
   '008E0090': {
     en: 'North/South + Out',
@@ -105,7 +105,7 @@ const primalOutputStrings = {
     ja: '北/南 + 外へ',
     cn: '上/下远离',
     ko: '북/남 + 바깥',
-    tc: '上/下遠離',
+    tc: '北/南 + 遠離',
   },
   '008E0091': {
     en: 'Under + Intercards',
@@ -114,7 +114,7 @@ const primalOutputStrings = {
     ja: '真ん中 + 斜め',
     cn: '正中间四角',
     ko: '보스 아래 + 대각',
-    tc: '正中間四角',
+    tc: '正中間 + 斜點',
   },
 };
 

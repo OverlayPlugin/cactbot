@@ -302,7 +302,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '縦回転をする雑魚へ',
           cn: '去竖转小怪脚下',
           ko: '세로로 도는 쫄 아래로',
-          tc: '去豎轉小怪腳下',
+          tc: '去垂直轉小怪腳下',
         },
       },
     },
@@ -472,7 +472,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南へ',
           cn: '前往下半场',
           ko: '남쪽',
-          tc: '前往下半場',
+          tc: '前往南半場',
         },
         goNorthwest: {
           en: 'Go Northwest',
@@ -481,7 +481,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西へ',
           cn: '前往左上',
           ko: '북서쪽',
-          tc: '前往左上',
+          tc: '前往西北',
         },
         goNortheast: {
           en: 'Go Northeast',
@@ -490,7 +490,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東へ',
           cn: '前往右上',
           ko: '북동쪽',
-          tc: '前往右上',
+          tc: '前往東北',
         },
       },
     },
@@ -711,7 +711,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'The Idol Of Darkness': '暗黑心象',
         'Unforgiven Idolatry': '未被寬恕的盲崇',
@@ -745,7 +744,7 @@ const triggerSet: TriggerSet<Data> = {
         'Unjoined Aspect': '屬性變動',
         'Words Of Unity': '強襲號令',
         'Words Of Entrapment': '包圍號令',
-        // 'White/Black Smoke': '', // FIXME '白光/黑暗之火'
+        'White/Black Smoke': '白光/黑暗之火',
         'Boundless Light': '白光激流',
         'Words Of Night': '夜襲號令',
         'False Dawn': '黎明機動',

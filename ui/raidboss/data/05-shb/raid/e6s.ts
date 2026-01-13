@@ -374,7 +374,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player}と繋がった',
           cn: '和${player}连线',
           ko: '선 연결 짝: ${player}',
-          tc: '和${player}連線',
+          tc: '和 ${player} 連線',
         },
       },
     },
@@ -545,7 +545,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Garuda': '迦樓羅',
         'Tumultuous Nexus': '暴風球',
@@ -563,7 +562,7 @@ const triggerSet: TriggerSet<Data> = {
         'Downburst': '下行突風',
         'Vacuum Slice': '真空斬',
         'Irresistible Pull': '吸引力',
-        // 'Explosions?': '', // FIXME '爆炸'
+        'Explosions?': '爆炸',
         'Touchdown': '空降',
         'Hands Of Flame': '火焰拳',
         'Eruption': '噴發',
@@ -580,7 +579,7 @@ const triggerSet: TriggerSet<Data> = {
         'Radiant Plume': '光輝炎柱',
         'Spread Of Fire': '火勢蔓延',
         'Conflag Strike': '瞬燃強襲',
-        // 'Blaze': '', // FIXME '炎爆'
+        'Blaze': '炎爆',
       },
     },
     {
