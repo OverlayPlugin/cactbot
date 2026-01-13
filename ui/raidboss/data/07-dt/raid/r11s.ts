@@ -1,13 +1,14 @@
 import Conditions from '../../../../../resources/conditions';
 import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-type Phase = 'one' | 'arenaSplit';
+type Phase = 'one' | 'arenaSplit' | 'ecliptic';
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -27,6 +28,7 @@ export interface Data extends RaidbossData {
   hasMeteor: boolean;
   fireballCount: number;
   hasAtomic: boolean;
+  meteowrathTetherDirNum?: number;
   heartbreakerCount: number;
 }
 
@@ -37,6 +39,7 @@ const center = {
 
 const phaseMap: { [id: string]: Phase } = {
   'B43F': 'arenaSplit', // Flatliner
+  'B452': 'ecliptic', // Ecliptic Stampede
 };
 
 const headMarkerData = {
@@ -591,6 +594,59 @@ const triggerSet: TriggerSet<Data> = {
       },
       suppressSeconds: 1,
       response: Responses.getTowers(),
+    },
+    {
+      id: 'R11S Majestic Meteowrath Tethers',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.me === matches.target &&
+          data.phase === 'ecliptic' &&
+          data.meteowrathTetherDirNum === undefined
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 99,
+      promise: async (data, matches) => {
+        const actors = (await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.sourceId, 16)],
+        })).combatants;
+        const actor = actors[0];
+        if (actors.length !== 1 || actor === undefined) {
+          console.error(
+            `R11S Majestic Meteowrath Tethers: Wrong actor count ${actors.length}`,
+          );
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, center.x, center.y);
+        data.meteowrathTetherDirNum = dirNum;
+      },
+      infoText: (data, matches, output) => {
+        if (data.meteowrathTetherDirNum === undefined)
+          return;
+        type dirNumStretchMap = {
+          [key: number]: string;
+        };
+        // TODO: Make config for options?
+        const stretchCW: dirNumStretchMap = {
+          0: 'dirSW',
+          2: 'dirNW',
+          4: 'dirNE',
+          6: 'dirSE',
+        };
+        const stretchDir = stretchCW[data.meteowrathTetherDirNum];
+        return output.stretchTetherDir!({ dir: output[stretchDir ?? '???']!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        stretchTetherDir: {
+          en: 'Stretch Tether ${dir}',
+        },
+      },
     },
     {
       id: 'R11S Two-way Fireball',
