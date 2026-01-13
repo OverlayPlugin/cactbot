@@ -182,7 +182,19 @@ const triggerSet: TriggerSet<Data> = {
       type: 'ActorControlExtra',
       netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
       condition: (data) => data.weaponMechCount < 2,
-      preRun: (data, matches) => {
+      delaySeconds: (data) => {
+        if (data.weaponMechCount === 0)
+          return 0.1;
+        if (data.weaponMechCount === 1)
+          return 10.6;
+        return 0.1;
+      },
+      durationSeconds: (data) => {
+        if (data.weaponMechCount < 2)
+          return 20.9;
+        return 0;
+      },
+      infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.id];
 
         if (actor === undefined)
@@ -196,20 +208,6 @@ const triggerSet: TriggerSet<Data> = {
           dir: Math.atan2(actor.x - center.x, actor.y - center.y),
           actor: actor,
         });
-      },
-      delaySeconds: (data) => {
-        if (data.weaponMechCount === 0)
-          return 0;
-        if (data.weaponMechCount === 1)
-          return 10.6;
-        return 0;
-      },
-      durationSeconds: (data) => {
-        if (data.weaponMechCount < 2)
-          return 20.9;
-        return 0;
-      },
-      infoText: (data, _matches, output) => {
         // Have info for 1st or 2nd mech
         if (data.weaponMechCount < 2 && data.weapons.length > 2) {
           data.weaponMechCount++;
