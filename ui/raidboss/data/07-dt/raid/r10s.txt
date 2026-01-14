@@ -56,45 +56,31 @@ hideall "--sync--"
 178.8 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
 178.8 "Epic Brotherhood" #Ability { id: "B57B", source: "Deep Blue" }
 186.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
-186.0 "--sync--" #Ability { id: "B579", source: "Deep Blue" }
-194.6 "Insane Air" Ability { id: "B897", source: "Red Hot" }
-194.6 "Insane Air" #Ability { id: "B898", source: "Deep Blue" }
-196.5 "Blasting Snap" Ability { id: "B5EF", source: "Red Hot" }
 
-# Plunging Snap/Re-entry => Re-entry => Plunging Snap
-196.5 "Re-entry Plunge" #Ability { id: "B5F4", source: "Deep Blue" }
-197.6 "Re-entry Plunge" Ability { id: "B5F6", source: "Deep Blue" }
-197.6 "Blasting Snap" #Ability { id: "B5F1", source: "Deep Blue" }
+# Each boss does, in random order (Red Hot/Deep Blue):
+# 1 tankbuster (Blasting Snap/Vertical Plunge)
+# 1 stack (Re-entry Blast/Re-entry Plunge)
+# 2 proteans (Plunging Snap)
+# Timeline entries are for Red Hot's ability names, since there's no castbar
+194.6 "Insane Air" Ability { id: "B897", source: "Red Hot" }
+196.5 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+197.6 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
 201.9 "Insane Air" Ability { id: "B899", source: "Red Hot" }
-201.9 "Insane Air" #Ability { id: "B89A", source: "Deep Blue" }
-203.8 "Vertical Blast" Ability { id: "B5F7", source: "Red Hot" }
-203.8 "Plunging Snap" #Ability { id: "B5F0", source: "Deep Blue" }
-204.9 "Plunging Snap" #Ability { id: "B5F2", source: "Deep Blue" }
-204.9 "Plunging Snap" #Ability { id: "B5F2", source: "Red Hot" }
-204.9 "Vertical Blast" Ability { id: "B5F9", source: "Red Hot" }
+203.8 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+204.9 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
 209.2 "Insane Air" Ability { id: "B899", source: "Red Hot" }
-209.2 "Insane Air" #Ability { id: "B89A", source: "Deep Blue" }
-211.1 "Blasting Snap" Ability { id: "B5EF", source: "Red Hot" }
-211.1 "Vertical Plunge" #Ability { id: "B5F8", source: "Deep Blue" }
-212.2 "Vertical Plunge" Ability { id: "B5FA", source: "Deep Blue" }
-212.2 "Blasting Snap" #Ability { id: "B5F1", source: "Deep Blue" }
+211.1 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+212.2 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
 216.5 "Insane Air" Ability { id: "B899", source: "Red Hot" }
-216.5 "Insane Air" #Ability { id: "B89A", source: "Deep Blue" }
-218.4 "Re-entry Blast" Ability { id: "B5F3", source: "Red Hot" }
-218.4 "Re-entry Plunge" #Ability { id: "B5F4", source: "Deep Blue" }
-219.5 "Re-entry Plunge" Ability { id: "B5F6", source: "Red Hot" }
-219.5 "Re-entry Blast" #Ability { id: "B5F5", source: "Red Hot" }
+218.4 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+219.5 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
 219.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
 229.1 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-229.1 "Divers' Dare" #Ability { id: "B5B9", source: "Deep Blue" }
 235.3 "--sync--" Ability { id: "B578", source: "Red Hot" }
-235.3 "--sync--" #Ability { id: "B579", source: "Deep Blue" }
 
 # Snaking
 237.7 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
-237.7 "Epic Brotherhood" #Ability { id: "B57B", source: "Deep Blue" }
-244.8 "Firesnaking" Ability { id: "B381", source: "Red Hot" }
-244.8 "Watersnaking" #Ability { id: "B382", source: "Deep Blue" }
+244.8 "Firesnaking/Watersnaking" Ability { id: "B381", source: "Red Hot" }
 250.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
 250.0 "--sync--" #Ability { id: "B579", source: "Deep Blue" }
 256.8 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
