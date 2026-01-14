@@ -282,7 +282,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'the_final_verse_quantum.txt',
   comments: {
     en: 'Q15-40',
-    cn: 'Q15-40',
+    cn: '15-40 贡品',
   },
 
   initData: () => ({
