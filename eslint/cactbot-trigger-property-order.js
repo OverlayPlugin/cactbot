@@ -46,6 +46,7 @@ module.exports = {
       'delaySeconds',
       'durationSeconds',
       'suppressSeconds',
+      'countdownSeconds',
       'promise',
       'sound',
       'soundVolume',
