@@ -113,7 +113,7 @@ hideall "--sync--"
 303.3 "--targetable--"
 303.7 "Awesome Splash/Awesome Slab" Ability { id: ["B5CF", "B5D0"], source: ["Red Hot", "Deep Blue"] }
 306.3 "Cutback Blaze" Ability { id: "B5C9", source: "Red Hot" }
-307.2 "Cutback Blaze" Ability { id: "B5CA", source: ["Red Hot", "Deep Blue"] } # Possible bugged log
+307.2 "Cutback Blaze" #Ability { id: "B5CA", source: ["Red Hot", "Deep Blue"] } # Possible bugged log
 313.2 "Deep Impact (bait)" Ability { id: "B5B7", source: "Deep Blue" }
 313.5 "Deep Impact (damage)" #Ability { id: "ADC6", source: "Deep Blue" }
 320.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
