@@ -1,6 +1,6 @@
 # Cactbot 사용자 설정
 
-🌎 [[English](../CactbotCustomization.md)] [[简体中文](../zh-CN/CactbotCustomization.md)] [[繁體中文](./zh-TW/CactbotCustomization.md)] [**한국어**]
+🌎 [[English](../CactbotCustomization.md)] [[简体中文](../zh-CN/CactbotCustomization.md)] [[繁體中文](../zh-TW/CactbotCustomization.md)] [**한국어**]
 
 - [cactbot UI를 사용하는 방법](#cactbot-ui를-사용하는-방법)
 - [cactbot UI로 트리거 문자열 수정하기](#cactbot-ui로-트리거-문자열-수정하기)
