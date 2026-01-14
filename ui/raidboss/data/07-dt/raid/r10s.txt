@@ -212,6 +212,7 @@ hideall "--sync--"
 566.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
 575.6 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
 585.3 "--sync--" Ability { id: "B578", source: "Red Hot" }
+587.4 "--sync--" StartsUsing { id: "B5FC", source: "Red Hot" }
 596.4 "Over the Falls (enrage)" Ability { id: "B5FC", source: "Red Hot" }
 
 
