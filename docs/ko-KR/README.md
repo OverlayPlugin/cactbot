@@ -57,8 +57,6 @@ cactbot은 다음 모듈을 제공합니다:
 
 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) 4.6.1 버전 이상을 설치하세요.
 
-반드시 파이널 판타지 14를 [DirectX 11](http://imgur.com/TjcnjmG)로 실행해야 합니다.
-
 아직 [Advanced Combat Tracker](http://advancedcombattracker.com/)를 설치하지 않았다면, 64비트 버전을 설치하세요.
 
 ### FFXIV ACT Plugin 설치

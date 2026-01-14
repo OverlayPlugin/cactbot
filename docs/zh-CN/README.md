@@ -51,8 +51,6 @@ Cactbot 提供以下悬浮窗：
 
 安装 4.6.1 版本及以上的 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 
-你必须启用最终幻想 14 的 [DirectX 11](http://imgur.com/TjcnjmG) 模式。
-
 你需要安装 64 位版本的 [Advanced Combat Tracker](http://advancedcombattracker.com/)。
 
 ### 安装 FFXIV ACT 解析插件
