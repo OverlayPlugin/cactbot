@@ -199,29 +199,20 @@ hideall "--sync--"
 526.0 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
 
 # Double Alley-oop
-532.2 "Epic Brotherhood" Ability { id: "B57B", source: "Deep Blue" }
-532.2 "Epic Brotherhood" #Ability { id: "B57A", source: "Red Hot" }
+532.2 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
 534.3 "--sync--" Ability { id: "B579", source: "Deep Blue" }
-541.4 "Reverse Alley-oop" Ability { id: "B5E0", source: "Deep Blue" }
-542.1 "Reverse Alley-oop" #Ability { id: "B5E1", source: "Deep Blue" }
-542.1 "Reverse Alley-oop" #Ability { id: "B5E1", source: "Deep Blue" }
-543.5 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
-544.3 "Alley-oop Inferno" Ability { id: "B5C1", source: "Red Hot" }
-544.7 "Reverse Alley-oop" #Ability { id: "B5E2", source: "Deep Blue" }
-544.7 "Reverse Alley-oop" #Ability { id: "B5E2", source: "Deep Blue" }
+542.1 "Reverse Alley-oop/Alley-oop Double-dip"
+544.3 "Alley-oop Inferno" #Ability { id: "B5C1", source: "Red Hot" }
+544.7 "Reverse Alley-oop/Alley-oop Double-dip"
 552.3 "Pyrotation x3" Ability { id: "B5C2", source: "Red Hot" } duration 4.9
-553.2 "Deep Impact" Ability { id: "B5B7", source: "Deep Blue" }
-553.4 "Deep Impact" Ability { id: "ADC6", source: "Deep Blue" }
+553.2 "Deep Impact (bait)" Ability { id: "B5B7", source: "Deep Blue" }
+553.4 "Deep Impact (damage)" Ability { id: "ADC6", source: "Deep Blue" }
 
 # Soft -> hard enrage
 566.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-566.5 "Divers' Dare" Ability { id: "B5B9", source: "Deep Blue" }
 575.6 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-575.6 "Divers' Dare" Ability { id: "B5B9", source: "Deep Blue" }
 585.3 "--sync--" Ability { id: "B578", source: "Red Hot" }
-585.3 "--sync--" Ability { id: "B579", source: "Deep Blue" }
 596.4 "Over the Falls (enrage)" Ability { id: "B5FC", source: "Red Hot" }
-596.4 "Over the Falls (enrage)" Ability { id: "B5FD", source: "Deep Blue" }
 
 
 # IGNORED ABILITIES
