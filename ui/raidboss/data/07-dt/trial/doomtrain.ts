@@ -154,6 +154,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${mech} + Avoid Lasers',
           cn: '${mech} + 躲避激光',
+          ko: '${mech} + 레이저 피하기',
         },
         knockback: Outputs.knockback,
       },
@@ -172,6 +173,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${mech} => ${away}',
           cn: '${mech} => ${away}',
+          ko: '${mech} => ${away}',
         },
         drawIn: Outputs.drawIn,
         away: Outputs.awayFromFront,
@@ -197,6 +199,7 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Avoid ${dir} turrets',
           cn: '躲避 ${dir} 炮塔',
+          ko: '${dir} 포탑 피하기',
         },
         east: Outputs.east,
         west: Outputs.west,
@@ -252,6 +255,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Tank cleave on YOU from ${dir}',
           cn: '${dir} 坦克死刑',
+          ko: '광역 탱버 대상자 ${dir} 방향',
         },
       },
     },
@@ -266,6 +270,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Tower x3 => Next Platform',
           de: 'Turm x3 => Nächste Plattform',
           cn: '踩塔 x3 => 下一节车厢',
+          ko: '탑 x3 => 다음 플랫폼',
         },
       },
     },
@@ -279,6 +284,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Down',
           cn: '下',
+          ko: '아래',
         },
       },
     },
@@ -292,6 +298,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Up',
           cn: '上',
+          ko: '위',
         },
       },
     },
@@ -438,6 +445,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Tower x3',
           cn: '踩塔 x3',
+          ko: '탑 x3',
         },
       },
     },
