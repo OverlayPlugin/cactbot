@@ -282,6 +282,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'the_final_verse_quantum.txt',
   comments: {
     en: 'Q15-40',
+    de: 'Q15-40',
     cn: '15-40 贡品',
     ko: '15-40 공물',
   },
@@ -314,6 +315,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         q40: {
           en: 'Get Light Vengeance',
+          de: 'Nimm Echo des Lichts',
           cn: '踩光',
           ko: '빛 디버프 받기',
         },
@@ -332,11 +334,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         q15: {
           en: 'Get Towers => AoE',
+          de: 'Geh in die Türme => AoE',
           cn: '踩塔 => AOE',
           ko: '탑 밟기 => 전체 공격',
         },
         q40: {
           en: 'Get Towers => AoE + Bleed',
+          de: 'Geh in die Türme => AoE + Blutubg',
           cn: '踩塔 => AOE + 流血',
           ko: '탑 밟기 => 전체 공격 + 출혈',
         },
@@ -732,16 +736,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack with ${lightDark} Partner',
+          de: 'Mit ${lightDark} Partner sammeln',
           cn: '与 ${lightDark} 集合',
           ko: '${lightDark} 파트너와 모이기',
         },
         light: {
           en: 'Light',
+          de: 'Licht',
           cn: '光',
           ko: '빛',
         },
         dark: {
           en: 'Dark',
+          de: 'Dunkelheit',
           cn: '暗',
           ko: '어둠',
         },
@@ -883,6 +890,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack Middle for Chains',
+          de: 'In der Mitte sammlen für Ketten',
           cn: '中间集合等待连线',
           ko: '중앙에 모여서 사슬 준비하기',
         },
@@ -904,6 +912,7 @@ const triggerSet: TriggerSet<Data> = {
         q15: Outputs.breakChains,
         q40: {
           en: 'Break Chains => AoE + Bleed',
+          de: 'Ketten brechen => AoE + Blutung',
           cn: '拉断连线 => AOE + 流血',
           ko: '사슬 끊기 => 전체 공격 + 출혈',
         },
@@ -925,16 +934,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackOnYou: {
           en: 'Stack on YOU, Tank in Front',
+          de: 'Auf DIR sammeln, Tank nach Vorne',
           cn: '分摊点名，坦克在前',
           ko: '쉐어 대상자, 탱커는 앞쪽으로',
         },
         stackOnTarget: {
           en: 'Stack on ${player}, Tank in Front',
+          de: 'Auf ${player} sammeln, Tank nach Vorne',
           cn: '分摊点 ${player}，坦克在前',
           ko: '${player}에게 쉐어, 탱커는 앞쪽으로',
         },
         stackMarker: {
           en: 'Stack, Tank in Front',
+          de: 'Sammeln, Tank nach Vorne',
           cn: '分摊，坦克在前',
           ko: '쉐어, 탱커는 앞쪽으로',
         },
@@ -949,6 +961,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Kill Add',
+          de: 'Add besiegen',
           cn: '击杀小怪',
           ko: '쫄 잡기',
         },
@@ -962,6 +975,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Shackles',
+          de: 'Fesseln',
           cn: '光链',
           ko: '빛사슬',
         },
@@ -980,11 +994,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tetherOnYou: {
           en: 'Tether on YOU',
+          de: 'Verbindung auf DIR',
           cn: '连线点名',
           ko: '사슬 대상자',
         },
         tetherOn: {
           en: 'Tether on ${player}',
+          de: 'Verbindung auf ${player}',
           cn: '连线点 ${player}',
           ko: '${player}에게 사슬',
         },
@@ -998,6 +1014,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + Draw-in',
+          de: 'AoE + Sog',
           cn: 'AOE + 吸引',
           ko: '전체 공격 + 끌어당김',
         },
@@ -1021,6 +1038,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Kill Towers',
+          de: 'Türme besiegen',
           cn: '击杀柱子',
           ko: '탑 부수기',
         },
@@ -1040,6 +1058,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait Puddles x3',
+          de: 'Flächen ködern x3',
           cn: '引导圈圈 x3',
           ko: '장판 유도 x3',
         },
@@ -1062,6 +1081,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '3x Tankbuster + Bleed',
+          de: '3x Tankbuster + Blutung',
           cn: '三连坦克死刑 + 流血',
           ko: '탱버 x3 + 출혈',
         },
@@ -1079,16 +1099,19 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${leftRight}, Avoid laser',
+          de: '${leftRight}, vermeide Laser',
           cn: '${leftRight}，躲避激光',
           ko: '${leftRight}，레이저 피하기',
         },
         left: {
           en: 'Front-left/Back-right',
+          de: 'Vorne links/Hinten rechts',
           cn: '左前/右后',
           ko: '앞 왼쪽/뒤 오른쪽',
         },
         right: {
           en: 'Front-right/Back-left',
+          de: 'Vorne rechts/Hinten links',
           cn: '右前/左后',
           ko: '앞 오른쪽/뒤 왼쪽',
         },
@@ -1109,6 +1132,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark Vengeance',
+          de: 'Nimm Echo der Dunkelheit',
           cn: '踩暗',
           ko: '어둠 받기',
         },
@@ -1128,11 +1152,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         sinBearerOnYou: {
           en: 'Sin Bearer on YOU',
+          de: 'Anhäufen der Schuld auf DIR',
           cn: '罪积蓄点名',
           ko: '죄의 축적 대상자',
         },
         sinBearerOnTarget: {
           en: 'Sin Bearer on ${player}',
+          de: 'Anhäufen der Schuld auf ${player}',
           cn: '罪积蓄点 ${player}',
           ko: '${player}에게 죄의 축적',
         },
@@ -1168,6 +1194,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Pass Sin Bearer',
+          de: 'Anhäufen der Schuld weitergeben',
           cn: '传递罪积蓄',
           ko: '죄의 축적 건네기',
         },
@@ -1185,6 +1212,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cleanse ${player}',
+          de: 'Reinige ${player}',
           cn: '驱散 ${player}',
           ko: '${player} 에스나',
         },
@@ -1204,11 +1232,13 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         swap: {
           en: 'Get Light Vengeance',
+          de: 'Nimm Echo des Lichts',
           cn: '踩光',
           ko: '빛 받기',
         },
         stay: {
           en: 'Stay Dark Vengeance',
+          de: 'Bleib bei Echo der Dunkelheit',
           cn: '保持暗',
           ko: '어둠 유지',
         },
@@ -1224,6 +1254,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark Vengeance',
+          de: 'Nimm Echo der Dunkelheit',
           cn: '踩暗',
           ko: '어둠 받기',
         },
@@ -1239,6 +1270,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait Flameborn',
+          de: 'Sprungfeuer ködern',
           cn: '引导火焰分身',
           ko: '화염 분신 유도',
         },
@@ -1262,6 +1294,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${target} dead, swap!',
+          de: '${target} besiegt, wechseln!',
           cn: '${target} 死亡，换目标！',
           ko: '${target} 사망, 대상 변경!',
         },
@@ -1286,6 +1319,32 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Devoured Eater': 'erodiert(?:e|er|es|en) Sündenvertilger',
         'Eminent Grief': 'Eminent(?:e|er|es|en) Trauer',
+        'Flameborn': 'Sprungfeuer',
+      },
+      'replaceText': {
+        '--add targetable--': '--Add anvisierbar--',
+        '--towers targetable--': '--Turm anvisierbar--',
+        'chariot': 'Kreis-AoE',
+        'draw-in': 'Sog',
+        'Abyssal Blaze': 'Flammen der Tiefe',
+        'Abyssal Dawn': 'Dunkellicht der Tiefe',
+        'Abyssal Sun': 'Blendlicht der Tiefe',
+        'Ball of Fire': 'Feuerball',
+        'Blade of First Light': 'Strahlendes Schwert',
+        'Bounds of Sin': 'Zirkel der Purgation',
+        'Burning Chains': 'Brennende Ketten',
+        'Chains of Condemnation': 'Joch der Flammen',
+        'Crime and Punishment': 'Schuld und Sühne',
+        'Eruption': 'Eruption',
+        'Fevered Flame': 'Flammenkörper',
+        'Hellish Earth': 'Garten der Flammen',
+        'Manifold Lashings': 'Mehrfacher Schweifhieb',
+        'Searing Chains': 'Flammenkette',
+        'Shackles of Greater Sanctity': 'Lichtketten der Wachsamkeit',
+        'Shackles of Sanctity': 'Lichtketten der Mahnung',
+        'Spinelash': 'Dornenschweif',
+        'Unholy Darkness': 'Unheiliges Dunkel',
+        'Visceral Flame': 'Feuerkörper',
       },
     },
     {
@@ -1294,6 +1353,28 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Devoured Eater': 'purgateur dévoré',
         'Eminent Grief': 'Pontife du Chagrin',
+        'Flameborn': 'division de flamme',
+      },
+      'replaceText': {
+        'Abyssal Blaze': 'Feu abyssal',
+        'Abyssal Dawn': 'Aurore abyssale',
+        'Abyssal Sun': 'Soleil abyssal',
+        'Ball of Fire': 'orbe de feu',
+        'Blade of First Light': 'Épée des premières lueurs',
+        'Bounds of Sin': 'Cercle de purgation',
+        'Burning Chains': 'Chaînes brûlantes',
+        'Chains of Condemnation': 'Chaînes de flammes',
+        'Crime and Punishment': 'Crime et châtiment',
+        'Eruption': 'Éruption',
+        'Fevered Flame': 'Flamme incarnée',
+        'Hellish Earth': 'Jardin de flammes',
+        'Manifold Lashings': 'Coups caudaux répétés',
+        'Searing Chains': 'Chaînes incandescentes',
+        'Shackles of Greater Sanctity': 'Menottes de blâme',
+        'Shackles of Sanctity': 'Menottes d\'admonestation',
+        'Spinelash': 'Salve d\'épines',
+        'Unholy Darkness': 'Miracle ténébreux',
+        'Visceral Flame': 'Feu incarné',
       },
     },
     {
@@ -1302,6 +1383,28 @@ const triggerSet: TriggerSet<Data> = {
       'replaceSync': {
         'Devoured Eater': '侵蝕された罪喰い',
         'Eminent Grief': 'エミネントグリーフ',
+        'Flameborn': '焔の分身',
+      },
+      'replaceText': {
+        'Abyssal Blaze': '深淵の焔',
+        'Abyssal Dawn': '深淵の黒光',
+        'Abyssal Sun': '深淵の極光',
+        'Ball of Fire': '火球',
+        'Blade of First Light': '光耀の剣',
+        'Bounds of Sin': '浄罪の環',
+        'Burning Chains': '炎の鎖',
+        'Chains of Condemnation': '焔の枷',
+        'Crime and Punishment': '罪と罰',
+        'Eruption': 'エラプション',
+        'Fevered Flame': '焔身具現',
+        'Hellish Earth': '焔の園',
+        'Manifold Lashings': '尾連撃',
+        'Searing Chains': '焔の鎖',
+        'Shackles of Greater Sanctity': '厳戒の光鎖',
+        'Shackles of Sanctity': '戒めの光鎖',
+        'Spinelash': '荊棘の尾',
+        'Unholy Darkness': 'ダークホーリー',
+        'Visceral Flame': '炎身具現',
       },
     },
     {
