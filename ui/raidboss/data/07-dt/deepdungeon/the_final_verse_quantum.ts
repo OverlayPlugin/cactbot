@@ -282,6 +282,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'the_final_verse_quantum.txt',
   comments: {
     en: 'Q15-40',
+    cn: 'Q15-40',
   },
 
   initData: () => ({
@@ -312,6 +313,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         q40: {
           en: 'Get Light Vengeance',
+          cn: '踩光',
         },
       },
     },
@@ -328,9 +330,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         q15: {
           en: 'Get Towers => AoE',
+          cn: '踩塔 => AOE',
         },
         q40: {
           en: 'Get Towers => AoE + Bleed',
+          cn: '踩塔 => AOE + 流血',
         },
       },
     },
@@ -724,12 +728,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack with ${lightDark} Partner',
+          cn: '与 ${lightDark} 集合',
         },
         light: {
           en: 'Light',
+          cn: '光',
         },
         dark: {
           en: 'Dark',
+          cn: '暗',
         },
       },
     },
@@ -869,6 +876,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Stack Middle for Chains',
+          cn: '中间集合等待连线',
         },
       },
     },
@@ -888,6 +896,7 @@ const triggerSet: TriggerSet<Data> = {
         q15: Outputs.breakChains,
         q40: {
           en: 'Break Chains => AoE + Bleed',
+          cn: '拉断连线 => AOE + 流血',
         },
       },
     },
@@ -907,12 +916,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         stackOnYou: {
           en: 'Stack on YOU, Tank in Front',
+          cn: '分摊点名，坦克在前',
         },
         stackOnTarget: {
           en: 'Stack on ${player}, Tank in Front',
+          cn: '分摊点 ${player}，坦克在前',
         },
         stackMarker: {
           en: 'Stack, Tank in Front',
+          cn: '分摊，坦克在前',
         },
       },
     },
@@ -925,6 +937,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Kill Add',
+          cn: '击杀小怪',
         },
       },
     },
@@ -936,6 +949,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Shackles',
+          cn: '光链',
         },
       },
     },
@@ -952,9 +966,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         tetherOnYou: {
           en: 'Tether on YOU',
+          cn: '连线点名',
         },
         tetherOn: {
           en: 'Tether on ${player}',
+          cn: '连线点 ${player}',
         },
       },
     },
@@ -966,6 +982,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE + Draw-in',
+          cn: 'AOE + 吸引',
         },
       },
     },
@@ -987,6 +1004,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Kill Towers',
+          cn: '击杀柱子',
         },
       },
     },
@@ -1004,6 +1022,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait Puddles x3',
+          cn: '引导圈圈 x3',
         },
       },
     },
@@ -1024,6 +1043,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '3x Tankbuster + Bleed',
+          cn: '三连坦克死刑 + 流血',
         },
       },
     },
@@ -1039,12 +1059,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${leftRight}, Avoid laser',
+          cn: '${leftRight}，躲避激光',
         },
         left: {
           en: 'Front-left/Back-right',
+          cn: '左前/右后',
         },
         right: {
           en: 'Front-right/Back-left',
+          cn: '右前/左后',
         },
         unknown: Outputs.unknown,
       },
@@ -1063,6 +1086,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark Vengeance',
+          cn: '踩暗',
         },
       },
     },
@@ -1080,9 +1104,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         sinBearerOnYou: {
           en: 'Sin Bearer on YOU',
+          cn: '罪积蓄点名',
         },
         sinBearerOnTarget: {
           en: 'Sin Bearer on ${player}',
+          cn: '罪积蓄点 ${player}',
         },
       },
     },
@@ -1116,6 +1142,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Pass Sin Bearer',
+          cn: '传递罪积蓄',
         },
       },
     },
@@ -1131,6 +1158,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Cleanse ${player}',
+          cn: '驱散 ${player}',
         },
       },
     },
@@ -1148,9 +1176,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         swap: {
           en: 'Get Light Vengeance',
+          cn: '踩光',
         },
         stay: {
           en: 'Stay Dark Vengeance',
+          cn: '保持暗',
         },
       },
     },
@@ -1164,6 +1194,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Get Dark Vengeance',
+          cn: '踩暗',
         },
       },
     },
@@ -1177,6 +1208,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait Flameborn',
+          cn: '引导火焰分身',
         },
       },
     },
@@ -1198,6 +1230,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: '${target} dead, swap!',
+          cn: '${target} 死亡，换目标！',
         },
       },
     },
@@ -1240,10 +1273,42 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
-      'missingTranslations': true,
       'replaceSync': {
         'Devoured Eater': '被侵蚀的食罪灵',
         'Eminent Grief': '卓异的悲寂',
+        'Flameborn': '火焰分身',
+      },
+      'replaceText': {
+        '--add targetable--': '--小怪可选中--',
+        '--towers targetable--': '--塔可选中--',
+        'Abyssal Blaze': '深渊烈焰',
+        'Abyssal Dawn': '深渊黑光',
+        'Abyssal Sun': '深渊极光',
+        'Ball of Fire': '火球',
+        'Blade of First Light': '光耀之剑',
+        'Bounds of Sin': '净罪之环',
+        'Burning Chains': '火焰链',
+        'Chains of Condemnation': '烈焰锢',
+        'chariot': '钢铁',
+        'Crime and Punishment': '罪与罚',
+        'Dark(?!ness)': '暗',
+        'Drain Aether': '以太吸取',
+        'draw-in': '吸引',
+        'dynamo': '月环',
+        'Eruption': '地火喷发',
+        'exaflares': '地火',
+        'Fevered Flame': '烈焰缠身',
+        'Hellish Earth': '烈焰领域',
+        'laser': '激光',
+        '(?<!First )Light': '光',
+        'Manifold Lashings': '尾连击',
+        'Scourging Blaze': '深渊爆焰',
+        'Searing Chains': '烈焰链',
+        'Shackles of Greater Sanctity': '戒严的光链',
+        'Shackles of Sanctity': '戒律的光链',
+        'Spinelash': '棘刺尾',
+        'Unholy Darkness': '黑暗神圣',
+        'Visceral Flame': '火焰缠身',
       },
     },
     {
