@@ -241,6 +241,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Escelons Fall Strategy',
         de: 'Aufsteigendes Kreuz Strategy',
+        cn: '凌空错策略',
       },
       comment: {
         en: `Strategy for resolving Escelons' Fall 1 and 3.
@@ -255,6 +256,12 @@ const triggerSet: TriggerSet<Data> = {
             DPS innen – DPS startet immer innen, Support startrt immer außen.
             Support zuerst – Support ködert zuerst.
             DPS zuerst – DPS ködert zuerst.`,
+        cn: `凌空错1和3处理策略。
+
+            无 - 仅播报第一次引导。
+            输出在内 - DPS 始终圈内开始，T 奶始终圈外开始。
+            T 奶先 - T 奶引导第一次攻击。
+            DPS 先 - DPS 引导第一次攻击。`,
       },
       type: 'select',
       options: {
@@ -269,6 +276,12 @@ const triggerSet: TriggerSet<Data> = {
           'DPS innen': 'dpsIn',
           'Support zuerst': 'supportFirst',
           'DPS zuerst': 'dpsFirst',
+        },
+        cn: {
+          '无': 'none',
+          '输出在内': 'dpsIn',
+          'T 奶先': 'supportFirst',
+          'DPS 先': 'dpsFirst',
         },
       },
       default: 'none',
@@ -383,26 +396,32 @@ const triggerSet: TriggerSet<Data> = {
         near: {
           en: 'Near bait first',
           de: 'Nah ködert zuerst',
+          cn: '先靠近引导',
         },
         far: {
           en: 'Far bait first',
           de: 'Fern ködert zuerst',
+          cn: '先远离引导',
         },
         out: {
           en: 'Start out',
           de: 'Starte außen',
+          cn: '圈外开始',
         },
         in: {
           en: 'Start in',
           de: 'Starte innen',
+          cn: '圈内开始',
         },
         swapAfterFirst: {
           en: '${first}, Swap after first+third',
           de: '${first}, Wechseln nach erstem+dritten',
+          cn: '${first}, 第1次和第3次后交换',
         },
         swapAfterSecond: {
           en: '${first}, Swap after second',
           de: '${first}, Wechseln nach dem zweiten',
+          cn: '${first}, 第2次后交换',
         },
       },
     },
