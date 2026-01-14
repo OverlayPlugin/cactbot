@@ -317,17 +317,28 @@ const triggerSet: TriggerSet<Data> = {
 
         data.coffinfillers = [];
 
-        if (dir1 === 'dirW')
+        let dir1Text = output[dir1]!();
+        let dir2Text = output[dir2]!();
+
+        if (dir1 === 'dirW') {
           coffinSafe1 = coffinSafe1.filter((pos) => !westPositions.includes(pos));
+          dir1Text = output.leftWest!();
+        }
 
-        if (dir1 === 'dirE')
+        if (dir1 === 'dirE') {
           coffinSafe1 = coffinSafe1.filter((pos) => !eastPositions.includes(pos));
+          dir1Text = output.rightEast!();
+        }
 
-        if (dir2 === 'dirW')
+        if (dir2 === 'dirW') {
           coffinSafe2 = coffinSafe2.filter((pos) => !westPositions.includes(pos));
+          dir2Text = output.leftWest!();
+        }
 
-        if (dir2 === 'dirE')
+        if (dir2 === 'dirE') {
           coffinSafe2 = coffinSafe2.filter((pos) => !eastPositions.includes(pos));
+          dir2Text = output.rightEast!();
+        }
 
         let coffin1: CoffinfillerPosition | 'unknown';
         let coffin2: CoffinfillerPosition | 'unknown';
@@ -348,9 +359,9 @@ const triggerSet: TriggerSet<Data> = {
 
         return output.combined!({
           coffin1: output[coffin1]!(),
-          dir1: output[dir1]!(),
+          dir1: dir1Text,
           coffin2: output[coffin2]!(),
-          dir2: output[dir2]!(),
+          dir2: dir2Text,
         });
       },
       outputStrings: {
@@ -364,7 +375,9 @@ const triggerSet: TriggerSet<Data> = {
         rightThenLeft: Outputs.rightThenLeft,
         leftThenRight: Outputs.leftThenRight,
         left: Outputs.left,
+        leftWest: Outputs.leftWest,
         right: Outputs.right,
+        rightEast: Outputs.rightEast,
         inside: {
           en: 'Inside',
         },
