@@ -242,6 +242,7 @@ const triggerSet: TriggerSet<Data> = {
         en: 'Escelons Fall Strategy',
         de: 'Aufsteigendes Kreuz Strategy',
         cn: '凌空错策略',
+        ko: '클라임 크로스 전략',
       },
       comment: {
         en: `Strategy for resolving Escelons' Fall 1 and 3.
@@ -262,6 +263,12 @@ const triggerSet: TriggerSet<Data> = {
             输出在内 - DPS 始终圈内开始，T 奶始终圈外开始。
             T 奶先 - T 奶引导第一次攻击。
             DPS 先 - DPS 引导第一次攻击。`,
+        ko: `클라임 크로스 1, 3 처리 전략.
+
+            없음 - 첫 번째 유도만 호출.
+            딜러 안쪽 - 딜러는 항상 안쪽에서 시작, 탱힐은 항상 바깥쪽에서 시작.
+            탱힐 먼저 - 탱힐이 첫 번째 공격을 유도.
+            딜러 먼저 - 딜러가 첫 번째 공격을 유도.`,
       },
       type: 'select',
       options: {
@@ -282,6 +289,12 @@ const triggerSet: TriggerSet<Data> = {
           '输出在内': 'dpsIn',
           'T 奶先': 'supportFirst',
           'DPS 先': 'dpsFirst',
+        },
+        ko: {
+          '없음': 'none',
+          '딜러 안': 'dpsIn',
+          '탱힐 먼저': 'supportFirst',
+          '딜러 먼저': 'dpsFirst',
         },
       },
       default: 'none',
@@ -397,31 +410,37 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Near bait first',
           de: 'Nah ködert zuerst',
           cn: '先靠近引导',
+          ko: '가까이 유도 먼저',
         },
         far: {
           en: 'Far bait first',
           de: 'Fern ködert zuerst',
           cn: '先远离引导',
+          ko: '멀리 유도 먼저',
         },
         out: {
           en: 'Start out',
           de: 'Starte außen',
           cn: '圈外开始',
+          ko: '바깥 시작',
         },
         in: {
           en: 'Start in',
           de: 'Starte innen',
           cn: '圈内开始',
+          ko: '안 시작',
         },
         swapAfterFirst: {
           en: '${first}, Swap after first+third',
           de: '${first}, Wechseln nach erstem+dritten',
           cn: '${first}, 第1次和第3次后交换',
+          ko: '${first}, 1번째와 3번째 후 교대',
         },
         swapAfterSecond: {
           en: '${first}, Swap after second',
           de: '${first}, Wechseln nach dem zweiten',
           cn: '${first}, 第2次后交换',
+          ko: '${first}, 2번째 후 교대',
         },
       },
     },
