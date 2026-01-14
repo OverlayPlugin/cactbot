@@ -53,7 +53,7 @@ hideall "--sync--"
 
 # Insane Air 1
 177.4 "--targetable--"
-178.8 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+178.8 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
 186.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
 
 # Each boss does, in random order (Red Hot/Deep Blue):
@@ -74,11 +74,11 @@ hideall "--sync--"
 218.4 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
 219.5 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
 219.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
-229.1 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
+229.1 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
 235.3 "--sync--" Ability { id: "B578", source: "Red Hot" }
 
 # Snaking
-237.7 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+237.7 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
 244.8 "Firesnaking/Watersnaking" Ability { id: "B381", source: "Red Hot" }
 250.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
 256.8 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
@@ -114,11 +114,10 @@ hideall "--sync--"
 307.2 "Cutback Blaze" #Ability { id: "B5CA", source: ["Red Hot", "Deep Blue"] } # Possible bugged log
 313.2 "Deep Impact (bait)" Ability { id: "B5B7", source: "Deep Blue" }
 313.5 "Deep Impact (damage)" #Ability { id: "ADC6", source: "Deep Blue" }
-320.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-320.5 "Divers' Dare" #Ability { id: "B5B9", source: "Deep Blue" }
-326.7 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
-333.8 "Deep Aerial" Ability { id: "B5E3", source: "Deep Blue" }
-334.8 "Deep Aerial" Ability { id: "B5E4", source: "Deep Blue" }
+320.5 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+326.7 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
+328.8 "Deep Aerial (tower)" StartsUsing { id: "B5E3", source: "Deep Blue" } duration 5
+334.8 "Deep Aerial (damage + stun)" Ability { id: "B5E4", source: "Deep Blue" }
 335.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
 
 # Bubble/Deep Aerial
@@ -152,8 +151,8 @@ hideall "--sync--"
 393.2 "Impact Zone x2 (enrage)" #Ability { id: "B5EB", source: "Watery Grave" }
 
 # Arena Split
-398.7 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-404.8 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+398.7 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+404.8 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
 406.9 "--red north--" Ability { id: "B578", source: "Red Hot" }
 409.9 "Sick Swell" Ability { id: "B5CB", source: "Deep Blue" }
 414.3 "Flame Floater" Ability { id: "B5BF", source: "Red Hot" }
@@ -169,11 +168,11 @@ hideall "--sync--"
 444.7 "Sick Swell" #Ability { id: "B5CC", source: "Deep Blue" }
 446.7 "--blue targetable--"
 447.1 "Awesome Slab" Ability { id: "B5D0", source: "Deep Blue" }
-451.8 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
+451.8 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
 
 # Insane Air 2
 457.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
-460.3 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+460.3 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
 467.4 "Xtreme Firesnaking/Xtreme Watersnaking" Ability { id: "B5AE", source: "Red Hot" }
 472.6 "--sync--" Ability { id: "B578", source: "Red Hot" }
 482.3 "Insane Air" Ability { id: "B5E6", source: "Red Hot" }
@@ -193,10 +192,10 @@ hideall "--sync--"
 516.6 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F2", source: "Deep Blue" }
 517.0 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
 518.0 "Bailout" Ability { id: "B5B0", source: "Red Hot" }
-526.0 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
+526.0 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
 
 # Double Alley-oop
-532.2 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+532.2 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
 534.3 "--sync--" Ability { id: "B579", source: "Deep Blue" }
 542.1 "Reverse Alley-oop/Alley-oop Double-dip"
 544.3 "Alley-oop Inferno" #Ability { id: "B5C1", source: "Red Hot" }
@@ -206,8 +205,8 @@ hideall "--sync--"
 553.4 "Deep Impact (damage)" Ability { id: "ADC6", source: "Deep Blue" }
 
 # Soft -> hard enrage
-566.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-575.6 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
+566.5 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+575.6 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
 585.3 "--sync--" Ability { id: "B578", source: "Red Hot" }
 587.4 "--sync--" StartsUsing { id: "B5FC", source: "Red Hot" }
 596.4 "Over the Falls (enrage)" Ability { id: "B5FC", source: "Red Hot" }
