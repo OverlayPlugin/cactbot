@@ -38,8 +38,8 @@ hideall "--sync--"
 125.2 "--sync--" Ability { id: ["B5E0", "B5DD"], source: "Deep Blue" }
 125.9 "Reverse Alley-oop/Alley-oop Double-dip" #Ability { id: ["B5E1", "B5DE"], source: "Deep Blue" }
 128.5 "Reverse Alley-oop/Alley-oop Double-dip" #Ability { id: ["B5E2", "B5DF"], source: "Deep Blue" }
-136.3 "Deep Impact" Ability { id: "B5B7", source: "Deep Blue" }
-136.5 "Deep Impact" Ability { id: "ADC6", source: "Deep Blue" }
+136.3 "Deep Impact (bait)" Ability { id: "B5B7", source: "Deep Blue" }
+136.5 "Deep Impact (damage)" #Ability { id: "ADC6", source: "Deep Blue" }
 143.5 "Divers' Dare" Ability { id: "B5B9", source: "Deep Blue" }
 149.6 "--west--" Ability { id: "B579", source: "Deep Blue" }
 151.6 "--targetable--"
