@@ -271,12 +271,12 @@ const triggerSet: TriggerSet<Data> = {
           });
         }
 
-        // TODO: this could handle the "big" halfmoon better
         const attackDirNum = Directions.hdgTo4DirNum(parseFloat(matches.heading));
         const dirNum1 = (attackDirNum + 2) % 4;
         const dir1 = Directions.outputFromCardinalNum(dirNum1);
         const dirNum2 = attackDirNum;
         const dir2 = Directions.outputFromCardinalNum(dirNum2);
+        const bigCleave = matches.id === 'B379' || matches.id === 'B37D';
 
         const insidePositions: CoffinfillerPosition[] = [
           'innerWest',
@@ -357,6 +357,15 @@ const triggerSet: TriggerSet<Data> = {
         else
           coffin2 = coffinSafe2.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
 
+        if (bigCleave) {
+          return output.bigHalfmoonCombined!({
+            coffin1: output[coffin1]!(),
+            dir1: dir1Text,
+            coffin2: output[coffin2]!(),
+            dir2: dir2Text,
+          });
+        }
+
         return output.combined!({
           coffin1: output[coffin1]!(),
           dir1: dir1Text,
@@ -371,6 +380,9 @@ const triggerSet: TriggerSet<Data> = {
         },
         combined: {
           en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+        },
+        bigHalfmoonCombined: {
+          en: '${coffin1} + ${dir1} (big cleave) => ${coffin2} + ${dir2} (big cleave)',
         },
         rightThenLeft: Outputs.rightThenLeft,
         leftThenRight: Outputs.leftThenRight,
