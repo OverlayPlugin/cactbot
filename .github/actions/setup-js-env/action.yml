@@ -3,9 +3,9 @@ description: "run actions/setup-node and `npm ci`"
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v6
       with:
-        node-version: '20'
+        node-version: '24'
         cache: 'npm'
         cache-dependency-path: 'package-lock.json'
 

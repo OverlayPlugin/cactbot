@@ -1,0 +1,410 @@
+### THE FINAL VERSE (QUANTUM)
+# ZoneId: 1311
+# timeline primarily based on Q40 with some adjustments for Q15-39
+
+# -ii AC46 AC47 AC4C AC4D AC56 AC58 AC5E AC64 AC66 AC67 AC68 AC69 AC6C AC6D AC6E AC6F AC73 AC74 AC75 AC76 AC77 AC7A AC7B AC7D AC7E AC82 AC83 AC85 AC87 AC88 AC8B AC8C AC8D AC8F ACEF AD19 AF02 AF0E AF14 B03C B03D B08D
+# -it "Vodoriga Minion" "Arcane Font" "Flameborn"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+12.4 "Abyssal Blaze/Scourging Blaze 1" Ability { id: ["AC4F", "AC50", "AEFD", "AEFE"], source: "Eminent Grief" }
+19.2 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+20.4 "Abyssal Blaze/Scourging Blaze 2" Ability { id: ["AC51", "AC52", "AEFF", "AF00"], source: "Eminent Grief" }
+27.2 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+33.4 "Bounds of Sin draw-in" Ability { id: "AC59", source: "Devoured Eater" }
+37.3 "Bounds of Sin x6" duration 1.4 #Ability { id: "AC5A", source: "Devoured Eater" }
+40.1 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" }
+45.3 "Abyssal Dawn/Abyssal Sun" Ability { id: ["AC6A", "AC6B"], source: "Eminent Grief" }
+53.1 "Abyssal Blaze/Scourging Blaze exaflares" duration 7.2 #Ability { id: ["AC55", "AC57"], source: "Eminent Grief" }
+56.3 "--sync--" StartsUsing { id: "AC41", source: "Eminent Grief" } window 10,10 jump "ball-first-1"
+56.3 "--sync--" StartsUsing { id: "AC43", source: "Eminent Grief" } window 10,10 jump "chains-first-1"
+56.3 "--sync--" StartsUsing { id: "AC49", source: "Eminent Grief" } window 10,10 jump "ball-second-1"
+56.3 "--sync--" StartsUsing { id: "AC4A", source: "Eminent Grief" } window 10,10 jump "chains-second-1"
+61.1 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+64.2 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+79.3 "Burning Chains/Searing Chains"
+92.2 "Spinelash"
+98.4 "--add targetable--" # Vodoriga Minion
+
+# Ball first then Blade 1
+100.0 label "ball-first-1"
+107.1 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10
+108.1 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "spinelash-1"
+
+# Chains first then Blade 1
+150.0 label "chains-first-1"
+154.8 "Chains of Condemnation" Ability { id: "AC44", source: "Eminent Grief" } duration 2 window 10,10
+157.9 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "spinelash-1"
+
+# # Blade first then Ball 1
+200.0 label "ball-second-1"
+204.8 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+210.1 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10 forcejump "spinelash-1-late"
+
+# # Blade first then Chains 1
+250.0 label "chains-second-1"
+254.8 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+257.9 "Chains of Condemnation" Ability { id: "AC4B", source: "Eminent Grief" } duration 2 window 10,10 forcejump "spinelash-1"
+
+# Spinelash 1
+300.0 label "spinelash-1"
+302.2 label "spinelash-1-late"
+315.3 "Burning Chains/Searing Chains" #Ability { id: ["AC70", "AC71"], source: "Eminent Grief" }
+317.1 "--sync--" Ability { id: "AC5D", source: "Eminent Grief" } window 261,10
+328.2 "Spinelash" Ability { id: "B03F", source: "Eminent Grief" }
+330.1 "--sync--" Ability { id: "AC5F", source: "Eminent Grief" }
+334.4 "--add targetable--" # Vodoriga Minion
+344.4 "Shackles of Sanctity/Shackles of Greater Sanctity" Ability { id: ["AC72", "AF01"], source: "Devoured Eater" }
+355.4 "Hellish Earth" Ability { id: ["AC78", "AC79"], source: "Eminent Grief" }
+356.2 "--towers targetable--" # Arcane Font
+362.4 "Eruption 1" #Ability { id: "AC7C", source: "Eminent Grief" }
+364.4 "Eruption 2" #Ability { id: "AC7C", source: "Eminent Grief" }
+364.7 "Manifold Lashings x3" Ability { id: "AC7F", source: "Eminent Grief" } duration 1.5
+366.4 "Eruption 3" #Ability { id: "AC7C", source: "Eminent Grief" }
+369.1 "Manifold Lashings laser" Ability { id: "AC81", source: "Eminent Grief" }
+381.2 "Unholy Darkness" Ability { id: "AC84", source: "Devoured Eater" }
+389.9 "Manifold Lashings x3" Ability { id: "AC7F", source: "Eminent Grief" } duration 1.5
+394.4 "Manifold Lashings laser" Ability { id: "AC81", source: "Eminent Grief" }
+405.8 "Abyssal Blaze/Scourging Blaze 1" Ability { id: ["AC4F", "AC50", "AEFD", "AEFE"], source: "Eminent Grief" }
+410.8 "Eruption 1" #Ability { id: "AC7C", source: "Eminent Grief" }
+412.6 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+412.8 "Eruption 2" #Ability { id: "AC7C", source: "Eminent Grief" }
+413.8 "Abyssal Blaze/Scourging Blaze 2" Ability { id: ["AC51", "AC52", "AEFF", "AF00"], source: "Eminent Grief" }
+414.8 "Eruption 3" #Ability { id: "AC7C", source: "Eminent Grief" }
+420.7 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+429.9 "Bounds of Sin draw-in" Ability { id: "AC59", source: "Devoured Eater" }
+433.9 "Bounds of Sin x12" duration 1.8 #Ability { id: "AC5A", source: "Devoured Eater" }
+437.6 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" }
+441.8 "Abyssal Blaze/Scourging Blaze exaflares" duration 7.2 #Ability { id: ["AC55", "AC57"], source: "Eminent Grief" }
+468.6 "Crime and Punishment" Ability { id: "AC86", source: "Devoured Eater" }
+472.8 "--sync--" StartsUsing { id: "AC41", source: "Eminent Grief" } window 10,10 jump "ball-first-2"
+472.8 "--sync--" StartsUsing { id: "AC43", source: "Eminent Grief" } window 10,10 jump "chains-first-2"
+472.8 "--sync--" StartsUsing { id: "AC49", source: "Eminent Grief" } window 10,10 jump "ball-second-2"
+472.8 "--sync--" StartsUsing { id: "AC4A", source: "Eminent Grief" } window 10,10 jump "chains-second-2"
+478.0 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+481.1 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+
+# Ball first then Blade 2
+500.0 label "ball-first-2"
+507.2 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10
+508.1 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "spinelash-2"
+
+# Chains first then Blade 2
+550.0 label "chains-first-2"
+555.0 "Chains of Condemnation" Ability { id: "AC44", source: "Eminent Grief" } duration 2 window 10,10
+558.1 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "spinelash-2"
+
+# # Blade first then Ball 2
+600.0 label "ball-second-2"
+605.0 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+610.3 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10 forcejump "spinelash-2-late"
+
+# # Blade first then Chains 2
+650.0 label "chains-second-2"
+655.0 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+658.1 "Chains of Condemnation" Ability { id: "AC4B", source: "Eminent Grief" } duration 2 window 10,10 forcejump "spinelash-2"
+
+# Spinelash 2
+700.0 label "spinelash-2"
+702.1 label "spinelash-2-late"
+713.1 "--sync--" Ability { id: "AC5D", source: "Eminent Grief" } window 241,10
+724.3 "Spinelash" Ability { id: "B03F", source: "Eminent Grief" }
+726.0 "--sync--" Ability { id: "AC5F", source: "Eminent Grief" }
+730.3 "--add targetable--" # Vodoriga Minion
+741.3 "Bounds of Sin draw-in" Ability { id: "AC59", source: "Devoured Eater" }
+745.1 "Bounds of Sin x6" duration 1.4 #Ability { id: "AC5A", source: "Devoured Eater" }
+748.1 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" }
+749.3 "Abyssal Blaze/Scourging Blaze 1" Ability { id: ["AC4F", "AC50", "AEFD", "AEFE"], source: "Eminent Grief" }
+749.4 "Burning Chains/Searing Chains" #Ability { id: ["AC70", "AC71"], source: "Eminent Grief" }
+756.1 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+757.3 "Abyssal Blaze/Scourging Blaze 2" Ability { id: ["AC51", "AC52", "AEFF", "AF00"], source: "Eminent Grief" }
+764.1 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+768.4 "--sync--" StartsUsing { id: "AC61", source: "Eminent Grief" } window 10,10 jump "drain-dark-1"
+768.4 "--sync--" StartsUsing { id: "AC63", source: "Devoured Eater" } window 10,10 jump "drain-light-1"
+775.4 "Drain Aether 1"
+780.4 "Drain Aether 2"
+788.3 "Abyssal Blaze/Scourging Blaze exaflares" duration 7.2
+796.1 "Unholy Darkness"
+
+# Drain Aether Dark first 1
+800.0 label "drain-dark-1"
+807.0 "Drain Aether Dark" Ability { id: "AC61", source: "Eminent Grief" } window 10,10
+811.1 "Drain Aether Light" Ability { id: "AC65", source: "Devoured Eater" } window 10,10 forcejump "after-drain-1"
+
+# Drain Aether Light first 1
+850.0 label "drain-light-1"
+856.0 "Drain Aether Light" Ability { id: "AC63", source: "Devoured Eater" } window 10,10
+862.1 "Drain Aether Dark" Ability { id: "AC62", source: "Eminent Grief" } window 10,10 forcejump "after-drain-1-late"
+
+# After Drain Aether 1
+900.0 label "after-drain-1"
+901.1 label "after-drain-1-late"
+909.0 "Abyssal Blaze/Scourging Blaze exaflares" duration 7.2 #Ability { id: ["AC55", "AC57"], source: "Eminent Grief" }
+916.8 "Unholy Darkness" Ability { id: "AC84", source: "Devoured Eater" } window 150,10
+936.0 "Visceral Flame/Fevered Flame" Ability { id: ["AC89", "AC8A"], source: "Eminent Grief" }
+939.0 "--adds targetable--" # Flameborn
+948.0 "Abyssal Blaze/Scourging Blaze 1" Ability { id: ["AC4F", "AC50", "AEFD", "AEFE"], source: "Eminent Grief" }
+954.8 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+956.0 "Abyssal Blaze/Scourging Blaze 2" Ability { id: ["AC51", "AC52", "AEFF", "AF00"], source: "Eminent Grief" }
+962.8 "--sync--" Ability { id: "AC53", source: "Eminent Grief" }
+972.0 "--sync--" StartsUsing { id: "AC41", source: "Eminent Grief" } window 10,10 jump "ball-first-3"
+972.0 "--sync--" StartsUsing { id: "AC43", source: "Eminent Grief" } window 10,10 jump "chains-first-3"
+972.0 "--sync--" StartsUsing { id: "AC49", source: "Eminent Grief" } window 10,10 jump "ball-second-3"
+972.0 "--sync--" StartsUsing { id: "AC4A", source: "Eminent Grief" } window 10,10 jump "chains-second-3"
+979.3 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+982.3 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+987.1 "Abyssal Dawn/Abyssal Sun"
+989.1 "Bounds of Sin draw-in"
+993.1 "Bounds of Sin x12" duration 1.7
+997.0 "Bounds of Sin chariot/dynamo"
+1007.3 "Spinelash"
+1013.5 "--add targetable--" # Vodoriga Minion
+1016.1 "Abyssal Blaze/Scourging Blaze exaflares" duration 7.2
+
+# Ball first then Blade 3
+1050.0 label "ball-first-3"
+1057.2 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10
+1058.1 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "spinelash-3"
+
+# Chains first then Blade 3
+1100.0 label "chains-first-3"
+1105.0 "Chains of Condemnation" Ability { id: "AC44", source: "Eminent Grief" } duration 2 window 10,10
+1108.1 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "spinelash-3"
+
+# # Blade first then Ball 3
+1150.0 label "ball-second-3"
+1157.2 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+1162.5 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10 forcejump "spinelash-3-late"
+
+# # Blade first then Chains 3
+1200.0 label "chains-second-3"
+1207.2 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+1210.3 "Chains of Condemnation" Ability { id: "AC4B", source: "Eminent Grief" } duration 2 window 10,10 forcejump "spinelash-3"
+
+# Spinelash 3
+1250.0 label "spinelash-3"
+1252.2 label "spinelash-3-late"
+1257.1 "Abyssal Dawn/Abyssal Sun" Ability { id: ["AC6A", "AC6B"], source: "Eminent Grief" } window 256,10
+1259.1 "Bounds of Sin draw-in" Ability { id: "AC59", source: "Devoured Eater" }
+1263.1 "Bounds of Sin x12" duration 1.7 #Ability { id: "AC5A", source: "Devoured Eater" }
+1266.2 "--sync--" Ability { id: "AC5D", source: "Eminent Grief" }
+1266.9 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" }
+1277.3 "Spinelash" Ability { id: "B03F", source: "Eminent Grief" }
+1278.4 "--sync--" Ability { id: "AC5F", source: "Eminent Grief" }
+1283.4 "--add targetable--" # Vodoriga Minion
+1286.1 "Abyssal Blaze/Scourging Blaze exaflares" duration 7.2 #Ability { id: ["AC55", "AC57"], source: "Eminent Grief" }
+1301.1 "Burning Chains/Searing Chains" #Ability { id: ["AC70", "AC71"], source: "Eminent Grief" }
+1310.7 "Manifold Lashings x3" Ability { id: "AC7F", source: "Eminent Grief" } duration 1.5
+1315.2 "Manifold Lashings laser" Ability { id: "AC81", source: "Eminent Grief" }
+1322.6 "Eruption 1" #Ability { id: "AC7C", source: "Eminent Grief" }
+1323.7 "--sync--" StartsUsing { id: "AC61", source: "Eminent Grief" } window 10,10 jump "drain-dark-2"
+1323.7 "--sync--" StartsUsing { id: "AC63", source: "Devoured Eater" } window 10,10 jump "drain-light-2"
+1324.6 "Eruption 2"
+1326.6 "Eruption 3"
+1330.7 "Drain Aether 1"
+1335.7 "Drain Aether 2"
+1348.7 "Eruption 1"
+
+# Drain Aether Dark first 2
+1350.0 label "drain-dark-2"
+1350.9 "Eruption 2" #Ability { id: "AC7C", source: "Eminent Grief" }
+1352.9 "Eruption 3" #Ability { id: "AC7C", source: "Eminent Grief" }
+1357.0 "Drain Aether Dark" Ability { id: "AC61", source: "Eminent Grief" } window 10,10
+1361.1 "Drain Aether Light" Ability { id: "AC65", source: "Devoured Eater" } window 10,10 forcejump "after-drain-2"
+
+#Drain Aether Light first 2
+1400.0 label "drain-light-2"
+1400.9 "Eruption 2" #Ability { id: "AC7C", source: "Eminent Grief" }
+1402.9 "Eruption 3" #Ability { id: "AC7C", source: "Eminent Grief" }
+1406.0 "Drain Aether Light" Ability { id: "AC63", source: "Devoured Eater" } window 10,10
+1412.1 "Drain Aether Dark" Ability { id: "AC62", source: "Eminent Grief" } window 10,10 forcejump "after-drain-2-late"
+
+# After Drain Aether 2
+1450.0 label "after-drain-2"
+1451.1 label "after-drain-2-late"
+1463.1 "Eruption 1" #Ability { id: "AC7C", source: "Eminent Grief" }
+1465.1 "Eruption 2" #Ability { id: "AC7C", source: "Eminent Grief" }
+1467.1 "Eruption 3" #Ability { id: "AC7C", source: "Eminent Grief" }
+1470.2 "Bounds of Sin draw-in" Ability { id: "AC59", source: "Devoured Eater" } window 150,10
+1474.3 "Bounds of Sin x12" duration 1.7 #Ability { id: "AC5A", source: "Devoured Eater" }
+1477.2 "--sync--" StartsUsing { id: "AC41", source: "Eminent Grief" } window 10,10 jump "ball-first-4"
+1477.2 "--sync--" StartsUsing { id: "AC43", source: "Eminent Grief" } window 10,10 jump "chains-first-4"
+1477.2 "--sync--" StartsUsing { id: "AC49", source: "Eminent Grief" } window 10,10 jump "ball-second-4"
+1477.2 "--sync--" StartsUsing { id: "AC4A", source: "Eminent Grief" } window 10,10 jump "chains-second-4"
+1478.0 "Bounds of Sin chariot/dynamo"
+1482.2 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+1485.3 "Blade of First Light/Ball of Fire/Chains of Condemnation?"
+1504.0 "Unholy Darkness"
+
+# Ball first then Blade 4
+1550.0 label "ball-first-4"
+1550.8 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" } window 10,10
+1557.2 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10
+1558.1 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "enrage"
+
+# Chains first then Blade 4
+1600.0 label "chains-first-4"
+1600.8 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" } window 10,10
+1605.0 "Chains of Condemnation" Ability { id: "AC44", source: "Eminent Grief" } duration 2 window 10,10
+1608.1 "Blade of First Light" Ability { id: "AC4E", source: "Devoured Eater" } window 10,10 forcejump "enrage"
+
+# # Blade first then Ball 4
+1650.0 label "ball-second-4"
+1650.8 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" } window 10,10
+1655.0 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+1660.3 "Ball of Fire" Ability { id: "AC42", source: "Eminent Grief" } window 10,10 forcejump "enrage-late"
+
+# # Blade first then Chains 4
+1700.0 label "chains-second-4"
+1700.8 "Bounds of Sin chariot/dynamo" Ability { id: ["AC5B", "AC5C"], source: "Devoured Eater" } window 10,10
+1705.0 "Blade of First Light" Ability { id: "AC48", source: "Devoured Eater" } window 10,10
+1708.1 "Chains of Condemnation" Ability { id: "AC4B", source: "Eminent Grief" } duration 2 window 10,10 forcejump "enrage"
+
+# enrage sequence
+1750.0 label "enrage"
+1752.2 label "enrage-late"
+1768.7 "Unholy Darkness" Ability { id: "AC90", source: "Devoured Eater" } window 258,10
+1786.0 "Hellish Earth enrage" Ability { id: "AC8E", source: "Eminent Grief" }
+
+
+# IGNORED ABILITIES
+# AC46 Blade of First Light
+# AC47 Blade of First Light
+# AC4C Blade of First Light
+# AC4D Blade of First Light
+# AC56 Scourging Blaze
+# AC58 Bounds of Sin
+# AC5E Spinelash
+# AC64 Drain Aether
+# AC66 Drain Aether
+# AC67 attack
+# AC68 attack
+# AC69 attack
+# AC6C Explosion
+# AC6D Big Burst
+# AC6E Explosion
+# AC6F Big Burst
+# AC73 Shackles of Sanctity
+# AC74 Shackles of Sanctity
+# AC75 Shackles of Penitence
+# AC76 Shackles of Penitence
+# AC77 Hellish Earth
+# AC7A Hellish Torment
+# AC7B Hellish Torment
+# AC7D Manifold Lashings
+# AC7E Manifold Lashings
+# AC82 Big Burst
+# AC83 Unholy Darkness
+# AC85 Crime and Punishment
+# AC87 Explosion
+# AC88 Big Burst
+# AC8B Self-destruct
+# AC8C Fuse
+# AC8D --sync--
+# AC8F Unholy Darkness
+# ACEF --sync--
+# AD19 --sync--
+# AF02 --sync--
+# AF0E attack
+# AF14 --sync--
+# B03C Bloody Claw
+# B03D Terror Eye
+# B08D --sync--
+
+# ALL ENCOUNTER ABILITIES
+# AC41 Ball of Fire - short dummy-cast
+# AC42 Ball of Fire - damage (not unique between short-cast and long-cast)
+# AC43 Chains of Condemnation - short dummy-cast
+# AC44 Chains of Condemnation - short cast damage
+# AC46 Blade of First Light - short dummy-cast single-blade
+# AC47 Blade of First Light - short dummy-cast double-blade
+# AC48 Blade of First Light - short cast damage
+# AC49 Ball of Fire - long dummy-cast
+# AC4A Chains of Condemnation - long dummy-cast
+# AC4B Chains of Condemnation - long cast damage
+# AC4C Blade of First Light - long dummy-cast single-blade
+# AC4D Blade of First Light - long dummy-cast double-blade
+# AC4E Blade of First Light - long cast damage
+# AC4F Abyssal Blaze - (Q15-25) first dummy-cast horizontal exaflares
+# AC50 Abyssal Blaze - (Q15-25) first dummy-cast vertical exaflares
+# AC51 Abyssal Blaze - (Q15-25) second instant dummy-cast horizontal exaflares
+# AC52 Abyssal Blaze - (Q15-25) second instant dummy-cast vertical exaflares
+# AC53 --sync-- - exaflare markers spawning
+# AC54 Abyssal Blaze - (Q15-25) exaflare dummy-cast (diamonds glow)
+# AC55 Abyssal Blaze - (Q15-25) exaflare damage
+# AC56 Scourging Blaze - (Q30-40) exaflare dummy-cast (diamonds glow)
+# AC57 Scourging Blaze - (Q30-40) exaflare damage
+# AC58 Bounds of Sin - dummy-cast
+# AC59 Bounds of Sin - pull + 119E Bind (3s)
+# AC5A Bounds of Sin - puddle damage
+# AC5B Bounds of Sin - chariot
+# AC5C Bounds of Sin - dynamo
+# AC5D Spinelash - dummy-cast
+# AC5E Spinelash - self-cast
+# AC5F --sync-- - ???
+# AC61 Drain Aether - Eminent Grief short-cast
+# AC62 Drain Aether - Eminent Grief long-cast
+# AC63 Drain Aether - Devoured Eater short-cast
+# AC64 Drain Aether - removes Sin Eater debuff (Devoured Eater first)?
+# AC65 Drain Aether - Devoured Eater long-cast
+# AC66 Drain Aether - removes Sin Eater debuff (Eminent Grief first)?
+# AC67 attack - Eminent Grief self-cast
+# AC68 attack - Devoured Eater self-cast
+# AC69 attack - Devoured Eater auto-attack damage
+# AC6A Abyssal Dawn - (Q15-30) AoE from towers
+# AC6B Abyssal Sun - (Q35-40) AoE + bleed from towers
+# AC6C Explosion - damage from not stacking for light/dark partners?
+# AC6D Big Burst - AoE damage from failure resolve light/dark partners?
+# AC6E Explosion - damage from not stacking for light/dark partners?
+# AC6F Big Burst - AoE damage from failure resolve light/dark partners?
+# AC70 Searing Chains - (Q20-40) cross AoE + burns
+# AC71 Burning Chains - (Q15) chain break?
+# AC72 Shackles of Sanctity - (Q15-20) dummy-cast
+# AC73 Shackles of Sanctity - Shackled Healing on healer
+# AC74 Shackles of Sanctity - Shackled Abilities on dps
+# AC75 Shackles of Penitence - AoE from Shackled Healing
+# AC76 Shackles of Penitence - AoE from Shackled Abilities
+# AC77 Hellish Earth - dummy-cast
+# AC78 Hellish Earth - AoE + draw-in
+# AC79 Hellish Earth - AoE + tether + draw-in on furthest player
+# AC7A Hellish Torment - Arcane Font enrage?
+# AC7B Hellish Torment - stepping outside the Hellish Earth gaol?
+# AC7C Eruption - baited AoE puddles
+# AC7D Manifold Lashings - dummy-cast, laser from boss left
+# AC7E Manifold Lashings - dummy-cast, laser from boss right
+# AC7F Manifold Lashings - first hit, damage + stacking poison
+# AC80 Manifold Lashings - second/third hit, damage + stacking poison
+# AC81 Manifold Lashings - final hit, laser damage
+# AC82 Big Burst - AoE damage from failure to pass Sin Bearer?
+# AC83 Unholy Darkness - dummy-cast
+# AC84 Unholy Darkness - AoE + bleed
+# AC85 Crime and Punishment - dummy-cast
+# AC86 Crime and Punishment - applies 11D7 Sin Bearer
+# AC87 Explosion - Sin Bearer debuff expiration
+# AC88 Big Burst - AoE damage from failure to pass Sin Bearer?
+# AC89 Visceral Flame - (Q15-35) dummy-cast
+# AC8A Fevered Flame - (Q40) dummy-cast
+# AC8B Self-destruct - Flameborn light puddle soak/explosion
+# AC8C Fuse - Flameborn merging
+# AC8D --sync-- - fail state?
+# AC8E Hellish Earth - enrage
+# AC8F Unholy Darkness - dummy-cast
+# AC90 Unholy Darkness - AoE + bleed
+# ACEF --sync-- - fail state?
+# AD19 --sync-- - fail state?
+# AEFD Scourging Blaze - (Q30-40) first dummy-cast horizontal exaflares
+# AEFE Scourging Blaze - (Q30-40) first dummy-cast vertical exaflares
+# AEFF Scourging Blaze - (Q30-40) second instant dummy-cast horizontal exaflares
+# AF00 Scourging Blaze - (Q30-40) second instant dummy-cast vertical exaflares
+# AF01 Shackles of Greater Sanctity - (Q25-40) dummy-cast
+# AF02 --sync-- auto-attack related?
+# AF0E attack - Eminent Grief auto-attack damage
+# AF14 --sync-- - auto-attack related?
+# B03C Bloody Claw - Vodoriga Minion damage
+# B03D Terror Eye - Vodoriga Minion AoE puddle
+# B03F Spinelash - wild charge damage
+# B08D --sync-- - Vodoriga Minion auto-attack damage
