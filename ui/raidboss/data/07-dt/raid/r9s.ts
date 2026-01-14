@@ -265,7 +265,7 @@ const triggerSet: TriggerSet<Data> = {
             return output.rightThenLeft!();
           if (matches.id === 'B37B')
             return output.leftThenRight!();
-          return output.bigHalfmoon!({
+          return output.bigHalfmoonNoCoffin!({
             dir1: output[matches.id === 'B379' ? 'right' : 'left']!(),
             dir2: output[matches.id === 'B379' ? 'left' : 'right']!(),
           });
@@ -383,7 +383,7 @@ const triggerSet: TriggerSet<Data> = {
         outerEast: {
           en: 'Outer East',
         },
-        bigHalfmoon: {
+        bigHalfmoonNoCoffin: {
           en: '${dir1} max melee => ${dir2} max melee',
           fr: '${dir1} max melée => ${dir2} max melée',
           cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
