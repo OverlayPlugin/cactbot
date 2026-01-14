@@ -272,9 +272,10 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         // TODO: this could handle the "big" halfmoon better
-        const dirNum1 = Directions.hdgTo4DirNum(parseFloat(matches.heading));
+        const attackDirNum = Directions.hdgTo4DirNum(parseFloat(matches.heading));
+        const dirNum1 = (attackDirNum + 2) % 4;
         const dir1 = Directions.outputFromCardinalNum(dirNum1);
-        const dirNum2 = (dirNum1 + 2) % 4;
+        const dirNum2 = attackDirNum;
         const dir2 = Directions.outputFromCardinalNum(dirNum2);
 
         const insidePositions: CoffinfillerPosition[] = [
