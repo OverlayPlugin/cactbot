@@ -1,7 +1,7 @@
 ### AAC HEAVYWEIGHT M2 (SAVAGE)
 # ZoneId: 1323
 
-# -ii BDFF BE00 B5BA B57C B5DA B5C3 B5FB
+# -ii BDFF BE00 B5BA B57C B5DA B5C3 B5FB B57B
 # -it "Deep Blue" "Red Hot" "Watery Grave"
 
 hideall "--Reset--"
@@ -81,7 +81,6 @@ hideall "--sync--"
 237.7 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
 244.8 "Firesnaking/Watersnaking" Ability { id: "B381", source: "Red Hot" }
 250.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
-250.0 "--sync--" #Ability { id: "B579", source: "Deep Blue" }
 256.8 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
 257.4 "--sync--" Ability { id: ["B5E0", "B5DD"], source: "Deep Blue" }
 257.4 "Alley-oop Inferno" #Ability { id: "B5C1", source: "Red Hot" }
@@ -118,7 +117,6 @@ hideall "--sync--"
 320.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
 320.5 "Divers' Dare" #Ability { id: "B5B9", source: "Deep Blue" }
 326.7 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
-326.7 "Epic Brotherhood" #Ability { id: "B57B", source: "Deep Blue" }
 333.8 "Deep Aerial" Ability { id: "B5E3", source: "Deep Blue" }
 334.8 "Deep Aerial" Ability { id: "B5E4", source: "Deep Blue" }
 335.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
@@ -220,6 +218,7 @@ hideall "--sync--"
 # B57C --sync--: Red Hot dismounting from surfboard
 # B5DA Xtreme Spectacular: Deep Blue cast, same time as Red Hot
 # B5C3 Pyrotation: Actual hits, but covered by duration
+# B57B Epic Brotherhood: VFX for Deep Blue sharing health with Red Hot
 # B5FB Steam Burst: Water/Fire mechanics overlap, could vary when they occur
 # BDFF --sync--: autoattack
 # BE00 --sync--: autoattack
