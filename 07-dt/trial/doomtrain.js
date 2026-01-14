@@ -132,6 +132,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${mech} + Avoid Lasers',
+          de: '${mech} + vermeide Laser',
           cn: '${mech} + 躲避激光',
         },
         knockback: Outputs.knockback,
@@ -150,6 +151,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${mech} => ${away}',
+          de: '${mech} => ${away}',
           cn: '${mech} => ${away}',
         },
         drawIn: Outputs.drawIn,
@@ -175,6 +177,7 @@ Options.Triggers.push({
       outputStrings: {
         avoid: {
           en: 'Avoid ${dir} turrets',
+          de: 'Vermeide ${dir} Geschütztürme',
           cn: '躲避 ${dir} 炮塔',
         },
         east: Outputs.east,
@@ -223,6 +226,7 @@ Options.Triggers.push({
         ...Directions.outputStrings16Dir,
         text: {
           en: 'Tank cleave on YOU from ${dir}',
+          de: 'Tank Cleave auf DIR von ${dir}',
           cn: '${dir} 坦克死刑',
         },
       },
@@ -250,6 +254,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Down',
+          de: 'Unten',
           cn: '下',
         },
       },
@@ -263,6 +268,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Up',
+          de: 'Oben',
           cn: '上',
         },
       },
@@ -405,12 +411,115 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Tower x3',
+          de: 'Turm x3',
           cn: '踩塔 x3',
         },
       },
     },
   ],
   timelineReplace: [
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aether': 'Äthersphäre',
+        'Doomtrain': 'Doomtrain',
+        'Ghost Train': 'Doomtrain-Schemen',
+        'Kinematic Turret': 'Eskortgeschütz',
+        'Levin Signal': 'Donnerhalo',
+      },
+      'replaceText': {
+        'Aether Surge': 'Ätherschwall',
+        'Aetherial Ray': 'Ätherstrahl',
+        'Arcane Revelation': 'Ätherausstoß',
+        'Battering Arms': 'Schmetterarm',
+        'Blastpipe': 'Nebelruß',
+        'Derail(?!ment)': 'Entgleisung',
+        'Derailment Siege': 'Schienenbruch',
+        'Electray': 'Elektroblitz',
+        'Hail of Thunder': 'Donnerhagel',
+        'Head-on Emission': 'Frontalannihilation',
+        'Headlight': 'Spitzensignal',
+        'Lightning Burst': 'Blitzknall',
+        'Lightning Express': 'InterBlitz-Express',
+        'Overdraught(?<! )': 'Überstrom',
+        'Plasma Beam': 'Plasmastrahl',
+        'Runaway Train': 'Endlose Irrfahrt',
+        'Shockwave': 'Schockwelle',
+        'Thunderous Breath': 'Gewitteratem',
+        'Turret Crossing': 'Kanonenkreuzung',
+        'Unlimited Express': 'Unregional-Express',
+        'Windpipe': 'Nebelsog',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aether': 'sphère éthérée',
+        'Doomtrain': 'Glasya-Labolas',
+        'Ghost Train': 'double de Glasya-Labolas',
+        'Kinematic Turret': 'tourelle d\'escorte',
+        'Levin Signal': 'halo électrique',
+      },
+      'replaceText': {
+        'Aether Surge': 'Déferlante éthérée',
+        'Aetherial Ray': 'Rayon éthéré',
+        'Arcane Revelation': 'Déploiement arcanique',
+        'Battering Arms': 'Raclée de bras',
+        'Blastpipe': 'Émission de brume',
+        'Derail(?!ment)': 'Déraillement',
+        'Derailment Siege': 'Déraillement violent',
+        'Electray': 'Rayon électrique',
+        'Hail of Thunder': 'Déluge électrique',
+        'Head-on Emission': 'Charge annihilante',
+        'Headlight': 'Regard glacial',
+        'Lightning Burst': 'Explosion électrique',
+        'Lightning Express': 'Express éclair',
+        'Overdraught(?<! )': 'Surcharge débordante',
+        'Plasma Beam': 'Rayon plasma',
+        'Runaway Train': 'Train fou',
+        'Shockwave': 'Onde de choc',
+        'Thunderous Breath': 'Souffle électrique',
+        'Turret Crossing': 'Tourelles croisées',
+        'Unlimited Express': 'Express illimité',
+        'Windpipe': 'Aspirateur de brume',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Aether': 'エーテルスフィア',
+        'Doomtrain': 'グラシャラボラス',
+        'Ghost Train': 'グラシャラボラスの分体',
+        'Kinematic Turret': 'エスコートタレット',
+        'Levin Signal': '雷光輪',
+      },
+      'replaceText': {
+        'Aether Surge': 'エーテルサージ',
+        'Aetherial Ray': 'エーテルレイ',
+        'Arcane Revelation': '魔法陣展開',
+        'Battering Arms': 'バテリングアーム',
+        'Blastpipe': 'ミストエミッション',
+        'Derail(?!ment)': 'ディレール',
+        'Derailment Siege': 'ディレールパウンド',
+        'Electray': 'エレクトロレイ',
+        'Hail of Thunder': 'サンダーレイン',
+        'Head-on Emission': 'ヘッドオン・エリミネーション',
+        'Headlight': 'ヘッドライト',
+        'Lightning Burst': 'サンダーバースト',
+        'Lightning Express': 'ライトニングエクスプレス',
+        'Overdraught(?<! )': 'オーバーフロウ',
+        'Plasma Beam': 'プラズマレイ',
+        'Runaway Train': '果てしなき暴走',
+        'Shockwave': '衝撃波',
+        'Thunderous Breath': 'サンダーブレス',
+        'Turret Crossing': '随伴機出撃',
+        'Unlimited Express': 'アンリミテッドエクスプレス',
+        'Windpipe': 'ミストバキューム',
+      },
+    },
     {
       'locale': 'cn',
       'replaceSync': {
