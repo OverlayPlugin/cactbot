@@ -2,7 +2,7 @@ import Conditions from '../../../../../resources/conditions';
 import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { DirectionOutputCardinal,  Directions } from '../../../../../resources/util';
+import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -19,8 +19,8 @@ type SnakingFlagsType = {
 export interface Data extends RaidbossData {
   phase: Phase;
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
-  waveDir: DirectionOutputCardinal;
   dareCount: number;
+  waveDir: DirectionOutputCardinal;
   snakings: SnakingFlagsType[string][];
   snakingCount: number;
   snakingDebuff?: 'fire' | 'water';
@@ -48,7 +48,6 @@ const headMarkerData = {
   // Tethers used in Flame Floater
   'closeTether': '017B',
   'farTether': '017A',
-  // Tether used for Sick Swell knockback
   'sickSwellTether': '0174',
 } as const;
 
@@ -104,8 +103,8 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     phase: 'one',
     actorPositions: {},
-    waveDir: 'unknown',
     dareCount: 0,
+    waveDir: 'unknown',
     snakings: [],
     snakingCount: 0,
   }),
@@ -279,7 +278,6 @@ const triggerSet: TriggerSet<Data> = {
         count: ['3ED', '3EE', '3EF', '3F0'],
         capture: true,
       },
-      durationSeconds: 9,
       infoText: (data, matches, output) => {
         let mech:
           | 'healerGroups'
@@ -326,10 +324,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R10S Sick Swell Wave Collector',
+      type: 'Tether',
+      netRegex: { source: 'Deep Blue', id: headMarkerData['sickSwellTether'], capture: true },
+      // Slight delay as this line/packet arrives at the same time as ActorSetPos
+      delaySeconds: 0.1,
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.targetId];
+        if (actor === undefined)
+          return;
+
+        data.waveDir = Directions.xyToCardinalDirOutput(actor.x, actor.y, center.x, center.y);
+      },
+    },
+    {
       id: 'R10S Sick Swell',
       type: 'StartsUsingExtra',
       netRegex: { id: 'B5CE', capture: true },
-      infoText: (data, matches, output) => {
+      delaySeconds: 1, // Delay to align with 7s castTime - 6
+      alertText: (data, matches, output) => {
         const castX = parseFloat(matches.x);
         const castY = parseFloat(matches.y);
 
@@ -354,6 +367,38 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'KB from ${dir1} + away from ${dir2}',
           cn: '从${dir1}击退 + 远离${dir2}',
+        },
+        ...Directions.outputStringsCardinalDir,
+      },
+    },
+    {
+      id: 'R10S Sick Swell Wave Collector (Snaking)',
+      type: 'Tether',
+      netRegex: { source: 'Deep Blue', id: headMarkerData['sickSwellTether'], capture: true },
+      condition: (data) => data.phase === 'snaking',
+      // Slight delay as this line/packet arrives at the same time as ActorSetPos
+      delaySeconds: 0.1,
+      // Only run once
+      durationSeconds: 10.2,
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.targetId];
+        if (actor === undefined)
+          return;
+
+        const waveDir = Directions.xyTo4DirNum(actor.x, actor.y, center.x, center.y);
+        const waveDirOutput = Directions.outputCardinalDir[waveDir];
+        const coneDir = (Directions.xyTo4DirNum(actor.x, actor.y, center.x, center.y) + 2) % 4;
+        const coneDirOutput = Directions.outputCardinalDir[coneDir];
+
+        return output.text!({
+          waveDir: output[waveDirOutput ?? 'unknown']!(),
+          coneDir: output[coneDirOutput ?? 'unknown']!(),
+        });
+      },
+      outputStrings: {
+        text: {
+          en: 'Wave ${waveDir}/Cone ${coneDir}',
         },
         ...Directions.outputStringsCardinalDir,
       },
