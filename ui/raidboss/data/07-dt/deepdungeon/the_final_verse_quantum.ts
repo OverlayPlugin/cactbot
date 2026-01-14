@@ -170,22 +170,7 @@ const center = {
   y: -300,
 } as const;
 
-type DirectionOutput12 =
-  | 'dirN'
-  | 'dirNNE'
-  | 'dirENE'
-  | 'dirE'
-  | 'dirESE'
-  | 'dirSSE'
-  | 'dirS'
-  | 'dirSSW'
-  | 'dirWSW'
-  | 'dirW'
-  | 'dirWNW'
-  | 'dirNNW'
-  | 'unknown';
-
-const output12Dir: DirectionOutput12[] = [
+const output12Dir = [
   'dirN',
   'dirNNE',
   'dirENE',
@@ -198,9 +183,11 @@ const output12Dir: DirectionOutput12[] = [
   'dirW',
   'dirWNW',
   'dirNNW',
-];
+] as const;
 
-const outputStrings12Dir: OutputStrings = {
+type DirectionOutput12 = typeof output12Dir[number] | 'unknown';
+
+const outputStrings12Dir: { [key in DirectionOutput12]: OutputStrings[string] } = {
   dirN: Outputs.dirN,
   dirNNE: Outputs.dirNNE,
   dirENE: Outputs.dirENE,
@@ -214,7 +201,7 @@ const outputStrings12Dir: OutputStrings = {
   dirWNW: Outputs.dirWNW,
   dirNNW: Outputs.dirNNW,
   unknown: Outputs.unknown,
-};
+} as const;
 
 const xyTo12DirNum = (x: number, y: number, centerX: number, centerY: number): number => {
   // N = 0, NNE = 1, ..., NNW = 12
@@ -334,8 +321,7 @@ const triggerSet: TriggerSet<Data> = {
       regex: /Abyssal Sun/,
       beforeSeconds: 4,
       alertText: (data, _matches, output) => {
-        const qLevel = data.quantumLevel;
-        if (qLevel < 35)
+        if (data.quantumLevel < 35)
           return output.q15!();
         return output.q40!();
       },
@@ -713,7 +699,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         in: Outputs.in,
         out: Outputs.out,
-        unknown: Outputs.unknown,
         ...outputStrings12Dir,
       },
     },
@@ -895,8 +880,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: ['301', '11D3'], capture: true },
       condition: Conditions.targetIsYou(),
       alertText: (data, _matches, output) => {
-        const qLevel = data.quantumLevel;
-        if (qLevel < 20)
+        if (data.quantumLevel < 20)
           return output.q15!();
         return output.q40!();
       },
@@ -1201,6 +1185,21 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'AC8B', source: 'Flameborn', capture: false },
       response: Responses.aoe('alert'),
+    },
+    {
+      id: 'Final Verse Quantum Boss Death',
+      // 11D1 = Borrowed Time
+      type: 'GainsEffect',
+      netRegex: { effectId: '11D1', target: ['Eminent Grief', 'Devoured Eater'], capture: true },
+      infoText: (_data, matches, output) => {
+        const target = matches.target;
+        return output.text!({ target: target });
+      },
+      outputStrings: {
+        text: {
+          en: '${target} dead, swap!',
+        },
+      },
     },
   ],
   timelineReplace: [
