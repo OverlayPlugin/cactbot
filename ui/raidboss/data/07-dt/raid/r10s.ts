@@ -2,6 +2,10 @@ import Conditions from '../../../../../resources/conditions';
 import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
+import {
+  DirectionOutputCardinal,
+  Directions,
+} from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -17,6 +21,8 @@ type SnakingFlagsType = {
 
 export interface Data extends RaidbossData {
   phase: Phase;
+  actorPositions: { [id: string]: { x: number; y: number; heading: number } };
+  waveDir: DirectionOutputCardinal;
   dareCount: number;
   snakings: SnakingFlagsType[string][];
   snakingCount: number;
@@ -45,6 +51,8 @@ const headMarkerData = {
   // Tethers used in Flame Floater
   'closeTether': '017B',
   'farTether': '017A',
+  // Tether used for Sick Swell knockback
+  'sickSwellTether': '0174',
 } as const;
 
 const center = {
@@ -98,6 +106,8 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r10s.txt',
   initData: () => ({
     phase: 'one',
+    actorPositions: {},
+    waveDir: 'unknown',
     dareCount: 0,
     snakings: [],
     snakingCount: 0,
@@ -115,6 +125,28 @@ const triggerSet: TriggerSet<Data> = {
 
         data.phase = phase;
       },
+    },
+    {
+      id: 'R10S ActorSetPos Tracker',
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
+    },
+    {
+      id: 'R10S AddedCombatant Tracker',
+      type: 'AddedCombatant',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
     },
     {
       id: 'R10S Divers\' Dare Collect',
@@ -250,6 +282,7 @@ const triggerSet: TriggerSet<Data> = {
         count: ['3ED', '3EE', '3EF', '3F0'],
         capture: true,
       },
+      durationSeconds: 9,
       infoText: (data, matches, output) => {
         let mech:
           | 'healerGroups'
@@ -296,12 +329,37 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R10S Sickest Take-off Knockback',
-      // 7s Cast Time
-      type: 'StartsUsing',
-      netRegex: { id: 'B5CE', source: 'Deep Blue', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
-      response: Responses.knockback(),
+      id: 'R10S Sick Swell',
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'B5CE', capture: true },
+      infoText: (data, matches, output) => {
+        const castX = parseFloat(matches.x);
+        const castY = parseFloat(matches.y);
+
+        const kbDir = data.waveDir;
+
+        if (kbDir === 'dirE' || kbDir === 'dirW') {
+          if (castY < 95)
+            return output.text!({ dir1: output[kbDir]!(), dir2: output['dirN']!() });
+          else if (castY > 105)
+            return output.text!({ dir1: output[kbDir]!(), dir2: output['dirS']!() });
+          return output.text!({ dir1: output[kbDir]!(), dir2: output.middle!() });
+        }
+
+        if (castX < 95)
+          return output.text!({ dir1: output[kbDir]!(), dir2: output['dirW']!() });
+        else if (castX > 105)
+          return output.text!({ dir1: output[kbDir]!(), dir2: output['dirE']!() });
+        return output.text!({ dir1: output[kbDir]!(), dir2: output.middle!() });
+      },
+      outputStrings: {
+        middle: Outputs.middle,
+        text: {
+          en: 'KB from ${dir1} + away from ${dir2}',
+          cn: '从${dir1}击退 + 远离${dir2}',
+        },
+        ...Directions.outputStringsCardinalDir,
+      },
     },
     {
       id: 'R10S Reverse Alley-oop/Alley-oop Double-dip',
