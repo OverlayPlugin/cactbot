@@ -222,11 +222,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R10S Cutback Blaze',
-      // Random targetted player is center for a 315? degree cleave from boss
+      // Targets furthers player from Red Hot with 315? degree cleave from boss
       type: 'StartsUsing',
       netRegex: { id: 'B5C9', source: 'Red Hot', capture: false },
       condition: (data) => {
-        // Second cutback randomly targets only those with the debuff
+        // Second cutback targets furthest with firesnaking debuff or without a debuff
         return data.snakingDebuff !== 'water';
       },
       infoText: (_data, _matches, output) => output.cleaveTowardsFire!(),
