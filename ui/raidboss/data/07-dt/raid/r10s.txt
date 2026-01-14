@@ -117,7 +117,7 @@ hideall "--sync--"
 320.5 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
 326.7 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
 328.8 "Deep Aerial (tower)" StartsUsing { id: "B5E3", source: "Deep Blue" } duration 5
-334.8 "Deep Aerial (damage + stun)" Ability { id: "B5E4", source: "Deep Blue" }
+334.8 "Deep Aerial (damage + stun)" Ability { id: "B5E4", source: "Deep Blue" } duration 2
 335.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
 
 # Bubble/Deep Aerial
