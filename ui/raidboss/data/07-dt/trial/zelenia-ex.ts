@@ -252,7 +252,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
-          'None': 'None',
+          'None': 'none',
           'DPS In': 'dpsIn',
           'Support First': 'supportFirst',
           'DPS First': 'dpsFirst',
