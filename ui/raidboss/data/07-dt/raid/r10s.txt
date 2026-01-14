@@ -122,50 +122,37 @@ hideall "--sync--"
 326.7 "Epic Brotherhood" #Ability { id: "B57B", source: "Deep Blue" }
 333.8 "Deep Aerial" Ability { id: "B5E3", source: "Deep Blue" }
 334.8 "Deep Aerial" Ability { id: "B5E4", source: "Deep Blue" }
-334.9 "--sync--" #Ability { id: "B5EA", source: "Watery Grave" }
-334.9 "--sync--" #Ability { id: "B5EA", source: "Watery Grave" }
 335.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
 
 # Bubble/Deep Aerial
+# Xtreme Wave has two casts per boss per set
+# The lower ID cast of each boss is the actual line snapshot and is the important mechanic to time
+# The higher ID cast is the secondary hit on anyone in the path of the line that wasn't the original target
+# Drop the higher ID casts. Only keep Red Hot's casts for timeline cleanliness
 337.3 "--add-targetable--"
 337.9 "--untargetable--"
 337.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
-337.9 "--sync--" #Ability { id: "B579", source: "Deep Blue" }
 345.7 "Xtreme Wave" Ability { id: "B5C5", source: "Red Hot" }
-345.7 "Xtreme Wave" #Ability { id: "B5C6", source: "Deep Blue" }
-346.0 "Xtreme Wave" Ability { id: "B5D1", source: "Red Hot" }
-346.0 "Xtreme Wave" #Ability { id: "B5D2", source: "Deep Blue" }
 347.8 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-354.1 "Xtreme Wave" Ability { id: "B5C8", source: "Deep Blue" }
-354.1 "Xtreme Wave" #Ability { id: "B5C7", source: "Red Hot" }
-354.4 "Xtreme Wave" Ability { id: "B5D1", source: "Red Hot" }
-354.4 "Xtreme Wave" #Ability { id: "B5D2", source: "Deep Blue" }
+354.1 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
 356.2 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
 362.6 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-362.6 "Xtreme Wave" #Ability { id: "B5C8", source: "Deep Blue" }
-362.9 "Xtreme Wave" Ability { id: "B5D2", source: "Deep Blue" }
-362.9 "Xtreme Wave" #Ability { id: "B5D1", source: "Red Hot" }
 364.7 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-371.1 "Xtreme Wave" Ability { id: "B5C8", source: "Deep Blue" }
-371.1 "Xtreme Wave" #Ability { id: "B5C7", source: "Red Hot" }
-371.4 "Xtreme Wave" Ability { id: "B5D1", source: "Red Hot" }
-371.4 "Xtreme Wave" #Ability { id: "B5D2", source: "Deep Blue" }
+371.1 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
 373.2 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
 379.6 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-379.6 "Xtreme Wave" #Ability { id: "B5C8", source: "Deep Blue" }
-379.9 "Xtreme Wave" Ability { id: "B5D2", source: "Deep Blue" }
-379.9 "Xtreme Wave" #Ability { id: "B5D1", source: "Red Hot" }
 381.7 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
 388.3 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-388.3 "Xtreme Wave" #Ability { id: "B5C8", source: "Deep Blue" }
-388.6 "Xtreme Wave" Ability { id: "B5D1", source: "Red Hot" }
-388.6 "Xtreme Wave" #Ability { id: "B5D2", source: "Deep Blue" }
 390.4 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
 390.6 "--targetable--"
 390.6 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
 392.8 "--add-untargetable--"
-393.0 "Impact Zone (soft enrage)" #Ability { id: "B5EC", source: "Watery Grave" }
-393.2 "Impact Zone x2 (soft enrage)" #Ability { id: "B5EB", source: "Watery Grave" }
+# This is caused by either player in the jail dieing. At the end of adds phase, if the jail hasn't been killed
+# both players die to a debuff, which then detonates the jail. This is technically a soft enrage, since it can be
+# mitted through with a full send of all party mits or via tank LB, but realistically with most strats now
+# putting healers in the jail, this is going to wipe the party regardless due to the followup aoe.
+393.0 "Impact Zone (enrage)" #Ability { id: "B5EC", source: "Watery Grave" }
+393.2 "Impact Zone x2 (enrage)" #Ability { id: "B5EB", source: "Watery Grave" }
 
 # Arena Split
 398.7 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
