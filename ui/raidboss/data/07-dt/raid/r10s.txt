@@ -47,14 +47,9 @@ hideall "--sync--"
 
 # Transition
 161.7 "--untargetable--"
-168.7 "Xtreme Spectacular" Ability { id: "B5A4", source: "The Xtremes" }
-169.7 "Xtreme Spectacular" #Ability { id: "B5DC", source: "The Xtremes" }
-170.7 "Xtreme Spectacular" #Ability { id: "B5DC", source: "The Xtremes" }
-171.6 "Xtreme Spectacular" #Ability { id: "B5DC", source: "The Xtremes" }
-172.2 "Xtreme Spectacular" #Ability { id: "B5DC", source: "The Xtremes" }
-172.8 "Xtreme Spectacular" #Ability { id: "B5DC", source: "The Xtremes" }
-173.2 "Xtreme Spectacular" #Ability { id: "B5DC", source: "The Xtremes" }
-173.6 "Xtreme Spectacular" Ability { id: "B7CA", source: "The Xtremes" }
+168.7 "Xtreme Spectacular (line)" Ability { id: "B5A4", source: "The Xtremes" }
+169.7 "Xtreme Spectacular x6" duration 3.5 #Ability { id: "B5DC", source: "The Xtremes" }
+173.6 "Xtreme Spectacular (big)" Ability { id: "B7CA", source: "The Xtremes" }
 
 # Insane Air 1
 177.4 "--targetable--"
