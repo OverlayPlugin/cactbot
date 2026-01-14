@@ -278,6 +278,7 @@ const triggerSet: TriggerSet<Data> = {
         count: ['3ED', '3EE', '3EF', '3F0'],
         capture: true,
       },
+      durationSeconds: 9,
       infoText: (data, matches, output) => {
         let mech:
           | 'healerGroups'
