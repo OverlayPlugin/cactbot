@@ -884,7 +884,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stack Middle for Chains',
           cn: '中间集合等待连线',
-          ko: '사슬을 위해 중앙에 모이기',
+          ko: '중앙에 모여서 사슬 준비하기',
         },
       },
     },
