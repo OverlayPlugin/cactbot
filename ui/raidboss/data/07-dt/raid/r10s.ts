@@ -640,6 +640,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Reverse Alley-oop/Alley-oop Double-dip': 'Reverse Alley-oop/Double-dip',
         'Awesome Splash/Awesome Slab': 'Awesome Splash/Slab',
+        'Blasting Snap/Plunging Snap/Re-entry Blast': 'Blasting/Plunging/Re-entry',
       },
     },
   ],
