@@ -156,31 +156,23 @@ hideall "--sync--"
 
 # Arena Split
 398.7 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-398.7 "Divers' Dare" #Ability { id: "B5B9", source: "Deep Blue" }
-404.8 "Epic Brotherhood" Ability { id: "B57B", source: "Deep Blue" }
-404.8 "Epic Brotherhood" #Ability { id: "B57A", source: "Red Hot" }
-406.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
+404.8 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
+406.9 "--red north--" Ability { id: "B578", source: "Red Hot" }
 409.9 "Sick Swell" Ability { id: "B5CB", source: "Deep Blue" }
-414.1 "Flame Floater" Ability { id: "B5D4", source: "Red Hot" }
 414.3 "Flame Floater" Ability { id: "B5BF", source: "Red Hot" }
-421.1 "--sync--" Ability { id: "B579", source: "Deep Blue" }
-422.8 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
+421.1 "--blue east/west--" Ability { id: "B579", source: "Deep Blue" }
 423.6 "Alley-oop Inferno" Ability { id: "B5C1", source: "Red Hot" }
-428.5 "Reverse Alley-oop" Ability { id: "B5E0", source: "Deep Blue" }
-429.2 "Reverse Alley-oop" #Ability { id: "B5E1", source: "Red Hot" }
-429.2 "Reverse Alley-oop" #Ability { id: "B5E1", source: "Red Hot" }
-431.8 "Reverse Alley-oop" #Ability { id: "B5E2", source: "Deep Blue" }
-431.8 "Reverse Alley-oop" #Ability { id: "B5E2", source: "Deep Blue" }
+429.2 "Reverse Alley-oop/Alley-oop Double-dip"
+431.8 "Reverse Alley-oop/Alley-oop Double-dip"
 435.8 "Sickest Take-off" Ability { id: "B5CD", source: "Deep Blue" }
-435.8 "--untargetable--"
-435.9 "Freaky Pyrotation" Ability { id: "B596", source: "Red Hot" }
-436.7 "Freaky Pyrotation" Ability { id: "B597", source: "Deep Blue" }
+435.8 "--blue untargetable--"
+# Actor name on this can vary since it's an invisible re-use actor
+436.7 "Freaky Pyrotation" #Ability { id: "B597", source: "Deep Blue" }
 444.7 "Sickest Take-off" Ability { id: "B5CE", source: "Deep Blue" }
 444.7 "Sick Swell" #Ability { id: "B5CC", source: "Deep Blue" }
-446.7 "--targetable--"
+446.7 "--blue targetable--"
 447.1 "Awesome Slab" Ability { id: "B5D0", source: "Deep Blue" }
 451.8 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
-451.8 "Divers' Dare" #Ability { id: "B5B9", source: "Deep Blue" }
 
 # Insane Air 2
 457.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
