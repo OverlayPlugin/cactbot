@@ -516,6 +516,7 @@ for more details about user javascript and css files.
 cactbot is tested and works with the current
 international (English, German, French, Japanese) version,
 the current Chinese version,
+the current Traditional Chinese version,
 and the current Korean version.
 Some translations are still a work in progress.
 See the [cactbot coverage page](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html) for more details.
