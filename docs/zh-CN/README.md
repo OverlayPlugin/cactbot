@@ -49,7 +49,7 @@ Cactbot 提供以下悬浮窗：
 
 ### 依赖
 
-安装 4.6.1 版本及以上的 [.NET Framework](https://www.microsoft.com/net/download/framework)。
+安装 4.6.1 版本及以上的 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 
 你必须启用最终幻想 14 的 [DirectX 11](http://imgur.com/TjcnjmG) 模式。
 

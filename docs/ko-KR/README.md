@@ -55,7 +55,7 @@ cactbot은 다음 모듈을 제공합니다:
 
 ### 의존성 프로그램 설치
 
-[.NET Framework](https://www.microsoft.com/net/download/framework) 4.6.1 버전 이상을 설치하세요.
+[.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) 4.6.1 버전 이상을 설치하세요.
 
 반드시 파이널 판타지 14를 [DirectX 11](http://imgur.com/TjcnjmG)로 실행해야 합니다.
 

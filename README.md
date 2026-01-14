@@ -54,7 +54,7 @@ cactbot provides these overlays:
 
 ### Dependencies
 
-Install [.NET Framework](https://www.microsoft.com/net/download/framework) version 4.6.1 or above.
+Install [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) version 4.6.1 or above.
 
 Install the 64-bit version of [Advanced Combat Tracker](http://advancedcombattracker.com/), if you have not already.
 
