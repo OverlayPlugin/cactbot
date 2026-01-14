@@ -385,7 +385,7 @@ oopsy에 경고(:warning:)나 실패(:no_entry_sign:) 로그가 찍혀서 무엇
 현재 소환 불가능한 NM 목록을 복사해주는 왼쪽의 빨간색 "토벌한 마물" 버튼을 클릭하면, 게임에 입력할 수 있습니다. 예시)
 `/ㄷ 토벌한 마물: 대왕 (89분) → 넘버즈 (97분) → 하즈마트 (104분) → 기수 (107분) → 카임 (119분)`
 
-이모지가 보이지 않는다면, [이 Windows 업데이트](https://support.microsoft.com/en-us/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser)를 설치했는지 확인하세요.
+이모지가 보이지 않는다면, [이 Windows 업데이트](https://support.microsoft.com/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser)를 설치했는지 확인하세요.
 
 ![eureka 스크린샷](../../screenshots/promo_eureka.png)
 

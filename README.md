@@ -406,7 +406,7 @@ if you click on the left/red "Copy killed NMs" button in the tracker to
 copy the list of currently dead NMs, you can paste it in game, e.g.
 `/echo NMs on cooldown: Serket (7m) → Julika (24m) → Poly (54m)`
 
-If you do not see the emoji, make sure you have installed [this Windows update](https://support.microsoft.com/en-us/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser).
+If you do not see the emoji, make sure you have installed [this Windows update](https://support.microsoft.com/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser).
 
 ![eureka screenshot](screenshots/promo_eureka.png)
 
