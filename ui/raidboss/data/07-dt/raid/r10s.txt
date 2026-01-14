@@ -54,7 +54,6 @@ hideall "--sync--"
 # Insane Air 1
 177.4 "--targetable--"
 178.8 "Epic Brotherhood" Ability { id: "B57A", source: "Red Hot" }
-178.8 "Epic Brotherhood" #Ability { id: "B57B", source: "Deep Blue" }
 186.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
 
 # Each boss does, in random order (Red Hot/Deep Blue):
