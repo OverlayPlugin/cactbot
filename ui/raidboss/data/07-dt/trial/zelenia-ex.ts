@@ -240,6 +240,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'escelonsFall',
       name: {
         en: 'Escelons Fall Strategy',
+        de: 'Aufsteigendes Kreuz Strategy',
       },
       comment: {
         en: `Strategy for resolving Escelons' Fall 1 and 3.
@@ -248,6 +249,12 @@ const triggerSet: TriggerSet<Data> = {
             DPS In - DPS always start in, Support always start out.
             Support First - Support bait the first hit.
             DPS First - DPS bait the first hit.`,
+        de: `Strategie zur Bewältigung von Escelons Fall 1 und 3.
+
+            Keine – Zeige einfach erste Köder Position an.
+            DPS innen – DPS startet immer innen, Support startrt immer außen.
+            Support zuerst – Support ködert zuerst.
+            DPS zuerst – DPS ködert zuerst.`,
       },
       type: 'select',
       options: {
@@ -256,6 +263,12 @@ const triggerSet: TriggerSet<Data> = {
           'DPS In': 'dpsIn',
           'Support First': 'supportFirst',
           'DPS First': 'dpsFirst',
+        },
+        de: {
+          'Keine': 'none',
+          'DPS innen': 'dpsIn',
+          'Support zuerst': 'supportFirst',
+          'DPS zuerst': 'dpsFirst',
         },
       },
       default: 'none',
@@ -369,21 +382,27 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         near: {
           en: 'Near bait first',
+          de: 'Nah ködert zuerst',
         },
         far: {
           en: 'Far bait first',
+          de: 'Fern ködert zuerst',
         },
         out: {
           en: 'Start out',
+          de: 'Starte außen',
         },
         in: {
           en: 'Start in',
+          de: 'Starte innen',
         },
         swapAfterFirst: {
           en: '${first}, Swap after first+third',
+          de: '${first}, Wechseln nach erstem+dritten',
         },
         swapAfterSecond: {
           en: '${first}, Swap after second',
+          de: '${first}, Wechseln nach dem zweiten',
         },
       },
     },
