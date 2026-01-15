@@ -219,7 +219,7 @@ Cactbot 的所有 UI 模块都包含在 [ui/](ui/) 文件夹中。如果你按�
 
 此悬浮窗提供预知战斗事件的时间轴，以及文本和音频提示，以帮助提高团队对 Raid 的意识。这些文字和声音警报一般基于战斗时间轴，或是来自游戏中发生的日志消息。简单地说，这是一个类似于 ACT 的 “自定义触发器” 的功能。该模块被设计为类似于《魔兽世界》的 [BigWigs Bossmods](https://www.curseforge.com/wow/addons/big-wigs) 插件的外观和感觉。
 
-[此页面](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=cn) 列出了当前 Cactbot 中支持的副本。我们会持续添加更多支持 (随时欢迎贡献代码！) 尽管许多旧副本仍未支持。
+[此页面](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html) 列出了当前 Cactbot 中支持的副本。我们会持续添加更多支持 (随时欢迎贡献代码！) 尽管许多旧副本仍未支持。
 
 战斗时间轴原本是设计为用于 [ACT 时间轴](https://github.com/grindingcoil/act_timeline)插件的文件，不过增加了一些[扩展语法](./TimelineGuide.md)。这里是原插件的 [文档](https://web.archive.org/web/20230426121530/https://dtguilds.enjin.com/forum/m/37032836/viewthread/26353492-act-timeline-plugin)。
 
