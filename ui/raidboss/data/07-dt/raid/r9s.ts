@@ -108,6 +108,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Tank Cleave on YOU (Big)',
           de: 'Tank Cleave auf DIR (Groß)',
           cn: '坦克范围死刑点名（大）',
+          ko: '광역 탱버 대상자 (큰)',
         },
       },
     },
@@ -380,12 +381,15 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsCardinalDir,
         text: {
           en: '${first} => ${second}',
+          ko: '${first} => ${second}',
         },
         combined: {
           en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+          ko: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
         },
         bigHalfmoonCombined: {
           en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
+          ko: '${coffin1} + ${dir1} (큰) => ${coffin2} + ${dir2} (큰)',
         },
         rightThenLeft: Outputs.rightThenLeft,
         leftThenRight: Outputs.leftThenRight,
@@ -395,21 +399,27 @@ const triggerSet: TriggerSet<Data> = {
         rightEast: Outputs.rightEast,
         inside: {
           en: 'Inside',
+          ko: '안쪽',
         },
         outside: {
           en: 'Outside',
+          ko: '바깥쪽',
         },
         outerWest: {
           en: 'Outer West',
+          ko: '바깥 서쪽',
         },
         innerWest: {
           en: 'Inner West',
+          ko: '안 서쪽',
         },
         innerEast: {
           en: 'Inner East',
+          ko: '안 동쪽',
         },
         outerEast: {
           en: 'Outer East',
+          ko: '바깥 동쪽',
         },
         bigHalfmoonNoCoffin: {
           en: '${dir1} max melee => ${dir2} max melee',
@@ -558,11 +568,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid',
           de: 'Vermeide',
           cn: '避开',
+          ko: '피하기:',
         },
         text: {
           en: '${avoid}${mech}',
           de: '${avoid}${mech}',
           cn: '${avoid}${mech}',
+          ko: '${avoid}${mech}',
         },
       },
     },
@@ -582,11 +594,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid',
           de: 'Vermeide',
           cn: '避开',
+          ko: '피하기:',
         },
         text: {
           en: '${avoid}${mech}',
           de: '${avoid}${mech}',
           cn: '${avoid}${mech}',
+          ko: '${avoid}${mech}',
         },
       },
     },
