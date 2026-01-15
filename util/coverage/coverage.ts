@@ -1,6 +1,13 @@
 import contentList from '../../resources/content_list';
 import ContentType from '../../resources/content_type';
-import { isLang, Lang, langMap, langToLocale, languages } from '../../resources/languages';
+import {
+  browserLanguagesToLang,
+  isLang,
+  Lang,
+  langMap,
+  langToLocale,
+  languages,
+} from '../../resources/languages';
 import { UnreachableCode } from '../../resources/not_reached';
 import ZoneInfo from '../../resources/zone_info';
 import { LocaleObject, LocaleText } from '../../types/trigger';
@@ -1356,7 +1363,7 @@ const buildLanguageSelect = (container: HTMLElement, lang: Lang) => {
 document.addEventListener('DOMContentLoaded', () => {
   // Allow for `coverage.html?lang=de` style constructions.
   const params = new URLSearchParams(window.location.search);
-  const langStr = params.get('lang') ?? 'en';
+  const langStr = params.get('lang') ?? browserLanguagesToLang(navigator.languages);
   // TODO: left for now as backwards compatibility with user css.  Remove this later??
   document.body.classList.add(`lang-${langStr}`);
   const lang = langStr !== null && isLang(langStr) ? langStr : 'en';
