@@ -519,7 +519,7 @@ const miscStrings = {
     fr: 'Erreur : Lancez npm run coverage-report pour générer des données.',
     ja: 'エラー：npm run coverage-report を実行し、データを生成しよう。',
     cn: '错误：请先运行 npm run coverage-report 以生成数据。',
-    ko: '에러: 데이터를 생성하려면 node npm run coverage-report를 실행하세요.',
+    ko: '에러: 데이터를 생성하려면 npm run coverage-report를 실행하세요.',
     tc: '錯誤：請先運行 npm run coverage-report 來產生資料。',
   },
   // Indicator that content is unsupported
