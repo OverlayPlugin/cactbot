@@ -129,7 +129,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11S Raw Steel Trophy Axe',
       type: 'StartsUsing',
       netRegex: { id: 'B422', capture: false },
-      infoText: (data, _matches, output) => {
+      infoText: (_data, _matches, output) => {
         return output.text!({
           party: output.partySpread!(),
           tank: output.sharedTankStack!(),
