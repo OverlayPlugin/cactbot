@@ -86,7 +86,7 @@ export const kTriggerSearchPlaceholder = {
   fr: 'Rechercher des déclencheurs...', // TODO: verify AI translation
   ja: 'トリガーを検索...', // TODO: verify AI translation
   cn: '搜索触发器...',
-  ko: '트리거 검색...', // TODO: verify AI translation
+  ko: '트리거 검색...',
   tc: '搜索觸發器...', // TODO: verify AI translation
 };
 
