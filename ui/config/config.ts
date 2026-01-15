@@ -108,7 +108,7 @@ export const kShowHiddenTriggers = {
   fr: 'Afficher ${num} autres triggers pour cette zone', // TODO: verify AI translation
   ja: 'このゾーンの他の ${num} 個のトリガーを表示', // TODO: verify AI translation
   cn: '显示此区域的其他 ${num} 个触发器',
-  ko: '이 구역의 다른 트리거 ${num}개 표시', // TODO: verify AI translation
+  ko: '이 컨텐츠의 다른 트리거 ${num}개 표시하기',
   tc: '顯示此區域的其他 ${num} 個觸發器', // TODO: verify AI translation
 };
 
