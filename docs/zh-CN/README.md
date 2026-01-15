@@ -400,7 +400,7 @@ Cactbot 可以与为 OverlayPlugin 的数据统计功能设计的任何 DPS 统�
 
 ## 支持语言
 
-Cactbot 已在当前版本的国际服（英语、德语、法语、日语）、中国服以及韩国服经过测试并可以正常工作。某些翻译工作仍在进行中。点击 [Cactbot 覆盖率页面](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html) 获取更多信息。
+Cactbot 已在当前版本的国际服（英语、德语、法语、日语）、中国服、繁体中文服以及韩国服经过测试并可以正常工作。某些翻译工作仍在进行中。点击 [Cactbot 覆盖率页面](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html) 获取更多信息。
 
 ## 许可、商标与授权
 
