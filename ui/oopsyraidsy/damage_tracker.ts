@@ -746,14 +746,9 @@ export class DamageTracker {
     const parserLang = this.options.ParserLanguage;
     const timelineReplace = set?.timelineReplace;
 
-    let localRegex: RegExp;
-    if (Array.isArray(netRegex)) {
-      localRegex = Regexes.parse(Regexes.anyOf(netRegex));
-    } else {
-      // RegExp (e.g. from NetRegexes.xxx()), translate the regex string
-      const translated = translateRegex(netRegex, parserLang, timelineReplace);
-      localRegex = Regexes.parse(translated);
-    }
+    // RegExp (e.g. from NetRegexes.xxx()), translate the regex string
+    const translated = translateRegex(netRegex, parserLang, timelineReplace);
+    const localRegex = Regexes.parse(translated);
 
     this.triggers.push({
       ...looseTrigger,
