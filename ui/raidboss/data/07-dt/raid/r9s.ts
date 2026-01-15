@@ -7,8 +7,17 @@ import { RaidbossData } from '../../../../../types/data';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
+type CoffinfillerPosition =
+  | 'outerWest'
+  | 'innerWest'
+  | 'innerEast'
+  | 'outerEast'
+  | 'inside'
+  | 'outside';
+
 export interface Data extends RaidbossData {
   flailPositions: NetMatches['StartsUsingExtra'][];
+  coffinfillers: CoffinfillerPosition[];
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   bats: {
     inner: DirectionOutput16[];
@@ -42,6 +51,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r9s.txt',
   initData: () => ({
     flailPositions: [],
+    coffinfillers: [],
     actorPositions: {},
     bats: { inner: [], middle: [], outer: [] },
     satisfiedCount: 0,
@@ -96,6 +106,7 @@ const triggerSet: TriggerSet<Data> = {
         tankCleaveOnYou: Outputs.tankCleaveOnYou,
         bigTankCleave: {
           en: 'Tank Cleave on YOU (Big)',
+          de: 'Tank Cleave auf DIR (Groß)',
           cn: '坦克范围死刑点名（大）',
         },
       },
@@ -172,6 +183,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         away: {
           en: 'Away from bats ${dir1}/${dir2}',
+          de: 'Weg von den Fledermäusen ${dir1}/${dir2}',
           fr: 'Loin des chauves-souris ${dir1}/${dir2}',
           cn: '远离 ${dir1}、${dir2} 蝙蝠',
           ko: '박쥐 피하기 ${dir1}/${dir2}',
@@ -201,6 +213,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStrings16Dir,
         away: {
           en: 'Away from bats ${dir1}/${dir2}/${dir3}',
+          de: 'Weg von den Fledermäusen ${dir1}/${dir2}/${dir3}',
           fr: 'Loin des chauves-souris ${dir1}/${dir2}/${dir3}',
           cn: '远离 ${dir1}、${dir2}、${dir3} 蝙蝠',
           ko: '박쥐 피하기 ${dir1}/${dir2}/${dir3}',
@@ -224,6 +237,187 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B333', source: 'Vamp Fatale', capture: false },
       response: Responses.bigAoe(),
+    },
+    {
+      id: 'R9S Coffinfiller',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B368', 'B369', 'B36A'], capture: true },
+      suppressSeconds: (data) => data.coffinfillers.length === 0 ? 0 : 5,
+      run: (data, matches) => {
+        let danger: CoffinfillerPosition;
+        const xPos = parseFloat(matches.x);
+        if (xPos < 95)
+          danger = 'outerWest';
+        else if (xPos < 100)
+          danger = 'innerWest';
+        else if (xPos < 105)
+          danger = 'innerEast';
+        else
+          danger = 'outerEast';
+        data.coffinfillers.push(danger);
+      },
+    },
+    {
+      id: 'R9S Half Moon',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B377', 'B379', 'B37B', 'B37D'], capture: true },
+      delaySeconds: 0.3,
+      alertText: (data, matches, output) => {
+        if (data.coffinfillers.length < 2) {
+          if (matches.id === 'B377')
+            return output.rightThenLeft!();
+          if (matches.id === 'B37B')
+            return output.leftThenRight!();
+          return output.bigHalfmoonNoCoffin!({
+            dir1: output[matches.id === 'B379' ? 'right' : 'left']!(),
+            dir2: output[matches.id === 'B379' ? 'left' : 'right']!(),
+          });
+        }
+
+        const attackDirNum = Directions.hdgTo4DirNum(parseFloat(matches.heading));
+        const dirNum1 = (attackDirNum + 2) % 4;
+        const dir1 = Directions.outputFromCardinalNum(dirNum1);
+        const dirNum2 = attackDirNum;
+        const dir2 = Directions.outputFromCardinalNum(dirNum2);
+        const bigCleave = matches.id === 'B379' || matches.id === 'B37D';
+
+        const insidePositions: CoffinfillerPosition[] = [
+          'innerWest',
+          'innerEast',
+        ];
+
+        const outsidePositions: CoffinfillerPosition[] = [
+          'outerWest',
+          'outerEast',
+        ];
+
+        const westPositions: CoffinfillerPosition[] = [
+          'innerWest',
+          'outerWest',
+        ];
+
+        const eastPositions: CoffinfillerPosition[] = [
+          'innerEast',
+          'outerEast',
+        ];
+
+        let coffinSafe1: CoffinfillerPosition[] = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        coffinSafe1 = coffinSafe1.filter((pos) => !data.coffinfillers.includes(pos));
+
+        let coffinSafe2: CoffinfillerPosition[] = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        // Whatever gets hit first round will be safe second round
+        coffinSafe2 = coffinSafe2.filter((pos) => data.coffinfillers.includes(pos));
+
+        data.coffinfillers = [];
+
+        let dir1Text = output[dir1]!();
+        let dir2Text = output[dir2]!();
+
+        if (dir1 === 'dirW') {
+          coffinSafe1 = coffinSafe1.filter((pos) => !westPositions.includes(pos));
+          dir1Text = output.leftWest!();
+        }
+
+        if (dir1 === 'dirE') {
+          coffinSafe1 = coffinSafe1.filter((pos) => !eastPositions.includes(pos));
+          dir1Text = output.rightEast!();
+        }
+
+        if (dir2 === 'dirW') {
+          coffinSafe2 = coffinSafe2.filter((pos) => !westPositions.includes(pos));
+          dir2Text = output.leftWest!();
+        }
+
+        if (dir2 === 'dirE') {
+          coffinSafe2 = coffinSafe2.filter((pos) => !eastPositions.includes(pos));
+          dir2Text = output.rightEast!();
+        }
+
+        let coffin1: CoffinfillerPosition | 'unknown';
+        let coffin2: CoffinfillerPosition | 'unknown';
+
+        if (coffinSafe1.every((pos) => insidePositions.includes(pos)))
+          coffin1 = 'inside';
+        else if (coffinSafe1.every((pos) => outsidePositions.includes(pos)))
+          coffin1 = 'outside';
+        else
+          coffin1 = coffinSafe1.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+
+        if (coffinSafe2.every((pos) => insidePositions.includes(pos)))
+          coffin2 = 'inside';
+        else if (coffinSafe2.every((pos) => outsidePositions.includes(pos)))
+          coffin2 = 'outside';
+        else
+          coffin2 = coffinSafe2.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+
+        if (bigCleave) {
+          return output.bigHalfmoonCombined!({
+            coffin1: output[coffin1]!(),
+            dir1: dir1Text,
+            coffin2: output[coffin2]!(),
+            dir2: dir2Text,
+          });
+        }
+
+        return output.combined!({
+          coffin1: output[coffin1]!(),
+          dir1: dir1Text,
+          coffin2: output[coffin2]!(),
+          dir2: dir2Text,
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsCardinalDir,
+        text: {
+          en: '${first} => ${second}',
+        },
+        combined: {
+          en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+        },
+        bigHalfmoonCombined: {
+          en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
+        },
+        rightThenLeft: Outputs.rightThenLeft,
+        leftThenRight: Outputs.leftThenRight,
+        left: Outputs.left,
+        leftWest: Outputs.leftWest,
+        right: Outputs.right,
+        rightEast: Outputs.rightEast,
+        inside: {
+          en: 'Inside',
+        },
+        outside: {
+          en: 'Outside',
+        },
+        outerWest: {
+          en: 'Outer West',
+        },
+        innerWest: {
+          en: 'Inner West',
+        },
+        innerEast: {
+          en: 'Inner East',
+        },
+        outerEast: {
+          en: 'Outer East',
+        },
+        bigHalfmoonNoCoffin: {
+          en: '${dir1} max melee => ${dir2} max melee',
+          fr: '${dir1} max melée => ${dir2} max melée',
+          cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
+          ko: '${dir1} 칼끝딜 => ${dir2} 칼끝딜',
+        },
+      },
     },
     {
       id: 'R9S Crowd Kill',
@@ -258,6 +452,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         aetherlettingOnYou: {
           en: 'Aetherletting on YOU',
+          de: 'Ätherquell auf DIR',
           cn: '以太流失点名',
         },
       },
@@ -301,6 +496,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Flails ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
+          de: 'Stachelbombe ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
           fr: 'Fléaux ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
           cn: '刺锤 ${flail1Dist}${flail1Dir}、${flail2Dist}${flail2Dir}',
           ko: '철퇴 ${flail1Dist} ${flail1Dir}/${flail2Dist} ${flail2Dir}',
@@ -360,10 +556,12 @@ const triggerSet: TriggerSet<Data> = {
         rolePositions: Outputs.rolePositions,
         avoid: {
           en: 'Avoid',
+          de: 'Vermeide',
           cn: '避开',
         },
         text: {
           en: '${avoid}${mech}',
+          de: '${avoid}${mech}',
           cn: '${avoid}${mech}',
         },
       },
@@ -382,10 +580,12 @@ const triggerSet: TriggerSet<Data> = {
         stack: Outputs.getTogether,
         avoid: {
           en: 'Avoid',
+          de: 'Vermeide',
           cn: '避开',
         },
         text: {
           en: '${avoid}${mech}',
+          de: '${avoid}${mech}',
           cn: '${avoid}${mech}',
         },
       },
@@ -403,6 +603,106 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Ultrasonic Spread/Ultrasonic Amp': 'Ultrasonic Spread/Amp',
         'Ultrasonic Amp/Ultrasonic Spread': 'Ultrasonic Amp/Spread',
+      },
+    },
+    {
+      'locale': 'de',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Coffinmaker': 'fatal(?:e|er|es|en) Säge',
+        'Fatal Flail': 'fatal(?:e|er|es|en) Stachelbombe',
+        'Vamp Fatale': 'Vamp Fatale',
+        'Vampette Fatale': 'fatal(?:e|er|es|en) Fledermaus',
+      },
+      'replaceText': {
+        '--coffinmaker--': '--Säge--',
+        '--cell': '--Zelle',
+        '--flail': '--Stachelbombe',
+        '--nail--': '--Blitzableiter--',
+        'Blast Beat': 'Resonanzwelle',
+        'Bloody Bondage': 'Blutige Fesseln',
+        'Breakdown Drop': 'Gebrochene Melodie',
+        'Breakwing Beat': 'Gebrochener Rhythmus',
+        'Coffinfiller': 'Sägenstich',
+        'Crowd Kill': 'Massenmeuchelei',
+        'Dead Wake': 'Sägenmarsch',
+        'Finale Fatale': 'Finale Fatale',
+        'Half Moon': 'Blutiger Halbmond',
+        'Hardcore': 'Dominanz',
+        'Hell in a Cell': 'Höllenkäfig',
+        'Insatiable Thirst': 'Unstillbarer Durst',
+        'Killer Voice': 'Todesecho',
+        'Plummet': 'Abfallen',
+        'Pulping Pulse': 'Zermalmender Puls',
+        'Sadistic Screech': 'Henkersmahl',
+        'Ultrasonic Amp': 'Fokusschall',
+        'Ultrasonic Spread': 'Streuschall',
+        'Undead Deathmatch': 'Fledermaus-Todeskampf',
+        'Vamp Stomp': 'Vampirstampfer',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Coffinmaker': 'torture fatale',
+        'Fatal Flail': 'fléau fatal',
+        'Vamp Fatale': 'Vamp Fatale',
+        'Vampette Fatale': 'chauve-souris fatale',
+      },
+      'replaceText': {
+        'Blast Beat': 'Vague de résonance',
+        'Bloody Bondage': 'Bondage sanglant',
+        'Breakdown Drop': 'Fracas dévastateur',
+        'Breakwing Beat': 'Rythme dévastateur',
+        'Coffinfiller': 'Entaille funèbre',
+        'Crowd Kill': 'Fauchage du public',
+        'Dead Wake': 'Avancée',
+        'Finale Fatale': 'Final fatal',
+        'Half Moon': 'Demi-lunes',
+        'Hardcore': 'Attaque extrême',
+        'Hell in a Cell': 'Enfer carcéral',
+        'Insatiable Thirst': 'Soif insatiable',
+        'Killer Voice': 'Voix mortelle',
+        'Plummet': 'Chute',
+        'Pulping Pulse': 'Pulsation pulvérisante',
+        'Sadistic Screech': 'Crissement sadique',
+        'Ultrasonic Amp': '',
+        'Ultrasonic Spread': '',
+        'Undead Deathmatch': 'Chiroptère mortel',
+        'Vamp Stomp': 'Piétinement fatal',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Coffinmaker': 'トーチャー・ファタール',
+        'Fatal Flail': 'スパイク・ファタール',
+        'Vamp Fatale': 'ヴァンプ・ファタール',
+        'Vampette Fatale': 'ファタールバット',
+      },
+      'replaceText': {
+        'Blast Beat': '共振波',
+        'Bloody Bondage': 'ブラッディボンテージ',
+        'Breakdown Drop': 'ブレイクダウン',
+        'Breakwing Beat': 'ブレイクビーツ',
+        'Coffinfiller': '突き出る',
+        'Crowd Kill': 'クラウドキリング',
+        'Dead Wake': '前進',
+        'Finale Fatale': 'フィナーレ・ファターレ',
+        'Half Moon': 'ハーフムーン',
+        'Hardcore': 'ハードコア',
+        'Hell in a Cell': 'ヘル・イン・ア・セル',
+        'Insatiable Thirst': 'インセーシャブル・サースト',
+        'Killer Voice': 'キラーボイス',
+        'Plummet': '落下',
+        'Pulping Pulse': 'パルピングパルス',
+        'Sadistic Screech': 'サディスティック・スクリーチ',
+        'Ultrasonic Amp': '',
+        'Ultrasonic Spread': '',
+        'Undead Deathmatch': 'バット・デスマッチ',
+        'Vamp Stomp': 'ヴァンプストンプ',
       },
     },
     {

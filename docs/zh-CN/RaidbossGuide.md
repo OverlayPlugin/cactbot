@@ -2,11 +2,89 @@
 
 [[English](../RaidbossGuide.md)] [**简体中文**]
 
+## 触发器准则
+
+在设计原则上，cactbot 默认使用文字警报和少量的默认音效，而不是自定义音效或 TTS。
+这是因为视觉上的触发器文字与语音频道的声音在认知上区分更明显，相比将语音频道与 TTS 的声音混在一起，这种分离模式更容易处理。
+尽管这一设计并非人人都能习惯——尤其是习惯了 TTS 的用户（TTS 仍是可选的一项）
+但文字触发器始终会作为默认设置。
+
+考虑到禁用触发器总比编写触发器要容易，cactbot 的默认提示音往往会比大多数人预期的稍微多（吵）一些。
+
+### 触发器等级
+
+以下是 cactbot 触发器设计的一般准则。在为副本编写新触发器时请参考这些标准，并务必保持代码风格的一致性。
+
+- alarm (警报 - 红色文本)
+  - 如果你处理失误，会导致团灭。
+  - 理想情况下用于随机机制（某人获得了点名）。
+  - 一个副本中最好只出现一两次。
+
+- alert (警告 - 黄色文本)
+  - 如果你处理失误，自己会死（或者害死别人）。
+  - 用于重要的机制。
+  - 应占触发器总数的一半左右。
+
+- info (信息 - 绿色文本)
+  - 你应该对此采取行动，但失误可能并不会致命。
+  - 适用于“快走开”之类的提示。
+  - 也用于传递信息（如奈尔的俯冲或群龙的八重奏标记）
+  - 应占触发器总数的一半左右。
+
+设计触发器严重程度时，另一个考量是使其在特定语境下更有用。例如，如果你可能被选中参与两种机制之一，最好将其中一个设为 info，另一个设为 alert （或一个 alert ，另一个 alarm），这样通过音效就能明显分辨出你中了哪种机制。
+
+最后的考量是不要让玩家接收过多同类型的消息。如果所有触发器都是 alert，最好将其中的一部分改为 info。使用不同的声音有助于营造战斗的“节奏感”，在多个提示同时出现时尤为有效。
+
+尽量不要让屏幕上同时出现两个以上的触发器，并尽量避免它们类型相同（例如两条 alert 文本），以防止视觉干扰。
+
+### 触发器文本
+
+下面是关于触发器文本的一些通用准则。触发器文本的目标是模仿副本指挥会说的话。它应该最大限度地减少玩家处理机制所需的思考量。
+
+- 简洁。文字应尽可能短，就像拉拉肥一样。
+- 告诉玩家该做什么，而不是机制名称。优先选择 `远离` 而不是 `钢铁战车`。
+- 使用正面描述。优先选择 `左侧` 而不是 `不要去右侧`。
+- 如果存在多种方案，默认不要指定特定的策略（如：你好，世界）。
+- 如果存在多种方案，告诉玩家机制（`连线点你`）或添加[特定配置选项](#特定策略选项)。
+- 不要为明显的地面 AOE 编写触发器。
+- 注意区分“什么需要被处理”与“当前该做什么”（例如 `集合 + 去斜角` 与 `(稍后 集合 + 去斜角)`）。
+- 保持文字简短，并假设玩家对机制有一定的熟悉。毕竟只有第一次打是完全陌生的玩家，为熟练玩家优化清晰度通常更好。
+- 永远要与现有其他触发器保持一致。
+
+### 特定策略选项
+
+如果一场战斗确实有针对特定策略的选项，处理方法是在触发器集合中添加 `config` 部分。这将会在 [cactbot 配置界面](CactbotCustomization.md#使用-cactbot-配置界面) 中创建选项，并显示在每个副本文件部分的顶部。
+
+默认情况下，如果存在多种策略，你不应偏向任何一种特定策略。
+
+参考：[P12S](../../ui/raidboss/data/06-ew/raid/p12s.ts) 中关于各种不同塔和经典概念策略选项的示例。
+
+你还可以使用 `disabled` 和/或 `hidden` 属性，根据其他选项的值来以编程方式隐藏或禁用选项。这允许你有效地创建子选项，这些子选项只有在“父”选项被设置为特定值时才会出现或可修改。
+
+### 开发者的触发器实现指南
+
+这里有一些关于触发器的杂项想法。
+
+- 触发器的显示时机应当准确。例如，对于“分摊 => 分散”机制，应在分摊判定后才播报分散（即执行该机制安全的情况下）。
+- 尽量少用 `delaySeconds`。与其通过咏唱开始后的固定延迟来触发，不如利用技能判定或伤害日志触发，这样更为可靠。
+- 尽量少用 `countdownSeconds`。它最适用于需要定时提前走位的机制（例如：强制移动、眩晕等），或者那些在时间轴中没有对应条目的机制。
+- 击退提示通常使用 5 秒延迟，以确保触发器文字出现时玩家使用防击退技能是安全的。
+- 优先选择普通触发器而非时间轴触发器，因为时间轴触发器可能因未知的血量阶段转换（血量轴）导致计时偏差。
+- 时间轴触发器务必使用 `suppressSeconds`（以防止被异常触发多次）。
+- 使用自定义日志行（如 MapEffect, 日志类型 >= 256）时，确保各数据未及时更新时触发器能静默失败或返回基础信息。
+- 永远不要返回原始字符串或拼接字符串；始终返回 `output.something!()`，且每个参数也应是 `output.somethingElse!()` 或输出数组（以便于本地化）。
+- 如果存在同时发生的报警（如“击退”和“分散”），考虑通过逻辑将它们合并为一个触发器播放（参考：`AAI Statice Pop`）。
+- 提示过长时，考虑通过 `tts: null` 禁用 TTS 播报。
+- 如果不想惊吓正在等待机制的玩家，或存在大量多段伤害触发器（如连打计数），可通过 `sound: ''` 禁用音效。
+- 触发器反馈信息有时可能比正常观察早得多。这在某些情况下对优化输出循环极大有益（比如法系职能）。但如果信息给得过早容易被玩家遗忘，可适当进行延迟播报。
+
 ## 文件结构
 
 每个触发器文件都是一个 JS 模块 (module)，并导出一个触发器集合 (Trigger Set)。
 
-```javascript
+参考：[trigger.d.ts](../../types/trigger.d.ts) 以了解更多详情。
+
+```typescript
 import ZoneId from '../path/to/resources/zone_id';
 // 其他导入语句。
 
@@ -16,9 +94,36 @@ export default {
   zoneLabel: {
     en: 'The Weapon\'s Refrain (Ultimate)',
   },
+  comments: {
+    en: '这些注释会显示在内容覆盖率报告中',
+  },
+  loadConfigs: ['TheUnendingCoilOfBahamutUltimate'],
+  config: [
+    {
+      id: 'someOptionId',
+      comment: {
+        en: '此文本将显示在 cactbot 设置界面，用于向用户说明该选项的作用。',
+      },
+      name: {
+        en: '开启高级选项',
+      },
+      type: 'checkbox',
+      default: false,
+      // 下方为可选属性
+      disabled: (values) => {
+        // 返回 true 或 false 的代码；如果为 true，输入框在 UI 中将被禁用
+        // 可以通过 values.[config 选项的 id] 访问其他配置选项的当前值
+      },
+      hidden: (values) => {
+        // 返回 true 或 false 的代码；如果为 true，配置文本和输入框在 UI 中将被隐藏
+        // 可以通过 values.[config 选项的 id] 访问其他配置选项的当前值
+      },
+    },
+  ],
+  resetWhenOutOfCombat: true,
   overrideTimelineFile: false,
   timelineFile: 'filename.txt',
-  timeline: `hideall`,
+  timeline: `hideall "Reset"`,
   timelineReplace: [
   {
      locale: 'en',
@@ -30,7 +135,11 @@ export default {
      },
    },
   ],
-  resetWhenOutOfCombat: true,
+  timelineTriggers: [
+    { /* ..时间轴触发器 1.. */ },
+    { /* ..时间轴触发器 2.. */ },
+    { /* ..时间轴触发器 3.. */ },
+  ],
   triggers: [
     { /* ..触发器 1.. */ },
     { /* ..触发器 2.. */ },
@@ -50,13 +159,22 @@ export default {
 **zoneLabel**
 可选的名称，用于指定触发器集合在配置页面中的名称。该属性会覆盖 [zone_info.ts](../../resources/zone_info.ts) 中的默认名称。
 
+**comments**
+可选内容，该触发器集合的注释，将出现在 [Cactbot 内容覆盖率报告](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=cn) 中。支持 HTML，但注意报告使用的字体不支持加粗或斜体。
+
 **initData**
 函数，用于初始化该触发器集合所使用的数据 (data)。应当返回一个纯对象，包含所有 `data` 中应当被初始化的属性及其值。在区域转移或战斗结束等需要重置的情况下，该函数可能会被多次调用。示例的初始化方法可以参考 [t1.ts](../../ui/raidboss/data/02-arr/raid/t1.ts) 这个文件。
 
-**zoneRegex**
-正则表达式，用于匹配该触发器集合所适用的从 ACT 读取的区域名称。当正则表达式匹配当前区域名时，触发器就会被激活。
+**zoneRegex** (已废弃)
+正则表达式，用于匹配该触发器集合所适用的从 ACT 读取的区域名称。建议优先使用 `zoneId`。
 
 由于中国服和韩国服的区域名称分别是中文和韩文，但国际服却是英文。理论上你需要写一个能够覆盖所有语言的正则表达式，可以在 ACT 的标题或主界面中找到。
+
+**config**
+`ConfigEntry` 对象数组。每个对象都是暴露给用户的选项，显示在 [cactbot 配置界面](CactbotCustomization.md#使用-cactbot-配置界面) 中。详情请参考 [user_config.ts](../../resources/user_config.ts)。
+
+**loadConfigs**
+字符串数组。默认情况下，并非所有文件的配置值在 `data.triggerSet` 中都可用（仅加载当前文件）。如果你需要引用其他文件的配置，可以指定对应触发器集合的 `id`。
 
 **overrideTimelineFile**
 可选属性，布尔值。该值设定为true时，任何先前被读取的同区域的触发器文件将被该触发器集合中指定的 `timelineFile` 和 `timeline` 属性覆盖。此属性仅用于用户文件，cactbot本身不使用该值。
@@ -81,11 +199,18 @@ export default {
 **resetWhenOutOfCombat**
 布尔值，默认为true。该值为true时，时间轴和触发器均在脱战时自动重置。否则，需要手动调用`data.StopCombat()`使其重置。
 
+**triggers** / **timelineTriggers**
+
+由触发器对象组成的数组。触发器结构详见下文。
+
+时间轴触发器（`timelineTriggers`）有专属区域，通过正则表达式匹配时间轴文本。
+
 ## 触发器结构
 
-```javascript
+```typescript
 {
   id: 'id string',
+  comment: { en: 'comment text' },
   type: 'StartsUsing',
   disabled: false,
   // 提示：参见 [net_fields.d.ts](https://github.com/OverlayPlugin/cactbot/blob/main/types/net_fields.d.ts) 中的 `NetFields` 类型。
@@ -98,6 +223,7 @@ export default {
   delaySeconds: 0,
   durationSeconds: 3,
   suppressSeconds: 0,
+  countdownSeconds: 5,
   promise: function(data, matches, output) { /* 执行异步操作，应当返回 Promise */ },
   sound: '',
   soundVolume: 1,
@@ -111,7 +237,6 @@ export default {
     key1: { en: 'output1 ${value}'},
     key2: { en: 'output2 ${value}'},
   },
-  comment: { en: 'comment text' },
 },
 ```
 
@@ -141,6 +266,8 @@ export default {
 
 更多时候，相对于直接使用正则表达式字面量，我们更加推荐使用正则替换函数。正则替换函数是指定义在 [regexes.ts](https://github.com/OverlayPlugin/cactbot/blob/main/resources/regexes.ts) 和 [netregexes.ts](https://github.com/OverlayPlugin/cactbot/blob/main/resources/netregexes.ts) 中的辅助函数，这些函数可以接受特定参数值用于匹配日志，并通过正则捕获组的方式帮助你提取未定义的参数值。换句话说，这些函数用于自动构建能够匹配指定类型的日志行的正则表达式。顾名思义，`netRegex` 使用 `NetRegexes` 辅助函数，而 `regex` 使用 `Regexes` 辅助函数。
 
+在为 `netRegex` 指定多个技能 ID 时，推荐使用包含完整 ID 的数组语法，而不是使用正则表达式。许多较旧的触发器文件仍在使用正则表达式。尽管如此，请优先选择 `id: ["A5B6", "A5B7"]` 而非 `id: "A5B[67]"` 或 `id: "(A5B6|A5B7)"`。
+
 `regex` 和 `netRegex` 会使用 `timelineReplace` 中的值自动翻译到对应语言。
 
 **condition: function(data, matches)**
@@ -160,6 +287,16 @@ export default {
 
 **suppressSeconds**
 等待时间，单位为秒，再次触发该触发器的冷却时间。其值可以是数字或返回数字的 function(data, matches)。该时间从正则表达式匹配之时开始计算，并且不受 delaySeconds 设置与否的影响。当设置了此元素的触发器被激活后，它在这段时间内无法再次被激活。
+
+**countdownSeconds**
+以 0.1 秒为步长展示一个倒计时（x.y）。
+其值可以是数字或返回数字的 `function(data, matches, output)`。
+计时从触发器输出生成的时间点（即任何 `delaySeconds` 到期且 `promise` 返回后）开始计算。
+如果 `countdownSeconds` 大于指定（或默认）的 `durationSeconds`，触发器显示时长会自动延长以匹配倒计时。
+如果倒计时小于持续时长，倒计时将在归零（0.0）后停止，并保持显示直到持续时间结束。
+默认情况下倒计时会附在文本末尾，但如果在输出字符串中包含 `{{CD}}`，倒计时会显示在占位符处。
+如果 `countdownSeconds` 设置为（或被覆盖为）0，则不会显示倒计时。
+文本转语音（TTS）既不会播放替换标记（`{{CD}}`），也不会播放倒计时数值。
 
 **sound**
 用于播放声音的音频文件，也可以是 'Info'，'Alert'，'Alarm' 或者 'Long' 之一。文件路径是对于 `ui/raidboss/` 文件夹的相对路径。
@@ -208,7 +345,7 @@ export default {
 
 这里有两个针对死刑的 `outputStrings` 的示例：
 
-```javascript
+```typescript
 outputStrings: {
   noTarget: {
     en: 'Tank Buster',
@@ -235,9 +372,9 @@ outputStrings: {
 
 当你想要输出字符串时，可以通过以下方式将参数传递给 `onTarget`。
 
-```javascript
+```typescript
 alarmText: (data, matches, output) => {
-  return output.onTarget({ name: matches.target });
+  return output.onTarget!({ name: data.party.member(matches.target) });
 },
 ```
 
@@ -245,21 +382,21 @@ alarmText: (data, matches, output) => {
 
 同理，调用另一个无参数的字符串也是一样的：
 
-```javascript
+```typescript
 infoText: (data, matches, output) => {
   return output.noTarget();
 },
 ```
 
-但是在 `response` 属性里使用 `outputStrings` 会稍微有些不同。这种情况下不能在触发器上设置 `outputStrings` 这个值，而是应该让 `response` 返回一个函数，并调用 `output.responseOutputStrings {};`。其中 `{}` 的部分就是上面提到的 `outputStrings` 对象。这看起来非常怪异，但是可以让 response 能够使用 outputStrings 的同时可以正常返回，并保证 [resources/responses.ts](../../resources/responses.ts) 更加耦合。
+但是在 `response` 属性里使用 `outputStrings` 会稍微有些不同。这种情况下不能在触发器上设置 `outputStrings` 这个值，而是应该让 `response` 返回一个函数，并调用 `output.responseOutputStrings = {};`。其中 `{}` 的部分就是上面提到的 `outputStrings` 对象。这看起来非常怪异，但是可以让 response 能够使用 outputStrings 的同时可以正常返回，并保证 [resources/responses.ts](../../resources/responses.ts) 更加耦合。
 
 例子：
 
-```javascript
+```typescript
 response: (data, matches, output) => {
   output.responseOutputStrings = { text: { en: 'Some Text: ${words}' } };
   return {
-    alarmText: output.text({ words: 'words word words' }),
+    alarmText: output.text!({ words: 'words word words' }),
   };
 },
 ```
@@ -269,7 +406,7 @@ response: (data, matches, output) => {
 
 示例：
 
-```javascript
+```typescript
 comment: {
   cn: `写下你的注解文本。<em>支持HTML标签</em>`,
 },
@@ -284,6 +421,8 @@ comment: {
 触发器元素按以下顺序载入，定义元素时也应该按该顺序排序：
 
 - id
+- comment
+- type
 - disabled
 - netRegex
 - regex
@@ -294,9 +433,10 @@ comment: {
 - delaySeconds
 - durationSeconds
 - suppressSeconds
-- (等待delaySeconds延迟结束)
+- (等待 delaySeconds 延迟结束)
+- countdownSeconds
 - promise
-- (等待Promise执行完成)
+- (等待 promise 执行完成)
 - sound
 - soundVolume
 - response
@@ -328,10 +468,11 @@ comment: {
 
 以下是使用了这三种元素的示例触发器：
 
-```javascript
+```typescript
 {
   id: 'TEA Mega Holy Modified',
-  netRegex: NetRegexes.startsUsing({ source: 'Alexander Prime', id: '4A83', capture: false }),
+  type: 'StartsUsing',
+  netRegex: { source: 'Alexander Prime', id: '4A83', capture: false },
   condition: Conditions.caresAboutMagical(),
   response: Responses.bigAoe('alert'),
 },
@@ -339,7 +480,7 @@ comment: {
 
 尽管由于我们需要定义所有语言的正则表达式，该方法并未减少代码行数，但仍然远远优于：
 
-```javascript
+```typescript
 {
   id: 'TEA Mega Holy Modified',
   netRegex: /^(?:20)\|(?:[^|]*)\|(?:[^|]*)\|(?:Alexander Prime)\|(?:4A83)\|/i,
@@ -370,24 +511,23 @@ comment: {
 
 以下是使用 `outputStrings` 和 `Outputs` 的例子：
 
-```javascript
+```typescript
 {
   id: 'E9S Zero-Form Devouring Dark',
-  netRegex: NetRegexes.startsUsing({ id: '5623', source: 'Cloud Of Darkness' }),
+  type: 'StartsUsing',
+  netRegex: { id: '5623', source: 'Cloud Of Darkness' },
   durationSeconds: 4,
-  alertText: function(data, matches, output) {
+  alertText: (data, matches, output) => {
     if (data.me === matches.target)
-      return output.tankBusterOnYou();
-
+      return output.tankBusterOnYou!();
     if (data.role === 'tank')
-      return output.tankSwap();
-
+      return output.tankSwap!();
     if (data.role === 'healer')
-      return output.tankBusters({ player: data.party.member(matches.target) });
+      return output.tankBusters!({ player: data.party.member(matches.target) });
   },
-  infoText: function(data, _matches, output) {
+  infoText: (data, _matches, output) => {
     if (data.role !== 'tank' && data.role !== 'healer')
-      return output.avoidLaser();
+      return output.avoidLaser!();
   },
   outputStrings: {
     tankBusterOnYou: Outputs.tankBusterOnYou,
@@ -398,9 +538,9 @@ comment: {
       de: 'Laser ausweichen',
       fr: 'Évitez le laser',
       ja: 'レーザー注意',
-      cn: '躲避击退激光',
+      cn: '躲避死刑激光',
       ko: '레이저 피하기',
-      tc: '躲避擊退雷射',
+      tc: '躲避死刑雷射',
     },
   },
 },
@@ -446,8 +586,9 @@ Cactbot在原基础上实现了一部分扩展语法。扩展语法可以在时�
 - [日文覆盖率报告](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_ja.html)
 - [中文覆盖率报告](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_cn.html)
 - [韩文覆盖率报告](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_ko.html)
+- [繁体中文覆盖率报告](https://overlayplugin.github.io/cactbot/util/coverage/missing_translations_tc.html)
 
-待办事项：对于中国服/韩国服，更好地做法是将未公开的版本显示为无需翻译。
+待办事项：对于繁体中文服/韩国服，更好地做法是将未公开的版本显示为无需翻译。
 
 你可以运行 `npm run util` 然后选择 `find translation` 以查找需要翻译的内容。也可以直接输入 `npm run util -- findTranslations -f . -l cn` 查找缺失的中文翻译（对于法文则是 `-l fr`，对于德文则是 `-l de`，以此类推）。如果选择的是默认选项，该脚本会生成与在线版本完全相同的内容。
 
@@ -462,7 +603,7 @@ Cactbot在原基础上实现了一部分扩展语法。扩展语法可以在时�
 
 cactbot 中许多代码使用了 `LocaleText` 类型取代需要翻译的字符串。
 
-`LocaleText` 是一个包含了多个语言的字符串的对象，并且按 `en` `de` `fr` `ja` `cn` `ko` 的顺序排列。单元测试会检测顺序是否正确。该顺序的考虑是“英语优先”，然后“国际服的语言按字母顺序排列”，最后是“其他服按字母顺序排列”。英语是唯一必选的语言。
+`LocaleText` 是一个包含了多个语言的字符串的对象，并且按 `en` `de` `fr` `ja` `cn` `ko` `tc` 的顺序排列。单元测试会检测顺序是否正确。该顺序的考虑是“英语优先”，然后“国际服的语言按字母顺序排列”，最后是“其他服按字母顺序排列”。英语是唯一必选的语言。
 
 下面是一个缺失了日语翻译的例子，测试报告会指出这个问题：`ui/oopsyraidsy/data/06-ew/raid/p4n.ts:78 [code] text: {`。其中 `text: {` 部分是缺失了日语翻译的代码起始部分。HTML 报告页面也有链接到对应代码的链接。
 
@@ -616,3 +757,110 @@ cactbot 中许多代码使用了 `LocaleText` 类型取代需要翻译的字符�
 最后一个例子比较疯狂，它写作 `'724P-Operated Superior Flight Unit \\\\\\(A-Lpha\\\\\\)'`。`(` 是特殊字符，在正则表达式中必须写作 `\(`，所以我们要用字符串字面量匹配它就必须写成四个反斜线 `\\\\` 匹配单个反斜线，加上 `\\(` 匹配单个括号。这个例子如果写成正则表达式字面量应该是 `/724P-Operated Superior Flight Unit \\\(A-Lpha\\\)/`。
 
 虽然转义非常烦人，但好消息是，譬如反斜线、括弧、方括号等这些需要转义的特殊字符在 FFXIV 中还是比较少的，所以不需要太过担心，遇到问题可以提问。
+
+## 同步文件
+
+在 FFXIV 中，有些内容在不同区域中是完全相同的，但技能 ID 不同。例如异闻迷宫与其对应的零式难度，或者极神与其对应的幻巧版本。
+
+处理这些问题的最佳方法是在 `util/sync_files.ts` 中添加包含文件和能力 ID 映射的条目。运行 `npm run sync-files` 将根据这些映射创建新文件。使用此脚本可以确保这些文件保持同步。
+
+## 触发器示例
+
+以下是触发器编写中常见的一些逻辑模式。
+
+### 收集 / 播报 / 清理 (使用多个触发器实现)
+
+对于需要观察多行日志才能得出结论的机制，常见的模式是“收集/播报/清理”。
+其中一个触发器负责收集所有行并将信息存入 `data`。
+另一个播报触发器使用相同的 `netRegex`，但配合 `delaySeconds` + `suppressSeconds`，利用 `data` 指向的信息进行播报。
+最后一个清理触发器使用相同的 `netRegex`，配合更长的 `delaySeconds` + (可选的) `suppressSeconds`，用于清理 `data` 中收集的信息。
+
+- [P7N Hemitheos Aero II Collect](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/raid/p7n.ts#:~:text=id%3A%20%27P7N%20Hemitheos%20Aero%20II%20Collect%27)
+- [P7N Hemitheos Aero II Call](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/raid/p7n.ts#:~:text=id%3A%20%27P7N%20Hemitheos%20Aero%20II%20Call%27)
+- [P7N Hemitheos Aero II Cleanup](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/raid/p7n.ts#:~:text=id%3A%20%27P7N%20Hemitheos%20Aero%20II%20Cleanup%27)
+
+通常情况下，清理逻辑可以合并到播报触发器中，或者放在阶段转换以及其他触发器里。
+
+### 收集 / 播报 / 清理 (使用单个触发器实现)
+
+也可以在单个触发器中完成收集 / 播报 / 清理。
+
+参考：[AAI Ketuduke Foamy Fetters Bubble Weave](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/dungeon/another_aloalo_island.ts#:~:text=id%3A%20%27AAI%20Ketuduke%20Foamy%20Fetters%20Bubble%20Weave%27)
+
+`delaySeconds` 负责执行收集。只要延迟大于 0，这种模式就能奏效。你也可以在收集到所有所需信息后，可选地将延迟设置为 0，以便触发器能够尽快执行。
+
+`alertText` 负责执行播报。此处不应使用 `suppressSeconds`（因为那会阻止后续的收集），而是检查是否有已收集的信息，并在发现清理已发生时提前退出。
+
+在 `run` 中执行清理意味着，一旦首个触发器实例完成并清理了数据，该触发器的其余延迟版本将在 `alertText` 中因找不到数据而自动退出。
+
+### 头顶标记
+
+关于如何编写 [头顶标记日志](../LogGuide.md#line-27-0x1b-networktargeticon-head-marker) 触发器，请参考专门的 [头顶标记指南](../Headmarkers.md)。
+
+### 获取战斗成员信息
+
+编写触发器时需要注意的一点是，并非所有日志行都实时可靠，部分信息来源于内存读取而非实时网络数据。
+例如 [AddCombatant](../LogGuide.md#line-03-0x03-addcombatant) 日志的生成时间点可能会在时间轴上产生轻微的偏差。
+而对于其他包含坐标属性的日志（如 [StartsUsing](../LogGuide.md#line-20-0x14-networkstartscasting) 或 [AddCombatant](../LogGuide.md#line-03-0x03-addcombatant)），其包含的坐标数据可能是过时的。
+
+这种现象的根本原因在于：FFXIV 经常会在地图默认位置生成一个不可见的“角色”作为占位符，然后在它开始施法前的一瞬间将其瞬移到实际位置。解析插件能否捕捉到移动后的正确坐标，完全取决于读写内存那一刻的随机时机。
+
+注意：[Ability](../LogGuide.md#line-21-0x15-networkability) 日志中的坐标信息通常是准确的。
+注意：[StartsUsingExtra](../LogGuide.md#line-263-0x107-startsusingextra) 源自网络数据，因此其坐标信息始终可靠。
+
+针对坐标过时问题的最佳方案是使用 `getCombatants`（通过调用 `callOverlayHandler({ call: 'getCombatants', ... })` 实现）。该函数由 OverlayPlugin 提供，能够直接调取当前的内存状态并返回即时数值。
+您可以结合监控 [CombatantMemory](../LogGuide.md#line-261-0x105-combatantmemory) 日志（该日志会在战斗成员坐标变化时触发）来判断目标是否已移动到位，从而确定调用 `getCombatants` 的最佳时机。需要留意的是，`CombatantMemory`（顾名思义）本身也源自内存，因此可能存在极细微的延迟。
+
+参考案例：[P10S Dividing Wings Tether](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/raid/p10s.ts#:~:text=id%3A%20%27P10S%20Dividing%20Wings%20Tether%27)
+
+一些通用的建议：
+
+- 在 `Data` 对象中添加 `combatantData: PluginCombatantState[];`（因为你可以跨所有 `getCombatants` 调用复用它，到目前为止尚未遇到需要同时使用它们的情况）。
+- 添加一个 `promise` 来调用 `getCombatants`（它会快速但异步地返回）。
+- 确保先清理 `data.combatantData`。
+- 战斗成员的 ID 是十进制 ID 而非十六进制 ID，因此你必须进行转换（参见示例触发器）。
+- 返回的战斗成员列表是无序的。
+- 在处理之前，验证返回的战斗成员列表中包含了正确数量的战斗成员。
+
+### 两步机制
+
+常见的多步机制示例是“分摊 => 分散”或“分散 => 分摊”。
+比较好的做法是播报 `分散 => 分摊`，然后在分散判定后再播报 `分摊`。
+这不仅是对玩家的提醒（特别是在手忙脚乱时），而且如果第二段播报是由第一段伤害触发的，它还能告诉玩家何时可以安全移动（即初始机制已锁定）。
+
+参考：[AAI Ketuduke Hydro Buff Double](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/dungeon/another_aloalo_island.ts#:~:text=id%3A%20%27AAI%20Ketuduke%20Hydro%20Buff%20Double%27)
+以及 [AAI Ketuduke Hydro Buff Double Followup](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/dungeon/another_aloalo_island.ts#:~:text=id%3A%20%27AAI%20Ketuduke%20Hydro%20Buff%20Double%20Followup%27)
+
+### 三步机制
+
+游戏中还有一些包含三步（或更多）步骤的机制，具有一连串的移动动作。
+五连咏唱、P12S 门神的翅膀、以及异闻六根山的三段霞斩都是例子。
+
+这种带有视觉预兆的机制，通用的设计方式如下（其中“第一段”、“第二段”、“第三段”可以是“分散”、“左侧”或“换位”等）：
+
+- [收到第一段预兆] alert: `第一段机制`（保持较长的显示时间，以免在等待后续预兆时忘记）。
+- [收到第二段预兆] info: `(然后是第二阶段)`（持续时间短）。
+- [收到第三段预兆] info: `第一 => 第二 => 第三`（保持较长的显示时间，以便在机制连发时阅读后续路径）。
+- [第一段机制判定] alert: `第二阶段`（第一阶段的显示时间应在此之前结束）。
+- [第二段机制判定] alert: `第三阶段`。
+
+这种模式的优势在于：
+
+- 如果有人想要进行指挥，该模式使全队能为后续每一步提前做好准备。
+- 屏幕上同时最多只会出现一条告警文字和一条信息文字。
+- 玩家可以根据需求灵活禁用不需要的提示。
+- 如果最后两步 `第二阶段` 和 `第三阶段` 的播报是基于前置技能的判定 ID 触发的，那么在该时刻移动是非常精准且安全的。
+
+参考示例：[P12S First Wing](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/raid/p12s.ts#:~:text=id%3A%20%27P12S%20First%20Wing%27),
+[P12S Wing Collect](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/raid/p12s.ts#:~:text=id%3A%20%27P12S%20Wing%20Collect%27),
+[P12S Wing Followup](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/raid/p12s.ts#:~:text=id%3A%20%27P12S%20Wing%20Followup%27)
+
+另请参阅：[异闻六根山的“三段霞斩”触发器](https://github.com/OverlayPlugin/cactbot/blob/main/ui/raidboss/data/06-ew/dungeon/another_mount_rokkon.ts#:~:text=id%3A%20%27AMR%20Moko%20Triple%20Kasumi-giri%20Collect%27)
+
+## 未来计划
+
+- 优化 cactbot 配置界面中副本和选项的查找（目前效率较低）。
+- 为触发器集合添加“共享输出字符串”，让多个触发器能共用同一组字符串，减少翻译重复，且用户无需到处添加覆盖配置。
+- 支持在异闻/异闻零式之间共享配置覆盖。
+- 副本模拟器 (Raidemulator)：支持显示来自同一触发器的多条输出：<https://github.com/quisquous/cactbot/issues/5490>
+- 副本模拟器 (Raidemulator)：解决重置问题：<https://github.com/quisquous/cactbot/issues/5714>

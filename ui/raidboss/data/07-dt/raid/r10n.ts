@@ -313,6 +313,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Spread Fire Cone',
+          de: 'Verteilen für Feuer-Kegel',
           cn: '火焰扇形分散',
         },
       },
@@ -365,6 +366,7 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         text: {
           en: 'KB from ${dir1} + away from ${dir2}',
+          de: 'Rückstoß von ${dir1} + weg von ${dir2}',
           cn: '从${dir1}击退 + 远离${dir2}',
         },
         ...Directions.outputStringsCardinalDir,
@@ -420,6 +422,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         unknown: {
           en: 'Cone cleave from ???',
+          de: 'Kegel-AoE von ???',
           cn: '扇形攻击未知来向',
         },
       },
@@ -433,6 +436,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go N/S + Big AoE',
+          de: 'Geh N/S + Große AoE',
           cn: '去上/下 + 高伤害 AOE',
         },
       },
@@ -446,6 +450,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Soak Towers',
+          de: 'Türme nehmen',
           cn: '踩塔',
         },
       },
@@ -463,6 +468,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Away from exploding orbs',
+          de: 'Weg von explodierenden Orbs',
           cn: '远离爆炸球',
         },
       },
@@ -477,6 +483,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Dodge Cones x2',
+          de: 'Kegel-AoEs ausweichen x2',
           cn: '躲避两轮扇形攻击',
         },
       },
@@ -497,6 +504,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Baiting fire cones',
+          de: 'ködere Feuer-Kegel',
           cn: '诱导火扇形',
         },
       },
@@ -511,6 +519,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Baiting water cones',
+          de: 'ködere Wasser-Kegel',
           cn: '诱导水扇形',
         },
       },
@@ -558,25 +567,132 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Bait ${elem} cone from ${dir}',
+          de: 'ködere ${elem}-Kedel von ${dir}',
           cn: '诱导${elem}扇形来自${dir}',
         },
         ...Directions.outputStrings8Dir,
         water: {
           en: 'Water',
+          de: 'Wasser',
           cn: '水',
         },
         fire: {
           en: 'Fire',
+          de: 'Feuer',
           cn: '火',
         },
         middle: {
           en: 'Middle',
+          de: 'Mitte',
           cn: '中间',
         },
       },
     },
   ],
   timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Deep Blue': 'Indigowelle',
+        'Red Hot': 'Scharlachflamme',
+        'The Xtremes': 'Team Extrem',
+        'Xtreme Aether': 'extrem(?:e|er|es|en) Äthersphäre',
+      },
+      'replaceText': {
+        '--Blue middle--': '--Blau mitte--',
+        '--Red middle--': '--Rot mitte--',
+        '\\(cone\\)': '(Kegel-Aoe)',
+        '\\(line\\)': '(Linie)',
+        '\\(jump\\)': '(Sprung)',
+        'Alley-Oop Inferno': 'Flammen-Alley-Oop',
+        'Alley-oop Inferno': 'Flammen-Alley-Oop',
+        'Alley-Oop Maelstrom': 'Hydro-Alley-Oop',
+        'Alley-oop Maelstrom': 'Hydro-Alley-Oop',
+        'Blasting Snap': 'Flammenruck',
+        'Cutback Blaze': 'Flammen-Rückschnitt',
+        'Deep Impact': 'Hydroklopper',
+        'Deep Varial': 'Hydro-Halbdreher',
+        'Divers\' Dare': 'Brodelnder Kampfgeist',
+        'Epic Brotherhood': 'Brüderbund',
+        'Firesnaking': 'Flammen-Schlängeln',
+        'Hot Aerial': 'Flammensprung',
+        'Hot Impact': 'Flammenklopper',
+        'Insane Air': 'Wahnsinnsritt',
+        'Plunging Snap': 'Hydroruck',
+        'Pyrotation': 'Flammendreher',
+        'Sick Swell': 'Riesenwelle',
+        'Sickest Take-off': 'Fetter Absprung',
+        'Steam Burst': 'Mischknall',
+        'Watersnaking': 'Hydro-Schlängeln',
+        'Xtreme Spectacular': 'Ultimatives Extremmanöver',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Deep Blue': 'Deep Blue',
+        'Red Hot': 'Red Hot',
+        'The Xtremes': 'Les Xtrêmes',
+        'Xtreme Aether': 'éther Xtrême',
+      },
+      'replaceText': {
+        'Alley-Oop Inferno': 'Alley-oop enflammé',
+        'Alley-oop Inferno': 'Alley-oop enflammé',
+        'Alley-Oop Maelstrom': 'Alley-oop hydrique',
+        'Alley-oop Maelstrom': 'Alley-oop hydrique',
+        'Blasting Snap': 'Claquement enflammé',
+        'Cutback Blaze': 'Riposte enflammée',
+        'Deep Impact': 'Impact puissant',
+        'Deep Varial': 'Barrière hydrique',
+        'Divers\' Dare': 'Esprit combatif',
+        'Epic Brotherhood': 'Fraternité',
+        'Firesnaking': 'Ondulation enflammée',
+        'Hot Aerial': 'Flamme aérienne',
+        'Hot Impact': 'Impact brûlant',
+        'Insane Air': 'Figure démentielle',
+        'Plunging Snap': 'Claquement hydrique',
+        'Pyrotation': 'Rotation enflammée',
+        'Sick Swell': 'lame de fond',
+        'Sickest Take-off': 'Ascension déchaînée',
+        'Steam Burst': 'Déflagration combinée',
+        'Watersnaking': 'Ondulation hydrique',
+        'Xtreme Spectacular': 'Spectacle Xtrême',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Deep Blue': 'ディープブルー',
+        'Red Hot': 'レッドホット',
+        'The Xtremes': 'エクストリームズ',
+        'Xtreme Aether': 'エクストリームズ・エーテル',
+      },
+      'replaceText': {
+        'Alley-Oop Inferno': 'フレイムアリウープ',
+        'Alley-oop Inferno': 'フレイムアリウープ',
+        'Alley-Oop Maelstrom': 'ハイドロアリウープ',
+        'Alley-oop Maelstrom': 'ハイドロアリウープ',
+        'Blasting Snap': 'フレイムスナップ',
+        'Cutback Blaze': 'フレイムカットバック',
+        'Deep Impact': 'ディープインパクト',
+        'Deep Varial': 'ハイドロバリエル',
+        'Divers\' Dare': 'ファイティングスピリット',
+        'Epic Brotherhood': 'ブラザーフッド',
+        'Firesnaking': 'フレイムスネーキング',
+        'Hot Aerial': 'フレイムエアリアル',
+        'Hot Impact': 'ホットインパクト',
+        'Insane Air': 'インセインエアー',
+        'Plunging Snap': 'ハイドロスナップ',
+        'Pyrotation': 'フレイムローテーション',
+        'Sick Swell': '高波',
+        'Sickest Take-off': 'シック・テイクオフ',
+        'Steam Burst': 'ミックスバースト',
+        'Watersnaking': 'ハイドロスネーキング',
+        'Xtreme Spectacular': 'エクストリーム・スペクタクル',
+      },
+    },
     {
       'locale': 'cn',
       'replaceSync': {
