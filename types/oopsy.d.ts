@@ -1,5 +1,6 @@
 import { Lang } from '../resources/languages';
 import { TrackedEvent } from '../ui/oopsyraidsy/player_state_tracker';
+import { TimelineReplacement } from '../ui/raidboss/timeline_parser';
 
 import { OopsyData } from './data';
 import { NetAnyMatches, NetMatches } from './net_matches';
