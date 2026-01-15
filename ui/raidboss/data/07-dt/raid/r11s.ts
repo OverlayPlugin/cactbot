@@ -129,16 +129,61 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11S Raw Steel Trophy Axe',
       type: 'StartsUsing',
       netRegex: { id: 'B422', capture: false },
-      response: Responses.spread(),
+      infoText: (data, _matches, output) => {
+        return output.text!({
+          party: output.partySpread!(),
+          tank: output.sharedTankStack!(),
+        });
+      },
+      outputStrings: {
+        partySpread: {
+          en: 'Party Spread',
+        },
+        sharedTankStack: {
+          en: 'Tank Stack',
+          de: 'Tanks Sammeln',
+          fr: 'Package Tanks',
+          ja: 'タンク頭割り',
+          cn: '坦克分摊',
+          ko: '탱끼리 모이기',
+          tc: '坦克分攤',
+        },
+        text: {
+          en: '${party}/${tank}',
+        },
+      },
     },
     {
       id: 'R11S Raw Steel Trophy Scythe',
       type: 'StartsUsing',
       netRegex: { id: 'B423', capture: false },
-      infoText: (_data, _matches, output) => output.text!(),
+      infoText: (_data, _matches, output) => {
+        return output.text!({
+          party: output.partyStack!(),
+          tank: output.tankCleaves!(),
+        });
+      },
       outputStrings: {
+        partyStack: {
+          en: 'Party Stack',
+          de: 'In der Gruppe sammeln',
+          fr: 'Package en groupe',
+          ja: 'あたまわり',
+          cn: '分摊',
+          ko: '쉐어',
+          tc: '分攤',
+        },
+        tankCleaves: {
+          en: 'Tank Cleaves',
+          de: 'Tank Cleaves',
+          fr: 'Tank Cleaves',
+          ja: 'タンク前方攻撃',
+          cn: '坦克顺劈',
+          ko: '광역 탱버',
+          tc: '坦克順劈',
+        },
         text: {
-          en: 'Party Stack/Tank Cones',
+          en: '${party}/${tank}',
         },
       },
     },
