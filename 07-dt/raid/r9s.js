@@ -19,6 +19,7 @@ Options.Triggers.push({
   timelineFile: 'r9s.txt',
   initData: () => ({
     flailPositions: [],
+    coffinfillers: [],
     actorPositions: {},
     bats: { inner: [], middle: [], outer: [] },
     satisfiedCount: 0,
@@ -199,6 +200,169 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: 'B333', source: 'Vamp Fatale', capture: false },
       response: Responses.bigAoe(),
+    },
+    {
+      id: 'R9S Coffinfiller',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B368', 'B369', 'B36A'], capture: true },
+      suppressSeconds: (data) => data.coffinfillers.length === 0 ? 0 : 5,
+      run: (data, matches) => {
+        let danger;
+        const xPos = parseFloat(matches.x);
+        if (xPos < 95)
+          danger = 'outerWest';
+        else if (xPos < 100)
+          danger = 'innerWest';
+        else if (xPos < 105)
+          danger = 'innerEast';
+        else
+          danger = 'outerEast';
+        data.coffinfillers.push(danger);
+      },
+    },
+    {
+      id: 'R9S Half Moon',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B377', 'B379', 'B37B', 'B37D'], capture: true },
+      delaySeconds: 0.3,
+      alertText: (data, matches, output) => {
+        if (data.coffinfillers.length < 2) {
+          if (matches.id === 'B377')
+            return output.rightThenLeft();
+          if (matches.id === 'B37B')
+            return output.leftThenRight();
+          return output.bigHalfmoonNoCoffin({
+            dir1: output[matches.id === 'B379' ? 'right' : 'left'](),
+            dir2: output[matches.id === 'B379' ? 'left' : 'right'](),
+          });
+        }
+        const attackDirNum = Directions.hdgTo4DirNum(parseFloat(matches.heading));
+        const dirNum1 = (attackDirNum + 2) % 4;
+        const dir1 = Directions.outputFromCardinalNum(dirNum1);
+        const dirNum2 = attackDirNum;
+        const dir2 = Directions.outputFromCardinalNum(dirNum2);
+        const bigCleave = matches.id === 'B379' || matches.id === 'B37D';
+        const insidePositions = [
+          'innerWest',
+          'innerEast',
+        ];
+        const outsidePositions = [
+          'outerWest',
+          'outerEast',
+        ];
+        const westPositions = [
+          'innerWest',
+          'outerWest',
+        ];
+        const eastPositions = [
+          'innerEast',
+          'outerEast',
+        ];
+        let coffinSafe1 = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        coffinSafe1 = coffinSafe1.filter((pos) => !data.coffinfillers.includes(pos));
+        let coffinSafe2 = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        // Whatever gets hit first round will be safe second round
+        coffinSafe2 = coffinSafe2.filter((pos) => data.coffinfillers.includes(pos));
+        data.coffinfillers = [];
+        let dir1Text = output[dir1]();
+        let dir2Text = output[dir2]();
+        if (dir1 === 'dirW') {
+          coffinSafe1 = coffinSafe1.filter((pos) => !westPositions.includes(pos));
+          dir1Text = output.leftWest();
+        }
+        if (dir1 === 'dirE') {
+          coffinSafe1 = coffinSafe1.filter((pos) => !eastPositions.includes(pos));
+          dir1Text = output.rightEast();
+        }
+        if (dir2 === 'dirW') {
+          coffinSafe2 = coffinSafe2.filter((pos) => !westPositions.includes(pos));
+          dir2Text = output.leftWest();
+        }
+        if (dir2 === 'dirE') {
+          coffinSafe2 = coffinSafe2.filter((pos) => !eastPositions.includes(pos));
+          dir2Text = output.rightEast();
+        }
+        let coffin1;
+        let coffin2;
+        if (coffinSafe1.every((pos) => insidePositions.includes(pos)))
+          coffin1 = 'inside';
+        else if (coffinSafe1.every((pos) => outsidePositions.includes(pos)))
+          coffin1 = 'outside';
+        else
+          coffin1 = coffinSafe1.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+        if (coffinSafe2.every((pos) => insidePositions.includes(pos)))
+          coffin2 = 'inside';
+        else if (coffinSafe2.every((pos) => outsidePositions.includes(pos)))
+          coffin2 = 'outside';
+        else
+          coffin2 = coffinSafe2.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+        if (bigCleave) {
+          return output.bigHalfmoonCombined({
+            coffin1: output[coffin1](),
+            dir1: dir1Text,
+            coffin2: output[coffin2](),
+            dir2: dir2Text,
+          });
+        }
+        return output.combined({
+          coffin1: output[coffin1](),
+          dir1: dir1Text,
+          coffin2: output[coffin2](),
+          dir2: dir2Text,
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsCardinalDir,
+        text: {
+          en: '${first} => ${second}',
+        },
+        combined: {
+          en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+        },
+        bigHalfmoonCombined: {
+          en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
+        },
+        rightThenLeft: Outputs.rightThenLeft,
+        leftThenRight: Outputs.leftThenRight,
+        left: Outputs.left,
+        leftWest: Outputs.leftWest,
+        right: Outputs.right,
+        rightEast: Outputs.rightEast,
+        inside: {
+          en: 'Inside',
+        },
+        outside: {
+          en: 'Outside',
+        },
+        outerWest: {
+          en: 'Outer West',
+        },
+        innerWest: {
+          en: 'Inner West',
+        },
+        innerEast: {
+          en: 'Inner East',
+        },
+        outerEast: {
+          en: 'Outer East',
+        },
+        bigHalfmoonNoCoffin: {
+          en: '${dir1} max melee => ${dir2} max melee',
+          fr: '${dir1} max melée => ${dir2} max melée',
+          cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
+          ko: '${dir1} 칼끝딜 => ${dir2} 칼끝딜',
+        },
+      },
     },
     {
       id: 'R9S Crowd Kill',
