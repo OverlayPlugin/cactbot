@@ -382,7 +382,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
         },
         bigHalfmoonCombined: {
-          en: '${coffin1} + ${dir1} (big cleave) => ${coffin2} + ${dir2} (big cleave)',
+          en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
         },
         rightThenLeft: Outputs.rightThenLeft,
         leftThenRight: Outputs.leftThenRight,
