@@ -97,7 +97,7 @@ export const kNoSearchMatches = {
   fr: 'Aucun résultat trouvé.', // TODO: verify AI translation
   ja: '該当する結果が見つかりませんでした。', // TODO: verify AI translation
   cn: '未找到匹配项。',
-  ko: '일치하는 항목이 없습니다.', // TODO: verify AI translation
+  ko: '일치하는 항목이 없습니다.',
   tc: '未找到匹配項。', // TODO: verify AI translation
 };
 
