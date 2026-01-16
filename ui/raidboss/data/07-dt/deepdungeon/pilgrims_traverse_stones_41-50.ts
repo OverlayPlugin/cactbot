@@ -74,6 +74,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stand on a rock',
           de: 'Steh auf einem Stein',
+          fr: 'Restez sur un rocher',
           cn: '站在一块岩石上',
           ko: '돌 위에 서있기',
           tc: '站在一塊岩石上',
@@ -108,6 +109,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stand in quicksand',
           de: 'Im Treibsand stehen',
+          fr: 'Restez dans les sables mouvants',
           cn: '站在流沙里',
           ko: '모래늪에 서있기',
           tc: '站在流沙裡',
@@ -130,15 +132,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Ogbunabali': 'Ogbunabali',
-        'Traverse Anaconda': 'anaconda du pèlerinage',
-        'Traverse Petreffigy': 'effigie du pèlerinage',
-        'Traverse Pincerbeak': 'bec-pinceur du pèlerinage',
-        'Traverse Tolba': 'tolba du pèlerinage',
-        'Traverse Triffid': 'triffide du pèlerinage',
-        'Traverse Weapon': 'arme du pèlerinage',
+        'Traverse Anaconda': 'Anaconda du pèlerinage',
+        'Traverse Petreffigy': 'Effigie du pèlerinage',
+        'Traverse Pincerbeak': 'Bec-pinceur du pèlerinage',
+        'Traverse Tolba': 'Tolba du pèlerinage',
+        'Traverse Triffid': 'Triffide du pèlerinage',
+        'Traverse Weapon': 'Arme du pèlerinage',
       },
     },
     {
