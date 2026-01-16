@@ -124,7 +124,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にカン・ラーイ',
           cn: '十字多段AoE点名',
           ko: '십자 장판 대상자',
-          tc: '十字多段AoE點名',
+          tc: '十字多段AOE點名',
         },
       },
     },

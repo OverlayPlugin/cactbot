@@ -148,7 +148,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '反対側へ',
           cn: '去对侧边缘',
           ko: '반대편으로 이동',
-          tc: '去對側邊緣',
+          tc: '去對面邊緣',
         },
       },
     },

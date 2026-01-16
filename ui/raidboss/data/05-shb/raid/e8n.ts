@@ -237,7 +237,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に範囲攻撃 (塔に当たらないように)',
           cn: '扇形点名，躲开塔',
           ko: '부채꼴 대상자 - 장판 피하기',
-          tc: '扇形點名，躲開塔',
+          tc: '扇形點名, 躲開塔',
         },
         standInATower: {
           en: 'Stand in a tower',

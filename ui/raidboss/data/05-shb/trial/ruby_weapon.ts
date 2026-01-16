@@ -144,7 +144,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '時間切れ！',
           cn: '狂暴',
           ko: '전멸기!',
-          tc: '狂暴',
+          tc: '狂暴!',
         },
       },
     },

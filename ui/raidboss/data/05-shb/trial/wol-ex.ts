@@ -407,7 +407,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンクLB!!',
           cn: '坦克LB！！',
           ko: '탱리밋!!',
-          tc: '坦克LB！！',
+          tc: '坦克LB!!',
         },
       },
     },

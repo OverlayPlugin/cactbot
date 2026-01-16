@@ -225,7 +225,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線を安置に被らないように捨てる',
           cn: '诱导直线，不要覆盖安全点',
           ko: '안전지대 밖으로 장판 유도',
-          tc: '誘導直線，不要覆蓋安全點',
+          tc: '誘導直線, 不要覆蓋安全點',
         },
       },
     },
@@ -477,7 +477,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '飛行部隊と射撃部隊を見覚える', // FIXME
           cn: '去上边缘；躲避士兵射击/飞机轰炸',
           ko: '북쪽으로 이동, 엑사플레어, 병사 사격 확인',
-          tc: '去北面邊緣；躲避士兵射擊/飛機轟炸',
+          tc: '去北面邊緣; 躲避士兵射擊/飛機轟炸',
         },
       },
     },
@@ -653,7 +653,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Emerald Weapon': '綠寶石武器',
       },
       'replaceText': {
-        '--cutscene--': '妨礙思念',
+        '--cutscene--': '--過場動畫---',
         'Aetheroplasm Production': '生成炸彈',
         'Aire Tam Storm': '綠寶石大爆炸',
         'Bit Storm': '浮游砲：圓形射擊',

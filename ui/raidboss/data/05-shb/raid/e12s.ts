@@ -406,7 +406,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '青、重圧 (${player}と)',
             cn: '蓝色重压 (与${player})',
             ko: '파랑 (다른 대상자: ${player})',
-            tc: '藍色重壓 (與${player})',
+            tc: '藍色重壓 (與 ${player})',
           },
           titanOrangeStack: {
             en: 'Orange Stack',
@@ -479,7 +479,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Package sur VOUS (avec ${player})',
             cn: '分摊点名 (与${player})',
             ko: '쉐어 대상자 (+${player})',
-            tc: '分攤點名 (與${player})',
+            tc: '分攤點名 (與 ${player})',
           },
           stacks: {
             en: 'Stacks: ${players}',
@@ -928,7 +928,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '大ダメージ、中へ',
           cn: '超大伤害，去中间',
           ko: '아픈 광뎀, 중앙으로',
-          tc: '超大傷害，去中間',
+          tc: '超大傷害, 去中間',
         },
       },
     },
@@ -961,7 +961,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '大ダメージ、まもなく岩落とし',
           cn: '超大伤害，即将落石',
           ko: '아픈 광뎀, 폭탄 떨어짐',
-          tc: '超大傷害，即將落石',
+          tc: '超大傷害, 即將落石',
         },
       },
     },
@@ -1533,7 +1533,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '次へ！',
             cn: '下一步！',
             ko: '이동하기!',
-            tc: '下一步！',
+            tc: '下一步!',
           },
         }, intermediateRelativityOutputStrings);
 

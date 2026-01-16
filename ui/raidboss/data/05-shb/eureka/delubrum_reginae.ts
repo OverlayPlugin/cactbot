@@ -166,7 +166,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前',
           cn: '上',
           ko: '앞',
-          tc: '上',
+          tc: '前',
         },
         east: {
           en: 'Right',
@@ -184,7 +184,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後ろ',
           cn: '下',
           ko: '뒤',
-          tc: '下',
+          tc: '後',
         },
         west: {
           en: 'Left',
@@ -580,7 +580,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザーを避ける',
           cn: '躲避炮台射线',
           ko: '레이저 피하기',
-          tc: '躲避炮台射線',
+          tc: '躲避砲台射線',
         },
       },
     },
@@ -681,7 +681,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北のドーナツ範囲に入る',
           cn: '去上方月环',
           ko: '북쪽 원으로 이동',
-          tc: '去上方月環',
+          tc: '去北面月環',
         },
         weaveWithKnockback: {
           en: 'Get Knocked Back To Circle',
@@ -690,7 +690,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北のドーナツ範囲へ吹き飛ばされる',
           cn: '击退到上方月环中',
           ko: '원으로 넉백 당하기',
-          tc: '擊退到上方月環中',
+          tc: '擊退到北面月環中',
         },
       },
     },
@@ -975,7 +975,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${side}側へ (避ける！)',
             cn: '去${side}侧 (不吃剑！)',
             ko: '${side}으로 피하기!',
-            tc: '去${side}側 (不吃劍！)',
+            tc: '去${side}側 (不吃劍!)',
           },
         };
 

@@ -71,7 +71,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スターバース: 角へ',
           cn: '创星：角落躲避',
           ko: '별생성: 구석으로',
-          tc: '創星：角落躲避',
+          tc: '創星: 角落躲避',
         },
         starbirthAvoidCharge: {
           en: 'Starbirth: Avoid + Charge',
@@ -80,7 +80,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スターバース: 玉のない隅へ',
           cn: '创星：避免引爆 + 冲锋',
           ko: '별 생성: 별 피해서 징 맞기 + 돌진',
-          tc: '創星：避免引爆 + 衝鋒',
+          tc: '創星: 避免引爆 + 衝鋒',
         },
         starbirthExplode: {
           en: 'Starbirth: Explode',
@@ -89,7 +89,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スターバース: 爆発',
           cn: '创星：引爆一颗',
           ko: '별 생성: 별 터뜨리기',
-          tc: '創星：引爆一顆',
+          tc: '創星: 引爆一顆',
         },
         starbirthCharge: {
           en: 'Starbirth: Charge',
@@ -98,7 +98,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スターバース: 突進',
           cn: '创星：冲锋',
           ko: '별 생성: 돌진',
-          tc: '創星：衝鋒',
+          tc: '創星: 衝鋒',
         },
         starbirthEnrage: {
           en: 'Starbirth: Enrage',
@@ -107,7 +107,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'スターバース: 時間切れ',
           cn: '创星：狂暴',
           ko: '별 생성: 전멸기',
-          tc: '創星：狂暴',
+          tc: '創星: 狂暴',
         },
       },
     },
@@ -313,7 +313,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'オーブに当てないで',
           cn: '圆圈点名，远离晶石',
           ko: '원형 징, 구슬 피하세요',
-          tc: '圓圈點名，遠離晶石',
+          tc: '圓圈點名, 遠離晶石',
         },
         circleOnYou: {
           en: 'Circle on YOU',
@@ -340,7 +340,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '剣避けてからピザカット',
           cn: '先躲回返剑，再躲步进光',
           ko: '칼 먼저 피하고 장판 피하세요',
-          tc: '先躲回返劍，再躲步進光',
+          tc: '先躲回返劍, 再躲步進光',
         },
       },
     },

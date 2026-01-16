@@ -276,7 +276,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線を取る',
           cn: '接线（吃一次）',
           ko: '선 하나 낚아채기',
-          tc: '接線（吃一次）',
+          tc: '接線 (吃一次)',
         },
       },
     },

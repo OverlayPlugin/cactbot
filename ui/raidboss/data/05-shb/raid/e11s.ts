@@ -264,7 +264,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${player1} に雷, ${player2} に炎',
             cn: '雷点${player1}，火点${player2}',
             ko: '"${player1}" 번개, "${player2}" 화염',
-            tc: '雷點 ${player1}，火點 ${player2}',
+            tc: '雷點 ${player1}, 火點 ${player2}',
           },
         };
 
@@ -329,7 +329,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '${player1} に光, ${player2} に炎',
             cn: '光点${player1}，火点${player2}',
             ko: '"${player1}" 홀리, "${player2}" 화염',
-            tc: '光點 ${player1}，火點 ${player2}',
+            tc: '光點 ${player1}, 火點 ${player2}',
           },
         };
 

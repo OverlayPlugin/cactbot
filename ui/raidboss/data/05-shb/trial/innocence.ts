@@ -31,7 +31,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '背中を向けて、塔を踏む',
           cn: '背对BOSS，踩塔',
           ko: '뒤돌고 장판 들어가기',
-          tc: '背對Boss，踩塔',
+          tc: '背對Boss, 踩塔',
         },
       },
     },

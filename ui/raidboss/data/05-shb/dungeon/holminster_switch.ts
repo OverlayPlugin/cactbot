@@ -305,7 +305,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'The Wound': '紫黑裂痕',
         'The Auction': '牲畜賣場',

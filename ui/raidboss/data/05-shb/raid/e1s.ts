@@ -304,7 +304,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分にレーザー',
           cn: '坦克射线',
           ko: '탱 레이저 대상자',
-          tc: '坦克射線',
+          tc: '坦克雷射點名',
         },
       },
     },

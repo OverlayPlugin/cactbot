@@ -275,7 +275,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '車輪: 横へ',
           cn: '车轮：两侧',
           ko: '바퀴: 옆으로',
-          tc: '車輪：兩側',
+          tc: '車輪: 兩側',
         },
       },
     },

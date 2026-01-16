@@ -43,7 +43,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雑魚: 子タイタン',
           cn: '小土豆出现',
           ko: '화강암 감옥 쫄',
-          tc: '小馬鈴薯出現',
+          tc: '花崗石衛出現',
         },
       },
     },
@@ -230,24 +230,23 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bomb Boulder': '爆破岩石',
         'Granite Gaoler': '花崗石衛',
         'Titan': '泰坦',
       },
       'replaceText': {
-        // '\\(all\\)': '', // FIXME '(全部)'
-        // '\\(clock\\)': '', // FIXME '(顺时针)'
-        // '\\(one side\\)': '', // FIXME '(一侧)'
-        // '\\(row 1\\)': '', // FIXME '(第1列)'
-        // '\\(row 2\\)': '', // FIXME '(第2列)'
-        // '\\(row 3\\)': '', // FIXME '(第3列)'
+        '\\(all\\)': '(全部)',
+        '\\(clock\\)': '(順時針)',
+        '\\(one side\\)': '(一側)',
+        '\\(row 1\\)': '(第1列)',
+        '\\(row 2\\)': '(第2列)',
+        '\\(row 3\\)': '(第3列)',
         'Burst': '大爆炸',
         'Bury': '塌方',
         'Earthen Fury': '大地之怒',
-        // 'Gaoler Adds': '', // FIXME '花岗石卫出现'
-        // 'Gaoler Landslide': '', // FIXME '花岗石卫地裂'
+        'Gaoler Adds': '花崗石衛出現',
+        'Gaoler Landslide': '花崗石衛地裂',
         'Gaoler Tumult': '激震',
         'Geocrush': '大地撞擊',
         '(?<! )Landslide': '地裂',

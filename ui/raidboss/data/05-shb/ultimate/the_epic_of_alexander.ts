@@ -886,7 +886,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外へ',
           cn: '远离，躲避飞轮',
           ko: '바깥으로 차크람 피하기',
-          tc: '遠離，躲避飛輪',
+          tc: '遠離, 躲避飛輪',
         },
       },
     },
@@ -1622,7 +1622,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央にチャクラム誘導; アレキの反対見て',
           cn: '中间引导飞轮，背对亚历山大',
           ko: '가운데로 차크람 유도; 알렉 반대쪽이 북쪽',
-          tc: '中間引導飛輪，背對亞歷山大',
+          tc: '中間引導飛輪, 背對亞歷山大',
         },
         baitChakrams: {
           en: 'Bait Chakrams',
@@ -1684,7 +1684,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右上 外向き 懺悔3回目',
           cn: '左侧，靠近机器人，面向场外 -> 踩第三次灵泉',
           ko: '왼쪽 위 / 참회 #3',
-          tc: '左側，靠近機器人，面向場外 -> 踩第三次靈泉',
+          tc: '左側, 靠近機器人, 面向場外 -> 踩第三次靈泉',
         },
         marker2: {
           en: 'Back Right Opposite Robot; Look Middle; 3rd Puddle',
@@ -1693,7 +1693,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左下 内向き 懺悔3回目',
           cn: '右侧，远离机器人，面向场中 -> 踩第三次灵泉',
           ko: '오른쪽 위 / 참회 #3',
-          tc: '右側，遠離機器人，面向場中 -> 踩第三次靈泉',
+          tc: '右側, 遠離機器人, 面向場中 -> 踩第三次靈泉',
         },
         marker3: {
           en: 'Back Left Opposite Robot; No Puddle',
@@ -1702,7 +1702,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左上',
           cn: '左侧，远离机器人，面向场外，不踩灵泉',
           ko: '왼쪽 아래',
-          tc: '左側，遠離機器人，面向場外，不踩靈泉',
+          tc: '左側, 遠離機器人, 面向場外, 不踩靈泉',
         },
         marker4: {
           en: 'Right To Robot; No puddle',
@@ -1711,7 +1711,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右下',
           cn: '右侧，靠近机器人，面向场中，不踩灵泉',
           ko: '오른쪽 아래',
-          tc: '右側，靠近機器人，面向場中，不踩靈泉',
+          tc: '右側, 靠近機器人, 面向場中, 不踩靈泉',
         },
         marker5: {
           en: 'Left Robot Side -> 1st Puddle',
@@ -1720,7 +1720,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右ちょい上 懺悔1回目',
           cn: '左侧，踩第一次灵泉',
           ko: '왼쪽 / 참회 #1',
-          tc: '左側，踩第一次靈泉',
+          tc: '左側, 踩第一次靈泉',
         },
         marker6: {
           en: 'Right Robot Side -> 1st Puddle',
@@ -1729,7 +1729,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左ちょい上 懺悔1回目',
           cn: '右侧，踩第一次灵泉',
           ko: '오른쪽 / 참회 #1',
-          tc: '右側，踩第一次靈泉',
+          tc: '右側, 踩第一次靈泉',
         },
         marker7: {
           en: 'Left Robot Side -> cardinal; 2nd Puddle',
@@ -1738,7 +1738,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右ちょい上 懺悔2回目',
           cn: '左侧，踩第二次灵泉',
           ko: '왼쪽 / 참회 #2',
-          tc: '左側，踩第二次靈泉',
+          tc: '左側, 踩第二次靈泉',
         },
         marker8: {
           en: 'Right Robot Side -> cardinal; 2nd Puddle',
@@ -1747,7 +1747,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左ちょい上 懺悔2回目',
           cn: '右侧，踩第二次灵泉',
           ko: '오른쪽 / 참회 #2',
-          tc: '右側，踩第二次靈泉',
+          tc: '右側, 踩第二次靈泉',
         },
       },
     },
@@ -2128,7 +2128,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '加重罰',
           cn: '电点名：远离分摊',
           ko: '가중형; 왼쪽/가중형끼리 모이기',
-          tc: '電點名：遠離分攤',
+          tc: '電點名: 遠離分攤',
         },
         noDebuff: {
           en: 'No debuff: shared stack',
@@ -2137,7 +2137,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'デバフ無し',
           cn: '无Debuff：参与分摊',
           ko: '디버프 없음; 오른쪽/함께 맞기',
-          tc: '無Debuff：參與分攤',
+          tc: '無Debuff: 參與分攤',
         },
       },
     },
@@ -3260,7 +3260,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '--Cruise Chaser Invincible--': '--巡航驅逐者無敵--',
-        '--alex untargetable--': '亞歷山大無法選中',
+        '--alex untargetable--': '--亞歷山大無法選中--',
         'True Heart': '真心',
         'Waves': '水波',
         '/Parting': '/離別之手',
