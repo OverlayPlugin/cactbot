@@ -140,7 +140,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Clockwork Bug': '亞拉戈發條蟲',
         'Clockwork Dreadnaught': '恐慌裝甲',
@@ -150,11 +149,11 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Bug': '故障蟲',
-        // 'Dreadnaught': '', // FIXME '恐慌装甲'
+        'Dreadnaught': '恐慌裝甲',
         'Emergency Override': '緊急超馳控制',
-        // 'Knight': '', // FIXME '亚拉戈发条骑士'
-        // 'Rook': '', // FIXME '转盘堡'
-        // 'Soldier': '', // FIXME '亚拉戈发条士兵'
+        'Knight': '亞拉戈發條騎士',
+        'Rook': '轉盤堡',
+        'Soldier': '亞拉戈發條士兵',
       },
     },
     {

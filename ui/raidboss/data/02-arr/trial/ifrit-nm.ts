@@ -100,7 +100,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ifrit': '伊弗利特',
       },
@@ -108,7 +107,7 @@ const triggerSet: TriggerSet<Data> = {
         'Eruption': '噴發',
         'Hellfire': '地獄之火炎',
         'Incinerate': '烈焰焚燒',
-        // 'Nail Add': '', // FIXME '火狱之楔出现'
+        'Nail Add': '火獄之楔出現',
         'Radiant Plume': '光輝炎柱',
         'Vulcan Burst': '火神爆裂',
       },
