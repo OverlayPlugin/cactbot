@@ -647,7 +647,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Astral Debris': '星極岩屑',
         'Dalamud Fragment': '衛月岩屑',
@@ -672,7 +671,7 @@ Options.Triggers.push({
         'Divebomb': '爆破俯衝',
         'Fireball': '烈火球',
         'Ghost': '幽靈',
-        // 'Golem Meteors': '', // FIXME '石头人陨石'
+        'Golem Meteors': '石頭人隕石',
         'Heavensfall': '天崩地裂',
         'Iron Chariot': '鋼鐵戰車',
         'Lunar Dynamo': '月流電圈',
