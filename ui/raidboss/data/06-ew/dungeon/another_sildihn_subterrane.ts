@@ -369,7 +369,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'たまの一番後ろへ (東西)',
           cn: '站在球和队友后 (左/右)',
           ko: '구슬 뒤로 (동/서)',
-          tc: '站在球和隊友後 (左/右)',
+          tc: '站在球和隊友後 (東/西)',
         },
         getBehindParty: {
           en: 'Behind party',
@@ -470,7 +470,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '自分に強攻撃、東西で誘導',
             cn: '死刑点名, 左/右 球下引导',
             ko: '나에게 탱버, 동/서쪽 구슬 사이로',
-            tc: '死刑點名, 左/右 球下引導',
+            tc: '死刑點名, 東/西 球下引導',
           },
         };
 
@@ -1474,7 +1474,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西 隅',
           cn: '左上角',
           ko: '북서쪽 구석',
-          tc: '左上角',
+          tc: '西北角',
         },
         outsideNNW: {
           en: 'NNW Outside',
@@ -1483,7 +1483,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '1列 西の内側',
           cn: '外侧 上偏左',
           ko: '바깥 북쪽 왼칸',
-          tc: '外側 上偏左',
+          tc: '外側 北偏西',
         },
         outsideNNE: {
           en: 'NNE Outside',
@@ -1492,7 +1492,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '1列 東の内側',
           cn: '外侧 上偏右',
           ko: '바깥 북쪽 오른칸',
-          tc: '外側 上偏右',
+          tc: '外側 北偏東',
         },
         outsideNE: {
           en: 'NE Corner',
@@ -1501,7 +1501,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東 隅',
           cn: '右上角',
           ko: '북동쪽 구석',
-          tc: '右上角',
+          tc: '東北角',
         },
         outsideWNW: {
           en: 'WNW Outside',
@@ -1510,7 +1510,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '2列 西の外側',
           cn: '外侧 左偏上',
           ko: '바깥 서쪽 위칸',
-          tc: '外側 左偏上',
+          tc: '外側 西偏北',
         },
         insideNW: {
           en: 'NW Inside',
@@ -1519,7 +1519,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 北西',
           cn: '内侧 左上',
           ko: '안 북서쪽',
-          tc: '內側 左上',
+          tc: '內側 左西北',
         },
         insideNE: {
           en: 'NE Inside',
@@ -1528,7 +1528,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 北東',
           cn: '内侧 右上',
           ko: '안 북동쪽',
-          tc: '內側 右上',
+          tc: '內側 東北',
         },
         outsideENE: {
           en: 'ENE Outside',
@@ -1537,7 +1537,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '2列 東の外側',
           cn: '外侧 右偏上',
           ko: '바깥 동쪽 위칸',
-          tc: '外側 右偏上',
+          tc: '外側 東偏北',
         },
         outsideWSW: {
           en: 'WSW Outside',
@@ -1546,7 +1546,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '3列 西の外側',
           cn: '外侧 左偏下',
           ko: '바깥 서쪽 아래칸',
-          tc: '外側 左偏下',
+          tc: '外側 西偏南',
         },
         insideSW: {
           en: 'SW Inside',
@@ -1555,7 +1555,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 南西',
           cn: '内侧 左下',
           ko: '안 남서쪽',
-          tc: '內側 左下',
+          tc: '內側 西南',
         },
         insideSE: {
           en: 'SE Inside',
@@ -1564,7 +1564,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 南東',
           cn: '内侧 右下',
           ko: '안 남동쪽',
-          tc: '內側 右下',
+          tc: '內側 東南',
         },
         outsideESE: {
           en: 'ESE Outside',
@@ -1573,7 +1573,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '3列 東の外側',
           cn: '外侧 右偏下',
           ko: '바깥 동쪽 아래칸',
-          tc: '外側 右偏下',
+          tc: '外側 東偏南',
         },
         outsideSW: {
           en: 'SW Corner',
@@ -1582,7 +1582,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南西 隅',
           cn: '左下角',
           ko: '남서쪽 구석',
-          tc: '左下角',
+          tc: '西南角',
         },
         outsideSSW: {
           en: 'SSW Outside',
@@ -1591,7 +1591,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '4列 西の内側',
           cn: '外侧 下偏左',
           ko: '바깥 남쪽 왼칸',
-          tc: '外側 下偏左',
+          tc: '外側 南偏西',
         },
         outsideSSE: {
           en: 'SSE Outside',
@@ -1600,7 +1600,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '4列 東の内側',
           cn: '外侧 下偏右',
           ko: '바깥 남쪽 오른칸',
-          tc: '外側 下偏右',
+          tc: '外側 南偏東',
         },
         outsideSE: {
           en: 'SE Corner',
@@ -1609,7 +1609,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南東 隅',
           cn: '右下角',
           ko: '남동쪽 구석',
-          tc: '右下角',
+          tc: '東南角',
         },
         unknown: Outputs.unknown,
       },
@@ -1894,7 +1894,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線${num}: ${corner}の隅',
           cn: '红线${num}: ${corner}角',
           ko: '주황색 선 ${num}: ${corner} 구석',
-          tc: '紅線${num}: ${corner}角',
+          tc: '橙線${num}: ${corner}角',
         },
         brandNumCorner: {
           en: 'Brand ${num}: ${corner} corner',
@@ -1921,7 +1921,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線${num}',
           cn: '红线${num}',
           ko: '주황색 선 ${num}',
-          tc: '紅線${num}',
+          tc: '橙線${num}',
         },
         brandNum: {
           en: 'Brand ${num}',
@@ -1980,7 +1980,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線1 切る',
           cn: '撞红线 1',
           ko: '주황색 1 끊기',
-          tc: '撞紅線 1',
+          tc: '撞橙線 1',
         },
         firstCut: {
           en: 'First Cut',
@@ -2068,7 +2068,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線${num} 切る',
           cn: '撞红线 ${num}',
           ko: '주황색 ${num} 끊기',
-          tc: '撞紅線 ${num}',
+          tc: '撞橙線 ${num}',
         },
         cutBlueNum: {
           en: 'Cut Blue ${num}',
@@ -2141,7 +2141,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '3列',
           cn: '向右传送（蓝）',
           ko: '파란색 동쪽 텔레포트',
-          tc: '向右傳送（藍）',
+          tc: '向東傳送（藍）',
         },
         blueWest: {
           en: 'Blue Teleporting West',
@@ -2150,7 +2150,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '4列',
           cn: '向左传送（蓝）',
           ko: '파란색 서쪽 텔레포트',
-          tc: '向左傳送（藍）',
+          tc: '向西傳送（藍）',
         },
         orangeEast: {
           en: 'Orange Teleporting East',
@@ -2159,7 +2159,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '2列',
           cn: '向右传送（橙）',
           ko: '주황색 동쪽 텔레포트',
-          tc: '向右傳送（橙）',
+          tc: '向東傳送（橙）',
         },
         orangeWest: {
           en: 'Orange Teleporting West',
@@ -2168,7 +2168,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '1列',
           cn: '向左传送（橙）',
           ko: '주황색 서쪽 텔레포트',
-          tc: '向左傳送（橙）',
+          tc: '向西傳送（橙）',
         },
       },
     },
@@ -2342,7 +2342,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '赤線${num} 切る',
             cn: '撞红线 ${num}',
             ko: '주황색 ${num} 끊기',
-            tc: '撞紅線 ${num}',
+            tc: '撞橙線 ${num}',
           },
           cutBlueNum: {
             en: 'Cut Blue ${num}',
@@ -2360,7 +2360,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'まもなく赤線${num}',
             cn: '准备撞红线 ${num}',
             ko: '주황색 ${num} 끊을 준비',
-            tc: '準備撞紅線 ${num}',
+            tc: '準備撞橙線 ${num}',
           },
           moveBlue: {
             en: 'Move for Blue ${num}',
@@ -2452,7 +2452,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '赤線${num} 切る',
             cn: '撞红线 ${num}',
             ko: '주황색 ${num} 끊기',
-            tc: '撞紅線 ${num}',
+            tc: '撞橙線 ${num}',
           },
           cutBlueNum: {
             en: 'Cut Blue ${num}',
@@ -2470,7 +2470,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'まもなく赤線${num}',
             cn: '准备撞红线 ${num}',
             ko: '주황색 ${num} 끊을 준비',
-            tc: '準備撞紅線 ${num}',
+            tc: '準備撞橙線 ${num}',
           },
           moveBlueNum: {
             en: 'Move for Blue ${num}',
@@ -2834,7 +2834,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aqueduct Belladonna': '水道劇毒美人',
         'Aqueduct Dryad': '水道樹妖',
@@ -2882,7 +2881,7 @@ const triggerSet: TriggerSet<Data> = {
         'Fizzling Suds': '電氣泡泡',
         'Flash of Steel': '鬥士波動',
         'Fresh Puff': '創造絨球',
-        // 'Gold Flame': '', // FIXME '黄金闪火'
+        'Gold Flame': '黃金閃火',
         'Hateful Visage': '啟動咒像',
         'Infern Brand': '設置咒具',
         'Infern Ward': '咒具警陣',
