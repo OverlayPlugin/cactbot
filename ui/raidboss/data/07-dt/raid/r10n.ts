@@ -427,7 +427,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: {
           en: 'Cone cleave from ???',
           de: 'Kegel-AoE von ???',
-          de: 'AoE en cône depuis ???',
+          fr: 'AoE en cône depuis ???',
           cn: '扇形攻击未知来向',
           ko: '???에서 오는 부채꼴 장판',
         },
