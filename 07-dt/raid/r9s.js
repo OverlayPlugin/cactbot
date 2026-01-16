@@ -75,6 +75,7 @@ Options.Triggers.push({
         bigTankCleave: {
           en: 'Tank Cleave on YOU (Big)',
           de: 'Tank Cleave auf DIR (Groß)',
+          fr: 'Tank cleave sur VOUS (Gros)',
           cn: '坦克范围死刑点名（大）',
           ko: '광역 탱버 대상자 (큰)',
         },
@@ -326,16 +327,19 @@ Options.Triggers.push({
         ...Directions.outputStringsCardinalDir,
         text: {
           en: '${first} => ${second}',
+          fr: '${first} => ${second}',
           cn: '${first} => ${second}',
           ko: '${first} => ${second}',
         },
         combined: {
           en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+          fr: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
           cn: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
           ko: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
         },
         bigHalfmoonCombined: {
           en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
+          fr: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (gros)',
           cn: '${coffin1} + ${dir1} (大) => ${coffin2} + ${dir2} (大)',
           ko: '${coffin1} + ${dir1} (큰) => ${coffin2} + ${dir2} (큰)',
         },
@@ -347,31 +351,37 @@ Options.Triggers.push({
         rightEast: Outputs.rightEast,
         inside: {
           en: 'Inside',
+          fr: 'Intérieur',
           cn: '内侧',
           ko: '안쪽',
         },
         outside: {
           en: 'Outside',
+          fr: 'Extérieur',
           cn: '外侧',
           ko: '바깥쪽',
         },
         outerWest: {
           en: 'Outer West',
+          fr: 'Extérieur Ouest',
           cn: '左外',
           ko: '바깥 서쪽',
         },
         innerWest: {
           en: 'Inner West',
+          fr: 'Intérieur Ouest',
           cn: '左内',
           ko: '안 서쪽',
         },
         innerEast: {
           en: 'Inner East',
+          fr: 'Intérieur Est',
           cn: '右内',
           ko: '안 동쪽',
         },
         outerEast: {
           en: 'Outer East',
+          fr: 'Extérieur Est',
           cn: '右外',
           ko: '바깥 동쪽',
         },
@@ -417,6 +427,7 @@ Options.Triggers.push({
         aetherlettingOnYou: {
           en: 'Aetherletting on YOU',
           de: 'Ätherquell auf DIR',
+          fr: 'Éthérisation sur VOUS',
           cn: '以太流失点名',
         },
       },
@@ -516,12 +527,14 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid',
           de: 'Vermeide',
+          fr: 'Évitez : ',
           cn: '避开',
           ko: '피하기:',
         },
         text: {
           en: '${avoid}${mech}',
           de: '${avoid}${mech}',
+          fr: '${avoid}${mech}',
           cn: '${avoid}${mech}',
           ko: '${avoid}${mech}',
         },
@@ -542,12 +555,14 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid',
           de: 'Vermeide',
+          fr: 'Évitez : ',
           cn: '避开',
           ko: '피하기:',
         },
         text: {
           en: '${avoid}${mech}',
           de: '${avoid}${mech}',
+          fr: '${avoid}${mech}',
           cn: '${avoid}${mech}',
           ko: '${avoid}${mech}',
         },

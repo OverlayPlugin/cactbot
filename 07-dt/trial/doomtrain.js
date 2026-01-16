@@ -133,6 +133,7 @@ Options.Triggers.push({
         text: {
           en: '${mech} + Avoid Lasers',
           de: '${mech} + vermeide Laser',
+          fr: '${mech} + éviter lasers',
           cn: '${mech} + 躲避激光',
           ko: '${mech} + 레이저 피하기',
         },
@@ -153,6 +154,7 @@ Options.Triggers.push({
         text: {
           en: '${mech} => ${away}',
           de: '${mech} => ${away}',
+          fr: '${mech} => ${away}',
           cn: '${mech} => ${away}',
           ko: '${mech} => ${away}',
         },
@@ -180,6 +182,7 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid ${dir} turrets',
           de: 'Vermeide ${dir} Geschütztürme',
+          fr: 'Évitez les tourelles ${dir}',
           cn: '躲避 ${dir} 炮塔',
           ko: '${dir} 포탑 피하기',
         },
@@ -230,6 +233,7 @@ Options.Triggers.push({
         text: {
           en: 'Tank cleave on YOU from ${dir}',
           de: 'Tank Cleave auf DIR von ${dir}',
+          fr: 'Tank cleave sur vous depuis ${dir}',
           cn: '${dir} 坦克死刑',
           ko: '광역 탱버 대상자 ${dir} 방향',
         },
@@ -245,6 +249,7 @@ Options.Triggers.push({
         text: {
           en: 'Tower x3 => Next Platform',
           de: 'Turm x3 => Nächste Plattform',
+          fr: 'Tour x3 => Prochain wagon',
           cn: '踩塔 x3 => 下一节车厢',
           ko: '탑 x3 => 다음 플랫폼',
         },
@@ -260,6 +265,7 @@ Options.Triggers.push({
         text: {
           en: 'Down',
           de: 'Unten',
+          fr: 'Bas',
           cn: '下',
           ko: '아래',
         },
@@ -275,6 +281,7 @@ Options.Triggers.push({
         text: {
           en: 'Up',
           de: 'Oben',
+          fr: 'Haut',
           cn: '上',
           ko: '위',
         },
@@ -419,6 +426,7 @@ Options.Triggers.push({
         text: {
           en: 'Tower x3',
           de: 'Turm x3',
+          fr: 'Tour x3',
           cn: '踩塔 x3',
           ko: '탑 x3',
         },
