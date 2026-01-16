@@ -261,7 +261,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東の鳥の下',
           cn: '站在左上鸟',
           ko: '북동쪽 새 밑으로', // This is northeast. Because Korean folks go there.
-          tc: '站在左上鳥',
+          tc: '站在東北鳥下',
         },
       },
     },
@@ -419,7 +419,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北の外側',
           cn: '上外',
           ko: '북쪽 바깥',
-          tc: '上外',
+          tc: '北外側',
         },
         insideNorth: {
           en: 'Inside North',
@@ -428,7 +428,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北の内側',
           cn: '上内',
           ko: '북쪽 안',
-          tc: '上內',
+          tc: '北內側',
         },
         outsideWest: {
           en: 'Outside West',
@@ -437,7 +437,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の外側',
           cn: '左外',
           ko: '서쪽 바깥',
-          tc: '左外',
+          tc: '西外側',
         },
         insideWest: {
           en: 'Inside West',
@@ -446,7 +446,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の内側',
           cn: '左内',
           ko: '서쪽 안',
-          tc: '左內',
+          tc: '西內側',
         },
         outsideEast: {
           en: 'Outside East',
@@ -455,7 +455,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東の外側',
           cn: '右外',
           ko: '동쪽 바깥',
-          tc: '右外',
+          tc: '東外側',
         },
         insideEast: {
           en: 'Inside East',
@@ -464,7 +464,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東の内側',
           cn: '右内',
           ko: '동쪽 안',
-          tc: '右內',
+          tc: '東內側',
         },
         ...paradeigmaLeanOutputStrings,
       },
@@ -583,7 +583,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北のさんかく',
           cn: '上扇形',
           ko: '북쪽 삼각형',
-          tc: '上扇形',
+          tc: '北扇形',
         },
         eastCone: {
           en: 'East Cone',
@@ -592,7 +592,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東のさんかく',
           cn: '右扇形',
           ko: '동쪽 삼각형',
-          tc: '右扇形',
+          tc: '東扇形',
         },
         westCone: {
           en: 'West Cone',
@@ -601,7 +601,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西のさんかく',
           cn: '左扇形',
           ko: '서쪽 삼각형',
-          tc: '左扇形',
+          tc: '西扇形',
         },
         southCone: {
           en: 'South Cone',
@@ -610,7 +610,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南のさんかく',
           cn: '下扇形',
           ko: '남쪽 삼각형',
-          tc: '下扇形',
+          tc: '南扇形',
         },
       },
     },
@@ -924,7 +924,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ダブルフィスト (北の外側)',
           cn: '双拳 (上外)',
           ko: '양 옆 큰 원형 장판 (북쪽 바깥)',
-          tc: '雙拳 (上外)',
+          tc: '雙拳 (北外側)',
         },
         adikia1InsideNorth: {
           en: 'Double fists (inside north)',
@@ -933,7 +933,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ダブルフィスト (北の内側)',
           cn: '双拳 (上内)',
           ko: '양 옆 큰 원형 장판 (북쪽 안)',
-          tc: '雙拳 (上內)',
+          tc: '雙拳 (北內側)',
         },
         adikia2: {
           en: 'Double fists',
@@ -1197,7 +1197,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sigil': '秘紋',
         'Behemoth': '凶惡巨獸',
@@ -1214,7 +1213,7 @@ const triggerSet: TriggerSet<Data> = {
         'Astral Eclipse': '星蝕',
         'Astral Flow': '星極超流',
         'Esoteric Dyad': '神秘二分',
-        // 'Esoteric Pattern': '', // FIXME '秘纹图案'
+        'Esoteric Pattern': '秘紋圖案',
         '(?<!Triple )Esoteric Ray': '神秘光線',
         'Esoteric Sect': '神秘切割',
         'Esoterikos': '內紋',
