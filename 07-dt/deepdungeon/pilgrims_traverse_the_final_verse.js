@@ -82,6 +82,7 @@ const chainsOfCondemnationOutputStrings = {
   chains: {
     en: 'AoE + Stop Moving!',
     de: 'AoE + Nicht Bewegen!',
+    fr: 'AoE + Ne bougez pas !',
     ja: '全体攻撃 + 止まれ!',
     cn: 'AOE + 停止移动!',
     ko: '전체 공격 + 이동 멈추기!',
@@ -97,6 +98,7 @@ Options.Triggers.push({
   zoneLabel: {
     en: 'Pilgrim\'s Traverse Stone 99/The Final Verse',
     de: 'Pilgers Pfad Stein 99/Eminente Trauer',
+    fr: 'Le sanctuaire des pèlerins Étage 99/Le verset final',
     cn: '朝圣交错路 第99朝圣路/卓异的悲寂歼灭战',
     ko: '노르브란트 순례길 제99순례길/드높은 비애 토벌전',
     tc: '朝聖交錯路 第99朝聖路/卓異的悲寂殲滅戰',
@@ -122,6 +124,7 @@ Options.Triggers.push({
         text: {
           en: 'Check Boss HP Difference',
           de: 'Prüfe Boss HP Unterschied',
+          fr: 'Vérifiez la différence d\'HP du boss',
           cn: '检查 BOSS 血量差',
           ko: '보스 체력 차이 확인',
           tc: '檢查 BOSS 血量差',
@@ -143,6 +146,7 @@ Options.Triggers.push({
         text: {
           en: '${effect} on ${target}',
           de: '${effect} auf ${target}',
+          fr: '${effect} sur ${target}',
           cn: '${effect} 点 ${target}',
           ko: '${target}에게 ${effect}',
           tc: '${effect} 點 ${target}',
@@ -175,6 +179,7 @@ Options.Triggers.push({
         text: {
           en: 'Refresh Vengeance',
           de: 'Echo erneuern',
+          fr: 'Actualiser l\'écho',
           cn: '刷新光/暗 Debuff',
           ko: '빛/어둠 디버프 갱신',
           tc: '刷新光/暗 Debuff',
@@ -208,6 +213,7 @@ Options.Triggers.push({
         text: {
           en: '${mech1} => ${mech2}',
           de: '${mech1} => ${mech2}',
+          fr: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
           tc: '${mech1} => ${mech2}',
@@ -238,6 +244,7 @@ Options.Triggers.push({
         text: {
           en: '${mech1} => ${mech2}',
           de: '${mech1} => ${mech2}',
+          fr: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
           tc: '${mech1} => ${mech2}',
@@ -275,6 +282,7 @@ Options.Triggers.push({
         text: {
           en: '${mech1} => ${mech2}',
           de: '${mech1} => ${mech2}',
+          fr: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
           ko: '${mech1} => ${mech2}',
           tc: '${mech1} => ${mech2}',
@@ -318,6 +326,7 @@ Options.Triggers.push({
         text: {
           en: 'Laser on YOU',
           de: 'Laser auf DIR',
+          fr: 'Laser sur VOUS',
           ja: '自分にレーザー',
           cn: '激光点名',
           ko: '레이저 대상자',
@@ -334,6 +343,7 @@ Options.Triggers.push({
         text: {
           en: 'Avoid laser',
           de: 'Laser vermeiden',
+          fr: 'Évitez le laser',
           ja: 'レーザーを避ける',
           cn: '避开激光',
           ko: '레이저 피하기',
@@ -362,6 +372,7 @@ Options.Triggers.push({
         text: {
           en: 'Get Light debuff',
           de: 'Licht Debuff nehmen',
+          fr: 'Prenez le débuff Lumière',
           ja: '光デバフを受ける',
           cn: '获取光 Debuff',
           ko: '빛 디버프 받기',
@@ -382,6 +393,7 @@ Options.Triggers.push({
         text: {
           en: 'Get Dark debuff',
           de: 'Dunkel Debuff nehmen',
+          fr: 'Prenez le débuff Ténèbre',
           ja: '闇デバフを受ける',
           cn: '获取暗 Debuff',
           ko: '어둠 디버프 받기',
@@ -416,6 +428,7 @@ Options.Triggers.push({
         text: {
           en: '${frontBack}-${leftRight}, for later',
           de: '${frontBack}-${leftRight}, für später',
+          fr: '${frontBack}-${leftRight}, pour après',
           cn: '稍后去 ${leftRight}-${frontBack}',
           ko: '나중에 ${leftRight}-${frontBack} 으로',
           tc: '稍後去 ${leftRight}-${frontBack}',
@@ -465,6 +478,7 @@ Options.Triggers.push({
         text: {
           en: '${frontBack}-${leftRight}, for later',
           de: '${frontBack}-${leftRight}, für später',
+          fr: '${frontBack}-${leftRight}, pour après',
           cn: '稍后去 ${leftRight}-${frontBack}',
           ko: '나중에 ${leftRight}-${frontBack} 으로',
           tc: '稍後去 ${leftRight}-${frontBack}',
@@ -496,6 +510,7 @@ Options.Triggers.push({
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
           de: '${frontBack}-${leftRight}, vermeide Exaflares',
+          fr: '${frontBack}-${leftRight}, évitez les brasiers',
           cn: '在 ${leftRight}-${frontBack} 躲避地火',
           ko: '${frontBack}-${leftRight}, 엑사플레어 피하기',
           tc: '在 ${leftRight}-${frontBack} 躲避地火',
@@ -543,6 +558,7 @@ Options.Triggers.push({
         text: {
           en: 'Go ${dir}',
           de: 'Geh nach ${dir}',
+          fr: 'Allez ${dir}',
           cn: '去 ${dir}',
           ko: '${dir}',
           tc: '去 ${dir}',
@@ -569,7 +585,7 @@ Options.Triggers.push({
     {
       'locale': 'fr',
       'replaceSync': {
-        'Devoured Eater': 'purgateur dévoré',
+        'Devoured Eater': 'Purgateur dévoré',
         'Eminent Grief': 'Pontife du Chagrin',
       },
     },

@@ -50,6 +50,7 @@ Options.Triggers.push({
         text: {
           en: 'Avoid jump => Out',
           de: 'Sprung vermeiden => Raus',
+          fr: 'Évitez le saut => Extérieur',
           cn: '避开跳跃 => 外',
           ko: '점프 피하기 => 밖으로',
           tc: '避開跳躍 => 外',
@@ -88,6 +89,7 @@ Options.Triggers.push({
         text: {
           en: '${mech} x3',
           de: '${mech} x3',
+          fr: '${mech} x3',
           cn: '${mech} x3',
           ko: '${mech} x3',
           tc: '${mech} x3',
@@ -124,15 +126,14 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Forgiven Naivety': 'naïveté pardonnée',
-        'Forgiven Petulance': 'irascibilité pardonnée',
-        'Forgiven Plague': 'peste pardonnée',
-        'Forgiven Prejudice': 'préjugé pardonné',
-        'Traverse Inquisitor': 'inquisiteur du pèlerinage',
-        'Traverse Pegasus': 'pégase du pèlerinage',
-        'Traverse Soldierstone': 'soldat de pierre du pèlerinage',
+        'Forgiven Naivety': 'Naïveté pardonnée',
+        'Forgiven Petulance': 'Irascibilité pardonnée',
+        'Forgiven Plague': 'Peste pardonnée',
+        'Forgiven Prejudice': 'Préjugé pardonné',
+        'Traverse Inquisitor': 'Inquisiteur du pèlerinage',
+        'Traverse Pegasus': 'Pégase du pèlerinage',
+        'Traverse Soldierstone': 'Soldat de pierre du pèlerinage',
       },
     },
     {

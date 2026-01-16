@@ -104,6 +104,7 @@ Options.Triggers.push({
         text: {
           en: 'Sides + Rotate ${rotation}',
           de: 'Seiten + Im ${rotation} rotieren',
+          fr: 'Côtés + Tournez ${rotation}',
           cn: '两侧 + ${rotation}旋转',
           ko: '양 옆 + ${rotation} 회전',
           tc: '兩側 + ${rotation}旋轉',
@@ -126,6 +127,7 @@ Options.Triggers.push({
         text: {
           en: 'Cactuar move ${count}',
           de: 'Kaktor Bewegung - ${count}',
+          fr: 'Cactuar se déplace ${count}',
           cn: '仙人掌移动 ${count}',
           ko: '선인장 이동 ${count}',
           tc: '仙人掌移動 ${count}',
@@ -133,6 +135,7 @@ Options.Triggers.push({
         once: {
           en: 'Once',
           de: 'Einmal',
+          fr: 'une fois',
           cn: '一次',
           ko: '한 번',
           tc: '一次',
@@ -140,6 +143,7 @@ Options.Triggers.push({
         twice: {
           en: 'Twice',
           de: 'Zweimal',
+          fr: 'deux fois',
           cn: '两次',
           ko: '두 번',
           tc: '兩次',
@@ -162,15 +166,14 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
         'Ancestral Maliktender': 'Malikpampa l\'ancien',
-        'Traverse Gigant': 'géant du pèlerinage',
-        'Traverse Howler': 'hurleur du pèlerinage',
-        'Traverse Monitor': 'varan du pèlerinage',
-        'Traverse Phorusrhacos': 'phorusrhacos du pèlerinage',
-        'Traverse Saichania': 'saichania du pèlerinage',
-        'Traverse Sand Serpent': 'serpent des sables du pèlerinage',
+        'Traverse Gigant': 'Géant du pèlerinage',
+        'Traverse Howler': 'Hurleur du pèlerinage',
+        'Traverse Monitor': 'Varan du pèlerinage',
+        'Traverse Phorusrhacos': 'Phorusrhacos du pèlerinage',
+        'Traverse Saichania': 'Saichania du pèlerinage',
+        'Traverse Sand Serpent': 'Serpent des sables du pèlerinage',
       },
     },
     {

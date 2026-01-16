@@ -54,6 +54,7 @@ Options.Triggers.push({
         safe: {
           en: 'Go ${safe} + Out',
           de: 'Geh nach ${safe} + Raus',
+          fr: 'Allez ${safe} + Extérieur',
           cn: '去 ${safe} + 外',
           ko: '${safe} + 밖으로',
           tc: '去 ${safe} + 外',
@@ -61,6 +62,7 @@ Options.Triggers.push({
         unknownSafe: {
           en: 'Out + Avoid shrublet explosions',
           de: 'Raus + Vermeide Blumling Explosionen',
+          fr: 'Extérieur + Évitez les explosions de buissons',
           cn: '外 + 避开花小人爆炸',
           ko: '밖으로 + 꼬마 꽃인간 폭발 피하기',
           tc: '外 + 避開花小人爆炸',
@@ -86,6 +88,7 @@ Options.Triggers.push({
         text: {
           en: 'Away from jump x4',
           de: 'Weg vom Sprung x4',
+          fr: 'Loin des sauts x4',
           cn: '远离跳跃 x4',
           ko: '점프에서 멀어지기 x4',
           tc: '遠離跳躍 x4',
@@ -102,9 +105,8 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Ornamental Leafman': 'enfleuri',
+        'Ornamental Leafman': 'Enfleuri',
       },
     },
     {

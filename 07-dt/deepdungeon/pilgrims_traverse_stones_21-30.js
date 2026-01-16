@@ -20,6 +20,7 @@ Options.Triggers.push({
         enrage: {
           en: 'Parasitism',
           de: 'Instinkt des Räubers',
+          fr: 'Instinct du prédateur',
           cn: '捕食行动',
           ko: '포식 행동',
           tc: '捕食行動',
@@ -27,6 +28,7 @@ Options.Triggers.push({
         enrageOnYou: {
           en: 'Parasitism on YOU',
           de: 'Instinkt des Räubers auf DIR',
+          fr: 'Instinct du prédateur sur VOUS',
           cn: '捕食行动点名',
           ko: '포식 대상자',
           tc: '捕食行動點名',
@@ -34,6 +36,7 @@ Options.Triggers.push({
         enrageOnPlayer: {
           en: 'Parasitism on ${player}',
           de: 'Instinkt des Räubers auf ${player}',
+          fr: 'Instinct du prédateur sur ${player}',
           cn: '捕食行动点 ${player}',
           ko: '${player} 포식',
           tc: '捕食行動點 ${player}',
@@ -98,6 +101,7 @@ Options.Triggers.push({
         middleOrOuter: {
           en: 'Get Middle or Outer ring',
           de: 'Geh zum mittleren oder äußeren Ring',
+          fr: 'Allez au milieu ou sur l\'anneau extérieur',
           cn: '去中圈或外圈',
           ko: '중간 또는 바깥쪽 원으로',
           tc: '去中圈或外圈',
@@ -105,6 +109,7 @@ Options.Triggers.push({
         innerOrOuter: {
           en: 'Get Inner or Outer ring',
           de: 'Geh zum inneren oder äußeren Ring',
+          fr: 'Allez a l\'intérieur ou sur l\'anneau extérieur',
           cn: '去内圈或外圈',
           ko: '안 또는 바깥쪽 원으로',
           tc: '去內圈或外圈',
@@ -112,6 +117,7 @@ Options.Triggers.push({
         innerOrMiddle: {
           en: 'Get Inner or Middle ring',
           de: 'Geh zum inneren oder mittleren Ring',
+          fr: 'Allez a l\'intérieur ou sur l\'anneau du milieu',
           cn: '去内圈或中圈',
           ko: '안 또는 중간 원으로',
           tc: '去內圈或中圈',
@@ -152,6 +158,7 @@ Options.Triggers.push({
         text: {
           en: '${dir}, Behind Hand',
           de: '${dir}, hinter der Hand',
+          fr: '${dir}, derrière la main',
           cn: '${dir}, 去手后',
           ko: '${dir}, 손 뒤로',
           tc: '${dir}, 去手後',
@@ -190,12 +197,11 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Forgiven Ambition': 'ambition pardonnée',
-        'Forgiven Intolerance': 'intolérance pardonnée',
-        'Forgiven Treachery': 'traîtrise pardonnée',
-        'Traverse Clionid': 'clionide du pèlerinage',
+        'Forgiven Ambition': 'Ambition pardonnée',
+        'Forgiven Intolerance': 'Intolérance pardonnée',
+        'Forgiven Treachery': 'Traîtrise pardonnée',
+        'Traverse Clionid': 'Clionide du pèlerinage',
       },
     },
     {

@@ -64,6 +64,7 @@ Options.Triggers.push({
         text: {
           en: 'Away from jump => Get Under or Out',
           de: 'Weg vom Sprung => Geh Unter oder Raus',
+          fr: 'Loin du saut => Allez dessous ou à l\'extérieur',
           cn: '远离跳跃 => 去脚下或外面',
           ko: '점프에서 멀어지기 => 안으로 또는 밖으로',
           tc: '遠離跳躍 => 去腳下或外面',
@@ -117,6 +118,7 @@ Options.Triggers.push({
         sting: {
           en: 'Final Sting',
           de: 'Schlussstich',
+          fr: 'Dard final',
           cn: '终极针',
           ko: '마지막 벌침',
           tc: '終極針',
@@ -124,6 +126,7 @@ Options.Triggers.push({
         stingOnYou: {
           en: 'Final Sting on YOU',
           de: 'Schlussstich auf DIR',
+          fr: 'Dard final sur VOUS',
           cn: '终极针点名',
           ko: '마지막 벌침 대상자',
           tc: '終極針點名',
@@ -131,6 +134,7 @@ Options.Triggers.push({
         stingOnPlayer: {
           en: 'Final Sting on ${player}',
           de: 'Schlussstich auf ${player}',
+          fr: 'Dard final sur ${player}',
           cn: '终极针点${player}',
           ko: '${player} 마지막 벌침',
           tc: '終極針點${player}',
@@ -188,6 +192,7 @@ Options.Triggers.push({
         text: {
           en: 'Dodge ${dir}',
           de: 'Ausweichen ${dir}',
+          fr: 'Esquivez ${dir}',
           cn: '${dir} 躲避',
           ko: '${dir} 피하기',
           tc: '${dir} 躲避',
@@ -195,6 +200,7 @@ Options.Triggers.push({
         backFront: {
           en: 'Back-to-front',
           de: 'Hinten-nach-Vorne',
+          fr: 'Arrière vers l\'avant',
           cn: '后到前',
           ko: '뒤에서 앞으로',
           tc: '後到前',
@@ -202,6 +208,7 @@ Options.Triggers.push({
         frontBack: {
           en: 'Front-to-back',
           de: 'Vorne-nach-Hinten',
+          fr: 'Devant vers l\'arrière',
           cn: '前到后',
           ko: '앞에서 뒤로',
           tc: '前到後',
@@ -227,6 +234,7 @@ Options.Triggers.push({
         text: {
           en: 'Dodge ${dir}',
           de: 'Ausweichen ${dir}',
+          fr: 'Esquivez ${dir}',
           cn: '${dir} 躲避',
           ko: '${dir}으로 피하기',
           tc: '${dir} 躲避',
@@ -303,6 +311,7 @@ Options.Triggers.push({
         repeat: {
           en: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
           de: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
+          fr: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
           cn: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
           ko: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
           tc: '${dir4} => ${dir1} x3 => ${dir8} => ${dir5} x3',
@@ -310,6 +319,7 @@ Options.Triggers.push({
         rewind: {
           en: '${dir4} => ${dir1} x6 => ${dir4}',
           de: '${dir4} => ${dir1} x6 => ${dir4}',
+          fr: '${dir4} => ${dir1} x6 => ${dir4}',
           cn: '${dir4} => ${dir1} x6 => ${dir4}',
           ko: '${dir4} => ${dir1} x6 => ${dir4}',
           tc: '${dir4} => ${dir1} x6 => ${dir4}',
@@ -317,6 +327,7 @@ Options.Triggers.push({
         avoid: {
           en: 'Avoid swipes x8',
           de: 'Vermeide Schwung x8',
+          fr: 'Évitez les balayages x8',
           cn: '避开顺劈 x8',
           ko: '후려치기 피하기 x8',
           tc: '避開順劈 x8',
@@ -349,21 +360,20 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Forgiven Attachment': 'attachement pardonné',
-        'Forgiven Contention': 'contention pardonnée',
-        'Forgiven Doubt': 'doute pardonné',
-        'Forgiven Grudge': 'rancune pardonnée',
-        'Forgiven Imparity': 'inégalité pardonnée',
-        'Forgiven Riot': 'révolte pardonnée',
-        'Forgiven Voracity': 'voracité pardonnée',
-        'Forgiven Zeal': 'zèle pardonné',
-        'Traverse Cliffmole': 'taupe des falaises du pèlerinage',
-        'Traverse Gnome': 'gnome du pèlerinage',
-        'Traverse Ngozi': 'ngozi du pèlerinage',
-        'Traverse Queen': 'reine des abeilles du pèlerinage',
-        'Traverse Talos': 'talos du pèlerinage',
+        'Forgiven Attachment': 'Attachement pardonné',
+        'Forgiven Contention': 'Contention pardonnée',
+        'Forgiven Doubt': 'Doute pardonné',
+        'Forgiven Grudge': 'Rancune pardonnée',
+        'Forgiven Imparity': 'Inégalité pardonnée',
+        'Forgiven Riot': 'Révolte pardonnée',
+        'Forgiven Voracity': 'Voracité pardonnée',
+        'Forgiven Zeal': 'Zèle pardonné',
+        'Traverse Cliffmole': 'Taupe des falaises du pèlerinage',
+        'Traverse Gnome': 'Gnome du pèlerinage',
+        'Traverse Ngozi': 'Ngozi du pèlerinage',
+        'Traverse Queen': 'Reine des abeilles du pèlerinage',
+        'Traverse Talos': 'Talos du pèlerinage',
       },
     },
     {

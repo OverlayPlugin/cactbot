@@ -51,6 +51,7 @@ Options.Triggers.push({
         text: {
           en: '${knockback} ${dir4} => ${dir1}',
           de: '${knockback} ${dir4} => ${dir1}',
+          fr: '${knockback} ${dir4} => ${dir1}',
           cn: '${knockback} ${dir4} => ${dir1}',
           ko: '${knockback} ${dir4} => ${dir1}',
           tc: '${knockback} ${dir4} => ${dir1}',
@@ -78,6 +79,7 @@ Options.Triggers.push({
         text: {
           en: 'Seed on YOU',
           de: 'Samen auf DIR',
+          fr: 'Graine sur VOUS',
           cn: '种子点名',
           ko: '씨앗 대상자',
           tc: '種子點名',
@@ -94,9 +96,8 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Forgiven Emulation': 'imitation pardonnée',
+        'Forgiven Emulation': 'Imitation pardonnée',
       },
     },
     {
