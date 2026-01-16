@@ -381,14 +381,17 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsCardinalDir,
         text: {
           en: '${first} => ${second}',
+          cn: '${first} => ${second}',
           ko: '${first} => ${second}',
         },
         combined: {
           en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+          cn: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
           ko: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
         },
         bigHalfmoonCombined: {
           en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
+          cn: '${coffin1} + ${dir1} (大) => ${coffin2} + ${dir2} (大)',
           ko: '${coffin1} + ${dir1} (큰) => ${coffin2} + ${dir2} (큰)',
         },
         rightThenLeft: Outputs.rightThenLeft,
@@ -399,26 +402,32 @@ const triggerSet: TriggerSet<Data> = {
         rightEast: Outputs.rightEast,
         inside: {
           en: 'Inside',
+          cn: '内侧',
           ko: '안쪽',
         },
         outside: {
           en: 'Outside',
+          cn: '外侧',
           ko: '바깥쪽',
         },
         outerWest: {
           en: 'Outer West',
+          cn: '左外',
           ko: '바깥 서쪽',
         },
         innerWest: {
           en: 'Inner West',
+          cn: '左内',
           ko: '안 서쪽',
         },
         innerEast: {
           en: 'Inner East',
+          cn: '右内',
           ko: '안 동쪽',
         },
         outerEast: {
           en: 'Outer East',
+          cn: '右外',
           ko: '바깥 동쪽',
         },
         bigHalfmoonNoCoffin: {
