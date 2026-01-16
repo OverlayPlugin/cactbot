@@ -128,18 +128,18 @@ hideall "--sync--"
 337.3 "--add-targetable--"
 337.9 "--untargetable--"
 337.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
-345.7 "Xtreme Wave" Ability { id: "B5C5", source: "Red Hot" }
-347.8 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-354.1 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-356.2 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-362.6 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-364.7 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-371.1 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-373.2 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-379.6 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-381.7 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
-388.3 "Xtreme Wave" Ability { id: "B5C7", source: "Red Hot" }
-390.4 "Scathing Steam" Ability { id: "ADC7", source: "Watery Grave" }
+345.7 "Xtreme Wave 1" Ability { id: "B5C5", source: "Red Hot" }
+347.8 "Scathing Steam 1" Ability { id: "ADC7", source: "Watery Grave" }
+354.1 "Xtreme Wave 2" Ability { id: "B5C7", source: "Red Hot" }
+356.2 "Scathing Steam 2" Ability { id: "ADC7", source: "Watery Grave" }
+362.6 "Xtreme Wave 3" Ability { id: "B5C7", source: "Red Hot" }
+364.7 "Scathing Steam 3" Ability { id: "ADC7", source: "Watery Grave" }
+371.1 "Xtreme Wave 4" Ability { id: "B5C7", source: "Red Hot" }
+373.2 "Scathing Steam 4" Ability { id: "ADC7", source: "Watery Grave" }
+379.6 "Xtreme Wave 5" Ability { id: "B5C7", source: "Red Hot" }
+381.7 "Scathing Steam 5" Ability { id: "ADC7", source: "Watery Grave" }
+388.3 "Xtreme Wave 6" Ability { id: "B5C7", source: "Red Hot" }
+390.4 "Scathing Steam 6" Ability { id: "ADC7", source: "Watery Grave" }
 390.6 "--targetable--"
 390.6 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
 392.8 "--add-untargetable--"
