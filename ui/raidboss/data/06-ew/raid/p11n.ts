@@ -374,20 +374,19 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Illusory Themis': '特彌斯的幻影',
-        // '(?<!(-| ))Themis': '', // FIXME '特弥斯'
+        '(?<!(-| ))Themis': '特彌斯',
       },
       'replaceText': {
-        // '\\(random\\)': '', // FIXME '(随机)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(puddle': '', // FIXME '(圈'
-        // '\\(in/out\\)': '', // FIXME '(内/外)'
-        // 'dynamo\\)': '', // FIXME '月环)'
-        // 'chariot\\)': '', // FIXME '钢铁)'
-        // '\\(cleave': '', // FIXME '(跳劈'
-        // '\\(stack': '', // FIXME '(分摊'
+        '\\(random\\)': '(隨機)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(puddle': '(圈',
+        '\\(in/out\\)': '(內/外)',
+        'dynamo\\)': '月環)',
+        'chariot\\)': '鋼鐵)',
+        '\\(cleave': '(跳劈',
+        '\\(stack': '(分攤',
         'Blinding Light': '光彈',
         'Dark Perimeter': '黑暗回環',
         'Dark and Light': '光與暗的調停',

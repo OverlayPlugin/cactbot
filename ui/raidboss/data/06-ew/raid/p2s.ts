@@ -517,14 +517,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Hippokampos': '馬頭魚尾怪',
       },
       'replaceText': {
-        // '\\(knockback\\)': '', // FIXME '(击退)'
-        // '\\(short\\)': '', // FIXME '(短)'
-        // '\\(long\\)': '', // FIXME '(长)'
+        '\\(knockback\\)': '(擊退)',
+        '\\(short\\)': '(短)',
+        '\\(long\\)': '(長)',
         'Channeling Flow': '溝流充溢',
         'Channeling Overflow': '溝流溢出',
         'Coherence(?! [FL])': '連貫攻擊',

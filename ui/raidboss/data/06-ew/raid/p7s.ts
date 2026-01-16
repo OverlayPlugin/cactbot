@@ -962,7 +962,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Agdistis': '阿格狄斯提斯',
         'Immature Io': '未成熟的伊娥',
@@ -972,9 +971,9 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         '--chasing aoe--': '半神閃耀',
         '--eggs--': '生命之果',
-        // 'arrow': '', // FIXME '箭头'
-        // 'close': '', // FIXME '近'
-        // 'far': '', // FIXME '远'
+        'arrow': '箭頭',
+        'close': '近',
+        'far': '遠',
         'Blades of Attis': '阿提斯的葉刃',
         'Bough of Attis': '阿提斯的巨枝',
         'Bronze Bellows': '突風強襲',

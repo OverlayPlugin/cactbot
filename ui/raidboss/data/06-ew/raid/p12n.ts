@@ -374,15 +374,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Anthropos': '人',
         'Athena': '雅典娜',
         'Thymou Idea': '激情理念',
       },
       'replaceText': {
-        // '\\(spread\\)': '', // FIXME '(分散)'
-        // '\\(stack\\)': '', // FIXME '(分摊)'
+        '\\(spread\\)': '(分散)',
+        '\\(stack\\)': '(分攤)',
         'Clear Cut': '橫斬',
         'Dialogos': '對話',
         'Glaukopis': '明眸',

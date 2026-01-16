@@ -309,17 +309,16 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Agdistis': '阿格狄斯提斯',
         'Immature Io': '未成熟的伊娥',
         'Immature Stymphalide': '未成熟的鐵爪怪鳥',
       },
       'replaceText': {
-        // 'left': '', // FIXME '左'
-        // 'right': '', // FIXME '右'
-        // 'lines': '', // FIXME '直线'
-        // 'triangle': '', // FIXME '三角'
+        'left': '左',
+        'right': '右',
+        'lines': '直線',
+        'triangle': '三角',
         'Blades of Attis': '阿提斯的葉刃',
         'Bough of Attis': '阿提斯的巨枝',
         'Burst': '爆炸',

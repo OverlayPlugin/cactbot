@@ -188,7 +188,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タン強 -- 離れる',
           cn: '坦克死刑 -- 远离',
           ko: '탱버 대상자 -- 멀리 떨어지기',
-          tc: '坦剋死刑 -- 遠離',
+          tc: '坦克死刑 -- 遠離',
         },
         tankbusterOn: {
           en: 'Tankbuster on ${player}',
@@ -197,7 +197,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タン強: ${player}',
           cn: '坦克死刑 ${player}',
           ko: '"${player}" 탱버',
-          tc: '坦剋死刑 ${player}',
+          tc: '坦克死刑 ${player}',
         },
       },
     },
@@ -382,7 +382,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Comet': '隕星',
         'Fire Sphere': '烈火晶球',
@@ -390,11 +389,11 @@ const triggerSet: TriggerSet<Data> = {
         'Kokytos': '克邱特斯',
       },
       'replaceText': {
-        // '\\(Behemoth\\)': '', // FIXME '(野兽)'
-        // '\\(Fighter\\)': '', // FIXME '(武术家)'
-        // '\\(Mage\\)': '', // FIXME '(魔法师)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(resolve\\)': '', // FIXME '(判定)'
+        '\\(Behemoth\\)': '(野獸)',
+        '\\(Fighter\\)': '(武術家)',
+        '\\(Mage\\)': '(魔法師)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(resolve\\)': '(判定)',
         'Archaic Demolish': '古式破碎拳',
         'Archaic Rockbreaker': '古式地烈勁',
         'Ascendant Fist': '穿升拳',
