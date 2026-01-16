@@ -790,7 +790,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の内側 / 東の外側',
           cn: '内左/外右',
           ko: '서쪽 안 / 동쪽 바깥',
-          tc: '西内側/東外側',
+          tc: '西內側/東外側',
         },
         insideEastOutsideWest: {
           en: 'Inside East / Outside West',
@@ -799,7 +799,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の外側 / 東の内側',
           cn: '内右/外左 ',
           ko: '동쪽 안 / 서쪽 바깥',
-          tc: '東内側/西外側',
+          tc: '東內側/西外側',
         },
       },
     },
