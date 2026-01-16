@@ -343,7 +343,7 @@ Options.Triggers.push({
           de: 'LoS hinter 2x Meteor',
           fr: 'Derrière les 2 météores',
           cn: '2颗陨石后方躲避',
-          ko: '뒤에 숨기 2x',
+          ko: '돌 뒤에 숨기 2x',
         },
       },
     },
