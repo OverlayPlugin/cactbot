@@ -314,6 +314,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Spread Fire Cone',
           de: 'Verteilen für Feuer-Kegel',
+          fr: 'Écartez les cônes de feu',
           cn: '火焰扇形分散',
           ko: '불 부채꼴 산개',
         },
@@ -368,6 +369,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'KB from ${dir1} + away from ${dir2}',
           de: 'Rückstoß von ${dir1} + weg von ${dir2}',
+          fr: 'Poussée depuis ${dir1} + loin de ${dir2}',
           cn: '从${dir1}击退 + 远离${dir2}',
           ko: '${dir1}에서 넉백 + ${dir2}쪽 피하기',
         },
@@ -425,6 +427,7 @@ const triggerSet: TriggerSet<Data> = {
         unknown: {
           en: 'Cone cleave from ???',
           de: 'Kegel-AoE von ???',
+          fr: 'AoE en cône depuis ???',
           cn: '扇形攻击未知来向',
           ko: '???에서 오는 부채꼴 장판',
         },
@@ -440,6 +443,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Go N/S + Big AoE',
           de: 'Geh N/S + Große AoE',
+          fr: 'Allez N/S + Grosse AoE',
           cn: '去上/下 + 高伤害 AOE',
           ko: '남/북쪽으로 + 강한 전체 공격',
         },
@@ -455,6 +459,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Soak Towers',
           de: 'Türme nehmen',
+          fr: 'Prenez les tours',
           cn: '踩塔',
           ko: '탑 밟기',
         },
@@ -474,6 +479,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Away from exploding orbs',
           de: 'Weg von explodierenden Orbs',
+          fr: 'Loin des orbes explosifs',
           cn: '远离爆炸球',
           ko: '폭발하는 구슬에서 멀어지기',
         },
@@ -490,6 +496,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Dodge Cones x2',
           de: 'Kegel-AoEs ausweichen x2',
+          fr: 'Esquivez les cônes x2',
           cn: '躲避两轮扇形攻击',
           ko: '부채꼴 장판 피하기 x2',
         },
@@ -512,6 +519,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Baiting fire cones',
           de: 'ködere Feuer-Kegel',
+          fr: 'Déposez les cônes de feu',
           cn: '诱导火扇形',
           ko: '불 부채꼴 유도',
         },
@@ -528,6 +536,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Baiting water cones',
           de: 'ködere Wasser-Kegel',
+          fr: 'Déposez les cônes d\'eau',
           cn: '诱导水扇形',
           ko: '물 부채꼴 유도',
         },
@@ -577,6 +586,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait ${elem} cone from ${dir}',
           de: 'ködere ${elem}-Kedel von ${dir}',
+          fr: 'Déposez les cônes ${elem} depuis ${dir}',
           cn: '诱导${elem}扇形来自${dir}',
           ko: '${dir}에서 오는 ${elem} 부채꼴 유도',
         },
@@ -584,18 +594,21 @@ const triggerSet: TriggerSet<Data> = {
         water: {
           en: 'Water',
           de: 'Wasser',
+          fr: 'Eau',
           cn: '水',
           ko: '물',
         },
         fire: {
           en: 'Fire',
           de: 'Feuer',
+          fr: 'Feu',
           cn: '火',
           ko: '불',
         },
         middle: {
           en: 'Middle',
           de: 'Mitte',
+          fr: 'Milieu',
           cn: '中间',
           ko: '중앙',
         },
@@ -666,7 +679,7 @@ const triggerSet: TriggerSet<Data> = {
         'Insane Air': 'Figure démentielle',
         'Plunging Snap': 'Claquement hydrique',
         'Pyrotation': 'Rotation enflammée',
-        'Sick Swell': 'lame de fond',
+        'Sick Swell': 'Lame de fond',
         'Sickest Take-off': 'Ascension déchaînée',
         'Steam Burst': 'Déflagration combinée',
         'Watersnaking': 'Ondulation hydrique',

@@ -602,6 +602,8 @@ export default {
   },
   rightEast: {
     en: 'Right/East',
+    fr: 'Droite/Est',
+    cn: '右侧',
     ko: '오른쪽/동쪽',
   },
   left: {
@@ -615,6 +617,8 @@ export default {
   },
   leftWest: {
     en: 'Left/West',
+    fr: 'Gauche/Ouest',
+    cn: '左侧',
     ko: '왼쪽/서쪽',
   },
   getLeftAndWest: {

@@ -401,14 +401,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ice Soldier': '寒冰士兵',
         'Shiva': '濕婆',
       },
       'replaceText': {
-        // '\\(circle\\)': '', // FIXME '(圆)'
-        // '\\(cross\\)': '', // FIXME '(十字)'
+        '\\(circle\\)': '(圓)',
+        '\\(cross\\)': '(十字)',
         'Absolute Zero': '絕對零度',
         'Avalanche': '雪崩',
         'Diamond Dust': '鑽石星塵',

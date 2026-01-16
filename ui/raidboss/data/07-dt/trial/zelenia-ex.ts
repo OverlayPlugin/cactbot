@@ -257,6 +257,12 @@ const triggerSet: TriggerSet<Data> = {
             DPS innen – DPS startet immer innen, Support startrt immer außen.
             Support zuerst – Support ködert zuerst.
             DPS zuerst – DPS ködert zuerst.`,
+        fr: `Stratégie pour résoudre Péril cruciforme 1 et 3.
+
+            None - On call juste le 1er bait.
+            DPS Intérieur - Les DPS commencent à l'intérieur, les supports commencent à l'extérieur.
+            Support en 1er - Les supports baitent en premier.
+            DPS en 1er - Les DPS baitent en premier.`,
         cn: `凌空错1和3处理策略。
 
             无 - 仅播报第一次引导。
@@ -283,6 +289,12 @@ const triggerSet: TriggerSet<Data> = {
           'DPS innen': 'dpsIn',
           'Support zuerst': 'supportFirst',
           'DPS zuerst': 'dpsFirst',
+        },
+        fr: {
+          'Aucun': 'none',
+          'DPS Intérieur': 'dpsIn',
+          'Support en 1er': 'supportFirst',
+          'DPS en 1er': 'dpsFirst',
         },
         cn: {
           '无': 'none',
@@ -409,36 +421,42 @@ const triggerSet: TriggerSet<Data> = {
         near: {
           en: 'Near bait first',
           de: 'Nah ködert zuerst',
+          fr: 'Proche déposent en premier',
           cn: '先靠近引导',
           ko: '가까이 유도 먼저',
         },
         far: {
           en: 'Far bait first',
           de: 'Fern ködert zuerst',
+          fr: 'Loin déposent en premier',
           cn: '先远离引导',
           ko: '멀리 유도 먼저',
         },
         out: {
           en: 'Start out',
           de: 'Starte außen',
+          fr: 'Commencez à l\'extérieur',
           cn: '圈外开始',
           ko: '바깥 시작',
         },
         in: {
           en: 'Start in',
           de: 'Starte innen',
+          fr: 'Commencez à l\'intérieur',
           cn: '圈内开始',
           ko: '안 시작',
         },
         swapAfterFirst: {
           en: '${first}, Swap after first+third',
           de: '${first}, Wechseln nach erstem+dritten',
+          fr: '${first}, swap après le premier et troisième',
           cn: '${first}, 第1次和第3次后交换',
           ko: '${first}, 1번째와 3번째 후 교대',
         },
         swapAfterSecond: {
           en: '${first}, Swap after second',
           de: '${first}, Wechseln nach dem zweiten',
+          fr: '${first}, swap après le second',
           cn: '${first}, 第2次后交换',
           ko: '${first}, 2번째 후 교대',
         },
