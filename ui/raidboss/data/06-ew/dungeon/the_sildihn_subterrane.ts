@@ -1148,7 +1148,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Amalj\'aa Artillery Carriage': '蜥蜴人式野砲',
         'Antique Boulder': '岩石',
@@ -1176,11 +1175,11 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '--draw in--': '咒具吸炎',
-        // '\\(in\\)': '', // FIXME '(内)'
-        // '\\(out\\)': '', // FIXME '(外)'
-        // '\\(far\\)': '', // FIXME '(远)'
-        // '\\(near\\)': '', // FIXME '(近)'
-        // '\\(mid\\)': '', // FIXME '(中间)'
+        '\\(in\\)': '(內)',
+        '\\(out\\)': '(外)',
+        '\\(far\\)': '(遠)',
+        '\\(near\\)': '(近)',
+        '\\(mid\\)': '(中間)',
         'Amalj\'aa Artillery': '蜥蜴人式野砲',
         'Biting Wind': '烈風',
         'Blaze of Glory': '十字聖火',
