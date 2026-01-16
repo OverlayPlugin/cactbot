@@ -323,8 +323,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B258', capture: false },
       durationSeconds: 8,
-      countdownSeconds: 8,
       suppressSeconds: 9999,
+      countdownSeconds: 8,
       infoText: (_data, _matches, output) => output.south!(),
       outputStrings: {
         south: Outputs.south,
@@ -376,14 +376,14 @@ const triggerSet: TriggerSet<Data> = {
           return 10.5;
         return 13.5;
       },
-      countdownSeconds: (data) => {
+      suppressSeconds: (data) => {
         if (data.hailMoveCount === 2)
           return 7.5;
         if (data.hailMoveCount === 3)
           return 10.5;
         return 13.5;
       },
-      suppressSeconds: (data) => {
+      countdownSeconds: (data) => {
         if (data.hailMoveCount === 2)
           return 7.5;
         if (data.hailMoveCount === 3)

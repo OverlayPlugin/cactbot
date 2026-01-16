@@ -7,8 +7,17 @@ import { RaidbossData } from '../../../../../types/data';
 import { NetMatches } from '../../../../../types/net_matches';
 import { TriggerSet } from '../../../../../types/trigger';
 
+type CoffinfillerPosition =
+  | 'outerWest'
+  | 'innerWest'
+  | 'innerEast'
+  | 'outerEast'
+  | 'inside'
+  | 'outside';
+
 export interface Data extends RaidbossData {
   flailPositions: NetMatches['StartsUsingExtra'][];
+  coffinfillers: CoffinfillerPosition[];
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   bats: {
     inner: DirectionOutput16[];
@@ -42,6 +51,7 @@ const triggerSet: TriggerSet<Data> = {
   timelineFile: 'r9s.txt',
   initData: () => ({
     flailPositions: [],
+    coffinfillers: [],
     actorPositions: {},
     bats: { inner: [], middle: [], outer: [] },
     satisfiedCount: 0,
@@ -98,6 +108,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Tank Cleave on YOU (Big)',
           de: 'Tank Cleave auf DIR (Groß)',
           cn: '坦克范围死刑点名（大）',
+          ko: '광역 탱버 대상자 (큰)',
         },
       },
     },
@@ -227,6 +238,196 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B333', source: 'Vamp Fatale', capture: false },
       response: Responses.bigAoe(),
+    },
+    {
+      id: 'R9S Coffinfiller',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B368', 'B369', 'B36A'], capture: true },
+      suppressSeconds: (data) => data.coffinfillers.length === 0 ? 0 : 5,
+      run: (data, matches) => {
+        let danger: CoffinfillerPosition;
+        const xPos = parseFloat(matches.x);
+        if (xPos < 95)
+          danger = 'outerWest';
+        else if (xPos < 100)
+          danger = 'innerWest';
+        else if (xPos < 105)
+          danger = 'innerEast';
+        else
+          danger = 'outerEast';
+        data.coffinfillers.push(danger);
+      },
+    },
+    {
+      id: 'R9S Half Moon',
+      type: 'StartsUsingExtra',
+      netRegex: { id: ['B377', 'B379', 'B37B', 'B37D'], capture: true },
+      delaySeconds: 0.3,
+      alertText: (data, matches, output) => {
+        if (data.coffinfillers.length < 2) {
+          if (matches.id === 'B377')
+            return output.rightThenLeft!();
+          if (matches.id === 'B37B')
+            return output.leftThenRight!();
+          return output.bigHalfmoonNoCoffin!({
+            dir1: output[matches.id === 'B379' ? 'right' : 'left']!(),
+            dir2: output[matches.id === 'B379' ? 'left' : 'right']!(),
+          });
+        }
+
+        const attackDirNum = Directions.hdgTo4DirNum(parseFloat(matches.heading));
+        const dirNum1 = (attackDirNum + 2) % 4;
+        const dir1 = Directions.outputFromCardinalNum(dirNum1);
+        const dirNum2 = attackDirNum;
+        const dir2 = Directions.outputFromCardinalNum(dirNum2);
+        const bigCleave = matches.id === 'B379' || matches.id === 'B37D';
+
+        const insidePositions: CoffinfillerPosition[] = [
+          'innerWest',
+          'innerEast',
+        ];
+
+        const outsidePositions: CoffinfillerPosition[] = [
+          'outerWest',
+          'outerEast',
+        ];
+
+        const westPositions: CoffinfillerPosition[] = [
+          'innerWest',
+          'outerWest',
+        ];
+
+        const eastPositions: CoffinfillerPosition[] = [
+          'innerEast',
+          'outerEast',
+        ];
+
+        let coffinSafe1: CoffinfillerPosition[] = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        coffinSafe1 = coffinSafe1.filter((pos) => !data.coffinfillers.includes(pos));
+
+        let coffinSafe2: CoffinfillerPosition[] = [
+          'outerWest',
+          'innerWest',
+          'innerEast',
+          'outerEast',
+        ];
+        // Whatever gets hit first round will be safe second round
+        coffinSafe2 = coffinSafe2.filter((pos) => data.coffinfillers.includes(pos));
+
+        data.coffinfillers = [];
+
+        let dir1Text = output[dir1]!();
+        let dir2Text = output[dir2]!();
+
+        if (dir1 === 'dirW') {
+          coffinSafe1 = coffinSafe1.filter((pos) => !westPositions.includes(pos));
+          dir1Text = output.leftWest!();
+        }
+
+        if (dir1 === 'dirE') {
+          coffinSafe1 = coffinSafe1.filter((pos) => !eastPositions.includes(pos));
+          dir1Text = output.rightEast!();
+        }
+
+        if (dir2 === 'dirW') {
+          coffinSafe2 = coffinSafe2.filter((pos) => !westPositions.includes(pos));
+          dir2Text = output.leftWest!();
+        }
+
+        if (dir2 === 'dirE') {
+          coffinSafe2 = coffinSafe2.filter((pos) => !eastPositions.includes(pos));
+          dir2Text = output.rightEast!();
+        }
+
+        let coffin1: CoffinfillerPosition | 'unknown';
+        let coffin2: CoffinfillerPosition | 'unknown';
+
+        if (coffinSafe1.every((pos) => insidePositions.includes(pos)))
+          coffin1 = 'inside';
+        else if (coffinSafe1.every((pos) => outsidePositions.includes(pos)))
+          coffin1 = 'outside';
+        else
+          coffin1 = coffinSafe1.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+
+        if (coffinSafe2.every((pos) => insidePositions.includes(pos)))
+          coffin2 = 'inside';
+        else if (coffinSafe2.every((pos) => outsidePositions.includes(pos)))
+          coffin2 = 'outside';
+        else
+          coffin2 = coffinSafe2.find((pos) => insidePositions.includes(pos)) ?? 'unknown';
+
+        if (bigCleave) {
+          return output.bigHalfmoonCombined!({
+            coffin1: output[coffin1]!(),
+            dir1: dir1Text,
+            coffin2: output[coffin2]!(),
+            dir2: dir2Text,
+          });
+        }
+
+        return output.combined!({
+          coffin1: output[coffin1]!(),
+          dir1: dir1Text,
+          coffin2: output[coffin2]!(),
+          dir2: dir2Text,
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsCardinalDir,
+        text: {
+          en: '${first} => ${second}',
+          ko: '${first} => ${second}',
+        },
+        combined: {
+          en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+          ko: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+        },
+        bigHalfmoonCombined: {
+          en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
+          ko: '${coffin1} + ${dir1} (큰) => ${coffin2} + ${dir2} (큰)',
+        },
+        rightThenLeft: Outputs.rightThenLeft,
+        leftThenRight: Outputs.leftThenRight,
+        left: Outputs.left,
+        leftWest: Outputs.leftWest,
+        right: Outputs.right,
+        rightEast: Outputs.rightEast,
+        inside: {
+          en: 'Inside',
+          ko: '안쪽',
+        },
+        outside: {
+          en: 'Outside',
+          ko: '바깥쪽',
+        },
+        outerWest: {
+          en: 'Outer West',
+          ko: '바깥 서쪽',
+        },
+        innerWest: {
+          en: 'Inner West',
+          ko: '안 서쪽',
+        },
+        innerEast: {
+          en: 'Inner East',
+          ko: '안 동쪽',
+        },
+        outerEast: {
+          en: 'Outer East',
+          ko: '바깥 동쪽',
+        },
+        bigHalfmoonNoCoffin: {
+          en: '${dir1} max melee => ${dir2} max melee',
+          fr: '${dir1} max melée => ${dir2} max melée',
+          cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
+          ko: '${dir1} 칼끝딜 => ${dir2} 칼끝딜',
+        },
+      },
     },
     {
       id: 'R9S Crowd Kill',
@@ -367,11 +568,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid',
           de: 'Vermeide',
           cn: '避开',
+          ko: '피하기:',
         },
         text: {
           en: '${avoid}${mech}',
           de: '${avoid}${mech}',
           cn: '${avoid}${mech}',
+          ko: '${avoid}${mech}',
         },
       },
     },
@@ -391,11 +594,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid',
           de: 'Vermeide',
           cn: '避开',
+          ko: '피하기:',
         },
         text: {
           en: '${avoid}${mech}',
           de: '${avoid}${mech}',
           cn: '${avoid}${mech}',
+          ko: '${avoid}${mech}',
         },
       },
     },
