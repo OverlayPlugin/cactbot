@@ -19,6 +19,7 @@ export interface Data extends RaidbossData {
     dir: number;
     actor: { x: number; y: number; heading: number };
   }[];
+  voidStardust?: 'spread' | 'stack';
   weaponMechCount: number;
   domDirectionCount: {
     vertCount: number;
@@ -82,6 +83,25 @@ const triggerSet: TriggerSet<Data> = {
     heartbreakerCount: 0,
   }),
   timelineTriggers: [
+    {
+      id: 'R11S Void Stardust End',
+      regex: /^Crushing Comet/,
+      beforeSeconds: 11.1,
+      infoText: (data, _matches, output) => {
+        if (data.voidStardust === 'spread')
+          return output.baitPuddlesThenStack!();
+        if (data.voidStardust === 'stack')
+          return output.baitPuddlesThenSpread!();
+      },
+      outputStrings: {
+        baitPuddlesThenStack: {
+          en: 'Bait 3x Puddles => Stack',
+        },
+        baitPuddlesThenSpread: {
+          en: 'Bait 3x Puddles => Spread',
+        },
+      },
+    },
     {
       id: 'R11S Powerful Gust',
       regex: /Powerful Gust/,
@@ -310,11 +330,24 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R11S Comet Spread Collect',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['cometSpread'], capture: false },
+      suppressSeconds: 1,
+      run: (data) => data.voidStardust = 'spread',
+    },
+    {
       id: 'R11S Comet Spread',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['cometSpread'], capture: true },
       condition: Conditions.targetIsYou(),
       response: Responses.spread(),
+    },
+    {
+      id: 'R11S Crushing Comet Collect',
+      type: 'StartsUsing',
+      netRegex: { id: 'B415', source: 'The Tyrant', capture: false },
+      run: (data) => data.voidStardust = 'stack',
     },
     {
       id: 'R11S Crushing Comet',
