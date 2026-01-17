@@ -415,9 +415,9 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, matches, output) => {
         // During snaking it is always move since the baits are too close
         if (data.phase === 'snaking')
-          return output.text!({
+          return output.watersnaking!({
             protean: output.protean!(),
-            action: output.watersnakingMove!(),
+            action: output.moveAway!(),
           });
         if (data.phase === 'arenaSplit') {
           return matches.id === 'B5E0'
@@ -441,7 +441,9 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${protean} => ${action}',
         },
-        watersnakingMove: Outputs.moveAway,
+        watersnaking: {
+          en: '${protean} => ${action}',
+        },
         arenaSplitReverse: {
           en: 'Reverse Alley-oop',
         },
