@@ -417,7 +417,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.phase === 'snaking')
           output.text!({
             protean: output.protean!(),
-            action: output.watersnakingMove!()
+            action: output.watersnakingMove!(),
           });
         if (data.phase === 'arenaSplit') {
           return matches.id === 'B5E0'
