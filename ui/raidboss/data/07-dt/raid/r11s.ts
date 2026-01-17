@@ -295,6 +295,21 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R11S Void Stardust',
+      type: 'StartsUsing',
+      netRegex: { id: 'B412', source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.baitPuddles!(),
+      outputStrings: {
+        baitPuddles: {
+          en: 'Bait 3x puddles',
+          de: 'Ködere Flächen x3',
+          fr: 'Déposez les flaques 3x',
+          cn: '诱导3次圈圈',
+          ko: '장판 유도 3x',
+        },
+      },
+    },
+    {
       id: 'R11S Comet Spread',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['cometSpread'], capture: true },
@@ -310,6 +325,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R11S Dance Of Domination Trophy',
       // 2s cast, but B41F damage cast (0.5s) starts ~6s later.
+      // There are 12.9s from B7BB startsUsing to bigAoe B7EA Ability
       type: 'StartsUsing',
       netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
       delaySeconds: 3.7, // 5s before AoEs start
@@ -322,8 +338,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R11S Dance Of Domination Trophy Big AoE',
-      // There are 12.9s from B7BB startsUsing to bigAoe B7EA Ability
+
       type: 'StartsUsing',
       netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
       delaySeconds: 8.7, // Around the first hit (B41F)
