@@ -163,6 +163,7 @@ const triggerSet: TriggerSet<Data> = {
         repeat: {
           en: '${left} => ${front} x3 => ${left} => ${front} x3',
           de: '${left} => ${front} x3 => ${left} => ${front} x3',
+          fr: '${left} => ${front} x3 => ${left} => ${front} x3',
           cn: '${left} => ${front} x3 => ${left} => ${front} x3',
           ko: '${left} => ${front} x3 => ${left} => ${front} x3',
           tc: '${left} => ${front} x3 => ${left} => ${front} x3',
@@ -170,6 +171,7 @@ const triggerSet: TriggerSet<Data> = {
         rewind: {
           en: '${left} => ${front} x6 => ${left}',
           de: '${left} => ${front} x6 => ${left}',
+          fr: '${left} => ${front} x6 => ${left}',
           cn: '${left} => ${front} x6 => ${left}',
           ko: '${left} => ${front} x6 => ${left}',
           tc: '${left} => ${front} x6 => ${left}',
@@ -177,6 +179,7 @@ const triggerSet: TriggerSet<Data> = {
         avoid: {
           en: 'Avoid swipes x8',
           de: 'Vermeide Schwung x8',
+          fr: 'Évitez les balayage x8',
           cn: '避开顺劈 x8',
           ko: '후려치기 피하기 x8',
           tc: '避開順劈 x8',
