@@ -285,7 +285,46 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R10S Pyrotation Stack',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['partyStackFire'], capture: true },
-      response: Responses.stackMarkerOn(),
+      condition: (data) => {
+        // Let Deep Impact trigger output instead for final Pyrotation
+        if (data.role === 'tank' && data.phase === 'xtremeSnaking')
+          return false;
+        return true;
+      },
+      alertText: (data, matches, output) => {
+        const target = matches.target;
+
+        if (target === data.me) {
+          const stack = 'stackOnYou';
+          return data.phase === 'xtremeSnaking'
+            ? output.stackFinal!({ stack: output[stack]!() })
+            : output[stack]!();
+        }
+
+        if (target === undefined) {
+          const stack = 'stackOnMarker';
+          return data.phase === 'xtremeSnaking'
+            ? output.stackFinal!({ stack: output[stack]!() })
+            : output[stack]!();
+        }
+
+        if (data.phase === 'xtremeSnaking') {
+          return output.stackFinal!({
+            stack: output.stackOnTarget!({
+              player: data.party.member(target),
+            }),
+          });
+        }
+        return output.stackOnTarget!({ player: data.party.member(target) });
+      },
+      outputStrings: {
+        stackOnYou: Outputs.stackOnYou,
+        stackOnTarget: Outputs.stackOnPlayer,
+        stackMarker: Outputs.stackMarker,
+        stackFinal: {
+          en: '${stack} Near Blue',
+        },
+      },
     },
     {
       id: 'R10S Sickest Take-off Debuff',
@@ -582,6 +621,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B5B7', source: 'Deep Blue', capture: false },
       condition: (data) => {
+        // Let Pyrotation trigger for non tanks in final phase
+        if (data.role !== 'tank' && data.phase === 'xtremeSnaking')
+          return false;
         return data.snakingDebuff !== 'fire';
       },
       infoText: (data, _matches, output) => {
