@@ -55,9 +55,7 @@ cactbot은 다음 모듈을 제공합니다:
 
 ### 의존성 프로그램 설치
 
-[.NET Framework](https://www.microsoft.com/net/download/framework) 4.6.1 버전 이상을 설치하세요.
-
-반드시 파이널 판타지 14를 [DirectX 11](http://imgur.com/TjcnjmG)로 실행해야 합니다.
+[.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) 4.6.1 버전 이상을 설치하세요.
 
 아직 [Advanced Combat Tracker](http://advancedcombattracker.com/)를 설치하지 않았다면, 64비트 버전을 설치하세요.
 
@@ -260,7 +258,7 @@ Webpack에 대해 더 자세히 알고 싶다면
 텍스트와 사운드 알람은 ACT의 "커스텀 트리거" 기능과 비슷한 방식으로, 전투 타임라인이나 게임에서 찍히는 로그 메시지를 기반으로 제공됩니다.
 이 모듈은 월드 오브 워크래프트의 [BigWigs Bossmods](https://www.curseforge.com/wow/addons/big-wigs) 애드온과 비슷하게 보이고 느껴지도록 디자인 되었습니다.
 
-[이 페이지](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html?lang=ko)에는
+[이 페이지](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html)에는
 현재 cactbot이 지원하는 컨텐츠 목록이 나열되어 있습니다.
 지원하는 컨텐츠는 계속해서 늘리고 있습니다.
 하지만 많은 수의 오래된 컨텐츠들이 아직 지원되지 않습니다.
@@ -387,7 +385,7 @@ oopsy에 경고(:warning:)나 실패(:no_entry_sign:) 로그가 찍혀서 무엇
 현재 소환 불가능한 NM 목록을 복사해주는 왼쪽의 빨간색 "토벌한 마물" 버튼을 클릭하면, 게임에 입력할 수 있습니다. 예시)
 `/ㄷ 토벌한 마물: 대왕 (89분) → 넘버즈 (97분) → 하즈마트 (104분) → 기수 (107분) → 카임 (119분)`
 
-이모지가 보이지 않는다면, [이 Windows 업데이트](https://support.microsoft.com/en-us/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser)를 설치했는지 확인하세요.
+이모지가 보이지 않는다면, [이 Windows 업데이트](https://support.microsoft.com/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser)를 설치했는지 확인하세요.
 
 ![eureka 스크린샷](../../screenshots/promo_eureka.png)
 
@@ -495,6 +493,7 @@ user 파일을 사용하기 보다는
 
 cactbot은 현재 서비스 중인 글로벌 서버 버전(영어, 독일어, 프랑스어, 일본어)
 중국 서버 버전(중국어),
+번체 중국어 서버 버전(번체 중국어),
 그리고 한국 서버 버전(한국어)에서
 테스트되고 작동합니다.
 일부 번역은 계속 진행 중입니다.

@@ -310,7 +310,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Electric Node': '雷擊系統',
         'Kaliya': '卡利亞',
@@ -325,8 +324,8 @@ const triggerSet: TriggerSet<Data> = {
         'Nerve Gas': '神經毒氣',
         'Resonance': '共鳴',
         'Secondary Head': '側首',
-        // 'Seed Of The Rivers/Sea': '', // FIXME '江河/海洋之种'
-        // 'Seed Of The Sea/Rivers': '', // FIXME '海洋/江河之种'
+        'Seed Of The Rivers/Sea': '江河/海洋之種',
+        'Seed Of The Sea/Rivers': '海洋/江河之種',
         'Stun': '眩暈',
       },
     },

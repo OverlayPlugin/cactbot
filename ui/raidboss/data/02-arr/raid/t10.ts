@@ -178,7 +178,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Imdugud': '伊姆都古德',
         'The Alpha Concourse': '第1信徒區間',
@@ -187,12 +186,12 @@ const triggerSet: TriggerSet<Data> = {
         'Crackle Hiss': '雷光電閃',
         'Critical Rip': '暴擊撕裂',
         'Cyclonic Chaos': '龍捲雷暴',
-        // 'Daughter': '', // FIXME '伊姆都古德之女'
+        'Daughter': '伊姆都古德之女',
         'Electric Burst': '電流爆裂',
         'Electrocharge': '電氣充能',
         'Heat Lightning': '驚電',
-        // 'Random \\+ Charge': '', // FIXME '随机+冲锋'
-        // 'Son': '', // FIXME '伊姆都古德之子'
+        'Random \\+ Charge': '隨機+衝鋒',
+        'Son': '伊姆都古德之子',
         'Spike Flail': '刃尾橫掃',
         'Wild Charge': '狂野蓄力',
       },

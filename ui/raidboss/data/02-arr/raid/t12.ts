@@ -268,7 +268,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bennu': '貝努鳥',
         'Phoenix(?!-)': '鳳凰',
@@ -276,14 +275,14 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '(?<! )Rebirth': '新生',
-        // 'Bennu Add': '', // FIXME '贝努鸟出现'
+        'Bennu Add': '貝努鳥出現',
         'Blackfire': '漆黑之炎',
         'Bluefire': '青藍之炎',
         'Brand Of Purgatory': '煉獄之炎',
         'Flames Of Rebirth': '轉生之炎',
         'Flames Of Unforgiveness': '煉獄之燎火',
         'Fountain Of Fire': '靈泉之炎',
-        // 'Fountain(?! Of Fire)': '', // FIXME '灵泉'
+        'Fountain(?! Of Fire)': '靈泉',
         'Redfire Plume': '赤紅之炎柱',
         'Redfire(?! )': '紅蓮之炎',
         'Revelation': '天啟',

@@ -332,7 +332,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bioweapon Storage': '生體管理區',
         'Lamia Prosector': '拉米亞解剖女王',
@@ -342,10 +341,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Circle Blade': '迴旋斬',
-        // 'Circle Of Flames': '', // FIXME '地层断裂'
+        'Circle Of Flames': '烈火回環',
         'Cursed Shriek': '詛咒之嚎',
         'Cursed Voice': '詛咒之聲',
-        // 'Deathdancer': '', // FIXME '死亡舞师'
+        'Deathdancer': '死亡舞師',
         'Frenzy': '狂熱',
         'Petrifaction': '石化',
         'Red Lotus Blade': '紅蓮',

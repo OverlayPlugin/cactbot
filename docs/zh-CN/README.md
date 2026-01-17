@@ -49,9 +49,7 @@ Cactbot 提供以下悬浮窗：
 
 ### 依赖
 
-安装 4.6.1 版本及以上的 [.NET Framework](https://www.microsoft.com/net/download/framework)。
-
-你必须启用最终幻想 14 的 [DirectX 11](http://imgur.com/TjcnjmG) 模式。
+安装 4.6.1 版本及以上的 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 
 你需要安装 64 位版本的 [Advanced Combat Tracker](http://advancedcombattracker.com/)。
 
@@ -334,7 +332,7 @@ Cactbot 的所有 UI 模块都包含在 [ui/](ui/) 文件夹中。如果你按�
 
 当前，该悬浮窗不会直接读取优雷卡追踪器的信息。但如果你点击优雷卡追踪器左侧红色的 “复制已杀死的 NM” 按钮来复制当前已死 NM 的列表，则可以将其粘贴到游戏中，例如`/echo 冷却中的NM: 蝎子 (7m) → 魔界花 (24m) → 独眼 (54m)`，以便该模块从此列表自动同步数据。
 
-如果你看不到表情符号，请确保已安装[此 Windows 更新](https://support.microsoft.com/en-us/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser)。
+如果你看不到表情符号，请确保已安装[此 Windows 更新](https://support.microsoft.com/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser)。
 
 ![优雷卡屏幕截图](../../screenshots/promo_eureka.png)
 
@@ -402,7 +400,7 @@ Cactbot 可以与为 OverlayPlugin 的数据统计功能设计的任何 DPS 统�
 
 ## 支持语言
 
-Cactbot 已在当前版本的国际服（英语、德语、法语、日语）、中国服以及韩国服经过测试并可以正常工作。某些翻译工作仍在进行中。点击 [Cactbot 覆盖率页面](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html) 获取更多信息。
+Cactbot 已在当前版本的国际服（英语、德语、法语、日语）、中国服、繁体中文服以及韩国服经过测试并可以正常工作。某些翻译工作仍在进行中。点击 [Cactbot 覆盖率页面](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html) 获取更多信息。
 
 ## 许可、商标与授权
 

@@ -187,6 +187,16 @@ html {
   margin-right: 20px;
 }
 
+.trigger-set-override-warning {
+  padding: 20px;
+  text-align: center;
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  margin: 10px;
+}
+
 .timeline-edit-container {
   margin: 12px 0 12px 12px;
   grid-column-end: span 2;
