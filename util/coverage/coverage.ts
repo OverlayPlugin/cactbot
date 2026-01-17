@@ -1,6 +1,13 @@
 import contentList from '../../resources/content_list';
 import ContentType from '../../resources/content_type';
-import { isLang, Lang, langMap, langToLocale, languages } from '../../resources/languages';
+import {
+  browserLanguagesToLang,
+  isLang,
+  Lang,
+  langMap,
+  langToLocale,
+  languages,
+} from '../../resources/languages';
 import { UnreachableCode } from '../../resources/not_reached';
 import ZoneInfo from '../../resources/zone_info';
 import { LocaleObject, LocaleText } from '../../types/trigger';
@@ -512,7 +519,7 @@ const miscStrings = {
     fr: 'Erreur : Lancez npm run coverage-report pour générer des données.',
     ja: 'エラー：npm run coverage-report を実行し、データを生成しよう。',
     cn: '错误：请先运行 npm run coverage-report 以生成数据。',
-    ko: '에러: 데이터를 생성하려면 node npm run coverage-report를 실행하세요.',
+    ko: '에러: 데이터를 생성하려면 npm run coverage-report를 실행하세요.',
     tc: '錯誤：請先運行 npm run coverage-report 來產生資料。',
   },
   // Indicator that content is unsupported
@@ -1356,7 +1363,7 @@ const buildLanguageSelect = (container: HTMLElement, lang: Lang) => {
 document.addEventListener('DOMContentLoaded', () => {
   // Allow for `coverage.html?lang=de` style constructions.
   const params = new URLSearchParams(window.location.search);
-  const langStr = params.get('lang') ?? 'en';
+  const langStr = params.get('lang') ?? browserLanguagesToLang();
   // TODO: left for now as backwards compatibility with user css.  Remove this later??
   document.body.classList.add(`lang-${langStr}`);
   const lang = langStr !== null && isLang(langStr) ? langStr : 'en';
