@@ -87,6 +87,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11S Void Stardust End',
       regex: /^Crushing Comet/,
       beforeSeconds: 11.1,
+      suppressSeconds: 3,
       infoText: (data, _matches, output) => {
         if (data.voidStardust === 'spread')
           return output.baitPuddlesThenStack!();
