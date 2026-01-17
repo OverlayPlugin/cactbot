@@ -153,7 +153,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.hyper = [],
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

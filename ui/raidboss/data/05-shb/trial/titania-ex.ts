@@ -346,7 +346,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => delete data.thunderCount,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

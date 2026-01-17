@@ -634,7 +634,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, _matches, _output) => delete data.walls,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

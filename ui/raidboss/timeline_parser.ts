@@ -1,6 +1,5 @@
 import JSON5 from 'json5';
 
-import { Lang } from '../../resources/languages';
 import logDefinitions, { LogDefinitionName } from '../../resources/netlog_defs';
 import { buildNetRegexForTrigger } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
@@ -11,7 +10,11 @@ import {
   translateText,
 } from '../../resources/translations';
 import { NetParams } from '../../types/net_props';
-import { LooseTimelineTrigger, TriggerAutoConfig } from '../../types/trigger';
+import {
+  LooseTimelineTrigger,
+  TranslationReplacement,
+  TriggerAutoConfig,
+} from '../../types/trigger';
 
 import defaultOptions, { RaidbossOptions, TimelineConfig } from './raidboss_options';
 
@@ -96,13 +99,6 @@ const isValidNetParams = <T extends LogDefinitionName>(
 const isObject = (x: unknown): x is { [key: string]: unknown } => {
   // JavaScript considers [] to be an object, so check for that explicitly.
   return x instanceof Object && !Array.isArray(x);
-};
-
-export type TimelineReplacement = {
-  locale: Lang;
-  missingTranslations?: boolean;
-  replaceSync?: { [regexString: string]: string };
-  replaceText?: { [timelineText: string]: string };
 };
 
 export type TimelineStyle = {
@@ -195,7 +191,7 @@ export const regexes = {
 export class TimelineParser {
   protected options: RaidbossOptions;
   protected perTriggerAutoConfig: { [triggerId: string]: TriggerAutoConfig };
-  protected replacements: TimelineReplacement[];
+  protected replacements: TranslationReplacement[];
   private timelineConfig: TimelineConfig;
 
   // A set of names which will not be notified about.
@@ -219,7 +215,7 @@ export class TimelineParser {
 
   constructor(
     text: string,
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles?: TimelineStyle[],
     options?: RaidbossOptions,
@@ -697,7 +693,7 @@ export class TimelineParser {
   }
 
   private GetReplacedText(text: string): string {
-    // Anything in the timeline config takes precedence over timelineReplace sections in
+    // Anything in the timeline config takes precedence over translationReplace sections in
     // the trigger file.  It is also a full replacement, vs the regex-style GetReplacedHelper.
     const rename = this.timelineConfig?.Rename?.[text];
     if (rename !== undefined)

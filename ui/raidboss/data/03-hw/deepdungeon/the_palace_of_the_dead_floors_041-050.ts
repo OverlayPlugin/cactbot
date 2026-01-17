@@ -72,7 +72,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.lookAway('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

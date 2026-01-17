@@ -155,7 +155,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.goWest(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

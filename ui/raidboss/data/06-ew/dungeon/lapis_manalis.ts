@@ -280,7 +280,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankCleave(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

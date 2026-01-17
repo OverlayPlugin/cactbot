@@ -664,7 +664,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.earthshaker(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

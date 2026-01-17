@@ -169,7 +169,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

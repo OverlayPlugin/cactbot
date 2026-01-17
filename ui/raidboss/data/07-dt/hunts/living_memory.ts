@@ -563,7 +563,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: cardOutputStrings,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

@@ -248,7 +248,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => delete data.spell?.[matches.target],
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

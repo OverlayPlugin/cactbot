@@ -6,12 +6,12 @@ import NetRegexes from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
 import Regexes from '../resources/regexes';
 import { AnonNetRegexParams, translateRegexBuildParamAnon } from '../resources/translations';
-import { LooseTriggerSet } from '../types/trigger';
+import { LooseTriggerSet, TranslationReplacement } from '../types/trigger';
 import {
   commonReplacement,
-  partialCommonTimelineReplacementKeys,
+  partialCommonTranslationReplacementKeys,
 } from '../ui/raidboss/common_replacement';
-import { TimelineParser, TimelineReplacement } from '../ui/raidboss/timeline_parser';
+import { TimelineParser } from '../ui/raidboss/timeline_parser';
 
 import { ErrorFuncType } from './find_missing_translations';
 
@@ -55,9 +55,9 @@ export const findMissing = async (
   // Dynamic imports don't have a type, so add type assertion.
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const triggerSet = (await import(importPath)).default as LooseTriggerSet;
-  const translations = triggerSet.timelineReplace;
+  const translations = triggerSet.translationReplace;
 
-  let trans: TimelineReplacement = {
+  let trans: TranslationReplacement = {
     replaceSync: {},
     replaceText: {},
     locale: locale,
@@ -78,7 +78,7 @@ export const findMissing = async (
       undefined,
       'replaceSection',
       locale,
-      `missing timelineReplace section`,
+      `missing translationReplace section`,
     );
     return;
   } else if (!transBlockFound) {
@@ -87,7 +87,7 @@ export const findMissing = async (
       undefined,
       'replaceSection',
       locale,
-      `missing locale entry in timelineReplace section`,
+      `missing locale entry in translationReplace section`,
     );
     return;
   }
@@ -126,7 +126,7 @@ const findMissingTimeline = (
   triggersFile: string,
   triggerSet: LooseTriggerSet,
   timeline: TimelineParser,
-  trans: TimelineReplacement,
+  trans: TranslationReplacement,
   locale: Lang,
   errorFunc: ErrorFuncType,
 ): boolean => {
@@ -158,7 +158,7 @@ const findMissingTimeline = (
   for (const testCase of testCases) {
     const common = commonReplacement[testCase.type];
     for (const [key, value] of Object.entries(common)) {
-      if (skipPartialCommon && partialCommonTimelineReplacementKeys.includes(key))
+      if (skipPartialCommon && partialCommonTranslationReplacementKeys.includes(key))
         continue;
       const transValue = value[trans.locale];
       if (transValue === undefined) {
@@ -261,7 +261,7 @@ const findMissingTimeline = (
 const findMissingTriggers = (
   triggersFile: string,
   triggerSet: LooseTriggerSet,
-  translations: TimelineReplacement[],
+  translations: TranslationReplacement[],
   locale: Lang,
   errorFunc: ErrorFuncType,
 ): boolean => {
@@ -292,7 +292,7 @@ const findMissingTriggers = (
         undefined,
         'sync',
         locale,
-        `trigger id "${triggerIdStr}" missing timelineReplace replaceSync for field "${field}" with value ${fieldValueStr}`,
+        `trigger id "${triggerIdStr}" missing translationReplace replaceSync for field "${field}" with value ${fieldValueStr}`,
       );
     }
   }

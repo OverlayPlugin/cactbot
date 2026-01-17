@@ -391,7 +391,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stackMarker(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

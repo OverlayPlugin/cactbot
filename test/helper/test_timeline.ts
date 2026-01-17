@@ -7,14 +7,9 @@ import { keysThatRequireTranslation } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
 import Regexes from '../../resources/regexes';
 import { translateWithReplacements } from '../../resources/translations';
-import { LooseTimelineTrigger, LooseTriggerSet } from '../../types/trigger';
+import { LooseTimelineTrigger, LooseTriggerSet, TranslationReplacement } from '../../types/trigger';
 import { CommonReplacement, commonReplacement } from '../../ui/raidboss/common_replacement';
-import {
-  Error,
-  regexes,
-  TimelineParser,
-  TimelineReplacement,
-} from '../../ui/raidboss/timeline_parser';
+import { Error, regexes, TimelineParser } from '../../ui/raidboss/timeline_parser';
 
 const parseTimelineFileFromTriggerFile = (filepath: string) => {
   const fileContents = fs.readFileSync(filepath, 'utf8');
@@ -315,7 +310,7 @@ type TestCase = {
 const getTestCases = (
   triggersFile: string,
   timeline: TimelineParser,
-  trans: TimelineReplacement,
+  trans: TranslationReplacement,
 ) => {
   const syncMap: ReplaceMap = new Map();
   for (const [key, replaceSync] of Object.entries(trans.replaceSync ?? {}))
@@ -448,7 +443,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           }
         });
         it('should not have translation conflicts', () => {
-          const translations = triggerSet.timelineReplace;
+          const translations = triggerSet.translationReplace;
           if (!translations)
             return;
 
@@ -537,7 +532,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           }
         });
         it('should not be missing timeline translations', () => {
-          const translations = triggerSet.timelineReplace;
+          const translations = triggerSet.translationReplace;
           if (!translations)
             return;
 
@@ -577,7 +572,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           }
         });
         it('should not have bad characters', () => {
-          const translations = triggerSet.timelineReplace;
+          const translations = triggerSet.translationReplace;
           if (!translations)
             return;
 
@@ -595,7 +590,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
 
             for (const testCase of testCases) {
               // Don't test the common translations here, as some may include these characters.
-              // It's only regexes inside of `timelineReplace` in a trigger file that are
+              // It's only regexes inside of `translationReplace` in a trigger file that are
               // the ones that need to be checked.
               for (const regex of testCase.replaceWithoutCommon.keys()) {
                 for (const bad of badRegex) {

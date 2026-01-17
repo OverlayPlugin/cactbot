@@ -1,8 +1,8 @@
 import { UnreachableCode } from '../../../../resources/not_reached';
 import { EventResponses, LogEvent } from '../../../../types/event';
-import { LooseTimelineTrigger } from '../../../../types/trigger';
+import { LooseTimelineTrigger, TranslationReplacement } from '../../../../types/trigger';
 import { TimelineController } from '../../timeline';
-import { TimelineReplacement, TimelineStyle } from '../../timeline_parser';
+import { TimelineStyle } from '../../timeline_parser';
 import LineEvent from '../data/network_log_converter/LineEvent';
 import RaidEmulator from '../data/RaidEmulator';
 
@@ -22,7 +22,7 @@ export default class RaidEmulatorTimelineController extends TimelineController {
   public override SetActiveTimeline(
     timelineFiles: string[],
     timelines: string[],
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     zoneId: number,

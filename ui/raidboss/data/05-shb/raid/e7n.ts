@@ -186,7 +186,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => delete data.colorCount,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

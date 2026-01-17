@@ -933,7 +933,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: echoesOutputStrings,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

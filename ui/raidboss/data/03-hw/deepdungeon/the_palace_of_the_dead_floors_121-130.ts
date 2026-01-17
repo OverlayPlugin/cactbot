@@ -55,7 +55,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getUnder('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

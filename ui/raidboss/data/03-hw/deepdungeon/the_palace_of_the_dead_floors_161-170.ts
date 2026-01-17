@@ -30,7 +30,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Floor 170 Boss: Yulunggu ----------------
     // intentionally blank
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

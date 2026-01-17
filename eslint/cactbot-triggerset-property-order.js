@@ -40,7 +40,7 @@ module.exports = {
       'timelineStyles',
       'timelineTriggers',
       'triggers',
-      'timelineReplace',
+      'translationReplace',
     ];
     const oopsyraidsyOrderList = [
       'zoneId',

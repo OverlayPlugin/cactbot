@@ -1,6 +1,6 @@
 import { Lang, NonEnLang } from '../resources/languages';
 import { NamedConfigEntry } from '../resources/user_config';
-import { TimelineReplacement, TimelineStyle } from '../ui/raidboss/timeline_parser';
+import { TimelineStyle } from '../ui/raidboss/timeline_parser';
 
 import { RaidbossData } from './data';
 import { NetAnyMatches, NetMatches } from './net_matches';
@@ -183,6 +183,13 @@ export type TimelineTrigger<Data extends RaidbossData> = BaseTrigger<Data, 'None
   beforeSeconds?: number;
 };
 
+export type TranslationReplacement = {
+  locale: Lang;
+  missingTranslations?: boolean;
+  replaceSync?: { [regexString: string]: string };
+  replaceText?: { [timelineText: string]: string };
+};
+
 // Because timeline functions run during loading, they only support the base RaidbossData.
 export type TimelineFunc = (data: RaidbossData) => TimelineField;
 export type TimelineField = string | TimelineFunc | undefined | TimelineField[];
@@ -217,7 +224,7 @@ export type BaseTriggerSet<Data extends RaidbossData> = {
   timeline?: TimelineField;
   triggers?: NetRegexTrigger<Data>[];
   timelineTriggers?: TimelineTrigger<Data>[];
-  timelineReplace?: TimelineReplacement[];
+  translationReplace?: TranslationReplacement[];
   timelineStyles?: TimelineStyle[];
   // Comments to be displayed alongside this trigger set where appropriate
   comments?: LocaleText;

@@ -2658,7 +2658,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: swordQuiverOutputStrings,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

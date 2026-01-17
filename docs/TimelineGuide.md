@@ -540,7 +540,7 @@ See: [user/raidboss.js](https://github.com/quisquous/cactbot-user/blob/641488590
 
 ## Timeline Translation
 
-To support multiple languages, cactbot trigger files support a `timelineReplace` section.
+To support multiple languages, cactbot trigger files support a `translationReplace` section.
 You can see an example in [o12s.js](https://github.com/OverlayPlugin/cactbot/blob/ecbb723f097328c7bd0476352e5135bd5f776248/ui/raidboss/data/triggers/o12s.js#L608).
 This section contains a bunch of regular expressions to replace in syncs, texts, and effects.
 This has two purposes.

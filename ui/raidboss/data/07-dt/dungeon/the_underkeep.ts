@@ -438,7 +438,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.marchMove = undefined,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

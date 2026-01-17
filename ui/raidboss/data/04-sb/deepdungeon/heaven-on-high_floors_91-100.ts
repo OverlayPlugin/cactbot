@@ -67,7 +67,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stunOrInterruptIfPossible(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

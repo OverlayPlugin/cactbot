@@ -969,7 +969,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     // All other mechanics are repeats of earlier mechanics and handled by those triggers.
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

@@ -1909,7 +1909,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.advancedDebuffs = [],
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

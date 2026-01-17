@@ -1781,7 +1781,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stopEverything(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

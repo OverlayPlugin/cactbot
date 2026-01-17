@@ -30,6 +30,7 @@ import {
   ResponseOutput,
   TimelineField,
   TimelineFunc,
+  TranslationReplacement,
   TriggerAutoConfig,
   TriggerField,
   TriggerOutput,
@@ -40,7 +41,6 @@ import AutoplayHelper from './autoplay_helper';
 import BrowserTTSEngine from './browser_tts_engine';
 import { PerTriggerAutoConfig, PerTriggerOption, RaidbossOptions } from './raidboss_options';
 import { TimelineLoader } from './timeline';
-import { TimelineReplacement } from './timeline_parser';
 
 const isRaidbossLooseTimelineTrigger = (
   trigger: ProcessedTrigger,
@@ -743,7 +743,7 @@ export class PopupText {
     this.triggerSetConfig = {};
     let timelineFiles = [];
     let timelines: string[] = [];
-    const replacements: TimelineReplacement[] = [];
+    const replacements: TranslationReplacement[] = [];
     const timelineStyles = [];
     this.resetWhenOutOfCombat = true;
 
@@ -902,7 +902,7 @@ export class PopupText {
             if (localeRegex instanceof RegExp) {
               trigger.localRegex = Regexes.parse(localeRegex);
             } else {
-              const trans = translateRegex(defaultRegex, this.parserLang, set.timelineReplace);
+              const trans = translateRegex(defaultRegex, this.parserLang, set.translationReplace);
               trigger.localRegex = Regexes.parse(trans);
             }
           }
@@ -920,7 +920,11 @@ export class PopupText {
             } else if (defaultNetRegex !== undefined) {
               // simple netRegex trigger, need to build netRegex and translate
               if (defaultNetRegex instanceof RegExp) {
-                const trans = translateRegex(defaultNetRegex, this.parserLang, set.timelineReplace);
+                const trans = translateRegex(
+                  defaultNetRegex,
+                  this.parserLang,
+                  set.translationReplace,
+                );
                 trigger.localNetRegex = Regexes.parse(trans);
               } else if (trigger.type === undefined) {
                 console.error(`Trigger ${id}: without type property needs RegExp as netRegex`);
@@ -930,7 +934,7 @@ export class PopupText {
                   translateRegexBuildParam(
                     defaultNetRegex,
                     this.parserLang,
-                    set.timelineReplace,
+                    set.translationReplace,
                   ).params,
                 );
                 trigger.localNetRegex = Regexes.parse(re);
@@ -973,8 +977,8 @@ export class PopupText {
 
       if (set.timeline !== undefined)
         addTimeline(set.timeline);
-      if (set.timelineReplace)
-        replacements.push(...set.timelineReplace);
+      if (set.translationReplace)
+        replacements.push(...set.translationReplace);
       if (set.timelineTriggers) {
         for (const trigger of set.timelineTriggers) {
           // Timeline triggers are never translated.

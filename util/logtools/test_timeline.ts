@@ -82,7 +82,7 @@ const testLineEvents = async (
   // TODO: Fix dynamic imports in TypeScript
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const triggerSet = (await import(importPath))?.default as LooseTriggerSet;
-  const replacements = triggerSet.timelineReplace ?? [];
+  const replacements = triggerSet.translationReplace ?? [];
   const timelineText = fs.readFileSync(timelineFile).toString();
 
   const linesString = timelineText.split('\n');

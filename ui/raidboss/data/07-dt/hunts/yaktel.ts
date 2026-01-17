@@ -161,7 +161,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getBehind(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

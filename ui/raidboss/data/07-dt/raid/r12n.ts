@@ -548,7 +548,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'missingTranslations': true,

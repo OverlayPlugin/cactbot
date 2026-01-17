@@ -176,7 +176,7 @@ const triggerSet: TriggerSet<Data> = {
     // Superheat - tankbuster
     // Crackling Current - roomwide aoe
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

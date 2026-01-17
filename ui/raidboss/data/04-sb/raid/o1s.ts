@@ -59,7 +59,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.hpTo1Aoe('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

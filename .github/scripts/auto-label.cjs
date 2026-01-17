@@ -108,7 +108,7 @@ const getLabels = async (github, owner, repo, pullNumber) => {
     }).map((f) => f()),
   );
 
-  const changedLang = getTimelineReplaceChanges(changedFilesContent);
+  const changedLang = getTranslationReplaceChanges(changedFilesContent);
   changedLang.push(...nonNullUnique(lodash.flatten(changedFiles.map((f) => {
     if (['.js', '.ts'].includes(path.extname(f.filename)))
       return parseChangedLang(f.patch);
@@ -246,24 +246,27 @@ const rawUrl = (owner, repo, sha, path) => {
  * @param {ChangedFileContent[]} changedFiles
  * @returns {string[]}
  */
-const getTimelineReplaceChanges = (changedFiles) => {
+const getTranslationReplaceChanges = (changedFiles) => {
   /**
    * @type {Set<string>}
    */
   const s = new Set();
 
   changedFiles.forEach((file) => {
-    if (!file.filename.startsWith('ui/raidboss/data/'))
+    if (
+      !file.filename.startsWith('ui/raidboss/data/') &&
+      !file.filename.startsWith('ui/oopsyraidsy/data/')
+    )
       return;
 
     if (path.extname(file.filename) === '.js') {
-      const from = getTimelineReplace(file.from) || {};
-      const to = getTimelineReplace(file.to) || {};
+      const from = getTranslationReplace(file.from) || {};
+      const to = getTranslationReplace(file.to) || {};
       for (const lang of lodash.uniq([...Object.keys(from), ...Object.keys(to)])) {
         if (!validLanguages.includes(lang))
           continue;
         if (!lodash.isEqual(from[lang], to[lang])) {
-          console.log(`label: ${lang} [timelineReplace] (${file.filename})`);
+          console.log(`label: ${lang} [translationReplace] (${file.filename})`);
           s.add(lang);
         }
       }
@@ -276,7 +279,7 @@ const getTimelineReplaceChanges = (changedFiles) => {
  * @param {string} fileContent
  * @returns {undefined | { [lang: string]: any }}
  */
-const getTimelineReplace = (fileContent) => {
+const getTranslationReplace = (fileContent) => {
   const ast = recast.parse(fileContent, {
     parser: babelParser,
   });
@@ -286,12 +289,12 @@ const getTimelineReplace = (fileContent) => {
   if (!exportDefault)
     return;
 
-  const timelineReplace = exportDefault.declaration.properties
-    .filter((prop) => prop.key.type === 'Identifier' && prop.key.name === 'timelineReplace')[0];
-  if (!timelineReplace)
+  const translationReplace = exportDefault.declaration.properties
+    .filter((prop) => prop.key.type === 'Identifier' && prop.key.name === 'translationReplace')[0];
+  if (!translationReplace)
     return;
 
-  const repl = json5.parse(recast.print(timelineReplace.value).code);
+  const repl = json5.parse(recast.print(translationReplace.value).code);
   const ret = {};
   repl.forEach((r) => {
     ret[r.locale] = r;

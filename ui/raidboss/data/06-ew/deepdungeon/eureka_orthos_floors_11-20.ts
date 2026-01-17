@@ -23,7 +23,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Floor 20 Boss: Cloning Node ----------------
     // intentionally blank
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

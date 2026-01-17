@@ -68,7 +68,7 @@ const triggerSet: TriggerSet<Data> = {
       // TODO: which way is this rotating
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

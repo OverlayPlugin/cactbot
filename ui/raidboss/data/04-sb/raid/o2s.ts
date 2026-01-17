@@ -405,7 +405,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.under = false,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

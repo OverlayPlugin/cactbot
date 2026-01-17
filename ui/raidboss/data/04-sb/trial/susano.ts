@@ -56,7 +56,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankCleave('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

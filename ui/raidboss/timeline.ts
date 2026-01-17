@@ -3,18 +3,15 @@ import { UnreachableCode } from '../../resources/not_reached';
 import { LocaleRegex } from '../../resources/translations';
 import { EventResponses, LogEvent } from '../../types/event';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
-import { LooseTimelineTrigger, RaidbossFileData } from '../../types/trigger';
+import {
+  LooseTimelineTrigger,
+  RaidbossFileData,
+  TranslationReplacement,
+} from '../../types/trigger';
 
 import { PopupTextGenerator } from './popup-text';
 import { RaidbossOptions } from './raidboss_options';
-import {
-  Event,
-  Sync,
-  Text,
-  TimelineParser,
-  TimelineReplacement,
-  TimelineStyle,
-} from './timeline_parser';
+import { Event, Sync, Text, TimelineParser, TimelineStyle } from './timeline_parser';
 
 // Hi, sorry about this whole class.  This is all pretty old code and honestly could
 // probably all be entirely rewritten at this point if anybody has the time or brain.
@@ -133,7 +130,7 @@ const initialNextEventState = {
 } as const;
 
 export class Timeline {
-  private replacements: TimelineReplacement[];
+  private replacements: TranslationReplacement[];
 
   private activeText: string;
 
@@ -173,7 +170,7 @@ export class Timeline {
 
   constructor(
     text: string,
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     private options: RaidbossOptions,
@@ -761,7 +758,7 @@ export class TimelineController {
   public SetActiveTimeline(
     timelineFiles: string[],
     timelines: string[],
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     zoneId: number,
@@ -808,7 +805,7 @@ export class TimelineLoader {
   public SetTimelines(
     timelineFiles: string[],
     timelines: string[],
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     zoneId: number,

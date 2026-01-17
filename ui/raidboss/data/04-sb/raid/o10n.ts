@@ -187,7 +187,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.moveAway(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

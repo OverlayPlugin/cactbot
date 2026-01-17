@@ -37,7 +37,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.killAdds('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

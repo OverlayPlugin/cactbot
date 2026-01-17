@@ -583,7 +583,7 @@ const triggerSet: TriggerSet<Data> = {
     // Phaethon: Flame Burst - tankbuster
     // Phaethon: Eruption - aoe under random players?
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

@@ -203,7 +203,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.knockback('info'), // avoid collisions with Forbidden Fruit triggers.
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

@@ -690,7 +690,7 @@ const testTriggerFile = (file: string, info: TriggerSetInfo) => {
   });
 
   it('should not have missing regex translations', () => {
-    const translations = triggerSet.timelineReplace;
+    const translations = triggerSet.translationReplace;
     if (!translations)
       return;
 
@@ -733,7 +733,7 @@ const testTriggerFile = (file: string, info: TriggerSetInfo) => {
           for (const field of result.missingFields ?? []) {
             const fieldValueStr = JSON.stringify(anonParams[field]);
             assert.fail(
-              `${id}:locale ${locale}:missing timelineReplace replaceSync for field "${field}" with value ${fieldValueStr}`,
+              `${id}:locale ${locale}:missing translationReplace replaceSync for field "${field}" with value ${fieldValueStr}`,
             );
           }
 
@@ -756,7 +756,7 @@ const testTriggerFile = (file: string, info: TriggerSetInfo) => {
 
         assert.isTrue(
           wasTranslated,
-          `${id}:locale ${locale}:missing timelineReplace replaceSync for regex '${origRegex}'`,
+          `${id}:locale ${locale}:missing translationReplace replaceSync for regex '${origRegex}'`,
         );
       }
     }

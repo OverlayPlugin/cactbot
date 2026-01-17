@@ -148,7 +148,7 @@ export default {
   overrideTimelineFile: false,
   timelineFile: 'filename.txt',
   timeline: `hideall "Reset"`,
-  timelineReplace: [
+  translationReplace: [
   {
      locale: 'en',
      replaceText: {
@@ -246,7 +246,7 @@ There is a complete example that uses the **timeline** property in [test.ts](../
 Key:value pairs to search and replace in timeline ability names. The display name for that ability is changed, but all `hideall`, `infotext`, `alerttext`, `alarmtext`, etc all refer to the original name. This enables translation/localization of the timeline files without having to edit those files directly.
 
 **replaceSync**
-Key:value pairs to search and replace in timeline file sync expressions. Necessary if localized names differ in the sync regexes.
+Key:value pairs to search and replace in timeline file sync expressions, and trigger sources. Necessary if localized names differ in the sync regexes.
 
 **resetWhenOutOfCombat**
 Boolean, defaults to true.
@@ -356,7 +356,7 @@ use the array syntax with the full IDs rather than using a regular
 expression, though many older trigger files still use regexes. That is,
 prefer `id: ["A5B6", "A5B7"]` over `id: "A5B[67]"` or `id: "(A5B6|A5B7)"`.
 
-`regex` and `netRegex` lines are auto-translated using the `timelineReplace` section.
+`regex` and `netRegex` lines are auto-translated using the `translationReplace` section.
 
 **condition: function(data, matches, output)**
 Activates the trigger if the function returns `true`.
@@ -823,10 +823,10 @@ As you can see, this object is missing the `ja` key and needs somebody to add it
 ### Raidboss Translations
 
 For `sync` and `text` errors,
-these must be fixed using the (now poorly named) `timelineReplace` section.
+these must be fixed using the (now poorly named) `translationReplace` section.
 (Once upon a time, this was only for timeline translations.
 Now it also handles trigger `netRegex` and `regex` translations as well.
-However, for backwards compatibility it's still called `timelineReplace`.)
+However, for backwards compatibility it's still called `translationReplace`.)
 
 It looks something like this:
 
@@ -851,7 +851,7 @@ as well as any fields in `netRegex` lines in the trigger file.
 The `replaceText` section only applies to the `"Text"` part of lines in the timeline file.
 All matches are case insensitive.
 
-Internally, cactbot takes the `timelineReplace` section and applies it (logically) like this,
+Internally, cactbot takes the `translationReplace` section and applies it (logically) like this,
 so that timelines and triggers will work in French:
 
 ```diff
@@ -984,7 +984,7 @@ and so they are not collected by the find missing translation script.
 
 #### missingTranslations field
 
-The `timelineReplace` section also has a `missingTranslations` field, which defaults to false.
+The `translationReplace` section also has a `missingTranslations` field, which defaults to false.
 If a particular section exists and it does not have all translations,
 this field needs to be set to `true` (and `npm run test` will complain if not).
 This often happens when somebody adds additional lines to the timeline

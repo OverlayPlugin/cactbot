@@ -24,7 +24,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stun(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {
