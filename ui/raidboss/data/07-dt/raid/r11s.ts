@@ -371,14 +371,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-
-      type: 'StartsUsing',
-      netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
-      delaySeconds: 8.7, // Around the first hit (B41F)
-      durationSeconds: 4.2,
-      response: Responses.bigAoe('alert'),
-    },
-    {
       // Adapted from normal mode
       id: 'R11S Dance Of Domination Trophy Safe Spots',
       // B7BC Explosion
