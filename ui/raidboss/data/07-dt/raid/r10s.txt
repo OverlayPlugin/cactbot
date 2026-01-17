@@ -1,0 +1,318 @@
+### AAC HEAVYWEIGHT M2 (SAVAGE)
+# ZoneId: 1323
+
+# -ii BDFF BE00 B5BA B57C B5DA B5C3 B5FB B57B
+# -it "Deep Blue" "Red Hot" "Watery Grave"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+# Red Hot
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+14.6 "Hot Impact" Ability { id: "B5B6", source: "Red Hot" }
+20.7 "--intercardinal--" Ability { id: "B578", source: "Red Hot" }
+30.3 "Flame Floater 1" Ability { id: "B5BB", source: "Red Hot" }
+33.5 "Flame Floater 2" Ability { id: "B5BC", source: "Red Hot" }
+36.8 "Flame Floater 3" Ability { id: "B5BD", source: "Red Hot" }
+39.9 "Flame Floater 4" Ability { id: "B5BE", source: "Red Hot" }
+52.3 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
+53.1 "Alley-oop Inferno" Ability { id: "B5C1", source: "Red Hot" }
+61.9 "Cutback Blaze" Ability { id: "B5C9", source: "Red Hot" }
+62.8 "Cutback Blaze" Ability { id: "B5CA", source: "Red Hot" }
+68.4 "Pyrotation x3" Ability { id: "B5C2", source: "Red Hot" } duration 4.9
+82.5 "Divers' Dare" Ability { id: "B5B8", source: "Red Hot" }
+86.6 "--north--" Ability { id: "B578", source: "Red Hot" }
+88.8 "--untargetable--"
+
+# Deep Blue
+90.7 "--targetable--"
+96.9 "Sick Swell" Ability { id: "B5CB", source: "Deep Blue" }
+106.0 "Sickest Take-off" Ability { id: "B5CD", source: "Deep Blue" }
+106.0 "--untargetable--"
+115.0 "Sickest Take-off" Ability { id: "B5CE", source: "Deep Blue" }
+115.0 "Sick Swell" #Ability { id: "B5CC", source: "Deep Blue" }
+117.1 "--targetable--"
+117.5 "Awesome Splash/Awesome Slab" Ability { id: ["B5CF", "B5D0"], source: "Deep Blue" }
+125.2 "--sync--" Ability { id: ["B5E0", "B5DD"], source: "Deep Blue" }
+125.9 "Reverse Alley-oop/Alley-oop Double-dip" #Ability { id: ["B5E1", "B5DE"], source: "Deep Blue" }
+128.5 "Reverse Alley-oop/Alley-oop Double-dip" #Ability { id: ["B5E2", "B5DF"], source: "Deep Blue" }
+136.3 "Deep Impact (bait)" Ability { id: "B5B7", source: "Deep Blue" }
+136.5 "Deep Impact (damage)" #Ability { id: "ADC6", source: "Deep Blue" }
+143.5 "Divers' Dare" Ability { id: "B5B9", source: "Deep Blue" }
+149.6 "--west--" Ability { id: "B579", source: "Deep Blue" }
+151.6 "--targetable--"
+160.9 "Xtreme Spectacular" Ability { id: "B5D9", source: "Red Hot" }
+
+# Transition
+161.7 "--untargetable--"
+168.7 "Xtreme Spectacular (line)" Ability { id: "B5A4", source: "The Xtremes" }
+169.7 "Xtreme Spectacular x6" duration 3.5 #Ability { id: "B5DC", source: "The Xtremes" }
+173.6 "Xtreme Spectacular (big)" Ability { id: "B7CA", source: "The Xtremes" }
+
+# Insane Air 1
+177.4 "--targetable--"
+178.8 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
+186.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
+
+# Each boss does, in random order (Red Hot/Deep Blue):
+# 1 tankbuster (Blasting Snap/Vertical Plunge)
+# 1 stack (Re-entry Blast/Re-entry Plunge)
+# 2 proteans (Plunging Snap)
+# Timeline entries are for Red Hot's ability names, since there's no castbar
+194.6 "Insane Air" Ability { id: "B897", source: "Red Hot" }
+196.5 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+197.6 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
+201.9 "Insane Air" Ability { id: "B899", source: "Red Hot" }
+203.8 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+204.9 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
+209.2 "Insane Air" Ability { id: "B899", source: "Red Hot" }
+211.1 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+212.2 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
+216.5 "Insane Air" Ability { id: "B899", source: "Red Hot" }
+218.4 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+219.5 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F6", source: "Deep Blue" }
+219.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
+229.1 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+235.3 "--sync--" Ability { id: "B578", source: "Red Hot" }
+
+# Snaking
+237.7 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
+244.8 "Firesnaking/Watersnaking" Ability { id: "B381", source: "Red Hot" }
+250.0 "--sync--" Ability { id: "B578", source: "Red Hot" }
+256.8 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
+257.4 "--sync--" Ability { id: ["B5E0", "B5DD"], source: "Deep Blue" }
+257.4 "Alley-oop Inferno" #Ability { id: "B5C1", source: "Red Hot" }
+258.0 "Reverse Alley-oop/Alley-oop Double-dip" Ability { id: ["B5E1", "B5DE"], source: "Deep Blue" }
+260.6 "Reverse Alley-oop/Alley-oop Double-dip" #Ability { id: ["B5E2", "B5DF"], source: "Deep Blue" }
+262.6 "Sick Swell" Ability { id: "B5CB", source: "Deep Blue" }
+267.7 "--sync--" Ability { id: "B579", source: "Deep Blue" }
+268.8 "Hot Impact" Ability { id: "B580", source: "Red Hot" }
+275.2 "Deep Varial" Ability { id: "B891", source: "Deep Blue" }
+276.8 "Deep Varial" Ability { id: "B5D3", source: "Deep Blue" }
+279.4 "Alley-oop Inferno" Ability { id: "B5C0", source: "Red Hot" }
+280.0 "Awesome Splash/Awesome Slab" Ability { id: ["B5D7", "B5D8"], source: "Deep Blue" }
+280.1 "Alley-oop Inferno" Ability { id: "B5C1", source: "Red Hot" }
+281.4 "--sync--" #Ability { id: "B578", source: "Red Hot" }
+288.5 "Hot Aerial" Ability { id: "B5C4", source: "Red Hot" }
+288.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+290.0 "Hot Aerial 1" #Ability { id: "B91E", source: "Deep Blue" }
+290.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+292.0 "Hot Aerial 2" #Ability { id: "B91F", source: "Red Hot" }
+292.1 "Sickest Take-off" Ability { id: "B5CD", source: "Deep Blue" }
+292.1 "--untargetable--"
+292.9 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+294.1 "Hot Aerial 3" Ability { id: "B920", source: "Red Hot" }
+295.0 "--hot jump--" #Ability { id: "B91D", source: "Red Hot" }
+296.2 "Hot Aerial 4" Ability { id: "B921", source: "Red Hot" }
+301.3 "Sickest Take-off" Ability { id: "B5CE", source: "Deep Blue" }
+301.3 "Sick Swell" #Ability { id: "B5CC", source: "Deep Blue" }
+303.3 "--targetable--"
+303.7 "Awesome Splash/Awesome Slab" Ability { id: ["B5CF", "B5D0"], source: ["Red Hot", "Deep Blue"] }
+306.3 "Cutback Blaze" Ability { id: "B5C9", source: "Red Hot" }
+307.2 "Cutback Blaze" #Ability { id: "B5CA", source: ["Red Hot", "Deep Blue"] } # Possible bugged log
+313.2 "Deep Impact (bait)" Ability { id: "B5B7", source: "Deep Blue" }
+313.5 "Deep Impact (damage)" #Ability { id: "ADC6", source: "Deep Blue" }
+320.5 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+326.7 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
+328.8 "Deep Aerial (tower)" StartsUsing { id: "B5E3", source: "Deep Blue" } duration 5
+334.8 "Deep Aerial (damage + stun)" Ability { id: "B5E4", source: "Deep Blue" } duration 2
+335.9 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
+
+# Bubble/Deep Aerial
+# Xtreme Wave has two casts per boss per set
+# The lower ID cast of each boss is the actual line snapshot and is the important mechanic to time
+# The higher ID cast is the secondary hit on anyone in the path of the line that wasn't the original target
+# Drop the higher ID casts. Only keep Red Hot's casts for timeline cleanliness
+337.3 "--add-targetable--"
+337.9 "--untargetable--"
+337.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
+345.7 "Xtreme Wave 1" Ability { id: "B5C5", source: "Red Hot" }
+347.8 "Scathing Steam 1" Ability { id: "ADC7", source: "Watery Grave" }
+354.1 "Xtreme Wave 2" Ability { id: "B5C7", source: "Red Hot" }
+356.2 "Scathing Steam 2" Ability { id: "ADC7", source: "Watery Grave" }
+362.6 "Xtreme Wave 3" Ability { id: "B5C7", source: "Red Hot" }
+364.7 "Scathing Steam 3" Ability { id: "ADC7", source: "Watery Grave" }
+371.1 "Xtreme Wave 4" Ability { id: "B5C7", source: "Red Hot" }
+373.2 "Scathing Steam 4" Ability { id: "ADC7", source: "Watery Grave" }
+379.6 "Xtreme Wave 5" Ability { id: "B5C7", source: "Red Hot" }
+381.7 "Scathing Steam 5" Ability { id: "ADC7", source: "Watery Grave" }
+388.3 "Xtreme Wave 6" Ability { id: "B5C7", source: "Red Hot" }
+390.4 "Scathing Steam 6" Ability { id: "ADC7", source: "Watery Grave" }
+390.6 "--targetable--"
+390.6 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
+392.8 "--add-untargetable--"
+# This is caused by either player in the jail dieing. At the end of adds phase, if the jail hasn't been killed
+# both players die to a debuff, which then detonates the jail. This is technically a soft enrage, since it can be
+# mitted through with a full send of all party mits or via tank LB, but realistically with most strats now
+# putting healers in the jail, this is going to wipe the party regardless due to the followup aoe.
+393.0 "Impact Zone (enrage)" #Ability { id: "B5EC", source: "Watery Grave" }
+393.2 "Impact Zone x2 (enrage)" #Ability { id: "B5EB", source: "Watery Grave" }
+
+# Arena Split
+398.7 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+404.8 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
+406.9 "--red north--" Ability { id: "B578", source: "Red Hot" }
+409.9 "Sick Swell" Ability { id: "B5CB", source: "Deep Blue" }
+414.3 "Flame Floater" Ability { id: "B5BF", source: "Red Hot" }
+421.1 "--blue east/west--" Ability { id: "B579", source: "Deep Blue" }
+423.6 "Alley-oop Inferno" Ability { id: "B5C1", source: "Red Hot" }
+429.2 "Reverse Alley-oop/Alley-oop Double-dip"
+431.8 "Reverse Alley-oop/Alley-oop Double-dip"
+435.8 "Sickest Take-off" Ability { id: "B5CD", source: "Deep Blue" }
+435.8 "--blue untargetable--"
+# Actor name on this can vary since it's an invisible re-use actor
+436.7 "Freaky Pyrotation" #Ability { id: "B597", source: "Deep Blue" }
+444.7 "Sickest Take-off" Ability { id: "B5CE", source: "Deep Blue" }
+444.7 "Sick Swell" #Ability { id: "B5CC", source: "Deep Blue" }
+446.7 "--blue targetable--"
+447.1 "Awesome Slab" Ability { id: "B5D0", source: "Deep Blue" }
+451.8 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+
+# Insane Air 2
+457.9 "--sync--" Ability { id: "B578", source: "Red Hot" }
+460.3 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
+467.4 "Xtreme Firesnaking/Xtreme Watersnaking" Ability { id: "B5AE", source: "Red Hot" }
+472.6 "--sync--" Ability { id: "B578", source: "Red Hot" }
+482.3 "Insane Air" Ability { id: "B5E6", source: "Red Hot" }
+484.2 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+485.3 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F2", source: "Deep Blue" }
+486.9 "Bailout" Ability { id: "B5B0", source: "Red Hot" }
+492.8 "Insane Air" Ability { id: "B5E8", source: "Red Hot" }
+494.7 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+495.8 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F2", source: "Deep Blue" }
+497.4 "Bailout" Ability { id: "B5B0", source: "Red Hot" }
+503.2 "Insane Air" Ability { id: "B5E8", source: "Red Hot" }
+505.1 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+506.2 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F2", source: "Deep Blue" }
+507.9 "Bailout" Ability { id: "B5B1", source: "Deep Blue" }
+513.6 "Insane Air" Ability { id: "B5E8", source: "Red Hot" }
+515.5 "Blasting Snap/Plunging Snap/Re-entry Blast (bait)" #Ability { id: "B5EF", source: "Red Hot" }
+516.6 "Blasting Snap/Plunging Snap/Re-entry Blast (damage)" #Ability { id: "B5F2", source: "Deep Blue" }
+517.0 "--sync--" Ability { id: "B57D", source: "Deep Blue" }
+518.0 "Bailout" Ability { id: "B5B0", source: "Red Hot" }
+526.0 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+
+# Double Alley-oop
+532.2 "Epic Brotherhood x2" Ability { id: "B57A", source: "Red Hot" }
+534.3 "--sync--" Ability { id: "B579", source: "Deep Blue" }
+542.1 "Reverse Alley-oop/Alley-oop Double-dip"
+544.3 "Alley-oop Inferno" #Ability { id: "B5C1", source: "Red Hot" }
+544.7 "Reverse Alley-oop/Alley-oop Double-dip"
+552.3 "Pyrotation x3" Ability { id: "B5C2", source: "Red Hot" } duration 4.9
+553.2 "Deep Impact (bait)" Ability { id: "B5B7", source: "Deep Blue" }
+553.4 "Deep Impact (damage)" Ability { id: "ADC6", source: "Deep Blue" }
+
+# Soft -> hard enrage
+566.5 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+575.6 "Divers' Dare x2" Ability { id: "B5B8", source: "Red Hot" }
+585.3 "--sync--" Ability { id: "B578", source: "Red Hot" }
+587.4 "--sync--" StartsUsing { id: "B5FC", source: "Red Hot" }
+596.4 "Over the Falls (enrage)" Ability { id: "B5FC", source: "Red Hot" }
+
+
+# IGNORED ABILITIES
+# B5BA Flame Floater: VFX
+# B57C --sync--: Red Hot dismounting from surfboard
+# B5DA Xtreme Spectacular: Deep Blue cast, same time as Red Hot
+# B5C3 Pyrotation: Actual hits, but covered by duration
+# B57B Epic Brotherhood: VFX for Deep Blue sharing health with Red Hot
+# B5FB Steam Burst: Water/Fire mechanics overlap, could vary when they occur
+# BDFF --sync--: autoattack
+# BE00 --sync--: autoattack
+
+# ALL ENCOUNTER ABILITIES
+# ADC6 Deep Impact
+# ADC7 Scathing Steam
+# B381 Firesnaking
+# B382 Watersnaking
+# B578 --sync--
+# B579 --sync--
+# B57A Epic Brotherhood
+# B57B Epic Brotherhood
+# B57C --sync--
+# B57D --sync--
+# B580 Hot Impact
+# B596 Freaky Pyrotation
+# B597 Freaky Pyrotation
+# B5A4 Xtreme Spectacular
+# B5AE Xtreme Firesnaking
+# B5AF Xtreme Watersnaking
+# B5B0 Bailout
+# B5B1 Bailout
+# B5B6 Hot Impact
+# B5B7 Deep Impact
+# B5B8 Divers' Dare
+# B5B9 Divers' Dare
+# B5BA Flame Floater
+# B5BB Flame Floater
+# B5BC Flame Floater
+# B5BD Flame Floater
+# B5BE Flame Floater
+# B5BF Flame Floater
+# B5C0 Alley-oop Inferno
+# B5C1 Alley-oop Inferno
+# B5C2 Pyrotation
+# B5C3 Pyrotation
+# B5C4 Hot Aerial
+# B5C5 Xtreme Wave
+# B5C6 Xtreme Wave
+# B5C7 Xtreme Wave
+# B5C8 Xtreme Wave
+# B5C9 Cutback Blaze
+# B5CA Cutback Blaze
+# B5CB Sick Swell
+# B5CC Sick Swell
+# B5CD Sickest Take-off
+# B5CE Sickest Take-off
+# B5CF Awesome Splash
+# B5D0 Awesome Slab
+# B5D1 Xtreme Wave
+# B5D2 Xtreme Wave
+# B5D3 Deep Varial
+# B5D4 Flame Floater
+# B5D7 Awesome Splash
+# B5D9 Xtreme Spectacular
+# B5DA Xtreme Spectacular
+# B5DC Xtreme Spectacular
+# B5E0 Reverse Alley-oop
+# B5E1 Reverse Alley-oop
+# B5E2 Reverse Alley-oop
+# B5E3 Deep Aerial
+# B5E4 Deep Aerial
+# B5E6 Insane Air
+# B5E7 Insane Air
+# B5E8 Insane Air
+# B5E9 Insane Air
+# B5EA --sync--
+# B5EB Impact Zone: Failing to kill Watery Grave, this does ~1.5mil damage
+# B5EC Impact Zone: Failing to kill Watery Grave, this goes off twice <0.2s after B5EB, ~130k damage each
+# B5EF Blasting Snap
+# B5F0 Plunging Snap
+# B5F1 Blasting Snap
+# B5F2 Plunging Snap
+# B5F3 Re-entry Blast
+# B5F4 Re-entry Plunge
+# B5F5 Re-entry Blast
+# B5F6 Re-entry Plunge
+# B5F7 Vertical Blast
+# B5F8 Vertical Plunge
+# B5F9 Vertical Blast
+# B5FA Vertical Plunge
+# B5FB Steam Burst
+# B5FC Over the Falls
+# B5FD Over the Falls
+# B7CA Xtreme Spectacular
+# B891 Deep Varial
+# B897 Insane Air
+# B898 Insane Air
+# B899 Insane Air
+# B89A Insane Air
+# B91D Hot Aerial
+# B91E Hot Aerial
+# B91F Hot Aerial
+# B920 Hot Aerial
+# B921 Hot Aerial
+# BDFF --sync--
+# BE00 --sync--
