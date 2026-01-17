@@ -253,9 +253,15 @@ const triggerSet: TriggerSet<Data> = {
           spreadFinal: {
             en: 'Out + Spread => Stack Near Blue',
           },
+          spreadFinalBait: {
+            en: 'Out + Spread => Bait Blue Knockback Buster',
+          },
         };
-        if (data.phase === 'xtremeSnaking')
+        if (data.phase === 'xtremeSnaking') {
+          if (data.role === 'tank')
+            return { infoText: output.spreadFinalBait!() };
           return { alertText: output.spreadFinal!() };
+        }
         return { infoText: output.spread!() };
       },
     },
