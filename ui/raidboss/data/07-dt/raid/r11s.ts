@@ -309,9 +309,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R11S Dance Of Domination Trophy',
+      // 2s cast, but B41F damage cast (0.5s) starts ~6s later.
       type: 'StartsUsing',
       netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
-      durationSeconds: 7, // 10.9s overall
+      durationSeconds: 5.9, // 12.9s from B7BB to bigAoe B7EA
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -323,7 +324,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11S Dance Of Domination Trophy Big AoE',
       type: 'StartsUsing',
       netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
-      delaySeconds: 3.9, // This gives a 7s warning
+      delaySeconds: 5.9, // This gives a 7s warning
+      durationSeconds: 7,
       response: Responses.bigAoe('alert'),
     },
     {
