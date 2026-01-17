@@ -504,7 +504,7 @@ export const commonReplacement: CommonReplacement = {
 // translation for it to be complete.  These keys should be exactly the same
 // as the keys from the commonReplacement block above.  These are used for
 // timeline regexes only.
-export const partialCommonTimelineReplacementKeys = [
+export const partialCommonTranslationReplacementKeys = [
   // Because the zone name needs to be translated here, this is partial.
   syncKeys.seal,
   // Directions

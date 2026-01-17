@@ -3,7 +3,7 @@ import { CactbotBaseRegExp, TriggerTypes } from '../types/net_trigger';
 import { TranslationReplacement } from '../types/trigger';
 import {
   commonReplacement,
-  partialCommonTimelineReplacementKeys,
+  partialCommonTranslationReplacementKeys,
   partialCommonTriggerReplacementKeys,
 } from '../ui/raidboss/common_replacement';
 
@@ -245,7 +245,7 @@ export const translateWithReplacements = (
 
     const partialKeys = replaceKey === 'replaceSync'
       ? partialCommonTriggerReplacementKeys
-      : partialCommonTimelineReplacementKeys;
+      : partialCommonTranslationReplacementKeys;
     if (text.match(regex)) {
       // Consider any partial translations as "not found" (e.g. a seal
       // message that still needs the zone name to be translated to be

@@ -9,7 +9,7 @@ import { AnonNetRegexParams, translateRegexBuildParamAnon } from '../resources/t
 import { LooseTriggerSet, TranslationReplacement } from '../types/trigger';
 import {
   commonReplacement,
-  partialCommonTimelineReplacementKeys,
+  partialCommonTranslationReplacementKeys,
 } from '../ui/raidboss/common_replacement';
 import { TimelineParser } from '../ui/raidboss/timeline_parser';
 
@@ -158,7 +158,7 @@ const findMissingTimeline = (
   for (const testCase of testCases) {
     const common = commonReplacement[testCase.type];
     for (const [key, value] of Object.entries(common)) {
-      if (skipPartialCommon && partialCommonTimelineReplacementKeys.includes(key))
+      if (skipPartialCommon && partialCommonTranslationReplacementKeys.includes(key))
         continue;
       const transValue = value[trans.locale];
       if (transValue === undefined) {

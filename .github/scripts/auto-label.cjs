@@ -108,7 +108,7 @@ const getLabels = async (github, owner, repo, pullNumber) => {
     }).map((f) => f()),
   );
 
-  const changedLang = getTimelineReplaceChanges(changedFilesContent);
+  const changedLang = getTranslationReplaceChanges(changedFilesContent);
   changedLang.push(...nonNullUnique(lodash.flatten(changedFiles.map((f) => {
     if (['.js', '.ts'].includes(path.extname(f.filename)))
       return parseChangedLang(f.patch);
@@ -246,7 +246,7 @@ const rawUrl = (owner, repo, sha, path) => {
  * @param {ChangedFileContent[]} changedFiles
  * @returns {string[]}
  */
-const getTimelineReplaceChanges = (changedFiles) => {
+const getTranslationReplaceChanges = (changedFiles) => {
   /**
    * @type {Set<string>}
    */
@@ -257,8 +257,8 @@ const getTimelineReplaceChanges = (changedFiles) => {
       return;
 
     if (path.extname(file.filename) === '.js') {
-      const from = getTimelineReplace(file.from) || {};
-      const to = getTimelineReplace(file.to) || {};
+      const from = getTranslationReplace(file.from) || {};
+      const to = getTranslationReplace(file.to) || {};
       for (const lang of lodash.uniq([...Object.keys(from), ...Object.keys(to)])) {
         if (!validLanguages.includes(lang))
           continue;
@@ -276,7 +276,7 @@ const getTimelineReplaceChanges = (changedFiles) => {
  * @param {string} fileContent
  * @returns {undefined | { [lang: string]: any }}
  */
-const getTimelineReplace = (fileContent) => {
+const getTranslationReplace = (fileContent) => {
   const ast = recast.parse(fileContent, {
     parser: babelParser,
   });
