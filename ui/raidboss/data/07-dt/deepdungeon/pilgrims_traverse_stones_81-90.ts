@@ -44,6 +44,7 @@ const triggerSet: TriggerSet<Data> = {
         maul: {
           en: 'Maul',
           de: 'Zerknirscher',
+          fr: 'Broyeur',
           cn: '咬杀',
           ko: '물어 죽이기',
           tc: '咬殺',
@@ -51,6 +52,7 @@ const triggerSet: TriggerSet<Data> = {
         maulOnYou: {
           en: 'Maul on YOU',
           de: 'Zerknirscher auf DIR',
+          fr: 'Broyeur sur VOUS',
           cn: '咬杀点名',
           ko: '물어 죽이기 대상자',
           tc: '咬殺點名',
@@ -58,6 +60,7 @@ const triggerSet: TriggerSet<Data> = {
         maulOnPlayer: {
           en: 'Maul on ${player}',
           de: 'Zerknirscher auf ${player}',
+          fr: 'Broyeur sur ${player}',
           cn: '咬杀点 ${player}',
           ko: '${player} 물어 죽이기',
           tc: '咬殺點 ${player}',
@@ -111,6 +114,7 @@ const triggerSet: TriggerSet<Data> = {
         heat: {
           en: 'Pyretic, Avoid AoE',
           de: 'Pyretisch, vermeide AoE',
+          fr: 'Pyrétique, Évitez l\'AoE',
           cn: '热病, 避开AoE',
           ko: '열병, 장판 피하기',
           tc: '熱病, 避開AoE',
@@ -118,6 +122,7 @@ const triggerSet: TriggerSet<Data> = {
         heatOnYou: {
           en: 'Pyretic on YOU, Away from Group => Stop Everything!',
           de: 'Pyretisch auf DIR, Weg von der Gruppe => Stoppe Alles!',
+          fr: 'Pyrétique sur VOUS, Loin du groupe => Arrêtez tout !',
           cn: '热病点名, 远离小队成员 => 停止一切行动!',
           ko: '열병 대상자, 파티에서 떨어지기 => 모든 행동 멈추기!',
           tc: '熱病點名, 遠離小隊成員 => 停止一切行動!',
@@ -125,6 +130,7 @@ const triggerSet: TriggerSet<Data> = {
         heatOnPlayer: {
           en: 'Pyretic on ${player}, Avoid AoE',
           de: 'Pyretisch auf ${player}, vermeide AoE',
+          fr: 'Pyrétique sur ${player}, Évitez l\'AoE',
           cn: '热病点 ${player}, 避开AoE',
           ko: '${player} 열병, 장판 피하기',
           tc: '熱病點 ${player}, 避開AoE',
@@ -163,6 +169,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid AoE',
           de: 'Vermeide AoE',
+          fr: 'Évitez l\'AoE',
           cn: '避开AoE',
           ko: '장판 피하기',
           tc: '避開AoE',
@@ -193,6 +200,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${count}x attacks => Get Behind',
           de: '${count}x Attacken => Geh Hinter',
+          fr: 'Attaque x${count} => Derrière',
           cn: '${count}次攻击 => 靠近',
           ko: '${count}번 공격 => 뒤로',
           tc: '${count}次攻擊 => 靠近',
@@ -252,6 +260,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Behind + Left',
           de: 'Geh Hinten + Links',
+          fr: 'Allez derrière à gauche',
           cn: '去背后 + 左侧',
           ko: '뒤로 + 왼쪽',
           tc: '去背後 + 左側',
@@ -267,6 +276,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Behind + Right',
           de: 'Geh Hinten + Rechts',
+          fr: 'Allez derrière à droite',
           cn: '去背后 + 右侧',
           ko: '뒤로 + 오른쪽',
           tc: '去背後 + 右側',
@@ -314,22 +324,21 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Invoked Arch Demon': 'archidémon invoqué',
-        'Invoked Baal': 'baël invoqué',
-        'Invoked Caym': 'caym invoqué',
-        'Invoked Cerberus': 'cerbère invoqué',
-        'Invoked Gremlin': 'gremlin invoqué',
-        'Invoked Humbaba': 'humbaba invoqué',
-        'Invoked Satana': 'minisatana invoqué',
-        'Invoked Succubus': 'succube invoqué',
-        'Invoked Troubadour': 'troubadour invoqué',
+        'Invoked Arch Demon': 'Archidémon invoqué',
+        'Invoked Baal': 'Baël invoqué',
+        'Invoked Caym': 'Caym invoqué',
+        'Invoked Cerberus': 'Cerbère invoqué',
+        'Invoked Gremlin': 'Gremlin invoqué',
+        'Invoked Humbaba': 'Humbaba invoqué',
+        'Invoked Satana': 'Minisatana invoqué',
+        'Invoked Succubus': 'Succube invoqué',
+        'Invoked Troubadour': 'Troubadour invoqué',
         'Malacoda': 'Malacoda',
-        'Traverse Cama': 'chama du pèlerinage',
-        'Traverse Cubus': 'oléofuror du pèlerinage',
-        'Traverse Gnoll': 'gnole du pèlerinage',
-        'Traverse Rider': 'cavalier du pèlerinage',
+        'Traverse Cama': 'Chama du pèlerinage',
+        'Traverse Cubus': 'Oléofuror du pèlerinage',
+        'Traverse Gnoll': 'Gnole du pèlerinage',
+        'Traverse Rider': 'Cavalier du pèlerinage',
       },
     },
     {

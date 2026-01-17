@@ -54,7 +54,7 @@ cactbot provides these overlays:
 
 ### Dependencies
 
-Install [.NET Framework](https://www.microsoft.com/net/download/framework) version 4.6.1 or above.
+Install [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) version 4.6.1 or above.
 
 Install the 64-bit version of [Advanced Combat Tracker](http://advancedcombattracker.com/), if you have not already.
 
@@ -406,7 +406,7 @@ if you click on the left/red "Copy killed NMs" button in the tracker to
 copy the list of currently dead NMs, you can paste it in game, e.g.
 `/echo NMs on cooldown: Serket (7m) → Julika (24m) → Poly (54m)`
 
-If you do not see the emoji, make sure you have installed [this Windows update](https://support.microsoft.com/en-us/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser).
+If you do not see the emoji, make sure you have installed [this Windows update](https://support.microsoft.com/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser).
 
 ![eureka screenshot](screenshots/promo_eureka.png)
 
@@ -516,6 +516,7 @@ for more details about user javascript and css files.
 cactbot is tested and works with the current
 international (English, German, French, Japanese) version,
 the current Chinese version,
+the current Traditional Chinese version,
 and the current Korean version.
 Some translations are still a work in progress.
 See the [cactbot coverage page](https://overlayplugin.github.io/cactbot/util/coverage/coverage.html) for more details.

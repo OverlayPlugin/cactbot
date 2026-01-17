@@ -148,15 +148,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bomb Boulder': '爆破岩石',
         'Titan': '泰坦',
       },
       'replaceText': {
-        // '\\(clock\\)': '', // FIXME '(顺时针)'
-        // '\\(diamond\\)': '', // FIXME '(钻石)'
-        // '\\(line\\)': '', // FIXME '(直线)'
+        '\\(clock\\)': '(順時針)',
+        '\\(diamond\\)': '(鑽石)',
+        '\\(line\\)': '(直線)',
         'Burst': '爆炸',
         'Bury': '塌方',
         'Earthen Fury': '大地之怒',

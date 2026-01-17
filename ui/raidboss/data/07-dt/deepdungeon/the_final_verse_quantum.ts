@@ -243,6 +243,7 @@ const chainsOfCondemnationOutputStrings = {
   chains: {
     en: 'AoE + Stop Moving!',
     de: 'AoE + Nicht Bewegen!',
+    fr: 'AoE + Ne bougez pas !',
     ja: '全体攻撃 + 止まれ!',
     cn: 'AOE + 停止移动!',
     ko: '전체 공격 + 이동 멈추기!',
@@ -283,6 +284,7 @@ const triggerSet: TriggerSet<Data> = {
   comments: {
     en: 'Q15-40',
     de: 'Q15-40',
+    fr: 'Q15-40',
     cn: '15-40 贡品',
     ko: '15-40 공물',
   },
@@ -316,6 +318,7 @@ const triggerSet: TriggerSet<Data> = {
         q40: {
           en: 'Get Light Vengeance',
           de: 'Nimm Echo des Lichts',
+          fr: 'Prenez Écho de la lumière',
           cn: '踩光',
           ko: '빛 디버프 받기',
         },
@@ -335,12 +338,14 @@ const triggerSet: TriggerSet<Data> = {
         q15: {
           en: 'Get Towers => AoE',
           de: 'Geh in die Türme => AoE',
+          fr: 'Prenez les tours => AoE',
           cn: '踩塔 => AOE',
           ko: '탑 밟기 => 전체 공격',
         },
         q40: {
           en: 'Get Towers => AoE + Bleed',
-          de: 'Geh in die Türme => AoE + Blutubg',
+          de: 'Geh in die Türme => AoE + Blutung',
+          fr: 'Prenez les tours => AoE + Saignement',
           cn: '踩塔 => AOE + 流血',
           ko: '탑 밟기 => 전체 공격 + 출혈',
         },
@@ -397,6 +402,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Check Boss HP Difference',
           de: 'Prüfe Boss HP Unterschied',
+          fr: 'Vérifiez la différence d\'HP du boss',
           cn: '检查 BOSS 血量差',
           ko: '보스 체력 차이 확인',
           tc: '檢查 BOSS 血量差',
@@ -418,6 +424,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${effect} on ${player}',
           de: '${effect} auf ${player}',
+          fr: '${effect} sur ${player}',
           cn: '${effect} 点 ${player}',
           ko: '${player}에게 ${effect}',
           tc: '${effect} 點 ${player}',
@@ -450,6 +457,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Refresh Vengeance',
           de: 'Echo erneuern',
+          fr: 'Actualiser l\'écho',
           cn: '刷新光/暗 Debuff',
           ko: '빛/어둠 디버프 갱신',
           tc: '刷新光/暗 Debuff',
@@ -503,6 +511,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${frontBack}-${leftRight}, for later',
           de: '${frontBack}-${leftRight}, für später',
+          fr: '${frontBack}-${leftRight}, pour après',
           cn: '稍后去 ${leftRight}-${frontBack}',
           ko: '나중에 ${leftRight}-${frontBack} 으로',
           tc: '稍後去 ${leftRight}-${frontBack}',
@@ -561,6 +570,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${frontBack}-${leftRight}, for later',
           de: '${frontBack}-${leftRight}, für später',
+          fr: '${frontBack}-${leftRight}, pour après',
           cn: '稍后去 ${leftRight}-${frontBack}',
           ko: '나중에 ${leftRight}-${frontBack} 으로',
           tc: '稍後去 ${leftRight}-${frontBack}',
@@ -594,6 +604,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${frontBack}-${leftRight}, Avoid Exaflares',
           de: '${frontBack}-${leftRight}, vermeide Exaflares',
+          fr: '${frontBack}-${leftRight}, évitez les brasiers',
           cn: '在 ${leftRight}-${frontBack} 躲避地火',
           ko: '${frontBack}-${leftRight}, 엑사플레어 피하기',
           tc: '在 ${leftRight}-${frontBack} 躲避地火',
@@ -737,18 +748,21 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stack with ${lightDark} Partner',
           de: 'Mit ${lightDark} Partner sammeln',
+          fr: 'Packez-vous avec votre partenaire (${lightDark})',
           cn: '与 ${lightDark} 集合',
           ko: '${lightDark} 파트너와 모이기',
         },
         light: {
           en: 'Light',
           de: 'Licht',
+          fr: 'Lumière',
           cn: '光',
           ko: '빛',
         },
         dark: {
           en: 'Dark',
           de: 'Dunkelheit',
+          fr: 'Ténèbres',
           cn: '暗',
           ko: '어둠',
         },
@@ -891,6 +905,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Stack Middle for Chains',
           de: 'In der Mitte sammlen für Ketten',
+          fr: 'Packez-vous au milieu pour les chaînes',
           cn: '中间集合等待连线',
           ko: '중앙에 모여서 사슬 준비하기',
         },
@@ -913,6 +928,7 @@ const triggerSet: TriggerSet<Data> = {
         q40: {
           en: 'Break Chains => AoE + Bleed',
           de: 'Ketten brechen => AoE + Blutung',
+          fr: 'Cassez les chaînes => AoE + Saignement',
           cn: '拉断连线 => AOE + 流血',
           ko: '사슬 끊기 => 전체 공격 + 출혈',
         },
@@ -935,18 +951,21 @@ const triggerSet: TriggerSet<Data> = {
         stackOnYou: {
           en: 'Stack on YOU, Tank in Front',
           de: 'Auf DIR sammeln, Tank nach Vorne',
+          fr: 'Package sur VOUS, Tank devant',
           cn: '分摊点名，坦克在前',
           ko: '쉐어 대상자, 탱커는 앞쪽으로',
         },
         stackOnTarget: {
           en: 'Stack on ${player}, Tank in Front',
           de: 'Auf ${player} sammeln, Tank nach Vorne',
+          fr: 'Package sur ${player}, Tank devant',
           cn: '分摊点 ${player}，坦克在前',
           ko: '${player}에게 쉐어, 탱커는 앞쪽으로',
         },
         stackMarker: {
           en: 'Stack, Tank in Front',
           de: 'Sammeln, Tank nach Vorne',
+          fr: 'Package, Tank devant',
           cn: '分摊，坦克在前',
           ko: '쉐어, 탱커는 앞쪽으로',
         },
@@ -962,6 +981,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Kill Add',
           de: 'Add besiegen',
+          fr: 'Tuez l\'add',
           cn: '击杀小怪',
           ko: '쫄 잡기',
         },
@@ -976,6 +996,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Shackles',
           de: 'Fesseln',
+          fr: 'Menottes',
           cn: '光链',
           ko: '빛사슬',
         },
@@ -995,12 +1016,14 @@ const triggerSet: TriggerSet<Data> = {
         tetherOnYou: {
           en: 'Tether on YOU',
           de: 'Verbindung auf DIR',
+          fr: 'Lien sur VOUS',
           cn: '连线点名',
           ko: '사슬 대상자',
         },
         tetherOn: {
           en: 'Tether on ${player}',
           de: 'Verbindung auf ${player}',
+          fr: 'Lien sur ${player}',
           cn: '连线点 ${player}',
           ko: '${player}에게 사슬',
         },
@@ -1015,6 +1038,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'AoE + Draw-in',
           de: 'AoE + Sog',
+          fr: 'AoE + Attraction',
           cn: 'AOE + 吸引',
           ko: '전체 공격 + 끌어당김',
         },
@@ -1039,6 +1063,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Kill Towers',
           de: 'Türme besiegen',
+          fr: 'Tuez les tours',
           cn: '击杀柱子',
           ko: '탑 부수기',
         },
@@ -1059,6 +1084,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait Puddles x3',
           de: 'Flächen ködern x3',
+          fr: 'Déposez les flaques x3',
           cn: '引导圈圈 x3',
           ko: '장판 유도 x3',
         },
@@ -1082,6 +1108,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '3x Tankbuster + Bleed',
           de: '3x Tankbuster + Blutung',
+          fr: 'Tankbuster x3 + Saignement',
           cn: '三连坦克死刑 + 流血',
           ko: '탱버 x3 + 출혈',
         },
@@ -1100,18 +1127,21 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${leftRight}, Avoid laser',
           de: '${leftRight}, vermeide Laser',
+          fr: '${leftRight}, évitez le laser',
           cn: '${leftRight}，躲避激光',
           ko: '${leftRight}，레이저 피하기',
         },
         left: {
           en: 'Front-left/Back-right',
           de: 'Vorne links/Hinten rechts',
+          fr: 'Avant gauche/Arrière droit',
           cn: '左前/右后',
           ko: '앞 왼쪽/뒤 오른쪽',
         },
         right: {
           en: 'Front-right/Back-left',
           de: 'Vorne rechts/Hinten links',
+          fr: 'Devant droit/Arrière gauche',
           cn: '右前/左后',
           ko: '앞 오른쪽/뒤 왼쪽',
         },
@@ -1133,6 +1163,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Dark Vengeance',
           de: 'Nimm Echo der Dunkelheit',
+          fr: 'Prenez l\'écho des ténèbres',
           cn: '踩暗',
           ko: '어둠 받기',
         },
@@ -1153,12 +1184,14 @@ const triggerSet: TriggerSet<Data> = {
         sinBearerOnYou: {
           en: 'Sin Bearer on YOU',
           de: 'Anhäufen der Schuld auf DIR',
+          fr: 'Porteur de péchés sur VOUS',
           cn: '罪积蓄点名',
           ko: '죄의 축적 대상자',
         },
         sinBearerOnTarget: {
           en: 'Sin Bearer on ${player}',
           de: 'Anhäufen der Schuld auf ${player}',
+          fr: 'Porteur de péchés sur ${player}',
           cn: '罪积蓄点 ${player}',
           ko: '${player}에게 죄의 축적',
         },
@@ -1195,6 +1228,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Pass Sin Bearer',
           de: 'Anhäufen der Schuld weitergeben',
+          fr: 'Passez le porteur des péchés',
           cn: '传递罪积蓄',
           ko: '죄의 축적 건네기',
         },
@@ -1213,6 +1247,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Cleanse ${player}',
           de: 'Reinige ${player}',
+          fr: 'Guérissez ${player}',
           cn: '驱散 ${player}',
           ko: '${player} 에스나',
         },
@@ -1233,12 +1268,14 @@ const triggerSet: TriggerSet<Data> = {
         swap: {
           en: 'Get Light Vengeance',
           de: 'Nimm Echo des Lichts',
+          fr: 'Prenez l\'écho de Lumière',
           cn: '踩光',
           ko: '빛 받기',
         },
         stay: {
           en: 'Stay Dark Vengeance',
           de: 'Bleib bei Echo der Dunkelheit',
+          fr: 'Restez avec l\'écho des ténèbres',
           cn: '保持暗',
           ko: '어둠 유지',
         },
@@ -1255,6 +1292,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Dark Vengeance',
           de: 'Nimm Echo der Dunkelheit',
+          fr: 'Prenez l\'écho des Ténèbres',
           cn: '踩暗',
           ko: '어둠 받기',
         },
@@ -1271,6 +1309,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait Flameborn',
           de: 'Sprungfeuer ködern',
+          fr: 'Déposez les flammes',
           cn: '引导火焰分身',
           ko: '화염 분신 유도',
         },
@@ -1295,6 +1334,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${target} dead, swap!',
           de: '${target} besiegt, wechseln!',
+          fr: '${target} est mort, swap!',
           cn: '${target} 死亡，换目标！',
           ko: '${target} 사망, 대상 변경!',
         },
@@ -1351,9 +1391,9 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'fr',
       'missingTranslations': true,
       'replaceSync': {
-        'Devoured Eater': 'purgateur dévoré',
+        'Devoured Eater': 'Purgateur dévoré',
         'Eminent Grief': 'Pontife du Chagrin',
-        'Flameborn': 'division de flamme',
+        'Flameborn': 'Division de flamme',
       },
       'replaceText': {
         'Abyssal Blaze': 'Feu abyssal',

@@ -26,3 +26,6 @@ env/
 venv/
 npm-package/
 .eslintcache
+
+ui/raidboss/data/99-custom/*
+!ui/raidboss/data/99-custom/readme.txt
