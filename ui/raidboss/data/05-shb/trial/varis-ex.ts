@@ -488,7 +488,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Bladesblood': '劍氣',
         'Gunshield': '槍盾',
@@ -500,11 +499,11 @@ const triggerSet: TriggerSet<Data> = {
         'Ventus Est': '是為疾風',
       },
       'replaceText': {
-        // '--clones appear\\?--': '', // FIXME '--幻影出现?--'
+        '--clones appear\\?--': '--幻影出現?--',
         'Aetherochemical Grenado': '魔導榴彈',
         'Alea Iacta Est': '大局已定',
         'Altius': '更高',
-        // 'Blade\'s Pulse': '', // FIXME '双T接刀'
+        'Blade\'s Pulse': '雙坦克接刀',
         'Citius': '更快',
         'Electrified Gunshield': '槍盾：魔導衝擊',
         'Festina Lente': '從容不迫',
@@ -515,8 +514,8 @@ const triggerSet: TriggerSet<Data> = {
         'Magitek Burst': '魔導爆發',
         'Magitek Shielding': '魔導反擊',
         'Magitek Shock': '魔導衝擊',
-        'Magitek Spark/Torch': '魔導光刃',
-        'Magitek Torch/Spark': '魔導光刃',
+        'Magitek Spark/Torch': '魔導光刃/魔導火焰',
+        'Magitek Torch/Spark': '魔導火焰/魔導光刃',
         'Reinforced Gunshield': '槍盾：魔導反擊',
         'Reinforcements': '支援命令',
         'Shockwave': '衝擊波',

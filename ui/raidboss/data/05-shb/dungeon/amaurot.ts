@@ -35,7 +35,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'メテオを西に',
           cn: '左边放陨石',
           ko: '메테오 서쪽으로 빼기',
-          tc: '左邊放隕石',
+          tc: '西邊放隕石',
         },
         dropMeteorEast: {
           en: 'Drop Meteor East',
@@ -44,7 +44,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'メテオを東に',
           cn: '右边放陨石',
           ko: '메테오 동쪽으로 빼기',
-          tc: '右邊放隕石',
+          tc: '東邊放隕石',
         },
         meteor: {
           en: 'Meteor',
@@ -240,7 +240,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'The First Beast': '第一之獸',
         'The Face of the Beast': '災獸之面',
@@ -254,7 +253,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Third Doom': '第三之災難',
       },
       'replaceText': {
-        // 'Adds': '', // FIXME '小怪'
+        'Adds': '小怪',
         'The Final Sky': '末日流星',
         'The Falling Sky': '災厄流星',
         'The Burning Sky': '災變流星',

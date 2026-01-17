@@ -305,7 +305,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'The Wound': '紫黑裂痕',
         'The Auction': '牲畜賣場',
@@ -326,11 +325,11 @@ const triggerSet: TriggerSet<Data> = {
         'Heretic\'s Fork': '異端十字叉',
         'Holy Water': '聖水',
         'Into The Light': '埋沒之光',
-        // 'Left/Right Knout': '', // FIXME '左/右鞭打'
+        'Left/Right Knout': '左/右鞭打',
         'Light Shot': '光線射擊',
         'Pendulum': '鐘擺',
         'Pillory': '頸手枷',
-        // 'Right/Left Knout': '', // FIXME '右/左鞭打'
+        'Right/Left Knout': '右/左鞭打',
         'Scavenger\'s Daughter': '拾荒者之女',
         'Scold\'s Bridle': '毒舌鉤',
         'Taphephobia': '土埋',
@@ -338,8 +337,8 @@ const triggerSet: TriggerSet<Data> = {
         'The Tickler': '抓撓',
         'Thumbscrew': '螺旋突刺',
         'Wooden Horse': '木馬',
-        // 'Tank': '', // FIXME '坦克'
-        // 'Center': '', // FIXME '中心'
+        'Tank': '坦克',
+        'Center': '中心',
       },
     },
   ],

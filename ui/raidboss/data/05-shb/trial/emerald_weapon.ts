@@ -42,7 +42,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '同じ極性の爆雷に近づく',
           cn: '靠近同级地雷',
           ko: '같은 극성 폭탄쪽으로',
-          tc: '靠近同級地雷',
+          tc: '靠近同極性地雷',
         },
       },
     },

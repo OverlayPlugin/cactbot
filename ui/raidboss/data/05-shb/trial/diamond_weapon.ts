@@ -14,7 +14,7 @@ const sharedOutputStrings = {
     ja: '東の足場へテレポ',
     cn: '传送到右边平台',
     ko: '동쪽으로 이동',
-    tc: '傳送到右邊平台',
+    tc: '傳送到東邊平台',
   },
   teleportWest: {
     en: 'Teleport to west platform',
@@ -23,7 +23,7 @@ const sharedOutputStrings = {
     ja: '西の足場へテレポ',
     cn: '传送到左边平台',
     ko: '서쪽으로 이동',
-    tc: '傳送到左邊平台',
+    tc: '傳送到西邊平台',
   },
 };
 
@@ -139,7 +139,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ビームを避ける',
           cn: '躲避浮游炮激光',
           ko: '비트 피하기',
-          tc: '躲避浮游炮雷射',
+          tc: '躲避浮游砲雷射',
         },
       },
     },
@@ -286,14 +286,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Articulated Bit': '飛手浮游砲',
         'The Diamond Weapon': '鑽石武器',
       },
       'replaceText': {
-        // '\\(Jump\\)': '', // FIXME '(跳)'
-        // '\\(Cleave\\)': '', // FIXME '(冲锋)'
+        '\\(Jump\\)': '(跳)',
+        '\\(Cleave\\)': '(衝鋒)',
         'Adamant Purge': '裝甲展開',
         'Adamant Sphere': '鑽石球',
         'Aetherial Bullet': '乙太砲',

@@ -57,7 +57,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南へ',
           cn: '前往下半场边缘',
           ko: '남쪽으로',
-          tc: '前往下半場邊緣',
+          tc: '前往南半場邊緣',
         },
       },
     },
@@ -159,7 +159,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後ろに火炎放射器',
           cn: '观察后方喷火',
           ko: '뒤에서 불 나오는 곳 확인',
-          tc: '觀察後方噴火',
+          tc: '小心後方噴火',
         },
       },
     },
@@ -427,7 +427,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '横へ (前に近づく)',
           cn: '两侧（靠近前方）',
           ko: '양옆으로 (앞 근처)',
-          tc: '兩側（靠近前方）',
+          tc: '兩側 (靠近前方)',
         },
       },
     },
@@ -499,7 +499,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雑魚 (小さいのは無視)',
           cn: '小怪（忽略小的）',
           ko: '쫄 나옴 (작은건 무시)',
-          tc: '小怪（忽略小的）',
+          tc: '小怪 (無視小的)',
         },
       },
     },
@@ -534,7 +534,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'マルクス突撃',
           cn: '观察两侧电锯',
           ko: '양옆 톱 확인',
-          tc: '觀察兩側電鋸',
+          tc: '小心兩側電鋸',
         },
       },
     },
@@ -1035,7 +1035,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '9S-operated Flight Unit': '9S：裝備飛行裝置',
         '9S-Operated Walking Fortress': '9S：接入多腳戰車',
@@ -1064,13 +1063,13 @@ const triggerSet: TriggerSet<Data> = {
         'Area Bombardment': '導彈亂射',
         'Area Bombing Maneuver': '攻擊：追蹤導彈轟炸',
         'Arm Laser': '腕部雷射',
-        // 'Cannons': '', // FIXME '加农'
+        'Cannons': '大砲',
         'Clanging Blow': '強攻擊',
         'Convenient Self-Destruction': '自爆攻擊',
-        // 'Crusher Adds': '', // FIXME '粉碎机小怪'
-        // 'Tank Adds': '', // FIXME '坦克小怪'
-        // 'Serial-Jointed Adds': '', // FIXME '多关节型小怪'
-        // '(?<! )Adds': '', // FIXME '小怪'
+        'Crusher Adds': '粉碎機小怪',
+        'Tank Adds': '坦克小怪',
+        'Serial-Jointed Adds': '多關節型小怪',
+        '(?<! )Adds': '小怪',
         'Crushing Wheel': '碾輪夾擊',
         'Demolish Structure': '地形破壞攻擊',
         'Wide-Angle Diffuse Laser': '廣擴散雷射',
@@ -1082,8 +1081,8 @@ const triggerSet: TriggerSet<Data> = {
         'Energy Ring': '全方位能量彈',
         'Engage Goliath Tank Support': '請求支援：大型戰車',
         'Engage Marx Support': '請求支援：麥喀士',
-        // 'Exploding Tethers': '', // FIXME '爆炸连线'
-        // 'Floor': '', // FIXME '地板'
+        'Exploding Tethers': '爆炸連線',
+        'Floor': '地板',
         'Forceful Impact': '大震動',
         'Frontal Somersault': '跳躍攻擊',
         'Ground-To-Ground Missile': '導彈命中',
@@ -1103,12 +1102,12 @@ const triggerSet: TriggerSet<Data> = {
         'Marx Activation': '麥喀士啟動',
         'Marx Crush': '麥喀士夾擊',
         'Marx Impact': '麥喀士衝擊',
-        // 'Marx Smash L/R': '', // FIXME '麦喀士打击左/右'
-        // 'Marx Smash R/L': '', // FIXME '麦喀士打击右/左'
-        // 'Marx Smash Back': '', // FIXME '麦喀士打击后'
-        // 'Marx Smash Front': '', // FIXME '麦喀士打击前'
-        // 'Marx Smash F/B': '', // FIXME '麦喀士打击前/后'
-        // 'Marx Smash B/F': '', // FIXME '麦喀士打击后/前'
+        'Marx Smash L/R': '麥喀士打擊左/右',
+        'Marx Smash R/L': '麥喀士打擊右/左',
+        'Marx Smash Back': '麥喀士打擊後',
+        'Marx Smash Front': '麥喀士打擊前',
+        'Marx Smash F/B': '麥喀士打擊前/後',
+        'Marx Smash B/F': '麥喀士打擊後/前',
         'Marx Smash(?! )': '麥喀士打擊',
         'Marx Thrust': '麥喀士突擊',
         'Neutralization': '壓制射擊',
@@ -1117,7 +1116,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shockwave': '衝擊波',
         'Short-Range Missile': '短途導彈',
         'Shrapnel Impact': '殘骸墜落',
-        // 'Spin': '', // FIXME '中央/侧方旋转攻击'
+        'Spin': '中央/側方旋轉攻擊',
         'Surface Missile': '對地導彈',
         'Systematic Airstrike': '空襲陣型',
         'Systematic Siege': '包圍陣型',
@@ -1125,7 +1124,7 @@ const triggerSet: TriggerSet<Data> = {
         'Systematic Targeting': '瞄準陣型',
         'Total Annihilation Maneuver': '攻擊：殲滅轟炸',
         'Undock': '對接解除',
-        // 'Wall Mechanic': '', // FIXME '墙机制'
+        'Wall Mechanic': '牆機制',
       },
     },
     {

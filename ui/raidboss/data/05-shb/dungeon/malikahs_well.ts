@@ -202,7 +202,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Pack Armadillo': '群落犰狳',
         'Terminus': '軌道車站',
@@ -229,8 +228,7 @@ const triggerSet: TriggerSet<Data> = {
         'Breaking Wheel': '碎輪',
         'Crystal Nail': '打樁',
         'Censure': '執行',
-        // 'Armadillo': '', // FIXME '犰狳'
-        // 'Pack': '', // FIXME
+        'Pack Armadillo': '群落犰狳',
       },
     },
     {

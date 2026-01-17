@@ -36,7 +36,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '幻の採集場探したよ！',
           cn: '梦幻采集点刷了！冲鸭！！',
           ko: '환상의 광맥/성목 발견',
-          tc: '夢幻採集點刷了！沖鴨！！',
+          tc: '發現夢幻採集點!',
         },
       },
     },
@@ -91,7 +91,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        'The Diadem': '雲冠群島',
+      },
     },
     {
       'locale': 'ko',

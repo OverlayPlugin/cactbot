@@ -80,7 +80,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '後ろに、そして南へ',
           cn: '背面 => 下半场',
           ko: '보스 뒤로 => 남쪽으로',
-          tc: '背面 => 下半場',
+          tc: '背面 => 南半場',
         },
       },
     },
@@ -98,7 +98,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '前 / 横、そして北へ',
           cn: '前/侧面 => 上半场',
           ko: '앞/양옆으로 => 북쪽으로',
-          tc: '前/側面 => 上半場',
+          tc: '前/側面 => 北半場',
         },
       },
     },
@@ -237,7 +237,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '自分に範囲攻撃 (塔に当たらないように)',
           cn: '扇形点名，躲开塔',
           ko: '부채꼴 대상자 - 장판 피하기',
-          tc: '扇形點名，躲開塔',
+          tc: '扇形點名, 躲開塔',
         },
         standInATower: {
           en: 'Stand in a tower',
@@ -468,7 +468,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Shiva': '濕婆',
         'Frozen Mirror': '冰面鏡',
@@ -481,18 +480,18 @@ const triggerSet: TriggerSet<Data> = {
         'Absolute Zero': '絕對零度',
         'Redress': '換裝',
         'Shining Armor': '閃光護甲',
-        // 'Axe Kick/Scythe Kick': '', // FIXME '阔斧/镰形回旋踢'
+        'Axe Kick/Scythe Kick': '闊斧/鐮形迴旋踢',
         'Frost Armor': '冰霜護甲',
-        // 'Biting Frost/Driving Frost': '', // FIXME '冰霜斩/刺'
+        'Biting Frost/Driving Frost': '冰霜斬/刺',
         'Double Slap': '雙劍斬',
         'Diamond Frost': '鑽石星塵',
-        // 'Frigid Water/Frigid Stone': '', // FIXME '冰霜/冰石'
+        'Frigid Water/Frigid Stone': '冰霜/冰石',
         'Icicle Impact': '冰柱衝擊',
         'Frigid Eruption': '極冰噴發',
         'Heavenly Strike': '極樂冰柱',
         'Mirror, Mirror': '鏡中奇遇',
-        // 'Driving Frost/Biting Frost': '', // FIXME '冰霜刺/斩'
-        // 'Reflected Frost': '', // FIXME '连锁反射'
+        'Driving Frost/Biting Frost': '冰霜刺/斬',
+        'Reflected Frost': '連鎖反射',
         'Shattered World': '世界分斷',
         'Heart Asunder': '心碎',
         'Stoneskin': '石膚',
@@ -503,11 +502,11 @@ const triggerSet: TriggerSet<Data> = {
         'Light Rampant': '光之失控',
         'The Path of Light': '光之波動',
         'Bright Hunger': '侵蝕光',
-        // '(?<! )Kick/Frost': '', // FIXME '阔斧/镰形'
-        // 'Reflected Kick/Frost': '', // FIXME '反射阔斧/镰形'
-        // 'Twin Stillness/Twin Silence': '', // FIXME '静寂/闲寂的双剑技'
-        // 'Embittered Dance/Spiteful Dance': '', // FIXME '严峻之舞/冷峻之舞'
-        // 'Spiteful Dance/Embittered Dance': '', // FIXME '冷峻之舞/严峻之舞'
+        '(?<! )Kick/Frost': '闊斧/鐮形',
+        'Reflected Kick/Frost': '反射闊斧/鐮形',
+        'Twin Stillness/Twin Silence': '寂靜/閒寂的雙劍技',
+        'Embittered Dance/Spiteful Dance': '嚴峻之舞/冷峻之舞',
+        'Spiteful Dance/Embittered Dance': '冷峻之舞/嚴峻之舞',
       },
     },
     {

@@ -139,7 +139,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 (重ならない)',
           cn: '分散（别去分摊！）',
           ko: '산개 (쉐어 맞으면 안됨)',
-          tc: '分散（別去分攤！）',
+          tc: '分散 (別去分攤!)',
         },
         spread: Outputs.spread,
       },

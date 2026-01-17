@@ -256,7 +256,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '魔法障壁を発動',
           cn: '打开开关！',
           ko: '장벽 발동!',
-          tc: '打開開關！',
+          tc: '打開開關!',
         },
       },
     },

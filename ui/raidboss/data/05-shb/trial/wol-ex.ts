@@ -117,7 +117,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ロール特定位置へ',
           cn: '职能三刀站位',
           ko: '직업군별 위치로',
-          tc: '職能三刀站位',
+          tc: '職能站位',
         },
         limitBreak2: {
           en: 'healer stacks',
@@ -126,7 +126,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ヒーラーと集合',
           cn: '双奶分组分摊',
           ko: '좌우 산개',
-          tc: '雙奶分組分攤',
+          tc: '雙補分組分攤',
         },
         limitBreak3: {
           en: 'meteor',
@@ -156,7 +156,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '全員のHPを満タンに！',
           cn: '奶满全队',
           ko: '전원 체력 풀피로',
-          tc: '奶滿全隊',
+          tc: '補滿全隊',
         },
       },
     },
@@ -407,7 +407,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンクLB!!',
           cn: '坦克LB！！',
           ko: '탱리밋!!',
-          tc: '坦克LB！！',
+          tc: '坦克LB!!',
         },
       },
     },
@@ -963,7 +963,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Spectral Ninja': '幻光忍者',
         'Warrior Of Light': '光之戰士',
@@ -982,40 +981,40 @@ const triggerSet: TriggerSet<Data> = {
         'Absolute Stone III': '絕對大巨岩',
         'Berserk': '狂暴',
         'Blade Of Shadow': '漆黑魔劍',
-        // 'BLM/WHM': '', // FIXME '黒魔／白魔'
+        'BLM/WHM': '黑魔/白魔',
         'Brimstone Earth': '獄火大地',
-        // '(?<!\\w)Cast(?= )': '', // FIXME '五连'
+        '(?<!\\w)Cast(?= )': '五連',
         'Cauterize': '灼熱俯衝',
         'Coruscant Saber': '光明利劍',
         'Deep Darkside': '深度暗黑',
         'Deluge Of Death': '死亡暴雨',
-        // 'DRK/BRD': '', // FIXME '黑骑／诗人'
+        'DRK/BRD': '黑騎/詩人',
         'Elddragon Dive': '遠古龍炎衝',
         'Fatal Cleave': '奪命飛環',
-        // '(?<! )Fire/Ice': '', // FIXME '火/冰'
+        '(?<! )Fire/Ice': '火/冰',
         'Flare Breath': '火光吐息',
         '(?<! )Holy': '神聖',
         'Imbued Coruscance': '魔法劍技·光明利劍',
-        // 'Imbued Fire/Ice': '', // FIXME '魔法剑(火／冰)'
-        'Imbued Holy': '魔法劍',
-        // 'Imbued Ice/Fire': '', // FIXME '魔法剣 (冰／火)'
-        'Imbued Stone': '魔法劍',
-        // 'Katon\\: San': '', // FIXME '叁式火遁之术'
-        // '(?<! )Limit(?! Break)': '', // FIXME '极限技'
+        'Imbued Fire/Ice': '魔法劍 (火/冰)',
+        'Imbued Holy': '魔法劍 (光)',
+        'Imbued Ice/Fire': '魔法劍 (冰/火)',
+        'Imbued Stone': '魔法劍 (土)',
+        'Katon\\: San': '三式火遁之術',
+        '(?<! )Limit(?! Break)': '極限爆發',
         'Limit Break': '極限爆發',
         'Meteor Impact': '隕石衝擊',
-        // '(?<= )NIN': '', // FIXME '忍者'
+        '(?<= )NIN': '忍者',
         'Perfect Decimation': '完美地毀人亡',
         'Quintuplecast': '五連詠唱',
         'Radiant Braver': '光之英勇斬擊',
         'Radiant Desperado': '光之亡命之徒',
         'Radiant Meteor': '光之隕石流星',
         'Shining Wave': '光芒波動',
-        // 'SMN/WAR': '', // FIXME '召唤／战士'
+        'SMN/WAR': '召喚/戰士',
         'Solemn Confiteor': '莊嚴悔罪',
         'Specter Of Light': '幻光召喚',
         '(?<! )Stone(?! Earth)': '巨岩',
-        // 'Suiton\\: San': '', // FIXME '叁式水遁之术'
+        'Suiton\\: San': '三式水遁之術',
         'Summon(?! Wyrm)': '召喚',
         'Summon Wyrm': '真龍召喚',
         'Sword Of Light': '光之劍',

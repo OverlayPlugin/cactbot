@@ -276,7 +276,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '線を取る',
           cn: '接线（吃一次）',
           ko: '선 하나 낚아채기',
-          tc: '接線（吃一次）',
+          tc: '接線 (吃一次)',
         },
       },
     },
@@ -582,7 +582,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東へ',
           cn: '去右上',
           ko: '북동쪽으로',
-          tc: '去右上',
+          tc: '去東北',
         },
         southeast: {
           en: 'Go southeast',
@@ -591,7 +591,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南東へ',
           cn: '去右下',
           ko: '남동쪽으로',
-          tc: '去右下',
+          tc: '去東南',
         },
         southwest: {
           en: 'Go southwest',
@@ -600,7 +600,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南西へ',
           cn: '去左下',
           ko: '남서쪽으로',
-          tc: '去左下',
+          tc: '去西南',
         },
         northwest: {
           en: 'Go northwest',
@@ -609,7 +609,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西へ',
           cn: '去左上',
           ko: '북서쪽으로',
-          tc: '去左上',
+          tc: '去西北',
         },
       },
     },
@@ -673,7 +673,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの後ろに追う',
           cn: '跟紧在Boss身后',
           ko: '보스 따라가기',
-          tc: '跟緊在Boss身後',
+          tc: '緊跟在Boss身後',
         },
       },
     },
@@ -1065,9 +1065,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Lyon the Beast King would do battle at Majesty\'s Place': '', // FIXME '兽王莱昂似乎很期待在王者圆坛战斗！'
+        'Lyon the Beast King would do battle at Majesty\'s Place': '獸王萊昂似乎很期待在王者圓壇戰鬥！',
         'Red Comet': '紅色隕星',
         'Albeleo\'s Monstrosity': '阿爾貝雷歐的巨獸',
         'Albeleo\'s Hrodvitnir': '阿爾貝雷歐的惡狼',
@@ -1082,16 +1081,16 @@ const triggerSet: TriggerSet<Data> = {
         'Lyon The Beast King(?! would)': '獸王 萊昂',
         'Majesty\'s Auspice': '圓壇之間',
         'Shadowsphere': '暗影晶球',
-        // 'The airship landing': '', // FIXME '飞空战舰着陆台'
+        'The airship landing': '飛空戰艦著陸台',
         'The grand gates': '城門',
         'Verdant Plume': '濃綠之羽',
       },
       'replaceText': {
-        // '--Lyon Passage--': '', // FIXME '--兽王通道开启--'
+        '--Lyon Passage--': '--獸王通道開啟--',
         '(?<!Command: )Chain Cannon': '鏈式機關砲',
         '(?<!Command: )Dive Formation': '一齊突擊',
         '(?<!Command: )Infrared Blast': '熱線照射',
-        // '(?<!Command: )Lateral Dive': '', // FIXME '突进攻击'
+        '(?<!Command: )Lateral Dive': '突進攻擊',
         'Accursed Becoming': '魔法合成',
         'Aero IV': '超勁風',
         'Anti-Warmachina Weaponry': '對魔導兵器攻擊',
@@ -1113,7 +1112,7 @@ const triggerSet: TriggerSet<Data> = {
         'Fire IV': '超火焰',
         'Flare': '火光',
         'Frigid Pulse': '寒冷脈衝',
-        // 'Frigid/Fervid Pulse': '', // FIXME '寒冷脉冲/炙热脉冲'
+        'Frigid/Fervid Pulse': '寒冷脈衝/炙熱脈衝',
         'Heart Of Nature': '地靈脈',
         'Holy IV': '極聖',
         'Lightburst': '光爆破',
@@ -1127,7 +1126,7 @@ const triggerSet: TriggerSet<Data> = {
         'Nature\'s Blood': '波導地靈斬',
         'Nature\'s Pulse': '波導地靈衝',
         'Obey': '服從',
-        // 'Orb': '', // FIXME '球'
+        'Orb': '球',
         'Pentagust': '五向突風',
         'Polar Magnetism': '轉換磁石',
         'Pole Shift': '磁場轉換',
