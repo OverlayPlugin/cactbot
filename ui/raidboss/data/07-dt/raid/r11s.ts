@@ -407,6 +407,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11S One and Only',
       type: 'StartsUsing',
       netRegex: { id: 'B429', source: 'The Tyrant', capture: false },
+      durationSeconds: 6,
       response: Responses.bigAoe(),
     },
     {
