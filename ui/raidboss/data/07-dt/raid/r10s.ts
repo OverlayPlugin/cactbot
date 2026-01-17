@@ -415,7 +415,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, matches, output) => {
         // During snaking it is always move since the baits are too close
         if (data.phase === 'snaking')
-          output.text!({
+          return output.text!({
             protean: output.protean!(),
             action: output.watersnakingMove!(),
           });
