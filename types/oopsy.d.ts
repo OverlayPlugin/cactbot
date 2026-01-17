@@ -4,7 +4,7 @@ import { TrackedEvent } from '../ui/oopsyraidsy/player_state_tracker';
 import { OopsyData } from './data';
 import { NetAnyMatches, NetMatches } from './net_matches';
 import { CactbotBaseRegExp, TriggerTypes } from './net_trigger';
-import { LocaleText, TimelineReplacement, ZoneIdType } from './trigger';
+import { LocaleText, TranslationReplacement, ZoneIdType } from './trigger';
 
 export type OopsyMistakeType =
   | 'pull'
@@ -130,7 +130,7 @@ type SimpleOopsyTriggerSet<Data extends OopsyData> = {
   zoneId: ZoneIdType | ZoneIdType[];
   zoneLabel?: LocaleText;
   triggers?: OopsyTrigger<Data>[];
-  timelineReplace?: TimelineReplacement[];
+  timelineReplace?: TranslationReplacement[];
 } & OopsyMistakeMapFields;
 
 // If Data contains required properties that are not on OopsyData, require initData

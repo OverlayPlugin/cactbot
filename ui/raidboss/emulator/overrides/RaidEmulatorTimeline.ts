@@ -1,4 +1,4 @@
-import { LooseTimelineTrigger, TimelineReplacement } from '../../../../types/trigger';
+import { LooseTimelineTrigger, TranslationReplacement } from '../../../../types/trigger';
 import { RaidbossOptions } from '../../raidboss_options';
 import { Timeline } from '../../timeline';
 import { TimelineStyle } from '../../timeline_parser';
@@ -9,7 +9,7 @@ export default class RaidEmulatorTimeline extends Timeline {
   emulator?: RaidEmulator;
   constructor(
     text: string,
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     options: RaidbossOptions,

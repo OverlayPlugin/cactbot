@@ -7,7 +7,7 @@ import { keysThatRequireTranslation } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
 import Regexes from '../../resources/regexes';
 import { translateWithReplacements } from '../../resources/translations';
-import { LooseTimelineTrigger, LooseTriggerSet, TimelineReplacement } from '../../types/trigger';
+import { LooseTimelineTrigger, LooseTriggerSet, TranslationReplacement } from '../../types/trigger';
 import { CommonReplacement, commonReplacement } from '../../ui/raidboss/common_replacement';
 import { Error, regexes, TimelineParser } from '../../ui/raidboss/timeline_parser';
 
@@ -310,7 +310,7 @@ type TestCase = {
 const getTestCases = (
   triggersFile: string,
   timeline: TimelineParser,
-  trans: TimelineReplacement,
+  trans: TranslationReplacement,
 ) => {
   const syncMap: ReplaceMap = new Map();
   for (const [key, replaceSync] of Object.entries(trans.replaceSync ?? {}))

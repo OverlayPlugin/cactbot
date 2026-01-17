@@ -6,7 +6,7 @@ import NetRegexes from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
 import Regexes from '../resources/regexes';
 import { AnonNetRegexParams, translateRegexBuildParamAnon } from '../resources/translations';
-import { LooseTriggerSet, TimelineReplacement } from '../types/trigger';
+import { LooseTriggerSet, TranslationReplacement } from '../types/trigger';
 import {
   commonReplacement,
   partialCommonTimelineReplacementKeys,
@@ -57,7 +57,7 @@ export const findMissing = async (
   const triggerSet = (await import(importPath)).default as LooseTriggerSet;
   const translations = triggerSet.timelineReplace;
 
-  let trans: TimelineReplacement = {
+  let trans: TranslationReplacement = {
     replaceSync: {},
     replaceText: {},
     locale: locale,
@@ -126,7 +126,7 @@ const findMissingTimeline = (
   triggersFile: string,
   triggerSet: LooseTriggerSet,
   timeline: TimelineParser,
-  trans: TimelineReplacement,
+  trans: TranslationReplacement,
   locale: Lang,
   errorFunc: ErrorFuncType,
 ): boolean => {
@@ -261,7 +261,7 @@ const findMissingTimeline = (
 const findMissingTriggers = (
   triggersFile: string,
   triggerSet: LooseTriggerSet,
-  translations: TimelineReplacement[],
+  translations: TranslationReplacement[],
   locale: Lang,
   errorFunc: ErrorFuncType,
 ): boolean => {

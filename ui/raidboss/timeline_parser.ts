@@ -10,7 +10,11 @@ import {
   translateText,
 } from '../../resources/translations';
 import { NetParams } from '../../types/net_props';
-import { LooseTimelineTrigger, TimelineReplacement, TriggerAutoConfig } from '../../types/trigger';
+import {
+  LooseTimelineTrigger,
+  TranslationReplacement,
+  TriggerAutoConfig,
+} from '../../types/trigger';
 
 import defaultOptions, { RaidbossOptions, TimelineConfig } from './raidboss_options';
 
@@ -187,7 +191,7 @@ export const regexes = {
 export class TimelineParser {
   protected options: RaidbossOptions;
   protected perTriggerAutoConfig: { [triggerId: string]: TriggerAutoConfig };
-  protected replacements: TimelineReplacement[];
+  protected replacements: TranslationReplacement[];
   private timelineConfig: TimelineConfig;
 
   // A set of names which will not be notified about.
@@ -211,7 +215,7 @@ export class TimelineParser {
 
   constructor(
     text: string,
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles?: TimelineStyle[],
     options?: RaidbossOptions,

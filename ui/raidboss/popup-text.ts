@@ -30,7 +30,7 @@ import {
   ResponseOutput,
   TimelineField,
   TimelineFunc,
-  TimelineReplacement,
+  TranslationReplacement,
   TriggerAutoConfig,
   TriggerField,
   TriggerOutput,
@@ -740,7 +740,7 @@ export class PopupText {
     this.triggerSetConfig = {};
     let timelineFiles = [];
     let timelines: string[] = [];
-    const replacements: TimelineReplacement[] = [];
+    const replacements: TranslationReplacement[] = [];
     const timelineStyles = [];
     this.resetWhenOutOfCombat = true;
 

@@ -1,6 +1,6 @@
 import { NetParams } from '../types/net_props';
 import { CactbotBaseRegExp, TriggerTypes } from '../types/net_trigger';
-import { TimelineReplacement } from '../types/trigger';
+import { TranslationReplacement } from '../types/trigger';
 import {
   commonReplacement,
   partialCommonTimelineReplacementKeys,
@@ -211,7 +211,7 @@ export const translateWithReplacements = (
   text: string,
   replaceKey: 'replaceSync' | 'replaceText',
   replaceLang: Lang,
-  replacements?: TimelineReplacement[],
+  replacements?: TranslationReplacement[],
 ): { text: string; wasTranslated: boolean } => {
   // Special cases for empty and "not empty".
   if (text === '' || text === '[^:]+' || text === '[^|]+')
@@ -271,7 +271,7 @@ export const translateWithReplacements = (
 export const translateRegex = (
   text: string | RegExp,
   replaceLang: Lang,
-  replacements?: TimelineReplacement[],
+  replacements?: TranslationReplacement[],
 ): string => {
   if (typeof text === 'string')
     return translateWithReplacements(text, 'replaceSync', replaceLang, replacements).text;
@@ -282,13 +282,13 @@ export const translateRegex = (
 export const translateText = (
   text: string,
   replaceLang: Lang,
-  replacements?: TimelineReplacement[],
+  replacements?: TranslationReplacement[],
 ): string => translateWithReplacements(text, 'replaceText', replaceLang, replacements).text;
 
 export const translateRegexBuildParam = <T extends TriggerTypes>(
   params: NetParams[T],
   replaceLang: Lang,
-  replacements?: TimelineReplacement[],
+  replacements?: TranslationReplacement[],
 ): {
   params: NetParams[T];
   wasTranslated: boolean;
@@ -300,7 +300,7 @@ export const translateRegexBuildParam = <T extends TriggerTypes>(
 export const translateRegexBuildParamAnon = (
   anonParams: Readonly<AnonNetRegexParams>,
   replaceLang: Lang,
-  replacements?: TimelineReplacement[],
+  replacements?: TranslationReplacement[],
 ): {
   params: AnonNetRegexParams;
   wasTranslated: boolean;

@@ -183,7 +183,7 @@ export type TimelineTrigger<Data extends RaidbossData> = BaseTrigger<Data, 'None
   beforeSeconds?: number;
 };
 
-export type TimelineReplacement = {
+export type TranslationReplacement = {
   locale: Lang;
   missingTranslations?: boolean;
   replaceSync?: { [regexString: string]: string };
@@ -224,7 +224,7 @@ export type BaseTriggerSet<Data extends RaidbossData> = {
   timeline?: TimelineField;
   triggers?: NetRegexTrigger<Data>[];
   timelineTriggers?: TimelineTrigger<Data>[];
-  timelineReplace?: TimelineReplacement[];
+  timelineReplace?: TranslationReplacement[];
   timelineStyles?: TimelineStyle[];
   // Comments to be displayed alongside this trigger set where appropriate
   comments?: LocaleText;

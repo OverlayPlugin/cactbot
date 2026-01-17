@@ -3,7 +3,11 @@ import { UnreachableCode } from '../../resources/not_reached';
 import { LocaleRegex } from '../../resources/translations';
 import { EventResponses, LogEvent } from '../../types/event';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
-import { LooseTimelineTrigger, RaidbossFileData, TimelineReplacement } from '../../types/trigger';
+import {
+  LooseTimelineTrigger,
+  RaidbossFileData,
+  TranslationReplacement,
+} from '../../types/trigger';
 
 import { PopupTextGenerator } from './popup-text';
 import { RaidbossOptions } from './raidboss_options';
@@ -126,7 +130,7 @@ const initialNextEventState = {
 } as const;
 
 export class Timeline {
-  private replacements: TimelineReplacement[];
+  private replacements: TranslationReplacement[];
 
   private activeText: string;
 
@@ -166,7 +170,7 @@ export class Timeline {
 
   constructor(
     text: string,
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     private options: RaidbossOptions,
@@ -754,7 +758,7 @@ export class TimelineController {
   public SetActiveTimeline(
     timelineFiles: string[],
     timelines: string[],
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     zoneId: number,
@@ -801,7 +805,7 @@ export class TimelineLoader {
   public SetTimelines(
     timelineFiles: string[],
     timelines: string[],
-    replacements: TimelineReplacement[],
+    replacements: TranslationReplacement[],
     triggers: LooseTimelineTrigger[],
     styles: TimelineStyle[],
     zoneId: number,
