@@ -246,7 +246,18 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['spreadFirePuddleRed'], capture: true },
       condition: Conditions.targetIsYou(),
-      response: Responses.spread(),
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          spread: Outputs.spread,
+          spreadFinal: {
+            en: 'Out + Spread => Stack Near Blue',
+          },
+        };
+        if (data.phase === 'xtremeSnaking')
+          return { alertText: output.spreadFinal!() };
+        return { infoText: output.spread!() };
+      },
     },
     {
       id: 'R10S Cutback Blaze',
