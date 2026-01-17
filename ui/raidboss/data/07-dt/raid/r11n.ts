@@ -513,7 +513,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.sharedTankBuster(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

@@ -77,7 +77,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getIn(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

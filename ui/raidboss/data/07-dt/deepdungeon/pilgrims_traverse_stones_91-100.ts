@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Stone 99 Boss: Eminent Grief/Devoured Eater ----------------
     // triggers in The Final Verse: pilgrims_traverse_the_final_verse.ts
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

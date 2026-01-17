@@ -692,7 +692,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: summonDirectionOutputStrings,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

@@ -235,7 +235,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.spread(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

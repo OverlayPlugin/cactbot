@@ -744,10 +744,10 @@ export class DamageTracker {
       return;
 
     const parserLang = this.options.ParserLanguage;
-    const timelineReplace = set?.timelineReplace;
+    const translationReplace = set?.translationReplace;
 
     // RegExp (e.g. from NetRegexes.xxx()), translate the regex string
-    const translated = translateRegex(netRegex, parserLang, timelineReplace);
+    const translated = translateRegex(netRegex, parserLang, translationReplace);
     const localRegex = Regexes.parse(translated);
 
     this.triggers.push({

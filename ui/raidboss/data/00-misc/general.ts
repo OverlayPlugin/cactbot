@@ -290,7 +290,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.wakeUp(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       locale: 'de',
       replaceSync: {

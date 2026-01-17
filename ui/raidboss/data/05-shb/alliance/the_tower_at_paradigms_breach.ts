@@ -766,7 +766,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.goFrontBack(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

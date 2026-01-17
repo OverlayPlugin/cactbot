@@ -1035,7 +1035,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: eclipseOutputStrings,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

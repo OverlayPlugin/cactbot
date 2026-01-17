@@ -3012,7 +3012,7 @@ const triggerSet: TriggerSet<Data> = {
     // P5 -- Pandora
     // ************************
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

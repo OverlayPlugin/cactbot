@@ -711,7 +711,7 @@ const triggerSet: TriggerSet<Data> = {
         // These are the first actions these actors take, so can't easily get their ids earlier.
         // Therefore, use names.  There should be exactly one of each.
         // TODO: maybe we need data function to do this sort of translating so it's
-        // not duplicating the timelineReplace section below.
+        // not duplicating the translationReplace section below.
         const names: LocaleObject<string[]> = {
           en: ['Ser Adelphel', 'Ser Janlenoux'],
           de: ['Adelphel', 'Janlenoux'],
@@ -3107,7 +3107,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

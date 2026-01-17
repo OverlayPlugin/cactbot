@@ -310,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => delete data.tethers,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

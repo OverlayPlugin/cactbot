@@ -140,7 +140,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.awayFromFront('info'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

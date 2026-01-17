@@ -176,7 +176,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.goFront('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

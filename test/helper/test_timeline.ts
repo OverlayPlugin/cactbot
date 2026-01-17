@@ -443,7 +443,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           }
         });
         it('should not have translation conflicts', () => {
-          const translations = triggerSet.timelineReplace;
+          const translations = triggerSet.translationReplace;
           if (!translations)
             return;
 
@@ -532,7 +532,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           }
         });
         it('should not be missing timeline translations', () => {
-          const translations = triggerSet.timelineReplace;
+          const translations = triggerSet.translationReplace;
           if (!translations)
             return;
 
@@ -572,7 +572,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
           }
         });
         it('should not have bad characters', () => {
-          const translations = triggerSet.timelineReplace;
+          const translations = triggerSet.translationReplace;
           if (!translations)
             return;
 
@@ -590,7 +590,7 @@ const testTimelineFiles = (timelineFiles: string[]): void => {
 
             for (const testCase of testCases) {
               // Don't test the common translations here, as some may include these characters.
-              // It's only regexes inside of `timelineReplace` in a trigger file that are
+              // It's only regexes inside of `translationReplace` in a trigger file that are
               // the ones that need to be checked.
               for (const regex of testCase.replaceWithoutCommon.keys()) {
                 for (const bad of badRegex) {

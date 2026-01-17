@@ -645,7 +645,7 @@ const triggerSet: TriggerSet<Data> = {
       response: boundOfFaithHolyTetherResponse,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

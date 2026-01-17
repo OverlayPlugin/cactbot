@@ -135,7 +135,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.lookAway(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

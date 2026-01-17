@@ -628,7 +628,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

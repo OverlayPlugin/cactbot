@@ -157,7 +157,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.goLeft(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

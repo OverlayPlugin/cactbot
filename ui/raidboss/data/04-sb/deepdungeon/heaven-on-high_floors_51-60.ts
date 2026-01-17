@@ -47,7 +47,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.aoe(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

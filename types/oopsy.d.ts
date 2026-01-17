@@ -130,7 +130,7 @@ type SimpleOopsyTriggerSet<Data extends OopsyData> = {
   zoneId: ZoneIdType | ZoneIdType[];
   zoneLabel?: LocaleText;
   triggers?: OopsyTrigger<Data>[];
-  timelineReplace?: TranslationReplacement[];
+  translationReplace?: TranslationReplacement[];
 } & OopsyMistakeMapFields;
 
 // If Data contains required properties that are not on OopsyData, require initData

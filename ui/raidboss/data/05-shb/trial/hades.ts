@@ -320,7 +320,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => delete data.ancient,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

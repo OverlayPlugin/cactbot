@@ -187,7 +187,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.wraithCount = 0,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

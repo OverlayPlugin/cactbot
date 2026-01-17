@@ -168,7 +168,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.knockback('info'), // probably used on Touchdown
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

@@ -380,7 +380,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.spread(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

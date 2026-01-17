@@ -55,7 +55,7 @@ export const findMissing = async (
   // Dynamic imports don't have a type, so add type assertion.
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const triggerSet = (await import(importPath)).default as LooseTriggerSet;
-  const translations = triggerSet.timelineReplace;
+  const translations = triggerSet.translationReplace;
 
   let trans: TranslationReplacement = {
     replaceSync: {},
@@ -78,7 +78,7 @@ export const findMissing = async (
       undefined,
       'replaceSection',
       locale,
-      `missing timelineReplace section`,
+      `missing translationReplace section`,
     );
     return;
   } else if (!transBlockFound) {
@@ -87,7 +87,7 @@ export const findMissing = async (
       undefined,
       'replaceSection',
       locale,
-      `missing locale entry in timelineReplace section`,
+      `missing locale entry in translationReplace section`,
     );
     return;
   }
@@ -292,7 +292,7 @@ const findMissingTriggers = (
         undefined,
         'sync',
         locale,
-        `trigger id "${triggerIdStr}" missing timelineReplace replaceSync for field "${field}" with value ${fieldValueStr}`,
+        `trigger id "${triggerIdStr}" missing translationReplace replaceSync for field "${field}" with value ${fieldValueStr}`,
       );
     }
   }

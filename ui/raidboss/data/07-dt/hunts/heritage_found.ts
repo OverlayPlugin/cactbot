@@ -439,7 +439,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.atticusCleaves = [],
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

@@ -17,7 +17,7 @@ const triggerSet: TriggerSet<Data> = {
   },
   timelineFile: 'ravana-ex.txt',
   triggers: [],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

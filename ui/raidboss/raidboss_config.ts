@@ -1050,7 +1050,7 @@ class RaidbossConfigurator {
       // Build the rest of this UI on demand lazily.
       if (!hasEverBeenExpanded) {
         const text = this.timelineTextFromSet(set);
-        const timeline = new TimelineParser(text, set.timelineReplace ?? [], [], [], options);
+        const timeline = new TimelineParser(text, set.translationReplace ?? [], [], [], options);
         this.buildTimelineListingUI(timeline, text, container);
         this.buildTimelineAddUI(zoneId, container);
         this.buildTimelineTextUI(zoneId, timeline, container);
@@ -1486,7 +1486,7 @@ class RaidbossConfigurator {
       const regex = trig.regex;
       if (regex === undefined)
         return;
-      return Regexes.parse(translateRegex(regex, lang, set.timelineReplace));
+      return Regexes.parse(translateRegex(regex, lang, set.translationReplace));
     };
 
     const getNetRegex = () => {
@@ -1495,7 +1495,7 @@ class RaidbossConfigurator {
         return;
 
       if (regex instanceof RegExp)
-        return Regexes.parse(translateRegex(regex, lang, set.timelineReplace));
+        return Regexes.parse(translateRegex(regex, lang, set.translationReplace));
 
       if (trig.type === undefined)
         return;
@@ -1503,7 +1503,7 @@ class RaidbossConfigurator {
       return Regexes.parse(
         buildNetRegexForTrigger(
           trig.type,
-          translateRegexBuildParam(regex, lang, set.timelineReplace).params,
+          translateRegexBuildParam(regex, lang, set.translationReplace).params,
         ),
       );
     };

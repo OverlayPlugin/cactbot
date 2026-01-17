@@ -30,7 +30,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

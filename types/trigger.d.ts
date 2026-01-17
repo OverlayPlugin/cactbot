@@ -224,7 +224,7 @@ export type BaseTriggerSet<Data extends RaidbossData> = {
   timeline?: TimelineField;
   triggers?: NetRegexTrigger<Data>[];
   timelineTriggers?: TimelineTrigger<Data>[];
-  timelineReplace?: TranslationReplacement[];
+  translationReplace?: TranslationReplacement[];
   timelineStyles?: TimelineStyle[];
   // Comments to be displayed alongside this trigger set where appropriate
   comments?: LocaleText;

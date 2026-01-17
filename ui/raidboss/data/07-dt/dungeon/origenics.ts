@@ -594,7 +594,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.goSides(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

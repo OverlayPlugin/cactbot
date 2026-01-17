@@ -899,7 +899,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.meteorOnYou(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

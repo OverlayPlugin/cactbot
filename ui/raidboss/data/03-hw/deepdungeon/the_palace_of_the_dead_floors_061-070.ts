@@ -23,7 +23,7 @@ const triggerSet: TriggerSet<Data> = {
     // ---------------- Floor 070 Boss: Yaquaru ----------------
     // intentionally blank
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

@@ -1070,7 +1070,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bleedAoe(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

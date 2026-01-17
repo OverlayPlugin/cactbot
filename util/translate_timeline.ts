@@ -59,7 +59,7 @@ const translateTimeline = async (timelinePath: string, locale: Lang): Promise<vo
   // TODO: Fix dynamic imports in TypeScript
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const triggerSet = (await import(importPath))?.default as LooseTriggerSet;
-  const replacements = triggerSet.timelineReplace ?? [];
+  const replacements = triggerSet.translationReplace ?? [];
   const timelineText = fs.readFileSync(timelineFile).toString();
 
   // Use Timeline to figure out what the replacements will look like in game.

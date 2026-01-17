@@ -109,7 +109,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.knockback('info'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

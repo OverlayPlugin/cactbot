@@ -28,7 +28,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.tankBuster(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

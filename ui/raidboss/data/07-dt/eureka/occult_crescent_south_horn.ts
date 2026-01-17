@@ -5844,7 +5844,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: magitaurOutputStrings,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

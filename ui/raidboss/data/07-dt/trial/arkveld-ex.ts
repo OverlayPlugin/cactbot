@@ -9,7 +9,7 @@ const triggerSet: TriggerSet<Data> = {
   zoneId: ZoneId.TheWindwardWildsExtreme,
   timelineFile: 'arkveld-ex.txt',
   triggers: [],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

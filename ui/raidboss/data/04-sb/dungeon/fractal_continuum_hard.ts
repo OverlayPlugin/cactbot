@@ -304,7 +304,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.awayFrom(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

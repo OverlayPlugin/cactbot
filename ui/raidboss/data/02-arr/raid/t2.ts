@@ -92,7 +92,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => delete data.rot,
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

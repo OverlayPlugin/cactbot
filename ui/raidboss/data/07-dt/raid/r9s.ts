@@ -635,7 +635,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getTowers('alert'),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'en',
       'replaceText': {

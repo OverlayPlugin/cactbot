@@ -1,4 +1,4 @@
-// TODO: maybe this should be structured identically to a timelineReplace section.
+// TODO: maybe this should be structured identically to a translationReplace section.
 
 import { Lang, NonEnLang } from '../../resources/languages';
 

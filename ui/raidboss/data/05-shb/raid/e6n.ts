@@ -180,7 +180,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stackThenSpread(),
     },
   ],
-  timelineReplace: [
+  translationReplace: [
     {
       'locale': 'de',
       'replaceSync': {

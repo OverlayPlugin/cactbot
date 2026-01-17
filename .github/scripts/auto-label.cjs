@@ -263,7 +263,7 @@ const getTimelineReplaceChanges = (changedFiles) => {
         if (!validLanguages.includes(lang))
           continue;
         if (!lodash.isEqual(from[lang], to[lang])) {
-          console.log(`label: ${lang} [timelineReplace] (${file.filename})`);
+          console.log(`label: ${lang} [translationReplace] (${file.filename})`);
           s.add(lang);
         }
       }
@@ -286,12 +286,12 @@ const getTimelineReplace = (fileContent) => {
   if (!exportDefault)
     return;
 
-  const timelineReplace = exportDefault.declaration.properties
-    .filter((prop) => prop.key.type === 'Identifier' && prop.key.name === 'timelineReplace')[0];
-  if (!timelineReplace)
+  const translationReplace = exportDefault.declaration.properties
+    .filter((prop) => prop.key.type === 'Identifier' && prop.key.name === 'translationReplace')[0];
+  if (!translationReplace)
     return;
 
-  const repl = json5.parse(recast.print(timelineReplace.value).code);
+  const repl = json5.parse(recast.print(translationReplace.value).code);
   const ret = {};
   repl.forEach((r) => {
     ret[r.locale] = r;
