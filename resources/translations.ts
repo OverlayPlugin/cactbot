@@ -1,11 +1,11 @@
 import { NetParams } from '../types/net_props';
 import { CactbotBaseRegExp, TriggerTypes } from '../types/net_trigger';
+import { TimelineReplacement } from '../types/trigger';
 import {
   commonReplacement,
   partialCommonTimelineReplacementKeys,
   partialCommonTriggerReplacementKeys,
 } from '../ui/raidboss/common_replacement';
-import { TimelineReplacement } from '../ui/raidboss/timeline_parser';
 
 import { Lang } from './languages';
 import NetRegexes, { keysThatRequireTranslation } from './netregexes';

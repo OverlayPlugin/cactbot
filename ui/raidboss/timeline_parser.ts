@@ -1,6 +1,5 @@
 import JSON5 from 'json5';
 
-import { Lang } from '../../resources/languages';
 import logDefinitions, { LogDefinitionName } from '../../resources/netlog_defs';
 import { buildNetRegexForTrigger } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
@@ -11,7 +10,7 @@ import {
   translateText,
 } from '../../resources/translations';
 import { NetParams } from '../../types/net_props';
-import { LooseTimelineTrigger, TriggerAutoConfig } from '../../types/trigger';
+import { LooseTimelineTrigger, TimelineReplacement, TriggerAutoConfig } from '../../types/trigger';
 
 import defaultOptions, { RaidbossOptions, TimelineConfig } from './raidboss_options';
 
@@ -96,13 +95,6 @@ const isValidNetParams = <T extends LogDefinitionName>(
 const isObject = (x: unknown): x is { [key: string]: unknown } => {
   // JavaScript considers [] to be an object, so check for that explicitly.
   return x instanceof Object && !Array.isArray(x);
-};
-
-export type TimelineReplacement = {
-  locale: Lang;
-  missingTranslations?: boolean;
-  replaceSync?: { [regexString: string]: string };
-  replaceText?: { [timelineText: string]: string };
 };
 
 export type TimelineStyle = {

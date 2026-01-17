@@ -1,7 +1,7 @@
-import { LooseTimelineTrigger } from '../../../../types/trigger';
+import { LooseTimelineTrigger, TimelineReplacement } from '../../../../types/trigger';
 import { RaidbossOptions } from '../../raidboss_options';
 import { Timeline } from '../../timeline';
-import { TimelineReplacement, TimelineStyle } from '../../timeline_parser';
+import { TimelineStyle } from '../../timeline_parser';
 import RaidEmulator from '../data/RaidEmulator';
 
 export default class RaidEmulatorTimeline extends Timeline {
