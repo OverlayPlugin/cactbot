@@ -1740,7 +1740,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東塔',
           cn: '(左上) 左上塔',
           ko: '북서쪽 기둥',
-          tc: '(東北) 東北塔',
+          tc: '(西北) 西北塔',
         },
         northeastTower2: {
           en: 'Northeast Tower',
@@ -1749,7 +1749,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西塔',
           cn: '(右上) 右上塔',
           ko: '북동쪽 기둥',
-          tc: '(西北) 西北塔',
+          tc: '(東北) 東北塔',
         },
       },
     },

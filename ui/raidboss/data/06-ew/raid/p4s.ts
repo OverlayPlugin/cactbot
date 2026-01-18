@@ -1574,9 +1574,9 @@ const triggerSet: TriggerSet<Data> = {
         'Hesperos': '赫斯珀洛斯',
       },
       'replaceText': {
-        '--debuffs--': '--Debuffs--',
-        '--element debuffs--': '--元素Debuffs--',
-        '--role debuffs--': '--职能Debuffs--',
+        '--debuffs--': '--Debuff--',
+        '--element debuffs--': '--元素Debuff--',
+        '--role debuffs--': '--職能Debuff--',
         'Acid Pinax': '劇毒板畫',
         'Aetheric Chlamys': '乙太斗篷',
         'Akanthai: Act 1': '荊棘悲劇：序幕',

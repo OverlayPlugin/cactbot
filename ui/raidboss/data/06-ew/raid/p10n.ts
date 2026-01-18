@@ -49,7 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散会 (柱回避)',
           cn: '分散（远离柱子）',
           ko: '산개 (기둥 피하기)',
-          tc: '分散（遠離柱子）',
+          tc: '分散(遠離柱子)',
         },
         onOthers: {
           en: 'Avoid marked players',
@@ -101,7 +101,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ジェイルの下へ',
           cn: '站在塔下（或远离）',
           ko: '감옥 아래로',
-          tc: '站在塔下（或遠離）',
+          tc: '站在塔下(或遠離)',
         },
       },
     },

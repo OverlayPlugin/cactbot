@@ -475,7 +475,7 @@ const triggerSet: TriggerSet<Data> = {
         fr: 'Concepts élémentaires : Ordre des paires (Gauche->Droite)',
         cn: '经典概念 索尼顺序（左->右）',
         ko: 'Classical Concepts: 도형 순서 (왼 -> 오)',
-        tc: '經典概念 索尼順序（左->右）',
+        tc: '經典概念 索尼順序(左->右)',
       },
       type: 'select',
       options: {
@@ -547,7 +547,7 @@ const triggerSet: TriggerSet<Data> = {
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
         ko: `선택한 도형 순서에 따른 최종 위치만 알립니다. 예시에서 파보빨초를 기준으로 파랑 X는 1열이 됩니다.
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
-        tc: `直接報自己圖案的最終位置，不報變換前的。例如，對於 BPOG 打法，藍 X 會直接報第一列（西面最遠）。
+        tc: `直接報自己圖案的最終位置，不報變換前的。例如，對於 BPOG 打法，藍 X 會直接報第一列(西面最遠)。
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
       },
       name: {
@@ -1570,7 +1570,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(Écartez-vous plus tard)',
           cn: '（稍后分散）',
           ko: '(나중에 산개)',
-          tc: '（稍後分散）',
+          tc: '(稍後分散)',
         },
       },
     },
@@ -2515,7 +2515,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右塔踏み',
           cn: '光激光（与暗分摊）',
           ko: '빛 레이저 (어둠 쉐어)',
-          tc: '光雷射（與暗分攤）',
+          tc: '光雷射(與暗分攤)',
         },
         darkBeam: {
           en: 'Dark Beam (Stack w/Light)',
@@ -2524,7 +2524,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左塔踏み',
           cn: '暗激光（与光分摊）',
           ko: '어둠 레이저 (빛 쉐어),',
-          tc: '暗雷射（與光分攤）',
+          tc: '暗雷射(與光分攤)',
         },
         lightTower: {
           en: 'Light Tower',

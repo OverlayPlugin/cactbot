@@ -1524,7 +1524,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '内側 北西',
           cn: '内侧 左上',
           ko: '안 북서쪽',
-          tc: '內側 左西北',
+          tc: '內側 西北',
         },
         insideNE: {
           en: 'NE Inside',
@@ -1899,7 +1899,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線${num}: ${corner}の隅',
           cn: '红线${num}: ${corner}角',
           ko: '주황색 선 ${num}: ${corner} 구석',
-          tc: '橙線${num}: ${corner}角',
+          tc: '紅線${num}: ${corner}角',
         },
         brandNumCorner: {
           en: 'Brand ${num}: ${corner} corner',
@@ -1926,7 +1926,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線${num}',
           cn: '红线${num}',
           ko: '주황색 선 ${num}',
-          tc: '橙線${num}',
+          tc: '紅線${num}',
         },
         brandNum: {
           en: 'Brand ${num}',
@@ -1985,7 +1985,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線1 切る',
           cn: '撞红线 1',
           ko: '주황색 1 끊기',
-          tc: '撞橙線 1',
+          tc: '撞紅線 1',
         },
         firstCut: {
           en: 'First Cut',
@@ -2073,7 +2073,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '赤線${num} 切る',
           cn: '撞红线 ${num}',
           ko: '주황색 ${num} 끊기',
-          tc: '撞橙線 ${num}',
+          tc: '撞紅線 ${num}',
         },
         cutBlueNum: {
           en: 'Cut Blue ${num}',
@@ -2146,7 +2146,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '3列',
           cn: '向右传送（蓝）',
           ko: '파란색 동쪽 텔레포트',
-          tc: '向東傳送（藍）',
+          tc: '向東傳送(藍)',
         },
         blueWest: {
           en: 'Blue Teleporting West',
@@ -2155,7 +2155,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '4列',
           cn: '向左传送（蓝）',
           ko: '파란색 서쪽 텔레포트',
-          tc: '向西傳送（藍）',
+          tc: '向西傳送(藍)',
         },
         orangeEast: {
           en: 'Orange Teleporting East',
@@ -2164,7 +2164,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '2列',
           cn: '向右传送（橙）',
           ko: '주황색 동쪽 텔레포트',
-          tc: '向東傳送（橙）',
+          tc: '向東傳送(橙)',
         },
         orangeWest: {
           en: 'Orange Teleporting West',
@@ -2173,7 +2173,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '1列',
           cn: '向左传送（橙）',
           ko: '주황색 서쪽 텔레포트',
-          tc: '向西傳送（橙）',
+          tc: '向西傳送(橙)',
         },
       },
     },
@@ -2347,7 +2347,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '赤線${num} 切る',
             cn: '撞红线 ${num}',
             ko: '주황색 ${num} 끊기',
-            tc: '撞橙線 ${num}',
+            tc: '撞紅線 ${num}',
           },
           cutBlueNum: {
             en: 'Cut Blue ${num}',
@@ -2365,7 +2365,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'まもなく赤線${num}',
             cn: '准备撞红线 ${num}',
             ko: '주황색 ${num} 끊을 준비',
-            tc: '準備撞橙線 ${num}',
+            tc: '準備撞紅線 ${num}',
           },
           moveBlue: {
             en: 'Move for Blue ${num}',
@@ -2457,7 +2457,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: '赤線${num} 切る',
             cn: '撞红线 ${num}',
             ko: '주황색 ${num} 끊기',
-            tc: '撞橙線 ${num}',
+            tc: '撞紅線 ${num}',
           },
           cutBlueNum: {
             en: 'Cut Blue ${num}',
@@ -2475,7 +2475,7 @@ const triggerSet: TriggerSet<Data> = {
             ja: 'まもなく赤線${num}',
             cn: '准备撞红线 ${num}',
             ko: '주황색 ${num} 끊을 준비',
-            tc: '準備撞橙線 ${num}',
+            tc: '準備撞紅線 ${num}',
           },
           moveBlueNum: {
             en: 'Move for Blue ${num}',

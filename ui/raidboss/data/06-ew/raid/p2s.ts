@@ -281,7 +281,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線頭割り（タンクより後ろ）',
           cn: '直线分摊（站坦克后面）',
           ko: '직선 쉐어 (탱커 뒤로)',
-          tc: '直線分攤（站坦克後面）',
+          tc: '直線分攤(站坦克後面)',
         },
         flareLineTank: {
           en: 'Line Stack (be in front)',
@@ -290,7 +290,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '直線頭割り（みんなの前に）',
           cn: '直线分摊（坦克站前面）',
           ko: '직선 쉐어 (맨 앞으로)',
-          tc: '直線分攤（坦克站前面）',
+          tc: '直線分攤(坦克站前面)',
         },
       },
     },

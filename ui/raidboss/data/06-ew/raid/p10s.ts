@@ -667,7 +667,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー回避(マスの境界の上)',
           cn: '站在线上（躲避激光）',
           ko: '경계선 위 (레이저 피하기)',
-          tc: '站在線上（躲避雷射）',
+          tc: '站在線上(躲避雷射)',
         },
         boxes: {
           en: 'Inside Boxes (Avoid Lasers)',
@@ -676,7 +676,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー回避(マスの内側)',
           cn: '站方格内（躲避激光）',
           ko: '네모칸 안 (레이저 피하기)',
-          tc: '站方格內（躲避雷射）',
+          tc: '站方格內(躲避雷射)',
         },
       },
     },

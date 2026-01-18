@@ -110,7 +110,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北の角へ',
           cn: '去上半场角落',
           ko: '북쪽 모서리',
-          tc: '去上北半場角落',
+          tc: '去北半場角落',
         },
         ec: {
           en: 'East Corners',

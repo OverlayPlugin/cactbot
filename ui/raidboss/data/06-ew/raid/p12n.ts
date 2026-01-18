@@ -208,7 +208,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの横からドーナツへ',
           cn: '跟随月环（避开直线AOE）',
           ko: '도넛 따라가기 (광역기 피하기)',
-          tc: '跟隨月環（避開直線AOE）',
+          tc: '跟隨月環(避開直線AOE)',
         },
         superchain4: {
           en: 'Avoid Spheres',
