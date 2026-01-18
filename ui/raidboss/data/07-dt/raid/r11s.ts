@@ -20,6 +20,7 @@ export interface Data extends RaidbossData {
     actor: { x: number; y: number; heading: number };
   }[];
   voidStardust?: 'spread' | 'stack';
+  assaultEvolvedCount: number;
   weaponMechCount: number;
   domDirectionCount: {
     vertCount: number;
@@ -78,36 +79,14 @@ const triggerSet: TriggerSet<Data> = {
       vertCount: 0,
       outerSafe: ['dirN', 'dirE', 'dirS', 'dirW'],
     },
+    assaultEvolvedCount: 0,
     maelstromCount: 0,
     hasMeteor: false,
     fireballCount: 0,
     hasAtomic: false,
     heartbreakerCount: 0,
   }),
-  timelineTriggers: [
-    {
-      id: 'R11S Void Stardust End',
-      // The second set of Crushing Comet/Comet does not have a related startsUsing cast
-      // Timing is on the last Assault Evolved
-      regex: /^Crushing Comet/,
-      beforeSeconds: 11.1,
-      suppressSeconds: 3,
-      infoText: (data, _matches, output) => {
-        if (data.voidStardust === 'spread')
-          return output.baitPuddlesThenStack!();
-        if (data.voidStardust === 'stack')
-          return output.baitPuddlesThenSpread!();
-      },
-      outputStrings: {
-        baitPuddlesThenStack: {
-          en: 'Bait 3x Puddles => Stack',
-        },
-        baitPuddlesThenSpread: {
-          en: 'Bait 3x Puddles => Spread',
-        },
-      },
-    },
-  ],
+  timelineTriggers: [],
   triggers: [
     {
       id: 'R11S Phase Tracker',
@@ -374,6 +353,37 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'AoE x6 => Big AoE',
+        },
+      },
+    },
+    {
+      id: 'R11S Void Stardust End',
+      // The second set of comets does not have a startsUsing cast
+      // Timing is on the last Assault Evolved
+      type: 'StartsUsing',
+      netRegex: { id: ['B418', 'B419', 'B41A'], source: 'The Tyrant', capture: true },
+      condition: (data) => {
+        if (data.voidStardust !== undefined) {
+          data.assaultEvolvedCount = data.assaultEvolvedCount + 1;
+          if (data.assaultEvolvedCount === 3)
+            return true;
+        }
+        return false;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (data.voidStardust === 'spread')
+          return output.baitPuddlesThenStack!();
+        if (data.voidStardust === 'stack')
+          return output.baitPuddlesThenSpread!();
+      },
+      outputStrings: {
+        baitPuddlesThenStack: {
+          en: 'Bait 3x Puddles => Stack',
+        },
+        baitPuddlesThenSpread: {
+          en: 'Bait 3x Puddles => Spread',
         },
       },
     },
