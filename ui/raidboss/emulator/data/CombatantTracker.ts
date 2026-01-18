@@ -78,11 +78,11 @@ export default class CombatantTracker {
 
       // StartsUsingExtra / AbilityExtra
       if (isLineEvent0x107(line) || isLineEvent0x108(line)) {
-        const c = this.initCombatant(line.id);
-        c?.pushPartialState(line.timestamp, {
-          PosX: line.x,
-          PosY: line.y,
-          PosZ: line.z,
+        // x/y/z from these are not the source actor's position, but the cast target.
+        // heading is the source actor though.
+        // TODO: Should we update OverlayPlugin to include target ID on these lines???
+        const sourceActor = this.initCombatant(line.id);
+        sourceActor?.pushPartialState(line.timestamp, {
           Heading: line.heading,
         });
       }
