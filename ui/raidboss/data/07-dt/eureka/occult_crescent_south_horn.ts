@@ -630,6 +630,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'deadStarsVengefulDirection',
       name: {
         en: 'Forked Tower: Blood Dead Stars Vengeful Direction Strategy',
+        cn: '两歧塔力之塔 星头三兄弟 复仇方向策略',
       },
       type: 'select',
       options: {
@@ -637,6 +638,11 @@ const triggerSet: TriggerSet<Data> = {
           'Direction: Just call the 8-way direction of the safe spot.': 'direction',
           'Waymark: Call the ABBA/FOE/CAFE Waymark of the safe spot.': 'waymark',
           'Both: Call both direction and waymark of the safe spot.': 'both',
+        },
+        cn: {
+          '方向: 仅提示安全点八方方向。': 'direction',
+          '标点: 根据 ABBA/FOE/CAFE 坐标播报安全点。': 'waymark',
+          '全部: 同时播报安全点的方向和标点。': 'both',
         },
       },
       default: 'direction',
@@ -3118,15 +3124,19 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         waymarkA: {
           en: 'A',
+          cn: 'A 点',
         },
         waymark2and3: {
           en: '2/3',
+          cn: '2 或 3 点',
         },
         waymarkCandD: {
           en: 'C/D',
+          cn: 'C 或 D 点',
         },
         combined: {
           en: '${waymark} (${dir})',
+          cn: '${waymark} (${dir})',
         },
       },
     },
