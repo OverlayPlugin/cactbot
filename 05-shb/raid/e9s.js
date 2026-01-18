@@ -767,7 +767,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Clone Of Darkness': '幻影之雲',
         'Cloud Of Darkness': '黑暗之雲',
@@ -778,7 +777,7 @@ Options.Triggers.push({
         'The Art Of Darkness': '暗之戰技',
         'Summon': '召喚',
         'Rejuvenating Balm': '活性彈',
-        // 'Phaser Unlimited': '', // FIXME '跳跃波动炮'
+        'Phaser Unlimited': '跳躍波動砲',
         'Particle Concentration': '波動球',
         'Obscure Woods': '暗黑森林',
         'Hypercharged Condensation': '吸引波動雲',
@@ -796,7 +795,7 @@ Options.Triggers.push({
         'Anti-Air Phaser Unlimited': '零式高射式跳躍波動砲',
         'Anti-Air Particle Beam': '高射式波動砲',
         'Aetherosynthesis': '吸收生命',
-        // '\\(L/R\\)': '', // FIXME '(左/右)'
+        '\\(L/R\\)': '(左/右)',
       },
     },
     {

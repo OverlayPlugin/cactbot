@@ -201,7 +201,7 @@ Options.Triggers.push({
           ja: '青色に攻撃 (東)',
           cn: '攻击蓝色 (右)',
           ko: '파란색 공격 (오른쪽)',
-          tc: '攻擊藍色 (右)',
+          tc: '攻擊藍色 (東)',
         },
       },
     },
@@ -226,7 +226,7 @@ Options.Triggers.push({
           ja: '赤色に攻撃 (西)',
           cn: '攻击红色 (左)',
           ko: '빨간색 공격 (왼쪽)',
-          tc: '攻擊紅色 (左)',
+          tc: '攻擊紅色 (西)',
         },
       },
     },
@@ -410,7 +410,7 @@ Options.Triggers.push({
           ja: '赤色に攻撃 (東)',
           cn: '攻击红色 (右)',
           ko: '빨간색 공격 (오른쪽)',
-          tc: '攻擊紅色 (右)',
+          tc: '攻擊紅色 (東)',
         },
         attackBlueWest: {
           en: 'Attack Blue (West)',
@@ -419,7 +419,7 @@ Options.Triggers.push({
           ja: '青色に攻撃 (西)',
           cn: '攻击蓝色 (左)',
           ko: '파란색 공격 (왼쪽)',
-          tc: '攻擊藍色 (左)',
+          tc: '攻擊藍色 (西)',
         },
       },
     },
@@ -441,7 +441,7 @@ Options.Triggers.push({
             ja: '青いヘッド (東へ)',
             cn: '蓝头 (去右边)',
             ko: '파란색 (동쪽)',
-            tc: '藍頭 (去右邊)',
+            tc: '藍頭 (去東邊)',
           },
         };
         // Use alarm if you have to go to the opposite color of the one you would be attacking.
@@ -467,7 +467,7 @@ Options.Triggers.push({
             ja: '赤いヘッド (西へ)',
             cn: '红头 (去左边)',
             ko: '빨간색 (서쪽)',
-            tc: '紅頭 (去左邊)',
+            tc: '紅頭 (去西邊)',
           },
         };
         // Use alarm if you have to go to the opposite color of the one you would be attacking.
@@ -519,7 +519,7 @@ Options.Triggers.push({
           ja: 'メテオから離れる',
           cn: '远离陨石',
           ko: '운석에게서 멀어지기',
-          tc: '遠離隕石',
+          tc: '遠離隕石!',
         },
       },
     },
@@ -600,7 +600,7 @@ Options.Triggers.push({
           ja: 'コメット 北/南',
           cn: '彗星 上/下',
           ko: '남/북 운석 낙하',
-          tc: '彗星 上/下',
+          tc: '隕星 北/南',
         },
         cometsEastWest: {
           en: 'Comets E/W',
@@ -609,7 +609,7 @@ Options.Triggers.push({
           ja: 'コメット 東/西',
           cn: '彗星 左/右',
           ko: '동/서 운석낙하',
-          tc: '彗星 左/右',
+          tc: '隕星 東/西',
         },
       },
     },
@@ -834,7 +834,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'The Ruby Weapon': '紅寶石武器',
         'Ruby Bit': '紅寶石浮游砲',
@@ -845,7 +844,7 @@ Options.Triggers.push({
         'White Fury': '奈爾的憤怒',
       },
       'replaceText': {
-        // '--cutscene--': '', // FIXME '--过场动画--'
+        '--cutscene--': '--過場動畫--',
         'Optimized Ultima': '魔導究極',
         'Magitek Bit': '浮游砲射出',
         'Flexiclaw': '潛地爪',
@@ -862,14 +861,14 @@ Options.Triggers.push({
         'Ruby Dynamics': '紅寶石電圈',
         'High-Powered Homing Lasers': '高功率誘導射線',
         'Cut And Run': '利爪突進',
-        // '(?<! )Homing Lasers': '', // FIXME '诱导射线'
+        '(?<! )Homing Lasers': '誘導射線',
         'Magitek Charge': '魔導炸彈',
         'Meteor Project': '隕石計畫',
         'Negative Personae': '消極人格',
         'Meteor Stream': '隕石流',
         'Greater Memory': '記憶增幅',
-        // 'Chariot': '', // FIXME '钢铁'
-        // 'Dynamo': '', // FIXME '月环'
+        'Chariot': '鋼鐵',
+        'Dynamo': '月環',
         'Negative Affect': '消極情感',
         'Ruby Claw x5': '紅寶石之爪',
         'Change Of Heart': '感情變化',
@@ -881,7 +880,7 @@ Options.Triggers.push({
         'Burst x8': '爆炸',
         'Magitek Meteor': '魔導隕石',
         'Mark II Magitek Comet': '魔導隕星II',
-        // 'Tank Comets': '', // FIXME '坦克彗星'
+        'Tank Comets': '坦克隕星',
         'Bradamante': '布拉達曼特',
         'Outrage': '震怒',
       },

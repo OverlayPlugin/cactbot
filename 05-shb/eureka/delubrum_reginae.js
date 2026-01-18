@@ -127,7 +127,7 @@ Options.Triggers.push({
           ja: '前',
           cn: '上',
           ko: '앞',
-          tc: '上',
+          tc: '前',
         },
         east: {
           en: 'Right',
@@ -145,7 +145,7 @@ Options.Triggers.push({
           ja: '後ろ',
           cn: '下',
           ko: '뒤',
-          tc: '下',
+          tc: '後',
         },
         west: {
           en: 'Left',
@@ -537,7 +537,7 @@ Options.Triggers.push({
           ja: 'レーザーを避ける',
           cn: '躲避炮台射线',
           ko: '레이저 피하기',
-          tc: '躲避炮台射線',
+          tc: '躲避砲台射線',
         },
       },
     },
@@ -638,7 +638,7 @@ Options.Triggers.push({
           ja: '北のドーナツ範囲に入る',
           cn: '去上方月环',
           ko: '북쪽 원으로 이동',
-          tc: '去上方月環',
+          tc: '去北面月環',
         },
         weaveWithKnockback: {
           en: 'Get Knocked Back To Circle',
@@ -647,7 +647,7 @@ Options.Triggers.push({
           ja: '北のドーナツ範囲へ吹き飛ばされる',
           cn: '击退到上方月环中',
           ko: '원으로 넉백 당하기',
-          tc: '擊退到上方月環中',
+          tc: '擊退到北面月環中',
         },
       },
     },
@@ -932,7 +932,7 @@ Options.Triggers.push({
             ja: '${side}側へ (避ける！)',
             cn: '去${side}侧 (不吃剑！)',
             ko: '${side}으로 피하기!',
-            tc: '去${side}側 (不吃劍！)',
+            tc: '去${side}側 (不吃劍!)',
           },
         };
         const isLeft = ['5B67', '5B68', '596F', '5970'].includes(matches.id);
@@ -1035,7 +1035,7 @@ Options.Triggers.push({
           ja: '闇へ (東西)',
           cn: '去黑色 (左/右)',
           ko: '어두운 타일 (맵 중앙의 왼/오른쪽)',
-          tc: '去黑色 (左/右)',
+          tc: '去黑色 (東/西)',
         },
         bowLight: {
           en: 'On Light (diagonal from center)',
@@ -1113,7 +1113,7 @@ Options.Triggers.push({
           ja: 'エスナ: ${player}',
           cn: '解除死亡宣告: ${player}',
           ko: '${player} 에스나',
-          tc: '解除死亡宣告: ${player}',
+          tc: '解除死宣: ${player}',
         },
       },
     },
@@ -1798,7 +1798,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Seeker Avatar': '求道之分身',
         'Aetherial Bolt': '魔彈',
@@ -1831,9 +1830,9 @@ Options.Triggers.push({
         'Trinity Seeker': '求道之三位一體',
       },
       'replaceText': {
-        '--explosion--': '北斗骨碎斬',
-        // '--stunned--': '', // FIXME '--眩晕--'
-        // '--unstunned--': '', // FIXME '--眩晕结束--'
+        '--explosion--': '--爆炸--',
+        '--stunned--': '--眩暈--',
+        '--unstunned--': '--眩暈結束--',
         'Above Board': '浮游波',
         'Act Of Mercy': '破天慈刃風',
         'Allegiant Arsenal': '變換武器',

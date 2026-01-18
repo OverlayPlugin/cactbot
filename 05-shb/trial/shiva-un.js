@@ -53,7 +53,7 @@ Options.Triggers.push({
             ja: '杖 (スイッチ)',
             cn: '权杖（换T）',
             ko: '지팡이 (탱커 교대)',
-            tc: '權杖（換T）',
+            tc: '權杖 (換坦)',
           },
           staff: {
             en: 'Staff',
@@ -87,7 +87,7 @@ Options.Triggers.push({
             ja: '剣 (スイッチ)',
             cn: '剑（换T）',
             ko: '검 (탱커 교대)',
-            tc: '劍（換T）',
+            tc: '劍 (換坦)',
           },
           sword: {
             en: 'Sword',
@@ -265,7 +265,7 @@ Options.Triggers.push({
           ja: '${player}を救って',
           cn: '解救${player}',
           ko: '${player}감옥 해제',
-          tc: '解救${player}',
+          tc: '解救 ${player}',
         },
       },
     },
@@ -384,15 +384,14 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ice Soldier': '寒冰士兵',
         'Shiva': '濕婆',
       },
       'replaceText': {
-        // '\\?': '', // FIXME ' ?'
-        // '\\(circle\\)': '', // FIXME '(圆)'
-        // '\\(cross\\)': '', // FIXME '(十字)'
+        '\\?': ' ?',
+        '\\(circle\\)': '(圓)',
+        '\\(cross\\)': '(十字)',
         'Absolute Zero': '絕對零度',
         'Avalanche': '雪崩',
         'Diamond Dust': '鑽石星塵',

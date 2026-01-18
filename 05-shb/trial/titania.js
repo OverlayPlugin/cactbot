@@ -160,7 +160,7 @@ Options.Triggers.push({
           ja: '東の雑魚 (マスタードシード)',
           cn: '把小怪聚在右边 (芥子处)',
           ko: '쫄 모으기 (겨자씨 쪽)',
-          tc: '把小怪聚在右邊 (芥子處)',
+          tc: '把小怪聚在東邊 (芥子處)',
         },
         killMustardseedEast: {
           en: 'Kill Mustardseed (East)',
@@ -169,7 +169,7 @@ Options.Triggers.push({
           ja: '雑魚マスタードシードを倒す (東)',
           cn: '击杀芥子 (右)',
           ko: '겨자씨 잡기(동쪽)',
-          tc: '擊殺芥子 (右)',
+          tc: '擊殺芥子 (東)',
         },
       },
     },
@@ -321,7 +321,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Titania': '緹坦妮雅',
         'Puck': '派克',
@@ -345,7 +344,7 @@ Options.Triggers.push({
         'Love-In-Idleness': '愛懶花',
         'Midsummer Night\'s Dream': '仲夏夜之夢',
         'Mist Rune': '水之符文',
-        // '(?<! )Pease(?!\\w)': '', // FIXME '(?<! )爆炸(?!\\w)'
+        '(?<! )Pease(?!\\w)': '豌豆爆炸',
         'Peasebomb': '豌豆炸彈',
         'Phantom Rune': '幻之符文',
         'Puck\'s Breath': '派克的吐息',

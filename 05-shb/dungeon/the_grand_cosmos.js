@@ -361,7 +361,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ser Hamonth': '幻影騎士哈蒙斯',
         'Lover\'s Ring': '戀人之戒',
@@ -381,7 +380,7 @@ Options.Triggers.push({
         'Dark Shock': '黑暗衝擊',
         'Dark Well': '黑暗爆碎',
         'Direct Seeding': '直接播種',
-        // '(?<! )Far Wind': '', // FIXME '(?<! )晴岚'
+        '(?<! )Far Wind': '晴嵐',
         'Fire\'s Domain': '炎獄殺',
         'Fire\'s Ire': '炎獄閃',
         'Gardener\'s Hymn': '育芽之謠',
@@ -393,7 +392,7 @@ Options.Triggers.push({
         'Ode To Lost Love': '狂愛之歌',
         'Otherworldly Heat': '鬼炎斬',
         'Plummet': '掉落',
-        // 'Scorching Left/Right': '', // FIXME '左/右炎狱斩'
+        'Scorching Left/Right': '左/右炎獄斬',
         'Shadowbolt': '暗影雷',
         'Storm Of Color': '春風',
         'Tribulation': '苦難',

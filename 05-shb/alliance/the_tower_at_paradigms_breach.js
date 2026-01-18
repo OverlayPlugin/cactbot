@@ -51,7 +51,7 @@ Options.Triggers.push({
           ja: '東/西側へ',
           cn: '去左/右两侧',
           ko: '동/서쪽으로',
-          tc: '去左/右兩側',
+          tc: '去東/西兩側',
         },
         ttsText: {
           en: 'Go East/West Sides',
@@ -60,7 +60,7 @@ Options.Triggers.push({
           ja: '東側や西側へ',
           cn: '去左/右两侧',
           ko: '동쪽이나 서쪽으로',
-          tc: '去左/右兩側',
+          tc: '去東/西兩側',
         },
       },
     },
@@ -80,7 +80,7 @@ Options.Triggers.push({
           ja: '北/南側へ',
           cn: '去上/下两侧',
           ko: '남/북쪽으로',
-          tc: '去上/下兩側',
+          tc: '去北/南兩側',
         },
         ttsText: {
           en: 'Go North/South Sides',
@@ -89,7 +89,7 @@ Options.Triggers.push({
           ja: '北側や南側へ',
           cn: '去上/下两侧',
           ko: '남쪽이나 북쪽으로',
-          tc: '去上/下兩側',
+          tc: '去北/南兩側',
         },
       },
     },
@@ -135,7 +135,7 @@ Options.Triggers.push({
           ja: 'タンクバスターを避ける',
           cn: '远离坦克死刑',
           ko: '탱버 피하기',
-          tc: '遠離坦剋死刑',
+          tc: '遠離坦克死刑',
         },
       },
     },
@@ -359,7 +359,7 @@ Options.Triggers.push({
           fr: 'Allez entre les boss',
           cn: '去BOSS之间',
           ko: '보스 사이로',
-          tc: '去BOSS之間',
+          tc: '去Boss之間',
         },
         opposite: {
           en: 'Move opposite',
@@ -367,7 +367,7 @@ Options.Triggers.push({
           fr: 'Allez à l\'opposé des boss',
           cn: '去BOSS对面',
           ko: '보스 반대쪽으로',
-          tc: '去BOSS對面',
+          tc: '去Boss對面',
         },
       },
     },
@@ -536,7 +536,7 @@ Options.Triggers.push({
           fr: 'Allez au Nord (boss)',
           cn: '去上半场BOSS脚下',
           ko: '북쪽 보스 근처로',
-          tc: '去上半場BOSS腳下',
+          tc: '去北半場Boss腳下',
         },
         north: {
           en: 'Go North',
@@ -544,7 +544,7 @@ Options.Triggers.push({
           fr: 'Allez au Nord',
           cn: '去上半场',
           ko: '북쪽으로',
-          tc: '去上半場',
+          tc: '去北半場',
         },
         westBoss: {
           en: 'Go to West Boss',
@@ -552,7 +552,7 @@ Options.Triggers.push({
           fr: 'Allez à l\'Ouest (boss)',
           cn: '去左边BOSS脚下',
           ko: '서쪽 보스 근처로',
-          tc: '去左邊BOSS腳下',
+          tc: '去西邊Boss腳下',
         },
         west: {
           en: 'Go West',
@@ -560,7 +560,7 @@ Options.Triggers.push({
           fr: 'Allez à l\'Ouest',
           cn: '去左边',
           ko: '서쪽으로',
-          tc: '去左邊',
+          tc: '去西邊',
         },
         corner: {
           en: 'Go to Corner',
@@ -659,7 +659,7 @@ Options.Triggers.push({
           ja: 'タンクバスターを避ける',
           cn: '远离坦克死刑',
           ko: '탱버 피하기',
-          tc: '遠離坦剋死刑',
+          tc: '遠離坦克死刑',
         },
       },
     },
@@ -1163,7 +1163,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '2P-Operated Flight Unit': '2P：裝備飛行裝置',
         'Beyond': '塔頂',
@@ -1190,7 +1189,7 @@ Options.Triggers.push({
         'Hansel & Gretel': '韓塞爾與格雷特',
       },
       'replaceText': {
-        // '--targetable\\?--': '', // FIXME '--可选中?--'
+        '--targetable\\?--': '--可選中?--',
         'Black Dissonance': '侵蝕：黑',
         '(?<!Tandem Assault: )Bloody Sweep': '橫掃',
         '(?<!Tandem Assault: )Breakthrough': '重突進',

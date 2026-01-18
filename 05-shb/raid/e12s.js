@@ -39,7 +39,7 @@ const primalOutputStrings = {
     ja: '斜め',
     cn: '四角',
     ko: '대각',
-    tc: '四角',
+    tc: '斜點',
   },
   // Tether combos.
   '008E008F': {
@@ -49,7 +49,7 @@ const primalOutputStrings = {
     ja: '真ん中 + 横へ',
     cn: '正中间两侧',
     ko: '보스 안쪽 + 양옆',
-    tc: '正中間兩側',
+    tc: '正中間 + 兩側',
   },
   '008E0090': {
     en: 'North/South + Out',
@@ -58,7 +58,7 @@ const primalOutputStrings = {
     ja: '北/南 + 外へ',
     cn: '上/下远离',
     ko: '남/북 + 바깥',
-    tc: '上/下遠離',
+    tc: '北/南 + 遠離',
   },
   '008E0091': {
     en: 'Under + Intercards',
@@ -67,7 +67,7 @@ const primalOutputStrings = {
     ja: '真ん中 + 斜め',
     cn: '正中间四角',
     ko: '보스 안쪽 + 대각',
-    tc: '正中間四角',
+    tc: '正中間 + 斜點',
   },
   // Text output.
   'combined': {
@@ -116,7 +116,7 @@ const primalOutputStrings = {
     ja: 'ヒラ頭割り',
     cn: '双奶分组分摊',
     ko: '그룹 쉐어',
-    tc: '雙奶分組分攤',
+    tc: '雙補分組分攤',
   },
   'stack': {
     // Obliterate whole group laser stack.
@@ -271,7 +271,7 @@ Options.Triggers.push({
             ja: 'タンクバスター + スイッチ',
             cn: '死刑 + 换T',
             ko: '탱버 + 교대',
-            tc: '死刑 + 換T',
+            tc: '死刑 + 換坦',
           },
           formlessBusterBLU: {
             en: 'Buster on YOU (w/${player})',
@@ -339,7 +339,7 @@ Options.Triggers.push({
             ja: '青、重圧 (${player}と)',
             cn: '蓝色重压 (与${player})',
             ko: '파랑 (다른 대상자: ${player})',
-            tc: '藍色重壓 (與${player})',
+            tc: '藍色重壓 (與 ${player})',
           },
           titanOrangeStack: {
             en: 'Orange Stack',
@@ -407,7 +407,7 @@ Options.Triggers.push({
             fr: 'Package sur VOUS (avec ${player})',
             cn: '分摊点名 (与${player})',
             ko: '쉐어 대상자 (+${player})',
-            tc: '分攤點名 (與${player})',
+            tc: '分攤點名 (與 ${player})',
           },
           stacks: {
             en: 'Stacks: ${players}',
@@ -571,7 +571,7 @@ Options.Triggers.push({
           ja: '東南ノックバック',
           cn: '右下击退',
           ko: '남동쪽(5시)에서 넉백',
-          tc: '右下擊退',
+          tc: '東南擊退',
         },
       },
     },
@@ -589,7 +589,7 @@ Options.Triggers.push({
           ja: '西南ノックバック',
           cn: '左下击退',
           ko: '남서쪽(7시)에서 넉백',
-          tc: '左下擊退',
+          tc: '西南擊退',
         },
       },
     },
@@ -685,7 +685,7 @@ Options.Triggers.push({
             ja: 'タンクバスター + スイッチ',
             cn: '坦克死刑 + 换T',
             ko: '탱버 + 교대',
-            tc: '坦剋死刑 + 換T',
+            tc: '坦克死刑 + 換坦',
           },
           tankBusters: Outputs.tankBusters,
         };
@@ -829,7 +829,7 @@ Options.Triggers.push({
           ja: '大ダメージ、中へ',
           cn: '超大伤害，去中间',
           ko: '아픈 광뎀, 중앙으로',
-          tc: '超大傷害，去中間',
+          tc: '超大傷害, 去中間',
         },
       },
     },
@@ -862,7 +862,7 @@ Options.Triggers.push({
           ja: '大ダメージ、まもなく岩落とし',
           cn: '超大伤害，即将落石',
           ko: '아픈 광뎀, 폭탄 떨어짐',
-          tc: '超大傷害，即將落石',
+          tc: '超大傷害, 即將落石',
         },
       },
     },
@@ -973,7 +973,7 @@ Options.Triggers.push({
             fr: 'NE Lien lion',
             cn: '右上狮子连线',
             ko: '1시 사자 연결됨',
-            tc: '右上獅子連線',
+            tc: '東北獅子連線',
           },
           northWestLion: {
             en: 'NW Lion Tether',
@@ -981,7 +981,7 @@ Options.Triggers.push({
             fr: 'NO Lien lion',
             cn: '左上狮子连线',
             ko: '11시 사자 연결됨',
-            tc: '左上獅子連線',
+            tc: '西北獅子連線',
           },
           southEastLion: {
             en: 'SE Lion Tether',
@@ -989,7 +989,7 @@ Options.Triggers.push({
             fr: 'SE Lien lion',
             cn: '右下狮子连线',
             ko: '5시 사자 연결됨',
-            tc: '右下獅子連線',
+            tc: '東南獅子連線',
           },
           southWestLion: {
             en: 'SW Lion Tether',
@@ -997,7 +997,7 @@ Options.Triggers.push({
             fr: 'SO Lien lion',
             cn: '左下狮子连线',
             ko: '7시 사자 연결됨',
-            tc: '左下獅子連線',
+            tc: '西南獅子連線',
           },
         };
         if (!data.smallLions || data.smallLions.length === 0)
@@ -1096,7 +1096,7 @@ Options.Triggers.push({
           ja: 'ボスの足元へ (タンクは離れる)',
           cn: '人群靠近 (T远离引导)',
           ko: '본대 안 (탱커 밖)',
-          tc: '人群靠近 (T遠離引導)',
+          tc: '人群靠近 (坦克遠離引導)',
         },
         tanksOutPartyIn: {
           en: 'Tanks Out (Party In)',
@@ -1105,7 +1105,7 @@ Options.Triggers.push({
           ja: 'ボスからはなれる (パーティーが内側)',
           cn: 'T远离引导 (人群靠近)',
           ko: '탱커 밖 (본대 안)',
-          tc: 'T遠離引導 (人群靠近)',
+          tc: '坦克遠離引導 (人群靠近)',
         },
       },
     },
@@ -1128,7 +1128,7 @@ Options.Triggers.push({
           ja: 'ボスから離れる (タンクが内側)',
           cn: '人群远离 (T靠近引导)',
           ko: '본대 밖 (탱커 안)',
-          tc: '人群遠離 (T靠近引導)',
+          tc: '人群遠離 (坦克靠近引導)',
         },
         tanksInPartyOut: {
           en: 'Tanks In (Party Out)',
@@ -1137,7 +1137,7 @@ Options.Triggers.push({
           ja: 'ボスに足元へ (パーティーは離れる)',
           cn: 'T靠近引导 (人群远离)',
           ko: '탱커 안 (본대 밖)',
-          tc: 'T靠近引導 (人群遠離)',
+          tc: '坦克靠近引導 (人群遠離)',
         },
       },
     },
@@ -1247,7 +1247,7 @@ Options.Triggers.push({
             ja: '自分に目 (w/${player})',
             cn: '石化眼点名 (与${player})',
             ko: '시선징 (+${player})',
-            tc: '石化眼點名 (與${player})',
+            tc: '石化眼點名 (與 ${player})',
           },
           water: {
             en: 'Stack (w/${player})',
@@ -1255,7 +1255,7 @@ Options.Triggers.push({
             fr: 'Pack (avec ${player})',
             cn: '分摊 (与${player})',
             ko: '쉐어징 (+${player})',
-            tc: '分攤 (與${player})',
+            tc: '分攤 (與 ${player})',
           },
           longFire: {
             en: 'Long Fire (w/${player})',
@@ -1264,7 +1264,7 @@ Options.Triggers.push({
             ja: 'ファイガ(遅い) (w/${player})',
             cn: '长火 (与${player})',
             ko: '느린 파이가 (+${player})',
-            tc: '長火 (與${player})',
+            tc: '長火 (與 ${player})',
           },
           shortFire: {
             en: 'Short Fire (w/${player})',
@@ -1273,7 +1273,7 @@ Options.Triggers.push({
             ja: 'ファイガ(早い) (w/${player})',
             cn: '短火 (与${player})',
             ko: '빠른 파이가 (+${player})',
-            tc: '短火 (與${player})',
+            tc: '短火 (與 ${player})',
           },
           longIce: {
             en: 'Long Ice (w/${player})',
@@ -1282,7 +1282,7 @@ Options.Triggers.push({
             ja: 'ブリザガ(遅い) (w/${player})',
             cn: '长冰 (与${player})',
             ko: '느린 블리자가 (+${player})',
-            tc: '長冰 (與${player})',
+            tc: '長冰 (與 ${player})',
           },
           shortIce: {
             en: 'Short Ice (w/${player})',
@@ -1291,7 +1291,7 @@ Options.Triggers.push({
             ja: 'ブリザガ(早い) (w/${player})',
             cn: '短冰 (与${player})',
             ko: '빠른 블리자가 (+${player})',
-            tc: '短冰 (與${player})',
+            tc: '短冰 (與 ${player})',
           },
           unknown: Outputs.unknown,
         };
@@ -1413,7 +1413,7 @@ Options.Triggers.push({
             ja: '次へ！',
             cn: '下一步！',
             ko: '이동하기!',
-            tc: '下一步！',
+            tc: '下一步!',
           },
         }, intermediateRelativityOutputStrings);
         if (data.phase !== 'intermediate')
@@ -1457,7 +1457,7 @@ Options.Triggers.push({
           ja: '${player1}と${player2}を見ない',
           cn: '背对${player1}和${player2}',
           ko: '${player1}와 ${player2}에게서 뒤돌기',
-          tc: '背對${player1}和${player2}',
+          tc: '背對 ${player1} 和 ${player2}',
         },
         lookAwayFromPlayer: Outputs.lookAwayFromPlayer,
       },
@@ -1717,7 +1717,7 @@ Options.Triggers.push({
             ja: '自分にシャドウアイ (w/${player})',
             cn: '暗黑眼点名 (与${player})',
             ko: '시선징 (+${player})',
-            tc: '暗黑眼點名 (與${player})',
+            tc: '暗黑眼點名 (與 ${player})',
           },
           doubleAero: {
             en: 'Double Aero (w/${player})',
@@ -1726,7 +1726,7 @@ Options.Triggers.push({
             ja: '自分にエアロガ×2 (w/${player})',
             cn: '双风点名 (与${player})',
             ko: '더블 에어로가 (+${player})',
-            tc: '雙風點名 (與${player})',
+            tc: '雙風點名 (與 ${player})',
           },
           spread: {
             en: 'Spread (w/${player1}, ${player2}, ${player3})',
@@ -1735,7 +1735,7 @@ Options.Triggers.push({
             ja: '自分に散開 (w/${player1}, ${player2}, ${player3})',
             cn: '分散点名 (与${player1}, ${player2}, ${player3})',
             ko: '산개징 (+${player1}, ${player2}, ${player3})',
-            tc: '分散點名 (與${player1}, ${player2}, ${player3})',
+            tc: '分散點名 (與 ${player1}, ${player2}, ${player3})',
           },
           unknown: Outputs.unknown,
         };
@@ -2087,7 +2087,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Beastly Sculpture': '被創造的獅子',
         'Bomb Boulder': '爆破岩石',
@@ -2110,9 +2109,9 @@ Options.Triggers.push({
         'Dark Aero III': '黑暗大勁風',
         'Dark Current': '黑暗奔流',
         '(?<! )Dark Eruption(?! )': '暗炎噴發',
-        // 'Dark Eruption / Dark Water III': '', // FIXME '暗炎喷发/黑暗狂水'
+        'Dark Eruption / Dark Water III': '暗炎噴發/黑暗大水花',
         'Dark Fire III': '黑暗大火焰',
-        // 'Dark Water III / Dark Eruption': '', // FIXME '黑暗狂水/暗炎喷发'
+        'Dark Water III / Dark Eruption': '黑暗大水花/暗炎噴發',
         '(?<! )Dark Water III(?! )': '黑暗大水花',
         'Darkest Dance': '暗夜舞蹈',
         'Diamond Dust': '鑽石星塵',

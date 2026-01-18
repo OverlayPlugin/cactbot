@@ -99,7 +99,7 @@ Options.Triggers.push({
           fr: 'Soignez au maximum',
           cn: '奶满死宣',
           ko: '체력 풀피로',
-          tc: '奶滿死宣',
+          tc: '補滿死宣',
         },
       },
     },

@@ -114,7 +114,7 @@ Options.Triggers.push({
           ja: '自分にカン・ラーイ',
           cn: '十字多段AoE点名',
           ko: '십자 장판 대상자',
-          tc: '十字多段AoE點名',
+          tc: '十字多段AOE點名',
         },
       },
     },
@@ -327,7 +327,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Amhuluk': '阿姆魯克',
         'Lunar Bahamut': '真月巴哈姆特',
@@ -337,9 +336,9 @@ Options.Triggers.push({
         'The Gathering Ring': '佐爾瑪刻祭場',
       },
       'replaceText': {
-        // '\\(circles\\)': '', // FIXME '(预兆)'
-        // '\\(explosions\\)': '', // FIXME '(爆炸)'
-        // '--Levin orbs--': '', // FIXME '--电球--'
+        '\\(circles\\)': '(預兆)',
+        '\\(explosions\\)': '(爆炸)',
+        '--Levin orbs--': '--電球--',
         'Akh Morn': '死亡輪迴',
         'Big Burst': '大爆炸',
         'Critical Rip': '暴擊撕裂',

@@ -172,7 +172,7 @@ Options.Triggers.push({
           ja: 'タンクバスター、散開',
           cn: '坦克死刑分散',
           ko: '탱버 산개',
-          tc: '坦剋死刑分散',
+          tc: '坦克死刑分散',
         },
       },
     },
@@ -237,7 +237,7 @@ Options.Triggers.push({
           ja: 'ジェイルに攻撃',
           cn: '攻击牢狱',
           ko: '감옥',
-          tc: '攻擊牢獄',
+          tc: '擊殺牢獄',
         },
       },
     },
@@ -262,7 +262,7 @@ Options.Triggers.push({
           ja: '散開（重ならないように）',
           cn: '分散（别去分摊！）',
           ko: '산개（모이지마세요!）',
-          tc: '分散（別去分攤！）',
+          tc: '分散 (別去分攤!)',
         },
       },
     },
@@ -457,14 +457,13 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Hades': '黑迪斯',
-        // 'Shadow .f .he Ancients': '', // FIXME '古代人之影'
+        'Shadow .f .he Ancients': '古代人之影',
       },
       'replaceText': {
-        // 'Adds': '', // FIXME '小怪'
-        // 'Gaol Add': '', // FIXME '监狱'
+        'Adds': '小怪',
+        'Gaol Add': '監獄',
         'Ancient Aero': '古代勁風',
         'Ancient Dark IV': '古代冥暗',
         'Ancient Darkness': '古代黑暗',
@@ -489,7 +488,7 @@ Options.Triggers.push({
         'Stream/Purgation?': '暗影流',
         'The Dark Devours': '黑暗侵蝕',
         'Titanomachy': '諸神之戰',
-        // '--fetters--': '', // FIXME '--锁链--'
+        '--fetters--': '--鎖鏈--',
         'Wail Of The Lost': '逝者的哀嚎',
       },
     },
