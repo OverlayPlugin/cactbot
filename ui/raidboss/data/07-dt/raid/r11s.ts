@@ -63,7 +63,6 @@ const headMarkerData = {
   'closeTether': '0039',
   'farTether': '00F9',
 } as const;
-console.assert(headMarkerData);
 
 const triggerSet: TriggerSet<Data> = {
   id: 'AacHeavyweightM3Savage',
