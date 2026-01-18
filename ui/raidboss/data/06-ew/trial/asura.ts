@@ -607,17 +607,16 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<! )Asura(?! )': '阿修羅',
         'Asura Image': '阿修羅的化身',
         'Phantom Asura': '阿修羅的幻影',
       },
       'replaceText': {
-        // '\\(execute\\)': '', // FIXME '(执行)'
-        // '\\(preview\\)': '', // FIXME '(预览)'
-        // '\\(release\\)': '', // FIXME '(释放)'
-        // '\\(store\\)': '', // FIXME '(储存)'
+        '\\(execute\\)': '(執行)',
+        '\\(preview\\)': '(預覽)',
+        '\\(release\\)': '(釋放)',
+        '\\(store\\)': '(儲存)',
         'Asuri Chakra': '旋轉法輪',
         'Bladescatter': '亂光波',
         '(?<! )Bladewise': '劍光波',
@@ -637,7 +636,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ordered Chaos': '天光',
         '(?<! )Pedestal Purge': '圓斬',
         'Six-bladed Khadga': '三頭六臂：斷',
-        // 'The Face Of Delight': '', // FIXME '愉悦的神气'
+        'The Face Of Delight': '愉悅的神氣',
         'The Face Of Wrath': '憤怒的神氣',
         '(?<! )Wheel Of Deincarnation': '環斬',
       },

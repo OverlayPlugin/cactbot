@@ -784,20 +784,19 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Barbariccia': '巴爾巴莉希亞',
         'Stiff Breeze': '荒風',
       },
       'replaceText': {
-        // 'ground': '', // FIXME '地面'
-        // 'line': '', // FIXME '直线'
-        // 'donut': '', // FIXME '月环'
-        // 'protean': '', // FIXME '八方'
+        'ground': '地面',
+        'line': '直線',
+        'donut': '月環',
+        'protean': '八方',
         'Blow Away': '重拳激震',
         'Blustery Ruler': '天風主宰',
         'Bold Boulder': '巨岩礫',
-        // '(?<!(Brittle|Bold) )Boulder(?! Break)': '', // FIXME '岩砾'
+        '(?<!(Brittle|Bold) )Boulder(?! Break)': '岩礫',
         'Boulder Break': '礫岩碎',
         'Brittle Boulder': '小岩礫',
         'Brush with Death': '咒髮操控',
@@ -818,7 +817,7 @@ const triggerSet: TriggerSet<Data> = {
         'Raging Storm': '憤怒風暴',
         'Savage Barbery': '野蠻剃',
         'Secret Breeze': '隱秘之風',
-        // '(?<!(Teasing |En))Tangle': '', // FIXME '咒发'
+        '(?<!(Teasing |En))Tangle': '咒髮',
         'Teasing Tangles': '咒髮拘束',
         'Tornado Chain': '龍捲連風',
         'Tousle': '荒風',

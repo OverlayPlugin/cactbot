@@ -475,7 +475,7 @@ const triggerSet: TriggerSet<Data> = {
         fr: 'Concepts élémentaires : Ordre des paires (Gauche->Droite)',
         cn: '经典概念 索尼顺序（左->右）',
         ko: 'Classical Concepts: 도형 순서 (왼 -> 오)',
-        tc: '經典概念 索尼順序（左->右）',
+        tc: '經典概念 索尼順序(左->右)',
       },
       type: 'select',
       options: {
@@ -547,7 +547,7 @@ const triggerSet: TriggerSet<Data> = {
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
         ko: `선택한 도형 순서에 따른 최종 위치만 알립니다. 예시에서 파보빨초를 기준으로 파랑 X는 1열이 됩니다.
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
-        tc: `直接報自己圖案的最終位置，不報變換前的。例如，對於 BPOG 打法，藍 X 會直接報第一列（西面最遠）。
+        tc: `直接報自己圖案的最終位置，不報變換前的。例如，對於 BPOG 打法，藍 X 會直接報第一列(西面最遠)。
             <a href="https://overlayplugin.github.io/cactbot/resources/images/06ew_raid_p12s_classic2_noflip.webp" target="_blank">Visual</a>`,
       },
       name: {
@@ -790,7 +790,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の内側 / 東の外側',
           cn: '内左/外右',
           ko: '서쪽 안 / 동쪽 바깥',
-          tc: '內左/外右',
+          tc: '西內側/東外側',
         },
         insideEastOutsideWest: {
           en: 'Inside East / Outside West',
@@ -799,7 +799,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の外側 / 東の内側',
           cn: '内右/外左 ',
           ko: '동쪽 안 / 서쪽 바깥',
-          tc: '內右/外左',
+          tc: '東內側/西外側',
         },
       },
     },
@@ -855,7 +855,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北 + 北に戻る (左安置)',
           cn: '上 + Boss左侧 (稍后回上)',
           ko: '북쪽 + 보스 왼쪽 (그리고 다시 북쪽)',
-          tc: '上 + Boss左側 (稍後回上)',
+          tc: '北 + Boss左側 (稍後回北)',
         },
         superchain2aLeftNorthSouth: {
           en: 'North + Her Left (then go South)',
@@ -864,7 +864,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北 + 南へ前進 (左安置)',
           cn: '上 + Boss左侧 (稍后去下)',
           ko: '북쪽 + 보스 왼쪽 (그리고 남쪽으로)',
-          tc: '上 + Boss左側 (稍後去一下)',
+          tc: '北 + Boss左側 (稍後去南)',
         },
         superchain2aLeftSouthNorth: {
           en: 'South + Left (then go North)',
@@ -873,7 +873,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南 + 北へ前進 (左安置)',
           cn: '下 + 左 (稍后去上)',
           ko: '남쪽 + 왼쪽 (그리고 북쪽으로)',
-          tc: '下 + 左 (稍後去上)',
+          tc: '南 + 左 (稍後去北)',
         },
         superchain2aLeftSouthSouth: {
           en: 'South + Left (then back South)',
@@ -882,7 +882,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南 + 南に戻る (左安置)',
           cn: '下 + 左 (稍后回下)',
           ko: '남쪽 + 왼쪽 (그리고 다시 남쪽)',
-          tc: '下 + 左 (稍後回下)',
+          tc: '南 + 左 (稍後回南)',
         },
         superchain2aRightNorthNorth: {
           en: 'North + Her Right (then back North)',
@@ -891,7 +891,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北 + 北に戻る (右安置)',
           cn: '上 + Boss右侧 (稍后回上)',
           ko: '북쪽 + 보스 오른쪽 (그리고 다시 북쪽)',
-          tc: '上 + Boss右側 (稍後回上)',
+          tc: '北 + Boss右側 (稍後回北)',
         },
         superchain2aRightNorthSouth: {
           en: 'North + Her Right (then go South)',
@@ -900,7 +900,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北 + 南へ前進 (右安置)',
           cn: '上 + Boss右侧 (稍后去下)',
           ko: '북쪽 + 보스 오른쪽 (그리고 남쪽으로)',
-          tc: '上 + Boss右側 (稍後去一下)',
+          tc: '北 + Boss右側 (稍後去南)',
         },
         superchain2aRightSouthNorth: {
           en: 'South + Right (then go North)',
@@ -909,7 +909,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南 + 北へ前進 (右安置)',
           cn: '下 + 右 (稍后去上)',
           ko: '남쪽 + 오른쪽 (그리고 북쪽으로)',
-          tc: '下 + 右 (稍後去上)',
+          tc: '南 + 右 (稍後去北)',
         },
         superchain2aRightSouthSouth: {
           en: 'South + Right (then back South)',
@@ -918,7 +918,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南 + 南に戻る (右安置)',
           cn: '下 + 右 (稍后回下)',
           ko: '남쪽 + 오른쪽 (그리고 다시 남쪽)',
-          tc: '下 + 右 (稍後回下)',
+          tc: '南 + 右 (稍後回南)',
         },
       },
     },
@@ -1570,7 +1570,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '(Écartez-vous plus tard)',
           cn: '（稍后分散）',
           ko: '(나중에 산개)',
-          tc: '（稍後分散）',
+          tc: '(稍後分散)',
         },
       },
     },
@@ -2515,7 +2515,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右塔踏み',
           cn: '光激光（与暗分摊）',
           ko: '빛 레이저 (어둠 쉐어)',
-          tc: '光雷射（與暗分攤）',
+          tc: '光雷射(與暗分攤)',
         },
         darkBeam: {
           en: 'Dark Beam (Stack w/Light)',
@@ -2524,7 +2524,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左塔踏み',
           cn: '暗激光（与光分摊）',
           ko: '어둠 레이저 (빛 쉐어),',
-          tc: '暗雷射（與光分攤）',
+          tc: '暗雷射(與光分攤)',
         },
         lightTower: {
           en: 'Light Tower',
@@ -3070,7 +3070,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur NO',
           cn: '外侧 左上',
           ko: '북서 바깥',
-          tc: '外側 左上',
+          tc: '外側 西北',
         },
         outsideNE: {
           en: 'Outside NE',
@@ -3078,7 +3078,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur NE',
           cn: '外侧 右上',
           ko: '북동 바깥',
-          tc: '外側 右上',
+          tc: '外側 東北',
         },
         insideNW: {
           en: 'Inside NW',
@@ -3086,7 +3086,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur NO',
           cn: '内侧 左上',
           ko: '북서 안',
-          tc: '內側 左上',
+          tc: '內側 西北',
         },
         insideNE: {
           en: 'Inside NE',
@@ -3094,7 +3094,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur NE',
           cn: '内侧 右上',
           ko: '북동 안',
-          tc: '內側 右上',
+          tc: '內側 東北',
         },
         insideSW: {
           en: 'Inside SW',
@@ -3102,7 +3102,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur SO',
           cn: '内侧 左下',
           ko: '남서 안',
-          tc: '內側 左下',
+          tc: '內側 西南',
         },
         insideSE: {
           en: 'Inside SE',
@@ -3110,7 +3110,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur SE',
           cn: '内侧 右下',
           ko: '남동 안',
-          tc: '內側 右下',
+          tc: '內側 東南',
         },
         outsideSW: {
           en: 'Outside SW',
@@ -3118,7 +3118,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur SO',
           cn: '外侧 左下',
           ko: '남서 바깥',
-          tc: '外側 左下',
+          tc: '外側 西南',
         },
         outsideSE: {
           en: 'Outside SE',
@@ -3126,7 +3126,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur SE',
           cn: '外侧 右下',
           ko: '남동 바깥',
-          tc: '外側 右下',
+          tc: '外側 東南',
         },
         default: {
           en: 'Find safe tile',
@@ -3299,7 +3299,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Extérieur Ouest',
             cn: '第1列 (左 外侧)',
             ko: '1열 (서쪽 바깥)',
-            tc: '第1列 (左 外側)',
+            tc: '第1列 (西 外側)',
           },
           insideWest: {
             en: 'Inside West',
@@ -3307,7 +3307,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Intérieur Ouest',
             cn: '第2列 (左 内侧)',
             ko: '2열 (서쪽 안)',
-            tc: '第2列 (左 內側)',
+            tc: '第2列 (西 內側)',
           },
           insideEast: {
             en: 'Inside East',
@@ -3315,7 +3315,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Intérieur Est',
             cn: '第3列 (右 内侧)',
             ko: '3열 (동쪽 안)',
-            tc: '第3列 (右 內側)',
+            tc: '第3列 (東 內側)',
           },
           outsideEast: {
             en: 'Outside East',
@@ -3323,7 +3323,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Extérieur Est',
             cn: '第4列 (右 外侧)',
             ko: '4열 (동쪽 바깥)',
-            tc: '第4列 (右 外側)',
+            tc: '第4列 (東 外側)',
           },
           northRow: {
             en: 'North Blue',
@@ -3355,7 +3355,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Légèrement au Nord',
             cn: '靠上',
             ko: '위쪽',
-            tc: '靠上',
+            tc: '靠北',
           },
           leanEast: {
             en: 'Lean East',
@@ -3363,7 +3363,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Légèrement à l\'Est',
             cn: '靠右',
             ko: '오른쪽',
-            tc: '靠右',
+            tc: '靠東',
           },
           leanSouth: {
             en: 'Lean South',
@@ -3371,7 +3371,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Légèrement au Sud',
             cn: '靠下',
             ko: '아래쪽',
-            tc: '靠下',
+            tc: '靠南',
           },
           leanWest: {
             en: 'Lean West',
@@ -3379,7 +3379,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Légèrement à l\'Ouest',
             cn: '靠左',
             ko: '왼쪽',
-            tc: '靠左',
+            tc: '靠西',
           },
           circle: {
             en: 'Red Circle',
@@ -4980,7 +4980,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<! )Athena': '雅典娜',
         'Anthropos': '人',
@@ -4993,22 +4992,22 @@ const triggerSet: TriggerSet<Data> = {
         'Thymou Idea': '激情理念',
       },
       'replaceText': {
-        // '\\(Floor Drop\\)': '', // FIXME '(地板坠落)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(proximity\\)': '', // FIXME '(距离衰减)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
-        // '--tethers--': '', // FIXME '--连线--'
+        '\\(Floor Drop\\)': '(地板墜落)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(proximity\\)': '(距離衰減)',
+        '\\(spread\\)': '(分散)',
+        '--tethers--': '--連線--',
         'Apodialogos': '遠距離對話',
         'Astral Advance': '星極進升',
         'Astral Advent': '星極臨',
         'Astral Glow': '星極熾光',
         'Astral Impact': '星擊',
-        // 'Buster': '', // FIXME '死刑'
+        'Buster': '死刑',
         'Caloric Theory': '熱質說',
         'Crush Helm': '星天爆擊打',
         'Demi Parhelion': '亞幻日',
-        // '(?<!(Apo|Peri))Dialogos': '', // FIXME '对话'
+        '(?<!(Apo|Peri))Dialogos': '對話',
         'Divine Excoriation': '神罰',
         'Dynamic Atmosphere': '衝風',
         'Ekpyrosis': '宇宙火劫',
@@ -5049,7 +5048,7 @@ const triggerSet: TriggerSet<Data> = {
         'Theos\'s Saltire': '神之交錯',
         'Theos\'s Ultima': '神之究極',
         'Trinity of Souls': '三魂一體',
-        // '(?<! )Ultima(?! (B|R))': '', // FIXME '究极'
+        '(?<! )Ultima(?! (B|R))': '最終究極',
         'Ultima Blade': '究極之刃',
         'Ultima Blow': '究極強擊',
         'Ultima Ray': '究極射線',

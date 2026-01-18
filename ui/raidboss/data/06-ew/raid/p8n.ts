@@ -305,7 +305,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北の外側',
           cn: '上外',
           ko: '북쪽 바깥',
-          tc: '上外',
+          tc: '北外側',
         },
         insideNorth: {
           en: 'Inside North',
@@ -314,7 +314,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北の内側',
           cn: '上内',
           ko: '북쪽 안',
-          tc: '上內',
+          tc: '北內側',
         },
         outsideEast: {
           en: 'Outside East',
@@ -323,7 +323,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東の外側',
           cn: '右外',
           ko: '동쪽 바깥',
-          tc: '右外',
+          tc: '東外側',
         },
         insideEast: {
           en: 'Inside East',
@@ -332,7 +332,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東の内側',
           cn: '右内',
           ko: '동쪽 안',
-          tc: '右內',
+          tc: '東內側',
         },
         outsideSouth: {
           en: 'Outside South',
@@ -341,7 +341,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南の外側',
           cn: '下外',
           ko: '남쪽 바깥',
-          tc: '下外',
+          tc: '南外側',
         },
         insideSouth: {
           en: 'Inside South',
@@ -350,7 +350,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南の内側',
           cn: '下内',
           ko: '남쪽 안',
-          tc: '下內',
+          tc: '南內側',
         },
         outsideWest: {
           en: 'Outside West',
@@ -359,7 +359,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の外側',
           cn: '左外',
           ko: '서쪽 바깥',
-          tc: '左外',
+          tc: '西外側',
         },
         insideWest: {
           en: 'Inside West',
@@ -368,7 +368,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西の内側',
           cn: '左内',
           ko: '서쪽 안',
-          tc: '左內',
+          tc: '西內側',
         },
       },
     },
@@ -511,7 +511,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Gorgon': '戈爾貢',
         '(?<!Illusory )Hephaistos': '赫淮斯托斯',
@@ -521,7 +520,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Abyssal Fires': '火炎風暴',
         'Blazing Footfalls': '熾熱踐踏',
-        // 'Cthonic Vent': '', // FIXME '喷炎升蛇'
+        'Cthonic Vent': '噴炎升蛇',
         'Ektothermos': '爆熱波動',
         'Flameviper': '炎蛇砲',
         'Fourfold Fires': '四重火炎風暴',

@@ -263,16 +263,15 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Hegemone': '赫革摩涅',
         'Parasitos': '寄生生物',
       },
       'replaceText': {
-        // 'random': '', // FIXME '随机'
-        // 'sides': '', // FIXME '两侧'
-        // 'front': '', // FIXME '前方'
-        // 'back': '', // FIXME '后方'
+        'random': '隨機',
+        'sides': '兩側',
+        'front': '前方',
+        'back': '後方',
         'Aetherial Exchange': '乙太交換',
         'Aetheric Polyominoid': '乙太方陣',
         'Choros Ixou': '寄生之舞',

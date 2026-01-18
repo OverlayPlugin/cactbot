@@ -49,7 +49,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散会 (柱回避)',
           cn: '分散（远离柱子）',
           ko: '산개 (기둥 피하기)',
-          tc: '分散（遠離柱子）',
+          tc: '分散(遠離柱子)',
         },
         onOthers: {
           en: 'Avoid marked players',
@@ -101,7 +101,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ジェイルの下へ',
           cn: '站在塔下（或远离）',
           ko: '감옥 아래로',
-          tc: '站在塔下（或遠離）',
+          tc: '站在塔下(或遠離)',
         },
       },
     },
@@ -293,21 +293,20 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
+        'Pand(?:\\\\u00e6|\u00e6)monium': '萬魔殿',
       },
       'replaceText': {
-        // '\\(marked\\)': '', // FIXME '(标记)'
-        // '\\(resolves\\)': '', // FIXME '(判定)'
-        // '\\(knockback\\)': '', // FIXME '(击退)'
+        '\\(marked\\)': '(標記)',
+        '\\(resolves\\)': '(判定)',
+        '\\(knockback\\)': '(擊退)',
         'Cannonspawn': '擴散砲',
         'Entangling Web': '糾纏之網',
         'Harrowing Hell': '魔殿震擊',
         'Imprisonment': '入獄',
         'Pandaemoniac Meltdown': '萬魔殿熔毀',
         'Pandaemoniac Pillars': '萬魔殿之柱',
-        // 'Pandaemoniac Ray': '', // FIXME '万魔殿射线'
+        'Pandaemoniac Ray': '萬魔殿射線',
         'Parted Plumes': '分割之羽',
         'Silkspit': '噴吐絲網',
         'Soul Grasp': '攥魂',

@@ -300,7 +300,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Devatagara': '天神寺',
         'Insight': '村長屋前',
@@ -311,9 +310,9 @@ const triggerSet: TriggerSet<Data> = {
         'Trnakiya': '森中空地',
       },
       'replaceText': {
-        // '\\(Knockback\\)': '', // FIXME '(击退)'
-        // '\\(Spread\\)': '', // FIXME '(分散)'
-        // '--meteor': '', // FIXME '--陨石'
+        '\\(Knockback\\)': '(擊退)',
+        '\\(Spread\\)': '(分散)',
+        '--meteor': '--隕石',
         'Aether Siphon': '屬性吸收',
         'Aether Spray': '屬性放出',
         'Aetherial Disruption': '地脈失控',

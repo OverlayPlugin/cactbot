@@ -208,7 +208,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボスの横からドーナツへ',
           cn: '跟随月环（避开直线AOE）',
           ko: '도넛 따라가기 (광역기 피하기)',
-          tc: '跟隨月環（避開直線AOE）',
+          tc: '跟隨月環(避開直線AOE)',
         },
         superchain4: {
           en: 'Avoid Spheres',
@@ -374,15 +374,14 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Anthropos': '人',
         'Athena': '雅典娜',
         'Thymou Idea': '激情理念',
       },
       'replaceText': {
-        // '\\(spread\\)': '', // FIXME '(分散)'
-        // '\\(stack\\)': '', // FIXME '(分摊)'
+        '\\(spread\\)': '(分散)',
+        '\\(stack\\)': '(分攤)',
         'Clear Cut': '橫斬',
         'Dialogos': '對話',
         'Glaukopis': '明眸',

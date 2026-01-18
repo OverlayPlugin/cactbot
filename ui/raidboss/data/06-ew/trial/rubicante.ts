@@ -420,7 +420,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Circle of Purgatory': '煉獄魔陣',
         '(?<!Greater )Flamesent': '炎妖',
@@ -429,8 +428,8 @@ const triggerSet: TriggerSet<Data> = {
         'Rubicante Mirage': '盧比坎特的幻影',
       },
       'replaceText': {
-        // '\\(aoe\\)': '', // FIXME '(AOE)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
+        '\\(aoe\\)': '(AOE)',
+        '\\(spread\\)': '(分散)',
         'Arcane Revelation': '魔法陣展開',
         'Arch Inferno': '烈風火焰流',
         'Blazing Rapture': '狂炎',
@@ -444,7 +443,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ghastly Wind': '妖火風',
         'Hope Abandon Ye': '煉獄招來',
         'Infernal Slaughter': '火焰亂擊',
-        // '(?<!(Arch |Erz))Inferno(?! Devil)': '', // FIXME '火焰流'
+        '(?<!(Arch |Erz))Inferno(?! Devil)': '火焰流',
         'Inferno Devil': '火焰旋風',
         'Ordeal of Purgation': '煉獄朱炎',
         'Radial Flagration': '放散火流',

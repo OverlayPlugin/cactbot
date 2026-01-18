@@ -176,7 +176,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Nord-est intérieur sûr',
           cn: '内侧 右上 安全',
           ko: '안쪽 북동 안전',
-          tc: '內側 右上 安全',
+          tc: '內側 東北 安全',
         },
         northwest: {
           en: 'Inner northwest safe',
@@ -184,7 +184,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Nord-ouest intérieur sûr',
           cn: '内侧 左上 安全',
           ko: '안쪽 북서 안전',
-          tc: '內側 左上 安全',
+          tc: '內側 西北 安全',
         },
         southeast: {
           en: 'Inner southeast safe',
@@ -192,7 +192,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Sud-est intérieur sûr',
           cn: '内侧 右下 安全',
           ko: '안쪽 남동 안전',
-          tc: '內側 右下 安全',
+          tc: '內側 東南 安全',
         },
         southwest: {
           en: 'Inner southwest safe',
@@ -200,7 +200,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Sud-Ouest intérieur sûr',
           cn: '内侧 左下 安全',
           ko: '안쪽 남서 안전',
-          tc: '內側 左下 安全',
+          tc: '內側 西南 安全',
         },
         unknown: Outputs.unknown,
       },
@@ -648,7 +648,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aetheric Charge': '魔力球',
         'Damcyan Antlion': '達姆希安蟻獅',
@@ -661,8 +660,8 @@ const triggerSet: TriggerSet<Data> = {
         'The Cloven Crystal Square': '水晶廣場',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(spread\\)': '(分散)',
         'Abyssal Outburst': '黑暗爆發',
         'Antipodal Assault': '對蹠強刺',
         'Antlion March': '蟻獅行軍',

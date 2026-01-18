@@ -1040,7 +1040,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンヒラ 隕石 (${player1}, ${player2})',
           cn: 'T/奶 陨石 (${player1}, ${player2})',
           ko: '탱/힐 메테오 (${player1}, ${player2})',
-          tc: 'T/奶 隕石 (${player1}, ${player2})',
+          tc: 'T/補 隕石 (${player1}, ${player2})',
         },
         dpsMeteors: {
           en: 'DPS Meteors (${player1}, ${player2})',
@@ -1142,7 +1142,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${num} (北で頭割り)',
           cn: '${num} (上分摊)',
           ko: '${num} (북쪽에서 쉐어)',
-          tc: '${num} (上分攤)',
+          tc: '${num} (北分攤)',
         },
       },
     },
@@ -1357,7 +1357,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南ダイブ => ${inout}',
           cn: '下俯冲 => ${inout}',
           ko: '남쪽 다이브 => ${inout}',
-          tc: '下俯衝 => ${inout}',
+          tc: '南俯衝 => ${inout}',
         },
         southDive3: {
           en: 'South Dive => ${inout}',
@@ -1366,7 +1366,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南ダイブ => ${inout}',
           cn: '下俯冲 => ${inout}',
           ko: '남쪽 다이브 => ${inout}',
-          tc: '下俯衝 => ${inout}',
+          tc: '南俯衝 => ${inout}',
         },
         upArrowDive1: {
           en: 'Up Arrow Dive => ${inout}',
@@ -1589,7 +1589,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南塔 (${inout})',
           cn: '下塔 (${inout})',
           ko: '남쪽 기둥 (${inout})',
-          tc: '下塔 (${inout})',
+          tc: '南塔 (${inout})',
         },
         circleTowers1: {
           en: 'Tower (all circles, ${inout})',
@@ -1652,7 +1652,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東塔 (${inout})',
           cn: '左塔 (${inout})',
           ko: '서쪽 기둥 (${inout})',
-          tc: '左塔 (${inout})',
+          tc: '西塔 (${inout})',
         },
         eastTower3: {
           en: 'East Tower (${inout})',
@@ -1661,7 +1661,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西塔 (${inout})',
           cn: '右塔 (${inout})',
           ko: '동쪽 기둥 (${inout})',
-          tc: '右塔 (${inout})',
+          tc: '東塔 (${inout})',
         },
       },
     },
@@ -1740,7 +1740,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東塔',
           cn: '(左上) 左上塔',
           ko: '북서쪽 기둥',
-          tc: '(左上) 左上塔',
+          tc: '(西北) 西北塔',
         },
         northeastTower2: {
           en: 'Northeast Tower',
@@ -1749,7 +1749,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西塔',
           cn: '(右上) 右上塔',
           ko: '북동쪽 기둥',
-          tc: '(右上) 右上塔',
+          tc: '(東北) 東北塔',
         },
       },
     },
@@ -3651,7 +3651,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Darkscale': '暗鱗黑龍',
         'Dragon-king Thordan': '龍威騎神托爾丹',
@@ -3775,7 +3774,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Dragon\'s Gaze': '龍眼之邪',
         'The Dragon\'s Glory': '邪龍目光',
         'The Dragon\'s Rage': '邪龍魔炎',
-        // 'Tower': '', // FIXME '塔'
+        'Tower': '塔',
         'Touchdown': '空降',
         'Trinity': '三劍一體',
         'Twisting Dive': '旋風衝',

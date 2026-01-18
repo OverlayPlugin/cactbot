@@ -166,7 +166,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Tankbuster x3 sur VOUS',
             cn: '3x 坦克死刑点名',
             ko: '3x 탱버 대상자',
-            tc: '3x 坦剋死刑點名',
+            tc: '3x 坦克死刑點名',
           },
           tankBusterOnPlayer: {
             en: '3x Tankbuster on ${player}',
@@ -174,7 +174,7 @@ const triggerSet: TriggerSet<Data> = {
             fr: 'Tankbuster x3 sur ${player}',
             cn: '3x 坦克死刑点 ${player}',
             ko: '3x 탱버 ${player}',
-            tc: '3x 坦剋死刑點 ${player}',
+            tc: '3x 坦克死刑點 ${player}',
           },
         };
 
@@ -839,7 +839,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Nord/Sud',
           cn: '上/下',
           ko: '북/남',
-          tc: '上/下',
+          tc: '北/南',
         },
         eastWestSafe: {
           en: 'East/West',
@@ -847,7 +847,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Est/Ouest',
           cn: '左/右',
           ko: '동/서',
-          tc: '左/右',
+          tc: '東/西',
         },
         cornersSafe: {
           en: 'Corners',
@@ -2326,11 +2326,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aloalo Golem': '阿羅阿羅樹木魔像',
         'Aloalo Islekeeper': '阿羅阿羅守衛',
-        // 'Aloalo Kiwakin': '', // FIXME '阿罗阿罗奇瓦金'
+        'Aloalo Kiwakin': '阿羅阿羅奇窪金',
         'Aloalo Monk': '阿羅阿羅鬼魚',
         'Aloalo Ray': '阿羅阿羅鬼蝠魟',
         'Aloalo Snipper': '阿羅阿羅利螯陸蟹',
@@ -2353,8 +2352,8 @@ const triggerSet: TriggerSet<Data> = {
         'The Midnight Trial': '夜色的試煉',
       },
       'replaceText': {
-        // '\\(buff\\)': '', // FIXME '(强化)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        '\\(buff\\)': '(強化)',
+        '\\(cast\\)': '(詠唱)',
         'Aero II': '中勁風',
         'Aero IV': '超勁風',
         'Analysis': '分析',
@@ -2372,7 +2371,7 @@ const triggerSet: TriggerSet<Data> = {
         'Burning Chains': '火焰鏈',
         'Burst': '爆炸',
         'Constructive Figure': '召喚人偶',
-        // 'Dartboard of Dancing Explosives': '', // FIXME '飞镖·炸弹·转转转'
+        'Dartboard of Dancing Explosives': '飛鏢·炸彈·轉轉轉',
         'Encroaching Twintides': '環浪連潮',
         'Explosive Theorem': '魔爆法',
         'Faerie Ring': '仙女環',

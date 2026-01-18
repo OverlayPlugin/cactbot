@@ -263,13 +263,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Golbez': '高貝扎',
         'Golbez\'s Shadow': '高貝扎的幻影',
       },
       'replaceText': {
-        // '\\(preview\\)': '', // FIXME '(预兆)'
+        '\\(preview\\)': '(預兆)',
         'Arctic Assault': '極寒突襲',
         'Azdaja\'s Shadow': '黑龍劍阿珠達雅',
         'Binding Cold': '咒縛寒氣',
