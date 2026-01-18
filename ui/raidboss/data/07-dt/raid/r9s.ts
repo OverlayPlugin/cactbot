@@ -326,22 +326,22 @@ const triggerSet: TriggerSet<Data> = {
         let dir2Text = output[dir2]!();
 
         if (dir1 === 'dirW') {
-          coffinSafe1 = coffinSafe1.filter((pos) => !westPositions.includes(pos));
+          coffinSafe1 = coffinSafe1.filter((pos) => westPositions.includes(pos));
           dir1Text = output.leftWest!();
         }
 
         if (dir1 === 'dirE') {
-          coffinSafe1 = coffinSafe1.filter((pos) => !eastPositions.includes(pos));
+          coffinSafe1 = coffinSafe1.filter((pos) => eastPositions.includes(pos));
           dir1Text = output.rightEast!();
         }
 
         if (dir2 === 'dirW') {
-          coffinSafe2 = coffinSafe2.filter((pos) => !westPositions.includes(pos));
+          coffinSafe2 = coffinSafe2.filter((pos) => westPositions.includes(pos));
           dir2Text = output.leftWest!();
         }
 
         if (dir2 === 'dirE') {
-          coffinSafe2 = coffinSafe2.filter((pos) => !eastPositions.includes(pos));
+          coffinSafe2 = coffinSafe2.filter((pos) => eastPositions.includes(pos));
           dir2Text = output.rightEast!();
         }
 
