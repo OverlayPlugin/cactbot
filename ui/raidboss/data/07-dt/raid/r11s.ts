@@ -26,6 +26,7 @@ export interface Data extends RaidbossData {
     horizCount: number;
     outerSafe: DirectionOutputCardinal[];
   };
+  maelstromCount: number;
   hasMeteor: boolean;
   fireballCount: number;
   hasAtomic: boolean;
@@ -77,6 +78,7 @@ const triggerSet: TriggerSet<Data> = {
       vertCount: 0,
       outerSafe: ['dirN', 'dirE', 'dirS', 'dirW'],
     },
+    maelstromCount: 0,
     hasMeteor: false,
     fireballCount: 0,
     hasAtomic: false,
@@ -100,17 +102,6 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitPuddlesThenSpread: {
           en: 'Bait 3x Puddles => Spread',
-        },
-      },
-    },
-    {
-      id: 'R11S Powerful Gust',
-      regex: /Powerful Gust/,
-      beforeSeconds: 6.3,
-      alertText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Bait Gust',
         },
       },
     },
@@ -229,11 +220,14 @@ const triggerSet: TriggerSet<Data> = {
           return 8.7;
         return 5;
       },
-      infoText: (_data, matches, output) => {
+      infoText: (data, matches, output) => {
         const mechanic = matches.param1 === '11D1'
           ? 'healerGroups'
           : (matches.param1 === '11D2' ? 'stack' : 'protean');
-
+        if (data.weaponMechCount === 7)
+          return output.mechanicThenBait!({ mech: output[mechanic]!(), bait: output.bait!() });
+        if (data.weaponMechCount > 3)
+          return output.mechanicThenMove!({ mech: output[mechanic]!(), move: output.move!() });
         return output[mechanic]!();
       },
       run: (data) => data.weaponMechCount++,
@@ -241,6 +235,16 @@ const triggerSet: TriggerSet<Data> = {
         healerGroups: Outputs.healerGroups,
         stack: Outputs.stackMiddle,
         protean: Outputs.protean,
+        move: Outputs.moveAway,
+        bait: {
+          en: 'Bait Gust',
+        },
+        mechanicThenMove: {
+          en: '${mech} => ${move}',
+        },
+        mechanicThenBait: {
+          en: '${mech} => ${bait}',
+        },
       },
     },
     {
@@ -443,6 +447,31 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B425', source: 'The Tyrant', capture: false },
       response: Responses.hpTo1Aoe(),
+    },
+    {
+      id: 'R11S Maelstrom Count',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Maelstrom', capture: false },
+      run: (data) => data.maelstromCount = data.maelstromCount + 1,
+    },
+    {
+      id: 'R11S Maelstrom 3 Reminder',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Maelstrom', capture: false },
+      condition: (data) => data.maelstromCount === 3,
+      response: Responses.moveAway(),
+    },
+    {
+      id: 'R11S Powerful Gust Reminder',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Maelstrom', capture: false },
+      condition: (data) => data.maelstromCount === 4,
+      infoText: (data, _matches, output) => output.bait!(),
+      outputStrings: {
+        bait: {
+          en: 'Bait Gust',
+        },
+      },
     },
     {
       id: 'R11S One and Only',
