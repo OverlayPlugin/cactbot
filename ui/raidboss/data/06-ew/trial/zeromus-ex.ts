@@ -519,7 +519,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左にブラックホール',
           cn: '左上放置黑洞',
           ko: '왼쪽 구석에 블랙홀 놓기',
-          tc: '西上放置黑洞',
+          tc: '西北放置黑洞',
         },
       },
     },
