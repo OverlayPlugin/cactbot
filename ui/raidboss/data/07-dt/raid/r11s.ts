@@ -87,6 +87,8 @@ const triggerSet: TriggerSet<Data> = {
   timelineTriggers: [
     {
       id: 'R11S Void Stardust End',
+      // The second set of Crushing Comet/Comet does not have a related startsUsing cast
+      // Timing is on the last Assault Evolved
       regex: /^Crushing Comet/,
       beforeSeconds: 11.1,
       suppressSeconds: 3,
@@ -466,7 +468,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'AddedCombatant',
       netRegex: { name: 'Maelstrom', capture: false },
       condition: (data) => data.maelstromCount === 4,
-      infoText: (data, _matches, output) => output.bait!(),
+      infoText: (_data, _matches, output) => output.bait!(),
       outputStrings: {
         bait: {
           en: 'Bait Gust',
