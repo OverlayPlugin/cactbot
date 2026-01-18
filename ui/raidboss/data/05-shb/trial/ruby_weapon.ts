@@ -144,7 +144,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '時間切れ！',
           cn: '狂暴',
           ko: '전멸기!',
-          tc: '狂暴',
+          tc: '狂暴!',
         },
       },
     },
@@ -340,25 +340,24 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'The Ruby Weapon': '紅寶石武器',
         'Raven\'s Image': '奈爾的幻影',
         'Comet': '隕星',
       },
       'replaceText': {
-        // '--cutscene--': '', // FIXME '--过场动画--'
+        '--cutscene--': '--過場動畫--',
         'Stamp': '踐踏',
         'Optimized Ultima': '魔導究極',
         'Flexiclaw': '潛地爪',
         'Ravensclaw': '凶鳥爪',
         'Spike Of Flame': '大火焰柱',
-        // 'Liqu[ei]faction': '', // FIXME '地面液化'
+        'Liqu[ei]faction': '地面液化',
         'Ruby Ray': '紅寶石射線',
         'Helicoclaw': '螺旋爪',
         'High-Powered Homing Lasers': '高功率誘導射線',
         'Ravensflight': '凶鳥衝',
-        // '(?<! )Homing Lasers': '', // FIXME '诱导射线'
+        '(?<! )Homing Lasers': '誘導射線',
         'Ruby Dynamics': '紅寶石電圈',
         'Undermine': '掘地雷',
         'Meteor Project': '隕石計畫',

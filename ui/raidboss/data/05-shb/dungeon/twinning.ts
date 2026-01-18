@@ -47,7 +47,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '散開 (檻に近づかない)',
           cn: '分散（避开笼子）',
           ko: '산개 (몬스터 우리 피하기)',
-          tc: '分散（避開籠子）',
+          tc: '分散 (避開籠子)',
         },
       },
     },
@@ -314,7 +314,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'vitalized reptoid': '活力化爬蟲半人馬',
         'The Tycoon': '泰空',
@@ -352,8 +351,8 @@ const triggerSet: TriggerSet<Data> = {
         'Augurium': '預兆',
         'Artificial Gravity': '人造重力',
         'Allagan Thunder': '亞拉戈雷電',
-        // '(?<! )Gravity': '', // FIXME '(?<! )重力'
-        // '(?<! )Crossray': '', // FIXME '(?<! )交叉激光'
+        '(?<! )Gravity': '重力',
+        '(?<! )Crossray': '交叉雷射',
       },
     },
     {

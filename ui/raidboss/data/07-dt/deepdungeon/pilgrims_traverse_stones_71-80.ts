@@ -64,6 +64,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Get Behind x4',
           de: 'Geh hinter x4',
+          fr: 'Derrière x4',
           cn: '去背后4次',
           ko: '뒤로 x4',
           tc: '去背後4次',
@@ -134,6 +135,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid AoE',
           de: 'Vermeide AoE',
+          fr: 'Évitez l\'AoE',
           cn: '避开AoE',
           ko: '장판 피하기',
           tc: '避開AoE',
@@ -184,6 +186,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${in} + ${backFront}',
           de: '${in} + ${backFront}',
+          fr: '${in} + ${backFront}',
           cn: '${in} + ${backFront}',
           ko: '${in} + ${backFront}',
           tc: '${in} + ${backFront}',
@@ -213,6 +216,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${out} + ${backFront}',
           de: '${out} + ${backFront}',
+          fr: '${out} + ${backFront}',
           cn: '${out} + ${backFront}',
           ko: '${out} + ${backFront}',
           tc: '${out} + ${backFront}',
@@ -232,6 +236,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Avoid final AoE',
           de: 'Vermeide finale AoE',
+          fr: 'Évitez l\'Aoe finale',
           cn: '躲避终点AoE',
           ko: '마지막 장판 피하기',
           tc: '躲避終點AoE',
@@ -278,20 +283,19 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
-      'missingTranslations': true,
       'replaceSync': {
-        'Forgiven Arrogance': 'arrogance pardonnée',
-        'Forgiven Corruption': 'corruption pardonnée',
-        'Forgiven Dissention': 'dissension pardonnée',
-        'Forgiven Profanity': 'grossièreté pardonnée',
-        'Forgiven Slander': 'calomnie pardonnée',
-        'Forgiven Spite': 'malveillance pardonnée',
-        'Forgiven Unbelief': 'incrédulité pardonnée',
-        'Forgiven Vanity': 'vanité pardonnée',
-        'Traverse Amemet': 'amemet du pèlerinage',
-        'Traverse Huldu': 'huldu du pèlerinage',
-        'Traverse Scissorjaws': 'mandicisaille du pèlerinage',
-        'Traverse Worm': 'ver du pèlerinage',
+        'Forgiven Arrogance': 'Arrogance pardonnée',
+        'Forgiven Corruption': 'Corruption pardonnée',
+        'Forgiven Dissention': 'Dissension pardonnée',
+        'Forgiven Profanity': 'Grossièreté pardonnée',
+        'Forgiven Slander': 'Calomnie pardonnée',
+        'Forgiven Spite': 'Malveillance pardonnée',
+        'Forgiven Unbelief': 'Incrédulité pardonnée',
+        'Forgiven Vanity': 'Vanité pardonnée',
+        'Traverse Amemet': 'Amemet du pèlerinage',
+        'Traverse Huldu': 'Huldu du pèlerinage',
+        'Traverse Scissorjaws': 'Mandicisaille du pèlerinage',
+        'Traverse Worm': 'Ver du pèlerinage',
       },
     },
     {

@@ -627,6 +627,21 @@ const triggerSet: TriggerSet<Data> = {
       default: 'none',
     },
     {
+      id: 'deadStarsVengefulDirection',
+      name: {
+        en: 'Forked Tower: Blood Dead Stars Vengeful Direction Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Direction: Just call the 8-way direction of the safe spot.': 'direction',
+          'Waymark: Call the ABBA/FOE/CAFE Waymark of the safe spot.': 'waymark',
+          'Both: Call both direction and waymark of the safe spot.': 'both',
+        },
+      },
+      default: 'direction',
+    },
+    {
       id: 'marbleDragonImitationRainStrategy',
       name: {
         en: 'Forked Tower: Blood Marble Dragon Imitation Rain 1 and 5 Strategy',
@@ -3063,7 +3078,29 @@ const triggerSet: TriggerSet<Data> = {
           deadStarsCenterX,
           deadStarsCenterY,
         );
-        return output[Directions.outputFrom8DirNum(dirNum)]!();
+        const dir = Directions.outputFrom8DirNum(dirNum);
+
+        if (data.triggerSetConfig.deadStarsVengefulDirection === 'direction')
+          return output[dir]!();
+
+        let waymark: 'waymarkA' | 'waymark2and3' | 'waymarkCandD' | 'unknown' = 'unknown';
+
+        // Based on popular ABBA/FOE/CAFE Waymark callouts
+        if (dir === 'dirN') {
+          waymark = 'waymarkA';
+        } else if (dir === 'dirSW') {
+          waymark = 'waymark2and3';
+        } else if (dir === 'dirSE') {
+          waymark = 'waymarkCandD';
+        }
+
+        if (waymark === 'unknown' || data.triggerSetConfig.deadStarsVengefulDirection === 'both')
+          return output.combined!({
+            waymark: output[waymark]!(),
+            dir: output[dir]!(),
+          });
+
+        return output[waymark]!();
       },
       run: (data) => {
         // Reset for next set of casts
@@ -3078,6 +3115,19 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
+        unknown: Outputs.unknown,
+        waymarkA: {
+          en: 'A',
+        },
+        waymark2and3: {
+          en: '2/3',
+        },
+        waymarkCandD: {
+          en: 'C/D',
+        },
+        combined: {
+          en: '${waymark} (${dir})',
+        },
       },
     },
     {

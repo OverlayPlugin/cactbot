@@ -31,7 +31,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '背中を向けて、塔を踏む',
           cn: '背对BOSS，踩塔',
           ko: '뒤돌고 장판 들어가기',
-          tc: '背對BOSS，踩塔',
+          tc: '背對Boss, 踩塔',
         },
       },
     },
@@ -262,7 +262,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Sword of Condemnation': '斷罪之劍',
         'Innocence': '無瑕靈君',
@@ -274,7 +273,7 @@ const triggerSet: TriggerSet<Data> = {
         'Shadowreaver': '奪影',
         'Rightful Reprobation': '斷罪迴旋',
         'Righteous Bolt': '裁決之雷',
-        // '(?<! )Reprobation': '', // FIXME '(?<! )断罪飞翔'
+        '(?<! )Reprobation': '斷罪',
         'Light Pillar': '光明柱',
         'Holy Trinity': '聖三一',
         'Guiding Light': '指明燈',
@@ -288,7 +287,7 @@ const triggerSet: TriggerSet<Data> = {
         'Exalted Wing': '高貴之翼',
         'Exalted Plumes': '羽化',
         'Drop Of Light': '落光',
-        // '--add Phase--': '', // FIXME '--小怪--'
+        '--add Phase--': '--小怪--',
       },
     },
     {

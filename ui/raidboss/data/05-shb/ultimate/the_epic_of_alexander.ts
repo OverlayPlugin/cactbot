@@ -154,7 +154,7 @@ const radiantOutputStrings = {
     ja: '拝火は北',
     cn: '月环上',
     ko: '성례: 북',
-    tc: '月環上',
+    tc: '月環: 北',
   },
   east: {
     en: 'Sacrament East',
@@ -163,7 +163,7 @@ const radiantOutputStrings = {
     ja: '拝火は東',
     cn: '月环右',
     ko: '성례: 동',
-    tc: '月環右',
+    tc: '月環: 東',
   },
   south: {
     en: 'Sacrament South',
@@ -172,7 +172,7 @@ const radiantOutputStrings = {
     ja: '拝火は南',
     cn: '月环下',
     ko: '성례: 남',
-    tc: '月環下',
+    tc: '月環: 南',
   },
   west: {
     en: 'Sacrament West',
@@ -181,7 +181,7 @@ const radiantOutputStrings = {
     ja: '拝火は西',
     cn: '月环左',
     ko: '성례: 서',
-    tc: '月環左',
+    tc: '月環: 西',
   },
   unknown: Outputs.unknown,
 };
@@ -886,7 +886,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '外へ',
           cn: '远离，躲避飞轮',
           ko: '바깥으로 차크람 피하기',
-          tc: '遠離，躲避飛輪',
+          tc: '遠離, 躲避飛輪',
         },
       },
     },
@@ -1074,7 +1074,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '水来るよ',
           cn: '马上放水',
           ko: '물이 곧 옵니다',
-          tc: '馬上放水',
+          tc: '即將放水',
         },
       },
     },
@@ -1115,7 +1115,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '雷来るよ',
           cn: '马上放雷',
           ko: '번개가 곧 옵니다',
-          tc: '馬上放雷',
+          tc: '即將放雷',
         },
       },
     },
@@ -1409,7 +1409,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '${player} に集団罰',
           cn: '集团罪 点${player}',
           ko: '${player} 에게 단체형',
-          tc: '集團罪 點${player}',
+          tc: '集團罪點 ${player}',
         },
       },
     },
@@ -1573,7 +1573,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '被ダメ増加',
           cn: '易伤：躲避顺劈和跳',
           ko: '받는 데미지 증가: 공격과 점프 피할것',
-          tc: '易傷：躲避順劈和跳',
+          tc: '易傷: 躲避順劈和跳',
         },
         baitSword: {
           en: 'Bait Sword',
@@ -1622,7 +1622,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央にチャクラム誘導; アレキの反対見て',
           cn: '中间引导飞轮，背对亚历山大',
           ko: '가운데로 차크람 유도; 알렉 반대쪽이 북쪽',
-          tc: '中間引導飛輪，背對亞歷山大',
+          tc: '中間引導飛輪, 背對亞歷山大',
         },
         baitChakrams: {
           en: 'Bait Chakrams',
@@ -1684,7 +1684,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右上 外向き 懺悔3回目',
           cn: '左侧，靠近机器人，面向场外 -> 踩第三次灵泉',
           ko: '왼쪽 위 / 참회 #3',
-          tc: '左側，靠近機器人，面向場外 -> 踩第三次靈泉',
+          tc: '左側, 靠近機器人, 面向場外 -> 踩第三次靈泉',
         },
         marker2: {
           en: 'Back Right Opposite Robot; Look Middle; 3rd Puddle',
@@ -1693,7 +1693,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左下 内向き 懺悔3回目',
           cn: '右侧，远离机器人，面向场中 -> 踩第三次灵泉',
           ko: '오른쪽 위 / 참회 #3',
-          tc: '右側，遠離機器人，面向場中 -> 踩第三次靈泉',
+          tc: '右側, 遠離機器人, 面向場中 -> 踩第三次靈泉',
         },
         marker3: {
           en: 'Back Left Opposite Robot; No Puddle',
@@ -1702,7 +1702,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左上',
           cn: '左侧，远离机器人，面向场外，不踩灵泉',
           ko: '왼쪽 아래',
-          tc: '左側，遠離機器人，面向場外，不踩靈泉',
+          tc: '左側, 遠離機器人, 面向場外, 不踩靈泉',
         },
         marker4: {
           en: 'Right To Robot; No puddle',
@@ -1711,7 +1711,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右下',
           cn: '右侧，靠近机器人，面向场中，不踩灵泉',
           ko: '오른쪽 아래',
-          tc: '右側，靠近機器人，面向場中，不踩靈泉',
+          tc: '右側, 靠近機器人, 面向場中, 不踩靈泉',
         },
         marker5: {
           en: 'Left Robot Side -> 1st Puddle',
@@ -1720,7 +1720,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右ちょい上 懺悔1回目',
           cn: '左侧，踩第一次灵泉',
           ko: '왼쪽 / 참회 #1',
-          tc: '左側，踩第一次靈泉',
+          tc: '左側, 踩第一次靈泉',
         },
         marker6: {
           en: 'Right Robot Side -> 1st Puddle',
@@ -1729,7 +1729,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左ちょい上 懺悔1回目',
           cn: '右侧，踩第一次灵泉',
           ko: '오른쪽 / 참회 #1',
-          tc: '右側，踩第一次靈泉',
+          tc: '右側, 踩第一次靈泉',
         },
         marker7: {
           en: 'Left Robot Side -> cardinal; 2nd Puddle',
@@ -1738,7 +1738,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右ちょい上 懺悔2回目',
           cn: '左侧，踩第二次灵泉',
           ko: '왼쪽 / 참회 #2',
-          tc: '左側，踩第二次靈泉',
+          tc: '左側, 踩第二次靈泉',
         },
         marker8: {
           en: 'Right Robot Side -> cardinal; 2nd Puddle',
@@ -1747,7 +1747,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左ちょい上 懺悔2回目',
           cn: '右侧，踩第二次灵泉',
           ko: '오른쪽 / 참회 #2',
-          tc: '右側，踩第二次靈泉',
+          tc: '右側, 踩第二次靈泉',
         },
       },
     },
@@ -1884,7 +1884,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'シェア (${players})',
           cn: '照准集合 (${players})',
           ko: '조준 대상: ${players}',
-          tc: '照准集合 (${players})',
+          tc: '照準集合 (${players})',
         },
         stackOnYou: Outputs.stackOnYou,
       },
@@ -2101,7 +2101,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'クローン無し: ???',
           cn: '不明: ¿¿¿',
           ko: '분신 없음: ???',
-          tc: '不明: ¿¿¿',
+          tc: '不明: ???',
         },
         defamation: {
           en: 'Defamation on YOU',
@@ -2128,7 +2128,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '加重罰',
           cn: '电点名：远离分摊',
           ko: '가중형; 왼쪽/가중형끼리 모이기',
-          tc: '電點名：遠離分攤',
+          tc: '電點名: 遠離分攤',
         },
         noDebuff: {
           en: 'No debuff: shared stack',
@@ -2137,7 +2137,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'デバフ無し',
           cn: '无Debuff：参与分摊',
           ko: '디버프 없음; 오른쪽/함께 맞기',
-          tc: '無Debuff：參與分攤',
+          tc: '無Debuff: 參與分攤',
         },
       },
     },
@@ -2410,7 +2410,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'クローン無し: 多分東から南???',
           cn: '不明: 最可能小暗 右->下 ???',
           ko: '분신 없음: 아마도 동→남 ???',
-          tc: '不明: 最可能小暗 右->下 ???',
+          tc: '不明: 最可能小暗 東->南 ???',
         },
         purpleBait: {
           en: 'Purple Bait: bait E',
@@ -2419,7 +2419,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '逃亡監察: 東へ',
           cn: '大暗: 右',
           ko: '보라/도망감찰: 유도역할/동쪽',
-          tc: '大暗: 右',
+          tc: '大暗: 東',
         },
         orangeBait: {
           en: 'Orange Bait: bait N',
@@ -2428,7 +2428,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '接触保護: 北へ',
           cn: '大光: 上',
           ko: '노랑/접촉보호: 유도역할/북쪽',
-          tc: '大光: 上',
+          tc: '大光: 北',
         },
         purpleNoTether: {
           en: 'Purple, no tether: E->W',
@@ -2437,7 +2437,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '逃亡禁止, 線無し: 東から西へ',
           cn: '小暗, 无连线: 右->左',
           ko: '보라/접촉금지/선없음: 동→서',
-          tc: '小暗, 無連線: 右->左',
+          tc: '小暗, 無連線: 東->西',
         },
         orangeNoTether: {
           // This person also has the shared sentence.
@@ -2447,7 +2447,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '接触禁止, 線無し: 東から北へ',
           cn: '小光, 无连线: 右->上',
           ko: '노랑/접촉금지/선없음: 동→북',
-          tc: '小光, 無連線: 右->上',
+          tc: '小光, 無連線: 東->北',
         },
         purpleCloseTether: {
           en: 'Purple, close tether: E->N',
@@ -2456,7 +2456,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '逃亡禁止, 接近強制: 東から北へ',
           cn: '小暗, 接近连线: 右->上',
           ko: '보라/도망금지/강제접근: 동→북',
-          tc: '小暗, 接近連線: 右->上',
+          tc: '小暗, 接近連線: 東->北',
         },
         orangeCloseTether: {
           en: 'Orange, close tether: E->N',
@@ -2465,7 +2465,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '接触禁止, 接近強制: 東から北へ',
           cn: '小光, 接近连线: 右->上',
           ko: '노랑/접촉금지/강제접근: 동→북',
-          tc: '小光, 接近連線: 右->上',
+          tc: '小光, 接近連線: 東->北',
         },
         purpleFarTether: {
           en: 'Purple, far tether: E->S',
@@ -2474,7 +2474,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '逃亡禁止, 接近禁止: 東から南へ',
           cn: '小暗, 远离连线: 右->下',
           ko: '보라/도망금지/접근금지: 동→남',
-          tc: '小暗, 遠離連線: 右->下',
+          tc: '小暗, 遠離連線: 東->南',
         },
         orangeFarTether: {
           en: 'Orange, far tether: E->N',
@@ -2483,7 +2483,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '接触禁止, 接近禁止: 東から北へ',
           cn: '小光, 远离连线: 右->上',
           ko: '노랑/접촉금지/접근금지: 동→북',
-          tc: '小光, 遠離連線: 右->上',
+          tc: '小光, 遠離連線: 東->北',
         },
       },
     },
@@ -2770,7 +2770,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央から北へ',
           cn: '中间 -> 上',
           ko: '가운데서 북쪽으로',
-          tc: '中間 -> 上',
+          tc: '中間 -> 北',
         },
         goNorthDodgeSouth: {
           en: 'Go 1 North, Dodge South',
@@ -2779,7 +2779,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北から中央へ',
           cn: '上 -> 中间',
           ko: '북쪽에서 가운데로',
-          tc: '上 -> 中間',
+          tc: '北 -> 中間',
         },
         goNorthDodgeWest: {
           en: 'Go 1 North, Dodge West',
@@ -2788,7 +2788,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北から西へ',
           cn: '上 -> 左上',
           ko: '북쪽에서 서쪽으로',
-          tc: '上 -> 左上',
+          tc: '北 -> 西',
         },
         goSouthDodgeEast: {
           en: 'Go 1 South, Dodge East',
@@ -2797,7 +2797,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南から東へ',
           cn: '下 -> 右下',
           ko: '남쪽에서 동쪽으로',
-          tc: '下 -> 右下',
+          tc: '南 -> 東',
         },
         waitMiddleDodgeSouth: {
           en: 'Wait Middle, Dodge South',
@@ -2806,7 +2806,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央から南へ',
           cn: '中间 -> 下',
           ko: '가운데서 남쪽으로',
-          tc: '中間 -> 下',
+          tc: '中間 -> 南',
         },
         goSouthDodgeNorth: {
           en: 'Go 1 South, Dodge North',
@@ -2815,7 +2815,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南から北へ',
           cn: '下 -> 中间',
           ko: '남쪽에서 북쪽으로',
-          tc: '下 -> 中間',
+          tc: '南 -> 北',
         },
       },
     },
@@ -3245,7 +3245,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<! )Alexander(?! )': '亞歷山大',
         'Alexander Prime': '至尊亞歷山大',
@@ -3260,16 +3259,16 @@ const triggerSet: TriggerSet<Data> = {
         'Steam Chakram': '蒸氣戰輪',
       },
       'replaceText': {
-        // '--Cruise Chaser Invincible--': '', // FIXME '--巡航驱逐者无敌--'
-        // '--alex untargetable--': '', // FIXME '--亚历山大无法选中--'
+        '--Cruise Chaser Invincible--': '--巡航驅逐者無敵--',
+        '--alex untargetable--': '--亞歷山大無法選中--',
         'True Heart': '真心',
-        // 'Waves': '', // FIXME '水波'
-        // '/Parting': '', // FIXME '/离别之手'
-        // '/Stillness': '', // FIXME '/静止命令'
-        // 'Individual/': '', // FIXME '单体/'
-        // 'Reveal': '', // FIXME '生效'
-        // ' and': '', // FIXME
-        // 'Fate: ': '', // FIXME '未来: '
+        'Waves': '水波',
+        '/Parting': '/離別之手',
+        '/Stillness': '/靜止命令',
+        'Individual/': '個體/',
+        'Reveal': '生效',
+        ' and': ' &',
+        'Fate: ': '未來: ',
         'Almighty Judgment': '神聖大審判',
         'Alpha Sword': '阿爾法之劍',
         'Apocalyptic Ray': '末世宣言',
@@ -3287,8 +3286,8 @@ const triggerSet: TriggerSet<Data> = {
         'Enumeration': '計數',
         'Eternal Darkness': '黑暗命運',
         'Exhaust': '污染蒸氣',
-        // 'Fate Calibration': '', // FIXME '未来确定'
-        // 'Fate Projection': '', // FIXME '未来观测'
+        'Fate Calibration': '未來確定',
+        'Fate Projection': '未來觀測',
         'Final Sentence': '死刑判決',
         'Flarethrower': '大火炎放射',
         'Fluid Strike': '流體強襲',
@@ -3310,38 +3309,38 @@ const triggerSet: TriggerSet<Data> = {
         'Limit Cut': '限制器減檔',
         'Link-Up': '系統連接',
         'Mega Holy': '百萬神聖',
-        // 'Middle Blaster': '', // FIXME '中间冲击波'
+        'Middle Blaster': '中間衝擊波',
         'Missile Command': '導彈齊發',
-        // 'Obloquy': '', // FIXME '污名神判'
+        'Obloquy': '污名神判',
         'Optical Sight': '制導',
         'Ordained Capital Punishment': '加重誅罰',
         'Ordained Motion': '行動命令',
         'Ordained Punishment': '誅罰',
         'Photon': '光子砲',
-        // 'Players Remaining': '', // FIXME '剩余玩家'
+        'Players Remaining': '位剩餘玩家',
         'Propeller Wind': '螺旋槳強風',
         'Protean Wave': '萬變水波',
-        // 'Rage Wave': '', // FIXME '活水之怒'
+        'Rage Wave': '活水之怒',
         '(?<! )Repentance': '罪惡感',
-        // 'Radiant ': '', // FIXME '拜火'
-        'Sacrament': '十字聖禮',
-        // 'Severity': '', // FIXME '重罚神判'
+        'Radiant ': '拜火',
+        'Sacrament': '聖禮',
+        'Severity': '重罰神判',
         'Sluice': '沖洗',
-        // 'Solidarity': '', // FIXME '连带神判'
+        'Solidarity': '連帶神判',
         'Spin Crusher': '迴旋碎踢',
         'Splash': '濺開',
         'Summon Alexander': '召喚亞歷山大',
         'Super Blassty Charge': '超級摧毀者衝擊',
         'Super Jump': '超級跳躍',
-        // 'Surety': '', // FIXME '誓约神判'
+        'Surety': '誓約神判',
         'Temporal Interference': '時空干涉',
         'Temporal Prison': '時間牢獄',
         'Temporal Stasis': '時間停止',
         'The Final Word': '終審判決',
         'Throttles': '液體監獄',
         'Void Of Repentance': '懺悔區',
-        // 'Water': '', // FIXME '水'
-        // 'Thunder': '', // FIXME '雷'
+        'Water': '水',
+        'Thunder': '雷',
         'Whirlwind': '龍捲風',
         'Wormhole Formation': '次元斷絕陣列',
       },
