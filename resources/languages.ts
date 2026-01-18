@@ -89,7 +89,7 @@ export const langToLocale = (lang: Lang): string => {
   }[lang];
 };
 
-export const browserLanguagesToLang = (): Lang => {
+export const localesToLang = (locales: readonly string[]): Lang => {
   const mapLanguage = (lang: string): string => {
     // Handle Chinese variants
     if (lang.startsWith('zh-')) {
@@ -106,8 +106,10 @@ export const browserLanguagesToLang = (): Lang => {
     }
     return lang.slice(0, 2);
   };
-  const lang = [...navigator.languages, 'en']
+  const lang = [...locales, 'en']
     .map(mapLanguage)
     .filter((l) => languages.includes(l as Lang))[0];
   return isLang(lang) ? lang : 'en';
 };
+
+export const browserLanguagesToLang = (): Lang => localesToLang(navigator.languages);
