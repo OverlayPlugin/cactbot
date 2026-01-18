@@ -48,10 +48,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
       id: 'E10S Damage Down Orbs',
       type: 'GainsEffect',
       netRegex: NetRegexes.gainsEffect({ source: 'Flameshadow', effectId: '82C' }),
-      netRegexDe: NetRegexes.gainsEffect({ source: 'Schattenflamme', effectId: '82C' }),
-      netRegexFr: NetRegexes.gainsEffect({ source: 'Flamme ombrale', effectId: '82C' }),
-      netRegexJa: NetRegexes.gainsEffect({ source: 'シャドウフレイム', effectId: '82C' }),
-      netRegexCn: NetRegexes.gainsEffect({ source: '影烈火', effectId: '82C' }),
       mistake: (_data, matches) => {
         return {
           type: 'damage',
@@ -69,10 +65,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
       // TODO: some of these will be duplicated with others, like `E10S Throne Of Shadow`.
       // Maybe it'd be nice to figure out how to put the damage marker on that?
       netRegex: NetRegexes.gainsEffect({ source: 'Shadowkeeper', effectId: '82C' }),
-      netRegexDe: NetRegexes.gainsEffect({ source: 'Schattenkönig', effectId: '82C' }),
-      netRegexFr: NetRegexes.gainsEffect({ source: 'Roi De L\'Ombre', effectId: '82C' }),
-      netRegexJa: NetRegexes.gainsEffect({ source: '影の王', effectId: '82C' }),
-      netRegexCn: NetRegexes.gainsEffect({ source: '影之王', effectId: '82C' }),
       mistake: (_data, matches) => {
         return {
           type: 'damage',
@@ -96,6 +88,36 @@ const triggerSet: OopsyTriggerSet<Data> = {
           reportId: matches.targetId,
           text: matches.ability,
         };
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Flameshadow': 'Schattenflamme',
+        'Shadowkeeper': 'Schattenkönig',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Flameshadow': 'Flamme ombrale',
+        'Shadowkeeper': 'Roi De L\'Ombre',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Flameshadow': 'シャドウフレイム',
+        'Shadowkeeper': '影の王',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Flameshadow': '影烈火',
+        'Shadowkeeper': '影之王',
       },
     },
   ],

@@ -298,10 +298,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
       id: 'E12S Promise Small Lion Tether',
       type: 'Tether',
       netRegex: NetRegexes.tether({ source: 'Beastly Sculpture', id: '0011' }),
-      netRegexDe: NetRegexes.tether({ source: 'Abbild Eines Löwen', id: '0011' }),
-      netRegexFr: NetRegexes.tether({ source: 'Création Léonine', id: '0011' }),
-      netRegexJa: NetRegexes.tether({ source: '創られた獅子', id: '0011' }),
-      netRegexCn: NetRegexes.tether({ source: '被创造的狮子', id: '0011' }),
       run: (data, matches) => {
         data.smallLionIdToOwner ??= {};
         data.smallLionIdToOwner[matches.sourceId.toUpperCase()] = matches.target;
@@ -313,10 +309,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
       id: 'E12S Promise Small Lion Lionsblaze',
       type: 'Ability',
       netRegex: NetRegexes.ability({ source: 'Beastly Sculpture', id: '58B9' }),
-      netRegexDe: NetRegexes.ability({ source: 'Abbild Eines Löwen', id: '58B9' }),
-      netRegexFr: NetRegexes.ability({ source: 'Création Léonine', id: '58B9' }),
-      netRegexJa: NetRegexes.ability({ source: '創られた獅子', id: '58B9' }),
-      netRegexCn: NetRegexes.ability({ source: '被创造的狮子', id: '58B9' }),
       mistake: (data, matches) => {
         // Folks baiting the big lion second can take the first small lion hit,
         // so it's not sufficient to check only the owner.
@@ -385,10 +377,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
       id: 'E12S Promise Big Lion Kingsblaze',
       type: 'Ability',
       netRegex: NetRegexes.ability({ source: 'Regal Sculpture', id: '4F9E' }),
-      netRegexDe: NetRegexes.ability({ source: 'Abbild eines großen Löwen', id: '4F9E' }),
-      netRegexFr: NetRegexes.ability({ source: 'création léonine royale', id: '4F9E' }),
-      netRegexJa: NetRegexes.ability({ source: '創られた獅子王', id: '4F9E' }),
-      netRegexCn: NetRegexes.ability({ source: '被创造的狮子王', id: '4F9E' }),
       mistake: (data, matches) => {
         const singleTarget = matches.type === '21';
         const hasFireDebuff = data.fire && data.fire[matches.target];
@@ -492,6 +480,36 @@ const triggerSet: OopsyTriggerSet<Data> = {
           reportId: matches.targetId,
           text: matches.ability,
         };
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Beastly Sculpture': 'Abbild Eines Löwen',
+        'Regal Sculpture': 'Abbild eines großen Löwen',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Beastly Sculpture': 'Création Léonine',
+        'Regal Sculpture': 'création léonine royale',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Beastly Sculpture': '創られた獅子',
+        'Regal Sculpture': '創られた獅子王',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Beastly Sculpture': '被创造的狮子',
+        'Regal Sculpture': '被创造的狮子王',
       },
     },
   ],
