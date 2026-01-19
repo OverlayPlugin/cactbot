@@ -561,7 +561,7 @@ const triggerSet: TriggerSet<Data> = {
         if (myNum !== num) {
           if (myNum === 1 && num === 3)
             return output.beta1Tower!({
-              tether: output.tether!({ num: num })
+              tether: output.tether!({ num: num }),
             });
           if (myNum === 2 && num === 4)
             return output.beta2Tower!({
@@ -569,7 +569,7 @@ const triggerSet: TriggerSet<Data> = {
             });
           if (myNum === 3 && num === 1)
             return output.beta3Tower!({
-              tether: output.tether!({num: num }),
+              tether: output.tether!({ num: num }),
             });
           if (myNum === 4 && num === 2)
             return output.beta4Tower!({
