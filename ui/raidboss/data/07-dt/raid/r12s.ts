@@ -448,7 +448,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Phagocyte Spotlight Blob Tower Location (Early)',
       // 23.8s until B4B7 Rolling Mass Blob Tower Hit
       type: 'Ability',
-      netRegex: { id: 'B4B6', capture: true },
+      netRegex: { id: 'B4B6', capture: false },
       condition: (data) => {
         if (data.myFleshBonds === 'alpha') {
           const myNum = data.inLine[data.me];
@@ -1064,38 +1064,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
-  timelineReplace: [
-    {
-      'locale': 'cn',
-      'replaceSync': {
-        'Lindwurm': '林德布鲁姆',
-      },
-      'replaceText': {
-        '\\(huge\\)': '(大)',
-        'Bloodshed': '流血',
-        'Bring Down the House': '震场',
-        '(?<! )Burst': '大爆炸',
-        'Constrictor': '巨蟒绞缠',
-        'Cruel Coil': '残暴拘束',
-        'Dramatic Lysis': '细胞爆炸',
-        'Feral Fission': '野性分裂',
-        'Fourth-Wall Fusion': '细胞轰炸',
-        'Grand Entrance': '盛大登场',
-        'Grotesquerie': '细胞附身',
-        'Hemorrhagic Projection': '指向性冲击波',
-        'Mindless Flesh': '细胞失控',
-        'Ravenous Reach': '极饿伸展',
-        'Serpentine Scourge': '灾变吐息',
-        'Shockwave': '冲击波',
-        'Skinsplitter': '蜕鳞',
-        'Splattershed': '溅血',
-        'Split Scourge': '分裂灾变',
-        'The Fixer': '补天之手',
-        'Venomous Scourge': '滴液灾变',
-        'Visceral Burst': '脏腑爆裂',
-      },
-    },
-  ],
+  timelineReplace: [],
 };
 
 export default triggerSet;
