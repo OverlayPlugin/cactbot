@@ -438,43 +438,56 @@ const triggerSet: TriggerSet<Data> = {
       // Blob 4: (86, 90) NW Outer
       type: 'Ability',
       netRegex: { id: 'B4B6', capture: true },
+      suppressSeconds: 10,
       run: (data, matches) => {
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
+        const dir = Directions.xyToIntercardDirOutput(x, y, center.x, center.y);
         data.blobTowerDirs.push(Directions.xyToIntercardDirOutput(x, y, center.x, center.y));
+
+        if (dir === 'dirSE') {
+          data.blobTowerDirs.push('dirNW');
+          data.blobTowerDirs.push('dirSW');
+          data.blobTowerDirs.push('dirNE');
+        }
+        else if (dir === 'dirNE') {
+          data.blobTowerDirs.push('dirSW');
+          data.blobTowerDirs.push('dirNW');
+          data.blobTowerDirs.push('dirSE');
+        }
+        else if (dir === 'dirNW') {
+          data.blobTowerDirs.push('dirSE');
+          data.blobTowerDirs.push('dirNE');
+          data.blobTowerDirs.push('dirSW');
+        }
+        else if (dir === 'dirSW') {
+          data.blobTowerDirs.push('dirNE');
+          data.blobTowerDirs.push('dirSE');
+          data.blobTowerDirs.push('dirNW');
+        }
       },
     },
     {
       id: 'R12S Phagocyte Spotlight Blob Tower Location (Early)',
       // 23.8s until B4B7 Rolling Mass Blob Tower Hit
+      // Only need to know first blob location
       type: 'Ability',
       netRegex: { id: 'B4B6', capture: false },
-      condition: (data) => {
-        if (data.myFleshBonds === 'alpha') {
-          const myNum = data.inLine[data.me];
-          if (
-            (myNum === 1 && data.blobTowerDirs.length === 3) ||
-            (myNum === 2 && data.blobTowerDirs.length === 4) ||
-            (myNum === 3 && data.blobTowerDirs.length === 1) ||
-            (myNum === 4 && data.blobTowerDirs.length === 2)
-          )
-            return true;
-        }
-        return false;
-      },
+      condition: (data) => data.myFleshBonds === 'alpha',
+      suppressSeconds: 10,
       delaySeconds: 0.1,
       durationSeconds: (data) => {
         const myNum = data.inLine[data.me];
         // Timings based on next trigger
         switch (myNum) {
           case 1:
-            return 13;
-          case 2:
-            return 16;
-          case 3:
             return 17;
+          case 2:
+            return 22;
+          case 3:
+            return 18;
           case 4:
-            return 15;
+            return 18;
         }
       },
       infoText: (data, _matches, output) => {
@@ -516,6 +529,16 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Blob Tower ${num} Outer ${dir} (later)',
         },
       },
+    },
+    {
+      id: 'R12S Cursed Coil Bind Knocbkack',
+      // Using Phagocyte Spotlight, 1st one happens 7s before bind
+      // Delayed additionally to reduce overlap with alpha tower location calls
+      type: 'Ability',
+      netRegex: { id: 'B4B6', capture: false },
+      suppressSeconds: 10,
+      delaySeconds: 4, // 4s warning
+      response: Responses.knockback(),
     },
     {
       id: 'R12S Cell Chain Counter',
@@ -971,11 +994,20 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (_data, matches, output) => {
         const flesh = matches.effectId === '1291' ? 'alpha' : 'beta';
-        const safeSpots = output.safeSpots!();
-        const chains = output.breakChains!();
         if (flesh === 'alpha')
-          return output.alphaChains!({ chains: chains, safe: safeSpots });
-        return output.betaChains!({ chains: chains, safe: safeSpots });
+          return output.alphaChains!({
+            chains: output.breakChains!(),
+            safe: output.safeSpots!(),
+          });
+        if (flesh === 'beta')
+          return output.betaChains!({
+            chains: output.breakChains!(),
+            safe: output.breakChains!(),
+          });
+        return output.unknownChains!({
+          chains: output.breakChains!(),
+          safe: output.breakChains!(),
+        });
       },
       outputStrings: {
         breakChains: Outputs.breakChains,
@@ -983,10 +1015,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid Blobs',
         },
         alphaChains: {
-          en: '${chains} => ${safeSpots}',
+          en: '${chains} => ${safe}',
         },
         betaChains: {
-          en: '${chains} => ${safeSpots}',
+          en: '${chains} => ${safe}',
+        },
+        unknownChains: {
+          en: '${chains} => ${safe}',
         },
       },
     },
