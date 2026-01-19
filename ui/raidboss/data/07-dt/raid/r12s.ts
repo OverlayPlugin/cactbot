@@ -961,6 +961,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Curtain Call: Unbreakable Flesh α/β Chains',
+      // TODO: Find safe spots
       type: 'GainsEffect',
       netRegex: { effectId: ['1291', '1293'], capture: true },
       condition: (data, matches) => {
@@ -970,13 +971,23 @@ const triggerSet: TriggerSet<Data> = {
       },
       infoText: (_data, matches, output) => {
         const flesh = matches.effectId === '1291' ? 'alpha' : 'beta';
+        const safeSpots = output.safeSpots!();
+        const chains = output.breakChains!();
         if (flesh === 'alpha')
-          return output.alphaChains!();
-        return output.betaChains!();
+          return output.alphaChains!( chains: chains, safe: safeSpots );
+        return output.betaChains!( chains: chains, safeSpots );
       },
       outputStrings: {
-        alphaChains: Outputs.breakChains,
-        betaChains: Outputs.breakChains,
+        breakChains: Outputs.breakChains,
+        safeSpots: {
+          en: 'Avoid Blobs',
+        },
+        alphaChains: {
+          en: '${chains} => ${safeSpots}',
+        },
+        betaChains: {
+          en: '${chains} => ${safeSpots}',
+        },
       },
     },
     {
