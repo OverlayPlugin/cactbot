@@ -136,10 +136,10 @@ hideall "--sync--"
 456.1 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
 459.8 "Serpentine Scourge Right" Ability { id: "B4D2", source: "Lindwurm" }
 460.8 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
-464.4 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-slaughtershed2"
+464.4 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
 
 # Serpentine Scourge Right First
-540.6 label jump "r12s-p1-scourge-right-1"
+540.6 label "r12s-p1-scourge-right-1"
 547.6 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
 547.6 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
 548.0 "Burst" Ability { id: "B49F", source: "Lindwurm" }
@@ -147,7 +147,7 @@ hideall "--sync--"
 554.1 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
 557.7 "Serpentine Scourge Left" Ability { id: "B4D1", source: "Lindwurm" }
 558.7 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
-562.4 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-slaughtershed2"
+562.4 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
 
 # Raptor Knuckles Left First
 641.1 label "r12s-p1-raptor-left-1"
@@ -158,7 +158,7 @@ hideall "--sync--"
 654.4 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
 658.3 "Raptor Knuckles Northwest" Ability { id: "B4CF", source: "Lindwurm" }
 659.1 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
-662.9 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-slaughtershed2"
+662.9 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
 
 # Raptor Knuckles Right First
 742.7 label "r12s-p1-raptor-right-1"
@@ -169,10 +169,10 @@ hideall "--sync--"
 756.1 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
 759.9 "Raptor Knuckles Northeast" Ability { id: "B4D0", source: "Lindwurm" }
 760.7 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
-764.5 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-slaughtershed2"
+764.5 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
 
 # Slaughtershed 2
-864.4 label "r12s-slaughtershed2"
+864.4 label "r12s-p1-slaughtershed2"
 867.4 "Slaughtershed 2 (castbar)" Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" }
 869.8 "Slaughtershed 2" Ability { id: "ADC9", source: "Lindwurm" }
 
