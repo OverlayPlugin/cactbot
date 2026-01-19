@@ -839,7 +839,7 @@ const triggerSet: TriggerSet<Data> = {
       // B4A2 is only cast when intercardinals are safe
       // These casts more than once, so just capture first event
       type: 'StartsUsing',
-      netRegex: { id: ['B4A1', 'B4A2'], capture: false },
+      netRegex: { id: ['B4A1', 'B4A2'], capture: true },
       suppressSeconds: 5,
       infoText: (data, matches, output) => {
         const count = data.myMitoticPhase;
