@@ -245,7 +245,7 @@ hideall "--sync--"
 1400.4 "--sync--" Ability { id: "B4CC", source: "Lindwurm" } jump "r12s-p1-raptor-right-3"
 1407.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
 1407.4 "Fourth-wall Fusion" #Ability { id: "B4D5", source: "Lindwurm" }
-1407.8 "Burst" 3Ability { id: "B49F", source: "Lindwurm" }
+1407.8 "Burst" Ability { id: "B49F", source: "Lindwurm" }
 1412.9 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D1", "B4D2", "B4CD", "B4CE"], source: "Lindwurm" }
 1413.9 "Serpentine Scourge/--knockback--?" #Ability { id: ["B9BC", "B9C7"], source: "Lindwurm" }
 1417.6 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D2", "B4D1", "B4CE", "B4CD"], source: "Lindwurm" }
