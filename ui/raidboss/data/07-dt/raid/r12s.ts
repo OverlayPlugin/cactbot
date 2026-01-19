@@ -974,8 +974,8 @@ const triggerSet: TriggerSet<Data> = {
         const safeSpots = output.safeSpots!();
         const chains = output.breakChains!();
         if (flesh === 'alpha')
-          return output.alphaChains!( chains: chains, safe: safeSpots );
-        return output.betaChains!( chains: chains, safeSpots );
+          return output.alphaChains!({ chains: chains, safe: safeSpots });
+        return output.betaChains!({ chains: chains, safe: safeSpots });
       },
       outputStrings: {
         breakChains: Outputs.breakChains,
