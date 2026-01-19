@@ -471,7 +471,6 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B4B6', capture: false },
       condition: (data) => data.myFleshBonds === 'alpha',
-      suppressSeconds: 10,
       delaySeconds: 0.1,
       durationSeconds: (data) => {
         const myNum = data.inLine[data.me];
@@ -487,6 +486,7 @@ const triggerSet: TriggerSet<Data> = {
             return 18;
         }
       },
+      suppressSeconds: 10,
       infoText: (data, _matches, output) => {
         const myNum = data.inLine[data.me];
         if (myNum === undefined)
@@ -533,8 +533,8 @@ const triggerSet: TriggerSet<Data> = {
       // Delayed additionally to reduce overlap with alpha tower location calls
       type: 'Ability',
       netRegex: { id: 'B4B6', capture: false },
-      suppressSeconds: 10,
       delaySeconds: 4, // 4s warning
+      suppressSeconds: 10,
       response: Responses.knockback(),
     },
     {
