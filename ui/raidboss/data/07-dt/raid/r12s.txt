@@ -288,7 +288,7 @@ hideall "--sync--"
 1636.8 "Refreshing Overkill (Enrage)?" #Ability { id: "B53A", source: "Lindwurm" }
 
 # Raptor Knuckles Left Third
-1700.4 label "r12s-p1-raptor-right-3"
+1700.4 label "r12s-p1-raptor-left-3"
 1707.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
 1707.4 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
 1707.8 "Burst" Ability { id: "B49F", source: "Lindwurm" }
