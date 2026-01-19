@@ -443,7 +443,7 @@ const triggerSet: TriggerSet<Data> = {
         const x = parseFloat(matches.x);
         const y = parseFloat(matches.y);
         const dir = Directions.xyToIntercardDirOutput(x, y, center.x, center.y);
-        data.blobTowerDirs.push(Directions.xyToIntercardDirOutput(x, y, center.x, center.y));
+        data.blobTowerDirs.push(dir);
 
         if (dir === 'dirSE') {
           data.blobTowerDirs.push('dirNW');
