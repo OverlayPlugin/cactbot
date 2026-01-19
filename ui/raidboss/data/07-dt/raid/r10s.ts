@@ -194,11 +194,12 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         bait: {
           en: '${order} bait',
+          fr: 'Déposez en ${order}',
         },
         first: {
           en: 'First',
           de: 'Erstes',
-          fr: 'Première',
+          fr: 'Premier',
           ja: '最初',
           cn: '第1组',
           ko: '첫번째',
@@ -207,7 +208,7 @@ const triggerSet: TriggerSet<Data> = {
         second: {
           en: 'Second',
           de: 'Zweites',
-          fr: 'Seconde',
+          fr: 'Deuxième',
           ja: '2番目',
           cn: '第2组',
           ko: '두번째',
@@ -252,9 +253,11 @@ const triggerSet: TriggerSet<Data> = {
           spread: Outputs.spread,
           spreadFinal: {
             en: 'Out + Spread => Stack Near Blue',
+            fr: 'Extérieur + Dispersion => Package près de Blue',
           },
           spreadFinalBait: {
             en: 'Out + Spread => Bait Blue Knockback Buster',
+            fr: 'Extérieur + Dispersion => Déposez le tankbuster de Blue',
           },
         };
         if (data.phase === 'xtremeSnaking') {
@@ -278,6 +281,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         cleaveTowardsFire: {
           en: 'Bait cleave towards Fire',
+          fr: 'Déposez le cleave vers le Feu',
         },
       },
     },
@@ -323,6 +327,7 @@ const triggerSet: TriggerSet<Data> = {
         stackMarker: Outputs.stackMarker,
         stackFinal: {
           en: '${stack} Near Blue',
+          fr: '${stack} près de Blue',
         },
       },
     },
@@ -370,13 +375,16 @@ const triggerSet: TriggerSet<Data> = {
         spread: Outputs.spread,
         waterStack: {
           en: 'Water Stack',
+          fr: 'Package Eau',
         },
         waterStackFireDebuff: {
           en: 'Water Stack',
+          fr: 'Package Eau',
         },
         waterSpread: Outputs.spread,
         waterSpreadFireDebuff: {
           en: 'Avoid Water Players',
+          fr: 'Évitez les joueurs Eau',
         },
       },
     },
@@ -423,6 +431,7 @@ const triggerSet: TriggerSet<Data> = {
         middle: Outputs.middle,
         text: {
           en: 'KB from ${dir1} + away from ${dir2}',
+          fr: 'Poussée depuis ${dir1} + loin de ${dir2}',
           cn: '从${dir1}击退 + 远离${dir2}',
         },
         ...Directions.outputStringsCardinalDir,
@@ -456,6 +465,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Wave ${waveDir}/Cone ${coneDir}',
+          fr: 'Vague ${waveDir}/Cône ${coneDir}',
         },
         ...Directions.outputStringsCardinalDir,
       },
@@ -496,15 +506,19 @@ const triggerSet: TriggerSet<Data> = {
         },
         text: {
           en: '${protean} => ${action}',
+          fr: '${protean} => ${action}',
         },
         watersnaking: {
           en: '${protean} => ${action}',
+          fr: '${protean} => ${action}',
         },
         arenaSplitReverse: {
           en: 'Reverse Alley-oop',
+          fr: 'Alley-oop inversé',
         },
         arenaSplitDoubleDip: {
           en: 'Double-Dip Protean',
+          fr: 'Double Alley-oop',
         },
       },
     },
@@ -517,6 +531,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'Go N/S + Big AoE',
+          fr: 'Allez N/S + Grosse AoE',
           cn: '去上/下 + 高伤害 AOE',
         },
       },
@@ -587,32 +602,40 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text1: {
           en: '${water}: ${waterMech}/${fire}: ${fireMech}',
+          fr: '${water}: ${waterMech}/${fire}: ${fireMech}',
         },
         text2: {
           en: '${mech} (${swap})',
+          fr: '${mech} (${swap})',
         },
         fire: {
           en: 'Fire',
+          fr: 'Feu',
         },
         water: {
           en: 'Water',
+          fr: 'Eau',
         },
         stack: Outputs.getTogether,
         protean: Outputs.protean,
         // Not using Outputs.tankBuster for brevity
         buster: {
           en: 'Buster',
+          fr: 'Buster',
         },
         swapText: {
           en: '${role} Swap',
+          fr: 'Échange ${role}',
         },
         tank: Outputs.tank,
         healer: Outputs.healer,
         melee: {
           en: 'Melee',
+          fr: 'Mêlée',
         },
         ranged: {
           en: 'Ranged',
+          fr: 'Distant',
         },
       },
     },
@@ -634,9 +657,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         beNearBlue: {
           en: 'Be Near Blue',
+          fr: 'Près de Blue',
         },
         baitBlueBuster: {
           en: 'Bait Blue Knockback Buster',
+          fr: 'Déposez le tankbuster de Blue (poussée)',
         },
       },
     },
@@ -677,9 +702,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         firesnaking: {
           en: 'Red\'s Target',
+          fr: 'Ciblé par Red',
         },
         watersnaking: {
           en: 'Blue\'s Target',
+          fr: 'Ciblé par Blue',
         },
       },
     },
@@ -704,12 +731,15 @@ const triggerSet: TriggerSet<Data> = {
         south: Outputs.south,
         stack: {
           en: 'Water Stack',
+          fr: 'Package Eau',
         },
         spread: {
           en: 'Water Spread',
+          fr: 'Dispersion Eau',
         },
         text: {
           en: '${dir} + ${mech} + Fire Spread',
+          fr: '${dir} + ${mech} + Dispersion Feu',
         },
       },
     },
@@ -724,6 +754,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         baitHotAerial: {
           en: 'Bait Hot Aerial',
+          fr: 'Déposez Flamme aérienne',
         },
       },
     },
@@ -758,8 +789,14 @@ const triggerSet: TriggerSet<Data> = {
         return output.blueTether!();
       },
       outputStrings: {
-        redTether: 'Red Tether on YOU',
-        blueTether: 'Blue Tether on YOU',
+        redTether: {
+          en: 'Red Tether on YOU',
+          fr: 'Lien Rouge sur VOUS',
+        },
+        blueTether: {
+          en: 'Blue Tether on YOU',
+          fr: 'Lien Bleu sur VOUS',
+        },
       },
     },
     {
@@ -770,6 +807,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         text: {
           en: 'E/W Groups, Out of Middle',
+          fr: 'Groupes E/O, Sortez du milieu',
         },
       },
     },
@@ -792,9 +830,11 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         xtremeFiresnaking: {
           en: 'Red Debuff (Fire)',
+          fr: 'Debuff Rouge (Feu)',
         },
         xtremeWatersnaking: {
           en: 'Blue Debuff (Water)',
+          fr: 'Debuff Bleu (Eau)',
         },
       },
     },
