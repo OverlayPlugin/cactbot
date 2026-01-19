@@ -452,7 +452,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '2: 1er Saut, 3ème tour',
           cn: '2麻 1火3塔',
           ko: '2: 1돌진, 3기둥',
-          tc: '2: 1火3塔',
+          tc: '2麻 1火3塔',
         },
         4: {
           en: '4: Second dash, last tower',
@@ -460,7 +460,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '4: 2nd Saut, Dernière tour',
           cn: '4麻 2火4塔',
           ko: '4: 2돌진, 4기둥',
-          tc: '4: 2火4塔',
+          tc: '4麻 2火4塔',
         },
         6: {
           en: '6: First tower, third dash',
@@ -468,7 +468,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '6: 1ère Tour, 3ème Saut',
           cn: '6麻 1塔3火',
           ko: '6: 1기둥, 3돌진',
-          tc: '6: 1塔3火',
+          tc: '6麻 1塔3火',
         },
         8: {
           en: '8: Second tower, last dash',
@@ -476,7 +476,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: '8: 2ème Tour, Dernier Saut',
           cn: '8麻 2塔4火',
           ko: '8: 2기둥, 4돌진',
-          tc: '8: 2塔4火',
+          tc: '8麻 2塔4火',
         },
         tts: {
           en: '${num}',
