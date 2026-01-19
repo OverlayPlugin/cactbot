@@ -216,8 +216,8 @@ const triggerSet: TriggerSet<Data> = {
         const cleave = data.grotesquerieCleave;
         if (cleave === undefined)
           return data.phase === 'doorboss'
-          ? output.baitThenSpread!()
-          : output.spreadCurtain!();
+            ? output.baitThenSpread!()
+            : output.spreadCurtain!();
         return data.phase === 'doorboss'
           ? output.baitThenSpreadCleave!({ cleave: output[cleave]!() })
           : output.spreadCurtain!();
@@ -352,9 +352,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
         const flesh = data.myFleshBonds;
         if (flesh === undefined)
-          return output.order!({
-            num: myNum
-          });
+          return output.order!({ num: myNum });
         if (flesh === 'alpha') {
           switch (myNum) {
             case 1:
