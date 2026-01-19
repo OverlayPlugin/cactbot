@@ -672,7 +672,7 @@ const triggerSet: TriggerSet<Data> = {
         const duration = parseFloat(matches.duration);
         if (duration > 35)
           return 27;
-        return 32;
+        return 34;
       },
       infoText: (data, matches, output) => {
         const duration = parseFloat(matches.duration);
@@ -909,9 +909,9 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.phase === 'curtainCall',
       alertText: (data, matches, output) => {
         if (matches.id === 'B49A') {
-          return data.hasRot ? output.getHitEast!() : output.safeWest!();
+          return data.hasRot ? output.safeWest!() : output.getHitEast!();
         }
-        return data.hasRot ? output.getHitWest!() : output.safeEast!();
+        return data.hasRot ? output.safeEast!() : output.getHitWest!();
       },
       outputStrings: {
         getHitWest: {
