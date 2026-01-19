@@ -558,8 +558,27 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         const myNum = data.inLine[data.me];
         const num = data.cellChainCount;
-        if (myNum !== num)
+        if (myNum !== num) {
+          if (myNum === 1 && num === 3)
+            return output.beta1Tower!({
+              tether: output.tether!({ num: num })
+            });
+          if (myNum === 2 && num === 4)
+            return output.beta2Tower!({
+              tether: output.tether!({ num: num }),
+            });
+          if (myNum === 3 && num === 1)
+            return output.beta3Tower!({
+              tether: output.tether!({num: num }),
+            });
+          if (myNum === 4 && num === 2)
+            return output.beta4Tower!({
+              tether: output.tether!({ num: num }),
+            });
+
           return output.tether!({ num: num });
+        }
+
         if (myNum === undefined)
           return output.tether!({ num: num });
       },
@@ -572,6 +591,18 @@ const triggerSet: TriggerSet<Data> = {
           cn: '线 ${num}',
           ko: '선 ${num}',
           tc: '線 ${num}',
+        },
+        beta1Tower: {
+          en: '${tether} => Chain Tower 3',
+        },
+        beta2Tower: {
+          en: '${tether} => Chain Tower 4',
+        },
+        beta3Tower: {
+          en: '${tether} => Chain Tower 1',
+        },
+        beta4Tower: {
+          en: '${tether} => Chain Tower 2',
         },
       },
     },
