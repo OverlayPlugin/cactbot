@@ -449,18 +449,15 @@ const triggerSet: TriggerSet<Data> = {
           data.blobTowerDirs.push('dirNW');
           data.blobTowerDirs.push('dirSW');
           data.blobTowerDirs.push('dirNE');
-        }
-        else if (dir === 'dirNE') {
+        } else if (dir === 'dirNE') {
           data.blobTowerDirs.push('dirSW');
           data.blobTowerDirs.push('dirNW');
           data.blobTowerDirs.push('dirSE');
-        }
-        else if (dir === 'dirNW') {
+        } else if (dir === 'dirNW') {
           data.blobTowerDirs.push('dirSE');
           data.blobTowerDirs.push('dirNE');
           data.blobTowerDirs.push('dirSW');
-        }
-        else if (dir === 'dirSW') {
+        } else if (dir === 'dirSW') {
           data.blobTowerDirs.push('dirNE');
           data.blobTowerDirs.push('dirSE');
           data.blobTowerDirs.push('dirNW');
