@@ -211,7 +211,7 @@ Options.Triggers.push({
           ja: '${player} をフル回復',
           cn: '奶满 ${player}',
           ko: '완전 회복: ${player}',
-          tc: '奶滿 ${player}',
+          tc: '補滿 ${player}',
         },
       },
     },
@@ -393,7 +393,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Caustic Grebuloff': '變異的格雷布洛弗',
         'Golden Wings': '黃金蝶',
@@ -406,8 +405,8 @@ Options.Triggers.push({
         'Weeping Miasma': '腐爛毒素',
       },
       'replaceText': {
-        // '\\(circles\\)': '', // FIXME '(圆)'
-        // '\\(spread\\)': '', // FIXME '(扩散)'
+        '\\(circles\\)': '(圓)',
+        '\\(spread\\)': '(擴散)',
         'Befoulment': '膿液彈',
         'Benevolence': '博愛',
         'Blighted Water': '腐水塊',

@@ -1089,7 +1089,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Azeyma(?!\')': '阿澤瑪',
         'Azeyma\'s Heat': '阿澤瑪的幻象',
@@ -1114,16 +1113,16 @@ Options.Triggers.push({
         'The Twin Halls': '雙面宮',
       },
       'replaceText': {
-        // '--hammer--': '', // FIXME '--锤子--'
-        // '\(fake\)': '', // FIXME '(假)'
-        // '\(proximity\)': '', // FIXME '(距离衰减)'
-        // '\(summon\)': '', // FIXME '(召唤)'
+        '--hammer--': '--錘子--',
+        '\(fake\)': '(假)',
+        '\(proximity\)': '(距離衰減)',
+        '\(summon\)': '(召喚)',
         'Advent of the Eighth': '彗星環',
         'As Above, So Below': '生死抉擇之炎',
         'Balance': '靈魂的清算',
         'Bolts from the Blue': '天雷',
         'Boltloop': '雷圈',
-        // 'Bronze Lightning': '', // FIXME '轰雷'
+        'Bronze Lightning': '轟雷流電',
         'Bronze Work': '轟雷之杖',
         'Broken World': '破壞之彗星',
         'Builder\'s Build': '工藝神造',

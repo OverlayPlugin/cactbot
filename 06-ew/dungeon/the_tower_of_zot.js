@@ -360,7 +360,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Berserker Sphere': '狂暴晶球',
         'Cinduruva': '馬格',
@@ -375,9 +374,9 @@ Options.Triggers.push({
       'replaceText': {
         'Cinduruva': '馬格',
         'Delayed Element III': '人趣大火焰',
-        // 'Delayed Thunder III': '', // FIXME '延迟暴雷'
+        'Delayed Thunder III': '延遲雷電',
         'Delta Attack': '三角攻擊',
-        // 'Delta Blizzard/Fire/Thunder III': '', // FIXME '三角冰封/爆炎/暴雷'
+        'Delta Blizzard/Fire/Thunder III': '三角大暴雪/火焰/雷電',
         'Dhrupad': '德魯帕德',
         'Explosive Force': '起爆',
         'Isitva Siddhi': '物創滅',
@@ -400,7 +399,7 @@ Options.Triggers.push({
         'Samsara': '輪迴',
         'Sanduruva': '多格',
         'Sphere Shatter': '碎裂',
-        // 'Transmute Element III': '', // FIXME '魔力操纵：元素'
+        'Transmute Element III': '魔力操縱：元素',
         'Transmute Thunder III': '魔力操縱：大雷電',
       },
     },

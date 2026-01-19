@@ -68,7 +68,7 @@ Options.Triggers.push({
           ja: '玉に気を付けて',
           cn: '站在远离钢铁的月环球下',
           ko: '도끼에서 먼 도넛 밑으로',
-          tc: '站在遠離鋼鐵的月環球下',
+          tc: '站在遠離斧頭的月環球下',
         },
       },
     },
@@ -1259,7 +1259,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aetheric Charge': '魔力球',
         'Aloalo Ahool': '阿羅阿羅阿胡',
@@ -1293,7 +1292,7 @@ Options.Triggers.push({
         'Zeal-blind Zozone': '糊塗蛋 佐佐涅',
       },
       'replaceText': {
-        // '--cleanse--': '', // FIXME '--解除--'
+        '--cleanse--': '--解除--',
         '4-tonze Weight': '4星噸',
         'Aero II': '中勁風',
         'Aero IV': '超勁風',

@@ -60,7 +60,7 @@ Options.Triggers.push({
           ja: '中央ー北',
           cn: '中上',
           ko: '중앙-북쪽',
-          tc: '中上',
+          tc: '中北',
         },
         middlesouth: {
           en: 'Middle-South',
@@ -69,7 +69,7 @@ Options.Triggers.push({
           ja: '中央ー南',
           cn: '中下',
           ko: '중앙-남쪽',
-          tc: '中下',
+          tc: '中南',
         },
         text: {
           en: 'Stampede from ${dir} (${row} Row)',

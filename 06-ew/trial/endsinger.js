@@ -416,7 +416,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Doomed Stars': '邁向終結的星球',
         'Kakodaimon': '惡靈魔',
@@ -424,9 +423,9 @@ Options.Triggers.push({
         'oblivion': '混沌次元',
       },
       'replaceText': {
-        // '\\(big\\)': '', // FIXME '(大)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(small\\)': '', // FIXME '(小)'
+        '\\(big\\)': '(大)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(small\\)': '(小)',
         'Aporrhoia': '流溢',
         'Crash': '衝撞',
         'Dead Star': '坍縮星',

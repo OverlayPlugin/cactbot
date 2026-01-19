@@ -321,7 +321,7 @@ Options.Triggers.push({
           ja: 'たまの一番後ろへ (東西)',
           cn: '站在球和队友后 (左/右)',
           ko: '구슬 뒤로 (동/서)',
-          tc: '站在球和隊友後 (左/右)',
+          tc: '站在球和隊友後 (東/西)',
         },
         getBehindParty: {
           en: 'Behind party',
@@ -422,7 +422,7 @@ Options.Triggers.push({
             ja: '自分に強攻撃、東西で誘導',
             cn: '死刑点名, 左/右 球下引导',
             ko: '나에게 탱버, 동/서쪽 구슬 사이로',
-            tc: '死刑點名, 左/右 球下引導',
+            tc: '死刑點名, 東/西 球下引導',
           },
         };
         if (matches.target === data.me) {
@@ -1398,7 +1398,7 @@ Options.Triggers.push({
           ja: '北西 隅',
           cn: '左上角',
           ko: '북서쪽 구석',
-          tc: '左上角',
+          tc: '西北角',
         },
         outsideNNW: {
           en: 'NNW Outside',
@@ -1407,7 +1407,7 @@ Options.Triggers.push({
           ja: '1列 西の内側',
           cn: '外侧 上偏左',
           ko: '바깥 북쪽 왼칸',
-          tc: '外側 上偏左',
+          tc: '外側 北偏西',
         },
         outsideNNE: {
           en: 'NNE Outside',
@@ -1416,7 +1416,7 @@ Options.Triggers.push({
           ja: '1列 東の内側',
           cn: '外侧 上偏右',
           ko: '바깥 북쪽 오른칸',
-          tc: '外側 上偏右',
+          tc: '外側 北偏東',
         },
         outsideNE: {
           en: 'NE Corner',
@@ -1425,7 +1425,7 @@ Options.Triggers.push({
           ja: '北東 隅',
           cn: '右上角',
           ko: '북동쪽 구석',
-          tc: '右上角',
+          tc: '東北角',
         },
         outsideWNW: {
           en: 'WNW Outside',
@@ -1434,7 +1434,7 @@ Options.Triggers.push({
           ja: '2列 西の外側',
           cn: '外侧 左偏上',
           ko: '바깥 서쪽 위칸',
-          tc: '外側 左偏上',
+          tc: '外側 西偏北',
         },
         insideNW: {
           en: 'NW Inside',
@@ -1443,7 +1443,7 @@ Options.Triggers.push({
           ja: '内側 北西',
           cn: '内侧 左上',
           ko: '안 북서쪽',
-          tc: '內側 左上',
+          tc: '內側 西北',
         },
         insideNE: {
           en: 'NE Inside',
@@ -1452,7 +1452,7 @@ Options.Triggers.push({
           ja: '内側 北東',
           cn: '内侧 右上',
           ko: '안 북동쪽',
-          tc: '內側 右上',
+          tc: '內側 東北',
         },
         outsideENE: {
           en: 'ENE Outside',
@@ -1461,7 +1461,7 @@ Options.Triggers.push({
           ja: '2列 東の外側',
           cn: '外侧 右偏上',
           ko: '바깥 동쪽 위칸',
-          tc: '外側 右偏上',
+          tc: '外側 東偏北',
         },
         outsideWSW: {
           en: 'WSW Outside',
@@ -1470,7 +1470,7 @@ Options.Triggers.push({
           ja: '3列 西の外側',
           cn: '外侧 左偏下',
           ko: '바깥 서쪽 아래칸',
-          tc: '外側 左偏下',
+          tc: '外側 西偏南',
         },
         insideSW: {
           en: 'SW Inside',
@@ -1479,7 +1479,7 @@ Options.Triggers.push({
           ja: '内側 南西',
           cn: '内侧 左下',
           ko: '안 남서쪽',
-          tc: '內側 左下',
+          tc: '內側 西南',
         },
         insideSE: {
           en: 'SE Inside',
@@ -1488,7 +1488,7 @@ Options.Triggers.push({
           ja: '内側 南東',
           cn: '内侧 右下',
           ko: '안 남동쪽',
-          tc: '內側 右下',
+          tc: '內側 東南',
         },
         outsideESE: {
           en: 'ESE Outside',
@@ -1497,7 +1497,7 @@ Options.Triggers.push({
           ja: '3列 東の外側',
           cn: '外侧 右偏下',
           ko: '바깥 동쪽 아래칸',
-          tc: '外側 右偏下',
+          tc: '外側 東偏南',
         },
         outsideSW: {
           en: 'SW Corner',
@@ -1506,7 +1506,7 @@ Options.Triggers.push({
           ja: '南西 隅',
           cn: '左下角',
           ko: '남서쪽 구석',
-          tc: '左下角',
+          tc: '西南角',
         },
         outsideSSW: {
           en: 'SSW Outside',
@@ -1515,7 +1515,7 @@ Options.Triggers.push({
           ja: '4列 西の内側',
           cn: '外侧 下偏左',
           ko: '바깥 남쪽 왼칸',
-          tc: '外側 下偏左',
+          tc: '外側 南偏西',
         },
         outsideSSE: {
           en: 'SSE Outside',
@@ -1524,7 +1524,7 @@ Options.Triggers.push({
           ja: '4列 東の内側',
           cn: '外侧 下偏右',
           ko: '바깥 남쪽 오른칸',
-          tc: '外側 下偏右',
+          tc: '外側 南偏東',
         },
         outsideSE: {
           en: 'SE Corner',
@@ -1533,7 +1533,7 @@ Options.Triggers.push({
           ja: '南東 隅',
           cn: '右下角',
           ko: '남동쪽 구석',
-          tc: '右下角',
+          tc: '東南角',
         },
         unknown: Outputs.unknown,
       },
@@ -2047,7 +2047,7 @@ Options.Triggers.push({
           ja: '3列',
           cn: '向右传送（蓝）',
           ko: '파란색 동쪽 텔레포트',
-          tc: '向右傳送（藍）',
+          tc: '向東傳送(藍)',
         },
         blueWest: {
           en: 'Blue Teleporting West',
@@ -2056,7 +2056,7 @@ Options.Triggers.push({
           ja: '4列',
           cn: '向左传送（蓝）',
           ko: '파란색 서쪽 텔레포트',
-          tc: '向左傳送（藍）',
+          tc: '向西傳送(藍)',
         },
         orangeEast: {
           en: 'Orange Teleporting East',
@@ -2065,7 +2065,7 @@ Options.Triggers.push({
           ja: '2列',
           cn: '向右传送（橙）',
           ko: '주황색 동쪽 텔레포트',
-          tc: '向右傳送（橙）',
+          tc: '向東傳送(橙)',
         },
         orangeWest: {
           en: 'Orange Teleporting West',
@@ -2074,7 +2074,7 @@ Options.Triggers.push({
           ja: '1列',
           cn: '向左传送（橙）',
           ko: '주황색 서쪽 텔레포트',
-          tc: '向左傳送（橙）',
+          tc: '向西傳送(橙)',
         },
       },
     },
@@ -2730,7 +2730,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aqueduct Belladonna': '水道劇毒美人',
         'Aqueduct Dryad': '水道樹妖',
@@ -2778,7 +2777,7 @@ Options.Triggers.push({
         'Fizzling Suds': '電氣泡泡',
         'Flash of Steel': '鬥士波動',
         'Fresh Puff': '創造絨球',
-        // 'Gold Flame': '', // FIXME '黄金闪火'
+        'Gold Flame': '黃金閃火',
         'Hateful Visage': '啟動咒像',
         'Infern Brand': '設置咒具',
         'Infern Ward': '咒具警陣',

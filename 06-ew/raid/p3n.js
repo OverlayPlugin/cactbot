@@ -355,7 +355,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Phoinix': '菲尼克斯',
         'Sparkfledged': '火靈鳥',
@@ -363,7 +362,7 @@ Options.Triggers.push({
       },
       'replaceText': {
         '--fire expands--': '十字地火',
-        // '--giant fireplume\\?--': '', // FIXME '--巨大火柱?--'
+        '--giant fireplume\\?--': '--劫火焚天?--',
         'Ashen Eye': '暗之瞳',
         'Blazing Rain': '炎之雨',
         'Brightened Fire': '光之炎',

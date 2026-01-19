@@ -516,7 +516,7 @@ Options.Triggers.push({
           ja: '北西の隅',
           cn: '左上角',
           ko: '북서쪽 구석',
-          tc: '左上角',
+          tc: '西北角',
         },
         cornerNE: {
           en: 'NE Corner',
@@ -525,7 +525,7 @@ Options.Triggers.push({
           ja: '北東の隅',
           cn: '右上角',
           ko: '북동쪽 구석',
-          tc: '右上角',
+          tc: '東北角',
         },
         cornerSE: {
           en: 'SE Corner',
@@ -534,7 +534,7 @@ Options.Triggers.push({
           ja: '南東の隅',
           cn: '右下角',
           ko: '남동쪽 구석',
-          tc: '右下角',
+          tc: '東南角',
         },
         cornerSW: {
           en: 'SW Corner',
@@ -543,7 +543,7 @@ Options.Triggers.push({
           ja: '南西の隅',
           cn: '左下角',
           ko: '남서쪽 구석',
-          tc: '左下角',
+          tc: '西南角',
         },
         outsideNorth: {
           en: 'Outside North',
@@ -552,7 +552,7 @@ Options.Triggers.push({
           ja: '北の外側',
           cn: '上外侧',
           ko: '북쪽 바깥',
-          tc: '上外側',
+          tc: '北外側',
         },
         insideNorth: {
           en: 'Inside North',
@@ -561,7 +561,7 @@ Options.Triggers.push({
           ja: '北の内側',
           cn: '上内侧',
           ko: '북쪽 안',
-          tc: '上內側',
+          tc: '北內側',
         },
         outsideEast: {
           en: 'Outside East',
@@ -570,7 +570,7 @@ Options.Triggers.push({
           ja: '東の外側',
           cn: '右外侧',
           ko: '동쪽 바깥',
-          tc: '右外側',
+          tc: '東外側',
         },
         insideEast: {
           en: 'Inside East',
@@ -579,7 +579,7 @@ Options.Triggers.push({
           ja: '東の内側',
           cn: '右内侧',
           ko: '동쪽 안',
-          tc: '右內側',
+          tc: '東內側',
         },
         outsideSouth: {
           en: 'Outside South',
@@ -588,7 +588,7 @@ Options.Triggers.push({
           ja: '南の外側',
           cn: '下外侧',
           ko: '남쪽 바깥',
-          tc: '下外側',
+          tc: '南外側',
         },
         insideSouth: {
           en: 'Inside South',
@@ -597,7 +597,7 @@ Options.Triggers.push({
           ja: '南の内側',
           cn: '下内侧',
           ko: '남쪽 안',
-          tc: '下內側',
+          tc: '南內側',
         },
         outsideWest: {
           en: 'Outside West',
@@ -606,7 +606,7 @@ Options.Triggers.push({
           ja: '西の外側',
           cn: '左外侧',
           ko: '서쪽 바깥',
-          tc: '左外側',
+          tc: '西外側',
         },
         insideWest: {
           en: 'Inside West',
@@ -615,7 +615,7 @@ Options.Triggers.push({
           ja: '西の内側',
           cn: '左内侧',
           ko: '서쪽 안',
-          tc: '左內側',
+          tc: '西內側',
         },
       },
     },
@@ -1375,7 +1375,7 @@ Options.Triggers.push({
           ja: '南北フェニックス',
           cn: '上/下 凤凰',
           ko: '새 남/북쪽',
-          tc: '上/下 鳳凰',
+          tc: '北/南 鳳凰',
         },
         eastWest: {
           en: 'East/West Bird',
@@ -1384,7 +1384,7 @@ Options.Triggers.push({
           ja: '東西フェニックス',
           cn: '左/右 凤凰',
           ko: '새 동/서쪽',
-          tc: '左/右 鳳凰',
+          tc: '東/西 鳳凰',
         },
       },
     },
@@ -1588,7 +1588,7 @@ Options.Triggers.push({
           ja: '南・北',
           cn: '上/下',
           ko: '남/북쪽',
-          tc: '上/下',
+          tc: '北/南',
         },
         eastWest: {
           en: 'East / West',
@@ -1597,7 +1597,7 @@ Options.Triggers.push({
           ja: '東・西',
           cn: '左/右',
           ko: '동/서쪽',
-          tc: '左/右',
+          tc: '東/西',
         },
         north: Outputs.north,
         east: Outputs.east,
@@ -3019,7 +3019,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         '(?<!Illusory )Hephaistos': '赫淮斯托斯',
         'Gorgon': '戈爾貢',
@@ -3027,8 +3026,8 @@ Options.Triggers.push({
         'Suneater': '炎靈蛇',
       },
       'replaceText': {
-        // 'line': '', // FIXME '直线'
-        // '--auto--': '', // FIXME '--平A--'
+        'line': '直線',
+        '--auto--': '--平A--',
         'Abyssal Fires': '火炎風暴',
         'Aionagonia': '永恆之苦',
         'Aioniopyr': '永恆之火',
@@ -3045,7 +3044,7 @@ Options.Triggers.push({
         'Conceptual Tetraflare': '四分火光之念',
         'Creation on Command': '創造命令',
         'Crown of the Gorgon': '戈爾貢石光',
-        // 'Cthonic Vent': '', // FIXME '喷炎升蛇'
+        'Cthonic Vent': '噴炎升蛇',
         'Deconceptualize': '概念消除',
         'Dominion': '支配者的一擊',
         'Ego Death': '自我概念崩壞',
@@ -3089,7 +3088,7 @@ Options.Triggers.push({
         'Stomp Dead': '致命踐踏',
         'Sun\'s Pinion': '炎之翼',
         'Sunforge': '創獸炎舞',
-        // '(?<! )Tetraflare': '', // FIXME '四分核爆之念'
+        '(?<! )Tetraflare': '四分火光',
         'Torch Flame': '灼炎',
         'Trailblaze': '踏火尋跡',
         'Twist Nature': '強制詠唱',

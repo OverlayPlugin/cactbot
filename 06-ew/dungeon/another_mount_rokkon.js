@@ -1062,7 +1062,7 @@ Options.Triggers.push({
           ja: '北 + ${mechanic}',
           cn: '上菱形 + ${mechanic}',
           ko: '북쪽 + ${mechanic}',
-          tc: '上菱形 + ${mechanic}',
+          tc: '北菱形 + ${mechanic}',
         },
         east: {
           en: 'East Diamond + ${mechanic}',
@@ -1071,7 +1071,7 @@ Options.Triggers.push({
           ja: '東 + ${mechanic}',
           cn: '右菱形 + ${mechanic}',
           ko: '동쪽 + ${mechanic}',
-          tc: '右菱形 + ${mechanic}',
+          tc: '東菱形 + ${mechanic}',
         },
         south: {
           en: 'South Diamond + ${mechanic}',
@@ -1080,7 +1080,7 @@ Options.Triggers.push({
           ja: '南 + ${mechanic}',
           cn: '下菱形 + ${mechanic}',
           ko: '남쪽 + ${mechanic}',
-          tc: '下菱形 + ${mechanic}',
+          tc: '南菱形 + ${mechanic}',
         },
         west: {
           en: 'West Diamond + ${mechanic}',
@@ -1089,7 +1089,7 @@ Options.Triggers.push({
           ja: '西 + ${mechanic}',
           cn: '左菱形 + ${mechanic}',
           ko: '서쪽 + ${mechanic}',
-          tc: '左菱形 + ${mechanic}',
+          tc: '西菱形 + ${mechanic}',
         },
         northeast: {
           en: 'Northeast Square + ${mechanic}',
@@ -1098,7 +1098,7 @@ Options.Triggers.push({
           ja: '北東 + ${mechanic}',
           cn: '右上 正方形 + ${mechanic}',
           ko: '북동쪽 + ${mechanic}',
-          tc: '右上 正方形 + ${mechanic}',
+          tc: '東北 正方形 + ${mechanic}',
         },
         southeast: {
           en: 'Southeast Square + ${mechanic}',
@@ -1107,7 +1107,7 @@ Options.Triggers.push({
           ja: '南東 + ${mechanic}',
           cn: '右下 正方形 + ${mechanic}',
           ko: '남동쪽 + ${mechanic}',
-          tc: '右下 正方形 + ${mechanic}',
+          tc: '東南 正方形 + ${mechanic}',
         },
         southwest: {
           en: 'Southwest Square + ${mechanic}',
@@ -1116,7 +1116,7 @@ Options.Triggers.push({
           ja: '南西 + ${mechanic}',
           cn: '左下 正方形 + ${mechanic}',
           ko: '남서쪽 + ${mechanic}',
-          tc: '左下 正方形 + ${mechanic}',
+          tc: '西南 正方形 + ${mechanic}',
         },
         northwest: {
           en: 'Northwest Square + ${mechanic}',
@@ -1125,7 +1125,7 @@ Options.Triggers.push({
           ja: '北西 + ${mechanic}',
           cn: '左上 正方形 + ${mechanic}',
           ko: '북서쪽 + ${mechanic}',
-          tc: '左上 正方形 + ${mechanic}',
+          tc: '西北 正方形 + ${mechanic}',
         },
         ...basicStackSpreadOutputStrings,
         unknownMech: Outputs.unknown,
@@ -2419,7 +2419,7 @@ Options.Triggers.push({
           ja: '北・南',
           cn: '上/下',
           ko: '북쪽/남쪽',
-          tc: '上/下',
+          tc: '北/南',
         },
         eastWest: {
           en: 'East/West',
@@ -2428,7 +2428,7 @@ Options.Triggers.push({
           ja: '東・西',
           cn: '左/右',
           ko: '동쪽/서쪽',
-          tc: '左/右',
+          tc: '東/西',
         },
       },
     },
@@ -3165,7 +3165,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ashigaru Kyuhei': '足輕弓兵',
         'Ball of Levin': '閃電球',
@@ -3186,8 +3185,8 @@ Options.Triggers.push({
         'The Trial Of Wisdom': '智德的試煉',
       },
       'replaceText': {
-        // '\\(circles\\)': '', // FIXME '(圆圈)'
-        // '\\(lines\\)': '', // FIXME '(直线)'
+        '\\(circles\\)': '(圓圈)',
+        '\\(lines\\)': '(直線)',
         'Azure Auspice': '青帝劍氣',
         'Boundless Azure': '青帝空閃刃',
         'Boundless Scarlet': '赤帝空閃刃',

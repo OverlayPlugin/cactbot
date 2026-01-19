@@ -385,7 +385,7 @@ Options.Triggers.push({
           ja: '内側 西',
           cn: '内侧 左 ',
           ko: '안 서쪽',
-          tc: '內側 左',
+          tc: '內側 西',
         },
         insideEast: {
           en: 'Inside East',
@@ -394,7 +394,7 @@ Options.Triggers.push({
           ja: '内側 東',
           cn: '内侧 右',
           ko: '안 동쪽',
-          tc: '內側 右',
+          tc: '內側 東',
         },
         outsideWest: {
           en: 'Outside West',
@@ -403,7 +403,7 @@ Options.Triggers.push({
           ja: '外側 西',
           cn: '外侧 左 ',
           ko: '바깥 서쪽',
-          tc: '外側 左',
+          tc: '外側 西',
         },
         outsideEast: {
           en: 'Outside East',
@@ -412,7 +412,7 @@ Options.Triggers.push({
           ja: '外側 東',
           cn: '外侧 右',
           ko: '바깥 동쪽',
-          tc: '外側 右',
+          tc: '外側 東',
         },
         insideNW: {
           en: 'Inside NW',
@@ -421,7 +421,7 @@ Options.Triggers.push({
           ja: '内側 北西',
           cn: '内侧 左上',
           ko: '안 북서쪽',
-          tc: '內側 左上',
+          tc: '內側 西北',
         },
         insideNE: {
           en: 'Inside NE',
@@ -430,7 +430,7 @@ Options.Triggers.push({
           ja: '内側 北東',
           cn: '内侧 右上',
           ko: '안 북동쪽',
-          tc: '內側 右上',
+          tc: '內側 東北',
         },
         insideSE: {
           en: 'Inside SE',
@@ -439,7 +439,7 @@ Options.Triggers.push({
           ja: '内側 南東',
           cn: '内侧 右下',
           ko: '안 남동쪽',
-          tc: '內側 右下',
+          tc: '內側 東南',
         },
         insideSW: {
           en: 'Inside SW',
@@ -448,7 +448,7 @@ Options.Triggers.push({
           ja: '内側 南西',
           cn: '内侧 左下',
           ko: '안 남서쪽',
-          tc: '內側 左下',
+          tc: '內側 西南',
         },
         outsideNNW: {
           en: 'Outside NNW',
@@ -457,7 +457,7 @@ Options.Triggers.push({
           ja: '1列 西の内側',
           cn: '外侧 上偏左',
           ko: '바깥 북쪽 왼칸',
-          tc: '外側 上偏左',
+          tc: '外側 北偏西',
         },
         outsideNNE: {
           en: 'Outside NNE',
@@ -466,7 +466,7 @@ Options.Triggers.push({
           ja: '1列 東の内側',
           cn: '外侧 上偏右',
           ko: '바깥 북쪽 오른칸',
-          tc: '外側 上偏右',
+          tc: '外側 北偏東',
         },
         outsideSSW: {
           en: 'Outside SSW',
@@ -475,7 +475,7 @@ Options.Triggers.push({
           ja: '4列 西の内側',
           cn: '外侧 下偏左',
           ko: '바깥 남쪽 왼칸',
-          tc: '外側 下偏左',
+          tc: '外側 南偏西',
         },
         outsideSSE: {
           en: 'Outside SSE',
@@ -484,7 +484,7 @@ Options.Triggers.push({
           ja: '4列 東の内側',
           cn: '外侧 下偏右',
           ko: '바깥 남쪽 오른칸',
-          tc: '外側 下偏右',
+          tc: '外側 南偏東',
         },
         outsideWNW: {
           en: 'Outside WNW',
@@ -493,7 +493,7 @@ Options.Triggers.push({
           ja: '2列 西の外側',
           cn: '外侧 左偏上',
           ko: '바깥 서쪽 위칸',
-          tc: '外側 左偏上',
+          tc: '外側 西偏北',
         },
         outsideENE: {
           en: 'Outside ENE',
@@ -502,7 +502,7 @@ Options.Triggers.push({
           ja: '2列 東の外側',
           cn: '外侧 右偏上',
           ko: '바깥 동쪽 위칸',
-          tc: '外側 右偏上',
+          tc: '外側 東偏北',
         },
         outsideWSW: {
           en: 'Outside WSW',
@@ -511,7 +511,7 @@ Options.Triggers.push({
           ja: '3列 西の外側',
           cn: '外侧 左偏下',
           ko: '바깥 서쪽 아래칸',
-          tc: '外側 左偏下',
+          tc: '外側 西偏南',
         },
         outsideESE: {
           en: 'Outside ESE',
@@ -520,7 +520,7 @@ Options.Triggers.push({
           ja: '3列 東の外側',
           cn: '外侧 右偏下',
           ko: '바깥 동쪽 아래칸',
-          tc: '外側 右偏下',
+          tc: '外側 東偏南',
         },
         cornerNW: {
           en: 'NW Corner',
@@ -529,7 +529,7 @@ Options.Triggers.push({
           ja: '北西 隅',
           cn: '左上角',
           ko: '북서쪽 구석',
-          tc: '左上角',
+          tc: '西北角',
         },
         cornerNE: {
           en: 'NE Corner',
@@ -538,7 +538,7 @@ Options.Triggers.push({
           ja: '北東 隅',
           cn: '右上角',
           ko: '북동쪽 구석',
-          tc: '右上角',
+          tc: '東北角',
         },
         cornerSE: {
           en: 'SE Corner',
@@ -547,7 +547,7 @@ Options.Triggers.push({
           ja: '南東 隅',
           cn: '右下角',
           ko: '남동쪽 구석',
-          tc: '右下角',
+          tc: '東南角',
         },
         cornerSW: {
           en: 'SW Corner',
@@ -556,7 +556,7 @@ Options.Triggers.push({
           ja: '南西 隅',
           cn: '左下角',
           ko: '남서쪽 구석',
-          tc: '左下角',
+          tc: '西南角',
         },
       },
     },
@@ -1245,7 +1245,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Hegemone': '赫革摩涅',
         'Parasitos': '寄生生物',
@@ -1267,7 +1266,7 @@ Options.Triggers.push({
         'Pathogenic Cells': '軟體細胞流',
         'Polyominoid Sigma': '乙太方陣Σ',
         'Polyominous Dark IV': '多連方冥暗',
-        // '(?<!Dual )Predation': '', // FIXME '双击'
+        '(?<!Dual )Predation': '甲軟雙擊',
         'Ptera Ixou': '寄生之翼',
         'Reek Havoc': '噴氣',
         'Synergy': '協同',

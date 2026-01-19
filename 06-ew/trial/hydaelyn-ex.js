@@ -575,7 +575,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Crystal of Light': '光之水晶',
         'Hydaelyn': '海德林',
@@ -583,8 +582,8 @@ Options.Triggers.push({
         'Parhelion': '幻日',
       },
       'replaceText': {
-        // '--top-middle': '', // FIXME '--前方中间'
-        // '--middle': '', // FIXME '--中间'
+        '--top-middle': '--前方中間',
+        '--middle': '--中間',
         'Anthelion': '反假日',
         'Aureole': '暈光',
         'Beacon': '光芒',
@@ -592,7 +591,7 @@ Options.Triggers.push({
         'Crystalline Blizzard III': '水晶大暴雪',
         'Crystalline Stone III': '水晶大巨岩',
         'Crystalline Water III': '水晶大水花',
-        // 'Crystalline Water/Stone III': '', // FIXME '水晶狂水/垒石'
+        'Crystalline Water/Stone III': '水晶大水花/巨岩',
         'Crystallize': '結晶',
         'Dichroic Spectrum': '二色光譜',
         'Echoes': '回聲',

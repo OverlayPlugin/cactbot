@@ -1072,7 +1072,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ball of Levin': '雷球',
         'Comet': '隕星',
@@ -1080,14 +1079,14 @@ Options.Triggers.push({
         'Kokytos\'s Echo': '克邱特斯的幻影',
       },
       'replaceText': {
-        // '\\(Beast': '', // FIXME '(野兽'
-        // '\\(Chimera': '', // FIXME '(合成体'
-        // '\\(Fighter': '', // FIXME '(武术家'
-        // '\\(Final\\)': '', // FIXME '(最终)'
-        // '\\(Mage': '', // FIXME '(魔法师'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(resolve\\)': '', // FIXME '(判定)'
-        // '\\(stacks\\)': '', // FIXME '(分摊)'
+        '\\(Beast': '(野獸',
+        '\\(Chimera': '(合成體',
+        '\\(Fighter': '(武術家',
+        '\\(Final\\)': '(最終)',
+        '\\(Mage': '(魔法師',
+        '\\(cast\\)': '(詠唱)',
+        '\\(resolve\\)': '(判定)',
+        '\\(stacks\\)': '(分攤)',
         'Aero IV': '超勁風',
         'Archaic Demolish': '古式破碎拳',
         'Archaic Rockbreaker': '古式地烈勁',
@@ -1105,12 +1104,12 @@ Options.Triggers.push({
         'Dualspell': '雙重詠唱',
         'Ecliptic Meteor': '黃道隕石',
         'Fire IV': '超火焰',
-        // 'Fire(?!( |m|s))': '', // FIXME '火炎'
+        'Fire(?!( |m|s))': '火焰',
         'Firemeld': '炎魔衝',
         'Front Combination': '前方連轉腳',
         'Front Firestrikes': '前方炎連擊',
         'Gluttony\'s Augur': '暴食預兆',
-        // 'Ice(?!meld)': '', // FIXME '冰结'
+        'Ice(?!meld)': '冰結',
         'Icemeld': '冰魔衝',
         'Inside Roundhouse': '內轉腳',
         'Levinstrike Summoning': '雷電召喚',
@@ -1126,7 +1125,7 @@ Options.Triggers.push({
         'Soul Surge': '靈魂湧動',
         'Swinging Kick': '旋身擊',
         'Thunder III': '大雷電',
-        // 'Thunder(?!( |bolt))': '', // FIXME '闪雷'
+        'Thunder(?!( |bolt))': '雷電',
         'Thunderbolt': '霹靂',
         'Two Minds': '附魂雙擊',
       },

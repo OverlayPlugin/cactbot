@@ -219,7 +219,7 @@ Options.Triggers.push({
           ja: '北東の鳥の下',
           cn: '站在左上鸟',
           ko: '북동쪽 새 밑으로',
-          tc: '站在左上鳥',
+          tc: '站在東北鳥下',
         },
       },
     },
@@ -369,7 +369,7 @@ Options.Triggers.push({
           ja: '北の外側',
           cn: '上外',
           ko: '북쪽 바깥',
-          tc: '上外',
+          tc: '北外側',
         },
         insideNorth: {
           en: 'Inside North',
@@ -378,7 +378,7 @@ Options.Triggers.push({
           ja: '北の内側',
           cn: '上内',
           ko: '북쪽 안',
-          tc: '上內',
+          tc: '北內側',
         },
         outsideWest: {
           en: 'Outside West',
@@ -387,7 +387,7 @@ Options.Triggers.push({
           ja: '西の外側',
           cn: '左外',
           ko: '서쪽 바깥',
-          tc: '左外',
+          tc: '西外側',
         },
         insideWest: {
           en: 'Inside West',
@@ -396,7 +396,7 @@ Options.Triggers.push({
           ja: '西の内側',
           cn: '左内',
           ko: '서쪽 안',
-          tc: '左內',
+          tc: '西內側',
         },
         outsideEast: {
           en: 'Outside East',
@@ -405,7 +405,7 @@ Options.Triggers.push({
           ja: '東の外側',
           cn: '右外',
           ko: '동쪽 바깥',
-          tc: '右外',
+          tc: '東外側',
         },
         insideEast: {
           en: 'Inside East',
@@ -414,7 +414,7 @@ Options.Triggers.push({
           ja: '東の内側',
           cn: '右内',
           ko: '동쪽 안',
-          tc: '右內',
+          tc: '東內側',
         },
         ...paradeigmaLeanOutputStrings,
       },
@@ -530,7 +530,7 @@ Options.Triggers.push({
           ja: '北のさんかく',
           cn: '上扇形',
           ko: '북쪽 삼각형',
-          tc: '上扇形',
+          tc: '北扇形',
         },
         eastCone: {
           en: 'East Cone',
@@ -539,7 +539,7 @@ Options.Triggers.push({
           ja: '東のさんかく',
           cn: '右扇形',
           ko: '동쪽 삼각형',
-          tc: '右扇形',
+          tc: '東扇形',
         },
         westCone: {
           en: 'West Cone',
@@ -548,7 +548,7 @@ Options.Triggers.push({
           ja: '西のさんかく',
           cn: '左扇形',
           ko: '서쪽 삼각형',
-          tc: '左扇形',
+          tc: '西扇形',
         },
         southCone: {
           en: 'South Cone',
@@ -557,7 +557,7 @@ Options.Triggers.push({
           ja: '南のさんかく',
           cn: '下扇形',
           ko: '남쪽 삼각형',
-          tc: '下扇形',
+          tc: '南扇形',
         },
       },
     },
@@ -859,7 +859,7 @@ Options.Triggers.push({
           ja: 'ダブルフィスト (北の外側)',
           cn: '双拳 (上外)',
           ko: '양 옆 큰 원형 장판 (북쪽 바깥)',
-          tc: '雙拳 (上外)',
+          tc: '雙拳 (北外側)',
         },
         adikia1InsideNorth: {
           en: 'Double fists (inside north)',
@@ -868,7 +868,7 @@ Options.Triggers.push({
           ja: 'ダブルフィスト (北の内側)',
           cn: '双拳 (上内)',
           ko: '양 옆 큰 원형 장판 (북쪽 안)',
-          tc: '雙拳 (上內)',
+          tc: '雙拳 (北內側)',
         },
         adikia2: {
           en: 'Double fists',
@@ -1131,7 +1131,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sigil': '秘紋',
         'Behemoth': '凶惡巨獸',
@@ -1148,7 +1147,7 @@ Options.Triggers.push({
         'Astral Eclipse': '星蝕',
         'Astral Flow': '星極超流',
         'Esoteric Dyad': '神秘二分',
-        // 'Esoteric Pattern': '', // FIXME '秘纹图案'
+        'Esoteric Pattern': '秘紋圖案',
         '(?<!Triple )Esoteric Ray': '神秘光線',
         'Esoteric Sect': '神秘切割',
         'Esoterikos': '內紋',

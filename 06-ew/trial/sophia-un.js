@@ -38,7 +38,7 @@ const tiltOutputStrings = {
     ja: '東へ (大きい斜め)',
     cn: '去右边（大倾斜）',
     ko: '동쪽으로 (크게 기울어짐)',
-    tc: '去東邊（大傾斜）',
+    tc: '去東邊(大傾斜)',
   },
   goEastSoftTilt: {
     en: 'Go East (Soft Tilt)',
@@ -47,7 +47,7 @@ const tiltOutputStrings = {
     ja: '東へ (小さい斜め)',
     cn: '去右边（小倾斜）',
     ko: '동쪽으로 (작게 기울어짐)',
-    tc: '去東邊（小傾斜）',
+    tc: '去東邊(小傾斜)',
   },
   goWestHardTilt: {
     en: 'Go West (Hard Tilt)',
@@ -56,7 +56,7 @@ const tiltOutputStrings = {
     ja: '西へ (大きい斜め)',
     cn: '去左边（大倾斜）',
     ko: '서쪽으로 (크게 기울어짐)',
-    tc: '去西邊（大傾斜）',
+    tc: '去西邊(大傾斜)',
   },
   goWestSoftTilt: {
     en: 'Go West (Soft Tilt)',
@@ -65,7 +65,7 @@ const tiltOutputStrings = {
     ja: '西へ (小さい斜め)',
     cn: '去左边（小倾斜）',
     ko: '서쪽으로 (작게 기울어짐)',
-    tc: '去西邊（小傾斜）',
+    tc: '去西邊(小傾斜)',
   },
 };
 Options.Triggers.push({

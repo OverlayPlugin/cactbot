@@ -95,7 +95,7 @@ Options.Triggers.push({
           ja: '北の角へ',
           cn: '去上半场角落',
           ko: '북쪽 모서리',
-          tc: '去上半場角落',
+          tc: '去北半場角落',
         },
         ec: {
           en: 'East Corners',
@@ -104,7 +104,7 @@ Options.Triggers.push({
           ja: '東の角へ',
           cn: '去右边角落',
           ko: '동쪽 모서리',
-          tc: '去右邊角落',
+          tc: '去東邊角落',
         },
         sc: {
           en: 'South Corners',
@@ -113,7 +113,7 @@ Options.Triggers.push({
           ja: '南の角へ',
           cn: '去下半场角落',
           ko: '남쪽 모서리',
-          tc: '去下半場角落',
+          tc: '去南半場角落',
         },
         wc: {
           en: 'West Corners',
@@ -122,7 +122,7 @@ Options.Triggers.push({
           ja: '西の角へ',
           cn: '去左边角落',
           ko: '서쪽 모서리',
-          tc: '去左邊角落',
+          tc: '去西邊角落',
         },
       },
     },
@@ -296,12 +296,11 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Hippokampos': '馬頭魚尾怪',
       },
       'replaceText': {
-        // '\\(knockback\\)': '', // FIXME '(击退)'
+        '\\(knockback\\)': '(擊退)',
         'Coherence Flare': '連貫攻擊',
         'Coherence Line': '連貫攻擊',
         'Dissociation(?! Dive)': '分離',

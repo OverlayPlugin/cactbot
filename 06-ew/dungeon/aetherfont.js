@@ -136,7 +136,7 @@ Options.Triggers.push({
           ja: 'ボスの後ろへ (テンタクル回避)',
           cn: '去背后（躲避触手）',
           ko: '보스 뒤로 (촉수 피하기)',
-          tc: '去背後（躲避觸手）',
+          tc: '去背後(躲避觸手)',
         },
       },
     },
@@ -326,7 +326,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arkas': '阿爾卡斯',
         'Cyancap Cavern': '藍簷洞中轉點',
@@ -337,10 +336,10 @@ Options.Triggers.push({
         'The Landfast Floe': '流冰圓庭',
       },
       'replaceText': {
-        // '\\(big\\)': '', // FIXME '(大)'
-        // '\\(small\\)': '', // FIXME '(小)'
-        // '\\(explosion\\)': '', // FIXME '(爆炸)'
-        // '\\(tether\\)': '', // FIXME '(连线)'
+        '\\(big\\)': '(大)',
+        '\\(small\\)': '(小)',
+        '\\(explosion\\)': '(爆炸)',
+        '\\(tether\\)': '(連線)',
         'Battle Cry': '戰鬥怒嚎',
         'Body Slam': '軀體震擊',
         'Breathstroke': '吐息重擊',

@@ -704,7 +704,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Darkblaze Twister': '邊境暗炎旋風',
         'Fountain of Fire': '靈泉之炎',
@@ -714,7 +713,7 @@ Options.Triggers.push({
       },
       'replaceText': {
         '--fire expands--': '十字地火',
-        // '--giant fireplume\\?--': '', // FIXME '--巨大火柱?--'
+        '--giant fireplume\\?--': '--劫火焚天?--',
         'Ashen Eye': '暗之瞳',
         '(?<!\\w )Ashplume': '暗黑劫火焚天',
         'Beacons of Asphodelos': '邊境之火',
@@ -740,7 +739,7 @@ Options.Triggers.push({
         'Fountain of Death': '靈泉之波動',
         'Fountain of Fire': '靈泉之炎',
         '(?<!\\w )Gloryplume': '炎暗劫火',
-        // 'Great Whirlwind': '', // FIXME '大旋风'
+        'Great Whirlwind': '大旋風',
         'Heat of Condemnation': '獄炎炎擊',
         'Joint Pyre': '共燃',
         'Left Cinderwing': '左翼焚燒',
