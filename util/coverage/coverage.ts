@@ -510,7 +510,7 @@ const miscStrings = {
       '이 목록에는 아직 개발 중인 컨텐츠가 포함되어 있을 수 있고 최신 cactbot 릴리즈에 포함되어 있지 않을 수 있습니다. 여기에 나열된 컨텐츠 목록은 최소한 다음 릴리즈에는 포함되게 됩니다. 만약 <a href="https://github.com/OverlayPlugin/cactbot/blob/main/CONTRIBUTING.md#validating-changes-via-remote-urls">overlayplugin.github.io 버전</a>을 오버레이 url로 연결해서 사용하고 계시다면, 이 목록이 오버레이의 컨텐츠 커버리지와 일치합니다.',
     tc:
       '該列表中可能存在正在開發中的功能及未發布在cactbot最新發行版中的更新內容. 该該列表中顯示的更新將會在下一個版本的cactbot發行版中發布. 若您在OverlayPlugin中使用的是<a href="https://github.com/OverlayPlugin/cactbot/blob/main/CONTRIBUTING.md#validating-changes-via-remote-urls">「overlayplugin.github.io」开头的URL</a>, 則更新進度與該列表一致, 即該列表中的所有內容均可用.',
-    },
+  },
   // Warning when generator hasn't been run.
   runGenerator: {
     en: 'Error: Run npm run coverage-report to generate data.',
