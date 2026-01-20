@@ -682,7 +682,7 @@ const triggerSet: TriggerSet<Data> = {
           return 31; // Alpha4 Time
         return 26; // Alpha3 Time
       },
-      infoText: (data, matches, output) => {
+      alertText: (data, matches, output) => {
         const duration = parseFloat(matches.duration);
         const dir = data.blobTowerDirs[duration > 40 ? 1 : 0];
         if (duration > 40) {
@@ -703,10 +703,10 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get Blob Tower 2',
         },
         alpha3Dir: {
-          en: 'Blob Tower 1 (Inner ${dir})',
+          en: 'Get Blob Tower 1 (Inner ${dir})',
         },
         alpha4Dir: {
-          en: 'Blob Tower 2 (Inner ${dir})',
+          en: 'Get Blob Tower 2 (Inner ${dir})',
         },
       },
     },
@@ -719,7 +719,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      infoText: (data, matches, output) => {
+      alertText: (data, matches, output) => {
         const myNum = data.inLine[data.me];
         const flesh = matches.effectId === '1291' ? 'alpha' : 'beta';
         if (flesh === 'alpha') {
@@ -796,7 +796,7 @@ const triggerSet: TriggerSet<Data> = {
           en: '${chains} 3 => Wait for last pair',
         },
         beta4: {
-          en: '${chains} 4 + Get Out',
+          en: '${chains} 4 => Get Out',
         },
       },
     },
