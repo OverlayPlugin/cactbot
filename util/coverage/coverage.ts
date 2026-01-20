@@ -228,7 +228,6 @@ const contentTypeToLabel: {
       fr: 'Raid Alliance Chaotique',
       cn: '诛灭战',
       ko: '멸 연합 레이드',
-      tc: '誅滅戰',
     },
     short: {
       en: 'Chaotic',
@@ -236,7 +235,6 @@ const contentTypeToLabel: {
       fr: 'Chaotique',
       cn: '灭',
       ko: '멸',
-      tc: '滅',
     },
   },
   [ContentType.TheMaskedCarnivale]: {
@@ -299,14 +297,12 @@ const contentTypeToLabel: {
       fr: 'Croissant Occulte',
       cn: '蜃景幻界新月岛',
       ko: '초승달 섬',
-      tc: '蜃景幻界新月島',
     },
     short: {
       en: 'Occult',
       fr: 'Croissant',
       cn: '新月岛',
       ko: '초승달 섬',
-      tc: '新月島',
     },
   },
   [ContentType.DisciplesOfTheLand]: {
