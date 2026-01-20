@@ -533,7 +533,7 @@ const triggerSet: TriggerSet<Data> = {
       // Delayed additionally to reduce overlap with alpha tower location calls
       type: 'Ability',
       netRegex: { id: 'B4B6', capture: false },
-      delaySeconds: 4, // 4s warning
+      delaySeconds: 3, // 5s warning
       suppressSeconds: 10,
       response: Responses.knockback(),
     },
