@@ -721,20 +721,21 @@ const triggerSet: TriggerSet<Data> = {
       },
       delaySeconds: (_data, matches) => {
         const duration = parseFloat(matches.duration);
-        if (duration > 35)
-          return 27;
-        return 34;
+        // The following gives 5s warning to take tower
+        if (duration > 37)
+          return 31; // Alpha4 Time
+        return 26; // Alpha3 Time
       },
       infoText: (data, matches, output) => {
         const duration = parseFloat(matches.duration);
         const dir = data.blobTowerDirs[duration > 40 ? 1 : 0];
         if (duration > 40) {
           if (dir !== undefined)
-            return output.alpha4Dir!({ dir: output[dir]!() });
+            return output.alpha4Dir!({ dir: output[dir]!(), dur: duration });
           return output.alpha4!();
         }
         if (dir !== undefined)
-          return output.alpha3Dir!({ dir: output[dir]!() });
+          return output.alpha3Dir!({ dir: output[dir]!(), dur: duration });
         return output.alpha3!();
       },
       outputStrings: {
@@ -746,10 +747,10 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get Blob Tower 2',
         },
         alpha3Dir: {
-          en: 'Blob Tower 1 (Inner ${dir})',
+          en: 'Blob Tower 1 (Inner ${dir}) ${dur}',
         },
         alpha4Dir: {
-          en: 'Blob Tower 2 (Inner ${dir})',
+          en: 'Blob Tower 2 (Inner ${dir}) ${dur}',
         },
       },
     },
