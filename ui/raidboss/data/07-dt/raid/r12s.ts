@@ -1040,9 +1040,9 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.phase === 'curtainCall',
       alertText: (data, matches, output) => {
         if (matches.id === 'B49A') {
-          return data.hasRot ? output.getHitEast!(): output.safeWest!();
+          return data.hasRot ? output.getHitEast!() : output.safeWest!();
         }
-        return data.hasRot ? output.getHitWest!(): output.safeEast!();
+        return data.hasRot ? output.getHitWest!() : output.safeEast!();
       },
       outputStrings: {
         getHitWest: {
