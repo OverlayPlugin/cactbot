@@ -31,7 +31,6 @@ export interface Data extends RaidbossData {
   hasMeteor: boolean;
   fireballCount: number;
   hasAtomic: boolean;
-  meteowrathTetherDirNum?: number;
   heartbreakerCount: number;
 }
 
@@ -737,32 +736,21 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data, matches) => {
         if (
           data.me === matches.target &&
-          data.phase === 'ecliptic' &&
-          data.meteowrathTetherDirNum === undefined
+          data.phase === 'ecliptic'
         )
           return true;
         return false;
       },
       suppressSeconds: 99,
-      promise: async (data, matches) => {
-        const actors = (await callOverlayHandler({
-          call: 'getCombatants',
-          ids: [parseInt(matches.sourceId, 16)],
-        })).combatants;
-        const actor = actors[0];
-        if (actors.length !== 1 || actor === undefined) {
-          console.error(
-            `R11S Majestic Meteowrath Tethers: Wrong actor count ${actors.length}`,
-          );
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
           return;
-        }
 
-        const dirNum = Directions.xyTo8DirNum(actor.PosX, actor.PosY, center.x, center.y);
-        data.meteowrathTetherDirNum = dirNum;
-      },
-      infoText: (data, _matches, output) => {
-        if (data.meteowrathTetherDirNum === undefined)
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        if (dirNum === undefined)
           return;
+
         type dirNumStretchMap = {
           [key: number]: string;
         };
@@ -773,7 +761,7 @@ const triggerSet: TriggerSet<Data> = {
           4: 'dirNE',
           6: 'dirSE',
         };
-        const stretchDir = stretchCW[data.meteowrathTetherDirNum];
+        const stretchDir = stretchCW[dirNum];
         return output.stretchTetherDir!({ dir: output[stretchDir ?? '???']!() });
       },
       outputStrings: {
