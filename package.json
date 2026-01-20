@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.36.3",
-  "releaseSummary": "M9S, Tsukuyomi EX/Unreal improvements, i18n",
+  "version": "0.36.4",
+  "releaseSummary": "Quantum; m10s initial; more Zelenia EX, m9s, Forked Tower; i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",
