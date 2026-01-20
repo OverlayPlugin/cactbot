@@ -362,11 +362,11 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['B418', 'B419', 'B41A'], source: 'The Tyrant', capture: true },
       condition: (data) => {
-        if (data.voidStardust !== undefined) {
-          data.assaultEvolvedCount = data.assaultEvolvedCount + 1;
-          if (data.assaultEvolvedCount === 3)
-            return true;
-        }
+        if (data.voidStardust === undefined)
+          return false;
+        data.assaultEvolvedCount++;
+        if (data.assaultEvolvedCount === 3)
+          return true;
         return false;
       },
       delaySeconds: (_data, matches) => parseFloat(matches.castTime),
