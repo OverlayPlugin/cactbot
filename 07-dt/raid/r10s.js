@@ -424,7 +424,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Wave ${waveDir}/Cone ${coneDir}',
-          fr: 'Vague ${waveDir}/Cône ${coneDir}',
+          fr: 'Vague ${waveDir} / Cône ${coneDir}',
           cn: '${waveDir} 击退/${coneDir} 两侧',
         },
         ...Directions.outputStringsCardinalDir,
@@ -559,7 +559,7 @@ Options.Triggers.push({
       outputStrings: {
         text1: {
           en: '${water}: ${waterMech}/${fire}: ${fireMech}',
-          fr: '${water}: ${waterMech}/${fire}: ${fireMech}',
+          fr: '${water}: ${waterMech} / ${fire}: ${fireMech}',
           cn: '${water}: ${waterMech}/${fire}: ${fireMech}',
         },
         text2: {

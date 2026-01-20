@@ -66,6 +66,7 @@ Options.Triggers.push({
         knockbackFrom: {
           en: 'Knockback from ${dir}',
           de: 'Rückstoß von ${dir}',
+          fr: 'Poussée depuis ${dir}',
           cn: '从 ${dir} 击退',
           ko: '${dir}에서 넉백',
           tc: '從 ${dir} 擊退',
@@ -144,6 +145,7 @@ Options.Triggers.push({
         cleanse: {
           en: 'Cleanse ${target}',
           de: 'Reinige ${target}',
+          fr: 'Guérison sur ${target}',
           cn: '康复 ${target}',
           ko: '${target} 에스나',
           tc: '康復 ${target}',
@@ -188,6 +190,7 @@ Options.Triggers.push({
         avoidFlails: {
           en: 'Away from flails',
           de: 'Weg vom Flegel',
+          fr: 'Loin des fléaux',
           cn: '远离铁球',
           ko: '철퇴 피하기',
           tc: '遠離鐵球',
@@ -226,6 +229,7 @@ Options.Triggers.push({
         cleanseDoom: {
           en: 'Cleanse ${target}',
           de: 'Reinige ${target}',
+          fr: 'Guérison sur ${target}',
           cn: '康复 ${target}',
           ko: '${target} 에스나',
           tc: '康復 ${target}',
@@ -318,6 +322,7 @@ Options.Triggers.push({
         staticBombardment: {
           en: 'Go ${safe}; Avoid small AoE',
           de: 'Geh nach ${safe}; Vermeide kleine AoE',
+          fr: 'Allez ${safe} ; Évitez la petite AoE',
           cn: '前往 ${safe}; 避开小范围 AoE',
           ko: '${safe}로 이동; 작은 장판 피하기',
           tc: '前往 ${safe}; 避開小範圍 AoE',
@@ -356,6 +361,7 @@ Options.Triggers.push({
         knockbackBombardment: {
           en: 'Knockback to ${safe}; Avoid AoE',
           de: 'Rückstoß nach ${safe}; Vermeide AoE',
+          fr: 'Poussée vers ${safe} ; Évitez l\'AoE',
           cn: '击退到 ${safe}; 避开 AoE',
           ko: '${safe}로 넉백; 장판 피하기',
           tc: '擊退到 ${safe}; 避開 AoE',
@@ -440,6 +446,7 @@ Options.Triggers.push({
         leanLeft: {
           en: 'Front + Lean Left; or Southwest',
           de: 'Vorne + Links halten; oder Süd-Westen',
+          fr: 'Devant légèrement à gauche ; ou Sud-Ouest',
           cn: '前方 + 偏左; 或左下',
           ko: '앞 + 약간 왼쪽; 또는 남서',
           tc: '前方 + 偏左; 或左下',
@@ -447,6 +454,7 @@ Options.Triggers.push({
         leanRight: {
           en: 'Front + Lean Right; or Southeast',
           de: 'Vorne + Rechts halten; oder Süd-Osten',
+          fr: 'Devant légèrement à droite ; ou Sud-Est',
           cn: '前方 + 偏右; 或右下',
           ko: '앞 + 약간 오른쪽; 또는 남동',
           tc: '前方 + 偏右; 或右下',
@@ -510,13 +518,13 @@ Options.Triggers.push({
       'locale': 'fr',
       'missingTranslations': true,
       'replaceSync': {
-        'Bloody Headsman': 'mémoire du bourreau rouge',
-        'Bygone Aerostat': 'aérostat séculaire',
-        'Chirurgeon General': 'mémoire d\'un chef de clinique',
-        'Hooded Headsman': 'mémoire d\'un bourreau',
+        'Bloody Headsman': 'Mémoire du bourreau rouge',
+        'Bygone Aerostat': 'Aérostat séculaire',
+        'Chirurgeon General': 'Mémoire d\'un chef de clinique',
+        'Hooded Headsman': 'Mémoire d\'un bourreau',
         'Immortal Remains': 'Memoria populi',
-        'Pale Headsman': 'mémoire du bourreau jaune',
-        'Pestilent Headsman': 'mémoire du bourreau vert',
+        'Pale Headsman': 'Mémoire du bourreau jaune',
+        'Pestilent Headsman': 'Mémoire du bourreau vert',
       },
       'replaceText': {
         'Biochemical Front': 'Pulvérisation avant',
