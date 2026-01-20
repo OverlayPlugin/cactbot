@@ -318,6 +318,7 @@ export default {
     fr: 'Package dans la tour',
     cn: '塔内集合',
     ko: '탑에서 쉐어',
+    tc: '塔內集合',
   },
   baitPuddles: {
     en: 'Bait Puddles',
@@ -605,6 +606,7 @@ export default {
     fr: 'Droite/Est',
     cn: '右侧',
     ko: '오른쪽/동쪽',
+    tc: '東側',
   },
   left: {
     en: 'Left',
@@ -620,6 +622,7 @@ export default {
     fr: 'Gauche/Ouest',
     cn: '左侧',
     ko: '왼쪽/서쪽',
+    tc: '西側',
   },
   getLeftAndWest: {
     en: '<= Get Left/West',
@@ -938,7 +941,7 @@ export default {
     ja: '北',
     cn: '上',
     ko: '북쪽',
-    tc: '上',
+    tc: '北',
   },
   south: {
     en: 'South',
@@ -947,7 +950,7 @@ export default {
     ja: '南',
     cn: '下',
     ko: '남쪽',
-    tc: '下',
+    tc: '南',
   },
   east: {
     en: 'East',
@@ -956,7 +959,7 @@ export default {
     ja: '東',
     cn: '右',
     ko: '동쪽',
-    tc: '右',
+    tc: '東',
   },
   west: {
     en: 'West',
@@ -965,7 +968,7 @@ export default {
     ja: '西',
     cn: '左',
     ko: '서쪽',
-    tc: '左',
+    tc: '西',
   },
   northwest: {
     en: 'Northwest',
@@ -974,7 +977,7 @@ export default {
     ja: '北西',
     cn: '左上',
     ko: '북서쪽',
-    tc: '左上',
+    tc: '西北',
   },
   northeast: {
     en: 'Northeast',
@@ -983,7 +986,7 @@ export default {
     ja: '北東',
     cn: '右上',
     ko: '북동쪽',
-    tc: '右上',
+    tc: '東北',
   },
   southwest: {
     en: 'Southwest',
@@ -992,7 +995,7 @@ export default {
     ja: '南西',
     cn: '左下',
     ko: '남서쪽',
-    tc: '左下',
+    tc: '西南',
   },
   southeast: {
     en: 'Southeast',
@@ -1001,7 +1004,7 @@ export default {
     ja: '南東',
     cn: '右下',
     ko: '남동쪽',
-    tc: '右下',
+    tc: '東南',
   },
   dirN: {
     en: 'N',
@@ -1010,7 +1013,7 @@ export default {
     ja: '北',
     cn: '上',
     ko: '북',
-    tc: '上',
+    tc: '北',
   },
   dirS: {
     en: 'S',
@@ -1019,7 +1022,7 @@ export default {
     ja: '南',
     cn: '下',
     ko: '남',
-    tc: '下',
+    tc: '南',
   },
   dirE: {
     en: 'E',
@@ -1028,7 +1031,7 @@ export default {
     ja: '東',
     cn: '右',
     ko: '동',
-    tc: '右',
+    tc: '東',
   },
   dirW: {
     en: 'W',
@@ -1037,7 +1040,7 @@ export default {
     ja: '西',
     cn: '左',
     ko: '서',
-    tc: '左',
+    tc: '西',
   },
   dirNW: {
     en: 'NW',
@@ -1046,7 +1049,7 @@ export default {
     ja: '北西',
     cn: '左上',
     ko: '북서',
-    tc: '左上',
+    tc: '西北',
   },
   dirNE: {
     en: 'NE',
@@ -1055,7 +1058,7 @@ export default {
     ja: '北東',
     cn: '右上',
     ko: '북동',
-    tc: '右上',
+    tc: '東北',
   },
   dirSW: {
     en: 'SW',
@@ -1064,7 +1067,7 @@ export default {
     ja: '南西',
     cn: '左下',
     ko: '남서',
-    tc: '左下',
+    tc: '西南',
   },
   dirSE: {
     en: 'SE',
@@ -1073,7 +1076,7 @@ export default {
     ja: '南東',
     cn: '右下',
     ko: '남동',
-    tc: '右下',
+    tc: '東南',
   },
   dirNNE: {
     en: 'NNE',
@@ -1082,7 +1085,7 @@ export default {
     ja: '北北東(1時)',
     cn: '上偏右',
     ko: '1시',
-    tc: '上偏右',
+    tc: '北偏東',
   },
   dirENE: {
     en: 'ENE',
@@ -1091,7 +1094,7 @@ export default {
     ja: '東北東(2時)',
     cn: '右偏上',
     ko: '2시',
-    tc: '右偏上',
+    tc: '東偏北',
   },
   dirESE: {
     en: 'ESE',
@@ -1100,7 +1103,7 @@ export default {
     ja: '東南東(4時)',
     cn: '右偏下',
     ko: '4시',
-    tc: '右偏下',
+    tc: '東偏南',
   },
   dirSSE: {
     en: 'SSE',
@@ -1109,7 +1112,7 @@ export default {
     ja: '南南東(5時)',
     cn: '下偏右',
     ko: '5시',
-    tc: '下偏右',
+    tc: '南偏東',
   },
   dirSSW: {
     en: 'SSW',
@@ -1118,7 +1121,7 @@ export default {
     ja: '南南西(7時)',
     cn: '下偏左',
     ko: '7시',
-    tc: '下偏左',
+    tc: '南偏西',
   },
   dirWSW: {
     en: 'WSW',
@@ -1127,7 +1130,7 @@ export default {
     ja: '西南西(8時)',
     cn: '左偏下',
     ko: '8시',
-    tc: '左偏下',
+    tc: '西偏南',
   },
   dirWNW: {
     en: 'WNW',
@@ -1136,7 +1139,7 @@ export default {
     ja: '西北西(10時)',
     cn: '左偏上',
     ko: '10시',
-    tc: '左偏上',
+    tc: '西偏北',
   },
   dirNNW: {
     en: 'NNW',
@@ -1145,7 +1148,7 @@ export default {
     ja: '北北西(11時)',
     cn: '上偏左',
     ko: '11시',
-    tc: '上偏左',
+    tc: '北偏西',
   },
   tank: {
     en: 'Tank',
