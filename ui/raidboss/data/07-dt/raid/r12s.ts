@@ -812,55 +812,6 @@ const triggerSet: TriggerSet<Data> = {
         return false;
       },
       infoText: (data, _matches, output) => {
-        const mechanicNum = data.cellTowerCount;
-        const myNum = data.inLine[data.me];
-        if (myNum === undefined)
-          return;
-
-        type index = {
-          [key: number]: number;
-        };
-        const myNumToOrder: index = {
-          1: 3,
-          2: 4,
-          3: 1,
-          4: 2,
-        };
-
-        const myOrder = myNumToOrder[myNum];
-        if (myOrder === undefined)
-          return;
-
-        if (myOrder === mechanicNum) {
-          if (mechanicNum < 4)
-            return output.goIntoMiddle!();
-          return output.getOut!();
-        }
-      },
-      outputStrings: {
-        getOut: {
-          en: 'Get Out',
-          de: 'Raus da',
-          fr: 'Sortez',
-          ja: '外へ',
-          cn: '远离',
-          ko: '밖으로',
-          tc: '遠離',
-        },
-        goIntoMiddle: Outputs.goIntoMiddle,
-      },
-    },    {
-      id: 'R12S Chain Tower Followup',
-      // Using B4B3 Roiling Mass to detect chain tower soak
-      // Beta player leaving early may get hit by alpha's chain break aoe
-      type: 'Ability',
-      netRegex: { id: 'B4B3', capture: true },
-      condition: (data, matches) => {
-        if (data.myFleshBonds === 'beta' && data.me === matches.target)
-          return true;
-        return false;
-      },
-      infoText: (data, _matches, output) => {
         // Possibly the count could be off if break late (giving damage and damage down)
         // Ideal towers are soaked:
         // Beta 1 at 5th Skinsplitter
