@@ -396,33 +396,27 @@ const triggerSet: TriggerSet<Data> = {
         // Determine whether the AoE is orthogonal or diagonal
         // Discard diagonal headings, then count orthogonals.
         const headingDirNum = Directions.hdgTo8DirNum(parseFloat(matches.heading));
-        if (headingDirNum % 2 === 0) {
-          const isVert = headingDirNum % 4 === 0;
-          const isHoriz = headingDirNum % 4 === 2;
-          if (isVert) {
-            data.domDirectionCount.vertCount += 1;
-            if (parseFloat(matches.x) < center.x - 5)
-              data.domDirectionCount.outerSafe = data.domDirectionCount.outerSafe.filter((dir) =>
-                dir !== 'dirW'
-              );
-            else if (parseFloat(matches.x) > center.x + 5)
-              data.domDirectionCount.outerSafe = data.domDirectionCount.outerSafe.filter((dir) =>
-                dir !== 'dirE'
-              );
-          } else if (isHoriz) {
-            data.domDirectionCount.horizCount += 1;
-            if (parseFloat(matches.y) < center.y - 5)
-              data.domDirectionCount.outerSafe = data.domDirectionCount.outerSafe.filter((dir) =>
-                dir !== 'dirN'
-              );
-            else if (parseFloat(matches.y) > center.y + 5)
-              data.domDirectionCount.outerSafe = data.domDirectionCount.outerSafe.filter((dir) =>
-                dir !== 'dirS'
-              );
-          } else {
-            console.error(`Bad Domination heading data: ${matches.heading}`);
-          }
+        if (headingDirNum % 2 !== 0)
+          return;
+        const isVert = headingDirNum % 4 === 0;
+        let dangerDir: DirectionOutputCardinal | undefined = undefined;
+        if (isVert) {
+          data.domDirectionCount.vertCount += 1;
+          if (parseFloat(matches.x) < center.x - 5)
+            dangerDir = 'dirW';
+          else if (parseFloat(matches.x) > center.x + 5)
+            dangerDir = 'dirE';
+        } else {
+          data.domDirectionCount.horizCount += 1;
+          if (parseFloat(matches.y) < center.y - 5)
+            dangerDir = 'dirN';
+          else if (parseFloat(matches.y) > center.y + 5)
+            dangerDir = 'dirS';
         }
+        if (dangerDir !== undefined)
+          data.domDirectionCount.outerSafe = data.domDirectionCount.outerSafe.filter((dir) =>
+            dir !== dangerDir
+          );
       },
       infoText: (data, _matches, output) => {
         if (data.domDirectionCount.outerSafe.length !== 1)
