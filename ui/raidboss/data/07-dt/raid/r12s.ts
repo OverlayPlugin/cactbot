@@ -687,11 +687,11 @@ const triggerSet: TriggerSet<Data> = {
         const dir = data.blobTowerDirs[duration > 40 ? 1 : 0];
         if (duration > 40) {
           if (dir !== undefined)
-            return output.alpha4Dir!({ dir: output[dir]!(), dur: duration });
+            return output.alpha4Dir!({ dir: output[dir]!() });
           return output.alpha4!();
         }
         if (dir !== undefined)
-          return output.alpha3Dir!({ dir: output[dir]!(), dur: duration });
+          return output.alpha3Dir!({ dir: output[dir]!() });
         return output.alpha3!();
       },
       outputStrings: {
@@ -703,10 +703,10 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Get Blob Tower 2',
         },
         alpha3Dir: {
-          en: 'Blob Tower 1 (Inner ${dir}) ${dur}',
+          en: 'Blob Tower 1 (Inner ${dir})',
         },
         alpha4Dir: {
-          en: 'Blob Tower 2 (Inner ${dir}) ${dur}',
+          en: 'Blob Tower 2 (Inner ${dir})',
         },
       },
     },
