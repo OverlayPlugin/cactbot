@@ -23,7 +23,6 @@ export interface Data extends RaidbossData {
   fleshBondsCount: number;
   skinsplitterCount: number;
   cellChainCount: number;
-  cellTowerCount: number;
   myMitoticPhase?: string;
   hasRot: boolean;
   // Phase 2
@@ -67,7 +66,6 @@ const triggerSet: TriggerSet<Data> = {
     skinsplitterCount: 0,
     fleshBondsCount: 0,
     cellChainCount: 0,
-    cellTowerCount: 0,
     hasRot: false,
     // Phase 2
   }),
@@ -664,15 +662,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Chain Tower Counter',
-      // Using B4B3 Roiling Mass to detect chain tower soak
-      // Also using B4B2 Unmitigated Explosion if missed tower
-      type: 'Ability',
-      netRegex: { id: ['B4B3', 'B4B2'], capture: false },
-      suppressSeconds: 1,
-      run: (data) => data.cellTowerCount = data.cellTowerCount + 1,
-    },
-    {
       id: 'R12S Bonds of Flesh Flesh α First Two Towers',
       // These are not dependent on player timings and so can be hard coded by duration
       type: 'GainsEffect',
@@ -859,6 +848,104 @@ const triggerSet: TriggerSet<Data> = {
           tc: '遠離',
         },
         goIntoMiddle: Outputs.goIntoMiddle,
+      },
+    },    {
+      id: 'R12S Chain Tower Followup',
+      // Using B4B3 Roiling Mass to detect chain tower soak
+      // Beta player leaving early may get hit by alpha's chain break aoe
+      type: 'Ability',
+      netRegex: { id: 'B4B3', capture: true },
+      condition: (data, matches) => {
+        if (data.myFleshBonds === 'beta' && data.me === matches.target)
+          return true;
+        return false;
+      },
+      infoText: (data, _matches, output) => {
+        // Possibly the count could be off if break late (giving damage and damage down)
+        // Ideal towers are soaked:
+        // Beta 1 at 5th Skinsplitter
+        // Beta 2 at 6th Skinsplitter
+        // Beta 3 at 3rd Skinsplitter
+        // Beta 4 at 4rth Skinsplitter
+        const mechanicNum = data.skinsplitterCount;
+        const myNum = data.inLine[data.me];
+        if (myNum === undefined) {
+          // This can be corrected by the player later
+          if (mechanicNum < 5)
+            return output.goIntoMiddle!();
+          return output.getOut!();
+        }
+
+        if (mechanicNum < 5) {
+          if (myNum === 1)
+            return output.beta1Middle!();
+          if (myNum === 2)
+            return output.beta2Middle!();
+          if (myNum === 3)
+            return output.beta3Middle!();
+          if (myNum === 4)
+            return output.beta4Middle!();
+        }
+        if (myNum === 1)
+          return output.beta1Out!();
+        if (myNum === 2)
+          return output.beta2Out!();
+        if (myNum === 3)
+          return output.beta3Out!();
+        if (myNum === 4)
+          return output.beta4Out!();
+      },
+      outputStrings: {
+        getOut: {
+          en: 'Get Out',
+          de: 'Raus da',
+          fr: 'Sortez',
+          ja: '外へ',
+          cn: '远离',
+          ko: '밖으로',
+          tc: '遠離',
+        },
+        goIntoMiddle: Outputs.goIntoMiddle,
+        beta1Middle: Outputs.goIntoMiddle,
+        beta2Middle: Outputs.goIntoMiddle, // Should not happen under ideal situation
+        beta3Middle: Outputs.goIntoMiddle,
+        beta4Middle: Outputs.goIntoMiddle,
+        beta1Out: { // Should not happen under ideal situation
+          en: 'Get Out',
+          de: 'Raus da',
+          fr: 'Sortez',
+          ja: '外へ',
+          cn: '远离',
+          ko: '밖으로',
+          tc: '遠離',
+        },
+        beta2Out: {
+          en: 'Get Out',
+          de: 'Raus da',
+          fr: 'Sortez',
+          ja: '外へ',
+          cn: '远离',
+          ko: '밖으로',
+          tc: '遠離',
+        },
+        beta3Out: { // Should not happen under ideal situation
+          en: 'Get Out',
+          de: 'Raus da',
+          fr: 'Sortez',
+          ja: '外へ',
+          cn: '远离',
+          ko: '밖으로',
+          tc: '遠離',
+        },
+        beta4Out: { // Should not happen under ideal situation
+          en: 'Get Out',
+          de: 'Raus da',
+          fr: 'Sortez',
+          ja: '外へ',
+          cn: '远离',
+          ko: '밖으로',
+          tc: '遠離',
+        },
       },
     },
     {
