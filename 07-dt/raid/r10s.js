@@ -161,6 +161,7 @@ Options.Triggers.push({
         bait: {
           en: '${order} bait',
           fr: 'Déposez en ${order}',
+          cn: '${order} 引导',
         },
         first: {
           en: 'First',
@@ -220,10 +221,12 @@ Options.Triggers.push({
           spreadFinal: {
             en: 'Out + Spread => Stack Near Blue',
             fr: 'Extérieur + Dispersion => Package près de Blue',
+            cn: '远离 + 分散 => 靠近深蓝集合',
           },
           spreadFinalBait: {
             en: 'Out + Spread => Bait Blue Knockback Buster',
             fr: 'Extérieur + Dispersion => Déposez le tankbuster de Blue',
+            cn: '远离 + 分散 => 引导深蓝坦克击退死刑',
           },
         };
         if (data.phase === 'xtremeSnaking') {
@@ -248,6 +251,7 @@ Options.Triggers.push({
         cleaveTowardsFire: {
           en: 'Bait cleave towards Fire',
           fr: 'Déposez le cleave vers le Feu',
+          cn: '向火区引导扇形伤害',
         },
       },
     },
@@ -291,6 +295,7 @@ Options.Triggers.push({
         stackFinal: {
           en: '${stack} Near Blue',
           fr: '${stack} près de Blue',
+          cn: '${stack} 靠近深蓝',
         },
       },
     },
@@ -333,15 +338,18 @@ Options.Triggers.push({
         waterStack: {
           en: 'Water Stack',
           fr: 'Package Eau',
+          cn: '水分摊',
         },
         waterStackFireDebuff: {
           en: 'Water Stack',
           fr: 'Package Eau',
+          cn: '水分摊',
         },
         waterSpread: Outputs.spread,
         waterSpreadFireDebuff: {
           en: 'Avoid Water Players',
           fr: 'Évitez les joueurs Eau',
+          cn: '远离水组玩家',
         },
       },
     },
@@ -417,6 +425,7 @@ Options.Triggers.push({
         text: {
           en: 'Wave ${waveDir}/Cone ${coneDir}',
           fr: 'Vague ${waveDir}/Cône ${coneDir}',
+          cn: '${waveDir} 击退/${coneDir} 两侧',
         },
         ...Directions.outputStringsCardinalDir,
       },
@@ -458,18 +467,22 @@ Options.Triggers.push({
         text: {
           en: '${protean} => ${action}',
           fr: '${protean} => ${action}',
+          cn: '${protean} => ${action}',
         },
         watersnaking: {
           en: '${protean} => ${action}',
           fr: '${protean} => ${action}',
+          cn: '${protean} => ${action}',
         },
         arenaSplitReverse: {
           en: 'Reverse Alley-oop',
           fr: 'Alley-oop inversé',
+          cn: '要停',
         },
         arenaSplitDoubleDip: {
           en: 'Double-Dip Protean',
           fr: 'Double Alley-oop',
+          cn: '要动',
         },
       },
     },
@@ -547,18 +560,22 @@ Options.Triggers.push({
         text1: {
           en: '${water}: ${waterMech}/${fire}: ${fireMech}',
           fr: '${water}: ${waterMech}/${fire}: ${fireMech}',
+          cn: '${water}: ${waterMech}/${fire}: ${fireMech}',
         },
         text2: {
           en: '${mech} (${swap})',
           fr: '${mech} (${swap})',
+          cn: '${mech} (${swap})',
         },
         fire: {
           en: 'Fire',
           fr: 'Feu',
+          cn: '火',
         },
         water: {
           en: 'Water',
           fr: 'Eau',
+          cn: '水',
         },
         stack: Outputs.getTogether,
         protean: Outputs.protean,
@@ -566,20 +583,24 @@ Options.Triggers.push({
         buster: {
           en: 'Buster',
           fr: 'Buster',
+          cn: '死刑',
         },
         swapText: {
           en: '${role} Swap',
           fr: 'Échange ${role}',
+          cn: '${role} 交换',
         },
         tank: Outputs.tank,
         healer: Outputs.healer,
         melee: {
           en: 'Melee',
           fr: 'Mêlée',
+          cn: '近战',
         },
         ranged: {
           en: 'Ranged',
           fr: 'Distant',
+          cn: '远程',
         },
       },
     },
@@ -602,10 +623,12 @@ Options.Triggers.push({
         beNearBlue: {
           en: 'Be Near Blue',
           fr: 'Près de Blue',
+          cn: '靠近深蓝',
         },
         baitBlueBuster: {
           en: 'Bait Blue Knockback Buster',
           fr: 'Déposez le tankbuster de Blue (poussée)',
+          cn: '引导深蓝坦克击退死刑',
         },
       },
     },
@@ -647,10 +670,12 @@ Options.Triggers.push({
         firesnaking: {
           en: 'Red\'s Target',
           fr: 'Ciblé par Red',
+          cn: '火组',
         },
         watersnaking: {
           en: 'Blue\'s Target',
           fr: 'Ciblé par Blue',
+          cn: '水组',
         },
       },
     },
@@ -676,14 +701,17 @@ Options.Triggers.push({
         stack: {
           en: 'Water Stack',
           fr: 'Package Eau',
+          cn: '水分摊',
         },
         spread: {
           en: 'Water Spread',
           fr: 'Dispersion Eau',
+          cn: '水分散',
         },
         text: {
           en: '${dir} + ${mech} + Fire Spread',
           fr: '${dir} + ${mech} + Dispersion Feu',
+          cn: '${dir} + ${mech} + 火分散',
         },
       },
     },
@@ -699,6 +727,7 @@ Options.Triggers.push({
         baitHotAerial: {
           en: 'Bait Hot Aerial',
           fr: 'Déposez Flamme aérienne',
+          cn: '引导四连跳',
         },
       },
     },
@@ -736,10 +765,12 @@ Options.Triggers.push({
         redTether: {
           en: 'Red Tether on YOU',
           fr: 'Lien Rouge sur VOUS',
+          cn: '火线点名',
         },
         blueTether: {
           en: 'Blue Tether on YOU',
           fr: 'Lien Bleu sur VOUS',
+          cn: '水线点名',
         },
       },
     },
@@ -752,6 +783,7 @@ Options.Triggers.push({
         text: {
           en: 'E/W Groups, Out of Middle',
           fr: 'Groupes E/O, Sortez du milieu',
+          cn: '左右分组，远离中间',
         },
       },
     },
@@ -775,10 +807,12 @@ Options.Triggers.push({
         xtremeFiresnaking: {
           en: 'Red Debuff (Fire)',
           fr: 'Debuff Rouge (Feu)',
+          cn: '火 Debuff',
         },
         xtremeWatersnaking: {
           en: 'Blue Debuff (Water)',
           fr: 'Debuff Bleu (Eau)',
+          cn: '水 Debuff',
         },
       },
     },
@@ -790,6 +824,65 @@ Options.Triggers.push({
         'Reverse Alley-oop/Alley-oop Double-dip': 'Reverse Alley-oop/Double-dip',
         'Awesome Splash/Awesome Slab': 'Awesome Splash/Slab',
         'Blasting Snap/Plunging Snap/Re-entry Blast': 'Blasting/Plunging/Re-entry',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Deep Blue': '深蓝',
+        'Red Hot': '炽红',
+        'The Xtremes': '极限兄弟',
+        'Watery Grave': '水牢',
+      },
+      'replaceText': {
+        '--add-targetable--': '--小怪可选中--',
+        '--add-untargetable--': '--小怪不可选中--',
+        '--blue east/west--': '--深蓝 东/西--',
+        '--blue targetable--': '--深蓝可选中--',
+        '--blue untargetable--': '--深蓝不可选中--',
+        '--hot jump--': '--炽红 跳--',
+        '--intercardinal--': '--四边中点--',
+        '--red north--': '--炽红 北--',
+        '\\(bait\\)': '(引导)',
+        '\\(big\\)': '(大)',
+        '\\(cone\\)': '(扇形)',
+        '\\(damage': '(伤害',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(line\\)': '(直线)',
+        'stun\\)': '眩晕)',
+        '\\(tower\\)': '(塔)',
+        'Alley-oop Double-dip': '双重旋水',
+        'Alley-oop Inferno': '空中旋火',
+        'Awesome Slab': '浪涛翻涌',
+        'Awesome Splash': '浪花飞溅',
+        'Bailout': '救生',
+        'Blasting Snap': '火浪急转',
+        'Cutback Blaze': '火浪回切',
+        'Deep Aerial': '腾水踏浪',
+        'Deep Impact': '深海冲击',
+        'Deep Varial': '浪尖转体',
+        'Divers\' Dare': '斗志昂扬',
+        'Epic Brotherhood': '兄弟同心',
+        '(?<! )Firesnaking': '火蛇夺浪',
+        'Flame Floater': '浪顶炽火',
+        'Freaky Pyrotation': '异常旋绕巨火',
+        'Hot Aerial': '腾火踏浪',
+        'Hot Impact': '炽焰冲击',
+        'Impact Zone': '浪崩',
+        'Insane Air': '狂浪腾空',
+        'Over the Falls': '无归浪卷',
+        'Plunging Snap': '水浪急转',
+        '(?<! )Pyrotation': '旋绕巨火',
+        'Re-entry Blast': '炽红返场',
+        'Reverse Alley-oop': '交错旋水',
+        'Scathing Steam': '混合爆破',
+        'Sick Swell': '惊涛骇浪',
+        'Sickest Take-off': '破势乘浪',
+        '(?<! )Watersnaking': '水蛇夺浪',
+        'Xtreme Firesnaking': '极限火蛇夺浪',
+        'Xtreme Spectacular': '极限炫技',
+        'Xtreme Watersnaking': '极限水蛇夺浪',
+        'Xtreme Wave': '极限浪波',
       },
     },
   ],
