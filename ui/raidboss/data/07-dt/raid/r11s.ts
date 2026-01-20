@@ -132,7 +132,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Party Spread',
         },
         sharedTankStack: {
-          en: 'Tank Stack',
+          en: 'Tanks Stack',
           de: 'Tanks Sammeln',
           fr: 'Package Tanks',
           ja: 'タンク頭割り',
