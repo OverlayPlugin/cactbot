@@ -1028,7 +1028,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: '129B', capture: true },
       condition: Conditions.targetIsYou(),
-      run: (data) => data.hasRot === true,
+      run: (data) => data.hasRot = true,
     },
     {
       id: 'R12S Ravenous Reach 2',
@@ -1040,9 +1040,9 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.phase === 'curtainCall',
       alertText: (data, matches, output) => {
         if (matches.id === 'B49A') {
-          return data.hasRot ? output.safeWest!() : output.getHitEast!();
+          return data.hasRot ? output.getHitEast!(): output.safeWest!();
         }
-        return data.hasRot ? output.safeEast!() : output.getHitWest!();
+        return data.hasRot ? output.getHitWest!(): output.safeEast!();
       },
       outputStrings: {
         getHitWest: {
