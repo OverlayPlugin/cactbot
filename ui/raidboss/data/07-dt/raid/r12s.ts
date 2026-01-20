@@ -21,6 +21,7 @@ export interface Data extends RaidbossData {
   inLine: { [name: string]: number };
   blobTowerDirs: string[];
   fleshBondsCount: number;
+  skinsplitterCount: number;
   cellChainCount: number;
   cellTowerCount: number;
   myMitoticPhase?: string;
@@ -63,6 +64,7 @@ const triggerSet: TriggerSet<Data> = {
     // Phase 1
     inLine: {},
     blobTowerDirs: [],
+    skinsplitterCount: 0,
     fleshBondsCount: 0,
     cellChainCount: 0,
     cellTowerCount: 0,
@@ -538,6 +540,21 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.knockback(),
     },
     {
+      id: 'R12S Skinsplitter Counter',
+      // These occur every 5s
+      // Useful for blob tower tracking that happen 2s after
+      // 2: Tether 1
+      // 3: Tether 2 + Blob Tower 1
+      // 4: Tether 3 + Blob Tower 2
+      // 5: Tether 4 + Blob Tower 3
+      // 6: Blob Tower 4
+      // 7: Last time to exit
+      type: 'Ability',
+      netRegex: { id: 'B4BC', capture: false },
+      suppressSeconds: 1,
+      run: (data) => data.skinsplitterCount = data.skinsplitterCount + 1,
+    },
+    {
       id: 'R12S Cell Chain Counter',
       type: 'Tether',
       netRegex: { id: headMarkerData['cellChainTether'], capture: false },
@@ -654,56 +671,6 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['B4B3', 'B4B2'], capture: false },
       suppressSeconds: 1,
       run: (data) => data.cellTowerCount = data.cellTowerCount + 1,
-    },
-    {
-      id: 'R12S Chain Tower Followup',
-      // Using B4B3 Roiling Mass to detect chain tower soak
-      // Beta player leaving early may get hit by alpha's chain break aoe
-      type: 'Ability',
-      netRegex: { id: 'B4B3', capture: true },
-      condition: (data, matches) => {
-        if (data.myFleshBonds === 'beta' && data.me === matches.target)
-          return true;
-        return false;
-      },
-      infoText: (data, _matches, output) => {
-        const mechanicNum = data.cellTowerCount;
-        const myNum = data.inLine[data.me];
-        if (myNum === undefined)
-          return;
-
-        type index = {
-          [key: number]: number;
-        };
-        const myNumToOrder: index = {
-          1: 3,
-          2: 4,
-          3: 1,
-          4: 2,
-        };
-
-        const myOrder = myNumToOrder[myNum];
-        if (myOrder === undefined)
-          return;
-
-        if (myOrder === mechanicNum) {
-          if (mechanicNum < 4)
-            return output.goIntoMiddle!();
-          return output.getOut!();
-        }
-      },
-      outputStrings: {
-        getOut: {
-          en: 'Get Out',
-          de: 'Raus da',
-          fr: 'Sortez',
-          ja: '外へ',
-          cn: '远离',
-          ko: '밖으로',
-          tc: '遠離',
-        },
-        goIntoMiddle: Outputs.goIntoMiddle,
-      },
     },
     {
       id: 'R12S Bonds of Flesh Flesh α First Two Towers',
@@ -845,6 +812,80 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Chain Tower Followup',
+      // Using B4B3 Roiling Mass to detect chain tower soak
+      // Beta player leaving early may get hit by alpha's chain break aoe
+      type: 'Ability',
+      netRegex: { id: 'B4B3', capture: true },
+      condition: (data, matches) => {
+        if (data.myFleshBonds === 'beta' && data.me === matches.target)
+          return true;
+        return false;
+      },
+      infoText: (data, _matches, output) => {
+        const mechanicNum = data.cellTowerCount;
+        const myNum = data.inLine[data.me];
+        if (myNum === undefined)
+          return;
+
+        type index = {
+          [key: number]: number;
+        };
+        const myNumToOrder: index = {
+          1: 3,
+          2: 4,
+          3: 1,
+          4: 2,
+        };
+
+        const myOrder = myNumToOrder[myNum];
+        if (myOrder === undefined)
+          return;
+
+        if (myOrder === mechanicNum) {
+          if (mechanicNum < 4)
+            return output.goIntoMiddle!();
+          return output.getOut!();
+        }
+      },
+      outputStrings: {
+        getOut: {
+          en: 'Get Out',
+          de: 'Raus da',
+          fr: 'Sortez',
+          ja: '外へ',
+          cn: '远离',
+          ko: '밖으로',
+          tc: '遠離',
+        },
+        goIntoMiddle: Outputs.goIntoMiddle,
+      },
+    },
+    {
+      id: 'R12S Blob Tower Followup',
+      // Using B4B7 Roiling Mass to detect chain tower soak
+      // Alpha 3 and Alpha 4 get the inner towers before their chains
+      type: 'Ability',
+      netRegex: { id: 'B4B7', capture: true },
+      condition: (data, matches) => {
+        if (data.myFleshBonds === 'alpha' && data.me === matches.target)
+          return true;
+        return false;
+      },
+      infoText: (data, _matches, output) => {
+        const mechanicNum = data.skinsplitterCount;
+        const myNum = data.inLine[data.me];
+        if (myNum === undefined)
+          return;
+
+        if (myNum === mechanicNum)
+          return output.goIntoMiddle!();
+      },
+      outputStrings: {
+        goIntoMiddle: Outputs.goIntoMiddle,
+      },
+    },
+    {
       id: 'R12S Splattershed',
       type: 'StartsUsing',
       netRegex: { id: ['B9C3', 'B9C4'], source: 'Lindwurm', capture: false },
@@ -967,10 +1008,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         getHitWest: {
-          en: 'Spread in West Breadth',
+          en: 'Spread in West Cleave',
         },
         getHitEast: {
-          en: 'Spread in East Breadth',
+          en: 'Spread in East Cleave',
         },
         safeEast: {
           en: 'Spread East',
@@ -1116,7 +1157,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B4CC', source: 'Lindwurm', capture: false },
       condition: (data) => data.phase === 'slaughtershed',
-      durationSeconds: 12,
+      durationSeconds: 15,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -1130,7 +1171,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B4CE', source: 'Lindwurm', capture: false },
       condition: (data) => data.phase === 'slaughtershed',
-      durationSeconds: 12,
+      durationSeconds: 15,
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
