@@ -328,7 +328,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Analysis and Proving': '試驗機評測庫',
         'Ascian Prime': '至尊無影',
@@ -353,11 +352,11 @@ Options.Triggers.push({
         'Blizzard Burst': '寒冰晶球炸裂',
         'Blizzard Sphere': '寒冰晶球',
         'Chthonic Hush': '地府安寧',
-        // 'Circle of Flames': '', // FIXME '地层断裂'
+        'Circle of Flames': '地層斷裂',
         'Dark Blizzard II': '暗中暴雪',
         'Dark Fire II': '暗中火焰',
         'Dark Orb': '暗天球',
-        // 'End of Days': '', // FIXME '末日之火'
+        'End of Days': '米吉多火光',
         'Entropic Flame': '熵火',
         'Fire Burst': '烈火晶球炸裂',
         'Gaseous Bomb': '氣化炸彈',
