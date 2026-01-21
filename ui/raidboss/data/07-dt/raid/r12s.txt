@@ -11,7 +11,7 @@ hideall "--sync--"
 # -it "Lindwurm"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-#1.0 "--sync--" AddedCombatant { npcNameId: "", name: "Lindwurm", job: "00", level: "5A", ownerId: "0{4}", worldId: "00" } window 10,3 jump 3000.5 # Sync to P2 immediately through AddCombatant.
+1.0 "--sync--" AddedCombatant { npcNameId: "14378", name: "Lindwurm", job: "00", level: "1", ownerId: "0{4}", worldId: "00" } window 10,3 jump r12s-p2-start # Sync to P2 immediately through AddCombatant.
 15.6 "The Fixer" Ability { id: "B4D7", source: "Lindwurm" } window 20,10
 25.8 "--sync--" Ability { id: "B7C4", source: "Lindwurm" }
 40.9 "Mortal Slayer 1" Ability { id: ["B496", "B498"], source: "Lindwurm" }
@@ -264,7 +264,7 @@ hideall "--sync--"
 1516.9 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
 1526.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
 1526.5 "--untargetable?--"
-1527.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
+1526.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
 1531.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
 1536.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
 1536.8 "--untargetable?--"
@@ -281,7 +281,7 @@ hideall "--sync--"
 1618.6 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
 1626.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
 1626.5 "--untargetable?--"
-1627.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
+1626.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
 1631.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
 1636.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
 1636.8 "--untargetable?--"
@@ -298,7 +298,7 @@ hideall "--sync--"
 1718.3 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
 1726.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
 1726.5 "--untargetable?--"
-1727.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
+1726.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
 1731.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
 1736.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
 1736.8 "--untargetable?--"
@@ -315,28 +315,39 @@ hideall "--sync--"
 1818.3 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
 1826.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
 1826.5 "--untargetable?--"
-1827.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
+1826.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
 1831.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
 1836.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
 1836.8 "--untargetable?--"
 1836.8 "Refreshing Overkill (Enrage)?" #Ability { id: "B53A", source: "Lindwurm" }
 
-# Enrage sequence 1
-1927.7 label "r12s-p1-enrage"
-1936.7 "Refreshing Overkill (Enrage)" Ability { id: "B538", source: "Lindwurm" }
-1936.8 "--untargetable--"
-1936.8 "Refreshing Overkill (Enrage)" Ability { id: "B53A", source: "Lindwurm" }
+# Enrage sequence (Above 20%?)
+1926.5 label "r12s-p1-enrage-alt"
+1931.5 "The Fixer (Enrage)" Ability { id: "B2C7", source: "Lindwurm" }
 
-# Enrage sequence 2 (Above 20%?)
-2026.5 label "r12s-p1-enrage-alt"
-2031.5 "The Fixer (Enrage)" Ability { id: "B2C7", source: "Lindwurm" }
+# Enrage sequence
+2027.7 label "r12s-p1-enrage"
+2036.7 "Refreshing Overkill (Enrage)?" Ability { id: "B538", source: "Lindwurm" }
+2036.8 "--untargetable--"
+2036.8 "Refreshing Overkill (Enrage)?" Ability { id: "B53A", source: "Lindwurm" }
+
+# Kill/Transition sequence
+2036.8 "Refreshing Overkill" Ability { id: "B539", source: "Lindwurm" }
+2073.0 "--sync--" Ability { id: "BB9C", source: "Lindwurm" }
+2073.5 "Down for the Count" duration 42
+2075.7 "--sync--" Ability { id: "B53B", source: "Lindwurm" }
+2117.7 "--targetable--"
 
 
 ### Phase 2: Lindwurm II
-# -p B528:3014.9
+# -p B528:3012.1
 # -ii B51F
-3010.2 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
-3014.9 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
+# -it "Lindwurm"
+3000.5 label "r12s-p2-start"
+3007.1 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
+3012.1 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
+3019.3 "--middle--" Ability { id: "B4D9", source: "Lindwurm" }
+3024.4 "Replication" Ability { id: "B4D8", source: "Lindwurm" }
 # TBD
 
 # IGNORED ABILITIES
