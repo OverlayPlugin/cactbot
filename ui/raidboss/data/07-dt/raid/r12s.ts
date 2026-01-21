@@ -1236,7 +1236,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Snaking Kick',
       type: 'StartsUsing',
-      netRegex: { id: 'B527', source: 'Lindwurm', capture: true },
+      netRegex: { id: 'B527', source: 'Lindwurm', capture: false },
       response: Responses.getBehind(),
     },
     {
