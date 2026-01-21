@@ -1217,6 +1217,34 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'R12S Refreshing Overkill',
+      // 10s castTime that could end with enrage or raidwide
+      type: 'StartsUsing',
+      netRegex: { id: 'B538', source: 'Lindwurm', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 4, 
+      durationSeconds: 4.7,
+      response: Responses.bigAoe('alert'),
+    },
+    // Phase 2
+    {
+      id: 'R12S Arcadia Aflame',
+      type: 'StartsUsing',
+      netRegex: { id: 'B528', source: 'Lindwurm', capture: false },
+      response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'R12S Snaking Kick',
+      type: 'StartsUsing',
+      netRegex: { id: 'B527', source: 'Lindwurm', capture: true },
+      response: Responses.getBehind(),
+    },
+    {
+      id: 'R12S Double Sobat',
+      type: 'StartsUsing',
+      netRegex: { id: 'B520', source: 'Lindwurm', capture: true },
+      response: Responses.tankCleave(),
+    },
   ],
   timelineReplace: [],
 };
