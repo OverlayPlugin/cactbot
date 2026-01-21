@@ -1222,7 +1222,7 @@ const triggerSet: TriggerSet<Data> = {
       // 10s castTime that could end with enrage or raidwide
       type: 'StartsUsing',
       netRegex: { id: 'B538', source: 'Lindwurm', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 4, 
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 4,
       durationSeconds: 4.7,
       response: Responses.bigAoe('alert'),
     },
