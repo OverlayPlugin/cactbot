@@ -31,10 +31,10 @@ hideall "--sync--"
 148.2 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
 148.4 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 150.3 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-150.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", B418"], source: "The Tyrant" }
+150.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 153.5 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
 155.4 "Weapon 2" Ability { id: ["B41D", "B41B, "B41C"], source: "The Tyrant" }
-155.5 "Assault Evolved 2" Ability { id: ["B41A", B418", "B419"], source: "The Tyrant" }
+155.5 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
 158.6 "--jump 3--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 160.5 "Weapon 3" Ability { id: ["B41B, "B41C", "B41D"], source: "The Tyrant" }
 160.6 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
@@ -50,10 +50,10 @@ hideall "--sync--"
 192.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
 192.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 194.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-194.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", B418"], source: "The Tyrant" }
+194.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 198.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
 199.9 "Weapon 2" Ability { id: ["B41D", "B41B, "B41C"], source: "The Tyrant" }
-200.0 "Assault Evolved 2" Ability { id: "B41A", B418", "B419"], source: "The Tyrant" }
+200.0 "Assault Evolved 2" Ability { id: "B41A", "B418", "B419"], source: "The Tyrant" }
 203.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 205.0 "Weapon 3" Ability { id: ["B41B, "B41C", "B41D"], source: "The Tyrant" }
 205.1 "Assault Evolved 3" Ability { id: "["B418", "B419", "B41A"], source: "The Tyrant" }
@@ -88,7 +88,7 @@ hideall "--sync--"
 292.4 "Assault Apex" #Ability { id: "B7EE", source: "The Tyrant" }
 292.6 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 294.5 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-294.6 "Assault Evolved 1" #Ability { id: ["B419", "B41A", B418"], source: "The Tyrant" }
+294.6 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 
 
 # Raw Steel Scythe First
@@ -103,10 +103,10 @@ hideall "--sync--"
 1048.2 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
 1048.4 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 1050.3 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-1050.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", B418"], source: "The Tyrant" }
+1050.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 1053.5 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
 1055.4 "Weapon 2" Ability { id: ["B41D", "B41B, "B41C"], source: "The Tyrant" }
-1055.5 "Assault Evolved 2" Ability { id: ["B41A", B418", "B419"], source: "The Tyrant" }
+1055.5 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
 1058.6 "--jump 3--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 1060.5 "Weapon 3" Ability { id: ["B41B, "B41C", "B41D"], source: "The Tyrant" }
 1060.6 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
@@ -122,10 +122,10 @@ hideall "--sync--"
 1092.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
 1092.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 1094.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-1094.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", B418"], source: "The Tyrant" }
+1094.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 1098.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
 1099.9 "Weapon 2" Ability { id: ["B41D", "B41B, "B41C"], source: "The Tyrant" }
-1100.0 "Assault Evolved 2" Ability { id: "B41A", B418", "B419"], source: "The Tyrant" }
+1100.0 "Assault Evolved 2" Ability { id: "B41A", "B418", "B419"], source: "The Tyrant" }
 1103.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 1105.0 "Weapon 3" Ability { id: ["B41B, "B41C", "B41D"], source: "The Tyrant" }
 1105.1 "Assault Evolved 3" Ability { id: "["B418", "B419", "B41A"], source: "The Tyrant" }
@@ -160,16 +160,16 @@ hideall "--sync--"
 1192.4 "Assault Apex" Ability { id: "B7EE", source: "The Tyrant" }
 1192.6 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 1194.5 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-1194.6 "Assault Evolved 1" Ability { id: ["B419", "B41A", B418"], source: "The Tyrant" }
+1194.6 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 1197.7 "--jump 2--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 1199.6 "Weapon 2" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-1199.7 "Assault Evolved 2" Ability { id: ["B419", "B41A", B418"], source: "The Tyrant" }
+1199.7 "Assault Evolved 2" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 1202.8 "--jump 3--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
 1204.7 "Weapon 3" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
-1204.8 "Assault Evolved 3" Ability { id: ["B41A", B418", "B419"], source: "The Tyrant" }
+1204.8 "Assault Evolved 3" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
 1207.9 "--jump 4--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
 1209.8 "Weapon 4" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
-1209.9 "Assault Evolved 4" Ability { id: ["B41A", B418", "B419"], source: "The Tyrant" }
+1209.9 "Assault Evolved 4" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
 1213.0 "--jump 5--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 1214.9 "Weapon 5" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
 1215.0 "Assault Evolved 5" Ability { id: [B418", "B419", "B41A"], source: "The Tyrant" }
