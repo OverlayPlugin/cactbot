@@ -10,7 +10,8 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-10.6 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" } window 10,10
+5.6 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } window 10,10
+10.6 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
 
 15.7 "--sync--" StartsUsing { id: "B422", source: "The Tyrant" } jump "r11s-raw-steel-axe-1"
 15.7 "--sync--" StartsUsing { id: "B423", source: "The Tyrant" } jump "r11s-raw-steel-scythe-1"
@@ -44,81 +45,151 @@ hideall "--sync--"
 172.7 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
 179.8 "Void Stardust" Ability { id: "B412", source: "The Tyrant" }
 183.9 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+
+184.9 "--sync--" StartsUsing { id: "B414", source: "The Tyrant" } jump "r11s-axe-1-comet-1"
+184.9 "--sync--" StartsUsing { id: "B415", source: "The Tyrant" } jump "r11s-axe-1-crush-1"
 185.9 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
 187.9 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
-189.9 "Comet/Crushing Comet" Ability { id: ["B414", "B415"], source: "The Tyrant" }
-192.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
-192.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
-194.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-194.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
-198.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
-199.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
-200.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
-203.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
-205.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
-205.1 "Assault Evolved 3" Ability { id: "["B418", "B419", "B41A"], source: "The Tyrant" }
-210.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
-212.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
-214.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
-216.2 "Crushing Comet/Comet" Ability { id: ["B415", "B414"], source: "The Tyrant" }
-222.2 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
+189.9 "Comet/Crushing Comet?" #Ability { id: ["B414", "B415"], source: "The Tyrant" }
+192.7 "Assault Evolved" #Ability { id: "B417", source: "The Tyrant" }
+192.9 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+194.8 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+194.9 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+
+284.9 label "r11s-axe-1-comet-1"
+289.9 "Comet" Ability { id: "B414", source: "The Tyrant" }
+292.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+292.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+294.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+294.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+298.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+299.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+300.0 "Assault Evolved 2" Ability { id: "B41A", "B418", "B419"], source: "The Tyrant" }
+303.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+305.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+305.1 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+310.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+312.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+314.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+316.2 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
+
+317.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } jump "r11s-axe-1-post-cometcrush"
+322.2 "Crown of Arcadia" #Ability { id: "B406", source: "The Tyrant" }
+330.4 "--middle--" #Ability { id: "B404", source: "The Tyrant" }
+334.6 "Dance of Domination Trophy" #Ability { id: "B7BB", source: "The Tyrant" }
+341.3 "Dance of Domination 1" #Ability { id: "B41F", source: "The Tyrant" }
+342.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
+
+484.9 label "r11s-axe-1-crush-1"
+489.9 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
+492.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+492.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+494.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+494.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+498.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+499.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+500.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+503.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+505.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+505.1 "Assault Evolved 3" Ability { id: "["B418", "B419", "B41A"], source: "The Tyrant" }
+510.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+512.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+514.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+516.2 "Comet" Ability { id: "B414", source: "The Tyrant" }
+
+517.2 label "r11s-axe-1-post-cometcrush"
+522.2 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
 
 # Dance of Domination (Axe)
-230.4 "--middle--" Ability { id: "B404", source: "The Tyrant" }
-234.6 "Dance of Domination Trophy" Ability { id: "B7BB", source: "The Tyrant" }
-241.3 "Dance of Domination 1" Ability { id: "B41F", source: "The Tyrant" }
-242.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
-242.6 "Dance of Domination 3" #Ability { id: "B421", source: "The Tyrant" }
-243.2 "Dance of Domination 4" #Ability { id: "B421", source: "The Tyrant" }
-243.8 "Dance of Domination 5" #Ability { id: "B421", source: "The Tyrant" }
-244.4 "Dance of Domination 6" #Ability { id: "B421", source: "The Tyrant" }
-245.5 "Dance of Domination 7" Ability { id: "B7EA", source: "The Tyrant" }
-250.5 "Eye of the Hurricane" Ability { id: "B424", source: "The Tyrant" }
-250.7 "Explosion" Ability { id: "B420", source: "The Tyrant" }
-251.1 "Explosion" Ability { id: "B7BC", source: "The Tyrant" }
-256.4 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
-263.8 "Heavy Hitter" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
-263.8 "Raw Steel x2" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
-271.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+530.4 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+534.6 "Dance of Domination Trophy" Ability { id: "B7BB", source: "The Tyrant" }
+541.3 "Dance of Domination 1" Ability { id: "B41F", source: "The Tyrant" }
+542.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
+542.6 "Dance of Domination 3" #Ability { id: "B421", source: "The Tyrant" }
+543.2 "Dance of Domination 4" #Ability { id: "B421", source: "The Tyrant" }
+543.8 "Dance of Domination 5" #Ability { id: "B421", source: "The Tyrant" }
+544.4 "Dance of Domination 6" #Ability { id: "B421", source: "The Tyrant" }
+545.5 "Dance of Domination 7" Ability { id: "B7EA", source: "The Tyrant" }
+550.5 "Eye of the Hurricane" Ability { id: "B424", source: "The Tyrant" }
+550.7 "Explosion" Ability { id: "B420", source: "The Tyrant" }
+551.1 "Explosion" Ability { id: "B7BC", source: "The Tyrant" }
+556.4 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
+563.8 "Heavy Hitter" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
+563.8 "Raw Steel x2" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+571.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 
 # Ultimate Trophy Weapons (Axe)
-273.9 "--sync--" StartsUsing { id: "B425", source: "The Tyrant" } jump "r11s-charybdistopia"
-278.9 "Charybdistopia" Ability { id: "B425", source: "The Tyrant" }
-284.6 "Ultimate Trophy Weapons" #Ability { id: "B7ED", source: "The Tyrant" }
-292.4 "Assault Apex" #Ability { id: "B7EE", source: "The Tyrant" }
-292.6 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
-294.5 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-294.6 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+573.9 "--sync--" StartsUsing { id: "B425", source: "The Tyrant" } jump "r11s-charybdistopia"
+578.9 "Charybdistopia" Ability { id: "B425", source: "The Tyrant" }
+584.6 "Ultimate Trophy Weapons" #Ability { id: "B7ED", source: "The Tyrant" }
+592.4 "Assault Apex" #Ability { id: "B7EE", source: "The Tyrant" }
+592.6 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+594.5 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+594.6 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 
 
 # Raw Steel Scythe First
-1015.7 label "r11s-raw-steel-scythe-1"
-1017.7 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
-1025.1 "Heavy Hitter" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
-1025.1 "Raw Steel x2" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
-1033.1 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+715.7 label "r11s-raw-steel-scythe-1"
+717.7 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
+725.1 "Heavy Hitter" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
+725.1 "Raw Steel x2" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+733.1 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 
 # Trophy Weapons 1 (Scythe)
-1038.4 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
-1048.2 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
-1048.4 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
-1050.3 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-1050.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
-1053.5 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
-1055.4 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
-1055.5 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
-1058.6 "--jump 3--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
-1060.5 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
-1060.6 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+738.4 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
+748.2 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+748.4 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+750.3 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+750.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+753.5 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+755.4 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+755.5 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+758.6 "--jump 3--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+760.5 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+760.6 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
 
 # Trophy Weapons 2 (Scythe)
-1067.7 "--middle--" Ability { id: "B404", source: "The Tyrant" }
-1072.7 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
-1079.8 "Void Stardust" Ability { id: "B412", source: "The Tyrant" }
-1083.9 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
-1085.9 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
-1087.9 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
-1089.9 "Comet/Crushing Comet" Ability { id: ["B414", "B415"], source: "The Tyrant" }
+767.7 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+772.7 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
+779.8 "Void Stardust" Ability { id: "B412", source: "The Tyrant" }
+783.9 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+
+784.9 "--sync--" StartsUsing { id: "B414", source: "The Tyrant" } jump "r11s-scythe-1-comet-1"
+784.9 "--sync--" StartsUsing { id: "B415", source: "The Tyrant" } jump "r11s-scythe-1-crush-1"
+785.9 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+787.9 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+789.9 "Comet/Crushing Comet?" #Ability { id: ["B414", "B415"], source: "The Tyrant" }
+792.7 "Assault Evolved" #Ability { id: "B417", source: "The Tyrant" }
+792.9 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+794.8 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+794.9 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+
+884.9 label "r11s-scythe-1-comet-1"
+889.9 "Comet" Ability { id: "B414", source: "The Tyrant" }
+892.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+892.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+894.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+894.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+898.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+899.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+900.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+903.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+905.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+905.1 "Assault Evolved 3" Ability { id: "["B418", "B419", "B41A"], source: "The Tyrant" }
+910.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+912.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+914.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+916.2 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
+
+917.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } jump "r11s-scythe-1-post-cometcrush"
+922.2 "Crown of Arcadia" #Ability { id: "B406", source: "The Tyrant" }
+930.4 "--middle--" #Ability { id: "B404", source: "The Tyrant" }
+934.6 "Dance of Domination Trophy" #Ability { id: "B7BB", source: "The Tyrant" }
+941.3 "Dance of Domination 1" #Ability { id: "B41F", source: "The Tyrant" }
+942.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
+
+1084.9 label "r11s-scythe-1-crush-1"
+1089.9 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
 1092.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
 1092.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
 1094.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
@@ -132,7 +203,9 @@ hideall "--sync--"
 1110.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
 1112.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
 1114.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
-1116.2 "Crushing Comet/Comet" Ability { id: ["B415", "B414"], source: "The Tyrant" }
+1116.2 "Comet" Ability { id: "B414", source: "The Tyrant" }
+
+1117.2 label "r11s-scythe-1-post-cometcrush"
 1122.2 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
 
 # Dance of Domination (Scythe)
@@ -172,10 +245,10 @@ hideall "--sync--"
 1209.9 "Assault Evolved 4" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
 1213.0 "--jump 5--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 1214.9 "Weapon 5" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
-1215.0 "Assault Evolved 5" Ability { id: [B418", "B419", "B41A"], source: "The Tyrant" }
+1215.0 "Assault Evolved 5" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
 1218.1 "--jump 6--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 1220.0 "Weapon 6" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
-1220.1 "Assault Evolved 6" Ability { id: [B418", "B419", "B41A"], source: "The Tyrant" }
+1220.1 "Assault Evolved 6" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
 1221.2 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 1226.3 "Powerful Gust" Ability { id: "B427", source: "The Tyrant" }
 1227.3 "Immortal Reign" Ability { id: "B428", source: "The Tyrant" }
