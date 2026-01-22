@@ -9,6 +9,11 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 type Phase = 'one' | 'arenaSplit' | 'ecliptic';
 
+type WeaponInfo = {
+  delay: number;
+  duration: number;
+};
+
 export interface Data extends RaidbossData {
   phase: Phase;
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
@@ -61,6 +66,34 @@ const headMarkerData = {
   'closeTether': '0039',
   'farTether': '00F9',
 } as const;
+
+const ultimateTrophyWeaponsMap: (WeaponInfo | undefined)[] = [
+  undefined, undefined,
+  {
+    delay: 0,
+    duration: 8.7,
+  },
+  {
+    delay: 4.7,
+    duration: 5.1,
+  },
+  {
+    delay: 5.8,
+    duration: 5.1,
+  },
+  {
+    delay: 6.9,
+    duration: 5.1,
+  },
+  {
+    delay: 8,
+    duration: 5.1,
+  },
+  {
+    delay: 9.1,
+    duration: 5.1,
+  },
+];
 
 const triggerSet: TriggerSet<Data> = {
   id: 'AacHeavyweightM3Savage',
@@ -184,19 +217,13 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
       condition: (data) => data.weaponMechCount > 1,
       delaySeconds: (data) => {
-        if (data.weaponMechCount > 2)
-          return 3.7;
-        return 0;
+        return ultimateTrophyWeaponsMap[data.weaponMechCount]?.delay ?? 0;
       },
       durationSeconds: (data) => {
-        if (data.weaponMechCount < 3)
-          return 8.7;
-        return 5;
+        return ultimateTrophyWeaponsMap[data.weaponMechCount]?.duration ?? 0;
       },
       countdownSeconds: (data) => {
-        if (data.weaponMechCount < 3)
-          return 8.7;
-        return 5;
+        return ultimateTrophyWeaponsMap[data.weaponMechCount]?.duration ?? 0;
       },
       infoText: (data, matches, output) => {
         const mechanic = matches.param1 === '11D1'
