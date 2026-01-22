@@ -68,7 +68,8 @@ const headMarkerData = {
 } as const;
 
 const ultimateTrophyWeaponsMap: (WeaponInfo | undefined)[] = [
-  undefined, undefined,
+  undefined,
+  undefined,
   {
     delay: 0,
     duration: 8.7,
