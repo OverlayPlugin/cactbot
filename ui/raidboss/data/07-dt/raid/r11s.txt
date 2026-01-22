@@ -64,7 +64,7 @@ hideall "--sync--"
 294.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 298.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
 299.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
-300.0 "Assault Evolved 2" Ability { id: "B41A", "B418", "B419"], source: "The Tyrant" }
+300.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
 303.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
 305.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
 305.1 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
