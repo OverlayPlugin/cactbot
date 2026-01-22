@@ -82,7 +82,7 @@ hideall "--sync--"
 271.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 
 # Ultimate Trophy Weapons (Axe)
-278.9 StartsUsing { id: "B425", source: "The Tyrant" } forcejump "r11s-charybdistopia"
+278.9 "--sync--" StartsUsing { id: "B425", source: "The Tyrant" } forcejump "r11s-charybdistopia"
 
 # Raw Steel Scythe First
 1015.7 label "r11s-raw-steel-scythe-1"
