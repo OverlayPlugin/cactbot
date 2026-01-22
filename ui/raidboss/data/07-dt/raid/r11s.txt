@@ -1,7 +1,7 @@
 ### AAC HEAVYWEIGHT M3 (SAVAGE)
 # ZoneId: 1325
 
-# -ii B405 B40E B40D B40A B41E B42D B429 B426 B437 B43B B445 B455 B439 B458 B461 B446
+# -ii B405 B40E B40D B40A B41E B42D B429 B426 B437 B43B B445 B455 B439 B458 B461 B446 B431
 # -it "The Tyrant"
 
 hideall "--Reset--"
@@ -269,7 +269,6 @@ hideall "--sync--"
 1266.1 "Orbital Omen (castbar)" Ability { id: "B432", source: "The Tyrant" }
 1274.8 "Fire and Fury (castbar)" Ability { id: "B42F", source: "The Tyrant" }
 1275.2 "Orbital Omen 1" #Ability { id: "B433", source: "The Tyrant" }
-1275.8 "Fire and Fury" #Ability { id: "B431", source: "The Tyrant" }
 1275.8 "Fire and Fury" #Ability { id: "B430", source: "The Tyrant" }
 1276.8 "Orbital Omen 2" #Ability { id: "B433", source: "The Tyrant" }
 1278.4 "Orbital Omen 3" #Ability { id: "B433", source: "The Tyrant" }
@@ -344,7 +343,6 @@ hideall "--sync--"
 1504.0 "Orbital Omen (castbar)" Ability { id: "B432", source: "The Tyrant" }
 1512.7 "Fire and Fury (castbar)" Ability { id: "B42F", source: "The Tyrant" }
 1513.1 "Orbital Omen 1" #Ability { id: "B433", source: "The Tyrant" }
-1513.7 "Fire and Fury" Ability { id: "B431", source: "The Tyrant" }
 1513.7 "Fire and Fury" Ability { id: "B430", source: "The Tyrant" }
 1514.7 "Orbital Omen 2" #Ability { id: "B433", source: "The Tyrant" }
 1516.3 "Orbital Omen 3" #Ability { id: "B433", source: "The Tyrant" }
@@ -409,6 +407,7 @@ hideall "--sync--"
 # B426 Charybdis: Knocbkack Damage from standing in tornado
 # B429 One and Only: VFX
 # B42B Great Wall of Fire: VFX
+# B431 Fire and Fury: VFX
 # B439 Fearsome Fireball: VFX
 # B446 Fire Breath: VFX
 # B437 Unmitigated Explosion: Meteors dropped too close to each other
