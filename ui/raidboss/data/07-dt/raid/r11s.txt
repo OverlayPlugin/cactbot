@@ -311,9 +311,9 @@ hideall "--sync--"
 1400.0 "Majestic Meteor 1" #Ability { id: "B441", source: "The Tyrant" }
 1401.1 "--meteor 3--" #StartsUsing { id: "B441", source: "The Tyrant" }
 1402.0 "Majestic Meteor 2" #Ability { id: "B441", source: "The Tyrant" }
-1403.9 "Majestic Meteowrath x2" #Ability { id: "B443", source: "The Tyrant" }
+1403.9 "Majestic Meteowrath x4" #Ability { id: "B443", source: "The Tyrant" }
 1403.9 "Majestic Meteorain x2" Ability { id: "B442", source: "The Tyrant" }
-1403.9 "Fire Breath x2" #Ability { id: "B447", source: "The Tyrant" }
+1403.9 "Fire Breath x4" #Ability { id: "B447", source: "The Tyrant" }
 1404.1 "Majestic Meteor 3" #Ability { id: "B441", source: "The Tyrant" }
 1421.1 "Explosion" Ability { id: "B444", source: "The Tyrant" }
 
@@ -322,9 +322,9 @@ hideall "--sync--"
 1432.1 "Majestic Meteor 1" #Ability { id: "B441", source: "The Tyrant" }
 1433.1 "--meteor 3--" #StartsUsing { id: "B441", source: "The Tyrant" }
 1434.1 "Majestic Meteor 2" #Ability { id: "B441", source: "The Tyrant" }
-1436.0 "Majestic Meteowrath x2" #Ability { id: "B443", source: "The Tyrant" }
+1436.0 "Majestic Meteowrath x4" #Ability { id: "B443", source: "The Tyrant" }
 1436.0 "Majestic Meteorain x2" Ability { id: "B442", source: "The Tyrant" }
-1436.0 "Fire Breath x2" #Ability { id: "B447", source: "The Tyrant" }
+1436.0 "Fire Breath x4" #Ability { id: "B447", source: "The Tyrant" }
 1436.1 "Majestic Meteor 3" #Ability { id: "B441", source: "The Tyrant" }
 1445.3 "Massive Meteor (castbar)" Ability { id: "B448", source: "The Tyrant" }
 1446.4 "Massive Meteor x5" #Ability { id: "B449", source: "The Tyrant" } duration 5.6
@@ -361,7 +361,7 @@ hideall "--sync--"
 1556.2 "Atomic Impact 6" Ability { id: "B454", source: "The Tyrant" }
 1557.2 "Cosmic Kiss" Ability { id: "B456", source: "The Tyrant" }
 1557.2 "Weighty Impact" #Ability { id: "B457", source: "The Tyrant" }
-1566.8 "Majestic Meteowrath" Ability { id: "B459", source: "The Tyrant" }
+1566.8 "Majestic Meteowrath x4" Ability { id: "B459", source: "The Tyrant" }
 1570.2 "Two-way Fireball / Four-way Fireball (castbar)" Ability { id: ["B7BD", "B45A"], source: "The Tyrant" }
 1571.1 "Two-way Fireball / Four-way Fireball" Ability { id: ["B7BE", "B45B"], source: "The Tyrant" }
 1579.4 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
