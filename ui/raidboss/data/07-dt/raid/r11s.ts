@@ -345,7 +345,11 @@ const triggerSet: TriggerSet<Data> = {
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['cometSpread'], capture: false },
       suppressSeconds: 1,
-      run: (data) => data.voidStardust = 'spread',
+      run: (data) => {
+        // Only setting this once
+        if (data.voidStardust === undefined)
+          data.voidStardust = 'spread';
+      },
     },
     {
       id: 'R11S Comet Spread',
@@ -358,7 +362,11 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R11S Crushing Comet Collect',
       type: 'StartsUsing',
       netRegex: { id: 'B415', source: 'The Tyrant', capture: false },
-      run: (data) => data.voidStardust = 'stack',
+      run: (data) => {
+        // Only setting this once
+        if (data.voidStardust === undefined)
+          data.voidStardust = 'stack';
+      },
     },
     {
       id: 'R11S Crushing Comet',
