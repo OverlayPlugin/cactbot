@@ -264,8 +264,8 @@ hideall "--sync--"
 1252.6 "Great Wall of Fire (castbar)" Ability { id: "B42B", source: "The Tyrant" }
 1252.8 "Great Wall of Fire 1" #Ability { id: "B42C", source: "The Tyrant" }
 1256.0 "Great Wall of Fire 2" #Ability { id: "B42C", source: "The Tyrant" }
-1256.6 "Explosion" Ability { id: "B42E", source: "The Tyrant" }
-1259.8 "Explosion" Ability { id: "B42E", source: "The Tyrant" }
+1256.6 "Explosion 1" Ability { id: "B42E", source: "The Tyrant" }
+1259.8 "Explosion 2" Ability { id: "B42E", source: "The Tyrant" }
 1266.1 "Orbital Omen (castbar)" Ability { id: "B432", source: "The Tyrant" }
 1274.8 "Fire and Fury (castbar)" Ability { id: "B42F", source: "The Tyrant" }
 1275.2 "Orbital Omen 1" #Ability { id: "B433", source: "The Tyrant" }
@@ -338,8 +338,8 @@ hideall "--sync--"
 1490.5 "Great Wall of Fire (castbar)" Ability { id: "B42B", source: "The Tyrant" }
 1490.7 "Great Wall of Fire 1" #Ability { id: "B42C", source: "The Tyrant" }
 1493.9 "Great Wall of Fire 2" #Ability { id: "B42C", source: "The Tyrant" }
-1494.5 "Explosion" Ability { id: "B42E", source: "The Tyrant" }
-1497.7 "Explosion" Ability { id: "B42E", source: "The Tyrant" }
+1494.5 "Explosion 1" Ability { id: "B42E", source: "The Tyrant" }
+1497.7 "Explosion 2" Ability { id: "B42E", source: "The Tyrant" }
 1504.0 "Orbital Omen (castbar)" Ability { id: "B432", source: "The Tyrant" }
 1512.7 "Fire and Fury (castbar)" Ability { id: "B42F", source: "The Tyrant" }
 1513.1 "Orbital Omen 1" #Ability { id: "B433", source: "The Tyrant" }
