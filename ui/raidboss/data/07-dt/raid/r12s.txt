@@ -307,7 +307,7 @@ hideall "--sync--"
 1516.9 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
 1526.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
 1526.5 "--untargetable?--"
-1526.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
+1526.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } forcejump "r12s-p1-enrage"
 1531.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
 1536.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
 1536.8 "--untargetable?--"
