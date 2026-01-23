@@ -270,7 +270,7 @@ hideall "--sync--"
 1284.8 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
 1288.6 "Raptor Knuckles Left" Ability { id: "B4D0", source: "Lindwurm" }
 1289.4 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
-1293.3 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } jump "r12s-p1-slaughtershed3"
+1293.3 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed3"
 1296.3 "Slaughtershed 3 (castbar)" #Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" }
 1298.7 "Slaughtershed 3" #Ability { id: "ADC9", source: "Lindwurm" }
 1307.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
