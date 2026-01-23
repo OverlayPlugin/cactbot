@@ -907,7 +907,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'en',
       'replaceText': {
-        'Majestic Meteowrath/Majestic Meteorain/Fire Breath': 'Meteowrath/Mateorain/Fire Breath',
+        'Majestic Meteowrath/Majestic Meteorain/Fire Breath': 'Fire Breath + Meteor Lines',
       },
     },
     ],
