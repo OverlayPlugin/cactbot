@@ -236,7 +236,7 @@ hideall "--sync--"
 1083.4 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
 1087.0 "Serpentine Scourge Left" Ability { id: "B4D1", source: "Lindwurm" }
 1088.0 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
-1091.7 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } jump "r12s-p1-slaughtershed3"
+1091.7 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed3"
 1096.3 "Slaughtershed 3 (castbar)" #Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" }
 1098.7 "Slaughtershed 3" #Ability { id: "ADC9", source: "Lindwurm" }
 1107.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
