@@ -903,6 +903,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'en',
+      'replaceText': {
+        'Majestic Meteowrath/Majestic Meteorain/Fire Breath': 'Meteowrath/Mateorain/Fire Breath',
+      },
+    },
+    ],
 };
 
 export default triggerSet;
