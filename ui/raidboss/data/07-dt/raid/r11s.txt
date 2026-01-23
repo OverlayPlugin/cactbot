@@ -122,8 +122,8 @@ hideall "--sync--"
 571.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 
 # Ultimate Trophy Weapons (Axe)
-573.9 "--sync--" StartsUsing { id: "B425", source: "The Tyrant" } jump "r11s-charybdistopia"
-578.9 "Charybdistopia" Ability { id: "B425", source: "The Tyrant" }
+573.9 "--sync--" StartsUsing { id: "B425", source: "The Tyrant" } forcejump "r11s-charybdistopia"
+578.9 "Charybdistopia" #Ability { id: "B425", source: "The Tyrant" }
 584.6 "Ultimate Trophy Weapons" #Ability { id: "B7ED", source: "The Tyrant" }
 592.4 "Assault Apex" #Ability { id: "B7EE", source: "The Tyrant" }
 592.6 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
