@@ -12,13 +12,13 @@ hideall "--sync--"
 #   "r11s-raw-steel-axe-1": Raw Steel Axe First
 #     "r11s-axe-1-comet-1": Raw Steel Axe First + Comet First
 #     "r11s-axe-1-crush-1": Raw Steel Axe First + Crushing Comet First
-#   "r11s-axe-1-post-cometcrush": Jump to Dance of Domination section within Raw Steel Axe First
+#   "r11s-axe-1-post-cometcrush": Label for Dance of Domination section within Raw Steel Axe First
 # "r11s-charybdistopia": Jump to end of Raw Steel branch
 #
 # "r11s-raw-steel-scythe-1": Raw Steel Scythe
 #     "r11s-scythe-1-comet-1": Raw Steel Scythe First + Comet First
 #     "r11s-scythe-1-crush-1": Raw Steel Scythe First + Crushing Comet First
-#   "r11s-scythe-1-post-cometcrush": Jump to Dance of Domination section within Raw Steel Scythe First
+#   "r11s-scythe-1-post-cometcrush": Label for Dance of Domination section within Raw Steel Scythe First
 # "r11s-charybdistopia": Label for the end of Raw Steel branch
 # Timeline continues
 
