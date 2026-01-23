@@ -301,7 +301,7 @@ hideall "--sync--"
 
 # Arena Split
 # NOTE: Need to move to safe spot at meteor 3
-1359.8 "Flatliner (castbar)" Ability { id: "B43F", source: "The Tyrant" } window 360,10
+1359.8 "--sync--" Ability { id: "B43F", source: "The Tyrant" } window 360,10
 1361.8 "Flatliner (split)" Ability { id: "BA90", source: "The Tyrant" }
 1375.9 "Majestic Meteor" Ability { id: "B440", source: "The Tyrant" }
 1389.0 "Explosion" Ability { id: "B444", source: "The Tyrant" }
