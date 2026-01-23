@@ -341,7 +341,7 @@ hideall "--sync--"
 1718.3 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
 1726.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
 1726.5 "--untargetable?--"
-1726.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } jump "r12s-p1-enrage"
+1726.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } forcejump "r12s-p1-enrage"
 1731.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
 1736.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
 1736.8 "--untargetable?--"
