@@ -910,7 +910,7 @@ const triggerSet: TriggerSet<Data> = {
         'Majestic Meteowrath/Majestic Meteorain/Fire Breath': 'Fire Breath + Meteor Lines',
       },
     },
-    ],
+  ],
 };
 
 export default triggerSet;
