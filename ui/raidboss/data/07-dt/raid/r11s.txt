@@ -7,8 +7,22 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+# NOTE: A rough description of the layout for this timeline is as follows:
+# Timeline reaches Raw Steel Branch point
+#   "r11s-raw-steel-axe-1": Raw Steel Axe First
+#     "r11s-axe-1-comet-1": Raw Steel Axe First + Comet First
+#     "r11s-axe-1-crush-1": Raw Steel Axe First + Crushing Comet First
+#   "r11s-axe-1-post-cometcrush": End of Raw Steel Axe First
+# "r11s-charybdistopia": Jump to end of Raw Steel branch
+#
+# "r11s-raw-steel-scythe-1": Raw Steel Scythe
+#     "r11s-scythe-1-comet-1": Raw Steel Scythe First + Comet First
+#     "r11s-scythe-1-crush-1": Raw Steel Scythe First + Crushing Comet First
+#   "r11s-scythe-1-post-cometcrush": End of Raw Steel Scythe First
+# "r11s-charybdistopia": Label for the end of Raw Steel branch
+# Timeline continues
 
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 5.6 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } window 10,10
 10.6 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
 
@@ -76,11 +90,7 @@ hideall "--sync--"
 316.2 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
 
 317.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } forcejump "r11s-axe-1-post-cometcrush"
-322.2 "Crown of Arcadia" #Ability { id: "B406", source: "The Tyrant" }
-330.4 "--middle--" #Ability { id: "B404", source: "The Tyrant" }
-334.6 "Dance of Domination Trophy" #Ability { id: "B7BB", source: "The Tyrant" }
-341.3 "Dance of Domination 1" #Ability { id: "B41F", source: "The Tyrant" }
-342.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
+
 
 # Raw Steel Axe First + Crushing Comet First
 484.9 label "r11s-axe-1-crush-1"
@@ -123,12 +133,6 @@ hideall "--sync--"
 
 # Ultimate Trophy Weapons (Axe)
 573.9 "--sync--" StartsUsing { id: "B425", source: "The Tyrant" } forcejump "r11s-charybdistopia"
-578.9 "Charybdistopia" #Ability { id: "B425", source: "The Tyrant" }
-584.6 "Ultimate Trophy Weapons" #Ability { id: "B7ED", source: "The Tyrant" }
-592.4 "Assault Apex" #Ability { id: "B7EE", source: "The Tyrant" }
-592.6 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
-594.5 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
-594.6 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
 
 
 # Raw Steel Scythe First
@@ -187,11 +191,6 @@ hideall "--sync--"
 916.2 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
 
 917.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } forcejump "r11s-scythe-1-post-cometcrush"
-922.2 "Crown of Arcadia" #Ability { id: "B406", source: "The Tyrant" }
-930.4 "--middle--" #Ability { id: "B404", source: "The Tyrant" }
-934.6 "Dance of Domination Trophy" #Ability { id: "B7BB", source: "The Tyrant" }
-941.3 "Dance of Domination 1" #Ability { id: "B41F", source: "The Tyrant" }
-942.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
 
 # Raw Steel Scythe First + Crushing Comet First
 1084.9 label "r11s-scythe-1-crush-1"
