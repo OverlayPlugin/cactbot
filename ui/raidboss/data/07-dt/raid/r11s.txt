@@ -186,7 +186,7 @@ hideall "--sync--"
 914.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
 916.2 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
 
-917.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } jump "r11s-scythe-1-post-cometcrush"
+917.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } forcejump "r11s-scythe-1-post-cometcrush"
 922.2 "Crown of Arcadia" #Ability { id: "B406", source: "The Tyrant" }
 930.4 "--middle--" #Ability { id: "B404", source: "The Tyrant" }
 934.6 "Dance of Domination Trophy" #Ability { id: "B7BB", source: "The Tyrant" }
