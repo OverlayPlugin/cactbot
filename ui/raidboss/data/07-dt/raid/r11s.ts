@@ -837,7 +837,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, _matches, output) => {
         if (data.hadEclipticTether)
           return output.fourWayBehind!();
-        return output.fourWayFront!()
+        return output.fourWayFront!();
       },
       outputStrings: {
         fourWayFront: {
