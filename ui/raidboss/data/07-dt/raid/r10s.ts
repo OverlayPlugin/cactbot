@@ -536,6 +536,33 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R10S Reverse Alley-oop/Alley-oop Double-dip 2nd Hit',
+      // TODO: Handle Arena Split with boss/postion checking?
+      type: 'Ability',
+      netRegex: { id: ['B5E0', 'B5DD'], source: 'Deep Blue', capture: true },
+      condition: (data) => {
+        return data.snakingDebuff !== 'fire';
+      },
+      infoText: (data, matches, output) => {
+        // During snaking and the arena split it is always move since the
+        // baits are too close.
+        if (data.phase === 'snaking' || data.phase === 'arenaSplit')
+          return output.move!();
+        return matches.id === 'B5E0' ? output.stay!() : output.move!();
+      },
+      outputStrings: {
+        move: Outputs.moveAway,
+        stay: {
+          en: 'Stay',
+          de: 'Bleib stehen',
+          fr: 'Restez',
+          cn: '停',
+          ko: '대기',
+          tc: '停',
+        },
+      },
+    },
+    {
       id: 'R10S Xtreme Spectacular',
       type: 'StartsUsing',
       netRegex: { id: 'B5D9', source: 'Red Hot', capture: true },
