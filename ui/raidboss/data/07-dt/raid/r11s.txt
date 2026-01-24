@@ -280,10 +280,12 @@ hideall "--sync--"
 1300.1 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
 1301.3 "Cosmic Kiss" Ability { id: "B435", source: "Comet" }
 1303.1 "--Meteor Markers 2--" HeadMarker { id: "00F4" }
+1303.5 "--tethers--"
 1309.3 "Foregone Fatality" Ability { id: "B436", source: "The Tyrant" }
 1310.2 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
 1311.4 "Cosmic Kiss" Ability { id: "B435", source: "Comet" }
 1313.1 "--Meteor Markers 3--" HeadMarker { id: "00F4" }
+1313.5 "--tethers--"
 1314.0 "Explosion" Ability { id: "B438", source: "Comet" }
 1319.3 "Foregone Fatality" Ability { id: "B436", source: "The Tyrant" }
 1320.2 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
@@ -307,6 +309,7 @@ hideall "--sync--"
 1359.8 "--sync--" Ability { id: "B43F", source: "The Tyrant" } window 360,10
 1361.8 "Flatliner (split)" Ability { id: "BA90", source: "The Tyrant" }
 1375.9 "Majestic Meteor" Ability { id: "B440", source: "The Tyrant" }
+1377.0 "--tethers--"
 1389.0 "Explosion" Ability { id: "B444", source: "The Tyrant" }
 1394.9 "--Fire Breath Markers--" HeadMarker { id: '00F4' }
 1397.0 "--meteor 1--" #StartsUsing { id: "B441", source: "The Tyrant" }
@@ -316,8 +319,9 @@ hideall "--sync--"
 1402.0 "Majestic Meteor 2" #Ability { id: "B441", source: "The Tyrant" }
 1403.9 "Majestic Meteowrath/Majestic Meteorain/Fire Breath" Ability { id: ["B442", "B443", "B447"], source: "The Tyrant" }
 1404.1 "Majestic Meteor 3" #Ability { id: "B441", source: "The Tyrant" }
-1421.1 "Explosion" Ability { id: "B444", source: "The Tyrant" }
 
+1409.0 "--tethers--"
+1421.1 "Explosion" Ability { id: "B444", source: "The Tyrant" }
 1427.0 "--Fire Breath Markers--" HeadMarker { id: '00F4' }
 1429.1 "--meteor 1--" #StartsUsing { id: "B441", source: "The Tyrant" }
 1431.1 "--meteor 2--" #StartsUsing { id: "B441", source: "The Tyrant" }
@@ -361,6 +365,7 @@ hideall "--sync--"
 1556.2 "Atomic Impact 6" Ability { id: "B454", source: "The Tyrant" }
 1557.2 "Cosmic Kiss" Ability { id: "B456", source: "The Tyrant" }
 1557.2 "Weighty Impact" #Ability { id: "B457", source: "The Tyrant" }
+1559.7 "--tethers--"
 1566.8 "Majestic Meteowrath x4" Ability { id: "B459", source: "The Tyrant" }
 1570.2 "Two-way Fireball / Four-way Fireball (castbar)" Ability { id: ["B7BD", "B45A"], source: "The Tyrant" }
 1571.1 "Two-way Fireball / Four-way Fireball" Ability { id: ["B7BE", "B45B"], source: "The Tyrant" }
