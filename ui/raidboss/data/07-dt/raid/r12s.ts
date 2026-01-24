@@ -42,6 +42,8 @@ const headMarkerData = {
   'slaughterSpread': '0177',
   'cellChainTether': '016E',
   // Phase 2
+  // VFX: sharelaser2tank5sec_c0k1, used by Double Sobat (B520)
+  'sharedTankbuster': '0256',
 } as const;
 
 const center = {
@@ -1241,9 +1243,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Double Sobat',
-      type: 'StartsUsing',
-      netRegex: { id: 'B520', source: 'Lindwurm', capture: true },
-      response: Responses.tankCleave(),
+      // Two half-room cleaves
+      // First hit targets highest emnity target, second targets second highest
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['sharedTankbuster'], capture: true },
+      response: Responses.sharedTankBuster(),
     },
   ],
   timelineReplace: [],
