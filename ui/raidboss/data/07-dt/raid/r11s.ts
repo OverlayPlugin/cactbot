@@ -782,22 +782,13 @@ const triggerSet: TriggerSet<Data> = {
         if (actor === undefined)
           return;
 
-        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
-        if (dirNum === undefined)
-          return;
+        const portalDirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
 
-        type dirNumStretchMap = {
-          [key: number]: string;
-        };
         // TODO: Make config for options?
-        const stretchCW: dirNumStretchMap = {
-          0: 'dirSW',
-          2: 'dirNW',
-          4: 'dirNE',
-          6: 'dirSE',
-        };
-        const stretchDir = stretchCW[dirNum];
-        return output.stretchTetherDir!({ dir: output[stretchDir ?? '???']!() });
+        const stretchDirNum = (portalDirNum + 5) % 8;
+        const stretchDir = Directions.output8Dir[stretchDirNum] ?? 'unknown';
+
+        return output.stretchTetherDir!({ dir: output[stretchDir]!() });
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
