@@ -27,20 +27,20 @@ hideall "--sync--"
 10.6 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
 
 # Branch for Raw Steel Axe or Raw Steel Scythe First
-15.7 "--sync--" StartsUsing { id: "B422", source: "The Tyrant" } jump "r11s-raw-steel-axe-1"
-15.7 "--sync--" StartsUsing { id: "B423", source: "The Tyrant" } jump "r11s-raw-steel-scythe-1"
+15.7 "--sync--" StartsUsing { id: "B422", source: "The Tyrant" } window 15.7,5 jump "r11s-raw-steel-axe-1"
+15.7 "--sync--" StartsUsing { id: "B423", source: "The Tyrant" } window 15.7,5 jump "r11s-raw-steel-scythe-1"
 17.7 "Raw Steel Trophy (Scythe/Axe)" #Ability { id: ["B423", "B422"], source: "The Tyrant" }
-24.0 "Raw Steel?" #Ability { id: "B40B", source: "The Tyrant" } # Only tanks
-25.1 "Heavy Hitter/Impact x6" #Ability { id: ["B410", "B40C"], source: "The Tyrant" } # Only non-tanks
-25.1 "Raw Steel x2?" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+24.0 "Raw Steel (Axe)?" #Ability { id: "B40B", source: "The Tyrant" } # Only tanks
+25.1 "Heavy Hitter (Scythe)/Impact x6 (Axe)" #Ability { id: ["B410", "B40C"], source: "The Tyrant" } # Only non-tanks
+25.1 "Raw Steel x2 (Scythe)?" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
 33.1 "--middle--" #Ability { id: "B404", source: "The Tyrant" }
 38.4 "Trophy Weapons" #Ability { id: "B416", source: "The Tyrant" }
 
 # Raw Steel Axe First
 115.7 label "r11s-raw-steel-axe-1"
 117.7 "Raw Steel Trophy Axe" Ability { id: "B422", source: "The Tyrant" }
-124.0 "Raw Steel" Ability { id: "B40B", source: "The Tyrant" } # Only tanks
-125.1 "Impact x6" Ability { id: "B40C", source: "The Tyrant" } # Only non-tanks
+124.0 "Raw Steel (Axe)" Ability { id: "B40B", source: "The Tyrant" } # Only tanks
+125.1 "Impact x6 (Axe)" Ability { id: "B40C", source: "The Tyrant" } # Only non-tanks
 133.1 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 138.4 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
 148.2 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
@@ -127,8 +127,8 @@ hideall "--sync--"
 550.7 "Explosion" Ability { id: "B420", source: "The Tyrant" }
 551.1 "Explosion" Ability { id: "B7BC", source: "The Tyrant" }
 556.4 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
-563.8 "Heavy Hitter" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
-563.8 "Raw Steel x2" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+563.8 "Heavy Hitter (Scythe)" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
+563.8 "Raw Steel x2 (Scythe)" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
 571.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 
 # Ultimate Trophy Weapons (Axe)
@@ -138,8 +138,8 @@ hideall "--sync--"
 # Raw Steel Scythe First
 715.7 label "r11s-raw-steel-scythe-1"
 717.7 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
-725.1 "Heavy Hitter" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
-725.1 "Raw Steel x2" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+725.1 "Heavy Hitter (Scythe)" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
+725.1 "Raw Steel x2 (Scythe)" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
 733.1 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 
 # Trophy Weapons 1 (Scythe)
@@ -227,8 +227,8 @@ hideall "--sync--"
 1150.7 "Explosion" Ability { id: "B420", source: "The Tyrant" }
 1151.1 "Explosion" Ability { id: "B7BC", source: "The Tyrant" }
 1156.4 "Raw Steel Trophy Axe" Ability { id: "B422", source: "The Tyrant" }
-1162.7 "Raw Steel" Ability { id: "B40B", source: "The Tyrant" } # Only tanks
-1163.8 "Impact x6" Ability { id: "B40C", source: "The Tyrant" } # Only non-tanks
+1162.7 "Raw Steel (Axe)" Ability { id: "B40B", source: "The Tyrant" } # Only tanks
+1163.8 "Impact x6 (Axe)" Ability { id: "B40C", source: "The Tyrant" } # Only non-tanks
 1171.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 
 # Ultimate Trophy Weapons
