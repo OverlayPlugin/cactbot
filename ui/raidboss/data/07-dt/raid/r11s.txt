@@ -276,11 +276,14 @@ hideall "--sync--"
 # Meteorain
 1285.0 "--middle--" Ability { id: "B404", source: "The Tyrant" }
 1292.1 "Meteorain" Ability { id: "B434", source: "The Tyrant" }
+1293.2 "--Meteor Markers 1--" HeadMarker { id: "00F4" }
 1300.1 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
 1301.3 "Cosmic Kiss" Ability { id: "B435", source: "Comet" }
+1303.1 "--Meteor Markers 2--" HeadMarker { id: "00F4" }
 1309.3 "Foregone Fatality" Ability { id: "B436", source: "The Tyrant" }
 1310.2 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
 1311.4 "Cosmic Kiss" Ability { id: "B435", source: "Comet" }
+1313.1 "--Meteor Markers 3--" HeadMarker { id: "00F4" }
 1314.0 "Explosion" Ability { id: "B438", source: "Comet" }
 1319.3 "Foregone Fatality" Ability { id: "B436", source: "The Tyrant" }
 1320.2 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
