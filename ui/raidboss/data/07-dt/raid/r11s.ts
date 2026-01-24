@@ -232,7 +232,7 @@ const triggerSet: TriggerSet<Data> = {
           : (matches.param1 === '11D2' ? 'stack' : 'protean');
         if (data.weaponMechCount === 7)
           return output.mechanicThenBait!({ mech: output[mechanic]!(), bait: output.bait!() });
-        if (data.weaponMechCount > 3)
+        if (data.weaponMechCount > 3 && mechanic !== 'stack')
           return output.mechanicThenMove!({ mech: output[mechanic]!(), move: output.move!() });
         return output[mechanic]!();
       },
