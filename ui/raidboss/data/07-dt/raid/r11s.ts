@@ -35,6 +35,7 @@ export interface Data extends RaidbossData {
   hasMeteor: boolean;
   fireballCount: number;
   hasAtomic: boolean;
+  hadEclipticTether: boolean;
   heartbreakerCount: number;
 }
 
@@ -115,6 +116,7 @@ const triggerSet: TriggerSet<Data> = {
     hasMeteor: false,
     fireballCount: 0,
     hasAtomic: false,
+    hadEclipticTether: false,
     heartbreakerCount: 0,
   }),
   timelineTriggers: [],
@@ -765,6 +767,21 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getTowers(),
     },
     {
+      id: 'R11S Majestic Meteowrath Tether Collect',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.me === matches.target &&
+          data.phase === 'ecliptic'
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      run: (data) => data.hadEclipticTether = true,
+    },
+    {
       id: 'R11S Majestic Meteowrath Tethers',
       type: 'Tether',
       netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
@@ -783,11 +800,9 @@ const triggerSet: TriggerSet<Data> = {
           return;
 
         const portalDirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
-
         // TODO: Make config for options?
         const stretchDirNum = (portalDirNum + 5) % 8;
         const stretchDir = Directions.output8Dir[stretchDirNum] ?? 'unknown';
-
         return output.stretchTetherDir!({ dir: output[stretchDir]!() });
       },
       outputStrings: {
@@ -802,16 +817,16 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B7BD', source: 'The Tyrant', capture: false },
       alertText: (data, _matches, output) => {
-        if (data.hasAtomic)
-          return output.twoWayAtomic!();
-        return output.twoWay!();
+        if (data.hadEclipticTether)
+          return output.twoWayBehind!();
+        return output.twoWayFront!();
       },
       outputStrings: {
-        twoWay: {
-          en: 'East/West Line Stack',
+        twoWayFront: {
+          en: 'East/West Line Stack, Be in Front',
         },
-        twoWayAtomic: {
-          en: 'Move; East/West Line Stack',
+        twoWayBehind: {
+          en: 'Move; East/West Line Stack, Get behind',
         },
       },
     },
@@ -820,18 +835,19 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B45A', source: 'The Tyrant', capture: false },
       alertText: (data, _matches, output) => {
-        if (data.hasAtomic)
-          return output.fourWayAtomic!();
-        return output.fourWay!();
+        if (data.hadEclipticTether)
+          return output.fourWayBehind!();
+        return output.fourWayFront!()
       },
       outputStrings: {
-        fourWay: {
-          en: 'Intercardinal Line Stack',
+        fourWayFront: {
+          en: 'Intercardinal Line Stack, Be in Front',
         },
-        fourWayAtomic: {
-          en: 'Stay Corner, Intercardinal Line Stack',
+        fourWayBehind: {
+          en: 'Intercardinal Line Stack, Get behind',
         },
       },
+    },
     },
     {
       id: 'R11S Heartbreaker (Enrage Sequence)',
