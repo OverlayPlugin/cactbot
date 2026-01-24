@@ -543,13 +543,6 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.maelstromCount = data.maelstromCount + 1,
     },
     {
-      id: 'R11S Maelstrom 3 Reminder',
-      type: 'AddedCombatant',
-      netRegex: { name: 'Maelstrom', capture: false },
-      condition: (data) => data.maelstromCount === 3,
-      response: Responses.moveAway(),
-    },
-    {
       id: 'R11S Powerful Gust Reminder',
       type: 'AddedCombatant',
       netRegex: { name: 'Maelstrom', capture: false },
