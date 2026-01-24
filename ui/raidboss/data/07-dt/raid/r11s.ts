@@ -848,7 +848,6 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
-    },
     {
       id: 'R11S Heartbreaker (Enrage Sequence)',
       type: 'StartsUsing',
