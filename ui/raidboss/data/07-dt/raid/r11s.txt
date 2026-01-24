@@ -401,7 +401,7 @@ hideall "--sync--"
 1651.6 "--sync--" StartsUsing { id: "B462", source: "The Tyrant" }
 1659.6 "Heartbreaker (Enrage)" Ability { id: "B462", source: "The Tyrant" }
 1659.6 "--untargetable--"
-1659.8 "Heartbreaker (Enrage)" Ability { id: "B463", source: "The Tyrant" }
+1659.8 "Heartbreaker (Enrage)" #Ability { id: "B463", source: "The Tyrant" }
 
 # IGNORED ABILITIES
 # B40A Raw Steel: VFX for Axe
