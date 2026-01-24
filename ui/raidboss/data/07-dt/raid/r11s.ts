@@ -776,7 +776,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      suppressSeconds: 99,
+      suppressSeconds: 9999,
       infoText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
