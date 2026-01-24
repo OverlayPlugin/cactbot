@@ -256,6 +256,53 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R11S Trophy Weapons 2 Early Calls',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
+      condition: (data, matches) => {
+        if (data.weaponMechCount !== 1)
+          return false;
+
+        const actor = data.actorPositions[matches.id];
+
+        if (actor === undefined)
+          return false;
+
+        const actorDir = Math.atan2(actor.x - center.x, actor.y - center.y);
+
+        if ((Math.abs(actorDir - actor.heading) % Math.PI) < 0.1)
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.id];
+
+        if (actor === undefined)
+          return;
+
+        const mechanic = matches.param1 === '11D1'
+          ? 'healerGroups'
+          : (matches.param1 === '11D2' ? 'stack' : 'protean');
+
+        const dir = Directions.xyTo8DirOutput(actor.x, actor.y, center.x, center.y);
+
+        return output.text!({
+          dir: output[dir]!(),
+          weapon: output[mechanic]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        healerGroups: Outputs.healerGroups,
+        stack: Outputs.stackMiddle,
+        protean: Outputs.protean,
+        text: {
+          en: '${dir}: ${weapon} (1st later)',
+        },
+      },
+    },
+    {
       id: 'R11S Trophy Weapons',
       type: 'ActorControlExtra',
       netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
