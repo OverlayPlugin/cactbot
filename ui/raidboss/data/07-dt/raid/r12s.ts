@@ -1693,44 +1693,63 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 2 Ability Tethers Initial Call',
-      // Occur ~8s after end of Replication 2 cast
+      id: 'R12S Replication 2 Locked Tether 2',
       type: 'Tether',
-      netRegex: {
-        id: [
-          headMarkerData['projectionTether'],
-          headMarkerData['manaBurstTether'],
-          headMarkerData['heavySlamTether'],
-          headMarkerData['fireballSplashTether'],
-        ],
-        capture: true,
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        return data.replicationCounter === 2 && data.me === matches.target;
       },
-      condition: Conditions.targetIsYou(),
-      suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
-      infoText: (_data, matches, output) => {
-        switch (matches.id) {
+      delaySeconds: 0.1,
+      infoText: (data, matches, output) => {
+        // Check if it's the boss
+        if (data.replication2BossId === matches.sourceId)
+          return output.fireballSplashTether!({
+            mech1: output.baitJump!(),
+          });
+
+        switch (data.myReplication2Tether) {
           case headMarkerData['projectionTether']:
-            return output.projectionTether!();
+            return output.projectionTether!({
+              mech1: output.baitProtean!(),
+            });
           case headMarkerData['manaBurstTether']:
-            return output.manaBurstTether!();
+            return output.manaBurstTether!({
+              mech1: output.defamationOnYou!(),
+            });
           case headMarkerData['heavySlamTether']:
-            return output.heavySlamTether!();
+            return output.heavySlamTether!({
+              mech1: output.baitProtean!(),
+            });
         }
-        return output.fireballSplashTether!();
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
+        defamationOnYou: Outputs.defamationOnYou,
+        stackGroups: {
+          en: 'Stack Groups',
+          de: 'Gruppen-Sammeln',
+          fr: 'Package en groupes',
+          ja: '組み分け頭割り',
+          cn: '分组分摊',
+          ko: '그룹별 쉐어',
+          tc: '分組分攤',
+        },
+        baitProtean: {
+          en: 'Bait Protean from Boss',
+        },
+        baitJump: {
+          en: 'Bait Jump',
+        },
         projectionTether: {
-          en: 'Cone Tether on YOU',
+          en: 'Cone Tether: ${mech1}',
         },
         manaBurstTether: {
-          en: 'Defamation Tether on YOU',
+          en: 'Defamation Tether: ${mech1}',
         },
         heavySlamTether: {
-          en: 'Stack Tether on YOU',
+          en: 'Stack Tether: ${mech1}',
         },
         fireballSplashTether: {
-          en: 'Boss Tether on YOU',
+          en: 'Boss Tether: ${mech1}',
         },
       },
     },
