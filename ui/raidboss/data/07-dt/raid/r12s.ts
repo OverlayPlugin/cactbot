@@ -13,7 +13,9 @@ export type Phase =
   | 'slaughtershed'
   | 'replication1'
   | 'replication2'
-  | 'idyllic';
+  | 'reenactment1'
+  | 'idyllic'
+  | 'reenactment2';
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -33,9 +35,13 @@ export interface Data extends RaidbossData {
   hasRot: boolean;
   // Phase 2
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
+  replicationCounter: number;
   replication1Debuff?: 'fire' | 'dark';
   replication1FireActor?: string;
   replication1FollowUp: boolean;
+  replication2TetherMap: { [dirNum: string]: string };
+  replication2BossId?: string;
+  myReplication2Tether?: string;
 }
 
 const headMarkerData = {
@@ -54,6 +60,12 @@ const headMarkerData = {
   // Phase 2
   // VFX: sharelaser2tank5sec_c0k1, used by Double Sobat (B520)
   'sharedTankbuster': '0256',
+  // Replication 2 Tethers
+  'lockedTether': '0175', // Clone tethers
+  'projectionTether': '016F', // Comes from Lindschrat, B4EA Grotesquerie + B4EB Hemorrhagic Projection cleave based on player facing
+  'manaBurstTether': '0170', // Comes from Lindschrat, B4E7 Mana Burst defamation
+  'heavySlamTether': '0171', // Comes from Lindschrat, B4E8 Heavy Slam stack with projection followup
+  'fireballSplashTether': '0176', // Comes from the boss, B4E4 Fireball Splash baited jump
 } as const;
 
 const center = {
@@ -82,7 +94,9 @@ const triggerSet: TriggerSet<Data> = {
     hasRot: false,
     // Phase 2
     actorPositions: {},
+    replicationCounter: 0,
     replication1FollowUp: false,
+    replication2TetherMap: {},
   }),
   triggers: [
     {
@@ -100,20 +114,38 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Phase Two Replication Tracker',
-      // B4D8 Replication happens more than once, only track the first one
       type: 'StartsUsing',
       netRegex: { id: 'B4D8', source: 'Lindwurm', capture: false },
-      suppressSeconds: 9999,
-      run: (data) => data.phase = 'replication1',
+      run: (data) => {
+        if (data.replicationCounter === 0)
+          data.phase = 'replication1';
+        data.replicationCounter = data.replicationCounter + 1;
+      },
     },
     {
       id: 'R12S Phase Two Staging Tracker',
       // B4E1 Staging happens more than once, only track the first one
       type: 'StartsUsing',
-      netRegex: { id: 'B4E1', source: 'Lindwurm', capture: false },
+      netRegex: { id: 'B4E1', source: 'Lindwurm', capture: true },
       condition: (data) => data.phase === 'replication1',
       suppressSeconds: 9999,
-      run: (data) => data.phase = 'replication2',
+      run: (data, matches) => {
+        data.phase = 'replication2';
+        // Store the boss' id later for checking against tether
+        data.replication2BossId = matches.sourceId;
+      },
+    },
+    {
+      id: 'R12S Phase Two Reenactment Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: 'B4EC', source: 'Lindwurm', capture: false },
+      run: (data) => {
+        if (data.phase === 'replication1') {
+          data.phase = 'reenactment1';
+          return;
+        }
+        data.phase = 'reenactment2';
+      },
     },
     {
       id: 'R12S Phase Two ActorSetPos Tracker',
@@ -138,6 +170,26 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Phase Two ActorMove Tracker',
       type: 'ActorMove',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      condition: (data) => {
+        if (
+          data.phase === 'replication1' ||
+          data.phase === 'replication2' ||
+          data.phase === 'idyllic'
+        )
+          return true;
+        return false;
+      },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
+    },
+    {
+      id: 'R12S Phase Two AddedCombatant Tracker',
+      type: 'AddedCombatant',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
       condition: (data) => {
         if (
@@ -1395,8 +1447,14 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Snaking Kick',
       type: 'StartsUsing',
       netRegex: { id: 'B527', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        // Use Grotesquerie trigger for projection tethered players
+        const ability = data.myReplication2Tether;
+        if (ability === headMarkerData['projectionTether'])
+          return false;
+        return true;
+      },
       response: Responses.getBehind(),
-      run: (data) => data.replication1FollowUp = true,
     },
     {
       id: 'R12S Replication 1 Follow-up Tracker',
@@ -1504,8 +1562,320 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: headMarkerData['sharedTankbuster'], capture: true },
       response: Responses.sharedTankBuster(),
     },
+    {
+      id: 'R12S Replication 2 Tethered Clone',
+      // Combatants are added ~4s before Staging starts casting
+      // Same tether ID is used for "locked" ability tethers
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: Conditions.targetIsYou(),
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.cloneTether!();
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        return output.cloneTetherDir!({ dir: output[dir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cloneTether: {
+          en: 'Tethered to Clone',
+        },
+        cloneTetherDir: {
+          en: 'Tethered to ${dir} Clone',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 2 Ability Tethers Collect',
+      // Record and store a map of where the tethers come from and what they do for later
+      // Boss tether handled separately since boss can move around
+      type: 'Tether',
+      netRegex: {
+        id: [
+          headMarkerData['projectionTether'],
+          headMarkerData['manaBurstTether'],
+          headMarkerData['heavySlamTether'],
+        ],
+        capture: true,
+      },
+      condition: (data) => data.phase === 'replication2',
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        data.replication2TetherMap[dirNum] = matches.id;
+      },
+    },
+    {
+      id: 'R12S Replication 2 Ability Tethers Initial Call',
+      // Occur ~8s after end of Replication 2 cast
+      type: 'Tether',
+      netRegex: {
+        id: [
+          headMarkerData['projectionTether'],
+          headMarkerData['manaBurstTether'],
+          headMarkerData['heavySlamTether'],
+          headMarkerData['fireballSplashTether'],
+        ],
+        capture: true,
+      },
+      condition: Conditions.targetIsYou(),
+      suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
+      infoText: (_data, matches, output) => {
+        switch (matches.id) {
+          case headMarkerData['projectionTether']:
+            return output.projectionTether!();
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTether!();
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTether!();
+        }
+        return output.fireballSplashTether!();
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        projectionTether: {
+          en: 'Projection Tether on YOU',
+        },
+        manaBurstTether: {
+          en: 'Defamation Tether on YOU',
+        },
+        heavySlamTether: {
+          en: 'Stack Tether on YOU',
+        },
+        fireballSplashTether: {
+          en: 'Boss Tether on YOU',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 2 Locked Tether 2 Collect',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        return data.replicationCounter === 2 && data.me === matches.target;
+      },
+      run: (data, matches) => {
+        // Check if boss tether
+        if (data.replication2BossId === matches.sourceId) {
+          data.myReplication2Tether = headMarkerData['fireballSplashTether'];
+          return;
+        }
+
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined) {
+          // Setting to use that we know we have a tether but couldn't determine what ability it is
+          data.myReplication2Tether = 'unknown';
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(
+          actor.x,
+          actor.y,
+          center.x,
+          center.y,
+        );
+
+        // Lookup what the tether was at the same location
+        const ability = data.replication2TetherMap[dirNum];
+        if (ability === undefined) {
+          // Setting to use that we know we have a tether but couldn't determine what ability it is
+          data.myReplication2Tether = 'unknown';
+          return;
+        }
+        data.myReplication2Tether = ability;
+      }
+    },
+    {
+      id: 'R12S Replication 2 Locked Tether 2',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        return data.replicationCounter === 2 && data.me === matches.target;
+      },
+      delaySeconds: 0.1,
+      infoText: (data, matches, output) => {
+        // Check if it's the boss
+        if (data.replication2BossId === matches.sourceId)
+          return output.fireballSplashTether!({
+            mech1: output.baitJump!(),
+            mech2: output.stackGroups!(),
+          });
+
+        switch (data.myReplication2Tether) {
+          case headMarkerData['projectionTether']:
+            return output.projectionTether!({
+              mech1: output.baitProtean!(),
+              mech2: output.stackGroups!(),
+            });
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTether!({
+              mech1: output.defamationOnYou!(),
+              mech2: output.stackGroups!(),
+            });
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTether!({
+              mech1: output.baitProtean!(),
+              mech2: output.stackGroups!(),
+            });
+        }
+      },
+      outputStrings: {
+        defamationOnYou: Outputs.defamationOnYou,
+        stackGroups: {
+          en: 'Stack Groups',
+          de: 'Gruppen-Sammeln',
+          fr: 'Package en groupes',
+          ja: '組み分け頭割り',
+          cn: '分组分摊',
+          ko: '그룹별 쉐어',
+          tc: '分組分攤',
+        },
+        baitProtean: {
+          en: 'Bait Protean from Boss',
+        },
+        baitJump: {
+          en: 'Bait Boss Jump',
+        },
+        projectionTether: {
+          en: '${mech1} => ${mech2}',
+        },
+        manaBurstTether: {
+          en: '${mech1} => ${mech2}',
+        },
+        heavySlamTether: {
+          en: '${mech1} => ${mech2}',
+        },
+        fireballSplashTether: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 2 Mana Burst Target',
+      // A player without a tether will be target for defamation
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: false },
+      condition: (data) => {
+        return data.replicationCounter === 2;
+      },
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (data.myReplication2Tether !== undefined)
+          return;
+        return output.noTether!({
+          mech1: output.defamationOnYou!(),
+          mech2: output.stackGroups!(),
+        });
+      },
+      outputStrings: {
+        defamationOnYou: Outputs.defamationOnYou,
+        stackGroups: {
+          en: 'Stack Groups',
+          de: 'Gruppen-Sammeln',
+          fr: 'Package en groupes',
+          ja: '組み分け頭割り',
+          cn: '分组分摊',
+          ko: '그룹별 쉐어',
+          tc: '分組分攤',
+        },
+        noTether: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'R12S Heavy Slam',
+      // After B4E7 Mana Burst, Groups must stack up on the heavy slam targetted players
+      type: 'Ability',
+      netRegex: { id: 'B4E7', source: 'Lindwurm', capture: false },
+      suppressSeconds: 1,
+      alertText: (data, _matches, output) => {
+        const ability = data.myReplication2Tether;
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+            return output.projectionTether!({
+              mech1: output.stackGroups!(),
+              mech2: output.lookAway!(),
+              mech3: output.getBehind!(),
+            });
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTether!({
+              mech1: output.stackGroups!(),
+              mech2: output.getBehind!(),
+            });
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTether!({
+              mech1: output.stackGroups!(),
+              mech2: output.getBehind!(),
+            });
+          case headMarkerData['fireballSplashTether']:
+            return output.fireballSplashTether!({
+              mech1: output.stackGroups!(),
+              mech2: output.getBehind!(),
+            });
+        }
+        return output.noTether!({
+          mech1: output.stackGroups!(),
+          mech2: output.getBehind!(),
+        });
+      },
+      outputStrings: {
+        getBehind: Outputs.getBehind,
+        lookAway: Outputs.lookAway,
+        stackGroups: {
+          en: 'Stack Groups',
+          de: 'Gruppen-Sammeln',
+          fr: 'Package en groupes',
+          ja: '組み分け頭割り',
+          cn: '分组分摊',
+          ko: '그룹별 쉐어',
+          tc: '分組分攤',
+        },
+        stackOnYou: Outputs.stackOnYou,
+        projectionTether: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+        },
+        manaBurstTether: {
+          en: '${mech1} => ${mech2}',
+        },
+        heavySlamTether: {
+          en: '${mech1} => ${mech2}',
+        },
+        fireballSplashTether: {
+          en: '${mech1} => ${mech2}',
+        },
+        noTether: {
+          en: '${mech1} => ${mech2}',
+        },
+      },
+    },
+    {
+      id: 'R12S Grotesquerie',
+      // This seems to be the point at which the look for the Snaking Kick is snapshot
+      // The VFX B4E9 happens ~0.6s before Snaking Kick
+      // B4EA has the targetted player in it
+      // B4EB Hemorrhagic Projection conal aoe goes off ~0.5s after in the direction the player was facing
+      type: 'Ability',
+      netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
+      condition: Conditions.targetIsYou(),
+      response: Responses.getBehind(),
+    },
   ],
-  timelineReplace: [],
+  timelineReplace: [
+    {
+      'locale': 'en',
+      'replaceText': {
+        'Netherwrath Near/Netherwrath Far': 'Netherwrath Near/Far',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
