@@ -11,7 +11,7 @@ hideall "--sync--"
 # -it "Lindwurm"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
-1.0 "--sync--" AddedCombatant { npcNameId: "14378", name: "Lindwurm", job: "00", level: "1", ownerId: "0{4}", worldId: "00" } window 10,3 jump "r12s-p2-start" # Sync to P2 immediately through AddCombatant.
+1.0 "--sync--" AddedCombatant { npcNameId: "14380", name: "Lindschrat", job: "00", level: "64", ownerId: "0{4}", worldId: "00" } window 10,3 jump "r12s-p2-start" # Sync to P2 immediately through AddCombatant.
 15.6 "The Fixer" Ability { id: "B4D7", source: "Lindwurm" } window 20,10
 25.8 "--sync--" Ability { id: "B7C4", source: "Lindwurm" }
 40.9 "Mortal Slayer 1" Ability { id: ["B496", "B498"], source: "Lindwurm" }
