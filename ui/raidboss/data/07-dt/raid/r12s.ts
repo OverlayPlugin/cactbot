@@ -1306,6 +1306,38 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe('alert'),
     },
     {
+      id: 'R12S Winged Scourge',
+      // B4DA E/W clones Facing S, Cleaving Front/Back (North/South)
+      // B4DB N/S clones Facing W, Cleaving Front/Back (East/West)
+      type: 'StartsUsing',
+      netRegex: { id: ['B4DA', 'B4DB'], source: 'Lindschrat', capture: true },
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
+        if (matches.id === 'B4DA') {
+          if (data.replication1FollowUp)
+            return output.northSouthCleaves2!();
+          return output.northSouthCleaves!();
+        }
+        if (data.replication1FollowUp)
+          return output.eastWestCleaves2!();
+        return output.eastWestCleaves!();
+      },
+      outputStrings: {
+        northSouthCleaves: {
+          en: 'North/South Cleaves',
+        },
+        eastWestCleaves: {
+          en: 'East/West Cleaves',
+        },
+        northSouthCleaves2: {
+          en: 'North/South Cleaves',
+        },
+        eastWestCleaves2: {
+          en: 'East/West Cleaves',
+        },
+      },
+    },
+    {
       id: 'R12S Fire and Dark Resistance Down II Collector',
       // CFB Dark Resistance Down II
       // B79 Fire Resistance Down II
