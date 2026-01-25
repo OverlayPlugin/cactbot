@@ -2111,6 +2111,13 @@ const triggerSet: TriggerSet<Data> = {
         },
       },
     },
+    {
+      id: 'R12S Idyllic Dream',
+      type: 'StartsUsing',
+      netRegex: { id: 'B509', source: 'Lindwurm', capture: false },
+      durationSeconds: 4.7,
+      response: Responses.bigAoe('alert'),
+    },
   ],
   timelineReplace: [
     {
