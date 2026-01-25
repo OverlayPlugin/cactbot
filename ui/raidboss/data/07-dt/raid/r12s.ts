@@ -2239,7 +2239,7 @@ const triggerSet: TriggerSet<Data> = {
         const actor = data.actorPositions[matches.id];
         if (actor === undefined)
           return;
-        
+
         type DirectionCardinal = Exclude<DirectionOutputCardinal, 'unknown'>;
         type DirectionIntercard = Exclude<DirectionOutputIntercard, 'unknown'>;
         const isCardinalDir = (dir: DirectionOutput8): dir is DirectionCardinal => {
@@ -2248,7 +2248,7 @@ const triggerSet: TriggerSet<Data> = {
         const isIntercardDir = (dir: DirectionOutput8): dir is DirectionIntercard => {
           return (Directions.outputIntercardDir as string[]).includes(dir);
         };
-        
+
         const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
         const dir = Directions.output8Dir[dirNum] ?? 'unknown';
 
