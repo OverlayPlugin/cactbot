@@ -2,7 +2,12 @@ import Conditions from '../../../../../resources/conditions';
 import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
 import { Responses } from '../../../../../resources/responses';
-import { Directions } from '../../../../../resources/util';
+import {
+  DirectionOutput8,
+  DirectionOutputCardinal,
+  DirectionOutputIntercard,
+  Directions,
+} from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
@@ -43,6 +48,7 @@ export interface Data extends RaidbossData {
   replication2BossId?: string;
   myReplication2Tether?: string;
   myMutation?: 'alpha' | 'beta';
+  replication3CloneOrder: number[];
 }
 
 const headMarkerData = {
@@ -98,6 +104,7 @@ const triggerSet: TriggerSet<Data> = {
     replicationCounter: 0,
     replication1FollowUp: false,
     replication2TetherMap: {},
+    replication3CloneOrder: [],
   }),
   triggers: [
     {
@@ -1692,7 +1699,13 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: true },
       condition: (data, matches) => {
-        return data.replicationCounter === 2 && data.me === matches.target;
+        if (
+          data.phase === 'replication2' &&
+          data.replicationCounter === 2 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
       },
       run: (data, matches) => {
         // Check if boss tether
@@ -1730,7 +1743,13 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: true },
       condition: (data, matches) => {
-        return data.replicationCounter === 2 && data.me === matches.target;
+        if (
+          data.phase === 'replication2' &&
+          data.replicationCounter === 2 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
       },
       delaySeconds: 0.1,
       infoText: (data, matches, output) => {
@@ -1828,7 +1847,9 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: false },
       condition: (data) => {
-        return data.replicationCounter === 2;
+        if (data.phase === 'replication2' && data.replicationCounter === 2)
+          return true;
+        return false;
       },
       delaySeconds: 0.1,
       suppressSeconds: 1,
@@ -2186,6 +2207,98 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'B509', source: 'Lindwurm', capture: false },
       durationSeconds: 4.7,
       response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'R12S Idyllic Dream Replication Clone Order Collect',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: '11D2', capture: true },
+      condition: (data) => {
+        if (data.phase === 'idyllic' && data.replicationCounter === 2)
+          return true;
+        return false;
+      },
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.id];
+        if (actor === undefined)
+          return;
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        data.replication3CloneOrder.push(dirNum);
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Replication First Clone Cardinal/Intercardinal',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: '11D2', capture: true },
+      condition: (data) => {
+        if (data.phase === 'idyllic' && data.replicationCounter === 2)
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.id];
+        if (actor === undefined)
+          return;
+        
+        type DirectionCardinal = Exclude<DirectionOutputCardinal, 'unknown'>;
+        type DirectionIntercard = Exclude<DirectionOutputIntercard, 'unknown'>;
+        const isCardinalDir = (dir: DirectionOutput8): dir is DirectionCardinal => {
+          return (Directions.outputCardinalDir as string[]).includes(dir);
+        };
+        const isIntercardDir = (dir: DirectionOutput8): dir is DirectionIntercard => {
+          return (Directions.outputIntercardDir as string[]).includes(dir);
+        };
+        
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        if (isCardinalDir(dir))
+          return output.firstClone!({ cards: output.cardinals!() });
+        if (isIntercardDir(dir))
+          return output.firstClone!({ cards: output.intercards!() });
+        return output.firstClone!({ cards: output.unknown!() });
+      },
+      outputStrings: {
+        unknown: Outputs.unknown,
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
+        firstClone: {
+          en: 'First Clone: ${cards}',
+        },
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Replication Tethered Clone',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.phase === 'idyllic' &&
+          data.replicationCounter === 2 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.cloneTether!();
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        return output.cloneTetherDir!({ dir: output[dir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cloneTether: {
+          en: 'Tethered to Clone',
+        },
+        cloneTetherDir: {
+          en: 'Tethered to ${dir} Clone',
+        },
+      },
     },
   ],
   timelineReplace: [
