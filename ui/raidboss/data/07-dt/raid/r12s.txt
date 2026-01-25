@@ -341,7 +341,7 @@ hideall "--sync--"
 
 ### Phase 2: Lindwurm II
 # -p B528:3015.7
-# -ii B51F B4DA B4DB B4DD B4DF
+# -ii B51F B4DA B4DB B4DD B4DF B4E3 B4E6 B4F0 B4E9 B4F1 B4EE
 # -it "Lindwurm"
 3000.5 label "r12s-p2-start"
 3010.7 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
@@ -365,6 +365,21 @@ hideall "--sync--"
 3091.2 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
 3102.2 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
 3105.4 "Replication 2" Ability { id: "B4D8", source: "Lindwurm" }
+3128.0 "Firefall Splash" Ability { id: "B4E4", source: "Lindwurm" }
+3128.7 "Scalding Waves x4" Ability { id: "B4E5", source: "Lindwurm" }
+3130.1 "Mana Burst x3" Ability { id: "B4E7", source: "Lindwurm" }
+3135.5 "Heavy Slam x2" Ability { id: "B4E8", source: "Lindschrat" }
+3136.7 "Grotesquerie x2" Ability { id: "B4EA", source: "Lindwurm" }
+3137.3 "Hemorrhagic Projection x2" Ability { id: "B4EB", source: "Lindwurm" }
+3141.1 "Snaking Kick" Ability { id: "B527", source: "Lindwurm" }
+3151.3 "Reenactment 1" Ability { id: "B4EC", source: "Lindwurm" }
+3159.4 "Firefall Splash" Ability { id: "B4ED", source: "Lindschrat" }
+3159.4 "Netherwrath Near/Netherwrath Far" Ability { id: ["B52E", "B52F"], source: "Lindwurm" }
+3160.6 "Timeless Spite" Ability { id: "B530", source: "Lindwurm" }
+3160.8 "Scalding Waves x4" Ability { id: "B8E1", source: "Lindwurm" }
+3164.4 "Grotesquerie x2" Ability { id: "B4EA", source: "Lindwurm" }
+3164.4 "Mana Burst x3" Ability { id: "BBE3", source: "Lindwurm" }
+3165.0 "Hemorrhagic Projection x2" Ability { id: "B922", source: "Lindwurm" }
 # TBD
 
 # IGNORED ABILITIES
@@ -390,11 +405,16 @@ hideall "--sync--"
 
 # Phase 2
 # B51F --sync--: Attack autos
-# B51F --sync--: Attack autos
 # B4DA Winged Scourge: VFX E/W clones Facing S, Cleaving Front/Back (North/South)
 # B4DB Winged Scourge: VFX N/S clones Facing W, Cleaving Front/Back (East/West)
 # B4DD Top-tier Slam: VFX (cast that gives Fire Debuff)
 # B4DF Mighty Magic: VFX (cast that gives Dark Debuff)
+# B4E3 Firefall Splash: VFX
+# B4E6 Mana Burst: VFX
+# B4F0 Unmitigated Impact: No one stacked in a Heavy Slam, causes 1035 Sustained Damage DoT
+# B4E9 Grotesquerie: VFX
+# B4F1 Grotesquerie: VFX used in Reenactment
+# B4EE Mana Burst: VFX used in Reenactment
 
 # ALL ENCOUNTER ABILITIES
 # Phase 1
@@ -510,6 +530,7 @@ hideall "--sync--"
 # B4EC Reenactment
 # B4ED Firefall Splash
 # B4EE Mana Burst
+# B4F0 Unmitigated Impact
 # B4EF Heavy Slam
 # B4F1 Grotesquerie
 # B4F2 Lindwurm's Meteor
@@ -547,6 +568,7 @@ hideall "--sync--"
 # B51E --sync--
 # B51F Attack
 # B520 Double Sobat
+# B521 Double Sobat
 # B522 Double Sobat
 # B524 Double Sobat
 # B525 Double Sobat
@@ -555,8 +577,10 @@ hideall "--sync--"
 # B528 Arcadia Aflame
 # B529 Arcadian Arcanum
 # B52B Netherworld Near
+# B52C Netherworld Far
 # B52D Wailing Wave
 # B52E Netherwrath Near
+# B52F Netherwrath Far
 # B530 Timeless Spite
 # B533 Arcadian Hell
 # B534 Arcadian Hell
