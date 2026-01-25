@@ -2395,7 +2395,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { effectId: 'D24', capture: true },
       run: (data, matches) => {
         data.doomPlayers = data.doomPlayers.filter(
-          (player) => player === matches.target
+          (player) => player === matches.target,
         );
       },
     },
