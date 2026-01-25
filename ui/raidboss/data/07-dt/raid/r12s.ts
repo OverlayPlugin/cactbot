@@ -1875,49 +1875,83 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
       infoText: (data, matches, output) => {
         const ability = data.myReplication2Tether;
-        // For telling player in relation to their bait
-        const spiteBaits = matches.id === 'B52E' ? 'beNear' : 'beFar';
-        const proteanBaits = matches.id === 'B52E' ? 'beFar' : 'beNear';
+        const isNear = matches.id === 'B52E';
 
-        // For telling player in relation to what others will bait
-        const avoidProtean = matches.id === 'B52E' ? 'far' : 'near';
-        const avoidSpite = matches.id === 'B52E' ? 'near' : 'far';
+        if (isNear) {
+          switch (ability) {
+            case headMarkerData['projectionTether']:
+              return output.projectionTetherNear!({
+                proteanBaits: output.beFar!(),
+                mech1: output.scaldingWave!(),
+                mech2: output.stacks!(),
+                spiteBaits: output.near!(),
+              });
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTetherNear!({
+                spiteBaits: output.beNear!(),
+                mech1: output.timelessSpite!(),
+                mech2: output.proteans!(),
+                proteanBaits: output.far!(),
+              });
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTetherNear!({
+                proteanBaits: output.beFar!(),
+                mech1: output.scaldingWave!(),
+                mech2: output.stacks!(),
+                spiteBaits: output.near!(),
+              });
+            case headMarkerData['fireballSplashTether']:
+              return output.fireballSplashTetherNear!({
+                spiteBaits: output.beNear!(),
+                mech1: output.timelessSpite!(),
+                mech2: output.proteans!(),
+                proteanBaits: output.far!(),
+              });
+          }
+          return output.noTetherNear!({
+            spiteBaits: output.beNear!(),
+            mech1: output.timelessSpite!(),
+            mech2: output.proteans!(),
+            proteanBaits: output.far!(),
+          });
+        }
 
+        // Netherwrath Far
         switch (ability) {
           case headMarkerData['projectionTether']:
-            return output.projectionTether!({
-              proteanBaits: output[proteanBaits]!(),
+            return output.projectionTetherFar!({
+              proteanBaits: output.beNear!(),
               mech1: output.scaldingWave!(),
               mech2: output.stacks!(),
-              spiteBaits: output[avoidSpite]!(),
+              spiteBaits: output.far!(),
             });
           case headMarkerData['manaBurstTether']:
-            return output.manaBurstTether!({
-              spiteBaits: output[spiteBaits]!(),
+            return output.manaBurstTetherFar!({
+              spiteBaits: output.beFar!(),
               mech1: output.timelessSpite!(),
               mech2: output.proteans!(),
-              proteanBaits: output[avoidProtean]!(),
+              proteanBaits: output.near!(),
             });
           case headMarkerData['heavySlamTether']:
-            return output.heavySlamTether!({
-              proteanBaits: output[proteanBaits]!(),
+            return output.heavySlamTetherFar!({
+              proteanBaits: output.beNear!(),
               mech1: output.scaldingWave!(),
               mech2: output.stacks!(),
-              spiteBaits: output[avoidSpite]!(),
+              spiteBaits: output.far!(),
             });
           case headMarkerData['fireballSplashTether']:
-            return output.fireballSplashTether!({
-              spiteBaits: output[spiteBaits]!(),
+            return output.fireballSplashTetherFar!({
+              spiteBaits: output.beFar!(),
               mech1: output.timelessSpite!(),
               mech2: output.proteans!(),
-              proteanBaits: output[avoidProtean]!(),
+              proteanBaits: output.near!(),
             });
         }
-        return output.noTether!({
-          spiteBaits: output[spiteBaits]!(),
+        return output.noTetherFar!({
+          spiteBaits: output.beFar!(),
           mech1: output.timelessSpite!(),
           mech2: output.proteans!(),
-          proteanBaits: output[avoidProtean]!(),
+          proteanBaits: output.near!(),
         });
       },
       outputStrings: {
@@ -1947,19 +1981,34 @@ const triggerSet: TriggerSet<Data> = {
           cn: '远',
           ko: '멀리',
         },
-        projectionTether: {
+        projectionTetherFar: {
           en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
         },
-        manaBurstTether: {
+        manaBurstTetherFar: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
-        heavySlamTether: {
+        heavySlamTetherFar: {
           en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
         },
-        fireballSplashTether: {
+        fireballSplashTetherFar: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
-        noTether: {
+        noTetherFar: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        projectionTetherNear: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        manaBurstTetherNear: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        heavySlamTetherNear: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        fireballSplashTetherNear: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        noTetherNear: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
         },
       },
