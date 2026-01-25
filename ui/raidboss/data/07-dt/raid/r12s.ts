@@ -22,6 +22,9 @@ export type Phase =
   | 'idyllic'
   | 'reenactment2';
 
+type DirectionCardinal = Exclude<DirectionOutputCardinal, 'unknown'>;
+type DirectionIntercard = Exclude<DirectionOutputIntercard, 'unknown'>;
+
 export interface Data extends RaidbossData {
   phase: Phase;
   // Phase 1
@@ -49,6 +52,8 @@ export interface Data extends RaidbossData {
   myReplication2Tether?: string;
   myMutation?: 'alpha' | 'beta';
   replication3CloneOrder: number[];
+  hasLightResistanceDown: boolean;
+  doomPlayers: string[];
 }
 
 const headMarkerData = {
@@ -86,6 +91,14 @@ const phaseMap: { [id: string]: Phase } = {
   'B509': 'idyllic',
 };
 
+const isCardinalDir = (dir: DirectionOutput8): dir is DirectionCardinal => {
+  return (Directions.outputCardinalDir as string[]).includes(dir);
+};
+
+const isIntercardDir = (dir: DirectionOutput8): dir is DirectionIntercard => {
+  return (Directions.outputIntercardDir as string[]).includes(dir);
+};
+
 const triggerSet: TriggerSet<Data> = {
   id: 'AacHeavyweightM4Savage',
   zoneId: ZoneId.AacHeavyweightM4Savage,
@@ -105,6 +118,8 @@ const triggerSet: TriggerSet<Data> = {
     replication1FollowUp: false,
     replication2TetherMap: {},
     replication3CloneOrder: [],
+    hasLightResistanceDown: false,
+    doomPlayers: [],
   }),
   triggers: [
     {
@@ -2240,15 +2255,6 @@ const triggerSet: TriggerSet<Data> = {
         if (actor === undefined)
           return;
 
-        type DirectionCardinal = Exclude<DirectionOutputCardinal, 'unknown'>;
-        type DirectionIntercard = Exclude<DirectionOutputIntercard, 'unknown'>;
-        const isCardinalDir = (dir: DirectionOutput8): dir is DirectionCardinal => {
-          return (Directions.outputCardinalDir as string[]).includes(dir);
-        };
-        const isIntercardDir = (dir: DirectionOutput8): dir is DirectionIntercard => {
-          return (Directions.outputIntercardDir as string[]).includes(dir);
-        };
-
         const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
         const dir = Directions.output8Dir[dirNum] ?? 'unknown';
 
@@ -2298,6 +2304,134 @@ const triggerSet: TriggerSet<Data> = {
         cloneTetherDir: {
           en: 'Tethered to ${dir} Clone',
         },
+      },
+    },
+    {
+      id: 'R12S Lindwurm\'s Meteor',
+      type: 'StartsUsing',
+      netRegex: { id: 'B4F2', source: 'Lindwurm', capture: false },
+      infoText: (_data, _matches, output) => output.healerGroups!(),
+      outputStrings: {
+        healerGroups: Outputs.healerGroups,
+      },
+    },
+    {
+      id: 'R12S Light Resistance Down II Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.hasLightResistanceDown = true,
+    },
+    {
+      id: 'R12S Light Resistance Down II',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'Soak Fire/Earth Meteor',
+        },
+      },
+    },
+    {
+      id: 'R12S No Light Resistance Down II',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: false },
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        if (!data.hasLightResistanceDown)
+          return output.text!();
+      },
+      outputStrings: {
+        text: {
+          en: 'Soak a White/Star Meteor',
+        },
+      },
+    },
+    {
+      id: 'R12S Doom Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'D24', capture: true },
+      run: (data, matches) => data.doomPlayers.push(matches.target),
+    },
+    {
+      id: 'R12S Doom Collect',
+      type: 'GainsEffect',
+      netRegex: { effectId: 'D24', capture: true },
+      condition: (data) => data.CanCleanse(),
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        const players = data.doomPlayers;
+        if (players.length === 2) {
+          const target1 = data.party.member(data.doomPlayers[0]);
+          const target2 = data.party.member(data.doomPlayers[1]);
+          return output.cleanseDoom2!({ target1: target1, target2: target2 });
+        }
+        if (players.length === 1) {
+          const target1 = data.party.member(data.doomPlayers[0]);
+          return output.cleanseDoom!({ target: target1 });
+        }
+      },
+      outputStrings: {
+        cleanseDoom: {
+          en: 'Cleanse ${target}',
+          de: 'Reinige ${target}',
+          fr: 'Guérison sur ${target}',
+          cn: '康复 ${target}',
+          ko: '${target} 에스나',
+          tc: '康復 ${target}',
+        },
+        cleanseDoom2: {
+          en: 'Cleanse ${target1}/${target2}',
+        },
+      },
+    },
+    {
+      id: 'R12S Doom Cleanup',
+      type: 'LosesEffect',
+      netRegex: { effectId: 'D24', capture: true },
+      run: (data, matches) => {
+        data.doomPlayers = data.doomPlayers.filter(
+          (player) => player === matches.target
+        );
+      },
+    },
+    {
+      id: 'R12S Hot-blooded',
+      // Player can still cast, but shouldn't move for 5s duration
+      type: 'GainsEffect',
+      netRegex: { effectId: '12A0', capture: true },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: (_data, matches) => parseFloat(matches.duration),
+      response: Responses.stopMoving(),
+    },
+    {
+      id: 'R12S Idyllic Dream Replication Clone Cardinal/Intercardinal Reminder',
+      // Using Temporal Curtain
+      type: 'StartsUsing',
+      netRegex: { id: 'B51C', source: 'Lindwurm', capture: false },
+      infoText: (data, _matches, output) => {
+        const firstClone = data.replication3CloneOrder[0];
+        if (firstClone === undefined)
+          return;
+        const actor = data.actorPositions[firstClone];
+        if (actor === undefined)
+          return;
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        if (isCardinalDir(dir))
+          return output.cardinals!();
+        if (isIntercardDir(dir))
+          return output.intercards!();
+      },
+      outputStrings: {
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
       },
     },
   ],
