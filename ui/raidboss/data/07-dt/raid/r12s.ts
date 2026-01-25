@@ -652,14 +652,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Cursed Coil Bind Knocbkack',
+      id: 'R12S Cursed Coil Bind Draw-in',
       // Using Phagocyte Spotlight, 1st one happens 7s before bind
       // Delayed additionally to reduce overlap with alpha tower location calls
       type: 'Ability',
       netRegex: { id: 'B4B6', capture: false },
       delaySeconds: 3, // 5s warning
       suppressSeconds: 10,
-      response: Responses.knockback(),
+      response: Responses.drawIn(),
     },
     {
       id: 'R12S Skinsplitter Counter',
