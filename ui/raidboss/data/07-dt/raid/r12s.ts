@@ -42,6 +42,7 @@ export interface Data extends RaidbossData {
   replication2TetherMap: { [dirNum: string]: string };
   replication2BossId?: string;
   myReplication2Tether?: string;
+  myMutation?: 'alpha' | 'beta';
 }
 
 const headMarkerData = {
@@ -1960,6 +1961,108 @@ const triggerSet: TriggerSet<Data> = {
         },
         noTether: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+      },
+    },
+    {
+      id: 'R12S Mutation α/β Collect',
+      // Used in Blood Mana / Blood Awakening Mechanics
+      // 12A1 Mutation α: Don't get hit
+      // 12A3 Mutation β: Get Hit
+      // Players will get opposite debuff after Blood Mana
+      type: 'GainsEffect',
+      netRegex: { effectId: ['12A1', '12A3'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        data.myMutation = matches.effectId === '12A1' ? 'alpha' : 'beta';
+      },
+    },
+    {
+      id: 'R12S Mutation α/β',
+      type: 'GainsEffect',
+      netRegex: { effectId: ['12A1', '12A3'], capture: true },
+      condition: Conditions.targetIsYou(),
+      infoText: (_data, matches, output) => {
+        if (matches.effectId === '12A1')
+          return output.alpha!();
+        return output.beta!();
+      },
+      outputStrings: {
+        alpha: {
+          en: 'Mutation α on YOU',
+        },
+        beta: {
+          en: 'Mutation β on YOU',
+        },
+      },
+    },
+    {
+      id: 'R12S Blood Mana',
+      // Black Holes and shapes
+      // TODO: Tell what shape to pop + which Black Hole mechanics and side?
+      type: 'Ability',
+      netRegex: { id: 'B4FB', source: 'Lindwurm', capture: false },
+      infoText: (data, _matches, output) => {
+        if (data.myMutation === 'alpha')
+          return output.alpha!();
+        return output.beta!();
+      },
+      outputStrings: {
+        alpha: {
+          en: 'Avoid Shape AoEs, Wait by Black Hole',
+        },
+        beta: {
+          en: 'Shared Shape Soak => Get by Black Hole',
+        },
+      },
+    },
+    {
+      id: 'R12S Blood Wakening Followup',
+      // Run to the other Black Hole after abilities go off
+      // B501 Lindwurm's Water III
+      // B502 Lindwurm's Aero III
+      // B503 Straightforward Thunder II
+      // B504 Sideways Fire II
+      // TODO: Tell which Black Hole and its mechanics?
+      type: 'StartsUsing',
+      netRegex: { id: ['B501', 'B502', 'B503', 'B504'], source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      alertText: (_data, _matches, output) => output.move!(),
+      outputStrings: {
+        move: {
+          en: 'Move to other Black Hole',
+        },
+      },
+    },
+    {
+      id: 'R12S Netherworld Near/Far',
+      type: 'StartsUsing',
+      netRegex: { id: ['B52B', 'B52C'], source: 'Lindwurm', capture: true },
+      alertText: (data, matches, output) => {
+        if (matches.id === 'B52B')
+          return data.myMutation === 'beta'
+            ? output.betaNear!({ mech: output.getUnder!() })
+            : output.alphaNear!({ mech: output.maxMelee!() });
+        return data.myMutation === 'beta'
+          ? output.betaFar!({ mech: output.maxMelee!() })
+          : output.alphaFar!({ mech: output.getUnder!() });
+      },
+      outputStrings: {
+        getUnder: Outputs.getUnder,
+        maxMelee: {
+          en: 'Max Melee',
+        },
+        alphaNear: {
+          en: '${mech} (Avoid Near Stack)',
+        },
+        alphaFar: {
+          en: '${mech} (Avoid Far Stack)',
+        },
+        betaNear: {
+          en: 'Near β Stack: ${mech}',
+        },
+        betaFar: {
+          en: 'Far β Stack: ${mech}',
         },
       },
     },
