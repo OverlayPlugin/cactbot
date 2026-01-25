@@ -340,14 +340,31 @@ hideall "--sync--"
 
 
 ### Phase 2: Lindwurm II
-# -p B528:3012.1
-# -ii B51F
+# -p B528:3015.7
+# -ii B51F B4DA B4DB B4DD B4DF
 # -it "Lindwurm"
 3000.5 label "r12s-p2-start"
-3007.1 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
-3012.1 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
-3019.3 "--middle--" Ability { id: "B4D9", source: "Lindwurm" }
-3024.4 "Replication" Ability { id: "B4D8", source: "Lindwurm" }
+3010.7 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
+3015.7 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
+3022.9 "--middle--" Ability { id: "B4D9", source: "Lindwurm" }
+3028.0 "Replication 1" Ability { id: "B4D8", source: "Lindwurm" }
+3039.6 "Top-tier Slam x2" #Ability { id: "B4DE", source: "Lindschrat" }
+3040.4 "Winged Scourge x4" Ability { id: "B4DC", source: "Lindwurm" }
+3040.6 "Mighty Magic x4" #Ability { id: "B4E0", source: "Lindwurm" }
+3045.2 "Snaking Kick" Ability { id: "B527", source: "Lindwurm" }
+3053.8 "--clones move 1--" #Ability { id: "B4D9", source: "Lindschrat" }
+3054.8 "--clones move 2--" #Ability { id: "B4D9", source: "Lindschrat" }
+3061.0 "Top-tier Slam x2" #Ability { id: "B4DE", source: "Lindschrat" }
+3061.8 "Winged Scourge x4" Ability { id: "B4DC", source: "Lindwurm" }
+3062.1 "Mighty Magic x4" #Ability { id: "B4E0", source: "Lindwurm" }
+3069.3 "Double Sobat (castbar)" Ability { id: "B520", source: "Lindwurm" }
+3070.0 "Double Sobat 1" Ability { id: "B522", source: "Lindwurm" }
+3074.6 "Double Sobat 2" Ability { id: "B525", source: "Lindwurm" }
+3077.0 "Esoteric Finisher" Ability { id: "B526", source: "Lindwurm" }
+
+3091.2 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
+3102.2 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
+3105.4 "Replication 2" Ability { id: "B4D8", source: "Lindwurm" }
 # TBD
 
 # IGNORED ABILITIES
@@ -373,6 +390,11 @@ hideall "--sync--"
 
 # Phase 2
 # B51F --sync--: Attack autos
+# B51F --sync--: Attack autos
+# B4DA Winged Scourge: VFX E/W clones Facing S, Cleaving Front/Back (North/South)
+# B4DB Winged Scourge: VFX N/S clones Facing W, Cleaving Front/Back (East/West)
+# B4DD Top-tier Slam: VFX (cast that gives Fire Debuff)
+# B4DF Mighty Magic: VFX (cast that gives Dark Debuff)
 
 # ALL ENCOUNTER ABILITIES
 # Phase 1
@@ -463,3 +485,89 @@ hideall "--sync--"
 # BEC0 Grotesquerie: Curtain Call
 
 # Phase 2
+# B46C Replication
+# B4D8 Replication
+# B4D9 --sync--
+# B4DA Winged Scourge
+# B4DB Winged Scourge
+# B4DC Winged Scourge
+# B4DD Top-tier Slam
+# B4DE Top-tier Slam
+# B4DF Mighty Magic
+# B4E0 Mighty Magic
+# B4E1 Staging
+# B4E2 --sync--
+# B4E3 Firefall Splash
+# B4E4 Firefall Splash
+# B4E5 Scalding Waves
+# B4E6 Mana Burst
+# B4E7 Mana Burst
+# B51F --sync--
+# B4E8 Heavy Slam
+# B4E9 Grotesquerie
+# B4EA Grotesquerie
+# B4EB Hemorrhagic Projection
+# B4EC Reenactment
+# B4ED Firefall Splash
+# B4EE Mana Burst
+# B4EF Heavy Slam
+# B4F1 Grotesquerie
+# B4F2 Lindwurm's Meteor
+# B4F3 Downfall
+# B4F4 Cosmic Kiss
+# B4F6 Lindwurm's Dark II
+# B4F7 Lindwurm's Stone III
+# B4F8 Lindwurm's Glare
+# B4FA Lindwurm's Thunder II
+# B4FB Blood Mana
+# B4FE Bloody Burst
+# B500 Blood Wakening
+# B501 Lindwurm's Water III
+# B502 Lindwurm's Aero III
+# B503 Straightforward Thunder II
+# B504 Sideways Fire II
+# B505 Mutating Cells
+# B506 --sync--
+# B507 Dramatic Lysis
+# B509 Idyllic Dream
+# B50F Power Gusher
+# B510 Power Gusher
+# B511 Snaking Kick
+# B512 Power Gusher
+# B513 Power Gusher
+# B514 Power Gusher
+# B515 Snaking Kick
+# B516 Power Gusher
+# B517 Mana Burst
+# B518 Mana Burst
+# B519 Heavy Slam
+# B51A Power Gusher
+# B51C Temporal Curtain
+# B51D --sync--
+# B51E --sync--
+# B51F Attack
+# B520 Double Sobat
+# B522 Double Sobat
+# B524 Double Sobat
+# B525 Double Sobat
+# B526 Esoteric Finisher
+# B527 Snaking Kick
+# B528 Arcadia Aflame
+# B529 Arcadian Arcanum
+# B52B Netherworld Near
+# B52D Wailing Wave
+# B52E Netherwrath Near
+# B530 Timeless Spite
+# B533 Arcadian Hell
+# B534 Arcadian Hell
+# B535 Arcadian Hell
+# B537 Arcadian Hell
+# B8E1 Scalding Waves
+# B922 Hemorrhagic Projection
+# B9D9 Arcadian Arcanum
+# BBE2 Twisted Vision
+# BBE3 Mana Burst
+# BCAF Snaking Kick
+# BE5D Heavy Slam
+# BE95 Snaking Kick
+# BEC1 Arcadian Hell
