@@ -1641,7 +1641,7 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ...Directions.outputStrings8Dir,
         projectionTether: {
-          en: 'Projection Tether on YOU',
+          en: 'Cone Tether on YOU',
         },
         manaBurstTether: {
           en: 'Defamation Tether on YOU',
@@ -1693,67 +1693,44 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 2 Locked Tether 2',
+      id: 'R12S Replication 2 Ability Tethers Initial Call',
+      // Occur ~8s after end of Replication 2 cast
       type: 'Tether',
-      netRegex: { id: headMarkerData['lockedTether'], capture: true },
-      condition: (data, matches) => {
-        return data.replicationCounter === 2 && data.me === matches.target;
+      netRegex: {
+        id: [
+          headMarkerData['projectionTether'],
+          headMarkerData['manaBurstTether'],
+          headMarkerData['heavySlamTether'],
+          headMarkerData['fireballSplashTether'],
+        ],
+        capture: true,
       },
-      delaySeconds: 0.1,
-      infoText: (data, matches, output) => {
-        // Check if it's the boss
-        if (data.replication2BossId === matches.sourceId)
-          return output.fireballSplashTether!({
-            mech1: output.baitJump!(),
-            mech2: output.stackGroups!(),
-          });
-
-        switch (data.myReplication2Tether) {
+      condition: Conditions.targetIsYou(),
+      suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
+      infoText: (_data, matches, output) => {
+        switch (matches.id) {
           case headMarkerData['projectionTether']:
-            return output.projectionTether!({
-              mech1: output.baitProtean!(),
-              mech2: output.stackGroups!(),
-            });
+            return output.projectionTether!();
           case headMarkerData['manaBurstTether']:
-            return output.manaBurstTether!({
-              mech1: output.defamationOnYou!(),
-              mech2: output.stackGroups!(),
-            });
+            return output.manaBurstTether!();
           case headMarkerData['heavySlamTether']:
-            return output.heavySlamTether!({
-              mech1: output.baitProtean!(),
-              mech2: output.stackGroups!(),
-            });
+            return output.heavySlamTether!();
         }
+        return output.fireballSplashTether!();
       },
       outputStrings: {
-        defamationOnYou: Outputs.defamationOnYou,
-        stackGroups: {
-          en: 'Stack Groups',
-          de: 'Gruppen-Sammeln',
-          fr: 'Package en groupes',
-          ja: '組み分け頭割り',
-          cn: '分组分摊',
-          ko: '그룹별 쉐어',
-          tc: '分組分攤',
-        },
-        baitProtean: {
-          en: 'Bait Protean from Boss',
-        },
-        baitJump: {
-          en: 'Bait Jump',
-        },
+        ...Directions.outputStrings8Dir,
         projectionTether: {
-          en: '${mech1} => ${mech2}',
+          en: 'Cone Tether on YOU',
         },
         manaBurstTether: {
-          en: '${mech1} => ${mech2}',
+          en: 'Defamation Tether on YOU',
         },
         heavySlamTether: {
-          en: '${mech1} => ${mech2}',
+          en: 'Stack Tether on YOU',
         },
         fireballSplashTether: {
-          en: '${mech1} => ${mech2}',
+          en: 'Boss Tether on YOU',
         },
       },
     },
