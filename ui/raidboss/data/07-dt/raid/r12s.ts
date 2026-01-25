@@ -1456,10 +1456,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Fake Fire Resistance Down II',
       // Two players will not receive a debuff, they will need to act as if they had
+      // Mechanics happen across 1.1s
       type: 'GainsEffect',
       netRegex: { effectId: ['CFB', 'B79'], capture: false },
       condition: (data) => !data.replication1FollowUp,
-      delaySeconds: 0.3, // Delay for debuff/damage propagation
+      delaySeconds: 1.2, // +0.1s Delay for debuff/damage propagation
       suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
         if (data.replication1Debuff === undefined)
@@ -1866,7 +1867,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      delaySeconds: 0.1,
+      delaySeconds: 0.2,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
         if (data.myReplication2Tether !== undefined)
