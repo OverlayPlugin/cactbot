@@ -1740,8 +1740,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bait Protean from Boss',
         },
         baitJump: {
-          // This must be north to resolve later Netherwrath mechanic
-          en: 'Bait Jump North',
+          en: 'Bait Jump',
         },
         projectionTether: {
           en: '${mech1} => ${mech2}',
@@ -1870,7 +1869,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Netherwrath Near/Far',
-      // Boss jumps onto north clone (Firefall Splash mechanic), aoe around the clone + proteans
+      // Boss jumps onto clone of player that took Firefall Splash, there is an aoe around the clone + proteans
       type: 'StartsUsing',
       netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
       infoText: (data, matches, output) => {
