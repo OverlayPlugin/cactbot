@@ -1689,7 +1689,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
         data.myReplication2Tether = ability;
-      }
+      },
     },
     {
       id: 'R12S Replication 2 Locked Tether 2',
