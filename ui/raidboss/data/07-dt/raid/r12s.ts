@@ -114,6 +114,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Phase Two Staging Tracker',
+      // Due to the way the combatants are added in prior to the cast of Staging, this is used to set the phase
+      type: 'AddedCombatant',
+      netRegex: { name: 'Understudy', capture: false },
+      condition: (data) => data.phase === 'replication1',
+      run: (data) => data.phase = 'replication2',
+    },
+    {
       id: 'R12S Phase Two Replication Tracker',
       type: 'StartsUsing',
       netRegex: { id: 'B4D8', source: 'Lindwurm', capture: false },
@@ -124,17 +132,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Phase Two Staging Tracker',
-      // B4E1 Staging happens more than once, only track the first one
+      id: 'R12S Phase Two Boss ID Collect',
+      // Store the boss' id later for checking against tether
+      // Using first B4E1 Staging
       type: 'StartsUsing',
       netRegex: { id: 'B4E1', source: 'Lindwurm', capture: true },
-      condition: (data) => data.phase === 'replication1',
+      condition: (data) => data.phase === 'replication2',
       suppressSeconds: 9999,
-      run: (data, matches) => {
-        data.phase = 'replication2';
-        // Store the boss' id later for checking against tether
-        data.replication2BossId = matches.sourceId;
-      },
+      run: (data, matches) => data.replication2BossId = matches.sourceId,
     },
     {
       id: 'R12S Phase Two Reenactment Tracker',
@@ -1627,27 +1632,55 @@ const triggerSet: TriggerSet<Data> = {
       },
       condition: Conditions.targetIsYou(),
       suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
-      infoText: (_data, matches, output) => {
+      infoText: (data, matches, output) => {
+        if (matches.id === headMarkerData['fireballSplashTether'])
+          return output.fireballSplashTether!();
+
+        // Get direction of the tether
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined) {
+          switch (matches.id) {
+            case headMarkerData['projectionTether']:
+              return output.projectionTether!();
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTether!();
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTether!();
+          }
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
         switch (matches.id) {
           case headMarkerData['projectionTether']:
-            return output.projectionTether!();
+            return output.projectionTetherDir!({ dir: output[dir]!() });
           case headMarkerData['manaBurstTether']:
-            return output.manaBurstTether!();
+            return output.manaBurstTetherDir!({ dir: output[dir]!() });
           case headMarkerData['heavySlamTether']:
-            return output.heavySlamTether!();
+            return output.heavySlamTetherDir!({ dir: output[dir]!() });
         }
-        return output.fireballSplashTether!();
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
         projectionTether: {
           en: 'Cone Tether on YOU',
         },
+        projectionTetherDir: {
+          en: '${dir} Cone Tether on YOU',
+        },
         manaBurstTether: {
           en: 'Defamation Tether on YOU',
         },
+        manaBurstTetherDir: {
+          en: '${dir} Defamation Tether on YOU',
+        },
         heavySlamTether: {
           en: 'Stack Tether on YOU',
+        },
+        heavySlamTetherDir: {
+          en: '${dir} Stack Tether on YOU',
         },
         fireballSplashTether: {
           en: 'Boss Tether on YOU',
@@ -1707,22 +1740,49 @@ const triggerSet: TriggerSet<Data> = {
             mech1: output.baitJump!(),
           });
 
+        // Get direction of the tether
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined) {
+          switch (data.myReplication2Tether) {
+            case headMarkerData['projectionTether']:
+              return output.projectionTether!({
+                mech1: output.baitProtean!(),
+              });
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTether!({
+                mech1: output.defamationOnYou!(),
+              });
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTether!({
+                mech1: output.baitProtean!(),
+              });
+          }
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
         switch (data.myReplication2Tether) {
           case headMarkerData['projectionTether']:
-            return output.projectionTether!({
+            return output.projectionTetherDir!({
+              dir: output[dir]!(),
               mech1: output.baitProtean!(),
             });
           case headMarkerData['manaBurstTether']:
-            return output.manaBurstTether!({
+            return output.manaBurstTetherDir!({
+              dir: output[dir]!(),
               mech1: output.defamationOnYou!(),
             });
           case headMarkerData['heavySlamTether']:
-            return output.heavySlamTether!({
+            return output.heavySlamTetherDir!({
+              dir: output[dir]!(),
               mech1: output.baitProtean!(),
             });
         }
       },
       outputStrings: {
+        ...Directions.outputStrings8Dir,
         defamationOnYou: Outputs.defamationOnYou,
         stackGroups: {
           en: 'Stack Groups',
@@ -1739,11 +1799,20 @@ const triggerSet: TriggerSet<Data> = {
         baitJump: {
           en: 'Bait Jump',
         },
+        projectionTetherDir: {
+          en: '${dir} Cone Tether: ${mech1}',
+        },
         projectionTether: {
           en: 'Cone Tether: ${mech1}',
         },
+        manaBurstTetherDir: {
+          en: '${dir} Defamation Tether: ${mech1}',
+        },
         manaBurstTether: {
           en: 'Defamation Tether: ${mech1}',
+        },
+        heavySlamTetherDir: {
+          en: '${dir} Stack Tether: ${mech1}',
         },
         heavySlamTether: {
           en: 'Stack Tether: ${mech1}',
@@ -1783,7 +1852,7 @@ const triggerSet: TriggerSet<Data> = {
           tc: '分組分攤',
         },
         noTether: {
-          en: '${mech1} => ${mech2}',
+          en: 'No Tether: ${mech1} => ${mech2}',
         },
       },
     },
