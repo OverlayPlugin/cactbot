@@ -7,7 +7,13 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-export type Phase = 'doorboss' | 'curtainCall' | 'slaughtershed' | 'two';
+export type Phase =
+  | 'doorboss'
+  | 'curtainCall'
+  | 'slaughtershed'
+  | 'replication1'
+  | 'replication2'
+  | 'idyllic';
 
 export interface Data extends RaidbossData {
   phase: Phase;
@@ -26,6 +32,10 @@ export interface Data extends RaidbossData {
   myMitoticPhase?: string;
   hasRot: boolean;
   // Phase 2
+  actorPositions: { [id: string]: { x: number; y: number; heading: number } };
+  replication1Debuff?: 'fire' | 'dark';
+  replication1FireActor?: string;
+  replication1FollowUp: boolean;
 }
 
 const headMarkerData = {
@@ -54,6 +64,7 @@ const center = {
 const phaseMap: { [id: string]: Phase } = {
   'BEC0': 'curtainCall',
   'B4C6': 'slaughtershed',
+  'B509': 'idyllic',
 };
 
 const triggerSet: TriggerSet<Data> = {
@@ -70,6 +81,8 @@ const triggerSet: TriggerSet<Data> = {
     cellChainCount: 0,
     hasRot: false,
     // Phase 2
+    actorPositions: {},
+    replication1FollowUp: false,
   }),
   triggers: [
     {
@@ -84,6 +97,63 @@ const triggerSet: TriggerSet<Data> = {
 
         data.phase = phase;
       },
+    },
+    {
+      id: 'R12S Phase Two Replication Tracker',
+      // B4D8 Replication happens more than once, only track the first one
+      type: 'StartsUsing',
+      netRegex: { id: 'B4D8', source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      run: (data) => data.phase = 'replication1',
+    },
+    {
+      id: 'R12S Phase Two Staging Tracker',
+      // B4E1 Staging happens more than once, only track the first one
+      type: 'StartsUsing',
+      netRegex: { id: 'B4E1', source: 'Lindwurm', capture: false },
+      condition: (data) => data.phase === 'replication1',
+      suppressSeconds: 9999,
+      run: (data) => data.phase = 'replication2',
+    },
+    {
+      id: 'R12S Phase Two ActorSetPos Tracker',
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      condition: (data) => {
+        if (
+          data.phase === 'replication1' ||
+          data.phase === 'replication2' ||
+          data.phase === 'idyllic'
+        )
+          return true;
+        return false;
+      },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
+    },
+    {
+      id: 'R12S Phase Two ActorMove Tracker',
+      type: 'ActorMove',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      condition: (data) => {
+        if (
+          data.phase === 'replication1' ||
+          data.phase === 'replication2' ||
+          data.phase === 'idyllic'
+        )
+          return true;
+        return false;
+      },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
     },
     {
       id: 'R12S The Fixer',
@@ -1236,10 +1306,163 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe('alert'),
     },
     {
+      id: 'R12S Fire and Dark Resistance Down II Collector',
+      // CFB Dark Resistance Down II
+      // B79 Fire Resistance Down II
+      type: 'GainsEffect',
+      netRegex: { effectId: ['CFB', 'B79'], capture: true },
+      condition: Conditions.targetIsYou(),
+      suppressSeconds: 9999,
+      run: (data, matches) => {
+        data.replication1Debuff = matches.effectId === 'CFB' ? 'dark' : 'fire';
+      },
+    },
+    {
+      id: 'R12S Fire and Dark Resistance Down II',
+      // CFB Dark Resistance Down II
+      // B79 Fire Resistance Down II
+      type: 'GainsEffect',
+      netRegex: { effectId: ['CFB', 'B79'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target)
+          return !data.replication1FollowUp;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (_data, matches, output) => {
+        return matches.effectId === 'CFB' ? output.dark!() : output.fire!();
+      },
+      outputStrings: {
+        fire: {
+          en: 'Fire Debuff: Spread near Dark Clone (later)',
+        },
+        dark: {
+          en: 'Dark Debuff: Stack near Fire Clone (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S Fake Fire Resistance Down II',
+      // Two players will not receive a debuff, they will need to act as if they had
+      type: 'GainsEffect',
+      netRegex: { effectId: ['CFB', 'B79'], capture: false },
+      condition: (data) => !data.replication1FollowUp,
+      delaySeconds: 0.3, // Delay for debuff/damage propagation
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        if (data.replication1Debuff === undefined)
+          return output.noDebuff!();
+      },
+      outputStrings: {
+        noDebuff: {
+          en: 'No Debuff: Spread near Dark Clone (later)',
+        },
+      },
+    },
+    {
       id: 'R12S Snaking Kick',
       type: 'StartsUsing',
       netRegex: { id: 'B527', source: 'Lindwurm', capture: false },
       response: Responses.getBehind(),
+      run: (data) => data.replication1FollowUp = true,
+    },
+    {
+      id: 'R12S Replication 1 Follow-up Tracker',
+      // Tracking from B527 Snaking Kick
+      type: 'StartsUsing',
+      netRegex: { id: 'B527', source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      run: (data) => data.replication1FollowUp = true,
+    },
+    {
+      id: 'R12S Top-Tier Slam Actor Collect',
+      // Fire NPCs always move in the first Set
+      // Locations are static
+      // Fire => Dark => Fire => Dark
+      // Dark => Fire => Dark => Fire
+      // The other 4 cleave in a line
+      // (90, 90)           (110, 90)
+      //      (95, 95)  (105, 95)
+      //             Boss
+      //      (95, 100) (105, 105)
+      // (90, 110)          (110, 110)
+      // ActorMove ~0.3s later will have the data
+      // ActorSet from the clones splitting we can infer the fire entities since their positions and headings are not perfect
+      type: 'Ability',
+      netRegex: { id: 'B4D9', source: 'Lindschrat', capture: true },
+      condition: (data, matches) => {
+        if (data.replication1FollowUp) {
+          const pos = data.actorPositions[matches.sourceId];
+          if (pos === undefined)
+            return false;
+          // These values should be 0 if coords are x.0000
+          const xFilter = pos.x % 1;
+          const yFilter = pos.y % 1;
+          if (xFilter === 0 && yFilter === 0 && pos.heading === -0.0001)
+            return false;
+          return true;
+        }
+        return false;
+      },
+      suppressSeconds: 9999, // Only need one of the two
+      run: (data, matches) => data.replication1FireActor = matches.sourceId,
+    },
+    {
+      id: 'R12S Top-Tier Slam/Mighty Magic Locations',
+      type: 'Ability',
+      netRegex: { id: 'B4D9', source: 'Lindschrat', capture: false },
+      condition: (data) => {
+        if (data.replication1FollowUp && data.replication1FireActor !== undefined)
+          return true;
+        return false;
+      },
+      delaySeconds: 1, // Data is sometimes not available right away
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        const fireId = data.replication1FireActor;
+        if (fireId === undefined)
+          return;
+
+        const actor = data.actorPositions[fireId];
+        if (actor === undefined)
+          return;
+
+        const x = actor.x;
+        const dirNum = Directions.xyTo8DirNum(x, actor.y, center.x, center.y);
+        const dir1 = Directions.output8Dir[dirNum] ?? 'unknown';
+        const dirNum2 = (dirNum + 4) % 8;
+        const dir2 = Directions.output8Dir[dirNum2] ?? 'unknown';
+
+        // Check if combatant moved to inner or outer
+        const isIn = (x > 94 && x < 106);
+        const fireIn = isIn ? dir1 : dir2;
+        const fireOut = isIn ? dir2 : dir1;
+
+        if (data.replication1Debuff === 'dark')
+          return output.fire!({
+            dir1: output[fireIn]!(),
+            dir2: output[fireOut]!(),
+          });
+
+        // Dark will be opposite pattern of Fire
+        const darkIn = isIn ? dir2 : dir1;
+        const darkOut = isIn ? dir1 : dir2;
+
+        // Fire debuff players and unmarked bait Dark
+        return output.dark!({
+          dir1: output[darkIn]!(),
+          dir2: output[darkOut]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir, // Cardinals should result in '???'
+        fire: {
+          en: 'Bait Fire near In ${dir1}/Out ${dir2} (Partners)',
+        },
+        dark: {
+          en: 'Bait Dark near In ${dir1}/Out ${dir2} (Solo)',
+        },
+      },
     },
     {
       id: 'R12S Double Sobat',
