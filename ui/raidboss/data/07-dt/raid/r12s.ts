@@ -1867,6 +1867,89 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       response: Responses.getBehind(),
     },
+    {
+      id: 'R12S Netherwrath Near/Far',
+      type: 'StartsUsing',
+      netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
+      infoText: (data, matches, output) => {
+        const ability = data.myReplication2Tether;
+        // For telling player in relation to their bait
+        const spiteBaits = matches.id === 'B52E' ? 'near' : 'far';
+        const proteanBaits = matches.id === 'B52E' ? 'far' : 'near';
+
+        // For telling player in relation to what others will bait
+        const avoidProtean = matches.id === 'B52E' ? 'out' : 'in';
+        const avoidSpite = matches.id === 'B52E' ? 'in' : 'out';
+
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+            return output.projectionTether!({
+              proteanBaits: output[proteanBaits]!(),
+              mech1: output.scaldingWave!(),
+              mech2: output.stacks!(),
+              spiteBaits: output[avoidSpite]!(),
+            });
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTether!({
+              spiteBaits: output[spiteBaits]!(),
+              mech1: output.timelessSpite!(),
+              mech2: output.proteans!(),
+              proteanBaits: output[avoidProtean]!(),
+            });
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTether!({
+              proteanBaits: output[proteanBaits]!(),
+              mech1: output.scaldingWave!(),
+              mech2: output.stacks!(),
+              spiteBaits: output[avoidSpite]!(),
+            });
+          case headMarkerData['fireballSplashTether']:
+            return output.fireballSplashTether!({
+              spiteBaits: output[spiteBaits]!(),
+              mech1: output.timelessSpite!(),
+              mech2: output.proteans!(),
+              proteanBaits: output[avoidProtean]!(),
+            });
+        }
+        return output.noTether!({
+          spiteBaits: output[spiteBaits]!(),
+          mech1: output.timelessSpite!(),
+          mech2: output.proteans!(),
+          proteanBaits: output[avoidProtean]!(),
+        });
+      },
+      outputStrings: {
+        scaldingWave: Outputs.protean,
+        timelessSpite: Outputs.stackPartner,
+        stacks: Outputs.stacks,
+        proteans: {
+          en: 'Proteans',
+        },
+        near: {
+          en: 'Be In',
+        },
+        in: Outputs.in,
+        far: {
+          en: 'Be Out',
+        },
+        out: Outputs.out,
+        projectionTether: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        manaBurstTether: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        heavySlamTether: {
+          en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
+        },
+        fireballSplashTether: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        noTether: {
+          en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+      },
+    },
   ],
   timelineReplace: [
     {
