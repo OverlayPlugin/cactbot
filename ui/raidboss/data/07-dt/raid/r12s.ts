@@ -1740,7 +1740,8 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Bait Protean from Boss',
         },
         baitJump: {
-          en: 'Bait Boss Jump',
+          // This must be north to resolve later Netherwrath mechanic
+          en: 'Bait Jump North',
         },
         projectionTether: {
           en: '${mech1} => ${mech2}',
@@ -1869,17 +1870,18 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Netherwrath Near/Far',
+      // Boss jumps onto north clone (Firefall Splash mechanic), aoe around the clone + proteans
       type: 'StartsUsing',
       netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
       infoText: (data, matches, output) => {
         const ability = data.myReplication2Tether;
         // For telling player in relation to their bait
-        const spiteBaits = matches.id === 'B52E' ? 'near' : 'far';
-        const proteanBaits = matches.id === 'B52E' ? 'far' : 'near';
+        const spiteBaits = matches.id === 'B52E' ? 'beNear' : 'beFar';
+        const proteanBaits = matches.id === 'B52E' ? 'beFar' : 'beNear';
 
         // For telling player in relation to what others will bait
-        const avoidProtean = matches.id === 'B52E' ? 'out' : 'in';
-        const avoidSpite = matches.id === 'B52E' ? 'in' : 'out';
+        const avoidProtean = matches.id === 'B52E' ? 'far' : 'near';
+        const avoidSpite = matches.id === 'B52E' ? 'near' : 'far';
 
         switch (ability) {
           case headMarkerData['projectionTether']:
@@ -1925,14 +1927,26 @@ const triggerSet: TriggerSet<Data> = {
         proteans: {
           en: 'Proteans',
         },
+        beNear: {
+          en: 'Be Near',
+        },
+        beFar: {
+          en: 'Be Far',
+        },
         near: {
-          en: 'Be In',
+          en: 'Near',
+          de: 'Nah',
+          fr: 'Proche',
+          cn: '近',
+          ko: '가까이',
         },
-        in: Outputs.in,
         far: {
-          en: 'Be Out',
+          en: 'Far',
+          de: 'Fern',
+          fr: 'Loin',
+          cn: '远',
+          ko: '멀리',
         },
-        out: Outputs.out,
         projectionTether: {
           en: '${proteanBaits} + ${mech1} (${mech2} ${spiteBaits})',
         },
