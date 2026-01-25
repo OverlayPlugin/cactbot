@@ -487,6 +487,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.snakingDebuff !== 'fire';
       },
+      durationSeconds: (data) => data.phase === 'arenaSplit' ? 8 : 3,
       infoText: (data, matches, output) => {
         // During snaking it is always move since the baits are too close
         if (data.phase === 'snaking')
@@ -541,12 +542,12 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: ['B5E0', 'B5DD'], source: 'Deep Blue', capture: true },
       condition: (data) => {
-        return data.snakingDebuff !== 'fire';
+        return data.snakingDebuff !== 'fire' && data.phase !== 'arenaSplit';
       },
       infoText: (data, matches, output) => {
         // During snaking and the arena split it is always move since the
         // baits are too close.
-        if (data.phase === 'snaking' || data.phase === 'arenaSplit')
+        if (data.phase === 'snaking')
           return output.move!();
         return matches.id === 'B5E0' ? output.stay!() : output.move!();
       },
