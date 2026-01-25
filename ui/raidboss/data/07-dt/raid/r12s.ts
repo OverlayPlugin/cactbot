@@ -2357,9 +2357,9 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => data.doomPlayers.push(matches.target),
     },
     {
-      id: 'R12S Doom Collect',
+      id: 'R12S Doom Cleanse',
       type: 'GainsEffect',
-      netRegex: { effectId: 'D24', capture: true },
+      netRegex: { effectId: 'D24', capture: false },
       condition: (data) => data.CanCleanse(),
       delaySeconds: 0.1,
       suppressSeconds: 1,
