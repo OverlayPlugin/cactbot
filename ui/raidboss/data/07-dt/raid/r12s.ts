@@ -2663,7 +2663,7 @@ const triggerSet: TriggerSet<Data> = {
         healerGroups: Outputs.healerGroups,
         bigAoe: Outputs.bigAoe,
         text: {
-          en: '${mech1} => ${mech2}',
+          en: '${mech1} + ${mech2}',
         },
       },
     },
