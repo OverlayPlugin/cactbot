@@ -1507,7 +1507,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Replication 1 Follow-up Tracker',
       // Tracking from B527 Snaking Kick
-      type: 'StartsUsing',
+      type: 'Ability',
       netRegex: { id: 'B527', source: 'Lindwurm', capture: false },
       suppressSeconds: 9999,
       run: (data) => data.replication1FollowUp = true,
