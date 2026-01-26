@@ -1922,15 +1922,6 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ...Directions.outputStrings8Dir,
         defamationOnYou: Outputs.defamationOnYou,
-        stackGroups: {
-          en: 'Stack Groups',
-          de: 'Gruppen-Sammeln',
-          fr: 'Package en groupes',
-          ja: '組み分け頭割り',
-          cn: '分组分摊',
-          ko: '그룹별 쉐어',
-          tc: '分組分攤',
-        },
         baitProtean: {
           en: 'Bait Protean from Boss',
         },
