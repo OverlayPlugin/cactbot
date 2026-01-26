@@ -2037,15 +2037,6 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
       condition: Conditions.targetIsYou(),
-    {
-      id: 'R12S Grotesquerie',
-      // This seems to be the point at which the look for the Snaking Kick is snapshot
-      // The VFX B4E9 happens ~0.6s before Snaking Kick
-      // B4EA has the targetted player in it
-      // B4EB Hemorrhagic Projection conal aoe goes off ~0.5s after in the direction the player was facing
-      type: 'Ability',
-      netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
-      condition: Conditions.targetIsYou(),
       alertText: (data, matches, output) => {
         // Get Boss facing
         const bossId = data.replication2BossId;
