@@ -2037,7 +2037,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
       condition: Conditions.targetIsYou(),
-      alertText: (data, matches, output) => {
+      alertText: (data, _matches, output) => {
         // Get Boss facing
         const bossId = data.replication2BossId;
         if (bossId === undefined)
