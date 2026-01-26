@@ -1446,10 +1446,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         fire: {
-          en: 'Fire Debuff: Spread near Dark Clone (later)',
+          en: 'Fire Debuff: Spread near Dark (later)',
         },
         dark: {
-          en: 'Dark Debuff: Stack near Fire Clone (later)',
+          en: 'Dark Debuff: Stack near Fire (later)',
         },
       },
     },
@@ -1468,7 +1468,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         noDebuff: {
-          en: 'No Debuff: Spread near Dark Clone (later)',
+          en: 'No Debuff: Spread near Dark (later)',
         },
       },
     },
@@ -1595,10 +1595,10 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         ...Directions.outputStringsIntercardDir, // Cardinals should result in '???'
         fire: {
-          en: 'Bait Fire near In ${dir1}/Out ${dir2} (Partners)',
+          en: 'Bait Fire In ${dir1}/Out ${dir2} (Partners)',
         },
         dark: {
-          en: 'Bait Dark near In ${dir1}/Out ${dir2} (Solo)',
+          en: 'Bait Dark In ${dir1}/Out ${dir2} (Solo)',
         },
       },
     },
