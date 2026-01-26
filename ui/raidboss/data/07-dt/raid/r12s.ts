@@ -1381,7 +1381,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Northeast: Knockback to Northwest',
+          en: 'Knockback from Northeast => Knockback from Northwest',
         },
       },
     },
