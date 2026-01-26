@@ -2253,7 +2253,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Reenactment 1 Clone Stacks',
+      id: 'R12S Reenactment 1 Final Defamation Dodge Reminder',
       // Players need to run back to north after clone stacks (BE5D Heavy Slam)
       // The clone stacks become a defamation and the other a cleave going East or West through the room
       // NOTE: This is used with DN Strategy
@@ -2487,7 +2487,7 @@ const triggerSet: TriggerSet<Data> = {
         if (blackHole === undefined)
           return output.move!();
         const next = blackHole === 'east' ? 'west' : 'east';
-        return  output.moveDir!({
+        return output.moveDir!({
           northSouth: output.northSouth!(),
           dir: output[next]!(),
         });
@@ -2768,6 +2768,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'en',
       'replaceText': {
         'Netherwrath Near/Netherwrath Far': 'Netherwrath Near/Far',
+        'Netherworld Near/Netherwworld Far': 'Netherworld Near/Far',
       },
     },
   ],
