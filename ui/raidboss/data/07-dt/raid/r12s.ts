@@ -2653,9 +2653,18 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Lindwurm\'s Meteor',
       type: 'StartsUsing',
       netRegex: { id: 'B4F2', source: 'Lindwurm', capture: false },
-      infoText: (_data, _matches, output) => output.healerGroups!(),
+      alertText: (_data, _matches, output) => {
+        return output.text!({
+          mech1: output.bigAoe!(),
+          mech2: output.healerGroups!()
+        });
+      },
       outputStrings: {
         healerGroups: Outputs.healerGroups,
+        bigAoe: Outputs.bigAoe,
+        text: {
+          en: '${mech1} => ${mech2}',
+        },
       },
     },
     {
