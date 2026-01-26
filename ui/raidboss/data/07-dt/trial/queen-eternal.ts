@@ -89,7 +89,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '連続光属性AoE',
           cn: '连续小AoE',
           ko: '지속적인 약한 전체 공격',
-          tc: '連續小AoE',
+          tc: '連續小AOE',
         },
       },
     },
@@ -425,7 +425,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '5連続AoE',
           cn: 'AoE (5次)',
           ko: '전체공격 (5x)',
-          tc: 'AoE (5次)',
+          tc: 'AOE (5次)',
         },
       },
     },
@@ -565,22 +565,21 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Queen Eternal': '永恆女王',
       },
       'replaceText': {
-        // '\\(abandonment\\)': '', // FIXME '(孤独感)'
-        // '\\(all\\)': '', // FIXME '(全体)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(cones': '', // FIXME '(锥形'
-        // '\\(flare\\)': '', // FIXME '(核爆)'
-        // '\\(gaze\\)': '', // FIXME '(石化光)'
-        // '\\(pre-cast\\)': '', // FIXME '(预咏唱)'
-        // '\\(puddles': '', // FIXME '(放圈'
-        // '\\(raidwide\\)': '', // FIXME '(全域)'
-        // '\\(single\\)': '', // FIXME '(单体)'
-        // '\\(stun\\)': '', // FIXME '(眩晕)'
+        '\\(abandonment\\)': '(孤獨感)',
+        '\\(all\\)': '(全體)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(cones': '(錐形',
+        '\\(flare\\)': '(核爆)',
+        '\\(gaze\\)': '(石化光)',
+        '\\(pre-cast\\)': '(預詠唱)',
+        '\\(puddles': '(放圈',
+        '\\(raidwide\\)': '(全體)',
+        '\\(single\\)': '(單體)',
+        '\\(stun\\)': '(眩暈)',
         'Absolute Authority': '絕對君權',
         'Aethertithe': '乙太稅',
         'Authority\'s Hold': '空間掌控：制動',

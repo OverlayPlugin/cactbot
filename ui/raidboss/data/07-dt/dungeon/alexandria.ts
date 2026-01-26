@@ -95,7 +95,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: ' => ',
           cn: ' => ',
           ko: ' => ',
-          tc: '=>',
+          tc: ' => ',
         },
       },
     },
@@ -114,7 +114,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンク強攻撃 -- 散開！',
           cn: '范围死刑 -- 别去分摊！',
           ko: '광역 탱버 -- 쉐어 맞지 말기',
-          tc: '範圍死刑 -- 別去分攤！',
+          tc: '範圍死刑 -- 別去分攤!',
         },
       },
     },
@@ -251,7 +251,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '手のレーザーを避ける',
           cn: '躲避手激光',
           ko: '손이 쏘는 레이저 피하기',
-          tc: '躲避手榴彈射',
+          tc: '躲避手雷射',
         },
       },
     },
@@ -269,7 +269,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'エリミネーターの下へ',
           cn: '站在浮游炮下',
           ko: '비트 밑으로',
-          tc: '站在浮游炮下',
+          tc: '站在浮游砲下',
         },
       },
     },
@@ -529,7 +529,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Amalgam': '軟性融合體',
         'Antivirus X': '反病毒程式X',
@@ -567,11 +566,11 @@ const triggerSet: TriggerSet<Data> = {
         'Terminate': '終結',
         'Ternary Charge': '三重放電',
         'Voltburst': '電擊爆發',
-        // '\\(corners\\)': '', // FIXME '(四角)'
-        // '\\(front\\)': '', // FIXME '(前方)'
-        // '\\(lasers\\)': '', // FIXME '(激光)'
-        // '\\(sides\\)': '', // FIXME '(两侧)'
-        // '\\(triangle\\)': '', // FIXME '(三角)'
+        '\\(corners\\)': '(四角)',
+        '\\(front\\)': '(前方)',
+        '\\(lasers\\)': '(雷射)',
+        '\\(sides\\)': '(兩側)',
+        '\\(triangle\\)': '(三角)',
       },
     },
     {
