@@ -1215,10 +1215,13 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Split Scourge and Venomous Scourge',
       // B4AB Split Scourge and B4A8 Venomous Scourge are instant casts
       // This actor control happens along with boss becoming targetable
+      // Seems there are two different data0 values possible:
+      // 1E01: Coming back from Cardinal platforms
+      // 1E001: Coming back from Intercardinal platforms
       type: 'ActorControl',
-      netRegex: { command: '8000000D', data0: '1E01', capture: false },
+      netRegex: { command: '8000000D', data0: ['1E01', '1E001'], capture: false },
       durationSeconds: 9,
-      suppressSeconds: 1,
+      suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
         if (data.role === 'tank')
           return output.tank!();
