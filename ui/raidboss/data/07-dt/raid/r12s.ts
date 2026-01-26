@@ -1484,6 +1484,7 @@ const triggerSet: TriggerSet<Data> = {
           return false;
         return true;
       },
+      delaySeconds: 0.1, // Need to delay for actor position update
       alertText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
@@ -1619,6 +1620,7 @@ const triggerSet: TriggerSet<Data> = {
       //  - 270 degree turn
       type: 'StartsUsing',
       netRegex: { id: 'B525', source: 'Lindwurm', capture: true },
+      delaySeconds: 0.1, // Need to delay for actor position update
       alertText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
