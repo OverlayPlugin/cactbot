@@ -1636,8 +1636,8 @@ const triggerSet: TriggerSet<Data> = {
       // B523 Double Sobat: 180 degree left turn then B525
       // B524 Double Sobat: 270 degree left turn (this ends up 90 degrees to the right)
       type: 'Ability',
-      suppressSeconds: 1,
       netRegex: { id: ['B521', 'B522', 'B523', 'B524'], source: 'Lindwurm', capture: true },
+      suppressSeconds: 1,
       alertText: (_data, matches, output) => {
         const hdg = parseFloat(matches.heading);
         const dirNum = Directions.hdgTo16DirNum(hdg);
