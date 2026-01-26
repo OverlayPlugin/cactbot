@@ -60,7 +60,11 @@ export interface Data extends RaidbossData {
   closeManaSphereIds: string[];
   firstBlackHole?: 'east' | 'west';
   manaSpherePopSide?: 'east' | 'west';
+  twistedVisionCounter: number;
   replication3CloneOrder: number[];
+  idyllicVision2NorthSouthCleaveSpot?: 'north' | 'south';
+  replication4TetherMap: { [dirNum: string]: string };
+  myReplication4Tether?: string;
   hasLightResistanceDown: boolean;
   doomPlayers: string[];
 }
@@ -131,7 +135,9 @@ const triggerSet: TriggerSet<Data> = {
     westManaSpheres: {},
     eastManaSpheres: {},
     closeManaSphereIds: [],
+    twistedVisionCounter: 0,
     replication3CloneOrder: [],
+    replication4TetherMap: {},
     hasLightResistanceDown: false,
     doomPlayers: [],
   }),
@@ -187,6 +193,15 @@ const triggerSet: TriggerSet<Data> = {
           return;
         }
         data.phase = 'reenactment2';
+      },
+    },
+    {
+      id: 'R12S Phase Two Twisted Vision Tracker',
+      // Used for keeping track of phases in idyllic
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
+      run: (data) => {
+        data.twistedVisionCounter = data.twistedVisionCounter + 1;
       },
     },
     {
@@ -1722,7 +1737,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 2 Ability Tethers Collect',
+      id: 'R12S Replication 2 and Replication 4 Ability Tethers Collect',
       // Record and store a map of where the tethers come from and what they do for later
       // Boss tether handled separately since boss can move around
       type: 'Tether',
@@ -1734,13 +1749,20 @@ const triggerSet: TriggerSet<Data> = {
         ],
         capture: true,
       },
-      condition: (data) => data.phase === 'replication2',
+      condition: (data) => {
+        if (data.phase === 'replication2' || data.phase === 'idyllic')
+          return true;
+        return false;
+      },
       run: (data, matches) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
           return;
         const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
-        data.replication2TetherMap[dirNum] = matches.id;
+        if (data.phase === 'replication2')
+          data.replication2TetherMap[dirNum] = matches.id;
+        if (data.phase === 'idyllic')
+          data.replication4TetherMap[dirNum] = matches.id;
       },
     },
     {
@@ -2641,25 +2663,208 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Lindwurm\'s Meteor',
+      id: 'R12S Idyllic Dream Power Gusher Collect',
+      // Need to know this for later
+      // B511 Snaking Kick
+      // B512 from boss is the VFX and has headings that show directions for B50F and B510
+      // B50F Power Gusher is the East/West caster
+      // B510 Power Gusher is the North/South caster
+      // Right now just the B510 caster is needed to resolve
       type: 'StartsUsing',
-      netRegex: { id: 'B4F2', source: 'Lindwurm', capture: false },
-      alertText: (_data, _matches, output) => {
-        return output.text!({
-          mech1: output.bigAoe!(),
-          mech2: output.healerGroups!(),
-        });
+      netRegex: { id: 'B510', source: 'Lindschrat', capture: true },
+      run: (data, matches) => {
+        const y = parseFloat(matches.y);
+        data.idyllicVision2NorthSouthCleaveSpot = y < center.y ? 'north' : 'south';
+      },
+    },
+    {
+      id: 'R12S Replication 4 Ability Tethers Initial Call',
+      type: 'Tether',
+      netRegex: {
+        id: [
+          headMarkerData['manaBurstTether'],
+          headMarkerData['heavySlamTether'],
+        ],
+        capture: true,
+      },
+      condition: (data, matches) => {
+        if (data.me === matches.target && data.phase === 'idyllic')
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
+      infoText: (data, matches, output) => {
+        // Get direction of the tether
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined) {
+          switch (matches.id) {
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTether!();
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTether!();
+          }
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        switch (matches.id) {
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTetherDir!({ dir: output[dir]!() });
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTetherDir!({ dir: output[dir]!() });
+        }
       },
       outputStrings: {
-        healerGroups: Outputs.healerGroups,
-        bigAoe: Outputs.bigAoe,
-        text: {
-          en: '${mech1} + ${mech2}',
+        ...Directions.outputStrings8Dir,
+        manaBurstTether: {
+          en: 'Defamation Tether on YOU',
+        },
+        manaBurstTetherDir: {
+          en: '${dir} Defamation Tether on YOU',
+        },
+        heavySlamTether: {
+          en: 'Stack Tether on YOU',
+        },
+        heavySlamTetherDir: {
+          en: '${dir} Stack Tether on YOU',
         },
       },
     },
     {
+      id: 'R12S Replication 4 Locked Tether 2 Collect',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.phase === 'idyllic' &&
+          data.replicationCounter === 4 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
+      },
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined) {
+          // Setting to use that we know we have a tether but couldn't determine what ability it is
+          data.myReplication4Tether = 'unknown';
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(
+          actor.x,
+          actor.y,
+          center.x,
+          center.y,
+        );
+
+        // Lookup what the tether was at the same location
+        const ability = data.replication4TetherMap[dirNum];
+        if (ability === undefined) {
+          // Setting to use that we know we have a tether but couldn't determine what ability it is
+          data.myReplication4Tether = 'unknown';
+          return;
+        }
+        data.myReplication4Tether = ability;
+      },
+    },
+    {
+      id: 'R12S Replication 4 Locked Tether 2',
+      // At this point the player needs to dodge the north/south cleaves + chariot
+      // Simultaneously there will be a B4F2 Lindwurm's Meteor bigAoe that ends with room split
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.phase === 'idyllic' &&
+          data.twistedVisionCounter === 3 &&
+          data.me === matches.target
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: 0.1,
+      durationSeconds: 8,
+      alertText: (data, matches, output) => {
+        const meteorAoe = output.meteorAoe!({
+          bigAoe: output.bigAoe!(),
+          groups: output.healerGroups!(),
+        });
+        const cleaveOrigin = data.idyllicVision2NorthSouthCleaveSpot;
+        // Get direction of the tether
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined || cleaveOrigin === undefined) {
+          switch (data.myReplication4Tether) {
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTether!({ meteorAoe: meteorAoe });
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTether!({ meteorAoe: meteorAoe });
+          }
+          return;
+        }
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+
+        const dodge = output.dodgeCleaves!({
+          dir: output[cleaveOrigin]!(),
+          sides: output.sides!(),
+        });
+
+        switch (data.myReplication4Tether) {
+          case headMarkerData['manaBurstTether']:
+            return output.manaBurstTetherDir!({
+              dir: output[dir]!(),
+              dodgeCleaves: dodge,
+              meteorAoe: meteorAoe,
+            });
+          case headMarkerData['heavySlamTether']:
+            return output.heavySlamTetherDir!({
+              dir: output[dir]!(),
+              dodgeCleaves: dodge,
+              meteorAoe: meteorAoe,
+            });
+        }
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        north: Outputs.north,
+        south: Outputs.south,
+        sides: Outputs.sides,
+        bigAoe: Outputs.bigAoe,
+        healerGroups: Outputs.healerGroups,
+        meteorAoe: {
+          en: '${bigAoe} + ${groups}',
+        },
+        dodgeCleaves: {
+          en: '${dir} + ${sides}',
+        },
+        manaBurstTetherDir: {
+          en: '${dodgeCleaves} (${dir} Defamation Tether)  => ${meteorAoe}',
+        },
+        manaBurstTether: {
+          en: ' N/S Clone (Defamation Tether) => ${meteorAoe}',
+        },
+        heavySlamTetherDir: {
+          en: '${dodgeCleaves} (${dir} Stack Tether)  => ${meteorAoe}',
+        },
+        heavySlamTether: {
+          en: ' N/S Clone (Stack Tether) => ${meteorAoe}',
+        },
+      },
+    },
+    {
+      id: 'R12S Arcadian Arcanum',
+      // Players hit will receive 1044 Light Resistance Down II debuff
+      type: 'StartsUsing',
+      netRegex: { id: 'B529', source: 'Lindwurm', capture: false },
+      response: Responses.spread(),
+    },
+    {
       id: 'R12S Light Resistance Down II Collect',
+      // Players cannot soak a tower that has holy (triple element towers)
       type: 'GainsEffect',
       netRegex: { effectId: '1044', capture: true },
       condition: Conditions.targetIsYou(),
