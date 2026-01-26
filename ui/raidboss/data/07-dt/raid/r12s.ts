@@ -27,7 +27,7 @@ type DirectionIntercard = Exclude<DirectionOutputIntercard, 'unknown'>;
 
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
-    uptimeKnockbackStrat: true | false; 
+    uptimeKnockbackStrat: true | false;
   };
   phase: Phase;
   // Phase 1
