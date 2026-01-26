@@ -1631,20 +1631,35 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Double Sobat 2',
       // Followup half-room cleave:
-      //  - No turn
-      //  - 90 degree turn
-      //  - 180 degree turn
-      //  - 270 degree turn
-      type: 'StartsUsing',
-      netRegex: { id: 'B525', source: 'Lindwurm', capture: true },
-      delaySeconds: 0.1, // Need to delay for actor position update
-      alertText: (data, matches, output) => {
-        const actor = data.actorPositions[matches.sourceId];
-        if (actor === undefined)
-          return output.getBehind!();
+      // B521 Double Sobat: 0 degree left turn then B525
+      // B522 Double Sobat: 90 degree left turn then B525
+      // B523 Double Sobat: 180 degree left turn then B525
+      // B524 Double Sobat: 270 degree left turn (this ends up 90 degrees to the right)
+      type: 'Ability',
+      suppressSeconds: 1,
+      netRegex: { id: ['B521', 'B522', 'B523', 'B524'], source: 'Lindwurm', capture: true },
+      alertText: (_data, matches, output) => {
+        const hdg = parseFloat(matches.heading);
+        const dirNum = Directions.hdgTo16DirNum(hdg);
+        const getNewDirNum = (
+          dirNum: number,
+          id: string,
+        ): number => {
+          switch (id) {
+            case 'B521':
+              return dirNum;
+            case 'B522':
+              return dirNum - 4;
+            case 'B523':
+              return dirNum - 8;
+            case 'B524':
+              return dirNum - 12;
+          }
+          throw new UnreachableCode();
+        };
 
-        const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
-        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        const newDirNum = (getNewDirNum(dirNum, matches.id) + 8) % 16;
+        const dir = Directions.output16Dir[newDirNum] ?? 'unknown';
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
