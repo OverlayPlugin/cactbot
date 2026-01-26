@@ -1275,30 +1275,20 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Curtain Call: Unbreakable Flesh α/β Chains',
+      id: 'R12S Curtain Call: Unbreakable Flesh α Chains',
+      // All players, including dead, receive α debuffs
       // TODO: Find safe spots
       type: 'GainsEffect',
-      netRegex: { effectId: ['1291', '1293'], capture: true },
+      netRegex: { effectId: '1291', capture: true },
       condition: (data, matches) => {
         if (matches.target === data.me && data.phase === 'curtainCall')
           return true;
         return false;
       },
-      infoText: (_data, matches, output) => {
-        const flesh = matches.effectId === '1291' ? 'alpha' : 'beta';
-        if (flesh === 'alpha')
-          return output.alphaChains!({
-            chains: output.breakChains!(),
-            safe: output.safeSpots!(),
-          });
-        if (flesh === 'beta')
-          return output.betaChains!({
-            chains: output.breakChains!(),
-            safe: output.breakChains!(),
-          });
-        return output.unknownChains!({
+      infoText: (_data, _matches, output) => {
+        return output.alphaChains!({
           chains: output.breakChains!(),
-          safe: output.breakChains!(),
+          safe: output.safeSpots!(),
         });
       },
       outputStrings: {
@@ -1307,12 +1297,6 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Avoid Blobs',
         },
         alphaChains: {
-          en: '${chains} => ${safe}',
-        },
-        betaChains: {
-          en: '${chains} => ${safe}',
-        },
-        unknownChains: {
           en: '${chains} => ${safe}',
         },
       },
