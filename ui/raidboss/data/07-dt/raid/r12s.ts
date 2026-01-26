@@ -1474,8 +1474,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Snaking Kick',
+      // Targets random player
       type: 'StartsUsing',
-      netRegex: { id: 'B527', source: 'Lindwurm', capture: false },
+      netRegex: { id: 'B527', source: 'Lindwurm', capture: true },
       condition: (data) => {
         // Use Grotesquerie trigger for projection tethered players
         const ability = data.myReplication2Tether;
@@ -1483,7 +1484,25 @@ const triggerSet: TriggerSet<Data> = {
           return false;
         return true;
       },
-      response: Responses.getBehind(),
+      alertText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.getBehind!();
+
+        const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
+        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        return output.getBehindDir!({
+          dir: output[dir]!(),
+          mech: output.getBehind!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        getBehind: Outputs.getBehind,
+        getBehindDir: {
+          en: '${dir}: ${mech}',
+        },
+      },
     },
     {
       id: 'R12S Replication 1 Follow-up Tracker',
@@ -2018,7 +2037,39 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
       condition: Conditions.targetIsYou(),
-      response: Responses.getBehind(),
+    {
+      id: 'R12S Grotesquerie',
+      // This seems to be the point at which the look for the Snaking Kick is snapshot
+      // The VFX B4E9 happens ~0.6s before Snaking Kick
+      // B4EA has the targetted player in it
+      // B4EB Hemorrhagic Projection conal aoe goes off ~0.5s after in the direction the player was facing
+      type: 'Ability',
+      netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
+      condition: Conditions.targetIsYou(),
+      alertText: (data, matches, output) => {
+        // Get Boss facing
+        const bossId = data.replication2BossId;
+        if (bossId === undefined)
+          return output.getBehind!();
+
+        const actor = data.actorPositions[bossId];
+        if (actor === undefined)
+          return output.getBehind!();
+
+        const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
+        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        return output.getBehindDir!({
+          dir: output[dir]!(),
+          mech: output.getBehind!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        getBehind: Outputs.getBehind,
+        getBehindDir: {
+          en: '${dir}: ${mech}',
+        },
+      },
     },
     {
       id: 'R12S Netherwrath Near/Far',
