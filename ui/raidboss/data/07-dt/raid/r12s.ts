@@ -1585,11 +1585,61 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Double Sobat',
-      // Two half-room cleaves
-      // First hit targets highest emnity target, second targets second highest
+      // Shared half-room cleave on tank => random turn half-room cleave =>
+      // Esoteric Finisher big circle aoes that hits two highest emnity targets
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['sharedTankbuster'], capture: true },
       response: Responses.sharedTankBuster(),
+    },
+    {
+      id: 'R12S Double Sobat 2',
+      // Followup half-room cleave:
+      //  - No turn
+      //  - 90 degree turn
+      //  - 180 degree turn
+      //  - 270 degree turn
+      type: 'StartsUsing',
+      netRegex: { id: 'B525', source: 'Lindwurm', capture: true },
+      alertText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.getBehind!();
+
+        const dirNum = (Directions.hdgTo16DirNum(actor.heading) + 8) % 16;
+        const dir = Directions.output16Dir[dirNum] ?? 'unknown';
+        return output.getBehindDir!({
+          dir: output[dir]!(),
+          mech: output.getBehind!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings16Dir,
+        getBehind: Outputs.getBehind,
+        getBehindDir: {
+          en: '${dir}: ${mech}',
+        },
+      },
+    },
+    {
+      id: 'R12S Esoteric Finisher',
+      // After Double Sobat 2, boss hits targets highest emnity target, second targets second highest
+      type: 'StartsUsing',
+      netRegex: { id: 'B525', source: 'Lindwurm', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tankBusterCleaves: Outputs.tankBusterCleaves,
+          avoidTankCleaves: Outputs.avoidTankCleaves,
+        };
+
+        if (data.role === 'tank' || data.role === 'healer') {
+          if (data.role === 'healer')
+            return { infoText: output.tankBusterCleaves!() };
+          return { alertText: output.tankBusterCleaves!() };
+        }
+        return { infoText: output.avoidTankCleaves!() };
+      },
     },
     {
       id: 'R12S Replication 2 Tethered Clone',
