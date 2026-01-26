@@ -2656,7 +2656,7 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => {
         return output.text!({
           mech1: output.bigAoe!(),
-          mech2: output.healerGroups!()
+          mech2: output.healerGroups!(),
         });
       },
       outputStrings: {
