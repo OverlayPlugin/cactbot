@@ -340,93 +340,163 @@ hideall "--sync--"
 
 
 ### Phase 2: Lindwurm II
-# -p B528:3015.7
-# -ii B51F B4DA B4DB B4DD B4DF B4E3 B4E6 B4F0 B4E9 B4F1 B4EE
-# -it "Lindwurm"
 # -p B528:3012.1
-# -ii B51F B4DA B4DB B4DD B4DF B4E3 B4E6 B4F0 B4E9 B4F1 B4EE B4EF B508
+# -ii B51F B4DA B4DB B4DD B4DF B4E3 B4E6 B4F0 B4E9 B4F1 B4EE B4EF B508 B4FF BCB0
 # -it "Lindwurm"
 3000.5 label "r12s-p2-start"
 3010.7 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
 3015.7 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
 3022.9 "--middle--" Ability { id: "B4D9", source: "Lindwurm" }
-3028.2 "Replication 1" Ability { id: "B4D8", source: "Lindwurm" }
-3040.0 "Top-tier Slam x2" Ability { id: "B4DE", source: "Lindschrat" }
-3040.8 "Winged Scourge x4" Ability { id: "B4DC", source: "Lindwurm" }
-3041.0 "Mighty Magic x4" Ability { id: "B4E0", source: "Lindwurm" }
-3045.7 "Snaking Kick" Ability { id: "B527", source: "Lindwurm" }
-3054.1 "--clones move 1--" #Ability { id: "B4D9", source: "Lindschrat" }
-3055.1 "--clones move 2--" #Ability { id: "B4D9", source: "Lindschrat" }
-3061.4 "Top-tier Slam x2" Ability { id: "B4DE", source: "Lindschrat" }
-3062.2 "Winged Scourge x4" #Ability { id: "B4DC", source: "Lindwurm" }
-3062.5 "Mighty Magic x4" Ability { id: "B4E0", source: "Lindwurm" }
-3069.8 "Double Sobat (castbar)" Ability { id: "B520", source: "Lindwurm" }
-3070.4 "Double Sobat 1" Ability { id: "B522", source: "Lindwurm" }
-3075.0 "Double Sobat 2" Ability { id: "B525", source: "Lindwurm" }
-3077.4 "Esoteric Finisher" Ability { id: "B526", source: "Lindwurm" }
+3028.0 "Replication 1" Ability { id: "B4D8", source: "Lindwurm" }
+3039.7 "Top-tier Slam x2" Ability { id: "B4DE", source: "Lindschrat" }
+3040.5 "Winged Scourge x4" Ability { id: "B4DC", source: "Lindwurm" }
+3040.7 "Mighty Magic x4" #Ability { id: "B4E0", source: "Lindwurm" }
+3045.3 "Snaking Kick" Ability { id: "B527", source: "Lindwurm" }
+3053.7 "--clones move 1--" #Ability { id: "B4D9", source: "Lindschrat" }
+3054.7 "--clones move 2--" #Ability { id: "B4D9", source: "Lindschrat" }
+3061.0 "Top-tier Slam x2" Ability { id: "B4DE", source: "Lindschrat" }
+3061.8 "Winged Scourge x4" Ability { id: "B4DC", source: "Lindwurm" }
+3062.1 "Mighty Magic x4" #Ability { id: "B4E0", source: "Lindwurm" }
+3069.4 "Double Sobat (castbar)" Ability { id: "B520", source: "Lindwurm" }
+3070.0 "Double Sobat 1" Ability { id: ["B521", "B522", "B523", "B524"], source: "Lindwurm" }
+3074.6 "Double Sobat 2" Ability { id: "B525", source: "Lindwurm" }
+3077.0 "Esoteric Finisher" Ability { id: "B526", source: "Lindwurm" }
 
 # NOTE: Depending on clone order and tethers player takes, spells at each instance will differ
 # TBD: Generalize these?
-3091.6 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
-3102.6 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
-3105.8 "Replication 2" Ability { id: "B4D8", source: "Lindwurm" }
-3128.2 "Firefall Splash" Ability { id: "B4E4", source: "Lindwurm" }
-3128.9 "Scalding Waves x4" Ability { id: "B4E5", source: "Lindwurm" }
-3130.3 "Mana Burst x3" Ability { id: "B4E7", source: "Lindwurm" }
-3135.7 "Heavy Slam x2" Ability { id: "B4E8", source: "Lindschrat" }
-3136.9 "Grotesquerie x2" Ability { id: "B4EA", source: "Lindwurm" }
-3137.5 "Hemorrhagic Projection x2" Ability { id: "B4EB", source: "Lindwurm" }
-3141.4 "Snaking Kick" Ability { id: "B527", source: "Lindwurm" }
+3091.2 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
+3102.2 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
+3105.4 "Replication 2" Ability { id: "B4D8", source: "Lindwurm" }
+3127.8 "Firefall Splash" Ability { id: "B4E4", source: "Lindwurm" }
+3128.5 "Scalding Waves x4" Ability { id: "B4E5", source: "Lindwurm" }
+3129.9 "Mana Burst x3" Ability { id: "B4E7", source: "Lindwurm" }
+3135.5 "Heavy Slam x2" Ability { id: "B4E8", source: "Lindschrat" }
+3136.7 "Grotesquerie x2" Ability { id: "B4EA", source: "Lindwurm" }
+3137.3 "Hemorrhagic Projection x2" Ability { id: "B4EB", source: "Lindwurm" }
+3141.1 "Snaking Kick" Ability { id: "B527", source: "Lindwurm" }
 
-3151.6 "Reenactment 1" Ability { id: "B4EC", source: "Lindwurm" }
-3159.7 "Firefall Splash" Ability { id: "B4ED", source: "Lindschrat" }
-3159.7 "Netherwrath Near/Netherwrath Far" Ability { id: ["B52E", "B52F"], source: "Lindwurm" }
-3160.9 "Mana Burst 1" #Ability { id: "BBE3", source: "Lindwurm" }
-3160.9 "Timeless Spite x2" Ability { id: "B530", source: "Lindwurm" }
-3161.0 "Scalding Waves x4" Ability { id: "B8E1", source: "Lindwurm" }
-3164.8 "Mana Burst 2" Ability { id: "BBE3", source: "Lindwurm" }
-3164.8 "Grotesquerie 1" Ability { id: "B4EA", source: "Lindwurm" }
-3165.4 "Hemorrhagic Projection 1" Ability { id: "B922", source: "Lindwurm" }
-3169.1 "Heavy Slam" Ability { id: "BE5D", source: "Lindwurm" }
-3172.9 "Grotesquerie 2" Ability { id: "B4EA", source: "Lindwurm" }
-3172.9 "Mana Burst 3" Ability { id: "BBE3", source: "Lindwurm" }
-3173.5 "Hemorrhagic Projection 2" Ability { id: "B922", source: "Lindwurm" }
-3178.9 "--middle--" Ability { id: "B4D9", source: "Lindwurm" }
+3151.3 "Reenactment 1" Ability { id: "B4EC", source: "Lindwurm" }
+3159.4 "Firefall Splash" #Ability { id: "B4ED", source: "Lindschrat" }
+3159.4 "Netherwrath Near/Netherwrath Far" Ability { id: ["B52E", "B52F"], source: "Lindwurm" }
+3160.6 "Mana Burst 1" Ability { id: "BBE3", source: "Lindwurm" }
+3160.6 "Timeless Spite x2" Ability { id: "B530", source: "Lindwurm" }
+3160.7 "Scalding Waves x4" #Ability { id: "B8E1", source: "Lindwurm" }
+3164.5 "Grotesquerie 1" #Ability { id: "B4EA", source: "Lindwurm" }
+3164.5 "Mana Burst 2" Ability { id: "BBE3", source: "Lindwurm" }
+3165.1 "Hemorrhagic Projection 1" Ability { id: "B922", source: "Lindwurm" }
+3168.8 "Heavy Slam x2" Ability { id: "BE5D", source: "Lindwurm" }
+3172.6 "Mana Burst 3" Ability { id: "BBE3", source: "Lindwurm" }
+3172.6 "Grotesquerie 2" #Ability { id: "B4EA", source: "Lindwurm" }
+3173.2 "Hemorrhagic Projection 2" Ability { id: "B922", source: "Lindwurm" }
+3178.6 "--middle--" Ability { id: "B4D9", source: "Lindwurm" }
 
 # Blood Mana / Blood Wakening Phase (Superchain)
-3184.1 "Mutating Cells" Ability { id: "B505", source: "Lindwurm" }
-3185.3 "--sync--" #Ability { id: "B506", source: "Lindwurm" }
-3185.3 "--sync--" #Ability { id: "B506", source: "Lindwurm" }
-3190.3 "Blood Mana" Ability { id: "B4FB", source: "Lindwurm" }
-3193.6 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" }
-3194.0 "--sync--" Ability { id: "B4FD", source: "Mana Sphere" }
-3202.8 "Dramatic Lysis x8" #Ability { id: "B507", source: "Lindwurm" }
-3203.0 "Bloody Burst 1" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
-3203.4 "Bloody Burst 2" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
-3206.7 "--sync--" Ability { id: "B4FF", source: "Mana Sphere" }
-3207.6 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" }
-3209.8 "--sync--" Ability { id: "B4FF", source: "Mana Sphere" }
-3210.7 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" }
+3183.8 "Mutating Cells" Ability { id: "B505", source: "Lindwurm" }
+3185.0 "--sync--" Ability { id: "B506", source: "Lindwurm" }
+3190.0 "Blood Mana" Ability { id: "B4FB", source: "Lindwurm" }
+3193.3 "--black holes--" Ability { id: "BCB0", source: "Mana Sphere" }
+3193.7 "--shapes--" Ability { id: "B4FD", source: "Mana Sphere" }
+3200.7 "Bloody Burst 1" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
+3201.0 "Bloody Burst 2" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
+3202.2 "Dramatic Lysis x8" Ability { id: "B507", source: "Lindwurm" }
 
 # TBD Clean-up/Generalize this part as its dependent on what was soaked and what spawned
-3217.4 "Blood Wakening" Ability { id: "B500", source: "Lindwurm" }
-3218.6 "--sync--" Ability { id: "B4FC", source: "Mana Sphere" }
-3219.0 "Straightforward Thunder II" #Ability { id: "B503", source: "Lindwurm" }
-3219.0 "Lindwurm's Aero III" #Ability { id: "B502", source: "Lindwurm" }
-3219.0 "Sideways Fire II" #Ability { id: "B504", source: "Lindwurm" }
-3219.0 "Lindwurm's Water III" #Ability { id: "B501", source: "Lindwurm" }
-3219.0 "Lindwurm's Aero III" #Ability { id: "B502", source: "Lindwurm" }
-3219.0 "Sideways Fire II" #Ability { id: "B504", source: "Lindwurm" }
-3223.6 "--sync--" Ability { id: "B4FC", source: "Mana Sphere" }
-3224.0 "Sideways Fire II" #Ability { id: "B504", source: "Lindwurm" }
-3224.0 "Straightforward Thunder II" #Ability { id: "B503", source: "Lindwurm" }
-3224.0 "Sideways Fire II" #Ability { id: "B504", source: "Lindwurm" }
-3224.0 "Lindwurm's Water III" #Ability { id: "B501", source: "Lindwurm" }
-3224.0 "Straightforward Thunder II" #Ability { id: "B503", source: "Lindwurm" }
-3228.3 "Netherworld Near/Netherworld Far" Ability { id: ["B52B", "B52C"], source: "Lindwurm" }
-3229.5 "Wailing Wave" Ability { id: "B52D", source: "Lindwurm" }
-3236.4 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
-# TBD
+3216.7 "Blood Wakening" Ability { id: "B500", source: "Lindwurm" }
+3217.9 "--sync--" Ability { id: "B4FC", source: "Mana Sphere" }
+3218.3 "Black Hole 1" Ability { id: ["B501", "B502", "B503", "B504"], source: "Lindwurm" }
+3222.9 "--sync--" Ability { id: "B4FC", source: "Mana Sphere" }
+3223.3 "Black Hole 2" Ability { id: ["B501", "B502", "B503", "B504"], source: "Lindwurm" }
+3227.6 "Netherworld Near/Netherworld Far" Ability { id: ["B52B", "B52C"], source: "Lindwurm" }
+3228.8 "Wailing Wave x3" Ability { id: "B52D", source: "Lindwurm" }
+3231.8 "Dramatic Lysis x8" Ability { id: "B507", source: "Lindwurm" }
+3235.8 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
+3245.0 "Double Sobat (castbar)" Ability { id: "B520", source: "Lindwurm" }
+3245.6 "Double Sobat 1" Ability { id: ["B521", "B522", "B523", "B524"], source: "Lindwurm" }
+3250.2 "Double Sobat 2" Ability { id: "B525", source: "Lindwurm" }
+3252.6 "Esoteric Finisher" Ability { id: "B526", source: "Lindwurm" }
+3260.7 "--middle--" Ability { id: "B4D9", source: "Lindwurm" }
+
+# TBD Clean-up/Generalize this as well since stacks/defamation order is tether dependent
+3268.8 "Idyllic Dream" Ability { id: "B509", source: "Lindwurm" }
+3275.0 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
+3283.4 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
+3290.1 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3296.2 "Replication 3" Ability { id: "B4D8", source: "Lindwurm" }
+3308.6 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3309.6 "Power Gusher" #Ability { id: "B512", source: "Lindwurm" }
+3309.6 "Power Gusher" #Ability { id: "B50F", source: "Lindschrat" }
+3309.6 "Snaking Kick" #Ability { id: "B511", source: "Lindschrat" }
+3309.6 "Power Gusher" #Ability { id: "B510", source: "Lindschrat" }
+3314.7 "Replication 4" Ability { id: "B4D8", source: "Lindwurm" }
+
+# Towers Preview
+3334.3 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3337.7 "Power Gusher" #Ability { id: "B513", source: "Lindschrat" }
+3337.7 "Snaking Kick" Ability { id: "B515", source: "Lindschrat" }
+3337.7 "Power Gusher" #Ability { id: "B514", source: "Lindschrat" }
+3338.7 "Snaking Kick" Ability { id: "BE95", source: "Lindwurm" }
+3338.9 "Power Gusher" #Ability { id: "B516", source: "Lindwurm" }
+3342.8 "Lindwurm's Meteor" Ability { id: "B4F2", source: "Lindwurm" }
+3348.9 "Downfall" Ability { id: "B4F3", source: "Lindwurm" }
+3355.0 "Arcadian Arcanum" Ability { id: "B529", source: "Lindwurm" }
+3356.2 "Arcadian Arcanum" Ability { id: "B9D9", source: "Lindwurm" }
+
+# First Stacks/Defamations
+3363.0 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3369.6 "Heavy Slam" Ability { id: "B519", source: "Lindschrat" }
+3374.6 "Mana Burst" Ability { id: "B517", source: "Lindschrat" }
+3375.8 "Mana Burst" Ability { id: "B518", source: "Lindwurm" }
+3379.6 "Heavy Slam" Ability { id: "B519", source: "Lindschrat" }
+3384.6 "Mana Burst" Ability { id: "B517", source: "Lindschrat" }
+
+# fflogs
+3389.5 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" } window 10,10
+3393.9 "Cosmic Kiss" Ability { id: "B4F4", source: "Lindwurm" }
+3394.6 "Lindwurm's Dark II" Ability { id: "B4F6", source: "Lindwurm" }
+3396.6 "Pyretic Wurm" Ability { id: "B4F9", source: "Lindwurm" }
+3399.6 "Lindwurm's Stone III" #Ability { id: "B4F7", source: "Lindwurm" }
+3404.6 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
+3404.6 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
+3404.6 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
+3404.6 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
+3412.9 "Temporal Curtain" Ability { id: "B51C", source: "Lindwurm" }
+
+3416.0 "--sync--" Ability { id: "B51D", source: "Lindschrat" }
+3419.1 "--sync--" Ability { id: "B4D9", source: "Lindschrat" }
+3425.4 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3426.4 "Power Gusher" #Ability { id: "B50F", source: "Lindschrat" }
+3426.4 "Snaking Kick" Ability { id: "BCAF", source: "Lindschrat" }
+3431.5 "Reenactment 2" Ability { id: "B4EC", source: "Lindwurm" }
+3433.5 "Heavy Slam" Ability { id: "B4EF", source: "Lindschrat" }
+3434.7 "Mana Burst" Ability { id: "BBE3", source: "Lindwurm" }
+3434.9 "Heavy Slam" #Ability { id: "BE5D", source: "Lindwurm" }
+3440.5 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3444.1 "Power Gusher" #Ability { id: "B513", source: "Lindschrat" }
+3444.1 "Snaking Kick" Ability { id: "B515", source: "Lindschrat" }
+3445.1 "Snaking Kick" Ability { id: "BE95", source: "Lindwurm" }
+3445.3 "Power Gusher" Ability { id: "B516", source: "Lindwurm" }
+3448.2 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3454.5 "Heavy Slam" #Ability { id: "B4EF", source: "Lindschrat" }
+3454.5 "--sync--" Ability { id: "B51E", source: "Lindschrat" }
+3455.7 "Mana Burst" Ability { id: "BBE3", source: "Lindwurm" }
+3455.9 "Heavy Slam" Ability { id: "BE5D", source: "Lindwurm" }
+3459.5 "Power Gusher" Ability { id: "B51B", source: "Lindschrat" }
+3460.6 "Power Gusher" Ability { id: "B516", source: "Lindwurm" }
+3466.5 "Idyllic Dream" Ability { id: "B509", source: "Lindwurm" }
+3474.6 "Double Sobat (castbar)" Ability { id: "B520", source: "Lindwurm" }
+3475.2 "Double Sobat 1" Ability { id: ["B521", "B522", "B523", "B524"], source: "Lindwurm" }
+3479.8 "Double Sobat 2" Ability { id: "B525", source: "Lindwurm" }
+3482.2 "Esoteric Finisher" Ability { id: "B526", source: "Lindwurm" }
+
+# Enrage Sequence
+3496.0 "Replication 5" Ability { id: "B46C", source: "Lindwurm" }
+3509.4 "Arcadian Hell 1" Ability { id: "B533", source: "Lindwurm" }
+3509.4 "Arcadian Hell" #Ability { id: "B534", source: "Lindschrat" }
+3525.6 "Arcadian Hell 2" Ability { id: "B533", source: "Lindwurm" }
+3525.6 "Arcadian Hell" #Ability { id: "B535", source: "Lindschrat" }
+3538.4 "--sync--" StartsUsing { id: "B537", source: "Lindwurm" }
+3548.4 "Arcadian Hell (Enrage)" Ability { id: "B537", source: "Lindwurm" }
+3548.4 "Arcadian Hell (Enrage)" #Ability { id: "BEC1", source: "Lindschrat" }
 
 # IGNORED ABILITIES
 # Phase 1
@@ -463,6 +533,8 @@ hideall "--sync--"
 # B4EE Mana Burst: VFX used in Reenactment
 # B4EF Heavy Slam: VFX used in Reenactment
 # B508 Unmitigated Explosion: Getting hit when you have Mitigation α or failing to get hit with Mitigation β, applies 30s damage down
+# B4FF --sync--: VFX related to Mana Spheres being eaten by Black Hole?
+# BCB0 --sync--: VFX related to Mana Spheres being eaten by Black Hole?
 
 # ALL ENCOUNTER ABILITIES
 # Phase 1
@@ -579,8 +651,8 @@ hideall "--sync--"
 # B4EC Reenactment
 # B4ED Firefall Splash
 # B4EE Mana Burst
-# B4F0 Unmitigated Impact
 # B4EF Heavy Slam
+# B4F0 Unmitigated Impact
 # B4F1 Grotesquerie
 # B4F2 Lindwurm's Meteor
 # B4F3 Downfall
@@ -620,11 +692,12 @@ hideall "--sync--"
 # B51D --sync--
 # B51E --sync--
 # B51F --sync--: Attack
-# B520 Double Sobat
-# B521 Double Sobat
-# B522 Double Sobat
-# B524 Double Sobat
-# B525 Double Sobat
+# B520 Double Sobat: Castbar
+# B521 Double Sobat: 0 degree left turn then B525
+# B522 Double Sobat: 90 degree left turn then B525
+# B523 Double Sobat: 180 degree left turn then B525
+# B524 Double Sobat: 270 degree left turn (turns to the right)
+# B525 Double Sobat: Followup cleave
 # B526 Esoteric Finisher
 # B527 Snaking Kick
 # B528 Arcadia Aflame
