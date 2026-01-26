@@ -26,6 +26,9 @@ type DirectionCardinal = Exclude<DirectionOutputCardinal, 'unknown'>;
 type DirectionIntercard = Exclude<DirectionOutputIntercard, 'unknown'>;
 
 export interface Data extends RaidbossData {
+  readonly triggerSetConfig: {
+    uptimeKnockbackStrat: true | false; 
+  };
   phase: Phase;
   // Phase 1
   grotesquerieCleave?:
@@ -115,6 +118,28 @@ const isIntercardDir = (dir: DirectionOutput8): dir is DirectionIntercard => {
 const triggerSet: TriggerSet<Data> = {
   id: 'AacHeavyweightM4Savage',
   zoneId: ZoneId.AacHeavyweightM4Savage,
+  config: [
+    {
+      id: 'uptimeKnockbackStrat',
+      name: {
+        en: 'Enable uptime knockback strat',
+        de: 'Aktiviere Uptime Rückstoß Strategie',
+        fr: 'Activer la strat Poussée-Uptime',
+        ja: 'エデン零式共鳴編４層：cactbot「ヘヴンリーストライク (ノックバック)」ギミック', // FIXME
+        cn: '启用击退镜 uptime 策略',
+        ko: '정확한 타이밍 넉백방지 공략 사용',
+        tc: '啟用擊退鏡 uptime 策略',
+      },
+      comment: {
+        en: `If you want cactbot to callout Raptor Knuckles double knockback, enable this option.
+             Callout happens during/after first animation and requires <1.4s reaction time
+             to avoid both Northwest and Northeast knockbacks.
+             NOTE: This will call for each set.`,
+      },
+      type: 'checkbox',
+      default: false,
+    },
+  ],
   timelineFile: 'r12s.txt',
   initData: () => ({
     phase: 'doorboss',
@@ -1384,6 +1409,22 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Knockback from Northeast => Knockback from Northwest',
         },
       },
+    },
+    {
+      id: 'R12S Raptor Knuckles Uptime Knockback',
+      // First knockback is at 7.3s
+      // Second knockback is at 11.9s
+      // Use knockback at 5.9s to hit both with ~1.4s leniency
+      type: 'Ability',
+      netRegex: { id: ['B4CC', 'B4CD'], source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        if (data.phase === 'slaughtershed' && data.triggerSetConfig.uptimeKnockbackStrat)
+          return true;
+        return false;
+      },
+      delaySeconds: 5.9,
+      durationSeconds: 1.4,
+      response: Responses.knockback(),
     },
     {
       id: 'R12S Refreshing Overkill',
