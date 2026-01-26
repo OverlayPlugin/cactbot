@@ -50,7 +50,16 @@ export interface Data extends RaidbossData {
   replication2TetherMap: { [dirNum: string]: string };
   replication2BossId?: string;
   myReplication2Tether?: string;
+  netherwrathFollowup: boolean;
   myMutation?: 'alpha' | 'beta';
+  manaSpheres: {
+    [id: string]: 'lightning' | 'fire' | 'water' | 'wind' | 'blackHole';
+  };
+  westManaSpheres: { [id: string]: { x: number; y: number } };
+  eastManaSpheres: { [id: string]: { x: number; y: number } };
+  closeManaSphereIds: string[];
+  firstBlackHole?: 'east' | 'west';
+  manaSpherePopSide?: 'east' | 'west';
   replication3CloneOrder: number[];
   hasLightResistanceDown: boolean;
   doomPlayers: string[];
@@ -117,6 +126,11 @@ const triggerSet: TriggerSet<Data> = {
     replicationCounter: 0,
     replication1FollowUp: false,
     replication2TetherMap: {},
+    netherwrathFollowup: false,
+    manaSpheres: {},
+    westManaSpheres: {},
+    eastManaSpheres: {},
+    closeManaSphereIds: [],
     replication3CloneOrder: [],
     hasLightResistanceDown: false,
     doomPlayers: [],
@@ -2213,6 +2227,80 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Reenactment 1 Scalding Waves Collect',
+      // Players need to wait for BBE3 Mana Burst Defamations on the clones to complete before next mechanic
+      // NOTE: This is used with DN Strategy
+      type: 'Ability',
+      netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
+      condition: (data) => data.phase === 'reenactment1',
+      suppressSeconds: 9999,
+      run: (data) => data.netherwrathFollowup = true,
+    },
+    {
+      id: 'R12S Reenactment 1 Clone Stacks',
+      // Players need to wait for BBE3 Mana Burst defamations on clones to complete
+      // This happens three times during reenactment and the third one (which is after the proteans) is the trigger
+      // NOTE: This is used with DN Strategy
+      type: 'Ability',
+      netRegex: { id: 'BBE3', source: 'Lindwurm', capture: false },
+      condition: (data) => data.netherwrathFollowup,
+      suppressSeconds: 9999,
+      alertText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'East/West Clone Stacks',
+        },
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Clone Stacks',
+      // Players need to run back to north after clone stacks (BE5D Heavy Slam)
+      // The clone stacks become a defamation and the other a cleave going East or West through the room
+      // NOTE: This is used with DN Strategy
+      type: 'Ability',
+      netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
+      condition: (data) => data.netherwrathFollowup,
+      suppressSeconds: 9999,
+      alertText: (_data, _matches, output) => output.north!(),
+      outputStrings: {
+        north: Outputs.north,
+      },
+    },
+    {
+      id: 'R12S Mana Sphere Collect and Label',
+      // Combatants Spawn ~3s before B505 Mutating Cells startsUsing
+      // Their positions are available at B4FD in the 264 AbilityExtra lines and updated periodically after with 270 lines
+      // 19208 => Lightning Bowtie (N/S Cleave)
+      // 19209 => Fire Bowtie (E/W Cleave)
+      // 19205 => Black Hole
+      // 19206 => Water Sphere/Chariot
+      // 19207 => Wind Donut
+      // Position at add is center, so not useful here yet
+      type: 'AddedCombatant',
+      netRegex: { name: 'Mana Sphere', capture: true },
+      run: (data, matches) => {
+        const id = matches.id;
+        const npcBaseId = parseInt(matches.npcBaseId);
+        switch (npcBaseId) {
+          case 19205:
+            data.manaSpheres[id] = 'blackHole';
+            return;
+          case 19206:
+            data.manaSpheres[id] = 'water';
+            return;
+          case 19207:
+            data.manaSpheres[id] = 'wind';
+            return;
+          case 19208:
+            data.manaSpheres[id] = 'lightning';
+            return;
+          case 19209:
+            data.manaSpheres[id] = 'fire';
+            return;
+        }
+      },
+    },
+    {
       id: 'R12S Mutation α/β Collect',
       // Used in Blood Mana / Blood Awakening Mechanics
       // 12A1 Mutation α: Don't get hit
@@ -2245,22 +2333,142 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Blood Mana',
+      id: 'R12S Mana Sphere Position Collect',
+      // BCB0 Black Holes:
+      // These are (90, 100) and (110, 100)
+      // B4FD Shapes
+      // Side that needs to be exploded will have pairs with 2 of the same x or y coords
+      // Side to get the shapes to explode will be closest distance to black hole
+      type: 'AbilityExtra',
+      netRegex: { id: 'B4FD', capture: true },
+      run: (data, matches) => {
+        // Calculate Distance to Black Hole
+        const getDistance = (
+          x: number,
+          y: number,
+        ): number => {
+          const blackHoleX = x < 100 ? 90 : 110;
+          const dx = x - blackHoleX;
+          const dy = y - 100;
+          return Math.round(Math.sqrt(dx * dx + dy * dy));
+        };
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const d = getDistance(x, y);
+        const id = matches.sourceId;
+
+        // Put into different objects for easier lookup
+        if (x < 100) {
+          data.westManaSpheres[id] = { x: x, y: y };
+        }
+        data.eastManaSpheres[id] = { x: x, y: y };
+
+        // Shapes with 6 distance are close, Shapes with 12 are far
+        if (d < 7) {
+          data.closeManaSphereIds.push(id);
+
+          // Have enough data to solve at this point
+          if (data.closeManaSphereIds.length === 2) {
+            const popSide = x < 100 ? 'east' : 'west';
+            data.manaSpherePopSide = popSide;
+
+            const sphereId1 = data.closeManaSphereIds[0];
+            const sphereId2 = id;
+            if (sphereId1 === undefined)
+              return;
+
+            const sphereType1 = data.manaSpheres[sphereId1];
+            const sphereType2 = data.manaSpheres[sphereId2];
+            if (sphereType1 === undefined || sphereType2 === undefined)
+              return;
+
+            // If you see Water, pop side first
+            // If you see Wind, non-pop side
+            // Can't be Lightning + Wind because Fire hits the donut
+            // Fire + Lightning would hit whole room
+            // Water + Wind would hit whole room
+            const nonPopSide = popSide === 'east' ? 'west' : 'east';
+            const first = [sphereType1, sphereType2];
+            const dir2 = first.includes('water') ? popSide : nonPopSide;
+            data.firstBlackHole = dir2;
+          }
+        }
+      },
+    },
+    {
+      id: 'R12S Black Hole and Shapes',
       // Black Holes and shapes
-      // TODO: Tell what shape to pop + which Black Hole mechanics and side?
       type: 'Ability',
-      netRegex: { id: 'B4FB', source: 'Lindwurm', capture: false },
+      netRegex: { id: 'B4FD', source: 'Mana Sphere', capture: false },
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
+        const popSide = data.manaSpherePopSide;
+        const blackHole = data.firstBlackHole;
+        const sphereId1 = data.closeManaSphereIds[0];
+        const sphereId2 = data.closeManaSphereIds[1];
+        if (
+          popSide === undefined ||
+          blackHole === undefined ||
+          sphereId1 === undefined ||
+          sphereId2 === undefined
+        )
+          return data.myMutation === 'alpha' ? output.alpha!() : output.beta!();
+
+        const sphereType1 = data.manaSpheres[sphereId1];
+        const sphereType2 = data.manaSpheres[sphereId2];
+        if (sphereType1 === undefined || sphereType2 === undefined)
+          return data.myMutation === 'alpha' ? output.alpha!() : output.beta!();
+
         if (data.myMutation === 'alpha')
-          return output.alpha!();
-        return output.beta!();
+          return output.alphaDir!({
+            dir1: output[popSide]!(),
+            northSouth: output.northSouth!(),
+            dir2: output[blackHole]!(),
+          });
+        return output.betaDir!({
+          dir1: output[popSide]!(),
+          shape1: output[sphereType1]!(),
+          shape2: output[sphereType2]!(),
+          northSouth: output.northSouth!(),
+          dir2: output[blackHole]!(),
+        });
       },
       outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        northSouth: {
+          en: 'N/S',
+          de: 'N/S',
+          fr: 'N/S',
+          ja: '南/北',
+          cn: '上/下',
+          ko: '남/북',
+          tc: '上/下',
+        },
+        water: {
+          en: 'Orb',
+        },
+        lightning: {
+          en: 'Lightning',
+        },
+        fire: {
+          en: 'Fire',
+        },
+        wind: {
+          en: 'Donut',
+        },
         alpha: {
           en: 'Avoid Shape AoEs, Wait by Black Hole',
         },
         beta: {
           en: 'Shared Shape Soak => Get by Black Hole',
+        },
+        alphaDir: {
+          en: 'Avoid ${dir1} Shape AoEs => ${dir2} Black Hole + ${northSouth}',
+        },
+        betaDir: {
+          en: 'Share ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
         },
       },
     },
@@ -2271,14 +2479,36 @@ const triggerSet: TriggerSet<Data> = {
       // B502 Lindwurm's Aero III
       // B503 Straightforward Thunder II
       // B504 Sideways Fire II
-      // TODO: Tell which Black Hole and its mechanics?
-      type: 'StartsUsing',
+      type: 'Ability',
       netRegex: { id: ['B501', 'B502', 'B503', 'B504'], source: 'Lindwurm', capture: false },
       suppressSeconds: 9999,
-      alertText: (_data, _matches, output) => output.move!(),
+      alertText: (data, _matches, output) => {
+        const blackHole = data.firstBlackHole;
+        if (blackHole === undefined)
+          return output.move!();
+        const next = blackHole === 'east' ? 'west' : 'east';
+        return  output.moveDir!({
+          northSouth: output.northSouth!(),
+          dir: output[next]!(),
+        });
+      },
       outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        northSouth: {
+          en: 'N/S',
+          de: 'N/S',
+          fr: 'N/S',
+          ja: '南/北',
+          cn: '上/下',
+          ko: '남/북',
+          tc: '上/下',
+        },
         move: {
           en: 'Move to other Black Hole',
+        },
+        moveDir: {
+          en: '${dir} Black Hole + ${northSouth}',
         },
       },
     },
