@@ -1233,10 +1233,10 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Spread in East Cleave',
         },
         safeEast: {
-          en: 'Spread East',
+          en: 'Spread East + Avoid Cleave',
         },
         safeWest: {
-          en: 'Spread West',
+          en: 'Spread West + Avoid Cleave',
         },
       },
     },
