@@ -132,7 +132,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       comment: {
         en: `If you want cactbot to callout Raptor Knuckles double knockback, enable this option.
-             Callout happens during/after first animation and requires <1.4s reaction time
+             Callout happens during/after first animation and requires <1.8s reaction time
              to avoid both Northwest and Northeast knockbacks.
              NOTE: This will call for each set.`,
       },
@@ -1412,9 +1412,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Raptor Knuckles Uptime Knockback',
-      // First knockback is at ~13.2s
-      // Second knockback is at ~18s
-      // Use knockback at ~11.8s to hit both with ~1.4s leniency
+      // First knockback is at ~13.374s
+      // Second knockback is at ~17.964s
+      // Use knockback at ~11.5s to hit both with ~1.8s leniency
+      // ~11.457s before is too late as it comes off the same time as hit
+      // ~11.554s before works (~0.134 before hit)
       type: 'Ability',
       netRegex: { id: ['B4CC', 'B4CE'], source: 'Lindwurm', capture: false },
       condition: (data) => {
@@ -1422,8 +1424,8 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      delaySeconds: 11.8,
-      durationSeconds: 1.4,
+      delaySeconds: 11.5,
+      durationSeconds: 1.8,
       response: Responses.knockback(),
     },
     {
