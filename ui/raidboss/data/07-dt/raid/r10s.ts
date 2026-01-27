@@ -545,8 +545,7 @@ const triggerSet: TriggerSet<Data> = {
         return data.snakingDebuff !== 'fire' && data.phase !== 'arenaSplit';
       },
       infoText: (data, matches, output) => {
-        // During snaking and the arena split it is always move since the
-        // baits are too close.
+        // During saking it is always move since the baits are too close.
         if (data.phase === 'snaking')
           return output.move!();
         return matches.id === 'B5E0' ? output.stay!() : output.move!();
