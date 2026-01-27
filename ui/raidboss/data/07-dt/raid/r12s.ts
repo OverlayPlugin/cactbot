@@ -1702,12 +1702,10 @@ const triggerSet: TriggerSet<Data> = {
 
         const newDirNum = getNewDirNum(dirNum, matches.id);
 
-        // Handle case where we have negative value
-        const positiveDirNum = (
-          newDirNum + 8 < 0 ? Math.abs(newDirNum) : newDirNum + 8
-        ) % 16;
+        // Adding 16 incase of negative values
+        const newDirNum = (getNewDirNum(dirNum, matches.id) + 16 + 8) % 16;
 
-        const dir = Directions.output16Dir[positiveDirNum] ?? 'unknown';
+        const dir = Directions.output16Dir[newDirNum] ?? 'unknown';
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
