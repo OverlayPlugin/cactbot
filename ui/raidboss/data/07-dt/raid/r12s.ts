@@ -1700,8 +1700,6 @@ const triggerSet: TriggerSet<Data> = {
           throw new UnreachableCode();
         };
 
-        const newDirNum = getNewDirNum(dirNum, matches.id);
-
         // Adding 16 incase of negative values
         const newDirNum = (getNewDirNum(dirNum, matches.id) + 16 + 8) % 16;
 
