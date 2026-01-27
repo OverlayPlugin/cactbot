@@ -1416,7 +1416,7 @@ const triggerSet: TriggerSet<Data> = {
       // Second knockback is at ~18s
       // Use knockback at ~11.8s to hit both with ~1.4s leniency
       type: 'Ability',
-      netRegex: { id: ['B4CC', 'B4CD'], source: 'Lindwurm', capture: false },
+      netRegex: { id: ['B4CC', 'B4CE'], source: 'Lindwurm', capture: false },
       condition: (data) => {
         if (data.phase === 'slaughtershed' && data.triggerSetConfig.uptimeKnockbackStrat)
           return true;
