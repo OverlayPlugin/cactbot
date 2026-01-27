@@ -354,6 +354,14 @@ Options.Triggers.push({
       },
     },
     {
+      'locale': 'tc',
+      'replaceSync': {
+        'Nechuciho': '內丘奇霍',
+        'Queen Hawk': '女王鷹蜂',
+        'Kirlirger the Abhorrent': '厭忌之人 奇里格',
+      },
+    },
+    {
       'locale': 'ko',
       'replaceSync': {
         'Nechuciho': '네추키호',
