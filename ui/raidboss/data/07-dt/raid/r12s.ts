@@ -1416,7 +1416,7 @@ const triggerSet: TriggerSet<Data> = {
       // Second knockback is at ~17.964s
       // Use knockback at ~11.5s to hit both with ~1.8s leniency
       // ~11.457s before is too late as it comes off the same time as hit
-      // ~11.554s before works (~0.134 before hit)
+      // ~11.554s before works (surecast ends ~0.134 after hit)
       type: 'Ability',
       netRegex: { id: ['B4CC', 'B4CE'], source: 'Lindwurm', capture: false },
       condition: (data) => {
