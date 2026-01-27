@@ -1412,9 +1412,9 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Raptor Knuckles Uptime Knockback',
-      // First knockback is at 7.3s
-      // Second knockback is at 11.9s
-      // Use knockback at 5.9s to hit both with ~1.4s leniency
+      // First knockback is at ~13.2s
+      // Second knockback is at ~18s
+      // Use knockback at 11.9s to hit both with ~1.4s leniency
       type: 'Ability',
       netRegex: { id: ['B4CC', 'B4CD'], source: 'Lindwurm', capture: false },
       condition: (data) => {
@@ -1422,7 +1422,7 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      delaySeconds: 5.9,
+      delaySeconds: 11.8,
       durationSeconds: 1.4,
       response: Responses.knockback(),
     },
@@ -2454,6 +2454,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B4FD', source: 'Mana Sphere', capture: false },
       delaySeconds: 0.1,
+      durationSeconds: 8.3,
       suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
         const popSide = data.manaSpherePopSide;
@@ -2522,6 +2523,52 @@ const triggerSet: TriggerSet<Data> = {
         },
         betaDir: {
           en: 'Share ${dir1} ${shape1}/${shape2} => ${dir2} Black Hole + ${northSouth}',
+        },
+      },
+    },
+    {
+      id: 'R12S Dramatic Lysis Black Hole 1 Reminder',
+      // This may not happen if all shapes are failed
+      type: 'Ability',
+      netRegex: { id: ['B507'], source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      alertText: (data, _matches, output) => {
+        const blackHole = data.firstBlackHole;
+        if (blackHole === undefined)
+          return data.myMutation === 'alpha' ? output.alpha!() : output.beta!();
+        return data.myMutation === 'alpha'
+          ? output.alphaDir!({
+            northSouth: output.northSouth!(),
+            dir2: output[blackHole]!(),
+          })
+          : output.betaDir!({
+            northSouth: output.northSouth!(),
+            dir2: output[blackHole]!(),
+          });
+      },
+      outputStrings: {
+        east: Outputs.east,
+        west: Outputs.west,
+        northSouth: {
+          en: 'N/S',
+          de: 'N/S',
+          fr: 'N/S',
+          ja: '南/北',
+          cn: '上/下',
+          ko: '남/북',
+          tc: '上/下',
+        },
+        alpha: {
+          en: 'Get by Black Hole',
+        },
+        beta: {
+          en: 'Get by Black Hole',
+        },
+        alphaDir: {
+          en: '${dir2} Black Hole + ${northSouth}',
+        },
+        betaDir: {
+          en: '${dir2} Black Hole + ${northSouth}',
         },
       },
     },
@@ -2700,6 +2747,25 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => {
         const y = parseFloat(matches.y);
         data.idyllicVision2NorthSouthCleaveSpot = y < center.y ? 'north' : 'south';
+      },
+    },
+    {
+      id: 'R12S Idyllic Dream Power Gusher Vision',
+      // Call where the E/W safe spots will be later
+      type: 'StartsUsing',
+      netRegex: { id: 'B510', source: 'Lindschrat', capture: true },
+      infoText: (_data, matches, output) => {
+        const y = parseFloat(matches.y);
+        const dir = y < center.y ? 'north' : 'south';
+        return output.text!({ dir: output[dir]!(), sides: output.sides!() });
+      },
+      outputStrings: {
+        north: Outputs.north,
+        south: Outputs.south,
+        sides: Outputs.sides,
+        text: {
+          en: '${dir} + ${sides} (later)',
+        },
       },
     },
     {
