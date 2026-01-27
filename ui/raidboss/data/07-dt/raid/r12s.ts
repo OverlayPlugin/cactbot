@@ -1698,8 +1698,14 @@ const triggerSet: TriggerSet<Data> = {
           throw new UnreachableCode();
         };
 
-        const newDirNum = (getNewDirNum(dirNum, matches.id) + 8) % 16;
-        const dir = Directions.output16Dir[newDirNum] ?? 'unknown';
+        const newDirNum = getNewDirNum(dirNum, matches.id);
+
+        // Handle case where we have negative value
+        const positiveDirNum = (
+          newDirNum + 8 < 0 ? Math.abs(newDirNum) : newDirNum + 8
+        ) % 16;
+
+        const dir = Directions.output16Dir[positiveDirNum] ?? 'unknown';
         return output.getBehindDir!({
           dir: output[dir]!(),
           mech: output.getBehind!(),
