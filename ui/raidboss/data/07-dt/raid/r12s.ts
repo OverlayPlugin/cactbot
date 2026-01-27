@@ -1414,7 +1414,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Raptor Knuckles Uptime Knockback',
       // First knockback is at ~13.2s
       // Second knockback is at ~18s
-      // Use knockback at 11.9s to hit both with ~1.4s leniency
+      // Use knockback at ~11.8s to hit both with ~1.4s leniency
       type: 'Ability',
       netRegex: { id: ['B4CC', 'B4CD'], source: 'Lindwurm', capture: false },
       condition: (data) => {
