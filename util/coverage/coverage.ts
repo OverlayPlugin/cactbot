@@ -2,6 +2,7 @@ import contentList from '../../resources/content_list';
 import ContentType from '../../resources/content_type';
 import { isLang, Lang, langMap, langToLocale, languages } from '../../resources/languages';
 import { UnreachableCode } from '../../resources/not_reached';
+import { bindSearchInput, TextSearchEngine } from '../../resources/text_search_engine';
 import ZoneInfo from '../../resources/zone_info';
 import { LocaleObject, LocaleText } from '../../types/trigger';
 import { kDirectoryToCategory, kPrefixToCategory } from '../../ui/config/config';
@@ -1103,6 +1104,9 @@ aria-expanded="${
 const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) => {
   buildZoneTableHeader(container, lang);
 
+  const engine = new TextSearchEngine();
+  const rowSearchText = new Map<HTMLElement, string>();
+
   const checkedZoneIds: number[] = [];
 
   const tbody = document.createElement('tbody');
@@ -1226,19 +1230,22 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
 
   container.appendChild(tbody);
 
+  container.querySelectorAll('.zone-table-content-row').forEach((row) => {
+    // `innerText` is vastly slower to scan all rows here, ~750ms with `innerText`
+    // vs ~45ms with `textContent`
+    if (row instanceof HTMLElement && (row.textContent !== null)) {
+      rowSearchText.set(row, row.textContent.toLowerCase());
+    }
+  });
+
   const searchInput = document.getElementById('zone-table-filter');
 
   if (searchInput === null || !(searchInput instanceof HTMLInputElement))
     throw new UnreachableCode();
 
-  let lastFilterValue = '';
-
-  const filter = () => {
-    const lcValue = searchInput.value.toLowerCase();
-    if (lastFilterValue === lcValue)
-      return;
-
-    lastFilterValue = lcValue;
+  const performFilter = () => {
+    const lcValue = searchInput.value.trim().toLowerCase();
+    const parts = engine.parseQuery(lcValue);
 
     // Hide rows that don't match our filter
     container.querySelectorAll('.zone-table-content-row').forEach((row) => {
@@ -1252,9 +1259,8 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
       if (dataRow === null || !(dataRow instanceof HTMLElement))
         return;
 
-      // `innerText` is vastly slower to scan all rows here, ~750ms with `innerText`
-      // vs ~45ms with `textContent`
-      const display = row.textContent?.toLowerCase().includes(lcValue);
+      const searchText = rowSearchText.get(row) ?? '';
+      const display = engine.matchParts(searchText, parts);
 
       if (display) {
         row.classList.remove('d-none');
@@ -1301,12 +1307,10 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
     });
   };
 
-  for (const ev of ['blur', 'change', 'keydown', 'keypress', 'keyup']) {
-    searchInput.addEventListener(ev, filter);
-  }
+  bindSearchInput(searchInput, engine, performFilter);
 
   // Fire an initial filter to hide unused category header rows
-  filter();
+  performFilter();
 };
 
 const buildThemeSelect = (container: HTMLElement, lang: Lang) => {

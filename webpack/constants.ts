@@ -1,5 +1,5 @@
 export const cactbotModules = {
-  config: 'ui/config/config',
+  config: 'ui/config/config_loader',
   coverage: 'util/coverage/coverage',
   rdmty: 'ui/dps/rdmty/dps',
   xephero: 'ui/dps/xephero/xephero',

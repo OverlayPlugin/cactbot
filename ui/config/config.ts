@@ -22,7 +22,7 @@ import {
   LooseTriggerSet,
 } from '../../types/trigger';
 
-import defaultOptions, { ConfigOptions } from './config_options';
+import { ConfigOptions } from './config_options';
 
 // Load other config files
 import './general_config';
@@ -31,9 +31,6 @@ import '../jobs/jobs_config';
 import '../oopsyraidsy/oopsyraidsy_config';
 import '../radar/radar_config';
 import '../raidboss/raidboss_config';
-
-import '../../resources/defaults.css';
-import './config.css';
 
 // Text in the butter bar, to prompt the user to reload after a config change.
 const kReloadText = {
@@ -1214,11 +1211,3 @@ export class CactbotConfigurator {
     return sortedMap;
   }
 }
-
-UserConfig.getUserConfigLocation('config', defaultOptions, () => {
-  const options = { ...defaultOptions };
-  new CactbotConfigurator(
-    options,
-    UserConfig.savedConfig,
-  );
-});

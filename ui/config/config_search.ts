@@ -1,4 +1,12 @@
 import {
+  bindSearchInput,
+  SearchContainer,
+  SearchItem,
+  SearchResult,
+  TextSearchEngine,
+} from '../../resources/text_search_engine';
+
+import {
   CactbotConfigurator,
   kNoSearchMatches,
   kShowHiddenTriggers,
@@ -14,21 +22,19 @@ export interface SearchContainerData {
 }
 
 // Custom element types to store data and avoid repetitive casts
-interface SearchTriggerElement extends HTMLElement {
+interface SearchTriggerElement extends HTMLElement, SearchItem {
   __triggerData?: SearchTriggerData;
-  __searchText?: string;
 }
 
-interface SearchContainerElement extends HTMLElement {
+interface SearchContainerElement extends HTMLElement, SearchItem {
   __containerData?: SearchContainerData;
-  __searchText?: string;
 }
 
 export class ConfigSearch {
   private searchInput: HTMLInputElement;
   private clearButton: HTMLElement;
   private noMatchesMessage: HTMLElement;
-  private searchTimeout?: number;
+  private engine: TextSearchEngine;
 
   constructor(
     private base: CactbotConfigurator,
@@ -37,6 +43,7 @@ export class ConfigSearch {
     this.searchInput = document.createElement('input');
     this.clearButton = document.createElement('div');
     this.noMatchesMessage = document.createElement('div');
+    this.engine = new TextSearchEngine();
     this.buildUI();
   }
 
@@ -48,10 +55,18 @@ export class ConfigSearch {
     this.searchInput.type = 'text';
     this.searchInput.classList.add('trigger-search-input');
     this.searchInput.placeholder = this.base.translate(kTriggerSearchPlaceholder);
-    this.searchInput.oninput = () => {
-      this.updateClearButton();
-      this.debouncedSearch();
-    };
+
+    bindSearchInput(
+      this.searchInput,
+      this.engine,
+      () => {
+        this.performSearch();
+      },
+      () => {
+        this.updateClearButton();
+      },
+    );
+
     searchContainer.appendChild(this.searchInput);
 
     this.clearButton.classList.add('trigger-search-clear');
@@ -69,46 +84,9 @@ export class ConfigSearch {
   }
 
   private clearSearch(): void {
-    if (this.searchTimeout !== undefined) {
-      window.clearTimeout(this.searchTimeout);
-      this.searchTimeout = undefined;
-    }
     this.searchInput.value = '';
     this.updateClearButton();
     this.showAll();
-  }
-
-  // Calculate debounce time based on search text length.
-  // Shorter text = longer debounce to reduce unnecessary searches.
-  // 1 char: 100ms, 2 chars: 75ms, 3 chars: 50ms, 4 chars: 25ms, 5+ chars: 0ms
-  private calculateDebounceTime(length: number): number {
-    if (length === 0)
-      return 0;
-    return Math.max(0, 100 - (length - 1) * 25);
-  }
-
-  private debouncedSearch(): void {
-    if (this.searchTimeout !== undefined)
-      window.clearTimeout(this.searchTimeout);
-
-    const length = this.searchInput.value.trim().length;
-    const debounceTime = this.calculateDebounceTime(length);
-
-    if (debounceTime > 0) {
-      this.searchTimeout = window.setTimeout(() => {
-        this.performSearch();
-      }, debounceTime);
-    } else {
-      this.performSearch();
-    }
-  }
-
-  private matchParts(text: string, parts: string[]): boolean {
-    for (const part of parts) {
-      if (!text.includes(part))
-        return false;
-    }
-    return true;
   }
 
   public performSearch(): void {
@@ -119,7 +97,7 @@ export class ConfigSearch {
       return;
     }
 
-    const searchParts = searchTerm.toLowerCase().split(/\s+/).filter((p) => p !== '');
+    const searchParts = this.engine.parseQuery(searchTerm);
     const visibleExpansionContainers = new Set<HTMLElement>();
 
     const allTriggerContainers = this.container.querySelectorAll<SearchContainerElement>(
@@ -128,53 +106,36 @@ export class ConfigSearch {
     let anyVisible = false;
 
     allTriggerContainers.forEach((triggerContainer) => {
+      const triggersInContainer = triggerContainer.querySelectorAll<SearchTriggerElement>(
+        '.trigger',
+      );
+      const searchContainerInfo: SearchContainer<SearchTriggerElement> = {
+        searchText: triggerContainer.searchText,
+        items: Array.from(triggersInContainer),
+      };
+
+      const result: SearchResult<SearchTriggerElement> = this.engine.searchParts(
+        searchParts,
+        searchContainerInfo,
+      );
+
       let containerVisible = false;
+      let hasVisibleTrigger = false;
+      let hiddenCount = 0;
 
-      // Check which search parts match the container title
-      const containerMatchedParts = new Set<string>();
-      if (triggerContainer.__searchText !== undefined) {
-        for (const part of searchParts) {
-          if (triggerContainer.__searchText.includes(part))
-            containerMatchedParts.add(part);
-        }
-      }
-
-      // Remaining parts that need to match triggers
-      const remainingParts = searchParts.filter((p) => !containerMatchedParts.has(p));
-
-      // If all parts matched the container, show all triggers
-      if (remainingParts.length === 0) {
+      if (result.containerMatches) {
         this.setContainerVisible(triggerContainer, true);
         this.updateShowHiddenButton(triggerContainer, 0);
         anyVisible = true;
         containerVisible = true;
       } else {
-        // Check triggers against remaining parts
-        const triggersInContainer = triggerContainer.querySelectorAll<SearchTriggerElement>(
-          '.trigger',
-        );
-        let hasVisibleTrigger = false;
-        let hiddenCount = 0;
-
         triggersInContainer.forEach((triggerElement) => {
-          const triggerData = triggerElement.__triggerData;
-
-          if (triggerData === undefined) {
-            // Non-trigger elements (like override warnings) are shown if container
-            // partially matches
-            const shouldShow = containerMatchedParts.size > 0 || remainingParts.length === 0;
-            this.setTriggerVisible(triggerElement, shouldShow);
-            if (shouldShow)
-              hasVisibleTrigger = true;
-            return;
-          }
-
-          const shouldShow = this.checkTriggerMatch(triggerElement, remainingParts);
+          const shouldShow = result.matchedItems.has(triggerElement);
           this.setTriggerVisible(triggerElement, shouldShow);
 
           if (shouldShow)
             hasVisibleTrigger = true;
-          else
+          else if (triggerElement.__triggerData !== undefined)
             hiddenCount++;
         });
 
@@ -196,14 +157,6 @@ export class ConfigSearch {
 
     this.updateExpansionVisibility(true, visibleExpansionContainers);
     this.noMatchesMessage.style.display = anyVisible ? 'none' : 'block';
-  }
-
-  private checkTriggerMatch(
-    element: SearchTriggerElement,
-    searchParts: string[],
-  ): boolean {
-    const searchText = element.__searchText;
-    return searchText !== undefined && this.matchParts(searchText, searchParts);
   }
 
   private showAll(): void {
@@ -309,13 +262,13 @@ export class ConfigSearch {
     const el = element as SearchContainerElement;
     el.__containerData = data;
     if (data.title !== undefined && data.title !== null)
-      el.__searchText = data.title.replace(/<[^>]*>/g, '').toLowerCase();
+      el.searchText = data.title.replace(/<[^>]*>/g, '').toLowerCase();
   }
 
   public static setTriggerData(element: HTMLElement, data: SearchTriggerData): void {
     const el = element as SearchTriggerElement;
     el.__triggerData = data;
     if (data.id !== undefined && data.id !== null)
-      el.__searchText = data.id.toLowerCase();
+      el.searchText = data.id.toLowerCase();
   }
 }
