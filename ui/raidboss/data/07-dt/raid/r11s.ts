@@ -33,6 +33,8 @@ export interface Data extends RaidbossData {
   };
   maelstromCount: number;
   hasMeteor: boolean;
+  arenaSplitStretchDirNum?: number;
+  baitsFireBreath: boolean;
   fireballCount: number;
   hasAtomic: boolean;
   hadEclipticTether: boolean;
@@ -114,6 +116,7 @@ const triggerSet: TriggerSet<Data> = {
     assaultEvolvedCount: 0,
     maelstromCount: 0,
     hasMeteor: false,
+    baitsFireBreath: false,
     fireballCount: 0,
     hasAtomic: false,
     hadEclipticTether: false,
@@ -424,21 +427,6 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.stackMarkerOn(),
     },
     {
-      id: 'R11S Dance Of Domination Trophy',
-      // 2s cast, but B41F damage cast (0.5s) starts ~6s later.
-      // There are 12.9s from B7BB startsUsing to bigAoe B7EA Ability
-      type: 'StartsUsing',
-      netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
-      delaySeconds: 3.7, // 5s before AoEs start
-      durationSeconds: 5,
-      infoText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'AoE x6 => Big AoE',
-        },
-      },
-    },
-    {
       id: 'R11S Void Stardust End',
       // The second set of comets does not have a startsUsing cast
       // Timing is on the last Assault Evolved
@@ -466,6 +454,21 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitPuddlesThenSpread: {
           en: 'Bait 3x Puddles => Spread',
+        },
+      },
+    },
+    {
+      id: 'R11S Dance Of Domination Trophy',
+      // 2s cast, but B41F damage cast (0.5s) starts ~6s later.
+      // There are 12.9s from B7BB startsUsing to bigAoe B7EA Ability
+      type: 'StartsUsing',
+      netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
+      delaySeconds: 3.7, // 5s before AoEs start
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'AoE x6 => Big AoE',
         },
       },
     },
@@ -661,7 +664,25 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'B444', source: 'The Tyrant', capture: false },
       durationSeconds: 10,
       suppressSeconds: 1,
-      alertText: (_data, _matches, output) => output.knockbackTowers!(),
+      alertText: (data, _matches, output) => {
+        const dirNum = data.arenaSplitStretchDirNum;
+        if (dirNum === 0 || dirNum === 1)
+          return output.tetherTowers!({
+            mech1: output.eastSafe!(),
+            mech2: output.avoidFireBreath!(),
+          });
+        if (dirNum === 2 || dirNum === 3)
+          return output.tetherTowers!({
+            mech1: output.westSafe!(),
+            mech2: output.avoidFireBreath!(),
+          });
+        if (data.baitsFireBreath)
+          return output.fireBreathTowers!({
+            mech1: output.northSouthSafe!(),
+            mech2: output.baitFireBreath!(),
+          });
+        return output.knockbackTowers!();
+      },
       outputStrings: {
         knockbackTowers: {
           en: 'Get Knockback Towers',
@@ -669,6 +690,127 @@ const triggerSet: TriggerSet<Data> = {
           cn: '踩击退塔',
           ko: '넉백탑 들어가기',
         },
+        fireBreathTowers: {
+          en: '${mech1} => ${mech2}',
+        },
+        tetherTowers: {
+          en: '${mech1} => ${mech2}',
+        },
+        baitFireBreath: {
+          en: 'Bait Near',
+        },
+        avoidFireBreath: Outputs.outOfHitbox,
+        northSouthSafe: {
+          en: 'Tower Knockback to North/South',
+        },
+        eastSafe: {
+          en: 'Tower Knockback to East',
+          fr: 'Prenez une tour (poussée vers l\'Est)',
+          cn: '被塔击飞到右侧平台',
+          ko: '탑 넉백 동쪽으로',
+        },
+        westSafe: {
+          en: 'Tower Knockback to West',
+          fr: 'Prenez une tour (poussée vers l\'Ouest)',
+          cn: '被塔击飞到左侧平台',
+          ko: '탑 넉백 서쪽으로',
+        },
+      },
+    },
+    {
+      id: 'R11S Arena Split Majestic Meteowrath Tether Collect',
+      // Tethers have 2 patterns
+      // Pattern 1
+      // (69, 85)
+      //                  (131, 95)
+      //                  (131, 105)
+      // (69, 115)
+      // Pattern 2:
+      //                  (131, 85)
+      // (69, 95)
+      // (69, 105)
+      //                  (131, 115)
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.me === matches.target &&
+          data.phase === 'arenaSplit'
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: 0.1, // Race condition with Tether lines and actor positions
+      suppressSeconds: 9999,
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined) {
+          data.arenaSplitStretchDirNum = -1; // Return -1 so that we know we at least don't bait fire breath
+          return;
+        }
+
+        const portalDirNum = Directions.xyTo4DirIntercardNum(
+          actor.x,
+          actor.y,
+          center.x,
+          center.y,
+        );
+        // While these are inter inter cards, furthest stretch will be an intercard
+        const stretchDirNum = (portalDirNum + 2) % 4;
+        data.arenaSplitStretchDirNum = stretchDirNum;
+      },
+    },
+    {
+      id: 'R11S Arena Split Majestic Meteowrath Tethers',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.me === matches.target &&
+          data.phase === 'arenaSplit'
+        )
+          return true;
+        return false;
+      },
+      delaySeconds: 0.1, // Race condition with Tether lines and actor positions
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.stretchTetherLater!();
+
+        const portalDirNum = Directions.xyTo4DirIntercardNum(
+          actor.x,
+          actor.y,
+          center.y,
+          center.x,
+        );
+        // While these are inter inter cards, furthest stretch will be an intercard
+        const stretchDirNum = (portalDirNum + 2) % 4;
+        const dir = Directions.outputIntercardDir[stretchDirNum];
+        return output.stretchTetherDirLater!({ dir: output[dir ?? '???']!() });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        stretchTetherDirLater: {
+          en: 'Tether on YOU: Stretch ${dir} (later)',
+        },
+        stretchTetherLater: {
+          en: 'Tether on YOU: Stretch (later)',
+        },
+      },
+    },
+    {
+      id: 'R11S Fire Breath Bait Check',
+      // Wait for tethers to go out, then call if didn't receive one
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: false },
+      condition: (data) => data.phase === 'arenaSplit',
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      run: (data) => {
+        if (data.arenaSplitStretchDirNum === undefined)
+          data.baitsFireBreath = true;
       },
     },
     {
@@ -685,6 +827,18 @@ const triggerSet: TriggerSet<Data> = {
         fireBreath: {
           en: 'Fire Breath on YOU',
         },
+      },
+    },
+    {
+      id: 'R11S Majestic Meteowrath Tether and Fire Breath Reset',
+      // Reset tracker on B442 Majestic Meteowrath for next set of tethers
+      type: 'Ability',
+      netRegex: { id: 'B442', source: 'The Tyrant', capture: false },
+      condition: (data) => data.phase === 'arenaSplit',
+      suppressSeconds: 9999,
+      run: (data) => {
+        delete data.arenaSplitStretchDirNum;
+        data.baitsFireBreath = false;
       },
     },
     {
@@ -807,7 +961,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.getTowers(),
     },
     {
-      id: 'R11S Majestic Meteowrath Tether Collect',
+      id: 'R11S Ecliptic Stampede Majestic Meteowrath Tether Collect',
       type: 'Tether',
       netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
       condition: (data, matches) => {
@@ -822,7 +976,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.hadEclipticTether = true,
     },
     {
-      id: 'R11S Majestic Meteowrath Tethers',
+      id: 'R11S Ecliptic Stampede Majestic Meteowrath Tethers',
       type: 'Tether',
       netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
       condition: (data, matches) => {
