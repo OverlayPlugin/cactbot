@@ -1305,6 +1305,55 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
         row.classList.add('d-none');
       }
     });
+
+    container.querySelectorAll('.spacer-row').forEach((row) => {
+      if (!(row instanceof HTMLElement))
+        return;
+
+      let hasVisibleAbove = false;
+      let prevSibling = row.previousSibling;
+      while (prevSibling !== null) {
+        if (!(prevSibling instanceof HTMLElement)) {
+          prevSibling = prevSibling.previousSibling;
+          continue;
+        }
+
+        if (prevSibling.classList.contains('spacer-row'))
+          break;
+        if (
+          prevSibling.classList.contains('zone-table-content-row') &&
+          !prevSibling.classList.contains('d-none')
+        ) {
+          hasVisibleAbove = true;
+          break;
+        }
+        prevSibling = prevSibling.previousSibling;
+      }
+
+      let hasVisibleBelow = false;
+      let nextSibling = row.nextSibling;
+      while (nextSibling !== null) {
+        if (!(nextSibling instanceof HTMLElement)) {
+          nextSibling = nextSibling.nextSibling;
+          continue;
+        }
+
+        if (
+          nextSibling.classList.contains('zone-table-content-row') &&
+          !nextSibling.classList.contains('d-none')
+        ) {
+          hasVisibleBelow = true;
+          break;
+        }
+        nextSibling = nextSibling.nextSibling;
+      }
+
+      if (hasVisibleAbove && hasVisibleBelow) {
+        row.classList.remove('d-none');
+      } else {
+        row.classList.add('d-none');
+      }
+    });
   };
 
   bindSearchInput(searchInput, engine, performFilter);
