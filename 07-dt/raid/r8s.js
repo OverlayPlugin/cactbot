@@ -1479,7 +1479,7 @@ Options.Triggers.push({
         }
         switch (matches.id) {
           case 'A45F':
-            data.herosBlowSafeDir = Math.abs(Directions.hdgTo16DirNum(actor.Heading) - 4) % 16;
+            data.herosBlowSafeDir = ((Directions.hdgTo16DirNum(actor.Heading) - 4) + 16) % 16;
             break;
           case 'A461':
             data.herosBlowSafeDir = (Directions.hdgTo16DirNum(actor.Heading) + 4) % 16;
