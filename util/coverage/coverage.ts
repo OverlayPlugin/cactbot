@@ -624,6 +624,14 @@ const miscStrings = {
     ko: '이 항목으로의 링크',
     tc: '此條目連結',
   },
+  zoneFilter: {
+    en: 'Zone Filter',
+    cn: '副本筛选',
+  },
+  searchPlaceholder: {
+    en: 'Search...',
+    cn: '搜索...',
+  },
 } as const;
 
 const translationGridHeaders = {
@@ -1453,6 +1461,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!translationGrid)
     throw new UnreachableCode();
   buildTranslationTable(translationGrid, lang, translationTotals);
+
+  const zoneFilterLabel = document.getElementById('zone-filter-label');
+  if (zoneFilterLabel)
+    zoneFilterLabel.innerText = translate(miscStrings.zoneFilter, lang);
+
+  const zoneTableFilter = document.getElementById('zone-table-filter');
+  if (zoneTableFilter instanceof HTMLInputElement)
+    zoneTableFilter.placeholder = translate(miscStrings.searchPlaceholder, lang);
 
   const zoneGrid = document.getElementById('zone-table');
   if (!zoneGrid)
