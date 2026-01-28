@@ -72,6 +72,10 @@ const emulatorButtons: Translation = {
     cn: '清除数据库',
     tc: '清除資料庫',
   },
+  '.encounterSearchPlaceholder': {
+    en: 'Search encounters',
+    cn: '搜索战斗',
+  },
 } as const;
 
 const emulatorTitle: Translation = {
