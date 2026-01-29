@@ -379,6 +379,7 @@ export const Directions = {
   outputStrings8Dir: outputStrings8Dir,
   outputStringsCardinalDir: outputStringsCardinalDir,
   outputStringsIntercardDir: outputStringsIntercardDir,
+  xyTo4DirIntercardNum: xyTo4DirIntercardNum,
   xyTo16DirNum: xyTo16DirNum,
   xyTo8DirNum: xyTo8DirNum,
   xyTo4DirNum: xyTo4DirNum,

@@ -1,0 +1,1366 @@
+import Conditions from '../../../../../resources/conditions';
+import { UnreachableCode } from '../../../../../resources/not_reached';
+import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
+import { Responses } from '../../../../../resources/responses';
+import { DirectionOutputCardinal, Directions } from '../../../../../resources/util';
+import ZoneId from '../../../../../resources/zone_id';
+import { RaidbossData } from '../../../../../types/data';
+import { TriggerSet } from '../../../../../types/trigger';
+
+// TODO: Include Meteorain lines for Arena split
+
+type Phase = 'one' | 'arenaSplit' | 'avalanche' | 'ecliptic';
+
+type WeaponInfo = {
+  delay: number;
+  duration: number;
+};
+
+export interface Data extends RaidbossData {
+  phase: Phase;
+  actorPositions: { [id: string]: { x: number; y: number; heading: number } };
+  weapons: {
+    id: string;
+    type: 'stack' | 'healerGroups' | 'protean';
+    dir: number;
+    actor: { x: number; y: number; heading: number };
+  }[];
+  voidStardust?: 'spread' | 'stack';
+  assaultEvolvedCount: number;
+  weaponMechCount: number;
+  domDirectionCount: {
+    vertCount: number;
+    horizCount: number;
+    outerSafe: DirectionOutputCardinal[];
+  };
+  maelstromCount: number;
+  hasMeteor: boolean;
+  myPlatform?: 'east' | 'west';
+  arenaSplitMeteorain?: 'westIn' | 'westOut';
+  arenaSplitStretchDirNum?: number;
+  arenaSplitTethers: string[];
+  arenaSplitCalledTether: boolean;
+  arenaSplitCalledBait: boolean;
+  fireballCount: number;
+  hasAtomic: boolean;
+  hadEclipticTether: boolean;
+  heartbreakerCount: number;
+}
+
+const center = {
+  x: 100,
+  y: 100,
+};
+
+const phaseMap: { [id: string]: Phase } = {
+  'B43F': 'arenaSplit', // Flatliner
+  'B448': 'avalanche', // Massive Meteor stacks near end of arena split
+  'B452': 'ecliptic', // Ecliptic Stampede
+};
+
+const headMarkerData = {
+  // Vfx Path: target_ae_s5f
+  'cometSpread': '008B',
+  // Vfx Path: com_share4a1
+  'partnerStack': '00A1',
+  // Vfx Path: com_share3t
+  'fiveHitStack': '0131',
+  // Vfx Path: lockon8_t0w
+  'meteor': '00F4',
+  'fireBreath': '00F4',
+  // Vfx Path: share_laser_5sec_0t, targets The Tyrant
+  'lineStack': '020D',
+  // Vfx Path: m0017trg_a0c
+  'atomicImpact': '001E',
+  'meteorTether': '0164',
+  'closeTether': '0039',
+  'farTether': '00F9',
+} as const;
+
+const ultimateTrophyWeaponsMap: (WeaponInfo | undefined)[] = [
+  undefined,
+  undefined,
+  {
+    delay: 0,
+    duration: 8.7,
+  },
+  {
+    delay: 4.7,
+    duration: 5.1,
+  },
+  {
+    delay: 5.8,
+    duration: 5.1,
+  },
+  {
+    delay: 6.9,
+    duration: 5.1,
+  },
+  {
+    delay: 8,
+    duration: 5.1,
+  },
+  {
+    delay: 9.1,
+    duration: 5.1,
+  },
+];
+
+const triggerSet: TriggerSet<Data> = {
+  id: 'AacHeavyweightM3Savage',
+  zoneId: ZoneId.AacHeavyweightM3Savage,
+  timelineFile: 'r11s.txt',
+  initData: () => ({
+    phase: 'one',
+    actorPositions: {},
+    weapons: [],
+    weaponMechCount: 0,
+    domDirectionCount: {
+      horizCount: 0,
+      vertCount: 0,
+      outerSafe: ['dirN', 'dirE', 'dirS', 'dirW'],
+    },
+    assaultEvolvedCount: 0,
+    maelstromCount: 0,
+    hasMeteor: false,
+    arenaSplitTethers: [],
+    arenaSplitCalledTether: false,
+    arenaSplitCalledBait: false,
+    fireballCount: 0,
+    hasAtomic: false,
+    hadEclipticTether: false,
+    heartbreakerCount: 0,
+  }),
+  timelineTriggers: [],
+  triggers: [
+    {
+      id: 'R11S Phase Tracker',
+      type: 'StartsUsing',
+      netRegex: { id: Object.keys(phaseMap), source: 'The Tyrant' },
+      suppressSeconds: 1,
+      run: (data, matches) => {
+        const phase = phaseMap[matches.id];
+        if (phase === undefined)
+          throw new UnreachableCode();
+
+        data.phase = phase;
+      },
+    },
+    {
+      id: 'R11S ActorSetPos Tracker',
+      type: 'ActorSetPos',
+      netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
+      run: (data, matches) =>
+        data.actorPositions[matches.id] = {
+          x: parseFloat(matches.x),
+          y: parseFloat(matches.y),
+          heading: parseFloat(matches.heading),
+        },
+    },
+    {
+      id: 'R11S Crown of Arcadia',
+      type: 'StartsUsing',
+      netRegex: { id: 'B406', source: 'The Tyrant', capture: false },
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'R11S Raw Steel Trophy Axe',
+      type: 'StartsUsing',
+      netRegex: { id: 'B422', capture: false },
+      infoText: (_data, _matches, output) => {
+        return output.text!({
+          party: output.partySpread!(),
+          tank: output.sharedTankStack!(),
+        });
+      },
+      outputStrings: {
+        partySpread: {
+          en: 'Party Spread',
+        },
+        sharedTankStack: {
+          en: 'Tanks Stack',
+          de: 'Tanks Sammeln',
+          fr: 'Package Tanks',
+          ja: 'タンク頭割り',
+          cn: '坦克分摊',
+          ko: '탱끼리 모이기',
+          tc: '坦克分攤',
+        },
+        text: {
+          en: '${party}/${tank}',
+        },
+      },
+    },
+    {
+      id: 'R11S Raw Steel Trophy Scythe',
+      type: 'StartsUsing',
+      netRegex: { id: 'B423', capture: false },
+      infoText: (_data, _matches, output) => {
+        return output.text!({
+          party: output.partyStack!(),
+          tank: output.tankCleaves!(),
+        });
+      },
+      outputStrings: {
+        partyStack: {
+          en: 'Party Stack',
+          de: 'In der Gruppe sammeln',
+          fr: 'Package en groupe',
+          ja: 'あたまわり',
+          cn: '分摊',
+          ko: '쉐어',
+          tc: '分攤',
+        },
+        tankCleaves: {
+          en: 'Tank Cleaves',
+          de: 'Tank Cleaves',
+          fr: 'Tank Cleaves',
+          ja: 'タンク前方攻撃',
+          cn: '坦克顺劈',
+          ko: '광역 탱버',
+          tc: '坦克順劈',
+        },
+        text: {
+          en: '${party}/${tank}',
+        },
+      },
+    },
+    // For logic reasons Ultimate has to be before normal Trophy Weapons
+    {
+      id: 'R11S Ultimate Trophy Weapons',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
+      condition: (data) => data.weaponMechCount > 1,
+      delaySeconds: (data) => {
+        return ultimateTrophyWeaponsMap[data.weaponMechCount]?.delay ?? 0;
+      },
+      durationSeconds: (data) => {
+        return ultimateTrophyWeaponsMap[data.weaponMechCount]?.duration ?? 0;
+      },
+      countdownSeconds: (data) => {
+        return ultimateTrophyWeaponsMap[data.weaponMechCount]?.duration ?? 0;
+      },
+      infoText: (data, matches, output) => {
+        const mechanic = matches.param1 === '11D1'
+          ? 'healerGroups'
+          : (matches.param1 === '11D2' ? 'stack' : 'protean');
+        if (data.weaponMechCount === 7)
+          return output.mechanicThenBait!({ mech: output[mechanic]!(), bait: output.bait!() });
+        if (data.weaponMechCount > 3 && mechanic !== 'stack')
+          return output.mechanicThenMove!({ mech: output[mechanic]!(), move: output.move!() });
+        return output[mechanic]!();
+      },
+      run: (data) => data.weaponMechCount++,
+      outputStrings: {
+        healerGroups: Outputs.healerGroups,
+        stack: Outputs.stackMiddle,
+        protean: Outputs.protean,
+        move: Outputs.moveAway,
+        bait: {
+          en: 'Bait Gust',
+        },
+        mechanicThenMove: {
+          en: '${mech} => ${move}',
+        },
+        mechanicThenBait: {
+          en: '${mech} => ${bait}',
+        },
+      },
+    },
+    {
+      id: 'R11S Trophy Weapons 2 Early Calls',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
+      condition: (data, matches) => {
+        if (data.weaponMechCount !== 1)
+          return false;
+
+        const actor = data.actorPositions[matches.id];
+
+        if (actor === undefined)
+          return false;
+
+        const actorDir = Math.atan2(actor.x - center.x, actor.y - center.y);
+
+        if ((Math.abs(actorDir - actor.heading) % Math.PI) < 0.1)
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.id];
+
+        if (actor === undefined)
+          return;
+
+        const mechanic = matches.param1 === '11D1'
+          ? 'healerGroups'
+          : (matches.param1 === '11D2' ? 'stack' : 'protean');
+
+        const dir = Directions.xyTo8DirOutput(actor.x, actor.y, center.x, center.y);
+
+        return output.text!({
+          dir: output[dir]!(),
+          weapon: output[mechanic]!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        healerGroups: Outputs.healerGroups,
+        stack: Outputs.stackMiddle,
+        protean: Outputs.protean,
+        text: {
+          en: '${dir}: ${weapon} (1st later)',
+        },
+      },
+    },
+    {
+      id: 'R11S Trophy Weapons',
+      type: 'ActorControlExtra',
+      netRegex: { category: '0197', param1: ['11D1', '11D2', '11D3'], capture: true },
+      condition: (data) => data.weaponMechCount < 2,
+      delaySeconds: (data) => {
+        if (data.weaponMechCount === 0)
+          return 0.1;
+        if (data.weaponMechCount === 1)
+          return 10.6;
+        return 0.1;
+      },
+      durationSeconds: (data) => {
+        if (data.weaponMechCount < 2)
+          return 20.9;
+        return 0;
+      },
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.id];
+
+        if (actor === undefined)
+          return;
+
+        data.weapons.push({
+          id: matches.id,
+          type: matches.param1 === '11D1'
+            ? 'healerGroups'
+            : (matches.param1 === '11D2' ? 'stack' : 'protean'),
+          dir: Math.atan2(actor.x - center.x, actor.y - center.y),
+          actor: actor,
+        });
+        // Have info for 1st or 2nd mech
+        if (data.weaponMechCount < 2 && data.weapons.length > 2) {
+          data.weaponMechCount++;
+          let candidates = data.weapons;
+          data.weapons = [];
+
+          // First weapon is the one facing towards middle
+          const weapon1 = candidates.find((c) =>
+            (Math.abs(c.dir - c.actor.heading) % Math.PI) < 0.1
+          );
+          if (weapon1 === undefined)
+            return;
+          candidates = candidates.filter((c) => c !== weapon1);
+          // remap dir to weapon1
+          candidates.forEach((c) => {
+            c.dir = Math.atan2(c.actor.x - weapon1.actor.x, c.actor.y - weapon1.actor.y);
+          });
+          // second weapon is facing first weapon
+          const weapon2 = candidates.find((c) =>
+            (Math.abs(c.dir - c.actor.heading) % Math.PI) < 0.1
+          );
+          // third weapon is the last remaining one
+          const weapon3 = candidates.find((c) => c !== weapon2);
+          if (weapon2 === undefined || weapon3 === undefined)
+            return;
+          return output.text!({
+            weapon1: output[weapon1.type]!(),
+            weapon2: output[weapon2.type]!(),
+            weapon3: output[weapon3.type]!(),
+          });
+        }
+      },
+      outputStrings: {
+        text: {
+          en: '${weapon1} => ${weapon2} => ${weapon3}',
+        },
+        healerGroups: Outputs.healerGroups,
+        stack: Outputs.stackMiddle,
+        protean: Outputs.protean,
+      },
+    },
+    {
+      id: 'R11S Void Stardust',
+      type: 'StartsUsing',
+      netRegex: { id: 'B412', source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.baitPuddles!(),
+      outputStrings: {
+        baitPuddles: {
+          en: 'Bait 3x puddles',
+          de: 'Ködere Flächen x3',
+          fr: 'Déposez les flaques 3x',
+          cn: '诱导3次圈圈',
+          ko: '장판 유도 3x',
+        },
+      },
+    },
+    {
+      id: 'R11S Comet Spread Collect',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['cometSpread'], capture: false },
+      suppressSeconds: 1,
+      run: (data) => {
+        // Only setting this once
+        if (data.voidStardust === undefined)
+          data.voidStardust = 'spread';
+      },
+    },
+    {
+      id: 'R11S Comet Spread',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['cometSpread'], capture: true },
+      condition: Conditions.targetIsYou(),
+      response: Responses.spread(),
+    },
+    {
+      id: 'R11S Crushing Comet Collect',
+      type: 'StartsUsing',
+      netRegex: { id: 'B415', source: 'The Tyrant', capture: false },
+      run: (data) => {
+        // Only setting this once
+        if (data.voidStardust === undefined)
+          data.voidStardust = 'stack';
+      },
+    },
+    {
+      id: 'R11S Crushing Comet',
+      type: 'StartsUsing',
+      netRegex: { id: 'B415', source: 'The Tyrant', capture: true },
+      response: Responses.stackMarkerOn(),
+    },
+    {
+      id: 'R11S Void Stardust End',
+      // The second set of comets does not have a startsUsing cast
+      // Timing is on the last Assault Evolved
+      type: 'StartsUsing',
+      netRegex: { id: ['B418', 'B419', 'B41A'], source: 'The Tyrant', capture: true },
+      condition: (data) => {
+        if (data.voidStardust === undefined)
+          return false;
+        data.assaultEvolvedCount++;
+        if (data.assaultEvolvedCount === 3)
+          return true;
+        return false;
+      },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      infoText: (data, _matches, output) => {
+        if (data.voidStardust === 'spread')
+          return output.baitPuddlesThenStack!();
+        if (data.voidStardust === 'stack')
+          return output.baitPuddlesThenSpread!();
+      },
+      outputStrings: {
+        baitPuddlesThenStack: {
+          en: 'Bait 3x Puddles => Stack',
+        },
+        baitPuddlesThenSpread: {
+          en: 'Bait 3x Puddles => Spread',
+        },
+      },
+    },
+    {
+      id: 'R11S Dance Of Domination Trophy',
+      // 2s cast, but B41F damage cast (0.5s) starts ~6s later.
+      // There are 12.9s from B7BB startsUsing to bigAoe B7EA Ability
+      type: 'StartsUsing',
+      netRegex: { id: 'B7BB', source: 'The Tyrant', capture: false },
+      delaySeconds: 3.7, // 5s before AoEs start
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.text!(),
+      outputStrings: {
+        text: {
+          en: 'AoE x6 => Big AoE',
+        },
+      },
+    },
+    {
+      // Adapted from normal mode
+      id: 'R11S Dance Of Domination Trophy Safe Spots',
+      // B7BC Explosion
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'B7BC', capture: true },
+      preRun: (data, matches) => {
+        // Determine whether the AoE is orthogonal or diagonal
+        // Discard diagonal headings, then count orthogonals.
+        const headingDirNum = Directions.hdgTo8DirNum(parseFloat(matches.heading));
+        if (headingDirNum % 2 !== 0)
+          return;
+        const isVert = headingDirNum % 4 === 0;
+        let dangerDir: DirectionOutputCardinal | undefined = undefined;
+        if (isVert) {
+          data.domDirectionCount.vertCount += 1;
+          if (parseFloat(matches.x) < center.x - 5)
+            dangerDir = 'dirW';
+          else if (parseFloat(matches.x) > center.x + 5)
+            dangerDir = 'dirE';
+        } else {
+          data.domDirectionCount.horizCount += 1;
+          if (parseFloat(matches.y) < center.y - 5)
+            dangerDir = 'dirN';
+          else if (parseFloat(matches.y) > center.y + 5)
+            dangerDir = 'dirS';
+        }
+        if (dangerDir !== undefined)
+          data.domDirectionCount.outerSafe = data.domDirectionCount.outerSafe.filter((dir) =>
+            dir !== dangerDir
+          );
+      },
+      infoText: (data, _matches, output) => {
+        if (data.domDirectionCount.outerSafe.length !== 1)
+          return;
+
+        const outerSafeDir = data.domDirectionCount.outerSafe[0];
+
+        if (outerSafeDir === undefined)
+          return;
+
+        if (data.domDirectionCount.vertCount === 1)
+          return output.northSouth!({ dir: output[outerSafeDir]!() });
+        else if (data.domDirectionCount.horizCount === 1)
+          return output.eastWest!({ dir: output[outerSafeDir]!() });
+      },
+      // clear the safe dirs array to prevent further outputs
+      run: (data) => {
+        if (data.domDirectionCount.outerSafe.length === 1)
+          data.domDirectionCount.outerSafe = [];
+      },
+      outputStrings: {
+        northSouth: {
+          en: 'N/S Mid / ${dir} Outer + Partner Stacks',
+        },
+        eastWest: {
+          en: 'E/W Mid / ${dir} Outer + Partner Stacks',
+        },
+        ...Directions.outputStringsCardinalDir,
+      },
+    },
+    {
+      id: 'R11S Charybdistopia',
+      type: 'StartsUsing',
+      netRegex: { id: 'B425', source: 'The Tyrant', capture: false },
+      response: Responses.hpTo1Aoe(),
+    },
+    {
+      id: 'R11S Maelstrom Count',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Maelstrom', capture: false },
+      run: (data) => data.maelstromCount = data.maelstromCount + 1,
+    },
+    {
+      id: 'R11S Powerful Gust Reminder',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Maelstrom', capture: false },
+      condition: (data) => data.maelstromCount === 4,
+      infoText: (_data, _matches, output) => output.bait!(),
+      outputStrings: {
+        bait: {
+          en: 'Bait Gust',
+        },
+      },
+    },
+    {
+      id: 'R11S One and Only',
+      type: 'StartsUsing',
+      netRegex: { id: 'B429', source: 'The Tyrant', capture: false },
+      durationSeconds: 6,
+      response: Responses.bigAoe(),
+    },
+    {
+      id: 'R11S Great Wall of Fire',
+      // Target is boss, Line AOE that will later explode
+      type: 'StartsUsing',
+      netRegex: { id: 'B42B', source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.sharedTankbuster!(),
+      outputStrings: {
+        sharedTankbuster: Outputs.sharedTankbuster,
+      },
+    },
+    {
+      id: 'R11S Fire and Fury',
+      type: 'StartsUsing',
+      netRegex: { id: 'B42F', source: 'The Tyrant', capture: false },
+      response: Responses.goSides(),
+    },
+    {
+      id: 'R11S Meteor',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['meteor'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target && data.phase === 'one')
+          return true;
+        return false;
+      },
+      response: Responses.meteorOnYou(),
+      run: (data) => data.hasMeteor = true,
+    },
+    {
+      id: 'R11S Fearsome Fireball',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['lineStack'], capture: false },
+      condition: (data) => {
+        data.fireballCount = data.fireballCount + 1;
+        return !data.hasMeteor;
+      },
+      delaySeconds: 0.1, // Delay for meteor headmarkers
+      alertText: (data, _matches, output) => {
+        if (data.fireballCount === 1) {
+          if (data.role === 'tank')
+            return output.wildChargeTank!();
+          return output.wildCharge!();
+        }
+        if (data.role === 'tank')
+          return output.tetherBusters!();
+        return output.wildChargeMeteor!();
+      },
+      run: (data) => data.hasMeteor = false,
+      outputStrings: {
+        wildCharge: {
+          en: 'Wild Charge (behind tank)',
+        },
+        wildChargeMeteor: {
+          en: 'Wild Charge (behind meteor)',
+        },
+        wildChargeTank: {
+          en: 'Wild Charge (be in front)',
+        },
+        tetherBusters: Outputs.tetherBusters,
+      },
+    },
+    {
+      id: 'R11S Meteor Cleanup',
+      // Player hit by Cosmic Kiss
+      type: 'Ability',
+      netRegex: { id: 'B435', source: 'Comet', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.hasMeteor = false,
+    },
+    {
+      id: 'R11S Triple Tyrannhilation',
+      type: 'StartsUsing',
+      netRegex: { id: 'B43C', source: 'The Tyrant', capture: false },
+      alertText: (_data, _matches, output) => output.losMeteor!(),
+      outputStrings: {
+        losMeteor: {
+          en: 'LoS behind 3x meteor',
+        },
+      },
+    },
+    {
+      id: 'R11S Flatliner',
+      type: 'StartsUsing',
+      netRegex: { id: 'B43F', source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.flatliner!(),
+      outputStrings: {
+        flatliner: {
+          en: 'Short knockback to sides',
+          fr: 'Légère poussée vers les côtés',
+          cn: '向两侧短距离击退',
+          ko: '양 옆으로 짧은 넉백',
+        },
+      },
+    },
+    {
+      id: 'R11S Arena Split Majestic Meteorain Collect',
+      // Two MapEffects happen simultaneously with tethers
+      // Coincides with light tethers connecting the Meteorain portals
+      // NOTE: Unsure location is which, but they are paired so only collect one
+      // Location Pattern 1:
+      // 17 => West Out?
+      // 19 => East In?
+      // Location Pattern 2:
+      // 16 => East Out?
+      // 18 => West In?
+      type: 'MapEffect',
+      netRegex: { flags: '00200010', location: ['16', '17'], capture: true },
+      condition: (data) => data.phase === 'arenaSplit',
+      run: (data, matches) => {
+        // The second set of these can also be known from the first set as it will be oppposite
+        data.arenaSplitMeteorain = matches.location === '16'
+          ? 'westIn'
+          : 'westOut';
+      },
+    },
+    {
+      id: 'R11S Arena Split Majestic Meteowrath Tether Collect',
+      // Tethers have 2 patterns
+      // Pattern 1
+      // (69, 85)
+      //                  (131, 95)
+      //                  (131, 105)
+      // (69, 115)
+      // Pattern 2:
+      //                  (131, 85)
+      // (69, 95)
+      // (69, 105)
+      //                  (131, 115)
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data) => {
+        // Assuming log line of same player doesn't happen before 4 players collected
+        if (data.phase === 'arenaSplit' && data.arenaSplitTethers.length < 4)
+          return true;
+        return false;
+      },
+      preRun: (data, matches) => data.arenaSplitTethers.push(matches.target),
+      delaySeconds: 0.1, // Race condition with Tether lines and actor positions
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        const hasTether = (data.me === matches.target);
+        if (actor === undefined) {
+          if (hasTether)
+            data.arenaSplitStretchDirNum = -1; // Return -1 so that we know we at least don't bait fire breath
+          return;
+        }
+
+        if (hasTether) {
+          const portalDirNum = Directions.xyTo4DirIntercardNum(
+            actor.x,
+            actor.y,
+            center.x,
+            center.y,
+          );
+          // While two could be inter inter cards, furthest stretches will be an intercard
+          const stretchDirNum = (portalDirNum + 2) % 4;
+          data.arenaSplitStretchDirNum = stretchDirNum;
+        }
+      },
+    },
+    {
+      id: 'R11S Arena Split Fire Breath Bait Later',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: false },
+      condition: (data) => {
+        if (
+          data.phase === 'arenaSplit' &&
+          data.arenaSplitTethers.length === 4 &&
+          !data.arenaSplitCalledBait
+        ) {
+          if (!data.arenaSplitTethers.includes(data.me))
+            return data.arenaSplitCalledBait = true;
+        }
+        return false;
+      },
+      delaySeconds: 0.1,
+      infoText: (_data, _matches, output) => output.fireBreathLater!(),
+      outputStrings: {
+        fireBreathLater: {
+          en: 'Bait Fire Breath (later)',
+        },
+      },
+    },
+    {
+      id: 'R11S Arena Split Majestic Meteowrath Tether Stretch Later',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.phase === 'arenaSplit' &&
+          data.me === matches.target
+        ) {
+          // Prevent spamming tethers
+          if (!data.arenaSplitCalledTether)
+            return data.arenaSplitCalledTether = true;
+        }
+        return false;
+      },
+      delaySeconds: 0.1, // Race condition with Tether lines and actor positions
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return output.stretchTetherLater!();
+
+        const portalDirNum = Directions.xyTo4DirIntercardNum(
+          actor.x,
+          actor.y,
+          center.y,
+          center.x,
+        );
+        // While these are inter inter cards, furthest stretch will be an intercard
+        const stretchDirNum = (portalDirNum + 2) % 4;
+        const dir = Directions.outputIntercardDir[stretchDirNum];
+        return output.stretchTetherDirLater!({ dir: output[dir ?? '???']!() });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        stretchTetherDirLater: {
+          en: 'Tether on YOU: Stretch ${dir} (later)',
+        },
+        stretchTetherLater: {
+          en: 'Tether on YOU: Stretch (later)',
+        },
+      },
+    },
+    {
+      id: 'R11S Explosion Towers', // Knockback towers
+      // 10s castTime
+      type: 'StartsUsing',
+      netRegex: { id: 'B444', source: 'The Tyrant', capture: true },
+      condition: (data) => data.phase === 'arenaSplit',
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) - 4,
+      suppressSeconds: 1,
+      promise: async (data) => {
+        // Get player location for output
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R11S Explosion Towers: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        data.myPlatform = me.PosX < 100 ? 'west' : 'east';
+      },
+      alertText: (data, _matches, output) => {
+        const myPlatform = data.myPlatform;
+        const dirNum = data.arenaSplitStretchDirNum;
+        if (dirNum === 0 || dirNum === 1) {
+          if (myPlatform === 'east') {
+            return output.tetherTowers!({
+              mech1: output.northSouthSafe!(),
+              mech2: output.avoidFireBreath!(),
+            });
+          }
+          return output.tetherTowers!({
+            mech1: output.eastSafe!(),
+            mech2: output.avoidFireBreath!(),
+          });
+        }
+        if (dirNum === 2 || dirNum === 3) {
+          if (myPlatform === 'west') {
+            return output.tetherTowers!({
+              mech1: output.northSouthSafe!(),
+              mech2: output.avoidFireBreath!(),
+            });
+          }
+          return output.tetherTowers!({
+            mech1: output.westSafe!(),
+            mech2: output.avoidFireBreath!(),
+          });
+        }
+        if (!data.arenaSplitTethers.includes(data.me))
+          return output.fireBreathTowers!({
+            mech1: output.northSouthSafe!(),
+            mech2: output.baitFireBreath!(),
+          });
+        return output.knockbackTowers!();
+      },
+      outputStrings: {
+        knockbackTowers: {
+          en: 'Get Knockback Towers',
+          fr: 'Prenez une tour (poussée)',
+          cn: '踩击退塔',
+          ko: '넉백탑 들어가기',
+        },
+        fireBreathTowers: {
+          en: '${mech1} => ${mech2}',
+        },
+        tetherTowers: {
+          en: '${mech1} => ${mech2}',
+        },
+        baitFireBreath: {
+          en: 'Bait Near',
+        },
+        avoidFireBreath: Outputs.outOfHitbox,
+        northSouthSafe: {
+          en: 'Tower Knockback to Same Platform',
+        },
+        eastSafe: {
+          en: 'Tower Knockback Across to East',
+        },
+        westSafe: {
+          en: 'Tower Knockback Across to West',
+        },
+      },
+    },
+    {
+      id: 'R11S Fire Breath and Bait Puddles',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['fireBreath'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target && data.phase === 'arenaSplit')
+          return true;
+        return false;
+      },
+      durationSeconds: 6,
+      promise: async (data) => {
+        // Get player location for output
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R11S Fire Breath and Bait Puddles: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        data.myPlatform = me.PosX < 100 ? 'west' : 'east';
+      },
+      alertText: (data, _matches, output) => {
+        const meteorain = data.arenaSplitMeteorain;
+        const isWestIn = meteorain === 'westIn';
+        const myPlatform = data.myPlatform;
+        if (meteorain !== undefined && myPlatform !== undefined) {
+          if (myPlatform === 'west') {
+            const dir = isWestIn ? 'front' : 'back';
+            return output.fireBreathMechsPlayerWest!({
+              mech1: output.fireBreathOnYou!(),
+              mech2: output.bait3Puddles!(),
+              dir: output[dir]!(),
+            });
+          }
+          const dir = isWestIn ? 'back' : 'front';
+          return output.fireBreathMechsPlayerEast!({
+            mech1: output.fireBreathOnYou!(),
+            mech2: output.bait3Puddles!(),
+            dir: output[dir]!(),
+          });
+        }
+        return output.fireBreathMechs!({
+          mech1: output.fireBreathOnYou!(),
+          mech2: output.bait3Puddles!(),
+          mech3: output.lines!(),
+        });
+      },
+      outputStrings: {
+        bait3Puddles: {
+          en: 'Bait Puddles x3',
+          de: 'Flächen ködern x3',
+          fr: 'Déposez les flaques x3',
+          cn: '引导圈圈 x3',
+          ko: '장판 유도 x3',
+        },
+        back: {
+          en: 'Inner Back',
+        },
+        front: {
+          en: 'Inner Front',
+        },
+        lines: {
+          en: 'Avoid Lines',
+          de: 'Vermeide Linien',
+          fr: 'Évitez les lignes',
+          ja: '直線攻撃を避ける',
+          cn: '躲避直线 AoE',
+          ko: '직선장판 피하기',
+          tc: '躲避直線 AoE',
+        },
+        fireBreathOnYou: {
+          en: 'Fire Breath on YOU',
+        },
+        fireBreathMechsPlayerWest: {
+          en: '${mech1} + ${mech2} => ${dir}',
+        },
+        fireBreathMechsPlayerEast: {
+          en: '${mech1} + ${mech2} => ${dir}',
+        },
+        fireBreathMechs: {
+          en: '${mech1} + ${mech2} => ${mech3}',
+        },
+      },
+    },
+    {
+      id: 'R11S Arena Split Majestic Meteowrath Tether Bait Puddles',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['fireBreath'], capture: false },
+      condition: (data) => {
+        if (data.phase === 'arenaSplit' && data.arenaSplitTethers.includes(data.me))
+          return true;
+        return false;
+      },
+      durationSeconds: 6,
+      suppressSeconds: 1,
+      promise: async (data) => {
+        // Get player location for output
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R11S Arena Split Majestic Meteowrath Tether Bait Puddles: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        data.myPlatform = me.PosX < 100 ? 'west' : 'east';
+      },
+      alertText: (data, _matches, output) => {
+        const meteorain = data.arenaSplitMeteorain;
+        const isWestIn = meteorain === 'westIn';
+        const dirNum = data.arenaSplitStretchDirNum;
+        const myPlatform = data.myPlatform;
+        if (dirNum !== undefined && myPlatform !== undefined) {
+          const dir1 = Directions.outputIntercardDir[dirNum] ?? '???';
+          if (myPlatform === 'west') {
+            const dir2 = isWestIn ? 'front' : 'back';
+            return output.tetherMechsPlayerWest!({
+              mech1: output.bait3Puddles!(),
+              mech2: output.stretchTetherDir!({ dir: output[dir1]!() }),
+              dir: output[dir2]!(),
+            });
+          }
+          const dir2 = isWestIn ? 'back' : 'front';
+          return output.tetherMechsPlayerEast!({
+            mech1: output.bait3Puddles!(),
+            mech2: output.stretchTetherDir!({ dir: output[dir1]!() }),
+            dir: output[dir2]!(),
+          });
+        }
+        return output.baitThenStretchMechs!({
+          mech1: output.bait3Puddles!(),
+          mech2: output.stretchTether!(),
+          mech3: output.lines!(),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStringsIntercardDir,
+        bait3Puddles: {
+          en: 'Bait Puddles x3',
+          de: 'Flächen ködern x3',
+          fr: 'Déposez les flaques x3',
+          cn: '引导圈圈 x3',
+          ko: '장판 유도 x3',
+        },
+        back: {
+          en: 'Outer Back',
+        },
+        front: {
+          en: 'Outer Front',
+        },
+        lines: {
+          en: 'Avoid Lines',
+          de: 'Vermeide Linien',
+          fr: 'Évitez les lignes',
+          ja: '直線攻撃を避ける',
+          cn: '躲避直线 AoE',
+          ko: '직선장판 피하기',
+          tc: '躲避直線 AoE',
+        },
+        baitThenStretchMechs: {
+          en: '${mech1} => ${mech2}  + ${mech3}',
+        },
+        stretchTether: {
+          en: 'Stretch Tether',
+          de: 'Verbindung langziehen',
+          fr: 'Étirez les liens',
+          cn: '拉远连线',
+          ko: '선 늘이기',
+          tc: '拉遠連線',
+        },
+        stretchTetherDir: {
+          en: 'Stretch ${dir}',
+        },
+        tetherMechsPlayerEast: {
+          en: '${mech1} => ${mech2} + ${dir}',
+        },
+        tetherMechsPlayerWest: {
+          en: '${mech1} => ${mech2} + ${dir}',
+        },
+      },
+    },
+    {
+      id: 'R11S Majestic Meteowrath Tether and Fire Breath Reset',
+      // Reset tracker on B442 Majestic Meteowrath for next set of tethers
+      type: 'Ability',
+      netRegex: { id: 'B442', source: 'The Tyrant', capture: false },
+      condition: (data) => data.phase === 'arenaSplit',
+      suppressSeconds: 9999,
+      run: (data) => {
+        delete data.arenaSplitMeteorain;
+        delete data.arenaSplitStretchDirNum;
+        data.arenaSplitTethers = [];
+        data.arenaSplitCalledTether = false;
+        data.arenaSplitCalledBait = false;
+      },
+    },
+    {
+      id: 'R11S Massive Meteor',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['fiveHitStack'], capture: false },
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.stackFivex!(),
+      outputStrings: {
+        stackFivex: {
+          en: 'Stack 5x',
+          de: '5x Sammeln',
+          fr: '5x Packages',
+          ja: '頭割り５回',
+          cn: '5连分摊',
+          ko: '쉐어 5번',
+          tc: '5連分攤',
+        },
+      },
+    },
+    {
+      id: 'R11S Arcadion Avalanche West Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B44E', 'B450'], source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.westSafe!(),
+      outputStrings: {
+        westSafe: {
+          en: 'Tower Knockback to West',
+          fr: 'Prenez une tour (poussée vers l\'Ouest)',
+          cn: '被塔击飞到左侧平台',
+          ko: '탑 넉백 서쪽으로',
+        },
+      },
+    },
+    {
+      id: 'R11S Arcadion Avalanche East Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B44A', 'B44C'], source: 'The Tyrant', capture: false },
+      infoText: (_data, _matches, output) => output.eastSafe!(),
+      outputStrings: {
+        eastSafe: {
+          en: 'Tower Knockback to East',
+          fr: 'Prenez une tour (poussée vers l\'Est)',
+          cn: '被塔击飞到右侧平台',
+          ko: '탑 넉백 동쪽으로',
+        },
+      },
+    },
+    {
+      id: 'R11S Arcadion Avalanche Follow Up North Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B44B', 'B451'], source: 'The Tyrant', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      infoText: (_data, _matches, output) => output.goNorth!(),
+      outputStrings: {
+        goNorth: Outputs.north,
+      },
+    },
+    {
+      id: 'R11S Arcadion Avalanche Follow Up South Safe',
+      type: 'StartsUsing',
+      netRegex: { id: ['B44D', 'B44F'], source: 'The Tyrant', capture: true },
+      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 6,
+      infoText: (_data, _matches, output) => output.goSouth!(),
+      outputStrings: {
+        goSouth: Outputs.south,
+      },
+    },
+    {
+      id: 'R11S Atomic Impact Collect',
+      type: 'HeadMarker',
+      netRegex: { id: headMarkerData['atomicImpact'], capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.hasAtomic = true,
+    },
+    {
+      id: 'R11S Mammoth Meteor',
+      // Occurs same time as Atomic Impact headmarkers
+      type: 'StartsUsingExtra',
+      netRegex: { id: 'B453', capture: true },
+      delaySeconds: 0.1,
+      suppressSeconds: 1,
+      infoText: (data, matches, output) => {
+        // Mammoth Meteor is always at two opposite intercardinals.
+        // Once we see one, we know where the safespots are
+        // without waiting on the second.
+        const meteorX = parseFloat(matches.x);
+        const meteorY = parseFloat(matches.y);
+        const meteorQuad = Directions.xyToIntercardDirOutput(meteorX, meteorY, center.x, center.y);
+        if (data.hasAtomic) {
+          if (meteorQuad === 'dirNE' || meteorQuad === 'dirSW')
+            return output.comboDir!({ dir1: output.nw!(), dir2: output.se!() });
+          return output.comboDir!({ dir1: output.ne!(), dir2: output.sw!() });
+        }
+        return output.getMiddle!();
+      },
+      outputStrings: {
+        nw: Outputs.dirNW,
+        ne: Outputs.dirNE,
+        sw: Outputs.dirSW,
+        se: Outputs.dirSE,
+        comboDir: {
+          en: 'Go ${dir1}/${dir2} => Bait Impacts, Avoid Corners',
+        },
+        getMiddle: {
+          en: 'Proximity AoE; Get Middle => Bait Puddles',
+        },
+      },
+    },
+    {
+      id: 'R11S Cosmic Kiss', // Meteor towers
+      type: 'StartsUsing',
+      netRegex: { id: 'B456', source: 'The Tyrant', capture: false },
+      condition: (data) => {
+        if (data.hasAtomic)
+          return false;
+        return true;
+      },
+      suppressSeconds: 1,
+      response: Responses.getTowers(),
+    },
+    {
+      id: 'R11S Ecliptic Stampede Majestic Meteowrath Tether Collect',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.me === matches.target &&
+          data.phase === 'ecliptic'
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      run: (data) => data.hadEclipticTether = true,
+    },
+    {
+      id: 'R11S Ecliptic Stampede Majestic Meteowrath Tethers',
+      type: 'Tether',
+      netRegex: { id: [headMarkerData.closeTether, headMarkerData.farTether], capture: true },
+      condition: (data, matches) => {
+        if (
+          data.me === matches.target &&
+          data.phase === 'ecliptic'
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (data, matches, output) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+
+        const portalDirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        // TODO: Make config for options?
+        const stretchDirNum = (portalDirNum + 5) % 8;
+        const stretchDir = Directions.output8Dir[stretchDirNum] ?? 'unknown';
+        return output.stretchTetherDir!({ dir: output[stretchDir]!() });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        stretchTetherDir: {
+          en: 'Stretch Tether ${dir}',
+        },
+      },
+    },
+    {
+      id: 'R11S Two-way Fireball',
+      type: 'StartsUsing',
+      netRegex: { id: 'B7BD', source: 'The Tyrant', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.hadEclipticTether)
+          return output.twoWayBehind!();
+        return output.twoWayFront!();
+      },
+      outputStrings: {
+        twoWayFront: {
+          en: 'East/West Line Stack, Be in Front',
+        },
+        twoWayBehind: {
+          en: 'Move; East/West Line Stack, Get behind',
+        },
+      },
+    },
+    {
+      id: 'R11S Four-way Fireball',
+      type: 'StartsUsing',
+      netRegex: { id: 'B45A', source: 'The Tyrant', capture: false },
+      alertText: (data, _matches, output) => {
+        if (data.hadEclipticTether)
+          return output.fourWayBehind!();
+        return output.fourWayFront!();
+      },
+      outputStrings: {
+        fourWayFront: {
+          en: 'Intercardinal Line Stack, Be in Front',
+        },
+        fourWayBehind: {
+          en: 'Intercardinal Line Stack, Get behind',
+        },
+      },
+    },
+    {
+      id: 'R11S Heartbreaker (Enrage Sequence)',
+      type: 'StartsUsing',
+      netRegex: { id: 'B45D', source: 'The Tyrant', capture: false },
+      preRun: (data) => data.heartbreakerCount = data.heartbreakerCount + 1,
+      infoText: (data, _matches, output) => {
+        switch (data.heartbreakerCount) {
+          case 1:
+            return output.heartbreaker1!({
+              tower: output.getTower!(),
+              stack: output.stack5x!(),
+            });
+          case 2:
+            return output.heartbreaker2!({
+              tower: output.getTower!(),
+              stack: output.stack6x!(),
+            });
+          case 3:
+            return output.heartbreaker3!({
+              tower: output.getTower!(),
+              stack: output.stack7x!(),
+            });
+        }
+      },
+      outputStrings: {
+        getTower: {
+          en: 'Get Tower',
+          de: 'Turm nehmen',
+          fr: 'Prenez la tour',
+          ja: '塔を踏む',
+          cn: '踩塔',
+          ko: '장판 들어가기',
+          tc: '踩塔',
+        },
+        stack5x: {
+          en: 'Stack 5x',
+          de: '5x Sammeln',
+          fr: '5x Packages',
+          ja: '頭割り５回',
+          cn: '5连分摊',
+          ko: '쉐어 5번',
+          tc: '5連分攤',
+        },
+        stack6x: {
+          en: 'Stack 6x',
+        },
+        stack7x: {
+          en: 'Stack 7x',
+        },
+        heartbreaker1: {
+          en: '${tower} => ${stack}',
+        },
+        heartbreaker2: {
+          en: '${tower} => ${stack}',
+        },
+        heartbreaker3: {
+          en: '${tower} => ${stack}',
+        },
+      },
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'en',
+      'replaceText': {
+        'Majestic Meteowrath/Majestic Meteorain/Fire Breath': 'Fire Breath + Meteor Lines',
+      },
+    },
+  ],
+};
+
+export default triggerSet;
