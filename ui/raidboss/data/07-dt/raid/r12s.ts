@@ -3025,7 +3025,7 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
-          en: 'Soak Fire/Earth Meteor',
+          en: 'Soak Fire/Earth Meteor (later)',
         },
       },
     },
@@ -3080,7 +3080,7 @@ const triggerSet: TriggerSet<Data> = {
             tc: '大圈點名',
           },
           oneMechThenOne: {
-            en: '${mech1} => ${mech2}'
+            en: '${mech1} => ${mech2}',
           },
           oneMechThenTwo: {
             en: '${mech1} => ${mech2} + ${mech3}',
@@ -3184,7 +3184,7 @@ const triggerSet: TriggerSet<Data> = {
               mech3: next2 === 'stack'
                 ? output.stackOnPlayer!({ player: shortPlayer4 })
                 : output[next2]!(),
-            })
+            }),
           };
         }
 
@@ -3202,7 +3202,7 @@ const triggerSet: TriggerSet<Data> = {
                 ? output.stackOnPlayer!({ player: shortPlayer2 })
                 : output[this2]!(),
               mech3: output[next1]!(),
-            })
+            }),
           };
         }
 
@@ -3211,18 +3211,18 @@ const triggerSet: TriggerSet<Data> = {
         return {
           [text]: output.twoMechsThenTwo!({
             mech1: this1 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer1 })
-                : output[this1]!(),
+              ? output.stackOnPlayer!({ player: shortPlayer1 })
+              : output[this1]!(),
             mech2: this2 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer2 })
-                : output[this2]!(),
+              ? output.stackOnPlayer!({ player: shortPlayer2 })
+              : output[this2]!(),
             mech3: next1 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer3 })
-                : output[next1]!(),
+              ? output.stackOnPlayer!({ player: shortPlayer3 })
+              : output[next1]!(),
             mech4: next2 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer4 })
-                : output[next2]!(),
-          })
+              ? output.stackOnPlayer!({ player: shortPlayer4 })
+              : output[next2]!(),
+          }),
         };
       },
     },
