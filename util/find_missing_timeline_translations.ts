@@ -6,12 +6,12 @@ import NetRegexes from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
 import Regexes from '../resources/regexes';
 import { AnonNetRegexParams, translateRegexBuildParamAnon } from '../resources/translations';
-import { LooseTriggerSet } from '../types/trigger';
+import { LooseTriggerSet, TimelineReplacement } from '../types/trigger';
 import {
   commonReplacement,
   partialCommonTimelineReplacementKeys,
 } from '../ui/raidboss/common_replacement';
-import { TimelineParser, TimelineReplacement } from '../ui/raidboss/timeline_parser';
+import { TimelineParser } from '../ui/raidboss/timeline_parser';
 
 import { ErrorFuncType } from './find_missing_translations';
 
