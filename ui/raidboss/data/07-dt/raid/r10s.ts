@@ -487,6 +487,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => {
         return data.snakingDebuff !== 'fire';
       },
+      durationSeconds: (data) => data.phase === 'arenaSplit' ? 8 : 3,
       infoText: (data, matches, output) => {
         // During snaking it is always move since the baits are too close
         if (data.phase === 'snaking')
@@ -532,6 +533,32 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Double-Dip Protean',
           fr: 'Double Alley-oop',
           cn: '要动',
+        },
+      },
+    },
+    {
+      id: 'R10S Reverse Alley-oop/Alley-oop Double-dip 2nd Hit',
+      // TODO: Handle Arena Split with boss/postion checking?
+      type: 'Ability',
+      netRegex: { id: ['B5E0', 'B5DD'], source: 'Deep Blue', capture: true },
+      condition: (data) => {
+        return data.snakingDebuff !== 'fire' && data.phase !== 'arenaSplit';
+      },
+      infoText: (data, matches, output) => {
+        // During saking it is always move since the baits are too close.
+        if (data.phase === 'snaking')
+          return output.move!();
+        return matches.id === 'B5E0' ? output.stay!() : output.move!();
+      },
+      outputStrings: {
+        move: Outputs.moveAway,
+        stay: {
+          en: 'Stay',
+          de: 'Bleib stehen',
+          fr: 'Restez',
+          cn: '停',
+          ko: '대기',
+          tc: '停',
         },
       },
     },

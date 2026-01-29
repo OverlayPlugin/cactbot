@@ -212,7 +212,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '上 + 玉から離れる',
           cn: '上 + 远离黄球',
           ko: '북쪽 + 구슬에서 멀리 떨어지기',
-          tc: '上 + 遠離黃球',
+          tc: '北 + 遠離黃球',
         },
         nearOrb: {
           en: 'Be close to North orb',
@@ -221,7 +221,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '上の玉に近づく',
           cn: '靠近上半场黄球',
           ko: '북쪽 구슬에 가까이 붙기',
-          tc: '靠近上半場黃球',
+          tc: '靠近北半場黃球',
         },
       },
     },
@@ -325,7 +325,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'AOEを避ける (その後、横へ)',
           cn: '躲 AOE (然后去两侧)',
           ko: '장판 피하기 (이후 양옆으로)',
-          tc: '躲 AOE (然後去兩側)',
+          tc: '躲AOE (然後去兩側)',
         },
       },
     },
@@ -351,7 +351,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'AOEを避ける (その後、中央へ)',
           cn: '躲 AOE (然后去中间)',
           ko: '장판 피하기 (이후 중앙으로)',
-          tc: '躲 AOE (然後去中間)',
+          tc: '躲AOE (然後去中間)',
         },
       },
     },
@@ -647,7 +647,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Airy Bubble': '水泡',
         'Feather Ray': '羽環魟',
@@ -655,10 +654,10 @@ const triggerSet: TriggerSet<Data> = {
         'Maulskull': '錘顱巨兵',
       },
       'replaceText': {
-        // '\\(boss\\)': '', // FIXME '(BOSS)'
-        // '\\(first\\)': '', // FIXME '(一)'
-        // '\\(party\\)': '', // FIXME '(玩家)'
-        // '\\(second\\)': '', // FIXME '(二)'
+        '\\(boss\\)': '(Boss)',
+        '\\(first\\)': '(一)',
+        '\\(party\\)': '(玩家)',
+        '\\(second\\)': '(二)',
         'Ancient Artillery': '火砲啟動',
         '(?<! )Artillery': '火砲',
         'Ashlayer': '熱能放射',
