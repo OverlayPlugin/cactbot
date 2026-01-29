@@ -1799,7 +1799,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.phase === 'replication2')
           data.replication2TetherMap[dirNum] = matches.id;
         if (data.phase === 'idyllic')
-          data.replication4TetherMap[dirNum] = matches.id;
+          data.replication4DirNumAbility[dirNum] = matches.id;
       },
     },
     {
