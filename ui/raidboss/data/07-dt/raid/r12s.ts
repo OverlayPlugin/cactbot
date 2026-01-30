@@ -3634,12 +3634,70 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Twisted Vision 7 Safe Platform',
+      // TODO: Get direction of the safe platform + N/S or E/W?
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
+      condition: (data) => data.twistedVisionCounter === 7,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 3,
+      infoText: (data, _matches, output) => {
+        const first = data.replication3CloneOrder[0];
+        if (first === undefined)
+          return;
+        const dirNumOrder = first % 2 !== 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
+
+        // Need to lookup what ability is at each dir, only need cards or intercard dirs
+        const abilities = data.replication4AbilityOrder.slice(4,8);
+        const stackDirs = [];
+        let i = 0;
+
+        // Find first all stacks in cards or intercards
+        // Incorrect amount means players made an unsolvable? run
+        for (const dirNum of dirNumOrder) {
+          if (abilities[i++] === headMarkerData['heavySlamTether'])
+            stackDirs.push(dirNum);
+        }
+        // Only grabbing first two
+        const dirNum1 = stackDirs[0];
+        const dirNum2 = stackDirs[1];
+
+        // If we failed to get two stacks, just output generic cards/intercards reminder
+        if (dirNum1 === undefined || dirNum2 === undefined) {
+          const card = first % 2 !== 0 ? 'cardinals' : 'intercards';
+          return output.platformThenStack!({
+            platform: output.safePlatform!(),
+            stack: output[card]!(),
+          });
+        }
+        const dir1 =  Directions.output8Dir[dirNum1];
+        const dir2 =  Directions.output8Dir[dirNum2];
+        return output.platformThenStack!({
+          platform: output.safePlatform!(),
+          stack: output.stack!({ dir1: dir1, dir2: dir2 }),
+        });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
+        safePlatform: {
+          en: 'Safe Platform',
+        },
+        stack: {
+          en: 'Stack ${dir1}/${dir2}',
+        },
+        platformThenStack: {
+          en: '${platform} => ${stack}',
+        },
+      },
+    },
+    {
       id: 'R12S Twisted Vision 8 Light Party Stacks',
       // At end of cast it's cardinal or intercard
-      type: 'Ability',
+      type: 'StartsUsing',
       netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
       condition: (data) => data.twistedVisionCounter === 8,
-      infoText: (data, _matches, output) => {
+      alertText: (data, _matches, output) => {
         const first = data.replication3CloneOrder[0];
         if (first === undefined)
           return;
