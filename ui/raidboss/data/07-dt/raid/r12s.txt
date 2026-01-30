@@ -285,6 +285,7 @@ hideall "--sync--"
 1636.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
 1636.8 "--untargetable?--"
 1636.8 "Refreshing Overkill (Enrage)?" #Ability { id: "B53A", source: "Lindwurm" }
+
 1646.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } window 20,3 forcejump "r12s-p1-enrage"
 
 # Raptor Knuckles Left Third
@@ -327,12 +328,12 @@ hideall "--sync--"
 
 # Enrage sequence
 2027.7 label "r12s-p1-enrage"
-2036.7 "Refreshing Overkill (Enrage)?" Ability { id: "B538", source: "Lindwurm" }
+2036.7 "Refreshing Overkill (Enrage)?" Ability { id: "B538", source: "Lindwurm" } window 510,5
 2036.8 "--untargetable--"
 2036.8 "Refreshing Overkill (Enrage)?" Ability { id: "B53A", source: "Lindwurm" }
 
 # Kill/Transition sequence
-2036.8 "Refreshing Overkill" Ability { id: "B539", source: "Lindwurm" } window 510,5
+2036.8 "Refreshing Overkill" Ability { id: "B539", source: "Lindwurm" }
 2073.0 "--sync--" Ability { id: "BB9C", source: "Lindwurm" }
 2073.5 "Down for the Count" duration 42
 2075.7 "--sync--" Ability { id: "B53B", source: "Lindwurm" }
@@ -340,8 +341,8 @@ hideall "--sync--"
 
 
 ### Phase 2: Lindwurm II
-# -p B528:3012.1
-# -ii B51F B4DA B4DB B4DD B4DF B4E3 B4E6 B4F0 B4E9 B4F1 B4EE B4EF B508 B4FF BCB0
+# -p B528:3015.7
+# -ii B51F B4DA B4DB B4DD B4DF B4E3 B4E6 B4F0 B4E9 B4F1 B4EE B4EF B508 B4F5 B512 B513 B514 B515
 # -it "Lindwurm"
 3000.5 label "r12s-p2-start"
 3010.7 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
@@ -365,8 +366,16 @@ hideall "--sync--"
 # NOTE: Depending on clone order and tethers player takes, spells at each instance will differ
 # TBD: Generalize these?
 3091.2 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
+3092.5 "--clones x2 1--" ActorControlExtra { category: "0197", param1: "11D2" }
+3094.0 "--clones x2 2--" ActorControlExtra { category: "0197", param1: "11D2" }
+3095.5 "--clones x2 3--" ActorControlExtra { category: "0197", param1: "11D2" }
+3097.0 "--clones x2 4--" ActorControlExtra { category: "0197", param1: "11D2" }
+3099.1 "--locked tethers--" Tether { id: "0175", source: "Understudy" }
 3102.2 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
 3105.4 "Replication 2" Ability { id: "B4D8", source: "Lindwurm" }
+3108.6 "--boss clones x6--" ActorControlExtra { category: "0197", param1: "11D5" }
+3113.8 "--tethers--"  #Tether { id: ["016F", "0170", "0171", "0176"] } # These could change hands causing sync issue
+3121.8 "--locked tethers--" Tether { id: "0175", source: ["Lindschrat", "Lindwurm"] }
 3127.8 "Firefall Splash" Ability { id: "B4E4", source: "Lindwurm" }
 3128.5 "Scalding Waves x4" Ability { id: "B4E5", source: "Lindwurm" }
 3129.9 "Mana Burst x3" Ability { id: "B4E7", source: "Lindwurm" }
@@ -396,11 +405,15 @@ hideall "--sync--"
 3190.0 "Blood Mana" Ability { id: "B4FB", source: "Lindwurm" }
 3193.3 "--black holes--" Ability { id: "BCB0", source: "Mana Sphere" }
 3193.7 "--shapes--" Ability { id: "B4FD", source: "Mana Sphere" }
-3200.7 "Bloody Burst 1" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
-3201.0 "Bloody Burst 2" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
+3200.7 "Bloody Burst x2" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
 3202.2 "Dramatic Lysis x8" Ability { id: "B507", source: "Lindwurm" }
+3203.2 "--close shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
+3203.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 1
+3204.2 "--far shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
+3206.0 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 2
+3207.2 "--soaked shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
+3209.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # blackhole 1
 
-# TBD Clean-up/Generalize this part as its dependent on what was soaked and what spawned
 3216.7 "Blood Wakening" Ability { id: "B500", source: "Lindwurm" }
 3217.9 "--sync--" Ability { id: "B4FC", source: "Mana Sphere" }
 3218.3 "Black Hole 1" Ability { id: ["B501", "B502", "B503", "B504"], source: "Lindwurm" }
@@ -419,63 +432,73 @@ hideall "--sync--"
 # TBD Clean-up/Generalize this as well since stacks/defamation order is tether dependent
 3268.8 "Idyllic Dream" Ability { id: "B509", source: "Lindwurm" }
 3275.0 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
+3276.3 "--clones x4 1--" ActorControlExtra { category: "0197", param1: "11D2" }
+3278.3 "--clones x4 2--" ActorControlExtra { category: "0197", param1: "11D2" }
+3280.4 "--locked tethers--" Tether { id: "0175", source: "Understudy" }
 3283.4 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
-3290.1 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3290.1 "Twisted Vision 1" Ability { id: "BBE2", source: "Lindwurm" }
 3296.2 "Replication 3" Ability { id: "B4D8", source: "Lindwurm" }
-3308.6 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
-3309.6 "Power Gusher" #Ability { id: "B512", source: "Lindwurm" }
-3309.6 "Power Gusher" #Ability { id: "B50F", source: "Lindschrat" }
+3299.4 "--boss clones x3--" ActorControlExtra { category: "0197", param1: "11D5" }
+3308.6 "Twisted Vision 2" Ability { id: "BBE2", source: "Lindwurm" }
+3309.6 "Power Gusher x2" #Ability { id: ["B50F", "B510"], source: "Lindschrat" }
 3309.6 "Snaking Kick" #Ability { id: "B511", source: "Lindschrat" }
-3309.6 "Power Gusher" #Ability { id: "B510", source: "Lindschrat" }
 3314.7 "Replication 4" Ability { id: "B4D8", source: "Lindwurm" }
+3317.9 "--boss clones x2 1--" ActorControlExtra { category: "0197", param1: "11D5" }
+3318.9 "--boss clones x2 2--" ActorControlExtra { category: "0197", param1: "11D5" }
+3319.9 "--boss clones x2 3--" ActorControlExtra { category: "0197", param1: "11D5" }
+3320.9 "--boss clones x2 4--" ActorControlExtra { category: "0197", param1: "11D5" }
+3326.1 "--tethers--" #Tether { id: ["0170", "0171"], source: "Lindschrat" } # These could change hands causing sync issue
+3334.1 "--locked tethers--" Tether { id: ["0170", "0171"], source: "Lindschrat" }
 
 # Towers Preview
-3334.3 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
-3337.7 "Power Gusher" #Ability { id: "B513", source: "Lindschrat" }
-3337.7 "Snaking Kick" Ability { id: "B515", source: "Lindschrat" }
-3337.7 "Power Gusher" #Ability { id: "B514", source: "Lindschrat" }
+3334.3 "Twisted Vision 3" Ability { id: "BBE2", source: "Lindwurm" }
 3338.7 "Snaking Kick" Ability { id: "BE95", source: "Lindwurm" }
-3338.9 "Power Gusher" #Ability { id: "B516", source: "Lindwurm" }
+3338.9 "Power Gusher x4" #Ability { id: "B516", source: "Lindwurm" } # Front/Back are apparently counting as their own casts
 3342.8 "Lindwurm's Meteor" Ability { id: "B4F2", source: "Lindwurm" }
 3348.9 "Downfall" Ability { id: "B4F3", source: "Lindwurm" }
-3355.0 "Arcadian Arcanum" Ability { id: "B529", source: "Lindwurm" }
+3355.0 "Arcadian Arcanum (castbar)" Ability { id: "B529", source: "Lindwurm" }
 3356.2 "Arcadian Arcanum" Ability { id: "B9D9", source: "Lindwurm" }
 
 # First Stacks/Defamations
-3363.0 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
-3369.6 "Heavy Slam" Ability { id: "B519", source: "Lindschrat" }
-3374.6 "Mana Burst" Ability { id: "B517", source: "Lindschrat" }
-3375.8 "Mana Burst" Ability { id: "B518", source: "Lindwurm" }
-3379.6 "Heavy Slam" Ability { id: "B519", source: "Lindschrat" }
-3384.6 "Mana Burst" Ability { id: "B517", source: "Lindschrat" }
+# Orders could be different, but we can detect B517 abiltiy to know if Mana Burst is coming 1.2s before B518
+3363.0 "Twisted Vision 4" Ability { id: "BBE2", source: "Lindwurm" }
+3369.6 "Clone 1 Heavy Slam?" Ability { id: "B519", source: "Lindschrat" } # Or B517 Mana Burst (Lindschrat) happens here
+3370.8 "Clone 1 Mana Burst?" Ability { id: "B518", source: "Lindwurm" }
+3374.6 "Clone 2 Heavy Slam?" Ability { id: "B519", source: "Lindschrat" } # Or B517 Mana Burst (Lindschrat) happens here
+3375.8 "Clone 2 Mana Burst?" Ability { id: "B518", source: "Lindwurm" }
+3379.6 "Clone 3 Heavy Slam?" Ability { id: "B519", source: "Lindschrat" } # Or B517 Mana Burst (Lindschrat) happens here
+3380.8 "Clone 3 Mana Burst?" Ability { id: "B518", source: "Lindwurm" }
+3384.6 "Clone 4 Heavy Slam?" Ability { id: "B519", source: "Lindschrat" } # Or B517 Mana Burst (Lindschrat) happens here
+3385.8 "Clone 4 Mana Burst?" Ability { id: "B518", source: "Lindwurm" }
+
+# Twisted Vision 5: Towers
+3393.6 "Twisted Vision 5" Ability { id: "BBE2", source: "Lindwurm" }
+3398.0 "Cosmic Kiss" Ability { id: "B4F4", source: "Lindwurm" }
+
+# fflogs adjusted by 4.1s
+3398.7 "Lindwurm's Dark II" Ability { id: "B4F6", source: "Lindwurm" }
+3400.7 "Pyretic Wurm" Ability { id: "B4F9", source: "Lindwurm" }
+3403.7 "Lindwurm's Stone III" #Ability { id: "B4F7", source: "Lindwurm" }
+3408.7 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
+3408.7 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
+3408.7 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
+3408.7 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
+3412.0 "Temporal Curtain" Ability { id: "B51C", source: "Lindwurm" }  window 10,10
 
 # fflogs
-3389.5 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" } window 10,10
-3393.9 "Cosmic Kiss" Ability { id: "B4F4", source: "Lindwurm" }
-3394.6 "Lindwurm's Dark II" Ability { id: "B4F6", source: "Lindwurm" }
-3396.6 "Pyretic Wurm" Ability { id: "B4F9", source: "Lindwurm" }
-3399.6 "Lindwurm's Stone III" #Ability { id: "B4F7", source: "Lindwurm" }
-3404.6 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
-3404.6 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
-3404.6 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
-3404.6 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
-3412.9 "Temporal Curtain" Ability { id: "B51C", source: "Lindwurm" }
-
 3416.0 "--sync--" Ability { id: "B51D", source: "Lindschrat" }
 3419.1 "--sync--" Ability { id: "B4D9", source: "Lindschrat" }
-3425.4 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3425.4 "Twisted Vision 6" Ability { id: "BBE2", source: "Lindwurm" }
 3426.4 "Power Gusher" #Ability { id: "B50F", source: "Lindschrat" }
 3426.4 "Snaking Kick" Ability { id: "BCAF", source: "Lindschrat" }
 3431.5 "Reenactment 2" Ability { id: "B4EC", source: "Lindwurm" }
 3433.5 "Heavy Slam" Ability { id: "B4EF", source: "Lindschrat" }
 3434.7 "Mana Burst" Ability { id: "BBE3", source: "Lindwurm" }
 3434.9 "Heavy Slam" #Ability { id: "BE5D", source: "Lindwurm" }
-3440.5 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
-3444.1 "Power Gusher" #Ability { id: "B513", source: "Lindschrat" }
-3444.1 "Snaking Kick" Ability { id: "B515", source: "Lindschrat" }
+3440.5 "Twisted Vision 7" Ability { id: "BBE2", source: "Lindwurm" }
 3445.1 "Snaking Kick" Ability { id: "BE95", source: "Lindwurm" }
 3445.3 "Power Gusher" Ability { id: "B516", source: "Lindwurm" }
-3448.2 "Twisted Vision" Ability { id: "BBE2", source: "Lindwurm" }
+3448.2 "Twisted Vision 8" Ability { id: "BBE2", source: "Lindwurm" }
 3454.5 "Heavy Slam" #Ability { id: "B4EF", source: "Lindschrat" }
 3454.5 "--sync--" Ability { id: "B51E", source: "Lindschrat" }
 3455.7 "Mana Burst" Ability { id: "BBE3", source: "Lindwurm" }
@@ -533,8 +556,13 @@ hideall "--sync--"
 # B4EE Mana Burst: VFX used in Reenactment
 # B4EF Heavy Slam: VFX used in Reenactment
 # B508 Unmitigated Explosion: Getting hit when you have Mitigation α or failing to get hit with Mitigation β, applies 30s damage down
-# B4FF --sync--: VFX related to Mana Spheres being eaten by Black Hole?
-# BCB0 --sync--: VFX related to Mana Spheres being eaten by Black Hole?
+# B4FF --sync--: VFX Mana Spheres eaten by Black Hole
+# BCB0 --sync--: VFX Black Hole light eruption
+# B4F5 Unmitigated Explosion: Missing Cosmic Kiss Tower (Twisted Vision 5)
+# B512 Power Gusher: VFX during Twisted Vision 2 with B50F and B510
+# B513 Power Gusher: VFX during Twisted Vision 3, related to the B50F
+# B514 Power Gusher: VFX during Twisted Vision 3, related to the B510
+# B515 Snaking Kick: VFX during Twisted Vision 3
 
 # ALL ENCOUNTER ABILITIES
 # Phase 1
@@ -599,6 +627,7 @@ hideall "--sync--"
 # B4D5 Fourth-wall Fusion
 # B4D6 Visceral Burst
 # B4D7 The Fixer
+# B4F5 Unmitigated Explosion
 # B538 Refreshing Overkill: Enrage castbar
 # B539 Refreshing Overkill: Non-enrage
 # B53A Refreshing Overkill: Enrage
@@ -684,7 +713,7 @@ hideall "--sync--"
 # B514 Power Gusher
 # B515 Snaking Kick
 # B516 Power Gusher
-# B517 Mana Burst
+# B517 Mana Burst: VFX during Twisted Vision 4, happens 1.2s before B518, useful for sync branch
 # B518 Mana Burst
 # B519 Heavy Slam
 # B51A Power Gusher
@@ -718,6 +747,7 @@ hideall "--sync--"
 # BBE2 Twisted Vision
 # BBE3 Mana Burst
 # BCAF Snaking Kick
+# BCB0 --sync--: Blackhole spawn
 # BE5D Heavy Slam
 # BE95 Snaking Kick
 # BEC1 Arcadian Hell
