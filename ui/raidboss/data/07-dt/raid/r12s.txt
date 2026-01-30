@@ -483,7 +483,7 @@ hideall "--sync--"
 3408.7 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
 3408.7 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
 3408.7 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
-3412.0 "Temporal Curtain" Ability { id: "B51C", source: "Lindwurm" }  window 10,10
+3412.0 "Temporal Curtain" Ability { id: "B51C", source: "Lindwurm" } window 10,10
 
 # fflogs
 3416.0 "--sync--" Ability { id: "B51D", source: "Lindschrat" }
