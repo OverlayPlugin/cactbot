@@ -3045,24 +3045,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S No Light Resistance Down II',
-      type: 'GainsEffect',
-      netRegex: { effectId: '1044', capture: false },
-      delaySeconds: 0.1,
-      suppressSeconds: 9999,
-      infoText: (data, _matches, output) => {
-        if (!data.hasLightResistanceDown)
-          return output.text!();
-      },
-      outputStrings: {
-        text: {
-          en: 'Soak a White/Star Meteor (later)',
-        },
-      },
-    },
-    {
       id: 'R12S Twisted Vision 4 Stack/Defamation 1',
-      // Used for keeping track of phases in idyllic
       type: 'StartsUsing',
       netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
       condition: (data) => data.twistedVisionCounter === 4,
@@ -3475,6 +3458,7 @@ const triggerSet: TriggerSet<Data> = {
         }
       },
     },
+    
     {
       id: 'R12S Doom Collect',
       type: 'GainsEffect',
@@ -3511,6 +3495,28 @@ const triggerSet: TriggerSet<Data> = {
         },
         cleanseDoom2: {
           en: 'Cleanse ${target1}/${target2}',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 5',
+      // TODO: Get Position of the towers and player side and state the front/left back/right
+      // Towers aren't visible until after cast, but you would have 4.4s to adjust if the trigger was delayed
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
+      condition: (data) => data.twistedVisionCounter === 5,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 4.1,
+      alertText: (data, _matches, output) => {
+        if (data.hasLightResistanceDown)
+          return output.fireEarthTower!();
+        return output.holyTower!();
+      },
+      outputStrings: {
+        fireEarthTower: {
+          en: 'Soak Fire/Earth Meteor',
+        },
+        holyTower: {
+          en: 'Soak a White/Star Meteor',
         },
       },
     },
