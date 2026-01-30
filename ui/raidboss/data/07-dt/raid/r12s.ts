@@ -3602,7 +3602,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNumOrder = first % 2 === 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
 
         // Need to lookup what ability is at each dir, only need cards or intercard dirs
-        const abilities = data.replication4AbilityOrder.splice(0,4);
+        const abilities = data.replication4AbilityOrder.splice(0, 4);
         const stackDirs = [];
         let i = 0;
 
@@ -3620,8 +3620,8 @@ const triggerSet: TriggerSet<Data> = {
         if (dirNum1 === undefined || dirNum2 === undefined) {
           return first % 2 === 0 ? output.cardinals!() : output.intercards!();
         }
-        const dir1 =  Directions.output8Dir[dirNum1];
-        const dir2 =  Directions.output8Dir[dirNum2];
+        const dir1 = Directions.output8Dir[dirNum1];
+        const dir2 = Directions.output8Dir[dirNum2];
         return output.stack!({ dir1: dir1, dir2: dir2 });
       },
       outputStrings: {
@@ -3647,7 +3647,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNumOrder = first % 2 !== 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
 
         // Need to lookup what ability is at each dir, only need cards or intercard dirs
-        const abilities = data.replication4AbilityOrder.slice(4,8);
+        const abilities = data.replication4AbilityOrder.slice(4, 8);
         const stackDirs = [];
         let i = 0;
 
@@ -3669,8 +3669,8 @@ const triggerSet: TriggerSet<Data> = {
             stack: output[card]!(),
           });
         }
-        const dir1 =  Directions.output8Dir[dirNum1];
-        const dir2 =  Directions.output8Dir[dirNum2];
+        const dir1 = Directions.output8Dir[dirNum1];
+        const dir2 = Directions.output8Dir[dirNum2];
         return output.platformThenStack!({
           platform: output.safePlatform!(),
           stack: output.stack!({ dir1: dir1, dir2: dir2 }),
@@ -3704,7 +3704,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNumOrder = first % 2 !== 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
 
         // Need to lookup what ability is at each dir, only need cards or intercard dirs
-        const abilities = data.replication4AbilityOrder.slice(4,8);
+        const abilities = data.replication4AbilityOrder.slice(4, 8);
         const stackDirs = [];
         let i = 0;
 
@@ -3722,8 +3722,8 @@ const triggerSet: TriggerSet<Data> = {
         if (dirNum1 === undefined || dirNum2 === undefined) {
           return first % 2 !== 0 ? output.cardinals!() : output.intercards!();
         }
-        const dir1 =  Directions.output8Dir[dirNum1];
-        const dir2 =  Directions.output8Dir[dirNum2];
+        const dir1 = Directions.output8Dir[dirNum1];
+        const dir2 = Directions.output8Dir[dirNum2];
         return output.stack!({ dir1: dir1, dir2: dir2 });
       },
       outputStrings: {
