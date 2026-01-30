@@ -366,10 +366,10 @@ hideall "--sync--"
 # NOTE: Depending on clone order and tethers player takes, spells at each instance will differ
 # TBD: Generalize these?
 3091.2 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
-3092.5 "--clones x2 1--" ActorControlExtra { category: "0197", param1: "11D2" }
-3094.0 "--clones x2 2--" ActorControlExtra { category: "0197", param1: "11D2" }
-3095.5 "--clones x2 3--" ActorControlExtra { category: "0197", param1: "11D2" }
-3097.0 "--clones x2 4--" ActorControlExtra { category: "0197", param1: "11D2" }
+3092.5 "--clones x2 1--" #ActorControlExtra { category: "0197", param1: "11D2" }
+3094.0 "--clones x2 2--" #ActorControlExtra { category: "0197", param1: "11D2" }
+3095.5 "--clones x2 3--" #ActorControlExtra { category: "0197", param1: "11D2" }
+3097.0 "--clones x2 4--" #ActorControlExtra { category: "0197", param1: "11D2" }
 3099.1 "--locked tethers--" Tether { id: "0175", source: "Understudy" }
 3102.2 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
 3105.4 "Replication 2" Ability { id: "B4D8", source: "Lindwurm" }
@@ -408,11 +408,11 @@ hideall "--sync--"
 3200.7 "Bloody Burst x2" #Ability { id: "B4FE", source: "Lindwurm" } # Goes off when soaked by player
 3202.2 "Dramatic Lysis x8" Ability { id: "B507", source: "Lindwurm" }
 3203.2 "--close shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
-3203.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 1
-3204.2 "--far shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
-3206.0 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 2
-3207.2 "--soaked shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
-3209.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # blackhole 1
+3204.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 1
+3206.2 "--far shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
+3207.0 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 2
+3209.2 "--soaked shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
+3210.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # blackhole 1
 
 3216.7 "Blood Wakening" Ability { id: "B500", source: "Lindwurm" }
 3217.9 "--sync--" Ability { id: "B4FC", source: "Mana Sphere" }
@@ -432,8 +432,8 @@ hideall "--sync--"
 # TBD Clean-up/Generalize this as well since stacks/defamation order is tether dependent
 3268.8 "Idyllic Dream" Ability { id: "B509", source: "Lindwurm" }
 3275.0 "Staging" Ability { id: "B4E1", source: "Lindwurm" }
-3276.3 "--clones x4 1--" ActorControlExtra { category: "0197", param1: "11D2" }
-3278.3 "--clones x4 2--" ActorControlExtra { category: "0197", param1: "11D2" }
+3276.3 "--clones x4 1--" #ActorControlExtra { category: "0197", param1: "11D2" }
+3278.3 "--clones x4 2--" #ActorControlExtra { category: "0197", param1: "11D2" }
 3280.4 "--locked tethers--" Tether { id: "0175", source: "Understudy" }
 3283.4 "--sync--" Ability { id: "B4E2", source: "Lindwurm" }
 3290.1 "Twisted Vision 1" Ability { id: "BBE2", source: "Lindwurm" }
@@ -443,12 +443,12 @@ hideall "--sync--"
 3309.6 "Power Gusher x2" #Ability { id: ["B50F", "B510"], source: "Lindschrat" }
 3309.6 "Snaking Kick" #Ability { id: "B511", source: "Lindschrat" }
 3314.7 "Replication 4" Ability { id: "B4D8", source: "Lindwurm" }
-3317.9 "--boss clones x2 1--" ActorControlExtra { category: "0197", param1: "11D5" }
-3318.9 "--boss clones x2 2--" ActorControlExtra { category: "0197", param1: "11D5" }
-3319.9 "--boss clones x2 3--" ActorControlExtra { category: "0197", param1: "11D5" }
-3320.9 "--boss clones x2 4--" ActorControlExtra { category: "0197", param1: "11D5" }
+3317.9 "--boss clones x2 1--" #ActorControlExtra { category: "0197", param1: "11D5" }
+3318.9 "--boss clones x2 2--" #ActorControlExtra { category: "0197", param1: "11D5" }
+3319.9 "--boss clones x2 3--" #ActorControlExtra { category: "0197", param1: "11D5" }
+3320.9 "--boss clones x2 4--" #ActorControlExtra { category: "0197", param1: "11D5" }
 3326.1 "--tethers--" #Tether { id: ["0170", "0171"], source: "Lindschrat" } # These could change hands causing sync issue
-3334.1 "--locked tethers--" Tether { id: ["0170", "0171"], source: "Lindschrat" }
+3334.1 "--locked tethers--" Tether { id: "0175", source: "Lindschrat" }
 
 # Towers Preview
 3334.3 "Twisted Vision 3" Ability { id: "BBE2", source: "Lindwurm" }
