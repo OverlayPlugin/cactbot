@@ -73,6 +73,7 @@ export interface Data extends RaidbossData {
   replication4AbilityOrder: string[];
   myReplication4Tether?: string;
   hasLightResistanceDown: boolean;
+  twistedVision4MechCounter: number;
   doomPlayers: string[];
 }
 
@@ -172,6 +173,7 @@ const triggerSet: TriggerSet<Data> = {
     replication4PlayerOrder: [],
     replication4AbilityOrder: [],
     hasLightResistanceDown: false,
+    twistedVision4MechCounter: 0,
     doomPlayers: [],
   }),
   triggers: [
@@ -3224,6 +3226,240 @@ const triggerSet: TriggerSet<Data> = {
               : output[next2]!(),
           }),
         };
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 4 Stack/Defamation 2-4',
+      // Used for keeping of which Twisted Vision 4 mechanic we are on
+      // Note: B519 Heavy Slam and B517 Mana Burst cast regardless of players alive
+      //       A B4F0 Unmitigated Impact will occur should the stack be missed
+      // Note2: B518 Mana Burst seems to not cast if the target is dead, and there doesn't seem to be repercussions
+      type: 'Ability',
+      netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
+      condition: (data) => data.twistedVisionCounter === 4 && data.twistedVision4MechCounter < 6,
+      suppressSeconds: 1,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          ...Directions.outputStrings8Dir,
+          stacks: Outputs.stacks,
+          towers: {
+            en: 'Tower Positions',
+            de: 'Turm Positionen',
+            fr: 'Position tour',
+            ja: '塔の位置へ',
+            cn: '八人塔站位',
+            ko: '기둥 자리잡기',
+            tc: '八人塔站位',
+          },
+          avoidDefamation: {
+            en: 'Avoid Defamation',
+          },
+          avoidStack: {
+            en: 'Avoid Stack',
+            de: 'Vermeide Sammeln',
+            fr: 'Évitez le package',
+            cn: '远离分摊',
+            ko: '쉐어징 피하기',
+            tc: '遠離分攤',
+          },
+          defamationOnYou: Outputs.defamationOnYou,
+          stackOnYou: Outputs.stackOnYou,
+          stackOnPlayer: Outputs.stackOnPlayer,
+          defamations: {
+            en: 'Defamations',
+            de: 'Große AoE auf dir',
+            fr: 'Grosse AoE sur vous',
+            ja: '自分に巨大な爆発',
+            cn: '大圈点名',
+            ko: '광역 대상자',
+            tc: '大圈點名',
+          },
+          oneMechThenOne: {
+            en: '${mech1} => ${mech2}',
+          },
+          oneMechThenTwo: {
+            en: '${mech1} => ${mech2} + ${mech3}',
+          },
+          twoMechsThenOne: {
+            en: '${mech1} + ${mech2} => ${mech3}',
+          },
+          twoMechsThenTwo: {
+            en: '${mech1} + ${mech2} => ${mech3} + ${mech4}',
+          },
+          oneMechThenTowers: {
+            en: '${mech1} => ${towers}',
+          },
+          twoMechsThenTowers: {
+            en: '${mech1} + ${mech2} => ${towers}',
+          },
+        };
+        data.twistedVision4MechCounter = data.twistedVision4MechCounter + 2; // Mechanic is done in pairs
+        // Don't output for first one as it was called 1s prior to this trigger
+        if (data.twistedVision4MechCounter < 2)
+          return;
+        const count = data.twistedVision4MechCounter;
+        const abilityOrder = data.replication4AbilityOrder;
+        const playerOrder = data.replication4PlayerOrder;
+        if (
+          abilityOrder === undefined ||
+          playerOrder === undefined
+        )
+          return;
+
+        const ability1 = abilityOrder[0 + count];
+        const ability2 = abilityOrder[1 + count];
+        const player1 = playerOrder[0 + count];
+        const player2 = playerOrder[1 + count];
+        let this1;
+        let this2;
+        const defamation = headMarkerData['manaBurstTether'];
+        const isThisSame = ability1 === ability2;
+        const shortPlayer1 = data.party.member(player1);
+        const shortPlayer2 = data.party.member(player2);
+        const text = (player1 === data.me || player2 === data.me) ? 'alertText' : 'infoText';
+
+        // Handle This Set
+        if (player1 === data.me) {
+          this1 = ability1 === defamation ? 'defamationOnYou' : 'stackOnYou';
+          if (!isThisSame)
+            this2 = ability2 === defamation ? 'avoidDefamation' : 'avoidStack';
+        } else if (player2 === data.me) {
+          if (!isThisSame) {
+            this1 = ability1 === defamation ? 'avoidDefamation' : 'avoidStack';
+            this2 = ability2 === defamation ? 'defamationOnYou' : 'stackOnYou';
+          } else {
+            this1 = ability1 === defamation ? 'defamationOnYou' : 'stackOnYou';
+          }
+        } else if (isThisSame) {
+          this1 = ability1 === defamation ? 'defamations' : 'stacks';
+        } else if (!isThisSame) {
+          this1 = ability1 === defamation ? 'avoidDefamation' : 'stack';
+          this2 = ability2 === defamation ? 'avoidDefamation' : 'stack';
+        }
+
+        if (count < 6) {
+          // Handle next set
+          // Get Stack/Defamation #2 details
+          const ability3 = abilityOrder[2 + count];
+          const ability4 = abilityOrder[3 + count];
+          const player3 = playerOrder[2 + count];
+          const player4 = playerOrder[3 + count];
+
+          // Handle some obscure strategies or mistakes
+          const isNextSame = ability3 === ability4;
+          let next1;
+          let next2;
+
+          if (player3 === data.me) {
+            next1 = ability3 === defamation ? 'defamationOnYou' : 'stackOnYou';
+            if (!isThisSame)
+              next2 = ability4 === defamation ? 'avoidDefamation' : 'avoidStack';
+          } else if (player4 === data.me) {
+            if (!isThisSame) {
+              next1 = ability4 === defamation ? 'avoidDefamation' : 'avoidStack';
+              next2 = ability4 === defamation ? 'defamationOnYou' : 'stackOnYou';
+            } else {
+              next1 = ability4 === defamation ? 'defamationOnYou' : 'stackOnYou';
+            }
+          } else if (isNextSame) {
+            next1 = ability3 === defamation ? 'defamations' : 'stacks';
+          } else if (!isNextSame) {
+            next1 = ability3 === defamation ? 'avoidDefamation' : 'stack';
+            next2 = ability4 === defamation ? 'avoidDefamation' : 'stack';
+          }
+
+          // Build output
+          if (this1 === undefined || next1 === undefined)
+            return;
+          if (isThisSame && isNextSame) {
+            return {
+              [text]: output.oneMechThenOne!({
+                mech1: output[this1]!(),
+                mech2: output[next1]!(),
+              }),
+            };
+          }
+
+          const shortPlayer3 = data.party.member(player3);
+          const shortPlayer4 = data.party.member(player4);
+          if (isThisSame && !isNextSame) {
+            if (next2 === undefined)
+              return;
+            return {
+              [text]: output.oneMechThenTwo!({
+                mech1: output[this1]!(),
+                mech2: next1 === 'stack'
+                  ? output.stackOnPlayer!({ player: shortPlayer3 })
+                  : output[next1]!(),
+                mech3: next2 === 'stack'
+                  ? output.stackOnPlayer!({ player: shortPlayer4 })
+                  : output[next2]!(),
+              }),
+            };
+          }
+
+          if (!isThisSame && isNextSame) {
+            if (this2 === undefined)
+              return;
+            return {
+              [text]: output.twoMechsThenOne!({
+                mech1: this1 === 'stack'
+                  ? output.stackOnPlayer!({ player: shortPlayer1 })
+                  : output[this1]!(),
+                mech2: this2 === 'stack'
+                  ? output.stackOnPlayer!({ player: shortPlayer2 })
+                  : output[this2]!(),
+                mech3: output[next1]!(),
+              }),
+            };
+          }
+
+          if (this2 === undefined || next2 === undefined)
+            return;
+          return {
+            [text]: output.twoMechsThenTwo!({
+              mech1: this1 === 'stack'
+                ? output.stackOnPlayer!({ player: shortPlayer1 })
+                : output[this1]!(),
+              mech2: this2 === 'stack'
+                ? output.stackOnPlayer!({ player: shortPlayer2 })
+                : output[this2]!(),
+              mech3: next1 === 'stack'
+                ? output.stackOnPlayer!({ player: shortPlayer3 })
+                : output[next1]!(),
+              mech4: next2 === 'stack'
+                ? output.stackOnPlayer!({ player: shortPlayer4 })
+                : output[next2]!(),
+            }),
+          };
+        }
+        // Build output for last mechanic set to warn of towers
+        if (this1 === undefined)
+          return;
+        if (isThisSame) {
+          return {
+            [text]: output.oneMechThenTowers!({
+              mech1: output[this1]!(),
+              towers: output.towers!(),
+            }),
+          };
+        }
+        if (!isThisSame) {
+          if (this2 === undefined)
+            return;
+          return {
+            [text]: output.twoMechsThenTowers!({
+              mech1: this1 === 'stack'
+                ? output.stackOnPlayer!({ player: shortPlayer1 })
+                : output[this1]!(),
+              mech2: this2 === 'stack'
+                ? output.stackOnPlayer!({ player: shortPlayer2 })
+                : output[this2]!(),
+              towers: output.towers!(),
+            }),
+          };
+        }
       },
     },
     {
