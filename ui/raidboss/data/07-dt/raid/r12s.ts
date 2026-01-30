@@ -3498,9 +3498,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Twisted Vision 5',
+      id: 'R12S Twisted Vision 5 Towers',
       // TODO: Get Position of the towers and player side and state the front/left back/right
       // Towers aren't visible until after cast, but you would have 4.4s to adjust if the trigger was delayed
+      // 4s castTime
       type: 'StartsUsing',
       netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
       condition: (data) => data.twistedVisionCounter === 5,
@@ -3537,6 +3538,21 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       durationSeconds: (_data, matches) => parseFloat(matches.duration),
       response: Responses.stopMoving(),
+    },
+    {
+      id: 'R12S Idyllic Dream Lindwurm\'s Stone III',
+      // TODO: Get their target locations and output avoid
+      // 5s castTime
+      type: 'StartsUsing',
+      netRegex: { id: 'B4F7', source: 'Lindwurm', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.avoidEarthTower!(),
+      outputStrings: {
+        avoidEarthTower: {
+          en: 'Avoid Earth Tower',
+        },
+      },
     },
     {
       id: 'R12S Idyllic Dream Replication Clone Cardinal/Intercardinal Reminder',
