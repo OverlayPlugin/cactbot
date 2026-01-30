@@ -3012,22 +3012,35 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.spread(),
     },
     {
-      id: 'R12S Light Resistance Down II Collect',
-      // Players cannot soak a tower that has holy (triple element towers)
-      type: 'GainsEffect',
-      netRegex: { effectId: '1044', capture: true },
-      condition: Conditions.targetIsYou(),
-      run: (data) => data.hasLightResistanceDown = true,
-    },
-    {
       id: 'R12S Light Resistance Down II',
       type: 'GainsEffect',
       netRegex: { effectId: '1044', capture: true },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => {
+        if (data.twistedVisionCounter === 3 && data.me === matches.target)
+          return true;
+        return false;
+      },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
           en: 'Soak Fire/Earth Meteor (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S No Light Resistance Down II',
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: false },
+      condition: (data) => data.twistedVisionCounter === 3,
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        if (!data.hasLightResistanceDown)
+          return output.text!();
+      },
+      outputStrings: {
+        text: {
+          en: 'Soak a White/Star Meteor (later)',
         },
       },
     },
