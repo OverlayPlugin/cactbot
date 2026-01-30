@@ -3458,7 +3458,6 @@ const triggerSet: TriggerSet<Data> = {
         }
       },
     },
-    
     {
       id: 'R12S Doom Collect',
       type: 'GainsEffect',
