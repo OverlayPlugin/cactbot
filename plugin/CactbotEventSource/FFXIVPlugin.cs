@@ -40,6 +40,8 @@ namespace Cactbot {
           return "cn";
         case 6:
           return "ko";
+        case 7:
+          return "tc";
         default:
           return null;
       }
