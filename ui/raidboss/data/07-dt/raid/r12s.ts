@@ -3459,7 +3459,55 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Twisted Vision 5 Towers',
+      // TODO: Get Position of the towers and player side and state the front/left back/right
+      // Towers aren't visible until after cast, but you would have 4.4s to adjust if the trigger was delayed
+      // 4s castTime
+      type: 'StartsUsing',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
+      condition: (data) => data.twistedVisionCounter === 5,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 4.1,
+      alertText: (data, _matches, output) => {
+        if (data.hasLightResistanceDown)
+          return output.fireEarthTower!();
+        return output.holyTower!();
+      },
+      outputStrings: {
+        fireEarthTower: {
+          en: 'Soak Fire/Earth Meteor',
+        },
+        holyTower: {
+          en: 'Soak a White/Star Meteor',
+        },
+      },
+    },
+    {
+      id: 'R12S Hot-blooded',
+      // Player can still cast, but shouldn't move for 5s duration
+      type: 'GainsEffect',
+      netRegex: { effectId: '12A0', capture: true },
+      condition: Conditions.targetIsYou(),
+      durationSeconds: (_data, matches) => parseFloat(matches.duration),
+      response: Responses.stopMoving(),
+    },
+    {
+      id: 'R12S Idyllic Dream Lindwurm\'s Stone III',
+      // TODO: Get their target locations and output avoid
+      // 5s castTime
+      type: 'StartsUsing',
+      netRegex: { id: 'B4F7', source: 'Lindwurm', capture: true },
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      suppressSeconds: 1,
+      infoText: (_data, _matches, output) => output.avoidEarthTower!(),
+      outputStrings: {
+        avoidEarthTower: {
+          en: 'Avoid Earth Tower',
+        },
+      },
+    },
+    {
       id: 'R12S Doom Collect',
+      // Happens about 1.3s after Dark Tower when it casts B4F6 Lindwurm's Dark II
       type: 'GainsEffect',
       netRegex: { effectId: 'D24', capture: true },
       run: (data, matches) => data.doomPlayers.push(matches.target),
@@ -3498,59 +3546,46 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Twisted Vision 5 Towers',
-      // TODO: Get Position of the towers and player side and state the front/left back/right
-      // Towers aren't visible until after cast, but you would have 4.4s to adjust if the trigger was delayed
-      // 4s castTime
-      type: 'StartsUsing',
-      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
-      condition: (data) => data.twistedVisionCounter === 5,
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 4.1,
-      alertText: (data, _matches, output) => {
-        if (data.hasLightResistanceDown)
-          return output.fireEarthTower!();
-        return output.holyTower!();
-      },
-      outputStrings: {
-        fireEarthTower: {
-          en: 'Soak Fire/Earth Meteor',
-        },
-        holyTower: {
-          en: 'Soak a White/Star Meteor',
-        },
-      },
-    },
-    {
-      id: 'R12S Doom Cleanup',
-      type: 'LosesEffect',
-      netRegex: { effectId: 'D24', capture: true },
-      run: (data, matches) => {
-        data.doomPlayers = data.doomPlayers.filter(
-          (player) => player === matches.target,
-        );
-      },
-    },
-    {
-      id: 'R12S Hot-blooded',
-      // Player can still cast, but shouldn't move for 5s duration
+      id: 'R12S Nearby and Faraway Portent',
+      // 129D Lindwurm's Portent prevents stacking the portents
+      // 129E Farwaway Portent
+      // 129F Nearby Portent
+      // 10s duration, need to delay to avoid earth + doom trigger overlap
+      // TODO: Configure for element tower they soaked
       type: 'GainsEffect',
-      netRegex: { effectId: '12A0', capture: true },
+      netRegex: { effectId: ['129E', '129F'], capture: true },
       condition: Conditions.targetIsYou(),
-      durationSeconds: (_data, matches) => parseFloat(matches.duration),
-      response: Responses.stopMoving(),
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
+      infoText: (_data, matches, output) => {
+        if (matches.id === '129E')
+          return output.farOnYou!();
+        return output.nearOnYou!();
+      },
+      outputStrings: {
+        nearOnYou: {
+          en: 'Near on YOU: Be on Middle Hitbox',
+        },
+        farOnYou: {
+          en: 'Far on YOU: Be on N/S Hitbox', // Most parties probably put this North?
+        },
+      },
     },
     {
-      id: 'R12S Idyllic Dream Lindwurm\'s Stone III',
-      // TODO: Get their target locations and output avoid
-      // 5s castTime
-      type: 'StartsUsing',
-      netRegex: { id: 'B4F7', source: 'Lindwurm', capture: true },
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      id: 'R12S Nearby and Faraway Portent Baits',
+      // TODO: Configure for element tower they soaked
+      type: 'GainsEffect',
+      netRegex: { effectId: ['129E', '129F'], capture: true },
+      condition: (data) => data.hasLightResistanceDown,
+      delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.avoidEarthTower!(),
+      infoText: (_data, _matches, output) => output.bait!(),
       outputStrings: {
-        avoidEarthTower: {
-          en: 'Avoid Earth Tower',
+        bait: {
+          en: 'Bait Cone',
+          de: 'Köder Kegel-AoE',
+          cn: '诱导扇形',
+          ko: '부채꼴 유도',
+          tc: '誘導扇形',
         },
       },
     },
