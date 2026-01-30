@@ -3590,29 +3590,91 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Idyllic Dream Replication Clone Cardinal/Intercardinal Reminder',
-      // Using Temporal Curtain
-      type: 'StartsUsing',
-      netRegex: { id: 'B51C', source: 'Lindwurm', capture: false },
+      id: 'R12S Twisted Vision 6 Light Party Stacks',
+      // At end of cast it's cardinal or intercard
+      type: 'Ability',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
+      condition: (data) => data.twistedVisionCounter === 6,
       infoText: (data, _matches, output) => {
-        const firstClone = data.replication3CloneOrder[0];
-        if (firstClone === undefined)
+        const first = data.replication3CloneOrder[0];
+        if (first === undefined)
           return;
-        const actor = data.actorPositions[firstClone];
-        if (actor === undefined)
-          return;
+        const dirNumOrder = first % 2 === 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
 
-        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
-        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        // Need to lookup what ability is at each dir, only need cards or intercard dirs
+        const abilities = data.replication4AbilityOrder.splice(0,4);
+        const stackDirs = [];
+        let i = 0;
 
-        if (isCardinalDir(dir))
-          return output.cardinals!();
-        if (isIntercardDir(dir))
-          return output.intercards!();
+        // Find first all stacks in cards or intercards
+        // Incorrect amount means players made an unsolvable? run
+        for (const dirNum of dirNumOrder) {
+          if (abilities[i++] === headMarkerData['heavySlamTether'])
+            stackDirs.push(dirNum);
+        }
+        // Only grabbing first two
+        const dirNum1 = stackDirs[0];
+        const dirNum2 = stackDirs[1];
+
+        // If we failed to get two stacks, just output generic cards/intercards reminder
+        if (dirNum1 === undefined || dirNum2 === undefined) {
+          return first % 2 === 0 ? output.cardinals!() : output.intercards!();
+        }
+        const dir1 =  Directions.output8Dir[dirNum1];
+        const dir2 =  Directions.output8Dir[dirNum2];
+        return output.stack!({ dir1: dir1, dir2: dir2 });
       },
       outputStrings: {
+        ...Directions.outputStrings8Dir,
         cardinals: Outputs.cardinals,
         intercards: Outputs.intercards,
+        stack: {
+          en: 'Stack ${dir1}/${dir2} + Lean Middle Out',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 8 Light Party Stacks',
+      // At end of cast it's cardinal or intercard
+      type: 'Ability',
+      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
+      condition: (data) => data.twistedVisionCounter === 8,
+      infoText: (data, _matches, output) => {
+        const first = data.replication3CloneOrder[0];
+        if (first === undefined)
+          return;
+        const dirNumOrder = first % 2 !== 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
+
+        // Need to lookup what ability is at each dir, only need cards or intercard dirs
+        const abilities = data.replication4AbilityOrder.slice(4,8);
+        const stackDirs = [];
+        let i = 0;
+
+        // Find first all stacks in cards or intercards
+        // Incorrect amount means players made an unsolvable? run
+        for (const dirNum of dirNumOrder) {
+          if (abilities[i++] === headMarkerData['heavySlamTether'])
+            stackDirs.push(dirNum);
+        }
+        // Only grabbing first two
+        const dirNum1 = stackDirs[0];
+        const dirNum2 = stackDirs[1];
+
+        // If we failed to get two stacks, just output generic cards/intercards reminder
+        if (dirNum1 === undefined || dirNum2 === undefined) {
+          return first % 2 !== 0 ? output.cardinals!() : output.intercards!();
+        }
+        const dir1 =  Directions.output8Dir[dirNum1];
+        const dir2 =  Directions.output8Dir[dirNum2];
+        return output.stack!({ dir1: dir1, dir2: dir2 });
+      },
+      outputStrings: {
+        ...Directions.outputStrings8Dir,
+        cardinals: Outputs.cardinals,
+        intercards: Outputs.intercards,
+        stack: {
+          en: 'Stack ${dir1}/${dir2} + Lean Middle Out',
+        },
       },
     },
   ],
