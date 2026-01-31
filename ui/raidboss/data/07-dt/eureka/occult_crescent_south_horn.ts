@@ -631,6 +631,7 @@ const triggerSet: TriggerSet<Data> = {
       name: {
         en: 'Forked Tower: Blood Dead Stars Vengeful Direction Strategy',
         cn: '两歧塔力之塔 星头三兄弟 复仇方向策略',
+        ko: '포크타워: 별머리 삼인조 복수의 파이가/블리자가/바이오가 방향 전략',
       },
       type: 'select',
       options: {
@@ -643,6 +644,11 @@ const triggerSet: TriggerSet<Data> = {
           '方向: 仅提示安全点八方方向。': 'direction',
           '标点: 根据 ABBA/FOE/CAFE 坐标播报安全点。': 'waymark',
           '全部: 同时播报安全点的方向和标点。': 'both',
+        },
+        ko: {
+          '방향: 안전 지점의 8방향만 호출합니다.': 'direction',
+          '바닥징: 안전 지점의 ABBA/FOE/CAFE 바닥징을 호출합니다.': 'waymark',
+          '둘 다: 안전 지점의 방향과 바닥징을 모두 호출합니다.': 'both',
         },
       },
       default: 'direction',
@@ -3125,18 +3131,22 @@ const triggerSet: TriggerSet<Data> = {
         waymarkA: {
           en: 'A',
           cn: 'A 点',
+          ko: 'A',
         },
         waymark2and3: {
           en: '2/3',
           cn: '2 或 3 点',
+          ko: '2/3',
         },
         waymarkCandD: {
           en: 'C/D',
           cn: 'C 或 D 点',
+          ko: 'C/D',
         },
         combined: {
           en: '${waymark} (${dir})',
           cn: '${waymark} (${dir})',
+          ko: '${waymark} (${dir})',
         },
       },
     },
