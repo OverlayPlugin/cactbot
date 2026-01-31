@@ -116,7 +116,7 @@ namespace Cactbot {
             return GameRegion.Chinese;
           case "Korean":
             return GameRegion.Korean;
-          case "Tc":
+          case "TraditionalChinese":
             return GameRegion.TraditionalChinese;
           default:
             return GameRegion.International;
