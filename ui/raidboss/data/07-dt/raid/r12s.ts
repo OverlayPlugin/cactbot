@@ -223,7 +223,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B4EC', source: 'Lindwurm', capture: false },
       run: (data) => {
-        if (data.phase === 'replication1') {
+        if (data.phase === 'replication2') {
           data.phase = 'reenactment1';
           return;
         }
