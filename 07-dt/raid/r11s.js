@@ -122,6 +122,7 @@ Options.Triggers.push({
       outputStrings: {
         partySpread: {
           en: 'Party Spread',
+          cn: '人群分散',
         },
         sharedTankStack: {
           en: 'Tanks Stack',
@@ -134,6 +135,7 @@ Options.Triggers.push({
         },
         text: {
           en: '${party}/${tank}',
+          cn: '${party}/${tank}',
         },
       },
     },
@@ -153,7 +155,7 @@ Options.Triggers.push({
           de: 'In der Gruppe sammeln',
           fr: 'Package en groupe',
           ja: 'あたまわり',
-          cn: '分摊',
+          cn: '人群分摊',
           ko: '쉐어',
           tc: '分攤',
         },
@@ -162,12 +164,13 @@ Options.Triggers.push({
           de: 'Tank Cleaves',
           fr: 'Tank Cleaves',
           ja: 'タンク前方攻撃',
-          cn: '坦克顺劈',
+          cn: '坦克扇形',
           ko: '광역 탱버',
           tc: '坦克順劈',
         },
         text: {
           en: '${party}/${tank}',
+          cn: '${party}/${tank}',
         },
       },
     },
@@ -204,12 +207,15 @@ Options.Triggers.push({
         move: Outputs.moveAway,
         bait: {
           en: 'Bait Gust',
+          cn: '诱导强风',
         },
         mechanicThenMove: {
           en: '${mech} => ${move}',
+          cn: '${mech} => ${move}',
         },
         mechanicThenBait: {
           en: '${mech} => ${bait}',
+          cn: '${mech} => ${bait}',
         },
       },
     },
@@ -249,6 +255,7 @@ Options.Triggers.push({
         protean: Outputs.protean,
         text: {
           en: '${dir}: ${weapon} (1st later)',
+          cn: '${dir}: ${weapon} (稍后第一波)',
         },
       },
     },
@@ -315,6 +322,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: '${weapon1} => ${weapon2} => ${weapon3}',
+          cn: '${weapon1} => ${weapon2} => ${weapon3}',
         },
         healerGroups: Outputs.healerGroups,
         stack: Outputs.stackMiddle,
@@ -395,9 +403,11 @@ Options.Triggers.push({
       outputStrings: {
         baitPuddlesThenStack: {
           en: 'Bait 3x Puddles => Stack',
+          cn: '诱导3次圈圈 => 分摊',
         },
         baitPuddlesThenSpread: {
           en: 'Bait 3x Puddles => Spread',
+          cn: '诱导3次圈圈 => 分散',
         },
       },
     },
@@ -413,6 +423,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'AoE x6 => Big AoE',
+          cn: '6 次 AOE => 大 AOE',
         },
       },
     },
@@ -467,9 +478,11 @@ Options.Triggers.push({
       outputStrings: {
         northSouth: {
           en: 'N/S Mid / ${dir} Outer + Partner Stacks',
+          cn: '上/下中间 / ${dir} 外侧 + 队友分摊',
         },
         eastWest: {
           en: 'E/W Mid / ${dir} Outer + Partner Stacks',
+          cn: '左/右中间 / ${dir} 外侧 + 队友分摊',
         },
         ...Directions.outputStringsCardinalDir,
       },
@@ -495,6 +508,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: 'Bait Gust',
+          cn: '诱导强风',
         },
       },
     },
@@ -556,12 +570,15 @@ Options.Triggers.push({
       outputStrings: {
         wildCharge: {
           en: 'Wild Charge (behind tank)',
+          cn: '挡枪分摊 (坦克后)',
         },
         wildChargeMeteor: {
           en: 'Wild Charge (behind meteor)',
+          cn: '挡枪分摊 (陨石后)',
         },
         wildChargeTank: {
           en: 'Wild Charge (be in front)',
+          cn: '挡枪分摊 (人群前)',
         },
         tetherBusters: Outputs.tetherBusters,
       },
@@ -582,6 +599,7 @@ Options.Triggers.push({
       outputStrings: {
         losMeteor: {
           en: 'LoS behind 3x meteor',
+          cn: '躲在三连陨石后',
         },
       },
     },
@@ -594,7 +612,7 @@ Options.Triggers.push({
         flatliner: {
           en: 'Short knockback to sides',
           fr: 'Légère poussée vers les côtés',
-          cn: '向两侧短距离击退',
+          cn: '向两侧短距离击飞',
           ko: '양 옆으로 짧은 넉백',
         },
       },
@@ -684,6 +702,7 @@ Options.Triggers.push({
       outputStrings: {
         fireBreathLater: {
           en: 'Bait Fire Breath (later)',
+          cn: '诱导火焰吐息 (稍后)',
         },
       },
     },
@@ -717,9 +736,11 @@ Options.Triggers.push({
         ...Directions.outputStringsIntercardDir,
         stretchTetherDirLater: {
           en: 'Tether on YOU: Stretch ${dir} (later)',
+          cn: '连线点名: 向${dir}拉远 (稍后)',
         },
         stretchTetherLater: {
           en: 'Tether on YOU: Stretch (later)',
+          cn: '连线点名: 拉远 (稍后)',
         },
       },
     },
@@ -783,27 +804,33 @@ Options.Triggers.push({
         knockbackTowers: {
           en: 'Get Knockback Towers',
           fr: 'Prenez une tour (poussée)',
-          cn: '踩击退塔',
+          cn: '踩击飞塔',
           ko: '넉백탑 들어가기',
         },
         fireBreathTowers: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         tetherTowers: {
           en: '${mech1} => ${mech2}',
+          cn: '${mech1} => ${mech2}',
         },
         baitFireBreath: {
           en: 'Bait Near',
+          cn: '靠近引导',
         },
         avoidFireBreath: Outputs.outOfHitbox,
         northSouthSafe: {
           en: 'Tower Knockback to Same Platform',
+          cn: '被塔击飞到同一平台',
         },
         eastSafe: {
           en: 'Tower Knockback Across to East',
+          cn: '被塔击飞到右侧平台',
         },
         westSafe: {
           en: 'Tower Knockback Across to West',
+          cn: '被塔击飞到左侧平台',
         },
       },
     },
@@ -868,9 +895,11 @@ Options.Triggers.push({
         },
         back: {
           en: 'Inner Back',
+          cn: '内侧后',
         },
         front: {
           en: 'Inner Front',
+          cn: '内侧前',
         },
         lines: {
           en: 'Avoid Lines',
@@ -883,15 +912,19 @@ Options.Triggers.push({
         },
         fireBreathOnYou: {
           en: 'Fire Breath on YOU',
+          cn: '火焰吐息点名',
         },
         fireBreathMechsPlayerWest: {
           en: '${mech1} + ${mech2} => ${dir}',
+          cn: '${mech1} + ${mech2} => ${dir}',
         },
         fireBreathMechsPlayerEast: {
           en: '${mech1} + ${mech2} => ${dir}',
+          cn: '${mech1} + ${mech2} => ${dir}',
         },
         fireBreathMechs: {
           en: '${mech1} + ${mech2} => ${mech3}',
+          cn: '${mech1} + ${mech2} => ${mech3}',
         },
       },
     },
@@ -960,9 +993,11 @@ Options.Triggers.push({
         },
         back: {
           en: 'Outer Back',
+          cn: '外侧后',
         },
         front: {
           en: 'Outer Front',
+          cn: '外侧前',
         },
         lines: {
           en: 'Avoid Lines',
@@ -975,6 +1010,7 @@ Options.Triggers.push({
         },
         baitThenStretchMechs: {
           en: '${mech1} => ${mech2}  + ${mech3}',
+          cn: '${mech1} => ${mech2}  + ${mech3}',
         },
         stretchTether: {
           en: 'Stretch Tether',
@@ -986,12 +1022,15 @@ Options.Triggers.push({
         },
         stretchTetherDir: {
           en: 'Stretch ${dir}',
+          cn: '向${dir}拉远',
         },
         tetherMechsPlayerEast: {
           en: '${mech1} => ${mech2} + ${dir}',
+          cn: '${mech1} => ${mech2} + ${dir}',
         },
         tetherMechsPlayerWest: {
           en: '${mech1} => ${mech2} + ${dir}',
+          cn: '${mech1} => ${mech2} + ${dir}',
         },
       },
     },
@@ -1111,9 +1150,11 @@ Options.Triggers.push({
         se: Outputs.dirSE,
         comboDir: {
           en: 'Go ${dir1}/${dir2} => Bait Impacts, Avoid Corners',
+          cn: '去${dir1}/${dir2} => 引导火圈, 躲避角落',
         },
         getMiddle: {
           en: 'Proximity AoE; Get Middle => Bait Puddles',
+          cn: '靠近AoE; 去中间 => 引导圈圈',
         },
       },
     },
@@ -1171,6 +1212,7 @@ Options.Triggers.push({
         ...Directions.outputStrings8Dir,
         stretchTetherDir: {
           en: 'Stretch Tether ${dir}',
+          cn: '向${dir}拉线',
         },
       },
     },
@@ -1186,9 +1228,11 @@ Options.Triggers.push({
       outputStrings: {
         twoWayFront: {
           en: 'East/West Line Stack, Be in Front',
+          cn: '左/右向直线分摊，站前方',
         },
         twoWayBehind: {
           en: 'Move; East/West Line Stack, Get behind',
+          cn: '移动; 左/右向直线分摊，站后方',
         },
       },
     },
@@ -1204,9 +1248,11 @@ Options.Triggers.push({
       outputStrings: {
         fourWayFront: {
           en: 'Intercardinal Line Stack, Be in Front',
+          cn: '四角分摊, 站前方',
         },
         fourWayBehind: {
           en: 'Intercardinal Line Stack, Get behind',
+          cn: '四角分摊, 站后方',
         },
       },
     },
@@ -1255,18 +1301,23 @@ Options.Triggers.push({
         },
         stack6x: {
           en: 'Stack 6x',
+          cn: '6连分摊',
         },
         stack7x: {
           en: 'Stack 7x',
+          cn: '7连分摊',
         },
         heartbreaker1: {
           en: '${tower} => ${stack}',
+          cn: '${tower} => ${stack}',
         },
         heartbreaker2: {
           en: '${tower} => ${stack}',
+          cn: '${tower} => ${stack}',
         },
         heartbreaker3: {
           en: '${tower} => ${stack}',
+          cn: '${tower} => ${stack}',
         },
       },
     },
@@ -1276,6 +1327,76 @@ Options.Triggers.push({
       'locale': 'en',
       'replaceText': {
         'Majestic Meteowrath/Majestic Meteorain/Fire Breath': 'Fire Breath + Meteor Lines',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Comet': '彗星',
+        'Maelstrom': '大漩涡',
+        'The Tyrant': '霸王',
+      },
+      'replaceText': {
+        '--jump ': '--跳',
+        ' Markers--': '点名--',
+        '--meteor(?! Markers)': '--陨石',
+        '--Meteor Markers': '--陨石标记',
+        'scythe--': '镰刀--',
+        '--tethers--': '--连线--',
+        'Axe\\)': '斧头)',
+        '\\(castbar\\)': '(咏唱栏)',
+        '\\(damage\\)': '(伤害)',
+        '\\(Enrage\\)': '(狂暴)',
+        '\\(Scythe': '(镰刀',
+        '\\(split\\)': '(分散)',
+        'Arcadion Avalanche': '登天碎地',
+        'Assault Apex': '铸兵崩落',
+        'Assault Evolved': '铸兵突袭',
+        'Atomic Impact': '融解轰击',
+        'Charybdistopia': '霸王大漩涡',
+        '(?<! )Comet(?!ite)': '彗星',
+        'Cometite': '彗星风暴',
+        'Cosmic Kiss': '轰击',
+        'Crown of Arcadia': '天顶的主宰',
+        'Crushing Comet': '重彗星',
+        'Dance of Domination(?! Trophy)': '统治的战舞',
+        'Dance of Domination Trophy': '铸兵之令：统治',
+        'Ecliptic Stampede': '陨石狂奔',
+        'Explosion': '爆炸',
+        'Eye of the Hurricane': '霸王飓风',
+        'Fearsome Fireball': '大火',
+        'Fire and Fury': '兽焰连尾击',
+        'Fire Breath': '火焰吐息',
+        'Flatliner': '绝命分断击',
+        'Foregone Fatality': '夺命链',
+        'Four-way Fireball': '四向回旋火',
+        'Great Wall of Fire': '火焰流',
+        'Heartbreak Kick': '碎心踢',
+        'Heartbreaker': '碎心击',
+        'Heavy Hitter': '重斩击',
+        'Immortal Reign': '万劫不朽的统治',
+        '(?<! )Impact': '冲击',
+        'Majestic Meteor(?!ain)': '王者陨石',
+        'Majestic Meteorain': '王者陨石雨',
+        'Majestic Meteowrath': '王者陨石震',
+        'Mammoth Meteor': '遮天陨石',
+        'Massive Meteor': '重陨石',
+        '(?<! )Meteorain': '流星雨',
+        'One and Only': '举世无双的霸王',
+        'Orbital Omen': '星轨链',
+        'Powerful Gust': '强风',
+        'Raw Steel(?! Trophy)': '铸兵轰击',
+        'Raw Steel Trophy(?! Axe| Scythe)': '铸兵之令：轰击',
+        'Raw Steel Trophy Axe': '铸兵之令：轰击 斧',
+        'Raw Steel Trophy Scythe': '铸兵之令：轰击 镰',
+        'Shockwave': '冲击波',
+        'Triple Tyrannhilation': '三重霸王坠击',
+        '(?<! )Trophy Weapons': '历战之兵武',
+        'Two-way Fireball': '双向回旋火',
+        'Ultimate Trophy Weapons': '历战之极武',
+        'Void Stardust': '彗星雨',
+        '(?<! )Weapon(?!s)': '武器',
+        'Weighty Impact': '重轰击',
       },
     },
   ],
