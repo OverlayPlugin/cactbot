@@ -253,7 +253,10 @@ const getTimelineReplaceChanges = (changedFiles) => {
   const s = new Set();
 
   changedFiles.forEach((file) => {
-    if (!file.filename.startsWith('ui/raidboss/data/'))
+    if (
+      !file.filename.startsWith('ui/raidboss/data/') &&
+      !file.filename.startsWith('ui/oopsyraidsy/data/')
+    )
       return;
 
     if (path.extname(file.filename) === '.js') {
