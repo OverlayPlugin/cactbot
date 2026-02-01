@@ -78,6 +78,9 @@ export interface Data extends RaidbossData {
   hasLightResistanceDown: boolean;
   twistedVision4MechCounter: number;
   doomPlayers: string[];
+  idyllicVision8SafeSides?: 'frontBack' | 'sides';
+  idyllicVision7SafeSides?: 'frontBack' | 'sides';
+  idyllicVision7SafePlatform?: 'east' | 'west';
 }
 
 const headMarkerData = {
