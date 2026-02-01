@@ -66,7 +66,10 @@ export interface Data extends RaidbossData {
   twistedVisionCounter: number;
   replication3CloneOrder: number[];
   replication3CloneDirNumPlayers: { [dirNum: number]: string };
-  idyllicVision2NorthSouthCleaveSpot?: 'north' | 'south';
+  idyllicVision2NorthSouthCleaveSpot?: 'north' | 'south';\
+  idyllicDreamActorEW?: string;
+  idyllicDreamActorNS?: string;
+  idyllicDreamActorSnaking?: string;
   replication4DirNumAbility: { [dirNum: number]: string };
   replication4PlayerAbilities: { [player: string]: string };
   replication4BossCloneDirNumPlayers: { [dirNum: number]: string };
@@ -2772,18 +2775,31 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Idyllic Dream Power Gusher Collect',
-      // Need to know this for later
+      id: 'R12S Idyllic Dream Power Gusher and Snaking Kick Collect',
+      // Need to know these for later
       // B511 Snaking Kick
       // B512 from boss is the VFX and has headings that show directions for B50F and B510
       // B50F Power Gusher is the East/West caster
       // B510 Power Gusher is the North/South caster
       // Right now just the B510 caster is needed to resolve
       type: 'StartsUsing',
-      netRegex: { id: 'B510', source: 'Lindschrat', capture: true },
+      netRegex: { id: ['B50F', 'B510', 'B511'], source: 'Lindschrat', capture: true },
       run: (data, matches) => {
-        const y = parseFloat(matches.y);
-        data.idyllicVision2NorthSouthCleaveSpot = y < center.y ? 'north' : 'south';
+        // Temporal Curtain can have early calls based on matching the id for which add went where
+        switch (matches.id) {
+          case 'B510': {
+            const y = parseFloat(matches.y);
+            data.idyllicVision2NorthSouthCleaveSpot = y < center.y ? 'north' : 'south';
+            data.idyllicDreamActorEW = matches.id;
+            return;
+          }
+          case 'B511':
+            data.idyllicDreamActorSnaking = matches.id;
+            return;
+          case 'B50F':
+            data.idyllicDreamActorNS = matches.id;
+            return;
+        }
       },
     },
     {
@@ -2820,43 +2836,29 @@ const triggerSet: TriggerSet<Data> = {
           return true;
         return false;
       },
-      suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
-      infoText: (data, matches, output) => {
-        // Get direction of the tether
-        const actor = data.actorPositions[matches.sourceId];
-        if (actor === undefined) {
-          switch (matches.id) {
-            case headMarkerData['manaBurstTether']:
-              return output.manaBurstTether!();
-            case headMarkerData['heavySlamTether']:
-              return output.heavySlamTether!();
-          }
-          return;
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        const first = data.replication4DirNumAbility[0];
+        if (first === undefined) {
+          return output.getTether!();
         }
 
-        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
-        const dir = Directions.output8Dir[dirNum] ?? 'unknown';
-
-        switch (matches.id) {
-          case headMarkerData['manaBurstTether']:
-            return output.manaBurstTetherDir!({ dir: output[dir]!() });
-          case headMarkerData['heavySlamTether']:
-            return output.heavySlamTetherDir!({ dir: output[dir]!() });
-        }
+        if (first === headMarkerData['manaBurstTether'])
+          return output.stacksFirst!();
+        if (first === headMarkerData['heavySlamTether'])
+          return output.defamationsFirst!();
+        return output.getTether!();
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
-        manaBurstTether: {
-          en: 'Defamation Tether on YOU',
+        getTether: {
+          en: 'Get Tether',
         },
-        manaBurstTetherDir: {
-          en: '${dir} Defamation Tether on YOU',
+        defamationsFirst: {
+          en: 'Defamations First (later); Get Tether',
         },
-        heavySlamTether: {
-          en: 'Stack Tether on YOU',
-        },
-        heavySlamTetherDir: {
-          en: '${dir} Stack Tether on YOU',
+        stacksFirst: {
+          en: 'Stacks First (later); Get Tether',
         },
       },
     },
@@ -3015,6 +3017,14 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'B529', source: 'Lindwurm', capture: false },
       response: Responses.spread(),
+    },
+    {
+      id: 'R12S Light Resistance Down II Collect',
+      // Players cannot soak a tower that has holy (triple element towers)
+      type: 'GainsEffect',
+      netRegex: { effectId: '1044', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data) => data.hasLightResistanceDown = true,
     },
     {
       id: 'R12S Light Resistance Down II',
@@ -3458,6 +3468,99 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Temporal Curtain Part 1 Collect',
+      // Describe actor going into portal
+      type: 'Ability',
+      netRegex: { id: 'B51D', source: 'Lindschrat', capture: true },
+      run: (data, matches) => {
+        switch (matches.id) {
+          case data.idyllicDreamActorEW:
+            data.idyllicVision8SafeSides = 'frontBack';
+            return;
+          case data.idyllicDreamActorNS:
+            data.idyllicVision8SafeSides = 'sides';
+        }
+      },
+    },
+    {
+      id: 'R12S Temporal Curtain Part 1',
+      // Describe actor going into portal
+      type: 'Ability',
+      netRegex: { id: 'B51D', source: 'Lindschrat', capture: true },
+      infoText: (data, matches, output) => {
+        switch (matches.id) {
+          case data.idyllicDreamActorEW:
+            return output.frontBackLater!();
+          case data.idyllicDreamActorNS:
+            return output.sidesLater!();
+        }
+      },
+      outputStrings: {
+        frontBackLater: {
+          en: 'Portal + Front/Back Clone (later)',
+        },
+        sidesLater: {
+          en: 'Portal + Sides Clone (later)',
+        },
+      },
+    },
+    {
+      id: 'R12S Temporal Curtain Part 2 Collect',
+      // Describe actor going into portal
+      type: 'AbilityExtra',
+      netRegex: { id: 'B4D9', capture: true },
+      run: (data, matches) => {
+        switch (matches.id) {
+          case data.idyllicDreamActorEW:
+            data.idyllicVision7SafeSides = 'frontBack';
+            return;
+          case data.idyllicDreamActorNS:
+            data.idyllicVision7SafeSides = 'sides';
+            return;
+          case data.idyllicDreamActorSnaking: {
+            const x = parseFloat(matches.x);
+            data.idyllicVision7SafePlatform = x < 100 ? 'west' : 'east';
+          }
+        }
+      },
+    },
+    {
+      id: 'R12S Temporal Curtain Part 2',
+      // Describe actor going into portal
+      type: 'AbilityExtra',
+      netRegex: { id: 'B4D9', capture: false },
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        if (data.idyllicVision7SafeSides === 'frontBack') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.frontBackEastLater!();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.frontBackWestLater!();
+        }
+        if (data.idyllicVision7SafeSides === 'sides') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.sidesEastLater!();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.sidesWestLater!();
+        }
+      },
+      outputStrings: {
+        frontBackWestLater: {
+          en: 'West Platform => Front/Back Clone (later)',
+        },
+        sidesWestLater: {
+          en: 'West Platform => Sides Clone (later)',
+        },
+        frontBackEastLater: {
+          en: 'East Platform => Front/Back Clone (later)',
+        },
+        sidesEastLater: {
+          en: 'East Platform => Sides Clone (later)',
+        },
+      },
+    },
+    {
       id: 'R12S Twisted Vision 6 Light Party Stacks',
       // At end of cast it's cardinal or intercard
       type: 'Ability',
@@ -3503,59 +3606,40 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Twisted Vision 7 Safe Platform',
-      // TODO: Get direction of the safe platform + N/S or E/W?
       type: 'StartsUsing',
       netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
       condition: (data) => data.twistedVisionCounter === 7,
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 3,
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
       infoText: (data, _matches, output) => {
-        const first = data.replication3CloneOrder[0];
-        if (first === undefined)
-          return;
-        const dirNumOrder = first % 2 !== 0 ? [0, 2, 4, 6] : [1, 3, 5, 7];
-
-        // Need to lookup what ability is at each dir, only need cards or intercard dirs
-        const abilities = data.replication4AbilityOrder.slice(4, 8);
-        const stackDirs = [];
-        let i = 0;
-
-        // Find first all stacks in cards or intercards
-        // Incorrect amount means players made an unsolvable? run
-        for (const dirNum of dirNumOrder) {
-          if (abilities[i++] === headMarkerData['heavySlamTether'])
-            stackDirs.push(dirNum);
+        if (data.idyllicVision7SafeSides === 'frontBack') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.northSouthEastPlaform!();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.northSouthWestPlaform!();
         }
-        // Only grabbing first two
-        const dirNum1 = stackDirs[0];
-        const dirNum2 = stackDirs[1];
-
-        // If we failed to get two stacks, just output generic cards/intercards reminder
-        if (dirNum1 === undefined || dirNum2 === undefined) {
-          const card = first % 2 !== 0 ? 'cardinals' : 'intercards';
-          return output.platformThenStack!({
-            platform: output.safePlatform!(),
-            stack: output[card]!(),
-          });
+        if (data.idyllicVision7SafeSides === 'sides') {
+          if (data.idyllicVision7SafePlatform === 'east')
+            return output.eastWestEastPlaform!();
+          if (data.idyllicVision7SafePlatform === 'west')
+            return output.eastWestWestPlaform!();
         }
-        const dir1 = Directions.output8Dir[dirNum1];
-        const dir2 = Directions.output8Dir[dirNum2];
-        return output.platformThenStack!({
-          platform: output.safePlatform!(),
-          stack: output.stack!({ dir1: dir1, dir2: dir2 }),
-        });
+        return output.safePlatform!();
       },
       outputStrings: {
-        ...Directions.outputStrings8Dir,
-        cardinals: Outputs.cardinals,
-        intercards: Outputs.intercards,
         safePlatform: {
-          en: 'Safe Platform',
+          en: 'Move to Safe Platform Side => Dodge Cleaves',
         },
-        stack: {
-          en: 'Stack ${dir1}/${dir2}',
+        sidesWestPlatform: {
+          en: 'West Platform => Sides of Clone',
         },
-        platformThenStack: {
-          en: '${platform} => ${stack}',
+        sidesEastPlatform: {
+          en: 'East Platform => Sides of Clone',
+        },
+        frontBackEastPlatform: {
+          en: 'East Platform => Front/Back of Clone',
+        },
+        frontBackWestPlatform: {
+          en: 'West Platform => Front/Back of Clone',
         },
       },
     },
@@ -3600,6 +3684,27 @@ const triggerSet: TriggerSet<Data> = {
         intercards: Outputs.intercards,
         stack: {
           en: 'Stack ${dir1}/${dir2} + Lean Middle Out',
+        },
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 8 Dodge Cleaves',
+      // Trigger on Clone's BE5D Heavy Slam
+      type: 'Ability',
+      netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
+      suppressSeconds: 9999,
+      alertText: (data, _matches, output) => {
+        if (data.idyllicVision8SafeSides === 'sides')
+          return output.sides!();
+        if (data.idyllicVision8SafeSides === 'frontBack')
+          return output.frontBack!();
+      },
+      outputStrings: {
+        sides: {
+          en: 'Sides of Clone',
+        },
+        frontBack: {
+          en: 'Front/Back of Clone',
         },
       },
     },
