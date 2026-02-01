@@ -3616,15 +3616,15 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (data, _matches, output) => {
         if (data.idyllicVision7SafeSides === 'frontBack') {
           if (data.idyllicVision7SafePlatform === 'east')
-            return output.northSouthEastPlaform!();
+            return output.frontBackEastPlaform!();
           if (data.idyllicVision7SafePlatform === 'west')
-            return output.northSouthWestPlaform!();
+            return output.frontBackWestPlaform!();
         }
         if (data.idyllicVision7SafeSides === 'sides') {
           if (data.idyllicVision7SafePlatform === 'east')
-            return output.eastWestEastPlaform!();
+            return output.sidesEastPlaform!();
           if (data.idyllicVision7SafePlatform === 'west')
-            return output.eastWestWestPlaform!();
+            return output.sidesWestPlaform!();
         }
         return output.safePlatform!();
       },
