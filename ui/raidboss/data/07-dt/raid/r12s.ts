@@ -3098,8 +3098,8 @@ const triggerSet: TriggerSet<Data> = {
         const ability1 = abilityId === headMarkerData['manaBurstTether']
           ? 'defamations'
           : abilityId === headMarkerData['heavySlamTether']
-            ? 'stacks'
-            : 'unknown';
+          ? 'stacks'
+          : 'unknown';
 
         if (ability1 === 'stacks') {
           if (data.me === player1 || data.me === player2)
@@ -3107,7 +3107,7 @@ const triggerSet: TriggerSet<Data> = {
               alertText: output.stackOnYouThenDefamations!({
                 mech1: output.stackOnYou!(),
                 mech2: output.defamations!(),
-              })
+              }),
             };
 
           if (data.me === player3 || data.me === player4)
@@ -3115,14 +3115,14 @@ const triggerSet: TriggerSet<Data> = {
               infoText: output.stacksThenDefamationOnYou!({
                 mech1: output.stacks!(),
                 mech2: output.defamationOnYou!(),
-              })
+              }),
             };
 
           return {
             infoText: output.stacksThenDefamations!({
               mech1: output.stacks!(),
               mech2: output.defamations!(),
-            })
+            }),
           };
         }
 
@@ -3132,7 +3132,7 @@ const triggerSet: TriggerSet<Data> = {
               alertText: output.defamationOnYouThenStack!({
                 mech1: output.defamationOnYou!(),
                 mech2: output.stacks!(),
-              })
+              }),
             };
 
           if (data.me === player3 || data.me === player4)
@@ -3140,14 +3140,14 @@ const triggerSet: TriggerSet<Data> = {
               infoText: output.defamationsThenStackOnYou!({
                 mech1: output.defamations!(),
                 mech2: output.stackOnYou!(),
-              })
+              }),
             };
 
           return {
             infoText: output.defamationsThenStacks!({
               mech1: output.defamations!(),
               mech2: output.stacks!(),
-            })
+            }),
           };
         }
       },
@@ -3208,13 +3208,19 @@ const triggerSet: TriggerSet<Data> = {
         const abilityIds = data.replication4DirNumAbility;
         const player1 = count === 2
           ? players[1]
-          : count === 4 ? players[2] : players[3];
+          : count === 4
+          ? players[2]
+          : players[3];
         const player2 = count === 2
           ? players[5]
-          : count === 4 ? players[6] : players[7];
+          : count === 4
+          ? players[6]
+          : players[7];
         const abilityId = count === 2
           ? abilityIds[1]
-          : count === 4 ? abilityIds[2] : abilityIds[3];
+          : count === 4
+          ? abilityIds[2]
+          : abilityIds[3];
 
         if (
           abilityId === undefined || player1 === undefined ||
@@ -3225,8 +3231,8 @@ const triggerSet: TriggerSet<Data> = {
         const ability1 = abilityId === headMarkerData['manaBurstTether']
           ? 'defamations'
           : abilityId === headMarkerData['heavySlamTether']
-            ? 'stacks'
-            : 'unknown';
+          ? 'stacks'
+          : 'unknown';
 
         if (count < 6) {
           const player3 = count === 2 ? players[2] : players[3];
@@ -3240,7 +3246,7 @@ const triggerSet: TriggerSet<Data> = {
                 alertText: output.stackOnYouThenDefamations!({
                   mech1: output.stackOnYou!(),
                   mech2: output.defamations!(),
-                })
+                }),
               };
 
             if (data.me === player3 || data.me === player4)
@@ -3248,14 +3254,14 @@ const triggerSet: TriggerSet<Data> = {
                 infoText: output.stacksThenDefamationOnYou!({
                   mech1: output.stacks!(),
                   mech2: output.defamationOnYou!(),
-                })
+                }),
               };
 
             return {
               infoText: output.stacksThenDefamations!({
                 mech1: output.stacks!(),
                 mech2: output.defamations!(),
-              })
+              }),
             };
           }
 
@@ -3265,21 +3271,21 @@ const triggerSet: TriggerSet<Data> = {
                 alertText: output.defamationOnYouThenStack!({
                   mech1: output.defamationOnYou!(),
                   mech2: output.stacks!(),
-                })
+                }),
               };
             if (data.me === player3 || data.me === player4)
               return {
                 infoText: output.defamationsThenStackOnYou!({
                   mech1: output.defamations!(),
                   mech2: output.stackOnYou!(),
-                })
+                }),
               };
 
             return {
               infoText: output.defamationsThenStacks!({
                 mech1: output.defamations!(),
                 mech2: output.stacks!(),
-              })
+              }),
             };
           }
         }
@@ -3291,14 +3297,14 @@ const triggerSet: TriggerSet<Data> = {
               alertText: output.stackOnYouThenDefamations!({
                 mech1: output.stackOnYou!(),
                 mech2: output.towers!(),
-              })
+              }),
             };
 
           return {
             infoText: output.stacksThenDefamations!({
               mech1: output.stacks!(),
               mech2: output.towers!(),
-            })
+            }),
           };
         }
 
@@ -3308,14 +3314,14 @@ const triggerSet: TriggerSet<Data> = {
               alertText: output.defamationOnYouThenStack!({
                 mech1: output.defamationOnYou!(),
                 mech2: output.towers!(),
-              })
+              }),
             };
 
           return {
             infoText: output.defamationsThenStacks!({
               mech1: output.defamations!(),
               mech2: output.towers!(),
-            })
+            }),
           };
         }
       },
