@@ -66,7 +66,7 @@ export interface Data extends RaidbossData {
   twistedVisionCounter: number;
   replication3CloneOrder: number[];
   replication3CloneDirNumPlayers: { [dirNum: number]: string };
-  idyllicVision2NorthSouthCleaveSpot?: 'north' | 'south';\
+  idyllicVision2NorthSouthCleaveSpot?: 'north' | 'south';
   idyllicDreamActorEW?: string;
   idyllicDreamActorNS?: string;
   idyllicDreamActorSnaking?: string;
