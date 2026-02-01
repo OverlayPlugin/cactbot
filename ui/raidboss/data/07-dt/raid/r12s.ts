@@ -69,9 +69,9 @@ export interface Data extends RaidbossData {
   idyllicVision2NorthSouthCleaveSpot?: 'north' | 'south';
   replication4DirNumAbility: { [dirNum: number]: string };
   replication4PlayerAbilities: { [player: string]: string };
+  replication4BossCloneDirNumPlayers: { [dirNum: number]: string };
   replication4PlayerOrder: string[];
   replication4AbilityOrder: string[];
-  myReplication4Tether?: string;
   hasLightResistanceDown: boolean;
   twistedVision4MechCounter: number;
   doomPlayers: string[];
@@ -170,6 +170,7 @@ const triggerSet: TriggerSet<Data> = {
     replication3CloneDirNumPlayers: {},
     replication4DirNumAbility: {},
     replication4PlayerAbilities: {},
+    replication4BossCloneDirNumPlayers: {},
     replication4PlayerOrder: [],
     replication4AbilityOrder: [],
     hasLightResistanceDown: false,
@@ -2888,6 +2889,9 @@ const triggerSet: TriggerSet<Data> = {
           center.y,
         );
 
+        // Store the player at each dirNum
+        data.replication4BossCloneDirNumPlayers[dirNum] = target;
+
         // Lookup what the tether was at the same location
         const ability = data.replication4DirNumAbility[dirNum];
         if (ability === undefined) {
@@ -2900,11 +2904,12 @@ const triggerSet: TriggerSet<Data> = {
         // Create ability order once we have all 8 players
         // If players had more than one tether previously, the extra tethers are randomly assigned
         if (Object.keys(data.replication4PlayerAbilities).length === 8) {
+          // Used for Twisted Vision 7 and 8 mechanics
           const abilities = data.replication4PlayerAbilities;
           const order = data.replication3CloneOrder; // Order in which clones spawned
           const players = data.replication3CloneDirNumPlayers; // Direction of player's clone
 
-          // Mechanics are resolved clockwise, get create order based on cards/inters
+          // Mechanics are resolved clockwise, create order based on cards/inters
           const first = order[0];
           if (first === undefined)
             return;
@@ -3052,176 +3057,99 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          ...Directions.outputStrings8Dir,
           stacks: Outputs.stacks,
-          avoidDefamation: {
-            en: 'Avoid Defamation',
-          },
-          avoidStack: {
-            en: 'Avoid Stack',
-            de: 'Vermeide Sammeln',
-            fr: 'Évitez le package',
-            cn: '远离分摊',
-            ko: '쉐어징 피하기',
-            tc: '遠離分攤',
+          stackOnYou: Outputs.stackOnYou,
+          defamations: {
+            en: 'Avoid Defamations',
           },
           defamationOnYou: Outputs.defamationOnYou,
-          stackOnYou: Outputs.stackOnYou,
-          stackOnPlayer: Outputs.stackOnPlayer,
-          defamations: {
-            en: 'Defamations',
-            de: 'Große AoE auf dir',
-            fr: 'Grosse AoE sur vous',
-            ja: '自分に巨大な爆発',
-            cn: '大圈点名',
-            ko: '광역 대상자',
-            tc: '大圈點名',
-          },
-          oneMechThenOne: {
+          stacksThenDefamations: {
             en: '${mech1} => ${mech2}',
           },
-          oneMechThenTwo: {
-            en: '${mech1} => ${mech2} + ${mech3}',
+          defamationsThenStacks: {
+            en: '${mech1} => ${mech2}',
           },
-          twoMechsThenOne: {
-            en: '${mech1} + ${mech2} => ${mech3}',
+          stacksThenDefamationOnYou: {
+            en: '${mech1} => ${mech2}',
           },
-          twoMechsThenTwo: {
-            en: '${mech1} + ${mech2} => ${mech3} + ${mech4}',
+          defamationsThenStackOnYou: {
+            en: '${mech1} => ${mech2}',
+          },
+          stackOnYouThenDefamations: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationOnYouThenStack: {
+            en: '${mech1} => ${mech2}',
           },
         };
-        const abilityOrder = data.replication4AbilityOrder;
-        const playerOrder = data.replication4PlayerOrder;
+        const player1 = data.replication4BossCloneDirNumPlayers[0];
+        const player2 = data.replication4BossCloneDirNumPlayers[4];
+        const player3 = data.replication4BossCloneDirNumPlayers[1];
+        const player4 = data.replication4BossCloneDirNumPlayers[5];
+        const abilityId = data.replication4DirNumAbility[0]; // Only need to know one
+
         if (
-          abilityOrder === undefined ||
-          playerOrder === undefined
+          abilityId === undefined || player1 === undefined ||
+          player2 === undefined || player3 === undefined ||
+          player4 === undefined
         )
           return;
 
-        const ability1 = abilityOrder[0];
-        const ability2 = abilityOrder[1];
-        const player1 = playerOrder[0];
-        const player2 = playerOrder[1];
+        const ability1 = abilityId === headMarkerData['manaBurstTether']
+          ? 'defamations'
+          : abilityId === headMarkerData['heavySlamTether']
+            ? 'stacks'
+            : 'unknown';
 
-        // Get Stack/Defamation #2 details
-        const ability3 = abilityOrder[2];
-        const ability4 = abilityOrder[3];
-        const player3 = playerOrder[2];
-        const player4 = playerOrder[3];
+        if (ability1 === 'stacks') {
+          if (data.me === player1 || data.me === player2)
+            return {
+              alertText: output.stackOnYouThenDefamations!({
+                mech1: output.stackOnYou!(),
+                mech2: output.defamations!(),
+              })
+            };
 
-        // Handle some obscure strategies or mistakes
-        const isThisSame = ability1 === ability2;
-        const isNextSame = ability3 === ability4;
-        const defamation = headMarkerData['manaBurstTether'];
-        let this1;
-        let this2;
-        let next1;
-        let next2;
-        // Handle This Set
-        if (player1 === data.me) {
-          this1 = ability1 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          if (!isThisSame)
-            this2 = ability2 === defamation ? 'avoidDefamation' : 'avoidStack';
-        } else if (player2 === data.me) {
-          if (!isThisSame) {
-            this1 = ability1 === defamation ? 'avoidDefamation' : 'avoidStack';
-            this2 = ability2 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          } else {
-            this1 = ability1 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          }
-        } else if (isThisSame) {
-          this1 = ability1 === defamation ? 'defamations' : 'stacks';
-        } else if (!isThisSame) {
-          this1 = ability1 === defamation ? 'avoidDefamation' : 'stack';
-          this2 = ability2 === defamation ? 'avoidDefamation' : 'stack';
-        }
+          if (data.me === player3 || data.me === player4)
+            return {
+              infoText: output.stacksThenDefamationOnYou!({
+                mech1: output.stacks!(),
+                mech2: output.defamationOnYou!(),
+              })
+            };
 
-        // Handle Next Set
-        if (player3 === data.me) {
-          next1 = ability3 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          if (!isThisSame)
-            next2 = ability4 === defamation ? 'avoidDefamation' : 'avoidStack';
-        } else if (player4 === data.me) {
-          if (!isThisSame) {
-            next1 = ability4 === defamation ? 'avoidDefamation' : 'avoidStack';
-            next2 = ability4 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          } else {
-            next1 = ability4 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          }
-        } else if (isNextSame) {
-          next1 = ability3 === defamation ? 'defamations' : 'stacks';
-        } else if (!isNextSame) {
-          next1 = ability3 === defamation ? 'avoidDefamation' : 'stack';
-          next2 = ability4 === defamation ? 'avoidDefamation' : 'stack';
-        }
-
-        // Build output
-        if (this1 === undefined || next1 === undefined)
-          return;
-        const text = (player1 === data.me || player2 === data.me) ? 'alertText' : 'infoText';
-        if (isThisSame && isNextSame) {
           return {
-            [text]: output.oneMechThenOne!({
-              mech1: output[this1]!(),
-              mech2: output[next1]!(),
-            }),
+            infoText: output.stacksThenDefamations!({
+              mech1: output.stacks!(),
+              mech2: output.defamations!(),
+            })
           };
         }
 
-        const shortPlayer3 = data.party.member(player3);
-        const shortPlayer4 = data.party.member(player4);
-        if (isThisSame && !isNextSame) {
-          if (next2 === undefined)
-            return;
+        if (ability1 === 'defamations') {
+          if (data.me === player1 || data.me === player2)
+            return {
+              alertText: output.defamationOnYouThenStack!({
+                mech1: output.defamationOnYou!(),
+                mech2: output.stacks!(),
+              })
+            };
+
+          if (data.me === player3 || data.me === player4)
+            return {
+              infoText: output.defamationsThenStackOnYou!({
+                mech1: output.defamations!(),
+                mech2: output.stackOnYou!(),
+              })
+            };
+
           return {
-            [text]: output.oneMechThenTwo!({
-              mech1: output[this1]!(),
-              mech2: next1 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer3 })
-                : output[next1]!(),
-              mech3: next2 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer4 })
-                : output[next2]!(),
-            }),
+            infoText: output.defamationsThenStacks!({
+              mech1: output.defamations!(),
+              mech2: output.stacks!(),
+            })
           };
         }
-
-        const shortPlayer1 = data.party.member(player1);
-        const shortPlayer2 = data.party.member(player2);
-        if (!isThisSame && isNextSame) {
-          if (this2 === undefined)
-            return;
-          return {
-            [text]: output.twoMechsThenOne!({
-              mech1: this1 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer1 })
-                : output[this1]!(),
-              mech2: this2 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer2 })
-                : output[this2]!(),
-              mech3: output[next1]!(),
-            }),
-          };
-        }
-
-        if (this2 === undefined || next2 === undefined)
-          return;
-        return {
-          [text]: output.twoMechsThenTwo!({
-            mech1: this1 === 'stack'
-              ? output.stackOnPlayer!({ player: shortPlayer1 })
-              : output[this1]!(),
-            mech2: this2 === 'stack'
-              ? output.stackOnPlayer!({ player: shortPlayer2 })
-              : output[this2]!(),
-            mech3: next1 === 'stack'
-              ? output.stackOnPlayer!({ player: shortPlayer3 })
-              : output[next1]!(),
-            mech4: next2 === 'stack'
-              ? output.stackOnPlayer!({ player: shortPlayer4 })
-              : output[next2]!(),
-          }),
-        };
       },
     },
     {
@@ -3237,8 +3165,30 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          ...Directions.outputStrings8Dir,
           stacks: Outputs.stacks,
+          stackOnYou: Outputs.stackOnYou,
+          defamations: {
+            en: 'Avoid Defamations',
+          },
+          defamationOnYou: Outputs.defamationOnYou,
+          stacksThenDefamations: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationsThenStacks: {
+            en: '${mech1} => ${mech2}',
+          },
+          stacksThenDefamationOnYou: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationsThenStackOnYou: {
+            en: '${mech1} => ${mech2}',
+          },
+          stackOnYouThenDefamations: {
+            en: '${mech1} => ${mech2}',
+          },
+          defamationOnYouThenStack: {
+            en: '${mech1} => ${mech2}',
+          },
           towers: {
             en: 'Tower Positions',
             de: 'Turm Positionen',
@@ -3248,212 +3198,124 @@ const triggerSet: TriggerSet<Data> = {
             ko: '기둥 자리잡기',
             tc: '八人塔站位',
           },
-          avoidDefamation: {
-            en: 'Avoid Defamation',
-          },
-          avoidStack: {
-            en: 'Avoid Stack',
-            de: 'Vermeide Sammeln',
-            fr: 'Évitez le package',
-            cn: '远离分摊',
-            ko: '쉐어징 피하기',
-            tc: '遠離分攤',
-          },
-          defamationOnYou: Outputs.defamationOnYou,
-          stackOnYou: Outputs.stackOnYou,
-          stackOnPlayer: Outputs.stackOnPlayer,
-          defamations: {
-            en: 'Defamations',
-            de: 'Große AoE auf dir',
-            fr: 'Grosse AoE sur vous',
-            ja: '自分に巨大な爆発',
-            cn: '大圈点名',
-            ko: '광역 대상자',
-            tc: '大圈點名',
-          },
-          oneMechThenOne: {
-            en: '${mech1} => ${mech2}',
-          },
-          oneMechThenTwo: {
-            en: '${mech1} => ${mech2} + ${mech3}',
-          },
-          twoMechsThenOne: {
-            en: '${mech1} + ${mech2} => ${mech3}',
-          },
-          twoMechsThenTwo: {
-            en: '${mech1} + ${mech2} => ${mech3} + ${mech4}',
-          },
-          oneMechThenTowers: {
-            en: '${mech1} => ${towers}',
-          },
-          twoMechsThenTowers: {
-            en: '${mech1} + ${mech2} => ${towers}',
-          },
         };
         data.twistedVision4MechCounter = data.twistedVision4MechCounter + 2; // Mechanic is done in pairs
         // Don't output for first one as it was called 1s prior to this trigger
         if (data.twistedVision4MechCounter < 2)
           return;
         const count = data.twistedVision4MechCounter;
-        const abilityOrder = data.replication4AbilityOrder;
-        const playerOrder = data.replication4PlayerOrder;
+        const players = data.replication4BossCloneDirNumPlayers;
+        const abilityIds = data.replication4DirNumAbility;
+        const player1 = count === 2
+          ? players[1]
+          : count === 4 ? players[2] : players[3];
+        const player2 = count === 2
+          ? players[5]
+          : count === 4 ? players[6] : players[7];
+        const abilityId = count === 2
+          ? abilityIds[1]
+          : count === 4 ? abilityIds[2] : abilityIds[3];
+
         if (
-          abilityOrder === undefined ||
-          playerOrder === undefined
+          abilityId === undefined || player1 === undefined ||
+          player2 === undefined
         )
           return;
 
-        const ability1 = abilityOrder[0 + count];
-        const ability2 = abilityOrder[1 + count];
-        const player1 = playerOrder[0 + count];
-        const player2 = playerOrder[1 + count];
-        let this1;
-        let this2;
-        const defamation = headMarkerData['manaBurstTether'];
-        const isThisSame = ability1 === ability2;
-        const shortPlayer1 = data.party.member(player1);
-        const shortPlayer2 = data.party.member(player2);
-        const text = (player1 === data.me || player2 === data.me) ? 'alertText' : 'infoText';
-
-        // Handle This Set
-        if (player1 === data.me) {
-          this1 = ability1 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          if (!isThisSame)
-            this2 = ability2 === defamation ? 'avoidDefamation' : 'avoidStack';
-        } else if (player2 === data.me) {
-          if (!isThisSame) {
-            this1 = ability1 === defamation ? 'avoidDefamation' : 'avoidStack';
-            this2 = ability2 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          } else {
-            this1 = ability1 === defamation ? 'defamationOnYou' : 'stackOnYou';
-          }
-        } else if (isThisSame) {
-          this1 = ability1 === defamation ? 'defamations' : 'stacks';
-        } else if (!isThisSame) {
-          this1 = ability1 === defamation ? 'avoidDefamation' : 'stack';
-          this2 = ability2 === defamation ? 'avoidDefamation' : 'stack';
-        }
+        const ability1 = abilityId === headMarkerData['manaBurstTether']
+          ? 'defamations'
+          : abilityId === headMarkerData['heavySlamTether']
+            ? 'stacks'
+            : 'unknown';
 
         if (count < 6) {
-          // Handle next set
-          // Get Stack/Defamation #2 details
-          const ability3 = abilityOrder[2 + count];
-          const ability4 = abilityOrder[3 + count];
-          const player3 = playerOrder[2 + count];
-          const player4 = playerOrder[3 + count];
-
-          // Handle some obscure strategies or mistakes
-          const isNextSame = ability3 === ability4;
-          let next1;
-          let next2;
-
-          if (player3 === data.me) {
-            next1 = ability3 === defamation ? 'defamationOnYou' : 'stackOnYou';
-            if (!isThisSame)
-              next2 = ability4 === defamation ? 'avoidDefamation' : 'avoidStack';
-          } else if (player4 === data.me) {
-            if (!isThisSame) {
-              next1 = ability4 === defamation ? 'avoidDefamation' : 'avoidStack';
-              next2 = ability4 === defamation ? 'defamationOnYou' : 'stackOnYou';
-            } else {
-              next1 = ability4 === defamation ? 'defamationOnYou' : 'stackOnYou';
-            }
-          } else if (isNextSame) {
-            next1 = ability3 === defamation ? 'defamations' : 'stacks';
-          } else if (!isNextSame) {
-            next1 = ability3 === defamation ? 'avoidDefamation' : 'stack';
-            next2 = ability4 === defamation ? 'avoidDefamation' : 'stack';
-          }
-
-          // Build output
-          if (this1 === undefined || next1 === undefined)
+          const player3 = count === 2 ? players[2] : players[3];
+          const player4 = count === 2 ? players[6] : players[7];
+          if (player3 === undefined || player4 === undefined)
             return;
-          if (isThisSame && isNextSame) {
+
+          if (ability1 === 'stacks') {
+            if (data.me === player1 || data.me === player2)
+              return {
+                alertText: output.stackOnYouThenDefamations!({
+                  mech1: output.stackOnYou!(),
+                  mech2: output.defamations!(),
+                })
+              };
+
+            if (data.me === player3 || data.me === player4)
+              return {
+                infoText: output.stacksThenDefamationOnYou!({
+                  mech1: output.stacks!(),
+                  mech2: output.defamationOnYou!(),
+                })
+              };
+
             return {
-              [text]: output.oneMechThenOne!({
-                mech1: output[this1]!(),
-                mech2: output[next1]!(),
-              }),
+              infoText: output.stacksThenDefamations!({
+                mech1: output.stacks!(),
+                mech2: output.defamations!(),
+              })
             };
           }
 
-          const shortPlayer3 = data.party.member(player3);
-          const shortPlayer4 = data.party.member(player4);
-          if (isThisSame && !isNextSame) {
-            if (next2 === undefined)
-              return;
+          if (ability1 === 'defamations') {
+            if (data.me === player1 || data.me === player2)
+              return {
+                alertText: output.defamationOnYouThenStack!({
+                  mech1: output.defamationOnYou!(),
+                  mech2: output.stacks!(),
+                })
+              };
+            if (data.me === player3 || data.me === player4)
+              return {
+                infoText: output.defamationsThenStackOnYou!({
+                  mech1: output.defamations!(),
+                  mech2: output.stackOnYou!(),
+                })
+              };
+
             return {
-              [text]: output.oneMechThenTwo!({
-                mech1: output[this1]!(),
-                mech2: next1 === 'stack'
-                  ? output.stackOnPlayer!({ player: shortPlayer3 })
-                  : output[next1]!(),
-                mech3: next2 === 'stack'
-                  ? output.stackOnPlayer!({ player: shortPlayer4 })
-                  : output[next2]!(),
-              }),
+              infoText: output.defamationsThenStacks!({
+                mech1: output.defamations!(),
+                mech2: output.stacks!(),
+              })
             };
           }
+        }
 
-          if (!isThisSame && isNextSame) {
-            if (this2 === undefined)
-              return;
+        // Last set followed up with tower positions
+        if (ability1 === 'stacks') {
+          if (data.me === player1 || data.me === player2)
             return {
-              [text]: output.twoMechsThenOne!({
-                mech1: this1 === 'stack'
-                  ? output.stackOnPlayer!({ player: shortPlayer1 })
-                  : output[this1]!(),
-                mech2: this2 === 'stack'
-                  ? output.stackOnPlayer!({ player: shortPlayer2 })
-                  : output[this2]!(),
-                mech3: output[next1]!(),
-              }),
+              alertText: output.stackOnYouThenDefamations!({
+                mech1: output.stackOnYou!(),
+                mech2: output.towers!(),
+              })
             };
-          }
 
-          if (this2 === undefined || next2 === undefined)
-            return;
           return {
-            [text]: output.twoMechsThenTwo!({
-              mech1: this1 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer1 })
-                : output[this1]!(),
-              mech2: this2 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer2 })
-                : output[this2]!(),
-              mech3: next1 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer3 })
-                : output[next1]!(),
-              mech4: next2 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer4 })
-                : output[next2]!(),
-            }),
+            infoText: output.stacksThenDefamations!({
+              mech1: output.stacks!(),
+              mech2: output.towers!(),
+            })
           };
         }
-        // Build output for last mechanic set to warn of towers
-        if (this1 === undefined)
-          return;
-        if (isThisSame) {
+
+        if (ability1 === 'defamations') {
+          if (data.me === player1 || data.me === player2)
+            return {
+              alertText: output.defamationOnYouThenStack!({
+                mech1: output.defamationOnYou!(),
+                mech2: output.towers!(),
+              })
+            };
+
           return {
-            [text]: output.oneMechThenTowers!({
-              mech1: output[this1]!(),
-              towers: output.towers!(),
-            }),
-          };
-        }
-        if (!isThisSame) {
-          if (this2 === undefined)
-            return;
-          return {
-            [text]: output.twoMechsThenTowers!({
-              mech1: this1 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer1 })
-                : output[this1]!(),
-              mech2: this2 === 'stack'
-                ? output.stackOnPlayer!({ player: shortPlayer2 })
-                : output[this2]!(),
-              towers: output.towers!(),
-            }),
+            infoText: output.defamationsThenStacks!({
+              mech1: output.defamations!(),
+              mech2: output.towers!(),
+            })
           };
         }
       },
