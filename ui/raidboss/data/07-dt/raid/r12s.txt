@@ -473,22 +473,18 @@ hideall "--sync--"
 
 # Twisted Vision 5: Towers
 3393.6 "Twisted Vision 5" Ability { id: "BBE2", source: "Lindwurm" }
-3398.0 "Cosmic Kiss" Ability { id: "B4F4", source: "Lindwurm" }
-
-# fflogs adjusted by 4.1s
-3398.7 "Lindwurm's Dark II" Ability { id: "B4F6", source: "Lindwurm" }
-3400.7 "Pyretic Wurm" Ability { id: "B4F9", source: "Lindwurm" }
-3403.7 "Lindwurm's Stone III" #Ability { id: "B4F7", source: "Lindwurm" }
-3408.7 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
-3408.7 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
-3408.7 "Lindwurm's Thunder II" #Ability { id: "B4FA", source: "Lindwurm" }
-3408.7 "Lindwurm's Glare" #Ability { id: "B4F8", source: "Lindwurm" }
-3412.0 "Temporal Curtain" Ability { id: "B51C", source: "Lindwurm" } window 10,10
+3398.0 "Cosmic Kiss x8" Ability { id: "B4F4", source: "Lindwurm" }
+3398.7 "Lindwurm's Dark II x2" Ability { id: "B4F6", source: "Lindwurm" }
+3400.7 "Pyretic Wurm x2" Ability { id: "B4F9", source: "Lindwurm" }
+3403.7 "Lindwurm's Stone III x2" #Ability { id: "B4F7", source: "Lindwurm" }
+3408.7 "Lindwurm's Thunder II x4" #Ability { id: "B4FA", source: "Lindwurm" }
+3408.7 "Lindwurm's Glare x4" #Ability { id: "B4F8", source: "Lindwurm" }
+3417.1 "Temporal Curtain" Ability { id: "B51C", source: "Lindwurm" }
+3420.2 "--clone takes portal--" Ability { id: "B51D", source: "Lindschrat" }
+3423.3 "--clones on platform--" Ability { id: "B4D9", source: "Lindschrat" }
 
 # fflogs
-3416.0 "--sync--" Ability { id: "B51D", source: "Lindschrat" }
-3419.1 "--sync--" Ability { id: "B4D9", source: "Lindschrat" }
-3425.4 "Twisted Vision 6" Ability { id: "BBE2", source: "Lindwurm" }
+3425.4 "Twisted Vision 6" Ability { id: "BBE2", source: "Lindwurm" } window 10,10
 3426.4 "Power Gusher" #Ability { id: "B50F", source: "Lindschrat" }
 3426.4 "Snaking Kick" Ability { id: "BCAF", source: "Lindschrat" }
 3431.5 "Reenactment 2" Ability { id: "B4EC", source: "Lindwurm" }
