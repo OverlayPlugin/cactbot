@@ -79,7 +79,7 @@ const isTranslationKeyMap = (key: string): key is MissingTranslationErrorType =>
 };
 
 // TODO: make it possible to click on a zone row and highlight/link to it.
-type exKeys = Exclude<keyof typeof kPrefixToCategory, '00-misc' | 'user'>;
+type exKeys = Exclude<keyof typeof kPrefixToCategory, '00-misc' | '99-custom' | 'user'>;
 
 const exVersionToDirName: readonly exKeys[] = [
   '02-arr',
