@@ -2851,9 +2851,9 @@ const triggerSet: TriggerSet<Data> = {
           return output.getTether!();
         }
 
-        if (first === headMarkerData['manaBurstTether'])
-          return output.stacksFirst!();
         if (first === headMarkerData['heavySlamTether'])
+          return output.stacksFirst!();
+        if (first === headMarkerData['manaBurstTether'])
           return output.defamationsFirst!();
         return output.getTether!();
       },
