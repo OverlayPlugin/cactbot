@@ -78,6 +78,8 @@ export interface Data extends RaidbossData {
   hasLightResistanceDown: boolean;
   twistedVision4MechCounter: number;
   doomPlayers: string[];
+  hasDoom: boolean;
+  hasPyretic: boolean;
   idyllicVision8SafeSides?: 'frontBack' | 'sides';
   idyllicVision7SafeSides?: 'frontBack' | 'sides';
   idyllicVision7SafePlatform?: 'east' | 'west';
@@ -182,6 +184,8 @@ const triggerSet: TriggerSet<Data> = {
     hasLightResistanceDown: false,
     twistedVision4MechCounter: 0,
     doomPlayers: [],
+    hasDoom: false,
+    hasPyretic: false,
   }),
   triggers: [
     {
@@ -3363,6 +3367,14 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Hot-blooded Collect',
+      // Player can still cast, but shouldn't move for 5s duration
+      type: 'GainsEffect',
+      netRegex: { effectId: '12A0', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, _matches) => data.hasPyretic = true,
+    },
+    {
       id: 'R12S Hot-blooded',
       // Player can still cast, but shouldn't move for 5s duration
       type: 'GainsEffect',
@@ -3391,7 +3403,11 @@ const triggerSet: TriggerSet<Data> = {
       // Happens about 1.3s after Dark Tower when it casts B4F6 Lindwurm's Dark II
       type: 'GainsEffect',
       netRegex: { effectId: 'D24', capture: true },
-      run: (data, matches) => data.doomPlayers.push(matches.target),
+      run: (data, matches) => {
+        data.doomPlayers.push(matches.target);
+        if (data.me === matches.target)
+          data.hasDoom = true;
+      },
     },
     {
       id: 'R12S Doom Cleanse',
@@ -3432,41 +3448,55 @@ const triggerSet: TriggerSet<Data> = {
       // 129E Farwaway Portent
       // 129F Nearby Portent
       // 10s duration, need to delay to avoid earth + doom trigger overlap
-      // TODO: Configure for element tower they soaked
+      // This would go out to players that soaked white/holy meteors
       type: 'GainsEffect',
       netRegex: { effectId: ['129E', '129F'], capture: true },
       condition: Conditions.targetIsYou(),
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
-      infoText: (_data, matches, output) => {
-        if (matches.id === '129E')
-          return output.farOnYou!();
-        return output.nearOnYou!();
+      infoText: (data, matches, output) => {
+        if (matches.id === '129E') {
+          if (data.hasDoom)
+            return output.farOnYouDark!();
+          return output.farOnYouWind!();
+        }
+        if (data.hasDoom)
+          return output.nearOnYouDark!();
+        return output.nearOnYouWind!();
       },
       outputStrings: {
-        nearOnYou: {
+        nearOnYouWind: {
           en: 'Near on YOU: Be on Middle Hitbox',
         },
-        farOnYou: {
-          en: 'Far on YOU: Be on N/S Hitbox', // Most parties probably put this North?
+        nearOnYouDark: {
+          en: 'Near on YOU: Be on Hitbox N',
+        },
+        farOnYouWind: {
+          en: 'Far on YOU: Be on Middle Hitbox',
+        },
+        farOnYouDark: {
+          en: 'Far on YOU: Be on Hitbox N',
         },
       },
     },
     {
       id: 'R12S Nearby and Faraway Portent Baits',
-      // TODO: Configure for element tower they soaked
+      // This would go out on players that soaked fire/earth meteors
       type: 'GainsEffect',
       netRegex: { effectId: ['129E', '129F'], capture: true },
       condition: (data) => data.hasLightResistanceDown,
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.bait!(),
+      infoText: (data, _matches, output) => {
+        if (data.hasPyretic)
+          return output.baitFire!();
+        return output.baitEarth!();
+      },
       outputStrings: {
-        bait: {
-          en: 'Bait Cone',
-          de: 'Köder Kegel-AoE',
-          cn: '诱导扇形',
-          ko: '부채꼴 유도',
-          tc: '誘導扇形',
+        baitFire: {
+          en: 'Bait Cone N/S',
+        },
+        baitEarth: {
+          en: 'Bait Cone N/S',
         },
       },
     },
@@ -3476,7 +3506,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B51D', source: 'Lindschrat', capture: true },
       run: (data, matches) => {
-        switch (matches.id) {
+        switch (matches.sourceId) {
           case data.idyllicDreamActorEW:
             data.idyllicVision8SafeSides = 'frontBack';
             return;
@@ -3491,7 +3521,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B51D', source: 'Lindschrat', capture: true },
       infoText: (data, matches, output) => {
-        switch (matches.id) {
+        switch (matches.sourceId) {
           case data.idyllicDreamActorEW:
             return output.frontBackLater!();
           case data.idyllicDreamActorNS:
@@ -3513,7 +3543,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'AbilityExtra',
       netRegex: { id: 'B4D9', capture: true },
       run: (data, matches) => {
-        switch (matches.id) {
+        switch (matches.sourceId) {
           case data.idyllicDreamActorEW:
             data.idyllicVision7SafeSides = 'frontBack';
             return;
@@ -3710,6 +3740,13 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Front/Back of Clone',
         },
       },
+    },
+    {
+      id: 'R12S Arcadian Hell',
+      type: 'StartsUsing',
+      netRegex: { id: 'B533', source: 'Lindwurm', capture: false },
+      durationSeconds: 4.7,
+      response: Responses.bigAoe('alert'),
     },
   ],
   timelineReplace: [
