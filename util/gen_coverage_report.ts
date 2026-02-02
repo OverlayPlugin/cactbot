@@ -156,7 +156,7 @@ const processRaidbossCoverage = async (
   const manifestLines = findManifestFiles(manifest);
   const dataDir = path.dirname(manifest);
   for (const line of manifestLines) {
-    if (!line.endsWith('.js') && !line.endsWith('.ts'))
+    if (!line.endsWith('.js') && !line.endsWith('.ts') || line.includes('99-custom'))
       continue;
     const triggerFileName = path.join(dataDir, line).replace(/\\/g, '/');
 
@@ -256,7 +256,7 @@ const processOopsyCoverage = async (manifest: string, coverage: Coverage) => {
   const manifestLines = findManifestFiles(manifest);
   const dataDir = path.dirname(manifest);
   for (const line of manifestLines) {
-    if (!line.endsWith('.js') && !line.endsWith('.ts'))
+    if (!line.endsWith('.js') && !line.endsWith('.ts') || line.includes('99-custom'))
       continue;
     const triggerFileName = path.join(dataDir, line).replace(/\\/g, '/');
 
