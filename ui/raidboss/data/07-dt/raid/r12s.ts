@@ -166,7 +166,8 @@ const triggerSet: TriggerSet<Data> = {
       options: {
         en: {
           'DN Strategy: Dark N Hitbox, Wind Middle Hitbox, Earth/Fire N/S Max Melee': 'dn',
-          'Zenith Strategy: Wind N Max Melee, Earth/Dark Middle (Lean North), Fire S Max Melee': 'zenith',
+          'Zenith Strategy: Wind N Max Melee, Earth/Dark Middle (Lean North), Fire S Max Melee':
+            'zenith',
           'No strategy: call element and debuff': 'none',
         },
       },
@@ -3577,7 +3578,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.farOnYouWind!();
         }
         if (data.hasDoom) {
-           switch (data.triggerSetConfig.portentStrategy) {
+          switch (data.triggerSetConfig.portentStrategy) {
             case 'dn':
               return output.nearOnYouDarkDN!();
             case 'zenith':
