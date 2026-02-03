@@ -1563,16 +1563,11 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Snaking Kick',
       // Targets random player
+      // Second cast of this happens before Grotesquerie, delay until Grotesquerie to reduce chance of none projection players running into it
       type: 'StartsUsing',
       netRegex: { id: 'B527', source: 'Lindwurm', capture: true },
-      condition: (data) => {
-        // Use Grotesquerie trigger for projection tethered players
-        const ability = data.myReplication2Tether;
-        if (ability === headMarkerData['projectionTether'])
-          return false;
-        return true;
-      },
       delaySeconds: 0.1, // Need to delay for actor position update
+      suppressSeconds: 9999,
       alertText: (data, matches, output) => {
         const actor = data.actorPositions[matches.sourceId];
         if (actor === undefined)
@@ -2192,7 +2187,7 @@ const triggerSet: TriggerSet<Data> = {
       // B4EB Hemorrhagic Projection conal aoe goes off ~0.5s after in the direction the player was facing
       type: 'Ability',
       netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
-      condition: Conditions.targetIsYou(),
+      suppressSeconds: 9999,
       alertText: (data, _matches, output) => {
         // Get Boss facing
         const bossId = data.replication2BossId;
