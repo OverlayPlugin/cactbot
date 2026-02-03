@@ -28,6 +28,7 @@ type DirectionIntercard = Exclude<DirectionOutputIntercard, 'unknown'>;
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     uptimeKnockbackStrat: true | false;
+    portentStrategy: 'dn' | 'zenith' | 'none';
   };
   phase: Phase;
   // Phase 1
@@ -155,6 +156,21 @@ const triggerSet: TriggerSet<Data> = {
       },
       type: 'checkbox',
       default: false,
+    },
+    {
+      id: 'portentStrategy',
+      name: {
+        en: 'Phase 2 Tower Portent Resolution Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'DN Strategy: Dark N Hitbox, Wind Middle Hitbox, Earth/Fire N/S Max Melee': 'dn',
+          'Zenith Strategy: Wind N Max Melee, Earth/Dark Middle (Lean North), Fire S Max Melee': 'zenith',
+          'No strategy: call element and debuff': 'none',
+        },
+      },
+      default: 'none',
     },
   ],
   timelineFile: 'r12s.txt',
@@ -2186,7 +2202,7 @@ const triggerSet: TriggerSet<Data> = {
       // B4EA has the targetted player in it
       // B4EB Hemorrhagic Projection conal aoe goes off ~0.5s after in the direction the player was facing
       type: 'Ability',
-      netRegex: { id: 'B4EA', source: 'Lindwurm', capture: true },
+      netRegex: { id: 'B4EA', source: 'Lindwurm', capture: false },
       suppressSeconds: 9999,
       alertText: (data, _matches, output) => {
         // Get Boss facing
@@ -2389,7 +2405,7 @@ const triggerSet: TriggerSet<Data> = {
               (order[2] === projection && order[3] === defamation)
             )
           )
-          return true;
+            return true;
         }
         return false;
       },
@@ -2422,7 +2438,7 @@ const triggerSet: TriggerSet<Data> = {
               (order[7] === projection && order[6] === defamation)
             )
           )
-          return true;
+            return true;
         }
         return false;
       },
@@ -3543,26 +3559,76 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
       infoText: (data, matches, output) => {
         if (matches.id === '129E') {
-          if (data.hasDoom)
+          if (data.hasDoom) {
+            switch (data.triggerSetConfig.portentStrategy) {
+              case 'dn':
+                return output.farOnYouDarkDN!();
+              case 'zenith':
+                return output.farOnYouDarkZenith!();
+            }
             return output.farOnYouDark!();
+          }
+          switch (data.triggerSetConfig.portentStrategy) {
+            case 'dn':
+              return output.farOnYouWindDN!();
+            case 'zenith':
+              return output.farOnYouWindZenith!();
+          }
           return output.farOnYouWind!();
         }
-        if (data.hasDoom)
+        if (data.hasDoom) {
+           switch (data.triggerSetConfig.portentStrategy) {
+            case 'dn':
+              return output.nearOnYouDarkDN!();
+            case 'zenith':
+              return output.nearOnYouDarkZenith!();
+          }
           return output.nearOnYouDark!();
+        }
+        switch (data.triggerSetConfig.portentStrategy) {
+          case 'dn':
+            return output.nearOnYouWindDN!();
+          case 'zenith':
+            return output.nearOnYouWindZenith!();
+        }
         return output.nearOnYouWind!();
       },
       outputStrings: {
-        nearOnYouWind: {
+        nearOnYouWindDN: {
           en: 'Near on YOU: Be on Middle Hitbox',
         },
-        nearOnYouDark: {
+        nearOnYouDarkDN: {
           en: 'Near on YOU: Be on Hitbox N',
         },
-        farOnYouWind: {
+        farOnYouWindDN: {
           en: 'Far on YOU: Be on Middle Hitbox',
         },
-        farOnYouDark: {
+        farOnYouDarkDN: {
           en: 'Far on YOU: Be on Hitbox N',
+        },
+        nearOnYouWindZenith: {
+          en: 'Near on YOU: Max Melee N',
+        },
+        nearOnYouDarkZenith: {
+          en: 'Near on YOU: Be on Middle Hitbox (Lean North)',
+        },
+        farOnYouWindZenith: {
+          en: 'Far on YOU: Max Melee N',
+        },
+        farOnYouDarkZenith: {
+          en: 'Far on YOU: Be on Middle Hitbox (Lean North)',
+        },
+        nearOnYouWind: {
+          en: 'Wind: Near on YOU',
+        },
+        nearOnYouDark: {
+          en: 'Dark: Near on YOU',
+        },
+        farOnYouWind: {
+          en: 'Wind: Far on YOU',
+        },
+        farOnYouDark: {
+          en: 'Dark: Far on YOU',
         },
       },
     },
@@ -3575,16 +3641,41 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if (data.hasPyretic)
+        if (data.hasPyretic) {
+          switch (data.triggerSetConfig.portentStrategy) {
+            case 'dn':
+              return output.baitFireDN!();
+            case 'zenith':
+              return output.baitFireZenith!();
+          }
           return output.baitFire!();
+        }
+        switch (data.triggerSetConfig.portentStrategy) {
+          case 'dn':
+            return output.baitEarthDN!();
+          case 'zenith':
+            return output.baitEarthZenith!();
+        }
         return output.baitEarth!();
       },
       outputStrings: {
+        baitFireDN: {
+          en: 'Bait Cone N/S Max Melee',
+        },
+        baitEarthDN: {
+          en: 'Bait Cone N/S Max Melee',
+        },
+        baitFireZenith: {
+          en: 'Bait Cone S, Max Melee',
+        },
+        baitEarthZenith: {
+          en: 'Bait Cone Middle, Max Melee (Lean North)',
+        },
         baitFire: {
-          en: 'Bait Cone N/S',
+          en: 'Fire: Bait Cone',
         },
         baitEarth: {
-          en: 'Bait Cone N/S',
+          en: 'Earth: Bait Cone',
         },
       },
     },
