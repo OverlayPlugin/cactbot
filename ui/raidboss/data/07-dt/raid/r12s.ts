@@ -1623,7 +1623,8 @@ const triggerSet: TriggerSet<Data> = {
           const pos = data.actorPositions[matches.sourceId];
           if (pos === undefined)
             return false;
-          // These values should be 0 if coords are x.0000
+          // These values should be 0 when x or y coord has non-zero decimal values
+          // Heading is also checked as the non fire clones all face a perfect heading
           const xFilter = pos.x % 1;
           const yFilter = pos.y % 1;
           if (xFilter === 0 && yFilter === 0 && pos.heading === -0.0001)
