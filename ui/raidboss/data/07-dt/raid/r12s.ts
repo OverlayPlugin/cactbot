@@ -53,7 +53,7 @@ export interface Data extends RaidbossData {
   replication1FireActor2?: string;
   replication1FollowUp: boolean;
   replication2CloneDirNumPlayers: { [dirNum: number]: string };
-  replication2DirNumAbility: { [dirNum: string]: string };
+  replication2DirNumAbility: { [dirNum: number]: string };
   replication2PlayerAbilities: { [player: string]: string };
   replication2BossId?: string;
   replication2PlayerOrder: string[];
