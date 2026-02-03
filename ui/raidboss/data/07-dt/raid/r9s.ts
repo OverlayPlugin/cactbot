@@ -172,7 +172,7 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 5.5,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const [dir1, dir2] = data.bats.inner.sort();
+        const [dir1, dir2] = data.bats.inner.sort(Directions.compareDirectionOutput);
 
         return output.away!({
           dir1: output[dir1 ?? 'unknown']!(),
@@ -202,7 +202,7 @@ const triggerSet: TriggerSet<Data> = {
       durationSeconds: 3.4,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const [dir1, dir2, dir3] = data.bats.middle.sort();
+        const [dir1, dir2, dir3] = data.bats.middle.sort(Directions.compareDirectionOutput);
 
         return output.away!({
           dir1: output[dir1 ?? 'unknown']!(),
