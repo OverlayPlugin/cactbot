@@ -2964,7 +2964,7 @@ const triggerSet: TriggerSet<Data> = {
 
         const clones = data.replication3CloneDirNumPlayers;
         const myDirNum = Object.keys(clones).find(
-          (key) => clones[parseInt(key)] === data.me
+          (key) => clones[parseInt(key)] === data.me,
         );
         if (myDirNum !== undefined) {
           // Get dirNum of player for custom output based on replication 3 tether
