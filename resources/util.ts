@@ -264,15 +264,15 @@ const outputCardinalDir: DirectionOutputCardinal[] = ['dirN', 'dirE', 'dirS', 'd
 const outputIntercardDir: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
 
 const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
-  // Sort any element not in output16Dir after.
-  const aIndex = output16Dir.indexOf(a) ?? output16Dir.length;
-  const bIndex = output16Dir.indexOf(b) ?? output16Dir.length;
+  const getIndex = (n: DirectionOutput16) => {
+    const index = output16Dir.indexOf(n);
+    // Values outside of output16Dir (i.e. 'unknown') sort last
+    if (index < 0)
+      return output16Dir.length;
+    return index;
+  };
 
-  if (aIndex < bIndex)
-    return -1;
-  if (aIndex > bIndex)
-    return 1;
-  return 0;
+  return getIndex(a) - getIndex(b);
 };
 
 const outputStrings16Dir: OutputStrings = {
