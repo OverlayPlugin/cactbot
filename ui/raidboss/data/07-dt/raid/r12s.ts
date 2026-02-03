@@ -49,10 +49,14 @@ export interface Data extends RaidbossData {
   replicationCounter: number;
   replication1Debuff?: 'fire' | 'dark';
   replication1FireActor?: string;
+  replication1FireActor2?: string;
   replication1FollowUp: boolean;
-  replication2TetherMap: { [dirNum: string]: string };
+  replication2CloneDirNumPlayers: { [dirNum: number]: string };
+  replication2DirNumAbility: { [dirNum: string]: string };
+  replication2PlayerAbilities: { [player: string]: string };
   replication2BossId?: string;
-  myReplication2Tether?: string;
+  replication2PlayerOrder: string[];
+  replication2AbilityOrder: string[];
   netherwrathFollowup: boolean;
   myMutation?: 'alpha' | 'beta';
   manaSpheres: {
@@ -167,7 +171,11 @@ const triggerSet: TriggerSet<Data> = {
     actorPositions: {},
     replicationCounter: 0,
     replication1FollowUp: false,
-    replication2TetherMap: {},
+    replication2CloneDirNumPlayers: {},
+    replication2DirNumAbility: {},
+    replication2PlayerAbilities: {},
+    replication2PlayerOrder: [],
+    replication2AbilityOrder: [],
     netherwrathFollowup: false,
     manaSpheres: {},
     westManaSpheres: {},
@@ -1770,7 +1778,22 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 2 Tethered Clone',
+      id: 'R12S Staging 1 Tethered Clone Collect',
+      // Map the locations to a player name
+      type: 'Tether',
+      netRegex: { id: headMarkerData['lockedTether'], capture: true },
+      condition: (data) => data.replicationCounter === 1,
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        if (actor === undefined)
+          return;
+
+        const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
+        data.replication2CloneDirNumPlayers[dirNum] = matches.target;
+      },
+    },
+    {
+      id: 'R12S Staging 1 Tethered Clone',
       // Combatants are added ~4s before Staging starts casting
       // Same tether ID is used for "locked" ability tethers
       type: 'Tether',
@@ -1820,7 +1843,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
         const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
         if (data.phase === 'replication2')
-          data.replication2TetherMap[dirNum] = matches.id;
+          data.replication2DirNumAbility[dirNum] = matches.id;
         if (data.phase === 'idyllic')
           data.replication4DirNumAbility[dirNum] = matches.id;
       },
@@ -1896,51 +1919,72 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 2 Locked Tether 2 Collect',
+      id: 'R12S Replication 2 Locked Tether Collect',
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: true },
       condition: (data, matches) => {
         if (
           data.phase === 'replication2' &&
-          data.replicationCounter === 2 &&
-          data.me === matches.target
+          data.replicationCounter === 2
         )
           return true;
         return false;
       },
       run: (data, matches) => {
+        const target = matches.target;
+        const sourceId = matches.sourceId;
         // Check if boss tether
-        if (data.replication2BossId === matches.sourceId) {
-          data.myReplication2Tether = headMarkerData['fireballSplashTether'];
-          return;
+        if (data.replication2BossId === sourceId)
+          data.replication2PlayerAbilities[target] = headMarkerData['fireballSplashTether'];
+        else if (data.replication2BossId !== sourceId) {
+          const actor = data.actorPositions[sourceId];
+          if (actor === undefined) {
+            // Setting to use that we know we have a tether but couldn't determine what ability it is
+            data.replication2PlayerAbilities[target] = 'unknown';
+            return;
+          }
+
+          const dirNum = Directions.xyTo8DirNum(
+            actor.x,
+            actor.y,
+            center.x,
+            center.y,
+          );
+
+          // Lookup what the tether was at the same location
+          const ability = data.replication2DirNumAbility[dirNum];
+          if (ability === undefined) {
+            // Setting to use that we know we have a tether but couldn't determine what ability it is
+            data.replication2PlayerAbilities[target] = 'unknown';
+            return;
+          }
+          data.replication2PlayerAbilities[target] = ability;
         }
 
-        const actor = data.actorPositions[matches.sourceId];
-        if (actor === undefined) {
-          // Setting to use that we know we have a tether but couldn't determine what ability it is
-          data.myReplication2Tether = 'unknown';
-          return;
-        }
+        // Create ability order once we have all 8 players
+        // If players had more than one tether previously, the extra tethers are randomly assigned
+        if (Object.keys(data.replication2PlayerAbilities).length === 7) {
+          // Fill in for player that had no tether, they are going to be boss' defamation
+          if (data.replication2PlayerAbilities[data.me] === undefined)
+            data.replication2PlayerAbilities[data.me] = 'none';
 
-        const dirNum = Directions.xyTo8DirNum(
-          actor.x,
-          actor.y,
-          center.x,
-          center.y,
-        );
+          // Used for Twisted Vision 7 and 8 mechanics
+          const abilities = data.replication2PlayerAbilities;
+          const order = [0, 4, 1, 5, 2, 6, 3, 7]; // Order in which clones spawned, this is static
+          const players = data.replication2CloneDirNumPlayers; // Direction of player's clone
 
-        // Lookup what the tether was at the same location
-        const ability = data.replication2TetherMap[dirNum];
-        if (ability === undefined) {
-          // Setting to use that we know we have a tether but couldn't determine what ability it is
-          data.myReplication2Tether = 'unknown';
-          return;
+          // Mechanics are resolved clockwise
+          for (const dirNum of order) {
+            const player = players[dirNum] ?? 'unknown';
+            const ability = abilities[player] ?? 'unknown';
+            data.replication2PlayerOrder.push(player);
+            data.replication2AbilityOrder.push(ability);
+          }
         }
-        data.myReplication2Tether = ability;
       },
     },
     {
-      id: 'R12S Replication 2 Locked Tether 2',
+      id: 'R12S Replication 2 Locked Tether',
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: true },
       condition: (data, matches) => {
@@ -1954,16 +1998,18 @@ const triggerSet: TriggerSet<Data> = {
       },
       delaySeconds: 0.1,
       infoText: (data, matches, output) => {
+        const sourceId = matches.sourceId;
         // Check if it's the boss
-        if (data.replication2BossId === matches.sourceId)
+        if (data.replication2BossId === sourceId)
           return output.fireballSplashTether!({
             mech1: output.baitJump!(),
           });
 
         // Get direction of the tether
-        const actor = data.actorPositions[matches.sourceId];
+        const actor = data.actorPositions[sourceId];
+        const ability = data.replication2PlayerAbilities[data.me];
         if (actor === undefined) {
-          switch (data.myReplication2Tether) {
+          switch (ability) {
             case headMarkerData['projectionTether']:
               return output.projectionTether!({
                 mech1: output.baitProtean!(),
@@ -1983,7 +2029,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
         const dir = Directions.output8Dir[dirNum] ?? 'unknown';
 
-        switch (data.myReplication2Tether) {
+        switch (ability) {
           case headMarkerData['projectionTether']:
             return output.projectionTetherDir!({
               dir: output[dir]!(),
@@ -2046,7 +2092,10 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.2,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if (data.myReplication2Tether !== undefined)
+        if (
+          data.replication2PlayerAbilities[data.me] !== 'none' ||
+          data.replication2PlayerAbilities[data.me] === undefined
+        )
           return;
         return output.noTether!({
           mech1: output.defamationOnYou!(),
@@ -2076,7 +2125,7 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'B4E7', source: 'Lindwurm', capture: false },
       suppressSeconds: 1,
       alertText: (data, _matches, output) => {
-        const ability = data.myReplication2Tether;
+        const ability = data.replication2PlayerAbilities[data.me];
         switch (ability) {
           case headMarkerData['projectionTether']:
             return output.projectionTether!({
@@ -2175,7 +2224,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
       infoText: (data, matches, output) => {
-        const ability = data.myReplication2Tether;
+        const ability = data.replication2PlayerAbilities[data.me];
         const isNear = matches.id === 'B52E';
 
         if (isNear) {
@@ -2331,7 +2380,24 @@ const triggerSet: TriggerSet<Data> = {
       // NOTE: This is used with DN Strategy
       type: 'Ability',
       netRegex: { id: 'BBE3', source: 'Lindwurm', capture: false },
-      condition: (data) => data.netherwrathFollowup,
+      condition: (data) => {
+        if (data.netherwrathFollowup) {
+          const order = data.replication2AbilityOrder;
+          const stack = headMarkerData['heavySlamTether'];
+          const defamation = headMarkerData['manaBurstTether'];
+          const projection = headMarkerData['projectionTether'];
+          // Defined as east/west clones with stacks and SW/NE with defamation + projection
+          if (
+            order[4] === stack && order[5] === stack &&
+            (
+              (order[2] === defamation && order[3] === projection) ||
+              (order[2] === projection && order[3] === defamation)
+            )
+          )
+          return true;
+        }
+        return false;
+      },
       suppressSeconds: 9999,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {
@@ -2347,7 +2413,24 @@ const triggerSet: TriggerSet<Data> = {
       // NOTE: This is used with DN Strategy
       type: 'Ability',
       netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
-      condition: (data) => data.netherwrathFollowup,
+      condition: (data) => {
+        if (data.netherwrathFollowup) {
+          const order = data.replication2AbilityOrder;
+          const stack = headMarkerData['heavySlamTether'];
+          const defamation = headMarkerData['manaBurstTether'];
+          const projection = headMarkerData['projectionTether'];
+          // Defined as east/west clones with stacks and NW/SE with defamation + projection
+          if (
+            order[4] === stack && order[5] === stack &&
+            (
+              (order[6] === defamation && order[7] === projection) ||
+              (order[7] === projection && order[6] === defamation)
+            )
+          )
+          return true;
+        }
+        return false;
+      },
       suppressSeconds: 9999,
       alertText: (_data, _matches, output) => output.north!(),
       outputStrings: {
@@ -2687,7 +2770,7 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.bigAoe('alert'),
     },
     {
-      id: 'R12S Idyllic Dream Replication Clone Order Collect',
+      id: 'R12S Idyllic Dream Staging 2 Clone Order Collect',
       type: 'ActorControlExtra',
       netRegex: { category: '0197', param1: '11D2', capture: true },
       condition: (data) => {
@@ -2704,7 +2787,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Idyllic Dream Replication First Clone Cardinal/Intercardinal',
+      id: 'R12S Idyllic Dream Staging 2 First Clone Cardinal/Intercardinal',
       type: 'ActorControlExtra',
       netRegex: { category: '0197', param1: '11D2', capture: true },
       condition: (data) => {
@@ -2807,14 +2890,14 @@ const triggerSet: TriggerSet<Data> = {
           case 'B510': {
             const y = parseFloat(matches.y);
             data.idyllicVision2NorthSouthCleaveSpot = y < center.y ? 'north' : 'south';
-            data.idyllicDreamActorEW = matches.id;
+            data.idyllicDreamActorEW = matches.sourceId;
             return;
           }
           case 'B511':
-            data.idyllicDreamActorSnaking = matches.id;
+            data.idyllicDreamActorSnaking = matches.sourceId;
             return;
           case 'B50F':
-            data.idyllicDreamActorNS = matches.id;
+            data.idyllicDreamActorNS = matches.sourceId;
             return;
         }
       },
@@ -2880,7 +2963,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 4 Locked Tether 2 Collect',
+      id: 'R12S Replication 4 Locked Tether Collect',
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: true },
       condition: (data) => {
@@ -2943,7 +3026,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 4 Locked Tether 2',
+      id: 'R12S Replication 4 Locked Tether',
       // At this point the player needs to dodge the north/south cleaves + chariot
       // Simultaneously there will be a B4F2 Lindwurm's Meteor bigAoe that ends with room split
       type: 'Tether',
