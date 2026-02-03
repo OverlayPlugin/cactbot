@@ -178,6 +178,7 @@ const triggerSet: TriggerSet<Data> = {
         partySpread: {
           en: 'Party Spread',
           cn: '人群分散',
+          ko: '본대 산개',
         },
         sharedTankStack: {
           en: 'Tanks Stack',
@@ -185,12 +186,13 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package Tanks',
           ja: 'タンク頭割り',
           cn: '坦克分摊',
-          ko: '탱끼리 모이기',
+          ko: '탱커 쉐어',
           tc: '坦克分攤',
         },
         text: {
           en: '${party}/${tank}',
           cn: '${party}/${tank}',
+          ko: '${party}/${tank}',
         },
       },
     },
@@ -211,7 +213,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Package en groupe',
           ja: 'あたまわり',
           cn: '人群分摊',
-          ko: '쉐어',
+          ko: '본대 쉐어',
           tc: '分攤',
         },
         tankCleaves: {
@@ -226,6 +228,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${party}/${tank}',
           cn: '${party}/${tank}',
+          ko: '${party}/${tank}',
         },
       },
     },
@@ -263,14 +266,17 @@ const triggerSet: TriggerSet<Data> = {
         bait: {
           en: 'Bait Gust',
           cn: '诱导强风',
+          ko: '강풍 유도',
         },
         mechanicThenMove: {
           en: '${mech} => ${move}',
           cn: '${mech} => ${move}',
+          ko: '${mech} => ${move}',
         },
         mechanicThenBait: {
           en: '${mech} => ${bait}',
           cn: '${mech} => ${bait}',
+          ko: '${mech} => ${bait}',
         },
       },
     },
@@ -319,6 +325,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${dir}: ${weapon} (1st later)',
           cn: '${dir}: ${weapon} (稍后第一波)',
+          ko: '${dir}: ${weapon} (곧 1번째)',
         },
       },
     },
@@ -389,6 +396,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: '${weapon1} => ${weapon2} => ${weapon3}',
           cn: '${weapon1} => ${weapon2} => ${weapon3}',
+          ko: '${weapon1} => ${weapon2} => ${weapon3}',
         },
         healerGroups: Outputs.healerGroups,
         stack: Outputs.stackMiddle,
@@ -470,10 +478,12 @@ const triggerSet: TriggerSet<Data> = {
         baitPuddlesThenStack: {
           en: 'Bait 3x Puddles => Stack',
           cn: '诱导3次圈圈 => 分摊',
+          ko: '장판 유도 3x => 쉐어',
         },
         baitPuddlesThenSpread: {
           en: 'Bait 3x Puddles => Spread',
           cn: '诱导3次圈圈 => 分散',
+          ko: '장판 유도 3x => 산개',
         },
       },
     },
@@ -490,6 +500,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'AoE x6 => Big AoE',
           cn: '6 次 AOE => 大 AOE',
+          ko: '전체 공격 x6 => 강한 전체 공격',
         },
       },
     },
@@ -548,10 +559,12 @@ const triggerSet: TriggerSet<Data> = {
         northSouth: {
           en: 'N/S Mid / ${dir} Outer + Partner Stacks',
           cn: '上/下中间 / ${dir} 外侧 + 队友分摊',
+          ko: '북/남 중간 / ${dir} 바깥 + 파트너 쉐어',
         },
         eastWest: {
           en: 'E/W Mid / ${dir} Outer + Partner Stacks',
           cn: '左/右中间 / ${dir} 外侧 + 队友分摊',
+          ko: '동/서 중간 / ${dir} 바깥 + 파트너 쉐어',
         },
         ...Directions.outputStringsCardinalDir,
       },
@@ -578,6 +591,7 @@ const triggerSet: TriggerSet<Data> = {
         bait: {
           en: 'Bait Gust',
           cn: '诱导强风',
+          ko: '강풍 유도',
         },
       },
     },
@@ -640,14 +654,17 @@ const triggerSet: TriggerSet<Data> = {
         wildCharge: {
           en: 'Wild Charge (behind tank)',
           cn: '挡枪分摊 (坦克后)',
+          ko: '직선 쉐어 (탱커 뒤로)',
         },
         wildChargeMeteor: {
           en: 'Wild Charge (behind meteor)',
           cn: '挡枪分摊 (陨石后)',
+          ko: '직선 쉐어 (돌 뒤로)',
         },
         wildChargeTank: {
           en: 'Wild Charge (be in front)',
           cn: '挡枪分摊 (人群前)',
+          ko: '직선 쉐어 (앞에 있기)',
         },
         tetherBusters: Outputs.tetherBusters,
       },
@@ -669,6 +686,7 @@ const triggerSet: TriggerSet<Data> = {
         losMeteor: {
           en: 'LoS behind 3x meteor',
           cn: '躲在三连陨石后',
+          ko: '돌 뒤에 숨기 3x',
         },
       },
     },
@@ -773,6 +791,7 @@ const triggerSet: TriggerSet<Data> = {
         fireBreathLater: {
           en: 'Bait Fire Breath (later)',
           cn: '诱导火焰吐息 (稍后)',
+          ko: '화염 숨결 유도 (나중에)',
         },
       },
     },
@@ -806,17 +825,19 @@ const triggerSet: TriggerSet<Data> = {
         // While these are inter inter cards, furthest stretch will be an intercard
         const stretchDirNum = (portalDirNum + 2) % 4;
         const dir = Directions.outputIntercardDir[stretchDirNum];
-        return output.stretchTetherDirLater!({ dir: output[dir ?? '???']!() });
+        return output.stretchTetherDirLater!({ dir: output[dir ?? 'unknown']!() });
       },
       outputStrings: {
         ...Directions.outputStringsIntercardDir,
         stretchTetherDirLater: {
           en: 'Tether on YOU: Stretch ${dir} (later)',
           cn: '连线点名: 向${dir}拉远 (稍后)',
+          ko: '선 대상자: ${dir}쪽으로 늘이기 (나중에)',
         },
         stretchTetherLater: {
           en: 'Tether on YOU: Stretch (later)',
           cn: '连线点名: 拉远 (稍后)',
+          ko: '선 대상자: 늘이기 (나중에)',
         },
       },
     },
@@ -889,27 +910,33 @@ const triggerSet: TriggerSet<Data> = {
         fireBreathTowers: {
           en: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         tetherTowers: {
           en: '${mech1} => ${mech2}',
           cn: '${mech1} => ${mech2}',
+          ko: '${mech1} => ${mech2}',
         },
         baitFireBreath: {
           en: 'Bait Near',
           cn: '靠近引导',
+          ko: '가까이 유도',
         },
         avoidFireBreath: Outputs.outOfHitbox,
         northSouthSafe: {
           en: 'Tower Knockback to Same Platform',
           cn: '被塔击飞到同一平台',
+          ko: '같은 플랫폼으로 넉백',
         },
         eastSafe: {
           en: 'Tower Knockback Across to East',
           cn: '被塔击飞到右侧平台',
+          ko: '동쪽 플랫폼으로 넉백',
         },
         westSafe: {
           en: 'Tower Knockback Across to West',
           cn: '被塔击飞到左侧平台',
+          ko: '서쪽 플랫폼으로 넉백',
         },
       },
     },
@@ -976,10 +1003,12 @@ const triggerSet: TriggerSet<Data> = {
         back: {
           en: 'Inner Back',
           cn: '内侧后',
+          ko: '안쪽 뒤',
         },
         front: {
           en: 'Inner Front',
           cn: '内侧前',
+          ko: '안쪽 앞',
         },
         lines: {
           en: 'Avoid Lines',
@@ -993,18 +1022,22 @@ const triggerSet: TriggerSet<Data> = {
         fireBreathOnYou: {
           en: 'Fire Breath on YOU',
           cn: '火焰吐息点名',
+          ko: '화염 숨결 대상자',
         },
         fireBreathMechsPlayerWest: {
           en: '${mech1} + ${mech2} => ${dir}',
           cn: '${mech1} + ${mech2} => ${dir}',
+          ko: '${mech1} + ${mech2} => ${dir}',
         },
         fireBreathMechsPlayerEast: {
           en: '${mech1} + ${mech2} => ${dir}',
           cn: '${mech1} + ${mech2} => ${dir}',
+          ko: '${mech1} + ${mech2} => ${dir}',
         },
         fireBreathMechs: {
           en: '${mech1} + ${mech2} => ${mech3}',
           cn: '${mech1} + ${mech2} => ${mech3}',
+          ko: '${mech1} + ${mech2} => ${mech3}',
         },
       },
     },
@@ -1041,7 +1074,7 @@ const triggerSet: TriggerSet<Data> = {
         const dirNum = data.arenaSplitStretchDirNum;
         const myPlatform = data.myPlatform;
         if (dirNum !== undefined && myPlatform !== undefined) {
-          const dir1 = Directions.outputIntercardDir[dirNum] ?? '???';
+          const dir1 = Directions.outputIntercardDir[dirNum] ?? 'unknown';
           if (myPlatform === 'west') {
             const dir2 = isWestIn ? 'front' : 'back';
             return output.tetherMechsPlayerWest!({
@@ -1075,10 +1108,12 @@ const triggerSet: TriggerSet<Data> = {
         back: {
           en: 'Outer Back',
           cn: '外侧后',
+          ko: '바깥쪽 뒤',
         },
         front: {
           en: 'Outer Front',
           cn: '外侧前',
+          ko: '바깥쪽 앞',
         },
         lines: {
           en: 'Avoid Lines',
@@ -1092,6 +1127,7 @@ const triggerSet: TriggerSet<Data> = {
         baitThenStretchMechs: {
           en: '${mech1} => ${mech2}  + ${mech3}',
           cn: '${mech1} => ${mech2}  + ${mech3}',
+          ko: '${mech1} => ${mech2}  + ${mech3}',
         },
         stretchTether: {
           en: 'Stretch Tether',
@@ -1104,14 +1140,17 @@ const triggerSet: TriggerSet<Data> = {
         stretchTetherDir: {
           en: 'Stretch ${dir}',
           cn: '向${dir}拉远',
+          ko: '${dir}쪽으로 늘이기',
         },
         tetherMechsPlayerEast: {
           en: '${mech1} => ${mech2} + ${dir}',
           cn: '${mech1} => ${mech2} + ${dir}',
+          ko: '${mech1} => ${mech2} + ${dir}',
         },
         tetherMechsPlayerWest: {
           en: '${mech1} => ${mech2} + ${dir}',
           cn: '${mech1} => ${mech2} + ${dir}',
+          ko: '${mech1} => ${mech2} + ${dir}',
         },
       },
     },
@@ -1232,10 +1271,12 @@ const triggerSet: TriggerSet<Data> = {
         comboDir: {
           en: 'Go ${dir1}/${dir2} => Bait Impacts, Avoid Corners',
           cn: '去${dir1}/${dir2} => 引导火圈, 躲避角落',
+          ko: '${dir1}/${dir2} 이동 => 장판 유도, 구석 피하기',
         },
         getMiddle: {
           en: 'Proximity AoE; Get Middle => Bait Puddles',
           cn: '靠近AoE; 去中间 => 引导圈圈',
+          ko: '거리감쇠 징; 중앙으로 => 장판 유도',
         },
       },
     },
@@ -1295,6 +1336,7 @@ const triggerSet: TriggerSet<Data> = {
         stretchTetherDir: {
           en: 'Stretch Tether ${dir}',
           cn: '向${dir}拉线',
+          ko: '${dir}쪽으로 선 늘이기',
         },
       },
     },
@@ -1311,10 +1353,12 @@ const triggerSet: TriggerSet<Data> = {
         twoWayFront: {
           en: 'East/West Line Stack, Be in Front',
           cn: '左/右向直线分摊，站前方',
+          ko: '동/서 직선 쉐어, 앞에 있기',
         },
         twoWayBehind: {
           en: 'Move; East/West Line Stack, Get behind',
           cn: '移动; 左/右向直线分摊，站后方',
+          ko: '이동; 동/서 직선 쉐어, 뒤로 가기',
         },
       },
     },
@@ -1331,10 +1375,12 @@ const triggerSet: TriggerSet<Data> = {
         fourWayFront: {
           en: 'Intercardinal Line Stack, Be in Front',
           cn: '四角分摊, 站前方',
+          ko: '대각선 쉐어, 앞에 있기',
         },
         fourWayBehind: {
           en: 'Intercardinal Line Stack, Get behind',
           cn: '四角分摊, 站后方',
+          ko: '대각선 쉐어, 뒤로 가기',
         },
       },
     },
@@ -1369,7 +1415,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Prenez la tour',
           ja: '塔を踏む',
           cn: '踩塔',
-          ko: '장판 들어가기',
+          ko: '탑 밟기',
           tc: '踩塔',
         },
         stack5x: {
@@ -1384,22 +1430,27 @@ const triggerSet: TriggerSet<Data> = {
         stack6x: {
           en: 'Stack 6x',
           cn: '6连分摊',
+          ko: '쉐어 6번',
         },
         stack7x: {
           en: 'Stack 7x',
           cn: '7连分摊',
+          ko: '쉐어 7번',
         },
         heartbreaker1: {
           en: '${tower} => ${stack}',
           cn: '${tower} => ${stack}',
+          ko: '${tower} => ${stack}',
         },
         heartbreaker2: {
           en: '${tower} => ${stack}',
           cn: '${tower} => ${stack}',
+          ko: '${tower} => ${stack}',
         },
         heartbreaker3: {
           en: '${tower} => ${stack}',
           cn: '${tower} => ${stack}',
+          ko: '${tower} => ${stack}',
         },
       },
     },
