@@ -3552,7 +3552,7 @@ const triggerSet: TriggerSet<Data> = {
             return;
           case data.idyllicDreamActorSnaking: {
             const x = parseFloat(matches.x);
-            data.idyllicVision7SafePlatform = x < 100 ? 'west' : 'east';
+            data.idyllicVision7SafePlatform = x < 100 ? 'east' : 'west';
           }
         }
       },
