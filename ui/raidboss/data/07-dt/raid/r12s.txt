@@ -511,7 +511,7 @@ hideall "--sync--"
 3464.8 "Power Gusher" Ability { id: "B516", source: "Lindwurm" }
 3470.7 "Idyllic Dream" Ability { id: "B509", source: "Lindwurm" }
 3478.8 "Double Sobat (castbar)" Ability { id: "B520", source: "Lindwurm" }
-3479.6 "Double Sobat 1" Ability { id:  ["B521", "B522", "B523", "B524"], source: "Lindwurm" }
+3479.6 "Double Sobat 1" Ability { id: ["B521", "B522", "B523", "B524"], source: "Lindwurm" }
 3484.2 "Double Sobat 2" Ability { id: "B525", source: "Lindwurm" }
 3486.6 "Esoteric Finisher" Ability { id: "B526", source: "Lindwurm" }
 
