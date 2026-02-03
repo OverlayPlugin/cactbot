@@ -2956,21 +2956,112 @@ const triggerSet: TriggerSet<Data> = {
           return output.getTether!();
         }
 
-        if (first === headMarkerData['heavySlamTether'])
-          return output.stacksFirst!();
-        if (first === headMarkerData['manaBurstTether'])
-          return output.defamationsFirst!();
-        return output.getTether!();
+        const mech = first === headMarkerData['heavySlamTether']
+          ? 'stacks'
+          : first === headMarkerData['manaBurstTether']
+          ? 'defamations'
+          : 'unknown';
+
+        const clones = data.replication3CloneDirNumPlayers;
+        const myDirNum = Object.keys(clones).find(
+          (key) => clones[parseInt(key)] === data.me
+        );
+        if (myDirNum !== undefined) {
+          // Get dirNum of player for custom output based on replication 3 tether
+          // Player can replace the get tether with get defamation, get stack and
+          // the location they want based on custom plan
+          switch (parseInt(myDirNum)) {
+            case 0:
+              return output.mechLaterNClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+            case 1:
+              return output.mechLaterNEClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+            case 2:
+              return output.mechLaterEClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+            case 3:
+              return output.mechLaterSEClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+            case 4:
+              return output.mechLaterSClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+            case 5:
+              return output.mechLaterSWClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+            case 6:
+              return output.mechLaterWClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+            case 7:
+              return output.mechLaterNWClone!({
+                later: output.mechLater!({ mech: output[mech]!() }),
+                tether: output.getTether!(),
+              });
+          }
+        }
+
+        return output.mechLaterTether!({
+          later: output.mechLater!({ mech: output[mech]!() }),
+          tether: output.getTether!(),
+        });
       },
       outputStrings: {
         getTether: {
           en: 'Get Tether',
         },
-        defamationsFirst: {
-          en: 'Defamations First (later); Get Tether',
+        mechLater: {
+          en: '${mech} First (later)',
         },
-        stacksFirst: {
-          en: 'Stacks First (later); Get Tether',
+        defamations: {
+          en: 'Defamations',
+          de: 'Große AoE auf dir',
+          fr: 'Grosse AoE sur vous',
+          ja: '自分に巨大な爆発',
+          cn: '大圈点名',
+          ko: '광역 대상자',
+          tc: '大圈點名',
+        },
+        stacks: Outputs.stacks,
+        mechLaterTether: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterNClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterNEClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterEClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterSEClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterSClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterSWClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterWClone: {
+          en: '${later}; ${tether}',
+        },
+        mechLaterNWClone: {
+          en: '${later}; ${tether}',
         },
       },
     },
