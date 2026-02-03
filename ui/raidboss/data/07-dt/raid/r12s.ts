@@ -3562,8 +3562,6 @@ const triggerSet: TriggerSet<Data> = {
       // Describe actor going into portal
       type: 'AbilityExtra',
       netRegex: { id: 'B4D9', capture: false },
-      delaySeconds: 0.1,
-      suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
         if (data.idyllicVision7SafeSides === 'frontBack') {
           if (data.idyllicVision7SafePlatform === 'east')
