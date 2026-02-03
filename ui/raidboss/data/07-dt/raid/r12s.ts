@@ -1607,6 +1607,15 @@ const triggerSet: TriggerSet<Data> = {
       // (90, 110)          (110, 110)
       // ActorMove ~0.3s later will have the data
       // ActorSet from the clones splitting we can infer the fire entities since their positions and headings are not perfect
+      // For first set there are two patterns that use these coordinates:
+      //           (100, 86)
+      // (86, 100)           (114, 100)
+      //           (100, 114)
+      // Either N/S are clones casting Winged Scourge, or the E/W clones cast Winged Scourge
+      // Each pattern has its own pattern for IDs of the clones, in order
+      // N/S will have Fire -5 and -6 of its original
+      // E/W will have Fire -6 and -7 of its original
+      // Could use -6 to cover both cases, but that doesn't determine which add jumps first
       type: 'Ability',
       netRegex: { id: 'B4D9', source: 'Lindschrat', capture: true },
       condition: (data, matches) => {
