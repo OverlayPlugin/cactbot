@@ -3723,12 +3723,15 @@ const triggerSet: TriggerSet<Data> = {
       // Trigger on Clone's BE5D Heavy Slam
       type: 'Ability',
       netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
-      suppressSeconds: 9999,
       alertText: (data, _matches, output) => {
         if (data.idyllicVision8SafeSides === 'sides')
           return output.sides!();
         if (data.idyllicVision8SafeSides === 'frontBack')
           return output.frontBack!();
+      },
+      run: (data) => {
+        // Prevent re-execution of output
+        delete data.idyllicVision8SafeSides;
       },
       outputStrings: {
         sides: {
