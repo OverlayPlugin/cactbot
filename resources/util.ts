@@ -263,19 +263,10 @@ const output16Dir: DirectionOutput16[] = [
 const outputCardinalDir: DirectionOutputCardinal[] = ['dirN', 'dirE', 'dirS', 'dirW'];
 const outputIntercardDir: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
 
-type DirectionOutput =
-  | DirectionOutput8
-  | DirectionOutput16
-  | DirectionOutputCardinal
-  | DirectionOutputIntercard;
-
-const compareDirectionOutput = (a: DirectionOutput, b: DirectionOutput): number => {
-  const aDir16: DirectionOutput16 = a as DirectionOutput16;
-  const bDir16: DirectionOutput16 = b as DirectionOutput16;
-
+const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
   // Sort any element not in output16Dir after.
-  const aIndex = output16Dir.indexOf(aDir16) ?? output16Dir.length;
-  const bIndex = output16Dir.indexOf(bDir16) ?? output16Dir.length;
+  const aIndex = output16Dir.indexOf(a) ?? output16Dir.length;
+  const bIndex = output16Dir.indexOf(b) ?? output16Dir.length;
 
   if (aIndex < bIndex)
     return -1;
