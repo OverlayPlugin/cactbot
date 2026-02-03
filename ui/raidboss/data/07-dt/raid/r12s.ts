@@ -1934,7 +1934,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Replication 2 Locked Tether Collect',
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: true },
-      condition: (data, matches) => {
+      condition: (data) => {
         if (
           data.phase === 'replication2' &&
           data.replicationCounter === 2
