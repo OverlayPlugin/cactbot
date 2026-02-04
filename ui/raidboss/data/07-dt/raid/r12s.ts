@@ -2827,11 +2827,22 @@ const triggerSet: TriggerSet<Data> = {
           return output.alpha!();
         return output.beta!();
       },
+      tts: (_data, matches, output) => {
+        if (matches.effectId === '12A1')
+          return output.alphaTts!();
+        return output.betaTts!();
+      },
       outputStrings: {
         alpha: {
           en: 'Mutation α on YOU',
         },
         beta: {
+          en: 'Mutation β on YOU',
+        },
+        alphaTts: {
+          en: 'Mutation α on YOU',
+        },
+        betaTts: {
           en: 'Mutation β on YOU',
         },
       },
