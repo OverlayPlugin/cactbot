@@ -630,6 +630,37 @@ const triggerSet: TriggerSet<Data> = {
             return output.beta4!();
         }
       },
+      tts: (data, _matches, output) => {
+        // Greek characters may be the best TTS
+        const myNum = data.inLine[data.me];
+        if (myNum === undefined)
+          return;
+        const flesh = data.myFleshBonds;
+        if (flesh === undefined)
+          return output.order!({ num: myNum });
+        if (flesh === 'alpha') {
+          switch (myNum) {
+            case 1:
+              return output.alpha1Tts!();
+            case 2:
+              return output.alpha2Tts!();
+            case 3:
+              return output.alpha3Tts!();
+            case 4:
+              return output.alpha4Tts!();
+          }
+        }
+        switch (myNum) {
+          case 1:
+            return output.beta1Tts!();
+          case 2:
+            return output.beta2Tts!();
+          case 3:
+            return output.beta3Tts!();
+          case 4:
+            return output.beta4Tts!();
+        }
+      },
       outputStrings: {
         alpha1: {
           en: '1α: Wait for Tether 1',
@@ -653,6 +684,30 @@ const triggerSet: TriggerSet<Data> = {
           en: '3β: Chain Tower 1',
         },
         beta4: {
+          en: '4β: Chain Tower 2',
+        },
+        alpha1Tts: {
+          en: '1α: Wait for Tether 1',
+        },
+        alpha2Tts: {
+          en: '2α: Wait for Tether 2',
+        },
+        alpha3Tts: {
+          en: '3α: Blob Tower 1',
+        },
+        alpha4Tts: {
+          en: '4α: Blob Tower 2',
+        },
+        beta1Tts: {
+          en: '1β: Wait for Tether 1',
+        },
+        beta2Tts: {
+          en: '2β: Wait for Tether 2',
+        },
+        beta3Tts: {
+          en: '3β: Chain Tower 1',
+        },
+        beta4Tts: {
           en: '4β: Chain Tower 2',
         },
         order: {
