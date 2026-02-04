@@ -719,7 +719,7 @@ export class PopupText {
       }
       uniqueById.set(triggerSet.id, triggerSet);
     }
-    this.triggerSets = [...noIdList, ...uniqueById.values()];
+    this.triggerSets = [...uniqueById.values(), ...noIdList];
     this.triggerSetsById = Object.fromEntries(uniqueById);
   }
 
