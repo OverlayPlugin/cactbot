@@ -54,6 +54,7 @@ export interface Data extends RaidbossData {
   replication1FollowUp: boolean;
   replication2CloneDirNumPlayers: { [dirNum: number]: string };
   replication2DirNumAbility: { [dirNum: number]: string };
+  replication2hasInitialAbilityTether: boolean;
   replication2PlayerAbilities: { [player: string]: string };
   replication2BossId?: string;
   replication2PlayerOrder: string[];
@@ -190,6 +191,7 @@ const triggerSet: TriggerSet<Data> = {
     replication1FollowUp: false,
     replication2CloneDirNumPlayers: {},
     replication2DirNumAbility: {},
+    replication2hasInitialAbilityTether: false,
     replication2PlayerAbilities: {},
     replication2PlayerOrder: [],
     replication2AbilityOrder: [],
@@ -1834,13 +1836,13 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Replication 2 and Replication 4 Ability Tethers Collect',
       // Record and store a map of where the tethers come from and what they do for later
-      // Boss tether handled separately since boss can move around
       type: 'Tether',
       netRegex: {
         id: [
           headMarkerData['projectionTether'],
           headMarkerData['manaBurstTether'],
           headMarkerData['heavySlamTether'],
+          headMarkerData['fireballSplashTether'],
         ],
         capture: true,
       },
@@ -1854,8 +1856,13 @@ const triggerSet: TriggerSet<Data> = {
         if (actor === undefined)
           return;
         const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
-        if (data.phase === 'replication2')
-          data.replication2DirNumAbility[dirNum] = matches.id;
+        if (data.phase === 'replication2') {
+          // Handle boss tether separately as its direction location is unimportant
+          if (matches.id !== headMarkerData['fireballSplashTether'])
+            data.replication2DirNumAbility[dirNum] = matches.id;
+          if (data.me === matches.target)
+            data.replication2hasInitialAbilityTether = true;
+        }
         if (data.phase === 'idyllic')
           data.replication4DirNumAbility[dirNum] = matches.id;
       },
@@ -1876,34 +1883,179 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
       infoText: (data, matches, output) => {
-        if (matches.id === headMarkerData['fireballSplashTether'])
+        const id = matches.id;
+        const clones = data.replication2CloneDirNumPlayers;
+        const myDirNum = Object.keys(clones).find(
+          (key) => clones[parseInt(key)] === data.me,
+        );
+
+        if (id === headMarkerData['fireballSplashTether']) {
+          if (myDirNum !== undefined) {
+            // Get dirNum of player for custom output based on replication 3 tether
+            // Player can replace the get tether with get defamation, get stack and
+            // the location they want based on custom plan
+            switch (parseInt(myDirNum)) {
+              case 0:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherNClone!({ tether: output.getTether!() }),
+                });
+              case 1:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherNEClone!({ tether: output.getTether!() }),
+                });
+              case 2:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherEClone!({ tether: output.getTether!() }),
+                });
+              case 3:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherSEClone!({ tether: output.getTether!() }),
+                });
+              case 4:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherSClone!({ tether: output.getTether!() }),
+                });
+              case 5:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherSWClone!({ tether: output.getTether!() }),
+                });
+              case 6:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherWClone!({ tether: output.getTether!() }),
+                });
+              case 7:
+                return output.tetherGetTether!({
+                  tether1: output.fireballSplashTether!(),
+                  tether2: output.getTetherNWClone!({ tether: output.getTether!() }),
+                });
+            }
+          }
           return output.fireballSplashTether!();
+        }
 
         // Get direction of the tether
         const actor = data.actorPositions[matches.sourceId];
+        const tether = id === headMarkerData['heavySlamTether']
+          ? 'heavySlamTether'
+          : id === headMarkerData['manaBurstTether']
+          ? 'manaBurstTether'
+          : id === headMarkerData['projectionTether']
+          ? 'projectionTether'
+          : 'unknown';
         if (actor === undefined) {
-          switch (matches.id) {
-            case headMarkerData['projectionTether']:
-              return output.projectionTether!();
-            case headMarkerData['manaBurstTether']:
-              return output.manaBurstTether!();
-            case headMarkerData['heavySlamTether']:
-              return output.heavySlamTether!();
+          if (myDirNum !== undefined && tether !== 'unknown') {
+            // Get dirNum of player for custom output based on replication 3 tether
+            // Player can replace the get tether with get defamation, get stack and
+            // the location they want based on custom plan
+
+            switch (parseInt(myDirNum)) {
+              case 0:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherNClone!({ tether: output.getTether!() }),
+                });
+              case 1:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherNEClone!({ tether: output.getTether!() }),
+                });
+              case 2:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherEClone!({ tether: output.getTether!() }),
+                });
+              case 3:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherSEClone!({ tether: output.getTether!() }),
+                });
+              case 4:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherSClone!({ tether: output.getTether!() }),
+                });
+              case 5:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherSWClone!({ tether: output.getTether!() }),
+                });
+              case 6:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherWClone!({ tether: output.getTether!() }),
+                });
+              case 7:
+                return output.tetherGetTether!({
+                  tether1: output[tether]!(),
+                  tether2: output.getTetherNWClone!({ tether: output.getTether!() }),
+                });
+            }
           }
+          if (tether !== 'unknown')
+            return output[tether]!();
           return;
         }
 
         const dirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
         const dir = Directions.output8Dir[dirNum] ?? 'unknown';
+        const tetherDir = `${tether}Dir`;
 
-        switch (matches.id) {
-          case headMarkerData['projectionTether']:
-            return output.projectionTetherDir!({ dir: output[dir]!() });
-          case headMarkerData['manaBurstTether']:
-            return output.manaBurstTetherDir!({ dir: output[dir]!() });
-          case headMarkerData['heavySlamTether']:
-            return output.heavySlamTetherDir!({ dir: output[dir]!() });
+        if (myDirNum !== undefined && tether !== 'unknown') {
+          // Get dirNum of player for custom output based on replication 3 tether
+          // Player can replace the get tether with get defamation, get stack and
+          // the location they want based on custom plan
+          switch (parseInt(myDirNum)) {
+            case 0:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherNClone!({ tether: output.getTether!() }),
+              });
+            case 1:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherNEClone!({ tether: output.getTether!() }),
+              });
+            case 2:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherEClone!({ tether: output.getTether!() }),
+              });
+            case 3:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherSEClone!({ tether: output.getTether!() }),
+              });
+            case 4:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherSClone!({ tether: output.getTether!() }),
+              });
+            case 5:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherSWClone!({ tether: output.getTether!() }),
+              });
+            case 6:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherWClone!({ tether: output.getTether!() }),
+              });
+            case 7:
+              return output.tetherGetTether!({
+                tether1: output[tetherDir]!({ dir: output[dir]!() }),
+                tether2: output.getTetherNWClone!({ tether: output.getTether!() }),
+              });
+          }
         }
+
+        return output[tetherDir]!({ dir: output[dir]!() });
       },
       outputStrings: {
         ...Directions.outputStrings8Dir,
@@ -1927,6 +2079,120 @@ const triggerSet: TriggerSet<Data> = {
         },
         fireballSplashTether: {
           en: 'Boss Tether on YOU',
+        },
+        tetherGetTether: {
+          en: '${tether1}; ${tether2}',
+        },
+        getTether: {
+          en: 'Get Tether',
+        },
+        getTetherNClone: {
+          en: '${tether}',
+        },
+        getTetherNEClone: {
+          en: '${tether}',
+        },
+        getTetherEClone: {
+          en: '${tether}',
+        },
+        getTetherSEClone: {
+          en: '${tether}',
+        },
+        getTetherSClone: {
+          en: '${tether}',
+        },
+        getTetherSWClone: {
+          en: '${tether}',
+        },
+        getTetherWClone: {
+          en: '${tether}',
+        },
+        getTetherNWClone: {
+          en: '${tether}',
+        },
+      },
+    },
+    {
+      id: 'R12S Replication 2 Ability Tethers Initial Call (No Tether)',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['fireballSplashTether'], capture: false },
+      delaySeconds: 0.1,
+      suppressSeconds: 9999, // Possible that this changes hands within an instant
+      infoText: (data, _matches, output) => {
+        if (data.replication2hasInitialAbilityTether)
+          return;
+        const clones = data.replication2CloneDirNumPlayers;
+        const myDirNum = Object.keys(clones).find(
+          (key) => clones[parseInt(key)] === data.me,
+        );
+        if (myDirNum !== undefined) {
+          // Get dirNum of player for custom output based on replication 3 tether
+          // Player can replace the get tether with get defamation, get stack and
+          // the location they want based on custom plan
+          switch (parseInt(myDirNum)) {
+            case 0:
+              return output.noTetherCloneN!({
+                noTether: output.noTether!(),
+              });
+            case 1:
+              return output.noTetherCloneNE!({
+                noTether: output.noTether!(),
+              });
+            case 2:
+              return output.noTetherCloneE!({
+                noTether: output.noTether!(),
+              });
+            case 3:
+              return output.noTetherCloneSE!({
+                noTether: output.noTether!(),
+              });
+            case 4:
+              return output.noTetherCloneS!({
+                noTether: output.noTether!(),
+              });
+            case 5:
+              return output.noTetherCloneSW!({
+                noTether: output.noTether!(),
+              });
+            case 6:
+              return output.noTetherCloneW!({
+                noTether: output.noTether!(),
+              });
+            case 7:
+              return output.noTetherCloneNW!({
+                noTether: output.noTether!(),
+              });
+          }
+        }
+        return output.noTether!();
+      },
+      outputStrings: {
+        noTether: {
+          en: 'No Tether on YOU',
+        },
+        noTetherCloneN: {
+          en: '${noTether}',
+        },
+        noTetherCloneNE: {
+          en: '${noTether}',
+        },
+        noTetherCloneE: {
+          en: '${noTether}',
+        },
+        noTetherCloneSE: {
+          en: '${noTether}',
+        },
+        noTetherCloneS: {
+          en: '${noTether}',
+        },
+        noTetherCloneSW: {
+          en: '${noTether}',
+        },
+        noTetherCloneW: {
+          en: '${noTether}',
+        },
+        noTetherCloneNW: {
+          en: '${noTether}',
         },
       },
     },
