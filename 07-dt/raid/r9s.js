@@ -137,7 +137,7 @@ Options.Triggers.push({
       durationSeconds: 5.5,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const [dir1, dir2] = data.bats.inner;
+        const [dir1, dir2] = data.bats.inner.sort(Directions.compareDirectionOutput);
         return output.away({
           dir1: output[dir1 ?? 'unknown'](),
           dir2: output[dir2 ?? 'unknown'](),
@@ -166,7 +166,7 @@ Options.Triggers.push({
       durationSeconds: 3.4,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        const [dir1, dir2, dir3] = data.bats.middle;
+        const [dir1, dir2, dir3] = data.bats.middle.sort(Directions.compareDirectionOutput);
         return output.away({
           dir1: output[dir1 ?? 'unknown'](),
           dir2: output[dir2 ?? 'unknown'](),
