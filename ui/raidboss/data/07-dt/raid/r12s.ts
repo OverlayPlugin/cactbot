@@ -3087,6 +3087,15 @@ const triggerSet: TriggerSet<Data> = {
           ? output.betaFar!({ mech: output.maxMelee!() })
           : output.alphaFar!({ mech: output.getUnder!() });
       },
+      tts: (data, matches, output) => {
+        if (matches.id === 'B52B')
+          return data.myMutation === 'beta'
+            ? output.betaNearTts!({ mech: output.getUnder!() })
+            : output.alphaNear!({ mech: output.maxMelee!() });
+        return data.myMutation === 'beta'
+          ? output.betaFarTts!({ mech: output.maxMelee!() })
+          : output.alphaFar!({ mech: output.getUnder!() });
+      },
       outputStrings: {
         getUnder: Outputs.getUnder,
         maxMelee: {
@@ -3102,6 +3111,12 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Near β Stack: ${mech}',
         },
         betaFar: {
+          en: 'Far β Stack: ${mech}',
+        },
+        betaNearTts: {
+          en: 'Near β Stack: ${mech}',
+        },
+        betaFarTts: {
           en: 'Far β Stack: ${mech}',
         },
       },
