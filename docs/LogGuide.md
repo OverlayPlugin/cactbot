@@ -2484,8 +2484,36 @@ Future work:
 
 ### Line 42 (0x2A): StatusList3
 
-This line seems to be sent only for the current player and lists some status effects.
-More information is needed.
+This line corresponds to `FFXIV_ACT_Plugin`'s `StatusEffectList3` opcode/packet, which is
+only sent for the current player. For some reason, `FFXIV_ACT_Plugin` does not parse/format
+the status effects when writing the line. This line has information on the status effects
+for e.g. Free Company buffs. It appears to only be sent when zoning in to non-instanced content.
+
+For example, consider the following line:
+
+```log
+42|2026-01-20T19:15:19.3370000-05:00|10FF0001|Tini Poutini|1E016C|41F00000|E0000000|0A016D|41F00000|E0000000|29CE0030|4508A063|10FF0001|2ce07f220ba2155b
+                                    |AAAAAAAA|BBBBBBBBBBBB|CCCCCC|DDDDDDDD|EEEEEEEE|C/D/E repeat for each status effect
+```
+
+- A: The current player's ID
+- B: The current player's name
+- C: Two `ushort` values, in this case `0x1E` = `30` and `0x16C` = `364`
+  - The first `ushort`, `0x1E` in this case, is the same as the `count` field in
+[NetworkBuff](https://github.com/OverlayPlugin/cactbot/blob/main/docs/LogGuide.md#line-26-0x1a-networkbuff)
+lines. For this example, the actual FC buff activated is `Reduced Rates II`, with a `30%` discount.
+  - The second `ushort`, `0x16C` in this case, is the status effect ID for `Reduced Rates`
+- D: The raw hex bytes of the `float` duration remaining on the status effect, in this case
+`0x0000F041` = `30.0`
+- E: The source ID of the effect, in this case `0xE0000000` = none/environmental source
+
+The second entry above is for `The Heat of Battle`, actually `The Heat of Battle II`, with
+a `10%` (`0x0A`) bonus.
+
+The third effect above is `0x30` = `Well Fed`, duration `0x63A00845` = `2186.0242` seconds,
+source ID is same as current player's ID. The `count` field has `0x29CE` = `10702`, which
+corresponds to row `702` on the `ItemFood` sheet
+[here](https://v2.xivapi.com/api/sheet/ItemFood/702)
 
 <!-- AUTO-GENERATED-CONTENT:START (logLines:type=StatusList3&lang=en-US) -->
 
