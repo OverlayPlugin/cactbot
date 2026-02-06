@@ -251,7 +251,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Executioners Death Penalty',
       type: 'GainsEffect',
-      netRegex: { effectId: '11F2', capture: true },
+      // The effect ID changed in Patch 7.4 from 11F2 to 1441. The old ID is
+      // kept to allow older logs to continue working in the simulator.
+      netRegex: { effectId: ['11F2', '1441'], capture: true },
       condition: (data) => data.CanCleanse(),
       alarmText: (_data, matches, output) => output.cleanseDoom!({ target: matches.target }),
       outputStrings: {
