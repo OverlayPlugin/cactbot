@@ -251,8 +251,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'Meso Terminal Executioners Death Penalty',
       type: 'GainsEffect',
-      // The effect ID changed in Patch 7.4 from 11F2 to 1441. The old ID is
-      // kept to allow older logs to continue working in the simulator.
+      // The Doom effect ID applied changed from 11F2 in 7.3 to 1441 in 7.4
+      // Both IDs are kept to enable parsing older logs and for regions not
+      // yet on Patch 7.4
       netRegex: { effectId: ['11F2', '1441'], capture: true },
       condition: (data) => data.CanCleanse(),
       alarmText: (_data, matches, output) => output.cleanseDoom!({ target: matches.target }),
