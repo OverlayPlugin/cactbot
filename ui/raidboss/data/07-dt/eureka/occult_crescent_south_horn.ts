@@ -630,6 +630,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'deadStarsVengefulDirection',
       name: {
         en: 'Forked Tower: Blood Dead Stars Vengeful Direction Strategy',
+        de: 'Fork-Turm: Blut Astronomischer Trio Rache-Richtungs Strategy',
         cn: '两歧塔力之塔 星头三兄弟 复仇方向策略',
         ko: '포크타워: 별머리 삼인조 복수의 파이가/블리자가/바이오가 방향 전략',
       },
@@ -639,6 +640,13 @@ const triggerSet: TriggerSet<Data> = {
           'Direction: Just call the 8-way direction of the safe spot.': 'direction',
           'Waymark: Call the ABBA/FOE/CAFE Waymark of the safe spot.': 'waymark',
           'Both: Call both direction and waymark of the safe spot.': 'both',
+        },
+        de: {
+          'Richtung: Nennen Sie einfach die 8-Wege-Richtung des sicheren Ortes.': 'direction',
+          'Wegmarkierung: Nennen Sie die ABBA/FOE/CAFE-Wegmarkierung des sicheren Ortes.':
+            'waymark',
+          'Beides: Nennen Sie sowohl die Richtung als auch die Wegmarkierung des sicheren Ortes.':
+            'both',
         },
         cn: {
           '方向: 仅提示安全点八方方向。': 'direction',
@@ -3130,21 +3138,25 @@ const triggerSet: TriggerSet<Data> = {
         unknown: Outputs.unknown,
         waymarkA: {
           en: 'A',
+          de: 'A',
           cn: 'A 点',
           ko: 'A',
         },
         waymark2and3: {
           en: '2/3',
+          de: '2/3',
           cn: '2 或 3 点',
           ko: '2/3',
         },
         waymarkCandD: {
           en: 'C/D',
+          de: 'C/D',
           cn: 'C 或 D 点',
           ko: 'C/D',
         },
         combined: {
           en: '${waymark} (${dir})',
+          de: '${waymark} (${dir})',
           cn: '${waymark} (${dir})',
           ko: '${waymark} (${dir})',
         },
