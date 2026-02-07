@@ -1589,6 +1589,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Comet': 'comète',
+        'Maelstrom': 'maelström',
         'The Tyrant': 'The Tyrant',
       },
       'replaceText': {
@@ -1599,8 +1600,9 @@ const triggerSet: TriggerSet<Data> = {
         'Charybdistopia': 'Maelström',
         '(?<! )Comet(?!ite)': 'comète',
         'Cometite': 'Petite comète',
-        'Cosmic Kiss': 'Impact',
+        'Cosmic Kiss': 'Impact de canon',
         'Crown of Arcadia': 'Souverain de l\'Arcadion',
+        'Crushing Comet': 'Comète imposante',
         'Dance of Domination(?! Trophy)': 'Danse de la domination',
         'Dance of Domination Trophy': 'Génération d\'arme : domination',
         'Ecliptic Stampede': 'Ruée de météores',
@@ -1640,6 +1642,7 @@ const triggerSet: TriggerSet<Data> = {
       'missingTranslations': true,
       'replaceSync': {
         'Comet': 'コメット',
+        'Maelstrom': 'ミールストーム',
         'The Tyrant': 'ザ・タイラント',
       },
       'replaceText': {
@@ -1652,6 +1655,7 @@ const triggerSet: TriggerSet<Data> = {
         'Cometite': 'プチコメット',
         'Cosmic Kiss': '着弾',
         'Crown of Arcadia': 'キング・オブ・アルカディア',
+        'Crushing Comet': 'ヘビーコメット',
         'Dance of Domination(?! Trophy)': 'ダンス・オブ・ドミネーション',
         'Dance of Domination Trophy': 'ウェポンジェネレート：ドミネーション',
         'Ecliptic Stampede': 'メテオスタンピード',
@@ -1679,7 +1683,7 @@ const triggerSet: TriggerSet<Data> = {
         'Powerful Gust': '強風',
         'Raw Steel(?! )': 'ウェポンバスター',
         'Raw Steel Trophy': 'ウェポンジェネレート：バスター',
-        'Shockwave': 'ショックウェーブ',
+        'Shockwave': '衝撃波',
         '(?<! )Trophy Weapons': 'トロフィーウェポンズ',
         'Ultimate Trophy Weapons': 'アルティメット・トロフィーウェポンズ',
         'Void Stardust': 'コメットレイン',
