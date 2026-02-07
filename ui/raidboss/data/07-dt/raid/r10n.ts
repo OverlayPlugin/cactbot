@@ -760,7 +760,7 @@ const triggerSet: TriggerSet<Data> = {
       'locale': 'ko',
       'replaceSync': {
         'Deep Blue': '딥 블루',
-        'Red Hot': '열기',
+        'Red Hot': '레드 핫',
         'The Xtremes': '익스트림즈',
         'Xtreme Aether': '익스트림즈 에테르',
       },
