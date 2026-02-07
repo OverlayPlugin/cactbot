@@ -385,6 +385,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsCardinalDir,
         text: {
           en: '${first} => ${second}',
+          de: '${first} => ${second}',
           fr: '${first} => ${second}',
           ja: '${first} => ${second}',
           cn: '${first} => ${second}',
@@ -392,6 +393,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         combined: {
           en: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
+          de: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
           fr: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
           ja: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
           cn: '${coffin1} + ${dir1} => ${coffin2} + ${dir2}',
@@ -399,6 +401,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         bigHalfmoonCombined: {
           en: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (big)',
+          de: '${coffin1} + ${dir1} (groß) => ${coffin2} + ${dir2} (groß)',
           fr: '${coffin1} + ${dir1} (big) => ${coffin2} + ${dir2} (gros)',
           ja: '${coffin1} + ${dir1} (大) => ${coffin2} + ${dir2} (大)',
           cn: '${coffin1} + ${dir1} (大) => ${coffin2} + ${dir2} (大)',
@@ -412,6 +415,7 @@ const triggerSet: TriggerSet<Data> = {
         rightEast: Outputs.rightEast,
         inside: {
           en: 'Inside',
+          de: 'Innen',
           fr: 'Intérieur',
           ja: '内側',
           cn: '内侧',
@@ -419,6 +423,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         outside: {
           en: 'Outside',
+          de: 'Außen',
           fr: 'Extérieur',
           ja: '外側',
           cn: '外侧',
@@ -426,6 +431,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         outerWest: {
           en: 'Outer West',
+          de: 'Außen Westen',
           fr: 'Extérieur Ouest',
           ja: '左外',
           cn: '左外',
@@ -433,6 +439,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         innerWest: {
           en: 'Inner West',
+          de: 'Innen Westen',
           fr: 'Intérieur Ouest',
           ja: '左内',
           cn: '左内',
@@ -440,6 +447,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         innerEast: {
           en: 'Inner East',
+          de: 'Innen Osten',
           fr: 'Intérieur Est',
           ja: '右内',
           cn: '右内',
@@ -447,6 +455,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         outerEast: {
           en: 'Outer East',
+          de: 'Außen Osten',
           fr: 'Extérieur Est',
           ja: '右外',
           cn: '右外',
@@ -454,6 +463,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         bigHalfmoonNoCoffin: {
           en: '${dir1} max melee => ${dir2} max melee',
+          de: '${dir1} max Nahkämpfer => ${dir2} max Nahkämpfer',
           fr: '${dir1} max melée => ${dir2} max melée',
           ja: '${dir1} メレー最大距離 => ${dir2} メレー最大距離',
           cn: '${dir1} 最大近战距离 => ${dir2} 最大近战距离',
@@ -665,7 +675,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Coffinmaker': 'fatal(?:e|er|es|en) Säge',
         'Fatal Flail': 'fatal(?:e|er|es|en) Stachelbombe',
@@ -673,14 +682,16 @@ const triggerSet: TriggerSet<Data> = {
         'Vampette Fatale': 'fatal(?:e|er|es|en) Fledermaus',
       },
       'replaceText': {
-        '--coffinmaker--': '--Säge--',
         '--cell': '--Zelle',
+        '--coffinmaker--': '--Säge--',
         '--flail': '--Stachelbombe',
         '--nail--': '--Blitzableiter--',
+        'Aetherletting': 'Ätherquell',
         'Blast Beat': 'Resonanzwelle',
         'Bloody Bondage': 'Blutige Fesseln',
         'Breakdown Drop': 'Gebrochene Melodie',
         'Breakwing Beat': 'Gebrochener Rhythmus',
+        'Brutal Rain': 'Schreckensherrschaft',
         'Coffinfiller': 'Sägenstich',
         'Crowd Kill': 'Massenmeuchelei',
         'Dead Wake': 'Sägenmarsch',
@@ -693,6 +704,7 @@ const triggerSet: TriggerSet<Data> = {
         'Plummet': 'Abfallen',
         'Pulping Pulse': 'Zermalmender Puls',
         'Sadistic Screech': 'Henkersmahl',
+        'Sanguine Scratch': 'Blutrote Kralle',
         'Ultrasonic Amp': 'Fokusschall',
         'Ultrasonic Spread': 'Streuschall',
         'Undead Deathmatch': 'Fledermaus-Todeskampf',
@@ -709,6 +721,7 @@ const triggerSet: TriggerSet<Data> = {
         'Vampette Fatale': 'chauve-souris fatale',
       },
       'replaceText': {
+        'Aetherletting': 'Libération d\'éther',
         'Blast Beat': 'Vague de résonance',
         'Bloody Bondage': 'Bondage sanglant',
         'Breakdown Drop': 'Fracas dévastateur',
@@ -725,6 +738,7 @@ const triggerSet: TriggerSet<Data> = {
         'Plummet': 'Chute',
         'Pulping Pulse': 'Pulsation pulvérisante',
         'Sadistic Screech': 'Crissement sadique',
+        'Sanguine Scratch': 'Griffure sanguine',
         'Ultrasonic Amp': '',
         'Ultrasonic Spread': '',
         'Undead Deathmatch': 'Chiroptère mortel',
@@ -759,6 +773,7 @@ const triggerSet: TriggerSet<Data> = {
         'Plummet': '落下',
         'Pulping Pulse': 'パルピングパルス',
         'Sadistic Screech': 'サディスティック・スクリーチ',
+        'Sanguine Scratch': 'サングインスクラッチ',
         'Ultrasonic Amp': '',
         'Ultrasonic Spread': '',
         'Undead Deathmatch': 'バット・デスマッチ',
