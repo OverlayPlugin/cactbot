@@ -1025,7 +1025,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Pyrotation': 'Pyrodreher',
         'Reverse Alley-oop': 'Umgekehrter Alley-Oop',
         'Scathing Steam': 'Mischexplosion',
-        'Sick Swell': 'Riesenwelle',
+        'Sick Swell': 'Fette Welle',
         'Sickest Take-off': 'Fetter Absprung',
         'stun\\)': 'Betäuben)',
         '(?<! )Watersnaking': 'Hydro-Schlängeln',
