@@ -84,11 +84,6 @@ export type BaseOopsyTrigger<Data extends OopsyData, Type extends TriggerTypes> 
 type OopsyTriggerRegex<T extends TriggerTypes> = {
   type: T;
   netRegex: CactbotBaseRegExp<T>;
-  netRegexDe?: CactbotBaseRegExp<T>;
-  netRegexFr?: CactbotBaseRegExp<T>;
-  netRegexJa?: CactbotBaseRegExp<T>;
-  netRegexCn?: CactbotBaseRegExp<T>;
-  netRegexKo?: CactbotBaseRegExp<T>;
 };
 
 export type OopsyTriggerGeneric<Data extends OopsyData, T extends TriggerTypes> =
