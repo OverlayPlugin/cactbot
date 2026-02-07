@@ -1052,6 +1052,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         fireBreathOnYou: {
           en: 'Fire Breath on YOU',
+          de: 'Feueratem auf DIR',
           cn: '火焰吐息点名',
           ko: '화염 숨결 대상자',
         },
