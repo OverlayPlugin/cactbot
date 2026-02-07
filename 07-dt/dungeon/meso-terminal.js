@@ -222,7 +222,10 @@ Options.Triggers.push({
     {
       id: 'Meso Terminal Executioners Death Penalty',
       type: 'GainsEffect',
-      netRegex: { effectId: '11F2', capture: true },
+      // The Doom effect ID applied changed from 11F2 in 7.3 to 1441 in 7.4
+      // Both IDs are kept to enable parsing older logs and for regions not
+      // yet on Patch 7.4
+      netRegex: { effectId: ['11F2', '1441'], capture: true },
       condition: (data) => data.CanCleanse(),
       alarmText: (_data, matches, output) => output.cleanseDoom({ target: matches.target }),
       outputStrings: {
