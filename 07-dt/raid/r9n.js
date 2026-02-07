@@ -503,6 +503,7 @@ Options.Triggers.push({
         '--Vamp Fatale untargetable--': '--Vamp Fatale anvisierbar--',
         'Aetherletting': 'Ätherquell',
         'Blast Beat': 'Resonanzwelle',
+        'Brutal Rain': 'Schreckensherrschaft',
         'Coffinfiller': 'Sägenstich',
         'Crowd Kill': 'Massenmeuchelei',
         'Dead Wake': 'Sägenmarsch',
@@ -531,6 +532,7 @@ Options.Triggers.push({
       'replaceText': {
         'Aetherletting': 'Libération d\'éther',
         'Blast Beat': 'Vague de résonance',
+        'Brutal Rain': 'Pluie brutale',
         'Coffinfiller': 'Entaille funèbre',
         'Crowd Kill': 'Fauchage du public',
         'Dead Wake': 'Avancée',
@@ -559,6 +561,7 @@ Options.Triggers.push({
       'replaceText': {
         'Aetherletting': 'エーテルレッティング',
         'Blast Beat': '共振波',
+        'Brutal Rain': 'ブルータルレイン',
         'Coffinfiller': '突き出る',
         'Crowd Kill': 'クラウドキリング',
         'Dead Wake': '前進',

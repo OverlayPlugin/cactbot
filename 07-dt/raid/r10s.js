@@ -160,6 +160,7 @@ Options.Triggers.push({
       outputStrings: {
         bait: {
           en: '${order} bait',
+          de: '${order} ködern',
           fr: 'Déposez en ${order}',
           cn: '${order} 引导',
           ko: '${order} 유도',
@@ -221,12 +222,14 @@ Options.Triggers.push({
           spread: Outputs.spread,
           spreadFinal: {
             en: 'Out + Spread => Stack Near Blue',
+            de: 'Raus + verteilen => Nahe Blau sammeln',
             fr: 'Extérieur + Dispersion => Package près de Blue',
             cn: '远离 + 分散 => 靠近深蓝集合',
             ko: '밖으로 + 산개 => 블루 가까이 모이기',
           },
           spreadFinalBait: {
             en: 'Out + Spread => Bait Blue Knockback Buster',
+            de: 'Raus + verteilen => Köder blauen Rückstoß-Tankbuster',
             fr: 'Extérieur + Dispersion => Déposez le tankbuster de Blue',
             cn: '远离 + 分散 => 引导深蓝坦克击退死刑',
             ko: '밖으로 + 산개 => 블루 넉백 탱버 유도',
@@ -253,6 +256,7 @@ Options.Triggers.push({
       outputStrings: {
         cleaveTowardsFire: {
           en: 'Bait cleave towards Fire',
+          de: 'Köder Kegel-AoE Richtung Feuer',
           fr: 'Déposez le cleave vers le Feu',
           cn: '向火区引导扇形伤害',
           ko: '화염 구역 쪽으로 부채꼴 유도',
@@ -298,6 +302,7 @@ Options.Triggers.push({
         stackMarker: Outputs.stackMarker,
         stackFinal: {
           en: '${stack} Near Blue',
+          de: '${stack} Nahe Blau',
           fr: '${stack} près de Blue',
           cn: '${stack} 靠近深蓝',
           ko: '${stack}: 블루 가까이',
@@ -342,12 +347,14 @@ Options.Triggers.push({
         spread: Outputs.spread,
         waterStack: {
           en: 'Water Stack',
+          de: 'Wasser sammeln',
           fr: 'Package Eau',
           cn: '水分摊',
           ko: '물 쉐어',
         },
         waterStackFireDebuff: {
           en: 'Water Stack',
+          de: 'Wasser sammeln',
           fr: 'Package Eau',
           cn: '水分摊',
           ko: '물 쉐어',
@@ -355,6 +362,7 @@ Options.Triggers.push({
         waterSpread: Outputs.spread,
         waterSpreadFireDebuff: {
           en: 'Avoid Water Players',
+          de: 'Vermeide Wasser-Spieler',
           fr: 'Évitez les joueurs Eau',
           cn: '远离水组玩家',
           ko: '물 플레이어 피하기',
@@ -400,6 +408,7 @@ Options.Triggers.push({
         middle: Outputs.middle,
         text: {
           en: 'KB from ${dir1} + away from ${dir2}',
+          de: 'Rückstoß von ${dir1} + weg von ${dir2}',
           fr: 'Poussée depuis ${dir1} + loin de ${dir2}',
           cn: '从${dir1}击退 + 远离${dir2}',
           ko: '${dir1}에서 넉백 + ${dir2}쪽 피하기',
@@ -433,6 +442,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Wave ${waveDir}/Cone ${coneDir}',
+          de: 'Welle ${waveDir}/Kegel ${coneDir}',
           fr: 'Vague ${waveDir} / Cône ${coneDir}',
           cn: '${waveDir} 击退/${coneDir} 两侧',
           ko: '파도 ${waveDir}/부채꼴 ${coneDir}',
@@ -477,24 +487,28 @@ Options.Triggers.push({
         },
         text: {
           en: '${protean} => ${action}',
+          de: '${protean} => ${action}',
           fr: '${protean} => ${action}',
           cn: '${protean} => ${action}',
           ko: '${protean} => ${action}',
         },
         watersnaking: {
           en: '${protean} => ${action}',
+          de: '${protean} => ${action}',
           fr: '${protean} => ${action}',
           cn: '${protean} => ${action}',
           ko: '${protean} => ${action}',
         },
         arenaSplitReverse: {
           en: 'Reverse Alley-oop',
+          de: 'Umgekehrter Alley-Oop',
           fr: 'Alley-oop inversé',
           cn: '要停',
           ko: '대기',
         },
         arenaSplitDoubleDip: {
           en: 'Double-Dip Protean',
+          de: 'Doppel-Alley-Oop',
           fr: 'Double Alley-oop',
           cn: '要动',
           ko: '이동',
@@ -536,6 +550,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Go N/S + Big AoE',
+          de: 'Geh N/S + Große AoE',
           fr: 'Allez N/S + Grosse AoE',
           cn: '去上/下 + 高伤害 AOE',
           ko: '남/북쪽으로 + 강한 전체 공격',
@@ -601,24 +616,28 @@ Options.Triggers.push({
       outputStrings: {
         text1: {
           en: '${water}: ${waterMech}/${fire}: ${fireMech}',
+          de: '${water}: ${waterMech}/${fire}: ${fireMech}',
           fr: '${water}: ${waterMech} / ${fire}: ${fireMech}',
           cn: '${water}: ${waterMech}/${fire}: ${fireMech}',
           ko: '${water}: ${waterMech}/${fire}: ${fireMech}',
         },
         text2: {
           en: '${mech} (${swap})',
+          de: '${mech} (${swap})',
           fr: '${mech} (${swap})',
           cn: '${mech} (${swap})',
           ko: '${mech} (${swap})',
         },
         fire: {
           en: 'Fire',
+          de: 'Feuer',
           fr: 'Feu',
           cn: '火',
           ko: '불',
         },
         water: {
           en: 'Water',
+          de: 'Wasser',
           fr: 'Eau',
           cn: '水',
           ko: '물',
@@ -628,12 +647,14 @@ Options.Triggers.push({
         // Not using Outputs.tankBuster for brevity
         buster: {
           en: 'Buster',
+          de: 'Tankbuster',
           fr: 'Buster',
           cn: '死刑',
           ko: '탱버',
         },
         swapText: {
           en: '${role} Swap',
+          de: '${role} wechsel',
           fr: 'Échange ${role}',
           cn: '${role} 交换',
           ko: '${role} 교대',
@@ -642,12 +663,14 @@ Options.Triggers.push({
         healer: Outputs.healer,
         melee: {
           en: 'Melee',
+          de: 'Nahkämpfer',
           fr: 'Mêlée',
           cn: '近战',
           ko: '근딜',
         },
         ranged: {
           en: 'Ranged',
+          de: 'Fernkämpfer',
           fr: 'Distant',
           cn: '远程',
           ko: '원딜',
@@ -672,12 +695,14 @@ Options.Triggers.push({
       outputStrings: {
         beNearBlue: {
           en: 'Be Near Blue',
+          de: 'Sei nahe Blau',
           fr: 'Près de Blue',
           cn: '靠近深蓝',
           ko: '블루 가까이 있기',
         },
         baitBlueBuster: {
           en: 'Bait Blue Knockback Buster',
+          de: 'Ködere blauen Rückstoß-Tankbuster',
           fr: 'Déposez le tankbuster de Blue (poussée)',
           cn: '引导深蓝坦克击退死刑',
           ko: '블루 넉백 탱버 유도',
@@ -721,12 +746,14 @@ Options.Triggers.push({
       outputStrings: {
         firesnaking: {
           en: 'Red\'s Target',
+          de: 'Rotes Ziel',
           fr: 'Ciblé par Red',
           cn: '火组',
           ko: '레드',
         },
         watersnaking: {
           en: 'Blue\'s Target',
+          de: 'Blaues Ziel',
           fr: 'Ciblé par Blue',
           cn: '水组',
           ko: '블루',
@@ -754,18 +781,21 @@ Options.Triggers.push({
         south: Outputs.south,
         stack: {
           en: 'Water Stack',
+          de: 'Wasser sammeln',
           fr: 'Package Eau',
           cn: '水分摊',
           ko: '물 쉐어',
         },
         spread: {
           en: 'Water Spread',
+          de: 'Wasser verteilen',
           fr: 'Dispersion Eau',
           cn: '水分散',
           ko: '물 산개',
         },
         text: {
           en: '${dir} + ${mech} + Fire Spread',
+          de: '${dir} + ${mech} + Feuer verteilen',
           fr: '${dir} + ${mech} + Dispersion Feu',
           cn: '${dir} + ${mech} + 火分散',
           ko: '${dir} + ${mech} + 불 산개',
@@ -783,6 +813,7 @@ Options.Triggers.push({
       outputStrings: {
         baitHotAerial: {
           en: 'Bait Hot Aerial',
+          de: 'Köder Flammensprung',
           fr: 'Déposez Flamme aérienne',
           cn: '引导四连跳',
           ko: '불꽃 공중회전 유도',
@@ -822,12 +853,14 @@ Options.Triggers.push({
       outputStrings: {
         redTether: {
           en: 'Red Tether on YOU',
+          de: 'Rote Verbindung auf DIR',
           fr: 'Lien Rouge sur VOUS',
           cn: '火线点名',
           ko: '레드 선 대상자',
         },
         blueTether: {
           en: 'Blue Tether on YOU',
+          de: 'Blaue Verbindung auf DIR',
           fr: 'Lien Bleu sur VOUS',
           cn: '水线点名',
           ko: '블루 선 대상자',
@@ -842,6 +875,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'E/W Groups, Out of Middle',
+          de: 'O/W Grußßen, Raus aus der Mitte',
           fr: 'Groupes E/O, Sortez du milieu',
           cn: '左右分组，远离中间',
           ko: '동/서 그룹, 중앙 피하기',
@@ -867,12 +901,14 @@ Options.Triggers.push({
       outputStrings: {
         xtremeFiresnaking: {
           en: 'Red Debuff (Fire)',
+          de: 'Roter Debuff (Feuer)',
           fr: 'Debuff Rouge (Feu)',
           cn: '火 Debuff',
           ko: '레드 디버프 (불)',
         },
         xtremeWatersnaking: {
           en: 'Blue Debuff (Water)',
+          de: 'Blauer Debuff (Wasser)',
           fr: 'Debuff Bleu (Eau)',
           cn: '水 Debuff',
           ko: '블루 디버프 (물)',
@@ -887,6 +923,118 @@ Options.Triggers.push({
         'Reverse Alley-oop/Alley-oop Double-dip': 'Reverse Alley-oop/Double-dip',
         'Awesome Splash/Awesome Slab': 'Awesome Splash/Slab',
         'Blasting Snap/Plunging Snap/Re-entry Blast': 'Blasting/Plunging/Re-entry',
+      },
+    },
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Deep Blue': 'Indigowelle',
+        'Red Hot': 'Scharlachflamme',
+        'The Xtremes': 'Team Extrem',
+        'Watery Grave': 'Wasserkerker',
+      },
+      'replaceText': {
+        '--add-targetable--': '--add anvisierbar--',
+        '--add-untargetable--': '--add nicht anvisierbar--',
+        '--blue east/west--': '--blau osten/westen--',
+        '--blue targetable--': '--blau anvisierbar--',
+        '--blue untargetable--': '--blau nicht anvisierbar--',
+        '--hot jump--': '--Flammensprung--',
+        '--intercardinal--': '--interkardinal--',
+        '--red north--': '--rot norden--',
+        '\\(bait\\)': '(Ködern)',
+        '\\(big\\)': '(Groß)',
+        '\\(cone\\)': '(Kegel)',
+        '\\(damage': '(Schaden',
+        '\\(enrage\\)': '(Finalangriff)',
+        '\\(line\\)': '(Linie)',
+        '\\(tower\\)': '(Turm)',
+        'Alley-oop Double-dip': 'Doppel-Alley-Oop',
+        'Alley-oop Inferno': 'Flammen-Alley-Oop',
+        'Awesome Slab': 'Heftiger Hydroplatscher',
+        'Awesome Splash': 'Hydroplatscher',
+        'Bailout': 'Abstieg',
+        'Blasting Snap': 'Flammenruck',
+        'Cutback Blaze': 'Flammen-Rückschnitt',
+        'Deep Varial': 'Hydro-Halbdreher',
+        'Divers\' Dare': 'Brodelnder Kampfgeist',
+        'Epic Brotherhood': 'Brüderbund',
+        '(?<! )Firesnaking': 'Flammen-Schlängeln',
+        'Flame Floater': 'Flammenschweber',
+        'Freaky Pyrotation': 'Abgefahrener Pyro-Dreher',
+        'Hot Aerial': 'Flammensprung',
+        'Hot Impact': 'Flammenklopper',
+        'Insane Air': 'Wahnsinnsritt',
+        'Plunging Snap': 'Hydroruck',
+        '(?<! )Pyrotation': 'Pyrodreher',
+        'Reverse Alley-oop': 'Umgekehrter Alley-Oop',
+        'Scathing Steam': 'Mischexplosion',
+        'Sick Swell': 'Riesenwelle',
+        'Sickest Take-off': 'Fetter Absprung',
+        'stun\\)': 'Betäuben)',
+        '(?<! )Watersnaking': 'Hydro-Schlängeln',
+        'Xtreme Firesnaking': 'Extremes Flammen-Schlängeln',
+        'Xtreme Spectacular': 'Ultimatives Extremmanöver',
+        'Xtreme Watersnaking': 'Extremes Hydro-Schlängeln',
+        'Xtreme Wave': 'Extremwelle',
+      },
+    },
+    {
+      'locale': 'fr',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Deep Blue': 'Deep Blue',
+        'Red Hot': 'Red Hot',
+        'The Xtremes': 'Les Xtrêmes',
+        'Watery Grave': 'prison aquatique',
+      },
+      'replaceText': {
+        'Alley-oop Inferno': 'Alley-oop enflammé',
+        'Awesome Slab': 'Éclaboussement hydrique puissant',
+        'Awesome Splash': 'Éclaboussement hydrique',
+        'Cutback Blaze': 'Riposte enflammée',
+        'Divers\' Dare': 'Esprit combatif',
+        'Epic Brotherhood': 'Fraternité',
+        'Flame Floater': 'Surfeur enflammé',
+        'Freaky Pyrotation': 'Rotation incandescente chaotique',
+        'Hot Aerial': 'Flamme aérienne',
+        'Hot Impact': 'Impact brûlant',
+        'Insane Air': 'Figure démentielle',
+        '(?<! )Pyrotation': 'Rotation incandescente',
+        'Scathing Steam': 'Explosion mélangée',
+        'Sick Swell': 'lame de fond',
+        'Sickest Take-off': 'Ascension déchaînée',
+        'Xtreme Spectacular': 'Spectacle Xtrême',
+        'Xtreme Wave': 'Vague Xtrême',
+      },
+    },
+    {
+      'locale': 'ja',
+      'missingTranslations': true,
+      'replaceSync': {
+        'Deep Blue': 'ディープブルー',
+        'Red Hot': 'レッドホット',
+        'The Xtremes': 'エクストリームズ',
+        'Watery Grave': '水牢',
+      },
+      'replaceText': {
+        'Alley-oop Inferno': 'フレイムアリウープ',
+        'Awesome Slab': 'ヘビー・ハイドロスプラッシュ',
+        'Awesome Splash': 'ハイドロスプラッシュ',
+        'Cutback Blaze': 'フレイムカットバック',
+        'Divers\' Dare': 'ファイティングスピリット',
+        'Epic Brotherhood': 'ブラザーフッド',
+        'Flame Floater': 'フレイムフローター',
+        'Freaky Pyrotation': 'フリーキー・パイロローテーション',
+        'Hot Aerial': 'フレイムエアリアル',
+        'Hot Impact': 'ホットインパクト',
+        'Insane Air': 'インセインエアー',
+        '(?<! )Pyrotation': 'パイロローテーション',
+        'Scathing Steam': 'ミックスエクスプロージョン',
+        'Sick Swell': '高波',
+        'Sickest Take-off': 'シック・テイクオフ',
+        'Xtreme Spectacular': 'エクストリーム・スペクタクル',
+        'Xtreme Wave': 'エクストリームウェーブ',
       },
     },
     {

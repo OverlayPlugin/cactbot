@@ -436,7 +436,6 @@ Options.Triggers.push({
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Aether': 'Äthersphäre',
         'Doomtrain': 'Doomtrain',
