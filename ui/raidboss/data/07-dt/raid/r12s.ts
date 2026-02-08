@@ -724,7 +724,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Phagocyte Spotlight Blob Tower Location Collect',
-      // StartsUsing and StartsUsingExtra can have bad data, there is enough time that Ability is sufficient
+      // StartsUsing can have bad data
       // Pattern 1
       // Blob 1: (104, 104) SE Inner
       // Blob 2: (96, 96) NW Inner
@@ -745,7 +745,7 @@ const triggerSet: TriggerSet<Data> = {
       // Blob 2: (104, 96) NE Inner
       // Blob 3: (115, 110) SE Outer
       // Blob 4: (86, 90) NW Outer
-      type: 'Ability',
+      type: 'StartsUsingExtra',
       netRegex: { id: 'B4B6', capture: true },
       suppressSeconds: 10,
       run: (data, matches) => {
@@ -777,7 +777,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Phagocyte Spotlight Blob Tower Location (Early)',
       // 23.8s until B4B7 Rolling Mass Blob Tower Hit
       // Only need to know first blob location
-      type: 'Ability',
+      type: 'StartsUsingExtra',
       netRegex: { id: 'B4B6', capture: false },
       condition: (data) => data.myFleshBonds === 'alpha',
       delaySeconds: 0.1,
@@ -786,13 +786,13 @@ const triggerSet: TriggerSet<Data> = {
         // Timings based on next trigger
         switch (myNum) {
           case 1:
-            return 17;
+            return 20;
           case 2:
-            return 22;
+            return 25;
           case 3:
-            return 18;
+            return 21;
           case 4:
-            return 18;
+            return 21;
         }
       },
       suppressSeconds: 10,
