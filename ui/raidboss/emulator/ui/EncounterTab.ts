@@ -1,5 +1,6 @@
 import DTFuncs from '../../../../resources/datetime';
 import { UnreachableCode } from '../../../../resources/not_reached';
+import { bindSearchInput, TextSearchEngine } from '../../../../resources/text_search_engine';
 import Persistor from '../data/Persistor';
 import PersistorEncounter from '../data/PersistorEncounter';
 import { getTemplateChild, querySelectorAllSafe, querySelectorSafe } from '../EmulatorCommon';
@@ -32,6 +33,10 @@ export default class EncounterTab extends EventBus {
   currentZone?: string;
   currentDate?: string;
   currentEncounter?: number;
+  engine: TextSearchEngine = new TextSearchEngine();
+  searchInput: HTMLInputElement;
+  private filteredEncounters?: EncounterMap;
+
   constructor(private persistor: Persistor) {
     super();
 
@@ -46,10 +51,16 @@ export default class EncounterTab extends EventBus {
       'template.encounterTabEncounterRow',
     );
     this.$encounterInfoTemplate = getTemplateChild(document, 'template.encounter-info');
+
+    this.searchInput = querySelectorSafe(document, '#encounter-search-input') as HTMLInputElement;
+    bindSearchInput(this.searchInput, this.engine, () => {
+      this.refreshUI();
+    });
   }
 
   refresh(): void {
     this.encounters = {};
+    this.filteredEncounters = undefined;
     void this.persistor.encounterSummaries.toArray().then((encounters: PersistorEncounter[]) => {
       for (const enc of encounters) {
         const zone = enc.zoneName;
@@ -71,7 +82,46 @@ export default class EncounterTab extends EventBus {
     });
   }
 
+  get displayEncounters(): EncounterMap {
+    return this.filteredEncounters ?? this.encounters;
+  }
+
+  filterEncounters(): void {
+    const query = this.searchInput.value.trim().toLowerCase();
+    const parts = this.engine.parseQuery(query);
+    if (parts.length === 0) {
+      this.filteredEncounters = undefined;
+      return;
+    }
+
+    const ret: EncounterMap = {};
+    for (const [zone, zoneMap] of Object.entries(this.encounters)) {
+      const zoneMatches = this.engine.matchParts(zone.toLowerCase(), parts);
+      const filteredZoneMap: ZoneMap = {};
+      let hasDates = false;
+
+      for (const [date, dates] of Object.entries(zoneMap)) {
+        const filteredDates = dates.filter((d) => {
+          if (zoneMatches)
+            return true;
+          return this.engine.matchParts(d.name.toLowerCase(), parts);
+        });
+
+        if (filteredDates.length > 0) {
+          filteredZoneMap[date] = filteredDates;
+          hasDates = true;
+        }
+      }
+
+      if (hasDates) {
+        ret[zone] = filteredZoneMap;
+      }
+    }
+    this.filteredEncounters = ret;
+  }
+
   refreshUI(): void {
+    this.filterEncounters();
     this.refreshZones();
     this.refreshDates();
     this.refreshEncounters();
@@ -83,7 +133,7 @@ export default class EncounterTab extends EventBus {
 
     let clear = true;
 
-    const zones = new Set(Object.keys(this.encounters));
+    const zones = new Set(Object.keys(this.displayEncounters));
 
     for (const zone of [...zones].sort()) {
       const $row = this.$encounterTabRowTemplate.cloneNode(true);
@@ -121,7 +171,7 @@ export default class EncounterTab extends EventBus {
     let clear = true;
 
     if (this.currentZone !== undefined) {
-      const zoneMap = this.encounters[this.currentZone];
+      const zoneMap = this.displayEncounters[this.currentZone];
       if (!zoneMap)
         return;
       const dates = new Set<string>(Object.keys(zoneMap));
@@ -164,7 +214,7 @@ export default class EncounterTab extends EventBus {
     if (this.currentZone === undefined || this.currentDate === undefined)
       return;
 
-    const zoneMap = this.encounters[this.currentZone];
+    const zoneMap = this.displayEncounters[this.currentZone];
     if (!zoneMap)
       return;
 
@@ -213,7 +263,9 @@ export default class EncounterTab extends EventBus {
   refreshInfo(): void {
     this.$infoColumn.innerHTML = '';
 
-    const zoneMap = this.currentZone !== undefined ? this.encounters[this.currentZone] : undefined;
+    const zoneMap = this.currentZone !== undefined
+      ? this.displayEncounters[this.currentZone]
+      : undefined;
 
     if (!zoneMap)
       return;
