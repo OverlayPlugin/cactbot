@@ -1074,7 +1074,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Cylinder': '指向魔法陣',
         'Arcane Sphere': '立體魔法陣',
@@ -1082,8 +1081,8 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Themis': '特彌斯',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(enrage\\)': '(狂暴)',
         'Arcane Revelation': '魔法陣展開',
         'Arche': '始基',
         'Blinding Light': '光彈',

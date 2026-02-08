@@ -340,7 +340,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Aethershot': '乙太彈',
         'Amon the Undying': '邪執外道的亞蒙',
@@ -353,7 +352,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ysayle\'s Spirit': '伊塞勒的靈魂',
       },
       'replaceText': {
-        // '\\(proximity\\)': '', // FIXME '(接近)'
+        '\\(proximity\\)': '(接近)',
         'Aglaea Bite': '典雅女神槍',
         'Aglaea Climb': '典雅女神連槍',
         'Aglaea Shot': '典雅女神射擊',

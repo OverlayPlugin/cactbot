@@ -438,7 +438,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée (depuis l\'ouest)',
           cn: '击退 (从左边)',
           ko: '넉백 (서쪽에서)',
-          tc: '擊退 (從左邊)',
+          tc: '擊退 (從西邊)',
         },
       },
     },
@@ -482,7 +482,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée (depuis l\'est) vers le cristal de feu => Dispersion',
           cn: '从右边击退到火石板 => 分散',
           ko: '불 크리스탈로 넉백 (동쪽에서) => 산개',
-          tc: '從右邊擊退到火石板 => 分散',
+          tc: '從東邊擊退到火石板 => 分散',
         },
         kbWest: {
           en: 'Knockback (from West) to Fire crystal => Spread',
@@ -490,7 +490,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Poussée (depuis l\'ouest) vers le cristal de feu => Dispersion',
           cn: '从左边击退到火石板 => 分散',
           ko: '불 크리스탈로 넉백 (서쪽에서) => 산개',
-          tc: '從左邊擊退到火石板 => 分散',
+          tc: '從西邊擊退到火石板 => 分散',
         },
       },
     },
@@ -697,12 +697,11 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Gurfurlur': '固伏魯',
         'Kahderyor': '卡德由夜鳥',
-        // 'Qorrloh Teh': '', // FIXME '刻洛特雪精'
-        // 'Rorrloh Teh': '', // FIXME '洛洛特雪精'
+        'Qorrloh Teh': '刻洛特雪精',
+        'Rorrloh Teh': '洛洛特雪精',
         'Ryoqor Terteh': '遼刻特特雪精',
         'Snowball': '雪球',
       },

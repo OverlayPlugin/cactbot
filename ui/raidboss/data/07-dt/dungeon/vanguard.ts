@@ -82,7 +82,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Esquivez les cleaves en ligne N/S',
           cn: '躲避 上/下 直线攻击',
           ko: '남/북쪽 직선 장판 피하기',
-          tc: '躲避 上/下 直線攻擊',
+          tc: '躲避 北/南 直線攻擊',
         },
         grid: {
           en: 'Spread + dodge grid cleaves',
@@ -352,7 +352,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Protector': '保護者',
         'Vanguard Commander R8': '先鋒營指揮官R8',
@@ -360,9 +359,9 @@ const triggerSet: TriggerSet<Data> = {
         'Zander the Snakeskinner': '蟒蛇將 詹德',
       },
       'replaceText': {
-        // '\\(corners\\)': '', // FIXME '(四角)'
-        // '\\(ground AoEs\\)': '', // FIXME '(地面 AoE)'
-        // '\\(sides\\)': '', // FIXME '(四边)'
+        '\\(corners\\)': '(四角)',
+        '\\(ground AoEs\\)': '(地面 AOE)',
+        '\\(sides\\)': '(四邊)',
         '(?<! )Rush': '突進',
         'Aerial Offensive': '空襲',
         'Battery Circuit': '旋回式衝擊砲',

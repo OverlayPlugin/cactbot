@@ -1315,9 +1315,8 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Althyk(?! &)': '', // FIXME '光阴神阿尔基克'
+        'Althyk(?! &)': '阿爾基克',
         'Althyk & Nymeia': '阿爾基克和妮美雅',
         'Euphrosynos Behemoth': '歐芙洛緒涅凶惡巨獸',
         'Euphrosynos Ktenos': '歐芙洛緒涅牲獸',

@@ -240,18 +240,17 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Erichthonios': '艾里克托尼奧斯',
       },
       'replaceText': {
-        // '--knockback stack--': '', // FIXME '--集合击退--'
+        '--knockback stack--': '--集合擊退--',
         'Aetherchain': '爆鎖',
-        // 'Aetherflail Left': '', // FIXME '左惩罚爆锁'
-        // 'Aetherflail Right': '', // FIXME '右惩罚爆锁'
+        'Aetherflail Left': '左懲罰爆鎖',
+        'Aetherflail Right': '右懲罰爆鎖',
         'Cold Spell': '魔力解放·冰',
-        // 'Gaoler\'s Flail Left': '', // FIXME '左惩罚抽击'
-        // 'Gaoler\'s Flail Right': '', // FIXME '右惩罚抽击'
+        'Gaoler\'s Flail Left': '左懲罰抽擊',
+        'Gaoler\'s Flail Right': '右懲罰抽擊',
         'Heavy Hand': '掌摑',
         'Hot Spell': '魔力解放·火',
         'Intemperance': '冰火侵蝕',

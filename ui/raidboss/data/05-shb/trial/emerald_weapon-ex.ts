@@ -32,7 +32,7 @@ const sharedOutputStrings = {
     fr: 'Package tanks',
     ja: 'タンク頭割り',
     cn: '坦克分摊',
-    ko: '탱끼리 모이기',
+    ko: '탱커 쉐어',
     tc: '坦克分攤',
   },
 };

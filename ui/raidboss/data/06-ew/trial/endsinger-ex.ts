@@ -1051,7 +1051,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Star': '藍色天體',
         'Fiery Star': '紅色天體',
@@ -1070,7 +1069,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Fatalism': '宿命',
         'Grip of Despair': '絕望的鎖鏈',
         'Hubris': '傲慢',
-        // 'Star Collision': '', // FIXME '天体撞击'
+        'Star Collision': '天體撞擊',
         'Telomania': '終末狂熱',
         'Telos': '終末',
         'Tower Explosion': '爆炸',

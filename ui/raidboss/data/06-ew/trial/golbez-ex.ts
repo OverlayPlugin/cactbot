@@ -169,7 +169,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北西 / 南東',
           cn: '左上 / 右下',
           ko: '북서 / 남동',
-          tc: '左上 / 右下',
+          tc: '西北 / 東南',
         },
         dirNESW: {
           en: 'NE / SW',
@@ -178,7 +178,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '北東 / 南西',
           cn: '右上 / 左下',
           ko: '북동 / 남서',
-          tc: '右上 / 左下',
+          tc: '東北 / 西南',
         },
       },
     },
@@ -1023,28 +1023,27 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Gale Sphere': '風球',
         'Golbez': '高貝扎',
         'Shadow Dragon': '黑龍',
       },
       'replaceText': {
-        // '\\(Enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(big\\)': '', // FIXME '(大)'
-        // '\\(small\\)': '', // FIXME '(小)'
-        // '\\(light parties\\)': '', // FIXME '(四四分组)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
-        // '\\(explode\\)': '', // FIXME '(发动)'
-        // '\\(snapshot\\)': '', // FIXME '(诱导)'
-        // '\\(back\\)': '', // FIXME '(后)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(front\\)': '', // FIXME '(前)'
-        // '\\(out\\)': '', // FIXME '(外)'
-        // '\\(record\\)': '', // FIXME '(记录)'
-        // '\\(under\\)': '', // FIXME '(靠近)'
-        // '\\(hit\\)': '', // FIXME '(命中)'
-        // '\\(preview\\)': '', // FIXME '(预兆)'
+        '\\(Enrage\\)': '(狂暴)',
+        '\\(big\\)': '(大)',
+        '\\(small\\)': '(小)',
+        '\\(light parties\\)': '(四四分組)',
+        '\\(spread\\)': '(分散)',
+        '\\(explode\\)': '(發動)',
+        '\\(snapshot\\)': '(誘導)',
+        '\\(back\\)': '(後)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(front\\)': '(前)',
+        '\\(out\\)': '(外)',
+        '\\(record\\)': '(記錄)',
+        '\\(under\\)': '(靠近)',
+        '\\(hit\\)': '(命中)',
+        '\\(preview\\)': '(預兆)',
         'Abyssal Quasar': '深淵類星體',
         'Arctic Assault': '極寒突襲',
         'Azdaja\'s Shadow': '黑龍劍阿珠達雅',

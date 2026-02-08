@@ -3159,7 +3159,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Alpha Omega': '阿爾法歐米茄',
         'Cosmo Meteor': '宇宙流星',
@@ -3198,7 +3197,7 @@ const triggerSet: TriggerSet<Data> = {
         'Hello, Distant World': 'Hello, World：遠端',
         'Hello, Near World': 'Hello, World：近端',
         'Hello, World': 'Hello, World',
-        // 'High-powered Sniper Cannon': '', // FIXME '狙击式大功率波动炮”'
+        'High-powered Sniper Cannon': '狙擊式大功率波動砲',
         'Hyper Pulse': '超能脈衝',
         'Ion Efflux': '離子流出',
         'Laser Shower': '雷射驟雨',
@@ -3222,10 +3221,10 @@ const triggerSet: TriggerSet<Data> = {
         'Program Loop': '循環程式',
         'Rear Lasers': '背環雷射',
         'Right Arm Unit': '右臂組',
-        // 'Run: \\*\\*\\*\\*mi\\* \\(Delta Version\\)': '', // FIXME '代码：＊能＊（德尔塔）'
-        // 'Run: \\*\\*\\*\\*mi\\* \\(Omega Version\\)': '', // FIXME '代码：＊能＊（欧米茄）'
-        // 'Run: \\*\\*\\*\\*mi\\* \\(Sigma Version\\)': '', // FIXME '代码：＊能＊（西格玛）'
-        // '(?<! )Sniper Cannon': '', // FIXME '狙击式波动炮”'
+        'Run: \\*\\*\\*\\*mi\\* \\(Delta Version\\)': '代碼：＊能＊（德爾塔）',
+        'Run: \\*\\*\\*\\*mi\\* \\(Omega Version\\)': '代碼：＊能＊（歐米茄）',
+        'Run: \\*\\*\\*\\*mi\\* \\(Sigma Version\\)': '代碼：＊能＊（西格瑪）',
+        '(?<! )Sniper Cannon': '狙擊式波動砲',
         'Solar Ray': '太陽射線',
         'Spotlight': '聚光燈',
         'Storage Violation': '清除記憶污染S',

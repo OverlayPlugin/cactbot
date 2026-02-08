@@ -215,7 +215,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左/西へ',
           cn: '左',
           ko: '왼쪽/서쪽',
-          tc: '左',
+          tc: '左/西',
         },
         east: {
           en: 'Right/East',
@@ -224,7 +224,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右/東へ',
           cn: '右',
           ko: '오른쪽/동쪽',
-          tc: '右',
+          tc: '右/東',
         },
       },
     },
@@ -667,7 +667,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー回避(マスの境界の上)',
           cn: '站在线上（躲避激光）',
           ko: '경계선 위 (레이저 피하기)',
-          tc: '站在線上（躲避雷射）',
+          tc: '站在線上(躲避雷射)',
         },
         boxes: {
           en: 'Inside Boxes (Avoid Lasers)',
@@ -676,7 +676,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'レーザー回避(マスの内側)',
           cn: '站方格内（躲避激光）',
           ko: '네모칸 안 (레이저 피하기)',
-          tc: '站方格內（躲避雷射）',
+          tc: '站方格內(躲避雷射)',
         },
       },
     },
@@ -826,19 +826,18 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sphere': '立體魔法陣',
-        // 'Pand(?:\\\\u00e6|\u00e6)moniac Pillar': '', // FIXME '万魔殿之塔'
-        // 'Pand(?:\\\\u00e6|\u00e6)monium': '', // FIXME '万魔殿'
+        'Pand(?:\\\\u00e6|\u00e6)moniac Pillar': '萬魔殿之塔',
+        'Pand(?:\\\\u00e6|\u00e6)monium': '萬魔殿',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(cone\\)': '', // FIXME '(锥形)'
-        // '\\(knockback\\)': '', // FIXME '(击退)'
-        // '\\(share\\)': '', // FIXME '(分摊)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(cone\\)': '(錐形)',
+        '\\(knockback\\)': '(擊退)',
+        '\\(share\\)': '(分攤)',
         'Bury': '塌方',
-        // 'Circles of Pandaemonium': '', // FIXME '万魔殿之环'
+        'Circles of Pandaemonium': '萬魔殿之環',
         'Dividing Wings': '分割之翼',
         'Daemoniac Bonds': '萬魔殿牢獄',
         'Entangling Web': '糾纏之網',
@@ -848,8 +847,8 @@ const triggerSet: TriggerSet<Data> = {
         'Pandaemoniac Pillars': '萬魔殿之柱',
         'Pandaemoniac Ray': '萬魔殿射線',
         'Pandaemoniac Turrets': '萬魔殿砲塔',
-        // 'Pandaemoniac Web': '', // FIXME '万魔殿之网'
-        // 'Pandaemon\'s Holy': '', // FIXME '万魔殿神圣'
+        'Pandaemoniac Web': '萬魔殿之網',
+        'Pandaemon\'s Holy': '萬魔殿神聖',
         'Parted Plumes': '分割之羽',
         'Peal of Condemnation': '譴責衝擊波',
         'Peal of Damnation': '詛咒衝擊波',

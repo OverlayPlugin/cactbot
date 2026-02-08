@@ -225,6 +225,8 @@ const triggerSet: TriggerSet<Data> = {
           `以奈尔所在的塔为 1 号位时, 顺时针找塔。例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 号位。`,
         ko:
           `넬 밑의 기둥을 위치 1이라 했을 때, 시계 방향으로 세었을 때 당신의 위치. 즉, <a href="https://clees.me/guides/ucob/" target="_blank">Clees 가이드</a>에서 H1의 위치는 7.`,
+        tc:
+          `以奈爾所在的塔為 1 號位時, 順時針找塔. 例如在 <a href="https://clees.me/guides/ucob/" target="_blank">Clees' guide</a> 中的 H1 是 7 號位.`,
       },
       name: {
         en: 'P3 Heavensfall Tower Position',

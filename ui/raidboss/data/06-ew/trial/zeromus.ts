@@ -34,7 +34,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'HPを全回復する',
           cn: '奶满全队',
           ko: '체력 풀피로',
-          tc: '奶滿全隊',
+          tc: '補滿全隊',
         },
       },
     },
@@ -377,14 +377,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Comet': '隕星',
         'Zeromus': '澤羅姆斯',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(proximity\\)': '', // FIXME '(距离衰减)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(proximity\\)': '(距離衰減)',
         'Abyssal Echoes': '深淵回聲',
         'Abyssal Nox': '深淵之夜',
         'Big Bang': '宇宙大爆炸',
