@@ -39,7 +39,7 @@ export interface Data extends RaidbossData {
     | 'rearCleave';
   myFleshBonds?: 'alpha' | 'beta';
   inLine: { [name: string]: number };
-  blobTowerDirs: string[];
+  blobTowerDirs: DirectionOutputIntercard[];
   fleshBondsCount: number;
   skinsplitterCount: number;
   cellChainCount: number;
