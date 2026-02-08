@@ -76,7 +76,13 @@ const parseExistingTimelineReplace = (
   return result;
 };
 
-const cleanName = (name: string): string => name.replace(/\[[apt]\]/g, '').trim();
+const replaceGermanGrammarTags = (name: string): string => {
+  return name.replace(/\[t\]/g, '(?:der|die|das)')
+    .replace(/\[a\]/g, '(?:e|er|es|en)')
+    .replace(/\[A\]/g, '(?:e|er|es|en)')
+    .replace(/\[p\]/g, '')
+    .trim();
+};
 
 const fetchLocaleData = async (): Promise<LocaleData> => {
   log.info('Fetching BNpcName data...');
@@ -114,8 +120,10 @@ const fetchLocaleData = async (): Promise<LocaleData> => {
     const map = new Map<number, string>();
     for (const row of bnpcData as BNpcNameRow[]) {
       const val = row.fields[field];
-      if (typeof val === 'string' && val.trim() !== '')
-        map.set(row.row_id, cleanName(val));
+      if (typeof val === 'string' && val.trim() !== '') {
+        const name = locale === 'de' ? replaceGermanGrammarTags(val) : val.trim();
+        map.set(row.row_id, name);
+      }
     }
     allLocaleMaps.set(locale, map);
   }
@@ -129,7 +137,7 @@ const fetchLocaleData = async (): Promise<LocaleData> => {
     for (const [idStr, row] of Object.entries(table)) {
       const name = row['Singular'];
       if (name !== undefined && name.trim() !== '')
-        map.set(parseInt(idStr), cleanName(name));
+        map.set(parseInt(idStr), name.trim());
     }
     allLocaleMaps.set(locale, map);
   });
