@@ -48,6 +48,11 @@ interface LocaleData {
   allLocaleMaps: Map<Locale, Map<number, string>>;
 }
 
+type ReplaceSyncResult = {
+  replaceSync: { [key: string]: string };
+  allTranslated: boolean;
+};
+
 // Parse existing timelineReplace from file content
 const parseExistingTimelineReplace = (
   content: string,
@@ -181,11 +186,15 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
   // | ✓ Found  | ✓ Multiple          | ✓ Exists | Keep existing + log.alert() |
   // | ✓ Found  | ✓ Multiple          | ✗ None   | Output '(?:c1|c2)' (human review) |
   // | ✗ Not found | -                | -        | Keep existing      |
-  const generateReplaceSync = (
+  const generateReplaceSync: (
     locale: Locale,
     localeMap: Map<number, string>,
     existingLocaleTranslations: Map<string, string> | undefined,
-  ): { replaceSync: { [key: string]: string }; allTranslated: boolean } => {
+  ) => ReplaceSyncResult = (
+    locale,
+    localeMap,
+    existingLocaleTranslations,
+  ) => {
     const replaceSync: { [key: string]: string } = {};
     let translatedCount = 0;
 
@@ -258,7 +267,7 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
     if (Object.keys(replaceSync).length === 0)
       return '';
 
-    const syncLines = Object.entries(replaceSync).map(([en, loc]) => {
+    const syncLines = Object.entries(replaceSync).map(([en, loc]: [string, string]) => {
       const escapedEn = en.replace(/'/g, '\\\'');
       const escapedLoc = loc.replace(/'/g, '\\\'');
       return `        '${escapedEn}': '${escapedLoc}',`;
