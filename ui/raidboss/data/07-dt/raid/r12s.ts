@@ -1673,7 +1673,8 @@ const triggerSet: TriggerSet<Data> = {
           // Heading is also checked as the non fire clones all face a perfect heading
           const xFilter = pos.x % 1;
           const yFilter = pos.y % 1;
-          if (xFilter === 0 && yFilter === 0 && pos.heading === -0.0001)
+          const hdgFilter = Math.abs(pos.heading - 0.0001) < Number.EPSILON;
+          if (xFilter === 0 && yFilter === 0 && hdgFilter)
             return false;
           return true;
         }
