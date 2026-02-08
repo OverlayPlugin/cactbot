@@ -245,8 +245,10 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
         // Case: New data Not Found (or 0 candidates) + Existing Translation exists
         replaceSync[source] = existingValue;
         translatedCount++;
+      } else {
+        // Case: New data Not Found + No Existing Translation -> Skip
+        log.alert(`${oopsyFile}: Missing translation for '${source}' in ${locale}`);
       }
-      // Case: New data Not Found + No Existing Translation -> Skip
     }
 
     const allTranslated = translatedCount === sources.size;
