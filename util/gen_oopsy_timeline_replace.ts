@@ -139,7 +139,7 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
 
   // --- Extract replaceSync candidates (source: 'Name') ---
   const sources = new Set<string>();
-  const sourceRegex = /source:\s*(?:['"]([^'"]+)['"]|\[((?:['"][^'"]+['"],?\s*)+)\])/g;
+  const sourceRegex = /(?:source|target):\s*(?:['"]([^'"]+)['"]|\[((?:['"][^'"]+['"],?\s*)+)\])/g;
   for (const match of content.matchAll(sourceRegex)) {
     const single = match[1];
     const list = match[2];
