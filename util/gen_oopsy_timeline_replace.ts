@@ -174,7 +174,17 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
     }
   }
 
-  if (sources.size === 0)
+  // Deduplicate sources by case-insensitive comparison (keep first alphabetically)
+  const seenSources = new Map<string, string>();
+  for (const s of sources) {
+    const lower = s.toLowerCase();
+    if (!seenSources.has(lower) || s < (seenSources.get(lower) ?? '')) {
+      seenSources.set(lower, s);
+    }
+  }
+  const uniqueSources = new Set(seenSources.values());
+
+  if (uniqueSources.size === 0)
     return false; // No sources to translate
 
   const { enBnpcMap, allLocaleMaps } = localeData;
@@ -202,7 +212,7 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
     const replaceSync: { [key: string]: string } = {};
     let translatedCount = 0;
 
-    for (const source of sources) {
+    for (const source of uniqueSources) {
       const ids = enBnpcMap.get(source.toLowerCase());
       const existingValue = existingLocaleTranslations?.get(source);
 
@@ -255,7 +265,7 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
       }
     }
 
-    const allTranslated = translatedCount === sources.size;
+    const allTranslated = translatedCount === uniqueSources.size;
     return { replaceSync: replaceSync, allTranslated: allTranslated };
   };
 
