@@ -171,7 +171,7 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
   // |----------|---------------------|----------------------|--------|
   // | ✓ Found  | ✗ Single            | -        | Use new data       |
   // | ✓ Found  | ✓ Multiple          | ✓ Exists | Keep existing + log.alert() |
-  // | ✓ Found  | ✓ Multiple          | ✗ None   | Output 'candidate1 / candidate2' (human review) |
+  // | ✓ Found  | ✓ Multiple          | ✗ None   | Output '(?:c1|c2)' (human review) |
   // | ✗ Not found | -                | -        | Keep existing      |
   const generateReplaceSync = (
     locale: Locale,
@@ -221,7 +221,7 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
             }`,
           );
           log.alert(`         No existing translation found. Manual review required.`);
-          replaceSync[source] = Array.from(candidates).sort().join(' / ');
+          replaceSync[source] = `(?:${Array.from(candidates).sort().join('|')})`;
           translatedCount++;
         }
       } else if (existingValue !== undefined) {
