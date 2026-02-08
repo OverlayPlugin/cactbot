@@ -446,7 +446,7 @@ const triggerSet: TriggerSet<Data> = {
         'Glass Dance': '빙설난무',
         'Hailstorm': '우박 폭풍',
         'Heavenly Strike': '천상의 일격',
-        'Icebrand': '얼음의 낙인',
+        'Icebrand': '얼음검',
         'Icicle Impact': '고드름 낙하',
         'Melt': '무기 용해',
         'Permafrost': '영구동토',

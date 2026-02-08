@@ -192,6 +192,7 @@ const triggerSet: TriggerSet<Data> = {
         'Storm Add': 'Sturm Add',
         'Tempest Wing': 'Sturm-Schwinge',
         'Teraflare': 'Teraflare',
+        'Megaflare Dive': 'Megaflare-Sturz',
       },
     },
     {
@@ -267,6 +268,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tempest Wing Tethers': 'テンペストウィング・線',
         'Tempest Wing(?! Tethers)': 'テンペストウィング',
         'Teraflare': 'テラフレア',
+        'Megaflare Dive': 'メガフレアダイブ',
       },
     },
     {

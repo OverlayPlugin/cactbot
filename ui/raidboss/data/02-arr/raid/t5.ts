@@ -351,7 +351,7 @@ const triggerSet: TriggerSet<Data> = {
         'Death Sentence': '死刑',
         'Divebomb': '爆破俯冲',
         'Fireball': '火球',
-        'Firestorm': '火焰风暴',
+        'Firestorm': '火焰流',
         'Hatch': '魔力爆散',
         'Hygieia': '许癸厄亚',
         'Liquid Hell': '液体地狱',
