@@ -103,7 +103,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     {
       'locale': 'de',
       'replaceSync': {
-        'Stray Geist': 'mahrtastisch Geist',
+        'Stray Geist': 'mahrtastisch(?:e|er|es|en) Geist',
         'Träumerei': 'Träumerei',
       },
     },
