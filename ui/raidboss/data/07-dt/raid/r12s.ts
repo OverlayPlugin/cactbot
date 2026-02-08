@@ -7,6 +7,13 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODO: Mortal Coil calls
+// TODO: Cursed Coil Counterclock/clockwise call
+// TODO: Cursed Coil break directions
+// TODO: Separate Split Scourge and Venomous Scourge triggers
+// TODO: Safe spots for Curtain Call's Unbreakable flesh
+// TODO: Safe spots for Slaughtershed Stack/Spreads
+
 export type Phase =
   | 'doorboss'
   | 'curtainCall'
