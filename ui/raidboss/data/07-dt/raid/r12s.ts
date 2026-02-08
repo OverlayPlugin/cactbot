@@ -278,18 +278,10 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Phase Two ActorSetPos Tracker',
+      id: 'R12S ActorSetPos Tracker',
+      // Only in use for replication 1, 2, and idyllic phases
       type: 'ActorSetPos',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
-      condition: (data) => {
-        if (
-          data.phase === 'replication1' ||
-          data.phase === 'replication2' ||
-          data.phase === 'idyllic'
-        )
-          return true;
-        return false;
-      },
       run: (data, matches) =>
         data.actorPositions[matches.id] = {
           x: parseFloat(matches.x),
@@ -298,18 +290,10 @@ const triggerSet: TriggerSet<Data> = {
         },
     },
     {
-      id: 'R12S Phase Two ActorMove Tracker',
+      id: 'R12S ActorMove Tracker',
+      // Only in use for replication 1, 2, and idyllic phases
       type: 'ActorMove',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
-      condition: (data) => {
-        if (
-          data.phase === 'replication1' ||
-          data.phase === 'replication2' ||
-          data.phase === 'idyllic'
-        )
-          return true;
-        return false;
-      },
       run: (data, matches) =>
         data.actorPositions[matches.id] = {
           x: parseFloat(matches.x),
@@ -318,18 +302,10 @@ const triggerSet: TriggerSet<Data> = {
         },
     },
     {
-      id: 'R12S Phase Two AddedCombatant Tracker',
+      id: 'R12S AddedCombatant Tracker',
+      // Only in use for replication 1, 2, and idyllic phases
       type: 'AddedCombatant',
       netRegex: { id: '4[0-9A-Fa-f]{7}', capture: true },
-      condition: (data) => {
-        if (
-          data.phase === 'replication1' ||
-          data.phase === 'replication2' ||
-          data.phase === 'idyllic'
-        )
-          return true;
-        return false;
-      },
       run: (data, matches) =>
         data.actorPositions[matches.id] = {
           x: parseFloat(matches.x),
