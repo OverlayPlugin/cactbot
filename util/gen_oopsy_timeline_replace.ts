@@ -1,11 +1,16 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
+import { ConsoleLogger, LogLevelKey } from './console_logger';
 import { getCnTable, getKoTable, getTcTable, type Table } from './csv_util';
 import { walkDirSync } from './file_utils';
 import { XivApi } from './xivapi';
 
 const rootDir = 'ui/oopsyraidsy/data';
+
+const _SCRIPT_NAME = path.basename(import.meta.url);
+const log = new ConsoleLogger();
 
 const getTargetFiles = (target?: string): string[] => {
   const files: string[] = [];
@@ -18,10 +23,8 @@ const getTargetFiles = (target?: string): string[] => {
     }
   });
 
-  if (target !== undefined && files.length === 0) {
-    console.error(`Could not find oopsy file for ${target}`);
-    process.exit(1);
-  }
+  if (target !== undefined && files.length === 0)
+    log.fatalError(`Could not find oopsy file for ${target}`);
   return files.sort();
 };
 
@@ -76,8 +79,8 @@ const parseExistingTimelineReplace = (
 const cleanName = (name: string): string => name.replace(/\[[apt]\]/g, '').trim();
 
 const fetchLocaleData = async (): Promise<LocaleData> => {
-  console.error('Fetching BNpcName data...');
-  const xivApi = new XivApi(null);
+  log.info('Fetching BNpcName data...');
+  const xivApi = new XivApi(null, log);
 
   const [bnpcData, koTable, cnTable, tcTable] = await Promise.all([
     xivApi.queryApi('BNpcName', ['Singular', ...localesFromXivApi.map((l) => `Singular@${l}`)]),
@@ -154,9 +157,8 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
     }
   }
 
-  if (sources.size === 0) {
+  if (sources.size === 0)
     return false; // No sources to translate
-  }
 
   const { enBnpcMap, allLocaleMaps } = localeData;
 
@@ -168,7 +170,7 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
   // | New Data | Multiple Candidates | Existing Translation | Action |
   // |----------|---------------------|----------------------|--------|
   // | ✓ Found  | ✗ Single            | -        | Use new data       |
-  // | ✓ Found  | ✓ Multiple          | ✓ Exists | Keep existing + console.warn() |
+  // | ✓ Found  | ✓ Multiple          | ✓ Exists | Keep existing + log.alert() |
   // | ✓ Found  | ✓ Multiple          | ✗ None   | Output 'candidate1 / candidate2' (human review) |
   // | ✗ Not found | -                | -        | Keep existing      |
   const generateReplaceSync = (
@@ -203,22 +205,22 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
         // Case: New data Found + Multiple Candidates
         if (existingValue !== undefined) {
           // Keep existing + warn
-          console.warn(
-            `[WARNING] ${oopsyFile}: Multiple candidates for '${source}' in ${locale}: ${
+          log.alert(
+            `${oopsyFile}: Multiple candidates for '${source}' in ${locale}: ${
               Array.from(candidates).join(', ')
             }`,
           );
-          console.warn(`         Using existing translation: '${existingValue}'`);
+          log.alert(`         Using existing translation: '${existingValue}'`);
           replaceSync[source] = existingValue;
           translatedCount++;
         } else {
           // No existing: output all candidates for human review
-          console.warn(
-            `[WARNING] ${oopsyFile}: Multiple candidates for '${source}' in ${locale}: ${
+          log.alert(
+            `${oopsyFile}: Multiple candidates for '${source}' in ${locale}: ${
               Array.from(candidates).join(', ')
             }`,
           );
-          console.warn(`         No existing translation found. Manual review required.`);
+          log.alert(`         No existing translation found. Manual review required.`);
           replaceSync[source] = Array.from(candidates).sort().join(' / ');
           translatedCount++;
         }
@@ -287,15 +289,15 @@ const processFile = (oopsyFile: string, localeData: LocaleData): boolean => {
   return true;
 };
 
-const run = async () => {
-  try {
-    const args = process.argv.slice(2);
-    const target = args[0];
+const genOopsyTimelineReplace = async (logLevel: LogLevelKey, target?: string): Promise<void> => {
+  log.setLogLevel(logLevel);
+  log.info(`Starting processing for ${_SCRIPT_NAME}`);
 
+  try {
     // Determine which files to process
     const filesToProcess = getTargetFiles(target);
     if (filesToProcess.length > 1)
-      console.error(`Processing ${filesToProcess.length} oopsy files...`);
+      log.info(`Processing ${filesToProcess.length} oopsy files...`);
 
     // Fetch locale data once
     const localeData = await fetchLocaleData();
@@ -307,37 +309,37 @@ const run = async () => {
       try {
         const updated = processFile(file, localeData);
         if (updated) {
-          console.error(`Updated: ${file}`);
+          log.info(`Updated: ${file}`);
           updatedCount++;
         } else {
           skippedCount++;
         }
       } catch (err) {
-        console.error(`Error processing ${file}:`);
-        console.error(err);
+        log.nonFatalError(`Error processing ${file}:`);
+        if (err instanceof Error) {
+          log.printNoHeader(err.message);
+          log.debug(err.stack ?? '');
+        } else {
+          log.printNoHeader(String(err));
+        }
       }
     }
 
-    console.error(`\nDone. Updated: ${updatedCount}, Skipped: ${skippedCount}`);
+    log.successDone(`Updated: ${updatedCount}, Skipped: ${skippedCount}`);
   } catch (err) {
-    console.error('Fatal initialization error:');
     if (err instanceof Error) {
-      console.error(err.message);
-      console.error(err.stack);
+      log.fatalError(`Fatal initialization error: ${err.message}\n${err.stack ?? ''}`);
     } else {
-      console.error(err);
+      log.fatalError(`Fatal initialization error: ${String(err)}`);
     }
-    process.exit(1);
   }
 };
 
-run().catch((e: unknown) => {
-  console.error('Top-level unhandled rejection:');
-  if (e instanceof Error) {
-    console.error(e.message);
-    console.error(e.stack);
-  } else {
-    console.error(e);
-  }
-  process.exit(1);
-});
+export default genOopsyTimelineReplace;
+
+if (
+  process.argv[1] !== undefined && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  const args = process.argv.slice(2);
+  void genOopsyTimelineReplace('alert', args[0]);
+}
