@@ -888,7 +888,7 @@ const triggerSet: TriggerSet<Data> = {
         'Cold Grip': '暗之死腕',
         'Crop Rotation': '灵魂轮转',
         'Darkness of Eternity': '永远之暗',
-        'Existential Dread': '万死的憎恶',
+        'Existential Dread': '暗气流',
         'Fear of Death': '死之恐惧',
         'Fourfold Blight': '青之四重波',
         'Grand Cross': '大十字',

@@ -265,7 +265,7 @@ const triggerSet: TriggerSet<Data> = {
         'The chapter house': '庭園の小ホール',
       },
       'replaceText': {
-        'Advent': '降臨',
+        'Advent': '降臨', // 101A: 再臨 / 1373: 降臨
         'Altar Candle': 'アルターキャンドル',
         'Altar Pyre': 'アルターパイヤ',
         'Black Knight\'s Tour': 'ブラックナイトツアー',
@@ -276,7 +276,7 @@ const triggerSet: TriggerSet<Data> = {
         'Faith Unmoving': 'フェイスアンムーブ',
         'Fast Blade': 'ファストブレード',
         'Heavenly Slash': 'ヘヴンリースラッシュ',
-        'Heavensflame': 'へヴンフレイム',
+        'Heavensflame': 'ヘヴンフレイム',
         'Heavy Swing': 'ヘヴンリースイング',
         'Holiest Of Holy': 'ホリエストホーリー',
         'Holy Chain': 'ホーリーチェーン',
@@ -310,7 +310,7 @@ const triggerSet: TriggerSet<Data> = {
         'The chapter house': '庭园小厅',
       },
       'replaceText': {
-        'Advent': '降临',
+        'Advent': '降临', // 101A: 再临 / 1373: 降临
         'Altar Candle': '圣坛蜡烛',
         'Altar Pyre': '圣坛火葬',
         'Black Knight\'s Tour': '黑骑士之旅',
@@ -354,7 +354,7 @@ const triggerSet: TriggerSet<Data> = {
         'The chapter house': '庭園小廳',
       },
       'replaceText': {
-        'Advent': '再臨衝擊',
+        'Advent': '再臨衝擊', // 101A: 再臨 / 1373: 再臨衝擊
         'Altar Candle': '聖壇蠟燭',
         'Altar Pyre': '聖壇火葬',
         'Black Knight\'s Tour': '黑騎士之旅',
@@ -398,7 +398,7 @@ const triggerSet: TriggerSet<Data> = {
         'The chapter house': '기사단 강당',
       },
       'replaceText': {
-        'Advent': '강림',
+        'Advent': '재림',
         'Altar Candle': '제단의 초',
         'Altar Pyre': '제단의 장작',
         'Black Knight\'s Tour': '흑기사 행진',

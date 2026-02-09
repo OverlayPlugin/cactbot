@@ -157,7 +157,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'de',
       'replaceSync': {
-        '3000-Tonze Missile': '3000-Tonzen-Geschoss',
+        '3000-Tonze Missile': 'Dampfgeschoss',
         'Faust': 'Faust',
         'Hangar 8': 'Lagerhalle 8',
         'Machinery Bay 44': 'Kampfmaschinen-Baracke 44',
@@ -186,7 +186,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'fr',
       'replaceSync': {
-        '3000-Tonze Missile': 'Missile de 3000 tonz',
+        '3000-Tonze Missile': 'missile à vapeur',
         'Faust': 'Faust',
         'Hangar 8': 'grand hangar GH-8',
         'Machinery Bay 44': 'hangar d\'armement HA-44',
@@ -215,7 +215,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ja',
       'replaceSync': {
-        '3000-Tonze Missile': '超大型ミサイル',
+        '3000-Tonze Missile': 'スチームミサイル',
         'Faust': 'ファウスト',
         'Hangar 8': '第8大型格納庫',
         'Machinery Bay 44': '第44機工兵格納庫',
@@ -244,7 +244,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'cn',
       'replaceSync': {
-        '3000-Tonze Missile': '超大型导弹',
+        '3000-Tonze Missile': '蒸汽导弹',
         'Faust': '浮士德',
         'Hangar 8': '第8大型机库',
         'Machinery Bay 44': '第44机工兵仓库',
@@ -273,7 +273,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'tc',
       'replaceSync': {
-        '3000-Tonze Missile': '超大型導彈',
+        '3000-Tonze Missile': '蒸氣導彈',
         'Faust': '浮士德',
         'Hangar 8': '第8大型機庫',
         'Machinery Bay 44': '第44機工兵倉庫',
@@ -302,7 +302,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ko',
       'replaceSync': {
-        '3000-Tonze Missile': '초대형 미사일',
+        '3000-Tonze Missile': '증기 미사일',
         'Faust': '파우스트',
         'Hangar 8': '제8 대형 격납고',
         'Machinery Bay 44': '제44 기공병 격납고',

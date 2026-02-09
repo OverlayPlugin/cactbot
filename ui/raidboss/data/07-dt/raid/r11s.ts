@@ -1733,7 +1733,7 @@ const triggerSet: TriggerSet<Data> = {
         'Four-way Fireball': '四向回旋火',
         'Great Wall of Fire': '火焰流',
         'Heartbreak Kick': '碎心踢',
-        'Heartbreaker': '碎心击',
+        'Heartbreaker': '碎心一击',
         'Heavy Hitter': '重斩击',
         'Immortal Reign': '万劫不朽的统治',
         '(?<! )Impact': '冲击',

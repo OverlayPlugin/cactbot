@@ -184,7 +184,7 @@ const triggerSet: TriggerSet<Data> = {
         'MF Spread': 'MF Verteilen',
         'MF Tower\\(s\\)': 'MF Türme',
         'MF Tower(?!\\(s)': 'MF Turm',
-        'Megaflare': 'Megaflare',
+        'Megaflare(?! )': 'Megaflare',
         'Pain Add': 'Schmerz Add',
         'Rage Of Bahamut': 'Bahamuts Zorn',
         'Shadow Add': 'Schatten Add',

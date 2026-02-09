@@ -159,7 +159,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': 'Gob-Roller VI',
         'Lamebrix Strikebocks': 'Wüterix (?:der|die|das) Söldner',
         'The Excruciationator': 'Multi-Martyrium',
-        'Weight of the World': 'Schwere der Erde',
+        'Weight of the World': 'Kanonenkugel',
       },
       'replaceText': {
         'Bomb Toss': 'Bombenwurf',
@@ -189,7 +189,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': 'gobrouleau compresseur G-VI',
         'Lamebrix Strikebocks': 'Lamebrix le Mercenaire',
         'The Excruciationator': 'Plate-forme de torture polyvalente',
-        'Weight of the World': 'Poids du monde',
+        'Weight of the World': 'boulet de canon',
       },
       'replaceText': {
         'Bomb Toss': 'Lancer de bombe',
@@ -219,7 +219,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': 'VI号ゴブリローラー',
         'Lamebrix Strikebocks': '傭兵のレイムプリクス',
         'The Excruciationator': '科学的万能処刑場',
-        'Weight of the World': '大陸の重み',
+        'Weight of the World': '鉄球',
       },
       'replaceText': {
         'Bomb Toss': '爆弾投げ',
@@ -249,7 +249,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': '6号哥布林压路机',
         'Lamebrix Strikebocks': '佣兵雷姆普里克斯',
         'The Excruciationator': '科学万能处刑场',
-        'Weight of the World': '大陆之重',
+        'Weight of the World': '铁球',
       },
       'replaceText': {
         'Bomb Toss': '投弹',
@@ -279,7 +279,7 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': '6號哥布林壓路機',
         'Lamebrix Strikebocks': '傭兵雷姆普里克斯',
         'The Excruciationator': '科學萬能處刑場',
-        'Weight of the World': '大陸之重',
+        'Weight of the World': '鐵球',
       },
       'replaceText': {
         'Bomb Toss': '投彈',
@@ -309,13 +309,13 @@ const triggerSet: TriggerSet<Data> = {
         'Gobpress R-VI': 'VI호 고블린롤러',
         'Lamebrix Strikebocks': '용병 레임브릭스',
         'The Excruciationator': '과학적 만능처형장',
-        'Weight of the World': '대륙의 무게',
+        'Weight of the World': '쇠구슬',
       },
       'replaceText': {
         'Bomb Toss': '폭탄 던지기',
         'Critical Wrath': '일격필중',
         'Frostbite': '동상',
-        'Gobbieboom': '고블린 폭발',
+        'Gobbieboom': '고브 폭발',
         'Goblin Rush': '고블린 돌진',
         'Gobrush Rushgob': '고브류 고블린 돌진',
         'Gobslash Slicetops': '고브류 진공베기',

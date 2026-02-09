@@ -1057,7 +1057,7 @@ const triggerSet: TriggerSet<Data> = {
         'Scourge of Thunder': 'Fléau foudroyant',
         'Skyruin': 'Désastre vivant',
         'Slithering Strike': 'Frappe sinueuse',
-        'Sphere Shatter': 'Rupture glacée',
+        'Sphere Shatter': 'Rupture',
         'Spikesicle': 'Stalactopointe',
         'Strangling Coil': 'Enroulement sinueux',
         'Susurrant Breath': 'Souffle sinueux',

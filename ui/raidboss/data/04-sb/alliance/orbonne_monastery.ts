@@ -704,7 +704,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arm Shot': 'Armschuss',
         'Auralight': 'Aurastrahl',
         'Balance Asunder': 'Bruch des Gleichgewichts',
-        'Ballistic Impact': 'Ballistischer Einschlag',
+        'Ballistic Impact': 'Ballistischer Einschlag', // 3743: Ballistischer Einschlag / 3745: Blendgranate
         'Ballistic Missile': 'Ballistische Rakete',
         'Cataclysm': 'Kosmischer Kataklysmus',
         'Cleansing Flame': 'Flamme der Läuterung',
@@ -809,7 +809,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arm Shot': 'Visée des bras',
         'Auralight': 'Rayon auralithe',
         'Balance Asunder': 'Bouleversement de l\'équilibre',
-        'Ballistic Impact': 'Impact de missile',
+        'Ballistic Impact': 'Impact de missile', // 3743: Impact de missile / 3745: Grenade assourdissante
         'Ballistic Missile': 'Missiles balistiques',
         'Cataclysm': 'Cataclysme cosmique',
         'Cleansing Flame': 'Irradiation divine',
@@ -914,7 +914,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arm Shot': '腕を狙う',
         'Auralight': '聖石光',
         'Balance Asunder': 'バランスブレイク',
-        'Ballistic Impact': 'ミサイル着弾',
+        'Ballistic Impact': 'ミサイル着弾', // 3743: ミサイル着弾 / 3745: ミサイル着弾
         'Ballistic Missile': 'ミサイル発射',
         'Cataclysm': '天変地異',
         'Cleansing Flame': '聖光焼却撃',
@@ -1020,7 +1020,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arm Shot': '击腕',
         'Auralight': '圣石光',
         'Balance Asunder': '平衡崩坏',
-        'Ballistic Impact': '导弹命中',
+        'Ballistic Impact': '闪光冲击', // 3743: 导弹命中 / 3745: 闪光冲击
         'Ballistic Missile': '导弹发射',
         'Cataclysm': '天崩地裂',
         'Cleansing Flame': '圣光烧却击',
@@ -1122,7 +1122,7 @@ const triggerSet: TriggerSet<Data> = {
         'Arm Shot': '擊腕',
         'Auralight': '聖石光',
         'Balance Asunder': '平衡崩壞',
-        'Ballistic Impact': '閃光衝擊',
+        'Ballistic Impact': '閃光衝擊', // 3743: 導彈命中 / 3745: 閃光衝擊
         'Ballistic Missile': '導彈發射',
         'Cataclysm': '天崩地裂',
         'Cleansing Flame': '聖光燒卻擊',
@@ -1221,8 +1221,8 @@ const triggerSet: TriggerSet<Data> = {
         'Analysis': '분석',
         'Arm Shot': '팔 조준',
         'Auralight': '성석광',
-        'Balance Asunder': '미사일 착탄',
-        'Ballistic Impact': '충격탄',
+        'Balance Asunder': '균형 붕괴',
+        'Ballistic Impact': '충격탄', // 3743: 미사일 착탄 / 3745: 충격탄
         'Ballistic Missile': '미사일 발사',
         'Cataclysm': '천재지변',
         'Cleansing Flame': '성광소각격',
