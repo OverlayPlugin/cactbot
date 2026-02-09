@@ -425,7 +425,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '\\(Radiant\\?\\) Sacrament': '拜火/十字圣礼',
-        '(?<!Radiant )Sacrament': '十字圣礼',
+        '(?<! )Sacrament': '十字圣礼',
         'Almost Holy': '小神圣',
         'Arrhidaeus\'s Lanner': '阿里达乌斯之速',
         'Blazing Scourge': '白光之鞭',
@@ -470,7 +470,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '\\(Radiant\\?\\) Sacrament': '拜火/十字聖禮',
-        '(?<!Radiant )Sacrament': '十字聖禮',
+        '(?<! )Sacrament': '十字聖禮',
         'Almost Holy': '小神聖',
         'Arrhidaeus\'s Lanner': '阿里達烏斯之速',
         'Blazing Scourge': '白光之鞭',

@@ -331,8 +331,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '大きいドール',
-        'Bomb(?!s)': '爆弾',
-        'Bombs': '爆弾',
+        'Bomb(s?)': '爆弾',
         '(?<! )Doll': 'ドール',
         'Flamethrower': 'フレイムスロアー',
         'Hammertime': 'オシオキ',
@@ -365,7 +364,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '大人偶',
-        'Bomb[s]': '炸弹',
+        'Bomb(s?)': '炸弹',
         '(?<! )Doll': '人偶',
         'Flamethrower': '火焰喷射器',
         'Hammertime': '惩戒',
@@ -398,7 +397,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '大人偶',
-        'Bomb[s]': '炸彈',
+        'Bomb(s?)': '炸彈',
         '(?<! )Doll': '人偶',
         'Flamethrower': '火焰噴射器',
         'Hammertime': '懲戒',
@@ -431,7 +430,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '큰 인형',
-        'Bomb[s]': '폭탄',
+        'Bomb(s?)': '폭탄',
         '(?<! )Doll': '인형',
         'Flamethrower': '화염 방사',
         'Get Prey': '인형뽑기',

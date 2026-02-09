@@ -258,7 +258,7 @@ const triggerSet: TriggerSet<Data> = {
         'MF Share': 'メガ: 頭割り',
         'MF Spread': 'メガ: 散開',
         'MF Tower(\\(s\\))?': 'メガ: 塔',
-        'Megaflare': 'メガフレア',
+        'Megaflare(?! )': 'メガフレア',
         '(?<! )Pain Add': '雑魚: ペイン',
         'Rage Of Bahamut': '龍神の咆吼',
         'Shadow Add': '雑魚: シャドウ',

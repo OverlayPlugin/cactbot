@@ -125,7 +125,7 @@ const triggerSet: TriggerSet<Data> = {
         'Via Praetoria': 'Via Praetoria',
       },
       'replaceText': {
-        '--teleport': '--Teleport',
+        '--teleport': '--teleport',
         'Assault Cannon': 'Sturmkanone',
         'Beak Of The Griffin': 'Greifenschnabel',
         'Big Boot': 'Beherzter Tritt',

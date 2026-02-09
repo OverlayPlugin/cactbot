@@ -179,7 +179,6 @@ const triggerSet: TriggerSet<Data> = {
         'Target Search': 'Recherche de cible',
         'Unmoving Troika': 'Troïka immobile',
         'Vein Splitter': 'Fendeur du sol',
-        'Storm, Swell, Sword': 'Tempête, orage, épée',
       },
     },
     {
