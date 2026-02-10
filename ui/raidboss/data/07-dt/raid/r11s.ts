@@ -1822,7 +1822,7 @@ const triggerSet: TriggerSet<Data> = {
         'Raw Steel Trophy Axe': '무기 생성: 맹격 도끼',
         'Raw Steel Trophy Scythe': '무기 생성: 맹격 낫',
         'Shockwave': '충격파',
-        // 'Triple Tyrannhilation': 'Triple Tyrannhilation',
+        'Triple Tyrannhilation': '폭군 강하: 삼형제별',
         '(?<! )Trophy Weapons': '무기 트로피',
         // 'Two-way Fireball': 'Two-way Fireball',
         'Ultimate Trophy Weapons': '궁극의 무기 트로피',
