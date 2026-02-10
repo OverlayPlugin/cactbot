@@ -270,7 +270,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'マーカーの西 => マーカーの東',
           cn: '标记左侧 => 标记右侧',
           ko: '징 기준 서쪽 => 동쪽',
-          tc: '標記左側 => 標記右側',
+          tc: '標記西側 => 標記東側',
         },
       },
     },
@@ -288,7 +288,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'マーカーの東 => マーカーの西',
           cn: '标记右侧 => 标记左侧',
           ko: '징 기준 동쪽 => 서쪽',
-          tc: '標記右側 => 標記左側',
+          tc: '標記東側 => 標記西側',
         },
       },
     },
@@ -306,7 +306,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'マーカーの西 => マーカーの東',
           cn: '标记左侧 => 标记右侧',
           ko: '징 기준 서쪽 => 동쪽',
-          tc: '標記左側 => 標記右側',
+          tc: '標記西側 => 標記東側',
         },
       },
     },
@@ -324,7 +324,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'マーカーの東 => マーカーの西',
           cn: '标记右侧 => 标记左侧',
           ko: '징 기준 동쪽 => 서쪽',
-          tc: '標記右側 => 標記左側',
+          tc: '標記東側 => 標記西側',
         },
       },
     },
@@ -449,32 +449,31 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Black Cat': '', // FIXME '黑猫'
-        // 'Copy Cat': '', // FIXME '模仿猫'
+        'Black Cat': '黑貓',
+        'Copy Cat': '模仿貓',
       },
       'replaceText': {
-        // '(?<! )Black Cat Crossing': '', // FIXME '交叉尖甲'
-        // '(?<! )One-two Paw': '', // FIXME '二连尖甲'
-        // 'Biscuit Maker': '', // FIXME '踩奶'
-        // 'Bloody Scratch': '', // FIXME '血腥抓挠'
-        // 'Clawful': '', // FIXME '重爪爆发'
-        // 'Copycat': '', // FIXME '模仿之猫'
-        // 'Elevate and Eviscerate': '', // FIXME '腾身开膛'
-        // 'Grimalkin Gale': '', // FIXME '猫怪突风'
+        '(?<! )Black Cat Crossing': '交叉尖甲',
+        '(?<! )One-two Paw': '二連尖甲',
+        'Biscuit Maker': '貓踏踏',
+        'Bloody Scratch': '血腥抓撓',
+        'Clawful': '重爪爆發',
+        'Copycat': '模仿之貓',
+        'Elevate and Eviscerate': '騰身開膛',
+        'Grimalkin Gale': '貓怪突風',
         'Impact': '衝擊',
-        // 'Leaping Black Cat Crossing': '', // FIXME '猫跳交叉尖甲'
-        // 'Leaping One-two Paw': '', // FIXME '猫跳二连尖甲'
-        // 'Mouser': '', // FIXME '捕鼠'
-        // 'Overshadow': '', // FIXME '超暗影'
-        // 'Predaceous Pounce': '', // FIXME '迅猫急袭'
+        'Leaping Black Cat Crossing': '貓跳交叉尖甲',
+        'Leaping One-two Paw': '貓跳二連尖甲',
+        'Mouser': '捕鼠',
+        'Overshadow': '超暗影',
+        'Predaceous Pounce': '迅貓急襲',
         'Shockwave': '衝擊波',
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(damage\\)': '', // FIXME '(伤害)'
-        // '\\(hits\\)': '', // FIXME '(命中)'
-        // '\\(jump\\)': '', // FIXME '(跳)'
-        // '\\(telegraphs\\)': '', // FIXME '(预兆)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(damage\\)': '(傷害)',
+        '\\(hits\\)': '(命中)',
+        '\\(jump\\)': '(跳)',
+        '\\(telegraphs\\)': '(預兆)',
       },
     },
     {

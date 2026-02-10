@@ -129,7 +129,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東、そして西',
           cn: '右 => 左',
           ko: '동쪽 => 서쪽',
-          tc: '右 => 左',
+          tc: '東 => 西',
         },
       },
     },
@@ -147,7 +147,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東にそのまま',
           cn: '右 => 待在同侧',
           ko: '동쪽 => 동쪽 그대로',
-          tc: '右 => 待在同側',
+          tc: '東 => 待在同側',
         },
       },
     },
@@ -165,7 +165,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西、そして東',
           cn: '左 => 右',
           ko: '서쪽 => 동쪽',
-          tc: '左 => 右',
+          tc: '西 => 東',
         },
       },
     },
@@ -183,7 +183,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西にそのまま',
           cn: '左 => 待在同侧',
           ko: '서쪽 => 서쪽 그대로',
-          tc: '左 => 待在同側',
+          tc: '西 => 待在同側',
         },
       },
     },
@@ -316,30 +316,29 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Brute Bomber': '', // FIXME '野蛮爆弹'
-        // 'Lit Fuse': '', // FIXME '引线爆弹怪'
+        'Brute Bomber': '野蠻炸彈',
+        'Lit Fuse': '引信炸彈',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(cones\\)': '', // FIXME '(锥形)'
-        // '\\(damage\\)': '', // FIXME '(伤害)'
-        // '\\(long\\)': '', // FIXME '(长)'
-        // '\\(short\\)': '', // FIXME '(短)'
-        // 'Barbarous Barrage': '', // FIXME '野蛮爆炸'
-        // 'Brutal Burn': '', // FIXME '野蛮灼烧'
+        '\\(cast\\)': '(詠唱)',
+        '\\(cones\\)': '(錐形)',
+        '\\(damage\\)': '(傷害)',
+        '\\(long\\)': '(長)',
+        '\\(short\\)': '(短)',
+        'Barbarous Barrage': '野蠻爆炸',
+        'Brutal Burn': '野蠻灼燒',
         'Brutal Impact': '野蠻碎擊',
-        // 'Brutal Lariat': '', // FIXME '野蛮碎颈臂'
-        // 'Doping Draught': '', // FIXME '打药'
+        'Brutal Lariat': '野蠻金臂鉤',
+        'Doping Draught': '服用禁藥',
         'Explosion': '爆炸',
-        // 'Explosive Rain': '', // FIXME '爆弹雨'
-        // 'Fire Spin': '', // FIXME '野蛮旋火'
-        // 'Fuses of Fury': '', // FIXME '引线爆弹'
-        // 'Infernal Spin': '', // FIXME '超华丽野蛮旋火'
-        // 'Knuckle Sandwich': '', // FIXME '拳面猛击'
-        // 'Lariat Combo': '', // FIXME '碎颈臂连击'
-        // 'Murderous Mist': '', // FIXME '致命毒雾'
+        'Explosive Rain': '炸彈雨',
+        'Fire Spin': '野蠻旋火',
+        'Fuses of Fury': '引信炸彈',
+        'Infernal Spin': '超華麗野蠻旋火',
+        'Knuckle Sandwich': '拳面猛擊',
+        'Lariat Combo': '金臂鉤連擊',
+        'Murderous Mist': '致命毒霧',
         'Self-destruct': '自爆',
       },
     },
