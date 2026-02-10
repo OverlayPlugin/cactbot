@@ -823,7 +823,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Charnel Cell': '파탈 감옥',
         'Coffinmaker': '파탈 톱',
@@ -857,8 +856,8 @@ const triggerSet: TriggerSet<Data> = {
         'Pulping Pulse': '분쇄 파동',
         'Sadistic Screech': '가학적인 웃음',
         'Sanguine Scratch': '붉은 생채기',
-        // 'Ultrasonic Amp': 'Ultrasonic Amp',
-        // 'Ultrasonic Spread': 'Ultrasonic Spread',
+        'Ultrasonic Amp': '집약 음파',
+        'Ultrasonic Spread': '확산 음파',
         'Undead Deathmatch': '박쥐 데스매치',
         'Vamp Stomp': '요염한 짓밟기',
       },
