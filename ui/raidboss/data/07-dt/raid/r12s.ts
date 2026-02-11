@@ -1332,7 +1332,7 @@ const triggerSet: TriggerSet<Data> = {
       // Raidwide cast, B539, happens .2s after but it's not until 5.4s~5.8s later that the damage is applied
       // Mits applied after "cast" still count towards the damage application
       type: 'Ability',
-      netRegex: { id: 'B539', source: 'Lindwurm', capture: true },
+      netRegex: { id: 'B539', source: 'Lindwurm', capture: false },
       durationSeconds: 5,
       suppressSeconds: 9999,
       response: Responses.bigAoe('alert'),
