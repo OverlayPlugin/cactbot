@@ -120,9 +120,6 @@ const triggerSet: TriggerSet<Data> = {
     cellChainCount: 0,
     hasRot: false,
     // Phase 2
-    replicationCounter: 0,
-    twistedVisionCounter: 0,
-    hasLightResistanceDown: false,
   }),
   triggers: [
     {
@@ -136,45 +133,6 @@ const triggerSet: TriggerSet<Data> = {
           throw new UnreachableCode();
 
         data.phase = phase;
-      },
-    },
-    {
-      id: 'R12S Phase Two Staging Tracker',
-      // Due to the way the combatants are added in prior to the cast of Staging, this is used to set the phase
-      type: 'AddedCombatant',
-      netRegex: { name: 'Understudy', capture: false },
-      condition: (data) => data.phase === 'replication1',
-      run: (data) => data.phase = 'replication2',
-    },
-    {
-      id: 'R12S Phase Two Replication Tracker',
-      type: 'StartsUsing',
-      netRegex: { id: 'B4D8', source: 'Lindwurm', capture: false },
-      run: (data) => {
-        if (data.replicationCounter === 0)
-          data.phase = 'replication1';
-        data.replicationCounter = data.replicationCounter + 1;
-      },
-    },
-    {
-      id: 'R12S Phase Two Reenactment Tracker',
-      type: 'StartsUsing',
-      netRegex: { id: 'B4EC', source: 'Lindwurm', capture: false },
-      run: (data) => {
-        if (data.phase === 'replication2') {
-          data.phase = 'reenactment1';
-          return;
-        }
-        data.phase = 'reenactment2';
-      },
-    },
-    {
-      id: 'R12S Phase Two Twisted Vision Tracker',
-      // Used for keeping track of phases in idyllic
-      type: 'StartsUsing',
-      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
-      run: (data) => {
-        data.twistedVisionCounter = data.twistedVisionCounter + 1;
       },
     },
     {
@@ -1373,188 +1331,16 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Refreshing Overkill',
-      // 10s castTime that could end with enrage or raidwide
-      type: 'StartsUsing',
-      netRegex: { id: 'B538', source: 'Lindwurm', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 4,
-      durationSeconds: 4.7,
+      // B538 has a 10s castTime that could end with enrage or raidwide
+      // Raidwide cast, B539, happens .2s after but it's not until 5.4s~5.8s later that the damage is applied
+      // Mits applied after "cast" still count towards the damage application
+      type: 'Ability',
+      netRegex: { id: 'B539', source: 'Lindwurm', capture: true },
+      durationSeconds: 5,
+      suppressSeconds: 9999,
       response: Responses.bigAoe('alert'),
     },
     // Phase 2
-    {
-      id: 'R12S Arcadia Aflame',
-      type: 'StartsUsing',
-      netRegex: { id: 'B528', source: 'Lindwurm', capture: false },
-      response: Responses.bigAoe('alert'),
-    },
-    {
-      id: 'R12S Double Sobat',
-      // Shared half-room cleave on tank => random turn half-room cleave =>
-      // Esoteric Finisher big circle aoes that hits two highest emnity targets
-      type: 'HeadMarker',
-      netRegex: { id: headMarkerData['sharedTankbuster'], capture: true },
-      response: Responses.sharedTankBuster(),
-    },
-    {
-      id: 'R12S Esoteric Finisher',
-      // After Double Sobat 2, boss hits targets highest emnity target, second targets second highest
-      type: 'StartsUsing',
-      netRegex: { id: 'B525', source: 'Lindwurm', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime),
-      response: (data, _matches, output) => {
-        // cactbot-builtin-response
-        output.responseOutputStrings = {
-          tankBusterCleaves: Outputs.tankBusterCleaves,
-          avoidTankCleaves: Outputs.avoidTankCleaves,
-        };
-
-        if (data.role === 'tank' || data.role === 'healer') {
-          if (data.role === 'healer')
-            return { infoText: output.tankBusterCleaves!() };
-          return { alertText: output.tankBusterCleaves!() };
-        }
-        return { infoText: output.avoidTankCleaves!() };
-      },
-    },
-    {
-      id: 'R12S Mutation α/β',
-      type: 'GainsEffect',
-      netRegex: { effectId: ['12A1', '12A3'], capture: true },
-      condition: Conditions.targetIsYou(),
-      infoText: (_data, matches, output) => {
-        if (matches.effectId === '12A1')
-          return output.alpha!();
-        return output.beta!();
-      },
-      tts: (_data, matches, output) => {
-        if (matches.effectId === '12A1')
-          return output.alphaTts!();
-        return output.betaTts!();
-      },
-      outputStrings: {
-        alpha: {
-          en: 'Mutation α on YOU',
-        },
-        beta: {
-          en: 'Mutation β on YOU',
-        },
-        alphaTts: {
-          en: 'Mutation α on YOU',
-        },
-        betaTts: {
-          en: 'Mutation β on YOU',
-        },
-      },
-    },
-    {
-      id: 'R12S Idyllic Dream',
-      type: 'StartsUsing',
-      netRegex: { id: 'B509', source: 'Lindwurm', capture: false },
-      durationSeconds: 4.7,
-      response: Responses.bigAoe('alert'),
-    },
-    {
-      id: 'R12S Arcadian Arcanum',
-      // Players hit will receive 1044 Light Resistance Down II debuff
-      type: 'StartsUsing',
-      netRegex: { id: 'B529', source: 'Lindwurm', capture: false },
-      response: Responses.spread(),
-    },
-    {
-      id: 'R12S Light Resistance Down II Collect',
-      // Players cannot soak a tower that has holy (triple element towers)
-      type: 'GainsEffect',
-      netRegex: { effectId: '1044', capture: true },
-      condition: Conditions.targetIsYou(),
-      run: (data) => data.hasLightResistanceDown = true,
-    },
-    {
-      id: 'R12S Light Resistance Down II',
-      type: 'GainsEffect',
-      netRegex: { effectId: '1044', capture: true },
-      condition: (data, matches) => {
-        if (data.twistedVisionCounter === 3 && data.me === matches.target)
-          return true;
-        return false;
-      },
-      infoText: (_data, _matches, output) => output.text!(),
-      outputStrings: {
-        text: {
-          en: 'Soak Fire/Earth Meteor (later)',
-        },
-      },
-    },
-    {
-      id: 'R12S No Light Resistance Down II',
-      type: 'GainsEffect',
-      netRegex: { effectId: '1044', capture: false },
-      condition: (data) => data.twistedVisionCounter === 3,
-      delaySeconds: 0.1,
-      suppressSeconds: 9999,
-      infoText: (data, _matches, output) => {
-        if (!data.hasLightResistanceDown)
-          return output.text!();
-      },
-      outputStrings: {
-        text: {
-          en: 'Soak a White/Star Meteor (later)',
-        },
-      },
-    },
-    {
-      id: 'R12S Twisted Vision 5 Towers',
-      // TODO: Get Position of the towers and player side and state the front/left back/right
-      // Towers aren't visible until after cast, but you would have 4.4s to adjust if the trigger was delayed
-      // 4s castTime
-      type: 'StartsUsing',
-      netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
-      condition: (data) => data.twistedVisionCounter === 5,
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 4.1,
-      alertText: (data, _matches, output) => {
-        if (data.hasLightResistanceDown)
-          return output.fireEarthTower!();
-        return output.holyTower!();
-      },
-      outputStrings: {
-        fireEarthTower: {
-          en: 'Soak Fire/Earth Meteor',
-        },
-        holyTower: {
-          en: 'Soak a White/Star Meteor',
-        },
-      },
-    },
-    {
-      id: 'R12S Hot-blooded',
-      // Player can still cast, but shouldn't move for 5s duration
-      type: 'GainsEffect',
-      netRegex: { effectId: '12A0', capture: true },
-      condition: Conditions.targetIsYou(),
-      durationSeconds: (_data, matches) => parseFloat(matches.duration),
-      response: Responses.stopMoving(),
-    },
-    {
-      id: 'R12S Idyllic Dream Lindwurm\'s Stone III',
-      // TODO: Get their target locations and output avoid
-      // 5s castTime
-      type: 'StartsUsing',
-      netRegex: { id: 'B4F7', source: 'Lindwurm', capture: true },
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
-      suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.avoidEarthTower!(),
-      outputStrings: {
-        avoidEarthTower: {
-          en: 'Avoid Earth Tower',
-        },
-      },
-    },
-    {
-      id: 'R12S Arcadian Hell',
-      type: 'StartsUsing',
-      netRegex: { id: 'B533', source: 'Lindwurm', capture: false },
-      durationSeconds: 4.7,
-      response: Responses.bigAoe('alert'),
-    },
   ],
   timelineReplace: [
     {
