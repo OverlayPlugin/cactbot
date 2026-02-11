@@ -1502,11 +1502,13 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Refreshing Overkill',
-      // 10s castTime that could end with enrage or raidwide
-      type: 'StartsUsing',
-      netRegex: { id: 'B538', source: 'Lindwurm', capture: true },
-      delaySeconds: (_data, matches) => parseFloat(matches.castTime) - 4,
-      durationSeconds: 4.7,
+      // B538 has a 10s castTime that could end with enrage or raidwide
+      // Raidwide cast, B539, happens .2s after but it's not until 5.4s~5.8s later that the damage is applied
+      // Mits applied after "cast" still count towards the damage application
+      type: 'Ability',
+      netRegex: { id: 'B539', source: 'Lindwurm', capture: true },
+      durationSeconds: 5,
+      suppressSeconds: 9999,
       response: Responses.bigAoe('alert'),
     },
     // Phase 2
