@@ -44,9 +44,6 @@ export interface Data extends RaidbossData {
   myMitoticPhase?: string;
   hasRot: boolean;
   // Phase 2
-  replicationCounter: number;
-  twistedVisionCounter: number;
-  hasLightResistanceDown: boolean;
 }
 
 const headMarkerData = {
