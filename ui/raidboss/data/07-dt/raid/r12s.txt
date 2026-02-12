@@ -7,7 +7,7 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 ### Phase 1: Lindwurm
-# -ii B4D3 B4B2 B4B4 B4B3 B4BD B4BE B53E B4B5 B4B1 BE0A B570 B56F B4AD B76A B469 B769
+# -ii B4D3 B4B2 B4B4 B4B3 B4BD B4BE B4BF B4C0 B53E B4B5 B4B1 BE0A B570 B56F B4AD B76A B469 B769
 # -it "Lindwurm"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -43,7 +43,7 @@ hideall "--sync--"
 128.7 "Phagocyte Spotlight 1" #Ability { id: "B4B6", source: "Lindwurm" }
 130.7 "Phagocyte Spotlight 2" #Ability { id: "B4B6", source: "Lindwurm" }
 132.7 "Phagocyte Spotlight 3" #Ability { id: "B4B6", source: "Lindwurm" }
-134.7 "Cruel Coil" Ability { id: ["B4B9", "B4B8"], source: "Lindwurm" }
+134.7 "Cruel Coil" Ability { id: ["B4B8", "B4B9", "B4BA", "B4BB"], source: "Lindwurm" }
 134.7 "Phagocyte Spotlight 4" #Ability { id: "B4B6", source: "Lindwurm" }
 135.7 "--bind--" Ability { id: "B472", source: "Lindwurm" } duration 5
 140.7 "Skinsplitter 1" Ability { id: "B4BC", source: "Lindwurm" }
@@ -349,8 +349,10 @@ hideall "--sync--"
 # B4B4 Dramatic Lysis: Damage from breaking a tether; These can be broken at various times
 # B4B5 Dramatic Lysis: 6s to break tether, else this applies every 1s, doing damage and giving a damage down
 # B4B3 Roiling Mass: Damage from soaking a tether-created tower; The towers can be created at various times
-# B4BE Constrictor: VFX Ending of Cruel Coil B4B8
-# B4BD Constrictor: VFX Ending of Cruel Coil B4B9
+# B4BD Constrictor: VFX Ending of Cruel Coil B4B8
+# B4BE Constrictor: VFX Ending of Cruel Coil B4B9
+# B4BF Constrictor: VFX Ending of Cruel Coil B4BA
+# B4C0 Constrictor: VFX Ending of Cruel Coil B4BB
 # B4B1 Metamitosis: VFX
 # B469 Ravenous Reach: VFX
 # B769 Ravenous Reach: VFX
@@ -404,9 +406,10 @@ hideall "--sync--"
 # B4B5 Dramatic Lysis
 # B4B6 Phagocyte Spotlight
 # B4B7 Roiling Mass: Blob Tower Soaks
-# B4B8 Cruel Coil: Boss starting one way?
-# B4B9 Cruel Coil: Boss starting the other way?
-# B4BA Cruel Coil
+# B4B8 Cruel Coil: Starts east, turns counterclock
+# B4B9 Cruel Coil: Starts west, turns counterclock
+# B4BA Cruel Coil: Starts north, turns counterclock
+# B4BB Cruel Coil: Starts south, turns counterclock
 # B4BC Skinsplitter
 # B4BE Constrictor: VFX Ending of Cruel Coil B4B8
 # B4BD Constrictor: VFX Ending of Cruel Coil B4B9
