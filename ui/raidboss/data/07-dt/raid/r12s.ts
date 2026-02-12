@@ -900,8 +900,8 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         const dir = coilDirNum !== undefined
-           ? Directions.outputCardinalDir[(coilDirNum + 2) % 4] ?? 'unknown'
-           : 'unknown';
+          ? Directions.outputCardinalDir[(coilDirNum + 2) % 4] ?? 'unknown'
+          : 'unknown';
 
         switch (myNum) {
           case 1:
