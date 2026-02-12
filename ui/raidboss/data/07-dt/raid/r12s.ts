@@ -8,8 +8,6 @@ import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Mortal Coil calls
-// TODO: Cursed Coil Counterclock/clockwise call
-// TODO: Cursed Coil break directions
 // TODO: Separate Split Scourge and Venomous Scourge triggers
 // TODO: Safe spots for Curtain Call's Unbreakable flesh
 // TODO: Safe spots for Slaughtershed Stack/Spreads
@@ -38,6 +36,7 @@ export interface Data extends RaidbossData {
   myFleshBonds?: 'alpha' | 'beta';
   inLine: { [name: string]: number };
   blobTowerDirs: DirectionOutputIntercard[];
+  cursedCoilDirNum?: number;
   skinsplitterCount: number;
   cellChainCount: number;
   myMitoticPhase?: string;
@@ -640,6 +639,30 @@ const triggerSet: TriggerSet<Data> = {
       response: Responses.drawIn(),
     },
     {
+      id: 'R12S Cursed Coil Initial Direction Collect',
+      // B4B8 Cruel Coil: Starts east, turns counterclock
+      // B4B9 Cruel Coil: Starts west, turns counterclock
+      // B4BA Cruel Coil: Starts north, turns counterclock
+      // B4BB Cruel Coil: Starts south, turns counterclock
+      type: 'StartsUsing',
+      netRegex: { id: ['B4B8', 'B4B9', 'B4BA', 'B4BB'], source: 'Lindwurm', capture: true },
+      run: (data, matches) => {
+        switch (matches.id) {
+          case 'B4B8':
+            data.cursedCoilDirNum = 1;
+            return;
+          case 'B4B9':
+            data.cursedCoilDirNum = 3;
+            return;
+          case 'B4BA':
+            data.cursedCoilDirNum = 0;
+            return;
+          case 'B4BB':
+            data.cursedCoilDirNum = 2;
+        }
+      },
+    },
+    {
       id: 'R12S Skinsplitter Counter',
       // These occur every 5s
       // Useful for blob tower tracking that happen 2s after
@@ -824,12 +847,20 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (data, matches, output) => {
         const myNum = data.inLine[data.me];
         const flesh = matches.effectId === '1291' ? 'alpha' : 'beta';
+        // As the coil is moving in reverse, the modulo will have negative values
+        // 8 has to be used as that is the next number after 7 (number of spins) that divides evenly by 4
+        const coilDirNum = data.cursedCoilDirNum !== undefined
+          ? ((data.cursedCoilDirNum - data.skinsplitterCount) + 8) % 4
+          : undefined;
+
         if (flesh === 'alpha') {
+          const exit = Directions.outputCardinalDir[coilDirNum ?? 4] ?? 'unknown'; // Return 'unknown' if undefined
           if (myNum === 1) {
             const dir = data.blobTowerDirs[2];
             if (dir !== undefined)
               return output.alpha1Dir!({
                 chains: output.breakChains!(),
+                exit: output[exit]!(),
                 dir: output[dir]!(),
               });
           }
@@ -838,6 +869,7 @@ const triggerSet: TriggerSet<Data> = {
             if (dir !== undefined)
               return output.alpha2Dir!({
                 chains: output.breakChains!(),
+                exit: output[exit]!(),
                 dir: output[dir]!(),
               });
           }
@@ -845,60 +877,92 @@ const triggerSet: TriggerSet<Data> = {
           // dir undefined or 3rd/4rth in line
           switch (myNum) {
             case 1:
-              return output.alpha1!({ chains: output.breakChains!() });
+              return output.alpha1!({
+                chains: output.breakChains!(),
+                exit: output[exit]!(),
+              });
             case 2:
-              return output.alpha2!({ chains: output.breakChains!() });
+              return output.alpha2!({
+                chains: output.breakChains!(),
+                exit: output[exit]!(),
+              });
             case 3:
-              return output.alpha3!({ chains: output.breakChains!() });
+              return output.alpha3!({
+                chains: output.breakChains!(),
+                exit: output[exit]!(),
+              });
             case 4:
-              return output.alpha4!({ chains: output.breakChains!() });
+              return output.alpha4!({
+                chains: output.breakChains!(),
+                exit: output[exit]!(),
+              });
           }
         }
+
+        const dir = coilDirNum !== undefined
+           ? Directions.outputCardinalDir[(coilDirNum + 2) % 4] ?? 'unknown'
+           : 'unknown';
+
         switch (myNum) {
           case 1:
-            return output.beta1!({ chains: output.breakChains!() });
+            return output.beta1!({
+              chains: output.breakChains!(),
+              dir: output[dir]!(),
+            });
           case 2:
-            return output.beta2!({ chains: output.breakChains!() });
+            return output.beta2!({
+              chains: output.breakChains!(),
+              dir: output[dir]!(),
+            });
           case 3:
-            return output.beta3!({ chains: output.breakChains!() });
+            return output.beta3!({
+              chains: output.breakChains!(),
+              dir: output[dir]!(),
+            });
           case 4:
-            return output.beta4!({ chains: output.breakChains!() });
+            return output.beta4!({
+              chains: output.breakChains!(),
+              dir: output[dir]!(),
+            });
         }
         return output.getTowers!();
       },
       outputStrings: {
-        ...Directions.outputStringsIntercardDir,
+        ...Directions.outputStrings8Dir,
         breakChains: Outputs.breakChains,
         getTowers: Outputs.getTowers,
         alpha1: {
-          en: '${chains} 1 + Blob Tower 3 (Outer)',
+          en: '${chains} 1 (${exit}) + Blob Tower 3 (Outer)',
         },
         alpha1Dir: {
-          en: '${chains} 1 + Blob Tower 3 (Outer ${dir})',
+          en: '${chains} 1 (${exit}) + Blob Tower 3 (Outer ${dir})',
+        },
+        alpha1ExitDir: {
+          en: '${chains} 1 (${exit}) + Blob Tower 3 (Outer ${dir})',
         },
         alpha2: {
-          en: '${chains} 2 + Blob Tower 4 (Outer)',
+          en: '${chains} 2 (${exit}) + Blob Tower 4 (Outer)',
         },
         alpha2Dir: {
-          en: '${chains} 2 + Blob Tower 4 (Outer ${dir})',
+          en: '${chains} 2 (${exit}) + Blob Tower 4 (Outer ${dir})',
         },
         alpha3: {
-          en: '${chains} 3 + Get Out',
+          en: '${chains} 3 (${exit}) + Get Out',
         },
         alpha4: {
-          en: '${chains} 4 + Get Out',
+          en: '${chains} 4 (${exit}) + Get Out',
         },
         beta1: {
-          en: '${chains} 1 => Get Middle',
+          en: '${chains} 1 (${dir}) => Get Middle',
         },
         beta2: {
-          en: '${chains} 2 => Get Middle',
+          en: '${chains} 2 (${dir}) => Get Middle',
         },
         beta3: {
-          en: '${chains} 3 => Wait for last pair',
+          en: '${chains} 3 (${dir}) => Wait for last pair',
         },
         beta4: {
-          en: '${chains} 4 => Get Out',
+          en: '${chains} 4 (${dir}) => Get Out',
         },
       },
     },
