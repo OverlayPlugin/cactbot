@@ -38,7 +38,6 @@ export interface Data extends RaidbossData {
   myFleshBonds?: 'alpha' | 'beta';
   inLine: { [name: string]: number };
   blobTowerDirs: DirectionOutputIntercard[];
-  fleshBondsCount: number;
   skinsplitterCount: number;
   cellChainCount: number;
   myMitoticPhase?: string;
@@ -113,7 +112,6 @@ const triggerSet: TriggerSet<Data> = {
     inLine: {},
     blobTowerDirs: [],
     skinsplitterCount: 0,
-    fleshBondsCount: 0,
     cellChainCount: 0,
     hasRot: false,
     // Phase 2
