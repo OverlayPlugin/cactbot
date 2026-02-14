@@ -85,7 +85,10 @@ const applyTranslation = (lang: Lang) => {
   for (const [key, value] of Object.entries(emulatorTranslations)) {
     querySelectorAllSafe(document, `.translate${key}`).forEach(
       (elem) => {
-        elem.innerHTML = translate(lang, value);
+        if (elem instanceof HTMLInputElement)
+          elem.placeholder = translate(lang, value);
+        else
+          elem.innerHTML = translate(lang, value);
       },
     );
   }
