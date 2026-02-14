@@ -156,7 +156,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         ko: {
           '동/서': 'ew',
-          '남/북': 'ns',
+          '북/남': 'ns',
         },
       },
       default: 'ew',
