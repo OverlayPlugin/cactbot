@@ -56,6 +56,54 @@ const ultimateTrophyWeaponsMap = [
 Options.Triggers.push({
   id: 'AacHeavyweightM3Savage',
   zoneId: ZoneId.AacHeavyweightM3Savage,
+  config: [
+    {
+      id: 'majesticMeteowrathTetherDir',
+      name: {
+        en: 'Majestic Meteowrath Tether Direction',
+        ko: '분노의 챔피언 메테오 선 처리 방향',
+      },
+      comment: {
+        en: 'Direction to stretch tethers during Majestic Meteowrath.',
+        ko: '분노의 챔피언 메테오 선 처리 방향을 설정합니다.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'Clockwise': 'cw',
+          'Counter Clockwise': 'ccw',
+        },
+        ko: {
+          '시계방향': 'cw',
+          '반시계방향': 'ccw',
+        },
+      },
+      default: 'cw',
+    },
+    {
+      id: 'twoWayFireballBaitDir',
+      name: {
+        en: 'Two-Way Fireball Bait Direction',
+        ko: '두 갈래 회전화염 유도 위치',
+      },
+      comment: {
+        en: 'Direction to bait the two-way fireball.',
+        ko: '두 갈래 회전화염 유도 방향을 설정합니다.',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'East/West': 'ew',
+          'North/South': 'ns',
+        },
+        ko: {
+          '동/서': 'ew',
+          '북/남': 'ns',
+        },
+      },
+      default: 'ew',
+    },
+  ],
   timelineFile: 'r11s.txt',
   initData: () => ({
     phase: 'one',
@@ -1289,8 +1337,9 @@ Options.Triggers.push({
         if (actor === undefined)
           return;
         const portalDirNum = Directions.xyTo8DirNum(actor.x, actor.y, center.x, center.y);
-        // TODO: Make config for options?
-        const stretchDirNum = (portalDirNum + 5) % 8;
+        const stretchDirNum = data.triggerSetConfig.majesticMeteowrathTetherDir === 'ccw'
+          ? (portalDirNum + 3) % 8
+          : (portalDirNum + 5) % 8;
         const stretchDir = Directions.output8Dir[stretchDirNum] ?? 'unknown';
         return output.stretchTetherDir({ dir: output[stretchDir]() });
       },
@@ -1309,22 +1358,41 @@ Options.Triggers.push({
       type: 'StartsUsing',
       netRegex: { id: 'B7BD', source: 'The Tyrant', capture: false },
       alertText: (data, _matches, output) => {
+        const baitDir = data.triggerSetConfig.twoWayFireballBaitDir === 'ns'
+          ? 'northSouth'
+          : 'eastWest';
         if (data.hadEclipticTether)
-          return output.twoWayBehind();
-        return output.twoWayFront();
+          return output.twoWayBehind({ dir: output[baitDir]() });
+        return output.twoWayFront({ dir: output[baitDir]() });
       },
       outputStrings: {
+        eastWest: {
+          en: 'East/West',
+          de: 'Osten/Westen',
+          fr: 'Est/Ouest',
+          cn: '左/右',
+          ko: '동/서',
+          tc: '東/西',
+        },
+        northSouth: {
+          en: 'North/South',
+          de: 'Norden/Süden',
+          fr: 'Nord/Sud',
+          cn: '上/下',
+          ko: '북/남',
+          tc: '北/南',
+        },
         twoWayFront: {
-          en: 'East/West Line Stack, Be in Front',
-          de: 'Osten/West in einer Linie Sammeln, sei vorne',
-          cn: '左/右向直线分摊，站前方',
-          ko: '동/서 직선 쉐어, 앞에 있기',
+          en: '${dir} Line Stack, Be in Front',
+          de: '${dir} in einer Linie Sammeln, sei vorne',
+          cn: '${dir}向直线分摊，站前方',
+          ko: '${dir} 직선 쉐어, 앞에 있기',
         },
         twoWayBehind: {
-          en: 'Move; East/West Line Stack, Get behind',
-          de: 'Geh Osten/West, in einer Linie Sammeln, sei hinten',
-          cn: '移动; 左/右向直线分摊，站后方',
-          ko: '이동; 동/서 직선 쉐어, 뒤로 가기',
+          en: 'Move; ${dir} Line Stack, Get behind',
+          de: 'Geh ${dir}, in einer Linie Sammeln, sei hinten',
+          cn: '移动; ${dir}向直线分摊，站后方',
+          ko: '이동; ${dir} 직선 쉐어, 뒤로 가기',
         },
       },
     },
