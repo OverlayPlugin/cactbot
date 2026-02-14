@@ -7,7 +7,7 @@ hideall "--sync--"
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 ### Phase 1: Lindwurm
-# -ii B4D3 B4B2 B4B4 B4B3 B4BD B4BE B4BF B4C0 B53E B4B5 B4B1 BE0A B570 B56F B4AD B76A B469 B769
+# -ii B4D3 B4B2 B6F9 B4B4 B4B3 B4BD B4BE B4BF B4C0 B53E B4B5 B4B1 BE0A B570 B56F B4AD B76A B469 B769
 # -it "Lindwurm"
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -346,6 +346,7 @@ hideall "--sync--"
 # Phase 1
 # B4D3 --sync--: Attack autos
 # B4B2 Unmitigated Explosion: Missed blob tower
+# B6F9 Unmitigated Explosion: Breaking chain before Bonds of Flesh expires
 # B4B4 Dramatic Lysis: Damage from breaking a tether; These can be broken at various times
 # B4B5 Dramatic Lysis: 6s to break tether, else this applies every 1s, doing damage and giving a damage down
 # B4B3 Roiling Mass: Damage from soaking a tether-created tower; The towers can be created at various times
@@ -440,6 +441,7 @@ hideall "--sync--"
 # B56F --sync--
 # B570 --sync--
 # B571 --sync--
+# B6F9 Unmitigated Explosion
 # B769 Ravenous Reach: VFX
 # B76A Ravenous Reach: VFX
 # B7C4 --sync--
