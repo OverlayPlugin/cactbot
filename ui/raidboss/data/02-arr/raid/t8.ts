@@ -192,8 +192,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'de',
       'replaceSync': {
-        'Allagan Field': 'Allagisches Feld',
-        'Allagan Mine': 'Allagische Mine',
+        'Allagan Field': 'allagisch(?:e|er|es|en) Feld',
+        'Allagan Mine': 'allagisch(?:e|er|es|en) Mine',
         'Clockwork Dreadnaught': 'Brummonaut',
         'The Avatar': 'Avatar',
         'The central bow': 'Rumpf-Zentralsektor',
@@ -222,7 +222,7 @@ const triggerSet: TriggerSet<Data> = {
       'replaceText': {
         'Allagan Field': 'Champ allagois',
         'Atomic Ray': 'Rayon atomique',
-        'Ballistic Missile': 'Missiles balistiques',
+        'Ballistic Missile': 'Missile balistique',
         'Brainjack': 'Détournement cérébral',
         'Critical Surge': 'Trouée critique',
         'Diffusion Ray': 'Rayon diffuseur',
@@ -311,7 +311,7 @@ const triggerSet: TriggerSet<Data> = {
         'Critical Surge': '임계 돌파',
         'Diffusion Ray': '확산 광선',
         'Gaseous Bomb': '기화 폭탄',
-        'Homing Missile': '유도 미사일',
+        'Homing Missile': '자동 추적 미사일',
         'Inertia Stream': '관성 기류',
       },
     },

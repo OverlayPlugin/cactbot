@@ -209,7 +209,7 @@ const triggerSet: TriggerSet<Data> = {
         'Fountain Of Fire': 'Flamme de la vie',
         'Fountain Tick': 'Fontaine tick',
         'Redfire Plume': 'Panache rouge',
-        'Redfire(?! )': 'Flambée rouge',
+        'Redfire(?! )': 'Flamme rouge',
         'Revelation': 'Révélation',
         'Scorched Pinion': 'Aile embrasante',
         'Summon': 'Incidence',

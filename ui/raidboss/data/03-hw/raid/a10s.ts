@@ -333,7 +333,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lamebrix Strikebocks': 'Wüterix (?:der|die|das) Söldner',
         'Lameprix Strikedocks': 'Wüterix (?:der|die|das) Trickser',
         'The Excruciationator': 'Multi-Martyrium',
-        'Weight Of The World': 'Schwere der Erde',
+        'Weight Of The World': 'Kanonenkugel',
       },
       'replaceText': {
         '(?!--)mechanic': 'Mechanik',
@@ -352,7 +352,7 @@ const triggerSet: TriggerSet<Data> = {
         'Frostbite': 'Abfrieren',
         'Gobbie Adds': 'Gobbie Adds',
         'Goblin Rush': 'Goblin-Rausch',
-        'Gobrush Rushgob': 'Indigoblin-Rausch ',
+        'Gobrush Rushgob': 'Indigoblin-Rausch',
         'Gobslash Slicetops': 'Indigo-Vakuumhieb',
         'Gobslice Mooncrops': 'Schlitzensichel',
         'Gobsnick Leghops': 'Gob am Berg',
@@ -378,7 +378,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lamebrix Strikebocks': 'Lamebrix le Mercenaire',
         'Lameprix Strikedocks': 'Lamebrix le Diversif',
         'The Excruciationator': 'la plate-forme de torture polyvalente',
-        'Weight Of The World': 'Poids du monde',
+        'Weight Of The World': 'boulet de canon',
       },
       'replaceText': {
         '(?!--)mechanic': 'Mécanique',
@@ -423,7 +423,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lamebrix Strikebocks': '傭兵のレイムプリクス',
         'Lameprix Strikedocks': '偽兵のレイムプリクス',
         'The Excruciationator': '科学的万能処刑場',
-        'Weight Of The World': '大陸の重み',
+        'Weight Of The World': '鉄球',
       },
       'replaceText': {
         '(?!--)mechanic': 'ギミック',
@@ -469,7 +469,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lamebrix Strikebocks': '佣兵雷姆普里克斯',
         'Lameprix Strikedocks': '虚兵雷姆普里克斯',
         'The Excruciationator': '科学万能处刑场',
-        'Weight Of The World': '大陆之重',
+        'Weight Of The World': '铁球',
       },
       'replaceText': {
         '(?!--)mechanic': '机制',
@@ -513,7 +513,7 @@ const triggerSet: TriggerSet<Data> = {
         'Lamebrix Strikebocks': '傭兵雷姆普里克斯',
         'Lameprix Strikedocks': '虛兵雷姆普里克斯',
         'The Excruciationator': '科學萬能處刑場',
-        'Weight Of The World': '大陸之重',
+        'Weight Of The World': '鐵球',
       },
       'replaceText': {
         '(?!--)mechanic': '機制',
@@ -568,7 +568,6 @@ const triggerSet: TriggerSet<Data> = {
         'Brighteyes': '표적',
         'Clone Add': '분신 등장',
         'Discharge': '총격',
-
         'Double Charge': '2연속 충전',
         'Floor Trap': '가시 함정',
         'Frost Trap': '얼음화살 함정',

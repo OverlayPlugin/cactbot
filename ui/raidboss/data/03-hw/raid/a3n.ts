@@ -225,7 +225,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '--Liquid Limb spawns--': '--Belebte Hand erscheint--',
-        'Cascade': 'Cascade',
+        'Cascade': 'Kaskade',
         'Drainage': 'Entwässerung',
         'Fluid Strike': 'Flüssiger Schlag',
         'Fluid Swing': 'Flüssiger Schwung',
@@ -297,7 +297,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '--Liquid Limb spawns--': '--活水之手出现--',
-        'Cascade': '瀑泻',
+        'Cascade': '倾泻',
         'Drainage': '排水',
         'Fluid Strike': '流体强袭',
         'Fluid Swing': '流体摆动',
@@ -345,7 +345,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         '--Liquid Limb spawns--': '--액체 손 등장--',
-        'Cascade': '캐스케이드',
+        'Cascade': '폭포수',
         'Drainage': '하수로',
         'Fluid Strike': '유체 강타',
         'Fluid Swing': '유체 타격',
