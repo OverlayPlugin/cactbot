@@ -88,7 +88,7 @@ const extractFile = async (dlname: string, meta: Meta): Promise<void> => {
   if (meta['url'].endsWith('.zip')) {
     const zip = await JSZip.loadAsync(await fs.readFile(dlname));
     for (const [relativePath, entry] of Object.entries(zip.files)) {
-      const distPath = path.join(dest, relativePath.split('/').slice(meta.strip).join('/'));
+      const distPath = path.join(dest, relativePath.split(/[/\\]/).slice(meta.strip).join('/'));
       const dir = path.dirname(distPath);
       if (entry.dir) {
         await fs.mkdir(distPath, { recursive: true });
