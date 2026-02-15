@@ -105,28 +105,6 @@ namespace Cactbot {
       TraditionalChinese,
     }
 
-    public GameRegion GetGameRegion() {
-      try {
-        var mach = Assembly.Load("Machina.FFXIV");
-        var opcode_manager_type = mach.GetType("Machina.FFXIV.Headers.Opcodes.OpcodeManager");
-        var opcode_manager = opcode_manager_type.GetProperty("Instance").GetValue(null);
-        var machina_region = opcode_manager_type.GetProperty("GameRegion").GetValue(opcode_manager).ToString();
-        switch (machina_region) {
-          case "Chinese":
-            return GameRegion.Chinese;
-          case "Korean":
-            return GameRegion.Korean;
-          case "TraditionalChinese":
-            return GameRegion.TraditionalChinese;
-          default:
-            return GameRegion.International;
-        }
-      } catch (Exception e) {
-        logger_.Log(LogLevel.Error, Strings.GetGameRegionException, e.Message);
-        return GameRegion.International;
-      }
-    }
-
     public async void DoUpdateCheck(CactbotEventSourceConfig config) {
       var pluginDirectory = GetCactbotDirectory();
       if (pluginDirectory == "") {

@@ -47,6 +47,32 @@ namespace Cactbot {
       }
     }
 
+    internal VersionChecker.GameRegion GetGameRegion() {
+      if (ffxiv_plugin_ == null) {
+        logger_.Log(LogLevel.Error, Strings.NoFFXIVACTPluginFoundErrorMessage);
+        return VersionChecker.GameRegion.International;
+      }
+
+      try {
+        dynamic plugin_derived = ffxiv_plugin_;
+        switch ((byte)plugin_derived.DataRepository.GetGameRegion())
+        {
+          default:
+          case 1:
+            return VersionChecker.GameRegion.International;
+          case 2:
+            return VersionChecker.GameRegion.Chinese;
+          case 3:
+            return VersionChecker.GameRegion.Korean;
+          case 4:
+            return VersionChecker.GameRegion.TraditionalChinese;
+        }
+      } catch (Exception e) {
+        logger_.Log(LogLevel.Error, Strings.DeterminingLanguageErrorMessage, e.ToString());
+        return VersionChecker.GameRegion.International;
+      }
+    }
+
     public int GetLanguageId() {
       if (ffxiv_plugin_ == null) {
         logger_.Log(LogLevel.Error, Strings.NoFFXIVACTPluginFoundErrorMessage);
