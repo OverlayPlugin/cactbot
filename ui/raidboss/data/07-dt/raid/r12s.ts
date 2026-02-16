@@ -1259,6 +1259,7 @@ const triggerSet: TriggerSet<Data> = {
         text: {
           en: 'Bait 5x Puddles',
         },
+      },
     },
     {
       id: 'R12S Curtain Call: Unbreakable Flesh α Chains',
