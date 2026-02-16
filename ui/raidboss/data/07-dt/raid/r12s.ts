@@ -1256,8 +1256,9 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'BEC0', source: 'Lindwurm', capture: false },
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
-        text: 'Bait 5x Puddles',
-      },
+        text: {
+          en: 'Bait 5x Puddles',
+        },
     },
     {
       id: 'R12S Curtain Call: Unbreakable Flesh α Chains',
