@@ -4393,11 +4393,22 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Arcadian Hell',
+      id: 'R12S Arcadian Hell 1',
+      // B533 + B534 x4, Total ~280k Damage
       type: 'StartsUsing',
       netRegex: { id: 'B533', source: 'Lindwurm', capture: false },
       durationSeconds: 4.7,
-      response: Responses.bigAoe('alert'),
+      suppressSeconds: 9999,
+      response: Responses.aoe(),
+    },
+    {
+      id: 'R12S Arcadian Hell 2',
+      // B533 + B535 x8, Total ~360k Damage
+      type: 'StartsUsing',
+      netRegex: { id: 'B535', source: 'Lindschrat', capture: false },
+      durationSeconds: 4.7,
+      suppressSeconds: 9999,
+      response: Responses.bigAoe(),
     },
   ],
   timelineReplace: [
