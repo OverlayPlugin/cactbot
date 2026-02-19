@@ -240,8 +240,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
-          'DN Strategy: Boss North, Cleaves NE/NW, Stacks E/W, Defamations SE/SW, Nothing South': 'dn',
-          'Banana Codex Strategy: Boss North, Stacks NW/NE, Cleaves E/W, Defamations SE/SW, Nothing South': 'banana',
+          'DN Strategy: Boss North, Cleaves NE/NW, Stacks E/W, Defamations SE/SW, Nothing South':
+            'dn',
+          'Banana Codex Strategy: Boss North, Stacks NW/NE, Cleaves E/W, Defamations SE/SW, Nothing South':
+            'banana',
           'No strategy: Calls the tether you may have and to get a tether.': 'none',
         },
       },
@@ -2285,81 +2287,81 @@ const triggerSet: TriggerSet<Data> = {
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherNClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getBossTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getBossTether!(),
+                }),
               });
             case 1:
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherNEClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getConeTetherCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getStackTetherCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getConeTetherCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getStackTetherCW!()
+                    : output.getTether!(),
+                }),
               });
             case 2:
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherEClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getStackTetherCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getConeTetherCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getStackTetherCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getConeTetherCW!()
+                    : output.getTether!(),
+                }),
               });
             case 3:
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherSEClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getDefamationTetherCW!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getDefamationTetherCW!(),
+                }),
               });
             case 4:
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherSClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getNoTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getNoTether!(),
+                }),
               });
             case 5:
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherSWClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getDefamationTetherCCW!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getDefamationTetherCCW!(),
+                }),
               });
             case 6:
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherWClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getStackTetherCCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getConeTetherCCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getStackTetherCCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getConeTetherCCW!()
+                    : output.getTether!(),
+                }),
               });
             case 7:
               return output.tetherGetTether!({
                 tether1: output[tetherDir]!({ dir: output[dir]!() }),
                 tether2: output.getTetherNWClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getConeTetherCCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getStackTetherCCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getConeTetherCCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getStackTetherCCW!()
+                    : output.getTether!(),
+                }),
               });
           }
         }
@@ -2390,81 +2392,81 @@ const triggerSet: TriggerSet<Data> = {
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherNClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getBossTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getBossTether!(),
+                }),
               });
             case 1:
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherNEClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getConeTetherCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getStackTetherCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getConeTetherCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getStackTetherCW!()
+                    : output.getTether!(),
+                }),
               });
             case 2:
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherEClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getStackTetherCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getConeTetherCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getStackTetherCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getConeTetherCW!()
+                    : output.getTether!(),
+                }),
               });
             case 3:
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherSEClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getDefamationTetherCW!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getDefamationTetherCW!(),
+                }),
               });
             case 4:
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherSClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getNoTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getNoTether!(),
+                }),
               });
             case 5:
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherSWClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'none'
-                      ? output.getTether!()
-                      : output.getDefamationTetherCCW!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'none'
+                    ? output.getTether!()
+                    : output.getDefamationTetherCCW!(),
+                }),
               });
             case 6:
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherWClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getStackTetherCCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getConeTetherCCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getStackTetherCCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getConeTetherCCW!()
+                    : output.getTether!(),
+                }),
               });
             case 7:
               return output.tetherGetTether!({
                 tether1: output.noTether!(),
                 tether2: output.getTetherNWClone!({
-                    tether: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.getConeTetherCCW!()
-                      : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getStackTetherCCW!()
-                      : output.getTether!(),
-                  }),
+                  tether: data.triggerSetConfig.replication2Strategy === 'dn'
+                    ? output.getConeTetherCCW!()
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.getStackTetherCCW!()
+                    : output.getTether!(),
+                }),
               });
           }
         }
