@@ -116,15 +116,15 @@ const triggerSet: OopsyTriggerSet<Data> = {
       },
     },
     {
-      'locale': 'tc',
-      'replaceSync': {
-        'Halicarnassus': '哈利卡納蘇斯',
-      },
-    },
-    {
       'locale': 'ko',
       'replaceSync': {
         'Halicarnassus': '할리카르나소스',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Halicarnassus': '哈利卡納蘇斯',
       },
     },
   ],
