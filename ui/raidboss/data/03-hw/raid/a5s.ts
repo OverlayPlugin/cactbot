@@ -395,6 +395,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ratfinx Twinkledinks': 'Ratfix Blinkdings',
         'Smartbomb': 'Best(?:e|er|es|en) Sprengenkörper',
         'The Clevering': 'Forschenraum',
+        'Glassy-Eyed Minotaur': 'aufgerüstet(?:e|er|es|en) Minotaurus',
       },
       'replaceText': {
         '--big--': '--Groß--',
@@ -494,6 +495,7 @@ const triggerSet: TriggerSet<Data> = {
         'The Clevering': 'ゴブリサイエンス研究室',
         'Glassy-Eyed Cobra': 'ドーピング・コブラ',
         'Gobbledygawker': 'ゴブリアイ',
+        'Glassy-Eyed Minotaur': 'ドーピング・ミノタウロス',
       },
       'replaceText': {
         '--big--': '--巨大化--',

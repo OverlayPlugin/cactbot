@@ -313,7 +313,7 @@ const triggerSet: TriggerSet<Data> = {
         'Small Dolls': 'Petites poupées',
         'Stun Heart': 'Étourdissez le cœur',
         'Uplander Doom': 'Fusillade',
-        'Zoomdoom': 'Gobroquette',
+        'Zoomdoom': 'Gobrakete',
       },
     },
     {
@@ -331,8 +331,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '大きいドール',
-        'Bomb(?!s)': '爆弾',
-        'Bombs': '爆弾',
+        'Bomb(s?)': '爆弾',
         '(?<! )Doll': 'ドール',
         'Flamethrower': 'フレイムスロアー',
         'Hammertime': 'オシオキ',
@@ -365,8 +364,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '大人偶',
-        'Bomb(?!(s|en))': '炸弹',
-        'Bombs': '炸弹',
+        'Bomb(s?)': '炸弹',
         '(?<! )Doll': '人偶',
         'Flamethrower': '火焰喷射器',
         'Hammertime': '惩戒',
@@ -376,7 +374,7 @@ const triggerSet: TriggerSet<Data> = {
         'Kill Heart': '击杀真心',
         'Resync': '重新同步',
         'Sizzlebeam': '哥布式波动炮',
-        'Sizzlespark': '哥布林火花',
+        'Sizzlespark': '哥布林电火花',
         'Small Doll(?!s)': '小人偶',
         'Small Dolls': '小人偶',
         'Stun Heart': '击晕真心',
@@ -399,8 +397,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '大人偶',
-        'Bomb(?!(s|en))': '炸彈',
-        'Bombs': '炸彈',
+        'Bomb(s?)': '炸彈',
         '(?<! )Doll': '人偶',
         'Flamethrower': '火焰噴射器',
         'Hammertime': '懲戒',
@@ -433,8 +430,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Big Doll': '큰 인형',
-        'Bomb(?!s)': '폭탄',
-        'Bombs': '폭탄',
+        'Bomb(s?)': '폭탄',
         '(?<! )Doll': '인형',
         'Flamethrower': '화염 방사',
         'Get Prey': '인형뽑기',

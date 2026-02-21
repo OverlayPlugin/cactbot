@@ -210,7 +210,7 @@ const triggerSet: TriggerSet<Data> = {
         '\\(row 1\\)': '(第1列)',
         '\\(row 2\\)': '(第2列)',
         '\\(row 3\\)': '(第3列)',
-        'Burst': '爆炸',
+        'Burst': '大爆炸',
         'Bury': '塌方',
         'Earthen Fury': '大地之怒',
         'Gaoler Adds': '花岗石卫出现',

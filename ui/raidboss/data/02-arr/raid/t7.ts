@@ -318,7 +318,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       'replaceText': {
         'Circle Blade': '回旋斩',
-        'Circle Of Flames': '地层断裂',
+        'Circle Of Flames': '烈火回环',
         'Cursed Shriek': '诅咒之嚎',
         'Cursed Voice': '诅咒之声',
         'Deathdancer': '死亡舞师',

@@ -364,7 +364,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
   ],
-
   timelineReplace: [
     {
       'locale': 'de',
@@ -570,7 +569,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ice and Fire': '얼음과 불',
         'Infinite Fire': '불의 각인',
         'Infinite Ice': '얼음의 각인',
-        'Metal Cutter': '금속 절단',
+        'Metal Cutter': '금속 가르기',
         'Sarva': '변이',
         'Soar': '비상',
         'Southern Cross': '남십자성',
