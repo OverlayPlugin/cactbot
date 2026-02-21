@@ -121,6 +121,12 @@ class TimelineParserLint extends TimelineParser {
       return;
     }
 
+    // Blocks track sync times separately
+    if (first === 'blockbegin' || first === `blockend`) {
+      this.lastSyncTime = 0;
+      return;
+    }
+
     // At this point, if `first` is not a time, it's not a valid timeline entry
     const time = parseFloat(first);
     if (isNaN(time)) {
