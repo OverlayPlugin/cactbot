@@ -4434,7 +4434,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
       condition: (data) => data.twistedVisionCounter === 6,
-      infoText: (data, _matches, output) => {
+      alertText: (data, _matches, output) => {
         const first = data.replication3CloneOrder[0];
         if (first === undefined)
           return;
