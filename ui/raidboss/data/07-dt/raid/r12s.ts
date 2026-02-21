@@ -4560,6 +4560,7 @@ const triggerSet: TriggerSet<Data> = {
       // Trigger on Clone's BE5D Heavy Slam
       type: 'Ability',
       netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
+      condition: (data) => data.twistedVisionCounter === 8,
       alertText: (data, _matches, output) => {
         if (data.idyllicVision8SafeSides === 'sides')
           return output.sides!();
