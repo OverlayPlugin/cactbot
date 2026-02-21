@@ -1748,7 +1748,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Comet': '혜성',
         'Maelstrom': '대소용돌이',
@@ -1787,7 +1786,7 @@ Options.Triggers.push({
         'Fire Breath': '화염 숨결',
         'Flatliner': '절명격',
         'Foregone Fatality': '필멸선',
-        // 'Four-way Fireball': 'Four-way Fireball',
+        'Four-way Fireball': '네 갈래 회전화염',
         'Great Wall of Fire': '화염 기류',
         'Heartbreak Kick': '심장파열격',
         'Heartbreaker': '심장파괴자',
@@ -1810,7 +1809,7 @@ Options.Triggers.push({
         'Shockwave': '충격파',
         'Triple Tyrannhilation': '폭군 강하: 삼형제별',
         '(?<! )Trophy Weapons': '무기 트로피',
-        // 'Two-way Fireball': 'Two-way Fireball',
+        'Two-way Fireball': '두 갈래 회전화염',
         'Ultimate Trophy Weapons': '궁극의 무기 트로피',
         'Void Stardust': '혜성우',
         '(?<! )Weapon(?!s)': '무기',
