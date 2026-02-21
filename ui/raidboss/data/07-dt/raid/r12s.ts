@@ -4477,7 +4477,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'BBE2', source: 'Lindwurm', capture: true },
       condition: (data) => data.twistedVisionCounter === 7,
-      durationSeconds: (_data, matches) => parseFloat(matches.castTime),
+      durationSeconds: (_data, matches) => parseFloat(matches.castTime) + 4.5,
       infoText: (data, _matches, output) => {
         if (data.idyllicVision7SafeSides === 'frontBack') {
           if (data.idyllicVision7SafePlatform === 'east')
