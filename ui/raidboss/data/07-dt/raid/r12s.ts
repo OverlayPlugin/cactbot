@@ -200,7 +200,7 @@ const triggerSet: TriggerSet<Data> = {
             ? output.tanksLeft!()
             : output.tanksRight!(),
         };
-      }
+      },
     },
     {
       id: 'R12S Mortal Slayer Cleanup',
@@ -1165,6 +1165,19 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         goIntoMiddle: Outputs.goIntoMiddle,
+      },
+    },
+    {
+      id: 'R12S Skinsplitter Out of Coil Reminder',
+      type: 'Ability',
+      netRegex: { id: 'B4BC', capture: false },
+      condition: (data) => data.skinsplitterCount === 7,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.outOfCoil!(),
+      outputStrings: {
+        outOfCoil: {
+          en: 'Out of Coil',
+        },
       },
     },
     {
