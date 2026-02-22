@@ -7,8 +7,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// TODO: Mortal Coil calls
-// TODO: Separate Split Scourge and Venomous Scourge triggers
 // TODO: Safe spots for Curtain Call's Unbreakable flesh
 // TODO: Safe spots for Slaughtershed Stack/Spreads
 // TODO: Twisted Vision 5 Tower spots
@@ -32,6 +30,9 @@ export interface Data extends RaidbossData {
   };
   phase: Phase;
   // Phase 1
+  mortalSlayerGreenLeft: number;
+  mortalSlayerGreenRight: number;
+  mortalSlayerPurpleIsLeft?: boolean;
   grotesquerieCleave?:
     | 'rightCleave'
     | 'leftCleave'
@@ -270,6 +271,8 @@ const triggerSet: TriggerSet<Data> = {
   initData: () => ({
     phase: 'doorboss',
     // Phase 1
+    mortalSlayerGreenLeft: 0,
+    mortalSlayerGreenRight: 0,
     inLine: {},
     blobTowerDirs: [],
     skinsplitterCount: 0,
@@ -409,6 +412,80 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: 'B4D7', source: 'Lindwurm', capture: false },
       durationSeconds: 4.7,
       response: Responses.bigAoe('alert'),
+    },
+    {
+      id: 'R12S Mortal Slayer Collect',
+      // 19200 Purple Orb
+      // 19201 Green Orb
+      type: 'AddedCombatant',
+      netRegex: { name: 'Lindwurm', npcBaseId: ['19200', '19201'], capture: true },
+      run: (data, matches) => {
+        const npcBaseId = matches.npcBaseId;
+        const x = parseFloat(matches.x);
+
+        // 4 Green Orbs on one side = we know where purple will be
+        if (npcBaseId === '19201') {
+          if (x < 100) {
+            data.mortalSlayerGreenLeft = data.mortalSlayerGreenLeft + 1;
+            if (
+              data.mortalSlayerGreenLeft === 4 &&
+              data.mortalSlayerPurpleIsLeft === undefined
+            )
+              data.mortalSlayerPurpleIsLeft = false;
+          } else if (x > 100) {
+            data.mortalSlayerGreenRight = data.mortalSlayerGreenRight + 1;
+            if (
+              data.mortalSlayerGreenRight === 4 &&
+              data.mortalSlayerPurpleIsLeft === undefined
+            )
+              data.mortalSlayerPurpleIsLeft = true;
+          }
+        } else if (
+          npcBaseId === '19200' &&
+          data.mortalSlayerPurpleIsLeft === undefined
+        )
+          data.mortalSlayerPurpleIsLeft = x < 100 ? true : false;
+      },
+    },
+    {
+      id: 'R12S Mortal Slayer Tank Side',
+      type: 'AddedCombatant',
+      netRegex: { name: 'Lindwurm', npcBaseId: ['19200', '19201'], capture: false },
+      condition: (data) => {
+        if (data.mortalSlayerPurpleIsLeft !== undefined)
+          return true;
+        return false;
+      },
+      suppressSeconds: 12, // castTime of Mortal Slayer B495
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          tanksLeft: {
+            en: 'Tanks Left',
+          },
+          tanksRight: {
+            en: 'Tanks Right',
+          },
+        };
+        const severity = data.role === 'tank' ? 'alertText' : 'infoText';
+        return {
+          [severity]: data.mortalSlayerPurpleIsLeft
+            ? output.tanksLeft!()
+            : output.tanksRight!(),
+        };
+      },
+    },
+    {
+      id: 'R12S Mortal Slayer Cleanup',
+      // Reset trackers for second Mortal Slayer
+      type: 'Ability',
+      netRegex: { id: 'B495', capture: false },
+      suppressSeconds: 9999,
+      run: (data) => {
+        data.mortalSlayerGreenLeft = 0;
+        data.mortalSlayerGreenRight = 0;
+        delete data.mortalSlayerPurpleIsLeft;
+      },
     },
     {
       id: 'R12S Directed Grotesquerie Direction Collect',
@@ -1364,6 +1441,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Skinsplitter Out of Coil Reminder',
+      type: 'Ability',
+      netRegex: { id: 'B4BC', capture: false },
+      condition: (data) => data.skinsplitterCount === 7,
+      suppressSeconds: 1,
+      alertText: (_data, _matches, output) => output.outOfCoil!(),
+      outputStrings: {
+        outOfCoil: {
+          en: 'Out of Coil',
+        },
+      },
+    },
+    {
       id: 'R12S Splattershed',
       type: 'StartsUsing',
       netRegex: { id: ['B9C3', 'B9C4'], source: 'Lindwurm', capture: false },
@@ -1502,6 +1592,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Split Scourge and Venomous Scourge',
       // B4AB Split Scourge and B4A8 Venomous Scourge are instant casts
+      // Split Scourge happens first:
+      // Each head will target the nearest player with a tankbuster line AoE
+      //
       // This actor control happens along with boss becoming targetable
       // Seems there are two different data0 values possible:
       // 1E01: Coming back from Cardinal platforms
@@ -1517,10 +1610,31 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         tank: {
-          en: 'Bait Line AoE from heads',
+          en: 'Bait Line AoE from Heads => Get Middle (Avoid Far AoEs)',
         },
         party: {
-          en: 'Spread, Away from heads',
+          en: 'Away from Heads (Avoid Tank Lines) => Spread near Heads',
+        },
+      },
+    },
+    {
+      id: 'R12S Venomous Scourge',
+      // 2.4s after Split Scourge, Venomous Scourge AoEs happen on 3 furthest players from each head
+      type: 'Ability',
+      netRegex: { id: 'B4AB', capture: false },
+      durationSeconds: 2.4,
+      suppressSeconds: 9999,
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.tank!();
+        return output.party!();
+      },
+      outputStrings: {
+        tank: {
+          en: 'Get Middle (Avoid Far AoEs)',
+        },
+        party: {
+          en: 'Spread near Heads',
         },
       },
     },
