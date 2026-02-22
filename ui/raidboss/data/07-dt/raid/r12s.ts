@@ -4275,15 +4275,39 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Doom Tower Soak Collect',
+      // Abilities such as Warden's Paean can prevent Doom GainsEffect
+      type: 'Ability',
+      netRegex: { id: 'B4F6', capture: true },
+      condition: Conditions.targetIsYou(),
+      run: (data, matches) => {
+        // Only record those players standing near the Doom tower
+        const getDistance = (
+          x: number,
+          y: number,
+          targetX: number,
+          targetY: number,
+        ): number => {
+          const dx = x - targetX;
+          const dy = y - targetY;
+          return Math.round(Math.sqrt(dx * dx + dy * dy));
+        };
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const targetX = parseFloat(matches.targetX);
+        const targetY = parseFloat(matches.targetY);
+        const d = getDistance(x, y, targetX, targetY);
+
+        if (d < 4)
+          data.hasDoom = true;
+      },
+    },
+    {
       id: 'R12S Doom Collect',
       // Happens about 1.3s after Dark Tower when it casts B4F6 Lindwurm's Dark II
       type: 'GainsEffect',
       netRegex: { effectId: 'D24', capture: true },
-      run: (data, matches) => {
-        data.doomPlayers.push(matches.target);
-        if (data.me === matches.target)
-          data.hasDoom = true;
-      },
+      run: (data, matches) => data.doomPlayers.push(matches.target),
     },
     {
       id: 'R12S Doom Cleanse',
