@@ -2218,7 +2218,7 @@ const triggerSet: TriggerSet<Data> = {
                     tether: data.triggerSetConfig.replication2Strategy === 'dn'
                       ? output.getConeTetherCW!()
                       : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getDefanationTetherCW!()
+                      ? output.getDefamationTetherCW!()
                       : output.getTether!(),
                   }),
                 });
@@ -2327,7 +2327,7 @@ const triggerSet: TriggerSet<Data> = {
                     tether: data.triggerSetConfig.replication2Strategy === 'dn'
                       ? output.getConeTetherCW!()
                       : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.getDefanationTetherCW!()
+                      ? output.getdefamationTetherCW!()
                       : output.getTether!(),
                   }),
                 });
@@ -2431,7 +2431,7 @@ const triggerSet: TriggerSet<Data> = {
                   tether: data.triggerSetConfig.replication2Strategy === 'dn'
                     ? output.getConeTetherCW!()
                     : data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.getDefanationTetherCW!()
+                    ? output.getdefamationTetherCW!()
                     : output.getTether!(),
                 }),
               });
@@ -2544,7 +2544,7 @@ const triggerSet: TriggerSet<Data> = {
                   tether: data.triggerSetConfig.replication2Strategy === 'dn'
                     ? output.getConeTetherCW!()
                     : data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.getDefanationTetherCW!()
+                    ? output.getdefamationTetherCW!()
                     : output.getTether!(),
                 }),
               });
