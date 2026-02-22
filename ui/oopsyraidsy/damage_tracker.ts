@@ -3,7 +3,7 @@ import NetRegexes, { commonNetRegex } from '../../resources/netregexes';
 import PartyTracker from '../../resources/party';
 import { PlayerChangedDetail } from '../../resources/player_override';
 import Regexes from '../../resources/regexes';
-import { LocaleNetRegex } from '../../resources/translations';
+import { LocaleNetRegex, translateRegex } from '../../resources/translations';
 import Util from '../../resources/util';
 import ZoneId from '../../resources/zone_id';
 import ZoneInfo from '../../resources/zone_info';
@@ -726,25 +726,38 @@ export class DamageTracker {
       this.AddSoloTriggers('fail', set.soloFail);
 
       for (const trigger of set.triggers ?? [])
-        this.ProcessTrigger(trigger);
+        this.ProcessTrigger(trigger, set);
 
       this.playerStateTracker.PushTriggerSet(set);
     }
   }
 
-  ProcessTrigger(trigger: OopsyTrigger<OopsyData>): void {
+  ProcessTrigger(trigger: OopsyTrigger<OopsyData>, set?: ProcessedOopsyTriggerSet): void {
     // This is a bit of a hack, but LooseOopsyTrigger extends OopsyTrigger<OopsyData>
     // but not vice versa.  Because the NetMatches['Ability'] requires a number
     // of fields, Matches cannot be assigned to Matches & NetMatches['Ability'].
     const looseTrigger = trigger as LooseOopsyTrigger;
 
-    const regex = looseTrigger.netRegex;
+    const netRegex = looseTrigger.netRegex;
     // Some oopsy triggers (e.g. early pull) have only an id.
-    if (!regex)
+    if (!netRegex)
       return;
+
+    const parserLang = this.options.ParserLanguage;
+    const timelineReplace = set?.timelineReplace;
+
+    let localRegex: RegExp;
+    if (Array.isArray(netRegex)) {
+      localRegex = Regexes.parse(Regexes.anyOf(netRegex));
+    } else {
+      // RegExp (e.g. from NetRegexes.xxx()), translate the regex string
+      const translated = translateRegex(netRegex, parserLang, timelineReplace);
+      localRegex = Regexes.parse(translated);
+    }
+
     this.triggers.push({
       ...looseTrigger,
-      localRegex: Regexes.parse(Array.isArray(regex) ? Regexes.anyOf(regex) : regex),
+      localRegex,
     });
   }
 

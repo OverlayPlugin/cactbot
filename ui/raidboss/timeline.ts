@@ -3,18 +3,11 @@ import { UnreachableCode } from '../../resources/not_reached';
 import { LocaleRegex } from '../../resources/translations';
 import { EventResponses, LogEvent } from '../../types/event';
 import { CactbotBaseRegExp } from '../../types/net_trigger';
-import { LooseTimelineTrigger, RaidbossFileData } from '../../types/trigger';
+import { LooseTimelineTrigger, RaidbossFileData, TimelineReplacement } from '../../types/trigger';
 
 import { PopupTextGenerator } from './popup-text';
 import { RaidbossOptions } from './raidboss_options';
-import {
-  Event,
-  Sync,
-  Text,
-  TimelineParser,
-  TimelineReplacement,
-  TimelineStyle,
-} from './timeline_parser';
+import { Event, Sync, Text, TimelineParser, TimelineStyle } from './timeline_parser';
 
 // Hi, sorry about this whole class.  This is all pretty old code and honestly could
 // probably all be entirely rewritten at this point if anybody has the time or brain.

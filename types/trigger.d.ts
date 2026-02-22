@@ -1,6 +1,6 @@
 import { Lang, NonEnLang } from '../resources/languages';
 import { NamedConfigEntry } from '../resources/user_config';
-import { TimelineReplacement, TimelineStyle } from '../ui/raidboss/timeline_parser';
+import { TimelineStyle } from '../ui/raidboss/timeline_parser';
 
 import { RaidbossData } from './data';
 import { NetAnyMatches, NetMatches } from './net_matches';
@@ -181,6 +181,13 @@ export type RegexTrigger<Data extends RaidbossData> =
 export type TimelineTrigger<Data extends RaidbossData> = BaseTrigger<Data, 'None'> & {
   regex: RegExp;
   beforeSeconds?: number;
+};
+
+export type TimelineReplacement = {
+  locale: Lang;
+  missingTranslations?: boolean;
+  replaceSync?: { [regexString: string]: string };
+  replaceText?: { [timelineText: string]: string };
 };
 
 // Because timeline functions run during loading, they only support the base RaidbossData.

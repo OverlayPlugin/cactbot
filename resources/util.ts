@@ -263,6 +263,18 @@ const output16Dir: DirectionOutput16[] = [
 const outputCardinalDir: DirectionOutputCardinal[] = ['dirN', 'dirE', 'dirS', 'dirW'];
 const outputIntercardDir: DirectionOutputIntercard[] = ['dirNE', 'dirSE', 'dirSW', 'dirNW'];
 
+const compareDirectionOutput = (a: DirectionOutput16, b: DirectionOutput16): number => {
+  const getIndex = (n: DirectionOutput16) => {
+    const index = output16Dir.indexOf(n);
+    // Values outside of output16Dir (i.e. 'unknown') sort last
+    if (index < 0)
+      return output16Dir.length;
+    return index;
+  };
+
+  return getIndex(a) - getIndex(b);
+};
+
 const outputStrings16Dir: OutputStrings = {
   dirN: Outputs.dirN,
   dirNNE: Outputs.dirNNE,
@@ -375,10 +387,12 @@ export const Directions = {
   output16Dir: output16Dir,
   outputCardinalDir: outputCardinalDir,
   outputIntercardDir: outputIntercardDir,
+  compareDirectionOutput: compareDirectionOutput,
   outputStrings16Dir: outputStrings16Dir,
   outputStrings8Dir: outputStrings8Dir,
   outputStringsCardinalDir: outputStringsCardinalDir,
   outputStringsIntercardDir: outputStringsIntercardDir,
+  xyTo4DirIntercardNum: xyTo4DirIntercardNum,
   xyTo16DirNum: xyTo16DirNum,
   xyTo8DirNum: xyTo8DirNum,
   xyTo4DirNum: xyTo4DirNum,

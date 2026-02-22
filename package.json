@@ -1,7 +1,7 @@
 {
   "name": "cactbot",
-  "version": "0.36.3",
-  "releaseSummary": "M9S, Tsukuyomi EX/Unreal improvements, i18n",
+  "version": "0.36.5",
+  "releaseSummary": "m11s initial, TC region fix, i18n",
   "releaseInDraft": "false",
   "license": "Apache-2.0",
   "type": "module",

@@ -110,4 +110,8 @@ html[data-bs-theme="dark"] #zone-table tbody > tr:nth-child(odd of .zone-table-c
   background-color: rgb(237 151 158);
 }
 
+ul li:last-child {
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
 /* stylelint-enable max-line-length */

@@ -32,11 +32,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
       id: 'O3N Phase Tracker',
       type: 'StartsUsing',
       netRegex: NetRegexes.startsUsing({ id: '2304', source: 'Halicarnassus', capture: false }),
-      netRegexDe: NetRegexes.startsUsing({ id: '2304', source: 'Halikarnassos', capture: false }),
-      netRegexFr: NetRegexes.startsUsing({ id: '2304', source: 'Halicarnasse', capture: false }),
-      netRegexJa: NetRegexes.startsUsing({ id: '2304', source: 'ハリカルナッソス', capture: false }),
-      netRegexCn: NetRegexes.startsUsing({ id: '2304', source: '哈利卡纳苏斯', capture: false }),
-      netRegexKo: NetRegexes.startsUsing({ id: '2304', source: '할리카르나소스', capture: false }),
       run: (data) => data.phaseNumber = (data.phaseNumber ?? 0) + 1,
     },
     {
@@ -45,11 +40,6 @@ const triggerSet: OopsyTriggerSet<Data> = {
       id: 'O3N Initializing',
       type: 'Ability',
       netRegex: NetRegexes.ability({ id: '367', source: 'Halicarnassus', capture: false }),
-      netRegexDe: NetRegexes.ability({ id: '367', source: 'Halikarnassos', capture: false }),
-      netRegexFr: NetRegexes.ability({ id: '367', source: 'Halicarnasse', capture: false }),
-      netRegexJa: NetRegexes.ability({ id: '367', source: 'ハリカルナッソス', capture: false }),
-      netRegexCn: NetRegexes.ability({ id: '367', source: '哈利卡纳苏斯', capture: false }),
-      netRegexKo: NetRegexes.ability({ id: '367', source: '할리카르나소스', capture: false }),
       condition: (data) => !data.initialized,
       run: (data) => {
         data.gameCount = 0;
@@ -98,6 +88,44 @@ const triggerSet: OopsyTriggerSet<Data> = {
         };
       },
       run: (data) => data.gameCount = (data.gameCount ?? 0) + 1,
+    },
+  ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Halicarnassus': 'Halikarnassos',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Halicarnassus': 'Halicarnasse',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Halicarnassus': 'ハリカルナッソス',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Halicarnassus': '哈利卡纳苏斯',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Halicarnassus': '哈利卡納蘇斯',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Halicarnassus': '할리카르나소스',
+      },
     },
   ],
 };

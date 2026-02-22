@@ -13,7 +13,7 @@ hideall "--sync--"
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
 1.0 "--sync--" AddedCombatant { npcNameId: "14380", name: "Lindschrat", job: "00", level: "64", ownerId: "0{4}", worldId: "00" } window 10,3 jump "r12s-p2-start" # Sync to P2 immediately through AddCombatant.
 10.6 "--sync--" StartsUsing { id: "B4D7", source: "Lindwurm" } window 15,10
-15.6 "The Fixer" Ability { id: "B4D7", source: "Lindwurm" } window 20,10
+15.6 "The Fixer" Ability { id: "B4D7", source: "Lindwurm" }
 25.8 "--sync--" Ability { id: "B7C4", source: "Lindwurm" }
 40.8 "--sync--" Ability { id: "B495", source: "Lindwurm" }
 40.9 "Mortal Slayer 1" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
@@ -70,16 +70,7 @@ hideall "--sync--"
 205.9 "Grotesquerie: Act 3" Ability { id: "BEBF", source: "Lindwurm" } window 205,5
 209.0 "--untargetable--"
 211.0 "Feral Fission" Ability { id: "BE09", source: "Lindwurm" }
-212.0 "Grand Entrance" #Ability { id: ["B4A1", "B4A0"], source: "Lindwurm" }
-212.3 "Grand Entrance" #Ability { id: ["B4A1", "B4A2"], source: "Lindwurm" }
-212.4 "Grand Entrance" #Ability { id: "B4A3", source: "Lindwurm" }
-212.5 "Grand Entrance" Ability { id: "B4A0", source: "Lindwurm" }
-212.6 "Grand Entrance" #Ability { id: "B4A3", source: "Lindwurm" }
-212.7 "Grand Entrance" #Ability { id: ["B4A1", "B4A2"], source: "Lindwurm" }
-212.8 "Grand Entrance" #Ability { id: "B4A3", source: "Lindwurm" }
-212.8 "Grand Entrance" #Ability { id: ["B4A1", "B4A2"], source: "Lindwurm" }
-213.0 "Grand Entrance" #Ability { id: "B4A3", source: "Lindwurm" }
-213.2 "Grand Entrance" #Ability { id: "B4A3", source: "Lindwurm" }
+212.0 "Grand Entrance" #Ability { id: ["B4A1", "B4A0"], source: "Lindwurm" } duration 1.2
 215.6 "Bring Down the House" Ability { id: ["B4A5", "B4A4"], source: "Lindwurm" }
 218.0 "Dramatic Lysis x8" #Ability { id: "B4B0", source: "Lindwurm" }
 218.2 "Metamitosis x8" Ability { id: "B923", source: "Lindwurm" }

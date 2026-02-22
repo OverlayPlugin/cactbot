@@ -7,14 +7,9 @@ import { keysThatRequireTranslation } from '../../resources/netregexes';
 import { UnreachableCode } from '../../resources/not_reached';
 import Regexes from '../../resources/regexes';
 import { translateWithReplacements } from '../../resources/translations';
-import { LooseTimelineTrigger, LooseTriggerSet } from '../../types/trigger';
+import { LooseTimelineTrigger, LooseTriggerSet, TimelineReplacement } from '../../types/trigger';
 import { CommonReplacement, commonReplacement } from '../../ui/raidboss/common_replacement';
-import {
-  Error,
-  regexes,
-  TimelineParser,
-  TimelineReplacement,
-} from '../../ui/raidboss/timeline_parser';
+import { Error, regexes, TimelineParser } from '../../ui/raidboss/timeline_parser';
 
 const parseTimelineFileFromTriggerFile = (filepath: string) => {
   const fileContents = fs.readFileSync(filepath, 'utf8');

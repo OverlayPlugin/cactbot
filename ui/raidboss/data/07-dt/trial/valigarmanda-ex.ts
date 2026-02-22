@@ -239,7 +239,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'タンク塔 (踏む/スイッチ)',
           cn: '双T轮换踩塔',
           ko: '탱커 기둥 (밟기/교대)',
-          tc: '雙T輪換踩塔',
+          tc: '雙坦輪換踩塔',
         },
       },
     },
@@ -782,7 +782,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '左上(北西) 安地',
           cn: '左上 安全',
           ko: '왼쪽 위 안전',
-          tc: '左上 安全',
+          tc: '左上(西北) 安全',
         },
         coneNESafe: {
           en: 'NE Safe',
@@ -791,7 +791,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '右上(北東) 安地',
           cn: '右上 安全',
           ko: '오른쪽 위 안전',
-          tc: '右上 安全',
+          tc: '右上(東北) 安全',
         },
         unknown: {
           en: 'Dodge Avalanche',
@@ -1173,7 +1173,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sphere': '立體魔法陣',
         'Feather of Ruin': '艷羽',
@@ -1212,15 +1211,15 @@ const triggerSet: TriggerSet<Data> = {
         'Valigarmanda': '艷翼蛇鳥',
         'Volcanic Drop': '火山彈',
         'Wrath Unfurled': '怒不可遏',
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(damage\\)': '', // FIXME '(伤害)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(fire phase\\)': '', // FIXME '(火阶段)'
-        // '\\(ice phase\\)': '', // FIXME '(冰阶段)'
-        // '\\(ice or storm phase\\?\\)': '', // FIXME '(冰或风暴阶段)'
-        // '\\(knockback\\)': '', // FIXME '(击退)'
-        // '\\(storm phase\\)': '', // FIXME '(风暴阶段)'
-        // '\\(tower\\)': '', // FIXME '(塔)'
+        '\\(cast\\)': '(詠唱)',
+        '\\(damage\\)': '(傷害)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(fire phase\\)': '(火階段)',
+        '\\(ice phase\\)': '(冰階段)',
+        '\\(ice or storm phase\\?\\)': '(冰或風暴階段)',
+        '\\(knockback\\)': '(擊退)',
+        '\\(storm phase\\)': '(風暴階段)',
+        '\\(tower\\)': '(塔)',
       },
     },
     {
