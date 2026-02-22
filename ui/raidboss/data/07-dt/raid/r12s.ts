@@ -4365,6 +4365,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Avoid Earth Tower (Missing Dooms)',
       // Handle scenario where both Dooms end up not being applied
+      // Triggering on the Lindwurm's Dark II ability that would apply Doom
       type: 'Ability',
       netRegex: { id: 'B4F6', capture: false },
       condition: (data) => data.CanCleanse(),
