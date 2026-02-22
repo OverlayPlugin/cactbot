@@ -7,7 +7,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// TODO: Separate Split Scourge and Venomous Scourge triggers
 // TODO: Safe spots for Curtain Call's Unbreakable flesh
 // TODO: Safe spots for Slaughtershed Stack/Spreads
 
@@ -1319,6 +1318,9 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Split Scourge and Venomous Scourge',
       // B4AB Split Scourge and B4A8 Venomous Scourge are instant casts
+      // Split Scourge happens first:
+      // Each head will target the nearest player with a tankbuster line AoE
+      //
       // This actor control happens along with boss becoming targetable
       // Seems there are two different data0 values possible:
       // 1E01: Coming back from Cardinal platforms
@@ -1334,10 +1336,31 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         tank: {
-          en: 'Bait Line AoE from heads',
+          en: 'Bait Line AoE from Heads => Get Middle (Avoid Far AoEs)',
         },
         party: {
-          en: 'Spread, Away from heads',
+          en: 'Away from Heads (Avoid Tank Lines) => Spread near Heads',
+        },
+      },
+    },
+    {
+      id: 'R12S Venomous Scourge',
+      // 2.4s after Split Scourge, Venomous Scourge AoEs happen on 3 furthest players from each head
+      type: 'Ability',
+      netRegex: { id: 'B4AB', capture: false },
+      durationSeconds: 2.4,
+      suppressSeconds: 9999,
+      alertText: (data, _matches, output) => {
+        if (data.role === 'tank')
+          return output.tank!();
+        return output.party!();
+      },
+      outputStrings: {
+        tank: {
+          en: 'Get Middle (Avoid Far AoEs)',
+        },
+        party: {
+          en: 'Spread near Heads',
         },
       },
     },
