@@ -4265,6 +4265,14 @@ const triggerSet: TriggerSet<Data> = {
       // 5s castTime
       type: 'StartsUsing',
       netRegex: { id: 'B4F7', source: 'Lindwurm', capture: true },
+      condition: (data) => {
+        // Avoid simultaneous trigger for Pyretic player as they wouldn't be at the earth location
+        if (data.hasPyretic)
+          return false;
+        // Handle this in Doom clense instead
+        if (data.CanCleanse())
+          return false;
+      },
       durationSeconds: (_data, matches) => parseFloat(matches.castTime),
       suppressSeconds: 1,
       infoText: (_data, _matches, output) => output.avoidEarthTower!(),
@@ -4321,11 +4329,17 @@ const triggerSet: TriggerSet<Data> = {
         if (players.length === 2) {
           const target1 = data.party.member(data.doomPlayers[0]);
           const target2 = data.party.member(data.doomPlayers[1]);
-          return output.cleanseDoom2!({ target1: target1, target2: target2 });
+          return output.mech!({
+            cleanse: output.cleanseDoom2!({ target1: target1, target2: target2 }),
+            avoid: output.avoidEarthTower!(),
+          });
         }
         if (players.length === 1) {
           const target1 = data.party.member(data.doomPlayers[0]);
-          return output.cleanseDoom!({ target: target1 });
+          return output.mech!({
+            cleanse: output.cleanseDoom!({ target: target1 }),
+            avoid: output.avoidEarthTower!(),
+          });
         }
       },
       outputStrings: {
@@ -4339,6 +4353,30 @@ const triggerSet: TriggerSet<Data> = {
         },
         cleanseDoom2: {
           en: 'Cleanse ${target1}/${target2}',
+        },
+        avoidEarthTower: {
+          en: 'Avoid Earth Tower',
+        },
+        mech: {
+          en: '${cleanse} + ${avoid}',
+        },
+      },
+    },
+    {
+      id: 'R12S Avoid Earth Tower (Missing Dooms)',
+      // Handle scenario where both Dooms end up not being applied
+      type: 'Ability',
+      netRegex: { id: 'B4F6', capture: false },
+      condition: (data) => data.CanCleanse(),
+      delaySeconds: 0.5, // Time until after Doom was expected
+      suppressSeconds: 9999,
+      infoText: (data, _matches, output) => {
+        if (data.doomPlayers[0] === undefined)
+          return output.avoidEarthTower!();
+      },
+      outputStrings: {
+        avoidEarthTower: {
+          en: 'Avoid Earth Tower',
         },
       },
     },
