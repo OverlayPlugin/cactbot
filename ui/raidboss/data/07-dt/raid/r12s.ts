@@ -3857,12 +3857,18 @@ const triggerSet: TriggerSet<Data> = {
         const stack = headMarkerData['heavySlamTether'];
         const defamation = headMarkerData['manaBurstTether'];
         const projection = headMarkerData['projectionTether'];
+        const boss = headMarkerData['fireballSplashTether'];
         // Defined as N/S clones with projections and NE/SW with defamation + stack
+        // Followed up with E/W boss + none, then SE/NW stack + defamation
+        // No need to check 6, 7 as that's all that remains
         if (
           order[0] === projection && order[1] === projection &&
           (
             (order[2] === defamation && order[3] === stack) ||
             (order[2] === stack && order[3] === defamation)
+          ) && (
+            (order[4] === boss && order[5] === 'none') ||
+            (order[4] === 'none' && order[5] === boss)
           )
         )
           return true;
@@ -3895,7 +3901,7 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         // Missing ability data, output mechanic order
-       return { infoText: output.stacksThenProtean!() };
+        return { infoText: output.stacksThenProtean!() };
       },
     },
     {
