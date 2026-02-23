@@ -3252,10 +3252,10 @@ const triggerSet: TriggerSet<Data> = {
                 return output.manaBurstTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                  ? output.defamationOnYouStrategy!({
-                    strat: output['dirNNE']!(),
-                  }) // North/NNE
-                  : output.defamationOnYou!(),
+                    ? output.defamationOnYouStrategy!({
+                      strat: output['dirNNE']!(),
+                    }) // North/NNE
+                    : output.defamationOnYou!(),
                 });
               case 3:
                 return output.manaBurstTetherDir!({
