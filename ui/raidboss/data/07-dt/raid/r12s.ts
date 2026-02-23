@@ -3064,9 +3064,9 @@ const triggerSet: TriggerSet<Data> = {
         if (data.replication2BossId === sourceId)
           return output.fireballSplashTether!({
             mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-              ? output.baitProteanStrategy!({ strat: output.north!() })
+              ? output.baitJumpDNN!({ strat: output.north!() })
               : data.triggerSetConfig.replication2Strategy === 'banana'
-              ? output.baitProteanStrategy!({ strat: output.west!() })
+              ? output.baitJumpBananaW!({ strat: output.west!() })
               : output.baitJump!(),
           });
 
@@ -3085,7 +3085,7 @@ const triggerSet: TriggerSet<Data> = {
                 case 0: // Banana only
                   return output.projectionTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.baitProteanStrategy!({
+                      ? output.baitProteanBananaN!({
                         strat: output['dirWSW']!(),
                       }) // Southmost protean
                       : output.baitProtean!(),
@@ -3093,13 +3093,13 @@ const triggerSet: TriggerSet<Data> = {
                 case 1: // DN only
                   return output.projectionTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.baitProteanStrategy!({ strat: output.north!() }) // Inner NNE
+                      ? output.baitProteanDNNE!({ strat: output.north!() }) // Inner NNE
                       : output.baitProtean!(),
                   });
                 case 4: // Banana only
                   return output.projectionTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.baitProteanStrategy!({
+                      ? output.baitProteanBananaS!({
                         strat: output['dirWNW']!(),
                       }) // Northmost protean
                       : output.baitProtean!(),
@@ -3107,15 +3107,15 @@ const triggerSet: TriggerSet<Data> = {
                 case 7: // DN only
                   return output.projectionTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.baitProteanStrategy!({ strat: output.north!() }) // Inner NNW
+                      ? output.baitProteanDNNW!({ strat: output.north!() }) // Inner NNW
                       : output.baitProtean!(),
                   });
               }
               return output.projectionTether!({
                 mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                  ? output.baitProteanStrategy!({ strat: output.north!() })
+                  ? output.baitProteanDN!({ strat: output.north!() })
                   : data.triggerSetConfig.replication2Strategy === 'banana'
-                  ? output.baitProteanStrategy!({ strat: output.west!() })
+                  ? output.baitProteanBanana!({ strat: output.west!() })
                   : output.baitProtean!(),
               });
             case headMarkerData['manaBurstTether']:
@@ -3123,7 +3123,7 @@ const triggerSet: TriggerSet<Data> = {
                 case 1: // Banana Only
                   return output.manaBurstTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.defamationOnYouStrategy!({
+                      ? output.defamationOnYouBananaNE!({
                         strat: output['dirNNE']!(),
                       }) // North/NNE
                       : output.defamationOnYou!(),
@@ -3131,11 +3131,11 @@ const triggerSet: TriggerSet<Data> = {
                 case 3:
                   return output.manaBurstTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.defamationOnYouStrategy!({
+                      ? output.defamationOnYouDNSE!({
                         strat: output['dirESE']!(),
                       }) // East/ESE
                       : data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.defamationOnYouStrategy!({
+                      ? output.defamationOnYouBananaSE!({
                         strat: output['dirSSE']!(),
                       }) // South/SSE
                       : output.defamationOnYou!(),
@@ -3143,7 +3143,7 @@ const triggerSet: TriggerSet<Data> = {
                 case 5: // DN Only
                   return output.manaBurstTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.defamationOnYouStrategy!({
+                      ? output.defamationOnYouDNSW!({
                         strat: output['dirWSW']!(),
                       }) // West/WSW
                       : output.defamationOnYou!(),
@@ -3157,7 +3157,7 @@ const triggerSet: TriggerSet<Data> = {
                 case 2: // DN Only
                   return output.heavySlamTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.baitProteanStrategy!({
+                      ? output.baitProteanDNE!({
                         strat: output['dirNNE']!(),
                       }) // Eastmost Protean
                       : output.baitProtean!(),
@@ -3165,13 +3165,13 @@ const triggerSet: TriggerSet<Data> = {
                 case 5: // Banana Only
                   return output.heavySlamTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.baitProteanStrategy!({ strat: output.west!() }) // Inner WSW
+                      ? output.baitProteanBananaSW!({ strat: output.west!() }) // Inner WSW
                       : output.baitProtean!(),
                   });
                 case 6: // DN Only
                   return output.heavySlamTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                      ? output.baitProteanStrategy!({
+                      ? output.baitProteanDNW!({
                         strat: output['dirNNW']!(),
                       }) // Westmost Protean
                       : output.baitProtean!(),
@@ -3179,15 +3179,15 @@ const triggerSet: TriggerSet<Data> = {
                 case 7: // Banana Only
                   return output.heavySlamTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                      ? output.baitProteanStrategy!({ strat: output.west!() }) // Inner WNW
+                      ? output.baitProteanBananaNW!({ strat: output.west!() }) // Inner WNW
                       : output.baitProtean!(),
                   });
               }
               return output.heavySlamTether!({
                 mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                  ? output.baitProteanStrategy!({ strat: output.north!() })
+                  ? output.baitProteanDN!({ strat: output.north!() })
                   : data.triggerSetConfig.replication2Strategy === 'banana'
-                  ? output.baitProteanStrategy!({ strat: output.west!() })
+                  ? output.baitProteanBanana!({ strat: output.west!() })
                   : output.baitProtean!(),
               });
           }
@@ -3209,7 +3209,7 @@ const triggerSet: TriggerSet<Data> = {
                 return output.projectionTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.baitProteanStrategy!({
+                    ? output.baitProteanBananaN!({
                       strat: output['dirWSW']!(),
                     }) // Southmost protean
                     : output.baitProtean!(),
@@ -3218,14 +3218,14 @@ const triggerSet: TriggerSet<Data> = {
                 return output.projectionTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.baitProteanStrategy!({ strat: output.north!() }) // Inner NNE
+                    ? output.baitProteanDNNE!({ strat: output.north!() }) // Inner NNE
                     : output.baitProtean!(),
                 });
               case 4: // Banana only
                 return output.projectionTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.baitProteanStrategy!({
+                    ? output.baitProteanBananaS!({
                       strat: output['dirWNW']!(),
                     }) // Northmost protean
                     : output.baitProtean!(),
@@ -3234,16 +3234,16 @@ const triggerSet: TriggerSet<Data> = {
                 return output.projectionTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.baitProteanStrategy!({ strat: output.north!() }) // Inner NNW
+                    ? output.baitProteanDNNW!({ strat: output.north!() }) // Inner NNW
                     : output.baitProtean!(),
                 });
             }
             return output.projectionTetherDir!({
               dir: output[dir]!(),
               mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                ? output.baitProteanStrategy!({ strat: output.north!() })
+                ? output.baitProteanDN!({ strat: output.north!() })
                 : data.triggerSetConfig.replication2Strategy === 'banana'
-                ? output.baitProteanStrategy!({ strat: output.west!() })
+                ? output.baitProteanBanana!({ strat: output.west!() })
                 : output.baitProtean!(),
             });
           case headMarkerData['manaBurstTether']:
@@ -3252,7 +3252,7 @@ const triggerSet: TriggerSet<Data> = {
                 return output.manaBurstTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.defamationOnYouStrategy!({
+                    ? output.defamationOnYouBananaNE!({
                       strat: output['dirNNE']!(),
                     }) // North/NNE
                     : output.defamationOnYou!(),
@@ -3261,11 +3261,11 @@ const triggerSet: TriggerSet<Data> = {
                 return output.manaBurstTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.defamationOnYouStrategy!({
+                    ? output.defamationOnYouDNSE!({
                       strat: output['dirESE']!(),
                     }) // East/ESE
                     : data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.defamationOnYouStrategy!({
+                    ? output.defamationOnYouBananaSE!({
                       strat: output['dirSSE']!(),
                     }) // South/SSE
                     : output.defamationOnYou!(),
@@ -3274,7 +3274,7 @@ const triggerSet: TriggerSet<Data> = {
                 return output.manaBurstTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.defamationOnYouStrategy!({
+                    ? output.defamationOnYouDNSW!({
                       strat: output['dirWSW']!(),
                     }) // West/WSW
                     : output.defamationOnYou!(),
@@ -3290,7 +3290,7 @@ const triggerSet: TriggerSet<Data> = {
                 return output.heavySlamTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.baitProteanStrategy!({
+                    ? output.baitProteanDNE!({
                       strat: output['dirNNE']!(),
                     }) // Eastmost Protean
                     : output.baitProtean!(),
@@ -3299,14 +3299,14 @@ const triggerSet: TriggerSet<Data> = {
                 return output.heavySlamTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.baitProteanStrategy!({ strat: output.west!() }) // Inner WSW
+                    ? output.baitProteanBananaSW!({ strat: output.west!() }) // Inner WSW
                     : output.baitProtean!(),
                 });
               case 6: // DN Only
                 return output.heavySlamTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.baitProteanStrategy!({
+                    ? output.baitProteanDNW!({
                       strat: output['dirNNW']!(),
                     }) // Westmost Protean
                     : output.baitProtean!(),
@@ -3315,16 +3315,16 @@ const triggerSet: TriggerSet<Data> = {
                 return output.heavySlamTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.baitProteanStrategy!({ strat: output.west!() }) // Inner WNW
+                    ? output.baitProteanBananaNW!({ strat: output.west!() }) // Inner WNW
                     : output.baitProtean!(),
                 });
             }
             return output.heavySlamTetherDir!({
               dir: output[dir]!(),
               mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                ? output.baitProteanStrategy!({ strat: output.north!() })
+                ? output.baitProteanDN!({ strat: output.north!() })
                 : data.triggerSetConfig.replication2Strategy === 'banana'
-                ? output.baitProteanStrategy!({ strat: output.west!() })
+                ? output.baitProteanBanana!({ strat: output.west!() })
                 : output.baitProtean!(),
             });
         }
@@ -3336,19 +3336,58 @@ const triggerSet: TriggerSet<Data> = {
         south: Outputs.south,
         west: Outputs.west,
         defamationOnYou: Outputs.defamationOnYou,
-        defamationOnYouStrategy: {
+        defamationOnYouDNSE: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouDNSW: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouBananaNE: {
+          en: 'Defamation on YOU, Go ${strat}',
+        },
+        defamationOnYouBananaSE: {
           en: 'Defamation on YOU, Go ${strat}',
         },
         baitProtean: {
           en: 'Bait Protean from Boss',
         },
-        baitProteanStrategy: {
+        baitProteanDN: { // If clone tether num missing
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNNE: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNE: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNW: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanDNNW: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBanana: { // If clone tether num missing
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaN: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaS: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaSW: {
+          en: 'Bait Protean from Boss (${strat})',
+        },
+        baitProteanBananaNW: {
           en: 'Bait Protean from Boss (${strat})',
         },
         baitJump: {
           en: 'Bait Jump',
         },
-        baitJumpStrategy: {
+        baitJumpDNN: {
+          en: 'Bait Jump ${strat}',
+        },
+        baitJumpBananaW: {
           en: 'Bait Jump ${strat}',
         },
         projectionTetherDir: {
@@ -3394,9 +3433,9 @@ const triggerSet: TriggerSet<Data> = {
           return;
         return output.noTether!({
           mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-            ? output.defamationOnYouStrategy!({ strat: output.south!() })
+            ? output.defamationOnYouDN!({ strat: output.south!() })
             : data.triggerSetConfig.replication2Strategy === 'banana'
-            ? output.defamationOnYouStrategy!({ strat: output.east!() })
+            ? output.defamationOnYouBanana!({ strat: output.east!() })
             : output.defamationOnYou!(),
           mech2: output.stackGroups!(),
         });
@@ -3405,7 +3444,10 @@ const triggerSet: TriggerSet<Data> = {
         east: Outputs.east,
         south: Outputs.south,
         defamationOnYou: Outputs.defamationOnYou,
-        defamationOnYouStrategy: {
+        defamationOnYouDN: {
+          en: 'Defamation on YOU (Go ${strat})',
+        },
+        defamationOnYouBanana: {
           en: 'Defamation on YOU (Go ${strat})',
         },
         stackGroups: {
