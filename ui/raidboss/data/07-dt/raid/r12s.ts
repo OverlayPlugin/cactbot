@@ -3568,7 +3568,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Netherwrath Near/Far',
+      id: 'R12S Netherwrath Near/Far and First Clones',
       // In DN, Boss jumps onto clone of player that took Firefall Splash, there is an aoe around the clone + proteans
       // In Banana Codex, N/S Projections happen at this time
       type: 'StartsUsing',
@@ -3837,8 +3837,11 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Reenactment 1 Scalding Waves Collect',
-      // In DN, Players need to wait for BBE3 Mana Burst Defamations on the clones to complete before next mechanic
+      id: 'R12S Reenactment 1 Scalding Waves Collect (DN)',
+      // NOTE: This is used in DN Strategy
+      // Players need to wait for BBE3 Mana Burst Defamations on the clones to complete before next mechanic
+      // There are multiple BBE3s, setting flag to trigger after
+      // B8E1 Scalding Waves
       type: 'Ability',
       netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
       condition: (data) => data.phase === 'reenactment1',
@@ -3846,8 +3849,9 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.netherwrathFollowup = true,
     },
     {
-      id: 'R12S Reenactment 1 Clone Stack SW',
-      // In Banana Codex, SW Clone Stack happens after N/S Clone Projections
+      id: 'R12S Reenactment 1 Clone Stack SW (Second Clones Banana)',
+      // NOTE: This is used in Banana Codex Strategy
+      // SW Clone Stack happens after N/S Clone Projections
       // Defamation Tether Players, Boss Tether Player, and No Tether Player take stack
       // Using B922 Hemorrhagic Projection from clones
       type: 'Ability',
@@ -3882,9 +3886,9 @@ const triggerSet: TriggerSet<Data> = {
             en: 'Stack on SW Clone => Stack on NW Clone',
           },
           avoidStackThenProtean: {
-            en: 'Avoid Stack => Bait Protean',
+            en: 'Avoid SW Stack => Bait Protean West',
           },
-          stacksThenProtean: {
+          stackThenProteans: {
             en: 'SW Clone Stack => West Proteans',
           },
         };
@@ -3901,14 +3905,14 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         // Missing ability data, output mechanic order
-        return { infoText: output.stacksThenProtean!() };
+        return { infoText: output.stackThenProteans!() };
       },
     },
     {
-      id: 'R12S Reenactment 1 Clone Stacks E/W',
+      id: 'R12S Reenactment 1 Clone Stacks E/W (Third Clones DN)',
+      // NOTE: This is used with DN Strategy
       // Players need to wait for BBE3 Mana Burst defamations on clones to complete
       // This happens three times during reenactment and the third one (which is after the proteans) is the trigger
-      // NOTE: This is used with DN Strategy
       type: 'Ability',
       netRegex: { id: 'BBE3', source: 'Lindwurm', capture: false },
       condition: (data) => {
@@ -3938,10 +3942,68 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Reenactment 1 Final Defamation SE Dodge Reminder',
+      id: 'R12S Reenactment 1 Proteans West (Third Clones Banana)',
+      // NOTE: This is used in Banana Codex Strategy
+      // Stack Players need to go to the other stack
+      // Non-stack players need to bait proteans
+      // Using BE5D Heavy Slam from clones
+      type: 'Ability',
+      netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        const order = data.replication2AbilityOrder;
+        const stack = headMarkerData['heavySlamTether'];
+        const defamation = headMarkerData['manaBurstTether'];
+        const projection = headMarkerData['projectionTether'];
+        const boss = headMarkerData['fireballSplashTether'];
+        // Banana Codex Strategy Order
+        if (
+          order[0] === projection && order[1] === projection &&
+          (
+            (order[2] === defamation && order[3] === stack) ||
+            (order[2] === stack && order[3] === defamation)
+          ) && (
+            (order[4] === boss && order[5] === 'none') ||
+            (order[4] === 'none' && order[5] === boss)
+          )
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          protean: {
+            en: 'Bait Protean West + Avoid Clone AoE',
+          },
+          avoidThenStack: {
+            en: 'Avoid West Clone/East Defamation + Stack on NW Clone',
+          },
+          proteansThenStack: {
+            en: 'West Proteans => NW Clone Stack',
+          },
+        };
+
+        const ability = data.replication2PlayerAbilities[data.me];
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+          case headMarkerData['heavySlamTether']:
+            return { alertText: output.protean!() };
+          case headMarkerData['manaBurstTether']:
+          case headMarkerData['fireballSplashTether']:
+          case 'none':
+            return { infoText: output.avoidThenStack!() };
+        }
+
+        // Missing ability data, output mechanic order
+        return { infoText: output.proteansThenStack!() };
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Defamation SE Dodge Reminder (Fourth Clones DN)',
+      // NOTE: This is used with DN Strategy
       // Players need to run back to north after clone stacks (BE5D Heavy Slam)
       // The clone stacks become a defamation and the other a cleave going East or West through the room
-      // NOTE: This is used with DN Strategy
       type: 'Ability',
       netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
       condition: (data) => {
@@ -3966,6 +4028,64 @@ const triggerSet: TriggerSet<Data> = {
       alertText: (_data, _matches, output) => output.north!(),
       outputStrings: {
         north: Outputs.north,
+      },
+    },
+    {
+      id: 'R12S Reenactment 1 Clone Stack NW Reminder (Fourth Clones Banana)',
+      // NOTE: This is used in Banana Codex Strategy
+      // Reminder for players to Stack
+      // Reminder for Non-stack players to avoid
+      // Using B8E1 Scalding Waves from clones
+      type: 'Ability',
+      netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        const order = data.replication2AbilityOrder;
+        const stack = headMarkerData['heavySlamTether'];
+        const defamation = headMarkerData['manaBurstTether'];
+        const projection = headMarkerData['projectionTether'];
+        const boss = headMarkerData['fireballSplashTether'];
+        // Banana Codex Strategy Order
+        if (
+          order[0] === projection && order[1] === projection &&
+          (
+            (order[2] === defamation && order[3] === stack) ||
+            (order[2] === stack && order[3] === defamation)
+          ) && (
+            (order[4] === boss && order[5] === 'none') ||
+            (order[4] === 'none' && order[5] === boss)
+          )
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999,
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stack: {
+            en: 'Stack on NW Clone',
+          },
+          avoidStack: {
+            en: 'Avoid NE Stack',
+          },
+          stackAndDefamation: {
+            en: 'NW Clone Stack + SE Defamation',
+          },
+        };
+
+        const ability = data.replication2PlayerAbilities[data.me];
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+          case headMarkerData['heavySlamTether']:
+            return { infoText: output.avoidStack!() };
+          case headMarkerData['manaBurstTether']:
+          case headMarkerData['fireballSplashTether']:
+          case 'none':
+            return { alertText: output.stack!() };
+        }
+
+        // Missing ability data, output mechanic order
+        return { infoText: output.stackAndDefamation!() };
       },
     },
     {
