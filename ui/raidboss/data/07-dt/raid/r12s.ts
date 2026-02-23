@@ -3569,94 +3569,189 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Netherwrath Near/Far',
-      // Boss jumps onto clone of player that took Firefall Splash, there is an aoe around the clone + proteans
+      // In DN, Boss jumps onto clone of player that took Firefall Splash, there is an aoe around the clone + proteans
+      // In Banana Codex, N/S Projections happen at this time
       type: 'StartsUsing',
       netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
       infoText: (data, matches, output) => {
         const ability = data.replication2PlayerAbilities[data.me];
         const isNear = matches.id === 'B52E';
 
-        if (isNear) {
+        // Determine if it's a strategy we recognize
+        const order = data.replication2AbilityOrder;
+        const boss = headMarkerData['fireballSplashTether'];
+        const defamation = headMarkerData['manaBurstTether'];
+        const stack = headMarkerData['heavySlamTether'];
+        const projection = headMarkerData['projectionTether'];
+
+        // DN Strategy
+        if (
+          (
+            (order[0] === 'none' && order[1] === boss) ||
+            (order[0] === boss && order[1] === 'none')
+          ) && (
+            (order[2] === defamation && order[3] === projection) ||
+            (order[2] === projection && order[3] === defamation)
+          ) && (order[4] === stack && order[5] === stack)
+        ) {
+          if (isNear) {
+            switch (ability) {
+              case headMarkerData['projectionTether']:
+                return output.projectionTetherNear!({
+                  proteanBaits: output.beFar!(),
+                  mech1: output.scaldingWave!(),
+                  mech2: output.stacks!(),
+                  spiteBaits: output.near!(),
+                });
+              case headMarkerData['manaBurstTether']:
+                return output.manaBurstTetherNear!({
+                  spiteBaits: output.beNear!(),
+                  mech1: output.timelessSpite!(),
+                  mech2: output.proteans!(),
+                  proteanBaits: output.far!(),
+                });
+              case headMarkerData['heavySlamTether']:
+                return output.heavySlamTetherNear!({
+                  proteanBaits: output.beFar!(),
+                  mech1: output.scaldingWave!(),
+                  mech2: output.stacks!(),
+                  spiteBaits: output.near!(),
+                });
+              case headMarkerData['fireballSplashTether']:
+                return output.fireballSplashTetherNear!({
+                  spiteBaits: output.beNear!(),
+                  mech1: output.timelessSpite!(),
+                  mech2: output.proteans!(),
+                  proteanBaits: output.far!(),
+                });
+            }
+            return output.noTetherNear!({
+              spiteBaits: output.beNear!(),
+              mech1: output.timelessSpite!(),
+              mech2: output.proteans!(),
+              proteanBaits: output.far!(),
+            });
+          }
+
+          // Netherwrath Far
           switch (ability) {
             case headMarkerData['projectionTether']:
-              return output.projectionTetherNear!({
-                proteanBaits: output.beFar!(),
+              return output.projectionTetherFar!({
+                proteanBaits: output.beNear!(),
                 mech1: output.scaldingWave!(),
                 mech2: output.stacks!(),
-                spiteBaits: output.near!(),
+                spiteBaits: output.far!(),
               });
             case headMarkerData['manaBurstTether']:
-              return output.manaBurstTetherNear!({
-                spiteBaits: output.beNear!(),
+              return output.manaBurstTetherFar!({
+                spiteBaits: output.beFar!(),
                 mech1: output.timelessSpite!(),
                 mech2: output.proteans!(),
-                proteanBaits: output.far!(),
+                proteanBaits: output.near!(),
               });
             case headMarkerData['heavySlamTether']:
-              return output.heavySlamTetherNear!({
-                proteanBaits: output.beFar!(),
+              return output.heavySlamTetherFar!({
+                proteanBaits: output.beNear!(),
                 mech1: output.scaldingWave!(),
                 mech2: output.stacks!(),
-                spiteBaits: output.near!(),
+                spiteBaits: output.far!(),
               });
             case headMarkerData['fireballSplashTether']:
-              return output.fireballSplashTetherNear!({
-                spiteBaits: output.beNear!(),
+              return output.fireballSplashTetherFar!({
+                spiteBaits: output.beFar!(),
                 mech1: output.timelessSpite!(),
                 mech2: output.proteans!(),
-                proteanBaits: output.far!(),
+                proteanBaits: output.near!(),
               });
           }
-          return output.noTetherNear!({
-            spiteBaits: output.beNear!(),
+          return output.noTetherFar!({
+            spiteBaits: output.beFar!(),
             mech1: output.timelessSpite!(),
             mech2: output.proteans!(),
-            proteanBaits: output.far!(),
+            proteanBaits: output.near!(),
           });
         }
 
-        // Netherwrath Far
-        switch (ability) {
-          case headMarkerData['projectionTether']:
-            return output.projectionTetherFar!({
-              proteanBaits: output.beNear!(),
-              mech1: output.scaldingWave!(),
-              mech2: output.stacks!(),
-              spiteBaits: output.far!(),
-            });
-          case headMarkerData['manaBurstTether']:
-            return output.manaBurstTetherFar!({
-              spiteBaits: output.beFar!(),
-              mech1: output.timelessSpite!(),
-              mech2: output.proteans!(),
-              proteanBaits: output.near!(),
-            });
-          case headMarkerData['heavySlamTether']:
-            return output.heavySlamTetherFar!({
-              proteanBaits: output.beNear!(),
-              mech1: output.scaldingWave!(),
-              mech2: output.stacks!(),
-              spiteBaits: output.far!(),
-            });
-          case headMarkerData['fireballSplashTether']:
-            return output.fireballSplashTetherFar!({
-              spiteBaits: output.beFar!(),
-              mech1: output.timelessSpite!(),
-              mech2: output.proteans!(),
-              proteanBaits: output.near!(),
-            });
+        // Banana Codex Strategy
+        if (
+          (order[0] === projection && order[1] === projection) && (
+            (order[2] === stack && order[3] === defamation) ||
+            (order[2] === defamation && order[3] === stack)
+          ) && (
+            (order[4] === boss && order[5] === 'none') ||
+            (order[4] === 'none' && order[5] === boss)
+          )
+        ) {
+          // Technically, this strategy does not care about Near/Far, but
+          // included as informational
+          switch (ability) {
+            case headMarkerData['projectionTether']:
+              return output.projectionTetherBait!({
+                mech1: output.timelessSpite!(),
+                spiteBaits: isNear ? output.near!() : output.far!(),
+                mech2: output.stackDir!({ dir: output.dirSW!() }),
+              });
+            case headMarkerData['manaBurstTether']:
+              return output.manaBurstTetherHitbox!({
+                mech1: output.hitboxWest!(),
+                spiteBaits: isNear ? output.near!() : output.far!(),
+                mech2: output.proteans!(),
+              });
+            case headMarkerData['heavySlamTether']:
+              return output.heavySlamTetherBait!({
+                mech1: output.timelessSpite!(),
+                spiteBaits: isNear ? output.near!() : output.far!(),
+                mech2: output.stackDir!({ dir: output.dirSW!() }),
+              });
+            case headMarkerData['fireballSplashTether']:
+              return output.fireballSplashTetherHitbox!({
+                mech1: output.hitboxWest!(),
+                spiteBaits: isNear ? output.near!() : output.far!(),
+                mech2: output.proteans!(),
+              });
+          }
+          return output.noTetherHitbox!({
+            mech1: output.hitboxWest!(),
+            spiteBaits: isNear ? output.near!() : output.far!(),
+            mech2: output.proteans!(),
+          });
         }
-        return output.noTetherFar!({
-          spiteBaits: output.beFar!(),
-          mech1: output.timelessSpite!(),
-          mech2: output.proteans!(),
-          proteanBaits: output.near!(),
+
+        // No built-in strategy / unsupported order, call generic far/near and
+        // what's happening next
+        const getMechanic = (
+          order: string,
+        ): 'proteans' | 'defamation' | 'projection' | 'stack' | 'unknown' => {
+          if (order === boss)
+            return 'proteans';
+          if (order === defamation || order === 'none')
+            return 'defamation';
+          if (order === projection)
+            return 'projection';
+          if (order === stack)
+            return 'stack';
+          return 'unknown';
+        };
+        const mechanic1 = getMechanic(order[0] ?? 'unknown');
+        const mechanic2 = getMechanic(order[1] ?? 'unknown');
+        const mechanic3 = getMechanic(order[2] ?? 'unknown');
+        const mechanic4 = getMechanic(order[3] ?? 'unknown');
+        return output.netherwrathMechThenMech!({
+          spiteBaits: isNear ? output.near!() : output.far!(),
+          mech1: output[mechanic1]!(),
+          mech2: output[mechanic2]!(),
+          mech3: output[mechanic3]!(),
+          mech4: output[mechanic4]!(),
         });
       },
       outputStrings: {
+        dirSW: Outputs.dirSW,
         scaldingWave: Outputs.protean,
         timelessSpite: Outputs.stackPartner,
         stacks: Outputs.stacks,
+        stackDir: {
+          en: 'Stack ${dir}',
+        },
         proteans: {
           en: 'Proteans',
         },
@@ -3665,6 +3760,9 @@ const triggerSet: TriggerSet<Data> = {
         },
         beFar: {
           en: 'Be Far',
+        },
+        hitboxWest: {
+          en: 'Be West on Boss Hitbox',
         },
         near: {
           en: 'Near',
@@ -3709,6 +3807,32 @@ const triggerSet: TriggerSet<Data> = {
         },
         noTetherNear: {
           en: '${spiteBaits} + ${mech1} (${mech2} ${proteanBaits})',
+        },
+        projectionTetherBait: {
+          en: '${mech1} (${spiteBaits} Baits) => ${mech2}',
+        },
+        manaBurstTetherHitbox: {
+          en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
+        },
+        heavySlamTetherBait: {
+          en: '${mech1} (${spiteBaits} Baits) => ${mech2}',
+        },
+        fireballSplashTetherHitbox: {
+          en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
+        },
+        noTetherHitbox: {
+          en: '${mech1} + Avoid ${spiteBaits} Baits => ${mech2}',
+        },
+        stack: Outputs.stackMarker,
+        projection: {
+          en: 'Cones',
+        },
+        defamation: {
+          en: 'Defamation',
+        },
+        unknown: Outputs.unknown,
+        netherwrathMechThenMech: {
+          en: '${spiteBaits} Baits + ${mech1} N + ${mech2} S => ${mech3} NE + ${mech4} SW',
         },
       },
     },
