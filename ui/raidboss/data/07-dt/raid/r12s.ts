@@ -3711,8 +3711,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Reenactment 1 Scalding Waves Collect',
-      // Players need to wait for BBE3 Mana Burst Defamations on the clones to complete before next mechanic
-      // NOTE: This is used with DN Strategy
+      // In DN, Players need to wait for BBE3 Mana Burst Defamations on the clones to complete before next mechanic
       type: 'Ability',
       netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
       condition: (data) => data.phase === 'reenactment1',
@@ -3720,7 +3719,7 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.netherwrathFollowup = true,
     },
     {
-      id: 'R12S Reenactment 1 Clone Stacks',
+      id: 'R12S Reenactment 1 Clone Stacks E/W',
       // Players need to wait for BBE3 Mana Burst defamations on clones to complete
       // This happens three times during reenactment and the third one (which is after the proteans) is the trigger
       // NOTE: This is used with DN Strategy
@@ -3753,7 +3752,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Reenactment 1 Final Defamation Dodge Reminder',
+      id: 'R12S Reenactment 1 Final Defamation SE Dodge Reminder',
       // Players need to run back to north after clone stacks (BE5D Heavy Slam)
       // The clone stacks become a defamation and the other a cleave going East or West through the room
       // NOTE: This is used with DN Strategy
