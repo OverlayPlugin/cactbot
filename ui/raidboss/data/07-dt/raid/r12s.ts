@@ -1,6 +1,7 @@
 import Conditions from '../../../../../resources/conditions';
 import { UnreachableCode } from '../../../../../resources/not_reached';
 import Outputs from '../../../../../resources/outputs';
+import { callOverlayHandler } from '../../../../../resources/overlay_plugin_api';
 import { Responses } from '../../../../../resources/responses';
 import { DirectionOutputIntercard, Directions } from '../../../../../resources/util';
 import ZoneId from '../../../../../resources/zone_id';
@@ -19,6 +20,7 @@ export type Phase =
 
 export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
+    curtainCallStrat: 'ns' | 'none';
     uptimeKnockbackStrat: true | false;
   };
   phase: Phase;
@@ -27,9 +29,9 @@ export interface Data extends RaidbossData {
   mortalSlayerGreenRight: number;
   mortalSlayerPurpleIsLeft?: boolean;
   ravenousReach1SafeSide?: 'east' | 'west';
-  act1SafeCorner?: 'northwest' | 'northeast';
-  curtainCallSafeCorner?: 'northwest' | 'northeast';
-  splattershedStackDir?: 'northwest' | 'northeast';
+  act1SafeCorner?: 'northeast' | 'northwest';
+  curtainCallSafeCorner?: 'northeast' | 'northwest';
+  splattershedStackDir?: 'northeast' | 'northwest';
   grotesquerieCleave?:
     | 'rightCleave'
     | 'leftCleave'
@@ -43,6 +45,7 @@ export interface Data extends RaidbossData {
   cellChainCount: number;
   myMitoticPhase?: string;
   hasRot: boolean;
+  myCurtainCallSafeSpot?: 'northeast' | 'southeast' | 'southwest' | 'northwest';
   // Phase 2
 }
 
@@ -85,6 +88,21 @@ const triggerSet: TriggerSet<Data> = {
   id: 'AacHeavyweightM4Savage',
   zoneId: ZoneId.AacHeavyweightM4Savage,
   config: [
+    {
+      id: 'curtainCallStrat',
+      name: {
+        en: 'Curtain Call Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'North/Side Relative Strategy: North players go Northeast/Northwest, South players go relative to side.':
+            'ns',
+          'No strategy: Calls both safe spots.': 'none',
+        },
+      },
+      default: 'none',
+    },
     {
       id: 'uptimeKnockbackStrat',
       name: {
@@ -1624,6 +1642,76 @@ const triggerSet: TriggerSet<Data> = {
         },
         alphaChains: {
           en: '${chains} => ${safe}',
+        },
+      },
+    },
+    {
+      id: 'R12S Curtain Call Safe Spot',
+      type: 'LosesEffect',
+      netRegex: { effectId: '1291', capture: true },
+      condition: (data, matches) => {
+        if (matches.target === data.me && data.phase === 'curtainCall')
+          return true;
+        return false;
+      },
+      promise: async (data) => {
+        if (data.triggerSetConfig.curtainCallStrat !== 'ns')
+          return;
+        const dir1 = data.curtainCallSafeCorner;
+        const dir2 = dir1 === 'northwest' ? 'southeast' : 'southwest'; // NOTE: Not checking for undefined
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R12S Curtain Call Safe Spot: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        const x = me.PosX;
+        const y = me.PosY;
+        // Loose detection for "closeness"
+        if (y > 100) {
+          // Southern most players, check if they should run north or south
+          if (x < 100)
+            data.myCurtainCallSafeSpot = dir1 === 'northeast' ? dir2 : dir1;
+          else if (x >= 100)
+            data.myCurtainCallSafeSpot = dir1 === 'northeast' ? dir1 : dir2;
+        } else if (y <= 100) {
+          // Northern most players run to the northern most safe spot
+          data.myCurtainCallSafeSpot = dir1;
+        }
+      },
+      alertText: (data, _matches, output) => {
+        if (data.triggerSetConfig.curtainCallStrat === 'none') {
+          const dir1 = data.curtainCallSafeCorner;
+          const dir2 = dir1 === 'northwest' ? 'southeast' : 'southwest'; // NOTE: Not checking for undefined
+          if (dir1 === undefined)
+            return output.avoidBlobs!();
+          return output.safeSpots!({
+            dir1: output[dir1]!(),
+            dir2: output[dir2]!(),
+          });
+        }
+
+        const myCurtainCallSafeSpot = data.myCurtainCallSafeSpot;
+        if (myCurtainCallSafeSpot === undefined)
+          return output.avoidBlobs!();
+        return output[myCurtainCallSafeSpot]!();
+      },
+      outputStrings: {
+        northeast: Outputs.northeast,
+        southeast: Outputs.southeast,
+        southwest: Outputs.southwest,
+        northwest: Outputs.northwest,
+        avoidBlobs: {
+          en: 'Avoid Blobs',
+        },
+        safeSpots: {
+          en: '${dir1}/${dir2}',
         },
       },
     },
