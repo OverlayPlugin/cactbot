@@ -3846,6 +3846,59 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.netherwrathFollowup = true,
     },
     {
+      id: 'R12S Reenactment 1 Clone Stack SW',
+      // In Banana Codex, SW Clone Stack happens after N/S Clone Projections
+      // Defamation Tether Players, Boss Tether Player, and No Tether Player take stack
+      // Using B922 Hemorrhagic Projection from clones
+      type: 'Ability',
+      netRegex: { id: 'B922', source: 'Lindwurm', capture: false },
+      condition: (data) => {
+        const order = data.replication2AbilityOrder;
+        const stack = headMarkerData['heavySlamTether'];
+        const defamation = headMarkerData['manaBurstTether'];
+        const projection = headMarkerData['projectionTether'];
+        // Defined as N/S clones with projections and NE/SW with defamation + stack
+        if (
+          order[0] === projection && order[1] === projection &&
+          (
+            (order[2] === defamation && order[3] === stack) ||
+            (order[2] === stack && order[3] === defamation)
+          )
+        )
+          return true;
+        return false;
+      },
+      suppressSeconds: 9999, // Projection happens twice here
+      response: (data, _matches, output) => {
+        // cactbot-builtin-response
+        output.responseOutputStrings = {
+          stackThenStack: {
+            en: 'Stack on SW Clone => Stack on NW Clone',
+          },
+          avoidStackThenProtean: {
+            en: 'Avoid Stack => Bait Protean',
+          },
+          stacksThenProtean: {
+            en: 'SW Clone Stack => West Proteans',
+          },
+        };
+
+        const ability = data.replication2PlayerAbilities[data.me];
+        switch (ability) {
+          case headMarkerData['projectionTether']:
+          case headMarkerData['heavySlamTether']:
+            return { infoText: output.avoidStackThenProtean!() };
+          case headMarkerData['manaBurstTether']:
+          case headMarkerData['fireballSplashTether']:
+          case 'none':
+            return { alertText: output.stackThenStack!() };
+        }
+
+        // Missing ability data, output mechanic order
+       return { infoText: output.stacksThenProtean!() };
+      },
+    },
+    {
       id: 'R12S Reenactment 1 Clone Stacks E/W',
       // Players need to wait for BBE3 Mana Burst defamations on clones to complete
       // This happens three times during reenactment and the third one (which is after the proteans) is the trigger
