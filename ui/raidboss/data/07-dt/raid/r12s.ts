@@ -3086,8 +3086,8 @@ const triggerSet: TriggerSet<Data> = {
                   return output.projectionTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
                       ? output.baitProteanStrategy!({
-                          strat: output['dirWSW']!(),
-                        }) // Southmost protean
+                        strat: output['dirWSW']!(),
+                      }) // Southmost protean
                       : output.baitProtean!(),
                   });
                 case 1: // DN only
@@ -3100,8 +3100,8 @@ const triggerSet: TriggerSet<Data> = {
                   return output.projectionTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
                       ? output.baitProteanStrategy!({
-                          strat: output['dirWNW']!(),
-                        }) // Northmost protean
+                        strat: output['dirWNW']!(),
+                      }) // Northmost protean
                       : output.baitProtean!(),
                   });
                 case 7: // DN only
@@ -3123,30 +3123,30 @@ const triggerSet: TriggerSet<Data> = {
                 case 1: // Banana Only
                   return output.manaBurstTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.defamationOnYouStrategy!({
+                      ? output.defamationOnYouStrategy!({
                         strat: output['dirNNE']!(),
                       }) // North/NNE
-                    : output.defamationOnYou!(),
+                      : output.defamationOnYou!(),
                   });
                 case 3:
                   return output.manaBurstTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.defamationOnYouStrategy!({
+                      ? output.defamationOnYouStrategy!({
                         strat: output['dirESE']!(),
                       }) // East/ESE
-                    : data.triggerSetConfig.replication2Strategy === 'banana'
-                    ? output.defamationOnYouStrategy!({
+                      : data.triggerSetConfig.replication2Strategy === 'banana'
+                      ? output.defamationOnYouStrategy!({
                         strat: output['dirSSE']!(),
                       }) // South/SSE
-                    : output.defamationOnYou!(),
+                      : output.defamationOnYou!(),
                   });
                 case 5: // DN Only
                   return output.manaBurstTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                    ? output.defamationOnYouStrategy!({
+                      ? output.defamationOnYouStrategy!({
                         strat: output['dirWSW']!(),
                       }) // West/WSW
-                    : output.defamationOnYou!(),
+                      : output.defamationOnYou!(),
                   });
               }
               return output.manaBurstTether!({
@@ -3158,8 +3158,8 @@ const triggerSet: TriggerSet<Data> = {
                   return output.heavySlamTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
                       ? output.baitProteanStrategy!({
-                          strat: output['dirNNE']!(),
-                        }) // Eastmost Protean
+                        strat: output['dirNNE']!(),
+                      }) // Eastmost Protean
                       : output.baitProtean!(),
                   });
                 case 5: // Banana Only
@@ -3172,8 +3172,8 @@ const triggerSet: TriggerSet<Data> = {
                   return output.heavySlamTether!({
                     mech1: data.triggerSetConfig.replication2Strategy === 'dn'
                       ? output.baitProteanStrategy!({
-                          strat: output['dirNNW']!(),
-                        }) // Westmost Protean
+                        strat: output['dirNNW']!(),
+                      }) // Westmost Protean
                       : output.baitProtean!(),
                   });
                 case 7: // Banana Only
@@ -3210,8 +3210,8 @@ const triggerSet: TriggerSet<Data> = {
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
                     ? output.baitProteanStrategy!({
-                        strat: output['dirWSW']!(),
-                      }) // Southmost protean
+                      strat: output['dirWSW']!(),
+                    }) // Southmost protean
                     : output.baitProtean!(),
                 });
               case 1: // DN only
@@ -3226,8 +3226,8 @@ const triggerSet: TriggerSet<Data> = {
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
                     ? output.baitProteanStrategy!({
-                        strat: output['dirWNW']!(),
-                      }) // Northmost protean
+                      strat: output['dirWNW']!(),
+                    }) // Northmost protean
                     : output.baitProtean!(),
                 });
               case 7: // DN only
@@ -3253,31 +3253,31 @@ const triggerSet: TriggerSet<Data> = {
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'banana'
                   ? output.defamationOnYouStrategy!({
-                      strat: output['dirNNE']!(),
-                    }) // North/NNE
+                    strat: output['dirNNE']!(),
+                  }) // North/NNE
                   : output.defamationOnYou!(),
                 });
               case 3:
                 return output.manaBurstTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                  ? output.defamationOnYouStrategy!({
+                    ? output.defamationOnYouStrategy!({
                       strat: output['dirESE']!(),
                     }) // East/ESE
-                  : data.triggerSetConfig.replication2Strategy === 'banana'
-                  ? output.defamationOnYouStrategy!({
+                    : data.triggerSetConfig.replication2Strategy === 'banana'
+                    ? output.defamationOnYouStrategy!({
                       strat: output['dirSSE']!(),
                     }) // South/SSE
-                  : output.defamationOnYou!(),
+                    : output.defamationOnYou!(),
                 });
               case 5: // DN Only
                 return output.manaBurstTetherDir!({
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
-                  ? output.defamationOnYouStrategy!({
+                    ? output.defamationOnYouStrategy!({
                       strat: output['dirWSW']!(),
                     }) // West/WSW
-                  : output.defamationOnYou!(),
+                    : output.defamationOnYou!(),
                 });
             }
             return output.manaBurstTetherDir!({
@@ -3291,8 +3291,8 @@ const triggerSet: TriggerSet<Data> = {
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
                     ? output.baitProteanStrategy!({
-                        strat: output['dirNNE']!(),
-                      }) // Eastmost Protean
+                      strat: output['dirNNE']!(),
+                    }) // Eastmost Protean
                     : output.baitProtean!(),
                 });
               case 5: // Banana Only
@@ -3307,8 +3307,8 @@ const triggerSet: TriggerSet<Data> = {
                   dir: output[dir]!(),
                   mech1: data.triggerSetConfig.replication2Strategy === 'dn'
                     ? output.baitProteanStrategy!({
-                        strat: output['dirNNW']!(),
-                      }) // Westmost Protean
+                      strat: output['dirNNW']!(),
+                    }) // Westmost Protean
                     : output.baitProtean!(),
                 });
               case 7: // Banana Only
