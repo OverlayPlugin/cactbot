@@ -4233,7 +4233,7 @@ const triggerSet: TriggerSet<Data> = {
       // Black Holes and shapes
       type: 'Ability',
       netRegex: { id: 'B4FD', source: 'Mana Sphere', capture: false },
-      delaySeconds: 0.1,
+      delaySeconds: 0.2,
       durationSeconds: 8.3,
       suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
