@@ -3029,7 +3029,6 @@ const triggerSet: TriggerSet<Data> = {
           if (data.replication2PlayerAbilities[data.me] === undefined)
             data.replication2PlayerAbilities[data.me] = 'none';
 
-          // Used for Twisted Vision 7 and 8 mechanics
           const abilities = data.replication2PlayerAbilities;
           const order = [0, 4, 1, 5, 2, 6, 3, 7]; // Order in which clones spawned, this is static
           const players = data.replication2CloneDirNumPlayers; // Direction of player's clone
@@ -3037,7 +3036,11 @@ const triggerSet: TriggerSet<Data> = {
           // Mechanics are resolved clockwise
           for (const dirNum of order) {
             const player = players[dirNum] ?? 'unknown';
-            const ability = abilities[player] ?? 'unknown';
+            // No Tether player wouldn't have an ability found for other
+            // players, so this can be set to 'none' here when undefined
+            // Additional players missing abilities, but received a tether
+            // would have 'unknown' instead of undefined
+            const ability = abilities[player] ?? 'none';
             data.replication2PlayerOrder.push(player);
             data.replication2AbilityOrder.push(ability);
           }
