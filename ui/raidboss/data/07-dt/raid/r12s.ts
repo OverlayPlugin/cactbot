@@ -532,6 +532,78 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Act 1 Blob Safe Spots (early)',
+      // Activating on B49D Ravenous Reach conclusion
+      type: 'Ability',
+      netRegex: { id: 'B49D', source: 'Lindwurm', capture: true },
+      delaySeconds: 0.3, // Delay until debuffs ended
+      suppressSeconds: 9999, // In case players are hit by the ability
+      infoText: (data, _matches, output) => {
+        const reach = data.ravenousReach1SafeSide;
+        const dir1 = data.act1SafeCorner;
+        const dir2 = dir1 === 'northwest' ? 'east' : 'west'; // NOTE: Not checking undefined here
+
+        // Safe spot of side party is assumed to be on
+        if (data.role !== 'tank') {
+          const dir = dir1 === undefined
+            ? dir1
+            : reach === dir2
+            ? dir2
+            : reach === dir1.slice(5)
+            ? dir1
+            : undefined;
+
+          if (dir1) {
+            if (dir) {
+              return output.safeSpot!({
+                safe: output[dir]!(),
+              });
+            }
+            return output.safeSpot!({
+              safe: output.safeDirs!({
+                dir1: output[dir1]!(),
+                dir2: output[dir2]!(),
+              }),
+            });
+          }
+        }
+
+        // Safe spot of opposite assumed side party will be
+        const dir = dir1 === undefined
+          ? dir1
+          : reach === dir2
+          ? dir1
+          : reach === dir1.slice(5)
+          ? dir2
+          : undefined;
+        if (dir1) {
+          if (dir) {
+            return output.safeSpot!({
+              safe: output[dir]!(),
+            });
+          }
+          return output.safeSpot!({
+            safe: output.safeDirs!({
+              dir1: output[dir1]!(),
+              dir2: output[dir2]!(),
+            }),
+          });
+        }
+      },
+      outputStrings: {
+        northeast: Outputs.northeast,
+        east: Outputs.east,
+        west: Outputs.west,
+        northwest: Outputs.northwest,
+        safeSpot: {
+          en: '${safe} (later)',
+        },
+        safeDirs: {
+          en: '${dir1}/${dir2}',
+        },
+      },
+    },
+    {
       id: 'R12S Fourth-wall Fusion Stack',
       type: 'HeadMarker',
       netRegex: { id: headMarkerData['stack'], capture: true },
@@ -600,7 +672,7 @@ const triggerSet: TriggerSet<Data> = {
         stackOnYou: Outputs.stackOnYou,
         stackOnTarget: Outputs.stackOnPlayer,
         stackSafe: {
-          en: '${stack} + ${safe}',
+          en: '${stack} ${safe}',
         },
         stackDirs: {
           en: '${dir1}/${dir2}',
