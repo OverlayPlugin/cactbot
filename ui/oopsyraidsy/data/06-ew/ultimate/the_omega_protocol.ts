@@ -1507,6 +1507,44 @@ const triggerSet: OopsyTriggerSet<Data> = {
       }),
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Omega': 'Omega',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Omega': 'Oméga',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Omega': 'オメガ',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Omega': '欧米茄',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Omega': '오메가',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Omega': '歐米茄',
+      },
+    },
+  ],
 };
 
 export default triggerSet;

@@ -51,6 +51,44 @@ const triggerSet: OopsyTriggerSet<Data> = {
       },
     },
   ],
+  timelineReplace: [
+    {
+      'locale': 'de',
+      'replaceSync': {
+        'Themis': 'Themis',
+      },
+    },
+    {
+      'locale': 'fr',
+      'replaceSync': {
+        'Themis': 'Thémis',
+      },
+    },
+    {
+      'locale': 'ja',
+      'replaceSync': {
+        'Themis': 'テミス',
+      },
+    },
+    {
+      'locale': 'cn',
+      'replaceSync': {
+        'Themis': '特弥斯',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Themis': '테미스',
+      },
+    },
+    {
+      'locale': 'tc',
+      'replaceSync': {
+        'Themis': '特彌斯',
+      },
+    },
+  ],
 };
 
 export default triggerSet;
