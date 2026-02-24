@@ -535,7 +535,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Act 1 Blob Safe Spots (early)',
       // Activating on B49D Ravenous Reach conclusion
       type: 'Ability',
-      netRegex: { id: 'B49D', source: 'Lindwurm', capture: true },
+      netRegex: { id: 'B49D', source: 'Lindwurm', capture: false },
       delaySeconds: 0.3, // Delay until debuffs ended
       suppressSeconds: 9999, // In case players are hit by the ability
       infoText: (data, _matches, output) => {
