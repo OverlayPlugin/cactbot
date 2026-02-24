@@ -8,6 +8,7 @@ import {
   ConfigProcessedFile,
   ConfigProcessedFileMap,
 } from '../config/config';
+import { ConfigSearch } from '../config/config_search';
 
 import { generateBuffTriggerIds } from './buff_map';
 import oopsyFileData from './data/oopsy_manifest.txt';
@@ -60,6 +61,8 @@ class OopsyConfigurator {
   buildUI(container: HTMLElement, files: OopsyFileData) {
     const fileMap = this.processOopsyFiles(files);
 
+    new ConfigSearch(this.base, container);
+
     const expansionDivs: { [expansion: string]: HTMLElement } = {};
 
     for (const info of Object.values(fileMap)) {
@@ -87,6 +90,9 @@ class OopsyConfigurator {
 
       const triggerContainer = document.createElement('div');
       triggerContainer.classList.add('trigger-file-container', 'collapsed');
+
+      ConfigSearch.setContainerData(triggerContainer, { title: info.title });
+
       expansionDiv.appendChild(triggerContainer);
 
       const headerDiv = document.createElement('div');
@@ -116,6 +122,9 @@ class OopsyConfigurator {
         const triggerDiv = document.createElement('div');
         triggerDiv.innerHTML = id;
         triggerDiv.classList.add('trigger');
+
+        ConfigSearch.setTriggerData(triggerDiv, { id: id });
+
         triggerOptions.appendChild(triggerDiv);
 
         // Build the trigger comment

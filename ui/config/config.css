@@ -439,3 +439,68 @@ input[type="checkbox"] {
   width: 15px;
   height: 15px;
 }
+
+.trigger-search-container.trigger-search-container {
+  grid-column: 1 / span 2;
+  margin: 10px 0 0;
+  padding: 0;
+  display: block;
+  position: relative;
+}
+
+.trigger-search-input.trigger-search-input {
+  display: block;
+  width: 100%;
+  padding: 10px 40px;
+  font-size: 16px;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.trigger-search-input.trigger-search-input:focus {
+  background-color: #fff;
+  border-color: #4a90e2;
+  box-shadow: 0 2px 8px rgb(74 144 226 / 20%);
+}
+
+.trigger-search-input.trigger-search-input::placeholder {
+  color: #bbb;
+  font-style: italic;
+}
+
+.trigger-search-clear.trigger-search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  display: none;
+}
+
+.trigger-search-clear.trigger-search-clear:hover {
+  opacity: 1;
+}
+
+.trigger-search-no-matches {
+  grid-column: 1 / span 2;
+  text-align: center;
+  padding: 30px;
+  color: #888;
+  font-style: italic;
+  font-size: 16px;
+}

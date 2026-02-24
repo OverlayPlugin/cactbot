@@ -9,6 +9,7 @@ import {
   languages,
 } from '../../resources/languages';
 import { UnreachableCode } from '../../resources/not_reached';
+import { bindSearchInput, TextSearchEngine } from '../../resources/text_search_engine';
 import ZoneInfo from '../../resources/zone_info';
 import { LocaleObject, LocaleText } from '../../types/trigger';
 import { kDirectoryToCategory, kPrefixToCategory } from '../../ui/config/config';
@@ -632,6 +633,14 @@ const miscStrings = {
     ko: '이 항목으로의 링크',
     tc: '此條目連結',
   },
+  zoneFilter: {
+    en: 'Zone Filter',
+    cn: '副本筛选',
+  },
+  searchPlaceholder: {
+    en: 'Search...',
+    cn: '搜索...',
+  },
 } as const;
 
 const translationGridHeaders = {
@@ -1112,6 +1121,9 @@ aria-expanded="${
 const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) => {
   buildZoneTableHeader(container, lang);
 
+  const engine = new TextSearchEngine();
+  const rowSearchText = new Map<HTMLElement, string>();
+
   const checkedZoneIds: number[] = [];
 
   const tbody = document.createElement('tbody');
@@ -1235,19 +1247,22 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
 
   container.appendChild(tbody);
 
+  container.querySelectorAll('.zone-table-content-row').forEach((row) => {
+    // `innerText` is vastly slower to scan all rows here, ~750ms with `innerText`
+    // vs ~45ms with `textContent`
+    if (row instanceof HTMLElement && (row.textContent !== null)) {
+      rowSearchText.set(row, row.textContent.toLowerCase());
+    }
+  });
+
   const searchInput = document.getElementById('zone-table-filter');
 
   if (searchInput === null || !(searchInput instanceof HTMLInputElement))
     throw new UnreachableCode();
 
-  let lastFilterValue = '';
-
-  const filter = () => {
-    const lcValue = searchInput.value.toLowerCase();
-    if (lastFilterValue === lcValue)
-      return;
-
-    lastFilterValue = lcValue;
+  const performFilter = () => {
+    const lcValue = searchInput.value.trim().toLowerCase();
+    const parts = engine.parseQuery(lcValue);
 
     // Hide rows that don't match our filter
     container.querySelectorAll('.zone-table-content-row').forEach((row) => {
@@ -1261,9 +1276,8 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
       if (dataRow === null || !(dataRow instanceof HTMLElement))
         return;
 
-      // `innerText` is vastly slower to scan all rows here, ~750ms with `innerText`
-      // vs ~45ms with `textContent`
-      const display = row.textContent?.toLowerCase().includes(lcValue);
+      const searchText = rowSearchText.get(row) ?? '';
+      const display = engine.matchParts(searchText, parts);
 
       if (display) {
         row.classList.remove('d-none');
@@ -1308,14 +1322,61 @@ const buildZoneTable = (container: HTMLElement, lang: Lang, coverage: Coverage) 
         row.classList.add('d-none');
       }
     });
+
+    container.querySelectorAll('.spacer-row').forEach((row) => {
+      if (!(row instanceof HTMLElement))
+        return;
+
+      let hasVisibleAbove = false;
+      let prevSibling = row.previousSibling;
+      while (prevSibling !== null) {
+        if (!(prevSibling instanceof HTMLElement)) {
+          prevSibling = prevSibling.previousSibling;
+          continue;
+        }
+
+        if (prevSibling.classList.contains('spacer-row'))
+          break;
+        if (
+          prevSibling.classList.contains('zone-table-content-row') &&
+          !prevSibling.classList.contains('d-none')
+        ) {
+          hasVisibleAbove = true;
+          break;
+        }
+        prevSibling = prevSibling.previousSibling;
+      }
+
+      let hasVisibleBelow = false;
+      let nextSibling = row.nextSibling;
+      while (nextSibling !== null) {
+        if (!(nextSibling instanceof HTMLElement)) {
+          nextSibling = nextSibling.nextSibling;
+          continue;
+        }
+
+        if (
+          nextSibling.classList.contains('zone-table-content-row') &&
+          !nextSibling.classList.contains('d-none')
+        ) {
+          hasVisibleBelow = true;
+          break;
+        }
+        nextSibling = nextSibling.nextSibling;
+      }
+
+      if (hasVisibleAbove && hasVisibleBelow) {
+        row.classList.remove('d-none');
+      } else {
+        row.classList.add('d-none');
+      }
+    });
   };
 
-  for (const ev of ['blur', 'change', 'keydown', 'keypress', 'keyup']) {
-    searchInput.addEventListener(ev, filter);
-  }
+  bindSearchInput(searchInput, engine, performFilter);
 
   // Fire an initial filter to hide unused category header rows
-  filter();
+  performFilter();
 };
 
 const buildThemeSelect = (container: HTMLElement, lang: Lang) => {
@@ -1409,6 +1470,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!translationGrid)
     throw new UnreachableCode();
   buildTranslationTable(translationGrid, lang, translationTotals);
+
+  const zoneFilterLabel = document.getElementById('zone-filter-label');
+  if (zoneFilterLabel)
+    zoneFilterLabel.innerText = translate(miscStrings.zoneFilter, lang);
+
+  const zoneTableFilter = document.getElementById('zone-table-filter');
+  if (zoneTableFilter instanceof HTMLInputElement)
+    zoneTableFilter.placeholder = translate(miscStrings.searchPlaceholder, lang);
 
   const zoneGrid = document.getElementById('zone-table');
   if (!zoneGrid)
