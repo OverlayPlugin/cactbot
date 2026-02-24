@@ -572,9 +572,9 @@ const triggerSet: TriggerSet<Data> = {
         ) {
           // Curtain Call Safe Spots
           if (x < 92)
-            data.curtainCallSafeCorner = 'northwest';
-          else if (x > 109)
             data.curtainCallSafeCorner = 'northeast';
+          else if (x > 109)
+            data.curtainCallSafeCorner = 'northwest';
         } else if (
           data.act1SafeCorner !== undefined &&
           data.curtainCallSafeCorner !== undefined &&
