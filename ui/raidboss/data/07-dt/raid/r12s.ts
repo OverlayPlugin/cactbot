@@ -4635,14 +4635,14 @@ const triggerSet: TriggerSet<Data> = {
           case 'B510': {
             const y = parseFloat(matches.y);
             data.idyllicVision2NorthSouthCleaveSpot = y < center.y ? 'north' : 'south';
-            data.idyllicDreamActorEW = matches.sourceId;
+            data.idyllicDreamActorNS = matches.sourceId;
             return;
           }
           case 'B511':
             data.idyllicDreamActorSnaking = matches.sourceId;
             return;
           case 'B50F':
-            data.idyllicDreamActorNS = matches.sourceId;
+            data.idyllicDreamActorEW = matches.sourceId;
             return;
         }
       },
