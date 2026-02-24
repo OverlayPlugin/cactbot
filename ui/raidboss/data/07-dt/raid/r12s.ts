@@ -3761,31 +3761,31 @@ const triggerSet: TriggerSet<Data> = {
               return output.projectionTetherBait!({
                 mech1: output.timelessSpite!(),
                 spiteBaits: isNear ? output.near!() : output.far!(),
-                mech2: output.stackDir!({ dir: output.dirSW!() }),
+                mech2: output.proteans!(),
               });
             case headMarkerData['manaBurstTether']:
               return output.manaBurstTetherHitbox!({
                 mech1: output.hitboxWest!(),
                 spiteBaits: isNear ? output.near!() : output.far!(),
-                mech2: output.proteans!(),
+                mech2: output.stackDir!({ dir: output.dirSW!() }),
               });
             case headMarkerData['heavySlamTether']:
               return output.heavySlamTetherBait!({
                 mech1: output.timelessSpite!(),
                 spiteBaits: isNear ? output.near!() : output.far!(),
-                mech2: output.stackDir!({ dir: output.dirSW!() }),
+                mech2: output.proteans!(),
               });
             case headMarkerData['fireballSplashTether']:
               return output.fireballSplashTetherHitbox!({
                 mech1: output.hitboxWest!(),
                 spiteBaits: isNear ? output.near!() : output.far!(),
-                mech2: output.proteans!(),
+                mech2: output.stackDir!({ dir: output.dirSW!() }),
               });
           }
           return output.noTetherHitbox!({
             mech1: output.hitboxWest!(),
             spiteBaits: isNear ? output.near!() : output.far!(),
-            mech2: output.proteans!(),
+            mech2: output.stackDir!({ dir: output.dirSW!() }),
           });
         }
 
