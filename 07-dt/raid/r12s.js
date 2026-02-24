@@ -50,6 +50,10 @@ Options.Triggers.push({
              Callout happens during/after first animation and requires <1.8s reaction time
              to avoid both Northwest and Northeast knockbacks.
              NOTE: This will call for each set.`,
+        ko: `cactbot이 맹수의 주먹 이중 넉백 알람을 불러주게 하려면 이 옵션을 활성화하세요.
+             첫 번째 애니메이션 중/후에 알림이 발생하며,
+             북서쪽과 북동쪽 넉백을 모두 피하려면 1.8초 미만의 반응 시간이 필요합니다.
+             참고: 각 세트마다 호출됩니다.`,
       },
       type: 'checkbox',
       default: false,
@@ -136,9 +140,11 @@ Options.Triggers.push({
         output.responseOutputStrings = {
           tanksLeft: {
             en: 'Tanks Left',
+            ko: '탱커 왼쪽',
           },
           tanksRight: {
             en: 'Tanks Right',
+            ko: '탱커 오른쪽',
           },
         };
         const severity = data.role === 'tank' ? 'alertText' : 'infoText';
@@ -237,7 +243,7 @@ Options.Triggers.push({
           fr: 'Cleave Avant',
           ja: '口からおくび',
           cn: '前方扇形',
-          ko: '전방 부채꼴 장판',
+          ko: '전방 부채꼴',
           tc: '前方扇形',
         },
         rearCleave: {
@@ -246,7 +252,7 @@ Options.Triggers.push({
           fr: 'Cleave Arrière',
           ja: '尻からおなら',
           cn: '背后扇形',
-          ko: '후방 부채꼴 장판',
+          ko: '후방 부채꼴',
           tc: '背後扇形',
         },
         leftCleave: {
@@ -255,7 +261,7 @@ Options.Triggers.push({
           fr: 'Cleave gauche',
           ja: '左半面へ攻撃',
           cn: '左刀',
-          ko: '왼쪽 공격',
+          ko: '왼쪽 부채꼴',
           tc: '左刀',
         },
         rightCleave: {
@@ -264,14 +270,16 @@ Options.Triggers.push({
           fr: 'Cleave droit',
           ja: '右半面へ攻撃',
           cn: '右刀',
-          ko: '오른쪽 공격',
+          ko: '오른쪽 부채꼴',
           tc: '右刀',
         },
         baitThenStack: {
           en: 'Bait 4x Puddles => ${stack}',
+          ko: '장판 유도 4x => ${stack}',
         },
         baitThenStackCleave: {
           en: 'Bait 4x Puddles => ${stack} + ${cleave}',
+          ko: '장판 유도 4x => ${stack} + ${cleave}',
         },
       },
     },
@@ -299,7 +307,7 @@ Options.Triggers.push({
           fr: 'Cleave Avant',
           ja: '口からおくび',
           cn: '前方扇形',
-          ko: '전방 부채꼴 장판',
+          ko: '전방 부채꼴',
           tc: '前方扇形',
         },
         rearCleave: {
@@ -308,7 +316,7 @@ Options.Triggers.push({
           fr: 'Cleave Arrière',
           ja: '尻からおなら',
           cn: '背后扇形',
-          ko: '후방 부채꼴 장판',
+          ko: '후방 부채꼴',
           tc: '背後扇形',
         },
         leftCleave: {
@@ -317,7 +325,7 @@ Options.Triggers.push({
           fr: 'Cleave gauche',
           ja: '左半面へ攻撃',
           cn: '左刀',
-          ko: '왼쪽 공격',
+          ko: '왼쪽 부채꼴',
           tc: '左刀',
         },
         rightCleave: {
@@ -326,17 +334,20 @@ Options.Triggers.push({
           fr: 'Cleave droit',
           ja: '右半面へ攻撃',
           cn: '右刀',
-          ko: '오른쪽 공격',
+          ko: '오른쪽 부채꼴',
           tc: '右刀',
         },
         baitThenSpread: {
           en: 'Bait 4x Puddles => Spread',
+          ko: '장판 유도 4x => 산개',
         },
         baitThenSpreadCleave: {
           en: 'Bait 4x Puddles => Spread + ${cleave}',
+          ko: '장판 유도 4x => 산개 + ${cleave}',
         },
         spreadCurtain: {
           en: 'Spread Debuff on YOU',
+          ko: '산개징 대상자',
         },
       },
     },
@@ -480,51 +491,67 @@ Options.Triggers.push({
       outputStrings: {
         alpha1: {
           en: '1α: Wait for Tether 1',
+          ko: '1α: 선 1 기다리기',
         },
         alpha2: {
           en: '2α: Wait for Tether 2',
+          ko: '2α: 선 2 기다리기',
         },
         alpha3: {
           en: '3α: Blob Tower 1',
+          ko: '3α: 살점 탑 1',
         },
         alpha4: {
           en: '4α: Blob Tower 2',
+          ko: '4α: 살점 탑 2',
         },
         beta1: {
           en: '1β: Wait for Tether 1',
+          ko: '1β: 선 1 기다리기',
         },
         beta2: {
           en: '2β: Wait for Tether 2',
+          ko: '2β: 선 2 기다리기',
         },
         beta3: {
           en: '3β: Chain Tower 1',
+          ko: '3β: 설치한 탑 1',
         },
         beta4: {
           en: '4β: Chain Tower 2',
+          ko: '4β: 설치한 탑 2',
         },
         alpha1Tts: {
           en: '1α: Wait for Tether 1',
+          ko: '알파 1: 선 1 기다리기',
         },
         alpha2Tts: {
           en: '2α: Wait for Tether 2',
+          ko: '알파 2: 선 2 기다리기',
         },
         alpha3Tts: {
           en: '3α: Blob Tower 1',
+          ko: '알파 3: 살점 탑 1',
         },
         alpha4Tts: {
           en: '4α: Blob Tower 2',
+          ko: '알파 4: 살점 탑 2',
         },
         beta1Tts: {
           en: '1β: Wait for Tether 1',
+          ko: '베타 1: 선 1 기다리기',
         },
         beta2Tts: {
           en: '2β: Wait for Tether 2',
+          ko: '베타 2: 선 2 기다리기',
         },
         beta3Tts: {
           en: '3β: Chain Tower 1',
+          ko: '베타 3: 설치한 탑 1',
         },
         beta4Tts: {
           en: '4β: Chain Tower 2',
+          ko: '베타 4: 설치한 탑 2',
         },
         order: {
           en: '${num}',
@@ -639,9 +666,11 @@ Options.Triggers.push({
         ...Directions.outputStringsIntercardDir,
         innerBlobTower: {
           en: 'Blob Tower ${num} Inner ${dir} (later)',
+          ko: '살점 탑 ${num} 안쪽 ${dir} (나중에)',
         },
         outerBlobTower: {
           en: 'Blob Tower ${num} Outer ${dir} (later)',
+          ko: '살점 탑 ${num} 바깥쪽 ${dir} (나중에)',
         },
       },
     },
@@ -749,15 +778,19 @@ Options.Triggers.push({
         },
         beta1Tower: {
           en: '${tether} => Chain Tower 3',
+          ko: '${tether} => 설치한 탑 3',
         },
         beta2Tower: {
           en: '${tether} => Chain Tower 4',
+          ko: '${tether} => 설치한 탑 4',
         },
         beta3Tower: {
           en: '${tether} => Chain Tower 1',
+          ko: '${tether} => 설치한 탑 1',
         },
         beta4Tower: {
           en: '${tether} => Chain Tower 2',
+          ko: '${tether} => 설치한 탑 2',
         },
       },
     },
@@ -792,6 +825,7 @@ Options.Triggers.push({
       outputStrings: {
         tower: {
           en: 'Get Chain Tower ${num}',
+          ko: '설치한 탑 ${num} 밟기',
         },
       },
     },
@@ -832,15 +866,19 @@ Options.Triggers.push({
         ...Directions.outputStringsIntercardDir,
         alpha3: {
           en: 'Get Blob Tower 1',
+          ko: '살점 탑 1 밟기',
         },
         alpha4: {
           en: 'Get Blob Tower 2',
+          ko: '살점 탑 2 밟기',
         },
         alpha3Dir: {
           en: 'Get Blob Tower 1 (Inner ${dir})',
+          ko: '살점 탑 1 (안쪽 ${dir}) 밟기',
         },
         alpha4Dir: {
           en: 'Get Blob Tower 2 (Inner ${dir})',
+          ko: '살점 탑 2 (안쪽 ${dir}) 밟기',
         },
       },
     },
@@ -938,36 +976,47 @@ Options.Triggers.push({
         getTowers: Outputs.getTowers,
         alpha1: {
           en: '${chains} 1 (${exit}) + Blob Tower 3 (Outer)',
+          ko: '${chains} 1 (${exit}) + 살점 탑 3 (바깥쪽)',
         },
         alpha1Dir: {
           en: '${chains} 1 (${exit}) + Blob Tower 3 (Outer ${dir})',
+          ko: '${chains} 1 (${exit}) + 살점 탑 3 (바깥쪽 ${dir})',
         },
         alpha1ExitDir: {
           en: '${chains} 1 (${exit}) + Blob Tower 3 (Outer ${dir})',
+          ko: '${chains} 1 (${exit}) + 살점 탑 3 (바깥쪽 ${dir})',
         },
         alpha2: {
           en: '${chains} 2 (${exit}) + Blob Tower 4 (Outer)',
+          ko: '${chains} 2 (${exit}) + 살점 탑 4 (바깥쪽)',
         },
         alpha2Dir: {
           en: '${chains} 2 (${exit}) + Blob Tower 4 (Outer ${dir})',
+          ko: '${chains} 2 (${exit}) + 살점 탑 4 (바깥쪽 ${dir})',
         },
         alpha3: {
           en: '${chains} 3 (${exit}) + Get Out',
+          ko: '${chains} 3 (${exit}) + 밖으로',
         },
         alpha4: {
           en: '${chains} 4 (${exit}) + Get Out',
+          ko: '${chains} 4 (${exit}) + 밖으로',
         },
         beta1: {
           en: '${chains} 1 (${dir}) => Get Middle',
+          ko: '${chains} 1 (${dir}) => 중앙으로',
         },
         beta2: {
           en: '${chains} 2 (${dir}) => Get Middle',
+          ko: '${chains} 2 (${dir}) => 중앙으로',
         },
         beta3: {
           en: '${chains} 3 (${dir}) => Wait for last pair',
+          ko: '${chains} 3 (${dir}) => 마지막 쌍 기다리기',
         },
         beta4: {
           en: '${chains} 4 (${dir}) => Get Out',
+          ko: '${chains} 4 (${dir}) => 밖으로',
         },
       },
     },
@@ -1102,6 +1151,7 @@ Options.Triggers.push({
       outputStrings: {
         outOfCoil: {
           en: 'Out of Coil',
+          ko: '몸통 밖으로',
         },
       },
     },
@@ -1134,15 +1184,19 @@ Options.Triggers.push({
       outputStrings: {
         frontTower: {
           en: 'Tower (S/SW)',
+          ko: '탑 (남/남서)',
         },
         rearTower: {
           en: 'Tower (N/NE)',
+          ko: '탑 (북/북동)',
         },
         leftTower: {
           en: 'Tower (E/SE)',
+          ko: '탑 (동/남동)',
         },
         rightTower: {
           en: 'Tower (W/NW)',
+          ko: '탑 (서/북서)',
         },
       },
     },
@@ -1202,6 +1256,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Rotting Flesh on YOU',
+          ko: '치사세포 대상자',
         },
       },
     },
@@ -1229,15 +1284,19 @@ Options.Triggers.push({
       outputStrings: {
         getHitWest: {
           en: 'Spread in West Cleave',
+          ko: '서쪽 부채꼴에서 산개',
         },
         getHitEast: {
           en: 'Spread in East Cleave',
+          ko: '동쪽 부채꼴에서 산개',
         },
         safeEast: {
           en: 'Spread East + Avoid Cleave',
+          ko: '동쪽에서 산개 + 부채꼴 피하기',
         },
         safeWest: {
           en: 'Spread West + Avoid Cleave',
+          ko: '서쪽에서 산개 + 부채꼴 피하기',
         },
       },
     },
@@ -1263,9 +1322,11 @@ Options.Triggers.push({
       outputStrings: {
         tank: {
           en: 'Bait Line AoE from Heads => Get Middle (Avoid Far AoEs)',
+          ko: '머리의 직선 장판 유도 => 중앙으로 (원거리 장판 피하기)',
         },
         party: {
           en: 'Away from Heads (Avoid Tank Lines) => Spread near Heads',
+          ko: '머리에서 멀어지기 (탱커 직선장판 피하기) => 머리 근처에서 산개',
         },
       },
     },
@@ -1284,9 +1345,11 @@ Options.Triggers.push({
       outputStrings: {
         tank: {
           en: 'Get Middle (Avoid Far AoEs)',
+          ko: '중앙으로 (원거리 장판 피하기)',
         },
         party: {
           en: 'Spread near Heads',
+          ko: '머리 근처에서 산개',
         },
       },
     },
@@ -1298,6 +1361,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Bait 5x Puddles',
+          ko: '장판 유도 5x',
         },
       },
     },
@@ -1322,9 +1386,11 @@ Options.Triggers.push({
         breakChains: Outputs.breakChains,
         safeSpots: {
           en: 'Avoid Blobs',
+          ko: '살점 피하기',
         },
         alphaChains: {
           en: '${chains} => ${safe}',
+          ko: '${chains} => ${safe}',
         },
       },
     },
@@ -1395,6 +1461,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Knockback from Northwest => Knockback from Northeast',
+          ko: '북서에서 넉백 => 북동에서 넉백',
         },
       },
     },
@@ -1409,6 +1476,7 @@ Options.Triggers.push({
       outputStrings: {
         text: {
           en: 'Knockback from Northeast => Knockback from Northwest',
+          ko: '북동에서 넉백 => 북서에서 넉백',
         },
       },
     },
@@ -1449,6 +1517,113 @@ Options.Triggers.push({
       'replaceText': {
         'Netherwrath Near/Netherwrath Far': 'Netherwrath Near/Far',
         'Netherworld Near/Netherwworld Far': 'Netherworld Near/Far',
+      },
+    },
+    {
+      'locale': 'ko',
+      'replaceSync': {
+        'Blood Vessel': '연환세포',
+        'Lindschrat': '인간형 분열체',
+        'Lindwurm': '린드블룸',
+        'Mana Sphere': '마나 구체',
+        'Understudy': '모방세포',
+      },
+      'replaceText': {
+        '--bind--': '--속박--',
+        '--knockback--': '--넉백--',
+        '--untargetable\\?--': '--타겟 불가능?--',
+        '--clones move': '--분신 이동',
+        '--clones x': '--분신 x',
+        '--locked tethers--': '--선 고정--',
+        '--boss clones': '--보스 분신',
+        '--tether (\\d)--': '--선 $1--',
+        '--tethers--': '--선--',
+        '--black holes--': '--블랙홀--',
+        '--shapes--': '--도형--',
+        '--close shapes eaten--': '--가까운 도형 흡수--',
+        '--far shapes eaten--': '--먼 도형 흡수--',
+        '--soaked shapes eaten--': '--밟은 도형 흡수--',
+        '--Hot-blooded': '--열기',
+        '--Doom': '--죽음의 선고',
+        '--clone takes portal--': '--분신이 포탈로--',
+        '--clones on platform--': '--분신이 플랫폼에--',
+        '\\(boss': '(보스',
+        '\\(clones': '(분신',
+        '\\(cast\\)': '(시전)',
+        '\\(castbar\\)': '(시전바)',
+        'Arcadia Aflame': '아르카디아의 화염',
+        'Arcadian Arcanum': '아르카디아의 신비',
+        'Arcadian Hell': '아르카디아의 지옥',
+        'Black Hole(?!s)': '블랙홀',
+        'Blood Mana': '마나 구체',
+        'Blood Wakening': '마나 구체 각성',
+        'Bloody Burst': '마력 발산',
+        'Bring Down the House': '장내를 흔드는 갈채',
+        '(?<! )Burst': '대폭발',
+        'Cell Shedding': '세포 소실',
+        'Clone( \\d)? Heavy Slam': '분신$1 묵직한 내려찍기',
+        'Clone( \\d)? Mana Burst': '분신$1 마나 폭발',
+        'Constrictor': '옥죄기',
+        'Cosmic Kiss': '착탄',
+        'Cruel Coil': '잔혹한 똬리',
+        'Double Sobat': '연속 후려차기',
+        'Down for the Count': '행동 불가',
+        'Downfall': '운석 추락',
+        'Dramatic Lysis': '세포 폭발',
+        'Esoteric Finisher': '마나 연격',
+        'Feral Fission': '야성적인 분열',
+        'Firefall Splash': '불꽃 하강',
+        'Fourth-wall Fusion': '세포 겹폭발',
+        'Grand Entrance': '화려한 등장',
+        'Grotesquerie(?!:)': '세포 부착',
+        'Grotesquerie: Act 1': '세포 부착: 초기',
+        'Grotesquerie: Act 2': '세포 부착: 중기',
+        'Grotesquerie: Act 3': '세포 부착: 후기',
+        'Grotesquerie: Curtain Call': '세포 부착: 말기',
+        '(?<! )Heavy Slam': '묵직한 내려찍기',
+        'Hemorrhagic Projection': '방향성 충격파',
+        'Idyllic Dream': '아르카디아의 꿈',
+        'Left': '왼쪽',
+        'Lindwurm\'s Dark II': '린드블룸 다라',
+        'Lindwurm\'s Glare': '린드블룸 글레어',
+        'Lindwurm\'s Meteor': '린드블룸 메테오',
+        'Lindwurm\'s Stone III': '린드블룸 스톤가',
+        'Lindwurm\'s Thunder II': '린드블룸 선더라',
+        '(?<! )Mana Burst': '마나 폭발',
+        'Metamitosis': '세포 살포',
+        'Mighty Magic': '만능 마법',
+        'Mortal Slayer': '죽음의 재앙',
+        'Mutating Cells': '변이세포',
+        'Netherworld Near/Netherworld Far': '지하세계: 근거리/원거리',
+        'Netherwrath Near/Netherwrath Far': '지하의 분노: 근거리/원거리',
+        'Northeast': '북동쪽',
+        'Northwest': '북서쪽',
+        'Phagocyte Spotlight': '세포 낙하',
+        'Power Gusher': '강력 분출',
+        'Raptor Knuckles': '맹수의 주먹',
+        'Ravenous Reach': '탐욕스러운 손길',
+        'Reenactment': '재현',
+        'Refreshing Overkill': '과잉치료, 과잉치사',
+        'Replication': '자가 복제',
+        'Right': '오른쪽',
+        'Roiling Mass': '세포 변이',
+        'Scalding Waves': '화염 파도',
+        'Serpentine Scourge': '재앙의 숨결',
+        'Skinsplitter': '뱀껍질 균열',
+        'Slaughtershed': '살육의 허물',
+        'Snaking Kick': '뱀발 후려차기',
+        'Splattershed': '유혈의 허물',
+        'Split Scourge': '분열된 재앙',
+        'Staging': '모방세포',
+        'Temporal Curtain': '공간 절단',
+        'The Fixer': '아르카디아의 배후자',
+        'Timeless Spite': '지하의 분노: 파동',
+        'Top-tier Slam': '정상급 내려찍기',
+        'Twisted Vision': '심상 투영',
+        'Venomous Scourge': '재앙 투하',
+        'Visceral Burst': '내장 파열',
+        'Wailing Wave': '지하세계: 파동',
+        'Winged Scourge': '날개 돋친 재앙',
       },
     },
   ],
