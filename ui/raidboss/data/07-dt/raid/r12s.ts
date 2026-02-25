@@ -321,14 +321,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Splattershed Safe Spot Cleanup',
-      // Only Splattershed value needs to be reset
-      type: 'HeadMarker',
-      netRegex: { id: headMarkerData['slaughterStack'], capture: false },
-      delaySeconds: 0.1,
-      run: (data) => delete data.splattershedStackDir,
-    },
-    {
       id: 'R12S Directed Grotesquerie Direction Collect',
       // Unknown_DE6 spell contains data in its count:
       // 40C, Front Cone
