@@ -5906,6 +5906,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Blood Vessel': '연환세포',
         'Lindschrat': '인간형 분열체',
