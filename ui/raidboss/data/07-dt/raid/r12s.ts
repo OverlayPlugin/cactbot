@@ -3135,7 +3135,7 @@ const triggerSet: TriggerSet<Data> = {
         const target = matches.target;
         const sourceId = matches.sourceId;
         const boss = headMarkerData['fireballSplashTether'];
-        
+
         // Check if boss tether
         if (data.replication2BossId === sourceId)
           data.replication2PlayerAbilities[target] = boss;
