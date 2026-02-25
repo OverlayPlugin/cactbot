@@ -65,6 +65,7 @@ export interface Data extends RaidbossData {
   replication2BossId?: string;
   replication2PlayerOrder: string[];
   replication2AbilityOrder: string[];
+  replication2StrategyDetected?: 'dn' | 'banana' | 'unknown';
   netherwrathFollowup: boolean;
   myMutation?: 'alpha' | 'beta';
   manaSpheres: {
@@ -3133,9 +3134,11 @@ const triggerSet: TriggerSet<Data> = {
       run: (data, matches) => {
         const target = matches.target;
         const sourceId = matches.sourceId;
+        const boss = headMarkerData['fireballSplashTether'];
+        
         // Check if boss tether
         if (data.replication2BossId === sourceId)
-          data.replication2PlayerAbilities[target] = headMarkerData['fireballSplashTether'];
+          data.replication2PlayerAbilities[target] = boss;
         else if (data.replication2BossId !== sourceId) {
           const actor = data.actorPositions[sourceId];
           if (actor === undefined) {
@@ -3183,6 +3186,41 @@ const triggerSet: TriggerSet<Data> = {
             data.replication2PlayerOrder.push(player);
             data.replication2AbilityOrder.push(ability);
           }
+
+          // Detect recognized strategy by checking first 6 abilities
+          const detectStrategy = (
+            order: string[],
+          ): 'dn' | 'banana' | 'unknown' => {
+            const defamation = headMarkerData['manaBurstTether'];
+            const stack = headMarkerData['heavySlamTether'];
+            const projection = headMarkerData['projectionTether'];
+            // DN
+            if (
+              (
+                (order[0] === 'none' && order[1] === boss) ||
+                (order[0] === boss && order[1] === 'none')
+              ) && (
+                (order[2] === defamation && order[3] === projection) ||
+                (order[2] === projection && order[3] === defamation)
+              ) && (order[4] === stack && order[5] === stack)
+            )
+              return 'dn';
+            // Banana Codex
+            if (
+              (order[0] === projection && order[1] === projection) && (
+                (order[2] === stack && order[3] === defamation) ||
+                (order[2] === defamation && order[3] === stack)
+              ) && (
+                (order[4] === boss && order[5] === 'none') ||
+                (order[4] === 'none' && order[5] === boss)
+              )
+            )
+              return 'banana';
+            // Not Yet Supported, File a Feature Request or PR
+            return 'unknown';
+          };
+
+          data.replication2StrategyDetected = detectStrategy(data.replication2AbilityOrder);
         }
       },
     },
@@ -3716,23 +3754,8 @@ const triggerSet: TriggerSet<Data> = {
         const ability = data.replication2PlayerAbilities[data.me];
         const isNear = matches.id === 'B52E';
 
-        // Determine if it's a strategy we recognize
-        const order = data.replication2AbilityOrder;
-        const boss = headMarkerData['fireballSplashTether'];
-        const defamation = headMarkerData['manaBurstTether'];
-        const stack = headMarkerData['heavySlamTether'];
-        const projection = headMarkerData['projectionTether'];
-
         // DN Strategy
-        if (
-          (
-            (order[0] === 'none' && order[1] === boss) ||
-            (order[0] === boss && order[1] === 'none')
-          ) && (
-            (order[2] === defamation && order[3] === projection) ||
-            (order[2] === projection && order[3] === defamation)
-          ) && (order[4] === stack && order[5] === stack)
-        ) {
+        if (data.replication2StrategyDetected === 'dn') {
           if (isNear) {
             switch (ability) {
               case headMarkerData['projectionTether']:
@@ -3812,15 +3835,7 @@ const triggerSet: TriggerSet<Data> = {
         }
 
         // Banana Codex Strategy
-        if (
-          (order[0] === projection && order[1] === projection) && (
-            (order[2] === stack && order[3] === defamation) ||
-            (order[2] === defamation && order[3] === stack)
-          ) && (
-            (order[4] === boss && order[5] === 'none') ||
-            (order[4] === 'none' && order[5] === boss)
-          )
-        ) {
+        if (data.replication2StrategyDetected === 'banana') {
           // Technically, this strategy does not care about Near/Far, but
           // included as informational
           switch (ability) {
@@ -3861,6 +3876,10 @@ const triggerSet: TriggerSet<Data> = {
         const getMechanic = (
           order: string,
         ): 'proteans' | 'defamation' | 'projection' | 'stack' | 'unknown' => {
+          const boss = headMarkerData['fireballSplashTether'];
+          const defamation = headMarkerData['manaBurstTether'];
+          const stack = headMarkerData['heavySlamTether'];
+          const projection = headMarkerData['projectionTether'];
           if (order === boss)
             return 'proteans';
           if (order === defamation || order === 'none')
@@ -3871,6 +3890,7 @@ const triggerSet: TriggerSet<Data> = {
             return 'stack';
           return 'unknown';
         };
+        const order = data.replication2AbilityOrder;
         const mechanic1 = getMechanic(order[0] ?? 'unknown');
         const mechanic2 = getMechanic(order[1] ?? 'unknown');
         const mechanic3 = getMechanic(order[2] ?? 'unknown');
@@ -3996,24 +4016,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B922', source: 'Lindwurm', capture: false },
       condition: (data) => {
-        const order = data.replication2AbilityOrder;
-        const stack = headMarkerData['heavySlamTether'];
-        const defamation = headMarkerData['manaBurstTether'];
-        const projection = headMarkerData['projectionTether'];
-        const boss = headMarkerData['fireballSplashTether'];
-        // Defined as N/S clones with projections and NE/SW with defamation + stack
-        // Followed up with E/W boss + none, then SE/NW stack + defamation
-        // No need to check 6, 7 as that's all that remains
-        if (
-          order[0] === projection && order[1] === projection &&
-          (
-            (order[2] === defamation && order[3] === stack) ||
-            (order[2] === stack && order[3] === defamation)
-          ) && (
-            (order[4] === boss && order[5] === 'none') ||
-            (order[4] === 'none' && order[5] === boss)
-          )
-        )
+        if (data.replication2StrategyDetected === 'banana')
           return true;
         return false;
       },
@@ -4089,22 +4092,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
       condition: (data) => {
-        const order = data.replication2AbilityOrder;
-        const stack = headMarkerData['heavySlamTether'];
-        const defamation = headMarkerData['manaBurstTether'];
-        const projection = headMarkerData['projectionTether'];
-        const boss = headMarkerData['fireballSplashTether'];
         // Banana Codex Strategy Order
-        if (
-          order[0] === projection && order[1] === projection &&
-          (
-            (order[2] === defamation && order[3] === stack) ||
-            (order[2] === stack && order[3] === defamation)
-          ) && (
-            (order[4] === boss && order[5] === 'none') ||
-            (order[4] === 'none' && order[5] === boss)
-          )
-        )
+        if (data.replication2StrategyDetected === 'banana')
           return true;
         return false;
       },
@@ -4178,22 +4167,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
       condition: (data) => {
-        const order = data.replication2AbilityOrder;
-        const stack = headMarkerData['heavySlamTether'];
-        const defamation = headMarkerData['manaBurstTether'];
-        const projection = headMarkerData['projectionTether'];
-        const boss = headMarkerData['fireballSplashTether'];
         // Banana Codex Strategy Order
-        if (
-          order[0] === projection && order[1] === projection &&
-          (
-            (order[2] === defamation && order[3] === stack) ||
-            (order[2] === stack && order[3] === defamation)
-          ) && (
-            (order[4] === boss && order[5] === 'none') ||
-            (order[4] === 'none' && order[5] === boss)
-          )
-        )
+        if (data.replication2StrategyDetected === 'banana')
           return true;
         return false;
       },
