@@ -184,7 +184,7 @@ const triggerSet: TriggerSet<Data> = {
         'MF Spread': 'MF Verteilen',
         'MF Tower\\(s\\)': 'MF Türme',
         'MF Tower(?!\\(s)': 'MF Turm',
-        'Megaflare': 'Megaflare',
+        'Megaflare(?! )': 'Megaflare',
         'Pain Add': 'Schmerz Add',
         'Rage Of Bahamut': 'Bahamuts Zorn',
         'Shadow Add': 'Schatten Add',
@@ -192,6 +192,7 @@ const triggerSet: TriggerSet<Data> = {
         'Storm Add': 'Sturm Add',
         'Tempest Wing': 'Sturm-Schwinge',
         'Teraflare': 'Teraflare',
+        'Megaflare Dive': 'Megaflare-Sturz',
       },
     },
     {
@@ -257,7 +258,7 @@ const triggerSet: TriggerSet<Data> = {
         'MF Share': 'メガ: 頭割り',
         'MF Spread': 'メガ: 散開',
         'MF Tower(\\(s\\))?': 'メガ: 塔',
-        'Megaflare': 'メガフレア',
+        'Megaflare(?! )': 'メガフレア',
         '(?<! )Pain Add': '雑魚: ペイン',
         'Rage Of Bahamut': '龍神の咆吼',
         'Shadow Add': '雑魚: シャドウ',
@@ -267,6 +268,7 @@ const triggerSet: TriggerSet<Data> = {
         'Tempest Wing Tethers': 'テンペストウィング・線',
         'Tempest Wing(?! Tethers)': 'テンペストウィング',
         'Teraflare': 'テラフレア',
+        'Megaflare Dive': 'メガフレアダイブ',
       },
     },
     {

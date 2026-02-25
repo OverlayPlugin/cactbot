@@ -551,7 +551,6 @@ const triggerSet: TriggerSet<Data> = {
   timelineReplace: [
     {
       'locale': 'de',
-      'missingTranslations': true,
       'replaceSync': {
         'Lindwurm': 'Lindwurm',
       },
@@ -568,6 +567,7 @@ const triggerSet: TriggerSet<Data> = {
         'Grand Entrance': 'Großer Auftritt',
         'Grotesquerie': 'Zellbefall',
         'Hemorrhagic Projection': 'Gelenkte Schockwelle',
+        'Mindless Flesh': 'Zellraserei',
         'Ravenous Reach': 'Zellulärstreckung',
         'Serpentine Scourge': 'Geißelatem',
         'Shockwave': 'Schockwelle',
@@ -597,6 +597,7 @@ const triggerSet: TriggerSet<Data> = {
         'Grand Entrance': 'Entrée triomphale',
         'Grotesquerie': 'Cellules parasites',
         'Hemorrhagic Projection': 'Onde de choc directionnelle',
+        'Mindless Flesh': 'Frénésie cellulaire',
         'Ravenous Reach': 'Voracité putride',
         'Serpentine Scourge': 'Souffle pestilentiel',
         'Shockwave': 'Onde de choc',
@@ -626,6 +627,7 @@ const triggerSet: TriggerSet<Data> = {
         'Grand Entrance': 'グランドエントランス',
         'Grotesquerie': '細胞付着',
         'Hemorrhagic Projection': '指向性衝撃波',
+        'Mindless Flesh': '細胞暴走',
         'Ravenous Reach': 'ラヴェナスリーチ',
         'Serpentine Scourge': 'スカージブレス',
         'Shockwave': '衝撃波',

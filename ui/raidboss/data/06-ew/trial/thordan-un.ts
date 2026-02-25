@@ -620,6 +620,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Paulecrain': 'Paulecrain',
         'Ser Vellguine': 'Vellguine',
         'Ser Zephirin': 'Zephirin',
+        'Ascalon': 'Askalon',
       },
       'replaceText': {
         '--chains appear--': '--Ketten erscheinen--',
@@ -681,6 +682,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Paulecrain': 'sire Paulecrain',
         'Ser Vellguine': 'sire Vellguine',
         'Ser Zephirin': 'sire Zéphirin',
+        'Ascalon': 'Ascalon',
       },
       'replaceText': {
         '--chains appear--': '--Apparition des chaines--',
@@ -742,6 +744,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Paulecrain': '聖騎士ポールクラン',
         'Ser Vellguine': '聖騎士ヴェルギーン',
         'Ser Zephirin': '聖騎士ゼフィラン',
+        'Ascalon': '聖剣アスカロン',
       },
       'replaceText': {
         '--chains appear--': '--線連結--',
@@ -803,6 +806,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Paulecrain': '圣骑士波勒克兰',
         'Ser Vellguine': '圣骑士韦尔吉纳',
         'Ser Zephirin': '圣骑士泽菲兰',
+        'Ascalon': '圣剑阿斯卡隆',
       },
       'replaceText': {
         '--chains appear--': '--锁链出现--',
@@ -864,6 +868,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Paulecrain': '聖騎士波勒克蘭',
         'Ser Vellguine': '聖騎士韋爾吉納',
         'Ser Zephirin': '聖騎士澤菲蘭',
+        'Ascalon': '聖劍阿斯卡隆',
       },
       'replaceText': {
         '--chains appear--': '--鎖鏈出現--',
@@ -925,6 +930,7 @@ const triggerSet: TriggerSet<Data> = {
         'Ser Paulecrain': '성기사 폴르크랭',
         'Ser Vellguine': '성기사 벨긴',
         'Ser Zephirin': '성기사 제피랭',
+        'Ascalon': '성검 아스칼론',
       },
       'replaceText': {
         '--chains appear--': '--사슬 연결--',

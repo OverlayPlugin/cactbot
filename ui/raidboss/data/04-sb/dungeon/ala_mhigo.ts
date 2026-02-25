@@ -171,7 +171,7 @@ const triggerSet: TriggerSet<Data> = {
         'Mana Burst': 'Explosion de mana',
         'Mindjack': 'Détournement cérébral',
         'Order To Charge': 'Ordre d\'attaquer',
-        'Order To Fire': 'Ordre d\'attaquer',
+        'Order To Fire': 'Ordre de tirer',
         '(?<!Art of the )Storm': 'Tempête',
         '(?<!Art of the )Swell': 'Orage',
         '(?<!Art of the )Sword': 'Épée',
