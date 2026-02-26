@@ -1854,6 +1854,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Slaughershed Stack/Spread Spots (Early)',
+      // Data available by StartsUsing, trigger on ability 3s after to avoid conflict
       type: 'Ability',
       netRegex: { id: ['B4C6', 'B4C3'], source: 'Lindwurm', capture: false },
       suppressSeconds: 1,
