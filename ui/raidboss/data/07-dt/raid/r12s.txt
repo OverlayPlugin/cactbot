@@ -437,7 +437,7 @@ hideall "--sync--"
 3506.2 "--far shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
 3507.0 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 2
 3509.2 "--soaked shapes eaten--" Ability { id: "B4FF", source: "Mana Sphere" }
-3510.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # blackhole 1
+3510.1 "--sync--" Ability { id: "BCB0", source: "Mana Sphere" } # Blackhole 1
 
 3516.7 "Blood Wakening" Ability { id: "B500", source: "Lindwurm" }
 3517.9 "--sync--" Ability { id: "B4FC", source: "Mana Sphere" }
