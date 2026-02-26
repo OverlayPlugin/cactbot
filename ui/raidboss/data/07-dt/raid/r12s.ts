@@ -1957,8 +1957,8 @@ const triggerSet: TriggerSet<Data> = {
         northwestKnockback: {
           en: 'Knockback from Northwest',
         },
-        northeast: Outputs.northeast,
-        northwest: Outputs.northwest,
+        northeast: Outputs.dirNE,
+        northwest: Outputs.dirNW,
         stackOnYou: Outputs.stackOnYou,
         stackOnPlayer: Outputs.stackOnPlayer,
         stackDir: {
@@ -2010,8 +2010,8 @@ const triggerSet: TriggerSet<Data> = {
         northwestKnockback: {
           en: 'Knockback from Northwest',
         },
-        northeast: Outputs.northeast,
-        northwest: Outputs.northwest,
+        northeast: Outputs.dirNE,
+        northwest: Outputs.dirNW,
         spread: Outputs.spread,
         spreadDir: {
           en: 'Spread ${dir}',
