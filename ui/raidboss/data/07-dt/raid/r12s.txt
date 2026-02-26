@@ -391,7 +391,7 @@ hideall "--sync--"
 3151.3 "Reenactment 1" Ability { id: "B4EC", source: "Lindwurm" }
 3159.4 "--n/s clones--" duration 1.6
 3159.4 "Netherwrath Near/Netherwrath Far" Ability { id: ["B52E", "B52F"], source: "Lindwurm" }
-3260.6 "Timeless Spite x2" Ability { id: "B530", source: "Lindwurm" }
+3160.6 "Timeless Spite x2" Ability { id: "B530", source: "Lindwurm" }
 3163.3 "--ne/sw clones--" Ability { id: ["B4ED", "B4EE", "B4EF", "B4F1"], source: "Lindschrat" } duration 1.6
 3167.4 "--e/w clones--" Ability { id: ["B4ED", "B4EE", "B4EF", "B4F1"], source: "Lindschrat" } duration 1.6
 3171.4 "--se/nw clones--" Ability { id: ["B4ED", "B4EE", "B4EF", "B4F1"], source: "Lindschrat" } duration 1.6
