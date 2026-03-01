@@ -17,10 +17,12 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'R11S Fire and Fury 2': 'B431',
     'R11S Orbital Omen': 'B433',
     'R11S Comet Explosion': 'B438',
-    'R11S Shockwave': 'B43D', // Triple Tyrannhilation damage
     'R11S Majestic Meteor 1': 'B441',
     'R11S Majestic Meteor 2': 'B455', // Majestic Meteor during Ecliptic Stampede
     'R11S Majestic Meteorain': 'B442',
+  },
+  damageFail: {
+    'R11S Shockwave': 'B43D', // Triple Tyrannhilation damage
     'R11S Arcadion Avalanche 1': 'B44B',
     'R11S Arcadion Avalanche 2': 'B44D',
     'R11S Arcadion Avalanche 3': 'B44F',
