@@ -247,32 +247,31 @@ This guide was last updated for:
 
 ## Data Flow
 
-![Alt text](https://g.gravizo.com/source/svg/data_flow?https%3A%2F%2Fraw.githubusercontent.com%2FOverlayPlugin%2Fcactbot%2Fmain%2Fdocs%2FLogGuide.md)
+```mermaid
+graph TD
+    ff14["ff14 servers"]
+    ACT["ACT + ffxiv plugin"]
+    network["network log files"]
+    fflogs["fflogs"]
+    ffxivmon["ffxivmon"]
+    util["cactbot util scripts"]
+    plugins["triggers, ACT plugins"]
+    opclients["overlays and other clients"]
 
-<details>
-<summary></summary>
-data_flow
-  digraph G {
-    size ="4,4";
-    ff14 [label="ff14 servers"]
-    ff14 -> ACT [label="network data"]
-    network [label="network log files"]
-    ACT [label="ACT + ffxiv plugin",shape=box,penwidth=3]
-    ACT -> network [label="write to disk"]
-    fflogs
-    network -> fflogs [label="upload"]
-    network -> ffxivmon [label="import"]
-    network -> ACT [label="import"]
-    network -> util [label="process"]
-    util [label="cactbot util scripts"]
-    plugins [label="triggers, ACT plugins"]
-    opclients [label="overlays and other clients"]
-    ACT -> plugins [label="parsed log lines"]
-    ACT -> plugins [label="network log lines"]
-    plugins -> opclients [label="OverlayPlugin WebSocket"]
-  }
-data_flow
-</details>
+    %% Node Styles
+    style ACT stroke-width:3px
+
+    %% Connections
+    ff14 -- "network data" --> ACT
+    ACT -- "write to disk" --> network
+    network -- "upload" --> fflogs
+    network -- "import" --> ffxivmon
+    network -- "import" --> ACT
+    network -- "process" --> util
+    ACT -- "parsed log lines" --> plugins
+    ACT -- "network log lines" --> plugins
+    plugins -- "OverlayPlugin WebSocket" --> opclients
+```
 
 ### Viewing logs after a fight
 
