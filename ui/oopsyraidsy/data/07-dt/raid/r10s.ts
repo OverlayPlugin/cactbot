@@ -88,7 +88,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
     {
       id: 'R10S Watery Grave Gains Vulnerability Down',
       type: 'GainsEffect',
-      netRegex: NetRegexes.gainsEffect({ effectId: '3A1', target: 'watery grave' }),
+      netRegex: NetRegexes.gainsEffect({ effectId: '3A1', target: 'Watery Grave' }),
       mistake: (_data, matches) => {
         return {
           type: 'warn',
@@ -103,31 +103,31 @@ const triggerSet: OopsyTriggerSet<Data> = {
     {
       locale: 'de',
       replaceSync: {
-        'watery grave': 'Wasserkerker',
+        'Watery Grave': 'Wasserkerker',
       },
     },
     {
       locale: 'fr',
       replaceSync: {
-        'watery grave': 'prison aquatique',
+        'Watery Grave': 'prison aquatique',
       },
     },
     {
       locale: 'ja',
       replaceSync: {
-        'watery grave': '水牢',
+        'Watery Grave': '水牢',
       },
     },
     {
       locale: 'cn',
       replaceSync: {
-        'watery grave': '水牢',
+        'Watery Grave': '水牢',
       },
     },
     {
       locale: 'ko',
       replaceSync: {
-        'watery grave': '수중 감옥',
+        'Watery Grave': '수중 감옥',
       },
     },
   ],
