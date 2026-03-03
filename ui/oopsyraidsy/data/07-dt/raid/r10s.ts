@@ -22,11 +22,10 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'R10S Burns': 'BFA', // standing in the fire, 15s
   },
   shareWarn: {
-    'R10S Flame Floater 1': 'B5BA',
-    'R10S Flame Floater 2': 'B5BB',
-    'R10S Flame Floater 3': 'B5BC',
-    'R10S Flame Floater 4': 'B5BD',
-    'R10S Flame Floater 5': 'B5BE',
+    'R10S Flame Floater 1': 'B5BB',
+    'R10S Flame Floater 2': 'B5BC',
+    'R10S Flame Floater 3': 'B5BD',
+    'R10S Flame Floater 4': 'B5BE',
     'R10S Alley-oop Inferno': 'B5C1', // Red Hot spread
     'R10S Awesome Splash 1': 'B5CF', // Deep Blue spread
     'R10S Awesome Splash 2': 'B5D7', // Deep Blue spread after Fire/Watersnaking
@@ -34,11 +33,10 @@ const triggerSet: OopsyTriggerSet<Data> = {
     'R10S Reverse Alley-oop First Hit': 'B5E1',
     'R10S Blasting Snap': 'B5F1', // Red Hot spread during Insane Air
     'R10S Plunging Snap': 'B5F2', // Deep Blue spread during Insane Air
-    'R10S Hot Aerial 1': 'B91D',
-    'R10S Hot Aerial 2': 'B91E',
-    'R10S Hot Aerial 3': 'B91F',
-    'R10S Hot Aerial 4': 'B920',
-    'R10S Hot Aerial 5': 'B921',
+    'R10S Hot Aerial 1': 'B91E',
+    'R10S Hot Aerial 2': 'B91F',
+    'R10S Hot Aerial 3': 'B920',
+    'R10S Hot Aerial 4': 'B921',
     'R10S Xtreme Wave Deep Blue': 'B5D2', // Deep Blue's Xtreme Wave
   },
   shareFail: {
