@@ -276,6 +276,9 @@ hideall "--sync--"
 # B5D9 Xtreme Spectacular
 # B5DA Xtreme Spectacular
 # B5DC Xtreme Spectacular
+# B5DD Alley-oop Double-dip
+# B5DE Alley-oop Double-dip
+# B5DF Alley-oop Double-dip
 # B5E0 Reverse Alley-oop
 # B5E1 Reverse Alley-oop
 # B5E2 Reverse Alley-oop
