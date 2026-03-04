@@ -80,10 +80,8 @@ const triggerSet: TriggerSet<Data> = {
       id: 'NecronEx Blue Shockwave',
       type: 'HeadMarker',
       netRegex: { id: '0267', capture: true },
-      // Annoyingly, the "target" of this headmarker is the boss, and the actual player ID is stored
-      // in `data0`. So we need to map back to party info to determine if target is self or another
       condition: (data, matches) => {
-        if (data.me === data.party?.idToName_?.[matches.data0])
+        if (data.meId === matches.data0)
           return true;
         return data.role === 'tank';
       },
