@@ -86,4 +86,11 @@ describe('util tests', () => {
       assert(!Util.isCombatJob(job.name))
     );
   });
+  it('jobs should be set as limited jobs correctly', () => {
+    const limitedJobs: Job[] = ['BLU'];
+    limitedJobs.forEach((job) => assert(Util.isLimitedJob(job)));
+    jobs.filter((job) => !limitedJobs.includes(job.name)).forEach((job) =>
+      assert(!Util.isLimitedJob(job.name))
+    );
+  });
 });

@@ -69,6 +69,7 @@ const casterDpsJobs: Job[] = ['BLU', 'RDM', 'BLM', 'SMN', 'ACN', 'THM', 'PCT'];
 const dpsJobs: Job[] = [...meleeDpsJobs, ...rangedDpsJobs, ...casterDpsJobs];
 const craftingJobs: Job[] = ['CRP', 'BSM', 'ARM', 'GSM', 'LTW', 'WVR', 'ALC', 'CUL'];
 const gatheringJobs: Job[] = ['MIN', 'BTN', 'FSH'];
+const limitedJobs: Job[] = ['BLU'];
 
 const stunJobs: Job[] = ['BLU', ...tankJobs, ...meleeDpsJobs];
 const silenceJobs: Job[] = ['BLU', ...tankJobs, ...rangedDpsJobs];
@@ -497,6 +498,7 @@ const Util = {
   isCombatJob: (job: Job) => {
     return !craftingJobs.includes(job) && !gatheringJobs.includes(job);
   },
+  isLimitedJob: (job: Job) => limitedJobs.includes(job),
   canStun: (job: Job) => stunJobs.includes(job),
   canSilence: (job: Job) => silenceJobs.includes(job),
   canSleep: (job: Job) => sleepJobs.includes(job),
