@@ -2712,8 +2712,12 @@ const triggerSet: TriggerSet<Data> = {
       netRegex: { id: ['B521', 'B522', 'B523', 'B524'], source: 'Lindwurm', capture: true },
       suppressSeconds: 1,
       alertText: (_data, matches, output) => {
-        const hdg = parseFloat(matches.heading);
-        const dirNum = Directions.hdgTo16DirNum(hdg);
+        const x = parseFloat(matches.x);
+        const y = parseFloat(matches.y);
+        const targetX = parseFloat(matches.targetX);
+        const targetY = parseFloat(matches.targetY);
+        // Boss snaps to the player position which could be different from heading at time of ability
+        const dirNum = Directions.xyTo16DirNum(targetX, targetY, x, y);
         const getNewDirNum = (
           dirNum: number,
           id: string,
