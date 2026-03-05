@@ -66,7 +66,7 @@ export interface Data extends RaidbossData {
   replication2BossId?: string;
   replication2PlayerOrder: string[];
   replication2AbilityOrder: string[];
-  replication2StrategyDetected?: 'dn' | 'banana' | 'unknown';
+  replication2StrategyDetected?: 'dn' | 'banana' | 'nukemaru' | 'unknown';
   netherwrathFollowup: boolean;
   myMutation?: 'alpha' | 'beta';
   manaSpheres: {
@@ -203,6 +203,20 @@ const replication2OutputStrings = {
   getTetherNWClone: {
     en: '${tether}',
   },
+};
+
+// Replication 2: Map for retreiving index by direction
+// Abilities are stored in replication2AbilityOrder with the following dirNum order:
+// 0, 4, 1, 5, 2, 6, 3, 7
+const rep2DirIndexMap = {
+  'north': 0,
+  'south': 1,
+  'northeast': 2,
+  'southwest': 3,
+  'east': 4,
+  'west': 5,
+  'southeast': 6,
+  'northwest': 7,
 };
 
 const center = {
@@ -3348,32 +3362,40 @@ const triggerSet: TriggerSet<Data> = {
           // Detect recognized strategy by checking first 6 abilities
           const detectStrategy = (
             order: string[],
-          ): 'dn' | 'banana' | 'unknown' => {
+          ): 'dn' | 'banana' | 'nukemaru' | 'unknown' => {
             const defamation = headMarkerData['manaBurstTether'];
             const stack = headMarkerData['heavySlamTether'];
             const projection = headMarkerData['projectionTether'];
             // DN
             if (
-              (
-                (order[0] === 'none' && order[1] === boss) ||
-                (order[0] === boss && order[1] === 'none')
-              ) && (
-                (order[2] === defamation && order[3] === projection) ||
-                (order[2] === projection && order[3] === defamation)
-              ) && (order[4] === stack && order[5] === stack)
+              order[rep2DirIndexMap['north']] === boss &&
+              order[rep2DirIndexMap['south']] === 'none' &&
+              order[rep2DirIndexMap['northeast']] === projection &&
+              order[rep2DirIndexMap['southwest']] === defamation &&
+              order[rep2DirIndexMap['east']] === stack &&
+              order[rep2DirIndexMap['west']] === stack
             )
               return 'dn';
             // Banana Codex
             if (
-              (order[0] === projection && order[1] === projection) && (
-                (order[2] === stack && order[3] === defamation) ||
-                (order[2] === defamation && order[3] === stack)
-              ) && (
-                (order[4] === boss && order[5] === 'none') ||
-                (order[4] === 'none' && order[5] === boss)
-              )
+              order[rep2DirIndexMap['north']] === projection &&
+              order[rep2DirIndexMap['south']] === projection &&
+              order[rep2DirIndexMap['northeast']] === defamation &&
+              order[rep2DirIndexMap['southwest']] === stack &&
+              order[rep2DirIndexMap['east']] === 'none' &&
+              order[rep2DirIndexMap['west']] === boss
             )
               return 'banana';
+            // Nukemaru
+            if (
+              order[rep2DirIndexMap['north']] === projection &&
+              order[rep2DirIndexMap['south']] === projection &&
+              order[rep2DirIndexMap['northeast']] === stack &&
+              order[rep2DirIndexMap['southwest']] === defamation &&
+              order[rep2DirIndexMap['east']] === boss &&
+              order[rep2DirIndexMap['west']] === 'none'
+            )
+              return 'nukemaru';
             // Not Yet Supported, File a Feature Request or PR
             return 'unknown';
           };
@@ -4221,13 +4243,11 @@ const triggerSet: TriggerSet<Data> = {
           const stack = headMarkerData['heavySlamTether'];
           const defamation = headMarkerData['manaBurstTether'];
           const projection = headMarkerData['projectionTether'];
-          // Defined as east/west clones with stacks and SW/NE with defamation + projection
           if (
-            order[4] === stack && order[5] === stack &&
-            (
-              (order[2] === defamation && order[3] === projection) ||
-              (order[2] === projection && order[3] === defamation)
-            )
+            order[rep2DirIndexMap['east']] === stack &&
+            order[rep2DirIndexMap['west']] === stack &&
+            order[rep2DirIndexMap['northeast']] === projection &&
+            order[rep2DirIndexMap['southwest']] === defamation
           )
             return true;
         }
@@ -4298,13 +4318,11 @@ const triggerSet: TriggerSet<Data> = {
           const stack = headMarkerData['heavySlamTether'];
           const defamation = headMarkerData['manaBurstTether'];
           const projection = headMarkerData['projectionTether'];
-          // Defined as east/west clones with stacks and NW/SE with defamation + projection
           if (
-            order[4] === stack && order[5] === stack &&
-            (
-              (order[6] === defamation && order[7] === projection) ||
-              (order[7] === projection && order[6] === defamation)
-            )
+            order[rep2DirIndexMap['east']] === stack &&
+            order[rep2DirIndexMap['west']] === stack &&
+            order[rep2DirIndexMap['southeast']] === defamation &&
+            order[rep2DirIndexMap['northwest']] === projection
           )
             return true;
         }
