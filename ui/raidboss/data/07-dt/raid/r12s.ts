@@ -4239,7 +4239,7 @@ const triggerSet: TriggerSet<Data> = {
             return {
               infoText: strat === 'banana'
                 ? output.avoidStackThenProteanBanana!()
-                : output.avoidStackThenProteanNukemaru!()
+                : output.avoidStackThenProteanNukemaru!(),
             };
           case headMarkerData['manaBurstTether']:
           case headMarkerData['fireballSplashTether']:
