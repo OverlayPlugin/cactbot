@@ -3857,16 +3857,17 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.2,
       suppressSeconds: 1,
       infoText: (data, _matches, output) => {
-        if (
-          data.replication2PlayerAbilities[data.me] !== 'none' ||
-          data.replication2PlayerAbilities[data.me] === undefined
-        )
+        const ability = data.replication2PlayerAbilities[data.me];
+        const strat = data.triggerSetConfig.replication2Strategy;
+        if (ability !== 'none' || ability === undefined)
           return;
         return output.noTether!({
-          mech1: data.triggerSetConfig.replication2Strategy === 'dn'
+          mech1: strat === 'dn'
             ? output.defamationOnYouDN!({ strat: output.south!() })
-            : data.triggerSetConfig.replication2Strategy === 'banana'
+            : strat === 'banana'
             ? output.defamationOnYouBanana!({ strat: output.east!() })
+            : strat === 'nukemaru'
+            ? output.defamationOnYouNukemaru!({ strat: output.west!() })
             : output.defamationOnYou!(),
           mech2: output.stackGroups!(),
         });
@@ -3874,11 +3875,15 @@ const triggerSet: TriggerSet<Data> = {
       outputStrings: {
         east: Outputs.east,
         south: Outputs.south,
+        west: Outputs.west,
         defamationOnYou: Outputs.defamationOnYou,
         defamationOnYouDN: {
           en: 'Defamation on YOU (Go ${strat})',
         },
         defamationOnYouBanana: {
+          en: 'Defamation on YOU (Go ${strat})',
+        },
+        defamationOnYouNukemaru: {
           en: 'Defamation on YOU (Go ${strat})',
         },
         stackGroups: {
