@@ -58,18 +58,18 @@ const nameToJobEnum: Record<Job, number> = {
   PCT: 42,
 };
 
-const allJobs = Object.keys(nameToJobEnum) as Job[];
+export const allJobs = Object.keys(nameToJobEnum) as Job[];
 const allRoles = ['tank', 'healer', 'dps', 'crafter', 'gatherer', 'none'] as Role[];
 
-const tankJobs: Job[] = ['GLA', 'PLD', 'MRD', 'WAR', 'DRK', 'GNB'];
-const healerJobs: Job[] = ['CNJ', 'WHM', 'SCH', 'AST', 'SGE'];
-const meleeDpsJobs: Job[] = ['PGL', 'MNK', 'LNC', 'DRG', 'ROG', 'NIN', 'SAM', 'RPR', 'VPR'];
-const rangedDpsJobs: Job[] = ['ARC', 'BRD', 'DNC', 'MCH'];
-const casterDpsJobs: Job[] = ['BLU', 'RDM', 'BLM', 'SMN', 'ACN', 'THM', 'PCT'];
-const dpsJobs: Job[] = [...meleeDpsJobs, ...rangedDpsJobs, ...casterDpsJobs];
-const craftingJobs: Job[] = ['CRP', 'BSM', 'ARM', 'GSM', 'LTW', 'WVR', 'ALC', 'CUL'];
-const gatheringJobs: Job[] = ['MIN', 'BTN', 'FSH'];
-const limitedJobs: Job[] = ['BLU'];
+export const tankJobs: Job[] = ['GLA', 'PLD', 'MRD', 'WAR', 'DRK', 'GNB'];
+export const healerJobs: Job[] = ['CNJ', 'WHM', 'SCH', 'AST', 'SGE'];
+export const meleeDpsJobs: Job[] = ['PGL', 'MNK', 'LNC', 'DRG', 'ROG', 'NIN', 'SAM', 'RPR', 'VPR'];
+export const rangedDpsJobs: Job[] = ['ARC', 'BRD', 'DNC', 'MCH'];
+export const casterDpsJobs: Job[] = ['BLU', 'RDM', 'BLM', 'SMN', 'ACN', 'THM', 'PCT'];
+export const dpsJobs: Job[] = [...meleeDpsJobs, ...rangedDpsJobs, ...casterDpsJobs];
+export const craftingJobs: Job[] = ['CRP', 'BSM', 'ARM', 'GSM', 'LTW', 'WVR', 'ALC', 'CUL'];
+export const gatheringJobs: Job[] = ['MIN', 'BTN', 'FSH'];
+export const limitedJobs: Job[] = ['BLU'];
 
 const stunJobs: Job[] = ['BLU', ...tankJobs, ...meleeDpsJobs];
 const silenceJobs: Job[] = ['BLU', ...tankJobs, ...rangedDpsJobs];
