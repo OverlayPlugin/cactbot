@@ -85,9 +85,32 @@ hideall "--sync--"
 250.7 "Darkness of Eternity" Ability { id: "AE24", source: "Necron" } window 250.7,30
 257.1 "Darkness of Eternity" Ability { id: "AE25", source: "Necron" }
 260.8 "Inevitability" Ability { id: "AE27", source: "Necron" }
-278.9 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
-284.0 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
-289.2 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+270.5 "Add Spawn" AddedCombatant { npcBaseId: "18701" } window 10,10 jump "solo-phase-dps"
+270.5 "--sync--" AddedCombatant { npcBaseId: "18702" } window 10,10 jump "solo-phase-healer"
+270.5 "--sync--" AddedCombatant { npcBaseId: "18703" } window 10,10 jump "solo-phase-tank"
+
+400.0 label "solo-phase-dps"
+405.5 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" } window 20,20
+410.6 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+415.7 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+420.8 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+425.9 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+431.0 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+436.1 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+441.2 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+446.3 "Choking Grasp" Ability { id: "AE28", source: "Icy Hands" }
+
+600.0 label "solo-phase-healer"
+605.5 "Necrotic Pulse" Ability { id: "AE2C", source: "Icy Hands" } window 20,20
+612.6 "Chilling Fingers" Ability { id: "AE2D", source: "Icy Hands" }
+618.7 "Choking Grasp" Ability { id: "AE2E", source: "Icy Hands" }
+624.8 "Choking Grasp" Ability { id: "AE2E", source: "Icy Hands" }
+630.9 "Choking Grasp" Ability { id: "AE2E", source: "Icy Hands" }
+637.0 "Choking Grasp" Ability { id: "AE2E", source: "Icy Hands" }
+643.1 "Choking Grasp" Ability { id: "AE2E", source: "Icy Hands" }
+649.2 "Choking Grasp" Ability { id: "AE2E", source: "Icy Hands" }
+
+800.0 label "solo-phase-tank"
 
 # P2 Start
 1000.0 "--sync--" StartsUsing { id: "AE3E", source: "Necron" } window 1000,0

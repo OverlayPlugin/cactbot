@@ -744,6 +744,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'azur(?:e|er|es|en) Äther',
         'Beckoning Hands': 'lockend(?:e|er|es|en) Hand',
@@ -781,6 +782,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'sphère d\'énergie bleue',
         'Beckoning Hands': 'grand attrape-mort',
@@ -865,6 +867,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': '青之魂块',
         'Beckoning Hands': '邀死之手',
@@ -958,6 +961,7 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': '푸른 영혼 덩어리',
         'Beckoning Hands': '죽음으로 이끄는 손',
