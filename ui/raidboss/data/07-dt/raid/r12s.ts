@@ -4191,15 +4191,19 @@ const triggerSet: TriggerSet<Data> = {
       run: (data) => data.netherwrathFollowup = true,
     },
     {
-      id: 'R12S Reenactment 1 Clone Stack SW (Second Clones Banana)',
-      // NOTE: This is used in Banana Codex Strategy
-      // SW Clone Stack happens after N/S Clone Projections
+      id: 'R12S Reenactment 1 Clone Stack SW (Second Clones Banana/Nukemaru)',
+      // NOTE: This is used in Banana Codex Strategy and Nukemaru
+      // SW (Banana)/NE (Nukemaru) Clone Stack happens after N/S Clone Projections
       // Defamation Tether Players, Boss Tether Player, and No Tether Player take stack
       // Using B922 Hemorrhagic Projection from clones
       type: 'Ability',
       netRegex: { id: 'B922', source: 'Lindwurm', capture: false },
       condition: (data) => {
-        if (data.replication2StrategyDetected === 'banana')
+        // Banana Codex and Nukemaru Strategy Order
+        if (
+          data.replication2StrategyDetected === 'banana' ||
+          data.replication2StrategyDetected === 'nukemaru'
+        )
           return true;
         return false;
       },
@@ -4207,30 +4211,52 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          stackThenStack: {
+          stackThenStackBanana: {
             en: 'Stack on SW Clone => Stack on NW Clone',
           },
-          avoidStackThenProtean: {
+          avoidStackThenProteanBanana: {
             en: 'Avoid SW Stack => Bait Protean West',
           },
-          stackThenProteans: {
+          stackThenProteansBanana: {
             en: 'SW Clone Stack => West Proteans',
+          },
+          stackThenStackNukemaru: {
+            en: 'Stack on NE Clone => Stack on SE Clone',
+          },
+          avoidStackThenProteanNukemaru: {
+            en: 'Avoid NE Stack => Bait Protean East',
+          },
+          stackThenProteansNukemaru: {
+            en: 'NE Clone Stack => East Proteans',
           },
         };
 
+        const strat = data.replication2StrategyDetected;
         const ability = data.replication2PlayerAbilities[data.me];
         switch (ability) {
           case headMarkerData['projectionTether']:
           case headMarkerData['heavySlamTether']:
-            return { infoText: output.avoidStackThenProtean!() };
+            return {
+              infoText: strat === 'banana'
+                ? output.avoidStackThenProteanBanana!()
+                : output.avoidStackThenProteanNukemaru!()
+            };
           case headMarkerData['manaBurstTether']:
           case headMarkerData['fireballSplashTether']:
           case 'none':
-            return { alertText: output.stackThenStack!() };
+            return {
+              alertText: strat === 'banana'
+                ? output.stackThenStackBanana!()
+                : output.statckThenStackNukemaru!(),
+            };
         }
 
         // Missing ability data, output mechanic order
-        return { infoText: output.stackThenProteans!() };
+        return {
+          infoText: strat === 'banana'
+            ? output.stackThenProteansBanana!()
+            : output.stackThenProteansNukemaru!(),
+        };
       },
     },
     {
@@ -4265,16 +4291,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Reenactment 1 Proteans West (Third Clones Banana)',
-      // NOTE: This is used in Banana Codex Strategy
+      id: 'R12S Reenactment 1 Proteans West (Third Clones Banana/Nukemaru)',
+      // NOTE: This is used in Banana Codex Strategy and Nukemaru
       // Stack Players need to go to the other stack
       // Non-stack players need to bait proteans
       // Using BE5D Heavy Slam from clones
       type: 'Ability',
       netRegex: { id: 'BE5D', source: 'Lindwurm', capture: false },
       condition: (data) => {
-        // Banana Codex Strategy Order
-        if (data.replication2StrategyDetected === 'banana')
+        // Banana Codex and Nukemaru Strategy Order
+        if (
+          data.replication2StrategyDetected === 'banana' ||
+          data.replication2StrategyDetected === 'nukemaru'
+        )
           return true;
         return false;
       },
@@ -4282,30 +4311,52 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          protean: {
+          proteanBanana: {
             en: 'Bait Protean West + Avoid Clone AoE',
           },
-          avoidThenStack: {
+          avoidThenStackBanana: {
             en: 'Avoid West Clone/East Defamation + Stack on NW Clone',
           },
-          proteansThenStack: {
+          proteansThenStackBanana: {
             en: 'West Proteans => NW Clone Stack',
+          },
+          proteanNukemaru: {
+            en: 'Bait Protean East + Avoid Clone AoE',
+          },
+          avoidThenStackNukemaru: {
+            en: 'Avoid East Clone/West Defamation + Stack on SE Clone',
+          },
+          proteansThenStackNukemaru: {
+            en: 'East Proteans => SE Clone Stack',
           },
         };
 
+        const strat = data.replication2StrategyDetected;
         const ability = data.replication2PlayerAbilities[data.me];
         switch (ability) {
           case headMarkerData['projectionTether']:
           case headMarkerData['heavySlamTether']:
-            return { alertText: output.protean!() };
+            return {
+              alertText: strat === 'banana'
+                ? output.proteanBanana!()
+                : output.proteanNukemaru!(),
+            };
           case headMarkerData['manaBurstTether']:
           case headMarkerData['fireballSplashTether']:
           case 'none':
-            return { infoText: output.avoidThenStack!() };
+            return {
+              infoText: strat === 'banana'
+                ? output.avoidThenStackBanana!()
+                : output.avoidThenStackNukemaru!(),
+            };
         }
 
         // Missing ability data, output mechanic order
-        return { infoText: output.proteansThenStack!() };
+        return {
+          infoText: strat === 'banana'
+            ? output.proteansThenStackBanana!()
+            : output.proteansThenStackNukemaru!(),
+        };
       },
     },
     {
@@ -4338,16 +4389,19 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Reenactment 1 Clone Stack NW Reminder (Fourth Clones Banana)',
-      // NOTE: This is used in Banana Codex Strategy
+      id: 'R12S Reenactment 1 Clone Stack NW Reminder (Fourth Clones Banana/Nukemaru)',
+      // NOTE: This is used in Banana Codex Strategy and Nukemaru
       // Reminder for players to Stack
       // Reminder for Non-stack players to avoid
       // Using B8E1 Scalding Waves from clones
       type: 'Ability',
       netRegex: { id: 'B8E1', source: 'Lindwurm', capture: false },
       condition: (data) => {
-        // Banana Codex Strategy Order
-        if (data.replication2StrategyDetected === 'banana')
+        // Banana Codex and Nukemaru Strategy Order
+        if (
+          data.replication2StrategyDetected === 'banana' ||
+          data.replication2StrategyDetected === 'nukemaru'
+        )
           return true;
         return false;
       },
@@ -4355,30 +4409,52 @@ const triggerSet: TriggerSet<Data> = {
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
-          stack: {
+          stackBanana: {
             en: 'Stack on NW Clone',
           },
-          avoidStack: {
+          avoidStackBanana: {
             en: 'Avoid NE Stack',
           },
-          stackAndDefamation: {
+          stackAndDefamationBanana: {
             en: 'NW Clone Stack + SE Defamation',
+          },
+          stackNukemaru: {
+            en: 'Stack on SE Clone',
+          },
+          avoidStackNukemaru: {
+            en: 'Avoid SE Stack',
+          },
+          stackAndDefamationNukemaru: {
+            en: 'SE Clone Stack + NW Defamation',
           },
         };
 
+        const strat = data.replication2StrategyDetected;
         const ability = data.replication2PlayerAbilities[data.me];
         switch (ability) {
           case headMarkerData['projectionTether']:
           case headMarkerData['heavySlamTether']:
-            return { infoText: output.avoidStack!() };
+            return {
+              infoText: strat === 'banana'
+                ? output.avoidStackBanana!()
+                : output.avoidStackNukemaru!(),
+            };
           case headMarkerData['manaBurstTether']:
           case headMarkerData['fireballSplashTether']:
           case 'none':
-            return { alertText: output.stack!() };
+            return {
+              alertText: strat === 'banana'
+                ? output.stackBanana!()
+                : output.stackNukemaru!(),
+            };
         }
 
         // Missing ability data, output mechanic order
-        return { infoText: output.stackAndDefamation!() };
+        return {
+          infoText: strat === 'banana'
+            ? output.stackAndDefamationBanana!()
+            : output.stackAndDefamationNukemaru!(),
+        };
       },
     },
     {
