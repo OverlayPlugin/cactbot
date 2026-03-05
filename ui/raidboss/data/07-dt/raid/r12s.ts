@@ -4270,7 +4270,7 @@ const triggerSet: TriggerSet<Data> = {
             return {
               alertText: strat === 'banana'
                 ? output.stackThenStackBanana!()
-                : output.statckThenStackNukemaru!(),
+                : output.stackThenStackNukemaru!(),
             };
         }
 
