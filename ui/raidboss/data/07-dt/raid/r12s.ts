@@ -3858,7 +3858,7 @@ const triggerSet: TriggerSet<Data> = {
         defamationOnYouNukemaruSW: {
           en: 'Defamation on YOU, Go ${strat}',
         },
-        defamationOnYouNukermaruNW: {
+        defamationOnYouNukemaruNW: {
           en: 'Defamation on YOU, Go ${strat}',
         },
         baitProtean: {
