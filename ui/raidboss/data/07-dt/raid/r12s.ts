@@ -3359,7 +3359,7 @@ const triggerSet: TriggerSet<Data> = {
             data.replication2AbilityOrder.push(ability);
           }
 
-          // Detect recognized strategy by checking first 6 abilities
+          // Detect recognized strategy by checking first 7 abilities
           const detectStrategy = (
             order: string[],
           ): 'dn' | 'banana' | 'nukemaru' | 'unknown' => {
@@ -3373,7 +3373,8 @@ const triggerSet: TriggerSet<Data> = {
               order[rep2DirIndexMap['northeast']] === projection &&
               order[rep2DirIndexMap['southwest']] === defamation &&
               order[rep2DirIndexMap['east']] === stack &&
-              order[rep2DirIndexMap['west']] === stack
+              order[rep2DirIndexMap['west']] === stack &&
+              order[rep2DirIndexMap['southeast']] === defamation
             )
               return 'dn';
             // Banana Codex
@@ -3383,7 +3384,8 @@ const triggerSet: TriggerSet<Data> = {
               order[rep2DirIndexMap['northeast']] === defamation &&
               order[rep2DirIndexMap['southwest']] === stack &&
               order[rep2DirIndexMap['east']] === 'none' &&
-              order[rep2DirIndexMap['west']] === boss
+              order[rep2DirIndexMap['west']] === boss &&
+              order[rep2DirIndexMap['southeast']] === defamation
             )
               return 'banana';
             // Nukemaru
@@ -3393,7 +3395,8 @@ const triggerSet: TriggerSet<Data> = {
               order[rep2DirIndexMap['northeast']] === stack &&
               order[rep2DirIndexMap['southwest']] === defamation &&
               order[rep2DirIndexMap['east']] === boss &&
-              order[rep2DirIndexMap['west']] === 'none'
+              order[rep2DirIndexMap['west']] === 'none' &&
+              order[rep2DirIndexMap['southeast']] === stack
             )
               return 'nukemaru';
             // Not Yet Supported, File a Feature Request or PR
