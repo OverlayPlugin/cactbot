@@ -3590,20 +3590,20 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.defamationOnYouDNSW!({
                         strat: output['dirWSW']!(),
                       }) // West/WSW
-                    : strat === 'nukemaru'
-                    ? output.defamationOnYouNukemaruSW!({
-                      strat: output['dirSSW']!(),
-                    }) // South/SSW
+                      : strat === 'nukemaru'
+                      ? output.defamationOnYouNukemaruSW!({
+                        strat: output['dirSSW']!(),
+                      }) // South/SSW
                       : output.defamationOnYou!(),
                   });
-              case 7: // Nukemaru Only
-                return output.manaBurstTether!({
-                  mech1: strat === 'nukemaru'
-                    ? output.defamationOnYouNukemaruNW!({
-                      strat: output['dirNNW']!(),
-                    }) // North/NNW
-                    : output.defamationOnYou!(),
-                });
+                case 7: // Nukemaru Only
+                  return output.manaBurstTether!({
+                    mech1: strat === 'nukemaru'
+                      ? output.defamationOnYouNukemaruNW!({
+                        strat: output['dirNNW']!(),
+                      }) // North/NNW
+                      : output.defamationOnYou!(),
+                  });
               }
               return output.manaBurstTether!({
                 mech1: output.defamationOnYou!(),
