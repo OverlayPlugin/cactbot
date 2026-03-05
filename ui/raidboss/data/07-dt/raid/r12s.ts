@@ -3930,15 +3930,16 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Netherwrath Near/Far and First Clones',
       // In DN, Boss jumps onto clone of player that took Firefall Splash, there is an aoe around the clone + proteans
-      // In Banana Codex, N/S Projections happen at this time
+      // In Banana Codex and Nukemaru, N/S Projections happen at this time
       type: 'StartsUsing',
       netRegex: { id: ['B52E', 'B52F'], source: 'Lindwurm', capture: true },
       infoText: (data, matches, output) => {
+        const strat = data.replication2StrategyDetected;
         const ability = data.replication2PlayerAbilities[data.me];
         const isNear = matches.id === 'B52E';
 
         // DN Strategy
-        if (data.replication2StrategyDetected === 'dn') {
+        if (strat === 'dn') {
           if (isNear) {
             switch (ability) {
               case headMarkerData['projectionTether']:
@@ -4017,9 +4018,9 @@ const triggerSet: TriggerSet<Data> = {
           });
         }
 
-        // Banana Codex Strategy
-        if (data.replication2StrategyDetected === 'banana') {
-          // Technically, this strategy does not care about Near/Far, but
+        // Banana Codex and Nukemaru Strategies
+        if (strat === 'banana' || strat === 'nukemaru') {
+          // Technically, these strategies do not care about Near/Far, but
           // included as informational
           switch (ability) {
             case headMarkerData['projectionTether']:
@@ -4030,9 +4031,15 @@ const triggerSet: TriggerSet<Data> = {
               });
             case headMarkerData['manaBurstTether']:
               return output.manaBurstTetherHitbox!({
-                mech1: output.hitboxWest!(),
+                mech1: strat === 'banana'
+                  ? output.hitboxBanana!()
+                  : output.hitboxNukemaru!(),
                 spiteBaits: isNear ? output.near!() : output.far!(),
-                mech2: output.stackDir!({ dir: output.dirSW!() }),
+                mech2: output.stackDir!({
+                  dir: strat === 'banana'
+                    ? output.dirSW!()
+                    : output.dirNE!(),
+                }),
               });
             case headMarkerData['heavySlamTether']:
               return output.heavySlamTetherBait!({
@@ -4042,15 +4049,27 @@ const triggerSet: TriggerSet<Data> = {
               });
             case headMarkerData['fireballSplashTether']:
               return output.fireballSplashTetherHitbox!({
-                mech1: output.hitboxWest!(),
+                mech1: strat === 'banana'
+                  ? output.hitboxBanana!()
+                  : output.hitboxNukemaru!(),
                 spiteBaits: isNear ? output.near!() : output.far!(),
-                mech2: output.stackDir!({ dir: output.dirSW!() }),
+                mech2: output.stackDir!({
+                  dir: strat === 'banana'
+                    ? output.dirSW!()
+                    : output.dirNE!(),
+                }),
               });
           }
           return output.noTetherHitbox!({
-            mech1: output.hitboxWest!(),
+            mech1: strat === 'banana'
+              ? output.hitboxBanana!()
+              : output.hitboxNukemaru!(),
             spiteBaits: isNear ? output.near!() : output.far!(),
-            mech2: output.stackDir!({ dir: output.dirSW!() }),
+            mech2: output.stackDir!({
+              dir: strat === 'banana'
+                ? output.dirSW!()
+                : output.dirNE!(),
+            }),
           });
         }
 
@@ -4087,6 +4106,7 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
+        dirNE: Outputs.dirNE,
         dirSW: Outputs.dirSW,
         scaldingWave: Outputs.protean,
         timelessSpite: Outputs.stackPartner,
@@ -4103,7 +4123,10 @@ const triggerSet: TriggerSet<Data> = {
         beFar: {
           en: 'Be Far',
         },
-        hitboxWest: {
+        hitboxBanana: {
+          en: 'Be West on Boss Hitbox',
+        },
+        hitboxNukemaru: {
           en: 'Be West on Boss Hitbox',
         },
         near: {
