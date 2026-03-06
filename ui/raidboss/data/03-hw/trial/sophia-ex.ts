@@ -645,7 +645,7 @@ const triggerSet: TriggerSet<Data> = {
         'Quasar': 'クエーサー',
         'Ring of Pain': 'リング・オブ・ペイン',
         'The Scales Of Wisdom': 'バランス・オブ・ウィズダム',
-        '(?<= )Tethers': '線',
+        'Tethers': '線',
         'Thunder II\\/III': 'サンダー/サンダガ',
         'Thunder II(?!(?:I|\\/I))': 'サンダラ',
         'Thunder III': 'サンダガ',

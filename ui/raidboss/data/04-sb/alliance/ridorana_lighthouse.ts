@@ -704,7 +704,7 @@ const triggerSet: TriggerSet<Data> = {
         '(?<! )Cyclone': '气旋',
         'Dark Cannonade': '暗炮击',
         'Dark Ewer': '暗云水瓶',
-        'Dark Rain': '暗黑雨水',
+        'Dark Rain': '暗云雨水',
         'Darkening Deluge': '暗云沉淀',
         'Darkening Rainfall': '暗云之雨',
         'Death Strike': '必杀',

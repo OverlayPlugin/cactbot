@@ -266,7 +266,7 @@ const triggerSet: TriggerSet<Data> = {
         'Eruption': '地火喷发',
         'Eye of the Storm': '台风眼',
         'Geocrush': '大地粉碎',
-        'Homing Lasers': '诱导射线',
+        'Homing Lasers': '追踪射线',
         'Magitek Ray': '魔导激光',
         'Mistral Song': '寒风之歌',
         'Radiant Plume': '光辉炎柱',

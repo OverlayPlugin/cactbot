@@ -1043,7 +1043,7 @@ const triggerSet: TriggerSet<Data> = {
     {
       'locale': 'ko',
       'replaceSync': {
-        'Ice Pillar': '고드름',
+        'Ice Pillar': '얼음기둥',
         'Queen Eternal': '이터널 퀸',
         'Virtual Boulder': '암석',
       },
