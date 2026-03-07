@@ -948,6 +948,12 @@ export default class PartyTracker {
     return this.isRole(name, 'dps');
   }
 
+  // returns true if the named player in your alliance is a limited job
+  isLimitedJob(name: string): boolean {
+    const job = this.jobName(name);
+    return job !== undefined && Util.isLimitedJob(job);
+  }
+
   // returns true if the named player is in your immediate party
   inParty(name: string): boolean {
     return this.partyNames.includes(name);
