@@ -4022,27 +4022,34 @@ const triggerSet: TriggerSet<Data> = {
           case headMarkerData['manaBurstTether']:
             return output.manaBurstTether!({
               mech1: output.stackGroups!(),
-              mech2: output.getBehind!(),
+              mech2: output.projection!(),
+              mech3: output.getBehind!(),
             });
           case headMarkerData['heavySlamTether']:
             return output.heavySlamTether!({
               mech1: output.stackGroups!(),
-              mech2: output.getBehind!(),
+              mech2: output.projection!(),
+              mech3: output.getBehind!(),
             });
           case headMarkerData['fireballSplashTether']:
             return output.fireballSplashTether!({
               mech1: output.stackGroups!(),
-              mech2: output.getBehind!(),
+              mech2: output.projection!(),
+              mech3: output.getBehind!(),
             });
         }
         return output.noTether!({
           mech1: output.stackGroups!(),
-          mech2: output.getBehind!(),
+          mech2: output.projection!(),
+          mech3: output.getBehind!(),
         });
       },
       outputStrings: {
         getBehind: Outputs.getBehind,
         lookAway: Outputs.lookAway,
+        projection: {
+          en: 'Cones',
+        },
         stackGroups: {
           en: 'Stack Groups',
           de: 'Gruppen-Sammeln',
@@ -4057,16 +4064,16 @@ const triggerSet: TriggerSet<Data> = {
           en: '${mech1} + ${mech2} => ${mech3}',
         },
         manaBurstTether: {
-          en: '${mech1} => ${mech2}',
+          en: '${mech1} => ${mech2} => ${mech3}',
         },
         heavySlamTether: {
-          en: '${mech1} => ${mech2}',
+          en: '${mech1} => ${mech2} => ${mech3}',
         },
         fireballSplashTether: {
-          en: '${mech1} => ${mech2}',
+          en: '${mech1} => ${mech2} => ${mech3}',
         },
         noTether: {
-          en: '${mech1} => ${mech2}',
+          en: '${mech1} => ${mech2} => ${mech3}',
         },
       },
     },
