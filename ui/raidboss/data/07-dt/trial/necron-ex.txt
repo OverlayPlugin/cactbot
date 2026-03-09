@@ -111,6 +111,14 @@ hideall "--sync--"
 649.2 "Choking Grasp" Ability { id: "AE2E", source: "Icy Hands" }
 
 800.0 label "solo-phase-tank"
+805.5 "--sync--" StartsUsing { id: "AE2A", source: "Icy Hands" }
+# Spreading Fear is interruptible, might not go off, so no sync
+810.2 "Spreading Fear" #StartsUsing { id: "AE2A", source: "Icy Hands" }
+817.6 "Choking Grasp" Ability { id: "AE2B", source: "Icy Hands" }
+824.7 "Choking Grasp" Ability { id: "AE2B", source: "Icy Hands" }
+831.8 "Choking Grasp" Ability { id: "AE2B", source: "Icy Hands" }
+838.9 "Choking Grasp" Ability { id: "AE2B", source: "Icy Hands" }
+846.0 "Choking Grasp" Ability { id: "AE2B", source: "Icy Hands" }
 
 # P2 Start
 1000.0 "--sync--" StartsUsing { id: "AE3E", source: "Necron" } window 1000,0

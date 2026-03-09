@@ -711,10 +711,10 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: 'AF13', capture: true },
       condition: (data, matches) =>
-        Conditions.targetIsYou()(data, matches) && data.macabreTowerCount < 5,
+        Conditions.targetIsYou()(data, matches) && data.macabreTowerCount < 4,
       delaySeconds: 4,
       alertText: (data, _matches, output) => {
-        if (data.role === 'tank' && data.macabreTowerCount > 2) {
+        if (data.role === 'tank' && data.macabreTowerCount > 1) {
           // Tanks deal with buster after 2nd tower
           return;
         }
