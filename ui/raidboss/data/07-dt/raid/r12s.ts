@@ -2545,7 +2545,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'GainsEffect',
       netRegex: { effectId: ['CFB', 'B79'], capture: false },
       condition: (data) => !data.replication1FollowUp,
-      delaySeconds: 1.2, // +0.1s Delay for debuff/damage propagation
+      delaySeconds: 1.3, // +0.2s Delay for debuff/damage propagation
       suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
         if (data.replication1Debuff === undefined) {
