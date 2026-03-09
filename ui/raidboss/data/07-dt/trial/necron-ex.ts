@@ -8,10 +8,6 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
-// TODO:
-// Party adds phase stuff?
-// Individual adds phase mechs for non-healer?
-
 export type ReapingSafeDir = 'out' | 'in' | 'mid' | 'sides';
 const reapingHeadmarkerMap: { [id: string]: ReapingSafeDir } = {
   '025C': 'out',

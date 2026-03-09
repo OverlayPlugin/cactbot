@@ -8,10 +8,6 @@
 hideall "--Reset--"
 hideall "--sync--"
 
-# Base timeline pulled from FFLogs enrage pull
-# TODO: Figure out phase syncs / push timings?
-# TODO: Duration on Memento Mori middle line?
-
 0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
 
 0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
@@ -29,7 +25,7 @@ hideall "--sync--"
 41.6 "Existential Dread" Ability { id: "AE0B", source: "Necron" }
 
 # Memento Mori 1
-52.3 "Memento Mori" Ability { id: ["AE15", "AE16"], source: "Necron" }
+52.3 "Memento Mori" Ability { id: ["AE15", "AE16"], source: "Necron" } duration 11.1
 58.5 "Choking Grasp" Ability { id: "AE17", source: "Icy Hands" }
 59.4 "Smite of Gloom" Ability { id: "AE3A", source: "Necron" }
 
@@ -153,7 +149,7 @@ hideall "--sync--"
 
 # Mass Macabre
 1131.1 "Mass Macabre" Ability { id: "AE33", source: "Necron" }
-1138.2 "Memento Mori" Ability { id: ["AE15", "AE16"], source: "Necron" }
+1138.2 "Memento Mori" Ability { id: ["AE15", "AE16"], source: "Necron" } duration 11.1
 1144.3 "Choking Grasp" Ability { id: "AE17", source: "Icy Hands" }
 1149.8 "Blue Shockwave 1" Ability { id: "AE31", source: "Necron" }
 1153.9 "Blue Shockwave 2" Ability { id: "AE31", source: "Necron" }
@@ -186,7 +182,7 @@ hideall "--sync--"
 1253.3 "Circle of Lives 4" Ability { id: "AE38", source: "Azure Aether" }
 
 # Memento Mori 2
-1260.6 "Memento Mori" Ability { id: ["AE15", "AE16"], source: "Necron" }
+1260.6 "Memento Mori" Ability { id: ["AE15", "AE16"], source: "Necron" } duration 11.1
 1266.8 "Choking Grasp" Ability { id: "AE17", source: "Icy Hands" }
 1267.7 "Smite of Gloom" Ability { id: "AE3A", source: "Necron" }
 1275.8 "Cold Grip" Ability { id: "AE44", source: "Necron" }
@@ -247,7 +243,9 @@ hideall "--sync--"
 # AE12 Aetherblight
 # AE13 Aetherblight
 # AE14 Relentless Reaping
-# AE15 Memento Mori
+# AE15 Memento Mori: Spawns a middle line that gives bleed.
+# Technically the line becomes active 1.1s after the ability line, and lasts for 10s after that,
+# but adding an extra timeline entry for the duration portion is excessive
 # AE16 Memento Mori
 # AE17 Choking Grasp
 # AE18 Grand Cross
