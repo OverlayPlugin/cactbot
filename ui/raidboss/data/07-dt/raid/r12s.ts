@@ -2539,30 +2539,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Fire and Dark Resistance Down II',
-      // CFB Dark Resistance Down II
-      // B79 Fire Resistance Down II
-      type: 'GainsEffect',
-      netRegex: { effectId: ['CFB', 'B79'], capture: true },
-      condition: (data, matches) => {
-        if (data.me === matches.target)
-          return !data.replication1FollowUp;
-        return false;
-      },
-      suppressSeconds: 9999,
-      infoText: (_data, matches, output) => {
-        return matches.effectId === 'CFB' ? output.dark!() : output.fire!();
-      },
-      outputStrings: {
-        fire: {
-          en: 'Fire Debuff: Spread near Dark (later)',
-        },
-        dark: {
-          en: 'Dark Debuff: Stack near Fire (later)',
-        },
-      },
-    },
-    {
       id: 'R12S Fake Fire Resistance Down II',
       // Two players will not receive a debuff, they will need to act as if they had
       // Mechanics happen across 1.1s
