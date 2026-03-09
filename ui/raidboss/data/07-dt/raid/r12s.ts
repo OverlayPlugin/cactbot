@@ -2444,8 +2444,12 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Winged Scourge',
-      // B4DA E/W clones Facing S, Cleaving Front/Back (North/South)
-      // B4DB N/S clones Facing W, Cleaving Front/Back (East/West)
+      // B4DA E/W or N/S clones Facing S, Cleaving Front/Back (North/South)
+      // B4DB N/S or E/W clones Facing W, Cleaving Front/Back (East/West)
+      // Clones Are positioned:
+      //          (100, 86)
+      // (86, 100)         (114, 100)
+      //          (100, 114)
       type: 'StartsUsing',
       netRegex: { id: ['B4DA', 'B4DB'], source: 'Lindschrat', capture: true },
       suppressSeconds: 1,
@@ -2453,18 +2457,32 @@ const triggerSet: TriggerSet<Data> = {
         if (matches.id === 'B4DA') {
           if (data.replication1FollowUp)
             return output.northSouthCleaves2!();
-          return output.northSouthCleaves!();
+
+          const x = parseFloat(matches.x);
+          if (x  < 87 || x > 113)
+            return output.eWCleavingNorthSouth!();
+          return output.nSCleavingNorthSouth!();
         }
         if (data.replication1FollowUp)
           return output.eastWestCleaves2!();
-        return output.eastWestCleaves!();
+
+        const x = parseFloat(matches.x);
+        if (x  < 87 || x > 113)
+          return output.eWCleavingEastWest!();
+        return output.nSCleavingEastWest!();
       },
       outputStrings: {
-        northSouthCleaves: {
-          en: 'North/South Cleaves',
+        nSCleavingNorthSouth: {
+          en: 'N/S Cleaving North/South',
         },
-        eastWestCleaves: {
-          en: 'East/West Cleaves',
+        eWCleavingNorthSouth: {
+          en: 'E/W Cleaving North/South',
+        },
+        nSCleavingEastWest: {
+          en: 'N/S Cleaving East/West',
+        },
+        eWCleavingEastWest: {
+          en: 'E/W Cleaving East/West',
         },
         northSouthCleaves2: {
           en: 'North/South Cleaves',
