@@ -2666,6 +2666,7 @@ const triggerSet: TriggerSet<Data> = {
         if (actor === undefined)
           return;
 
+        const debuff = data.replication1Debuff;
         const x = actor.x;
         const dirNum = Directions.xyTo8DirNum(x, actor.y, center.x, center.y);
         const dir1 = Directions.output8Dir[dirNum] ?? 'unknown';
@@ -2677,7 +2678,7 @@ const triggerSet: TriggerSet<Data> = {
         const fireIn = isIn ? dir1 : dir2;
         const fireOut = isIn ? dir2 : dir1;
 
-        if (data.replication1Debuff === 'dark')
+        if (debuff === 'dark')
           return output.fire!({
             dir1: output[fireIn]!(),
             dir2: output[fireOut]!(),
@@ -2688,7 +2689,21 @@ const triggerSet: TriggerSet<Data> = {
         const darkOut = isIn ? dir1 : dir2;
 
         // Fire debuff players and unmarked bait Dark
-        return output.dark!({
+        // Expecting 2 Fire, 4 Dark (6 Total)
+        if (
+          debuff === 'fire' ||
+          (
+            data.replication1FireDebuffCounter === 2 &&
+            data.replication1DarkDebuffCounter === 4
+          )
+        )
+          return output.dark!({
+            dir1: output[darkIn]!(),
+            dir2: output[darkOut]!(),
+          });
+        // Non-debuff players when not 2 fire and 4 dark debuffs
+        // Output Dark location as 2 players will need it
+        return output.darkDebuffFail!({
           dir1: output[darkIn]!(),
           dir2: output[darkOut]!(),
         });
@@ -2701,6 +2716,9 @@ const triggerSet: TriggerSet<Data> = {
         dark: {
           en: 'Bait Dark In ${dir1}/Out ${dir2} (Solo)',
         },
+       darkDebuffFail: {
+          en: 'Check Partner, Dark is In ${dir1}/Out ${dir2}',
+        },    
       },
     },
     {
