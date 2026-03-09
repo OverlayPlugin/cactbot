@@ -56,6 +56,8 @@ export interface Data extends RaidbossData {
   actorPositions: { [id: string]: { x: number; y: number; heading: number } };
   replicationCounter: number;
   replication1Debuff?: 'fire' | 'dark';
+  replication1FireDebuffCounter: number;
+  replication1DarkDebuffCounter: number;
   replication1FireActor?: string;
   replication1FireActor2?: string;
   replication1FollowUp: boolean;
@@ -295,6 +297,8 @@ const triggerSet: TriggerSet<Data> = {
     // Phase 2
     actorPositions: {},
     replicationCounter: 0,
+    replication1FireDebuffCounter: 0,
+    replication1DarkDebuffCounter: 0,
     replication1FollowUp: false,
     replication2CloneDirNumPlayers: {},
     replication2DirNumAbility: {},
@@ -2498,10 +2502,40 @@ const triggerSet: TriggerSet<Data> = {
       // B79 Fire Resistance Down II
       type: 'GainsEffect',
       netRegex: { effectId: ['CFB', 'B79'], capture: true },
-      condition: Conditions.targetIsYou(),
-      suppressSeconds: 9999,
+      condition: (data) => !data.replication1FollowUp,
       run: (data, matches) => {
-        data.replication1Debuff = matches.effectId === 'CFB' ? 'dark' : 'fire';
+        const debuff = matches.effectId === 'CFB' ? 'dark' : 'fire';
+        if (data.me === matches.target)
+          data.replication1Debuff = debuff;
+
+       if (debuff === 'fire')
+        data.replication1FireDebuffCounter = data.replication1FireDebuffCounter + 1;
+       else
+        data.replication1DarkDebuffCounter = data.replication1DarkDebuffCounter + 1;
+      },
+    },
+    {
+      id: 'R12S Fire and Dark Resistance Down II',
+      // CFB Dark Resistance Down II
+      // B79 Fire Resistance Down II
+      type: 'GainsEffect',
+      netRegex: { effectId: ['CFB', 'B79'], capture: true },
+      condition: (data, matches) => {
+        if (data.me === matches.target)
+          return !data.replication1FollowUp;
+        return false;
+      },
+      suppressSeconds: 9999,
+      infoText: (_data, matches, output) => {
+        return matches.effectId === 'CFB' ? output.dark!() : output.fire!();
+      },
+      outputStrings: {
+        fire: {
+          en: 'Fire Debuff: Spread near Dark (later)',
+        },
+        dark: {
+          en: 'Dark Debuff: Stack near Fire (later)',
+        },
       },
     },
     {
@@ -2538,12 +2572,22 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 1.2, // +0.1s Delay for debuff/damage propagation
       suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
-        if (data.replication1Debuff === undefined)
-          return output.noDebuff!();
+        if (data.replication1Debuff === undefined) {
+          // Expecting 2 Fire, 4 Dark (6 Total)
+          if (
+            data.replication1FireDebuffCounter === 2 &&
+            data.replication1DarkDebuffCounter === 4
+          )
+            return output.noDebuff!();
+          return output.noDebuffFail!();
+        }
       },
       outputStrings: {
         noDebuff: {
           en: 'No Debuff: Spread near Dark (later)',
+        },
+        noDebuffFail: {
+          en: 'Debuffs Messed Up, Check Partner',
         },
       },
     },
