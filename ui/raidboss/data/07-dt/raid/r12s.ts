@@ -2508,10 +2508,10 @@ const triggerSet: TriggerSet<Data> = {
         if (data.me === matches.target)
           data.replication1Debuff = debuff;
 
-       if (debuff === 'fire')
-        data.replication1FireDebuffCounter = data.replication1FireDebuffCounter + 1;
-       else
-        data.replication1DarkDebuffCounter = data.replication1DarkDebuffCounter + 1;
+        if (debuff === 'fire')
+          data.replication1FireDebuffCounter = data.replication1FireDebuffCounter + 1;
+        else
+          data.replication1DarkDebuffCounter = data.replication1DarkDebuffCounter + 1;
       },
     },
     {
