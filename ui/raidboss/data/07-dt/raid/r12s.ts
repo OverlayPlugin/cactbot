@@ -2716,9 +2716,9 @@ const triggerSet: TriggerSet<Data> = {
         dark: {
           en: 'Bait Dark In ${dir1}/Out ${dir2} (Solo)',
         },
-       darkDebuffFail: {
+        darkDebuffFail: {
           en: 'Check Partner, Dark is In ${dir1}/Out ${dir2}',
-        },    
+        },
       },
     },
     {
