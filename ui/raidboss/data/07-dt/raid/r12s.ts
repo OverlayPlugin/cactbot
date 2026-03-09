@@ -2446,7 +2446,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'R12S Winged Scourge',
       // B4DA E/W or N/S clones Facing S, Cleaving Front/Back (North/South)
       // B4DB N/S or E/W clones Facing W, Cleaving Front/Back (East/West)
-      // Clones Are positioned:
+      // Clones are positioned:
       //          (100, 86)
       // (86, 100)         (114, 100)
       //          (100, 114)
@@ -2459,7 +2459,7 @@ const triggerSet: TriggerSet<Data> = {
             return output.northSouthCleaves2!();
 
           const x = parseFloat(matches.x);
-          if (x  < 87 || x > 113)
+          if (x < 87 || x > 113)
             return output.eWCleavingNorthSouth!();
           return output.nSCleavingNorthSouth!();
         }
@@ -2467,7 +2467,7 @@ const triggerSet: TriggerSet<Data> = {
           return output.eastWestCleaves2!();
 
         const x = parseFloat(matches.x);
-        if (x  < 87 || x > 113)
+        if (x < 87 || x > 113)
           return output.eWCleavingEastWest!();
         return output.nSCleavingEastWest!();
       },
