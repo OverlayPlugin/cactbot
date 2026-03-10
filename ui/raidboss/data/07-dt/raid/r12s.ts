@@ -5699,17 +5699,15 @@ const triggerSet: TriggerSet<Data> = {
           }
           return output.farOnYouWind!();
         }
-        if (data.hasDoom) {
-          switch (data.triggerSetConfig.portentStrategy) {
-            case 'dn':
-              return output.nearOnYouDarkDN!();
-            case 'zenith':
-              return output.nearOnYouDarkZenith!();
-            case 'nukemaru':
-              return output.nearOnYouDarkNukemaru!();
-          }
-          return output.nearOnYouDark!();
+        switch (data.triggerSetConfig.portentStrategy) {
+          case 'dn':
+            return output.nearOnYouDarkDN!();
+          case 'zenith':
+            return output.nearOnYouDarkZenith!();
+          case 'nukemaru':
+            return output.nearOnYouDarkNukemaru!();
         }
+        return output.nearOnYouDark!();
       },
       outputStrings: {
         nearOnYouDarkDN: {
