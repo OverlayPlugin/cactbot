@@ -5679,8 +5679,8 @@ const triggerSet: TriggerSet<Data> = {
     {
       id: 'R12S Nearby and Faraway Portent',
       // 129D Lindwurm's Portent prevents stacking the portents
-      // 129E Farwaway Portent
-      // 129F Nearby Portent
+      // 129E Farwaway Portent, Always on wind player
+      // 129F Nearby Portent, Always on Dark player
       // 10s duration, need to delay to avoid earth + doom trigger overlap
       // This would go out to players that soaked white/holy meteors
       type: 'GainsEffect',
@@ -5689,17 +5689,6 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
       infoText: (data, matches, output) => {
         if (matches.id === '129E') {
-          if (data.hasDoom) {
-            switch (data.triggerSetConfig.portentStrategy) {
-              case 'dn':
-                return output.farOnYouDarkDN!();
-              case 'zenith':
-                return output.farOnYouDarkZenith!();
-              case 'nukemaru':
-                return output.farOnYouDarkNukemaru!();
-            }
-            return output.farOnYouDark!();
-          }
           switch (data.triggerSetConfig.portentStrategy) {
             case 'dn':
               return output.farOnYouWindDN!();
@@ -5721,31 +5710,13 @@ const triggerSet: TriggerSet<Data> = {
           }
           return output.nearOnYouDark!();
         }
-        switch (data.triggerSetConfig.portentStrategy) {
-          case 'dn':
-            return output.nearOnYouWindDN!();
-          case 'zenith':
-            return output.nearOnYouWindZenith!();
-          case 'nukemaru':
-            return output.nearOnYouWindNukemaru!();
-        }
-        return output.nearOnYouWind!();
       },
       outputStrings: {
-        nearOnYouWindDN: {
-          en: 'Near on YOU: Be on Middle Hitbox',
-        },
         nearOnYouDarkDN: {
           en: 'Near on YOU: Be on Hitbox N',
         },
         farOnYouWindDN: {
           en: 'Far on YOU: Be on Middle Hitbox',
-        },
-        farOnYouDarkDN: {
-          en: 'Far on YOU: Be on Hitbox N',
-        },
-        nearOnYouWindZenith: {
-          en: 'Near on YOU: Max Melee N',
         },
         nearOnYouDarkZenith: {
           en: 'Near on YOU: Be on Middle Hitbox (Lean North)',
@@ -5753,32 +5724,17 @@ const triggerSet: TriggerSet<Data> = {
         farOnYouWindZenith: {
           en: 'Far on YOU: Max Melee N',
         },
-        farOnYouDarkZenith: {
-          en: 'Far on YOU: Be on Middle Hitbox (Lean North)',
-        },
-        nearOnYouWindNukemaru: {
-          en: 'Near on YOU: Max Melee S (Near Outer Player)',
-        },
         farOnYouWindNukemaru: {
           en: 'Far on YOU: Be on Hitbox S',
         },
         nearOnYouDarkNukemaru: {
           en: 'Near on YOU: Max Melee S (Near Outer Player)',
         },
-        farOnYouDarkNukemaru: {
-          en: 'Far on YOU: Be on Hitbox S',
-        },
-        nearOnYouWind: {
-          en: 'Wind: Near on YOU',
-        },
         nearOnYouDark: {
           en: 'Dark: Near on YOU',
         },
         farOnYouWind: {
           en: 'Wind: Far on YOU',
-        },
-        farOnYouDark: {
-          en: 'Dark: Far on YOU',
         },
       },
     },
