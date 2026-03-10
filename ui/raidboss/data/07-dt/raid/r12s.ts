@@ -25,7 +25,7 @@ export interface Data extends RaidbossData {
   readonly triggerSetConfig: {
     curtainCallStrat: 'ns' | 'none';
     uptimeKnockbackStrat: true | false;
-    portentStrategy: 'dn' | 'zenith' | 'none';
+    portentStrategy: 'dn' | 'zenith' | 'nukemaru' | 'none';
     replication2Strategy: 'dn' | 'banana' | 'nukemaru' | 'none';
   };
   phase: Phase;
@@ -277,6 +277,8 @@ const triggerSet: TriggerSet<Data> = {
           'DN Strategy: Dark N Hitbox, Wind Middle Hitbox, Earth/Fire N/S Max Melee': 'dn',
           'Zenith Strategy: Wind N Max Melee, Earth/Dark Middle (Lean North), Fire S Max Melee':
             'zenith',
+          'Nukemaru Strategy: Near S (corner of numbered marker), Far S on Boss Hitbox, Earth/Fire Melee S Max Melee, Fire/Earth Range N of Platform':
+            'nukemaru',
           'No strategy: call element and debuff': 'none',
         },
       },
@@ -5693,6 +5695,8 @@ const triggerSet: TriggerSet<Data> = {
                 return output.farOnYouDarkDN!();
               case 'zenith':
                 return output.farOnYouDarkZenith!();
+              case 'nukemaru':
+                return output.farOnYouDarkNukemaru!();
             }
             return output.farOnYouDark!();
           }
@@ -5701,6 +5705,8 @@ const triggerSet: TriggerSet<Data> = {
               return output.farOnYouWindDN!();
             case 'zenith':
               return output.farOnYouWindZenith!();
+            case 'nukemaru':
+              return output.farOnYouWindNukemaru!();
           }
           return output.farOnYouWind!();
         }
@@ -5710,6 +5716,8 @@ const triggerSet: TriggerSet<Data> = {
               return output.nearOnYouDarkDN!();
             case 'zenith':
               return output.nearOnYouDarkZenith!();
+            case 'nukemaru':
+              return output.nearOnYouDarkNukemaru!();
           }
           return output.nearOnYouDark!();
         }
@@ -5718,6 +5726,8 @@ const triggerSet: TriggerSet<Data> = {
             return output.nearOnYouWindDN!();
           case 'zenith':
             return output.nearOnYouWindZenith!();
+          case 'nukemaru':
+            return output.nearOnYouWindNukemaru!();
         }
         return output.nearOnYouWind!();
       },
@@ -5745,6 +5755,18 @@ const triggerSet: TriggerSet<Data> = {
         },
         farOnYouDarkZenith: {
           en: 'Far on YOU: Be on Middle Hitbox (Lean North)',
+        },
+        nearOnYouWindNukemaru: {
+          en: 'Near on YOU: Max Melee S (Near Outer Player)',
+        },
+        farOnYouWindNukemaru: {
+          en: 'Far on YOU: Be on Hitbox S',
+        },
+        nearOnYouDarkNukemaru: {
+          en: 'Near on YOU: Max Melee S (Near Outer Player)',
+        },
+        farOnYouDarkNukemaru: {
+          en: 'Far on YOU: Be on Hitbox S',
         },
         nearOnYouWind: {
           en: 'Wind: Near on YOU',
@@ -5775,6 +5797,8 @@ const triggerSet: TriggerSet<Data> = {
               return output.baitFireDN!();
             case 'zenith':
               return output.baitFireZenith!();
+            case 'nukemaru':
+              return output.baitFireNukemaru!();
           }
           return output.baitFire!();
         }
@@ -5783,6 +5807,8 @@ const triggerSet: TriggerSet<Data> = {
             return output.baitEarthDN!();
           case 'zenith':
             return output.baitEarthZenith!();
+          case 'nukemaru':
+            return output.baitEarthNukemaru!();
         }
         return output.baitEarth!();
       },
@@ -5798,6 +5824,12 @@ const triggerSet: TriggerSet<Data> = {
         },
         baitEarthZenith: {
           en: 'Bait Cone Middle, Max Melee (Lean North)',
+        },
+        baitFireNukemaru: {
+          en: 'Bait Cone, N of Platform/S Max Melee',
+        },
+        baitEarthNukemaru: {
+          en: 'Bait Cone, S Max Melee/N of Platform',
         },
         baitFire: {
           en: 'Fire: Bait Cone',
