@@ -1,6 +1,13 @@
 import contentList from '../../resources/content_list';
 import ContentType from '../../resources/content_type';
-import { isLang, Lang, langMap, langToLocale, languages } from '../../resources/languages';
+import {
+  browserLanguagesToLang,
+  isLang,
+  Lang,
+  langMap,
+  langToLocale,
+  languages,
+} from '../../resources/languages';
 import { UnreachableCode } from '../../resources/not_reached';
 import ZoneInfo from '../../resources/zone_info';
 import { LocaleObject, LocaleText } from '../../types/trigger';
@@ -72,7 +79,7 @@ const isTranslationKeyMap = (key: string): key is MissingTranslationErrorType =>
 };
 
 // TODO: make it possible to click on a zone row and highlight/link to it.
-type exKeys = Exclude<keyof typeof kPrefixToCategory, '00-misc' | 'user'>;
+type exKeys = Exclude<keyof typeof kPrefixToCategory, '00-misc' | '99-custom' | 'user'>;
 
 const exVersionToDirName: readonly exKeys[] = [
   '02-arr',
@@ -504,6 +511,8 @@ const miscStrings = {
       '该列表中可能存在正在开发中的功能及未发布在cactbot最新发行版中的更新内容。该列表中显示的更新将会在下一个版本的cactbot发行版中发布。若您在OverlayPlugin中使用的是<a href="https://github.com/OverlayPlugin/cactbot/blob/main/CONTRIBUTING.md#validating-changes-via-remote-urls">「overlayplugin.github.io」开头的URL</a>，则更新进度与该列表一致，即该列表中的所有内容均可用。',
     ko:
       '이 목록에는 아직 개발 중인 컨텐츠가 포함되어 있을 수 있고 최신 cactbot 릴리즈에 포함되어 있지 않을 수 있습니다. 여기에 나열된 컨텐츠 목록은 최소한 다음 릴리즈에는 포함되게 됩니다. 만약 <a href="https://github.com/OverlayPlugin/cactbot/blob/main/CONTRIBUTING.md#validating-changes-via-remote-urls">overlayplugin.github.io 버전</a>을 오버레이 url로 연결해서 사용하고 계시다면, 이 목록이 오버레이의 컨텐츠 커버리지와 일치합니다.',
+    tc:
+      '該列表中可能存在正在開發中的功能及未發布在cactbot最新發行版中的更新內容. 该該列表中顯示的更新將會在下一個版本的cactbot發行版中發布. 若您在OverlayPlugin中使用的是<a href="https://github.com/OverlayPlugin/cactbot/blob/main/CONTRIBUTING.md#validating-changes-via-remote-urls">「overlayplugin.github.io」开头的URL</a>, 則更新進度與該列表一致, 即該列表中的所有內容均可用.',
   },
   // Warning when generator hasn't been run.
   runGenerator: {
@@ -512,7 +521,7 @@ const miscStrings = {
     fr: 'Erreur : Lancez npm run coverage-report pour générer des données.',
     ja: 'エラー：npm run coverage-report を実行し、データを生成しよう。',
     cn: '错误：请先运行 npm run coverage-report 以生成数据。',
-    ko: '에러: 데이터를 생성하려면 node npm run coverage-report를 실행하세요.',
+    ko: '에러: 데이터를 생성하려면 npm run coverage-report를 실행하세요.',
     tc: '錯誤：請先運行 npm run coverage-report 來產生資料。',
   },
   // Indicator that content is unsupported
@@ -1356,7 +1365,7 @@ const buildLanguageSelect = (container: HTMLElement, lang: Lang) => {
 document.addEventListener('DOMContentLoaded', () => {
   // Allow for `coverage.html?lang=de` style constructions.
   const params = new URLSearchParams(window.location.search);
-  const langStr = params.get('lang') ?? 'en';
+  const langStr = params.get('lang') ?? browserLanguagesToLang();
   // TODO: left for now as backwards compatibility with user css.  Remove this later??
   document.body.classList.add(`lang-${langStr}`);
   const lang = langStr !== null && isLang(langStr) ? langStr : 'en';

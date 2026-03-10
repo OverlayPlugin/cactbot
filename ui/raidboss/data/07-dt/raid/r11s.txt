@@ -1,0 +1,529 @@
+### AAC HEAVYWEIGHT M3 (SAVAGE)
+# ZoneId: 1325
+
+# -ii B405 B40E B40D B40A B41E B42D B429 B426 B437 B43B B445 B455 B439 B458 B461 B446 B431
+# -it "The Tyrant"
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+# NOTE: A rough description of the layout for this timeline is as follows:
+# Timeline reaches Raw Steel Branch point
+#   "r11s-raw-steel-axe-1": Raw Steel Axe First
+#     "r11s-axe-1-comet-1": Raw Steel Axe First + Comet First
+#     "r11s-axe-1-crush-1": Raw Steel Axe First + Crushing Comet First
+#   "r11s-axe-1-post-cometcrush": Label for Dance of Domination section within Raw Steel Axe First
+# "r11s-charybdistopia": Jump to end of Raw Steel branch
+#
+# "r11s-raw-steel-scythe-1": Raw Steel Scythe
+#     "r11s-scythe-1-comet-1": Raw Steel Scythe First + Comet First
+#     "r11s-scythe-1-crush-1": Raw Steel Scythe First + Crushing Comet First
+#   "r11s-scythe-1-post-cometcrush": Label for Dance of Domination section within Raw Steel Scythe First
+# "r11s-charybdistopia": Label for the end of Raw Steel branch
+# Timeline continues
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+5.6 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } window 10,10
+10.6 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
+
+# Branch for Raw Steel Axe or Raw Steel Scythe First
+15.7 "--sync--" StartsUsing { id: "B422", source: "The Tyrant" } window 15.7,5 jump "r11s-raw-steel-axe-1"
+15.7 "--sync--" StartsUsing { id: "B423", source: "The Tyrant" } window 15.7,5 jump "r11s-raw-steel-scythe-1"
+17.7 "Raw Steel Trophy (Scythe/Axe)" #Ability { id: ["B423", "B422"], source: "The Tyrant" }
+24.0 "Raw Steel (Axe)?" #Ability { id: "B40B", source: "The Tyrant" } # Only tanks
+25.1 "Heavy Hitter (Scythe)/Impact x6 (Axe)" #Ability { id: ["B410", "B40C"], source: "The Tyrant" } # Only non-tanks
+25.1 "Raw Steel x2 (Scythe)?" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+33.1 "--middle--" #Ability { id: "B404", source: "The Tyrant" }
+38.4 "Trophy Weapons" #Ability { id: "B416", source: "The Tyrant" }
+
+# Raw Steel Axe First
+115.7 label "r11s-raw-steel-axe-1"
+117.7 "Raw Steel Trophy Axe" Ability { id: "B422", source: "The Tyrant" }
+124.0 "Raw Steel (Axe)" Ability { id: "B40B", source: "The Tyrant" } # Only tanks
+125.1 "Impact x6 (Axe)" Ability { id: "B40C", source: "The Tyrant" } # Only non-tanks
+133.1 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+138.4 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
+148.2 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+148.4 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+150.3 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+150.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+153.5 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+155.4 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+155.5 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+158.6 "--jump 3--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+160.5 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+160.6 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+
+# Trophy Weapons 2 (Axe)
+167.7 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+172.7 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
+179.8 "Void Stardust" Ability { id: "B412", source: "The Tyrant" }
+183.9 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+
+# Branch for Raw Steel Axe + Comet or Crushing Comet First
+184.9 "--sync--" StartsUsing { id: "B414", source: "The Tyrant" } jump "r11s-axe-1-comet-1"
+184.9 "--sync--" StartsUsing { id: "B415", source: "The Tyrant" } jump "r11s-axe-1-crush-1"
+185.9 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+187.9 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+189.9 "Comet/Crushing Comet?" #Ability { id: ["B414", "B415"], source: "The Tyrant" }
+192.7 "Assault Evolved" #Ability { id: "B417", source: "The Tyrant" }
+192.9 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+194.8 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+194.9 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+
+# Raw Steel Axe First + Comet First
+284.9 label "r11s-axe-1-comet-1"
+289.9 "Comet" Ability { id: "B414", source: "The Tyrant" }
+292.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+292.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+294.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+294.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+298.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+299.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+300.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+303.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+305.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+305.1 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+310.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+312.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+314.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+316.2 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
+
+317.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } forcejump "r11s-axe-1-post-cometcrush"
+
+
+# Raw Steel Axe First + Crushing Comet First
+484.9 label "r11s-axe-1-crush-1"
+489.9 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
+492.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+492.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+494.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+494.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+498.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+499.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+500.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+503.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+505.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+505.1 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+510.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+512.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+514.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+516.2 "Comet" Ability { id: "B414", source: "The Tyrant" }
+
+517.2 label "r11s-axe-1-post-cometcrush"
+522.2 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
+
+# Dance of Domination (Axe)
+530.4 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+534.6 "Dance of Domination Trophy" Ability { id: "B7BB", source: "The Tyrant" }
+541.3 "Dance of Domination 1" Ability { id: "B41F", source: "The Tyrant" }
+542.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
+542.6 "Dance of Domination 3" #Ability { id: "B421", source: "The Tyrant" }
+543.2 "Dance of Domination 4" #Ability { id: "B421", source: "The Tyrant" }
+543.8 "Dance of Domination 5" #Ability { id: "B421", source: "The Tyrant" }
+544.4 "Dance of Domination 6" #Ability { id: "B421", source: "The Tyrant" }
+545.5 "Dance of Domination 7" Ability { id: "B7EA", source: "The Tyrant" }
+550.5 "Eye of the Hurricane" Ability { id: "B424", source: "The Tyrant" }
+550.7 "Explosion" Ability { id: "B420", source: "The Tyrant" }
+551.1 "Explosion" Ability { id: "B7BC", source: "The Tyrant" }
+556.4 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
+563.8 "Heavy Hitter (Scythe)" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
+563.8 "Raw Steel x2 (Scythe)" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+571.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+
+# Ultimate Trophy Weapons (Axe)
+573.9 "--sync--" StartsUsing { id: "B425", source: "The Tyrant" } forcejump "r11s-charybdistopia"
+
+
+# Raw Steel Scythe First
+715.7 label "r11s-raw-steel-scythe-1"
+717.7 "Raw Steel Trophy Scythe" Ability { id: "B423", source: "The Tyrant" }
+725.1 "Heavy Hitter (Scythe)" Ability { id: "B410", source: "The Tyrant" } # Only non-tanks
+725.1 "Raw Steel x2 (Scythe)" #Ability { id: "B40F", source: "The Tyrant" } # Only tanks
+733.1 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+
+# Trophy Weapons 1 (Scythe)
+738.4 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
+748.2 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+748.4 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+750.3 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+750.4 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+753.5 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+755.4 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+755.5 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+758.6 "--jump 3--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+760.5 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+760.6 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+
+# Trophy Weapons 2 (Scythe)
+767.7 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+772.7 "Trophy Weapons" Ability { id: "B416", source: "The Tyrant" }
+779.8 "Void Stardust" Ability { id: "B412", source: "The Tyrant" }
+783.9 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+
+# Branch for Raw Steel Scythe + Comet or Crushing Comet First
+784.9 "--sync--" StartsUsing { id: "B414", source: "The Tyrant" } jump "r11s-scythe-1-comet-1"
+784.9 "--sync--" StartsUsing { id: "B415", source: "The Tyrant" } jump "r11s-scythe-1-crush-1"
+785.9 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+787.9 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+789.9 "Comet/Crushing Comet?" #Ability { id: ["B414", "B415"], source: "The Tyrant" }
+792.7 "Assault Evolved" #Ability { id: "B417", source: "The Tyrant" }
+792.9 "--jump 1--" #Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+794.8 "Weapon 1" #Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+794.9 "Assault Evolved 1" #Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+
+# Raw Steel Scythe First + Comet First
+884.9 label "r11s-scythe-1-comet-1"
+889.9 "Comet" Ability { id: "B414", source: "The Tyrant" }
+892.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+892.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+894.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+894.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+898.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+899.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+900.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+903.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+905.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+905.1 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+910.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+912.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+914.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+916.2 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
+
+917.2 "--sync--" StartsUsing { id: "B406", source: "The Tyrant" } forcejump "r11s-scythe-1-post-cometcrush"
+
+# Raw Steel Scythe First + Crushing Comet First
+1084.9 label "r11s-scythe-1-crush-1"
+1089.9 "Crushing Comet" Ability { id: "B415", source: "The Tyrant" }
+1092.7 "Assault Evolved" Ability { id: "B417", source: "The Tyrant" }
+1092.9 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+1094.8 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+1094.9 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+1098.0 "--jump 2--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+1099.9 "Weapon 2" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+1100.0 "Assault Evolved 2" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+1103.1 "--jump scythe--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+1105.0 "Weapon 3" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+1105.1 "Assault Evolved 3" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+1110.2 "Cometite 1" #Ability { id: "B413", source: "The Tyrant" }
+1112.2 "Cometite 2" #Ability { id: "B413", source: "The Tyrant" }
+1114.2 "Cometite 3" #Ability { id: "B413", source: "The Tyrant" }
+1116.2 "Comet" Ability { id: "B414", source: "The Tyrant" }
+
+1117.2 label "r11s-scythe-1-post-cometcrush"
+1122.2 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
+
+# Dance of Domination (Scythe)
+1130.4 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+1134.6 "Dance of Domination Trophy" Ability { id: "B7BB", source: "The Tyrant" }
+1141.3 "Dance of Domination 1" Ability { id: "B41F", source: "The Tyrant" }
+1142.0 "Dance of Domination 2" #Ability { id: "B421", source: "The Tyrant" }
+1142.6 "Dance of Domination 3" #Ability { id: "B421", source: "The Tyrant" }
+1143.2 "Dance of Domination 4" #Ability { id: "B421", source: "The Tyrant" }
+1143.8 "Dance of Domination 5" #Ability { id: "B421", source: "The Tyrant" }
+1144.4 "Dance of Domination 6" #Ability { id: "B421", source: "The Tyrant" }
+1145.5 "Dance of Domination 7" Ability { id: "B7EA", source: "The Tyrant" }
+1150.5 "Eye of the Hurricane" Ability { id: "B424", source: "The Tyrant" }
+1150.7 "Explosion" Ability { id: "B420", source: "The Tyrant" }
+1151.1 "Explosion" Ability { id: "B7BC", source: "The Tyrant" }
+1156.4 "Raw Steel Trophy Axe" Ability { id: "B422", source: "The Tyrant" }
+1162.7 "Raw Steel (Axe)" Ability { id: "B40B", source: "The Tyrant" } # Only tanks
+1163.8 "Impact x6 (Axe)" Ability { id: "B40C", source: "The Tyrant" } # Only non-tanks
+1171.8 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+
+# Ultimate Trophy Weapons
+1173.9 label "r11s-charybdistopia"
+1178.9 "Charybdistopia" Ability { id: "B425", source: "The Tyrant" }
+1184.6 "Ultimate Trophy Weapons" Ability { id: "B7ED", source: "The Tyrant" }
+1192.4 "Assault Apex" Ability { id: "B7EE", source: "The Tyrant" }
+1192.6 "--jump 1--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+1194.5 "Weapon 1" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+1194.6 "Assault Evolved 1" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+1197.7 "--jump 2--" Ability { id: ["B544", "B545", "B543"], source: "The Tyrant" }
+1199.6 "Weapon 2" Ability { id: ["B41C", "B41D", "B41B"], source: "The Tyrant" }
+1199.7 "Assault Evolved 2" Ability { id: ["B419", "B41A", "B418"], source: "The Tyrant" }
+1202.8 "--jump 3--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+1204.7 "Weapon 3" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+1204.8 "Assault Evolved 3" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+1207.9 "--jump 4--" Ability { id: ["B545", "B543", "B544"], source: "The Tyrant" }
+1209.8 "Weapon 4" Ability { id: ["B41D", "B41B", "B41C"], source: "The Tyrant" }
+1209.9 "Assault Evolved 4" Ability { id: ["B41A", "B418", "B419"], source: "The Tyrant" }
+1213.0 "--jump 5--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+1214.9 "Weapon 5" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+1215.0 "Assault Evolved 5" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+1218.1 "--jump 6--" Ability { id: ["B543", "B544", "B545"], source: "The Tyrant" }
+1220.0 "Weapon 6" Ability { id: ["B41B", "B41C", "B41D"], source: "The Tyrant" }
+1220.1 "Assault Evolved 6" Ability { id: ["B418", "B419", "B41A"], source: "The Tyrant" }
+1221.2 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+1226.3 "Powerful Gust" Ability { id: "B427", source: "The Tyrant" }
+1227.3 "Immortal Reign" Ability { id: "B428", source: "The Tyrant" }
+
+# Orbitel Omen 1
+1240.4 "One and Only" Ability { id: "B42A", source: "The Tyrant" }
+1252.6 "Great Wall of Fire (castbar)" Ability { id: "B42B", source: "The Tyrant" }
+1252.8 "Great Wall of Fire 1" #Ability { id: "B42C", source: "The Tyrant" }
+1256.0 "Great Wall of Fire 2" #Ability { id: "B42C", source: "The Tyrant" }
+1256.6 "Explosion 1" Ability { id: "B42E", source: "The Tyrant" }
+1259.8 "Explosion 2" Ability { id: "B42E", source: "The Tyrant" }
+1266.1 "Orbital Omen (castbar)" Ability { id: "B432", source: "The Tyrant" }
+1274.8 "Fire and Fury (castbar)" Ability { id: "B42F", source: "The Tyrant" }
+1275.2 "Orbital Omen 1" #Ability { id: "B433", source: "The Tyrant" }
+1275.8 "Fire and Fury" #Ability { id: "B430", source: "The Tyrant" }
+1276.8 "Orbital Omen 2" #Ability { id: "B433", source: "The Tyrant" }
+1278.4 "Orbital Omen 3" #Ability { id: "B433", source: "The Tyrant" }
+1279.8 "Orbital Omen 4" #Ability { id: "B433", source: "The Tyrant" }
+
+# Meteorain
+1285.0 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+1292.1 "Meteorain" Ability { id: "B434", source: "The Tyrant" }
+1293.2 "--Meteor Markers 1--" HeadMarker { id: "00F4" }
+1300.1 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
+1301.3 "Cosmic Kiss" Ability { id: "B435", source: "Comet" }
+1303.1 "--Meteor Markers 2--" HeadMarker { id: "00F4" }
+1303.5 "--tethers--"
+1309.3 "Foregone Fatality" Ability { id: "B436", source: "The Tyrant" }
+1310.2 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
+1311.4 "Cosmic Kiss" Ability { id: "B435", source: "Comet" }
+1313.1 "--Meteor Markers 3--" HeadMarker { id: "00F4" }
+1313.5 "--tethers--"
+1314.0 "Explosion" Ability { id: "B438", source: "Comet" }
+1319.3 "Foregone Fatality" Ability { id: "B436", source: "The Tyrant" }
+1320.2 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
+1321.4 "Cosmic Kiss" Ability { id: "B435", source: "Comet" }
+1324.0 "Explosion" Ability { id: "B438", source: "Comet" }
+1329.3 "Foregone Fatality" Ability { id: "B436", source: "The Tyrant" }
+1330.2 "Fearsome Fireball" Ability { id: "B43A", source: "The Tyrant" }
+1334.0 "--sync--" Ability { id: "B43B", source: "The Tyrant" }
+1334.0 "Explosion" #Ability { id: "B438", source: "Comet" }
+1342.9 "Triple Tyrannhilation" Ability { id: "B43C", source: "The Tyrant" }
+1344.0 "Shockwave" #Ability { id: "B43D", source: "The Tyrant" }
+1344.4 "--sync--" #Ability { id: "B43E", source: "Comet" }
+1345.4 "Shockwave" #Ability { id: "B43D", source: "The Tyrant" }
+1345.8 "--sync--" #Ability { id: "B43E", source: "Comet" }
+1346.8 "Shockwave" #Ability { id: "B43D", source: "The Tyrant" }
+1347.2 "--sync--" #Ability { id: "B43E", source: "Comet" }
+1347.6 "--sync--" Ability { id: "B460", source: "The Tyrant" }
+
+# Arena Split
+# NOTE: Need to move to safe spot at meteor 3
+1359.8 "--sync--" Ability { id: "B43F", source: "The Tyrant" } window 360,10
+1361.8 "Flatliner (split)" Ability { id: "BA90", source: "The Tyrant" }
+1375.9 "Majestic Meteor" Ability { id: "B440", source: "The Tyrant" }
+1377.0 "--tethers--"
+1389.0 "Explosion" Ability { id: "B444", source: "The Tyrant" }
+1394.9 "--Fire Breath Markers--" HeadMarker { id: '00F4' }
+1397.0 "--meteor 1--" #StartsUsing { id: "B441", source: "The Tyrant" }
+1399.0 "--meteor 2--" #StartsUsing { id: "B441", source: "The Tyrant" }
+1400.0 "Majestic Meteor 1" #Ability { id: "B441", source: "The Tyrant" }
+1401.1 "--meteor 3--" #StartsUsing { id: "B441", source: "The Tyrant" }
+1402.0 "Majestic Meteor 2" #Ability { id: "B441", source: "The Tyrant" }
+1403.9 "Majestic Meteowrath/Majestic Meteorain/Fire Breath" Ability { id: ["B442", "B443", "B447"], source: "The Tyrant" }
+1404.1 "Majestic Meteor 3" #Ability { id: "B441", source: "The Tyrant" }
+
+1409.0 "--tethers--"
+1421.1 "Explosion" Ability { id: "B444", source: "The Tyrant" }
+1427.0 "--Fire Breath Markers--" HeadMarker { id: '00F4' }
+1429.1 "--meteor 1--" #StartsUsing { id: "B441", source: "The Tyrant" }
+1431.1 "--meteor 2--" #StartsUsing { id: "B441", source: "The Tyrant" }
+1432.1 "Majestic Meteor 1" #Ability { id: "B441", source: "The Tyrant" }
+1433.1 "--meteor 3--" #StartsUsing { id: "B441", source: "The Tyrant" }
+1434.1 "Majestic Meteor 2" #Ability { id: "B441", source: "The Tyrant" }
+1436.0 "Majestic Meteowrath/Majestic Meteorain/Fire Breath" Ability { id: ["B442", "B443", "B447"], source: "The Tyrant" }
+1436.1 "Majestic Meteor 3" #Ability { id: "B441", source: "The Tyrant" }
+1445.3 "Massive Meteor (castbar)" Ability { id: "B448", source: "The Tyrant" }
+1446.4 "Massive Meteor x5" #Ability { id: "B449", source: "The Tyrant" } duration 5.6
+1458.8 "Explosion" Ability { id: "B444", source: "The Tyrant" }
+1459.1 "Arcadion Avalanche (castbar)" Ability { id: ["B44A", "B44C", "B44E", "B450"], source: "The Tyrant" }
+1468.7 "Arcadion Avalanche" Ability { id: ["B44B", "B44D", "B44F", "B451"], source: "The Tyrant" }
+1479.4 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
+
+# Orbital Omen 2
+# Normal arena
+1490.5 "Great Wall of Fire (castbar)" Ability { id: "B42B", source: "The Tyrant" }
+1490.7 "Great Wall of Fire 1" #Ability { id: "B42C", source: "The Tyrant" }
+1493.9 "Great Wall of Fire 2" #Ability { id: "B42C", source: "The Tyrant" }
+1494.5 "Explosion 1" Ability { id: "B42E", source: "The Tyrant" }
+1497.7 "Explosion 2" Ability { id: "B42E", source: "The Tyrant" }
+1504.0 "Orbital Omen (castbar)" Ability { id: "B432", source: "The Tyrant" }
+1512.7 "Fire and Fury (castbar)" Ability { id: "B42F", source: "The Tyrant" }
+1513.1 "Orbital Omen 1" #Ability { id: "B433", source: "The Tyrant" }
+1513.7 "Fire and Fury" Ability { id: "B430", source: "The Tyrant" }
+1514.7 "Orbital Omen 2" #Ability { id: "B433", source: "The Tyrant" }
+1516.3 "Orbital Omen 3" #Ability { id: "B433", source: "The Tyrant" }
+1517.7 "Orbital Omen 4" #Ability { id: "B433", source: "The Tyrant" }
+1521.8 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
+1527.0 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+
+# Ecliptic Stampede
+1534.1 "Ecliptic Stampede" Ability { id: "B452", source: "The Tyrant" }
+1541.2 "Mammoth Meteor x2" #Ability { id: "B453", source: "The Tyrant" }
+1541.2 "Atomic Impact 1" Ability { id: "B454", source: "The Tyrant" }
+1544.2 "Atomic Impact 2" Ability { id: "B454", source: "The Tyrant" }
+1547.2 "Atomic Impact 3" Ability { id: "B454", source: "The Tyrant" }
+1550.2 "Atomic Impact 4" Ability { id: "B454", source: "The Tyrant" }
+1553.2 "Atomic Impact 5" Ability { id: "B454", source: "The Tyrant" }
+1556.2 "Atomic Impact 6" Ability { id: "B454", source: "The Tyrant" }
+1557.2 "Cosmic Kiss" Ability { id: "B456", source: "The Tyrant" }
+1557.2 "Weighty Impact" #Ability { id: "B457", source: "The Tyrant" }
+1559.7 "--tethers--"
+1566.8 "Majestic Meteowrath x4" Ability { id: "B459", source: "The Tyrant" }
+1570.2 "Two-way Fireball / Four-way Fireball (castbar)" Ability { id: ["B7BD", "B45A"], source: "The Tyrant" }
+1571.1 "Two-way Fireball / Four-way Fireball" Ability { id: ["B7BE", "B45B"], source: "The Tyrant" }
+1579.4 "Crown of Arcadia" Ability { id: "B406", source: "The Tyrant" }
+
+# Heartbreak (Enrage Sequence)
+1584.6 "--middle--" Ability { id: "B404", source: "The Tyrant" }
+1586.7 "--sync--" Ability { id: "B45C", source: "The Tyrant" }
+1593.3 "Heartbreak Kick" Ability { id: "B45D", source: "The Tyrant" }
+1594.4 "Heartbreak Kick 1" #Ability { id: "B45E", source: "The Tyrant" }
+1596.4 "Heartbreak Kick 2" #Ability { id: "B45E", source: "The Tyrant" }
+1598.4 "Heartbreak Kick 3" #Ability { id: "B45E", source: "The Tyrant" }
+1600.4 "Heartbreak Kick 4" #Ability { id: "B45E", source: "The Tyrant" }
+1602.4 "Heartbreak Kick 5" #Ability { id: "B45E", source: "The Tyrant" }
+1604.4 "--sync--" Ability { id: "B45F", source: "The Tyrant" }
+1612.4 "Heartbreak Kick" Ability { id: "B45D", source: "The Tyrant" }
+1613.5 "Heartbreak Kick 1" #Ability { id: "B45E", source: "The Tyrant" }
+1615.5 "Heartbreak Kick 2" #Ability { id: "B45E", source: "The Tyrant" }
+1617.5 "Heartbreak Kick 3" #Ability { id: "B45E", source: "The Tyrant" }
+1619.5 "Heartbreak Kick 4" #Ability { id: "B45E", source: "The Tyrant" }
+1621.5 "Heartbreak Kick 5" #Ability { id: "B45E", source: "The Tyrant" }
+1623.5 "Heartbreak Kick 6" #Ability { id: "B45E", source: "The Tyrant" }
+1625.5 "--sync--" Ability { id: "B45F", source: "The Tyrant" }
+1633.5 "Heartbreak Kick" Ability { id: "B45D", source: "The Tyrant" }
+1634.6 "Heartbreak Kick 1" #Ability { id: "B45E", source: "The Tyrant" }
+1636.6 "Heartbreak Kick 2" #Ability { id: "B45E", source: "The Tyrant" }
+1638.6 "Heartbreak Kick 3" #Ability { id: "B45E", source: "The Tyrant" }
+1640.6 "Heartbreak Kick 4" #Ability { id: "B45E", source: "The Tyrant" }
+1642.6 "Heartbreak Kick 5" #Ability { id: "B45E", source: "The Tyrant" }
+1644.6 "Heartbreak Kick 6" #Ability { id: "B45E", source: "The Tyrant" }
+1646.6 "Heartbreak Kick 7" #Ability { id: "B45E", source: "The Tyrant" }
+1648.6 "--sync--" Ability { id: "B45F", source: "The Tyrant" }
+1651.6 "--sync--" StartsUsing { id: "B462", source: "The Tyrant" }
+1659.6 "Heartbreaker (Enrage)" Ability { id: "B462", source: "The Tyrant" }
+1659.6 "--untargetable--"
+1659.8 "Heartbreaker (Enrage)" #Ability { id: "B463", source: "The Tyrant" }
+
+# IGNORED ABILITIES
+# B40A Raw Steel: VFX for Axe
+# B40D Raw Steel: VFX for Scythe
+# B40E Raw Steel: VFX for Scythe, comes after B40D
+# B41E Dance of Domination: VFX
+# B42D Great Wall of Fire: VFX
+# B426 Charybdis: Knocbkack Damage from standing in tornado
+# B429 One and Only: VFX
+# B42B Great Wall of Fire: VFX
+# B431 Fire and Fury: VFX
+# B439 Fearsome Fireball: VFX
+# B446 Fire Breath: VFX
+# B437 Unmitigated Explosion: Meteors dropped too close to each other
+# B445 Unmitigated Explosion: Missed tower during arena split
+# B458 Unmitigated Explosion: Missed tower during Ecliptic Stampede
+# B461 Tough Break: Missed Heartbreak soaks
+# B405 --sync--: Auto-attack
+
+# ALL ENCOUNTER ABILITIES
+# B404 --sync--
+# B405 --sync--
+# B406 Crown of Arcadia
+# B40A Raw Steel
+# B40B Raw Steel: Shared tankbuster
+# B40C Impact
+# B40D Raw Steel
+# B40E Raw Steel
+# B40F Raw Steel
+# B410 Heavy Hitter
+# B412 Void Stardust
+# B413 Cometite
+# B414 Comet
+# B415 Crushing Comet
+# B416 Trophy Weapons
+# B417 Assault Evolved: Castbar
+# B418 Assault Evolved: Damage from inside Trophy Axe chariot
+# B419 Assault Evolved: Damage from outside of Trophy Scythe donut
+# B41A Assault Evolved: Damage from Trophy Sword cross aoe
+# B41B Heavy Weight: Damage from Trophy Axe group share
+# B41C Sweeping Victory: Damage from Trophy Scythe protean
+# B41D Sharp Taste: Damage from Trophy Sword healer group line aoe
+# B41E Dance of Domination
+# B41F Dance of Domination
+# B420 Explosion
+# B421 Dance of Domination
+# B422 Raw Steel Trophy
+# B423 Raw Steel Trophy
+# B424 Eye of the Hurricane
+# B425 Charybdistopia
+# B426 Charybdis
+# B427 Powerful Gust
+# B428 Immortal Reign
+# B429 One and Only
+# B42A One and Only
+# B42B Great Wall of Fire
+# B42C Great Wall of Fire
+# B42D Great Wall of Fire
+# B42E Explosion
+# B42F Fire and Fury
+# B430 Fire and Fury
+# B431 Fire and Fury
+# B432 Orbital Omen
+# B433 Orbital Omen
+# B434 Meteorain
+# B435 Cosmic Kiss
+# B436 Foregone Fatality
+# B437 Unmitigated Explosion
+# B438 Explosion
+# B439 Fearsome Fireball
+# B43A Fearsome Fireball
+# B43B Triple Tyrannhilation
+# B43C Triple Tyrannhilation
+# B43D Shockwave
+# B43E --sync--
+# B43F Flatliner
+# B440 Majestic Meteor
+# B441 Majestic Meteor
+# B442 Majestic Meteorain
+# B443 Majestic Meteowrath
+# B444 Explosion
+# B445 Unmitigated Explosion
+# B446 Fire Breath
+# B447 Fire Breath
+# B448 Massive Meteor
+# B449 Massive Meteor
+# B44A Arcadion Avalanche: VFX for NE Safe
+# B44B Arcadion Avalanche: Damage for NE Safe
+# B44C Arcadion Avalanche: VFX for SE Safe
+# B44D Arcadion Avalanche: Damage for SE Safe
+# B44E Arcadion Avalanche: VFX for SW Safe
+# B44F Arcadion Avalanche: Damage for SW Safe
+# B450 Arcadion Avalanche: VFX for NW Safe
+# B451 Arcadion Avalanche: Damage for NW Safe
+# B452 Ecliptic Stampede
+# B453 Mammoth Meteor
+# B454 Atomic Impact
+# B455 Majestic Meteor
+# B456 Cosmic Kiss
+# B457 Weighty Impact
+# B458 Unmitigated Explosion
+# B459 Majestic Meteowrath
+# B45A Four-way Fireball
+# B45B Four-way Fireball
+# B45C --sync--
+# B45D Heartbreak Kick
+# B45E Heartbreak Kick
+# B45F --sync--
+# B460 --sync--
+# B461 Tough Break
+# B462 Heartbreaker
+# B463 Heartbreaker
+# B543 Assault Evolved: VFX Jumping to Trophy Axe
+# B544 Assault Evolved: VFX Jumping to Trophy Scythe
+# B545 Assault Evolved: VFX Jumping to Trophy Sword
+# B7BD Two-way Fireball: VFX
+# B7BE Two-way Fireball
+# B7BB Dance of Domination Trophy
+# B7BC Explosion
+# B7EA Dance of Domination
+# B7ED Ultimate Trophy Weapons
+# B7EE Assault Apex
+# BA90 Flatliner

@@ -220,7 +220,7 @@ namespace Cactbot {
       overlay_plugin_version_ = versions.GetOverlayPluginVersion();
       ffxiv_plugin_version_ = versions.GetFFXIVPluginVersion();
       act_version_ = versions.GetACTVersion();
-      game_region_ = versions.GetGameRegion();
+      game_region_ = plugin_helper.GetGameRegion();
 
       if (overlay_plugin_version_.CompareTo(new Version("0.19.0.0")) < 0) {
           var str = String.Format("Old OverlayPlugin {0} detected.  To fix this, follow these instructions: https://overlayplugin.github.io/OverlayPlugin/fork_update.html (this url is also pinned in FFXIV ACT Discord #general)", overlay_plugin_version_.ToString());

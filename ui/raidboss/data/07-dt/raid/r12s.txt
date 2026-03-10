@@ -1,0 +1,467 @@
+### AAC HEAVYWEIGHT M4 (SAVAGE)
+# ZoneId: 1327
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,100000 jump 0
+
+### Phase 1: Lindwurm
+# -ii B4D3 B4B2 B6F9 B4B4 B4B3 B4BD B4BE B4BF B4C0 B53E B4B5 B4B1 BE0A B570 B56F B4AD B76A B469 B769
+# -it "Lindwurm"
+
+0.0 "--sync--" InCombat { inGameCombat: "1" } window 0,1
+1.0 "--sync--" AddedCombatant { npcNameId: "14380", name: "Lindschrat", job: "00", level: "64", ownerId: "0{4}", worldId: "00" } window 10,3 jump "r12s-p2-start" # Sync to P2 immediately through AddCombatant.
+10.6 "--sync--" StartsUsing { id: "B4D7", source: "Lindwurm" } window 15,10
+15.6 "The Fixer" Ability { id: "B4D7", source: "Lindwurm" }
+25.8 "--sync--" Ability { id: "B7C4", source: "Lindwurm" }
+40.8 "--sync--" Ability { id: "B495", source: "Lindwurm" }
+40.9 "Mortal Slayer 1" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+43.9 "Mortal Slayer 2" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+46.9 "Mortal Slayer 3" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+49.9 "Mortal Slayer 4" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+52.9 "--sync--" Ability { id: "B7C5", source: "Lindwurm" }
+61.0 "--sync--" Ability { id: "B9DB", source: "Lindwurm" }
+
+70.0 "Grotesquerie: Act 1" Ability { id: "BEBD", source: "Lindwurm" } window 70,5
+77.2 "--sync--" Ability { id: ["B49A", "B49B"], source: "Lindwurm" }
+79.2 "Phagocyte Spotlight 1" #Ability { id: "B49E", source: "Lindwurm" }
+81.2 "Phagocyte Spotlight 2" #Ability { id: "B49E", source: "Lindwurm" }
+83.2 "Phagocyte Spotlight 3" #Ability { id: "B49E", source: "Lindwurm" }
+85.2 "Phagocyte Spotlight 4" #Ability { id: "B49E", source: "Lindwurm" }
+87.3 "--sync--" #Ability { id: "B46E", source: "Lindwurm" }
+87.7 "Ravenous Reach" Ability { id: "B49D", source: "Lindwurm" }
+88.0 "Hemorrhagic Projection x8" #Ability { id: "B4AF", source: "Lindwurm" }
+88.0 "Dramatic Lysis x4" #Ability { id: "B4AA", source: "Lindwurm" }
+88.0 "Fourth-wall Fusion" Ability { id: "B4AE", source: "Lindwurm" }
+96.7 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+97.3 "Visceral Burst x2" #Ability { id: "B4D6", source: "Lindwurm" }
+97.3 "Fourth-wall Fusion" Ability { id: "B9B9", source: "Lindwurm" }
+107.3 "The Fixer" Ability { id: "B4D7", source: "Lindwurm" }
+
+119.5 "Grotesquerie: Act 2" Ability { id: "BEBE", source: "Lindwurm" } window 120,5
+128.7 "Phagocyte Spotlight 1" #Ability { id: "B4B6", source: "Lindwurm" }
+130.7 "Phagocyte Spotlight 2" #Ability { id: "B4B6", source: "Lindwurm" }
+132.7 "Phagocyte Spotlight 3" #Ability { id: "B4B6", source: "Lindwurm" }
+134.7 "Cruel Coil" Ability { id: ["B4B8", "B4B9", "B4BA", "B4BB"], source: "Lindwurm" }
+134.7 "Phagocyte Spotlight 4" #Ability { id: "B4B6", source: "Lindwurm" }
+135.7 "--bind--" Ability { id: "B472", source: "Lindwurm" } duration 5
+140.7 "Skinsplitter 1" Ability { id: "B4BC", source: "Lindwurm" }
+143.7 "--sync--" Ability { id: "B4C1", source: "Lindwurm" }
+145.7 "Skinsplitter 2" Ability { id: "B4BC", source: "Lindwurm" }
+145.7 "--tether 1--"
+150.7 "Skinsplitter 3" Ability { id: "B4BC", source: "Lindwurm" }
+150.7 "--tether 2--"
+152.7 "Roiling Mass 1" Ability { id: "B4B7", source: "Blood Vessel" }
+155.7 "Skinsplitter 4" Ability { id: "B4BC", source: "Lindwurm" }
+155.7 "--tether 3--"
+157.7 "Roiling Mass 2" Ability { id: "B4B7", source: "Blood Vessel" }
+160.7 "Skinsplitter 5" Ability { id: "B4BC", source: "Lindwurm" }
+160.7 "--tether 4--"
+162.7 "Roiling Mass 3" Ability { id: "B4B7", source: "Blood Vessel" }
+165.7 "Skinsplitter 6" Ability { id: "B4BC", source: "Lindwurm" }
+167.7 "Roiling Mass 4" Ability { id: "B4B7", source: "Blood Vessel" }
+170.7 "Skinsplitter 7" Ability { id: "B4BC", source: "Lindwurm" }
+176.7 "Constrictor" Ability { id: "B4C2", source: "Lindwurm" }
+185.8 "Splattershed (castbar)" Ability { id: "B9C4", source: "Lindwurm" }
+188.2 "Splattershed" Ability { id: "B9C6", source: "Lindwurm" }
+189.9 "--sync--" Ability { id: "B4CB", source: "Lindwurm" }
+
+205.9 "Grotesquerie: Act 3" Ability { id: "BEBF", source: "Lindwurm" } window 205,5
+209.0 "--untargetable--"
+211.0 "Feral Fission" Ability { id: "BE09", source: "Lindwurm" }
+212.0 "Grand Entrance" #Ability { id: ["B4A1", "B4A0"], source: "Lindwurm" } duration 1.2
+215.6 "Bring Down the House" Ability { id: ["B4A5", "B4A4"], source: "Lindwurm" }
+218.0 "Dramatic Lysis x8" #Ability { id: "B4B0", source: "Lindwurm" }
+218.2 "Metamitosis x8" Ability { id: "B923", source: "Lindwurm" }
+220.6 "--targetable--"
+226.9 "Split Scourge (cast)" Ability { id: "B4A7", source: "Lindwurm" }
+228.0 "Split Scourge" Ability { id: "B4AB", source: "Lindwurm" }
+230.4 "Venomous Scourge" Ability { id: "B4A8", source: "Lindwurm" }
+231.5 "--sync--" Ability { id: "B479", source: "Lindwurm" }
+239.6 "The Fixer" Ability { id: "B4D7", source: "Lindwurm" }
+
+251.7 "Grotesquerie: Curtain Call" Ability { id: "BEC0", source: "Lindwurm" } window 251,5
+255.7 "Phagocyte Spotlight 1" #Ability { id: "B49E", source: "Lindwurm" }
+255.8 "--sync--" Ability { id: ["B49A", "B49B"], source: "Lindwurm" }
+257.6 "Phagocyte Spotlight 2" #Ability { id: "B49E", source: "Lindwurm" }
+259.6 "Phagocyte Spotlight 3" #Ability { id: "B49E", source: "Lindwurm" }
+261.6 "Phagocyte Spotlight 4" #Ability { id: "B49E", source: "Lindwurm" }
+263.6 "Phagocyte Spotlight 5" #Ability { id: "B49E", source: "Lindwurm" }
+265.9 "--sync--" Ability { id: "B46E", source: "Lindwurm" }
+266.5 "Ravenous Reach" Ability { id: "B49D", source: "Lindwurm" }
+266.6 "Cell Shedding x4" #Ability { id: "B4AC", source: "Lindwurm" }
+266.8 "Dramatic Lysis x4" #Ability { id: "B4AA", source: "Lindwurm" }
+279.4 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+286.1 "Splattershed (castbar)" Ability { id: "B9C3", source: "Lindwurm" }
+288.5 "Splattershed" Ability { id: "B9C6", source: "Lindwurm" }
+290.2 "--sync--" Ability { id: "B4CC", source: "Lindwurm" }
+299.3 "--sync--" Ability { id: "B7C4", source: "Lindwurm" }
+314.3 "--sync--" Ability { id: "B495", source: "Lindwurm" }
+314.4 "Mortal Slayer 1" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+317.4 "Mortal Slayer 2" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+320.4 "Mortal Slayer 3" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+323.4 "Mortal Slayer 4" #Ability { id: ["B496", "B498"], source: "Lindwurm" }
+326.4 "--sync--" Ability { id: "B7C5", source: "Lindwurm" }
+
+# Slaughershed 1
+338.5 "Slaughtershed 1 (castbar)" Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" } window 338,5
+340.9 "Slaughtershed 1" Ability { id: "ADC9", source: "Lindwurm" }
+342.6 "--sync--" Ability { id: "B4CB", source: "Lindwurm" } jump "r12s-p1-scourge-left-1"
+342.6 "--sync--" Ability { id: "B4CD", source: "Lindwurm" } jump "r12s-p1-scourge-right-1"
+342.6 "--sync--" Ability { id: "B4CE", source: "Lindwurm" } jump "r12s-p1-raptor-left-1"
+342.6 "--sync--" Ability { id: "B4CC", source: "Lindwurm" } jump "r12s-p1-raptor-right-1"
+349.6 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+349.6 "Fourth-wall Fusion" #Ability { id: "B4D5", source: "Lindwurm" }
+350.0 "Burst" #Ability { id: "B49F", source: "Lindwurm" }
+355.1 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D1", "B4D2", "B4CD", "B4CE"], source: "Lindwurm" }
+356.1 "Serpentine Scourge/--knockback--?" #Ability { id: ["B9BC", "B9C7"], source: "Lindwurm" }
+359.8 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D2", "B4D1", "B4CE", "B4CD"], source: "Lindwurm" }
+360.8 "Serpentine Scourge/--knockback--?" #Ability { id: ["B9BC", "B9C7"], source: "Lindwurm" }
+367.4 "Slaughtershed 2 (castbar)" #Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" }
+369.8 "Slaughtershed 2" #Ability { id: "ADC9", source: "Lindwurm" }
+
+# Serpentine Scourge Left First
+442.6 label "r12s-p1-scourge-left-1"
+449.6 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+449.6 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+450.0 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+455.1 "Serpentine Scourge Left" Ability { id: "B4D1", source: "Lindwurm" }
+456.1 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+459.8 "Serpentine Scourge Right" Ability { id: "B4D2", source: "Lindwurm" }
+460.8 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+464.4 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
+
+# Serpentine Scourge Right First
+540.6 label "r12s-p1-scourge-right-1"
+547.6 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+547.6 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+548.0 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+553.1 "Serpentine Scourge Right" Ability { id: "B4D2", source: "Lindwurm" }
+554.1 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+557.7 "Serpentine Scourge Left" Ability { id: "B4D1", source: "Lindwurm" }
+558.7 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+562.4 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
+
+# Raptor Knuckles Left First
+641.1 label "r12s-p1-raptor-left-1"
+648.1 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+648.1 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+648.5 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+653.6 "Raptor Knuckles Northeast" Ability { id: "B4D0", source: "Lindwurm" }
+654.4 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+658.3 "Raptor Knuckles Northwest" Ability { id: "B4CF", source: "Lindwurm" }
+659.1 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+662.9 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
+
+# Raptor Knuckles Right First
+742.7 label "r12s-p1-raptor-right-1"
+749.7 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+749.7 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+750.1 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+755.2 "Raptor Knuckles Northwest" Ability { id: "B4CF", source: "Lindwurm" }
+756.1 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+759.9 "Raptor Knuckles Northeast" Ability { id: "B4D0", source: "Lindwurm" }
+760.7 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+764.5 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed2"
+
+# Slaughtershed 2
+864.4 label "r12s-p1-slaughtershed2"
+867.4 "Slaughtershed 2 (castbar)" Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" }
+869.8 "Slaughtershed 2" Ability { id: "ADC9", source: "Lindwurm" }
+
+871.5 "--sync--" Ability { id: "B4CB", source: "Lindwurm" } jump "r12s-p1-scourge-left-2"
+871.5 "--sync--" Ability { id: "B4CD", source: "Lindwurm" } jump "r12s-p1-scourge-right-2"
+871.5 "--sync--" Ability { id: "B4CE", source: "Lindwurm" } jump "r12s-p1-raptor-left-2"
+871.5 "--sync--" Ability { id: "B4CC", source: "Lindwurm" } jump "r12s-p1-raptor-right-2"
+878.5 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+878.5 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+878.9 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+884.0 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D1", "B4D2", "B4CD", "B4CE"], source: "Lindwurm" }
+884.8 "Serpentine Scourge/--knockback--?" #Ability { id: ["B9BC", "B9C7"], source: "Lindwurm" }
+888.6 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D2", "B4D1", "B4CE", "B4CD"], source: "Lindwurm" }
+889.4 "Serpentine Scourge/--knockback--?" #Ability { id: ["B9BC", "B9C7"], source: "Lindwurm" }
+896.3 "Slaughtershed 3 (castbar)" #Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" }
+898.7 "Slaughtershed 3" #Ability { id: "ADC9", source: "Lindwurm" }
+
+# Serpentine Scourge Left Second
+971.6 label "r12s-p1-scourge-left-2"
+978.6 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+978.6 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+979.0 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+984.1 "Serpentine Scourge Left" Ability { id: "B4D1", source: "Lindwurm" }
+985.1 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+988.7 "Serpentine Scourge Right" Ability { id: "B4D2", source: "Lindwurm" }
+989.7 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+993.3 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed3"
+
+# Serpentine Scourge Right Second
+1069.9 label "r12s-p1-scourge-right-2"
+1076.9 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1076.9 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+1077.3 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1082.4 "Serpentine Scourge Right" Ability { id: "B4D2", source: "Lindwurm" }
+1083.4 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+1087.0 "Serpentine Scourge Left" Ability { id: "B4D1", source: "Lindwurm" }
+1088.0 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+1091.7 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed3"
+
+# Raptor Knuckles Left Second
+1171.5 label "r12s-p1-raptor-left-2"
+1178.5 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1178.5 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+1178.9 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1184.0 "Raptor Knuckles Northeast" Ability { id: "B4D0", source: "Lindwurm" }
+1184.8 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1188.6 "Raptor Knuckles Northwest" Ability { id: "B4CF", source: "Lindwurm" }
+1189.4 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1193.3 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed3"
+
+# Raptor Knuckles Right Second
+1271.5 label "r12s-p1-raptor-right-2"
+1278.5 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1278.5 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+1278.9 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1284.0 "Raptor Knuckles Right" Ability { id: "B4CF", source: "Lindwurm" }
+1284.8 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1288.6 "Raptor Knuckles Left" Ability { id: "B4D0", source: "Lindwurm" }
+1289.4 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1293.3 "--sync--" StartsUsing { id: ["B4C3", "B4C6"], source: "Lindwurm" } forcejump "r12s-p1-slaughtershed3"
+
+# Slaughtershed 3
+1393.3 label "r12s-p1-slaughtershed3"
+1396.3 "Slaughtershed 3 (castbar)" Ability { id: ["B4C3", "B4C6"], source: "Lindwurm" }
+1398.7 "Slaughtershed 3" Ability { id: "ADC9", source: "Lindwurm" }
+
+1400.4 "--sync--" Ability { id: "B4CB", source: "Lindwurm" } jump "r12s-p1-scourge-left-3"
+1400.4 "--sync--" Ability { id: "B4CD", source: "Lindwurm" } jump "r12s-p1-scourge-right-3"
+1400.4 "--sync--" Ability { id: "B4CE", source: "Lindwurm" } jump "r12s-p1-raptor-left-3"
+1400.4 "--sync--" Ability { id: "B4CC", source: "Lindwurm" } jump "r12s-p1-raptor-right-3"
+1407.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1407.4 "Fourth-wall Fusion" #Ability { id: "B4D5", source: "Lindwurm" }
+1407.8 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1412.9 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D1", "B4D2", "B4CD", "B4CE"], source: "Lindwurm" }
+1413.9 "Serpentine Scourge/--knockback--?" #Ability { id: ["B9BC", "B9C7"], source: "Lindwurm" }
+1417.6 "Serpentine Scourge/Raptor Knuckles?" #Ability { id: ["B4D2", "B4D1", "B4CE", "B4CD"], source: "Lindwurm" }
+1418.6 "Serpentine Scourge/--knockback--?" #Ability { id: ["B9BC", "B9C7"], source: "Lindwurm" }
+1431.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
+1436.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
+
+# Serpentine Scourge Left Third
+1498.8 label "r12s-p1-scourge-left-3"
+1505.8 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1505.8 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+1506.2 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1511.3 "Serpentine Scourge Left" Ability { id: "B4D1", source: "Lindwurm" }
+1512.3 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+1515.9 "Serpentine Scourge Right" Ability { id: "B4D2", source: "Lindwurm" }
+1516.9 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+1526.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
+1526.5 "--untargetable?--"
+1531.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
+1536.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
+1536.8 "--untargetable?--"
+1536.8 "Refreshing Overkill (Enrage)?" #Ability { id: "B53A", source: "Lindwurm" }
+1546.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } window 20,3 forcejump "r12s-p1-enrage"
+
+# Serpentine Scourge Right Third
+1600.4 label "r12s-p1-scourge-right-3"
+1607.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1607.4 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+1607.8 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1612.9 "Serpentine Scourge Left/Right" Ability { id: "B4D2", source: "Lindwurm" }
+1613.9 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+1617.6 "Serpentine Scourge Right/Left" Ability { id: "B4D1", source: "Lindwurm" }
+1618.6 "Serpentine Scourge" Ability { id: "B9BC", source: "Lindwurm" }
+1626.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
+1626.5 "--untargetable?--"
+1631.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
+1636.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
+1636.8 "--untargetable?--"
+1636.8 "Refreshing Overkill (Enrage)?" #Ability { id: "B53A", source: "Lindwurm" }
+
+1646.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } window 20,3 forcejump "r12s-p1-enrage"
+
+# Raptor Knuckles Left Third
+1700.4 label "r12s-p1-raptor-left-3"
+1707.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1707.4 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+1707.8 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1712.9 "Raptor Knuckles Northeast" Ability { id: "B4D0", source: "Lindwurm" }
+1713.7 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1717.5 "Raptor Knuckles Northwest" Ability { id: "B4CF", source: "Lindwurm" }
+1718.3 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1726.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
+1726.5 "--untargetable?--"
+1731.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
+1736.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
+1736.8 "--untargetable?--"
+1736.8 "Refreshing Overkill (Enrage)?" #Ability { id: "B53A", source: "Lindwurm" }
+1746.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } window 20,3 forcejump "r12s-p1-enrage"
+
+# Raptor Knuckles Right Third
+1800.4 label "r12s-p1-raptor-right-3"
+1807.4 "Dramatic Lysis x4" #Ability { id: "B4D4", source: "Lindwurm" }
+1807.4 "Fourth-wall Fusion" Ability { id: "B4D5", source: "Lindwurm" }
+1807.8 "Burst" Ability { id: "B49F", source: "Lindwurm" }
+1812.9 "Raptor Knuckles Northwest" Ability { id: "B4CF", source: "Lindwurm" }
+1813.7 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1817.5 "Raptor Knuckles Northeast" Ability { id: "B4D0", source: "Lindwurm" }
+1818.3 "--knockback--" Ability { id: "B9C7", source: "Lindwurm" }
+1826.5 "--sync--" StartsUsing { id: "B2C7", source: "Lindwurm" } jump "r12s-p1-enrage-alt"
+1826.5 "--untargetable?--"
+1831.5 "The Fixer (Enrage)?" #Ability { id: "B2C7", source: "Lindwurm" }
+1836.7 "Refreshing Overkill (Enrage)?" #Ability { id: "B538", source: "Lindwurm" }
+1836.8 "--untargetable?--"
+1836.8 "Refreshing Overkill (Enrage)?" #Ability { id: "B53A", source: "Lindwurm" }
+1846.7 "--sync--" StartsUsing { id: "B538", source: "Lindwurm" } window 20,3 forcejump "r12s-p1-enrage"
+
+# Enrage sequence (Above 20%?)
+1926.5 label "r12s-p1-enrage-alt"
+1931.5 "The Fixer (Enrage)" Ability { id: "B2C7", source: "Lindwurm" }
+
+# Enrage sequence
+2027.7 label "r12s-p1-enrage"
+2036.7 "Refreshing Overkill (Enrage)?" Ability { id: "B538", source: "Lindwurm" } window 510,5
+2036.8 "--untargetable--"
+2036.8 "Refreshing Overkill (Enrage)?" Ability { id: "B53A", source: "Lindwurm" }
+
+# Kill/Transition sequence
+2036.8 "Refreshing Overkill" Ability { id: "B539", source: "Lindwurm" }
+2073.0 "--sync--" Ability { id: "BB9C", source: "Lindwurm" }
+2073.5 "Down for the Count" duration 42
+2075.7 "--sync--" Ability { id: "B53B", source: "Lindwurm" }
+2117.7 "--targetable--"
+
+
+### Phase 2: Lindwurm II
+# -p B528:3015.7
+# -ii B51F
+# -it "Lindwurm"
+3000.5 label "r12s-p2-start"
+3010.7 "--sync--" StartsUsing { id: "B528", source: "Lindwurm" } window 3100,10
+3015.7 "Arcadia Aflame" Ability { id: "B528", source: "Lindwurm" }
+
+# IGNORED ABILITIES
+# Phase 1
+# B4D3 --sync--: Attack autos
+# B4B2 Unmitigated Explosion: Missed blob tower
+# B6F9 Unmitigated Explosion: Breaking chain before Bonds of Flesh expires
+# B4B4 Dramatic Lysis: Damage from breaking a tether; These can be broken at various times
+# B4B5 Dramatic Lysis: 6s to break tether, else this applies every 1s, doing damage and giving a damage down
+# B4B3 Roiling Mass: Damage from soaking a tether-created tower; The towers can be created at various times
+# B4BD Constrictor: VFX Ending of Cruel Coil B4B8
+# B4BE Constrictor: VFX Ending of Cruel Coil B4B9
+# B4BF Constrictor: VFX Ending of Cruel Coil B4BA
+# B4C0 Constrictor: VFX Ending of Cruel Coil B4BB
+# B4B1 Metamitosis: VFX
+# B469 Ravenous Reach: VFX
+# B769 Ravenous Reach: VFX
+# B76A Ravenous Reach: VFX
+# B56F --sync--: These happen same time as Bring Down the House BE0A
+# B570 --sync--: These happen same time as Bring Down the House BE0A
+# BE0A Bring Down the House: VFX
+# B4CF Raptor Knuckles: VFX for knockback from NW
+# B4D0 Raptor Knuckles: VFX for knockback from NE
+# B4AD Cell Death: Failing Cell Shedding by not getting hit by Ravenous Reach
+
+# Phase 2
+# B51F --sync--: Attack autos
+
+# ALL ENCOUNTER ABILITIES
+# Phase 1
+# ADC9 Slaughtershed
+# B2C7 The Fixer: Alternative enrage
+# B469 Ravenous Reach: VFX
+# B46E --sync--
+# B472 --sync-- Animation coinciding with boss jumping to middle and binding the players
+# B479 --sync--
+# B495 Mortal Slayer: VFX, B496 and B498 have distance and AOE components so this is nearest sync
+# B496 Mortal Slayer: Green (DPS/Healer) Orbs
+# B498 Mortal Slayer: Purple (Tank) Orbs
+# B49A --sync--: Animation for Wyrm moving West (Cleaving East)
+# B49B --sync--: Animation for Wyrm moving East (Cleaving West)
+# B49D Ravenous Reach
+# B49E Phagocyte Spotlight
+# B49F Burst
+# B4A0 Grand Entrance: Small circle aoe of wyrm going into ground? Does a knockback and gives damage down
+# B4A1 Grand Entrance: Only cast when caradinals are safe; Small circle aoe of wyrm coming out of ground? Does a knockback and gives damage down
+# B4A2 Grand Entrance: Only cast when intercardinal are safe
+# B4A3 Grand Entrance
+# B4A4 Bring Down the House
+# B4A5 Bring Down the House
+# B4A6 Bring Down the House
+# B4A7 Split Scourge
+# B4A8 Venomous Scourge
+# B4AA Dramatic Lysis: Spread AoE damage
+# B4AB Split Scourge
+# B4AC Cell Shedding
+# B4AD Cell Death
+# B4AE Fourth-wall Fusion
+# B4AF Hemorrhagic Projection
+# B4B0 Dramatic Lysis
+# B4B1 Metamitosis
+# B4B2 Unmitigated Explosion
+# B4B3 Roiling Mass: Chain Tower soaks
+# B4B4 Dramatic Lysis
+# B4B5 Dramatic Lysis
+# B4B6 Phagocyte Spotlight
+# B4B7 Roiling Mass: Blob Tower Soaks
+# B4B8 Cruel Coil: Starts east, turns counterclock
+# B4B9 Cruel Coil: Starts west, turns counterclock
+# B4BA Cruel Coil: Starts north, turns counterclock
+# B4BB Cruel Coil: Starts south, turns counterclock
+# B4BC Skinsplitter
+# B4BE Constrictor: VFX Ending of Cruel Coil B4B8
+# B4BD Constrictor: VFX Ending of Cruel Coil B4B9
+# B4BF Constrictor
+# B4C1 --sync--
+# B4C2 Constrictor: "soft enrage" damage for Cruel Coil
+# B4C3 Slaughtershed
+# B4C6 Slaughtershed
+# B4CB --sync--: Animation that indicates B4D1 Serpintine Scourge (Left Hand/E) is first
+# B4CC --sync--: Animation that indicates B4CF Raptor Knuckles (Right Hand/NW) is first
+# B4CD --sync--: Animation that indicates B4D2 Serpintine Scourge (Right hand/W) is first
+# B4CE --sync--: Animation that indicates B4D0 Raptor Knuckles (Left Hand/NE) is first
+# B4CF Raptor Knuckles
+# B4D0 Raptor Knuckles
+# B4D1 Serpentine Scourge
+# B4D2 Serpentine Scourge
+# B4D3 --sync--
+# B4D4 Dramatic Lysis
+# B4D5 Fourth-wall Fusion
+# B4D6 Visceral Burst
+# B4D7 The Fixer
+# B4F5 Unmitigated Explosion
+# B4F9 Pyretic Wurm
+# B538 Refreshing Overkill: Enrage castbar
+# B539 Refreshing Overkill: Non-enrage
+# B53A Refreshing Overkill: Enrage
+# B53E Skinsplitter: Damage from running into snake during Cruel Coil
+# B56F --sync--
+# B570 --sync--
+# B571 --sync--
+# B6F9 Unmitigated Explosion
+# B769 Ravenous Reach: VFX
+# B76A Ravenous Reach: VFX
+# B7C4 --sync--
+# B7C5 --sync--
+# B923 Metamitosis
+# B9B9 Fourth-wall Fusion
+# B9BC Serpentine Scourge
+# B9C3 Splattershed
+# B9C4 Splattershed
+# B9C6 Splattershed
+# B9C7 Raptor Knuckles: Damage
+# B9DB --sync--
+# BE09 Feral Fission
+# BE0A Bring Down the House
+# BEBD Grotesquerie: Act 1
+# BEBE Grotesquerie: Act 2
+# BEBF Grotesquerie: Act 3
+# BEC0 Grotesquerie: Curtain Call
+
+# Phase 2
+# B51F --sync--
+# B528 Arcadia Aflame
+

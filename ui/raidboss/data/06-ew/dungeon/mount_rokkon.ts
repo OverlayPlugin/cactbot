@@ -221,7 +221,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Regardez à l\'Ouest',
           cn: '看左半场',
           ko: '서쪽 보기',
-          tc: '看左半場',
+          tc: '看西半場',
         },
         lookEast: {
           en: 'Look East',
@@ -229,7 +229,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Regardez à l\'Est',
           cn: '看右半场',
           ko: '동쪽 보기',
-          tc: '看右半場',
+          tc: '看東半場',
         },
       },
     },
@@ -274,7 +274,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur Nord',
           cn: '上外',
           ko: '북쪽 바깥',
-          tc: '上外',
+          tc: '北外',
         },
         insideNorth: {
           en: 'Inside North',
@@ -282,7 +282,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur Nord',
           cn: '上内',
           ko: '북쪽 안',
-          tc: '上內',
+          tc: '北內',
         },
         insideSouth: {
           en: 'Inside South',
@@ -290,7 +290,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Intérieur Sud',
           cn: '下内',
           ko: '남쪽 안',
-          tc: '下內',
+          tc: '南內',
         },
         outsideSouth: {
           en: 'Outside South',
@@ -298,7 +298,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Extérieur Sud',
           cn: '下外',
           ko: '남쪽 바깥',
-          tc: '下外',
+          tc: '南外',
         },
       },
     },
@@ -1337,7 +1337,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ancient Katana': '古刀',
         'Ashigaru Kyuhei': '足輕弓兵',
@@ -1366,7 +1365,7 @@ const triggerSet: TriggerSet<Data> = {
         'Yozakura the Fleeting': '花遁之夜櫻',
       },
       'replaceText': {
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
+        '\\(cast\\)': '(詠唱)',
         'Art of the Fireblossom': '火花之術',
         'Art of the Fluff': '茸茸之術',
         'Art of the Windblossom': '風花之術',
@@ -1426,12 +1425,12 @@ const triggerSet: TriggerSet<Data> = {
         'Rousing Reincarnation': '變見的詛咒',
         'Rush': '突進',
         'Scarlet Auspice': '赤帝劍氣',
-        // 'Seal Marker': '', // FIXME '花印标记'
+        'Seal Marker': '花印標記',
         'Seal of Riotous Bloom': '花印齊放',
-        // 'Seal of the Blossom': '', // FIXME '花印开放'
+        'Seal of the Blossom': '花印開放',
         'Seal of the Fleeting': '花印之術',
-        // 'Season Indicator': '', // FIXME '四君子指示'
-        // 'Season of Element': '', // FIXME '四君子元素'
+        'Season Indicator': '四君子指示',
+        'Season of Element': '四君子元素',
         'Seasons of the Fleeting': '四君子之術',
         'Self-destruct': '自爆',
         'Shadowflight': '影襲',

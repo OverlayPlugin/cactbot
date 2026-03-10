@@ -579,18 +579,17 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Arcane Sphere': '立體魔法陣',
         'Flame-kissed Beacon': '火之徵兆',
         'Valigarmanda': '艷翼蛇鳥',
       },
       'replaceText': {
-        // '\\(AoEs\\)': '', // FIXME '(AOE)'
-        // '\\(ice phase\\)': '', // FIXME '(冰阶段)'
-        // '\\(knockback\\)': '', // FIXME '(击退)'
-        // '\\(storm phase\\)': '', // FIXME '(风暴阶段)'
-        // '\\(tower\\)': '', // FIXME '(塔)'
+        '\\(AoEs\\)': '(AOE)',
+        '\\(ice phase\\)': '(冰階段)',
+        '\\(knockback\\)': '(擊退)',
+        '\\(storm phase\\)': '(風暴階段)',
+        '\\(tower\\)': '(塔)',
         'Arcane Lightning': '奧秘閃電',
         'Blighted Bolt': '災厄落雷',
         'Calamitous Cry': '災禍之鳴',

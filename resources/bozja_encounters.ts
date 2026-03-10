@@ -121,7 +121,7 @@ const data: CeInfoType = {
       'fr': 'Menace spectrale',
       'ja': '怨念の死霊「スパルトイ」',
       'ko': '원념의 사령 \'스파르토이\'',
-      'tc': '怨念死靈——地生人',
+      'tc': '怨念死靈——地浮靈',
     },
   },
   'TheFiresOfWar': {

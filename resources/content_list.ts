@@ -467,6 +467,9 @@ const contentList: (ZoneIdType)[] = [
   ZoneId.AloaloIsland,
   ZoneId.AnotherAloaloIsland,
   ZoneId.AnotherAloaloIslandSavage,
+  ZoneId.TheMerchantsTale,
+  ZoneId.TheMerchantsTaleAdvanced,
+  ZoneId.AnotherMerchantsTale,
 
   // Chaotic Alliance Raids
   ZoneId.TheCloudOfDarknessChaotic,

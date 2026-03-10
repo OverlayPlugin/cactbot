@@ -205,28 +205,27 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Honey B. Lovely': '', // FIXME '蜂蜂小甜心'
+        'Honey B. Lovely': '蜂蜂小甜心',
       },
       'replaceText': {
-        // 'Alarm Pheromones': '', // FIXME '告警信息素'
-        // 'Blinding Love': '', // FIXME '盲目的爱'
-        // 'Blow Kiss': '', // FIXME '飞吻'
-        // 'Call Me Honey': '', // FIXME '甜言蜜语'
+        'Alarm Pheromones': '警示費洛蒙',
+        'Blinding Love': '盲目的愛',
+        'Blow Kiss': '飛吻',
+        'Call Me Honey': '甜蜜應援',
         'Drop of Venom': '毒液滴落',
         'Fracture': '炸裂',
-        // 'Heart-struck': '', // FIXME '心震'
-        // 'Heartsick': '', // FIXME '心病'
-        // 'Heartsore': '', // FIXME '心伤'
-        // 'Honey B. Finale': '', // FIXME '蜂蜂落幕曲'
-        // 'Honey B. Live': '', // FIXME '蜂蜂演唱会'
-        // 'Honey Beeline': '', // FIXME '甜心烈风'
-        // 'Honeyed Breeze': '', // FIXME '甜心突风'
-        // 'Love Me Tender': '', // FIXME '温柔地爱我'
-        // 'Loveseeker': '', // FIXME '求爱'
-        // 'Splash of Venom': '', // FIXME '毒液雨'
-        // 'Tempting Twist': '', // FIXME '甜心旋风'
+        'Heart-struck': '心碎',
+        'Heartsick': '心病',
+        'Heartsore': '心傷',
+        'Honey B. Finale': '蜂蜂落幕曲',
+        'Honey B. Live': '蜂蜂演唱會',
+        'Honey Beeline': '甜心烈風',
+        'Honeyed Breeze': '甜心突風',
+        'Love Me Tender': '溫柔地愛我',
+        'Loveseeker': '求愛',
+        'Splash of Venom': '毒液雨',
+        'Tempting Twist': '甜心旋風',
       },
     },
     {

@@ -74,6 +74,15 @@ const triggerSet: TriggerSet<Data> = {
           '라희',
           '저 물좀 떠올게요',
         ],
+        tc: [
+          '馬上回來',
+          '困了睡會兒',
+          'LAHEE~',
+          '沖杯咖啡',
+          '聖誕快樂',
+          '我櫃子動了等下再玩',
+          'CG',
+        ],
       };
       const goofs = goofsByLang[data.displayLang];
       if (!goofs)

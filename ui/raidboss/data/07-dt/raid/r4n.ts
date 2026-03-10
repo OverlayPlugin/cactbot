@@ -461,7 +461,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最東端の床へ',
           cn: '偏右侧安全',
           ko: '동쪽 끝 안전',
-          tc: '偏右側安全',
+          tc: '偏東側安全',
         },
       },
     },
@@ -480,7 +480,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最南端の床へ',
           cn: '偏下侧安全',
           ko: '남쪽 끝 안전',
-          tc: '偏下側安全',
+          tc: '偏南側安全',
         },
       },
     },
@@ -499,7 +499,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最西端の床へ',
           cn: '偏左侧安全',
           ko: '서쪽 끝 안전',
-          tc: '偏左側安全',
+          tc: '偏西側安全',
         },
       },
     },
@@ -518,7 +518,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '最北端の床へ',
           cn: '偏上侧安全',
           ko: '북쪽 끝 안전',
-          tc: '偏上側安全',
+          tc: '偏北側安全',
         },
       },
     },
@@ -752,34 +752,33 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Wicked Replica': '', // FIXME '狡雷的幻影'
-        // 'Wicked Thunder': '', // FIXME '狡雷'
+        'Wicked Replica': '狡雷的幻影',
+        'Wicked Thunder': '狡雷',
       },
       'replaceText': {
-        // 'Left Roll': '', // FIXME '左转'
-        // 'Right Roll': '', // FIXME '右转'
-        // 'west--': '', // FIXME '西--'
-        // '--east': '', // FIXME '--东'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(clone\\)': '', // FIXME '(幻影)'
-        // '\\(damage\\)': '', // FIXME '(伤害)'
-        // 'Bewitching Flight': '', // FIXME '魔女回翔'
+        'Left Roll': '左轉',
+        'Right Roll': '右轉',
+        'west--': '西--',
+        '--east': '--東',
+        '\\(cast\\)': '(詠唱)',
+        '\\(clone\\)': '(幻影)',
+        '\\(damage\\)': '(傷害)',
+        'Bewitching Flight': '魔女迴翔',
         'Burst': '爆炸',
-        // 'Fivefold Blast': '', // FIXME '五重加农炮'
-        // 'Fourfold Blast': '', // FIXME '四重加农炮'
-        // 'Shadows\' Sabbath': '', // FIXME '黑色安息日'
-        // 'Sidewise Spark': '', // FIXME '侧方电火花'
-        // 'Soaring Soulpress': '', // FIXME '碎魂跃'
-        // 'Stampeding Thunder': '', // FIXME '奔雷炮'
-        // 'Threefold Blast': '', // FIXME '三重加农炮'
-        // 'Thunderslam': '', // FIXME '雷炸'
+        'Fivefold Blast': '五重加農砲',
+        'Fourfold Blast': '四重加農砲',
+        'Shadows\' Sabbath': '黑色安息日',
+        'Sidewise Spark': '側方電火花',
+        'Soaring Soulpress': '碎魂躍',
+        'Stampeding Thunder': '奔雷砲',
+        'Threefold Blast': '三重加農砲',
+        'Thunderslam': '雷炸',
         'Thunderstorm': '雷暴',
-        // 'Wicked Bolt': '', // FIXME '狡诡落雷'
-        // 'Wicked Cannon': '', // FIXME '狡诡加农炮'
-        // 'Wicked Hypercannon': '', // FIXME '狡诡聚能加农炮'
-        // 'Wicked Jolt': '', // FIXME '狡诡摇荡'
+        'Wicked Bolt': '狡詭落雷',
+        'Wicked Cannon': '狡詭加農砲',
+        'Wicked Hypercannon': '狡詭超能加農砲',
+        'Wicked Jolt': '狡詭搖盪',
         'Witch Hunt': '獵殺女巫',
         'Wrath of Zeus': '宙斯之怒',
       },

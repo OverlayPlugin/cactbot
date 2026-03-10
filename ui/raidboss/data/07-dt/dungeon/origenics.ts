@@ -284,7 +284,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '点滅しているロボの列に立つ',
           cn: '站在闪烁机器人列',
           ko: '빛나는 로봇이 있는 줄에 서기',
-          tc: '站在閃爍機器人列',
+          tc: '站在閃爍機器人的同一行',
         },
       },
     },
@@ -345,7 +345,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央の2列 (${side} 砲台)',
           cn: '第二/三行 (${side} 炮台)',
           ko: '2/3번째 줄 (${side} 포탑)',
-          tc: '第二/三行 (${side} 炮台)',
+          tc: '第二/三行 (${side} 砲台)',
         },
         farLanes: {
           en: 'Far N/S lanes (${side} turrets)',
@@ -354,7 +354,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南北の列 (${side} 砲台)',
           cn: '第一/四行 (${side} 炮台)',
           ko: '1/4번째 줄 (${side} 포탑)',
-          tc: '第一/四行 (${side} 炮台)',
+          tc: '第一/四行 (${side} 砲台)',
         },
         middleNorth: {
           en: 'Middle North lane (${side} turrets)',
@@ -363,7 +363,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央の北列 (${side} 砲台)',
           cn: '第二行 (${side} 炮台)',
           ko: '2번째 줄 (${side} 포탑)',
-          tc: '第二行 (${side} 炮台)',
+          tc: '第二行 (${side} 砲台)',
         },
         middleSouth: {
           en: 'Middle South lane (${side} turrets)',
@@ -372,7 +372,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '中央の南列 (${side} 砲台)',
           cn: '第三行 (${side} 炮台)',
           ko: '3번째 줄 (${side} 포탑)',
-          tc: '第三行 (${side} 炮台)',
+          tc: '第三行 (${side} 砲台)',
         },
         east: Outputs.east,
         west: Outputs.west,
@@ -383,7 +383,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '点滅している砲台の列に立つ',
           cn: '站在闪烁炮台行',
           ko: '빛나는 포탑이 있는 줄에 서기',
-          tc: '站在閃爍炮台行',
+          tc: '站在閃爍砲台的同一行',
         },
       },
     },
@@ -411,7 +411,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '本物の砲台にノックバック => 散開',
           cn: '击退到实体炮台 => 分散',
           ko: '진짜 포탑이 있는 곳으로 넉백 => 산개',
-          tc: '擊退到實體炮台 => 分散',
+          tc: '擊退到實體砲台 => 分散',
         },
       },
     },
@@ -533,7 +533,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '南北へノックバック',
           cn: '向 上/下 击退',
           ko: '남/북쪽으로 넉백',
-          tc: '向 上/下 擊退',
+          tc: '向 北/南 擊退',
         },
       },
     },
@@ -552,7 +552,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボス背面にノックバック => 散開',
           cn: '击退到 BOSS 背后 => 分散',
           ko: '보스 뒤로 넉백 => 산개',
-          tc: '擊退到 BOSS 背後 => 分散',
+          tc: '擊退到Boss背後 => 分散',
         },
         kb: {
           en: 'Knockback to behind boss',
@@ -561,7 +561,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ボス背面にノックバック',
           cn: '击退到 BOSS 背后',
           ko: '보스 뒤로 넉백',
-          tc: '擊退到 BOSS 背後',
+          tc: '擊退到Boss背後',
         },
       },
     },
@@ -580,7 +580,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: 'ジグザグ槍を避ける',
           cn: '躲避长枪折线 AOE',
           ko: '지그재그 장판 피하기',
-          tc: '躲避長槍折線 AOE',
+          tc: '躲避長槍折線AOE',
         },
       },
     },
@@ -788,7 +788,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ambrose the Undeparted': '實驗體安波羅修',
         'Deceiver': '欺騙者',
@@ -797,11 +796,11 @@ const triggerSet: TriggerSet<Data> = {
         'Origenics Sentry G9': '創生哨兵G9',
       },
       'replaceText': {
-        // '--mid-north--': '', // FIXME '--北边中央--'
-        // '\\(cages\\)': '', // FIXME '(笼子)'
-        // '\\(lance\\)': '', // FIXME '(雷枪)'
-        // '\\(puddle drop\\)': '', // FIXME '(放置毒球)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
+        '--mid-north--': '--北邊中央--',
+        '\\(cages\\)': '(籠子)',
+        '\\(lance\\)': '(雷槍)',
+        '\\(puddle drop\\)': '(放置毒球)',
+        '\\(spread\\)': '(分散)',
         'Bionic Thrash': '迴旋臂',
         'Collective Agony': '念力波動',
         'Convulsive Crush': '毆打',
