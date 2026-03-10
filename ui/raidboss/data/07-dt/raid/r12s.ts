@@ -94,7 +94,6 @@ export interface Data extends RaidbossData {
   hasLightResistanceDown: boolean;
   twistedVision4MechCounter: number;
   doomPlayers: string[];
-  hasDoom: boolean;
   hasPyretic: boolean;
   idyllicVision8SafeSides?: 'frontBack' | 'sides';
   idyllicVision7SafeSides?: 'frontBack' | 'sides';
@@ -324,7 +323,6 @@ const triggerSet: TriggerSet<Data> = {
     hasLightResistanceDown: false,
     twistedVision4MechCounter: 0,
     doomPlayers: [],
-    hasDoom: false,
     hasPyretic: false,
   }),
   triggers: [
@@ -5575,34 +5573,6 @@ const triggerSet: TriggerSet<Data> = {
         avoidEarthTower: {
           en: 'Avoid Earth Tower',
         },
-      },
-    },
-    {
-      id: 'R12S Doom Tower Soak Collect',
-      // Abilities such as Warden's Paean can prevent Doom GainsEffect
-      type: 'Ability',
-      netRegex: { id: 'B4F6', capture: true },
-      condition: Conditions.targetIsYou(),
-      run: (data, matches) => {
-        // Only record those players standing near the Doom tower
-        const getDistance = (
-          x: number,
-          y: number,
-          targetX: number,
-          targetY: number,
-        ): number => {
-          const dx = x - targetX;
-          const dy = y - targetY;
-          return Math.round(Math.sqrt(dx * dx + dy * dy));
-        };
-        const x = parseFloat(matches.x);
-        const y = parseFloat(matches.y);
-        const targetX = parseFloat(matches.targetX);
-        const targetY = parseFloat(matches.targetY);
-        const d = getDistance(x, y, targetX, targetY);
-
-        if (d < 4)
-          data.hasDoom = true;
       },
     },
     {
