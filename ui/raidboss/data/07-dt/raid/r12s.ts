@@ -2892,7 +2892,7 @@ const triggerSet: TriggerSet<Data> = {
         ],
         capture: true,
       },
-      condition: (data, matches) => 
+      condition: (data, matches) => {
         // Don't trigger if player started with no tether
         if (
           data.replication2HasInitialNoTether === false &&
