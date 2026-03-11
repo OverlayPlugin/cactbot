@@ -705,7 +705,7 @@ Options.Triggers.push({
         'Wicked Cannon': '狡詭加農砲',
         'Wicked Hypercannon': '狡詭超能加農砲',
         'Wicked Jolt': '狡詭搖盪',
-        'Witch Hunt': '獵殺女巫',
+        'Witch Hunt': '魔女狩獵',
         'Wrath of Zeus': '宙斯之怒',
       },
     },
