@@ -63,8 +63,6 @@ export interface Data extends RaidbossData {
   replication1FollowUp: boolean;
   replication2CloneDirNumPlayers: { [dirNum: number]: string };
   replication2DirNumAbility: { [dirNum: number]: string };
-  replication2HasInitialAbilityTether: boolean;
-  replication2HasInitialNoTether: boolean;
   replication2PlayerAbilities: { [player: string]: string };
   replication2BossId?: string;
   replication2PlayerOrder: string[];
@@ -2872,8 +2870,6 @@ const triggerSet: TriggerSet<Data> = {
           // Handle boss tether separately as its direction location is unimportant
           if (matches.id !== headMarkerData['fireballSplashTether'])
             data.replication2DirNumAbility[dirNum] = matches.id;
-          if (data.me === matches.target)
-            data.replication2HasInitialAbilityTether = true;
         }
         if (data.phase === 'idyllic')
           data.replication4DirNumAbility[dirNum] = matches.id;
@@ -2890,18 +2886,9 @@ const triggerSet: TriggerSet<Data> = {
           headMarkerData['heavySlamTether'],
           headMarkerData['fireballSplashTether'],
         ],
-        capture: true,
+        capture: false,
       },
-      condition: (data, matches) => {
-        // Don't trigger if player started with no tether
-        if (
-          data.replication2HasInitialNoTether === false &&
-          (data.me === matches.target)
-        )
-          return true;
-        return false;
-      },
-      suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
+      suppressSeconds: 9999, // Only trigger on first tether
       infoText: (data, _matches, output) => {
         const clones = data.replication2CloneDirNumPlayers;
         const strat = data.triggerSetConfig.replication2Strategy;
@@ -3001,125 +2988,6 @@ const triggerSet: TriggerSet<Data> = {
         return output.getTether!();
       },
       outputStrings: replication2OutputStrings,
-    },
-    {
-      id: 'R12S Replication 2 Ability Tethers Initial Call (No Tether)',
-      type: 'Tether',
-      netRegex: { id: headMarkerData['fireballSplashTether'], capture: false },
-      delaySeconds: 0.1,
-      suppressSeconds: 9999, // Possible that this changes hands within an instant
-      infoText: (data, _matches, output) => {
-        if (data.replication2HasInitialAbilityTether)
-          return;
-        const strat = data.triggerSetConfig.replication2Strategy;
-        const clones = data.replication2CloneDirNumPlayers;
-        const myDirNum = Object.keys(clones).find(
-          (key) => clones[parseInt(key)] === data.me,
-        );
-        if (myDirNum !== undefined) {
-          // Get dirNum of player for custom output based on replication 3 tether
-          // Player can replace the get tether with get defamation, get stack and
-          // the location they want based on custom plan
-          switch (parseInt(myDirNum)) {
-            case 0:
-              return output.getTetherNClone!({
-                tether: strat === 'dn'
-                  ? output.getBossTether!()
-                  : strat === 'banana'
-                  ? output.getConeTetherCW!()
-                  : strat === 'nukemaru'
-                  ? output.getConeTetherCCW!()
-                  : output.getTether!(),
-              });
-            case 1:
-              return output.getTetherNEClone!({
-                tether: strat === 'dn'
-                  ? output.getConeTetherCW!()
-                  : strat === 'banana'
-                  ? output.getDefamationTetherCW!()
-                  : strat === 'nukemaru'
-                  ? output.getStackTetherCCW!()
-                  : output.getTether!(),
-              });
-            case 2:
-              return output.getTetherEClone!({
-                tether: strat === 'dn'
-                  ? output.getStackTetherCW!()
-                  : strat === 'banana'
-                  ? output.getNoTether!()
-                  : strat === 'nukemaru'
-                  ? output.getBossTether!()
-                  : output.getTether!(),
-              });
-            case 3:
-              return output.getTetherSEClone!({
-                tether: strat === 'dn'
-                  ? output.getDefamationTetherCW!()
-                  : strat === 'banana'
-                  ? output.getDefamationTetherCCW!()
-                  : strat === 'nukemaru'
-                  ? output.getStackTetherCW!()
-                  : output.getTether!(),
-              });
-            case 4:
-              return output.getTetherSClone!({
-                tether: strat === 'dn'
-                  ? output.getNoTether!()
-                  : strat === 'banana'
-                  ? output.getConeTetherCCW!()
-                  : strat === 'nukemaru'
-                  ? output.getConeTetherCW!()
-                  : output.getTether!(),
-              });
-            case 5:
-              return output.getTetherSWClone!({
-                tether: strat === 'dn'
-                  ? output.getDefamationTetherCCW!()
-                  : strat === 'banana'
-                  ? output.getStackTetherCCW!()
-                  : strat === 'nukemaru'
-                  ? output.getDefamationTetherCW!()
-                  : output.getTether!(),
-              });
-            case 6:
-              return output.getTetherWClone!({
-                tether: strat === 'dn'
-                  ? output.getStackTetherCCW!()
-                  : strat === 'banana'
-                  ? output.getBossTether!()
-                  : strat === 'nukemaru'
-                  ? output.getNoTether!()
-                  : output.getTether!(),
-              });
-            case 7:
-              return output.getTetherNWClone!({
-                tether: strat === 'dn'
-                  ? output.getConeTetherCCW!()
-                  : strat === 'banana'
-                  ? output.getStackTetherCW!()
-                  : strat === 'nukemaru'
-                  ? output.getDefamationTetherCCW!()
-                  : output.getTether!(),
-              });
-          }
-        }
-
-        // Unknown staging clone tether
-        return output.getTether!();
-      },
-      outputStrings: replication2OutputStrings,
-    },
-    {
-      id: 'R12S Replication 2 Ability Tethers Initial Call (Set No Tether)',
-      type: 'Tether',
-      netRegex: { id: headMarkerData['fireballSplashTether'], capture: false },
-      delaySeconds: 0.1,
-      suppressSeconds: 9999,
-      run: (data) => {
-        if (data.replication2HasInitialAbilityTether)
-          return;
-        data.replication2HasInitialNoTether = true;
-      },
     },
     {
       id: 'R12S Replication 2 Locked Tether Collect',
