@@ -907,7 +907,7 @@ const triggerSet: TriggerSet<Data> = {
         'Honey B. Live: 1st Beat': '蜂蜂演唱會【首演】',
         'Honey B. Live: 2nd Beat': '蜂蜂演唱會【再演】',
         'Honey B. Live: 3rd Beat': '蜂蜂演唱會【三演】',
-        'Honey Beeline': '甜心旋風',
+        'Honey Beeline': '甜心烈風',
         'Killer Sting': '殺人針',
         'Laceration': '斬擊',
         'Love Me Tender': '溫柔地愛我',
