@@ -5683,23 +5683,23 @@ const triggerSet: TriggerSet<Data> = {
         nearOnYouDarkDN: {
           en: 'Near on YOU: Be on Hitbox N',
         },
-        farOnYouWindDN: {
-          en: 'Far on YOU: Be on Middle Hitbox',
-        },
         nearOnYouDarkZenith: {
           en: 'Near on YOU: Be on Middle Hitbox (Lean North)',
-        },
-        farOnYouWindZenith: {
-          en: 'Far on YOU: Max Melee N',
-        },
-        farOnYouWindNukemaru: {
-          en: 'Far on YOU: Be on Hitbox S',
         },
         nearOnYouDarkNukemaru: {
           en: 'Near on YOU: Max Melee S (Near Outer Player)',
         },
         nearOnYouDark: {
           en: 'Dark: Near on YOU',
+        },
+        farOnYouWindDN: {
+          en: 'Far on YOU: Be on Middle Hitbox',
+        },
+        farOnYouWindZenith: {
+          en: 'Far on YOU: Max Melee N',
+        },
+        farOnYouWindNukemaru: {
+          en: 'Far on YOU: Be on Hitbox S',
         },
         farOnYouWind: {
           en: 'Wind: Far on YOU',
@@ -5740,23 +5740,23 @@ const triggerSet: TriggerSet<Data> = {
         baitFireDN: {
           en: 'Bait Cone N/S Max Melee',
         },
-        baitEarthDN: {
-          en: 'Bait Cone N/S Max Melee',
-        },
         baitFireZenith: {
           en: 'Bait Cone S, Max Melee',
-        },
-        baitEarthZenith: {
-          en: 'Bait Cone Middle, Max Melee (Lean North)',
         },
         baitFireNukemaru: {
           en: 'Bait Cone, N of Platform/S Max Melee',
         },
-        baitEarthNukemaru: {
-          en: 'Bait Cone, S Max Melee/N of Platform',
-        },
         baitFire: {
           en: 'Fire: Bait Cone',
+        },
+        baitEarthDN: {
+          en: 'Bait Cone N/S Max Melee',
+        },
+        baitEarthZenith: {
+          en: 'Bait Cone Middle, Max Melee (Lean North)',
+        },
+        baitEarthNukemaru: {
+          en: 'Bait Cone, S Max Melee/N of Platform',
         },
         baitEarth: {
           en: 'Earth: Bait Cone',
