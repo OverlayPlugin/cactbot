@@ -3010,7 +3010,7 @@ const triggerSet: TriggerSet<Data> = {
         'Wicked Fire': '狡詭火炎',
         'Wicked Flare': '狡詭火光',
         'Wicked Jolt': '狡詭搖盪',
-        'Wicked Spark': '狡詭火光',
+        'Wicked Spark': '狡詭電火花',
         'Wicked Special': '狡詭特技',
         'Wicked Thunder': '狡詭雷電',
         'Widening Witch Hunt': '圓環式魔女狩獵',
