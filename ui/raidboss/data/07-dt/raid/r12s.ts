@@ -302,8 +302,6 @@ const triggerSet: TriggerSet<Data> = {
     replication1FollowUp: false,
     replication2CloneDirNumPlayers: {},
     replication2DirNumAbility: {},
-    replication2HasInitialAbilityTether: false,
-    replication2HasInitialNoTether: false,
     replication2PlayerAbilities: {},
     replication2PlayerOrder: [],
     replication2AbilityOrder: [],
