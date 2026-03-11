@@ -63,7 +63,8 @@ export interface Data extends RaidbossData {
   replication1FollowUp: boolean;
   replication2CloneDirNumPlayers: { [dirNum: number]: string };
   replication2DirNumAbility: { [dirNum: number]: string };
-  replication2hasInitialAbilityTether: boolean;
+  replication2HasInitialAbilityTether: boolean;
+  replication2HasInitialNoTether: boolean;
   replication2PlayerAbilities: { [player: string]: string };
   replication2BossId?: string;
   replication2PlayerOrder: string[];
@@ -303,7 +304,8 @@ const triggerSet: TriggerSet<Data> = {
     replication1FollowUp: false,
     replication2CloneDirNumPlayers: {},
     replication2DirNumAbility: {},
-    replication2hasInitialAbilityTether: false,
+    replication2HasInitialAbilityTether: false,
+    replication2HasInitialNoTether: false,
     replication2PlayerAbilities: {},
     replication2PlayerOrder: [],
     replication2AbilityOrder: [],
@@ -2871,7 +2873,7 @@ const triggerSet: TriggerSet<Data> = {
           if (matches.id !== headMarkerData['fireballSplashTether'])
             data.replication2DirNumAbility[dirNum] = matches.id;
           if (data.me === matches.target)
-            data.replication2hasInitialAbilityTether = true;
+            data.replication2HasInitialAbilityTether = true;
         }
         if (data.phase === 'idyllic')
           data.replication4DirNumAbility[dirNum] = matches.id;
@@ -2890,7 +2892,15 @@ const triggerSet: TriggerSet<Data> = {
         ],
         capture: true,
       },
-      condition: Conditions.targetIsYou(),
+      condition: (data, matches) => 
+        // Don't trigger if player started with no tether
+        if (
+          data.replication2HasInitialNoTether === false &&
+          (data.me === matches.target)
+        )
+          return true;
+        return false;
+      },
       suppressSeconds: 9999, // Can get spammy if players have more than 1 tether or swap a lot
       infoText: (data, _matches, output) => {
         const clones = data.replication2CloneDirNumPlayers;
@@ -2999,7 +3009,7 @@ const triggerSet: TriggerSet<Data> = {
       delaySeconds: 0.1,
       suppressSeconds: 9999, // Possible that this changes hands within an instant
       infoText: (data, _matches, output) => {
-        if (data.replication2hasInitialAbilityTether)
+        if (data.replication2HasInitialAbilityTether)
           return;
         const strat = data.triggerSetConfig.replication2Strategy;
         const clones = data.replication2CloneDirNumPlayers;
@@ -3098,6 +3108,18 @@ const triggerSet: TriggerSet<Data> = {
         return output.getTether!();
       },
       outputStrings: replication2OutputStrings,
+    },
+    {
+      id: 'R12S Replication 2 Ability Tethers Initial Call (Set No Tether)',
+      type: 'Tether',
+      netRegex: { id: headMarkerData['fireballSplashTether'], capture: false },
+      delaySeconds: 0.1,
+      suppressSeconds: 9999,
+      run: (data) => {
+        if (data.replication2HasInitialAbilityTether)
+          return;
+        data.replication2HasInitialNoTether = true;
+      },
     },
     {
       id: 'R12S Replication 2 Locked Tether Collect',
