@@ -3489,6 +3489,18 @@ const triggerSet: TriggerSet<Data> = {
         defamationOnYouNukemaruNW: {
           en: 'Defamation on YOU, Go ${strat}',
         },
+        baitFarDefamation: {
+          en: 'Bait Far Defamation',
+        },
+        baitFarDefamationDN: {
+          en: 'Bait Far Defamation (Go ${strat})',
+        },
+        baitFarDefamationBanana: {
+          en: 'Bait Far Defamation (Go ${strat})',
+        },
+        baitFarDefamationNukemaru: {
+          en: 'Bait Far Defamation (Go ${strat})',
+        },
         baitProtean: {
           en: 'Bait Protean from Boss',
         },
@@ -3573,7 +3585,7 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Replication 2 Mana Burst Target',
+      id: 'R12S Replication 2 Mana Burst Far Target',
       // A player without a tether will be target for defamation
       type: 'Tether',
       netRegex: { id: headMarkerData['lockedTether'], capture: false },
@@ -3591,12 +3603,12 @@ const triggerSet: TriggerSet<Data> = {
           return;
         return output.noTether!({
           mech1: strat === 'dn'
-            ? output.defamationOnYouDN!({ strat: output.south!() })
+            ? output.baitFarDefamationDN!({ strat: output.south!() })
             : strat === 'banana'
-            ? output.defamationOnYouBanana!({ strat: output.east!() })
+            ? output.baitFarDefamationBanana!({ strat: output.east!() })
             : strat === 'nukemaru'
-            ? output.defamationOnYouNukemaru!({ strat: output.west!() })
-            : output.defamationOnYou!(),
+            ? output.baitFarDefamationNukemaru!({ strat: output.west!() })
+            : output.baitFarDefamation!(),
           mech2: output.stackGroups!(),
         });
       },
@@ -3604,15 +3616,17 @@ const triggerSet: TriggerSet<Data> = {
         east: Outputs.east,
         south: Outputs.south,
         west: Outputs.west,
-        defamationOnYou: Outputs.defamationOnYou,
-        defamationOnYouDN: {
-          en: 'Defamation on YOU (Go ${strat})',
+        baitFarDefamation: {
+          en: 'Bait Far Defamation',
         },
-        defamationOnYouBanana: {
-          en: 'Defamation on YOU (Go ${strat})',
+        baitFarDefamationDN: {
+          en: 'Bait Far Defamation (Go ${strat})',
         },
-        defamationOnYouNukemaru: {
-          en: 'Defamation on YOU (Go ${strat})',
+        baitFarDefamationBanana: {
+          en: 'Bait Far Defamation (Go ${strat})',
+        },
+        baitFarDefamationNukemaru: {
+          en: 'Bait Far Defamation (Go ${strat})',
         },
         stackGroups: {
           en: 'Stack Groups',
