@@ -5240,6 +5240,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { id: 'BBE2', source: 'Lindwurm', capture: false },
       condition: (data) => data.twistedVisionCounter === 4,
+      durationSeconds: 10,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
         output.responseOutputStrings = {
