@@ -27,7 +27,7 @@ export interface Data extends RaidbossData {
     uptimeKnockbackStrat: true | false;
     portentStrategy: 'dn' | 'zenith' | 'nukemaru' | 'none';
     replication2Strategy: 'dn' | 'banana' | 'nukemaru' | 'none';
-    replication4Strategy: 'dn' | 'caro' | 'nukemaru' | 'none';
+    replication4Strategy: 'dn' | 'em' | 'caro' | 'nukemaru' | 'none';
   };
   phase: Phase;
   // Phase 1
@@ -275,6 +275,8 @@ const triggerSet: TriggerSet<Data> = {
         en: {
           'DN Strategy: N, NE, E, SE Staging 2 Tethers Grab Stacks, S, SW, W, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
             'dn',
+          'Emergency Meeting Strategy: N, NE, E, NW Stacks, SE, S, SW, W Defamations. Split party Red/Purple + Yellow/Blue markers and swaps based on Stack or Defamation being first':
+            'em',
           'Caro Strategy: NE, E, SW, W Staging 2 Tethers Grab Stacks, N, SE, S, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
             'caro',
           'Nukemaru Strategy: N, SW, W, NW Staging 2 Tethers Grab Stacks, NE, E, SE, S Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
@@ -4880,6 +4882,19 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirNE']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                  ? output.getStackWestGroup1EM!({
+                    dir: output['dirN']!(),
+                  })
+                  : mech === 'defamations'
+                  ? output.getStackWestGroup2EM!({
+                    dir: output['dirSW']!(),
+                  })
+                  : output.getStackWestGroup12EM!({
+                    dir1: output['dirN']!(),
+                    dir2: output['dirSW']!(),
+                  })
                   : strat === 'caro'
                   ? output.getDefamationEastGroupQuad1Caro!({
                     dir: mech === 'defamations'
@@ -4908,6 +4923,19 @@ const triggerSet: TriggerSet<Data> = {
                       : mech === 'defamations'
                       ? output['dirSE']!()
                       : output['unknown']!(),
+                  })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                  ? output.getStackEastGroup1EM!({
+                    dir: output['dirS']!(),
+                  })
+                  : mech === 'defamations'
+                  ? output.getStackEastGroup2EM!({
+                    dir: output['dirNE']!(),
+                  })
+                  : output.getStackEastGroup12EM!({
+                    dir1: output['dirS']!(),
+                    dir2: output['dirNE']!(),
                   })
                   : strat === 'caro'
                   ? output.getStackEastGroupQuad2Caro!({
@@ -4938,6 +4966,19 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirSW']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                  ? output.getStackEastGroup3EM!({
+                    dir: output['dirE']!(),
+                  })
+                  : mech === 'defamations'
+                  ? output.getStackEastGroup4EM!({
+                    dir: output['dirSE']!(),
+                  })
+                  : output.getStackEastGroup34EM!({
+                    dir1: output['dirE']!(),
+                    dir2: output['dirSE']!(),
+                  })
                   : strat === 'caro'
                   ? output.getStackEastGroupQuad3Caro!({
                     dir: mech === 'stacks'
@@ -4966,6 +5007,19 @@ const triggerSet: TriggerSet<Data> = {
                       : mech === 'defamations'
                       ? output['dirNW']!()
                       : output['unknown']!(),
+                  })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                  ? output.getDefamationEastGroup3EM!({
+                    dir: output['dirE']!(),
+                  })
+                  : mech === 'stacks'
+                  ? output.getDefamationEastGroup4EM!({
+                    dir: output['dirSE']!(),
+                  })
+                  : output.getDefamationEastGroup34EM!({
+                    dir1: output['dirE']!(),
+                    dir2: output['dirSE']!(),
                   })
                   : strat === 'caro'
                   ? output.getDefamationEastGroupQuad4Caro!({
@@ -4996,6 +5050,19 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirNE']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                  ? output.getDefamationEastGroup1EM!({
+                    dir: output['dirS']!(),
+                  })
+                  : mech === 'stacks'
+                  ? output.getDefamationEastGroup2EM!({
+                    dir: output['dirNE']!(),
+                  })
+                  : output.getDefamationEastGroup12EM!({
+                    dir1: output['dirS']!(),
+                    dir2: output['dirNE']!(),
+                  })
                   : strat === 'caro'
                   ? output.getDefamationWestGroupQuad1Caro!({
                     dir: mech === 'defamations'
@@ -5024,6 +5091,19 @@ const triggerSet: TriggerSet<Data> = {
                       : mech === 'stacks'
                       ? output['dirSE']!()
                       : output['unknown']!(),
+                  })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                  ? output.getDefamationWestGroup1EM!({
+                    dir: output['dirN']!(),
+                  })
+                  : mech === 'stacks'
+                  ? output.getDefamationWestGroup2EM!({
+                    dir: output['dirSE']!(),
+                  })
+                  : output.getDefamationWestGroup12EM!({
+                    dir1: output['dirN']!(),
+                    dir2: output['dirSE']!(),
                   })
                   : strat === 'caro'
                   ? output.getStackWestGroupQuad2Caro!({
@@ -5054,6 +5134,19 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirSW']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'em'
+                  ? mech === 'defamations'
+                  ? output.getDefamationWestGroup3EM!({
+                    dir: output['dirW']!(),
+                  })
+                  : mech === 'stacks'
+                  ? output.getDefamationWestGroup4EM!({
+                    dir: output['dirNW']!(),
+                  })
+                  : output.getDefamationWestGroup34EM!({
+                    dir1: output['dirW']!(),
+                    dir2: output['dirNW']!(),
+                  })
                   : strat === 'caro'
                   ? output.getStackWestGroupQuad3Caro!({
                     dir: mech === 'stacks'
@@ -5082,6 +5175,19 @@ const triggerSet: TriggerSet<Data> = {
                       : mech === 'stacks'
                       ? output['dirNW']!()
                       : output['unknown']!(),
+                  })
+                  : strat === 'em'
+                  ? mech === 'stacks'
+                  ? output.getStackWestGroup3EM!({
+                    dir: output['dirW']!(),
+                  })
+                  : mech === 'defamations'
+                  ? output.getStackWestGroup4EM!({
+                    dir: output['dirNW']!(),
+                  })
+                  : output.getStackWestGroup34EM!({
+                    dir1: output['dirW']!(),
+                    dir2: output['dirNW']!(),
                   })
                   : strat === 'caro'
                   ? output.getDefamationWestGroupQuad4Caro!({
@@ -5177,6 +5283,78 @@ const triggerSet: TriggerSet<Data> = {
         },
         getDefamationWestGroupQuad4DN: {
           en: 'Get ${dir} Defamation Tether',
+        },
+        getStackWestGroup1EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup2EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
+        },
+        getStackEastGroup1EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup2EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
+        },
+        getStackEastGroup3EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup4EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
+        },
+        getDefamationEastGroup3EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup4EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getDefamationEastGroup1EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup2EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getDefamationWestGroup1EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup2EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup12EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getDefamationWestGroup3EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup4EM: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Defamation Tether',
+        },
+        getStackWestGroup3EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup4EM: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroup34EM: {
+          en: 'Get ${dir1}/${dir2} Stack Tether',
         },
         getDefamationEastGroupQuad1Caro: {
           en: 'Get ${dir} Defamation Tether',
