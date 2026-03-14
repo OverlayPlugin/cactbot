@@ -4828,25 +4828,6 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Idyllic Dream Power Gusher Vision',
-      // Call where the E/W safe spots will be later
-      type: 'StartsUsing',
-      netRegex: { id: 'B510', source: 'Lindschrat', capture: true },
-      infoText: (_data, matches, output) => {
-        const y = parseFloat(matches.y);
-        const dir = y < center.y ? 'north' : 'south';
-        return output.text!({ dir: output[dir]!(), sides: output.sides!() });
-      },
-      outputStrings: {
-        north: Outputs.north,
-        south: Outputs.south,
-        sides: Outputs.sides,
-        text: {
-          en: '${dir} + ${sides} (later)',
-        },
-      },
-    },
-    {
       id: 'R12S Replication 4 Ability Tethers Initial Call',
       type: 'Tether',
       netRegex: {
