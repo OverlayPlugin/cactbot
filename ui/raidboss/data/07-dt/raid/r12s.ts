@@ -5427,8 +5427,8 @@ const triggerSet: TriggerSet<Data> = {
       type: 'Ability',
       netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
       condition: (data) => data.twistedVisionCounter === 4 && data.twistedVision4MechCounter > 6,
-      suppressSeconds: 9999,
       durationSeconds: 5,
+      suppressSeconds: 9999,
       infoText: (_data, _matches, output) => output.towers!(),
       outputStrings: {
         towers: {
