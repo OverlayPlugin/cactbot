@@ -115,7 +115,7 @@ const triggerSet: OopsyTriggerSet<Data> = {
       type: 'Ability',
       netRegex: NetRegexes.ability({ id: '76A3', source: 'Sephirot' }),
       condition: (data, matches) => {
-        if (data.party.isTank(matches.target) || data.job === 'BLU')
+        if (data.party.isTank(matches.target) || data.party.isLimitedJob(data.me))
           return false;
         return data?.force?.[matches.target] === undefined;
       },

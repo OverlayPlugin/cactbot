@@ -14,14 +14,16 @@ export default {
   caresAboutAOE(): (data: Data) => boolean {
     return (data: Data) =>
       data.role === 'tank' || data.role === 'healer' || data.CanAddle() || data.CanFeint() ||
-      data.job === 'BLU';
+      data.party.isLimitedJob(data.me);
   },
   caresAboutMagical(): (data: Data) => boolean {
     return (data: Data) =>
-      data.role === 'tank' || data.role === 'healer' || data.CanAddle() || data.job === 'BLU';
+      data.role === 'tank' || data.role === 'healer' || data.CanAddle() ||
+      data.party.isLimitedJob(data.me);
   },
   caresAboutPhysical(): (data: Data) => boolean {
     return (data: Data) =>
-      data.role === 'tank' || data.role === 'healer' || data.CanFeint() || data.job === 'BLU';
+      data.role === 'tank' || data.role === 'healer' || data.CanFeint() ||
+      data.party.isLimitedJob(data.me);
   },
 };

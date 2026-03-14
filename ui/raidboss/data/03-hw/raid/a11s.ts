@@ -299,7 +299,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.me === matches.target)
           return output.sharedTankbusterOnYou!();
 
-        if (data.role === 'tank' || data.role === 'healer' || data.job === 'BLU')
+        if (data.role === 'tank' || data.role === 'healer' || data.party.isLimitedJob(data.me))
           return output.sharedTankbusterOn!({ player: data.party.member(matches.target) });
       },
       outputStrings: {
