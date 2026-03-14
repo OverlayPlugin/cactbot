@@ -116,7 +116,7 @@ const headMarkerData = {
   // Phase 2
   // VFX: sharelaser2tank5sec_c0k1, used by Double Sobat (B520)
   'sharedTankbuster': '0256',
-  // Replication 2 Tethers
+  // Staging and Replication 2/4 Tethers
   'lockedTether': '0175', // Clone tethers
   'projectionTether': '016F', // Comes from Lindschrat, B4EA Grotesquerie + B4EB Hemorrhagic Projection cleave based on player facing
   'manaBurstTether': '0170', // Comes from Lindschrat, B4E7 Mana Burst defamation
