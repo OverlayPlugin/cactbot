@@ -4521,10 +4521,11 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Dramatic Lysis Black Hole 1 Reminder',
+      id: 'R12S Dramatic Lysis Black Hole 1',
       // This may not happen if all shapes are failed
       type: 'Ability',
-      netRegex: { id: ['B507'], source: 'Lindwurm', capture: false },
+      netRegex: { id: 'B507', source: 'Lindwurm', capture: false },
+      durationSeconds: 15, // ~16s until ability
       suppressSeconds: 9999,
       alertText: (data, _matches, output) => {
         const blackHole = data.firstBlackHole;
