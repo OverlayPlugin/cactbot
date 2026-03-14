@@ -239,7 +239,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'LostCityHard Kuribu Regen',
       type: 'StartsUsing',
       netRegex: { id: '15DC', source: 'Kuribu', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {

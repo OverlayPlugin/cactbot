@@ -127,7 +127,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
         if (!data.busterTargets.includes(data.me))
           return { infoText: output.tankCleaves!() };
-        if (data.role !== 'tank' && data.job !== 'BLU')
+        if (data.role !== 'tank' && !data.party.isLimitedJob(data.me))
           return { alarmText: output.tankCleaveOnYou!() };
         return { alertText: output.tankCleaveOnYou!() };
       },
@@ -395,7 +395,7 @@ const triggerSet: TriggerSet<Data> = {
           return;
         if (!data.busterTargets.includes(data.me))
           return { infoText: output.tankCleaves!() };
-        if (data.role !== 'tank' && data.job !== 'BLU')
+        if (data.role !== 'tank' && !data.party.isLimitedJob(data.me))
           return { alarmText: output.tankCleaveOnYou!() };
         return { alertText: output.tankCleaveOnYou!() };
       },

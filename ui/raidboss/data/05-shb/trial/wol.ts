@@ -18,7 +18,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'WOL Ultimate Crossover',
       regex: /Ultimate Crossover/,
       beforeSeconds: 8,
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -56,7 +56,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'WOL Terror Unleashed',
       type: 'Ability',
       netRegex: { source: 'Warrior Of Light', id: '4F27', capture: false },
-      condition: (data) => data.role === 'healer' || data.job === 'BLU',
+      condition: (data) => data.role === 'healer' || data.party.isLimitedJob(data.me),
       suppressSeconds: 5,
       alertText: (_data, _matches, output) => output.text!(),
       outputStrings: {

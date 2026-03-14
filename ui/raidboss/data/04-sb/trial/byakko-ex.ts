@@ -110,7 +110,7 @@ const triggerSet: TriggerSet<Data> = {
         if (data.roarCount !== 2)
           return;
 
-        if (data.role === 'tank' || data.job === 'BLU')
+        if (data.role === 'tank' || data.party.isLimitedJob(data.me))
           return output.text!();
       },
       outputStrings: {
@@ -199,7 +199,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'ByakkoEx Tiger Add',
       type: 'BattleTalk2',
       netRegex: { instanceContentTextId: '48AE', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {

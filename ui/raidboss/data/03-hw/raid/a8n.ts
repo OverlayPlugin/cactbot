@@ -94,7 +94,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'A8N Execution',
       type: 'Ability',
       netRegex: { source: 'Onslaughter', id: '1632', capture: false },
-      condition: (data) => data.role === 'dps' || data.job === 'BLU',
+      condition: (data) => data.role === 'dps' || data.party.isLimitedJob(data.me),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {

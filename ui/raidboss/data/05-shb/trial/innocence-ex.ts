@@ -194,7 +194,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'InnoEx Adds',
       type: 'Ability',
       netRegex: { id: '42B0', source: 'Innocence', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
