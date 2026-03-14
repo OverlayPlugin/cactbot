@@ -4884,17 +4884,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'stacks'
-                  ? output.getStackWestGroup1EM!({
-                    dir: output['dirN']!(),
-                  })
-                  : mech === 'defamations'
-                  ? output.getStackWestGroup2EM!({
-                    dir: output['dirSW']!(),
-                  })
-                  : output.getStackWestGroup12EM!({
-                    dir1: output['dirN']!(),
-                    dir2: output['dirSW']!(),
-                  })
+                    ? output.getStackWestGroup1EM!({
+                      dir: output['dirN']!(),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackWestGroup2EM!({
+                      dir: output['dirSW']!(),
+                    })
+                    : output.getStackWestGroup12EM!({
+                      dir1: output['dirN']!(),
+                      dir2: output['dirSW']!(),
+                    })
                   : strat === 'caro'
                   ? output.getDefamationEastGroupQuad1Caro!({
                     dir: mech === 'defamations'
@@ -4926,17 +4926,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'stacks'
-                  ? output.getStackEastGroup1EM!({
-                    dir: output['dirS']!(),
-                  })
-                  : mech === 'defamations'
-                  ? output.getStackEastGroup2EM!({
-                    dir: output['dirNE']!(),
-                  })
-                  : output.getStackEastGroup12EM!({
-                    dir1: output['dirS']!(),
-                    dir2: output['dirNE']!(),
-                  })
+                    ? output.getStackEastGroup1EM!({
+                      dir: output['dirS']!(),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackEastGroup2EM!({
+                      dir: output['dirNE']!(),
+                    })
+                    : output.getStackEastGroup12EM!({
+                      dir1: output['dirS']!(),
+                      dir2: output['dirNE']!(),
+                    })
                   : strat === 'caro'
                   ? output.getStackEastGroupQuad2Caro!({
                     dir: mech === 'stacks'
@@ -4968,17 +4968,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'stacks'
-                  ? output.getStackEastGroup3EM!({
-                    dir: output['dirE']!(),
-                  })
-                  : mech === 'defamations'
-                  ? output.getStackEastGroup4EM!({
-                    dir: output['dirSE']!(),
-                  })
-                  : output.getStackEastGroup34EM!({
-                    dir1: output['dirE']!(),
-                    dir2: output['dirSE']!(),
-                  })
+                    ? output.getStackEastGroup3EM!({
+                      dir: output['dirE']!(),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackEastGroup4EM!({
+                      dir: output['dirSE']!(),
+                    })
+                    : output.getStackEastGroup34EM!({
+                      dir1: output['dirE']!(),
+                      dir2: output['dirSE']!(),
+                    })
                   : strat === 'caro'
                   ? output.getStackEastGroupQuad3Caro!({
                     dir: mech === 'stacks'
@@ -5010,17 +5010,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'defamations'
-                  ? output.getDefamationEastGroup3EM!({
-                    dir: output['dirE']!(),
-                  })
-                  : mech === 'stacks'
-                  ? output.getDefamationEastGroup4EM!({
-                    dir: output['dirSE']!(),
-                  })
-                  : output.getDefamationEastGroup34EM!({
-                    dir1: output['dirE']!(),
-                    dir2: output['dirSE']!(),
-                  })
+                    ? output.getDefamationEastGroup3EM!({
+                      dir: output['dirE']!(),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationEastGroup4EM!({
+                      dir: output['dirSE']!(),
+                    })
+                    : output.getDefamationEastGroup34EM!({
+                      dir1: output['dirE']!(),
+                      dir2: output['dirSE']!(),
+                    })
                   : strat === 'caro'
                   ? output.getDefamationEastGroupQuad4Caro!({
                     dir: mech === 'defamations'
@@ -5052,17 +5052,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'defamations'
-                  ? output.getDefamationEastGroup1EM!({
-                    dir: output['dirS']!(),
-                  })
-                  : mech === 'stacks'
-                  ? output.getDefamationEastGroup2EM!({
-                    dir: output['dirNE']!(),
-                  })
-                  : output.getDefamationEastGroup12EM!({
-                    dir1: output['dirS']!(),
-                    dir2: output['dirNE']!(),
-                  })
+                    ? output.getDefamationEastGroup1EM!({
+                      dir: output['dirS']!(),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationEastGroup2EM!({
+                      dir: output['dirNE']!(),
+                    })
+                    : output.getDefamationEastGroup12EM!({
+                      dir1: output['dirS']!(),
+                      dir2: output['dirNE']!(),
+                    })
                   : strat === 'caro'
                   ? output.getDefamationWestGroupQuad1Caro!({
                     dir: mech === 'defamations'
@@ -5094,17 +5094,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'defamations'
-                  ? output.getDefamationWestGroup1EM!({
-                    dir: output['dirN']!(),
-                  })
-                  : mech === 'stacks'
-                  ? output.getDefamationWestGroup2EM!({
-                    dir: output['dirSE']!(),
-                  })
-                  : output.getDefamationWestGroup12EM!({
-                    dir1: output['dirN']!(),
-                    dir2: output['dirSE']!(),
-                  })
+                    ? output.getDefamationWestGroup1EM!({
+                      dir: output['dirN']!(),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationWestGroup2EM!({
+                      dir: output['dirSE']!(),
+                    })
+                    : output.getDefamationWestGroup12EM!({
+                      dir1: output['dirN']!(),
+                      dir2: output['dirSE']!(),
+                    })
                   : strat === 'caro'
                   ? output.getStackWestGroupQuad2Caro!({
                     dir: mech === 'stacks'
@@ -5136,17 +5136,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'defamations'
-                  ? output.getDefamationWestGroup3EM!({
-                    dir: output['dirW']!(),
-                  })
-                  : mech === 'stacks'
-                  ? output.getDefamationWestGroup4EM!({
-                    dir: output['dirNW']!(),
-                  })
-                  : output.getDefamationWestGroup34EM!({
-                    dir1: output['dirW']!(),
-                    dir2: output['dirNW']!(),
-                  })
+                    ? output.getDefamationWestGroup3EM!({
+                      dir: output['dirW']!(),
+                    })
+                    : mech === 'stacks'
+                    ? output.getDefamationWestGroup4EM!({
+                      dir: output['dirNW']!(),
+                    })
+                    : output.getDefamationWestGroup34EM!({
+                      dir1: output['dirW']!(),
+                      dir2: output['dirNW']!(),
+                    })
                   : strat === 'caro'
                   ? output.getStackWestGroupQuad3Caro!({
                     dir: mech === 'stacks'
@@ -5178,17 +5178,17 @@ const triggerSet: TriggerSet<Data> = {
                   })
                   : strat === 'em'
                   ? mech === 'stacks'
-                  ? output.getStackWestGroup3EM!({
-                    dir: output['dirW']!(),
-                  })
-                  : mech === 'defamations'
-                  ? output.getStackWestGroup4EM!({
-                    dir: output['dirNW']!(),
-                  })
-                  : output.getStackWestGroup34EM!({
-                    dir1: output['dirW']!(),
-                    dir2: output['dirNW']!(),
-                  })
+                    ? output.getStackWestGroup3EM!({
+                      dir: output['dirW']!(),
+                    })
+                    : mech === 'defamations'
+                    ? output.getStackWestGroup4EM!({
+                      dir: output['dirNW']!(),
+                    })
+                    : output.getStackWestGroup34EM!({
+                      dir1: output['dirW']!(),
+                      dir2: output['dirNW']!(),
+                    })
                   : strat === 'caro'
                   ? output.getDefamationWestGroupQuad4Caro!({
                     dir: mech === 'defamations'
