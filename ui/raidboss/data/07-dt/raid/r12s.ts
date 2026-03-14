@@ -5242,14 +5242,24 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
-      id: 'R12S Twisted Vision 4 Stack/Defamation 2-4',
+      id: 'R12S Twisted Vision 4 Stack/Defamation Counter',
       // Used for keeping of which Twisted Vision 4 mechanic we are on
       // Note: B519 Heavy Slam and B517 Mana Burst cast regardless of players alive
       //       A B4F0 Unmitigated Impact will occur should the stack be missed
       // Note2: B518 Mana Burst seems to not cast if the target is dead, and there doesn't seem to be repercussions
       type: 'Ability',
       netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
-      condition: (data) => data.twistedVisionCounter === 4 && data.twistedVision4MechCounter < 6,
+      condition: (data) => data.twistedVisionCounter === 4,
+      suppressSeconds: 1,
+      run: (data) => {
+        data.twistedVision4MechCounter = data.twistedVision4MechCounter + 2; // Mechanic is done in pairs
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 4 Stack/Defamation 2-4',
+      type: 'Ability',
+      netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
+      condition: (data) => data.twistedVisionCounter === 4 && data.twistedVision4MechCounter <= 6,
       suppressSeconds: 1,
       response: (data, _matches, output) => {
         // cactbot-builtin-response
@@ -5288,10 +5298,6 @@ const triggerSet: TriggerSet<Data> = {
             tc: '八人塔站位',
           },
         };
-        data.twistedVision4MechCounter = data.twistedVision4MechCounter + 2; // Mechanic is done in pairs
-        // Don't output for first one as it was called 1s prior to this trigger
-        if (data.twistedVision4MechCounter < 2)
-          return;
         const count = data.twistedVision4MechCounter;
         const players = data.replication4BossCloneDirNumPlayers;
         const abilityIds = data.replication4DirNumAbility;
@@ -5413,6 +5419,27 @@ const triggerSet: TriggerSet<Data> = {
             }),
           };
         }
+      },
+    },
+    {
+      id: 'R12S Twisted Vision 5 Towers (Early)',
+      // Calls on last stack or defamation
+      type: 'Ability',
+      netRegex: { id: ['B519', 'B517'], source: 'Lindschrat', capture: false },
+      condition: (data) => data.twistedVisionCounter === 4 && data.twistedVision4MechCounter > 6,
+      suppressSeconds: 9999,
+      durationSeconds: 5,
+      infoText: (_data, _matches, output) => output.towers!(),
+      outputStrings: {
+        towers: {
+            en: 'Tower Positions',
+            de: 'Turm Positionen',
+            fr: 'Position tour',
+            ja: '塔の位置へ',
+            cn: '八人塔站位',
+            ko: '기둥 자리잡기',
+            tc: '八人塔站位',
+          },
       },
     },
     {
