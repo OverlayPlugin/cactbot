@@ -5432,14 +5432,14 @@ const triggerSet: TriggerSet<Data> = {
       infoText: (_data, _matches, output) => output.towers!(),
       outputStrings: {
         towers: {
-            en: 'Tower Positions',
-            de: 'Turm Positionen',
-            fr: 'Position tour',
-            ja: '塔の位置へ',
-            cn: '八人塔站位',
-            ko: '기둥 자리잡기',
-            tc: '八人塔站位',
-          },
+          en: 'Tower Positions',
+          de: 'Turm Positionen',
+          fr: 'Position tour',
+          ja: '塔の位置へ',
+          cn: '八人塔站位',
+          ko: '기둥 자리잡기',
+          tc: '八人塔站位',
+        },
       },
     },
     {
