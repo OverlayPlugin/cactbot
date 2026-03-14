@@ -5092,7 +5092,7 @@ const triggerSet: TriggerSet<Data> = {
                       : output['unknown']!(),
                   })
                   : strat === 'nukemaru'
-                  ? output.getDefamationWestGroupQuad2Nukemaru!({
+                  ? output.getStackEastGroupQuad2Nukemaru!({
                     dir: mech === 'stacks'
                       ? output['dirE']!()
                       : mech === 'defamations'
@@ -5208,7 +5208,7 @@ const triggerSet: TriggerSet<Data> = {
         getDefamationEastGroupQuad1Nukemaru: {
           en: 'Get ${dir} Defamation Tether',
         },
-        getDefamtionWestGroupQuad4Nukemaru: {
+        getDefamationWestGroupQuad4Nukemaru: {
           en: 'Get ${dir} Defamation Tether',
         },
         getDefamationEastGroupQuad2Nukemaru: {
