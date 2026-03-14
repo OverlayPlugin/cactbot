@@ -27,7 +27,7 @@ export interface Data extends RaidbossData {
     uptimeKnockbackStrat: true | false;
     portentStrategy: 'dn' | 'zenith' | 'nukemaru' | 'none';
     replication2Strategy: 'dn' | 'banana' | 'nukemaru' | 'none';
-    replication4Strategy: 'dn' | 'caro' | 'none';
+    replication4Strategy: 'dn' | 'caro' | 'nukemaru' | 'none';
   };
   phase: Phase;
   // Phase 1
@@ -277,6 +277,8 @@ const triggerSet: TriggerSet<Data> = {
             'dn',
           'Caro Strategy: NE, E, SW, W Staging 2 Tethers Grab Stacks, N, SE, S, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
             'caro',
+          'Nukemaru Strategy: N, SW, W, NW Staging 2 Tethers Grab Stacks, NE, E, SE, S Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
+            'nukemaru',
           'No strategy: Calls the tether you may have and to get a tether.': 'none',
         },
       },
@@ -4886,6 +4888,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirNE']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'nukemaru'
+                  ? output.getStackEastGroupQuad1Nukemaru!({
+                    dir: mech === 'stacks'
+                      ? output['dirN']!()
+                      : mech === 'defamations'
+                      ? output['dirNE']!()
+                      : output['unknown']!(),
+                  })
                   : output.getTether!(),
               });
             case 1:
@@ -4905,6 +4915,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirE']!()
                       : mech === 'defamations'
                       ? output['dirSE']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationEastGroupQuad1Nukemaru!({
+                    dir: mech === 'defamations'
+                      ? output['dirN']!()
+                      : mech === 'stacks'
+                      ? output['dirNE']!()
                       : output['unknown']!(),
                   })
                   : output.getTether!(),
@@ -4928,6 +4946,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirSW']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationWestGroupQuad4Nukemaru!({
+                    dir: mech === 'defamations'
+                      ? output['dirW']!()
+                      : mech === 'stacks'
+                      ? output['dirNW']!()
+                      : output['unknown']!(),
+                  })
                   : output.getTether!(),
               });
             case 3:
@@ -4947,6 +4973,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirW']!()
                       : mech === 'stacks'
                       ? output['dirNW']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationEastGroupQuad2Nukemaru!({
+                    dir: mech === 'defamations'
+                      ? output['dirE']!()
+                      : mech === 'stacks'
+                      ? output['dirSE']!()
                       : output['unknown']!(),
                   })
                   : output.getTether!(),
@@ -4970,6 +5004,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirNE']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationWestGroupQuad3Nukemaru!({
+                    dir: mech === 'defamations'
+                      ? output['dirS']!()
+                      : mech === 'stacks'
+                      ? output['dirSW']!()
+                      : output['unknown']!(),
+                  })
                   : output.getTether!(),
               });
             case 5:
@@ -4989,6 +5031,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirE']!()
                       : mech === 'defamations'
                       ? output['dirSE']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getStackWestGroupQuad3Nukemaru!({
+                    dir: mech === 'stacks'
+                      ? output['dirS']!()
+                      : mech === 'defamations'
+                      ? output['dirSW']!()
                       : output['unknown']!(),
                   })
                   : output.getTether!(),
@@ -5012,6 +5062,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirSW']!()
                       : output['unknown']!(),
                   })
+                  : strat === 'nukemaru'
+                  ? output.getStackWestGroupQuad4Nukemaru!({
+                    dir: mech === 'stacks'
+                      ? output['dirW']!()
+                      : mech === 'defamations'
+                      ? output['dirNW']!()
+                      : output['unknown']!(),
+                  })
                   : output.getTether!(),
               });
             case 7:
@@ -5031,6 +5089,14 @@ const triggerSet: TriggerSet<Data> = {
                       ? output['dirW']!()
                       : mech === 'stacks'
                       ? output['dirNW']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'nukemaru'
+                  ? output.getDefamationWestGroupQuad2Nukemaru!({
+                    dir: mech === 'stacks'
+                      ? output['dirE']!()
+                      : mech === 'defamations'
+                      ? output['dirSE']!()
                       : output['unknown']!(),
                   })
                   : output.getTether!(),
@@ -5135,6 +5201,30 @@ const triggerSet: TriggerSet<Data> = {
         },
         getDefamationWestGroupQuad4Caro: {
           en: 'Get ${dir} Defamation Tether',
+        },
+        getStackEastGroupQuad1Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationEastGroupQuad1Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamtionWestGroupQuad4Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroupQuad2Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad3Nukemaru: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackWestGroupQuad3Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad4Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroupQuad2Nukemaru: {
+          en: 'Get ${dir} Stack Tether',
         },
       },
     },
