@@ -2911,7 +2911,7 @@ const triggerSet: TriggerSet<Data> = {
         );
 
         if (myDirNum !== undefined) {
-          // Get dirNum of player for custom output based on replication 2 tether
+          // Get dirNum of player for custom output based on staging 1 tether
           // Player can replace the get tether with get defamation, get stack and
           // the location they want based on custom plan
           switch (parseInt(myDirNum)) {
@@ -4861,7 +4861,7 @@ const triggerSet: TriggerSet<Data> = {
           (key) => clones[parseInt(key)] === data.me,
         );
         if (myDirNum !== undefined) {
-          // Get dirNum of player for custom output based on replication 3 tether
+          // Get dirNum of player for custom output based on staging 2 tether
           // Player can replace the get tether with get defamation, get stack and
           // the location they want based on custom plan
           switch (parseInt(myDirNum)) {
@@ -4874,7 +4874,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirN!()
                       : mech === 'defamations'
                       ? output.dirNE!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
@@ -4887,7 +4887,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirE!()
                       : mech === 'defamations'
                       ? output.dirSE!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
@@ -4900,7 +4900,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirS!()
                       : mech === 'defamations'
                       ? output.dirSW!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
@@ -4913,7 +4913,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirW!()
                       : mech === 'defamations'
                       ? output.dirNW!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
@@ -4926,7 +4926,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirN!()
                       : mech === 'stacks'
                       ? output.dirNE!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
@@ -4939,7 +4939,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirE!()
                       : mech === 'stacks'
                       ? output.dirSE!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
@@ -4952,7 +4952,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirS!()
                       : mech === 'stacks'
                       ? output.dirSW!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
@@ -4965,7 +4965,7 @@ const triggerSet: TriggerSet<Data> = {
                       ? output.dirW!()
                       : mech === 'stacks'
                       ? output.dirNW!()
-                      : output.unknown!()
+                      : output.unknown!(),
                   })
                   : output.getTether!(),
               });
