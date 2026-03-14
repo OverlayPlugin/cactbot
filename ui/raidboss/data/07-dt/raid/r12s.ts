@@ -27,7 +27,7 @@ export interface Data extends RaidbossData {
     uptimeKnockbackStrat: true | false;
     portentStrategy: 'dn' | 'zenith' | 'nukemaru' | 'none';
     replication2Strategy: 'dn' | 'banana' | 'nukemaru' | 'none';
-    replication4Strategy: 'dn' | 'none';
+    replication4Strategy: 'dn' | 'caro' | 'none';
   };
   phase: Phase;
   // Phase 1
@@ -275,6 +275,8 @@ const triggerSet: TriggerSet<Data> = {
         en: {
           'DN Strategy: N, NE, E, SE Staging 2 Tethers Grab Stacks, S, SW, W, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
             'dn',
+          'Caro Strategy: NE, E, SW, W Staging 2 Tethers Grab Stacks, N, SE, S, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
+            'caro',
           'No strategy: Calls the tether you may have and to get a tether.': 'none',
         },
       },
@@ -4826,6 +4828,25 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Idyllic Dream Power Gusher Vision',
+      // Call where the E/W safe spots will be later
+      type: 'StartsUsing',
+      netRegex: { id: 'B510', source: 'Lindschrat', capture: true },
+      infoText: (_data, matches, output) => {
+        const y = parseFloat(matches.y);
+        const dir = y < center.y ? 'north' : 'south';
+        return output.text!({ dir: output[dir]!(), sides: output.sides!() });
+      },
+      outputStrings: {
+        north: Outputs.north,
+        south: Outputs.south,
+        sides: Outputs.sides,
+        text: {
+          en: '${dir} + ${sides} (later)',
+        },
+      },
+    },
+    {
       id: 'R12S Replication 4 Ability Tethers Initial Call',
       type: 'Tether',
       netRegex: {
@@ -4869,10 +4890,18 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterNClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getStackGroup1DN!({
+                  ? output.getStackEastGroupQuad1DN!({
                     dir: mech === 'stacks'
                       ? output['dirN']!()
                       : mech === 'defamations'
+                      ? output['dirNE']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getDefamationEastGroupQuad1Caro!({
+                    dir: mech === 'defamations'
+                      ? output['dirN']!()
+                      : mech === 'stacks'
                       ? output['dirNE']!()
                       : output['unknown']!(),
                   })
@@ -4882,7 +4911,15 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterNEClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getStackGroup2DN!({
+                  ? output.getStackEastGroupQuad2DN!({
+                    dir: mech === 'stacks'
+                      ? output['dirE']!()
+                      : mech === 'defamations'
+                      ? output['dirSE']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getStackEastGroupQuad2Caro!({
                     dir: mech === 'stacks'
                       ? output['dirE']!()
                       : mech === 'defamations'
@@ -4895,7 +4932,15 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterEClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getStackGroup3DN!({
+                  ? output.getStackWestGroupQuad3DN!({
+                    dir: mech === 'stacks'
+                      ? output['dirS']!()
+                      : mech === 'defamations'
+                      ? output['dirSW']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getStackEastGroupQuad3Caro!({
                     dir: mech === 'stacks'
                       ? output['dirS']!()
                       : mech === 'defamations'
@@ -4908,10 +4953,18 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterSEClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getStackGroup4DN!({
+                  ? output.getStackWestGroupQuad4DN!({
                     dir: mech === 'stacks'
                       ? output['dirW']!()
                       : mech === 'defamations'
+                      ? output['dirNW']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getDefamationEastGroupQuad4Caro!({
+                    dir: mech === 'defamations'
+                      ? output['dirW']!()
+                      : mech === 'stacks'
                       ? output['dirNW']!()
                       : output['unknown']!(),
                   })
@@ -4921,7 +4974,15 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterSClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getDefamationGroup1DN!({
+                  ? output.getDefamationEastGroupQuad1DN!({
+                    dir: mech === 'defamations'
+                      ? output['dirN']!()
+                      : mech === 'stacks'
+                      ? output['dirNE']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getDefamationWestGroupQuad1Caro!({
                     dir: mech === 'defamations'
                       ? output['dirN']!()
                       : mech === 'stacks'
@@ -4934,10 +4995,18 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterSWClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getDefamationGroup2DN!({
+                  ? output.getDefamationEastGroupQuad2DN!({
                     dir: mech === 'defamations'
                       ? output['dirE']!()
                       : mech === 'stacks'
+                      ? output['dirSE']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getStackWestGroupQuad2Caro!({
+                    dir: mech === 'stacks'
+                      ? output['dirE']!()
+                      : mech === 'defamations'
                       ? output['dirSE']!()
                       : output['unknown']!(),
                   })
@@ -4947,10 +5016,18 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterWClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getDefamationGroup3DN!({
+                  ? output.getDefamationWestGroupQuad3DN!({
                     dir: mech === 'defamations'
                       ? output['dirS']!()
                       : mech === 'stacks'
+                      ? output['dirSW']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getStackWestGroupQuad3Caro!({
+                    dir: mech === 'stacks'
+                      ? output['dirS']!()
+                      : mech === 'defamations'
                       ? output['dirSW']!()
                       : output['unknown']!(),
                   })
@@ -4960,7 +5037,15 @@ const triggerSet: TriggerSet<Data> = {
               return output.mechLaterNWClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
                 tether: strat === 'dn'
-                  ? output.getDefamationGroup4DN!({
+                  ? output.getDefamationWestGroupQuad4DN!({
+                    dir: mech === 'defamations'
+                      ? output['dirW']!()
+                      : mech === 'stacks'
+                      ? output['dirNW']!()
+                      : output['unknown']!(),
+                  })
+                  : strat === 'caro'
+                  ? output.getDefamationWestGroupQuad4Caro!({
                     dir: mech === 'defamations'
                       ? output['dirW']!()
                       : mech === 'stacks'
@@ -4995,30 +5080,6 @@ const triggerSet: TriggerSet<Data> = {
           tc: '大圈點名',
         },
         stacks: Outputs.stacks,
-        getStackGroup1DN: {
-          en: 'Get ${dir} Stack Tether',
-        },
-        getStackGroup2DN: {
-          en: 'Get ${dir} Stack Tether',
-        },
-        getStackGroup3DN: {
-          en: 'Get ${dir} Stack Tether',
-        },
-        getStackGroup4DN: {
-          en: 'Get ${dir} Stack Tether',
-        },
-        getDefamationGroup1DN: {
-          en: 'Get ${dir} Defamation Tether',
-        },
-        getDefamationGroup2DN: {
-          en: 'Get ${dir} Defamation Tether',
-        },
-        getDefamationGroup3DN: {
-          en: 'Get ${dir} Defamation Tether',
-        },
-        getDefamationGroup4DN: {
-          en: 'Get ${dir} Defamation Tether',
-        },
         mechLaterTether: {
           en: '${later}; ${tether}',
         },
@@ -5045,6 +5106,54 @@ const triggerSet: TriggerSet<Data> = {
         },
         mechLaterNWClone: {
           en: '${later}; ${tether}',
+        },
+        getStackEastGroupQuad1DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroupQuad2DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad3DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad4DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationEastGroupQuad1DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroupQuad2DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad3DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad4DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationEastGroupQuad1Caro: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackEastGroupQuad2Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackEastGroupQuad3Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationEastGroupQuad4Caro: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationWestGroupQuad1Caro: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getStackWestGroupQuad2Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackWestGroupQuad3Caro: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationWestGroupQuad4Caro: {
+          en: 'Get ${dir} Defamation Tether',
         },
       },
     },
