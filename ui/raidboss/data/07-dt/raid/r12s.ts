@@ -4871,10 +4871,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getStackGroup1DN!({
                     dir: mech === 'stacks'
-                      ? output.dirN!()
+                      ? output['dirN']!()
                       : mech === 'defamations'
-                      ? output.dirNE!()
-                      : output.unknown!(),
+                      ? output['dirNE']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
@@ -4884,10 +4884,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getStackGroup2DN!({
                     dir: mech === 'stacks'
-                      ? output.dirE!()
+                      ? output['dirE']!()
                       : mech === 'defamations'
-                      ? output.dirSE!()
-                      : output.unknown!(),
+                      ? output['dirSE']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
@@ -4897,10 +4897,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getStackGroup3DN!({
                     dir: mech === 'stacks'
-                      ? output.dirS!()
+                      ? output['dirS']!()
                       : mech === 'defamations'
-                      ? output.dirSW!()
-                      : output.unknown!(),
+                      ? output['dirSW']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
@@ -4910,10 +4910,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getStackGroup4DN!({
                     dir: mech === 'stacks'
-                      ? output.dirW!()
+                      ? output['dirW']!()
                       : mech === 'defamations'
-                      ? output.dirNW!()
-                      : output.unknown!(),
+                      ? output['dirNW']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
@@ -4923,10 +4923,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getDefamationGroup1DN!({
                     dir: mech === 'defamations'
-                      ? output.dirN!()
+                      ? output['dirN']!()
                       : mech === 'stacks'
-                      ? output.dirNE!()
-                      : output.unknown!(),
+                      ? output['dirNE']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
@@ -4936,10 +4936,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getDefamationGroup2DN!({
                     dir: mech === 'defamations'
-                      ? output.dirE!()
+                      ? output['dirE']!()
                       : mech === 'stacks'
-                      ? output.dirSE!()
-                      : output.unknown!(),
+                      ? output['dirSE']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
@@ -4949,10 +4949,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getDefamationGroup3DN!({
                     dir: mech === 'defamations'
-                      ? output.dirS!()
+                      ? output['dirS']!()
                       : mech === 'stacks'
-                      ? output.dirSW!()
-                      : output.unknown!(),
+                      ? output['dirSW']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
@@ -4962,10 +4962,10 @@ const triggerSet: TriggerSet<Data> = {
                 tether: strat === 'dn'
                   ? output.getDefamationGroup4DN!({
                     dir: mech === 'defamations'
-                      ? output.dirW!()
+                      ? output['dirW']!()
                       : mech === 'stacks'
-                      ? output.dirNW!()
-                      : output.unknown!(),
+                      ? output['dirNW']!()
+                      : output['unknown']!(),
                   })
                   : output.getTether!(),
               });
