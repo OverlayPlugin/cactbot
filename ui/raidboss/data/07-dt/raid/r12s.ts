@@ -27,6 +27,7 @@ export interface Data extends RaidbossData {
     uptimeKnockbackStrat: true | false;
     portentStrategy: 'dn' | 'zenith' | 'nukemaru' | 'none';
     replication2Strategy: 'dn' | 'banana' | 'nukemaru' | 'none';
+    replication4Strategy: 'dn' | 'none';
   };
   phase: Phase;
   // Phase 1
@@ -259,6 +260,21 @@ const triggerSet: TriggerSet<Data> = {
             'banana',
           'Nukemaru Strategy: Boss East, Stacks NE/SE, Cones N/S, Defamations NW/SW, Nothing W':
             'nukemaru',
+          'No strategy: Calls the tether you may have and to get a tether.': 'none',
+        },
+      },
+      default: 'none',
+    },
+    {
+      id: 'replication4Strategy',
+      name: {
+        en: 'Replication 4 (Idyllic Dream) Strategy',
+      },
+      type: 'select',
+      options: {
+        en: {
+          'DN Strategy: N, NE, E, SE Staging 2 Tethers Grab Stacks, S, SW, W, NW Staging 2 Tethers Grab Defamations. Split party into 4 intercardinal quadrants.':
+            'dn',
           'No strategy: Calls the tether you may have and to get a tether.': 'none',
         },
       },
@@ -4825,6 +4841,7 @@ const triggerSet: TriggerSet<Data> = {
         return false;
       },
       delaySeconds: 0.1,
+      durationSeconds: 7,
       suppressSeconds: 9999,
       infoText: (data, _matches, output) => {
         const first = data.replication4DirNumAbility[0];
@@ -4839,6 +4856,7 @@ const triggerSet: TriggerSet<Data> = {
           : 'unknown';
 
         const clones = data.replication3CloneDirNumPlayers;
+        const strat = data.triggerSetConfig.replication4Strategy;
         const myDirNum = Object.keys(clones).find(
           (key) => clones[parseInt(key)] === data.me,
         );
@@ -4850,42 +4868,106 @@ const triggerSet: TriggerSet<Data> = {
             case 0:
               return output.mechLaterNClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getStackGroup1DN!({
+                    dir: mech === 'stacks'
+                      ? output.dirN!()
+                      : mech === 'defamations'
+                      ? output.dirNE!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
             case 1:
               return output.mechLaterNEClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getStackGroup2DN!({
+                    dir: mech === 'stacks'
+                      ? output.dirE!()
+                      : mech === 'defamations'
+                      ? output.dirSE!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
             case 2:
               return output.mechLaterEClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getStackGroup3DN!({
+                    dir: mech === 'stacks'
+                      ? output.dirS!()
+                      : mech === 'defamations'
+                      ? output.dirSW!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
             case 3:
               return output.mechLaterSEClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getStackGroup4DN!({
+                    dir: mech === 'stacks'
+                      ? output.dirW!()
+                      : mech === 'defamations'
+                      ? output.dirNW!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
             case 4:
               return output.mechLaterSClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getDefamationGroup1DN!({
+                    dir: mech === 'defamations'
+                      ? output.dirN!()
+                      : mech === 'stacks'
+                      ? output.dirNE!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
             case 5:
               return output.mechLaterSWClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getDefamationGroup2DN!({
+                    dir: mech === 'defamations'
+                      ? output.dirE!()
+                      : mech === 'stacks'
+                      ? output.dirSE!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
             case 6:
               return output.mechLaterWClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getDefamationGroup3DN!({
+                    dir: mech === 'defamations'
+                      ? output.dirS!()
+                      : mech === 'stacks'
+                      ? output.dirSW!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
             case 7:
               return output.mechLaterNWClone!({
                 later: output.mechLater!({ mech: output[mech]!() }),
-                tether: output.getTether!(),
+                tether: strat === 'dn'
+                  ? output.getDefamationGroup4DN!({
+                    dir: mech === 'defamations'
+                      ? output.dirW!()
+                      : mech === 'stacks'
+                      ? output.dirNW!()
+                      : output.unknown!()
+                  })
+                  : output.getTether!(),
               });
           }
         }
@@ -4896,6 +4978,7 @@ const triggerSet: TriggerSet<Data> = {
         });
       },
       outputStrings: {
+        ...Directions.outputStrings8Dir,
         getTether: {
           en: 'Get Tether',
         },
@@ -4912,6 +4995,30 @@ const triggerSet: TriggerSet<Data> = {
           tc: '大圈點名',
         },
         stacks: Outputs.stacks,
+        getStackGroup1DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackGroup2DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackGroup3DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getStackGroup4DN: {
+          en: 'Get ${dir} Stack Tether',
+        },
+        getDefamationGroup1DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationGroup2DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationGroup3DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
+        getDefamationGroup4DN: {
+          en: 'Get ${dir} Defamation Tether',
+        },
         mechLaterTether: {
           en: '${later}; ${tether}',
         },
