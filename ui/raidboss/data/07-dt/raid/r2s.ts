@@ -886,47 +886,46 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
-        // 'Honey B. Lovely': '', // FIXME '蜂蜂小甜心'
-        // 'Sweetheart': '', // FIXME '甜甜的心'
+        'Honey B. Lovely': '蜂蜂小甜心',
+        'Sweetheart': '甜甜的心',
       },
       'replaceText': {
-        // 'Alarm Pheromones': '', // FIXME '告警信息素'
-        // 'Bee Sting': '', // FIXME '小蜂刺'
+        'Alarm Pheromones': '警示費洛蒙',
+        'Bee Sting': '小蜂刺',
         'Big Burst': '大爆炸',
-        // 'Blinding Love': '', // FIXME '盲目的爱'
-        // 'Call Me Honey': '', // FIXME '甜言蜜语'
-        // 'Centerstage Combo': '', // FIXME '环环心连心'
-        // 'Drop of Love': '', // FIXME '爱之滴'
+        'Blinding Love': '盲目的愛',
+        'Call Me Honey': '甜蜜應援',
+        'Centerstage Combo': '環環心連心',
+        'Drop of Love': '愛之滴',
         'Drop of Venom': '毒液滴落',
         'Fracture': '炸裂',
-        // 'Heart-Struck': '', // FIXME '心震'
-        // 'Heartsick': '', // FIXME '心病'
-        // 'Heartsore': '', // FIXME '心伤'
-        // 'Honey B. Finale': '', // FIXME '蜂蜂落幕曲'
-        // 'Honey B. Live: 1st Beat': '', // FIXME '蜂蜂演唱会【首演】'
-        // 'Honey B. Live: 2nd Beat': '', // FIXME '蜂蜂演唱会【再演】'
-        // 'Honey B. Live: 3rd Beat': '', // FIXME '蜂蜂演唱会【三演】'
-        // 'Honey Beeline': '', // FIXME '甜心烈风'
-        // 'Killer Sting': '', // FIXME '杀人针'
+        'Heart-Struck': '心碎',
+        'Heartsick': '心病',
+        'Heartsore': '心傷',
+        'Honey B. Finale': '蜂蜂落幕曲',
+        'Honey B. Live: 1st Beat': '蜂蜂演唱會【首演】',
+        'Honey B. Live: 2nd Beat': '蜂蜂演唱會【再演】',
+        'Honey B. Live: 3rd Beat': '蜂蜂演唱會【三演】',
+        'Honey Beeline': '甜心烈風',
+        'Killer Sting': '殺人針',
         'Laceration': '斬擊',
-        // 'Love Me Tender': '', // FIXME '温柔地爱我'
-        // 'Loveseeker': '', // FIXME '求爱'
-        // 'Outerstage Combo': '', // FIXME '圆圆心连心'
-        // 'Poison Sting': '', // FIXME '毒针'
-        // 'Rotten Heart': '', // FIXME '黑心'
-        // 'Sheer Heart Attack': '', // FIXME '骤然心痛'
-        // 'Splash of Venom': '', // FIXME '毒液雨'
+        'Love Me Tender': '溫柔地愛我',
+        'Loveseeker': '求愛',
+        'Outerstage Combo': '圓圓心連心',
+        'Poison Sting': '毒針',
+        'Rotten Heart': '黑心',
+        'Sheer Heart Attack': '驟然心痛',
+        'Splash of Venom': '毒液雨',
         'Splinter': '碎裂',
-        // 'Spread Love': '', // FIXME '爱之雨'
-        // 'Stinging Slash': '', // FIXME '杀人斩'
-        // 'Tempting Twist': '', // FIXME '甜心旋风'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(damage\\)': '', // FIXME '(伤害)'
-        // '\\(drop\\)': '', // FIXME '(放圈)'
-        // '\\(enrage\\)': '', // FIXME '(狂暴)'
-        // '\\(stun for': '', // FIXME '(眩晕'
+        'Spread Love': '愛之雨',
+        'Stinging Slash': '殺人斬',
+        'Tempting Twist': '甜心旋風',
+        '\\(cast\\)': '(詠唱)',
+        '\\(damage\\)': '(傷害)',
+        '\\(drop\\)': '(放圈)',
+        '\\(enrage\\)': '(狂暴)',
+        '\\(stun for': '(眩暈)',
       },
     },
     {
