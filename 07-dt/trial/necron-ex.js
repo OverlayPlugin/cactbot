@@ -639,10 +639,10 @@ Options.Triggers.push({
       type: 'Ability',
       netRegex: { id: 'AF13', capture: true },
       condition: (data, matches) =>
-        Conditions.targetIsYou()(data, matches) && data.macabreTowerCount < 5,
+        Conditions.targetIsYou()(data, matches) && data.macabreTowerCount < 4,
       delaySeconds: 4,
       alertText: (data, _matches, output) => {
-        if (data.role === 'tank' && data.macabreTowerCount > 2) {
+        if (data.role === 'tank' && data.macabreTowerCount > 1) {
           // Tanks deal with buster after 2nd tower
           return;
         }
@@ -672,6 +672,7 @@ Options.Triggers.push({
     },
     {
       'locale': 'de',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'azur(?:e|er|es|en) Äther',
         'Beckoning Hands': 'lockend(?:e|er|es|en) Hand',
@@ -681,6 +682,7 @@ Options.Triggers.push({
       'replaceText': {
         'Aetherblight': 'Ätherische Verderbnis',
         'Blue Shockwave': 'Blaue Schockwelle',
+        'Chilling Fingers': 'Klauen des Todes',
         'Choking Grasp': 'Würgegriff',
         'Circle of Lives': 'Lebenszirkel',
         'Cold Grip': 'Dunkelhieb',
@@ -694,6 +696,7 @@ Options.Triggers.push({
         'Mass Macabre': 'Massenfurcht',
         'Memento Mori': 'Memento Mori',
         'Muted Struggle': 'Stiller Kampf',
+        'Necrotic Pulse': 'Nekrotischer Impuls',
         'Neutron Ring': 'Neutronenring',
         'Relentless Reaping': 'Andauernde Labung',
         'Shock(?!wave)': 'Entladung',
@@ -701,6 +704,7 @@ Options.Triggers.push({
         'Smite of Gloom': 'Schlag der Schwermut',
         'Soul Reaping': 'Seelenlabung',
         'Specter of Death': 'Gesandte des Todes',
+        'Spreading Fear': 'Angst verbreiten',
         'The End\'s Embrace': 'Letzte Umarmung',
         'The Fourth Season': 'Vierte Saison',
         'The Second Season': 'Zweite Saison',
@@ -709,6 +713,7 @@ Options.Triggers.push({
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': 'sphère d\'énergie bleue',
         'Beckoning Hands': 'grand attrape-mort',
@@ -727,6 +732,7 @@ Options.Triggers.push({
         '\\(tower\\)': '(Tour)',
         'Aetherblight': 'Voie bleue',
         'Blue Shockwave': 'Onde bleue',
+        'Chilling Fingers': 'Enroulement',
         'Choking Grasp': 'Pression écrasante',
         'Circle of Lives': 'Sphères d\'énergie bleues',
         'Cold Grip': 'Fouet létal',
@@ -740,6 +746,7 @@ Options.Triggers.push({
         'Mass Macabre': 'Panique collective',
         'Memento Mori': 'Memento mori',
         'Muted Struggle': 'Frappe écrasante',
+        'Necrotic Pulse': 'Déchirement',
         'Neutron Ring': 'Anneau de neutrons',
         'Relentless Reaping': 'Âmes bleues enchaînées',
         'Shock(?!wave)': 'Décharge électrostatique',
@@ -747,6 +754,7 @@ Options.Triggers.push({
         'Smite of Gloom': 'Coup des ténèbres',
         'Soul Reaping': 'Âme bleue',
         'Specter of Death': 'Agrippe-morts',
+        'Spreading Fear': 'Désagrégement',
         'The End\'s Embrace': 'Aile guide',
         'The Fourth Season': 'Motifs bleus quadruplés',
         'The Second Season': 'Motifs bleus doublés',
@@ -765,6 +773,7 @@ Options.Triggers.push({
       'replaceText': {
         'Aetherblight': '青の波動',
         'Blue Shockwave': '青の衝撃',
+        'Chilling Fingers': 'まとわりつく',
         'Choking Grasp': '圧し潰す',
         'Circle of Lives': '青の輪波',
         'Cold Grip': '暗き死の腕',
@@ -778,6 +787,7 @@ Options.Triggers.push({
         'Mass Macabre': '集団恐慌',
         'Memento Mori': 'メメント・モリ',
         'Muted Struggle': '叩き潰す',
+        'Necrotic Pulse': '引き裂く',
         'Neutron Ring': 'ニュートンリング',
         'Relentless Reaping': '連なる青き魂',
         'Shock(?!wave)': '放電',
@@ -785,6 +795,7 @@ Options.Triggers.push({
         'Smite of Gloom': '闇の一撃',
         'Soul Reaping': '青き魂',
         'Specter of Death': '闇の巨腕',
+        'Spreading Fear': '撒き散らす',
         'The End\'s Embrace': '導きの翼',
         'The Fourth Season': '青の式波・四重',
         'The Second Season': '青の式波・二重',
@@ -793,6 +804,7 @@ Options.Triggers.push({
     },
     {
       'locale': 'cn',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': '青之魂块',
         'Beckoning Hands': '邀死之手',
@@ -811,12 +823,13 @@ Options.Triggers.push({
         '\\(tower\\)': '(塔)',
         'Aetherblight': '青之波动',
         'Blue Shockwave': '青之冲击',
+        'Chilling Fingers': '死缠',
         'Choking Grasp': '压溃',
         'Circle of Lives': '青之环波',
         'Cold Grip': '暗之死腕',
         'Crop Rotation': '灵魂轮转',
         'Darkness of Eternity': '永远之暗',
-        'Existential Dread': '万死的憎恶',
+        'Existential Dread': '暗气流',
         'Fear of Death': '死之恐惧',
         'Fourfold Blight': '青之四重波',
         'Grand Cross': '大十字',
@@ -824,6 +837,7 @@ Options.Triggers.push({
         'Mass Macabre': '群体恐慌',
         'Memento Mori': '死亡警告',
         'Muted Struggle': '击溃',
+        'Necrotic Pulse': '撕破',
         'Neutron Ring': '中子环',
         'Relentless Reaping': '青之连魂',
         'Shock(?!wave)': '放电',
@@ -831,6 +845,7 @@ Options.Triggers.push({
         'Smite of Gloom': '黑暗一击',
         'Soul Reaping': '青魂',
         'Specter of Death': '黑暗巨腕',
+        'Spreading Fear': '散布',
         'The End\'s Embrace': '引导之翼',
         'The Fourth Season': '四重青之波潮',
         'The Second Season': '二重青之波潮',
@@ -886,6 +901,7 @@ Options.Triggers.push({
     },
     {
       'locale': 'ko',
+      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': '푸른 영혼 덩어리',
         'Beckoning Hands': '죽음으로 이끄는 손',
@@ -902,6 +918,7 @@ Options.Triggers.push({
         '\\(tower\\)': '(탑)',
         'Aetherblight': '푸른 파동',
         'Blue Shockwave': '푸른 충격',
+        'Chilling Fingers': '들러붙기',
         'Choking Grasp': '짓누르기',
         'Circle of Lives': '푸른 고리 파동',
         'Cold Grip': '검은 죽음의 팔',
@@ -915,6 +932,7 @@ Options.Triggers.push({
         'Mass Macabre': '집단 공황',
         'Memento Mori': '메멘토 모리',
         'Muted Struggle': '찍어누르기',
+        'Necrotic Pulse': '찢어버리기',
         'Neutron Ring': '중성자 고리',
         'Relentless Reaping': '연속 푸른 영혼',
         'Shock(?!wave)': '방전',
@@ -922,6 +940,7 @@ Options.Triggers.push({
         'Smite of Gloom': '어둠의 일격',
         'Soul Reaping': '푸른 영혼',
         'Specter of Death': '거대한 어둠의 팔',
+        'Spreading Fear': '퍼뜨리기',
         'The End\'s Embrace': '인도의 날개',
         'The Fourth Season': '푸른 파동식: 사중',
         'The Second Season': '푸른 파동식: 이중',
