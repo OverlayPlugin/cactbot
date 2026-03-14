@@ -8,6 +8,8 @@ import ZoneId from '../../../../../resources/zone_id';
 import { RaidbossData } from '../../../../../types/data';
 import { TriggerSet } from '../../../../../types/trigger';
 
+// TODO: Verify EU/JP strategy configurations and Emergency Meeting (NA) strategy
+// TODO: Replication 4 strategy use for stack/defamation bait locations?
 // TODO: Twisted Vision 5 Tower spots
 // TODO: Twisted Vision 5 Lindwurm\'s Stone III (Earth Tower) locations
 
