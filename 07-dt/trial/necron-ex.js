@@ -901,7 +901,6 @@ Options.Triggers.push({
     },
     {
       'locale': 'ko',
-      'missingTranslations': true,
       'replaceSync': {
         'Azure Aether': '푸른 영혼 덩어리',
         'Beckoning Hands': '죽음으로 이끄는 손',
@@ -916,6 +915,7 @@ Options.Triggers.push({
         '\\(puddles?\\)': '(장판)',
         '\\(spread\\)': '(산개)',
         '\\(tower\\)': '(탑)',
+        'Add Spawn': '쫄 등장',
         'Aetherblight': '푸른 파동',
         'Blue Shockwave': '푸른 충격',
         'Chilling Fingers': '들러붙기',

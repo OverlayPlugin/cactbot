@@ -38,6 +38,7 @@ Options.Triggers.push({
       id: 'curtainCallStrat',
       name: {
         en: 'Curtain Call Strategy',
+        ko: '세포 부착: 말기 전략',
       },
       type: 'select',
       options: {
@@ -45,6 +46,10 @@ Options.Triggers.push({
           'North/Side Relative Strategy: North players go Northeast/Northwest, South players go relative to side.':
             'ns',
           'No strategy: Calls both safe spots.': 'none',
+        },
+        ko: {
+          '북쪽/양 옆 상대 전략: 북쪽 플레이어는 북동/북서, 남쪽 플레이어는 양 옆 기준으로 이동': 'ns',
+          '전략 없음: 안전한 위치 둘 다 알림': 'none',
         },
       },
       default: 'none',
@@ -539,9 +544,11 @@ Options.Triggers.push({
         northwest: Outputs.northwest,
         safeSpot: {
           en: '${safe} (later)',
+          ko: '${safe} (나중에)',
         },
         safeDirs: {
           en: '${dir1}/${dir2}',
+          ko: '${dir1}/${dir2}',
         },
       },
     },
@@ -613,9 +620,11 @@ Options.Triggers.push({
         stackOnTarget: Outputs.stackOnPlayer,
         stackSafe: {
           en: '${stack} ${safe}',
+          ko: '${stack} ${safe}',
         },
         stackDirs: {
           en: '${dir1}/${dir2}',
+          ko: '${dir1}/${dir2}',
         },
       },
     },
@@ -662,9 +671,11 @@ Options.Triggers.push({
         busterOnYou: Outputs.tankBusterOnYou,
         busterSafe: {
           en: '${buster} + ${safe}',
+          ko: '${buster} + ${safe}',
         },
         busterDirs: {
           en: '${dir1}/${dir2}',
+          ko: '${dir1}/${dir2}',
         },
       },
     },
@@ -1679,6 +1690,7 @@ Options.Triggers.push({
         breakChains: Outputs.breakChains,
         safeSpots: {
           en: '${dir1}/${dir2}',
+          ko: '${dir1}/${dir2}',
         },
         avoidBlobs: {
           en: 'Avoid Blobs',
@@ -1750,9 +1762,11 @@ Options.Triggers.push({
         northwest: Outputs.northwest,
         avoidBlobs: {
           en: 'Avoid Blobs',
+          ko: '살점 피하기',
         },
         safeSpots: {
           en: '${dir1}/${dir2}',
+          ko: '${dir1}/${dir2}',
         },
       },
     },
@@ -1777,9 +1791,11 @@ Options.Triggers.push({
       outputStrings: {
         northeast: {
           en: 'Stack NE/Spread NW (later)',
+          ko: '쉐어 북동쪽/산개 북서쪽 (나중에)',
         },
         northwest: {
           en: 'Spread NE/Stack NW (later)',
+          ko: '산개 북동쪽/쉐어 북서쪽 (나중에)',
         },
       },
     },
@@ -1879,9 +1895,11 @@ Options.Triggers.push({
         right: Outputs.right,
         northeastKnockback: {
           en: 'Knockback from Northeast',
+          ko: '북동쪽에서 넉백',
         },
         northwestKnockback: {
           en: 'Knockback from Northwest',
+          ko: '북서쪽에서 넉백',
         },
         northeast: Outputs.dirNE,
         northwest: Outputs.dirNW,
@@ -1889,9 +1907,11 @@ Options.Triggers.push({
         stackOnPlayer: Outputs.stackOnPlayer,
         stackDir: {
           en: '${stack} ${dir}',
+          ko: '${stack} ${dir}',
         },
         stackThenDodge: {
           en: '${stack} => ${dodge}',
+          ko: '${stack} => ${dodge}',
         },
       },
     },
@@ -1931,18 +1951,22 @@ Options.Triggers.push({
         right: Outputs.right,
         northeastKnockback: {
           en: 'Knockback from Northeast',
+          ko: '북동쪽에서 넉백',
         },
         northwestKnockback: {
           en: 'Knockback from Northwest',
+          ko: '북서쪽에서 넉백',
         },
         northeast: Outputs.dirNE,
         northwest: Outputs.dirNW,
         spread: Outputs.spread,
         spreadDir: {
           en: 'Spread ${dir}',
+          ko: '산개 ${dir}',
         },
         spreadThenDodge: {
           en: '${spread} => ${dodge}',
+          ko: '${spread} => ${dodge}',
         },
       },
     },
@@ -2032,6 +2056,7 @@ Options.Triggers.push({
       outputStrings: {
         northwestKnockback: {
           en: 'Knockback from Northwest',
+          ko: '북서쪽에서 넉백',
         },
       },
     },
@@ -2049,6 +2074,7 @@ Options.Triggers.push({
       outputStrings: {
         northeastKnockback: {
           en: 'Knockback from Northeast',
+          ko: '북동쪽에서 넉백',
         },
       },
     },
@@ -2096,7 +2122,6 @@ Options.Triggers.push({
       },
       'replaceText': {
         '--bind--': '--속박--',
-        '--knockback--': '--넉백--',
         '--untargetable\\?--': '--타겟 불가능?--',
         '--clones move': '--분신 이동',
         '--clones x': '--분신 x',
