@@ -10,8 +10,6 @@ import { TriggerSet } from '../../../../../types/trigger';
 
 // TODO: Verify EU/JP strategy configurations and Emergency Meeting (NA) strategy
 // TODO: Replication 4 strategy use for stack/defamation bait locations?
-// TODO: Twisted Vision 5 Tower spots
-// TODO: Twisted Vision 5 Lindwurm\'s Stone III (Earth Tower) locations
 
 export type Phase =
   | 'doorboss'
@@ -93,8 +91,11 @@ export interface Data extends RaidbossData {
   replication4BossCloneDirNumPlayers: { [dirNum: number]: string };
   replication4PlayerOrder: string[];
   replication4AbilityOrder: string[];
+  cosmicKissPattern: string[];
   hasLightResistanceDown: boolean;
   twistedVision4MechCounter: number;
+  myCosmicKiss?: string;
+  myPlatform?: 'east' | 'west';
   doomPlayers: string[];
   hasPyretic: boolean;
   idyllicVision8SafeSides?: 'frontBack' | 'sides';
@@ -342,6 +343,7 @@ const triggerSet: TriggerSet<Data> = {
     replication4BossCloneDirNumPlayers: {},
     replication4PlayerOrder: [],
     replication4AbilityOrder: [],
+    cosmicKissPattern: [],
     hasLightResistanceDown: false,
     twistedVision4MechCounter: 0,
     doomPlayers: [],
@@ -5558,6 +5560,53 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S CombatantMemory Tower Collect',
+      // Towers spawn in these Locations:
+      // (81.7574, 95.7574)  (90.2426, 95.7574)   |   (109.7574, 95.7574)  (118.2426, 95.7574)
+      // (81.7574, 104.2426) (90.2426, 104.2426)  |   (109.7574, 104.2426) (118.2426, 104.2426)
+      // The patterns will be the same on both platforms (not mirrored)
+      // There are only two patterns.
+      // Earth/Wind are North, Fire/Dark are South
+      // Wind/Dark and Fire/Earth are diagonal from each other on each platform
+      // So if we know where one tower is, we know where all are
+      // Wind:  1EBF25
+      // Dark:  1EBF26
+      // Earth: 1EBF27
+      // Fire:  1EBF28
+      type: 'CombatantMemory',
+      netRegex: {
+        change: 'Add',
+        pair: [{ key: 'BNpcID', value: ['1EBF25', '1EBF26', '1EBF27', '1EBF28'] }],
+        capture: true,
+      },
+      suppressSeconds: 9999,
+      run: (data, matches) => {
+        const x = parseFloat(matches.pairPosX ?? '0');
+        const towerMap = {
+          '1EBF25': 'wind',
+          '1EBF26': 'dark',
+          '1EBF27': 'earth',
+          '1EBF28': 'fire',
+          'unknown': 'unknown',
+        };
+        const pattern1 = ['earth', 'wind', 'dark', 'fire'];
+        const pattern2 = ['wind', 'earth', 'fire', 'dark'];
+        const bnpcid = matches.pairBNpcID ?? 'unknown';
+        const kind = towerMap[bnpcid as keyof typeof towerMap];
+        if (kind === 'earth' || kind === 'dark') {
+          if ((x > 81 && x < 83) || (x > 109 && x < 111))
+            data.cosmicKissPattern = pattern1;
+          else
+            data.cosmicKissPattern = pattern2;
+        } else if (kind === 'wind' || kind === 'fire') {
+          if ((x > 81 && x < 83) || (x > 109 && x < 111))
+            data.cosmicKissPattern = pattern2;
+          else
+            data.cosmicKissPattern = pattern1;
+        }
+      },
+    },
+    {
       id: 'R12S Arcadian Arcanum',
       // Players hit will receive 1044 Light Resistance Down II debuff
       type: 'StartsUsing',
@@ -5934,6 +5983,30 @@ const triggerSet: TriggerSet<Data> = {
       },
     },
     {
+      id: 'R12S Cosmic Kiss Tower Collect',
+      // Map the Cosmic Kiss player is hit by back to the tower type
+      // Actors will be at the same locations as the towers
+      type: 'Ability',
+      netRegex: { id: 'B4F4', source: 'Lindwurm', capture: true },
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 0.1, // Need to delay for position data to update
+      run: (data, matches) => {
+        const actor = data.actorPositions[matches.sourceId];
+        const towers = data.cosmicKissPattern;
+        if (actor === undefined || towers.length !== 4)
+          return;
+
+        const x = actor.x;
+        const y = actor.y;
+
+        if ((x > 81 && x < 83) || (x > 109 && x < 111)) {
+          data.myCosmicKiss = data.cosmicKissPattern[y < center.y ? 0 : 2];
+        } else if ((x > 89 && x < 91) || (x > 117 && x < 119)) {
+          data.myCosmicKiss = data.cosmicKissPattern[y < center.y ? 1 : 3];
+        }
+      },
+    },
+    {
       id: 'R12S Hot-blooded Collect',
       // Player can still cast, but shouldn't move for 5s duration
       type: 'GainsEffect',
@@ -5952,7 +6025,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       id: 'R12S Idyllic Dream Lindwurm\'s Stone III',
-      // TODO: Get their target locations and output avoid
       // 5s castTime
       type: 'StartsUsing',
       netRegex: { id: 'B4F7', source: 'Lindwurm', capture: true },
@@ -5960,16 +6032,62 @@ const triggerSet: TriggerSet<Data> = {
         // Avoid simultaneous trigger for Pyretic player as they wouldn't be at the earth location
         if (data.hasPyretic)
           return false;
-        // Handle this in Doom clense instead
+        // Handle this in Doom cleanse instead
         if (data.CanCleanse())
           return false;
+        return true;
       },
       durationSeconds: (_data, matches) => parseFloat(matches.castTime),
       suppressSeconds: 1,
-      infoText: (_data, _matches, output) => output.avoidEarthTower!(),
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R12S Idyllic Dream Lindwurm's Stone III: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        const x = me.PosX;
+        if (x < center.x)
+          data.myPlatform = 'east';
+        else
+          data.myPlatform = 'west';
+      },
+      infoText: (data, _matches, output) => {
+        const pattern = data.cosmicKissPattern;
+        const platform = data.myPlatform;
+        if (pattern.length !== 4 || platform === undefined)
+          return output.avoidEarthTower!({ dir: output.south!() });
+
+        if (
+          (pattern[0] === 'earth' && platform === 'west') ||
+          (pattern[1] === 'earth' && platform === 'east')
+        )
+          return output.avoidEarthTower!({ dir: output.in!() });
+
+        if (
+          (pattern[0] === 'earth' && platform === 'east') ||
+          (pattern[1] === 'earth' && platform === 'west')
+        )
+          return output.avoidEarthTower!({ dir: output.southIn!() });
+        return output.text!();
+      },
       outputStrings: {
+        text: {
+          en: 'Missing',
+        },
+        south: Outputs.south,
+        in: Outputs.in,
+        southIn: {
+          en: 'South + In',
+        },
         avoidEarthTower: {
-          en: 'Avoid Earth Tower',
+          en: '${dir} (Avoid Earth Tower)',
         },
       },
     },
@@ -5987,25 +6105,79 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.CanCleanse(),
       delaySeconds: 0.1,
       suppressSeconds: 1,
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R12S Doom Cleanse: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        const x = me.PosX;
+        if (x < center.x)
+          data.myPlatform = 'east';
+        else
+          data.myPlatform = 'west';
+      },
       infoText: (data, _matches, output) => {
+        const pattern = data.cosmicKissPattern;
+        const platform = data.myPlatform;
+        let dir;
+        if (pattern.length !== 4 || platform === undefined)
+          dir = 'south';
+        else if (
+          (pattern[0] === 'earth' && platform === 'west') ||
+          (pattern[1] === 'earth' && platform === 'east')
+        )
+          dir = 'in';
+        else if (
+          (pattern[0] === 'earth' && platform === 'east') ||
+          (pattern[1] === 'earth' && platform === 'west')
+        )
+          dir = 'southIn';
+        if (dir === undefined)
+          dir = 'south';
+
         const players = data.doomPlayers;
+        if (players.length > 2) {
+          // Mechanic was messed up, but recoverable
+          // Pyretic player shouldn't move and shouldn't need to avoid earth
+          if (data.hasPyretic)
+            return output.cleanseDooms!();
+          return output.mech!({
+            cleanse: output.cleanseDooms!(),
+            avoid: output.avoidEarthTower!({ dir: output[dir]!() }),
+          });
+        }
         if (players.length === 2) {
           const target1 = data.party.member(data.doomPlayers[0]);
           const target2 = data.party.member(data.doomPlayers[1]);
+          if (data.hasPyretic)
+            return output.cleanseDoom2!({ target1: target1, target2: target2 });
           return output.mech!({
             cleanse: output.cleanseDoom2!({ target1: target1, target2: target2 }),
-            avoid: output.avoidEarthTower!(),
+            avoid: output.avoidEarthTower!({ dir: output[dir]!() }),
           });
         }
         if (players.length === 1) {
           const target1 = data.party.member(data.doomPlayers[0]);
+          if (data.hasPyretic)
+            return output.cleanseDoom!({ target: target1 });
           return output.mech!({
             cleanse: output.cleanseDoom!({ target: target1 }),
-            avoid: output.avoidEarthTower!(),
+            avoid: output.avoidEarthTower!({ dir: output[dir]!() }),
           });
         }
       },
       outputStrings: {
+        cleanseDooms: {
+          en: 'Cleanse Doom(s)',
+        },
         cleanseDoom: {
           en: 'Cleanse ${target}',
           de: 'Reinige ${target}',
@@ -6017,8 +6189,13 @@ const triggerSet: TriggerSet<Data> = {
         cleanseDoom2: {
           en: 'Cleanse ${target1}/${target2}',
         },
+        south: Outputs.south,
+        in: Outputs.in,
+        southIn: {
+          en: 'South + In',
+        },
         avoidEarthTower: {
-          en: 'Avoid Earth Tower',
+          en: '${dir} (Avoid Earth Tower)',
         },
         mech: {
           en: '${cleanse} + ${avoid}',
@@ -6034,13 +6211,53 @@ const triggerSet: TriggerSet<Data> = {
       condition: (data) => data.CanCleanse(),
       delaySeconds: 0.5, // Time until after Doom was expected
       suppressSeconds: 9999,
+      promise: async (data) => {
+        const combatants = (await callOverlayHandler({
+          call: 'getCombatants',
+          names: [data.me],
+        })).combatants;
+        const me = combatants[0];
+        if (combatants.length !== 1 || me === undefined) {
+          console.error(
+            `R12S Doom Cleanse: Wrong combatants count ${combatants.length}`,
+          );
+          return;
+        }
+
+        const x = me.PosX;
+        if (x < center.x)
+          data.myPlatform = 'east';
+        else
+          data.myPlatform = 'west';
+      },
       infoText: (data, _matches, output) => {
-        if (data.doomPlayers[0] === undefined)
-          return output.avoidEarthTower!();
+        if (data.doomPlayers[0] === undefined) {
+          const pattern = data.cosmicKissPattern;
+          const platform = data.myPlatform;
+          if (pattern.length !== 4 || platform === undefined)
+            return output.avoidEarthTower!({ dir: output.south!() });
+
+          if (
+            (pattern[0] === 'earth' && platform === 'west') ||
+            (pattern[1] === 'earth' && platform === 'east')
+          )
+            return output.avoidEarthTower!({ dir: output.in!() });
+
+          if (
+            (pattern[0] === 'earth' && platform === 'east') ||
+            (pattern[1] === 'earth' && platform === 'west')
+          )
+            return output.avoidEarthTower!({ dir: output.southIn!() });
+        }
       },
       outputStrings: {
+        south: Outputs.south,
+        in: Outputs.in,
+        southIn: {
+          en: 'South + In',
+        },
         avoidEarthTower: {
-          en: 'Avoid Earth Tower',
+          en: '${dir} (Avoid Earth Tower)',
         },
       },
     },
