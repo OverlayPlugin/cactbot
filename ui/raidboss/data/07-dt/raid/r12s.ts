@@ -6075,12 +6075,8 @@ const triggerSet: TriggerSet<Data> = {
           (pattern[1] === 'earth' && platform === 'west')
         )
           return output.avoidEarthTower!({ dir: output.southIn!() });
-        return output.text!();
       },
       outputStrings: {
-        text: {
-          en: 'Missing',
-        },
         south: Outputs.south,
         in: Outputs.in,
         southIn: {
