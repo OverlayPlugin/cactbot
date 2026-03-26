@@ -6191,7 +6191,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'South + In',
         },
         avoidEarthTower: {
-          en: '${dir} (Avoid Earth Tower)',
+          en: '${dir}',
         },
         mech: {
           en: '${cleanse} + ${avoid}',
