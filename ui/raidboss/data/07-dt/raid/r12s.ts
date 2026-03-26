@@ -6269,7 +6269,7 @@ const triggerSet: TriggerSet<Data> = {
       condition: Conditions.targetIsYou(),
       delaySeconds: (_data, matches) => parseFloat(matches.duration) - 5.3,
       infoText: (data, matches, output) => {
-        if (matches.id === '129E') {
+        if (matches.effectId === '129E') {
           switch (data.triggerSetConfig.portentStrategy) {
             case 'dn':
               return output.farOnYouWindDN!();
