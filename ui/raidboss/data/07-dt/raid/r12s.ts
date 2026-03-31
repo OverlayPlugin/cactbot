@@ -3541,18 +3541,6 @@ const triggerSet: TriggerSet<Data> = {
         defamationOnYouNukemaruNW: {
           en: 'Defamation on YOU, Go ${strat}',
         },
-        baitFarDefamation: {
-          en: 'Bait Far Defamation',
-        },
-        baitFarDefamationDN: {
-          en: 'Bait Far Defamation (Go ${strat})',
-        },
-        baitFarDefamationBanana: {
-          en: 'Bait Far Defamation (Go ${strat})',
-        },
-        baitFarDefamationNukemaru: {
-          en: 'Bait Far Defamation (Go ${strat})',
-        },
         baitProtean: {
           en: 'Bait Protean from Boss',
         },
