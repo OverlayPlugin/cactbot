@@ -302,7 +302,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'select',
       options: {
         en: {
-          'DN Strategy: Dark N Hitbox, Wind Middle Hitbox, Earth/Fire N/S Max Melee': 'dn',
+          'DN Strategy: Dark N Hitbox, Wind Middle Hitbox, Earth/Fire Melee N of Platform (Between Dark/Wind), Fire/Earth Range S Edge of Platform': 'dn',
           'Zenith Strategy: Wind N Max Melee, Earth/Dark Middle (Lean North), Fire S Max Melee':
             'zenith',
           'Nukemaru Strategy: Near S (corner of numbered marker), Far S on Boss Hitbox, Earth/Fire Melee S Max Melee, Fire/Earth Range N of Platform':
@@ -6363,7 +6363,7 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         baitFireDN: {
-          en: 'Bait Cone N/S Max Melee',
+          en: 'Bait Cone N Center Below Dark/S Center',
         },
         baitFireZenith: {
           en: 'Bait Cone S, Max Melee',
@@ -6375,7 +6375,7 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Fire: Bait Cone',
         },
         baitEarthDN: {
-          en: 'Bait Cone N/S Max Melee',
+          en: 'Bait Cone N Center Below Dark/S Center',
         },
         baitEarthZenith: {
           en: 'Bait Cone Middle, Max Melee (Lean North)',
