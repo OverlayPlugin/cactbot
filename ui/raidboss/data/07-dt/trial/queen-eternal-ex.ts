@@ -608,7 +608,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '西側にさんかいして、線をのばす',
           cn: '左分散, 拉线至变色',
           ko: '서쪽 산개, 선 늘이기',
-          tc: '左分散, 拉線至變色',
+          tc: '西分散, 拉線至變色',
         },
         east: {
           en: 'Spread East, stretch tethers',
@@ -617,7 +617,7 @@ const triggerSet: TriggerSet<Data> = {
           ja: '東側にさんかいして、線をのばす',
           cn: '右分散, 拉线至变色',
           ko: '동쪽 산개, 선 늘이기',
-          tc: '右分散, 拉線至變色',
+          tc: '東分散, 拉線至變色',
         },
       },
     },
@@ -981,37 +981,36 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Ice Pillar': '冰柱',
         'Queen Eternal': '永恆女王',
         'Virtual Boulder': '岩石',
       },
       'replaceText': {
-        // '\\(Dorito Stack\\)': '', // FIXME '(红三角集合)'
-        // '\\(Flares/Stack\\)': '', // FIXME '(核爆/集合)'
-        // '\\(Knockback\\)': '', // FIXME '(击退)'
-        // '\\(big\\)': '', // FIXME '(大)'
-        // '\\(cast\\)': '', // FIXME '(咏唱)'
-        // '\\(damage\\)': '', // FIXME '(伤害)'
-        // '\\(front\\)': '', // FIXME '(前)'
-        // '\\(left tower\\)': '', // FIXME '(左塔)'
-        // '\\(motion\\)': '', // FIXME '(行动)'
-        // '\\(orb\\)': '', // FIXME '(球)'
-        // '\\(platforms\\)': '', // FIXME '(平台)'
-        // '\\(right tower\\)': '', // FIXME '(右塔)'
-        // '\\(rotate\\)': '', // FIXME '(转)'
-        // '\\(spread\\)': '', // FIXME '(分散)'
+        '\\(Dorito Stack\\)': '(紅三角集合)',
+        '\\(Flares/Stack\\)': '(核爆/集合)',
+        '\\(Knockback\\)': '(擊退)',
+        '\\(big\\)': '(大)',
+        '\\(cast\\)': '(詠唱)',
+        '\\(damage\\)': '(傷害)',
+        '\\(front\\)': '(前)',
+        '\\(left tower\\)': '(左塔)',
+        '\\(motion\\)': '(行動)',
+        '\\(orb\\)': '(球)',
+        '\\(platforms\\)': '(平台)',
+        '\\(right tower\\)': '(右塔)',
+        '\\(rotate\\)': '(轉)',
+        '\\(spread\\)': '(分散)',
         'Absolute Authority': '絕對君權',
         'Aeroquell': '風爆',
         'Aethertithe': '乙太稅',
         'Atomic Ray': '原子射線',
-        'Authority Eternal': '絕對君權',
+        'Authority Eternal': '永恆君權',
         'Burst': '爆炸',
         'Coronation': '終端發射',
         'Dimensional Distortion': '空間扭曲',
         'Divide and Conquer': '分治法',
-        'Drear Rising': '陰郁風暴',
+        'Drear Rising': '陰鬱風暴',
         'Dying Memory': '垂死的記憶',
         'Gravitational Empire': '重力帝國',
         'Gravity Pillar': '重力之柱',
@@ -1022,10 +1021,10 @@ const triggerSet: TriggerSet<Data> = {
         'Laws of Wind': '風之律法',
         'Legitimate Force': '合法武力',
         'Meteor Impact': '隕石衝擊',
-        'Preservation': '絕對保全',
+        'Preservation': '絕對永存',
         'Prosecution of War': '訴諸武力',
         'Radical Shift': '激進切換',
-        'Raised Tribute': '橫征暴斂',
+        'Raised Tribute': '橫徵暴斂',
         'Retribute': '俱是君恩',
         'Royal Banishment': '放逐射線',
         'Royal Domain': '王土',
@@ -1035,9 +1034,9 @@ const triggerSet: TriggerSet<Data> = {
         'Virtual Shift': '虛景切換',
         'Weighty Blow': '重力炸裂',
         'World Shatter': '世界破碎',
-        // 'Wind of Change': '', // FIXME '左/右风'
-        // 'Right(?! )': '', // FIXME '右'
-        // 'Left(?! )': '', // FIXME '左'
+        'Wind of Change': '左/右風',
+        'Right(?! )': '右',
+        'Left(?! )': '左',
       },
     },
     {

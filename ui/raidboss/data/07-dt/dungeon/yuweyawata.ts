@@ -371,7 +371,6 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
       'replaceSync': {
         'Lindblum Zaghnal': '林德布魯姆扎古納魯',
         'Lunipyati': '魯尼皮亞提',
@@ -379,13 +378,13 @@ const triggerSet: TriggerSet<Data> = {
         'Preserved Soul': '站員的亡魂',
       },
       'replaceText': {
-        // '\\(arcs\\)': '', // FIXME '(弧线)'
-        // '\\(big\\)': '', // FIXME '(大)'
-        // '\\(multiple\\)': '', // FIXME '(多重)'
-        // '\\(spiral\\)': '', // FIXME '(螺旋)'
-        // '--adds 1 targetable--': '', // FIXME '--小怪 1 可选中--'
-        // '--adds 2 targetable--': '', // FIXME '--小怪 2 可选中--'
-        // '--adds 3 targetable--': '', // FIXME '--小怪 3 可选中--'
+        '\\(arcs\\)': '(弧線)',
+        '\\(big\\)': '(大)',
+        '\\(multiple\\)': '(多重)',
+        '\\(spiral\\)': '(螺旋)',
+        '--adds 1 targetable--': '--小怪 1 可選中--',
+        '--adds 2 targetable--': '--小怪 2 可選中--',
+        '--adds 3 targetable--': '--小怪 3 可選中--',
         'Beastly Roar': '殘虐咆哮',
         'Bloodburst': '血爆',
         'Boulder Dance': '舞動的岩石',
