@@ -63,7 +63,7 @@ const triggerSet: TriggerSet<Data> = {
           fr: 'Les troupes de Tuligora sont apparues, tuez-les dans l\'ordre !',
           cn: '图拉尔蔓德拉战队 已生成，按顺序击杀！',
           ko: '만드라즈 등장, 순서대로 잡기!',
-          tc: '圖拉爾蔓德拉戰隊 已生成，按順序擊殺！',
+          tc: '圖拉爾曼德拉草戰隊 已生成，按順序擊殺！',
         },
       },
     },
@@ -139,8 +139,10 @@ const triggerSet: TriggerSet<Data> = {
     },
     {
       'locale': 'tc',
-      'missingTranslations': true,
-      'replaceSync': {},
+      'replaceSync': {
+        'Bull Apollyon': '莽撞亞巴頓',
+        'Golden Molter': '黃金蛻皮蜥',
+      },
     },
     {
       'locale': 'ko',
