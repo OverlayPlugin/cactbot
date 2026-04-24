@@ -860,6 +860,7 @@ export default class PartyTracker {
   allianceNames_: string[] = [];
   allianceIds_: string[] = [];
   nameToRole_: { [name: string]: Role } = {};
+  nameToJob_: { [name: string]: Job } = {};
   idToName_: { [id: string]: string } = {};
   roleToPartyNames_: Record<Role, string[]> = emptyRoleToPartyNames();
 
@@ -877,6 +878,7 @@ export default class PartyTracker {
       const role = Util.jobToRole(jobName);
       this.idToName_[p.id] = p.name;
       this.nameToRole_[p.name] = role;
+      this.nameToJob_[p.name] = jobName;
       if (p.inParty) {
         this.partyIds_.push(p.id);
         this.partyNames_.push(p.name);
@@ -893,6 +895,7 @@ export default class PartyTracker {
     this.allianceNames_ = [];
     this.allianceIds_ = [];
     this.nameToRole_ = {};
+    this.nameToJob_ = {};
     this.idToName_ = {};
 
     // role -> [names] but only for party
@@ -948,6 +951,12 @@ export default class PartyTracker {
     return this.isRole(name, 'dps');
   }
 
+  // returns true if the named player in your alliance is a limited job
+  isLimitedJob(name: string): boolean {
+    const job = this.jobName(name);
+    return job !== undefined && Util.isLimitedJob(job);
+  }
+
   // returns true if the named player is in your immediate party
   inParty(name: string): boolean {
     return this.partyNames.includes(name);
@@ -984,13 +993,7 @@ export default class PartyTracker {
 
   // returns the job name of the specified party member
   jobName(name: string): Job | undefined {
-    const partyIndex = this.partyNames.indexOf(name);
-    if (partyIndex < 0)
-      return;
-    const job = this.details[partyIndex]?.job;
-    if (job === undefined)
-      return;
-    return Util.jobEnumToJob(job);
+    return this.nameToJob_[name];
   }
 
   nameFromId(id: string): string | undefined {

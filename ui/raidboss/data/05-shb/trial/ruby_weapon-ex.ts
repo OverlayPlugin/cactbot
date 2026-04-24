@@ -260,7 +260,7 @@ const triggerSet: TriggerSet<Data> = {
       type: 'StartsUsing',
       netRegex: { source: 'Raven\'s Image', id: '4AFF' },
       condition: (data, matches) => {
-        if (data.role === 'dps' && data.job !== 'BLU')
+        if (data.role === 'dps' && !data.party.isLimitedJob(data.me))
           return false;
         const myColor = data.colors?.[data.me];
         if (myColor !== undefined && myColor === data.colors?.[matches.target])
@@ -556,7 +556,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'RubyEx Mark II Magitek Comet Tank',
       type: 'Ability',
       netRegex: { source: 'The Ruby Weapon', id: '4AB6', capture: false },
-      condition: (data) => data.role === 'tank' || data.job === 'BLU',
+      condition: (data) => data.role === 'tank' || data.party.isLimitedJob(data.me),
       delaySeconds: 11.5,
       alarmText: (_data, _matches, output) => output.text!(),
       outputStrings: {

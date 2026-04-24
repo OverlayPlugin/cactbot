@@ -135,7 +135,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'A8S Execution',
       type: 'Ability',
       netRegex: { source: 'Onslaughter', id: '1632', capture: false },
-      condition: (data) => data.role === 'dps' || data.job === 'BLU',
+      condition: (data) => data.role === 'dps' || data.party.isLimitedJob(data.me),
       infoText: (_data, _matches, output) => output.text!(),
       outputStrings: {
         text: {
@@ -652,6 +652,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'A8S Verdict Max HP Blu Devour',
       type: 'GainsEffect',
       netRegex: { effectId: '407' },
+      // This trigger is intended only for Blue Mage, so do not use `data.party.isLimitedJob` here.
       condition: (data, matches) => data.me === matches.target && data.job === 'BLU',
       delaySeconds: 27,
       alarmText: (_data, _matches, output) => output.text!(),

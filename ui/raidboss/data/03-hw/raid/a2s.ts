@@ -60,7 +60,7 @@ const triggerSet: TriggerSet<Data> = {
       id: 'A2S Prey',
       type: 'Ability',
       netRegex: { source: 'Magitek Gobwidow G-IX', id: '1413' },
-      condition: (data) => data.role === 'healer' || data.job === 'BLU',
+      condition: (data) => data.role === 'healer' || data.party.isLimitedJob(data.me),
       suppressSeconds: 10,
       infoText: (data, matches, output) =>
         output.text!({ player: data.party.member(matches.target) }),
