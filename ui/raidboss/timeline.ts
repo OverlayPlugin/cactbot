@@ -145,6 +145,7 @@ export class Timeline {
   public syncStarts: Sync[];
   public syncEnds: Sync[];
   public forceJumps: Sync[];
+  public labelToTime: { [name: string]: number };
 
   public timebase = 0;
 
@@ -196,6 +197,8 @@ export class Timeline {
     this.syncEnds = [];
     // Sorted by event occurrence time.
     this.forceJumps = [];
+    // A set of label names to their sync times
+    this.labelToTime = {};
 
     this.LoadFile(text, triggers, styles);
     this.Stop();
@@ -216,6 +219,7 @@ export class Timeline {
     this.syncStarts = parsed.syncStarts;
     this.syncEnds = parsed.syncEnds;
     this.forceJumps = parsed.forceJumps;
+    this.labelToTime = parsed.labelToTime;
   }
 
   public Stop(): void {
@@ -331,6 +335,15 @@ export class Timeline {
         break;
       }
     }
+  }
+
+  public JumpTo(label: string, currentTime: number): void {
+    const time = this.labelToTime[label];
+
+    if (time === undefined)
+      return;
+
+    this.SyncTo(time, currentTime);
   }
 
   private _AdvanceTimeTo(fightNow: number): void {
@@ -791,6 +804,13 @@ export class TimelineController {
   public IsReady(): boolean {
     return this.timelines !== null;
   }
+
+  public CurrentTime(): number {
+    return this.activeTimeline?.timebase ?? 0;
+  }
+  public JumpTo(label: string, currentTime: number): void {
+    this.activeTimeline?.JumpTo(label, currentTime);
+  }
 }
 
 export class TimelineLoader {
@@ -822,5 +842,12 @@ export class TimelineLoader {
 
   public StopCombat(): void {
     this.timelineController.SetInCombat(false);
+  }
+
+  public CurrentTime(): number {
+    return this.timelineController.CurrentTime();
+  }
+  public JumpTo(label: string, currentTime: number): void {
+    this.timelineController.JumpTo(label, currentTime);
   }
 }
