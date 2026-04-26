@@ -1,0 +1,685 @@
+### SAN D'ORIA: THE SECOND WALK
+# ZoneId: 1304
+
+hideall "--Reset--"
+hideall "--sync--"
+
+0.0 "--Reset--" ActorControl { command: "4000000F" } window 0,1000000 jump 0
+
+# .*is no longer sealed
+0.0 "--Reset--" SystemLogMessage { id: "7DE" } window 0,1000000 jump 0
+
+#~~~~~~~~~~~~~~~~~~#
+# Faithbound Kirin #
+#~~~~~~~~~~~~~~~~~~#
+
+# -ic "Alxaal"
+# -ii ADCD
+
+# The Highland Battlefield will be sealed off
+10000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "148C" } window 10000,1
+10007.2 "--sync--" StartsUsing { id: "ADCA", source: "Faithbound Kirin" } window 10007.4,10
+10012.1 "Stonega IV" Ability { id: "ADCA", source: "Faithbound Kirin" }
+
+# Wrought Arms 1 (Tutorial)
+10022.8 "Wrought Arms" Ability { id: "AD91", source: "Faithbound Kirin" }
+10033.7 "Synchronized Strike" Ability { id: "AD95", source: "Faithbound Kirin" }
+10034.4 "--sync--" Ability { id: "AD96", source: "Faithbound Kirin" }
+10038.8 "Synchronized Smite" Ability { id: ["AD9B", "AD9C"], source: "Sculpted Arm" }
+10045.8 "Synchronized Strike" Ability { id: "AD95", source: "Faithbound Kirin" }
+10046.5 "--sync--" Ability { id: "AD96", source: "Faithbound Kirin" }
+10050.9 "Synchronized Smite" Ability { id: ["AD9B", "AD9C"], source: "Sculpted Arm" }
+10061.7 "Crimson Riddle" Ability { id: ["AFF4", "AFF5"], source: "Faithbound Kirin" }
+10068.8 "Crimson Riddle" Ability { id: ["AFF4", "AFF5"], source: "Faithbound Kirin" }
+
+# Shijin Summoning
+#
+# The Combatants get added at the start of the fight, so we can't sync to
+# the AddedCombatant line. Additionally, the summons do not appear to "cast"
+# actions, so we can't sync to the first cast ability they use.
+10083.0 "Summon Shijin" Ability { id: "AD7E", source: "Faithbound Kirin" }
+10085.0 "--sync--" GameLog { code: "0044", line: "O Suzaku, conjure your infernal flames!" } jump "kirin-shijin-suzaku"
+10085.0 "--sync--" GameLog { code: "0044", line: "O Genbu, entomb in rock and earth!" } jump "kirin-shijin-genbu"
+
+# Sunbound Suzaku
+11000.0 label "kirin-shijin-suzaku"
+11007.2 "Sun Powder" Ability { id: "AD89", source: "Sunbound Suzaku" }
+11015.2 "Vermilion Flight" Ability { id: "AD8A", source: "Sunbound Suzaku" }
+11018.3 "Arm of Purgatory" #Ability { id: "AEFC", source: "Ball of Fire" }
+11018.3 "Arm of Purgatory" #Ability { id: "AEFC", source: "Ball of Fire" }
+11018.7 "Vermilion Flight" Ability { id: "AEFB", source: "Sunbound Suzaku" }
+11018.7 "Arm of Purgatory" Ability { id: "AEFA", source: "Sunbound Suzaku" }
+11022.6 "Sun Powder" Ability { id: "AD89", source: "Sunbound Suzaku" }
+11030.3 "Stonega III" Ability { id: "B079", source: "Faithbound Kirin" }
+11030.5 "Vermilion Flight" Ability { id: "AD8A", source: "Sunbound Suzaku" }
+11033.6 "Arm of Purgatory" Ability { id: "AEFC", source: "Ball of Fire" }
+11033.9 "Vermilion Flight" Ability { id: "AEFB", source: "Sunbound Suzaku" }
+11033.9 "Arm of Purgatory" Ability { id: "AEFA", source: "Sunbound Suzaku" }
+11038.1 "Stonega III" Ability { id: "B07A", source: "Faithbound Kirin" }
+11044.2 "--sync--" StartsUsing { id: "AD91", source: "Faithbound Kirin" } window 10,10 forcejump "kirin-wrought-arms-2"
+
+# Dawnbound Seiryu
+12000.0 label "kirin-shijin-seiryu"
+
+# Moonbound Genbu
+13000.0 label "kirin-shijin-genbu"
+13010.2 "Shattering Stomp" Ability { id: "AD84", source: "Moonbound Genbu" }
+13020.4 "Moontide Font" Ability { id: "AD86", source: "Moonbound Genbu" }
+13025.4 "Moontide Font" Ability { id: "AD86", source: "Moonbound Genbu" }
+13030.2 "Midwinter March" Ability { id: "AD87", source: "Moonbound Genbu" }
+13031.2 "--sync--" Ability { id: "AD31", source: "Moonbound Genbu" }
+13036.3 "Northern Current" Ability { id: "AD88", source: "Moonbound Genbu" }
+13041.6 "Crimson Riddle" Ability { id: ["AFF4", "AFF5"], source: "Faithbound Kirin" }
+13049.0 "--sync--" StartsUsing { id: "AD91", source: "Faithbound Kirin" } window 10,10 forcejump "kirin-wrought-arms-2"
+
+# Duskbound Byakko
+14000.0 label "kirin-shijin-byakko"
+
+# Wrought Arms 2
+15000.0 label "kirin-wrought-arms-2"
+15000.0 "--sync---" StartsUsing { id: "AD91", source: "Faithbound Kirin" } window 3950,1
+15003.3 "Wrought Arms" Ability { id: "AD91", source: "Faithbound Kirin" }
+15011.7 "Wringer" Ability { id: "AD92", source: "Faithbound Kirin" }
+15016.7 "Dead Wringer" Ability { id: ["AD97", "AD98"], source: "Sculpted Arm" }
+15026.3 "Striking Left/Striking Right" Ability { id: ["AD93", "AD94"], source: "Faithbound Kirin" }
+15031.3 "Smiting Left/Right" Ability { id: ["AD99", "AD9A"], source: "Sculpted Arm" }
+15036.5 "Stonega IV" Ability { id: "ADCA", source: "Faithbound Kirin" }
+
+# The boss and hands will do an extremely large number of possible sequences
+# which are difficult to split into separate timeline segments, due to the
+# sheer number of combinations and overlap between casts. The timeline
+# matching doesn't handle this very well. Instead, just show a duration
+# line with an estimated length...
+15042.3 "--synchronized sequence--" duration 20
+
+# Adds Phase
+15500.0 label "kirin-chiseled-arms"
+15500.0 "--sync--" StartsUsing { id: "ADB1", source: "Faithbound Kirin" } window 500,1
+15506.9 "Mighty Grip" Ability { id: "ADB1", source: "Faithbound Kirin" }
+15517.7 "Shockwave" Ability { id: "ADC0", source: "Chiseled Arm" }
+15526.7 "Shockwave" Ability { id: "ADC0", source: "Chiseled Arm" }
+15527.7 "Deadly Hold" Ability { id: "ADB2", source: "Faithbound Kirin" }
+15535.9 "--sync--" Ability { id: "ADB4", source: "Faithbound Kirin" }
+# Both Chiseled Arms must be destroyed before this cast finishes
+15539.1 "Kirin Captivator" StartsUsing { id: "ADB3", source: "Faithbound Kirin" } duration 29.7
+15541.1 "Shockwave" Ability { id: "ADC0", source: "Chiseled Arm" }
+15550.1 "Shockwave" Ability { id: "ADC0", source: "Chiseled Arm" }
+
+# TODO:
+# Can we sync to the enrage canceling or adds dying?
+16000.0 label "kirin-wrought-arms-3"
+16000.0 "--sync--" StartsUsing { id: "AD91", source: "Faithbound Kirin" } window 395,1
+16003.5 "Wrought Arms" Ability { id: "AD91", source: "Faithbound Kirin" }
+
+# From this point, its extremely unclear from logs what the boss will do. It
+# repeats mechanics until you kill it. Wiki says that another Shijin can be
+# summoned, but I don't have logs of that. I don't know how to make a
+# timeline of this...
+16011.5 "--mechanics repeat...-" duration 120
+16011.5 "--goodluck!--" duration 120
+
+# ALL ENCOUNTER ABILITIES
+# 366 attack
+# AA33 Savage Blade
+# AA34 Vorpal Blade
+# AA35 Spirits Within
+# AC05 --sync--
+# AD7E Summon Shijin
+# AD89 Sun Powder
+# AD8A Vermilion Flight
+# AD91 Wrought Arms
+# AD92 Wringer
+# AD94 Striking Left
+# AD95 Synchronized Strike
+# AD96 Synchronized Strike
+# AD97 Dead Wringer
+# AD98 Dead Wringer
+# AD9A Smiting Left
+# AD9B Synchronized Smite
+# AD9C Synchronized Smite
+# AD9F Smiting Left Sequence
+# ADA0 Synchronized Sequence
+# ADA1 Synchronized Sequence
+# ADA2 Wringer
+# ADA3 Striking Right
+# ADA7 Dead Wringer
+# ADA8 Dead Wringer
+# ADA9 Smiting Right
+# ADAD Wringer
+# ADAE Striking Right
+# ADAF Striking Left
+# ADB0 Synchronized Strike
+# ADB1 Mighty Grip
+# ADB2 Deadly Hold
+# ADB4 --sync--
+# ADB5 Deadly Hold
+# ADB6 Deadly Hold
+# ADB7 --sync--
+# ADB8 --sync--
+# ADB9 --sync--
+# ADBA --sync--
+# ADBF Bury
+# ADC0 Shockwave
+# ADCA Stonega IV
+# ADCD --sync--
+# AEFA Arm of Purgatory
+# AEFB Vermilion Flight
+# AEFC Arm of Purgatory
+# AF80 Deadly Hold
+# AFF4 Crimson Riddle
+# AFF5 Crimson Riddle
+# B079 Stonega III
+# B07A Stonega III
+# B0FA attack
+
+#~~~~~~~~~~~~~~~~#
+# Ultima & Omega #
+#~~~~~~~~~~~~~~~~#
+
+# -ii AD1D AD2C AD30
+# -ic "Alxaal"
+
+# Armada Airship will be sealed off
+20000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "14B2" } window 20000,1
+20005.5 "--sync--" StartsUsing { id: "AD2B", source: "Omega, the One" } window 20005.5,10
+20011.7 "Ion Efflux" Ability { id: "AD2B", source: "Omega, the One" }
+20015.5 "--sync--" Ability { id: "AD10", source: "Ultima, the Feared" }
+20016.5 "Antimatter" Ability { id: "AD11", source: "Ultima, the Feared" }
+20020.6 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
+20028.8 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20031.8 "Aft-to-fore Fire/Fore-to-aft Fire" Ability { id: ["AD25", "AD27"], source: "Omega, the One" }
+20032.4 "Omega Blaster" Ability { id: "AD29", source: "Omega, the One" }
+20034.0 "Foreward Blaster/Aftward Blaster" Ability { id: ["AD26", "AD28"], source: "Omega, the One" }
+20034.8 "Omega Blaster" Ability { id: "AD2A", source: "Omega, the One" }
+20048.4 "Tractor Beam" Ability { id: "AD06", source: "Ultima, the Feared" }
+20048.6 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
+20048.8 "Crash" Ability { id: "AD07", source: "Ultima, the Feared" }
+20048.8 "Tractor Beam" #Ability { id: "B086", source: "Ultima, the Feared" }
+20053.6 "Anti-personnel Missile" Ability { id: "B088", source: "Omega, the One" }
+20065.9 "Surface Missile" Ability { id: "B075", source: "Omega, the One" }
+20066.9 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20067.9 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
+20069.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20069.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20071.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20071.0 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20075.0 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
+20076.0 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20080.0 "Anti-personnel Missile" #Ability { id: "B088", source: "Omega, the One" }
+20080.0 "Anti-personnel Missile" #Ability { id: "B088", source: "Omega, the One" }
+20083.0 "Mana Screen" Ability { id: "AD09", source: "Ultima, the Feared" }
+20088.1 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
+20096.3 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20097.1 "Energy Ray" #Ability { id: "AD0D", source: "Ultima, the Feared" }
+20102.0 "Trajectory Projection" Ability { id: "AD23", source: "Omega, the One" }
+20112.7 "Guided Missile" #Ability { id: "AD24", source: "Omega, the One" }
+20112.7 "Guided Missile" #Ability { id: "AD24", source: "Omega, the One" }
+
+# Jump from the airship before it's reduced to ash!
+20118.3 "Tractor Field" Ability { id: "AD12", source: "Ultima, the Feared" }
+20118.7 "Tractor Field" Ability { id: "AD13", source: "Ultima, the Feared" }
+20123.6 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
+20123.6 "Citadel Siege" Ability { id: "AD14", source: "Ultima, the Feared" }
+20125.4 "Multi-missile" Ability { id: "AFED", source: "Omega, the One" }
+20125.5 "Multi-missile" Ability { id: "AFEC", source: "Omega, the One" }
+20127.6 "Citadel Siege" Ability { id: "AD15", source: "Ultima, the Feared" }
+20127.7 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
+20128.6 "Citadel Siege" Ability { id: "AD18", source: "Ultima, the Feared" }
+20129.6 "Multi-missile" Ability { id: "AFED", source: "Omega, the One" }
+20129.7 "Multi-missile" Ability { id: "AFEC", source: "Omega, the One" }
+20131.7 "Citadel Siege" Ability { id: "AD16", source: "Ultima, the Feared" }
+20132.0 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
+20132.7 "Citadel Siege" Ability { id: "AD18", source: "Ultima, the Feared" }
+20133.9 "Multi-missile" Ability { id: "AFED", source: "Omega, the One" }
+20134.0 "Multi-missile" Ability { id: "AFEC", source: "Omega, the One" }
+20135.7 "Citadel Siege" Ability { id: "AD17", source: "Ultima, the Feared" }
+20136.3 "Multi-missile" Ability { id: "AFEB", source: "Omega, the One" }
+20136.7 "Citadel Siege" Ability { id: "AD18", source: "Ultima, the Feared" }
+20138.1 "Multi-missile" Ability { id: "AFED", source: "Omega, the One" }
+20138.2 "Multi-missile" #Ability { id: "AFEC", source: "Omega, the One" }
+20138.2 "Multi-missile" #Ability { id: "AFEC", source: "Omega, the One" }
+20140.6 "Citadel Siege" Ability { id: "AD18", source: "Ultima, the Feared" }
+20152.7 "Citadel Buster" Ability { id: "AD1B", source: "Ultima, the Feared" }
+20158.6 "Hyper Pulse" Ability { id: "AD2F", source: "Omega, the One" }
+
+# Phase 2
+20175.8 label "ultima-omega-p2-loop"
+20175.8 "Tractor Beam" Ability { id: "AD06", source: "Ultima, the Feared" }
+20176.2 "Crash" Ability { id: "AD07", source: "Ultima, the Feared" }
+20176.2 "Tractor Beam" #Ability { id: "B086", source: "Ultima, the Feared" }
+20176.4 "Trajectory Projection" Ability { id: "AD23", source: "Omega, the One" }
+20187.0 "Mana Screen" Ability { id: "AD09", source: "Ultima, the Feared" }
+20187.1 "Guided Missile" #Ability { id: "AD24", source: "Omega, the One" }
+20192.1 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
+20200.3 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20201.1 "Energy Ray" #Ability { id: "AD0C", source: "Ultima, the Feared" }
+20201.4 "Anti-personnel Missile" Ability { id: "B087", source: "Omega, the One" }
+20201.6 "Energy Ray" Ability { id: "AD0B", source: "Ultima, the Feared" }
+20206.4 "Anti-personnel Missile" Ability { id: "B088", source: "Omega, the One" }
+20214.9 "Chemical Bomb" Ability { id: "AD0E", source: "Ultima, the Feared" }
+20215.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
+20218.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
+20221.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
+20224.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
+20233.2 "Surface Missile" Ability { id: "B075", source: "Omega, the One" }
+20234.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20236.2 "Energy Orb" Ability { id: "AD08", source: "Ultima, the Feared" }
+20236.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20236.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20238.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20238.2 "Surface Missile" #Ability { id: "B076", source: "Omega, the One" }
+20244.0 "Aft-to-fore Fire/Fore-to-aft Fire" Ability { id: ["AD25", "AD27"], source: "Omega, the One" }
+20244.3 "Energy Ray" Ability { id: "AD32", source: "Energy Orb" }
+20244.4 "Omega Blaster" Ability { id: "AD29", source: "Omega, the One" }
+20246.1 "Foreward Blaster/Aftward Blaster" Ability { id: ["AD26", "AD28"], source: "Omega, the One" }
+20246.9 "Omega Blaster" Ability { id: "AD2A", source: "Omega, the One" }
+20262.9 "Ion Efflux" Ability { id: "AD2B", source: "Omega, the One" }
+20274.6 "Antimatter" Ability { id: "AD10", source: "Ultima, the Feared" }
+20275.6 "Antimatter" Ability { id: "AD11", source: "Ultima, the Feared" }
+20293.6 "Tractor Beam" Ability { id: "AD06", source: "Ultima, the Feared" } window 30,30 forcejump "ultima-omega-p2-loop"
+20342.5 "Chemical Bomb" Ability { id: "AD0F", source: "Ultima, the Feared" }
+
+# IGNORED ABILITIES
+# AD1D --sync--
+# AD2C --sync--
+# AD30 Energizing Equilibrium
+
+# ALL ENCOUNTER ABILITIES
+# AD06 Tractor Beam
+# AD07 Crash
+# AD08 Energy Orb
+# AD09 Mana Screen
+# AD0B Energy Ray
+# AD0C Energy Ray
+# AD0D Energy Ray
+# AD0E Chemical Bomb
+# AD0F Chemical Bomb
+# AD10 Antimatter
+# AD11 Antimatter
+# AD12 Tractor Field
+# AD13 Tractor Field
+# AD14 Citadel Siege
+# AD15 Citadel Siege
+# AD16 Citadel Siege
+# AD17 Citadel Siege
+# AD18 Citadel Siege
+# AD1B Citadel Buster
+# AD1C Energizing Equilibrium
+# AD1D --sync--
+# AD23 Trajectory Projection
+# AD24 Guided Missile
+# AD25 Fore-to-aft Fire
+# AD26 Foreward Blaster
+# AD27 Aft-to-fore Fire
+# AD28 Aftward Blaster
+# AD29 Omega Blaster
+# AD2A Omega Blaster
+# AD2B Ion Efflux
+# AD2C --sync--
+# AD2F Hyper Pulse
+# AD30 Energizing Equilibrium
+# AD32 Energy Ray
+# AFEB Multi-missile
+# AFEC Multi-missile
+# AFED Multi-missile
+# B075 Surface Missile
+# B076 Surface Missile
+# B086 Tractor Beam
+# B087 Anti-personnel Missile
+# B088 Anti-personnel Missile
+# B0FC attack
+
+#~~~~~~~~~~~~~~~~~#
+# Stellar Fulcrum #
+#~~~~~~~~~~~~~~~~~#
+
+# The Stellar Fulcrum will be sealed off
+30000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "1488" } window 30000,1
+30006.4 "--sync--" StartsUsing { id: "ACBD", source: "Kam'lanaut" } window 30006.4,1
+30011.1 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30014.3 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30019.4 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+# TODO: Add sync for elemental buffs?
+30032.5 "Elemental Blade" Ability { id: "AC91", source: "Kam'lanaut" }
+30043.6 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+# TODO: condense sublime elements, based on which of these is "real"
+# TODO: verify if the two variants of Sublime Elements can appear in
+# different order
+30044.6 "Sublime Earth" #Ability { id: "AC94", source: "Kam'lanaut" }
+30044.6 "Sublime Fire" #Ability { id: "AC93", source: "Kam'lanaut" }
+30044.6 "Sublime Ice" #Ability { id: "AC9C", source: "Kam'lanaut" }
+30044.6 "Sublime Lightning" #Ability { id: "AC97", source: "Kam'lanaut" }
+30044.6 "Sublime Water" #Ability { id: "AC9B", source: "Kam'lanaut" }
+30044.6 "Sublime Wind" #Ability { id: "AC98", source: "Kam'lanaut" }
+30054.7 "Elemental Blade" Ability { id: "AC91", source: "Kam'lanaut" }
+30065.8 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30066.8 "Earth Blade" #Ability { id: "ACA0", source: "Kam'lanaut" }
+30066.8 "Fire Blade" #Ability { id: "AC9F", source: "Kam'lanaut" }
+30066.8 "Ice Blade" #Ability { id: "ACA8", source: "Kam'lanaut" }
+30066.8 "Lightning Blade" #Ability { id: "ACA9", source: "Kam'lanaut" }
+30066.8 "Water Blade" #Ability { id: "ACA1", source: "Kam'lanaut" }
+30066.8 "Wind Blade" #Ability { id: "ACA4", source: "Kam'lanaut" }
+# TODO: Check which ablity hurts?
+30076.1 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
+30077.1 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
+30082.2 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30088.2 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30088.2 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30091.3 "Great Wheel" Ability { id: ["ACAF", "ACB0"], source: "Kam'lanaut" }
+30097.2 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
+30104.4 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30111.5 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+
+# Phase Transition
+# TODO: Add --untargettable--?? and maybe a duration?
+30124.8 "Esoteric Scrivening" Ability { id: "ACB2", source: "Kam'lanaut" }
+30129.9 "--sync--" Ability { id: "AD79", source: "Kam'lanaut" }
+30143.0 "--sync--" Ability { id: "AD7A", source: "Kam'lanaut" }
+30148.2 "Shockwave" Ability { id: "ACB3", source: "Kam'lanaut" }
+30148.2 "--sync--" Ability { id: "A2FF", source: "Kam'lanaut" }
+30156.8 "Transcendent Union" Ability { id: "ACB4", source: "Kam'lanaut" }
+30157.8 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30158.1 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30158.4 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30158.8 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30159.2 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30159.9 "Elemental Edge" #Ability { id: "AD01", source: "Kam'lanaut" }
+30163.2 "Transcendent Union" Ability { id: "ACB5", source: "Kam'lanaut" }
+30174.0 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+
+# Phase 2
+30179.2 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" }
+30185.3 "Crystalline Resonance" Ability { id: "ACB7", source: "Kam'lanaut" }
+30193.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30200.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30207.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30207.4 "Illumed Facet" Ability { id: "ACB9", source: "Kam'lanaut" }
+30207.4 "Empyreal Banish III" #Ability { id: "ACBF", source: "Kam'lanaut" }
+30218.4 "Illumed Estoc" Ability { id: "ACBA", source: "Kam'lanaut" }
+30225.7 "Shield Bash" Ability { id: "ACBE", source: "Kam'lanaut" }
+# TODO: check which of these matters
+30234.8 "Empyreal Banish IV" Ability { id: "AF6B", source: "Kam'lanaut" }
+30235.8 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30245.1 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
+30246.1 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
+30255.2 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30260.3 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+30274.4 "Elemental Blade" Ability { id: "AC92", source: "Kam'lanaut" }
+30285.5 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30286.5 "Sublime Earth" #Ability { id: "AC94", source: "Kam'lanaut" }
+30286.5 "Sublime Fire" #Ability { id: "AC99", source: "Kam'lanaut" }
+30286.5 "Sublime Ice" #Ability { id: "AC9C", source: "Kam'lanaut" }
+30286.5 "Sublime Lightning" #Ability { id: "AC9D", source: "Kam'lanaut" }
+30286.5 "Sublime Water" #Ability { id: "AC95", source: "Kam'lanaut" }
+30286.5 "Sublime Wind" #Ability { id: "AC98", source: "Kam'lanaut" }
+30292.6 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30298.6 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30298.6 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30298.6 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
+30301.7 "Great Wheel" Ability { id: ["ACAD", "ACAE", "ACAF", "ACB0"], source: "Kam'lanaut" }
+30307.6 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
+30307.7 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30314.8 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30322.0 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+
+# Phase 2 Loop Start
+30327.2 label "kamlanaut-loop"
+30327.2 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" }
+30333.3 "Crystalline Resonance" Ability { id: "ACB7", source: "Kam'lanaut" }
+30341.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30348.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30355.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30358.4 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30364.4 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30364.4 "Sublime Estoc" #Ability { id: "ACAC", source: "Sublime Estoc" }
+30364.4 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
+30371.2 "Elemental Resonance" Ability { id: "ACB8", source: "Kam'lanaut" }
+30372.8 "Illumed Facet" Ability { id: "ACB9", source: "Kam'lanaut" }
+30382.9 "Shield Bash" Ability { id: "ACBE", source: "Kam'lanaut" }
+30383.7 "Illumed Estoc" Ability { id: "ACBA", source: "Kam'lanaut" }
+30392.1 "Empyreal Banish IV" Ability { id: "AF6B", source: "Kam'lanaut" }
+30393.1 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30398.2 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+30412.3 "Elemental Blade" Ability { id: "AC92", source: "Kam'lanaut" }
+30423.4 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30424.4 "Earth Blade" #Ability { id: "ACA6", source: "Kam'lanaut" }
+30424.4 "Fire Blade" #Ability { id: "ACA5", source: "Kam'lanaut" }
+30424.4 "Ice Blade" #Ability { id: "ACA2", source: "Kam'lanaut" }
+30424.4 "Lightning Blade" #Ability { id: "ACA3", source: "Kam'lanaut" }
+30424.4 "Water Blade" #Ability { id: "ACA1", source: "Kam'lanaut" }
+30424.4 "Wind Blade" #Ability { id: "ACAA", source: "Kam'lanaut" }
+30431.5 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30441.8 "--sync--" Ability { id: "ACBB", source: "Kam'lanaut" }
+30442.8 "Princely Blow" Ability { id: "ACBC", source: "Kam'lanaut" }
+30452.0 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30457.1 "Proving Ground" Ability { id: "B009", source: "Kam'lanaut" }
+30471.2 "Elemental Blade" Ability { id: "AC92", source: "Kam'lanaut" }
+30482.3 "Sublime Elements" Ability { id: "B00A", source: "Kam'lanaut" }
+30483.3 "Sublime Earth" #Ability { id: "AC94", source: "Kam'lanaut" }
+30483.3 "Sublime Fire" #Ability { id: "AC99", source: "Kam'lanaut" }
+30483.3 "Sublime Ice" #Ability { id: "AC9C", source: "Kam'lanaut" }
+30483.3 "Sublime Lightning" #Ability { id: "AC9D", source: "Kam'lanaut" }
+30483.3 "Sublime Water" #Ability { id: "AC95", source: "Kam'lanaut" }
+30483.3 "Sublime Wind" #Ability { id: "AC98", source: "Kam'lanaut" }
+30489.4 "Light Blade" Ability { id: "ACAB", source: "Kam'lanaut" }
+30495.4 "Sublime Estoc" Ability { id: "ACAC", source: "Sublime Estoc" }
+30495.4 "Empyreal Banish III" Ability { id: "ACBF", source: "Kam'lanaut" }
+30498.5 "Great Wheel" Ability { id: ["ACAD", "ACAE", "ACAF", "ACB0"], source: "Kam'lanaut" }
+30504.4 "Great Wheel" Ability { id: "ACB1", source: "Kam'lanaut" }
+30504.5 "Empyreal Banish IV" Ability { id: "ACC0", source: "Kam'lanaut" }
+30511.6 "Enspirited Swordplay" Ability { id: "ACBD", source: "Kam'lanaut" }
+30518.8 "--sync--" Ability { id: "ACC1", source: "Kam'lanaut" }
+30524.0 "Esoteric Palisade" Ability { id: "ACB6", source: "Kam'lanaut" } window 30,30 forcejump "kamlanaut-loop"
+
+# IGNORED ABILITIES
+# AF4C --sync--
+
+# ALL ENCOUNTER ABILITIES
+# A2FF --sync--
+# AC91 Elemental Blade
+# AC92 Elemental Blade
+# AC93 Sublime Fire
+# AC94 Sublime Earth
+# AC95 Sublime Water
+# AC97 Sublime Lightning
+# AC98 Sublime Wind
+# AC99 Sublime Fire
+# AC9B Sublime Water
+# AC9C Sublime Ice
+# AC9D Sublime Lightning
+# AC9F Fire Blade
+# ACA0 Earth Blade
+# ACA1 Water Blade
+# ACA2 Ice Blade
+# ACA3 Lightning Blade
+# ACA4 Wind Blade
+# ACA5 Fire Blade
+# ACA6 Earth Blade
+# ACA8 Ice Blade
+# ACA9 Lightning Blade
+# ACAA Wind Blade
+# ACAB Light Blade
+# ACAC Sublime Estoc
+# ACAE Great Wheel
+# ACAF Great Wheel
+# ACB0 Great Wheel
+# ACB1 Great Wheel
+# ACB2 Esoteric Scrivening
+# ACB3 Shockwave
+# ACB4 Transcendent Union
+# ACB5 Transcendent Union
+# ACB6 Esoteric Palisade
+# ACB7 Crystalline Resonance
+# ACB8 Elemental Resonance
+# ACB9 Illumed Facet
+# ACBA Illumed Estoc
+# ACBB Princely Blow
+# ACBC Princely Blow
+# ACBD Enspirited Swordplay
+# ACBE Shield Bash
+# ACBF Empyreal Banish III
+# ACC0 Empyreal Banish IV
+# ACC1 --sync--
+# AD01 Elemental Edge
+# AD79 --sync--
+# AD7A --sync--
+# AF4C --sync--
+# AF6B Empyreal Banish IV
+# B009 Proving Ground
+# B00A Sublime Elements
+
+#~~~~~~~~~~~~~~~~~#
+# Celestial Nexus #
+#~~~~~~~~~~~~~~~~~#
+
+# -ii AD47
+
+# Phase 1
+40000.0 "--sync--" SystemLogMessage { id: "7DC", param1: "148A" } window 40000,1
+40006.4 "--sync--" StartsUsing { id: "AD51", source: "Eald'narche" } window 40006.4,1
+40010.1 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
+40011.1 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
+40023.2 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
+40023.6 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
+40029.5 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
+40039.8 "Empyreal Vortex" Ability { id: "AD6D", source: "Eald'narche" } duration 5.8
+40045.6 "--sync--" Ability { id: "AD70", source: "Eald'narche" }
+40056.9 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
+40057.3 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
+40063.1 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
+40070.4 "Warp" Ability { id: "AD56", source: "Eald'narche" }
+40071.1 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40077.0 "Sleepga" Ability { id: "AD58", source: "Eald'narche" }
+40079.1 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40084.4 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 11.1
+40090.7 "--sync--" StartsUsing { id: "AD5C", source: "Eald'narche" } window 5,5
+40094.4 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
+40095.5 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
+40099.9 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
+40105.6 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 26.2
+40116.7 "--sync--" Ability { id: "AD78", source: "Eald'narche" }
+40120.7 "--sync--" Ability { id: "AD77", source: "Eald'narche" }
+40131.8 "--sync--" Ability { id: "AD78", source: "Eald'narche" }
+40140.8 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40150.1 "Excelsior" Ability { id: "B040", source: "Eald'narche" }
+40150.5 "--sync--" Ability { id: "AF17", source: "Eald'narche" }
+40155.2 "Phase Shift" Ability { id: "AD59", source: "Eald'narche" } duration 22.2
+40155.4 "--sync--" Ability { id: "AD2E", source: "Eald'narche" }
+40156.1 "--sync--" Ability { id: "AD5B", source: "Eald'narche" }
+40177.4 "--sync--" Ability { id: "AD5A", source: "Eald'narche" } window 23.1,5
+
+# Phase 2 Begins
+40189.6 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
+40198.7 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
+40207.7 "Stellar Burst" Ability { id: "AD72", source: "Eald'narche" }
+40207.7 "--sync--" Ability { id: "AD7D", source: "Eald'narche" }
+40208.7 "Stellar Burst" Ability { id: "AD73", source: "Eald'narche" }
+40215.4 "Stellar Burst" Ability { id: "AD74", source: "Eald'narche" }
+40224.0 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+# TODO: There are many variations of Ancient Triad which are not really
+# worth creating branching timelines for. Just use a duration to indicate
+# that mechanics are ongoing. Note that this duration likely isn't accurate
+# for every variation, however the mechanics should mostly be done resolving
+# by this time.
+40232.3 "Ancient Triad" Ability { id: "AD5F", source: "Eald'narche" } duration 10.7
+40248.0 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 17
+40263.1 "--sync--" StartsUsing { id: "AD51", source: "Eald'narche" } window 15,5
+40266.8 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
+40267.8 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
+40273.9 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
+40283.0 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
+
+# Phase 2 Loop
+40292.0 label "ealdnarche-phase-2-loop"
+40292.0 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
+40293.1 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
+40295.1 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40297.5 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
+40300.5 "Gaea Stream" Ability { id: "AD53", source: "Eald'narche" } duration 17
+40313.5 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
+40313.9 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
+40319.6 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
+40327.5 "Stellar Burst" Ability { id: "AD72", source: "Eald'narche" }
+40327.5 "--sync--" Ability { id: "AD7D", source: "Eald'narche" }
+40328.5 "Stellar Burst" Ability { id: "AD73", source: "Eald'narche" }
+40335.2 "Stellar Burst" Ability { id: "AD74", source: "Eald'narche" }
+40342.9 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40351.0 "Ancient Triad" Ability { id: "AD5F", source: "Eald'narche" } duration 10.7
+40359.7 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
+40368.9 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
+40373.0 "--sync--" Ability { id: "AD76", source: "Eald'narche" }
+40377.0 "Empyreal Vortex" Ability { id: "AD6D", source: "Eald'narche" } duration 5.8
+40382.8 "--sync--" Ability { id: "AD70", source: "Eald'narche" }
+40386.6 "Warp" Ability { id: "AD56", source: "Eald'narche" }
+40387.3 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40393.2 "Sleepga" Ability { id: "AD58", source: "Eald'narche" }
+40395.3 "--sync--" Ability { id: "AD48", source: "Eald'narche" }
+40401.6 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" }
+40402.7 "--sync--" Ability { id: "AD5D", source: "Eald'narche" }
+40407.1 "Omega Javelin" Ability { id: "AD5E", source: "Eald'narche" }
+40411.7 "Cronos Sling" Ability { id: ["AD49", "AD4A", "AD4B", "AD4C"], source: "Eald'narche" }
+40412.1 "--sync--" Ability { id: ["AD4D", "AD4E"], source: "Eald'narche" }
+40417.9 "Cronos Sling" Ability { id: ["AD4F", "AD50"], source: "Eald'narche" }
+40429.2 "--sync--" Ability { id: "AD51", source: "Eald'narche" }
+40430.2 "Uranos Cascade" Ability { id: "AD52", source: "Eald'narche" }
+40444.3 "Duplicate" Ability { id: "AD77", source: "Eald'narche" } duration 13.1
+40453.4 "Visions of Paradise" Ability { id: "AD75", source: "Eald'narche" }
+40457.5 "--sync--" Ability { id: "AD76", source: "Eald'narche" }
+40462.5 "Omega Javelin" Ability { id: "AD5C", source: "Eald'narche" } forcejump "ealdnarche-phase-2-loop"
+
+# IGNORED ABILITIES
+# AD47 --sync--
+
+# ALL ENCOUNTER ABILITIES
+# AD2E Phase Shift
+# AD35 Tornado
+# AD47 --sync--
+# AD48 --sync--
+# AD49 Cronos Sling
+# AD4B Cronos Sling
+# AD4C Cronos Sling
+# AD4D Cronos Sling
+# AD4E Cronos Sling
+# AD4F Cronos Sling
+# AD50 Cronos Sling
+# AD51 Uranos Cascade
+# AD52 Uranos Cascade
+# AD53 Gaea Stream
+# AD54 Gaea Stream
+# AD55 Gaea Stream
+# AD56 Warp
+# AD57 --sync--
+# AD58 Sleepga
+# AD59 Phase Shift
+# AD5A Phase Shift
+# AD5B --sync--
+# AD5C Omega Javelin
+# AD5D Omega Javelin
+# AD5E Omega Javelin
+# AD5F Ancient Triad
+# AD60 Flare
+# AD61 Flare
+# AD64 Quake
+# AD65 Freeze
+# AD66 Flood
+# AD67 Flood
+# AD68 Flood
+# AD69 Flood
+# AD6A Flood
+# AD6B Tornado
+# AD6C Tornado
+# AD6D Empyreal Vortex
+# AD6E Empyreal Vortex
+# AD6F Empyreal Vortex
+# AD70 Empyreal Vortex
+# AD71 Empyreal Vortex
+# AD72 Stellar Burst
+# AD73 Stellar Burst
+# AD74 Stellar Burst
+# AD75 Visions of Paradise
+# AD76 Duplicate
+# AD77 Duplicate
+# AD78 Duplicate
+# AD7D --sync--
+# AF17 --sync--
+# B040 Excelsior
