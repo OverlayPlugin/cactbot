@@ -6419,10 +6419,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         frontBackLater: {
-          en: 'Portal + Front/Back Clone (later)',
+          en: 'Portal + Under Boss (later)',
         },
         sidesLater: {
-          en: 'Portal + Sides Clone (later)',
+          en: 'Portal + E/W of Clone (later)',
         },
       },
     },
@@ -6467,16 +6467,16 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         frontBackWestLater: {
-          en: 'West Platform => Front/Back Clone (later)',
+          en: 'West Platform => N/S of Clone (later)',
         },
         sidesWestLater: {
-          en: 'West Platform => Sides Clone (later)',
+          en: 'West Platform => Under Boss (later)',
         },
         frontBackEastLater: {
-          en: 'East Platform => Front/Back Clone (later)',
+          en: 'East Platform => N/S of Clone (later)',
         },
         sidesEastLater: {
-          en: 'East Platform => Sides Clone (later)',
+          en: 'East Platform => Under Boss (later)',
         },
       },
     },
@@ -6550,16 +6550,16 @@ const triggerSet: TriggerSet<Data> = {
           en: 'Move to Safe Platform Side => Dodge Cleaves',
         },
         sidesWestPlatform: {
-          en: 'West Platform => Sides of Clone',
+          en: 'West Platform => Under Boss',
         },
         sidesEastPlatform: {
-          en: 'East Platform => Sides of Clone',
+          en: 'East Platform => Under Boss',
         },
         frontBackEastPlatform: {
-          en: 'East Platform => Front/Back of Clone',
+          en: 'East Platform => N/S of Clone',
         },
         frontBackWestPlatform: {
-          en: 'West Platform => Front/Back of Clone',
+          en: 'West Platform => N/S of Clone',
         },
       },
     },
@@ -6625,10 +6625,10 @@ const triggerSet: TriggerSet<Data> = {
       },
       outputStrings: {
         sides: {
-          en: 'Sides of Clone',
+          en: 'E/W of Clone',
         },
         frontBack: {
-          en: 'Front/Back of Clone',
+          en: 'Under Boss',
         },
       },
     },
