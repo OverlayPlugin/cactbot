@@ -429,7 +429,8 @@ hideall "--sync--"
 3245.6 "Double Sobat 1" Ability { id: ["B521", "B522", "B523", "B524"], source: "Lindwurm" }
 3250.2 "Double Sobat 2" Ability { id: "B525", source: "Lindwurm" }
 3252.6 "Esoteric Finisher" Ability { id: "B526", source: "Lindwurm" }
-3260.7 "--middle--" Ability { id: "B4D9", source: "Lindwurm" } window 5,5
+# NOTE: Sync commented to avoid jumps before Idyllic Dream B509
+3260.7 "--middle--" #Ability { id: "B4D9", source: "Lindwurm" } window 5,5
 
 # Idyllic Dream
 3268.8 "Idyllic Dream" Ability { id: "B509", source: "Lindwurm" }
