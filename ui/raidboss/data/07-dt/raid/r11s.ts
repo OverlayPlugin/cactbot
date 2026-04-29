@@ -119,10 +119,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'majesticMeteowrathTetherDir',
       name: {
         en: 'Majestic Meteowrath Tether Direction',
+        cn: '王者陨石震拉线方向',
         ko: '분노의 챔피언 메테오 선 처리 방향',
       },
       comment: {
         en: 'Direction to stretch tethers during Majestic Meteowrath.',
+        cn: '王者陨石震期间的拉线方向。',
         ko: '분노의 챔피언 메테오 선 처리 방향을 설정합니다.',
       },
       type: 'select',
@@ -130,6 +132,10 @@ const triggerSet: TriggerSet<Data> = {
         en: {
           'Clockwise': 'cw',
           'Counter Clockwise': 'ccw',
+        },
+        cn: {
+          '顺时针': 'cw',
+          '逆时针': 'ccw',
         },
         ko: {
           '시계방향': 'cw',
@@ -142,10 +148,12 @@ const triggerSet: TriggerSet<Data> = {
       id: 'twoWayFireballBaitDir',
       name: {
         en: 'Two-Way Fireball Bait Direction',
+        cn: '双向回旋火诱导方向',
         ko: '두 갈래 회전화염 유도 위치',
       },
       comment: {
         en: 'Direction to bait the two-way fireball.',
+        cn: '诱导双向回旋火的方向',
         ko: '두 갈래 회전화염 유도 방향을 설정합니다.',
       },
       type: 'select',
@@ -153,6 +161,10 @@ const triggerSet: TriggerSet<Data> = {
         en: {
           'East/West': 'ew',
           'North/South': 'ns',
+        },
+        cn: {
+          '东/西': 'ew',
+          '南/北': 'ns',
         },
         ko: {
           '동/서': 'ew',
