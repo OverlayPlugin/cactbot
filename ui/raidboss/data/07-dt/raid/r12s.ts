@@ -2757,7 +2757,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         noDebuffFail: {
           en: 'Debuffs Messed Up, Check Partner',
-          cn: 'Debuff 获取故障, 检查队友',
+          cn: 'Debuff 获取故障, 检查搭档状态',
         },
       },
     },
@@ -2907,7 +2907,7 @@ const triggerSet: TriggerSet<Data> = {
         ...Directions.outputStringsIntercardDir, // Cardinals should result in '???'
         fire: {
           en: 'Bait Fire In ${dir1}/Out ${dir2} (Partners)',
-          cn: '内${dir1}/外${dir2}诱导火 (和队友)',
+          cn: '内${dir1}/外${dir2}诱导火 (和搭档一起)',
         },
         dark: {
           en: 'Bait Dark In ${dir1}/Out ${dir2} (Solo)',
@@ -2915,7 +2915,7 @@ const triggerSet: TriggerSet<Data> = {
         },
         darkDebuffFail: {
           en: 'Check Partner, Dark is In ${dir1}/Out ${dir2}',
-          cn: '检查队友, 暗在内${dir1}/外${dir2}',
+          cn: '检查搭档状态, 暗在内${dir1}/外${dir2}',
         },
       },
     },
