@@ -298,12 +298,9 @@ const triggerSet: TriggerSet<Data> = {
           'No strategy: Calls the tether you may have and to get a tether.': 'none',
         },
         cn: {
-          'DN 策略: Boss北侧, 扇形东北/西北, 分摊东/西, 大圈东南/西南, 无点名南侧':
-            'dn',
-          'Banana Codex 策略: Boss 西侧, 分摊西北/西南, 扇形北/南, 大圈东北/东南, 无点名东侧':
-            'banana',
-          'Nukemaru 策略: Boss 东侧, 分摊东北/东南, 扇形北/南, 大圈西北/西南, 无点名西侧':
-            'nukemaru',
+          'DN 策略: Boss北侧, 扇形东北/西北, 分摊东/西, 大圈东南/西南, 无点名南侧': 'dn',
+          'Banana Codex 策略: Boss 西侧, 分摊西北/西南, 扇形北/南, 大圈东北/东南, 无点名东侧': 'banana',
+          'Nukemaru 策略: Boss 东侧, 分摊东北/东南, 扇形北/南, 大圈西北/西南, 无点名西侧': 'nukemaru',
           '无策略: 播报你可能获得的连线, 并提示获取连线': 'none',
         },
       },
@@ -329,14 +326,10 @@ const triggerSet: TriggerSet<Data> = {
           'No strategy: Calls the tether you may have and to get a tether.': 'none',
         },
         cn: {
-          'DN 策略: 北、东北、东、东南两线一组接分摊, 南、西南、西、西北两线一组接大圈。队伍分为4个斜向象限':
-            'dn',
-          'Emergency Meeting 策略: 北、东北、东、西北接分摊, 东南、南、西南、西接大圈。队伍按红/紫+黄/蓝标记分组, 根据先分摊还是先大圈进行交换':
-            'em',
-          'Caro 策略: 东北、东、西南、西两线一组接分摊, 北、东南、南、西北两线一组接大圈。队伍分为4个斜向象限':
-            'caro',
-          'Nukemaru 策略: 北、西南、西、西北两线一组接分摊, 东北、东、东南、南两线一组接大圈。队伍分为4个斜向象限':
-            'nukemaru',
+          'DN 策略: 北、东北、东、东南两线一组接分摊, 南、西南、西、西北两线一组接大圈。队伍分为4个斜向象限': 'dn',
+          'Emergency Meeting 策略: 北、东北、东、西北接分摊, 东南、南、西南、西接大圈。队伍按红/紫+黄/蓝标记分组, 根据先分摊还是先大圈进行交换': 'em',
+          'Caro 策略: 东北、东、西南、西两线一组接分摊, 北、东南、南、西北两线一组接大圈。队伍分为4个斜向象限': 'caro',
+          'Nukemaru 策略: 北、西南、西、西北两线一组接分摊, 东北、东、东南、南两线一组接大圈。队伍分为4个斜向象限': 'nukemaru',
           '无策略: 播报你可能获得的连线, 并提示获取连线': 'none',
         },
       },
@@ -360,12 +353,9 @@ const triggerSet: TriggerSet<Data> = {
           'No strategy: call element and debuff': 'none',
         },
         cn: {
-          'DN 策略: 暗北判定点, 风中间判定点, 土/火平台北侧近战位(暗与风之间), 火/土平台南侧边缘远程位':
-            'dn',
-          'Zenith 策略: 风北最远近战位, 土/暗中间位 (偏北), 火南最远近战位':
-            'zenith',
-          'Nukemaru 策略: 近线南侧(数字标记角落), 远线 Boss 南侧判定点, 土/火南最远近战位, 火/土平台北侧远程位':
-            'nukemaru',
+          'DN 策略: 暗北判定点, 风中间判定点, 土/火平台北侧近战位(暗与风之间), 火/土平台南侧边缘远程位': 'dn',
+          'Zenith 策略: 风北最远近战位, 土/暗中间位 (偏北), 火南最远近战位': 'zenith',
+          'Nukemaru 策略: 近线南侧(数字标记角落), 远线 Boss 南侧判定点, 土/火南最远近战位, 火/土平台北侧远程位': 'nukemaru',
           '无策略: 播报元素与 debuff': 'none',
         },
       },
